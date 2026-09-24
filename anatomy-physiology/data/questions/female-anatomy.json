@@ -281,7 +281,7 @@
    "Glands in its wall secrete acid",
    "The cervix secretes hydrochloric acid",
    "Resident bacteria turn glycogen in the lining cells into lactic acid",
-   "Urine flows back into it and acidifies it"
+   "Urine from the nearby urethra flows back into it and acidifies it"
   ],
   "correct": 2,
   "why": {
@@ -304,10 +304,10 @@
   ],
   "q": "A 54-year-old woman, several years past her last period, has low estrogen. Her vagina has become dry and prone to infection. Which change best explains the higher infection risk?",
   "options": [
-   "Its lining stores less glycogen, so less lactic acid is made",
+   "Its lining stores less glycogen, so less lactic acid forms",
    "Its glands have stopped making mucus",
    "Its smooth muscle layer has thickened",
-   "Its lining has become keratinized skin"
+   "Its lining has turned into keratinized skin, like the labia majora"
   ],
   "correct": 0,
   "why": {
@@ -386,7 +386,7 @@
   ],
   "q": "Which structure ties the ovary to the pelvic wall and carries the ovarian artery and vein?",
   "options": [
-   "The ovarian ligament",
+   "The ovarian ligament, joining it to the uterus",
    "The round ligament",
    "The suspensory ligament of the ovary",
    "The uterine tube"
@@ -440,7 +440,7 @@
   "options": [
    "The duct of a greater vestibular gland",
    "The urethra",
-   "The cervical canal",
+   "The cervical canal at the top of the vagina",
    "A lactiferous duct"
   ],
   "correct": 0,

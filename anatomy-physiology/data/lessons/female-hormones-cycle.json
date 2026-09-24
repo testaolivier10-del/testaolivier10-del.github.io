@@ -1,0 +1,82 @@
+{
+  "topic": "female-hormones-cycle",
+  "hook": "<p>Priya, 19, runs 100 km a week for her college team and eats barely enough to keep up. Her periods stopped eight months ago, and now she has a stress fracture in her shin. Nothing is wrong with her ovaries or uterus. Her brain has slowed the hormone pulses that drive them, her estrogen has fallen, and her bones are thinning. To see how one signal from the hypothalamus runs the whole monthly cycle, you need the feedback loops on this page.</p>",
+  "prereq": [
+    {
+      "q": "In a positive feedback loop, the response:",
+      "options": [
+        "Opposes the original change",
+        "Strengthens the original change until something outside the loop ends it",
+        "Keeps the variable at its set point"
+      ],
+      "correct": 1,
+      "why": "Positive feedback pushes the variable further in the same direction; an outside event, such as delivery of the baby in childbirth, has to stop it.",
+      "review": "homeostasis-feedback"
+    },
+    {
+      "q": "How does GnRH reach the anterior pituitary?",
+      "options": [
+        "Along axons into the posterior pituitary",
+        "Through the general circulation after passing the heart",
+        "Through the hypophyseal portal system"
+      ],
+      "correct": 2,
+      "why": "Hypothalamic releasing hormones enter capillaries in the hypothalamus and are carried by portal veins straight to capillaries in the anterior pituitary.",
+      "review": "hypothalamus-pituitary"
+    },
+    {
+      "q": "Which hormone does the corpus luteum secrete in the largest amount?",
+      "options": [
+        "Progesterone",
+        "FSH",
+        "Testosterone"
+      ],
+      "correct": 0,
+      "why": "The corpus luteum is a temporary gland that secretes mainly progesterone, with estradiol and inhibin.",
+      "review": "ovarian-cycle"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    {
+      "cause": "The old corpus luteum dies, so progesterone, estradiol and inhibin fall.",
+      "effect": "Negative feedback lifts and FSH rises; without progesterone, the endometrium's functional layer breaks down and is shed (the menstrual phase)."
+    },
+    {
+      "cause": "The rise in FSH rescues a group of follicles, and their granulosa cells release estradiol and inhibin.",
+      "effect": "Estradiol rebuilds the functional layer (the proliferative phase), and estradiol and inhibin lower FSH, so only the dominant follicle keeps growing."
+    },
+    {
+      "cause": "Estradiol from the dominant follicle stays high for about two days.",
+      "effect": "The hypothalamus and pituitary switch to positive feedback, and LH surges."
+    },
+    {
+      "cause": "The LH surge acts on the mature follicle.",
+      "effect": "Ovulation follows about 34 to 36 hours later, and the follicle's cells become the corpus luteum."
+    },
+    {
+      "cause": "The corpus luteum releases progesterone, estradiol and inhibin.",
+      "effect": "The endometrium becomes secretory, and negative feedback keeps FSH and LH low until the corpus luteum dies 12 to 14 days later and the cycle restarts."
+    }
+  ],
+  "misconception": {
+    "wrong": "Ovulation happens on day 14 of every cycle.",
+    "right": "Day 14 is ovulation in the 28-day model cycle only. Cycle length varies, and most of the variation falls before ovulation, in the follicular phase. The luteal phase is steadier, usually 12 to 14 days, so ovulation comes about two weeks before the next period starts: around day 18 to 19 in a 32-day cycle, and around day 10 in a 24-day one."
+  },
+  "check": [
+    "anp-female-hormones-cycle-1",
+    "anp-female-hormones-cycle-3",
+    "anp-female-hormones-cycle-6",
+    "anp-female-hormones-cycle-9",
+    "anp-female-hormones-cycle-12",
+    "anp-female-hormones-cycle-15",
+    "anp-female-hormones-cycle-18"
+  ],
+  "summary": "<p>The ovarian cycle (follicular phase, ovulation, luteal phase) and the uterine cycle (menstrual, proliferative and secretory phases) run in step, and ovulation comes about 14 days before the next period. When the corpus luteum dies, falling progesterone sheds the functional layer and lifts negative feedback, so FSH rises and recruits follicles. Their estradiol and inhibin lower FSH, leaving one dominant follicle, and estradiol rebuilds the endometrium. High, sustained estradiol then switches the hypothalamus and pituitary to positive feedback, producing the LH surge, which triggers ovulation and forms the corpus luteum. Its progesterone makes the endometrium secretory, thickens cervical mucus, raises body temperature and, with estradiol and inhibin, holds FSH and LH down for 12 to 14 days. Puberty starts when the GnRH pulse generator reawakens; menopause follows when the follicles run out, estradiol and inhibin fall and FSH rises; hormonal contraception keeps negative feedback on so there is no LH surge and no ovulation.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-36",
+      "label": "NREMT: Obstetric and gynecologic emergencies"
+    }
+  ]
+}

@@ -1,0 +1,541 @@
+[
+ {
+  "id": "anp-female-hormones-cycle-1",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication",
+   "homeostasis"
+  ],
+  "q": "In the middle of the cycle, high estradiol is followed by a surge of LH, which makes the follicle release more estradiol. What kind of control is this?",
+  "options": [
+   "Negative feedback",
+   "Positive feedback",
+   "A neural reflex with no hormone involved",
+   "Antagonism between two hormones"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The response (more LH) strengthens the stimulus (more estradiol), which drives still more LH. That is positive feedback, and it ends only when ovulation and the switch to progesterone remove the stimulus.",
+   "options": [
+    "Negative feedback would make high estradiol lower LH, as it does for most of the cycle, not raise it.",
+    "Correct. Each step amplifies the next until an outside event ends the loop.",
+    "The loop runs through hormones: estradiol in the blood, GnRH in the portal system and LH in the blood.",
+    "Antagonistic hormones oppose each other's effects; here estradiol and LH reinforce each other."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-2",
+  "type": "graph",
+  "level": "apply",
+  "diff": 1,
+  "core": [
+   "communication"
+  ],
+  "figure": "cycle-hormones",
+  "q": "According to the graph, which hormone peaks first: estradiol or LH?",
+  "options": [
+   "LH peaks about a day before estradiol does",
+   "They peak at the same moment",
+   "Estradiol peaks about a day before LH",
+   "Estradiol peaks only after ovulation"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Estradiol from the dominant follicle climbs to its peak first; sustained high estradiol then triggers the LH surge. Cause comes before effect.",
+   "options": [
+    "The order is reversed: the estradiol peak comes first, and it is what triggers the LH surge.",
+    "The curves are offset: estradiol peaks first, then LH.",
+    "Correct. The estradiol peak comes before the LH peak.",
+    "Estradiol does have a second, smaller hump after ovulation, but its main peak comes before it."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-3",
+  "type": "graph",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "figure": "cycle-hormones",
+  "q": "According to the graph, which hormone is highest around day 21, and what makes it?",
+  "options": [
+   "LH, from the anterior pituitary",
+   "Progesterone, from the corpus luteum",
+   "FSH, from the anterior pituitary",
+   "Estradiol, from the dominant follicle"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Around day 21 the corpus luteum is at its most active, and progesterone is at its peak.",
+   "options": [
+    "LH is low throughout the luteal phase, held down by progesterone.",
+    "Correct. Progesterone from the corpus luteum peaks in the middle of the luteal phase.",
+    "FSH is at its lowest in the middle of the luteal phase.",
+    "Estradiol has a smaller second hump then, from the corpus luteum, but no dominant follicle exists in the luteal phase."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-4",
+  "type": "graph",
+  "level": "analyze",
+  "diff": 2,
+  "core": [
+   "communication",
+   "homeostasis"
+  ],
+  "figure": "cycle-hormones",
+  "q": "According to the graph, resting body temperature rises by about 0.3 to 0.5 °C just after day 14. Why can a woman not use a daily temperature chart to predict ovulation for that cycle?",
+  "options": [
+   "The rise follows ovulation, because progesterone from the new corpus luteum causes it",
+   "The rise happens only in cycles without ovulation",
+   "Temperature falls, not rises, after ovulation",
+   "The rise is caused by the LH surge several days earlier"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Progesterone raises resting temperature, and progesterone rises only after ovulation, as the corpus luteum forms. By the time temperature goes up, ovulation has already happened.",
+   "options": [
+    "Correct. The rise confirms ovulation after the fact.",
+    "A temperature rise is a sign that ovulation did happen; cycles without ovulation have no corpus luteum and usually no rise.",
+    "The graph shows a rise, lasting until the end of the cycle.",
+    "LH itself does not set temperature; the rise follows the progesterone curve, not the LH peak."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-5",
+  "type": "order",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication",
+   "homeostasis"
+  ],
+  "q": "Put the events of the LH surge loop in order, starting with the dominant follicle.",
+  "options": [
+   "The dominant follicle releases estradiol that stays high for about two days",
+   "Hypothalamic neurons switch to being stimulated by estradiol",
+   "GnRH output rises into the hypophyseal portal system",
+   "The pituitary, primed by estradiol, releases a surge of LH",
+   "LH stimulates the follicle to release still more estradiol",
+   "Ovulation and the switch to progesterone remove the stimulus"
+  ],
+  "why": {
+   "correct": "Sustained high estradiol switches the hypothalamus and pituitary to positive feedback; more GnRH and a more responsive pituitary produce the LH surge, which drives more estradiol. The loop ends with ovulation, when the follicle's cells become the corpus luteum and switch to making progesterone."
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-6",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "q": "During the luteal phase, why does no new follicle become dominant?",
+  "options": [
+   "All remaining follicles have already been used up",
+   "Progesterone, estradiol and inhibin from the corpus luteum keep FSH and LH low",
+   "The corpus luteum physically blocks the rest of the ovary",
+   "Oxytocin from the posterior pituitary holds back the growth of every remaining follicle"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The corpus luteum's hormones give strong negative feedback. Progesterone slows GnRH pulses, and FSH and LH fall to their lowest levels. Tertiary follicles need FSH, so none can be selected until the corpus luteum dies.",
+   "options": [
+    "Thousands of follicles remain in a young woman's ovaries; lack of FSH, not lack of follicles, is the reason.",
+    "Correct. Negative feedback from the corpus luteum keeps the gonadotropins low.",
+    "The corpus luteum occupies only the old follicle's site; its effect on other follicles is through hormones.",
+    "Oxytocin acts on the uterus and breast, not on follicle growth."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-7",
+  "type": "predict",
+  "level": "apply",
+  "diff": 2,
+  "predictLevel": 2,
+  "core": [
+   "communication",
+   "homeostasis"
+  ],
+  "q": "A 25-year-old woman starts taking a combined oral contraceptive (a synthetic estrogen plus a progestin) daily. Predict the change in each variable during the active pills, compared with a normal cycle at mid-cycle.",
+  "variables": [
+   {
+    "name": "GnRH pulse frequency",
+    "answer": "down",
+    "why": "Steady estrogen and progestin keep negative feedback on the hypothalamus all month, and the progestin slows the GnRH pulse generator."
+   },
+   {
+    "name": "LH at mid-cycle",
+    "answer": "down",
+    "why": "Low GnRH and constant negative feedback on the pituitary prevent the LH surge."
+   },
+   {
+    "name": "Estradiol made by her own follicles",
+    "answer": "down",
+    "why": "With FSH held low, no follicle becomes dominant, so the ovaries make little estradiol."
+   },
+   {
+    "name": "Ovulation",
+    "answer": "down",
+    "why": "Without a dominant follicle and without an LH surge, no oocyte is released."
+   },
+   {
+    "name": "Thickness of cervical mucus",
+    "answer": "up",
+    "why": "The progestin keeps the mucus thick and sticky all month, which hinders sperm."
+   }
+  ],
+  "why": {
+   "correct": "The combined pill uses the cycle's own negative feedback. Steady hormones keep GnRH, FSH and LH low, so no follicle dominates, estradiol never rises high enough to switch on positive feedback, and there is no LH surge and no ovulation. The progestin also thickens cervical mucus."
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-8",
+  "type": "predict",
+  "level": "analyze",
+  "diff": 3,
+  "predictLevel": 2,
+  "core": [
+   "communication",
+   "homeostasis"
+  ],
+  "q": "A 38-year-old woman has both ovaries removed. Predict the change in each variable a few weeks later, compared with before the operation.",
+  "variables": [
+   {
+    "name": "Blood estradiol",
+    "answer": "down",
+    "why": "The follicles and corpus luteum, the main sources of estradiol, have been removed."
+   },
+   {
+    "name": "Blood inhibin",
+    "answer": "down",
+    "why": "Inhibin comes from granulosa cells and the corpus luteum, which were in the ovaries."
+   },
+   {
+    "name": "Blood FSH",
+    "answer": "up",
+    "why": "With no estradiol or inhibin, negative feedback on the hypothalamus and pituitary is lost, and FSH rises."
+   },
+   {
+    "name": "Blood LH",
+    "answer": "up",
+    "why": "Loss of estradiol and progesterone feedback lets GnRH and LH rise too."
+   },
+   {
+    "name": "Monthly shedding of the functional layer",
+    "answer": "down",
+    "why": "Without the rise and fall of ovarian hormones, the endometrium is not rebuilt and shed each month, so periods stop."
+   }
+  ],
+  "why": {
+   "correct": "Removing the ovaries removes the source of estradiol, progesterone and inhibin. Negative feedback is lost, so the pituitary releases more FSH and LH, as after menopause, and the uterine cycle stops."
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-9",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "homeostasis"
+  ],
+  "q": "Maya's cycles are regular and 32 days long. On about which day does she ovulate?",
+  "options": [
+   "Day 14",
+   "Day 16",
+   "Day 18",
+   "Day 25 or later"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The luteal phase is fairly steady at about 14 days, so ovulation comes about 14 days before the next period: 32 − 14 = day 18.",
+   "options": [
+    "Day 14 applies only to a 28-day model cycle.",
+    "Day 16 is half of 32. Ovulation is not at the midpoint; it is set by counting back from the next period.",
+    "Correct. 32 − 14 = 18.",
+    "Day 25 would leave a luteal phase of only about a week, far shorter than the usual 12 to 14 days."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-10",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "communication"
+  ],
+  "q": "What directly causes the functional layer of the endometrium to break down and be shed?",
+  "options": [
+   "A surge of LH",
+   "Rising estradiol from the next group of growing follicles",
+   "A rise in FSH",
+   "Falling progesterone when the corpus luteum dies"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "The secretory lining depends on progesterone. When the corpus luteum dies, progesterone falls, which sets off inflammation, enzyme breakdown and spasm of the coiled arteries, and the functional layer is shed.",
+   "options": [
+    "The LH surge triggers ovulation, about two weeks before the next shedding.",
+    "Rising estradiol rebuilds the lining in the proliferative phase.",
+    "FSH rises at about the same time but acts on follicles, not the endometrium.",
+    "Correct. Progesterone withdrawal starts menstruation."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-11",
+  "type": "multi",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "q": "Select every effect of progesterone.",
+  "options": [
+   "Makes the endometrial glands coil and secrete",
+   "Makes cervical mucus thin and stretchy",
+   "Raises resting body temperature",
+   "Slows GnRH pulses",
+   "Triggers the LH surge"
+  ],
+  "correct": [
+   0,
+   2,
+   3
+  ],
+  "why": {
+   "correct": "Progesterone turns the thickened endometrium secretory, raises resting temperature and slows the GnRH pulse generator. Thin mucus and the LH surge are estradiol's effects.",
+   "options": [
+    "Correct. This defines the secretory phase.",
+    "Estradiol makes mucus thin and stretchy; progesterone makes it thick.",
+    "Correct. Resting temperature is about 0.3 to 0.5 °C higher in the luteal phase.",
+    "Correct. This is the basis of its negative feedback.",
+    "High, sustained estradiol triggers the LH surge."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-12",
+  "type": "vignette",
+  "level": "analyze",
+  "diff": 3,
+  "core": [
+   "communication",
+   "homeostasis"
+  ],
+  "q": "Priya, 19, runs 100 km a week on too little food. Her periods stopped eight months ago and her estradiol is low, but her FSH and LH are low rather than high. Where is the problem?",
+  "options": [
+   "Her ovaries have run out of follicles",
+   "Her uterus can no longer build a functional layer",
+   "Her hypothalamus has slowed GnRH release",
+   "Her anterior pituitary is making too much FSH"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Low estradiol with low FSH and LH means the ovaries are not being driven. Too little energy for her training slows GnRH pulses, so the pituitary releases little FSH and LH and no follicle matures.",
+   "options": [
+    "If her ovaries had failed, the loss of negative feedback would make FSH and LH high, as after menopause.",
+    "A uterine problem would not lower her estradiol, FSH and LH.",
+    "Correct. Low gonadotropins with low estradiol point above the ovary, to the hypothalamus.",
+    "Her FSH is low, not high."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-13",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication",
+   "homeostasis"
+  ],
+  "q": "A 51-year-old woman has not had a period for 13 months. Which blood result best confirms that her ovaries have stopped responding?",
+  "options": [
+   "High progesterone",
+   "High FSH",
+   "Low FSH",
+   "High inhibin"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "With no follicles left, estradiol and inhibin fall. Loss of their negative feedback lets FSH rise, first and most. A persistently high FSH is the laboratory sign of menopause.",
+   "options": [
+    "Progesterone comes mainly from a corpus luteum, which needs ovulation; it would be low.",
+    "Correct. Lost negative feedback raises FSH.",
+    "Low FSH would suggest the hypothalamus or pituitary is not driving the ovaries.",
+    "Inhibin comes from granulosa cells of growing follicles; with none left, it falls."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-14",
+  "type": "error",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "q": "A student explained how the combined pill prevents pregnancy. One step is wrong. Which one?",
+  "options": [
+   "Steady synthetic estrogen and progestin keep negative feedback on all month",
+   "GnRH, FSH and LH stay low",
+   "No follicle becomes dominant",
+   "Estradiol from the pill triggers an early LH surge and ovulation",
+   "The progestin keeps cervical mucus thick"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "The pill's hormones are steady, not a sustained high estradiol peak from a dominant follicle. They keep negative feedback on and prevent the LH surge; ovulation does not happen.",
+   "options": [
+    "This step is right. The pill supplies steady hormone levels.",
+    "This step is right. Negative feedback keeps the gonadotropins low.",
+    "This step is right. Low FSH leaves no follicle to dominate.",
+    "This is the error. The pill blocks the LH surge instead of triggering it.",
+    "This step is right. Thick mucus is a backup effect."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-15",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "q": "Early in the follicular phase, estradiol and inhibin rise and FSH falls. How does the dominant follicle keep growing while its neighbors undergo atresia?",
+  "options": [
+   "It has the most FSH receptor proteins, and its granulosa cells also respond to LH",
+   "It makes its own FSH",
+   "It is the only follicle that contains an oocyte",
+   "It is protected by progesterone from the corpus luteum left over from the last cycle"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "As FSH falls, only the follicle most sensitive to it keeps growing. The dominant follicle has the most FSH receptor proteins, the best blood supply, and granulosa cells that also respond to LH.",
+   "options": [
+    "Correct. Greater sensitivity lets it keep growing on less FSH, and LH receptor proteins give it a second source of support.",
+    "FSH comes only from the anterior pituitary.",
+    "Every follicle contains an oocyte.",
+    "There is no active corpus luteum in the follicular phase; the old one has died."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-16",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "communication"
+  ],
+  "q": "Which cells does FSH act on in the ovary and in the testis?",
+  "options": [
+   "Theca cells and interstitial (Leydig) cells",
+   "Corpus luteum cells and spermatids",
+   "Granulosa cells and sustentacular (Sertoli) cells",
+   "Oocytes and spermatogonia directly"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "FSH acts on granulosa cells, which surround the oocyte, and on sustentacular (Sertoli) cells, which surround developing sperm. Both are supporting cells that nurture the gametes.",
+   "options": [
+    "Theca cells and interstitial cells are the LH targets; they make androgens.",
+    "The corpus luteum depends on LH, and FSH acts on sustentacular cells rather than on spermatids.",
+    "Correct. FSH acts on the supporting cells around the gametes in both sexes.",
+    "FSH acts on the supporting cells, which then support the gametes."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-17",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "q": "Around ovulation, the cervical mucus of a woman not using hormonal contraception becomes thin, watery and stretchy. Which hormone pattern explains this?",
+  "options": [
+   "High progesterone, low estradiol",
+   "High estradiol, low progesterone",
+   "High FSH, low LH",
+   "High inhibin and low estradiol together"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Just before ovulation, estradiol from the dominant follicle is at its peak and progesterone is still low. Estradiol makes cervical mucus thin and stretchy; progesterone later thickens it.",
+   "options": [
+    "That pattern, in the luteal phase, gives thick, sticky mucus.",
+    "Correct. Peak estradiol without progesterone gives thin, stretchy mucus.",
+    "FSH and LH act on the ovary, not directly on cervical glands.",
+    "Inhibin acts on the pituitary, and estradiol is high, not low, at this time."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-18",
+  "type": "graph",
+  "level": "analyze",
+  "diff": 3,
+  "core": [
+   "communication",
+   "homeostasis"
+  ],
+  "figure": "cycle-hormones",
+  "q": "According to the graph, FSH starts rising in the last days of the cycle, before the next period begins. What causes this rise?",
+  "options": [
+   "The LH surge of the next cycle has started early",
+   "The dominant follicle of the next cycle is releasing FSH",
+   "The endometrium releases FSH as it breaks down",
+   "Falling hormones from the dying corpus luteum lift negative feedback"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "In the last days, the corpus luteum is dying, so its progesterone, estradiol and inhibin fall. With less negative feedback, the pituitary releases more FSH, which rescues the next group of follicles.",
+   "options": [
+    "LH is flat at that time; the next surge comes about two weeks later.",
+    "Follicles respond to FSH; they do not make it.",
+    "The endometrium is not an FSH source; FSH comes from the anterior pituitary.",
+    "Correct. Less negative feedback lets FSH rise."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-hormones-cycle-19",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "q": "A 12-year-old girl had her first period six months ago. Her cycles are irregular, and some last 45 days. Her mother is worried. What is the most likely explanation?",
+  "options": [
+   "Her uterus is still too small to build up and shed its lining on a regular monthly schedule",
+   "The LH surge mechanism is still maturing, so many early cycles have no ovulation",
+   "Her ovaries have too few follicles",
+   "Her pituitary cannot yet make LH"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "In the first year or two after menarche, estradiol does not yet reliably trigger an LH surge. Many cycles have no ovulation, so their length varies until the positive-feedback system matures.",
+   "options": [
+    "Uterine size does not set cycle length; the ovarian hormones do.",
+    "Correct. Irregular early cycles are common while the LH surge mechanism matures.",
+    "A 12-year-old has hundreds of thousands of follicles.",
+    "Her pituitary makes LH; what is immature is the positive-feedback surge."
+   ]
+  }
+ }
+]

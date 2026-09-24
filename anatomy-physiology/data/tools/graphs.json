@@ -16936,6 +16936,1268 @@
      }
     }
    ]
+  },
+  {
+   "id": "met-atp-by-stage",
+   "title": "ATP yield of one glucose, stage by stage",
+   "topic": "carbohydrate-metabolism",
+   "core": [
+    "energy"
+   ],
+   "intro": "The ATP made from one glucose broken down fully with oxygen, with each carrier’s ATP credited to the stage that made the carrier (about 2.5 ATP per NADH and 1.5 per FADH2). The wide bars are each stage’s total; the narrow bars inside are the ATP made directly, by substrate-level phosphorylation. Glycolysis gives 5 to 7, depending on which shuttle carries its NADH electrons into the mitochondrion; the bar shows 7.",
+   "alt": "Bar graph of ATP per glucose for three stages. Glycolysis: total 5 to 7, drawn at 7, of which 2 are made directly. Pyruvate to acetyl CoA: total 5, none made directly. Citric acid cycle: total 20, of which 2 are made directly. Altogether about 30 to 32 ATP.",
+   "x": {
+    "min": 0,
+    "max": 3,
+    "label": "Stage of glucose breakdown",
+    "unitless": true
+   },
+   "regions": [
+    {
+     "id": "glycolysis",
+     "x0": 0,
+     "x1": 1,
+     "label": "glycolysis",
+     "show": true
+    },
+    {
+     "id": "pyruvate",
+     "x0": 1,
+     "x1": 2,
+     "label": "pyruvate to acetyl CoA",
+     "show": true
+    },
+    {
+     "id": "cycle",
+     "x0": 2,
+     "x1": 3,
+     "label": "citric acid cycle",
+     "show": true
+    }
+   ],
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 26,
+      "label": "ATP per glucose",
+      "unit": "ATP",
+      "ticks": [
+       0,
+       5,
+       10,
+       15,
+       20,
+       25
+      ]
+     },
+     "series": [
+      {
+       "id": "total",
+       "cls": "accent",
+       "pts": [
+        [
+         0.16,
+         0
+        ],
+        [
+         0.16,
+         7
+        ],
+        [
+         0.84,
+         7
+        ],
+        [
+         0.84,
+         0
+        ],
+        [
+         1.16,
+         0
+        ],
+        [
+         1.16,
+         5
+        ],
+        [
+         1.84,
+         5
+        ],
+        [
+         1.84,
+         0
+        ],
+        [
+         2.16,
+         0
+        ],
+        [
+         2.16,
+         20
+        ],
+        [
+         2.84,
+         20
+        ],
+        [
+         2.84,
+         0
+        ]
+       ],
+       "label": "stage total",
+       "labelAt": [
+        2.18,
+        21.2
+       ]
+      },
+      {
+       "id": "direct",
+       "cls": "hi",
+       "pts": [
+        [
+         0.32,
+         0
+        ],
+        [
+         0.32,
+         2
+        ],
+        [
+         0.68,
+         2
+        ],
+        [
+         0.68,
+         0
+        ],
+        [
+         2.32,
+         0
+        ],
+        [
+         2.32,
+         2
+        ],
+        [
+         2.68,
+         2
+        ],
+        [
+         2.68,
+         0
+        ]
+       ],
+       "label": "made directly",
+       "labelAt": [
+        2.24,
+        3.4
+       ]
+      }
+     ],
+     "notes": [
+      {
+       "x": 0.5,
+       "y": 8.3,
+       "text": "5 to 7",
+       "anchor": "middle"
+      }
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "cycle-total",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the total ATP credited to the citric acid cycle stage.",
+     "answer": 20,
+     "tol": 1,
+     "unit": "ATP",
+     "show": {
+      "x": 2.5,
+      "y": 20
+     },
+     "why": "20 ATP: 2 made directly, plus 6 NADH × 2.5 = 15 and 2 FADH2 × 1.5 = 3 from the carriers it hands to the electron transport chain."
+    },
+    {
+     "id": "pyruvate-total",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the total ATP credited to the step from pyruvate to acetyl CoA.",
+     "answer": 5,
+     "tol": 0.6,
+     "unit": "ATP",
+     "show": {
+      "x": 1.5,
+      "y": 5
+     },
+     "why": "5 ATP, all of it from the 2 NADH (2 × 2.5) made as the two pyruvate lose a carbon each. The step makes no ATP directly."
+    },
+    {
+     "id": "direct-total",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Add up the narrow bars: how many ATP per glucose are made directly, by substrate-level phosphorylation?",
+     "answer": 4,
+     "tol": 0.5,
+     "unit": "ATP",
+     "why": "2 in glycolysis plus 2 (by way of GTP) in the citric acid cycle: 4 of the 30 to 32. The other 26 to 28, about 88%, come from oxidative phosphorylation."
+    },
+    {
+     "id": "no-direct",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Which stage makes no ATP directly at all?",
+     "options": [
+      "Pyruvate to acetyl CoA",
+      "Glycolysis",
+      "The citric acid cycle",
+      "None: every stage makes some directly"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "pyruvate"
+     },
+     "why": {
+      "correct": "The step from pyruvate to acetyl CoA removes a carbon as CO2 and loads NADH, but no phosphate is passed to ADP there. Its 5 ATP all come later, from the electron transport chain.",
+      "options": [
+       "Right: its bar has no narrow bar inside.",
+       "Glycolysis passes phosphates to ADP, making 4 and spending 2: a net 2 directly.",
+       "The citric acid cycle makes one ATP per turn by way of GTP: 2 per glucose.",
+       "One stage makes none directly."
+      ]
+     }
+    },
+    {
+     "id": "most-atp",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Which stage is credited with the most ATP, and mainly how?",
+     "options": [
+      "The citric acid cycle, mostly through its carriers",
+      "Glycolysis, through substrate-level phosphorylation",
+      "The citric acid cycle, by making ATP directly at each of its eight steps",
+      "Pyruvate to acetyl CoA, through the CO2 it releases"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "cycle"
+     },
+     "why": {
+      "correct": "The cycle stage is credited with 20 of the 30 to 32 ATP, but only 2 are made in the cycle itself; the rest come from its 6 NADH and 2 FADH2 at the electron transport chain.",
+      "options": [
+       "Right: its carriers, not the cycle itself, account for most of its bar.",
+       "Glycolysis is credited with only 5 to 7, of which 2 are made directly.",
+       "Only one step per turn makes ATP (by way of GTP); the narrow bar is small.",
+       "Releasing CO2 makes no ATP; that stage’s ATP comes from its NADH."
+      ]
+     }
+    },
+    {
+     "id": "old-values",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "An older textbook counts 3 ATP per NADH and 2 per FADH2 (and 2 or 3 for each NADH from glycolysis, depending on the shuttle). How do the stage totals change?",
+     "options": [
+      "The total becomes about 36 to 38",
+      "Only the narrow bars rise",
+      "Nothing changes: the carriers are the same",
+      "The totals fall, because whole numbers are smaller"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "old",
+        "cls": "shape",
+        "dash": true,
+        "pts": [
+         [
+          0.1,
+          0
+         ],
+         [
+          0.1,
+          8
+         ],
+         [
+          0.9,
+          8
+         ],
+         [
+          0.9,
+          0
+         ],
+         [
+          1.1,
+          0
+         ],
+         [
+          1.1,
+          6
+         ],
+         [
+          1.9,
+          6
+         ],
+         [
+          1.9,
+          0
+         ],
+         [
+          2.1,
+          0
+         ],
+         [
+          2.1,
+          24
+         ],
+         [
+          2.9,
+          24
+         ],
+         [
+          2.9,
+          0
+         ]
+        ],
+        "label": "old whole-number count",
+        "labelAt": [
+         1.1,
+         24.6
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "With 3 per NADH and 2 per FADH2, glycolysis becomes 6 to 8, pyruvate to acetyl CoA 6 and the cycle 24: about 36 to 38 in all. Current measurements of H+ pumped and used give about 2.5 and 1.5, hence 30 to 32. Give 36–38 if your exam expects it.",
+      "options": [
+       "Right: the carriers are worth more in the old count, so every bar that includes them grows.",
+       "The ATP made directly does not depend on the carrier values.",
+       "The carriers are the same, but each is credited with more ATP.",
+       "3 and 2 are larger than 2.5 and 1.5, so the totals rise."
+      ]
+     }
+    },
+    {
+     "id": "cyanide",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Cyanide blocks complex IV of the electron transport chain. Which ATP can a cell still make from glucose?",
+     "options": [
+      "Only the 2 made directly by glycolysis",
+      "All but the citric acid cycle’s 20",
+      "The 4 made directly in glycolysis and the cycle",
+      "None at all"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "cn",
+        "cls": "lo",
+        "dash": true,
+        "pts": [
+         [
+          0.1,
+          0
+         ],
+         [
+          0.1,
+          2
+         ],
+         [
+          0.9,
+          2
+         ],
+         [
+          0.9,
+          0
+         ]
+        ],
+        "label": "with cyanide",
+        "labelAt": [
+         0.1,
+         4
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "With the chain blocked, no carrier yields ATP, and NAD+ and FAD run out in the matrix, so the citric acid cycle stops too, taking its 2 direct ATP with it. Glycolysis continues, regenerating NAD+ by making lactate: 2 ATP per glucose.",
+      "options": [
+       "Right: only glycolysis, with lactate made to keep it running.",
+       "The pyruvate and cycle stages depend on the chain to regenerate NAD+, so they stop as well.",
+       "The cycle’s direct ATP stops too, because the cycle itself stops without NAD+ and FAD.",
+       "Glycolysis still makes 2 ATP, which is why the cell survives for minutes, not seconds."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "met-fasting-fuel",
+   "title": "Fuel use over days of fasting",
+   "topic": "absorptive-postabsorptive",
+   "core": [
+    "energy",
+    "mass-balance"
+   ],
+   "intro": "A person with normal fat stores who has water but no food. Top: blood ketone bodies. Bottom: the glucose the brain uses and the muscle protein broken down each day. Typical, approximate values.",
+   "alt": "Two stacked graphs over 40 days without food. Top: blood ketone bodies rise from about 0.1 mmol/L to about 2 by day 3, 5 by day 10 and level off near 6.5 after three to four weeks. Bottom: brain glucose use stays near 120 grams a day for two days, then falls to about 40 grams a day by four weeks. Muscle protein breakdown is about 75 grams a day on days 2 and 3, then falls to about 20 grams a day by three to four weeks.",
+   "x": {
+    "min": 0,
+    "max": 40,
+    "label": "Days without food",
+    "unit": "days",
+    "ticks": [
+     0,
+     5,
+     10,
+     15,
+     20,
+     25,
+     30,
+     35,
+     40
+    ]
+   },
+   "regions": [
+    {
+     "id": "glycogen",
+     "x0": 0,
+     "x1": 1,
+     "label": "glycogen"
+    },
+    {
+     "id": "protein",
+     "x0": 1,
+     "x1": 3.5,
+     "label": "protein pays"
+    },
+    {
+     "id": "switch",
+     "x0": 3.5,
+     "x1": 21,
+     "label": "brain switches to ketone bodies"
+    },
+    {
+     "id": "spared",
+     "x0": 21,
+     "x1": 40,
+     "label": "protein spared"
+    }
+   ],
+   "panels": [
+    {
+     "h": 0.9,
+     "y": {
+      "min": 0,
+      "max": 12,
+      "label": "Blood ketone bodies",
+      "unit": "mmol/L",
+      "ticks": [
+       0,
+       3,
+       6,
+       9,
+       12
+      ]
+     },
+     "series": [
+      {
+       "id": "ketones",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0.1
+        ],
+        [
+         1,
+         0.3
+        ],
+        [
+         2,
+         1
+        ],
+        [
+         3,
+         2
+        ],
+        [
+         5,
+         3.5
+        ],
+        [
+         7,
+         4.5
+        ],
+        [
+         10,
+         5.2
+        ],
+        [
+         14,
+         5.8
+        ],
+        [
+         21,
+         6.3
+        ],
+        [
+         28,
+         6.5
+        ],
+        [
+         40,
+         6.6
+        ]
+       ],
+       "label": "ketone bodies",
+       "labelAt": [
+        24,
+        7.8
+       ]
+      }
+     ],
+     "hlines": [
+      {
+       "y": 3,
+       "label": "low-carbohydrate diets usually stay below this",
+       "dash": true,
+       "faint": true,
+       "at": 40,
+       "anchor": "end"
+      }
+     ]
+    },
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 140,
+      "label": "Grams per day",
+      "unit": "g/day",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80,
+       100,
+       120,
+       140
+      ]
+     },
+     "series": [
+      {
+       "id": "brain-glucose",
+       "cls": "o2",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         120
+        ],
+        [
+         2,
+         120
+        ],
+        [
+         3,
+         116
+        ],
+        [
+         5,
+         102
+        ],
+        [
+         7,
+         88
+        ],
+        [
+         10,
+         72
+        ],
+        [
+         14,
+         57
+        ],
+        [
+         21,
+         46
+        ],
+        [
+         28,
+         41
+        ],
+        [
+         40,
+         40
+        ]
+       ],
+       "label": "glucose used by the brain",
+       "labelAt": [
+        12,
+        76
+       ]
+      },
+      {
+       "id": "protein",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         1,
+         70
+        ],
+        [
+         2,
+         75
+        ],
+        [
+         3,
+         75
+        ],
+        [
+         5,
+         66
+        ],
+        [
+         7,
+         54
+        ],
+        [
+         10,
+         41
+        ],
+        [
+         14,
+         31
+        ],
+        [
+         21,
+         23
+        ],
+        [
+         28,
+         20
+        ],
+        [
+         40,
+         20
+        ]
+       ],
+       "label": "muscle protein broken down",
+       "labelAt": [
+        15,
+        16
+       ]
+      }
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "ketones-week3",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the blood ketone body level at day 21.",
+     "answer": 6.3,
+     "tol": 0.6,
+     "unit": "mmol/L",
+     "show": {
+      "x": 21,
+      "y": 6.3
+     },
+     "why": "About 6 mmol/L. After a few weeks without food, ketone bodies reach about 5 to 7 mmol/L, yet blood pH stays normal, because a little insulin still limits fat release and buffers take up the H+."
+    },
+    {
+     "id": "brain-week4",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the glucose the brain uses per day at day 28.",
+     "answer": 41,
+     "tol": 5,
+     "unit": "g/day",
+     "show": {
+      "x": 28,
+      "y": 41,
+      "panel": 1
+     },
+     "why": "About 40 g a day, down from about 120 g. Ketone bodies now supply about two thirds of the brain’s energy."
+    },
+    {
+     "id": "protein-day2",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the muscle protein broken down per day on day 2.",
+     "answer": 75,
+     "tol": 5,
+     "unit": "g/day",
+     "show": {
+      "x": 2,
+      "y": 75,
+      "panel": 1
+     },
+     "why": "About 75 g a day. With glycogen gone and ketone bodies still low, the liver makes most of the brain’s 120 g of glucose from amino acids released from muscle."
+    },
+    {
+     "id": "protein-peak",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "During which period is muscle protein broken down fastest, and why?",
+     "options": [
+      "Days 1 to 3, before ketone bodies rise",
+      "The first day: liver glycogen is being used",
+      "Weeks 3 to 6: fat stores are running out",
+      "Throughout: protein breakdown never changes"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "protein"
+     },
+     "why": {
+      "correct": "Once liver glycogen runs out, all glucose must be made new, and the brain still needs about 120 g a day. Amino acids are the main source, so muscle protein pays until ketone bodies rise.",
+      "options": [
+       "Right: this is when protein pays for glucose.",
+       "On the first day glycogen still supplies much of the glucose.",
+       "With normal fat stores, fat is not yet running out at six weeks, and the curve shows protein breakdown low and steady.",
+       "The curve falls by about three quarters over the first month."
+      ]
+     }
+    },
+    {
+     "id": "switch",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which period does the brain shift most of its fuel from glucose to ketone bodies?",
+     "options": [
+      "About day 3 to day 21",
+      "The first day",
+      "After day 30",
+      "The brain never uses ketone bodies"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "switch"
+     },
+     "why": {
+      "correct": "As ketone bodies climb, the brain takes them up in proportion to their level, and its glucose use falls from about 120 to about 45 g a day over these weeks.",
+      "options": [
+       "Right: brain glucose use falls steeply while ketone bodies rise.",
+       "On the first day ketone bodies are still near zero.",
+       "By then both curves have leveled off; the switch is already done.",
+       "After a few days without food the brain burns ketone bodies, which is what spares protein."
+      ]
+     }
+    },
+    {
+     "id": "no-ketone-brain",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Imagine a brain that could not use ketone bodies. How would the muscle protein curve change?",
+     "options": [
+      "It would stay high, near 75 g a day",
+      "It would fall faster than normal",
+      "It would fall exactly as it does now",
+      "It would drop to zero"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "no-switch",
+        "panel": 1,
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          1,
+          70
+         ],
+         [
+          2,
+          75
+         ],
+         [
+          5,
+          75
+         ],
+         [
+          10,
+          74
+         ],
+         [
+          20,
+          72
+         ],
+         [
+          30,
+          70
+         ],
+         [
+          40,
+          70
+         ]
+        ],
+        "label": "no ketone switch",
+        "labelAt": [
+         25,
+         82
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "The brain would still need about 120 g of glucose a day, and fatty acids cannot become glucose, so amino acids would keep supplying it. Vital muscle, including heart and breathing muscle, would be used up within a few weeks.",
+      "options": [
+       "Right: without the switch there is no protein sparing.",
+       "Nothing would lower the brain’s glucose need, so there is no reason for faster sparing.",
+       "The fall in protein breakdown is caused by the brain’s switch to ketone bodies.",
+       "Glucose must still come from somewhere; glycerol and lactate cannot supply 120 g a day."
+      ]
+     }
+    },
+    {
+     "id": "some-sugar",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The hiker has water with sugar in it, about 100 g of glucose a day, but no other food. How does the ketone curve change?",
+     "options": [
+      "It stays much lower",
+      "It rises higher and faster",
+      "It is unchanged, because sugar is not fat",
+      "It rises above 10 mmol/L, as in ketoacidosis"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "sugar",
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0.1
+         ],
+         [
+          2,
+          0.4
+         ],
+         [
+          5,
+          0.8
+         ],
+         [
+          10,
+          1
+         ],
+         [
+          20,
+          1.1
+         ],
+         [
+          40,
+          1.1
+         ]
+        ],
+        "label": "with 100 g glucose a day",
+        "labelAt": [
+         18,
+         2.2
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "The glucose keeps insulin from falling as far, and insulin brakes lipolysis, so fewer fatty acids reach the liver and fewer ketone bodies are made. The glucose also spares the liver from drawing off as much oxaloacetate to make glucose.",
+      "options": [
+       "Right: some carbohydrate keeps insulin up enough to hold ketogenesis down.",
+       "More insulin means less fat breakdown, not more.",
+       "Glucose changes the hormones that decide how much fat is broken down.",
+       "Ketoacidosis needs insulin to be almost absent; glucose raises insulin."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "met-heat-loss-routes",
+   "title": "Heat loss at rest as the air warms",
+   "topic": "energy-balance-thermoregulation",
+   "core": [
+    "homeostasis",
+    "energy",
+    "gradients"
+   ],
+   "intro": "A lightly dressed adult resting in still air of different temperatures, with core temperature held steady. Heat made at rest stays about 75 kcal an hour; the two lines show how that heat leaves. Schematic, typical values.",
+   "alt": "Line graph of heat flow in kcal per hour against air temperature from 15 to 40 °C. Heat made stays flat at about 75. Heat lost by radiation, conduction and convection falls from about 67 at 15 °C to 60 at 20, 30 at 30 and zero at 35 °C, and becomes a heat gain of about 22 at 40 °C. Heat lost by evaporation rises from about 8 at 15 °C and 15 at 20 to 45 at 30, 75 at 35 and 97 at 40 °C.",
+   "x": {
+    "min": 15,
+    "max": 40,
+    "label": "Air temperature",
+    "unit": "°C",
+    "ticks": [
+     15,
+     20,
+     25,
+     30,
+     35,
+     40
+    ]
+   },
+   "regions": [
+    {
+     "id": "cool",
+     "x0": 15,
+     "x1": 27,
+     "label": "mostly dry heat loss"
+    },
+    {
+     "id": "hot",
+     "x0": 35,
+     "x1": 40,
+     "label": "air hotter than skin"
+    }
+   ],
+   "panels": [
+    {
+     "h": 1.3,
+     "y": {
+      "min": -30,
+      "max": 160,
+      "label": "Heat flow (+ lost, − gained)",
+      "unit": "kcal/h",
+      "ticks": [
+       -25,
+       0,
+       25,
+       50,
+       75,
+       100,
+       125,
+       150
+      ]
+     },
+     "series": [
+      {
+       "id": "made",
+       "cls": "shape",
+       "pts": [
+        [
+         15,
+         75
+        ],
+        [
+         40,
+         75
+        ]
+       ],
+       "label": "heat made",
+       "labelAt": [
+        15.5,
+        80
+       ]
+      },
+      {
+       "id": "dry",
+       "cls": "lo",
+       "curve": "smooth",
+       "pts": [
+        [
+         15,
+         67
+        ],
+        [
+         20,
+         60
+        ],
+        [
+         25,
+         47
+        ],
+        [
+         30,
+         30
+        ],
+        [
+         35,
+         0
+        ],
+        [
+         40,
+         -22
+        ]
+       ],
+       "label": "radiation, conduction, convection",
+       "labelAt": [
+        15.5,
+        55
+       ]
+      },
+      {
+       "id": "evap",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         15,
+         8
+        ],
+        [
+         20,
+         15
+        ],
+        [
+         25,
+         28
+        ],
+        [
+         30,
+         45
+        ],
+        [
+         35,
+         75
+        ],
+        [
+         40,
+         97
+        ]
+       ],
+       "label": "evaporation",
+       "labelAt": [
+        30.5,
+        38
+       ]
+      }
+     ],
+     "hlines": [
+      {
+       "y": 0,
+       "label": "below zero: heat gained",
+       "faint": true,
+       "at": 15.3,
+       "below": true
+      }
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "evap-20",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the heat lost by evaporation at 20 °C.",
+     "answer": 15,
+     "tol": 4,
+     "unit": "kcal/h",
+     "show": {
+      "x": 20,
+      "y": 15
+     },
+     "why": "About 15 kcal an hour, a fifth of the 75 made. At rest in a cool room, radiation, conduction and convection carry most of the heat away."
+    },
+    {
+     "id": "dry-zero",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At what air temperature does dry heat loss (radiation, conduction and convection) fall to zero?",
+     "answer": 35,
+     "tol": 1.5,
+     "unit": "°C",
+     "show": {
+      "x": 35,
+      "y": 0
+     },
+     "why": "About 35 °C, close to skin temperature. Heat flows from warmer to cooler, so once the air is as warm as the skin these routes carry nothing, and above it they add heat."
+    },
+    {
+     "id": "only-route",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Over which range is evaporation the only way left to lose heat?",
+     "options": [
+      "Above about 35 °C",
+      "Below about 25 °C",
+      "Only between 25 and 30 °C",
+      "At every air temperature"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "hot"
+     },
+     "why": {
+      "correct": "Above skin temperature, radiation, conduction and convection run backward and add heat, so evaporation must remove both the heat made and the heat gained.",
+      "options": [
+       "Right: the dry line is below zero here.",
+       "In cool air the dry routes carry most of the heat; evaporation is the small share.",
+       "Both routes carry heat here.",
+       "In cool air evaporation is only about a fifth of the loss."
+      ]
+     }
+    },
+    {
+     "id": "mostly-dry",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Where does most heat leave by radiation, conduction and convection?",
+     "options": [
+      "In cool air, below about 27 °C",
+      "In hot air, above 35 °C",
+      "Only at exactly 30 °C",
+      "Nowhere: evaporation always carries most"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "cool"
+     },
+     "why": {
+      "correct": "In cool air the gradient from skin to surroundings is large, so the dry routes carry most of the heat; radiation alone is about 60% of the loss at rest.",
+      "options": [
+       "Right: the dry line is above the evaporation line here.",
+       "Above 35 °C the dry routes add heat instead.",
+       "At 30 °C evaporation already carries more than the dry routes.",
+       "Evaporation carries only about a fifth of the loss in a cool room."
+      ]
+     }
+    },
+    {
+     "id": "humid",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The air is now very humid. How does the evaporation line change in hot air, and what follows?",
+     "options": [
+      "It levels off below the heat made, and core temperature climbs",
+      "It rises higher, because humid air carries more heat away from the skin",
+      "It is unchanged, because sweat glands still secrete",
+      "It moves to cooler temperatures, starting sooner"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "humid-evap",
+        "cls": "lo",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          25,
+          26
+         ],
+         [
+          30,
+          36
+         ],
+         [
+          35,
+          44
+         ],
+         [
+          40,
+          48
+         ]
+        ],
+        "label": "very humid air",
+        "labelAt": [
+         36,
+         60
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "Evaporation needs a water vapor gradient from skin to air. Humid air shrinks it, so sweat drips instead of evaporating. Above skin temperature the loss can no longer match the heat made plus the heat gained, and core temperature rises.",
+      "options": [
+       "Right: humidity caps evaporation just when it is the only route left.",
+       "Humidity slows evaporation; it does not add a cooling route.",
+       "Secreted sweat cools only when it evaporates; dripping sweat removes almost no heat.",
+       "Humid air does not make sweating start sooner; it makes each liter less effective."
+      ]
+     }
+    },
+    {
+     "id": "walking",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The air is 35 °C and the person starts walking steadily, doubling the heat made to about 150 kcal an hour. What must happen to evaporation?",
+     "options": [
+      "It must rise to about 150 kcal/h",
+      "Nothing: the dry routes will carry the extra heat",
+      "It can stay at 75, because core temperature is regulated",
+      "It must fall, to save water"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "made-walk",
+        "cls": "shape",
+        "dash": true,
+        "pts": [
+         [
+          15,
+          150
+         ],
+         [
+          40,
+          150
+         ]
+        ],
+        "label": "heat made while walking",
+        "labelAt": [
+         15.5,
+         140
+        ]
+       }
+      ],
+      "marks": [
+       {
+        "x": 35,
+        "y": 150,
+        "label": "evaporation needed"
+       }
+      ]
+     },
+     "why": {
+      "correct": "At 35 °C the air is as warm as the skin, so radiation, conduction and convection carry nothing. For core temperature to hold steady, evaporation must remove all 150 kcal an hour: about a quarter of a liter of evaporated sweat each hour (150 ÷ 580).",
+      "options": [
+       "Right: evaporation is the only route left, so it must match the heat made.",
+       "At 35 °C the dry routes remove nothing, however much heat is made.",
+       "Core temperature stays steady only if heat lost matches heat made; if evaporation stays at 75, heat builds up.",
+       "Sweating less would let heat build up; the water must be replaced by drinking."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

@@ -1,0 +1,90 @@
+{
+  "topic": "male-physiology",
+  "hook": "<p>Marcus, 31, and his partner have been trying to conceive for a year. His semen analysis shows almost no sperm, yet he looks muscular and fit. Asked about medications, he admits to injecting testosterone for the last 18 months to help his training. His doctor explains that the injections are the likely cause, and that sperm production may take a year or more to recover after he stops. The explanation lies in how the brain and the testes control each other.</p>",
+  "prereq": [
+    {
+      "q": "Which hormone from the hypothalamus makes the anterior pituitary release LH and FSH?",
+      "options": [
+        "GnRH",
+        "TRH",
+        "CRH"
+      ],
+      "correct": 0,
+      "why": "Gonadotropin-releasing hormone (GnRH) travels through the hypophyseal portal vessels to the anterior pituitary and drives release of the gonadotropins, LH and FSH.",
+      "review": "hypothalamus-pituitary"
+    },
+    {
+      "q": "In meiosis I, what separates?",
+      "options": [
+        "Sister chromatids",
+        "Homologous chromosomes",
+        "The two strands of each DNA molecule"
+      ],
+      "correct": 1,
+      "why": "Meiosis I separates the homologous chromosomes of each pair, so each new cell is haploid; sister chromatids separate in meiosis II.",
+      "review": "meiosis"
+    },
+    {
+      "q": "Which cells of the testis make testosterone?",
+      "options": [
+        "Cells of the epididymis",
+        "Interstitial (Leydig) cells between the seminiferous tubules",
+        "Smooth muscle cells of the ductus deferens"
+      ],
+      "correct": 1,
+      "why": "Interstitial (Leydig) cells lie between the seminiferous tubules and make testosterone under the control of LH.",
+      "review": "male-anatomy"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-27-8",
+    "caption": "The hormonal control of the testis. Hide the labels and name the cell that FSH acts on, the cells that LH acts on, and the hormone that brakes FSH."
+  },
+  "chain": [
+    {
+      "cause": "Neurons in the hypothalamus release GnRH in pulses into the portal vessels.",
+      "effect": "The anterior pituitary releases LH and FSH into the blood."
+    },
+    {
+      "cause": "LH binds receptor proteins on the Leydig cells.",
+      "effect": "The Leydig cells make testosterone, which enters the blood and reaches a very high level inside the nearby tubules."
+    },
+    {
+      "cause": "FSH and the high local testosterone act on the Sertoli cells.",
+      "effect": "The Sertoli cells support spermatogonia through meiosis and spermiogenesis, and they release inhibin."
+    },
+    {
+      "cause": "Blood testosterone and inhibin rise.",
+      "effect": "Testosterone slows GnRH and LH release, and inhibin slows FSH release: negative feedback holds both products steady."
+    },
+    {
+      "cause": "An outside androgen, such as injected testosterone, keeps the brake on hard.",
+      "effect": "LH and FSH fall, the Leydig cells stop making testosterone, the tubules lose their high local level, and sperm production drops."
+    }
+  ],
+  "misconception": {
+    "wrong": "Taking extra testosterone boosts a man's sperm production and fertility.",
+    "right": "Spermatogenesis needs testosterone at a concentration inside the tubules many times higher than in the blood, and only the man's own Leydig cells, driven by LH, can supply it there. Injected testosterone raises blood levels but brakes the hypothalamus and pituitary through negative feedback, so LH and FSH fall, the Leydig cells go quiet, the tubules lose their local testosterone, and sperm production falls, often to nearly zero."
+  },
+  "check": [
+    "anp-male-physiology-2",
+    "anp-male-physiology-3",
+    "anp-male-physiology-6",
+    "anp-male-physiology-13",
+    "anp-male-physiology-15",
+    "anp-male-physiology-16",
+    "anp-male-physiology-17",
+    "anp-male-physiology-19"
+  ],
+  "summary": "<p>Spermatogenesis runs from puberty on, in the wall of every seminiferous tubule, and takes about 64 to 74 days. Spermatogonia renew themselves by mitosis; a primary spermatocyte completes meiosis I to give two secondary spermatocytes, meiosis II gives four haploid spermatids, and spermiogenesis reshapes each into a sperm with a head (compact nucleus and enzyme-filled acrosome), a midpiece of mitochondria and a flagellum. Sustentacular (Sertoli) cells wrap the developing cells, join by tight junctions into the blood-testis barrier, make androgen-binding protein and release inhibin. In the HPG axis, pulsed GnRH drives LH and FSH; LH drives the Leydig cells to make testosterone; FSH and testosterone drive the Sertoli cells; testosterone brakes GnRH and LH, and inhibin brakes FSH. Testosterone, partly as DHT and estradiol, shapes the male tract before birth, produces the secondary sex characteristics at puberty and maintains sperm production, muscle, bone and red cell production.</p>",
+  "connections": [
+    {
+      "href": "/ochem/lessons/lipids.html",
+      "label": "Organic chemistry: lipids and steroids"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-18",
+      "label": "NREMT: General pharmacology"
+    }
+  ]
+}

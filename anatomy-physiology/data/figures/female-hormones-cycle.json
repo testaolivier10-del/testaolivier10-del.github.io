@@ -1,0 +1,30 @@
+{
+  "os-27-13": {
+    "file": "figures/openstax/os-27-13.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.13",
+      "section": "27.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/df62333694b924a3a042b077ca6999ea12d2c1f9",
+      "page": "27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/df62333694b924a3a042b077ca6999ea12d2c1f9",
+    "alt": "Three flow diagrams, each a column of boxes: hypothalamus, anterior pituitary, ovaries, and uterus with its endometrium, with notes beside each. Panel 1, follicular phase: GnRH from the hypothalamus drives the pituitary to release FSH and LH, which stimulate the follicles; red arrows with minus signs show estradiol from the follicles inhibiting the hypothalamus and pituitary, and another estradiol arrow makes the endometrium thicken. Panel 2, ovulation: thick green arrows with plus signs show estradiol from the growing follicle now stimulating the hypothalamus and pituitary, and a thick LH arrow to the follicles, noted as the LH surge that triggers ovulation. Panel 3, luteal phase: LH and FSH act on the corpus luteum, and red arrows with minus signs show its progesterone inhibiting the hypothalamus and pituitary, while a green progesterone arrow maintains the endometrium.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.13",
+    "labels": [],
+    "w": 1100,
+    "h": 1287,
+    "ext": "jpg"
+  },
+  "cycle-hormones": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 720,
+    "h": 800,
+    "alt": "Five stacked panels sharing one time axis, days 1 to 28 of a model cycle, with a dashed line marking ovulation at day 14. Top: anterior pituitary hormones. LH stays low, rises steeply to a tall narrow peak just before day 14, then falls back and stays low. FSH is raised in the first few days, falls through the middle of the first half, makes a smaller peak together with LH, stays low after ovulation and starts rising again in the last days. Second: ovarian hormones. Estradiol starts low, climbs to a high peak about a day before the LH peak, drops around ovulation, rises to a lower second hump around day 21 and falls by day 28. Progesterone stays near zero until ovulation, then rises to a broad peak around day 21 and falls by day 28. Third: the ovary. Days 1 to 14 are the follicular phase, when follicles grow and one dominates; days 14 to 28 are the luteal phase, the corpus luteum. Fourth: resting body temperature, low in the first half and about 0.3 to 0.5 degrees Celsius higher from just after ovulation until the last day. Bottom: thickness of the endometrium's functional layer. It falls to thin during the menstrual days 1 to 5, thickens through the proliferative phase to day 14, thickens a little more and stays thick through the secretory phase, then drops at the end.",
+    "labels": []
+  }
+}

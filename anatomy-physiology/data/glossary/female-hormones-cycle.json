@@ -1,0 +1,99 @@
+{
+  "hpg-female": {
+    "def": "The control of the ovarian cycle by GnRH pulses from the hypothalamus, FSH and LH from the anterior pituitary, and estradiol, progesterone and inhibin from the ovary. In the follicular phase follicles grow and one dominates; after ovulation, in the luteal phase, the corpus luteum's hormones hold FSH and LH low.",
+    "roots": [
+      [
+        "folliculus",
+        "little bag"
+      ],
+      [
+        "luteus",
+        "yellow"
+      ]
+    ],
+    "say": ""
+  },
+  "lh-surge": {
+    "def": "A sharp rise in LH to many times its usual level just before ovulation. It happens when estradiol from the dominant follicle stays high for about two days and switches the hypothalamus and pituitary from negative to positive feedback; ovulation follows about 34 to 36 hours after it begins.",
+    "roots": [],
+    "say": ""
+  },
+  "estrogen-progesterone-effects": {
+    "def": "Estrogen (mainly estradiol) builds the endometrium, thins cervical mucus, drives female secondary sex characteristics, protects bone and gives negative or, when high and sustained, positive feedback. Progesterone makes the endometrium secretory, thickens cervical mucus, quiets the myometrium, raises resting body temperature and gives negative feedback.",
+    "roots": [
+      [
+        "estr-",
+        "frenzy, desire"
+      ],
+      [
+        "-gen",
+        "producing"
+      ],
+      [
+        "pro-",
+        "for"
+      ],
+      [
+        "gest-",
+        "carrying"
+      ]
+    ],
+    "say": "ES-truh-jen; proh-JES-tuh-rohn"
+  },
+  "uterine-cycle": {
+    "def": "The monthly changes in the endometrium, also called the menstrual cycle: the menstrual phase (menses), when falling progesterone makes the functional layer break down and be shed; the proliferative phase, when estradiol rebuilds it; and the secretory phase, when progesterone makes its glands secrete.",
+    "roots": [
+      [
+        "mens-",
+        "month"
+      ],
+      [
+        "prolifer-",
+        "bearing offspring, multiplying"
+      ]
+    ],
+    "say": "MEN-seez"
+  },
+  "menopause": {
+    "def": "The permanent end of menstrual periods, confirmed after 12 months with none, at about 51 on average. The ovaries run out of follicles, estradiol and inhibin fall, and loss of their negative feedback makes FSH and LH rise.",
+    "roots": [
+      [
+        "men-",
+        "month"
+      ],
+      [
+        "pausis",
+        "stopping"
+      ]
+    ],
+    "say": "MEN-oh-pawz"
+  },
+  "puberty": {
+    "def": "The transition to a body able to reproduce, which begins when the hypothalamus's GnRH pulses reawaken and drive FSH, LH and the sex hormones. In girls it usually starts with breast budding and reaches menarche, the first period, at about 12 to 13 years.",
+    "roots": [
+      [
+        "pubertas",
+        "adulthood"
+      ],
+      [
+        "men-",
+        "month"
+      ],
+      [
+        "arche",
+        "beginning"
+      ]
+    ],
+    "say": "MEN-ar-kee"
+  },
+  "contraception": {
+    "def": "Prevention of pregnancy. Hormonal contraception, such as the combined birth control pill of a synthetic estrogen and a progestin, keeps negative feedback on GnRH, FSH and LH so no follicle dominates and no LH surge or ovulation occurs; progestins also thicken cervical mucus and thin the endometrium.",
+    "roots": [
+      [
+        "contra-",
+        "against"
+      ]
+    ],
+    "say": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "spermatogenesis": {
+    "def": "The making of sperm in the seminiferous tubules, about 64 to 74 days long. Spermatogonia (stem cells) divide by mitosis; primary spermatocytes complete meiosis I to give secondary spermatocytes, meiosis II gives haploid spermatids, and spermiogenesis reshapes each spermatid into a sperm.",
+    "roots": [
+      [
+        "sperm-",
+        "seed"
+      ],
+      [
+        "-genesis",
+        "making"
+      ],
+      [
+        "gon-",
+        "offspring"
+      ],
+      [
+        "-cyte",
+        "cell"
+      ],
+      [
+        "-id",
+        "offspring"
+      ]
+    ],
+    "say": "sper-mat-oh-JEN-eh-sis"
+  },
+  "sustentacular-cells": {
+    "def": "The tall supporting cells of the seminiferous tubule, also called Sertoli cells. They wrap and nourish developing sperm, make androgen-binding protein and inhibin, and are joined by tight junctions that form the blood-testis barrier, which keeps immune cells and many substances away from cells in meiosis.",
+    "roots": [
+      [
+        "sustent-",
+        "to support"
+      ]
+    ],
+    "say": "sus-ten-TAK-yoo-lar; ser-TOH-lee"
+  },
+  "sperm-structure": {
+    "def": "A sperm has a head, holding a tightly packed haploid nucleus under the acrosome, a cap of digestive enzymes; a midpiece, packed with mitochondria that make ATP; and a tail, a single flagellum that bends to drive the cell forward.",
+    "roots": [
+      [
+        "acro-",
+        "tip"
+      ],
+      [
+        "-some",
+        "body"
+      ]
+    ],
+    "say": "AK-roh-sohm"
+  },
+  "hpg-male": {
+    "def": "The hypothalamic-pituitary-gonadal axis in males: pulses of GnRH drive LH and FSH; LH makes Leydig cells produce testosterone, and FSH with testosterone drives the Sertoli cells. Testosterone brakes GnRH and LH, and inhibin from the Sertoli cells brakes FSH.",
+    "roots": [
+      [
+        "inhib-",
+        "to hold back"
+      ]
+    ],
+    "say": "in-HIB-in"
+  },
+  "testosterone-effects": {
+    "def": "Testosterone, directly or after conversion to DHT or estradiol, shapes the male reproductive tract before birth, drives the changes of puberty, and maintains sperm production, sex drive, muscle, bone and red cell production. Secondary sex characteristics are the features it produces that differ between the sexes but are not part of the reproductive tract, such as facial hair and a deeper voice.",
+    "roots": [
+      [
+        "testo-",
+        "testis"
+      ],
+      [
+        "-sterone",
+        "a steroid"
+      ]
+    ],
+    "say": "tes-TOS-ter-ohn"
+  }
+}

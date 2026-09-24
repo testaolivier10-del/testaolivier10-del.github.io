@@ -5878,6 +5878,792 @@
         "why": "The sphincter you control is the external anal sphincter, which is skeletal muscle. The internal one is smooth muscle and relaxes by reflex."
       },
       "summary": "Meal, gastrocolic reflex, mass movement, rectal stretch, sacral cord, parasympathetic contraction of the rectum and relaxation of the internal anal sphincter, then your choice at the external anal sphincter. Put it off, and the rectum relaxes and the urge fades until the next mass movement."
+    },
+    {
+      "id": "met-glucose-to-atp",
+      "title": "Glucose to ATP: glycolysis, citric acid cycle, electron transport",
+      "topic": "carbohydrate-metabolism",
+      "core": [
+        "energy",
+        "gradients"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "A liver cell with plenty of oxygen breaks down one glucose molecule completely. Trace it from the cytosol to the last ATP, step by step.",
+      "steps": [
+        {
+          "id": "trap",
+          "label": "Hexokinase traps glucose",
+          "text": "Hexokinase moves a phosphate from ATP onto glucose, making glucose-6-phosphate, which cannot leave the cell.",
+          "why": "Every later step needs glucose inside the cell and activated; this is the first ATP spent in the energy-consuming phase."
+        },
+        {
+          "id": "pfk",
+          "label": "Phosphofructokinase commits",
+          "text": "After a rearrangement, phosphofructokinase spends a second ATP to make fructose-1,6-bisphosphate.",
+          "why": "This is the committed, main control step, and it needs the rearranged sugar made from glucose-6-phosphate."
+        },
+        {
+          "id": "split",
+          "label": "Six carbons split in two",
+          "text": "The six-carbon sugar is split into two three-carbon sugar phosphates, which are made identical.",
+          "why": "Only the doubly phosphorylated sugar is split, so it follows the second ATP investment; from here every step happens twice."
+        },
+        {
+          "id": "ox",
+          "label": "Oxidation makes NADH",
+          "text": "Each three-carbon half gives two electrons to NAD+, making NADH, and picks up a free phosphate.",
+          "why": "This first step of the energy-yielding phase needs the three-carbon halves made by the split."
+        },
+        {
+          "id": "pyr",
+          "label": "4 ATP made; pyruvate left",
+          "text": "The phosphates are passed to ADP by substrate-level phosphorylation, making 4 ATP, and two pyruvate remain.",
+          "why": "The phosphates can be passed on only once oxidation has put them in high-energy positions; this ends glycolysis with a net 2 ATP."
+        },
+        {
+          "id": "acoa",
+          "label": "Pyruvate to acetyl CoA",
+          "text": "In the mitochondrial matrix, each pyruvate loses one carbon as CO2, gives electrons to NAD+, and its acetyl group joins coenzyme A.",
+          "why": "Pyruvate from the cytosol must enter the mitochondrion and be trimmed to a two-carbon acetyl group before the cycle can use it. This step cannot run backward."
+        },
+        {
+          "id": "citrate",
+          "label": "Acetyl CoA joins oxaloacetate",
+          "text": "Acetyl CoA joins four-carbon oxaloacetate to make six-carbon citrate, and CoA is released.",
+          "why": "The cycle starts only when acetyl CoA is available, so it follows the step that makes it."
+        },
+        {
+          "id": "co2",
+          "label": "Two carbons leave as CO2",
+          "text": "Two oxidation steps each remove a carbon as CO2 and make NADH.",
+          "why": "Citrate has to be formed and rearranged before its carbons can be removed; after these steps, all six carbons of glucose have left as CO2."
+        },
+        {
+          "id": "regen",
+          "label": "FADH2, ATP; oxaloacetate back",
+          "text": "The cycle makes one ATP (by way of GTP), one FADH2 and a third NADH, and rebuilds oxaloacetate.",
+          "why": "These last steps turn the four-carbon remainder back into oxaloacetate, ready for the next acetyl CoA."
+        },
+        {
+          "id": "deliver",
+          "label": "Carriers deliver electrons",
+          "text": "NADH hands its electrons to complex I and FADH2 to complex II in the inner mitochondrial membrane.",
+          "why": "The chain runs on electrons loaded onto carriers by glycolysis, pyruvate breakdown and the cycle, so it comes after them."
+        },
+        {
+          "id": "pump",
+          "label": "Complexes I, III, IV pump H+",
+          "text": "Electrons pass along the chain to carriers that hold them more tightly, and complexes I, III and IV use the energy released to pump H+ into the intermembrane space.",
+          "why": "Pumping needs electrons moving downhill through the complexes, so it follows their delivery."
+        },
+        {
+          "id": "o2",
+          "label": "Oxygen takes the electrons",
+          "text": "At complex IV, oxygen accepts the electrons and H+ and becomes water.",
+          "why": "Oxygen is the terminal electron acceptor: it clears electrons from the end of the chain so the carriers upstream can keep passing them along."
+        },
+        {
+          "id": "synthase",
+          "label": "ATP synthase makes ATP",
+          "text": "H+ flows back into the matrix through ATP synthase, turning it and making most of the cell’s ATP: about 30 to 32 per glucose in all.",
+          "why": "ATP synthase spends the gradient the chain has built, so it can run only after pumping has stored energy in the H+ gradient."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "In the cytosol, pyruvate is turned into lactate, which then enters the mitochondrion and joins the citric acid cycle unchanged.",
+            "why": "With oxygen available, pyruvate goes into the mitochondrion. Lactate is made when oxygen is short, and it does not enter the cycle."
+          },
+          {
+            "text": "In the matrix, pyruvate joins oxaloacetate directly, keeping all three of its carbons, and no NADH or CO2 is made at this step.",
+            "why": "Pyruvate first loses one carbon as CO2; it is the two-carbon acetyl group that joins oxaloacetate."
+          },
+          {
+            "text": "In the matrix, pyruvate is turned back into glucose for storage.",
+            "why": "That would reverse the pathway. The liver can make glucose from pyruvate, but by gluconeogenesis, not as a step of glucose breakdown."
+          }
+        ]
+      },
+      "error": {
+        "at": 12,
+        "text": "H+ is pumped back into the matrix by ATP synthase, which spends ATP to do it.",
+        "why": "ATP synthase does not pump; H+ flows through it down the gradient built by the chain, and that flow makes ATP rather than spending it."
+      },
+      "summary": "Glycolysis spends 2 ATP and then makes 4 ATP and 2 NADH in the cytosol; pyruvate becomes acetyl CoA in the matrix; the citric acid cycle strips its carbons to CO2 and loads NADH and FADH2; the electron transport chain uses those electrons, with oxygen at the end, to build an H+ gradient that ATP synthase spends to make most of the ATP."
+    },
+    {
+      "id": "met-glycogen-to-blood",
+      "title": "Liver glycogen to blood glucose",
+      "topic": "carbohydrate-metabolism",
+      "core": [
+        "communication",
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "It is 11 am and you skipped breakfast. Blood glucose is drifting down and glucagon is rising. Trace one glucose unit from a glycogen branch in a liver cell into the blood.",
+      "steps": [
+        {
+          "id": "bind",
+          "label": "Glucagon binds its receptor",
+          "text": "Glucagon binds receptor proteins on the liver cell’s plasma membrane.",
+          "why": "Glucagon is a water-soluble hormone, so it acts from outside the cell, and everything else follows its binding."
+        },
+        {
+          "id": "camp",
+          "label": "cAMP and protein kinase A",
+          "text": "A G protein switches on adenylyl cyclase; cyclic AMP rises and switches on protein kinase A.",
+          "why": "The second messenger carries the signal inside only after the receptor protein has been activated."
+        },
+        {
+          "id": "switch",
+          "label": "Phosphorylase on, synthase off",
+          "text": "Protein kinase A switches glycogen phosphorylase on and glycogen synthase off.",
+          "why": "Both enzymes are set at once, so the cell does not build and break glycogen at the same time."
+        },
+        {
+          "id": "clip",
+          "label": "Phosphorolysis: glucose-1-P",
+          "text": "Glycogen phosphorylase clips glucose units off the branch ends, using phosphate, releasing glucose-1-phosphate (a debranching enzyme clears the branch points it cannot reach).",
+          "why": "The enzyme must be switched on before it works; it breaks each bond with phosphate, not water."
+        },
+        {
+          "id": "g6p",
+          "label": "Glucose-1-P to glucose-6-P",
+          "text": "Glucose-1-phosphate is converted to glucose-6-phosphate.",
+          "why": "Glucose-6-phosphate is the meeting point of glycogen, glycolysis and gluconeogenesis; it is also the substrate of the enzyme that frees glucose."
+        },
+        {
+          "id": "g6pase",
+          "label": "Glucose-6-phosphatase",
+          "text": "Glucose-6-phosphatase in the endoplasmic reticulum removes the phosphate, leaving free glucose.",
+          "why": "Only free glucose can leave the cell, and only liver and kidney cells have this enzyme."
+        },
+        {
+          "id": "out",
+          "label": "Glucose leaves into the blood",
+          "text": "Free glucose leaves the liver cell by facilitated diffusion through glucose carriers and enters the blood.",
+          "why": "Inside the cell free glucose is now higher than in the blood, so it moves down its gradient into the sinusoids."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "Hexokinase adds another phosphate to the glucose, so that it can cross the plasma membrane through the glucose carriers.",
+            "why": "A phosphate traps glucose inside; the carriers do not carry phosphorylated glucose. The phosphate must be removed, not added."
+          },
+          {
+            "text": "Glucose-6-phosphate enters glycolysis in the liver cell and leaves as pyruvate.",
+            "why": "That happens in muscle, which lacks glucose-6-phosphatase. The liver releases glucose itself to supply other tissues."
+          },
+          {
+            "text": "Glycogen synthase adds the glucose back to a new glycogen branch.",
+            "why": "Glucagon has switched glycogen synthase off, so the glucose is released rather than stored."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Glycogen phosphorylase adds water across each bond, releasing free glucose that leaves the cell at once.",
+        "why": "Phosphorylase breaks each bond by phosphorolysis, adding phosphate rather than water, so the glucose comes off as glucose-1-phosphate and still needs its phosphate removed before it can leave."
+      },
+      "summary": "Glucagon acts through cyclic AMP and protein kinase A to switch glycogen phosphorylase on; glucose comes off glycogen as glucose-1-phosphate, becomes glucose-6-phosphate, and glucose-6-phosphatase frees it to leave the liver for the blood."
+    },
+    {
+      "id": "met-cori-cycle",
+      "title": "The Cori cycle: lactate back to glucose",
+      "topic": "carbohydrate-metabolism",
+      "core": [
+        "energy",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "A sprinter’s leg muscles run short of oxygen and make lactate. Trace the carbon from muscle glucose to the liver and back.",
+      "steps": [
+        {
+          "id": "gly",
+          "label": "Muscle glycolysis",
+          "text": "In the working muscle, glycolysis splits glucose into two pyruvate, making 2 ATP.",
+          "why": "The cycle starts where the energy is spent: muscle breaking glucose down for fast ATP."
+        },
+        {
+          "id": "lac",
+          "label": "Pyruvate to lactate",
+          "text": "With oxygen short, pyruvate is turned into lactate, regenerating the NAD+ glycolysis needs.",
+          "why": "Pyruvate must exist before it can be reduced, and this step lets glycolysis keep running without the mitochondria."
+        },
+        {
+          "id": "blood",
+          "label": "Lactate into the blood",
+          "text": "Lactate leaves the muscle and travels in the blood to the liver.",
+          "why": "Lactate made in the muscle has to be carried away before the liver can use it."
+        },
+        {
+          "id": "back",
+          "label": "Liver: lactate to pyruvate",
+          "text": "Liver cells take up lactate and turn it back into pyruvate, regaining NADH.",
+          "why": "Gluconeogenesis starts from pyruvate, so lactate must first be converted."
+        },
+        {
+          "id": "oaa",
+          "label": "Pyruvate to oxaloacetate",
+          "text": "Inside the mitochondrion, an enzyme that needs biotin adds CO2 to pyruvate, making oxaloacetate, which becomes phosphoenolpyruvate.",
+          "why": "This detour gets around the step of glycolysis that cannot be reversed, so it must come first on the way up."
+        },
+        {
+          "id": "up",
+          "label": "Up to fructose-6-phosphate",
+          "text": "Most of glycolysis’s steps run in reverse to fructose-1,6-bisphosphate, and a phosphatase removes one phosphate.",
+          "why": "Once phosphoenolpyruvate is made, the reversible steps can climb back toward six carbons; the phosphatase is the second detour."
+        },
+        {
+          "id": "free",
+          "label": "Phosphate off: free glucose",
+          "text": "Glucose-6-phosphate is made, and glucose-6-phosphatase removes its phosphate.",
+          "why": "The last detour releases free glucose; only the liver and kidneys have this enzyme."
+        },
+        {
+          "id": "return",
+          "label": "Glucose back to muscle",
+          "text": "The glucose enters the blood and returns to the muscle, which can break it down again.",
+          "why": "The new glucose must leave the liver before the muscle can take it up, closing the loop. Each turn costs the body 4 ATP."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Pyruvate is turned straight back into phosphoenolpyruvate by running the last enzyme of glycolysis in reverse, which costs the liver no ATP at all.",
+            "why": "That step of glycolysis releases so much energy that it cannot be reversed; gluconeogenesis goes around it by way of oxaloacetate."
+          },
+          {
+            "text": "Pyruvate becomes acetyl CoA, which the liver builds into glucose.",
+            "why": "Acetyl CoA can never become glucose, because the step from pyruvate to acetyl CoA cannot run backward."
+          },
+          {
+            "text": "Pyruvate is stored as glycogen in the muscle.",
+            "why": "The carbon has already left the muscle as lactate; this part of the cycle happens in the liver."
+          }
+        ]
+      },
+      "error": {
+        "at": 7,
+        "text": "The glucose is kept in the liver, which needs it more than the muscle.",
+        "why": "The point of the cycle is to return the carbon to working muscle. The liver pays for the new glucose with its own aerobic ATP and releases it into the blood."
+      },
+      "summary": "Muscle turns glucose into lactate to keep glycolysis going; the liver turns lactate back into glucose by gluconeogenesis, spending 6 high-energy phosphates to regain the muscle’s 2, and sends the glucose back."
+    },
+    {
+      "id": "met-fat-to-atp",
+      "title": "Fat to ATP",
+      "topic": "lipid-protein-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "An hour into a long, easy bike ride, your insulin is low and your epinephrine is up. Trace one stored fatty acid from a fat cell to ATP in a leg muscle.",
+      "steps": [
+        {
+          "id": "signal",
+          "label": "Low insulin, epinephrine up",
+          "text": "With insulin low, epinephrine acts through beta receptor proteins, cyclic AMP and protein kinase A to switch on the lipases in the fat cell.",
+          "why": "Stored fat stays locked up until the insulin brake is off and a signal switches the lipases on."
+        },
+        {
+          "id": "lipolysis",
+          "label": "Lipolysis",
+          "text": "Lipases hydrolyze the stored triglyceride into glycerol and three fatty acids.",
+          "why": "The lipases act only once they are switched on; this is the step that releases the fuel."
+        },
+        {
+          "id": "albumin",
+          "label": "Fatty acids ride on albumin",
+          "text": "The fatty acids leave the fat cell and travel in the blood bound to albumin.",
+          "why": "Fatty acids do not dissolve in plasma, so they need a carrier to reach the muscle."
+        },
+        {
+          "id": "activate",
+          "label": "Activation with CoA",
+          "text": "The muscle cell takes up the fatty acid and joins it to coenzyme A in the cytosol, at a cost of 2 ATP.",
+          "why": "The fatty acid must be inside the cell and activated before it can be carried into the mitochondrion."
+        },
+        {
+          "id": "carnitine",
+          "label": "Carnitine carries it in",
+          "text": "Carnitine carries the activated fatty acid across the inner mitochondrial membrane, and it is joined to CoA again in the matrix.",
+          "why": "The inner membrane does not let activated fatty acids through, so this carrier step comes before any oxidation."
+        },
+        {
+          "id": "turn",
+          "label": "One turn of beta oxidation",
+          "text": "Four enzyme steps oxidize the beta carbon, making 1 FADH2 and 1 NADH and cutting off 1 acetyl CoA.",
+          "why": "Beta oxidation runs in the matrix, so it follows entry."
+        },
+        {
+          "id": "repeat",
+          "label": "Repeat until all acetyl CoA",
+          "text": "The shortened chain goes around again until all of it is acetyl CoA: 8 from a 16-carbon chain, in 7 turns.",
+          "why": "Each turn leaves a chain two carbons shorter, which is the substrate for the next turn."
+        },
+        {
+          "id": "cac",
+          "label": "Citric acid cycle",
+          "text": "The acetyl CoA enters the citric acid cycle and is taken apart to CO2, loading more NADH and FADH2.",
+          "why": "The cycle takes in acetyl CoA from any fuel, so it follows the step that makes it."
+        },
+        {
+          "id": "etc",
+          "label": "Chain, oxygen, ATP synthase",
+          "text": "NADH and FADH2 feed the electron transport chain, oxygen accepts the electrons, and ATP synthase makes ATP: about 106 per palmitic acid.",
+          "why": "The chain runs on the carriers that beta oxidation and the cycle loaded, and it regenerates the NAD+ and FAD they need. Without oxygen, fat cannot be burned."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The activated fatty acid diffuses freely across the inner mitochondrial membrane, because the membrane’s lipid layer lets fatty molecules straight through.",
+            "why": "The inner membrane is not permeable to it; the carnitine carrier is required, which is why this step can limit fat burning."
+          },
+          {
+            "text": "The fatty acid is broken down by glycolysis in the cytosol.",
+            "why": "Glycolysis breaks down sugars. Fatty acids are broken down by beta oxidation, inside the mitochondrion."
+          },
+          {
+            "text": "The fatty acid is converted to glucose, which then enters the mitochondrion.",
+            "why": "Fatty acids can never become glucose; their carbon ends as acetyl CoA."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "Insulin rises and switches on the lipases in the fat cell.",
+        "why": "Insulin does the opposite: it brakes lipolysis even at low levels. Fat release rises when insulin falls and epinephrine, cortisol or growth hormone rise."
+      },
+      "summary": "With insulin low, epinephrine switches on lipolysis; fatty acids ride on albumin to muscle, are activated, carried into the mitochondrion by carnitine and cut into acetyl CoA by beta oxidation; the citric acid cycle and electron transport chain then turn them into ATP, which needs oxygen."
+    },
+    {
+      "id": "met-ketogenesis",
+      "title": "Ketone bodies: from liver to heart",
+      "topic": "lipid-protein-metabolism",
+      "core": [
+        "energy",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "It is the third day of a fast. Fatty acids are flooding into the liver. Trace the carbon from surplus acetyl CoA in a liver cell to ATP in a heart muscle cell.",
+      "steps": [
+        {
+          "id": "pile",
+          "label": "Acetyl CoA piles up",
+          "text": "Beta oxidation makes acetyl CoA faster than the citric acid cycle can take it, and oxaloacetate is being drawn off for gluconeogenesis.",
+          "why": "Ketogenesis starts only when acetyl CoA is in surplus; with plenty of oxaloacetate it would simply enter the cycle."
+        },
+        {
+          "id": "join",
+          "label": "Two acetyl CoA join",
+          "text": "Two acetyl CoA join to make a four-carbon molecule.",
+          "why": "The ketone bodies are built from the surplus acetyl groups, so joining them is the first step."
+        },
+        {
+          "id": "aca",
+          "label": "Acetoacetate released",
+          "text": "A third acetyl CoA is added and removed again, releasing acetoacetate.",
+          "why": "The four-carbon molecule must be built up and cut back to free acetoacetate, the first ketone body."
+        },
+        {
+          "id": "bhb",
+          "label": "Beta-hydroxybutyrate",
+          "text": "Much of the acetoacetate gains two hydrogens from NADH and becomes beta-hydroxybutyrate.",
+          "why": "Beta-hydroxybutyrate is made from acetoacetate, so it comes after it; it becomes the main ketone body in the blood."
+        },
+        {
+          "id": "export",
+          "label": "Exported to the blood",
+          "text": "The liver releases the ketone bodies into the blood, because it lacks the enzyme to use them.",
+          "why": "The ketone bodies must be made before they can leave; the liver cannot burn them itself."
+        },
+        {
+          "id": "uptake",
+          "label": "Heart takes them up",
+          "text": "Heart muscle cells take up the ketone bodies and turn them back into acetyl CoA.",
+          "why": "Other tissues can use them only after they arrive in the blood."
+        },
+        {
+          "id": "burn",
+          "label": "Burned for ATP",
+          "text": "The acetyl CoA enters the heart cell’s citric acid cycle, and the electron transport chain makes ATP.",
+          "why": "Once back as acetyl CoA, the carbon joins the same final pathway as any fuel."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The liver burns the ketone bodies in its own citric acid cycle, which is why it makes them in the first place.",
+            "why": "The liver lacks the enzyme that turns acetoacetate back into acetyl CoA, so it cannot use its own ketone bodies."
+          },
+          {
+            "text": "The ketone bodies are turned into glucose and released.",
+            "why": "Ketone bodies are made from acetyl CoA, and acetyl CoA carbon can never become glucose."
+          },
+          {
+            "text": "The ketone bodies are stored in liver cells as fat.",
+            "why": "In a fast insulin is low and fat is being released, not stored; the ketone bodies are exported as fuel for other tissues."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Much of the acetoacetate loses CO2 and becomes beta-hydroxybutyrate.",
+        "why": "Acetoacetate becomes beta-hydroxybutyrate by gaining two hydrogens from NADH. It is the small share that loses CO2 on its own that forms acetone, which leaves in the breath."
+      },
+      "summary": "When acetyl CoA is in surplus, the liver joins acetyl groups into acetoacetate and beta-hydroxybutyrate and exports them; heart, muscle, kidney and, after a few days, brain cells turn them back into acetyl CoA and burn them."
+    },
+    {
+      "id": "met-amino-to-urea",
+      "title": "Amino acid to urea",
+      "topic": "lipid-protein-metabolism",
+      "core": [
+        "mass-balance",
+        "interdependence"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "After a high-protein meal, extra amino acids reach the liver. Trace the nitrogen of one amino acid until it leaves the body.",
+      "steps": [
+        {
+          "id": "trans",
+          "label": "Transamination",
+          "text": "A transaminase, using a coenzyme made from vitamin B6, moves the amino group onto alpha-ketoglutarate, making glutamate and leaving the carbon skeleton.",
+          "why": "The amino group must be collected from each kind of amino acid onto one carrier before it can be removed."
+        },
+        {
+          "id": "deam",
+          "label": "Deamination releases ammonia",
+          "text": "In liver mitochondria, glutamate’s amino group is stripped off as ammonia, and alpha-ketoglutarate is freed to collect again.",
+          "why": "Glutamate is made first by transamination; its amino group is then released in one place, the liver."
+        },
+        {
+          "id": "carb",
+          "label": "Carbamoyl phosphate",
+          "text": "Ammonia joins bicarbonate, using 2 ATP, to make carbamoyl phosphate.",
+          "why": "The urea cycle can take in ammonia only once it has been released; this is where the first nitrogen enters."
+        },
+        {
+          "id": "cit",
+          "label": "Ornithine to citrulline",
+          "text": "Carbamoyl phosphate joins ornithine to make citrulline, which moves to the cytosol.",
+          "why": "Ornithine is the cycle’s carrier; it must take on carbamoyl phosphate before the second nitrogen can be added."
+        },
+        {
+          "id": "asp",
+          "label": "Aspartate adds nitrogen 2",
+          "text": "Citrulline picks up a second amino group from aspartate, using another ATP, making argininosuccinate.",
+          "why": "The second nitrogen is added to citrulline, so it follows the first."
+        },
+        {
+          "id": "split",
+          "label": "Arginine and fumarate",
+          "text": "Argininosuccinate splits into arginine and fumarate, which links to the citric acid cycle.",
+          "why": "The split frees arginine, which now holds both nitrogens."
+        },
+        {
+          "id": "urea",
+          "label": "Arginase releases urea",
+          "text": "Arginase splits arginine into urea and ornithine, and ornithine returns for the next turn.",
+          "why": "Urea can be released only once arginine carries both nitrogens."
+        },
+        {
+          "id": "blood",
+          "label": "Urea to the kidneys",
+          "text": "Urea leaves the liver in the blood and travels to the kidneys.",
+          "why": "Urea is made in the liver but removed by the kidneys, so it must be carried between them."
+        },
+        {
+          "id": "urine",
+          "label": "Excreted in urine",
+          "text": "The kidneys excrete urea in the urine.",
+          "why": "This is the last step: the nitrogen that started on the amino acid leaves the body."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Glutamate leaves the liver in the blood and is excreted unchanged by the kidneys, carrying the amino group out in the urine.",
+            "why": "Glutamate is an amino acid the body reuses; its amino group is released as ammonia in the liver and turned into urea."
+          },
+          {
+            "text": "The carbon skeleton is turned directly into urea.",
+            "why": "Urea is made from the nitrogen, not the carbon skeleton. The skeleton is burned or built into glucose, ketone bodies or fat."
+          },
+          {
+            "text": "The amino group is stored in muscle for later use.",
+            "why": "The body has no store of amino acids or amino groups; nitrogen not used for building is excreted."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Arginase splits arginine into ammonia and ornithine, and the ammonia leaves in the urine.",
+        "why": "Arginase releases urea, not ammonia. Turning toxic ammonia into urea is the whole point of the cycle; ammonia that builds up in the blood harms the brain."
+      },
+      "summary": "Transamination collects amino groups onto glutamate; deamination in the liver releases them as ammonia; the urea cycle adds one nitrogen from ammonia and one from aspartate to make urea, which the blood carries to the kidneys for excretion."
+    },
+    {
+      "id": "met-fasting-fuel-switch",
+      "title": "The fuel switch over a long fast",
+      "topic": "absorptive-postabsorptive",
+      "core": [
+        "energy",
+        "homeostasis"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "A lost hiker has water but no food for several weeks. Put the body’s fuel changes in the order they cause one another.",
+      "steps": [
+        {
+          "id": "glyco",
+          "label": "Liver glycogen runs out",
+          "text": "Within about a day, liver glycogen is used up.",
+          "why": "Glycogen is the first store the liver draws on between meals, and it holds only about 100 g."
+        },
+        {
+          "id": "protein",
+          "label": "Muscle protein makes glucose",
+          "text": "The brain still needs about 120 g of glucose a day, so the liver makes it mostly from amino acids released by breaking down muscle protein.",
+          "why": "With glycogen gone, gluconeogenesis must supply all the glucose, and amino acids are its largest source."
+        },
+        {
+          "id": "ketones",
+          "label": "Ketone bodies rise",
+          "text": "Low insulin lets fatty acids flood into the liver, and ketone bodies rise over the first week.",
+          "why": "Ketogenesis speeds up as fat breakdown rises and oxaloacetate is drawn off for making glucose."
+        },
+        {
+          "id": "brain",
+          "label": "Brain burns ketone bodies",
+          "text": "The brain takes up ketone bodies in proportion to their level; by a few weeks they supply about two thirds of its energy.",
+          "why": "The brain can use ketone bodies only once their blood level is high."
+        },
+        {
+          "id": "less",
+          "label": "Brain glucose need falls",
+          "text": "The brain’s glucose need falls to about 40 g a day.",
+          "why": "Each share of energy supplied by ketone bodies is a share the brain no longer takes from glucose."
+        },
+        {
+          "id": "spared",
+          "label": "Protein is spared",
+          "text": "Muscle protein breakdown falls to about 20 g a day.",
+          "why": "Less glucose needed means fewer amino acids have to be turned into glucose."
+        },
+        {
+          "id": "fatgone",
+          "label": "Fat stores run low",
+          "text": "After weeks, fat stores are nearly used up.",
+          "why": "Fat has been the main fuel all along, so it runs out last."
+        },
+        {
+          "id": "wasting",
+          "label": "Protein breakdown surges",
+          "text": "With no other fuel left, protein breakdown rises sharply again, and heart and breathing muscles waste.",
+          "why": "Once fat is gone the body has only its proteins to burn, which leads to heart failure, rhythm problems or infection."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Fatty acids from the fat stores are turned into glucose for the brain, so the liver no longer needs amino acids.",
+            "why": "Fatty acids break down to acetyl CoA, which can never become glucose; only glycerol can."
+          },
+          {
+            "text": "The brain starts burning fatty acids directly.",
+            "why": "The brain burns little fatty acid; its neurons carry out very little beta oxidation, which is why it waits for ketone bodies."
+          },
+          {
+            "text": "Insulin rises and stores the remaining fat.",
+            "why": "Without food, insulin falls; that fall is what frees lipolysis."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Muscle protein breakdown rises further as the brain switches to ketone bodies.",
+        "why": "The switch lowers the brain’s glucose need, so fewer amino acids are needed to make glucose and protein breakdown falls. That protein sparing is what lets a fast last about two months."
+      },
+      "summary": "Glycogen goes first; then muscle protein supplies glucose; rising ketone bodies let the brain cut its glucose need, which spares protein; when fat finally runs out, protein breakdown surges again."
+    },
+    {
+      "id": "met-appetite-meal",
+      "title": "Hunger to fullness: one meal",
+      "topic": "energy-balance-thermoregulation",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You have not eaten since breakfast, and it is nearly your usual lunchtime. Trace the signals that start and end your lunch.",
+      "steps": [
+        {
+          "id": "ghrelin",
+          "label": "Empty stomach releases ghrelin",
+          "text": "Your empty stomach releases ghrelin, which rises before your usual mealtime.",
+          "why": "Ghrelin is the short-term signal that starts the cycle; it rises while the stomach is empty."
+        },
+        {
+          "id": "hunger",
+          "label": "Hypothalamus drives hunger",
+          "text": "Ghrelin acts on the hypothalamus, where the neurons that drive hunger win out, and you feel hungry.",
+          "why": "The hormone must reach the hypothalamus before it can change how hungry you feel."
+        },
+        {
+          "id": "eat",
+          "label": "You eat",
+          "text": "You eat lunch, and food stretches your stomach.",
+          "why": "Hunger leads to eating, which provides every signal that follows."
+        },
+        {
+          "id": "stretch",
+          "label": "Stretch signals via vagus",
+          "text": "Stretch-sensitive sensory receptors in the stomach wall fire, and the vagus nerve carries the signal to the brainstem.",
+          "why": "The stomach must be stretched by food before these sensory receptors fire."
+        },
+        {
+          "id": "gut",
+          "label": "CCK and GLP-1 released",
+          "text": "As food reaches the small intestine, it releases cholecystokinin and GLP-1, which act on the brainstem and hypothalamus.",
+          "why": "These hormones are released only once food has left the stomach for the small intestine."
+        },
+        {
+          "id": "satiety",
+          "label": "Satiety ends the meal",
+          "text": "You feel full, stop eating, and ghrelin falls.",
+          "why": "Satiety is the sum of the stretch and gut hormone signals, so it comes after them."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Leptin released by the stomach wall jumps within minutes of the first bites and, acting on the brainstem, brings the meal to an end.",
+            "why": "Leptin comes from fat cells and tracks fat stores over days to months; it is not the meal-to-meal signal."
+          },
+          {
+            "text": "Ghrelin rises further as food reaches the small intestine.",
+            "why": "Ghrelin falls after eating; it is the hunger signal, not the fullness signal."
+          },
+          {
+            "text": "Insulin from the stomach wall makes you hungrier.",
+            "why": "Insulin comes from the pancreas, and in the hypothalamus it reduces hunger over the longer term."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "Your fat cells release ghrelin, which rises before your usual mealtime.",
+        "why": "Ghrelin is released by the empty stomach. Fat cells release leptin, the long-term signal of how much energy is stored."
+      },
+      "summary": "Ghrelin from the empty stomach makes the hypothalamus drive hunger; eating stretches the stomach and releases gut hormones such as cholecystokinin and GLP-1, which together produce satiety."
+    },
+    {
+      "id": "met-vitamin-a-route",
+      "title": "From carrot to rhodopsin: a fat-soluble vitamin",
+      "topic": "nutrition",
+      "core": [
+        "mass-balance",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You eat carrots cooked in a little oil. Trace their beta-carotene until it helps a rod in your retina detect light.",
+      "steps": [
+        {
+          "id": "dissolve",
+          "label": "Dissolves in fat droplets",
+          "text": "Beta-carotene dissolves in the fat of the meal.",
+          "why": "It is fat-soluble, so it travels with dietary fat from the start; without fat in the meal little is absorbed."
+        },
+        {
+          "id": "micelle",
+          "label": "Carried in micelles",
+          "text": "Bile salts gather it with the products of fat digestion into micelles, which carry it to the absorptive cells.",
+          "why": "Micelles form only once bile has acted on the fat droplets, and they are the route to the cell surface."
+        },
+        {
+          "id": "convert",
+          "label": "Converted to vitamin A",
+          "text": "Inside the absorptive cells, beta-carotene is converted to vitamin A.",
+          "why": "The gut does the conversion after absorption, so this comes after the micelle step."
+        },
+        {
+          "id": "chylo",
+          "label": "Chylomicrons into lymph",
+          "text": "Vitamin A is packed into chylomicrons, which enter the lacteals and the lymph.",
+          "why": "Chylomicrons are built inside the absorptive cell, and they are too large for blood capillaries."
+        },
+        {
+          "id": "store",
+          "label": "Stored in the liver",
+          "text": "Chylomicron remnants deliver vitamin A to the liver, which stores it.",
+          "why": "The liver takes up what the chylomicrons leave, which is why fat-soluble vitamins are stored for months."
+        },
+        {
+          "id": "carrier",
+          "label": "Released on a carrier",
+          "text": "The liver releases vitamin A into the blood on a carrier protein.",
+          "why": "Vitamin A does not dissolve in plasma, so it must be carried to the tissues that need it."
+        },
+        {
+          "id": "retinal",
+          "label": "Retinal joins opsin",
+          "text": "In the retina, vitamin A is converted to retinal, which joins opsin in the rods to form rhodopsin.",
+          "why": "The rod can build rhodopsin only once vitamin A reaches it from the blood; some retinal is lost each time light is absorbed and must be replaced."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Beta-carotene dissolves in the watery gut fluid and crosses the lining by carriers, passing straight into the blood capillaries of the villi.",
+            "why": "That is the route of water-soluble vitamins. Beta-carotene is fat-soluble and needs bile and micelles."
+          },
+          {
+            "text": "Intrinsic factor binds beta-carotene and carries it to the ileum.",
+            "why": "Intrinsic factor escorts vitamin B12, not the fat-soluble vitamins."
+          },
+          {
+            "text": "Beta-carotene is excreted in urine within hours.",
+            "why": "Excess water-soluble vitamins leave in urine. Fat-soluble ones are stored, which is why vitamin A can build up to toxic levels."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Vitamin A is released straight into the blood capillaries of the villus, dissolved in plasma.",
+        "why": "Vitamin A travels with fat: it is packed into chylomicrons, which are too large for blood capillaries and enter the lacteals and lymph instead."
+      },
+      "summary": "A fat-soluble vitamin follows fat: it dissolves in fat, rides in micelles, is packed into chylomicrons and enters the lymph, is stored in the liver, and reaches its target tissue on a carrier protein."
     }
   ]
 }

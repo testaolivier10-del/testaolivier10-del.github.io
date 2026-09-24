@@ -2739,7 +2739,7 @@
         "q": "An older man takes an anticholinergic drug, which blocks acetylcholine at muscarinic receptor proteins, and walks to the shops during a heat wave. What happens to his core temperature?",
         "options": [
           {
-            "text": "It climbs, because his sweat glands get the command but cannot respond to it",
+            "text": "It climbs, because his sweat glands cannot respond",
             "why": "Right. The sensors and preoptic area work, but the sweat glands cannot respond to the acetylcholine that sympathetic cholinergic fibers release, so the main route of heat loss in hot air fails. This is one reason some drugs raise the risk of heat stroke."
           },
           {

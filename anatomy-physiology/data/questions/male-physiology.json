@@ -1,0 +1,598 @@
+[
+  {
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the cells of spermatogenesis in order, from stem cell to finished sperm.",
+    "options": [
+      "Spermatogonium",
+      "Primary spermatocyte",
+      "Secondary spermatocyte",
+      "Spermatid",
+      "Sperm"
+    ],
+    "why": {
+      "correct": "Spermatogonia divide by mitosis; a committed one becomes a primary spermatocyte, which completes meiosis I to give two secondary spermatocytes. Meiosis II gives four spermatids, and spermiogenesis reshapes each into a sperm."
+    },
+    "id": "anp-male-physiology-1"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A cell in the wall of a seminiferous tubule holds 23 chromosomes, and each is made of two chromatids. What is the cell?",
+    "options": [
+      "Spermatogonium",
+      "Primary spermatocyte",
+      "Secondary spermatocyte",
+      "Spermatid"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Meiosis I halves the chromosome number but leaves the sister chromatids joined, so a secondary spermatocyte has 23 double chromosomes.",
+      "options": [
+        "Spermatogonia are diploid stem cells with 46 chromosomes.",
+        "A primary spermatocyte is diploid: 46 chromosomes, 92 chromatids.",
+        "Correct. Haploid with double chromosomes: the stage between meiosis I and meiosis II.",
+        "A spermatid has finished meiosis II, so its 23 chromosomes are single."
+      ]
+    },
+    "id": "anp-male-physiology-2"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fifty primary spermatocytes complete meiosis and spermiogenesis normally. How many sperm result?",
+    "options": [
+      "50",
+      "100",
+      "200",
+      "400"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each primary spermatocyte gives two secondary spermatocytes, each of which gives two spermatids: 4 per primary spermatocyte. Spermiogenesis reshapes without dividing. 50 × 4 = 200 sperm.",
+      "options": [
+        "Spermiogenesis does not divide cells, but meiosis does, twice.",
+        "100 counts only one division. Meiosis has two.",
+        "Correct. Four sperm from each primary spermatocyte.",
+        "400 would need a third division. Spermiogenesis only reshapes."
+      ]
+    },
+    "id": "anp-male-physiology-3"
+  },
+  {
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: secondary spermatocyte → (meiosis II) → spermatid → ____ → sperm.",
+    "options": [
+      "Spermiogenesis",
+      "Mitosis",
+      "Meiosis I",
+      "Spermatogonium"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Spermiogenesis is the reshaping of a round spermatid into a sperm: the DNA packs, the acrosome and tail form, and excess cytoplasm is shed. No division happens.",
+      "options": [
+        "Correct. Spermiogenesis reshapes spermatids into sperm.",
+        "Mitosis happens in the spermatogonia, at the start of the process, not after meiosis.",
+        "Meiosis I came before, making the secondary spermatocytes.",
+        "The spermatogonium is the stem cell at the start of the line, not a step after the spermatid."
+      ]
+    },
+    "id": "anp-male-physiology-4"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Why does a Sertoli cell's release of androgen-binding protein matter for sperm production?",
+    "options": [
+      "It carries testosterone out of the testis to the muscles",
+      "It turns testosterone into the stronger hormone DHT",
+      "It blocks testosterone from braking the pituitary",
+      "It keeps testosterone concentrated inside the tubules"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Androgen-binding protein holds testosterone in the tubule fluid, keeping its concentration there many times the blood level. Spermatogenesis needs that high local level.",
+      "options": [
+        "Testosterone reaches muscles through the blood bound to plasma proteins; androgen-binding protein works inside the tubules.",
+        "DHT is made by the enzyme 5-alpha reductase in target tissues, not by a binding protein.",
+        "Blood testosterone still reaches the hypothalamus and pituitary; the binding protein acts locally in the testis.",
+        "Correct. It traps testosterone where the germ cells are."
+      ]
+    },
+    "id": "anp-male-physiology-5"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why are the spermatocytes and spermatids kept behind the blood-testis barrier, while the spermatogonia sit outside it?",
+    "options": [
+      "Spermatogonia need no nutrients from the blood, while the later cells need a great many of them",
+      "The later cells carry new proteins made after the immune system learned self-tolerance",
+      "Spermatogonia are haploid and cannot be harmed by toxins",
+      "The barrier stops sperm from leaving the tubule too early"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Self-tolerance was established in childhood, before meiosis began. Spermatocytes and spermatids make new surface proteins that white blood cells have never been taught to ignore, so they would be attacked as foreign. The Sertoli tight junctions keep antibodies and lymphocytes away from them.",
+      "options": [
+        "Spermatogonia need nutrients too; they get them directly from the blood side of the barrier.",
+        "Correct. The barrier shields cells whose proteins look foreign to the immune system.",
+        "Spermatogonia are diploid, not haploid.",
+        "Sperm are released into the lumen on the far side of the barrier; the barrier does not hold them back."
+      ]
+    },
+    "id": "anp-male-physiology-6"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A semen analysis shows many sperm with normal heads and tails that barely move. Which part of the sperm is most likely faulty?",
+    "options": [
+      "The acrosome",
+      "The midpiece mitochondria",
+      "The nucleus",
+      "The plasma membrane over the head"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The tail moves by motor proteins that use ATP. The ATP comes from the spiral of mitochondria in the midpiece. With normal heads and tails but little movement, the energy supply is the most likely fault.",
+      "options": [
+        "The acrosome holds enzymes used at the egg; it does not power swimming.",
+        "Correct. The midpiece mitochondria make the ATP that drives the flagellum.",
+        "The nucleus carries the DNA; it does not move the sperm.",
+        "The membrane over the head matters when the sperm meets the egg, not for swimming."
+      ]
+    },
+    "id": "anp-male-physiology-7"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What does the acrosome contain?",
+    "options": [
+      "Mitochondria that make ATP",
+      "Microtubules that bend the tail",
+      "The haploid set of chromosomes",
+      "Digestive enzymes"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The acrosome is a cap-like sac of digestive enzymes over the front of the head, made from the Golgi apparatus. The enzymes let the sperm digest a path through the layers around the egg.",
+      "options": [
+        "Mitochondria are in the midpiece.",
+        "The microtubules are in the flagellum, the tail.",
+        "The chromosomes are in the nucleus, behind the acrosome.",
+        "Correct. The acrosome is an enzyme-filled cap."
+      ]
+    },
+    "id": "anp-male-physiology-8"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-27-6",
+    "pin": "acrosome",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Nucleus",
+      "Acrosome",
+      "Centriole",
+      "Midpiece"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The cap over the front of the sperm head is the acrosome, a sac of digestive enzymes.",
+      "options": [
+        "The nucleus fills the head beneath the cap.",
+        "Correct. This cap is the acrosome.",
+        "The centriole sits at the base of the head, where the tail begins.",
+        "The midpiece is behind the head, packed with mitochondria."
+      ]
+    },
+    "id": "anp-male-physiology-9"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-27-6",
+    "pin": "mid-piece",
+    "q": "Name the pinned region.",
+    "options": [
+      "Head",
+      "Midpiece",
+      "Tail",
+      "End piece"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The short region just behind the head, wrapped in a spiral of mitochondria, is the midpiece.",
+      "options": [
+        "The head holds the nucleus and acrosome.",
+        "Correct. The midpiece holds the mitochondria.",
+        "The tail is the long whip-like part beyond the midpiece.",
+        "The end piece is the thin tip of the tail."
+      ]
+    },
+    "id": "anp-male-physiology-10"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-27-8",
+    "pin": "sertoli-cell",
+    "q": "Name the pinned cell.",
+    "options": [
+      "Leydig cell",
+      "Sertoli cell",
+      "Spermatogonium",
+      "Red blood cell"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The tall supporting cell in the tubule wall that FSH acts on is the Sertoli (sustentacular) cell. It releases androgen-binding protein and inhibin.",
+      "options": [
+        "Leydig cells lie in the spaces between the tubules and respond to LH.",
+        "Correct. The Sertoli cell sits inside the tubule wall.",
+        "A spermatogonium is a stem cell on the basement membrane; FSH's main target here is the supporting cell.",
+        "Red blood cells are in the capillaries, not in the tubule wall."
+      ]
+    },
+    "id": "anp-male-physiology-11"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Which hormone acts mainly on the Leydig cells?",
+    "options": [
+      "LH",
+      "FSH",
+      "Inhibin",
+      "GnRH"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "LH binds receptor proteins on the Leydig (interstitial) cells and drives them to make testosterone.",
+      "options": [
+        "Correct. LH drives testosterone production by the Leydig cells.",
+        "FSH acts mainly on the Sertoli cells.",
+        "Inhibin comes from the Sertoli cells and acts on the pituitary.",
+        "GnRH acts on the anterior pituitary, not on the testis."
+      ]
+    },
+    "id": "anp-male-physiology-12"
+  },
+  {
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A man's testes are badly damaged by an infection, and both his Leydig and Sertoli cells stop working. Predict the change in each variable weeks later, compared with before.",
+    "variables": [
+      {
+        "name": "Blood testosterone",
+        "answer": "down",
+        "why": "The Leydig cells that make testosterone no longer work, so blood testosterone falls."
+      },
+      {
+        "name": "Inhibin",
+        "answer": "down",
+        "why": "Inhibin comes from the Sertoli cells, which have stopped working."
+      },
+      {
+        "name": "GnRH pulses from the hypothalamus",
+        "answer": "up",
+        "why": "With little testosterone, the brake on the hypothalamus is lifted, so it releases more GnRH."
+      },
+      {
+        "name": "LH",
+        "answer": "up",
+        "why": "Less testosterone braking the pituitary, and more GnRH driving it, raise LH."
+      },
+      {
+        "name": "FSH",
+        "answer": "up",
+        "why": "Both brakes on FSH, testosterone and inhibin, are gone, so FSH rises, usually even more than LH."
+      },
+      {
+        "name": "Sperm count",
+        "answer": "down",
+        "why": "Without working Sertoli cells and a high local testosterone level, spermatogenesis stops."
+      }
+    ],
+    "why": {
+      "correct": "When the gonad fails, its products fall and the feedback brakes lift. The hypothalamus and pituitary push harder, so GnRH, LH and FSH rise, but the damaged testis cannot respond. Low testosterone with high LH and FSH is the pattern of testicular (primary) failure."
+    },
+    "id": "anp-male-physiology-13"
+  },
+  {
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A tumor destroys the cells of a man's anterior pituitary that make LH and FSH. His hypothalamus and testes are normal. Predict the change in each variable, compared with before.",
+    "variables": [
+      {
+        "name": "LH",
+        "answer": "down",
+        "why": "The cells that make LH are gone."
+      },
+      {
+        "name": "Blood testosterone",
+        "answer": "down",
+        "why": "Without LH, the Leydig cells receive no signal to make testosterone."
+      },
+      {
+        "name": "GnRH release",
+        "answer": "up",
+        "why": "Low testosterone lifts the brake on the hypothalamus, so it releases more GnRH, but the pituitary cannot respond."
+      },
+      {
+        "name": "Sperm count",
+        "answer": "down",
+        "why": "Without FSH and without the high local testosterone that LH normally drives, spermatogenesis fails."
+      },
+      {
+        "name": "Size of the testes",
+        "answer": "down",
+        "why": "Without gonadotropin drive, the tubules and Leydig cells shrink."
+      }
+    ],
+    "why": {
+      "correct": "Loss of the pituitary gonadotropins removes the drive to the testes. Testosterone, sperm output and testis size fall together, and GnRH rises because the feedback brake has lifted. Low testosterone with low LH points to a problem above the testis."
+    },
+    "id": "anp-male-physiology-14"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "misconception": "taking testosterone boosts fertility",
+    "q": "A 29-year-old bodybuilder has taken testosterone injections for a year. His blood androgen level is high, yet a fertility test finds almost no sperm. What explains this?",
+    "options": [
+      "Very high blood testosterone poisons the finished sperm directly while they are stored in the ducts",
+      "Negative feedback suppressed his LH and FSH, so the tubules lost their local testosterone and FSH",
+      "The injections block the ductus deferens",
+      "His Sertoli cells were converted into Leydig cells"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The injected androgen brakes the hypothalamus and pituitary, so GnRH, LH and FSH fall. Without LH, his Leydig cells stop making testosterone, and the very high local level inside the tubules is lost, along with FSH support. Spermatogenesis needs that local level, which blood testosterone from injections cannot reach. His testes also shrink. You can follow the same chain in the endocrine chapter's anabolic steroid scenario.",
+      "options": [
+        "Testosterone is needed for spermatogenesis; it does not kill sperm.",
+        "Correct. Suppressed LH and FSH remove the local drive to sperm production.",
+        "Hormone injections do not block a duct; the problem is that few sperm are made.",
+        "Cells do not convert from one type to the other; both types simply lose their pituitary drive."
+      ]
+    },
+    "id": "anp-male-physiology-15"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "Two years after chemotherapy for lymphoma, a man has normal testosterone and LH but a high FSH level and very few sperm. What is the best explanation?",
+    "options": [
+      "His pituitary is making too much GnRH",
+      "His Leydig cells were destroyed",
+      "His testosterone receptor proteins no longer work",
+      "His germ cells were destroyed, so his Sertoli cells release less inhibin"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Chemotherapy kills rapidly dividing germ cells but usually spares the Leydig cells, so testosterone and LH stay normal. Sertoli cells supporting few germ cells release less inhibin, so the brake on FSH weakens and FSH rises on its own.",
+      "options": [
+        "GnRH comes from the hypothalamus, not the pituitary, and more GnRH would raise LH as well as FSH.",
+        "If Leydig cells were destroyed, testosterone would be low and LH high.",
+        "Broken receptor proteins would raise both testosterone and LH, because feedback would fail too.",
+        "Correct. Low inhibin selectively raises FSH."
+      ]
+    },
+    "id": "anp-male-physiology-16"
+  },
+  {
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student described the male HPG axis. One step is wrong. Which one?",
+    "options": [
+      "The hypothalamus releases GnRH in pulses",
+      "GnRH makes the anterior pituitary release LH and FSH",
+      "LH drives the Leydig cells to make testosterone",
+      "FSH and testosterone act on the Sertoli cells",
+      "Inhibin from the Leydig cells lowers FSH release"
+    ],
+    "correct": 4,
+    "why": {
+      "correct": "Inhibin comes from the Sertoli cells, not the Leydig cells. It acts on the anterior pituitary to lower FSH release.",
+      "options": [
+        "This step is right. GnRH is released in bursts every 1 to 3 hours.",
+        "This step is right. GnRH is the releasing hormone for both gonadotropins.",
+        "This step is right. LH targets the Leydig cells.",
+        "This step is right. The Sertoli cells respond to both.",
+        "This is the error. Sertoli cells, not Leydig cells, make inhibin."
+      ]
+    },
+    "id": "anp-male-physiology-17"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A drug that acts like GnRH is given as a steady, continuous dose to a man with prostate cancer. After two weeks, his testosterone is very low. Why?",
+    "options": [
+      "The drug destroys the Leydig cells",
+      "Constant GnRH signaling makes the pituitary stop releasing LH",
+      "The drug binds androgen receptor proteins in the prostate",
+      "Constant GnRH signaling turns almost all of his testosterone into estradiol instead"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The pituitary responds to GnRH arriving in pulses. Under steady, unchanging GnRH signaling, its cells stop responding, so LH (and FSH) release falls after a brief rise. Without LH, the Leydig cells make little testosterone, which slows the growth of androgen-sensitive prostate cancer.",
+      "options": [
+        "The Leydig cells are intact; they simply lose their LH signal.",
+        "Correct. Continuous GnRH shuts down LH release.",
+        "The drug acts on the pituitary; blocking androgen receptor proteins would not lower testosterone, and would usually raise it.",
+        "Aromatase makes estradiol from testosterone regardless of GnRH, and it would not account for such low testosterone."
+      ]
+    },
+    "id": "anp-male-physiology-18"
+  },
+  {
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every change at puberty that testosterone (directly or as DHT) produces in a boy.",
+    "options": [
+      "Deeper voice from a larger larynx",
+      "Increased skeletal muscle mass",
+      "Start of spermatogenesis",
+      "Growth of facial hair",
+      "Closure of the epiphyseal plates without any conversion"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "Testosterone enlarges the larynx, builds muscle, starts spermatogenesis and, through DHT in hair follicles, grows facial hair. Plate closure depends on estradiol made from testosterone by aromatase, so testosterone does not close the plates by itself.",
+      "options": [
+        "Correct. Testosterone enlarges the larynx and lengthens the vocal cords.",
+        "Correct. Testosterone speeds protein synthesis in skeletal muscle.",
+        "Correct. Spermatogenesis needs a high local testosterone level.",
+        "Correct. DHT acting on hair follicles drives male-pattern hair growth.",
+        "The plates close under estrogen. Men who cannot make or respond to estrogen keep growing into adulthood."
+      ]
+    },
+    "id": "anp-male-physiology-19"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "A 17-year-old raised as a girl is seen because she has never had a period. She has breasts and female external genitals, but tests show XY chromosomes, testes in her abdomen, and testosterone at the high end of the usual male range. Which fault explains this pattern?",
+    "options": [
+      "Her testes make no testosterone",
+      "She has no SRY gene",
+      "Her pituitary makes no LH",
+      "Her androgen receptor proteins do not work"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In androgen insensitivity, testosterone is made normally, even in excess, but the androgen receptor protein does not work. The male external genitals never form, the brain's feedback brake fails so LH and testosterone run high, and aromatase turns the extra testosterone into estrogen, which develops breasts.",
+      "options": [
+        "Her testosterone is high, so her testes clearly make it.",
+        "She has testes, so SRY did its job; SRY is what makes the gonad a testis.",
+        "Without LH, testosterone would be low, not high.",
+        "Correct. The hormone is present, but cells cannot respond to it."
+      ]
+    },
+    "id": "anp-male-physiology-20"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Why does an adult man's hematocrit usually run higher than a woman's?",
+    "options": [
+      "Men lose more blood through the testes",
+      "Estrogen destroys red blood cells in women",
+      "Testosterone raises erythropoietin release and marrow activity",
+      "Men have more plasma, which concentrates red cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Testosterone stimulates erythropoietin release and red cell production in the bone marrow, so men carry a higher proportion of red cells in their blood.",
+      "options": [
+        "The testes do not cause blood loss.",
+        "Estrogen does not destroy red blood cells.",
+        "Correct. Testosterone promotes red blood cell production.",
+        "More plasma would lower the hematocrit, not raise it."
+      ]
+    },
+    "id": "anp-male-physiology-21"
+  }
+]
