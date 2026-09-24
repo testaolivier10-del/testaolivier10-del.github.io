@@ -1,0 +1,37 @@
+{
+  "filtration-membrane": {
+    "def": "The three-layer filter between glomerular blood and the capsular space: the fenestrated endothelium (its fenestrations stop blood cells), the thick, negatively charged glomerular basement membrane, and the podocyte pedicels with filtration slits between them. It passes water and small solutes and holds back almost all protein.",
+    "roots": [["fenestra", "window"], ["ped-", "foot"], ["-icel", "small"]],
+    "say": "fen-eh-STRAY-shunz; PED-ih-selz"
+  },
+  "glomerular-pressures": {
+    "def": "The forces across the glomerular capillary wall: glomerular hydrostatic pressure (GBHP, about 55 mm Hg) pushes fluid out; capsular hydrostatic pressure (CHP, about 15 mm Hg) and blood colloid osmotic pressure (about 30 mm Hg on average) push it back.",
+    "roots": [["hydro-", "water"], ["-static", "standing"]],
+    "say": ""
+  },
+  "glomerular-nfp": {
+    "def": "The net pressure driving filtration at the glomerulus: NFP = glomerular hydrostatic pressure − (capsular hydrostatic pressure + blood colloid osmotic pressure), about 55 − (15 + 30) = 10 mm Hg.",
+    "roots": [],
+    "say": ""
+  },
+  "gfr": {
+    "def": "The glomerular filtration rate (GFR) is the volume of glomerular filtrate both kidneys make per minute, about 125 mL/min or 180 L a day in a healthy young adult. GFR = filtration coefficient × net filtration pressure.",
+    "roots": [["glomer-", "ball of yarn"]],
+    "say": ""
+  },
+  "gfr-autoregulation": {
+    "def": "The kidney's own control that keeps GFR nearly constant between a mean arterial pressure of about 80 and 180 mm Hg by adjusting the afferent arteriole: the myogenic mechanism (stretch makes it constrict) and tubuloglomerular feedback (more sodium chloride at the macula densa makes it constrict).",
+    "roots": [["auto-", "self"], ["my/o", "muscle"], ["-genic", "produced by"]],
+    "say": ""
+  },
+  "gfr-extrinsic": {
+    "def": "Nerves and hormones that override autoregulation: strong sympathetic activation constricts the afferent arterioles and lowers GFR; angiotensin II constricts the efferent arterioles and protects GFR; ANP and local prostaglandins widen the afferent arterioles and raise it.",
+    "roots": [],
+    "say": ""
+  },
+  "filtration-abnormal": {
+    "def": "Filtrate containing what a healthy filter holds back. Proteinuria is protein, usually albumin, in the urine above the normal trace; hematuria is red blood cells in the urine, from the glomeruli or anywhere further down the urinary tract.",
+    "roots": [["-uria", "in the urine"], ["hemat-", "blood"]],
+    "say": "pro-teen-YOOR-ee-uh; hee-muh-TYOOR-ee-uh"
+  }
+}

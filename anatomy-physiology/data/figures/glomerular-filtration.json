@@ -11,7 +11,10 @@
     "alt": "A close-up of a renal corpuscle: looping capillaries inside a cup-shaped capsule, with the tubule leaving at the lower right. Three arrows cross the capillary wall. Blood hydrostatic pressure, 55 mm Hg, points out of the capillary into the capsule. Blood colloid osmotic pressure, 30 mm Hg, and capsular hydrostatic pressure, 15 mm Hg, point back into the capillary. They sum to a net outward pressure of 10 mm Hg, shown by an arrow pointing into the tubule.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.16",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 1138,
+    "ext": "jpg"
   },
   "os-25-11": {
     "source": "openstax",
@@ -25,7 +28,10 @@
     "alt": "(a) A drawing of glomerular capillaries seen from the capsular space. Large cell bodies send out branches that split into many fine, finger-like processes, and the processes from neighboring cells interlock like the teeth of a zipper, leaving thin slits between them. (b) One capillary with three of these cells wrapped around it; the cell bodies, the capillary and the slits between the interlocking processes are labeled.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.11",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 514,
+    "ext": "jpg"
   },
   "os-25-12": {
     "source": "openstax",
@@ -39,7 +45,10 @@
     "alt": "A capillary cut open and drawn in three dimensions. Its wall is a single layer of endothelial cells joined edge to edge, and every cell is dotted with small round pores that pass right through it. A continuous basement membrane wraps the outside of the tube.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.12",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 833,
+    "ext": "jpg"
   },
   "gfr-autoregulation": {
     "source": "levlprep",

@@ -11,7 +11,10 @@
     "alt": "The lower trunk seen from behind, with the vertebrae numbered from T10 to L5, the lower ribs and the tops of the hip bones. A kidney sits on each side of the spine between about T12 and L3, the right one a little lower than the left, and the 12th rib crosses the back of the upper part of each. A thin ureter runs down from each kidney beside the spine. The liver shows above the right kidney.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.7",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 813,
+    "ext": "jpg"
   },
   "os-25-8": {
     "source": "openstax",
@@ -25,7 +28,10 @@
     "alt": "An inset shows both kidneys in place on either side of the aorta and inferior vena cava, each capped by an adrenal gland. The main drawing is a kidney cut in a frontal plane. A thin outer capsule covers a pale outer zone. Inside it sit striped, cone-shaped pyramids, separated by bands of the outer tissue that reach inward between them. The tip of each pyramid points into a small cup, the cups join larger cups, and these join a funnel that narrows into the ureter. An artery, a vein and nerves enter at the notch on the kidney's medial side, and their branches run between the pyramids and arch over their bases.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.8",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 629,
+    "ext": "jpg"
   },
   "os-25-9": {
     "source": "openstax",
@@ -39,7 +45,10 @@
     "alt": "On the left, a kidney cut in a frontal plane with its arteries in red and veins in blue. The renal artery splits into a few large branches, which send branches outward between the pyramids; these arch over the pyramid bases and give off small branches that run out toward the surface. Veins follow the same paths back to the renal vein. A wide gray arrow leads to an enlarged drawing on the right of one microscopic filtering unit: a small arteriole feeding a tuft of capillaries inside a cup, a second arteriole leaving the tuft, and a mesh of capillaries wrapped around a long, looping tubule, draining into a small vein.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.9",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 882,
+    "ext": "jpg"
   },
   "os-25-3": {
     "source": "openstax",
@@ -53,7 +62,10 @@
     "alt": "Two side views of the pelvis cut down the midline. (a) Female: the bladder sits just behind the pubic bone, the ureter enters it from behind, and a short urethra runs down and forward from the bladder to open at the body surface in front of the reproductive tract. (b) Male: the bladder sits behind the pubic bone with the ureter entering from behind, and a long urethra runs down through a gland just below the bladder, through the floor of the pelvis and along the length of the external genitals.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.3",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 400,
+    "ext": "jpg"
   },
   "os-25-5": {
     "source": "openstax",
@@ -67,6 +79,9 @@
     "alt": "A side view of the female pelvis cut down the midline, with the sacrum at the back and the pubic bone at the front. The bladder sits behind the pubic bone. Nerves leave the sacral part of the spinal cord through the sacrum and run forward and down; the pudendal nerve reaches the ring of muscle around the urethra, labeled sphincter, and the skin and muscle of the genital region.",
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.5",
-    "labels": []
+    "labels": [],
+    "w": 1100,
+    "h": 801,
+    "ext": "jpg"
   }
 }

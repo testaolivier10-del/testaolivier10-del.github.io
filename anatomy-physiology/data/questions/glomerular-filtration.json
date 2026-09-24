@@ -11,7 +11,7 @@
     "options": [
       "+13 mm Hg",
       "+107 mm Hg",
-      "+43 mm Hg",
+      "+45 mm Hg",
       "−13 mm Hg"
     ],
     "correct": 0,
@@ -20,7 +20,7 @@
       "options": [
         "Correct. 60 − 47 = +13 mm Hg.",
         "107 comes from adding all three pressures. Capsular pressure and colloid osmotic pressure oppose filtration, so they are subtracted.",
-        "43 comes from subtracting only the capsular pressure (60 − 15 − 2). The colloid osmotic pressure of 32 mm Hg also pulls fluid back.",
+        "45 comes from subtracting only the capsular pressure (60 − 15). The colloid osmotic pressure of 32 mm Hg also pulls fluid back.",
         "The sign is reversed. The outward pressure, 60, is larger than the inward total, 47, so NFP is positive."
       ]
     }
@@ -529,7 +529,7 @@
     "options": [
       "5 percent",
       "20 percent",
-      "72 percent",
+      "50 percent",
       "480 mL/min"
     ],
     "correct": 1,
@@ -538,7 +538,7 @@
       "options": [
         "5 comes from dividing the wrong way round (600 ÷ 120). The fraction filtered is GFR divided by plasma flow.",
         "Correct. 120 ÷ 600 = 0.20.",
-        "72 has no basis here; it is not a ratio of the two flows.",
+        "50 percent would mean half the plasma is filtered. 120 is one fifth of 600, not half.",
         "480 mL/min is the plasma that is not filtered (600 − 120), not the fraction that is."
       ]
     }

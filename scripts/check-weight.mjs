@@ -423,7 +423,11 @@ const DATA_BUDGETS = [
   /* 76 -> 96: endocrine and blood drafted (77.8 KB). Every written chapter
      adds its definitions, so this keeps rising until the course is written;
      it loads after paint for hovers and blocks nothing. */
-  ['anatomy-physiology/assets/glossary.json', 96],
+  /* 96 -> 130: digestive, metabolism and urinary drafted (99.2 KB with
+     about 130 of 162 topics written). 130 covers the whole course at the
+     current rate of about 0.75 KB a topic; past that, split it by chapter
+     like the bank. */
+  ['anatomy-physiology/assets/glossary.json', 130],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
