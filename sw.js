@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v37';
+const CACHE_NAME = 'levlprep-v38';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
