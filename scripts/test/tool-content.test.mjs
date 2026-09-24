@@ -781,11 +781,16 @@ test('every textbook section is a page and still yields just its prose', () => {
    of them was found by looking at a rendering rather than by any check.
    Bounds are the part that can be checked without eyes; this checks that. */
 test('every generated ochem figure draws inside its own canvas', () => {
-  const files = readdirSync('ochem/notes').filter(f => f.endsWith('.html'));
+  // Lessons too: build-ochem-figures.mjs writes the same figures into lesson
+  // steps between the same markers.
+  const files = [
+    ...readdirSync('ochem/notes').filter(f => f.endsWith('.html')).map(f => join('ochem/notes', f)),
+    ...readdirSync('ochem/lessons').filter(f => f.endsWith('.html')).map(f => join('ochem/lessons', f)),
+  ];
   let seen = 0;
   for(const f of files){
-    const html = readFileSync(join('ochem/notes', f), 'utf8');
-    for(const m of html.matchAll(/<!-- fig:([a-z-]+):start -->([\s\S]*?)<!-- fig:\1:end -->/g)){
+    const html = readFileSync(f, 'utf8');
+    for(const m of html.matchAll(/<!-- fig:([a-z0-9-]+):start -->([\s\S]*?)<!-- fig:\1:end -->/g)){
       const [, id, block] = m;
       seen++;
       const vb = block.match(/viewBox="([^"]+)"/);

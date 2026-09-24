@@ -27,41 +27,30 @@
    through untouched, so the two generators compose without knowing about
    each other.
 
-     node scripts/build-ochem-figures.mjs            write
-     node scripts/build-ochem-figures.mjs --check    fail if stale (CI)
+   Figures can also live in scripts/ochem-figures/<topic>.mjs (one module per
+   topic, default-exporting an array of definitions), and a definition can
+   list `lessons: [...]` to show the same figure inside lesson steps, between
+   the same markers placed in a step's HTML string.
+
+     node scripts/build-ochem-figures.mjs                 write
+     node scripts/build-ochem-figures.mjs --only=<topic>  write one module's figures
+     node scripts/build-ochem-figures.mjs --check         fail if stale (CI)
 */
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, figure, P } from './lib/ochem-figure.mjs';
+import { zig, sk, ringDouble, polyPts, polyRing } from './lib/ochem-skeletal.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
+/* --only=<module> builds just the figures in scripts/ochem-figures/<module>.mjs
+   and touches no other page, so two people working on two chapters' figures
+   at once cannot overwrite each other's pages. */
+const only = (process.argv.find((a) => a.startsWith('--only=')) || '').slice(7).replace(/\.mjs$/, '');
 
 const FIGURES = [];
 
-/* A double bond inside a ring, or on a skeleton whose ends carry something
-   else. `bond(a, b, { order: 2 })` draws two full-length lines either side of
-   the axis, which is right for an isolated C=C and wrong the moment the
-   vertices are shared: the second line runs past the corner and hangs over
-   the neighboring bond, and where a dashed forming-bond arrives at the same
-   vertex the two cross. A ring chemist draws the second line short and on the
-   inside instead, so this does that — one full line along the bond, one
-   inset line offset toward `inward`. */
-function ringDouble(a, b, inward, opts = {}) {
-  const gap = opts.gap ?? 4.6;
-  const inset = opts.inset ?? 12;
-  const dx = b.x - a.x, dy = b.y - a.y;
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len, uy = dy / len;
-  let px = -uy, py = ux;
-  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
-  if ((inward.x - mx) * px + (inward.y - my) * py < 0) { px = -px; py = -py; }
-  const A = P(a.x + ux * inset + px * gap, a.y + uy * inset + py * gap);
-  const B = P(b.x - ux * inset + px * gap, b.y - uy * inset + py * gap);
-  return bond(a, b, { rFrom: 0, rTo: 0, cls: opts.cls }) +
-         bond(A, B, { rFrom: 0, rTo: 0, cls: opts.cls });
-}
 
 /* ------------------------------------------------------------------ 1 ---
    Why acid derivatives only react downhill. The ladder is the organising
@@ -771,241 +760,9 @@ FIGURES.push({
 });
 
 
-/* ------------------------------------------------------------------ A1 ---
-   The trap the prose names but cannot show: the longest chain is very often
-   not the row lying across the page. Two traces of one skeleton is the only
-   honest way to make that claim, because the reader who cannot already see
-   the seven-carbon path is exactly the reader the sentence is for. */
-FIGURES.push({
-  id: 'parent-chain-trace',
-  section: 'naming-parent-chain',
-  anchor: '<h3>When two chains tie</h3>',
-  alt: 'One eight-carbon skeleton traced two ways: the horizontal five-carbon row, and the seven-carbon path that turns a corner',
-  viewBox: '0 0 760 360',
-  build() {
-    let s = '';
-    /* One skeleton, drawn twice at the same coordinates so the two traces are
-       comparable at a glance. `ox` shifts the whole thing into its panel. */
-    const skeleton = (ox, traced, nums, branchLabel) => {
-      const R = [P(ox + 50, 210), P(ox + 92, 186), P(ox + 134, 210), P(ox + 176, 186), P(ox + 218, 210)];
-      /* The branch leans back over the start of the row rather than arcing
-         across it. Drawn the other way its third carbon ended up one bond
-         length above C4, and the skeleton read as a closed six-membered ring
-         — a reader could see cyclohexane where there is none. */
-      const B = [P(ox + 92, 138), P(ox + 54, 112), P(ox + 54, 64)];
-      const links = [
-        ['R0R1', R[0], R[1]], ['R1R2', R[1], R[2]], ['R2R3', R[2], R[3]], ['R3R4', R[3], R[4]],
-        ['R1B1', R[1], B[0]], ['B1B2', B[0], B[1]], ['B2B3', B[1], B[2]],
-      ];
-      let t = '';
-      // Every bond in plain ink first, then the traced ones over the top.
-      for (const [, a, b] of links) t += bond(a, b, { rFrom: 0, rTo: 0 });
-      for (const [k, a, b] of links) {
-        if (traced.includes(k)) t += bond(a, b, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
-      }
-      // Locants ride on one line above the skeleton so none of them lands on
-      // a bond; the branch carbons get theirs above the branch.
-      for (const [x, y, v] of nums) t += text(ox + x, y, v, { cls: 'fg-lbl', size: 11 });
-      t += text(ox + 50, 236, branchLabel[0], { cls: 'fg-sm', size: 9.5 });
-      t += text(ox + 150, 92, branchLabel[1], { cls: 'fg-sm', size: 9.5 });
-      return t;
-    };
 
-    s += panel(24, 44, 250, 224, { kind: 'warn' });
-    s += tag(149, 32, 'the row you can see');
-    s += skeleton(30, ['R0R1', 'R1R2', 'R2R3', 'R3R4'],
-      [[50, 236, '1'], [92, 212, '2'], [134, 236, '3'], [176, 212, '4'], [218, 236, '5']],
-      ['', 'a three-carbon branch']);
 
-    s += panel(396, 44, 250, 224, { kind: 'hi' });
-    s += tag(521, 32, 'the path that turns a corner');
-    s += skeleton(402, ['B2B3', 'B1B2', 'R1B1', 'R1R2', 'R2R3', 'R3R4'],
-      [[30, 68, '1'], [30, 116, '2'], [64, 146, '3'], [92, 212, '4'], [134, 236, '5'], [176, 212, '6'], [218, 236, '7']],
-      ['methyl', '']);
 
-    s += text(149, 292, 'five carbons, one propyl branch', { cls: 'fg-sm', size: 10 });
-    s += text(149, 314, '2-propylpentane', { cls: 'fg-tag-warn', size: 11.5 });
-    s += text(149, 332, 'no such compound name \u2014 a longer chain exists', { cls: 'fg-sm', size: 9.5 });
-    s += text(521, 292, 'seven carbons, one methyl branch', { cls: 'fg-sm', size: 10 });
-    s += text(521, 314, '4-methylheptane', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(521, 332, 'correct \u2014 nothing longer runs through the molecule', { cls: 'fg-sm', size: 9.5 });
-    return s;
-  },
-  caption: 'The same eight carbons, traced twice. The five-carbon row is what the drawing puts in front of you; the seven-carbon parent runs up into the branch and back along the row, and it is a longer continuous path through exactly the same skeleton.',
-  note: 'Both traces are legal paths \u2014 neither jumps a gap or reuses a carbon \u2014 so the rule is not "is this a chain?" but "is anything longer?". The check that catches it is to start at every end carbon in turn and count the longest route out. There are three ends here, and only one pair of them is seven carbons apart.',
-});
-
-/* ------------------------------------------------------------------ A2 ---
-   Alphabetical order is the one rule in the section that produces a
-   silently wrong answer, because a list sorted the obvious way still looks
-   sorted. A before/after strip is the comparison: the same five names,
-   filed by the letter you see and filed by the letter that counts. */
-FIGURES.push({
-  id: 'alphabetize-filing',
-  section: 'naming-substituents',
-  anchor: '<h3>The order in which the rules apply</h3>',
-  alt: 'Five substituent names with the letter each files under, then the same five sorted by first letter and sorted correctly',
-  viewBox: '0 0 760 350',
-  build() {
-    let s = '';
-    const cols = [
-      { x: 84,  name: 'tert-butyl',       rule: 'tert- is ignored',   letter: 'b', counts: false },
-      { x: 220, name: 'dimethyl',         rule: 'di- is ignored',     letter: 'm', counts: false },
-      { x: 356, name: 'ethyl',            rule: 'nothing to strip',   letter: 'e', counts: true  },
-      { x: 492, name: 'isopropyl',        rule: 'iso is part of it',  letter: 'i', counts: true  },
-      { x: 628, name: 'cyclohexyl',       rule: 'cyclo is part of it', letter: 'c', counts: true },
-    ];
-    s += tag(380, 36, 'what each name files under');
-    for (const c of cols) {
-      s += label(c.x, 74, c.name, { size: 12.5 });
-      s += text(c.x, 96, c.rule, { cls: c.counts ? 'fg-tag-good' : 'fg-tag-warn', size: 9.5 });
-      s += atom(c.x, 128, c.letter, { kind: 'hi', r: 15 });
-    }
-    s += rule(34, 160, 726, 160);
-
-    // The same five names, sorted two ways. The rows are the whole figure:
-    // both look sorted, and only one is.
-    const row = (y, heading, order, kind) => {
-      s += text(70, y, heading, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 10.5, anchor: 'start' });
-      order.forEach((nm, i) => {
-        s += label(150 + i * 124, y + 30, nm, { size: 12 });
-        if (i) s += text(150 + i * 124 - 62, y + 30, '\u00b7', { cls: 'fg-sm', size: 12 });
-      });
-    };
-    row(196, 'sorted by the first letter printed', ['cyclohexyl', 'dimethyl', 'ethyl', 'isopropyl', 'tert-butyl'], 'warn');
-    row(276, 'sorted by the letter it files under', ['tert-butyl', 'cyclohexyl', 'ethyl', 'isopropyl', 'dimethyl'], 'good');
-    return s;
-  },
-  caption: 'Five substituents, filed. A multiplying prefix (<i>di-</i>) and an italic structural prefix (<i>tert-</i>) are stripped before the name is alphabetized; <i>iso</i> and <i>cyclo</i> are not, because they are joined to the word rather than hyphenated off it.',
-  note: 'The two rows are the reason this matters. Both are in alphabetical order by some reading, both look finished, and only the lower one is right \u2014 <i>tert</i>-butyl moves from last to first and dimethyl from second to last. The typography is the tell: if the prefix is hyphenated and italic, cross it out before you sort.',
-});
-
-/* ------------------------------------------------------------------ A3 ---
-   "Priority beats length" is stated in one sentence and is the hardest
-   consequence of the priority order to believe, because it asks the reader
-   to reject the longest chain after having spent a whole section learning
-   to find it. Two traces of one molecule settle it. */
-FIGURES.push({
-  id: 'parent-must-contain',
-  section: 'naming-functional-groups',
-  anchor: '<h3>The common names that never went away</h3>',
-  alt: 'One alcohol traced twice: the six-carbon chain that misses the OH, and the five-carbon chain through it that is the real parent',
-  viewBox: '0 0 760 390',
-  build() {
-    let s = '';
-    const skeleton = (ox, traced, nums, extra, extraAnchor = 'middle') => {
-      const a = [P(ox + 50, 174), P(ox + 86, 152), P(ox + 122, 174), P(ox + 158, 152), P(ox + 194, 174), P(ox + 230, 152)];
-      const b1 = P(ox + 122, 216), oh = P(ox + 122, 258);
-      const links = [
-        ['a0', a[0], a[1]], ['a1', a[1], a[2]], ['a2', a[2], a[3]], ['a3', a[3], a[4]], ['a4', a[4], a[5]],
-        ['br', a[2], b1],
-      ];
-      let t = '';
-      for (const [, p, q] of links) t += bond(p, q, { rFrom: 0, rTo: 0 });
-      for (const [k, p, q] of links) {
-        if (traced.includes(k)) t += bond(p, q, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
-      }
-      // The OH is drawn on both sides; it is the same molecule twice.
-      t += bond(b1, oh, { rFrom: 0, rTo: 15, cls: traced.includes('oh') ? 'fg-bond-hi' : 'fg-bond' });
-      t += atom(oh.x, oh.y, 'OH', { kind: traced.includes('oh') ? 'hi' : 'plain' });
-      for (const [x, y, v] of nums) t += text(ox + x, y, v, { cls: 'fg-lbl', size: 11 });
-      for (const [x, y, v] of extra) t += text(ox + x, y, v, { cls: 'fg-sm', size: 9.5, anchor: extraAnchor });
-      return t;
-    };
-
-    /* Both panels sit inside the left 90% of the canvas: the right-hand one
-       carries the answer, and past that the reading column has scrolled it
-       off. The OH note is anchored to the right of its own disc rather than
-       centered over it, which is what had it sitting on the label. */
-    s += panel(20, 64, 300, 224, { kind: 'warn' });
-    s += tag(170, 52, 'the longest chain in the molecule');
-    s += skeleton(26, ['a0', 'a1', 'a2', 'a3', 'a4'],
-      [[50, 130, '1'], [86, 130, '2'], [122, 130, '3'], [158, 130, '4'], [194, 130, '5'], [230, 130, '6']],
-      [[144, 250, 'the OH is off the chain']], 'start');
-
-    s += panel(370, 64, 300, 224, { kind: 'hi' });
-    s += tag(520, 52, 'the longest chain through the OH');
-    s += skeleton(376, ['br', 'a2', 'a3', 'a4', 'oh'],
-      [[122, 130, '2'], [158, 130, '3'], [194, 130, '4'], [230, 130, '5'], [96, 220, '1']],
-      [[68, 130, 'ethyl']]);
-
-    s += rule(20, 300, 670, 300);
-    s += text(170, 322, 'six carbons \u2014 the longest path there is', { cls: 'fg-sm', size: 10 });
-    s += text(170, 344, '3-(hydroxymethyl)hexane', { cls: 'fg-tag-warn', size: 11.5 });
-    s += text(170, 364, 'demotes the alcohol to a prefix, which is not allowed', { cls: 'fg-sm', size: 9.5 });
-    s += text(520, 322, 'five carbons \u2014 shorter, and it contains the OH', { cls: 'fg-sm', size: 10 });
-    s += text(520, 344, '2-ethylpentan-1-ol', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(520, 364, 'the alcohol takes the suffix and C1', { cls: 'fg-sm', size: 9.5 });
-    return s;
-  },
-  caption: 'One molecule, two candidate parents. The six-carbon chain on the left is genuinely the longest path through the skeleton and it is still the wrong parent, because it does not pass through the carbon carrying the \u2013OH.',
-  note: 'The left-hand name is not a typo; it is what you get by applying the previous section\u2019s rule and nothing else, and the alcohol ends up as a <i>hydroxymethyl</i> prefix (a \u2013CH\u2082OH treated as a branch and named the way the previous section named (2-methylpropyl)). That is the tell. If the highest-priority group in your molecule has turned into a prefix and there was no group above it, you picked the parent chain before you ranked the groups.',
-});
-
-/* ------------------------------------------------------------------ A4 ---
-   Numbering a ring has no left end to start from, and the section says so
-   and then asks the reader to go round "in whichever direction gives the
-   lowest locants". Two rings numbered in opposite directions is that
-   sentence made checkable. */
-FIGURES.push({
-  id: 'ring-numbering-direction',
-  section: 'naming-rings-unsaturation',
-  anchor: '<h3>Cis, trans, E and Z \u2014 a forward reference</h3>',
-  alt: 'One methylcyclohexene numbered clockwise and counterclockwise, both giving the double bond carbons 1 and 2 and the methyl 3 or 6',
-  viewBox: '0 0 760 376',
-  build() {
-    let s = '';
-    /* Vertex 0 is the top; the double bond runs from vertex 0 to vertex 1 and
-       the methyl sits on vertex 2, so it is adjacent to an alkene carbon.
-       `order` lists which locant each vertex receives, which is the only
-       thing that differs between the two panels. */
-    const ring = (cx, order) => {
-      const v = [];
-      for (let i = 0; i < 6; i++) {
-        const ang = (-90 + i * 60) * Math.PI / 180;
-        v.push(P(cx + Math.cos(ang) * 56, 170 + Math.sin(ang) * 56));
-      }
-      let t = '';
-      for (let i = 0; i < 6; i++) {
-        if (i === 0) t += ringDouble(v[i], v[1], P(cx, 170));
-        else t += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0 });
-      }
-      // The methyl stub points straight out from the center.
-      const m = v[2];
-      const ux = (m.x - cx) / 56, uy = (m.y - 170) / 56;
-      t += bond(m, P(m.x + ux * 38, m.y + uy * 38), { rFrom: 0, rTo: 16 });
-      t += atom(m.x + ux * 38, m.y + uy * 38, 'CH\u2083', { r: 16 });
-      // Locants sit inside the ring, where the methyl cannot collide with them.
-      for (let i = 0; i < 6; i++) {
-        const ux2 = (v[i].x - cx) / 56, uy2 = (v[i].y - 170) / 56;
-        t += text(cx + ux2 * 33, 170 + uy2 * 33 + 4, String(order[i]), { cls: 'fg-lbl', size: 11 });
-      }
-      return t;
-    };
-
-    /* The pair is centered on the part of the canvas the reading column
-       actually shows, not on the canvas: the right-hand panel carries the
-       answer and past about 0.9 of the width it is behind a scroll. */
-    s += panel(44, 76, 248, 196, { kind: 'warn' });
-    s += tag(168, 64, 'round one way');
-    s += ring(168, [2, 1, 6, 5, 4, 3]);
-
-    s += panel(404, 76, 248, 196, { kind: 'hi' });
-    s += tag(528, 64, 'round the other');
-    s += ring(528, [1, 2, 3, 4, 5, 6]);
-
-    s += text(168, 298, 'methyl lands on C6', { cls: 'fg-sm', size: 10 });
-    s += text(168, 320, '6-methylcyclohex-1-ene', { cls: 'fg-tag-warn', size: 11.5 });
-    s += text(528, 298, 'methyl lands on C3', { cls: 'fg-sm', size: 10 });
-    s += text(528, 320, '3-methylcyclohex-1-ene', { cls: 'fg-tag-good', size: 11.5 });
-
-    s += rule(34, 336, 662, 336);
-    s += text(348, 360, 'Both give the double bond 1 and 2. Only the methyl separates them, and 3 beats 6.', { cls: 'fg-lbl', size: 12 });
-    return s;
-  },
-  caption: 'The same methylcyclohexene, numbered in both directions. A ring has no end to start from, so the double bond is placed first \u2014 it takes C1 and C2 either way \u2014 and the direction is then settled by whichever substituent is left.',
-  note: 'Note the order of operations, which is the same one chains use. The double bond is the senior feature present, so it fixes the locant pair before the methyl is consulted at all; the methyl only chooses between the two numberings that survive. Had the ring carried an \u2013OH, the OH would have taken C1 and the double bond would have had to accept whatever locant followed.',
-});
 
 /* ----------------------------------------------------------------- B1 ---
    The 15 kJ/mol is the one number in the section that is measured rather
@@ -3226,608 +2983,18 @@ FIGURES.push({
   note: 'Read the drawing as a question about reach rather than about stability. Hydroxide has to arrive at a β hydrogen, and the oversized group on C2 is what decides which of them it can get to — which is why the more stable alkene loses here, and would win if a small halide sat in the same position.',
 });
 
-/* ----------------------------------------------------------------- 61 ---
-   The carbonyl family, drawn as seven copies of the same C=O with one atom
-   swapped. The notes say "read the other two things attached to the C=O";
-   this makes that literal: the carbon and the oxygen are identical in every
-   panel, the polar bond is marked identically in every panel, and the only
-   thing that moves is the highlighted atom on the right. Condensed and Lewis
-   drawing only, since this sits in Foundations before skeletal notation. */
-FIGURES.push({
-  id: 'carbonyl-family-gallery',
-  section: 'functional-groups',
-  anchor: '<h3>The carbonyl family: what is attached to the C=O</h3>',
-  viewBox: '0 0 760 500',
-  alt: 'Seven small panels, each showing a carbon double-bonded to an oxygen with the carbon marked delta plus and the oxygen delta minus. The carbon carries an R group on the left and, highlighted on the right, the atom that names the group: H for aldehyde, a second R for ketone, OH for carboxylic acid, OR for ester, NH2 for amide, Cl for acid chloride, and an oxygen bridging to a second C=O for anhydride.',
-  build() {
-    let s = '';
-    // One carbonyl: C highlighted, O above with its two lone pairs, R to the
-    // lower left, and the naming atom to the lower right.
-    const carbonyl = (cx, cy, X, opts = {}) => {
-      const C = P(cx, cy), O = P(cx, cy - 54), R = P(cx - 48, cy + 34), Xp = P(cx + 48, cy + 34);
-      let g = '';
-      g += bond(C, O, { order: 2, rFrom: 16, rTo: 15 });
-      g += bond(C, R, { rFrom: 16, rTo: 15 });
-      g += bond(C, Xp, { rFrom: 16, rTo: 16 });
-      g += atom(O.x, O.y, 'O');
-      g += lonePair(O.x, O.y, 210); g += lonePair(O.x, O.y, 330);
-      g += atom(R.x, R.y, opts.rLabel || 'R');
-      g += atom(Xp.x, Xp.y, X, { kind: 'warn' });
-      g += atom(C.x, C.y, 'C', { kind: 'hi' });
-      g += text(cx + 23, cy - 8, 'δ+', { cls: 'fg-warn', size: 11 });
-      g += text(cx + 24, cy - 60, 'δ−', { cls: 'fg-hi', size: 11 });
-      return g;
-    };
-    const top = [
-      { name: 'Aldehyde',        X: 'H',    what: 'attached: H' },
-      { name: 'Ketone',          X: 'R′', what: 'attached: a second carbon' },
-      { name: 'Carboxylic acid', X: 'OH',   what: 'attached: OH' },
-      { name: 'Ester',           X: 'OR′', what: 'attached: O–carbon' },
-    ];
-    top.forEach((t, i) => {
-      const x = 20 + i * 182, cx = x + 85;
-      s += panel(x, 16, 170, 196);
-      s += text(cx, 40, t.name, { cls: 'fg-lbl', size: 12.5 });
-      s += carbonyl(cx, 116, t.X);
-      s += text(cx, 194, t.what, { cls: 'fg-tag-good', size: 10.5 });
-    });
-    const bottom = [
-      { name: 'Amide',         X: 'NH₂', what: 'attached: N  (NH₂, NHR′ or NR′₂)' },
-      { name: 'Acid chloride', X: 'Cl',   what: 'attached: Cl' },
-    ];
-    bottom.forEach((t, i) => {
-      const x = 20 + i * 245, cx = x + 115;
-      s += panel(x, 228, 230, 196);
-      s += text(cx, 252, t.name, { cls: 'fg-lbl', size: 12.5 });
-      s += carbonyl(cx, 328, t.X);
-      s += text(cx, 406, t.what, { cls: 'fg-tag-good', size: 10.5 });
-    });
-    // Anhydride: two carbonyls sharing one oxygen, so the naming atom is an
-    // oxygen that continues to a second C=O.
-    {
-      const x = 510, cx = x + 115;
-      s += panel(x, 228, 230, 196);
-      s += text(cx, 252, 'Anhydride', { cls: 'fg-lbl', size: 12.5 });
-      const C1 = P(x + 70, 328), O1 = P(x + 70, 274), R1 = P(x + 30, 362), Ob = P(x + 118, 362);
-      const C2 = P(x + 166, 328), O2 = P(x + 166, 274), R2 = P(x + 206, 362);
-      s += bond(C1, O1, { order: 2, rFrom: 16, rTo: 15 });
-      s += bond(C1, R1, { rFrom: 16, rTo: 15 });
-      s += bond(C1, Ob, { rFrom: 16, rTo: 16 });
-      s += bond(Ob, C2, { rFrom: 16, rTo: 15 });
-      s += bond(C2, O2, { order: 2, rFrom: 15, rTo: 15 });
-      s += bond(C2, R2, { rFrom: 15, rTo: 15 });
-      s += atom(O1.x, O1.y, 'O'); s += lonePair(O1.x, O1.y, 210); s += lonePair(O1.x, O1.y, 330);
-      s += atom(O2.x, O2.y, 'O'); s += lonePair(O2.x, O2.y, 210); s += lonePair(O2.x, O2.y, 330);
-      s += atom(R1.x, R1.y, 'R'); s += atom(R2.x, R2.y, 'R');
-      s += atom(Ob.x, Ob.y, 'O', { kind: 'warn' });
-      s += atom(C2.x, C2.y, 'C');
-      s += atom(C1.x, C1.y, 'C', { kind: 'hi' });
-      s += text(C1.x + 23, C1.y - 8, 'δ+', { cls: 'fg-warn', size: 11 });
-      s += text(C1.x + 24, C1.y - 60, 'δ−', { cls: 'fg-hi', size: 11 });
-      s += text(cx, 406, 'attached: O that leads to a second C=O', { cls: 'fg-tag-good', size: 10.5 });
-    }
-    s += rule(24, 440, 736, 440);
-    s += text(380, 446, 'The C=O is the same in all seven: carbon δ+, oxygen δ− with two lone pairs.', { cls: 'fg-lbl', size: 11.5 });
-    s += text(380, 464, 'Only the atom on the right changes, and it is the whole name.', { cls: 'fg-lbl', size: 11.5 });
-    return s;
-  },
-  caption: 'Seven groups, one carbonyl. Find the C=O, then read the atom on its right: H, a carbon, OH, OR′, N, Cl, or an oxygen that continues to another C=O. That one atom is the entire difference between an aldehyde and an ester, and it is what every "identify the functional group" question is really asking.',
-  note: 'The polar bond is marked identically in every panel because it is identical in every one: the carbonyl carbon is the most electron-poor carbon in the whole table, for the electronegativity reason of the previous section, doubled by the second bond to oxygen. What the right-hand atom changes is not whether that carbon is attacked but what happens afterward, which is the story of three later chapters.',
-});
 
 
-/* ================================================================ N1 ---
-   Nomenclature, second pass. The chapter's whole job is structure <-> name
-   and its first draft drew almost nothing: one traced skeleton per section.
-   These nine put a drawing beside every worked example the prose walks
-   through, and beside the two places a reader has to picture a shape
-   (cis/trans, ortho/meta/para) or a fragment (the alkyl groups, the
-   principal groups) that words only list. */
+/* The nomenclature and functional-group figures live in scripts/ochem-figures/. */
 
-/* A zigzag chain: n carbons, even indices on the baseline y0 and odd ones
-   raised by dy, the way a skeletal chain is drawn. */
-const zig = (x0, y0, n, dx = 34, dy = 22) => Array.from({ length: n }, (_, i) => P(x0 + i * dx, y0 + (i % 2 ? -dy : 0)));
-/* Skeletal bonds: vertices are unlabeled carbons, so nothing is trimmed. */
-const sk = (a, b, hi) => bond(a, b, { rFrom: 0, rTo: 0, cls: hi ? 'fg-bond-hi' : 'fg-bond' });
 
-/* ---------------------------------------------------------------- N1 ---
-   Three drawings the parent-chain section walks through in words. The
-   middle one is the trap (the ethyl IS the corner) and the right one is the
-   same trap failing to fire (every route ties), and the reader who cannot
-   tell them apart on sight is exactly who the counting rule is for. */
-FIGURES.push({
-  id: 'ethyl-branch-three-ways',
-  section: 'naming-parent-chain',
-  anchor: '<h3>Check every end, not just the one you started from</h3>',
-  alt: 'Three branched alkanes side by side. A six-carbon row with a methyl on the third carbon, where the row is the parent and the name is 3-methylhexane. A four-carbon row with an ethyl on the second carbon, where the longest path turns into the ethyl and the name is 3-methylpentane. A five-carbon row with an ethyl on the middle carbon, where every route is five carbons and the name is 3-ethylpentane.',
-  viewBox: '0 0 720 340',
-  build() {
-    let s = '';
-    const draw = (links, traced) => {
-      let t = '';
-      for (const [a, b] of links) t += sk(a, b, false);
-      for (const [a, b, k] of links) if (traced.includes(k)) t += sk(a, b, true);
-      return t;
-    };
-    const num = (x, y, v) => text(x, y, v, { cls: 'fg-lbl', size: 11 });
-    const head = (x, kind, heading) => { s += panel(x, 44, 224, 206, { kind }); s += tag(x + 112, 32, heading); };
-    const verdict = (x, sub, name, cls, note) => {
-      s += text(x + 112, 274, sub, { cls: 'fg-sm', size: 10 });
-      s += text(x + 112, 296, name, { cls, size: 11.5 });
-      s += text(x + 112, 316, note, { cls: 'fg-sm', size: 9.5 });
-    };
 
-    // A. 3-methylhexane: the row is the parent.
-    {
-      const x = 12; head(x, 'hi', 'the row is the parent');
-      const r = zig(x + 27, 176, 6);
-      const m = P(r[2].x, r[2].y + 34);
-      s += draw([[r[0], r[1], 'a'], [r[1], r[2], 'b'], [r[2], r[3], 'c'], [r[3], r[4], 'd'], [r[4], r[5], 'e'], [r[2], m, 'm']], ['a', 'b', 'c', 'd', 'e']);
-      r.forEach((p, i) => {
-        if (i === 2) s += num(p.x, p.y - 12, '3');
-        else s += num(p.x, i % 2 ? p.y - 10 : p.y + 20, String(i + 1));
-      });
-      s += text(m.x + 8, m.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      verdict(x, 'six in the row, nothing longer', '3-methylhexane', 'fg-tag-good', 'the methyl is a real branch');
-    }
-    // B. Four-carbon row with an ethyl on C2: the ethyl is the corner.
-    {
-      const x = 248; head(x, 'warn', 'the row is not the parent');
-      const r = zig(x + 50, 186, 4);
-      const e1 = P(r[1].x, r[1].y - 34), e2 = P(r[1].x + 30, e1.y - 18);
-      s += draw([[r[0], r[1], 'a'], [r[1], r[2], 'b'], [r[2], r[3], 'c'], [r[1], e1, 'd'], [e1, e2, 'e']], ['b', 'c', 'd', 'e']);
-      s += num(e2.x + 12, e2.y + 4, '1');
-      s += num(e1.x + 12, e1.y + 4, '2');
-      s += num(r[1].x, r[1].y + 18, '3');
-      s += num(r[2].x, r[2].y + 20, '4');
-      s += num(r[3].x, r[3].y - 10, '5');
-      s += text(r[0].x, r[0].y + 20, 'methyl', { cls: 'fg-sm', size: 9.5 });
-      verdict(x, 'row four; through the ethyl, five', '3-methylpentane', 'fg-tag-good', '"2-ethylbutane" names the drawing');
-    }
-    // C. Five-carbon row with an ethyl on C3: every route is five.
-    {
-      const x = 484; head(x, 'hi', 'every route ties');
-      const r = zig(x + 44, 160, 5);
-      const e1 = P(r[2].x, r[2].y + 34), e2 = P(r[2].x + 30, e1.y + 18);
-      s += draw([[r[0], r[1], 'a'], [r[1], r[2], 'b'], [r[2], r[3], 'c'], [r[3], r[4], 'd'], [r[2], e1, 'e'], [e1, e2, 'f']], ['a', 'b', 'c', 'd']);
-      r.forEach((p, i) => {
-        if (i === 2) s += num(p.x, p.y - 12, '3');
-        else s += num(p.x, i % 2 ? p.y - 10 : p.y + 20, String(i + 1));
-      });
-      s += text(e2.x + 8, e2.y + 4, 'ethyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      verdict(x, 'row five, either corner five', '3-ethylpentane', 'fg-tag-good', 'a tie changes nothing here');
-    }
-    return s;
-  },
-  caption: 'Three drawings that look alike and are named by three different arguments. On the left the row is the parent. In the middle the ethyl is the corner the parent turns: two ethyl carbons, then the rest of the row, is five, and the row is only four. On the right the row and both corner routes are all five carbons, so the drawing was honest and the ethyl is a real ethyl.',
-  note: 'The three drawings differ by one carbon in the row and nothing else, and the eye does not reliably see one carbon. Write the route lengths down before you write a name: with three ends there are only three routes to count, and the longest of them is the parent whatever the drawing suggests.',
-});
 
-/* ---------------------------------------------------------------- N2 ---
-   The six alkyl groups the section defines in words. Every textbook draws
-   these side by side, because a reader who has only read "attaches through
-   the second carbon of a four-chain" cannot tell isobutyl from sec-butyl. */
-FIGURES.push({
-  id: 'alkyl-group-gallery',
-  section: 'naming-substituents',
-  anchor: 'Learn both directions and use whichever the question uses.</p>',
-  alt: 'Six alkyl groups drawn as skeletal fragments: propyl, isopropyl, butyl, sec-butyl, isobutyl and tert-butyl. In each the bond to the parent chain is highlighted and ends in a dot, and the carbons are numbered as in the systematic name, so the attached carbon is C2 in propan-2-yl and butan-2-yl.',
-  viewBox: '0 0 720 420',
-  build() {
-    let s = '';
-    const dot = (p) => atom(p.x, p.y, '', { kind: 'hi', r: 5 });
-    const n = (p, v, where) => {
-      const at = where === 'above' ? [p.x, p.y - 9] : where === 'below' ? [p.x, p.y + 16]
-        : where === 'right' ? [p.x + 12, p.y + 4] : where === 'left' ? [p.x - 12, p.y + 4] : [p.x + 11, p.y - 9];
-      return text(at[0], at[1], v, { cls: 'fg-sm', size: 9.5 });
-    };
-    const groups = [
-      { common: 'propyl', sys: 'propan-1-yl', draw(x, y) {
-        const A = P(x, y), c1 = P(x + 30, y - 18), c2 = P(x + 60, y), c3 = P(x + 90, y - 18);
-        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + dot(A) + n(c1, '1', 'above') + n(c2, '2', 'below') + n(c3, '3', 'above');
-      } },
-      { common: 'isopropyl', sys: 'propan-2-yl', draw(x, y) {
-        const A = P(x, y + 10), c = P(x + 30, y - 8), m1 = P(x + 60, y + 10), m3 = P(x + 30, y - 44);
-        return sk(A, c, true) + sk(c, m1) + sk(c, m3) + dot(A) + n(m3, '1', 'right') + n(c, '2', 'diag') + n(m1, '3', 'below');
-      } },
-      { common: 'butyl', sys: 'butan-1-yl', draw(x, y) {
-        const A = P(x, y), c1 = P(x + 30, y - 18), c2 = P(x + 60, y), c3 = P(x + 90, y - 18), c4 = P(x + 120, y);
-        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + dot(A) + n(c1, '1', 'above') + n(c2, '2', 'below') + n(c3, '3', 'above') + n(c4, '4', 'below');
-      } },
-      { common: 'sec-butyl', sys: 'butan-2-yl', draw(x, y) {
-        const A = P(x, y + 10), c2 = P(x + 30, y - 8), c1 = P(x + 30, y - 44), c3 = P(x + 60, y + 10), c4 = P(x + 90, y - 8);
-        return sk(A, c2, true) + sk(c2, c1) + sk(c2, c3) + sk(c3, c4) + dot(A) + n(c1, '1', 'right') + n(c2, '2', 'diag') + n(c3, '3', 'below') + n(c4, '4', 'above');
-      } },
-      { common: 'isobutyl', sys: '2-methylpropyl', draw(x, y) {
-        const A = P(x, y), c1 = P(x + 30, y - 18), c2 = P(x + 60, y), c3 = P(x + 90, y - 18), m = P(x + 60, y + 36);
-        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + sk(c2, m) + dot(A) + n(c1, '1', 'above') + n(c2, '2', 'diag') + n(c3, '3', 'above') + text(m.x + 8, m.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      } },
-      { common: 'tert-butyl', sys: '2-methylpropan-2-yl', draw(x, y) {
-        const A = P(x, y), c = P(x + 36, y), m1 = P(x + 36, y - 36), m2 = P(x + 36, y + 36), m3 = P(x + 72, y);
-        return sk(A, c, true) + sk(c, m1) + sk(c, m2) + sk(c, m3) + dot(A) + n(m1, '1', 'right') + n(c, '2', 'diag') + n(m3, '3', 'right') + text(m2.x + 8, m2.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      } },
-    ];
-    groups.forEach((g, i) => {
-      const px = 12 + (i % 3) * 236, py = 36 + Math.floor(i / 3) * 190;
-      s += panel(px, py, 224, 170);
-      s += text(px + 112, py + 24, g.common, { cls: 'fg-lbl', size: 12.5 });
-      s += text(px + 112, py + 42, g.sys, { cls: 'fg-sm', size: 10 });
-      s += g.draw(px + 46, py + 112);
-    });
-    s += text(360, 408, 'The dot is the bond to the parent chain; the numbers are the group’s own, as in its systematic name.', { cls: 'fg-sm', size: 10 });
-    return s;
-  },
-  caption: 'The six alkyl groups you will be asked to recognize, drawn. Each pair — propyl and isopropyl, then the four butyls — shares a carbon count; what changes is which carbon carries the bond to the parent. The systematic name says exactly that: <i>propan-2-yl</i> is a three-carbon group attached through its second carbon, <i>2-methylpropyl</i> is a three-carbon group attached through its first with a methyl on its second.',
-  note: 'Two of these are the ones people confuse. <i>sec</i>-Butyl and isobutyl are both four carbons and both branched, and the difference is whether the branch point is the attached carbon (<i>sec</i>) or the one next to it (iso). Cover the names, look at where the dot sits, and say which is which; if you can do that, the words will stick.',
-});
 
-/* ---------------------------------------------------------------- N3 ---
-   The section's two worked names, drawn with their numbering, including the
-   one thing about a complex substituent that prose cannot show: the branch
-   has its own C1 and its own count. */
-FIGURES.push({
-  id: 'substituent-worked-pair',
-  section: 'naming-substituents',
-  anchor: 'so (2-methylpropyl) files under <b>m</b>.</p>',
-  alt: 'Two numbered skeletal structures. Left: a heptane chain numbered one to seven with a methyl on carbon 2, an ethyl on carbon 4 and a chlorine on carbon 5, named 5-chloro-4-ethyl-2-methylheptane. Right: a nonane chain with a 2-methylpropyl branch on carbon 5, the branch carbons numbered 1, 2, 3 from the attachment point in a second color, named 5-(2-methylpropyl)nonane.',
-  viewBox: '0 0 720 336',
-  build() {
-    let s = '';
-    const num = (x, y, v, cls = 'fg-lbl') => text(x, y, v, { cls, size: 11 });
-    // Left: 5-chloro-4-ethyl-2-methylheptane
-    {
-      const x = 12; s += panel(x, 44, 344, 216, { kind: 'hi' }); s += tag(x + 172, 32, 'three simple substituents');
-      const r = zig(x + 44, 176, 7, 40, 24);
-      for (let i = 0; i < 6; i++) s += sk(r[i], r[i + 1]);
-      const m = P(r[1].x, r[1].y - 36);
-      const e1 = P(r[3].x, r[3].y - 36), e2 = P(r[3].x + 30, e1.y - 18);
-      const cl = P(r[4].x, r[4].y + 42);
-      s += sk(r[1], m) + sk(r[3], e1) + sk(e1, e2);
-      s += bond(r[4], cl, { rFrom: 0, rTo: 15 }) + atom(cl.x, cl.y, 'Cl');
-      r.forEach((p, i) => {
-        const up = i % 2 === 1;
-        if (i === 1 || i === 3) s += num(p.x, p.y + 18, String(i + 1));
-        else if (i === 4) s += num(p.x, p.y - 12, '5');
-        else s += num(p.x, up ? p.y - 10 : p.y + 20, String(i + 1));
-      });
-      s += text(m.x + 8, m.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(e2.x + 8, e2.y + 4, 'ethyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(x + 172, 286, '5-chloro-4-ethyl-2-methylheptane', { cls: 'fg-tag-good', size: 11.5 });
-      s += text(x + 172, 306, 'numbered left to right: {2, 4, 5} beats {3, 4, 6}', { cls: 'fg-sm', size: 9.5 });
-    }
-    // Right: 5-(2-methylpropyl)nonane
-    {
-      const x = 364; s += panel(x, 44, 344, 216, { kind: 'hi' }); s += tag(x + 172, 32, 'one branched substituent');
-      const r = zig(x + 30, 150, 9, 34, 22);
-      for (let i = 0; i < 8; i++) s += sk(r[i], r[i + 1]);
-      const b1 = P(r[4].x, r[4].y + 34), b2 = P(r[4].x + 30, b1.y + 18), b3 = P(b2.x + 30, b2.y - 18), bm = P(b2.x, b2.y + 36);
-      s += sk(r[4], b1) + sk(b1, b2) + sk(b2, b3) + sk(b2, bm);
-      r.forEach((p, i) => {
-        const up = i % 2 === 1;
-        if (i === 4) s += num(p.x, p.y - 12, '5');
-        else s += num(p.x, up ? p.y - 10 : p.y + 20, String(i + 1));
-      });
-      s += num(b1.x - 12, b1.y + 4, '1', 'fg-tag-good');
-      s += num(b2.x - 12, b2.y + 6, '2', 'fg-tag-good');
-      s += num(b3.x + 12, b3.y + 4, '3', 'fg-tag-good');
-      s += text(bm.x + 8, bm.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(x + 172, 286, '5-(2-methylpropyl)nonane', { cls: 'fg-tag-good', size: 11.5 });
-      s += text(x + 172, 306, 'the green numbers belong to the branch', { cls: 'fg-sm', size: 9.5 });
-    }
-    return s;
-  },
-  caption: 'The two worked names, drawn. On the left the numbers were settled by the structure and the words by the alphabet, which is why 5 comes before 4 before 2 in the name. On the right the branch is numbered a second time, from the carbon that attaches it, and that count goes inside the parentheses.',
-  note: 'The parentheses are doing a job. In 5-(2-methylpropyl)nonane the 2 counts along the branch and the 5 along the parent; write it without the brackets and a reader cannot tell which chain the 2 belongs to. The same group is also called isobutyl, and it files under <b>i</b> under that name and under <b>m</b> under this one, so which name you use changes where it sits in a longer name.',
-});
 
-/* ---------------------------------------------------------------- N4 ---
-   The priority list as fragments. The section ranks ten groups by name and
-   never shows one; a student who has to decide "which of these two is the
-   suffix" from a drawing has to be able to see the group first. */
-FIGURES.push({
-  id: 'principal-group-fragments',
-  section: 'naming-functional-groups',
-  anchor: 'the three groups on the second line cannot be suffixes at all.</p>',
-  alt: 'Ten skeletal fragments in priority order, five per row, each with the suffix it takes: carboxylic acid (-oic acid), ester (-oate), amide (-amide), nitrile (-nitrile), aldehyde (-al), ketone (-one), alcohol (-ol), amine (-amine), alkene (-ene), alkyne (-yne).',
-  viewBox: '0 0 720 372',
-  build() {
-    let s = '';
-    const acyl = (cx, cy, X) => {
-      const C = P(cx - 8, cy + 6), O = P(cx - 8, cy - 30), Xp = P(cx + 26, cy + 24), R = P(cx - 40, cy + 24);
-      return sk(R, C) + bond(C, O, { order: 2, rFrom: 0, rTo: 15 }) + atom(O.x, O.y, 'O') +
-             bond(C, Xp, { rFrom: 0, rTo: 15 }) + atom(Xp.x, Xp.y, X, { kind: 'hi' });
-    };
-    const groups = [
-      { name: 'carboxylic acid', suffix: '-oic acid', draw: (cx, cy) => acyl(cx, cy, 'OH') },
-      { name: 'ester', suffix: 'alkyl …-oate', draw: (cx, cy) => acyl(cx, cy, 'OR′') },
-      { name: 'amide', suffix: '-amide', draw: (cx, cy) => acyl(cx, cy, 'NH₂') },
-      { name: 'nitrile', suffix: '-nitrile', draw(cx, cy) {
-        const R = P(cx - 44, cy + 4), C = P(cx - 10, cy + 4), N = P(cx + 30, cy + 4);
-        return sk(R, C) + bond(C, N, { order: 3, rFrom: 0, rTo: 15 }) + atom(N.x, N.y, 'N', { kind: 'hi' });
-      } },
-      { name: 'aldehyde', suffix: '-al', draw: (cx, cy) => acyl(cx, cy, 'H') },
-      { name: 'ketone', suffix: '-one', draw(cx, cy) {
-        const C = P(cx, cy + 6), O = P(cx, cy - 30), R1 = P(cx - 32, cy + 24), R2 = P(cx + 32, cy + 24);
-        return sk(R1, C) + sk(C, R2) + bond(C, O, { order: 2, rFrom: 0, rTo: 15 }) + atom(O.x, O.y, 'O', { kind: 'hi' });
-      } },
-      { name: 'alcohol', suffix: '-ol', draw(cx, cy) {
-        const R = P(cx - 40, cy + 20), C = P(cx - 10, cy + 2), X = P(cx + 26, cy + 20);
-        return sk(R, C) + bond(C, X, { rFrom: 0, rTo: 15 }) + atom(X.x, X.y, 'OH', { kind: 'hi' });
-      } },
-      { name: 'amine', suffix: '-amine', draw(cx, cy) {
-        const R = P(cx - 40, cy + 20), C = P(cx - 10, cy + 2), X = P(cx + 26, cy + 20);
-        return sk(R, C) + bond(C, X, { rFrom: 0, rTo: 15 }) + atom(X.x, X.y, 'NH₂', { kind: 'hi' });
-      } },
-      { name: 'alkene', suffix: '-ene', draw(cx, cy) {
-        const a = P(cx - 42, cy + 16), b = P(cx - 14, cy - 2), c = P(cx + 14, cy + 16), d = P(cx + 42, cy - 2);
-        return sk(a, b) + bond(b, c, { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.5 }) + sk(c, d);
-      } },
-      { name: 'alkyne', suffix: '-yne', draw(cx, cy) {
-        const a = P(cx - 44, cy + 6), b = P(cx - 16, cy + 6), c = P(cx + 16, cy + 6), d = P(cx + 44, cy + 6);
-        return sk(a, b) + bond(b, c, { order: 3, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.2 }) + sk(c, d);
-      } },
-    ];
-    s += tag(360, 24, 'priority falls left to right along the top row, then along the bottom row');
-    groups.forEach((g, i) => {
-      const px = 12 + (i % 5) * 142, py = 40 + Math.floor(i / 5) * 166, cx = px + 66;
-      s += panel(px, py, 132, 150, { kind: i < 4 ? 'hi' : undefined });
-      s += text(cx, py + 22, g.name, { cls: 'fg-lbl', size: 12 });
-      s += g.draw(cx, py + 80);
-      s += text(cx, py + 136, g.suffix, { cls: 'fg-tag-good', size: 10.5 });
-    });
-    return s;
-  },
-  caption: 'The priority list, as the fragments you would actually see in a drawing. The four shaded panels are the acid and its derivatives, and every one of them has three bonds from the functional carbon to oxygen or nitrogen; the aldehyde and ketone have two; the alcohol and amine one. The multiple bonds have none, and rank last.',
-  note: 'Use it as a lookup in both directions. Given a drawing, find the highest panel that matches something in it: that group is the suffix and everything else is a prefix. Given a name, the suffix tells you which fragment to draw at the carbon the locant names, and the root tells you how long the chain around it is.',
-});
 
-/* ---------------------------------------------------------------- N5 ---
-   Encode and decode, side by side. The keto acid is the section's worked
-   example and was text only; the aldehyde is the direction the chapter never
-   modelled, reading a name back into a structure. */
-FIGURES.push({
-  id: 'keto-acid-and-decode',
-  section: 'naming-functional-groups',
-  anchor: '<h3>Reading a name back into a structure</h3>',
-  alt: 'Left: 4-bromo-3-oxopentanoic acid drawn as a numbered five-carbon chain, with the acid carbon as C1 carrying a double-bonded O and an OH, a ketone oxygen on C3 and a bromine on C4. Right: 3-hydroxybutanal drawn as a four-carbon chain with the aldehyde carbon as C1 and an OH on C3, with the three decoding steps listed.',
-  viewBox: '0 0 720 336',
-  build() {
-    let s = '';
-    const num = (x, y, v) => text(x, y, v, { cls: 'fg-lbl', size: 11 });
-    // Left: structure -> name
-    {
-      const x = 12; s += panel(x, 44, 344, 216, { kind: 'hi' }); s += tag(x + 172, 32, 'structure → name');
-      const r = zig(x + 70, 170, 5, 40, 24);
-      for (let i = 0; i < 4; i++) s += sk(r[i], r[i + 1]);
-      const o1 = P(r[0].x, r[0].y + 40), ho = P(r[0].x - 34, r[0].y - 18);
-      s += bond(r[0], o1, { order: 2, rFrom: 0, rTo: 15 }) + atom(o1.x, o1.y, 'O');
-      s += bond(r[0], ho, { rFrom: 0, rTo: 16 }) + atom(ho.x, ho.y, 'HO');
-      const o3 = P(r[2].x, r[2].y + 40);
-      s += bond(r[2], o3, { order: 2, rFrom: 0, rTo: 15 }) + atom(o3.x, o3.y, 'O');
-      const br = P(r[3].x, r[3].y - 40);
-      s += bond(r[3], br, { rFrom: 0, rTo: 15 }) + atom(br.x, br.y, 'Br');
-      s += num(r[0].x + 19, r[0].y + 12, '1');
-      s += num(r[1].x, r[1].y - 10, '2');
-      s += num(r[2].x, r[2].y - 12, '3');
-      s += num(r[3].x, r[3].y + 18, '4');
-      s += num(r[4].x, r[4].y + 20, '5');
-      s += text(x + 18, 70, 'acid outranks ketone: suffix -oic acid, C1 fixed', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(x + 18, 86, 'ketone demoted to oxo-, bromine is bromo-', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(x + 172, 286, '4-bromo-3-oxopentanoic acid', { cls: 'fg-tag-good', size: 11.5 });
-      s += text(x + 172, 306, 'prefixes alphabetical: bromo before oxo', { cls: 'fg-sm', size: 9.5 });
-    }
-    // Right: name -> structure
-    {
-      const x = 364; s += panel(x, 44, 344, 216, { kind: 'hi' }); s += tag(x + 172, 32, 'name → structure');
-      s += text(x + 18, 70, '-al: an aldehyde, so C1 is a CHO', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(x + 18, 86, 'butan: four carbons in the parent', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(x + 18, 102, '3-hydroxy: an OH on C3', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      const r = zig(x + 96, 176, 4, 40, 24);
-      for (let i = 0; i < 3; i++) s += sk(r[i], r[i + 1]);
-      const o1 = P(r[0].x, r[0].y + 40), h = P(r[0].x - 34, r[0].y - 18);
-      s += bond(r[0], o1, { order: 2, rFrom: 0, rTo: 15 }) + atom(o1.x, o1.y, 'O');
-      s += bond(r[0], h, { rFrom: 0, rTo: 15 }) + atom(h.x, h.y, 'H');
-      const oh = P(r[2].x, r[2].y + 40);
-      s += bond(r[2], oh, { rFrom: 0, rTo: 15 }) + atom(oh.x, oh.y, 'OH', { kind: 'hi' });
-      s += num(r[0].x + 19, r[0].y + 12, '1');
-      s += num(r[1].x, r[1].y - 10, '2');
-      s += num(r[2].x, r[2].y - 12, '3');
-      s += num(r[3].x, r[3].y - 10, '4');
-      s += text(x + 172, 286, '3-hydroxybutanal', { cls: 'fg-tag-good', size: 11.5 });
-      s += text(x + 172, 306, 'suffix first, then root, then prefixes', { cls: 'fg-sm', size: 9.5 });
-    }
-    return s;
-  },
-  caption: 'The same procedure run in both directions. Encoding starts by ranking the groups, because the winner fixes both the suffix and where C1 is; decoding starts from the suffix, because it says which fragment sits at C1 (or at the locant given), and only then is the chain drawn around it.',
-  note: 'Decoding is the direction exams use for "draw the structure of", and the commonest error is reading a name left to right. Read it from the end: the suffix, then the root, then each prefix with its number. In 3-hydroxybutanal that order puts the CHO down first and the OH two carbons along from it; read left to right, students draw the OH first and then have to guess where the aldehyde goes.',
-});
 
-/* ---------------------------------------------------------------- N6 ---
-   "The parent must contain the double bond" is the multiple-bond version of
-   "the parent must contain the principal group", and the section stated the
-   second and not the first. Same two-trace layout, so the reader sees it is
-   the same rule. */
-FIGURES.push({
-  id: 'alkene-parent-contains',
-  section: 'naming-rings-unsaturation',
-  anchor: '<h3>The parent chain must contain the double bond</h3>',
-  alt: 'One alkene traced twice. Left: the six-carbon chain, the longest in the molecule, with the C=CH2 hanging off its third carbon; named 3-methylidenehexane and marked as not the textbook answer. Right: the five-carbon chain that starts at the CH2 of the double bond, numbered so the double bond is C1 to C2 and the ethyl is on C2; named 2-ethylpent-1-ene.',
-  viewBox: '0 0 720 390',
-  build() {
-    let s = '';
-    const skeleton = (ox, traced, nums, extra) => {
-      const a = zig(ox + 50, 174, 6, 36, 22);
-      const ch2 = P(a[2].x, a[2].y + 44);
-      const links = [['a0', a[0], a[1]], ['a1', a[1], a[2]], ['a2', a[2], a[3]], ['a3', a[3], a[4]], ['a4', a[4], a[5]]];
-      let t = '';
-      for (const [, p, q] of links) t += sk(p, q);
-      for (const [k, p, q] of links) if (traced.includes(k)) t += sk(p, q, true);
-      t += bond(a[2], ch2, { order: 2, rFrom: 0, rTo: 0, cls: traced.includes('db') ? 'fg-bond-hi' : 'fg-bond', gap: 3.5 });
-      for (const [x, y, v] of nums) t += text(ox + x, y, v, { cls: 'fg-lbl', size: 11 });
-      for (const [x, y, v, anchor] of extra) t += text(ox + x, y, v, { cls: 'fg-sm', size: 9.5, anchor: anchor || 'middle' });
-      return t;
-    };
-    s += panel(20, 64, 300, 224, { kind: 'warn' });
-    s += tag(170, 52, 'the longest chain in the molecule');
-    s += skeleton(26, ['a0', 'a1', 'a2', 'a3', 'a4'],
-      [[50, 130, '1'], [86, 130, '2'], [122, 130, '3'], [158, 130, '4'], [194, 130, '5'], [230, 130, '6']],
-      [[144, 224, 'the C=C is off the chain', 'start']]);
 
-    s += panel(370, 64, 300, 224, { kind: 'hi' });
-    s += tag(520, 52, 'the longest chain through the C=C');
-    s += skeleton(376, ['a2', 'a3', 'a4', 'db'],
-      [[122, 130, '2'], [158, 130, '3'], [194, 130, '4'], [230, 130, '5'], [104, 224, '1']],
-      [[68, 130, 'ethyl']]);
-
-    s += rule(20, 300, 670, 300);
-    s += text(170, 322, 'six carbons — but the double bond is a branch', { cls: 'fg-sm', size: 10 });
-    s += text(170, 344, '3-methylidenehexane', { cls: 'fg-tag-warn', size: 11.5 });
-    s += text(170, 364, 'not what a textbook or exam expects', { cls: 'fg-sm', size: 9.5 });
-    s += text(520, 322, 'five carbons — shorter, and it contains the C=C', { cls: 'fg-sm', size: 10 });
-    s += text(520, 344, '2-ethylpent-1-ene', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(520, 364, 'the double bond takes the suffix and C1', { cls: 'fg-sm', size: 9.5 });
-    return s;
-  },
-  caption: 'One alkene, two candidate parents. The six-carbon chain is the longest path through the skeleton and the textbook rule still rejects it, because the double bond is not on it. The five-carbon chain that starts at the CH₂ is the parent, the double bond takes C1, and the two carbons left over are an ethyl.',
-  note: 'This is the same shape of argument as the alcohol that lost its longest chain in the previous section, and it is worth seeing that it is the same rule: the feature that sets the suffix has to be on the parent. The 2013 IUPAC recommendations relaxed this for multiple bonds (they now let chain length win, which is where the left-hand name comes from), but every current textbook and exam still applies it, so apply it.',
-});
-
-/* ---------------------------------------------------------------- N7 ---
-   cis and trans but-2-ene, which the prose describes as "methyls on the same
-   side" and "on opposite sides" without a drawing. It is a geometric claim. */
-FIGURES.push({
-  id: 'cis-trans-but-2-ene',
-  section: 'naming-rings-unsaturation',
-  anchor: 'The name so far cannot tell them apart.</p>',
-  alt: 'Two skeletal drawings of but-2-ene. In cis-but-2-ene both methyl carbons sit below the double bond, on the same side; in trans-but-2-ene one sits below and one above, on opposite sides.',
-  viewBox: '0 0 720 262',
-  build() {
-    let s = '';
-    const butene = (cx, cy, trans) => {
-      const c1 = P(cx - 52, cy + 22), c2 = P(cx - 18, cy + 2), c3 = P(cx + 18, cy + 2), c4 = P(cx + 52, trans ? cy - 18 : cy + 22);
-      let t = sk(c1, c2) + bond(c2, c3, { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.5 }) + sk(c3, c4);
-      t += text(c1.x - 4, c1.y + 18, 'methyl', { cls: 'fg-sm', size: 9.5 });
-      t += text(c4.x + 4, trans ? c4.y - 8 : c4.y + 18, 'methyl', { cls: 'fg-sm', size: 9.5 });
-      t += text(c2.x, c2.y - 12, '2', { cls: 'fg-lbl', size: 11 });
-      t += text(c3.x, c3.y - 12, '3', { cls: 'fg-lbl', size: 11 });
-      return t;
-    };
-    s += panel(40, 44, 300, 150, { kind: 'hi' });
-    s += tag(190, 32, 'same side');
-    s += butene(190, 110, false);
-    s += text(190, 216, 'cis-but-2-ene', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(190, 236, 'both methyls below the C=C', { cls: 'fg-sm', size: 9.5 });
-
-    s += panel(380, 44, 300, 150, { kind: 'hi' });
-    s += tag(530, 32, 'opposite sides');
-    s += butene(530, 110, true);
-    s += text(530, 216, 'trans-but-2-ene', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(530, 236, 'one methyl below, one above', { cls: 'fg-sm', size: 9.5 });
-    return s;
-  },
-  caption: 'Two compounds that the name but-2-ene does not distinguish. The double bond between C2 and C3 cannot rotate, so a methyl drawn below it stays below it, and "both below" and "one below, one above" are different molecules with different boiling points, not two drawings of one.',
-  note: 'Read the prefix off the drawing: find the two groups that are not hydrogen, one on each alkene carbon, and ask whether they are on the same side of the double bond. Same side is <i>cis</i>, opposite is <i>trans</i>. When one of the alkene carbons carries two groups that are not hydrogen the words stop being enough, which is what the E/Z system is for.',
-});
-
-/* ---------------------------------------------------------------- N8 ---
-   ortho, meta, para: three hexagons is all it needs, and the prose had
-   none. Drawn as the xylenes, which is the example the text uses. */
-FIGURES.push({
-  id: 'ortho-meta-para',
-  section: 'naming-rings-unsaturation',
-  anchor: 'and the words mean exactly what they mean here.</p>',
-  alt: 'Three benzene rings, each with two methyl groups: adjacent (ortho, 1,2-dimethylbenzene), separated by one ring carbon (meta, 1,3-dimethylbenzene), and directly across the ring (para, 1,4-dimethylbenzene).',
-  viewBox: '0 0 720 280',
-  build() {
-    let s = '';
-    const R = 36, D = 60;
-    const ring = (cx, cy, subs) => {
-      const pts = [];
-      for (let i = 0; i < 6; i++) {
-        const a = (-90 + i * 60) * Math.PI / 180;
-        pts.push(P(cx + Math.cos(a) * R, cy + Math.sin(a) * R));
-      }
-      let g = '';
-      for (let i = 0; i < 6; i++) g += sk(pts[i], pts[(i + 1) % 6]);
-      g += `<circle class="fg-bond" cx="${cx}" cy="${cy}" r="21"></circle>`;
-      for (const sb of subs) {
-        const a = (-90 + sb.v * 60) * Math.PI / 180;
-        const ox = cx + Math.cos(a) * D, oy = cy + Math.sin(a) * D;
-        g += bond(pts[sb.v], P(ox, oy), { rFrom: 0, rTo: 16 });
-        g += atom(ox, oy, 'CH₃', { kind: 'hi' });
-        // The locant sits beside the substituent bond rather than on it:
-        // 30 degrees round from the bond, just outside the ring.
-        const b = a + Math.PI / 6;
-        g += text(cx + Math.cos(b) * 50, cy + Math.sin(b) * 50 + 4, sb.n, { cls: 'fg-lbl', size: 11 });
-      }
-      return g;
-    };
-    const cases = [
-      { cx: 124, word: 'ortho', pos: '1,2', name: 'o-xylene = 1,2-dimethylbenzene', subs: [{ v: 0, n: '1' }, { v: 1, n: '2' }] },
-      { cx: 360, word: 'meta', pos: '1,3', name: 'm-xylene = 1,3-dimethylbenzene', subs: [{ v: 0, n: '1' }, { v: 2, n: '3' }] },
-      { cx: 596, word: 'para', pos: '1,4', name: 'p-xylene = 1,4-dimethylbenzene', subs: [{ v: 0, n: '1' }, { v: 3, n: '4' }] },
-    ];
-    for (const c of cases) {
-      s += panel(c.cx - 112, 28, 224, 200);
-      s += ring(c.cx, 114, c.subs);
-      s += text(c.cx, 214, `${c.word}  (${c.pos})`, { cls: 'fg-tag-good', size: 11 });
-      s += text(c.cx, 252, c.name, { cls: 'fg-sm', size: 10 });
-    }
-    return s;
-  },
-  caption: 'The three ways to put two groups on a benzene ring, shown for two methyls. <i>ortho</i> is next door, <i>meta</i> has one ring carbon between them, <i>para</i> is straight across; the locant pairs 1,2, 1,3 and 1,4 say the same thing in numbers, and both forms are in constant use.',
-  note: 'There are only three because the ring is symmetric: a 1,5 relationship is the same as 1,3 counted the other way round, and 1,6 is 1,2. Whichever of the two groups you call C1, the other lands on 2, 3 or 4, and that is the whole vocabulary.',
-});
-
-/* ---------------------------------------------------------------- N9 ---
-   Phenyl against benzyl. "Changes the molecule by a carbon" is the whole
-   claim, and one extra vertex on a drawing makes it in a glance. */
-FIGURES.push({
-  id: 'phenyl-vs-benzyl',
-  section: 'naming-rings-unsaturation',
-  anchor: 'Confusing the two changes the molecule by a carbon, and both words are in constant use.</div>',
-  alt: 'Two benzene rings as substituents. Phenyl is the ring attached directly through one of its own carbons, six carbons in all. Benzyl is the same ring attached through a CH2 carbon that sits between the ring and the parent, seven carbons in all; the extra carbon is highlighted.',
-  viewBox: '0 0 720 250',
-  build() {
-    let s = '';
-    const R = 34;
-    const ring = (cx, cy) => {
-      const pts = [];
-      for (let i = 0; i < 6; i++) {
-        const a = (i * 60) * Math.PI / 180;
-        pts.push(P(cx + Math.cos(a) * R, cy + Math.sin(a) * R));
-      }
-      let g = '';
-      for (let i = 0; i < 6; i++) g += sk(pts[i], pts[(i + 1) % 6]);
-      g += `<circle class="fg-bond" cx="${cx}" cy="${cy}" r="20"></circle>`;
-      return { g, right: pts[0] };
-    };
-    // Phenyl
-    {
-      const cx = 166, cy = 116; s += panel(40, 40, 300, 150);
-      s += tag(190, 28, 'phenyl: the ring itself');
-      const r = ring(cx, cy); s += r.g;
-      const A = P(r.right.x + 40, cy);
-      s += sk(r.right, A, true) + atom(A.x, A.y, '', { kind: 'hi', r: 5 });
-      s += text(190, 212, 'phenyl, C₆H₅–  ·  six carbons', { cls: 'fg-tag-good', size: 11 });
-    }
-    // Benzyl
-    {
-      const cx = 484, cy = 116; s += panel(380, 40, 300, 150);
-      s += tag(530, 28, 'benzyl: the ring plus one CH₂');
-      const r = ring(cx, cy); s += r.g;
-      const ch2 = P(r.right.x + 34, cy - 20), A = P(ch2.x + 34, cy);
-      s += sk(r.right, ch2) + sk(ch2, A, true) + atom(A.x, A.y, '', { kind: 'hi', r: 5 });
-      s += atom(ch2.x, ch2.y, '', { kind: 'warn', r: 6 });
-      s += text(ch2.x + 2, ch2.y - 14, 'CH₂', { cls: 'fg-tag-warn', size: 10 });
-      s += text(530, 212, 'benzyl, C₆H₅CH₂–  ·  seven carbons', { cls: 'fg-tag-good', size: 11 });
-    }
-    s += text(360, 240, 'The dot is the bond to the rest of the molecule.', { cls: 'fg-sm', size: 10 });
-    return s;
-  },
-  caption: 'Phenyl and benzyl, which are one carbon apart and are both used constantly. Phenyl is the benzene ring bonded directly through a ring carbon. Benzyl is the ring plus a CH₂, bonded through that CH₂, so the ring is one bond further away from whatever it is attached to.',
-  note: 'The reason the words matter beyond spelling is that the CH₂ in a benzyl group is the benzylic carbon, and the chemistry at that carbon (in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-breadth">Aromatic Follow-Through</a>) is nothing like the chemistry at a ring carbon. Benzyl alcohol is PhCH₂OH, a primary alcohol; phenol is PhOH, and is not an alcohol at all.',
-});
 
 
 /* ================================================================ F1 ---
@@ -4028,136 +3195,7 @@ FIGURES.push({
   note: 'This is the trap the worked examples in this section are built around: “neutral molecule” is a statement about the <i>sum</i> of the formal charges, not about each atom. Any nitro group you meet from here on — in a nitrated aromatic ring, in TNT, in a nitroalkane — is drawn exactly this way, and one without the charges is wrong.',
 });
 
-/* ---------------------------------------------------------------- F4 ---
-   The section's three worked examples are drugs given as condensed formulas
-   and the reader is asked to "circle each group". Nothing is drawn, so
-   there is nothing to circle. This draws them. */
-FIGURES.push({
-  id: 'three-drugs-groups-named',
-  section: 'functional-groups',
-  anchor: '<h3>What carries forward</h3>',
-  viewBox: '0 0 760 356',
-  alt: 'Aspirin, acetaminophen and ibuprofen drawn as condensed formulas around a benzene ring, with every functional group boxed and named: carboxylic acid and ester on aspirin, phenol and amide on acetaminophen, carboxylic acid and two alkyl branches on ibuprofen.',
-  build() {
-    let s = '';
-    /* A benzene ring drawn as a hexagon with the inner circle, which is what
-       C6H4 and C6H5 stand for in the condensed formulas the section uses. */
-    const ring = (cx, cy, R = 30) => {
-      const pts = [];
-      for (let i = 0; i < 6; i++) {
-        const a = (i * 60 - 90) * Math.PI / 180;
-        pts.push(P(cx + Math.cos(a) * R, cy + Math.sin(a) * R));
-      }
-      let g = '';
-      for (let i = 0; i < 6; i++) g += bond(pts[i], pts[(i + 1) % 6], { rFrom: 0, rTo: 0 });
-      g += `<circle class="fg-bond" cx="${cx}" cy="${cy}" r="${R * 0.56}" fill="none"></circle>`;
-      return { g, pts };
-    };
-    /* A group written as a tinted chip rather than a circle: the labels here
-       are whole condensed fragments, and a disc big enough to hold one is big
-       enough to collide with everything around it. */
-    const chip = (cx, cy, lab, kind) => {
-      const w = lab.length * 7.4 + 16;
-      return { g: panel(cx - w / 2, cy - 13, w, 26, { kind, r: 9 }) +
-                  text(cx, cy + 4, lab, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag', size: 11 }),
-               half: w / 2 };
-    };
-    const link = (a, b, stop) => bond(a, b, { rFrom: 0, rTo: stop });
 
-    const panels = [
-      {
-        x: 14, name: 'aspirin', cx: 82, cy: 150,
-        groups: [
-          { at: 0, to: P(82, 80),  lab: 'COOH', kind: 'warn', stop: 16 },
-          { at: 1, to: P(186, 146), lab: 'OCOCH₃', kind: 'warn', stop: 36 },
-        ],
-        lines: ['COOH = carboxylic acid', 'O–CO–CH₃ = ester', 'plus the ring — an aromatic'],
-      },
-      {
-        x: 268, name: 'acetaminophen', cx: 336, cy: 150,
-        groups: [
-          { at: 0, to: P(336, 80), lab: 'OH', kind: 'warn', stop: 16 },
-          { at: 3, to: P(400, 212), lab: 'NHCOCH₃', kind: 'warn', stop: 40 },
-        ],
-        lines: ['OH on the ring = phenol', 'NH–CO–CH₃ = amide', 'no carboxylic acid anywhere'],
-      },
-      {
-        x: 522, name: 'ibuprofen', cx: 610, cy: 150,
-        groups: [
-          { at: 0, to: P(610, 80), lab: 'CH(CH₃)COOH', kind: 'warn', stop: 16 },
-          { at: 3, to: P(610, 216), lab: 'CH₂CH(CH₃)₂', kind: null, stop: 16 },
-        ],
-        lines: ['COOH = carboxylic acid', 'the rest is spectator carbon', 'acid + ring, six spectator carbons'],
-      },
-    ];
-    for (const p of panels) {
-      s += panel(p.x, 16, 226, 236);
-      s += text(p.x + 113, 40, p.name, { cls: 'fg-lbl', size: 12.5 });
-      const r = ring(p.cx, p.cy); s += r.g;
-      for (const g of p.groups) {
-        const c = chip(g.to.x, g.to.y, g.lab, g.kind);
-        s += link(r.pts[g.at], g.to, g.stop);
-        s += c.g;
-      }
-      p.lines.forEach((t, i) =>
-        s += text(p.x + 113, 276 + i * 17, t, { cls: i === 2 ? 'fg-sm' : 'fg-tag-good', size: i === 2 ? 10 : 10.5 }));
-    }
-    s += rule(14, 256, 746, 256);
-    s += text(380, 344, 'Three drugs, five groups between them, and every other atom is skeleton.', { cls: 'fg-lbl', size: 11.5 });
-    return s;
-  },
-  caption: 'The three molecules the worked examples run through, with the groups marked. Aspirin carries a carboxylic acid and an ester on the same ring; acetaminophen carries a phenol and an amide, and no acid at all despite the name most people expect; ibuprofen carries one carboxylic acid; of its other twelve carbons, six are the aromatic ring and six are genuinely spectator.',
-  note: 'Compare the two O–CO patterns. In aspirin the ring oxygen leads to a carbonyl, which makes it an <b>ester</b>; in acetaminophen a ring nitrogen leads to a carbonyl, which makes it an <b>amide</b>. One atom apart, and the difference decides how each one is broken down in the body — which is why aspirin is hydrolyzed within minutes in the body and acetaminophen is not.',
-});
-
-/* ---------------------------------------------------------------- F5 ---
-   The degree trap, drawn. The same tert-butyl skeleton twice: counting on
-   the carbon for the alcohol, on the nitrogen for the amine. */
-FIGURES.push({
-  id: 'degree-counted-twice',
-  section: 'functional-groups',
-  anchor: '<h3>Why polarity tells you where a group will react</h3>',
-  viewBox: '0 0 760 250',
-  alt: 'Two structures built on the same tert-butyl group. On the left the OH version, whose central carbon carries three methyl groups, is labeled a tertiary alcohol. On the right the NH2 version, whose nitrogen carries one carbon, is labeled a primary amine.',
-  build() {
-    let s = '';
-    const skeleton = (cx, cy, tail, kind) => {
-      const C = P(cx, cy), X = P(cx + 72, cy);
-      let g = '';
-      [[-52, -34], [-52, 34], [0, 52]].forEach(([dx, dy]) => {
-        const m = P(cx + dx, cy + dy);
-        g += bond(C, m, { rTo: 17 });
-        g += atom(m.x, m.y, 'CH₃', { r: 17 });
-      });
-      g += bond(C, X, { rTo: 17 });
-      g += atom(C.x, C.y, 'C', { kind: 'hi' });
-      g += atom(X.x, X.y, tail, { kind: kind, r: 17 });
-      return { g, X };
-    };
-    {
-      const x = 150, y = 116;
-      s += text(x + 20, 40, '(CH₃)₃C–OH', { cls: 'fg-lbl', size: 13 });
-      const a = skeleton(x, y, 'OH', 'warn'); s += a.g;
-      s += lonePair(a.X.x, a.X.y, 320, { dist: 24 }); s += lonePair(a.X.x, a.X.y, 40, { dist: 24 });
-      s += text(x + 20, 190, 'count the carbons on the CARBON: 3', { cls: 'fg-tag-good', size: 11 });
-      s += text(x + 20, 212, 'tertiary alcohol', { cls: 'fg-lbl', size: 12.5 });
-      s += text(x + 20, 234, 'the OH sits on a carbon with no H of its own', { cls: 'fg-sm', size: 10 });
-    }
-    s += rule(392, 40, 392, 236);
-    {
-      const x = 528, y = 116;
-      s += text(x + 20, 40, '(CH₃)₃C–NH₂', { cls: 'fg-lbl', size: 13 });
-      const b = skeleton(x, y, 'NH₂', 'warn'); s += b.g;
-      s += lonePair(b.X.x, b.X.y, 320, { dist: 26 });
-      s += text(x + 20, 190, 'count the carbons on the NITROGEN: 1', { cls: 'fg-tag-good', size: 11 });
-      s += text(x + 20, 212, 'primary amine', { cls: 'fg-lbl', size: 12.5 });
-      s += text(x + 20, 234, 'the same skeleton, the opposite answer', { cls: 'fg-sm', size: 10 });
-    }
-    return s;
-  },
-  caption: 'The same tert-butyl group with two different groups on it, and two opposite answers. For an alcohol or an alkyl halide you count the carbons attached to the carbon bearing the group, and this one has three: tertiary. For an amine you count the carbons attached to the nitrogen, and this one has one: primary.',
-  note: 'The rule is not arbitrary. Degree exists to say how crowded the reacting atom is, and the reacting atom is different in the two cases: an alcohol reacts at its carbon, so the carbon’s neighbors are what matter, while an amine reacts through the lone pair on its nitrogen, so the nitrogen’s neighbors are. Both structures reduce to that one question.',
-});
 
 /* ---------------------------------------------------------------- F6 ---
    The fill order as a ladder. The section argues 4s below 3d in prose and
@@ -9603,8 +8641,8 @@ FIGURES.push({
     s += atom(A.c.x, A.c.y, 'C');
     s += text(A.c.x + 4, A.c.y - 26, '+', { cls: 'fg-tag-warn', size: 17 });
     s += curve(P(mig.x + 16, mig.y - 8), P(A.c.x - 14, A.c.y + 12), { bow: -22 });
-    s += text(104, 226, 'the neighbor has no H to give,', { cls: 'fg-sm', size: 9.5 });
-    s += text(104, 242, 'so a whole METHYL migrates instead', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(120, 226, 'the neighbor has no H to give,', { cls: 'fg-sm', size: 9.5 });
+    s += text(120, 242, 'so a METHYL migrates instead', { cls: 'fg-tag-warn', size: 10.5 });
 
     s += arrow(P(216, 140), P(264, 140), { muted: true });
 
@@ -10475,7 +9513,7 @@ FIGURES.push({
       n2b: '2-bromobutane, configuration INVERTED',
     });
 
-    s += text(380, 508, 'Both reagents work at S or P, never at carbon — which is the whole reason neither one rearranges.', { cls: 'fg-lbl', size: 11 });
+    s += text(380, 508, 'Both reagents act at S or P, never at carbon, so neither one rearranges.', { cls: 'fg-lbl', size: 11 });
     return s;
   },
   caption: 'The two reagents that convert an alcohol into a halide without ever making a carbocation, drawn as the two steps they actually are. The alcohol’s <b>oxygen</b> is the nucleophile in step 1, attacking sulfur or phosphorus; only in step 2 does anything happen at carbon, and when it does it is an ordinary backside SN2.',
@@ -16929,14 +15967,7 @@ FIGURES.push({
    excluded, and the 1,2-shifts. Every one of those is a claim about geometry
    or about an ordering, which is exactly what prose cannot show. */
 
-/* A regular polygon's vertices, angle 0 at the right and measured
-   counter-clockwise, which is how the rest of this file reads angles. */
-const polyPts = (cx, cy, n, r, rot = 90) =>
-  Array.from({ length: n }, (_, i) => {
-    const a = ((rot + (i * 360) / n) * Math.PI) / 180;
-    return P(cx + r * Math.cos(a), cy - r * Math.sin(a));
-  });
-const polyRing = (pts, cls) => pts.map((p, i) => bond(p, pts[(i + 1) % pts.length], { rFrom: 0, rTo: 0, cls })).join('');
+/* polyPts and polyRing come from lib/ochem-skeletal.mjs. */
 
 FIGURES.push({
   id: 'carbocation-anatomy',
@@ -18499,18 +17530,68 @@ FIGURES.push({
 });
 
 
+/* Figure modules. A figure written for one topic can live in its own file
+   under scripts/ochem-figures/, which default-exports an array of figure
+   definitions in the same shape as the ones above. This keeps a rewrite of
+   one chapter's figures out of everyone else's way. */
+const MOD_DIR = join(ROOT, 'scripts', 'ochem-figures');
+if (existsSync(MOD_DIR)) {
+  for (const f of readdirSync(MOD_DIR).filter((f) => f.endsWith('.mjs') && (!only || f === `${only}.mjs`)).sort()) {
+    const mod = await import(pathToFileURL(join(MOD_DIR, f)).href);
+    for (const def of mod.default) FIGURES.push({ ...def, from: f });
+  }
+}
+{
+  const seen = new Set();
+  for (const def of FIGURES) {
+    // One id per page: two figures on different pages may share an id, since
+    // each page carries its own markers (nitrogen-inversion does).
+    for (const page of [def.section, ...(def.lessons || []).map((l) => 'lesson:' + l)].filter(Boolean)) {
+      const key = `${def.id}@${page}`;
+      if (seen.has(key)) { console.error(`FAIL: two figures share the id ${def.id} on ${page}.`); process.exit(1); }
+      seen.add(key);
+    }
+  }
+}
+
 const START = (id) => `<!-- fig:${id}:start -->`;
 const END = (id) => `<!-- fig:${id}:end -->`;
 
+/* A figure can also be shown in a lesson. A lesson's steps are HTML inside
+   single-quoted JavaScript strings, so the lesson carries the markers inside
+   one of those strings, where its author wants the figure, and the block
+   written there is one line with every quote and backslash made safe for
+   that string. The words and the drawing are the same ones the notes page
+   shows, so the two cannot drift. A lesson listed in `lessons` must already
+   carry the markers: where a figure sits in a lesson is the author's call. */
+const forJsString = (html) => html.replace(/\\/g, '\\\\').replace(/'/g, '&#39;').replace(/\n/g, ' ');
+
 let wrote = 0;
 const stale = [];
-for (const def of FIGURES) {
-  const file = join(ROOT, 'ochem', 'notes', `${def.section}.html`);
-  if (!existsSync(file)) {
-    console.error(`FAIL: ${def.id} targets ochem/notes/${def.section}.html, which does not exist.`);
-    process.exit(1);
-  }
+function place(file, rel, def, block, anchorOk) {
   const current = readFileSync(file, 'utf8');
+  let next;
+  const a = current.indexOf(START(def.id));
+  const b = current.indexOf(END(def.id));
+  if (a !== -1 && b !== -1) {
+    next = current.slice(0, a) + block + current.slice(b + END(def.id).length);
+  } else {
+    const at = anchorOk && def.anchor ? current.indexOf(def.anchor) : -1;
+    if (at === -1) {
+      console.error(`FAIL: ${def.id} has no markers in ${rel}` + (anchorOk ? ` and could not find its anchor: ${def.anchor}` : '.'));
+      process.exit(1);
+    }
+    const insert = at + def.anchor.length;
+    next = current.slice(0, insert) + '\n' + block + current.slice(insert);
+  }
+  if (next === current) return;
+  if (check) { stale.push(`${def.id} (${rel})`); return; }
+  writeFileSync(file, next);
+  wrote++;
+}
+
+for (const def of FIGURES) {
+  if (only && def.from !== `${only}.mjs`) continue;
   const html = figure({
     viewBox: def.viewBox,
     alt: def.alt,
@@ -18518,27 +17599,24 @@ for (const def of FIGURES) {
     note: def.note,
     body: def.build(),
   });
-  const block = `${START(def.id)}\n${html}\n${END(def.id)}`;
-
-  let next;
-  const a = current.indexOf(START(def.id));
-  const b = current.indexOf(END(def.id));
-  if (a !== -1 && b !== -1) {
-    next = current.slice(0, a) + block + current.slice(b + END(def.id).length);
-  } else {
-    const at = current.indexOf(def.anchor);
-    if (at === -1) {
-      console.error(`FAIL: ${def.id} could not find its anchor in ochem/notes/${def.section}.html: ${def.anchor}`);
+  if (def.section) {
+    const rel = `ochem/notes/${def.section}.html`;
+    const file = join(ROOT, rel);
+    if (!existsSync(file)) {
+      console.error(`FAIL: ${def.id} targets ${rel}, which does not exist.`);
       process.exit(1);
     }
-    const insert = at + def.anchor.length;
-    next = current.slice(0, insert) + '\n' + block + current.slice(insert);
+    place(file, rel, def, `${START(def.id)}\n${html}\n${END(def.id)}`, true);
   }
-
-  if (next === current) continue;
-  if (check) { stale.push(def.id); continue; }
-  writeFileSync(file, next);
-  wrote++;
+  for (const lesson of def.lessons || []) {
+    const rel = `ochem/lessons/${lesson}.html`;
+    const file = join(ROOT, rel);
+    if (!existsSync(file)) {
+      console.error(`FAIL: ${def.id} targets ${rel}, which does not exist.`);
+      process.exit(1);
+    }
+    place(file, rel, def, `${START(def.id)}${forJsString(html)}${END(def.id)}`, false);
+  }
 }
 
 if (check) {
