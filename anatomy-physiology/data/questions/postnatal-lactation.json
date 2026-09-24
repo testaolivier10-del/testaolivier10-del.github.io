@@ -1,0 +1,574 @@
+[
+  {
+    "id": "anp-postnatal-lactation-1",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["interdependence", "homeostasis"],
+    "q": "A term baby takes its first breaths, and the cord is clamped. Predict the change in each variable over the first few minutes, compared with just before birth.",
+    "variables": [
+      { "name": "Pulmonary vascular resistance", "answer": "down", "why": "Air stretches the lungs open, and rising oxygen relaxes the pulmonary arterioles, helped by nitric oxide." },
+      { "name": "Blood flow through the lungs", "answer": "up", "why": "With resistance falling, far more of the right ventricle's output passes through the lungs instead of the ductus arteriosus." },
+      { "name": "Left atrial pressure", "answer": "up", "why": "Much more blood returns from the lungs through the pulmonary veins into the left atrium." },
+      { "name": "Right atrial pressure", "answer": "down", "why": "Clamping the cord stops the flow returning from the placenta through the umbilical vein, so less blood enters the right atrium." },
+      { "name": "Right-to-left flow through the foramen ovale", "answer": "down", "why": "Left atrial pressure now exceeds right, which pushes the septum primum against the opening and closes it." },
+      { "name": "Oxygen in the baby's arterial blood", "answer": "up", "why": "Blood now picks up oxygen in the lungs, and the shunts that mixed oxygen-poor blood into the aorta close." }
+    ],
+    "why": {
+      "correct": "Breathing lowers pulmonary resistance, and clamping the cord raises systemic resistance and cuts umbilical return. Left-sided pressures rise above right, which closes the foramen ovale and reverses flow in the ductus arteriosus, while oxygen from the lungs raises arterial oxygen."
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-2",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["homeostasis", "interdependence"],
+    "misconception": "an open ductus arteriosus carries blood from the pulmonary trunk to the aorta after birth",
+    "q": "A week after birth, a baby's ductus arteriosus is still open. Predict the change in each variable, compared with a baby whose ductus has closed.",
+    "variables": [
+      { "name": "Blood flow through the lungs", "answer": "up", "why": "Aortic pressure is now higher than pulmonary pressure, so blood flows from the aorta through the ductus into the pulmonary trunk and adds to the right ventricle's output." },
+      { "name": "Volume returning to the left atrium and ventricle", "answer": "up", "why": "The extra blood sent to the lungs returns through the pulmonary veins to the left heart." },
+      { "name": "Aortic diastolic pressure", "answer": "down", "why": "During diastole, blood keeps draining from the aorta into the lower-pressure pulmonary circuit through the ductus." },
+      { "name": "Pulse pressure", "answer": "up", "why": "Diastolic pressure falls while the larger stroke volume keeps systolic pressure up, so the gap widens and pulses feel bounding." }
+    ],
+    "why": {
+      "correct": "After birth the pressures are reversed, so an open ductus shunts blood left to right, from the aorta into the lungs. The lungs and left heart carry extra volume, and runoff from the aorta in diastole widens the pulse pressure."
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "What closes the foramen ovale within minutes to hours of birth?",
+    "options": [
+      "Fibrous tissue grows across the opening",
+      "Rising oxygen makes muscle around the opening contract",
+      "Left atrial pressure rises above right and presses the flap shut",
+      "Falling prostaglandin E2 lets the opening constrict"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "More blood returns from the lungs to the left atrium, and less returns to the right atrium once the cord is clamped. The higher left pressure pushes the septum primum against the rim of the opening, like a door pushed shut. Fusion comes months later.",
+      "options": [
+        "Fusion of the flap to the wall happens over months, and in about one adult in four never happens. The quick closure is a pressure effect.",
+        "Oxygen-driven contraction closes the ductus arteriosus, a muscular vessel. The foramen ovale is a flap valve with no ring of muscle.",
+        "Correct. A pressure reversal between the atria presses the flap closed.",
+        "Falling prostaglandin E2 helps close the ductus arteriosus, not the foramen ovale."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-4",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Select every change after birth that helps close the ductus arteriosus.",
+    "options": [
+      "Rising oxygen in the blood",
+      "Falling prostaglandin E2",
+      "Rising pulmonary artery pressure",
+      "Rising prostaglandin E2",
+      "Aortic pressure rising above pulmonary pressure"
+    ],
+    "correct": [0, 1, 4],
+    "why": {
+      "correct": "Oxygen makes the ductus smooth muscle contract, and losing prostaglandin E2 removes the signal that kept it open. With aortic pressure above pulmonary pressure, flow through the ductus reverses and it constricts.",
+      "options": [
+        "Correct. Rising oxygen contracts the ductus smooth muscle.",
+        "Correct. Prostaglandin E2 kept the ductus open before birth; its fall lets it close.",
+        "Pulmonary pressure falls after birth. A rise would favor flow from the pulmonary trunk into the aorta, as before birth.",
+        "Prostaglandin E2 keeps the ductus open. A prostaglandin infusion is used to keep it open on purpose.",
+        "Correct. The pressure reversal ends the fetal flow pattern through the ductus."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-5",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "A baby born at 27 weeks has a continuous murmur and bounding pulses, and an ultrasound shows an open ductus arteriosus. Which drug is most likely to close it?",
+    "options": [
+      "A prostaglandin infusion",
+      "Indomethacin, which blocks prostaglandin synthesis",
+      "A drug that lowers the oxygen in the blood",
+      "Epinephrine"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Prostaglandin E2 holds the ductus open, and preterm ducts are especially sensitive to it. Blocking prostaglandin synthesis with indomethacin or ibuprofen removes that signal, and the ductus constricts.",
+      "options": [
+        "A prostaglandin infusion keeps the ductus open. It is used when a baby's heart defect makes the ductus the only route for blood.",
+        "Correct. Removing prostaglandin lets the ductus close.",
+        "Low oxygen relaxes the ductus. Rising oxygen is one of the signals that closes it.",
+        "Epinephrine raises heart rate and contractility. It has no role in closing the ductus."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["interdependence"],
+    "q": "A newborn's heart defect means that blood can reach the lungs only through the ductus arteriosus. On day 2 the baby turns blue as the ductus begins to close. What keeps the baby alive until surgery?",
+    "options": [
+      "Giving 100% oxygen to speed closure of the ductus",
+      "A prostaglandin infusion to keep the ductus open",
+      "A drug that blocks prostaglandin synthesis",
+      "Cooling the baby to lower its oxygen use"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Prostaglandin E2 keeps the ductus open, so an infusion of a prostaglandin reopens or holds it open and restores blood flow to the lungs.",
+      "options": [
+        "Oxygen constricts the ductus. Closing it faster would cut off the baby's only route to the lungs.",
+        "Correct. A prostaglandin infusion keeps the ductus open.",
+        "Blocking prostaglandins closes the ductus, which is the treatment for an unwanted open ductus, not for a baby who depends on it.",
+        "Cooling a newborn makes it burn brown fat, using more oxygen and glucose, and it does nothing for the ductus."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-28-22",
+    "pin": "ductus-arteriosus",
+    "q": "Name the pinned fetal shunt.",
+    "options": [
+      "Ductus arteriosus",
+      "Foramen ovale",
+      "Ductus venosus",
+      "Umbilical vein"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The ductus arteriosus joins the pulmonary trunk to the aorta. Before birth it carries most of the right ventricle's output past the lungs; after birth it closes and becomes the ligamentum arteriosum.",
+      "options": [
+        "Correct. It links the pulmonary trunk and the aortic arch.",
+        "The foramen ovale is an opening between the two atria, inside the heart.",
+        "The ductus venosus is in the liver, linking the umbilical vein to the inferior vena cava.",
+        "The umbilical vein brings oxygen-rich blood from the placenta to the fetus's liver."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-8",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-28-22",
+    "pin": "foramen-ovale",
+    "q": "Name the pinned opening.",
+    "options": [
+      "Fossa ovalis",
+      "Ductus arteriosus",
+      "Foramen ovale",
+      "Coronary sinus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The foramen ovale is the flap-covered opening between the atria through which blood crosses from right to left before birth.",
+      "options": [
+        "The fossa ovalis is the shallow dip the foramen ovale leaves once its flap has fused. Before birth, the pinned opening is still open.",
+        "The ductus arteriosus is a vessel between the pulmonary trunk and aorta, outside the atria.",
+        "Correct. The foramen ovale links the right and left atria before birth.",
+        "The coronary sinus drains the heart's own veins into the right atrium. It does not connect the atria."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-9",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-28-22",
+    "pin": "ductus-venosus",
+    "q": "Name the pinned fetal vessel.",
+    "options": [
+      "Hepatic portal vein",
+      "Inferior vena cava",
+      "Umbilical artery",
+      "Ductus venosus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The ductus venosus carries most of the umbilical vein's oxygen-rich blood past the liver into the inferior vena cava. After birth it closes and becomes the ligamentum venosum.",
+      "options": [
+        "The hepatic portal vein carries blood from the intestines into the liver. It stays open for life.",
+        "The inferior vena cava is the large vein the ductus venosus empties into.",
+        "The umbilical arteries carry fetal blood to the placenta; they branch from arteries in the pelvis, not in the liver.",
+        "Correct. This shunt bypasses the liver before birth."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-10",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "The ligamentum arteriosum, a fibrous cord between the pulmonary trunk and the aortic arch, is the remnant of which fetal structure?",
+    "options": [
+      "Umbilical arteries",
+      "Ductus venosus",
+      "Foramen ovale",
+      "Ductus arteriosus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "After the ductus arteriosus constricts in the first days, it fills with fibrous tissue over the following weeks and becomes the ligamentum arteriosum.",
+      "options": [
+        "The umbilical arteries become the medial umbilical ligaments on the abdominal wall.",
+        "The ductus venosus becomes the ligamentum venosum in the liver.",
+        "The foramen ovale leaves the fossa ovalis, a dip in the wall between the atria.",
+        "Correct. The ductus arteriosus becomes the ligamentum arteriosum."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A baby born at 29 weeks begins breathing 80 times a minute within an hour of birth. She grunts with each breath, her nostrils flare, and the skin between her ribs sinks in as she breathes in. What is the most likely cause?",
+    "options": [
+      "Too little surfactant, so alveoli collapse after each breath",
+      "An open ductus arteriosus flooding the lungs with blood",
+      "Aspiration of amniotic fluid stained with meconium",
+      "Cold stress from being left wet"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "At 29 weeks, the type II cells have not yet made enough surfactant. Surface tension collapses alveoli at the end of each breath, so every breath must reopen them: respiratory distress syndrome.",
+      "options": [
+        "Correct. Surfactant shortage causes respiratory distress syndrome in preterm babies.",
+        "An open ductus can add to lung problems later, but distress within the first hour in a very preterm baby points first to surfactant shortage.",
+        "Meconium in the fluid is a problem of term and post-term babies under stress, not of a baby born at 29 weeks.",
+        "Cold stress raises oxygen use and can worsen breathing, but it does not cause grunting and collapsing alveoli by itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Why does grunting help a baby with respiratory distress syndrome?",
+    "options": [
+      "It lowers surface tension in the alveoli",
+      "Breathing out against a partly closed glottis keeps pressure in the airways, holding alveoli open",
+      "It raises the carbon dioxide level, which drives faster breathing",
+      "It clears fluid from the airways with each breath"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Grunting is breathing out against a partly closed glottis. It keeps some pressure in the airways at the end of each breath, so fewer alveoli collapse. Continuous positive airway pressure does the same thing from outside.",
+      "options": [
+        "Only surfactant lowers surface tension. Grunting works by pressure, not chemistry.",
+        "Correct. The held pressure counters the collapse that surface tension causes.",
+        "Raising carbon dioxide would make the baby worse off. Grunting helps by keeping alveoli open, which improves gas exchange.",
+        "Grunting holds air in the lungs; it does not clear fluid from them."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Ms. Park is in labor at 31 weeks. Before the birth, her doctor gives her an injection of a glucocorticoid. What is the reason?",
+    "options": [
+      "To stop the contractions",
+      "To speed maturation of the baby's type II alveolar cells",
+      "To prevent Rh sensitization",
+      "To close the baby's ductus arteriosus before birth"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A glucocorticoid given to the mother crosses the placenta and speeds the baby's type II cells toward making surfactant, which cuts respiratory distress syndrome and newborn deaths.",
+      "options": [
+        "Glucocorticoids do not stop contractions. Other drugs are used to delay preterm labor for a short time.",
+        "Correct. It speeds surfactant production in the fetal lungs.",
+        "Rh sensitization is prevented with an injection of anti-D, an antibody, not a glucocorticoid.",
+        "Closing the ductus before birth would be harmful, because the fetus needs it to send blood past its lungs."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "At 1 minute after birth, a baby's heart rate is 90 a minute, breathing is slow and irregular, the limbs are partly bent, the baby grimaces when the feet are flicked, and the body is pink with blue hands and feet. What is the Apgar score?",
+    "options": [
+      "5",
+      "7",
+      "4",
+      "6"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Each sign scores 1: color (body pink, hands and feet blue), pulse (below 100), grimace (a grimace only), activity (some bending) and respiration (slow, irregular). The total is 5, a moderately abnormal score.",
+      "options": [
+        "Correct. Five signs at 1 point each gives 5.",
+        "A 7 would need two signs scoring 2, for example a heart rate of 100 or more and a strong cry.",
+        "A 4 would need one sign scoring 0, such as absent breathing or no response to stimulation.",
+        "A 6 would need one sign scoring 2, for example a heart rate of 100 or more."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A term baby, feeding well, has not passed any stool by 48 hours after birth. Why is this a concern?",
+    "options": [
+      "It suggests the gut has no bacteria yet",
+      "Nearly all healthy babies pass meconium within 48 hours, so the intestine may be blocked or not working",
+      "It means the baby is not getting enough milk",
+      "Meconium is normally passed only after the first week"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Meconium, the dark sticky contents of the fetal gut, is passed by nearly all term babies within 48 hours. Failure to pass it can mean a blockage or a problem with the intestine's movement, which needs investigating.",
+      "options": [
+        "Gut bacteria arrive during and after birth. Their absence would not stop meconium from being passed.",
+        "Correct. Delayed meconium points to a problem with the intestine.",
+        "Meconium was formed before birth from swallowed fluid and shed cells, so it is passed even before feeding is established.",
+        "Meconium is normally passed in the first one to two days, not after a week."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "A newborn is left wet and uncovered under a cold air vent for 20 minutes. Its temperature falls, and a blood test then shows low glucose. What links the cold to the low glucose?",
+    "options": [
+      "Cold makes the newborn shiver hard, which burns glucose",
+      "Cold stops the liver from releasing glucose",
+      "Sympathetic nerves make brown fat burn fuel for heat, which uses oxygen and glucose fast",
+      "Cold stimulates insulin release"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Cold skin signals the hypothalamus, sympathetic nerves release norepinephrine onto brown fat, and the brown fat burns fuel in mitochondria that release the energy as heat. That nonshivering thermogenesis uses oxygen and glucose fast, so a cold baby can become low in glucose and oxygen.",
+      "options": [
+        "Newborns shiver weakly and get little heat from it. Their main heat source is brown fat.",
+        "Sympathetic activity in cold raises glucose release from the liver; it does not stop it. The fall comes from use outrunning supply.",
+        "Correct. Nonshivering thermogenesis costs oxygen and glucose.",
+        "Cold and sympathetic activity hold insulin release down, not up."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-17",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Put the steps of the milk ejection reflex in order.",
+    "options": [
+      "The baby suckles at the breast",
+      "Mechanoreceptors in the nipple and areola fire",
+      "Afferent signals reach the hypothalamus",
+      "Oxytocin is released from the posterior pituitary",
+      "Myoepithelial cells around the alveoli contract",
+      "Milk flows through the ducts to the nipple"
+    ],
+    "why": {
+      "correct": "Suckling stimulates mechanoreceptors, whose signals travel to the hypothalamus. Hypothalamic neurons release oxytocin from the posterior pituitary, and oxytocin in the blood makes the myoepithelial cells squeeze milk out of the alveoli into the ducts."
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-18",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "A student described how suckling keeps milk production going. One step is wrong. Which one?",
+    "options": [
+      "Suckling sends nerve signals from the nipple to the hypothalamus",
+      "The hypothalamus increases its dopamine release",
+      "The anterior pituitary releases more prolactin",
+      "Prolactin acts on the alveolar cells of the breast",
+      "The alveolar cells make milk for the next feed"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Dopamine holds prolactin back. Suckling makes the hypothalamus release less dopamine, which is what lets prolactin surge.",
+      "options": [
+        "This step is right. Suckling is the stimulus, carried by afferent nerves.",
+        "This is the error. Dopamine release falls, removing the brake on prolactin.",
+        "This step is right. Prolactin rises once dopamine falls.",
+        "This step is right. The alveolar cells carry the prolactin receptor proteins.",
+        "This step is right. Prolactin's surge supports the milk for the following feed; oxytocin ejects the milk already made."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "Five days after birth, Ms. Ruiz's milk has still not come in, and she has had heavy bleeding. An ultrasound shows a piece of placenta left in her uterus. How does the retained tissue explain the delay?",
+    "options": [
+      "It releases dopamine, which blocks prolactin",
+      "It keeps progesterone high, which blocks prolactin's action on the alveolar cells",
+      "It uses up the oxytocin that would make milk",
+      "Bleeding has lowered her blood volume too far to make milk"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Full milk production starts when progesterone falls after the placenta is delivered. Retained placental tissue keeps making progesterone, which keeps blocking prolactin's action, so the milk does not come in until the tissue is removed.",
+      "options": [
+        "Dopamine comes from the hypothalamus, not the placenta.",
+        "Correct. Placental progesterone keeps the brake on milk production.",
+        "Oxytocin ejects milk; it does not make it. Prolactin, blocked by progesterone, is what is missing here.",
+        "Heavy bleeding can slow milk production, but the retained tissue explains the delay directly, through progesterone."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why is milk at the end of a feed (hindmilk) richer in fat than milk at the start (foremilk)?",
+    "options": [
+      "Oxytocin switches the alveolar cells to making fat partway through a feed",
+      "Foremilk is made by different cells from hindmilk",
+      "Fat droplets cling to the alveoli and small ducts and come out only as the breast empties",
+      "Prolactin rises during the feed and adds fat to the milk"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "It is one milk, made the same way. Fat droplets stick to the walls of the alveoli and small ducts, so the early milk out is lower in fat, and the fat is carried out as the breast is emptied.",
+      "options": [
+        "Oxytocin ejects milk; it does not change what the cells make during a feed.",
+        "The same alveolar cells make all the milk. The difference comes from how fat moves out of the breast.",
+        "Correct. Fat content climbs as the breast empties.",
+        "Prolactin's surge supports milk for the next feed, not the milk flowing now."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["interdependence"],
+    "q": "How does the IgA in breast milk protect a baby?",
+    "options": [
+      "It is absorbed into the baby's blood and becomes its main blood antibody",
+      "It coats the lining of the baby's gut and blocks microbes from attaching",
+      "It stimulates the baby's B cells to make their own IgA",
+      "It crosses the placenta before birth"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Most milk IgA is not absorbed. It works where it lands, on the baby's gut lining, binding microbes in the family's surroundings so they cannot attach: natural passive immunity.",
+      "options": [
+        "The baby's main blood antibody in early life is IgG that crossed the placenta. Milk IgA mostly stays in the gut.",
+        "Correct. Milk IgA protects the mucous membrane of the gut.",
+        "Borrowed antibody is passive immunity: it protects without switching on the baby's own B cells.",
+        "IgG is the antibody that crosses the placenta. IgA reaches the baby in milk after birth."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-22",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "A mother anxious and in pain after a difficult birth finds that her full breasts do not release milk when her baby suckles. Once her pain is controlled and she relaxes, milk flows. What was blocked?",
+    "options": [
+      "Prolactin release from the anterior pituitary",
+      "Oxytocin release, and with it the milk ejection reflex",
+      "Milk production by the alveolar cells",
+      "Dopamine release from the hypothalamus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Her breasts were full, so milk had been made. Pain, fear and stress inhibit oxytocin release through the hypothalamus, so the myoepithelial cells did not contract and the milk was not ejected.",
+      "options": [
+        "Prolactin makes milk, and her breasts were already full. The problem was getting the milk out.",
+        "Correct. Stress blocks the oxytocin that ejects milk.",
+        "Full breasts show that the alveolar cells had been making milk.",
+        "Less dopamine would raise prolactin; blocking dopamine would not stop milk from flowing."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-23",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Fill the gap: prolactin makes milk; ____ makes the myoepithelial cells contract and moves the milk out.",
+    "options": [
+      "estrogen",
+      "oxytocin",
+      "progesterone",
+      "human placental lactogen"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Oxytocin from the posterior pituitary contracts the myoepithelial cells around the alveoli: the milk ejection reflex.",
+      "options": [
+        "Estrogen makes the ducts grow during pregnancy. It does not eject milk.",
+        "Correct. Oxytocin ejects milk.",
+        "Progesterone makes the alveoli multiply in pregnancy and holds back full milk production until it falls.",
+        "Human placental lactogen helps prepare the breast in pregnancy and falls after the placenta is delivered."
+      ]
+    }
+  },
+  {
+    "id": "anp-postnatal-lactation-24",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "A woman who does not plan to breastfeed is given cabergoline, a drug that acts like dopamine on the pituitary. What happens, and why?",
+    "options": [
+      "Milk production stops, because prolactin release is suppressed",
+      "Milk production rises, because prolactin release increases",
+      "Milk is made but not ejected, because oxytocin release is blocked",
+      "Nothing changes, because milk production depends only on oxytocin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Dopamine is the main brake on prolactin. A drug that acts like dopamine keeps prolactin low even when the breasts are stimulated, so milk production stops.",
+      "options": [
+        "Correct. Mimicking dopamine suppresses prolactin, and with it milk production.",
+        "Dopamine lowers prolactin; a drug that acts like it cannot raise prolactin.",
+        "The drug acts on prolactin release from the anterior pituitary, not on oxytocin.",
+        "Oxytocin ejects milk, but prolactin is needed to make it."
+      ]
+    }
+  }
+]

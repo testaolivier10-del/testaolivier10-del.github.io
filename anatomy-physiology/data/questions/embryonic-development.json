@@ -4,14 +4,26 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "misconception": "hCG is made from fertilization onward",
     "q": "A woman who is trying to conceive has a sensitive blood test for hCG five days after she ovulated. It is negative, but a repeat test a week later is positive. Assuming she conceived on the day of ovulation, why was the first test negative?",
-    "options": ["Her corpus luteum had not yet started making hCG", "The embryo had not yet implanted, so no syncytiotrophoblast was secreting hCG", "hCG is made only once the embryo's heart begins to beat", "The zygote's hCG was still trapped inside the zona pellucida"],
+    "options": [
+      "Her corpus luteum had not yet started to make hCG in amounts a test can detect",
+      "The embryo had not yet implanted",
+      "hCG is made only once the embryo's heart begins to beat",
+      "The zygote's hCG was still trapped inside the zona pellucida"
+    ],
     "correct": 1,
     "why": {
       "correct": "hCG is secreted by the syncytiotrophoblast, which forms only as the blastocyst invades the endometrium from about day 6 to 7. hCG reaches the mother's blood in measurable amounts about 8 to 10 days after fertilization, so a test on day 5 is too early.",
-      "options": ["The corpus luteum does not make hCG; it responds to it. hCG comes from the embryo's trophoblast.", "Correct. No implantation means no syncytiotrophoblast and no hCG in her blood.", "The heart starts beating around day 22, long after hCG first appears. hCG depends on implantation, not on the heart.", "A day-5 embryo is not secreting hCG at all. Secretion begins with the syncytiotrophoblast during implantation."]
+      "options": [
+        "The corpus luteum does not make hCG; it responds to it. hCG comes from the embryo's trophoblast.",
+        "Correct. No implantation means no syncytiotrophoblast and no hCG in her blood.",
+        "The heart starts beating around day 22, long after hCG first appears. hCG depends on implantation, not on the heart.",
+        "A day-5 embryo is not secreting hCG at all. Secretion begins with the syncytiotrophoblast during implantation."
+      ]
     }
   },
   {
@@ -19,7 +31,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Put the stages from zygote to implantation in order.",
     "options": [
       "The zygote divides into two blastomeres",
@@ -38,15 +52,27 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-28-5",
     "pin": "inner-cell-mass",
     "q": "Name the pinned part of the blastocyst.",
-    "options": ["Trophoblast", "Blastocoel", "Inner cell mass", "Morula"],
+    "options": [
+      "Trophoblast",
+      "Blastocoel",
+      "Inner cell mass",
+      "Morula"
+    ],
     "correct": 2,
     "why": {
       "correct": "The inner cell mass is the cluster of cells against the inside of the trophoblast at one end of the blastocyst. It forms the embryo.",
-      "options": ["The trophoblast is the single outer layer of flat cells that surrounds the whole blastocyst.", "The blastocoel is the fluid-filled cavity, not a cluster of cells.", "Correct. This cluster is the inner cell mass.", "The morula is the earlier solid ball of cells, not a part of the blastocyst."]
+      "options": [
+        "The trophoblast is the single outer layer of flat cells that surrounds the whole blastocyst.",
+        "The blastocoel is the fluid-filled cavity, not a cluster of cells.",
+        "Correct. This cluster is the inner cell mass.",
+        "The morula is the earlier solid ball of cells, not a part of the blastocyst."
+      ]
     }
   },
   {
@@ -54,15 +80,27 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-28-5",
     "pin": "trophoblast",
     "q": "Name the pinned layer of the blastocyst.",
-    "options": ["Trophoblast", "Zona pellucida", "Inner cell mass", "Epiblast"],
+    "options": [
+      "Trophoblast",
+      "Zona pellucida",
+      "Inner cell mass",
+      "Epiblast"
+    ],
     "correct": 0,
     "why": {
       "correct": "The trophoblast is the outer layer of flat cells around the blastocyst. It attaches to and invades the endometrium and forms supporting tissues, not the embryo.",
-      "options": ["Correct. This outer layer of cells is the trophoblast.", "The zona pellucida is a cell-free glycoprotein coat, which the blastocyst sheds when it hatches.", "The inner cell mass is the cluster of cells inside the blastocyst, at one end.", "The epiblast forms later, in week 2, as one layer of the disc made from the inner cell mass."]
+      "options": [
+        "Correct. This outer layer of cells is the trophoblast.",
+        "The zona pellucida is a cell-free glycoprotein coat, which the blastocyst sheds when it hatches.",
+        "The inner cell mass is the cluster of cells inside the blastocyst, at one end.",
+        "The epiblast forms later, in week 2, as one layer of the disc made from the inner cell mass."
+      ]
     }
   },
   {
@@ -71,28 +109,69 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "An implanting embryo's syncytiotrophoblast secretes far too little hCG. Predict the change in each variable over the following week, compared with a normal early pregnancy.",
     "variables": [
-      { "name": "Survival of the corpus luteum past its usual two weeks", "answer": "down", "why": "Without enough hCG acting on its LH receptor proteins, the corpus luteum dies on its usual schedule." },
-      { "name": "Progesterone in the mother's blood", "answer": "down", "why": "The dying corpus luteum stops making progesterone, and the embryo's own tissues cannot yet make enough." },
-      { "name": "Chance that the endometrium is shed", "answer": "up", "why": "Falling progesterone sets off menstruation, and the functional layer, with the embryo in it, is shed." },
-      { "name": "Intensity of a home pregnancy test line", "answer": "down", "why": "The test detects hCG in urine, so less hCG gives a fainter line or a negative result." }
+      {
+        "name": "Survival of the corpus luteum past its usual two weeks",
+        "answer": "down",
+        "why": "Without enough hCG acting on its LH receptor proteins, the corpus luteum dies on its usual schedule."
+      },
+      {
+        "name": "Progesterone in the mother's blood",
+        "answer": "down",
+        "why": "The dying corpus luteum stops making progesterone, and the embryo's own tissues cannot yet make enough."
+      },
+      {
+        "name": "Chance that the endometrium is shed",
+        "answer": "up",
+        "why": "Falling progesterone sets off menstruation, and the functional layer, with the embryo in it, is shed."
+      },
+      {
+        "name": "Intensity of a home pregnancy test line",
+        "answer": "down",
+        "why": "The test detects hCG in urine, so less hCG gives a fainter line or a negative result."
+      }
     ],
-    "why": { "correct": "hCG keeps the corpus luteum alive. With too little of it, the corpus luteum dies, progesterone falls and the endometrium is shed, ending the pregnancy. This is one way a very early pregnancy is lost, often before it is recognized." }
+    "why": {
+      "correct": "hCG keeps the corpus luteum alive. With too little of it, the corpus luteum dies, progesterone falls and the endometrium is shed, ending the pregnancy. This is one way a very early pregnancy is lost, often before it is recognized."
+    }
   },
   {
     "id": "anp-embryonic-development-6",
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every tissue that develops from mesoderm.",
-    "options": ["Skeletal muscle", "Epidermis", "Dermis", "Lining of the stomach", "Cardiac muscle", "Bone"],
-    "correct": [0, 2, 4, 5],
+    "options": [
+      "Skeletal muscle",
+      "Epidermis",
+      "Dermis",
+      "Lining of the stomach",
+      "Cardiac muscle",
+      "Bone"
+    ],
+    "correct": [
+      0,
+      2,
+      4,
+      5
+    ],
     "why": {
       "correct": "Mesoderm forms all three kinds of muscle, the dermis, bone and cartilage, blood and vessels, the heart and the kidneys. Ectoderm forms the epidermis, and endoderm forms the lining of the digestive tract.",
-      "options": ["Correct. Skeletal muscle comes from the myotomes of the somites, which are mesoderm.", "The epidermis comes from ectoderm, the outer germ layer.", "Correct. The dermis comes from mesoderm, including the dermatome part of each somite.", "The epithelium lining the stomach comes from endoderm, which forms the gut tube.", "Correct. The heart muscle forms from mesoderm.", "Correct. Bone, and the cartilage models it replaces, come from mesoderm."]
+      "options": [
+        "Correct. Skeletal muscle comes from the myotomes of the somites, which are mesoderm.",
+        "The epidermis comes from ectoderm, the outer germ layer.",
+        "Correct. The dermis comes from mesoderm, including the dermatome part of each somite.",
+        "The epithelium lining the stomach comes from endoderm, which forms the gut tube.",
+        "Correct. The heart muscle forms from mesoderm.",
+        "Correct. Bone, and the cartilage models it replaces, come from mesoderm."
+      ]
     }
   },
   {
@@ -100,13 +179,25 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "An X-ray of a newborn shows one wedge-shaped, half-formed thoracic vertebra with a missing rib on the same side. The overlying skin and back muscles are normal. Which part of the embryo most likely developed abnormally?",
-    "options": ["The myotome of one somite", "The neural crest at that level", "The apical ectodermal ridge", "The sclerotome of one somite"],
+    "options": [
+      "The myotome of one somite",
+      "The neural crest at that level",
+      "The apical ectodermal ridge",
+      "The sclerotome of one somite"
+    ],
     "correct": 3,
     "why": {
       "correct": "The sclerotome of each somite forms the vertebrae and ribs. A defect confined to one sclerotome would leave a malformed vertebra and rib at that level, while the muscles (from the myotome) and the dermis (from the dermatome) develop normally.",
-      "options": ["The myotome forms skeletal muscle. The question says the back muscles are normal.", "The neural crest forms peripheral ganglia, Schwann cells and some head tissues, not vertebrae or ribs.", "The apical ectodermal ridge drives limb growth. It has no role in the vertebrae or ribs.", "Correct. The sclerotome forms vertebrae and ribs."]
+      "options": [
+        "The myotome forms skeletal muscle. The question says the back muscles are normal.",
+        "The neural crest forms peripheral ganglia, Schwann cells and some head tissues, not vertebrae or ribs.",
+        "The apical ectodermal ridge drives limb growth. It has no role in the vertebrae or ribs.",
+        "Correct. The sclerotome forms vertebrae and ribs."
+      ]
     }
   },
   {
@@ -114,13 +205,25 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A tumor arises from the epithelial cells lining the pancreatic ducts. From which germ layer did those cells originally develop?",
-    "options": ["Ectoderm", "Mesoderm", "Endoderm", "Neural crest"],
+    "options": [
+      "Ectoderm",
+      "Mesoderm",
+      "Endoderm",
+      "Neural crest"
+    ],
     "correct": 2,
     "why": {
       "correct": "The pancreas buds from the foregut, a tube of endoderm, so its ducts and the cells lining them come from endoderm. Its connective tissue and blood vessels come from mesoderm.",
-      "options": ["Ectoderm forms the epidermis, the nervous system and a few other structures, not the lining of gut glands.", "Mesoderm forms the pancreas's connective tissue and vessels, not the epithelium lining its ducts.", "Correct. Epithelium of the gut and the glands that bud from it comes from endoderm.", "Neural crest forms peripheral ganglia and Schwann cells, among other things, but not pancreatic duct epithelium."]
+      "options": [
+        "Ectoderm forms the epidermis, the nervous system and a few other structures, not the lining of gut glands.",
+        "Mesoderm forms the pancreas's connective tissue and vessels, not the epithelium lining its ducts.",
+        "Correct. Epithelium of the gut and the glands that bud from it comes from endoderm.",
+        "Neural crest forms peripheral ganglia and Schwann cells, among other things, but not pancreatic duct epithelium."
+      ]
     }
   },
   {
@@ -128,7 +231,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A student outlined how an implanting embryo prevents a menstrual period. One step is wrong. Which one?",
     "options": [
       "The syncytiotrophoblast secretes human chorionic gonadotropin",
@@ -140,7 +245,13 @@
     "correct": 1,
     "why": {
       "correct": "hCG resembles LH, not FSH. It binds LH receptor proteins on the cells of the corpus luteum, which is what keeps the corpus luteum alive.",
-      "options": ["This step is right. The syncytiotrophoblast is the source of hCG.", "This is the error. hCG acts like LH, on the corpus luteum.", "This step is right. hCG rescues the corpus luteum from its usual death.", "This step is right. The rescued corpus luteum keeps making progesterone.", "This step is right. Progesterone maintains the endometrium, so no period comes."]
+      "options": [
+        "This step is right. The syncytiotrophoblast is the source of hCG.",
+        "This is the error. hCG acts like LH, on the corpus luteum.",
+        "This step is right. hCG rescues the corpus luteum from its usual death.",
+        "This step is right. The rescued corpus luteum keeps making progesterone.",
+        "This step is right. Progesterone maintains the endometrium, so no period comes."
+      ]
     }
   },
   {
@@ -148,13 +259,25 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In a chick embryo experiment, the apical ectodermal ridge is removed from a wing bud after the upper wing has formed but before the rest has. What does the wing look like when the chick hatches?",
-    "options": ["A normal wing, because the mesoderm carries all the instructions", "No wing at all", "An upper wing but no lower wing or wing tip", "A wing tip attached directly to the body"],
+    "options": [
+      "A normal wing, because the mesoderm carries all the instructions",
+      "No wing at all",
+      "An upper wing but no lower wing or wing tip",
+      "A wing tip attached directly to the body"
+    ],
     "correct": 2,
     "why": {
       "correct": "The ridge keeps the mesoderm under it dividing, so the limb grows from its tip, laying down parts from the body outward. Parts already formed stay; parts not yet formed never grow. Removing it after the upper part has formed leaves a limb cut short beyond that point.",
-      "options": ["Without the ridge, the mesoderm under it stops being driven to divide. The instructions it provides are needed until the whole limb has formed.", "The upper wing had already formed when the ridge was removed, so it remains.", "Correct. Growth stops at the level reached when the ridge was removed.", "Limbs grow from the body outward. A tip cannot form without the parts nearer the body, and here the tip had not yet formed."]
+      "options": [
+        "Without the ridge, the mesoderm under it stops being driven to divide. The instructions it provides are needed until the whole limb has formed.",
+        "The upper wing had already formed when the ridge was removed, so it remains.",
+        "Correct. Growth stops at the level reached when the ridge was removed.",
+        "Limbs grow from the body outward. A tip cannot form without the parts nearer the body, and here the tip had not yet formed."
+      ]
     }
   },
   {
@@ -163,30 +286,62 @@
     "level": "analyze",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A drug that blocks sodium–potassium pumps is added to a morula growing in a dish on day 4. Predict the change in each variable over the next day, compared with an untreated morula.",
     "variables": [
-      { "name": "Sodium pumped into the center of the morula", "answer": "down", "why": "The outer cells use sodium–potassium pumps to move sodium inward. Blocked pumps move less." },
-      { "name": "Water moving into the center", "answer": "down", "why": "Water follows the solute. With less sodium collecting in the center, less water enters." },
-      { "name": "Size of the blastocoel", "answer": "down", "why": "The blastocoel is the fluid that collects in the center. Less water in means a smaller cavity or none." },
-      { "name": "Number of chromosomes in each blastomere", "answer": "none", "why": "The drug blocks ion pumping, not DNA copying or mitosis. Each cell stays diploid." }
+      {
+        "name": "Sodium pumped into the center of the morula",
+        "answer": "down",
+        "why": "The outer cells use sodium–potassium pumps to move sodium inward. Blocked pumps move less."
+      },
+      {
+        "name": "Water moving into the center",
+        "answer": "down",
+        "why": "Water follows the solute. With less sodium collecting in the center, less water enters."
+      },
+      {
+        "name": "Size of the blastocoel",
+        "answer": "down",
+        "why": "The blastocoel is the fluid that collects in the center. Less water in means a smaller cavity or none."
+      },
+      {
+        "name": "Number of chromosomes in each blastomere",
+        "answer": "none",
+        "why": "The drug blocks ion pumping, not DNA copying or mitosis. Each cell stays diploid."
+      }
     ],
-    "why": { "correct": "The blastocoel forms because the outer cells pump sodium into the center and water follows by osmosis. Blocking the pumps blocks that fluid collection, so the morula cannot become a proper blastocyst, even though its cells keep their normal chromosomes." }
+    "why": {
+      "correct": "The blastocoel forms because the outer cells pump sodium into the center and water follows by osmosis. Blocking the pumps blocks that fluid collection, so the morula cannot become a proper blastocyst, even though its cells keep their normal chromosomes."
+    }
   },
   {
     "id": "anp-embryonic-development-12",
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-28-9",
     "pin": "primitive-streak",
     "q": "Name the pinned structure, where epiblast cells move down to form new layers.",
-    "options": ["Notochord", "Primitive streak", "Neural tube", "Hypoblast"],
+    "options": [
+      "Notochord",
+      "Primitive streak",
+      "Neural tube",
+      "Hypoblast"
+    ],
     "correct": 1,
     "why": {
       "correct": "The primitive streak is the midline groove in the epiblast through which cells move during gastrulation to form the endoderm and mesoderm.",
-      "options": ["The notochord is a rod of mesoderm under the ectoderm, formed by cells moving forward from the head end of the streak. It is not where cells pass down.", "Correct. Cells pass through the primitive streak during gastrulation.", "The neural tube forms after gastrulation, from ectoderm folding up along the back.", "The hypoblast is the lower layer of the two-layered disc, which the first cells through the streak replace."]
+      "options": [
+        "The notochord is a rod of mesoderm under the ectoderm, formed by cells moving forward from the head end of the streak. It is not where cells pass down.",
+        "Correct. Cells pass through the primitive streak during gastrulation.",
+        "The neural tube forms after gastrulation, from ectoderm folding up along the back.",
+        "The hypoblast is the lower layer of the two-layered disc, which the first cells through the streak replace."
+      ]
     }
   },
   {
@@ -194,15 +349,27 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-28-10",
     "pin": "amnion",
     "q": "Name the pinned membrane.",
-    "options": ["Chorion", "Yolk sac", "Allantois", "Amnion"],
+    "options": [
+      "Chorion",
+      "Yolk sac",
+      "Allantois",
+      "Amnion"
+    ],
     "correct": 3,
     "why": {
       "correct": "The amnion is the thin inner membrane that surrounds the embryo and encloses the amniotic cavity and its fluid.",
-      "options": ["The chorion is the outer membrane, next to the endometrium and the maternal blood.", "The yolk sac hangs from the embryo's belly side and holds no amniotic fluid.", "The allantois is a small outpouching into the stalk that ties the embryo to the chorion.", "Correct. The amnion encloses the amniotic fluid around the embryo."]
+      "options": [
+        "The chorion is the outer membrane, next to the endometrium and the maternal blood.",
+        "The yolk sac hangs from the embryo's belly side and holds no amniotic fluid.",
+        "The allantois is a small outpouching into the stalk that ties the embryo to the chorion.",
+        "Correct. The amnion encloses the amniotic fluid around the embryo."
+      ]
     }
   },
   {
@@ -210,13 +377,25 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A pathologist tests cells from each embryonic membrane of an early pregnancy for human chorionic gonadotropin. In which membrane will she find the cells that make it?",
-    "options": ["Amnion", "Chorion", "Yolk sac", "Allantois"],
+    "options": [
+      "Amnion",
+      "Chorion",
+      "Yolk sac",
+      "Allantois"
+    ],
     "correct": 1,
     "why": {
       "correct": "hCG is made by the syncytiotrophoblast, and the trophoblast forms the chorion. The hormone's name records this: chorionic gonadotropin.",
-      "options": ["The amnion forms from epiblast, not trophoblast, and does not make hCG.", "Correct. The chorion's syncytiotrophoblast secretes hCG.", "The yolk sac forms from hypoblast. Its wall makes the first blood cells, not hCG.", "The allantois is a small outpouching whose vessels become the cord's vessels. It does not make hCG."]
+      "options": [
+        "The amnion forms from epiblast, not trophoblast, and does not make hCG.",
+        "Correct. The chorion's syncytiotrophoblast secretes hCG.",
+        "The yolk sac forms from hypoblast. Its wall makes the first blood cells, not hCG.",
+        "The allantois is a small outpouching whose vessels become the cord's vessels. It does not make hCG."
+      ]
     }
   },
   {
@@ -224,13 +403,25 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "An ultrasound late in pregnancy shows a fetus whose kidneys never formed. There is almost no amniotic fluid. After birth, which problem is most likely to threaten the baby first?",
-    "options": ["Underdeveloped lungs", "Absent vertebrae", "An unclosed neural tube", "Missing fingers"],
+    "options": [
+      "Underdeveloped lungs",
+      "Absent vertebrae",
+      "An unclosed neural tube",
+      "Missing fingers"
+    ],
     "correct": 0,
     "why": {
       "correct": "Later in pregnancy, most amniotic fluid is fetal urine, so no kidneys means almost no fluid. The lungs need fluid breathed in and out, and room to expand, to grow. Without it they stay small, and the baby cannot breathe adequately after birth.",
-      "options": ["Correct. Too little amniotic fluid stunts lung growth.", "Vertebrae form from sclerotomes in the first weeks, before the kidneys make urine. Missing fluid does not remove them.", "The neural tube closes by about day 28, well before urine forms the fluid. Its closure does not depend on the kidneys.", "Fingers are freed by apoptosis in weeks 6 to 8. Little fluid can press on the limbs, but it does not remove the fingers."]
+      "options": [
+        "Correct. Too little amniotic fluid stunts lung growth.",
+        "Vertebrae form from sclerotomes in the first weeks, before the kidneys make urine. Missing fluid does not remove them.",
+        "The neural tube closes by about day 28, well before urine forms the fluid. Its closure does not depend on the kidneys.",
+        "Fingers are freed by apoptosis in weeks 6 to 8. Little fluid can press on the limbs, but it does not remove the fingers."
+      ]
     }
   },
   {
@@ -238,13 +429,25 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Complete the sequence: zygote → blastomeres → morula → ____ → implantation.",
-    "options": ["Gastrula", "Blastocyst", "Embryonic disc", "Neural tube"],
+    "options": [
+      "Gastrula",
+      "Blastocyst",
+      "Embryonic disc",
+      "Neural tube"
+    ],
     "correct": 1,
     "why": {
       "correct": "The morula becomes a blastocyst when fluid collects inside it. The blastocyst is the stage that hatches and implants.",
-      "options": ["Gastrulation happens in week 3, after implantation, in the embryonic disc.", "Correct. The blastocyst follows the morula and implants.", "The two-layered embryonic disc forms from the inner cell mass during implantation, in week 2.", "The neural tube closes in week 4, long after implantation."]
+      "options": [
+        "Gastrulation happens in week 3, after implantation, in the embryonic disc.",
+        "Correct. The blastocyst follows the morula and implants.",
+        "The two-layered embryonic disc forms from the inner cell mass during implantation, in week 2.",
+        "The neural tube closes in week 4, long after implantation."
+      ]
     }
   },
   {
@@ -252,13 +455,25 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In the late 1950s, a sedative given to pregnant women caused severe limb defects. Babies were affected when their mothers took it between about days 20 and 36 after fertilization, but not when it was first taken in week 12. What best explains the difference?",
-    "options": ["By week 12 the zona pellucida protects the fetus", "By week 12 the mother's liver has adapted to break the drug down", "The limbs form during the embryonic period, and by week 12 they already have", "Drugs cannot reach the fetus after the end of week 8"],
+    "options": [
+      "By week 12 the zona pellucida protects the fetus",
+      "By week 12 the mother's liver had adapted to break the drug down before it reached the fetus",
+      "The limbs form during weeks 4 to 8, so by week 12 they were already formed",
+      "Drugs cannot reach the fetus after the end of week 8"
+    ],
     "correct": 2,
     "why": {
       "correct": "Limb buds appear near the end of week 4 and their parts form over the following weeks. A drug that disrupts limb formation can only do so while it is happening. By week 12 the limbs are already formed, so the same drug no longer causes that defect.",
-      "options": ["The blastocyst hatches from the zona pellucida in its first week. There is no zona around a fetus.", "The difference follows the embryo's stage of development, not a change in the mother's handling of the drug.", "Correct. Organs are most easily damaged while they are forming, during weeks 3 to 8.", "Many drugs still reach the fetus after week 8. What changes is which structures are still forming."]
+      "options": [
+        "The blastocyst hatches from the zona pellucida in its first week. There is no zona around a fetus.",
+        "The difference follows the embryo's stage of development, not a change in the mother's handling of the drug.",
+        "Correct. Organs are most easily damaged while they are forming, during weeks 3 to 8.",
+        "Many drugs still reach the fetus after week 8. What changes is which structures are still forming."
+      ]
     }
   },
   {
@@ -266,13 +481,25 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "In a developing knee, the cells in the middle of the joint interzone fail to die. What would most likely result?",
-    "options": ["No joint cavity, so the femur and tibia stay joined", "A normal synovial joint with a thicker capsule", "Extra digits on the foot", "An unusually long femur"],
+    "options": [
+      "No joint cavity; the bones stay joined",
+      "A normal synovial joint whose capsule is unusually thick",
+      "Extra toes on the foot of the same leg",
+      "An unusually long femur"
+    ],
     "correct": 0,
     "why": {
       "correct": "A synovial joint cavity opens when the cells in the middle of the interzone die. If they survive, no cavity forms, and the two bones stay joined by tissue instead of moving freely against each other.",
-      "options": ["Correct. Without the cells dying, no cavity opens.", "A synovial joint needs a cavity. The cells that should die are the ones that make room for it.", "Extra digits come from extra ridges in the limb's hand or foot plate, not from the knee's interzone.", "The length of a bone depends on its growth, not on whether a joint cavity forms beside it."]
+      "options": [
+        "Correct. Without the cells dying, no cavity opens.",
+        "A synovial joint needs a cavity. The cells that should die are the ones that make room for it.",
+        "Extra digits come from extra ridges in the limb's hand or foot plate, not from the knee's interzone.",
+        "The length of a bone depends on its growth, not on whether a joint cavity forms beside it."
+      ]
     }
   },
   {
@@ -280,13 +507,25 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Researchers mark cells at the edges of the neural folds in an early embryo. Weeks later, where will they most likely find the marked cells?",
-    "options": ["In the cerebral cortex", "In the lining of the gut", "In the vertebrae", "In dorsal root ganglia and around peripheral axons as Schwann cells"],
+    "options": [
+      "In the gray matter of the cerebral cortex",
+      "In the epithelium lining the gut",
+      "In the vertebrae",
+      "In peripheral ganglia and Schwann cells"
+    ],
     "correct": 3,
     "why": {
       "correct": "Cells at the edges of the neural folds become the neural crest. They break away as the neural tube closes and migrate to form, among other things, the neurons of the ganglia outside the CNS and the Schwann cells.",
-      "options": ["The cerebral cortex forms from the neural tube itself, not from the crest cells at its edges.", "The lining of the gut forms from endoderm.", "Vertebrae form from the sclerotomes, which are mesoderm.", "Correct. Neural crest cells form peripheral ganglia and Schwann cells."]
+      "options": [
+        "The cerebral cortex forms from the neural tube itself, not from the crest cells at its edges.",
+        "The lining of the gut forms from endoderm.",
+        "Vertebrae form from the sclerotomes, which are mesoderm.",
+        "Correct. Neural crest cells form peripheral ganglia and Schwann cells."
+      ]
     }
   },
   {
@@ -294,13 +533,34 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Select every structure whose lining develops from the foregut.",
-    "options": ["Esophagus", "Stomach", "Rectum", "Trachea", "Urinary bladder", "Pancreatic ducts"],
-    "correct": [0, 1, 3, 5],
+    "options": [
+      "Esophagus",
+      "Stomach",
+      "Rectum",
+      "Trachea",
+      "Urinary bladder",
+      "Pancreatic ducts"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
     "why": {
       "correct": "The foregut forms the pharynx, esophagus, stomach and first part of the duodenum, and the liver, pancreas and the lining of the airways bud from it. The rectum and the bladder lining come from the hindgut.",
-      "options": ["Correct. The esophagus is foregut.", "Correct. The stomach is foregut.", "The rectum forms from the hindgut.", "Correct. The lining of the larynx, trachea and lungs buds from the foregut.", "The lining of the urinary bladder comes from the hindgut region.", "Correct. The pancreas buds from the foregut."]
+      "options": [
+        "Correct. The esophagus is foregut.",
+        "Correct. The stomach is foregut.",
+        "The rectum forms from the hindgut.",
+        "Correct. The lining of the larynx, trachea and lungs buds from the foregut.",
+        "The lining of the urinary bladder comes from the hindgut region.",
+        "Correct. The pancreas buds from the foregut."
+      ]
     }
   },
   {
@@ -308,15 +568,27 @@
     "type": "image",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-28-8",
     "pin": "syncytiotrophoblast",
     "q": "Name the pinned tissue, the invading outer layer of the trophoblast.",
-    "options": ["Cytotrophoblast", "Syncytiotrophoblast", "Endometrium", "Hypoblast"],
+    "options": [
+      "Cytotrophoblast",
+      "Syncytiotrophoblast",
+      "Endometrium",
+      "Hypoblast"
+    ],
     "correct": 1,
     "why": {
       "correct": "The syncytiotrophoblast is the outer layer of the trophoblast: a single mass of cytoplasm with many nuclei and no cell boundaries. It digests its way into the endometrium and secretes hCG.",
-      "options": ["The cytotrophoblast is the inner trophoblast layer of separate cells, next to the blastocyst cavity.", "Correct. This invading multinucleated mass is the syncytiotrophoblast.", "The endometrium is the mother's tissue that the syncytiotrophoblast invades.", "The hypoblast is the lower layer of the embryonic disc, not part of the trophoblast."]
+      "options": [
+        "The cytotrophoblast is the inner trophoblast layer of separate cells, next to the blastocyst cavity.",
+        "Correct. This invading multinucleated mass is the syncytiotrophoblast.",
+        "The endometrium is the mother's tissue that the syncytiotrophoblast invades.",
+        "The hypoblast is the lower layer of the embryonic disc, not part of the trophoblast."
+      ]
     }
   },
   {
@@ -324,13 +596,25 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Why do your knees face forward while your elbows point backward?",
-    "options": ["The legs rotated inward and the arms outward in weeks 7 and 8", "The leg buds formed on the front of the body and the arm buds on the back", "The femur twisted after birth as the child learned to walk", "Knee joints form from a different germ layer than elbow joints"],
+    "options": [
+      "The legs rotated inward and the arms outward in weeks 7 and 8",
+      "The leg buds formed on the front of the body and the arm buds on the back",
+      "The femur twisted after birth as the child learned to walk",
+      "Knee joints form from a different germ layer than elbow joints"
+    ],
     "correct": 0,
     "why": {
       "correct": "Both limbs start out pointing the same way. In weeks 7 and 8 the arms rotate outward, turning the elbows back, and the legs rotate inward, turning the knees forward and the big toes to the medial side.",
-      "options": ["Correct. Opposite rotations of the limbs set their final orientation.", "Both pairs of limb buds bulge from the sides of the body wall.", "The orientation is set before birth, by the rotation in weeks 7 and 8.", "Both joints form from mesoderm, through the same kind of joint interzone."]
+      "options": [
+        "Correct. Opposite rotations of the limbs set their final orientation.",
+        "Both pairs of limb buds bulge from the sides of the body wall.",
+        "The orientation is set before birth, by the rotation in weeks 7 and 8.",
+        "Both joints form from mesoderm, through the same kind of joint interzone."
+      ]
     }
   }
 ]
