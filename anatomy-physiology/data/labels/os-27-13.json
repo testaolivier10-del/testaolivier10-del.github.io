@@ -10,7 +10,13 @@
       "lines": [
         6
       ],
-      "concept": "releasing-hormones"
+      "concept": "releasing-hormones",
+      "box": [
+        259,
+        79,
+        63,
+        20
+      ]
     },
     {
       "id": "fsh-follicular",
@@ -21,7 +27,13 @@
       "lines": [
         15
       ],
-      "concept": "anterior-pituitary-hormones"
+      "concept": "anterior-pituitary-hormones",
+      "box": [
+        96,
+        287,
+        48,
+        20
+      ]
     },
     {
       "id": "lh-follicular",
@@ -32,7 +44,13 @@
       "lines": [
         17
       ],
-      "concept": "anterior-pituitary-hormones"
+      "concept": "anterior-pituitary-hormones",
+      "box": [
+        74,
+        322,
+        35,
+        19
+      ]
     },
     {
       "id": "estradiol-feedback-follicular",
@@ -44,7 +62,13 @@
       "lines": [
         20
       ],
-      "concept": "gonadal-hormones"
+      "concept": "gonadal-hormones",
+      "box": [
+        319,
+        335,
+        83,
+        19
+      ]
     },
     {
       "id": "follicles-follicular",
@@ -57,7 +81,13 @@
       "lines": [
         25
       ],
-      "concept": "ovaries"
+      "concept": "ovaries",
+      "box": [
+        219,
+        382,
+        79,
+        20
+      ]
     },
     {
       "id": "estradiol-uterus-follicular",
@@ -69,7 +99,13 @@
       "lines": [
         33
       ],
-      "concept": "gonadal-hormones"
+      "concept": "gonadal-hormones",
+      "box": [
+        318,
+        442,
+        83,
+        20
+      ]
     },
     {
       "id": "endometrium-follicular",
@@ -78,7 +114,13 @@
       "lines": [
         43
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        197,
+        518,
+        121,
+        20
+      ]
     },
     {
       "id": "gnrh-ovulation",
@@ -89,7 +131,13 @@
       "lines": [
         7
       ],
-      "concept": "releasing-hormones"
+      "concept": "releasing-hormones",
+      "box": [
+        779,
+        79,
+        63,
+        20
+      ]
     },
     {
       "id": "estradiol-feedback-ovulation",
@@ -101,7 +149,13 @@
       "lines": [
         13
       ],
-      "concept": "gonadal-hormones"
+      "concept": "gonadal-hormones",
+      "box": [
+        871,
+        180,
+        83,
+        19
+      ]
     },
     {
       "id": "fsh-ovulation",
@@ -112,7 +166,13 @@
       "lines": [
         14
       ],
-      "concept": "anterior-pituitary-hormones"
+      "concept": "anterior-pituitary-hormones",
+      "box": [
+        616,
+        285,
+        48,
+        20
+      ]
     },
     {
       "id": "lh-ovulation",
@@ -123,7 +183,13 @@
       "lines": [
         16
       ],
-      "concept": "anterior-pituitary-hormones"
+      "concept": "anterior-pituitary-hormones",
+      "box": [
+        593,
+        319,
+        35,
+        20
+      ]
     },
     {
       "id": "follicles-ovulation",
@@ -136,7 +202,13 @@
       "lines": [
         26
       ],
-      "concept": "ovaries"
+      "concept": "ovaries",
+      "box": [
+        739,
+        382,
+        78,
+        20
+      ]
     },
     {
       "id": "estradiol-uterus-ovulation",
@@ -148,7 +220,13 @@
       "lines": [
         34
       ],
-      "concept": "gonadal-hormones"
+      "concept": "gonadal-hormones",
+      "box": [
+        841,
+        442,
+        83,
+        20
+      ]
     },
     {
       "id": "endometrium-ovulation",
@@ -157,7 +235,13 @@
       "lines": [
         44
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        717,
+        518,
+        121,
+        20
+      ]
     },
     {
       "id": "gnrh-luteal",
@@ -168,7 +252,13 @@
       "lines": [
         50
       ],
-      "concept": "releasing-hormones"
+      "concept": "releasing-hormones",
+      "box": [
+        567,
+        738,
+        63,
+        20
+      ]
     },
     {
       "id": "fsh-luteal",
@@ -179,7 +269,13 @@
       "lines": [
         55
       ],
-      "concept": "anterior-pituitary-hormones"
+      "concept": "anterior-pituitary-hormones",
+      "box": [
+        398,
+        949,
+        48,
+        20
+      ]
     },
     {
       "id": "lh-luteal",
@@ -190,7 +286,13 @@
       "lines": [
         56
       ],
-      "concept": "anterior-pituitary-hormones"
+      "concept": "anterior-pituitary-hormones",
+      "box": [
+        376,
+        983,
+        35,
+        19
+      ]
     },
     {
       "id": "progesterone-feedback-luteal",
@@ -201,7 +303,13 @@
       "lines": [
         58
       ],
-      "concept": "gonadal-hormones"
+      "concept": "gonadal-hormones",
+      "box": [
+        634,
+        996,
+        122,
+        23
+      ]
     },
     {
       "id": "corpus-luteum",
@@ -212,7 +320,13 @@
       "lines": [
         61
       ],
-      "concept": "corpus-luteum"
+      "concept": "corpus-luteum",
+      "box": [
+        499,
+        1040,
+        132,
+        24
+      ]
     },
     {
       "id": "progesterone-uterus-luteal",
@@ -223,7 +337,13 @@
       "lines": [
         66
       ],
-      "concept": "gonadal-hormones"
+      "concept": "gonadal-hormones",
+      "box": [
+        634,
+        1127,
+        122,
+        23
+      ]
     },
     {
       "id": "endometrium-luteal",
@@ -232,7 +352,13 @@
       "lines": [
         69
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        505,
+        1177,
+        121,
+        20
+      ]
     }
   ]
 }

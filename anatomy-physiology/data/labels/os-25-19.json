@@ -14,7 +14,13 @@
         0,
         3
       ],
-      "concept": "renal-tubule"
+      "concept": "renal-tubule",
+      "box": [
+        30,
+        1,
+        205,
+        65
+      ]
     },
     {
       "id": "proximal-convoluted-tubule-cell",
@@ -28,7 +34,13 @@
         1,
         4
       ],
-      "concept": "renal-tubule"
+      "concept": "renal-tubule",
+      "box": [
+        516,
+        1,
+        270,
+        59
+      ]
     },
     {
       "id": "bloodstream",
@@ -41,7 +53,13 @@
       "lines": [
         2
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        936,
+        1,
+        166,
+        27
+      ]
     },
     {
       "id": "carbonic-anhydrase-lumen",
@@ -55,7 +73,13 @@
         10,
         11
       ],
-      "concept": "carbonic-anhydrase"
+      "concept": "carbonic-anhydrase",
+      "box": [
+        45,
+        403,
+        146,
+        97
+      ]
     },
     {
       "id": "carbonic-anhydrase-cell",

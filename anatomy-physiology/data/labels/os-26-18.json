@@ -1,0 +1,187 @@
+{
+  "figure": "os-26-18",
+  "labels": [
+    {
+      "id": "cns-acidosis",
+      "name": "Central Nervous System",
+      "accept": [
+        "central nervous system",
+        "cns",
+        "brain"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cns-pns",
+      "box": [
+        10,
+        41,
+        228,
+        24
+      ]
+    },
+    {
+      "id": "respiratory-system-acidosis",
+      "name": "Respiratory System",
+      "accept": [
+        "respiratory system",
+        "lungs"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        11,
+        187,
+        187,
+        23
+      ]
+    },
+    {
+      "id": "heart-acidosis",
+      "name": "Heart",
+      "accept": [],
+      "lines": [
+        19
+      ],
+      "concept": "major-organs",
+      "box": [
+        11,
+        271,
+        60,
+        19
+      ]
+    },
+    {
+      "id": "muscular-system-acidosis",
+      "name": "Muscular System",
+      "accept": [
+        "muscular system",
+        "muscles"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        11,
+        354,
+        165,
+        23
+      ]
+    },
+    {
+      "id": "seizures",
+      "name": "Seizures",
+      "accept": [
+        "seizure"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": null,
+      "note": "OpenStax lists seizures under the muscular system. The jerking of a seizure comes from abnormal firing of neurons in the brain, not from the muscles themselves, so it belongs under the central nervous system. The label is kept (the notes caption points out the placement).",
+      "box": [
+        24,
+        374,
+        85,
+        20
+      ]
+    },
+    {
+      "id": "digestive-system-acidosis",
+      "name": "Digestive System",
+      "accept": [
+        "digestive system",
+        "gut",
+        "gi tract"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        11,
+        437,
+        166,
+        24
+      ]
+    },
+    {
+      "id": "cns-alkalosis",
+      "name": "Central Nervous System",
+      "accept": [
+        "central nervous system",
+        "cns",
+        "brain"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cns-pns",
+      "box": [
+        610,
+        41,
+        228,
+        24
+      ]
+    },
+    {
+      "id": "pns-alkalosis",
+      "name": "Peripheral Nervous System",
+      "accept": [
+        "peripheral nervous system",
+        "pns",
+        "nerves"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "cns-pns",
+      "box": [
+        611,
+        215,
+        251,
+        23
+      ]
+    },
+    {
+      "id": "muscular-system-alkalosis",
+      "name": "Muscular System",
+      "accept": [
+        "muscular system",
+        "muscles"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        611,
+        347,
+        165,
+        23
+      ]
+    },
+    {
+      "id": "digestive-system-alkalosis",
+      "name": "Digestive System",
+      "accept": [
+        "digestive system",
+        "gut",
+        "gi tract"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        611,
+        458,
+        166,
+        24
+      ]
+    }
+  ]
+}

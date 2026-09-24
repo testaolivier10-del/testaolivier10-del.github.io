@@ -60,7 +60,13 @@
       "lines": [
         0
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        0,
+        195,
+        94,
+        20
+      ]
     },
     {
       "id": "extracellular-fluid",
@@ -72,7 +78,13 @@
       "lines": [
         1
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        280,
+        458,
+        165,
+        30
+      ]
     }
   ]
 }

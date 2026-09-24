@@ -11,7 +11,13 @@
       "lines": [
         19
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        90,
+        314,
+        53,
+        19
+      ]
     },
     {
       "id": "scrotal-septum",
@@ -24,7 +30,13 @@
         9,
         11
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        262,
+        61,
+        57,
+        35
+      ]
     },
     {
       "id": "cremaster-muscles",
@@ -38,7 +50,13 @@
         20,
         23
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        260,
+        315,
+        78,
+        33
+      ]
     },
     {
       "id": "dartos-muscles",
@@ -52,7 +70,13 @@
         21,
         24
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        378,
+        315,
+        63,
+        33
+      ]
     },
     {
       "id": "plexus-of-testicular-veins",
@@ -67,7 +91,13 @@
         6,
         12
       ],
-      "concept": "venae-cavae-tributaries"
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        478,
+        44,
+        70,
+        49
+      ]
     },
     {
       "id": "ductus-deferens",
@@ -81,7 +111,13 @@
         4,
         7
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        560,
+        44,
+        66,
+        32
+      ]
     },
     {
       "id": "spermatic-cord",
@@ -91,7 +127,13 @@
         5,
         8
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        626,
+        44,
+        75,
+        32
+      ]
     },
     {
       "id": "testicular-artery",
@@ -103,7 +145,13 @@
         10,
         13
       ],
-      "concept": "abdominal-arteries"
+      "concept": "abdominal-arteries",
+      "box": [
+        724,
+        67,
+        71,
+        36
+      ]
     },
     {
       "id": "autonomic-nerve",
@@ -116,7 +164,13 @@
         14,
         15
       ],
-      "concept": "autonomic-ns-basic"
+      "concept": "autonomic-ns-basic",
+      "box": [
+        724,
+        115,
+        77,
+        32
+      ]
     },
     {
       "id": "lymphatic-vessel",
@@ -130,7 +184,13 @@
         16,
         17
       ],
-      "concept": "lymphatic-vessels"
+      "concept": "lymphatic-vessels",
+      "box": [
+        724,
+        160,
+        75,
+        32
+      ]
     },
     {
       "id": "testis",
@@ -142,7 +202,13 @@
       "lines": [
         18
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        724,
+        237,
+        48,
+        16
+      ]
     },
     {
       "id": "epididymis",
@@ -151,7 +217,13 @@
       "lines": [
         22
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        533,
+        315,
+        79,
+        19
+      ]
     }
   ]
 }

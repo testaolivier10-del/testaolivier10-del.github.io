@@ -8,7 +8,13 @@
       "lines": [
         1
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        142,
+        88,
+        138,
+        24
+      ]
     },
     {
       "id": "cremaster-muscle",
@@ -21,7 +27,13 @@
         2,
         3
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        596,
+        139,
+        100,
+        41
+      ]
     },
     {
       "id": "tunica-vaginalis",
@@ -30,7 +42,13 @@
       "lines": [
         5
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        595,
+        215,
+        146,
+        24
+      ]
     },
     {
       "id": "efferent-ductule",
@@ -44,7 +62,13 @@
         4,
         6
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        0,
+        209,
+        74,
+        41
+      ]
     },
     {
       "id": "head-of-epididymis",
@@ -57,7 +81,13 @@
         7,
         9
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        595,
+        283,
+        101,
+        44
+      ]
     },
     {
       "id": "body-of-epididymis",
@@ -70,7 +100,13 @@
         8,
         10
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        0,
+        290,
+        97,
+        44
+      ]
     },
     {
       "id": "seminiferous-tubule-lobules",
@@ -86,7 +122,13 @@
         11,
         13
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        595,
+        396,
+        128,
+        40
+      ]
     },
     {
       "id": "ductus-deferens",
@@ -100,7 +142,13 @@
         12,
         14
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        0,
+        398,
+        81,
+        41
+      ]
     },
     {
       "id": "septa-tunica-albuginea",
@@ -116,7 +164,13 @@
         16
       ],
       "concept": "scrotum-testes",
-      "note": "OpenStax prints 'Septa (tunica albuginea)': the septa are inward extensions of the tunica albuginea that divide the testis into lobules, not the tunica albuginea itself (that is the capsule, labeled separately). The name is kept as printed; 'septa' is the answer."
+      "note": "OpenStax prints 'Septa (tunica albuginea)': the septa are inward extensions of the tunica albuginea that divide the testis into lobules, not the tunica albuginea itself (that is the capsule, labeled separately). The name is kept as printed; 'septa' is the answer.",
+      "box": [
+        595,
+        475,
+        123,
+        45
+      ]
     },
     {
       "id": "rete-testis",
@@ -128,7 +182,13 @@
         17,
         18
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        0,
+        498,
+        52,
+        41
+      ]
     },
     {
       "id": "tunica-albuginea",
@@ -137,7 +197,13 @@
       "lines": [
         19
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        595,
+        549,
+        150,
+        24
+      ]
     },
     {
       "id": "straight-tubule",
@@ -151,7 +217,13 @@
         20,
         21
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        0,
+        580,
+        73,
+        40
+      ]
     },
     {
       "id": "tail-of-epididymis",
@@ -163,7 +235,13 @@
       "lines": [
         22
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        400,
+        665,
+        155,
+        23
+      ]
     }
   ]
 }

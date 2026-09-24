@@ -13,7 +13,13 @@
         2,
         3
       ],
-      "concept": "venule-vein"
+      "concept": "venule-vein",
+      "box": [
+        345,
+        41,
+        111,
+        34
+      ]
     },
     {
       "id": "deep-dorsal-vein",
@@ -25,7 +31,13 @@
       "lines": [
         5
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        339,
+        89,
+        115,
+        19
+      ]
     },
     {
       "id": "corpora-cavernosa",
@@ -37,7 +49,13 @@
       "lines": [
         7
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        338,
+        126,
+        130,
+        19
+      ]
     },
     {
       "id": "cavernosal-arteries",
@@ -52,7 +70,13 @@
       "lines": [
         9
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        329,
+        165,
+        133,
+        16
+      ]
     },
     {
       "id": "spongy-urethra",
@@ -64,7 +88,13 @@
       "lines": [
         10
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        344,
+        202,
+        106,
+        19
+      ]
     },
     {
       "id": "prepuce",
@@ -75,7 +105,13 @@
       "lines": [
         12
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        368,
+        238,
+        63,
+        19
+      ]
     },
     {
       "id": "corpus-spongiosum",
@@ -84,7 +120,13 @@
       "lines": [
         15
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        328,
+        269,
+        134,
+        19
+      ]
     }
   ]
 }

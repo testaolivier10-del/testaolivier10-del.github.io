@@ -11,7 +11,13 @@
       "lines": [
         0
       ],
-      "concept": "sperm-structure"
+      "concept": "sperm-structure",
+      "box": [
+        14,
+        4,
+        75,
+        16
+      ]
     },
     {
       "id": "plasma-membrane",
@@ -22,7 +28,13 @@
       "lines": [
         2
       ],
-      "concept": "plasma-membrane"
+      "concept": "plasma-membrane",
+      "box": [
+        102,
+        21,
+        128,
+        16
+      ]
     },
     {
       "id": "nucleus",
@@ -31,7 +43,13 @@
       "lines": [
         3
       ],
-      "concept": "nucleus"
+      "concept": "nucleus",
+      "box": [
+        129,
+        38,
+        61,
+        16
+      ]
     },
     {
       "id": "mitochondria",
@@ -42,7 +60,13 @@
       "lines": [
         4
       ],
-      "concept": "mitochondrion"
+      "concept": "mitochondrion",
+      "box": [
+        214,
+        43,
+        91,
+        16
+      ]
     },
     {
       "id": "centriole",
@@ -53,7 +77,13 @@
       "lines": [
         5
       ],
-      "concept": "cytoskeleton"
+      "concept": "cytoskeleton",
+      "box": [
+        153,
+        57,
+        67,
+        16
+      ]
     },
     {
       "id": "flagellum",
@@ -64,7 +94,13 @@
       "lines": [
         6
       ],
-      "concept": "cilia-flagella"
+      "concept": "cilia-flagella",
+      "box": [
+        304,
+        68,
+        71,
+        19
+      ]
     },
     {
       "id": "axial-filament",
@@ -76,7 +112,13 @@
       "lines": [
         1
       ],
-      "concept": "cilia-flagella"
+      "concept": "cilia-flagella",
+      "box": [
+        366,
+        4,
+        95,
+        16
+      ]
     },
     {
       "id": "head",
@@ -88,7 +130,13 @@
       "lines": [
         11
       ],
-      "concept": "sperm-structure"
+      "concept": "sperm-structure",
+      "box": [
+        41,
+        161,
+        45,
+        16
+      ]
     },
     {
       "id": "mid-piece",
@@ -100,7 +148,13 @@
       "lines": [
         12
       ],
-      "concept": "sperm-structure"
+      "concept": "sperm-structure",
+      "box": [
+        157,
+        161,
+        72,
+        19
+      ]
     },
     {
       "id": "tail",
@@ -113,7 +167,13 @@
       "lines": [
         13
       ],
-      "concept": "sperm-structure"
+      "concept": "sperm-structure",
+      "box": [
+        456,
+        161,
+        34,
+        16
+      ]
     },
     {
       "id": "end-piece",
@@ -126,7 +186,13 @@
         14,
         15
       ],
-      "concept": "sperm-structure"
+      "concept": "sperm-structure",
+      "box": [
+        680,
+        161,
+        45,
+        36
+      ]
     }
   ]
 }

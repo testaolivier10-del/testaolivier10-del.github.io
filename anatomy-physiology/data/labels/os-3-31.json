@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "ploidy"
+      "concept": "ploidy",
+      "box": [
+        11,
+        5,
+        283,
+        27
+      ]
     },
     {
       "id": "homologous-chromosomes-replicated",
@@ -27,7 +33,13 @@
       "lines": [
         1
       ],
-      "concept": "ploidy"
+      "concept": "ploidy",
+      "box": [
+        666,
+        5,
+        283,
+        27
+      ]
     },
     {
       "id": "dna-replication",
@@ -39,7 +51,13 @@
       "lines": [
         2
       ],
-      "concept": "dna-replication"
+      "concept": "dna-replication",
+      "box": [
+        385,
+        228,
+        174,
+        26
+      ]
     },
     {
       "id": "centromere",
@@ -48,7 +66,13 @@
       "lines": [
         3
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        139,
+        366,
+        129,
+        23
+      ]
     },
     {
       "id": "sister-chromatids",
@@ -60,7 +84,13 @@
       "lines": [
         4
       ],
-      "concept": "chromatin-chromosome"
+      "concept": "chromatin-chromosome",
+      "box": [
+        639,
+        648,
+        184,
+        23
+      ]
     }
   ]
 }

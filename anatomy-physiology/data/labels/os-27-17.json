@@ -13,7 +13,13 @@
       "lines": [
         0
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        1,
+        5,
+        111,
+        20
+      ]
     },
     {
       "id": "fat-tissue",
@@ -26,7 +32,13 @@
       "lines": [
         1
       ],
-      "concept": "loose-ct"
+      "concept": "loose-ct",
+      "box": [
+        331,
+        43,
+        78,
+        17
+      ]
     },
     {
       "id": "alveoli",
@@ -40,7 +52,13 @@
       "lines": [
         2
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        340,
+        102,
+        58,
+        17
+      ]
     },
     {
       "id": "lactiferous-ducts",
@@ -54,7 +72,13 @@
         3,
         4
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        326,
+        146,
+        87,
+        35
+      ]
     },
     {
       "id": "areola",
@@ -65,7 +89,13 @@
       "lines": [
         5
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        65,
+        169,
+        57,
+        17
+      ]
     },
     {
       "id": "lobule",
@@ -79,7 +109,13 @@
         6,
         8
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        308,
+        230,
+        122,
+        38
+      ]
     },
     {
       "id": "suspensory-ligament",
@@ -94,7 +130,13 @@
         10,
         12
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        323,
+        296,
+        94,
+        39
+      ]
     },
     {
       "id": "lactiferous-sinuses",
@@ -106,7 +148,13 @@
         9,
         11
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        612,
+        280,
+        86,
+        35
+      ]
     },
     {
       "id": "nipple",
@@ -115,7 +163,13 @@
       "lines": [
         13
       ],
-      "concept": "mammary-glands"
+      "concept": "mammary-glands",
+      "box": [
+        56,
+        322,
+        56,
+        20
+      ]
     }
   ]
 }

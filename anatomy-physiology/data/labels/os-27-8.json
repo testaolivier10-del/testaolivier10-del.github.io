@@ -10,7 +10,13 @@
       "lines": [
         4
       ],
-      "concept": "releasing-hormones"
+      "concept": "releasing-hormones",
+      "box": [
+        748,
+        86,
+        63,
+        20
+      ]
     },
     {
       "id": "fsh-release",
@@ -22,7 +28,13 @@
       "lines": [
         11
       ],
-      "concept": "anterior-pituitary-hormones"
+      "concept": "anterior-pituitary-hormones",
+      "box": [
+        459,
+        384,
+        113,
+        19
+      ]
     },
     {
       "id": "lh-release",
@@ -53,7 +65,13 @@
       "lines": [
         20
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        640,
+        479,
+        203,
+        23
+      ]
     },
     {
       "id": "interstitial-space",
@@ -66,7 +84,13 @@
         26,
         28
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        498,
+        559,
+        91,
+        44
+      ]
     },
     {
       "id": "seminiferous-tubule",
@@ -78,7 +102,13 @@
         31,
         32
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        478,
+        628,
+        120,
+        41
+      ]
     },
     {
       "id": "sertoli-cell",
@@ -92,7 +122,13 @@
       "lines": [
         33
       ],
-      "concept": "sustentacular-cells"
+      "concept": "sustentacular-cells",
+      "box": [
+        194,
+        677,
+        98,
+        20
+      ]
     },
     {
       "id": "inhibin-release",
@@ -103,7 +139,13 @@
       "lines": [
         30
       ],
-      "concept": "hpg-male"
+      "concept": "hpg-male",
+      "box": [
+        143,
+        608,
+        131,
+        19
+      ]
     },
     {
       "id": "androgen-binding-protein",
@@ -118,7 +160,13 @@
         35
       ],
       "concept": "sustentacular-cells",
-      "note": "OpenStax prints 'Androgen-binding protein (ABP) release' with an arrow running on to 'Testosterone release', which reads as if ABP triggers testosterone release. Sertoli cells secrete ABP into the tubule, where it binds testosterone made by the Leydig cells and keeps its concentration high; it does not cause testosterone release. The label names the protein correctly and is kept."
+      "note": "OpenStax prints 'Androgen-binding protein (ABP) release' with an arrow running on to 'Testosterone release', which reads as if ABP triggers testosterone release. Sertoli cells secrete ABP into the tubule, where it binds testosterone made by the Leydig cells and keeps its concentration high; it does not cause testosterone release. The label names the protein correctly and is kept.",
+      "box": [
+        292,
+        697,
+        188,
+        40
+      ]
     },
     {
       "id": "testosterone-release",

@@ -10,7 +10,13 @@
       "lines": [
         0
       ],
-      "concept": "oogenesis"
+      "concept": "oogenesis",
+      "box": [
+        270,
+        23,
+        75,
+        19
+      ]
     },
     {
       "id": "primary-oocyte",
@@ -21,7 +27,13 @@
       "lines": [
         3
       ],
-      "concept": "oogenesis"
+      "concept": "oogenesis",
+      "box": [
+        191,
+        130,
+        104,
+        19
+      ]
     },
     {
       "id": "secondary-oocyte",
@@ -33,7 +45,13 @@
         17,
         22
       ],
-      "concept": "oogenesis"
+      "concept": "oogenesis",
+      "box": [
+        217,
+        363,
+        79,
+        35
+      ]
     },
     {
       "id": "first-polar-body",
@@ -46,7 +64,13 @@
         18,
         23
       ],
-      "concept": "oogenesis"
+      "concept": "oogenesis",
+      "box": [
+        481,
+        363,
+        74,
+        35
+      ]
     },
     {
       "id": "mature-ovum",
@@ -60,7 +84,13 @@
         34,
         41
       ],
-      "concept": "gamete"
+      "concept": "gamete",
+      "box": [
+        217,
+        515,
+        55,
+        32
+      ]
     },
     {
       "id": "second-polar-bodies",

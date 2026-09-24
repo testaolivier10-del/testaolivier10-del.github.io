@@ -10,7 +10,13 @@
       "lines": [
         1
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        906,
+        295,
+        94,
+        26
+      ]
     },
     {
       "id": "ovary",
@@ -21,7 +27,13 @@
       "lines": [
         2
       ],
-      "concept": "ovaries"
+      "concept": "ovaries",
+      "box": [
+        905,
+        340,
+        87,
+        33
+      ]
     },
     {
       "id": "posterior-fornix",
@@ -40,7 +52,13 @@
       ],
       "concept": "vagina-vulva",
       "cover": true,
-      "note": "OpenStax prints 'Posterior fornix of uterus', but the fornix is the recess of the vagina around the cervix: the posterior fornix is part of the vagina, not the uterus. Covered for good and never asked (decision 48)."
+      "note": "OpenStax prints 'Posterior fornix of uterus', but the fornix is the recess of the vagina around the cervix: the posterior fornix is part of the vagina, not the uterus. Covered for good and never asked (decision 48).",
+      "box": [
+        904,
+        396,
+        198,
+        58
+      ]
     },
     {
       "id": "cervix",
@@ -52,7 +70,13 @@
       "lines": [
         12
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        905,
+        481,
+        92,
+        27
+      ]
     },
     {
       "id": "rectum",
@@ -61,7 +85,13 @@
       "lines": [
         15
       ],
-      "concept": "large-intestine-regions"
+      "concept": "large-intestine-regions",
+      "box": [
+        906,
+        531,
+        107,
+        27
+      ]
     },
     {
       "id": "vagina",
@@ -70,7 +100,13 @@
       "lines": [
         17
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        905,
+        588,
+        98,
+        32
+      ]
     },
     {
       "id": "anus",
@@ -82,7 +118,13 @@
       "lines": [
         20
       ],
-      "concept": "large-intestine-regions"
+      "concept": "large-intestine-regions",
+      "box": [
+        904,
+        651,
+        77,
+        27
+      ]
     },
     {
       "id": "bladder",
@@ -93,7 +135,13 @@
       "lines": [
         3
       ],
-      "concept": "urinary-bladder"
+      "concept": "urinary-bladder",
+      "box": [
+        0,
+        362,
+        106,
+        27
+      ]
     },
     {
       "id": "pubic-symphysis",
@@ -104,7 +152,13 @@
       "lines": [
         5
       ],
-      "concept": "pelvic-girdle"
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        416,
+        218,
+        32
+      ]
     },
     {
       "id": "mons-pubis",
@@ -116,7 +170,13 @@
       "lines": [
         10
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        0,
+        459,
+        152,
+        32
+      ]
     },
     {
       "id": "urethra",
@@ -127,7 +187,13 @@
       "lines": [
         14
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        0,
+        513,
+        102,
+        27
+      ]
     },
     {
       "id": "clitoris",
@@ -138,7 +204,13 @@
       "lines": [
         16
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        0,
+        568,
+        94,
+        28
+      ]
     },
     {
       "id": "labia-minora-lateral",
@@ -154,7 +226,13 @@
         19
       ],
       "concept": "vagina-vulva",
-      "note": "OpenStax prints 'Labium minora'; the singular is labium minus and the plural labia minora. Named correctly here; the printed form is accepted."
+      "note": "OpenStax prints 'Labium minora'; the singular is labium minus and the plural labia minora. Named correctly here; the printed form is accepted.",
+      "box": [
+        0,
+        625,
+        193,
+        27
+      ]
     },
     {
       "id": "labia-majora-lateral",
@@ -170,7 +248,13 @@
         22
       ],
       "concept": "vagina-vulva",
-      "note": "OpenStax prints 'Labium majora'; the singular is labium majus and the plural labia majora. Named correctly here; the printed form is accepted."
+      "note": "OpenStax prints 'Labium majora'; the singular is labium majus and the plural labia majora. Named correctly here; the printed form is accepted.",
+      "box": [
+        0,
+        677,
+        193,
+        32
+      ]
     },
     {
       "id": "ovary-anterior",
@@ -181,7 +265,13 @@
       "lines": [
         26
       ],
-      "concept": "ovaries"
+      "concept": "ovaries",
+      "box": [
+        836,
+        958,
+        87,
+        33
+      ]
     },
     {
       "id": "fimbriae",
@@ -192,7 +282,13 @@
       "lines": [
         27
       ],
-      "concept": "uterine-tubes"
+      "concept": "uterine-tubes",
+      "box": [
+        75,
+        1000,
+        120,
+        27
+      ]
     },
     {
       "id": "ovarian-ligament",
@@ -205,7 +301,13 @@
         28,
         29
       ],
-      "concept": "ovaries"
+      "concept": "ovaries",
+      "box": [
+        836,
+        1034,
+        118,
+        65
+      ]
     },
     {
       "id": "uterus-anterior",
@@ -216,7 +318,13 @@
       "lines": [
         30
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        75,
+        1081,
+        94,
+        27
+      ]
     },
     {
       "id": "broad-ligament",
@@ -228,7 +336,13 @@
         32,
         34
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        836,
+        1135,
+        118,
+        64
+      ]
     },
     {
       "id": "uterine-tube",
@@ -246,7 +360,13 @@
         35,
         36
       ],
-      "concept": "uterine-tubes"
+      "concept": "uterine-tubes",
+      "box": [
+        73,
+        1146,
+        112,
+        89
+      ]
     },
     {
       "id": "cervix-anterior",
@@ -258,7 +378,13 @@
       "lines": [
         38
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        74,
+        1304,
+        92,
+        28
+      ]
     },
     {
       "id": "labia-minora",
@@ -272,7 +398,13 @@
         37,
         39
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        692,
+        1287,
+        97,
+        58
+      ]
     },
     {
       "id": "vagina-anterior",
@@ -281,7 +413,13 @@
       "lines": [
         40
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        74,
+        1377,
+        98,
+        33
+      ]
     },
     {
       "id": "labia-majora",
@@ -295,7 +433,13 @@
         41,
         42
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        168,
+        1442,
+        174,
+        32
+      ]
     }
   ]
 }

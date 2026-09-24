@@ -8,7 +8,13 @@
       "lines": [
         6
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        661,
+        151,
+        59,
+        20
+      ]
     },
     {
       "id": "corona",
@@ -20,7 +26,13 @@
       "lines": [
         8
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        660,
+        256,
+        76,
+        20
+      ]
     },
     {
       "id": "glans-penis",
@@ -32,7 +44,13 @@
         10,
         13
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        660,
+        296,
+        63,
+        47
+      ]
     },
     {
       "id": "prepuce",
@@ -45,7 +63,13 @@
         17,
         18
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        213,
+        395,
+        91,
+        46
+      ]
     },
     {
       "id": "scrotum-external",
@@ -54,7 +78,13 @@
       "lines": [
         16
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        407,
+        394,
+        83,
+        21
+      ]
     },
     {
       "id": "prostate-gland",
@@ -65,7 +95,13 @@
       "lines": [
         21
       ],
-      "concept": "accessory-glands-male"
+      "concept": "accessory-glands-male",
+      "box": [
+        473,
+        583,
+        134,
+        24
+      ]
     },
     {
       "id": "ductus-deferens",
@@ -79,7 +115,13 @@
       "lines": [
         24
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        0,
+        654,
+        198,
+        24
+      ]
     },
     {
       "id": "suspensory-ligament-of-penis",
@@ -91,7 +133,13 @@
       "lines": [
         26
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        0,
+        682,
+        262,
+        24
+      ]
     },
     {
       "id": "ampulla-of-ductus-deferens",
@@ -105,7 +153,13 @@
       "lines": [
         27
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        863,
+        684,
+        239,
+        24
+      ]
     },
     {
       "id": "urinary-bladder",
@@ -116,7 +170,13 @@
       "lines": [
         28
       ],
-      "concept": "urinary-bladder"
+      "concept": "urinary-bladder",
+      "box": [
+        0,
+        715,
+        142,
+        23
+      ]
     },
     {
       "id": "pubic-symphysis",
@@ -127,7 +187,13 @@
       "lines": [
         31
       ],
-      "concept": "pelvic-girdle"
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        748,
+        153,
+        24
+      ]
     },
     {
       "id": "seminal-vesicle",
@@ -140,7 +206,13 @@
       "lines": [
         30
       ],
-      "concept": "accessory-glands-male"
+      "concept": "accessory-glands-male",
+      "box": [
+        863,
+        729,
+        145,
+        20
+      ]
     },
     {
       "id": "ejaculatory-duct",
@@ -151,7 +223,13 @@
       "lines": [
         32
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        864,
+        780,
+        148,
+        24
+      ]
     },
     {
       "id": "prostatic-urethra",
@@ -160,7 +238,13 @@
       "lines": [
         33
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        864,
+        809,
+        151,
+        20
+      ]
     },
     {
       "id": "deep-muscles-of-perineum",
@@ -174,7 +258,13 @@
       "lines": [
         35
       ],
-      "concept": "pelvic-floor"
+      "concept": "pelvic-floor",
+      "box": [
+        864,
+        837,
+        238,
+        24
+      ]
     },
     {
       "id": "bulbourethral-gland",
@@ -188,7 +278,13 @@
       "lines": [
         37
       ],
-      "concept": "accessory-glands-male"
+      "concept": "accessory-glands-male",
+      "box": [
+        864,
+        865,
+        176,
+        24
+      ]
     },
     {
       "id": "muscles-of-perineum-surrounding-anus",
@@ -203,7 +299,13 @@
         38,
         39
       ],
-      "concept": "pelvic-floor"
+      "concept": "pelvic-floor",
+      "box": [
+        863,
+        893,
+        188,
+        47
+      ]
     },
     {
       "id": "corpus-cavernosum",
@@ -214,7 +316,13 @@
       "lines": [
         40
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        0,
+        926,
+        182,
+        24
+      ]
     },
     {
       "id": "membranous-urethra",
@@ -225,7 +333,13 @@
       "lines": [
         41
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        864,
+        940,
+        188,
+        20
+      ]
     },
     {
       "id": "spongy-urethra",
@@ -236,7 +350,13 @@
       "lines": [
         43
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        631,
+        969,
+        142,
+        24
+      ]
     },
     {
       "id": "testis",
@@ -248,7 +368,13 @@
       "lines": [
         45
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        630,
+        1006,
+        62,
+        20
+      ]
     },
     {
       "id": "epididymis",
@@ -257,7 +383,13 @@
       "lines": [
         46
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        632,
+        1034,
+        103,
+        23
+      ]
     },
     {
       "id": "scrotum",
@@ -266,7 +398,13 @@
       "lines": [
         47
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        631,
+        1068,
+        82,
+        20
+      ]
     },
     {
       "id": "corpus-spongiosum",
@@ -275,7 +413,13 @@
       "lines": [
         48
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        0,
+        1069,
+        181,
+        25
+      ]
     },
     {
       "id": "external-urethral-opening",
@@ -290,7 +434,13 @@
       "lines": [
         49
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        116,
+        1168,
+        224,
+        24
+      ]
     }
   ]
 }

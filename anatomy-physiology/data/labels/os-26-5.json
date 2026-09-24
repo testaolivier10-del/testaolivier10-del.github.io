@@ -12,7 +12,13 @@
         2,
         1
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        660,
+        51,
+        300,
+        29
+      ]
     },
     {
       "id": "interstitial-fluid",
@@ -31,7 +37,13 @@
         6,
         7
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        660,
+        124,
+        436,
+        35
+      ]
     },
     {
       "id": "plasma",
@@ -44,7 +56,13 @@
         11,
         10
       ],
-      "concept": "plasma"
+      "concept": "plasma",
+      "box": [
+        660,
+        196,
+        192,
+        30
+      ]
     },
     {
       "id": "sodium",
@@ -58,7 +76,13 @@
       "lines": [
         26
       ],
-      "concept": "ecf-icf-composition"
+      "concept": "ecf-icf-composition",
+      "box": [
+        163,
+        1037,
+        63,
+        32
+      ]
     },
     {
       "id": "chloride",
@@ -72,7 +96,13 @@
       "lines": [
         28
       ],
-      "concept": "electrolyte"
+      "concept": "electrolyte",
+      "box": [
+        297,
+        1039,
+        39,
+        30
+      ]
     },
     {
       "id": "bicarbonate",
@@ -105,7 +135,13 @@
         27
       ],
       "concept": "ecf-icf-composition",
-      "note": "The chart draws extracellular potassium (interstitial fluid and plasma) near 8 to 9 mEq/L; the usual plasma value is about 3.5 to 5 mEq/L. Its plasma sodium bar also sits near 150 rather than about 140. The notes caption says so."
+      "note": "The chart draws extracellular potassium (interstitial fluid and plasma) near 8 to 9 mEq/L; the usual plasma value is about 3.5 to 5 mEq/L. Its plasma sodium bar also sits near 150 rather than about 140. The notes caption says so.",
+      "box": [
+        559,
+        1037,
+        45,
+        31
+      ]
     },
     {
       "id": "phosphate",
@@ -154,7 +190,13 @@
       "lines": [
         29
       ],
-      "concept": "protein"
+      "concept": "protein",
+      "box": [
+        915,
+        1040,
+        106,
+        29
+      ]
     }
   ]
 }
