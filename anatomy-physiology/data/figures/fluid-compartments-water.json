@@ -1,0 +1,50 @@
+{
+  "os-26-4": {
+    "file": "figures/openstax/os-26-4.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "26.4",
+      "section": "26.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/85789f37c92e07cb1a48a1833b8e58cf2c3188b5",
+      "page": "26-1-body-fluids-and-fluid-compartments"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/85789f37c92e07cb1a48a1833b8e58cf2c3188b5",
+    "alt": "A pie chart of the water in the body. The largest slice, a little over half the circle, is labeled intracellular fluid. The next largest, about a third, is labeled interstitial fluid. A smaller red slice is labeled plasma, and a thin green slice is labeled other fluid. An arrow curving around the interstitial fluid, plasma and other fluid slices groups them as extracellular fluid.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.4",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-26-5": {
+    "file": "figures/openstax/os-26-5.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "26.5",
+      "section": "26.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e7ad36822e7616c89bc13fa72b82cdd74e656825",
+      "page": "26-1-body-fluids-and-fluid-compartments"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e7ad36822e7616c89bc13fa72b82cdd74e656825",
+    "alt": "A bar graph of concentration in milliequivalents per liter, from 0 to 160, for seven solutes, each with three bars: intracellular fluid (tan), interstitial fluid (light blue) and plasma (red). Sodium is about 12 inside cells but about 143 in interstitial fluid and 150 in plasma. Chloride is about 5 inside cells and 110 to 117 outside. Bicarbonate is about 13 inside and 27 to 30 outside. Potassium is about 141 inside cells and 8 to 9 outside. Hydrogen phosphate is about 95 inside and about 5 outside. Magnesium is about 35 inside and about 3 outside. Protein is about 50 inside cells, about 2 in interstitial fluid and about 19 in plasma.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.5",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-26-10": {
+    "file": "figures/openstax/os-26-10.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "26.10",
+      "section": "26.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/8778d1aab7e98127d79ae1a4af93ae9137ad53c9",
+      "page": "26-2-water-balance"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/8778d1aab7e98127d79ae1a4af93ae9137ad53c9",
+    "alt": "A flowchart. Insufficient water in the body leads down two branches. On the left, decreased blood volume leads to decreased blood pressure, then to increased angiotensin II. On the right, increased blood osmolality leads to osmoreceptors in the hypothalamus and to a dry mouth. All three routes stimulate the thirst center in the hypothalamus, which increases thirst; water is taken in, and blood osmolality falls.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.10",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

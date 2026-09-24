@@ -1,0 +1,48 @@
+{
+  "figure": "os-25-11",
+  "labels": [
+    {
+      "id": "cell-bodies",
+      "name": "Cell bodies",
+      "accept": [
+        "podocyte cell bodies",
+        "podocyte cell body",
+        "cell body",
+        "podocytes",
+        "podocyte"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "renal-corpuscle"
+    },
+    {
+      "id": "filtration-slits",
+      "name": "Filtration slits",
+      "accept": [
+        "filtration slit",
+        "slit pores",
+        "slit pore"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "filtration-membrane"
+    },
+    {
+      "id": "capillary",
+      "name": "Capillary",
+      "accept": [
+        "glomerular capillary",
+        "glomerular capillaries",
+        "capillaries"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "blood-vessel-basics"
+    }
+  ]
+}

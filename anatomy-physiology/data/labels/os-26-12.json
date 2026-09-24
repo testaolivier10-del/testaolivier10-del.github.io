@@ -1,0 +1,115 @@
+{
+  "figure": "os-26-12",
+  "labels": [
+    {
+      "id": "aquaporin-storage-vesicle",
+      "name": "Aquaporin storage vesicle",
+      "accept": [
+        "storage vesicle",
+        "aquaporin vesicle",
+        "vesicle",
+        "aquaporin storage vesicles",
+        "vesicles"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "adh-collecting-duct"
+    },
+    {
+      "id": "collecting-tubule-cell",
+      "name": "Collecting tubule cell",
+      "accept": [
+        "collecting duct cell",
+        "principal cell",
+        "principal cells",
+        "collecting duct cells",
+        "collecting tubule cells"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "renal-tubule"
+    },
+    {
+      "id": "lumen-of-collecting-tubule",
+      "name": "Lumen of collecting tubule",
+      "accept": [
+        "lumen",
+        "lumen of collecting duct",
+        "collecting duct lumen",
+        "tubule lumen",
+        "lumen of the collecting duct"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "renal-tubule"
+    },
+    {
+      "id": "bloodstream",
+      "name": "Bloodstream",
+      "accept": [
+        "blood",
+        "capillary",
+        "peritubular capillary"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": null
+    },
+    {
+      "id": "aquaporin-basolateral",
+      "name": "Aquaporin",
+      "accept": [
+        "aquaporins",
+        "water channel",
+        "water channels"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "aquaporin"
+    },
+    {
+      "id": "aquaporin-apical",
+      "name": "Aquaporin",
+      "accept": [
+        "aquaporins",
+        "water channel",
+        "water channels"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "aquaporin"
+    },
+    {
+      "id": "plasma",
+      "name": "Plasma",
+      "accept": [
+        "blood plasma"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "plasma"
+    },
+    {
+      "id": "interstitial-fluid",
+      "name": "Interstitial fluid",
+      "accept": [
+        "interstitial space",
+        "tissue fluid",
+        "interstitium"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "icf-ecf"
+    }
+  ]
+}

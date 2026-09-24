@@ -1,0 +1,195 @@
+{
+  "figure": "os-24-23",
+  "labels": [
+    {
+      "id": "body-temperature-is-low",
+      "name": "Body temperature is low",
+      "accept": [
+        "low body temperature",
+        "cold",
+        "temperature falls"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "core-temperature"
+    },
+    {
+      "id": "receptors-stimulate-heat-producing-mechanisms",
+      "name": "Temperature receptors in hypothalamus stimulate heat-producing mechanisms",
+      "accept": [
+        "hypothalamus",
+        "temperature receptors in hypothalamus",
+        "hypothalamus stimulates heat production",
+        "heat-producing mechanisms"
+      ],
+      "lines": [
+        16,
+        20,
+        21
+      ],
+      "concept": "thermoregulation"
+    },
+    {
+      "id": "superficial-arteries-constricted",
+      "name": "Superficial arteries are constricted, reducing heat loss to the air. Blood flow to the digestive system decreases.",
+      "accept": [
+        "vasoconstriction",
+        "superficial arteries constrict",
+        "skin vasoconstriction",
+        "cutaneous vasoconstriction"
+      ],
+      "lines": [
+        2,
+        4,
+        8,
+        11,
+        12,
+        14,
+        18
+      ],
+      "concept": "vasoconstriction-dilation"
+    },
+    {
+      "id": "shivering",
+      "name": "Shivering increases aerobic respiration in the muscles, releasing heat.",
+      "accept": [
+        "shivering"
+      ],
+      "lines": [
+        3,
+        6,
+        9,
+        13,
+        15,
+        19
+      ],
+      "concept": "skin-thermoregulation"
+    },
+    {
+      "id": "thyroid-increases-heat-production",
+      "name": "Thyroid stimulates cells to increase metabolic heat production.",
+      "accept": [
+        "thyroid",
+        "thyroid hormone",
+        "thyroid hormones",
+        "increased metabolic heat production"
+      ],
+      "lines": [
+        1,
+        5,
+        7,
+        10
+      ],
+      "concept": "thyroid-hormones"
+    },
+    {
+      "id": "body-temperature-increases",
+      "name": "Body temperature increases",
+      "accept": [
+        "temperature rises",
+        "body temperature rises"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "core-temperature"
+    },
+    {
+      "id": "body-temperature-is-high",
+      "name": "Body temperature is high",
+      "accept": [
+        "high body temperature",
+        "hot",
+        "temperature rises"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "core-temperature"
+    },
+    {
+      "id": "receptors-initiate-heat-releasing-mechanisms",
+      "name": "Temperature receptors initiate heat-releasing mechanisms",
+      "accept": [
+        "hypothalamus",
+        "temperature receptors",
+        "heat-releasing mechanisms",
+        "heat loss mechanisms"
+      ],
+      "lines": [
+        35,
+        39
+      ],
+      "concept": "thermoregulation"
+    },
+    {
+      "id": "superficial-arteries-dilated",
+      "name": "Superficial arteries are dilated, causing flushing and increasing heat loss to air. Blood flow is not diverted away from the digestive system.",
+      "accept": [
+        "vasodilation",
+        "superficial arteries dilate",
+        "skin vasodilation",
+        "cutaneous vasodilation",
+        "flushing"
+      ],
+      "lines": [
+        31,
+        33,
+        37,
+        40,
+        43,
+        44,
+        46,
+        48,
+        49
+      ],
+      "concept": "vasoconstriction-dilation"
+    },
+    {
+      "id": "sweating",
+      "name": "Sweating initiated in skin.",
+      "accept": [
+        "sweating",
+        "sweat",
+        "perspiration",
+        "evaporative cooling"
+      ],
+      "lines": [
+        42,
+        45,
+        47
+      ],
+      "concept": "skin-thermoregulation"
+    },
+    {
+      "id": "thyroid-decreases-heat-production",
+      "name": "Thyroid stimulates cells to decrease metabolic heat production.",
+      "accept": [
+        "thyroid",
+        "thyroid hormone",
+        "thyroid hormones",
+        "decreased metabolic heat production"
+      ],
+      "lines": [
+        32,
+        34,
+        38,
+        41
+      ],
+      "concept": "thyroid-hormones"
+    },
+    {
+      "id": "body-temperature-decreases",
+      "name": "Body temperature decreases",
+      "accept": [
+        "temperature falls",
+        "body temperature falls"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "core-temperature"
+    }
+  ]
+}

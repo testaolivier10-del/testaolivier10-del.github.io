@@ -1,0 +1,237 @@
+{
+  "figure": "os-24-5",
+  "labels": [
+    {
+      "id": "one-glucose-molecule",
+      "name": "One glucose molecule",
+      "accept": [
+        "glucose",
+        "glucose molecule"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "glucose"
+    },
+    {
+      "id": "energy-consuming-phase",
+      "name": "Energy-consuming phase",
+      "accept": [
+        "energy consuming phase",
+        "energy-investment phase",
+        "energy investment phase",
+        "investment phase"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "glycolysis-detail"
+    },
+    {
+      "id": "two-atp-consumed",
+      "name": "2 ATP’s consumed",
+      "accept": [
+        "2 atp consumed",
+        "two atp consumed",
+        "2 atp",
+        "2 atps consumed",
+        "2 atp used"
+      ],
+      "lines": [
+        2,
+        5
+      ],
+      "concept": "glycolysis-detail"
+    },
+    {
+      "id": "coupling-of-phosphorylation-with-oxidation",
+      "name": "Coupling of phosphorylation with oxidation",
+      "accept": [
+        "coupling phase",
+        "oxidation and phosphorylation",
+        "coupling of phosphorylation and oxidation"
+      ],
+      "lines": [
+        6,
+        9,
+        10
+      ],
+      "concept": "glycolysis-detail"
+    },
+    {
+      "id": "exergonic-reaction-left",
+      "name": "Exergonic reaction",
+      "accept": [
+        "exergonic",
+        "exergonic reactions"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "energy-forms"
+    },
+    {
+      "id": "exergonic-reaction-right",
+      "name": "Exergonic reaction",
+      "accept": [
+        "exergonic",
+        "exergonic reactions"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "energy-forms"
+    },
+    {
+      "id": "nadh-left",
+      "name": "NADH",
+      "accept": [],
+      "lines": [
+        14
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "nad-plus-left",
+      "name": "NAD+",
+      "accept": [
+        "nad",
+        "nad plus"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "nad-plus-right",
+      "name": "NAD+",
+      "accept": [
+        "nad",
+        "nad plus"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "nadh-right",
+      "name": "NADH",
+      "accept": [],
+      "lines": [
+        13
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "two-nadh-produced",
+      "name": "2 NADH produced",
+      "accept": [
+        "2 nadh",
+        "two nadh",
+        "two nadh produced"
+      ],
+      "lines": [
+        15,
+        17
+      ],
+      "concept": "glycolysis-detail"
+    },
+    {
+      "id": "free-phosphate-left",
+      "name": "Free phosphate",
+      "accept": [
+        "phosphate",
+        "inorganic phosphate",
+        "pi"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "atp-hydrolysis"
+    },
+    {
+      "id": "free-phosphate-right",
+      "name": "Free phosphate",
+      "accept": [
+        "phosphate",
+        "inorganic phosphate",
+        "pi"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "atp-hydrolysis"
+    },
+    {
+      "id": "endergonic-reaction-left",
+      "name": "Endergonic reaction",
+      "accept": [
+        "endergonic",
+        "endergonic reactions"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "energy-forms"
+    },
+    {
+      "id": "endergonic-reaction-right",
+      "name": "Endergonic reaction",
+      "accept": [
+        "endergonic",
+        "endergonic reactions"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "energy-forms"
+    },
+    {
+      "id": "energy-releasing-phase",
+      "name": "Energy-releasing phase",
+      "accept": [
+        "energy releasing phase",
+        "energy-yielding phase",
+        "energy yielding phase",
+        "payoff phase"
+      ],
+      "lines": [
+        24,
+        25
+      ],
+      "concept": "glycolysis-detail"
+    },
+    {
+      "id": "four-atp-produced",
+      "name": "4 ATP’s produced",
+      "accept": [
+        "4 atp produced",
+        "four atp produced",
+        "4 atp",
+        "4 atps produced"
+      ],
+      "lines": [
+        26,
+        27
+      ],
+      "concept": "glycolysis-detail"
+    },
+    {
+      "id": "two-pyruvate-molecules",
+      "name": "Two pyruvate molecules",
+      "accept": [
+        "pyruvate",
+        "2 pyruvate",
+        "two pyruvate",
+        "pyruvic acid",
+        "2 pyruvate molecules"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "glycolysis-basic"
+    }
+  ]
+}

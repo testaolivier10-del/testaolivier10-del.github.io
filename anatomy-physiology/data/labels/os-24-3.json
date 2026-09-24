@@ -1,0 +1,169 @@
+{
+  "figure": "os-24-3",
+  "labels": [
+    {
+      "id": "proteins",
+      "name": "Proteins",
+      "accept": [
+        "protein",
+        "dietary protein"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "protein"
+    },
+    {
+      "id": "complex-carbohydrates",
+      "name": "Complex carbohydrates",
+      "accept": [
+        "complex carbohydrate",
+        "polysaccharides",
+        "polysaccharide",
+        "starch",
+        "carbohydrates"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "carbohydrate"
+    },
+    {
+      "id": "triglycerides",
+      "name": "Triglycerides",
+      "accept": [
+        "triglyceride",
+        "fats",
+        "fat"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "triglyceride"
+    },
+    {
+      "id": "glycogen-storage",
+      "name": "Glycogen storage in liver and skeletal muscle",
+      "accept": [
+        "glycogen storage",
+        "glycogen",
+        "glycogenesis"
+      ],
+      "lines": [
+        8,
+        9,
+        10
+      ],
+      "concept": "glycogen"
+    },
+    {
+      "id": "amino-acids",
+      "name": "Amino acids",
+      "accept": [
+        "amino acid"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "protein"
+    },
+    {
+      "id": "glucose",
+      "name": "Glucose",
+      "accept": [],
+      "lines": [
+        11
+      ],
+      "concept": "glucose"
+    },
+    {
+      "id": "glycerol-and-fatty-acids",
+      "name": "Glycerol and fatty acids",
+      "accept": [
+        "fatty acids",
+        "fatty acids and glycerol",
+        "glycerol"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "triglyceride"
+    },
+    {
+      "id": "cannibalization-of-muscle-tissue",
+      "name": "Cannibalization of muscle tissue (starvation response)",
+      "accept": [
+        "cannibalization of muscle tissue",
+        "muscle breakdown",
+        "starvation response",
+        "muscle protein breakdown"
+      ],
+      "lines": [
+        15,
+        17,
+        20,
+        25
+      ],
+      "concept": "starvation"
+    },
+    {
+      "id": "breakdown-of-stored-fat",
+      "name": "Breakdown of stored fat (weight loss)",
+      "accept": [
+        "breakdown of stored fat",
+        "lipolysis",
+        "fat breakdown",
+        "weight loss"
+      ],
+      "lines": [
+        16,
+        18,
+        23
+      ],
+      "concept": "lipolysis"
+    },
+    {
+      "id": "protein-synthesis",
+      "name": "Protein synthesis",
+      "accept": [
+        "translation"
+      ],
+      "lines": [
+        21,
+        26
+      ],
+      "concept": "translation"
+    },
+    {
+      "id": "energy-production",
+      "name": "Energy production",
+      "accept": [
+        "atp production",
+        "cellular respiration",
+        "atp synthesis"
+      ],
+      "lines": [
+        19,
+        24
+      ],
+      "concept": "cellular-respiration"
+    },
+    {
+      "id": "lipid-synthesis-and-storage",
+      "name": "Lipid synthesis and storage",
+      "accept": [
+        "lipid synthesis",
+        "lipogenesis",
+        "fat storage",
+        "fat synthesis"
+      ],
+      "lines": [
+        22,
+        27
+      ],
+      "concept": "lipogenesis"
+    }
+  ]
+}

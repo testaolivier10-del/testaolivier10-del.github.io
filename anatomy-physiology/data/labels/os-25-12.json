@@ -1,0 +1,66 @@
+{
+  "figure": "os-25-12",
+  "labels": [
+    {
+      "id": "basement-membrane",
+      "name": "Basement membrane",
+      "accept": [
+        "basal lamina",
+        "glomerular basement membrane"
+      ],
+      "box": [
+        8,
+        210,
+        348,
+        32
+      ],
+      "concept": "basement-membrane"
+    },
+    {
+      "id": "endothelium",
+      "name": "Endothelium",
+      "accept": [
+        "endothelial cells",
+        "capillary endothelium",
+        "fenestrated endothelium"
+      ],
+      "box": [
+        9,
+        381,
+        210,
+        31
+      ],
+      "concept": "simple-squamous"
+    },
+    {
+      "id": "tight-junction",
+      "name": "Tight junction",
+      "accept": [
+        "tight junctions"
+      ],
+      "box": [
+        6,
+        552,
+        222,
+        39
+      ],
+      "concept": "tight-junction"
+    },
+    {
+      "id": "fenestrations",
+      "name": "Fenestrations",
+      "accept": [
+        "fenestration",
+        "pores",
+        "capillary pores"
+      ],
+      "box": [
+        583,
+        787,
+        217,
+        37
+      ],
+      "concept": "filtration-membrane"
+    }
+  ]
+}

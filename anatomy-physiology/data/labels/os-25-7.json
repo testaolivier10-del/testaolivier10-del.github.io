@@ -1,0 +1,155 @@
+{
+  "figure": "os-25-7",
+  "labels": [
+    {
+      "id": "t10",
+      "name": "T10",
+      "accept": [
+        "t10",
+        "thoracic 10",
+        "thoracic vertebra 10"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "t11",
+      "name": "T11",
+      "accept": [
+        "t11",
+        "thoracic 11",
+        "thoracic vertebra 11"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "t12",
+      "name": "T12",
+      "accept": [
+        "t12",
+        "thoracic 12",
+        "thoracic vertebra 12"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "l1",
+      "name": "L1",
+      "accept": [
+        "l1",
+        "lumbar 1",
+        "lumbar vertebra 1"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "l2",
+      "name": "L2",
+      "accept": [
+        "l2",
+        "lumbar 2",
+        "lumbar vertebra 2"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "l3",
+      "name": "L3",
+      "accept": [
+        "l3",
+        "lumbar 3",
+        "lumbar vertebra 3"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "l4",
+      "name": "L4",
+      "accept": [
+        "l4",
+        "lumbar 4",
+        "lumbar vertebra 4"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "l5",
+      "name": "L5",
+      "accept": [
+        "l5",
+        "lumbar 5",
+        "lumbar vertebra 5"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "liver",
+      "name": "Liver",
+      "accept": [],
+      "lines": [
+        2
+      ],
+      "concept": "major-organs"
+    },
+    {
+      "id": "kidney",
+      "name": "Kidney",
+      "accept": [
+        "kidneys"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "kidney-location"
+    },
+    {
+      "id": "12th-rib",
+      "name": "12th rib",
+      "accept": [
+        "twelfth rib",
+        "rib 12",
+        "floating rib",
+        "12th ribs"
+      ],
+      "lines": [
+        18,
+        19
+      ],
+      "concept": "ribs"
+    },
+    {
+      "id": "ureter",
+      "name": "Ureter",
+      "accept": [
+        "ureters"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "ureter"
+    }
+  ]
+}

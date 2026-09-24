@@ -1,0 +1,191 @@
+{
+  "figure": "os-25-9",
+  "labels": [
+    {
+      "id": "peritubular-capillaries",
+      "name": "Peritubular capillaries",
+      "accept": [
+        "peritubular capillary",
+        "peritubular capillary network"
+      ],
+      "box": [
+        724,
+        48,
+        204,
+        26
+      ],
+      "concept": "nephron-vessels"
+    },
+    {
+      "id": "efferent-arteriole",
+      "name": "Efferent arteriole",
+      "accept": [
+        "efferent arterioles"
+      ],
+      "box": [
+        566,
+        104,
+        99,
+        45
+      ],
+      "concept": "nephron-vessels"
+    },
+    {
+      "id": "glomerulus",
+      "name": "Glomerulus",
+      "accept": [
+        "glomeruli",
+        "glomerular capillaries"
+      ],
+      "box": [
+        527,
+        172,
+        111,
+        21
+      ],
+      "concept": "renal-corpuscle"
+    },
+    {
+      "id": "afferent-arteriole",
+      "name": "Afferent arteriole",
+      "accept": [
+        "afferent arterioles"
+      ],
+      "box": [
+        486,
+        206,
+        80,
+        44
+      ],
+      "concept": "nephron-vessels"
+    },
+    {
+      "id": "cortical-radiate-artery",
+      "name": "Cortical radiate artery",
+      "accept": [
+        "cortical radiate arteries",
+        "interlobular artery",
+        "interlobular arteries",
+        "radial artery"
+      ],
+      "box": [
+        134,
+        257,
+        128,
+        49
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "arcuate-artery",
+      "name": "Arcuate artery",
+      "accept": [
+        "arcuate arteries"
+      ],
+      "box": [
+        77,
+        326,
+        72,
+        49
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "interlobar-artery",
+      "name": "Interlobar artery",
+      "accept": [
+        "interlobar arteries"
+      ],
+      "box": [
+        42,
+        391,
+        93,
+        49
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "segmental-artery",
+      "name": "Segmental artery",
+      "accept": [
+        "segmental arteries"
+      ],
+      "box": [
+        26,
+        462,
+        104,
+        49
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "renal-artery",
+      "name": "Renal artery",
+      "accept": [
+        "renal arteries"
+      ],
+      "box": [
+        21,
+        536,
+        59,
+        49
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "cortical-radiate-vein",
+      "name": "Cortical radiate vein",
+      "accept": [
+        "cortical radiate veins",
+        "interlobular vein",
+        "interlobular veins"
+      ],
+      "box": [
+        579,
+        386,
+        114,
+        45
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "arcuate-vein",
+      "name": "Arcuate vein",
+      "accept": [
+        "arcuate veins"
+      ],
+      "box": [
+        554,
+        436,
+        76,
+        45
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "interlobar-vein",
+      "name": "Interlobar vein",
+      "accept": [
+        "interlobar veins"
+      ],
+      "box": [
+        540,
+        490,
+        92,
+        45
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "renal-vein",
+      "name": "Renal vein",
+      "accept": [
+        "renal veins"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "renal-blood-supply"
+    }
+  ]
+}

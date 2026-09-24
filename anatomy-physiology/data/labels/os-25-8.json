@@ -1,0 +1,226 @@
+{
+  "figure": "os-25-8",
+  "labels": [
+    {
+      "id": "cortical-blood-vessels",
+      "name": "Cortical blood vessels",
+      "accept": [
+        "cortical radiate artery",
+        "cortical radiate arteries",
+        "cortical radiate vessels",
+        "cortical radiate veins",
+        "interlobular arteries",
+        "interlobular vessels"
+      ],
+      "lines": [
+        0,
+        2
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "arcuate-blood-vessels",
+      "name": "Arcuate blood vessels",
+      "accept": [
+        "arcuate artery",
+        "arcuate arteries",
+        "arcuate vein",
+        "arcuate veins",
+        "arcuate vessels"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "interlobar-blood-vessels",
+      "name": "Interlobar blood vessels",
+      "accept": [
+        "interlobar artery",
+        "interlobar arteries",
+        "interlobar vein",
+        "interlobar veins",
+        "interlobar vessels"
+      ],
+      "lines": [
+        4,
+        6
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "minor-calyx",
+      "name": "Minor calyx",
+      "accept": [
+        "minor calyces",
+        "minor calices",
+        "minor calix"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "major-calyx",
+      "name": "Major calyx",
+      "accept": [
+        "major calyces",
+        "major calices",
+        "major calix"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "renal-vein",
+      "name": "Renal vein",
+      "accept": [
+        "renal veins"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "renal-pelvis",
+      "name": "Renal pelvis",
+      "accept": [
+        "pelvis of the kidney"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "renal-nerve",
+      "name": "Renal nerve",
+      "accept": [
+        "renal nerves",
+        "renal plexus"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": null
+    },
+    {
+      "id": "renal-hilum",
+      "name": "Renal hilum",
+      "accept": [
+        "hilum",
+        "hilus",
+        "renal hilus",
+        "hilum of the kidney"
+      ],
+      "lines": [
+        11,
+        13
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "pyramid",
+      "name": "Pyramid",
+      "accept": [
+        "renal pyramid",
+        "renal pyramids",
+        "pyramids",
+        "medullary pyramid"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "renal-artery",
+      "name": "Renal artery",
+      "accept": [
+        "renal arteries"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "abdominal-arteries"
+    },
+    {
+      "id": "papilla",
+      "name": "Papilla",
+      "accept": [
+        "renal papilla",
+        "renal papillae",
+        "papillae"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "medulla",
+      "name": "Medulla",
+      "accept": [
+        "renal medulla"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "renal-column",
+      "name": "Renal column",
+      "accept": [
+        "renal columns",
+        "column of bertin",
+        "columns of bertin"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "ureter",
+      "name": "Ureter",
+      "accept": [
+        "ureters"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "ureter"
+    },
+    {
+      "id": "cortex",
+      "name": "Cortex",
+      "accept": [
+        "renal cortex"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "kidney-internal"
+    },
+    {
+      "id": "capsule",
+      "name": "Capsule",
+      "accept": [
+        "renal capsule",
+        "fibrous capsule"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "kidney-location"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "figure": "os-25-18",
+  "labels": [
+    {
+      "id": "lumen-of-proximal-tubule",
+      "name": "Lumen of proximal tubule",
+      "accept": [
+        "tubule lumen",
+        "lumen",
+        "lumen of the proximal tubule",
+        "tubular lumen",
+        "filtrate"
+      ],
+      "lines": [
+        0,
+        5
+      ],
+      "concept": "renal-tubule"
+    },
+    {
+      "id": "proximal-convoluted-tubule-cell",
+      "name": "Proximal convoluted tubule cell",
+      "accept": [
+        "pct cell",
+        "proximal tubule cell",
+        "tubule cell",
+        "proximal convoluted tubule cells",
+        "epithelial cell"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "renal-tubule"
+    },
+    {
+      "id": "interstitial-space",
+      "name": "Interstitial space",
+      "accept": [
+        "interstitial fluid",
+        "interstitium",
+        "tissue fluid"
+      ],
+      "lines": [
+        2,
+        6
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "bloodstream",
+      "name": "Bloodstream",
+      "accept": [
+        "blood",
+        "peritubular capillary",
+        "peritubular capillaries",
+        "capillary blood"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": null
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "figure": "os-25-5",
+  "labels": [
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [],
+      "lines": [
+        0
+      ],
+      "concept": "vertebral-regions"
+    },
+    {
+      "id": "uterus",
+      "name": "Uterus",
+      "accept": [
+        "womb"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "urinary-bladder",
+      "name": "Urinary bladder",
+      "accept": [
+        "bladder"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "urinary-bladder"
+    },
+    {
+      "id": "pubic-bone",
+      "name": "Pubic bone",
+      "accept": [
+        "pubis",
+        "pubic symphysis"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "pelvic-girdle"
+    },
+    {
+      "id": "sphincter",
+      "name": "Sphincter",
+      "accept": [
+        "external urethral sphincter",
+        "urethral sphincter",
+        "external urinary sphincter",
+        "external sphincter"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "clitoris",
+      "name": "Clitoris",
+      "accept": [],
+      "lines": [
+        39
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "labium-minora",
+      "name": "Labium minora",
+      "accept": [
+        "labia minora",
+        "labium minus"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "labium-majora",
+      "name": "Labium majora",
+      "accept": [
+        "labia majora",
+        "labium majus"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "pudendal-nerve",
+      "name": "Pudendal nerve",
+      "accept": [
+        "pudendal nerves"
+      ],
+      "lines": [
+        27,
+        37
+      ],
+      "concept": null
+    },
+    {
+      "id": "anus",
+      "name": "Anus",
+      "accept": [
+        "anal opening"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "large-intestine-regions"
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "figure": "os-24-8",
+  "labels": [
+    {
+      "id": "electron-transport-chain",
+      "name": "Electron transport chain",
+      "accept": [
+        "etc",
+        "electron transport chain complexes",
+        "electron transport complexes"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "etc"
+    },
+    {
+      "id": "atp-synthase",
+      "name": "ATP synthase",
+      "accept": [],
+      "lines": [
+        1
+      ],
+      "concept": "etc"
+    },
+    {
+      "id": "intermembrane-space",
+      "name": "Intermembrane space",
+      "accept": [],
+      "lines": [
+        2
+      ],
+      "concept": "mitochondrion"
+    },
+    {
+      "id": "cytochrome-c",
+      "name": "Cyt c",
+      "accept": [
+        "cytochrome c",
+        "cyt c"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "etc"
+    },
+    {
+      "id": "inner-mitochondrial-membrane",
+      "name": "Inner mitochondrial membrane",
+      "accept": [
+        "inner membrane",
+        "inner mitochondrial membrane",
+        "cristae"
+      ],
+      "lines": [
+        4,
+        6,
+        7
+      ],
+      "concept": "mitochondrion"
+    },
+    {
+      "id": "nadh",
+      "name": "NADH",
+      "accept": [],
+      "lines": [
+        8
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "nad-plus",
+      "name": "NAD+",
+      "accept": [
+        "nad",
+        "nad plus"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "fadh2",
+      "name": "FADH₂",
+      "accept": [
+        "fadh2"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "fad",
+      "name": "FAD",
+      "accept": [
+        "fad+"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "redox",
+      "cover": true,
+      "note": "OpenStax prints 'FAD+', but FAD carries no positive charge (unlike NAD+); the printed form would teach a wrong formula. Covered for good and never asked."
+    },
+    {
+      "id": "water",
+      "name": "H₂O",
+      "accept": [
+        "water",
+        "h2o"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "mitochondrial-matrix",
+      "name": "Mitochondrial matrix",
+      "accept": [
+        "matrix"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "mitochondrion"
+    },
+    {
+      "id": "two-free-hydrogen-ions",
+      "name": "2 free hydrogen ions",
+      "accept": [
+        "hydrogen ions",
+        "hydrogen ion",
+        "protons",
+        "h+",
+        "2 hydrogen ions"
+      ],
+      "lines": [
+        20,
+        23,
+        27
+      ],
+      "concept": "ion"
+    },
+    {
+      "id": "two-electrons-exiting-etc",
+      "name": "2 electrons exiting ETC",
+      "accept": [
+        "electrons",
+        "2 electrons",
+        "electron"
+      ],
+      "lines": [
+        21,
+        24
+      ],
+      "concept": "etc"
+    },
+    {
+      "id": "half-an-oxygen-molecule",
+      "name": "1/2 of an O₂ molecule",
+      "accept": [
+        "oxygen",
+        "half an oxygen molecule",
+        "1/2 o2",
+        "o2",
+        "oxygen atom"
+      ],
+      "lines": [
+        22,
+        25,
+        26
+      ],
+      "concept": "etc"
+    }
+  ]
+}

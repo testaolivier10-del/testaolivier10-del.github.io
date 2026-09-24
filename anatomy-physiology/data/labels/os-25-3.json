@@ -1,0 +1,287 @@
+{
+  "figure": "os-25-3",
+  "labels": [
+    {
+      "id": "ureter-female",
+      "name": "Ureter",
+      "accept": [
+        "ureters"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "ureter"
+    },
+    {
+      "id": "uterus",
+      "name": "Uterus",
+      "accept": [
+        "womb"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "urinary-bladder-female",
+      "name": "Urinary bladder",
+      "accept": [
+        "bladder",
+        "urinary bladder"
+      ],
+      "lines": [
+        14,
+        18
+      ],
+      "concept": "urinary-bladder"
+    },
+    {
+      "id": "pubic-bone-female",
+      "name": "Pubic bone",
+      "accept": [
+        "pubis",
+        "pubic bones",
+        "pubic symphysis"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "pelvic-girdle"
+    },
+    {
+      "id": "urethra-female",
+      "name": "Urethra",
+      "accept": [
+        "urethras"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "clitoris",
+      "name": "Clitoris",
+      "accept": [],
+      "lines": [
+        31
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "labium-minora",
+      "name": "Labium minora",
+      "accept": [
+        "labia minora",
+        "labium minus"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "labium-majora",
+      "name": "Labium majora",
+      "accept": [
+        "labia majora",
+        "labium majus"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "cervix",
+      "name": "Cervix",
+      "accept": [
+        "uterine cervix",
+        "cervix of the uterus"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "rectum-female",
+      "name": "Rectum",
+      "accept": [],
+      "lines": [
+        25
+      ],
+      "concept": "large-intestine-regions"
+    },
+    {
+      "id": "vagina",
+      "name": "Vagina",
+      "accept": [],
+      "lines": [
+        30
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "anus-female",
+      "name": "Anus",
+      "accept": [
+        "anal opening"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "large-intestine-regions"
+    },
+    {
+      "id": "urinary-bladder-male",
+      "name": "Urinary bladder",
+      "accept": [
+        "bladder",
+        "urinary bladder"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "urinary-bladder"
+    },
+    {
+      "id": "ureter-male",
+      "name": "Ureter",
+      "accept": [
+        "ureters"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "ureter"
+    },
+    {
+      "id": "pubic-bone-male",
+      "name": "Pubic bone",
+      "accept": [
+        "pubis",
+        "pubic bones",
+        "pubic symphysis"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "pelvic-girdle"
+    },
+    {
+      "id": "ductus-deferens",
+      "name": "Ductus deferens",
+      "accept": [
+        "vas deferens"
+      ],
+      "lines": [
+        9,
+        13
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "seminal-vesicle",
+      "name": "Seminal vesicle",
+      "accept": [
+        "seminal vesicles",
+        "seminal gland",
+        "seminal glands"
+      ],
+      "lines": [
+        7,
+        11
+      ],
+      "concept": "accessory-glands-male"
+    },
+    {
+      "id": "urethra-male",
+      "name": "Urethra",
+      "accept": [
+        "urethras"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "prostate-gland",
+      "name": "Prostate gland",
+      "accept": [
+        "prostate"
+      ],
+      "lines": [
+        16,
+        19
+      ],
+      "concept": "accessory-glands-male"
+    },
+    {
+      "id": "penis",
+      "name": "Penis",
+      "accept": [],
+      "lines": [
+        21
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "rectum-male",
+      "name": "Rectum",
+      "accept": [],
+      "lines": [
+        24
+      ],
+      "concept": "large-intestine-regions"
+    },
+    {
+      "id": "epididymis",
+      "name": "Epididymis",
+      "accept": [
+        "epididymides"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "anus-male",
+      "name": "Anus",
+      "accept": [
+        "anal opening"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "large-intestine-regions"
+    },
+    {
+      "id": "testis",
+      "name": "Testis",
+      "accept": [
+        "testes",
+        "testicle",
+        "testicles"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "foreskin",
+      "name": "Foreskin",
+      "accept": [
+        "prepuce"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "penis"
+    }
+  ]
+}

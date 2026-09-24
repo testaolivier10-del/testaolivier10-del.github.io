@@ -1,0 +1,134 @@
+{
+  "figure": "os-25-10",
+  "labels": [
+    {
+      "id": "glomerular-capsule",
+      "name": "Glomerular capsule",
+      "accept": [
+        "bowman's capsule",
+        "bowmans capsule",
+        "bowman capsule",
+        "capsule"
+      ],
+      "box": [
+        553,
+        0,
+        275,
+        37
+      ],
+      "concept": "renal-corpuscle"
+    },
+    {
+      "id": "efferent-arteriole",
+      "name": "Efferent arteriole",
+      "accept": [
+        "efferent arterioles"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "nephron-vessels"
+    },
+    {
+      "id": "afferent-arteriole",
+      "name": "Afferent arteriole",
+      "accept": [
+        "afferent arterioles"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "nephron-vessels"
+    },
+    {
+      "id": "proximal-convoluted-tubule",
+      "name": "Proximal convoluted tubule",
+      "accept": [
+        "proximal conboluted tubule",
+        "pct",
+        "proximal tubule",
+        "proximal convoluted tubules"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "renal-tubule"
+    },
+    {
+      "id": "cortical-radiate-artery",
+      "name": "Cortical radiate artery",
+      "accept": [
+        "cortical radiate arteries",
+        "interlobular artery",
+        "interlobular arteries"
+      ],
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "venule",
+      "name": "Venule",
+      "accept": [
+        "venules"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "venule-vein"
+    },
+    {
+      "id": "cortical-radiate-vein",
+      "name": "Cortical radiate vein",
+      "accept": [
+        "cortical radiate veins",
+        "interlobular vein",
+        "interlobular veins"
+      ],
+      "lines": [
+        10,
+        11,
+        12
+      ],
+      "concept": "renal-blood-supply"
+    },
+    {
+      "id": "loop-of-the-nephron",
+      "name": "Loop of the nephron",
+      "accept": [
+        "nephron loop",
+        "loop of henle",
+        "loop of the nephron",
+        "henle loop"
+      ],
+      "box": [
+        446,
+        975,
+        176,
+        73
+      ],
+      "concept": "renal-tubule"
+    },
+    {
+      "id": "peritubular-capillary-network",
+      "name": "Peritubular capillary network",
+      "accept": [
+        "peritubular capillaries",
+        "peritubular capillary",
+        "peritubular network"
+      ],
+      "lines": [
+        17,
+        18,
+        19
+      ],
+      "concept": "nephron-vessels"
+    }
+  ]
+}

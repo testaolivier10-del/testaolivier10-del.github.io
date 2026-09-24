@@ -1,0 +1,47 @@
+{
+  "topic": "fluid-compartments-water",
+  "hook": "<p>Mr. Okoye, 84, lives alone. During a heat wave he stops drinking much because he rarely feels thirsty, and after three days his daughter finds him confused. His plasma osmolality is 312 mOsm/kg. Water has been leaving his brain cells, following the solute in his concentrated plasma. To understand why he became confused, and why giving him water too fast could also harm him, you need to know where your body's water sits and how you keep it balanced.</p>",
+  "prereq": [
+    {
+      "q": "A red blood cell is placed in a solution with more nonpenetrating solute than the cell holds. What happens?",
+      "options": ["Water enters the cell and it swells", "Water leaves the cell and it shrinks", "Nothing, because water cannot cross the membrane"],
+      "correct": 1,
+      "why": "The solution is hypertonic. Water follows the solute the membrane holds back, so it leaves the cell, which shrinks (crenation).",
+      "review": "passive-transport"
+    },
+    {
+      "q": "What does ADH do in the collecting duct?",
+      "options": ["It makes principal cells insert aquaporins, so water is reabsorbed", "It makes principal cells pump sodium out of the urine", "It makes the collecting duct secrete water into the urine"],
+      "correct": 0,
+      "why": "ADH binds its receptor protein on principal cells and triggers the insertion of aquaporins into the apical membrane, so water leaves the duct into the salty medulla and returns to the blood.",
+      "review": "urine-concentration"
+    },
+    {
+      "q": "Where are the osmoreceptors that control thirst and ADH release?",
+      "options": ["In the carotid sinus", "In the collecting ducts of the kidney", "In the hypothalamus"],
+      "correct": 2,
+      "why": "Osmoreceptors are neurons in the front of the hypothalamus. They shrink and fire faster when plasma osmolality rises, which triggers thirst and ADH release.",
+      "review": "hypothalamus-pituitary"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-26-3",
+    "caption": "A capillary among body cells. Hide the labels and name each fluid: the fluid inside the cells, the fluid between them, and the fluid inside the capillary."
+  },
+  "chain": [
+    { "cause": "You sweat heavily on a hot day and do not drink, losing more water than salt.", "effect": "Your plasma osmolality rises above its set point of about 285 to 290 mOsm/kg." },
+    { "cause": "The more concentrated plasma draws water out of hypothalamic osmoreceptors.", "effect": "The osmoreceptors shrink and fire faster." },
+    { "cause": "Faster firing of the osmoreceptors drives the hypothalamus.", "effect": "The posterior pituitary releases more ADH, and the thirst center makes you want to drink." },
+    { "cause": "ADH makes principal cells of the collecting ducts insert aquaporins, and you drink.", "effect": "Your kidneys return more water to the blood, your urine becomes small in volume and concentrated, and water enters from your gut." },
+    { "cause": "Water is added to the plasma from both routes.", "effect": "Plasma osmolality falls back toward its set point, the osmoreceptors fire less, and ADH and thirst switch off: negative feedback." }
+  ],
+  "misconception": {
+    "wrong": "Dehydration and hypovolemia are the same thing: both just mean you have lost fluid.",
+    "right": "They differ in what is lost. Hypovolemia is a loss of salt and water together, as in bleeding or diarrhea: plasma osmolality stays normal, only the extracellular fluid shrinks, and the main danger is low blood pressure. Dehydration in the strict sense is a loss of more water than solute, as in not drinking or sweating: plasma osmolality rises, water leaves cells, and brain cells shrink. The first needs salt and water replaced; the second needs water."
+  },
+  "check": ["anp-fluid-compartments-water-1", "anp-fluid-compartments-water-6", "anp-fluid-compartments-water-8", "anp-fluid-compartments-water-11", "anp-fluid-compartments-water-12", "anp-fluid-compartments-water-15", "anp-fluid-compartments-water-17"],
+  "summary": "<p>Total body water is about 60% of body mass in a young man, less in women, older adults and people with obesity, and about 75% in infants. Two thirds of it is intracellular fluid; one third is extracellular fluid, of which three quarters is interstitial fluid and one quarter is plasma. Plasma membranes separate ICF from ECF and keep their ions different: potassium inside, sodium outside. Water crosses freely, so every compartment has the same osmolality. Water intake (drinks, food, metabolic water) matches output (urine, insensible loss, sweat, feces), and only thirst and urine volume are adjusted to match it. The plasma osmolarity feedback loop, from hypothalamic osmoreceptors through ADH and thirst, holds plasma osmolality near 285 to 290 mOsm/kg. Isotonic losses and gains change only the ECF (hypovolemia, hypervolemia); losing or gaining water changes osmolality and moves water into or out of cells (dehydration, overhydration and water intoxication).</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Principles of pathophysiology (fluids and shock)" }
+  ]
+}

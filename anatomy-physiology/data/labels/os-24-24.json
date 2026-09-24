@@ -1,0 +1,80 @@
+{
+  "figure": "os-24-24",
+  "labels": [
+    {
+      "id": "fruits",
+      "name": "Fruits",
+      "accept": [
+        "fruit"
+      ],
+      "box": [
+        294,
+        242,
+        106,
+        34
+      ],
+      "concept": "energy-balance"
+    },
+    {
+      "id": "grains",
+      "name": "Grains",
+      "accept": [
+        "grain",
+        "whole grains",
+        "cereals"
+      ],
+      "box": [
+        587,
+        285,
+        120,
+        34
+      ],
+      "concept": "energy-balance"
+    },
+    {
+      "id": "vegetables",
+      "name": "Vegetables",
+      "accept": [
+        "vegetable",
+        "veggies"
+      ],
+      "box": [
+        247,
+        487,
+        199,
+        42
+      ],
+      "concept": "energy-balance"
+    },
+    {
+      "id": "protein",
+      "name": "Protein",
+      "accept": [
+        "proteins",
+        "protein foods"
+      ],
+      "box": [
+        572,
+        521,
+        129,
+        34
+      ],
+      "concept": "energy-balance"
+    },
+    {
+      "id": "dairy",
+      "name": "Dairy",
+      "accept": [
+        "milk",
+        "dairy products"
+      ],
+      "box": [
+        886,
+        172,
+        95,
+        42
+      ],
+      "concept": "energy-balance"
+    }
+  ]
+}

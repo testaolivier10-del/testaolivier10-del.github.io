@@ -1,0 +1,70 @@
+{
+  "figure": "os-25-16",
+  "labels": [
+    {
+      "id": "blood-hydrostatic-pressure",
+      "name": "Blood hydrostatic pressure",
+      "accept": [
+        "glomerular hydrostatic pressure",
+        "glomerular blood hydrostatic pressure",
+        "gbhp",
+        "capillary hydrostatic pressure"
+      ],
+      "box": [
+        0,
+        458,
+        492,
+        38
+      ],
+      "concept": "capillary-hydrostatic"
+    },
+    {
+      "id": "blood-colloid-osmotic-pressure",
+      "name": "Blood colloid osmotic pressure",
+      "accept": [
+        "colloid osmotic pressure",
+        "bcop",
+        "oncotic pressure",
+        "blood oncotic pressure"
+      ],
+      "box": [
+        0,
+        527,
+        542,
+        38
+      ],
+      "concept": "colloid-osmotic"
+    },
+    {
+      "id": "capsular-hydrostatic-pressure",
+      "name": "Capsular hydrostatic pressure",
+      "accept": [
+        "chp",
+        "capsule hydrostatic pressure"
+      ],
+      "box": [
+        0,
+        595,
+        534,
+        39
+      ],
+      "concept": "glomerular-pressures"
+    },
+    {
+      "id": "net-outward-pressure",
+      "name": "Net outward pressure",
+      "accept": [
+        "net filtration pressure",
+        "nfp",
+        "net pressure"
+      ],
+      "box": [
+        780,
+        511,
+        285,
+        70
+      ],
+      "concept": "glomerular-nfp"
+    }
+  ]
+}

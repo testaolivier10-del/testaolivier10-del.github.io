@@ -1,0 +1,418 @@
+{
+  "figure": "os-24-7",
+  "labels": [
+    {
+      "id": "pyruvate",
+      "name": "Pyruvate",
+      "accept": [
+        "pyruvic acid"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "glycolysis-basic"
+    },
+    {
+      "id": "co2-pyruvate",
+      "name": "CO₂",
+      "accept": [
+        "carbon dioxide",
+        "co2"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "metabolic-co2"
+    },
+    {
+      "id": "two-carbon-fragment",
+      "name": "Two-carbon fragment (intermediary)",
+      "accept": [
+        "two-carbon fragment",
+        "two carbon fragment",
+        "acetyl group",
+        "acetyl"
+      ],
+      "lines": [
+        12,
+        16,
+        18
+      ],
+      "concept": "acetyl-coa"
+    },
+    {
+      "id": "coenzyme-a-added",
+      "name": "Coenzyme A is added (S-CoA)",
+      "accept": [
+        "coenzyme a",
+        "coa",
+        "s-coa",
+        "coenzyme a is added"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "acetyl-coa"
+    },
+    {
+      "id": "nad-plus-pyruvate",
+      "name": "NAD+",
+      "accept": [
+        "nad",
+        "nad plus"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "nadh-to-etc",
+      "name": "NADH to electron transport chain",
+      "accept": [
+        "nadh",
+        "nadh to the electron transport chain"
+      ],
+      "lines": [
+        14,
+        17,
+        19,
+        21
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "acetyl-coa-top",
+      "name": "Acetyl CoA",
+      "accept": [
+        "acetyl coenzyme a",
+        "acetyl-coa"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "acetyl-coa"
+    },
+    {
+      "id": "acetyl-coa",
+      "name": "Acetyl CoA",
+      "accept": [
+        "acetyl coenzyme a",
+        "acetyl-coa"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "acetyl-coa"
+    },
+    {
+      "id": "h2o-citrate",
+      "name": "H₂O",
+      "accept": [
+        "water",
+        "h2o"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "hs-coa",
+      "name": "HS-CoA",
+      "accept": [
+        "coenzyme a",
+        "coa",
+        "free coenzyme a"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "acetyl-coa"
+    },
+    {
+      "id": "oxaloacetate",
+      "name": "Oxaloacetate",
+      "accept": [
+        "oxaloacetic acid"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "citrate",
+      "name": "Citrate",
+      "accept": [
+        "citric acid"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "isocitrate",
+      "name": "Isocitrate",
+      "accept": [
+        "isocitric acid"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "nad-plus-isocitrate",
+      "name": "NAD+",
+      "accept": [
+        "nad",
+        "nad plus"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "co2-isocitrate",
+      "name": "CO₂",
+      "accept": [
+        "carbon dioxide",
+        "co2"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "metabolic-co2"
+    },
+    {
+      "id": "nadh-isocitrate",
+      "name": "NADH",
+      "accept": [
+        "nadh"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "alpha-ketoglutarate",
+      "name": "α-Ketoglutarate",
+      "accept": [
+        "alpha-ketoglutarate",
+        "alpha ketoglutarate",
+        "a-ketoglutarate",
+        "ketoglutarate"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "nad-plus-ketoglutarate",
+      "name": "NAD+",
+      "accept": [
+        "nad",
+        "nad plus"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "nadh-ketoglutarate",
+      "name": "NADH",
+      "accept": [
+        "nadh"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "co2-ketoglutarate",
+      "name": "CO₂",
+      "accept": [
+        "carbon dioxide",
+        "co2"
+      ],
+      "lines": [
+        40
+      ],
+      "concept": "metabolic-co2"
+    },
+    {
+      "id": "succinyl-coa",
+      "name": "Succinyl CoA",
+      "accept": [
+        "succinyl coenzyme a",
+        "succinyl-coa"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "succinate",
+      "name": "Succinate",
+      "accept": [
+        "succinic acid"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "gtp-1",
+      "name": "GTP",
+      "accept": [
+        "guanosine triphosphate"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": null
+    },
+    {
+      "id": "gdp-1",
+      "name": "GDP",
+      "accept": [
+        "guanosine diphosphate"
+      ],
+      "lines": [
+        46
+      ],
+      "concept": null
+    },
+    {
+      "id": "gtp-2",
+      "name": "GTP",
+      "accept": [
+        "guanosine triphosphate"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": null
+    },
+    {
+      "id": "gdp-2",
+      "name": "GDP",
+      "accept": [
+        "guanosine diphosphate"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": null
+    },
+    {
+      "id": "adp",
+      "name": "ADP",
+      "accept": [
+        "adenosine diphosphate"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "atp",
+      "name": "ATP",
+      "accept": [
+        "adenosine triphosphate"
+      ],
+      "lines": [
+        50
+      ],
+      "concept": "atp"
+    },
+    {
+      "id": "fad",
+      "name": "FAD",
+      "accept": [],
+      "lines": [
+        43
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "fadh2",
+      "name": "FADH₂",
+      "accept": [
+        "fadh2"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "fumarate",
+      "name": "Fumarate",
+      "accept": [
+        "fumaric acid"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "h2o-fumarate",
+      "name": "H₂O",
+      "accept": [
+        "water",
+        "h2o"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "water-properties"
+    },
+    {
+      "id": "malate",
+      "name": "Malate",
+      "accept": [
+        "malic acid"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "citric-acid-cycle"
+    },
+    {
+      "id": "nad-plus-malate",
+      "name": "NAD+",
+      "accept": [
+        "nad",
+        "nad plus"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "redox"
+    },
+    {
+      "id": "nadh-malate",
+      "name": "NADH",
+      "accept": [
+        "nadh"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "redox"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "figure": "os-24-14",
+  "labels": [
+    {
+      "id": "acetyl-coa-x2",
+      "name": "Acetyl CoA x 2",
+      "accept": [
+        "acetyl coa",
+        "two acetyl coa",
+        "2 acetyl coa",
+        "acetyl coenzyme a"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "acetyl-coa"
+    },
+    {
+      "id": "acetoacetyl-coa",
+      "name": "Acetoacetyl CoA",
+      "accept": [
+        "acetoacetyl coenzyme a",
+        "acetoacetyl-coa"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "ketogenesis"
+    },
+    {
+      "id": "hmg-coa",
+      "name": "β-Hydroxy-β-methylglutaryl CoA (HMG CoA)",
+      "accept": [
+        "hmg coa",
+        "hmg-coa",
+        "beta-hydroxy-beta-methylglutaryl coa",
+        "beta hydroxy beta methylglutaryl coa"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": "ketogenesis"
+    },
+    {
+      "id": "acetoacetate",
+      "name": "Acetoacetate",
+      "accept": [
+        "acetoacetic acid"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "ketogenesis"
+    },
+    {
+      "id": "beta-hydroxybutyrate",
+      "name": "β-Hydroxybutyrate",
+      "accept": [
+        "beta-hydroxybutyrate",
+        "beta hydroxybutyrate",
+        "b-hydroxybutyrate",
+        "hydroxybutyrate",
+        "beta-hydroxybutyric acid"
+      ],
+      "box": [
+        897,
+        294,
+        140,
+        21
+      ],
+      "concept": "ketogenesis"
+    }
+  ]
+}

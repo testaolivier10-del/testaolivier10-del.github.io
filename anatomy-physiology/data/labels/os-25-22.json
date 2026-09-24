@@ -1,0 +1,36 @@
+{
+  "figure": "os-25-22",
+  "labels": [
+    {
+      "id": "ammonia",
+      "name": "Ammonia",
+      "accept": [
+        "nh3"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "amino-acid-metabolism"
+    },
+    {
+      "id": "urea",
+      "name": "Urea",
+      "accept": [],
+      "lines": [
+        11
+      ],
+      "concept": "urea-cycle"
+    },
+    {
+      "id": "uric-acid",
+      "name": "Uric acid",
+      "accept": [
+        "urate"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": null
+    }
+  ]
+}

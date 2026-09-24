@@ -1,0 +1,55 @@
+{
+  "figure": "os-24-12",
+  "labels": [
+    {
+      "id": "triglycerides",
+      "name": "Triglycerides",
+      "accept": [
+        "triglyceride",
+        "triglyceride core",
+        "fats"
+      ],
+      "box": [
+        6,
+        97,
+        195,
+        39
+      ],
+      "concept": "triglyceride"
+    },
+    {
+      "id": "embedded-apolipoproteins",
+      "name": "Embedded apolipoproteins",
+      "accept": [
+        "apolipoproteins",
+        "apolipoprotein",
+        "apoproteins",
+        "embedded apolipoprotein",
+        "proteins"
+      ],
+      "box": [
+        8,
+        280,
+        233,
+        78
+      ],
+      "concept": "lipoproteins"
+    },
+    {
+      "id": "phospholipid",
+      "name": "Phospholipid",
+      "accept": [
+        "phospholipids",
+        "phospholipid shell",
+        "phospholipid monolayer"
+      ],
+      "box": [
+        9,
+        834,
+        194,
+        38
+      ],
+      "concept": "phospholipid"
+    }
+  ]
+}
