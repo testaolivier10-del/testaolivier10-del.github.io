@@ -632,11 +632,12 @@
       6:['nmr-splitting-integration'],
       7:['nmr-shift-shielding','huckel-aromaticity'] } },
 
-    'hybridization': { n:9, steps:{
-      3:['hybridization-assignment'],
-      4:['hybridization-assignment'],
+    'hybridization': { n:13, steps:{
       5:['hybridization-assignment'],
-      8:['hybridization-assignment','molecular-geometry-vsepr'] } },
+      6:['hybridization-assignment'],
+      7:['hybridization-assignment'],
+      9:['hybridization-assignment'],
+      12:['hybridization-assignment','molecular-geometry-vsepr'] } },
 
     'ir': { n:8, steps:{
       1:['ir-functional-groups'],
@@ -692,12 +693,13 @@
       3:['meso-detection','enantiomer-vs-diastereomer'],
       6:['meso-detection'] } },
 
-    'molecular-geometry': { n:9, steps:{
-      1:['molecular-geometry-vsepr'],
-      2:['molecular-geometry-vsepr','lewis-structures-drawing'],
+    'molecular-geometry': { n:11, steps:{
+      1:['molecular-geometry-vsepr','lewis-structures-drawing'],
       3:['molecular-geometry-vsepr','lewis-structures-drawing'],
-      5:['molecular-geometry-vsepr'],
-      8:['molecular-geometry-vsepr','hybridization-assignment'] } },
+      4:['molecular-geometry-vsepr','lewis-structures-drawing'],
+      6:['molecular-geometry-vsepr','hybridization-assignment'],
+      8:['molecular-geometry-vsepr'],
+      10:['molecular-geometry-vsepr','hybridization-assignment'] } },
 
     'newman': { n:7, steps:{
       1:['newman-reading'],

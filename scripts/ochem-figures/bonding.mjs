@@ -60,7 +60,7 @@ FIGURES.push({
   anchor: 'is <b>sp–sp</b>.</p>',
   lessons: ['bonding'],
   viewBox: '0 0 340 330',
-  alt: 'Four sigma bonds, one per row, each drawn as two orbitals meeting end to end on a dashed line through both nuclei. Row 1: a grey sp3 lobe on carbon meets the round 1s orbital of hydrogen, for a C–H bond of methane. Row 2: two sp3 lobes meet, for the C–C bond of ethane. Row 3: two sp2 lobes meet, for the sigma part of the C=C bond of ethene. Row 4: two sp lobes meet, for the sigma part of the C≡C bond of ethyne. The carbons get closer together and the lobes shorter from row 2 to row 4. The s-character is written beside each row: 25, 25, 33 and 50 percent.',
+  alt: 'Four sigma bonds, one per row, each drawn as two orbitals meeting end to end on a dashed line through both nuclei. Row 1: a gray sp3 lobe on carbon meets the round 1s orbital of hydrogen, for a C–H bond of methane. Row 2: two sp3 lobes meet, for the C–C bond of ethane. Row 3: two sp2 lobes meet, for the sigma part of the C=C bond of ethene. Row 4: two sp lobes meet, for the sigma part of the C≡C bond of ethyne. The carbons get closer together and the lobes shorter from row 2 to row 4. The s-character is written beside each row: 25, 25, 33 and 50 percent.',
   build() {
     let s = '';
     const rows = [
@@ -87,7 +87,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Grey lobes are hybrid orbitals; the green disc is hydrogen’s 1s. In every row the overlap sits on the dashed line through both nuclei. Compare the gap between the carbons in rows 2 to 4.',
+  caption: 'Gray lobes are hybrid orbitals; the green disc is hydrogen’s 1s. In every row the overlap sits on the dashed line through both nuclei. Compare the gap between the carbons in rows 2 to 4.',
 });
 
 /* ------------------------------------------------------ sigma-rotation ---
@@ -117,7 +117,7 @@ FIGURES.push({
   anchor: 'rotation around a single bond is free</b>.</p>',
   lessons: ['bonding'],
   viewBox: '0 0 340 316',
-  alt: 'Ethane drawn side on twice, with its C–C sigma bond shown as two grey hybrid lobes meeting head-on between the carbons. Each carbon carries three labeled hydrogens: one in the page, one on a solid wedge and one on a hashed wedge. In the top drawing the highlighted hydrogen on the right carbon points up; a curved arrow shows the right carbon turning about the bond axis. In the bottom drawing it has turned half a turn: the highlighted hydrogen points down and the wedge and hash have swapped places. The overlap between the carbons is drawn the same in both.',
+  alt: 'Ethane drawn side on twice, with its C–C sigma bond shown as two gray hybrid lobes meeting head-on between the carbons. Each carbon carries three labeled hydrogens: one in the page, one on a solid wedge and one on a hashed wedge. In the top drawing the highlighted hydrogen on the right carbon points up; a curved arrow shows the right carbon turning about the bond axis. In the bottom drawing it has turned half a turn: the highlighted hydrogen points down and the wedge and hash have swapped places. The overlap between the carbons is drawn the same in both.',
   build() {
     let s = '';
     s += text(10, 18, 'before', { cls: 'fg-tag-mut', anchor: 'start' });
@@ -130,7 +130,7 @@ FIGURES.push({
     s += text(170, 306, 'σ overlap unchanged: rotation is free', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'Follow the highlighted hydrogen: it has moved from top to bottom. The grey overlap between the two carbons has not changed at all.',
+  caption: 'Follow the highlighted hydrogen: it has moved from top to bottom. The gray overlap between the two carbons has not changed at all.',
 });
 
 /* --------------------------------------------------------- pi-overlap ---
@@ -229,7 +229,7 @@ FIGURES.push({
   id: 'l-click-bond',
   lessons: ['bonding'],
   viewBox: '0 0 340 230',
-  alt: 'Ethene side on, every atom labeled, with the three parts of the bonding between the carbons drawn separately so each can be clicked: a grey head-on overlap on the axis between the carbons, a cloud above the axis and a cloud below it.',
+  alt: 'Ethene side on, every atom labeled, with the three parts of the bonding between the carbons drawn separately so each can be clicked: a gray head-on overlap on the axis between the carbons, a cloud above the axis and a cloud below it.',
   build() {
     const cy = 112;
     const C1 = pv(-50, 0, cy), C2 = pv(50, 0, cy);
@@ -288,7 +288,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'propene-plane',
   section: 'bonding',
-  anchor: 'and it spins about its single bond.</p>',
+  anchor: 'the methyl group spins about its single bond.</p>',
   lessons: ['bonding'],
   viewBox: '0 0 340 246',
   alt: 'Propene with every atom labeled, drawn on a shaded panel that stands for the page. The CH3 carbon, the two carbons of the C=C and the three hydrogens on those two carbons are all drawn in the page. The CH3 carbon carries one more hydrogen in the page and two hydrogens that leave the plane, one on a wedge and one on a hash, labeled as leaving the plane. Hybridization labels read sp3 for the CH3 carbon and sp2 for both carbons of the double bond.',
@@ -355,7 +355,7 @@ FIGURES.push({
   anchor: 'at right angles to the first.</p>',
   lessons: ['bonding'],
   viewBox: '0 0 340 412',
-  alt: 'Ethyne, H–C≡C–H, every atom labeled, in three rows. Row 1: the sigma bond between the carbons as two grey sp lobes meeting head-on on the axis. Row 2: the first pi bond, a p orbital standing up and down on each carbon, with a dashed outline around the two upper lobes and another around the two lower lobes. Row 3: the view straight down the H–C≡C–H axis, with one carbon in the middle and four lobes around it: up and down for the first pi bond, left and right for the second, at right angles to each other.',
+  alt: 'Ethyne, H–C≡C–H, every atom labeled, in three rows. Row 1: the sigma bond between the carbons as two gray sp lobes meeting head-on on the axis. Row 2: the first pi bond, a p orbital standing up and down on each carbon, with a dashed outline around the two upper lobes and another around the two lower lobes. Row 3: the view straight down the H–C≡C–H axis, with one carbon in the middle and four lobes around it: up and down for the first pi bond, left and right for the second, at right angles to each other.',
   build() {
     let s = '';
     const row = (cy) => ({ H1: P(40, cy), C1: P(125, cy), C2: P(215, cy), H2: P(300, cy) });
@@ -394,7 +394,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'bond-length-strength',
   section: 'bonding',
-  anchor: 'measure three different overlaps.</p>',
+  anchor: 'are 347, 614 and 839 kJ/mol.</p>',
   lessons: ['bonding'],
   viewBox: '0 0 340 330',
   alt: 'Three rows: ethane, ethene and ethyne. In each, the two carbons are drawn with the distance between them to scale: 154, 134 and 120 picometers. Under each is a bar for the energy needed to break the bond: 83 kcal/mol for ethane, all sigma; 147 for ethene, split into sigma 83 and pi about 64; 200 for ethyne, split into sigma 83, pi about 64 and a second pi about 53.',
@@ -435,7 +435,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'bond-cleavage',
   section: 'bonding',
-  anchor: 'leaving two neutral radicals.</p>',
+  anchor: 'structure</a> forms.</p>',
   viewBox: '0 0 340 234',
   alt: 'Two ways to break a bond, with the shared pair drawn as two dots. Top, homolysis: H3C, two dots, CH3 goes to H3C with one dot plus one dot with CH3, two radicals. Bottom, heterolysis: (CH3)3C, two dots, Cl with three lone pairs goes to a (CH3)3C cation with no dot plus a chloride anion carrying four lone pairs.',
   build() {

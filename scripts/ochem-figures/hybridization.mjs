@@ -2,9 +2,9 @@
    scripts/build-ochem-figures.mjs; see the header there.
 
    This topic sits in Foundations, before skeletal structures, so every
-   drawing writes every atom out with its label. Orbitals follow one colour
-   rule throughout: a hybrid is grey (it is a mixture), and a leftover p
-   orbital is drawn in the two phase colours, so the reader can count the
+   drawing writes every atom out with its label. Orbitals follow one color
+   rule throughout: a hybrid is gray (it is a mixture), and a leftover p
+   orbital is drawn in the two phase colors, so the reader can count the
    leftover p orbitals at a glance. Lesson copies (id prefix l-) are 340 wide
    or less, stacked, and use only fg-lbl and fg-tag text. */
 import { atom, bond, wedge, hash, arrow, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
@@ -22,7 +22,7 @@ function ell(cx, cy, rx, ry, deg, cls, extra = '') {
   return `<ellipse class="${cls}" cx="${r2(cx)}" cy="${r2(cy)}" rx="${r2(rx)}" ry="${r2(ry)}" transform="rotate(${r2(-deg)} ${r2(cx)} ${r2(cy)})"${extra}></ellipse>`;
 }
 
-/* A hybrid orbital: one big grey lobe pointing along `deg`, plus the small
+/* A hybrid orbital: one big gray lobe pointing along `deg`, plus the small
    back lobe every hybrid has. `len` is how far the big lobe reaches. */
 function hybrid(c, deg, len = 56, w = 16, opts = {}) {
   const d = dir(deg);
@@ -34,7 +34,7 @@ function hybrid(c, deg, len = 56, w = 16, opts = {}) {
 }
 
 /* A p orbital: two lobes on opposite sides of the nucleus, one in each phase
-   colour. With `empty` both lobes are drawn as dashed outlines. */
+   color. With `empty` both lobes are drawn as dashed outlines. */
 function pOrb(c, deg, len = 40, w = 13, opts = {}) {
   const d = dir(deg);
   const a = P(c.x + d.x * len * 0.52, c.y + d.y * len * 0.52);
@@ -153,7 +153,7 @@ FIGURES.push({
   id: 'l-carbon-promotion',
   lessons: ['hybridization'],
   viewBox: '0 0 340 330',
-  alt: 'Carbon orbital boxes before and after promotion. Before: 2s holds a pair, two 2p boxes hold one electron each, one 2p box is empty. An arrow labelled promote leads to the after state: one electron in 2s and one in each of the three 2p boxes.',
+  alt: 'Carbon orbital boxes before and after promotion. Before: 2s holds a pair, two 2p boxes hold one electron each, one 2p box is empty. An arrow labeled promote leads to the after state: one electron in 2s and one in each of the three 2p boxes.',
   build() {
     let s = '';
     const state = (y0, title, fill2s, fillp, cfg) => {
@@ -181,7 +181,7 @@ FIGURES.push({
   section: 'hybridization',
   anchor: 'These are <b>sp³</b> orbitals: one part s, three parts p.</p>',
   viewBox: '0 0 760 290',
-  alt: 'Three panels. Left: carbon’s unmixed orbitals, a round s orbital and three p dumbbells at right angles, labelled 90 degrees. Middle: four identical grey sp3 hybrid lobes pointing to the corners of a tetrahedron, 109.5 degrees apart. Right: methane, with four hydrogens bonded along those four directions, two in the page, one wedged toward the reader and one hashed away.',
+  alt: 'Three panels. Left: carbon’s unmixed orbitals, a round s orbital and three p dumbbells at right angles, labeled 90 degrees. Middle: four identical gray sp3 hybrid lobes pointing to the corners of a tetrahedron, 109.5 degrees apart. Right: methane, with four hydrogens bonded along those four directions, two in the page, one wedged toward the reader and one hashed away.',
   build() {
     let s = '';
     const titles = ['unmixed: 1 s + 3 p', 'mixed: 4 sp³ hybrids', 'methane, CH₄'];
@@ -230,7 +230,7 @@ FIGURES.push({
   id: 'l-sp3-mixing',
   lessons: ['hybridization'],
   viewBox: '0 0 340 390',
-  alt: 'Top: one round s orbital plus three p dumbbells, pointing along three different axes. An arrow labelled mix, 4 in and 4 out, leads down to four identical grey sp3 hybrid lobes around a carbon, pointing to the corners of a tetrahedron, 109.5 degrees apart.',
+  alt: 'Top: one round s orbital plus three p dumbbells, pointing along three different axes. An arrow labeled mix, 4 in and 4 out, leads down to four identical gray sp3 hybrid lobes around a carbon, pointing to the corners of a tetrahedron, 109.5 degrees apart.',
   build() {
     let s = '';
     s += panel(8, 8, 324, 112);
@@ -270,7 +270,7 @@ FIGURES.push({
   section: 'hybridization',
   anchor: '<li>Mix 1 s with 1 p → two <b>sp</b> orbitals, 180° apart, linear. <b>2 p orbitals left over</b>, both perpendicular to the axis and to each other.</li>\n</ul>',
   viewBox: '0 0 760 300',
-  alt: 'Three panels. sp3: four grey hybrid lobes toward the corners of a tetrahedron, 109.5 degrees apart, no p orbital left. sp2: three grey hybrids lying in one flat plane, drawn as a dashed ellipse, 120 degrees apart, with one leftover p orbital standing straight up through the plane in the two phase colours. sp: two grey hybrids pointing opposite ways on a straight line, 180 degrees apart, with two leftover p orbitals, one up the page and one pointing out toward the reader.',
+  alt: 'Three panels. sp3: four gray hybrid lobes toward the corners of a tetrahedron, 109.5 degrees apart, no p orbital left. sp2: three gray hybrids lying in one flat plane, drawn as a dashed ellipse, 120 degrees apart, with one leftover p orbital standing straight up through the plane in the two phase colors. sp: two gray hybrids pointing opposite ways on a straight line, 180 degrees apart, with two leftover p orbitals, one up the page and one pointing out toward the reader.',
   build() {
     let s = '';
     const heads = [
@@ -306,7 +306,7 @@ FIGURES.push({
     s += text(c.x, 248, 'linear', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'Grey lobes are hybrids; two-colour dumbbells are leftover p orbitals, the two colours marking the two halves (phases) of one p orbital. The dashed ellipse in the middle panel is the plane the three sp² hybrids lie in.',
+  caption: 'Gray lobes are hybrids; two-color dumbbells are leftover p orbitals, the two colors marking the two halves (phases) of one p orbital. The dashed ellipse in the middle panel is the plane the three sp² hybrids lie in.',
 });
 
 /* ========================================= sp2 and sp stacked (lesson) === */
@@ -314,7 +314,7 @@ FIGURES.push({
   id: 'l-sp2-sp',
   lessons: ['hybridization'],
   viewBox: '0 0 340 470',
-  alt: 'Two panels. sp2: three grey hybrids in one flat plane, drawn as a dashed ellipse, 120 degrees apart, with one leftover p orbital standing straight up through the plane. sp: two grey hybrids on a straight line, 180 degrees apart, with two leftover p orbitals, one up the page and one pointing toward the reader.',
+  alt: 'Two panels. sp2: three gray hybrids in one flat plane, drawn as a dashed ellipse, 120 degrees apart, with one leftover p orbital standing straight up through the plane. sp: two gray hybrids on a straight line, 180 degrees apart, with two leftover p orbitals, one up the page and one pointing toward the reader.',
   build() {
     let s = '';
     s += panel(8, 8, 324, 222);
@@ -335,7 +335,7 @@ FIGURES.push({
     s += tag(170, 452, '2 hybrids, 180° apart');
     return s;
   },
-  caption: 'Grey lobes are hybrids; two-colour dumbbells are the leftover p orbitals. The dashed ellipse is the flat plane of the sp² hybrids.',
+  caption: 'Gray lobes are hybrids; two-color dumbbells are the leftover p orbitals. The dashed ellipse is the flat plane of the sp² hybrids.',
 });
 
 /* ======================================= ethene: sigma and pi (shared) === */
@@ -345,7 +345,7 @@ FIGURES.push({
   lessons: ['hybridization'],
   anchor: 'the mechanism behind resonance, amide planarity, and aromaticity.</p>',
   viewBox: '0 0 340 290',
-  alt: 'Ethene, CH2=CH2, in a flat plane seen from slightly above. Each carbon uses its three grey sp2 hybrids: two reach hydrogens and one meets the other carbon’s hybrid head-on along the C–C line, labelled sigma bond. The leftover p orbital on each carbon stands straight up; the two are parallel and overlap side by side above and below the plane, labelled pi bond.',
+  alt: 'Ethene, CH2=CH2, in a flat plane seen from slightly above. Each carbon uses its three gray sp2 hybrids: two reach hydrogens and one meets the other carbon’s hybrid head-on along the C–C line, labeled sigma bond. The leftover p orbital on each carbon stands straight up; the two are parallel and overlap side by side above and below the plane, labeled pi bond.',
   build() {
     let s = '';
     const A = P(128, 164), B = P(212, 164);
@@ -374,7 +374,7 @@ FIGURES.push({
     s += `<line class="fg-dash-hi" x1="170" y1="232" x2="170" y2="176"></line>`;
     return s;
   },
-  caption: 'Ethene, CH₂=CH₂. Grey hybrids make the σ bonds, including the one between the carbons; the two parallel leftover p orbitals make the π bond.',
+  caption: 'Ethene, CH₂=CH₂. Gray hybrids make the σ bonds, including the one between the carbons; the two parallel leftover p orbitals make the π bond.',
 });
 
 /* ===================================== lone pairs are groups (notes) === */
@@ -383,7 +383,7 @@ FIGURES.push({
   section: 'hybridization',
   anchor: 'Molecular Geometry, two sections on, explains the size of that squeeze.</p>',
   viewBox: '0 0 760 250',
-  alt: 'Methane, ammonia and water drawn side by side, each with four electron groups around the central atom. Methane has four bonds; ammonia has three bonds and one lone pair, drawn as two dots in the fourth corner; water has two bonds and two lone pairs in the last two corners. All three are labelled sp3.',
+  alt: 'Methane, ammonia and water drawn side by side, each with four electron groups around the central atom. Methane has four bonds; ammonia has three bonds and one lone pair, drawn as two dots in the fourth corner; water has two bonds and two lone pairs in the last two corners. All three are labeled sp3.',
   build() {
     let s = '';
     const cases = [
@@ -522,7 +522,7 @@ FIGURES.push({
   section: 'hybridization',
   anchor: 'So the C–C≡N unit is linear and the methyl end is tetrahedral, in one molecule.</p>',
   viewBox: '0 0 760 224',
-  alt: 'Acetonitrile, CH3–C≡N, drawn with every atom. The methyl carbon carries three hydrogens and is labelled sp3. The nitrile carbon and nitrogen are joined by three lines and each is labelled sp. The carbon, carbon and nitrogen lie on one straight line, and the nitrogen’s lone pair points straight out along it.',
+  alt: 'Acetonitrile, CH3–C≡N, drawn with every atom. The methyl carbon carries three hydrogens and is labeled sp3. The nitrile carbon and nitrogen are joined by three lines and each is labeled sp. The carbon, carbon and nitrogen lie on one straight line, and the nitrogen’s lone pair points straight out along it.',
   build() {
     let s = panel(14, 10, 732, 204);
     const c1 = P(150, 96), c2 = P(270, 96), n = P(370, 96);
@@ -552,7 +552,7 @@ FIGURES.push({
   section: 'hybridization',
   anchor: 'the OH oxygen is sp² as well.</p>',
   viewBox: '0 0 760 220',
-  alt: 'Acetic acid, CH3–C(=O)–O–H, drawn with every atom and all four lone pairs. The methyl carbon is labelled sp3. The carbonyl carbon, the double-bonded oxygen and the OH oxygen are each labelled sp2; the OH oxygen’s label is marked as coming from the lone-pair-beside-a-pi-bond rule, not from the plain count.',
+  alt: 'Acetic acid, CH3–C(=O)–O–H, drawn with every atom and all four lone pairs. The methyl carbon is labeled sp3. The carbonyl carbon, the double-bonded oxygen and the OH oxygen are each labeled sp2; the OH oxygen’s label is marked as coming from the lone-pair-beside-a-pi-bond rule, not from the plain count.',
   build() {
     let s = panel(14, 10, 732, 200);
     const c1 = P(140, 112), c2 = P(248, 112);
@@ -593,7 +593,7 @@ FIGURES.push({
   section: 'hybridization',
   anchor: 'and that flatness is why its two π systems can talk to each other in Resonance.</p>',
   viewBox: '0 0 760 210',
-  alt: 'Propenal, CH2=CH–CH=O, drawn as a zigzag with every atom: two carbons joined by a double bond, a single bond to a third carbon, and that carbon double-bonded to oxygen, with each hydrogen drawn. All three carbons and the oxygen are labelled sp2, and a note says all eight atoms lie in one plane.',
+  alt: 'Propenal, CH2=CH–CH=O, drawn as a zigzag with every atom: two carbons joined by a double bond, a single bond to a third carbon, and that carbon double-bonded to oxygen, with each hydrogen drawn. All three carbons and the oxygen are labeled sp2, and a note says all eight atoms lie in one plane.',
   build() {
     let s = panel(14, 10, 732, 190);
     const c1 = P(140, 124), c2 = at(c1, 30, 70), c3 = at(c2, -30, 70), o = at(c3, 30, 70);
@@ -628,7 +628,7 @@ FIGURES.push({
   lessons: ['hybridization'],
   anchor: 'When it does, the atom holding it has only three hybrid orbitals left, so it is sp².</p>',
   viewBox: '0 0 340 420',
-  alt: 'Two panels about the nitrogen of an amide, R–C(=O)–NH2. Top, what the plain count predicts: a pyramidal nitrogen with its two hydrogens wedged and hashed and its lone pair in the fourth corner, labelled 4 groups, sp3. Bottom, what the nitrogen does: the O, C and N seen side-on in one flat plane, each with a p orbital standing up and down, all three parallel. The C and O p orbitals form the C=O pi bond, and the nitrogen’s p orbital holds its lone pair and overlaps sideways with them. Labelled sp2, flat.',
+  alt: 'Two panels about the nitrogen of an amide, R–C(=O)–NH2. Top, what the plain count predicts: a pyramidal nitrogen with its two hydrogens wedged and hashed and its lone pair in the fourth corner, labeled 4 groups, sp3. Bottom, what the nitrogen does: the O, C and N seen side-on in one flat plane, each with a p orbital standing up and down, all three parallel. The C and O p orbitals form the C=O pi bond, and the nitrogen’s p orbital holds its lone pair and overlaps sideways with them. Labeled sp2, flat.',
   build() {
     let s = '';
     s += panel(8, 8, 324, 186, { kind: 'warn' });
@@ -744,7 +744,7 @@ FIGURES.push({
   lessons: ['hybridization'],
   anchor: 'if the count exceeds four you are not looking at a carbon, nitrogen or oxygen.</b></p>',
   viewBox: '0 0 340 250',
-  alt: 'Two panels. PCl5: phosphorus with five chlorines, one straight up, one straight down, and three around the middle, one in the page, one wedged toward the reader and one hashed away; labelled 5 groups, trigonal bipyramidal. SF6: sulfur with six fluorines, one up, one down, and four around the middle, two in the page, one wedged and one hashed; labelled 6 groups, octahedral.',
+  alt: 'Two panels. PCl5: phosphorus with five chlorines, one straight up, one straight down, and three around the middle, one in the page, one wedged toward the reader and one hashed away; labeled 5 groups, trigonal bipyramidal. SF6: sulfur with six fluorines, one up, one down, and four around the middle, two in the page, one wedged and one hashed; labeled 6 groups, octahedral.',
   build() {
     let s = '';
     s += panel(6, 6, 160, 238);

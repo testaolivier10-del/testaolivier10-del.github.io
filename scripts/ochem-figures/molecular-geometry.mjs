@@ -144,7 +144,7 @@ FIGURES.push({
       s += panel(x, y, 236, 212);
       s += text(x + 118, y + 24, k.name, { cls: 'fg-tag', size: 11 });
       s += text(x + 118, y + 42, k.count, { cls: 'fg-sm', size: 10.5 });
-      s += k.draw(P(x + 118, y + 116));
+      s += k.draw(P(x + 118, y + 122));
       s += text(x + 118, y + 198, k.f, { cls: 'fg-lbl', size: 13 });
     });
     return s;

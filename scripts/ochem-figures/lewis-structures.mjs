@@ -378,7 +378,7 @@ FIGURES.push({
   viewBox: '0 0 760 212',
   alt: 'Ethanol built in three panels. Panel 1: carbon, carbon, oxygen joined in a row, three H on the first carbon, two H on the second, one H on the oxygen. Panel 2: the same skeleton with the bond count written beside each heavy atom: 4 on each carbon, 2 on the oxygen. Panel 3: two lone pairs added on the oxygen; every atom is at its quota, so every formal charge is zero.',
   build() { return row(ETH, { w: 236, h: 184, mcy: 84, tagY: 154 }); },
-  caption: 'Ethanol built by the valence rule. The only step that adds anything after the skeleton is step 3, and it adds lone pairs only to the oxygen.',
+  caption: 'Ethanol built by the valence rule, one step per panel. The green numbers in panel 2 are bond counts.',
 });
 
 FIGURES.push({
@@ -387,7 +387,7 @@ FIGURES.push({
   viewBox: '0 0 340 580',
   alt: 'Ethanol built in three stacked panels: the skeleton with every H; the bond counts, 4 on each carbon and 2 on the oxygen; then two lone pairs on the oxygen, with every formal charge zero.',
   build() { return stack(ETH, { h: 180, mcy: 82, tagY: 150 }); },
-  caption: 'Ethanol, CH₃CH₂OH, in three steps.',
+  caption: 'Ethanol, CH₃CH₂OH, built step by step.',
 });
 
 FIGURES.push({
@@ -450,7 +450,7 @@ FIGURES.push({
     s += good(638, 196, 'lone pair on top');
     return s;
   },
-  caption: 'The lone pair on nitrogen is where the H⁺ bonds; nothing else in the drawing changes. The right panel is the same neutral molecule drawn with its real shape.',
+  caption: 'Compare nitrogen in the first two panels: its lone pair has become the fourth N–H bond. The third panel shows the neutral molecule’s real shape.',
 });
 
 FIGURES.push({
@@ -475,7 +475,7 @@ FIGURES.push({
     s += warn(596, 205, '6 − 6 − 1 = −1');
     return s;
   },
-  caption: 'Removing H⁺ takes the proton and leaves both electrons of the O–H bond on the oxygen. That oxygen goes from 2 bonds to 1, so it gains a lone pair and a −1.',
+  caption: 'Compare the right-hand oxygen before and after: the O–H bond is gone, and a third lone pair and the −1 have appeared.',
 });
 
 FIGURES.push({
@@ -493,7 +493,7 @@ FIGURES.push({
     s += warn(170, 177, '6 − 6 − 1 = −1, on the O');
     return s;
   },
-  caption: 'The −1 is written on the oxygen, the atom that is one bond short of its quota.',
+  caption: 'Count the oxygen’s lone pairs: three, where a neutral oxygen has two.',
 });
 
 FIGURES.push({
@@ -544,7 +544,7 @@ FIGURES.push({
   viewBox: '0 0 760 200',
   alt: 'CO2 built by the central-atom recipe in four panels. 1: O, C, O with 6, 4 and 6 valence electrons, 16 in all. 2: O–C–O joined by single bonds. 3: three lone pairs on each oxygen; carbon has only four electrons, and one lone pair on each oxygen is highlighted. 4: those two pairs have become second bonds, giving O=C=O with two lone pairs on each oxygen and every formal charge zero.',
   build() { return row(CO2, { w: 176, h: 172, mcy: 88, tagY: 136 }); },
-  caption: 'The recipe run on CO₂. The highlighted pairs in panel 3 are the ones that become the second bonds in panel 4. No electron is added or removed after panel 1.',
+  caption: 'The recipe run on CO₂. The highlighted pairs in panel 3 are the ones that become the second bonds in panel 4.',
 });
 
 FIGURES.push({
@@ -585,7 +585,7 @@ FIGURES.push({
   viewBox: '0 0 560 180',
   alt: 'Two structures for CO2. Left: O=C=O, two lone pairs on each oxygen, every formal charge zero. Right: an oxygen with one single bond and three lone pairs carrying minus one, the carbon, and an oxygen with a triple bond and one lone pair carrying plus one.',
   build() { return row(TIE, { w: 260, h: 152, gap: 12, mcy: 76, tagY: 122 }); },
-  caption: 'Two structures that both give every atom an octet. Only the charges differ.',
+  caption: 'Left: the structure the tiebreaker picks. Right: the one it rejects.',
 });
 
 FIGURES.push({
@@ -624,7 +624,7 @@ FIGURES.push({
   viewBox: '0 0 560 258',
   alt: 'BF3 in two panels. Left: boron at the center bonded to three fluorines, each fluorine with three lone pairs; boron has no lone pair and six electrons. Right: the same molecule tilted, with one F drawn as a wedge and one as a hashed bond, and a dashed, empty p orbital standing above and below the boron, perpendicular to the plane of the three bonds.',
   build() { return row(BF3, { w: 260, h: 230, gap: 12, mcy: 116, tagY: 202 }); },
-  caption: 'Boron in BF₃ stops at six electrons. The dashed lobes are its empty 2p orbital, the space an incoming lone pair can fill.',
+  caption: 'The dashed lobes are boron’s empty 2p orbital, standing above and below the plane of the three B–F bonds.',
 });
 
 FIGURES.push({
@@ -650,7 +650,7 @@ FIGURES.push({
   viewBox: '0 0 760 300',
   alt: 'Two Lewis structures drawn flat. PCl5: phosphorus bonded to five chlorines, each with three lone pairs, so phosphorus has ten electrons. SF6: sulfur bonded to six fluorines, each with three lone pairs, so sulfur has twelve electrons.',
   build() { return row(EXP, { w: 360, h: 272, gap: 12, mcy: 138, tagY: 240 }); },
-  caption: 'Two period-3 atoms past eight. These flat drawings show which atoms are bonded, not the 3D shape.',
+  caption: 'Each halogen keeps its octet; only the central atom goes past eight.',
 });
 
 FIGURES.push({
@@ -674,7 +674,7 @@ FIGURES.push({
       { title: 'all single bonds', draw: (x, y) => sulfuric(x, y, true), tags: ['every atom has an octet', '!S +2; two O’s −1 each'] },
     ], { w: 360, h: 258, gap: 12, mcy: 130, tagY: 224 });
   },
-  caption: 'Both drawings are in use for H₂SO₄. Most courses grade the left one; bonding calculations favor the right one.',
+  caption: 'Compare sulfur in the two drawings: twelve electrons and no charge, or eight electrons and +2.',
 });
 
 const RAD = [
@@ -689,7 +689,7 @@ FIGURES.push({
   viewBox: '0 0 560 204',
   alt: 'Two radicals. Nitric oxide: N double-bonded to O; N has one lone pair and one single unpaired dot; O has two lone pairs. Methyl radical: a carbon with three H and one single dot.',
   build() { return row(RAD, { w: 260, h: 176, gap: 12, mcy: 88, tagY: 146 }); },
-  caption: 'A single dot is one unpaired electron. An odd total leaves one, whatever you do.',
+  caption: 'A single dot is one unpaired electron.',
 });
 
 FIGURES.push({
