@@ -8826,15 +8826,15 @@
        "taught": "upper-limb",
        "fn": "The shallow socket at the lateral angle of the scapula where the head of the humerus sits. Its shallowness lets the arm move in every direction but makes the shoulder less stable.",
        "follow": {
-        "q": "Why can the arm move through a wider range at the shoulder than the thigh can at the hip?",
+        "q": "Why does the shoulder allow the arm such a wide range of movement?",
         "options": [
          "Its socket, the glenoid cavity, is small and shallow",
-         "The head of the humerus is much larger than the head of the femur",
+         "The head of the humerus is small and nearly flat",
          "The scapula is fused firmly to the ribs, giving a steady base",
-         "The shoulder is held together by bone rather than by muscles"
+         "The clavicle holds the humerus away from the trunk"
         ],
         "correct": 0,
-        "why": "The head of the humerus sits against a small, shallow glenoid cavity, so little bone blocks its motion. The acetabulum of the hip is a deep cup that holds most of the head of the femur, trading range for stability.",
+        "why": "The large round head of the humerus sits against a small, shallow glenoid cavity, so little bone blocks its motion in any direction. The trade-off is that bone holds the head poorly, so the shoulder depends on the surrounding muscles and ligaments to stay together.",
         "level": "analyze"
        }
       },
@@ -10615,6 +10615,21 @@
         "why": "The ischial tuberosities are the thick lower ends of the ischia, the \"sitting bones.\" The iliac crest and the spines lie high on the ilium, and the pubic tubercle is at the front.",
         "level": "recall"
        }
+      },
+      {
+       "id": "ischiopubic-ramus",
+       "name": "Ischiopubic ramus",
+       "accept": [
+        "ischiopubic rami"
+       ],
+       "box": [
+        115,
+        727,
+        171,
+        24
+       ],
+       "concept": null,
+       "fn": ""
       }
      ],
      "covered": [
@@ -10625,15 +10640,6 @@
         324,
         139,
         25
-       ]
-      },
-      {
-       "id": "ischiopubic-ramus",
-       "box": [
-        115,
-        727,
-        171,
-        24
        ]
       }
      ]
@@ -10872,6 +10878,23 @@
        "fn": "The curved ridge on the inner surface of the ilium, below the iliac fossa. It forms part of the pelvic brim."
       },
       {
+       "id": "superior-ramus-of-pubis",
+       "name": "Superior ramus of pubis",
+       "accept": [
+        "superior pubic ramus",
+        "superior ramus of the pubis"
+       ],
+       "box": [
+        348,
+        401,
+        211,
+        23
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": ""
+      },
+      {
        "id": "ischial-body",
        "name": "Ischial body",
        "accept": [
@@ -11063,6 +11086,55 @@
        "fn": "The lower back part of the hip bone. It forms the back of the acetabulum and ends below in the ischial tuberosity."
       },
       {
+       "id": "ischial-ramus",
+       "name": "Ischial ramus",
+       "accept": [
+        "ramus of the ischium"
+       ],
+       "box": [
+        16,
+        634,
+        121,
+        20
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": ""
+      },
+      {
+       "id": "ischial-ramus-2",
+       "name": "Ischial ramus",
+       "accept": [
+        "ramus of the ischium"
+       ],
+       "box": [
+        826,
+        562,
+        121,
+        20
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": ""
+      },
+      {
+       "id": "inferior-ramus-of-pubis",
+       "name": "Inferior ramus of pubis",
+       "accept": [
+        "inferior pubic ramus",
+        "inferior ramus of the pubis"
+       ],
+       "box": [
+        400,
+        584,
+        127,
+        45
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": ""
+      },
+      {
        "id": "ischial-tuberosity",
        "name": "Ischial tuberosity",
        "accept": [
@@ -11077,62 +11149,36 @@
        "concept": "pelvic-girdle",
        "taught": "lower-limb",
        "fn": "The thick, rough bump at the bottom of the ischium. It carries the body's weight when sitting, and muscles on the back of the thigh attach to it."
-      }
-     ],
-     "covered": [
-      {
-       "id": "superior-ramus-of-pubis",
-       "box": [
-        348,
-        401,
-        211,
-        23
-       ]
-      },
-      {
-       "id": "ischial-ramus",
-       "box": [
-        16,
-        634,
-        121,
-        20
-       ]
-      },
-      {
-       "id": "ischial-ramus-2",
-       "box": [
-        826,
-        562,
-        121,
-        20
-       ]
-      },
-      {
-       "id": "inferior-ramus-of-pubis",
-       "box": [
-        400,
-        584,
-        127,
-        45
-       ]
       },
       {
        "id": "ischiopubic-ramus",
+       "name": "Ischiopubic ramus",
+       "accept": [
+        "ischiopubic rami"
+       ],
        "box": [
         225,
         630,
         163,
         23
-       ]
+       ],
+       "concept": null,
+       "fn": ""
       },
       {
        "id": "ischiopubic-ramus-2",
+       "name": "Ischiopubic ramus",
+       "accept": [
+        "ischiopubic rami"
+       ],
        "box": [
         556,
         630,
         162,
         23
-       ]
+       ],
+       "concept": null,
+       "fn": ""
       }
      ]
     },
@@ -11358,7 +11404,7 @@
        ],
        "concept": "pelvis-sex-differences",
        "taught": "lower-limb",
-       "fn": "The angle formed below the pubic symphysis by the inferior pubic rami of the two sides. It is wider (80 degrees or more) in the female pelvis and narrower (under 70 degrees) in the male pelvis.",
+       "fn": "The angle formed below the pubic symphysis by the lower edges of the two pubic bones. It is wider (80 degrees or more) in the female pelvis and narrower (under 70 degrees) in the male pelvis.",
        "follow": {
         "q": "A pelvis has a wide subpubic angle, a round pelvic inlet and a short, wide sacrum. It most likely belongs to which person?",
         "options": [
@@ -11385,17 +11431,21 @@
        "concept": "pelvic-girdle",
        "taught": "lower-limb",
        "fn": "The large oval opening in the hip bone below the acetabulum, framed by the pubis and ischium. A sheet of connective tissue covers most of it, leaving a gap for vessels and a nerve to reach the thigh."
-      }
-     ],
-     "covered": [
+      },
       {
        "id": "ischiopubic-ramus",
+       "name": "Ischiopubic ramus",
+       "accept": [
+        "ischiopubic rami"
+       ],
        "box": [
         545,
         502,
         162,
         23
-       ]
+       ],
+       "concept": null,
+       "fn": ""
       }
      ]
     },
@@ -11469,7 +11519,7 @@
        ],
        "concept": "pelvis-sex-differences",
        "taught": "lower-limb",
-       "fn": "The angle formed below the pubic symphysis by the inferior pubic rami of the two sides. It is wider (80 degrees or more) in the female pelvis and narrower (under 70 degrees) in the male pelvis."
+       "fn": "The angle formed below the pubic symphysis by the lower edges of the two pubic bones. It is wider (80 degrees or more) in the female pelvis and narrower (under 70 degrees) in the male pelvis."
       }
      ]
     },
@@ -11987,7 +12037,7 @@
        ],
        "concept": "tibia-fibula",
        "taught": "lower-limb",
-       "fn": "The rough bump on the front of the upper tibia, below the condyles. The patellar ligament from the kneecap attaches here, so the front thigh muscle pulls on it to straighten the knee.",
+       "fn": "The rough bump on the front of the upper tibia, below the condyles. The ligament running down from the kneecap attaches here, so the front thigh muscle pulls on it to straighten the knee.",
        "follow": {
         "q": "The large muscle on the front of the thigh straightens the knee. Where does its pull finally reach the tibia?",
         "options": [
@@ -11997,7 +12047,7 @@
          "The soleal line on the back of the upper tibia"
         ],
         "correct": 0,
-        "why": "The muscle's tendon wraps the patella, and the patellar ligament runs on from the patella to the tibial tuberosity. Pulling on the tuberosity swings the leg forward.",
+        "why": "The muscle's tendon wraps the patella, and a ligament runs on from the patella to the tibial tuberosity. Pulling on the tuberosity swings the leg forward.",
         "level": "apply"
        }
       },
@@ -12699,6 +12749,522 @@
        "concept": "foot-bones",
        "taught": "lower-limb",
        "fn": "The metatarsal of the little toe, on the lateral edge of the foot. Its base has a bump that can be felt halfway along the outer edge of the foot."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "whole-skeleton",
+   "title": "Whole skeleton",
+   "chapter": "skeleton",
+   "topic": "lower-limb",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-7-2",
+     "topic": "lower-limb",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "skull",
+       "name": "Skull",
+       "accept": [
+        "cranium"
+       ],
+       "box": [
+        524,
+        5,
+        53,
+        20
+       ],
+       "concept": null,
+       "fn": "The bones of the head: the cranial bones that enclose the brain and the facial bones that frame the face. It sits on top of the vertebral column and is part of the axial skeleton."
+      },
+      {
+       "id": "cranial-portion",
+       "name": "Cranial portion",
+       "accept": [
+        "cranium",
+        "cranial bones",
+        "brain case"
+       ],
+       "box": [
+        482,
+        42,
+        137,
+        25
+       ],
+       "concept": "cranial-bones",
+       "taught": "skull",
+       "fn": "The cranium, the eight cranial bones that form the rounded case around the brain."
+      },
+      {
+       "id": "facial-portion",
+       "name": "Facial portion",
+       "accept": [
+        "facial bones",
+        "face"
+       ],
+       "box": [
+        483,
+        80,
+        126,
+        25
+       ],
+       "concept": "facial-bones",
+       "taught": "skull",
+       "fn": "The fourteen facial bones that shape the face, hold the teeth and form the front of the orbits and the nose."
+      },
+      {
+       "id": "clavicle",
+       "name": "Clavicle",
+       "accept": [
+        "collarbone",
+        "collar bone"
+       ],
+       "box": [
+        511,
+        179,
+        79,
+        20
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The S-shaped collarbone running from the manubrium of the sternum out to the acromion of the scapula. It acts as a strut that holds the shoulder out to the side and passes force from the upper limb to the axial skeleton."
+      },
+      {
+       "id": "scapula",
+       "name": "Scapula",
+       "accept": [
+        "shoulder blade",
+        "scapulae"
+       ],
+       "box": [
+        510,
+        215,
+        81,
+        24
+       ],
+       "concept": "pectoral-girdle",
+       "taught": "upper-limb",
+       "fn": "The flat, triangular shoulder blade on the back of the upper ribs. It is held in place mainly by muscles, and its glenoid cavity is the socket for the head of the humerus."
+      },
+      {
+       "id": "sternum",
+       "name": "Sternum",
+       "accept": [
+        "breastbone",
+        "breast bone"
+       ],
+       "box": [
+        508,
+        275,
+        84,
+        20
+       ],
+       "concept": "sternum",
+       "taught": "thoracic-cage",
+       "fn": "The flat breastbone at the front of the chest. The costal cartilages of the upper ribs attach to it, and the clavicles meet its manubrium."
+      },
+      {
+       "id": "ribs",
+       "name": "Ribs",
+       "accept": [
+        "rib"
+       ],
+       "box": [
+        526,
+        311,
+        50,
+        20
+       ],
+       "concept": "ribs",
+       "taught": "thoracic-cage",
+       "fn": "The twelve pairs of curved bones that form the sides of the thoracic cage, each running from a thoracic vertebra toward the front of the chest."
+      },
+      {
+       "id": "vertebral-column",
+       "name": "Vertebral column",
+       "accept": [
+        "spine",
+        "backbone",
+        "spinal column"
+       ],
+       "box": [
+        0,
+        356,
+        88,
+        43
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The stack of vertebrae, sacrum and coccyx that forms the central axis of the body. It carries the weight of the head and trunk and surrounds the spinal cord."
+      },
+      {
+       "id": "vertebral-column-posterior",
+       "name": "Vertebral column",
+       "accept": [
+        "spine",
+        "backbone",
+        "spinal column"
+       ],
+       "box": [
+        992,
+        356,
+        89,
+        43
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The stack of vertebrae, sacrum and coccyx that forms the central axis of the body. It carries the weight of the head and trunk and surrounds the spinal cord."
+      },
+      {
+       "id": "humerus",
+       "name": "Humerus",
+       "accept": [],
+       "box": [
+        506,
+        373,
+        90,
+        20
+       ],
+       "concept": "humerus",
+       "taught": "upper-limb",
+       "fn": "The single bone of the arm, from the shoulder to the elbow. Its head fits the glenoid cavity above, and its lower end meets the radius and ulna."
+      },
+      {
+       "id": "ulna",
+       "name": "Ulna",
+       "accept": [],
+       "box": [
+        525,
+        425,
+        52,
+        21
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The forearm bone on the little-finger (medial) side. It is large at the elbow, where it grips the humerus, and small at the wrist."
+      },
+      {
+       "id": "pelvic-girdle",
+       "name": "Pelvic girdle (hip bones)",
+       "accept": [
+        "hip bones",
+        "hip bone",
+        "coxal bones",
+        "os coxae"
+       ],
+       "box": [
+        0,
+        438,
+        107,
+        70
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The two hip bones, which attach the lower limbs to the sacrum. Unlike the pectoral girdle it is a strong, nearly rigid ring built to carry the body's weight.",
+       "follow": {
+        "q": "Why is the pelvic girdle built so differently from the pectoral girdle?",
+        "options": [
+         "It carries the body's weight, so it is a fixed ring",
+         "It must let the lower limb swing freely in every direction",
+         "It has no bony link to the axial skeleton at all",
+         "It is made of more bones, each one smaller and lighter"
+        ],
+        "correct": 0,
+        "why": "The pectoral girdle trades stability for movement: it is linked to the trunk only at the sternum. The hip bones are bound firmly to the sacrum and to each other, forming a ring that passes the weight of the upper body to the lower limbs.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "pelvic-girdle-posterior",
+       "name": "Pelvic girdle (hip bones)",
+       "accept": [
+        "hip bones",
+        "hip bone",
+        "coxal bones",
+        "os coxae"
+       ],
+       "box": [
+        993,
+        438,
+        107,
+        70
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The two hip bones, which attach the lower limbs to the sacrum. Unlike the pectoral girdle it is a strong, nearly rigid ring built to carry the body's weight."
+      },
+      {
+       "id": "radius",
+       "name": "Radius",
+       "accept": [],
+       "box": [
+        516,
+        452,
+        71,
+        21
+       ],
+       "concept": "radius-ulna",
+       "taught": "upper-limb",
+       "fn": "The forearm bone on the thumb (lateral) side. It is small at the elbow and wide at the wrist, where it carries most of the load from the hand."
+      },
+      {
+       "id": "carpals",
+       "name": "Carpals",
+       "accept": [
+        "carpal bones",
+        "carpal",
+        "wrist bones"
+       ],
+       "box": [
+        511,
+        479,
+        79,
+        25
+       ],
+       "concept": "hand-bones",
+       "taught": "upper-limb",
+       "fn": "The eight small wrist bones, set in two rows of four between the radius and the metacarpals."
+      },
+      {
+       "id": "metacarpals",
+       "name": "Metacarpals",
+       "accept": [
+        "metacarpal",
+        "metacarpal bones"
+       ],
+       "box": [
+        493,
+        534,
+        116,
+        24
+       ],
+       "concept": "hand-bones",
+       "taught": "upper-limb",
+       "fn": "The five long bones of the palm, numbered 1 (thumb) to 5 (little finger). Their heads form the knuckles."
+      },
+      {
+       "id": "phalanges-hand",
+       "name": "Phalanges",
+       "accept": [
+        "phalanx",
+        "finger bones"
+       ],
+       "box": [
+        484,
+        583,
+        101,
+        24
+       ],
+       "concept": "hand-bones",
+       "taught": "upper-limb",
+       "fn": "The finger bones: two in the thumb (proximal and distal) and three in each finger (proximal, middle and distal), fourteen in each hand."
+      },
+      {
+       "id": "femur",
+       "name": "Femur",
+       "accept": [
+        "thigh bone"
+       ],
+       "box": [
+        518,
+        683,
+        67,
+        20
+       ],
+       "concept": "femur",
+       "taught": "lower-limb",
+       "fn": "The thigh bone, the longest and strongest bone of the body. Its head fits the acetabulum at the hip and its condyles rest on the tibia at the knee."
+      },
+      {
+       "id": "patella",
+       "name": "Patella",
+       "accept": [
+        "kneecap"
+       ],
+       "box": [
+        518,
+        716,
+        69,
+        20
+       ],
+       "concept": "patella",
+       "taught": "lower-limb",
+       "fn": "The kneecap, a sesamoid bone that forms inside the tendon of the large muscle on the front of the thigh. It protects the knee and gives that tendon more leverage.",
+       "follow": {
+        "q": "Why is the patella called a sesamoid bone?",
+        "options": [
+         "It forms inside a tendon",
+         "It is shaped like a sesame seed and has no function",
+         "It is part of the femur",
+         "It forms from cartilage in the skull"
+        ],
+        "correct": 0,
+        "why": "Sesamoid bones develop inside tendons where they pass over a joint. The patella, the largest one, sits in the tendon of the front thigh muscle and holds it away from the knee, which increases its leverage.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "tibia",
+       "name": "Tibia",
+       "accept": [
+        "shinbone",
+        "shin bone"
+       ],
+       "box": [
+        517,
+        831,
+        54,
+        20
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The shinbone, the large weight-bearing bone on the medial side of the leg. Its upper end carries the femur at the knee and its lower end sits on the talus at the ankle.",
+       "follow": {
+        "q": "Which bone of the leg carries almost all of the body's weight?",
+        "options": [
+         "Tibia",
+         "Fibula",
+         "Patella",
+         "Talus"
+        ],
+        "correct": 0,
+        "why": "The femur passes weight to the tibia at the knee, and the tibia passes it to the talus at the ankle. The fibula does not reach the knee and carries little weight; it mainly anchors muscles and steadies the ankle.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "fibula",
+       "name": "Fibula",
+       "accept": [],
+       "box": [
+        518,
+        876,
+        63,
+        20
+       ],
+       "concept": "tibia-fibula",
+       "taught": "lower-limb",
+       "fn": "The thin bone on the lateral side of the leg. It carries little of the body's weight; it anchors muscles and forms the outer side of the ankle."
+      },
+      {
+       "id": "tarsals",
+       "name": "Tarsals",
+       "accept": [
+        "tarsal bones",
+        "tarsal",
+        "ankle bones"
+       ],
+       "box": [
+        413,
+        963,
+        73,
+        20
+       ],
+       "concept": "foot-bones",
+       "taught": "lower-limb",
+       "fn": "The seven bones of the back of the foot and ankle: talus, calcaneus, navicular, cuboid and three cuneiforms."
+      },
+      {
+       "id": "metatarsals",
+       "name": "Metatarsals",
+       "accept": [
+        "metatarsal",
+        "metatarsal bones"
+       ],
+       "box": [
+        414,
+        984,
+        110,
+        20
+       ],
+       "concept": "foot-bones",
+       "taught": "lower-limb",
+       "fn": "The five long bones of the middle of the foot, numbered 1 (great toe) to 5 (little toe). Their heads form the ball of the foot."
+      },
+      {
+       "id": "phalanges-foot",
+       "name": "Phalanges",
+       "accept": [
+        "phalanx",
+        "toe bones"
+       ],
+       "box": [
+        414,
+        1007,
+        102,
+        24
+       ],
+       "concept": "foot-bones",
+       "taught": "lower-limb",
+       "fn": "The finger bones: two in the thumb (proximal and distal) and three in each finger (proximal, middle and distal), fourteen in each hand."
+      },
+      {
+       "id": "axial-skeleton",
+       "name": "Axial skeleton",
+       "accept": [
+        "axial"
+       ],
+       "box": [
+        959,
+        840,
+        130,
+        20
+       ],
+       "concept": "axial-appendicular",
+       "taught": "skull",
+       "fn": "Shown in beige in the key: the 80 bones of the body's central axis (skull, hyoid bone, vertebral column and thoracic cage), which protect the brain, spinal cord and chest organs and support the head and trunk.",
+       "follow": {
+        "q": "Which of these bones belongs to the axial skeleton rather than the appendicular skeleton?",
+        "options": [
+         "Sternum",
+         "Clavicle",
+         "Scapula",
+         "Hip bone"
+        ],
+        "correct": 0,
+        "why": "The axial skeleton is the skull, hyoid, vertebral column and thoracic cage, and the sternum is part of the thoracic cage. The clavicle and scapula form the pectoral girdle and the hip bones form the pelvic girdle; the girdles attach the limbs, so they are appendicular.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "appendicular-skeleton",
+       "name": "Appendicular skeleton",
+       "accept": [
+        "appendicular"
+       ],
+       "box": [
+        959,
+        875,
+        125,
+        43
+       ],
+       "concept": "axial-appendicular",
+       "taught": "skull",
+       "fn": "Shown in green in the key: the 126 bones of the limbs and of the pectoral and pelvic girdles that attach them to the axial skeleton. It is built for movement and for carrying the body."
+      }
+     ],
+     "shown": [
+      {
+       "id": "pectoral-girdle",
+       "why": "A group heading over the bone labels below it; it points to no single structure."
+      },
+      {
+       "id": "thoracic-cage",
+       "why": "A group heading over the bone labels below it; it points to no single structure."
+      },
+      {
+       "id": "upper-limb",
+       "why": "A group heading over the bone labels below it; it points to no single structure."
+      },
+      {
+       "id": "lower-limb",
+       "why": "A group heading over the bone labels below it; it points to no single structure."
       }
      ]
     }
@@ -17630,555 +18196,6 @@
        "concept": "ribs",
        "taught": "thoracic-cage",
        "fn": "The point on the rib's shaft where it bends most sharply forward, a little beyond the tubercle. It is the weakest part of the rib and a common place for fractures."
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "whole-skeleton",
-   "title": "Whole skeleton",
-   "chapter": "skeleton",
-   "topic": "lower-limb",
-   "histology": false,
-   "stations": [
-    {
-     "figure": "os-7-2",
-     "topic": "lower-limb",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "skull",
-       "name": "Skull",
-       "accept": [
-        "cranium"
-       ],
-       "box": [
-        524,
-        5,
-        53,
-        20
-       ],
-       "concept": null,
-       "fn": "The bones of the head: the cranial bones that enclose the brain and the facial bones that frame the face."
-      },
-      {
-       "id": "cranial-portion",
-       "name": "Cranial portion",
-       "accept": [
-        "cranial bones"
-       ],
-       "box": [
-        482,
-        42,
-        137,
-        25
-       ],
-       "concept": "cranial-bones",
-       "taught": "skull",
-       "fn": "The part of the skull that encloses and protects the brain, made of eight cranial bones."
-      },
-      {
-       "id": "facial-portion",
-       "name": "Facial portion",
-       "accept": [
-        "facial bones",
-        "face"
-       ],
-       "box": [
-        483,
-        80,
-        126,
-        25
-       ],
-       "concept": "facial-bones",
-       "taught": "skull",
-       "fn": "The front part of the skull that frames the face, made of fourteen facial bones including the jaws, cheekbones and nasal bones."
-      },
-      {
-       "id": "pectoral-girdle",
-       "name": "Pectoral (shoulder) girdle",
-       "accept": [
-        "shoulder girdle"
-       ],
-       "box": [
-        440,
-        137,
-        222,
-        24
-       ],
-       "concept": "pectoral-girdle",
-       "taught": "upper-limb",
-       "fn": "The clavicle and scapula on each side. They attach the upper limb to the axial skeleton."
-      },
-      {
-       "id": "clavicle",
-       "name": "Clavicle",
-       "accept": [
-        "collarbone",
-        "collar bone"
-       ],
-       "box": [
-        511,
-        179,
-        79,
-        20
-       ],
-       "concept": "pectoral-girdle",
-       "taught": "upper-limb",
-       "fn": "The collarbone, a long S-shaped bone that runs across the top of the chest from the manubrium to the shoulder."
-      },
-      {
-       "id": "scapula",
-       "name": "Scapula",
-       "accept": [
-        "shoulder blade",
-        "scapulae"
-       ],
-       "box": [
-        510,
-        215,
-        81,
-        24
-       ],
-       "concept": "pectoral-girdle",
-       "taught": "upper-limb",
-       "fn": "The shoulder blade, a flat triangular bone on the back of the chest wall."
-      },
-      {
-       "id": "thoracic-cage",
-       "name": "Thoracic cage",
-       "accept": [
-        "rib cage",
-        "thorax"
-       ],
-       "box": [
-        485,
-        244,
-        132,
-        25
-       ],
-       "concept": "ribs",
-       "taught": "thoracic-cage",
-       "fn": "The ribs, costal cartilages, sternum and thoracic vertebrae. The cage protects the heart and lungs and moves with breathing."
-      },
-      {
-       "id": "sternum",
-       "name": "Sternum",
-       "accept": [
-        "breastbone",
-        "breast bone"
-       ],
-       "box": [
-        508,
-        275,
-        84,
-        20
-       ],
-       "concept": "sternum",
-       "taught": "thoracic-cage",
-       "fn": "The breastbone: a flat bone in the midline of the chest made of the manubrium, body and xiphoid process."
-      },
-      {
-       "id": "ribs",
-       "name": "Ribs",
-       "accept": [
-        "rib"
-       ],
-       "box": [
-        526,
-        311,
-        50,
-        20
-       ],
-       "concept": "ribs",
-       "taught": "thoracic-cage",
-       "fn": "The twelve pairs of curved bones of the chest wall. All attach to thoracic vertebrae behind; most reach the sternum in front through costal cartilages."
-      },
-      {
-       "id": "upper-limb",
-       "name": "Upper limb",
-       "accept": [
-        "arm",
-        "upper extremity"
-       ],
-       "box": [
-        499,
-        343,
-        104,
-        24
-       ],
-       "concept": null,
-       "fn": "The arm, forearm, wrist and hand, with 30 bones on each side: humerus, radius, ulna, carpals, metacarpals and phalanges."
-      },
-      {
-       "id": "vertebral-column",
-       "name": "Vertebral column",
-       "accept": [
-        "spine",
-        "backbone",
-        "spinal column"
-       ],
-       "box": [
-        0,
-        356,
-        88,
-        43
-       ],
-       "concept": "vertebral-regions",
-       "taught": "vertebral-column",
-       "fn": "The backbone: 24 separate vertebrae plus the sacrum and coccyx. It supports the head and trunk and surrounds the spinal cord."
-      },
-      {
-       "id": "vertebral-column-posterior",
-       "name": "Vertebral column",
-       "accept": [
-        "spine",
-        "backbone",
-        "spinal column"
-       ],
-       "box": [
-        992,
-        356,
-        89,
-        43
-       ],
-       "concept": "vertebral-regions",
-       "taught": "vertebral-column",
-       "fn": "The backbone: 24 separate vertebrae plus the sacrum and coccyx. It supports the head and trunk and surrounds the spinal cord."
-      },
-      {
-       "id": "humerus",
-       "name": "Humerus",
-       "accept": [],
-       "box": [
-        506,
-        373,
-        90,
-        20
-       ],
-       "concept": "humerus",
-       "taught": "upper-limb",
-       "fn": "The single long bone of the arm, from shoulder to elbow."
-      },
-      {
-       "id": "ulna",
-       "name": "Ulna",
-       "accept": [],
-       "box": [
-        525,
-        425,
-        52,
-        21
-       ],
-       "concept": "radius-ulna",
-       "taught": "upper-limb",
-       "fn": "The forearm bone on the little-finger side. Its upper end forms the main hinge of the elbow with the humerus."
-      },
-      {
-       "id": "pelvic-girdle",
-       "name": "Pelvic girdle (hip bones)",
-       "accept": [
-        "hip bones",
-        "hip bone",
-        "coxal bones",
-        "os coxae"
-       ],
-       "box": [
-        0,
-        438,
-        107,
-        70
-       ],
-       "concept": "pelvic-girdle",
-       "taught": "lower-limb",
-       "fn": "The two hip bones. They attach the lower limbs to the axial skeleton at the sacrum and carry the weight of the upper body to the legs.",
-       "follow": {
-        "q": "What is the job of the pelvic girdle?",
-        "options": [
-         "It surrounds and protects the lungs",
-         "It joins the legs to the axial skeleton",
-         "It lets the skull turn on the neck",
-         "It holds the upper limbs to the trunk"
-        ],
-        "correct": 1,
-        "why": "The two hip bones meet the sacrum behind and hold the femurs, so the weight of the trunk passes through them to the legs. The ribs protect the lungs, and the pectoral girdle holds the upper limbs.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "pelvic-girdle-posterior",
-       "name": "Pelvic girdle (hip bones)",
-       "accept": [
-        "hip bones",
-        "hip bone",
-        "coxal bones",
-        "os coxae"
-       ],
-       "box": [
-        993,
-        438,
-        107,
-        70
-       ],
-       "concept": "pelvic-girdle",
-       "taught": "lower-limb",
-       "fn": "The two hip bones. They attach the lower limbs to the axial skeleton at the sacrum and carry the weight of the upper body to the legs."
-      },
-      {
-       "id": "radius",
-       "name": "Radius",
-       "accept": [],
-       "box": [
-        516,
-        452,
-        71,
-        21
-       ],
-       "concept": "radius-ulna",
-       "taught": "upper-limb",
-       "fn": "The forearm bone on the thumb side. Its lower end forms most of the wrist joint and turns around the ulna to rotate the forearm."
-      },
-      {
-       "id": "carpals",
-       "name": "Carpals",
-       "accept": [
-        "carpal bones",
-        "carpal",
-        "wrist bones"
-       ],
-       "box": [
-        511,
-        479,
-        79,
-        25
-       ],
-       "concept": "hand-bones",
-       "taught": "upper-limb",
-       "fn": "The eight small wrist bones, in two rows of four."
-      },
-      {
-       "id": "metacarpals",
-       "name": "Metacarpals",
-       "accept": [
-        "metacarpal",
-        "metacarpal bones"
-       ],
-       "box": [
-        493,
-        534,
-        116,
-        24
-       ],
-       "concept": "hand-bones",
-       "taught": "upper-limb",
-       "fn": "The five bones of the palm, one behind each finger."
-      },
-      {
-       "id": "phalanges-hand",
-       "name": "Phalanges",
-       "accept": [
-        "phalanx",
-        "finger bones"
-       ],
-       "box": [
-        484,
-        583,
-        101,
-        24
-       ],
-       "concept": "hand-bones",
-       "taught": "upper-limb",
-       "fn": "The finger bones: 14 in each hand, two in the thumb and three in each other finger."
-      },
-      {
-       "id": "lower-limb",
-       "name": "Lower limb",
-       "accept": [
-        "leg",
-        "lower extremity"
-       ],
-       "box": [
-        499,
-        643,
-        104,
-        20
-       ],
-       "concept": null,
-       "fn": "The thigh, leg, ankle and foot, with 30 bones on each side: femur, patella, tibia, fibula, tarsals, metatarsals and phalanges."
-      },
-      {
-       "id": "femur",
-       "name": "Femur",
-       "accept": [
-        "thigh bone"
-       ],
-       "box": [
-        518,
-        683,
-        67,
-        20
-       ],
-       "concept": "femur",
-       "taught": "lower-limb",
-       "fn": "The thigh bone, the longest and strongest bone in the body. Its head fits into the hip socket and its lower end forms the knee with the tibia.",
-       "follow": {
-        "q": "Which is the longest and strongest bone of the body?",
-        "options": [
-         "Tibia",
-         "Humerus",
-         "Femur",
-         "Fibula"
-        ],
-        "correct": 2,
-        "why": "The femur, the thigh bone, is the longest and strongest. The tibia is the main weight-bearing bone below the knee, the humerus is the arm bone, and the fibula is thin and carries little weight.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "patella",
-       "name": "Patella",
-       "accept": [
-        "kneecap"
-       ],
-       "box": [
-        518,
-        716,
-        69,
-        20
-       ],
-       "concept": "patella",
-       "taught": "lower-limb",
-       "fn": "The kneecap, a sesamoid bone inside the tendon of the front thigh muscles. It protects the knee and improves the pull of those muscles."
-      },
-      {
-       "id": "tibia",
-       "name": "Tibia",
-       "accept": [
-        "shinbone",
-        "shin bone"
-       ],
-       "box": [
-        517,
-        831,
-        54,
-        20
-       ],
-       "concept": "tibia-fibula",
-       "taught": "lower-limb",
-       "fn": "The shinbone, the larger, weight-bearing bone of the leg on the big-toe side."
-      },
-      {
-       "id": "fibula",
-       "name": "Fibula",
-       "accept": [],
-       "box": [
-        518,
-        876,
-        63,
-        20
-       ],
-       "concept": "tibia-fibula",
-       "taught": "lower-limb",
-       "fn": "The thin bone on the outer side of the leg. It carries little weight but anchors muscles and forms the outer ankle bump."
-      },
-      {
-       "id": "tarsals",
-       "name": "Tarsals",
-       "accept": [
-        "tarsal bones",
-        "tarsal",
-        "ankle bones"
-       ],
-       "box": [
-        413,
-        963,
-        73,
-        20
-       ],
-       "concept": "foot-bones",
-       "taught": "lower-limb",
-       "fn": "The seven bones of the ankle and back of the foot, including the heel bone (calcaneus) and the talus."
-      },
-      {
-       "id": "metatarsals",
-       "name": "Metatarsals",
-       "accept": [
-        "metatarsal",
-        "metatarsal bones"
-       ],
-       "box": [
-        414,
-        984,
-        110,
-        20
-       ],
-       "concept": "foot-bones",
-       "taught": "lower-limb",
-       "fn": "The five long bones of the middle of the foot, one behind each toe."
-      },
-      {
-       "id": "phalanges-foot",
-       "name": "Phalanges",
-       "accept": [
-        "phalanx",
-        "toe bones"
-       ],
-       "box": [
-        414,
-        1007,
-        102,
-        24
-       ],
-       "concept": "foot-bones",
-       "taught": "lower-limb",
-       "fn": "The toe bones: 14 in each foot, two in the big toe and three in each other toe."
-      },
-      {
-       "id": "axial-skeleton",
-       "name": "Axial skeleton",
-       "accept": [
-        "axial"
-       ],
-       "box": [
-        959,
-        840,
-        130,
-        20
-       ],
-       "concept": "axial-appendicular",
-       "taught": "skull",
-       "fn": "The 80 bones along the body's central axis: skull, hyoid, the six tiny bones inside the ears, vertebral column and thoracic cage. It protects the brain, spinal cord and chest organs.",
-       "follow": {
-        "q": "Which bones belong to the axial skeleton?",
-        "options": [
-         "Skull, vertebral column and thoracic cage",
-         "Pectoral girdle, clavicles and both upper limbs",
-         "Pelvic girdle, hip bones and both lower limbs",
-         "Only the skull and the facial bones"
-        ],
-        "correct": 0,
-        "why": "The axial skeleton runs along the body's central axis: skull, vertebral column, thoracic cage (plus the hyoid and the tiny bones inside the ears). The girdles and limbs make up the appendicular skeleton.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "appendicular-skeleton",
-       "name": "Appendicular skeleton",
-       "accept": [
-        "appendicular"
-       ],
-       "box": [
-        959,
-        875,
-        125,
-        43
-       ],
-       "concept": "axial-appendicular",
-       "taught": "skull",
-       "fn": "The 126 bones of the limbs and the girdles that attach them to the axial skeleton. It is built mainly for movement."
       }
      ]
     }
@@ -24992,7 +25009,7 @@
        ],
        "concept": "breathing-muscles",
        "taught": "trunk-muscles",
-       "fn": "The outer layer of muscle between the ribs, fibers running down and forward from each rib to the one below. They raise the ribs to enlarge the chest when you breathe in."
+       "fn": "The outer layer of muscle between the ribs, fibers running down and forward from each rib to the rib below it. They raise the ribs to enlarge the chest when you breathe in."
       },
       {
        "id": "external-intercostal",
