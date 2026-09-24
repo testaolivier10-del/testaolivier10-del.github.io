@@ -316,12 +316,12 @@
       6:['conjugation-recognition'],
       7:['conjugation-recognition'] } },
 
-    'naming-parent-chain': { n:8, steps:{
+    'naming-parent-chain': { n:11, steps:{
       2:['parent-chain'],
-      3:['parent-chain'],
-      4:['locant-rules'],
-      6:['parent-chain','locant-rules'],
-      7:['parent-chain'] } },
+      4:['parent-chain'],
+      7:['locant-rules'],
+      9:['parent-chain','locant-rules'],
+      10:['parent-chain'] } },
 
     'naming-substituents': { n:8, steps:{
       2:['alphabetization'],

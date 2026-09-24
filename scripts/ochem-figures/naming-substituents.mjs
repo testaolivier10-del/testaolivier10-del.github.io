@@ -1,170 +1,449 @@
 /* Figures for the naming-substituents notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Almost every figure here is the same kind of drawing: a zigzag parent chain
+   (highlighted), its substituents, and the chain's numbers written on the
+   carbons. The helpers below draw that once, so every numbered chain on the
+   page looks the same, and a "numbered both ways" figure is simply the same
+   chain drawn twice with the numbers reversed.
+
+   The figures are drawn 360 wide and stack their panels vertically. A
+   side-by-side pair at 760 wide scrolls sideways on a phone, and a comparison
+   you have to scroll between is not a comparison. */
+import { atom, bond, text, tag, rule, panel, P } from '../lib/ochem-figure.mjs';
+import { zig, sk } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
+
+/* ------------------------------------------------------------ helpers --- */
+
+const W = 360;                   // canvas width for every figure here
+const PX = 12, PW = 336;         // panel x and width
+const CX = PX + PW / 2;          // horizontal center
+const DY = 24;                   // zigzag rise
+
+/* How far a chain's drawing reaches above and below its baseline y0, so a
+   panel can be sized to fit it. A substituent on a raised (odd) vertex
+   points up; on a lower (even) vertex it points down. */
+const UP = { me: 82, X: 82, et: 98 };
+const DOWN = { me: 56, X: 58, et: 72, ibu: 108, sbu: 76 };
+function extents(subs) {
+  let up = 46, down = 26;
+  for (const q of subs) {
+    if (q.i % 2 === 1) up = Math.max(up, UP[q.kind] || 46);
+    else down = Math.max(down, DOWN[q.kind] || 26);
+  }
+  return { up, down };
+}
+
+/* A skeletal chain with substituents and numbers.
+   n       carbons in the parent chain
+   subs    [{ i, kind, ang, name }]; i is the 0-based vertex from the left.
+           kind: 'me' | 'et' | 'X' (a halogen, name = its symbol) | 'ibu' (2-methylpropyl)
+           | 'sbu' (butan-2-yl). ibu and sbu are only drawn downward.
+           ang tilts a methyl (degrees, + toward the right).
+   opts.from  'left' | 'right' | null: which end is C1 (null draws no numbers)
+   opts.names false leaves the group names off; opts.branchNums false leaves
+              the branch's own green numbers off. */
+function chain(x0, y0, n, subs = [], opts = {}) {
+  const dx = opts.dx || 40;
+  const r = zig(x0, y0, n, dx, DY);
+  let s = '';
+  for (let i = 0; i < n - 1; i++) s += sk(r[i], r[i + 1], true);
+  const has = new Set(subs.map((q) => q.i));
+  const showNames = opts.names !== false;
+  const green = (x, y, v) => text(x, y, v, { cls: 'fg-tag-good', size: 11 });
+  for (const q of subs) {
+    const p = r[q.i];
+    const up = q.i % 2 === 1;
+    const a = ((q.ang || 0) * Math.PI) / 180;
+    const v = P(Math.sin(a), up ? -Math.cos(a) : Math.cos(a));
+    const nameAt = (end) => (showNames && q.name
+      ? text(end.x, end.y + (up ? -9 : 17), q.name, { cls: 'fg-sm', size: 10 }) : '');
+    if (q.kind === 'me') {
+      const m = P(p.x + v.x * 38, p.y + v.y * 38);
+      s += sk(p, m) + nameAt(m);
+    } else if (q.kind === 'et') {
+      const e1 = P(p.x + v.x * 36, p.y + v.y * 36);
+      const e2 = P(e1.x + 31, e1.y + (up ? -18 : 18));
+      s += sk(p, e1) + sk(e1, e2) + nameAt(e2);
+    } else if (q.kind === 'X') {
+      const x = P(p.x + v.x * 42, p.y + v.y * 42);
+      s += bond(p, x, { rFrom: 0, rTo: 14 }) + atom(x.x, x.y, q.name);
+    } else if (q.kind === 'ibu') {
+      const b1 = P(p.x, p.y + 36), b2 = P(b1.x + 31, b1.y + 18), b3 = P(b2.x + 31, b2.y - 18), bm = P(b2.x, b2.y + 36);
+      s += sk(p, b1) + sk(b1, b2) + sk(b2, b3) + sk(b2, bm);
+      if (opts.branchNums !== false) s += green(b1.x - 11, b1.y + 8, '1') + green(b2.x - 11, b2.y + 14, '2') + green(b3.x + 11, b3.y + 8, '3');
+      if (showNames) s += text(bm.x, bm.y + 17, 'methyl', { cls: 'fg-sm', size: 10 });
+    } else if (q.kind === 'sbu') {
+      const c2 = P(p.x, p.y + 36), c1 = P(c2.x - 31, c2.y + 18), c3 = P(c2.x + 31, c2.y + 18), c4 = P(c3.x + 31, c3.y - 18);
+      s += sk(p, c2) + sk(c2, c1) + sk(c2, c3) + sk(c3, c4);
+      if (opts.branchNums !== false) s += green(c1.x, c1.y + 18, '1') + green(c2.x + 12, c2.y + 3, '2') + green(c3.x, c3.y + 18, '3') + green(c4.x + 11, c4.y + 4, '4');
+    }
+  }
+  if (opts.from) {
+    r.forEach((p, i) => {
+      const up = i % 2 === 1;
+      const num = String(opts.from === 'left' ? i + 1 : n - i);
+      // The number goes on the side of the carbon that is free: opposite a
+      // substituent, otherwise outside the zigzag.
+      const above = has.has(i) ? !up : up;
+      s += text(p.x, above ? p.y - 10 : p.y + 22, num, { cls: 'fg-lbl', size: 11 });
+    });
+  }
+  return s;
+}
+
+/* Locants of the substituents under a given numbering, sorted. */
+const locantSet = (n, subs, from) => subs.map((q) => (from === 'left' ? q.i + 1 : n - q.i)).sort((a, b) => a - b);
+const fmtSet = (set) => '{' + set.join(', ') + '}';
+
+/* The same chain in two stacked panels, numbered from each end.
+   verdict: { left: 'good'|'warn'|'tie', right: ..., name, notes } or null for a
+   question figure that must not give the answer away. Returns { svg, h }. */
+function bothWays({ n, subs, verdict = null, dx = 40 }) {
+  const { up, down } = extents(subs);
+  const y0rel = 34 + up;                            // baseline, from the panel top
+  const setRel = y0rel + down + 24;
+  const Hp = setRel + (verdict ? 30 : 14);
+  const notes = (verdict && verdict.notes) || {};
+  const chainW = (n - 1) * dx;
+  let s = '';
+  ['left', 'right'].forEach((from, k) => {
+    const py = 12 + k * (Hp + 12);
+    const v = verdict ? verdict[from] : null;
+    s += panel(PX, py, PW, Hp, { kind: v === 'good' ? 'good' : v === 'warn' ? 'warn' : undefined });
+    s += tag(CX, py + 24, from === 'left' ? 'C1 at the left end' : 'C1 at the right end');
+    s += chain(CX - chainW / 2, py + y0rel, n, subs, { from, dx });
+    s += text(CX, py + setRel, 'substituents at ' + fmtSet(locantSet(n, subs, from)), { cls: 'fg-lbl', size: 12 });
+    if (v) {
+      const words = notes[from] || (v === 'good' ? 'lower at the first difference' : 'higher at the first difference');
+      s += text(CX, py + setRel + 20, words, { cls: v === 'good' ? 'fg-tag-good' : v === 'warn' ? 'fg-tag-warn' : 'fg-tag-mut', size: 11 });
+    }
+  });
+  let h = 12 + 2 * Hp + 12 + 4;
+  if (verdict && verdict.name) { s += text(CX, h + 18, verdict.name, { cls: 'fg-lbl', size: 13 }); h += 30; }
+  return { svg: s, h };
+}
+
+/* A single numbered chain in one panel, with an optional name under it. */
+function single({ n, subs, from = 'left', name = '', note = '', names, branchNums, dx = 40 }) {
+  const { up, down } = extents(subs);
+  const y0 = 12 + 20 + up;
+  let bottom = y0 + down + 10;
+  let s = '';
+  const chainW = (n - 1) * dx;
+  s += chain(CX - chainW / 2, y0, n, subs, { from, names, branchNums, dx });
+  if (name) { s += text(CX, bottom + 14, name, { cls: 'fg-lbl', size: 13 }); bottom += 22; }
+  if (note) { s += text(CX, bottom + 14, note, { cls: 'fg-sm', size: 10 }); bottom += 20; }
+  const Hp = bottom + 6 - 12;
+  return { svg: panel(PX, 12, PW, Hp) + s, h: Hp + 24 };
+}
+
+/* A figure definition from a builder that reports its own height. */
+function sized(def, make) {
+  const { svg, h } = make();
+  return { ...def, viewBox: `0 0 ${W} ${Math.ceil(h)}`, build: () => svg };
+}
+
+/* ------------------------------------------------ the alkyl groups --- */
+FIGURES.push({
+  id: 'alkyl-group-gallery',
+  section: 'naming-substituents',
+  lessons: ['naming-substituents'],
+  anchor: 'fig-alkyl-group-gallery',
+  alt: 'Seven alkyl groups drawn as skeletal fragments: propyl and isopropyl (three carbons), butyl, sec-butyl, isobutyl and tert-butyl (four carbons) and neopentyl (five carbons). In each the bond to the parent chain is highlighted and ends in a dot, and the group’s own carbons are numbered as in its systematic name.',
+  viewBox: '0 0 360 810',
+  build() {
+    let s = '';
+    const dot = (p) => atom(p.x, p.y, '', { kind: 'hi', r: 5 });
+    const num = (p, v, dx, dy) => text(p.x + dx, p.y + dy, v, { cls: 'fg-tag-good', size: 11 });
+    const me = (p, dx = 0, dy = 17) => text(p.x + dx, p.y + dy, 'methyl', { cls: 'fg-sm', size: 10 });
+    const groups = [
+      { common: 'propyl', sys: 'propan-1-yl', draw(x, y) {
+        const A = P(x, y), c1 = P(x + 31, y - 18), c2 = P(x + 62, y), c3 = P(x + 93, y - 18);
+        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + dot(A) + num(c1, '1', 0, -9) + num(c2, '2', 0, 19) + num(c3, '3', 0, -9);
+      } },
+      { common: 'isopropyl', sys: 'propan-2-yl', draw(x, y) {
+        const A = P(x + 10, y + 12), c = P(x + 41, y - 6), m1 = P(x + 72, y + 12), m3 = P(x + 41, y - 42);
+        return sk(A, c, true) + sk(c, m1) + sk(c, m3) + dot(A) + num(m3, '1', 12, 4) + num(c, '2', 13, 2) + num(m1, '3', 0, 19);
+      } },
+      { common: 'butyl', sys: 'butan-1-yl', draw(x, y) {
+        const A = P(x - 12, y), c1 = P(x + 19, y - 18), c2 = P(x + 50, y), c3 = P(x + 81, y - 18), c4 = P(x + 112, y);
+        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + dot(A) + num(c1, '1', 0, -9) + num(c2, '2', 0, 19) + num(c3, '3', 0, -9) + num(c4, '4', 0, 19);
+      } },
+      { common: 'sec-butyl', sys: 'butan-2-yl', draw(x, y) {
+        const A = P(x - 6, y + 12), c2 = P(x + 25, y - 6), c1 = P(x + 25, y - 42), c3 = P(x + 56, y + 12), c4 = P(x + 87, y - 6);
+        return sk(A, c2, true) + sk(c2, c1) + sk(c2, c3) + sk(c3, c4) + dot(A) + num(c1, '1', 12, 4) + num(c2, '2', 13, 2) + num(c3, '3', 0, 19) + num(c4, '4', 0, -9);
+      } },
+      { common: 'isobutyl', sys: '2-methylpropyl', draw(x, y) {
+        const A = P(x - 6, y - 8), c1 = P(x + 25, y - 26), c2 = P(x + 56, y - 8), c3 = P(x + 87, y - 26), m = P(x + 56, y + 28);
+        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + sk(c2, m) + dot(A) + num(c1, '1', 0, -9) + num(c2, '2', 13, 16) + num(c3, '3', 0, -9) + me(m);
+      } },
+      { common: 'tert-butyl', sys: '2-methylpropan-2-yl', draw(x, y) {
+        const A = P(x, y - 8), c = P(x + 38, y - 8), m1 = P(x + 38, y - 44), m2 = P(x + 38, y + 28), m3 = P(x + 76, y - 8);
+        return sk(A, c, true) + sk(c, m1) + sk(c, m2) + sk(c, m3) + dot(A) + num(m1, '1', 12, 4) + num(c, '2', 11, 16) + num(m3, '3', 0, -9) + me(m2);
+      } },
+      { common: 'neopentyl', sys: '2,2-dimethylpropyl', draw(x, y) {
+        const A = P(x - 6, y - 8), c1 = P(x + 25, y - 26), c2 = P(x + 56, y - 8), c3 = P(x + 87, y - 26), ma = P(x + 56, y + 28), mb = P(x + 87, y + 10);
+        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + sk(c2, ma) + sk(c2, mb) + dot(A) + num(c1, '1', 0, -9) + num(c2, '2', -11, 19) + num(c3, '3', 0, -9) + me(ma) + me(mb, 6, 17);
+      } },
+    ];
+    // Rows: 3 carbons, 4 carbons (two rows), 5 carbons.
+    const rows = [
+      { label: 'three carbons', items: [0, 1] },
+      { label: 'four carbons', items: [2, 3] },
+      { label: null, items: [4, 5] },
+      { label: 'five carbons', items: [6] },
+    ];
+    let y = 8;
+    for (const row of rows) {
+      if (row.label) { s += tag(CX, y + 14, row.label); y += 22; }
+      row.items.forEach((gi, k) => {
+        const g = groups[gi];
+        const px = row.items.length === 1 ? CX - 82 : PX + k * 172;
+        s += panel(px, y, 164, 164);
+        s += text(px + 82, y + 22, g.common, { cls: 'fg-lbl', size: 12.5 });
+        s += text(px + 82, y + 40, g.sys, { cls: 'fg-sm', size: 10 });
+        s += g.draw(px + 36, y + 110);
+      });
+      y += 172;
+    }
+    s += text(CX, y + 8, 'The dot marks the bond to the parent chain.', { cls: 'fg-sm', size: 10 });
+    s += text(CX, y + 24, 'Green numbers are the group’s own.', { cls: 'fg-sm', size: 10 });
+    return s;
+  },
+  caption: 'Compare the groups that share a carbon count. The carbons are the same; only the carbon that carries the highlighted bond changes.',
+  note: '<i>sec</i>-Butyl and isobutyl are the pair people confuse. In <i>sec</i>-butyl the highlighted bond lands on the branch point itself. In isobutyl it lands one carbon before the branch point. Cover the names, look at the highlighted bond, and say which is which.',
+});
+
+/* --------------------------------------- a halogen competes as an equal --- */
+const HEX_CL = { n: 6, subs: [{ i: 1, kind: 'me', name: 'methyl' }, { i: 3, kind: 'X', name: 'Cl' }] };
+FIGURES.push(sized({
+  id: 'halogen-equal-standing',
+  section: 'naming-substituents',
+  lessons: ['naming-substituents'],
+  anchor: 'fig-halogen-equal-standing',
+  alt: 'The same hexane drawn twice, carrying a methyl and a chlorine. Numbered from the left, the methyl is on C2 and the chlorine on C4, set {2, 4}. Numbered from the right, the chlorine is on C3 and the methyl on C5, set {3, 5}. The left numbering wins, giving 4-chloro-2-methylhexane.',
+  caption: 'Same molecule, two numberings. Read the two sets term by term: 2 against 3 settles it at the first term.',
+  note: 'The chlorine gets no say. It ends up with the higher of its two possible numbers, because the direction was fixed by the first term.',
+}, () => bothWays({ ...HEX_CL, verdict: { left: 'good', right: 'warn', name: '4-chloro-2-methylhexane' } })));
+
+/* ------------------------------------------ common names of simple halides --- */
+FIGURES.push({
+  id: 'halide-common-names',
+  section: 'naming-substituents',
+  anchor: 'fig-halide-common-names',
+  alt: 'Three alkyl halides with both names. Isopropyl bromide: a three-carbon chain with bromine on the middle carbon, 2-bromopropane. tert-Butyl chloride: a central carbon bearing three methyl carbons and a chlorine, 2-chloro-2-methylpropane. Ethyl iodide: a two-carbon chain with iodine on C1, iodoethane. In each the alkyl group is highlighted.',
+  viewBox: '0 0 360 574',
+  build() {
+    let s = '';
+    const num = (x, y, v) => text(x, y, v, { cls: 'fg-lbl', size: 11 });
+    const H = 178;
+    const pan = (k, common, sys) => {
+      const py = 12 + k * (H + 10);
+      s += panel(PX, py, PW, H);
+      s += text(CX, py + 24, common, { cls: 'fg-tag', size: 11 });
+      s += text(CX, py + H - 14, sys, { cls: 'fg-lbl', size: 12.5 });
+      return py;
+    };
+    // isopropyl bromide = 2-bromopropane
+    {
+      const py = pan(0, 'isopropyl bromide', '2-bromopropane');
+      const c1 = P(CX - 40, py + 114), c2 = P(CX, py + 90), c3 = P(CX + 40, py + 114), br = P(CX, py + 54);
+      s += sk(c1, c2, true) + sk(c2, c3, true) + bond(c2, br, { rFrom: 0, rTo: 15 }) + atom(br.x, br.y, 'Br');
+      s += num(c1.x, c1.y + 22, '1') + num(c2.x, c2.y + 22, '2') + num(c3.x, c3.y + 22, '3');
+    }
+    // tert-butyl chloride = 2-chloro-2-methylpropane
+    {
+      const py = pan(1, 'tert-butyl chloride', '2-chloro-2-methylpropane');
+      const c2 = P(CX, py + 92), c1 = P(CX - 42, py + 92), c3 = P(CX + 42, py + 92), m = P(CX, py + 124), cl = P(CX, py + 54);
+      s += sk(c1, c2, true) + sk(c2, c3, true) + sk(c2, m, true) + bond(c2, cl, { rFrom: 0, rTo: 15 }) + atom(cl.x, cl.y, 'Cl');
+      s += num(c1.x - 12, c1.y + 4, '1') + num(c2.x + 12, c2.y + 20, '2') + num(c3.x + 12, c3.y + 4, '3');
+      s += text(m.x + 8, m.y + 4, 'methyl', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    }
+    // ethyl iodide = iodoethane
+    {
+      const py = pan(2, 'ethyl iodide', 'iodoethane');
+      const c1 = P(CX, py + 96), c2 = P(CX + 40, py + 72), io = P(CX - 36, py + 74);
+      s += sk(c1, c2, true) + bond(c1, io, { rFrom: 0, rTo: 15 }) + atom(io.x, io.y, 'I');
+      s += num(c1.x, c1.y + 22, '1') + num(c2.x, c2.y + 22, '2');
+    }
+    return s;
+  },
+  caption: 'Each common name reads as the highlighted alkyl group, then the halide. The systematic name counts along the same carbons.',
+});
+
+/* --------------------------------------------- one number per group --- */
+FIGURES.push(sized({
+  id: 'dimethylpentane-pair',
+  section: 'naming-substituents',
+  lessons: ['naming-substituents'],
+  anchor: 'fig-dimethylpentane-pair',
+  alt: 'Two numbered pentanes. Top: both methyls on C2, named 2,2-dimethylpentane. Bottom: one methyl on C2 and one on C3, named 2,3-dimethylpentane.',
+  caption: 'Two methyls each time, so two locants each time. Only the numbers show whether the methyls share a carbon.',
+}, () => {
+  const a = single({ n: 5, subs: [{ i: 1, kind: 'me', ang: -38, name: 'methyl' }, { i: 1, kind: 'me', ang: 38, name: 'methyl' }],
+    name: '2,2-dimethylpentane', note: 'both methyls on C2: the 2 is written twice' });
+  const b = single({ n: 5, subs: [{ i: 1, kind: 'me', name: 'methyl' }, { i: 2, kind: 'me', name: 'methyl' }],
+    name: '2,3-dimethylpentane', note: 'one methyl on C2, one on C3' });
+  return { svg: a.svg + `<g transform="translate(0 ${a.h - 4})">${b.svg}</g>`, h: a.h - 4 + b.h };
+}));
+
+/* ------------------------------------------ alphabetical order, drawn --- */
+FIGURES.push(sized({
+  id: 'alphabet-example',
+  section: 'naming-substituents',
+  lessons: ['naming-substituents'],
+  anchor: 'fig-alphabet-example',
+  alt: 'A hexane numbered from the left with two methyls on C2 and an ethyl on C4. The name 4-ethyl-2,2-dimethylhexane is written under it, with ethyl filed under e and dimethyl filed under m.',
+  caption: 'The numbers come from the drawing. The order of the words comes from the alphabet, so the 4 is written before the 2,2.',
+}, () => single({ n: 6, subs: [
+  { i: 1, kind: 'me', ang: -38, name: 'methyl' }, { i: 1, kind: 'me', ang: 38, name: 'methyl' },
+  { i: 3, kind: 'et', name: 'ethyl' },
+], name: '4-ethyl-2,2-dimethylhexane', note: 'ethyl files under e, dimethyl under m' })));
 
 /* ------------------------------------------------------------------ A2 ---
    Alphabetical order is the one rule in the section that produces a
    silently wrong answer, because a list sorted the obvious way still looks
-   sorted. A before/after strip is the comparison: the same five names,
-   filed by the letter you see and filed by the letter that counts. */
+   sorted. The same five names, filed by the letter you see and filed by the
+   letter that counts. */
 FIGURES.push({
   id: 'alphabetize-filing',
   section: 'naming-substituents',
-  anchor: '<h3>The order in which the rules apply</h3>',
-  alt: 'Five substituent names with the letter each files under, then the same five sorted by first letter and sorted correctly',
-  viewBox: '0 0 760 350',
+  lessons: ['naming-substituents'],
+  anchor: 'fig-alphabetize-filing',
+  alt: 'Five substituent names with the letter each files under: tert-butyl under b, dimethyl under m, ethyl under e, isopropyl under i, cyclohexyl under c. Below, the same five sorted by the first letter printed (wrong) and by the letter each files under (right).',
+  viewBox: '0 0 360 440',
   build() {
     let s = '';
-    const cols = [
-      { x: 84,  name: 'tert-butyl',       rule: 'tert- is ignored',   letter: 'b', counts: false },
-      { x: 220, name: 'dimethyl',         rule: 'di- is ignored',     letter: 'm', counts: false },
-      { x: 356, name: 'ethyl',            rule: 'nothing to strip',   letter: 'e', counts: true  },
-      { x: 492, name: 'isopropyl',        rule: 'iso is part of it',  letter: 'i', counts: true  },
-      { x: 628, name: 'cyclohexyl',       rule: 'cyclo is part of it', letter: 'c', counts: true },
+    const rows = [
+      { name: 'tert-butyl', rule: 'tert- is ignored', letter: 'b', counts: false },
+      { name: 'dimethyl', rule: 'di- is ignored', letter: 'm', counts: false },
+      { name: 'ethyl', rule: 'nothing to strip', letter: 'e', counts: true },
+      { name: 'isopropyl', rule: 'iso is part of it', letter: 'i', counts: true },
+      { name: 'cyclohexyl', rule: 'cyclo is part of it', letter: 'c', counts: true },
     ];
-    s += tag(380, 36, 'what each name files under');
-    for (const c of cols) {
-      s += label(c.x, 74, c.name, { size: 12.5 });
-      s += text(c.x, 96, c.rule, { cls: c.counts ? 'fg-tag-good' : 'fg-tag-warn', size: 9.5 });
-      s += atom(c.x, 128, c.letter, { kind: 'hi', r: 15 });
-    }
-    s += rule(34, 160, 726, 160);
-
-    // The same five names, sorted two ways. The rows are the whole figure:
-    // both look sorted, and only one is.
-    const row = (y, heading, order, kind) => {
-      s += text(70, y, heading, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 10.5, anchor: 'start' });
-      order.forEach((nm, i) => {
-        s += label(150 + i * 124, y + 30, nm, { size: 12 });
-        if (i) s += text(150 + i * 124 - 62, y + 30, '\u00b7', { cls: 'fg-sm', size: 12 });
-      });
-    };
-    row(196, 'sorted by the first letter printed', ['cyclohexyl', 'dimethyl', 'ethyl', 'isopropyl', 'tert-butyl'], 'warn');
-    row(276, 'sorted by the letter it files under', ['tert-butyl', 'cyclohexyl', 'ethyl', 'isopropyl', 'dimethyl'], 'good');
-    return s;
-  },
-  caption: 'Five substituents, filed. A multiplying prefix (<i>di-</i>) and an italic structural prefix (<i>tert-</i>) are stripped before the name is alphabetized; <i>iso</i> and <i>cyclo</i> are not, because they are joined to the word rather than hyphenated off it.',
-  note: 'The two rows are the reason this matters. Both are in alphabetical order by some reading, both look finished, and only the lower one is right \u2014 <i>tert</i>-butyl moves from last to first and dimethyl from second to last. The typography is the tell: if the prefix is hyphenated and italic, cross it out before you sort.',
-});
-
-/* ---------------------------------------------------------------- N2 ---
-   The six alkyl groups the section defines in words. Every textbook draws
-   these side by side, because a reader who has only read "attaches through
-   the second carbon of a four-chain" cannot tell isobutyl from sec-butyl. */
-FIGURES.push({
-  id: 'alkyl-group-gallery',
-  section: 'naming-substituents',
-  anchor: 'Learn both directions and use whichever the question uses.</p>',
-  alt: 'Six alkyl groups drawn as skeletal fragments: propyl, isopropyl, butyl, sec-butyl, isobutyl and tert-butyl. In each the bond to the parent chain is highlighted and ends in a dot, and the carbons are numbered as in the systematic name, so the attached carbon is C2 in propan-2-yl and butan-2-yl.',
-  viewBox: '0 0 720 420',
-  build() {
-    let s = '';
-    const dot = (p) => atom(p.x, p.y, '', { kind: 'hi', r: 5 });
-    const n = (p, v, where) => {
-      const at = where === 'above' ? [p.x, p.y - 9] : where === 'below' ? [p.x, p.y + 16]
-        : where === 'right' ? [p.x + 12, p.y + 4] : where === 'left' ? [p.x - 12, p.y + 4] : [p.x + 11, p.y - 9];
-      return text(at[0], at[1], v, { cls: 'fg-sm', size: 9.5 });
-    };
-    const groups = [
-      { common: 'propyl', sys: 'propan-1-yl', draw(x, y) {
-        const A = P(x, y), c1 = P(x + 30, y - 18), c2 = P(x + 60, y), c3 = P(x + 90, y - 18);
-        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + dot(A) + n(c1, '1', 'above') + n(c2, '2', 'below') + n(c3, '3', 'above');
-      } },
-      { common: 'isopropyl', sys: 'propan-2-yl', draw(x, y) {
-        const A = P(x, y + 10), c = P(x + 30, y - 8), m1 = P(x + 60, y + 10), m3 = P(x + 30, y - 44);
-        return sk(A, c, true) + sk(c, m1) + sk(c, m3) + dot(A) + n(m3, '1', 'right') + n(c, '2', 'diag') + n(m1, '3', 'below');
-      } },
-      { common: 'butyl', sys: 'butan-1-yl', draw(x, y) {
-        const A = P(x, y), c1 = P(x + 30, y - 18), c2 = P(x + 60, y), c3 = P(x + 90, y - 18), c4 = P(x + 120, y);
-        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + dot(A) + n(c1, '1', 'above') + n(c2, '2', 'below') + n(c3, '3', 'above') + n(c4, '4', 'below');
-      } },
-      { common: 'sec-butyl', sys: 'butan-2-yl', draw(x, y) {
-        const A = P(x, y + 10), c2 = P(x + 30, y - 8), c1 = P(x + 30, y - 44), c3 = P(x + 60, y + 10), c4 = P(x + 90, y - 8);
-        return sk(A, c2, true) + sk(c2, c1) + sk(c2, c3) + sk(c3, c4) + dot(A) + n(c1, '1', 'right') + n(c2, '2', 'diag') + n(c3, '3', 'below') + n(c4, '4', 'above');
-      } },
-      { common: 'isobutyl', sys: '2-methylpropyl', draw(x, y) {
-        const A = P(x, y), c1 = P(x + 30, y - 18), c2 = P(x + 60, y), c3 = P(x + 90, y - 18), m = P(x + 60, y + 36);
-        return sk(A, c1, true) + sk(c1, c2) + sk(c2, c3) + sk(c2, m) + dot(A) + n(c1, '1', 'above') + n(c2, '2', 'diag') + n(c3, '3', 'above') + text(m.x + 8, m.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      } },
-      { common: 'tert-butyl', sys: '2-methylpropan-2-yl', draw(x, y) {
-        const A = P(x, y), c = P(x + 36, y), m1 = P(x + 36, y - 36), m2 = P(x + 36, y + 36), m3 = P(x + 72, y);
-        return sk(A, c, true) + sk(c, m1) + sk(c, m2) + sk(c, m3) + dot(A) + n(m1, '1', 'right') + n(c, '2', 'diag') + n(m3, '3', 'right') + text(m2.x + 8, m2.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      } },
-    ];
-    groups.forEach((g, i) => {
-      const px = 12 + (i % 3) * 236, py = 36 + Math.floor(i / 3) * 190;
-      s += panel(px, py, 224, 170);
-      s += text(px + 112, py + 24, g.common, { cls: 'fg-lbl', size: 12.5 });
-      s += text(px + 112, py + 42, g.sys, { cls: 'fg-sm', size: 10 });
-      s += g.draw(px + 46, py + 112);
+    s += tag(CX, 24, 'what each name files under');
+    rows.forEach((r, k) => {
+      const y = 58 + k * 38;
+      s += text(24, y + 4, r.name, { cls: 'fg-lbl', size: 12, anchor: 'start' });
+      s += text(262, y + 4, r.rule, { cls: r.counts ? 'fg-tag-good' : 'fg-tag-warn', size: 10, anchor: 'end' });
+      s += atom(316, y, r.letter, { kind: 'hi', r: 14 });
     });
-    s += text(360, 408, 'The dot is the bond to the parent chain; the numbers are the group’s own, as in its systematic name.', { cls: 'fg-sm', size: 10 });
+    s += rule(20, 250, 340, 250);
+    const col = (x, heading, order, kind) => {
+      s += text(x, 276, heading, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 11 });
+      order.forEach((nm, i) => { s += text(x - 62, 306 + i * 30, `${i + 1}. ${nm}`, { cls: 'fg-lbl', size: 12, anchor: 'start' }); });
+    };
+    col(96, 'wrong: first letter', ['cyclohexyl', 'dimethyl', 'ethyl', 'isopropyl', 'tert-butyl'], 'warn');
+    col(268, 'right: filed letter', ['tert-butyl', 'cyclohexyl', 'ethyl', 'isopropyl', 'dimethyl'], 'good');
     return s;
   },
-  caption: 'The six alkyl groups you will be asked to recognize, drawn. Each pair — propyl and isopropyl, then the four butyls — shares a carbon count; what changes is which carbon carries the bond to the parent. The systematic name says exactly that: <i>propan-2-yl</i> is a three-carbon group attached through its second carbon, <i>2-methylpropyl</i> is a three-carbon group attached through its first with a methyl on its second.',
-  note: 'Two of these are the ones people confuse. <i>sec</i>-Butyl and isobutyl are both four carbons and both branched, and the difference is whether the branch point is the attached carbon (<i>sec</i>) or the one next to it (iso). Cover the names, look at where the dot sits, and say which is which; if you can do that, the words will stick.',
+  caption: 'Five substituents, filed. Strip <i>di-</i> and <i>tert-</i> first, keep <i>iso</i> and <i>cyclo</i>, then sort.',
+  note: 'Both lists look sorted. Only the right-hand one is correct: <i>tert</i>-butyl moves from last to first, and dimethyl from second to last.',
 });
 
-/* ---------------------------------------------------------------- N3 ---
-   The section's two worked names, drawn with their numbering, including the
-   one thing about a complex substituent that prose cannot show: the branch
-   has its own C1 and its own count. */
-FIGURES.push({
-  id: 'substituent-worked-pair',
+/* ------------------------------- three substituents, numbered both ways --- */
+const HEPT3 = { n: 7, subs: [{ i: 1, kind: 'me', name: 'methyl' }, { i: 3, kind: 'et', name: 'ethyl' }, { i: 4, kind: 'X', name: 'Cl' }] };
+FIGURES.push(sized({
+  id: 'three-substituents-both-ways',
   section: 'naming-substituents',
-  anchor: 'so (2-methylpropyl) files under <b>m</b>.</p>',
-  alt: 'Two numbered skeletal structures. Left: a heptane chain numbered one to seven with a methyl on carbon 2, an ethyl on carbon 4 and a chlorine on carbon 5, named 5-chloro-4-ethyl-2-methylheptane. Right: a nonane chain with a 2-methylpropyl branch on carbon 5, the branch carbons numbered 1, 2, 3 from the attachment point in a second color, named 5-(2-methylpropyl)nonane.',
-  viewBox: '0 0 720 336',
-  build() {
-    let s = '';
-    const num = (x, y, v, cls = 'fg-lbl') => text(x, y, v, { cls, size: 11 });
-    // Left: 5-chloro-4-ethyl-2-methylheptane
-    {
-      const x = 12; s += panel(x, 44, 344, 216, { kind: 'hi' }); s += tag(x + 172, 32, 'three simple substituents');
-      const r = zig(x + 44, 176, 7, 40, 24);
-      for (let i = 0; i < 6; i++) s += sk(r[i], r[i + 1]);
-      const m = P(r[1].x, r[1].y - 36);
-      const e1 = P(r[3].x, r[3].y - 36), e2 = P(r[3].x + 30, e1.y - 18);
-      const cl = P(r[4].x, r[4].y + 42);
-      s += sk(r[1], m) + sk(r[3], e1) + sk(e1, e2);
-      s += bond(r[4], cl, { rFrom: 0, rTo: 15 }) + atom(cl.x, cl.y, 'Cl');
-      r.forEach((p, i) => {
-        const up = i % 2 === 1;
-        if (i === 1 || i === 3) s += num(p.x, p.y + 18, String(i + 1));
-        else if (i === 4) s += num(p.x, p.y - 12, '5');
-        else s += num(p.x, up ? p.y - 10 : p.y + 20, String(i + 1));
-      });
-      s += text(m.x + 8, m.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(e2.x + 8, e2.y + 4, 'ethyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(x + 172, 286, '5-chloro-4-ethyl-2-methylheptane', { cls: 'fg-tag-good', size: 11.5 });
-      s += text(x + 172, 306, 'numbered left to right: {2, 4, 5} beats {3, 4, 6}', { cls: 'fg-sm', size: 9.5 });
-    }
-    // Right: 5-(2-methylpropyl)nonane
-    {
-      const x = 364; s += panel(x, 44, 344, 216, { kind: 'hi' }); s += tag(x + 172, 32, 'one branched substituent');
-      const r = zig(x + 30, 150, 9, 34, 22);
-      for (let i = 0; i < 8; i++) s += sk(r[i], r[i + 1]);
-      const b1 = P(r[4].x, r[4].y + 34), b2 = P(r[4].x + 30, b1.y + 18), b3 = P(b2.x + 30, b2.y - 18), bm = P(b2.x, b2.y + 36);
-      s += sk(r[4], b1) + sk(b1, b2) + sk(b2, b3) + sk(b2, bm);
-      r.forEach((p, i) => {
-        const up = i % 2 === 1;
-        if (i === 4) s += num(p.x, p.y - 12, '5');
-        else s += num(p.x, up ? p.y - 10 : p.y + 20, String(i + 1));
-      });
-      s += num(b1.x - 12, b1.y + 4, '1', 'fg-tag-good');
-      s += num(b2.x - 12, b2.y + 6, '2', 'fg-tag-good');
-      s += num(b3.x + 12, b3.y + 4, '3', 'fg-tag-good');
-      s += text(bm.x + 8, bm.y + 4, 'methyl', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      s += text(x + 172, 286, '5-(2-methylpropyl)nonane', { cls: 'fg-tag-good', size: 11.5 });
-      s += text(x + 172, 306, 'the green numbers belong to the branch', { cls: 'fg-sm', size: 9.5 });
-    }
-    return s;
-  },
-  caption: 'The two worked names, drawn. On the left the numbers were settled by the structure and the words by the alphabet, which is why 5 comes before 4 before 2 in the name. On the right the branch is numbered a second time, from the carbon that attaches it, and that count goes inside the parentheses.',
-  note: 'The parentheses are doing a job. In 5-(2-methylpropyl)nonane the 2 counts along the branch and the 5 along the parent; write it without the brackets and a reader cannot tell which chain the 2 belongs to. The same group is also called isobutyl, and it files under <b>i</b> under that name and under <b>m</b> under this one, so which name you use changes where it sits in a longer name.',
-});
+  anchor: 'fig-three-substituents-both-ways',
+  alt: 'The same heptane drawn twice with a methyl, an ethyl and a chlorine. Numbered from the left the substituents sit at {2, 4, 5}: methyl C2, ethyl C4, chlorine C5. Numbered from the right they sit at {3, 4, 6}. The left numbering wins, and the name is 5-chloro-4-ethyl-2-methylheptane.',
+  caption: 'The first terms, 2 and 3, already differ, so the left numbering wins before the alphabet is consulted.',
+}, () => bothWays({ ...HEPT3, verdict: { left: 'good', right: 'warn', name: '5-chloro-4-ethyl-2-methylheptane' } })));
+
+/* ------------------------------------------ the one alphabet tie-break --- */
+const HEPT_TIE = { n: 7, subs: [{ i: 2, kind: 'et', name: 'ethyl' }, { i: 4, kind: 'me', name: 'methyl' }] };
+FIGURES.push(sized({
+  id: 'alphabet-tie-break',
+  section: 'naming-substituents',
+  anchor: 'fig-alphabet-tie-break',
+  alt: 'The same heptane drawn twice with an ethyl and a methyl. Numbered from the left, ethyl C3 and methyl C5. Numbered from the right, methyl C3 and ethyl C5. Both give {3, 5}, a tie, so ethyl, first in the alphabet, takes the 3: 3-ethyl-5-methylheptane.',
+  caption: 'Both numberings give {3, 5}. Only here does the alphabet choose the direction: ethyl files before methyl, so ethyl takes the 3.',
+}, () => bothWays({ ...HEPT_TIE, verdict: {
+  left: 'good', right: 'tie', name: '3-ethyl-5-methylheptane',
+  notes: { left: 'a tie, and ethyl (e) gets the 3', right: 'a tie, but methyl (m) would get the 3' },
+} })));
+
+/* ------------------------------------------------ complex substituents --- */
+FIGURES.push(sized({
+  id: 'complex-substituent',
+  section: 'naming-substituents',
+  lessons: ['naming-substituents'],
+  anchor: 'fig-complex-substituent',
+  alt: 'Two nonanes, each with a four-carbon branch on C5. Top: the branch is attached through the end of a three-carbon chain that has a methyl on its middle carbon; the branch carbons are numbered 1, 2, 3 in green from the attachment point, and the name is 5-(2-methylpropyl)nonane. Bottom: the branch is attached through the second carbon of a four-carbon chain; its carbons are numbered 1 to 4 in green so the attached carbon is 2, and the name is 5-(butan-2-yl)nonane.',
+  caption: 'Black numbers count the parent chain. Green numbers count the branch, and they are the ones written inside the parentheses.',
+}, () => {
+  const part = (kind, head, name, note) => {
+    const sub = [{ i: 4, kind }];
+    const { up, down } = extents(sub);
+    const y0 = 12 + 42 + up;
+    let s = tag(CX, 36, head);
+    s += chain(CX - 4 * 38, y0, 9, sub, { from: 'left', dx: 38 });
+    const nameY = y0 + down + 26;
+    s += text(CX, nameY, name, { cls: 'fg-lbl', size: 13 }) + text(CX, nameY + 20, note, { cls: 'fg-sm', size: 10 });
+    const Hp = nameY + 32 - 12;
+    return { svg: panel(PX, 12, PW, Hp) + s, h: Hp + 22 };
+  };
+  const a = part('ibu', 'attached at the end of its chain', '5-(2-methylpropyl)nonane', 'the attached carbon is the branch’s C1');
+  const b = part('sbu', 'attached in the middle of its chain', '5-(butan-2-yl)nonane', 'the attached carbon gets the lowest number: 2');
+  return { svg: a.svg + `<g transform="translate(0 ${a.h - 8})">${b.svg}</g>`, h: a.h - 8 + b.h };
+}));
+
+/* ============================== lesson-only figures ============================== */
+
+FIGURES.push(sized({
+  id: 'q-dimethylpentane',
+  lessons: ['naming-substituents'],
+  alt: 'A pentane numbered 1 to 5 from the left, with two methyl groups on C2.',
+  caption: 'The molecule the student tried to name. Count the methyls, then count the numbers in the name.',
+}, () => single({ n: 5, subs: [{ i: 1, kind: 'me', ang: -38, name: 'methyl' }, { i: 1, kind: 'me', ang: 38, name: 'methyl' }] })));
+
+FIGURES.push(sized({
+  id: 'lesson-bromo-both-ways',
+  lessons: ['naming-substituents'],
+  alt: 'The same pentane drawn twice with a methyl and a bromine. Numbered from the left, methyl C2 and bromine C3, set {2, 3}. Numbered from the right, bromine C3 and methyl C4, set {3, 4}. The left numbering wins: 3-bromo-2-methylpentane.',
+  caption: 'Bromo comes first in the alphabet, yet it gets the higher number. The numbers were settled by {2, 3} beating {3, 4}.',
+}, () => bothWays({ n: 5, subs: [{ i: 1, kind: 'me', name: 'methyl' }, { i: 2, kind: 'X', name: 'Br' }],
+  verdict: { left: 'good', right: 'warn', name: '3-bromo-2-methylpentane' } })));
+
+FIGURES.push(sized({
+  id: 'q-heptane-both-ways',
+  lessons: ['naming-substituents'],
+  alt: 'A heptane with a methyl, an ethyl and a chlorine, drawn twice. Numbered from the left the substituents sit at {2, 4, 5}, with chlorine on C5. Numbered from the right they sit at {3, 4, 6}.',
+  caption: 'One heptane, numbered from each end.',
+}, () => bothWays({ ...HEPT3 })));
+
+FIGURES.push(sized({
+  id: 'q-heptane-numbered',
+  lessons: ['naming-substituents'],
+  alt: 'A heptane numbered 1 to 7 from the left, with a methyl on C2, an ethyl on C4 and a chlorine on C5.',
+  caption: 'The numbering is already settled: C1 is at the left end.',
+}, () => single({ ...HEPT3 })));
+
+FIGURES.push(sized({
+  id: 'lesson-tie-both-ways',
+  lessons: ['naming-substituents'],
+  alt: 'The same pentane drawn twice with a bromine and a methyl. Numbered from the left, bromine C2 and methyl C4. Numbered from the right, methyl C2 and bromine C4. Both give {2, 4}, a tie, so bromo, first in the alphabet, takes the 2: 2-bromo-4-methylpentane.',
+  caption: 'Both numberings give {2, 4}, so the structure cannot choose. Bromo files before methyl and takes the 2.',
+}, () => bothWays({ n: 5, subs: [{ i: 1, kind: 'X', name: 'Br' }, { i: 3, kind: 'me', name: 'methyl' }],
+  verdict: { left: 'good', right: 'tie', name: '2-bromo-4-methylpentane',
+    notes: { left: 'a tie, and bromo (b) gets the 2', right: 'a tie, but methyl (m) would get the 2' } } })));
+
+FIGURES.push(sized({
+  id: 'q-decane-branch',
+  lessons: ['naming-substituents'],
+  alt: 'A decane numbered 1 to 10 from the left, with a branch on C5: the branch is a CH2 attached to C5, then a carbon carrying a methyl, then one more carbon.',
+  caption: 'The branch hangs from C5 of the decane. Name the branch from the carbon that attaches it.',
+}, () => single({ n: 10, subs: [{ i: 4, kind: 'ibu' }], names: false, branchNums: false, dx: 34 })));
+
+FIGURES.push(sized({
+  id: 'q-tie-heptane',
+  lessons: ['naming-substituents'],
+  alt: 'A heptane with an ethyl and a methyl, drawn twice. Numbered from the left, ethyl C3 and methyl C5. Numbered from the right, methyl C3 and ethyl C5.',
+  caption: 'One heptane, numbered from each end.',
+}, () => bothWays({ ...HEPT_TIE })));
 
 export default FIGURES;
