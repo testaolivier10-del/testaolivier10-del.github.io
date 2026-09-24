@@ -1489,6 +1489,21 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
   min-width:calc(var(--vb,420) * 0.92px);
   max-width:calc(var(--vb,420) * 1.3px);
 }
+/* Inside a lesson step a figure is drawn narrow (340 units or less) for a
+   phone, and it still did not fit: at 375px the lesson card leaves about
+   270px, and the 0.92 floor above held the drawing at 313px, so every lesson
+   figure scrolled sideways and lost its right edge. A lesson figure is one
+   drawing beside one question, where a scroll hides half the question's
+   evidence, so here it may shrink to the card. At 270px a 340-wide drawing is
+   0.8 scale, which keeps a 13px label at about 10px. */
+.lesson-card .notes-figure svg{min-width:min(calc(var(--vb,420) * 0.92px), 100%);}
+/* On a phone, give that drawing the width back: the card's 20px padding plus
+   the figure's own 14px left a 340-wide drawing at 0.75 scale, where the
+   smallest labels fall to 8px. Letting the figure reach into the card's
+   padding and trimming its own keeps the same drawing near 0.9. */
+@media (max-width:520px){
+  .lesson-card .notes-figure{margin-left:-14px;margin-right:-14px;padding-left:4px;padding-right:4px;}
+}
 .notes-figure figcaption{
   margin:12px auto 0;max-width:620px;text-align:center;
   font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.5;
