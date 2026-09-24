@@ -1,0 +1,48 @@
+{
+  "topic": "fetal-development-circulation",
+  "hook": "<p>Marcus, 42, has a small stroke. His arteries are clean and his heart rhythm is normal, so where did the clot come from? A bubble study answers it: saline shaken with a little air is injected into an arm vein, and within a few heartbeats bubbles appear in his left atrium. They crossed through a flap in the wall between his atria that has been there since before he was born. In the fetus, that flap was one of three short cuts that sent blood past the lungs. In Marcus, it never sealed.</p>",
+  "prereq": [
+    {
+      "q": "What is the fossa ovalis?",
+      "options": ["A shallow dip in the interatrial septum", "A groove on the outer surface of the heart between atria and ventricles", "The opening of the coronary sinus"],
+      "correct": 0,
+      "why": "The fossa ovalis is a shallow oval dip in the interatrial septum, seen from the right atrium. It marks where an opening between the atria was before birth.",
+      "review": "heart-chambers-valves"
+    },
+    {
+      "q": "After birth, which chamber pumps blood into the pulmonary trunk?",
+      "options": ["The left ventricle", "The right atrium", "The right ventricle"],
+      "correct": 2,
+      "why": "The right ventricle pumps oxygen-poor blood through the pulmonary valve into the pulmonary trunk, toward the lungs.",
+      "review": "blood-flow-heart"
+    },
+    {
+      "q": "Which gene on the Y chromosome starts male development?",
+      "options": ["SRY", "The gene for testosterone", "The gene for FSH"],
+      "correct": 0,
+      "why": "SRY, the sex-determining region of the Y chromosome, starts the gonad's development into a testis.",
+      "review": "meiosis"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-20-44",
+    "caption": "Fetal circulation and its three shunts. Hide the labels and name the shunt past the liver, the opening between the atria and the channel from the pulmonary trunk to the aorta, then the vessels of the umbilical cord."
+  },
+  "chain": [
+    { "cause": "The fetal lungs are filled with fluid, and low oxygen keeps their blood vessels narrow.", "effect": "Resistance to flow through the lungs is high, so pressure in the right atrium, right ventricle and pulmonary trunk stays high." },
+    { "cause": "The placenta is a wide, low-resistance bed fed by the aorta.", "effect": "Aortic pressure stays low, so right-sided pressures are higher than left-sided ones." },
+    { "cause": "Right atrial pressure is higher than left atrial pressure.", "effect": "Blood pushes open the septum primum flap and crosses the foramen ovale, carrying the oxygen-rich stream from the ductus venosus and inferior vena cava to the left atrium and left ventricle." },
+    { "cause": "The left ventricle pumps that oxygen-rich blood into the ascending aorta.", "effect": "The coronary arteries and the arteries to the head and arms, the aorta's first branches, receive the best-oxygenated blood." },
+    { "cause": "Pulmonary trunk pressure is slightly above aortic pressure, and low oxygen and prostaglandins keep the ductus arteriosus open.", "effect": "Most of the right ventricle's output passes through the ductus arteriosus into the descending aorta and returns to the placenta through the umbilical arteries." }
+  ],
+  "misconception": {
+    "wrong": "A fetus gets its oxygen by breathing amniotic fluid into its lungs.",
+    "right": "All of the fetus's oxygen comes across the placenta. The fetal lungs receive only a small share of the blood and exchange no gas. The fetus does make breathing movements that move amniotic fluid in and out, but their job is mechanical: the stretch they and the lungs' own fluid provide is needed for the lungs to grow."
+  },
+  "check": ["anp-fetal-development-circulation-1", "anp-fetal-development-circulation-3", "anp-fetal-development-circulation-6", "anp-fetal-development-circulation-9", "anp-fetal-development-circulation-12", "anp-fetal-development-circulation-15", "anp-fetal-development-circulation-19"],
+  "summary": "<p>The fetal period runs from about week 10 of pregnancy to birth; it is mainly growth and maturation, divided with the rest of pregnancy into trimesters, and brings quickening, lanugo and vernix caseosa. The heart forms from the cardiogenic area as paired endocardial tubes that fuse into a primitive heart tube with five regions, beating by day 22, which loops and is divided by septa. The septum primum and septum secundum leave the foramen ovale, a one-way flap from right atrium to left. Fetal circulation uses three shunts: the ductus venosus past the liver, the foramen ovale, and the ductus arteriosus from the pulmonary trunk to the aorta. High resistance in the lungs and low resistance in the placenta push blood right to left through both, so oxygen-rich blood reaches the heart and brain first and most blood bypasses the lungs. Vessels form from hemangioblasts in blood islands, then by angiogenesis. The lungs grow from the laryngotracheal bud and lung buds, driven by lung fluid and fetal breathing movements. SRY makes a testis, whose anti-Müllerian hormone and testosterone decide which duct system stays. Heart defects such as a patent foramen ovale or a septal defect trace to walls or shunts that did not finish. Teratogens do the most structural harm in weeks 3 to 8 after fertilization.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies" }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "topic": "aging",
+  "hook": "<p>Mrs. Castillo, 82, has normal vital signs and normal blood tests at her yearly checkup. Two months later she catches influenza. Within two days she is confused, dehydrated and short of breath, and her blood sodium has climbed. Her 30-year-old grandson caught the same virus and spent three days in bed. Nothing in her resting tests predicted the difference. This last topic of the course explains why: what aging does to cells, how it changes each system you have studied, and why the key loss is not resting function but reserve.</p>",
+  "prereq": [
+    {
+      "q": "What does p53 do when a cell's DNA is damaged?",
+      "options": ["Stops the cell cycle and, if the damage cannot be fixed, triggers apoptosis", "Copies the damaged DNA faster", "Adds repeats to the ends of chromosomes"],
+      "correct": 0,
+      "why": "p53 builds up when DNA is damaged. It holds the cell at a checkpoint while repair is tried, and it turns on apoptosis if the damage cannot be fixed.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "What is cardiac reserve?",
+      "options": ["The blood stored in the veins", "The gap between highest and resting cardiac output", "The volume left in the ventricle after ejection"],
+      "correct": 1,
+      "why": "Cardiac reserve is how much the heart can raise its output above rest. Training raises it; age and heart disease lower it.",
+      "review": "cardiac-output"
+    },
+    {
+      "q": "After menopause, why does bone loss speed up?",
+      "options": ["Estrogen, which restrains osteoclasts, falls", "Calcitonin rises", "Growth plates reopen"],
+      "correct": 0,
+      "why": "Estrogen holds osteoclast activity down. When the ovaries stop making it, resorption outpaces formation and bone is lost faster.",
+      "review": "female-hormones-cycle"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "Every division of a body cell without telomerase leaves a little of each chromosome end uncopied.", "effect": "Telomeres shorten, and other DNA and protein damage builds up faster than it is repaired." },
+    { "cause": "A telomere becomes too short and loses its cap, or DNA damage goes unrepaired.", "effect": "Checkpoint proteins such as p53 stop the cell cycle for good, and the cell dies by apoptosis or becomes senescent." },
+    { "cause": "Senescent cells accumulate and release inflammatory signals, while stem cells dwindle.", "effect": "Tissues repair more slowly, lose working cells, and settle into low-grade inflammation." },
+    { "cause": "Each organ loses working units: nephrons, motor units, alveolar surface, elastic fibers, naive T cells.", "effect": "Resting function is usually kept, but maximal capacity, the organ's reserve, falls." },
+    { "cause": "A stress such as an infection, heat or a fall in blood pressure demands more than the reduced reserve can supply.", "effect": "Homeostasis fails in several systems at once, and the losses add up across systems." }
+  ],
+  "misconception": {
+    "wrong": "Confusion, anemia, incontinence and dementia are simply what happens when you get old.",
+    "right": "Normal aging shrinks reserve, but resting homeostasis is usually kept: resting blood counts, sodium and oxygen stay in range. Dementia, anemia and incontinence become more common with age, yet each is a disease with a cause to look for, often treatable. Sudden confusion in an older adult is a warning sign, often of infection or dehydration, not a normal part of aging."
+  },
+  "check": ["anp-aging-1", "anp-aging-3", "anp-aging-6", "anp-aging-9", "anp-aging-11", "anp-aging-16", "anp-aging-17", "anp-aging-19"],
+  "summary": "<p>With age, resting homeostasis is usually kept but reserve shrinks, so stresses a young body absorbs can overwhelm an old one. In cells, DNA damage, damaged proteins and failing mitochondria accumulate; telomeres shorten at each division because DNA polymerase cannot copy the chromosome's very end, and telomerase is scarce in body cells. A failed telomere cap is read as damage, and checkpoints such as p53 trigger apoptosis or senescence, a permanent stop that blocks cancer but releases inflammatory signals. Stem cells dwindle and low-grade inflammation rises. System by system: skin thins, bone and muscle are lost, the brain processes more slowly and the senses dull, sex hormones and growth hormone fall, arteries stiffen and raise systolic pressure, maximum heart rate and cardiac reserve fall, the thymus shrinks and vaccines work less well, the lungs lose recoil, and the kidneys lose nephrons. Many common conditions of old age are diseases, not normal aging, and exercise slows much of the decline.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-8", "label": "NREMT: Life span development" },
+    { "href": "/nremt/study-notes.html#chapter-37", "label": "NREMT: Patients with special challenges" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "aging-cells": {
+    "def": "The build-up of DNA damage, damaged proteins and failing mitochondria in cells, with shortening telomeres (the capped repeat sequences at chromosome ends) and senescence, a permanent stop to division in a cell that stays alive and releases inflammatory signals.",
+    "roots": [["telo-", "end"], ["-mere", "part"], ["senex", "old man"]],
+    "say": "TEL-oh-meer; seh-NESS-ens"
+  },
+  "aging-systems": {
+    "def": "The changes in each organ system with age: working units such as nephrons, motor units, elastic fibers and naive T cells are lost, so resting function is usually kept but reserve, the extra capacity available under stress, shrinks.",
+    "roots": [["stenosis", "narrowing"]],
+    "say": ""
+  }
+}

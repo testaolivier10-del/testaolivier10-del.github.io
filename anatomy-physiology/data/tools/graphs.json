@@ -17644,29 +17644,41 @@
          ],
          [
           50,
-          62
+          40
          ],
          [
-          80,
-          90
+          100,
+          75
          ],
          [
-          120,
-          105
+          150,
+          110
          ],
          [
           200,
-          110
+          140
+         ],
+         [
+          300,
+          175
+         ],
+         [
+          400,
+          195
+         ],
+         [
+          500,
+          200
          ],
          [
           800,
-          110
+          200
          ]
         ],
         "label": "reabsorbed, with drug",
         "labelAt": [
          620,
-         150
+         240
         ],
         "anchor": "start"
        },
@@ -17681,28 +17693,36 @@
           0
          ],
          [
-          60,
-          0
+          50,
+          22
          ],
          [
-          80,
-          10
+          100,
+          50
          ],
          [
-          120,
-          45
+          150,
+          77
          ],
          [
           200,
-          140
+          110
+         ],
+         [
+          300,
+          200
+         ],
+         [
+          400,
+          305
          ],
          [
           500,
-          515
+          425
          ],
          [
           650,
-          700
+          612
          ]
         ],
         "label": "excreted, with drug",
@@ -17715,12 +17735,12 @@
       ]
      },
      "why": {
-      "correct": "Fewer working carriers means a lower transport maximum and an earlier start of spillover. Glucose then leaves in the urine even at normal blood levels, which is how the drug lowers blood glucose. The filtered load is unchanged.",
+      "correct": "Fewer working carriers means a lower transport maximum and an earlier start of spillover. Glucose then leaves in the urine even at normal blood levels, which is how the drug lowers blood glucose. The filtered load is unchanged. The numbers are schematic.",
       "options": [
        "Right: a lower ceiling and a lower threshold.",
        "Blocking carriers can only lower the ceiling.",
        "The filtered load depends on GFR and plasma glucose, not on the carriers downstream.",
-       "The remaining carriers take back only a small share, so the ceiling falls."
+       "Other sodium–glucose carriers further along the proximal tubule take back part of the load, but not all of it, so the ceiling falls."
       ]
      }
     }

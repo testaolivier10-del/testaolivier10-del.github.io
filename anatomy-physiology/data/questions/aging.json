@@ -1,0 +1,643 @@
+[
+  {
+    "id": "anp-aging-1",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "figure": "aging-reserve",
+    "q": "At point B, this person's resting blood tests are normal, yet a bout of pneumonia overwhelms them. What does the graph show?",
+    "options": [
+      "Capacity still covers rest but not a major stress",
+      "Capacity has already fallen below the level needed at rest",
+      "The resting need has risen with age while capacity held steady",
+      "Capacity is still the same as it was at point A"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "At B the capacity curve sits between the two dashed lines. It still covers resting needs, so resting values are normal, but it no longer reaches the level a major stress demands. That shrinking gap is loss of reserve.",
+      "options": [
+        "Correct. Reserve, the gap between capacity and need, has closed for a major stress but not for rest.",
+        "The curve at B is well above the resting line, which is why resting tests are normal.",
+        "The resting line is flat across all ages. What changes is capacity.",
+        "Capacity at B is about 55% of peak, compared with 100% at A."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-2",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "figure": "aging-reserve",
+    "q": "In this schematic, at about what age does maximal capacity fall below the level needed during a major stress?",
+    "options": [
+      "About 30",
+      "About 50",
+      "About 75",
+      "It never does"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The solid capacity curve crosses the upper dashed line, at 60% of peak, at about age 75. After that, a major stress asks for more than the body can deliver.",
+      "options": [
+        "At 30 capacity is at its peak, 100%, far above the stress line.",
+        "At 50 capacity is still about 85%, above the stress line.",
+        "Correct. The curve crosses the stress line at about 75.",
+        "The curve does cross the stress line, although it never falls below the resting line on this graph."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why do telomeres get shorter each time most body cells divide?",
+    "options": [
+      "Reactive oxygen species cut off a fixed length at every division",
+      "Telomerase removes repeats from the chromosome ends each time",
+      "Apoptosis trims the chromosome ends before each division",
+      "The polymerase cannot copy the chromosome's very end"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "DNA polymerase needs a primer and adds nucleotides to one end only. The gap left by the last primer at a chromosome tip cannot be filled, so a little of the end is lost each division. Telomerase could add repeats back, but most body cells make almost none.",
+      "options": [
+        "Oxidative damage can speed telomere loss, but the loss at every division comes from the copying machinery itself.",
+        "Telomerase adds repeats; it lengthens telomeres.",
+        "Apoptosis kills the whole cell. It does not trim chromosome ends in a dividing cell.",
+        "Correct. This is the end-replication problem, uncorrected without telomerase."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-4",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select the cells that keep their telomeres long by using telomerase.",
+    "options": [
+      "Germ cells that give rise to sperm",
+      "Most cancer cells",
+      "Mature skin fibroblasts",
+      "Senescent cells",
+      "Stem cells, to a small degree"
+    ],
+    "correct": [
+      0,
+      1,
+      4
+    ],
+    "why": {
+      "correct": "Germ cells use telomerase, so each generation starts with long telomeres. Most cancers switch it back on, which lets them divide without limit. Stem cells use a little, which slows but does not stop their telomere loss.",
+      "options": [
+        "Correct. Germ cells make telomerase.",
+        "Correct. Most cancer cells reactivate telomerase.",
+        "Ordinary body cells such as fibroblasts make almost no telomerase, which is why they reach a division limit.",
+        "Senescent cells have stopped dividing, often because their telomeres became too short.",
+        "Correct. Stem cells make a small amount."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Normal human fibroblasts, which make almost no telomerase, are grown in a dish for many generations. Predict the change in each variable as the culture ages, compared with the start.",
+    "variables": [
+      {
+        "name": "Average telomere length",
+        "answer": "down",
+        "why": "Each division loses a little of every chromosome end through the end-replication problem, and nothing adds it back."
+      },
+      {
+        "name": "Number of divisions the cells have left",
+        "answer": "down",
+        "why": "As telomeres approach the length at which their caps fail, fewer divisions remain before the Hayflick limit."
+      },
+      {
+        "name": "Checkpoint activity, such as p53",
+        "answer": "up",
+        "why": "Short telomeres with failed caps are read as damaged DNA, which activates p53 and other checkpoint proteins."
+      },
+      {
+        "name": "Share of cells in senescence",
+        "answer": "up",
+        "why": "Cells whose checkpoints have stopped the cycle for good stay alive but no longer divide."
+      }
+    ],
+    "why": {
+      "correct": "Without telomerase, telomeres shorten with each division until their caps fail. The cell reads the bare ends as damaged DNA, checkpoint proteins such as p53 stop the cycle, and more and more cells become senescent: the Hayflick limit."
+    }
+  },
+  {
+    "id": "anp-aging-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Cellular senescence is described as double-edged. Which pair states its benefit and its cost?",
+    "options": [
+      "It speeds tissue repair but uses up the stem cells",
+      "It blocks tumors but inflames nearby tissue",
+      "It lengthens telomeres but raises the risk of cancer",
+      "It removes damaged cells by apoptosis but leaves gaps"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Stopping division for good prevents a cell with damaged DNA from becoming cancerous. But senescent cells stay active, releasing cytokines and protein-digesting enzymes that inflame and damage their neighbors, and they accumulate with age.",
+      "options": [
+        "Senescent cells do not divide, so they slow repair; they do not speed it.",
+        "Correct. Tumor protection is the benefit; inflammatory secretions are the cost.",
+        "Senescence does not lengthen telomeres; short telomeres are one of its triggers. It protects against cancer.",
+        "That describes apoptosis, the other outcome of a checkpoint. A senescent cell stays alive."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "misconception": "an infection always causes fever",
+    "q": "Mr. Hassan, 86, becomes confused over a day. His temperature is 36.9 °C, his breathing is fast, and a chest X-ray shows pneumonia. Why might he have no fever?",
+    "options": [
+      "Pneumonia does not cause fever at any age",
+      "36.9 °C counts as a fever in older adults",
+      "Confusion itself lowers the body temperature set point",
+      "Fever responses are often blunted in older adults"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Immune responses weaken with age, and the fever response is often blunted, so an older adult with a serious infection may have a normal temperature and show confusion instead.",
+      "options": [
+        "Pneumonia usually does cause fever in younger adults. The missing fever here reflects his age.",
+        "The hypothalamic set point does not rise with age; if anything, older adults run slightly cooler.",
+        "The confusion is caused by the infection, not the other way round, and it does not lower temperature.",
+        "Correct. Blunted fever is common in older adults with infection."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Select every change expected in the cardiovascular system of a healthy, inactive 75-year-old compared with a healthy 25-year-old.",
+    "options": [
+      "Higher systolic pressure",
+      "Wider pulse pressure",
+      "Lower maximum heart rate",
+      "Resting cardiac output roughly halved",
+      "More reliance on atrial contraction to fill the ventricle"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "A stiffer aorta raises systolic pressure and widens pulse pressure; the SA node and sympathetic response decline, lowering maximum heart rate; and a thicker, stiffer left ventricle fills more slowly early in diastole, so atrial contraction matters more.",
+      "options": [
+        "Correct. A stiff aorta cannot absorb each stroke volume, so systolic pressure rises.",
+        "Correct. Systolic rises while diastolic stays level or falls.",
+        "Correct. Maximum heart rate falls by about a beat per minute a year.",
+        "Resting cardiac output changes little in healthy aging. What falls is maximal output, the reserve.",
+        "Correct. The stiffer ventricle fills less early in diastole."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does an older adult's blood pressure often read like 158/72, with a high systolic but a normal diastolic pressure?",
+    "options": [
+      "A stiff aorta no longer stretches and recoils with each beat",
+      "The aging heart pumps a much larger stroke volume each beat",
+      "Arterioles relax and widen with age",
+      "Blood becomes less viscous with age"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A young, elastic aorta stretches as the ventricle ejects, blunting the systolic rise, and recoils in diastole, holding diastolic pressure up. A stiff aorta does neither, so systolic pressure rises and diastolic pressure stays level or falls.",
+      "options": [
+        "Correct. Lost elasticity widens the pulse pressure.",
+        "Stroke volume does not rise much with age. The pattern comes from the stiff arterial wall.",
+        "Relaxed arterioles would lower resistance and both pressures, not raise systolic alone.",
+        "Blood does not become thinner with age, and lower viscosity would lower pressure, not raise systolic."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Mrs. Lee, 81, feels light-headed and nearly falls each time she gets out of bed. Her blood pressure drops 25 mm Hg on standing, and her heart rate barely rises. What age-related change best explains this?",
+    "options": [
+      "A blunted baroreceptor reflex",
+      "Too much aldosterone",
+      "A faster SA node",
+      "Increased venous valve strength"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Stiffer arteries stretch less, so baroreceptors signal the fall in pressure weakly, and the heart responds less to sympathetic signals. The reflex that normally raises heart rate and constricts vessels on standing is slow and small, so pressure falls: orthostatic hypotension.",
+      "options": [
+        "Correct. A weak, slow baroreceptor reflex lets pressure fall on standing.",
+        "Aldosterone falls with age, and extra aldosterone would expand blood volume and protect against a fall.",
+        "The SA node loses cells and slows its maximum rate with age; a faster node would help, not harm.",
+        "Venous valves weaken with age, if anything; stronger valves would help return blood when standing."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A thin 84-year-old woman has a plasma creatinine in the normal range, but her calculated eGFR is 45 mL/min. How can both be true?",
+    "options": [
+      "Her aging kidneys secrete creatinine faster than before",
+      "Creatinine is no longer filtered by older glomeruli",
+      "Less muscle makes less creatinine, masking a low GFR",
+      "The eGFR formula ignores age and overestimates loss"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Plasma creatinine depends on how much is made as well as how fast it is cleared. With little muscle she makes little creatinine, so even a reduced GFR keeps the level normal. eGFR corrects for age and sex and reveals the loss of nephrons.",
+      "options": [
+        "Creatinine is cleared mainly by filtration, and nothing speeds its secretion with age.",
+        "Creatinine is filtered freely at any age; less of it is filtered only because GFR is lower.",
+        "Correct. Low production offsets low clearance, masking the fall in GFR.",
+        "eGFR includes age and sex, which is exactly why it is used to reveal the fall in GFR."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance",
+      "interdependence"
+    ],
+    "q": "A drug removed from the body mainly by the kidneys is given to a 30-year-old and an 85-year-old at the same dose. What is expected in the older patient?",
+    "options": [
+      "Lower blood levels from faster filtering",
+      "The same levels, set by the dose alone",
+      "No effect, from a loss of receptor proteins",
+      "Higher blood levels from slower clearance"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Nephrons are lost with age, so GFR and the clearance of renally excreted drugs fall. Less body water also concentrates water-soluble drugs. The same dose gives higher levels, which is why doses are lowered for older adults.",
+      "options": [
+        "GFR falls with age; it does not rise.",
+        "The level depends on how fast the drug is cleared as well as on the dose.",
+        "Older cells still carry receptor proteins; older adults often respond more strongly to drugs, not less.",
+        "Correct. Slower clearance raises the drug level."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-13",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps from cell division to the harm done by senescent cells in order.",
+    "options": [
+      "A body cell divides many times without telomerase",
+      "Its telomeres shorten to a critical length",
+      "A telomere's cap fails and the end is read as damaged DNA",
+      "p53 and other checkpoint proteins stop the cell cycle for good",
+      "The senescent cell releases inflammatory signals into the tissue"
+    ],
+    "why": {
+      "correct": "Without telomerase, each division shortens the telomeres until one loses its cap. The bare end looks like broken DNA, checkpoint proteins arrest the cell permanently, and the surviving senescent cell releases inflammatory cytokines and enzymes that damage its neighbors."
+    }
+  },
+  {
+    "id": "anp-aging-14",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student explained why bone loss speeds up after menopause. One step is wrong. Which one?",
+    "options": [
+      "The ovaries stop making estrogen",
+      "Less estrogen means osteoclasts are restrained less",
+      "Estrogen had been stimulating osteoclasts, which now slow down",
+      "Resorption outpaces formation in each remodeling cycle",
+      "Spongy bone in the vertebrae thins first"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Estrogen restrains osteoclasts. When it falls, osteoclasts become more active, so resorption speeds up.",
+      "options": [
+        "This step is right. Menopause ends ovarian estrogen production.",
+        "This step is right. Estrogen normally holds osteoclast activity down.",
+        "This is the error. Estrogen restrains osteoclasts; losing it makes them more active, not less.",
+        "This step is right. More resorption than formation means net bone loss.",
+        "This step is right. Spongy bone's large surface lets it lose mass fastest."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: in sarcopenia, ____ fibers shrink the most, so older muscles lose power more than endurance.",
+    "options": [
+      "slow oxidative",
+      "fast glycolytic",
+      "cardiac",
+      "smooth muscle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Fast glycolytic fibers make quick, powerful contractions. They atrophy most with age, and some are lost when their motor neurons die, so power falls more than endurance.",
+      "options": [
+        "Slow oxidative fibers are relatively spared, which is why endurance holds up better than power.",
+        "Correct. Fast glycolytic fibers shrink most.",
+        "Sarcopenia is the loss of skeletal muscle, not cardiac muscle.",
+        "Sarcopenia describes skeletal muscle, not smooth muscle."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Why do older adults respond less well to a new vaccine, such as one against a strain of influenza they have never met?",
+    "options": [
+      "Their memory cells from past infections have all died",
+      "The shrunken thymus makes few new naive T cells",
+      "Their antibodies no longer bind antigens well",
+      "Vaccines cannot reach the lymph nodes of older adults"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A new antigen needs naive T cells that happen to fit it. The thymus shrinks from puberty on and makes few new naive T cells, so the T cell pool fills with memory cells from past infections and fewer naive clones are available. B cell responses weaken too.",
+      "options": [
+        "Memory cells from past infections persist and come to dominate the T cell pool. The shortage is of naive cells.",
+        "Correct. Fewer naive T cells means a narrower, weaker response to new antigens.",
+        "Antibodies bind antigens normally; fewer and weaker new antibodies are made.",
+        "Vaccines still reach the lymph nodes. The response there is what is weaker."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "dementia, anemia and incontinence are normal parts of aging",
+    "q": "Which finding in an 80-year-old is part of normal aging rather than a disease that needs its own explanation?",
+    "options": [
+      "Needing reading glasses",
+      "Dementia with memory loss",
+      "Anemia on a routine blood count",
+      "Urinary incontinence"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The lens stiffens in everyone with age, so near focus fails from the mid-40s. Dementia, anemia and incontinence all become more common with age but are diseases with causes to look for.",
+      "options": [
+        "Correct. Presbyopia happens to everyone as the lens stiffens.",
+        "Dementia becomes more common with age but is a disease; most older adults do not have it.",
+        "Resting blood counts stay normal in healthy aging, so anemia has a cause to find.",
+        "Incontinence is common but not normal, and it often has a treatable cause."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "interdependence",
+      "homeostasis"
+    ],
+    "q": "During a heat wave, Mr. Brandt, 88, who lives alone, is found confused with dry skin and a high blood sodium. Which set of age-related changes best explains why he became so ill?",
+    "options": [
+      "More sweat glands, more thirst and more dilute urine",
+      "A higher temperature set point and more ADH released",
+      "Fewer sweat glands, blunted thirst, weaker urine concentration",
+      "More fat under the skin and a faster metabolic rate"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Fewer sweat glands make heat harder to shed; blunted thirst means he did not drink enough; and kidneys that concentrate urine less well keep losing water. Together they let water loss and body temperature climb until sodium rose and his brain was affected.",
+      "options": [
+        "Each of these changes goes the wrong way: sweat glands decrease, thirst is blunted and the kidneys conserve water less well.",
+        "The temperature set point does not rise with age, and more ADH would conserve water, not lose it.",
+        "Correct. Several systems each lose reserve, and the losses add up.",
+        "Subcutaneous fat falls with age, and metabolic rate falls rather than rises."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-19",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "interdependence",
+      "homeostasis"
+    ],
+    "q": "Compare a healthy, inactive 80-year-old with the same person at 30. Predict the change in each variable across several systems.",
+    "variables": [
+      {
+        "name": "Maximum heart rate",
+        "answer": "down",
+        "why": "The SA node loses pacemaker cells and responds less to sympathetic stimulation, so the highest rate falls by about a beat a year."
+      },
+      {
+        "name": "Residual volume",
+        "answer": "up",
+        "why": "Loss of lung elastic recoil lets small airways close earlier during expiration, trapping more air."
+      },
+      {
+        "name": "Glomerular filtration rate",
+        "answer": "down",
+        "why": "Nephrons are lost with age, reducing the total filtering surface."
+      },
+      {
+        "name": "Bone mass",
+        "answer": "down",
+        "why": "After about 30, osteoclasts resorb slightly more than osteoblasts rebuild in each remodeling cycle."
+      },
+      {
+        "name": "Naive T cells in the blood",
+        "answer": "down",
+        "why": "The thymus shrinks from puberty on and makes few new naive T cells."
+      }
+    ],
+    "why": {
+      "correct": "Each system loses capacity through its own mechanism: fewer pacemaker cells and weaker sympathetic response in the heart, lost elastic recoil in the lungs, lost nephrons in the kidneys, net resorption in bone and a shrinking thymus in the immune system. Resting function is kept, but reserve falls everywhere."
+    }
+  },
+  {
+    "id": "anp-aging-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does a 50-year-old start holding a menu at arm's length to read it?",
+    "options": [
+      "The lens stiffens and cannot round up",
+      "The cornea flattens and bends light less",
+      "The retina loses many of its cone cells",
+      "The pupil widens and blurs the image"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Near focus needs the lens to round up when the zonule fibers go slack. The lens keeps adding cells and stiffens with age, so it cannot round up enough: presbyopia.",
+      "options": [
+        "Correct. A stiff lens cannot accommodate for near objects.",
+        "The cornea's shape changes little with age and cannot explain the loss of near focus.",
+        "Losing cones would dull color and sharp vision, not near focus, which depends on the lens.",
+        "The pupil gets smaller with age, which, if anything, sharpens focus a little."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What causes hair to turn gray with age?",
+    "options": [
+      "Keratin in each hair shaft oxidizes over time",
+      "Sweat glands stop moistening the hair",
+      "Blood flow to the hair follicles stops",
+      "Pigment stem cells in the follicles run out"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Each new hair gets its color from melanocytes in the follicle, replenished from a pool of pigment stem cells. As that pool runs out, new hairs grow without melanin and look gray or white.",
+      "options": [
+        "Graying reflects missing melanin in new hairs, not a change in the keratin of old ones.",
+        "Sweat glands have nothing to do with hair color.",
+        "Scalp blood flow continues; hairs still grow, just without pigment.",
+        "Correct. Without melanocytes, new hairs grow without pigment."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-22",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A friend takes high-dose antioxidant supplements to slow aging. Which statement best fits the current evidence?",
+    "options": [
+      "Supplements stop oxidative damage and slow aging",
+      "Reactive oxygen species play no part in aging",
+      "Trials found no benefit, and one found harm",
+      "Antioxidants lengthen telomeres in all cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Oxidative damage contributes to aging, but reactive oxygen species also act as normal signals, and large trials of vitamin E and beta-carotene did not slow aging or prevent chronic disease. Beta-carotene raised lung cancer in smokers.",
+      "options": [
+        "Supplements do not stop oxidative damage inside cells in any measurable way that slows aging, and trials have not shown a benefit.",
+        "Oxidative damage is one contributor to aging; it is just not the single cause.",
+        "Correct. The trials were negative, and one showed harm.",
+        "No antioxidant has been shown to lengthen telomeres in all cells. Telomerase is what adds repeats."
+      ]
+    }
+  },
+  {
+    "id": "anp-aging-23",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Residents of a nursing home, aged 87 to 96, lift weights with their legs three times a week for eight weeks. Their leg strength more than doubles. What does this show?",
+    "options": [
+      "Their muscles had not aged",
+      "Much of the strength lost with age can be regained by training",
+      "The gain came from new satellite cells forming whole new muscles",
+      "Strength gains in older adults come only from learning the exercise"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Older muscle responds less than young muscle but still grows and strengthens under load, and nerve activation improves too. Much of the weakness blamed on age is disuse that training can reverse.",
+      "options": [
+        "The residents had lost muscle and strength; the point is that training restored much of it.",
+        "Correct. Resistance training works at any age.",
+        "Training enlarges existing fibers; it does not build whole new muscles.",
+        "Better nerve activation contributes early, but the fibers also grow with training."
+      ]
+    }
+  }
+]

@@ -16005,7 +16005,6 @@
         "chp": "Capsular hydrostatic pressure (CHP) rises in the left kidney",
         "nfp": "Net filtration pressure falls in the left kidney",
         "gfr": "GFR of the left kidney falls",
-        "same": "Nothing has changed upstream of the left glomeruli",
         "right": "The right kidney’s pressures are unchanged"
       },
       "variables": [
@@ -16018,15 +16017,6 @@
             "chp"
           ],
           "why": "Fluid still enters the capsules but cannot drain, so it builds pressure all the way back from the ureter to the capsular space."
-        },
-        {
-          "id": "gbhp",
-          "name": "Glomerular hydrostatic pressure in the left kidney",
-          "answer": "none",
-          "chain": [
-            "same"
-          ],
-          "why": "The blockage is on the urine side, not the blood side. The arterioles and blood pressure feeding the glomeruli are the same."
         },
         {
           "id": "nfp",
@@ -16049,7 +16039,7 @@
             "nfp",
             "gfr"
           ],
-          "why": "GFR = Kf × NFP, so a lower net filtration pressure means less filtrate."
+          "why": "GFR = Kf × NFP, so a lower net filtration pressure means less filtrate. Less NaCl then reaches the macula densa, so tubuloglomerular feedback widens the afferent arteriole a little and GBHP rises slightly, but that only partly offsets the rise in CHP."
         },
         {
           "id": "gfr-right",
@@ -16452,7 +16442,7 @@
             "perm",
             "urine"
           ],
-          "why": "Facultative water reabsorption stops, so the 15 to 20 percent of filtered water that reaches the collecting duct mostly stays in it and leaves as urine."
+          "why": "Facultative water reabsorption largely stops, so much of the 15 to 20 percent of filtered water that reaches the collecting duct stays in it and leaves as urine, though some is still reabsorbed even without ADH."
         },
         {
           "id": "urine-osm",
@@ -16628,7 +16618,7 @@
       ],
       "level": 2,
       "misconception": "all diuretics make you lose calcium",
-      "setup": "A woman with high blood pressure starts hydrochlorothiazide, which blocks the sodium–chloride symporter in the distal convoluted tubule. Predict the changes after a week, compared with before the drug.",
+      "setup": "A woman with high blood pressure takes her first dose of hydrochlorothiazide, which blocks the sodium–chloride symporter in the distal convoluted tubule. Predict the changes over the first day, compared with before the drug.",
       "start": "The DCT’s sodium–chloride symporter is blocked",
       "steps": {
         "na": "About 5% of filtered sodium is no longer reabsorbed",
@@ -16658,7 +16648,7 @@
             "water",
             "urine"
           ],
-          "why": "Sodium holds water with it, but the effect is moderate because only a small share of filtered sodium is involved, which suits long-term treatment."
+          "why": "Sodium holds water with it, but the effect is moderate because only a small share of filtered sodium is involved, which suits long-term treatment. Over the next few days, aldosterone and the other segments catch up, and sodium excretion falls back to match intake, with a slightly smaller blood volume."
         },
         {
           "id": "k",
@@ -16752,7 +16742,7 @@
             "adh",
             "urea"
           ],
-          "why": "ADH also adds urea carriers in the inner medullary collecting duct. Urea concentrated by water loss upstream diffuses out and keeps the inner medulla very salty."
+          "why": "ADH also adds urea carriers in the inner medullary collecting duct. Urea concentrated by water loss upstream diffuses out and keeps the inner medulla highly concentrated."
         },
         {
           "id": "urine-osm",
@@ -17276,6 +17266,1165 @@
             "pud"
           ],
           "why": "The external sphincter is skeletal muscle driven by the pudendal nerve, whose acetylcholine acts on nicotinic receptor proteins, not muscarinic ones."
+        }
+      ]
+    },
+    {
+      "id": "rp-maternal-age",
+      "title": "An older mother’s oocytes",
+      "topic": "meiosis",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the risk of an extra chromosome is the same at every maternal age",
+      "setup": "Compare an oocyte ovulated by a woman of 42 with one ovulated by the same woman at 25. Both oocytes began meiosis I before she was born and paused until shortly before release.",
+      "start": "The oocyte has paused partway through meiosis I for about 42 years instead of 25",
+      "steps": {
+        "glue": "The proteins laid down before birth to hold the paired chromosomes together have weakened and were never replaced",
+        "early": "Paired homologs come apart early or line up wrongly",
+        "nd": "Nondisjunction in meiosis I becomes more likely",
+        "gam": "More oocytes carry 24 or 22 chromosomes",
+        "body": "Her own body cells were made by mitosis long ago and keep their 46 chromosomes"
+      },
+      "variables": [
+        {
+          "id": "cohesion",
+          "name": "Strength of the links holding her oocytes’ paired chromosomes together",
+          "answer": "down",
+          "chain": [
+            "glue"
+          ],
+          "why": "The protein links that hold chromosomes together in the oocyte are made before birth and are not renewed, so after four decades many have worn away."
+        },
+        {
+          "id": "nd",
+          "name": "Chance of nondisjunction in meiosis I",
+          "answer": "up",
+          "chain": [
+            "glue",
+            "early",
+            "nd"
+          ],
+          "why": "With weak links, a pair of homologs can fall apart before anaphase I or both go to the same end, which is nondisjunction. That is why it happens mostly in meiosis I in oocytes."
+        },
+        {
+          "id": "aneuploid",
+          "name": "Share of her oocytes with an extra or missing chromosome",
+          "answer": "up",
+          "chain": [
+            "glue",
+            "early",
+            "nd",
+            "gam"
+          ],
+          "why": "Each nondisjunction gives one cell with an extra chromosome (24) and one with one missing (22). The risk rises steeply after about 35, which is why chromosome disorders in a pregnancy rise with the mother’s age."
+        },
+        {
+          "id": "own",
+          "name": "Chromosome number in her own skin cells",
+          "answer": "none",
+          "chain": [
+            "body"
+          ],
+          "why": "Her body cells divide by mitosis and have nothing to do with the long pause in meiosis I, so they still hold 46 chromosomes."
+        }
+      ]
+    },
+    {
+      "id": "rp-cold-scrotum",
+      "title": "Stepping into cold water",
+      "topic": "male-anatomy",
+      "core": [
+        "homeostasis",
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "the testes are kept at body temperature like other organs",
+      "setup": "A man wades into a cold lake. Predict the changes in his scrotum over the next minute.",
+      "start": "Cold reaches the skin of the scrotum",
+      "steps": {
+        "dartos": "The dartos muscle under the skin contracts",
+        "wrinkle": "The scrotal skin wrinkles and its surface shrinks",
+        "crem": "The cremaster muscle contracts",
+        "lift": "Each testis is pulled up toward the warm body"
+      },
+      "variables": [
+        {
+          "id": "dartos",
+          "name": "Contraction of the dartos muscle",
+          "answer": "up",
+          "chain": [
+            "dartos"
+          ],
+          "why": "The dartos is smooth muscle just under the scrotal skin. Cold makes it contract, the first step in keeping the testes from getting too cold."
+        },
+        {
+          "id": "area",
+          "name": "Surface area of scrotal skin losing heat",
+          "answer": "down",
+          "chain": [
+            "dartos",
+            "wrinkle"
+          ],
+          "why": "As the dartos contracts, the skin wrinkles and tightens, so less skin is exposed to the cold and less heat is lost."
+        },
+        {
+          "id": "height",
+          "name": "Distance between the testes and the body wall",
+          "answer": "down",
+          "chain": [
+            "crem",
+            "lift"
+          ],
+          "why": "The cremaster, skeletal muscle around each testis and cord, contracts in cold and pulls the testes up toward the warmer body."
+        }
+      ]
+    },
+    {
+      "id": "rp-vasectomy",
+      "title": "After a vasectomy",
+      "topic": "male-anatomy",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a vasectomy lowers testosterone and makes semen disappear",
+      "setup": "A man has a vasectomy: the ductus deferens is cut and sealed on each side. Predict his semen and hormones three months later, compared with before.",
+      "start": "Both ductus deferens are cut and sealed",
+      "steps": {
+        "block": "Sperm from the epididymis can no longer travel up to the ejaculatory ducts",
+        "glands": "The seminal vesicles and prostate, downstream of the cut, still add their fluid",
+        "leydig": "The interstitial cells in the testes and their blood supply are untouched"
+      },
+      "variables": [
+        {
+          "id": "sperm",
+          "name": "Sperm in his ejaculate",
+          "answer": "down",
+          "chain": [
+            "block"
+          ],
+          "why": "The ductus deferens is the only route from the epididymis to the ejaculatory duct. Once the sperm already stored beyond the cut are cleared, the ejaculate holds essentially none."
+        },
+        {
+          "id": "volume",
+          "name": "Volume of his ejaculate",
+          "answer": "none",
+          "chain": [
+            "glands"
+          ],
+          "why": "Sperm are only a few percent of semen. The seminal vesicles and prostate supply most of the volume, and their ducts join the route below the cut, so the volume barely changes."
+        },
+        {
+          "id": "testo",
+          "name": "Testosterone in his blood",
+          "answer": "none",
+          "chain": [
+            "leydig"
+          ],
+          "why": "Testosterone is a hormone released straight into the blood by the interstitial (Leydig) cells, with no duct. Cutting the sperm duct does not touch them."
+        }
+      ]
+    },
+    {
+      "id": "rp-sildenafil",
+      "title": "A PDE5 blocker for erectile dysfunction",
+      "topic": "male-anatomy",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "sildenafil causes an erection on its own",
+      "setup": "A man with erectile dysfunction takes sildenafil, which blocks the enzyme PDE5, an hour before sexual activity. Predict the changes during sexual stimulation, compared with stimulation without the drug.",
+      "start": "PDE5 in the smooth muscle of the erectile tissue is blocked",
+      "steps": {
+        "breakdown": "cGMP made in response to nitric oxide is broken down more slowly",
+        "cgmp": "cGMP builds up higher and lasts longer in the smooth muscle",
+        "relax": "The smooth muscle of the cavernosal arteries and blood spaces relaxes more",
+        "inflow": "More blood flows into the corpora cavernosa",
+        "veins": "The swelling tissue squeezes the draining veins flat against the tunica albuginea",
+        "noNO": "Without stimulation, parasympathetic nerves release no nitric oxide, so no cGMP is made to protect"
+      },
+      "variables": [
+        {
+          "id": "break",
+          "name": "Rate at which cGMP is broken down",
+          "answer": "down",
+          "chain": [
+            "breakdown"
+          ],
+          "why": "PDE5 is the enzyme that breaks down cGMP. With it blocked, cGMP is removed more slowly."
+        },
+        {
+          "id": "cgmp",
+          "name": "cGMP in the smooth muscle during stimulation",
+          "answer": "up",
+          "chain": [
+            "breakdown",
+            "cgmp"
+          ],
+          "why": "Stimulation still makes nitric oxide, which raises cGMP. With its breakdown slowed, cGMP climbs higher and stays up longer."
+        },
+        {
+          "id": "inflow",
+          "name": "Blood flow into the corpora cavernosa",
+          "answer": "up",
+          "chain": [
+            "breakdown",
+            "cgmp",
+            "relax",
+            "inflow"
+          ],
+          "why": "cGMP relaxes the smooth muscle, so the cavernosal arteries widen and the blood spaces expand; more blood rushes in."
+        },
+        {
+          "id": "firm",
+          "name": "Firmness of the erection",
+          "answer": "up",
+          "chain": [
+            "breakdown",
+            "cgmp",
+            "relax",
+            "inflow",
+            "veins"
+          ],
+          "why": "More inflow swells the tissue, which presses the draining veins shut, so blood enters faster than it leaves and pressure in the corpora cavernosa rises."
+        },
+        {
+          "id": "none",
+          "name": "Erection with the drug but no sexual stimulation",
+          "answer": "none",
+          "chain": [
+            "noNO"
+          ],
+          "why": "The drug only slows the breakdown of cGMP. Without stimulation, no nitric oxide is released and no cGMP is made, so there is nothing to protect and no erection."
+        }
+      ]
+    },
+    {
+      "id": "rp-alpha-blocker",
+      "title": "An alpha-1 blocker for an enlarged prostate",
+      "topic": "male-anatomy",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "alpha-1 blockers affect ejaculation by blocking erection",
+      "setup": "A 64-year-old man with benign prostatic hyperplasia starts tamsulosin, which blocks alpha-1 receptor proteins on smooth muscle. Predict the changes over the next weeks.",
+      "start": "Norepinephrine can no longer act on alpha-1 receptor proteins in the smooth muscle of the prostate and the sperm ducts",
+      "steps": {
+        "prost": "Smooth muscle in the prostate and bladder neck relaxes",
+        "urine": "The prostatic urethra is squeezed less",
+        "ducts": "The ductus deferens, seminal vesicles and prostate contract weakly during emission",
+        "semen": "Little semen is moved into the urethra",
+        "para": "Erection runs on parasympathetic nitric oxide, not on alpha-1 receptor proteins"
+      },
+      "variables": [
+        {
+          "id": "flow",
+          "name": "Strength of his urine stream",
+          "answer": "up",
+          "chain": [
+            "prost",
+            "urine"
+          ],
+          "why": "Part of the squeeze on the urethra in BPH comes from contracted prostate smooth muscle. Relaxing it widens the prostatic urethra, which is why the drug is given."
+        },
+        {
+          "id": "emission",
+          "name": "Contraction of the ducts and glands during emission",
+          "answer": "down",
+          "chain": [
+            "ducts"
+          ],
+          "why": "Emission is sympathetic: norepinephrine on alpha-1 receptor proteins makes the ductus deferens, seminal vesicles and prostate contract. Blocked receptor proteins mean weak contractions."
+        },
+        {
+          "id": "volume",
+          "name": "Volume of semen ejaculated",
+          "answer": "down",
+          "chain": [
+            "ducts",
+            "semen"
+          ],
+          "why": "With emission weakened, little semen reaches the urethra to be expelled, so little or none comes out. The main effect is on emission, not on flow back into the bladder."
+        },
+        {
+          "id": "erection",
+          "name": "Ability to get an erection",
+          "answer": "none",
+          "chain": [
+            "para"
+          ],
+          "why": "Erection depends on parasympathetic nerves releasing nitric oxide, which relaxes the erectile smooth muscle. Blocking alpha-1 receptor proteins does not interfere with that."
+        }
+      ]
+    },
+    {
+      "id": "rp-anabolic-fertility",
+      "title": "Anabolic steroids and sperm production",
+      "topic": "male-physiology",
+      "theme": "anabolic steroid use",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "more androgen in the blood means more sperm",
+      "setup": "A 28-year-old man has injected high doses of testosterone for six months to build muscle. He and his partner have been trying for a baby. Predict his reproductive hormones and sperm, compared with before he started.",
+      "start": "A high level of injected androgen circulates in his blood",
+      "steps": {
+        "brake": "The androgen brakes GnRH release by the hypothalamus and LH release by the pituitary",
+        "lh": "LH falls",
+        "fsh": "FSH falls too, as GnRH drive is lost",
+        "leydig": "Without LH, his Leydig cells make little testosterone",
+        "local": "Testosterone inside the seminiferous tubules falls far below its usual high level",
+        "sperm": "Sertoli cells lose the high local testosterone and FSH that spermatogenesis needs",
+        "shrink": "The tubules, which make up most of each testis, shrink"
+      },
+      "variables": [
+        {
+          "id": "lh",
+          "name": "LH in his blood",
+          "answer": "down",
+          "chain": [
+            "brake",
+            "lh"
+          ],
+          "why": "Androgens exert negative feedback on the hypothalamus and anterior pituitary. The injected dose keeps that brake on hard, so LH falls."
+        },
+        {
+          "id": "fsh",
+          "name": "FSH in his blood",
+          "answer": "down",
+          "chain": [
+            "brake",
+            "fsh"
+          ],
+          "why": "LH and FSH are both released in response to GnRH pulses. Braking GnRH lowers both."
+        },
+        {
+          "id": "tubule",
+          "name": "Testosterone inside his seminiferous tubules",
+          "answer": "down",
+          "chain": [
+            "brake",
+            "lh",
+            "leydig",
+            "local"
+          ],
+          "why": "The tubules normally hold testosterone at 50 to 100 times the blood level, supplied by the Leydig cells next door under LH. With LH gone, that local supply collapses; the injected dose in the blood cannot recreate it."
+        },
+        {
+          "id": "count",
+          "name": "His sperm count",
+          "answer": "down",
+          "chain": [
+            "brake",
+            "lh",
+            "leydig",
+            "local",
+            "sperm"
+          ],
+          "why": "Spermatogenesis needs the high local testosterone and FSH acting on the Sertoli cells. With both lost, sperm output falls, often to zero, even though his blood androgen is high."
+        },
+        {
+          "id": "size",
+          "name": "Size of his testes",
+          "answer": "down",
+          "chain": [
+            "brake",
+            "lh",
+            "leydig",
+            "local",
+            "sperm",
+            "shrink"
+          ],
+          "why": "The seminiferous tubules make up most of the testis. As spermatogenesis winds down, the tubules shrink and so do the testes."
+        }
+      ]
+    },
+    {
+      "id": "rp-germ-cell-loss",
+      "title": "Chemotherapy destroys the germ cells",
+      "topic": "male-physiology",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "if sperm production fails, every reproductive hormone must be abnormal",
+      "setup": "After chemotherapy, a young man’s testes have lost their spermatogonia, but his Leydig cells still work. Predict his hormone levels and sperm a year later, compared with before treatment.",
+      "start": "The germ cells in his seminiferous tubules are gone; Sertoli and Leydig cells survive",
+      "steps": {
+        "nosperm": "No sperm are made",
+        "inhibin": "Sertoli cells with no germ cells to support release less inhibin",
+        "fsh": "The inhibin brake on FSH weakens, so FSH rises",
+        "leydig": "Leydig cells keep responding to LH",
+        "t": "Testosterone stays in its normal range",
+        "lh": "Testosterone keeps its normal brake on LH"
+      },
+      "variables": [
+        {
+          "id": "count",
+          "name": "Sperm count",
+          "answer": "down",
+          "chain": [
+            "nosperm"
+          ],
+          "why": "Every sperm comes from a spermatogonium. With the stem cells destroyed, spermatogenesis cannot restart."
+        },
+        {
+          "id": "inhibin",
+          "name": "Inhibin in his blood",
+          "answer": "down",
+          "chain": [
+            "inhibin"
+          ],
+          "why": "Inhibin comes from the Sertoli cells, and how much they release depends on the germ cells they are supporting. With no germ cells, inhibin falls."
+        },
+        {
+          "id": "fsh",
+          "name": "FSH in his blood",
+          "answer": "up",
+          "chain": [
+            "inhibin",
+            "fsh"
+          ],
+          "why": "Inhibin is the brake that acts selectively on FSH. Less inhibin lets the pituitary release more FSH."
+        },
+        {
+          "id": "testo",
+          "name": "Testosterone in his blood",
+          "answer": "none",
+          "chain": [
+            "leydig",
+            "t"
+          ],
+          "why": "Testosterone comes from the Leydig cells between the tubules, not from the germ cells. They survived, so testosterone stays normal."
+        },
+        {
+          "id": "lh",
+          "name": "LH in his blood",
+          "answer": "none",
+          "chain": [
+            "leydig",
+            "t",
+            "lh"
+          ],
+          "why": "Testosterone is the main brake on LH. With testosterone normal, the brake is unchanged and LH stays normal: a raised FSH alone points to lost germ cells."
+        }
+      ]
+    },
+    {
+      "id": "rp-testes-fail",
+      "title": "Testes that fail: Klinefelter syndrome",
+      "topic": "male-physiology",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "low testosterone always comes with low LH",
+      "setup": "A 17-year-old with XXY sex chromosomes (Klinefelter syndrome) has small testes whose Leydig and Sertoli cells work poorly. Predict his hormone levels compared with a typical XY 17-year-old.",
+      "start": "His testes make little testosterone and little inhibin",
+      "steps": {
+        "lowT": "Testosterone in his blood is low",
+        "lowInh": "Inhibin in his blood is low",
+        "offT": "The testosterone brake on the hypothalamus and pituitary weakens",
+        "offInh": "The inhibin brake on FSH weakens",
+        "lh": "The pituitary releases more LH",
+        "fsh": "The pituitary releases more FSH",
+        "sperm": "Few or no sperm are made"
+      },
+      "variables": [
+        {
+          "id": "testo",
+          "name": "Testosterone",
+          "answer": "down",
+          "chain": [
+            "lowT"
+          ],
+          "why": "His Leydig cells respond poorly to LH, so they release little testosterone."
+        },
+        {
+          "id": "lh",
+          "name": "LH",
+          "answer": "up",
+          "chain": [
+            "lowT",
+            "offT",
+            "lh"
+          ],
+          "why": "Testosterone normally brakes GnRH and LH. With little testosterone, the healthy pituitary works harder and LH rises: low testosterone with high LH means the testes themselves have failed."
+        },
+        {
+          "id": "fsh",
+          "name": "FSH",
+          "answer": "up",
+          "chain": [
+            "lowInh",
+            "offInh",
+            "fsh"
+          ],
+          "why": "Inhibin from the Sertoli cells brakes FSH. Little inhibin means little brake, so FSH rises."
+        },
+        {
+          "id": "count",
+          "name": "Sperm count",
+          "answer": "down",
+          "chain": [
+            "lowT",
+            "sperm"
+          ],
+          "why": "Spermatogenesis needs a high local testosterone level and healthy tubules; in Klinefelter syndrome the tubules are scarred and few or no sperm are made, so most affected men are infertile."
+        }
+      ]
+    },
+    {
+      "id": "rp-gnrh-agonist-l4",
+      "title": "Continuous GnRH-like drug for prostate cancer",
+      "topic": "male-physiology",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 4,
+      "misconception": "a drug that mimics GnRH must always raise testosterone",
+      "setup": "A man with prostate cancer, whose cells grow faster in response to androgens, starts a long-acting drug that mimics GnRH. It keeps the pituitary exposed to steady GnRH activity instead of pulses. Follow his hormones.",
+      "stages": [
+        {
+          "id": "first",
+          "label": "The first few days",
+          "prompt": "In the first days of treatment, compared with before.",
+          "start": "Pituitary cells meet a strong GnRH-like signal",
+          "steps": {
+            "stim": "The strong signal stimulates the LH- and FSH-releasing cells",
+            "lh": "LH release rises",
+            "leydig": "LH drives the Leydig cells harder",
+            "t": "Testosterone rises: a brief flare"
+          },
+          "variables": [
+            {
+              "id": "lh",
+              "name": "LH",
+              "answer": "up",
+              "chain": [
+                "stim",
+                "lh"
+              ],
+              "why": "At first the drug acts just like a big dose of GnRH, so the pituitary releases a burst of LH."
+            },
+            {
+              "id": "testo",
+              "name": "Testosterone",
+              "answer": "up",
+              "chain": [
+                "stim",
+                "lh",
+                "leydig",
+                "t"
+              ],
+              "why": "More LH reaching the Leydig cells means more testosterone, so for a week or two the cancer can briefly be stimulated."
+            }
+          ]
+        },
+        {
+          "id": "weeks",
+          "label": "After several weeks",
+          "prompt": "After several weeks of steady treatment, compared with before treatment.",
+          "start": "The pituitary has been exposed to unchanging GnRH activity for weeks",
+          "steps": {
+            "down": "Pituitary cells stop responding to the unchanging signal",
+            "lh": "LH release falls very low",
+            "t": "Leydig cells get little LH, so testosterone falls to a very low level",
+            "cancer": "Prostate cancer cells lose the androgen that drives them"
+          },
+          "variables": [
+            {
+              "id": "lh",
+              "name": "LH",
+              "answer": "down",
+              "chain": [
+                "down",
+                "lh"
+              ],
+              "why": "The pituitary responds to rising and falling GnRH. Under steady, unchanging GnRH activity it stops responding, so LH falls."
+            },
+            {
+              "id": "testo",
+              "name": "Testosterone",
+              "answer": "down",
+              "chain": [
+                "down",
+                "lh",
+                "t"
+              ],
+              "why": "Without LH, the Leydig cells make little testosterone, lowering it to the level after removal of the testes."
+            },
+            {
+              "id": "growth",
+              "name": "Growth of the prostate cancer",
+              "answer": "down",
+              "chain": [
+                "down",
+                "lh",
+                "t",
+                "cancer"
+              ],
+              "why": "These cancer cells grow faster in response to androgens. With testosterone very low, their growth slows: the point of the treatment."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rp-testosterone-therapy",
+      "title": "Testosterone therapy in an older man",
+      "topic": "male-physiology",
+      "core": [
+        "communication",
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "testosterone therapy is a fertility treatment",
+      "setup": "A 58-year-old man with a low testosterone level starts daily testosterone gel, bringing his blood level into the normal range. Predict the changes after six months.",
+      "start": "Testosterone from the gel raises his blood testosterone",
+      "steps": {
+        "epo": "Testosterone raises erythropoietin release and marrow activity",
+        "rbc": "Red blood cell production rises",
+        "hct": "Hematocrit rises",
+        "brake": "Testosterone brakes GnRH and LH release",
+        "lh": "LH falls",
+        "local": "His Leydig cells make less testosterone of their own, so the level inside the tubules falls",
+        "sperm": "Sperm production falls",
+        "muscle": "Protein synthesis in skeletal muscle speeds up"
+      },
+      "variables": [
+        {
+          "id": "hct",
+          "name": "Hematocrit",
+          "answer": "up",
+          "chain": [
+            "epo",
+            "rbc",
+            "hct"
+          ],
+          "why": "Testosterone raises erythropoietin release and stimulates the marrow, which is why men’s hematocrit runs higher than women’s. Doctors check it on therapy, because too high a hematocrit thickens the blood."
+        },
+        {
+          "id": "lh",
+          "name": "LH",
+          "answer": "down",
+          "chain": [
+            "brake",
+            "lh"
+          ],
+          "why": "Testosterone from any source feeds back on the hypothalamus and pituitary, so LH falls."
+        },
+        {
+          "id": "count",
+          "name": "Sperm count",
+          "answer": "down",
+          "chain": [
+            "brake",
+            "lh",
+            "local",
+            "sperm"
+          ],
+          "why": "Without LH, the Leydig cells stop supplying the high local testosterone the tubules need, so sperm production falls even though blood testosterone is normal."
+        },
+        {
+          "id": "muscle",
+          "name": "Muscle mass",
+          "answer": "up",
+          "chain": [
+            "muscle"
+          ],
+          "why": "Testosterone binds androgen receptor proteins in muscle fibers and speeds protein synthesis, so muscle mass rises modestly."
+        }
+      ]
+    },
+    {
+      "id": "rp-fsh-injections",
+      "title": "FSH injections in fertility treatment",
+      "topic": "ovarian-cycle",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "only one follicle can ever mature in a month",
+      "setup": "In a fertility clinic, a woman receives daily FSH injections that keep her FSH high for about ten days, starting just after her period. Predict her ovaries compared with an untreated month.",
+      "start": "FSH in her blood stays high instead of falling",
+      "steps": {
+        "rescue": "Every tertiary follicle that is ready keeps its FSH support",
+        "atresia": "Fewer follicles undergo atresia",
+        "many": "Several follicles grow to the mature stage instead of one",
+        "arom": "FSH switches on aromatase in the granulosa cells of each growing follicle",
+        "e2": "Many follicles together release much more estradiol"
+      },
+      "variables": [
+        {
+          "id": "atresia",
+          "name": "Number of follicles lost to atresia this month",
+          "answer": "down",
+          "chain": [
+            "rescue",
+            "atresia"
+          ],
+          "why": "Normally FSH falls and every follicle except the most sensitive one loses its support and dies. Keeping FSH high keeps the others alive."
+        },
+        {
+          "id": "mature",
+          "name": "Number of follicles reaching the mature vesicular stage",
+          "answer": "up",
+          "chain": [
+            "rescue",
+            "atresia",
+            "many"
+          ],
+          "why": "Selection of one follicle depends on FSH falling. With FSH held high, several follicles keep growing, which is how clinics collect several oocytes."
+        },
+        {
+          "id": "e2",
+          "name": "Estradiol in her blood",
+          "answer": "up",
+          "chain": [
+            "rescue",
+            "arom",
+            "e2"
+          ],
+          "why": "Each growing follicle turns theca androgens into estradiol with aromatase, which FSH switches on. More follicles, and more granulosa cells, mean much more estradiol."
+        }
+      ]
+    },
+    {
+      "id": "rp-nsaid-ovulation",
+      "title": "High-dose prostaglandin blocker at mid-cycle",
+      "topic": "ovarian-cycle",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "if LH rises normally, the follicle must release its oocyte",
+      "setup": "A woman takes high doses of a drug that blocks prostaglandin synthesis for several days around the middle of her cycle. The sudden rise in LH happens normally. Predict what happens in her dominant follicle.",
+      "start": "Prostaglandins cannot be made in the follicle when LH rises",
+      "steps": {
+        "lh": "The rise in LH itself is not affected",
+        "meiosis": "LH still restarts meiosis I in the oocyte",
+        "enzymes": "The enzymes that digest the follicle wall at its thin spot are not activated enough",
+        "rupture": "The follicle wall does not give way on time",
+        "release": "The oocyte stays trapped in the follicle"
+      },
+      "variables": [
+        {
+          "id": "lh",
+          "name": "Peak LH level",
+          "answer": "none",
+          "chain": [
+            "lh"
+          ],
+          "why": "The drug acts on prostaglandin synthesis in the tissues, not on the pituitary, so the sudden rise in LH is unchanged."
+        },
+        {
+          "id": "meiosis",
+          "name": "Completion of meiosis I in the oocyte",
+          "answer": "none",
+          "chain": [
+            "lh",
+            "meiosis"
+          ],
+          "why": "LH restarts meiosis I without needing prostaglandins, so the oocyte still becomes a secondary oocyte with a first polar body."
+        },
+        {
+          "id": "wall",
+          "name": "Breakdown of the follicle wall at its thin spot",
+          "answer": "down",
+          "chain": [
+            "enzymes"
+          ],
+          "why": "Prostaglandins are needed for the protein-digesting enzymes that weaken the follicle wall. Without them the wall stays strong."
+        },
+        {
+          "id": "release",
+          "name": "Release of the oocyte on time",
+          "answer": "down",
+          "chain": [
+            "enzymes",
+            "rupture",
+            "release"
+          ],
+          "why": "If the wall does not give way, the oocyte cannot ooze out, so its release is delayed or prevented even though LH rose normally."
+        }
+      ]
+    },
+    {
+      "id": "rp-combined-pill",
+      "title": "Taking the combined pill",
+      "topic": "female-hormones-cycle",
+      "theme": "combined oral contraceptive",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "the pill works mainly by ending a pregnancy that has already begun",
+      "setup": "A 22-year-old starts the combined oral contraceptive, a daily synthetic estrogen and progestin. Predict the changes in the middle of her third pill pack, compared with the same days of a natural cycle.",
+      "start": "Steady synthetic estrogen and progestin circulate all month",
+      "steps": {
+        "fb": "Negative feedback on the hypothalamus and anterior pituitary stays switched on all month",
+        "gnrh": "GnRH pulses stay slow",
+        "fsh": "FSH stays low",
+        "nodom": "No follicle is selected to dominate",
+        "e2": "The ovary’s own estradiol never climbs high for two days",
+        "nosurge": "Positive feedback never starts: no LH surge",
+        "noovul": "No ovulation",
+        "mucus": "The progestin keeps the cervical mucus thick",
+        "lining": "The progestin keeps the endometrium thin"
+      },
+      "variables": [
+        {
+          "id": "fsh",
+          "name": "FSH",
+          "answer": "down",
+          "chain": [
+            "fb",
+            "gnrh",
+            "fsh"
+          ],
+          "why": "The steady hormones hold the hypothalamus and pituitary under negative feedback, so GnRH pulses stay slow and FSH stays low."
+        },
+        {
+          "id": "e2",
+          "name": "Estradiol made by her own ovaries",
+          "answer": "down",
+          "chain": [
+            "fb",
+            "gnrh",
+            "fsh",
+            "nodom",
+            "e2"
+          ],
+          "why": "Without the usual rise in FSH, no follicle grows to dominate, and a dominant follicle is what makes the steep rise in estradiol."
+        },
+        {
+          "id": "surge",
+          "name": "Mid-cycle LH peak",
+          "answer": "down",
+          "chain": [
+            "fb",
+            "gnrh",
+            "fsh",
+            "nodom",
+            "e2",
+            "nosurge"
+          ],
+          "why": "The LH surge needs high estradiol from a dominant follicle for about two days. That never happens, so positive feedback never switches on."
+        },
+        {
+          "id": "ovul",
+          "name": "Ovulation",
+          "answer": "down",
+          "chain": [
+            "fb",
+            "gnrh",
+            "fsh",
+            "nodom",
+            "e2",
+            "nosurge",
+            "noovul"
+          ],
+          "why": "With no LH surge there is no trigger to release an oocyte. This is the pill’s main action; it prevents ovulation rather than ending a pregnancy."
+        },
+        {
+          "id": "mucus",
+          "name": "Thickness of cervical mucus",
+          "answer": "up",
+          "chain": [
+            "mucus"
+          ],
+          "why": "Progestin acts like progesterone, which makes cervical mucus thick and sticky, a backup barrier to sperm."
+        },
+        {
+          "id": "lining",
+          "name": "Thickness of the endometrium",
+          "answer": "down",
+          "chain": [
+            "lining"
+          ],
+          "why": "The progestin opposes the growth that estrogen alone would drive, keeping the lining thin. The bleed in the hormone-free days is a withdrawal bleed, not a true period."
+        }
+      ]
+    },
+    {
+      "id": "rp-ovaries-removed",
+      "title": "Both ovaries are removed",
+      "topic": "female-hormones-cycle",
+      "theme": "both ovaries are removed",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "removing the ovaries lowers every reproductive hormone",
+      "setup": "A 38-year-old has both ovaries removed because of a high inherited risk of ovarian cancer; her uterus is left in place and she takes no hormones. Predict her hormones and body three months later, compared with before surgery.",
+      "start": "All her follicles and any corpus luteum are removed",
+      "steps": {
+        "e2": "Estradiol falls to a very low level",
+        "p": "Progesterone stays low all month",
+        "inh": "Inhibin disappears",
+        "brake": "Negative feedback on the hypothalamus and pituitary is lost",
+        "fsh": "FSH rises",
+        "lh": "LH rises",
+        "lining": "The endometrium is no longer built up and shed each month",
+        "bone": "Osteoclasts are no longer held back by estrogen",
+        "loss": "Bone is lost faster"
+      },
+      "variables": [
+        {
+          "id": "e2",
+          "name": "Estradiol",
+          "answer": "down",
+          "chain": [
+            "e2"
+          ],
+          "why": "Before menopause, the granulosa cells of growing follicles make most of a woman’s estradiol. With the ovaries gone, it falls very low."
+        },
+        {
+          "id": "fsh",
+          "name": "FSH",
+          "answer": "up",
+          "chain": [
+            "e2",
+            "inh",
+            "brake",
+            "fsh"
+          ],
+          "why": "FSH is held down by both estradiol and inhibin. With both gone, FSH rises sharply, as it does after menopause."
+        },
+        {
+          "id": "lh",
+          "name": "LH",
+          "answer": "up",
+          "chain": [
+            "e2",
+            "p",
+            "brake",
+            "lh"
+          ],
+          "why": "Estradiol and progesterone hold LH down. With no ovarian hormones, the healthy pituitary releases more LH."
+        },
+        {
+          "id": "periods",
+          "name": "Monthly bleeding",
+          "answer": "down",
+          "chain": [
+            "e2",
+            "p",
+            "lining"
+          ],
+          "why": "The uterus is still there, but without rising estradiol to build the functional layer and falling progesterone to shed it, periods stop."
+        },
+        {
+          "id": "bone",
+          "name": "Rate of bone loss",
+          "answer": "up",
+          "chain": [
+            "e2",
+            "bone",
+            "loss"
+          ],
+          "why": "Estrogen keeps bone mass by limiting osteoclasts. Losing it suddenly speeds bone loss, which is why hormone therapy is often advised after this surgery in younger women."
+        }
+      ]
+    },
+    {
+      "id": "rp-cycle-end-l4",
+      "title": "The corpus luteum dies: one cycle ends, the next begins",
+      "topic": "female-hormones-cycle",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 4,
+      "misconception": "the next cycle starts because the brain decides it is time",
+      "setup": "No pregnancy began this month. On about day 26 of a 28-day cycle, the corpus luteum starts to die. Follow the hormones and the uterus.",
+      "stages": [
+        {
+          "id": "end",
+          "label": "Days 26 to 2",
+          "prompt": "Over the last days of the cycle and the first days of bleeding, compared with the middle of the luteal phase.",
+          "start": "The corpus luteum stops making hormones",
+          "steps": {
+            "p": "Progesterone falls",
+            "e2": "Estradiol and inhibin from the corpus luteum fall",
+            "lining": "The functional layer loses its progesterone support, breaks down and is shed",
+            "lift": "Negative feedback on the hypothalamus and pituitary lifts",
+            "fsh": "FSH starts to climb"
+          },
+          "variables": [
+            {
+              "id": "p",
+              "name": "Progesterone",
+              "answer": "down",
+              "chain": [
+                "p"
+              ],
+              "why": "The corpus luteum is the main source of progesterone. When it dies after 12 to 14 days, progesterone falls."
+            },
+            {
+              "id": "lining",
+              "name": "Thickness of the functional layer",
+              "answer": "down",
+              "chain": [
+                "p",
+                "lining"
+              ],
+              "why": "Falling progesterone sets off inflammation and enzyme breakdown in the functional layer, which is shed as menstruation. The basal layer stays."
+            },
+            {
+              "id": "fsh",
+              "name": "FSH",
+              "answer": "up",
+              "chain": [
+                "p",
+                "e2",
+                "lift",
+                "fsh"
+              ],
+              "why": "Progesterone, estradiol and inhibin had been holding FSH down. As they fall, the brake lifts and FSH rises: the small FSH bump at the start of a cycle."
+            }
+          ]
+        },
+        {
+          "id": "next",
+          "label": "Days 5 to 10",
+          "prompt": "A week later, compared with the first days of bleeding.",
+          "start": "The raised FSH has rescued a group of tertiary follicles",
+          "steps": {
+            "grow": "The rescued follicles grow and add granulosa cells",
+            "e2": "Their estradiol and inhibin rise",
+            "fb": "Estradiol and inhibin exert negative feedback on the pituitary",
+            "fsh": "FSH falls again",
+            "rebuild": "Estradiol makes the basal layer’s cells divide and rebuild the functional layer"
+          },
+          "variables": [
+            {
+              "id": "e2",
+              "name": "Estradiol",
+              "answer": "up",
+              "chain": [
+                "grow",
+                "e2"
+              ],
+              "why": "Growing follicles convert theca androgens into estradiol, and more granulosa cells make more of it."
+            },
+            {
+              "id": "fsh",
+              "name": "FSH",
+              "answer": "down",
+              "chain": [
+                "grow",
+                "e2",
+                "fb",
+                "fsh"
+              ],
+              "why": "The rising estradiol and inhibin feed back negatively, so FSH falls. That fall is what selects one dominant follicle: the rest lose their support."
+            },
+            {
+              "id": "lining",
+              "name": "Thickness of the functional layer",
+              "answer": "up",
+              "chain": [
+                "grow",
+                "e2",
+                "rebuild"
+              ],
+              "why": "The proliferative phase: rising estradiol drives the basal layer to rebuild the functional layer, with its glands and coiled arteries."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rp-energy-amenorrhea",
+      "title": "An endurance athlete who eats too little",
+      "topic": "female-hormones-cycle",
+      "core": [
+        "communication",
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "losing periods from heavy training is harmless",
+      "setup": "A 20-year-old distance runner trains hard while eating too little for her training load, and her periods stop. Predict the changes compared with a year earlier, when her cycles were regular.",
+      "start": "Energy intake falls short of the energy her exercise uses",
+      "steps": {
+        "gnrh": "Signals about low energy stores slow the GnRH pulse generator",
+        "gonad": "LH and FSH pulses fall",
+        "fol": "Follicles do not grow to dominance",
+        "e2": "Estradiol stays low",
+        "noovul": "No LH surge and no ovulation",
+        "lining": "The functional layer is not built up and shed",
+        "bone": "Low estrogen no longer holds back osteoclasts",
+        "dens": "Bone density falls"
+      },
+      "variables": [
+        {
+          "id": "lh",
+          "name": "LH",
+          "answer": "down",
+          "chain": [
+            "gnrh",
+            "gonad"
+          ],
+          "why": "Too little energy for the amount of exercise slows GnRH pulses from the hypothalamus, so the pituitary releases less LH and FSH. The problem starts in the brain, not the ovary."
+        },
+        {
+          "id": "e2",
+          "name": "Estradiol",
+          "answer": "down",
+          "chain": [
+            "gnrh",
+            "gonad",
+            "fol",
+            "e2"
+          ],
+          "why": "With little FSH and LH, no follicle grows to dominate, and without a dominant follicle estradiol stays low."
+        },
+        {
+          "id": "periods",
+          "name": "Monthly bleeding",
+          "answer": "down",
+          "chain": [
+            "gnrh",
+            "gonad",
+            "fol",
+            "e2",
+            "noovul",
+            "lining"
+          ],
+          "why": "Without estradiol to build the lining and a corpus luteum to withdraw progesterone from it, there is no cycle to shed: hypothalamic amenorrhea."
+        },
+        {
+          "id": "bone",
+          "name": "Bone density",
+          "answer": "down",
+          "chain": [
+            "gnrh",
+            "gonad",
+            "fol",
+            "e2",
+            "bone",
+            "dens"
+          ],
+          "why": "Estrogen keeps bone mass by limiting osteoclasts. Low estrogen for months speeds bone loss, the combination seen in some endurance athletes."
         }
       ]
     }

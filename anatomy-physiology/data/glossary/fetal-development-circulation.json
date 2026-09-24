@@ -1,0 +1,52 @@
+{
+  "fetal-period": {
+    "def": "The stage from the end of the embryonic period to birth: about week 10 to week 40 of pregnancy on the clinical count, a time of growth and maturation. Pregnancy is split into three trimesters; quickening is the mother's first feeling of movement, lanugo is fine body hair, and vernix caseosa is the greasy coating that protects the skin.",
+    "roots": [["tri-", "three"], ["mensis", "month"], ["lana", "wool"], ["vernix", "varnish"], ["caseosa", "cheese-like"]],
+    "say": "luh-NOO-goh; VER-niks kay-see-OH-suh"
+  },
+  "foramen-ovale": {
+    "def": "An opening in the wall between the fetal atria, left by the septum secundum and covered from the left side by a flap of the septum primum. It lets blood pass only from the right atrium to the left, and after birth the flap is pressed shut and usually seals, leaving the fossa ovalis.",
+    "roots": [["foramen", "opening"], ["ovale", "oval"], ["primum", "first"]],
+    "say": "for-AY-men oh-VAL-ee"
+  },
+  "fetal-circulation": {
+    "def": "The pattern of blood flow before birth, when the placenta, not the lungs, exchanges gases. Three fetal shunts carry it: the ductus venosus (umbilical vein to inferior vena cava, past the liver), the foramen ovale (right atrium to left), and the ductus arteriosus (pulmonary trunk to aorta, past the lungs).",
+    "roots": [["ductus", "channel"], ["venosus", "of veins"], ["arteriosus", "of arteries"]],
+    "say": "DUK-tus veh-NOH-sus, ar-teer-ee-OH-sus"
+  },
+  "teratogens": {
+    "def": "Agents outside the embryo or fetus that can cause birth defects, such as alcohol, some drugs, some infections and radiation. Their effect depends on timing, dose and genes; weeks 3 to 8 after fertilization, when organs form, are the most sensitive time for major structural defects.",
+    "roots": [["terat-", "monster"], ["-gen", "producing"]],
+    "say": "teh-RAT-oh-jen"
+  },
+  "sex-differentiation": {
+    "def": "The development of male or female reproductive organs from a shared start. SRY turns the gonad into a testis (gonadal differentiation); its anti-Müllerian hormone removes the paramesonephric (Müllerian) ducts, and its testosterone keeps the mesonephric (Wolffian) ducts. Without a testis, an ovary forms, the paramesonephric ducts become the uterine tubes and uterus, and the mesonephric ducts break down.",
+    "roots": [["meso-", "middle"], ["nephr-", "kidney"], ["para-", "beside"]],
+    "say": "mez-oh-NEF-rik"
+  },
+  "congenital-heart-defects": {
+    "def": "Structural problems of the heart or great vessels present at birth, in about 1 baby in 100. Examples include a patent foramen ovale (a flap that never seals), septal defects (holes in the wall between the atria or ventricles) and a patent ductus arteriosus.",
+    "roots": [["congenital", "present at birth"], ["patent", "open"]],
+    "say": ""
+  },
+  "heart-tube-formation": {
+    "def": "The heart's earliest development: mesoderm at the head end of the embryonic disc (the cardiogenic area) forms two cardiogenic cords, which hollow into two endocardial tubes. As the embryo folds, they fuse into one primitive heart tube, which begins beating at about day 22 after fertilization.",
+    "roots": [["cardi-", "heart"], ["-genic", "producing"]],
+    "say": ""
+  },
+  "embryonic-heart-regions": {
+    "def": "The five regions of the heart tube, from outflow to inflow: the truncus arteriosus (becomes the aorta and pulmonary trunk), bulbus cordis (most of the right ventricle), primitive ventricle (most of the left ventricle), primitive atrium (front parts of both atria) and sinus venosus (the smooth back wall of the right atrium and the SA node region).",
+    "roots": [["truncus", "trunk"], ["bulbus", "bulb"], ["cordis", "of the heart"], ["sinus", "cavity"]],
+    "say": "TRUNG-kus, BUL-bus KOR-dis"
+  },
+  "vessel-development": {
+    "def": "The formation of the first blood vessels by vasculogenesis: mesoderm cells become hemangioblasts, which cluster into blood islands; angioblasts at their edges form endothelium, cells in their centers form the first blood cells, and the islands join into vascular tubes. Later vessels sprout from existing ones by angiogenesis.",
+    "roots": [["hem-", "blood"], ["angio-", "vessel"], ["-blast", "bud, germ"], ["-genesis", "making"]],
+    "say": "he-MAN-jee-oh-blast"
+  },
+  "lung-development": {
+    "def": "The lower airway grows from the laryngotracheal bud, an outpouching of the foregut, which splits into two lung buds (bronchial buds) that branch repeatedly; the upper airway begins as the olfactory pits on the face. Fetal breathing movements and lung fluid stretch the lungs, which is needed for their growth.",
+    "roots": [["laryngo-", "larynx"], ["tracheal", "of the trachea"], ["olfact-", "smell"]],
+    "say": ""
+  }
+}

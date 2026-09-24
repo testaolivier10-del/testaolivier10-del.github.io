@@ -1,0 +1,74 @@
+{
+  "os-20-44": {
+    "file": "figures/openstax/os-20-44.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "20.44",
+      "section": "20.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/822fb6453cd462e1e8796f8997af13a5c6e75bb9",
+      "page": "20-6-development-of-blood-vessels-and-fetal-circulation"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/822fb6453cd462e1e8796f8997af13a5c6e75bb9",
+    "alt": "An outline drawing of a fetus curled up, with its circulation drawn in color. A red vein runs from the placenta at the right through the cord to the liver, where a short red channel carries it past the liver into a large vein rising to the heart. The heart and the vessels leaving it are purple, showing mixed blood; an opening between the two upper chambers and a short channel between the two great arteries above the heart are marked. Blue vessels branch from the lower body's arteries and run back out through the cord to the placenta. Labels mark the three short cuts, the aorta, the pulmonary trunk, the large vein, the vessels of the cord, the placenta and the bladder.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.44",
+    "labels": [],
+    "w": 1100,
+    "h": 1142,
+    "ext": "jpg"
+  },
+  "os-19-36": {
+    "file": "figures/openstax/os-19-36.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "19.36",
+      "section": "19.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b827d86b26752073f69c692332e2b01c83a6fdec",
+      "page": "19-5-development-of-the-heart"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b827d86b26752073f69c692332e2b01c83a6fdec",
+    "alt": "Top panel: stages of heart development. At 18 days, an outline of the flat embryo seen from above, with red patches at its head end and along its sides. At 20 days, two separate red-and-blue tubes side by side, blood flowing toward their top ends. At 21 days, the tubes fused along the middle into one. At 22 days, a single tube with swellings stacked from top to bottom. At 23 and 24 days, the tube bending into an S, its lower chambers moving up behind the upper ones. At 35 days, a heart shape with two upper chambers and branching arteries at the top. Bottom panel: two sections through the heart at 28 days and 8 weeks, showing walls growing to divide the chambers, pads of tissue between upper and lower chambers, and at 8 weeks a curved arrow passing through an opening between the two upper chambers, with valves between upper and lower chambers.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 19.36",
+    "labels": [],
+    "w": 1100,
+    "h": 948,
+    "ext": "jpg"
+  },
+  "os-22-29": {
+    "file": "figures/openstax/os-22-29.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "22.29",
+      "section": "22.7",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/856772aaf19effb9041daee668f0993ec9a9f731",
+      "page": "22-7-embryonic-development-of-the-respiratory-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/856772aaf19effb9041daee668f0993ec9a9f731",
+    "alt": "A cycle of small drawings of the developing lower airway, joined by arrows. It starts at the beginning of week 4 as a tube in front of the pharynx wrapped in a layer of tissue, becomes a tube with two buds at its lower end, then a trachea with two bronchial buds in front of the esophagus, then repeatedly branching buds, and ends at 8 weeks with two lungs, three lobes on the right and two on the left, filled with a branching airway tree.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 22.29",
+    "labels": [],
+    "w": 1100,
+    "h": 835,
+    "ext": "jpg"
+  },
+  "os-28-16": {
+    "file": "figures/openstax/os-28-16.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.16",
+      "section": "28.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b84ebfb4f4b74ec344782fe4228ce3c04370b6dd",
+      "page": "28-3-fetal-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b84ebfb4f4b74ec344782fe4228ce3c04370b6dd",
+    "alt": "A flow chart of three rows. Top: an early body cavity with two gonads, each beside a blue duct and a red duct, both pairs draining to a common chamber at the bottom. Left branch, blue arrows: the red ducts fade to dashed outlines and disappear, and the blue ducts become the ducts beside two testes, running to the urethra below the urinary bladder. Right branch, red arrows: the blue ducts fade and disappear, and the red ducts become two tubes that join below into a uterus opening into the vagina, beside two ovaries and below the bladder.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.16",
+    "labels": [],
+    "w": 1100,
+    "h": 2073,
+    "ext": "jpg"
+  }
+}

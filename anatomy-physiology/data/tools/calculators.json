@@ -6001,7 +6001,7 @@
       ],
       "level": "apply",
       "diff": 2,
-      "intro": "Three pressures decide how hard fluid is pushed out of the glomerular capillaries into the capsule. Enter them to find the net filtration pressure (NFP). The capsular colloid osmotic pressure is left out because the filtrate holds almost no protein.",
+      "intro": "Three pressures decide how hard fluid is pushed out of the glomerular capillaries into the capsule. Enter them to find the net filtration pressure (NFP). The capsular colloid osmotic pressure is left out because the filtrate holds almost no protein. Careful: here CHP is the capsular hydrostatic pressure, the pressure in the capsule, which pushes back. In the capillary exchange calculator, CHP meant capillary hydrostatic pressure; at the glomerulus that pressure is GBHP.",
       "formula": "NFP = GBHP − (CHP + BCOP)",
       "inputs": [
         {
@@ -6034,7 +6034,7 @@
             25,
             1
           ],
-          "hint": "About 15; rises when outflow is blocked."
+          "hint": "About 15; rises when outflow is blocked. CHP here means the capsule, not the capillary."
         },
         {
           "key": "BCOP",
@@ -6698,6 +6698,10 @@
           "text": "The filtered load of {load} mg/min exceeds the carriers’ ceiling, so {excr} mg/min spills into the urine. The glucose left in the tubule holds water with it, which is why untreated diabetes mellitus causes polyuria and thirst."
         },
         {
+          "when": "excr == 0 && Pg > 180",
+          "text": "In this idealized calculation the filtered load of {load} mg/min is still under Tm, so no glucose is excreted. A real kidney would already spill some at {Pg} mg/dL, because that is above the renal threshold of about 180 mg/dL: some nephrons saturate early (the splay)."
+        },
+        {
           "when": "1",
           "text": "The filtered load of {load} mg/min is within what the carriers can handle, so all of it is reabsorbed and none is excreted."
         }
@@ -7053,7 +7057,7 @@
       "exam": "Some textbooks round the split to about 90% obligatory and 10% facultative. The exact figure matters less than the idea: most water returns whatever you drink, and a smaller, adjustable share sets your urine volume.",
       "presets": [
         {
-          "label": "Worked example 1: 1.5 L of urine",
+          "label": "180 L filtered, 1.5 L of urine (numbers of worked examples 1 and 5)",
           "values": {
             "F": 180,
             "ob": 82,

@@ -6010,7 +6010,7 @@
       "steps": [
         {
           "id": "bind",
-          "label": "Glucagon binds its receptor protein",
+          "label": "Glucagon binds liver cells",
           "text": "Glucagon binds receptor proteins on the liver cell’s plasma membrane.",
           "why": "Glucagon is a water-soluble hormone, so it acts from outside the cell, and everything else follows its binding."
         },

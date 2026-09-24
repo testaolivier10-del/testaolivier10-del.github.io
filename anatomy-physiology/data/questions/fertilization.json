@@ -444,7 +444,7 @@
       "Nondisjunction of one chromosome pair during the father's meiosis",
       "The oocyte skipped meiosis I",
       "The zygote copied all of its DNA twice before it first divided",
-      "Two sperm entered the oocyte because the block to polyspermy failed"
+      "Two sperm entered the oocyte: the block to polyspermy failed"
     ],
     "correct": 3,
     "why": {

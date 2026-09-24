@@ -26596,7 +26596,7 @@
        ],
        "concept": "nephron-vessels",
        "taught": "nephron",
-       "fn": "The arteriole that carries blood out of the glomerulus. It is narrower than the afferent arteriole, which helps keep pressure high in the glomerulus, and it leads into the peritubular capillaries."
+       "fn": "The arteriole that carries blood out of the glomerulus. In most nephrons it is narrower than the afferent arteriole, which helps keep pressure high in the glomerulus, and it leads into the peritubular capillaries (and, in juxtamedullary nephrons, the vasa recta)."
       },
       {
        "id": "afferent-arteriole",

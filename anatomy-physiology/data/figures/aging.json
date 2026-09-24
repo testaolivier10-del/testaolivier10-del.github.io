@@ -1,0 +1,12 @@
+{
+  "aging-reserve": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 760,
+    "h": 440,
+    "alt": "Schematic graph of functional capacity, as a percentage of peak (0 to 100), against age (20 to 90 years). A solid curve of maximal capacity stays at 100 until age 30, then falls, slowly at first and then faster, to about 70 at 65, 55 at 80 and 44 at 90. A dashed line at 25, labeled needed at rest, stays below the curve at every age. A dashed line at 60, labeled needed during a major stress such as pneumonia, is crossed by the curve at about age 75. Point A at age 30 sits far above both lines; point B at age 80 sits above the resting line but below the stress line.",
+    "labels": []
+  }
+}

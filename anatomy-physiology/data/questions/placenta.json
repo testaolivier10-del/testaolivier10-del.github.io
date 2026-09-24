@@ -248,9 +248,9 @@
     ],
     "q": "A woman with poorly controlled type 1 diabetes has high blood glucose through much of her pregnancy. What happens in the fetus?",
     "options": [
-      "Its glucose stays normal because the placenta blocks the extra glucose",
+      "Its glucose stays normal",
       "Its glucose rises, and her insulin crosses to lower it",
-      "Its glucose falls because her insulin is low",
+      "Its glucose falls, and its pancreas secretes less insulin",
       "Its glucose rises, and its pancreas secretes more insulin"
     ],
     "correct": 3,
@@ -354,9 +354,9 @@
     ],
     "q": "In a chorionic villus, carbon dioxide diffuses out of the fetal blood into the maternal blood. How does that change oxygen loading by fetal hemoglobin?",
     "options": [
-      "It decreases loading, because it shifts the fetal curve right",
-      "It has no effect, because fetal hemoglobin does not respond to carbon dioxide",
-      "It increases loading only because the maternal blood becomes more acidic",
+      "Less loading: the fetal curve shifts right",
+      "No change: fetal hemoglobin ignores carbon dioxide",
+      "More loading, but only from the maternal curve's shift",
       "More loading: the fetal curve shifts left"
     ],
     "correct": 3,

@@ -1,0 +1,691 @@
+[
+  {
+    "id": "anp-fetal-development-circulation-1",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "A 38-year-old with a patent foramen ovale has a clot in a leg vein. While straining to lift a heavy box, she has a stroke. Why did straining matter?",
+    "options": [
+      "Straining raised left atrial pressure, which pushed the clot backward",
+      "Straining made the ductus arteriosus reopen",
+      "Straining sent the clot through the lungs faster than they could trap it",
+      "Right atrial pressure briefly rose above left, opening the flap"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Normally left atrial pressure is higher, which keeps the septum primum flap pressed shut over the foramen ovale. Straining briefly raises right atrial pressure above left. The flap swings open toward the left, and a clot arriving in the right atrium can cross into the left atrium and travel to the brain.",
+      "options": [
+        "Higher left atrial pressure presses the flap shut. The flap opens only when right atrial pressure is higher.",
+        "The ductus arteriosus closes permanently soon after birth and does not reopen with straining. The opening involved is between the atria.",
+        "Clots in the lungs lodge in the pulmonary arteries; they do not pass through by speed. This clot bypassed the lungs through the atrial opening.",
+        "Correct. The pressure difference reverses and the one-way flap opens right to left."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "q": "Why does most of the blood the fetal right ventricle pumps into the pulmonary trunk flow through the ductus arteriosus instead of the lungs?",
+    "options": [
+      "The pulmonary valve directs it toward the ductus",
+      "The lungs are too small to hold any blood",
+      "The fluid-filled lungs resist flow far more",
+      "The ductus arteriosus pumps blood actively"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Blood takes the path of lower resistance. The fetal lungs are filled with fluid, and low oxygen narrows their vessels, so their resistance is high. The ductus arteriosus is a wide channel into the aorta, whose pressure is kept low by the placenta.",
+      "options": [
+        "The pulmonary valve only stops backflow into the right ventricle. It does not steer blood.",
+        "The fetal lungs do receive some blood, about a tenth to a quarter of both ventricles' output together. The question is why the rest goes elsewhere.",
+        "Correct. Flow follows the lower resistance, into the ductus.",
+        "The ductus has smooth muscle that can narrow it, but it does not pump. Pressure differences drive flow through it."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-3",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Put the path of oxygen-rich blood from the placenta to the fetal brain in order.",
+    "options": [
+      "Umbilical vein",
+      "Ductus venosus",
+      "Inferior vena cava and right atrium",
+      "Foramen ovale and left atrium",
+      "Left ventricle",
+      "Ascending aorta and the arteries to the head"
+    ],
+    "why": {
+      "correct": "Oxygen-rich blood leaves the placenta in the umbilical vein, partly bypasses the liver through the ductus venosus, enters the inferior vena cava and right atrium, and is aimed through the foramen ovale into the left atrium. The left ventricle pumps it into the ascending aorta, whose first branches supply the heart and head."
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-44",
+    "pin": "ductus-arteriosus",
+    "q": "Name the pinned fetal shunt.",
+    "options": [
+      "Ductus venosus",
+      "Foramen ovale",
+      "Ductus arteriosus",
+      "Umbilical vein"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The ductus arteriosus is the short channel between the pulmonary trunk and the aorta. It carries most of the right ventricle's output past the lungs.",
+      "options": [
+        "The ductus venosus lies at the liver and links the umbilical vein to the inferior vena cava.",
+        "The foramen ovale is an opening in the wall between the atria, inside the heart.",
+        "Correct. This channel from the pulmonary trunk to the aorta is the ductus arteriosus.",
+        "The umbilical vein runs from the placenta through the cord to the liver."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-20-44",
+    "pin": "ductus-venosus",
+    "q": "Name the pinned fetal shunt.",
+    "options": [
+      "Ductus venosus",
+      "Ductus arteriosus",
+      "Hepatic portal vein",
+      "Inferior vena cava"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The ductus venosus carries oxygen-rich blood from the umbilical vein straight to the inferior vena cava, bypassing the liver.",
+      "options": [
+        "Correct. This shunt at the liver is the ductus venosus.",
+        "The ductus arteriosus is near the heart, between the pulmonary trunk and the aorta.",
+        "The hepatic portal vein carries blood from the gut into the liver. The pinned vessel goes past the liver instead.",
+        "The inferior vena cava is the large vein the ductus venosus empties into, not the shunt itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-6",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "At 32 weeks of pregnancy, a woman takes high doses of ibuprofen, which blocks prostaglandin synthesis, for several days. Predict each variable in the fetus.",
+    "variables": [
+      {
+        "name": "Prostaglandin levels acting on the ductus arteriosus",
+        "answer": "down",
+        "why": "Ibuprofen crosses the placenta and blocks the enzyme that makes prostaglandins in the fetus and placenta."
+      },
+      {
+        "name": "Diameter of the ductus arteriosus",
+        "answer": "down",
+        "why": "Prostaglandins keep the ductus's smooth muscle relaxed. Without them it contracts and narrows."
+      },
+      {
+        "name": "Pressure in the fetal pulmonary trunk and right ventricle",
+        "answer": "up",
+        "why": "The narrowed ductus resists the right ventricle's outflow, so pressure builds up behind it."
+      },
+      {
+        "name": "Blood flow through the fetal lungs",
+        "answer": "up",
+        "why": "With the ductus narrowed, more of the right ventricle's output is forced into the pulmonary arteries."
+      },
+      {
+        "name": "Amniotic fluid volume",
+        "answer": "down",
+        "why": "Prostaglandins also help keep fetal kidney blood flow up. Blocking them lowers fetal urine output, which is most of the amniotic fluid late in pregnancy."
+      }
+    ],
+    "why": {
+      "correct": "Prostaglandins hold the ductus arteriosus open. Blocking them late in pregnancy narrows it, so pressure rises in the right ventricle and pulmonary trunk and more blood is forced through the high-resistance lungs. The same drug lowers fetal urine output across another system, shrinking the amniotic fluid. That is why such drugs are avoided late in pregnancy."
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which fetal vessel carries the blood with the highest oxygen saturation?",
+    "options": [
+      "The umbilical arteries",
+      "The pulmonary trunk",
+      "The descending aorta",
+      "The umbilical vein"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The umbilical vein carries blood straight from the placenta, where it picked up oxygen, at about 80% saturation. Everywhere else, it has mixed with oxygen-poor blood or given up oxygen to tissues.",
+      "options": [
+        "The umbilical arteries carry blood back to the placenta after the fetal tissues have taken oxygen from it. They have the lowest saturation of these.",
+        "The pulmonary trunk carries mostly oxygen-poor blood from the head and arms, pumped by the right ventricle.",
+        "The descending aorta carries a mix, including oxygen-poor blood from the ductus arteriosus.",
+        "Correct. The umbilical vein carries the freshest blood from the placenta."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every structure or circuit that one of the fetal shunts lets blood bypass, at least in part.",
+    "options": [
+      "The liver",
+      "The lungs",
+      "The left ventricle",
+      "The brain",
+      "The right ventricle",
+      "The placenta"
+    ],
+    "correct": [
+      0,
+      1,
+      4
+    ],
+    "why": {
+      "correct": "The ductus venosus lets blood bypass the liver. The foramen ovale lets blood bypass the right ventricle and lungs, and the ductus arteriosus lets the right ventricle's output bypass the lungs. The shunts deliver blood to the left ventricle, the brain and the placenta; they do not route blood around them.",
+      "options": [
+        "Correct. The ductus venosus carries part of the umbilical blood past the liver.",
+        "Correct. Both the foramen ovale and the ductus arteriosus route blood around the lungs.",
+        "Blood crossing the foramen ovale goes into the left ventricle, so no shunt bypasses it.",
+        "The shunts send the best-oxygenated blood to the brain. They do not bypass it.",
+        "Correct. Blood crossing the foramen ovale skips the right ventricle.",
+        "The umbilical arteries carry blood to the placenta. No shunt bypasses it."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A teenager with XY chromosomes comes to a clinic because she has never had a period. She has female external genitalia and breasts, a short vagina, no uterus, and testes in her abdomen. Her testosterone is high, but her cells lack a working receptor protein for androgens. Why is there no uterus?",
+    "options": [
+      "Her testes made anti-Müllerian hormone",
+      "Without androgen action, the mesonephric ducts could not form a uterus",
+      "Her ovaries never formed, and ovaries make the uterus",
+      "High testosterone destroyed the uterus after puberty"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Her Sertoli cells work normally and secreted anti-Müllerian hormone before birth, so the paramesonephric ducts, which would have formed the uterus and uterine tubes, broke down. Because no tissue responds to androgens, her mesonephric ducts also broke down and her external genitalia developed as female.",
+      "options": [
+        "Correct. Anti-Müllerian hormone acts without androgen receptor proteins, so the uterus never formed.",
+        "The uterus comes from the paramesonephric ducts, not the mesonephric ducts.",
+        "The uterus forms from ducts, not from the ovaries. She has testes, which removed those ducts before birth.",
+        "Her testosterone cannot act on her cells at all, and the uterus was absent from before birth."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A boy with XY chromosomes has normal testes, normal testosterone and male external genitalia. During a hernia repair, the surgeon finds a small uterus and uterine tubes beside his ductus deferens. Which hormone most likely failed before birth?",
+    "options": [
+      "Testosterone",
+      "Dihydrotestosterone",
+      "Anti-Müllerian hormone",
+      "hCG"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Anti-Müllerian hormone from the Sertoli cells normally makes the paramesonephric ducts break down. If it is missing or cannot act, those ducts survive and form a uterus and tubes, while testosterone still keeps the mesonephric ducts and DHT still makes the external genitalia male.",
+      "options": [
+        "Testosterone worked, since his mesonephric ducts formed a normal ductus deferens.",
+        "DHT worked, since his external genitalia are male.",
+        "Correct. Without anti-Müllerian hormone, the paramesonephric ducts persist.",
+        "hCG drives the fetal Leydig cells to make testosterone. His testosterone-dependent structures are normal, so hCG action was adequate."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-11",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-19-36",
+    "pin": "truncus-arteriosus",
+    "q": "Name the pinned region of the embryonic heart tube, at its outflow end.",
+    "options": [
+      "Sinus venosus",
+      "Bulbus cordis",
+      "Primitive atrium",
+      "Truncus arteriosus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The truncus arteriosus is the outflow end of the heart tube, at the head end. A spiral wall later splits it into the ascending aorta and the pulmonary trunk.",
+      "options": [
+        "The sinus venosus is the inflow end, where the veins drain in, at the tail end of the tube.",
+        "The bulbus cordis is the next region in from the outflow end. It becomes most of the right ventricle.",
+        "The primitive atrium lies toward the inflow end, between the ventricle and the sinus venosus.",
+        "Correct. The outflow end is the truncus arteriosus."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The SA node lies in the wall of the right atrium near the superior vena cava. From which region of the embryonic heart tube does that part of the atrium develop?",
+    "options": [
+      "Bulbus cordis",
+      "Sinus venosus",
+      "Truncus arteriosus",
+      "Primitive ventricle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The sinus venosus, the inflow chamber the veins drained into, is absorbed into the back wall of the right atrium. It forms the smooth part of that wall, the coronary sinus and the region of the SA node, which is why the node is named for it.",
+      "options": [
+        "The bulbus cordis forms most of the right ventricle and the outflow parts of both ventricles.",
+        "Correct. The sinus venosus forms the smooth back wall of the right atrium, where the SA node sits.",
+        "The truncus arteriosus forms the ascending aorta and pulmonary trunk.",
+        "The primitive ventricle forms most of the left ventricle."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student described how the heart forms. One step is wrong. Which one?",
+    "options": [
+      "Mesoderm at the head end of the disc forms the cardiogenic area",
+      "Cardiogenic cords hollow out into two endocardial tubes",
+      "The two tubes fuse into one primitive heart tube as the embryo folds",
+      "The heart tube starts beating at about week 8, once four chambers exist",
+      "The tube loops into an S shape, and septa divide it into four chambers"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The heart tube starts beating at about day 22 after fertilization, before it loops and long before the septa finish dividing it. It is the first organ to work.",
+      "options": [
+        "This step is right. The cardiogenic area forms around day 18.",
+        "This step is right. The cords hollow into paired endocardial tubes.",
+        "This step is right. Side-to-side folding brings the tubes together to fuse around day 21 to 22.",
+        "This is the error. The tube beats from about day 22, well before the chambers are divided.",
+        "This step is right. Looping and septation follow in weeks 4 to 7."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-14",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Complete the sequence of heart formation: cardiogenic area → cardiogenic cords → ____ → primitive heart tube.",
+    "options": [
+      "Endocardial tubes",
+      "Blood islands",
+      "Endocardial cushions",
+      "Septum primum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The cardiogenic cords hollow out into two endocardial tubes, which fuse into the primitive heart tube.",
+      "options": [
+        "Correct. The paired endocardial tubes come between the cords and the single tube.",
+        "Blood islands are clusters of hemangioblasts that form vessels and blood cells, not the heart tube.",
+        "Endocardial cushions form later, inside the looped tube, and divide the canal between atrium and ventricle.",
+        "The septum primum forms later still, when the atria are divided."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "A 3-month-old has a large ventricular septal defect, fast breathing and poor feeding, but pink skin. Which way does blood flow through the defect, and why is the baby not cyanotic?",
+    "options": [
+      "Left to right, so no oxygen-poor blood reaches the body",
+      "Right to left, with the lungs still resisting flow as before birth",
+      "Left to right, driven by a stronger right ventricle",
+      "Right to left, but the lungs then remove the extra carbon dioxide before it reaches the body"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "After birth, left ventricular pressure is much higher than right, so oxygen-rich blood is pushed from left to right through the hole. That extra blood recirculates through the lungs and overloads them, causing fast breathing, but it does not send oxygen-poor blood to the body, so the skin stays pink.",
+      "options": [
+        "Correct. Left-to-right flow overloads the lungs but does not cause cyanosis.",
+        "After birth, the lungs' resistance falls far below its fetal level, so right-sided pressures become lower than left.",
+        "The direction is left to right, but because the left ventricle generates the higher pressure, not the right.",
+        "Right-to-left flow would send oxygen-poor blood into the aorta and cause cyanosis, which this baby does not have."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A woman learns she took a drug known to cause limb defects on day 10 after fertilization, before she knew she was pregnant. Based on the timing of development, what is the most likely outcome?",
+    "options": [
+      "Missing or shortened limbs",
+      "Poor growth in late pregnancy only",
+      "A heart defect in place of a limb defect",
+      "Loss of the pregnancy or no lasting effect"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In the first two weeks after fertilization, before the germ layers form, an exposure usually either ends the pregnancy or does no lasting harm, because the few cells can replace damaged ones. Limb buds do not appear until near the end of week 4.",
+      "options": [
+        "Limb defects need exposure while the limbs are forming, from about week 4 to week 8 after fertilization.",
+        "Poor growth comes from exposures in the fetal period. This exposure was far earlier.",
+        "Organs are not yet forming on day 10, so the drug has no heart or limb tissue to disrupt.",
+        "Correct. Before week 3, the effect is usually all or none."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A woman who was never vaccinated catches rubella in week 8 of pregnancy. Her baby is later born with cataracts. Which other findings are most typical of this infection?",
+    "options": [
+      "Deafness and a patent ductus arteriosus",
+      "Extra fingers and a cleft lip",
+      "An unusually large head and long limbs",
+      "Absent kidneys and too much amniotic fluid"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Rubella virus crosses the placenta and damages the eye, inner ear and heart while they form, early in pregnancy. The classic trio is cataracts, deafness and heart defects, among them a patent ductus arteriosus.",
+      "options": [
+        "Correct. Cataracts, deafness and heart defects go together in congenital rubella.",
+        "Extra fingers and cleft lip are not the typical pattern of rubella.",
+        "Rubella tends to cause a small head and poor growth, not overgrowth.",
+        "Absent kidneys cause too little amniotic fluid, not too much, and are not typical of rubella."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-18",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A newborn coughs, chokes and turns blue with every feed, and milk appears in his airway. Which developmental step most likely failed?",
+    "options": [
+      "Branching of the lung buds into the bronchial tree",
+      "Separating the trachea from the foregut",
+      "Formation of the olfactory pits",
+      "Surfactant production by type II cells"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The trachea grows as a bud from the front of the foregut, and a wall of tissue normally separates it from the esophagus behind. If the separation is incomplete, an abnormal connection lets milk from the esophagus pass into the trachea.",
+      "options": [
+        "Poor branching would leave small lungs, but it would not let milk into the airway.",
+        "Correct. Incomplete separation leaves a connection between the esophagus and trachea.",
+        "The olfactory pits form the nasal cavities. A problem there would not link the esophagus to the trachea.",
+        "Too little surfactant makes the lungs stiff, but it does not cause choking on feeds."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A baby is born at 27 weeks of pregnancy. Within hours, her breathing is fast and labored and her lungs are stiff. Her mother had not received any drug before the birth. What is the most likely reason?",
+    "options": [
+      "Her lungs are still in the branching stage, with no respiratory bronchioles",
+      "Her type II cells have not yet made enough surfactant",
+      "Her ductus venosus is still open",
+      "Her foramen ovale closed too early"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "At 27 weeks the lungs are between the canalicular and saccular stages. Type II cells are present, but they usually make enough surfactant only by weeks 34 to 36. Without it, surface tension collapses the alveoli, making the lungs stiff. A glucocorticoid given to the mother before the birth would have sped surfactant production.",
+      "options": [
+        "The branching stage ends around week 17. By 27 weeks respiratory bronchioles and early air sacs have formed.",
+        "Correct. Too little surfactant makes preterm lungs stiff.",
+        "The ductus venosus carries blood past the liver. It does not affect how stiff the lungs are.",
+        "Early closure of the foramen ovale would strain the fetal right heart before birth. It would not make the lungs stiff."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What do fetal breathing movements mainly accomplish before birth?",
+    "options": [
+      "They deliver oxygen from the amniotic fluid to the fetal blood",
+      "They remove carbon dioxide from the fetal blood",
+      "They stretch the lungs, which drives lung growth",
+      "They pump blood through the ductus arteriosus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Fetal breathing movements move small amounts of fluid in and out of the airways. Together with the fluid the lungs secrete, they keep the lungs stretched, and that stretch drives lung growth. No gas exchange happens in the fetal lungs.",
+      "options": [
+        "The fetus gets all its oxygen across the placenta. The lungs exchange no gas before birth.",
+        "Carbon dioxide leaves the fetus across the placenta, not through the lungs.",
+        "Correct. The movements and lung fluid stretch the lungs, and stretch drives their growth.",
+        "The ductus arteriosus carries blood driven by the right ventricle. Breathing movements do not pump it."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-21",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is quickening?",
+    "options": [
+      "The first heartbeat of the embryo",
+      "The appearance of lanugo on the fetus",
+      "The moment the fetus becomes viable",
+      "The mother's first feeling of the fetus moving"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Quickening is when a pregnant woman first feels the fetus move, usually around weeks 16 to 20 of pregnancy, a little earlier in later pregnancies.",
+      "options": [
+        "The heart begins beating about day 22 after fertilization, weeks before anyone can feel movement.",
+        "Lanugo is the fine hair that covers the fetus from about mid-pregnancy.",
+        "Viability, about weeks 22 to 24, is when a baby born can sometimes survive with intensive care.",
+        "Correct. Quickening is the first felt movement."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-22",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Two babies are born on the same day: one at 30 weeks of pregnancy, one at 41 weeks. Which description fits the baby born at 30 weeks?",
+    "options": [
+      "Plump, with little lanugo and most vernix caseosa gone",
+      "Covered in thick scalp hair, with fully mature lungs and plenty of body fat",
+      "Thin and red, with lanugo and vernix caseosa",
+      "Wrinkled and peeling, with long fingernails"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At 30 weeks, the fetus has not yet stored much fat, so the skin looks thin and red. Lanugo still covers the body, and vernix caseosa still coats the skin. Both are mostly gone by term.",
+      "options": [
+        "A plump baby with little lanugo and little vernix fits one born at or after term.",
+        "At 30 weeks the lungs are not yet mature; surfactant is usually enough only by 34 to 36 weeks.",
+        "Correct. Little fat, plenty of lanugo and vernix fit 30 weeks.",
+        "Dry, peeling skin and long nails are typical of a baby born after 41 or 42 weeks, once the vernix has gone."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-23",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every statement that correctly describes how the first blood vessels form.",
+    "options": [
+      "Hemangioblasts gather into blood islands",
+      "The first blood islands appear in the wall of the yolk sac",
+      "Angioblasts at the edge of an island become endothelium",
+      "The first vessels sprout from the heart tube",
+      "Cells in the center of an island become early blood cells"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "In vasculogenesis, hemangioblasts cluster into blood islands, first in the yolk sac wall. Angioblasts at the edge flatten into endothelium, and the cells in the center become the first blood cells. The islands join into vascular tubes, and later vessels sprout from existing ones by angiogenesis.",
+      "options": [
+        "Correct. Blood islands are clusters of hemangioblasts.",
+        "Correct. The yolk sac wall has the first blood islands, around day 17.",
+        "Correct. Angioblasts form the endothelium.",
+        "The first vessels form from scratch in blood islands. The heart tube links up with them; it does not sprout them.",
+        "Correct. The center of each island makes the first blood cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-24",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-19-36",
+    "pin": "septum-primum",
+    "q": "Name the pinned structure, the first wall to grow down between the atria.",
+    "options": [
+      "Interventricular septum",
+      "Septum primum",
+      "Endocardial cushion",
+      "Foramen ovale"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The septum primum is the thin first wall that grows down from the roof of the atrium. Its lower part later acts as the flap over the foramen ovale.",
+      "options": [
+        "The interventricular septum divides the ventricles, lower in the heart.",
+        "Correct. This is the septum primum.",
+        "The endocardial cushions are pads that divide the canal between atrium and ventricle, not the wall growing down from the atrial roof.",
+        "The foramen ovale is the opening between the atria, not a wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-fetal-development-circulation-25",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A woman is at week 30 of pregnancy. Which trimester is she in?",
+    "options": [
+      "First",
+      "Second",
+      "Third",
+      "Between the second and third"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The third trimester runs from week 28 of pregnancy to birth, so week 30 is in it.",
+      "options": [
+        "The first trimester ends at the end of week 13.",
+        "The second trimester runs from week 14 to the end of week 27.",
+        "Correct. Week 30 is in the third trimester.",
+        "Trimesters meet at a set week; there is no gap between them. The third begins at week 28."
+      ]
+    }
+  }
+]

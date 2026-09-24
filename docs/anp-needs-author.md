@@ -117,7 +117,8 @@ review by a licensed A&P instructor.
   make some; in humans the liver makes roughly 10% of it, though the liver dominates uptake and
   clearance (Dietschy & Turley 2002).
 - **For your exam:** many texts say "the liver makes most (about 80%) of your cholesterol". A
-  For your exam note has not been added yet; the reviewer should decide whether one is needed.
+  For your exam note giving that answer is now in `lipid-protein-metabolism` (Phase 2); the ~10%
+  human figure is described there as an estimate extrapolated from animal measurements.
 
 ### adult-neurogenesis: do adult human brains make new neurons?
 - **Status:** pending review.
@@ -392,6 +393,42 @@ review by a licensed A&P instructor.
 - **Where:** `digestion-absorption`.
 - **Evidence-based position:** a large share, perhaps most, enters the absorptive cells as di- and tripeptides on the PepT1 carrier and is split inside the cell, so the blood receives free amino acids.
 - **For your exam:** "absorbed as amino acids" (still right for what reaches the blood).
+
+### ketone-levels: how high ketones go
+- **Status:** pending review.
+- **Where:** `lipid-protein-metabolism`, `absorptive-postabsorptive`, `acid-base-disorders`.
+- **Evidence-based position:** nutritional ketosis about 0.5–3 mmol/L; prolonged fasting about 5–7 mmol/L with normal pH, because insulin is still present; ketoacidosis at 3 mmol/L or more with acidosis, often 5–10 or more (2024 consensus).
+- **For your exam:** texts often give a single cutoff (ketosis below 3, ketoacidosis above). Pair the level with the pH and insulin state.
+
+### brain-fatty-acids: can the brain use fatty acids?
+- **Status:** pending review.
+- **Where:** `lipid-protein-metabolism`, `absorptive-postabsorptive`, `pancreas-glucose`.
+- **Evidence-based position:** fatty acids cross into the brain, but neurons oxidize very little of them; astrocytes oxidize some. The course teaches "the brain burns little fatty acid", not "it cannot take them up".
+- **For your exam:** many texts say fatty acids cannot cross the blood–brain barrier, so the brain cannot use them.
+
+### hdl-marker: is HDL protective?
+- **Status:** pending review.
+- **Where:** `lipid-protein-metabolism`.
+- **Evidence-based position:** high HDL goes with lower risk, but genetic studies and drug trials show raising HDL does not itself lower risk; HDL is taught as a marker, LDL as causal.
+- **For your exam:** HDL is "good cholesterol" that protects against heart disease.
+
+### dietary-guidelines-icon: plate or pyramid?
+- **Status:** pending review.
+- **Where:** `energy-balance-thermoregulation`.
+- **Evidence-based position:** the 2025–2030 U.S. edition (January 2026) returns to a food pyramid; MyPlate (2011) was the previous icon. The page shows MyPlate (the only OpenStax figure) and says so. An author should verify the new pyramid's layout and advice on dietaryguidelines.gov before the page describes them.
+- **For your exam:** most current textbooks and the TEAS were written in the MyPlate era and may expect the plate.
+
+### 3500-kcal-rule: a pound of fat
+- **Status:** pending review.
+- **Where:** `energy-balance-thermoregulation`.
+- **Evidence-based position:** about 3,500 kcal is the energy in a pound of adipose tissue, but weight change is not linear: early loss is larger (glycogen and water) and over months the rule overestimates, because energy use adapts (Hall 2011).
+- **For your exam:** 3,500 kcal = 1 lb, so a 500 kcal/day deficit loses 1 lb a week.
+
+### fasting-brain-fuel-day3: how much glucose the brain uses on day 3 of a fast
+- **Status:** pending review.
+- **Where:** predict tool (long-fast scenario), fasting graph.
+- **Evidence-based position:** by about day 3.5, ketone bodies supply about a quarter of the brain's energy and cortical glucose use has fallen about a quarter (Hasselbalch 1994). The tool still keys day-3 brain glucose as "no change" (about 120 g); the auditor recommends keying it "down" and lowering the graph's day-3 point to about 95–100 g. Not applied; author to decide.
+- **For your exam:** the brain uses about 120 g of glucose a day until it switches to ketones over weeks.
 
 ## Open items
 
@@ -731,6 +768,44 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   sphincter of Oddi, short-chain fatty acids, oral rehydration, portal hypertension, ascites.
 - **Etymology to confirm:** haustrum, epiploic, cirrhosis, emulsify, dextrin, micelle,
   deglutition ("de-" = down).
+
+## Phase 2: metabolism and nutrition chapter, judgment calls for instructor review
+
+- **Positions taught:** ATP 30–32 per glucose (exam 36–38); lactate as a fuel and the Cori cycle
+  with its cost; most stored fat comes from dietary fat; glucagon has little direct effect on
+  human fat tissue (lipolysis in untreated diabetes driven by epinephrine, cortisol and growth
+  hormone); after a meal gluconeogenesis slows and feeds glycogen; kwashiorkor is not simply
+  protein lack; brown fat's role in adults is unsettled; "most heat is lost through the head" is
+  a myth; the thyroid is slow and minor in adult temperature control; in heat, gut and kidney
+  vessels narrow; core temperature 36.6–37 °C with a For your exam note for 37 °C; chromium is
+  left off the trace-mineral list (its essential status is debated).
+- **Normal values chosen:** BMR 1,200–1,800 kcal a day (60–70% of the total); food handling
+  about 10%; 4.8 kcal per liter of oxygen; about 580 kcal per liter of sweat evaporated;
+  resting heat loss 60% radiation, 3% conduction, 15% convection, 20% evaporation; skin blood
+  flow up to 6–8 L/min; sweat 1–2 L an hour; shivering 3–5 times resting heat; heat stroke above
+  40 °C; hypothermia stages 35/32/28 °C; frostbite rewarmed at 37–39 °C; about 12 kg of fat
+  (about 100,000 kcal) in a lean adult; palmitate 106 ATP; protein turnover 250–300 g and urea
+  20–30 g a day; Cahill fasting values (protein 75 to 20 g, brain glucose 120 to 40 g a day);
+  9 essential amino acids; iodine 150 µg; folate 400 µg; scurvy after 1–3 months; B12 stores
+  3–5 years; the RDA covers 97–98% of people; GLP-1 drugs about 15% weight loss; statins lower
+  LDL by a third to a half.
+- **Tool values:** the fasting fuel and heat-loss graphs are schematic (heat made about 75
+  kcal/h; evaporation floors at about 15 kcal/h in cool air); the ATP-count practice uses
+  matched value sets only.
+- **Figures:** Figure 24.8 prints "FAD+" (covered); 24.5 says "energy-releasing phase" (the course
+  says energy-yielding); 24.14 leaves out the third acetyl CoA in ketone body synthesis; 24.23
+  shows the thyroid as a temperature effector and says gut blood flow is not diverted in heat
+  (the heat label is covered, the caption corrects it); 24.3 prints "starvation response" and
+  "cannibalization of muscle" (covered until starvation is taught); 24.9, 24.21, 24.22, 24.16,
+  24.10, 24.13 and 24.18 not used (errors or heavy chemistry).
+- **Ordering workarounds:** "diabetic ketoacidosis" is written "ketoacidosis in untreated type 1
+  diabetes" until acid–base; ammonium is written NH4+.
+- **Map gaps:** the individual vitamins and deficiency diseases, omega-3 and omega-6,
+  substrate-level phosphorylation, the mitochondrial matrix, glycogen synthase and phosphorylase,
+  glucose-6-phosphatase, phosphorolysis, the Cori cycle, carnitine, HMG CoA reductase and
+  statins, ALT and AST, marasmus, refeeding syndrome, the preoptic area, heat acclimatization,
+  GLP-1.
+- **Etymology to confirm:** kwashiorkor, ghrelin, vitamin, chemiosmosis.
 
 ## Decided at the Phase 0 reviews
 

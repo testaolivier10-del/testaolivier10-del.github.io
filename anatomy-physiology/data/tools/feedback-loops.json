@@ -2858,7 +2858,7 @@
         "gradients"
       ],
       "kind": "negative",
-      "scenario": "You jump up from a chair and your mean arterial pressure rises from 95 to 115 mm Hg for a minute. Within seconds, your GFR has barely changed.",
+      "scenario": "A sudden fright makes your mean arterial pressure jump from 95 to 115 mm Hg for a minute. Within seconds, your GFR has barely changed.",
       "slots": {
         "stimulus": {
           "text": "Arterial pressure rises and stretches the afferent arteriole wall",
@@ -3038,9 +3038,9 @@
           "why": "A higher pressure reaches the peritubular capillaries and vasa recta even when autoregulation protects the glomerulus."
         },
         "sensor": {
-          "text": "Proximal tubule cells exposed to higher pressure in the kidney’s interstitial fluid",
-          "short": "Tubule cells sense interstitial pressure",
-          "why": "The pressure in the fluid around the tubules rises, and the proximal tubule cells respond to it."
+          "text": "The kidney tissue itself: the higher pressure reaches the peritubular capillaries and vasa recta and raises the pressure in the interstitial fluid around the tubules",
+          "short": "Kidney tissue (interstitial pressure)",
+          "why": "No single sensory receptor is known. The pressure change is passed on through the kidney’s interstitial fluid, and local signals such as nitric oxide carry it to the tubule cells, which respond to it."
         },
         "afferent": {
           "text": "No nerve or hormone: the tubule cells respond where they sit",
@@ -3102,6 +3102,356 @@
           {
             "text": "The kidneys excrete more salt than normal at every pressure, so pressure falls",
             "why": "That would lower pressure, the opposite of what is seen in long-standing hypertension."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "rp-testosterone-axis",
+      "title": "Testosterone falls: the male HPG axis",
+      "topic": "male-physiology",
+      "map": "Testosterone (male HPG axis)",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "A man’s blood testosterone dips below its usual range. Within hours, his hypothalamus speeds its GnRH pulses, his pituitary releases more LH, and his testes bring testosterone back up.",
+      "slots": {
+        "stimulus": {
+          "text": "Blood testosterone falls below its set point",
+          "short": "Testosterone falls",
+          "why": "The regulated variable is the level of testosterone in the blood."
+        },
+        "sensor": {
+          "text": "Hypothalamic neurons and pituitary cells with androgen (and estrogen) receptor proteins",
+          "short": "Hypothalamus and pituitary cells",
+          "why": "These cells read the testosterone level through androgen receptor proteins, and through estrogen receptor proteins after the brain converts some testosterone to estradiol. Less testosterone means a weaker brake."
+        },
+        "afferent": {
+          "text": "Testosterone carried in the blood to the brain and pituitary",
+          "short": "Testosterone in the blood",
+          "why": "The information travels as the hormone level itself. No nerve reports it."
+        },
+        "control": {
+          "text": "The hypothalamus, releasing GnRH in pulses",
+          "short": "Hypothalamus (GnRH)",
+          "why": "The hypothalamus sets the GnRH pulse rate, and the pulses set how much LH the pituitary releases."
+        },
+        "efferent": {
+          "text": "GnRH in the portal vessels, then LH in the blood",
+          "short": "GnRH, then LH",
+          "why": "GnRH reaches the anterior pituitary through the hypophyseal portal vessels; LH then carries the command to the testes."
+        },
+        "effector": {
+          "text": "Leydig (interstitial) cells of the testes",
+          "short": "Leydig cells",
+          "why": "LH binds receptor proteins on the Leydig cells between the tubules, which make testosterone from cholesterol."
+        },
+        "response": {
+          "text": "Testosterone release rises back toward the set point",
+          "short": "More testosterone released",
+          "why": "The response opposes the fall, and the rising testosterone then brakes GnRH and LH again."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Sertoli cells release inhibin",
+          "why": "Inhibin is the brake on FSH in a separate arm of the axis. It does not make testosterone."
+        },
+        {
+          "text": "FSH acting on the Leydig cells",
+          "why": "FSH acts on the Sertoli cells. LH is the hormone that drives the Leydig cells."
+        },
+        {
+          "text": "The posterior pituitary releases LH",
+          "why": "LH comes from the anterior pituitary. The posterior pituitary releases only ADH and oxytocin."
+        }
+      ],
+      "classify": "The response (more testosterone) opposes the stimulus (low testosterone), and the restored level brakes GnRH and LH again, so this is negative feedback.",
+      "failure": {
+        "part": "sensor",
+        "q": "In androgen insensitivity, the androgen receptor protein does not work. What happens to LH and testosterone in an XY person with working testes?",
+        "options": [
+          {
+            "text": "Both are high",
+            "why": "Right. The brain cannot read testosterone well, so it keeps signaling as if testosterone were low: LH rises and drives the Leydig cells to make even more testosterone, which the tissues still cannot use."
+          },
+          {
+            "text": "Both are low",
+            "why": "That is the pattern of pituitary or hypothalamic failure, where nothing drives the testes. Here the pituitary is healthy and unbraked."
+          },
+          {
+            "text": "LH is high and testosterone is low",
+            "why": "That is the pattern when the testes themselves fail. Here the testes work and respond to the extra LH."
+          },
+          {
+            "text": "Both are normal, because the loop does not need the sensor",
+            "why": "The sensor is how the loop learns the testosterone level. Without it the brake is weak and the axis runs high."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "rp-inhibin-fsh",
+      "title": "Inhibin and FSH: the second brake",
+      "topic": "male-physiology",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "Sperm production in a man’s tubules slows for a while, and his Sertoli cells release less inhibin. His FSH creeps up, and the extra FSH drives the Sertoli cells to support spermatogenesis harder.",
+      "slots": {
+        "stimulus": {
+          "text": "Sertoli cell activity falls, so less inhibin enters the blood",
+          "short": "Inhibin falls",
+          "why": "Inhibin from the Sertoli cells is the signal that reports how hard the tubules are working."
+        },
+        "sensor": {
+          "text": "FSH-releasing cells of the anterior pituitary that respond to inhibin",
+          "short": "Pituitary FSH cells",
+          "why": "Inhibin acts on the pituitary and lowers FSH release selectively, with little effect on LH. Less inhibin means a weaker brake."
+        },
+        "afferent": {
+          "text": "Inhibin carried in the blood to the pituitary",
+          "short": "Inhibin in the blood",
+          "why": "Inhibin is a protein hormone, so the information travels in the blood."
+        },
+        "control": {
+          "text": "The anterior pituitary, setting its FSH release",
+          "short": "Anterior pituitary",
+          "why": "Inhibin works at the pituitary rather than the hypothalamus, so the pituitary decides how much FSH to release for each GnRH pulse."
+        },
+        "efferent": {
+          "text": "FSH carried in the blood to the testes",
+          "short": "FSH in the blood",
+          "why": "FSH is the pituitary hormone that carries the command to the tubules."
+        },
+        "effector": {
+          "text": "Sertoli (sustentacular) cells",
+          "short": "Sertoli cells",
+          "why": "FSH binds receptor proteins on the Sertoli cells, which, with testosterone, support the developing sperm cells."
+        },
+        "response": {
+          "text": "Spermatogenesis is supported more and inhibin release rises back",
+          "short": "More support; inhibin rises",
+          "why": "The Sertoli cells work harder and release more inhibin, which brakes FSH again."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Leydig cells release testosterone into the blood",
+          "why": "That is the LH arm of the axis, braked mainly by testosterone itself, not by inhibin."
+        },
+        {
+          "text": "Inhibin brakes LH strongly",
+          "why": "Inhibin lowers FSH selectively, with little effect on LH."
+        },
+        {
+          "text": "Androgen-binding protein releases testosterone",
+          "why": "Androgen-binding protein holds testosterone inside the tubule; it does not release it or regulate FSH."
+        }
+      ],
+      "classify": "The response (more Sertoli activity and more inhibin) opposes the stimulus (low inhibin), so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "After some kinds of chemotherapy, the germ cells are destroyed but the Sertoli and Leydig cells survive. What hormone pattern results?",
+        "options": [
+          {
+            "text": "High FSH, normal LH and testosterone",
+            "why": "Right. Sertoli cells with no germ cells to support release less inhibin, so FSH rises. The Leydig cells and their testosterone brake on LH are unaffected."
+          },
+          {
+            "text": "High FSH, high LH, low testosterone",
+            "why": "That is the pattern when the whole testis fails, including the Leydig cells."
+          },
+          {
+            "text": "Low FSH, low LH, low testosterone",
+            "why": "That is the pattern of pituitary or hypothalamic failure, not of lost germ cells."
+          },
+          {
+            "text": "Normal FSH, because FSH is set by testosterone alone",
+            "why": "FSH has its own brake, inhibin, which is exactly what falls when germ cells are lost."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "rp-follicular-fsh",
+      "title": "The follicular phase: estradiol and inhibin hold FSH down",
+      "topic": "female-hormones-cycle",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "As the old corpus luteum dies, its hormones fall and FSH climbs. A group of follicles grows, their estradiol and inhibin rise, and FSH falls again, leaving one follicle that can still grow.",
+      "slots": {
+        "stimulus": {
+          "text": "Estradiol and inhibin from the ovary fall",
+          "short": "Estradiol and inhibin fall",
+          "why": "When the corpus luteum dies, the ovarian hormones that were braking FSH fall."
+        },
+        "sensor": {
+          "text": "Hypothalamic neurons and pituitary cells that respond to estradiol and inhibin",
+          "short": "Hypothalamus and pituitary cells",
+          "why": "Estradiol acts through estrogen receptor proteins in both places; inhibin acts on the pituitary. Less of both means a weaker brake."
+        },
+        "afferent": {
+          "text": "Estradiol and inhibin carried in the blood",
+          "short": "Hormones in the blood",
+          "why": "The ovary reports its activity through its hormone levels. No nerve carries the message."
+        },
+        "control": {
+          "text": "The hypothalamus (GnRH) and the anterior pituitary",
+          "short": "Hypothalamus and pituitary",
+          "why": "GnRH pulses drive the pituitary, which sets how much FSH to release."
+        },
+        "efferent": {
+          "text": "FSH carried in the blood to the ovaries",
+          "short": "FSH in the blood",
+          "why": "FSH is the command that reaches the follicles."
+        },
+        "effector": {
+          "text": "Granulosa cells of the growing follicles",
+          "short": "Granulosa cells",
+          "why": "FSH makes the granulosa cells multiply and switches on aromatase, which turns theca androgens into estradiol."
+        },
+        "response": {
+          "text": "Follicles grow and release more estradiol and inhibin, so FSH falls again",
+          "short": "More estradiol: FSH falls",
+          "why": "The rising hormones restore the brake. As FSH falls, only the follicle most sensitive to it keeps growing."
+        }
+      },
+      "distractors": [
+        {
+          "text": "High, sustained estradiol drives a surge of LH",
+          "why": "That is the positive feedback of the days just before ovulation. Through most of the follicular phase, estradiol holds the gonadotropins down."
+        },
+        {
+          "text": "Progesterone from the corpus luteum",
+          "why": "Progesterone is the main brake in the luteal phase. Here the corpus luteum has died."
+        },
+        {
+          "text": "Theca cells convert androgens to estradiol",
+          "why": "Theca cells make the androgens but lack aromatase; the granulosa cells do the conversion."
+        }
+      ],
+      "classify": "The response (more estradiol and inhibin) opposes the stimulus (low estradiol and inhibin) and lowers FSH again, so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "At menopause, the ovaries have almost no follicles left. What happens to this loop?",
+        "options": [
+          {
+            "text": "FSH rises and stays high, because no follicles can answer it",
+            "why": "Right. The pituitary keeps signaling, but no granulosa cells respond with estradiol and inhibin, so the brake never comes back. A high FSH is the laboratory sign of menopause."
+          },
+          {
+            "text": "FSH falls, because the pituitary stops working",
+            "why": "The pituitary is healthy. It is the effector, the follicles, that is missing."
+          },
+          {
+            "text": "Estradiol rises, because FSH is high",
+            "why": "Estradiol needs granulosa cells to make it. Without follicles, high FSH cannot raise it."
+          },
+          {
+            "text": "Nothing changes, because the hypothalamus runs the cycle alone",
+            "why": "The loop needs follicles to answer FSH. Without them the whole cycle stops."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "rp-lh-surge",
+      "title": "The LH surge: estradiol switches to positive feedback",
+      "topic": "female-hormones-cycle",
+      "map": "The LH surge (positive feedback)",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "positive",
+      "scenario": "Around day 12 of a 28-day cycle, the dominant follicle’s estradiol has stayed high for about two days. LH begins to shoot up, reaching many times its usual level about a day later, and ovulation follows about 34 to 36 hours after the rise began.",
+      "slots": {
+        "stimulus": {
+          "text": "Estradiol from the dominant follicle stays high for about two days",
+          "short": "High, sustained estradiol",
+          "why": "Above roughly 200 pg/mL for about two days, estradiol’s effect on the brain and pituitary reverses from brake to accelerator."
+        },
+        "sensor": {
+          "text": "Estrogen receptor proteins in hypothalamic neurons and pituitary cells",
+          "short": "Estrogen receptor proteins",
+          "why": "High sustained estradiol excites the estrogen-sensitive neurons that drive the GnRH neurons, and adds GnRH receptor proteins to the pituitary cells."
+        },
+        "afferent": {
+          "text": "Estradiol carried in the blood",
+          "short": "Estradiol in the blood",
+          "why": "The dominant follicle reports its size and readiness through its estradiol output."
+        },
+        "control": {
+          "text": "The hypothalamus (GnRH neurons and the neurons that drive them)",
+          "short": "Hypothalamus (GnRH)",
+          "why": "Estrogen-sensitive neurons that release kisspeptin drive the GnRH neurons, and GnRH output rises."
+        },
+        "efferent": {
+          "text": "GnRH through the hypophyseal portal system",
+          "short": "GnRH in the portal vessels",
+          "why": "GnRH reaches the anterior pituitary through the portal vessels."
+        },
+        "effector": {
+          "text": "Gonadotropin-making cells of the anterior pituitary",
+          "short": "Pituitary gonadotropin cells",
+          "why": "Primed by estradiol with extra GnRH receptor proteins, each GnRH pulse releases far more LH."
+        },
+        "response": {
+          "text": "An LH surge; before it, rising LH and FSH drove the follicle’s estradiol still higher",
+          "short": "LH surge",
+          "why": "Before the surge, more LH and FSH made the dominant follicle release more estradiol, which pushed GnRH and LH higher again: the loop amplifies itself."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Progesterone from the corpus luteum slows GnRH pulses",
+          "why": "That is the luteal phase brake, after ovulation. There is no corpus luteum yet."
+        },
+        {
+          "text": "Low to moderate estradiol holds LH down",
+          "why": "That is estradiol’s ordinary negative feedback, through most of the follicular phase. The surge needs estradiol high and sustained."
+        },
+        {
+          "text": "Inhibin raises FSH release",
+          "why": "Inhibin lowers FSH; it does not drive the surge."
+        },
+        {
+          "text": "The posterior pituitary releases LH",
+          "why": "LH comes from the anterior pituitary."
+        }
+      ],
+      "classify": "Before the surge, the response (more LH and FSH, so more estradiol) strengthens the stimulus (high estradiol), so this is positive feedback. It needs something to end it, and the surge sets up its own ending: the LH turns the follicle’s cells into a corpus luteum that makes mostly progesterone, so estradiol falls, the stimulus disappears, and ovulation follows.",
+      "failure": {
+        "part": "stimulus",
+        "q": "A woman takes the combined pill every day. Why does this loop never start?",
+        "options": [
+          {
+            "text": "No follicle becomes dominant, so estradiol never stays high enough for long enough",
+            "why": "Right. Steady estrogen and progestin keep negative feedback on, FSH stays low, no follicle is selected, and the stimulus for positive feedback never appears. No surge, no ovulation."
+          },
+          {
+            "text": "The pill destroys the pituitary’s LH-making cells",
+            "why": "The pituitary is unharmed; LH and FSH return within weeks of stopping the pill."
+          },
+          {
+            "text": "The pill blocks estrogen receptor proteins in the hypothalamus",
+            "why": "The pill contains an estrogen that acts on those receptor proteins. It works by keeping negative feedback switched on."
+          },
+          {
+            "text": "The surge happens, but the uterus ignores it",
+            "why": "The LH surge acts on the follicle, not the uterus, and with the pill it does not happen at all."
           }
         ],
         "correct": 0
