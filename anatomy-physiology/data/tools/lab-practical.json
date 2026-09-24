@@ -19213,6 +19213,1050 @@
    ]
   },
   {
+   "id": "lymphatic-organs",
+   "title": "Lymphatic organs",
+   "chapter": "lymph-immune",
+   "topic": "lymphatic-system",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-21-2",
+     "topic": "lymphatic-system",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "adenoid",
+       "name": "Adenoid",
+       "accept": [
+        "adenoids",
+        "pharyngeal tonsil"
+       ],
+       "box": [
+        0,
+        197,
+        97,
+        24
+       ],
+       "concept": "lymphoid-organs",
+       "taught": "lymphatic-system",
+       "fn": "The pharyngeal tonsil, called the adenoids when enlarged: a patch of lymphoid tissue on the back wall of the upper throat, behind the nose. Its lymphocytes sample what you breathe in."
+      },
+      {
+       "id": "tonsil",
+       "name": "Tonsil",
+       "accept": [
+        "tonsils",
+        "palatine tonsil"
+       ],
+       "box": [
+        0,
+        241,
+        70,
+        24
+       ],
+       "concept": "lymphoid-organs",
+       "taught": "lymphatic-system",
+       "fn": "A palatine tonsil, one of the paired masses of lymphoid tissue at the back of the mouth. Deep pits in its surface trap food particles and bacteria close to the lymphoid nodules beneath."
+      },
+      {
+       "id": "thymus-enlarged",
+       "name": "Thymus",
+       "accept": [
+        "thymus gland"
+       ],
+       "box": [
+        924,
+        311,
+        100,
+        29
+       ],
+       "concept": "thymus",
+       "taught": "other-endocrine",
+       "fn": "The thymus drawn enlarged: two lobes of lymphoid tissue. It is a primary lymphoid organ, where one line of lymphocytes made in the bone marrow travels to mature."
+      },
+      {
+       "id": "right-lymphatic-duct",
+       "name": "Right lymphatic duct, entering vein",
+       "accept": [
+        "right lymphatic duct"
+       ],
+       "box": [
+        0,
+        331,
+        235,
+        56
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The short duct that collects lymph from the right arm, the right side of the chest and the right side of the head and neck, and empties it into the junction of the right internal jugular and right subclavian veins."
+      },
+      {
+       "id": "lymph-nodes",
+       "name": "Lymph nodes",
+       "accept": [
+        "lymph node",
+        "nodes"
+       ],
+       "box": [
+        685,
+        385,
+        158,
+        29
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "Bean-shaped organs along the lymphatic vessels, clustered in the neck, armpits and groin. Lymph trickles through them, so macrophages and lymphocytes can filter it before it returns to the blood."
+      },
+      {
+       "id": "thymus",
+       "name": "Thymus",
+       "accept": [
+        "thymus gland"
+       ],
+       "box": [
+        683,
+        455,
+        101,
+        29
+       ],
+       "concept": "thymus",
+       "taught": "other-endocrine",
+       "fn": "The thymus in place, behind the sternum above the heart. It is largest in childhood and slowly shrinks and fills with fat after puberty, though it keeps maturing some lymphocytes."
+      },
+      {
+       "id": "spleen",
+       "name": "Spleen",
+       "accept": [],
+       "box": [
+        670,
+        650,
+        88,
+        29
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "The largest lymphoid organ, in the upper left abdomen under the lower ribs. It filters blood, not lymph: its macrophages remove old red blood cells and bacteria, and its lymphocytes meet antigens carried in the blood.",
+       "follow": {
+        "q": "Which statement correctly contrasts the spleen with a lymph node?",
+        "options": [
+         "The spleen filters blood; a lymph node filters lymph",
+         "The spleen filters lymph; a lymph node filters blood",
+         "Both receive lymph through afferent lymphatic vessels",
+         "Neither organ holds lymphocytes"
+        ],
+        "correct": 0,
+        "why": "Blood reaches the spleen through the splenic artery, and the spleen has no afferent lymphatic vessels. A lymph node receives lymph through its afferent vessels. Both are secondary lymphoid organs full of lymphocytes.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "lymph-node",
+       "name": "Lymph node",
+       "accept": [
+        "lymph nodes",
+        "node"
+       ],
+       "box": [
+        804,
+        1035,
+        146,
+        28
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "One lymph node on a collecting vessel of the leg. Lymph slows down as it passes through, giving macrophages time to clear bacteria and debris before the lymph moves on toward the trunk."
+      },
+      {
+       "id": "bone-marrow",
+       "name": "Bone marrow",
+       "accept": [
+        "red bone marrow",
+        "marrow"
+       ],
+       "box": [
+        0,
+        1298,
+        155,
+        24
+       ],
+       "concept": "bone-marrow",
+       "taught": "bone-structure",
+       "fn": "Red bone marrow, a primary lymphoid organ: every lymphocyte is made here, and one of the main lines of lymphocytes also finishes maturing here.",
+       "follow": {
+        "q": "Which pair are the primary lymphoid organs, where lymphocytes are made and mature?",
+        "options": [
+         "Red bone marrow and thymus",
+         "Spleen and lymph nodes",
+         "Tonsils and the lymph nodes",
+         "Thymus and lymph nodes"
+        ],
+        "correct": 0,
+        "why": "Every lymphocyte is made in red bone marrow, where one main line also matures; the other main line matures in the thymus. Lymph nodes, the spleen and the tonsils are secondary lymphoid organs, where mature lymphocytes gather and meet antigens.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "lymph-vessel",
+       "name": "Lymph vessel",
+       "accept": [
+        "lymphatic vessel",
+        "lymphatic",
+        "lymphatic vessels"
+       ],
+       "box": [
+        579,
+        1298,
+        160,
+        29
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "A collecting lymphatic vessel. It looks like a thin vein with many valves; the smooth muscle between two valves contracts when lymph stretches it and pushes the lymph toward the heart."
+      }
+     ]
+    },
+    {
+     "figure": "os-21-3",
+     "topic": "lymphatic-system",
+     "core": [
+      "structure-function",
+      "mass-balance"
+     ],
+     "labels": [
+      {
+       "id": "lymph-capillary",
+       "name": "Lymph capillary",
+       "accept": [
+        "lymphatic capillary",
+        "lymph capillaries",
+        "lymphatic capillaries"
+       ],
+       "box": [
+        75,
+        73,
+        142,
+        23
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "A blind-ended tube of endothelium threaded among the blood capillaries. Fluid, protein and cells that have left the blood enter it between loosely overlapping endothelial cells."
+      },
+      {
+       "id": "tissue-cells",
+       "name": "Tissue cells",
+       "accept": [
+        "tissue cell",
+        "body cells",
+        "cells"
+       ],
+       "box": [
+        471,
+        92,
+        110,
+        19
+       ],
+       "concept": null,
+       "fn": "The cells of the tissue, bathed by interstitial fluid. They trade nutrients and wastes with the blood through that fluid."
+      },
+      {
+       "id": "collagen-fiber",
+       "name": "Collagen fiber",
+       "accept": [
+        "collagen fibre",
+        "collagen",
+        "collagen fibers"
+       ],
+       "box": [
+        809,
+        98,
+        128,
+        24
+       ],
+       "concept": "ct-fibers",
+       "taught": "connective-tissue",
+       "fn": "A collagen fiber of the surrounding connective tissue. Fine anchoring filaments tie lymphatic capillaries to fibers like this, so when the tissue swells they pull the capillaries open."
+      },
+      {
+       "id": "arteriole",
+       "name": "Arteriole",
+       "accept": [],
+       "box": [
+        0,
+        160,
+        79,
+        19
+       ],
+       "concept": "arteriole",
+       "taught": "vessel-structure",
+       "fn": "The small artery that feeds the capillary bed. Fluid filters out of the blood capillaries it supplies, and the lymphatic capillaries collect what is not taken back."
+      },
+      {
+       "id": "interstitial-fluid",
+       "name": "Interstitial fluid",
+       "accept": [
+        "tissue fluid",
+        "isf"
+       ],
+       "box": [
+        810,
+        179,
+        130,
+        20
+       ],
+       "concept": "icf-ecf",
+       "taught": "plasma-membrane",
+       "fn": "The fluid between the cells, filtered out of the blood capillaries. When its pressure is higher than the pressure inside a lymphatic capillary, it pushes the endothelial flaps inward and flows in."
+      },
+      {
+       "id": "venule",
+       "name": "Venule",
+       "accept": [],
+       "box": [
+        520,
+        261,
+        69,
+        19
+       ],
+       "concept": "venule-vein",
+       "taught": "vessel-structure",
+       "fn": "The small vein that drains the capillary bed. The blood capillaries take back only part of the fluid that filtered out; the rest returns to the blood through the lymphatic vessels."
+      },
+      {
+       "id": "lymph",
+       "name": "Lymph (interstitial fluid)",
+       "accept": [],
+       "box": [
+        810,
+        337,
+        200,
+        23
+       ],
+       "concept": "lymph",
+       "taught": "lymphatic-system",
+       "fn": "Interstitial fluid is called lymph once it enters a lymphatic vessel. The fluid itself does not change at that moment: water, small solutes, some protein, and cells."
+      },
+      {
+       "id": "tissue-fluid",
+       "name": "Tissue fluid",
+       "accept": [
+        "interstitial fluid"
+       ],
+       "box": [
+        34,
+        388,
+        107,
+        19
+       ],
+       "concept": "icf-ecf",
+       "taught": "plasma-membrane",
+       "fn": "Another name for interstitial fluid: the fluid filtered from the blood capillaries that bathes the cells until lymphatic capillaries collect it."
+      },
+      {
+       "id": "lymphatic-vessel",
+       "name": "Lymphatic vessel",
+       "accept": [
+        "lymph vessel",
+        "lymphatic"
+       ],
+       "box": [
+        410,
+        388,
+        98,
+        40
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "A collecting vessel formed as lymphatic capillaries join. Its one-way valves and the smooth muscle in its wall move lymph toward the lymph nodes and on to the veins."
+      },
+      {
+       "id": "endothelial-flaps",
+       "name": "Endothelial “flaps”",
+       "accept": [
+        "endothelial flap",
+        "flaps",
+        "flap",
+        "minivalves",
+        "endothelial minivalves"
+       ],
+       "box": [
+        484,
+        434,
+        104,
+        44
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The loosely overlapping edges of neighboring endothelial cells. Higher pressure outside pushes them inward so fluid enters; higher pressure inside presses them shut, so lymph cannot leak back out.",
+       "follow": {
+        "q": "The pressure inside a lymphatic capillary rises above the pressure of the interstitial fluid around it. What do the endothelial flaps do?",
+        "options": [
+         "They press shut and hold the lymph in",
+         "They open wider and lymph flows back out",
+         "They contract and pump lymph forward",
+         "They let water out but hold protein in"
+        ],
+        "correct": 0,
+        "why": "The flaps are loosely overlapping cell edges that act as one-way inlets. Higher pressure outside pushes them inward so fluid enters; higher pressure inside presses them against the cell they overlap, so lymph cannot leak back out. They do not contract (smooth muscle in the collecting vessels pumps lymph), and the gaps are wide enough for protein, so they do not sort water from protein.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "lymph-vessel-endothelial-cells",
+       "name": "Lymph vessel endothelial cells",
+       "accept": [
+        "endothelial cells",
+        "endothelial cell",
+        "endothelium",
+        "lymphatic endothelial cells"
+       ],
+       "box": [
+        809,
+        481,
+        146,
+        40
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The flat endothelial cells that make up the lymphatic capillary wall. They overlap loosely instead of sealing together, leaving gaps wide enough for protein, cells and bacteria."
+      },
+      {
+       "id": "backflow-prevention-valve",
+       "name": "Backflow prevention valve",
+       "accept": [
+        "valve",
+        "lymphatic valve",
+        "one-way valve"
+       ],
+       "box": [
+        484,
+        522,
+        99,
+        62
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "A one-way valve inside the lymphatic vessel. Lymph moving toward the heart pushes it open and backflow closes it, so each squeeze of the vessel moves lymph forward."
+      }
+     ]
+    },
+    {
+     "figure": "os-21-4",
+     "topic": "lymphatic-system",
+     "core": [
+      "structure-function",
+      "mass-balance"
+     ],
+     "labels": [
+      {
+       "id": "right-lymphatic-duct",
+       "name": "Right lymphatic duct",
+       "accept": [],
+       "box": [
+        0,
+        0,
+        137,
+        39
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The short duct serving the right arm, the right side of the chest and the right side of the head and neck. It empties where the right internal jugular vein meets the right subclavian vein."
+      },
+      {
+       "id": "right-internal-jugular-vein",
+       "name": "Right internal jugular vein",
+       "accept": [
+        "right internal jugular"
+       ],
+       "box": [
+        239,
+        0,
+        123,
+        43
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": "The deep vein draining the right side of the head and neck. The right lymphatic duct empties into the angle where it joins the right subclavian vein."
+      },
+      {
+       "id": "left-internal-jugular-vein",
+       "name": "Left internal jugular vein",
+       "accept": [
+        "left internal jugular"
+       ],
+       "box": [
+        466,
+        0,
+        111,
+        43
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": "The deep vein draining the left side of the head and neck. The thoracic duct empties into its junction with the left subclavian vein."
+      },
+      {
+       "id": "thoracic-duct-into-subclavian-vein",
+       "name": "Thoracic duct drains into subclavian vein",
+       "accept": [
+        "thoracic duct",
+        "left lymphatic duct"
+       ],
+       "box": [
+        735,
+        0,
+        137,
+        60
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The end of the thoracic duct, the largest lymphatic vessel, where it pours lymph into the blood at the junction of the left internal jugular and left subclavian veins."
+      },
+      {
+       "id": "right-subclavian-vein",
+       "name": "Right subclavian vein",
+       "accept": [
+        "right subclavian"
+       ],
+       "box": [
+        34,
+        274,
+        188,
+        24
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": "The vein draining the right arm. Lymph from the right lymphatic duct enters the blood where it joins the right internal jugular vein."
+      },
+      {
+       "id": "left-subclavian-vein",
+       "name": "Left subclavian vein",
+       "accept": [
+        "left subclavian"
+       ],
+       "box": [
+        532,
+        274,
+        176,
+        20
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": "The vein draining the left arm. Where it meets the left internal jugular vein, the thoracic duct empties lymph into the blood."
+      },
+      {
+       "id": "thoracic-duct",
+       "name": "Thoracic duct",
+       "accept": [
+        "left lymphatic duct"
+       ],
+       "box": [
+        576,
+        342,
+        126,
+        20
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The larger of the two lymphatic ducts. It runs up in front of the spine through the chest and drains about three quarters of the body: both legs, the abdomen and pelvis, and the left side of the upper body.",
+       "follow": {
+        "q": "A splinter wound in your left foot becomes infected. Through which vessel does lymph from the foot finally reach the blood?",
+        "options": [
+         "Thoracic duct",
+         "Right lymphatic duct",
+         "A vein in the foot, straight from the lymphatic capillaries",
+         "Splenic vein"
+        ],
+        "correct": 0,
+        "why": "Lymph from the left leg passes through nodes behind the knee and in the groin, joins the lumbar trunk and the cisterna chyli, and climbs the thoracic duct, which empties at the junction of the left internal jugular and left subclavian veins. The right lymphatic duct drains only the right upper body. Lymphatic capillaries do not open into veins in the tissues, and the spleen filters blood, not lymph.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "cisterna-chyli",
+       "name": "Cisterna chyli of thoracic duct",
+       "accept": [
+        "cisterna chyli",
+        "chyle cistern"
+       ],
+       "box": [
+        576,
+        377,
+        147,
+        40
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The sac at the start of the thoracic duct, in the upper abdomen in front of the first two lumbar vertebrae. It receives lymph from the legs, pelvis and gut through the lumbar and intestinal trunks."
+      },
+      {
+       "id": "drained-by-right-lymphatic-duct",
+       "name": "Drained by right lymphatic duct",
+       "accept": [
+        "right lymphatic duct",
+        "right lymphatic duct territory",
+        "right lymphatic duct drainage"
+       ],
+       "box": [
+        17,
+        397,
+        145,
+        44
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The region whose lymph returns through the right lymphatic duct: the right arm, the right side of the chest and the right side of the head and neck, about a quarter of the body."
+      },
+      {
+       "id": "drained-by-thoracic-duct",
+       "name": "Drained by thoracic duct",
+       "accept": [
+        "thoracic duct",
+        "thoracic duct territory",
+        "thoracic duct drainage"
+       ],
+       "box": [
+        576,
+        608,
+        120,
+        40
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "The region whose lymph returns through the thoracic duct: both legs, the abdomen and pelvis, the left arm, and the left side of the chest, head and neck, about three quarters of the body."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lymph-node-structure",
+   "title": "Lymph node structure",
+   "chapter": "lymph-immune",
+   "topic": "lymphatic-system",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "lymph-node-structure",
+     "topic": "lymphatic-system",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "afferent-lymphatic-vessel",
+       "name": "Afferent lymphatic vessel",
+       "accept": [
+        "afferent vessel",
+        "afferent lymphatic"
+       ],
+       "box": [
+        18,
+        86,
+        194,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "One of several vessels that bring lymph into the node, entering all over its curved surface. Valves in them stop backflow."
+      },
+      {
+       "id": "capsule",
+       "name": "Capsule",
+       "accept": [
+        "node capsule",
+        "fibrous capsule"
+       ],
+       "box": [
+        18,
+        48,
+        57,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "The layer of dense connective tissue around the node. It sends trabeculae inward as partitions."
+      },
+      {
+       "id": "subcapsular-sinus",
+       "name": "Subcapsular sinus",
+       "accept": [
+        "marginal sinus"
+       ],
+       "box": [
+        558,
+        66,
+        133,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "The narrow space just under the capsule where lymph from the afferent vessels first pours in. From here it trickles through sinuses lined with macrophages."
+      },
+      {
+       "id": "lymphoid-nodule",
+       "name": "Lymphoid nodule",
+       "accept": [
+        "lymphoid follicle",
+        "nodule",
+        "follicle"
+       ],
+       "box": [
+        18,
+        286,
+        118,
+        19
+       ],
+       "concept": "lymphoid-organs",
+       "taught": "lymphatic-system",
+       "fn": "A round cluster of lymphocytes in the outer cortex, also called a follicle. Its lymphocytes belong to the line that can turn into antibody-releasing cells."
+      },
+      {
+       "id": "germinal-center",
+       "name": "Germinal center",
+       "accept": [
+        "germinal centre"
+       ],
+       "box": [
+        18,
+        426,
+        118,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "The paler middle of a lymphoid nodule. It forms when the nodule's lymphocytes meet the antigen they recognize, and they multiply rapidly there.",
+       "follow": {
+        "q": "A lymph node under your jaw swells during a sore throat. Which change inside the node best explains the swelling?",
+        "options": [
+         "Its lymphocytes multiply in germinal centers",
+         "Its capsule fills with fat",
+         "Red blood cells pile up in its sinuses",
+         "Its efferent vessel widens so lymph drains faster"
+        ],
+        "correct": 0,
+        "why": "When the lymphocytes of a nodule meet the antigen they recognize, they multiply rapidly in a germinal center, and more lymphocytes are held in the node, so it swells. Fat does not fill the capsule, red blood cells are filtered by the spleen rather than lymph nodes, and faster drainage would shrink a node.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "cortex",
+       "name": "Cortex",
+       "accept": [
+        "outer cortex"
+       ],
+       "box": [
+        468,
+        16,
+        50,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "The outer region of the node, just inside the capsule and subcapsular sinus. It holds the lymphoid nodules."
+      },
+      {
+       "id": "paracortex",
+       "name": "Paracortex",
+       "accept": [
+        "deep cortex"
+       ],
+       "box": [
+        558,
+        106,
+        80,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "The deep cortex, between the nodules and the medulla. It holds mostly the thymus-matured line of lymphocytes, which enter the node from the blood through high endothelial venules."
+      },
+      {
+       "id": "medulla",
+       "name": "Medulla",
+       "accept": [],
+       "box": [
+        558,
+        146,
+        57,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "The inner region nearest the hilum: cords of lymphocytes and macrophages, with medullary sinuses between them that carry lymph toward the efferent vessel."
+      },
+      {
+       "id": "trabecula",
+       "name": "Trabecula",
+       "accept": [
+        "trabeculae"
+       ],
+       "box": [
+        558,
+        386,
+        72,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "A partition of connective tissue running inward from the capsule. Trabeculae support the node and divide it into compartments."
+      },
+      {
+       "id": "efferent-lymphatic-vessel",
+       "name": "Efferent lymphatic vessel",
+       "accept": [
+        "efferent vessel",
+        "efferent lymphatic"
+       ],
+       "box": [
+        518,
+        306,
+        194,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "The vessel that carries lymph out at the hilum. There are fewer efferent than afferent vessels, which slows lymph in the node and gives macrophages time to clear it.",
+       "follow": {
+        "q": "Why does lymph move slowly through a lymph node?",
+        "options": [
+         "More vessels bring lymph in than carry it out",
+         "The capsule squeezes the lymph back upstream",
+         "The node has no sinuses for lymph to flow through",
+         "The efferent vessel is wider than the afferent ones"
+        ],
+        "correct": 0,
+        "why": "Several afferent vessels enter, but only one or two efferent vessels leave, and the maze of sinuses has a wide total cross section, so lymph lingers and macrophages have time to clear it. The capsule does not pump lymph, the node is full of sinuses, and a single wide outlet would speed flow, not slow it.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "hilum",
+       "name": "Hilum",
+       "accept": [
+        "hilus"
+       ],
+       "box": [
+        438,
+        431,
+        42,
+        19
+       ],
+       "concept": "lymph-node",
+       "taught": "lymphatic-system",
+       "fn": "The indented side of the node, where the efferent lymphatic vessel leaves and the node's artery and vein enter and leave."
+      },
+      {
+       "id": "artery",
+       "name": "Artery",
+       "accept": [
+        "nodal artery",
+        "blood vessel"
+       ],
+       "box": [
+        646,
+        206,
+        38,
+        18
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "The node's artery, entering at the hilum. It feeds blood capillaries inside the node, which take back a good share of the lymph's water."
+      },
+      {
+       "id": "vein",
+       "name": "Vein",
+       "accept": [
+        "nodal vein",
+        "blood vessel"
+       ],
+       "box": [
+        646,
+        285,
+        28,
+        18
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "The node's vein, leaving at the hilum. Lymphocytes leave the blood and enter the node through its small venules, the high endothelial venules of the paracortex."
+      }
+     ]
+    },
+    {
+     "figure": "spleen-structure",
+     "topic": "lymphatic-system",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "splenic-artery",
+       "name": "Splenic artery",
+       "accept": [],
+       "box": [
+        298,
+        176,
+        110,
+        19
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The artery that brings blood to the spleen, entering at its hilum. The spleen filters this blood; it receives no lymph."
+      },
+      {
+       "id": "splenic-vein",
+       "name": "Splenic vein",
+       "accept": [],
+       "box": [
+        298,
+        301,
+        95,
+        19
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "The vein that carries blood away from the spleen at its hilum, after the red pulp has filtered it."
+      },
+      {
+       "id": "hilum",
+       "name": "Hilum",
+       "accept": [
+        "hilus",
+        "splenic hilum"
+       ],
+       "box": [
+        178,
+        426,
+        42,
+        19
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "The indented side of the spleen, where the splenic artery enters and the splenic vein leaves. Unlike a lymph node, the spleen has no afferent lymphatic vessels arriving here.",
+       "follow": {
+        "q": "Which structure does a lymph node have that the spleen lacks?",
+        "options": [
+         "Afferent lymphatic vessels",
+         "A connective tissue capsule",
+         "Trabeculae",
+         "A hilum"
+        ],
+        "correct": 0,
+        "why": "The spleen filters blood, so nothing brings lymph into it: it has no afferent lymphatic vessels. Both organs have a connective tissue capsule, trabeculae running inward from it, and a hilum where vessels enter and leave.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "capsule",
+       "name": "Capsule",
+       "accept": [
+        "splenic capsule"
+       ],
+       "box": [
+        428,
+        36,
+        57,
+        19
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "The thin connective tissue covering of the spleen. It sends trabeculae inward."
+      },
+      {
+       "id": "trabecula",
+       "name": "Trabecula",
+       "accept": [
+        "trabeculae"
+       ],
+       "box": [
+        638,
+        36,
+        72,
+        19
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "A connective tissue partition running inward from the capsule. It supports the soft tissue of the spleen and carries blood vessels into it."
+      },
+      {
+       "id": "white-pulp",
+       "name": "White pulp",
+       "accept": [],
+       "box": [
+        438,
+        456,
+        80,
+        19
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "Pale islands of lymphoid tissue wrapped around the central arteries, arranged much like a lymph node's cortex and paracortex. Here lymphocytes meet antigens carried in the blood."
+      },
+      {
+       "id": "central-artery",
+       "name": "Central artery",
+       "accept": [
+        "central arteriole"
+       ],
+       "box": [
+        638,
+        456,
+        110,
+        19
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "The small artery at the core of each island of white pulp. Its blood passes the lymphocytes of the white pulp before flowing on into the red pulp."
+      },
+      {
+       "id": "red-pulp",
+       "name": "Red pulp",
+       "accept": [],
+       "box": [
+        798,
+        456,
+        65,
+        19
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "The dark red tissue that fills about three quarters of the spleen: blood in spongy cords of reticular tissue. Its macrophages remove old and damaged red blood cells, platelets and bacteria.",
+       "follow": {
+        "q": "Where in the spleen are old, stiff red blood cells trapped and destroyed?",
+        "options": [
+         "Red pulp",
+         "White pulp",
+         "Central artery",
+         "Capsule"
+        ],
+        "correct": 0,
+        "why": "In the red pulp, blood must squeeze from the cords through narrow slits into the venous sinuses; stiff old red cells get stuck and macrophages engulf them. The white pulp is lymphoid tissue where lymphocytes meet antigens, the central artery only carries blood in, and the capsule is a covering.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "venous-sinus",
+       "name": "Venous sinus",
+       "accept": [
+        "splenic sinus",
+        "sinusoid",
+        "splenic sinusoid"
+       ],
+       "box": [
+        798,
+        36,
+        95,
+        19
+       ],
+       "concept": "spleen",
+       "taught": "lymphatic-system",
+       "fn": "A wide, leaky channel in the red pulp. Blood must squeeze through narrow slits in its wall; an old, stiff red blood cell gets stuck, and a macrophage engulfs it."
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "upper-airway",
    "title": "Nose and upper airway (sagittal)",
    "chapter": "respiratory",
@@ -22192,6 +23236,49 @@
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.4",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/18-2-production-of-the-formed-elements",
    "license": "CC BY 4.0"
+  },
+  "os-21-2": {
+   "src": "figures/os-21-2.jpg",
+   "w": 1100,
+   "h": 1538,
+   "alt": "A front view of a woman's body with a network of thin green vessels running through the arms, legs and trunk, dotted with small bead-like swellings that cluster in the armpits, neck and groin. Labeled organs include small lumps at the back of the nose and throat, the thymus above the heart (also shown enlarged at the top right), the spleen on the upper left of the abdomen, and the marrow inside a thigh bone. A duct on the right side of the neck joins a vein.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.2",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-1-anatomy-of-the-lymphatic-and-immune-systems",
+   "license": "CC BY 4.0"
+  },
+  "os-21-3": {
+   "src": "figures/os-21-3.jpg",
+   "w": 1008,
+   "h": 583,
+   "alt": "Left, a bed of blood capillaries between a red arteriole and a blue venule, with green blind-ended lymphatic capillaries threaded among them and among the tissue cells; arrows show fluid leaving the blood capillaries into the tissue and entering the lymphatic capillaries, which join a larger lymphatic vessel. Right, an enlarged lymphatic capillary: its wall is a single layer of overlapping endothelial cells whose loose edges act as flaps, anchored to surrounding collagen fibers. Arrows show interstitial fluid slipping between the flaps into the vessel, where it is lymph, and valves inside the vessel keep it flowing one way.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.3",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-1-anatomy-of-the-lymphatic-and-immune-systems",
+   "license": "CC BY 4.0"
+  },
+  "os-21-4": {
+   "src": "figures/os-21-4.jpg",
+   "w": 870,
+   "h": 678,
+   "alt": "A front view of the body shaded in two colors: the right arm, the right side of the head and neck and the right side of the chest in purple, and everything else in yellow. A duct runs up in front of the spine from a small sac in the upper abdomen, the cisterna chyli, to the left side of the neck. Enlarged boxes show, on the right, a short duct joining the right internal jugular and right subclavian veins, and on the left, the thoracic duct joining the left internal jugular and left subclavian veins.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 21.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-1-anatomy-of-the-lymphatic-and-immune-systems",
+   "license": "CC BY 4.0"
+  },
+  "lymph-node-structure": {
+   "src": "figures/lymph-node-structure.svg",
+   "w": 760,
+   "h": 460,
+   "alt": "A lymph node cut in half: a bean shape with its indented hilum on the right. A capsule surrounds it with the subcapsular sinus just inside; four afferent lymphatic vessels enter the curved outer surface, and trabeculae run inward. The cortex holds round lymphoid nodules with pale germinal centers; deeper lie the paracortex and the medulla, whose cords and sinuses run to the hilum, where one efferent lymphatic vessel leaves beside an artery and a vein.",
+   "credit": "LevlPrep",
+   "license": "LevlPrep original"
+  },
+  "spleen-structure": {
+   "src": "figures/spleen-structure.svg",
+   "w": 940,
+   "h": 490,
+   "alt": "Left, the spleen from the front, with the splenic artery entering and the splenic vein leaving at its hilum. Right, a magnified slice under a thin capsule with a trabecula: mostly red pulp dotted with oval venous sinuses, and three pale islands of white pulp, each around a small central artery.",
+   "credit": "LevlPrep",
+   "license": "LevlPrep original"
   }
  }
 }
