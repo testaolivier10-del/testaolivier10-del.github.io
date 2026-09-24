@@ -1,0 +1,395 @@
+{
+  "figure": "os-8-4",
+  "labels": [
+    {
+      "id": "pectoral-girdle",
+      "name": "Pectoral girdle",
+      "accept": [
+        "pectoral girdle",
+        "shoulder girdle"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        125,
+        11,
+        130,
+        24
+      ]
+    },
+    {
+      "id": "clavicle",
+      "name": "Clavicle",
+      "accept": [
+        "clavicle",
+        "collarbone",
+        "collar bone"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        125,
+        32,
+        77,
+        20
+      ]
+    },
+    {
+      "id": "scapula",
+      "name": "Scapula",
+      "accept": [
+        "scapula",
+        "shoulder blade"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        125,
+        53,
+        80,
+        23
+      ]
+    },
+    {
+      "id": "acromion",
+      "name": "Acromion",
+      "accept": [
+        "acromion",
+        "acromion process",
+        "acromial process"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        86,
+        190,
+        91,
+        19
+      ]
+    },
+    {
+      "id": "acromion-2",
+      "name": "Acromion",
+      "accept": [
+        "acromion",
+        "acromion process",
+        "acromial process"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        887,
+        268,
+        87,
+        20
+      ]
+    },
+    {
+      "id": "suprascapular-notch",
+      "name": "Suprascapular notch",
+      "accept": [
+        "suprascapular notch"
+      ],
+      "lines": [
+        6,
+        9
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        197,
+        190,
+        133,
+        40
+      ]
+    },
+    {
+      "id": "suprascapular-notch-2",
+      "name": "Suprascapular notch",
+      "accept": [
+        "suprascapular notch"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        531,
+        215,
+        183,
+        23
+      ]
+    },
+    {
+      "id": "superior-border",
+      "name": "Superior border",
+      "accept": [
+        "superior border",
+        "superior border of the scapula"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        356,
+        190,
+        143,
+        23
+      ]
+    },
+    {
+      "id": "coracoid-process",
+      "name": "Coracoid process",
+      "accept": [
+        "coracoid process",
+        "coracoid"
+      ],
+      "lines": [
+        12,
+        16
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        0,
+        256,
+        83,
+        45
+      ]
+    },
+    {
+      "id": "coracoid-process-2",
+      "name": "Coracoid process",
+      "accept": [
+        "coracoid process",
+        "coracoid"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        687,
+        190,
+        158,
+        23
+      ]
+    },
+    {
+      "id": "superior-angle",
+      "name": "Superior angle",
+      "accept": [
+        "superior angle",
+        "superior angle of the scapula"
+      ],
+      "lines": [
+        11,
+        14
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        422,
+        248,
+        84,
+        45
+      ]
+    },
+    {
+      "id": "supraspinous-fossa",
+      "name": "Supraspinous fossa",
+      "accept": [
+        "supraspinous fossa"
+      ],
+      "lines": [
+        17,
+        20
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        421,
+        296,
+        128,
+        41
+      ]
+    },
+    {
+      "id": "glenoid-cavity",
+      "name": "Glenoid cavity",
+      "accept": [
+        "glenoid cavity",
+        "glenoid fossa",
+        "glenoid"
+      ],
+      "lines": [
+        21,
+        24
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        0,
+        331,
+        73,
+        45
+      ]
+    },
+    {
+      "id": "glenoid-cavity-2",
+      "name": "Glenoid cavity",
+      "accept": [
+        "glenoid cavity",
+        "glenoid fossa",
+        "glenoid"
+      ],
+      "lines": [
+        22,
+        25
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        889,
+        340,
+        77,
+        45
+      ]
+    },
+    {
+      "id": "spine",
+      "name": "Spine",
+      "accept": [
+        "spine",
+        "spine of the scapula",
+        "scapular spine"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        422,
+        353,
+        60,
+        23
+      ]
+    },
+    {
+      "id": "infraspinous-fossa",
+      "name": "Infraspinous fossa",
+      "accept": [
+        "infraspinous fossa"
+      ],
+      "lines": [
+        26,
+        28
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        421,
+        392,
+        115,
+        40
+      ]
+    },
+    {
+      "id": "subscapular-fossa",
+      "name": "Subscapular fossa",
+      "accept": [
+        "subscapular fossa"
+      ],
+      "lines": [
+        29,
+        30
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        421,
+        439,
+        118,
+        41
+      ]
+    },
+    {
+      "id": "lateral-border",
+      "name": "Lateral border",
+      "accept": [
+        "lateral border",
+        "lateral border of the scapula",
+        "axillary border"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        0,
+        494,
+        125,
+        19
+      ]
+    },
+    {
+      "id": "lateral-border-2",
+      "name": "Lateral border",
+      "accept": [
+        "lateral border",
+        "lateral border of the scapula",
+        "axillary border"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        796,
+        490,
+        129,
+        20
+      ]
+    },
+    {
+      "id": "medial-border",
+      "name": "Medial border",
+      "accept": [
+        "medial border",
+        "medial border of the scapula",
+        "vertebral border"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        407,
+        496,
+        127,
+        20
+      ]
+    },
+    {
+      "id": "inferior-angle",
+      "name": "Inferior angle",
+      "accept": [
+        "inferior angle",
+        "inferior angle of the scapula"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        409,
+        581,
+        120,
+        24
+      ]
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "figure": "os-8-14",
+  "labels": [
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [
+        "sacrum"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        0,
+        0,
+        73,
+        20
+      ]
+    },
+    {
+      "id": "posterior-superior-iliac-spine",
+      "name": "Posterior superior iliac spine",
+      "accept": [
+        "posterior superior iliac spine",
+        "psis"
+      ],
+      "lines": [
+        1,
+        2,
+        4
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        56,
+        91,
+        65
+      ]
+    },
+    {
+      "id": "posterior-sacroiliac-ligament",
+      "name": "Posterior sacroiliac ligament",
+      "accept": [
+        "posterior sacroiliac ligament",
+        "posterior sacroiliac ligaments",
+        "dorsal sacroiliac ligament"
+      ],
+      "lines": [
+        3,
+        5,
+        6
+      ],
+      "concept": null,
+      "box": [
+        788,
+        90,
+        87,
+        66
+      ]
+    },
+    {
+      "id": "ilium",
+      "name": "Ilium",
+      "accept": [
+        "ilium"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        143,
+        48,
+        20
+      ]
+    },
+    {
+      "id": "greater-sciatic-foramen",
+      "name": "Greater sciatic foramen",
+      "accept": [
+        "greater sciatic foramen"
+      ],
+      "lines": [
+        8,
+        9,
+        10
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        788,
+        194,
+        80,
+        62
+      ]
+    },
+    {
+      "id": "sacrospinous-ligament",
+      "name": "Sacrospinous ligament",
+      "accept": [
+        "sacrospinous ligament"
+      ],
+      "lines": [
+        11,
+        13
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        268,
+        122,
+        45
+      ]
+    },
+    {
+      "id": "sacrospinous-ligament-2",
+      "name": "Sacrospinous ligament",
+      "accept": [
+        "sacrospinous ligament"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        741,
+        275,
+        127,
+        45
+      ]
+    },
+    {
+      "id": "ischial-spine",
+      "name": "Ischial spine",
+      "accept": [
+        "ischial spine"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        319,
+        112,
+        24
+      ]
+    },
+    {
+      "id": "pubis",
+      "name": "Pubis",
+      "accept": [
+        "pubis",
+        "pubic bone"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        353,
+        55,
+        20
+      ]
+    },
+    {
+      "id": "lesser-sciatic-foramen",
+      "name": "Lesser sciatic foramen",
+      "accept": [
+        "lesser sciatic foramen"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        741,
+        354,
+        126,
+        41
+      ]
+    },
+    {
+      "id": "ischium",
+      "name": "Ischium",
+      "accept": [
+        "ischium"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        386,
+        73,
+        20
+      ]
+    },
+    {
+      "id": "sacrotuberous-ligament",
+      "name": "Sacrotuberous ligament",
+      "accept": [
+        "sacrotuberous ligament"
+      ],
+      "lines": [
+        20,
+        22
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        741,
+        419,
+        134,
+        45
+      ]
+    },
+    {
+      "id": "ischial-tuberosity",
+      "name": "Ischial tuberosity",
+      "accept": [
+        "ischial tuberosity",
+        "sitting bone"
+      ],
+      "lines": [
+        21,
+        23
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        420,
+        90,
+        45
+      ]
+    },
+    {
+      "id": "subpubic-angle",
+      "name": "Subpubic angle",
+      "accept": [
+        "subpubic angle",
+        "pubic arch"
+      ],
+      "lines": [
+        24,
+        26
+      ],
+      "concept": "pelvis-sex-differences",
+      "box": [
+        390,
+        465,
+        91,
+        45
+      ]
+    },
+    {
+      "id": "obturator-foramen",
+      "name": "Obturator foramen",
+      "accept": [
+        "obturator foramen"
+      ],
+      "lines": [
+        25,
+        27
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        186,
+        477,
+        93,
+        41
+      ]
+    },
+    {
+      "id": "ischiopubic-ramus",
+      "name": "Ischiopubic ramus",
+      "accept": [
+        "ischiopubic ramus",
+        "ischiopubic rami"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": null,
+      "box": [
+        545,
+        502,
+        162,
+        23
+      ]
+    }
+  ]
+}

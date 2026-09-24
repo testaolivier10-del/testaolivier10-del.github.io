@@ -1,0 +1,79 @@
+{
+  "figure": "os-8-15",
+  "labels": [
+    {
+      "id": "hip-bone",
+      "name": "Hip bone",
+      "accept": [
+        "hip bone",
+        "coxal bone",
+        "os coxae",
+        "innominate bone"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        435,
+        269,
+        86,
+        23
+      ]
+    },
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [
+        "sacrum"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        437,
+        314,
+        76,
+        20
+      ]
+    },
+    {
+      "id": "pelvic-brim",
+      "name": "Pelvic brim",
+      "accept": [
+        "pelvic brim",
+        "pelvic inlet",
+        "linea terminalis"
+      ],
+      "lines": [
+        40
+      ],
+      "concept": "pelvis-sex-differences",
+      "box": [
+        425,
+        369,
+        101,
+        19
+      ]
+    },
+    {
+      "id": "subpubic-angle",
+      "name": "Subpubic angle",
+      "accept": [
+        "subpubic angle",
+        "pubic arch"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "pelvis-sex-differences",
+      "box": [
+        405,
+        427,
+        141,
+        23
+      ]
+    }
+  ]
+}

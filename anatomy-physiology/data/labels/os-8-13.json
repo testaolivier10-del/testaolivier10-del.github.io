@@ -1,0 +1,626 @@
+{
+  "figure": "os-8-13",
+  "labels": [
+    {
+      "id": "ilium",
+      "name": "Ilium",
+      "accept": [
+        "ilium"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        458,
+        117,
+        50,
+        19
+      ]
+    },
+    {
+      "id": "iliac-fossa",
+      "name": "Iliac fossa",
+      "accept": [
+        "iliac fossa"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        886,
+        138,
+        90,
+        20
+      ]
+    },
+    {
+      "id": "iliac-crest",
+      "name": "Iliac crest",
+      "accept": [
+        "iliac crest"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        439,
+        173,
+        91,
+        20
+      ]
+    },
+    {
+      "id": "anterior-superior-iliac-spine",
+      "name": "Anterior superior iliac spine",
+      "accept": [
+        "anterior superior iliac spine",
+        "asis"
+      ],
+      "lines": [
+        4,
+        7,
+        10
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        438,
+        220,
+        95,
+        65
+      ]
+    },
+    {
+      "id": "posterior-superior-iliac-spine",
+      "name": "Posterior superior iliac spine",
+      "accept": [
+        "posterior superior iliac spine",
+        "psis"
+      ],
+      "lines": [
+        5,
+        8,
+        11
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        228,
+        91,
+        65
+      ]
+    },
+    {
+      "id": "posterior-superior-iliac-spine-2",
+      "name": "Posterior superior iliac spine",
+      "accept": [
+        "posterior superior iliac spine",
+        "psis"
+      ],
+      "lines": [
+        3,
+        6,
+        9
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        885,
+        211,
+        91,
+        65
+      ]
+    },
+    {
+      "id": "anterior-inferior-iliac-spine",
+      "name": "Anterior inferior iliac spine",
+      "accept": [
+        "anterior inferior iliac spine",
+        "aiis"
+      ],
+      "lines": [
+        13,
+        16
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        399,
+        292,
+        142,
+        44
+      ]
+    },
+    {
+      "id": "posterior-inferior-iliac-spine",
+      "name": "Posterior inferior iliac spine",
+      "accept": [
+        "posterior inferior iliac spine",
+        "piis"
+      ],
+      "lines": [
+        14,
+        17,
+        19
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        298,
+        91,
+        65
+      ]
+    },
+    {
+      "id": "posterior-inferior-iliac-spine-2",
+      "name": "Posterior inferior iliac spine",
+      "accept": [
+        "posterior inferior iliac spine",
+        "piis"
+      ],
+      "lines": [
+        12,
+        15,
+        18
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        885,
+        284,
+        91,
+        65
+      ]
+    },
+    {
+      "id": "acetabulum",
+      "name": "Acetabulum",
+      "accept": [
+        "acetabulum",
+        "hip socket"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        399,
+        345,
+        111,
+        19
+      ]
+    },
+    {
+      "id": "auricular-surface",
+      "name": "Auricular surface",
+      "accept": [
+        "auricular surface",
+        "auricular surface of the ilium"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        824,
+        360,
+        152,
+        20
+      ]
+    },
+    {
+      "id": "greater-sciatic-notch",
+      "name": "Greater sciatic notch",
+      "accept": [
+        "greater sciatic notch"
+      ],
+      "lines": [
+        22,
+        25
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        369,
+        129,
+        40
+      ]
+    },
+    {
+      "id": "greater-sciatic-notch-2",
+      "name": "Greater sciatic notch",
+      "accept": [
+        "greater sciatic notch"
+      ],
+      "lines": [
+        24,
+        27
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        825,
+        381,
+        133,
+        41
+      ]
+    },
+    {
+      "id": "arcuate-line",
+      "name": "Arcuate line",
+      "accept": [
+        "arcuate line",
+        "arcuate line of the ilium"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        399,
+        377,
+        112,
+        19
+      ]
+    },
+    {
+      "id": "superior-ramus-of-pubis",
+      "name": "Superior ramus of pubis",
+      "accept": [
+        "superior ramus of pubis",
+        "superior pubic ramus",
+        "superior ramus of the pubis"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        348,
+        401,
+        211,
+        23
+      ]
+    },
+    {
+      "id": "ischial-body",
+      "name": "Ischial body",
+      "accept": [
+        "ischial body",
+        "body of the ischium"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        419,
+        107,
+        23
+      ]
+    },
+    {
+      "id": "ischial-spine",
+      "name": "Ischial spine",
+      "accept": [
+        "ischial spine"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        448,
+        111,
+        23
+      ]
+    },
+    {
+      "id": "ischial-spine-2",
+      "name": "Ischial spine",
+      "accept": [
+        "ischial spine"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        826,
+        422,
+        114,
+        23
+      ]
+    },
+    {
+      "id": "pubic-tubercle",
+      "name": "Pubic tubercle",
+      "accept": [
+        "pubic tubercle"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        342,
+        426,
+        130,
+        19
+      ]
+    },
+    {
+      "id": "lesser-sciatic-notch",
+      "name": "Lesser sciatic notch",
+      "accept": [
+        "lesser sciatic notch"
+      ],
+      "lines": [
+        35,
+        38
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        477,
+        122,
+        40
+      ]
+    },
+    {
+      "id": "lesser-sciatic-notch-2",
+      "name": "Lesser sciatic notch",
+      "accept": [
+        "lesser sciatic notch"
+      ],
+      "lines": [
+        31,
+        34
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        825,
+        446,
+        126,
+        40
+      ]
+    },
+    {
+      "id": "pubic-body",
+      "name": "Pubic body",
+      "accept": [
+        "pubic body",
+        "body of the pubis"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        411,
+        452,
+        105,
+        24
+      ]
+    },
+    {
+      "id": "pubis",
+      "name": "Pubis",
+      "accept": [
+        "pubis",
+        "pubic bone"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        434,
+        477,
+        58,
+        19
+      ]
+    },
+    {
+      "id": "obturator-foramen",
+      "name": "Obturator foramen",
+      "accept": [
+        "obturator foramen"
+      ],
+      "lines": [
+        45,
+        47
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        555,
+        88,
+        41
+      ]
+    },
+    {
+      "id": "obturator-foramen-2",
+      "name": "Obturator foramen",
+      "accept": [
+        "obturator foramen"
+      ],
+      "lines": [
+        37,
+        40
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        824,
+        490,
+        93,
+        41
+      ]
+    },
+    {
+      "id": "articular-surface-of-pubis",
+      "name": "Articular surface of pubis (at pubic symphysis)",
+      "accept": [
+        "articular surface of pubis",
+        "articular surface of the pubis",
+        "symphyseal surface"
+      ],
+      "lines": [
+        39,
+        42,
+        44
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        375,
+        505,
+        156,
+        66
+      ]
+    },
+    {
+      "id": "ischium",
+      "name": "Ischium",
+      "accept": [
+        "ischium"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        526,
+        72,
+        20
+      ]
+    },
+    {
+      "id": "ischium-2",
+      "name": "Ischium",
+      "accept": [
+        "ischium"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        826,
+        535,
+        75,
+        19
+      ]
+    },
+    {
+      "id": "ischial-ramus",
+      "name": "Ischial ramus",
+      "accept": [
+        "ischial ramus",
+        "ramus of the ischium"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        16,
+        634,
+        121,
+        20
+      ]
+    },
+    {
+      "id": "ischial-ramus-2",
+      "name": "Ischial ramus",
+      "accept": [
+        "ischial ramus",
+        "ramus of the ischium"
+      ],
+      "lines": [
+        46
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        826,
+        562,
+        121,
+        20
+      ]
+    },
+    {
+      "id": "inferior-ramus-of-pubis",
+      "name": "Inferior ramus of pubis",
+      "accept": [
+        "inferior ramus of pubis",
+        "inferior pubic ramus",
+        "inferior ramus of the pubis"
+      ],
+      "lines": [
+        48,
+        50
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        400,
+        584,
+        127,
+        45
+      ]
+    },
+    {
+      "id": "ischial-tuberosity",
+      "name": "Ischial tuberosity",
+      "accept": [
+        "ischial tuberosity",
+        "sitting bone"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        605,
+        148,
+        24
+      ]
+    },
+    {
+      "id": "ischiopubic-ramus",
+      "name": "Ischiopubic ramus",
+      "accept": [
+        "ischiopubic ramus",
+        "ischiopubic rami"
+      ],
+      "lines": [
+        51
+      ],
+      "concept": null,
+      "box": [
+        225,
+        630,
+        163,
+        23
+      ]
+    },
+    {
+      "id": "ischiopubic-ramus-2",
+      "name": "Ischiopubic ramus",
+      "accept": [
+        "ischiopubic ramus",
+        "ischiopubic rami"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": null,
+      "box": [
+        556,
+        630,
+        162,
+        23
+      ]
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "figure": "os-8-16",
+  "labels": [
+    {
+      "id": "hip-bone",
+      "name": "Hip bone",
+      "accept": [
+        "hip bone",
+        "coxal bone",
+        "os coxae",
+        "innominate bone"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        367,
+        311,
+        94,
+        25
+      ]
+    },
+    {
+      "id": "femur",
+      "name": "Femur",
+      "accept": [
+        "femur",
+        "thigh bone",
+        "thighbone"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "femur",
+      "box": [
+        382,
+        356,
+        71,
+        21
+      ]
+    },
+    {
+      "id": "greater-trochanter",
+      "name": "Greater trochanter",
+      "accept": [
+        "greater trochanter"
+      ],
+      "lines": [
+        16,
+        21
+      ],
+      "concept": "femur",
+      "box": [
+        38,
+        351,
+        107,
+        46
+      ]
+    },
+    {
+      "id": "greater-trochanter-2",
+      "name": "Greater trochanter",
+      "accept": [
+        "greater trochanter"
+      ],
+      "lines": [
+        17,
+        22
+      ],
+      "concept": "femur",
+      "box": [
+        686,
+        351,
+        107,
+        46
+      ]
+    },
+    {
+      "id": "head",
+      "name": "Head",
+      "accept": [
+        "head",
+        "head of the femur",
+        "femoral head"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "femur",
+      "box": [
+        383,
+        401,
+        61,
+        21
+      ]
+    },
+    {
+      "id": "neck",
+      "name": "Neck",
+      "accept": [
+        "neck",
+        "neck of the femur",
+        "femoral neck"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "femur",
+      "box": [
+        385,
+        452,
+        59,
+        21
+      ]
+    },
+    {
+      "id": "gluteal-tuberosity",
+      "name": "Gluteal tuberosity",
+      "accept": [
+        "gluteal tuberosity"
+      ],
+      "lines": [
+        59,
+        62
+      ],
+      "concept": "femur",
+      "box": [
+        721,
+        534,
+        104,
+        50
+      ]
+    },
+    {
+      "id": "intertrochanteric-line",
+      "name": "Intertrochanteric line",
+      "accept": [
+        "intertrochanteric line"
+      ],
+      "lines": [
+        60
+      ],
+      "concept": "femur",
+      "box": [
+        330,
+        541,
+        201,
+        21
+      ]
+    },
+    {
+      "id": "intertrochanteric-crest",
+      "name": "Intertrochanteric crest",
+      "accept": [
+        "intertrochanteric crest"
+      ],
+      "lines": [
+        63,
+        64
+      ],
+      "concept": "femur",
+      "box": [
+        329,
+        576,
+        164,
+        46
+      ]
+    },
+    {
+      "id": "lesser-trochanter",
+      "name": "Lesser trochanter",
+      "accept": [
+        "lesser trochanter"
+      ],
+      "lines": [
+        68
+      ],
+      "concept": "femur",
+      "box": [
+        330,
+        662,
+        174,
+        21
+      ]
+    },
+    {
+      "id": "linea-aspera",
+      "name": "Linea aspera",
+      "accept": [
+        "linea aspera"
+      ],
+      "lines": [
+        69,
+        70
+      ],
+      "concept": "femur",
+      "box": [
+        722,
+        691,
+        76,
+        50
+      ]
+    },
+    {
+      "id": "body-shaft",
+      "name": "Body (shaft)",
+      "accept": [
+        "body",
+        "shaft",
+        "body of the femur",
+        "shaft of the femur",
+        "diaphysis"
+      ],
+      "lines": [
+        71,
+        73
+      ],
+      "concept": "long-bone-parts",
+      "box": [
+        381,
+        803,
+        70,
+        50
+      ]
+    },
+    {
+      "id": "adductor-tubercle",
+      "name": "Adductor tubercle",
+      "accept": [
+        "adductor tubercle"
+      ],
+      "lines": [
+        75,
+        78
+      ],
+      "concept": "femur",
+      "box": [
+        361,
+        971,
+        97,
+        46
+      ]
+    },
+    {
+      "id": "lateral-epicondyle",
+      "name": "Lateral epicondyle",
+      "accept": [
+        "lateral epicondyle",
+        "lateral epicondyle of the femur"
+      ],
+      "lines": [
+        79,
+        82
+      ],
+      "concept": "femur",
+      "box": [
+        8,
+        1010,
+        112,
+        50
+      ]
+    },
+    {
+      "id": "lateral-epicondyle-2",
+      "name": "Lateral epicondyle",
+      "accept": [
+        "lateral epicondyle",
+        "lateral epicondyle of the femur"
+      ],
+      "lines": [
+        77,
+        80
+      ],
+      "concept": "femur",
+      "box": [
+        697,
+        989,
+        112,
+        50
+      ]
+    },
+    {
+      "id": "medial-epicondyle",
+      "name": "Medial epicondyle",
+      "accept": [
+        "medial epicondyle",
+        "medial epicondyle of the femur"
+      ],
+      "lines": [
+        83,
+        86
+      ],
+      "concept": "femur",
+      "box": [
+        354,
+        1039,
+        111,
+        51
+      ]
+    },
+    {
+      "id": "intercondylar-fossa",
+      "name": "Intercondylar fossa",
+      "accept": [
+        "intercondylar fossa",
+        "intercondylar notch"
+      ],
+      "lines": [
+        90,
+        92
+      ],
+      "concept": "femur",
+      "box": [
+        697,
+        1079,
+        129,
+        46
+      ]
+    },
+    {
+      "id": "patella",
+      "name": "Patella",
+      "accept": [
+        "patella",
+        "kneecap"
+      ],
+      "lines": [
+        93
+      ],
+      "concept": "patella",
+      "box": [
+        373,
+        1104,
+        74,
+        21
+      ]
+    },
+    {
+      "id": "lateral-condyle",
+      "name": "Lateral condyle",
+      "accept": [
+        "lateral condyle",
+        "lateral condyle of the femur"
+      ],
+      "lines": [
+        99,
+        107
+      ],
+      "concept": "femur",
+      "box": [
+        697,
+        1136,
+        84,
+        51
+      ]
+    },
+    {
+      "id": "medial-condyle",
+      "name": "Medial condyle",
+      "accept": [
+        "medial condyle",
+        "medial condyle of the femur"
+      ],
+      "lines": [
+        104
+      ],
+      "concept": "femur",
+      "box": [
+        335,
+        1146,
+        150,
+        25
+      ]
+    },
+    {
+      "id": "fibula",
+      "name": "Fibula",
+      "accept": [
+        "fibula"
+      ],
+      "lines": [
+        111
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        9,
+        1173,
+        68,
+        21
+      ]
+    },
+    {
+      "id": "fibula-2",
+      "name": "Fibula",
+      "accept": [
+        "fibula"
+      ],
+      "lines": [
+        114
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        698,
+        1195,
+        68,
+        21
+      ]
+    },
+    {
+      "id": "tibia",
+      "name": "Tibia",
+      "accept": [
+        "tibia",
+        "shinbone",
+        "shin bone"
+      ],
+      "lines": [
+        113
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        380,
+        1183,
+        58,
+        21
+      ]
+    }
+  ]
+}

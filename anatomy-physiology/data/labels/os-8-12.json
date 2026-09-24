@@ -1,0 +1,203 @@
+{
+  "figure": "os-8-12",
+  "labels": [
+    {
+      "id": "hip-bone",
+      "name": "Hip bone",
+      "accept": [
+        "hip bone",
+        "coxal bone",
+        "os coxae",
+        "innominate bone"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        947,
+        285,
+        91,
+        24
+      ]
+    },
+    {
+      "id": "sacroiliac-joint",
+      "name": "Sacroiliac joint",
+      "accept": [
+        "sacroiliac joint",
+        "si joint"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "named-small-joints",
+      "box": [
+        0,
+        324,
+        139,
+        25
+      ]
+    },
+    {
+      "id": "sacral-promontory",
+      "name": "Sacral promontory",
+      "accept": [
+        "sacral promontory"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        0,
+        377,
+        178,
+        25
+      ]
+    },
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [
+        "sacrum"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        946,
+        443,
+        81,
+        21
+      ]
+    },
+    {
+      "id": "pelvic-brim",
+      "name": "Pelvic brim",
+      "accept": [
+        "pelvic brim",
+        "pelvic inlet",
+        "linea terminalis"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "pelvis-sex-differences",
+      "box": [
+        947,
+        515,
+        108,
+        21
+      ]
+    },
+    {
+      "id": "acetabulum",
+      "name": "Acetabulum",
+      "accept": [
+        "acetabulum",
+        "hip socket"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        539,
+        115,
+        21
+      ]
+    },
+    {
+      "id": "coccyx",
+      "name": "Coccyx",
+      "accept": [
+        "coccyx",
+        "tailbone"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        0,
+        567,
+        75,
+        25
+      ]
+    },
+    {
+      "id": "obturator-foramen",
+      "name": "Obturator foramen",
+      "accept": [
+        "obturator foramen"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        621,
+        171,
+        21
+      ]
+    },
+    {
+      "id": "pubic-symphysis",
+      "name": "Pubic symphysis",
+      "accept": [
+        "pubic symphysis",
+        "symphysis pubis"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        947,
+        636,
+        155,
+        24
+      ]
+    },
+    {
+      "id": "ischial-tuberosity",
+      "name": "Ischial tuberosity",
+      "accept": [
+        "ischial tuberosity",
+        "sitting bone"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        671,
+        159,
+        25
+      ]
+    },
+    {
+      "id": "ischiopubic-ramus",
+      "name": "Ischiopubic ramus",
+      "accept": [
+        "ischiopubic ramus",
+        "ischiopubic rami"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": null,
+      "box": [
+        115,
+        727,
+        171,
+        24
+      ]
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "figure": "os-8-18",
+  "labels": [
+    {
+      "id": "lateral-condyle",
+      "name": "Lateral condyle",
+      "accept": [
+        "lateral condyle",
+        "lateral condyle of the tibia"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        257,
+        237,
+        176,
+        29
+      ]
+    },
+    {
+      "id": "articular-surface-of-medial-condyle",
+      "name": "Articular surface of medial condyle",
+      "accept": [
+        "articular surface of medial condyle",
+        "articular surface of the medial condyle"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        462,
+        257,
+        201,
+        58
+      ]
+    },
+    {
+      "id": "articular-surface-of-lateral-condyle",
+      "name": "Articular surface of lateral condyle",
+      "accept": [
+        "articular surface of lateral condyle",
+        "articular surface of the lateral condyle"
+      ],
+      "lines": [
+        3,
+        5
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        888,
+        257,
+        196,
+        58
+      ]
+    },
+    {
+      "id": "head-of-fibula",
+      "name": "Head of fibula",
+      "accept": [
+        "head of fibula",
+        "head of the fibula",
+        "fibular head"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        945,
+        376,
+        157,
+        24
+      ]
+    },
+    {
+      "id": "medial-condyle",
+      "name": "Medial condyle",
+      "accept": [
+        "medial condyle",
+        "medial condyle of the tibia"
+      ],
+      "lines": [
+        14,
+        20
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        515,
+        381,
+        96,
+        58
+      ]
+    },
+    {
+      "id": "tibial-tuberosity",
+      "name": "Tibial tuberosity",
+      "accept": [
+        "tibial tuberosity"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        17,
+        499,
+        183,
+        29
+      ]
+    },
+    {
+      "id": "anterior-border",
+      "name": "Anterior border",
+      "accept": [
+        "anterior border",
+        "anterior border of the tibia",
+        "anterior crest"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        468,
+        604,
+        175,
+        24
+      ]
+    },
+    {
+      "id": "soleal-line",
+      "name": "Soleal line",
+      "accept": [
+        "soleal line"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        943,
+        669,
+        124,
+        25
+      ]
+    },
+    {
+      "id": "interosseous-membrane",
+      "name": "Interosseous membrane",
+      "accept": [
+        "interosseous membrane",
+        "interosseous membrane of the leg"
+      ],
+      "lines": [
+        29,
+        32
+      ],
+      "concept": "joint-subtypes",
+      "box": [
+        488,
+        740,
+        150,
+        53
+      ]
+    },
+    {
+      "id": "fibula",
+      "name": "Fibula",
+      "accept": [
+        "fibula"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        19,
+        900,
+        77,
+        24
+      ]
+    },
+    {
+      "id": "fibula-2",
+      "name": "Fibula",
+      "accept": [
+        "fibula"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        944,
+        900,
+        77,
+        24
+      ]
+    },
+    {
+      "id": "tibia",
+      "name": "Tibia",
+      "accept": [
+        "tibia",
+        "shinbone",
+        "shin bone"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        527,
+        924,
+        64,
+        24
+      ]
+    },
+    {
+      "id": "medial-malleolus",
+      "name": "Medial malleolus",
+      "accept": [
+        "medial malleolus"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        467,
+        1147,
+        192,
+        24
+      ]
+    },
+    {
+      "id": "lateral-malleolus",
+      "name": "Lateral malleolus",
+      "accept": [
+        "lateral malleolus"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        19,
+        1199,
+        195,
+        24
+      ]
+    },
+    {
+      "id": "lateral-malleolus-2",
+      "name": "Lateral malleolus",
+      "accept": [
+        "lateral malleolus"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        911,
+        1183,
+        191,
+        24
+      ]
+    },
+    {
+      "id": "articular-surface",
+      "name": "Articular surface",
+      "accept": [
+        "articular surface",
+        "inferior articular surface",
+        "inferior articular surface of the tibia"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        468,
+        1282,
+        188,
+        25
+      ]
+    }
+  ]
+}

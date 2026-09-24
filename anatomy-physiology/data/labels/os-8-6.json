@@ -1,0 +1,296 @@
+{
+  "figure": "os-8-6",
+  "labels": [
+    {
+      "id": "radial-notch-of-the-ulna",
+      "name": "Radial notch of the ulna",
+      "accept": [
+        "radial notch",
+        "radial notch of the ulna",
+        "radial notch of ulna"
+      ],
+      "box": [
+        0,
+        301,
+        182,
+        69
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "head-of-radius",
+      "name": "Head of radius",
+      "accept": [
+        "head of radius",
+        "head of the radius",
+        "radial head"
+      ],
+      "box": [
+        0,
+        395,
+        116,
+        70
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "head-of-radius-2",
+      "name": "Head of radius",
+      "accept": [
+        "head of radius",
+        "head of the radius",
+        "radial head"
+      ],
+      "box": [
+        986,
+        363,
+        114,
+        69
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "neck-of-radius",
+      "name": "Neck of radius",
+      "accept": [
+        "neck of radius",
+        "neck of the radius",
+        "radial neck"
+      ],
+      "box": [
+        0,
+        487,
+        112,
+        69
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "neck-of-radius-2",
+      "name": "Neck of radius",
+      "accept": [
+        "neck of radius",
+        "neck of the radius",
+        "radial neck"
+      ],
+      "box": [
+        986,
+        494,
+        113,
+        69
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "radial-tuberosity",
+      "name": "Radial tuberosity",
+      "accept": [
+        "radial tuberosity"
+      ],
+      "box": [
+        0,
+        586,
+        143,
+        75
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "olecranon-process",
+      "name": "Olecranon process",
+      "accept": [
+        "olecranon process",
+        "olecranon"
+      ],
+      "box": [
+        477,
+        268,
+        160,
+        75
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "trochlear-notch",
+      "name": "Trochlear notch",
+      "accept": [
+        "trochlear notch",
+        "semilunar notch"
+      ],
+      "box": [
+        476,
+        367,
+        141,
+        69
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "coronoid-process",
+      "name": "Coronoid process",
+      "accept": [
+        "coronoid process",
+        "coronoid process of the ulna",
+        "coronoid process of ulna"
+      ],
+      "box": [
+        477,
+        465,
+        134,
+        76
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "proximal-radioulnar-joint",
+      "name": "Proximal radioulnar joint",
+      "accept": [
+        "proximal radioulnar joint"
+      ],
+      "box": [
+        475,
+        571,
+        151,
+        114
+      ],
+      "concept": "named-small-joints"
+    },
+    {
+      "id": "interosseous-membrane",
+      "name": "Interosseous membrane",
+      "accept": [
+        "interosseous membrane",
+        "interosseous membrane of the forearm"
+      ],
+      "box": [
+        477,
+        762,
+        189,
+        69
+      ],
+      "concept": "joint-subtypes"
+    },
+    {
+      "id": "ulna",
+      "name": "Ulna",
+      "accept": [
+        "ulna"
+      ],
+      "box": [
+        532,
+        901,
+        77,
+        30
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "radius",
+      "name": "Radius",
+      "accept": [
+        "radius"
+      ],
+      "box": [
+        0,
+        993,
+        103,
+        30
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "radius-2",
+      "name": "Radius",
+      "accept": [
+        "radius"
+      ],
+      "box": [
+        983,
+        1111,
+        103,
+        30
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "ulnar-notch-of-the-radius",
+      "name": "Ulnar notch of the radius",
+      "accept": [
+        "ulnar notch",
+        "ulnar notch of the radius",
+        "ulnar notch of radius"
+      ],
+      "box": [
+        468,
+        1017,
+        182,
+        68
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "head-of-ulna",
+      "name": "Head of ulna",
+      "accept": [
+        "head of ulna",
+        "head of the ulna",
+        "ulnar head"
+      ],
+      "box": [
+        470,
+        1119,
+        186,
+        30
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "distal-radioulnar-joint",
+      "name": "Distal radioulnar joint",
+      "accept": [
+        "distal radioulnar joint"
+      ],
+      "box": [
+        0,
+        1141,
+        148,
+        114
+      ],
+      "concept": "named-small-joints"
+    },
+    {
+      "id": "styloid-process-of-ulna",
+      "name": "Styloid process of ulna",
+      "accept": [
+        "styloid process of ulna",
+        "styloid process of the ulna",
+        "ulnar styloid process",
+        "ulnar styloid"
+      ],
+      "box": [
+        468,
+        1270,
+        224,
+        70
+      ],
+      "concept": "radius-ulna"
+    },
+    {
+      "id": "styloid-process-of-radius",
+      "name": "Styloid process of radius",
+      "accept": [
+        "styloid process of radius",
+        "styloid process of the radius",
+        "radial styloid process",
+        "radial styloid"
+      ],
+      "box": [
+        468,
+        1361,
+        224,
+        69
+      ],
+      "concept": "radius-ulna"
+    }
+  ]
+}

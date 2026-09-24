@@ -1,0 +1,613 @@
+{
+  "figure": "os-8-19",
+  "labels": [
+    {
+      "id": "tarsals",
+      "name": "Tarsals",
+      "accept": [
+        "tarsals",
+        "tarsal bones",
+        "tarsal"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "foot-bones",
+      "box": [
+        30,
+        104,
+        72,
+        20
+      ]
+    },
+    {
+      "id": "metatarsals",
+      "name": "Metatarsals",
+      "accept": [
+        "metatarsals",
+        "metatarsal bones",
+        "metatarsal"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "foot-bones",
+      "box": [
+        0,
+        128,
+        104,
+        20
+      ]
+    },
+    {
+      "id": "phalanges",
+      "name": "Phalanges",
+      "accept": [
+        "phalanges",
+        "phalanx",
+        "toe bones"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "foot-bones",
+      "box": [
+        3,
+        157,
+        99,
+        24
+      ]
+    },
+    {
+      "id": "navicular-2",
+      "name": "Navicular",
+      "accept": [
+        "navicular"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "foot-bones",
+      "box": [
+        707,
+        68,
+        89,
+        20
+      ]
+    },
+    {
+      "id": "talus-2",
+      "name": "Talus",
+      "accept": [
+        "talus",
+        "ankle bone"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "foot-bones",
+      "box": [
+        827,
+        68,
+        56,
+        20
+      ]
+    },
+    {
+      "id": "facet-for-medial-malleolus",
+      "name": "Facet for medial malleolus",
+      "accept": [
+        "facet for medial malleolus",
+        "facet for the medial malleolus"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "foot-bones",
+      "box": [
+        962,
+        76,
+        140,
+        41
+      ]
+    },
+    {
+      "id": "intermediate-cuneiform-2",
+      "name": "Intermediate cuneiform",
+      "accept": [
+        "intermediate cuneiform",
+        "middle cuneiform"
+      ],
+      "lines": [
+        3,
+        6
+      ],
+      "concept": "foot-bones",
+      "box": [
+        549,
+        91,
+        115,
+        40
+      ]
+    },
+    {
+      "id": "sustentaculum-tali",
+      "name": "Sustentaculum tali (talar shelf)",
+      "accept": [
+        "sustentaculum tali",
+        "talar shelf"
+      ],
+      "lines": [
+        8,
+        11
+      ],
+      "concept": "foot-bones",
+      "box": [
+        961,
+        146,
+        135,
+        43
+      ]
+    },
+    {
+      "id": "first-metatarsal",
+      "name": "First metatarsal",
+      "accept": [
+        "first metatarsal",
+        "metatarsal 1",
+        "metatarsal i"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "foot-bones",
+      "box": [
+        447,
+        164,
+        139,
+        20
+      ]
+    },
+    {
+      "id": "calcaneus-2",
+      "name": "Calcaneus",
+      "accept": [
+        "calcaneus",
+        "heel bone"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "foot-bones",
+      "box": [
+        794,
+        278,
+        100,
+        20
+      ]
+    },
+    {
+      "id": "medial-cuneiform-2",
+      "name": "Medial cuneiform",
+      "accept": [
+        "medial cuneiform"
+      ],
+      "lines": [
+        19,
+        20
+      ],
+      "concept": "foot-bones",
+      "box": [
+        688,
+        279,
+        93,
+        40
+      ]
+    },
+    {
+      "id": "calcaneal-tuberosity",
+      "name": "Calcaneal tuberosity",
+      "accept": [
+        "calcaneal tuberosity",
+        "tuber calcanei"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "foot-bones",
+      "box": [
+        881,
+        320,
+        180,
+        24
+      ]
+    },
+    {
+      "id": "distal-phalanx",
+      "name": "Distal",
+      "accept": [
+        "distal",
+        "distal phalanx",
+        "distal phalanges"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "foot-bones",
+      "box": [
+        0,
+        264,
+        54,
+        19
+      ]
+    },
+    {
+      "id": "proximal-phalanges",
+      "name": "Proximal phalanges",
+      "accept": [
+        "proximal phalanges",
+        "proximal phalanx"
+      ],
+      "lines": [
+        22,
+        25
+      ],
+      "concept": "foot-bones",
+      "box": [
+        0,
+        309,
+        94,
+        44
+      ]
+    },
+    {
+      "id": "distal-phalanx-2",
+      "name": "Distal phalange",
+      "accept": [
+        "distal phalange",
+        "distal phalanx",
+        "distal phalanges"
+      ],
+      "lines": [
+        21,
+        24
+      ],
+      "concept": "foot-bones",
+      "box": [
+        328,
+        305,
+        88,
+        44
+      ]
+    },
+    {
+      "id": "middle-phalanx",
+      "name": "Middle phalange",
+      "accept": [
+        "middle phalange",
+        "middle phalanx",
+        "middle phalanges"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "foot-bones",
+      "box": [
+        328,
+        373,
+        88,
+        44
+      ]
+    },
+    {
+      "id": "proximal-phalanx",
+      "name": "Proximal phalange",
+      "accept": [
+        "proximal phalange",
+        "proximal phalanx",
+        "proximal phalanges"
+      ],
+      "lines": [
+        32,
+        35
+      ],
+      "concept": "foot-bones",
+      "box": [
+        328,
+        440,
+        88,
+        48
+      ]
+    },
+    {
+      "id": "medial-cuneiform",
+      "name": "Medial cuneiform",
+      "accept": [
+        "medial cuneiform"
+      ],
+      "lines": [
+        33,
+        37
+      ],
+      "concept": "foot-bones",
+      "box": [
+        0,
+        448,
+        89,
+        41
+      ]
+    },
+    {
+      "id": "intermediate-cuneiform",
+      "name": "Intermediate cuneiform",
+      "accept": [
+        "intermediate cuneiform",
+        "middle cuneiform"
+      ],
+      "lines": [
+        44,
+        46
+      ],
+      "concept": "foot-bones",
+      "box": [
+        0,
+        520,
+        111,
+        40
+      ]
+    },
+    {
+      "id": "lateral-cuneiform",
+      "name": "Lateral cuneiform",
+      "accept": [
+        "lateral cuneiform"
+      ],
+      "lines": [
+        45,
+        48
+      ],
+      "concept": "foot-bones",
+      "box": [
+        321,
+        526,
+        94,
+        40
+      ]
+    },
+    {
+      "id": "cuboid",
+      "name": "Cuboid",
+      "accept": [
+        "cuboid"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "foot-bones",
+      "box": [
+        322,
+        586,
+        70,
+        20
+      ]
+    },
+    {
+      "id": "navicular",
+      "name": "Navicular",
+      "accept": [
+        "navicular"
+      ],
+      "lines": [
+        55
+      ],
+      "concept": "foot-bones",
+      "box": [
+        0,
+        587,
+        86,
+        20
+      ]
+    },
+    {
+      "id": "talus",
+      "name": "Talus",
+      "accept": [
+        "talus",
+        "ankle bone"
+      ],
+      "lines": [
+        62
+      ],
+      "concept": "foot-bones",
+      "box": [
+        0,
+        627,
+        52,
+        20
+      ]
+    },
+    {
+      "id": "trochlea-of-talus",
+      "name": "Trochlea of talus",
+      "accept": [
+        "trochlea of talus",
+        "trochlea of the talus",
+        "talar dome"
+      ],
+      "lines": [
+        67,
+        70
+      ],
+      "concept": "foot-bones",
+      "box": [
+        0,
+        672,
+        80,
+        40
+      ]
+    },
+    {
+      "id": "calcaneus",
+      "name": "Calcaneus",
+      "accept": [
+        "calcaneus",
+        "heel bone"
+      ],
+      "lines": [
+        71
+      ],
+      "concept": "foot-bones",
+      "box": [
+        307,
+        705,
+        100,
+        20
+      ]
+    },
+    {
+      "id": "facet-for-lateral-malleolus",
+      "name": "Facet for lateral malleolus",
+      "accept": [
+        "facet for lateral malleolus",
+        "facet for the lateral malleolus"
+      ],
+      "lines": [
+        36,
+        40
+      ],
+      "concept": "foot-bones",
+      "box": [
+        455,
+        466,
+        146,
+        41
+      ]
+    },
+    {
+      "id": "navicular-3",
+      "name": "Navicular",
+      "accept": [
+        "navicular"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "foot-bones",
+      "box": [
+        636,
+        491,
+        89,
+        20
+      ]
+    },
+    {
+      "id": "intermediate-cuneiform-3",
+      "name": "Intermediate cuneiform",
+      "accept": [
+        "intermediate cuneiform",
+        "middle cuneiform"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "foot-bones",
+      "box": [
+        767,
+        491,
+        200,
+        20
+      ]
+    },
+    {
+      "id": "lateral-cuneiform-2",
+      "name": "Lateral cuneiform",
+      "accept": [
+        "lateral cuneiform"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": "foot-bones",
+      "box": [
+        819,
+        543,
+        154,
+        20
+      ]
+    },
+    {
+      "id": "talus-3",
+      "name": "Talus",
+      "accept": [
+        "talus",
+        "ankle bone"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "foot-bones",
+      "box": [
+        454,
+        576,
+        56,
+        19
+      ]
+    },
+    {
+      "id": "calcaneus-3",
+      "name": "Calcaneus",
+      "accept": [
+        "calcaneus",
+        "heel bone"
+      ],
+      "lines": [
+        73
+      ],
+      "concept": "foot-bones",
+      "box": [
+        463,
+        749,
+        100,
+        20
+      ]
+    },
+    {
+      "id": "cuboid-2",
+      "name": "Cuboid",
+      "accept": [
+        "cuboid"
+      ],
+      "lines": [
+        74
+      ],
+      "concept": "foot-bones",
+      "box": [
+        625,
+        749,
+        71,
+        20
+      ]
+    },
+    {
+      "id": "fifth-metatarsal",
+      "name": "Fifth metatarsal",
+      "accept": [
+        "fifth metatarsal",
+        "metatarsal 5",
+        "metatarsal v"
+      ],
+      "lines": [
+        75
+      ],
+      "concept": "foot-bones",
+      "box": [
+        727,
+        750,
+        139,
+        19
+      ]
+    }
+  ]
+}

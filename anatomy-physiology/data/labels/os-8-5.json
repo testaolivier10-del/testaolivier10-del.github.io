@@ -1,0 +1,421 @@
+{
+  "figure": "os-8-5",
+  "labels": [
+    {
+      "id": "humerus",
+      "name": "Humerus",
+      "accept": [
+        "humerus"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "humerus",
+      "box": [
+        290,
+        141,
+        88,
+        20
+      ]
+    },
+    {
+      "id": "anatomical-neck",
+      "name": "Anatomical neck",
+      "accept": [
+        "anatomical neck",
+        "anatomical neck of the humerus"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "humerus",
+      "box": [
+        281,
+        173,
+        105,
+        41
+      ]
+    },
+    {
+      "id": "greater-tubercle",
+      "name": "Greater tubercle",
+      "accept": [
+        "greater tubercle",
+        "greater tubercle of the humerus"
+      ],
+      "lines": [
+        8,
+        13
+      ],
+      "concept": "humerus",
+      "box": [
+        0,
+        201,
+        77,
+        41
+      ]
+    },
+    {
+      "id": "greater-tubercle-2",
+      "name": "Greater tubercle",
+      "accept": [
+        "greater tubercle",
+        "greater tubercle of the humerus"
+      ],
+      "lines": [
+        9,
+        14
+      ],
+      "concept": "humerus",
+      "box": [
+        577,
+        201,
+        80,
+        41
+      ]
+    },
+    {
+      "id": "head",
+      "name": "Head",
+      "accept": [
+        "head",
+        "head of the humerus",
+        "humeral head"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "humerus",
+      "box": [
+        309,
+        228,
+        56,
+        20
+      ]
+    },
+    {
+      "id": "lesser-tubercle",
+      "name": "Lesser tubercle",
+      "accept": [
+        "lesser tubercle",
+        "lesser tubercle of the humerus"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "humerus",
+      "box": [
+        0,
+        274,
+        77,
+        41
+      ]
+    },
+    {
+      "id": "surgical-neck",
+      "name": "Surgical neck",
+      "accept": [
+        "surgical neck",
+        "surgical neck of the humerus"
+      ],
+      "lines": [
+        19,
+        20
+      ],
+      "concept": "humerus",
+      "box": [
+        285,
+        303,
+        79,
+        41
+      ]
+    },
+    {
+      "id": "intertubercular-groove",
+      "name": "Intertubercular groove (sulcus)",
+      "accept": [
+        "intertubercular groove",
+        "intertubercular sulcus",
+        "bicipital groove"
+      ],
+      "lines": [
+        21,
+        22
+      ],
+      "concept": "humerus",
+      "box": [
+        0,
+        333,
+        137,
+        44
+      ]
+    },
+    {
+      "id": "deltoid-tuberosity",
+      "name": "Deltoid tuberosity",
+      "accept": [
+        "deltoid tuberosity"
+      ],
+      "lines": [
+        23,
+        25
+      ],
+      "concept": "humerus",
+      "box": [
+        284,
+        421,
+        95,
+        44
+      ]
+    },
+    {
+      "id": "body-shaft",
+      "name": "Body (shaft)",
+      "accept": [
+        "body",
+        "shaft",
+        "body of the humerus",
+        "shaft of the humerus",
+        "diaphysis"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "long-bone-parts",
+      "box": [
+        286,
+        498,
+        112,
+        24
+      ]
+    },
+    {
+      "id": "lateral-supracondylar-ridge",
+      "name": "Lateral supracondylar ridge",
+      "accept": [
+        "lateral supracondylar ridge",
+        "supracondylar ridge"
+      ],
+      "lines": [
+        28,
+        29,
+        30
+      ],
+      "concept": "humerus",
+      "box": [
+        0,
+        547,
+        129,
+        65
+      ]
+    },
+    {
+      "id": "olecranon-fossa",
+      "name": "Olecranon fossa",
+      "accept": [
+        "olecranon fossa"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "humerus",
+      "box": [
+        285,
+        600,
+        148,
+        20
+      ]
+    },
+    {
+      "id": "lateral-epicondyle",
+      "name": "Lateral epicondyle",
+      "accept": [
+        "lateral epicondyle",
+        "lateral epicondyle of the humerus"
+      ],
+      "lines": [
+        33,
+        35
+      ],
+      "concept": "humerus",
+      "box": [
+        578,
+        610,
+        100,
+        44
+      ]
+    },
+    {
+      "id": "radial-fossa",
+      "name": "Radial fossa",
+      "accept": [
+        "radial fossa"
+      ],
+      "lines": [
+        34,
+        37
+      ],
+      "concept": "humerus",
+      "box": [
+        0,
+        623,
+        63,
+        41
+      ]
+    },
+    {
+      "id": "coronoid-fossa",
+      "name": "Coronoid fossa",
+      "accept": [
+        "coronoid fossa"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "humerus",
+      "box": [
+        285,
+        641,
+        138,
+        19
+      ]
+    },
+    {
+      "id": "olecranon-of-ulna",
+      "name": "Olecranon of ulna",
+      "accept": [
+        "olecranon",
+        "olecranon of ulna",
+        "olecranon process"
+      ],
+      "lines": [
+        38,
+        43
+      ],
+      "concept": "radius-ulna",
+      "box": [
+        578,
+        674,
+        98,
+        41
+      ]
+    },
+    {
+      "id": "capitulum",
+      "name": "Capitulum",
+      "accept": [
+        "capitulum",
+        "capitulum of the humerus"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "humerus",
+      "box": [
+        0,
+        678,
+        94,
+        24
+      ]
+    },
+    {
+      "id": "medial-epicondyle",
+      "name": "Medial epicondyle",
+      "accept": [
+        "medial epicondyle",
+        "medial epicondyle of the humerus"
+      ],
+      "lines": [
+        41,
+        44
+      ],
+      "concept": "humerus",
+      "box": [
+        285,
+        687,
+        102,
+        44
+      ]
+    },
+    {
+      "id": "head-of-radius",
+      "name": "Head of radius",
+      "accept": [
+        "head of radius",
+        "head of the radius",
+        "radial head"
+      ],
+      "lines": [
+        45,
+        49
+      ],
+      "concept": "radius-ulna",
+      "box": [
+        0,
+        713,
+        76,
+        40
+      ]
+    },
+    {
+      "id": "head-of-radius-2",
+      "name": "Head of radius",
+      "accept": [
+        "head of radius",
+        "head of the radius",
+        "radial head"
+      ],
+      "lines": [
+        48,
+        51
+      ],
+      "concept": "radius-ulna",
+      "box": [
+        579,
+        725,
+        77,
+        40
+      ]
+    },
+    {
+      "id": "trochlea",
+      "name": "Trochlea",
+      "accept": [
+        "trochlea",
+        "trochlea of the humerus"
+      ],
+      "lines": [
+        50
+      ],
+      "concept": "humerus",
+      "box": [
+        284,
+        739,
+        84,
+        19
+      ]
+    },
+    {
+      "id": "coronoid-process-of-ulna",
+      "name": "Coronoid process of ulna",
+      "accept": [
+        "coronoid process of ulna",
+        "coronoid process of the ulna",
+        "coronoid process"
+      ],
+      "lines": [
+        52,
+        53
+      ],
+      "concept": "radius-ulna",
+      "box": [
+        285,
+        774,
+        159,
+        41
+      ]
+    }
+  ]
+}

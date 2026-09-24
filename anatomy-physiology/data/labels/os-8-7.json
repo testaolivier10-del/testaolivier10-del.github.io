@@ -1,0 +1,709 @@
+{
+  "figure": "os-8-7",
+  "labels": [
+    {
+      "id": "carpals",
+      "name": "Carpals",
+      "accept": [
+        "carpals",
+        "carpal bones",
+        "carpal",
+        "wrist bones"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "hand-bones",
+      "box": [
+        136,
+        15,
+        86,
+        26
+      ]
+    },
+    {
+      "id": "metacarpals",
+      "name": "Metacarpals",
+      "accept": [
+        "metacarpals",
+        "metacarpal bones",
+        "metacarpal"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "hand-bones",
+      "box": [
+        137,
+        62,
+        127,
+        26
+      ]
+    },
+    {
+      "id": "phalanges",
+      "name": "Phalanges",
+      "accept": [
+        "phalanges",
+        "phalanx",
+        "finger bones"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "hand-bones",
+      "box": [
+        137,
+        105,
+        112,
+        26
+      ]
+    },
+    {
+      "id": "middle-finger",
+      "name": "Middle finger",
+      "accept": [
+        "middle finger",
+        "third digit",
+        "digit 3"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": null,
+      "box": [
+        271,
+        167,
+        133,
+        26
+      ]
+    },
+    {
+      "id": "index-finger",
+      "name": "Index finger",
+      "accept": [
+        "index finger",
+        "second digit",
+        "digit 2"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": null,
+      "box": [
+        181,
+        205,
+        122,
+        26
+      ]
+    },
+    {
+      "id": "ring-finger",
+      "name": "Ring finger",
+      "accept": [
+        "ring finger",
+        "fourth digit",
+        "digit 4"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": null,
+      "box": [
+        377,
+        208,
+        114,
+        26
+      ]
+    },
+    {
+      "id": "little-finger",
+      "name": "Little finger",
+      "accept": [
+        "little finger",
+        "fifth digit",
+        "digit 5",
+        "pinky"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": null,
+      "box": [
+        447,
+        270,
+        115,
+        26
+      ]
+    },
+    {
+      "id": "distal-phalanx",
+      "name": "Distal",
+      "accept": [
+        "distal",
+        "distal phalanx",
+        "distal phalanges"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "hand-bones",
+      "box": [
+        864,
+        234,
+        64,
+        21
+      ]
+    },
+    {
+      "id": "middle-phalanx",
+      "name": "Middle",
+      "accept": [
+        "middle",
+        "middle phalanx",
+        "middle phalanges"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "hand-bones",
+      "box": [
+        864,
+        284,
+        74,
+        22
+      ]
+    },
+    {
+      "id": "proximal-phalanx",
+      "name": "Proximal",
+      "accept": [
+        "proximal",
+        "proximal phalanx",
+        "proximal phalanges"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "hand-bones",
+      "box": [
+        864,
+        354,
+        93,
+        21
+      ]
+    },
+    {
+      "id": "phalanges-2",
+      "name": "Phalanges",
+      "accept": [
+        "phalanges",
+        "phalanx",
+        "finger bones"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "hand-bones",
+      "box": [
+        989,
+        295,
+        113,
+        26
+      ]
+    },
+    {
+      "id": "thumb-pollex",
+      "name": "Thumb (pollex)",
+      "accept": [
+        "thumb",
+        "pollex",
+        "first digit",
+        "digit 1"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "hand-bones",
+      "box": [
+        107,
+        340,
+        81,
+        49
+      ]
+    },
+    {
+      "id": "phalanges-3",
+      "name": "Phalanges",
+      "accept": [
+        "phalanges",
+        "phalanx",
+        "finger bones"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "hand-bones",
+      "box": [
+        2,
+        400,
+        123,
+        26
+      ]
+    },
+    {
+      "id": "distal-phalanx-2",
+      "name": "Distal",
+      "accept": [
+        "distal",
+        "distal phalanx",
+        "distal phalanges"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "hand-bones",
+      "box": [
+        2,
+        423,
+        63,
+        22
+      ]
+    },
+    {
+      "id": "proximal-phalanx-2",
+      "name": "Proximal",
+      "accept": [
+        "proximal",
+        "proximal phalanx",
+        "proximal phalanges"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "hand-bones",
+      "box": [
+        2,
+        447,
+        93,
+        22
+      ]
+    },
+    {
+      "id": "head",
+      "name": "Head",
+      "accept": [
+        "head",
+        "head of the phalanx"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "hand-bones",
+      "box": [
+        506,
+        425,
+        61,
+        22
+      ]
+    },
+    {
+      "id": "shaft",
+      "name": "Shaft",
+      "accept": [
+        "shaft",
+        "body",
+        "shaft of the phalanx"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "hand-bones",
+      "box": [
+        505,
+        460,
+        62,
+        22
+      ]
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "accept": [
+        "base",
+        "base of the phalanx"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "hand-bones",
+      "box": [
+        506,
+        498,
+        59,
+        21
+      ]
+    },
+    {
+      "id": "head-2",
+      "name": "Head",
+      "accept": [
+        "head",
+        "head of the metacarpal"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "hand-bones",
+      "box": [
+        956,
+        527,
+        61,
+        22
+      ]
+    },
+    {
+      "id": "shaft-2",
+      "name": "Shaft",
+      "accept": [
+        "shaft",
+        "body",
+        "shaft of the metacarpal"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "hand-bones",
+      "box": [
+        955,
+        570,
+        62,
+        22
+      ]
+    },
+    {
+      "id": "base-2",
+      "name": "Base",
+      "accept": [
+        "base",
+        "base of the metacarpal"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "hand-bones",
+      "box": [
+        956,
+        615,
+        59,
+        22
+      ]
+    },
+    {
+      "id": "metacarpals-2",
+      "name": "Metacarpals (1–5)",
+      "accept": [
+        "metacarpals",
+        "metacarpal bones",
+        "metacarpal"
+      ],
+      "lines": [
+        36,
+        37,
+        38
+      ],
+      "concept": "hand-bones",
+      "box": [
+        469,
+        546,
+        133,
+        49
+      ]
+    },
+    {
+      "id": "carpals-2",
+      "name": "Carpals",
+      "accept": [
+        "carpals",
+        "carpal bones",
+        "carpal",
+        "wrist bones"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "hand-bones",
+      "box": [
+        1,
+        592,
+        96,
+        26
+      ]
+    },
+    {
+      "id": "carpals-3",
+      "name": "Carpals",
+      "accept": [
+        "carpals",
+        "carpal bones",
+        "carpal",
+        "wrist bones"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "hand-bones",
+      "box": [
+        493,
+        604,
+        96,
+        26
+      ]
+    },
+    {
+      "id": "carpals-4",
+      "name": "Carpals",
+      "accept": [
+        "carpals",
+        "carpal bones",
+        "carpal",
+        "wrist bones"
+      ],
+      "lines": [
+        50
+      ],
+      "concept": "hand-bones",
+      "box": [
+        955,
+        655,
+        96,
+        26
+      ]
+    },
+    {
+      "id": "trapezium",
+      "name": "Trapezium",
+      "accept": [
+        "trapezium"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "hand-bones",
+      "box": [
+        0,
+        616,
+        112,
+        25
+      ]
+    },
+    {
+      "id": "trapezoid",
+      "name": "Trapezoid",
+      "accept": [
+        "trapezoid"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": "hand-bones",
+      "box": [
+        1,
+        639,
+        105,
+        26
+      ]
+    },
+    {
+      "id": "scaphoid",
+      "name": "Scaphoid",
+      "accept": [
+        "scaphoid",
+        "navicular of the hand"
+      ],
+      "lines": [
+        51
+      ],
+      "concept": "hand-bones",
+      "box": [
+        1,
+        662,
+        100,
+        26
+      ]
+    },
+    {
+      "id": "hamate",
+      "name": "Hamate",
+      "accept": [
+        "hamate"
+      ],
+      "lines": [
+        46
+      ],
+      "concept": "hand-bones",
+      "box": [
+        494,
+        628,
+        85,
+        21
+      ]
+    },
+    {
+      "id": "capitate",
+      "name": "Capitate",
+      "accept": [
+        "capitate"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "hand-bones",
+      "box": [
+        493,
+        651,
+        91,
+        26
+      ]
+    },
+    {
+      "id": "pisiform",
+      "name": "Pisiform",
+      "accept": [
+        "pisiform"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "hand-bones",
+      "box": [
+        494,
+        675,
+        87,
+        21
+      ]
+    },
+    {
+      "id": "triquetrum",
+      "name": "Triquetrum",
+      "accept": [
+        "triquetrum",
+        "triquetral"
+      ],
+      "lines": [
+        55
+      ],
+      "concept": "hand-bones",
+      "box": [
+        493,
+        698,
+        113,
+        26
+      ]
+    },
+    {
+      "id": "lunate",
+      "name": "Lunate",
+      "accept": [
+        "lunate"
+      ],
+      "lines": [
+        59
+      ],
+      "concept": "hand-bones",
+      "box": [
+        494,
+        722,
+        76,
+        21
+      ]
+    },
+    {
+      "id": "trapezium-2",
+      "name": "Trapezium",
+      "accept": [
+        "trapezium"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "hand-bones",
+      "box": [
+        954,
+        679,
+        111,
+        25
+      ]
+    },
+    {
+      "id": "trapezoid-2",
+      "name": "Trapezoid",
+      "accept": [
+        "trapezoid"
+      ],
+      "lines": [
+        56
+      ],
+      "concept": "hand-bones",
+      "box": [
+        954,
+        702,
+        105,
+        26
+      ]
+    },
+    {
+      "id": "scaphoid-2",
+      "name": "Scaphoid",
+      "accept": [
+        "scaphoid",
+        "navicular of the hand"
+      ],
+      "lines": [
+        60
+      ],
+      "concept": "hand-bones",
+      "box": [
+        955,
+        725,
+        99,
+        26
+      ]
+    },
+    {
+      "id": "ulna",
+      "name": "Ulna",
+      "accept": [
+        "ulna"
+      ],
+      "lines": [
+        61
+      ],
+      "concept": "radius-ulna",
+      "box": [
+        512,
+        753,
+        55,
+        22
+      ]
+    },
+    {
+      "id": "radius",
+      "name": "Radius",
+      "accept": [
+        "radius"
+      ],
+      "lines": [
+        62
+      ],
+      "concept": "radius-ulna",
+      "box": [
+        501,
+        790,
+        77,
+        22
+      ]
+    }
+  ]
+}

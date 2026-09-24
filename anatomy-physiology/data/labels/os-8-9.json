@@ -1,0 +1,138 @@
+{
+  "figure": "os-8-9",
+  "labels": [
+    {
+      "id": "carpal-tunnel",
+      "name": "Carpal tunnel",
+      "accept": [
+        "carpal tunnel"
+      ],
+      "box": [
+        0,
+        352,
+        96,
+        66
+      ],
+      "concept": "hand-bones"
+    },
+    {
+      "id": "muscle-tendons",
+      "name": "Muscle tendons",
+      "accept": [
+        "muscle tendons",
+        "tendons",
+        "tendon",
+        "flexor tendons"
+      ],
+      "box": [
+        0,
+        448,
+        117,
+        66
+      ],
+      "concept": "tendon-ligament"
+    },
+    {
+      "id": "carpal-bones",
+      "name": "Carpal bones",
+      "accept": [
+        "carpal bones",
+        "carpals",
+        "wrist bones"
+      ],
+      "box": [
+        0,
+        565,
+        215,
+        34
+      ],
+      "concept": "hand-bones"
+    },
+    {
+      "id": "hamate",
+      "name": "Hamate",
+      "accept": [
+        "hamate"
+      ],
+      "box": [
+        21,
+        601,
+        115,
+        30
+      ],
+      "concept": "hand-bones"
+    },
+    {
+      "id": "trapezium",
+      "name": "Trapezium",
+      "accept": [
+        "trapezium"
+      ],
+      "box": [
+        19,
+        637,
+        152,
+        36
+      ],
+      "concept": "hand-bones"
+    },
+    {
+      "id": "trapezoid",
+      "name": "Trapezoid",
+      "accept": [
+        "trapezoid"
+      ],
+      "box": [
+        19,
+        673,
+        146,
+        36
+      ],
+      "concept": "hand-bones"
+    },
+    {
+      "id": "capitate",
+      "name": "Capitate",
+      "accept": [
+        "capitate"
+      ],
+      "box": [
+        20,
+        708,
+        123,
+        37
+      ],
+      "concept": "hand-bones"
+    },
+    {
+      "id": "flexor-retinaculum",
+      "name": "Flexor retinaculum",
+      "accept": [
+        "flexor retinaculum",
+        "transverse carpal ligament"
+      ],
+      "box": [
+        932,
+        549,
+        168,
+        65
+      ],
+      "concept": "hand-bones"
+    },
+    {
+      "id": "nerve",
+      "name": "Nerve",
+      "accept": [
+        "nerve",
+        "median nerve"
+      ],
+      "box": [
+        933,
+        645,
+        88,
+        30
+      ],
+      "concept": "nerve"
+    }
+  ]
+}

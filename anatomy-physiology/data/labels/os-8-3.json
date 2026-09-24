@@ -1,0 +1,227 @@
+{
+  "figure": "os-8-3",
+  "labels": [
+    {
+      "id": "coracoclavicular-ligament",
+      "name": "Coracoclavicular ligament",
+      "accept": [
+        "coracoclavicular ligament",
+        "coracoclavicular ligaments"
+      ],
+      "lines": [
+        4,
+        6
+      ],
+      "concept": null,
+      "box": [
+        4,
+        224,
+        151,
+        46
+      ]
+    },
+    {
+      "id": "costoclavicular-ligament",
+      "name": "Costoclavicular ligament",
+      "accept": [
+        "costoclavicular ligament",
+        "costoclavicular ligaments"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": null,
+      "box": [
+        403,
+        228,
+        140,
+        46
+      ]
+    },
+    {
+      "id": "clavicle",
+      "name": "Clavicle",
+      "accept": [
+        "clavicle",
+        "collarbone",
+        "collar bone"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        305,
+        273,
+        77,
+        20
+      ]
+    },
+    {
+      "id": "clavicle-2",
+      "name": "Clavicle",
+      "accept": [
+        "clavicle",
+        "collarbone",
+        "collar bone"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        734,
+        273,
+        77,
+        20
+      ]
+    },
+    {
+      "id": "acromioclavicular-joint",
+      "name": "Acromioclavicular joint",
+      "accept": [
+        "acromioclavicular joint",
+        "ac joint"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "named-small-joints",
+      "box": [
+        3,
+        297,
+        161,
+        45
+      ]
+    },
+    {
+      "id": "glenohumeral-joint",
+      "name": "Glenohumeral joint",
+      "accept": [
+        "glenohumeral joint",
+        "shoulder joint"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "knee-shoulder",
+      "box": [
+        3,
+        468,
+        131,
+        46
+      ]
+    },
+    {
+      "id": "scapula",
+      "name": "Scapula",
+      "accept": [
+        "scapula",
+        "shoulder blade"
+      ],
+      "box": [
+        192,
+        546,
+        72,
+        24
+      ],
+      "concept": "pectoral-girdle"
+    },
+    {
+      "id": "scapula-2",
+      "name": "Scapula",
+      "accept": [
+        "scapula",
+        "shoulder blade"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        887,
+        503,
+        80,
+        24
+      ]
+    },
+    {
+      "id": "rib",
+      "name": "Rib",
+      "accept": [
+        "rib",
+        "ribs"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "ribs",
+      "box": [
+        888,
+        547,
+        39,
+        20
+      ]
+    },
+    {
+      "id": "vertebrae",
+      "name": "Vertebrae",
+      "accept": [
+        "vertebrae",
+        "vertebra",
+        "vertebral column"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        887,
+        597,
+        93,
+        19
+      ]
+    },
+    {
+      "id": "acromial-end",
+      "name": "Acromial end",
+      "accept": [
+        "acromial end",
+        "acromial end of the clavicle",
+        "lateral end"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        160,
+        1072,
+        122,
+        19
+      ]
+    },
+    {
+      "id": "sternal-end",
+      "name": "Sternal end",
+      "accept": [
+        "sternal end",
+        "sternal end of the clavicle",
+        "medial end"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        828,
+        1072,
+        108,
+        19
+      ]
+    }
+  ]
+}
