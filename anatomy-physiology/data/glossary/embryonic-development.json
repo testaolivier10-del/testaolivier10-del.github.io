@@ -1,0 +1,47 @@
+{
+  "cleavage": {
+    "def": "The rapid mitotic divisions of the zygote in its first days, which make more and smaller cells (blastomeres) without any growth. By day 3 to 4 they form a solid ball of about 16 to 32 cells, the morula.",
+    "roots": [["blast-", "bud, germ"], ["-mere", "part"], ["morula", "little mulberry"]],
+    "say": "MOR-yoo-luh"
+  },
+  "blastocyst": {
+    "def": "The hollow ball of cells an embryo becomes around day 5: an outer layer, the trophoblast, which attaches to the uterus and forms supporting tissues; a cluster inside, the inner cell mass, which forms the embryo; and a fluid-filled cavity, the blastocoel.",
+    "roots": [["blasto-", "germ"], ["-cyst", "sac"], ["troph-", "nourishment"], ["-coel", "cavity"]],
+    "say": "BLAS-toh-sist"
+  },
+  "implantation": {
+    "def": "The embedding of the blastocyst in the endometrium, from about day 6 to day 12 after fertilization. The outer trophoblast forms the syncytiotrophoblast, a many-nucleated mass without cell boundaries that digests its way in and reaches maternal blood.",
+    "roots": [["syn-", "together"], ["cyt-", "cell"], ["troph-", "nourishment"]],
+    "say": "sin-SISH-ee-oh-TROH-foh-blast"
+  },
+  "hcg": {
+    "def": "Human chorionic gonadotropin (hCG), a glycoprotein hormone secreted by the syncytiotrophoblast from implantation onward. It acts like LH on the corpus luteum, keeping it alive and making progesterone so the endometrium is not shed; pregnancy tests detect it.",
+    "roots": [["chorion", "outer membrane"], ["gonado-", "gonad"], ["-tropin", "acting on"]],
+    "say": "kor-ee-ON-ik goh-nad-oh-TROH-pin"
+  },
+  "germ-layers": {
+    "def": "The three layers formed from the epiblast by gastrulation in week 3, as cells move through the primitive streak: ectoderm (outer covering and nervous system), mesoderm (muscle, bone, blood, heart, kidneys and most connective tissue) and endoderm (linings of the gut and airways and the glands that bud from them). The hypoblast, the lower layer of the earlier two-layered disc, is replaced.",
+    "roots": [["ecto-", "outer"], ["meso-", "middle"], ["endo-", "inner"], ["-derm", "skin, layer"], ["gastr-", "stomach, gut"]],
+    "say": ""
+  },
+  "embryonic-membranes": {
+    "def": "The four membranes around the embryo that are not part of its body: the amnion, which encloses the amniotic cavity and its fluid; the yolk sac, where the first blood cells form; the allantois, whose vessels become those of the cord; and the chorion (chorionic membrane), the outermost, which makes hCG.",
+    "roots": [["amnion", "membrane around a fetus"], ["allant-", "sausage"], ["chorion", "outer membrane"]],
+    "say": "AM-nee-on, KOR-ee-on"
+  },
+  "organogenesis": {
+    "def": "The formation of the organs from the germ layers, from week 3 to the end of week 8, the embryonic period. Folding in week 4 turns the flat disc into a body with a gut tube (foregut, midgut and hindgut). It is the time when a drug, an infection or a missing nutrient is most likely to cause a major defect.",
+    "roots": [["organo-", "organ"], ["-genesis", "making"]],
+    "say": ""
+  },
+  "somites": {
+    "def": "The notochord is a rod of mesoderm along the embryo's midline whose signals induce the neural tube; its remnant is the nucleus pulposus. Somites are the paired blocks of mesoderm beside the neural tube; each forms a sclerotome (vertebrae and ribs), a myotome (skeletal muscle) and a dermatome (dermis of the back).",
+    "roots": [["noto-", "back"], ["chord", "cord"], ["som-", "body"], ["sclero-", "hard"], ["myo-", "muscle"], ["-tome", "cut, section"]],
+    "say": "SOH-mite"
+  },
+  "musculoskeletal-development": {
+    "def": "Limbs grow from limb buds under the apical ectodermal ridge, which keeps the tip growing; cartilage models become bone by endochondral ossification; joints form where a joint interzone stays uncommitted; and the limbs rotate in weeks 7 and 8.",
+    "roots": [["apical", "at the tip"]],
+    "say": ""
+  }
+}

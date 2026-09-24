@@ -1,0 +1,110 @@
+{
+  "os-28-5": {
+    "file": "figures/openstax/os-28-5.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.5",
+      "section": "28.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/bf32ce2bdd43df5dc92052915f816e9f912a3b65",
+      "page": "28-2-embryonic-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/bf32ce2bdd43df5dc92052915f816e9f912a3b65",
+    "alt": "A drawing of an ovary, a uterine tube and part of the uterus, with eight numbered boxes connected by arrows to points along the tube. Box 1, beside the ovary: an unfertilized oocyte. Box 2, in the outer tube: the oocyte surrounded by sperm. Boxes 3 to 5, farther along the tube: two cells, four cells, eight cells, and then a solid ball of about 16 cells. Box 6, near the uterus: a hollow ball of cells shown whole and cut open, with an outer layer of flat cells, a cluster of cells inside at one end, and a fluid-filled space. Notes at the bottom: the embryo hatches from its coat, then rotates and implants in the uterine wall.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.5",
+    "labels": [],
+    "w": 1100,
+    "h": 1007,
+    "ext": "jpg"
+  },
+  "os-28-8": {
+    "file": "figures/openstax/os-28-8.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.8",
+      "section": "28.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/65b60680bc4c49d24b9061bd6311de6fa82270f2",
+      "page": "28-2-embryonic-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/65b60680bc4c49d24b9061bd6311de6fa82270f2",
+    "alt": "A cross-section of an embryo embedded in the uterine lining in the second week. A flat disc of two cell layers, a purple lower layer and a blue upper layer, lies between two spaces: a small cavity above lined by a thin membrane, and a larger cavity below. A thin layer of separate cells surrounds the whole embryo, and outside it a large orange mass without cell boundaries, with scattered nuclei, spreads into the uterine tissue, which contains blood vessels.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.8",
+    "labels": [],
+    "w": 700,
+    "h": 487,
+    "ext": "jpg"
+  },
+  "os-28-9": {
+    "file": "figures/openstax/os-28-9.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.9",
+      "section": "28.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9c163e061a5bd0ee52b56aed155ac3083230942a",
+      "page": "28-2-embryonic-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/9c163e061a5bd0ee52b56aed155ac3083230942a",
+    "alt": "Two cross-sections of an implanted embryo in the uterine lining. Top: a two-layered disc, a blue upper layer and a purple lower layer, with a fluid space above it, inside a larger sac ringed by an outer layer of cells. Bottom: the same embryo a few days later. A groove in the midline of the upper layer is enlarged in an inset, showing cells slipping down through the groove to form a new middle layer of red cells and to replace the lower layer, giving three layers. A small diagram shows where the section was cut across the oval disc.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.9",
+    "labels": [],
+    "w": 1100,
+    "h": 982,
+    "ext": "jpg"
+  },
+  "os-28-10": {
+    "file": "figures/openstax/os-28-10.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.10",
+      "section": "28.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/3bcd40f8fe8ef93b416c7c9d2388f3b994676506",
+      "page": "28-2-embryonic-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/3bcd40f8fe8ef93b416c7c9d2388f3b994676506",
+    "alt": "A drawing of a curled embryo inside its membranes, embedded in the uterine wall. A thin membrane surrounds the embryo and a large fluid-filled space; a yellow sac hangs from the embryo's front; a small outpouching extends into the stalk that ties the embryo to the outer membrane; the outer membrane, with branching projections, reaches into a pool of maternal blood in the uterine wall. The embryo is colored in three layers: blue outer, red middle and yellow inner. Three boxes below list organs said to come from the inner, middle and outer layers.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.10",
+    "labels": [],
+    "w": 1100,
+    "h": 952,
+    "ext": "jpg"
+  },
+  "os-28-13": {
+    "file": "figures/openstax/os-28-13.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.13",
+      "section": "28.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/10869e065f7133a1cb5821a6139c5f85cd46368d",
+      "page": "28-2-embryonic-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/10869e065f7133a1cb5821a6139c5f85cd46368d",
+    "alt": "Four stacked three-dimensional drawings of a slice across the back of an embryo. 1: a flat purple plate of ectoderm, with blue ectoderm on either side and green borders, lies over red blocks of mesoderm and a round rod in the midline. 2: the plate folds up into a U, its green edges rising toward each other. 3: the edges have met; a purple tube lies under a restored blue surface layer, with green cell clusters beside it and the rod beneath. 4: the tube lies in the midline, with small green lumps beside it, large red blocks of mesoderm on either side, the rod beneath, and skin over the top. Notes beside each drawing describe the step.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.13",
+    "labels": [],
+    "w": 1100,
+    "h": 1271,
+    "ext": "jpg"
+  },
+  "os-28-14": {
+    "file": "figures/openstax/os-28-14.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.14",
+      "section": "28.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/4a7fa2c5af63f94ace36aca2f7cb6bd84b42e2b4",
+      "page": "28-2-embryonic-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/4a7fa2c5af63f94ace36aca2f7cb6bd84b42e2b4",
+    "alt": "A sequence of cross-sections showing an embryo folding. Left column, from top: a flat disc of blue, red and yellow layers under a fluid-filled green sac; then the same disc sitting on a large sac; then a disc with a middle layer forming. Right column: a side view of the embryo curling at its head and tail ends over a yellow sac; then two cross-sections in which the blue outer layer wraps around the body, the red layer lines it, and the yellow inner layer is pinched off into a tube in the center, the gut, first still open to the sac and then closed.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.14",
+    "labels": [],
+    "w": 1100,
+    "h": 1008,
+    "ext": "jpg"
+  }
+}
