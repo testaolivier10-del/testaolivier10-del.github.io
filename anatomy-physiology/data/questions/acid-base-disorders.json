@@ -139,7 +139,7 @@
     "diff": 3,
     "predictLevel": 3,
     "core": ["homeostasis", "interdependence"],
-    "q": "A traveler develops severe watery diarrhea from cholera and loses several liters of stool a day. Predict the change in each variable compared with before the illness.",
+    "q": "A traveler has had watery diarrhea for four days, losing more fluid than usual but not enough to go into shock. Predict the change in each variable compared with before the illness.",
     "variables": [
       { "name": "Plasma bicarbonate", "answer": "down", "why": "Intestinal fluid is rich in bicarbonate, and it leaves in the stool." },
       { "name": "Plasma chloride", "answer": "up", "why": "The kidneys and gut keep chloride in place of the lost bicarbonate, so chloride concentration rises." },
@@ -147,7 +147,7 @@
       { "name": "Blood pH", "answer": "down", "why": "Lower bicarbonate lowers the bicarbonate to carbon dioxide ratio." },
       { "name": "Arterial PaCO2", "answer": "down", "why": "The carotid bodies sense the low pH and speed breathing, which blows off carbon dioxide: respiratory compensation." },
       { "name": "Plasma potassium", "answer": "down", "why": "Stool water carries potassium, which the colon secretes." },
-      { "name": "Blood volume", "answer": "down", "why": "Liters of water and sodium are lost in stool each day." }
+      { "name": "Blood volume", "answer": "down", "why": "Water and sodium are lost in stool faster than they are replaced." }
     ],
     "why": { "correct": "Losing bicarbonate-rich intestinal fluid causes a normal anion gap metabolic acidosis with high chloride, low potassium and low blood volume. The lungs compensate by lowering PaCO2." }
   },
@@ -335,7 +335,7 @@
     "diff": 3,
     "core": ["interdependence"],
     "q": "Mr. Lowe has severe COPD and a PaCO2 that is usually 55 mm Hg. After high-flow oxygen in the ambulance, he is drowsy and his PaCO2 is 75 mm Hg. Which explanation is best supported by current evidence?",
-    "options": ["Oxygen removed his hypoxic drive, so he stopped breathing", "Oxygen damaged his alveoli and blocked carbon dioxide diffusion", "Oxygen stimulated his kidneys to retain carbon dioxide", "Worse ventilation–perfusion mismatch, plus the Haldane effect, raised his PaCO2"],
+    "options": ["Oxygen removed his hypoxic drive, so he stopped breathing", "Oxygen damaged his alveoli and blocked carbon dioxide diffusion", "Oxygen stimulated his kidneys to retain carbon dioxide", "Worse ventilation–perfusion mismatch and the Haldane effect"],
     "correct": 3,
     "why": {
       "correct": "Extra oxygen reverses hypoxic pulmonary vasoconstriction, sending blood to poorly ventilated alveoli, so less carbon dioxide is removed. More oxygen on hemoglobin also lets the blood hold less carbon dioxide at the same PaCO2 (the Haldane effect). Studies show his ventilation falls only a little. Oxygen is given to a target saturation, never withheld.",

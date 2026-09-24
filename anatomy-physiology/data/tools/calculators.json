@@ -20,6 +20,10 @@
     {
       "id": "digestive",
       "title": "Digestive system"
+    },
+    {
+      "id": "metabolism",
+      "title": "Metabolism and nutrition"
     }
   ],
   "calculators": [
@@ -4558,6 +4562,1426 @@
               "abs": 0.2
             },
             "prompt": "Food and drink supply {diet} mL; saliva {sal}; gastric juice {gas}; bile {bile}; pancreatic juice {panc}; intestinal juice {int}. The small intestine absorbs {si} mL, the colon adds {cs} mL of its own secretions and absorbs {col} mL. What percentage of all the water that entered the gut was absorbed?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "met-meal-energy",
+      "group": "metabolism",
+      "title": "Energy in a meal",
+      "short": "kcal = 4 × carb + 4 × protein + 9 × fat (+ 7 × alcohol)",
+      "topic": "nutrition",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Enter the grams of each macronutrient in a food or meal. Carbohydrate and protein give about 4 kcal per gram, fat about 9 and alcohol about 7. Vitamins, minerals, water and fiber add almost nothing.",
+      "formula": "Energy (kcal) = 4 × carbohydrate (g) + 4 × protein (g) + 9 × fat (g) + 7 × alcohol (g)",
+      "inputs": [
+        {
+          "key": "carb",
+          "label": "Carbohydrate",
+          "sym": "carbohydrate",
+          "unit": "g",
+          "default": 40,
+          "min": 0,
+          "max": 500,
+          "step": 1,
+          "gen": [
+            0,
+            90,
+            1
+          ]
+        },
+        {
+          "key": "prot",
+          "label": "Protein",
+          "sym": "protein",
+          "unit": "g",
+          "default": 25,
+          "min": 0,
+          "max": 300,
+          "step": 1,
+          "gen": [
+            0,
+            50,
+            1
+          ]
+        },
+        {
+          "key": "fat",
+          "label": "Fat",
+          "sym": "fat",
+          "unit": "g",
+          "default": 12,
+          "min": 0,
+          "max": 300,
+          "step": 1,
+          "gen": [
+            0,
+            40,
+            1
+          ]
+        },
+        {
+          "key": "alc",
+          "label": "Alcohol",
+          "sym": "alcohol",
+          "unit": "g",
+          "default": 0,
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "gen": {
+            "choices": [
+              0,
+              0,
+              0,
+              0,
+              14,
+              28
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "when": "carb + prot + fat + alc == 0",
+          "text": "Enter at least one macronutrient: with no carbohydrate, protein, fat or alcohol there is no energy to count."
+        }
+      ],
+      "derived": [
+        {
+          "key": "kc",
+          "expr": "carb * 4",
+          "dp": 0
+        },
+        {
+          "key": "kp",
+          "expr": "prot * 4",
+          "dp": 0
+        },
+        {
+          "key": "kf",
+          "expr": "fat * 9",
+          "dp": 0
+        },
+        {
+          "key": "ka",
+          "expr": "alc * 7",
+          "dp": 0
+        },
+        {
+          "key": "total",
+          "expr": "carb * 4 + prot * 4 + fat * 9 + alc * 7",
+          "dp": 0
+        },
+        {
+          "key": "grams",
+          "expr": "carb + prot + fat + alc",
+          "dp": 0
+        },
+        {
+          "key": "pf",
+          "expr": "fat * 9 / (carb * 4 + prot * 4 + fat * 9 + alc * 7) * 100",
+          "dp": 0
+        },
+        {
+          "key": "pfx",
+          "expr": "fat * 9 / (carb * 4 + prot * 4 + fat * 9 + alc * 7) * 100",
+          "dp": 1
+        },
+        {
+          "key": "wf",
+          "expr": "fat / (carb + prot + fat + alc) * 100",
+          "dp": 0
+        },
+        {
+          "key": "kj",
+          "expr": "(carb * 4 + prot * 4 + fat * 9 + alc * 7) * 4.184",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Carbohydrate",
+          "text": "{carb} g × 4 kcal/g = <b>{kc} kcal</b>."
+        },
+        {
+          "title": "Protein",
+          "text": "{prot} g × 4 kcal/g = <b>{kp} kcal</b>."
+        },
+        {
+          "title": "Fat",
+          "text": "{fat} g × 9 kcal/g = <b>{kf} kcal</b>."
+        },
+        {
+          "title": "Alcohol",
+          "text": "{alc} g × 7 kcal/g = <b>{ka} kcal</b>."
+        },
+        {
+          "title": "Add",
+          "text": "{kc} + {kp} + {kf} + {ka} = <b>{total} kcal</b> (× 4.184 = {kj} kJ)."
+        },
+        {
+          "title": "Share from fat",
+          "text": "{kf} ÷ {total} = <b>{pf}%</b> of the energy, although fat is only {wf}% of the {grams} g by weight. Compare energy, not grams."
+        }
+      ],
+      "results": [
+        {
+          "key": "total",
+          "label": "Energy",
+          "unit": "kcal",
+          "normal": "A food label’s \"Calories\" are kilocalories."
+        },
+        {
+          "key": "pf",
+          "label": "Energy from fat",
+          "unit": "%"
+        }
+      ],
+      "meaning": [
+        {
+          "when": "pf >= 50",
+          "text": "More than half of the {total} kcal come from fat ({pf}%). Each gram of fat carries more than twice the energy of a gram of carbohydrate or protein, because it is mostly carbon–hydrogen bonds with few oxygen atoms."
+        },
+        {
+          "when": "ka > 0",
+          "text": "{ka} of the {total} kcal come from alcohol. Alcohol supplies energy but nothing else the body needs, so it is not a nutrient."
+        },
+        {
+          "when": "1",
+          "text": "The meal supplies about {total} kcal, {pf}% of it from fat. Vitamins, minerals and water in the food add no energy."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: turkey sandwich (40 g carbohydrate, 25 g protein, 12 g fat)",
+          "values": {
+            "carb": 40,
+            "prot": 25,
+            "fat": 12,
+            "alc": 0
+          }
+        },
+        {
+          "label": "A sports drink: 35 g of sugar",
+          "values": {
+            "carb": 35,
+            "prot": 0,
+            "fat": 0,
+            "alc": 0
+          }
+        },
+        {
+          "label": "A handful of peanuts: 6 g carbohydrate, 7 g protein, 14 g fat",
+          "values": {
+            "carb": 6,
+            "prot": 7,
+            "fat": 14,
+            "alc": 0
+          }
+        },
+        {
+          "label": "A can of beer: 13 g carbohydrate, 2 g protein, 14 g alcohol",
+          "values": {
+            "carb": 13,
+            "prot": 2,
+            "fat": 0,
+            "alc": 14
+          }
+        }
+      ],
+      "practice": {
+        "require": "alc == 0 && carb + prot + fat >= 20",
+        "asks": [
+          {
+            "key": "total",
+            "unit": "kcal",
+            "tol": {
+              "abs": 2
+            },
+            "prompt": "A snack contains {carb} g of carbohydrate, {prot} g of protein and {fat} g of fat. How many kilocalories does it supply?"
+          },
+          {
+            "key": "pf",
+            "show": "pfx",
+            "unit": "%",
+            "tol": {
+              "abs": 1
+            },
+            "prompt": "A snack contains {carb} g of carbohydrate, {prot} g of protein and {fat} g of fat. What percentage of its energy comes from fat?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "met-label-grams",
+      "group": "metabolism",
+      "title": "Grams from the kilocalories on a label",
+      "short": "grams = kcal ÷ kcal per gram",
+      "topic": "nutrition",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Work backward from a label. If all of a food’s energy comes from one macronutrient, dividing the kilocalories by that nutrient’s kcal per gram gives its grams.",
+      "formula": "Grams = kilocalories ÷ kcal per gram (4 for carbohydrate or protein, 9 for fat, 7 for alcohol)",
+      "inputs": [
+        {
+          "key": "kcal",
+          "label": "Energy on the label",
+          "sym": "kcal",
+          "unit": "kcal",
+          "default": 140,
+          "min": 1,
+          "max": 3000,
+          "step": 1,
+          "gen": [
+            40,
+            400,
+            10
+          ]
+        },
+        {
+          "key": "per",
+          "label": "Energy per gram of the nutrient",
+          "sym": "kcal/g",
+          "unit": "kcal/g",
+          "default": 4,
+          "min": 4,
+          "max": 9,
+          "step": 1,
+          "gen": {
+            "choices": [
+              4,
+              4,
+              9,
+              7
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "when": "per != 4 && per != 7 && per != 9",
+          "text": "Use 4 (carbohydrate or protein), 7 (alcohol) or 9 (fat)."
+        }
+      ],
+      "derived": [
+        {
+          "key": "g",
+          "expr": "kcal / per",
+          "dp": 1
+        },
+        {
+          "key": "tsp",
+          "expr": "kcal / per / 4",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Write the relation",
+          "text": "kcal = grams × {per} kcal/g."
+        },
+        {
+          "title": "Rearrange",
+          "text": "grams = kcal ÷ {per}."
+        },
+        {
+          "title": "Calculate",
+          "text": "{kcal} ÷ {per} = <b>{g} g</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "g",
+          "label": "Grams of the nutrient",
+          "unit": "g"
+        }
+      ],
+      "meaning": [
+        {
+          "when": "per == 4",
+          "text": "{g} g of carbohydrate (or protein). If it is sugar, that is about {tsp} teaspoons, at about 4 g per teaspoon."
+        },
+        {
+          "when": "per == 9",
+          "text": "{g} g of fat. The same kilocalories need fewer than half as many grams of fat as of sugar."
+        },
+        {
+          "when": "1",
+          "text": "{g} g of alcohol."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: a sports drink, 140 kcal all from sugar",
+          "values": {
+            "kcal": 140,
+            "per": 4
+          }
+        },
+        {
+          "label": "A tablespoon of oil: 120 kcal all from fat",
+          "values": {
+            "kcal": 120,
+            "per": 9
+          }
+        },
+        {
+          "label": "A glass of wine: 98 kcal from alcohol",
+          "values": {
+            "kcal": 98,
+            "per": 7
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "g",
+            "unit": "g",
+            "tol": {
+              "abs": 0.2,
+              "rel": 0.01
+            },
+            "prompt": "A food supplies {kcal} kcal, all from a nutrient that gives {per} kcal per gram. How many grams of that nutrient does it contain?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "met-atp-count",
+      "group": "metabolism",
+      "title": "ATP from one glucose",
+      "short": "ATP = 4 direct + NADH × value + FADH2 × value",
+      "topic": "carbohydrate-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Count the ATP made from one glucose broken down fully with oxygen. Current values are about 2.5 ATP per NADH and 1.5 per FADH2. The 2 NADH from glycolysis are made in the cytosol; a shuttle passes their electrons in, worth 2.5 or 1.5 each. Change the values to see where older counts of 36 to 38 come from.",
+      "formula": "ATP = 4 (direct) + 10 NADH × (ATP per NADH), with glycolysis’s 2 NADH at the shuttle value, + 2 FADH2 × (ATP per FADH2)",
+      "inputs": [
+        {
+          "key": "n",
+          "label": "ATP per NADH",
+          "sym": "NADH value",
+          "unit": "ATP",
+          "default": 2.5,
+          "min": 1,
+          "max": 4,
+          "step": 0.5,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              2.5,
+              2.5,
+              3
+            ]
+          }
+        },
+        {
+          "key": "f",
+          "label": "ATP per FADH2",
+          "sym": "FADH2 value",
+          "unit": "ATP",
+          "default": 1.5,
+          "min": 0.5,
+          "max": 3,
+          "step": 0.5,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              1.5,
+              1.5,
+              2
+            ]
+          }
+        },
+        {
+          "key": "s",
+          "label": "ATP per glycolytic NADH (shuttle)",
+          "sym": "shuttle value",
+          "unit": "ATP",
+          "default": 2.5,
+          "min": 0.5,
+          "max": 4,
+          "step": 0.5,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              1.5,
+              2.5
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "gly",
+          "expr": "2 + 2 * s",
+          "dp": 1
+        },
+        {
+          "key": "pyr",
+          "expr": "2 * n",
+          "dp": 1
+        },
+        {
+          "key": "cn",
+          "expr": "6 * n",
+          "dp": 1
+        },
+        {
+          "key": "cf",
+          "expr": "2 * f",
+          "dp": 1
+        },
+        {
+          "key": "cac",
+          "expr": "2 + 6 * n + 2 * f",
+          "dp": 1
+        },
+        {
+          "key": "total",
+          "expr": "2 + 2 * s + 2 * n + 2 + 6 * n + 2 * f",
+          "dp": 1
+        },
+        {
+          "key": "ox",
+          "expr": "2 * s + 2 * n + 6 * n + 2 * f",
+          "dp": 1
+        },
+        {
+          "key": "oxp",
+          "expr": "(2 * s + 2 * n + 6 * n + 2 * f) / (2 + 2 * s + 2 * n + 2 + 6 * n + 2 * f) * 100",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Glycolysis",
+          "text": "2 ATP directly + 2 NADH × {s} = <b>{gly} ATP</b>."
+        },
+        {
+          "title": "Pyruvate to acetyl CoA",
+          "text": "2 NADH × {n} = <b>{pyr} ATP</b>."
+        },
+        {
+          "title": "Citric acid cycle",
+          "text": "2 ATP directly + 6 NADH × {n} ({cn}) + 2 FADH<sub>2</sub> × {f} ({cf}) = <b>{cac} ATP</b>."
+        },
+        {
+          "title": "Add",
+          "text": "{gly} + {pyr} + {cac} = <b>{total} ATP</b> per glucose."
+        },
+        {
+          "title": "Split by method",
+          "text": "Substrate-level phosphorylation: 4. Oxidative phosphorylation: {ox}, about {oxp}% of the total."
+        }
+      ],
+      "results": [
+        {
+          "key": "total",
+          "label": "ATP per glucose",
+          "unit": "ATP",
+          "normal": "About 30 to 32 with current values; 36 to 38 in older counts.",
+          "bands": [
+            {
+              "when": "total <= 32.01",
+              "label": "current count",
+              "tone": "ok"
+            },
+            {
+              "label": "older whole-number count",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "total > 33",
+          "text": "{total} ATP uses whole-number values like the older textbooks. Current measurements of the H+ each carrier’s electrons pump, and the H+ ATP synthase uses (including moving ATP out of the mitochondrion), give about 2.5 and 1.5, and 30 to 32 in all. Give 36–38 if your exam expects it."
+        },
+        {
+          "when": "1",
+          "text": "{total} ATP per glucose, {oxp}% of them made by oxidative phosphorylation. The 30 to 32 ATP capture a third or more of the 686 kcal per mole released by oxidizing glucose; the rest is released as heat."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Current values, shuttle to NADH (32)",
+          "values": {
+            "n": 2.5,
+            "f": 1.5,
+            "s": 2.5
+          }
+        },
+        {
+          "label": "Current values, shuttle to FADH2 (30)",
+          "values": {
+            "n": 2.5,
+            "f": 1.5,
+            "s": 1.5
+          }
+        },
+        {
+          "label": "Older exam values, 3 and 2 (38)",
+          "values": {
+            "n": 3,
+            "f": 2,
+            "s": 3
+          }
+        },
+        {
+          "label": "Older exam values, shuttle to FADH2 (36)",
+          "values": {
+            "n": 3,
+            "f": 2,
+            "s": 2
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "total",
+            "unit": "ATP",
+            "tol": {
+              "abs": 0.3
+            },
+            "prompt": "Count {n} ATP per NADH, {f} per FADH2, and {s} for each NADH made in glycolysis. How many ATP does one glucose yield in all?"
+          }
+        ]
+      },
+      "exam": "Many textbooks and exams still say 36 or 38 ATP per glucose, from whole-number values of 3 per NADH and 2 per FADH2."
+    },
+    {
+      "id": "met-fatty-acid-atp",
+      "group": "metabolism",
+      "title": "ATP from a fatty acid",
+      "short": "ATP = turns × (NADH + FADH2 values) + acetyl CoA × 10 − 2",
+      "topic": "lipid-protein-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "intro": "A saturated fatty acid with an even number of carbons is cut by beta oxidation into two-carbon acetyl CoA. Each turn makes 1 NADH and 1 FADH2; each acetyl CoA passed through the citric acid cycle yields 3 NADH, 1 FADH2 and 1 ATP (10 ATP at current values). Activation costs the equivalent of 2 ATP once.",
+      "formula": "ATP = (C ÷ 2 − 1) × (NADH value + FADH2 value) + (C ÷ 2) × (3 × NADH value + FADH2 value + 1) − 2",
+      "inputs": [
+        {
+          "key": "C",
+          "label": "Carbons in the fatty acid",
+          "sym": "C",
+          "unit": "carbons",
+          "default": 16,
+          "min": 4,
+          "max": 24,
+          "step": 2,
+          "gen": {
+            "choices": [
+              12,
+              14,
+              16,
+              18,
+              20
+            ]
+          }
+        },
+        {
+          "key": "n",
+          "label": "ATP per NADH",
+          "sym": "NADH value",
+          "unit": "ATP",
+          "default": 2.5,
+          "min": 1,
+          "max": 4,
+          "step": 0.5,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              2.5
+            ]
+          }
+        },
+        {
+          "key": "f",
+          "label": "ATP per FADH2",
+          "sym": "FADH2 value",
+          "unit": "ATP",
+          "default": 1.5,
+          "min": 0.5,
+          "max": 3,
+          "step": 0.5,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              1.5
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "when": "C / 2 != round(C / 2)",
+          "text": "Use an even number of carbons: beta oxidation cuts the chain two carbons at a time."
+        }
+      ],
+      "derived": [
+        {
+          "key": "ac",
+          "expr": "C / 2",
+          "dp": 0
+        },
+        {
+          "key": "turns",
+          "expr": "C / 2 - 1",
+          "dp": 0
+        },
+        {
+          "key": "fb",
+          "expr": "(C / 2 - 1) * f",
+          "dp": 1
+        },
+        {
+          "key": "nb",
+          "expr": "(C / 2 - 1) * n",
+          "dp": 1
+        },
+        {
+          "key": "beta",
+          "expr": "(C / 2 - 1) * (n + f)",
+          "dp": 1
+        },
+        {
+          "key": "per",
+          "expr": "3 * n + f + 1",
+          "dp": 1
+        },
+        {
+          "key": "cyc",
+          "expr": "C / 2 * (3 * n + f + 1)",
+          "dp": 1
+        },
+        {
+          "key": "total",
+          "expr": "(C / 2 - 1) * (n + f) + C / 2 * (3 * n + f + 1) - 2",
+          "dp": 1
+        },
+        {
+          "key": "perC",
+          "expr": "((C / 2 - 1) * (n + f) + C / 2 * (3 * n + f + 1) - 2) / C",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Count the turns",
+          "text": "{C} carbons ÷ 2 = <b>{ac} acetyl CoA</b>, made in {C} ÷ 2 − 1 = <b>{turns} turns</b> (the last turn leaves two acetyl CoA)."
+        },
+        {
+          "title": "Carriers from beta oxidation",
+          "text": "{turns} FADH<sub>2</sub> × {f} = {fb}; {turns} NADH × {n} = {nb}. Subtotal <b>{beta} ATP</b>."
+        },
+        {
+          "title": "Acetyl CoA through the cycle",
+          "text": "Each acetyl CoA yields 3 NADH, 1 FADH<sub>2</sub> and 1 ATP: {per} ATP. {ac} × {per} = <b>{cyc} ATP</b>."
+        },
+        {
+          "title": "Subtract the activation cost",
+          "text": "{beta} + {cyc} − 2 = <b>{total} ATP</b>."
+        },
+        {
+          "title": "Per carbon",
+          "text": "{total} ÷ {C} = <b>{perC} ATP per carbon</b>, against about 5.3 per carbon for glucose (32 ÷ 6)."
+        }
+      ],
+      "results": [
+        {
+          "key": "total",
+          "label": "ATP per fatty acid",
+          "unit": "ATP",
+          "normal": "Palmitic acid (16 carbons): about 106."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "{total} ATP, about {perC} per carbon. A fatty acid’s carbons are less oxidized to start with than glucose’s, so each has more electrons to hand to the chain. All of it depends on oxygen: there is no anaerobic route for fat."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: palmitic acid, 16 carbons",
+          "values": {
+            "C": 16
+          }
+        },
+        {
+          "label": "Stearic acid, 18 carbons",
+          "values": {
+            "C": 18
+          }
+        },
+        {
+          "label": "Lauric acid, 12 carbons",
+          "values": {
+            "C": 12
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "total",
+            "unit": "ATP",
+            "tol": {
+              "abs": 0.6
+            },
+            "prompt": "A saturated fatty acid has {C} carbons. Using 2.5 ATP per NADH, 1.5 per FADH2 and 2 ATP to activate it, how many ATP does its complete oxidation yield?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "met-bmr-oxygen",
+      "group": "metabolism",
+      "title": "Metabolic rate from oxygen use",
+      "short": "kcal/day = O2 (L/day) × 4.8",
+      "topic": "energy-balance-thermoregulation",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Almost all ATP is made by oxidative phosphorylation, so oxygen use tracks energy use: on a mixed diet, each liter of oxygen consumed releases about 4.8 kcal from fuel. Enter a resting oxygen use to estimate basal metabolic rate.",
+      "formula": "Metabolic rate (kcal/day) = O2 use (mL/min) × 1,440 min/day ÷ 1,000 × 4.8 kcal/L",
+      "inputs": [
+        {
+          "key": "vo2",
+          "label": "Oxygen use at rest",
+          "sym": "O2 use",
+          "unit": "mL/min",
+          "default": 250,
+          "min": 50,
+          "max": 5000,
+          "step": 5,
+          "gen": [
+            170,
+            330,
+            5
+          ]
+        },
+        {
+          "key": "eq",
+          "label": "Energy per liter of oxygen",
+          "sym": "kcal per L",
+          "unit": "kcal/L",
+          "default": 4.8,
+          "min": 4.5,
+          "max": 5.1,
+          "step": 0.1,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              4.8
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "L",
+          "expr": "vo2 * 1440 / 1000",
+          "dp": 0
+        },
+        {
+          "key": "day",
+          "expr": "vo2 * 1440 / 1000 * eq",
+          "dp": 0
+        },
+        {
+          "key": "hr",
+          "expr": "vo2 * 1440 / 1000 * eq / 24",
+          "dp": 0
+        },
+        {
+          "key": "W",
+          "expr": "vo2 * 1440 / 1000 * eq / 24 * 1.163",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Oxygen per day",
+          "text": "{vo2} mL/min × 60 min/h × 24 h/day = {vo2} × 1,440 = {L} L/day."
+        },
+        {
+          "title": "Energy per liter",
+          "text": "About {eq} kcal for each liter of oxygen."
+        },
+        {
+          "title": "Multiply",
+          "text": "{L} L/day × {eq} kcal/L = <b>{day} kcal/day</b>."
+        },
+        {
+          "title": "Per hour",
+          "text": "{day} ÷ 24 = {hr} kcal/h, about {W} watts of heat."
+        }
+      ],
+      "results": [
+        {
+          "key": "day",
+          "label": "Metabolic rate",
+          "unit": "kcal/day",
+          "normal": "BMR for most adults: about 1,200 to 1,800 kcal a day.",
+          "bands": [
+            {
+              "when": "day < 1200",
+              "label": "below the usual adult BMR range",
+              "tone": "lo"
+            },
+            {
+              "when": "day <= 1800",
+              "label": "within the usual adult BMR range",
+              "tone": "ok"
+            },
+            {
+              "label": "above the usual adult BMR range",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "day > 4000",
+          "text": "{day} kcal/day is far above any BMR: this oxygen use means physical activity, not rest. Hard exercise can raise energy use ten- to twentyfold for a while."
+        },
+        {
+          "when": "day > 1800",
+          "text": "{day} kcal/day is above the usual BMR range. A large, muscular body, hyperthyroidism, fever (about 10 to 12% per °C) or recent activity would all raise it."
+        },
+        {
+          "when": "day < 1200",
+          "text": "{day} kcal/day is below the usual adult range, as in a small body, hypothyroidism or a long fast."
+        },
+        {
+          "when": "1",
+          "text": "About {day} kcal a day, or {hr} kcal an hour, all of it ending as heat. BMR is usually 60 to 70% of total daily energy use."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 70 kg man at rest, 250 mL/min",
+          "values": {
+            "vo2": 250
+          }
+        },
+        {
+          "label": "Smaller woman at rest, 190 mL/min",
+          "values": {
+            "vo2": 190
+          }
+        },
+        {
+          "label": "Brisk walking, 1,000 mL/min",
+          "values": {
+            "vo2": 1000
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "day",
+            "unit": "kcal/day",
+            "tol": {
+              "abs": 5,
+              "rel": 0.005
+            },
+            "prompt": "A resting adult uses {vo2} mL of oxygen per minute. Using 4.8 kcal per liter of oxygen, what is the metabolic rate in kcal per day?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "met-energy-balance",
+      "group": "metabolism",
+      "title": "Energy balance and fat stored or lost",
+      "short": "kg of fat ≈ daily balance × days ÷ 7,700",
+      "topic": "energy-balance-thermoregulation",
+      "core": [
+        "energy",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Adipose tissue holds about 7,700 kcal per kilogram (about 3,500 kcal per pound). Enter a daily surplus (positive) or deficit (negative) and a number of days for a rough first estimate.",
+      "formula": "Fat stored or lost (kg) ≈ daily energy balance (kcal/day) × days ÷ 7,700 kcal/kg",
+      "inputs": [
+        {
+          "key": "bal",
+          "label": "Daily energy balance (+ surplus, − deficit)",
+          "sym": "balance",
+          "unit": "kcal/day",
+          "default": 250,
+          "min": -1500,
+          "max": 1500,
+          "step": 10,
+          "gen": [
+            -800,
+            800,
+            50
+          ]
+        },
+        {
+          "key": "days",
+          "label": "Number of days",
+          "sym": "days",
+          "unit": "days",
+          "default": 30,
+          "min": 1,
+          "max": 365,
+          "step": 1,
+          "gen": [
+            14,
+            90,
+            1
+          ]
+        },
+        {
+          "key": "kpk",
+          "label": "Energy per kilogram of fat",
+          "sym": "kcal per kg",
+          "unit": "kcal/kg",
+          "default": 7700,
+          "min": 7000,
+          "max": 9000,
+          "step": 100,
+          "gen": {
+            "choices": [
+              7700
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "when": "bal == 0",
+          "text": "With intake equal to spending, the balance is zero and stores do not change."
+        }
+      ],
+      "derived": [
+        {
+          "key": "tot",
+          "expr": "bal * days",
+          "dp": 0
+        },
+        {
+          "key": "kg",
+          "expr": "bal * days / kpk",
+          "dp": 2
+        },
+        {
+          "key": "lb",
+          "expr": "bal * days / 3500",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Balance over the whole period",
+          "text": "{bal} kcal/day × {days} days = <b>{tot} kcal</b>."
+        },
+        {
+          "title": "Convert to fat",
+          "text": "{tot} ÷ {kpk} kcal/kg = <b>{kg} kg</b> (or {tot} ÷ 3,500 = {lb} lb)."
+        }
+      ],
+      "results": [
+        {
+          "key": "kg",
+          "label": "Fat stored (+) or lost (−)",
+          "unit": "kg"
+        }
+      ],
+      "meaning": [
+        {
+          "when": "bal < 0 && days <= 7",
+          "text": "About {kg} kg of fat. The scale will show more in the first week, because glycogen and the water stored with it are lost too."
+        },
+        {
+          "when": "days > 60",
+          "text": "About {kg} kg by simple division, but over months this overestimates the change: as weight changes, energy spending changes with it, and after weight loss appetite rises too. The real change slows and levels off."
+        },
+        {
+          "when": "1",
+          "text": "About {kg} kg of fat: a fair first estimate over a few weeks. Weight change slows over time because spending adjusts as weight changes."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: one extra 250 kcal snack a day for 30 days",
+          "values": {
+            "bal": 250,
+            "days": 30
+          }
+        },
+        {
+          "label": "A 500 kcal daily deficit for one week",
+          "values": {
+            "bal": -500,
+            "days": 7
+          }
+        },
+        {
+          "label": "A 500 kcal daily deficit for a year",
+          "values": {
+            "bal": -500,
+            "days": 365
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "kg",
+            "unit": "kg",
+            "tol": {
+              "abs": 0.02,
+              "rel": 0.01
+            },
+            "prompt": "A person’s daily energy balance is {bal} kcal for {days} days. Using 7,700 kcal per kilogram of adipose tissue, about how many kilograms of fat are stored (+) or lost (−)?"
+          }
+        ]
+      },
+      "exam": "Many courses use 3,500 kcal per pound and simple division. That is a fair estimate for a few weeks; the first week’s loss is larger, and over months it overestimates the change."
+    },
+    {
+      "id": "met-bmi",
+      "group": "metabolism",
+      "title": "Body mass index",
+      "short": "BMI = kg ÷ m²",
+      "topic": "energy-balance-thermoregulation",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Body mass index is weight in kilograms divided by the square of height in meters: a quick screen for whether weight is in the range linked to the lowest health risk. It does not measure fat.",
+      "formula": "BMI (kg/m²) = weight (kg) ÷ height (m)²",
+      "inputs": [
+        {
+          "key": "kg",
+          "label": "Weight",
+          "sym": "weight",
+          "unit": "kg",
+          "default": 85,
+          "min": 20,
+          "max": 300,
+          "step": 0.5,
+          "dp": 1,
+          "gen": [
+            45,
+            130,
+            1
+          ]
+        },
+        {
+          "key": "m",
+          "label": "Height",
+          "sym": "height",
+          "unit": "m",
+          "default": 1.75,
+          "min": 1,
+          "max": 2.3,
+          "step": 0.01,
+          "dp": 2,
+          "gen": [
+            1.5,
+            1.95,
+            0.01
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "m2",
+          "expr": "m * m",
+          "dp": 2
+        },
+        {
+          "key": "bmi",
+          "expr": "kg / (m * m)",
+          "dp": 1
+        },
+        {
+          "key": "lo",
+          "expr": "18.5 * m * m",
+          "dp": 0
+        },
+        {
+          "key": "hi",
+          "expr": "24.9 * m * m",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Square the height",
+          "text": "{m} × {m} = {m2} m²."
+        },
+        {
+          "title": "Divide",
+          "text": "{kg} ÷ {m2} = <b>{bmi} kg/m²</b>."
+        },
+        {
+          "title": "Healthy range for this height",
+          "text": "18.5 × {m2} to 24.9 × {m2}: about {lo} to {hi} kg."
+        }
+      ],
+      "results": [
+        {
+          "key": "bmi",
+          "label": "BMI",
+          "unit": "kg/m²",
+          "normal": "18.5 to 24.9 for adults.",
+          "bands": [
+            {
+              "when": "bmi < 18.5",
+              "label": "underweight",
+              "tone": "lo"
+            },
+            {
+              "when": "bmi < 25",
+              "label": "healthy weight",
+              "tone": "ok"
+            },
+            {
+              "when": "bmi < 30",
+              "label": "overweight",
+              "tone": "hi"
+            },
+            {
+              "label": "obesity",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "bmi >= 30",
+          "text": "A BMI of {bmi} is in the obesity range. A very muscular person can score this high with little fat, so BMI is a screen, not a diagnosis; waist size shows fat inside the abdomen, which carries more risk."
+        },
+        {
+          "when": "bmi >= 25",
+          "text": "A BMI of {bmi} is in the overweight range. People of South Asian and East Asian ancestry develop the linked risks at lower BMIs, so lower cutoffs are often used for them."
+        },
+        {
+          "when": "bmi < 18.5",
+          "text": "A BMI of {bmi} is underweight."
+        },
+        {
+          "when": "1",
+          "text": "A BMI of {bmi} is in the healthy range. An older adult who has lost muscle can have a normal BMI with a lot of fat."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 85 kg, 1.75 m",
+          "values": {
+            "kg": 85,
+            "m": 1.75
+          }
+        },
+        {
+          "label": "60 kg, 1.65 m",
+          "values": {
+            "kg": 60,
+            "m": 1.65
+          }
+        },
+        {
+          "label": "110 kg, 1.80 m",
+          "values": {
+            "kg": 110,
+            "m": 1.8
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "bmi",
+            "unit": "kg/m²",
+            "tol": {
+              "abs": 0.15
+            },
+            "prompt": "An adult weighs {kg} kg and is {m} m tall. What is the BMI?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "met-sweat-rate",
+      "group": "metabolism",
+      "title": "Sweat needed to shed heat",
+      "short": "L/h = heat to remove ÷ 580 kcal/L",
+      "topic": "energy-balance-thermoregulation",
+      "core": [
+        "energy",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "In air as warm as the skin, evaporation is the only way left to lose heat. Each liter of sweat that evaporates removes about 580 kcal; sweat that drips off removes almost none. Enter the heat to remove and the share of sweat that evaporates.",
+      "formula": "Sweat evaporated (L/h) = heat to remove (kcal/h) ÷ 580 kcal/L; sweat secreted = evaporated ÷ share that evaporates",
+      "inputs": [
+        {
+          "key": "heat",
+          "label": "Heat to remove",
+          "sym": "heat",
+          "unit": "kcal/h",
+          "default": 700,
+          "min": 50,
+          "max": 1500,
+          "step": 10,
+          "gen": [
+            300,
+            1000,
+            10
+          ]
+        },
+        {
+          "key": "share",
+          "label": "Share of the sweat that evaporates",
+          "sym": "share",
+          "unit": "%",
+          "default": 100,
+          "min": 20,
+          "max": 100,
+          "step": 5,
+          "gen": [
+            40,
+            100,
+            5
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "ev",
+          "expr": "heat / 580",
+          "dp": 2
+        },
+        {
+          "key": "sec",
+          "expr": "heat / 580 / (share / 100)",
+          "dp": 2
+        },
+        {
+          "key": "drip",
+          "expr": "heat / 580 / (share / 100) - heat / 580",
+          "dp": 2
+        }
+      ],
+      "steps": [
+        {
+          "title": "Heat removed per liter",
+          "text": "About 580 kcal for each liter that evaporates."
+        },
+        {
+          "title": "Sweat that must evaporate",
+          "text": "{heat} ÷ 580 = <b>{ev} L/h</b>."
+        },
+        {
+          "title": "Sweat that must be secreted",
+          "text": "Only {share}% evaporates, so {ev} ÷ {share}% = <b>{sec} L/h</b>; the other {drip} L/h drips off and removes almost no heat."
+        }
+      ],
+      "results": [
+        {
+          "key": "sec",
+          "label": "Sweat secreted",
+          "unit": "L/h",
+          "normal": "Sweat rates can reach 1 to 2 L an hour, and more after training in the heat.",
+          "bands": [
+            {
+              "when": "sec <= 1",
+              "label": "within an ordinary sweat rate",
+              "tone": "ok"
+            },
+            {
+              "when": "sec <= 2",
+              "label": "a high but possible sweat rate",
+              "tone": "hi"
+            },
+            {
+              "label": "more than most people can sweat: heat builds up",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "sec > 2",
+          "text": "{sec} L/h is more than most people can sweat, so heat is stored and core temperature climbs: the setting for exertional heat stroke. Slowing down cuts heat production directly."
+        },
+        {
+          "when": "share < 100",
+          "text": "Humid air lets only {share}% of the sweat evaporate, so {sec} L/h must be secreted to remove {heat} kcal/h, and all of it is water lost from the body."
+        },
+        {
+          "when": "1",
+          "text": "{ev} L of sweat must evaporate each hour. That much water and salt is lost from the extracellular fluid and must be replaced by drinking."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: runner, 700 kcal/h, all sweat evaporates",
+          "values": {
+            "heat": 700,
+            "share": 100
+          }
+        },
+        {
+          "label": "Same runner in humid air: half the sweat evaporates",
+          "values": {
+            "heat": 700,
+            "share": 50
+          }
+        },
+        {
+          "label": "Walking in hot, dry air: 250 kcal/h",
+          "values": {
+            "heat": 250,
+            "share": 100
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "sec",
+            "unit": "L/h",
+            "tol": {
+              "abs": 0.02,
+              "rel": 0.01
+            },
+            "prompt": "A cyclist must shed {heat} kcal of heat an hour by sweating, and {share}% of her sweat evaporates. Using 580 kcal per liter evaporated, how many liters of sweat must she secrete each hour?"
           }
         ]
       }

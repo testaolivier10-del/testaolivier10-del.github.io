@@ -97,7 +97,7 @@
     "why": {
       "correct": "Only the intracellular fluid bars show low sodium with high potassium, phosphate and protein. The sodium–potassium pump keeps sodium out of cells and potassium in, and phosphates and proteins are trapped inside.",
       "options": [
-        "Plasma has sodium near 140 and potassium near 4 to 5, the reverse of this sample.",
+        "On the graph, plasma is high in sodium and low in potassium (about 140 and 4 to 5 in a real blood test), the reverse of this sample.",
         "Interstitial fluid is high in sodium and chloride and low in potassium and protein.",
         "Correct. Low sodium, high potassium and lots of phosphate and protein mark intracellular fluid.",
         "Both extracellular fluids are high in sodium and low in potassium, so no mixture of them could give this sample."
@@ -306,7 +306,7 @@
       "options": [
         "Cells swell when the ECF becomes more dilute, as in water intoxication. His plasma is concentrated, so water leaves cells.",
         "Correct. Hypertonic ECF draws water out of cells, including neurons.",
-        "Cells keep their size only when a loss is isotonic, as in bleeding. A rise in plasma osmolality always moves water out of cells.",
+        "Cells keep their size only when a loss is isotonic, as in bleeding. His plasma is concentrated with sodium, which stays outside cells, so water leaves them.",
         "The blood–brain barrier restricts many solutes, but water crosses it and brain cell membranes, so brain cells respond to plasma osmolality."
       ]
     }

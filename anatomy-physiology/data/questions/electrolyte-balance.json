@@ -323,7 +323,7 @@
       "Insulin moves much of it into cells within minutes",
       "The rise in potassium stimulates aldosterone release",
       "Aldosterone makes the proximal tubule secrete potassium",
-      "Extra potassium is excreted in urine over the next hours"
+      "Extra potassium is excreted in urine over hours"
     ],
     "correct": 3,
     "why": {
@@ -380,7 +380,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "4.0 − 2.5 = 1.5. 0.8 × 1.5 = 1.2. 7.8 + 1.2 = 9.0 mg/dL, in the normal range: the low total mostly reflects her low albumin.",
+      "correct": "4.0 − 2.5 = 1.5. 0.8 × 1.5 = 1.2. 7.8 + 1.2 = 9.0 mg/dL, in the normal range, suggesting the low total may reflect her low albumin. The formula is only an estimate; ionized calcium settles it.",
       "options": [
         "6.6 subtracts the correction. Low albumin means less calcium is bound, so the correction is added.",
         "Correct. 7.8 + 1.2 = 9.0.",
@@ -469,18 +469,18 @@
     "q": "After three days of vomiting, a patient's chloride is low and his bicarbonate is high. Why do the two change in opposite directions?",
     "options": [
       "Vomiting removes bicarbonate from the stomach, and chloride falls along with it",
-      "Stomach acid carries chloride out, and bicarbonate rises to balance the charge",
+      "Making stomach acid adds bicarbonate to the blood, and vomiting loses the acid",
       "Low chloride makes the kidneys stop secreting acid",
       "Chloride and bicarbonate are the same ion measured two ways"
     ],
     "correct": 1,
     "why": {
-      "correct": "Stomach acid is hydrochloric acid, so vomiting removes chloride and hydrogen ions. The ECF must keep equal positive and negative charge, and bicarbonate, the other main anion, rises as chloride falls. The blood becomes alkaline.",
+      "correct": "Stomach acid is hydrochloric acid, so vomiting removes chloride and hydrogen ions. For every hydrogen ion the parietal cells secreted, one bicarbonate entered the blood. With the acid vomited instead of reaching the intestine, that bicarbonate is never used up, and the low volume and chloride make the kidneys keep it. Chloride falls, bicarbonate rises, and the blood becomes alkaline.",
       "options": [
         "The stomach secretes acid, not bicarbonate. Vomiting removes acid, which is why bicarbonate rises, not falls.",
-        "Correct. Loss of hydrochloric acid lowers chloride, and bicarbonate rises to keep the charges balanced.",
-        "This reverses cause and effect. The rise in bicarbonate comes first from the loss of stomach acid.",
-        "They are different anions. They trade places because both help balance the positive charge of sodium."
+        "Correct. The alkaline tide leaves bicarbonate behind in the blood while chloride leaves in the vomit.",
+        "Low chloride does help the kidneys keep the extra bicarbonate, but they do not stop secreting acid. The rise in bicarbonate starts with the stomach.",
+        "They are different anions. They move in opposite directions because the vomit carries chloride away while making the acid left bicarbonate in the blood."
       ]
     }
   },
@@ -497,7 +497,7 @@
       "It rises, because saline has half again as much chloride as plasma",
       "It falls, because saline dilutes the plasma",
       "It stays the same, because saline is isotonic",
-      "It falls, because the kidneys excrete chloride with the extra water"
+      "It falls, because the kidneys excrete the extra chloride"
     ],
     "correct": 0,
     "why": {
@@ -545,7 +545,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "A pregnant woman is receiving IV magnesium to prevent seizures. Nurses check a sign every hour, because it disappears first as magnesium climbs too high: ____.",
+    "q": "A pregnant woman with a dangerous rise in blood pressure is receiving IV magnesium to prevent seizures. Nurses check a sign every hour, because it disappears first as magnesium climbs too high: ____.",
     "options": [
       "Tendon reflexes",
       "Pupil response to light",

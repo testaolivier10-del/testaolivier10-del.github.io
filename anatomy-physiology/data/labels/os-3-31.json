@@ -1,0 +1,66 @@
+{
+  "figure": "os-3-31",
+  "labels": [
+    {
+      "id": "homologous-chromosomes",
+      "name": "Homologous chromosomes",
+      "accept": [
+        "homologous chromosome",
+        "homologues",
+        "homologs",
+        "homologous pair"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "ploidy"
+    },
+    {
+      "id": "homologous-chromosomes-replicated",
+      "name": "Homologous chromosomes",
+      "accept": [
+        "homologous chromosome",
+        "homologues",
+        "homologs",
+        "homologous pair"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "ploidy"
+    },
+    {
+      "id": "dna-replication",
+      "name": "DNA Replication",
+      "accept": [
+        "dna replication",
+        "replication"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "dna-replication"
+    },
+    {
+      "id": "centromere",
+      "name": "Centromere",
+      "accept": [],
+      "lines": [
+        3
+      ],
+      "concept": "chromatin-chromosome"
+    },
+    {
+      "id": "sister-chromatids",
+      "name": "Sister chromatids",
+      "accept": [
+        "sister chromatid",
+        "chromatids"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "chromatin-chromosome"
+    }
+  ]
+}
