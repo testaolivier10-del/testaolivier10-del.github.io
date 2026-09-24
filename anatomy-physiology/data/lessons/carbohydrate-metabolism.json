@@ -1,0 +1,49 @@
+{
+  "topic": "carbohydrate-metabolism",
+  "hook": "<p>A firefighter carries Ms. Brandt, 52, out of a burning apartment. She is confused and breathing fast, and her pulse oximeter reads 99%. A blood sample from her vein is almost as bright red as arterial blood, and her lactate is five times normal. Her blood is full of oxygen, yet her cells are behaving as if they had none. Smoke from burning plastics carries cyanide, and cyanide jams the last step of the machinery on this page.</p>",
+  "prereq": [
+    {
+      "q": "What is the net ATP gain from glycolysis of one glucose?",
+      "options": ["2 ATP", "4 ATP", "About 30 ATP"],
+      "correct": 0,
+      "why": "Glycolysis makes 4 ATP but spends 2 in its early steps, for a net gain of 2 per glucose, plus 2 NADH.",
+      "review": "cellular-respiration"
+    },
+    {
+      "q": "When a molecule is oxidized, what happens to it?",
+      "options": ["It gains electrons", "It loses electrons", "It gains a phosphate group"],
+      "correct": 1,
+      "why": "Oxidation is loss of electrons; reduction is gain. When glucose is oxidized, its electrons are passed to carriers such as NAD+, which is reduced to NADH.",
+      "review": "enzymes-energy"
+    },
+    {
+      "q": "What is glycogenolysis?",
+      "options": ["Making new glucose from amino acids", "Building glycogen from glucose", "Breaking glycogen down into glucose"],
+      "correct": 2,
+      "why": "Glycogenolysis (glycogen + -lysis = breaking apart) releases glucose units from stored glycogen.",
+      "review": "pancreas-glucose"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-24-8",
+    "caption": "The electron transport chain and ATP synthase in the inner mitochondrial membrane. Hide the labels and name the side where hydrogen ions collect and the enzyme they flow back through."
+  },
+  "chain": [
+    { "cause": "NADH from glycolysis, pyruvate breakdown and the citric acid cycle gives its electrons to complex I.", "effect": "The electrons pass from carrier to carrier toward oxygen, each carrier holding them more tightly, so each transfer releases energy." },
+    { "cause": "Complexes I, III and IV use that released energy.", "effect": "They pump H+ from the matrix into the intermembrane space, building an H+ gradient across the inner membrane." },
+    { "cause": "Oxygen at complex IV accepts the electrons and H+, forming water.", "effect": "Electrons keep moving down the chain, so pumping continues and the gradient is maintained." },
+    { "cause": "H+ can return to the matrix only through ATP synthase.", "effect": "Its flow turns the enzyme's rotor, and each turn joins ADP and phosphate into ATP: chemiosmosis." },
+    { "cause": "Most ATP in the cell is made this way.", "effect": "One glucose yields about 30–32 ATP, about 26–28 of them from oxidative phosphorylation." }
+  ],
+  "misconception": {
+    "wrong": "The citric acid cycle makes most of your ATP.",
+    "right": "The citric acid cycle makes only 2 ATP per glucose directly. Its real output is loaded electron carriers: 6 NADH and 2 FADH2 per glucose, plus CO2. The ATP from those carriers is made later, by the electron transport chain and ATP synthase. That is also why the cycle stops without oxygen even though it never uses oxygen itself: without the chain, NAD+ and FAD are not regenerated."
+  },
+  "check": ["anp-carbohydrate-metabolism-1", "anp-carbohydrate-metabolism-4", "anp-carbohydrate-metabolism-6", "anp-carbohydrate-metabolism-8", "anp-carbohydrate-metabolism-10", "anp-carbohydrate-metabolism-12", "anp-carbohydrate-metabolism-14", "anp-carbohydrate-metabolism-17"],
+  "summary": "<p>Glycolysis in the cytosol spends 2 ATP in its energy-consuming phase (hexokinase traps glucose as glucose-6-phosphate; phosphofructokinase commits it) and makes 4 ATP and 2 NADH in its energy-yielding phase, leaving 2 pyruvate. In the mitochondrial matrix, each pyruvate loses a carbon as CO2 and becomes acetyl CoA, a step that cannot be reversed. The citric acid cycle (Krebs or TCA cycle) joins acetyl CoA to oxaloacetate and, per turn, releases 2 CO2 and makes 3 NADH, 1 FADH2 and 1 ATP. In the inner membrane, the electron transport chain passes electrons to oxygen, the terminal electron acceptor, and pumps H+ into the intermembrane space; H+ flowing back through ATP synthase makes ATP (chemiosmosis). The total is about 30–32 ATP per glucose. The liver stores glucose as glycogen, releases it by phosphorolysis and glucose-6-phosphatase, and makes new glucose from lactate, amino acids and glycerol by gluconeogenesis, which bypasses glycolysis's three one-way steps.</p>",
+  "connections": [
+    { "href": "/ochem/lessons/carbohydrates.html", "label": "Organic chemistry: Carbohydrates" },
+    { "href": "/ochem/lessons/oxidation-states.html", "label": "Organic chemistry: Oxidation states" },
+    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies" }
+  ]
+}
