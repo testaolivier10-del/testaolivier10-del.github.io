@@ -17278,7 +17278,7 @@
       ],
       "level": 2,
       "misconception": "the risk of an extra chromosome is the same at every maternal age",
-      "setup": "Compare an oocyte ovulated by a woman of 42 with one ovulated by the same woman at 25. Both oocytes began meiosis I before she was born and paused until shortly before release.",
+      "setup": "Compare an oocyte released by a woman’s ovary at 42 with one released by the same woman at 25. Both oocytes began meiosis I before she was born and paused until shortly before release.",
       "start": "The oocyte has paused partway through meiosis I for about 42 years instead of 25",
       "steps": {
         "glue": "The proteins laid down before birth to hold the paired chromosomes together have weakened and were never replaced",

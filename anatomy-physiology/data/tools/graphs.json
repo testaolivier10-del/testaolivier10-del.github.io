@@ -21094,8 +21094,8 @@
       "communication",
       "homeostasis"
     ],
-    "intro": "One 28-day model cycle, day 1 being the first day of bleeding. From the top: the pituitary hormones LH and FSH, the ovarian hormones estradiol and progesterone, and the thickness of the endometrium. The dashed line marks ovulation. Values are typical, not from one woman; real cycles vary, mostly in the days before ovulation.",
-    "alt": "Four stacked graphs over days 1 to 28 of a model cycle, with ovulation marked at day 14. Top: LH stays near 5 IU/L, rises steeply from about day 12 to a sharp peak of about 60 IU/L on day 13.5, and falls back to about 4 by day 17. FSH starts at about 7 to 8 IU/L, falls to about 4.5 by day 10, makes a smaller peak of about 12 at mid-cycle, stays near 3 in the second half and starts rising in the last days. Second: estradiol rises from about 40 pg/mL to a peak of about 285 on day 12.5, falls to about 100 by day 15, rises to a second, lower hump of about 165 around day 21 and falls to 50 by day 28. Third: progesterone stays below 1 ng/mL until ovulation, rises to about 14 around day 21 and falls below 1 by day 28. Bottom: endometrium thickness falls from 7 mm to 3 mm during days 1 to 5, grows to about 10 mm by day 14 and about 13 mm by day 21, and stays thick until the end.",
+    "intro": "One 28-day model cycle, day 1 being the first day of bleeding. From the top: the pituitary hormones LH and FSH, the ovarian hormones estradiol and progesterone, and the thickness of the endometrium. The dashed line marks ovulation. Endometrium thickness is shown as measured on ultrasound, across both walls of the cavity. Values are typical, not from one woman; real cycles vary, mostly in the days before ovulation.",
+    "alt": "Four stacked graphs over days 1 to 28 of a model cycle, with ovulation marked at day 14. Top: LH stays near 5 IU/L, rises steeply from about day 12 to a sharp peak of about 60 IU/L on day 13.5, and falls back to about 4 by day 17. FSH starts at about 7 to 8 IU/L, falls to about 4.5 by day 10, makes a smaller peak of about 12 at mid-cycle, stays near 3 in the second half and starts rising in the last days. Second: estradiol rises from about 40 pg/mL to a peak of about 285 on day 12.5, falls to about 100 by day 15, rises to a second, lower hump of about 165 around day 21 and falls to 50 by day 28. Third: progesterone stays below 1 ng/mL until ovulation, rises to about 14 around day 21 and falls below 1 by day 28. Bottom: endometrium thickness falls from about 9 mm to 3 mm during days 1 to 5, grows to about 10 mm by day 14 and about 13 mm by day 21, stays thick until about day 26 and thins over the last two days.",
     "x": {
       "min": 1,
       "max": 28,
@@ -21597,7 +21597,7 @@
         "y": {
           "min": 0,
           "max": 15,
-          "label": "Endometrium thickness",
+          "label": "Endometrium (ultrasound)",
           "unit": "mm",
           "ticks": [
             0,
@@ -21614,19 +21614,19 @@
             "pts": [
               [
                 1,
-                7
+                8.5
               ],
               [
                 2,
-                5.5
+                6.5
               ],
               [
                 3,
-                4
+                4.8
               ],
               [
                 4,
-                3.2
+                3.6
               ],
               [
                 5,
@@ -21670,15 +21670,15 @@
               ],
               [
                 26,
-                12.9
+                12.8
               ],
               [
                 27,
-                12.6
+                11.8
               ],
               [
                 28,
-                11.5
+                9.5
               ]
             ],
             "label": "endometrium",
@@ -21800,7 +21800,7 @@
           "region": "positive"
         },
         "why": {
-          "correct": "When estradiol from the dominant follicle stays high, above roughly 200 pg/mL for about two days, it switches from brake to accelerator: GnRH output rises and each pulse releases far more LH. LH starts shooting up at the end of this stretch.",
+          "correct": "When estradiol from the dominant follicle stays high, above roughly 200 pg/mL for about two days, it switches from brake to accelerator: GnRH output rises and each pulse releases far more LH. LH starts shooting up in the second half of this stretch and peaks at its end, on day 13.5.",
           "options": [
             "Right: high, sustained estradiol drives the surge.",
             "Early in the cycle estradiol is low and FSH is rising because the brake has lifted; there is no positive feedback.",
@@ -22046,7 +22046,7 @@
           "options": [
             "Right: the follicular phase absorbs the difference.",
             "The phase after ovulation is the steady one; a longer cycle lengthens the phase before ovulation.",
-            "The variation is not split evenly; nearly all of it is in the follicular phase.",
+            "The variation is not split evenly; most of it is in the follicular phase, while the luteal phase stays about 12 to 14 days.",
             "A longer cycle means the dominant follicle takes longer to be selected and grow, so ovulation comes later, not earlier."
           ]
         }

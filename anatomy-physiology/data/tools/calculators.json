@@ -10765,8 +10765,8 @@
           "dp": 0
         },
         {
-          "key": "extra",
-          "expr": "L - 28",
+          "key": "fol",
+          "expr": "L - lut",
           "dp": 0
         },
         {
@@ -10797,7 +10797,7 @@
         },
         {
           "title": "See which phase changed",
-          "text": "Compared with the 28-day model, the cycle length differs by {extra:+} days. Any difference sits in the follicular phase, which here runs from day 1 to about day {ov}."
+          "text": "Here the follicular phase runs from day 1 to about day {ov}: {fol} days, compared with 14 in the 28-day model. The luteal phase is {lut} days. In most women, most of the difference in cycle length is in the follicular phase."
         },
         {
           "title": "Allow for real variation",
@@ -10840,12 +10840,16 @@
           "text": "The textbook model cycle: ovulation on day 14, with 14 days on each side."
         },
         {
-          "when": "L > 28",
-          "text": "A {L}-day cycle ovulates around day {ov}, not day 14. The extra days are all before ovulation, while the dominant follicle takes longer to be selected and to grow."
+          "when": "L - lut > 14",
+          "text": "A {L}-day cycle with a luteal phase of {lut} days ovulates around day {ov}, not day 14. Its follicular phase is {fol} days, longer than the model’s 14, while the dominant follicle takes longer to be selected and to grow."
         },
         {
-          "when": "L < 28",
-          "text": "A {L}-day cycle ovulates around day {ov}. The follicular phase is shorter; the luteal phase still lasts about {lut} days."
+          "when": "L - lut < 14",
+          "text": "A {L}-day cycle with a luteal phase of {lut} days ovulates around day {ov}, not day 14. Its follicular phase is {fol} days, shorter than the model’s 14; the luteal phase lasts about {lut} days."
+        },
+        {
+          "when": "L != 28",
+          "text": "A {L}-day cycle with a luteal phase of {lut} days still ovulates around day {ov}. Its follicular phase matches the model’s 14 days, so here the whole difference from 28 days is in the luteal phase. That is the less common pattern: in most women, most of the difference is before ovulation."
         },
         {
           "when": "1",

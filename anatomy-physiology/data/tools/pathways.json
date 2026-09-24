@@ -7944,7 +7944,7 @@
         {
           "id": "brakes",
           "label": "Two brakes",
-          "text": "Testosterone brakes GnRH and LH, and inhibin brakes FSH, so the pulses slow back down.",
+          "text": "Testosterone brakes GnRH and LH, and inhibin brakes FSH release by the pituitary, bringing the axis back down.",
           "why": "The products feed back last, closing the loop: the brakes act on the hypothalamus and pituitary at the top of the chain."
         }
       ],
@@ -7963,7 +7963,7 @@
       },
       "error": {
         "at": 4,
-        "text": "Testosterone brakes FSH, and inhibin brakes LH, so the pulses slow back down.",
+        "text": "Testosterone brakes FSH, and inhibin brakes LH, bringing the axis back down.",
         "why": "The brakes are the other way round: inhibin lowers FSH selectively, with little effect on LH, and testosterone is the main brake on GnRH and LH."
       },
       "summary": "GnRH pulses, LH and FSH, LH on the Leydig cells (testosterone), FSH and testosterone on the Sertoli cells (sperm support and inhibin), then two negative feedback brakes: testosterone on GnRH and LH, inhibin on FSH."
@@ -8293,7 +8293,7 @@
           "id": "high",
           "label": "Estradiol high, sustained",
           "text": "The dominant follicle’s estradiol climbs and stays high for about two days.",
-          "why": "Only a single large dominant follicle can make this much estradiol."
+          "why": "In a natural cycle only one follicle is left after selection, and its growing mass of granulosa cells makes most of the ovary’s estradiol."
         },
         {
           "id": "surge",

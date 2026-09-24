@@ -12789,7 +12789,7 @@
     "The two are formed in equal amounts"
    ],
    "correct": 0,
-   "why": "Primary: 9 × 1 = 9. Tertiary: 1 × 5 = 5. Total 14, so the primary chloride is 9/14 ≈ 64% — the major product comes from the <i>less</i> stable radical. Run the same substrate with bromine (1600 to 1) and the tertiary bromide is about 99%. One molecule, two halogens, opposite answers: that is the whole selectivity story in one calculation.",
+   "why": "Primary: 9 × 1 = 9. Tertiary: 1 × 5 = 5. Total 14, so the primary chloride is 9/14 ≈ 64% — the major product comes from the less stable radical. Run the same substrate with bromine (1600 to 1) and the tertiary bromide is about 99%. One molecule, two halogens, opposite answers: that is the whole selectivity story in one calculation.",
    "difficulty": "hard",
    "type": "mcq"
   },
