@@ -63,3 +63,44 @@ recommendations. Where course exams commonly expect another convention, the page
 - **Where:** `functional-groups`, group table.
 - **Decided (owner, 2026-09-24):** cut it. The pear-drop smell is usually attributed to isoamyl acetate,
   not ethyl acetate. The table now reads "Ethyl acetate, a solvent in nail polish".
+
+## Foundations (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### foundations-conventions: drawing and labelling conventions the pages grade by
+- **Status:** pending review.
+- **Where:** `lewis-structures`, `molecular-geometry`, `hybridization`, `electronegativity`, `bond-polarity`, `formal-charge`.
+- **Positions taken, each with the alternative shown or mentioned on the page:**
+  - Hypervalent sulfur (H₂SO₄, sulfoxides, sulfones, SO₂) is drawn with S=O. The all-single-bond
+    octet drawing (S⁺–O⁻), which bonding calculations favour, is shown beside it.
+  - The single-bonded O of acids and esters, the enolate O and amide-like N are labelled sp² by the
+    lone-pair-beside-π rule. The measured C–O–H angle (about 106°) sits closer to sp³, and the page
+    does not quote that number because it could not be verified. The same rule would also label a
+    vinyl or aryl halogen sp², which courses usually leave unlabelled.
+  - The ΔEN bands are 0.5 and 1.7. Other books use 0.4/1.8 or 0.4/2.0. C–N (0.49), C–Br (0.41)
+    and C–I (0.11) are still treated as polar, and the pages explain this by bond length.
+  - Dipole arrows point toward δ−, the chemistry convention. The physics/IUPAC convention runs the
+    other way, and the page says so.
+  - Diazomethane: H₂C=N⁺=N⁻ is taught as the better structure, and the other contributor is
+    mentioned.
+  - cis-/trans-2-butene labels in Bonding; the (E)/(Z) names are left to Stereochemistry.
+  - "Transition metals, groups 3 to 12": group 12 is not always counted, and the page says so.
+
+### foundations-numbers: values that differ by source or rest on a simplified model
+- **Status:** pending review.
+- **Where:** `bonding`, `bond-polarity`, `orbitals`, `hybridization`.
+- **Notes:**
+  - The second π increment (53 kcal/mol) is smaller than the first (64), but no reason is given.
+    The subtraction also mixes in the change to the σ bond.
+  - The average bond energies come from tables built on atomization enthalpies. The page calls
+    them averages of bond energies, which is the usual simplification at this level.
+  - Some dipole moments differ slightly by source (CH₃Cl 1.87 vs 1.89 D). The older values are kept.
+  - Hund's rule: the pages explain spreading out by repulsion, and do not state the same-spin
+    (exchange) part.
+  - The 4s/3d caveat (Fe [Ar] 3d⁶ 4s², but Fe²⁺ [Ar] 3d⁶) sits beside the graded Aufbau rule.
+  - Aniline's N is "only partly flattened", with no cited angle. The methyl radical is "nearly
+    flat".
+  - NO's unpaired electron is drawn on N, as usual; in the real molecule it is spread over both
+    atoms.

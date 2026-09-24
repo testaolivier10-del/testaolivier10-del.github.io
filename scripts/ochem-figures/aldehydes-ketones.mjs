@@ -96,7 +96,7 @@ function eqArrows(a, b, gap = 6) {
 }
 /* The C=O pi pair moving onto oxygen, for a C=O drawn straight up: from the
    middle of the double bond, round the right-hand side, into the oxygen. */
-const piToO = (c, o, skel = false) => curve(P(c.x + 7, c.y - (skel ? 8 : 20)), P(o.x + 16, o.y + 3), { bow: -22 });
+const piToO = (c, o, skel = false) => curve(P(c.x + 8, c.y - (skel ? 14 : 24)), P(o.x + 16, o.y + 4), { bow: 14 });
 const charge = (x, y, s, cls = 'fg-warn') => text(x, y, s, { cls, size: 15 });
 
 /* The edge-on carbonyl: C at c, O to the right along the axis, the plane as
@@ -215,7 +215,7 @@ FIGURES.push({
   section: 'aldehydes-ketones',
   anchor: 'it is the one that predicts the reactivity.</p>',
   alt: 'Two resonance structures of a carbonyl R2C=O. Left, the neutral form, with delta plus on carbon and delta minus on oxygen and a curved arrow moving the pi bond onto oxygen. Right, the charge-separated form: carbon plus, oxygen minus with three lone pairs.',
-  viewBox: '0 0 760 250',
+  viewBox: '0 44 760 206',
   build() {
     let s = '';
     const c1 = P(210, 140);
@@ -394,8 +394,8 @@ FIGURES.push({
     s += arm(t, 256, 60, 'R′', { kind: 'hash' }).s;
     s += arm(t, 222, 60, 'R', { kind: 'wedge' }).s;
     s += atom(t.x, t.y, 'C', { kind: 'warn' });
-    s += text(484, 136, 'dashed: where', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(484, 150, 'R and R′ were', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(484, 92, 'dashed: where', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(484, 106, 'R and R′ were', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += tag(614, 24, 'after the bond forms');
     s += text(614, 290, 'R and R′ fold away from Nu:', { cls: 'fg-tag', size: 11 });
     s += text(614, 306, 'a tetrahedral, sp³ carbon', { cls: 'fg-tag', size: 11 });
@@ -405,14 +405,13 @@ FIGURES.push({
 });
 
 /* 7. Why an aldehyde is easier to attack than a ketone. */
-function aldKet(cx, cy, ald, lesson) {
+function aldKet(cx, cy, ald, nuLen = 150) {
   let s = '';
   const c = P(cx, cy);
   const eo = edgeOn(c, { g1: 'CH₃', g2: ald ? 'H' : 'CH₃', len: 52, oLen: 84, plane: [120, 128], halos: true });
   s += eo.s;
-  s += nuApproach(c, 107, 150, { stop: 24 }).s;
-  s += text(c.x + 24, c.y + 36, ald ? 'δ+' : 'δ+', { cls: 'fg-warn', size: ald ? 16 : 11 });
-  void lesson;
+  s += nuApproach(c, 107, nuLen, { stop: 24 }).s;
+  s += text(c.x + 24, c.y + 36, 'δ+', { cls: 'fg-warn', size: ald ? 16 : 11 });
   return s;
 }
 FIGURES.push({
@@ -476,7 +475,7 @@ FIGURES.push({
   section: 'aldehydes-ketones',
   anchor: '<h3>Hydration equilibria prove the trend quantitatively</h3>',
   alt: 'Acetaldehyde plus water in equilibrium with its hydrate, a carbon carrying CH3, H and two OH groups.',
-  viewBox: '0 0 760 220',
+  viewBox: '0 40 760 180',
   build() {
     let s = '';
     const c = P(130, 124);
@@ -828,16 +827,16 @@ FIGURES.push({
   id: 'l-ak-ald-vs-ket',
   lessons: ['aldehydes-ketones'],
   alt: 'Acetaldehyde above acetone, each edge-on with a nucleophile approaching the carbonyl carbon along a tilted path. Shaded discs show the room each group takes: a small H and a CH3 on the aldehyde, two CH3 groups on the ketone.',
-  viewBox: '0 0 340 480',
+  viewBox: '0 0 340 468',
   build() {
     let s = '';
-    s += tag(170, 20, 'acetaldehyde: one CH₃, one small H');
-    s += aldKet(158, 184, true, true);
-    s += tag(170, 222, 'more reactive', { cls: 'fg-tag-good' });
-    s += rule(20, 238, 320, 238);
-    s += tag(170, 262, 'acetone: two CH₃');
-    s += aldKet(158, 426, false, true);
-    s += tag(170, 464, 'less reactive', { cls: 'fg-tag-warn' });
+    s += tag(170, 18, 'acetaldehyde: one CH₃, one small H');
+    s += aldKet(150, 156, true, 112);
+    s += tag(170, 218, 'more reactive', { cls: 'fg-tag-good' });
+    s += rule(20, 234, 320, 234);
+    s += tag(170, 256, 'acetone: two CH₃');
+    s += aldKet(150, 394, false, 112);
+    s += tag(170, 456, 'less reactive', { cls: 'fg-tag-warn' });
     return s;
   },
   caption: 'The nucleophile comes in from above, tilted toward the groups on carbon. Shaded discs show the room each group takes, and the larger δ+ marks the more electron-poor carbon.',
@@ -851,9 +850,9 @@ FIGURES.push({
   viewBox: '0 0 340 340',
   build() {
     let s = '';
-    const c = P(130, 94);
+    const c = P(136, 94);
     s += carbonyl(c, { subs: [{ deg: 210, l: 'CH₃' }, { deg: 330, l: 'H' }], len: 54, cKind: 'hi' }).s;
-    s += text(236, 98, '+  H₂O', { cls: 'fg-lbl', size: 13 });
+    s += text(244, 98, '+  H₂O', { cls: 'fg-lbl', size: 13 });
     s += eqArrows(P(170, 150), P(170, 200));
     const t = P(170, 262);
     s += arm(t, 215, 54, 'CH₃').s + arm(t, 325, 54, 'H').s;

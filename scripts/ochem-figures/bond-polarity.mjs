@@ -340,10 +340,10 @@ FIGURES.push({
     s += T(195, 32, 'CCl₄: four identical corners', 'fg-lbl');
     s += umbrella(P(130, 150), 'Cl');
     // the sum
-    s += T(296, 66, 'top C–Cl', 'fg-sm');
-    s += vec(P(276, 150), P(276, 90));
-    s += vec(P(316, 90), P(316, 150));
-    s += T(296, 172, 'lower three,', 'fg-sm') + T(296, 186, 'added together', 'fg-sm');
+    s += vec(P(268, 150), P(268, 90));
+    s += vec(P(306, 90), P(306, 150));
+    s += T(258, 114, 'top', 'fg-sm', { anchor: 'end' }) + T(258, 128, 'C–Cl', 'fg-sm', { anchor: 'end' });
+    s += T(316, 114, 'lower 3,', 'fg-sm', { anchor: 'start' }) + T(316, 128, 'added', 'fg-sm', { anchor: 'start' });
     s += T(195, 250, 'equal length, opposite ways', 'fg-tag-mut');
     s += T(195, 270, 'sum = 0, so μ = 0', 'fg-tag-mut');
     s += T(567, 32, 'CHCl₃: one corner swapped', 'fg-lbl');
@@ -400,8 +400,8 @@ FIGURES.push({
     s += T(606, 32, 'dimethyl ether, CH₃OCH₃', 'fg-lbl');
     s += ether(P(606, 120));
     s += T(606, 76, 'lone pairs: can accept', 'fg-sm');
-    s += T(606, 178, 'every H is on a carbon:', 'fg-sm');
-    s += T(606, 194, 'nothing to donate', 'fg-sm');
+    s += T(606, 184, 'every H is on a carbon:', 'fg-sm');
+    s += T(606, 200, 'nothing to donate', 'fg-sm');
     s += T(606, 262, 'MW 46 · boils at −24 °C', 'fg-tag-warn');
     return s;
   },

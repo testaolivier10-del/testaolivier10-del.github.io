@@ -136,56 +136,56 @@ FIGURES.push({
   section: 'nucleophilic-addition',
   anchor: '<h3>Protonate or collapse</h3>',
   alt: 'A generic tetrahedral intermediate: a carbon bearing O minus, the nucleophile Nu, a group R and a group Y. Below, two branches. When Y is H or a carbon group, the O minus lone pair takes a proton from H–A and the product is an alcohol. When Y is a leaving group such as Cl or OR, the O minus lone pair moves back down to re-form the C=O and the C–Y bond breaks, releasing Y minus; the product is a new carbonyl compound carrying Nu.',
-  viewBox: '0 0 340 560',
+  viewBox: '0 0 340 650',
   build() {
     let s = '';
-    const inter = (c, withLp) => {
+    const inter = (c) => {
       const o = armEnd(c, 90, 58);
       let g = B(c, 'C', o, 'O');
       g += arm(c, 'C', 210, 50, 'Nu', 'plain', 'hi').s + arm(c, 'C', 330, 50, 'R', 'wedge').s;
       g += A(o, 'O', 'hi') + A(c, 'C', 'warn');
-      g += chg(o.x - 20, o.y - 20, '−');
-      if (withLp) g += lonePair(o.x, o.y, 270, { dist: 21 }) + lonePair(o.x, o.y, 180, { dist: 21 }) + lonePair(o.x, o.y, 0, { dist: 21 });
+      g += chg(o.x - 28, o.y - 26, '−');
+      g += lonePair(o.x, o.y, 270, { dist: 21 }) + lonePair(o.x, o.y, 180, { dist: 21 }) + lonePair(o.x, o.y, 0, { dist: 21 });
       return { g, o };
     };
     // ---- top: the intermediate ----
-    s += box(8, 180, 'THE TETRAHEDRAL INTERMEDIATE');
-    const t = P(130, 110), T = inter(t, true);
+    s += box(8, 200, 'THE TETRAHEDRAL INTERMEDIATE');
+    const t = P(130, 132), T = inter(t);
     s += T.g;
     const ty = armEnd(t, 270, 50);
     s += hash(t, ty, { rFrom: 14, rTo: 14, width: 11, rungs: 4 }) + A(ty, 'Y');
-    s += tg(262, 100, 'Y was already', 'mut');
-    s += tg(262, 118, 'on the C=O carbon', 'mut');
+    s += tg(262, 118, 'Y was already', 'mut');
+    s += tg(262, 136, 'on the C=O carbon', 'mut');
 
     // ---- branch 1: protonate ----
-    s += box(196, 172, 'Y = H OR C: IT CANNOT LEAVE');
-    const b1 = P(66, 300), I1 = inter(b1, false);
-    s += I1.g + lonePair(I1.o.x, I1.o.y, 0, { dist: 21 }) + lonePair(I1.o.x, I1.o.y, 180, { dist: 21 });
-    const y1 = armEnd(b1, 270, 44);
+    s += box(216, 204, 'Y = H OR C: IT CANNOT LEAVE');
+    const b1 = P(66, 350), I1 = inter(b1);
+    s += I1.g;
+    const y1 = armEnd(b1, 270, 46);
     s += hash(b1, y1, { rFrom: 14, rTo: 14, width: 11, rungs: 4 }) + A(y1, 'Y');
-    const hA = P(146, 242), aA = P(198, 242);
+    const hA = P(146, I1.o.y), aA = P(200, I1.o.y);
     s += B(hA, 'H', aA, 'A') + A(hA, 'H') + A(aA, 'A');
-    s += curve(P(88, 240), P(132, 236), { bow: -14 });
-    s += curve(P(166, 248), P(192, 260), { bow: 10 });
-    s += arrow(P(168, 312), P(212, 312), { muted: true });
-    s += tg(276, 294, 'alcohol:', 'good');
-    s += tg(276, 312, 'the C=O is gone', 'good');
-    s += tg(276, 336, 'ADDITION', 'good');
-    s += tg(276, 354, '(this chapter)', 'mut');
+    s += curve(P(I1.o.x + 24, I1.o.y - 4), P(hA.x - 14, hA.y - 4), { bow: -14 });
+    s += curve(P(170, I1.o.y + 6), P(194, I1.o.y + 18), { bow: 10 });
+    s += arrow(P(168, 362), P(212, 362), { muted: true });
+    s += tg(276, 344, 'alcohol:', 'good');
+    s += tg(276, 362, 'the C=O is gone', 'good');
+    s += tg(276, 386, 'ADDITION', 'good');
+    s += tg(276, 404, '(this chapter)', 'mut');
 
     // ---- branch 2: collapse ----
-    s += box(376, 176, 'Y = Cl, OR…: IT CAN LEAVE');
-    const b2 = P(80, 480), I2 = inter(b2, false);
-    s += I2.g + lonePair(I2.o.x, I2.o.y, 180, { dist: 21 }) + lonePair(I2.o.x, I2.o.y, 270, { dist: 21 }) + lonePair(I2.o.x, I2.o.y, 0, { dist: 21 });
+    s += box(428, 212, 'Y = Cl, OR…: IT CAN LEAVE');
+    const b2 = P(80, 562), I2 = inter(b2);
+    s += I2.g;
     const y2 = armEnd(b2, 270, 52);
     s += bond(b2, y2, { rFrom: 14, rTo: 14 }) + A(y2, 'Y');
-    s += curve(P(102, 420), P(88, 452), { bow: -14 });
-    s += curve(P(86, 506), P(98, 528), { bow: -10 });
-    s += arrow(P(168, 486), P(212, 486), { muted: true });
-    s += tg(276, 470, 'C=O is back,', 'good');
-    s += tg(276, 488, 'Y⁻ has left', 'good');
-    s += tg(276, 512, 'SUBSTITUTION', 'good');
-    s += tg(276, 530, '(acid derivatives)', 'mut');
+    s += curve(P(I2.o.x + 22, I2.o.y + 2), P(I2.o.x + 8, I2.o.y + 32), { bow: -14 });
+    s += curve(P(b2.x + 6, b2.y + 26), P(y2.x + 18, y2.y - 6), { bow: -10 });
+    s += arrow(P(168, 568), P(212, 568), { muted: true });
+    s += tg(276, 552, 'C=O is back,', 'good');
+    s += tg(276, 570, 'Y⁻ has left', 'good');
+    s += tg(276, 594, 'SUBSTITUTION', 'good');
+    s += tg(276, 612, '(acid derivatives)', 'mut');
     return s;
   },
   caption: 'Y is the group the carbonyl carbon carried from the start. Follow the O⁻ lone pair in each branch: out to a proton in the middle panel, back down toward carbon in the bottom one.',
@@ -293,7 +293,7 @@ FIGURES.push({
   lessons: ['nucleophilic-addition'],
   anchor: '<h3>Hydride reduction: NaBH₄ and LiAlH₄</h3>',
   alt: 'Three stacked panels. First, propanal with borohydride below it: the arrow starts on the B–H bond and ends on the carbonyl carbon, and a second arrow moves the pi bond onto oxygen. Second, the tetrahedral alkoxide with the new hydrogen on a wedge; a lone pair on the O minus takes the proton of methanol, and the H–O bond electrons stay on the methanol oxygen. Third, propan-1-ol, a primary alcohol, with methoxide ion.',
-  viewBox: '0 0 340 640',
+  viewBox: '0 0 340 660',
   build() {
     let s = '';
     const propanal = (c, single) => {
@@ -305,15 +305,15 @@ FIGURES.push({
     };
     // ---- 1. attack ----
     s += box(8, 214, 'STEP 1 · HYDRIDE MOVES FROM B TO C');
-    const c1 = P(136, 116), p1 = propanal(c1);
+    const c1 = P(136, 124), p1 = propanal(c1);
     s += p1.g + A(p1.o, 'O') + A(c1, 'C', 'warn');
     s += lonePair(p1.o.x, p1.o.y, 315, { dist: 21 }) + lonePair(p1.o.x, p1.o.y, 225, { dist: 21 });
-    s += curve(P(142, 94), P(150, 60), { bow: 12 });
-    const hh = P(136, 194), bb = P(204, 194);
+    s += curve(P(142, 102), P(150, 68), { bow: 12 });
+    const hh = P(136, 198), bb = P(204, 198);
     s += B(hh, 'H', bb, 'BH₃') + A(hh, 'H', 'hi') + A(bb, 'BH₃');
-    s += chg(228, 176, '−');
-    s += lbl(276, 198, 'Na⁺');
-    s += curve(P(170, 188), P(144, 134), { bow: 14 });
+    s += chg(228, 180, '−');
+    s += lbl(276, 202, 'Na⁺');
+    s += curve(P(170, 192), P(144, 142), { bow: 14 });
     s += tg(270, 64, 'NaBH₄', 'mut');
     s += tg(270, 82, 'in CH₃OH', 'mut');
 
@@ -334,13 +334,13 @@ FIGURES.push({
     s += tg(252, 398, 'alkoxide', 'mut');
 
     // ---- 3. product ----
-    s += box(464, 168, 'PRODUCT · PROPAN-1-OL');
-    const c3 = P(110, 560), p3 = propanal(c3, true);
+    s += box(464, 186, 'PRODUCT · PROPAN-1-OL');
+    const c3 = P(110, 580), p3 = propanal(c3, true);
     s += p3.g;
     s += arm(c3, 'C', 270, 46, 'H', 'wedge', 'hi').s;
     s += A(p3.o, 'OH') + A(c3, 'C', 'warn');
-    s += lbl(254, 540, '+  CH₃O⁻');
-    s += tg(254, 574, 'primary (1°) alcohol', 'good');
+    s += lbl(254, 560, '+  CH₃O⁻');
+    s += tg(254, 594, 'primary (1°) alcohol', 'good');
     return s;
   },
   caption: 'Propanal and sodium borohydride in methanol. Follow the first arrow from the B–H bond to carbon, and the last one from the H–O bond of methanol to its oxygen.',
@@ -354,7 +354,7 @@ FIGURES.push({
   lessons: ['nucleophilic-addition'],
   anchor: '<h3>Grignard reagents: a carbon nucleophile</h3>',
   alt: 'Three stacked panels. First, propanal with methylmagnesium bromide below it: the arrow starts on the C–Mg bond and ends on the carbonyl carbon, making a new carbon–carbon bond, and a second arrow moves the pi bond onto oxygen. Second, the magnesium alkoxide, with the new CH3 on a wedge; after the reaction, H3O+ is added, and a lone pair on the O minus takes its proton. Third, butan-2-ol, a secondary alcohol.',
-  viewBox: '0 0 340 640',
+  viewBox: '0 0 340 660',
   build() {
     let s = '';
     const propanal = (c, single) => {
@@ -366,16 +366,16 @@ FIGURES.push({
     };
     // ---- 1. attack ----
     s += box(8, 214, 'STEP 1 · CH₃ MOVES FROM Mg TO C');
-    const c1 = P(136, 116), p1 = propanal(c1);
+    const c1 = P(136, 124), p1 = propanal(c1);
     s += p1.g + A(p1.o, 'O') + A(c1, 'C', 'warn');
     s += lonePair(p1.o.x, p1.o.y, 315, { dist: 21 }) + lonePair(p1.o.x, p1.o.y, 225, { dist: 21 });
-    s += curve(P(142, 94), P(150, 60), { bow: 12 });
-    const me = P(136, 194), mg = P(204, 194), br = P(262, 194);
+    s += curve(P(142, 102), P(150, 68), { bow: 12 });
+    const me = P(136, 200), mg = P(204, 200), br = P(262, 200);
     s += B(me, 'CH₃', mg, 'Mg') + B(mg, 'Mg', br, 'Br');
     s += A(me, 'CH₃', 'hi') + A(mg, 'Mg') + A(br, 'Br');
-    s += lbl(112, 170, 'δ−') ;
-    s += lbl(204, 170, 'δ+');
-    s += curve(P(172, 188), P(146, 134), { bow: 14 });
+    s += lbl(112, 176, 'δ−');
+    s += lbl(204, 176, 'δ+');
+    s += curve(P(172, 194), P(146, 142), { bow: 14 });
     s += tg(270, 64, 'CH₃MgBr', 'mut');
     s += tg(270, 82, 'in dry ether', 'mut');
 
@@ -387,7 +387,7 @@ FIGURES.push({
     s += A(p2.o, 'O', 'hi') + A(c2, 'C', 'warn');
     s += lonePair(p2.o.x, p2.o.y, 270, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 180, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 0, { dist: 21 });
     s += chg(90, 274, '−');
-    s += lbl(46, 256, '⁺MgBr');
+    s += lbl(40, 298, '⁺MgBr');
     const wh = P(190, 294), wo = P(246, 294);
     s += B(wh, 'H', wo, 'O') + A(wh, 'H');
     for (const a of [30, 330]) { const x = armEnd(wo, a, 38); s += B(wo, 'O', x, 'H') + A(x, 'H'); }
@@ -399,14 +399,14 @@ FIGURES.push({
     s += tg(252, 404, 'alkoxide', 'mut');
 
     // ---- 3. product ----
-    s += box(464, 168, 'PRODUCT · BUTAN-2-OL');
-    const c3 = P(110, 560), p3 = propanal(c3, true);
+    s += box(464, 186, 'PRODUCT · BUTAN-2-OL');
+    const c3 = P(110, 580), p3 = propanal(c3, true);
     s += p3.g;
     s += arm(c3, 'C', 270, 50, 'CH₃', 'wedge', 'hi').s;
     s += A(p3.o, 'OH') + A(c3, 'C', 'warn');
-    s += tg(254, 552, 'secondary (2°)', 'good');
-    s += tg(254, 570, 'alcohol', 'good');
-    s += tg(254, 594, 'new C–C bond', 'mut');
+    s += tg(254, 572, 'secondary (2°)', 'good');
+    s += tg(254, 590, 'alcohol', 'good');
+    s += tg(254, 614, 'new C–C bond', 'mut');
     return s;
   },
   caption: 'Propanal and methylmagnesium bromide. Set it beside the borohydride figure: the arrows match, and only the group that moves to carbon differs.',
@@ -419,48 +419,51 @@ FIGURES.push({
   section: 'nucleophilic-addition',
   anchor: 'is where that branch is taught in full.</p>',
   alt: 'Three stacked panels for methyl propanoate with two equivalents of methylmagnesium bromide. First, the tetrahedral intermediate from the first addition: the O minus lone pair moves back down to re-form the C=O, and the C–OCH3 bond breaks so methoxide leaves. Second, the ketone that forms, butan-2-one, is attacked by a second CH3MgBr, with the arrow starting on the C–Mg bond. Third, after H3O+ workup, 2-methylbutan-2-ol, a tertiary alcohol whose two highlighted methyl groups both came from the Grignard reagent.',
-  viewBox: '0 0 340 596',
+  viewBox: '0 0 340 684',
   build() {
     let s = '';
     // ---- 1. collapse ----
-    s += box(8, 198, 'FIRST CH₃ IN · THE INTERMEDIATE COLLAPSES');
-    const c1 = P(130, 104), o1 = armEnd(c1, 90, 58);
+    s += box(8, 228, 'FIRST CH₃ IN · THE INTERMEDIATE COLLAPSES');
+    const c1 = P(130, 140), o1 = armEnd(c1, 90, 58);
     s += B(c1, 'C', o1, 'O');
     s += ethyl(c1, 'C', 210, -60).s;
     s += arm(c1, 'C', 330, 50, 'CH₃', 'wedge', 'hi').s;
     const om = armEnd(c1, 270, 54), mm = armEnd(om, 330, 46);
     s += bond(c1, om, { rFrom: 14, rTo: 14 }) + B(om, 'O', mm, 'CH₃') + A(om, 'O') + A(mm, 'CH₃');
+    s += lonePair(om.x, om.y, 150, { dist: 21 }) + lonePair(om.x, om.y, 90, { dist: 21 });
     s += A(o1, 'O', 'hi') + A(c1, 'C', 'warn');
     s += lonePair(o1.x, o1.y, 180, { dist: 21 }) + lonePair(o1.x, o1.y, 270, { dist: 21 }) + lonePair(o1.x, o1.y, 0, { dist: 21 });
-    s += chg(110, 26, '−');
-    s += curve(P(152, 44), P(138, 76), { bow: -14 });
-    s += curve(P(136, 130), P(146, 150), { bow: -10 });
-    s += tg(268, 104, 'CH₃O⁻ leaves', 'mut');
+    s += chg(o1.x - 28, o1.y - 26, '−');
+    s += curve(P(o1.x + 22, o1.y + 2), P(o1.x + 8, o1.y + 32), { bow: -14 });
+    s += curve(P(c1.x + 6, c1.y + 24), P(om.x + 16, om.y - 8), { bow: -10 });
+    s += tg(262, 130, 'tetrahedral', 'mut');
+    s += tg(262, 148, 'intermediate', 'mut');
+    s += tg(262, 200, 'CH₃O⁻ leaves', 'mut');
 
     // ---- 2. second addition to the ketone ----
-    s += box(214, 196, 'THE KETONE MEETS A SECOND CH₃MgBr');
-    const c2 = P(130, 306), o2 = armEnd(c2, 90, 58);
+    s += box(244, 232, 'THE KETONE MEETS A SECOND CH₃MgBr');
+    const c2 = P(130, 350), o2 = armEnd(c2, 90, 58);
     s += B(c2, 'C', o2, 'O', { order: 2 });
     s += ethyl(c2, 'C', 210, -60).s;
     s += arm(c2, 'C', 330, 50, 'CH₃', 'plain', 'hi').s;
     s += A(o2, 'O') + A(c2, 'C', 'warn');
     s += lonePair(o2.x, o2.y, 315, { dist: 21 }) + lonePair(o2.x, o2.y, 225, { dist: 21 });
-    s += curve(P(136, 284), P(144, 252), { bow: 12 });
-    const me = P(130, 380), mg = P(196, 380), br = P(254, 380);
+    s += curve(P(136, 328), P(144, 296), { bow: 12 });
+    const me = P(130, 430), mg = P(196, 430), br = P(254, 430);
     s += B(me, 'CH₃', mg, 'Mg') + B(mg, 'Mg', br, 'Br') + A(me, 'CH₃', 'hi') + A(mg, 'Mg') + A(br, 'Br');
-    s += curve(P(164, 374), P(140, 324), { bow: 14 });
-    s += tg(270, 250, 'butan-2-one', 'mut');
+    s += curve(P(164, 424), P(140, 368), { bow: 14 });
+    s += tg(262, 300, 'butan-2-one', 'mut');
 
     // ---- 3. product ----
-    s += box(418, 170, 'AFTER H₃O⁺ WORKUP');
-    const c3 = P(130, 516), o3 = armEnd(c3, 90, 56);
+    s += box(484, 192, 'AFTER H₃O⁺ WORKUP');
+    const c3 = P(130, 590), o3 = armEnd(c3, 90, 56);
     s += B(c3, 'C', o3, 'OH');
     s += ethyl(c3, 'C', 210, -60).s;
     s += arm(c3, 'C', 330, 50, 'CH₃', 'plain', 'hi').s;
     s += arm(c3, 'C', 270, 48, 'CH₃', 'wedge', 'hi').s;
     s += A(o3, 'OH') + A(c3, 'C', 'warn');
-    s += tg(262, 540, '3° alcohol', 'good');
-    s += tg(262, 558, 'two new CH₃', 'good');
+    s += tg(262, 610, '3° alcohol', 'good');
+    s += tg(262, 628, 'two new CH₃', 'good');
     return s;
   },
   caption: 'Methyl propanoate with two CH₃MgBr. Both highlighted CH₃ groups in the product came from the Grignard reagent.',
@@ -473,7 +476,7 @@ FIGURES.push({
   section: 'nucleophilic-addition',
   anchor: '<p><b>Step 1: find the carbinol carbon.</b>',
   alt: '2-Phenylbutan-2-ol drawn at the top: a carbon bearing OH, a phenyl ring, an ethyl group and a methyl group, with the three carbon–carbon bonds at that carbon labeled a (to the ring), b (to the ethyl) and c (to the methyl). Below, three rows. Cut a gives phenylmagnesium bromide and butan-2-one. Cut b gives ethylmagnesium bromide and acetophenone. Cut c gives methylmagnesium bromide and propiophenone.',
-  viewBox: '0 0 340 610',
+  viewBox: '0 0 340 740',
   build() {
     let s = '';
     // ---- the target ----
@@ -503,14 +506,14 @@ FIGURES.push({
     };
     const rows = [
       { y: 212, t: 'CUT a · PhMgBr + BUTAN-2-ONE', g: 'PhMgBr', l: 'CH₃', r: 'Et' },
-      { y: 344, t: 'CUT b · EtMgBr + ACETOPHENONE', g: 'CH₃CH₂MgBr', l: 'Ph', r: 'CH₃' },
-      { y: 476, t: 'CUT c · CH₃MgBr + PROPIOPHENONE', g: 'CH₃MgBr', l: 'Ph', r: 'Et' },
+      { y: 388, t: 'CUT b · CH₃CH₂MgBr + ACETOPHENONE', g: 'CH₃CH₂MgBr', l: 'Ph', r: 'CH₃' },
+      { y: 564, t: 'CUT c · CH₃MgBr + PROPIOPHENONE', g: 'CH₃MgBr', l: 'Ph', r: 'Et' },
     ];
     for (const r of rows) {
-      s += box(r.y, 124, r.t);
-      s += lbl(60, r.y + 84, r.g);
-      s += lbl(124, r.y + 84, '+');
-      s += ketone(228, r.y + 90, r.l, r.r);
+      s += box(r.y, 168, r.t);
+      s += lbl(60, r.y + 104, r.g);
+      s += lbl(124, r.y + 104, '+');
+      s += ketone(228, r.y + 100, r.l, r.r);
     }
     return s;
   },
@@ -525,30 +528,30 @@ FIGURES.push({
   lessons: ['nucleophilic-addition'],
   anchor: '<h3>Nitrogen nucleophiles: where they go next</h3>',
   alt: 'Two stacked panels. Top: acetone and methylamine lose water to give an imine, (CH3)2C=N–CH3, with the C=N double bond highlighted. Bottom: acetone and dimethylamine lose water to give an enamine, CH2=C(CH3)–N(CH3)2, with the C=C double bond highlighted between the former carbonyl carbon and the carbon next to it.',
-  viewBox: '0 0 340 380',
+  viewBox: '0 0 340 430',
   build() {
     let s = '';
     // ---- imine ----
-    s += box(8, 176, 'ACETONE + CH₃NH₂, − H₂O');
-    const c = P(110, 100), n = P(180, 100);
+    s += box(8, 180, 'ACETONE + CH₃NH₂, − H₂O');
+    const c = P(110, 96), n = P(180, 96);
     s += B(c, 'C', n, 'N', { order: 2, cls: 'fg-bond-hi' });
-    s += arm(c, 'C', 150, 50, 'CH₃').s + arm(c, 'C', 210, 50, 'CH₃').s;
-    s += arm(n, 'N', 300, 50, 'CH₃').s;
+    s += arm(c, 'C', 120, 50, 'CH₃').s + arm(c, 'C', 240, 50, 'CH₃').s;
+    s += arm(n, 'N', 300, 44, 'CH₃').s;
     s += lonePair(n.x, n.y, 300, { dist: 21 });
     s += A(c, 'C', 'warn') + A(n, 'N', 'hi');
-    s += tg(170, 168, 'IMINE: the double bond goes to N', 'good');
+    s += tg(170, 174, 'IMINE: the double bond goes to N', 'good');
 
     // ---- enamine ----
-    s += box(192, 180, 'ACETONE + (CH₃)₂NH, − H₂O');
-    const c2 = P(150, 276), ch2 = armEnd(c2, 210, 56), n2 = armEnd(c2, 330, 54);
+    s += box(196, 226, 'ACETONE + (CH₃)₂NH, − H₂O');
+    const c2 = P(150, 300), ch2 = armEnd(c2, 210, 56), n2 = armEnd(c2, 330, 54);
     s += B(c2, 'C', ch2, 'CH₂', { order: 2, cls: 'fg-bond-hi' }) + A(ch2, 'CH₂', 'hi');
     s += arm(c2, 'C', 90, 50, 'CH₃').s;
     s += B(c2, 'C', n2, 'N');
     s += arm(n2, 'N', 30, 50, 'CH₃').s + arm(n2, 'N', 270, 46, 'CH₃').s;
-    s += lonePair(n2.x, n2.y, 210, { dist: 21 });
+    s += lonePair(n2.x, n2.y, 150, { dist: 21 });
     s += A(c2, 'C', 'warn') + A(n2, 'N');
-    s += tg(62, 238, 'the carbon', 'mut') + tg(62, 254, 'next door', 'mut');
-    s += tg(170, 362, 'ENAMINE: the double bond goes to C', 'good');
+    s += tg(66, 372, 'the carbon', 'mut') + tg(66, 388, 'next door', 'mut');
+    s += tg(170, 412, 'ENAMINE: the double bond goes to C', 'good');
     return s;
   },
   caption: 'The coral carbon was the carbonyl carbon in both. Find its new double bond in each panel.',

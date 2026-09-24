@@ -1,164 +1,755 @@
 /* Figures for the acetals notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   One worked example runs through the whole page: acetone and methanol,
+   under an acid catalyst, giving 2-methoxypropan-2-ol (the hemiacetal) and
+   then 2,2-dimethoxypropane (the acetal). Every atom that changes is written
+   out with its label, its lone pairs and its charge, so each curved arrow
+   can be checked against the structure it acts on.
+
+   The seven elementary steps are drawn as one panel per step. Each panel
+   shows the species BEFORE the step, with that step's arrows on it; the
+   next panel shows the result. The panels are 340 wide so the same panel
+   can sit two to a row on the notes page and one above another in the
+   lesson, which shows the mechanism in three parts (steps 1-3, 4-5, 6-7).
+
+   Geometry is kept the same from panel to panel so the eye can follow the
+   two oxygens: in a four-bonded (sp3) carbon, the oxygen that is being
+   changed sits up-left and the other one up-right, and the two CH3 groups
+   point down. A three-bonded (sp2) carbon has its oxygen straight up.
+
+   Lesson copies (id prefix l-) are 340 wide or less, stacked, and use only
+   fg-lbl and fg-tag text. */
+import { atom as atom0, bond, wedge, hash, arrow, curve, lonePair, text, tag, rule, panel, P } from '../lib/ochem-figure.mjs';
+import { sk, polyPts, ringDouble } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
 
-/* ------------------------------------------------------------- 11.3 ---
-   Acetal formation, every elementary step, with the electron arrows. The
-   section's only figure shows the four SPECIES joined by equilibrium heads
-   and contains no curved arrows at all — and this is the mechanism students
-   are most often asked to produce in full. */
-FIGURES.push({
-  id: 'acetal-seven-steps',
-  section: 'acetals',
-  anchor: '<h3>Step one: hemiacetal formation</h3>',
-  alt: 'Seven panels drawing the acid-catalyzed formation of an acetal from a ketone. Protonation of the carbonyl oxygen; attack by the first alcohol on the carbonyl carbon, with a second arrow taking the pi bond up onto the positively charged oxygen; loss of a proton to give the hemiacetal; protonation of the hemiacetal hydroxyl; loss of water to give the oxocarbenium ion, drawn with the double bond and the positive charge on oxygen; attack by the second alcohol on that carbon, again with a second arrow moving the pi bond onto oxygen; and loss of the final proton to give the acetal. Every step carries curved arrows, and every arrow is reversible.',
-  viewBox: '0 0 760 742',
-  build() {
-    let s = '';
-    const W = 236, H = 208;
-    const frame = (x, y, n, t) => panel(x, y, W, H) + tag(x + 118, y + 26, n + ' · ' + t);
+/* ------------------------------------------------------------ helpers --- */
+const rad = (d) => (d * Math.PI) / 180;
+const r2 = (v) => Math.round(v * 100) / 100;
+/* A point at math angle `deg` (0 east, 90 up) and distance `len` from c. */
+const at = (c, deg, len) => P(c.x + Math.cos(rad(deg)) * len, c.y - Math.sin(rad(deg)) * len);
+/* A lone pair pointing out along math angle `deg`. */
+const lp = (c, deg) => lonePair(c.x, c.y, -deg, { dist: 22, spread: 4.5, r: 2.4 });
+/* Where a curved arrow should start when it leaves the lone pair at `deg`. */
+const lpTip = (c, deg) => at(c, deg, 28);
 
-    /* The shared core: the carbon, its two R groups, an oxygen above it and
-       optionally one to its right. Everything in this mechanism happens on
-       those two oxygens, so keeping them in the same two places across all
-       seven frames is most of what makes the sequence readable. */
-    const core = (c, o) => {
-      const r1 = armEnd(c, 216, 42), r2 = armEnd(c, 324, 42);
-      let g = bond(c, r1, { rTo: 13 }) + atom(r1.x, r1.y, 'R', { r: 13 });
-      g += bond(c, r2, { rTo: 13 }) + atom(r2.x, r2.y, 'R', { r: 13 });
-      const top = armEnd(c, 90, 54);
-      let right = null;
-      if (o.top) {
-        g += bond(c, top, { order: o.topOrder || 1, rTo: 15 });
-      }
-      if (o.right) {
-        right = armEnd(c, 16, 62);
-        g += bond(c, right, { order: o.rightOrder || 1, rTo: 15 });
-      }
-      if (o.top) g += atom(top.x, top.y, 'O', { kind: o.topKind || 'plain' });
-      if (o.right) g += atom(right.x, right.y, 'O', { kind: o.rightKind || 'plain' });
-      g += atom(c.x, c.y, 'C', { kind: 'warn' });
-      return { g, top, right };
-    };
-    const plusAt = (x, y) => text(x, y, '+', { cls: 'fg-warn', size: 15 });
-    const sub = (x, y, t, cls) => text(x, y, t, { cls: cls || 'fg-sm', size: 9.5 });
+/* An atom disc that stays opaque in both themes (the tinted discs are
+   translucent in the dark theme, so an opaque plain disc goes under them). */
+function atom(x, y, l, o = {}) {
+  const kind = o.kind || 'plain';
+  const back = kind === 'hi' || kind === 'warn'
+    ? `<circle class="fg-atom" cx="${r2(x)}" cy="${r2(y)}" r="${r2(o.r ?? 16)}"></circle>` : '';
+  return back + atom0(x, y, l, o);
+}
+const rOf = (l) => (l.length >= 3 ? 18 : l === 'H' ? 12 : l === 'C' ? 16 : 15);
+const charge = (p, s = '+') => text(p.x, p.y + 5, s, { cls: 'fg-warn', size: 15 });
+const lbl = (x, y, s, anchor = 'middle') => text(x, y, s, { cls: 'fg-lbl', size: 13, anchor });
 
-    // ---- 1 protonate the carbonyl ----
-    s += frame(8, 16, '1', 'PROTONATE THE C=O');
-    let c = P(96, 132);
-    let k = core(c, { top: 1, topOrder: 2 });
-    s += k.g;
-    s += lonePair(k.top.x, k.top.y, 232, { dist: 23 }) + lonePair(k.top.x, k.top.y, 308, { dist: 23 });
-    let h = P(186, 74);
-    s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + plusAt(h.x + 18, h.y - 10);
-    s += curve(P(k.top.x + 18, k.top.y - 12), P(h.x - 13, h.y + 2), { bow: -16 });
-    s += sub(126, 202, 'acid activates the electrophile');
+/* A group bonded to point `from` (whose disc has radius rFrom). */
+function arm(from, deg, len, l, o = {}) {
+  const e = at(from, deg, len);
+  const r = o.r ?? rOf(l);
+  let s = o.bond === 'wedge' ? wedge(from, e, { rFrom: o.rFrom ?? 16, rTo: r, width: 9 })
+        : o.bond === 'hash' ? hash(from, e, { rFrom: o.rFrom ?? 16, rTo: r, width: 10, rungs: 5 })
+        : bond(from, e, { rFrom: o.rFrom ?? 16, rTo: r, order: o.order || 1 });
+  s += atom(e.x, e.y, l, { r, kind: o.kind });
+  return { s, e };
+}
 
-    // ---- 2 first alcohol attacks ----
-    s += frame(260, 16, '2', 'FIRST ROH ATTACKS C');
-    c = P(342, 132);
-    k = core(c, { top: 1, topOrder: 2, topKind: 'hi' });
-    s += k.g;
-    s += text(k.top.x + 22, k.top.y - 10, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
-    s += plusAt(k.top.x - 20, k.top.y - 12);
-    let nu = P(444, 168);
-    s += atom(nu.x, nu.y, 'O', { kind: 'hi' });
-    s += text(nu.x + 20, nu.y - 12, 'H', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(nu.x + 20, nu.y + 20, 'R', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += lonePair(nu.x, nu.y, 186, { dist: 23 });
-    s += curve(P(nu.x - 22, nu.y - 6), P(c.x + 16, c.y + 8), { bow: 18 });
-    s += curve(P(c.x + 5, c.y - 16), P(c.x + 12, c.y - 44), { bow: 12 });
-    s += sub(378, 196, 'TWO arrows: ROH to carbon,');
-    s += sub(378, 210, 'and the pi bond up onto oxygen');
+/* One oxygen on the central carbon: the C–O bond (single or double), the
+   oxygen, what else it carries, its lone pairs and its charge. */
+function oxygen(c, spec) {
+  const o = at(c, spec.deg, spec.len ?? 54);
+  let s = bond(c, o, { rFrom: 16, rTo: 15, order: spec.order || 1 });
+  const subs = {};
+  for (const g of spec.subs || []) {
+    const a = arm(o, g.deg, g.len ?? (g.l === 'H' ? 40 : 48), g.l, { rFrom: 15, kind: g.kind });
+    s += a.s;
+    subs[g.l + (subs[g.l] ? '2' : '')] = a.e;
+  }
+  for (const d of spec.lps || []) s += lp(o, d);
+  s += atom(o.x, o.y, 'O', { kind: spec.kind });
+  if (spec.charge !== undefined) s += charge(at(o, spec.charge, 25));
+  return { s, o, subs };
+}
 
-    // ---- 3 deprotonate, giving the hemiacetal ----
-    s += frame(512, 16, '3', 'LOSE H⁺ → HEMIACETAL');
-    c = P(596, 132);
-    k = core(c, { top: 1, right: 1, rightKind: 'hi' });
-    s += k.g;
-    s += text(k.top.x - 22, k.top.y - 8, 'H', { cls: 'fg-lbl', size: 11, anchor: 'end' });
-    s += plusAt(k.right.x + 4, k.right.y - 24);
-    s += text(k.right.x + 4, k.right.y + 28, 'R', { cls: 'fg-sm', size: 10 });
-    h = P(k.right.x + 42, k.right.y - 6);
-    s += bond(k.right, h, { rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12, kind: 'warn' });
-    s += sub(600, 202, 'one OH and one OR: the hemiacetal');
-    s += curve(P(h.x + 22, h.y - 34), P(h.x + 4, h.y - 14), { bow: 12 });
+/* The central carbon with its two methyl groups, plus its oxygens. */
+function species(c, { tet = true, oxy = [], cKind = 'warn', cCharge } = {}) {
+  let s = '';
+  const me = tet ? [225, 315] : [210, 330];
+  for (const d of me) s += arm(c, d, 54, d < 270 ? 'H₃C' : 'CH₃').s;
+  const os = oxy.map((spec) => oxygen(c, spec));
+  for (const k of os) s += k.s;
+  s += atom(c.x, c.y, 'C', { kind: cKind });
+  if (cCharge !== undefined) s += charge(at(c, cCharge, 26));
+  return { s, os };
+}
 
-    // ---- 4 protonate the OH ----
-    s += frame(8, 240, '4', 'PROTONATE THAT OH');
-    c = P(96, 356);
-    k = core(c, { top: 1, right: 1 });
-    s += k.g;
-    s += text(k.top.x + 22, k.top.y - 8, 'H', { cls: 'fg-lbl', size: 11, anchor: 'start' });
-    s += lonePair(k.top.x, k.top.y, 200, { dist: 23 });
-    s += text(k.right.x + 4, k.right.y - 24, 'R', { cls: 'fg-sm', size: 10 });
-    h = P(24, 300);
-    s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + plusAt(h.x - 4, h.y - 22);
-    s += curve(P(k.top.x - 20, k.top.y - 8), P(h.x + 12, h.y + 2), { bow: 16 });
-    s += sub(126, 202 + 224, 'a hopeless leaving group becomes water');
+/* A curved arrow from a lone pair on `o` (at angle deg) to point b. */
+const fromLp = (o, deg, b, bow) => curve(lpTip(o, deg), b, { bow });
+/* A curved arrow that starts on the middle of bond a–b, offset to one side
+   by `off` (sign picks the side), and ends at point e. */
+function fromBond(a, b, e, bow, off = 0) {
+  const m = P((a.x + b.x) / 2, (a.y + b.y) / 2);
+  const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
+  return curve(P(m.x - (dy / L) * off, m.y + (dx / L) * off), e, { bow });
+}
+/* Equilibrium arrows, one each way. */
+function eqArrows(a, b, gap = 5) {
+  const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
+  const px = (-dy / L) * gap, py = (dx / L) * gap;
+  return arrow(P(a.x - px, a.y - py), P(b.x - px, b.y - py), { size: 7 }) +
+         arrow(P(b.x + px, b.y + py), P(a.x + px, a.y + py), { size: 7 });
+}
+function resArrow(a, b) {
+  const m = P((a.x + b.x) / 2, (a.y + b.y) / 2);
+  return arrow(m, b, { size: 8 }) + arrow(m, a, { size: 8 });
+}
 
-    // ---- 5 water leaves ----
-    s += frame(260, 240, '5', 'LOSE WATER → OXOCARBENIUM');
-    c = P(348, 356);
-    k = core(c, { top: 1, right: 1, topKind: 'warn' });
-    s += k.g;
-    s += text(k.top.x - 26, k.top.y - 14, 'H', { cls: 'fg-sm', size: 10 });
-    s += text(k.top.x + 22, k.top.y - 14, 'H', { cls: 'fg-sm', size: 10 });
-    s += plusAt(k.top.x + 2, k.top.y - 30);
-    s += text(k.right.x + 4, k.right.y - 24, 'R', { cls: 'fg-sm', size: 10 });
-    s += curve(P(c.x - 14, c.y - 24), P(k.top.x - 14, k.top.y + 16), { bow: 18 });
-    s += sub(378, 202 + 224, 'the C–O bond leaves WITH the oxygen');
+/* ---------------------------------------------- the species themselves ---
+   Each returns the ink and the points the arrows need. `c` is the central
+   carbon. Oxygen geometry (math angles, seen from the oxygen):
+     up-left oxygen (135):  its other groups at 180 and 90
+     up-right oxygen (45):  its other groups at 0 and 90
+     straight-up oxygen (90): its other group at 30                    */
 
-    // ---- 6 second alcohol attacks the oxocarbenium ----
-    s += frame(512, 240, '6', 'SECOND ROH ATTACKS');
-    c = P(596, 356);
-    k = core(c, { right: 1, rightOrder: 2, rightKind: 'hi' });
-    s += k.g;
-    s += plusAt(k.right.x + 4, k.right.y - 24);
-    s += text(k.right.x + 4, k.right.y + 28, 'R', { cls: 'fg-sm', size: 10 });
-    nu = P(c.x - 4, c.y - 62);
-    s += atom(nu.x, nu.y, 'O', { kind: 'hi' });
-    s += text(nu.x - 22, nu.y - 12, 'H', { cls: 'fg-sm', size: 10, anchor: 'end' });
-    s += text(nu.x + 20, nu.y - 12, 'R', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += lonePair(nu.x, nu.y, 110, { dist: 23 });
-    s += curve(P(nu.x + 12, nu.y + 20), P(c.x + 8, c.y - 18), { bow: -14 });
-    s += curve(P(c.x + 28.7, c.y - 12.3), P(c.x + 49, c.y - 24), { bow: -14 });
-    s += sub(610, 202 + 224, 'flat carbon, open from both faces');
-    s += sub(610, 216 + 224, 'and the pi bond goes up onto O');
+// acetone, the carbonyl oxygen straight up with two lone pairs
+const acetone = (c, kind) => species(c, { tet: false, cKind: kind || 'warn',
+  oxy: [{ deg: 90, order: 2, lps: [30, 150] }] });
 
-    // ---- 7 deprotonate, giving the acetal ----
-    s += frame(8, 464, '7', 'LOSE H⁺ → ACETAL');
-    c = P(96, 590);
-    k = core(c, { top: 1, right: 1, topKind: 'hi' });
-    s += k.g;
-    s += plusAt(k.top.x + 2, k.top.y - 24);
-    s += text(k.top.x - 22, k.top.y - 8, 'R', { cls: 'fg-sm', size: 10, anchor: 'end' });
-    s += text(k.right.x + 4, k.right.y - 24, 'R', { cls: 'fg-sm', size: 10 });
-    h = P(k.top.x + 40, k.top.y - 4);
-    s += bond(k.top, h, { rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12, kind: 'warn' });
-    s += curve(P(h.x + 22, h.y - 32), P(h.x + 4, h.y - 14), { bow: 12 });
-    s += sub(126, 202 + 448, 'two OR groups, no carbonyl left');
+// protonated acetone: O+ carries H, one lone pair
+const protAcetone = (c) => species(c, { tet: false,
+  oxy: [{ deg: 90, order: 2, kind: 'hi', subs: [{ deg: 30, l: 'H' }], lps: [150], charge: 95 }] });
 
-    // the running commentary, beside the last frame
-    s += text(272, 512, 'Every one of the seven is an equilibrium.', { cls: 'fg-lbl', size: 12, anchor: 'start' });
-    s += text(272, 540, 'Read left to right with the water pulled out by a Dean–Stark', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 558, 'trap and you are protecting a carbonyl. Read right to left in', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 576, 'dilute aqueous acid and you are deprotecting it. The steps do', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 594, 'not change — only which side you flood.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 626, 'Count the protons: one in at step 1, one out at step 3, one in', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 644, 'at step 4, one out at step 7. The acid is a catalyst, and a', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 662, 'mechanism that does not balance that way has a step missing.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+// methanol, drawn free: O with H and CH3 at the given angles, lone pairs at the others
+function methanol(o, { h, me, lps }) {
+  let s = arm(o, h, 40, 'H', { rFrom: 15 }).s + arm(o, me, 48, 'CH₃', { rFrom: 15 }).s;
+  for (const d of lps) s += lp(o, d);
+  s += atom(o.x, o.y, 'O', { kind: 'hi' });
+  return s;
+}
 
-    s += rule(30, 696, 730, 696);
-    s += text(380, 722, 'protonate · add · deprotonate   —   then protonate · lose water · add · deprotonate', { cls: 'fg-lbl', size: 11.5 });
+// the tetrahedral intermediate before the first deprotonation
+const oxonium1 = (c) => species(c, { oxy: [
+  { deg: 135, subs: [{ deg: 180, l: 'H' }], lps: [80, 250] },
+  { deg: 45, kind: 'hi', subs: [{ deg: 90, l: 'H' }, { deg: 0, l: 'CH₃' }], lps: [150], charge: 300 },
+] });
+
+// the hemiacetal: OH up-left, OCH3 up-right
+const hemiacetal = (c, oKinds = []) => species(c, { oxy: [
+  { deg: 135, kind: oKinds[0], subs: [{ deg: 180, l: 'H' }], lps: [80, 250] },
+  { deg: 45, kind: oKinds[1], subs: [{ deg: 0, l: 'CH₃' }], lps: [100, 290] },
+] });
+
+// the protonated hemiacetal: OH2+ up-left
+const protHemi = (c) => species(c, { oxy: [
+  { deg: 135, kind: 'warn', subs: [{ deg: 180, l: 'H' }, { deg: 90, l: 'H' }], lps: [30], charge: 250 },
+  { deg: 45, subs: [{ deg: 0, l: 'CH₃' }], lps: [100, 290] },
+] });
+
+// the oxocarbenium ion, C=O+ contributor, oxygen straight up
+const oxocarb = (c) => species(c, { tet: false, oxy: [
+  { deg: 90, order: 2, kind: 'hi', subs: [{ deg: 30, l: 'CH₃' }], lps: [150], charge: 95 },
+] });
+
+// the tetrahedral intermediate before the last deprotonation
+const oxonium2 = (c) => species(c, { oxy: [
+  { deg: 135, kind: 'hi', subs: [{ deg: 180, l: 'H' }, { deg: 90, l: 'CH₃' }], lps: [30], charge: 250 },
+  { deg: 45, subs: [{ deg: 0, l: 'CH₃' }], lps: [100, 290] },
+] });
+
+// the acetal
+const acetal = (c, kind) => species(c, { cKind: kind || 'warn', oxy: [
+  { deg: 135, subs: [{ deg: 180, l: 'CH₃' }], lps: [80, 250] },
+  { deg: 45, subs: [{ deg: 0, l: 'CH₃' }], lps: [100, 290] },
+] });
+
+/* ------------------------------------------------- the seven step panels ---
+   Each draws into a 340 x PH box at (x, y). */
+const PW = 340, PH = 232;
+function box(x, y, title, note, kind) {
+  let s = panel(x + 4, y + 4, PW - 8, PH - 8, kind ? { kind } : {});
+  s += tag(x + PW / 2, y + 26, title);
+  const lines = Array.isArray(note) ? note : [note];
+  lines.forEach((t, i) => { s += lbl(x + PW / 2, y + PH - 20 - (lines.length - 1 - i) * 17, t); });
+  return s;
+}
+
+const STEPS = {
+  1(x, y) {
+    let s = box(x, y, 'STEP 1 · PROTONATE THE C=O', 'the carbonyl O takes H⁺');
+    const c = P(x + 130, y + 138);
+    const k = acetone(c);
+    s += k.s;
+    const o = k.os[0].o;
+    const h = P(x + 250, y + 70);
+    s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + charge(P(h.x + 18, h.y - 14));
+    s += fromLp(o, 30, P(h.x - 14, h.y + 2), -22);
+    s += lbl(h.x, h.y + 32, 'from acid');
     return s;
   },
-  caption: 'The whole mechanism as elementary steps, which is how an exam asks for it. Two halves of three and four: an ordinary acid-catalyzed addition gives the hemiacetal, then the hemiacetal’s OH is turned into water, ionizes, and is replaced by a second alcohol. The oxocarbenium ion in the middle — drawn here as its C=O<sup>+</sup> contributor, with the positive charge on oxygen and the electrophilic carbon flat and open — is what makes the second half possible at all.',
-  note: 'Two steps carry the difficulty. Step 5 is where the arrow starts on the <b>C–O bond</b> and ends on the oxygen — the leaving group departs with the electron pair, exactly as in any SN1 — and step 6 is where the flat sp² carbon of the oxocarbenium ion is attacked from either face. Note the arrow count in steps 2 and 6: the species drawn there still has a C=O double bond, so the nucleophile’s arrow must be paired with a second one pushing that pi bond up onto oxygen, or the carbon ends up with five bonds. Everything else is a proton moving on or off an oxygen.',
+  2(x, y) {
+    let s = box(x, y, 'STEP 2 · CH₃OH ADDS TO C', ['two arrows: O to C,', 'and the π bond onto O⁺']);
+    const c = P(x + 106, y + 138);
+    const k = protAcetone(c);
+    s += k.s;
+    const o = k.os[0].o;
+    const m = P(x + 222, y + 138);
+    s += methanol(m, { h: 90, me: 0, lps: [180, 265] });
+    s += fromLp(m, 180, P(c.x + 19, c.y + 4), -26);
+    s += fromBond(c, o, P(o.x + 15, o.y + 11), -14, -7);
+    return s;
+  },
+  3(x, y) {
+    let s = box(x, y, 'STEP 3 · LOSE H⁺', 'a CH₃OH takes the H⁺ away');
+    const c = P(x + 150, y + 150);
+    const k = oxonium1(c);
+    s += k.s;
+    const ob = k.os[1];
+    s += fromBond(ob.o, ob.subs.H, P(ob.o.x - 12, ob.o.y - 12), 18, 6);
+    return s;
+  },
+  4(x, y) {
+    let s = box(x, y, 'STEP 4 · PROTONATE THE OH', 'the OH, not the OCH₃, takes H⁺');
+    const c = P(x + 160, y + 152);
+    const k = hemiacetal(c, ['hi']);
+    s += k.s;
+    const oa = k.os[0].o;
+    const h = P(x + 60, y + 52);
+    s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + charge(P(h.x - 19, h.y - 8));
+    s += fromLp(oa, 80, P(h.x + 13, h.y + 6), 18);
+    return s;
+  },
+  5(x, y) {
+    let s = box(x, y, 'STEP 5 · WATER LEAVES', ['C–O breaks; the OCH₃', 'lone pair makes C=O⁺']);
+    const c = P(x + 160, y + 144);
+    const k = protHemi(c);
+    s += k.s;
+    const oa = k.os[0].o, ob = k.os[1].o;
+    s += fromBond(c, oa, P(oa.x + 12, oa.y + 12), -16, -8);
+    s += fromLp(ob, 100, P((c.x + ob.x) / 2 - 6, (c.y + ob.y) / 2 - 6), 20);
+    return s;
+  },
+  6(x, y) {
+    let s = box(x, y, 'STEP 6 · SECOND CH₃OH ADDS', ['two arrows again: O to C,', 'and the π bond onto O⁺']);
+    const c = P(x + 170, y + 150);
+    const k = oxocarb(c);
+    s += k.s;
+    const o = k.os[0].o;
+    const m = P(x + 62, y + 84);
+    s += methanol(m, { h: 180, me: 90, lps: [320, 250] });
+    s += fromLp(m, 320, P(c.x - 18, c.y - 4), 16);
+    s += fromBond(c, o, P(o.x + 15, o.y + 11), -14, -7);
+    return s;
+  },
+  7(x, y) {
+    let s = box(x, y, 'STEP 7 · LOSE H⁺', 'a CH₃OH takes the H⁺ away');
+    const c = P(x + 176, y + 152);
+    const k = oxonium2(c);
+    s += k.s;
+    const oa = k.os[0];
+    s += fromBond(oa.o, oa.subs.H, P(oa.o.x - 10, oa.o.y + 14), 16, 6);
+    return s;
+  },
+};
+
+/* The result panels that close a part. */
+function resultPanel(x, y, title, draw, note) {
+  let s = box(x, y, title, note, 'good');
+  s += draw(P(x + 170, y + 146), 'hi').s;
+  return s;
+}
+const hemiResult = (x, y) => resultPanel(x, y, 'RESULT · THE HEMIACETAL', (c) => hemiacetal(c), 'one OH and one OCH₃');
+const acetalResult = (x, y) => resultPanel(x, y, 'RESULT · THE ACETAL', (c) => acetal(c), 'two OCH₃, no OH, no C=O');
+function oxoResult(x, y) {
+  let s = box(x, y, 'RESULT · OXOCARBENIUM ION', 'plus one H₂O', 'good');
+  s += oxocarb(P(x + 150, y + 150)).s;
+  return s;
+}
+
+/* Lay a list of panel painters out in `cols` columns. */
+function grid(painters, cols, x0 = 0, y0 = 0, gap = 20) {
+  let s = '';
+  painters.forEach((p, i) => {
+    const col = i % cols, row = Math.floor(i / cols);
+    s += p(x0 + col * (PW + gap), y0 + row * PH);
+  });
+  return s;
+}
+const vb = (painters, cols, gap = 20) =>
+  `0 0 ${cols * PW + (cols - 1) * gap} ${Math.ceil(painters.length / cols) * PH}`;
+
+const PART_A = [STEPS[1], STEPS[2], STEPS[3], hemiResult];
+const PART_B = [STEPS[4], STEPS[5], oxoResult];
+const PART_C = [STEPS[6], STEPS[7], acetalResult];
+
+const ALT_A = 'Steps 1 to 3 of acetal formation from acetone and methanol. Step 1: a lone pair on the carbonyl oxygen takes H+ from the acid. Step 2: a methanol oxygen lone pair attacks the carbonyl carbon while the C=O pi bond moves onto the positive oxygen. Step 3: the O–H bond on the added oxygen breaks, its electrons stay on that oxygen, and H+ leaves. Result: the hemiacetal, a carbon carrying OH, OCH3 and two CH3 groups.';
+const ALT_B = 'Steps 4 and 5. Step 4: a lone pair on the hemiacetal OH oxygen takes H+, making an OH2+ group. Step 5: the C–O bond to that oxygen breaks and water leaves, while a lone pair on the OCH3 oxygen moves in to make a C=O double bond. Result: the oxocarbenium ion, a flat carbon double-bonded to an oxygen that carries CH3 and the positive charge, plus a water molecule.';
+const ALT_C = 'Steps 6 and 7. Step 6: a second methanol oxygen lone pair attacks the carbon of the oxocarbenium ion while the C=O pi bond moves onto the positive oxygen. Step 7: the O–H bond on the newly added oxygen breaks and H+ leaves. Result: the acetal, a carbon carrying two OCH3 groups and two CH3 groups.';
+
+/* ---------------------------------------------------- overview (notes) --- */
+FIGURES.push({
+  id: 'acetal-overview',
+  section: 'acetals',
+  anchor: 'acetal-overview',
+  alt: 'Acetone plus methanol, with an acid catalyst, in equilibrium with 2-methoxypropan-2-ol, the hemiacetal. That plus a second methanol is in equilibrium with 2,2-dimethoxypropane, the acetal, plus water.',
+  viewBox: '0 0 760 250',
+  build() {
+    let s = '';
+    const y = 140;
+    s += acetone(P(84, y + 10), 'hi').s;
+    s += lbl(84, 232, 'acetone');
+    s += lbl(186, y + 4, '+ CH₃OH');
+    s += eqArrows(P(232, y), P(288, y));
+    s += text(260, y - 16, 'H⁺', { cls: 'fg-lbl', size: 13 });
+    s += hemiacetal(P(384, y + 20), ['hi', 'hi']).s;
+    s += lbl(384, 232, 'the hemiacetal');
+    s += lbl(496, y + 4, '+ CH₃OH');
+    s += eqArrows(P(540, y), P(596, y));
+    s += text(568, y - 16, 'H⁺', { cls: 'fg-lbl', size: 13 });
+    s += acetal(P(676, y + 20), 'hi').s;
+    s += lbl(676, 232, 'the acetal + H₂O');
+    return s;
+  },
+  caption: 'Two methanols add to acetone, one at a time. The shaded carbon is the old carbonyl carbon; it ends with two O–CH₃ groups and no C=O.',
+});
+
+/* The same, stacked, for the lesson. */
+FIGURES.push({
+  id: 'l-acetal-overview',
+  lessons: ['acetals'],
+  alt: 'Top: acetone plus methanol. Middle: the hemiacetal, a carbon with OH, OCH3 and two CH3 groups. Bottom: the acetal, a carbon with two OCH3 groups and two CH3 groups, plus water. Equilibrium arrows marked H+ join each pair.',
+  viewBox: '0 0 340 610',
+  build() {
+    let s = '';
+    s += acetone(P(120, 110), 'hi').s;
+    s += lbl(250, 112, '+ CH₃OH');
+    s += tag(170, 20, 'ACETONE');
+    s += eqArrows(P(170, 172), P(170, 214));
+    s += lbl(196, 198, 'H⁺', 'start');
+    s += hemiacetal(P(160, 318), ['hi', 'hi']).s;
+    s += tag(170, 250, 'THE HEMIACETAL');
+    s += lbl(170, 378, '+ CH₃OH');
+    s += eqArrows(P(170, 394), P(170, 436));
+    s += lbl(196, 420, 'H⁺', 'start');
+    s += acetal(P(160, 540), 'hi').s;
+    s += tag(170, 472, 'THE ACETAL');
+    s += lbl(170, 600, '+ H₂O');
+    return s;
+  },
+  caption: 'Each methanol adds to the shaded carbon, the old carbonyl carbon.',
+});
+
+/* ------------------------------------------------ the mechanism (notes) --- */
+FIGURES.push({
+  id: 'acetal-mech-a',
+  section: 'acetals',
+  anchor: 'acetal-mech-a',
+  alt: ALT_A,
+  viewBox: vb(PART_A, 2, 80),
+  build() { return grid(PART_A, 2, 0, 0, 80); },
+  caption: 'Steps 1–3. Each panel shows the species before its step, with that step’s arrows on it.',
+});
+FIGURES.push({
+  id: 'acetal-mech-b',
+  section: 'acetals',
+  anchor: 'acetal-mech-b',
+  alt: ALT_B,
+  viewBox: vb(PART_B, 2, 80),
+  build() { return grid(PART_B, 2, 0, 0, 80); },
+  caption: 'Steps 4–5. The oxygen that leaves is shaded coral.',
+});
+FIGURES.push({
+  id: 'acetal-mech-c',
+  section: 'acetals',
+  anchor: 'acetal-mech-c',
+  alt: ALT_C,
+  viewBox: vb(PART_C, 2, 80),
+  build() { return grid(PART_C, 2, 0, 0, 80); },
+  caption: 'Steps 6–7 repeat steps 2–3 on the oxocarbenium ion.',
+});
+
+/* ---------------------------------------------- the mechanism (lesson) --- */
+FIGURES.push({
+  id: 'l-acetal-mech-a',
+  lessons: ['acetals'],
+  alt: ALT_A,
+  viewBox: vb(PART_A, 1),
+  build() { return grid(PART_A, 1); },
+  caption: 'Steps 1–3, top to bottom. Each panel carries the arrows for its own step.',
+});
+FIGURES.push({
+  id: 'l-acetal-mech-b',
+  lessons: ['acetals'],
+  alt: ALT_B,
+  viewBox: vb(PART_B, 1),
+  build() { return grid(PART_B, 1); },
+  caption: 'Steps 4–5. The oxygen that leaves is shaded coral.',
+});
+FIGURES.push({
+  id: 'l-acetal-mech-c',
+  lessons: ['acetals'],
+  alt: ALT_C,
+  viewBox: vb(PART_C, 1),
+  build() { return grid(PART_C, 1); },
+  caption: 'Steps 6–7: the same two moves as steps 2–3.',
+});
+
+/* ------------------------------------- the oxocarbenium ion, two views --- */
+function carbocationForm(c) {
+  // C+ with an empty p orbital, and a neutral OCH3 with two lone pairs
+  const k = species(c, { tet: false, cCharge: 250, oxy: [
+    { deg: 90, subs: [{ deg: 30, l: 'CH₃' }], lps: [150, 210 + 0] },
+  ] });
+  return k;
+}
+function resonancePair(x, y) {
+  let s = '';
+  const c1 = P(x + 70, y + 110);
+  const k1 = species(c1, { tet: false, cCharge: 270, oxy: [
+    { deg: 90, subs: [{ deg: 30, l: 'CH₃' }], lps: [150, 200] },
+  ] });
+  s += k1.s;
+  const o1 = k1.os[0].o;
+  s += fromLp(o1, 200, P(c1.x - 6, (c1.y + o1.y) / 2), 18);
+  s += resArrow(P(x + 142, y + 104), P(x + 188, y + 104));
+  const c2 = P(x + 250, y + 110);
+  s += oxocarb(c2).s;
+  s += lbl(c1.x + 4, y + 190, 'C⁺, O has');
+  s += lbl(c1.x + 4, y + 207, '6 electrons');
+  s += lbl(c2.x + 4, y + 190, 'every atom has');
+  s += lbl(c2.x + 4, y + 207, 'an octet');
+  return s;
+}
+/* The orbital view: the carbon's empty p orbital beside the oxygen's filled
+   one, side on, sharing the pair. Drawn edge-on to the C–O bond. */
+function orbitalView(x, y) {
+  let s = '';
+  const c = P(x + 110, y + 100), o = P(x + 214, y + 100);
+  const lobe = (p, up, cls) => `<ellipse class="${cls}" cx="${r2(p.x)}" cy="${r2(p.y + (up ? -34 : 34))}" rx="17" ry="30"></ellipse>`;
+  s += lobe(c, true, 'fg-orb-node') + lobe(c, false, 'fg-orb-node');
+  s += lobe(o, true, 'fg-orb') + lobe(o, false, 'fg-orb');
+  s += bond(c, o, { rFrom: 16, rTo: 15 });
+  s += arm(c, 200, 48, 'H₃C').s;
+  s += arm(c, 160, 48, 'H₃C').s;
+  s += arm(o, 0, 50, 'CH₃', { rFrom: 15 }).s;
+  s += atom(c.x, c.y, 'C', { kind: 'warn' }) + atom(o.x, o.y, 'O', { kind: 'hi' });
+  // the lone pair, in the oxygen's p orbital
+  s += `<circle class="fg-lp" cx="${r2(o.x - 4.5)}" cy="${r2(o.y - 44)}" r="2.6"></circle><circle class="fg-lp" cx="${r2(o.x + 4.5)}" cy="${r2(o.y - 44)}" r="2.6"></circle>`;
+  // the sideways overlap
+  s += curve(P(o.x - 16, o.y - 50), P(c.x + 18, c.y - 50), { bow: 16 });
+  s += lbl(c.x - 6, y + 182, 'empty p on C', 'middle');
+  s += lbl(o.x + 20, y + 182, 'filled p on O', 'middle');
+  return s;
+}
+FIGURES.push({
+  id: 'acetal-oxocarbenium',
+  section: 'acetals',
+  anchor: 'acetal-oxocarbenium',
+  alt: 'Left: two resonance contributors of the oxocarbenium ion. In one, the carbon carries the positive charge and the OCH3 oxygen has two lone pairs; a curved arrow moves one lone pair into the C–O bond. In the other, a C=O double bond has formed and the oxygen carries the positive charge and one lone pair. Right: the same ion as orbitals. The carbon has an empty p orbital, drawn dashed; the oxygen beside it has a filled p orbital holding a lone pair. The two orbitals lie parallel and overlap side on.',
+  viewBox: '0 0 760 250',
+  build() {
+    let s = '';
+    s += tag(170, 22, 'TWO RESONANCE CONTRIBUTORS');
+    s += resonancePair(0, 14);
+    s += rule(372, 30, 372, 230);
+    s += tag(572, 22, 'THE ORBITALS: SIDE-ON OVERLAP');
+    s += orbitalView(410, 26);
+    return s;
+  },
+  caption: 'Left: the curved arrow moves an oxygen lone pair into the C–O bond. Right: the same move seen as orbitals, the oxygen’s filled p orbital lying parallel to the carbon’s empty one (dashed).',
+});
+FIGURES.push({
+  id: 'l-acetal-oxocarbenium',
+  lessons: ['acetals'],
+  alt: 'Top: the two resonance contributors of the oxocarbenium ion, C+ with a neutral OCH3, and C=O+ with the charge on oxygen, joined by a double-headed arrow. Bottom: the carbon empty p orbital, dashed, parallel to the oxygen filled p orbital holding a lone pair, overlapping side on.',
+  viewBox: '0 0 340 470',
+  build() {
+    let s = '';
+    s += tag(170, 22, 'TWO RESONANCE CONTRIBUTORS');
+    s += resonancePair(0, 14);
+    s += rule(20, 240, 320, 240);
+    s += tag(170, 266, 'THE ORBITALS: SIDE-ON OVERLAP');
+    s += orbitalView(-8, 268);
+    return s;
+  },
+  caption: 'The lone pair moves into the C–O bond (top). The same move as orbitals: filled p on O beside empty p on C (bottom).',
+});
+
+/* ----------------------------------------- cyclic acetal from a diol --- */
+/* Cyclohexanone drawn skeletally, the carbonyl carbon at `c` with the ring
+   hanging below it. Returns the ring points too. */
+function hexBelow(c, r = 30) {
+  const ctr = P(c.x, c.y + r);
+  const pts = polyPts(ctr.x, ctr.y, 6, r, 90); // pts[0] is the top vertex = c
+  let s = '';
+  for (let i = 0; i < 6; i++) s += sk(pts[i], pts[(i + 1) % 6]);
+  return { s, pts };
+}
+function cyclohexanone(c) {
+  const h = hexBelow(c);
+  const o = P(c.x, c.y - 44);
+  let s = h.s + bond(c, o, { order: 2, rFrom: 0, rTo: 15 });
+  s += lp(o, 30) + lp(o, 150) + atom(o.x, o.y, 'O', { kind: 'hi' });
+  return s;
+}
+function glycol(x, y) {
+  // HO–CH2–CH2–OH, skeletal middle, labelled ends
+  const a = P(x, y), b = P(x + 30, y - 18), c = P(x + 60, y), d = P(x + 90, y - 18);
+  let s = bond(a, b, { rFrom: 17, rTo: 0 }) + sk(b, c) + bond(c, d, { rFrom: 0, rTo: 17 });
+  s += atom(a.x, a.y, 'HO', { r: 17, kind: 'hi' }) + atom(d.x, d.y, 'OH', { r: 17, kind: 'hi' });
+  return s;
+}
+function dioxolane(c) {
+  // spiro: cyclohexane below, five-membered O,C,C,O ring above
+  const h = hexBelow(c);
+  let s = h.s;
+  const five = polyPts(c.x, c.y - 34, 5, 34, 270); // [0] is bottom vertex = c (approximately)
+  const shift = P(c.x - five[0].x, c.y - five[0].y);
+  const f = five.map((p) => P(p.x + shift.x, p.y + shift.y));
+  // f[0] = spiro carbon, f[1] and f[4] = oxygens, f[2], f[3] = CH2
+  s += bond(f[0], f[1], { rFrom: 0, rTo: 15 }) + bond(f[1], f[2], { rFrom: 15, rTo: 0 });
+  s += sk(f[2], f[3]);
+  s += bond(f[3], f[4], { rFrom: 0, rTo: 15 }) + bond(f[4], f[0], { rFrom: 15, rTo: 0 });
+  s += atom(f[1].x, f[1].y, 'O', { kind: 'hi' }) + atom(f[4].x, f[4].y, 'O', { kind: 'hi' });
+  return { s, f };
+}
+FIGURES.push({
+  id: 'acetal-cyclic',
+  section: 'acetals',
+  anchor: 'acetal-cyclic',
+  alt: 'Cyclohexanone plus ethylene glycol, HO–CH2–CH2–OH, with an acid catalyst and water removed, in equilibrium with a cyclic acetal plus water. In the product the old carbonyl carbon is shared by the cyclohexane ring and a five-membered ring of O, CH2, CH2, O, called a 1,3-dioxolane.',
+  viewBox: '0 0 760 230',
+  build() {
+    let s = '';
+    s += cyclohexanone(P(80, 104));
+    s += lbl(80, 206, 'cyclohexanone');
+    s += lbl(150, 124, '+');
+    s += glycol(186, 130);
+    s += lbl(231, 206, 'ethylene glycol');
+    s += eqArrows(P(318, 124), P(420, 124));
+    s += lbl(369, 104, 'H⁺ (TsOH)');
+    s += lbl(369, 156, 'remove H₂O');
+    const d = dioxolane(P(520, 116));
+    s += d.s;
+    s += lbl(620, 64, '1,3-dioxolane', 'start');
+    s += lbl(620, 82, 'ring', 'start');
+    s += lbl(520, 206, 'the cyclic acetal');
+    s += lbl(640, 150, '+  H₂O', 'start');
+    return s;
+  },
+  caption: 'Both OH groups of one diol end up on the old carbonyl carbon, which now sits in two rings at once.',
+});
+FIGURES.push({
+  id: 'l-acetal-cyclic',
+  lessons: ['acetals'],
+  alt: 'Top: cyclohexanone plus ethylene glycol. Middle: equilibrium arrows marked H+ and remove water. Bottom: the cyclic acetal, the old carbonyl carbon shared by the cyclohexane ring and a five-membered O, CH2, CH2, O ring, plus water.',
+  viewBox: '0 0 340 440',
+  build() {
+    let s = '';
+    s += cyclohexanone(P(80, 90));
+    s += lbl(152, 110, '+');
+    s += glycol(196, 116);
+    s += lbl(80, 190, 'cyclohexanone');
+    s += lbl(241, 190, 'ethylene glycol');
+    s += eqArrows(P(150, 214), P(150, 270));
+    s += lbl(176, 236, 'H⁺', 'start');
+    s += lbl(176, 256, 'remove H₂O', 'start');
+    const d = dioxolane(P(130, 348));
+    s += d.s;
+    s += lbl(210, 336, '+  H₂O', 'start');
+    s += tag(170, 428, 'THE CYCLIC ACETAL');
+    return s;
+  },
+  caption: 'One diol supplies both oxygens.',
+});
+
+/* ---------------------------------------- protect, react, deprotect --- */
+/* Ethyl 4-oxocyclohexane-1-carboxylate and its route. The ring is drawn with
+   C4 (the ketone carbon) at the top and C1 (the ester carbon) at the bottom. */
+function ringUpDown(ctr, r = 30) {
+  const pts = polyPts(ctr.x, ctr.y, 6, r, 90); // [0] top, [3] bottom
+  let s = '';
+  for (let i = 0; i < 6; i++) s += sk(pts[i], pts[(i + 1) % 6]);
+  return { s, top: pts[0], bot: pts[3] };
+}
+function topKetone(p) {
+  const o = P(p.x, p.y - 42);
+  return bond(p, o, { order: 2, rFrom: 0, rTo: 15 }) + atom(o.x, o.y, 'O', { kind: 'hi' });
+}
+function topAcetal(p) {
+  const five = polyPts(0, 0, 5, 28, 270);
+  const f = five.map((q) => P(q.x - five[0].x + p.x, q.y - five[0].y + p.y));
+  let s = bond(f[0], f[1], { rFrom: 0, rTo: 15 }) + bond(f[1], f[2], { rFrom: 15, rTo: 0 }) + sk(f[2], f[3]);
+  s += bond(f[3], f[4], { rFrom: 0, rTo: 15 }) + bond(f[4], f[0], { rFrom: 15, rTo: 0 });
+  s += atom(f[1].x, f[1].y, 'O', { kind: 'hi' }) + atom(f[4].x, f[4].y, 'O', { kind: 'hi' });
+  return s;
+}
+function bottomEster(p) {
+  // C1 -> C(=O)OEt hanging below: carbonyl carbon, =O to the left, OEt to the right
+  const cc = P(p.x, p.y + 30);
+  const o = P(cc.x - 28, cc.y + 18), oe = P(cc.x + 28, cc.y + 18);
+  let s = sk(p, cc) + bond(cc, o, { order: 2, rFrom: 0, rTo: 15 }) + bond(cc, oe, { rFrom: 0, rTo: 18 });
+  s += atom(o.x, o.y, 'O', { kind: 'warn' }) + atom(oe.x, oe.y, 'OEt', { r: 19, kind: 'warn' });
+  return s;
+}
+function bottomCH2OH(p) {
+  const cc = P(p.x, p.y + 30);
+  const oh = P(cc.x + 28, cc.y + 18);
+  return sk(p, cc) + bond(cc, oh, { rFrom: 0, rTo: 17 }) + atom(oh.x, oh.y, 'OH', { r: 17, kind: 'good' === 'x' ? 'hi' : 'hi' });
+}
+const ROUTE = [
+  { name: 'keto ester', top: topKetone, bot: bottomEster },
+  { name: 'ketone masked', top: topAcetal, bot: bottomEster },
+  { name: 'ester reduced', top: topAcetal, bot: bottomCH2OH },
+  { name: 'ketone back', top: topKetone, bot: bottomCH2OH },
+];
+const REAGENTS = [
+  ['1 protect:', 'HOCH₂CH₂OH, H⁺'],
+  ['2 react:', 'LiAlH₄, then H₂O'],
+  ['3 deprotect:', 'H₃O⁺'],
+];
+function routeMol(ctr, k) {
+  const r = ringUpDown(ctr);
+  return r.s + ROUTE[k].top(r.top) + ROUTE[k].bot(r.bot);
+}
+FIGURES.push({
+  id: 'acetal-protect-route',
+  section: 'acetals',
+  anchor: 'acetal-protect-route',
+  alt: 'Four structures in a row. First: a cyclohexane ring with a ketone C=O at the top and an ethyl ester, CO2Et, at the bottom. Second, after ethylene glycol and acid: the ketone is now a five-membered cyclic acetal; the ester is unchanged. Third, after LiAlH4 then water: the ester is now CH2OH; the acetal is unchanged. Fourth, after aqueous acid: the acetal is gone and the ketone is back, with the CH2OH at the bottom.',
+  viewBox: '0 0 760 290',
+  build() {
+    let s = '';
+    const xs = [70, 280, 490, 690];
+    ROUTE.forEach((r, i) => {
+      s += routeMol(P(xs[i], 140), i);
+      s += lbl(xs[i], 278, r.name);
+    });
+    for (let i = 0; i < 3; i++) {
+      const a = xs[i] + 56, b = xs[i + 1] - 56;
+      s += arrow(P(a, 140), P(b, 140), { size: 8 });
+      s += lbl((a + b) / 2, 118, REAGENTS[i][0]);
+      s += lbl((a + b) / 2, 166, REAGENTS[i][1]);
+    }
+    return s;
+  },
+  caption: 'Follow the top of the ring (the ketone) and the bottom (the ester) separately. Each reagent changes only one end.',
+});
+FIGURES.push({
+  id: 'l-acetal-protect-route',
+  lessons: ['acetals'],
+  alt: 'Four structures from top to bottom, two to a row. A cyclohexane with a ketone at the top and an ethyl ester at the bottom; then the ketone masked as a cyclic acetal; then the ester reduced to CH2OH; then the acetal removed to give the ketone back.',
+  viewBox: '0 0 340 600',
+  build() {
+    let s = '';
+    const pos = [P(80, 110), P(260, 110), P(80, 420), P(260, 420)];
+    ROUTE.forEach((r, i) => {
+      s += routeMol(pos[i], i);
+      s += tag(pos[i].x, pos[i].y + 128, r.name.toUpperCase());
+    });
+    s += arrow(P(130, 110), P(206, 110), { size: 8 });
+    s += lbl(168, 30, '1 protect', 'middle');
+    s += lbl(168, 48, 'diol, H⁺', 'middle');
+    s += arrow(P(250, 270), P(110, 330), { size: 8 });
+    s += lbl(170, 272, '2 LiAlH₄,', 'end');
+    s += lbl(170, 290, 'then H₂O', 'end');
+    s += arrow(P(130, 420), P(206, 420), { size: 8 });
+    s += lbl(168, 340, '3 deprotect', 'middle');
+    s += lbl(168, 358, 'H₃O⁺', 'middle');
+    return s;
+  },
+  caption: 'Protect, react, deprotect. Only one end of the ring changes at each step.',
+});
+
+/* ------------------------------------- sugars: the ring-closed hemiacetal --- */
+/* 5-hydroxypentanal closing onto itself, then glucose as a Haworth ring. */
+function closure(x, y) {
+  let s = '';
+  // chain laid on a hexagon: ring positions (clockwise from top-right)
+  const pts = polyPts(x, y, 6, 36, 30); // [0] up-right (30°), [1] top (90), [2] up-left, [3] down-left, [4] bottom, [5] down-right
+  const O = pts[0], C1 = pts[5];
+  // bonds C1-C2-C3-C4-C5 : pts[5] -> [4] -> [3] -> [2] -> [1]; C5-OH is pts[1] -> O (not yet a bond)
+  s += sk(pts[5], pts[4]) + sk(pts[4], pts[3]) + sk(pts[3], pts[2]) + sk(pts[2], pts[1]);
+  s += bond(pts[1], O, { rFrom: 0, rTo: 15 });
+  const h = at(O, 60, 36);
+  s += bond(O, h, { rFrom: 15, rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12 });
+  // the aldehyde C1: =O out to the right-down, H implied
+  const ald = at(C1, 330, 46);
+  s += bond(C1, ald, { order: 2, rFrom: 0, rTo: 15 }) + lp(ald, 20) + lp(ald, 280) + atom(ald.x, ald.y, 'O', { kind: 'hi' });
+  s += lp(O, 150) + lp(O, 0);
+  s += atom(O.x, O.y, 'O', { kind: 'hi' });
+  // arrows: O lone pair to C1, C=O pi to O
+  s += curve(at(O, 350, 26), P(C1.x + 6, C1.y - 6), { bow: -12 });
+  s += fromBond(C1, ald, P(ald.x + 4, ald.y + 16), 14, 6);
+  s += `<circle class="fg-atom-warn" cx="${r2(C1.x)}" cy="${r2(C1.y)}" r="5"></circle>`;
+  return s;
+}
+function closed(x, y) {
+  let s = '';
+  const pts = polyPts(x, y, 6, 36, 30);
+  const O = pts[0], C1 = pts[5];
+  s += sk(pts[5], pts[4]) + sk(pts[4], pts[3]) + sk(pts[3], pts[2]) + sk(pts[2], pts[1]);
+  s += bond(pts[1], O, { rFrom: 0, rTo: 15 }) + bond(O, C1, { rFrom: 15, rTo: 0 });
+  s += atom(O.x, O.y, 'O', { kind: 'hi' });
+  const oh = at(C1, 330, 44);
+  s += wedge(C1, oh, { rFrom: 0, rTo: 17, width: 9 }) + atom(oh.x, oh.y, 'OH', { r: 17, kind: 'hi' });
+  s += `<circle class="fg-atom-warn" cx="${r2(C1.x)}" cy="${r2(C1.y)}" r="5"></circle>`;
+  return { s, C1 };
+}
+/* A Haworth ring: ring O back-right, C1 right, C2 front-right, C3 front-left,
+   C4 left, C5 back-left. */
+function haworth(x, y, beta) {
+  let s = '';
+  const O = P(x + 34, y - 24), C1 = P(x + 70, y), C2 = P(x + 40, y + 26), C3 = P(x - 30, y + 26), C4 = P(x - 64, y), C5 = P(x - 30, y - 24);
+  s += bond(C5, O, { rFrom: 0, rTo: 15 }) + bond(O, C1, { rFrom: 15, rTo: 0 });
+  s += sk(C4, C5) + sk(C1, C2) + sk(C3, C4);
+  s += `<line class="fg-bond-hi" x1="${r2(C2.x)}" y1="${r2(C2.y)}" x2="${r2(C3.x)}" y2="${r2(C3.y)}" stroke-width="5"></line>`;
+  s += atom(O.x, O.y, 'O', { kind: 'hi' });
+  const sub = (p, up, l, len = 34, kind) => {
+    const e = P(p.x, p.y + (up ? -len : len));
+    return bond(p, e, { rFrom: 0, rTo: rOf(l) }) + atom(e.x, e.y, l, { r: rOf(l), kind });
+  };
+  s += sub(C1, beta, 'OH', 36, 'hi');
+  s += sub(C2, false, 'OH');
+  s += sub(C3, true, 'OH');
+  s += sub(C4, false, 'OH');
+  // C5 carries CH2OH up
+  const c6 = P(C5.x, C5.y - 30);
+  s += sk(C5, c6);
+  const oh6 = P(c6.x - 30, c6.y - 12);
+  s += bond(c6, oh6, { rFrom: 0, rTo: 17 }) + atom(oh6.x, oh6.y, 'HO', { r: 17 });
+  s += `<circle class="fg-atom-warn" cx="${r2(C1.x)}" cy="${r2(C1.y)}" r="5"></circle>`;
+  s += lbl(C1.x + 16, C1.y + 5, 'C1', 'start');
+  return s;
+}
+FIGURES.push({
+  id: 'acetal-ring-sugar',
+  section: 'acetals',
+  anchor: 'acetal-ring-sugar',
+  alt: 'Left: 5-hydroxypentanal curled into a ring shape. A curved arrow runs from a lone pair on the OH oxygen to the aldehyde carbon, marked with a coral dot, and a second arrow moves the C=O pi bond onto the aldehyde oxygen. Middle: the six-membered cyclic hemiacetal, with the ring oxygen and the old aldehyde carbon, now the anomeric carbon, carrying an OH. Right: beta-D-glucose drawn as a flat hexagon seen from the edge, with the ring oxygen at the back right, C1 at the right carrying its OH up, and CH2OH up on C5.',
+  viewBox: '0 0 760 250',
+  build() {
+    let s = '';
+    s += tag(120, 24, 'AN OH ATTACKS ITS OWN C=O');
+    s += closure(120, 122);
+    s += lbl(120, 214, '5-hydroxypentanal');
+    s += arrow(P(222, 122), P(272, 122), { size: 8 });
+    s += tag(360, 24, 'A CYCLIC HEMIACETAL');
+    const k = closed(350, 122);
+    s += k.s;
+    s += lbl(360, 196, 'dot = anomeric C:', 'middle');
+    s += lbl(360, 214, 'its OH can point', 'middle');
+    s += lbl(360, 232, 'either way', 'middle');
+    s += rule(470, 34, 470, 236);
+    s += tag(614, 24, 'GLUCOSE (β, HAWORTH VIEW)');
+    s += haworth(600, 126, true);
+    s += lbl(614, 226, 'α: C1–OH down · β: C1–OH up');
+    return s;
+  },
+  caption: 'The coral dot marks the old carbonyl carbon in each drawing. In the Haworth view the thick edge is nearest you; the hydrogens on the ring carbons are left off.',
 });
 
 export default FIGURES;

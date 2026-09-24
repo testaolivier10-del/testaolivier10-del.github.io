@@ -23,7 +23,7 @@ const r2 = (v) => Math.round(v * 100) / 100;
    0..244 coordinates. */
 const CW = 244, CH = 196;
 function cell(ox, oy, w, h, title, foot, draw, opts = {}) {
-  const dx = ox + (w - CW) / 2;
+  const dx = ox + (w - (opts.cw || CW)) / 2;
   const Q = (x, y) => P(dx + x, oy + y);
   let s = panel(ox, oy, w, h, opts.kind ? { kind: opts.kind } : {});
   s += tag(ox + w / 2, oy + 22, title);
@@ -40,6 +40,10 @@ const charge = (Q, x, y, s) => T(Q, x, y, s, { cls: 'fg-warn', size: 15 });
 const A = (p, l, o = {}) => atom(p.x, p.y, l, o);
 const rOf = (l) => (l.length >= 3 ? 19 : l.length === 2 ? 16 : 14);
 const B = (a, b, la, lb, o = {}) => bond(a, b, { rFrom: rOf(la), rTo: rOf(lb), ...o });
+
+/* The C=O pi electrons moving up onto the oxygen: a short arrow bowed out
+   to the right of the double bond, from the middle of the bond to the O. */
+const piArrow = (c, o) => curve(P(c.x + 8, c.y - 24), P(o.x + 16, o.y + 9), { bow: 12, size: 7 });
 
 /* An equilibrium: a forward arrow above a reverse arrow. */
 const eqm = (x1, x2, y) => arrow(P(x1, y - 4), P(x2, y - 4), { size: 7 }) + arrow(P(x2, y + 4), P(x1, y + 4), { size: 7 });
@@ -89,7 +93,7 @@ const baseCells = [
     s += lonePair(oh.x, oh.y, 180, { dist: 21 }) + lonePair(oh.x, oh.y, 90, { dist: 21 }) + lonePair(oh.x, oh.y, 270, { dist: 21 });
     s += charge(Q, 204, 94, '−');
     s += curve(P(oh.x - 23, oh.y + 2), P(c.x + 18, c.y - 3), { bow: 18 });
-    s += curve(P(c.x + 7, c.y - 27), P(o.x + 16, o.y + 6), { bow: -9, size: 7 });
+    s += piArrow(c, o);
     return s;
   }],
   ['THE ALKOXIDE TAKES H⁺ FROM WATER', 'water becomes HO⁻ again', (Q) => {
@@ -133,11 +137,11 @@ const baseCells = [
   }],
 ];
 
-function gridFigure(cells, cols, w, h, gapX = 16, gapY = 16, x0 = 8, y0 = 8, kinds = []) {
+function gridFigure(cells, cols, w, h, gapX = 16, gapY = 16, x0 = 8, y0 = 8, kinds = [], cw = CW) {
   let s = '';
   cells.forEach(([title, foot, draw], i) => {
     const col = i % cols, row = Math.floor(i / cols);
-    s += cell(x0 + col * (w + gapX), y0 + row * (h + gapY), w, h, title, foot, draw, kinds[i] ? { kind: kinds[i] } : {});
+    s += cell(x0 + col * (w + gapX), y0 + row * (h + gapY), w, h, title, foot, draw, { kind: kinds[i] || null, cw });
   });
   return s;
 }
@@ -177,7 +181,7 @@ const acidCells = [
     s += lonePair(o.x, o.y, 200, { dist: 21 }) + lonePair(o.x, o.y, 315, { dist: 21 });
     const h = Q(148, 60), oh = Q(196, 60);
     s += B(h, oh, 'H', 'OH₂') + A(h, 'H', { r: 14, kind: 'hi' }) + A(oh, 'OH₂', { r: 19 });
-    s += charge(Q, 222, 42, '+');
+    s += charge(Q, 216, 42, '+');
     s += curve(P(o.x + 17, o.y - 17), P(h.x - 14, h.y - 4), { bow: -14, size: 7 });
     s += curve(P(h.x + 16, h.y - 6), P(oh.x - 12, oh.y - 17), { bow: -10, size: 7 });
     return s;
@@ -194,35 +198,36 @@ const acidCells = [
     const ho = armEnd(o, 30, 38);
     s += bond(o, ho, { rFrom: 14, rTo: 14 }) + A(ho, 'H', { r: 14 });
     s += lonePair(o.x, o.y, 225, { dist: 21 });
-    s += charge(Q, 96, 56, '+');
+    s += charge(Q, 54, 88, '+');
     const w = Q(172, 132), w1 = Q(204, 110), w2 = Q(204, 158);
     s += B(w, w1, 'O', 'H') + B(w, w2, 'O', 'H');
     s += A(w, 'O', { kind: 'hi' }) + A(w1, 'H', { r: 14 }) + A(w2, 'H', { r: 14 });
     s += lonePair(w.x, w.y, 150, { dist: 21 }) + lonePair(w.x, w.y, 210, { dist: 21 });
     s += curve(P(w.x - 21, w.y - 9), P(c.x + 18, c.y - 2), { bow: 14 });
-    s += curve(P(c.x + 7, c.y - 27), P(o.x + 12, o.y + 13), { bow: -9, size: 7 });
+    s += piArrow(c, o);
     return s;
   }],
   ['A SECOND WATER TAKES OFF H⁺', 'the O–H electrons stay on that O', (Q) => {
-    const c = Q(64, 118);
+    const c = Q(60, 110);
     const m = centre(c, [
       { deg: 90, len: 52, l: 'OH' },
       { deg: 150, len: 44, l: 'H' },
       { deg: 210, l: 'CH₃' },
-      { deg: 345, len: 52, l: 'O', key: 'Op', kind: 'hi' },
+      { deg: 345, len: 54, l: 'O', key: 'Op', kind: 'hi' },
     ]);
     let s = m.s;
     const op = m.ends.Op;
-    const ha = armEnd(op, 50, 40), hb = armEnd(op, 300, 40);
+    const ha = armEnd(op, 65, 46), hb = armEnd(op, 320, 40);
     s += bond(op, ha, { rFrom: 14, rTo: 14 }) + A(ha, 'H', { r: 14, kind: 'hi' });
     s += bond(op, hb, { rFrom: 14, rTo: 14 }) + A(hb, 'H', { r: 14 });
-    s += lonePair(op.x, op.y, 180 - 60, { dist: 21 });
-    s += charge(Q, op.x - Q(0, 0).x + 18, op.y - Q(0, 0).y + 30, '+');
-    const w = Q(206, 64);
+    s += lonePair(op.x, op.y, 110, { dist: 21 });
+    s += text(op.x - 12, op.y - 20, '+', { cls: 'fg-warn', size: 15 });
+    const w = Q(206, 70);
     s += A(w, 'OH₂', { r: 19 });
-    s += lonePair(w.x, w.y, 150, { dist: 23 }) + lonePair(w.x, w.y, 225, { dist: 23 });
-    s += curve(P(w.x - 20, w.y + 17), P(ha.x + 14, ha.y - 2), { bow: 12, size: 7 });
-    s += curve(P((op.x + ha.x) / 2 + 8, (op.y + ha.y) / 2 + 4), P(op.x + 16, op.y + 4), { bow: 10, size: 7 });
+    s += lonePair(w.x, w.y, 160, { dist: 24 }) + lonePair(w.x, w.y, 225, { dist: 24 });
+    s += curve(P(w.x - 22, w.y + 17), P(ha.x + 15, ha.y + 2), { bow: 12, size: 7 });
+    const mid = P((op.x + ha.x) / 2, (op.y + ha.y) / 2);
+    s += curve(P(mid.x + 7, mid.y - 2), P(op.x + 16, op.y - 5), { bow: -14, size: 7 });
     return s;
   }],
   ['THE HYDRATE, AND H₃O⁺ IS BACK', 'the acid was a catalyst', (Q) => {
@@ -301,57 +306,57 @@ FIGURES.push({
    4. Angles: why crowding opposes addition, and why a three-membered
       ring reverses it.
    ====================================================================== */
+const WIDE = 320;   // content width of the comparison cells
 const angleCells = [
   ['ACETONE: ADDITION CROWDS THE CARBON', 'equilibrium lies far to the left (0.1%)', (Q) => {
     let s = '';
-    // ketone: methyls 120 degrees apart
-    const c = Q(58, 92);
+    const c = Q(70, 104);
     const m = centre(c, [
       { deg: 90, len: 48, l: 'O', order: 2 },
-      { deg: 210, len: 48, l: 'CH₃' },
-      { deg: 330, len: 48, l: 'CH₃' },
+      { deg: 210, len: 50, l: 'CH₃' },
+      { deg: 330, len: 50, l: 'CH₃' },
     ]);
     s += m.s + arc(c, 26, 210, 330);
-    s += T(Q, 58, 146, '120°', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 58, 162, 'sp², flat', { cls: 'fg-tag', size: 11 });
-    const a = Q(108, 92), b = Q(138, 92);
+    s += T(Q, 70, 176, '120°', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 70, 194, 'sp², flat', { cls: 'fg-tag', size: 11 });
+    const a = Q(142, 104), b = Q(176, 104);
     s += eqm(a.x, b.x, a.y);
-    // hydrate: methyls about 109.5 degrees apart
-    const d = Q(188, 92);
+    const d = Q(246, 104);
     const n = centre(d, [
       { deg: 55, len: 46, l: 'OH' },
       { deg: 125, len: 46, l: 'OH' },
-      { deg: 215, len: 46, l: 'CH₃' },
-      { deg: 325, len: 46, l: 'CH₃' },
+      { deg: 215, len: 50, l: 'CH₃' },
+      { deg: 325, len: 50, l: 'CH₃' },
     ]);
     s += n.s + arc(d, 24, 215, 325);
-    s += T(Q, 188, 146, '109.5°', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 188, 162, 'sp³, methyls pushed closer', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 246, 176, '109.5°', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 246, 194, 'sp³, methyls closer', { cls: 'fg-tag', size: 11 });
     return s;
   }],
   ['CYCLOPROPANONE: ADDITION EASES THE RING', 'equilibrium lies far to the right', (Q) => {
     let s = '';
-    // ketone: a triangle with the C=O on the left corner
-    const k = Q(46, 96), k1 = Q(86, 72), k2 = Q(86, 120);
-    s += bond(k, k1, { rFrom: 16, rTo: 0 }) + bond(k, k2, { rFrom: 16, rTo: 0 }) + bond(k1, k2, { rFrom: 0, rTo: 0 });
-    const ko = Q(46, 44);
-    s += bond(k, ko, { rFrom: 16, rTo: 15, order: 2 }) + A(ko, 'O');
-    s += A(k, 'C', { kind: 'warn' });
-    s += arc(k, 26, -31, 31).replace('fg-dash-hi', 'fg-dash-hi');
-    s += T(Q, 58, 146, '60° in the ring', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 58, 162, 'wants 120°: 60° off', { cls: 'fg-tag', size: 11 });
-    const a = Q(108, 96), b = Q(138, 96);
+    const ring = (k, top) => {
+      const k1 = P(k.x + 42, k.y - 24), k2 = P(k.x + 42, k.y + 24);
+      return bond(k, k1, { rFrom: 16, rTo: 0 }) + bond(k, k2, { rFrom: 16, rTo: 0 }) + bond(k1, k2, { rFrom: 0, rTo: 0 }) + arc(k, 26, -30, 30);
+    };
+    const k = Q(56, 104);
+    s += ring(k);
+    const ko = Q(56, 54);
+    s += bond(k, ko, { rFrom: 16, rTo: 15, order: 2 }) + A(ko, 'O') + A(k, 'C', { kind: 'warn' });
+    s += T(Q, 122, 108, '60°', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 70, 176, 'sp² wants 120°', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 70, 194, '60° off', { cls: 'fg-tag-warn', size: 11 });
+    const a = Q(142, 104), b = Q(176, 104);
     s += eqm(a.x, b.x, a.y);
-    // hydrate
-    const h = Q(166, 96), h1 = Q(206, 72), h2 = Q(206, 120);
-    s += bond(h, h1, { rFrom: 16, rTo: 0 }) + bond(h, h2, { rFrom: 16, rTo: 0 }) + bond(h1, h2, { rFrom: 0, rTo: 0 });
+    const h = Q(222, 104);
+    s += ring(h);
     const o1 = armEnd(h, 120, 46), o2 = armEnd(h, 240, 46);
     s += bond(h, o1, { rFrom: 16, rTo: 16 }) + A(o1, 'OH');
     s += bond(h, o2, { rFrom: 16, rTo: 16 }) + A(o2, 'OH');
     s += A(h, 'C', { kind: 'warn' });
-    s += arc(h, 26, -31, 31);
-    s += T(Q, 188, 146, '60° in the ring', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 188, 162, 'wants 109.5°: ~50° off', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 288, 108, '60°', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 252, 176, 'sp³ wants 109.5°', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 252, 194, 'about 50° off', { cls: 'fg-tag-warn', size: 11 });
     return s;
   }],
 ];
@@ -361,8 +366,8 @@ FIGURES.push({
   section: 'hydrates-cyanohydrins',
   anchor: '<h3>Hydrates: addition of water</h3>',
   alt: 'Two panels. Left: acetone, with its two methyl groups 120 degrees apart on a flat sp2 carbon, in equilibrium with its hydrate, where the carbon is sp3 and the methyls are about 109.5 degrees apart, pushed closer; the equilibrium lies far to the left. Right: cyclopropanone, whose carbonyl carbon sits in a three-membered ring with a 60 degree angle, 60 degrees short of the 120 an sp2 carbon wants; its hydrate keeps the 60 degree angle, which is only about 50 degrees short of the 109.5 an sp3 carbon wants; the equilibrium lies far to the right.',
-  viewBox: '0 0 760 220',
-  build() { return gridFigure(angleCells, 2, 364, 204, 16, 16, 8, 8); },
+  viewBox: '0 0 760 248',
+  build() { return gridFigure(angleCells, 2, 364, 232, 16, 16, 8, 8, [], WIDE); },
   caption: 'The same angle change, read two ways. Open-chain, it squeezes the groups together. In the three-membered ring, it brings the carbon closer to the angle it wants.',
 });
 
@@ -370,8 +375,8 @@ FIGURES.push({
   id: 'l-hydration-crowding',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'Acetone, with its two methyls 120 degrees apart on a flat sp2 carbon, in equilibrium with its hydrate, where the sp3 carbon holds the methyls about 109.5 degrees apart. The equilibrium lies far to the left.',
-  viewBox: '0 0 340 212',
-  build() { return gridFigure(angleCells.slice(0, 1), 1, 324, 196, 0, 0, 8, 8); },
+  viewBox: '0 0 340 248',
+  build() { return gridFigure(angleCells.slice(0, 1), 1, 324, 232, 0, 0, 8, 8, [], WIDE); },
   caption: 'Addition closes the angle between the methyls from 120° to about 109.5°.',
 });
 
@@ -395,53 +400,53 @@ function phenyl(Q, cx, cy, r, attachDeg, hi) {
 const disagreeCells = [
   ['BENZALDEHYDE: THE RING HOLDS THE C=O', 'far less hydrate than acetaldehyde', (Q) => {
     let s = '';
-    // aldehyde: ring on the left, CHO on the right
-    const ph = phenyl(Q, 32, 104, 22, 0, true);
+    const ph = phenyl(Q, 40, 104, 24, 0, true);
     s += ph.s;
-    const c = Q(80, 104);
+    const c = Q(100, 104);
     s += bond(ph.at, c, { rFrom: 0, rTo: 16, cls: 'fg-bond-hi' });
     const o = armEnd(c, 60, 44), h = armEnd(c, 300, 40);
     s += bond(c, o, { rFrom: 16, rTo: 15, order: 2, cls: 'fg-bond-hi' }) + A(o, 'O');
     s += bond(c, h, { rFrom: 16, rTo: 14 }) + A(h, 'H', { r: 14 });
     s += A(c, 'C', { kind: 'warn' });
-    s += T(Q, 58, 156, 'ring and C=O conjugated', { cls: 'fg-tag-warn', size: 11 });
-    const a = Q(112, 104), b = Q(138, 104);
+    s += T(Q, 74, 176, 'C=O conjugated', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 74, 194, 'with the ring', { cls: 'fg-tag-warn', size: 11 });
+    const a = Q(146, 104), b = Q(176, 104);
     s += eqm(a.x, b.x, a.y);
-    // hydrate
-    const ph2 = phenyl(Q, 164, 104, 22, 0, false);
+    const ph2 = phenyl(Q, 212, 104, 24, 0, false);
     s += ph2.s;
-    const d = Q(212, 104);
+    const d = Q(272, 104);
     s += bond(ph2.at, d, { rFrom: 0, rTo: 16 });
-    const o1 = armEnd(d, 70, 46), o2 = armEnd(d, 290, 46);
+    const o1 = armEnd(d, 60, 44), o2 = armEnd(d, 300, 44);
     s += bond(d, o1, { rFrom: 16, rTo: 16 }) + A(o1, 'OH');
     s += bond(d, o2, { rFrom: 16, rTo: 16 }) + A(o2, 'OH');
     s += A(d, 'C', { kind: 'warn' });
-    s += T(Q, 188, 156, 'sp³ carbon: link broken', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 246, 176, 'sp³ carbon:', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 246, 194, 'conjugation broken', { cls: 'fg-tag', size: 11 });
     return s;
   }],
   ['HEXAFLUOROACETONE: ELECTRONICS WIN', 'essentially all hydrate', (Q) => {
     let s = '';
-    const c = Q(58, 96);
+    const c = Q(72, 100);
     const m = centre(c, [
       { deg: 90, len: 48, l: 'O', order: 2 },
-      { deg: 210, len: 50, l: 'CF₃', kind: 'hi' },
-      { deg: 330, len: 50, l: 'CF₃', kind: 'hi' },
+      { deg: 210, len: 52, l: 'CF₃', kind: 'hi' },
+      { deg: 330, len: 52, l: 'CF₃', kind: 'hi' },
     ]);
     s += m.s;
-    s += T(Q, 58, 150, 'six F pull from C', { cls: 'fg-tag-good', size: 11 });
-    s += T(Q, 58, 166, 'CF₃ bulkier than CH₃', { cls: 'fg-tag-warn', size: 11 });
-    const a = Q(110, 96), b = Q(136, 96);
+    s += T(Q, 72, 176, 'CF₃ bulkier than CH₃', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 72, 194, 'six F pull from C', { cls: 'fg-tag-good', size: 11 });
+    const a = Q(146, 100), b = Q(176, 100);
     s += eqm(a.x, b.x, a.y);
-    const d = Q(188, 96);
+    const d = Q(246, 100);
     const n = centre(d, [
       { deg: 55, len: 46, l: 'OH' },
       { deg: 125, len: 46, l: 'OH' },
-      { deg: 215, len: 48, l: 'CF₃', kind: 'hi' },
-      { deg: 325, len: 48, l: 'CF₃', kind: 'hi' },
+      { deg: 215, len: 50, l: 'CF₃', kind: 'hi' },
+      { deg: 325, len: 50, l: 'CF₃', kind: 'hi' },
     ]);
     s += n.s;
-    s += T(Q, 188, 150, 'the pull outweighs', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 188, 166, 'the crowding', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 246, 176, 'the pull outweighs', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 246, 194, 'the crowding', { cls: 'fg-tag', size: 11 });
     return s;
   }],
 ];
@@ -451,8 +456,8 @@ FIGURES.push({
   section: 'hydrates-cyanohydrins',
   anchor: '<h3>Hydrates: addition of water</h3>',
   alt: 'Two panels. Left: benzaldehyde, whose C=O is conjugated with the benzene ring, highlighted, in equilibrium with its hydrate, where the sp3 carbon breaks that link; much less hydrate forms than with acetaldehyde. Right: hexafluoroacetone, with two CF3 groups that are bulkier than methyls but pull electron density from the carbonyl carbon through six fluorines, in equilibrium with its hydrate; essentially all of it is hydrate.',
-  viewBox: '0 0 760 220',
-  build() { return gridFigure(disagreeCells, 2, 364, 204, 16, 16, 8, 8); },
+  viewBox: '0 0 760 248',
+  build() { return gridFigure(disagreeCells, 2, 364, 232, 16, 16, 8, 8, [], WIDE); },
   caption: 'Two more comparisons with the plain alkyl count. Conjugation holds benzaldehyde back; six fluorines push hexafluoroacetone all the way.',
 });
 
@@ -460,8 +465,8 @@ FIGURES.push({
   id: 'l-hydration-exceptions',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'Two stacked panels. Top: benzaldehyde, whose C=O is conjugated with the ring, in equilibrium with its hydrate, where the sp3 carbon breaks that link; far less hydrate than acetaldehyde. Bottom: cyclopropanone, whose ring angle of 60 degrees is 60 degrees off the 120 an sp2 carbon wants and only about 50 degrees off the 109.5 an sp3 carbon wants; the hydrate is favored.',
-  viewBox: '0 0 340 426',
-  build() { return gridFigure([disagreeCells[0], angleCells[1]], 1, 324, 196, 0, 14, 8, 8); },
+  viewBox: '0 0 340 494',
+  build() { return gridFigure([disagreeCells[0], angleCells[1]], 1, 324, 232, 0, 14, 8, 8, [], WIDE); },
   caption: 'Conjugation holds the top equilibrium back. Ring strain pushes the bottom one forward.',
 });
 
@@ -558,7 +563,7 @@ const cyanoCells = [
     s += lonePair(cc.x, cc.y, 180, { dist: 20 }) + lonePair(nn.x, nn.y, 0, { dist: 20 });
     s += charge(Q, 156, 58, '−');
     s += curve(P(cc.x - 22, cc.y + 3), P(c.x + 16, c.y - 10), { bow: 18 });
-    s += curve(P(c.x + 7, c.y - 27), P(o.x + 16, o.y + 6), { bow: -9, size: 7 });
+    s += piArrow(c, o);
     return s;
   }],
   ['THE ALKOXIDE TAKES H⁺ FROM HCN', 'HCN gives up H⁺ and becomes CN⁻', (Q) => {
@@ -604,7 +609,7 @@ const cyanoCells = [
     const o = m.ends.O;
     s += lonePair(o.x, o.y, 180, { dist: 21 }) + lonePair(o.x, o.y, 270, { dist: 21 }) + lonePair(o.x, o.y, 0, { dist: 21 });
     s += charge(Q, 56, 58, '−');
-    s += curve(P(o.x + 18, o.y + 16), P(c.x + 8, c.y - 22), { bow: -12, size: 7 });
+    s += curve(P(o.x + 25, o.y + 5), P(c.x + 7, c.y - 30), { bow: -12, size: 7 });
     const mid = P((c.x + nt.cn.x) / 2, (c.y + nt.cn.y) / 2);
     s += curve(P(mid.x, mid.y - 6), P(nt.cn.x - 4, nt.cn.y - 16), { bow: -12, size: 7 });
     s += T(Q, 170, 72, 'after base has', { cls: 'fg-tag', size: 11 });
@@ -654,8 +659,8 @@ function skeleton(c, right) {
   ]).s + right;
 }
 const productCells = [
-  ['THE CYANOHYDRIN', 'nitrile carbon bonded to the C–OH', (Q) => {
-    const c = Q(80, 100);
+  ['THE CYANOHYDRIN', 'the nitrile carbon is bonded to the C–OH', (Q) => {
+    const c = Q(110, 100);
     return skeleton(c, nitrile(c, 0, 16, 'hi').s);
   }],
   ['H₃O⁺, HEAT: C≡N BECOMES COOH', 'an α-hydroxy acid', (Q) => {
@@ -667,38 +672,39 @@ const productCells = [
     r += bond(k, o2, { rFrom: 14, rTo: 16 }) + A(o2, 'OH');
     r += A(k, 'C', { r: 14, kind: 'hi' });
     let s = skeleton(c, r);
-    s += T(Q, k.x - Q(0, 0).x + 30, 104, 'C1', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 60, 80, 'α', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 196, 70, 'an acid counts', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 196, 86, 'from the COOH', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 196, 102, 'carbon (C1)', { cls: 'fg-tag', size: 11 });
+    s += text(k.x, k.y + 32, 'C1', { cls: 'fg-tag-warn', size: 11 });
+    s += text(c.x + 21, c.y - 20, 'α', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 252, 70, 'an acid counts', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 252, 86, 'from its COOH', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 252, 102, 'carbon: C1', { cls: 'fg-tag', size: 11 });
     return s;
   }],
   ['LiAlH₄: C≡N BECOMES CH₂NH₂', 'a β-amino alcohol', (Q) => {
-    const c = Q(64, 100);
-    const k = armEnd(c, 0, 52), nn = armEnd(k, 0, 50);
+    const c = Q(72, 100);
+    const k = armEnd(c, 0, 54), nn = armEnd(k, 0, 54);
     let r = bond(c, k, { rFrom: 16, rTo: 19 }) + bond(k, nn, { rFrom: 19, rTo: 19 });
     r += A(k, 'CH₂', { r: 19, kind: 'hi' }) + A(nn, 'NH₂', { r: 19 });
     let s = skeleton(c, r);
-    s += T(Q, 44, 80, 'α', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, k.x - Q(0, 0).x, 132, 'β', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 196, 150, 'an alcohol counts from', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 196, 166, 'the C–OH carbon (α)', { cls: 'fg-tag', size: 11 });
+    s += text(c.x + 21, c.y - 20, 'α', { cls: 'fg-tag-warn', size: 11 });
+    s += text(k.x, k.y + 34, 'β', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 256, 136, 'an alcohol counts', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 256, 152, 'from its C–OH', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 256, 168, 'carbon: α', { cls: 'fg-tag', size: 11 });
     return s;
   }],
   ['LOSE H₂O: A C=C FORMS', 'an α,β-unsaturated nitrile', (Q) => {
-    const c = Q(80, 106);
+    const c = Q(90, 108);
     let s = '';
-    const up = armEnd(c, 90, 48), left = armEnd(c, 210, 48);
+    const up = armEnd(c, 90, 48), left = armEnd(c, 210, 50);
     s += bond(c, up, { rFrom: 16, rTo: 19, order: 2, cls: 'fg-bond-hi' }) + A(up, 'CH₂', { r: 19, kind: 'hi' });
     s += bond(c, left, { rFrom: 16, rTo: 19 }) + A(left, 'CH₃', { r: 19 });
     const nt = nitrile(c, 330, 16, 'hi');
     s += nt.s + A(c, 'C', { kind: 'warn' });
-    s += T(Q, 58, 118, 'α', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, up.x - Q(0, 0).x + 28, 62, 'β', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, nt.cn.x - Q(0, 0).x, nt.cn.y - Q(0, 0).y + 26, 'C1', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 196, 60, 'H from a CH₃', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 196, 76, 'and the OH leave', { cls: 'fg-tag', size: 11 });
+    s += text(c.x - 26, c.y - 10, 'α', { cls: 'fg-tag-warn', size: 11 });
+    s += text(up.x + 30, up.y + 4, 'β', { cls: 'fg-tag-warn', size: 11 });
+    s += text(nt.cn.x + 4, nt.cn.y - 22, 'C1', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 250, 70, 'an H from a CH₃', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 250, 86, 'and the OH leave', { cls: 'fg-tag', size: 11 });
     return s;
   }],
 ];
@@ -708,8 +714,8 @@ FIGURES.push({
   section: 'hydrates-cyanohydrins',
   anchor: '<h3>Cyanohydrins: addition of cyanide</h3>',
   alt: 'Four panels built on acetone cyanohydrin: a carbon carrying an OH, two methyls and a C≡N. Hydrolysis with aqueous acid and heat turns the C≡N into COOH; the COOH carbon is C1 and the carbon holding the OH is alpha, giving an alpha-hydroxy acid. LiAlH4 turns the C≡N into CH2NH2; an alcohol counts from its own C–OH carbon, which is alpha, so the CH2 carrying the NH2 is beta, giving a beta-amino alcohol. Losing water, an H from one methyl and the OH, puts a C=C between the old carbonyl carbon and that CH2, giving an alpha,beta-unsaturated nitrile in which the nitrile carbon is C1, the old carbonyl carbon alpha and the CH2 beta.',
-  viewBox: '0 0 760 440',
-  build() { return gridFigure(productCells, 2, 364, 204, 16, 16, 8, 8, ['hi', 0, 0, 0]); },
+  viewBox: '0 0 760 472',
+  build() { return gridFigure(productCells, 2, 364, 220, 16, 16, 8, 8, ['hi', 0, 0, 0], WIDE); },
   caption: 'One skeleton, three products. The Greek letters are read from the group that names each product.',
 });
 
@@ -717,8 +723,8 @@ FIGURES.push({
   id: 'l-cyanohydrin-products',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'Four stacked panels built on acetone cyanohydrin: the cyanohydrin; hydrolysis to an alpha-hydroxy acid, with the COOH carbon as C1 and the OH carbon alpha; LiAlH4 reduction to a beta-amino alcohol, with the OH carbon alpha and the CH2NH2 carbon beta; and loss of water to an alpha,beta-unsaturated nitrile.',
-  viewBox: '0 0 340 842',
-  build() { return gridFigure(productCells, 1, 324, 196, 0, 14, 8, 8, ['hi', 0, 0, 0]); },
+  viewBox: '0 0 340 938',
+  build() { return gridFigure(productCells, 1, 324, 220, 0, 14, 8, 8, ['hi', 0, 0, 0], WIDE); },
   caption: 'The Greek letters are read from the group that names each product.',
 });
 
@@ -727,29 +733,29 @@ FIGURES.push({
    ====================================================================== */
 const bisulfiteCells = [
   ['BISULFITE ADDS THROUGH SULFUR', 'a salt: the new bond is C–S', (Q) => {
-    let s = T(Q, 54, 60, 'CH₃CHO');
-    s += T(Q, 54, 84, '+ Na⁺ HSO₃⁻', { cls: 'fg-tag', size: 11 });
-    const a = Q(98, 100), b = Q(128, 100);
+    let s = T(Q, 50, 80, 'CH₃CHO');
+    s += T(Q, 50, 102, '+ Na⁺ HSO₃⁻', { cls: 'fg-tag', size: 11 });
+    const a = Q(104, 110), b = Q(136, 110);
     s += eqm(a.x, b.x, a.y);
-    const c = Q(180, 108);
+    const c = Q(214, 106);
     const m = centre(c, [
       { deg: 90, len: 46, l: 'OH' },
-      { deg: 180, len: 36, l: 'H' },
-      { deg: 270, len: 44, l: 'CH₃' },
-      { deg: 0, len: 52, l: 'SO₃⁻', kind: 'hi' },
+      { deg: 180, len: 40, l: 'H' },
+      { deg: 270, len: 46, l: 'CH₃' },
+      { deg: 0, len: 56, l: 'SO₃⁻', kind: 'hi' },
     ]);
-    s += m.s + T(Q, 232, 146, 'Na⁺', { cls: 'fg-tag', size: 11 });
+    s += m.s + T(Q, 292, 146, 'Na⁺', { cls: 'fg-tag', size: 11 });
     return s;
   }],
   ['SHAKE WITH AQUEOUS NaHSO₃', 'acid or base later releases the aldehyde', (Q) => {
     let s = '';
-    const top = Q(40, 44), bot = Q(40, 104);
-    s += panel(top.x, top.y, 164, 56, { r: 6 });
-    s += panel(bot.x, bot.y, 164, 56, { r: 6, kind: 'hi' });
-    s += T(Q, 122, 66, 'organic layer', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 122, 86, 'everything else', { cls: 'fg-tag-mut', size: 11 });
-    s += T(Q, 122, 126, 'water layer', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 122, 146, 'the adduct salt', { cls: 'fg-tag-good', size: 11 });
+    const top = Q(70, 48), bot = Q(70, 110);
+    s += panel(top.x, top.y, 180, 56, { r: 6 });
+    s += panel(bot.x, bot.y, 180, 56, { r: 6, kind: 'hi' });
+    s += T(Q, 160, 72, 'organic layer', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 160, 92, 'everything else', { cls: 'fg-tag-mut', size: 11 });
+    s += T(Q, 160, 134, 'water layer', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 160, 154, 'the adduct salt', { cls: 'fg-tag-good', size: 11 });
     return s;
   }],
 ];
@@ -759,8 +765,8 @@ FIGURES.push({
   section: 'hydrates-cyanohydrins',
   anchor: '<h3>Bisulfite adducts, and a use for a bad reaction</h3>',
   alt: 'Two panels. Left: acetaldehyde plus sodium bisulfite in equilibrium with the adduct, a carbon carrying an OH, a hydrogen, a methyl and an SO3 minus group bonded through sulfur, with a sodium counterion. Right: a two-layer mixture; the organic layer keeps everything else, and the water layer holds the adduct salt. Adding acid or base later releases the aldehyde.',
-  viewBox: '0 0 760 220',
-  build() { return gridFigure(bisulfiteCells, 2, 364, 204, 16, 16, 8, 8); },
+  viewBox: '0 0 760 226',
+  build() { return gridFigure(bisulfiteCells, 2, 364, 210, 16, 16, 8, 8, [], WIDE); },
   caption: 'The adduct is a salt, so it goes where salts go: into the water.',
 });
 
@@ -768,8 +774,8 @@ FIGURES.push({
   id: 'l-bisulfite-adduct',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'Two stacked panels: acetaldehyde plus sodium bisulfite in equilibrium with the adduct, bonded through sulfur; and a two-layer mixture with the adduct salt in the water layer and everything else in the organic layer.',
-  viewBox: '0 0 340 422',
-  build() { return gridFigure(bisulfiteCells, 1, 324, 196, 0, 14, 8, 8); },
+  viewBox: '0 0 340 450',
+  build() { return gridFigure(bisulfiteCells, 1, 324, 210, 0, 14, 8, 8, [], WIDE); },
   caption: 'A salt goes into the water layer.',
 });
 
