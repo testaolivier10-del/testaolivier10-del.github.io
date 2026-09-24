@@ -303,7 +303,7 @@
         "Correct. Rapid renewal replaces damaged surface cells quickly.",
         "Correct. Prostaglandins increase mucus, bicarbonate and blood flow.",
         "Pepsin works best near pH 2 and is inactive near neutral pH, which is why the alkaline surface protects the cells.",
-        "The stomach is lined by simple columnar epithelium. Stratified squamous epithelium lines the esophagus, which has no acid defense."
+        "The stomach is lined by simple columnar epithelium. Stratified squamous epithelium lines the esophagus, which has little acid defense."
       ]
     }
   },
@@ -321,18 +321,18 @@
       "Protein fragments in the stomach stimulate G cells",
       "G cells release gastrin into the blood",
       "Gastrin increases acid secretion, partly by releasing histamine",
-      "The falling pH stimulates the G cells to release even more gastrin",
-      "The stomach contents become strongly acidic"
+      "The stomach contents become strongly acidic",
+      "The falling pH makes the G cells release even more gastrin"
     ],
-    "correct": 3,
+    "correct": 4,
     "why": {
       "correct": "A falling pH inhibits gastrin release: below about pH 3, D cells release somatostatin, which shuts the G cells off. This negative feedback limits acid secretion.",
       "options": [
         "This step is right. Peptides and amino acids stimulate G cells directly.",
         "This step is right. Gastrin is a hormone carried by the blood.",
         "This step is right. Gastrin acts mainly through histamine-releasing cells and partly on parietal cells.",
-        "This is the error. Low pH inhibits gastrin release through somatostatin.",
-        "This step is right. Increased acid secretion lowers the pH of the contents."
+        "This step is right. Increased acid secretion lowers the pH of the contents.",
+        "This is the error. Low pH inhibits gastrin release through somatostatin."
       ]
     }
   },
@@ -539,7 +539,7 @@
     ],
     "q": "Helicobacter pylori lives in the stomach despite its acid. How does it survive?",
     "options": [
-      "It lives inside parietal cells, well away from the acid in the lumen",
+      "It lives inside parietal cells, well away from the acid in the gland lumen",
       "It forms tough spores that acid cannot damage",
       "It stops the parietal cells around it from secreting any acid",
       "It lives in the mucus and makes an enzyme whose product neutralizes acid"

@@ -419,17 +419,17 @@
     ],
     "q": "A 52-year-old man with gallstones has sudden, severe pain in his upper middle abdomen that goes through to his back. His blood lipase is many times normal. Which event most likely started his illness?",
     "options": [
-      "Bile salts leaked into the blood and dissolved the pancreas",
-      "A stone blocked the cystic duct, stopping bile reaching the duodenum",
+      "Bile salts leaked from the liver into the blood and dissolved the pancreas",
+      "A stone blocked the cystic duct and stopped bile from reaching the duodenum after his meals",
       "Stomach acid flowed back up the pancreatic duct and burned the pancreas",
-      "A stone at the hepatopancreatic ampulla blocked the pancreatic duct, and trypsin became active inside the gland"
+      "A stone at the ampulla blocked the pancreatic duct, so trypsin was activated in the gland"
     ],
     "correct": 3,
     "why": {
       "correct": "This is acute pancreatitis. A gallstone stuck at the ampulla blocks the pancreatic duct. Enzymes are trapped, trypsin is activated inside the gland, and it activates the other enzymes, which digest pancreatic tissue. Lipase leaks from the damaged gland into the blood.",
       "options": [
         "Bile salts emulsify fat; they do not digest tissue, and they do not cause pancreatitis by entering the blood.",
-        "A cystic duct stone causes gallbladder pain under the right ribs. It does not block the pancreatic duct or raise lipase.",
+        "A cystic duct stone causes gallbladder pain under the right ribs, and bile from the liver still reaches the duodenum. It does not block the pancreatic duct or raise lipase.",
         "Stomach acid is neutralized in the duodenum and does not travel up the pancreatic duct.",
         "Correct. Gallstones at the ampulla are one of the two commonest causes of acute pancreatitis."
       ]
@@ -482,7 +482,7 @@
     "q": "A 60-year-old man with cirrhosis has a swollen, fluid-filled abdomen and swollen ankles. His blood albumin is low. Which two changes together best explain the fluid?",
     "options": [
       "Raised pressure in the hepatic portal vein, and less albumin holding water in the blood",
-      "Blocked bile ducts, and too much bilirubin pulling water out of vessels",
+      "Blocked bile ducts, and too much bilirubin in the blood pulling water out of the vessels",
       "Loss of bile salts, and poor fat absorption thinning the blood",
       "Too many clotting factors, and blood clots blocking the veins"
     ],
@@ -585,7 +585,7 @@
     ],
     "figure": "os-23-26",
     "pin": "acinar-cells",
-    "q": "Name the pinned cells, which make the pancreas's digestive enzymes.",
+    "q": "Name the pinned cells.",
     "options": [
       "Pancreatic islet cells",
       "Acinar cells",
@@ -596,7 +596,7 @@
     "why": {
       "correct": "Acinar cells sit in grape-like clusters (acini) at the ends of the small ducts. They make the pancreatic enzymes and release them into the ducts.",
       "options": [
-        "Islet cells are the pale clusters with capillaries running through them. They release hormones into the blood, not enzymes into ducts.",
+        "Islet cells are the blue-green clusters with capillaries running through them. They release hormones into the blood, not enzymes into ducts.",
         "Correct. The acini make the enzymes of pancreatic juice.",
         "Duct cells line the ducts and add bicarbonate-rich fluid, not most of the enzymes.",
         "Hepatocytes are liver cells, not pancreatic cells."

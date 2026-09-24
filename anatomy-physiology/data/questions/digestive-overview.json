@@ -206,7 +206,7 @@
       "Its muscle has no nerve input, so it is paralyzed and floppy",
       "Its mucosa cannot absorb water, so stool becomes too large to pass",
       "Its sympathetic fibers are missing, so its sphincters stay open",
-      "Its circular muscle cannot relax ahead of the stool, so peristaltic waves cannot push anything through"
+      "Its circular muscle cannot relax, so no peristaltic wave can pass"
     ],
     "correct": 3,
     "why": {
@@ -413,7 +413,7 @@
     "q": "In a laboratory, a length of guinea pig intestine is placed in warm, oxygenated salt solution with no nerves connecting it to the brain or spinal cord. A small pellet is put in one end. What happens to the pellet?",
     "options": [
       "It stays put until vagal signals are supplied to the muscle",
-      "It is pushed along by peristaltic waves run by the gut wall's own neurons",
+      "Peristalsis run by the wall's own neurons pushes it along",
       "It moves only after epinephrine is added to the solution",
       "It is squeezed by the whole length contracting at once"
     ],
@@ -440,7 +440,7 @@
     "options": [
       "The hormone that makes the gallbladder contract after a fatty meal",
       "The hormone that raises acid secretion by the stomach",
-      "The hormone that triggers strong clearing contractions of the stomach and small intestine between meals",
+      "The hormone that triggers clearing contractions between meals",
       "The hormone that releases bicarbonate from the pancreas"
     ],
     "correct": 2,
@@ -490,7 +490,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Pacesetter cells in the stomach produce slow waves about 3 times a minute. After a meal, the stomach contracts about 3 times a minute; between meals it barely contracts, though the slow waves continue. What explains the difference?",
+    "q": "Pacesetter cells in the stomach produce slow waves about 3 times a minute. After a meal, the stomach contracts about 3 times a minute; during the quiet stretches between meals it barely contracts, though the slow waves continue. What explains the difference?",
     "options": [
       "Between meals the pacesetter cells slow to less than once a minute",
       "Nerve and hormone signals after a meal push each slow wave past threshold",
@@ -501,7 +501,7 @@
     "why": {
       "correct": "Slow waves set the maximum rhythm but rarely trigger contraction alone. Acetylcholine from enteric and vagal neurons, and hormones such as gastrin, depolarize the muscle so each wave reaches threshold and fires action potentials. The rate stays about 3 per minute; what changes is whether each wave produces a contraction.",
       "options": [
-        "The question says the slow waves continue between meals at their usual rate. The rhythm is not what changes.",
+        "The question says the slow waves continue in those quiet stretches at their usual rate. The rhythm is not what changes.",
         "Correct. Excitatory input decides whether a slow wave reaches threshold, and that is why contraction follows the meal while the rhythm stays the same.",
         "The stomach wall is smooth muscle throughout; skeletal muscle is found only at the two ends of the tube.",
         "Gap junctions do not open and close with meals in this way; the change is in how close the membrane is to threshold."

@@ -4,13 +4,535 @@
     "type": "single",
     "level": "apply",
     "diff": 1,
-    "core": ["energy"],
-    "q": "A bowl of cereal with milk holds 45 g of carbohydrate, 10 g of protein and 5 g of fat. About how many kilocalories does it supply?",
-    "options": ["240 kcal", "285 kcal", "300 kcal", "540 kcal"],
+    "core": [
+      "energy"
+    ],
+    "q": "A bowl of cereal with milk holds 45 g of carbohydrate, 10 g of protein and 5 g of fat. How many kilocalories does it supply?",
+    "options": [
+      "220 kcal",
+      "240 kcal",
+      "265 kcal",
+      "540 kcal"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Carbohydrate: 45 g × 4 = 180 kcal. Protein: 10 g × 4 = 40 kcal. Fat: 5 g × 9 = 45 kcal. Total: 180 + 40 + 45 = 265 kcal.",
+      "options": [
+        "220 kcal leaves out the fat. Its 5 g still supply 5 × 9 = 45 kcal.",
+        "240 kcal counts the fat at 4 kcal per gram, like carbohydrate. Fat supplies about 9 kcal per gram.",
+        "Correct. 180 + 40 + 45 = 265 kcal.",
+        "540 kcal counts all 60 g at 9 kcal per gram. Only fat supplies 9; carbohydrate and protein supply about 4."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A snack bar supplies 200 kcal, and 10 g of it is fat. What percentage of the bar's energy comes from fat?",
+    "options": [
+      "45%",
+      "5%",
+      "20%",
+      "90%"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Energy from fat = 10 g × 9 kcal/g = 90 kcal. Share = 90 ÷ 200 = 0.45, or 45%.",
+      "options": [
+        "Correct. 90 kcal of the 200 come from fat.",
+        "5% is grams of fat divided by kilocalories (10 ÷ 200). Convert the fat to kilocalories first.",
+        "20% counts fat at 4 kcal per gram (40 ÷ 200). Fat supplies about 9 kcal per gram.",
+        "90 is the kilocalories from fat, not the percentage. Divide by the bar's 200 kcal."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-3",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Mr. Okafor, 74, has eaten mostly tea, toast and canned soup for four months. His gums bleed, he has bruises on his shins, and a six-week-old cut has not healed. Which nutrient is he most likely missing, and why does its lack cause these signs?",
+    "options": [
+      "Vitamin C: the collagen made without it is weak",
+      "Vitamin K: clotting factors stay unfinished",
+      "Iron: too little hemoglobin reaches the gums",
+      "Vitamin B12: new blood cells cannot divide"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Vitamin C keeps the iron in the collagen-strengthening enzymes in its working form. Without it, new collagen is weak, so small vessels break (bruises, bleeding gums) and wounds cannot build strong scar tissue. This is scurvy, and a diet with no fruit or vegetables for months causes it.",
+      "options": [
+        "Correct. Bleeding gums plus a wound that will not heal point to weak collagen: scurvy.",
+        "A lack of vitamin K does cause bleeding, but it does not stop wounds from healing, and in adults it rarely comes from diet alone: it usually follows fat malabsorption or drugs such as warfarin.",
+        "Iron deficiency causes anemia and fatigue, not bleeding gums and failed wound healing.",
+        "B12 lack causes anemia with large red blood cells and nerve damage, and it takes years to appear because the liver stores so much."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-4",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Select every fat-soluble vitamin.",
+    "options": [
+      "Vitamin A",
+      "Vitamin C",
+      "Vitamin D",
+      "Folate",
+      "Vitamin E",
+      "Vitamin K"
+    ],
+    "correct": [
+      0,
+      2,
+      4,
+      5
+    ],
+    "why": {
+      "correct": "The fat-soluble vitamins are A, D, E and K. Vitamin C and the B vitamins, including folate, are water-soluble.",
+      "options": [
+        "Correct. Vitamin A is fat-soluble.",
+        "Vitamin C is water-soluble; it is stored little and needs a steady supply.",
+        "Correct. Vitamin D is fat-soluble.",
+        "Folate is a B vitamin (B9), and the B vitamins are water-soluble.",
+        "Correct. Vitamin E is fat-soluble.",
+        "Correct. Vitamin K is fat-soluble."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-5",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A gallstone blocks a patient's common bile duct for three months. Predict the change in each variable, compared with before the blockage.",
+    "variables": [
+      {
+        "name": "Fat in the feces",
+        "answer": "up",
+        "why": "Without bile salts, fats are poorly emulsified and cannot form micelles, so much of the dietary fat passes through unabsorbed."
+      },
+      {
+        "name": "Absorption of vitamin K",
+        "answer": "down",
+        "why": "Vitamin K dissolves in fat and enters the absorptive cells in micelles; with no micelles, little is absorbed."
+      },
+      {
+        "name": "Time for the blood to clot",
+        "answer": "up",
+        "why": "Without vitamin K, the liver cannot finish clotting factors II, VII, IX and X, so clotting slows."
+      },
+      {
+        "name": "Absorption of vitamin C",
+        "answer": "none",
+        "why": "Vitamin C is water-soluble and is absorbed by carriers in the intestinal lining, which do not depend on bile."
+      }
+    ],
+    "why": {
+      "correct": "Bile is needed to absorb fat, and the fat-soluble vitamins travel with fat. Blocking the bile duct lets fat pass into the feces and cuts absorption of A, D, E and K. The first sign in the blood is often slow clotting, because vitamin K stores are the smallest. Water-soluble vitamins are absorbed normally."
+    }
+  },
+  {
+    "id": "anp-nutrition-6",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A friend takes ten times the recommended dose of vitamin A and ten times the dose of vitamin C every day for a year. Which is more likely to harm her, and why?",
+    "options": [
+      "Vitamin C, which acidifies the blood as it builds up",
+      "Vitamin A, which is stored in the liver and builds up",
+      "Neither: the extra of any vitamin leaves in urine",
+      "Both equally: any vitamin in excess is toxic"
+    ],
     "correct": 1,
     "why": {
-      "correct": "Carbohydrate 45 × 4 = 180 kcal; protein 10 × 4 = 40 kcal; fat 5 × 9 = 45 kcal. Total 180 + 40 + 45 = 265 kcal... rounded to the nearest option, about 285? No: recheck. The sum is 265 kcal.",
-      "options": ["x", "x", "x", "x"]
+      "correct": "Vitamin A is fat-soluble. The extra is stored in the liver and fat tissue, so a large daily excess accumulates over months and can damage the liver and bones. Vitamin C is water-soluble; the body stores little of it and the extra leaves in urine.",
+      "options": [
+        "Vitamin C is water-soluble, so the extra is excreted rather than building up, and it does not acidify the blood at these doses.",
+        "Correct. Fat-soluble vitamins accumulate; vitamin A toxicity is well documented.",
+        "Fat-soluble vitamins such as A are stored, not excreted, so the extra builds up.",
+        "Toxicity depends on whether the extra is stored. Water-soluble vitamin C is far less likely to accumulate than vitamin A."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A man with long-term heavy alcohol use who eats very little is brought in confused. He walks unsteadily and his eyes cannot move normally from side to side. Which vitamin should be given at once?",
+    "options": [
+      "Vitamin A",
+      "Thiamine (B1)",
+      "Vitamin C",
+      "Cobalamin (B12)"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is Wernicke encephalopathy from thiamine deficiency. Thiamine is the coenzyme for the enzyme that removes CO2 from pyruvate as it enters the mitochondrion. Brain cells rely on glucose broken down this way, so without thiamine they cannot make enough ATP. Heavy alcohol use cuts both intake and absorption of thiamine.",
+      "options": [
+        "Vitamin A lack causes night blindness and a damaged cornea, not confusion and an unsteady walk.",
+        "Correct. Thiamine replaces the missing coenzyme and can reverse the eye signs within hours.",
+        "Vitamin C lack causes scurvy: bleeding gums and poor healing.",
+        "B12 lack also damages nerves, but it develops over years and causes numbness and anemia, not this sudden confusion with eye movement problems."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Which of these is NOT an essential nutrient for a healthy adult?",
+    "options": [
+      "Lysine",
+      "Linoleic acid",
+      "Iodine",
+      "Glucose"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "An essential nutrient is one your body cannot make in enough amounts. Your liver makes glucose from amino acids, lactate and glycerol, so glucose is not essential, even though your brain uses a lot of it.",
+      "options": [
+        "Lysine is one of the nine essential amino acids; your cells cannot build it.",
+        "Linoleic acid is an essential fatty acid; your cells cannot put a double bond near the tail end of the chain.",
+        "Iodine is a mineral, an element your body cannot make, and it is needed for thyroid hormones.",
+        "Correct. Your body can make glucose, so it does not have to come from food."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A person eats plenty of rice as her only protein source. Rice protein is low in lysine. What happens when her cells try to build a protein that contains lysine?",
+    "options": [
+      "They make other amino acids into lysine as needed",
+      "They swap a different amino acid in where lysine belongs",
+      "Synthesis stalls, and the unused amino acids are burned",
+      "They take lysine from stored lysine reserves"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Lysine is essential: her cells cannot make it. A ribosome needs every amino acid in the sequence at the moment it adds it, so the protein is not finished. Amino acids are not stored for later, so the unused ones are broken down for fuel. Adding beans, which are rich in lysine, covers the gap.",
+      "options": [
+        "Cells cannot build lysine from other amino acids; that is what makes it essential.",
+        "The sequence is set by the gene, so a ribosome does not substitute another amino acid for a missing one.",
+        "Correct. The missing essential amino acid limits protein synthesis.",
+        "The body keeps no reserve of free amino acids set aside for later protein building."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-10",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student traced how too little dietary iodine causes a goiter. One step is wrong. Which one?",
+    "options": [
+      "Too little iodine reaches the thyroid gland",
+      "The thyroid makes less thyroid hormone",
+      "Less thyroid hormone reaches the pituitary gland",
+      "The pituitary releases less TSH",
+      "The thyroid gland grows and enlarges"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Thyroid hormones normally hold TSH release back by negative feedback. With less thyroid hormone, that brake weakens and the pituitary releases more TSH, not less. TSH is what makes the thyroid grow into a goiter.",
+      "options": [
+        "This step is right. Iodine is needed to make thyroid hormones, and the thyroid gets it from the blood.",
+        "This step is right. Each thyroid hormone molecule carries three or four iodine atoms.",
+        "This step is right. Lower blood levels of thyroid hormone mean less reaches the pituitary.",
+        "This is the error. Less feedback means more TSH, which drives the gland's growth.",
+        "This step is right. Constant high TSH makes thyroid cells multiply and grow."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-11",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Fill the gap: niacin (vitamin B3) → built into ____ → carries electrons from glucose breakdown to the electron transport chain.",
+    "options": [
+      "FAD",
+      "NAD+",
+      "ATP",
+      "Rhodopsin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Niacin is the vitamin part of NAD+. NAD+ accepts electrons in glycolysis and the citric acid cycle, becoming NADH, and hands them to the electron transport chain.",
+      "options": [
+        "FAD is built from riboflavin (vitamin B2), not niacin.",
+        "Correct. Niacin forms part of NAD+.",
+        "ATP is the energy currency your cells make; no vitamin is needed as its building block.",
+        "Rhodopsin is the light-absorbing pigment of rods, built with vitamin A."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-12",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Why does a gram of fat supply more than twice the energy of a gram of carbohydrate?",
+    "options": [
+      "Fat is absorbed more completely from the gut than carbohydrate is",
+      "Fat is less oxidized: its carbons carry fewer oxygen atoms",
+      "Fat is broken down by a longer chain of enzymes than carbohydrate",
+      "Fat is stored in adipose tissue, which holds almost no water"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Carbohydrate carbons already carry many oxygen atoms: they are partly oxidized. Fat is mostly carbon–hydrogen bonds, so each carbon has more electrons to give up as it is oxidized to CO2, and more energy is released per gram.",
+      "options": [
+        "Both are absorbed almost completely in healthy people; the difference is in the molecules, not absorption.",
+        "Correct. Fat is less oxidized to start with, so it releases more energy as it is fully oxidized.",
+        "The number of enzymes does not set how much energy a molecule holds; the chemistry of its bonds does.",
+        "Storage with little water makes stored fat tissue denser in energy than glycogen, but it does not change the energy in a gram of pure fat."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A 22-year-old who has eaten a strict vegan diet for three years without supplements feels weak. Her blood test shows iron-deficiency anemia. Along with iron-rich legumes and greens, which change will most improve how much iron she absorbs from them?",
+    "options": [
+      "Drinking tea with each meal",
+      "Taking a calcium supplement with meals",
+      "Adding vitamin C–rich foods to the meal",
+      "Taking a vitamin E supplement at bedtime"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Iron from plants is absorbed poorly. Vitamin C eaten at the same meal keeps it in the form the intestine takes up best, so absorption rises several-fold.",
+      "options": [
+        "Substances in tea bind plant iron and reduce its absorption.",
+        "Calcium taken at the same time reduces iron absorption rather than raising it.",
+        "Correct. Vitamin C with the meal improves absorption of iron from plant foods.",
+        "Vitamin E is an antioxidant for membranes and does not help iron absorption."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Why is folic acid advised for anyone who could become pregnant, starting before pregnancy?",
+    "options": [
+      "It builds the embryo's myelin during the first few weeks",
+      "It is needed to make DNA as the neural tube forms early",
+      "It prevents the nausea of early pregnancy",
+      "It is stored for months to supply breastfeeding later"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Folate carries one-carbon groups needed to make DNA bases, and the embryo's cells are dividing fast. The neural tube closes about four weeks after the pregnancy begins, often before the pregnancy is known, so folate must already be adequate. Low folate at that time raises the risk of neural tube defects.",
+      "options": [
+        "Myelin forms much later in development, and it is B12, not folate, that keeps myelin healthy.",
+        "Correct. Rapid cell division needs folate, and the neural tube closes very early.",
+        "Folic acid is advised to prevent neural tube defects, not nausea.",
+        "Folate is water-soluble and stored little, so it cannot be banked for months ahead."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "misconception": "vitamins give you energy",
+    "q": "A well-fed student starts taking a high-dose B-vitamin tablet \"for energy\". What happens to the energy available to her cells?",
+    "options": [
+      "It rises, because B vitamins are oxidized for ATP",
+      "It rises, as extra coenzymes speed every reaction",
+      "It does not change, because she already has enough",
+      "It falls, because B vitamins block fat breakdown"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "B vitamins supply no energy; they are parts of coenzymes. Once a well-fed person has enough coenzyme, the enzymes of fuel breakdown are not limited by it, so extra vitamin does not release more energy. The extra water-soluble vitamin leaves in her urine.",
+      "options": [
+        "Vitamins are not fuel. A vitamin tablet supplies 0 kcal.",
+        "Fuel breakdown is not limited by coenzyme supply in a well-fed person, so adding more does not speed it.",
+        "Correct. Extra B vitamins do not add energy when stores are already adequate.",
+        "B vitamins are coenzymes for fuel breakdown, including fat breakdown, not blockers of it."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A 10-year-old in a region where the soil is poor in several minerals is short for his age, heals slowly after scrapes, gets frequent infections and says food tastes of little. Which trace mineral is he most likely lacking?",
+    "options": [
+      "Iodine",
+      "Fluoride",
+      "Sodium",
+      "Zinc"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Zinc is a cofactor for hundreds of enzymes, including those that copy DNA and build proteins. A lack slows growth, wound healing and immune cells, and dulls taste.",
+      "options": [
+        "Iodine lack causes goiter and hypothyroidism; it does not explain poor taste or slow wound healing.",
+        "Fluoride lack raises tooth decay but does not cause this pattern.",
+        "Sodium is a major mineral, not a trace mineral, and a lack of it does not cause this picture.",
+        "Correct. Slow growth, poor healing, infections and loss of taste together point to zinc."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "What makes a mineral a trace mineral?",
+    "options": [
+      "It is needed at less than 100 mg a day",
+      "It is found in useful amounts only in animal foods",
+      "It is stored only in the liver",
+      "It cannot dissolve in body fluids"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Minerals are grouped by the amount needed. Trace minerals, such as iron, zinc and iodine, are needed at less than 100 mg a day; major minerals, such as calcium and sodium, at more.",
+      "options": [
+        "Correct. The dividing line is the amount needed each day.",
+        "Many trace minerals come from plants: zinc from legumes and seeds, for example.",
+        "Iron is stored in the liver, but iodine is concentrated in the thyroid; storage site is not the definition.",
+        "Trace minerals act as ions dissolved in body fluids or bound to proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-18",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps in order to show how a lack of vitamin C leads to bleeding gums.",
+    "options": [
+      "The body's small store of vitamin C runs out",
+      "Collagen-strengthening enzymes lose the helper that keeps their iron working",
+      "New collagen strands cannot form stable, cross-linked triple helices",
+      "Small vessel walls and gums weaken as old collagen is replaced by weak collagen",
+      "Small vessels break and the gums bleed"
+    ],
+    "why": {
+      "correct": "Vitamin C keeps the iron in the collagen-strengthening enzymes working. Without it, collagen cannot be stabilized, and as the body replaces old collagen with weak collagen, vessel walls and gums lose strength until they bleed."
+    }
+  },
+  {
+    "id": "anp-nutrition-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Which vitamin is part of rhodopsin, so that a lack of it causes night blindness first?",
+    "options": [
+      "Vitamin D",
+      "Vitamin E",
+      "Vitamin A",
+      "Vitamin B12"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Retinal, made from vitamin A, is the light-absorbing part of rhodopsin in rods. Rods run short of rhodopsin first when vitamin A is low, so vision in dim light fails before anything else.",
+      "options": [
+        "Vitamin D becomes calcitriol and raises calcium absorption; it is not part of any visual pigment.",
+        "Vitamin E is an antioxidant that protects membrane lipids.",
+        "Correct. Vitamin A supplies retinal.",
+        "Vitamin B12 is needed for DNA synthesis and myelin, not for visual pigments."
+      ]
+    }
+  },
+  {
+    "id": "anp-nutrition-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "A bottle of juice lists 120 Calories per serving, all from sugar. How many grams of sugar does a serving hold?",
+    "options": [
+      "30 g",
+      "13 g",
+      "480 g",
+      "120 g"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A food-label Calorie is a kilocalorie, and sugar supplies about 4 kcal per gram. Grams = 120 ÷ 4 = 30 g.",
+      "options": [
+        "Correct. 120 kcal ÷ 4 kcal per gram = 30 g.",
+        "13 g divides by 9, the value for fat. Sugar is carbohydrate, at about 4 kcal per gram.",
+        "480 multiplies instead of dividing. Grams are kilocalories divided by kilocalories per gram.",
+        "120 treats each gram as 1 kcal. Carbohydrate supplies about 4 kcal per gram."
+      ]
     }
   }
 ]

@@ -119,7 +119,7 @@
     "options": [
       "It is where most fat is absorbed into the lacteals of the villi",
       "It is where the migrating motor complex begins between meals",
-      "It receives the acidic chyme from the stomach first",
+      "It receives acidic chyme before pancreatic bicarbonate mixes in",
       "It is where vitamin B12 is absorbed with intrinsic factor"
     ],
     "correct": 2,
@@ -142,7 +142,7 @@
       "structure-function",
       "gradients"
     ],
-    "q": "Circular folds multiply the small intestine's surface about 3 times, villi about 10 times and microvilli about 20 times. A disease flattens the villi but leaves the folds and microvilli. By roughly how much does the absorptive surface fall?",
+    "q": "Textbooks estimate that circular folds multiply the small intestine's surface about 3 times, villi about 10 times and microvilli about 20 times. A disease flattens the villi but leaves the folds and microvilli. By roughly how much does the absorptive surface fall?",
     "options": [
       "To about half of normal",
       "To about one tenth of normal",
@@ -369,7 +369,7 @@
       "Circular folds flatten when the intestine fills, but rugae do not",
       "Circular folds are folds of muscle, while rugae are folds of serosa",
       "Circular folds are microscopic, while rugae can be seen by eye",
-      "Circular folds are permanent; rugae flatten as the stomach fills"
+      "Circular folds are permanent ridges; rugae flatten as the stomach fills"
     ],
     "correct": 3,
     "why": {

@@ -30,7 +30,7 @@
   },
   "chain": [
     { "cause": "Protein fragments in the stomach and vagal signals stimulate the G cells.", "effect": "G cells release gastrin into the blood." },
-    { "cause": "Gastrin, acetylcholine and histamine act on the parietal cells.", "effect": "Carbonic anhydrase makes H+ and bicarbonate, and the H+/K+ proton pump spends ATP to push H+ into the gland's lumen, where it pairs with Cl− as hydrochloric acid." },
+    { "cause": "Gastrin acts mostly by releasing histamine from ECL cells beside the parietal cells; histamine and acetylcholine then act on the parietal cells.", "effect": "Carbonic anhydrase makes H+ and bicarbonate, and the H+/K+ proton pump spends ATP to push H+ into the gland's lumen, where it pairs with Cl− as hydrochloric acid." },
     { "cause": "Acid reaches the pepsinogen released by the chief cells.", "effect": "Pepsinogen cuts itself into active pepsin, and pepsin activates more, so protein digestion begins." },
     { "cause": "Acid keeps accumulating and the pH in the antrum falls below about 3.", "effect": "D cells release somatostatin, which shuts off gastrin release." },
     { "cause": "With less gastrin, the parietal cells receive a weaker stimulus.", "effect": "Acid secretion falls: negative feedback keeps the stomach from over-acidifying." }

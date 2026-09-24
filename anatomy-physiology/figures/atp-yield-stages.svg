@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A horizontal bar graph of ATP made per glucose at each stage of aerobic respiration, crediting the ATP made from each NADH and FADH2 to the stage that produced the carrier. Glycolysis: 2 ATP made directly plus 3 to 5 ATP from its 2 NADH, depending on the shuttle that carries their electrons into the mitochondrion, for 5 to 7 in all. Pyruvate to acetyl CoA: no ATP directly, 5 ATP from 2 NADH. Citric acid cycle: 2 ATP directly, 15 ATP from 6 NADH and 3 ATP from 2 FADH2, for 20 in all. The total is 30 to 32 ATP per glucose, only 4 of them made directly.">
+<rect x="0" y="0" width="640" height="400" fill="#FFFFFF"/>
+<g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
+<text x="20" y="28" font-size="15" font-weight="800">ATP made per glucose, by the stage that produced it</text>
+<line x1="200" y1="320" x2="600" y2="320" stroke="#5D6B69" stroke-width="2"/>
+<line x1="200" y1="320" x2="200" y2="50" stroke="#5D6B69" stroke-width="2"/>
+<line x1="200" y1="320" x2="200" y2="325" stroke="#5D6B69" stroke-width="2"/>
+<text x="200" y="340" font-size="12.5" font-weight="700" text-anchor="middle">0</text>
+<line x1="300" y1="320" x2="300" y2="325" stroke="#5D6B69" stroke-width="2"/>
+<text x="300" y="340" font-size="12.5" font-weight="700" text-anchor="middle">5</text>
+<line x1="400" y1="320" x2="400" y2="325" stroke="#5D6B69" stroke-width="2"/>
+<text x="400" y="340" font-size="12.5" font-weight="700" text-anchor="middle">10</text>
+<line x1="500" y1="320" x2="500" y2="325" stroke="#5D6B69" stroke-width="2"/>
+<text x="500" y="340" font-size="12.5" font-weight="700" text-anchor="middle">15</text>
+<line x1="600" y1="320" x2="600" y2="325" stroke="#5D6B69" stroke-width="2"/>
+<text x="600" y="340" font-size="12.5" font-weight="700" text-anchor="middle">20</text>
+<text x="400" y="362" font-size="13.5" font-weight="800" text-anchor="middle">ATP per glucose</text>
+<text x="190" y="93" font-size="13.5" font-weight="800" text-anchor="end">Glycolysis</text>
+<rect x="200" y="72" width="40" height="36" fill="#E69F00"/>
+<rect x="240" y="72" width="60" height="36" fill="#0072B2"/>
+<rect x="300" y="72" width="40" height="36" fill="#BFDDF1" stroke="#0072B2" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="350" y="87" font-size="12.5" font-weight="700">2 direct + 3–5 from 2 NADH</text>
+<text x="350" y="103" font-size="12.5" font-weight="700">(dashed part depends on the shuttle)</text>
+<text x="190" y="170" font-size="13.5" font-weight="800" text-anchor="end">Pyruvate →</text>
+<text x="190" y="186" font-size="13.5" font-weight="800" text-anchor="end">acetyl CoA</text>
+<rect x="200" y="158" width="100" height="36" fill="#0072B2"/>
+<text x="310" y="181" font-size="12.5" font-weight="700">0 direct + 5 from 2 NADH</text>
+<text x="190" y="264" font-size="13.5" font-weight="800" text-anchor="end">Citric acid cycle</text>
+<text x="220" y="236" font-size="12" font-weight="700" text-anchor="middle">direct</text>
+<text x="390" y="236" font-size="12" font-weight="700" text-anchor="middle">from NADH</text>
+<text x="570" y="236" font-size="12" font-weight="700" text-anchor="middle">from FADH2</text>
+<rect x="200" y="244" width="40" height="36" fill="#E69F00"/>
+<rect x="240" y="244" width="300" height="36" fill="#0072B2"/>
+<rect x="540" y="244" width="60" height="36" fill="#009E73"/>
+<text x="210" y="300" font-size="12.5" font-weight="700">2 direct + 15 from 6 NADH + 3 from 2 FADH2 = 20</text>
+<text x="20" y="390" font-size="13.5" font-weight="800">Total: 30–32 ATP per glucose, only 4 of them made directly</text>
+</g></svg>

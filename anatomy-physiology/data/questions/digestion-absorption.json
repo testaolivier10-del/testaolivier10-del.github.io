@@ -9,7 +9,7 @@
     ],
     "figure": "os-23-33",
     "pin": "lacteal",
-    "q": "Name the pinned vessel, which chylomicrons enter.",
+    "q": "Name the pinned vessel.",
     "options": [
       "Blood capillary",
       "Lacteal",
@@ -37,7 +37,7 @@
     ],
     "figure": "os-23-29",
     "pin": "lactase",
-    "q": "Name the pinned enzyme, which splits milk sugar.",
+    "q": "Name the pinned enzyme.",
     "options": [
       "Sucrase",
       "Maltase",
@@ -213,7 +213,7 @@
     ],
     "q": "In an experiment on intestinal tissue, a drug blocks the sodium–potassium pumps on the basolateral membrane of the absorptive cells. SGLT1 itself is untouched. What happens to glucose absorption?",
     "options": [
-      "It stops once sodium inside the cell rises",
+      "It stops once sodium inside the cell rises and the gradient collapses",
       "It continues unchanged",
       "It speeds up",
       "It continues at the same rate by facilitated diffusion"
@@ -293,18 +293,18 @@
     ],
     "q": "Why do absorbed long-chain fats reach the blood through the lymph instead of entering the villus capillaries directly?",
     "options": [
-      "Portal blood carries water-soluble molecules and no fat at all",
+      "Bile salts carry the fats straight into the lacteals",
       "Lymph moves faster than blood through the villus",
-      "The villus capillaries have no pores at all",
+      "The villus capillaries are continuous, with an unbroken wall",
       "Chylomicrons are too large for the blood capillaries"
     ],
     "correct": 3,
     "why": {
       "correct": "Absorbed long-chain fats leave the cell packaged as chylomicrons, large particles that cannot cross the wall of the villus blood capillaries. The lacteal's cells have wide gaps between them that let chylomicrons in.",
       "options": [
-        "Short-chain fatty acids do travel in portal blood. Long-chain fats avoid it because of the size of the chylomicrons, not a rule about fat.",
+        "Bile salts stay in the lumen and are reabsorbed in the ileum. The fats leave the absorptive cell as chylomicrons, without bile salts.",
         "Lymph flows much more slowly than blood.",
-        "The villus capillaries are fenestrated and take up sugars and amino acids; their pores are simply too small for chylomicrons.",
+        "The villus capillaries are fenestrated and take up sugars, amino acids and short-chain fatty acids; their pores are simply too small for chylomicrons.",
         "Correct. Size decides the route."
       ]
     }
@@ -355,7 +355,7 @@
     ],
     "q": "A 45-year-old man had the last meter of his ileum removed eight years ago. He eats a normal diet and his stomach is healthy. He now has a large-cell anemia and numb feet. What is the most likely cause?",
     "options": [
-      "Loss of the B12 absorption site",
+      "Loss of the site where B12 bound to intrinsic factor is absorbed",
       "Loss of intrinsic factor production",
       "Loss of pancreatic proteases that free B12 from haptocorrin",
       "Loss of the lactase needed to absorb B12"
@@ -364,7 +364,7 @@
     "why": {
       "correct": "Vitamin B12 bound to intrinsic factor is absorbed only in the terminal ileum, by receptor-mediated endocytosis. Removing it stops B12 absorption. The liver's store lasts three to five years, so the deficiency appears years after surgery.",
       "options": [
-        "Correct. The terminal ileum is the only site of B12 absorption.",
+        "Correct. The terminal ileum is the only site where B12 bound to intrinsic factor is absorbed.",
         "His stomach is healthy, so parietal cells still make intrinsic factor.",
         "His pancreas is not affected by removing the ileum.",
         "Lactase splits lactose; it has no role in B12 absorption."
@@ -441,7 +441,7 @@
     ],
     "correct": 4,
     "why": {
-      "correct": "Chylomicrons are too large for the villus blood capillaries. They enter the lacteals and travel in lymph through the thoracic duct into the left subclavian vein, bypassing the liver at first.",
+      "correct": "Chylomicrons are too large for the villus blood capillaries. They enter the lacteals and travel in lymph through the thoracic duct into the veins where the left internal jugular and subclavian veins meet, bypassing the liver at first.",
       "options": [
         "This step is right. Micelles carry the digested lipids through the water next to the brush border.",
         "This step is right. The lipids cross the apical membrane; the bile salts stay in the lumen.",

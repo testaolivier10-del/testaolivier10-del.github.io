@@ -378,7 +378,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "This is heartburn from reflux. Lying down after a large meal lets acid flow back past the lower esophageal sphincter into the esophagus, whose squamous lining has no defense against it. Frequent reflux like this is GERD.",
+      "correct": "This is heartburn from reflux. Lying down after a large meal lets acid flow back past the lower esophageal sphincter into the esophagus, whose squamous lining has few defenses against it. Frequent reflux like this is GERD.",
       "options": [
         "Heart pain is usually brought on by exertion and is not relieved by antacids. Chest pain always needs heart causes ruled out, but this pattern fits reflux.",
         "Correct. Timing with meals and lying down, and relief with antacids, point to acid reflux.",
@@ -424,7 +424,7 @@
     "q": "Why does acid reflux damage the esophagus while the same acid does not damage the stomach that holds it all day?",
     "options": [
       "The esophagus has a thicker muscle layer that the acid can reach more easily",
-      "The esophageal lining is stratified squamous epithelium with no acid defense, unlike the stomach's lining",
+      "Its stratified squamous lining lacks the stomach lining's acid defenses",
       "The esophagus has a serosa that absorbs acid",
       "Acid is stronger in the esophagus than in the stomach"
     ],

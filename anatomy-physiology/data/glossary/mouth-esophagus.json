@@ -10,7 +10,7 @@
     "say": ""
   },
   "salivary-glands": {
-    "def": "Three pairs of exocrine glands (parotid, submandibular and sublingual) plus many small ones in the mouth lining, which make about 1 to 1.5 L of saliva a day under autonomic control. Saliva is mostly water, with mucus, salivary amylase (starts starch digestion), lingual lipase, lysozyme, IgA and buffers.",
+    "def": "Three pairs of exocrine glands (parotid, submandibular and sublingual) plus many small ones in the mouth lining, which make about 1 to 1.5 L of saliva a day under autonomic control. Saliva is mostly water, with mucus, salivary amylase (starts starch digestion), a trace of lingual lipase, lysozyme, IgA and buffers.",
     "roots": [["saliv-", "spittle"], ["par-", "beside"], ["ot-", "ear"], ["sub-", "below"], ["mandibul-", "lower jaw"], ["amyl-", "starch"], ["-ase", "enzyme"]],
     "say": "puh-ROT-id"
   },

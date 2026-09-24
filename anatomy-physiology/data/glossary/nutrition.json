@@ -1,0 +1,27 @@
+{
+  "nutrient-classes": {
+    "def": "The six kinds of substance food supplies: carbohydrates, lipids, proteins, vitamins, minerals and water. Macronutrients (carbohydrates, lipids, proteins and water) are needed in grams a day; micronutrients (vitamins and minerals) in milligrams or micrograms.",
+    "roots": [["nutri-", "nourish"], ["macro-", "large"], ["micro-", "small"]],
+    "say": ""
+  },
+  "essential-nutrients": {
+    "def": "Nutrients the body cannot make, or cannot make fast enough, so they must come from food: the nine essential amino acids, the essential fatty acids linoleic and alpha-linolenic acid, and every vitamin and mineral.",
+    "roots": [],
+    "say": ""
+  },
+  "vitamins": {
+    "def": "Organic molecules needed in small amounts that the body cannot make in enough amounts; most act as coenzymes or other active molecules and supply no energy. The fat-soluble vitamins (A, D, E, K) are stored and can build up; the water-soluble ones (the B vitamins and C) are stored little, except B12.",
+    "roots": [["vita-", "life"]],
+    "say": ""
+  },
+  "minerals": {
+    "def": "Inorganic elements needed from food. Major minerals, such as calcium, sodium and potassium, are needed at more than 100 mg a day; trace minerals, such as iron, zinc and iodine, at less.",
+    "roots": [],
+    "say": ""
+  },
+  "calories": {
+    "def": "The energy food releases when broken down, measured in kilocalories: the heat that raises 1 kg of water by 1 °C. Carbohydrate and protein supply about 4 kcal per gram, fat about 9, and alcohol about 7.",
+    "roots": [["calor-", "heat"], ["kilo-", "thousand"]],
+    "say": ""
+  }
+}
