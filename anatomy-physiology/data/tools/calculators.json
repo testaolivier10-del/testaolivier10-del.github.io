@@ -3,6 +3,7 @@
   "version": 1,
   "groups": [
     { "id": "foundations", "title": "Foundations" },
+    { "id": "integumentary", "title": "Integumentary system" },
     { "id": "cardiovascular", "title": "Cardiovascular system" },
     { "id": "respiratory", "title": "Respiratory system" },
     {
@@ -36,7 +37,6 @@
     },
     { "id": "development", "title": "Development and inheritance" },
     { "id": "muscular", "title": "Muscular system" },
-    { "id": "integumentary", "title": "Integumentary system" },
     { "id": "skeletal", "title": "Skeletal system" }
   ],
   "calculators": [
