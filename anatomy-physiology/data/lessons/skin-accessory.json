@@ -29,7 +29,7 @@
     "caption": "A hair in its follicle, with its sebaceous gland and arrector pili muscle. Hide the labels and name the parts of the hair, the follicle and the structures attached to it."
   },
   "chain": [
-    { "cause": "A major shock to the body, such as childbirth or a high fever, acts on scalp follicles that are growing.", "effect": "Many anagen follicles switch into catagen at the same time." },
+    { "cause": "During pregnancy, high hormone levels keep many scalp follicles in anagen longer than usual; after the birth those levels fall abruptly.", "effect": "The held-over follicles switch into catagen at the same time." },
     { "cause": "In catagen, the matrix stops dividing and the lower follicle shrinks.", "effect": "Each hair stops growing, and its base hardens into a club that stays anchored in the follicle." },
     { "cause": "The follicles enter telogen together and rest for about three months.", "effect": "The club hairs stay in place, so no extra shedding is seen yet." },
     { "cause": "The follicles start a new anagen together, and new hairs grow up beneath the club hairs.", "effect": "The club hairs are pushed out in large numbers about three months after the shock, and the new hairs replace them." }

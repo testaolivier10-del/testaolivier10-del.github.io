@@ -51,8 +51,8 @@
     "id": "anp-cross-bridge-cycle-3",
     "type": "predict",
     "level": "apply",
-    "diff": 1,
-    "predictLevel": 1,
+    "diff": 2,
+    "predictLevel": 2,
     "core": [
       "energy"
     ],
@@ -92,7 +92,7 @@
     "core": [
       "energy"
     ],
-    "q": "An experimental drug lets ATP bind to myosin heads but stops them from splitting it. A fiber treated with the drug is then stimulated. What happens?",
+    "q": "An experimental drug lets ATP bind to myosin heads but stops them from splitting it. A fiber is soaked in the drug and then stimulated over and over for a minute. What is the fiber like by the end of that minute?",
     "options": [
       "It stays slack and stretchable",
       "It goes stiff, locked in rigor",
@@ -101,11 +101,11 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Binding ATP is what releases a head from actin, so the heads detach. But splitting ATP is what recocks them, so they never return to the high-energy position needed to bind and pull. No cross-bridges cycle, no force develops, and the muscle stays slack.",
+      "correct": "Binding ATP is what releases a head from actin, so the heads detach. But splitting ATP is what recocks them. A head already cocked from an earlier split can make one stroke at most. After that it never returns to the high-energy position needed to bind and pull. No sustained force develops, and the muscle stays slack.",
       "options": [
         "Correct. Detachment works; recocking does not.",
         "Rigor needs heads stuck on actin with no ATP bound. Here ATP binds, so the heads come off.",
-        "The power stroke uses energy stored in the cocked head from an earlier split. Binding alone releases the head; it does not power a stroke.",
+        "The power stroke uses energy stored in the cocked head from an earlier split. Each head can spend that store once at most. Binding ATP releases the head but cannot recock it.",
         "The drug acts on myosin, not on the SR calcium pumps, so calcium is still cleared after stimulation."
       ]
     }
@@ -430,8 +430,8 @@
     "q": "Two days after a death, the body's muscles are limp again, although no ATP has returned. What ends rigor mortis?",
     "options": [
       "Calcium is pumped back into the SR",
-      "The myosin heads recock and let go",
-      "Enzymes inside the dead cells break down the proteins holding the filaments together",
+      "The myosin heads slowly recock and then let go of actin one by one",
+      "Enzymes in the dead cells break down the muscle proteins",
       "New ATP is made by anaerobic respiration"
     ],
     "correct": 2,

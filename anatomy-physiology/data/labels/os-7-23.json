@@ -1,0 +1,321 @@
+{
+  "figure": "os-7-23",
+  "labels": [
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [],
+      "lines": [
+        3
+      ],
+      "concept": "major-organs",
+      "box": [
+        0,
+        46,
+        112,
+        26
+      ]
+    },
+    {
+      "id": "spinal-cord-articulated",
+      "name": "Spinal cord",
+      "accept": [],
+      "lines": [
+        4
+      ],
+      "concept": "major-organs",
+      "box": [
+        931,
+        49,
+        116,
+        25
+      ]
+    },
+    {
+      "id": "spinous-process",
+      "name": "Spinous process",
+      "accept": [
+        "spine",
+        "spinous processes"
+      ],
+      "lines": [
+        5,
+        9
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        275,
+        76,
+        87,
+        50
+      ]
+    },
+    {
+      "id": "transverse-process",
+      "name": "Transverse process",
+      "accept": [
+        "transverse processes"
+      ],
+      "lines": [
+        6,
+        10
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        452,
+        82,
+        114,
+        50
+      ]
+    },
+    {
+      "id": "facet-of-superior-articular-process-articulated",
+      "name": "Facet of superior articular process",
+      "accept": [
+        "superior articular facet",
+        "superior articular process",
+        "facet of the superior articular process"
+      ],
+      "lines": [
+        7,
+        11
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        931,
+        88,
+        163,
+        50
+      ]
+    },
+    {
+      "id": "vertebral-foramen",
+      "name": "Vertebral foramen",
+      "accept": [
+        "vertebral canal"
+      ],
+      "lines": [
+        8,
+        12
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        0,
+        89,
+        91,
+        46
+      ]
+    },
+    {
+      "id": "intervertebral-disc",
+      "name": "Intervetebral disc",
+      "accept": [
+        "intervertebral disc",
+        "intervertebral disk",
+        "disc",
+        "disk"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "intervertebral-disc",
+      "box": [
+        454,
+        145,
+        170,
+        21
+      ]
+    },
+    {
+      "id": "facet-for-head-of-rib-articulated",
+      "name": "Facet for head of rib",
+      "accept": [
+        "costal facet",
+        "facet for the head of the rib",
+        "superior costal facet",
+        "inferior costal facet"
+      ],
+      "lines": [
+        14,
+        17
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        931,
+        175,
+        144,
+        47
+      ]
+    },
+    {
+      "id": "facet-of-superior-articular-process",
+      "name": "Facet of superior articular process",
+      "accept": [
+        "superior articular facet",
+        "superior articular process",
+        "facet of the superior articular process"
+      ],
+      "lines": [
+        15,
+        19,
+        20,
+        22
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        0,
+        187,
+        84,
+        100
+      ]
+    },
+    {
+      "id": "vertebral-arch",
+      "name": "Vertebral arch",
+      "accept": [
+        "neural arch"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        453,
+        187,
+        141,
+        21
+      ]
+    },
+    {
+      "id": "lamina",
+      "name": "Lamina",
+      "accept": [
+        "laminae",
+        "lamina (vertebra)"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        465,
+        212,
+        80,
+        21
+      ]
+    },
+    {
+      "id": "pedicle",
+      "name": "Pedicle",
+      "accept": [
+        "pedicles",
+        "pedicle (vertebra)"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        465,
+        241,
+        79,
+        21
+      ]
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "accept": [
+        "vertebral body",
+        "centrum"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        454,
+        277,
+        59,
+        25
+      ]
+    },
+    {
+      "id": "inferior-articular-process",
+      "name": "Inferior articular process",
+      "accept": [
+        "inferior articular facet",
+        "inferior articular processes"
+      ],
+      "lines": [
+        24,
+        28
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        931,
+        300,
+        158,
+        50
+      ]
+    },
+    {
+      "id": "facet-for-head-of-rib",
+      "name": "Facet for head of rib",
+      "accept": [
+        "costal facet",
+        "facet for the head of the rib",
+        "superior costal facet"
+      ],
+      "lines": [
+        25,
+        27
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        0,
+        304,
+        107,
+        46
+      ]
+    },
+    {
+      "id": "spinal-nerve-intervertebral-foramen",
+      "name": "Spinal nerve exiting through intervertebral foramen",
+      "accept": [
+        "spinal nerve",
+        "intervertebral foramen"
+      ],
+      "lines": [
+        26,
+        30,
+        32
+      ],
+      "concept": "spinal-nerve",
+      "box": [
+        452,
+        317,
+        211,
+        71
+      ]
+    },
+    {
+      "id": "spinous-process-articulated",
+      "name": "Spinous process",
+      "accept": [
+        "spine",
+        "spinous processes"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        931,
+        360,
+        163,
+        25
+      ]
+    }
+  ]
+}

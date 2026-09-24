@@ -282,7 +282,7 @@
     "options": [
       "The dark sample has several times as many melanocytes",
       "The light sample has melanocytes only in the dermis",
-      "The dark sample has larger, more pigmented melanosomes in its keratinocytes",
+      "The dark sample has larger, darker melanosomes",
       "The light sample has no melanin at all"
     ],
     "correct": 2,
@@ -493,7 +493,7 @@
     "options": [
       "More melanin moving into the keratinocytes",
       "Carotene collecting in the stratum corneum",
-      "Fewer red blood cells in the dermis",
+      "Fewer red blood cells passing through the dermal capillaries",
       "Vasodilation that fills dermal capillaries with more blood"
     ],
     "correct": 3,
@@ -550,7 +550,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "Langerhans cells come from the bone marrow and sit mainly in the stratum spinosum. Their branching arms spread between keratinocytes, and they take up microbes and other foreign material that enter the epidermis.",
+      "correct": "Langerhans cells sit mainly in the stratum spinosum. Their branching arms spread between keratinocytes, and they take up microbes and other foreign material that enter the epidermis.",
       "options": [
         "Melanin is made by melanocytes in the stratum basale, not by Langerhans cells.",
         "The stratum corneum is dead cells; shedding happens as desmosomes between surface cells are broken down.",
@@ -597,17 +597,17 @@
     "q": "A new pair of shoes rubs one spot on Mia's heel all day, and a fluid-filled blister forms. Where has the fluid collected?",
     "options": [
       "Between the dermis and the hypodermis",
-      "Inside the stratum basale cells",
-      "At the junction of epidermis and dermis",
+      "Within the upper living layers of the epidermis",
+      "At the junction between the epidermis and the dermis",
       "Inside the adipose tissue of the hypodermis"
     ],
-    "correct": 2,
+    "correct": 1,
     "why": {
-      "correct": "Repeated rubbing shears the epidermis against the dermis. Where the layers or the lower epidermal cells pull apart, fluid from the dermis's capillaries seeps into the gap and lifts the epidermis into a blister. The dermal papillae normally resist that shearing by interlocking the two layers.",
+      "correct": "Repeated rubbing slides the stiff upper epidermis back and forth over the layers beneath. The dermal papillae lock the epidermis to the dermis, so the living keratinocytes of the upper stratum spinosum tear apart first. Fluid from the dermis's capillaries seeps into the split and lifts a roof of stratum granulosum and stratum corneum.",
       "options": [
-        "The hypodermis is loosely attached and slides; friction separates the more tightly joined epidermis and dermis instead.",
-        "The fluid collects in a space between cells or layers, not inside the cells.",
-        "Correct. A friction blister is a split at or just above the junction of epidermis and dermis.",
+        "The hypodermis is loosely attached and slides; rubbing tears the epidermis itself instead.",
+        "Correct. A friction blister is a split within the epidermis, in the upper stratum spinosum.",
+        "The dermal papillae grip the epidermis so firmly that the living epidermal cells above them tear apart first. Only some severe burns and blistering diseases split the skin at this junction.",
         "Adipose tissue lies deep in the hypodermis, far below where rubbing splits the skin."
       ]
     }

@@ -169,7 +169,7 @@
       "communication",
       "energy"
     ],
-    "q": "An experimental drug blocks the calcium pumps of the sarcoplasmic reticulum. A single action potential is then triggered. Predict the change in each variable, compared with a normal fiber.",
+    "q": "An experimental drug blocks the calcium pumps of the sarcoplasmic reticulum. A single action potential is triggered immediately afterward. Predict the change in each variable, compared with a normal fiber.",
     "variables": [
       {
         "name": "Calcium released from the SR by this action potential",
@@ -315,7 +315,7 @@
     "q": "Daniel has an inherited defect that makes his ryanodine receptors leak calcium when he breathes certain anesthetic gases. During surgery his muscles go rigid and his temperature climbs fast. What best explains both signs?",
     "options": [
       "The gas blocks acetylcholinesterase and the muscles fire nonstop",
-      "Continuous calcium release keeps the filaments pulling, while pumps and myosin burn ATP and release heat",
+      "Nonstop calcium release keeps filaments pulling and burns ATP, releasing heat",
       "The gas stops the SR calcium pumps and no ATP is used",
       "The defect blocks action potentials in the T tubules"
     ],
@@ -425,7 +425,7 @@
     ],
     "q": "What is excitation–contraction coupling?",
     "options": [
-      "The release of acetylcholine by a motor neuron",
+      "The release of acetylcholine by a motor neuron onto the motor end plate",
       "The link between an action potential on the sarcolemma and the pulling of the myofilaments",
       "The joining of muscle fibers by gap junctions",
       "The binding of myosin heads to actin"
@@ -461,9 +461,9 @@
       "correct": "The SR releases only part of its store with each action potential, and the pumps have not yet cleared the first pulse. The second release adds to what is left, so calcium climbs higher. A later topic shows how this lets the nervous system grade force.",
       "options": [
         "Correct. The second pulse stacks on the first.",
-        "The pumps run continuously; an action potential opens the release channels, it does not turn on the pumps.",
-        "One action potential does not empty the SR; there is plenty left for the next.",
-        "The refractory period of the sarcolemma lasts only a few milliseconds; at 15 ms the fiber can fire again."
+        "The pumps run continuously, but the second release adds calcium faster than they can remove it.",
+        "One action potential releases only part of the SR store, and at 15 ms the refractory period is over. The second action potential fires and releases more calcium, so the level cannot hold steady.",
+        "Calcium in the sarcoplasm does not fall to zero, and here a new release is adding calcium rather than removing it."
       ]
     }
   },

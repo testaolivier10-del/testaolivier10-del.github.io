@@ -1,0 +1,215 @@
+{
+  "figure": "os-7-20",
+  "labels": [
+    {
+      "id": "cervical-vertebrae",
+      "name": "Cervical vertebrae",
+      "accept": [
+        "cervical vertebra",
+        "cervical",
+        "c1 to c7",
+        "c1-c7"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        555,
+        121,
+        211,
+        22
+      ]
+    },
+    {
+      "id": "cervical-curve",
+      "name": "Cervical curve",
+      "accept": [
+        "cervical curvature"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "spinal-curvatures",
+      "box": [
+        516,
+        148,
+        288,
+        26
+      ]
+    },
+    {
+      "id": "thoracic-vertebrae",
+      "name": "Thoracic vertebrae",
+      "accept": [
+        "thoracic vertebra",
+        "thoracic",
+        "t1 to t12",
+        "t1-t12"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        553,
+        255,
+        215,
+        22
+      ]
+    },
+    {
+      "id": "thoracic-curve",
+      "name": "Thoracic curve",
+      "accept": [
+        "thoracic curvature"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "spinal-curvatures",
+      "box": [
+        511,
+        282,
+        298,
+        26
+      ]
+    },
+    {
+      "id": "intervertebral-disc",
+      "name": "Intervertebral disc",
+      "accept": [
+        "intervertebral disk",
+        "disc",
+        "disk"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "intervertebral-disc",
+      "box": [
+        0,
+        370,
+        140,
+        49
+      ]
+    },
+    {
+      "id": "lumbar-vertebrae",
+      "name": "Lumbar vertebrae",
+      "accept": [
+        "lumbar vertebra",
+        "lumbar",
+        "l1 to l5",
+        "l1-l5"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        516,
+        403,
+        288,
+        26
+      ]
+    },
+    {
+      "id": "lumbar-curve",
+      "name": "Lumbar curve",
+      "accept": [
+        "lumbar curvature"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "spinal-curvatures",
+      "box": [
+        564,
+        430,
+        192,
+        22
+      ]
+    },
+    {
+      "id": "sacrum",
+      "name": "Sacrum",
+      "accept": [
+        "sacral bone"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        0,
+        493,
+        85,
+        22
+      ]
+    },
+    {
+      "id": "sacrum-and-coccyx",
+      "name": "Fused vertebrae of sacrum and coccyx",
+      "accept": [
+        "sacrum and coccyx",
+        "sacrum",
+        "fused vertebrae",
+        "sacral and coccygeal vertebrae"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        519,
+        507,
+        276,
+        54
+      ]
+    },
+    {
+      "id": "coccyx",
+      "name": "Coccyx",
+      "accept": [
+        "tailbone",
+        "tail bone",
+        "coccygeal vertebrae"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        0,
+        536,
+        82,
+        27
+      ]
+    },
+    {
+      "id": "sacrococcygeal-curve",
+      "name": "Sacrococcygeal curve",
+      "accept": [
+        "sacral curve",
+        "sacrococcygeal curvature",
+        "pelvic curve"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "spinal-curvatures",
+      "box": [
+        544,
+        561,
+        226,
+        27
+      ]
+    }
+  ]
+}

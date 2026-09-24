@@ -25,7 +25,7 @@
     "say": "mel-uh-NOH-muh"
   },
   "skin-disorders": {
-    "def": "Common skin conditions: pressure injury (bedsore) from compressed capillaries over bone; acne from plugged, inflamed follicles; stretch marks from torn dermal fibers; callus and corn from thickened stratum corneum; albinism (melanocytes make no melanin); vitiligo (melanocytes destroyed in patches); eczema (weak barrier with inflammation).",
+    "def": "Common skin conditions: pressure injury (bedsore) from compressed capillaries over bone; acne from plugged, inflamed follicles; stretch marks from torn dermal fibers; callus and corn from thickened stratum corneum; albinism (melanocytes make little or no melanin); vitiligo (melanocytes destroyed in patches); eczema (weak barrier with inflammation).",
     "roots": [["albin-", "white"]],
     "say": "vit-ih-LY-go"
   }

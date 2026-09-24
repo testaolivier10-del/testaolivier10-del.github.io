@@ -1,0 +1,249 @@
+{
+  "figure": "os-7-27",
+  "labels": [
+    {
+      "id": "superior-costal-facet",
+      "name": "Superior costal facet",
+      "accept": [
+        "superior costal demifacet",
+        "costal facet"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        543,
+        8,
+        197,
+        26
+      ]
+    },
+    {
+      "id": "superior-articular-facets",
+      "name": "Superior articular facets",
+      "accept": [
+        "superior articular facet",
+        "superior articular process"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        0,
+        11,
+        144,
+        46
+      ]
+    },
+    {
+      "id": "body-of-vertebra",
+      "name": "Body of vertebra",
+      "accept": [
+        "vertebral body",
+        "body",
+        "body of the vertebra"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        543,
+        68,
+        165,
+        26
+      ]
+    },
+    {
+      "id": "facet-for-tubercle-of-rib",
+      "name": "Facet for tubercle of rib",
+      "accept": [
+        "transverse costal facet",
+        "facet for the tubercle of the rib",
+        "costal facet"
+      ],
+      "lines": [
+        8,
+        10
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        0,
+        99,
+        135,
+        46
+      ]
+    },
+    {
+      "id": "head-of-rib",
+      "name": "Head of rib",
+      "accept": [
+        "head of the rib",
+        "rib head"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "ribs",
+      "box": [
+        543,
+        130,
+        114,
+        21
+      ]
+    },
+    {
+      "id": "intervertebral-disc",
+      "name": "Intervertebral disc",
+      "accept": [
+        "intervertebral disk",
+        "disc",
+        "disk"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "intervertebral-disc",
+      "box": [
+        544,
+        182,
+        177,
+        21
+      ]
+    },
+    {
+      "id": "transverse-processes",
+      "name": "Tranverse processes",
+      "accept": [
+        "transverse processes",
+        "transverse process"
+      ],
+      "lines": [
+        16,
+        22
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        0,
+        206,
+        103,
+        50
+      ]
+    },
+    {
+      "id": "neck-of-rib",
+      "name": "Neck of rib",
+      "accept": [
+        "neck of the rib",
+        "rib neck"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "ribs",
+      "box": [
+        543,
+        237,
+        111,
+        21
+      ]
+    },
+    {
+      "id": "body-of-vertebra-lower",
+      "name": "Body of vertebra",
+      "accept": [
+        "vertebral body",
+        "body",
+        "body of the vertebra"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        543,
+        293,
+        165,
+        25
+      ]
+    },
+    {
+      "id": "spinous-process",
+      "name": "Spinous process",
+      "accept": [
+        "spinous processes",
+        "spine"
+      ],
+      "lines": [
+        37,
+        41
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        0,
+        340,
+        83,
+        50
+      ]
+    },
+    {
+      "id": "tubercle-of-rib",
+      "name": "Tubercle of rib",
+      "accept": [
+        "tubercle of the rib",
+        "rib tubercle"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "ribs",
+      "box": [
+        542,
+        346,
+        144,
+        22
+      ]
+    },
+    {
+      "id": "inferior-costal-facet",
+      "name": "Inferior costal facet",
+      "accept": [
+        "inferior costal demifacet",
+        "costal facet"
+      ],
+      "lines": [
+        44
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        544,
+        404,
+        186,
+        21
+      ]
+    },
+    {
+      "id": "angle-of-rib",
+      "name": "Angle of rib",
+      "accept": [
+        "angle of the rib",
+        "rib angle",
+        "costal angle"
+      ],
+      "lines": [
+        46,
+        47
+      ],
+      "concept": "ribs",
+      "box": [
+        291,
+        452,
+        66,
+        46
+      ]
+    }
+  ]
+}

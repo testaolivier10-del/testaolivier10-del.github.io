@@ -1,6 +1,6 @@
 {
   "topic": "skin-functions",
-  "hook": "<p>Marcus, 17, collapses during football practice on a muggy August afternoon. His shirt is soaked and sweat is pouring off him, yet his temperature is 40 °C. The trainer moves him into the shade, strips off his gear and sprays him with water while a fan blows over him. To see why he overheated while sweating so hard, and why the fan and spray work, you need to know how your skin trades heat with the air.</p>",
+  "hook": "<p>Marcus, 17, collapses during football practice on a muggy August afternoon. His shirt is soaked and sweat is pouring off him, yet his temperature is 40 °C. The trainer moves him into the shade, strips off his gear and sprays him with water in front of a fan while a tub of ice water is filled, then lowers him into it. To see why he overheated while sweating so hard, and why water and moving air cool him, you need to know how your skin trades heat with the air.</p>",
   "prereq": [
     {
       "q": "In a negative feedback loop, what does the response do to the stimulus?",

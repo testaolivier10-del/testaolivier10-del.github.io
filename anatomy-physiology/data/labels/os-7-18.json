@@ -1,0 +1,82 @@
+{
+  "figure": "os-7-18",
+  "labels": [
+    {
+      "id": "frontal-sinus",
+      "name": "Frontal sinus",
+      "accept": [
+        "frontal sinuses"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "paranasal-sinuses",
+      "box": [
+        400,
+        145,
+        69,
+        42
+      ]
+    },
+    {
+      "id": "sphenoid-sinus",
+      "name": "Sphenoid sinus",
+      "accept": [
+        "sphenoidal sinus",
+        "sphenoid sinuses"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "paranasal-sinuses",
+      "box": [
+        389,
+        213,
+        91,
+        42
+      ]
+    },
+    {
+      "id": "ethmoid-air-cells",
+      "name": "Ethmoid air cells",
+      "accept": [
+        "ethmoid air cell",
+        "ethmoid sinus",
+        "ethmoid sinuses",
+        "ethmoidal air cells"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "paranasal-sinuses",
+      "box": [
+        395,
+        270,
+        80,
+        42
+      ]
+    },
+    {
+      "id": "maxillary-sinus",
+      "name": "Maxillary sinus",
+      "accept": [
+        "maxillary sinuses",
+        "maxillary antrum"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "paranasal-sinuses",
+      "box": [
+        391,
+        344,
+        87,
+        42
+      ]
+    }
+  ]
+}

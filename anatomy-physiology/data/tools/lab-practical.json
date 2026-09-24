@@ -4611,7 +4611,7 @@
        ],
        "concept": "dermis",
        "taught": "skin-layers",
-       "fn": "The thick connective tissue layer under the epidermis. It holds blood vessels, nerves and lymphatic vessels, and its collagen and elastic fibers give skin its strength and stretch.",
+       "fn": "The thick connective tissue layer under the epidermis. It holds blood vessels and nerves, and its collagen and elastic fibers give skin its strength and stretch.",
        "follow": {
         "q": "Which layer of the skin gives it most of its strength and elasticity?",
         "options": [
@@ -5051,7 +5051,7 @@
        ],
        "concept": "epidermal-strata",
        "taught": "skin-layers",
-       "fn": "The layer above the stratum basale, 8 to 10 cells thick. Its keratinocytes are joined by many desmosomes and begin to make keratin; epidermal dendritic cells, which catch invaders, are scattered here."
+       "fn": "The layer above the stratum basale, 8 to 10 cells thick. Its keratinocytes are joined by many desmosomes and begin to make keratin; Langerhans cells, immune cells that catch invaders,, are scattered among them."
       },
       {
        "id": "stratum-basale",
@@ -5478,7 +5478,7 @@
        ],
        "concept": "dermis",
        "taught": "skin-layers",
-       "fn": "The thick connective tissue layer under the epidermis. It holds blood vessels, nerves and lymphatic vessels, and its collagen and elastic fibers give skin its strength and stretch."
+       "fn": "The thick connective tissue layer under the epidermis. It holds blood vessels and nerves, and its collagen and elastic fibers give skin its strength and stretch."
       },
       {
        "id": "hair-follicle",
@@ -11502,6 +11502,2022 @@
         20
        ],
        "why": "A letter on the arrow standing for supination; it would give the movement away."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skeletal-muscle-organization",
+   "title": "Skeletal muscle organization",
+   "chapter": "muscle-tissue",
+   "topic": "skeletal-muscle-structure",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-10-3",
+     "topic": "skeletal-muscle-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "skeletal-muscle",
+       "name": "Skeletal muscle",
+       "accept": [
+        "muscle",
+        "whole muscle"
+       ],
+       "box": [
+        99,
+        0,
+        213,
+        28
+       ],
+       "concept": "skeletal-muscle-tissue",
+       "taught": "muscle-tissue-overview",
+       "fn": "A whole skeletal muscle, an organ built from many bundles of muscle fibers plus connective tissue, blood vessels and nerves. Its connective tissue wrappings merge into the tendon that pulls on bone."
+      },
+      {
+       "id": "epimysium",
+       "name": "Epimysium",
+       "accept": [],
+       "box": [
+        433,
+        1,
+        150,
+        33
+       ],
+       "concept": "muscle-wrappings",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The dense irregular connective tissue sheath around the whole muscle. It holds the muscle together, separates it from its neighbors, and continues into the tendon so the pull of the fibers reaches the bone.",
+       "follow": {
+        "q": "A surgeon repairing a torn muscle stitches the tough outer sheath that is continuous with the tendon. Which layer is being stitched?",
+        "options": [
+         "Endomysium",
+         "Epimysium",
+         "Perimysium",
+         "Myofibril"
+        ],
+        "correct": 1,
+        "why": "The epimysium is the dense irregular connective tissue around the whole muscle, and it blends into the tendon. The perimysium and endomysium are deeper, around fascicles and single fibers, and a myofibril is inside a fiber.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "perimysium",
+       "name": "Perimysium",
+       "accept": [],
+       "box": [
+        930,
+        371,
+        159,
+        33
+       ],
+       "concept": "muscle-wrappings",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The middle connective tissue layer, wrapping each fascicle (bundle of fibers). It carries the blood vessels and nerves into the muscle and lets fascicles slide a little past one another.",
+       "follow": {
+        "q": "Which connective tissue layer wraps each bundle of muscle fibers?",
+        "options": [
+         "Endomysium",
+         "Epimysium",
+         "Perimysium",
+         "Sarcolemma",
+         "Sarcoplasmic reticulum"
+        ],
+        "correct": 2,
+        "why": "The perimysium surrounds each fascicle. The epimysium wraps the whole muscle, the endomysium wraps each single fiber, the sarcolemma is the fiber's own plasma membrane and the sarcoplasmic reticulum is inside the fiber.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "muscle-fascicle",
+       "name": "Muscle fascicle",
+       "accept": [
+        "fascicle",
+        "fasciculus",
+        "muscle fascicles"
+       ],
+       "box": [
+        100,
+        387,
+        205,
+        28
+       ],
+       "concept": "muscle-wrappings",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A bundle of muscle fibers wrapped in perimysium. Fascicles are the \"grain\" you see in a cut of meat."
+      },
+      {
+       "id": "endomysium",
+       "name": "Endomysium",
+       "accept": [],
+       "box": [
+        930,
+        410,
+        172,
+        33
+       ],
+       "concept": "muscle-wrappings",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The thin layer of areolar connective tissue and reticular fibers around each individual muscle fiber. It holds the capillaries and nerve branches that serve that one fiber."
+      },
+      {
+       "id": "muscle-fiber",
+       "name": "Muscle fiber",
+       "accept": [
+        "muscle fibre",
+        "muscle cell",
+        "myocyte",
+        "myofiber"
+       ],
+       "box": [
+        100,
+        774,
+        166,
+        28
+       ],
+       "concept": "muscle-fiber-basic",
+       "taught": "muscle-tissue-overview",
+       "fn": "One skeletal muscle cell: long, cylindrical, striated and multinucleated, formed when many embryonic cells fused. It runs much of the length of its fascicle.",
+       "follow": {
+        "q": "Why does one skeletal muscle fiber have many nuclei?",
+        "options": [
+         "It copies its nucleus many times without dividing as it grows",
+         "It formed by the fusion of many embryonic cells",
+         "It takes up nuclei from the surrounding connective tissue",
+         "Each myofibril carries its own nucleus"
+        ],
+        "correct": 1,
+        "why": "Each skeletal muscle fiber forms when many embryonic cells fuse, and each contributes a nucleus. The nuclei sit just under the sarcolemma; myofibrils have none of their own.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "sarcolemma",
+       "name": "Sarcolemma",
+       "accept": [
+        "plasma membrane of the muscle fiber",
+        "muscle cell membrane"
+       ],
+       "box": [
+        848,
+        868,
+        173,
+        28
+       ],
+       "concept": "sarcolemma",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The plasma membrane of a muscle fiber. Like any excitable membrane it holds a resting membrane potential and carries action potentials along the fiber."
+      },
+      {
+       "id": "myofibril",
+       "name": "Myofibril",
+       "accept": [
+        "myofibrils"
+       ],
+       "box": [
+        663,
+        1031,
+        116,
+        33
+       ],
+       "concept": "myofibril",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A long rod of contractile proteins packed inside the fiber, running its whole length. Each is a chain of sarcomeres; together the myofibrils fill most of the fiber."
+      }
+     ],
+     "covered": [
+      {
+       "id": "satellite-cell",
+       "box": [
+        848,
+        535,
+        164,
+        28
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-10-7",
+     "topic": "skeletal-muscle-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "sarcolemma",
+       "name": "Sarcolemma",
+       "accept": [
+        "muscle cell membrane"
+       ],
+       "box": [
+        415,
+        56,
+        118,
+        19
+       ],
+       "concept": "sarcolemma",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The muscle fiber's plasma membrane. At intervals it dips inward as T tubules, so a signal on the surface can reach deep into the fiber."
+      },
+      {
+       "id": "sarcoplasmic-reticulum",
+       "name": "Sarcoplasmic reticulum",
+       "accept": [
+        "sr"
+       ],
+       "box": [
+        415,
+        171,
+        125,
+        40
+       ],
+       "concept": "sarcoplasmic-reticulum",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The muscle fiber's specialized smooth endoplasmic reticulum, a network of tubes wrapped around each myofibril. It stores calcium ions and releases them into the sarcoplasm."
+      },
+      {
+       "id": "terminal-cisternae",
+       "name": "Terminal cisternae",
+       "accept": [
+        "terminal cisterna",
+        "terminal cistern",
+        "lateral sacs"
+       ],
+       "box": [
+        414,
+        241,
+        165,
+        19
+       ],
+       "concept": "sarcoplasmic-reticulum",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The enlarged ends of the sarcoplasmic reticulum on either side of a T tubule. They hold the largest calcium store, right where the signal arrives."
+      },
+      {
+       "id": "t-tubule",
+       "name": "T-tubule",
+       "accept": [
+        "t tubules",
+        "transverse tubule",
+        "transverse tubules"
+       ],
+       "box": [
+        414,
+        296,
+        82,
+        19
+       ],
+       "concept": "t-tubule",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A transverse tubule: an inward fold of the sarcolemma that runs across the fiber between the terminal cisternae. It carries the electrical signal from the surface into the fiber's interior.",
+       "follow": {
+        "q": "What would a fiber with no T tubules have trouble doing?",
+        "options": [
+         "Storing calcium ions for release into the sarcoplasm",
+         "Carrying the surface signal deep into the fiber",
+         "Making ATP by aerobic respiration",
+         "Anchoring thin filaments at the ends of the sarcomere"
+        ],
+        "correct": 1,
+        "why": "T tubules are inward folds of the sarcolemma that bring the action potential into the fiber's interior, next to the sarcoplasmic reticulum. Calcium storage is the sarcoplasmic reticulum's job, mitochondria make ATP and Z discs anchor thin filaments.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "triad",
+       "name": "Triad",
+       "accept": [
+        "triads"
+       ],
+       "box": [
+        414,
+        348,
+        56,
+        19
+       ],
+       "concept": "t-tubule",
+       "taught": "skeletal-muscle-structure",
+       "fn": "One T tubule with the two terminal cisternae that flank it. This is where the electrical signal in the T tubule is passed to the sarcoplasmic reticulum.",
+       "follow": {
+        "q": "A triad is made of which structures?",
+        "options": [
+         "Two T tubules on either side of one terminal cisterna",
+         "One T tubule and two terminal cisternae",
+         "A Z disc with the two I bands that flank it",
+         "One myofibril and two mitochondria"
+        ],
+        "correct": 1,
+        "why": "Each T tubule is flanked by a terminal cisterna of the sarcoplasmic reticulum on either side, giving three structures in a row.",
+        "level": "recall"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sarcomere",
+   "title": "The sarcomere",
+   "chapter": "muscle-tissue",
+   "topic": "skeletal-muscle-structure",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-10-4",
+     "topic": "skeletal-muscle-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "muscle-fiber",
+       "name": "Muscle fiber",
+       "accept": [
+        "muscle fibre",
+        "muscle cell",
+        "myocyte",
+        "myofiber"
+       ],
+       "box": [
+        177,
+        0,
+        114,
+        20
+       ],
+       "concept": "muscle-fiber-basic",
+       "taught": "muscle-tissue-overview",
+       "fn": "One skeletal muscle cell: long, cylindrical, striated and multinucleated. Its striations come from the lined-up sarcomeres of its myofibrils."
+      },
+      {
+       "id": "nucleus",
+       "name": "Nucleus",
+       "accept": [
+        "nuclei"
+       ],
+       "box": [
+        0,
+        0,
+        79,
+        19
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "One of the many nuclei of a skeletal muscle fiber, pressed just under the sarcolemma at the edge of the cell because myofibrils fill the middle."
+      },
+      {
+       "id": "mitochondrion",
+       "name": "Mitochondrion",
+       "accept": [
+        "mitochondria"
+       ],
+       "box": [
+        629,
+        47,
+        129,
+        20
+       ],
+       "concept": "mitochondrion",
+       "taught": "organelles",
+       "fn": "Mitochondria sit between the myofibrils and make ATP by aerobic respiration, the fuel the contractile proteins use.",
+       "follow": {
+        "q": "Muscle fibers are packed with mitochondria between their myofibrils. What does that placement suggest?",
+        "options": [
+         "Contractile proteins use a lot of ATP",
+         "Mitochondria store the fiber's calcium ions",
+         "Mitochondria anchor the thick and thin filaments",
+         "They are what make the striations visible"
+        ],
+        "correct": 0,
+        "why": "Mitochondria make ATP by aerobic respiration, and placing them right beside the myofibrils puts the fuel next to the proteins that spend it. Calcium is stored in the sarcoplasmic reticulum, and striations come from the filament bands.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "sarcolemma",
+       "name": "Sarcolemma",
+       "accept": [
+        "muscle cell membrane"
+       ],
+       "box": [
+        628,
+        82,
+        118,
+        20
+       ],
+       "concept": "sarcolemma",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The plasma membrane of the muscle fiber, which carries action potentials along the fiber and into its T tubules."
+      },
+      {
+       "id": "light-i-band",
+       "name": "Light I band",
+       "accept": [
+        "i band",
+        "isotropic band"
+       ],
+       "box": [
+        2,
+        116,
+        62,
+        42
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The light stripe on the fiber's surface: the I bands of all the myofibrils lined up, where only thin filaments lie."
+      },
+      {
+       "id": "myofibril",
+       "name": "Myofibril",
+       "accept": [
+        "myofibrils"
+       ],
+       "box": [
+        531,
+        205,
+        81,
+        24
+       ],
+       "concept": "myofibril",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A long rod of contractile proteins running the length of the fiber, built from sarcomeres placed end to end."
+      },
+      {
+       "id": "dark-a-band",
+       "name": "Dark A band",
+       "accept": [
+        "a band",
+        "anisotropic band"
+       ],
+       "box": [
+        184,
+        262,
+        116,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The dark stripe on the fiber's surface: the A bands of all the myofibrils lined up, the region that holds the thick filaments."
+      },
+      {
+       "id": "sarcoplasmic-reticulum",
+       "name": "Sarcoplasmic reticulum",
+       "accept": [
+        "sr"
+       ],
+       "box": [
+        0,
+        302,
+        124,
+        43
+       ],
+       "concept": "sarcoplasmic-reticulum",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The network of smooth endoplasmic reticulum that wraps each myofibril. It stores calcium ions and releases them when the fiber is stimulated."
+      },
+      {
+       "id": "sarcomere",
+       "name": "Sarcomere",
+       "accept": [
+        "sarcomeres"
+       ],
+       "box": [
+        354,
+        309,
+        104,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The repeating unit of a myofibril, from one Z disc to the next. It is the smallest unit that contracts, and its bands give the fiber its striations.",
+       "follow": {
+        "q": "A sarcomere is the region between which two structures?",
+        "options": [
+         "Two M lines",
+         "Two H zones",
+         "Two Z discs",
+         "Two A bands",
+         "The two ends of a thick filament"
+        ],
+        "correct": 2,
+        "why": "A sarcomere runs from one Z disc to the next, with the M line in its center. The A band and H zone lie inside one sarcomere, and a thick filament spans only the A band.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "thin-filament",
+       "name": "Thin (actin) filament",
+       "accept": [
+        "actin filament",
+        "actin",
+        "thin filaments"
+       ],
+       "box": [
+        110,
+        349,
+        106,
+        42
+       ],
+       "concept": "thin-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The thinner filaments, made mostly of actin with the regulatory proteins troponin and tropomyosin. They are anchored at the Z discs and reach toward the center of the sarcomere."
+      },
+      {
+       "id": "thick-filament",
+       "name": "Thick (myosin) filament",
+       "accept": [
+        "myosin filament",
+        "myosin",
+        "thick filaments"
+       ],
+       "box": [
+        667,
+        349,
+        133,
+        42
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The thicker filaments, made of myosin, anchored at the M line in the center of the sarcomere. Their myosin heads reach out toward the thin filaments."
+      },
+      {
+       "id": "h-zone",
+       "name": "H zone",
+       "accept": [
+        "h band"
+       ],
+       "box": [
+        361,
+        373,
+        71,
+        20
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The central part of the A band where there are thick filaments but no overlapping thin filaments, so it looks lighter than the rest of the A band."
+      },
+      {
+       "id": "z-disc",
+       "name": "Z disc",
+       "accept": [
+        "z disk",
+        "z line"
+       ],
+       "box": [
+        217,
+        374,
+        63,
+        20
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The protein disc that marks each end of a sarcomere and anchors the thin filaments."
+      },
+      {
+       "id": "z-disc-2",
+       "name": "Z disc",
+       "accept": [
+        "z disk",
+        "z line"
+       ],
+       "box": [
+        509,
+        374,
+        63,
+        20
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The protein disc that marks each end of a sarcomere and anchors the thin filaments."
+      },
+      {
+       "id": "i-band",
+       "name": "I band",
+       "accept": [
+        "light i band",
+        "isotropic band"
+       ],
+       "box": [
+        224,
+        622,
+        64,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The light band on either side of a Z disc, where there are thin filaments but no thick filaments. Each I band is shared by two neighboring sarcomeres.",
+       "follow": {
+        "q": "Why does the I band look light?",
+        "options": [
+         "It contains thin filaments but no thick filaments",
+         "It contains only thick filaments, which let light through",
+         "It holds no filaments at all, only sarcoplasm",
+         "It is where the fiber's many nuclei are lined up"
+        ],
+        "correct": 0,
+        "why": "The I band holds only the thin actin filaments, which let more light through. The dark A band is where the thick myosin filaments lie.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "a-band",
+       "name": "A band",
+       "accept": [
+        "dark a band",
+        "anisotropic band"
+       ],
+       "box": [
+        364,
+        622,
+        72,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The dark band in the middle of the sarcomere that spans the full length of the thick filaments, including where they overlap thin filaments."
+      },
+      {
+       "id": "i-band-2",
+       "name": "I band",
+       "accept": [
+        "light i band",
+        "isotropic band"
+       ],
+       "box": [
+        514,
+        622,
+        63,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The light band on either side of a Z disc, where there are thin filaments but no thick filaments. Each I band is shared by two neighboring sarcomeres."
+      },
+      {
+       "id": "m-line",
+       "name": "M line",
+       "accept": [
+        "m disc"
+       ],
+       "box": [
+        653,
+        622,
+        62,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The line in the middle of the sarcomere where proteins hold the thick filaments together at their centers."
+      }
+     ]
+    },
+    {
+     "figure": "os-10-5",
+     "topic": "skeletal-muscle-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "sarcomere",
+       "name": "Sarcomere",
+       "accept": [],
+       "box": [
+        356,
+        1,
+        120,
+        21
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The repeating contractile unit of a myofibril, running from one Z line to the next."
+      },
+      {
+       "id": "h-zone",
+       "name": "H zone",
+       "accept": [
+        "h band"
+       ],
+       "box": [
+        378,
+        39,
+        78,
+        21
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The central region of the A band that holds thick filaments only, with no overlapping thin filaments.",
+       "follow": {
+        "q": "Which part of the sarcomere contains thick filaments but no thin filaments?",
+        "options": [
+         "The I band",
+         "The H zone",
+         "The Z disc",
+         "The whole A band"
+        ],
+        "correct": 1,
+        "why": "The H zone is the central part of the A band where thick filaments are not overlapped by thin ones. The rest of the A band has both, and the I band has only thin filaments.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "m-line",
+       "name": "M line",
+       "accept": [
+        "m disc"
+       ],
+       "box": [
+        384,
+        79,
+        67,
+        21
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The line in the center of the sarcomere where the thick filaments are anchored to one another."
+      },
+      {
+       "id": "z-line",
+       "name": "Z line",
+       "accept": [
+        "z disc",
+        "z disk"
+       ],
+       "box": [
+        177,
+        83,
+        64,
+        21
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The Z line (Z disc) at each end of the sarcomere, where the thin filaments of neighboring sarcomeres are anchored."
+      },
+      {
+       "id": "z-line-2",
+       "name": "Z line",
+       "accept": [
+        "z disc",
+        "z disk"
+       ],
+       "box": [
+        593,
+        83,
+        63,
+        21
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The Z line (Z disc) at each end of the sarcomere, where the thin filaments of neighboring sarcomeres are anchored."
+      },
+      {
+       "id": "lighter-i-band",
+       "name": "Lighter I band",
+       "accept": [
+        "i band",
+        "light i band",
+        "isotropic band"
+       ],
+       "box": [
+        198,
+        221,
+        139,
+        25
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The light band at each end of the sarcomere, containing thin filaments only."
+      },
+      {
+       "id": "darker-a-band",
+       "name": "Darker A band",
+       "accept": [
+        "a band",
+        "dark a band",
+        "anisotropic band"
+       ],
+       "box": [
+        345,
+        221,
+        145,
+        21
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The dark band in the middle of the sarcomere, as long as the thick filaments."
+      },
+      {
+       "id": "lighter-i-band-2",
+       "name": "Lighter I band",
+       "accept": [
+        "i band",
+        "light i band",
+        "isotropic band"
+       ],
+       "box": [
+        498,
+        221,
+        139,
+        25
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The light band at each end of the sarcomere, containing thin filaments only."
+      },
+      {
+       "id": "thick-filament",
+       "name": "Portion of a thick filament",
+       "accept": [
+        "thick filament",
+        "myosin filament"
+       ],
+       "box": [
+        128,
+        268,
+        134,
+        46
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A thick filament: a bundle of myosin molecules whose tails form the shaft and whose heads stick out toward the surrounding thin filaments."
+      },
+      {
+       "id": "thin-filament",
+       "name": "Portion of a thin filament",
+       "accept": [
+        "thin filament",
+        "actin filament"
+       ],
+       "box": [
+        572,
+        268,
+        125,
+        46
+       ],
+       "concept": "thin-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A thin filament: two twisted strands of actin with tropomyosin lying along the groove and troponin attached at intervals."
+      },
+      {
+       "id": "troponin",
+       "name": "Troponin",
+       "accept": [],
+       "box": [
+        444,
+        343,
+        91,
+        25
+       ],
+       "concept": "thin-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A small protein complex on the thin filament that binds calcium ions and is attached to tropomyosin. It is the switch that lets tropomyosin move."
+      },
+      {
+       "id": "actin",
+       "name": "Actin",
+       "accept": [
+        "f-actin"
+       ],
+       "box": [
+        605,
+        343,
+        58,
+        21
+       ],
+       "concept": "thin-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The main protein of the thin filament. Each actin subunit has a binding site that a myosin head can attach to."
+      },
+      {
+       "id": "tropomyosin",
+       "name": "Tropomyosin",
+       "accept": [],
+       "box": [
+        688,
+        343,
+        129,
+        25
+       ],
+       "concept": "thin-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A long, thread-like protein that lies along the groove of the actin strand. In a resting muscle it covers the myosin-binding sites on actin.",
+       "follow": {
+        "q": "In a resting muscle fiber, what keeps myosin heads from binding actin?",
+        "options": [
+         "Troponin covers the myosin heads until ATP arrives",
+         "Tropomyosin covers the binding sites on actin",
+         "The M line holds the heads back against the shaft",
+         "The Z disc blocks them from reaching the thin filaments"
+        ],
+        "correct": 1,
+        "why": "Tropomyosin lies along the actin strand over the myosin-binding sites. Troponin holds tropomyosin in place; it does not cover the heads. The M line and Z discs anchor filaments.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "myosin-head",
+       "name": "Head",
+       "accept": [
+        "myosin head",
+        "myosin heads",
+        "heads"
+       ],
+       "box": [
+        331,
+        457,
+        61,
+        21
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A myosin head, one of many sticking out from the thick filament. Heads bind actin and split ATP."
+      },
+      {
+       "id": "actin-binding-sites",
+       "name": "Actin-binding sites",
+       "accept": [
+        "actin-binding site",
+        "actin binding site"
+       ],
+       "box": [
+        71,
+        525,
+        182,
+        25
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The spots on each myosin head that attach to the binding sites on actin in the thin filament."
+      },
+      {
+       "id": "myosin-binding-site",
+       "name": "Binding site for myosin",
+       "accept": [
+        "myosin-binding site",
+        "myosin binding site",
+        "myosin-binding sites"
+       ],
+       "box": [
+        447,
+        533,
+        120,
+        50
+       ],
+       "concept": "thin-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The site on each actin subunit where a myosin head can attach. At rest tropomyosin lies over these sites."
+      },
+      {
+       "id": "actin-subunits",
+       "name": "Actin subunits",
+       "accept": [
+        "actin subunit",
+        "g-actin",
+        "globular actin",
+        "actin"
+       ],
+       "box": [
+        678,
+        533,
+        142,
+        21
+       ],
+       "concept": "thin-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The bead-like actin molecules strung together into the thin filament, each carrying one myosin-binding site."
+      },
+      {
+       "id": "atp-binding-site",
+       "name": "ATP-binding site",
+       "accept": [
+        "atpase site"
+       ],
+       "box": [
+        77,
+        605,
+        163,
+        25
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The pocket on the myosin head that binds ATP and splits it (it acts as an ATPase), supplying the energy the head uses.",
+       "follow": {
+        "q": "The myosin head has an ATP-binding site. What does the head do with ATP?",
+        "options": [
+         "Stores it for later release into the sarcoplasm",
+         "Splits it and uses the energy to move",
+         "Passes it on to the thin filament",
+         "Uses it to build new actin subunits"
+        ],
+        "correct": 1,
+        "why": "The myosin head acts as an ATPase: it splits ATP into ADP and phosphate and uses the released energy to change shape. It does not store ATP or hand it to actin.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "myosin-tail",
+       "name": "Tail",
+       "accept": [
+        "myosin tail"
+       ],
+       "box": [
+        21,
+        631,
+        43,
+        21
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The long tail of a myosin molecule. Tails bundle together to form the shaft of the thick filament."
+      },
+      {
+       "id": "myosin-heads",
+       "name": "Heads",
+       "accept": [
+        "myosin heads",
+        "head",
+        "myosin head"
+       ],
+       "box": [
+        331,
+        631,
+        72,
+        21
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The two heads of one myosin molecule. Each carries an actin-binding site and an ATP-binding site."
+      },
+      {
+       "id": "myosin-molecule",
+       "name": "Myosin molecule",
+       "accept": [
+        "myosin"
+       ],
+       "box": [
+        0,
+        741,
+        165,
+        25
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "One myosin protein: two twisted tails ending in two heads joined by a flexible hinge. Hundreds of them make one thick filament."
+      },
+      {
+       "id": "hinge-region",
+       "name": "Flexible hinge region",
+       "accept": [
+        "hinge region",
+        "hinge",
+        "neck"
+       ],
+       "box": [
+        205,
+        741,
+        202,
+        25
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The flexible neck between the myosin tail and heads, which lets the heads swing and change angle."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "neuromuscular-junction",
+   "title": "Neuromuscular junction",
+   "chapter": "muscle-tissue",
+   "topic": "neuromuscular-junction",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-10-6",
+     "topic": "neuromuscular-junction",
+     "core": [
+      "communication",
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "axon-terminal",
+       "name": "Axon terminal",
+       "accept": [
+        "axon terminals",
+        "terminal branch of the axon"
+       ],
+       "box": [
+        684,
+        115,
+        185,
+        27
+       ],
+       "concept": "neuron-parts-basic",
+       "taught": "nervous-tissue-overview",
+       "fn": "The branching end of the motor neuron's axon as it reaches the muscle. Each branch ends on one muscle fiber."
+      },
+      {
+       "id": "synaptic-end-bulb",
+       "name": "Synaptic end bulb at the neuromuscular junction",
+       "accept": [
+        "synaptic end bulb",
+        "synaptic knob",
+        "synaptic terminal",
+        "axon terminal",
+        "end bulb"
+       ],
+       "box": [
+        692,
+        177,
+        314,
+        64
+       ],
+       "concept": "nmj",
+       "taught": "neuromuscular-junction",
+       "fn": "The swollen tip of an axon terminal branch that sits in a shallow groove on the muscle fiber at the neuromuscular junction. It holds the vesicles of acetylcholine."
+      },
+      {
+       "id": "sarcolemma",
+       "name": "Sarcolemma",
+       "accept": [
+        "muscle cell membrane"
+       ],
+       "box": [
+        124,
+        200,
+        170,
+        27
+       ],
+       "concept": "sarcolemma",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The muscle fiber's plasma membrane. At the neuromuscular junction it forms the motor end plate."
+      },
+      {
+       "id": "myofibril",
+       "name": "Myofibril of muscle fiber",
+       "accept": [
+        "myofibril",
+        "myofibrils"
+       ],
+       "box": [
+        943,
+        291,
+        159,
+        59
+       ],
+       "concept": "myofibril",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A contractile rod inside the muscle fiber; the fiber the motor neuron controls is packed with them."
+      },
+      {
+       "id": "sarcoplasm",
+       "name": "Sarcoplasm",
+       "accept": [
+        "cytoplasm of the muscle fiber",
+        "muscle cytoplasm"
+       ],
+       "box": [
+        942,
+        516,
+        160,
+        33
+       ],
+       "concept": "sarcolemma",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The cytoplasm of the muscle fiber, filling the space around the myofibrils."
+      },
+      {
+       "id": "synaptic-end-bulb-2",
+       "name": "Synaptic end bulb",
+       "accept": [
+        "synaptic knob",
+        "synaptic terminal",
+        "axon terminal",
+        "end bulb"
+       ],
+       "box": [
+        673,
+        626,
+        235,
+        32
+       ],
+       "concept": "nmj",
+       "taught": "neuromuscular-junction",
+       "fn": "The swollen tip of an axon terminal branch that sits in a shallow groove on the muscle fiber at the neuromuscular junction. It holds the vesicles of acetylcholine."
+      },
+      {
+       "id": "synaptic-vesicle",
+       "name": "Synaptic vesicle containing ACh",
+       "accept": [
+        "synaptic vesicle",
+        "synaptic vesicles",
+        "vesicle"
+       ],
+       "box": [
+        124,
+        679,
+        213,
+        64
+       ],
+       "concept": "synaptic-vesicle-release",
+       "taught": "neuromuscular-junction",
+       "fn": "A small membrane sac in the synaptic end bulb, filled with acetylcholine and waiting to be released.",
+       "follow": {
+        "q": "What triggers synaptic vesicles to release acetylcholine?",
+        "options": [
+         "Calcium ions entering the end bulb",
+         "Sodium ions leaving the muscle fiber through its receptors",
+         "ACh binding the receptors of the end plate",
+         "The muscle fiber contracting and pulling on the axon"
+        ],
+        "correct": 0,
+        "why": "When the action potential reaches the end bulb, voltage-gated calcium channels open and calcium ions flow in, making the vesicles fuse with the membrane. The end plate events come after release.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "nerve-impulse",
+       "name": "Nerve impulse (action potential)",
+       "accept": [
+        "action potential"
+       ],
+       "box": [
+        882,
+        692,
+        209,
+        63
+       ],
+       "concept": "action-potential-basic",
+       "taught": "action-potential-basics",
+       "fn": "The action potential traveling down the motor neuron's axon. When it reaches the synaptic end bulb, calcium ions flow in and trigger release of acetylcholine."
+      },
+      {
+       "id": "sarcolemma-2",
+       "name": "Sarcolemma",
+       "accept": [
+        "muscle cell membrane"
+       ],
+       "box": [
+        124,
+        798,
+        170,
+        27
+       ],
+       "concept": "sarcolemma",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The muscle fiber's plasma membrane. At the neuromuscular junction it forms the motor end plate."
+      },
+      {
+       "id": "synaptic-cleft",
+       "name": "Synaptic cleft",
+       "accept": [
+        "cleft"
+       ],
+       "box": [
+        124,
+        893,
+        120,
+        59
+       ],
+       "concept": "nmj",
+       "taught": "neuromuscular-junction",
+       "fn": "The narrow gap between the synaptic end bulb and the motor end plate. Acetylcholine diffuses across it, and acetylcholinesterase in the cleft breaks it down.",
+       "follow": {
+        "q": "A nerve agent blocks the enzyme that breaks down acetylcholine in the synaptic cleft. What happens at the end plate?",
+        "options": [
+         "ACh is never released from the synaptic vesicles",
+         "ACh lingers, so stimulation lasts too long",
+         "The receptors are destroyed by the extra acetylcholine",
+         "The end plate stops responding the moment ACh arrives"
+        ],
+        "correct": 1,
+        "why": "Acetylcholinesterase in the cleft normally clears ACh within milliseconds. When it is blocked, ACh stays in the cleft and keeps opening receptors, so the fiber is stimulated for too long. Release and the receptors themselves are not directly affected.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "motor-end-plate",
+       "name": "Motor end-plate",
+       "accept": [
+        "end plate",
+        "end-plate"
+       ],
+       "box": [
+        124,
+        1032,
+        138,
+        64
+       ],
+       "concept": "nmj",
+       "taught": "neuromuscular-junction",
+       "fn": "The folded region of sarcolemma under the synaptic end bulb, packed with acetylcholine receptors. The folds add surface for more receptors.",
+       "follow": {
+        "q": "Why is the sarcolemma folded at the motor end plate?",
+        "options": [
+         "To store acetylcholine until the next action potential",
+         "To hold more receptors in a small area",
+         "To make ATP for the synaptic end bulb",
+         "To slow the diffusion of ACh across the cleft"
+        ],
+        "correct": 1,
+        "why": "The folds add membrane area, so more acetylcholine receptors fit under the synaptic end bulb and the fiber reliably responds. The fiber does not store ACh or supply ATP to the neuron.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "acetylcholine",
+       "name": "ACh",
+       "accept": [
+        "acetylcholine"
+       ],
+       "box": [
+        917,
+        1337,
+        66,
+        28
+       ],
+       "concept": "acetylcholine",
+       "taught": "neuromuscular-junction",
+       "fn": "Acetylcholine (ACh), the neurotransmitter motor neurons release onto skeletal muscle. It diffuses across the cleft and binds receptors on the motor end plate."
+      },
+      {
+       "id": "synaptic-vesicle-2",
+       "name": "Synaptic vesicle",
+       "accept": [
+        "synaptic vesicles",
+        "vesicle"
+       ],
+       "box": [
+        917,
+        1426,
+        121,
+        59
+       ],
+       "concept": "synaptic-vesicle-release",
+       "taught": "neuromuscular-junction",
+       "fn": "A small membrane sac in the synaptic end bulb, filled with acetylcholine and waiting to be released."
+      },
+      {
+       "id": "synaptic-cleft-2",
+       "name": "Synaptic cleft",
+       "accept": [
+        "cleft"
+       ],
+       "box": [
+        918,
+        1607,
+        180,
+        33
+       ],
+       "concept": "nmj",
+       "taught": "neuromuscular-junction",
+       "fn": "The narrow gap between the synaptic end bulb and the motor end plate. Acetylcholine diffuses across it, and acetylcholinesterase in the cleft breaks it down."
+      },
+      {
+       "id": "ach-receptor",
+       "name": "ACh receptor",
+       "accept": [
+        "acetylcholine receptor",
+        "ach receptors",
+        "nicotinic receptor",
+        "nicotinic acetylcholine receptor",
+        "nicotinic ach receptor"
+       ],
+       "box": [
+        917,
+        1665,
+        179,
+        33
+       ],
+       "concept": "nicotinic-nmj",
+       "taught": "neuromuscular-junction",
+       "fn": "A nicotinic acetylcholine receptor: a ligand-gated channel in the motor end plate. When ACh binds, it opens and lets sodium ions rush in, depolarizing the end plate.",
+       "follow": {
+        "q": "What kind of channel is the acetylcholine receptor on the motor end plate?",
+        "options": [
+         "A voltage-gated potassium channel that repolarizes the membrane",
+         "A ligand-gated channel that lets sodium ions in",
+         "A pump that moves sodium out using ATP",
+         "A gap junction linking the fiber to the neuron"
+        ],
+        "correct": 1,
+        "why": "The receptor opens when its ligand, ACh, binds, and sodium ions rush in to depolarize the end plate. It is not opened by voltage, is not a pump and does not join the neuron and fiber.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "motor-end-plate-2",
+       "name": "Motor end-plate",
+       "accept": [
+        "end plate",
+        "end-plate"
+       ],
+       "box": [
+        918,
+        1743,
+        129,
+        64
+       ],
+       "concept": "nmj",
+       "taught": "neuromuscular-junction",
+       "fn": "The folded region of sarcolemma under the synaptic end bulb, packed with acetylcholine receptors. The folds add surface for more receptors."
+      }
+     ],
+     "covered": [
+      {
+       "id": "myelin-sheath",
+       "box": [
+        568,
+        1,
+        341,
+        58
+       ]
+      }
+     ],
+     "shown": [
+      {
+       "id": "ach-exocytosis",
+       "why": "A printed description of a step (release by exocytosis), not a structure to name."
+      },
+      {
+       "id": "ach-binding-opens-channel",
+       "why": "A printed description of a step (ACh opening the receptor channel), not a structure to name."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "muscle-histology",
+   "title": "Skeletal, cardiac and smooth muscle",
+   "chapter": "muscle-tissue",
+   "topic": "smooth-cardiac-muscle",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-10-4",
+     "topic": "smooth-cardiac-muscle",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "muscle-fiber",
+       "name": "Muscle fiber",
+       "accept": [
+        "muscle fibre",
+        "muscle cell",
+        "myocyte",
+        "myofiber"
+       ],
+       "box": [
+        177,
+        0,
+        114,
+        20
+       ],
+       "concept": "muscle-fiber-basic",
+       "taught": "muscle-tissue-overview",
+       "fn": "One skeletal muscle cell: long, cylindrical, striated and multinucleated. Its striations come from the lined-up sarcomeres of its myofibrils.",
+       "follow": {
+        "q": "Which combination identifies skeletal muscle?",
+        "options": [
+         "Striated, short and branched, with one central nucleus",
+         "Striated, cylindrical, many peripheral nuclei",
+         "Not striated, spindle shaped, with one central nucleus",
+         "Not striated, branched, with many nuclei at the edge"
+        ],
+        "correct": 1,
+        "why": "Skeletal fibers are long, cylindrical and striated with many nuclei at the edge. Striated, branched fibers with one central nucleus are cardiac; spindle-shaped, nonstriated cells are smooth muscle.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "nucleus",
+       "name": "Nucleus",
+       "accept": [
+        "nuclei"
+       ],
+       "box": [
+        0,
+        0,
+        79,
+        19
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "One of the many nuclei of a skeletal muscle fiber, pressed just under the sarcolemma at the edge of the cell because myofibrils fill the middle."
+      },
+      {
+       "id": "mitochondrion",
+       "name": "Mitochondrion",
+       "accept": [
+        "mitochondria"
+       ],
+       "box": [
+        629,
+        47,
+        129,
+        20
+       ],
+       "concept": "mitochondrion",
+       "taught": "organelles",
+       "fn": "Mitochondria sit between the myofibrils and make ATP by aerobic respiration, the fuel the contractile proteins use."
+      },
+      {
+       "id": "sarcolemma",
+       "name": "Sarcolemma",
+       "accept": [
+        "muscle cell membrane"
+       ],
+       "box": [
+        628,
+        82,
+        118,
+        20
+       ],
+       "concept": "sarcolemma",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The plasma membrane of the muscle fiber, which carries action potentials along the fiber and into its T tubules."
+      },
+      {
+       "id": "light-i-band",
+       "name": "Light I band",
+       "accept": [
+        "i band",
+        "isotropic band"
+       ],
+       "box": [
+        2,
+        116,
+        62,
+        42
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The light stripe on the fiber's surface: the I bands of all the myofibrils lined up, where only thin filaments lie."
+      },
+      {
+       "id": "myofibril",
+       "name": "Myofibril",
+       "accept": [
+        "myofibrils"
+       ],
+       "box": [
+        531,
+        205,
+        81,
+        24
+       ],
+       "concept": "myofibril",
+       "taught": "skeletal-muscle-structure",
+       "fn": "A long rod of contractile proteins running the length of the fiber, built from sarcomeres placed end to end."
+      },
+      {
+       "id": "dark-a-band",
+       "name": "Dark A band",
+       "accept": [
+        "a band",
+        "anisotropic band"
+       ],
+       "box": [
+        184,
+        262,
+        116,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The dark stripe on the fiber's surface: the A bands of all the myofibrils lined up, the region that holds the thick filaments."
+      },
+      {
+       "id": "sarcoplasmic-reticulum",
+       "name": "Sarcoplasmic reticulum",
+       "accept": [
+        "sr"
+       ],
+       "box": [
+        0,
+        302,
+        124,
+        43
+       ],
+       "concept": "sarcoplasmic-reticulum",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The network of smooth endoplasmic reticulum that wraps each myofibril. It stores calcium ions and releases them when the fiber is stimulated."
+      },
+      {
+       "id": "sarcomere",
+       "name": "Sarcomere",
+       "accept": [
+        "sarcomeres"
+       ],
+       "box": [
+        354,
+        309,
+        104,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The repeating unit of a myofibril, from one Z disc to the next. It is the smallest unit that contracts, and its bands give the fiber its striations."
+      },
+      {
+       "id": "thin-filament",
+       "name": "Thin (actin) filament",
+       "accept": [
+        "actin filament",
+        "actin",
+        "thin filaments"
+       ],
+       "box": [
+        110,
+        349,
+        106,
+        42
+       ],
+       "concept": "thin-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The thinner filaments, made mostly of actin with the regulatory proteins troponin and tropomyosin. They are anchored at the Z discs and reach toward the center of the sarcomere."
+      },
+      {
+       "id": "thick-filament",
+       "name": "Thick (myosin) filament",
+       "accept": [
+        "myosin filament",
+        "myosin",
+        "thick filaments"
+       ],
+       "box": [
+        667,
+        349,
+        133,
+        42
+       ],
+       "concept": "thick-filament",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The thicker filaments, made of myosin, anchored at the M line in the center of the sarcomere. Their myosin heads reach out toward the thin filaments."
+      },
+      {
+       "id": "h-zone",
+       "name": "H zone",
+       "accept": [
+        "h band"
+       ],
+       "box": [
+        361,
+        373,
+        71,
+        20
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The central part of the A band where there are thick filaments but no overlapping thin filaments, so it looks lighter than the rest of the A band."
+      },
+      {
+       "id": "z-disc",
+       "name": "Z disc",
+       "accept": [
+        "z disk",
+        "z line"
+       ],
+       "box": [
+        217,
+        374,
+        63,
+        20
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The protein disc that marks each end of a sarcomere and anchors the thin filaments."
+      },
+      {
+       "id": "z-disc-2",
+       "name": "Z disc",
+       "accept": [
+        "z disk",
+        "z line"
+       ],
+       "box": [
+        509,
+        374,
+        63,
+        20
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The protein disc that marks each end of a sarcomere and anchors the thin filaments."
+      },
+      {
+       "id": "i-band",
+       "name": "I band",
+       "accept": [
+        "light i band",
+        "isotropic band"
+       ],
+       "box": [
+        224,
+        622,
+        64,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The light band on either side of a Z disc, where there are thin filaments but no thick filaments. Each I band is shared by two neighboring sarcomeres."
+      },
+      {
+       "id": "a-band",
+       "name": "A band",
+       "accept": [
+        "dark a band",
+        "anisotropic band"
+       ],
+       "box": [
+        364,
+        622,
+        72,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The dark band in the middle of the sarcomere that spans the full length of the thick filaments, including where they overlap thin filaments."
+      },
+      {
+       "id": "i-band-2",
+       "name": "I band",
+       "accept": [
+        "light i band",
+        "isotropic band"
+       ],
+       "box": [
+        514,
+        622,
+        63,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The light band on either side of a Z disc, where there are thin filaments but no thick filaments. Each I band is shared by two neighboring sarcomeres."
+      },
+      {
+       "id": "m-line",
+       "name": "M line",
+       "accept": [
+        "m disc"
+       ],
+       "box": [
+        653,
+        622,
+        62,
+        19
+       ],
+       "concept": "sarcomere",
+       "taught": "skeletal-muscle-structure",
+       "fn": "The line in the middle of the sarcomere where proteins hold the thick filaments together at their centers."
+      }
+     ]
+    },
+    {
+     "figure": "os-10-22",
+     "topic": "smooth-cardiac-muscle",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "intercalated-disc",
+       "name": "Intercalated discs",
+       "accept": [
+        "intercalated disc",
+        "intercalated disk",
+        "intercalated disks"
+       ],
+       "box": [
+        447,
+        0,
+        171,
+        20
+       ],
+       "concept": "intercalated-disc",
+       "taught": "muscle-tissue-overview",
+       "fn": "The dark lines where cardiac muscle fibers join end to end. Desmosomes in them hold the fibers together as they pull, and gap junctions let ions pass so the fibers contract together.",
+       "follow": {
+        "q": "Which feature lets cardiac muscle fibers contract as one unit?",
+        "options": [
+         "Gap junctions in the intercalated discs",
+         "Many nuclei spread along the edge of each fiber",
+         "Dense bodies anchoring the thin filaments",
+         "Long, unbranched fibers that run the length of the heart"
+        ],
+        "correct": 0,
+        "why": "Gap junctions pass ions from fiber to fiber, so an action potential spreads through the whole network. Many peripheral nuclei belong to skeletal fibers, dense bodies to smooth muscle, and cardiac fibers are short and branched.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "capillary",
+       "name": "Capillary",
+       "accept": [
+        "capillaries"
+       ],
+       "box": [
+        309,
+        0,
+        86,
+        24
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "The smallest blood vessel, with a wall one cell thick. Heart muscle is threaded with capillaries because it works nonstop and depends on a steady oxygen supply for aerobic respiration."
+      },
+      {
+       "id": "desmosome",
+       "name": "Desmosome",
+       "accept": [
+        "desmosomes"
+       ],
+       "box": [
+        766,
+        14,
+        117,
+        19
+       ],
+       "concept": "desmosome",
+       "taught": "cell-junctions",
+       "fn": "A spot weld in the intercalated disc that keeps neighboring cardiac muscle fibers from pulling apart when they contract."
+      },
+      {
+       "id": "gap-junction-fiber",
+       "name": "Gap junction",
+       "accept": [
+        "gap junctions"
+       ],
+       "box": [
+        502,
+        220,
+        126,
+        23
+       ],
+       "concept": "gap-junction",
+       "taught": "cell-junctions",
+       "fn": "Channels in the intercalated disc that let ions flow from one cardiac muscle fiber to the next, so an action potential spreads and the fibers contract as a unit."
+      },
+      {
+       "id": "gap-junction",
+       "name": "Gap junction",
+       "accept": [
+        "gap junctions"
+       ],
+       "box": [
+        808,
+        396,
+        117,
+        23
+       ],
+       "concept": "gap-junction",
+       "taught": "cell-junctions",
+       "fn": "Channels in the intercalated disc that let ions flow from one cardiac muscle fiber to the next, so an action potential spreads and the fibers contract as a unit."
+      },
+      {
+       "id": "nucleus",
+       "name": "Nucleus",
+       "accept": [],
+       "box": [
+        287,
+        435,
+        79,
+        19
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "The nucleus of a cardiac muscle fiber. Most cardiac fibers have one, in the center of the fiber, unlike the many peripheral nuclei of a skeletal fiber."
+      },
+      {
+       "id": "cardiac-muscle-fiber",
+       "name": "Cardiac muscle fiber",
+       "accept": [
+        "cardiac muscle cell",
+        "cardiac myocyte",
+        "cardiomyocyte",
+        "muscle fiber"
+       ],
+       "box": [
+        453,
+        434,
+        114,
+        41
+       ],
+       "concept": "cardiac-muscle-tissue",
+       "taught": "muscle-tissue-overview",
+       "fn": "A single cardiac muscle fiber: striated, short and branched, usually with one central nucleus, and joined to its neighbors at intercalated discs."
+      }
+     ]
+    },
+    {
+     "figure": "os-10-24",
+     "topic": "smooth-cardiac-muscle",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "relaxed-muscle-cell",
+       "name": "Relaxed muscle cell",
+       "accept": [
+        "relaxed smooth muscle cell",
+        "relaxed smooth muscle fiber",
+        "relaxed fiber",
+        "relaxed cell"
+       ],
+       "box": [
+        0,
+        32,
+        170,
+        19
+       ],
+       "concept": "smooth-muscle-contraction",
+       "taught": "smooth-cardiac-muscle",
+       "fn": "A relaxed smooth muscle cell: spindle shaped, with one central nucleus and no striations, because its actin and myosin are not lined up in sarcomeres.",
+       "follow": {
+        "q": "Why does smooth muscle lack striations?",
+        "options": [
+         "It has no actin or myosin at all",
+         "Its filaments are not arranged in sarcomeres",
+         "Its single nucleus hides the filaments from view",
+         "It has only thick filaments and no thin ones"
+        ],
+        "correct": 1,
+        "why": "Smooth muscle has actin and myosin, but they run at angles between dense bodies instead of lining up in repeating sarcomeres, so there are no bands to see.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "contracted-muscle-cell",
+       "name": "Contracted muscle cell",
+       "accept": [
+        "contracted smooth muscle cell",
+        "contracted smooth muscle fiber",
+        "contracted fiber",
+        "contracted cell"
+       ],
+       "box": [
+        601,
+        32,
+        197,
+        20
+       ],
+       "concept": "smooth-muscle-contraction",
+       "taught": "smooth-cardiac-muscle",
+       "fn": "A contracted smooth muscle cell. Its filaments pull the dense bodies together, so the whole cell shortens and bunches up, twisting like a corkscrew."
+      },
+      {
+       "id": "intermediate-filaments",
+       "name": "Intermediate filaments",
+       "accept": [
+        "intermediate filament"
+       ],
+       "box": [
+        22,
+        207,
+        192,
+        20
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "A network of intermediate filaments running between dense bodies across the smooth muscle cell. It transmits the pull of the thin filaments through the whole cell."
+      },
+      {
+       "id": "dense-bodies",
+       "name": "Dense bodies",
+       "accept": [
+        "dense body"
+       ],
+       "box": [
+        304,
+        207,
+        124,
+        20
+       ],
+       "concept": "smooth-muscle-contraction",
+       "taught": "smooth-cardiac-muscle",
+       "fn": "Protein anchors scattered through the smooth muscle cell and attached to the sarcolemma. Thin filaments are tethered to them, so they do the job Z discs do in skeletal muscle.",
+       "follow": {
+        "q": "In smooth muscle, which structures do the job that Z discs do in skeletal muscle?",
+        "options": [
+         "Intermediate filaments",
+         "Dense bodies",
+         "Intercalated discs",
+         "T tubules"
+        ],
+        "correct": 1,
+        "why": "Thin filaments are anchored to dense bodies, just as they are to Z discs in a sarcomere. Intermediate filaments link the dense bodies, intercalated discs join cardiac fibers and T tubules carry signals inward.",
+        "level": "recall"
+       }
       }
      ]
     }
@@ -39601,6 +41617,60 @@
    "alt": "Four panels showing bone forming directly in embryonic tissue. (a) Bone-forming cells cluster in a round center surrounded by loose embryonic cells and fibers, with specks of new matrix. (b) The center fills with new bone matrix holding cells with branching arms, and a ring of bone-forming cells lines its edge. (c) A band of bone struts with red blood vessels running through the spaces, bordered above and below by rows of bone-forming cells and a covering layer. (d) The same band with solid layers of bone formed under each covering, and lattice-like bone in between with red marrow in its spaces.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.16",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-4-bone-formation-and-development",
+   "license": "CC BY 4.0"
+  },
+  "os-10-3": {
+   "src": "figures/os-10-3.jpg",
+   "w": 1100,
+   "h": 1136,
+   "alt": "Three enlargements, one below the other. At the top, a whole muscle tapering to a tendon is cut across to show its outer sheath of connective tissue and, inside it, many bundles of fibers, each bundle wrapped in its own layer. In the middle, one bundle is cut across to show the individual fibers, each wrapped in a thin layer, with blood vessels and nerve fibers running between them and a small flattened cell against one fiber. At the bottom, one fiber is cut across to show its outer membrane, nuclei at its edge, and many rod-like bundles packed inside, one of which is pulled out.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.3",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle",
+   "license": "CC BY 4.0"
+  },
+  "os-10-7": {
+   "src": "figures/os-10-7.jpg",
+   "w": 577,
+   "h": 368,
+   "alt": "A cutaway of the surface of a muscle fiber. The outer membrane, peeled up, has pores that lead into narrow tubes dipping straight down into the fiber and ringing the striped bundles inside. A lacy network of sacs wraps each bundle, and it swells into wide ring-shaped sacs on either side of each tube. A bracket at the bottom marks one tube with the two sacs beside it.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle",
+   "license": "CC BY 4.0"
+  },
+  "os-10-4": {
+   "src": "figures/os-10-4.jpg",
+   "w": 801,
+   "h": 642,
+   "alt": "At the top, a striped muscle fiber cut across, with nuclei on its surface, mitochondria between the rod-like bundles inside it, and one bundle pulled out. At the bottom, a length of that bundle enlarged: a lacy network of sacs wraps its left end, and the cut-away middle shows interlocking thick and thin filaments forming repeating units, with brackets marking the light and dark bands, the zone at the center of the dark band, the line at its middle, and the zigzag discs that bound each unit.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle",
+   "license": "CC BY 4.0"
+  },
+  "os-10-5": {
+   "src": "figures/os-10-5.jpg",
+   "w": 830,
+   "h": 765,
+   "alt": "At the top, one repeating unit of a myofibril, with purple thick filaments in the middle and green thin filaments reaching in from zigzag discs at each end; brackets mark the light and dark bands and the zones at the center. Below left, a stretch of thick filament bristling with paired heads, and one of its molecules enlarged: a twisted tail, a flexible hinge, and two heads, each with a site for binding actin and a site for binding ATP. Below right, a stretch of thin filament: two twisted strands of beads, a thin rod lying along the groove, and small round complexes spaced along the rod, with one bead marked as a binding site for myosin.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle",
+   "license": "CC BY 4.0"
+  },
+  "os-10-6": {
+   "src": "figures/os-10-6.jpg",
+   "w": 1100,
+   "h": 1917,
+   "alt": "Three enlargements, one below the other. At the top, an axon in a segmented insulating sheath branches onto the surface of a muscle fiber, which is cut across to show its bundles inside. In the middle, the swollen nerve ending sits in a dip in the fiber's membrane, holding round vesicles filled with dots; a narrow gap separates it from a deeply folded patch of fiber membrane studded with channel proteins, and dots are being released into the gap. At the bottom, a closer view shows vesicles fusing with the nerve ending's membrane and spilling dots into the gap, and dots binding a channel in the folded fiber membrane, with an arrow showing sodium ions entering the fiber through it.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.6",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle",
+   "license": "CC BY 4.0"
+  },
+  "os-10-24": {
+   "src": "figures/os-10-24.jpg",
+   "w": 1100,
+   "h": 228,
+   "alt": "Two drawings of smooth muscle fibers. On the left, a relaxed fiber is long and spindle-shaped, crossed by a diagonal network of lines, the intermediate filaments, that join small dark dots, the dense bodies, spread through the cell and along its edge. On the right, a contracted fiber is shorter and wider, with a bulging, puckered outline, and arrows at both ends pointing inward; its dense bodies have been pulled closer together.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.24",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-8-smooth-muscle",
    "license": "CC BY 4.0"
   }
  }

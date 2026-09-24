@@ -206,11 +206,11 @@
       "Childbirth destroyed many hair matrix cells, which cannot be replaced",
       "Her sebaceous glands stopped making sebum at delivery",
       "Her arrector pili muscles are pulling hairs out",
-      "Many follicles entered catagen and telogen together at the birth, then shed as new hairs grew"
+      "Follicles that rested together after the birth now shed together"
     ],
     "correct": 3,
     "why": {
-      "correct": "A major shock such as childbirth pushes many anagen follicles into catagen and telogen at the same time. Telogen lasts about 3 months; when those follicles start a new anagen, the new hairs push the old club hairs out together. The follicles are intact, so the hair regrows.",
+      "correct": "During pregnancy, high hormone levels keep extra scalp follicles in anagen. After the birth those levels fall abruptly, and the held-over follicles enter catagen and telogen at the same time. Telogen lasts about 3 months; when those follicles start a new anagen, the new hairs push the old club hairs out together. The follicles are intact, so the hair regrows.",
       "options": [
         "The matrix cells are not destroyed; the follicles are resting. The hair grows back once they re-enter anagen.",
         "Sebum oils the hair but does not hold it in the follicle, and loss of sebum would not cause shedding three months later.",
@@ -397,7 +397,7 @@
     "options": [
       "Shaving stimulates the hair matrix to make wider hairs",
       "Shaving removes the cuticle, so regrown hair looks darker",
-      "Shaving cuts dead shaft only; the regrown blunt tip just feels coarser",
+      "Shaving cuts only dead shaft; blunt tips feel coarser",
       "Shaving moves follicles from telogen into anagen"
     ],
     "correct": 2,
@@ -525,7 +525,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Eyebrow hairs and scalp hairs lengthen at about the same rate, yet eyebrows stay short. What best explains this?",
+    "q": "Eyebrow hairs grow somewhat more slowly than scalp hairs, but not nearly slowly enough to explain why they stay so short. What best explains this?",
     "options": [
       "Eyebrow hairs are worn down by friction against the skin of the brow",
       "Eyebrow follicles have no hair matrix",
@@ -534,7 +534,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "A hair's maximum length is its growth rate times the length of anagen. Scalp follicles stay in anagen for years; eyebrow follicles for only a few months, so the hair enters catagen and telogen, and is shed, while still short.",
+      "correct": "A hair's maximum length is its growth rate times the length of anagen. Eyebrow hairs grow only about half as fast as scalp hairs, but scalp follicles stay in anagen for years and eyebrow follicles for only a few months, so the hair enters catagen and telogen, and is shed, while still short.",
       "options": [
         "Uncut eyebrows reach the same short length whether or not they are rubbed; the limit is set in the follicle.",
         "Every growing hair needs a matrix; without one, eyebrows would not grow at all.",

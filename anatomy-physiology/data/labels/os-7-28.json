@@ -1,0 +1,137 @@
+{
+  "figure": "os-7-28",
+  "labels": [
+    {
+      "id": "superior-articular-process",
+      "name": "Superior articular process",
+      "accept": [
+        "superior articular facet",
+        "superior articular processes"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        298,
+        0,
+        173,
+        50
+      ]
+    },
+    {
+      "id": "transverse-process",
+      "name": "Transverse process",
+      "accept": [
+        "transverse processes"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        113,
+        73,
+        114,
+        50
+      ]
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "accept": [
+        "vertebral body",
+        "centrum"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        579,
+        158,
+        59,
+        25
+      ]
+    },
+    {
+      "id": "inferior-articular-process",
+      "name": "Inferior articular process",
+      "accept": [
+        "inferior articular facet",
+        "inferior articular processes"
+      ],
+      "lines": [
+        11,
+        16,
+        19
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        119,
+        210,
+        88,
+        76
+      ]
+    },
+    {
+      "id": "spinous-process",
+      "name": "Spinous process",
+      "accept": [
+        "spinous processes",
+        "spine"
+      ],
+      "lines": [
+        36,
+        37
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        119,
+        411,
+        87,
+        51
+      ]
+    },
+    {
+      "id": "intervertebral-disc",
+      "name": "Intervertebral disc",
+      "accept": [
+        "intervertebral disk",
+        "disc",
+        "disk"
+      ],
+      "lines": [
+        39,
+        42
+      ],
+      "concept": "intervertebral-disc",
+      "box": [
+        509,
+        463,
+        131,
+        46
+      ]
+    },
+    {
+      "id": "inferior-articular-process-lower",
+      "name": "Inferior articular process",
+      "accept": [
+        "inferior articular facet",
+        "inferior articular processes"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        271,
+        565,
+        234,
+        25
+      ]
+    }
+  ]
+}

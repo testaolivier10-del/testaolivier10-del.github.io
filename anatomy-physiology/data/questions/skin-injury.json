@@ -504,10 +504,10 @@
     ],
     "q": "A teenager scrubs his face hard several times a day, believing his blackheads are trapped dirt. What actually makes a blackhead dark?",
     "options": [
-      "Dirt pushed into the pore from outside",
+      "Dirt pushed into the open pore from the skin surface",
       "Blood from a burst capillary",
       "Bacteria that are dark in color",
-      "Lipids and melanin in the plug darkening where they meet the air"
+      "Lipids and melanin in the plug darkening in air"
     ],
     "correct": 3,
     "why": {
@@ -531,18 +531,18 @@
     "q": "Skin samples are taken from a person with albinism and from a white patch of a person with vitiligo. How would the samples differ?",
     "options": [
       "Both have no melanocytes",
-      "The albinism sample has melanocytes that make no melanin; the vitiligo patch has lost its melanocytes",
+      "The albinism sample has melanocytes making little or no melanin; the vitiligo patch has lost its melanocytes",
       "The albinism sample has no melanocytes at all; the vitiligo patch has melanocytes making no melanin",
       "Both have normal melanocytes making normal melanin"
     ],
     "correct": 1,
     "why": {
-      "correct": "In albinism, melanocytes are present in normal numbers but cannot make melanin, usually because of a faulty gene for tyrosinase. In vitiligo, the immune system destroys the melanocytes in the affected patches, so they are missing.",
+      "correct": "In albinism, melanocytes are present in normal numbers but make little or no melanin, because of faulty genes for melanin-making proteins such as tyrosinase. In vitiligo, the immune system destroys the melanocytes in the affected patches, so they are missing.",
       "options": [
-        "Melanocytes are present in albinism; they just cannot make melanin.",
-        "Correct. Albinism: melanocytes without melanin. Vitiligo: melanocytes gone.",
+        "Melanocytes are present in albinism; they just make little or no melanin.",
+        "Correct. Albinism: melanocytes with little or no melanin. Vitiligo: melanocytes gone.",
         "This reverses the two conditions.",
-        "Both conditions leave the skin without melanin, so neither sample would be normal."
+        "Both conditions leave the skin with little or no melanin, so neither sample would be normal."
       ]
     }
   },
@@ -662,8 +662,8 @@
     ],
     "q": "What happens in the skin to form stretch marks?",
     "options": [
-      "Melanocytes are destroyed in lines",
-      "The stratum corneum thickens in bands",
+      "Melanocytes in the basal layer are destroyed in lines",
+      "The stratum corneum thickens in bands over the stretched area",
       "Follicles plug with sebum along a line",
       "Collagen and elastic fibers of the reticular layer tear and thin"
     ],

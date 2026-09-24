@@ -1,0 +1,77 @@
+{
+  "figure": "os-7-24",
+  "labels": [
+    {
+      "id": "vertebral-body",
+      "name": "Vertebral body",
+      "accept": [
+        "body",
+        "body of vertebra",
+        "centrum"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        426,
+        103,
+        147,
+        25
+      ]
+    },
+    {
+      "id": "intervertebral-foramen",
+      "name": "Intervertebral foramen",
+      "accept": [
+        "intervertebral foramina"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        427,
+        151,
+        215,
+        21
+      ]
+    },
+    {
+      "id": "anulus-fibrosus",
+      "name": "Anulus fibrosus",
+      "accept": [
+        "annulus fibrosus",
+        "anulus",
+        "annulus"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "intervertebral-disc",
+      "box": [
+        425,
+        201,
+        155,
+        21
+      ]
+    },
+    {
+      "id": "nucleus-pulposus",
+      "name": "Nucleus pulposus",
+      "accept": [
+        "pulposus"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "intervertebral-disc",
+      "box": [
+        427,
+        285,
+        175,
+        25
+      ]
+    }
+  ]
+}

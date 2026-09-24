@@ -30,7 +30,7 @@
     "say": "meh-LAN-oh-site"
   },
   "epidermal-other-cells": {
-    "def": "Tactile (Merkel) cells in the stratum basale press against sensory nerve fibers and signal light touch. Langerhans cells (the epidermal dendritic cell type), mainly in the stratum spinosum, come from the bone marrow and take up foreign material.",
+    "def": "Tactile (Merkel) cells in the stratum basale press against sensory nerve fibers and signal light touch. Langerhans cells (the epidermal dendritic cell type), mainly in the stratum spinosum, settle in the skin before birth, renew themselves there, and take up foreign material.",
     "roots": [["tact-", "touch"], ["dendr-", "tree"]],
     "say": "LAHNG-er-hahns"
   },
@@ -45,7 +45,7 @@
     "say": ""
   },
   "skin-color": {
-    "def": "The color set by melanin in the keratinocytes, carotene from the diet in the stratum corneum and fat, and blood in the dermis. Erythema is redness from vasodilation, pallor is paleness from less blood in the skin, and cyanosis is a bluish color when blood carries too little oxygen.",
+    "def": "The color set by melanin in the keratinocytes, carotene from the diet in the stratum corneum and fat, and blood in the dermis. Erythema is redness from vasodilation, pallor is paleness from less blood in the skin, and cyanosis is a bluish color when much of the blood in the skin has given up its oxygen.",
     "roots": [["carot-", "carrot"], ["erythem-", "redness"], ["cyan-", "dark blue"], ["-osis", "condition"]],
     "say": "sy-uh-NOH-sis"
   }

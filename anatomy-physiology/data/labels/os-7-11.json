@@ -1,0 +1,430 @@
+{
+  "figure": "os-7-11",
+  "labels": [
+    {
+      "id": "sella-turcica",
+      "name": "Sella turcica",
+      "accept": [
+        "turk's saddle"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        917,
+        73,
+        127,
+        20
+      ]
+    },
+    {
+      "id": "hypophyseal-fossa",
+      "name": "Hypophyseal fossa",
+      "accept": [
+        "pituitary fossa"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        931,
+        97,
+        168,
+        24
+      ]
+    },
+    {
+      "id": "crista-galli",
+      "name": "Crista galli",
+      "accept": [],
+      "lines": [
+        2
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        928,
+        152,
+        100,
+        24
+      ]
+    },
+    {
+      "id": "parietal-bone",
+      "name": "Parietal bone",
+      "accept": [
+        "parietal"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        0,
+        165,
+        121,
+        20
+      ]
+    },
+    {
+      "id": "frontal-sinus",
+      "name": "Frontal sinus",
+      "accept": [
+        "frontal sinuses"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "paranasal-sinuses",
+      "box": [
+        929,
+        188,
+        118,
+        20
+      ]
+    },
+    {
+      "id": "cribriform-plate",
+      "name": "Cribriform plate",
+      "accept": [
+        "cribriform plate of the ethmoid bone"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        928,
+        225,
+        141,
+        24
+      ]
+    },
+    {
+      "id": "perpendicular-plate",
+      "name": "Perpendicular plate",
+      "accept": [
+        "perpendicular plate of the ethmoid bone",
+        "perpendicular plate of ethmoid bone",
+        "perpendicular plate of ethmoid"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        929,
+        262,
+        172,
+        24
+      ]
+    },
+    {
+      "id": "nasal-bone",
+      "name": "Nasal bone",
+      "accept": [
+        "nasal bones"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "facial-bones",
+      "box": [
+        929,
+        300,
+        106,
+        20
+      ]
+    },
+    {
+      "id": "temporal-bone",
+      "name": "Temporal bone",
+      "accept": [
+        "temporal"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        0,
+        308,
+        137,
+        24
+      ]
+    },
+    {
+      "id": "sphenoid-bone",
+      "name": "Sphenoid bone",
+      "accept": [
+        "sphenoid"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        929,
+        343,
+        138,
+        24
+      ]
+    },
+    {
+      "id": "internal-acoustic-meatus",
+      "name": "Internal acoustic meatus",
+      "accept": [
+        "internal auditory meatus"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        0,
+        356,
+        147,
+        42
+      ]
+    },
+    {
+      "id": "sphenoid-sinus",
+      "name": "Sphenoid sinus",
+      "accept": [
+        "sphenoidal sinus",
+        "sphenoid sinuses"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "paranasal-sinuses",
+      "box": [
+        929,
+        376,
+        139,
+        24
+      ]
+    },
+    {
+      "id": "hypoglossal-canal",
+      "name": "Hypoglossal canal",
+      "accept": [],
+      "lines": [
+        13
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        0,
+        425,
+        163,
+        24
+      ]
+    },
+    {
+      "id": "inferior-nasal-concha",
+      "name": "Inferior nasal concha",
+      "accept": [
+        "inferior concha",
+        "inferior turbinate"
+      ],
+      "lines": [
+        14,
+        15
+      ],
+      "concept": "facial-bones",
+      "box": [
+        928,
+        432,
+        120,
+        42
+      ]
+    },
+    {
+      "id": "occipital-bone",
+      "name": "Occipital bone",
+      "accept": [
+        "occipital"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        0,
+        473,
+        131,
+        24
+      ]
+    },
+    {
+      "id": "vomer",
+      "name": "Vomer",
+      "accept": [
+        "vomer bone"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "facial-bones",
+      "box": [
+        928,
+        492,
+        67,
+        20
+      ]
+    },
+    {
+      "id": "styloid-process",
+      "name": "Styloid process",
+      "accept": [],
+      "lines": [
+        18
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        0,
+        512,
+        139,
+        24
+      ]
+    },
+    {
+      "id": "maxilla",
+      "name": "Maxilla",
+      "accept": [
+        "maxillary bone"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "facial-bones",
+      "box": [
+        929,
+        529,
+        70,
+        20
+      ]
+    },
+    {
+      "id": "pterygoid-plates",
+      "name": "Medial and lateral pterygoid plates",
+      "accept": [
+        "pterygoid plates",
+        "pterygoid plate",
+        "pterygoid process"
+      ],
+      "lines": [
+        20,
+        23
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        0,
+        553,
+        159,
+        46
+      ]
+    },
+    {
+      "id": "palatine-bone",
+      "name": "Palatine bone",
+      "accept": [
+        "palatine"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "facial-bones",
+      "box": [
+        929,
+        567,
+        125,
+        19
+      ]
+    },
+    {
+      "id": "mylohyoid-line",
+      "name": "Mylohyoid line",
+      "accept": [],
+      "lines": [
+        24
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        929,
+        626,
+        129,
+        24
+      ]
+    },
+    {
+      "id": "mandibular-foramen",
+      "name": "Mandibular foramen",
+      "accept": [],
+      "lines": [
+        25
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        0,
+        637,
+        177,
+        20
+      ]
+    },
+    {
+      "id": "mandible",
+      "name": "Mandible",
+      "accept": [
+        "lower jaw",
+        "jawbone"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "facial-bones",
+      "box": [
+        929,
+        668,
+        87,
+        20
+      ]
+    },
+    {
+      "id": "lingula",
+      "name": "Lingula",
+      "accept": [
+        "lingula of the mandible"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        275,
+        677,
+        73,
+        24
+      ]
+    },
+    {
+      "id": "hyoid-bone",
+      "name": "Hyoid bone",
+      "accept": [
+        "hyoid"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "hyoid",
+      "box": [
+        929,
+        710,
+        106,
+        24
+      ]
+    }
+  ]
+}

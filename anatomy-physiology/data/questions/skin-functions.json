@@ -49,7 +49,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "A lightly dressed man waits 20 minutes at a bus stop in freezing wind. Predict the change in each variable, compared with sitting in a warm room.",
+    "q": "A lightly dressed man waits 20 minutes at a bus stop in freezing wind. Predict the change in each variable, compared with sitting in a hot room where he was sweating lightly.",
     "variables": [
       {
         "name": "Dermal blood flow",
@@ -62,9 +62,9 @@
         "why": "Less warm blood reaches the skin, and wind carries heat from the surface, so the skin cools."
       },
       {
-        "name": "Temperature gradient from skin to air",
-        "answer": "down",
-        "why": "The skin cools toward the air temperature, so the difference between them shrinks, which slows heat loss."
+        "name": "Arrector pili contraction (goose bumps)",
+        "answer": "up",
+        "why": "The control center's nerve signals make the arrector pili muscles contract, raising the hairs."
       },
       {
         "name": "Heat production by skeletal muscle",
@@ -78,7 +78,7 @@
       }
     ],
     "why": {
-      "correct": "Cold triggers the \"too cold\" half of the loop. Vasoconstriction lowers dermal blood flow, so the skin cools and the gradient that drives heat loss shrinks. Shivering raises heat production, and sweating stops."
+      "correct": "Cold triggers the \"too cold\" half of the loop. Vasoconstriction lowers dermal blood flow, so the skin cools and less heat is carried to the surface. The arrector pili contract, shivering raises heat production, and sweating stops."
     }
   },
   {
@@ -476,7 +476,7 @@
     "options": [
       "The patch drug is carried by sweat into the dermis",
       "Water-soluble drugs are destroyed by the acidic pH",
-      "The patch drug is lipid soluble and dissolves through the lipid sheets",
+      "The patch drug dissolves through the lipid sheets",
       "Only the patch drug is small enough to cross"
     ],
     "correct": 2,
@@ -607,10 +607,10 @@
     ],
     "q": "A nurse washes her hands with a harsh alkaline soap many times each shift. Her skin becomes dry and cracked, and she gets more skin infections. Which change best explains the infections?",
     "options": [
-      "Her surface pH has risen and the lipid sheets have been stripped",
+      "Her surface pH is higher and lipids are stripped",
       "Her melanocytes have stopped making melanin",
       "Her dermal blood flow has risen",
-      "Her tactile corpuscles have been damaged"
+      "Her tactile corpuscles have been damaged by the soap"
     ],
     "correct": 0,
     "why": {

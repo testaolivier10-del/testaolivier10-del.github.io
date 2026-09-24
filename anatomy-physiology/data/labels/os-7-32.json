@@ -1,0 +1,312 @@
+{
+  "figure": "os-7-32",
+  "labels": [
+    {
+      "id": "jugular-notch",
+      "name": "Jugular notch",
+      "accept": [
+        "suprasternal notch",
+        "sternal notch"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "sternum",
+      "box": [
+        290,
+        30,
+        78,
+        45
+      ]
+    },
+    {
+      "id": "clavicular-notch",
+      "name": "Clavicular notch",
+      "accept": [
+        "clavicular notches"
+      ],
+      "lines": [
+        3,
+        5
+      ],
+      "concept": "sternum",
+      "box": [
+        0,
+        50,
+        96,
+        45
+      ]
+    },
+    {
+      "id": "manubrium",
+      "name": "Manubrium",
+      "accept": [
+        "manubrium of sternum",
+        "manubrium of the sternum"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "sternum",
+      "box": [
+        0,
+        149,
+        108,
+        21
+      ]
+    },
+    {
+      "id": "sternal-angle",
+      "name": "Sternal angle",
+      "accept": [
+        "angle of louis",
+        "manubriosternal joint",
+        "manubriosternal junction"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "sternum",
+      "box": [
+        0,
+        196,
+        72,
+        49
+      ]
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "accept": [
+        "body of sternum",
+        "body of the sternum",
+        "gladiolus",
+        "sternal body"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "sternum",
+      "box": [
+        28,
+        336,
+        58,
+        25
+      ]
+    },
+    {
+      "id": "xiphoid-process",
+      "name": "Xiphoid process",
+      "accept": [
+        "xiphoid",
+        "xiphisternum"
+      ],
+      "lines": [
+        22,
+        23
+      ],
+      "concept": "sternum",
+      "box": [
+        27,
+        528,
+        83,
+        49
+      ]
+    },
+    {
+      "id": "clavicular-notch-thorax",
+      "name": "Clavicular notch",
+      "accept": [
+        "clavicular notches"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "sternum",
+      "box": [
+        942,
+        100,
+        154,
+        21
+      ]
+    },
+    {
+      "id": "jugular-notch-thorax",
+      "name": "Jugular notch",
+      "accept": [
+        "suprasternal notch",
+        "sternal notch"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "sternum",
+      "box": [
+        348,
+        101,
+        132,
+        24
+      ]
+    },
+    {
+      "id": "clavicle",
+      "name": "Clavicle",
+      "accept": [
+        "collarbone",
+        "collar bone"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        942,
+        151,
+        82,
+        21
+      ]
+    },
+    {
+      "id": "sternum",
+      "name": "Sternum",
+      "accept": [
+        "breastbone"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "sternum",
+      "box": [
+        348,
+        215,
+        99,
+        21
+      ]
+    },
+    {
+      "id": "scapula",
+      "name": "Scapula",
+      "accept": [
+        "shoulder blade"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        942,
+        239,
+        85,
+        25
+      ]
+    },
+    {
+      "id": "manubrium-thorax",
+      "name": "Manubrium",
+      "accept": [
+        "manubrium of sternum"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "sternum",
+      "box": [
+        360,
+        240,
+        112,
+        20
+      ]
+    },
+    {
+      "id": "body-thorax",
+      "name": "Body",
+      "accept": [
+        "body of sternum",
+        "body of the sternum",
+        "gladiolus"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "sternum",
+      "box": [
+        360,
+        264,
+        58,
+        24
+      ]
+    },
+    {
+      "id": "sternal-angle-thorax",
+      "name": "Sternal angle",
+      "accept": [
+        "angle of louis",
+        "manubriosternal joint"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "sternum",
+      "box": [
+        942,
+        302,
+        131,
+        25
+      ]
+    },
+    {
+      "id": "xiphoid-process-thorax",
+      "name": "Xiphoid process",
+      "accept": [
+        "xiphoid"
+      ],
+      "lines": [
+        18,
+        19
+      ],
+      "concept": "sternum",
+      "box": [
+        348,
+        363,
+        82,
+        48
+      ]
+    },
+    {
+      "id": "costal-cartilages",
+      "name": "Costal cartilages",
+      "accept": [
+        "costal cartilage"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "ribs",
+      "box": [
+        942,
+        395,
+        160,
+        25
+      ]
+    },
+    {
+      "id": "intercostal-space",
+      "name": "Intercostal space",
+      "accept": [
+        "intercostal spaces"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "ribs",
+      "box": [
+        943,
+        471,
+        159,
+        25
+      ]
+    }
+  ]
+}

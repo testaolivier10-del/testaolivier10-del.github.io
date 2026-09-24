@@ -1,0 +1,217 @@
+{
+  "figure": "os-7-26",
+  "labels": [
+    {
+      "id": "superior-articular-facets",
+      "name": "Superior articular facets",
+      "accept": [
+        "superior articular facet",
+        "superior articular process",
+        "superior articular processes"
+      ],
+      "lines": [
+        0,
+        3
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        192,
+        1,
+        220,
+        59
+      ]
+    },
+    {
+      "id": "articular-facet-for-tubercle-of-rib",
+      "name": "Articular facet for tubercle of rib",
+      "accept": [
+        "transverse costal facet",
+        "facet for tubercle of rib",
+        "facet for the tubercle of the rib",
+        "costal facet"
+      ],
+      "lines": [
+        1,
+        4,
+        5
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        876,
+        1,
+        216,
+        59
+      ]
+    },
+    {
+      "id": "transverse-process",
+      "name": "Transverse process",
+      "accept": [
+        "transverse processes"
+      ],
+      "lines": [
+        14,
+        20
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        192,
+        95,
+        147,
+        64
+      ]
+    },
+    {
+      "id": "pedicle",
+      "name": "Pedicle",
+      "accept": [
+        "pedicles"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        914,
+        120,
+        99,
+        26
+      ]
+    },
+    {
+      "id": "intervertebral-disc",
+      "name": "Intervertebral disc",
+      "accept": [
+        "intervertebral disk",
+        "disc",
+        "disk"
+      ],
+      "lines": [
+        23,
+        27
+      ],
+      "concept": "intervertebral-disc",
+      "box": [
+        912,
+        211,
+        172,
+        59
+      ]
+    },
+    {
+      "id": "lamina",
+      "name": "Lamina",
+      "accept": [
+        "laminae"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        274,
+        242,
+        100,
+        26
+      ]
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "accept": [
+        "vertebral body",
+        "centrum"
+      ],
+      "lines": [
+        40
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        913,
+        317,
+        74,
+        31
+      ]
+    },
+    {
+      "id": "spinous-process",
+      "name": "Spinous process",
+      "accept": [
+        "spinous processes",
+        "spine"
+      ],
+      "lines": [
+        49,
+        53
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        193,
+        397,
+        110,
+        64
+      ]
+    },
+    {
+      "id": "superior-costal-facet",
+      "name": "Superior costal facet",
+      "accept": [
+        "superior costal demifacet",
+        "superior demifacet",
+        "costal facet"
+      ],
+      "lines": [
+        56,
+        63
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        912,
+        451,
+        190,
+        58
+      ]
+    },
+    {
+      "id": "inferior-costal-facet",
+      "name": "Inferior costal facet",
+      "accept": [
+        "inferior costal demifacet",
+        "inferior demifacet",
+        "costal facet"
+      ],
+      "lines": [
+        73,
+        78
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        714,
+        693,
+        175,
+        59
+      ]
+    },
+    {
+      "id": "inferior-articular-facets",
+      "name": "Inferior articular facets",
+      "accept": [
+        "inferior articular facet",
+        "inferior articular process",
+        "inferior articular processes"
+      ],
+      "lines": [
+        75,
+        80,
+        81
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        547,
+        696,
+        110,
+        92
+      ]
+    }
+  ]
+}

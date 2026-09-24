@@ -149,7 +149,7 @@
         "Myosin forms the thick filament, and its heads reach toward the thin filament.",
         "Correct. Troponin is the small complex on tropomyosin that can bind calcium.",
         "Correct. Tropomyosin is the rod that covers the myosin-binding sites at rest.",
-        "Titin runs from the Z disc to the M line through the thick filament. It is not part of the thin filament."
+        "Titin runs from the Z disc to the M line along the thick filament. It is not part of the thin filament."
       ]
     }
   },
@@ -300,14 +300,14 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "A muscle fiber is 3 cm long and its sarcomeres are 2.5 µm long. About how many sarcomeres lie end to end along one of its myofibrils?",
-    "options": ["1,200", "7,500", "75,000", "12,000"],
+    "options": ["1,200", "120,000", "75,000", "12,000"],
     "correct": 3,
     "why": {
       "correct": "Convert to the same unit: 3 cm = 30,000 µm. Then divide: 30,000 µm ÷ 2.5 µm = 12,000 sarcomeres.",
       "options": [
         "This result comes from converting 3 cm to 3,000 µm; 1 cm is 10,000 µm, not 1,000.",
-        "This comes from multiplying 3 by 2.5 instead of dividing the fiber's length by the sarcomere's length.",
-        "This is too large by a factor of about six; check the division 30,000 ÷ 2.5.",
+        "This comes from converting 3 cm to 300,000 µm; 1 cm is 10,000 µm, not 100,000.",
+        "This multiplies 30,000 µm by 2.5 instead of dividing the fiber's length by one sarcomere's length.",
         "Correct. 30,000 µm ÷ 2.5 µm = 12,000."
       ]
     }
@@ -338,7 +338,7 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "A sprinter feels a sudden pain at the back of her thigh near where the muscle becomes tendon. How does the force of her muscle fibers reach that tendon?",
-    "options": ["Each fiber is attached directly to the bone by its own sarcolemma", "The fibers' pull passes through the endomysium, perimysium and epimysium, which merge into the tendon", "The myofibrils extend out of the fibers into the tendon", "The deep fascia around the muscle pulls on the tendon alone"],
+    "options": ["Each fiber is attached directly to the bone by its own sarcolemma", "Through the endomysium, perimysium and epimysium into the tendon", "The myofibrils extend out of the fibers into the tendon", "The deep fascia around the muscle pulls on the tendon alone"],
     "correct": 1,
     "why": {
       "correct": "The three connective tissue layers are continuous with each other and merge into the tendon's collagen. Each fiber's pull passes outward through them, so a hard sprint concentrates force where muscle meets tendon.",

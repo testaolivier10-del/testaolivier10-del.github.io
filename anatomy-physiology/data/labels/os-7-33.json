@@ -1,0 +1,281 @@
+{
+  "figure": "os-7-33",
+  "labels": [
+    {
+      "id": "frontal-suture",
+      "name": "Frontal suture",
+      "accept": [
+        "metopic suture"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "sutures",
+      "box": [
+        408,
+        7,
+        118,
+        19
+      ]
+    },
+    {
+      "id": "frontal-bone",
+      "name": "Frontal bone",
+      "accept": [
+        "frontal"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        0,
+        39,
+        116,
+        19
+      ]
+    },
+    {
+      "id": "anterior-fontanelle",
+      "name": "Anterior fontanelle",
+      "accept": [
+        "anterior fontanel",
+        "soft spot",
+        "frontal fontanelle"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "fontanelle",
+      "box": [
+        407,
+        59,
+        88,
+        38
+      ]
+    },
+    {
+      "id": "ossification-center",
+      "name": "Ossification center",
+      "accept": [
+        "ossification centre",
+        "primary ossification center"
+      ],
+      "lines": [
+        9,
+        13
+      ],
+      "concept": "ossification",
+      "box": [
+        0,
+        163,
+        102,
+        38
+      ]
+    },
+    {
+      "id": "parietal-bone",
+      "name": "Parietal bone",
+      "accept": [
+        "parietal"
+      ],
+      "lines": [
+        14,
+        16
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        408,
+        205,
+        74,
+        38
+      ]
+    },
+    {
+      "id": "posterior-fontanelle",
+      "name": "Posterior fontanelle",
+      "accept": [
+        "posterior fontanel",
+        "occipital fontanelle"
+      ],
+      "lines": [
+        18,
+        19
+      ],
+      "concept": "fontanelle",
+      "box": [
+        0,
+        265,
+        87,
+        38
+      ]
+    },
+    {
+      "id": "occipital-bone",
+      "name": "Occipital bone",
+      "accept": [
+        "occipital"
+      ],
+      "lines": [
+        20,
+        23
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        407,
+        291,
+        86,
+        38
+      ]
+    },
+    {
+      "id": "parietal-bone-lateral",
+      "name": "Parietal bone",
+      "accept": [
+        "parietal"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        536,
+        34,
+        120,
+        19
+      ]
+    },
+    {
+      "id": "frontal-bone-lateral",
+      "name": "Frontal bone",
+      "accept": [
+        "frontal"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        985,
+        34,
+        116,
+        19
+      ]
+    },
+    {
+      "id": "ossification-center-lateral",
+      "name": "Ossification center",
+      "accept": [
+        "ossification centre",
+        "primary ossification center"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "ossification",
+      "box": [
+        535,
+        78,
+        102,
+        39
+      ]
+    },
+    {
+      "id": "posterior-fontanelle-lateral",
+      "name": "Posterior fontanelle",
+      "accept": [
+        "posterior fontanel",
+        "occipital fontanelle"
+      ],
+      "lines": [
+        8,
+        11
+      ],
+      "concept": "fontanelle",
+      "box": [
+        535,
+        145,
+        87,
+        39
+      ]
+    },
+    {
+      "id": "sphenoidal-fontanelle",
+      "name": "Sphenoidal fontanelle",
+      "accept": [
+        "sphenoid fontanelle",
+        "anterolateral fontanelle",
+        "sphenoidal fontanel"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "fontanelle",
+      "box": [
+        983,
+        163,
+        100,
+        38
+      ]
+    },
+    {
+      "id": "mastoid-fontanelle",
+      "name": "Mastoid fontanelle",
+      "accept": [
+        "posterolateral fontanelle",
+        "mastoid fontanel"
+      ],
+      "lines": [
+        15,
+        17
+      ],
+      "concept": "fontanelle",
+      "box": [
+        535,
+        220,
+        87,
+        38
+      ]
+    },
+    {
+      "id": "occipital-bone-lateral",
+      "name": "Occipital bone",
+      "accept": [
+        "occipital"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        536,
+        296,
+        132,
+        23
+      ]
+    },
+    {
+      "id": "temporal-bone-squamous",
+      "name": "Temporal bone (squamous portion)",
+      "accept": [
+        "temporal bone",
+        "squamous portion",
+        "squamous part of the temporal bone",
+        "temporal"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        801,
+        296,
+        282,
+        23
+      ]
+    }
+  ]
+}

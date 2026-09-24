@@ -1,0 +1,56 @@
+{
+  "figure": "os-7-21",
+  "labels": [
+    {
+      "id": "scoliosis",
+      "name": "Scoliosis",
+      "accept": [],
+      "lines": [
+        0
+      ],
+      "concept": "spinal-curvatures",
+      "box": [
+        210,
+        398,
+        105,
+        21
+      ]
+    },
+    {
+      "id": "kyphosis",
+      "name": "Kyphosis",
+      "accept": [
+        "hunchback",
+        "humpback"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "spinal-curvatures",
+      "box": [
+        571,
+        398,
+        107,
+        22
+      ]
+    },
+    {
+      "id": "lordosis",
+      "name": "Lordosis",
+      "accept": [
+        "swayback",
+        "sway back"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "spinal-curvatures",
+      "box": [
+        922,
+        398,
+        102,
+        21
+      ]
+    }
+  ]
+}

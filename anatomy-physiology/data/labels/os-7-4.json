@@ -1,0 +1,488 @@
+{
+  "figure": "os-7-4",
+  "labels": [
+    {
+      "id": "coronal-suture",
+      "name": "Coronal suture",
+      "accept": [],
+      "lines": [
+        0
+      ],
+      "concept": "sutures",
+      "box": [
+        0,
+        100,
+        136,
+        20
+      ]
+    },
+    {
+      "id": "frontal-bone",
+      "name": "Frontal bone",
+      "accept": [
+        "frontal"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        900,
+        171,
+        116,
+        20
+      ]
+    },
+    {
+      "id": "glabella",
+      "name": "Glabella",
+      "accept": [],
+      "lines": [
+        2
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        0,
+        178,
+        82,
+        20
+      ]
+    },
+    {
+      "id": "parietal-bone",
+      "name": "Parietal bone",
+      "accept": [
+        "parietal"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        900,
+        246,
+        122,
+        20
+      ]
+    },
+    {
+      "id": "supraorbital-foramen",
+      "name": "Supraorbital foramen",
+      "accept": [
+        "supraorbital notch"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        0,
+        261,
+        187,
+        24
+      ]
+    },
+    {
+      "id": "supraorbital-margin",
+      "name": "Supraorbital margin",
+      "accept": [
+        "supraorbital rim",
+        "supraorbital ridge"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        0,
+        295,
+        176,
+        24
+      ]
+    },
+    {
+      "id": "orbit",
+      "name": "Orbit",
+      "accept": [
+        "eye socket",
+        "orbital cavity"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        899,
+        311,
+        53,
+        20
+      ]
+    },
+    {
+      "id": "sphenoid-bone",
+      "name": "Sphenoid bone",
+      "accept": [
+        "sphenoid"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        0,
+        335,
+        139,
+        24
+      ]
+    },
+    {
+      "id": "optic-canal",
+      "name": "Optic canal",
+      "accept": [
+        "optic foramen"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        899,
+        350,
+        106,
+        24
+      ]
+    },
+    {
+      "id": "temporal-bone",
+      "name": "Temporal bone",
+      "accept": [
+        "temporal"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        0,
+        375,
+        136,
+        24
+      ]
+    },
+    {
+      "id": "superior-orbital-fissure",
+      "name": "Superior orbital fissure",
+      "accept": [],
+      "lines": [
+        10
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        899,
+        393,
+        201,
+        24
+      ]
+    },
+    {
+      "id": "ethmoid-bone",
+      "name": "Ethmoid bone",
+      "accept": [
+        "ethmoid"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        1,
+        415,
+        128,
+        20
+      ]
+    },
+    {
+      "id": "lacrimal-bone",
+      "name": "Lacrimal bone",
+      "accept": [
+        "lacrimal"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "facial-bones",
+      "box": [
+        899,
+        437,
+        131,
+        20
+      ]
+    },
+    {
+      "id": "nasal-bone",
+      "name": "Nasal bone",
+      "accept": [
+        "nasal bones"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "facial-bones",
+      "box": [
+        1,
+        455,
+        107,
+        20
+      ]
+    },
+    {
+      "id": "inferior-orbital-fissure",
+      "name": "Inferior orbital fissure",
+      "accept": [],
+      "lines": [
+        14
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        900,
+        481,
+        187,
+        20
+      ]
+    },
+    {
+      "id": "palatine-bone",
+      "name": "Palatine bone",
+      "accept": [
+        "palatine"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "facial-bones",
+      "box": [
+        1,
+        495,
+        126,
+        20
+      ]
+    },
+    {
+      "id": "zygomatic-bone",
+      "name": "Zygomatic bone",
+      "accept": [
+        "zygomatic",
+        "cheekbone",
+        "cheek bone",
+        "malar bone"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "facial-bones",
+      "box": [
+        898,
+        525,
+        147,
+        24
+      ]
+    },
+    {
+      "id": "nasal-septum",
+      "name": "Nasal septum",
+      "accept": [
+        "bony nasal septum"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": null,
+      "box": [
+        1,
+        541,
+        140,
+        24
+      ]
+    },
+    {
+      "id": "perpendicular-plate-of-ethmoid",
+      "name": "Perpendicular plate of ethmoid bone",
+      "accept": [
+        "perpendicular plate",
+        "perpendicular plate of the ethmoid bone",
+        "perpendicular plate of ethmoid"
+      ],
+      "lines": [
+        18,
+        20
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        11,
+        567,
+        175,
+        43
+      ]
+    },
+    {
+      "id": "infraorbital-foramen",
+      "name": "Infraorbital foramen",
+      "accept": [],
+      "lines": [
+        19
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        900,
+        569,
+        173,
+        20
+      ]
+    },
+    {
+      "id": "vomer-bone",
+      "name": "Vomer bone",
+      "accept": [
+        "vomer"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "facial-bones",
+      "box": [
+        11,
+        618,
+        114,
+        20
+      ]
+    },
+    {
+      "id": "middle-nasal-concha",
+      "name": "Middle nasal concha",
+      "accept": [
+        "middle concha",
+        "middle nasal conchae",
+        "middle turbinate"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        899,
+        629,
+        184,
+        20
+      ]
+    },
+    {
+      "id": "inferior-nasal-concha",
+      "name": "Inferior nasal concha",
+      "accept": [
+        "inferior concha",
+        "inferior nasal conchae",
+        "inferior turbinate"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "facial-bones",
+      "box": [
+        900,
+        685,
+        186,
+        20
+      ]
+    },
+    {
+      "id": "maxilla",
+      "name": "Maxilla",
+      "accept": [
+        "maxillary bone",
+        "maxillae",
+        "upper jaw"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "facial-bones",
+      "box": [
+        1,
+        700,
+        70,
+        20
+      ]
+    },
+    {
+      "id": "alveolar-process-of-mandible",
+      "name": "Alveolar process of mandible",
+      "accept": [
+        "alveolar process of the mandible",
+        "mandibular alveolar process"
+      ],
+      "lines": [
+        25,
+        27
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        898,
+        737,
+        152,
+        43
+      ]
+    },
+    {
+      "id": "alveolar-process-of-maxilla",
+      "name": "Alveolar process of maxilla",
+      "accept": [
+        "alveolar process of the maxilla",
+        "maxillary alveolar process"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        0,
+        740,
+        236,
+        24
+      ]
+    },
+    {
+      "id": "mental-foramen",
+      "name": "Mental foramen",
+      "accept": [],
+      "lines": [
+        28
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        1,
+        786,
+        141,
+        20
+      ]
+    },
+    {
+      "id": "mandible",
+      "name": "Mandible",
+      "accept": [
+        "lower jaw",
+        "jawbone",
+        "jaw bone"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "facial-bones",
+      "box": [
+        899,
+        812,
+        88,
+        20
+      ]
+    }
+  ]
+}

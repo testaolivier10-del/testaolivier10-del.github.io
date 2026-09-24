@@ -1,0 +1,97 @@
+{
+  "figure": "os-7-31",
+  "labels": [
+    {
+      "id": "external-occipital-protuberance",
+      "name": "External occipital protuberance",
+      "accept": [
+        "occipital protuberance",
+        "inion"
+      ],
+      "lines": [
+        0,
+        1,
+        2
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        4,
+        259,
+        135,
+        75
+      ]
+    },
+    {
+      "id": "nuchal-ligament",
+      "name": "Nuchal ligament",
+      "accept": [
+        "ligamentum nuchae"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "vertebral-ligaments",
+      "box": [
+        5,
+        359,
+        90,
+        50
+      ]
+    },
+    {
+      "id": "spinous-process-of-t1",
+      "name": "Spinous process of T1 vertebra",
+      "accept": [
+        "spinous process",
+        "spinous process of t1",
+        "t1 spinous process"
+      ],
+      "lines": [
+        6,
+        7,
+        8
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        4,
+        446,
+        166,
+        46
+      ]
+    },
+    {
+      "id": "anterior-longitudinal-ligament",
+      "name": "Anterior longitudinal ligament",
+      "accept": [],
+      "lines": [
+        9,
+        10,
+        12
+      ],
+      "concept": "vertebral-ligaments",
+      "box": [
+        472,
+        506,
+        117,
+        75
+      ]
+    },
+    {
+      "id": "supraspinous-ligament",
+      "name": "Supraspinous ligament",
+      "accept": [],
+      "lines": [
+        11,
+        13
+      ],
+      "concept": "vertebral-ligaments",
+      "box": [
+        4,
+        548,
+        139,
+        51
+      ]
+    }
+  ]
+}

@@ -1,0 +1,545 @@
+{
+  "figure": "os-7-2",
+  "labels": [
+    {
+      "id": "skull",
+      "name": "Skull",
+      "accept": [
+        "cranium"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": null,
+      "box": [
+        524,
+        5,
+        53,
+        20
+      ]
+    },
+    {
+      "id": "cranial-portion",
+      "name": "Cranial portion",
+      "accept": [
+        "cranium",
+        "cranial bones",
+        "brain case"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        482,
+        42,
+        137,
+        25
+      ]
+    },
+    {
+      "id": "facial-portion",
+      "name": "Facial portion",
+      "accept": [
+        "facial bones",
+        "face"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "facial-bones",
+      "box": [
+        483,
+        80,
+        126,
+        25
+      ]
+    },
+    {
+      "id": "pectoral-girdle",
+      "name": "Pectoral (shoulder) girdle",
+      "accept": [
+        "pectoral girdle",
+        "shoulder girdle"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        440,
+        137,
+        222,
+        24
+      ]
+    },
+    {
+      "id": "clavicle",
+      "name": "Clavicle",
+      "accept": [
+        "collarbone",
+        "collar bone"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        511,
+        179,
+        79,
+        20
+      ]
+    },
+    {
+      "id": "scapula",
+      "name": "Scapula",
+      "accept": [
+        "shoulder blade",
+        "scapulae"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "pectoral-girdle",
+      "box": [
+        510,
+        215,
+        81,
+        24
+      ]
+    },
+    {
+      "id": "thoracic-cage",
+      "name": "Thoracic cage",
+      "accept": [
+        "rib cage",
+        "thorax"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "ribs",
+      "box": [
+        485,
+        244,
+        132,
+        25
+      ]
+    },
+    {
+      "id": "sternum",
+      "name": "Sternum",
+      "accept": [
+        "breastbone",
+        "breast bone"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "sternum",
+      "box": [
+        508,
+        275,
+        84,
+        20
+      ]
+    },
+    {
+      "id": "ribs",
+      "name": "Ribs",
+      "accept": [
+        "rib"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "ribs",
+      "box": [
+        526,
+        311,
+        50,
+        20
+      ]
+    },
+    {
+      "id": "upper-limb",
+      "name": "Upper limb",
+      "accept": [
+        "arm",
+        "upper extremity"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": null,
+      "box": [
+        499,
+        343,
+        104,
+        24
+      ]
+    },
+    {
+      "id": "vertebral-column",
+      "name": "Vertebral column",
+      "accept": [
+        "spine",
+        "backbone",
+        "spinal column"
+      ],
+      "lines": [
+        10,
+        13
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        0,
+        356,
+        88,
+        43
+      ]
+    },
+    {
+      "id": "vertebral-column-posterior",
+      "name": "Vertebral column",
+      "accept": [
+        "spine",
+        "backbone",
+        "spinal column"
+      ],
+      "lines": [
+        11,
+        14
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        992,
+        356,
+        89,
+        43
+      ]
+    },
+    {
+      "id": "humerus",
+      "name": "Humerus",
+      "accept": [],
+      "lines": [
+        12
+      ],
+      "concept": "humerus",
+      "box": [
+        506,
+        373,
+        90,
+        20
+      ]
+    },
+    {
+      "id": "ulna",
+      "name": "Ulna",
+      "accept": [],
+      "lines": [
+        15
+      ],
+      "concept": "radius-ulna",
+      "box": [
+        525,
+        425,
+        52,
+        21
+      ]
+    },
+    {
+      "id": "pelvic-girdle",
+      "name": "Pelvic girdle (hip bones)",
+      "accept": [
+        "pelvic girdle",
+        "hip bones",
+        "hip bone",
+        "coxal bones",
+        "os coxae"
+      ],
+      "lines": [
+        16,
+        19,
+        22
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        438,
+        107,
+        70
+      ]
+    },
+    {
+      "id": "pelvic-girdle-posterior",
+      "name": "Pelvic girdle (hip bones)",
+      "accept": [
+        "pelvic girdle",
+        "hip bones",
+        "hip bone",
+        "coxal bones",
+        "os coxae"
+      ],
+      "lines": [
+        17,
+        20,
+        23
+      ],
+      "concept": "pelvic-girdle",
+      "box": [
+        993,
+        438,
+        107,
+        70
+      ]
+    },
+    {
+      "id": "radius",
+      "name": "Radius",
+      "accept": [],
+      "lines": [
+        18
+      ],
+      "concept": "radius-ulna",
+      "box": [
+        516,
+        452,
+        71,
+        21
+      ]
+    },
+    {
+      "id": "carpals",
+      "name": "Carpals",
+      "accept": [
+        "carpal bones",
+        "carpal",
+        "wrist bones"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "hand-bones",
+      "box": [
+        511,
+        479,
+        79,
+        25
+      ]
+    },
+    {
+      "id": "metacarpals",
+      "name": "Metacarpals",
+      "accept": [
+        "metacarpal",
+        "metacarpal bones"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "hand-bones",
+      "box": [
+        493,
+        534,
+        116,
+        24
+      ]
+    },
+    {
+      "id": "phalanges-hand",
+      "name": "Phalanges",
+      "accept": [
+        "phalanx",
+        "finger bones"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "hand-bones",
+      "box": [
+        484,
+        583,
+        101,
+        24
+      ]
+    },
+    {
+      "id": "lower-limb",
+      "name": "Lower limb",
+      "accept": [
+        "leg",
+        "lower extremity"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": null,
+      "box": [
+        499,
+        643,
+        104,
+        20
+      ]
+    },
+    {
+      "id": "femur",
+      "name": "Femur",
+      "accept": [
+        "thigh bone"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "femur",
+      "box": [
+        518,
+        683,
+        67,
+        20
+      ]
+    },
+    {
+      "id": "patella",
+      "name": "Patella",
+      "accept": [
+        "kneecap"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "patella",
+      "box": [
+        518,
+        716,
+        69,
+        20
+      ]
+    },
+    {
+      "id": "tibia",
+      "name": "Tibia",
+      "accept": [
+        "shinbone",
+        "shin bone"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        517,
+        831,
+        54,
+        20
+      ]
+    },
+    {
+      "id": "fibula",
+      "name": "Fibula",
+      "accept": [],
+      "lines": [
+        33
+      ],
+      "concept": "tibia-fibula",
+      "box": [
+        518,
+        876,
+        63,
+        20
+      ]
+    },
+    {
+      "id": "tarsals",
+      "name": "Tarsals",
+      "accept": [
+        "tarsal bones",
+        "tarsal",
+        "ankle bones"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "foot-bones",
+      "box": [
+        413,
+        963,
+        73,
+        20
+      ]
+    },
+    {
+      "id": "metatarsals",
+      "name": "Metatarsals",
+      "accept": [
+        "metatarsal",
+        "metatarsal bones"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "foot-bones",
+      "box": [
+        414,
+        984,
+        110,
+        20
+      ]
+    },
+    {
+      "id": "phalanges-foot",
+      "name": "Phalanges",
+      "accept": [
+        "phalanx",
+        "toe bones"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "foot-bones",
+      "box": [
+        414,
+        1007,
+        102,
+        24
+      ]
+    },
+    {
+      "id": "axial-skeleton",
+      "name": "Axial skeleton",
+      "accept": [
+        "axial"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "axial-appendicular",
+      "box": [
+        959,
+        840,
+        130,
+        20
+      ]
+    },
+    {
+      "id": "appendicular-skeleton",
+      "name": "Appendicular skeleton",
+      "accept": [
+        "appendicular"
+      ],
+      "lines": [
+        32,
+        34
+      ],
+      "concept": "axial-appendicular",
+      "box": [
+        959,
+        875,
+        125,
+        43
+      ]
+    }
+  ]
+}

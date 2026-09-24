@@ -1,0 +1,481 @@
+{
+  "figure": "os-7-5",
+  "labels": [
+    {
+      "id": "zygomatic-arch",
+      "name": "Zygomatic arch",
+      "accept": [
+        "cheekbone arch"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        566,
+        9,
+        140,
+        24
+      ]
+    },
+    {
+      "id": "pterion",
+      "name": "Pterion",
+      "accept": [],
+      "lines": [
+        1
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        685,
+        40,
+        71,
+        20
+      ]
+    },
+    {
+      "id": "coronal-suture",
+      "name": "Coronal suture",
+      "accept": [],
+      "lines": [
+        2
+      ],
+      "concept": "sutures",
+      "box": [
+        1,
+        63,
+        135,
+        20
+      ]
+    },
+    {
+      "id": "parietal-bone",
+      "name": "Parietal bone",
+      "accept": [
+        "parietal"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        2,
+        106,
+        121,
+        20
+      ]
+    },
+    {
+      "id": "frontal-bone",
+      "name": "Frontal bone",
+      "accept": [
+        "frontal"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        941,
+        117,
+        115,
+        20
+      ]
+    },
+    {
+      "id": "greater-wing-of-sphenoid",
+      "name": "Greater wing of sphenoid bone",
+      "accept": [
+        "greater wing",
+        "greater wing of the sphenoid",
+        "greater wing of sphenoid",
+        "sphenoid bone",
+        "sphenoid"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        940,
+        155,
+        140,
+        46
+      ]
+    },
+    {
+      "id": "squamous-suture",
+      "name": "Squamous suture",
+      "accept": [],
+      "lines": [
+        7
+      ],
+      "concept": "sutures",
+      "box": [
+        1,
+        201,
+        158,
+        24
+      ]
+    },
+    {
+      "id": "ethmoid-bone",
+      "name": "Ethmoid bone",
+      "accept": [
+        "ethmoid"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        941,
+        215,
+        126,
+        20
+      ]
+    },
+    {
+      "id": "temporal-bone",
+      "name": "Temporal bone",
+      "accept": [
+        "temporal"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        0,
+        244,
+        137,
+        24
+      ]
+    },
+    {
+      "id": "squamous-temporal",
+      "name": "Squamous temporal",
+      "accept": [
+        "squamous part of the temporal bone",
+        "squamous portion",
+        "squamous part",
+        "temporal squama"
+      ],
+      "lines": [
+        11,
+        13
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        0,
+        275,
+        103,
+        46
+      ]
+    },
+    {
+      "id": "lacrimal-bone",
+      "name": "Lacrimal bone",
+      "accept": [
+        "lacrimal"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "facial-bones",
+      "box": [
+        940,
+        253,
+        130,
+        20
+      ]
+    },
+    {
+      "id": "lacrimal-fossa",
+      "name": "Lacrimal fossa",
+      "accept": [
+        "fossa for the lacrimal sac",
+        "lacrimal groove"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        940,
+        290,
+        132,
+        20
+      ]
+    },
+    {
+      "id": "zygomatic-process",
+      "name": "Zygomatic process",
+      "accept": [
+        "zygomatic process of the temporal bone",
+        "zygomatic process of temporal bone"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        0,
+        326,
+        170,
+        24
+      ]
+    },
+    {
+      "id": "nasal-bone",
+      "name": "Nasal bone",
+      "accept": [
+        "nasal bones"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "facial-bones",
+      "box": [
+        940,
+        347,
+        107,
+        20
+      ]
+    },
+    {
+      "id": "external-acoustic-meatus",
+      "name": "External acoustic meatus",
+      "accept": [
+        "external auditory meatus",
+        "ear canal",
+        "external auditory canal"
+      ],
+      "lines": [
+        16,
+        17
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        1,
+        356,
+        155,
+        43
+      ]
+    },
+    {
+      "id": "zygomatic-bone",
+      "name": "Zygomatic bone",
+      "accept": [
+        "zygomatic",
+        "cheekbone",
+        "cheek bone"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "facial-bones",
+      "box": [
+        939,
+        403,
+        146,
+        24
+      ]
+    },
+    {
+      "id": "lambdoid-suture",
+      "name": "Lambdoid suture",
+      "accept": [
+        "lambdoidal suture"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "sutures",
+      "box": [
+        1,
+        408,
+        151,
+        20
+      ]
+    },
+    {
+      "id": "temporal-process",
+      "name": "Temporal process",
+      "accept": [
+        "temporal process of the zygomatic bone",
+        "temporal process of zygomatic bone"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        939,
+        430,
+        161,
+        24
+      ]
+    },
+    {
+      "id": "mastoid-portion",
+      "name": "Mastoid portion",
+      "accept": [
+        "mastoid part",
+        "mastoid part of the temporal bone"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        1,
+        439,
+        140,
+        24
+      ]
+    },
+    {
+      "id": "styloid-process",
+      "name": "Styloid process",
+      "accept": [],
+      "lines": [
+        22
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        1,
+        470,
+        139,
+        24
+      ]
+    },
+    {
+      "id": "maxilla",
+      "name": "Maxilla",
+      "accept": [
+        "maxillary bone",
+        "upper jaw"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "facial-bones",
+      "box": [
+        940,
+        474,
+        71,
+        20
+      ]
+    },
+    {
+      "id": "mastoid-process",
+      "name": "Mastoid process",
+      "accept": [
+        "mastoid"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        1,
+        500,
+        148,
+        24
+      ]
+    },
+    {
+      "id": "articular-tubercle",
+      "name": "Articular tubercle",
+      "accept": [
+        "articular eminence"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        939,
+        530,
+        154,
+        20
+      ]
+    },
+    {
+      "id": "occipital-bone",
+      "name": "Occipital bone",
+      "accept": [
+        "occipital"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        1,
+        549,
+        131,
+        24
+      ]
+    },
+    {
+      "id": "mandibular-fossa",
+      "name": "Mandibular fossa",
+      "accept": [
+        "glenoid fossa"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        940,
+        558,
+        154,
+        20
+      ]
+    },
+    {
+      "id": "mandible",
+      "name": "Mandible",
+      "accept": [
+        "lower jaw",
+        "jawbone",
+        "jaw bone"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "facial-bones",
+      "box": [
+        472,
+        637,
+        88,
+        20
+      ]
+    },
+    {
+      "id": "mental-protuberance",
+      "name": "Mental protuberance of mandible",
+      "accept": [
+        "mental protuberance",
+        "mental protuberance of the mandible",
+        "chin"
+      ],
+      "lines": [
+        29,
+        30,
+        31
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        940,
+        644,
+        122,
+        65
+      ]
+    }
+  ]
+}

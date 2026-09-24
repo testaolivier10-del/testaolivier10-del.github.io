@@ -1,0 +1,287 @@
+{
+  "figure": "os-7-29",
+  "labels": [
+    {
+      "id": "sacral-promontory",
+      "name": "Sacral promontory",
+      "accept": [
+        "promontory"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        111,
+        19,
+        171,
+        24
+      ]
+    },
+    {
+      "id": "body-of-first-sacral-vertebra",
+      "name": "Body of first sacral vertebra",
+      "accept": [
+        "body of s1",
+        "s1 body",
+        "body of the first sacral vertebra"
+      ],
+      "lines": [
+        13,
+        17
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        103,
+        104,
+        140,
+        44
+      ]
+    },
+    {
+      "id": "transverse-ridges",
+      "name": "Transverse ridges (sites of vertebral fusion)",
+      "accept": [
+        "transverse ridges",
+        "transverse ridge",
+        "transverse lines"
+      ],
+      "lines": [
+        25,
+        30,
+        36
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        103,
+        189,
+        164,
+        70
+      ]
+    },
+    {
+      "id": "anterior-sacral-foramina",
+      "name": "Anterior sacral foramina",
+      "accept": [
+        "anterior sacral foramen",
+        "sacral foramina",
+        "pelvic sacral foramina"
+      ],
+      "lines": [
+        51,
+        56
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        122,
+        301,
+        137,
+        44
+      ]
+    },
+    {
+      "id": "apex",
+      "name": "Apex",
+      "accept": [
+        "apex of sacrum",
+        "apex of the sacrum",
+        "sacral apex"
+      ],
+      "lines": [
+        59
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        233,
+        359,
+        56,
+        23
+      ]
+    },
+    {
+      "id": "coccyx",
+      "name": "Coccyx",
+      "accept": [
+        "tailbone",
+        "tail bone"
+      ],
+      "lines": [
+        61
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        502,
+        398,
+        76,
+        24
+      ]
+    },
+    {
+      "id": "sacral-canal",
+      "name": "Sacral canal",
+      "accept": [],
+      "lines": [
+        0,
+        4
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        683,
+        0,
+        67,
+        43
+      ]
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "accept": [
+        "body of sacrum",
+        "body of s1",
+        "body of first sacral vertebra"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        799,
+        0,
+        57,
+        24
+      ]
+    },
+    {
+      "id": "facet-of-superior-articular-process",
+      "name": "Facet of superior articular process",
+      "accept": [
+        "superior articular process",
+        "superior articular facet",
+        "facet of the superior articular process"
+      ],
+      "lines": [
+        2,
+        5
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        950,
+        0,
+        152,
+        47
+      ]
+    },
+    {
+      "id": "auricular-surface",
+      "name": "Auricular surface",
+      "accept": [
+        "auricular surface of the sacrum"
+      ],
+      "lines": [
+        14,
+        18
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        1010,
+        114,
+        89,
+        43
+      ]
+    },
+    {
+      "id": "median-sacral-crest",
+      "name": "Median sacral crest",
+      "accept": [
+        "median crest",
+        "sacral crest"
+      ],
+      "lines": [
+        29,
+        34,
+        39
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        589,
+        203,
+        75,
+        67
+      ]
+    },
+    {
+      "id": "lateral-sacral-crest",
+      "name": "Lateral sacral crest",
+      "accept": [
+        "lateral crest",
+        "lateral sacral crests"
+      ],
+      "lines": [
+        26,
+        31,
+        38
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        1010,
+        190,
+        71,
+        66
+      ]
+    },
+    {
+      "id": "posterior-sacral-foramina",
+      "name": "Posterior sacral foramina",
+      "accept": [
+        "posterior sacral foramen",
+        "dorsal sacral foramina",
+        "sacral foramina"
+      ],
+      "lines": [
+        52,
+        57,
+        58
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        588,
+        301,
+        90,
+        67
+      ]
+    },
+    {
+      "id": "sacral-hiatus",
+      "name": "Sacral hiatus",
+      "accept": [],
+      "lines": [
+        55
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        949,
+        321,
+        124,
+        20
+      ]
+    },
+    {
+      "id": "coccyx-posterior",
+      "name": "Coccyx",
+      "accept": [
+        "tailbone",
+        "tail bone"
+      ],
+      "lines": [
+        62
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        915,
+        398,
+        76,
+        24
+      ]
+    }
+  ]
+}

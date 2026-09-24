@@ -1,0 +1,646 @@
+{
+  "figure": "os-7-25",
+  "labels": [
+    {
+      "id": "dens-of-axis",
+      "name": "Dens of axis",
+      "accept": [
+        "dens",
+        "odontoid process",
+        "dens of the axis"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        808,
+        18,
+        114,
+        20
+      ]
+    },
+    {
+      "id": "transverse-ligament",
+      "name": "Transverse ligament",
+      "accept": [
+        "transverse ligament of the atlas",
+        "transverse ligament of atlas"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "vertebral-ligaments",
+      "box": [
+        688,
+        48,
+        104,
+        46
+      ]
+    },
+    {
+      "id": "spinous-process-bifid",
+      "name": "Spinous process (bifid)",
+      "accept": [
+        "spinous process",
+        "bifid spinous process"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        324,
+        93,
+        203,
+        23
+      ]
+    },
+    {
+      "id": "c1-atlas",
+      "name": "C1 (atlas)",
+      "accept": [
+        "atlas",
+        "c1",
+        "first cervical vertebra"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        689,
+        128,
+        90,
+        24
+      ]
+    },
+    {
+      "id": "vertebral-foramen",
+      "name": "Vertebral foramen",
+      "accept": [
+        "vertebral canal"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        183,
+        138,
+        161,
+        20
+      ]
+    },
+    {
+      "id": "c2-axis",
+      "name": "C2 (axis)",
+      "accept": [
+        "axis",
+        "c2",
+        "second cervical vertebra"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        689,
+        161,
+        84,
+        23
+      ]
+    },
+    {
+      "id": "lamina",
+      "name": "Lamina",
+      "accept": [
+        "laminae"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        258,
+        185,
+        73,
+        19
+      ]
+    },
+    {
+      "id": "pedicle",
+      "name": "Pedicle",
+      "accept": [
+        "pedicles"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        487,
+        193,
+        72,
+        19
+      ]
+    },
+    {
+      "id": "c3",
+      "name": "C3",
+      "accept": [
+        "third cervical vertebra",
+        "c3 vertebra"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        689,
+        193,
+        34,
+        24
+      ]
+    },
+    {
+      "id": "inferior-articular-process-column",
+      "name": "Inferior articular process",
+      "accept": [
+        "inferior articular facet"
+      ],
+      "lines": [
+        10,
+        11,
+        13
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        970,
+        193,
+        81,
+        68
+      ]
+    },
+    {
+      "id": "superior-articular-process",
+      "name": "Superior articular process",
+      "accept": [
+        "superior articular facet"
+      ],
+      "lines": [
+        12,
+        14,
+        16
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        184,
+        237,
+        84,
+        68
+      ]
+    },
+    {
+      "id": "bifid-spinous-process",
+      "name": "Bifid spinous process",
+      "accept": [
+        "spinous process",
+        "bifid spinous processes"
+      ],
+      "lines": [
+        15,
+        17
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        970,
+        281,
+        115,
+        46
+      ]
+    },
+    {
+      "id": "transverse-process",
+      "name": "Transverse process",
+      "accept": [
+        "transverse processes"
+      ],
+      "lines": [
+        18,
+        20
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        183,
+        334,
+        104,
+        46
+      ]
+    },
+    {
+      "id": "transverse-process-column",
+      "name": "Transverse process",
+      "accept": [
+        "transverse processes"
+      ],
+      "lines": [
+        19,
+        21
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        970,
+        347,
+        103,
+        45
+      ]
+    },
+    {
+      "id": "transverse-foramen",
+      "name": "Transverse foramen",
+      "accept": [
+        "foramen transversarium",
+        "transverse foramina"
+      ],
+      "lines": [
+        22,
+        24
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        183,
+        401,
+        104,
+        42
+      ]
+    },
+    {
+      "id": "c7-vertebra-prominens",
+      "name": "C7 (vertebra prominens)",
+      "accept": [
+        "vertebra prominens",
+        "c7",
+        "seventh cervical vertebra"
+      ],
+      "lines": [
+        23,
+        27
+      ],
+      "concept": "vertebral-regions",
+      "box": [
+        689,
+        401,
+        114,
+        46
+      ]
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "accept": [
+        "vertebral body",
+        "centrum"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        400,
+        424,
+        55,
+        23
+      ]
+    },
+    {
+      "id": "groove-for-spinal-nerve",
+      "name": "Groove for spinal nerve",
+      "accept": [
+        "groove for the spinal nerve",
+        "spinal nerve groove"
+      ],
+      "lines": [
+        26,
+        28,
+        29
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        475,
+        424,
+        88,
+        64
+      ]
+    },
+    {
+      "id": "dens-atlas-view",
+      "name": "Dens",
+      "accept": [
+        "dens of axis",
+        "odontoid process"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        251,
+        632,
+        55,
+        20
+      ]
+    },
+    {
+      "id": "anterior-arch",
+      "name": "Anterior arch",
+      "accept": [
+        "anterior arch of atlas",
+        "anterior arch of the atlas"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        390,
+        653,
+        120,
+        19
+      ]
+    },
+    {
+      "id": "superior-articular-facet-atlas",
+      "name": "Superior articular facet",
+      "accept": [
+        "superior articular facets",
+        "superior articular process"
+      ],
+      "lines": [
+        39,
+        41
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        37,
+        665,
+        157,
+        42
+      ]
+    },
+    {
+      "id": "transverse-process-atlas",
+      "name": "Transverse process",
+      "accept": [
+        "transverse processes"
+      ],
+      "lines": [
+        42,
+        44
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        458,
+        732,
+        104,
+        46
+      ]
+    },
+    {
+      "id": "transverse-foramen-atlas",
+      "name": "Transverse foramen",
+      "accept": [
+        "foramen transversarium"
+      ],
+      "lines": [
+        45,
+        46
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        37,
+        767,
+        103,
+        42
+      ]
+    },
+    {
+      "id": "ligament-atlas",
+      "name": "Ligament",
+      "accept": [
+        "transverse ligament",
+        "transverse ligament of the atlas",
+        "transverse ligament of atlas"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": "vertebral-ligaments",
+      "box": [
+        117,
+        824,
+        88,
+        24
+      ]
+    },
+    {
+      "id": "posterior-arch",
+      "name": "Posterior arch",
+      "accept": [
+        "posterior arch of atlas",
+        "posterior arch of the atlas"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        346,
+        824,
+        127,
+        20
+      ]
+    },
+    {
+      "id": "dens-axis-superior",
+      "name": "Dens",
+      "accept": [
+        "dens of axis",
+        "odontoid process"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        837,
+        558,
+        56,
+        20
+      ]
+    },
+    {
+      "id": "superior-articular-facet-axis",
+      "name": "Superior articular facet",
+      "accept": [
+        "superior articular facets",
+        "superior articular process"
+      ],
+      "lines": [
+        32,
+        34
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        640,
+        587,
+        158,
+        42
+      ]
+    },
+    {
+      "id": "transverse-process-axis",
+      "name": "Transverse process",
+      "accept": [
+        "transverse processes"
+      ],
+      "lines": [
+        33,
+        35
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        937,
+        587,
+        103,
+        46
+      ]
+    },
+    {
+      "id": "transverse-foramen-axis",
+      "name": "Transverse foramen",
+      "accept": [
+        "foramen transversarium"
+      ],
+      "lines": [
+        38,
+        40
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        640,
+        653,
+        104,
+        42
+      ]
+    },
+    {
+      "id": "lamina-axis",
+      "name": "Lamina",
+      "accept": [
+        "laminae"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        642,
+        744,
+        73,
+        20
+      ]
+    },
+    {
+      "id": "spinous-process-axis",
+      "name": "Spinous process",
+      "accept": [
+        "spinous processes"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        641,
+        816,
+        151,
+        24
+      ]
+    },
+    {
+      "id": "dens-axis-anterior",
+      "name": "Dens",
+      "accept": [
+        "dens of axis",
+        "odontoid process"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "atlas-axis",
+      "box": [
+        842,
+        914,
+        56,
+        19
+      ]
+    },
+    {
+      "id": "transverse-process-axis-anterior",
+      "name": "Transverse process",
+      "accept": [
+        "transverse processes"
+      ],
+      "lines": [
+        53,
+        54
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        642,
+        1103,
+        103,
+        46
+      ]
+    },
+    {
+      "id": "inferior-articular-process-axis",
+      "name": "Inferior articular process",
+      "accept": [
+        "inferior articular facet"
+      ],
+      "lines": [
+        55,
+        57
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        643,
+        1160,
+        143,
+        46
+      ]
+    },
+    {
+      "id": "body-axis",
+      "name": "Body",
+      "accept": [
+        "vertebral body",
+        "body of axis",
+        "centrum"
+      ],
+      "lines": [
+        56
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        843,
+        1164,
+        54,
+        24
+      ]
+    }
+  ]
+}

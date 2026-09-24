@@ -1,0 +1,786 @@
+{
+  "figure": "os-7-8",
+  "labels": [
+    {
+      "id": "maxilla",
+      "name": "Maxilla",
+      "accept": [
+        "maxillary bone",
+        "maxillae"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "facial-bones",
+      "box": [
+        824,
+        93,
+        77,
+        20
+      ]
+    },
+    {
+      "id": "vomer",
+      "name": "Vomer",
+      "accept": [
+        "vomer bone"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "facial-bones",
+      "box": [
+        311,
+        113,
+        65,
+        19
+      ]
+    },
+    {
+      "id": "palatine-process",
+      "name": "Palatine process",
+      "accept": [
+        "palatine process of the maxilla",
+        "palatine process of maxilla"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        848,
+        117,
+        145,
+        24
+      ]
+    },
+    {
+      "id": "zygomatic-bone",
+      "name": "Zygomatic bone",
+      "accept": [
+        "zygomatic",
+        "cheekbone"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "facial-bones",
+      "box": [
+        847,
+        158,
+        142,
+        24
+      ]
+    },
+    {
+      "id": "palatine-bone",
+      "name": "Palatine bone (horizontal plate)",
+      "accept": [
+        "palatine bone",
+        "horizontal plate",
+        "horizontal plate of the palatine bone",
+        "palatine"
+      ],
+      "lines": [
+        4,
+        6
+      ],
+      "concept": "facial-bones",
+      "box": [
+        848,
+        198,
+        146,
+        45
+      ]
+    },
+    {
+      "id": "zygomatic-arch",
+      "name": "Zygomatic arch",
+      "accept": [],
+      "lines": [
+        7
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        150,
+        234,
+        136,
+        23
+      ]
+    },
+    {
+      "id": "pterygoid-plates",
+      "name": "Medial and lateral pterygoid plates",
+      "accept": [
+        "pterygoid plates",
+        "pterygoid plate",
+        "medial pterygoid plate",
+        "lateral pterygoid plate",
+        "pterygoid process"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        848,
+        259,
+        154,
+        45
+      ]
+    },
+    {
+      "id": "articular-tubercle",
+      "name": "Articular tubercle",
+      "accept": [
+        "articular eminence"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        848,
+        316,
+        148,
+        20
+      ]
+    },
+    {
+      "id": "sphenoid-bone",
+      "name": "Sphenoid bone",
+      "accept": [
+        "sphenoid"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        78,
+        354,
+        134,
+        23
+      ]
+    },
+    {
+      "id": "foramen-ovale",
+      "name": "Foramen ovale",
+      "accept": [
+        "foramen ovale (skull)"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": null,
+      "box": [
+        848,
+        355,
+        131,
+        20
+      ]
+    },
+    {
+      "id": "foramen-spinosum",
+      "name": "Foramen spinosum",
+      "accept": [],
+      "lines": [
+        13
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        79,
+        393,
+        165,
+        23
+      ]
+    },
+    {
+      "id": "mandibular-fossa",
+      "name": "Mandibular fossa",
+      "accept": [
+        "glenoid fossa"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        848,
+        395,
+        149,
+        20
+      ]
+    },
+    {
+      "id": "foramen-lacerum",
+      "name": "Foramen lacerum",
+      "accept": [],
+      "lines": [
+        15
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        79,
+        432,
+        152,
+        20
+      ]
+    },
+    {
+      "id": "external-auditory-meatus",
+      "name": "External auditory meatus",
+      "accept": [
+        "external acoustic meatus",
+        "ear canal"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        848,
+        435,
+        213,
+        23
+      ]
+    },
+    {
+      "id": "jugular-foramen",
+      "name": "Jugular foramen",
+      "accept": [],
+      "lines": [
+        17
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        78,
+        472,
+        141,
+        23
+      ]
+    },
+    {
+      "id": "mastoid-process",
+      "name": "Mastoid process",
+      "accept": [
+        "mastoid"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        848,
+        475,
+        143,
+        23
+      ]
+    },
+    {
+      "id": "occipital-condyle",
+      "name": "Occipital condyle",
+      "accept": [
+        "occipital condyles"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        78,
+        511,
+        149,
+        23
+      ]
+    },
+    {
+      "id": "styloid-process",
+      "name": "Styloid process",
+      "accept": [],
+      "lines": [
+        20
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        848,
+        517,
+        134,
+        23
+      ]
+    },
+    {
+      "id": "temporal-bone",
+      "name": "Temporal bone",
+      "accept": [
+        "temporal"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        77,
+        550,
+        132,
+        23
+      ]
+    },
+    {
+      "id": "stylomastoid-foramen",
+      "name": "Stylomastoid foramen",
+      "accept": [],
+      "concept": "skull-foramina",
+      "box": [
+        848,
+        556,
+        191,
+        23
+      ]
+    },
+    {
+      "id": "foramen-magnum",
+      "name": "Foramen magnum",
+      "accept": [],
+      "lines": [
+        24
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        79,
+        589,
+        158,
+        23
+      ]
+    },
+    {
+      "id": "carotid-canal-entrance",
+      "name": "Entrance to carotid canal",
+      "accept": [
+        "carotid canal",
+        "external opening of the carotid canal",
+        "carotid foramen"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        848,
+        598,
+        211,
+        20
+      ]
+    },
+    {
+      "id": "occipital-bone",
+      "name": "Occipital bone",
+      "accept": [
+        "occipital"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        78,
+        628,
+        127,
+        23
+      ]
+    },
+    {
+      "id": "superior-nuchal-line",
+      "name": "Superior nuchal line",
+      "accept": [
+        "nuchal line"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        78,
+        667,
+        172,
+        23
+      ]
+    },
+    {
+      "id": "external-occipital-protuberance",
+      "name": "External occipital protuberance",
+      "accept": [
+        "occipital protuberance",
+        "inion"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        848,
+        670,
+        149,
+        45
+      ]
+    },
+    {
+      "id": "frontal-bone-superior",
+      "name": "Frontal bone",
+      "accept": [
+        "frontal"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        849,
+        886,
+        113,
+        19
+      ]
+    },
+    {
+      "id": "ethmoid-bone-superior",
+      "name": "Ethmoid bone",
+      "accept": [
+        "ethmoid"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        825,
+        924,
+        137,
+        20
+      ]
+    },
+    {
+      "id": "crista-galli",
+      "name": "Crista galli",
+      "accept": [],
+      "lines": [
+        35
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        849,
+        948,
+        96,
+        24
+      ]
+    },
+    {
+      "id": "cribriform-plate",
+      "name": "Cribriform plate",
+      "accept": [
+        "cribriform plate of the ethmoid bone"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        849,
+        972,
+        136,
+        24
+      ]
+    },
+    {
+      "id": "superior-orbital-fissure",
+      "name": "Superior orbital fissure",
+      "accept": [],
+      "lines": [
+        37,
+        38
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        194,
+        983,
+        135,
+        41
+      ]
+    },
+    {
+      "id": "sphenoid-bone-superior",
+      "name": "Sphenoid bone",
+      "accept": [
+        "sphenoid"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        816,
+        1011,
+        148,
+        24
+      ]
+    },
+    {
+      "id": "lesser-wing",
+      "name": "Lesser wing",
+      "accept": [
+        "lesser wing of the sphenoid",
+        "lesser wing of sphenoid bone",
+        "lesser wing of the sphenoid bone"
+      ],
+      "lines": [
+        40
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        849,
+        1036,
+        108,
+        23
+      ]
+    },
+    {
+      "id": "sella-turcica",
+      "name": "Sella turcica",
+      "accept": [
+        "turk's saddle"
+      ],
+      "lines": [
+        41,
+        43
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        1031,
+        1047,
+        67,
+        41
+      ]
+    },
+    {
+      "id": "hypophyseal-fossa-superior",
+      "name": "Hypophyseal fossa",
+      "accept": [
+        "pituitary fossa"
+      ],
+      "lines": [
+        42
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        849,
+        1060,
+        164,
+        23
+      ]
+    },
+    {
+      "id": "foramen-rotundum",
+      "name": "Foramen rotundum",
+      "accept": [],
+      "lines": [
+        44
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        76,
+        1073,
+        165,
+        19
+      ]
+    },
+    {
+      "id": "foramen-ovale-superior",
+      "name": "Foramen ovale",
+      "accept": [
+        "foramen ovale (skull)"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": null,
+      "box": [
+        76,
+        1113,
+        132,
+        20
+      ]
+    },
+    {
+      "id": "foramen-lacerum-superior",
+      "name": "Foramen lacerum and exit of carotid canal",
+      "accept": [
+        "foramen lacerum",
+        "carotid canal",
+        "exit of carotid canal"
+      ],
+      "lines": [
+        46,
+        47,
+        49
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        848,
+        1113,
+        155,
+        63
+      ]
+    },
+    {
+      "id": "foramen-spinosum-superior",
+      "name": "Foramen spinosum",
+      "accept": [],
+      "lines": [
+        48
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        76,
+        1154,
+        166,
+        23
+      ]
+    },
+    {
+      "id": "internal-acoustic-meatus",
+      "name": "Internal acoustic meatus",
+      "accept": [
+        "internal auditory meatus",
+        "internal acoustic canal"
+      ],
+      "lines": [
+        50
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        76,
+        1195,
+        209,
+        20
+      ]
+    },
+    {
+      "id": "temporal-bone-superior",
+      "name": "Temporal bone",
+      "accept": [
+        "temporal"
+      ],
+      "lines": [
+        51
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        848,
+        1213,
+        132,
+        23
+      ]
+    },
+    {
+      "id": "hypoglossal-canal",
+      "name": "Hypoglossal canal",
+      "accept": [],
+      "lines": [
+        52
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        76,
+        1236,
+        158,
+        23
+      ]
+    },
+    {
+      "id": "petrous-ridge",
+      "name": "Petrous portion (petrous ridge)",
+      "accept": [
+        "petrous portion",
+        "petrous ridge",
+        "petrous part",
+        "petrous part of the temporal bone"
+      ],
+      "lines": [
+        53,
+        54
+      ],
+      "concept": "skull-landmarks",
+      "box": [
+        849,
+        1252,
+        134,
+        45
+      ]
+    },
+    {
+      "id": "foramen-magnum-superior",
+      "name": "Foramen magnum",
+      "accept": [],
+      "lines": [
+        55
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        76,
+        1276,
+        159,
+        24
+      ]
+    },
+    {
+      "id": "jugular-foramen-superior",
+      "name": "Jugular foramen",
+      "accept": [],
+      "lines": [
+        56
+      ],
+      "concept": "skull-foramina",
+      "box": [
+        848,
+        1314,
+        142,
+        23
+      ]
+    },
+    {
+      "id": "occipital-bone-superior",
+      "name": "Occipital bone",
+      "accept": [
+        "occipital"
+      ],
+      "lines": [
+        57
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        76,
+        1316,
+        127,
+        23
+      ]
+    },
+    {
+      "id": "parietal-bone",
+      "name": "Parietal bone",
+      "accept": [
+        "parietal"
+      ],
+      "lines": [
+        58
+      ],
+      "concept": "cranial-bones",
+      "box": [
+        849,
+        1354,
+        118,
+        19
+      ]
+    }
+  ]
+}
