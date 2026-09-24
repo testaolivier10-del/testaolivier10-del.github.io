@@ -11694,7 +11694,7 @@
       "steps": {
         "block": "Lymph from the left arm has too few routes back to the blood",
         "same": "Blood capillaries in the arm are unchanged",
-        "filt": "Capillaries filter at the usual rate",
+        "filt": "Capillary blood pressure stays at its usual level",
         "stay": "Filtered fluid stays in the tissue",
         "isf": "Interstitial fluid volume rises: the arm swells",
         "prot": "Leaked plasma protein is not carried away",
@@ -11706,13 +11706,13 @@
       "variables": [
         {
           "id": "filtration",
-          "name": "Fluid filtered out of the blood capillaries",
+          "name": "Blood pressure in the arm’s capillaries",
           "answer": "none",
           "chain": [
             "same",
             "filt"
           ],
-          "why": "Nothing in the blood capillaries has changed: capillary pressure and plasma protein are normal, so they filter at the usual rate. Lymphedema is a failure of drainage, not of filtration."
+          "why": "Nothing in the blood capillaries has changed: capillary pressure and plasma protein are normal, so the forces pushing fluid out are the same as in her right arm. Lymphedema is a failure of drainage, not of filtration."
         },
         {
           "id": "swelling",
@@ -11723,7 +11723,7 @@
             "stay",
             "isf"
           ],
-          "why": "Fluid keeps filtering out at the normal rate, but with the drainage route cut, less of it returns to the blood. The difference collects in the tissue."
+          "why": "Fluid keeps filtering out of the capillaries, but with the drainage route cut, less of it returns to the blood. The difference collects in the tissue."
         },
         {
           "id": "protein",
@@ -11838,7 +11838,7 @@
         {
           "id": "break",
           "label": "When the pyrogens are cleared",
-          "prompt": "Hours later the infection is under control and the pyrogens are cleared while body temperature is 39 °C. Compared with the plateau just before.",
+          "prompt": "Later, often after a day or more, the infection is under control and the pyrogens are cleared while body temperature is 39 °C. Compared with the plateau just before.",
           "start": "The set point falls back to 36.6 °C",
           "steps": {
             "above": "Body temperature, 39 °C, is now above the set point",
@@ -12337,7 +12337,7 @@
       "start": "Ready-made antitoxin antibody is injected",
       "steps": {
         "blood": "Antitoxin reaches his blood and tissue fluid within hours",
-        "level": "Antitoxin in his blood rises at once",
+        "level": "Antitoxin in his blood rises within hours, with no wait for his own B cells",
         "neut": "Antibody covers the part of the toxin that binds nerve endings",
         "less": "Less toxin reaches his nerve endings",
         "noag": "No antigen has selected any of his own B cells",
@@ -12352,7 +12352,7 @@
             "blood",
             "level"
           ],
-          "why": "Passive immunity works at once: the antibody was made by someone else, so there is no lag while his own B cells respond."
+          "why": "Passive immunity needs no lag: the antibody was made by someone else, so it starts working as soon as it is absorbed from the injection site. That takes hours, not the week or more his own B cells would need."
         },
         {
           "id": "toxin-binding",

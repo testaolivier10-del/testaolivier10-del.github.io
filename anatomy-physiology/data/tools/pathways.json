@@ -4390,7 +4390,7 @@
           "id": "efferent",
           "label": "Efferent vessel",
           "text": "Lymph leaves each node through an efferent lymphatic vessel at the hilum.",
-          "why": "There is only one exit, on the indented side of the node, after the lymph has crossed the cortex and medulla."
+          "why": "Lymph leaves only at the hilum, the indented side of the node, through one or two efferent vessels, after it has crossed the cortex and medulla."
         },
         {
           "id": "trunk",
@@ -4572,8 +4572,8 @@
         {
           "id": "burst",
           "label": "Oxidative burst",
-          "text": "An enzyme in the vesicle membrane makes superoxide from oxygen, which becomes hydrogen peroxide and hypochlorous acid.",
-          "why": "These reactive chemicals are made inside the closed vesicle, where they kill the trapped bacterium without harming the cell."
+          "text": "Superoxide made from oxygen by an enzyme in the vesicle membrane becomes hydrogen peroxide, and a granule enzyme delivered by the fusion turns it into hypochlorous acid.",
+          "why": "Hypochlorous acid, the strongest of these weapons, needs the granule enzyme, so it forms only after the granules have fused with the vesicle. Made inside the closed vesicle, these chemicals kill the trapped bacterium without harming the cell."
         }
       ],
       "missing": {

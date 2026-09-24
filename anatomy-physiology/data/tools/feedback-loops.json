@@ -2290,7 +2290,7 @@
       "classify": "The response (warming) closes the gap between body temperature and the set point, so this is negative feedback, just around a higher set point. Once the gap closes, the heat-gain responses ease off, and temperature holds at the new value instead of spiraling upward as it would in positive feedback.",
       "failure": {
         "part": "effector",
-        "q": "A patient on a breathing machine in intensive care has been given a drug that stops his skeletal muscles from contracting. Pyrogens from an infection then raise his set point to 39 °C. What happens to his temperature?",
+        "q": "A patient on a breathing machine in intensive care has been given a drug that stops his skeletal muscles from contracting. Assume his sedation leaves his temperature control unchanged. Pyrogens from an infection then raise his set point to 39 °C. What happens to his temperature?",
         "options": [
           {
             "text": "It rises more slowly, because only the skin arterioles can respond",

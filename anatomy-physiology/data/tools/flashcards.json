@@ -7177,7 +7177,7 @@
    "level": "apply",
    "front": "Why is a second encounter with the same microbe met faster?",
    "back": "Memory cells left from clonal expansion are 100 to 1,000 times more numerous than the original naïve cells, live for years or decades and switch on faster with less stimulation.",
-   "why": "The response starts within a day or two, so the microbe is usually cleared before illness. Vaccines work this way."
+   "why": "The response starts within 1 to 3 days, so the microbe is usually cleared before illness. Vaccines work this way."
   },
   {
    "id": "adp-mhc-sibling",

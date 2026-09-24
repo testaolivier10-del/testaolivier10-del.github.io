@@ -6841,7 +6841,8 @@
         ]
       ],
       "literal": "a protection globule protein",
-      "meaning": "another name for an antibody, one of the globulin proteins of the immune system"
+      "meaning": "another name for an antibody, one of the globulin proteins of the immune system",
+      "note": "The -ul- is a Latin ending meaning small: globulus, a little ball, gives globule and globulin."
     },
     {
       "id": "pathogen",
@@ -6891,7 +6892,8 @@
         ]
       ],
       "literal": "a turning around of the serum",
-      "meaning": "the point at which antibody against an infection first becomes detectable in the blood"
+      "meaning": "the point at which antibody against an infection first becomes detectable in the blood",
+      "note": "Here con- only strengthens the verb: Latin convertere, to turn around completely, to transform."
     },
     {
       "id": "anaphylaxis",
@@ -6912,7 +6914,8 @@
         ]
       ],
       "literal": "the reverse of protection",
-      "meaning": "a severe, whole-body allergic reaction in which mast cells everywhere degranulate at once"
+      "meaning": "a severe, whole-body allergic reaction in which mast cells everywhere degranulate at once",
+      "note": "This ana- means against or the reverse of, not the ana- (up) of anatomy and anabolism."
     },
     {
       "id": "autoimmunity",

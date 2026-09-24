@@ -15406,7 +15406,7 @@
     "interdependence"
    ],
    "intro": "CD4 count and HIV in the blood over the years of an untreated infection. The first weeks are stretched out on the left; the rest of the axis is in years. The curves are schematic: timing varies widely between people.",
-   "alt": "Two stacked graphs. The time axis runs from infection through 2 weeks, 6 weeks, 3 months, 6 months, then 1, 3, 5, 7, 9 and 11 years. Top: CD4 count falls from about 1,000 per microliter to about 600 at 2 weeks, recovers partway to about 800 by 6 months, then falls steadily to about 520 at 5 years and crosses 200 at about 10 years. Bottom: HIV in the blood, on a log scale, soars to about 10 million copies per mL in the first weeks, falls to a steady level of about 30,000 by 6 months, then slowly climbs again in later years.",
+   "alt": "Two stacked graphs. The time axis runs from infection through 2 weeks, 6 weeks, 3 months, 6 months, then 1, 3, 5, 7, 9 and 11 years. Top: CD4 count falls from about 1,000 per microliter to about 600 at 3 to 4 weeks, as the virus peaks, recovers partway to about 800 by 6 months, then falls steadily to about 520 at 5 years and crosses 200 at about 10 years. Bottom: HIV in the blood, on a log scale, soars to about 10 million copies per mL at 3 to 4 weeks, falls to a steady level of about 30,000 by 6 months, then slowly climbs again in later years.",
    "x": {
     "min": 0,
     "max": 10,
@@ -15455,19 +15455,23 @@
         ],
         [
          0.5,
-         800
+         900
         ],
         [
          1,
+         720
+        ],
+        [
+         1.4,
          600
         ],
         [
          2,
-         680
+         650
         ],
         [
          3,
-         770
+         760
         ],
         [
          4,
@@ -15547,11 +15551,11 @@
         ],
         [
          0.5,
-         4
+         1.5
         ],
         [
          1,
-         6.6
+         5.5
         ],
         [
          1.4,
@@ -15676,7 +15680,9 @@
      ],
      "correct": 0,
      "highlight": {
-      "region": "acute"
+      "x0": 0,
+      "x1": 3,
+      "label": "window: up to 3 months"
      },
      "why": {
       "correct": "This is the window period before seroconversion. A primary antibody response takes time, so antibody usually becomes detectable within a few weeks to 3 months, while virus in the blood is at its highest.",
@@ -15806,7 +15812,7 @@
       "options": [
        "Right: virus falls and helper T cells recover.",
        "With the virus suppressed, helper T cells are no longer being destroyed, so the count recovers.",
-       "The CD4 count rises because the virus falls; the two move together.",
+       "The CD4 count rises because the virus falls: fewer helper T cells are being killed, so one change drives the other.",
        "The drugs block viral enzymes in active infection; latent virus is exactly what they cannot reach."
       ]
      }
