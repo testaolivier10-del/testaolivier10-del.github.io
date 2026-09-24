@@ -71,6 +71,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/metabolism.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/nervous-tissue.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -117,7 +122,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/gradients.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -167,6 +172,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/learn.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/absorptive-postabsorptive.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -306,6 +316,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/carbohydrate-metabolism.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cardiac-cycle.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -406,6 +421,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/energy-balance-thermoregulation.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/enzymes-energy.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -496,6 +516,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/lipid-protein-metabolism.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/liver-pancreas-gallbladder.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -553,6 +578,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/neurons-glia.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/nutrition.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -683,6 +713,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/mastery.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/absorptive-postabsorptive.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -821,6 +856,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/carbohydrate-metabolism.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/cardiac-cycle.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -921,6 +961,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/energy-balance-thermoregulation.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/enzymes-energy.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -1011,6 +1056,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/lipid-protein-metabolism.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/liver-pancreas-gallbladder.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -1068,6 +1118,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/neurons-glia.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/nutrition.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
