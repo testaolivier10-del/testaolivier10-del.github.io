@@ -25,7 +25,15 @@
       "id": "metabolism",
       "title": "Metabolism and nutrition"
     },
-    { "id": "urinary", "title": "Urinary system" }
+    { "id": "urinary", "title": "Urinary system" },
+    {
+      "id": "fluid-acid-base",
+      "title": "Fluid, electrolytes and acid–base"
+    },
+    {
+      "id": "reproductive",
+      "title": "Reproductive system"
+    }
   ],
   "calculators": [
     {
@@ -7630,6 +7638,3246 @@
               "abs": 0.02
             },
             "prompt": "A man makes {prod} mg of creatinine a minute, and his GFR is steady at {GFR} mL/min. What is his plasma creatinine in mg/dL once it has settled?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-compartments",
+      "group": "fluid-acid-base",
+      "title": "Body fluid compartment volumes",
+      "short": "TBW → ICF, ECF, interstitial fluid, plasma",
+      "topic": "fluid-compartments-water",
+      "core": [
+        "compartments",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Estimate how much water a person carries and how it splits between the compartments. Total body water is a share of body mass (about 60% in a young man, 50 to 55% in a woman, 45 to 50% in an older adult, 75% in an infant). Two thirds of it is ICF and one third ECF; the ECF is three quarters interstitial fluid and one quarter plasma.",
+      "formula": "TBW = mass × share; ICF = ⅔ TBW; ECF = ⅓ TBW; interstitial = ¾ ECF; plasma = ¼ ECF",
+      "inputs": [
+        {
+          "key": "M",
+          "label": "Body mass",
+          "sym": "mass",
+          "unit": "kg",
+          "default": 60,
+          "min": 1,
+          "max": 200,
+          "step": 0.5,
+          "gen": [
+            40,
+            100,
+            5
+          ]
+        },
+        {
+          "key": "S",
+          "label": "Total body water as a share of mass",
+          "sym": "share",
+          "unit": "%",
+          "default": 50,
+          "min": 30,
+          "max": 80,
+          "step": 1,
+          "gen": {
+            "choices": [
+              45,
+              50,
+              55,
+              60
+            ]
+          },
+          "hint": "About 60% young man, 50–55% woman, 45–50% older adult, 75% infant."
+        }
+      ],
+      "derived": [
+        {
+          "key": "TBW",
+          "expr": "M * S / 100",
+          "dp": 1
+        },
+        {
+          "key": "ICF",
+          "expr": "M * S / 100 * 2 / 3",
+          "dp": 1
+        },
+        {
+          "key": "ECF",
+          "expr": "M * S / 100 / 3",
+          "dp": 1
+        },
+        {
+          "key": "ISF",
+          "expr": "M * S / 100 / 3 * 3 / 4",
+          "dp": 1
+        },
+        {
+          "key": "PL",
+          "expr": "M * S / 100 / 3 / 4",
+          "dp": 1
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Total body water",
+          "text": "{S}% of {M} kg = <b>{TBW} L</b> (1 kg of water is about 1 L)."
+        },
+        {
+          "title": "Intracellular fluid",
+          "text": "Two thirds of {TBW} L = <b>{ICF} L</b>, inside all your cells."
+        },
+        {
+          "title": "Extracellular fluid",
+          "text": "One third of {TBW} L = <b>{ECF} L</b>. Check: {ICF} + {ECF} = {TBW} L."
+        },
+        {
+          "title": "Interstitial fluid",
+          "text": "Three quarters of the ECF: ¾ × {ECF} L = <b>{ISF} L</b>, bathing the cells."
+        },
+        {
+          "title": "Plasma",
+          "text": "One quarter of the ECF: ¼ × {ECF} L = <b>{PL} L</b>, about one twelfth of all body water."
+        }
+      ],
+      "results": [
+        {
+          "key": "TBW",
+          "label": "Total body water",
+          "unit": "L",
+          "normal": "About 42 L in a 70 kg young man (the 60–40–20 rule)."
+        },
+        {
+          "key": "ICF",
+          "label": "Intracellular fluid",
+          "unit": "L"
+        },
+        {
+          "key": "ECF",
+          "label": "Extracellular fluid",
+          "unit": "L"
+        },
+        {
+          "key": "PL",
+          "label": "Plasma",
+          "unit": "L",
+          "normal": "About 3 L in an adult."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "S >= 70",
+          "text": "A share of {S}% is typical of an infant. More of an infant’s weight is water, and they turn over a larger share of it each day, so a day of vomiting or diarrhea is a bigger loss for them."
+        },
+        {
+          "when": "S <= 50",
+          "text": "A share of {S}% is typical of a woman or an older adult, who carry more fat or less muscle for their weight. A smaller reserve means the same loss of water is a larger fraction of what they have."
+        },
+        {
+          "when": "1",
+          "text": "Of {TBW} L of body water, only {PL} L is plasma. Fluid lost from or added to the plasma is soon shared with the much larger interstitial fluid, and water that crosses plasma membranes is shared with the ICF too."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: 60 kg woman",
+          "values": {
+            "M": 60,
+            "S": 50
+          }
+        },
+        {
+          "label": "70 kg young man",
+          "values": {
+            "M": 70,
+            "S": 60
+          }
+        },
+        {
+          "label": "4 kg infant",
+          "values": {
+            "M": 4,
+            "S": 75
+          }
+        },
+        {
+          "label": "80 kg older adult",
+          "values": {
+            "M": 80,
+            "S": 45
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "ICF",
+            "unit": "L",
+            "tol": {
+              "abs": 0.1,
+              "rel": 0.01
+            },
+            "prompt": "A {M} kg adult has total body water equal to {S}% of body mass. Estimate the intracellular fluid volume."
+          },
+          {
+            "key": "ECF",
+            "unit": "L",
+            "tol": {
+              "abs": 0.1,
+              "rel": 0.01
+            },
+            "prompt": "A {M} kg adult has total body water equal to {S}% of body mass. Estimate the extracellular fluid volume."
+          },
+          {
+            "key": "PL",
+            "unit": "L",
+            "tol": {
+              "abs": 0.1,
+              "rel": 0.02
+            },
+            "prompt": "A {M} kg adult has total body water equal to {S}% of body mass. Estimate the plasma volume."
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-water-load",
+      "group": "fluid-acid-base",
+      "title": "Drinking water fast: the new osmolality",
+      "short": "New osmolality = total solute ÷ new body water",
+      "topic": "fluid-compartments-water",
+      "core": [
+        "compartments",
+        "mass-balance",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Plain water adds no solute, so drinking it quickly (before the kidneys excrete any) dilutes all your body water at once. Enter body water, starting osmolality and the volume drunk to see the new osmolality and where the water goes.",
+      "formula": "Solute = osmolality × water; new osmolality = solute ÷ (water + volume drunk)",
+      "inputs": [
+        {
+          "key": "W",
+          "label": "Total body water",
+          "sym": "TBW",
+          "unit": "L",
+          "default": 42,
+          "min": 10,
+          "max": 80,
+          "step": 0.5,
+          "gen": [
+            30,
+            50,
+            1
+          ]
+        },
+        {
+          "key": "O",
+          "label": "Starting plasma osmolality",
+          "sym": "Posm",
+          "unit": "mOsm/kg",
+          "default": 290,
+          "min": 260,
+          "max": 320,
+          "step": 1,
+          "gen": [
+            282,
+            295,
+            1
+          ]
+        },
+        {
+          "key": "D",
+          "label": "Water drunk",
+          "sym": "V",
+          "unit": "L",
+          "default": 2,
+          "min": 0.1,
+          "max": 8,
+          "step": 0.1,
+          "gen": [
+            0.5,
+            4,
+            0.5
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "SOL",
+          "expr": "O * W",
+          "dp": 0
+        },
+        {
+          "key": "W2",
+          "expr": "W + D",
+          "dp": 1
+        },
+        {
+          "key": "O2",
+          "expr": "O * W / (W + D)",
+          "dp": 0
+        },
+        {
+          "key": "DROP",
+          "expr": "(O - O * W / (W + D)) / O * 100",
+          "dp": 1
+        },
+        {
+          "key": "INC",
+          "expr": "D * 2 / 3",
+          "dp": 2
+        },
+        {
+          "key": "INE",
+          "expr": "D / 3",
+          "dp": 2
+        },
+        {
+          "key": "INP",
+          "expr": "D / 12 * 1000",
+          "dp": 0
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Total solute",
+          "text": "Osmolality × water = {O} mOsm/kg × {W} kg = <b>{SOL} mOsm</b>. Water adds none, so this stays the same."
+        },
+        {
+          "title": "New total water",
+          "text": "{W} + {D} = <b>{W2} L</b>."
+        },
+        {
+          "title": "New osmolality",
+          "text": "{SOL} ÷ {W2} = <b>{O2} mOsm/kg</b>, a fall of {DROP}%."
+        },
+        {
+          "title": "Where the water goes",
+          "text": "Pure water crosses plasma membranes freely and spreads in proportion to compartment size: two thirds, <b>{INC} L</b>, into cells, and one third, <b>{INE} L</b>, in the ECF."
+        },
+        {
+          "title": "How much stays in the plasma",
+          "text": "One quarter of the ECF share: {INE} ÷ 4 ≈ <b>{INP} mL</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "O2",
+          "label": "New plasma osmolality",
+          "unit": "mOsm/kg",
+          "normal": "Normal range about 275 to 295; set point about 285 to 290.",
+          "bands": [
+            {
+              "when": "O2 < 275",
+              "label": "below the normal range",
+              "tone": "lo"
+            },
+            {
+              "when": "O2 <= 295",
+              "label": "within the normal range",
+              "tone": "ok"
+            },
+            {
+              "label": "above the normal range",
+              "tone": "hi"
+            }
+          ]
+        },
+        {
+          "key": "INP",
+          "label": "Water that stays in the plasma",
+          "unit": "mL"
+        }
+      ],
+      "meaning": [
+        {
+          "when": "DROP >= 2",
+          "text": "A fall of {DROP}% is more than the 1 to 2% the osmoreceptors detect, so ADH release falls, the collecting ducts become nearly waterproof, and the kidneys pass the extra water as dilute urine over the next hours. Most of it, {INC} L, sits inside cells until then, which slightly swells them."
+        },
+        {
+          "when": "1",
+          "text": "A fall of {DROP}% is at or below what the osmoreceptors detect, so ADH barely changes; the extra water is excreted gradually."
+        },
+        {
+          "when": "D >= 3",
+          "also": true,
+          "text": "Healthy kidneys excrete a little under 1 L of water an hour. Drinking {D} L faster than that leaves water in cells for hours, and swelling brain cells cause headache, nausea and confusion: water intoxication."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 3: 2 L, fast",
+          "values": {
+            "W": 42,
+            "O": 290,
+            "D": 2
+          }
+        },
+        {
+          "label": "Maya: 4 L in an hour",
+          "values": {
+            "W": 42,
+            "O": 290,
+            "D": 4
+          }
+        },
+        {
+          "label": "A glass of water",
+          "values": {
+            "W": 42,
+            "O": 290,
+            "D": 0.3
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "O2",
+            "unit": "mOsm/kg",
+            "tol": {
+              "abs": 1
+            },
+            "prompt": "A person has {W} L of body water at {O} mOsm/kg and drinks {D} L of plain water quickly, before the kidneys excrete any. Estimate the new plasma osmolality."
+          },
+          {
+            "key": "INP",
+            "unit": "mL",
+            "tol": {
+              "abs": 5,
+              "rel": 0.03
+            },
+            "prompt": "A person drinks {D} L of plain water quickly. About how many milliliters of it stay in the plasma once it has spread through body water?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-water-balance",
+      "group": "fluid-acid-base",
+      "title": "A day’s water balance",
+      "short": "Net = intake − output",
+      "topic": "fluid-compartments-water",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Add up a day’s water intake and output. Only two routes are adjusted to keep water in balance, drinking (thirst) and urine (ADH); the others change with fever, heat, breathing and diet.",
+      "formula": "Net = (drinks + food + metabolic water) − (urine + insensible loss + sweat + feces)",
+      "inputs": [
+        {
+          "key": "DR",
+          "label": "Drinks",
+          "sym": "drinks",
+          "unit": "L/day",
+          "default": 1.5,
+          "min": 0,
+          "max": 10,
+          "step": 0.05,
+          "gen": [
+            1,
+            2.5,
+            0.1
+          ]
+        },
+        {
+          "key": "FO",
+          "label": "Water in food",
+          "sym": "food",
+          "unit": "L/day",
+          "default": 0.75,
+          "min": 0,
+          "max": 3,
+          "step": 0.05,
+          "gen": {
+            "choices": [
+              0.75
+            ]
+          }
+        },
+        {
+          "key": "ME",
+          "label": "Metabolic water",
+          "sym": "metabolic",
+          "unit": "L/day",
+          "default": 0.25,
+          "min": 0,
+          "max": 1,
+          "step": 0.05,
+          "gen": {
+            "choices": [
+              0.25
+            ]
+          }
+        },
+        {
+          "key": "UR",
+          "label": "Urine",
+          "sym": "urine",
+          "unit": "L/day",
+          "default": 1.5,
+          "min": 0,
+          "max": 20,
+          "step": 0.05,
+          "gen": [
+            0.5,
+            2,
+            0.1
+          ]
+        },
+        {
+          "key": "IN",
+          "label": "Insensible loss (skin and breath)",
+          "sym": "insensible",
+          "unit": "L/day",
+          "default": 0.7,
+          "min": 0,
+          "max": 5,
+          "step": 0.05,
+          "gen": [
+            0.7,
+            1.3,
+            0.1
+          ],
+          "hint": "Rises with fever, fast breathing, dry air and burns."
+        },
+        {
+          "key": "SW",
+          "label": "Sweat",
+          "sym": "sweat",
+          "unit": "L/day",
+          "default": 0.1,
+          "min": 0,
+          "max": 15,
+          "step": 0.05,
+          "gen": [
+            0.1,
+            2,
+            0.1
+          ]
+        },
+        {
+          "key": "FE",
+          "label": "Feces",
+          "sym": "feces",
+          "unit": "L/day",
+          "default": 0.2,
+          "min": 0,
+          "max": 20,
+          "step": 0.05,
+          "gen": {
+            "choices": [
+              0.2
+            ]
+          }
+        },
+        {
+          "key": "DAYS",
+          "label": "Number of days",
+          "sym": "days",
+          "unit": "days",
+          "default": 1,
+          "min": 1,
+          "max": 30,
+          "step": 1,
+          "gen": [
+            1,
+            5,
+            1
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "IN_T",
+          "expr": "DR + FO + ME",
+          "dp": 2
+        },
+        {
+          "key": "OUT_T",
+          "expr": "UR + IN + SW + FE",
+          "dp": 2
+        },
+        {
+          "key": "NET",
+          "expr": "DR + FO + ME - (UR + IN + SW + FE)",
+          "dp": 2
+        },
+        {
+          "key": "TOT",
+          "expr": "(DR + FO + ME - (UR + IN + SW + FE)) * DAYS",
+          "dp": 2
+        },
+        {
+          "key": "NETA",
+          "expr": "abs(DR + FO + ME - (UR + IN + SW + FE))",
+          "dp": 2
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Intake",
+          "text": "{DR} + {FO} + {ME} = <b>{IN_T} L/day</b>."
+        },
+        {
+          "title": "Output",
+          "text": "{UR} + {IN} + {SW} + {FE} = <b>{OUT_T} L/day</b>."
+        },
+        {
+          "title": "Net change per day",
+          "text": "{IN_T} − {OUT_T} = <b>{NET:+} L/day</b>."
+        },
+        {
+          "title": "Over the whole period",
+          "text": "{DAYS} × {NET:+} = <b>{TOT:+} L</b>, if nothing else changed."
+        }
+      ],
+      "results": [
+        {
+          "key": "NET",
+          "label": "Net water change per day",
+          "unit": "L/day",
+          "signed": true,
+          "normal": "Zero: a typical adult takes in and loses about 2.5 L a day.",
+          "bands": [
+            {
+              "when": "NET < -0.05",
+              "label": "losing water",
+              "tone": "lo"
+            },
+            {
+              "when": "NET <= 0.05",
+              "label": "in balance",
+              "tone": "ok"
+            },
+            {
+              "label": "gaining water",
+              "tone": "hi"
+            }
+          ]
+        },
+        {
+          "key": "TOT",
+          "label": "Change over the period",
+          "unit": "L",
+          "signed": true
+        }
+      ],
+      "meaning": [
+        {
+          "when": "NET < -0.05",
+          "text": "Output exceeds intake by {NETA} L a day. In practice this is rarely left to run: the rising plasma osmolality raises ADH, which cuts urine output, and switches on thirst, which raises intake. Urine has a floor of about 0.5 L a day, though, so with no water intake at all you lose water every day whatever the kidneys do."
+        },
+        {
+          "when": "NET <= 0.05",
+          "text": "Intake matches output: water balance. Most routes are not adjusted for water; drinking and urine volume are the two that are."
+        },
+        {
+          "when": "1",
+          "text": "Intake exceeds output by {NETA} L a day. The falling osmolality lowers ADH, so the kidneys pass the extra as dilute urine; healthy kidneys can excrete roughly 0.7 to 1 L an hour."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 2: a typical day",
+          "values": {
+            "DR": 1.5,
+            "FO": 0.75,
+            "ME": 0.25,
+            "UR": 1.5,
+            "IN": 0.7,
+            "SW": 0.1,
+            "FE": 0.2,
+            "DAYS": 1
+          }
+        },
+        {
+          "label": "Worked example 2: fever for three days",
+          "values": {
+            "DR": 1.5,
+            "FO": 0.75,
+            "ME": 0.25,
+            "UR": 1.5,
+            "IN": 1.1,
+            "SW": 0.1,
+            "FE": 0.2,
+            "DAYS": 3
+          }
+        },
+        {
+          "label": "Hard work in the heat",
+          "values": {
+            "DR": 3,
+            "FO": 0.75,
+            "ME": 0.3,
+            "UR": 0.8,
+            "IN": 0.9,
+            "SW": 3,
+            "FE": 0.2,
+            "DAYS": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "TOT",
+            "unit": "L",
+            "signed": true,
+            "tol": {
+              "abs": 0.05
+            },
+            "prompt": "Over {DAYS} days a person drinks {DR} L a day, gets {FO} L from food and {ME} L of metabolic water, and loses {UR} L of urine, {IN} L of insensible water, {SW} L of sweat and {FE} L in feces each day. What is the total change in body water (+ for gain, − for loss)?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-osmolality",
+      "group": "fluid-acid-base",
+      "title": "Estimating plasma osmolality",
+      "short": "2 × Na + glucose ÷ 18 + urea nitrogen ÷ 2.8",
+      "topic": "electrolyte-balance",
+      "core": [
+        "mass-balance",
+        "compartments"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Sodium and the anions that travel with it are almost all the solute in the ECF, so a routine blood panel can estimate plasma osmolality. Glucose and urea nitrogen are reported in mg/dL in the United States; dividing converts them to mmol/L.",
+      "formula": "Posm ≈ 2 × Na + glucose ÷ 18 + urea nitrogen ÷ 2.8",
+      "inputs": [
+        {
+          "key": "NA",
+          "label": "Sodium",
+          "sym": "Na+",
+          "unit": "mmol/L",
+          "default": 140,
+          "min": 100,
+          "max": 180,
+          "step": 1,
+          "gen": [
+            125,
+            155,
+            1
+          ]
+        },
+        {
+          "key": "GL",
+          "label": "Glucose",
+          "sym": "glucose",
+          "unit": "mg/dL",
+          "default": 90,
+          "min": 10,
+          "max": 2000,
+          "step": 1,
+          "gen": {
+            "choices": [
+              90,
+              108,
+              180,
+              270,
+              360,
+              540,
+              900
+            ]
+          }
+        },
+        {
+          "key": "BU",
+          "label": "Urea nitrogen",
+          "sym": "BUN",
+          "unit": "mg/dL",
+          "default": 14,
+          "min": 1,
+          "max": 200,
+          "step": 1,
+          "gen": [
+            7,
+            56,
+            7
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "NA2",
+          "expr": "2 * NA",
+          "dp": 0
+        },
+        {
+          "key": "GM",
+          "expr": "GL / 18",
+          "dp": 1
+        },
+        {
+          "key": "UM",
+          "expr": "BU / 2.8",
+          "dp": 1
+        },
+        {
+          "key": "OSM",
+          "expr": "2 * NA + GL / 18 + BU / 2.8",
+          "dp": 0
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Sodium and its anions",
+          "text": "Each sodium ion is matched by an anion, mainly chloride or bicarbonate, so count sodium twice: 2 × {NA} = <b>{NA2}</b>."
+        },
+        {
+          "title": "Glucose",
+          "text": "Dividing by 18 converts mg/dL to mmol/L: {GL} ÷ 18 = <b>{GM}</b>."
+        },
+        {
+          "title": "Urea",
+          "text": "{BU} ÷ 2.8 = <b>{UM}</b>."
+        },
+        {
+          "title": "Add",
+          "text": "{NA2} + {GM} + {UM} = <b>{OSM} mOsm/kg</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "OSM",
+          "label": "Estimated plasma osmolality",
+          "unit": "mOsm/kg",
+          "normal": "About 275 to 295.",
+          "bands": [
+            {
+              "when": "OSM < 275",
+              "label": "low",
+              "tone": "lo"
+            },
+            {
+              "when": "OSM <= 295",
+              "label": "normal",
+              "tone": "ok"
+            },
+            {
+              "label": "high",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "OSM > 295",
+          "text": "An osmolality of {OSM} mOsm/kg is high. If it comes from sodium or, without insulin, from glucose, water leaves cells and they shrink."
+        },
+        {
+          "when": "OSM < 275",
+          "text": "An osmolality of {OSM} mOsm/kg is low, usually because there is too much water for the sodium. Water enters cells, and swelling brain cells cause the symptoms."
+        },
+        {
+          "when": "1",
+          "text": "An osmolality of {OSM} mOsm/kg is in the normal range. Sodium and its anions supply {NA2} of it."
+        },
+        {
+          "when": "GL >= 250",
+          "also": true,
+          "text": "Glucose at {GL} mg/dL adds {GM} mmol/L. Without insulin it stays outside most cells and draws water out of them, and that water dilutes the plasma sodium: very high glucose lowers the measured sodium."
+        },
+        {
+          "when": "BU >= 40",
+          "also": true,
+          "text": "Urea at {BU} mg/dL adds {UM}, but urea crosses cell membranes, so it raises the measured osmolality without drawing water out of cells. Only solutes that stay outside cells set tonicity."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 2: a normal panel",
+          "values": {
+            "NA": 140,
+            "GL": 90,
+            "BU": 14
+          }
+        },
+        {
+          "label": "Worked example 2: glucose 900 mg/dL",
+          "values": {
+            "NA": 140,
+            "GL": 900,
+            "BU": 14
+          }
+        },
+        {
+          "label": "Kidney failure: high urea",
+          "values": {
+            "NA": 138,
+            "GL": 100,
+            "BU": 84
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "OSM",
+            "unit": "mOsm/kg",
+            "tol": {
+              "abs": 1
+            },
+            "prompt": "Sodium {NA} mmol/L, glucose {GL} mg/dL, urea nitrogen {BU} mg/dL. Estimate the plasma osmolality."
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-potassium-shift",
+      "group": "fluid-acid-base",
+      "title": "Why small potassium shifts matter",
+      "short": "Rise = cell K+ moved ÷ ECF volume",
+      "topic": "electrolyte-balance",
+      "core": [
+        "compartments",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "About 98% of body potassium is inside cells and the ECF holds only about 60 mmol. Enter the share of cell potassium that moves out (positive, as in a crush injury) or in (negative, as after insulin) and see what happens to plasma potassium before the kidneys act.",
+      "formula": "New K+ = starting K+ + (cell K+ × share moved) ÷ ECF volume",
+      "inputs": [
+        {
+          "key": "KC",
+          "label": "Potassium inside cells",
+          "sym": "cell K+",
+          "unit": "mmol",
+          "default": 3500,
+          "min": 500,
+          "max": 5000,
+          "step": 50,
+          "gen": {
+            "choices": [
+              3000,
+              3500,
+              4000
+            ]
+          }
+        },
+        {
+          "key": "V",
+          "label": "ECF volume",
+          "sym": "ECF",
+          "unit": "L",
+          "default": 14,
+          "min": 3,
+          "max": 30,
+          "step": 0.5,
+          "gen": [
+            10,
+            18,
+            1
+          ]
+        },
+        {
+          "key": "K0",
+          "label": "Starting plasma potassium",
+          "sym": "K+",
+          "unit": "mmol/L",
+          "default": 4,
+          "min": 1.5,
+          "max": 9,
+          "step": 0.1,
+          "gen": [
+            3.5,
+            5,
+            0.1
+          ]
+        },
+        {
+          "key": "F",
+          "label": "Share of cell potassium moved out (− for into cells)",
+          "sym": "share",
+          "unit": "%",
+          "default": 1,
+          "min": -3,
+          "max": 3,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              -0.5,
+              0.5,
+              1,
+              1.5
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "MOV",
+          "expr": "KC * F / 100",
+          "dp": 1
+        },
+        {
+          "key": "DK",
+          "expr": "KC * F / 100 / V",
+          "dp": 2
+        },
+        {
+          "key": "K1",
+          "expr": "K0 + KC * F / 100 / V",
+          "dp": 1
+        }
+      ],
+      "invalid": [
+        {
+          "when": "K0 + KC * F / 100 / V < 0.5",
+          "text": "That would move more potassium into cells than the ECF holds. Try a smaller share."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Potassium moved",
+          "text": "{F:+}% of {KC} mmol = <b>{MOV:+} mmol</b>."
+        },
+        {
+          "title": "Change in concentration",
+          "text": "Spread through {V} L of ECF: {MOV:+} ÷ {V} = <b>{DK:+} mmol/L</b>."
+        },
+        {
+          "title": "New plasma potassium",
+          "text": "{K0} {DK:+} = <b>{K1} mmol/L</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "K1",
+          "label": "New plasma potassium",
+          "unit": "mmol/L",
+          "normal": "About 3.5 to 5.0 mmol/L.",
+          "bands": [
+            {
+              "when": "K1 < 3.5",
+              "label": "low (hypokalemia)",
+              "tone": "lo"
+            },
+            {
+              "when": "K1 <= 5",
+              "label": "normal",
+              "tone": "ok"
+            },
+            {
+              "label": "high (hyperkalemia)",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "K1 > 6",
+          "text": "A plasma potassium of {K1} mmol/L is dangerous: moving just {F}% of cell potassium did it. The resting potential of heart cells moves toward threshold, with peaked T waves and a risk of ventricular fibrillation. IV calcium protects the heart while insulin shifts potassium back into cells."
+        },
+        {
+          "when": "K1 > 5",
+          "text": "A plasma potassium of {K1} mmol/L is high. Because the ECF holds so little potassium, a small shift out of cells shows up fast."
+        },
+        {
+          "when": "K1 < 3.5",
+          "text": "A plasma potassium of {K1} mmol/L is low. The same small ECF that makes shifts out dangerous makes shifts in, as with insulin treatment, lower the plasma value quickly."
+        },
+        {
+          "when": "1",
+          "text": "A plasma potassium of {K1} mmol/L is in range. The shift changed it by {DK:+} mmol/L without changing the body’s total potassium."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 3: crush injury, 1% released",
+          "values": {
+            "KC": 3500,
+            "V": 14,
+            "K0": 4,
+            "F": 1
+          }
+        },
+        {
+          "label": "Insulin moves 0.5% into cells",
+          "values": {
+            "KC": 3500,
+            "V": 14,
+            "K0": 6.5,
+            "F": -0.5
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "K1",
+            "unit": "mmol/L",
+            "tol": {
+              "abs": 0.1
+            },
+            "prompt": "Cells hold {KC} mmol of potassium and the ECF is {V} L at {K0} mmol/L. If {F}% of the cell potassium moves out of cells (a negative share means into cells), what is the new plasma potassium, before any is excreted?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-calcium-units",
+      "group": "fluid-acid-base",
+      "title": "Converting mg/dL to mmol/L and mEq/L",
+      "short": "mmol/L = mg/dL × 10 ÷ atomic mass; mEq = mmol × charge",
+      "topic": "electrolyte-balance",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Labs report electrolytes in three units: mmol/L counts particles, mEq/L counts charge, and mg/dL is a mass, used in the United States for calcium, phosphate and magnesium. Convert one to the others.",
+      "formula": "mmol/L = (mg/dL × 10) ÷ atomic mass; mEq/L = mmol/L × charge",
+      "inputs": [
+        {
+          "key": "C",
+          "label": "Result",
+          "sym": "value",
+          "unit": "mg/dL",
+          "default": 10,
+          "min": 0.1,
+          "max": 50,
+          "step": 0.1,
+          "gen": [
+            7,
+            12,
+            0.1
+          ]
+        },
+        {
+          "key": "A",
+          "label": "Atomic mass of the ion",
+          "sym": "mass",
+          "unit": "g/mol",
+          "default": 40,
+          "min": 1,
+          "max": 100,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              40
+            ]
+          },
+          "hint": "Calcium 40, magnesium 24.3."
+        },
+        {
+          "key": "Z",
+          "label": "Size of its charge",
+          "sym": "charge",
+          "unit": "",
+          "default": 2,
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "gen": {
+            "choices": [
+              2
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "MGL",
+          "expr": "C * 10",
+          "dp": 1
+        },
+        {
+          "key": "MM",
+          "expr": "C * 10 / A",
+          "dp": 2
+        },
+        {
+          "key": "ME",
+          "expr": "C * 10 / A * Z",
+          "dp": 2
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Convert to mg/L",
+          "text": "A deciliter is 0.1 L, so {C} mg/dL = <b>{MGL} mg/L</b>."
+        },
+        {
+          "title": "Convert to mmol/L",
+          "text": "One millimole weighs {A} mg: {MGL} ÷ {A} = <b>{MM} mmol/L</b>."
+        },
+        {
+          "title": "Convert to mEq/L",
+          "text": "Each ion carries {Z} charges: {MM} × {Z} = <b>{ME} mEq/L</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "MM",
+          "label": "Concentration",
+          "unit": "mmol/L",
+          "normal": "Total calcium about 2.1 to 2.6 mmol/L (8.5 to 10.5 mg/dL)."
+        },
+        {
+          "key": "ME",
+          "label": "Charge concentration",
+          "unit": "mEq/L"
+        }
+      ],
+      "meaning": [
+        {
+          "when": "Z == 1",
+          "text": "For an ion with one charge, such as sodium, potassium or chloride, mmol/L and mEq/L are the same number."
+        },
+        {
+          "when": "1",
+          "text": "{C} mg/dL is {MM} mmol/L. Because each ion carries {Z} charges, that is {ME} mEq/L of charge."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: calcium 10 mg/dL",
+          "values": {
+            "C": 10,
+            "A": 40,
+            "Z": 2
+          }
+        },
+        {
+          "label": "Calcium at the lower limit, 8.5 mg/dL",
+          "values": {
+            "C": 8.5,
+            "A": 40,
+            "Z": 2
+          }
+        },
+        {
+          "label": "Magnesium 2.0 mg/dL",
+          "values": {
+            "C": 2,
+            "A": 24.3,
+            "Z": 2
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "MM",
+            "unit": "mmol/L",
+            "tol": {
+              "abs": 0.01,
+              "rel": 0.01
+            },
+            "prompt": "A total calcium is {C} mg/dL. Calcium’s atomic mass is 40. Express it in mmol/L."
+          },
+          {
+            "key": "ME",
+            "unit": "mEq/L",
+            "tol": {
+              "abs": 0.01,
+              "rel": 0.01
+            },
+            "prompt": "A total calcium is {C} mg/dL. Calcium’s atomic mass is 40 and it carries two charges. Express it in mEq/L."
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-adjusted-calcium",
+      "group": "fluid-acid-base",
+      "title": "Calcium adjusted for a low albumin",
+      "short": "Adjusted Ca = measured Ca + 0.8 × (4.0 − albumin)",
+      "topic": "electrolyte-balance",
+      "core": [
+        "compartments",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "About 40% of plasma calcium rides on proteins, mainly albumin. When albumin is low, total calcium reads low even if the ionized calcium, the part that acts on cells, is normal. This bedside estimate adds back the calcium the missing albumin would have carried.",
+      "formula": "Adjusted calcium = measured calcium + 0.8 × (4.0 − albumin)",
+      "inputs": [
+        {
+          "key": "CA",
+          "label": "Measured total calcium",
+          "sym": "Ca",
+          "unit": "mg/dL",
+          "default": 7.6,
+          "min": 3,
+          "max": 16,
+          "step": 0.1,
+          "gen": [
+            6.5,
+            9.5,
+            0.1
+          ]
+        },
+        {
+          "key": "AL",
+          "label": "Albumin",
+          "sym": "albumin",
+          "unit": "g/dL",
+          "default": 2,
+          "min": 0.5,
+          "max": 6,
+          "step": 0.1,
+          "gen": [
+            1.5,
+            3.9,
+            0.1
+          ],
+          "hint": "Normal about 4.0 g/dL."
+        }
+      ],
+      "derived": [
+        {
+          "key": "SH",
+          "expr": "4 - AL",
+          "dp": 1
+        },
+        {
+          "key": "ADD",
+          "expr": "0.8 * (4 - AL)",
+          "dp": 2
+        },
+        {
+          "key": "ADJ",
+          "expr": "CA + 0.8 * (4 - AL)",
+          "dp": 1
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Albumin shortfall",
+          "text": "4.0 − {AL} = <b>{SH} g/dL</b>."
+        },
+        {
+          "title": "Calcium that shortfall would have bound",
+          "text": "0.8 × {SH} = <b>{ADD} mg/dL</b>."
+        },
+        {
+          "title": "Adjusted calcium",
+          "text": "{CA} + {ADD} = <b>{ADJ} mg/dL</b>."
+        },
+        {
+          "title": "Compare",
+          "text": "The usual range for total calcium is 8.5 to 10.5 mg/dL."
+        }
+      ],
+      "results": [
+        {
+          "key": "ADJ",
+          "label": "Adjusted calcium (estimate)",
+          "unit": "mg/dL",
+          "normal": "8.5 to 10.5 mg/dL.",
+          "bands": [
+            {
+              "when": "ADJ < 8.5",
+              "label": "still low",
+              "tone": "lo"
+            },
+            {
+              "when": "ADJ <= 10.5",
+              "label": "in range",
+              "tone": "ok"
+            },
+            {
+              "label": "high",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "CA < 8.5 && ADJ >= 8.5",
+          "text": "The measured {CA} mg/dL looks low, but the adjusted value of {ADJ} mg/dL is in range, which suggests the low total may just reflect the low albumin."
+        },
+        {
+          "when": "ADJ < 8.5",
+          "text": "Even adjusted, the calcium is low ({ADJ} mg/dL), which points to a real hypocalcemia."
+        },
+        {
+          "when": "ADJ > 10.5",
+          "text": "The adjusted calcium, {ADJ} mg/dL, is high: a low albumin can hide a hypercalcemia."
+        },
+        {
+          "when": "1",
+          "text": "The adjusted calcium is {ADJ} mg/dL, within the usual range."
+        }
+      ],
+      "note": "This is only an estimate. It misclassifies patients most often in exactly the setting it is used for, a very low albumin, and can hide a real hypocalcemia. When the answer matters, the lab measures ionized calcium directly.",
+      "presets": [
+        {
+          "label": "Worked example 4: malnourished patient",
+          "values": {
+            "CA": 7.6,
+            "AL": 2
+          }
+        },
+        {
+          "label": "Normal albumin",
+          "values": {
+            "CA": 9.4,
+            "AL": 4
+          }
+        },
+        {
+          "label": "Low albumin, still low calcium",
+          "values": {
+            "CA": 6.8,
+            "AL": 3
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "ADJ",
+            "unit": "mg/dL",
+            "tol": {
+              "abs": 0.1
+            },
+            "prompt": "A patient’s total calcium is {CA} mg/dL and albumin {AL} g/dL. Using adjusted calcium = measured + 0.8 × (4.0 − albumin), estimate the adjusted calcium."
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-sodium-correction",
+      "group": "fluid-acid-base",
+      "title": "How fast is the sodium being corrected?",
+      "short": "Rate per 24 h = change × 24 ÷ hours",
+      "topic": "electrolyte-balance",
+      "core": [
+        "homeostasis",
+        "compartments"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Brain cells adapt to a long-standing low or high sodium over about two days, so a chronic disorder must be corrected slowly: a low sodium raised by no more than about 8 to 10 mmol/L in the first 24 hours, and a high sodium lowered by no more than about 10 mmol/L a day. Enter the change so far to see the pace.",
+      "formula": "Rate = (sodium now − starting sodium) × 24 ÷ hours elapsed",
+      "inputs": [
+        {
+          "key": "N0",
+          "label": "Starting plasma sodium",
+          "sym": "Na start",
+          "unit": "mmol/L",
+          "default": 118,
+          "min": 100,
+          "max": 180,
+          "step": 1,
+          "gen": {
+            "choices": [
+              112,
+              115,
+              118,
+              120,
+              122,
+              124
+            ]
+          }
+        },
+        {
+          "key": "DN",
+          "label": "Change so far (− for a fall)",
+          "sym": "change",
+          "unit": "mmol/L",
+          "default": 4,
+          "min": -30,
+          "max": 30,
+          "step": 1,
+          "gen": [
+            2,
+            12,
+            1
+          ]
+        },
+        {
+          "key": "H",
+          "label": "Hours since treatment began",
+          "sym": "hours",
+          "unit": "h",
+          "default": 12,
+          "min": 1,
+          "max": 72,
+          "step": 1,
+          "gen": {
+            "choices": [
+              6,
+              8,
+              12,
+              16,
+              24
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "N1",
+          "expr": "N0 + DN",
+          "dp": 0
+        },
+        {
+          "key": "R",
+          "expr": "DN * 24 / H",
+          "dp": 1
+        },
+        {
+          "key": "AR",
+          "expr": "abs(DN * 24 / H)",
+          "dp": 1
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Sodium now",
+          "text": "{N0} {DN:+} = <b>{N1} mmol/L</b>."
+        },
+        {
+          "title": "Scale to 24 hours",
+          "text": "{DN:+} mmol/L in {H} h × (24 ÷ {H}) = <b>{R:+} mmol/L per 24 h</b>, if the same pace continues."
+        },
+        {
+          "title": "Compare with the limit",
+          "text": "Chronic low sodium: no more than about 8 to 10 mmol/L up in the first 24 hours. Chronic high sodium: no more than about 10 mmol/L down per day."
+        }
+      ],
+      "results": [
+        {
+          "key": "R",
+          "label": "Pace of correction",
+          "unit": "mmol/L per 24 h",
+          "signed": true,
+          "bands": [
+            {
+              "when": "AR <= 8",
+              "label": "within about 8 per day",
+              "tone": "ok"
+            },
+            {
+              "when": "AR <= 10",
+              "label": "at the upper limit",
+              "tone": "hi"
+            },
+            {
+              "label": "too fast for a chronic disorder",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "N0 < 135 && R > 10",
+          "text": "Raising a chronic low sodium by {R} mmol/L per 24 hours is too fast. Brain cells that have shed potassium and organic solutes lose water to the more concentrated ECF and shrink, and the myelin of the pons can be damaged (osmotic demyelination), with paralysis and trouble speaking and swallowing days later."
+        },
+        {
+          "when": "N0 > 145 && R < -10",
+          "text": "Lowering a chronic high sodium by {AR} mmol/L per 24 hours is faster than the usual advice. Brain cells that have gained solute can take in water and swell, a danger shown mainly in infants and children."
+        },
+        {
+          "when": "AR > 8",
+          "text": "A pace of {R:+} mmol/L per 24 hours is at the edge of the usual limits; the sodium would be rechecked often and the treatment slowed if needed."
+        },
+        {
+          "when": "1",
+          "text": "A pace of {R:+} mmol/L per 24 hours is within the usual limit for a chronic disorder, so adapted brain cells have time to regain or shed solute."
+        },
+        {
+          "when": "N0 < 135",
+          "also": true,
+          "text": "The limit applies to chronic low sodium. Sudden, severe low sodium with seizures is different: the brain has not adapted, and small doses of 3% saline are given quickly."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Chronic low sodium: a safe pace",
+          "values": {
+            "N0": 118,
+            "DN": 4,
+            "H": 12
+          }
+        },
+        {
+          "label": "Chronic low sodium: too fast",
+          "values": {
+            "N0": 118,
+            "DN": 10,
+            "H": 12
+          }
+        },
+        {
+          "label": "Chronic high sodium being lowered",
+          "values": {
+            "N0": 160,
+            "DN": -4,
+            "H": 12
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "R",
+            "unit": "mmol/L per 24 h",
+            "tol": {
+              "abs": 0.1
+            },
+            "prompt": "A patient with chronic low sodium starts at {N0} mmol/L. After {H} hours of treatment it has risen by {DN} mmol/L. At that pace, how much would it rise in 24 hours?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-henderson",
+      "group": "fluid-acid-base",
+      "title": "Blood pH from bicarbonate and PCO2",
+      "short": "pH = 6.1 + log(HCO3− ÷ (0.03 × PCO2))",
+      "topic": "acid-base-regulation",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Blood pH depends on the ratio of bicarbonate to dissolved carbon dioxide, not on either amount alone. The kidneys set the top of the ratio and the lungs the bottom. Normally the ratio is 20 to 1 and pH is 7.40.",
+      "formula": "pH = 6.1 + log ( [HCO3−] ÷ (0.03 × PCO2) )",
+      "inputs": [
+        {
+          "key": "H",
+          "label": "Bicarbonate",
+          "sym": "HCO3−",
+          "unit": "mmol/L",
+          "default": 24,
+          "min": 1,
+          "max": 60,
+          "step": 0.5,
+          "gen": [
+            8,
+            40,
+            1
+          ]
+        },
+        {
+          "key": "P",
+          "label": "Arterial PCO2",
+          "sym": "PCO2",
+          "unit": "mm Hg",
+          "default": 40,
+          "min": 10,
+          "max": 120,
+          "step": 1,
+          "gen": [
+            20,
+            80,
+            1
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "D",
+          "expr": "0.03 * P",
+          "dp": 2
+        },
+        {
+          "key": "R",
+          "expr": "H / (0.03 * P)",
+          "dp": 1
+        },
+        {
+          "key": "LG",
+          "expr": "((H / (0.03 * P)) ^ 0.000001 - (H / (0.03 * P)) ^ -0.000001) * 500000 / 2.302585093",
+          "dp": 2
+        },
+        {
+          "key": "PH",
+          "expr": "6.1 + ((H / (0.03 * P)) ^ 0.000001 - (H / (0.03 * P)) ^ -0.000001) * 500000 / 2.302585093",
+          "dp": 2
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Dissolved carbon dioxide",
+          "text": "Each mm Hg dissolves 0.03 mmol/L: 0.03 × {P} = <b>{D} mmol/L</b>."
+        },
+        {
+          "title": "The ratio",
+          "text": "{H} ÷ {D} = <b>{R}</b> (normally 20)."
+        },
+        {
+          "title": "The log",
+          "text": "log {R} = <b>{LG}</b>. Without a calculator: log 10 = 1.0, log 12.5 = 1.1, log 16 = 1.2, log 20 = 1.3, log 25 = 1.4, log 32 = 1.5."
+        },
+        {
+          "title": "pH",
+          "text": "6.1 + {LG} = <b>{PH}</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "PH",
+          "label": "Blood pH",
+          "unit": "",
+          "normal": "7.35 to 7.45.",
+          "bands": [
+            {
+              "when": "PH < 7.35",
+              "label": "acidemia",
+              "tone": "lo"
+            },
+            {
+              "when": "PH <= 7.45",
+              "label": "normal",
+              "tone": "ok"
+            },
+            {
+              "label": "alkalemia",
+              "tone": "hi"
+            }
+          ]
+        },
+        {
+          "key": "R",
+          "label": "HCO3− : dissolved CO2",
+          "unit": "",
+          "normal": "About 20 to 1."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "PH < 7.35",
+          "text": "The ratio of {R} is below 20, so the pH, {PH}, is below the normal range. Halving the ratio lowers pH by 0.3; either less bicarbonate or more carbon dioxide can do it."
+        },
+        {
+          "when": "PH > 7.45",
+          "text": "The ratio of {R} is above 20, so the pH, {PH}, is above the normal range. Doubling the ratio raises pH by 0.3."
+        },
+        {
+          "when": "1",
+          "text": "A ratio of {R} gives a pH of {PH}, in range. Notice that the same pH can come from very different amounts, as long as the ratio stays near 20."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 2: normal blood",
+          "values": {
+            "H": 24,
+            "P": 40
+          }
+        },
+        {
+          "label": "Worked example 3: acid uses half the bicarbonate",
+          "values": {
+            "H": 12,
+            "P": 40
+          }
+        },
+        {
+          "label": "Worked example 4: the lungs respond",
+          "values": {
+            "H": 12,
+            "P": 25
+          }
+        },
+        {
+          "label": "Worked example 5: too much carbon dioxide",
+          "values": {
+            "H": 24,
+            "P": 80
+          }
+        }
+      ],
+      "practice": {
+        "require": "PH >= 6.95 && PH <= 7.65",
+        "asks": [
+          {
+            "key": "PH",
+            "unit": "",
+            "tol": {
+              "abs": 0.02
+            },
+            "prompt": "Arterial bicarbonate is {H} mmol/L and PCO2 is {P} mm Hg. What is the pH?"
+          },
+          {
+            "key": "R",
+            "unit": "",
+            "tol": {
+              "abs": 0.1,
+              "rel": 0.01
+            },
+            "prompt": "Arterial bicarbonate is {H} mmol/L and PCO2 is {P} mm Hg. What is the ratio of bicarbonate to dissolved carbon dioxide?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-net-acid",
+      "group": "fluid-acid-base",
+      "title": "Net acid excretion",
+      "short": "NAE = titratable acid + ammonium − bicarbonate lost",
+      "topic": "acid-base-regulation",
+      "core": [
+        "mass-balance",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Acid–base balance is mass balance: over a day, the acid the kidneys excrete must equal the fixed acid you make. Enter a 24-hour urine and the day’s fixed acid production.",
+      "formula": "Net acid excretion = titratable acid + ammonium − bicarbonate in urine",
+      "inputs": [
+        {
+          "key": "TA",
+          "label": "Titratable acid",
+          "sym": "TA",
+          "unit": "mmol/day",
+          "default": 25,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "gen": [
+            15,
+            35,
+            1
+          ]
+        },
+        {
+          "key": "NH",
+          "label": "Ammonium",
+          "sym": "NH4+",
+          "unit": "mmol/day",
+          "default": 40,
+          "min": 0,
+          "max": 500,
+          "step": 1,
+          "gen": [
+            20,
+            80,
+            1
+          ]
+        },
+        {
+          "key": "B",
+          "label": "Bicarbonate lost in urine",
+          "sym": "HCO3−",
+          "unit": "mmol/day",
+          "default": 2,
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "gen": [
+            0,
+            5,
+            1
+          ]
+        },
+        {
+          "key": "F",
+          "label": "Fixed acid made",
+          "sym": "acid made",
+          "unit": "mmol/day",
+          "default": 60,
+          "min": 0,
+          "max": 400,
+          "step": 1,
+          "gen": [
+            40,
+            100,
+            5
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "AC",
+          "expr": "TA + NH",
+          "dp": 0
+        },
+        {
+          "key": "NAE",
+          "expr": "TA + NH - B",
+          "dp": 0
+        },
+        {
+          "key": "DIF",
+          "expr": "TA + NH - B - F",
+          "dp": 0
+        },
+        {
+          "key": "DEF",
+          "expr": "F - (TA + NH - B)",
+          "dp": 0
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Add the acid excreted",
+          "text": "{TA} + {NH} = <b>{AC} mmol</b>."
+        },
+        {
+          "title": "Subtract the base lost",
+          "text": "Each bicarbonate lost cancels one H+ excreted: {AC} − {B} = <b>{NAE} mmol/day</b>."
+        },
+        {
+          "title": "Compare with production",
+          "text": "{NAE} excreted − {F} made = <b>{DIF:+} mmol/day</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "NAE",
+          "label": "Net acid excretion",
+          "unit": "mmol/day",
+          "normal": "About 50 to 100 mmol/day on a mixed diet, matching production."
+        },
+        {
+          "key": "DIF",
+          "label": "Excreted minus made",
+          "unit": "mmol/day",
+          "signed": true,
+          "bands": [
+            {
+              "when": "DIF < -5",
+              "label": "acid building up",
+              "tone": "lo"
+            },
+            {
+              "when": "DIF <= 5",
+              "label": "in balance",
+              "tone": "ok"
+            },
+            {
+              "label": "excreting more than made",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "DIF < -5",
+          "text": "The kidneys excrete {NAE} mmol but {F} mmol is made, so about {DEF} mmol of acid a day stays in the body, using up bicarbonate. This is what happens between dialysis sessions in kidney failure: plasma bicarbonate drifts down day after day."
+        },
+        {
+          "when": "DIF <= 5",
+          "text": "Net acid excretion ({NAE} mmol/day) matches production ({F} mmol/day) within measurement error, so plasma bicarbonate stays steady."
+        },
+        {
+          "when": "1",
+          "text": "The kidneys are excreting {DIF} mmol a day more than is being made, adding new bicarbonate: what happens while they rebuild bicarbonate after an acid load."
+        },
+        {
+          "when": "NH > 100",
+          "also": true,
+          "text": "Ammonium at {NH} mmol/day is well above its usual 30 to 50. Ammonium is the adjustable route: over 3 to 5 days of acid load it can rise five- to tenfold, while titratable acid is limited by filtered phosphate."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 8: in balance",
+          "values": {
+            "TA": 25,
+            "NH": 40,
+            "B": 2,
+            "F": 60
+          }
+        },
+        {
+          "label": "Failing kidneys",
+          "values": {
+            "TA": 10,
+            "NH": 12,
+            "B": 2,
+            "F": 60
+          }
+        },
+        {
+          "label": "Five days into a large acid load",
+          "values": {
+            "TA": 35,
+            "NH": 200,
+            "B": 0,
+            "F": 230
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "NAE",
+            "unit": "mmol/day",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "In 24 hours a person excretes {TA} mmol of titratable acid, {NH} mmol of ammonium and {B} mmol of bicarbonate. What is the net acid excretion?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-urine-free-h",
+      "group": "fluid-acid-base",
+      "title": "Why urine needs buffers",
+      "short": "Volume = acid ÷ free H+ per liter",
+      "topic": "acid-base-regulation",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "analyze",
+      "diff": 2,
+      "intro": "Proton pumps cannot drive urine pH below about 4.5, and at that pH very few hydrogen ions are free. Work out how much urine it would take to excrete the day’s fixed acid as free H+ alone.",
+      "formula": "[H+] = 10^−pH mol/L; volume = acid ÷ [H+]",
+      "inputs": [
+        {
+          "key": "PH",
+          "label": "Urine pH",
+          "sym": "pH",
+          "unit": "",
+          "default": 4.5,
+          "min": 4.4,
+          "max": 8,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              4.5,
+              5,
+              5.5,
+              6
+            ]
+          }
+        },
+        {
+          "key": "A",
+          "label": "Fixed acid to excrete",
+          "sym": "acid",
+          "unit": "mmol",
+          "default": 70,
+          "min": 1,
+          "max": 300,
+          "step": 1,
+          "gen": [
+            50,
+            100,
+            5
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "HM",
+          "expr": "1000 * 10 ^ (-PH)",
+          "dp": 4
+        },
+        {
+          "key": "VOL",
+          "expr": "A / (1000 * 10 ^ (-PH))",
+          "dp": 0
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Free H+ per liter",
+          "text": "[H+] = 10^−{PH} mol/L = <b>{HM} mmol/L</b>."
+        },
+        {
+          "title": "Volume needed",
+          "text": "{A} mmol ÷ {HM} mmol/L = <b>{VOL} L</b> of urine."
+        }
+      ],
+      "results": [
+        {
+          "key": "VOL",
+          "label": "Urine needed to carry the acid as free H+",
+          "unit": "L",
+          "normal": "Actual urine: about 1.5 L a day."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "Excreting {A} mmol of acid as free H+ at pH {PH} would take about {VOL} L of urine. In reality well under 0.1 mmol a day leaves as free H+. The rest is carried on phosphate (titratable acid, about 20 to 30 mmol a day) and ammonia (ammonium, about 30 to 50 mmol a day, and adjustable)."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 7: pH 4.5, 70 mmol",
+          "values": {
+            "PH": 4.5,
+            "A": 70
+          }
+        },
+        {
+          "label": "A less acidic urine, pH 6.0",
+          "values": {
+            "PH": 6,
+            "A": 70
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "VOL",
+            "unit": "L",
+            "tol": {
+              "rel": 0.03
+            },
+            "prompt": "Urine pH is {PH}. How many liters of urine would it take to excrete {A} mmol of acid as free H+ alone?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-abg",
+      "group": "fluid-acid-base",
+      "title": "Stepwise arterial blood gas interpreter",
+      "short": "pH, then PaCO2, then HCO3−, then compensation",
+      "topic": "acid-base-disorders",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "intro": "The three acid–base numbers of an ABG are tied together: pH = 6.1 + log(HCO3− ÷ (0.03 × PaCO2)). Enter PaCO2 and bicarbonate; the pH follows, and the five steps name the disorder and how far it is compensated.",
+      "formula": "pH = 6.1 + log ( HCO3− ÷ (0.03 × PaCO2) )",
+      "inputs": [
+        {
+          "key": "P",
+          "label": "PaCO2",
+          "sym": "PaCO2",
+          "unit": "mm Hg",
+          "default": 60,
+          "min": 10,
+          "max": 120,
+          "step": 1,
+          "gen": [
+            16,
+            80,
+            1
+          ],
+          "hint": "Normal 35 to 45."
+        },
+        {
+          "key": "H",
+          "label": "Bicarbonate",
+          "sym": "HCO3−",
+          "unit": "mmol/L",
+          "default": 26,
+          "min": 2,
+          "max": 60,
+          "step": 1,
+          "gen": [
+            5,
+            40,
+            1
+          ],
+          "hint": "Normal 22 to 26."
+        }
+      ],
+      "derived": [
+        {
+          "key": "D",
+          "expr": "0.03 * P",
+          "dp": 2
+        },
+        {
+          "key": "R",
+          "expr": "H / (0.03 * P)",
+          "dp": 1
+        },
+        {
+          "key": "LG",
+          "expr": "((H / (0.03 * P)) ^ 0.000001 - (H / (0.03 * P)) ^ -0.000001) * 500000 / 2.302585093",
+          "dp": 2
+        },
+        {
+          "key": "PH",
+          "expr": "6.1 + ((H / (0.03 * P)) ^ 0.000001 - (H / (0.03 * P)) ^ -0.000001) * 500000 / 2.302585093",
+          "dp": 2
+        },
+        {
+          "key": "PHR",
+          "expr": "round(6.1 + ((H / (0.03 * P)) ^ 0.000001 - (H / (0.03 * P)) ^ -0.000001) * 500000 / 2.302585093, 2)",
+          "dp": 2
+        },
+        {
+          "key": "CHI",
+          "expr": "P > 45",
+          "dp": 0
+        },
+        {
+          "key": "CLO",
+          "expr": "P < 35",
+          "dp": 0
+        },
+        {
+          "key": "HHI",
+          "expr": "H > 26",
+          "dp": 0
+        },
+        {
+          "key": "HLO",
+          "expr": "H < 22",
+          "dp": 0
+        },
+        {
+          "key": "ACID",
+          "expr": "PHR < 7.35",
+          "dp": 0
+        },
+        {
+          "key": "ALK",
+          "expr": "PHR > 7.45",
+          "dp": 0
+        },
+        {
+          "key": "ASIDE",
+          "expr": "PHR < 7.4",
+          "dp": 0
+        },
+        {
+          "key": "KSIDE",
+          "expr": "PHR > 7.4",
+          "dp": 0
+        },
+        {
+          "key": "MIX",
+          "expr": "(CHI && HLO) || (CLO && HHI)",
+          "dp": 0
+        },
+        {
+          "key": "COMP",
+          "expr": "(CHI && HHI) || (CLO && HLO)",
+          "dp": 0
+        },
+        {
+          "key": "RESP",
+          "expr": "!MIX && ((ASIDE && CHI) || (KSIDE && CLO))",
+          "dp": 0
+        },
+        {
+          "key": "MET",
+          "expr": "!MIX && ((ASIDE && HLO) || (KSIDE && HHI))",
+          "dp": 0
+        },
+        {
+          "key": "ALLN",
+          "expr": "!ACID && !ALK && !CHI && !CLO && !HHI && !HLO",
+          "dp": 0
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Step 1: pH",
+          "text": "Dissolved CO2 = 0.03 × {P} = {D} mmol/L; ratio = {H} ÷ {D} = {R}; pH = 6.1 + log {R} = 6.1 + {LG} = <b>{PHR}</b>. Below 7.35 is acidemia, above 7.45 alkalemia; within range, note which side of 7.40 it sits."
+        },
+        {
+          "title": "Step 2: PaCO2",
+          "text": "<b>{P} mm Hg.</b> Above 45 pushes toward acid; below 35 pushes toward alkaline."
+        },
+        {
+          "title": "Step 3: HCO3−",
+          "text": "<b>{H} mmol/L.</b> Below 22 pushes toward acid; above 26 pushes toward alkaline."
+        },
+        {
+          "title": "Step 4: primary disorder",
+          "text": "Whichever number pushes the same way as the pH caused the disorder: PaCO2 means respiratory, HCO3− means metabolic."
+        },
+        {
+          "title": "Step 5: compensation",
+          "text": "Other number normal: uncompensated. Other number moved in the same direction as the primary one: partially compensated if pH is still abnormal, fully compensated if it is back in range. The two numbers moved in opposite directions: two disorders at once."
+        }
+      ],
+      "results": [
+        {
+          "key": "PHR",
+          "label": "pH",
+          "unit": "",
+          "normal": "7.35 to 7.45.",
+          "bands": [
+            {
+              "when": "PHR < 7.35",
+              "label": "acidemia",
+              "tone": "lo"
+            },
+            {
+              "when": "PHR <= 7.45",
+              "label": "normal range",
+              "tone": "ok"
+            },
+            {
+              "label": "alkalemia",
+              "tone": "hi"
+            }
+          ]
+        },
+        {
+          "key": "R",
+          "label": "HCO3− : dissolved CO2",
+          "unit": "",
+          "normal": "About 20 to 1."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "ALLN",
+          "text": "<b>Normal acid–base values.</b> pH {PHR}, PaCO2 {P} and HCO3− {H} are all in range."
+        },
+        {
+          "when": "MIX && CHI",
+          "text": "<b>Two primary disorders: respiratory acidosis and metabolic acidosis.</b> PaCO2 has risen and bicarbonate has fallen, opposite directions, which compensation never does. Both lower the ratio, so the pH falls further than either would alone, as in cardiac arrest."
+        },
+        {
+          "when": "MIX && CLO",
+          "text": "<b>Two primary disorders: respiratory alkalosis and metabolic alkalosis.</b> PaCO2 has fallen and bicarbonate has risen, opposite directions. Both raise the ratio, so the pH rises further than either would alone."
+        },
+        {
+          "when": "RESP && ASIDE && !COMP",
+          "text": "<b>Respiratory acidosis, uncompensated (acute).</b> PaCO2 {P} is high from hypoventilation, and bicarbonate {H} is still normal, so the kidneys have not responded yet: typical of the first hours, as in an opioid overdose."
+        },
+        {
+          "when": "RESP && ASIDE && ACID",
+          "text": "<b>Respiratory acidosis, partially compensated (chronic).</b> PaCO2 {P} is high, and over days the kidneys have raised bicarbonate to {H}, but the pH is still below 7.35: typical of severe COPD."
+        },
+        {
+          "when": "RESP && ASIDE",
+          "text": "<b>Respiratory acidosis, fully compensated.</b> PaCO2 {P} is high and bicarbonate {H} has risen enough to bring the pH back into range, on the acid side of 7.40."
+        },
+        {
+          "when": "RESP && KSIDE && !COMP",
+          "text": "<b>Respiratory alkalosis, uncompensated (acute).</b> PaCO2 {P} is low from hyperventilation, and bicarbonate {H} is still in range, so the kidneys have not acted: typical of a panic attack, pain or fever."
+        },
+        {
+          "when": "RESP && KSIDE && ALK",
+          "text": "<b>Respiratory alkalosis, partially compensated.</b> PaCO2 {P} is low and the kidneys have lowered bicarbonate to {H}, but pH is still above 7.45."
+        },
+        {
+          "when": "RESP && KSIDE",
+          "text": "<b>Respiratory alkalosis, fully compensated.</b> PaCO2 {P} is low and bicarbonate {H} has fallen enough to bring the pH back into range, on the alkaline side of 7.40: as after weeks at high altitude."
+        },
+        {
+          "when": "MET && ASIDE && !COMP",
+          "text": "<b>Metabolic acidosis, uncompensated.</b> Bicarbonate {H} is low and PaCO2 is still normal. The lungs usually respond within minutes, so this is seen only very early, or when breathing cannot increase."
+        },
+        {
+          "when": "MET && ASIDE && ACID",
+          "text": "<b>Metabolic acidosis, partially compensated.</b> Bicarbonate {H} is low, and deeper, faster breathing has lowered PaCO2 to {P}, but pH is still below 7.35: as in diabetic ketoacidosis or severe diarrhea."
+        },
+        {
+          "when": "MET && ASIDE",
+          "text": "<b>Metabolic acidosis, fully compensated.</b> Bicarbonate {H} is low and PaCO2 {P} has fallen enough to bring the pH back into range, on the acid side of 7.40."
+        },
+        {
+          "when": "MET && KSIDE && !COMP",
+          "text": "<b>Metabolic alkalosis, uncompensated.</b> Bicarbonate {H} is high and PaCO2 is still normal."
+        },
+        {
+          "when": "MET && KSIDE && ALK",
+          "text": "<b>Metabolic alkalosis, partially compensated.</b> Bicarbonate {H} is high, and slower breathing has raised PaCO2 to {P}, but pH is still above 7.45: as after days of vomiting. PaCO2 rarely climbs above about 55, because slower breathing also lowers PaO2."
+        },
+        {
+          "when": "MET && KSIDE",
+          "text": "<b>Metabolic alkalosis, fully compensated.</b> Bicarbonate {H} is high and PaCO2 {P} has risen enough to bring the pH back into range, on the alkaline side of 7.40."
+        },
+        {
+          "when": "PHR == 7.4",
+          "text": "<b>pH exactly 7.40 with abnormal numbers.</b> PaCO2 {P} and bicarbonate {H} have moved together far enough to cancel out, so the side of 7.40 cannot tell you which came first. Consider two disorders at once."
+        },
+        {
+          "when": "1",
+          "text": "<b>No single number explains this pH.</b> The values sit at the edges of their ranges. Recheck them, or consider two disorders pulling in opposite directions."
+        },
+        {
+          "when": "MET && ASIDE",
+          "also": true,
+          "text": "Next, calculate the anion gap to tell acid gained from bicarbonate lost, and check the compensation with Winter’s formula: expected PaCO2 about 1.5 × HCO3− + 8 (± 2)."
+        }
+      ],
+      "exam": "Nursing and paramedic exams label any gas with both numbers abnormal and a pH of 7.35 to 7.45 as “fully compensated”. In practice compensation rarely brings pH all the way back; the main exception is a respiratory alkalosis that has lasted days to weeks, and clinicians also consider two disorders at once. Use the exam label when a question asks for it.",
+      "presets": [
+        {
+          "label": "Worked example 3: opioid overdose",
+          "values": {
+            "P": 60,
+            "H": 26
+          }
+        },
+        {
+          "label": "Worked example 4: severe COPD",
+          "values": {
+            "P": 60,
+            "H": 31
+          }
+        },
+        {
+          "label": "Worked example 5: diabetic ketoacidosis",
+          "values": {
+            "P": 16,
+            "H": 5
+          }
+        },
+        {
+          "label": "Worked example 6: three days of vomiting",
+          "values": {
+            "P": 48,
+            "H": 36
+          }
+        },
+        {
+          "label": "Worked example 7: a panic attack",
+          "values": {
+            "P": 28,
+            "H": 22
+          }
+        },
+        {
+          "label": "Worked example 8: three weeks at altitude",
+          "values": {
+            "P": 32,
+            "H": 21
+          }
+        },
+        {
+          "label": "Worked example 9: severe diarrhea",
+          "values": {
+            "P": 31,
+            "H": 15
+          }
+        },
+        {
+          "label": "Cardiac arrest: two disorders",
+          "values": {
+            "P": 55,
+            "H": 17
+          }
+        },
+        {
+          "label": "Normal",
+          "values": {
+            "P": 40,
+            "H": 24
+          }
+        }
+      ],
+      "practice": {
+        "require": "PH >= 6.95 && PH <= 7.65",
+        "asks": [
+          {
+            "key": "PHR",
+            "unit": "",
+            "tol": {
+              "abs": 0.02
+            },
+            "prompt": "An ABG shows PaCO2 {P} mm Hg and HCO3− {H} mmol/L. Using pH = 6.1 + log(HCO3− ÷ (0.03 × PaCO2)), what is the pH? Then name the disorder before you check."
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-anion-gap",
+      "group": "fluid-acid-base",
+      "title": "Anion gap",
+      "short": "Gap = Na+ − (Cl− + HCO3−)",
+      "topic": "acid-base-disorders",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "In a metabolic acidosis, the anion gap tells acid gained from bicarbonate lost. Plasma carries as much negative charge as positive, but a routine panel measures only the main ions; the gap stands for the anions it does not measure, mostly albumin.",
+      "formula": "Anion gap = Na+ − (Cl− + HCO3−)",
+      "inputs": [
+        {
+          "key": "NA",
+          "label": "Sodium",
+          "sym": "Na+",
+          "unit": "mmol/L",
+          "default": 140,
+          "min": 100,
+          "max": 180,
+          "step": 1,
+          "gen": [
+            130,
+            145,
+            1
+          ]
+        },
+        {
+          "key": "CL",
+          "label": "Chloride",
+          "sym": "Cl−",
+          "unit": "mmol/L",
+          "default": 104,
+          "min": 60,
+          "max": 140,
+          "step": 1,
+          "gen": [
+            90,
+            115,
+            1
+          ]
+        },
+        {
+          "key": "H",
+          "label": "Bicarbonate",
+          "sym": "HCO3−",
+          "unit": "mmol/L",
+          "default": 24,
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "gen": [
+            4,
+            26,
+            1
+          ]
+        },
+        {
+          "key": "AL",
+          "label": "Albumin (optional)",
+          "sym": "albumin",
+          "unit": "g/dL",
+          "default": 4,
+          "min": 0.5,
+          "max": 6,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              4
+            ]
+          },
+          "hint": "Leave at 4.0 if unknown."
+        }
+      ],
+      "derived": [
+        {
+          "key": "MS",
+          "expr": "CL + H",
+          "dp": 0
+        },
+        {
+          "key": "AG",
+          "expr": "NA - (CL + H)",
+          "dp": 0
+        },
+        {
+          "key": "AGC",
+          "expr": "NA - (CL + H) + 2.5 * (4 - AL)",
+          "dp": 1
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Add the measured anions",
+          "text": "{CL} + {H} = <b>{MS} mmol/L</b>."
+        },
+        {
+          "title": "Subtract from sodium",
+          "text": "{NA} − {MS} = <b>{AG} mmol/L</b>."
+        },
+        {
+          "title": "Compare",
+          "text": "With most modern analyzers the normal gap is about 8 to 12 mmol/L. Older textbooks give 8 to 16."
+        }
+      ],
+      "results": [
+        {
+          "key": "AG",
+          "label": "Anion gap",
+          "unit": "mmol/L",
+          "normal": "About 8 to 12 mmol/L.",
+          "bands": [
+            {
+              "when": "AG > 12",
+              "label": "high",
+              "tone": "hi"
+            },
+            {
+              "when": "AG >= 8",
+              "label": "normal",
+              "tone": "ok"
+            },
+            {
+              "label": "low",
+              "tone": "lo"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "H < 22 && AG > 12",
+          "text": "<b>High anion gap metabolic acidosis: acid gained.</b> An acid’s H+ used up bicarbonate, and its anion, which the panel does not measure, took bicarbonate’s place. Think ketone bodies (DKA), lactic acid, kidney failure or poisons such as methanol or aspirin."
+        },
+        {
+          "when": "H < 22 && AGC > 12",
+          "text": "<b>Metabolic acidosis with a gap that only looks normal.</b> The gap is {AG}, but albumin, the largest unmeasured anion, is low; adjusted for it, the gap is about {AGC}. An added acid, such as lactic acid, is likely hiding behind the low albumin."
+        },
+        {
+          "when": "H < 22",
+          "text": "<b>Normal anion gap metabolic acidosis: bicarbonate lost.</b> Chloride, a measured anion, has replaced the lost bicarbonate ({CL} mmol/L), so the gap stays normal. Diarrhea is the classic cause; acetazolamide and some proximal tubule diseases do the same."
+        },
+        {
+          "when": "AG > 12",
+          "text": "The gap of {AG} is high although bicarbonate ({H}) is not low. An added acid may be hidden by a second disorder that raises bicarbonate, such as vomiting."
+        },
+        {
+          "when": "1",
+          "text": "A gap of {AG} mmol/L is normal: the unmeasured anions, mostly albumin, make up the difference."
+        },
+        {
+          "when": "AL < 3.5",
+          "also": true,
+          "text": "Albumin is the largest unmeasured anion, and it is low here. The normal gap falls by about 2.5 mmol/L for each 1 g/dL drop in albumin, so a “normal” gap can hide an added acid. Adjusted for albumin, this gap is about {AGC} mmol/L."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: normal",
+          "values": {
+            "NA": 140,
+            "CL": 104,
+            "H": 24,
+            "AL": 4
+          }
+        },
+        {
+          "label": "Worked example 2, patient 1: DKA",
+          "values": {
+            "NA": 134,
+            "CL": 98,
+            "H": 5,
+            "AL": 4
+          }
+        },
+        {
+          "label": "Worked example 2, patient 2: diarrhea",
+          "values": {
+            "NA": 137,
+            "CL": 112,
+            "H": 15,
+            "AL": 4
+          }
+        },
+        {
+          "label": "Sepsis with a low albumin",
+          "values": {
+            "NA": 138,
+            "CL": 108,
+            "H": 20,
+            "AL": 2
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "AG",
+            "unit": "mmol/L",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "Sodium {NA}, chloride {CL}, bicarbonate {H} mmol/L. What is the anion gap?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fab-winters",
+      "group": "fluid-acid-base",
+      "title": "Is the breathing keeping up? Winter’s formula",
+      "short": "Expected PaCO2 = 1.5 × HCO3− + 8 (± 2)",
+      "topic": "acid-base-disorders",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "intro": "In a metabolic acidosis the lungs compensate by lowering PaCO2. A rule of thumb from studies of patients predicts how far. A PaCO2 far outside the expected range means a second, respiratory disorder.",
+      "formula": "Expected PaCO2 = 1.5 × HCO3− + 8, ± 2",
+      "inputs": [
+        {
+          "key": "H",
+          "label": "Bicarbonate",
+          "sym": "HCO3−",
+          "unit": "mmol/L",
+          "default": 5,
+          "min": 2,
+          "max": 21,
+          "step": 1,
+          "gen": [
+            4,
+            20,
+            1
+          ]
+        },
+        {
+          "key": "P",
+          "label": "Measured PaCO2",
+          "sym": "PaCO2",
+          "unit": "mm Hg",
+          "default": 16,
+          "min": 8,
+          "max": 90,
+          "step": 1,
+          "gen": [
+            12,
+            45,
+            1
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "EX",
+          "expr": "1.5 * H + 8",
+          "dp": 1
+        },
+        {
+          "key": "LO",
+          "expr": "1.5 * H + 6",
+          "dp": 1
+        },
+        {
+          "key": "HI",
+          "expr": "1.5 * H + 10",
+          "dp": 1
+        }
+      ],
+      "invalid": [],
+      "steps": [
+        {
+          "title": "Expected PaCO2",
+          "text": "1.5 × {H} + 8 = <b>{EX} mm Hg</b>."
+        },
+        {
+          "title": "Allow ± 2",
+          "text": "Expected range <b>{LO} to {HI} mm Hg</b>."
+        },
+        {
+          "title": "Compare",
+          "text": "Measured PaCO2: <b>{P} mm Hg</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "EX",
+          "label": "Expected PaCO2",
+          "unit": "mm Hg",
+          "bands": [
+            {
+              "when": "P < LO",
+              "label": "measured is lower: extra respiratory alkalosis",
+              "tone": "lo"
+            },
+            {
+              "when": "P <= HI",
+              "label": "measured fits: compensation as expected",
+              "tone": "ok"
+            },
+            {
+              "label": "measured is higher: extra respiratory acidosis",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "P < LO",
+          "text": "PaCO2 {P} is lower than the {LO} to {HI} expected. The person is breathing off more carbon dioxide than compensation explains: a respiratory alkalosis as well, as in aspirin poisoning, which stimulates the respiratory centers."
+        },
+        {
+          "when": "P <= HI",
+          "text": "PaCO2 {P} fits the expected {LO} to {HI}: the lungs are compensating as expected for a bicarbonate of {H}, and there is no sign of a second disorder."
+        },
+        {
+          "when": "1",
+          "text": "PaCO2 {P} is higher than the {LO} to {HI} expected. Breathing is not keeping up, so a respiratory acidosis is adding to the metabolic one: think of exhaustion, sedation or cardiac arrest."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 5: DKA",
+          "values": {
+            "H": 5,
+            "P": 16
+          }
+        },
+        {
+          "label": "Worked example 9: severe diarrhea",
+          "values": {
+            "H": 15,
+            "P": 31
+          }
+        },
+        {
+          "label": "Cardiac arrest",
+          "values": {
+            "H": 17,
+            "P": 55
+          }
+        },
+        {
+          "label": "Aspirin poisoning",
+          "values": {
+            "H": 14,
+            "P": 20
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "EX",
+            "unit": "mm Hg",
+            "tol": {
+              "abs": 0.1
+            },
+            "prompt": "A patient with a metabolic acidosis has a bicarbonate of {H} mmol/L. Using Winter’s formula, what PaCO2 would you expect (the center of the range)?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rp-gamete-combinations",
+      "group": "reproductive",
+      "title": "Gametes from independent assortment",
+      "short": "Different gametes = 2ⁿ",
+      "topic": "meiosis",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "In metaphase I each homologous pair lines up with the mother’s homolog facing one end or the other at random, independently of every other pair. Enter the diploid chromosome number to count the different gametes this alone can make, ignoring crossing over.",
+      "formula": "n = 2n ÷ 2 pairs; different gametes = 2ⁿ; combinations when two gametes join = 2ⁿ × 2ⁿ",
+      "inputs": [
+        {
+          "key": "twoN",
+          "label": "Diploid chromosome number",
+          "sym": "2n",
+          "unit": "chromosomes",
+          "default": 8,
+          "min": 2,
+          "max": 60,
+          "step": 2,
+          "gen": {
+            "choices": [
+              4,
+              6,
+              8,
+              10,
+              12,
+              14,
+              16,
+              18,
+              20,
+              24
+            ]
+          },
+          "hint": "A fruit fly has 2n = 8; a human has 2n = 46."
+        }
+      ],
+      "derived": [
+        {
+          "key": "n",
+          "expr": "twoN / 2",
+          "dp": 0
+        },
+        {
+          "key": "gametes",
+          "expr": "2 ^ (twoN / 2)",
+          "dp": 0
+        },
+        {
+          "key": "pairsOfGametes",
+          "expr": "2 ^ (twoN / 2) * 2 ^ (twoN / 2)",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Find the number of pairs",
+          "text": "2n = {twoN}, so n = {twoN} ÷ 2 = <b>{n} pairs</b> of homologous chromosomes."
+        },
+        {
+          "title": "Count the choices for each pair",
+          "text": "Each gamete gets either the mother’s homolog or the father’s: 2 choices per pair."
+        },
+        {
+          "title": "Multiply the choices",
+          "text": "The pairs assort independently, so the choices multiply: 2 × 2 × … ({n} times) = 2^{n} = <b>{gametes}</b> different gametes."
+        },
+        {
+          "title": "Two gametes join",
+          "text": "Any one of the father’s {gametes} kinds can join any one of the mother’s {gametes} kinds: {gametes} × {gametes} = {pairsOfGametes} combinations, before crossing over is counted."
+        }
+      ],
+      "results": [
+        {
+          "key": "gametes",
+          "label": "Different gametes from independent assortment",
+          "unit": "",
+          "normal": "Human: 2²³ = 8,388,608, about 8.4 million."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "twoN == 46",
+          "text": "A human can make about 8.4 million genetically different gametes from independent assortment alone. Crossing over makes the real number far larger, which is why brothers and sisters differ."
+        },
+        {
+          "when": "1",
+          "text": "With {n} pairs, independent assortment alone gives {gametes} different gametes. Crossing over in prophase I multiplies that further, because it makes new chromosomes that are part mother’s, part father’s."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 3: fruit fly",
+          "values": {
+            "twoN": 8
+          }
+        },
+        {
+          "label": "Human",
+          "values": {
+            "twoN": 46
+          }
+        },
+        {
+          "label": "Model cell with two pairs",
+          "values": {
+            "twoN": 4
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "gametes",
+            "unit": "gametes",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "A species has a diploid number of 2n = {twoN}. Ignoring crossing over, how many genetically different gametes can independent assortment make?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rp-spermatogenesis-count",
+      "group": "reproductive",
+      "title": "Counting cells through spermatogenesis",
+      "short": "1 primary spermatocyte → 2 → 4 → 4 sperm",
+      "topic": "male-physiology",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Each primary spermatocyte completes meiosis I and meiosis II, and each spermatid then reshapes into a sperm without dividing. Enter a number of primary spermatocytes to follow the count and the chromosomes in each cell.",
+      "formula": "Secondary spermatocytes = 2 × primary; spermatids = 2 × secondary; sperm = spermatids",
+      "inputs": [
+        {
+          "key": "P",
+          "label": "Primary spermatocytes completing meiosis",
+          "sym": "P",
+          "unit": "cells",
+          "default": 16,
+          "min": 1,
+          "max": 1000,
+          "step": 1,
+          "gen": [
+            5,
+            60,
+            1
+          ],
+          "hint": "The worked example uses 16."
+        }
+      ],
+      "derived": [
+        {
+          "key": "S",
+          "expr": "P * 2",
+          "dp": 0
+        },
+        {
+          "key": "T",
+          "expr": "P * 4",
+          "dp": 0
+        },
+        {
+          "key": "X",
+          "expr": "P * 2",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Primary spermatocytes",
+          "text": "{P} cells, each diploid: 46 chromosomes, 92 chromatids, because the DNA was copied before meiosis."
+        },
+        {
+          "title": "After meiosis I",
+          "text": "Each makes 2 secondary spermatocytes: {P} × 2 = <b>{S}</b> cells, each haploid with 23 chromosomes still made of two chromatids (46 chromatids)."
+        },
+        {
+          "title": "After meiosis II",
+          "text": "Each secondary spermatocyte makes 2 spermatids: {S} × 2 = <b>{T}</b> cells, each with 23 single chromosomes."
+        },
+        {
+          "title": "After spermiogenesis",
+          "text": "No division, only reshaping: <b>{T} sperm</b>, each with 23 chromosomes. Half, {X}, carry an X chromosome and half a Y."
+        }
+      ],
+      "results": [
+        {
+          "key": "T",
+          "label": "Sperm made",
+          "unit": "sperm",
+          "normal": "Four sperm per primary spermatocyte."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "{P} primary spermatocytes give {S} secondary spermatocytes, {T} spermatids and {T} sperm. The same number of cells entering meiosis in the ovary would give only {P} oocytes, because each meiosis there casts off the other nuclei in tiny cells that break down."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 16 primary spermatocytes",
+          "values": {
+            "P": 16
+          }
+        },
+        {
+          "label": "One primary spermatocyte",
+          "values": {
+            "P": 1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "T",
+            "unit": "sperm",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "{P} primary spermatocytes complete meiosis normally, and every spermatid becomes a sperm. How many sperm result?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rp-ovulation-day",
+      "group": "reproductive",
+      "title": "Ovulation day from cycle length",
+      "short": "Ovulation day ≈ cycle length − 14",
+      "topic": "female-hormones-cycle",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "The luteal phase is set by the corpus luteum’s lifespan and is steadier than the follicular phase, usually 12 to 14 days. So ovulation comes about two weeks before the next period, whatever the cycle length. Enter a cycle length (day 1 = first day of bleeding) and a luteal phase length.",
+      "formula": "Ovulation day ≈ cycle length − luteal phase length (usually 14)",
+      "inputs": [
+        {
+          "key": "L",
+          "label": "Cycle length",
+          "sym": "L",
+          "unit": "days",
+          "default": 32,
+          "min": 20,
+          "max": 45,
+          "step": 1,
+          "gen": [
+            22,
+            40,
+            1
+          ],
+          "hint": "Regular adult cycles run about 24 to 38 days."
+        },
+        {
+          "key": "lut",
+          "label": "Luteal phase length",
+          "sym": "luteal",
+          "unit": "days",
+          "default": 14,
+          "min": 10,
+          "max": 17,
+          "step": 1,
+          "gen": {
+            "choices": [
+              12,
+              13,
+              14,
+              14,
+              14
+            ]
+          },
+          "hint": "Usually 12 to 14 days; about 11 to 17 in real cycles."
+        }
+      ],
+      "derived": [
+        {
+          "key": "ov",
+          "expr": "L - lut",
+          "dp": 0
+        },
+        {
+          "key": "extra",
+          "expr": "L - 28",
+          "dp": 0
+        },
+        {
+          "key": "early",
+          "expr": "L - 17",
+          "dp": 0
+        },
+        {
+          "key": "late",
+          "expr": "L - 11",
+          "dp": 0
+        }
+      ],
+      "invalid": [
+        {
+          "when": "L - lut < 7",
+          "text": "The follicular phase would be under a week, too short for a follicle to grow to maturity."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Use the steady phase",
+          "text": "The luteal phase, from ovulation to the next period, lasts about {lut} days."
+        },
+        {
+          "title": "Count back from the next period",
+          "text": "Ovulation day ≈ {L} − {lut} = <b>day {ov}</b>."
+        },
+        {
+          "title": "See which phase changed",
+          "text": "Compared with the 28-day model, the cycle length differs by {extra:+} days. Any difference sits in the follicular phase, which here runs from day 1 to about day {ov}."
+        },
+        {
+          "title": "Allow for real variation",
+          "text": "Real luteal phases run about 11 to 17 days, so in a {L}-day cycle ovulation could fall anywhere from about day {early} to day {late}. This is an estimate, not a date."
+        }
+      ],
+      "results": [
+        {
+          "key": "ov",
+          "label": "Estimated ovulation day",
+          "unit": "",
+          "normal": "Day 14 in the 28-day model cycle."
+        },
+        {
+          "key": "L",
+          "label": "Cycle length",
+          "unit": "days",
+          "normal": "About 24 to 38 days in adults.",
+          "bands": [
+            {
+              "when": "L < 24",
+              "label": "shorter than the usual range",
+              "tone": "lo"
+            },
+            {
+              "when": "L > 38",
+              "label": "longer than the usual range",
+              "tone": "hi"
+            },
+            {
+              "label": "within the usual range",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "L == 28 && lut == 14",
+          "text": "The textbook model cycle: ovulation on day 14, with 14 days on each side."
+        },
+        {
+          "when": "L > 28",
+          "text": "A {L}-day cycle ovulates around day {ov}, not day 14. The extra days are all before ovulation, while the dominant follicle takes longer to be selected and to grow."
+        },
+        {
+          "when": "L < 28",
+          "text": "A {L}-day cycle ovulates around day {ov}. The follicular phase is shorter; the luteal phase still lasts about {lut} days."
+        },
+        {
+          "when": "1",
+          "text": "Ovulation comes about {lut} days before the next period starts: around day {ov} of this cycle."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: Maya, 32-day cycles",
+          "values": {
+            "L": 32,
+            "lut": 14
+          }
+        },
+        {
+          "label": "Model 28-day cycle",
+          "values": {
+            "L": 28,
+            "lut": 14
+          }
+        },
+        {
+          "label": "Short 24-day cycle",
+          "values": {
+            "L": 24,
+            "lut": 14
+          }
+        },
+        {
+          "label": "Long 38-day cycle",
+          "values": {
+            "L": 38,
+            "lut": 14
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "ov",
+            "unit": "day",
+            "tol": {
+              "abs": 0.5
+            },
+            "prompt": "Her cycles are regularly {L} days long, and her luteal phase lasts {lut} days. On about which day of her cycle does she ovulate?"
           }
         ]
       }

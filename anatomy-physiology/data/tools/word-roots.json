@@ -1914,7 +1914,103 @@
     { "id": "fenestr/o", "type": "root", "form": "fenestr/o", "meaning": "window", "origin": "Latin", "from": "fenestra (a window)" },
     { "id": "-uresis", "type": "suffix", "form": "-uresis", "meaning": "passing in the urine", "origin": "Greek", "from": "ourēsis (urination), from ourein (to urinate)" },
     { "id": "in-not-", "type": "prefix", "form": "in-, im-", "meaning": "not", "origin": "Latin", "from": "in- (not)", "note": "A different Latin prefix from the in- that means into." },
-    { "id": "contin/o", "type": "root", "form": "contin/o", "meaning": "hold together, hold in", "origin": "Latin", "from": "continere (to hold together)" }
+    { "id": "contin/o", "type": "root", "form": "contin/o", "meaning": "hold together, hold in", "origin": "Latin", "from": "continere (to hold together)" },
+    {
+      "id": "chlor/o",
+      "type": "root",
+      "form": "chlor/o",
+      "meaning": "pale green; chlorine or chloride",
+      "origin": "Greek",
+      "from": "chlōros (pale green, yellow-green)",
+      "note": "Chlorine was named for the yellow-green color of its gas."
+    },
+    {
+      "id": "magnes/o",
+      "type": "root",
+      "form": "magnes/o",
+      "meaning": "magnesium",
+      "origin": "Greek (a place name)",
+      "from": "Magnēsia, a district of Thessaly in Greece known for its minerals",
+      "note": "Magnesium was named after magnesia, a white mineral first found there."
+    },
+    {
+      "id": "phosphat/o",
+      "type": "root",
+      "form": "phosphat/o, phosphor/o",
+      "meaning": "phosphate; phosphorus (literally light-bearing)",
+      "origin": "Greek",
+      "from": "phōsphoros (light-bearer), from phōs (light) and pherein (to carry)",
+      "note": "Pure phosphorus glows faintly in air, which gave the element its name."
+    },
+    {
+      "id": "-ible",
+      "type": "suffix",
+      "form": "-ible",
+      "meaning": "able to be",
+      "origin": "Latin",
+      "from": "-ibilis",
+      "note": "The same suffix as -able, spelled with an i after some Latin roots."
+    },
+    {
+      "id": "volat/o",
+      "type": "root",
+      "form": "volat/o",
+      "meaning": "fly",
+      "origin": "Latin",
+      "from": "volare, volatus (to fly)"
+    },
+    {
+      "id": "-ile",
+      "type": "suffix",
+      "form": "-ile",
+      "meaning": "able to, tending to",
+      "origin": "Latin",
+      "from": "-ilis"
+    },
+    {
+      "id": "titr/o",
+      "type": "root",
+      "form": "titr/o",
+      "meaning": "standard, strength (of a solution)",
+      "origin": "French, from Latin",
+      "from": "titre (title; a standard of fineness), from Latin titulus (a label)",
+      "note": "To titrate is to measure a solution’s strength by adding a standard solution until a set end point is reached."
+    },
+    { "id": "homo-", "type": "prefix", "form": "homo-", "meaning": "same", "origin": "Greek", "from": "homos (same)", "note": "Not the same as homeo- (similar), as in homeostasis." },
+    { "id": "non-", "type": "prefix", "form": "non-", "meaning": "not", "origin": "Latin", "from": "non (not)" },
+    { "id": "oo-", "type": "prefix", "form": "oo-, o-", "meaning": "egg", "origin": "Greek", "from": "ōion (egg)", "note": "Say each o separately: oh-oh-cyte." },
+    { "id": "mei/o", "type": "root", "form": "mei/o", "meaning": "less, smaller", "origin": "Greek", "from": "meiōn (less); meiōsis (a lessening)" },
+    { "id": "hapl/o", "type": "root", "form": "hapl/o", "meaning": "single, simple", "origin": "Greek", "from": "haplous (single)" },
+    { "id": "dipl/o", "type": "root", "form": "dipl/o", "meaning": "double", "origin": "Greek", "from": "diplous (double)" },
+    { "id": "log/o", "type": "root", "form": "log/o", "meaning": "word, relation, proportion", "origin": "Greek", "from": "logos (word, reason, proportion)", "note": "Homologous things stand in the same relation to each other; the suffix -logy (study of) comes from the same word." },
+    { "id": "junct/o", "type": "root", "form": "junct/o", "meaning": "joined", "origin": "Latin", "from": "iungere, iunctus (to join)" },
+    { "id": "spermat/o", "type": "root", "form": "spermat/o, sperm/o", "meaning": "seed; sperm", "origin": "Greek", "from": "sperma, spermatos (seed)" },
+    { "id": "-id", "type": "suffix", "form": "-id", "meaning": "offspring, descendant", "origin": "Greek", "from": "-is, -idos (a descendant of)" },
+    { "id": "sustentacul/o", "type": "root", "form": "sustentacul/o", "meaning": "a support, a prop", "origin": "Latin", "from": "sustentaculum (a prop), from sustentare (to hold up)" },
+    { "id": "inhib/o", "type": "root", "form": "inhib/o", "meaning": "hold back", "origin": "Latin", "from": "inhibere (to hold back, restrain)" },
+    { "id": "didym/o", "type": "root", "form": "didym/o", "meaning": "twin; the testes", "origin": "Greek", "from": "didymos (twin); in the plural, the testes" },
+    { "id": "crypt/o", "type": "root", "form": "crypt/o", "meaning": "hidden", "origin": "Greek", "from": "kryptos (hidden)" },
+    { "id": "orchid/o", "type": "root", "form": "orchid/o, orchi/o", "meaning": "testis", "origin": "Greek", "from": "orchis, orchidos (testicle)", "note": "The orchid flower was named for the shape of its root." },
+    { "id": "semin/o", "type": "root", "form": "semin/o", "meaning": "seed; semen", "origin": "Latin", "from": "semen, seminis (seed)" },
+    { "id": "jacul/o", "type": "root", "form": "jacul/o", "meaning": "throw", "origin": "Latin", "from": "iaculari (to throw), iaculum (a javelin)" },
+    { "id": "stat/o-stand", "type": "root", "form": "-stat-", "meaning": "standing", "origin": "Greek", "from": "prostatēs (one standing before), from histanai (to make stand)", "note": "The same Greek verb gives stat/o (holding still), as in homeostasis." },
+    { "id": "bulb/o", "type": "root", "form": "bulb/o", "meaning": "bulb; a rounded swelling", "origin": "Latin", "from": "bulbus (bulb, onion)" },
+    { "id": "urethr/o", "type": "root", "form": "urethr/o", "meaning": "urethra", "origin": "Greek", "from": "ourēthra (urethra), from ourein (to urinate)" },
+    { "id": "plas/o", "type": "root", "form": "plas/o", "meaning": "formation, growth", "origin": "Greek", "from": "plasis (a molding), from plassein (to form)" },
+    { "id": "inguin/o", "type": "root", "form": "inguin/o", "meaning": "groin", "origin": "Latin", "from": "inguen, inguinis (groin)" },
+    { "id": "cis/o", "type": "root", "form": "cis/o", "meaning": "cut", "origin": "Latin", "from": "caedere, caesus (to cut); circumcidere (to cut around)" },
+    { "id": "ov/o", "type": "root", "form": "ov/o, ovi-", "meaning": "egg", "origin": "Latin", "from": "ovum (egg)" },
+    { "id": "duct/o", "type": "root", "form": "duct/o", "meaning": "lead; a tube that leads", "origin": "Latin", "from": "ducere, ductus (to lead)" },
+    { "id": "metr/o-uterus", "type": "root", "form": "metr/o, metri/o", "meaning": "uterus", "origin": "Greek", "from": "mētra (womb)", "note": "Not the same as metr/o (measure), from Greek metron." },
+    { "id": "mamm/o", "type": "root", "form": "mamm/o", "meaning": "breast", "origin": "Latin", "from": "mamma (breast)" },
+    { "id": "ovul/o", "type": "root", "form": "ovul/o", "meaning": "little egg", "origin": "Latin", "from": "ovulum, a diminutive of ovum (egg)" },
+    { "id": "follicul/o", "type": "root", "form": "follicul/o", "meaning": "little bag, small sac", "origin": "Latin", "from": "folliculus (little bag), from follis (bag)" },
+    { "id": "tres/o", "type": "root", "form": "tres/o", "meaning": "hole, opening", "origin": "Greek", "from": "trēsis (a perforation)" },
+    { "id": "lute/o", "type": "root", "form": "lute/o", "meaning": "yellow", "origin": "Latin", "from": "luteus (yellow)" },
+    { "id": "estr/o", "type": "root", "form": "estr/o", "meaning": "estrus, the fertile period of animals", "origin": "Greek, via Latin", "from": "oistros (gadfly; frenzy), Latin oestrus" },
+    { "id": "men/o", "type": "root", "form": "men/o", "meaning": "month; monthly bleeding", "origin": "Greek", "from": "mēn, mēnos (month)" },
+    { "id": "arch/e", "type": "root", "form": "arch/e", "meaning": "beginning", "origin": "Greek", "from": "archē (beginning)" },
+    { "id": "paus/o", "type": "root", "form": "paus/o", "meaning": "stopping", "origin": "Greek", "from": "pausis (a stopping)" }
   ],
   "terms": [
     { "id": "anatomy", "term": "anatomy", "topic": "body-organization", "concept": "anatomy", "segs": [["ana", "ana-"], ["tomy", "-tomy"]], "literal": "a cutting up", "meaning": "the study of the body's structures", "note": "Early anatomists learned structure by cutting bodies apart, which is where the name comes from." },
@@ -8535,6 +8631,353 @@
     { "id": "dialysis", "term": "dialysis", "topic": "renal-function-urine", "concept": "kidney-failure", "segs": [["dia", "dia-"], ["lysis", "-lysis"]], "literal": "a loosening through", "meaning": "removing wastes from the blood by letting them diffuse through a semipermeable membrane into a cleansing fluid" },
     { "id": "pyelonephritis", "term": "pyelonephritis", "topic": "renal-function-urine", "concept": "urinary-disorders", "segs": [["pyel", "pyel/o"], ["o"], ["nephr", "nephr/o"], ["itis", "-itis"]], "literal": "inflammation of the renal pelvis and kidney", "meaning": "a urinary tract infection that has climbed to the kidney, with fever and flank pain" },
     { "id": "incontinence", "term": "incontinence", "topic": "renal-function-urine", "concept": "urinary-disorders", "segs": [["in", "in-not-"], ["contin", "contin/o"], ["ence", "-ence"]], "literal": "a state of not holding in", "meaning": "involuntary leakage of urine" },
-    { "id": "endothelin", "term": "endothelin", "topic": "renal-function-urine", "concept": "kidney-hormones-summary", "segs": [["endo", "endo-"], ["thel", "thel/o"], ["in", "-in"]], "literal": "a substance from the inner lining", "meaning": "a peptide made by endothelial cells, a strong vasoconstrictor that narrows both glomerular arterioles", "note": "Named after the endothelium, the lining of blood vessels, where it is made. As in endothelium, \"thel\" here no longer means nipple, only covering layer." }
+    { "id": "endothelin", "term": "endothelin", "topic": "renal-function-urine", "concept": "kidney-hormones-summary", "segs": [["endo", "endo-"], ["thel", "thel/o"], ["in", "-in"]], "literal": "a substance from the inner lining", "meaning": "a peptide made by endothelial cells, a strong vasoconstrictor that narrows both glomerular arterioles", "note": "Named after the endothelium, the lining of blood vessels, where it is made. As in endothelium, \"thel\" here no longer means nipple, only covering layer." },
+    {
+      "id": "hypervolemia",
+      "term": "hypervolemia",
+      "topic": "fluid-compartments-water",
+      "concept": "fluid-imbalance",
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "vol",
+          "volum/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of more than normal volume",
+      "meaning": "an excess of ECF volume from keeping salt and water together, as in heart failure, with edema but no change in cell size"
+    },
+    {
+      "id": "dehydration",
+      "term": "dehydration",
+      "topic": "fluid-compartments-water",
+      "concept": "fluid-imbalance",
+      "segs": [
+        [
+          "de",
+          "de-"
+        ],
+        [
+          "hydr",
+          "hydr/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the process of removing water",
+      "meaning": "a loss of water greater than the loss of solute, so plasma osmolality rises and cells shrink",
+      "note": "Many nursing texts use the word for any loss of body fluid; strictly, an equal loss of salt and water is hypovolemia."
+    },
+    {
+      "id": "intoxication",
+      "term": "intoxication",
+      "topic": "fluid-compartments-water",
+      "concept": "fluid-imbalance",
+      "segs": [
+        [
+          "in",
+          "in-"
+        ],
+        [
+          "tox",
+          "tox/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the process of putting poison in",
+      "meaning": "poisoning; in water intoxication, symptoms from water gained far faster than solute, which dilutes the plasma and swells brain cells"
+    },
+    {
+      "id": "insensible",
+      "term": "insensible",
+      "topic": "fluid-compartments-water",
+      "concept": "water-balance",
+      "segs": [
+        [
+          "in",
+          "in-not-"
+        ],
+        [
+          "sens",
+          "sens/o"
+        ],
+        [
+          "ible",
+          "-ible"
+        ]
+      ],
+      "literal": "not able to be perceived",
+      "meaning": "describing water lost by evaporation from the skin and in exhaled breath, which you do not notice, about 0.7 L a day"
+    },
+    {
+      "id": "hyponatremia",
+      "term": "hyponatremia",
+      "topic": "electrolyte-balance",
+      "concept": "sodium-balance",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "natr",
+          "natri/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of less than normal sodium",
+      "meaning": "a plasma sodium below 135 mmol/L, almost always from too much water for the sodium"
+    },
+    {
+      "id": "hypernatremia",
+      "term": "hypernatremia",
+      "topic": "electrolyte-balance",
+      "concept": "sodium-balance",
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "natr",
+          "natri/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of more than normal sodium",
+      "meaning": "a plasma sodium above 145 mmol/L, almost always from a water deficit"
+    },
+    {
+      "id": "hypochloremia",
+      "term": "hypochloremia",
+      "topic": "electrolyte-balance",
+      "concept": "chloride-magnesium",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "chlor",
+          "chlor/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of less than normal chloride",
+      "meaning": "a plasma chloride below about 98 mmol/L, most often after prolonged vomiting"
+    },
+    {
+      "id": "hyperchloremia",
+      "term": "hyperchloremia",
+      "topic": "electrolyte-balance",
+      "concept": "chloride-magnesium",
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "chlor",
+          "chlor/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of more than normal chloride",
+      "meaning": "a plasma chloride above about 106 mmol/L, common after large volumes of 0.9% saline or with diarrhea"
+    },
+    {
+      "id": "hypomagnesemia",
+      "term": "hypomagnesemia",
+      "topic": "electrolyte-balance",
+      "concept": "chloride-magnesium",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "magnes",
+          "magnes/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of less than normal magnesium",
+      "meaning": "a plasma magnesium below about 1.7 mg/dL, which makes nerves and muscles overexcitable and keeps potassium and calcium low"
+    },
+    {
+      "id": "hyperphosphatemia",
+      "term": "hyperphosphatemia",
+      "topic": "electrolyte-balance",
+      "concept": "calcium-phosphate-balance",
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "phosphat",
+          "phosphat/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of more than normal phosphate",
+      "meaning": "a plasma phosphate above about 4.5 mg/dL, most often from kidney failure; it binds calcium and lowers ionized calcium"
+    },
+    {
+      "id": "hypophosphatemia",
+      "term": "hypophosphatemia",
+      "topic": "electrolyte-balance",
+      "concept": "calcium-phosphate-balance",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "phosphat",
+          "phosphat/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of less than normal phosphate",
+      "meaning": "a plasma phosphate below about 2.5 mg/dL, classically when a starved person is fed and insulin drives phosphate into cells"
+    },
+    {
+      "id": "volatile",
+      "term": "volatile",
+      "topic": "acid-base-regulation",
+      "concept": "acid-sources",
+      "segs": [
+        [
+          "volat",
+          "volat/o"
+        ],
+        [
+          "ile",
+          "-ile"
+        ]
+      ],
+      "literal": "able to fly",
+      "meaning": "able to turn into a gas and leave; carbonic acid is the volatile acid because its carbon dioxide is breathed out"
+    },
+    {
+      "id": "titratable",
+      "term": "titratable",
+      "topic": "acid-base-regulation",
+      "concept": null,
+      "segs": [
+        [
+          "titr",
+          "titr/o"
+        ],
+        [
+          "at"
+        ],
+        [
+          "able",
+          "-able"
+        ]
+      ],
+      "literal": "able to have its strength measured against a standard",
+      "meaning": "describing the acid carried in urine on buffers such as phosphate, measured by adding base until the urine returns to pH 7.4"
+    },
+    {
+      "id": "aciduria",
+      "term": "aciduria",
+      "topic": "acid-base-disorders",
+      "concept": null,
+      "segs": [
+        [
+          "acid",
+          "acid/o"
+        ],
+        [
+          "uria",
+          "-uria"
+        ]
+      ],
+      "literal": "an acid urine condition",
+      "meaning": "acidic urine; paradoxical aciduria is acidic urine despite alkaline blood, after days of vomiting, as the kidneys trade H+ and K+ for sodium"
+    },
+    { "id": "meiosis", "term": "meiosis", "topic": "meiosis", "concept": "meiosis", "segs": [["mei", "mei/o"], ["osis", "-osis"]], "literal": "a process of making less", "meaning": "the cell division, one copying and two divisions, that halves the chromosome number to make gametes" },
+    { "id": "haploid", "term": "haploid", "topic": "meiosis", "concept": "ploidy", "segs": [["hapl", "hapl/o"], ["oid", "-oid"]], "literal": "single-like", "meaning": "having one member of each chromosome pair (n = 23 in humans), as gametes do" },
+    { "id": "diploid", "term": "diploid", "topic": "meiosis", "concept": "ploidy", "segs": [["dipl", "dipl/o"], ["oid", "-oid"]], "literal": "double-like", "meaning": "having both members of each chromosome pair (2n = 46 in humans), as body cells do" },
+    { "id": "homologous", "term": "homologous", "topic": "meiosis", "concept": "ploidy", "segs": [["homo", "homo-"], ["log", "log/o"], ["ous", "-ous"]], "literal": "having the same relation", "meaning": "describing the two chromosomes of a pair, one from each parent, which carry the same genes in the same order" },
+    { "id": "nondisjunction", "term": "nondisjunction", "topic": "meiosis", "concept": "meiosis", "segs": [["non", "non-"], ["dis", "dis-"], ["junct", "junct/o"], ["ion", "-ation"]], "literal": "not coming apart from being joined", "meaning": "the failure of chromosomes to separate in meiosis, giving gametes with an extra or a missing chromosome" },
+    { "id": "oocyte", "term": "oocyte", "topic": "meiosis", "concept": "gamete", "segs": [["oo", "oo-"], ["cyte", "-cyte"]], "literal": "egg cell", "meaning": "the female gamete, before it finishes its last division" },
+    { "id": "epididymis", "term": "epididymis", "topic": "male-anatomy", "concept": "male-ducts", "segs": [["epi", "epi-"], ["didym", "didym/o"], ["is"]], "literal": "upon the testis", "meaning": "the coiled tube on the back of the testis where sperm gain the ability to swim and are stored" },
+    { "id": "cryptorchidism", "term": "cryptorchidism", "topic": "male-anatomy", "concept": "scrotum-testes", "segs": [["crypt", "crypt/o"], ["orchid", "orchid/o"], ["ism", "-ism"]], "literal": "a condition of hidden testis", "meaning": "a testis that has not come down into the scrotum" },
+    { "id": "seminiferous", "term": "seminiferous", "topic": "male-anatomy", "concept": "scrotum-testes", "segs": [["semin", "semin/o"], ["i"], ["fer", "fer/o"], ["ous", "-ous"]], "literal": "seed-carrying", "meaning": "describing the coiled tubules of the testis in whose walls sperm are made" },
+    { "id": "inguinal", "term": "inguinal", "topic": "male-anatomy", "concept": "male-ducts", "segs": [["inguin", "inguin/o"], ["al", "-al"]], "literal": "pertaining to the groin", "meaning": "in the groin, as the canal the spermatic cord passes through" },
+    { "id": "vasectomy", "term": "vasectomy", "topic": "male-anatomy", "concept": "male-ducts", "segs": [["vas", "vas/o"], ["ectomy", "-ectomy"]], "literal": "cutting out a vessel", "meaning": "cutting and sealing the ductus deferens on each side so sperm cannot reach the urethra" },
+    { "id": "prostate", "term": "prostate", "topic": "male-anatomy", "concept": "accessory-glands-male", "segs": [["pro", "pro-"], ["stat", "stat/o-stand"], ["e"]], "literal": "one standing before", "meaning": "the walnut-sized gland below the bladder that surrounds the urethra and adds a thin, milky fluid to semen" },
+    { "id": "bulbourethral", "term": "bulbourethral", "topic": "male-anatomy", "concept": "accessory-glands-male", "segs": [["bulb", "bulb/o"], ["o"], ["urethr", "urethr/o"], ["al", "-al"]], "literal": "pertaining to the bulb and the urethra", "meaning": "describing the pea-sized glands whose mucus lubricates the urethra before ejaculation" },
+    { "id": "hyperplasia", "term": "hyperplasia", "topic": "male-anatomy", "concept": "accessory-glands-male", "segs": [["hyper", "hyper-"], ["plas", "plas/o"], ["ia", "-ia"]], "literal": "a condition of too much formation", "meaning": "an overgrowth of normal cells, as in the enlarged prostate of older men" },
+    { "id": "ejaculation", "term": "ejaculation", "topic": "male-anatomy", "concept": "erection-ejaculation", "segs": [["e", "ex-"], ["jacul", "jacul/o"], ["ation", "-ation"]], "literal": "the act of throwing out", "meaning": "the forceful release of semen from the urethra, in two phases: emission and expulsion" },
+    { "id": "circumcision", "term": "circumcision", "topic": "male-anatomy", "concept": "penis", "segs": [["circum", "circum-"], ["cis", "cis/o"], ["ion", "-ation"]], "literal": "the act of cutting around", "meaning": "surgical removal of the prepuce (foreskin) of the penis" },
+    { "id": "spermatogenesis", "term": "spermatogenesis", "topic": "male-physiology", "concept": "spermatogenesis", "segs": [["spermat", "spermat/o"], ["o"], ["genesis", "-genesis"]], "literal": "making of seed", "meaning": "the making of sperm from stem cells in the walls of the seminiferous tubules" },
+    { "id": "spermatogonium", "term": "spermatogonium", "topic": "male-physiology", "concept": "spermatogenesis", "segs": [["spermat", "spermat/o"], ["o"], ["gon", "gon/o"], ["ium", "-ium"]], "literal": "a sperm seed", "meaning": "a stem cell on the basement membrane of a seminiferous tubule that divides by mitosis" },
+    { "id": "spermatocyte", "term": "spermatocyte", "topic": "male-physiology", "concept": "spermatogenesis", "segs": [["spermat", "spermat/o"], ["o"], ["cyte", "-cyte"]], "literal": "sperm cell", "meaning": "a cell going through meiosis in the testis: primary before meiosis I, secondary before meiosis II" },
+    { "id": "spermatid", "term": "spermatid", "topic": "male-physiology", "concept": "spermatogenesis", "segs": [["spermat", "spermat/o"], ["id", "-id"]], "literal": "offspring of sperm", "meaning": "a round haploid cell made by meiosis II, which reshapes into a sperm without dividing" },
+    { "id": "acrosome", "term": "acrosome", "topic": "male-physiology", "concept": "sperm-structure", "segs": [["acr", "acr/o"], ["o"], ["some", "-some"]], "literal": "tip body", "meaning": "the cap-like sac of digestive enzymes over the front of a sperm’s head" },
+    { "id": "sustentacular", "term": "sustentacular", "topic": "male-physiology", "concept": "sustentacular-cells", "segs": [["sustentacul", "sustentacul/o"], ["ar", "-ar"]], "literal": "pertaining to a prop", "meaning": "describing the Sertoli cells, which wrap, feed and guide the developing sperm cells" },
+    { "id": "inhibin", "term": "inhibin", "topic": "male-physiology", "concept": "hpg-male", "segs": [["inhib", "inhib/o"], ["in", "-in"]], "literal": "a substance that holds back", "meaning": "a protein hormone from the Sertoli cells that lowers FSH release by the pituitary" },
+    { "id": "ovary", "term": "ovary", "topic": "female-anatomy", "concept": "ovaries", "segs": [["ov", "ov/o"], ["ary", "-ary"]], "literal": "a place for eggs", "meaning": "the female gonad, which stores oocytes in follicles and makes estrogen and progesterone" },
+    { "id": "oviduct", "term": "oviduct", "topic": "female-anatomy", "concept": "uterine-tubes", "segs": [["ov", "ov/o"], ["i"], ["duct", "duct/o"]], "literal": "egg tube", "meaning": "another name for the uterine tube, which catches the oocyte and carries it to the uterus" },
+    { "id": "endometrium", "term": "endometrium", "topic": "female-anatomy", "concept": "uterus", "segs": [["endo", "endo-"], ["metr", "metr/o-uterus"], ["ium", "-ium"]], "literal": "the structure within the uterus", "meaning": "the lining of the uterus, with a functional layer that is shed and a basal layer that regrows it" },
+    { "id": "myometrium", "term": "myometrium", "topic": "female-anatomy", "concept": "uterus", "segs": [["my", "my/o"], ["o"], ["metr", "metr/o-uterus"], ["ium", "-ium"]], "literal": "the muscle of the uterus", "meaning": "the thick middle layer of smooth muscle in the uterine wall" },
+    { "id": "perimetrium", "term": "perimetrium", "topic": "female-anatomy", "concept": "uterus", "segs": [["peri", "peri-"], ["metr", "metr/o-uterus"], ["ium", "-ium"]], "literal": "the structure around the uterus", "meaning": "the outer serous layer of the uterus, its covering of visceral peritoneum" },
+    { "id": "mammary", "term": "mammary", "topic": "female-anatomy", "concept": "mammary-glands", "segs": [["mamm", "mamm/o"], ["ary", "-ary"]], "literal": "pertaining to the breast", "meaning": "describing the exocrine glands of the breast that can make milk" },
+    { "id": "lactiferous", "term": "lactiferous", "topic": "female-anatomy", "concept": "mammary-glands", "segs": [["lact", "lact/o"], ["i"], ["fer", "fer/o"], ["ous", "-ous"]], "literal": "milk-carrying", "meaning": "describing the ducts that carry milk to openings on the nipple" },
+    { "id": "oogenesis", "term": "oogenesis", "topic": "ovarian-cycle", "concept": "oogenesis", "segs": [["oo", "oo-"], ["genesis", "-genesis"]], "literal": "making of eggs", "meaning": "the making of oocytes by meiosis, which starts before birth and pauses twice" },
+    { "id": "oogonium", "term": "oogonium", "topic": "ovarian-cycle", "concept": "oogenesis", "segs": [["oo", "oo-"], ["gon", "gon/o"], ["ium", "-ium"]], "literal": "an egg seed", "meaning": "a diploid stem cell of the fetal ovary that divides by mitosis; none survive past birth" },
+    { "id": "ovulation", "term": "ovulation", "topic": "ovarian-cycle", "concept": "ovulation", "segs": [["ovul", "ovul/o"], ["ation", "-ation"]], "literal": "the process of releasing a little egg", "meaning": "the release of a secondary oocyte from a mature follicle after a sudden rise in LH" },
+    { "id": "folliculogenesis", "term": "folliculogenesis", "topic": "ovarian-cycle", "concept": "follicle-development", "segs": [["follicul", "follicul/o"], ["o"], ["genesis", "-genesis"]], "literal": "making of little bags", "meaning": "the growth of a follicle through its stages, from primordial to mature" },
+    { "id": "atresia", "term": "atresia", "topic": "ovarian-cycle", "concept": "follicle-development", "segs": [["a", "a-"], ["tres", "tres/o"], ["ia", "-ia"]], "literal": "a condition without an opening", "meaning": "the death of a follicle that never opens, the fate of more than 99% of follicles" },
+    { "id": "luteal", "term": "luteal", "topic": "female-hormones-cycle", "concept": "hpg-female", "segs": [["lute", "lute/o"], ["al", "-al"]], "literal": "pertaining to the yellow (body)", "meaning": "describing the phase after ovulation, when the corpus luteum makes progesterone" },
+    { "id": "estrogen", "term": "estrogen", "topic": "female-hormones-cycle", "concept": "estrogen-progesterone-effects", "segs": [["estr", "estr/o"], ["o"], ["gen", "-gen"]], "literal": "a producer of estrus", "meaning": "the ovarian steroid, mainly estradiol, that builds the endometrium and thins cervical mucus" },
+    { "id": "progestin", "term": "progestin", "topic": "female-hormones-cycle", "concept": "contraception", "segs": [["pro", "pro-"], ["gest", "gest/o"], ["in", "-in"]], "literal": "a substance for carrying (a pregnancy)", "meaning": "a synthetic hormone that acts like progesterone, used in hormonal contraception" },
+    { "id": "contraception", "term": "contraception", "topic": "female-hormones-cycle", "concept": "contraception", "segs": [["contra", "contra-"], ["cept", "cept/o"], ["ion", "-ation"]], "literal": "against taking in", "meaning": "any method of preventing pregnancy" },
+    { "id": "menarche", "term": "menarche", "topic": "female-hormones-cycle", "concept": "puberty", "segs": [["men", "men/o"], ["arche", "arch/e"]], "literal": "beginning of the monthly bleeding", "meaning": "the first period, at about 12 to 13 years" },
+    { "id": "menopause", "term": "menopause", "topic": "female-hormones-cycle", "concept": "menopause", "segs": [["men", "men/o"], ["o"], ["paus", "paus/o"], ["e"]], "literal": "stopping of the monthly bleeding", "meaning": "the permanent end of periods, diagnosed after 12 months with none, when the follicles run out" },
+    { "id": "perimenopause", "term": "perimenopause", "topic": "female-hormones-cycle", "concept": "menopause", "segs": [["peri", "peri-"], ["men", "men/o"], ["o"], ["paus", "paus/o"], ["e"]], "literal": "around the stopping of the monthly bleeding", "meaning": "the years before menopause, when cycles become irregular as ovulation fails more often" },
+    { "id": "amenorrhea", "term": "amenorrhea", "topic": "female-hormones-cycle", "concept": "uterine-cycle", "segs": [["a", "a-"], ["men", "men/o"], ["o"], ["rrhea", "-rrhea"]], "literal": "without monthly flow", "meaning": "absence of periods, as when the GnRH pulse generator is held down by too little energy" }
   ]
 }

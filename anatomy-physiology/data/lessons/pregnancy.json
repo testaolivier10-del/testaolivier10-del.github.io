@@ -1,0 +1,48 @@
+{
+  "topic": "pregnancy",
+  "hook": "<p>Aisha, 31, is 34 weeks pregnant. Lying flat on her back for an ultrasound, she turns pale and sweaty, feels faint, and her blood pressure drops from 110/70 to 85/50. The sonographer rolls her onto her left side, and within a minute she feels fine and her pressure is back. Nothing was wrong with her heart. The weight of her uterus had pressed on her inferior vena cava, and her circulation, already reshaped by pregnancy, depends heavily on venous return.</p>",
+  "prereq": [
+    {
+      "q": "A person's heart rate is 80 beats/min and stroke volume 75 mL. What is the cardiac output?",
+      "options": ["6.0 L/min", "155 mL/min", "0.94 L/min"],
+      "correct": 0,
+      "why": "CO = HR × SV = 80 × 75 mL = 6,000 mL/min = 6.0 L/min.",
+      "review": "cardiac-output"
+    },
+    {
+      "q": "What is minute ventilation?",
+      "options": ["The largest volume that can be exhaled after a deepest breath", "Tidal volume times breathing rate", "The air left in the lungs after a normal exhalation"],
+      "correct": 1,
+      "why": "Minute ventilation is the volume of air moved per minute: tidal volume × breaths per minute.",
+      "review": "lung-volumes"
+    },
+    {
+      "q": "Which hormone do the corpus luteum and then the placenta make that keeps the endometrium in place during pregnancy?",
+      "options": ["Progesterone", "Oxytocin", "FSH"],
+      "correct": 0,
+      "why": "Progesterone keeps the endometrium intact and the uterine muscle quiet. The placenta takes over making it from the corpus luteum by about weeks 7 to 9.",
+      "review": "placenta"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-28-18",
+    "caption": "The height of the uterus at the end of each trimester. Hide the labels and say which trimester each outline marks."
+  },
+  "chain": [
+    { "cause": "Progesterone and other signals relax arteriolar smooth muscle, and the placenta adds a low-resistance bed.", "effect": "Total peripheral resistance falls, and the circulation is sensed as underfilled." },
+    { "cause": "The renin–angiotensin–aldosterone system switches on, and the thresholds for thirst and ADH reset lower.", "effect": "The kidneys keep sodium and water, and plasma volume rises by about 40 to 50%." },
+    { "cause": "The larger blood volume raises venous return and preload, while heart rate also rises.", "effect": "Stroke volume and heart rate rise, so cardiac output rises by 30 to 50%." },
+    { "cause": "Cardiac output rises while total peripheral resistance falls.", "effect": "Mean arterial pressure stays about the same, dipping slightly in mid-pregnancy." },
+    { "cause": "Plasma volume rises more than red cell mass.", "effect": "The hematocrit and hemoglobin concentration fall, giving the normal dilutional anemia of pregnancy." }
+  ],
+  "misconception": {
+    "wrong": "Blood pressure normally rises during pregnancy, because the heart is pumping so much more blood.",
+    "right": "Cardiac output does rise by 30 to 50%, but total peripheral resistance falls by about a quarter to a third at the same time, so blood pressure normally stays the same or dips a little in mid-pregnancy. A new rise in blood pressure after week 20 is not normal; it is the hallmark of preeclampsia and needs to be checked."
+  },
+  "check": ["anp-pregnancy-1", "anp-pregnancy-3", "anp-pregnancy-5", "anp-pregnancy-8", "anp-pregnancy-11", "anp-pregnancy-14", "anp-pregnancy-17"],
+  "summary": "<p>Placental hormones, the growing uterus and the demands of the fetus drive the mother's changes. Blood volume rises 40 to 50%, plasma more than red cells, so the hematocrit falls (dilutional anemia), and the blood clots more readily. Cardiac output rises 30 to 50% while total peripheral resistance falls, so blood pressure dips slightly in mid-pregnancy; lying flat can compress the inferior vena cava. Progesterone raises minute ventilation more than metabolism needs, lowering PaCO<sub>2</sub> to about 30 mm Hg. GFR rises about 50% and serum creatinine falls. Progesterone slows the gut, and insulin resistance in the second half spares glucose for the fetus. An ectopic pregnancy implants outside the uterus, usually in a tube, and can rupture. Placenta previa covers the cervix and bleeds painlessly. Preeclampsia is new hypertension after week 20 with organ damage, starting with poor spiral artery remodeling. Gestational diabetes arises when beta cells cannot overcome placental insulin resistance.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Diabetic emergencies and altered mental status" }
+  ]
+}

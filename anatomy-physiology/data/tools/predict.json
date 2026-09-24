@@ -18427,6 +18427,1855 @@
           "why": "Estrogen keeps bone mass by limiting osteoclasts. Low estrogen for months speeds bone loss, the combination seen in some endurance athletes."
         }
       ]
+    },
+    {
+      "id": "fab-water-fast",
+      "title": "Four liters of water in an hour",
+      "topic": "fluid-compartments-water",
+      "theme": "drinking a large volume of water fast",
+      "core": [
+        "homeostasis",
+        "compartments",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "the kidneys can get rid of water as fast as you can drink it",
+      "setup": "Maya, 22, drinks 4 L of plain water in an hour during a contest. Her kidneys can excrete a little under 1 L an hour. Predict her state at the end of the hour, compared with before she started.",
+      "start": "Water is absorbed faster than the kidneys can excrete it",
+      "steps": {
+        "dilute": "Plasma osmolality falls, because water adds no solute",
+        "cells": "Water moves into cells by osmosis until the osmolality inside matches the ECF",
+        "ecf": "About one third of the absorbed water stays in the ECF",
+        "osmo": "Hypothalamic osmoreceptors swell and fire less",
+        "adh": "ADH release falls to almost nothing",
+        "thirst": "The thirst center switches off",
+        "aqp": "Principal cells pull their aquaporins back into vesicles",
+        "urine": "Large volumes of dilute urine are made",
+        "brain": "Brain cells swell inside the rigid skull"
+      },
+      "variables": [
+        {
+          "id": "posm",
+          "name": "Plasma osmolality",
+          "answer": "down",
+          "chain": [
+            "dilute"
+          ],
+          "why": "Four liters of water spread through her body water with no added solute. Her 12,180 mOsm of solute is now dissolved in about 46 L instead of 42, so osmolality falls from about 290 to about 265 mOsm/kg."
+        },
+        {
+          "id": "icf",
+          "name": "Volume of her intracellular fluid (cell size)",
+          "answer": "up",
+          "chain": [
+            "dilute",
+            "cells"
+          ],
+          "why": "The ECF is now more dilute than the inside of her cells, so water enters them by osmosis. Because the ICF is about two thirds of body water, about two thirds of the water ends up inside cells."
+        },
+        {
+          "id": "ecf",
+          "name": "ECF volume",
+          "answer": "up",
+          "chain": [
+            "ecf"
+          ],
+          "why": "Pure water spreads through total body water in proportion to each compartment’s size, so about one third of it stays in the ECF, and a quarter of that share in the plasma."
+        },
+        {
+          "id": "adh",
+          "name": "ADH in the blood",
+          "answer": "down",
+          "chain": [
+            "dilute",
+            "osmo",
+            "adh"
+          ],
+          "why": "A fall in osmolality of 1 to 2% is enough for the osmoreceptors to swell and cut ADH release. Her fall of about 9% switches ADH almost fully off."
+        },
+        {
+          "id": "thirst",
+          "name": "Thirst",
+          "answer": "down",
+          "chain": [
+            "dilute",
+            "osmo",
+            "thirst"
+          ],
+          "why": "The same osmoreceptors drive the thirst center. With the plasma dilute, thirst switches off; she is drinking for the contest, not because she is thirsty."
+        },
+        {
+          "id": "urine-osm",
+          "name": "Urine osmolality",
+          "answer": "down",
+          "chain": [
+            "dilute",
+            "osmo",
+            "adh",
+            "aqp",
+            "urine"
+          ],
+          "why": "Without ADH, the collecting ducts become nearly waterproof, so dilute tubular fluid passes straight through. Urine falls toward about 50 mOsm/L."
+        },
+        {
+          "id": "urine-flow",
+          "name": "Urine flow",
+          "answer": "up",
+          "chain": [
+            "dilute",
+            "osmo",
+            "adh",
+            "aqp",
+            "urine"
+          ],
+          "why": "Water that is no longer reabsorbed in the collecting ducts leaves as urine. Flow rises toward the kidneys’ top rate, a little under 1 L an hour."
+        },
+        {
+          "id": "skull",
+          "name": "Pressure inside her skull",
+          "answer": "up",
+          "chain": [
+            "dilute",
+            "cells",
+            "brain"
+          ],
+          "why": "She drank 4 L but can pass less than 1 L in that hour, so the extra water stays in her cells. Brain cells swell inside the rigid skull, raising the pressure there: headache, nausea and confusion. Her loop worked; the rate of drinking beat the kidneys’ top speed."
+        }
+      ]
+    },
+    {
+      "id": "fab-iv-saline",
+      "title": "A liter of 0.9% saline by vein",
+      "topic": "fluid-compartments-water",
+      "core": [
+        "compartments",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "fluid given into a vein stays in the blood",
+      "setup": "A patient with normal fluid balance is given 1 L of 0.9% saline, which has the same osmolality as plasma, into a vein. Predict her body fluids an hour later, before her kidneys have excreted much of it, compared with before the infusion.",
+      "start": "Isotonic fluid enters the plasma",
+      "steps": {
+        "na": "The added sodium stays outside cells, held there by the sodium–potassium pump",
+        "same": "ECF osmolality does not change",
+        "noshift": "No water crosses plasma membranes",
+        "share": "Capillary walls let water and salt through, so the liter is shared between plasma and interstitial fluid",
+        "isf": "About three quarters of it moves into the interstitial fluid",
+        "plasma": "About one quarter, 250 mL, stays in the plasma"
+      },
+      "variables": [
+        {
+          "id": "ecf",
+          "name": "ECF volume",
+          "answer": "up",
+          "chain": [
+            "na"
+          ],
+          "why": "The sodium in the saline stays outside cells, and the water stays with it, so the whole liter is added to the ECF."
+        },
+        {
+          "id": "plasma",
+          "name": "Plasma volume",
+          "answer": "up",
+          "chain": [
+            "na",
+            "share",
+            "plasma"
+          ],
+          "why": "Plasma is about one quarter of the ECF, so about 250 mL of the liter stays in the plasma at steady state."
+        },
+        {
+          "id": "isf",
+          "name": "Interstitial fluid volume",
+          "answer": "up",
+          "chain": [
+            "na",
+            "share",
+            "isf"
+          ],
+          "why": "Water and small solutes cross capillary walls freely, so about three quarters of the saline, 750 mL, moves out into the interstitial fluid."
+        },
+        {
+          "id": "icf",
+          "name": "Intracellular fluid volume",
+          "answer": "none",
+          "chain": [
+            "na",
+            "same",
+            "noshift"
+          ],
+          "why": "The saline has the same osmolality as plasma, so the ECF is neither more concentrated nor more dilute. With no osmotic gradient across plasma membranes, no water enters or leaves cells."
+        },
+        {
+          "id": "posm",
+          "name": "Plasma osmolality",
+          "answer": "none",
+          "chain": [
+            "na",
+            "same"
+          ],
+          "why": "Fluid with the same osmolality as plasma adds solute and water in the same proportion, so the concentration does not change. Only the volume of the ECF does."
+        }
+      ]
+    },
+    {
+      "id": "fab-d5w",
+      "title": "A liter of 5% glucose (D5W) by vein",
+      "topic": "fluid-compartments-water",
+      "core": [
+        "compartments",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "a fluid that is isosmotic in the bag acts like saline in the body",
+      "setup": "A patient is given 1 L of 5% glucose in water (D5W). It has about the same osmolality as plasma in the bag, but cells take up the glucose and use it. Predict his body fluids once the glucose has been used, compared with before the infusion.",
+      "start": "Cells take up and use the infused glucose",
+      "steps": {
+        "free": "What remains is 1 L of water with no lasting solute",
+        "dilute": "ECF osmolality falls slightly",
+        "osmosis": "Water moves into cells until osmolality is equal everywhere",
+        "split": "The water spreads through total body water: two thirds into cells, one third in the ECF",
+        "plasma": "Only a quarter of the ECF share, about 83 mL, stays in the plasma"
+      },
+      "variables": [
+        {
+          "id": "icf",
+          "name": "Intracellular fluid volume",
+          "answer": "up",
+          "chain": [
+            "free",
+            "dilute",
+            "osmosis",
+            "split"
+          ],
+          "why": "Once the glucose is gone, the liter behaves like pure water. It spreads through total body water, so about 667 mL ends up inside cells."
+        },
+        {
+          "id": "posm",
+          "name": "Plasma osmolality",
+          "answer": "down",
+          "chain": [
+            "free",
+            "dilute"
+          ],
+          "why": "The water stays but its solute is used up, so the same body solute is now dissolved in a liter more water. Osmolality falls a little."
+        },
+        {
+          "id": "plasma",
+          "name": "Plasma volume",
+          "answer": "up",
+          "chain": [
+            "free",
+            "dilute",
+            "osmosis",
+            "split",
+            "plasma"
+          ],
+          "why": "Plasma volume does rise, but only by about 83 mL: one third of the liter stays in the ECF, and one quarter of that in the plasma. That is why D5W replaces water but is a poor way to restore blood volume."
+        }
+      ]
+    },
+    {
+      "id": "fab-lost-hiker",
+      "title": "Two days in the desert without water",
+      "topic": "fluid-compartments-water",
+      "core": [
+        "homeostasis",
+        "compartments",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "only the blood loses water when you are dehydrated",
+      "setup": "A hiker is lost for two days in hot, dry country with nothing to drink. He sweats and breathes out water, losing far more water than salt. Predict his state now, compared with before the hike.",
+      "start": "Water is lost faster than solute, and none is replaced",
+      "steps": {
+        "posm": "Plasma osmolality rises",
+        "out": "Water leaves cells by osmosis until osmolality is equal again",
+        "both": "Both the ICF and the ECF shrink",
+        "osmo": "Hypothalamic osmoreceptors shrink and fire faster",
+        "adh": "ADH release rises",
+        "aqp": "Principal cells insert aquaporins; water returns to the blood",
+        "thirst": "The thirst center drives intense thirst",
+        "brain": "Brain cells shrink"
+      },
+      "variables": [
+        {
+          "id": "posm",
+          "name": "Plasma osmolality",
+          "answer": "up",
+          "chain": [
+            "posm"
+          ],
+          "why": "Sweat and exhaled water vapor carry far more water than solute, so the solute left behind is more concentrated. This is dehydration in the strict sense."
+        },
+        {
+          "id": "icf",
+          "name": "Intracellular fluid volume",
+          "answer": "down",
+          "chain": [
+            "posm",
+            "out",
+            "both"
+          ],
+          "why": "The concentrated ECF draws water out of cells by osmosis, so cells shrink. Because the ICF is the largest compartment, it gives up most of the water lost."
+        },
+        {
+          "id": "ecf",
+          "name": "ECF volume",
+          "answer": "down",
+          "chain": [
+            "posm",
+            "out",
+            "both"
+          ],
+          "why": "The water lost comes from total body water, so the ECF shrinks too, although less than it would if cells did not share the loss."
+        },
+        {
+          "id": "adh",
+          "name": "ADH in the blood",
+          "answer": "up",
+          "chain": [
+            "posm",
+            "osmo",
+            "adh"
+          ],
+          "why": "Shrinking osmoreceptors fire faster, and the hypothalamus releases more ADH from the posterior pituitary."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "down",
+          "chain": [
+            "posm",
+            "osmo",
+            "adh",
+            "aqp"
+          ],
+          "why": "ADH puts aquaporins into principal cells, so water leaves the collecting ducts into the salty medulla. A small volume of concentrated urine is made, though never less than about 0.5 L a day."
+        },
+        {
+          "id": "thirst",
+          "name": "Thirst",
+          "answer": "up",
+          "chain": [
+            "posm",
+            "osmo",
+            "thirst"
+          ],
+          "why": "The rise in osmolality is far above the thirst threshold. Thirst is the only response that can replace lost water; the kidneys can only slow further loss."
+        },
+        {
+          "id": "brain",
+          "name": "Size of his brain cells",
+          "answer": "down",
+          "chain": [
+            "posm",
+            "out",
+            "brain"
+          ],
+          "why": "Brain cells lose water like all cells, which explains the confusion and irritability of severe dehydration."
+        }
+      ]
+    },
+    {
+      "id": "fab-burn-shift",
+      "title": "Leaky capillaries after a large burn",
+      "topic": "fluid-compartments-water",
+      "core": [
+        "compartments",
+        "mass-balance",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "a swollen patient cannot be short of blood volume",
+      "setup": "A man has a large burn. Over the next hours, damaged capillaries leak plasma fluid and protein into his tissues. He loses little fluid from his body. Predict his state six hours later, compared with before the burn.",
+      "start": "Capillary walls let plasma fluid and protein through",
+      "steps": {
+        "leak": "Plasma fluid and protein pour into the interstitial fluid",
+        "plasma": "Plasma volume falls",
+        "isf": "Interstitial fluid collects: edema",
+        "total": "The fluid is still in the body: a fluid shift, not a loss",
+        "bp": "Venous return and blood pressure fall",
+        "hr": "The baroreflex speeds the heart"
+      },
+      "variables": [
+        {
+          "id": "plasma",
+          "name": "Plasma volume",
+          "answer": "down",
+          "chain": [
+            "leak",
+            "plasma"
+          ],
+          "why": "Fluid and protein leave the blood through the leaky capillary walls, so less fluid is left in the plasma."
+        },
+        {
+          "id": "isf",
+          "name": "Interstitial fluid volume",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "isf"
+          ],
+          "why": "The leaked fluid collects in the tissues faster than the lymphatics can return it, so the tissues swell."
+        },
+        {
+          "id": "tbw",
+          "name": "Total body water",
+          "answer": "none",
+          "chain": [
+            "leak",
+            "total"
+          ],
+          "why": "The fluid has moved from one compartment to another without leaving the body. That is a fluid shift, sometimes called third spacing."
+        },
+        {
+          "id": "bp",
+          "name": "Arterial blood pressure",
+          "answer": "down",
+          "chain": [
+            "leak",
+            "plasma",
+            "bp"
+          ],
+          "why": "Less plasma means less blood returning to the heart, so stroke volume and blood pressure fall: he can be hypovolemic and swollen at the same time."
+        },
+        {
+          "id": "hr",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "plasma",
+            "bp",
+            "hr"
+          ],
+          "why": "Baroreceptors sense the fall in pressure, and the baroreflex raises sympathetic drive to the heart."
+        }
+      ]
+    },
+    {
+      "id": "fab-siadh",
+      "title": "A lung tumor that releases ADH",
+      "topic": "electrolyte-balance",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "a low plasma sodium means the body has lost sodium",
+      "setup": "A man’s lung tumor releases ADH all the time, whatever his plasma osmolality (SIADH). He keeps drinking his usual amount. Predict his state after a week, compared with before the tumor made ADH.",
+      "start": "ADH stays high although the plasma is dilute",
+      "steps": {
+        "aqp": "Principal cells keep aquaporins in their apical membranes",
+        "keep": "The kidneys keep water they would normally excrete",
+        "uosm": "Urine stays concentrated",
+        "dilute": "Water is gained in excess of sodium, diluting the plasma",
+        "na": "Plasma sodium concentration falls",
+        "swell": "Water moves into brain cells, which swell"
+      },
+      "variables": [
+        {
+          "id": "urine-osm",
+          "name": "Urine osmolality",
+          "answer": "up",
+          "chain": [
+            "aqp",
+            "keep",
+            "uosm"
+          ],
+          "why": "With ADH present, water leaves the collecting ducts into the salty medulla, so the urine is concentrated even though his plasma is dilute. The loop would normally switch ADH off; the tumor ignores it."
+        },
+        {
+          "id": "na",
+          "name": "Plasma sodium concentration",
+          "answer": "down",
+          "chain": [
+            "aqp",
+            "keep",
+            "dilute",
+            "na"
+          ],
+          "why": "His total body sodium has barely changed. The extra water he keeps dilutes it, so the concentration falls: hyponatremia is usually too much water, not too little sodium."
+        },
+        {
+          "id": "posm",
+          "name": "Plasma osmolality",
+          "answer": "down",
+          "chain": [
+            "aqp",
+            "keep",
+            "dilute"
+          ],
+          "why": "Sodium and its anions make up almost all the solute of the ECF, so as plasma sodium falls, osmolality falls with it."
+        },
+        {
+          "id": "brain",
+          "name": "Size of his brain cells",
+          "answer": "up",
+          "chain": [
+            "aqp",
+            "keep",
+            "dilute",
+            "swell"
+          ],
+          "why": "The ECF is now more dilute than the inside of his cells, so water enters them. Swelling brain cells inside the rigid skull cause headache, nausea and confusion."
+        }
+      ]
+    },
+    {
+      "id": "fab-insulin-potassium",
+      "title": "Insulin and glucose for a high potassium",
+      "topic": "electrolyte-balance",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "lowering plasma potassium means potassium has left the body",
+      "setup": "A patient’s plasma potassium is 6.8 mmol/L. She is given insulin by vein, with glucose so her blood glucose does not fall too far. Predict her state 30 minutes later, compared with just before the injection.",
+      "start": "Insulin reaches her cells",
+      "steps": {
+        "pump": "Insulin stimulates sodium–potassium pumps",
+        "into": "Potassium moves from the ECF into cells",
+        "plasma": "Plasma potassium falls",
+        "store": "No potassium has left the body yet",
+        "gap": "The resting potential moves back from threshold"
+      },
+      "variables": [
+        {
+          "id": "pump",
+          "name": "Activity of her sodium–potassium pumps",
+          "answer": "up",
+          "chain": [
+            "pump"
+          ],
+          "why": "Insulin speeds the sodium–potassium pumps of muscle and liver cells, the same effect that stops a potassium-rich meal from raising plasma potassium sharply."
+        },
+        {
+          "id": "plasma-k",
+          "name": "Plasma potassium",
+          "answer": "down",
+          "chain": [
+            "pump",
+            "into",
+            "plasma"
+          ],
+          "why": "The ECF holds under 2% of body potassium, so moving a small share of it into cells lowers the plasma value within minutes."
+        },
+        {
+          "id": "total-k",
+          "name": "Total potassium in her body",
+          "answer": "none",
+          "chain": [
+            "pump",
+            "into",
+            "store"
+          ],
+          "why": "Insulin only moves potassium between compartments. The potassium still has to be removed by the kidneys, binders or dialysis, and it can leak back out of cells as the insulin wears off."
+        },
+        {
+          "id": "gap",
+          "name": "Gap between the resting potential of heart cells and threshold",
+          "answer": "up",
+          "chain": [
+            "pump",
+            "into",
+            "plasma",
+            "gap"
+          ],
+          "why": "With less potassium outside, the resting potential becomes more negative again, further from threshold, so heart cells are less likely to be held partly depolarized."
+        }
+      ]
+    },
+    {
+      "id": "fab-crush-injury",
+      "title": "A crush injury releases cell contents",
+      "topic": "electrolyte-balance",
+      "core": [
+        "mass-balance",
+        "compartments"
+      ],
+      "level": 2,
+      "misconception": "a small release from cells cannot change plasma potassium much",
+      "setup": "A man’s legs are trapped under rubble for hours. When he is freed, crushed muscle releases its contents into the blood. Predict his plasma within an hour of release, before his kidneys can excrete much.",
+      "start": "Damaged muscle cells release their contents into the ECF",
+      "steps": {
+        "k": "Potassium, stored mainly inside cells, pours into the small ECF",
+        "kp": "Plasma potassium rises sharply",
+        "rmp": "The resting potential of heart cells moves toward threshold",
+        "p": "Phosphate from inside cells is released",
+        "pp": "Plasma phosphate rises",
+        "bind": "Phosphate binds calcium",
+        "ca": "Ionized calcium falls"
+      },
+      "variables": [
+        {
+          "id": "k",
+          "name": "Plasma potassium",
+          "answer": "up",
+          "chain": [
+            "k",
+            "kp"
+          ],
+          "why": "About 98% of body potassium is inside cells and the ECF holds only about 60 mmol. Releasing just 1% of cell potassium, 35 mmol, into 14 L raises plasma potassium by about 2.5 mmol/L."
+        },
+        {
+          "id": "rmp",
+          "name": "How close heart cells rest to threshold",
+          "answer": "up",
+          "chain": [
+            "k",
+            "kp",
+            "rmp"
+          ],
+          "why": "More potassium outside cells makes the resting potential less negative, closer to threshold. A large, lasting rise keeps cells partly depolarized, which is how hyperkalemia causes cardiac arrest."
+        },
+        {
+          "id": "phos",
+          "name": "Plasma phosphate",
+          "answer": "up",
+          "chain": [
+            "p",
+            "pp"
+          ],
+          "why": "Most phosphate outside bone is inside cells, in ATP, nucleic acids and membrane phospholipids, so crushed muscle releases it too."
+        },
+        {
+          "id": "ica",
+          "name": "Ionized calcium in the plasma",
+          "answer": "down",
+          "chain": [
+            "p",
+            "pp",
+            "bind",
+            "ca"
+          ],
+          "why": "Calcium and phosphate are linked in the blood: when phosphate rises, calcium phosphate forms and free calcium falls."
+        }
+      ]
+    },
+    {
+      "id": "fab-low-albumin",
+      "title": "Low albumin and the calcium result",
+      "topic": "electrolyte-balance",
+      "core": [
+        "compartments",
+        "homeostasis"
+      ],
+      "level": 1,
+      "misconception": "a low total calcium always means too little active calcium",
+      "setup": "A malnourished man’s plasma albumin falls from 4.0 to 2.0 g/dL. His parathyroid glands work normally. Compare his plasma calcium now with before.",
+      "start": "Less albumin is available to bind calcium",
+      "steps": {
+        "bound": "Less calcium is bound to albumin",
+        "total": "The lab’s total calcium, which counts bound calcium, reads low",
+        "free": "Ionized calcium is still held in range by the parathyroid glands"
+      },
+      "variables": [
+        {
+          "id": "bound",
+          "name": "Protein-bound calcium",
+          "answer": "down",
+          "chain": [
+            "bound"
+          ],
+          "why": "About 40% of plasma calcium normally rides on proteins, mainly albumin. Half the albumin binds less calcium."
+        },
+        {
+          "id": "total",
+          "name": "Total calcium on his lab report",
+          "answer": "down",
+          "chain": [
+            "bound",
+            "total"
+          ],
+          "why": "Total calcium adds together the ionized, protein-bound and anion-bound forms. With less bound, the total reads low: about 7.6 mg/dL instead of 9.2."
+        },
+        {
+          "id": "ionized",
+          "name": "Ionized (free) calcium",
+          "answer": "none",
+          "chain": [
+            "free"
+          ],
+          "why": "The parathyroid glands sense ionized calcium and adjust PTH to hold it steady. Only the bound fraction has fallen, so the calcium that acts on nerves and muscles may be normal. Measuring ionized calcium settles it."
+        }
+      ]
+    },
+    {
+      "id": "fab-loop-diuretic",
+      "title": "A loop diuretic for swollen ankles",
+      "topic": "electrolyte-balance",
+      "core": [
+        "mass-balance",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "a diuretic only removes water",
+      "setup": "A woman with heart failure starts a loop diuretic, which blocks NKCC2 in the thick ascending limb. Predict her state after two weeks of daily doses, compared with before.",
+      "start": "NKCC2 in the thick ascending limb is blocked",
+      "steps": {
+        "na": "Less sodium and chloride are reabsorbed in the thick ascending limb",
+        "natri": "More sodium, chloride and water leave in the urine",
+        "ecf": "ECF volume falls",
+        "raas": "Renin, angiotensin II and aldosterone rise",
+        "distal": "More sodium and fluid reach the principal cells",
+        "ksec": "Principal cells secrete more potassium",
+        "lumen": "The positive lumen that drives magnesium between cells is lost",
+        "mg": "Less magnesium is reabsorbed"
+      },
+      "variables": [
+        {
+          "id": "urine-na",
+          "name": "Sodium in her urine",
+          "answer": "up",
+          "chain": [
+            "na",
+            "natri"
+          ],
+          "why": "The thick ascending limb normally reabsorbs about a quarter of filtered sodium on NKCC2. Blocked, it lets far more through than later segments can catch."
+        },
+        {
+          "id": "ecf",
+          "name": "ECF volume",
+          "answer": "down",
+          "chain": [
+            "na",
+            "natri",
+            "ecf"
+          ],
+          "why": "Water follows the extra sodium into the urine. Because sodium sets ECF volume, losing it shrinks the ECF, which is what reduces her edema."
+        },
+        {
+          "id": "aldo",
+          "name": "Aldosterone",
+          "answer": "up",
+          "chain": [
+            "na",
+            "natri",
+            "ecf",
+            "raas"
+          ],
+          "why": "The fall in volume and pressure switches on the RAAS, so aldosterone rises."
+        },
+        {
+          "id": "k",
+          "name": "Plasma potassium",
+          "answer": "down",
+          "chain": [
+            "na",
+            "distal",
+            "ksec"
+          ],
+          "why": "More sodium entering principal cells makes the lumen more negative, faster flow carries secreted potassium away, and aldosterone adds more potassium channels and pumps. Potassium is lost in the urine."
+        },
+        {
+          "id": "mg",
+          "name": "Plasma magnesium",
+          "answer": "down",
+          "chain": [
+            "na",
+            "lumen",
+            "mg"
+          ],
+          "why": "Most filtered magnesium is reabsorbed between the cells of the thick ascending limb, pushed by the positive lumen that NKCC2 creates. Without it, magnesium is lost too."
+        }
+      ]
+    },
+    {
+      "id": "fab-missed-dialysis",
+      "title": "Kidney failure: two missed dialysis sessions",
+      "topic": "electrolyte-balance",
+      "core": [
+        "mass-balance",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "kidney failure affects only water and waste",
+      "setup": "Mr. Reyes, 66, has kidney failure and misses two dialysis sessions. Predict his blood panel now, compared with just after his last session.",
+      "start": "His kidneys cannot excrete what he takes in",
+      "steps": {
+        "ksec": "Principal cells cannot secrete the potassium he eats",
+        "k": "Plasma potassium rises",
+        "pex": "Phosphate, normally excreted by the kidneys, builds up",
+        "bind": "High phosphate binds calcium",
+        "cal": "Failing kidneys make little calcitriol, so less calcium is absorbed",
+        "ca": "Plasma calcium falls",
+        "pth": "The parathyroid glands sense the low calcium",
+        "water": "He keeps salt and water, and more water than salt",
+        "na": "Plasma sodium concentration falls"
+      },
+      "variables": [
+        {
+          "id": "k",
+          "name": "Plasma potassium",
+          "answer": "up",
+          "chain": [
+            "ksec",
+            "k"
+          ],
+          "why": "The kidneys remove about 90% of the potassium you eat. With none leaving, even normal meals raise plasma potassium, the most urgent danger because of its effect on the heart."
+        },
+        {
+          "id": "phos",
+          "name": "Plasma phosphate",
+          "answer": "up",
+          "chain": [
+            "pex"
+          ],
+          "why": "The kidneys are the main exit for phosphate, so it builds up between dialysis sessions."
+        },
+        {
+          "id": "ca",
+          "name": "Plasma calcium",
+          "answer": "down",
+          "chain": [
+            "pex",
+            "bind",
+            "cal",
+            "ca"
+          ],
+          "why": "Two causes add up: the high phosphate binds calcium, and his failing kidneys make little calcitriol, so he absorbs little calcium from food."
+        },
+        {
+          "id": "pth",
+          "name": "PTH",
+          "answer": "up",
+          "chain": [
+            "pex",
+            "bind",
+            "ca",
+            "pth"
+          ],
+          "why": "The parathyroid glands respond to the fall in ionized calcium by releasing more PTH, which cannot fix the problem while phosphate stays high."
+        },
+        {
+          "id": "na",
+          "name": "Plasma sodium concentration",
+          "answer": "down",
+          "chain": [
+            "water",
+            "na"
+          ],
+          "why": "He has too much salt and water in total, which causes edema, but more extra water than salt, so the concentration falls."
+        }
+      ]
+    },
+    {
+      "id": "fab-hyponatremia-l4",
+      "title": "Chronic low sodium, then a fast correction",
+      "topic": "electrolyte-balance",
+      "core": [
+        "homeostasis",
+        "compartments"
+      ],
+      "level": 4,
+      "misconception": "the faster a low sodium is corrected, the better",
+      "setup": "A woman taking a thiazide diuretic drifts to a plasma sodium of 118 mmol/L over a week. First predict what her brain cells have done after two days at that level. Then predict what happens if her sodium is raised by 20 mmol/L in the next 24 hours.",
+      "stages": [
+        {
+          "id": "adapted",
+          "label": "Two days at a low sodium",
+          "prompt": "After two days at 118 mmol/L, compared with the first hours at that level.",
+          "start": "Brain cells sit in a dilute ECF",
+          "steps": {
+            "release": "Brain cells release potassium and small organic solutes",
+            "less": "With less solute inside, less water is drawn in",
+            "size": "Brain cells return toward their normal size",
+            "same": "Her ECF is still dilute"
+          },
+          "variables": [
+            {
+              "id": "solute",
+              "name": "Solute inside her brain cells",
+              "answer": "down",
+              "chain": [
+                "release"
+              ],
+              "why": "Over about two days, brain cells adapt to the dilute ECF by losing potassium and small organic solutes, lowering their own osmolality to match it."
+            },
+            {
+              "id": "brain",
+              "name": "Size of her brain cells",
+              "answer": "down",
+              "chain": [
+                "release",
+                "less",
+                "size"
+              ],
+              "why": "In the first hours water entered her brain cells and they swelled. With their solute reduced, they draw in less water and shrink back toward normal, which eases the symptoms."
+            },
+            {
+              "id": "na",
+              "name": "Plasma sodium",
+              "answer": "none",
+              "chain": [
+                "same"
+              ],
+              "why": "The adaptation happens inside brain cells. Her plasma sodium stays at 118 mmol/L until she is treated."
+            }
+          ]
+        },
+        {
+          "id": "fast",
+          "label": "Sodium raised too fast",
+          "prompt": "After her sodium is raised by 20 mmol/L in 24 hours, compared with the adapted state.",
+          "start": "Plasma sodium and osmolality rise quickly",
+          "steps": {
+            "posm": "ECF osmolality rises",
+            "out": "Water leaves the adapted brain cells, which have lost solute",
+            "shrink": "Brain cells shrink below their normal size",
+            "myelin": "The myelin of the pons is damaged"
+          },
+          "variables": [
+            {
+              "id": "posm",
+              "name": "Plasma osmolality",
+              "answer": "up",
+              "chain": [
+                "posm"
+              ],
+              "why": "Raising plasma sodium raises ECF osmolality almost twice as much, because each sodium ion is matched by an anion."
+            },
+            {
+              "id": "brain",
+              "name": "Size of her brain cells",
+              "answer": "down",
+              "chain": [
+                "posm",
+                "out",
+                "shrink"
+              ],
+              "why": "The adapted cells have given up solute and cannot regain it in hours. The ECF is now more concentrated than they are, so water rushes out and they shrink."
+            },
+            {
+              "id": "damage",
+              "name": "Risk of osmotic demyelination",
+              "answer": "up",
+              "chain": [
+                "posm",
+                "out",
+                "shrink",
+                "myelin"
+              ],
+              "why": "Shrinking cells damage the myelin of the pons, causing paralysis and trouble speaking and swallowing days later. That is why chronic hyponatremia is corrected by no more than about 8 to 10 mmol/L in the first 24 hours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fab-acetazolamide",
+      "title": "Acetazolamide blocks carbonic anhydrase",
+      "topic": "acid-base-regulation",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 2,
+      "misconception": "bicarbonate reabsorption moves the filtered bicarbonate ion itself",
+      "setup": "A climber takes acetazolamide, which blocks carbonic anhydrase in the proximal tubule. Predict her state a day later, compared with before the first dose.",
+      "start": "Carbonic anhydrase in the proximal tubule is blocked",
+      "steps": {
+        "noh": "Tubule cells make less H+ to secrete",
+        "nolumen": "Filtered bicarbonate is not turned into carbon dioxide in the lumen",
+        "urine": "Bicarbonate stays in the tubular fluid and leaves in the urine",
+        "uph": "Urine becomes alkaline",
+        "hco3": "Plasma bicarbonate falls",
+        "ph": "Blood pH falls",
+        "cb": "The carotid bodies sense the lower pH",
+        "vent": "Breathing increases"
+      },
+      "variables": [
+        {
+          "id": "urine-hco3",
+          "name": "Bicarbonate in the urine",
+          "answer": "up",
+          "chain": [
+            "noh",
+            "nolumen",
+            "urine"
+          ],
+          "why": "Reclaiming bicarbonate needs carbonic anhydrase twice: inside the cell to make the H+ that is secreted, and on the brush border to turn carbonic acid into carbon dioxide. Blocked, filtered bicarbonate passes on and is excreted."
+        },
+        {
+          "id": "urine-ph",
+          "name": "Urine pH",
+          "answer": "up",
+          "chain": [
+            "noh",
+            "nolumen",
+            "urine",
+            "uph"
+          ],
+          "why": "Bicarbonate is a base, so urine carrying more of it is more alkaline."
+        },
+        {
+          "id": "plasma-hco3",
+          "name": "Plasma bicarbonate",
+          "answer": "down",
+          "chain": [
+            "noh",
+            "nolumen",
+            "urine",
+            "hco3"
+          ],
+          "why": "Every bicarbonate lost in the urine is one fewer in the plasma, so the top of the ratio falls."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "down",
+          "chain": [
+            "noh",
+            "nolumen",
+            "urine",
+            "hco3",
+            "ph"
+          ],
+          "why": "With less bicarbonate and the same PCO2, the ratio falls below 20 and pH falls."
+        },
+        {
+          "id": "vent",
+          "name": "Breathing",
+          "answer": "up",
+          "chain": [
+            "noh",
+            "nolumen",
+            "urine",
+            "hco3",
+            "ph",
+            "cb",
+            "vent"
+          ],
+          "why": "The carotid bodies sense the lower arterial pH and drive more breathing. At altitude that is the point: extra breathing raises oxygen uptake."
+        }
+      ]
+    },
+    {
+      "id": "fab-steak-dinner",
+      "title": "A large steak dinner",
+      "topic": "acid-base-regulation",
+      "core": [
+        "mass-balance",
+        "interdependence",
+        "homeostasis"
+      ],
+      "level": 3,
+      "misconception": "the lungs can get rid of any acid",
+      "setup": "A man eats a large steak dinner. Breaking down its sulfur-containing amino acids adds about 40 mmol of sulfuric acid to his blood over the evening. Predict the changes during the evening, compared with before the meal.",
+      "start": "Sulfuric acid adds hydrogen ions to the blood",
+      "steps": {
+        "buffer": "Bicarbonate takes up the H+, forming carbonic acid and then carbon dioxide",
+        "hco3": "Plasma bicarbonate falls a little",
+        "ph": "Blood pH dips slightly",
+        "cb": "The carotid bodies sense the lower pH and breathing increases a little",
+        "pco2": "Arterial PCO2 falls just enough to keep the ratio near 20",
+        "kid": "The kidneys secrete more H+ onto phosphate and ammonia",
+        "urine": "Urine becomes more acidic",
+        "new": "Each H+ excreted adds one new bicarbonate to the blood"
+      },
+      "variables": [
+        {
+          "id": "hco3",
+          "name": "Plasma bicarbonate, early in the evening",
+          "answer": "down",
+          "chain": [
+            "buffer",
+            "hco3"
+          ],
+          "why": "Bicarbonate is the first buffer to meet the acid. Each H+ it takes up uses one bicarbonate, so it falls a little until the kidneys replace it."
+        },
+        {
+          "id": "vent",
+          "name": "Breathing",
+          "answer": "up",
+          "chain": [
+            "buffer",
+            "hco3",
+            "ph",
+            "cb"
+          ],
+          "why": "The carotid bodies respond within seconds to a fall in arterial pH, whatever the acid, and the respiratory centers raise ventilation slightly."
+        },
+        {
+          "id": "pco2",
+          "name": "Arterial PCO2",
+          "answer": "down",
+          "chain": [
+            "buffer",
+            "hco3",
+            "ph",
+            "cb",
+            "pco2"
+          ],
+          "why": "A little extra breathing blows off carbon dioxide, lowering the bottom of the ratio to match the lower top. The lungs restore the ratio but cannot remove sulfuric acid."
+        },
+        {
+          "id": "nae",
+          "name": "Acid excreted in his urine (titratable acid and ammonium)",
+          "answer": "up",
+          "chain": [
+            "buffer",
+            "hco3",
+            "ph",
+            "kid"
+          ],
+          "why": "Sulfuric acid cannot be breathed out, so the kidneys must excrete it. Type A intercalated cells secrete more H+, which leaves bound to phosphate and ammonia."
+        },
+        {
+          "id": "urine-ph",
+          "name": "Urine pH",
+          "answer": "down",
+          "chain": [
+            "buffer",
+            "hco3",
+            "ph",
+            "kid",
+            "urine"
+          ],
+          "why": "More secreted H+ in the urine lowers its pH, toward the limit of about 4.5."
+        },
+        {
+          "id": "new",
+          "name": "New bicarbonate added to his blood by the kidneys",
+          "answer": "up",
+          "chain": [
+            "buffer",
+            "hco3",
+            "ph",
+            "kid",
+            "new"
+          ],
+          "why": "Every H+ excreted leaves a bicarbonate behind in the tubule cell, which enters the blood. Over hours to a day this replaces the bicarbonate the acid used up."
+        }
+      ]
+    },
+    {
+      "id": "fab-vomiting",
+      "title": "Three days of vomiting: the acid–base picture",
+      "topic": "acid-base-disorders",
+      "theme": "prolonged vomiting",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "healthy kidneys would simply excrete the extra bicarbonate",
+      "setup": "A man with a blocked stomach outlet vomits stomach contents many times a day for three days. His kidneys are healthy. Predict his blood now, compared with before he fell ill.",
+      "start": "Hydrochloric acid secreted by the stomach is vomited",
+      "steps": {
+        "tide": "Each H+ the parietal cells secreted left one bicarbonate in the blood (the alkaline tide)",
+        "noneut": "The acid never reaches the duodenum, so the pancreas does not secrete bicarbonate to neutralize it",
+        "hco3": "Extra bicarbonate stays in the blood",
+        "vol": "Fluid loss lowers blood volume",
+        "ang": "Angiotensin II and aldosterone rise",
+        "cl": "Chloride is lost in the vomit",
+        "keep": "Low volume and low chloride make the kidneys keep bicarbonate instead of excreting it",
+        "ph": "Blood pH rises: metabolic alkalosis",
+        "vent": "The carotid bodies sense the high pH and breathing slows",
+        "pco2": "PaCO2 rises",
+        "k": "Potassium is lost in vomit and, under aldosterone, in urine",
+        "alb": "Albumin binds more calcium in alkalemia"
+      },
+      "variables": [
+        {
+          "id": "hco3",
+          "name": "Plasma bicarbonate",
+          "answer": "up",
+          "chain": [
+            "tide",
+            "noneut",
+            "hco3",
+            "vol",
+            "cl",
+            "keep"
+          ],
+          "why": "The alkaline tide adds bicarbonate that is never used up, because the acid is vomited instead of neutralized in the duodenum. Healthy kidneys could excrete it fast, but low volume (through angiotensin II and aldosterone) and low chloride make them keep it."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "up",
+          "chain": [
+            "tide",
+            "noneut",
+            "hco3",
+            "ph"
+          ],
+          "why": "The top of the ratio has risen, so pH rises above 7.45. The primary change is in bicarbonate, so this is a metabolic alkalosis."
+        },
+        {
+          "id": "paco2",
+          "name": "PaCO2",
+          "answer": "up",
+          "chain": [
+            "tide",
+            "noneut",
+            "hco3",
+            "ph",
+            "vent",
+            "pco2"
+          ],
+          "why": "Compensation moves in the same direction as the primary number: the higher pH slows breathing, so carbon dioxide builds up. It is limited, because slower breathing also lowers PaO2."
+        },
+        {
+          "id": "cl",
+          "name": "Plasma chloride",
+          "answer": "down",
+          "chain": [
+            "cl"
+          ],
+          "why": "Stomach acid is hydrochloric acid, so vomiting removes chloride with the H+. With little chloride in the tubular fluid, type B intercalated cells, which trade bicarbonate for chloride, cannot excrete much bicarbonate."
+        },
+        {
+          "id": "aldo",
+          "name": "Aldosterone",
+          "answer": "up",
+          "chain": [
+            "vol",
+            "ang"
+          ],
+          "why": "Lost fluid lowers blood volume and pressure, switching on the RAAS. Angiotensin II speeds the proximal tubule’s sodium–hydrogen exchanger, so more bicarbonate is reclaimed."
+        },
+        {
+          "id": "k",
+          "name": "Plasma potassium",
+          "answer": "down",
+          "chain": [
+            "vol",
+            "ang",
+            "k"
+          ],
+          "why": "Some potassium is lost in the vomit, but more in the urine: aldosterone and the extra sodium reaching the principal cells drive potassium secretion. Low potassium in turn speeds H+ secretion, sustaining the alkalosis."
+        },
+        {
+          "id": "ica",
+          "name": "Ionized calcium",
+          "answer": "down",
+          "chain": [
+            "tide",
+            "noneut",
+            "hco3",
+            "ph",
+            "alb"
+          ],
+          "why": "In alkalemia albumin gives up hydrogen ions and binds more calcium, so ionized calcium falls: tingling and cramps, although total calcium is normal."
+        }
+      ]
+    },
+    {
+      "id": "fab-diarrhea",
+      "title": "Three days of severe diarrhea",
+      "topic": "acid-base-disorders",
+      "theme": "severe diarrhea",
+      "core": [
+        "homeostasis",
+        "interdependence",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "every metabolic acidosis comes from an added acid",
+      "setup": "A traveler has severe watery diarrhea for three days and cannot drink enough to keep up. Predict her blood now, compared with before she fell ill.",
+      "start": "Intestinal fluid rich in bicarbonate is lost in stool",
+      "steps": {
+        "hco3": "Plasma bicarbonate falls",
+        "cl": "Chloride is kept in bicarbonate’s place",
+        "gap": "No unmeasured anion is added, so the anion gap stays normal",
+        "ph": "Blood pH falls: metabolic acidosis",
+        "cb": "The carotid bodies drive deeper, faster breathing",
+        "pco2": "PaCO2 falls",
+        "kid": "Tubule cells secrete more H+ and make more ammonium",
+        "k": "Potassium is lost in stool",
+        "vol": "Salt and water loss shrinks the ECF",
+        "hr": "The baroreflex speeds the heart"
+      },
+      "variables": [
+        {
+          "id": "hco3",
+          "name": "Plasma bicarbonate",
+          "answer": "down",
+          "chain": [
+            "hco3"
+          ],
+          "why": "Intestinal secretions are rich in bicarbonate. Losing liters of them removes base from the body, so the top of the ratio falls."
+        },
+        {
+          "id": "cl",
+          "name": "Plasma chloride",
+          "answer": "up",
+          "chain": [
+            "hco3",
+            "cl"
+          ],
+          "why": "Plasma must carry equal positive and negative charge. As bicarbonate is lost, the kidneys and gut keep chloride in its place: hyperchloremia."
+        },
+        {
+          "id": "gap",
+          "name": "Anion gap",
+          "answer": "none",
+          "chain": [
+            "hco3",
+            "cl",
+            "gap"
+          ],
+          "why": "Chloride, a measured anion, replaces the lost bicarbonate, so the gap stays normal: about 137 − (112 + 15) = 10. A normal anion gap points to bicarbonate lost, not acid gained."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "down",
+          "chain": [
+            "hco3",
+            "ph"
+          ],
+          "why": "Less bicarbonate with the same PaCO2 lowers the ratio, so pH falls below 7.35."
+        },
+        {
+          "id": "paco2",
+          "name": "PaCO2",
+          "answer": "down",
+          "chain": [
+            "hco3",
+            "ph",
+            "cb",
+            "pco2"
+          ],
+          "why": "The lungs compensate within hours: lower arterial pH drives the carotid bodies, breathing deepens, and PaCO2 falls in the same direction as bicarbonate."
+        },
+        {
+          "id": "nh4",
+          "name": "Ammonium excreted by her kidneys",
+          "answer": "up",
+          "chain": [
+            "hco3",
+            "ph",
+            "kid"
+          ],
+          "why": "Acid inside tubule cells speeds H+ secretion and ammonium production. Each ammonium excreted adds a new bicarbonate, though the kidneys cannot keep up with liters of stool."
+        },
+        {
+          "id": "k",
+          "name": "Plasma potassium",
+          "answer": "down",
+          "chain": [
+            "k"
+          ],
+          "why": "Stool carries potassium; heavy diarrhea removes a lot of it, so she can be both acidotic and short of potassium."
+        },
+        {
+          "id": "hr",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "vol",
+            "hr"
+          ],
+          "why": "Stool losses are close to isotonic, so the ECF shrinks and blood pressure tends to fall. The baroreflex raises the heart rate."
+        }
+      ]
+    },
+    {
+      "id": "fab-copd-l4",
+      "title": "COPD: a bad week, first hours and five days later",
+      "topic": "acid-base-disorders",
+      "theme": "COPD, acute vs compensated",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 4,
+      "misconception": "compensation returns every number to normal",
+      "setup": "A woman with severe COPD catches a chest infection. Her alveolar ventilation falls, and within a few hours her PaCO2 climbs from 40 to 60 mm Hg, where it stays. First predict her blood in those first hours; then predict five days later, with her PaCO2 still 60 mm Hg.",
+      "stages": [
+        {
+          "id": "acute",
+          "label": "The first hours",
+          "prompt": "A few hours after her PaCO2 reached 60 mm Hg, compared with before the infection.",
+          "start": "Alveolar ventilation falls below carbon dioxide production",
+          "steps": {
+            "co2": "Carbon dioxide builds up: PaCO2 rises",
+            "h": "More carbonic acid forms and releases H+",
+            "ph": "pH falls: acute respiratory acidosis",
+            "o2": "Less fresh air reaches the alveoli, so alveolar PO2 falls",
+            "brain": "High carbon dioxide dilates the brain’s arterioles"
+          },
+          "variables": [
+            {
+              "id": "paco2",
+              "name": "PaCO2",
+              "answer": "up",
+              "chain": [
+                "co2"
+              ],
+              "why": "At a steady carbon dioxide production, PaCO2 rises as alveolar ventilation falls. The primary change is respiratory."
+            },
+            {
+              "id": "ph",
+              "name": "Blood pH",
+              "answer": "down",
+              "chain": [
+                "co2",
+                "h",
+                "ph"
+              ],
+              "why": "The bottom of the ratio has risen by half with bicarbonate barely changed, so the ratio falls to about 14 and pH to about 7.26."
+            },
+            {
+              "id": "pao2",
+              "name": "PaO2",
+              "answer": "down",
+              "chain": [
+                "o2"
+              ],
+              "why": "Hypoventilation brings in less fresh air, so oxygen in the alveoli, and then in arterial blood, falls as carbon dioxide rises."
+            },
+            {
+              "id": "flow",
+              "name": "Blood flow to her brain",
+              "answer": "up",
+              "chain": [
+                "co2",
+                "brain"
+              ],
+              "why": "Carbon dioxide dilates the brain’s arterioles, adding headache; together with the acidemia it causes drowsiness and confusion."
+            }
+          ]
+        },
+        {
+          "id": "compensated",
+          "label": "Five days later",
+          "prompt": "Five days on, with PaCO2 still 60 mm Hg, compared with the first hours.",
+          "start": "The high PCO2 keeps H+ production high in her tubule cells",
+          "steps": {
+            "secrete": "Tubule cells secrete more H+ and make more ammonium",
+            "nh4": "Ammonium excretion rises",
+            "new": "Each H+ excreted adds a new bicarbonate to the blood",
+            "hco3": "Plasma bicarbonate rises, to about 31 mmol/L",
+            "cl": "Plasma chloride falls as bicarbonate rises",
+            "ratio": "The ratio moves back toward 20",
+            "vent": "Her ventilation is still low"
+          },
+          "variables": [
+            {
+              "id": "hco3",
+              "name": "Plasma bicarbonate",
+              "answer": "up",
+              "chain": [
+                "secrete",
+                "new",
+                "hco3"
+              ],
+              "why": "Carbon dioxide diffuses into tubule cells and makes more H+ there. Over 3 to 5 days, extra H+ secretion and ammonium excretion add new bicarbonate: renal compensation."
+            },
+            {
+              "id": "ph",
+              "name": "Blood pH",
+              "answer": "up",
+              "chain": [
+                "secrete",
+                "new",
+                "hco3",
+                "ratio"
+              ],
+              "why": "With bicarbonate up and PaCO2 unchanged, the ratio rises from about 14 toward 17, and pH from 7.26 to about 7.34: partially compensated, still just below 7.35."
+            },
+            {
+              "id": "paco2",
+              "name": "PaCO2",
+              "answer": "none",
+              "chain": [
+                "vent"
+              ],
+              "why": "Compensation does not fix the cause. Her lungs still move too little air, so PaCO2 stays at 60 mm Hg until the infection clears."
+            },
+            {
+              "id": "nh4",
+              "name": "Ammonium in her urine",
+              "answer": "up",
+              "chain": [
+                "secrete",
+                "nh4"
+              ],
+              "why": "Ammonium production by the proximal tubule rises over days; it is the adjustable part of acid excretion and the main reason renal compensation is slow."
+            },
+            {
+              "id": "cl",
+              "name": "Plasma chloride",
+              "answer": "down",
+              "chain": [
+                "secrete",
+                "new",
+                "hco3",
+                "cl"
+              ],
+              "why": "Chloride and bicarbonate are the two main anions. As the kidneys add bicarbonate, they excrete more chloride, so the total negative charge stays matched to sodium."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fab-anxiety",
+      "title": "Ten minutes of panic breathing",
+      "topic": "acid-base-disorders",
+      "theme": "anxiety hyperventilation",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 2,
+      "misconception": "the kidneys correct a short bout of hyperventilation",
+      "setup": "A 22-year-old has a panic attack and breathes fast and deep for ten minutes. Her lips and fingers tingle. Predict her arterial blood now, compared with before the attack.",
+      "start": "Alveolar ventilation far exceeds carbon dioxide production",
+      "steps": {
+        "co2": "Carbon dioxide is blown off: PaCO2 falls",
+        "ph": "pH rises: acute respiratory alkalosis",
+        "buf": "Buffers release a little H+, lowering bicarbonate slightly",
+        "time": "Ten minutes is far too short for the kidneys to act",
+        "alb": "Albumin gives up H+ and binds more calcium",
+        "ca": "Ionized calcium falls",
+        "total": "Calcium only moves between its bound and free forms",
+        "nerve": "Nerves and muscles fire too easily"
+      },
+      "variables": [
+        {
+          "id": "paco2",
+          "name": "PaCO2",
+          "answer": "down",
+          "chain": [
+            "co2"
+          ],
+          "why": "Breathing out carbon dioxide faster than cells make it lowers PaCO2, to about 28 mm Hg in the notes’ example."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "up",
+          "chain": [
+            "co2",
+            "ph"
+          ],
+          "why": "The bottom of the ratio falls while bicarbonate barely moves, so the ratio rises above 20 and pH above 7.45."
+        },
+        {
+          "id": "hco3",
+          "name": "Plasma bicarbonate",
+          "answer": "down",
+          "chain": [
+            "co2",
+            "buf"
+          ],
+          "why": "Within minutes, buffers such as hemoglobin release a little H+, which uses up a little bicarbonate: from about 24 to 22 mmol/L, still in range."
+        },
+        {
+          "id": "renal",
+          "name": "Bicarbonate excreted by her kidneys",
+          "answer": "none",
+          "chain": [
+            "time"
+          ],
+          "why": "Renal compensation takes days to build. A panic attack is over in minutes, so the gas stays uncompensated."
+        },
+        {
+          "id": "ica",
+          "name": "Ionized calcium",
+          "answer": "down",
+          "chain": [
+            "co2",
+            "ph",
+            "alb",
+            "ca"
+          ],
+          "why": "In alkalemia, albumin gives up H+ and binds more calcium, so less calcium is free."
+        },
+        {
+          "id": "tca",
+          "name": "Total calcium",
+          "answer": "none",
+          "chain": [
+            "total"
+          ],
+          "why": "No calcium enters or leaves the plasma; some just moves from the free form to the albumin-bound form, so the total is unchanged."
+        },
+        {
+          "id": "tingle",
+          "name": "Tingling and muscle spasm",
+          "answer": "up",
+          "chain": [
+            "co2",
+            "ph",
+            "alb",
+            "ca",
+            "nerve"
+          ],
+          "why": "Low ionized calcium lets voltage-gated sodium channels open more easily, so nerves fire on their own: tingling around the mouth and fingers and cramping of the hands."
+        }
+      ]
+    },
+    {
+      "id": "fab-dka",
+      "title": "Diabetic ketoacidosis: the blood panel",
+      "topic": "acid-base-disorders",
+      "theme": "diabetic ketoacidosis",
+      "core": [
+        "homeostasis",
+        "interdependence",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "a normal or high plasma potassium means the body has plenty of potassium",
+      "setup": "A 19-year-old with type 1 diabetes misses insulin doses during a chest infection. Two days later her glucose is 540 mg/dL and her beta-hydroxybutyrate 6 mmol/L. Predict her blood and urine now, compared with before she fell ill.",
+      "start": "Insulin is nearly absent and glucagon is high",
+      "steps": {
+        "ket": "The liver turns a flood of fatty acids into ketone bodies faster than tissues burn them",
+        "h": "Ketone acids release H+, which uses up bicarbonate",
+        "gap": "Ketone anions take bicarbonate’s place: the anion gap rises",
+        "ph": "Blood pH falls",
+        "kuss": "The carotid bodies drive deep, fast (Kussmaul) breathing",
+        "co2": "PaCO2 falls",
+        "glu": "Blood glucose rises, raising plasma osmolality",
+        "shift": "Potassium leaves cells: fewer pumps working, and water drawn out of cells carries potassium with it",
+        "urine": "Glucose spills into the urine and holds water with it",
+        "loss": "Water, sodium and potassium are lost in large volumes of urine"
+      },
+      "variables": [
+        {
+          "id": "hco3",
+          "name": "Plasma bicarbonate",
+          "answer": "down",
+          "chain": [
+            "ket",
+            "h"
+          ],
+          "why": "Acetoacetate and beta-hydroxybutyrate release hydrogen ions, and bicarbonate is used up buffering them."
+        },
+        {
+          "id": "gap",
+          "name": "Anion gap",
+          "answer": "up",
+          "chain": [
+            "ket",
+            "h",
+            "gap"
+          ],
+          "why": "Each ketone acid leaves its anion behind, which the routine panel does not measure. Bicarbonate falls with chloride unchanged, so the gap rises: a high anion gap metabolic acidosis."
+        },
+        {
+          "id": "paco2",
+          "name": "PaCO2",
+          "answer": "down",
+          "chain": [
+            "ket",
+            "h",
+            "ph",
+            "kuss",
+            "co2"
+          ],
+          "why": "The falling pH drives the carotid bodies, and deep, sighing breathing lowers PaCO2 to partly restore the ratio. Expected PaCO2 is about 1.5 × HCO3 + 8."
+        },
+        {
+          "id": "posm",
+          "name": "Plasma osmolality",
+          "answer": "up",
+          "chain": [
+            "glu"
+          ],
+          "why": "Glucose at 540 mg/dL is 30 mmol/L of solute, against about 5 normally, and without insulin it stays outside most cells, so it raises osmolality and draws water out of cells."
+        },
+        {
+          "id": "shift",
+          "name": "Potassium moving from cells into the plasma",
+          "answer": "up",
+          "chain": [
+            "glu",
+            "shift"
+          ],
+          "why": "Without insulin, the sodium–potassium pumps move less potassium in, and the high osmolality pulls water, and potassium with it, out of cells. Plasma potassium is often normal or high at first."
+        },
+        {
+          "id": "total-k",
+          "name": "Total potassium in her body",
+          "answer": "down",
+          "chain": [
+            "glu",
+            "urine",
+            "loss"
+          ],
+          "why": "The glucose in her urine carries water, sodium and potassium out. The body’s store is being lost even while the plasma value looks normal or high, which is why potassium is given with insulin."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "glu",
+            "urine"
+          ],
+          "why": "Glucose above the kidneys’ transport maximum stays in the tubule and holds water with it, so she passes large volumes and becomes badly dehydrated."
+        }
+      ]
+    },
+    {
+      "id": "fab-dka-insulin",
+      "title": "Insulin treatment starts in DKA",
+      "topic": "acid-base-disorders",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "insulin alone fixes everything in DKA",
+      "setup": "The same patient with diabetic ketoacidosis is given IV fluids and insulin, but no potassium yet. Predict her state six hours later, compared with the untreated state.",
+      "start": "Insulin reaches her tissues",
+      "steps": {
+        "pump": "Sodium–potassium pumps speed up and cells take up glucose",
+        "kin": "Potassium moves back into cells",
+        "glu": "Blood glucose falls",
+        "lip": "Lipolysis is switched off",
+        "ket": "Ketone production falls, and tissues burn the ketone bodies already made",
+        "back": "Burning ketone anions takes up H+, restoring bicarbonate",
+        "gap": "The anion gap closes",
+        "ph": "Blood pH rises"
+      },
+      "variables": [
+        {
+          "id": "k",
+          "name": "Plasma potassium",
+          "answer": "down",
+          "chain": [
+            "pump",
+            "kin"
+          ],
+          "why": "Insulin drives potassium into cells within minutes. Because her total store is already low, plasma potassium can fall dangerously, which is why fluids, insulin and potassium are given together."
+        },
+        {
+          "id": "glu",
+          "name": "Blood glucose",
+          "answer": "down",
+          "chain": [
+            "pump",
+            "glu"
+          ],
+          "why": "Insulin lets muscle and fat cells take up glucose and stops the liver releasing it."
+        },
+        {
+          "id": "ket",
+          "name": "Ketone body production by her liver",
+          "answer": "down",
+          "chain": [
+            "lip",
+            "ket"
+          ],
+          "why": "Insulin switches off lipolysis, so fewer fatty acids reach the liver to be made into ketone bodies."
+        },
+        {
+          "id": "gap",
+          "name": "Anion gap",
+          "answer": "down",
+          "chain": [
+            "lip",
+            "ket",
+            "back",
+            "gap"
+          ],
+          "why": "As the ketone anions are burned they leave the unmeasured anion pool, and the bicarbonate restored takes their place, so the gap closes."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "up",
+          "chain": [
+            "lip",
+            "ket",
+            "back",
+            "ph"
+          ],
+          "why": "Bicarbonate rises back toward normal, the ratio rises, and pH climbs toward 7.4."
+        }
+      ]
+    },
+    {
+      "id": "fab-cardiac-arrest",
+      "title": "Cardiac arrest: two disorders at once",
+      "topic": "acid-base-disorders",
+      "core": [
+        "interdependence",
+        "homeostasis"
+      ],
+      "level": 3,
+      "misconception": "a blood gas can show only one disorder at a time",
+      "setup": "A man collapses in cardiac arrest. During resuscitation, chest compressions keep some blood moving, but he is breathing very poorly. Predict his arterial blood ten minutes in, compared with before the arrest.",
+      "start": "Ventilation and blood flow both fail",
+      "steps": {
+        "vent": "Almost no carbon dioxide is breathed out",
+        "co2": "PaCO2 rises: respiratory acidosis",
+        "flow": "Tissues get too little blood and oxygen",
+        "anaer": "Anaerobic metabolism releases H+ and lactate",
+        "hco3": "Bicarbonate is used up buffering the H+: metabolic acidosis",
+        "gap": "Lactate, an unmeasured anion, raises the anion gap",
+        "ph": "Both disorders push pH down together"
+      },
+      "variables": [
+        {
+          "id": "paco2",
+          "name": "PaCO2",
+          "answer": "up",
+          "chain": [
+            "vent",
+            "co2"
+          ],
+          "why": "Carbon dioxide is still made but not breathed out, so it builds up in the blood."
+        },
+        {
+          "id": "hco3",
+          "name": "Plasma bicarbonate",
+          "answer": "down",
+          "chain": [
+            "flow",
+            "anaer",
+            "hco3"
+          ],
+          "why": "Poorly perfused tissues release H+ and lactate faster than they can be cleared, and bicarbonate is used up buffering the H+."
+        },
+        {
+          "id": "lactate",
+          "name": "Blood lactate",
+          "answer": "up",
+          "chain": [
+            "flow",
+            "anaer"
+          ],
+          "why": "Lactate is made faster than the liver and other tissues can burn it; a high lactate is a sign of poor perfusion."
+        },
+        {
+          "id": "gap",
+          "name": "Anion gap",
+          "answer": "up",
+          "chain": [
+            "flow",
+            "anaer",
+            "hco3",
+            "gap"
+          ],
+          "why": "Lactate takes the place of the bicarbonate used up, so the gap rises."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "down",
+          "chain": [
+            "vent",
+            "co2",
+            "flow",
+            "anaer",
+            "hco3",
+            "ph"
+          ],
+          "why": "PaCO2 up and bicarbonate down have moved in opposite directions, which compensation never does. Each lowers the ratio, so together they drive pH far lower than either alone, to about 7.11."
+        }
+      ]
     }
   ]
 }

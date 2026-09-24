@@ -11180,6 +11180,1104 @@
    "front": "Stress vs urge incontinence: what fails?",
    "back": "Stress: the pelvic floor and external sphincter cannot resist a jump in abdominal pressure. Urge: the detrusor contracts when it should not.",
    "why": "Stress incontinence is treated first with pelvic floor training; urge incontinence with bladder training and drugs that relax the detrusor."
+  },
+  {
+    "id": "fab-icf-ecf-share",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "recall",
+    "compare": "ICF vs ECF composition",
+    "front": "ICF vs ECF: share of total body water, and volume in a 70 kg adult?",
+    "back": "ICF: about two thirds, about 28 L. ECF: about one third, about 14 L (10.5 L interstitial fluid, 3.5 L plasma).",
+    "why": "Total body water is about 60% of a young man’s mass (42 L); the 60–40–20 rule splits it into ICF at 40% of mass and ECF at 20%."
+  },
+  {
+    "id": "fab-icf-ecf-ions",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments",
+      "gradients"
+    ],
+    "level": "recall",
+    "compare": "ICF vs ECF composition",
+    "front": "ICF vs ECF: main cation and main anions?",
+    "back": "ICF: potassium (about 140 mmol/L), with phosphates and negatively charged proteins. ECF: sodium (about 140 mmol/L), with chloride, then bicarbonate.",
+    "why": "The sodium–potassium pump keeps moving sodium out and potassium in, and proteins made inside cells cannot leave, so the two fluids hold very different ions."
+  },
+  {
+    "id": "fab-icf-ecf-osm",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "apply",
+    "compare": "ICF vs ECF composition",
+    "front": "ICF vs ECF: which has the higher osmolality?",
+    "back": "Neither: both are about 290 mOsm/kg.",
+    "why": "Water crosses plasma membranes so easily that it moves until the total particle count inside every cell equals the count outside, whatever the solutes are."
+  },
+  {
+    "id": "fab-plasma-vs-isf",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "ICF vs ECF composition",
+    "front": "Plasma vs interstitial fluid: how do they differ?",
+    "back": "They hold almost the same ions, but plasma holds far more protein.",
+    "why": "Capillary walls let water and small solutes cross freely through the gaps between endothelial cells, but they hold back most plasma proteins."
+  },
+  {
+    "id": "fab-solutes-set-volume",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments",
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "Which solute sets the volume of the ECF, and which the volume of the ICF?",
+    "back": "Sodium, held outside cells, sets ECF volume. Potassium and the other solutes trapped inside cells set ICF volume.",
+    "why": "Water follows the solutes that a barrier holds back, so each compartment’s volume follows the solute that cannot leave it."
+  },
+  {
+    "id": "fab-imb-hypovolemia",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "apply",
+    "compare": "The four fluid imbalances",
+    "front": "Hypovolemia: what is lost, and what happens to plasma osmolality and cell size?",
+    "back": "Salt and water lost together; plasma osmolality stays normal; cells are unchanged. Only the ECF shrinks.",
+    "why": "An isotonic loss (bleeding, most diarrhea, burns, diuretics) leaves no osmotic gradient across plasma membranes, so no water leaves cells. The danger is low blood pressure and shock."
+  },
+  {
+    "id": "fab-imb-dehydration",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "apply",
+    "compare": "The four fluid imbalances",
+    "front": "Dehydration, strictly: what is lost, and what happens to plasma osmolality and cell size?",
+    "back": "More water lost than solute; plasma osmolality rises; water leaves cells, so both the ICF and the ECF shrink.",
+    "why": "The concentrated ECF draws water out of cells by osmosis. Shrinking brain cells explain the confusion of severe dehydration."
+  },
+  {
+    "id": "fab-imb-overhydration",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "apply",
+    "compare": "The four fluid imbalances",
+    "front": "Overhydration: what is gained, and what happens to plasma osmolality and cell size?",
+    "back": "More water gained than solute; plasma osmolality falls; water enters cells and all compartments swell. The danger is brain swelling: seizures.",
+    "why": "The dilute ECF drives water into cells. Inside the rigid skull, swelling brain cells raise the pressure quickly, which is water intoxication."
+  },
+  {
+    "id": "fab-imb-hypervolemia",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "apply",
+    "compare": "The four fluid imbalances",
+    "front": "Hypervolemia: what is gained, and what happens to plasma osmolality and cell size?",
+    "back": "Salt and water kept together; osmolality normal; cells unchanged. The extra ECF causes edema, including in the lungs.",
+    "why": "With osmolality unchanged no water enters cells, but the extra ECF raises capillary pressure, so fluid filters into the tissues faster than lymphatics drain it."
+  },
+  {
+    "id": "fab-dehydration-exam",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "recall",
+    "front": "For your exam: how do many nursing texts use the word “dehydration”?",
+    "back": "For any loss of body fluid, sometimes split into “isotonic dehydration” and “hypertonic dehydration”. Read how the question uses it.",
+    "why": "The distinction that matters is whether plasma osmolality changes, because only a change in osmolality moves water out of cells; an isotonic loss is hypovolemia in the strict sense."
+  },
+  {
+    "id": "fab-water-in-out",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "recall",
+    "front": "Typical daily water intake and output for an adult?",
+    "back": "In: drinks 1.5, food 0.75, metabolic water 0.25 = 2.5 L. Out: urine 1.5, insensible loss 0.7, sweat 0.1, feces 0.2 = 2.5 L.",
+    "why": "Body water stays steady because intake matches output: mass balance applied to water."
+  },
+  {
+    "id": "fab-controlled-routes",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "mass-balance",
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Which water routes are adjusted to keep water in balance?",
+    "back": "Only two: drinking, through thirst, and urine volume, through ADH.",
+    "why": "Insensible loss follows fever, breathing and dry air; sweat follows body temperature; metabolic water follows fuel use. None of them responds to how much water you have."
+  },
+  {
+    "id": "fab-obligatory-loss",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "Why do you lose water every day even when you drink nothing?",
+    "back": "Urine has a floor of about 0.5 L a day, and insensible loss, feces and sweat add more: over a liter a day.",
+    "why": "You must excrete about 600 mOsm of waste solute, and urine cannot be more concentrated than about 1,200 mOsm/L, so the kidneys can slow water loss but never stop it."
+  },
+  {
+    "id": "fab-adh-thirst-threshold",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "ADH vs thirst: which switches on at the lower plasma osmolality?",
+    "back": "ADH, which starts rising at about 280 to 285 mOsm/kg; thirst switches on a little higher.",
+    "why": "Small everyday rises are corrected by the kidneys saving water before you feel thirsty. Larger rises bring in thirst, the only response that can replace water already lost."
+  },
+  {
+    "id": "fab-volume-wins",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "After a large bleed, is ADH high or low if plasma osmolality is normal or low?",
+    "back": "High. A fall in blood volume of roughly 5 to 10% overrides concentration.",
+    "why": "Stretch-sensitive sensory receptors in the atria, large veins and arteries drive ADH steeply once volume falls past that threshold, so the kidneys keep water even as the plasma becomes dilute."
+  },
+  {
+    "id": "fab-thirst-off",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Why does thirst switch off within minutes of drinking, before the water is absorbed?",
+    "back": "Sensory receptors in the mouth and throat report the swallowed water to the hypothalamus.",
+    "why": "That early signal stops you from drinking far more than you need while the first gulps are still in your stomach."
+  },
+  {
+    "id": "fab-saline-vs-d5w",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "analyze",
+    "front": "1 L of 0.9% saline vs 1 L of D5W: how much of each stays in the plasma?",
+    "back": "Saline: about 250 mL (all 1,000 mL stays in the ECF). D5W: about 83 mL (two thirds goes into cells).",
+    "why": "Saline’s sodium stays outside cells, so the liter stays in the ECF, a quarter of it in plasma. Cells use D5W’s glucose, leaving free water that spreads through total body water."
+  },
+  {
+    "id": "fab-water-rate",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "mass-balance",
+      "homeostasis"
+    ],
+    "level": "analyze",
+    "front": "Why can drinking 4 L in an hour cause water intoxication even though the ADH loop works?",
+    "back": "Healthy kidneys can excrete only about 0.7 to 1 L of water an hour, so the extra water stays in cells for hours.",
+    "why": "The loop switches ADH off and the urine becomes dilute, but the rate of drinking beats the kidneys’ top speed, and brain cells swell."
+  },
+  {
+    "id": "fab-fluid-shift",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "compartments"
+    ],
+    "level": "apply",
+    "front": "How can a patient with a large burn be hypovolemic and swollen at the same time?",
+    "back": "Leaky capillaries move plasma fluid and protein into the tissues: a fluid shift. The fluid is still in the body but no longer in the blood.",
+    "why": "A fluid shift changes where fluid is without changing the total, so plasma volume falls while the interstitial fluid grows."
+  },
+  {
+    "id": "fab-k-rmp",
+    "topic": "electrolyte-balance",
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
+    "level": "apply",
+    "compare": "Hypokalemia vs hyperkalemia",
+    "front": "Hypokalemia vs hyperkalemia: effect on the resting potential?",
+    "back": "Hypokalemia (below 3.5 mmol/L): more negative, hyperpolarized. Hyperkalemia (above 5.0 mmol/L): less negative, depolarized toward threshold.",
+    "why": "Potassium leaking out of cells sets the resting potential. Less potassium outside means more leaks out; more outside means less leaks out."
+  },
+  {
+    "id": "fab-k-causes",
+    "topic": "electrolyte-balance",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "recall",
+    "compare": "Hypokalemia vs hyperkalemia",
+    "front": "Hypokalemia vs hyperkalemia: common causes?",
+    "back": "Hypo: vomiting, diarrhea, loop and thiazide diuretics, too much aldosterone, insulin treatment. Hyper: kidney failure, ACE inhibitors, potassium-sparing diuretics, adrenal insufficiency, cell damage, acidosis.",
+    "why": "Potassium falls when it is lost from the gut or kidneys or pushed into cells, and rises when the kidneys cannot secrete it or cells release it."
+  },
+  {
+    "id": "fab-k-muscle",
+    "topic": "electrolyte-balance",
+    "core": [
+      "gradients"
+    ],
+    "level": "analyze",
+    "compare": "Hypokalemia vs hyperkalemia",
+    "front": "Hypokalemia vs hyperkalemia: effect on skeletal muscle?",
+    "back": "Both cause weakness and, if severe, paralysis.",
+    "why": "In hypokalemia fibers rest further from threshold and are harder to excite. In a large, lasting hyperkalemia the partial depolarization inactivates voltage-gated sodium channels, so action potentials become smaller and cells harder to excite."
+  },
+  {
+    "id": "fab-k-heart-hypo",
+    "topic": "electrolyte-balance",
+    "core": [
+      "gradients"
+    ],
+    "level": "analyze",
+    "compare": "Hypokalemia vs hyperkalemia",
+    "front": "If hypokalemia makes muscle harder to excite, how does it cause arrhythmias?",
+    "back": "Heart cells repolarize more slowly (flattened T wave, U wave) and can fire extra beats.",
+    "why": "Low potassium outside also lets less current through some of the heart cells’ potassium channels, which slows repolarization. The risk is worse in people taking digoxin."
+  },
+  {
+    "id": "fab-k-ecg",
+    "topic": "electrolyte-balance",
+    "core": [
+      "gradients"
+    ],
+    "level": "recall",
+    "compare": "Hypokalemia vs hyperkalemia",
+    "front": "Hypokalemia vs hyperkalemia: ECG changes?",
+    "back": "Hypokalemia: flattened T waves and an extra U wave after the T wave. Hyperkalemia: tall, peaked T waves, and later a wide QRS complex.",
+    "why": "Low potassium slows repolarization. High potassium speeds it, peaking the T wave, and then holds cells partly depolarized, inactivating sodium channels and slowing conduction."
+  },
+  {
+    "id": "fab-k-treatment",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "compare": "Hypokalemia vs hyperkalemia",
+    "front": "Hypokalemia vs hyperkalemia: main treatment?",
+    "back": "Hypo: replace potassium, by mouth or slowly by vein. Hyper: calcium by vein to protect the heart, insulin with glucose to shift potassium into cells, then remove it (diuretics, binders, dialysis).",
+    "why": "Hyperkalemia is treated in order of danger: protect the heart first, then move potassium out of the ECF, then get it out of the body."
+  },
+  {
+    "id": "fab-iv-calcium",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "analyze",
+    "front": "Does IV calcium lower plasma potassium in hyperkalemia?",
+    "back": "No. It raises the threshold of heart muscle cells, restoring the gap between rest and threshold for 30 to 60 minutes.",
+    "why": "Calcium buys time. Insulin and glucose shift potassium into cells, and the kidneys, binders or dialysis remove it."
+  },
+  {
+    "id": "fab-k-inside",
+    "topic": "electrolyte-balance",
+    "core": [
+      "compartments",
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "Where is the body’s potassium, and why do small shifts matter?",
+    "back": "About 98% is inside cells; the whole ECF holds only about 60 mmol. Moving 1% of cell potassium (35 mmol) into 14 L of ECF raises plasma potassium by about 2.5 mmol/L.",
+    "why": "Because the ECF holds so little, the plasma value reports only a sliver of the total and changes fast when potassium moves between cells and ECF."
+  },
+  {
+    "id": "fab-k-into-cells",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "recall",
+    "front": "Name three things that move potassium into cells.",
+    "back": "Insulin, epinephrine (through beta-2 receptor proteins) and alkalosis.",
+    "why": "Insulin and epinephrine stimulate sodium–potassium pumps, which is why the insulin released after a meal keeps its potassium from raising plasma potassium sharply."
+  },
+  {
+    "id": "fab-k-acid-shift",
+    "topic": "electrolyte-balance",
+    "core": [
+      "compartments"
+    ],
+    "level": "analyze",
+    "front": "Does every acidosis shift potassium out of cells equally?",
+    "back": "No. The shift is largest with a mineral acid, such as hydrochloric acid; lactic acid and ketone bodies shift much less.",
+    "why": "One reason: an organic acid’s anion can enter cells along with its H+, so less potassium has to leave in exchange. The high plasma potassium of untreated type 1 diabetes comes mainly from the lack of insulin and the high glucose drawing water, and potassium with it, out of cells."
+  },
+  {
+    "id": "fab-k-secretion",
+    "topic": "electrolyte-balance",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "recall",
+    "front": "What three things raise potassium secretion by principal cells?",
+    "back": "A high plasma potassium (directly and through aldosterone), more sodium and fluid reaching the principal cells, and alkalosis.",
+    "why": "Aldosterone adds sodium channels, potassium channels and pumps; more sodium entering makes the lumen more negative and faster flow carries potassium away, which is why loop and thiazide diuretics cause potassium loss."
+  },
+  {
+    "id": "fab-hemolysis-k",
+    "topic": "electrolyte-balance",
+    "core": [
+      "compartments"
+    ],
+    "level": "apply",
+    "front": "Why can a lab report a high potassium in a well patient whose plasma potassium is normal?",
+    "back": "Red blood cells burst in the tube (a hemolyzed sample) and release their potassium.",
+    "why": "A sample drawn through a small needle, shaken or left standing can hemolyze, so a surprising result is repeated before it is treated."
+  },
+  {
+    "id": "fab-na-amount-conc",
+    "topic": "electrolyte-balance",
+    "core": [
+      "mass-balance",
+      "homeostasis"
+    ],
+    "level": "analyze",
+    "front": "Amount of sodium vs concentration of sodium: what does each reflect?",
+    "back": "The amount sets ECF volume (RAAS, aldosterone, ANP, pressure natriuresis). The concentration reflects water balance (ADH and thirst).",
+    "why": "Sodium held outside cells holds water with it, so its amount sets volume; its concentration changes when water is added or removed. Heart failure can give too much total sodium with a low concentration."
+  },
+  {
+    "id": "fab-na-hypo-hyper",
+    "topic": "electrolyte-balance",
+    "core": [
+      "compartments"
+    ],
+    "level": "apply",
+    "compare": "Hyponatremia vs hypernatremia",
+    "front": "Hyponatremia vs hypernatremia: underlying problem and water movement?",
+    "back": "Hypo (below 135): too much water for the sodium; water enters cells and brain cells swell. Hyper (above 145): too little water for the sodium; water leaves cells and brain cells shrink.",
+    "why": "Plasma sodium concentration tracks plasma osmolality, and water moves across plasma membranes toward the more concentrated side."
+  },
+  {
+    "id": "fab-na-correction",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "analyze",
+    "compare": "Hyponatremia vs hypernatremia",
+    "front": "Hyponatremia vs hypernatremia: danger of correcting a chronic case too fast?",
+    "back": "Chronic hyponatremia: osmotic demyelination (raise by no more than about 8 to 10 mmol/L in the first 24 hours). Chronic hypernatremia: brain swelling, shown mainly in children (lower by no more than about 10 mmol/L a day).",
+    "why": "Over about two days, brain cells adapt by losing or gaining solute. A fast correction then moves water out of or into the adapted cells."
+  },
+  {
+    "id": "fab-na-causes",
+    "topic": "electrolyte-balance",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "recall",
+    "compare": "Hyponatremia vs hypernatremia",
+    "front": "Hyponatremia vs hypernatremia: typical causes?",
+    "back": "Hypo: SIADH, thiazides, replacing losses with plain water, heart failure. Hyper: no access to water, diabetes insipidus, fever and sweating.",
+    "why": "Hyponatremia is almost always water kept; hypernatremia almost always water lost without being replaced."
+  },
+  {
+    "id": "fab-hypernatremia-who",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Who gets hypernatremia, and why is it rare in everyone else?",
+    "back": "People who cannot reach water or feel thirst: infants, frail older adults, people who are unconscious or sedated.",
+    "why": "Anyone who can feel thirst and reach water drinks long before the sodium climbs far."
+  },
+  {
+    "id": "fab-osm-estimate",
+    "topic": "electrolyte-balance",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "How do you estimate plasma osmolality from a blood panel?",
+    "back": "2 × Na + glucose ÷ 18 + urea nitrogen ÷ 2.8, all in the units a US lab reports. Normally about 290 mOsm/kg.",
+    "why": "Each sodium ion is matched by an anion, so sodium counts twice; dividing converts glucose and urea nitrogen from mg/dL to mmol/L."
+  },
+  {
+    "id": "fab-glucose-na",
+    "topic": "electrolyte-balance",
+    "core": [
+      "compartments"
+    ],
+    "level": "analyze",
+    "front": "Why does a very high blood glucose lower the measured sodium?",
+    "back": "Without insulin, glucose stays outside most cells and draws water out of them, and that water dilutes the plasma sodium.",
+    "why": "Only solutes that stay outside cells set tonicity. Urea crosses cell membranes, so a high urea raises osmolality without moving water."
+  },
+  {
+    "id": "fab-ca-forms",
+    "topic": "electrolyte-balance",
+    "core": [
+      "compartments"
+    ],
+    "level": "recall",
+    "front": "In what three forms is plasma calcium carried, and which one acts on cells?",
+    "back": "About half ionized (free), about 40% bound to proteins (mainly albumin), about 10% bound to small anions. Only ionized calcium acts, and it is what the parathyroid glands sense.",
+    "why": "Only free calcium crosses membranes and affects nerves and muscle, so a low albumin can lower total calcium without changing the active part."
+  },
+  {
+    "id": "fab-ca-alkalosis",
+    "topic": "electrolyte-balance",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "Why does a panic attack cause tingling around the mouth when total calcium is normal?",
+    "back": "Hyperventilation makes the blood alkaline; albumin gives up hydrogen ions and binds more calcium, so ionized calcium falls.",
+    "why": "Total calcium is unchanged; calcium only moves from the free form to the bound form, but low free calcium makes nerves fire too easily."
+  },
+  {
+    "id": "fab-ca-hypo-hyper",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "compare": "Hypocalcemia vs hypercalcemia",
+    "front": "Hypocalcemia vs hypercalcemia: nerve and muscle excitability and ECG?",
+    "back": "Hypo: overexcitable (tingling, cramps, tetany, Chvostek and Trousseau signs), longer QT. Hyper: less excitable (tiredness, weakness, constipation, confusion), kidney stones, shorter QT.",
+    "why": "Low extracellular calcium lets voltage-gated sodium channels open more easily; high calcium does the reverse."
+  },
+  {
+    "id": "fab-ca-causes",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "recall",
+    "compare": "Hypocalcemia vs hypercalcemia",
+    "front": "Hypocalcemia vs hypercalcemia: common causes?",
+    "back": "Hypo: hypoparathyroidism, vitamin D deficiency, kidney failure, low magnesium. Hyper: hyperparathyroidism, cancer that spreads to bone or releases a PTH-like protein.",
+    "why": "PTH and calcitriol are the main regulators, so disorders of the parathyroid glands, vitamin D and the kidneys, which make calcitriol, move calcium most."
+  },
+  {
+    "id": "fab-phos-calcium",
+    "topic": "electrolyte-balance",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "Why does a high phosphate lower ionized calcium?",
+    "back": "Calcium and phosphate together can reach a level at which calcium phosphate forms, so when phosphate rises, free calcium falls.",
+    "why": "This is why kidney failure, which keeps phosphate in, causes tingling and tetany, and over months calcium phosphate deposits in vessels."
+  },
+  {
+    "id": "fab-refeeding",
+    "topic": "electrolyte-balance",
+    "core": [
+      "mass-balance",
+      "energy"
+    ],
+    "level": "analyze",
+    "front": "What is refeeding hypophosphatemia, and why is it dangerous?",
+    "back": "When a starved person is fed, insulin drives glucose and phosphate into cells, and plasma phosphate can crash.",
+    "why": "Without phosphate, cells cannot make enough ATP: muscles including the diaphragm weaken, red blood cells stiffen and burst, and less 2,3-BPG makes hemoglobin hold oxygen more tightly."
+  },
+  {
+    "id": "fab-vomit-chloride",
+    "topic": "electrolyte-balance",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "Why does prolonged vomiting cause a low chloride and a high bicarbonate?",
+    "back": "Vomit removes hydrochloric acid. Each H+ the stomach secreted left a bicarbonate in the blood (the alkaline tide), and with the acid vomited that bicarbonate is never used up; low volume and low chloride then make the kidneys keep it.",
+    "why": "Chloride and bicarbonate are the two main anions of plasma, so when one falls the other tends to rise, and the blood becomes alkaline."
+  },
+  {
+    "id": "fab-saline-chloride",
+    "topic": "electrolyte-balance",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "Why can large volumes of 0.9% saline make the blood mildly acidic?",
+    "back": "Saline holds 154 mmol/L of chloride, half again as much as plasma, so plasma chloride rises and bicarbonate falls.",
+    "why": "Plasma must keep its charges balanced; extra chloride takes bicarbonate’s place. Balanced fluids such as lactated Ringer’s have a chloride closer to plasma."
+  },
+  {
+    "id": "fab-mg-potassium",
+    "topic": "electrolyte-balance",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "Why does a low potassium not correct until magnesium is replaced?",
+    "back": "Without magnesium, principal cells’ potassium channels leak potassium into the urine, so potassium given by mouth is lost.",
+    "why": "Magnesium inside principal cells normally limits the flow of potassium through those channels."
+  },
+  {
+    "id": "fab-mg-calcium",
+    "topic": "electrolyte-balance",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "Why does a low magnesium cause a low calcium?",
+    "back": "The parathyroid glands need magnesium to release PTH, and target tissues need it to respond.",
+    "why": "Without PTH action, calcium falls, and it recovers only once magnesium is restored."
+  },
+  {
+    "id": "fab-mg-reflexes",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Why do nurses check tendon reflexes during an IV magnesium infusion?",
+    "back": "Reflexes disappear first as magnesium climbs too high, before weakness, low blood pressure, slow breathing and cardiac arrest.",
+    "why": "High magnesium depresses nerves and muscles. IV calcium counters it."
+  },
+  {
+    "id": "fab-loop-mg",
+    "topic": "electrolyte-balance",
+    "core": [
+      "structure-function"
+    ],
+    "level": "apply",
+    "front": "Why do loop diuretics cause magnesium loss?",
+    "back": "Most filtered magnesium is reabsorbed between the cells of the thick ascending limb, pushed by the positive lumen that NKCC2 creates; blocking NKCC2 removes that push.",
+    "why": "The same block that causes sodium, chloride and water loss removes the driving force for magnesium reabsorption."
+  },
+  {
+    "id": "fab-volatile-fixed",
+    "topic": "acid-base-regulation",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "recall",
+    "compare": "Volatile vs fixed acids",
+    "front": "Volatile vs fixed acid: how much per day, and which organ removes each?",
+    "back": "Volatile (carbonic acid, from carbon dioxide): about 13,000 to 20,000 mmol a day, removed by the lungs in minutes. Fixed: about 50 to 100 mmol a day, removed by the kidneys over hours to days.",
+    "why": "Carbonic acid can turn back into a gas and be breathed out; a fixed acid cannot, so it stays until the kidneys excrete it or tissues burn it."
+  },
+  {
+    "id": "fab-fixed-sources",
+    "topic": "acid-base-regulation",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "recall",
+    "compare": "Volatile vs fixed acids",
+    "front": "What are the main sources of fixed acid, and what lowers the load?",
+    "back": "Sulfuric acid from sulfur-containing amino acids (the largest share), phosphoric acid and unburned organic acids. Fruits and vegetables lower it.",
+    "why": "Plant foods contain salts of organic acids, such as citrate; burning those anions takes up H+ and leaves bicarbonate behind."
+  },
+  {
+    "id": "fab-lactate-ketones",
+    "topic": "acid-base-regulation",
+    "core": [
+      "energy",
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "Why do lactic acid and ketone bodies not normally need the kidneys?",
+    "back": "Tissues burn them almost as fast as they are made, which takes the H+ back up and restores bicarbonate.",
+    "why": "Only when production far outruns use, as in shock or untreated type 1 diabetes, do they overwhelm the buffers."
+  },
+  {
+    "id": "fab-buffers-site",
+    "topic": "acid-base-regulation",
+    "core": [
+      "compartments"
+    ],
+    "level": "recall",
+    "compare": "Bicarbonate vs phosphate vs protein buffers",
+    "front": "Bicarbonate vs phosphate vs protein buffer: main site?",
+    "back": "Bicarbonate: plasma and interstitial fluid. Phosphate: inside cells and in urine. Protein: inside cells, and hemoglobin in red blood cells.",
+    "why": "Plasma holds only about 1 mmol/L of phosphate, so it buffers little there; it is concentrated inside cells and in urine."
+  },
+  {
+    "id": "fab-buffers-adjust",
+    "topic": "acid-base-regulation",
+    "core": [
+      "interdependence"
+    ],
+    "level": "apply",
+    "compare": "Bicarbonate vs phosphate vs protein buffers",
+    "front": "Why does the bicarbonate buffer matter more than its chemistry suggests?",
+    "back": "Its partners can be adjusted: the lungs remove carbon dioxide and the kidneys adjust bicarbonate.",
+    "why": "A buffer whose ends can be topped up or drained keeps working long after a closed buffer would be used up."
+  },
+  {
+    "id": "fab-main-icf-buffer",
+    "topic": "acid-base-regulation",
+    "core": [
+      "compartments"
+    ],
+    "level": "recall",
+    "compare": "Bicarbonate vs phosphate vs protein buffers",
+    "front": "What is the main buffer inside cells?",
+    "back": "Proteins and phosphates buffer together, and proteins supply the larger share. Many textbooks say phosphate: give your course textbook’s answer.",
+    "why": "Most of your protein is inside your cells, which makes intracellular proteins the largest buffer store in the body."
+  },
+  {
+    "id": "fab-buffer-no-removal",
+    "topic": "acid-base-regulation",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "apply",
+    "compare": "Buffers vs lungs vs kidneys",
+    "front": "Do chemical buffers remove acid from the body?",
+    "back": "No. They take up H+ within seconds but only hold it until the lungs or kidneys deal with it.",
+    "why": "A buffer blunts a change in pH by binding H+; once it is used up, it cannot bind more."
+  },
+  {
+    "id": "fab-three-lines",
+    "topic": "acid-base-regulation",
+    "core": [
+      "interdependence"
+    ],
+    "level": "recall",
+    "compare": "Buffers vs lungs vs kidneys",
+    "front": "Buffers vs lungs vs kidneys: how fast, and what does each change?",
+    "back": "Buffers: seconds, how many H+ are free. Lungs: minutes (full effect 12 to 24 hours), PCO2. Kidneys: hours (full effect 3 to 5 days), bicarbonate.",
+    "why": "Each works on a different timescale, and only the lungs and kidneys remove acid, each a different kind."
+  },
+  {
+    "id": "fab-lungs-kidneys-limits",
+    "topic": "acid-base-regulation",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "compare": "Buffers vs lungs vs kidneys",
+    "front": "Lungs vs kidneys: main limit of each in pH control?",
+    "back": "Lungs: cannot remove fixed acid, and slowing breathing lowers PO2. Kidneys: slow, and they need to be working.",
+    "why": "The lungs restore the ratio but not the bicarbonate; the kidneys cannot excrete carbon dioxide. Each covers for the other."
+  },
+  {
+    "id": "fab-hh",
+    "topic": "acid-base-regulation",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "recall",
+    "front": "According to the Henderson–Hasselbalch equation, what does blood pH depend on?",
+    "back": "The ratio of bicarbonate to dissolved carbon dioxide: pH = 6.1 + log(HCO3− ÷ (0.03 × PCO2)). Normally 24 ÷ 1.2 = 20, so pH is 7.4.",
+    "why": "Because 6.1 never changes, pH follows the ratio, not the amount of either partner."
+  },
+  {
+    "id": "fab-ratio-rule",
+    "topic": "acid-base-regulation",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "How much does pH change if the bicarbonate to carbon dioxide ratio halves or doubles?",
+    "back": "Halving lowers pH by 0.3; doubling raises it by 0.3.",
+    "why": "log 2 is about 0.3, the same “0.3 means twofold” rule as for any pH change."
+  },
+  {
+    "id": "fab-resp-limits",
+    "topic": "acid-base-regulation",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Why is respiratory control of pH incomplete?",
+    "back": "As PCO2 falls, the central chemoreceptors sense the change in the brain’s fluid and act as a brake, so pH moves toward normal but not all the way.",
+    "why": "The lungs also cannot remove fixed acid, and slowing breathing to correct alkalosis lets PO2 fall until the carotid bodies drive breathing back up."
+  },
+  {
+    "id": "fab-renal-three",
+    "topic": "acid-base-regulation",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "recall",
+    "front": "What are the three parts of renal control of pH?",
+    "back": "Reclaim filtered bicarbonate; excrete the day’s fixed acid as H+ on urinary buffers; make new bicarbonate to replace what the acid used.",
+    "why": "All three rely on hydrogen ion secretion: carbonic anhydrase makes H+ and HCO3− inside the tubule cell, and the H+ is sent into the lumen."
+  },
+  {
+    "id": "fab-reclaim-same-ion",
+    "topic": "acid-base-regulation",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "analyze",
+    "front": "Is the bicarbonate “reabsorbed” in the proximal tubule the same ion that was filtered?",
+    "back": "No. The filtered ion becomes carbon dioxide in the lumen; a new one is made in the cell and sent to the blood.",
+    "why": "The effect is the same as moving it across, and no acid is excreted: the secreted H+ ends up in a water molecule."
+  },
+  {
+    "id": "fab-new-bicarb",
+    "topic": "acid-base-regulation",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "What makes bicarbonate “new”?",
+    "back": "It is made in the tubule cell for each H+ that leaves in the urine, replacing bicarbonate a fixed acid used up, rather than reclaiming filtered bicarbonate.",
+    "why": "Every H+ excreted as titratable acid or ammonium adds one new bicarbonate to the blood."
+  },
+  {
+    "id": "fab-urine-buffers",
+    "topic": "acid-base-regulation",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "apply",
+    "front": "Titratable acid vs ammonium: how much acid does each carry, and which can the kidneys turn up?",
+    "back": "Titratable acid (on phosphate): about 20 to 30 mmol a day, limited by filtered phosphate. Ammonium: about 30 to 50 mmol a day, rising five- to tenfold over 3 to 5 days of acid load.",
+    "why": "Proximal tubule cells break down more glutamine when acid persists; the slow ramp-up of ammonium is the main reason the kidneys are slow."
+  },
+  {
+    "id": "fab-free-h",
+    "topic": "acid-base-regulation",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "analyze",
+    "front": "Why can the kidneys not excrete the day’s acid as free H+?",
+    "back": "At the lowest urine pH, about 4.5, a liter holds only about 0.03 mmol of free H+, so 70 mmol would need over 2,000 L of urine.",
+    "why": "Proton pumps cannot push urine pH below about 4.5, so almost all excreted H+ is carried on phosphate and ammonia."
+  },
+  {
+    "id": "fab-type-a-b",
+    "topic": "acid-base-regulation",
+    "core": [
+      "structure-function"
+    ],
+    "level": "recall",
+    "compare": "Type A vs type B intercalated cells",
+    "front": "Type A vs type B intercalated cells: what does each secrete into the urine, and when is each more active?",
+    "back": "Type A: H+ (by proton pumps), sending new bicarbonate to the blood; more active when blood is too acidic. Type B: bicarbonate (in exchange for chloride), sending H+ to the blood; more active when blood is too alkaline.",
+    "why": "The two cells are mirror images: each sends its acid or base one way and the partner ion the other."
+  },
+  {
+    "id": "fab-renal-triggers",
+    "topic": "acid-base-regulation",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "level": "apply",
+    "front": "What turns up H+ secretion by the kidneys?",
+    "back": "Acid in the tubule cells, a high PCO2, a low plasma potassium, and aldosterone (angiotensin II speeds the proximal tubule’s sodium–hydrogen exchanger).",
+    "why": "A high PCO2 diffuses into tubule cells and makes more H+ there, which is how the kidneys compensate when breathing is the problem."
+  },
+  {
+    "id": "fab-acetazolamide",
+    "topic": "acid-base-regulation",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "How does acetazolamide change blood and urine?",
+    "back": "It blocks carbonic anhydrase in the proximal tubule, so filtered bicarbonate leaves in the urine: urine pH up, blood bicarbonate and pH down.",
+    "why": "Without the enzyme the tubule cell makes little H+ to secrete, and filtered bicarbonate is not turned into carbon dioxide in the lumen, so it cannot be reclaimed."
+  },
+  {
+    "id": "fab-abg-normals",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "recall",
+    "front": "Normal ABG values for pH, PaCO2 and HCO3−?",
+    "back": "pH 7.35 to 7.45; PaCO2 35 to 45 mm Hg; HCO3− 22 to 26 mmol/L.",
+    "why": "PaCO2 is the respiratory number, set by ventilation; HCO3− is the metabolic number, set by the kidneys and fixed acids."
+  },
+  {
+    "id": "fab-dis-resp-acid",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "level": "apply",
+    "compare": "The four acid–base disorders",
+    "front": "Respiratory acidosis: primary change, cause, compensation, common causes?",
+    "back": "PaCO2 up (above 45) from hypoventilation; the kidneys raise HCO3− over 3 to 5 days. Causes: opioid or sedative overdose, COPD, weak breathing muscles, airway obstruction.",
+    "why": "Carbon dioxide builds up when alveolar ventilation falls below its production; the lungs cannot fix a problem they are causing, so the kidneys compensate."
+  },
+  {
+    "id": "fab-dis-resp-alk",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "level": "apply",
+    "compare": "The four acid–base disorders",
+    "front": "Respiratory alkalosis: primary change, cause, compensation, common causes?",
+    "back": "PaCO2 down (below 35) from hyperventilation; the kidneys lower HCO3− over 3 to 5 days. Causes: anxiety, pain, fever, high altitude, early pneumonia or asthma.",
+    "why": "Breathing out carbon dioxide faster than it is made lowers PaCO2; the kidneys respond by secreting less H+ and letting type B cells excrete bicarbonate."
+  },
+  {
+    "id": "fab-dis-met-acid",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "level": "apply",
+    "compare": "The four acid–base disorders",
+    "front": "Metabolic acidosis: primary change, cause, compensation, common causes?",
+    "back": "HCO3− down (below 22) from fixed acid gained or bicarbonate lost; the lungs lower PaCO2 within minutes to hours. Causes: diabetic ketoacidosis, lactic acid in shock, kidney failure, severe diarrhea.",
+    "why": "Bicarbonate is used up buffering an added acid or lost in stool or urine; the carotid bodies sense the fall in pH and speed breathing."
+  },
+  {
+    "id": "fab-dis-met-alk",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "level": "apply",
+    "compare": "The four acid–base disorders",
+    "front": "Metabolic alkalosis: primary change, cause, compensation, common causes?",
+    "back": "HCO3− up (above 26) from acid lost or bicarbonate gained; the lungs raise PaCO2 by slowing breathing. Causes: vomiting, stomach suction, diuretics, excess aldosterone.",
+    "why": "Compensation is limited because slower breathing lowers PaO2, so PaCO2 rarely climbs above about 55 mm Hg."
+  },
+  {
+    "id": "fab-dis-signs",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "recall",
+    "compare": "The four acid–base disorders",
+    "front": "Acidosis vs alkalosis: typical signs?",
+    "back": "Acidosis mainly depresses the nervous system: drowsiness, confusion, coma (with deep, fast breathing in metabolic acidosis). Alkalosis makes nerves and muscles too excitable: tingling, cramps, spasms.",
+    "why": "In alkalemia albumin binds more calcium, so ionized calcium falls and nerves fire too easily."
+  },
+  {
+    "id": "fab-rome",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "How do pH and the primary number move in respiratory vs metabolic disorders (“ROME”)?",
+    "back": "Respiratory opposite: PaCO2 up, pH down (or the reverse). Metabolic equal: HCO3− down, pH down (or both up).",
+    "why": "pH follows the ratio of bicarbonate (top) to carbon dioxide (bottom), so it moves with bicarbonate and against carbon dioxide."
+  },
+  {
+    "id": "fab-comp-direction",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Which way does the compensating number move?",
+    "back": "In the same direction as the primary number: bicarbonate down, PaCO2 down; PaCO2 up, bicarbonate up.",
+    "why": "Moving both parts of the ratio the same way brings the ratio back toward 20, even though neither number is normal."
+  },
+  {
+    "id": "fab-comp-grades",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Uncompensated vs partially vs fully compensated: how do you tell them apart?",
+    "back": "Uncompensated: the other number is still normal and pH is abnormal. Partially: both abnormal, same direction, pH still out of range. Fully: both abnormal, pH back in 7.35 to 7.45.",
+    "why": "For a fully compensated gas, the side of 7.40 points to the first disorder, because compensation seldom overshoots."
+  },
+  {
+    "id": "fab-comp-speed",
+    "topic": "acid-base-disorders",
+    "core": [
+      "interdependence"
+    ],
+    "level": "recall",
+    "compare": "Respiratory vs renal compensation",
+    "front": "Respiratory vs renal compensation: what compensates for what, and how fast?",
+    "back": "Respiratory (lungs change PaCO2): for metabolic disorders, starting in minutes, full in 12 to 24 hours. Renal (kidneys change HCO3−): for respiratory disorders, starting in hours, full in 3 to 5 days.",
+    "why": "Chemoreceptors change ventilation fast; tubule cells need days to raise ammonium production and bicarbonate output."
+  },
+  {
+    "id": "fab-full-comp-exam",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "analyze",
+    "compare": "Respiratory vs renal compensation",
+    "front": "For your exam: how do nursing and paramedic exams label a gas with both numbers abnormal and a pH of 7.35 to 7.45?",
+    "back": "“Fully compensated.” In practice compensation rarely brings pH all the way back, except in respiratory alkalosis that has lasted days to weeks.",
+    "why": "When pH is normal and both numbers are well out of range, clinicians also consider two disorders at once. Use the exam label when asked."
+  },
+  {
+    "id": "fab-acute-chronic-resp",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Acute vs chronic respiratory acidosis: how do they look on an ABG?",
+    "back": "Acute: PaCO2 high, bicarbonate barely changed, pH low (for example 7.26, 60, 26). Chronic: PaCO2 high, bicarbonate high, pH low-normal or a little low (7.34, 60, 31).",
+    "why": "Renal compensation needs 3 to 5 days, so the bicarbonate tells you how long the carbon dioxide has been high."
+  },
+  {
+    "id": "fab-mixed",
+    "topic": "acid-base-disorders",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "What pattern on an ABG means two primary disorders at once?",
+    "back": "PaCO2 and bicarbonate moving in opposite directions (for example PaCO2 up and bicarbonate down), or one moving far more or less than compensation explains.",
+    "why": "Compensation always moves the second number in the same direction as the first. In cardiac arrest, poor breathing and lactic acid push pH down together."
+  },
+  {
+    "id": "fab-anion-gap",
+    "topic": "acid-base-disorders",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "recall",
+    "front": "What is the anion gap, and its normal value?",
+    "back": "Na+ − (Cl− + HCO3−), normally about 8 to 12 mmol/L with modern analyzers (8 to 16 in older texts).",
+    "why": "It stands for the anions the panel does not measure, mostly albumin, plus phosphate, sulfate and organic anions; it is not a real gap in charge."
+  },
+  {
+    "id": "fab-gap-high-normal",
+    "topic": "acid-base-disorders",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "analyze",
+    "front": "High vs normal anion gap metabolic acidosis: what does each mean?",
+    "back": "High gap: acid gained, its unmeasured anion replacing bicarbonate (ketoacidosis, lactic acidosis, kidney failure, poisons). Normal gap: bicarbonate lost, with chloride rising in its place (diarrhea).",
+    "why": "Whether bicarbonate is replaced by an unmeasured anion or by chloride decides whether the gap rises."
+  },
+  {
+    "id": "fab-gap-albumin",
+    "topic": "acid-base-disorders",
+    "core": [
+      "mass-balance"
+    ],
+    "level": "analyze",
+    "front": "Why can a normal anion gap hide an added acid in a very ill patient?",
+    "back": "Albumin is the largest unmeasured anion; each 1 g/dL fall lowers the normal gap by about 2.5 mmol/L.",
+    "why": "A low albumin shrinks the baseline, so an acid’s anion can raise the gap back into the “normal” range."
+  },
+  {
+    "id": "fab-dka-criteria",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "recall",
+    "front": "What three findings diagnose diabetic ketoacidosis?",
+    "back": "Blood glucose of 200 mg/dL (11.1 mmol/L) or more, or known diabetes; beta-hydroxybutyrate of 3.0 mmol/L or more; and a metabolic acidosis, with pH below 7.30 or bicarbonate below 18 mmol/L.",
+    "why": "Known diabetes counts because DKA can occur at near-normal glucose; the ketone and acidosis criteria show that ketone acids have overwhelmed the buffers."
+  },
+  {
+    "id": "fab-dka-potassium",
+    "topic": "acid-base-disorders",
+    "core": [
+      "compartments",
+      "mass-balance"
+    ],
+    "level": "analyze",
+    "front": "In DKA, why is plasma potassium often normal or high although the body has lost a lot of it?",
+    "back": "Lack of insulin lets potassium leave cells, and the high glucose draws water, and potassium with it, out of cells, while glucose in the urine carries potassium out of the body.",
+    "why": "When insulin treatment starts, potassium moves back into cells and plasma potassium can fall dangerously, so fluids, insulin and potassium are given together."
+  },
+  {
+    "id": "fab-kussmaul",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "level": "apply",
+    "front": "What is Kussmaul breathing, and why does it happen?",
+    "back": "Deep, sighing, fast breathing in severe metabolic acidosis, such as DKA.",
+    "why": "The carotid bodies sense the low arterial pH and drive breathing, lowering PaCO2 to move the ratio back toward 20; its expected PaCO2 is about 1.5 × HCO3− + 8."
+  },
+  {
+    "id": "fab-vomit-maintain",
+    "topic": "acid-base-disorders",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "Healthy kidneys excrete extra bicarbonate fast. Why does the alkalosis of vomiting last, and what fixes it?",
+    "back": "Volume loss (angiotensin II and aldosterone), chloride loss and potassium loss make the kidneys keep bicarbonate. Saline and potassium chloride fix it.",
+    "why": "Angiotensin II speeds bicarbonate reclaim, type B cells need chloride to excrete bicarbonate, and low potassium speeds H+ secretion. Once all three are replaced the excess leaves within a day or two."
+  },
+  {
+    "id": "fab-paradoxical-aciduria",
+    "topic": "acid-base-disorders",
+    "core": [
+      "interdependence"
+    ],
+    "level": "analyze",
+    "front": "After days of vomiting, why can the urine be acidic while the blood is alkaline?",
+    "back": "The kidneys hold on to sodium at almost any cost, trading H+ and K+ for it in the collecting duct: paradoxical aciduria.",
+    "why": "Protecting blood volume takes priority over pH; it ends when saline restores the volume."
+  },
+  {
+    "id": "fab-winters",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "What PaCO2 should you expect in a metabolic acidosis (Winter’s formula)?",
+    "back": "1.5 × HCO3− + 8, ± 2. A value far outside that range means a second, respiratory disorder.",
+    "why": "The formula is a rule of thumb from studies of patients; lower than expected suggests a respiratory alkalosis too (as in aspirin poisoning), higher a respiratory acidosis."
+  },
+  {
+    "id": "fab-panic-kidneys",
+    "topic": "acid-base-disorders",
+    "core": [
+      "interdependence"
+    ],
+    "level": "apply",
+    "front": "Why is the respiratory alkalosis of a panic attack uncompensated?",
+    "back": "Renal compensation takes days, and the attack is over in minutes.",
+    "why": "Buffers release a little H+ within minutes, so bicarbonate can dip slightly, but the kidneys have not acted."
+  },
+  {
+    "id": "fab-paper-bag",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "apply",
+    "front": "Is breathing into a paper bag recommended for anxiety hyperventilation?",
+    "back": "No. Calm coaching toward slower breathing is used, once other causes have been considered.",
+    "why": "The bag can lower the oxygen breathed, and the same fast breathing can come from a lung clot, a heart attack or diabetic ketoacidosis, where it would be dangerous."
+  },
+  {
+    "id": "fab-acidemia-effects",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis"
+    ],
+    "level": "recall",
+    "front": "What does severe acidemia do to the body?",
+    "back": "It depresses the nervous system (confusion, drowsiness, coma), weakens heart contractions, dilates arterioles and makes the heart prone to abnormal rhythms.",
+    "why": "It can also shift potassium out of cells, most of all when the acid is a mineral acid, raising plasma potassium."
   }
  ]
 }

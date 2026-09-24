@@ -7565,6 +7565,1480 @@
         "why": "The collecting duct in the cortex keeps urea in. Urea leaves only in the inner medullary collecting duct, so it builds the gradient deep in the medulla."
       },
       "summary": "Filtered, half reabsorbed in the proximal tubule, kept in the distal parts while water leaves, released in the inner medulla through ADH-increased carriers, supplies half the inner medulla’s osmolarity, and partly cycles back through the loop. A low-protein diet makes less urea and weakens concentrating."
+    },
+    {
+      "id": "rp-meiosis-stages",
+      "title": "The stages of meiosis",
+      "topic": "meiosis",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "One diploid cell copies its DNA once and divides twice, ending as four haploid cells. Put the stages in order.",
+      "steps": [
+        {
+          "id": "s",
+          "label": "DNA copied (S phase)",
+          "text": "In S phase the cell copies its DNA: each of its 46 chromosomes now has two sister chromatids.",
+          "why": "Copying happens once, before meiosis starts, exactly as before mitosis."
+        },
+        {
+          "id": "p1",
+          "label": "Prophase I",
+          "text": "Each chromosome pairs with its homolog along its whole length, and crossing over swaps pieces between them.",
+          "why": "Pairing has to come first: homologs can only swap pieces and later separate as partners once they have found each other."
+        },
+        {
+          "id": "m1",
+          "label": "Metaphase I",
+          "text": "The pairs line up across the middle of the cell as pairs, one homolog facing each end.",
+          "why": "The pairs formed in prophase I now line up, each pair facing the ends at random: independent assortment."
+        },
+        {
+          "id": "a1",
+          "label": "Anaphase I",
+          "text": "Homologs are pulled to opposite ends while each one’s sister chromatids stay joined at the centromere.",
+          "why": "Separation follows alignment. Only the partners separate here, so each chromosome stays double."
+        },
+        {
+          "id": "t1",
+          "label": "Telophase I and cytokinesis",
+          "text": "The cell divides into two haploid cells, each with 23 chromosomes still made of two chromatids.",
+          "why": "Division ends meiosis I, the reduction division: the number of chromosomes per cell has halved."
+        },
+        {
+          "id": "m2",
+          "label": "Metaphase II",
+          "text": "With no new DNA copying, the chromosomes in each cell line up singly across the middle.",
+          "why": "Meiosis II starts straight away, without an S phase, and single chromosomes line up as in mitosis."
+        },
+        {
+          "id": "a2",
+          "label": "Anaphase II",
+          "text": "The centromeres are released and the sister chromatids are pulled to opposite ends.",
+          "why": "Sister chromatids can only separate after they have lined up singly in metaphase II."
+        },
+        {
+          "id": "t2",
+          "label": "Telophase II and cytokinesis",
+          "text": "Each cell divides again, giving four haploid cells with 23 single chromosomes each.",
+          "why": "The second division finishes the process: four genetically different haploid cells from one diploid cell."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Sister chromatids separate and are pulled to opposite ends, so each cell briefly holds 92 chromosomes.",
+            "why": "That is anaphase of mitosis. In anaphase I, sister chromatids stay joined and the homologs separate."
+          },
+          {
+            "text": "The cell copies its DNA a second time before dividing.",
+            "why": "DNA is copied only once, before meiosis I. There is no copying between the two divisions."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "Each chromosome lines up singly across the middle of the cell, and its sister chromatids swap pieces.",
+        "why": "In prophase I the homologs pair and swap pieces between a chromatid of each partner. Sister chromatids are identical copies, so swapping between them would change nothing."
+      },
+      "summary": "S phase, then prophase I (pairing and crossing over), metaphase I (pairs line up), anaphase I (homologs separate), telophase I (two haploid cells with double chromosomes), metaphase II, anaphase II (sister chromatids separate), telophase II (four haploid cells). Meiosis I separates partners; meiosis II separates sisters."
+    },
+    {
+      "id": "rp-sperm-route",
+      "title": "Sperm from testis to urethra",
+      "topic": "male-anatomy",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "Sperm made in the walls of the seminiferous tubules travel a long route before they leave the body. Follow them.",
+      "steps": [
+        {
+          "id": "tubule",
+          "label": "Seminiferous tubules",
+          "text": "Sperm are released into the lumen of a seminiferous tubule, where they were made.",
+          "why": "The tubules in each lobule of the testis are where sperm are made, so the route starts here."
+        },
+        {
+          "id": "rete",
+          "label": "Rete testis",
+          "text": "The tubules straighten and drain into the rete testis, a network of channels at the back of the testis.",
+          "why": "The tubules of all the lobules empty into this one network before leaving the testis."
+        },
+        {
+          "id": "efferent",
+          "label": "Efferent ductules",
+          "text": "A dozen or so efferent ductules carry the sperm out of the testis.",
+          "why": "These small ducts connect the rete testis to the head of the epididymis."
+        },
+        {
+          "id": "epid",
+          "label": "Epididymis",
+          "text": "Sperm travel from the head to the tail of the epididymis over several days, gaining the ability to swim, and are stored in its tail.",
+          "why": "The epididymis sits on the back of the testis and receives the efferent ductules at its head."
+        },
+        {
+          "id": "dd",
+          "label": "Ductus deferens",
+          "text": "During emission, the ductus deferens squeezes sperm up the spermatic cord and through the inguinal canal into the pelvis.",
+          "why": "The ductus deferens begins at the tail of the epididymis and climbs out of the scrotum inside the spermatic cord."
+        },
+        {
+          "id": "ampulla",
+          "label": "Ampulla",
+          "text": "Behind the bladder, the ductus deferens widens into its ampulla.",
+          "why": "After crossing over the ureter and running down the back of the bladder, the duct widens just before it ends."
+        },
+        {
+          "id": "ejac",
+          "label": "Ejaculatory duct",
+          "text": "The ductus deferens joins the duct of a seminal vesicle to form an ejaculatory duct, which passes through the prostate.",
+          "why": "The seminal vesicle adds most of the semen volume at this junction."
+        },
+        {
+          "id": "pros",
+          "label": "Prostatic urethra",
+          "text": "The ejaculatory ducts open into the prostatic urethra, where the prostate adds its fluid.",
+          "why": "The ejaculatory ducts end inside the prostate, in the first part of the urethra."
+        },
+        {
+          "id": "memb",
+          "label": "Membranous urethra",
+          "text": "Semen passes through the membranous urethra in the pelvic floor.",
+          "why": "The shortest part of the urethra lies between the prostate and the penis."
+        },
+        {
+          "id": "spongy",
+          "label": "Spongy urethra",
+          "text": "Semen runs through the spongy urethra in the corpus spongiosum and out of the external urethral opening.",
+          "why": "The spongy urethra is the last and longest part, running the length of the penis."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Sperm pass through the seminal vesicle, which stores them until ejaculation.",
+            "why": "The seminal vesicle is a gland that adds fluid; it does not store sperm. Sperm are stored in the tail of the epididymis."
+          },
+          {
+            "text": "Sperm pass through the bulbourethral gland, where they learn to swim.",
+            "why": "The bulbourethral glands add a little mucus to the spongy urethra. Sperm gain the ability to swim in the epididymis."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The ductus deferens joins the ureter to form an ejaculatory duct, which passes through the prostate.",
+        "why": "The ductus deferens crosses over the ureter but does not join it. It joins the duct of a seminal vesicle to form the ejaculatory duct."
+      },
+      "summary": "Seminiferous tubules, rete testis, efferent ductules, epididymis (head to tail, where sperm mature and are stored), ductus deferens in the spermatic cord through the inguinal canal, ampulla, ejaculatory duct through the prostate, then the prostatic, membranous and spongy urethra."
+    },
+    {
+      "id": "rp-erection-ejaculation",
+      "title": "Erection, emission and expulsion",
+      "topic": "male-anatomy",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Erection is a vascular event run by parasympathetic nerves; ejaculation is run by sympathetic and then somatic nerves. Put the chain in order.",
+      "steps": [
+        {
+          "id": "stim",
+          "label": "Sexual stimulation",
+          "text": "Touch to the genitals starts a spinal reflex, and sights, sounds and thoughts add signals from the brain.",
+          "why": "Stimulation is the trigger; nothing downstream happens without it."
+        },
+        {
+          "id": "para",
+          "label": "Parasympathetic S2–S4",
+          "text": "Parasympathetic neurons in the sacral spinal cord fire along the pelvic splanchnic nerves to the penis.",
+          "why": "The reflex and the brain’s signals converge on these sacral neurons, which carry the command to the penis."
+        },
+        {
+          "id": "no",
+          "label": "Nitric oxide, then cGMP",
+          "text": "Their endings and the endothelium release nitric oxide, which raises cGMP in the smooth muscle.",
+          "why": "Nitric oxide is the messenger the nerve endings release; cGMP is made inside the smooth muscle in response."
+        },
+        {
+          "id": "relax",
+          "label": "Smooth muscle relaxes",
+          "text": "The smooth muscle of the cavernosal arteries and blood spaces relaxes, and blood rushes in.",
+          "why": "cGMP makes the smooth muscle relax, which widens the arteries and lets the blood spaces expand."
+        },
+        {
+          "id": "veins",
+          "label": "Veins squeezed shut",
+          "text": "The swelling tissue presses the draining veins against the tunica albuginea, so pressure rises: erection.",
+          "why": "Outflow falls only after the tissue has swelled with incoming blood."
+        },
+        {
+          "id": "emission",
+          "label": "Emission (sympathetic)",
+          "text": "Sympathetic neurons (about T10–L2) make the ducts, seminal vesicles and prostate contract, moving semen into the urethra.",
+          "why": "Emission loads the urethra; it has to happen before semen can be expelled."
+        },
+        {
+          "id": "neck",
+          "label": "Bladder neck closes",
+          "text": "At the same time the internal urethral sphincter contracts, so semen cannot flow back into the bladder.",
+          "why": "The same sympathetic discharge closes the bladder neck while semen enters the urethra."
+        },
+        {
+          "id": "expel",
+          "label": "Expulsion (pudendal)",
+          "text": "Semen in the urethra triggers a reflex: the pudendal nerve makes the bulbospongiosus contract rhythmically, forcing semen out.",
+          "why": "Expulsion is triggered by semen already in the urethra, so it follows emission."
+        },
+        {
+          "id": "end",
+          "label": "Erection ends",
+          "text": "Sympathetic norepinephrine contracts the erectile smooth muscle again and PDE5 breaks down cGMP.",
+          "why": "Once ejaculation is over, sympathetic activity ends the erection and a refractory period follows."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Their endings release norepinephrine onto alpha-1 receptor proteins in the smooth muscle.",
+            "why": "Norepinephrine on alpha-1 receptor proteins contracts smooth muscle. That drives emission and ends the erection; it cannot start one."
+          },
+          {
+            "text": "Their endings release acetylcholine, which makes skeletal muscle in the shaft contract.",
+            "why": "Erection is a vascular event in smooth muscle. Acetylcholine plays only a small part, mainly by making the endothelium release nitric oxide."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Parasympathetic neurons (S2–S4) make the ducts, seminal vesicles and prostate contract, moving semen into the urethra.",
+        "why": "Emission is sympathetic, from about T10–L2, through norepinephrine on alpha-1 receptor proteins. “Point and shoot”: parasympathetic for erection, sympathetic then somatic for ejaculation."
+      },
+      "summary": "Stimulation, parasympathetic S2–S4 nerves, nitric oxide and cGMP, smooth muscle relaxation and inflow, veins squeezed shut (erection); then sympathetic emission with the bladder neck closing, somatic expulsion through the pudendal nerve, and sympathetic ending of the erection."
+    },
+    {
+      "id": "rp-spermatogenesis",
+      "title": "Spermatogenesis: stem cell to sperm",
+      "topic": "male-physiology",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "Sperm are made from the outside of the tubule wall inward, in about 64 to 74 days. Put the stages in order.",
+      "steps": [
+        {
+          "id": "gonium",
+          "label": "Spermatogonium",
+          "text": "A spermatogonium on the basement membrane divides by mitosis; one daughter stays a stem cell.",
+          "why": "The stem cells sit at the outer edge, and mitosis keeps their supply from running out."
+        },
+        {
+          "id": "primary",
+          "label": "Primary spermatocyte",
+          "text": "A committed daughter copies its DNA and grows into a primary spermatocyte (46 chromosomes, 92 chromatids), then crosses the blood-testis barrier.",
+          "why": "The DNA must be copied before meiosis can start, and the cell moves into the adluminal compartment to go through it."
+        },
+        {
+          "id": "m1",
+          "label": "Meiosis I",
+          "text": "The primary spermatocyte completes meiosis I, giving two secondary spermatocytes, each haploid with 23 double chromosomes.",
+          "why": "Meiosis I separates the homologs, halving the chromosome number."
+        },
+        {
+          "id": "m2",
+          "label": "Meiosis II",
+          "text": "Each secondary spermatocyte completes meiosis II, giving two spermatids with 23 single chromosomes.",
+          "why": "Meiosis II follows quickly, separating the sister chromatids; one primary spermatocyte has now made four spermatids."
+        },
+        {
+          "id": "spermio",
+          "label": "Spermiogenesis",
+          "text": "Each round spermatid reshapes without dividing: an acrosome forms, a tail grows, and most of the cytoplasm is shed.",
+          "why": "The divisions are over; what remains is turning a round cell into a swimming one."
+        },
+        {
+          "id": "release",
+          "label": "Released into the lumen",
+          "text": "The finished sperm are released into the lumen, still unable to swim forward.",
+          "why": "The Sertoli cells let go of the sperm only after reshaping is complete."
+        },
+        {
+          "id": "carry",
+          "label": "Carried to the epididymis",
+          "text": "Sertoli cell fluid and contractions of the tubule wall carry the sperm to the epididymis.",
+          "why": "Because the sperm cannot yet swim, fluid and the tubule wall move them on to where they mature."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The primary spermatocyte divides by mitosis, giving two diploid spermatids.",
+            "why": "A primary spermatocyte divides by meiosis, not mitosis, and its products are secondary spermatocytes, not spermatids."
+          },
+          {
+            "text": "The primary spermatocyte reshapes directly into four sperm without dividing.",
+            "why": "Reshaping without division is spermiogenesis, which acts on spermatids after both meiotic divisions."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Each spermatid divides once more by mitosis to make the sperm head and tail.",
+        "why": "Spermatids do not divide again. They reshape into sperm in spermiogenesis, forming an acrosome and a tail and shedding cytoplasm."
+      },
+      "summary": "Spermatogonium (mitosis), primary spermatocyte (copied DNA), meiosis I into two secondary spermatocytes, meiosis II into four spermatids, spermiogenesis into sperm, release into the lumen, and transport to the epididymis. Cells move inward from the basement membrane to the lumen as they mature."
+    },
+    {
+      "id": "rp-male-hpg",
+      "title": "The male hormone chain",
+      "topic": "male-physiology",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "GnRH, LH, FSH, testosterone and inhibin form a loop that keeps testosterone and sperm production steady. Put the chain in order, starting at the hypothalamus.",
+      "steps": [
+        {
+          "id": "gnrh",
+          "label": "GnRH pulses",
+          "text": "The hypothalamus releases GnRH into the portal vessels in pulses, roughly every 1 to 3 hours.",
+          "why": "The hypothalamus heads the axis; the pituitary responds to its rising and falling pulses."
+        },
+        {
+          "id": "lhfsh",
+          "label": "LH and FSH released",
+          "text": "Each pulse makes the anterior pituitary release LH and FSH into the blood.",
+          "why": "The pituitary’s gonadotropins are the command that reaches the testes."
+        },
+        {
+          "id": "leydig",
+          "label": "Leydig cells make testosterone",
+          "text": "LH binds the Leydig cells, which make testosterone from cholesterol.",
+          "why": "LH is the hormone that drives the Leydig cells between the tubules."
+        },
+        {
+          "id": "sertoli",
+          "label": "Sertoli cells supported",
+          "text": "FSH and the high local testosterone act on the Sertoli cells, which support spermatogenesis and release inhibin.",
+          "why": "The Sertoli cells need both FSH and the testosterone the Leydig cells have just made."
+        },
+        {
+          "id": "brakes",
+          "label": "Two brakes",
+          "text": "Testosterone brakes GnRH and LH, and inhibin brakes FSH, so the pulses slow back down.",
+          "why": "The products feed back last, closing the loop: the brakes act on the hypothalamus and pituitary at the top of the chain."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "FSH binds the Leydig cells, which make testosterone from cholesterol.",
+            "why": "FSH acts on the Sertoli cells. LH is the hormone that drives the Leydig cells."
+          },
+          {
+            "text": "LH binds the Sertoli cells, which release testosterone into the tubules.",
+            "why": "The Sertoli cells do not make testosterone; they hold it in the tubule with androgen-binding protein. LH acts on the Leydig cells."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Testosterone brakes FSH, and inhibin brakes LH, so the pulses slow back down.",
+        "why": "The brakes are the other way round: inhibin lowers FSH selectively, with little effect on LH, and testosterone is the main brake on GnRH and LH."
+      },
+      "summary": "GnRH pulses, LH and FSH, LH on the Leydig cells (testosterone), FSH and testosterone on the Sertoli cells (sperm support and inhibin), then two negative feedback brakes: testosterone on GnRH and LH, inhibin on FSH."
+    },
+    {
+      "id": "rp-milk-route",
+      "title": "Milk from the alveoli to the nipple",
+      "topic": "female-anatomy",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "During nursing, milk made deep in the breast travels out through a branching tree of ducts. Follow it outward.",
+      "steps": [
+        {
+          "id": "alv",
+          "label": "Alveoli",
+          "text": "Cuboidal cells lining the alveoli make milk.",
+          "why": "The alveoli at the ends of the smallest duct branches are where milk is made."
+        },
+        {
+          "id": "myo",
+          "label": "Myoepithelial squeeze",
+          "text": "Myoepithelial cells wrapped around each alveolus contract and squeeze the milk out.",
+          "why": "Milk has to be pushed out of the alveoli before it can move along the ducts."
+        },
+        {
+          "id": "small",
+          "label": "Small ducts",
+          "text": "Milk flows into the smallest ducts, which join into larger ones like the branches of a tree.",
+          "why": "The duct tree converges from the lobules toward the nipple."
+        },
+        {
+          "id": "lact",
+          "label": "Lactiferous duct",
+          "text": "Each duct system drains into a lactiferous duct, which widens briefly under the areola while milk is flowing.",
+          "why": "The lactiferous ducts are the main trunks that reach the nipple."
+        },
+        {
+          "id": "nipple",
+          "label": "Nipple opening",
+          "text": "Milk leaves through one of several duct openings at the tip of the nipple.",
+          "why": "Each opening is the end of one lactiferous duct."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Smooth muscle in the uterine wall contracts and squeezes the milk out.",
+            "why": "The myometrium is in the uterus. In the breast, myoepithelial cells around the alveoli do the squeezing."
+          },
+          {
+            "text": "The areolar glands pump the milk into the ducts.",
+            "why": "Areolar glands on the areola release an oily, protective secretion; they do not move milk."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Each duct system drains into a lactiferous duct that widens into a large sac where milk is stored for hours.",
+        "why": "Ultrasound shows no storage sacs; the ducts widen only briefly while milk is flowing. (For your exam, the widening is called the lactiferous sinus.)"
+      },
+      "summary": "Alveoli make milk; myoepithelial cells squeeze it out; it flows through the branching ducts into a lactiferous duct, which widens briefly under the areola as milk flows, and leaves through a duct opening on the nipple."
+    },
+    {
+      "id": "rp-oocyte-route",
+      "title": "From the ovary to the uterus",
+      "topic": "female-anatomy",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "The ovary is not attached to the uterine tube, so a released oocyte has to be caught. Follow it to the uterus.",
+      "steps": [
+        {
+          "id": "surface",
+          "label": "Ovary surface",
+          "text": "The oocyte leaves a follicle at the surface of the ovary, into the pelvic cavity.",
+          "why": "The oocyte starts in the ovary’s cortex and leaves from its surface."
+        },
+        {
+          "id": "fimb",
+          "label": "Fimbriae",
+          "text": "The fimbriae sweep over the ovary, and their cilia draw the oocyte into the open end of the tube.",
+          "why": "The fimbriae drape over the ovary, so they are the first part of the tube the oocyte meets."
+        },
+        {
+          "id": "amp",
+          "label": "Ampulla",
+          "text": "The oocyte moves into the ampulla, the longest and widest part of the tube, where sperm usually meet it.",
+          "why": "The ampulla lies next to the funnel-shaped end."
+        },
+        {
+          "id": "isth",
+          "label": "Isthmus",
+          "text": "It passes into the isthmus, the narrow, thick-walled part next to the uterus.",
+          "why": "The tube narrows as it nears the uterus."
+        },
+        {
+          "id": "wall",
+          "label": "Through the uterine wall",
+          "text": "A short part of the tube passes through the uterine wall.",
+          "why": "The tube must cross the thick myometrium to reach the cavity."
+        },
+        {
+          "id": "cavity",
+          "label": "Uterine cavity",
+          "text": "The tube opens into the uterine cavity, about three to four days after the oocyte was caught.",
+          "why": "Cilia beating toward the uterus and slow waves of smooth muscle contraction carry it along the tube."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "The ovarian ligament carries the oocyte along its surface to the uterus.",
+            "why": "The ovarian ligament is a support that ties the ovary to the uterus. It is not a passage."
+          },
+          {
+            "text": "The oocyte travels straight into the tube through a duct in the ovary.",
+            "why": "The ovary has no duct and is not attached to the tube; the oocyte must be swept into the tube’s open end."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "It passes into the fundus, the narrow, thick-walled part of the tube next to the uterus.",
+        "why": "The fundus is the rounded top of the uterus. The narrow, thick-walled part of the tube next to the uterus is the isthmus."
+      },
+      "summary": "Ovary surface, fimbriae, ampulla (the usual meeting place with sperm), isthmus, the short part in the uterine wall, then the uterine cavity: about three to four days, moved by cilia and smooth muscle."
+    },
+    {
+      "id": "rp-oogenesis",
+      "title": "Oogenesis: two long pauses",
+      "topic": "ovarian-cycle",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "An oocyte released at 40 began meiosis before its owner was born. Put the steps of oogenesis in order.",
+      "steps": [
+        {
+          "id": "oogonia",
+          "label": "Oogonia multiply",
+          "text": "In the fetal ovary, oogonia divide by mitosis, reaching about 6 to 7 million by mid-gestation.",
+          "why": "The diploid stem cells multiply first; no oogonia survive past birth."
+        },
+        {
+          "id": "pause1",
+          "label": "Arrest in prophase I",
+          "text": "Oogonia become primary oocytes, copy their DNA, pair and cross over, then arrest in prophase I inside primordial follicles.",
+          "why": "Meiosis I starts before birth and stops partway: the first long pause, lasting until shortly before that oocyte is released."
+        },
+        {
+          "id": "lh",
+          "label": "Sudden rise in LH",
+          "text": "Years later, a sudden rise in LH restarts meiosis in the oocyte of the one follicle about to release it.",
+          "why": "From puberty on, the rise in LH each month is the signal that ends the first pause."
+        },
+        {
+          "id": "m1",
+          "label": "Meiosis I finishes",
+          "text": "Meiosis I finishes unequally: a secondary oocyte keeps almost all the cytoplasm, and the first polar body gets very little.",
+          "why": "The restarted division completes before ovulation, and the spindle at the cell’s edge makes it lopsided."
+        },
+        {
+          "id": "pause2",
+          "label": "Arrest in metaphase II",
+          "text": "The secondary oocyte starts meiosis II and arrests again at metaphase II.",
+          "why": "The second pause begins at once; this is the cell that is released."
+        },
+        {
+          "id": "ovul",
+          "label": "Ovulation",
+          "text": "The secondary oocyte leaves the ovary about 34 to 36 hours after LH began to rise.",
+          "why": "Release comes after meiosis I has finished and the second pause has begun."
+        },
+        {
+          "id": "m2",
+          "label": "Meiosis II on sperm entry",
+          "text": "Only if a sperm enters does meiosis II finish, giving an ovum and a second polar body.",
+          "why": "Sperm entry is the trigger for the last division; without it the secondary oocyte dies within a day."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The secondary oocyte completes meiosis II at once, before it is released.",
+            "why": "The secondary oocyte arrests at metaphase II and finishes meiosis II only if a sperm enters it."
+          },
+          {
+            "text": "The secondary oocyte divides by mitosis to replace the lost oogonia.",
+            "why": "No new oocytes are made after birth. The secondary oocyte goes on into meiosis II, not mitosis."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Meiosis I finishes equally, giving two secondary oocytes of the same size.",
+        "why": "Both divisions of oogenesis are unequal: one large secondary oocyte keeps nearly all the cytoplasm, and the first polar body is a tiny cell that breaks down."
+      },
+      "summary": "Oogonia multiply by mitosis before birth; primary oocytes arrest in prophase I; from puberty a rise in LH restarts one each month; meiosis I finishes unequally into a secondary oocyte and first polar body; it arrests at metaphase II, is ovulated, and completes meiosis II only if a sperm enters."
+    },
+    {
+      "id": "rp-follicle-stages",
+      "title": "Follicle development to corpus luteum",
+      "topic": "ovarian-cycle",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A follicle grows over several months from a single layer of flat cells into a fluid-filled blister about 2 cm across, then becomes a temporary gland. Put its stages in order.",
+      "steps": [
+        {
+          "id": "primordial",
+          "label": "Primordial follicle",
+          "text": "A primary oocyte is surrounded by a single layer of flat cells: the resting stage.",
+          "why": "Almost all follicles in an ovary sit at this first stage."
+        },
+        {
+          "id": "primary",
+          "label": "Primary follicle",
+          "text": "The flat cells become cube-shaped granulosa cells, and a clear glycoprotein coat forms around the growing oocyte.",
+          "why": "The first change is in the shape of the single layer."
+        },
+        {
+          "id": "secondary",
+          "label": "Secondary follicle",
+          "text": "The granulosa cells multiply into several layers, and a theca forms around the follicle.",
+          "why": "Layers are added after the single layer has become granulosa cells."
+        },
+        {
+          "id": "tertiary",
+          "label": "Tertiary follicle",
+          "text": "Fluid gaps between the granulosa cells merge into an antrum; from now on the follicle needs FSH to keep growing.",
+          "why": "The antrum forms once there are many granulosa layers to hold the fluid."
+        },
+        {
+          "id": "mature",
+          "label": "Mature vesicular follicle",
+          "text": "The dominant follicle grows to about 2 cm and bulges from the ovary’s surface; the others undergo atresia.",
+          "why": "Selection of one dominant follicle happens among the tertiary follicles as FSH falls."
+        },
+        {
+          "id": "ovul",
+          "label": "Ovulation",
+          "text": "A sudden rise in LH makes the follicle wall give way, and the secondary oocyte oozes out.",
+          "why": "Only a mature follicle responds to the rise in LH by releasing its oocyte."
+        },
+        {
+          "id": "cl",
+          "label": "Corpus luteum",
+          "text": "Under LH, the emptied follicle’s cells enlarge and fill with lipid and yellow pigment, making progesterone for about two weeks.",
+          "why": "The corpus luteum forms from the cells left behind after ovulation."
+        },
+        {
+          "id": "ca",
+          "label": "Corpus albicans",
+          "text": "Without a pregnancy, the corpus luteum dies and shrinks into a pale scar.",
+          "why": "The last stage is the scar left when the corpus luteum’s cells die."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The granulosa cells shrink back into a single layer of flat cells.",
+            "why": "Follicles do not go backward. A follicle that stops growing undergoes atresia instead."
+          },
+          {
+            "text": "The follicle releases its oocyte while it is still only a few layers thick.",
+            "why": "Ovulation happens only from a mature vesicular follicle, after an antrum has formed and grown."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The emptied follicle becomes the corpus albicans, which makes progesterone for about two weeks.",
+        "why": "The progesterone-making gland is the corpus luteum, the yellow body. The corpus albicans is the pale scar left after the corpus luteum dies, and it makes no hormones."
+      },
+      "summary": "Primordial, primary (cube-shaped granulosa cells), secondary (layers and a theca), tertiary (antrum; FSH-dependent), mature vesicular (dominant), ovulation, corpus luteum (progesterone), corpus albicans (scar)."
+    },
+    {
+      "id": "rp-cycle-chain",
+      "title": "One ovarian cycle, hormone by hormone",
+      "topic": "female-hormones-cycle",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "The cycle runs on negative feedback, a brief burst of positive feedback, and the lifespan of the corpus luteum. Put the chain in order, starting as the old corpus luteum dies.",
+      "steps": [
+        {
+          "id": "die",
+          "label": "Corpus luteum dies",
+          "text": "The old corpus luteum dies, so progesterone, estradiol and inhibin fall.",
+          "why": "The corpus luteum lasts 12 to 14 days; its death is where each new cycle starts."
+        },
+        {
+          "id": "fsh",
+          "label": "FSH rises",
+          "text": "With the brake lifted, FSH rises and rescues a group of tertiary follicles from atresia.",
+          "why": "FSH can rise only once the corpus luteum’s hormones have fallen."
+        },
+        {
+          "id": "select",
+          "label": "One follicle selected",
+          "text": "The growing follicles’ estradiol and inhibin lower FSH, and only the most FSH-sensitive follicle keeps growing.",
+          "why": "Negative feedback from the rescued follicles themselves is what narrows them to one."
+        },
+        {
+          "id": "high",
+          "label": "Estradiol high, sustained",
+          "text": "The dominant follicle’s estradiol climbs and stays high for about two days.",
+          "why": "Only a single large dominant follicle can make this much estradiol."
+        },
+        {
+          "id": "surge",
+          "label": "LH surge",
+          "text": "Estradiol switches to positive feedback, and LH surges; estradiol peaks as the surge begins and then falls.",
+          "why": "Sustained high estradiol is the stimulus for the surge."
+        },
+        {
+          "id": "ovul",
+          "label": "Ovulation",
+          "text": "About 34 to 36 hours after the surge begins, the follicle releases its secondary oocyte.",
+          "why": "The surge is the trigger for ovulation."
+        },
+        {
+          "id": "cl",
+          "label": "Corpus luteum forms",
+          "text": "The same LH turns the follicle’s cells into a corpus luteum that makes mostly progesterone.",
+          "why": "The emptied follicle is converted after ovulation, which also ends the positive feedback."
+        },
+        {
+          "id": "luteal",
+          "label": "Luteal brake",
+          "text": "Progesterone, estradiol and inhibin hold GnRH, FSH and LH at their lowest, and progesterone makes the lining secretory.",
+          "why": "The corpus luteum’s hormones give the strongest negative feedback of the cycle, until it dies again."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The growing follicles’ estradiol drives a second rise of FSH, so all of them go on to ovulate.",
+            "why": "Through most of the follicular phase estradiol is a brake. FSH falls, and all but one follicle undergo atresia."
+          },
+          {
+            "text": "Progesterone from the growing follicles lowers FSH.",
+            "why": "Growing follicles make estradiol and inhibin. Large amounts of progesterone come only from the corpus luteum after ovulation."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Estradiol switches to positive feedback, and LH surges; estradiol keeps rising until ovulation.",
+        "why": "Estradiol peaks as the surge begins and then falls, because the LH is already turning the follicle’s cells toward making progesterone. That fall removes the stimulus and helps end the loop."
+      },
+      "summary": "The corpus luteum dies; FSH rises and rescues follicles; their estradiol and inhibin lower FSH and one follicle is selected; its high, sustained estradiol triggers the LH surge; ovulation follows; the corpus luteum forms and its progesterone holds everything down until it dies and the cycle repeats."
+    },
+    {
+      "id": "rp-menstruation",
+      "title": "Why the functional layer is shed",
+      "topic": "female-hormones-cycle",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Without a pregnancy, the endometrium’s functional layer breaks down and is shed at the end of each cycle. Put the chain in order.",
+      "steps": [
+        {
+          "id": "die",
+          "label": "Corpus luteum dies",
+          "text": "Without a pregnancy, the corpus luteum dies after 12 to 14 days.",
+          "why": "The corpus luteum’s lifespan sets the length of the luteal phase."
+        },
+        {
+          "id": "pfall",
+          "label": "Progesterone falls",
+          "text": "Progesterone falls, and the functional layer loses its support.",
+          "why": "The corpus luteum was the main source of progesterone."
+        },
+        {
+          "id": "infl",
+          "label": "Prostaglandins, white cells",
+          "text": "Endometrial cells release prostaglandins and signals that draw in white blood cells.",
+          "why": "Progesterone withdrawal sets off this inflammatory response first."
+        },
+        {
+          "id": "enz",
+          "label": "Enzymes digest the layer",
+          "text": "Enzymes from the white blood cells and the endometrium digest the tissue holding the functional layer together.",
+          "why": "The recruited white blood cells bring the enzymes that break the tissue down."
+        },
+        {
+          "id": "spasm",
+          "label": "Coiled arteries spasm",
+          "text": "The coiled arteries of the functional layer constrict in spasms, starving it of blood.",
+          "why": "Artery spasm adds to the breakdown already under way; it is not the main cause."
+        },
+        {
+          "id": "shed",
+          "label": "Functional layer shed",
+          "text": "The functional layer breaks away and is shed with blood, and prostaglandins make the myometrium contract.",
+          "why": "The loosened, starved layer comes away, and the contractions squeeze it out, which is felt as cramps."
+        },
+        {
+          "id": "rebuild",
+          "label": "Basal layer rebuilds",
+          "text": "The basal layer survives, and rising estradiol from new follicles makes its cells rebuild the functional layer.",
+          "why": "The basal layer has its own short arteries, so it is spared and supplies the cells for the next proliferative phase."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "Estradiol rises sharply, and the functional layer is overstimulated.",
+            "why": "Estradiol builds the lining; it does not shed it. Menstruation follows the fall of progesterone when the corpus luteum dies."
+          },
+          {
+            "text": "FSH falls, and the functional layer loses its support.",
+            "why": "FSH does not act on the endometrium, and at this point FSH is rising. The endometrium depends on progesterone."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The basal layer is shed too, and the endometrium regrows from the myometrium.",
+        "why": "Only the functional layer is shed. The basal layer stays, kept alive by its own short straight arteries, and regrows the functional layer."
+      },
+      "summary": "The corpus luteum dies, progesterone falls, prostaglandins and white blood cells arrive, enzymes digest the functional layer, the coiled arteries spasm, the layer is shed with cramps, and the surviving basal layer rebuilds it under rising estradiol."
+    },
+    {
+      "id": "fab-renal-new-bicarbonate",
+      "title": "Renal hydrogen ion secretion and new bicarbonate",
+      "topic": "acid-base-regulation",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Your diet leaves about 70 mmol of sulfuric and phosphoric acid in your blood each day, and only the kidneys can remove it. Trace one hydrogen ion through a type A intercalated cell of the collecting duct, and see where the new bicarbonate comes from.",
+      "steps": [
+        {
+          "id": "co2",
+          "label": "CO2 enters the cell",
+          "text": "Carbon dioxide diffuses into a type A intercalated cell, from the blood and from the cell’s own metabolism.",
+          "why": "The H+ the cell secretes must be made first, and carbon dioxide and water are its raw materials."
+        },
+        {
+          "id": "ca",
+          "label": "Carbonic anhydrase: H+ + HCO3−",
+          "text": "Carbonic anhydrase combines the carbon dioxide with water; the carbonic acid splits into H+ and HCO3−.",
+          "why": "This makes an acid and a base together inside the cell, so every H+ to be secreted comes with a partner bicarbonate."
+        },
+        {
+          "id": "pump",
+          "label": "Proton pumps push H+ out",
+          "text": "An H+-ATPase, helped by an H+/K+ pump, spends ATP to push the H+ into the tubular fluid.",
+          "why": "The tubular fluid here is already more acidic than the cell, so moving H+ into it is uphill and needs primary active transport."
+        },
+        {
+          "id": "buffer",
+          "label": "H+ binds a urinary buffer",
+          "text": "In the lumen, the H+ binds filtered hydrogen phosphate (HPO4 2−) or ammonia (NH3).",
+          "why": "Almost no filtered bicarbonate is left this far along, so the H+ meets a urinary buffer instead. Free H+ alone could carry only a trace, because the pumps cannot drive urine pH below about 4.5."
+        },
+        {
+          "id": "urine",
+          "label": "H+ leaves in the urine",
+          "text": "The H+ leaves in the urine as dihydrogen phosphate (titratable acid) or as trapped ammonium (NH4+).",
+          "why": "Charged NH4+ cannot diffuse back across the membrane, so the acid is excreted instead of recycled."
+        },
+        {
+          "id": "exit",
+          "label": "HCO3− exits to the blood",
+          "text": "On the basolateral side, the bicarbonate made inside the cell is swapped for Cl− on a band 3 exchanger and enters the blood.",
+          "why": "The base partner of each secreted H+ must go somewhere. The band 3 exchanger, the same kind that runs the chloride shift in red blood cells, trades it for chloride."
+        },
+        {
+          "id": "new",
+          "label": "New bicarbonate in plasma",
+          "text": "Each H+ excreted has added one new bicarbonate to the plasma, replacing bicarbonate that a fixed acid used up.",
+          "why": "It is new because it was made in the cell, not reclaimed from the filtrate. This is how plasma bicarbonate stays near 24 mmol/L despite the daily acid load."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "H+ diffuses out of the cell through open channels, down its concentration gradient.",
+            "why": "The tubular fluid is more acidic than the cell, so H+ must be pumped uphill with ATP; it cannot simply diffuse out."
+          },
+          {
+            "text": "The basolateral sodium–potassium pump moves H+ into the tubular fluid.",
+            "why": "The sodium–potassium pump moves sodium and potassium across the basolateral membrane. H+ leaves type A cells through apical proton pumps."
+          },
+          {
+            "text": "Vesicles of ready-made sulfuric acid are released into the lumen by exocytosis.",
+            "why": "The cell does not store acid. It makes H+ from carbon dioxide and water and pumps it out one ion at a time."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "In the lumen, the H+ meets filtered bicarbonate and forms carbon dioxide and water, which is how the acid is excreted.",
+        "why": "That is bicarbonate reclaim, mostly in the proximal tubule, and it excretes no acid: the H+ ends up in a water molecule. In the collecting duct, H+ binds phosphate or ammonia and leaves in the urine."
+      },
+      "summary": "Carbon dioxide enters; carbonic anhydrase makes H+ and HCO3−; proton pumps spend ATP pushing the H+ into the tubular fluid; it binds phosphate or ammonia and leaves in the urine; the bicarbonate goes to the blood on band 3 as new bicarbonate, one for every H+ excreted."
+    },
+    {
+      "id": "fab-bicarbonate-reclaim",
+      "title": "Reclaiming filtered bicarbonate in the proximal tubule",
+      "topic": "acid-base-regulation",
+      "core": [
+        "mass-balance",
+        "gradients"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Your kidneys filter about 4,300 mmol of bicarbonate a day, many times the day’s fixed acid. Losing even a tenth would acidify your blood. Follow one filtered bicarbonate as the proximal tubule reclaims it.",
+      "steps": [
+        {
+          "id": "filter",
+          "label": "HCO3− is filtered",
+          "text": "Bicarbonate, small and freely filtered, enters the tubular fluid at the glomerulus.",
+          "why": "Nothing can be reclaimed until it has been filtered; the filtered load is GFR times plasma bicarbonate."
+        },
+        {
+          "id": "nhe",
+          "label": "H+ secreted on the exchanger",
+          "text": "The proximal tubule cell secretes H+ into the lumen on the sodium–hydrogen exchanger, in exchange for Na+.",
+          "why": "The exchanger is powered by the sodium gradient that the basolateral sodium–potassium pump keeps up, so it needs no ATP of its own."
+        },
+        {
+          "id": "meet",
+          "label": "H+ + HCO3− → carbonic acid",
+          "text": "In the lumen, the secreted H+ combines with the filtered bicarbonate to form carbonic acid.",
+          "why": "The H+ is there to meet the filtered bicarbonate; this is what removes it from the tubular fluid."
+        },
+        {
+          "id": "brush",
+          "label": "Brush border: CO2 + water",
+          "text": "Carbonic anhydrase on the brush border quickly turns the carbonic acid into carbon dioxide and water.",
+          "why": "Carbonic acid would break down only slowly by itself; the enzyme keeps the reaction moving so bicarbonate does not pile up in the lumen."
+        },
+        {
+          "id": "diffuse",
+          "label": "CO2 diffuses into the cell",
+          "text": "The carbon dioxide diffuses across the apical membrane into the cell.",
+          "why": "Carbon dioxide is a small, uncharged gas, so it crosses the membrane freely, unlike bicarbonate."
+        },
+        {
+          "id": "ca",
+          "label": "Cell enzyme remakes HCO3−",
+          "text": "Carbonic anhydrase inside the cell turns the carbon dioxide and water back into H+ and HCO3−.",
+          "why": "The same reaction runs the other way inside the cell, rebuilding a bicarbonate and a fresh H+ to secrete."
+        },
+        {
+          "id": "exit",
+          "label": "HCO3− and Na+ enter the blood",
+          "text": "The bicarbonate leaves across the basolateral membrane on a carrier that moves it with Na+, and enters the blood.",
+          "why": "The bicarbonate that reaches the blood is a new ion made in the cell; the filtered one became carbon dioxide. The effect is the same as moving it across, and no acid has been excreted."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The carbonic acid is carried into the cell by the sodium–potassium pump.",
+            "why": "The sodium–potassium pump moves sodium and potassium on the basolateral side. Carbonic acid is broken into carbon dioxide and water, and only the carbon dioxide enters."
+          },
+          {
+            "text": "The carbonic acid stays in the lumen and leaves in the urine, excreting the acid.",
+            "why": "Reclaiming bicarbonate excretes no acid. The carbonic acid is turned into carbon dioxide and water, and the carbon dioxide goes back into the cell."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The filtered bicarbonate ion itself crosses the cell unchanged and enters the blood.",
+        "why": "Bicarbonate is charged and crosses the apical membrane poorly. The filtered ion is destroyed in the lumen; the one that enters the blood is made inside the cell from the carbon dioxide."
+      },
+      "summary": "Bicarbonate is filtered; H+ secreted on the sodium–hydrogen exchanger meets it; brush-border carbonic anhydrase turns the carbonic acid into carbon dioxide and water; the carbon dioxide enters the cell and is remade into HCO3−, which leaves with Na+ for the blood. About 80% of filtered bicarbonate is reclaimed this way."
+    },
+    {
+      "id": "fab-ammonium",
+      "title": "Ammonium: the adjustable route for acid",
+      "topic": "acid-base-regulation",
+      "core": [
+        "mass-balance",
+        "homeostasis"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "When acid keeps being added for days, the kidneys can raise ammonium excretion five- to tenfold. Trace how glutamine becomes ammonium in the urine and new bicarbonate in the blood.",
+      "steps": [
+        {
+          "id": "uptake",
+          "label": "PT cells take up glutamine",
+          "text": "Proximal tubule cells take up the amino acid glutamine from the blood and the filtrate.",
+          "why": "Glutamine carries two nitrogen groups, the raw material for ammonia; an acid load speeds its uptake and breakdown."
+        },
+        {
+          "id": "split",
+          "label": "Glutamine → 2 NH4+ + 2 HCO3−",
+          "text": "Each glutamine is broken down into two NH4+, and as its carbon skeleton is used, two new HCO3− are made.",
+          "why": "Breaking down glutamine produces the ammonium and the bicarbonate together; this is where the new bicarbonate comes from."
+        },
+        {
+          "id": "secrete",
+          "label": "NH4+ to lumen, HCO3− to blood",
+          "text": "The NH4+ is secreted into the lumen, and the new HCO3− goes into the blood.",
+          "why": "The two products go opposite ways: the acid-carrying ammonium toward the urine, the base toward the plasma."
+        },
+        {
+          "id": "tal",
+          "label": "Thick limb takes NH4+ back",
+          "text": "In the thick ascending limb, some NH4+ is taken back up and builds up in the medulla as ammonia.",
+          "why": "This loads the medulla with ammonia, near the collecting ducts where it will be needed."
+        },
+        {
+          "id": "diffuse",
+          "label": "NH3 diffuses into the duct",
+          "text": "Uncharged ammonia (NH3) diffuses from the medulla into the lumen of the collecting duct.",
+          "why": "Being uncharged, ammonia crosses membranes easily and moves toward the acidic tubular fluid."
+        },
+        {
+          "id": "trap",
+          "label": "NH3 + H+ → NH4+",
+          "text": "In the lumen, the ammonia takes up an H+ secreted by a type A intercalated cell and becomes NH4+.",
+          "why": "The secreted H+ needs a buffer to carry it; ammonia is one that the kidneys can make more of."
+        },
+        {
+          "id": "excrete",
+          "label": "NH4+ trapped and excreted",
+          "text": "The charged NH4+ cannot diffuse back across the membrane, so it is trapped and leaves in the urine.",
+          "why": "Only ammonium that leaves in the urine counts; each one excreted means one new bicarbonate kept in the blood."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "In the lumen, ammonia binds filtered bicarbonate and leaves in the urine.",
+            "why": "Ammonia is a base that takes up H+, not bicarbonate. It carries secreted acid out, while the bicarbonate stays in the blood."
+          },
+          {
+            "text": "In the lumen, ammonia is turned into urea, which leaves in the urine.",
+            "why": "Urea is made in the liver, not the collecting duct. In the lumen, ammonia takes up a secreted H+ and becomes ammonium."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The NH4+ diffuses back into the blood, where it adds a new bicarbonate.",
+        "why": "Charged NH4+ is trapped in the lumen. Ammonium that does return to the blood goes to the liver and is made into urea, which uses up bicarbonate and cancels the gain."
+      },
+      "summary": "Glutamine taken up by the proximal tubule becomes two NH4+ and two new HCO3−; the ammonium is secreted and the bicarbonate goes to the blood; the thick ascending limb loads the medulla with ammonia; ammonia diffuses into the collecting duct, takes up secreted H+, and the trapped NH4+ leaves in the urine."
+    },
+    {
+      "id": "fab-dka-acidosis",
+      "title": "From missing insulin to Kussmaul breathing",
+      "topic": "acid-base-disorders",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Diabetic ketoacidosis links hormones, metabolism, the blood’s buffers and the lungs. Trace how a lack of insulin ends in deep, sighing breathing.",
+      "steps": [
+        {
+          "id": "insulin",
+          "label": "Insulin absent, glucagon high",
+          "text": "Insulin is nearly absent, as in untreated type 1 diabetes, and glucagon stays high.",
+          "why": "Everything that follows is set off by this hormone imbalance, often after missed doses or an infection."
+        },
+        {
+          "id": "lipolysis",
+          "label": "Lipolysis floods the liver",
+          "text": "Lipolysis runs unchecked, and fatty acids flood into the liver.",
+          "why": "Insulin normally holds lipolysis back; without it, adipose tissue releases far more fatty acids."
+        },
+        {
+          "id": "ketones",
+          "label": "Ketone bodies made fast",
+          "text": "The liver turns the fatty acids into ketone bodies far faster than other tissues can burn them.",
+          "why": "Ketone bodies are normally burned about as fast as they are made; here production outruns use."
+        },
+        {
+          "id": "h",
+          "label": "Ketone acids release H+",
+          "text": "Acetoacetate and beta-hydroxybutyrate release hydrogen ions into the blood.",
+          "why": "They are acids; building up faster than they are burned, they add H+ to the ECF."
+        },
+        {
+          "id": "hco3",
+          "label": "HCO3− used up; gap rises",
+          "text": "Bicarbonate is used up buffering the H+, and the ketone anions take its place, raising the anion gap.",
+          "why": "The buffer takes the first hit; the unmeasured ketone anions are why the gap rises."
+        },
+        {
+          "id": "ph",
+          "label": "Arterial pH falls",
+          "text": "With bicarbonate falling, the ratio drops below 20 and arterial pH falls.",
+          "why": "Once buffering has used up much of the bicarbonate, the ratio and the pH fall."
+        },
+        {
+          "id": "cb",
+          "label": "Carotid bodies drive breathing",
+          "text": "The carotid bodies sense the low pH and drive deep, fast Kussmaul breathing.",
+          "why": "The peripheral chemoreceptors respond within seconds to a fall in arterial pH from any acid."
+        },
+        {
+          "id": "co2",
+          "label": "PaCO2 falls: compensation",
+          "text": "PaCO2 falls, moving the ratio back toward 20 and raising pH part of the way.",
+          "why": "Respiratory compensation lowers the bottom of the ratio; it cannot replace the lost bicarbonate."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The ketone bodies bind to bicarbonate and carry it out in the urine.",
+            "why": "Ketone bodies use up bicarbonate by releasing H+ that bicarbonate buffers, not by binding it."
+          },
+          {
+            "text": "High glucose itself releases hydrogen ions into the blood.",
+            "why": "Glucose is not an acid. The H+ comes from the ketone acids."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The central chemoreceptors sense the low pH and slow breathing to keep carbon dioxide in.",
+        "why": "A falling pH speeds breathing, not slows it, and the fast sensor of a fixed acid is the carotid bodies, because hydrogen ions cross the blood–brain barrier poorly."
+      },
+      "summary": "No insulin; lipolysis floods the liver with fatty acids; ketone bodies are made faster than they are burned; their H+ uses up bicarbonate and their anions raise the anion gap; pH falls; the carotid bodies drive Kussmaul breathing; PaCO2 falls and partly restores the ratio."
+    },
+    {
+      "id": "fab-vomiting-alkalosis",
+      "title": "How vomiting makes and keeps a metabolic alkalosis",
+      "topic": "acid-base-disorders",
+      "core": [
+        "interdependence",
+        "homeostasis"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "Healthy kidneys can excrete extra bicarbonate fast, so a lasting alkalosis needs two things: something that makes it and something that keeps it. Trace both in a person who vomits for days.",
+      "steps": [
+        {
+          "id": "tide",
+          "label": "Acid secreted: alkaline tide",
+          "text": "Parietal cells secrete H+ into the stomach, and for each one a bicarbonate enters the blood (the alkaline tide).",
+          "why": "This is where the extra bicarbonate comes from: every H+ made for the stomach leaves a base partner in the blood."
+        },
+        {
+          "id": "vomit",
+          "label": "Acid is vomited",
+          "text": "The acid is vomited instead of passing into the duodenum.",
+          "why": "The H+ leaves the body, so it is no longer there to cancel its partner bicarbonate."
+        },
+        {
+          "id": "nopanc",
+          "label": "Tide is never used up",
+          "text": "The pancreas is not triggered to secrete bicarbonate into the duodenum, so the extra bicarbonate stays in the blood.",
+          "why": "Normally the acid reaching the duodenum triggers bicarbonate secretion that draws the tide back out of the blood; vomiting skips that step."
+        },
+        {
+          "id": "losses",
+          "label": "Water, Cl−, K+ lost",
+          "text": "Vomiting also removes water, chloride and potassium, lowering blood volume.",
+          "why": "Vomit is hydrochloric acid and fluid, so each episode lowers volume and chloride as well."
+        },
+        {
+          "id": "keep",
+          "label": "Kidneys keep bicarbonate",
+          "text": "Low volume (through angiotensin II and aldosterone), low chloride and low potassium make the kidneys keep bicarbonate instead of excreting it.",
+          "why": "This is the maintenance step: without it, healthy kidneys would excrete the extra bicarbonate within a day or two."
+        },
+        {
+          "id": "alk",
+          "label": "Metabolic alkalosis",
+          "text": "Plasma bicarbonate stays high and pH rises above 7.45: a metabolic alkalosis.",
+          "why": "The primary number is bicarbonate, pushed up and held up by the steps before."
+        },
+        {
+          "id": "slow",
+          "label": "Breathing slows",
+          "text": "The carotid bodies sense the high pH, and breathing slows.",
+          "why": "Compensation for a metabolic disorder is respiratory, and it moves in the same direction as the primary change."
+        },
+        {
+          "id": "pco2",
+          "label": "PaCO2 rises",
+          "text": "PaCO2 rises, moving the ratio back toward 20, but rarely above about 55 mm Hg.",
+          "why": "Slower breathing also lowers PaO2, and once it falls far enough the carotid bodies drive breathing back up, which limits the compensation."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The kidneys excrete the extra bicarbonate within hours, ending the alkalosis.",
+            "why": "Healthy kidneys would, if volume, chloride and potassium were normal. After days of vomiting they are not, so the kidneys keep bicarbonate and the alkalosis lasts."
+          },
+          {
+            "text": "The lungs breathe out the extra bicarbonate as carbon dioxide.",
+            "why": "The lungs remove carbon dioxide, not bicarbonate. Removing more carbon dioxide would raise the pH further."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The carotid bodies sense the high pH, and breathing speeds up.",
+        "why": "A high pH reduces chemoreceptor drive, so breathing slows. Faster breathing would lower PaCO2 and push pH even higher."
+      },
+      "summary": "Acid secreted leaves bicarbonate in the blood; vomiting removes the acid so the tide is never used up; lost water, chloride and potassium make the kidneys keep the bicarbonate; bicarbonate and pH stay high; breathing slows and PaCO2 rises, limited by falling PaO2. Saline and potassium chloride let the kidneys excrete the excess."
+    },
+    {
+      "id": "fab-potassium-meal",
+      "title": "Where a meal’s potassium goes",
+      "topic": "electrolyte-balance",
+      "core": [
+        "mass-balance",
+        "compartments"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A plate of potatoes and a banana can carry 30 mmol of potassium, half of all the potassium in your ECF. Trace how internal balance protects your plasma within minutes and external balance removes the load over hours.",
+      "steps": [
+        {
+          "id": "absorb",
+          "label": "K+ absorbed into the ECF",
+          "text": "Potassium from the meal is absorbed from the intestine into the ECF.",
+          "why": "The ECF holds only about 60 mmol of potassium, so a large meal could raise plasma potassium sharply if nothing moved it."
+        },
+        {
+          "id": "insulin",
+          "label": "Insulin stimulates pumps",
+          "text": "Insulin released for the meal’s glucose stimulates sodium–potassium pumps in muscle and liver cells.",
+          "why": "Insulin rises because of the meal’s glucose, which conveniently arrives with its potassium."
+        },
+        {
+          "id": "shift",
+          "label": "K+ moves into cells",
+          "text": "Potassium moves into cells within minutes, so plasma potassium rises only a little.",
+          "why": "This is internal balance: the cells, which hold about 98% of body potassium, act as a temporary store."
+        },
+        {
+          "id": "aldo",
+          "label": "Aldosterone released",
+          "text": "The small rise in plasma potassium stimulates the zona glomerulosa to release aldosterone.",
+          "why": "A high plasma potassium is a direct trigger for aldosterone, separate from the RAAS."
+        },
+        {
+          "id": "principal",
+          "label": "Principal cells retool",
+          "text": "Aldosterone makes principal cells build more sodium channels, potassium channels and sodium–potassium pumps.",
+          "why": "More channels and pumps are what let the principal cells secrete more potassium."
+        },
+        {
+          "id": "secrete",
+          "label": "K+ secreted into tubular fluid",
+          "text": "Principal cells secrete potassium into the tubular fluid of the late distal tubule and collecting duct.",
+          "why": "Almost all filtered potassium was reabsorbed earlier; the potassium in urine is the amount secreted here."
+        },
+        {
+          "id": "excrete",
+          "label": "K+ leaves in urine",
+          "text": "Over the next hours the potassium leaves in the urine, and the cells release their temporary store back into the ECF as the level falls.",
+          "why": "External balance matches output to intake, and internal balance returns to where it started."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Potassium stays in the ECF until the kidneys excrete it hours later.",
+            "why": "If it stayed in the ECF, a single meal could raise plasma potassium dangerously. Insulin moves it into cells within minutes."
+          },
+          {
+            "text": "Potassium moves into bone, where most of the body’s potassium is stored.",
+            "why": "Bone stores calcium and phosphate. About 98% of body potassium is inside cells."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "The rise in plasma potassium switches off aldosterone release, so less potassium is secreted.",
+        "why": "A high plasma potassium stimulates aldosterone release, which raises potassium secretion. Switching it off would let potassium build up."
+      },
+      "summary": "Potassium is absorbed; insulin stimulates sodium–potassium pumps and moves it into cells within minutes; the small rise triggers aldosterone; principal cells build more channels and pumps and secrete potassium; it leaves in the urine over hours."
+    },
+    {
+      "id": "fab-hyponatremia-brain",
+      "title": "Low sodium and the brain: adaptation and the danger of fast correction",
+      "topic": "electrolyte-balance",
+      "core": [
+        "compartments",
+        "homeostasis"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "Brain cells protect themselves from a dilute ECF, but that protection makes treatment risky. Trace the sequence in a patient whose sodium falls over days and is then raised too fast.",
+      "steps": [
+        {
+          "id": "water",
+          "label": "Water gained over sodium",
+          "text": "Water is gained in excess of sodium, for example with SIADH or a thiazide diuretic.",
+          "why": "Hyponatremia is almost always too much water for the sodium, not too little sodium."
+        },
+        {
+          "id": "dilute",
+          "label": "Na+ and osmolality fall",
+          "text": "Plasma sodium and ECF osmolality fall.",
+          "why": "Sodium and its anions are almost all of the ECF’s solute, so extra water dilutes both together."
+        },
+        {
+          "id": "swell",
+          "label": "Brain cells swell",
+          "text": "Water moves into brain cells by osmosis, and they swell inside the rigid skull.",
+          "why": "The ECF is now more dilute than the cells, so water enters them; the skull leaves no room to expand."
+        },
+        {
+          "id": "adapt",
+          "label": "Cells shed solute",
+          "text": "Over about two days, brain cells release potassium and small organic solutes.",
+          "why": "Losing solute lowers the cells’ own osmolality toward the ECF’s, their defense against swelling."
+        },
+        {
+          "id": "back",
+          "label": "Cells shrink back",
+          "text": "With less solute inside, less water is drawn in, and brain cells return toward their normal size.",
+          "why": "This adaptation eases the symptoms, but the cells are now low in solute."
+        },
+        {
+          "id": "fast",
+          "label": "Sodium raised too fast",
+          "text": "Plasma sodium is raised by more than about 8 to 10 mmol/L in 24 hours, and water leaves the adapted cells.",
+          "why": "The adapted cells cannot regain their solute in hours, so a quick rise in ECF osmolality pulls water out of them."
+        },
+        {
+          "id": "damage",
+          "label": "Osmotic demyelination",
+          "text": "Brain cells shrink below normal, and the myelin of the pons is damaged, causing paralysis and trouble speaking and swallowing days later.",
+          "why": "This is why chronic hyponatremia is corrected slowly, unlike sudden hyponatremia with seizures, where the brain has not adapted."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Over about two days, brain cells take up sodium from the plasma, drawing in more water.",
+            "why": "Taking up solute would make the cells swell more. They adapt by releasing potassium and small organic solutes."
+          },
+          {
+            "text": "Over about two days, the skull expands to make room for the swollen brain.",
+            "why": "The adult skull is rigid, which is exactly why brain swelling is dangerous. The cells adapt by losing solute."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Plasma sodium is raised by more than about 8 to 10 mmol/L in 24 hours, and more water rushes into the adapted cells.",
+        "why": "Raising sodium makes the ECF more concentrated than the adapted cells, so water leaves them. It is the shrinking that damages the myelin."
+      },
+      "summary": "Water gained over sodium dilutes the ECF; brain cells swell; over two days they release potassium and organic solutes and shrink back; if sodium is then raised too fast, water leaves the adapted cells, they shrink below normal and the myelin of the pons is damaged. Chronic hyponatremia is corrected by no more than about 8 to 10 mmol/L in the first 24 hours."
+    },
+    {
+      "id": "fab-d5w-route",
+      "title": "Where a liter of D5W ends up",
+      "topic": "fluid-compartments-water",
+      "core": [
+        "compartments",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A bag of 5% glucose in water is isosmotic when it goes in, yet most of it ends up inside cells. Trace one liter from the vein to its final compartments.",
+      "steps": [
+        {
+          "id": "infuse",
+          "label": "D5W enters the plasma",
+          "text": "One liter of D5W runs into a vein and mixes with the plasma.",
+          "why": "Everything given by vein starts in the plasma, whatever its final destination."
+        },
+        {
+          "id": "use",
+          "label": "Cells take up the glucose",
+          "text": "Cells take up the glucose and use it for fuel.",
+          "why": "Glucose is not a lasting solute in the ECF; once cells take it up, it no longer holds water outside them."
+        },
+        {
+          "id": "free",
+          "label": "1 L of free water remains",
+          "text": "What is left is a liter of water with no lasting solute.",
+          "why": "With the glucose gone, the bag behaves like pure water."
+        },
+        {
+          "id": "dilute",
+          "label": "ECF osmolality falls",
+          "text": "The ECF becomes slightly more dilute than the inside of cells.",
+          "why": "Water added without solute lowers the ECF’s osmolality."
+        },
+        {
+          "id": "osmosis",
+          "label": "Water enters cells",
+          "text": "Water crosses plasma membranes into cells until the osmolality inside and outside is equal again.",
+          "why": "Water crosses plasma membranes freely, so it follows the osmotic gradient into cells."
+        },
+        {
+          "id": "split",
+          "label": "Two thirds ICF, one third ECF",
+          "text": "The liter ends up spread through total body water: about 667 mL in cells and 333 mL in the ECF.",
+          "why": "Pure water spreads in proportion to compartment size, and the ICF is about two thirds of body water."
+        },
+        {
+          "id": "plasma",
+          "label": "About 83 mL stays in plasma",
+          "text": "Only one quarter of the ECF share, about 83 mL, stays in the plasma.",
+          "why": "Plasma is about a quarter of the ECF, so it keeps only a small share: D5W replaces water, not blood volume."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "The glucose stays in the ECF and holds the water in the plasma.",
+            "why": "That is how saline behaves, because its sodium stays outside cells. Cells take up glucose, so it cannot hold water outside them."
+          },
+          {
+            "text": "The kidneys excrete the glucose at once, taking the water with them.",
+            "why": "At normal blood glucose the kidneys reabsorb all filtered glucose. Cells take up the infused glucose and use it."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "The liter stays entirely in the ECF: 250 mL in the plasma and 750 mL in the interstitial fluid.",
+        "why": "That is where a liter of 0.9% saline goes, because its sodium stays outside cells. D5W becomes free water, which spreads through total body water, two thirds into cells."
+      },
+      "summary": "D5W enters the plasma; cells take up and use the glucose; a liter of free water is left; the ECF becomes slightly dilute; water enters cells; about 667 mL ends in cells and 333 mL in the ECF, of which only about 83 mL stays in the plasma."
     }
   ]
 }

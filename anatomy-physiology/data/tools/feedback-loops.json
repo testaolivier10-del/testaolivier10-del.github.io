@@ -3456,6 +3456,274 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "fab-osmolality-falls",
+      "title": "Plasma osmolality falls: ADH and thirst switch off",
+      "topic": "fluid-compartments-water",
+      "map": "Plasma osmolarity: ADH and thirst",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "At a summer picnic you drink 1.5 L of water in half an hour. Within the hour you are passing a lot of pale urine, you no longer want a drink, and by evening your plasma osmolality is back near 287 mOsm/kg.",
+      "slots": {
+        "stimulus": {
+          "text": "Plasma osmolality falls below its set point",
+          "short": "Plasma osmolality falls",
+          "why": "Absorbed water adds no solute, so it dilutes the plasma. The loop regulates concentration, holding plasma osmolality near 285 to 290 mOsm/kg."
+        },
+        "sensor": {
+          "text": "Osmoreceptors in the hypothalamus swell and fire less",
+          "short": "Hypothalamic osmoreceptors",
+          "why": "Water enters these sensory receptors from the dilute plasma, so they swell and their firing falls. A change of only 1 to 2% is enough."
+        },
+        "afferent": {
+          "text": "Nerve connections within the hypothalamus",
+          "short": "Within the hypothalamus",
+          "why": "The osmoreceptors sit in the hypothalamus itself, so their signal travels only a short way, to the neurons that make ADH and to the thirst center."
+        },
+        "control": {
+          "text": "The hypothalamus, including its ADH-making neurons and thirst center",
+          "short": "Hypothalamus and thirst center",
+          "why": "The hypothalamus compares plasma osmolality with its set point and drives two responses at once: ADH release and thirst."
+        },
+        "efferent": {
+          "text": "Less ADH released from the posterior pituitary, and the thirst signal switched off",
+          "short": "Less ADH; thirst off",
+          "why": "The ADH-making neurons release less hormone from their endings in the posterior pituitary, so less reaches the kidneys in the blood; the thirst center stops driving you to drink."
+        },
+        "effector": {
+          "text": "Principal cells of the collecting ducts, and your drinking behavior",
+          "short": "Principal cells; drinking",
+          "why": "Two effectors both act on water: the kidneys decide how much water leaves, and drinking decides how much comes in."
+        },
+        "response": {
+          "text": "Aquaporins are withdrawn, large volumes of dilute urine carry off the extra water, and you stop drinking, so plasma osmolality rises back to its set point",
+          "short": "Water excreted: osmolality rises",
+          "why": "Without ADH the collecting ducts become nearly waterproof, so the extra water leaves as urine near 50 mOsm/L. Removing water raises osmolality, opposing the fall."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The adrenal cortex releases more aldosterone",
+          "why": "Aldosterone controls the amount of sodium, which sets ECF volume. This loop corrects concentration by adding or removing water, not salt."
+        },
+        {
+          "text": "Stretch-sensitive sensory receptors in the atria detect the fall in osmolality",
+          "why": "Stretch-sensitive sensory receptors in the atria sense blood volume, not concentration. Osmolality is sensed by osmoreceptors in the hypothalamus."
+        },
+        {
+          "text": "Principal cells insert more aquaporins into their apical membranes",
+          "why": "More aquaporins would keep more water, diluting the plasma further. That is the response to a rise in osmolality."
+        },
+        {
+          "text": "The kidneys excrete extra sodium to restore the concentration",
+          "why": "Losing sodium would lower osmolality even more. The loop fixes a dilute plasma by getting rid of water."
+        }
+      ],
+      "classify": "The response (water excreted, so osmolality rises) opposes the stimulus (osmolality falling), so this is negative feedback. As osmolality returns to the set point, the osmoreceptors return to their usual firing and ADH comes back up to its normal level.",
+      "failure": {
+        "part": "efferent",
+        "q": "A lung tumor releases ADH on its own, whatever the plasma osmolality (SIADH). The person keeps drinking normal amounts. What happens after a large drink of water?",
+        "options": [
+          {
+            "text": "The water is kept: plasma osmolality keeps falling and cells, including brain cells, swell",
+            "why": "Right. The osmoreceptors sense the fall and the hypothalamus cuts its own ADH, but the tumor’s ADH still reaches the principal cells, so their aquaporins stay in and the extra water cannot leave."
+          },
+          {
+            "text": "Nothing unusual happens, because the hypothalamus switches ADH off",
+            "why": "The hypothalamus can only switch off its own ADH. The tumor’s ADH is outside the loop, so the efferent signal stays on."
+          },
+          {
+            "text": "The person becomes very thirsty and drinks even more",
+            "why": "Thirst is still controlled by the osmoreceptors, and the plasma is dilute, so thirst is switched off. The problem is water kept, not water drunk."
+          },
+          {
+            "text": "Plasma osmolality rises, because the kidneys lose too much water",
+            "why": "That happens when ADH is missing, as in diabetes insipidus. Here there is too much ADH, so water is kept."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "fab-ph-fixed-acid",
+      "title": "Blood pH falls from a fixed acid: breathing responds",
+      "topic": "acid-base-regulation",
+      "map": "Blood pH: respiratory control",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "kind": "negative",
+      "scenario": "In untreated type 1 diabetes, ketone bodies pour into the blood faster than tissues can burn them. The hydrogen ions they release use up bicarbonate, and arterial pH starts to fall. Within minutes the person is breathing deeper and faster, and arterial PCO2 drifts down.",
+      "slots": {
+        "stimulus": {
+          "text": "Arterial H+ rises and pH falls, while PCO2 is still normal",
+          "short": "Arterial pH falls",
+          "why": "The acid uses up bicarbonate, so the ratio of bicarbonate to dissolved carbon dioxide falls below 20 and pH falls. The trigger here is a fixed acid, not carbon dioxide."
+        },
+        "sensor": {
+          "text": "Peripheral chemoreceptors in the carotid bodies",
+          "short": "Carotid bodies",
+          "why": "The carotid bodies sense a fall in arterial pH within seconds, whatever the acid. The central chemoreceptors add little at first, because hydrogen ions cross the blood–brain barrier poorly."
+        },
+        "afferent": {
+          "text": "Sensory neurons in the glossopharyngeal nerves",
+          "short": "Glossopharyngeal nerves",
+          "why": "The glossopharyngeal nerves carry the carotid bodies’ signal to the medulla oblongata."
+        },
+        "control": {
+          "text": "The respiratory centers in the medulla oblongata and pons",
+          "short": "Respiratory centers",
+          "why": "These groups of neurons set the rhythm, depth and rate of breathing, and they turn up their output as the carotid bodies fire faster."
+        },
+        "efferent": {
+          "text": "Motor neurons in the phrenic and intercostal nerves",
+          "short": "Phrenic and intercostal nerves",
+          "why": "The phrenic nerves carry the command to the diaphragm, and the intercostal nerves to the intercostal muscles."
+        },
+        "effector": {
+          "text": "The diaphragm and the intercostal muscles",
+          "short": "Diaphragm and intercostals",
+          "why": "The breathing muscles contract harder and more often, raising alveolar ventilation."
+        },
+        "response": {
+          "text": "Deeper, faster breathing blows off carbon dioxide, PCO2 falls, the bicarbonate buffer reaction takes up H+, and pH rises back toward normal",
+          "short": "PCO2 falls: pH rises",
+          "why": "Lowering the bottom of the ratio to match the lower top moves the ratio back toward 20. The pH rises toward normal, though usually not all the way, and the bicarbonate stays low until the kidneys replace it."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Central chemoreceptors, which the acid reaches within seconds",
+          "why": "Hydrogen ions cross the blood–brain barrier poorly, so a fixed acid reaches the central chemoreceptors slowly. The fast response to a fixed acid comes from the carotid bodies."
+        },
+        {
+          "text": "Type A intercalated cells make new bicarbonate",
+          "why": "The kidneys also defend pH, but over hours to days. This loop works in minutes, by changing breathing."
+        },
+        {
+          "text": "Breathing slows to keep more carbon dioxide in the blood",
+          "why": "Keeping carbon dioxide would raise the bottom of the ratio and lower pH further, pushing the variable away from its set point."
+        },
+        {
+          "text": "Baroreceptors in the carotid sinus",
+          "why": "Baroreceptors sit near the carotid bodies but sense stretch from blood pressure, and they report to the cardiovascular center, not the respiratory centers."
+        }
+      ],
+      "classify": "The response (carbon dioxide breathed off, pH rising) opposes the stimulus (pH falling), so this is negative feedback. It is fast and strong but incomplete: it restores the ratio, not the lost bicarbonate.",
+      "failure": {
+        "part": "sensor",
+        "q": "After surgery on both carotid arteries, a man has lost the function of both carotid bodies. Later he develops ketoacidosis. Compared with someone whose carotid bodies work, what happens in the first hours?",
+        "options": [
+          {
+            "text": "His breathing rises less, his PCO2 falls less, and his pH drops further",
+            "why": "Right. The carotid bodies are the fast sensors of a fall in arterial pH. Without them, the central chemoreceptors respond only slowly, so less carbon dioxide is blown off and less of the pH change is offset."
+          },
+          {
+            "text": "Nothing changes, because the central chemoreceptors sense the acid just as fast",
+            "why": "Hydrogen ions cross the blood–brain barrier poorly, so the central chemoreceptors notice a fixed acid slowly."
+          },
+          {
+            "text": "He breathes faster than normal, because the respiratory centers are no longer held back",
+            "why": "The carotid bodies drive breathing up; losing them removes drive, it does not release a brake."
+          },
+          {
+            "text": "His kidneys correct the pH within minutes instead",
+            "why": "The kidneys take hours to start and 3 to 5 days to reach full strength. They cannot stand in for the lungs in the first hours."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "fab-ph-kidney",
+      "title": "Plasma bicarbonate falls for days: the kidneys make new bicarbonate",
+      "topic": "acid-base-regulation",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "For a week a bodybuilder eats a very high-protein diet. The sulfuric acid from its amino acids keeps using up bicarbonate. His breathing barely changes, yet by the end of the week his plasma bicarbonate is steady again and his urine holds several times its usual ammonium.",
+      "slots": {
+        "stimulus": {
+          "text": "Plasma bicarbonate and pH drift down as fixed acid uses up bicarbonate",
+          "short": "Bicarbonate and pH fall",
+          "why": "Sulfuric acid cannot be breathed out. Every H+ it adds uses up one bicarbonate, and only the kidneys can replace it."
+        },
+        "sensor": {
+          "text": "Tubule cells whose own internal pH falls with the plasma",
+          "short": "Tubule cells (their own pH)",
+          "why": "Acid in the plasma makes the fluid inside proximal tubule cells and intercalated cells more acidic too. The cells sense the change in themselves; no separate sensory receptor is involved."
+        },
+        "afferent": {
+          "text": "None: the sensing cells are the responding cells",
+          "short": "None: same cells",
+          "why": "Because the tubule cells both sense and respond, no nerve or hormone has to carry the signal to them."
+        },
+        "control": {
+          "text": "The same tubule cells, which change how many transport proteins and enzymes they run",
+          "short": "Tubule cells set the rate",
+          "why": "Acid inside the cells speeds H+ secretion and the breakdown of glutamine into ammonium; alkali slows them."
+        },
+        "efferent": {
+          "text": "Signals inside the cells that switch on more proton pumps and more glutamine breakdown",
+          "short": "Signals inside the cells",
+          "why": "The command stays inside each cell, turning up the transport proteins and enzymes that secrete H+ and make ammonium."
+        },
+        "effector": {
+          "text": "Proximal tubule cells and type A intercalated cells",
+          "short": "Proximal and type A cells",
+          "why": "Proximal tubule cells make ammonium from glutamine; type A intercalated cells pump H+ into the urine, where it is carried away on phosphate and ammonia."
+        },
+        "response": {
+          "text": "More H+ is excreted as titratable acid and ammonium, each one adding a new bicarbonate to the blood, so bicarbonate and pH rise back",
+          "short": "New bicarbonate: pH rises",
+          "why": "Each H+ excreted leaves one bicarbonate behind in the tubule cell, which enters the blood. Ammonium excretion can rise five- to tenfold over 3 to 5 days, so the daily acid is matched."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Type B intercalated cells secrete more bicarbonate into the urine",
+          "why": "Excreting bicarbonate would lower plasma bicarbonate further. Type B cells are more active when the blood is too alkaline."
+        },
+        {
+          "text": "The lungs breathe out the sulfuric acid",
+          "why": "Only carbon dioxide can leave through the lungs. Sulfuric acid is a fixed acid, and only the kidneys can excrete it."
+        },
+        {
+          "text": "Filtered bicarbonate is let through into the urine",
+          "why": "Losing filtered bicarbonate would make the acid load worse. The kidneys reclaim nearly all of it."
+        }
+      ],
+      "classify": "The response (new bicarbonate added, pH rising) opposes the stimulus (bicarbonate and pH falling), so this is negative feedback. It is slow, taking 3 to 5 days to reach full strength, but it is the only defense that removes fixed acid from the body.",
+      "failure": {
+        "part": "effector",
+        "q": "A man takes acetazolamide, which blocks carbonic anhydrase in his tubule cells, while eating the same high-protein diet. What happens?",
+        "options": [
+          {
+            "text": "Less H+ is made and secreted, filtered bicarbonate is lost in the urine, and his plasma bicarbonate and pH fall further",
+            "why": "Right. The tubule cells make the H+ they secrete from carbon dioxide and water with carbonic anhydrase. Blocked, they reclaim less filtered bicarbonate and add less new bicarbonate, so the acid load wins."
+          },
+          {
+            "text": "Nothing changes, because the proton pumps still work",
+            "why": "The pumps can only move H+ that the cell has made, and carbonic anhydrase makes it."
+          },
+          {
+            "text": "His plasma bicarbonate rises, because less of it is used up in the cells",
+            "why": "Carbonic anhydrase makes bicarbonate as well as H+ inside the cell; without it, less bicarbonate is reclaimed or made, and more is lost in the urine."
+          },
+          {
+            "text": "His urine becomes more acidic",
+            "why": "With less H+ secreted and more bicarbonate left in the tubular fluid, the urine becomes more alkaline."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

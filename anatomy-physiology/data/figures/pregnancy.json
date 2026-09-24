@@ -1,0 +1,38 @@
+{
+  "os-28-18": {
+    "file": "figures/openstax/os-28-18.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.18",
+      "section": "28.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e718d47991c6d285568eff4af498bc564cc2961d",
+      "page": "28-4-changes-during-pregnancy-labor-and-birth"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e718d47991c6d285568eff4af498bc564cc2961d",
+    "alt": "A front-view outline of a woman's torso with the uterus, uterine tubes and ovaries drawn in the pelvis, a small fetus inside the uterus. Two larger shaded shapes rise from the pelvis: a middle one reaching just above the navel and a large one reaching up toward the lower ribs. Three labels at the left mark the three outlines as the end of the first, second and third trimesters.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.18",
+    "labels": [],
+    "w": 1100,
+    "h": 1467,
+    "ext": "jpg"
+  },
+  "os-28-7": {
+    "file": "figures/openstax/os-28-7.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.7",
+      "section": "28.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/60897be75697bc67c3511d1013a90a635030bb41",
+      "page": "28-2-embryonic-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/60897be75697bc67c3511d1013a90a635030bb41",
+    "alt": "Two side views of a pregnant uterus with a fetus inside. Left: the placenta is attached high on the back wall and the opening of the cervix at the bottom is clear. Right: the placenta is attached low and lies across the internal opening of the cervix, blocking the way out.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.7",
+    "labels": [],
+    "w": 1100,
+    "h": 700,
+    "ext": "jpg"
+  }
+}

@@ -1,0 +1,651 @@
+[
+  {
+    "id": "anp-pregnancy-1",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "At 34 weeks, a woman lying on her back for an ultrasound becomes pale and faint, and her blood pressure falls. Rolling her onto her left side fixes it within a minute. What caused the drop?",
+    "options": [
+      "The uterus compressed the inferior vena cava",
+      "The uterus pressed on the aorta and raised afterload",
+      "Lying down triggered a vagal reflex that stopped the heart",
+      "Blood pooled in her lungs when she lay flat on the table"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The heavy uterus can flatten the inferior vena cava against the spine. Less blood returns to the heart, so preload, stroke volume and cardiac output fall, and blood pressure drops. Turning to the left lifts the uterus off the vein.",
+      "options": [
+        "Correct. Less venous return means less preload and less cardiac output.",
+        "Pressure on the aorta could lower flow to the legs, but it would not drop her arm blood pressure this way. The key effect is on venous return.",
+        "Her heart kept beating; she felt faint because her cardiac output fell. The fast recovery on turning shows a mechanical cause.",
+        "Lying flat does not pool blood in the lungs. The problem is blood held back in the lower body."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-2",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A woman at 36 weeks lies flat on her back, and her uterus compresses her inferior vena cava. Predict each variable over the next minute, before she changes position.",
+    "variables": [
+      {
+        "name": "Venous return to the heart",
+        "answer": "down",
+        "why": "The flattened inferior vena cava carries less blood back from the lower body."
+      },
+      {
+        "name": "Stroke volume",
+        "answer": "down",
+        "why": "Less venous return means less filling and less preload, so by the Frank–Starling mechanism the ventricles eject less."
+      },
+      {
+        "name": "Mean arterial pressure",
+        "answer": "down",
+        "why": "Cardiac output falls with stroke volume, so pressure falls."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "The baroreceptor reflex senses the fall in pressure and raises sympathetic drive to the SA node."
+      },
+      {
+        "name": "Blood flow to the placenta",
+        "answer": "down",
+        "why": "The spiral arteries cannot constrict, so placental flow follows the mother's blood pressure and falls with it."
+      }
+    ],
+    "why": {
+      "correct": "Compressing the inferior vena cava cuts venous return and preload, so stroke volume, cardiac output and blood pressure fall. The baroreceptor reflex speeds the heart, but that does not fully make up for the lost filling, and flow to the placenta falls with the pressure."
+    }
+  },
+  {
+    "id": "anp-pregnancy-3",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Compare a healthy woman at 30 weeks of pregnancy with herself before pregnancy. Predict each variable.",
+    "variables": [
+      {
+        "name": "Plasma volume",
+        "answer": "up",
+        "why": "The renin–angiotensin–aldosterone system is switched on, so the kidneys keep sodium and water."
+      },
+      {
+        "name": "Hematocrit",
+        "answer": "down",
+        "why": "Plasma rises by 40 to 50% but red cell mass by only 20 to 30%, so red cells are diluted."
+      },
+      {
+        "name": "Cardiac output",
+        "answer": "up",
+        "why": "Stroke volume rises with the larger blood volume, and heart rate rises too."
+      },
+      {
+        "name": "Total peripheral resistance",
+        "answer": "down",
+        "why": "Progesterone and other signals relax arterioles, and the placenta adds a low-resistance bed."
+      },
+      {
+        "name": "Glomerular filtration rate",
+        "answer": "up",
+        "why": "Renal plasma flow rises by 50 to 80%, so more is filtered."
+      },
+      {
+        "name": "Serum creatinine",
+        "answer": "down",
+        "why": "A higher GFR clears creatinine faster, so its blood level falls."
+      },
+      {
+        "name": "Arterial PCO2",
+        "answer": "down",
+        "why": "Progesterone makes the brainstem more sensitive to carbon dioxide, so minute ventilation rises more than metabolism and more carbon dioxide is breathed off."
+      }
+    ],
+    "why": {
+      "correct": "Pregnancy lowers vascular resistance, which switches on sodium and water retention. The larger plasma volume raises cardiac output and dilutes the red cells. More blood reaches the kidneys, so GFR rises and creatinine falls. Separately, progesterone drives extra breathing, which lowers PCO2."
+    }
+  },
+  {
+    "id": "anp-pregnancy-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Before pregnancy, a woman's heart rate is 72 beats/min and her stroke volume is 70 mL. At 24 weeks, her heart rate is 84 beats/min and her stroke volume is 80 mL. By about what percent has her cardiac output risen?",
+    "options": [
+      "About 14%",
+      "About 20%",
+      "About 33%",
+      "About 50%"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Before: 72 × 70 = 5,040 mL/min. At 24 weeks: 84 × 80 = 6,720 mL/min. 6,720 ÷ 5,040 = 1.33, a rise of about 33%.",
+      "options": [
+        "14% is the rise in stroke volume alone (80 ÷ 70). Cardiac output multiplies heart rate and stroke volume, so both rises count.",
+        "20% is not the rise in either factor; heart rate rose about 17% and stroke volume about 14%.",
+        "Correct. 1.17 × 1.14 = 1.33.",
+        "50% is at the top of the usual range for pregnancy but does not match these numbers."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "In mid-pregnancy, a woman's cardiac output has risen by 40% and her total peripheral resistance has fallen by 30%. Her mean arterial pressure before pregnancy was 90 mm Hg. About what is it now?",
+    "options": [
+      "About 126 mm Hg",
+      "About 108 mm Hg",
+      "About 88 mm Hg",
+      "About 63 mm Hg"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "MAP = CO × TPR. New MAP = 90 × 1.40 × 0.70 = 90 × 0.98 ≈ 88 mm Hg. The fall in resistance slightly outweighs the rise in output.",
+      "options": [
+        "126 mm Hg counts the 40% rise in cardiac output but ignores the fall in resistance.",
+        "108 mm Hg would need a much smaller fall in resistance. With 1.40 × 0.70, the product is just under 1.",
+        "Correct. 90 × 0.98 ≈ 88 mm Hg.",
+        "63 mm Hg counts the 30% fall in resistance but ignores the rise in cardiac output."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "a falling hematocrit in pregnancy means fewer red cells",
+    "q": "At 30 weeks, a healthy woman's hemoglobin is 11.4 g/dL; before pregnancy it was 13.2. Her iron studies are normal. What best explains the change?",
+    "options": [
+      "Her marrow is making fewer red cells than before",
+      "The fetus is destroying her red cells",
+      "She is losing blood through the placenta",
+      "Plasma rose more than red cell mass"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Pregnancy raises plasma volume by 40 to 50% but red cell mass by only 20 to 30%. She has more red cells than before, but they are more diluted, so the concentration falls. A hemoglobin down to about 11 g/dL is expected.",
+      "options": [
+        "Her marrow is making more red cells, driven by erythropoietin. The concentration falls because plasma rises even more.",
+        "The fetus does not destroy maternal red cells. Rh disease is the reverse: maternal antibodies against fetal cells.",
+        "Maternal and fetal blood do not mix across the placenta, and there is no blood loss through it.",
+        "Correct. This is dilutional anemia of pregnancy."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A healthy woman at 32 weeks has an arterial blood gas: pH 7.44, PaCO2 30 mm Hg, bicarbonate 20 mEq/L. How should it be read?",
+    "options": [
+      "Metabolic acidosis with respiratory compensation, which needs urgent treatment",
+      "Normal: compensated respiratory alkalosis of pregnancy",
+      "Respiratory acidosis from the uterus pressing on the diaphragm",
+      "Uncompensated respiratory alkalosis from anxiety and fast breathing"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Progesterone makes the brainstem more sensitive to carbon dioxide, so minute ventilation rises more than metabolism needs and PaCO2 falls to about 30 mm Hg. The kidneys compensate by excreting bicarbonate, so the pH stays near 7.40 to 7.45. This is the expected pattern in pregnancy.",
+      "options": [
+        "A pH of 7.44 is not acidotic, and the low PaCO2 is the primary change here, not a response to acid.",
+        "Correct. This is the normal blood gas of pregnancy.",
+        "A raised diaphragm lowers functional residual capacity, but PaCO2 is low, not high. There is no acidosis.",
+        "The low bicarbonate shows renal compensation, so it is compensated. The cause is progesterone, which acts in every pregnancy."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 29-year-old with a past chlamydia infection has a positive pregnancy test about 7 weeks after her last period, sharp right lower abdominal pain and light vaginal bleeding. Ultrasound shows no pregnancy in the uterus, and her hCG has risen only slowly over two days. What is the most likely explanation?",
+    "options": [
+      "A normal early pregnancy too small to see",
+      "A placenta previa causing early bleeding",
+      "A corpus luteum that has stopped making hCG",
+      "An ectopic pregnancy in a scarred tube"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Scarring from an earlier infection can slow the embryo's trip down the tube, so the blastocyst implants in the tube wall. A positive test with one-sided pain, bleeding, no pregnancy in the uterus and slowly rising hCG points to an ectopic pregnancy, which can rupture as it grows.",
+      "options": [
+        "By 7 weeks with hCG rising, a normal pregnancy inside the uterus is usually visible on ultrasound, and hCG normally doubles every two to three days.",
+        "Placenta previa is a placenta over the cervix, a problem of the second half of pregnancy, not of week 7.",
+        "The corpus luteum does not make hCG; the trophoblast does. And her hCG is rising.",
+        "Correct. This picture fits a tubal ectopic pregnancy."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "At 33 weeks, a woman has sudden painless bleeding of bright red blood. Her uterus is soft and not tender. Before anything else is done, which step should be avoided?",
+    "options": [
+      "Checking her blood pressure and pulse",
+      "An ultrasound to find where the placenta lies",
+      "A digital examination of the cervix",
+      "Placing an intravenous line"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Painless bright red bleeding in the second half of pregnancy suggests placenta previa. A finger in the cervix could push into a placenta lying over it and set off heavy bleeding, so a digital examination is avoided until an ultrasound shows where the placenta is.",
+      "options": [
+        "Vital signs are needed to judge how much blood she has lost. They are safe.",
+        "Ultrasound is exactly what finds the placenta's position, and it is safe.",
+        "Correct. A digital cervical examination can provoke heavy bleeding from a placenta previa.",
+        "An intravenous line prepares for fluid or blood replacement and is appropriate."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-10",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A woman at 34 weeks develops preeclampsia. Compare her with a healthy woman at the same stage of pregnancy and predict each variable.",
+    "variables": [
+      {
+        "name": "Total peripheral resistance",
+        "answer": "up",
+        "why": "Damaged endothelium makes less of the signals that relax arterioles, so they constrict."
+      },
+      {
+        "name": "Mean arterial pressure",
+        "answer": "up",
+        "why": "Pressure is cardiac output times resistance, and resistance has risen."
+      },
+      {
+        "name": "Plasma volume",
+        "answer": "down",
+        "why": "Leaky capillaries let fluid move into the tissues, so less stays in the blood."
+      },
+      {
+        "name": "Glomerular filtration rate",
+        "answer": "down",
+        "why": "The glomerular endothelium swells and narrows the capillaries, so less is filtered."
+      },
+      {
+        "name": "Protein in the urine",
+        "answer": "up",
+        "why": "The damaged filtration membrane lets plasma proteins through."
+      },
+      {
+        "name": "Platelet count",
+        "answer": "down",
+        "why": "Platelets are used up as they stick to damaged endothelium."
+      }
+    ],
+    "why": {
+      "correct": "Preeclampsia begins with a poorly supplied placenta that releases factors blocking vessel growth. They damage the mother's endothelium everywhere: arterioles constrict and pressure rises, capillaries leak and plasma volume falls, the glomeruli filter less and leak protein, and platelets are consumed."
+    }
+  },
+  {
+    "id": "anp-pregnancy-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A baby born to a mother with gestational diabetes is large, and two hours after birth his blood glucose is dangerously low. Why is it low?",
+    "options": [
+      "His extra insulin outlasts the glucose supply",
+      "He inherited type 1 diabetes and makes no insulin",
+      "Her insulin crossed the placenta and is still acting on him",
+      "His liver cannot yet store any glycogen for use after birth"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Before birth, high maternal glucose crossed the placenta, and his pancreas adapted by secreting extra insulin, which also made him grow large. Cutting the cord stopped the glucose supply at once, but his pancreas kept secreting extra insulin for a while, so his glucose fell.",
+      "options": [
+        "Correct. Extra fetal insulin continues after the glucose supply stops.",
+        "Type 1 diabetes causes high glucose, not low, and it does not present at birth.",
+        "Maternal insulin is a protein too large to cross the placenta.",
+        "A newborn's liver does store glycogen late in pregnancy. The problem is the extra insulin."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Screening for gestational diabetes is done at weeks 24 to 28, not at the first visit. Why does the condition usually appear in the second half of pregnancy?",
+    "options": [
+      "The fetus begins to secrete insulin into the mother",
+      "The mother's pancreas shrinks as the growing uterus presses on it",
+      "hCG blocks insulin release most strongly late in pregnancy",
+      "Insulin-resisting placental hormones rise"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Human placental lactogen and the other hormones that make the mother's cells resist insulin rise with the mass of the placenta, so the resistance is strongest late in pregnancy. That is when beta cells that cannot keep up are unmasked.",
+      "options": [
+        "Fetal insulin does not cross to the mother, and it would lower her glucose, not raise it.",
+        "The mother's beta cells multiply in pregnancy. Pressure from the uterus does not shrink the pancreas.",
+        "hCG peaks around week 10 and then falls, and it is not the main cause of insulin resistance.",
+        "Correct. The resistance grows with the placenta."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-13",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Select every change in pregnancy that comes mainly from progesterone.",
+    "options": [
+      "Relaxation of the lower esophageal sphincter",
+      "A rise in minute ventilation",
+      "Widening of the ureters",
+      "A rise in clotting factors made by the liver",
+      "Slower movement through the gut",
+      "Growth of the uterine smooth muscle"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Progesterone relaxes smooth muscle, which explains the relaxed lower esophageal sphincter, the wider ureters and the slower gut. It also makes the brainstem more sensitive to carbon dioxide, raising ventilation. Estrogens drive the rise in liver clotting factors and the growth of the uterine muscle.",
+      "options": [
+        "Correct. Relaxed sphincter muscle lets acid reflux.",
+        "Correct. Progesterone raises the brainstem's sensitivity to carbon dioxide.",
+        "Correct. Relaxed ureteral smooth muscle slows urine flow.",
+        "Estrogens, not progesterone, make the liver produce more clotting factors.",
+        "Correct. Relaxed gut smooth muscle slows transit.",
+        "Estrogens mainly drive the growth of the uterine muscle. Progesterone keeps that muscle quiet but does not make it grow."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "At 28 weeks, a woman's serum creatinine is 1.0 mg/dL. The lab marks it normal, because the adult range goes up to 1.1. Why should her clinician be concerned?",
+    "options": [
+      "Creatinine rises in pregnancy, so this value is too low",
+      "Her GFR should be higher, so creatinine should be lower",
+      "Creatinine cannot be measured accurately in pregnancy",
+      "The fetus adds creatinine to her blood, so 1.0 means fetal kidney disease"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Pregnancy raises GFR by about 50%, so creatinine is cleared faster and a normal pregnant value is lower, often about 0.4 to 0.8 mg/dL. A value of 1.0 suggests her filtration has fallen, for example from preeclampsia.",
+      "options": [
+        "It is the reverse: creatinine falls in pregnancy.",
+        "Correct. A higher GFR should bring her creatinine down, so a normal-range value hides reduced filtration.",
+        "Creatinine is measured as usual in pregnancy. The issue is reading it against the right range.",
+        "The fetus's creatinine is small in amount, and a raised maternal value points to the mother's kidneys."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "Why is a bladder infection in pregnancy more likely to spread to the kidney than in a woman who is not pregnant?",
+    "options": [
+      "The ureters widen and urine flows more slowly",
+      "The higher GFR washes bacteria upward",
+      "Estrogen weakens the bladder's lining",
+      "Pregnant women empty the bladder less often"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Progesterone relaxes the smooth muscle of the ureters and the uterus presses on them, so they widen and urine moves slowly. Bacteria can climb more easily from the bladder to the kidney against the sluggish flow.",
+      "options": [
+        "Correct. Wide, slow ureters let bacteria climb.",
+        "Urine flows down the ureters, however much is filtered. A higher GFR does not push bacteria up.",
+        "The main change is in the ureters, not a weakened bladder lining.",
+        "Pregnant women usually empty the bladder more often, because the uterus presses on it."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-16",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-28-18",
+    "pin": "end-of-2nd-trimester",
+    "q": "The pinned outline shows the height of the uterus at the end of which trimester?",
+    "options": [
+      "End of the first trimester",
+      "End of the second trimester",
+      "End of the third trimester",
+      "Before pregnancy"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "At the end of the second trimester, about week 27, the top of the uterus lies a few centimeters above the navel.",
+      "options": [
+        "At the end of the first trimester, the uterus has only just risen out of the pelvis.",
+        "Correct. The middle outline, above the navel, marks the end of the second trimester.",
+        "At the end of the third trimester, the uterus reaches up toward the bottom of the sternum.",
+        "Before pregnancy, the uterus lies entirely in the pelvis."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "At a checkup, a woman's fundal height, measured from the pubic symphysis, is 22 cm. Her dates put her at 30 weeks. What does the mismatch suggest?",
+    "options": [
+      "The fetus is larger than expected",
+      "The measurement is normal for 30 weeks",
+      "Slow fetal growth or too little amniotic fluid",
+      "She is carrying twins, which crowd each other"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Between weeks 20 and 36, fundal height in centimeters roughly equals the weeks of pregnancy, so about 30 cm is expected. A measurement 8 cm short suggests a small fetus, too little amniotic fluid, or wrong dates, and an ultrasound is needed.",
+      "options": [
+        "A larger fetus would make the fundal height greater than the weeks, not smaller.",
+        "At 30 weeks, about 30 cm is expected. 22 cm is well short.",
+        "Correct. A low fundal height points to slow growth or low fluid.",
+        "Twins would make the uterus larger than expected, not smaller."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-18",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A student outlined how preeclampsia develops. One step is wrong. Which one?",
+    "options": [
+      "The cytotrophoblast fails to widen the spiral arteries fully",
+      "The poorly supplied placenta releases factors that block vessel growth",
+      "The mother's endothelium is damaged throughout her body",
+      "Her arterioles dilate, lowering total peripheral resistance",
+      "Her blood pressure rises and protein leaks into her urine"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Damaged endothelium makes fewer of the signals that relax arterioles, so in preeclampsia the arterioles constrict and total peripheral resistance rises. That is what raises the blood pressure.",
+      "options": [
+        "This step is right. Shallow remodeling of the spiral arteries is the starting point.",
+        "This step is right. The stressed placenta releases factors that block the growth signals the endothelium needs.",
+        "This step is right. The damage is widespread, which is why many organs are affected.",
+        "This is the error. The arterioles constrict, so resistance rises.",
+        "This step is right. Higher resistance raises pressure, and damaged glomeruli leak protein."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "At 35 weeks, a woman with high blood pressure has sudden severe abdominal pain, a hard, tender uterus and a small amount of dark blood from the vagina. Which condition fits best?",
+    "options": [
+      "Placenta previa",
+      "Placental abruption",
+      "An ectopic pregnancy",
+      "Normal late-pregnancy discomfort"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A normally placed placenta separating from the uterine wall bleeds behind the placenta, so the bleeding is painful, the uterus is hard and tender, and much of the blood may stay hidden. High blood pressure is a common link. This is placental abruption.",
+      "options": [
+        "Placenta previa bleeds painlessly, with bright red blood and a soft uterus.",
+        "Correct. Painful bleeding with a hard, tender uterus is the pattern of abruption.",
+        "An ectopic pregnancy is a problem of the first weeks, not of week 35.",
+        "Sudden severe pain with bleeding and a hard, tender uterus is never normal."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "During an emergency, a pregnant woman at 38 weeks stops breathing. Her blood oxygen saturation falls faster than a nonpregnant woman's would. Which change of pregnancy mainly explains this?",
+    "options": [
+      "Her vital capacity has fallen by half",
+      "Her tidal volume is smaller",
+      "Smaller FRC and higher oxygen use",
+      "Her fetal hemoglobin takes oxygen from her own blood cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The raised diaphragm lowers her functional residual capacity by about 20%, so she holds less oxygen in her lungs between breaths. At the same time she and the fetus use more oxygen. With a smaller store used faster, her saturation drops sooner.",
+      "options": [
+        "Vital capacity stays about the same in pregnancy.",
+        "Tidal volume rises in pregnancy, by about 30 to 50%.",
+        "Correct. A smaller reserve and a higher use rate make her desaturate faster.",
+        "The mother has adult hemoglobin. The fetus takes oxygen across the placenta, but that is not what empties her lung reserve."
+      ]
+    }
+  },
+  {
+    "id": "anp-pregnancy-21",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Put the steps of preeclampsia in order.",
+    "options": [
+      "The spiral arteries are only partly remodeled and stay narrow",
+      "The placenta receives too little maternal blood",
+      "The placenta releases factors that block blood vessel growth",
+      "The mother's endothelium is damaged throughout her body",
+      "Her arterioles constrict and her capillaries leak",
+      "Blood pressure rises and protein appears in her urine"
+    ],
+    "why": {
+      "correct": "Shallow remodeling of the spiral arteries early in pregnancy leaves the placenta short of blood. The stressed placenta releases factors that block vessel growth, which damage the mother's endothelium everywhere. Constricted arterioles raise the blood pressure, and damaged glomeruli leak protein."
+    }
+  },
+  {
+    "id": "anp-pregnancy-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Where do most ectopic pregnancies implant?",
+    "options": [
+      "In the ovary",
+      "In the abdominal cavity",
+      "In the cervix",
+      "In a uterine tube"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "More than 95% of ectopic pregnancies implant in a uterine tube, most often in the ampulla.",
+      "options": [
+        "An ovarian pregnancy happens but is rare.",
+        "An abdominal pregnancy happens but is rare.",
+        "A pregnancy implanted in the cervix happens but is rare.",
+        "Correct. The uterine tube is by far the most common site."
+      ]
+    }
+  }
+]

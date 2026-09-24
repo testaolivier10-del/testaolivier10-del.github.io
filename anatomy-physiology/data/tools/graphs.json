@@ -19754,6 +19754,3101 @@
      }
     }
    ]
+  },
+  {
+    "id": "fab-ph-pco2",
+    "title": "Blood pH and PCO2 at a fixed bicarbonate",
+    "topic": "acid-base-regulation",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "intro": "Each line is the Henderson–Hasselbalch equation, pH = 6.1 + log(HCO3− ÷ (0.03 × PCO2)), drawn for one bicarbonate concentration. Moving along a line is a change in breathing; moving from one line to another is a change in bicarbonate.",
+    "alt": "Blood pH against arterial PCO2 from 20 to 90 millimeters of mercury, with bicarbonate held at 24 millimoles per liter. The line falls as PCO2 rises: pH about 7.7 at 20, 7.4 at 40, 7.26 at 55 and 7.1 at 80. Dashed lines mark the normal pH range of 7.35 to 7.45.",
+    "x": {
+      "min": 20,
+      "max": 90,
+      "label": "Arterial PCO2",
+      "unit": "mm Hg",
+      "ticks": [
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90
+      ]
+    },
+    "panels": [
+      {
+        "y": {
+          "min": 6.6,
+          "max": 8,
+          "label": "Blood pH",
+          "unitless": true,
+          "ticks": [
+            6.6,
+            6.8,
+            7,
+            7.2,
+            7.4,
+            7.6,
+            7.8,
+            8
+          ]
+        },
+        "series": [
+          {
+            "id": "hco3-24",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                20,
+                7.7
+              ],
+              [
+                25,
+                7.61
+              ],
+              [
+                30,
+                7.53
+              ],
+              [
+                35,
+                7.46
+              ],
+              [
+                40,
+                7.4
+              ],
+              [
+                45,
+                7.35
+              ],
+              [
+                50,
+                7.3
+              ],
+              [
+                55,
+                7.26
+              ],
+              [
+                60,
+                7.22
+              ],
+              [
+                70,
+                7.16
+              ],
+              [
+                80,
+                7.1
+              ],
+              [
+                90,
+                7.05
+              ]
+            ],
+            "label": "HCO3− 24 mmol/L",
+            "labelAt": [
+              62,
+              7.5
+            ]
+          }
+        ],
+        "hlines": [
+          {
+            "y": 7.45,
+            "label": "7.45",
+            "dash": true,
+            "faint": true
+          },
+          {
+            "y": 7.35,
+            "label": "7.35",
+            "dash": true,
+            "faint": true
+          }
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "low-pco2",
+        "x0": 20,
+        "x1": 35,
+        "label": "PCO2 below 35"
+      },
+      {
+        "id": "normal-pco2",
+        "x0": 35,
+        "x1": 45,
+        "label": "normal PCO2"
+      },
+      {
+        "id": "high-pco2",
+        "x0": 45,
+        "x1": 90,
+        "label": "PCO2 above 45"
+      }
+    ],
+    "questions": [
+      {
+        "id": "ph-at-40",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "With bicarbonate at 24 mmol/L, read the pH at a normal PCO2 of 40 mm Hg.",
+        "answer": 7.4,
+        "tol": 0.03,
+        "unit": "",
+        "show": {
+          "x": 40,
+          "y": 7.4
+        },
+        "why": "About 7.40. Dissolved carbon dioxide is 0.03 × 40 = 1.2 mmol/L, the ratio is 24 ÷ 1.2 = 20, and 6.1 + log 20 = 6.1 + 1.3 = 7.4."
+      },
+      {
+        "id": "ph-at-80",
+        "type": "value",
+        "level": "apply",
+        "diff": 2,
+        "q": "A sedative overdose doubles PCO2 to 80 mm Hg before the kidneys act. Read the pH.",
+        "answer": 7.1,
+        "tol": 0.03,
+        "unit": "",
+        "show": {
+          "x": 80,
+          "y": 7.1
+        },
+        "why": "About 7.10. Doubling PCO2 halves the ratio, from 20 to 10, and halving the ratio lowers pH by 0.3."
+      },
+      {
+        "id": "pco2-for-730",
+        "type": "value",
+        "level": "apply",
+        "diff": 2,
+        "q": "At what PCO2 does this line reach a pH of 7.30?",
+        "answer": 50,
+        "tol": 2.5,
+        "unit": "mm Hg",
+        "show": {
+          "x": 50,
+          "y": 7.3
+        },
+        "why": "About 50 mm Hg. A pH of 7.3 needs a ratio of about 16: 24 ÷ 16 = 1.5 mmol/L of dissolved carbon dioxide, and 1.5 ÷ 0.03 = 50 mm Hg."
+      },
+      {
+        "id": "acid-region",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "With bicarbonate held at 24 mmol/L, in which region does the pH fall below 7.35?",
+        "options": [
+          "PCO2 above 45 mm Hg",
+          "Normal PCO2, 35 to 45 mm Hg",
+          "PCO2 below 35 mm Hg",
+          "Nowhere: pH depends only on bicarbonate"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "high-pco2"
+        },
+        "why": {
+          "correct": "Above about 45 mm Hg the line drops below 7.35. With bicarbonate unchanged, carbon dioxide retained by too little breathing is enough to make the blood acidic.",
+          "options": [
+            "Right: a high PCO2 lowers the ratio below about 18.",
+            "In the normal range the ratio stays close to 20 and pH stays within 7.35 to 7.45.",
+            "A low PCO2 raises the ratio, so pH rises: this is where the blood becomes alkaline.",
+            "pH depends on the ratio of bicarbonate to carbon dioxide, so PCO2 matters as much as bicarbonate."
+          ]
+        }
+      },
+      {
+        "id": "half-bicarb",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 2,
+        "q": "A fixed acid uses up half the bicarbonate, leaving 12 mmol/L. How does the line change?",
+        "options": [
+          "It shifts down by about 0.3 pH units at every PCO2",
+          "It shifts up by about 0.3 pH units at every PCO2",
+          "It gets steeper but still passes through 7.4 at a PCO2 of 40",
+          "It does not change, because PCO2 has not changed"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "hco3-12",
+              "cls": "lo",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  20,
+                  7.4
+                ],
+                [
+                  25,
+                  7.3
+                ],
+                [
+                  30,
+                  7.22
+                ],
+                [
+                  35,
+                  7.16
+                ],
+                [
+                  40,
+                  7.1
+                ],
+                [
+                  45,
+                  7.05
+                ],
+                [
+                  50,
+                  7
+                ],
+                [
+                  55,
+                  6.96
+                ],
+                [
+                  60,
+                  6.92
+                ],
+                [
+                  70,
+                  6.86
+                ],
+                [
+                  80,
+                  6.8
+                ],
+                [
+                  90,
+                  6.75
+                ]
+              ],
+              "label": "HCO3− 12",
+              "labelAt": [
+                30,
+                7.12
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "Halving bicarbonate halves the ratio at every PCO2, and halving the ratio lowers pH by 0.3. At a PCO2 of 40 the pH is now 7.10.",
+          "options": [
+            "Right: the whole line drops by log 2, about 0.3.",
+            "Less bicarbonate lowers the ratio; the line moves down, not up.",
+            "Halving the top of the ratio changes pH by the same amount at every PCO2, so the line moves down without changing shape.",
+            "The line is drawn for one bicarbonate. A new bicarbonate means a new line, even at the same PCO2."
+          ]
+        }
+      },
+      {
+        "id": "lungs-respond",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "On the 12 mmol/L line, the person now breathes harder and lowers PCO2 from 40 to 25 mm Hg. Where does the blood move?",
+        "options": [
+          "Left along the 12 mmol/L line, with pH rising from 7.10 to about 7.30",
+          "Back onto the 24 mmol/L line at a pH of 7.40",
+          "Right along the 12 mmol/L line, with pH falling further",
+          "Straight up, because breathing adds bicarbonate"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "hco3-12b",
+              "cls": "lo",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  20,
+                  7.4
+                ],
+                [
+                  25,
+                  7.3
+                ],
+                [
+                  30,
+                  7.22
+                ],
+                [
+                  35,
+                  7.16
+                ],
+                [
+                  40,
+                  7.1
+                ],
+                [
+                  45,
+                  7.05
+                ],
+                [
+                  50,
+                  7
+                ],
+                [
+                  55,
+                  6.96
+                ],
+                [
+                  60,
+                  6.92
+                ],
+                [
+                  70,
+                  6.86
+                ],
+                [
+                  80,
+                  6.8
+                ],
+                [
+                  90,
+                  6.75
+                ]
+              ],
+              "label": "HCO3− 12",
+              "labelAt": [
+                30,
+                7.12
+              ]
+            }
+          ],
+          "marks": [
+            {
+              "x": 40,
+              "y": 7.1,
+              "label": "before"
+            },
+            {
+              "x": 25,
+              "y": 7.3,
+              "label": "after breathing harder"
+            }
+          ]
+        },
+        "why": {
+          "correct": "Breathing changes PCO2, not bicarbonate, so the blood stays on the 12 mmol/L line. At 25 mm Hg the ratio is 12 ÷ 0.75 = 16, and pH is 7.30: better, but bicarbonate is still half normal.",
+          "options": [
+            "Right: the lungs restore part of the ratio, not the bicarbonate.",
+            "Only the kidneys can replace the bicarbonate that the acid used up; breathing cannot put the blood back on the 24 line.",
+            "Breathing harder lowers PCO2, which is a move to the left, and pH rises.",
+            "Breathing removes carbon dioxide; it adds no bicarbonate."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fab-potassium-rmp",
+    "title": "Plasma potassium and the resting potential",
+    "topic": "electrolyte-balance",
+    "core": [
+      "homeostasis",
+      "gradients"
+    ],
+    "intro": "Schematic resting potential of a skeletal or heart muscle cell as plasma potassium changes, with threshold held at about −55 mV. The gap between the line and threshold is how far a cell must be pushed to fire.",
+    "alt": "Resting membrane potential in millivolts against plasma potassium from 2 to 8 millimoles per liter. The line rises from about −108 millivolts at 2 to −90 at 4 and about −72 at 8. A dashed line marks threshold at −55 millivolts.",
+    "x": {
+      "min": 2,
+      "max": 8,
+      "label": "Plasma potassium",
+      "unit": "mmol/L",
+      "ticks": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "panels": [
+      {
+        "y": {
+          "min": -115,
+          "max": -40,
+          "label": "Membrane potential",
+          "unit": "mV",
+          "ticks": [
+            -110,
+            -100,
+            -90,
+            -80,
+            -70,
+            -60,
+            -50,
+            -40
+          ]
+        },
+        "series": [
+          {
+            "id": "rest",
+            "cls": "memb",
+            "curve": "smooth",
+            "pts": [
+              [
+                2,
+                -108.5
+              ],
+              [
+                2.5,
+                -102.6
+              ],
+              [
+                3,
+                -97.7
+              ],
+              [
+                3.5,
+                -93.6
+              ],
+              [
+                4,
+                -90
+              ],
+              [
+                4.5,
+                -86.9
+              ],
+              [
+                5,
+                -84
+              ],
+              [
+                5.5,
+                -81.5
+              ],
+              [
+                6,
+                -79.2
+              ],
+              [
+                6.5,
+                -77
+              ],
+              [
+                7,
+                -75.1
+              ],
+              [
+                7.5,
+                -73.2
+              ],
+              [
+                8,
+                -71.5
+              ]
+            ],
+            "label": "resting potential",
+            "labelAt": [
+              6.3,
+              -84
+            ]
+          }
+        ],
+        "hlines": [
+          {
+            "y": -55,
+            "label": "threshold",
+            "dash": true
+          }
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "hypo",
+        "x0": 2,
+        "x1": 3.5,
+        "label": "below 3.5"
+      },
+      {
+        "id": "normal",
+        "x0": 3.5,
+        "x1": 5,
+        "label": "normal range"
+      },
+      {
+        "id": "hyper",
+        "x0": 5,
+        "x1": 8,
+        "label": "above 5.0"
+      }
+    ],
+    "questions": [
+      {
+        "id": "rest-at-4",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "Read the resting potential at a normal plasma potassium of 4 mmol/L.",
+        "answer": -90,
+        "tol": 3,
+        "unit": "mV",
+        "show": {
+          "x": 4,
+          "y": -90
+        },
+        "why": "About −90 mV, set mainly by potassium leaking out of the cell down its concentration gradient."
+      },
+      {
+        "id": "gap-at-7",
+        "type": "value",
+        "level": "apply",
+        "diff": 2,
+        "q": "At a plasma potassium of 7 mmol/L, how far is the resting potential from threshold?",
+        "answer": 20,
+        "tol": 3,
+        "unit": "mV",
+        "show": {
+          "x": 7,
+          "y": -75
+        },
+        "why": "The line sits at about −75 mV and threshold at −55 mV, a gap of about 20 mV instead of the usual 35. More potassium outside means less leaks out, so the resting potential moves toward threshold."
+      },
+      {
+        "id": "which-hypo",
+        "type": "phase",
+        "level": "recall",
+        "diff": 1,
+        "q": "In which region is the cell hyperpolarized by hypokalemia?",
+        "options": [
+          "Plasma potassium below 3.5 mmol/L",
+          "Plasma potassium from 3.5 to 5.0 mmol/L",
+          "Plasma potassium above 5.0 mmol/L"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "hypo"
+        },
+        "why": {
+          "correct": "Below 3.5 mmol/L more potassium leaks out of cells, so the resting potential becomes more negative and skeletal muscle is harder to excite: weakness. Heart cells also repolarize more slowly, which causes arrhythmias.",
+          "options": [
+            "Right: hypokalemia, below 3.5 mmol/L.",
+            "This is the normal range.",
+            "Above 5.0 is hyperkalemia, which moves the resting potential toward threshold, not away from it."
+          ]
+        }
+      },
+      {
+        "id": "iv-calcium",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "A patient with a plasma potassium of 7 mmol/L is given calcium by vein. What changes on the graph?",
+        "options": [
+          "The threshold line moves up (less negative), widening the gap",
+          "The patient’s point moves left, because calcium lowers potassium",
+          "The resting potential line moves down (more negative)",
+          "Nothing: calcium does not act on heart cells"
+        ],
+        "correct": 0,
+        "overlay": {
+          "hlines": [
+            {
+              "y": -47,
+              "label": "threshold with IV calcium"
+            }
+          ],
+          "series": [],
+          "marks": [
+            {
+              "x": 7,
+              "y": -75,
+              "label": "patient"
+            }
+          ]
+        },
+        "why": {
+          "correct": "IV calcium raises the threshold of heart muscle cells, restoring the gap between rest and threshold and protecting the heart for 30 to 60 minutes. It does not lower potassium at all.",
+          "options": [
+            "Right: calcium moves threshold, not potassium.",
+            "Calcium leaves plasma potassium where it is; insulin with glucose, binders and dialysis lower it.",
+            "The resting potential is set by potassium, which calcium does not change.",
+            "Calcium is the first treatment for dangerous hyperkalemia precisely because it acts on heart cells."
+          ]
+        }
+      },
+      {
+        "id": "insulin",
+        "type": "shift",
+        "level": "apply",
+        "diff": 2,
+        "q": "Instead, insulin with glucose is given. Where does the patient’s point go over the next 30 minutes?",
+        "options": [
+          "Left along the same line, toward a lower potassium and a more negative resting potential",
+          "Right along the line, toward threshold",
+          "The line itself shifts up",
+          "It stays put until the kidneys excrete potassium"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [],
+          "marks": [
+            {
+              "x": 7,
+              "y": -75,
+              "label": "before"
+            },
+            {
+              "x": 5.5,
+              "y": -81.5,
+              "label": "after insulin"
+            }
+          ]
+        },
+        "why": {
+          "correct": "Insulin stimulates sodium–potassium pumps, moving potassium into cells. Plasma potassium falls, and the cell moves back along the same line, away from threshold. The body’s total potassium has not changed.",
+          "options": [
+            "Right: a shift into cells lowers the plasma value within minutes.",
+            "Insulin lowers plasma potassium, a move to the left.",
+            "The line shows how the resting potential depends on potassium; insulin changes the potassium, not that relationship.",
+            "The ECF holds under 2% of body potassium, so moving some into cells lowers plasma potassium within minutes, before any is excreted."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fab-adh-osmolality",
+    "title": "ADH and thirst against plasma osmolality",
+    "topic": "fluid-compartments-water",
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "intro": "Plasma ADH as plasma osmolality changes, with blood volume normal. Values are schematic, shaped on studies of healthy adults: ADH starts to rise at about 280 to 285 mOsm/kg, and thirst switches on a little higher.",
+    "alt": "Plasma ADH in picograms per milliliter against plasma osmolality from 270 to 310 milliosmoles per kilogram. ADH stays near 0.5 below about 282, then rises steadily: about 3.6 at 290, 7.6 at 300 and 11.6 at 310. A vertical line at about 293 marks where thirst switches on.",
+    "x": {
+      "min": 270,
+      "max": 310,
+      "label": "Plasma osmolality",
+      "unit": "mOsm/kg",
+      "ticks": [
+        270,
+        275,
+        280,
+        285,
+        290,
+        295,
+        300,
+        305,
+        310
+      ]
+    },
+    "panels": [
+      {
+        "y": {
+          "min": 0,
+          "max": 14,
+          "label": "Plasma ADH",
+          "unit": "pg/mL",
+          "ticks": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14
+          ]
+        },
+        "series": [
+          {
+            "id": "adh",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                270,
+                0.5
+              ],
+              [
+                275,
+                0.5
+              ],
+              [
+                280,
+                0.5
+              ],
+              [
+                282,
+                0.6
+              ],
+              [
+                285,
+                1.6
+              ],
+              [
+                290,
+                3.6
+              ],
+              [
+                295,
+                5.6
+              ],
+              [
+                300,
+                7.6
+              ],
+              [
+                305,
+                9.6
+              ],
+              [
+                310,
+                11.6
+              ]
+            ],
+            "label": "normal blood volume",
+            "labelAt": [
+              301,
+              5.2
+            ]
+          }
+        ]
+      }
+    ],
+    "vlines": [
+      {
+        "x": 293,
+        "label": "thirst on"
+      }
+    ],
+    "regions": [
+      {
+        "id": "below",
+        "x0": 270,
+        "x1": 282,
+        "label": "ADH at baseline"
+      },
+      {
+        "id": "adh-only",
+        "x0": 282,
+        "x1": 293,
+        "label": "ADH rising, no thirst"
+      },
+      {
+        "id": "both",
+        "x0": 293,
+        "x1": 310,
+        "label": "ADH and thirst"
+      }
+    ],
+    "questions": [
+      {
+        "id": "adh-290",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "Read the plasma ADH at an osmolality of 290 mOsm/kg.",
+        "answer": 3.6,
+        "tol": 0.8,
+        "unit": "pg/mL",
+        "show": {
+          "x": 290,
+          "y": 3.6
+        },
+        "why": "About 3.6 pg/mL. Near the set point there is always some ADH, so the kidneys can move urine concentration either way."
+      },
+      {
+        "id": "threshold",
+        "type": "value",
+        "level": "apply",
+        "diff": 2,
+        "q": "At about what osmolality does ADH begin to rise above its baseline?",
+        "answer": 282,
+        "tol": 3,
+        "unit": "mOsm/kg",
+        "show": {
+          "x": 282,
+          "y": 0.6
+        },
+        "why": "About 280 to 285 mOsm/kg. Above that, each small rise in osmolality adds more ADH, which is why the osmoreceptors can correct a change of only 1 to 2%."
+      },
+      {
+        "id": "kidneys-first",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "In which range do your kidneys start saving water before you feel thirsty?",
+        "options": [
+          "ADH rising, no thirst",
+          "ADH at baseline",
+          "ADH and thirst",
+          "Thirst always comes first"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "adh-only"
+        },
+        "why": {
+          "correct": "ADH rises from about 282 mOsm/kg, but thirst switches on only near 293. So everyday rises are corrected by the kidneys saving water before you notice anything; thirst takes over for larger rises, and only drinking can replace water already lost.",
+          "options": [
+            "Right: the ADH threshold is lower than the thirst threshold.",
+            "Here plasma is dilute and ADH is at its lowest, so the kidneys are passing extra water, not saving it.",
+            "By this range thirst has switched on too.",
+            "In most studies thirst switches on at a slightly higher osmolality than ADH starts to rise."
+          ]
+        }
+      },
+      {
+        "id": "after-bleed",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "After a person loses about 15% of her blood volume, how does the line change?",
+        "options": [
+          "It shifts left and gets steeper: more ADH at every osmolality",
+          "It shifts right: less ADH at every osmolality",
+          "It flattens: ADH stops responding to osmolality",
+          "It does not change, because the line depends only on osmolality"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "low-volume",
+              "cls": "hi",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  270,
+                  1.2
+                ],
+                [
+                  275,
+                  2.6
+                ],
+                [
+                  280,
+                  4.4
+                ],
+                [
+                  285,
+                  6.4
+                ],
+                [
+                  290,
+                  8.6
+                ],
+                [
+                  295,
+                  11
+                ],
+                [
+                  298,
+                  12.6
+                ]
+              ],
+              "label": "blood volume down 15%",
+              "labelAt": [
+                283,
+                9.5
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "A fall in blood volume of more than about 5 to 10%, sensed by stretch-sensitive sensory receptors in the atria and large vessels, adds its own drive to ADH release. The kidneys then keep water even when the plasma is normal or dilute: volume wins over concentration.",
+          "options": [
+            "Right: volume loss lowers the threshold and raises the sensitivity.",
+            "Losing volume increases ADH release; it does not reduce it.",
+            "ADH still follows osmolality; volume loss adds to the drive.",
+            "ADH has a second trigger, a fall in blood volume, which moves the whole line."
+          ]
+        }
+      },
+      {
+        "id": "water-fast",
+        "type": "shift",
+        "level": "apply",
+        "diff": 2,
+        "q": "A man at 290 mOsm/kg drinks 2 L of water fast, and his osmolality falls to about 277 mOsm/kg. Where does he move on the graph?",
+        "options": [
+          "Left along the line, to baseline ADH",
+          "Right along the line, to more ADH",
+          "Onto a new line shifted to the left",
+          "He stays at 290, because the kidneys correct it at once"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [],
+          "marks": [
+            {
+              "x": 290,
+              "y": 3.6,
+              "label": "before"
+            },
+            {
+              "x": 277,
+              "y": 0.5,
+              "label": "after 2 L"
+            }
+          ]
+        },
+        "why": {
+          "correct": "Drinking water lowers osmolality, a move to the left along the same line. Below about 282 ADH falls to baseline, the collecting ducts become nearly waterproof, and over the next hours the kidneys pass the extra water as dilute urine.",
+          "options": [
+            "Right: lower osmolality, less ADH.",
+            "Water dilutes the plasma, lowering osmolality, which moves him left, not right.",
+            "His blood volume barely changes, so the line itself stays where it is; he moves along it.",
+            "The kidneys need hours to pass 2 L, so the osmolality does fall first."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fab-resp-acidosis-course",
+    "title": "Respiratory acidosis: the kidneys catch up",
+    "topic": "acid-base-disorders",
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "intro": "A patient’s PaCO2 rises to 60 mm Hg and stays there. The three panels show her ABG over the next six days, as renal compensation raises bicarbonate. The pH values follow from the Henderson–Hasselbalch equation.",
+    "alt": "Three panels against time from 0 to 6 days. PaCO2 is flat at 60 millimeters of mercury. Bicarbonate is 26 millimoles per liter for the first half day, then rises to 28 at day 1, about 30 at day 3 and 31 by day 5. pH starts at 7.26 and rises to about 7.29 at day 1 and 7.34 by day 5, still below the 7.35 line.",
+    "x": {
+      "min": 0,
+      "max": 6,
+      "label": "Time since PaCO2 reached 60",
+      "unit": "days",
+      "ticks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "panels": [
+      {
+        "y": {
+          "min": 30,
+          "max": 70,
+          "label": "PaCO2",
+          "unit": "mm Hg",
+          "ticks": [
+            30,
+            40,
+            50,
+            60,
+            70
+          ]
+        },
+        "series": [
+          {
+            "id": "paco2",
+            "cls": "accent",
+            "pts": [
+              [
+                0,
+                60
+              ],
+              [
+                6,
+                60
+              ]
+            ],
+            "label": "PaCO2",
+            "labelAt": [
+              3,
+              64
+            ]
+          }
+        ],
+        "hlines": [
+          {
+            "y": 45,
+            "label": "45 (upper normal)",
+            "dash": true,
+            "faint": true
+          }
+        ]
+      },
+      {
+        "y": {
+          "min": 20,
+          "max": 34,
+          "label": "HCO3−",
+          "unit": "mmol/L",
+          "ticks": [
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            32,
+            34
+          ]
+        },
+        "series": [
+          {
+            "id": "hco3",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                0,
+                26
+              ],
+              [
+                0.5,
+                26
+              ],
+              [
+                1,
+                28
+              ],
+              [
+                1.5,
+                28.9
+              ],
+              [
+                2,
+                29.5
+              ],
+              [
+                3,
+                30.4
+              ],
+              [
+                4,
+                30.9
+              ],
+              [
+                5,
+                31
+              ],
+              [
+                6,
+                31
+              ]
+            ],
+            "label": "HCO3−",
+            "labelAt": [
+              4.5,
+              32.2
+            ]
+          }
+        ],
+        "hlines": [
+          {
+            "y": 26,
+            "label": "26 (upper normal)",
+            "dash": true,
+            "faint": true
+          }
+        ]
+      },
+      {
+        "y": {
+          "min": 7.2,
+          "max": 7.45,
+          "label": "pH",
+          "unitless": true,
+          "ticks": [
+            7.2,
+            7.25,
+            7.3,
+            7.35,
+            7.4,
+            7.45
+          ]
+        },
+        "series": [
+          {
+            "id": "ph",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                0,
+                7.26
+              ],
+              [
+                0.5,
+                7.26
+              ],
+              [
+                1,
+                7.292
+              ],
+              [
+                1.5,
+                7.306
+              ],
+              [
+                2,
+                7.315
+              ],
+              [
+                3,
+                7.328
+              ],
+              [
+                4,
+                7.335
+              ],
+              [
+                5,
+                7.336
+              ],
+              [
+                6,
+                7.336
+              ]
+            ],
+            "label": "pH",
+            "labelAt": [
+              4.5,
+              7.32
+            ]
+          }
+        ],
+        "hlines": [
+          {
+            "y": 7.35,
+            "label": "7.35",
+            "dash": true,
+            "faint": true
+          }
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "hours",
+        "x0": 0,
+        "x1": 0.5,
+        "label": "first hours"
+      },
+      {
+        "id": "days",
+        "x0": 0.5,
+        "x1": 6,
+        "label": "renal compensation"
+      }
+    ],
+    "questions": [
+      {
+        "id": "ph-start",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "Read the pH at the start, when PaCO2 has just reached 60 mm Hg.",
+        "answer": 7.26,
+        "tol": 0.02,
+        "unit": "",
+        "show": {
+          "x": 0,
+          "y": 7.26
+        },
+        "why": "About 7.26. Bicarbonate is still 26, so the ratio is 26 ÷ (0.03 × 60) = 14.4, and 6.1 + log 14.4 = 7.26: an uncompensated respiratory acidosis."
+      },
+      {
+        "id": "hco3-day5",
+        "type": "value",
+        "level": "apply",
+        "diff": 1,
+        "q": "Read the bicarbonate on day 5.",
+        "answer": 31,
+        "tol": 0.8,
+        "unit": "mmol/L",
+        "show": {
+          "x": 5,
+          "y": 31
+        },
+        "why": "About 31 mmol/L. Over 3 to 5 days, tubule cells exposed to the high PCO2 secrete more H+ and excrete more ammonium, adding new bicarbonate to the blood."
+      },
+      {
+        "id": "uncompensated",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "During which period is this an uncompensated respiratory acidosis?",
+        "options": [
+          "The first hours",
+          "Days 1 to 6",
+          "The whole six days",
+          "Never: the lungs compensate at once"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "hours"
+        },
+        "why": {
+          "correct": "In the first hours PaCO2 is high but bicarbonate is still within 22 to 26 and pH is low, so the other system has not yet responded. Once bicarbonate rises above 26 while pH stays below 7.35, it is partially compensated.",
+          "options": [
+            "Right: bicarbonate is still normal.",
+            "From about day 1 bicarbonate is above 26, so compensation is under way: partially compensated.",
+            "Bicarbonate leaves the normal range within the first day or so, so the label changes.",
+            "The lungs are the cause here; they cannot compensate for a problem they are causing. The kidneys do, slowly."
+          ]
+        }
+      },
+      {
+        "id": "failing-kidneys",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "Suppose her kidneys were failing. How would the bicarbonate and pH panels differ?",
+        "options": [
+          "Both would stay flat near their starting values: bicarbonate about 26, pH about 7.26",
+          "Bicarbonate would rise faster and pH would overshoot above 7.45",
+          "Bicarbonate would fall and pH would rise",
+          "Nothing would change, because the lungs would compensate instead"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "hco3-flat",
+              "panel": 1,
+              "cls": "hi",
+              "dash": true,
+              "pts": [
+                [
+                  0,
+                  26
+                ],
+                [
+                  6,
+                  26
+                ]
+              ],
+              "label": "failing kidneys",
+              "labelAt": [
+                3,
+                25
+              ]
+            },
+            {
+              "id": "ph-flat",
+              "panel": 2,
+              "cls": "hi",
+              "dash": true,
+              "pts": [
+                [
+                  0,
+                  7.26
+                ],
+                [
+                  6,
+                  7.26
+                ]
+              ],
+              "label": "failing kidneys",
+              "labelAt": [
+                3,
+                7.245
+              ]
+            }
+          ]
+        },
+        "why": {
+          "correct": "Renal compensation needs working kidneys and time. Without it, no new bicarbonate is added, the ratio stays near 14 and pH stays near 7.26.",
+          "options": [
+            "Right: no renal compensation.",
+            "Compensation seldom overshoots, and failing kidneys add less bicarbonate, not more.",
+            "Failing kidneys add no bicarbonate, and the pH cannot rise without it.",
+            "The lungs are the source of the problem here, so they cannot compensate."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "rp-cycle-hormones",
+    "title": "Hormones, follicle and endometrium across a 28-day cycle",
+    "topic": "female-hormones-cycle",
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "intro": "One 28-day model cycle, day 1 being the first day of bleeding. From the top: the pituitary hormones LH and FSH, the ovarian hormones estradiol and progesterone, and the thickness of the endometrium. The dashed line marks ovulation. Values are typical, not from one woman; real cycles vary, mostly in the days before ovulation.",
+    "alt": "Four stacked graphs over days 1 to 28 of a model cycle, with ovulation marked at day 14. Top: LH stays near 5 IU/L, rises steeply from about day 12 to a sharp peak of about 60 IU/L on day 13.5, and falls back to about 4 by day 17. FSH starts at about 7 to 8 IU/L, falls to about 4.5 by day 10, makes a smaller peak of about 12 at mid-cycle, stays near 3 in the second half and starts rising in the last days. Second: estradiol rises from about 40 pg/mL to a peak of about 285 on day 12.5, falls to about 100 by day 15, rises to a second, lower hump of about 165 around day 21 and falls to 50 by day 28. Third: progesterone stays below 1 ng/mL until ovulation, rises to about 14 around day 21 and falls below 1 by day 28. Bottom: endometrium thickness falls from 7 mm to 3 mm during days 1 to 5, grows to about 10 mm by day 14 and about 13 mm by day 21, and stays thick until the end.",
+    "x": {
+      "min": 1,
+      "max": 28,
+      "label": "Day of the cycle",
+      "unit": "day",
+      "ticks": [
+        1,
+        7,
+        14,
+        21,
+        28
+      ]
+    },
+    "panels": [
+      {
+        "h": 1.1,
+        "y": {
+          "min": 0,
+          "max": 70,
+          "label": "LH and FSH",
+          "unit": "IU/L",
+          "ticks": [
+            0,
+            20,
+            40,
+            60
+          ]
+        },
+        "series": [
+          {
+            "id": "lh",
+            "cls": "hi",
+            "curve": "smooth",
+            "pts": [
+              [
+                1,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                7,
+                5
+              ],
+              [
+                9,
+                5
+              ],
+              [
+                10,
+                5.2
+              ],
+              [
+                11,
+                5.6
+              ],
+              [
+                12,
+                8
+              ],
+              [
+                13,
+                35
+              ],
+              [
+                14,
+                45
+              ],
+              [
+                15,
+                10
+              ],
+              [
+                16,
+                6
+              ],
+              [
+                17,
+                4.6
+              ],
+              [
+                19,
+                4
+              ],
+              [
+                21,
+                3.7
+              ],
+              [
+                24,
+                3.6
+              ],
+              [
+                26,
+                3.8
+              ],
+              [
+                28,
+                4.2
+              ],
+              [
+                11.5,
+                6.2
+              ],
+              [
+                12.5,
+                15
+              ],
+              [
+                13.5,
+                60
+              ],
+              [
+                14.5,
+                22
+              ]
+            ],
+            "label": "LH",
+            "labelAt": [
+              15.2,
+              50
+            ],
+            "anchor": "start"
+          },
+          {
+            "id": "fsh",
+            "cls": "lo",
+            "dash": true,
+            "curve": "smooth",
+            "pts": [
+              [
+                1,
+                7
+              ],
+              [
+                2,
+                7.6
+              ],
+              [
+                3,
+                8
+              ],
+              [
+                4,
+                7.6
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                6,
+                6.2
+              ],
+              [
+                7,
+                5.5
+              ],
+              [
+                8,
+                5
+              ],
+              [
+                9,
+                4.8
+              ],
+              [
+                10,
+                4.6
+              ],
+              [
+                11,
+                4.6
+              ],
+              [
+                12,
+                5.5
+              ],
+              [
+                13,
+                11
+              ],
+              [
+                14,
+                10
+              ],
+              [
+                15,
+                4.5
+              ],
+              [
+                16,
+                3.5
+              ],
+              [
+                18,
+                3
+              ],
+              [
+                22,
+                2.8
+              ],
+              [
+                24,
+                3
+              ],
+              [
+                26,
+                4
+              ],
+              [
+                27,
+                5
+              ],
+              [
+                28,
+                6.5
+              ],
+              [
+                12.5,
+                8
+              ],
+              [
+                13.5,
+                12.5
+              ],
+              [
+                14.5,
+                7
+              ]
+            ],
+            "label": "FSH",
+            "labelAt": [
+              4,
+              16
+            ],
+            "anchor": "middle"
+          }
+        ]
+      },
+      {
+        "h": 0.9,
+        "y": {
+          "min": 0,
+          "max": 320,
+          "label": "Estradiol",
+          "unit": "pg/mL",
+          "ticks": [
+            0,
+            100,
+            200,
+            300
+          ]
+        },
+        "series": [
+          {
+            "id": "e2",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                1,
+                40
+              ],
+              [
+                3,
+                40
+              ],
+              [
+                5,
+                45
+              ],
+              [
+                6,
+                50
+              ],
+              [
+                7,
+                60
+              ],
+              [
+                8,
+                80
+              ],
+              [
+                9,
+                110
+              ],
+              [
+                10,
+                150
+              ],
+              [
+                11,
+                215
+              ],
+              [
+                12,
+                275
+              ],
+              [
+                13,
+                260
+              ],
+              [
+                14,
+                150
+              ],
+              [
+                15,
+                96
+              ],
+              [
+                16,
+                100
+              ],
+              [
+                17,
+                118
+              ],
+              [
+                19,
+                150
+              ],
+              [
+                21,
+                165
+              ],
+              [
+                23,
+                155
+              ],
+              [
+                25,
+                120
+              ],
+              [
+                27,
+                70
+              ],
+              [
+                28,
+                50
+              ],
+              [
+                10.5,
+                180
+              ],
+              [
+                11.5,
+                250
+              ],
+              [
+                12.5,
+                285
+              ],
+              [
+                13.5,
+                210
+              ],
+              [
+                14.5,
+                112
+              ]
+            ],
+            "label": "estradiol",
+            "labelAt": [
+              7.5,
+              150
+            ],
+            "anchor": "middle"
+          }
+        ],
+        "hlines": [
+          {
+            "y": 200,
+            "label": "about 200 pg/mL"
+          }
+        ]
+      },
+      {
+        "h": 0.8,
+        "y": {
+          "min": 0,
+          "max": 16,
+          "label": "Progesterone",
+          "unit": "ng/mL",
+          "ticks": [
+            0,
+            5,
+            10,
+            15
+          ]
+        },
+        "series": [
+          {
+            "id": "p4",
+            "cls": "eff",
+            "curve": "smooth",
+            "pts": [
+              [
+                1,
+                0.5
+              ],
+              [
+                5,
+                0.4
+              ],
+              [
+                10,
+                0.4
+              ],
+              [
+                12,
+                0.5
+              ],
+              [
+                13,
+                0.7
+              ],
+              [
+                14,
+                1.2
+              ],
+              [
+                15,
+                2.5
+              ],
+              [
+                16,
+                4.5
+              ],
+              [
+                17,
+                7
+              ],
+              [
+                18,
+                9.5
+              ],
+              [
+                19,
+                11.5
+              ],
+              [
+                20,
+                13
+              ],
+              [
+                21,
+                14
+              ],
+              [
+                22,
+                13.5
+              ],
+              [
+                23,
+                12
+              ],
+              [
+                24,
+                9.5
+              ],
+              [
+                25,
+                6.5
+              ],
+              [
+                26,
+                3.5
+              ],
+              [
+                27,
+                1.5
+              ],
+              [
+                28,
+                0.8
+              ]
+            ],
+            "label": "progesterone",
+            "labelAt": [
+              23.5,
+              14.5
+            ],
+            "anchor": "start"
+          }
+        ]
+      },
+      {
+        "h": 0.8,
+        "y": {
+          "min": 0,
+          "max": 15,
+          "label": "Endometrium thickness",
+          "unit": "mm",
+          "ticks": [
+            0,
+            5,
+            10,
+            15
+          ]
+        },
+        "series": [
+          {
+            "id": "endo",
+            "cls": "memb",
+            "curve": "smooth",
+            "pts": [
+              [
+                1,
+                7
+              ],
+              [
+                2,
+                5.5
+              ],
+              [
+                3,
+                4
+              ],
+              [
+                4,
+                3.2
+              ],
+              [
+                5,
+                3
+              ],
+              [
+                6,
+                3.4
+              ],
+              [
+                8,
+                5
+              ],
+              [
+                10,
+                7
+              ],
+              [
+                12,
+                8.8
+              ],
+              [
+                14,
+                10
+              ],
+              [
+                16,
+                11.3
+              ],
+              [
+                18,
+                12.2
+              ],
+              [
+                21,
+                12.8
+              ],
+              [
+                24,
+                13
+              ],
+              [
+                26,
+                12.9
+              ],
+              [
+                27,
+                12.6
+              ],
+              [
+                28,
+                11.5
+              ]
+            ],
+            "label": "endometrium",
+            "labelAt": [
+              9,
+              10.5
+            ],
+            "anchor": "middle"
+          }
+        ]
+      }
+    ],
+    "vlines": [
+      {
+        "x": 14,
+        "label": "ovulation"
+      }
+    ],
+    "regions": [
+      {
+        "id": "menses",
+        "x0": 1,
+        "x1": 5,
+        "label": "menstrual phase"
+      },
+      {
+        "id": "prolif",
+        "x0": 5,
+        "x1": 14,
+        "label": "proliferative phase"
+      },
+      {
+        "id": "secretory",
+        "x0": 14,
+        "x1": 28,
+        "label": "secretory phase"
+      },
+      {
+        "id": "positive",
+        "x0": 11,
+        "x1": 13.5,
+        "label": "estradiol high and sustained"
+      },
+      {
+        "id": "selection",
+        "x0": 5,
+        "x1": 10,
+        "label": "FSH falling"
+      },
+      {
+        "id": "lutealend",
+        "x0": 25,
+        "x1": 28,
+        "label": "corpus luteum dying"
+      }
+    ],
+    "questions": [
+      {
+        "id": "lh-peak",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "Read the peak LH level.",
+        "answer": 60,
+        "tol": 6,
+        "unit": "IU/L",
+        "show": {
+          "x": 13.5,
+          "y": 60
+        },
+        "why": "About 60 IU/L, on day 13.5: roughly twelve times the level of the early follicular phase. That is the LH surge, and ovulation follows about 34 to 36 hours after it begins."
+      },
+      {
+        "id": "e2-peak",
+        "type": "value",
+        "level": "apply",
+        "diff": 1,
+        "q": "Read the highest estradiol level, and note when it comes compared with the LH peak.",
+        "answer": 285,
+        "tol": 25,
+        "unit": "pg/mL",
+        "show": {
+          "x": 12.5,
+          "y": 285,
+          "panel": 1
+        },
+        "why": "About 285 pg/mL, on day 12.5, a day before LH peaks. Estradiol peaks as the LH surge begins and then falls, because LH is already turning the follicle’s cells toward making progesterone."
+      },
+      {
+        "id": "p4-peak",
+        "type": "value",
+        "level": "apply",
+        "diff": 1,
+        "q": "On about which day does progesterone peak?",
+        "answer": 21,
+        "tol": 1.5,
+        "unit": "day",
+        "show": {
+          "x": 21,
+          "y": 14,
+          "panel": 2
+        },
+        "why": "Around day 21, about a week after ovulation, when the corpus luteum is fully formed. That mid-luteal week is also when the lining is ready for an embryo to attach."
+      },
+      {
+        "id": "surge-trigger",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "During which stretch is estradiol’s feedback on the hypothalamus and pituitary positive rather than negative?",
+        "options": [
+          "Days 11 to 13.5, while estradiol stays above about 200 pg/mL",
+          "Days 1 to 5, while estradiol is lowest",
+          "Days 5 to 10, while FSH is falling",
+          "Days 18 to 24, during the second estradiol hump"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "positive"
+        },
+        "why": {
+          "correct": "When estradiol from the dominant follicle stays high, above roughly 200 pg/mL for about two days, it switches from brake to accelerator: GnRH output rises and each pulse releases far more LH. LH starts shooting up at the end of this stretch.",
+          "options": [
+            "Right: high, sustained estradiol drives the surge.",
+            "Early in the cycle estradiol is low and FSH is rising because the brake has lifted; there is no positive feedback.",
+            "Here estradiol and inhibin are rising but still moderate, and they hold FSH down by ordinary negative feedback.",
+            "In the luteal phase, progesterone is high, and with it estradiol gives the strongest negative feedback of the cycle; LH stays at its lowest."
+          ]
+        }
+      },
+      {
+        "id": "fsh-fall",
+        "type": "phase",
+        "level": "analyze",
+        "diff": 2,
+        "q": "FSH falls during which stretch, and what does that fall do in the ovary?",
+        "options": [
+          "Days 5 to 10: rising estradiol and inhibin lower FSH, and only the most FSH-sensitive follicle keeps growing",
+          "Days 1 to 5: the period washes FSH out of the blood",
+          "Days 14 to 18: progesterone lowers FSH, and the dominant follicle is chosen",
+          "Days 25 to 28: the corpus luteum makes FSH fall, and all follicles die"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "selection"
+        },
+        "why": {
+          "correct": "The follicles rescued at the start of the cycle release estradiol and inhibin, which feed back negatively. As FSH falls, the follicle with the most FSH receptor proteins keeps growing and the rest undergo atresia: negative feedback selects one follicle.",
+          "options": [
+            "Right: negative feedback selects the dominant follicle.",
+            "Bleeding does not remove FSH. FSH is high at the start because the corpus luteum’s brake has just lifted.",
+            "By day 14 the dominant follicle has already been chosen and has ovulated.",
+            "At the end of the cycle FSH is rising, because the dying corpus luteum’s hormones are falling."
+          ]
+        }
+      },
+      {
+        "id": "lining",
+        "type": "phase",
+        "level": "recall",
+        "diff": 1,
+        "q": "During which phase does the functional layer grow fastest, and which hormone drives it?",
+        "options": [
+          "The proliferative phase, driven by rising estradiol",
+          "The secretory phase, driven by progesterone",
+          "The menstrual phase, driven by falling progesterone",
+          "The proliferative phase, driven by LH"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "prolif"
+        },
+        "why": {
+          "correct": "From about day 5 to day 14, estradiol from the growing follicles makes the basal layer’s cells divide and rebuild the functional layer, which thickens several-fold by ovulation.",
+          "options": [
+            "Right: estradiol builds.",
+            "Progesterone changes the thick lining, coiling its glands and arteries, without adding much more thickness.",
+            "Falling progesterone sheds the functional layer; the lining is thinnest then.",
+            "LH acts on the ovary, not on the endometrium."
+          ]
+        }
+      },
+      {
+        "id": "cycle-end",
+        "type": "phase",
+        "level": "analyze",
+        "diff": 2,
+        "q": "In the last days of the cycle, which change in the ovary starts both the next period and the next rise in FSH?",
+        "options": [
+          "The corpus luteum dies, so progesterone, estradiol and inhibin fall",
+          "A new dominant follicle releases a burst of estradiol",
+          "LH surges a second time",
+          "The endometrium stops making progesterone"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "lutealend"
+        },
+        "why": {
+          "correct": "Without a pregnancy the corpus luteum dies after 12 to 14 days. Falling progesterone sets off breakdown of the functional layer, and the loss of its brake lets FSH climb, rescuing the next group of follicles.",
+          "options": [
+            "Right: one event, two results.",
+            "No follicle can become dominant while the corpus luteum’s hormones hold FSH and LH down.",
+            "There is one LH surge per cycle; in the late luteal phase LH is at its lowest.",
+            "The endometrium does not make progesterone; the corpus luteum does."
+          ]
+        }
+      },
+      {
+        "id": "pill",
+        "type": "shift",
+        "level": "apply",
+        "diff": 2,
+        "q": "She takes the combined pill every day this month. How does the LH curve change?",
+        "options": [
+          "It stays low all month, with no mid-cycle peak",
+          "The peak comes earlier, on about day 7",
+          "The peak is taller, because the pill contains estrogen",
+          "It is unchanged; the pill acts only on the uterus"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "lh-pill",
+              "panel": 0,
+              "cls": "hi",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  1,
+                  3
+                ],
+                [
+                  7,
+                  2.8
+                ],
+                [
+                  14,
+                  3
+                ],
+                [
+                  21,
+                  2.8
+                ],
+                [
+                  28,
+                  3
+                ]
+              ],
+              "label": "on the pill",
+              "labelAt": [
+                20,
+                10
+              ],
+              "anchor": "middle"
+            }
+          ]
+        },
+        "why": {
+          "correct": "Steady synthetic estrogen and progestin keep negative feedback on all month. FSH stays low, no follicle becomes dominant, estradiol never stays high for two days, and positive feedback never starts: no surge, no ovulation.",
+          "options": [
+            "Right: no surge.",
+            "A surge needs high estradiol from a dominant follicle; the pill prevents one from forming at any time.",
+            "The pill’s estrogen is steady and paired with a progestin, which keeps feedback negative. It removes the peak rather than enlarging it.",
+            "Preventing the surge in the pituitary is the pill’s main action; the effects on mucus and lining are backups."
+          ]
+        }
+      },
+      {
+        "id": "longer-cycle",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "In a woman whose cycles are 32 days long, how does the LH peak shift, and what happens to the phase after it?",
+        "options": [
+          "The peak moves about 4 days later, and the phase after ovulation stays about 14 days",
+          "The peak stays at day 14, and the phase after ovulation lasts 18 days",
+          "The peak moves 2 days later, and each phase gains 2 days",
+          "The peak moves earlier, because her follicles grow faster"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "lh-32",
+              "panel": 0,
+              "cls": "hi",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  1,
+                  5
+                ],
+                [
+                  14,
+                  5.2
+                ],
+                [
+                  15,
+                  5.6
+                ],
+                [
+                  15.5,
+                  6.2
+                ],
+                [
+                  16,
+                  8
+                ],
+                [
+                  16.5,
+                  15
+                ],
+                [
+                  17,
+                  35
+                ],
+                [
+                  17.5,
+                  60
+                ],
+                [
+                  18,
+                  45
+                ],
+                [
+                  18.5,
+                  22
+                ],
+                [
+                  19,
+                  10
+                ],
+                [
+                  20,
+                  6
+                ],
+                [
+                  21,
+                  4.6
+                ],
+                [
+                  24,
+                  4
+                ],
+                [
+                  28,
+                  3.8
+                ]
+              ],
+              "label": "32-day cycle",
+              "labelAt": [
+                19.5,
+                55
+              ],
+              "anchor": "start"
+            }
+          ]
+        },
+        "why": {
+          "correct": "The luteal phase is set by the corpus luteum’s lifespan, about 12 to 14 days, so the extra days fall before ovulation. Ovulation day ≈ cycle length − 14 = 32 − 14 = day 18, and the surge moves with it.",
+          "options": [
+            "Right: the follicular phase absorbs the difference.",
+            "The phase after ovulation is the steady one; a longer cycle lengthens the phase before ovulation.",
+            "The variation is not split evenly; nearly all of it is in the follicular phase.",
+            "A longer cycle means the dominant follicle takes longer to be selected and grow, so ovulation comes later, not earlier."
+          ]
+        }
+      },
+      {
+        "id": "no-ovaries",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 2,
+        "q": "After both ovaries are removed, how do the FSH and LH curves change?",
+        "options": [
+          "Both rise and stay high, with no cycle",
+          "Both fall to zero, because the ovaries made them",
+          "FSH rises but LH falls",
+          "Both stay the same; the pituitary runs on its own"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "fsh-ovx",
+              "panel": 0,
+              "cls": "lo",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  1,
+                  55
+                ],
+                [
+                  7,
+                  56
+                ],
+                [
+                  14,
+                  55
+                ],
+                [
+                  21,
+                  56
+                ],
+                [
+                  28,
+                  55
+                ]
+              ],
+              "label": "FSH, no ovaries",
+              "labelAt": [
+                6,
+                64
+              ],
+              "anchor": "middle"
+            },
+            {
+              "id": "lh-ovx",
+              "panel": 0,
+              "cls": "hi",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  1,
+                  32
+                ],
+                [
+                  7,
+                  33
+                ],
+                [
+                  14,
+                  32
+                ],
+                [
+                  21,
+                  33
+                ],
+                [
+                  28,
+                  32
+                ]
+              ],
+              "label": "LH, no ovaries",
+              "labelAt": [
+                22,
+                27
+              ],
+              "anchor": "middle"
+            }
+          ]
+        },
+        "why": {
+          "correct": "FSH and LH come from the pituitary, not the ovaries. With no estradiol, progesterone or inhibin to brake them, both rise and stay high, FSH most of all because it has lost both estradiol and inhibin, the same pattern as after menopause.",
+          "options": [
+            "Right: the brakes are gone.",
+            "The ovaries are the target of FSH and LH, not their source.",
+            "LH also loses its brake, estradiol and progesterone, so it rises too.",
+            "The pituitary’s output depends on feedback from the ovaries; without it the levels climb."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "rp-follicle-selection",
+    "title": "FSH and the selection of one follicle",
+    "topic": "ovarian-cycle",
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "intro": "Early in each cycle a group of follicles starts to grow while FSH is high. Ultrasound can follow their size. This graph follows FSH and the diameters of two follicles, the one that becomes dominant and one of the others, from the first day of bleeding. Values are typical.",
+    "alt": "Two stacked graphs over days 1 to 13 of a cycle. Top: FSH rises from about 7 IU/L on day 1 to 8 on day 3, then falls steadily to about 4.5 by days 10 to 12. Bottom: both follicles are about 4 mm on day 1 and grow alike to about 9 mm by day 7. After that the dominant follicle keeps growing, about 1.5 mm a day, to about 19 mm on day 13, while the other stops at about 9.5 mm on day 8 and shrinks to about 5 mm by day 13.",
+    "x": {
+      "min": 1,
+      "max": 13,
+      "label": "Day of the cycle",
+      "unit": "day",
+      "ticks": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13
+      ]
+    },
+    "panels": [
+      {
+        "h": 0.8,
+        "y": {
+          "min": 0,
+          "max": 10,
+          "label": "FSH",
+          "unit": "IU/L",
+          "ticks": [
+            0,
+            5,
+            10
+          ]
+        },
+        "series": [
+          {
+            "id": "fsh",
+            "cls": "lo",
+            "curve": "smooth",
+            "pts": [
+              [
+                1,
+                7
+              ],
+              [
+                2,
+                7.6
+              ],
+              [
+                3,
+                8
+              ],
+              [
+                4,
+                7.6
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                6,
+                6.2
+              ],
+              [
+                7,
+                5.5
+              ],
+              [
+                8,
+                5
+              ],
+              [
+                9,
+                4.8
+              ],
+              [
+                10,
+                4.6
+              ],
+              [
+                11,
+                4.5
+              ],
+              [
+                12,
+                4.5
+              ],
+              [
+                13,
+                4.6
+              ]
+            ],
+            "label": "FSH",
+            "labelAt": [
+              5.5,
+              8.4
+            ],
+            "anchor": "start"
+          }
+        ]
+      },
+      {
+        "h": 1.1,
+        "y": {
+          "min": 0,
+          "max": 22,
+          "label": "Follicle diameter",
+          "unit": "mm",
+          "ticks": [
+            0,
+            5,
+            10,
+            15,
+            20
+          ]
+        },
+        "series": [
+          {
+            "id": "dom",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                1,
+                4
+              ],
+              [
+                3,
+                5.8
+              ],
+              [
+                5,
+                7.6
+              ],
+              [
+                7,
+                9.4
+              ],
+              [
+                8,
+                10.6
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                10,
+                13.5
+              ],
+              [
+                11,
+                15.4
+              ],
+              [
+                12,
+                17.2
+              ],
+              [
+                13,
+                19
+              ]
+            ],
+            "label": "dominant follicle",
+            "labelAt": [
+              9.2,
+              16
+            ],
+            "anchor": "end"
+          },
+          {
+            "id": "sub",
+            "cls": "shape",
+            "dash": true,
+            "curve": "smooth",
+            "pts": [
+              [
+                1,
+                4
+              ],
+              [
+                3,
+                5.7
+              ],
+              [
+                5,
+                7.3
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                8,
+                9.5
+              ],
+              [
+                9,
+                9.2
+              ],
+              [
+                10,
+                8.2
+              ],
+              [
+                11,
+                7
+              ],
+              [
+                12,
+                5.9
+              ],
+              [
+                13,
+                5
+              ]
+            ],
+            "label": "another follicle",
+            "labelAt": [
+              11,
+              9.2
+            ],
+            "anchor": "start"
+          }
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "recruit",
+        "x0": 1,
+        "x1": 5,
+        "label": "FSH high: a group grows"
+      },
+      {
+        "id": "select",
+        "x0": 6,
+        "x1": 9,
+        "label": "FSH falling: one is selected"
+      },
+      {
+        "id": "atresia",
+        "x0": 9,
+        "x1": 13,
+        "label": "the others shrink"
+      }
+    ],
+    "questions": [
+      {
+        "id": "dom-size",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "Read the dominant follicle’s diameter on day 13.",
+        "answer": 19,
+        "tol": 1.5,
+        "unit": "mm",
+        "show": {
+          "x": 13,
+          "y": 19,
+          "panel": 1
+        },
+        "why": "About 19 mm. It grows about 1.5 mm a day in the second week and reaches about 2 cm when mature, bulging from the ovary’s surface."
+      },
+      {
+        "id": "fsh-top",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "Read the highest FSH level on the graph.",
+        "answer": 8,
+        "tol": 0.8,
+        "unit": "IU/L",
+        "show": {
+          "x": 3,
+          "y": 8
+        },
+        "why": "About 8 IU/L, on day 3. FSH is highest at the start of the cycle, which is when the group of follicles that happen to be ready is rescued from atresia."
+      },
+      {
+        "id": "selection",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "During which days do the two follicles’ paths split, and why then?",
+        "options": [
+          "Days 6 to 9, as FSH falls: only the follicle most sensitive to FSH keeps growing",
+          "Days 1 to 5, as FSH rises: the higher FSH chooses one follicle",
+          "Days 9 to 13, when the dominant follicle stops needing FSH altogether",
+          "They never split; both follicles are released"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "select"
+        },
+        "why": {
+          "correct": "Estradiol and inhibin from the growing group lower FSH. The follicle with the most FSH receptor proteins and the best blood supply keeps growing on less FSH, and it gains LH receptor proteins; the others lose their FSH support.",
+          "options": [
+            "Right: falling FSH selects one.",
+            "Rising FSH rescues the whole group; selection comes when FSH falls.",
+            "By then selection is over. The dominant follicle can keep growing on low FSH because it is the most sensitive to FSH and also responds to LH.",
+            "Only the dominant follicle usually reaches the mature stage; the other shrinks."
+          ]
+        }
+      },
+      {
+        "id": "shrink",
+        "type": "phase",
+        "level": "recall",
+        "diff": 1,
+        "q": "What is happening to the other follicle from day 9 on?",
+        "options": [
+          "Atresia: it degenerates and never opens",
+          "It becomes a corpus luteum",
+          "It rests and will be released next month",
+          "It merges with the dominant follicle"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "atresia"
+        },
+        "why": {
+          "correct": "Without enough FSH, the follicle’s cells die and it degenerates. Atresia is the fate of more than 99% of follicles, and it, not ovulation, is what empties the ovary over a lifetime.",
+          "options": [
+            "Right: atresia.",
+            "A corpus luteum forms only from a follicle that has released its oocyte.",
+            "A follicle that has lost its FSH support dies; it does not wait for another month.",
+            "Each follicle is a separate oocyte with its own cells; they do not merge."
+          ]
+        }
+      },
+      {
+        "id": "fsh-high",
+        "type": "shift",
+        "level": "apply",
+        "diff": 2,
+        "q": "In fertility treatment, daily FSH injections keep FSH high from day 3 on. How does the other follicle’s curve change?",
+        "options": [
+          "It keeps growing alongside the dominant one",
+          "It shrinks sooner",
+          "It is unchanged, because selection is fixed by day 1",
+          "It becomes the only follicle to grow, and the dominant one shrinks"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "sub-fsh",
+              "panel": 1,
+              "cls": "hi",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  3,
+                  5.7
+                ],
+                [
+                  5,
+                  7.4
+                ],
+                [
+                  7,
+                  9.3
+                ],
+                [
+                  9,
+                  11.8
+                ],
+                [
+                  11,
+                  14.6
+                ],
+                [
+                  13,
+                  17.4
+                ]
+              ],
+              "label": "with FSH injections",
+              "labelAt": [
+                12.8,
+                21
+              ],
+              "anchor": "end"
+            }
+          ]
+        },
+        "why": {
+          "correct": "Selection depends on FSH falling. If FSH stays high, the other follicles keep their support, avoid atresia and keep growing, so several mature together. That is how clinics collect several oocytes in one cycle.",
+          "options": [
+            "Right: high FSH rescues the others.",
+            "More FSH supports follicles; it does not speed their death.",
+            "Which follicles survive depends on FSH over the following days, so keeping it high changes the outcome.",
+            "Extra FSH supports every ready follicle; it does not turn off the most sensitive one."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "rp-follicle-supply",
+    "title": "Follicles left in the ovaries across life",
+    "topic": "female-hormones-cycle",
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "intro": "The number of follicles left in both ovaries together, from birth to 55. No new follicles are made after birth, so the curve can only fall. Values are typical; the numbers vary widely between women.",
+    "alt": "A single falling curve. At birth about 1.5 million follicles (1,500 thousand) remain. The count falls steeply through childhood, to about 800 thousand at age 5 and about 350 thousand at puberty around 13, then more slowly: about 160 thousand at 25, 60 thousand at 35, 15 thousand at 40, and about 1 thousand at 51, the average age of menopause.",
+    "x": {
+      "min": 0,
+      "max": 55,
+      "label": "Age",
+      "unit": "years",
+      "ticks": [
+        0,
+        10,
+        20,
+        30,
+        40,
+        50
+      ]
+    },
+    "panels": [
+      {
+        "h": 1.2,
+        "y": {
+          "min": 0,
+          "max": 1600,
+          "label": "Follicles left in both ovaries",
+          "unit": "thousands",
+          "ticks": [
+            0,
+            400,
+            800,
+            1200,
+            1600
+          ]
+        },
+        "series": [
+          {
+            "id": "count",
+            "cls": "accent",
+            "curve": "smooth",
+            "pts": [
+              [
+                0,
+                1500
+              ],
+              [
+                2,
+                1100
+              ],
+              [
+                5,
+                800
+              ],
+              [
+                8,
+                600
+              ],
+              [
+                13,
+                350
+              ],
+              [
+                18,
+                260
+              ],
+              [
+                25,
+                160
+              ],
+              [
+                30,
+                110
+              ],
+              [
+                35,
+                60
+              ],
+              [
+                37.5,
+                30
+              ],
+              [
+                40,
+                15
+              ],
+              [
+                45,
+                6
+              ],
+              [
+                51,
+                1
+              ],
+              [
+                55,
+                0.3
+              ]
+            ],
+            "label": "follicles left",
+            "labelAt": [
+              12,
+              700
+            ],
+            "anchor": "start"
+          }
+        ]
+      }
+    ],
+    "vlines": [
+      {
+        "x": 13,
+        "label": "puberty"
+      },
+      {
+        "x": 51,
+        "label": "menopause (average)"
+      }
+    ],
+    "regions": [
+      {
+        "id": "childhood",
+        "x0": 0,
+        "x1": 13,
+        "label": "birth to puberty"
+      },
+      {
+        "id": "reproductive",
+        "x0": 13,
+        "x1": 45,
+        "label": "reproductive years"
+      },
+      {
+        "id": "meno",
+        "x0": 45,
+        "x1": 55,
+        "label": "perimenopause and menopause"
+      }
+    ],
+    "questions": [
+      {
+        "id": "puberty-count",
+        "type": "value",
+        "level": "recall",
+        "diff": 1,
+        "q": "About how many follicles remain at puberty, in thousands?",
+        "answer": 350,
+        "tol": 50,
+        "unit": "thousands",
+        "show": {
+          "x": 13,
+          "y": 350
+        },
+        "why": "About 350 thousand, roughly 300,000 to 400,000, all holding primary oocytes still paused in prophase I."
+      },
+      {
+        "id": "lost-childhood",
+        "type": "value",
+        "level": "apply",
+        "diff": 2,
+        "q": "About how many follicles, in thousands, are lost between birth and puberty?",
+        "answer": 1150,
+        "tol": 150,
+        "unit": "thousands",
+        "show": {
+          "x": 13,
+          "y": 350
+        },
+        "why": "About 1,500 − 350 = 1,150 thousand, over a million follicles, lost before a single one has been ovulated. They die by atresia."
+      },
+      {
+        "id": "what-empties",
+        "type": "phase",
+        "level": "analyze",
+        "diff": 2,
+        "q": "Only about 400 oocytes are released in a lifetime. Across the whole curve, what removes almost all the others?",
+        "options": [
+          "Atresia, the death of follicles that lose their support",
+          "Ovulation, about ten follicles a month",
+          "Menstruation, which sheds follicles with the lining",
+          "The formation of new follicles to replace old ones"
+        ],
+        "correct": 0,
+        "highlight": {
+          "x0": 0,
+          "x1": 55
+        },
+        "why": {
+          "correct": "More than 99% of follicles undergo atresia, most of them before puberty and the rest in the groups that start growing each month but are not selected.",
+          "options": [
+            "Right: atresia empties the ovary.",
+            "Only one follicle usually ovulates each month, about 400 in a lifetime, a tiny share of the fall.",
+            "Menstruation sheds the endometrium’s functional layer, not anything from the ovary.",
+            "No new follicles are made after birth; the curve only falls."
+          ]
+        }
+      },
+      {
+        "id": "menopause",
+        "type": "phase",
+        "level": "apply",
+        "diff": 2,
+        "q": "In which stretch do cycles become irregular and then stop, and why?",
+        "options": [
+          "From about 45 on: too few follicles are left to answer FSH",
+          "From about 13 to 20: the follicles are not yet mature",
+          "From about 25 to 35: the fall is steepest",
+          "At birth: the oocytes are paused"
+        ],
+        "correct": 0,
+        "highlight": {
+          "region": "meno"
+        },
+        "why": {
+          "correct": "As the last follicles are used up, fewer grow each month, so less inhibin and estradiol are made. FSH rises first and most, ovulation fails more often, and when no follicle responds, periods stop for good.",
+          "options": [
+            "Right: the supply runs out.",
+            "Early cycles can be irregular because the LH surge takes a year or more to mature, but that is not a shortage of follicles.",
+            "The steepest fall in numbers is in childhood, and cycles are regular through these years.",
+            "Cycles begin only at puberty."
+          ]
+        }
+      },
+      {
+        "id": "chemo",
+        "type": "shift",
+        "level": "analyze",
+        "diff": 3,
+        "q": "At 30, a woman has chemotherapy that destroys about nine tenths of her remaining follicles. How does her curve change?",
+        "options": [
+          "It drops at 30 and reaches the menopause level years earlier",
+          "It rises again after treatment as new follicles form",
+          "It is unchanged, because only growing follicles are harmed",
+          "It drops at 30 but her menopause comes at the usual age"
+        ],
+        "correct": 0,
+        "overlay": {
+          "series": [
+            {
+              "id": "chemo",
+              "panel": 0,
+              "cls": "hi",
+              "dash": true,
+              "curve": "smooth",
+              "pts": [
+                [
+                  30,
+                  110
+                ],
+                [
+                  30.5,
+                  12
+                ],
+                [
+                  33,
+                  6
+                ],
+                [
+                  36,
+                  2.5
+                ],
+                [
+                  39,
+                  1
+                ],
+                [
+                  42,
+                  0.3
+                ]
+              ],
+              "label": "after chemotherapy at 30",
+              "labelAt": [
+                32,
+                200
+              ],
+              "anchor": "start"
+            }
+          ]
+        },
+        "why": {
+          "correct": "No follicles are made after birth, so a lost supply cannot be replaced. Starting from about a tenth of the usual number, she reaches the level of about a thousand follicles years sooner, and menopause comes early.",
+          "options": [
+            "Right: an early menopause.",
+            "The oogonia that made follicles are gone by birth.",
+            "This treatment is described as destroying resting follicles too, so the count falls.",
+            "Menopause follows when the follicles run out, so a smaller supply runs out sooner."
+          ]
+        }
+      }
+    ]
   }
  ]
 }

@@ -1,0 +1,12 @@
+{
+  "maternal-changes": {
+    "def": "The changes in the mother's body during pregnancy, driven by placental hormones, the growing uterus and the fetus's demands: blood volume up 40 to 50% with a lower hematocrit, cardiac output up 30 to 50% with lower total peripheral resistance, higher minute ventilation with a lower PaCO2, GFR up about 50%, a slower gut, and insulin resistance in the second half.",
+    "roots": [["matern-", "mother"]],
+    "say": ""
+  },
+  "pregnancy-complications": {
+    "def": "Problems of pregnancy that include ectopic pregnancy (implantation outside the uterine cavity, usually in a uterine tube), placenta previa (a placenta over or near the cervix, causing painless bleeding), preeclampsia (new high blood pressure after week 20 with organ damage, from endothelial injury) and gestational diabetes (diabetes that appears in pregnancy as placental hormones cause insulin resistance).",
+    "roots": [["ec-", "out of"], ["topos", "place"], ["previa", "going before"], ["eklampsis", "sudden flash"]],
+    "say": "ek-TOP-ik; PREE-vee-uh; pree-ee-KLAMP-see-uh"
+  }
+}

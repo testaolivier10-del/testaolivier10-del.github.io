@@ -430,6 +430,42 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** by about day 3.5, ketone bodies supply about a quarter of the brain's energy and cortical glucose use has fallen about a quarter (Hasselbalch 1994). The tool still keys day-3 brain glucose as "no change" (about 120 g); the auditor recommends keying it "down" and lowering the graph's day-3 point to about 95–100 g. Not applied; author to decide.
 - **For your exam:** the brain uses about 120 g of glucose a day until it switches to ketones over weeks.
 
+### micturition-center: where the voiding reflex is controlled
+- **Status:** pending review.
+- **Where:** `kidney-anatomy`, `ans-control`.
+- **Evidence-based position:** in healthy adults a center in the pons switches the bladder from storing to emptying, under cortical control; the sacral cord (S2–S4) carries the reflex out. A purely spinal reflex appears mainly after cord injury and does not coordinate the sphincters. The external sphincter relaxes first and the detrusor contracts seconds later.
+- **For your exam:** "integrated in the sacral spinal cord (S2–S4)".
+
+### female-internal-sphincter: is there a female internal urethral sphincter?
+- **Status:** pending review.
+- **Where:** `kidney-anatomy`.
+- **Evidence-based position:** females have no distinct ring; the bladder-neck muscle acts as a functional sphincter, and the external sphincter and pelvic floor do more of the holding.
+- **For your exam:** many texts draw an internal sphincter in both sexes.
+
+### inner-medulla-mechanism: how the inner medulla concentrates urine
+- **Status:** pending review.
+- **Where:** `urine-concentration`.
+- **Evidence-based position:** the outer medulla's pumping is not in doubt; the classic account of passive salt loss from the thin ascending limb, driven by urea, has not been fully supported by permeability measurements. Taught in a going-further box.
+- **For your exam:** the classic countercurrent multiplier, which the page also teaches.
+
+### glomerular-barrier: size or charge?
+- **Status:** pending review.
+- **Where:** `glomerular-filtration`.
+- **Evidence-based position:** size is taught as the main barrier and the role of charge as still debated; a trace of albumin is filtered and reclaimed by the proximal tubule; which layer holds back albumin is debated.
+- **For your exam:** many texts say the negatively charged basement membrane repels albumin.
+
+### water-reabsorption-split: obligatory and facultative water
+- **Status:** pending review.
+- **Where:** `tubular-transport`, calculators.
+- **Evidence-based position:** about 80–85% obligatory and 15–20% facultative, with a sentence noting that some texts use 90/10.
+- **For your exam:** 90% obligatory, 10% facultative (Tortora).
+
+### autoregulation-range: blood pressure page wording (suggestion for the owner-reviewed page)
+- **Status:** pending review.
+- **Where:** `bp-short-term` (pilot, not edited).
+- **Evidence-based position:** bp-short-term gives organ autoregulation as about 60–150 mm Hg and names the kidneys; the kidney's GFR plateau is about 80–180. Suggested optional phrase after "60 to 150 mm Hg": "(the exact range differs between organs; in the kidney it runs a little higher, about 80 to 180)".
+- **For your exam:** n/a (wording).
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -806,6 +842,39 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   statins, ALT and AST, marasmus, refeeding syndrome, the preoptic area, heat acclimatization,
   GLP-1.
 - **Etymology to confirm:** kwashiorkor, ghrelin, vitamin, chemiosmosis.
+
+## Phase 2: urinary chapter, judgment calls for instructor review
+
+- **Positions taught:** efferent arterioles narrower than afferent "in most nephrons"; a steady
+  GFR does not stop pressure natriuresis; PTH lowers urine calcium at first (it can rise later);
+  400 mL of maximally concentrated urine carries only about 480 of the day's 600 mOsm; thiazides
+  raise salt loss for only 3–4 days before compensation; the eGFR equation is the 2021 race-free
+  version, with cystatin C mentioned; pressure natriuresis hedged as in bp-long-term, with no
+  single sensor known.
+- **Normal values chosen:** kidneys at T12–L3, about 11 × 6 × 3 cm and 150 g; 20–25% of cardiac
+  output; about 1 million nephrons per kidney; fenestrations 70–100 nm, filtration slits 25–40
+  nm; glomerular pressures 55/15/25–35, net about 10 mm Hg; GFR 125 mL/min (180 L a day); Kf 12.5;
+  filtration fraction 20%; urine protein under 150 mg a day; sodium reabsorbed 65% proximal, 25%
+  loop, 5% distal, 2–5% collecting duct; glucose Tm 375 mg/min, threshold 180 mg/dL; medulla
+  300–1,200 mOsm/L; urine 50–1,200 mOsm/L and 0.5–12 L a day; specific gravity 1.005–1.030;
+  oliguria below 400 mL a day; KDIGO AKI and CKD criteria; ureter 25–30 cm; bladder first
+  sensation 150–250 mL, strong urge 300–500 mL; urethra 3–4 cm (female), 18–20 cm (male).
+- **Tool values:** graph overlays (loop diuretic, low-protein diet, strong sympathetic, SGLT2
+  blocker) are schematic; the Tm calculator treats every nephron alike, so it spills near 300
+  mg/dL, with a note on splay; the hemorrhage scenario uses a MAP of 65.
+- **Figures:** Figure 25.10 prints "Proximal conboluted tubule" (named correctly, printed form
+  accepted); 25.3 and 25.5 print reproductive labels taught later (covered); 25.18 draws chloride
+  and calcium entering with sodium (caption corrects); 26.12 prints "collecting tubule" (caption
+  explains); 25.4, 25.6 and 25.13 need license verification, so there are no bladder, ureter or
+  renal corpuscle micrograph stations.
+- **Map gaps:** renal sinus, renal lobe, capsular space, thick ascending limb, connecting tubule,
+  slit diaphragm, filtration coefficient, filtration fraction, pontine micturition center,
+  glomerulonephritis, apical and basolateral membranes, filtered load, splay, SGLT2,
+  aquaporin-2, urea carriers, named diuretics, urochrome, cystatin C, eGFR, AKI subtypes,
+  cystitis, pyelonephritis.
+- **Etymology to confirm:** obligatory, facultative, intercalated, calculus, dialysis.
+- **Names:** "Mr. Osei" is reused with different ages in about six chapters (ecg, lung-volumes,
+  biomolecules, brain-regions, respiratory-disorders, acid-base-regulation).
 
 ## Decided at the Phase 0 reviews
 
