@@ -94,7 +94,7 @@
     "q": "A 5-year-old has a complete set of deciduous teeth. Which kind of tooth is missing from that set but present in the adult set?",
     "options": [
       "Incisors",
-      "Canines",
+      "Canines (cuspids)",
       "Premolars",
       "Molars"
     ],
@@ -146,10 +146,10 @@
     ],
     "q": "After a stroke in the medulla oblongata, a patient can chew and push food to the back of his mouth, but thin liquids trickle into his larynx and make him cough. Which part of swallowing is failing?",
     "options": [
-      "The voluntary phase, run by the cerebral cortex",
+      "The voluntary phase, started by the cerebral cortex and the tongue",
       "The pharyngeal phase, run by the brainstem swallowing center",
-      "The esophageal phase, run by the enteric nervous system",
-      "The release of saliva, which lubricates the bolus"
+      "The esophageal phase, carried out by peristalsis in the esophagus",
+      "Secretion of saliva by the glands that lubricate the bolus"
     ],
     "correct": 1,
     "why": {
@@ -371,10 +371,10 @@
     "misconception": "heartburn comes from the heart",
     "q": "A 45-year-old man has a burning pain behind his sternum most nights when he lies down soon after a large dinner. It eases with antacids. What is the most likely cause?",
     "options": [
-      "Reduced blood flow to the heart muscle",
+      "Reduced blood flow to the heart muscle through narrowed coronary arteries",
       "Stomach contents flowing back past the lower esophageal sphincter",
-      "Food stuck at the upper esophageal sphincter",
-      "Inflammation of the parotid glands"
+      "A piece of food stuck at the upper esophageal sphincter",
+      "Inflammation and swelling of both parotid glands"
     ],
     "correct": 1,
     "why": {
@@ -398,8 +398,8 @@
     "q": "Fill the gap: A swallow begins → vagal fibers activate enteric inhibitory neurons in the lower esophageal sphincter → ______ → the sphincter relaxes → the bolus enters the stomach",
     "options": [
       "The neurons release nitric oxide onto the sphincter's smooth muscle",
-      "The neurons release acetylcholine onto skeletal muscle fibers",
-      "The neurons release norepinephrine onto alpha-1 receptor proteins",
+      "The neurons release acetylcholine onto skeletal muscle fibers of the sphincter",
+      "The neurons release norepinephrine onto alpha-1 receptor proteins on the muscle",
       "Gravity pushes the sphincter open"
     ],
     "correct": 0,
