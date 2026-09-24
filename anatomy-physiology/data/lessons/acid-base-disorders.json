@@ -1,0 +1,46 @@
+{
+  "topic": "acid-base-disorders",
+  "hook": "<p>Maya, 19, has type 1 diabetes and has missed insulin doses during a stomach bug. She arrives breathing deeply and quickly, with a fruity smell on her breath. Her arterial blood gas reads pH 7.21, PaCO2 18 mm Hg, bicarbonate 7 mmol/L. Three numbers tell you her blood is dangerously acidic, that fixed acid caused it, and that her lungs are already fighting back. This lesson teaches you to read them.</p>",
+  "prereq": [
+    {
+      "q": "Bicarbonate is 12 mmol/L and PCO2 is 20 mm Hg. What is the ratio of bicarbonate to dissolved carbon dioxide?",
+      "options": ["20, giving pH 7.40", "10, giving pH 7.10", "0.6, giving a pH below 6"],
+      "correct": 0,
+      "why": "Dissolved carbon dioxide = 0.03 × 20 = 0.6 mmol/L, and 12 ÷ 0.6 = 20. pH depends on the ratio, so it is 7.40 even though both numbers are abnormal.",
+      "review": "acid-base-regulation"
+    },
+    {
+      "q": "What defines hypoventilation?",
+      "options": ["A breathing rate below 12 a minute", "Breathing less than carbon dioxide production requires, so PCO2 rises above 45 mm Hg", "Any breathing too shallow to be seen"],
+      "correct": 1,
+      "why": "Hypoventilation is defined by carbon dioxide, not by rate: alveolar ventilation too low for the carbon dioxide being made, so arterial PCO2 rises above 45 mm Hg.",
+      "review": "breathing-control"
+    },
+    {
+      "q": "For every hydrogen ion a parietal cell secretes into the stomach, what enters the blood?",
+      "options": ["A chloride ion", "A potassium ion", "A bicarbonate ion"],
+      "correct": 2,
+      "why": "Carbonic anhydrase in the parietal cell makes H+ and HCO3−. The H+ goes into the stomach and the HCO3− into the blood: the alkaline tide.",
+      "review": "stomach"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "With almost no insulin, lipolysis runs unchecked and the liver makes ketone bodies faster than tissues can burn them.", "effect": "Ketone bodies release hydrogen ions into the blood." },
+    { "cause": "Bicarbonate takes up the hydrogen ions and is used up, while the ketone body anions stay in the plasma.", "effect": "Bicarbonate falls, the anion gap rises, and the bicarbonate to carbon dioxide ratio drops: a high anion gap metabolic acidosis." },
+    { "cause": "The low ratio lowers arterial pH.", "effect": "The carotid bodies sense the fall and drive the respiratory centers harder." },
+    { "cause": "Deep, fast Kussmaul breathing blows off carbon dioxide.", "effect": "PaCO2 falls in the same direction as bicarbonate, so the ratio moves back toward 20: respiratory compensation." },
+    { "cause": "Compensation cannot replace the bicarbonate the ketone bodies used up.", "effect": "pH stays below 7.35, partially compensated, until insulin stops the ketone body production and the kidneys rebuild bicarbonate." }
+  ],
+  "misconception": {
+    "wrong": "Compensation fixes an acid–base disorder, so a normal pH means the problem is over.",
+    "right": "Compensation only moves the other number in the same direction as the primary one, so the ratio moves back toward 20. The primary number stays abnormal until its cause is treated, and compensation rarely brings pH all the way to normal. A pH within 7.35 to 7.45 with an abnormal PaCO2 and bicarbonate still means a disorder is present."
+  },
+  "check": ["anp-acid-base-disorders-1", "anp-acid-base-disorders-2", "anp-acid-base-disorders-5", "anp-acid-base-disorders-7", "anp-acid-base-disorders-13", "anp-acid-base-disorders-16", "anp-acid-base-disorders-19", "anp-acid-base-disorders-21"],
+  "summary": "<p>An arterial blood gas gives pH (7.35 to 7.45), PaCO2 (35 to 45 mm Hg, the respiratory number) and bicarbonate (22 to 26 mmol/L, the metabolic number). Respiratory acidosis comes from hypoventilation and respiratory alkalosis from hyperventilation; in both, pH and PaCO2 move in opposite directions. Metabolic acidosis is a fall in bicarbonate, from acid gained (high anion gap: diabetic ketoacidosis, lactic acidosis, kidney failure) or bicarbonate lost (normal gap: diarrhea). Metabolic alkalosis is a rise in bicarbonate, most often from vomiting or diuretics, kept going by loss of volume, chloride and potassium. The other system compensates by moving its number in the same direction as the primary one: the lungs within hours, the kidneys over 3 to 5 days. Read every gas in five steps: pH, PaCO2, bicarbonate, the primary disorder, then compensation.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Diabetic emergencies and altered mental status" },
+    { "href": "/nremt/study-notes.html#chapter-19", "label": "NREMT: Respiratory emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies" }
+  ]
+}

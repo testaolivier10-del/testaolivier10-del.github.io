@@ -8199,7 +8199,7 @@
    "level": "recall",
    "compare": "Jejunum vs ileum",
    "front": "Which jobs belong to the ileum alone?",
-   "back": "Absorbing vitamin B12 bound to intrinsic factor, and reclaiming about 95% of the salts in bile for reuse (not the water of bile, which is absorbed all along the intestine).",
+   "back": "Absorbing vitamin B12 bound to intrinsic factor, and reclaiming about 95% of the salts in bile for reuse.",
    "why": "The carriers and receptor proteins for both are found only in the terminal ileum, so no other part can take over."
   },
   {

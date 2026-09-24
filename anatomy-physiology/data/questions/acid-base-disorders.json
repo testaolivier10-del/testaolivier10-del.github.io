@@ -1,0 +1,408 @@
+[
+  {
+    "id": "anp-acid-base-disorders-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "An arterial blood gas shows pH 7.26, PaCO2 60 mm Hg and HCO3− 26 mmol/L. How do you classify it?",
+    "options": ["Partially compensated respiratory acidosis", "Uncompensated respiratory acidosis", "Uncompensated metabolic acidosis", "Partially compensated metabolic alkalosis"],
+    "correct": 1,
+    "why": {
+      "correct": "pH 7.26 is acidemia. PaCO2 60 is high, which pushes toward acid and matches the pH, so the disorder is respiratory acidosis. Bicarbonate 26 is still within 22 to 26, so the kidneys have not compensated yet.",
+      "options": [
+        "Partial compensation would need bicarbonate above 26, moving up along with PaCO2. Here it is still normal.",
+        "Correct. High PaCO2 explains the low pH, and bicarbonate is still normal: uncompensated.",
+        "A metabolic acidosis needs bicarbonate below 22. Here bicarbonate is normal and PaCO2 is what changed.",
+        "The pH is low, not high, so this cannot be an alkalosis."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "interdependence"],
+    "q": "Maya, 19, has type 1 diabetes and has missed insulin doses during a stomach bug. She is breathing deeply and fast. Her ABG: pH 7.21, PaCO2 18 mm Hg, HCO3− 7 mmol/L. How do you classify it?",
+    "options": ["Partially compensated metabolic acidosis", "Uncompensated respiratory alkalosis", "Fully compensated metabolic acidosis", "Partially compensated respiratory acidosis"],
+    "correct": 0,
+    "why": {
+      "correct": "pH 7.21 is acidemia. Bicarbonate 7 is very low and matches the acidemia, so the primary disorder is metabolic acidosis. PaCO2 18 has fallen in the same direction, which is her lungs compensating, but pH is still below 7.35: partially compensated.",
+      "options": [
+        "Correct. Low bicarbonate explains the low pH, and the low PaCO2 is her respiratory compensation.",
+        "A low PaCO2 alone would raise pH. Her pH is low, so the low PaCO2 is a response, not the cause.",
+        "Full compensation would bring pH back to 7.35 to 7.45. Hers is still 7.21.",
+        "Respiratory acidosis needs a high PaCO2. Hers is low."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "An ABG shows pH 7.50, PaCO2 48 mm Hg and HCO3− 36 mmol/L. How do you classify it?",
+    "options": ["Partially compensated respiratory acidosis", "Uncompensated metabolic alkalosis", "Partially compensated metabolic alkalosis", "Fully compensated respiratory alkalosis"],
+    "correct": 2,
+    "why": {
+      "correct": "pH 7.50 is alkalemia. Bicarbonate 36 is high and pushes toward alkaline, matching the pH: metabolic alkalosis. PaCO2 48 has risen in the same direction, which is the lungs compensating, and pH is still high: partially compensated.",
+      "options": [
+        "The pH is high, so the primary disorder must be an alkalosis. The high PaCO2 is the response, not the cause.",
+        "Uncompensated would need a normal PaCO2. At 48 it has risen to compensate.",
+        "Correct. High bicarbonate explains the high pH, and PaCO2 has risen partway to match.",
+        "Respiratory alkalosis needs a low PaCO2. This PaCO2 is high."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-4",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "Priya has lived at a research station at 4,300 m for three weeks. Her ABG: pH 7.44, PaCO2 32 mm Hg, HCO3− 21 mmol/L. How do you classify it?",
+    "options": ["No acid–base disorder, because the pH is normal", "Fully compensated metabolic acidosis", "Partially compensated respiratory alkalosis", "Fully compensated respiratory alkalosis"],
+    "correct": 3,
+    "why": {
+      "correct": "The pH is within range but on the alkaline side of 7.40. Low PaCO2 pushes toward alkaline and matches that side, so the primary disorder is respiratory alkalosis, from the extra breathing that low oxygen drives. Bicarbonate has fallen with it, from weeks of kidney bicarbonate loss, and pH is back in range: fully compensated.",
+      "options": [
+        "A normal pH with both numbers abnormal means a disorder and its compensation, not health. Her PaCO2 and bicarbonate are both low.",
+        "A primary metabolic acidosis would leave the pH on the acid side of 7.40. Hers is 7.44.",
+        "Partial compensation leaves the pH outside 7.35 to 7.45. Hers is inside it.",
+        "Correct. Low PaCO2 is primary, low bicarbonate is the renal compensation, and the pH is normal."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A patient with metabolic acidosis has plasma Na+ 138, Cl− 100 and HCO3− 10 mmol/L. What is the anion gap, and what does it suggest?",
+    "options": ["12 mmol/L: normal, so bicarbonate has been lost", "28 mmol/L: high, so an acid has been added", "48 mmol/L: high, so an acid has been added", "28 mmol/L: normal for a patient in acidosis"],
+    "correct": 1,
+    "why": {
+      "correct": "Anion gap = Na+ − (Cl− + HCO3−) = 138 − (100 + 10) = 28 mmol/L, well above the normal 8 to 12. An unmeasured anion has taken bicarbonate's place, so an acid has been added, as in ketoacidosis or lactic acidosis.",
+      "options": [
+        "12 would be the gap with a normal bicarbonate of 26. Here bicarbonate is 10, so the gap is 28.",
+        "Correct. 138 − 110 = 28: a high anion gap metabolic acidosis.",
+        "48 comes from adding bicarbonate instead of subtracting it: 138 − 100 + 10.",
+        "An acidosis does not change the normal range. A gap of 28 is high whatever the pH."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "mass-balance"],
+    "q": "Mr. Kim has had watery diarrhea for four days. His plasma Na+ is 136, Cl− 114 and HCO3− 12 mmol/L, and his blood is acidic. What best explains his acidosis?",
+    "options": ["Ketone bodies from starvation, shown by a high anion gap", "Lactic acid from poor tissue perfusion", "Bicarbonate lost in stool, replaced by chloride, with a normal anion gap", "Hypoventilation from weakness, raising his PaCO2"],
+    "correct": 2,
+    "why": {
+      "correct": "His anion gap is 136 − (114 + 12) = 10 mmol/L: normal. Bicarbonate has fallen and chloride has risen by about the same amount. That pattern means bicarbonate was lost, as happens when intestinal fluid rich in bicarbonate leaves in stool, rather than an acid being added.",
+      "options": [
+        "Ketone body anions would raise the anion gap. His gap is normal.",
+        "Lactate is an unmeasured anion too, so lactic acidosis would raise the gap. His is 10.",
+        "Correct. A normal gap with high chloride is the signature of bicarbonate loss.",
+        "Low bicarbonate is the change here; a respiratory acidosis starts with a high PaCO2, and nothing points to that."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-7",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "Mrs. Duarte has vomited stomach contents repeatedly for three days and kept little down. Predict the change in each variable compared with before she became ill.",
+    "variables": [
+      { "name": "Plasma bicarbonate", "answer": "up", "why": "Each H+ her parietal cells secreted sent a bicarbonate into the blood. With the acid vomited, nothing neutralizes that bicarbonate, so it accumulates." },
+      { "name": "Blood pH", "answer": "up", "why": "Higher bicarbonate at first with the same PaCO2 raises the bicarbonate to carbon dioxide ratio, so pH rises." },
+      { "name": "Arterial PaCO2", "answer": "up", "why": "The higher pH slows breathing, so carbon dioxide builds up: respiratory compensation." },
+      { "name": "Plasma chloride", "answer": "down", "why": "Vomit carries hydrochloric acid, so chloride is lost with the hydrogen ions." },
+      { "name": "Plasma potassium", "answer": "down", "why": "Potassium is lost in the vomit and, as aldosterone rises, in the urine." },
+      { "name": "Blood volume", "answer": "down", "why": "She is losing fluid and taking little in." },
+      { "name": "Aldosterone", "answer": "up", "why": "Low blood volume activates the renin–angiotensin–aldosterone system." }
+    ],
+    "why": { "correct": "Vomiting removes acid and leaves bicarbonate behind, a metabolic alkalosis. The lungs partly compensate by breathing less. Loss of volume, chloride and potassium keeps the kidneys reclaiming bicarbonate instead of excreting it, which is why saline and potassium chloride correct it." }
+  },
+  {
+    "id": "anp-acid-base-disorders-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "A traveler develops severe watery diarrhea from cholera and loses several liters of stool a day. Predict the change in each variable compared with before the illness.",
+    "variables": [
+      { "name": "Plasma bicarbonate", "answer": "down", "why": "Intestinal fluid is rich in bicarbonate, and it leaves in the stool." },
+      { "name": "Plasma chloride", "answer": "up", "why": "The kidneys and gut keep chloride in place of the lost bicarbonate, so chloride concentration rises." },
+      { "name": "Anion gap", "answer": "none", "why": "Chloride replaces the lost bicarbonate, so Na+ − (Cl− + HCO3−) stays about the same." },
+      { "name": "Blood pH", "answer": "down", "why": "Lower bicarbonate lowers the bicarbonate to carbon dioxide ratio." },
+      { "name": "Arterial PaCO2", "answer": "down", "why": "The carotid bodies sense the low pH and speed breathing, which blows off carbon dioxide: respiratory compensation." },
+      { "name": "Plasma potassium", "answer": "down", "why": "Stool water carries potassium, which the colon secretes." },
+      { "name": "Blood volume", "answer": "down", "why": "Liters of water and sodium are lost in stool each day." }
+    ],
+    "why": { "correct": "Losing bicarbonate-rich intestinal fluid causes a normal anion gap metabolic acidosis with high chloride, low potassium and low blood volume. The lungs compensate by lowering PaCO2." }
+  },
+  {
+    "id": "anp-acid-base-disorders-9",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 4,
+    "core": ["homeostasis", "interdependence"],
+    "q": "Mr. Dunn, 66, has severe COPD. A chest infection tires him, and his alveolar ventilation falls to a lower level, where it stays for the next week. Predict each variable first in the hour after it falls, compared with before, and then five days later, compared with that first hour.",
+    "variables": [
+      { "name": "PaCO2, first hour", "answer": "up", "why": "Less alveolar ventilation removes carbon dioxide more slowly than his cells make it, so it builds up." },
+      { "name": "Blood pH, first hour", "answer": "down", "why": "More carbon dioxide lowers the bicarbonate to carbon dioxide ratio before the kidneys can respond." },
+      { "name": "PaCO2, five days later", "answer": "none", "why": "His ventilation stays at the same low level, so PaCO2 stays at the same high level." },
+      { "name": "Ammonium in his urine, five days later", "answer": "up", "why": "High PaCO2 acidifies his tubule cells, which secrete more H+ and make more ammonium from glutamine." },
+      { "name": "Plasma bicarbonate, five days later", "answer": "up", "why": "Each H+ excreted on ammonium or phosphate adds a new bicarbonate to his blood: renal compensation." },
+      { "name": "Blood pH, five days later", "answer": "up", "why": "Higher bicarbonate raises the ratio back toward 20, so pH rises toward normal, though usually not all the way." }
+    ],
+    "why": { "correct": "An acute rise in PaCO2 lowers pH at once, because the kidneys need days to act. Over 3 to 5 days, they excrete more acid and add new bicarbonate, and pH climbs back toward normal while PaCO2 stays high: acute respiratory acidosis becomes partially compensated." }
+  },
+  {
+    "id": "anp-acid-base-disorders-10",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["homeostasis"],
+    "q": "During a panic attack, a student breathes fast and deep for ten minutes. Predict the change in each variable compared with before the attack.",
+    "variables": [
+      { "name": "Arterial PaCO2", "answer": "down", "why": "She breathes out carbon dioxide faster than her cells make it." },
+      { "name": "Blood pH", "answer": "up", "why": "Less carbon dioxide raises the bicarbonate to carbon dioxide ratio." },
+      { "name": "Free calcium in plasma", "answer": "down", "why": "In alkalemia, more calcium binds to albumin, leaving less free." },
+      { "name": "Blood flow to the brain", "answer": "down", "why": "Low carbon dioxide constricts the brain's arterioles, which is why she feels lightheaded." }
+    ],
+    "why": { "correct": "Hyperventilation lowers PaCO2 and causes an acute respiratory alkalosis. Low free calcium explains her tingling and hand spasms, and constricted brain arterioles explain her lightheadedness. Ten minutes is far too short for the kidneys to respond." }
+  },
+  {
+    "id": "anp-acid-base-disorders-11",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "Jordan, 16, has type 1 diabetes and has taken no insulin for two days. He develops diabetic ketoacidosis. Predict the change in each variable compared with when his diabetes was controlled.",
+    "variables": [
+      { "name": "Blood glucose", "answer": "up", "why": "Without insulin, muscle and fat take up little glucose, and the liver keeps releasing it." },
+      { "name": "Blood ketone bodies", "answer": "up", "why": "Unchecked lipolysis floods the liver with fatty acids, which it turns into ketone bodies faster than tissues can burn them." },
+      { "name": "Plasma bicarbonate", "answer": "down", "why": "Bicarbonate is used up buffering the hydrogen ions the ketone bodies release." },
+      { "name": "Anion gap", "answer": "up", "why": "Ketone body anions, which the test does not measure, take the place of the bicarbonate used up." },
+      { "name": "Ventilation", "answer": "up", "why": "The carotid bodies sense the low arterial pH and drive deep, fast Kussmaul breathing." },
+      { "name": "Arterial PaCO2", "answer": "down", "why": "The extra ventilation blows off carbon dioxide: respiratory compensation." },
+      { "name": "Urine volume", "answer": "up", "why": "Glucose spilling into the urine holds water with it." }
+    ],
+    "why": { "correct": "Insulin lack drives both high glucose and ketogenesis. Ketone acids use up bicarbonate and raise the anion gap, the lungs compensate by lowering PaCO2, and glucose in the urine pulls water out, leaving him dehydrated." }
+  },
+  {
+    "id": "anp-acid-base-disorders-12",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Select every condition that commonly causes metabolic alkalosis.",
+    "options": ["Three days of vomiting", "Continuous suction of stomach contents through a tube", "A loop diuretic", "Severe diarrhea", "An aldosterone-secreting adrenal tumor", "An opioid overdose"],
+    "correct": [0, 1, 2, 4],
+    "why": {
+      "correct": "Vomiting and stomach suction remove hydrochloric acid and leave its matching bicarbonate in the blood. Loop diuretics and excess aldosterone speed H+ and K+ secretion in the collecting duct. Diarrhea causes metabolic acidosis, and an opioid overdose causes respiratory acidosis.",
+      "options": [
+        "Correct. Losing stomach acid leaves the bicarbonate of the alkaline tide in the blood.",
+        "Correct. Suction removes stomach acid just as vomiting does.",
+        "Correct. The diuretic causes loss of volume, chloride and potassium, and more sodium reaching the collecting duct is traded for H+ and K+.",
+        "Diarrhea removes bicarbonate-rich intestinal fluid, causing metabolic acidosis.",
+        "Correct. Aldosterone speeds H+ and K+ secretion, so the kidneys add new bicarbonate to the blood.",
+        "An opioid overdose depresses breathing and raises PaCO2: respiratory acidosis."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-13",
+    "type": "order",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Put the steps of reading an arterial blood gas in order.",
+    "options": [
+      "Classify the pH as acidemia, alkalemia or within range",
+      "Decide which way PaCO2 pushes the pH",
+      "Decide which way bicarbonate pushes the pH",
+      "Name the primary disorder from the number that matches the pH",
+      "Judge compensation from the other number and the pH"
+    ],
+    "why": {
+      "correct": "Start with the pH, because it tells you what the disorder must explain. Then check PaCO2 and bicarbonate, name the primary disorder from whichever matches the pH, and only then judge whether the other number has moved to compensate."
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-14",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "interdependence"],
+    "q": "A student wrote out how diabetic ketoacidosis develops. One step is wrong. Which one?",
+    "options": [
+      "With almost no insulin, lipolysis runs unchecked",
+      "The liver turns the fatty acids into ketone bodies faster than tissues burn them",
+      "Ketone bodies release hydrogen ions, which raise plasma bicarbonate",
+      "The low pH stimulates the carotid bodies, and breathing becomes deep and fast",
+      "The extra breathing lowers PaCO2 and moves the pH partway back toward normal"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Hydrogen ions from ketone bodies use up bicarbonate as it buffers them, so plasma bicarbonate falls, not rises. The fall in bicarbonate is what defines a metabolic acidosis.",
+      "options": [
+        "This step is right. Insulin normally restrains lipolysis; without it, fat breakdown runs unchecked.",
+        "This step is right. The flood of fatty acids drives ketogenesis in the liver.",
+        "This is the error. Bicarbonate takes up the H+ and is used up, so it falls.",
+        "This step is right. The carotid bodies sense arterial pH from any cause and drive Kussmaul breathing.",
+        "This step is right. Lowering PaCO2 is respiratory compensation; it raises the ratio but does not fully correct the pH."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Complete the formula: anion gap = Na+ − ( ____ + HCO3− ).",
+    "options": ["Cl−", "K+", "PaCO2", "Albumin"],
+    "correct": 0,
+    "why": {
+      "correct": "The anion gap is sodium, the main measured cation, minus the two main measured anions, chloride and bicarbonate.",
+      "options": [
+        "Correct. Na+ − (Cl− + HCO3−), normally about 8 to 12 mmol/L.",
+        "Potassium is a cation, not an anion, and the usual formula leaves it out.",
+        "PaCO2 is a gas pressure, not an ion concentration.",
+        "Albumin is the main unmeasured anion. It is part of what the gap stands for, not part of the formula."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["interdependence"],
+    "misconception": "the kidneys compensate immediately",
+    "q": "Two hours after a sedative overdose, a woman's PaCO2 is 70 mm Hg, yet her bicarbonate is nearly normal. Why hasn't her bicarbonate risen to compensate?",
+    "options": ["The kidneys need 3 to 5 days to reach full compensation", "Sedatives block carbonic anhydrase in the tubule cells", "Compensation for high PaCO2 comes from the lungs, not the kidneys", "High PaCO2 makes the kidneys excrete bicarbonate"],
+    "correct": 0,
+    "why": {
+      "correct": "Renal compensation starts within hours but builds over days, as tubule cells step up H+ secretion and ammonium production. Two hours in, only a small rise from buffering has happened.",
+      "options": [
+        "Correct. Renal compensation is slow: full effect takes 3 to 5 days.",
+        "Sedatives act on the brain's respiratory centers. They do not block carbonic anhydrase.",
+        "The lungs are the source of this problem, so they cannot correct it. Respiratory disorders are compensated by the kidneys.",
+        "High PaCO2 makes tubule cells secrete more H+ and keep more bicarbonate, not excrete it."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-17",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "figure": "os-26-18",
+    "q": "The figure lists numbness or tingling in the face, hands or feet as a symptom of alkalosis. What links alkalosis to this symptom?",
+    "options": ["Alkalosis raises free potassium, which blocks nerve signals", "More calcium binds to albumin, so free calcium falls", "High carbon dioxide dilates the vessels of the skin", "Alkalosis destroys the myelin of peripheral nerves"],
+    "correct": 1,
+    "why": {
+      "correct": "In alkalemia, albumin gives up hydrogen ions and binds more calcium, so free calcium in the plasma falls. Low free calcium makes nerve and muscle membranes more excitable, so they fire on their own: tingling, twitching and spasms.",
+      "options": [
+        "Alkalosis tends to lower plasma potassium, not raise it, and tingling comes from nerves firing too easily, not from blocked signals.",
+        "Correct. Less free calcium makes nerves and muscles too excitable.",
+        "In respiratory alkalosis carbon dioxide is low, not high. Low carbon dioxide constricts brain arterioles.",
+        "The tingling comes on within minutes of hyperventilating and goes when breathing slows, which rules out damage to the nerves."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-18",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["interdependence"],
+    "q": "Mr. Lowe has severe COPD and a PaCO2 that is usually 55 mm Hg. After high-flow oxygen in the ambulance, he is drowsy and his PaCO2 is 75 mm Hg. Which explanation is best supported by current evidence?",
+    "options": ["Oxygen removed his hypoxic drive, so he stopped breathing", "Oxygen damaged his alveoli and blocked carbon dioxide diffusion", "Oxygen stimulated his kidneys to retain carbon dioxide", "Worse ventilation–perfusion mismatch, plus the Haldane effect, raised his PaCO2"],
+    "correct": 3,
+    "why": {
+      "correct": "Extra oxygen reverses hypoxic pulmonary vasoconstriction, sending blood to poorly ventilated alveoli, so less carbon dioxide is removed. More oxygen on hemoglobin also lets the blood hold less carbon dioxide at the same PaCO2 (the Haldane effect). Studies show his ventilation falls only a little. Oxygen is given to a target saturation, never withheld.",
+      "options": [
+        "This is the older explanation that many exams still expect. In studies, ventilation falls only slightly and briefly when oxygen is given, so a lost hypoxic drive plays at most a small part.",
+        "Short-term oxygen does not damage alveoli or block carbon dioxide diffusion.",
+        "Kidneys do not retain carbon dioxide; they adjust bicarbonate, and that takes days.",
+        "Correct. Ventilation–perfusion mismatch and the Haldane effect account for most of the rise."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "During resuscitation from cardiac arrest, a man's ABG shows pH 7.11, PaCO2 55 mm Hg and HCO3− 17 mmol/L. What does this show?",
+    "options": ["Partially compensated respiratory acidosis", "Partially compensated metabolic acidosis", "Two acidoses: respiratory and metabolic", "Fully compensated metabolic acidosis"],
+    "correct": 2,
+    "why": {
+      "correct": "High PaCO2 pushes toward acid, and low bicarbonate also pushes toward acid. Compensation always moves the second number in the same direction as the first; here they move in opposite directions, so both are primary. Poor breathing raises PaCO2, and lactic acid from poorly perfused tissues lowers bicarbonate.",
+      "options": [
+        "Renal compensation for a respiratory acidosis would raise bicarbonate, not lower it.",
+        "Respiratory compensation for a metabolic acidosis would lower PaCO2, not raise it.",
+        "Correct. Two acidoses together, which is why the pH is so low.",
+        "Full compensation needs a pH of 7.35 to 7.45. His is 7.11."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-20",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "After a week of vomiting, Mrs. Duarte's bicarbonate is 38 mmol/L. She is given intravenous normal saline with potassium chloride, and within two days her bicarbonate is normal. Why does this work?",
+    "options": ["Saline dilutes the bicarbonate in her blood to a normal level", "Restoring volume, chloride and potassium lets her kidneys excrete the extra bicarbonate", "Potassium chloride is an acid that neutralizes the bicarbonate directly", "Saline stimulates her lungs to breathe off the extra bicarbonate"],
+    "correct": 1,
+    "why": {
+      "correct": "Her alkalosis lasted because low volume kept angiotensin II and aldosterone high, low chloride stopped type B intercalated cells from secreting bicarbonate, and low potassium sped H+ secretion. Replacing volume, chloride and potassium removes all three, and her kidneys excrete the extra bicarbonate.",
+      "options": [
+        "Dilution alone would lower bicarbonate only slightly. The large fall comes from the kidneys excreting it.",
+        "Correct. Once the causes that keep the kidneys reclaiming bicarbonate are removed, they excrete the excess.",
+        "Potassium chloride is a salt, not an acid. It works by replacing lost potassium and chloride.",
+        "The lungs remove carbon dioxide, not bicarbonate. Breathing more would raise her pH further."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-disorders-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis"],
+    "misconception": "a normal pH means no acid–base disorder",
+    "q": "A man with long-standing COPD has an ABG of pH 7.37, PaCO2 56 mm Hg and HCO3− 31 mmol/L. How do you classify it?",
+    "options": ["Fully compensated respiratory acidosis", "Normal: the pH is within 7.35 to 7.45", "Fully compensated metabolic alkalosis", "Partially compensated respiratory acidosis"],
+    "correct": 0,
+    "why": {
+      "correct": "The pH is within range but on the acid side of 7.40. High PaCO2 pushes toward acid and matches that side, so it is the primary disorder. Bicarbonate has risen with it, from days of renal compensation, and the pH is back in range: fully compensated respiratory acidosis.",
+      "options": [
+        "Correct. On exams this is fully compensated; in practice, compensation this complete is uncommon, and a clinician would also consider a second disorder.",
+        "Both PaCO2 and bicarbonate are abnormal. A normal pH here reflects compensation, not the absence of a disorder.",
+        "A primary metabolic alkalosis would leave the pH on the alkaline side of 7.40. His is 7.37.",
+        "Partial compensation leaves the pH outside the normal range. His is inside it."
+      ]
+    }
+  }
+]

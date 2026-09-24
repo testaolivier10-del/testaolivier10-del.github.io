@@ -1,0 +1,32 @@
+{
+  "respiratory-acidosis": {
+    "def": "A fall in blood pH caused by a rise in arterial PCO2 above 45 mm Hg, from hypoventilation: for example an opioid overdose or severe COPD. The kidneys compensate over 3 to 5 days by raising bicarbonate.",
+    "roots": [["acid-", "sour"], ["-osis", "condition, process"]],
+    "say": ""
+  },
+  "respiratory-alkalosis": {
+    "def": "A rise in blood pH caused by a fall in arterial PCO2 below 35 mm Hg, from hyperventilation: for example anxiety, pain, fever or high altitude. The kidneys compensate over days by excreting bicarbonate.",
+    "roots": [["alkal-", "ashes of burned plants"], ["-osis", "condition, process"]],
+    "say": "al-kuh-LOH-sis"
+  },
+  "metabolic-acidosis": {
+    "def": "A fall in blood pH caused by a fall in bicarbonate below 22 mmol/L, either because a fixed acid was gained (high anion gap, as in diabetic ketoacidosis or lactic acidosis) or because bicarbonate was lost (normal anion gap, as in diarrhea). The anion gap is Na+ − (Cl− + HCO3−), normally about 8 to 12 mmol/L. The lungs compensate by lowering PCO2.",
+    "roots": [["meta-", "change"], ["bol-", "throw"]],
+    "say": ""
+  },
+  "metabolic-alkalosis": {
+    "def": "A rise in blood pH caused by a rise in bicarbonate above 26 mmol/L, most often from vomiting, stomach suction or diuretics, and kept up by loss of volume, chloride and potassium. The lungs compensate, to a limited extent, by slowing breathing and raising PCO2.",
+    "roots": [["meta-", "change"], ["bol-", "throw"]],
+    "say": ""
+  },
+  "compensation": {
+    "def": "The response of the system that did not cause an acid–base disorder: the lungs change PCO2 (respiratory compensation, within hours) or the kidneys change bicarbonate (renal compensation, over 3 to 5 days), in the same direction as the primary change. It is uncompensated, partially compensated or fully compensated depending on how far the pH has returned toward 7.35 to 7.45.",
+    "roots": [["com-", "together"], ["pens-", "weigh"]],
+    "say": ""
+  },
+  "abg": {
+    "def": "Reading an arterial blood gas (ABG): pH, PaCO2 (the partial pressure of carbon dioxide in arterial blood, normally 35 to 45 mm Hg) and bicarbonate (22 to 26 mmol/L). Read the pH, find which number matches it to name the primary disorder, then check whether the other number has moved to compensate.",
+    "roots": [["P", "partial pressure"], ["a", "arterial"]],
+    "say": ""
+  }
+}

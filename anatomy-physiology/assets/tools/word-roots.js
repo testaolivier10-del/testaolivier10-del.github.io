@@ -184,9 +184,14 @@
 
   /* ------------------------------------------------------ decode */
 
+  // Parts written the same way (de- down / de- removing, my/o muscle / my/o close, ana- up / ana- against)
+  // are never offered as each other's distractors: a student who knows the other sense is not wrong.
+  function formsOf(x){ return x.form.split(',').map(function(f){ return f.trim(); }); }
   function meaningOptions(p){
-    var pool = availableParts().filter(function(x){ return x.type === p.type && x.meaning !== p.meaning; });
-    if(pool.length < 3) pool = DATA.parts.filter(function(x){ return x.type === p.type && x.meaning !== p.meaning; });
+    var mine = formsOf(p);
+    function ok(x){ return x.type === p.type && x.meaning !== p.meaning && !formsOf(x).some(function(f){ return mine.indexOf(f) > -1; }); }
+    var pool = availableParts().filter(ok);
+    if(pool.length < 3) pool = DATA.parts.filter(ok);
     var seen = {}; seen[p.meaning] = 1;
     var out = [p.meaning];
     shuffle(pool).forEach(function(x){ if(out.length < 4 && !seen[x.meaning]){ seen[x.meaning] = 1; out.push(x.meaning); } });

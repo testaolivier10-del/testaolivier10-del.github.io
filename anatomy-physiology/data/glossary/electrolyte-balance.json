@@ -1,0 +1,22 @@
+{
+  "sodium-balance": {
+    "def": "The match between sodium taken in and sodium excreted, adjusted mostly by the kidneys through aldosterone, ANP and pressure natriuresis. The amount of sodium sets ECF volume; the plasma sodium concentration (normally 135–145 mmol/L) mostly reflects water. Below 135 is hyponatremia, usually too much water; above 145 is hypernatremia, usually too little.",
+    "roots": [["natr-", "sodium (Latin natrium)"], ["hypo-", "under"], ["hyper-", "over"], ["-emia", "blood condition"]],
+    "say": "hy-poh-nuh-TREE-mee-uh"
+  },
+  "potassium-balance": {
+    "def": "The control of the body's potassium, about 98% of it inside cells. Insulin and epinephrine move potassium into cells within minutes (internal balance), and principal cells secrete it into the urine under aldosterone (external balance), keeping plasma potassium at 3.5–5.0 mmol/L.",
+    "roots": [["kali-", "potassium (Latin kalium)"]],
+    "say": ""
+  },
+  "calcium-phosphate-balance": {
+    "def": "The control of plasma calcium and phosphate by PTH and calcitriol (calcitonin plays a minor part in adults), through absorption from the intestine, exchange with bone and excretion by the kidneys. Only ionized calcium is active. Hyperphosphatemia (above about 4.5 mg/dL) is usually from kidney failure and lowers free calcium; hypophosphatemia (below about 2.5 mg/dL) often follows refeeding and weakens muscles by limiting ATP.",
+    "roots": [["phosphat-", "phosphate"], ["hyper-", "over"], ["hypo-", "under"], ["-emia", "blood condition"]],
+    "say": "hy-per-fos-fuh-TEE-mee-uh"
+  },
+  "chloride-magnesium": {
+    "def": "Chloride, the main ECF anion (98–106 mmol/L), follows sodium and trades places with bicarbonate: vomiting causes hypochloremia, and large volumes of saline cause hyperchloremia. Magnesium, mostly in bone and cells, is set by reabsorption in the thick ascending limb; hypomagnesemia causes tremor, tetany and arrhythmias and keeps potassium and calcium low.",
+    "roots": [["chlor-", "chlorine, green"], ["magnes-", "magnesium, from Magnesia, a region of Greece"], ["hypo-", "under"], ["hyper-", "over"]],
+    "say": "hy-poh-mag-nuh-ZEE-mee-uh"
+  }
+}

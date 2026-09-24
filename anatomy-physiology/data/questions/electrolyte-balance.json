@@ -1,0 +1,593 @@
+[
+  {
+    "id": "anp-electrolyte-balance-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A patient's total calcium is 8 mg/dL. Calcium's atomic mass is 40. What is this in mmol/L?",
+    "options": [
+      "0.2 mmol/L",
+      "2.0 mmol/L",
+      "4.0 mmol/L",
+      "1.0 mmol/L"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "8 mg/dL = 80 mg/L. Divide by 40 mg per mmol: 80 ÷ 40 = 2.0 mmol/L.",
+      "options": [
+        "0.2 comes from dividing 8 by 40 without converting deciliters to liters. There are 10 dL in a liter.",
+        "Correct. 80 mg/L ÷ 40 mg/mmol = 2.0 mmol/L.",
+        "4.0 is the value in mEq/L: calcium carries two charges, so 2.0 mmol/L is 4.0 mEq/L. The question asks for mmol/L.",
+        "1.0 comes from dividing by calcium's two charges. The charge converts mmol to mEq, and it multiplies: 2.0 mmol/L is 4.0 mEq/L."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-2",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "misconception": "low sodium means too little sodium",
+    "q": "A marathon runner collapses, confused, after drinking at every station. She sweated about 2 L and drank about 4 L. Her plasma sodium is 124 mmol/L. What best explains her low sodium?",
+    "options": [
+      "She lost more sodium in sweat than she took in",
+      "Her aldosterone release failed during the race",
+      "She kept more water than she lost",
+      "Her kidneys excreted too much sodium"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "She gained about 2 L of water, and exercise and nausea kept her ADH high, so her kidneys could not pass it. The same sodium is diluted in more water. Hyponatremia is almost always too much water for the sodium present.",
+      "options": [
+        "She did lose some sodium in sweat, but sweat is more dilute than plasma. That loss alone would raise, not lower, her plasma sodium concentration.",
+        "Nothing suggests aldosterone failed, and losing aldosterone takes days to lower sodium. Her problem developed over hours from drinking.",
+        "Correct. A net gain of water dilutes her plasma sodium.",
+        "Her kidneys were keeping, not wasting, what they could; with ADH high they could not excrete the extra water."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-3",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Which plasma sodium value is hypernatremia?",
+    "options": [
+      "128 mmol/L",
+      "138 mmol/L",
+      "144 mmol/L",
+      "152 mmol/L"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Normal plasma sodium is about 135 to 145 mmol/L. Above 145 is hypernatremia, so 152 qualifies.",
+      "options": [
+        "128 is below 135: that is hyponatremia.",
+        "138 is in the normal range.",
+        "144 is at the top of the normal range, not above it.",
+        "Correct. 152 is above 145 mmol/L."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-4",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Mrs. Lind, 91, has dementia and has had a fever for four days. She cannot ask for a drink. Her plasma sodium is 158 mmol/L. What is the main problem?",
+    "options": [
+      "A deficit of water",
+      "An excess of sodium from her diet",
+      "Too much aldosterone",
+      "SIADH"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Fever raises her insensible water loss, and she cannot respond to thirst by drinking. She has lost water, so her plasma sodium is concentrated. Hypernatremia almost always means a water deficit.",
+      "options": [
+        "Correct. Water losses without water intake raise the sodium concentration.",
+        "Nothing in her story points to extra salt, and a person with normal kidneys excretes extra dietary sodium. The rise comes from lost water.",
+        "Aldosterone makes the kidneys keep salt and water together, which mainly raises volume. It rarely raises sodium above 145.",
+        "SIADH makes the kidneys keep water, which lowers plasma sodium, the opposite of her result."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "compartments"
+    ],
+    "q": "A woman has had a plasma sodium of 112 mmol/L for a week. Her doctors raise it by no more than about 8 mmol/L in the first day. Why so slowly?",
+    "options": [
+      "Her kidneys cannot excrete water any faster than that",
+      "Faster correction would cause hypernatremia",
+      "Her brain cells have adapted, and fast correction can damage them",
+      "Salt given by vein takes several days to reach the plasma"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Over about two days, brain cells in dilute plasma shed potassium and small organic solutes, so they stop swelling. If plasma sodium then rises quickly, water rushes out of these adapted cells and they are damaged, especially the myelin in the pons: osmotic demyelination. Slow correction gives them time to regain solute.",
+      "options": [
+        "Healthy kidneys can excrete water much faster than this. The limit protects the brain, not the kidneys.",
+        "Raising sodium from 112 by 8 a day would take days to reach even the low normal range. Overshooting to above 145 is not the concern.",
+        "Correct. Adapted brain cells shrink too fast when the plasma is concentrated quickly.",
+        "IV salt enters the plasma at once. The limit on speed is chosen by the doctors, not set by delivery."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "A patient's sodium is 135 mmol/L, glucose 180 mg/dL and urea nitrogen 28 mg/dL. Using 2 × Na + glucose ÷ 18 + urea nitrogen ÷ 2.8, estimate the plasma osmolality.",
+    "options": [
+      "About 290 mOsm/kg",
+      "About 155 mOsm/kg",
+      "About 280 mOsm/kg",
+      "About 478 mOsm/kg"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "2 × 135 = 270. 180 ÷ 18 = 10. 28 ÷ 2.8 = 10. Total = 270 + 10 + 10 = 290 mOsm/kg.",
+      "options": [
+        "Correct. 270 + 10 + 10 = 290.",
+        "155 comes from forgetting to double the sodium. Each sodium ion is matched by an anion, so sodium counts twice.",
+        "280 counts the sodium and glucose but leaves out urea.",
+        "478 comes from adding glucose and urea nitrogen in mg/dL (270 + 180 + 28) without dividing them. They must be converted to mmol/L first."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "mass-balance"
+    ],
+    "q": "A man's cells hold 3,500 mmol of potassium, and his 14 L of ECF has a potassium of 4.0 mmol/L. Crushed muscle releases 2% of his cell potassium into the ECF. Before any is excreted, what is his plasma potassium?",
+    "options": [
+      "About 4.1 mmol/L",
+      "About 6.5 mmol/L",
+      "About 9.0 mmol/L",
+      "About 74 mmol/L"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "2% of 3,500 mmol = 70 mmol. Spread through 14 L: 70 ÷ 14 = 5.0 mmol/L added. 4.0 + 5.0 = 9.0 mmol/L, which is life-threatening.",
+      "options": [
+        "This treats the release as a tiny change. Because the ECF holds so little potassium, 70 mmol is more than it held to begin with.",
+        "6.5 is the result for a 1% release (35 mmol ÷ 14 L = 2.5 added). The question says 2%.",
+        "Correct. 70 mmol ÷ 14 L = 5.0 mmol/L added to 4.0.",
+        "74 adds the 70 mmol to the concentration without dividing by the volume."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "compartments"
+    ],
+    "q": "A patient with a plasma potassium of 6.5 mmol/L receives insulin with glucose by vein. Predict the change in each variable over the next 30 minutes.",
+    "variables": [
+      {
+        "name": "Sodium–potassium pump activity in muscle and liver cells",
+        "answer": "up",
+        "why": "Insulin stimulates the sodium–potassium pump, so cells take up more potassium."
+      },
+      {
+        "name": "Plasma potassium",
+        "answer": "down",
+        "why": "Potassium moves from the ECF into cells, so the plasma concentration falls."
+      },
+      {
+        "name": "Total body potassium",
+        "answer": "none",
+        "why": "Insulin only moves potassium between compartments; none has left the body yet."
+      },
+      {
+        "name": "Resting membrane potential of heart cells (how negative)",
+        "answer": "up",
+        "why": "With less potassium outside, the gradient is restored and the resting potential moves back to a more negative value, further from threshold."
+      }
+    ],
+    "why": {
+      "correct": "Insulin shifts potassium into cells through the sodium–potassium pump. Plasma potassium falls within minutes, protecting the heart, but the body still holds the same total potassium, so it must still be removed by the kidneys, a binder or dialysis. The glucose is given so the insulin does not cause low blood glucose."
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-9",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Which of these commonly cause hypokalemia? Select all that apply.",
+    "options": [
+      "Prolonged vomiting or diarrhea",
+      "A loop or thiazide diuretic",
+      "An ACE inhibitor",
+      "A tumor that makes too much aldosterone",
+      "Kidney failure",
+      "Crush injury"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Hypokalemia comes from losing potassium from the gut, from more distal sodium and flow driving potassium secretion (loop and thiazide diuretics), or from too much aldosterone. ACE inhibitors, kidney failure and crush injury all raise potassium.",
+      "options": [
+        "Yes. Gut fluids carry potassium, and the volume loss also raises aldosterone.",
+        "Yes. More sodium and fluid reach the principal cells, so they secrete more potassium.",
+        "No. ACE inhibitors lower angiotensin II and aldosterone, so less potassium is secreted: they tend to raise it.",
+        "Yes. Excess aldosterone makes principal cells secrete more potassium.",
+        "No. Failing kidneys cannot secrete potassium, so it rises.",
+        "No. Damaged muscle cells release their potassium into the ECF, raising it."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Mr. Reyes, whose potassium is 6.8 mmol/L with peaked T waves, first receives calcium gluconate by vein. His potassium is unchanged 10 minutes later. Why was calcium given first?",
+    "options": [
+      "It raises heart cells' threshold, protecting the heart for a while",
+      "It binds potassium in the plasma so it cannot act on cells",
+      "It stimulates the kidneys to secrete potassium",
+      "It moves potassium into cells, like insulin does"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Hyperkalemia moves the resting potential of heart cells toward threshold. Raising extracellular calcium raises the threshold, restoring the gap between rest and threshold. It buys 30 to 60 minutes while insulin and glucose shift potassium into cells and dialysis removes it. It does not lower potassium.",
+      "options": [
+        "Correct. Calcium stabilizes the heart's membranes without changing potassium.",
+        "Calcium and potassium are both cations and do not bind each other; his potassium is unchanged.",
+        "Calcium does not drive potassium secretion, and his kidneys have failed anyway.",
+        "Calcium does not shift potassium into cells. That is what insulin, glucose and beta-2 agonists do."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient on a loop diuretic has a plasma potassium of 2.8 mmol/L and weak muscles. What has happened to the resting potential of his skeletal muscle fibers?",
+    "options": [
+      "It has moved closer to threshold, so fibers fire too easily",
+      "It has become more negative, so fibers are harder to excite",
+      "It is unchanged, because the pump restores it",
+      "It has reversed, so the inside is positive"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "With less potassium outside, the concentration gradient is steeper, more potassium leaks out, and the resting potential becomes more negative. The fibers sit further from threshold, so stronger stimuli are needed and the muscles are weak.",
+      "options": [
+        "Moving toward threshold is what a rise in potassium does, not a fall.",
+        "Correct. Hypokalemia hyperpolarizes muscle fibers.",
+        "The pump cannot restore a gradient that is set by the low plasma potassium; the resting potential follows the gradient.",
+        "No change in potassium reverses the resting potential. The inside stays negative."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-12",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student described how the body handles a large potassium-rich meal. One step is wrong. Which one?",
+    "options": [
+      "Absorbed potassium starts to raise plasma potassium",
+      "Insulin moves much of it into cells within minutes",
+      "The rise in potassium stimulates aldosterone release",
+      "Aldosterone makes the proximal tubule secrete potassium",
+      "Extra potassium is excreted in urine over the next hours"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Aldosterone acts on principal cells of the late distal tubule and collecting duct, not the proximal tubule. That is where potassium is secreted into the urine.",
+      "options": [
+        "This step is right. The ECF holds little potassium, so a meal raises it quickly.",
+        "This step is right. Insulin stimulates sodium–potassium pumps, which move potassium into cells.",
+        "This step is right. Potassium acts directly on the zona glomerulosa.",
+        "This is the error. Aldosterone's targets are the principal cells, far along the tubule; the proximal tubule reabsorbs potassium.",
+        "This step is right. Principal cells secrete the extra potassium, restoring balance."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-13",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "During a panic attack, a student breathes fast and deep. Her fingers and lips tingle and her hands cramp. Her total calcium is normal. What explains her symptoms?",
+    "options": [
+      "Fast breathing removes calcium from the blood in exhaled air",
+      "Her parathyroid glands stop releasing PTH during panic",
+      "Epinephrine drives calcium into bone",
+      "Alkalosis makes albumin bind more calcium"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Hyperventilation blows off CO₂, so the blood becomes alkaline. In alkalosis, albumin gives up hydrogen ions and binds more calcium, so ionized calcium falls although the total is unchanged. Low ionized calcium makes nerves and muscles overexcitable: tingling and cramps.",
+      "options": [
+        "Calcium is not a gas and does not leave in exhaled air. Breathing changes CO₂, which changes pH.",
+        "PTH takes minutes to hours to act, and panic does not switch it off. Her total calcium is normal.",
+        "Nothing like this happens in minutes, and her total calcium has not fallen.",
+        "Correct. Only the free fraction falls, so the total calcium looks normal."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A patient's total calcium is 7.8 mg/dL and her albumin is 2.5 g/dL. Using adjusted calcium = measured + 0.8 × (4.0 − albumin), what is her adjusted calcium?",
+    "options": [
+      "About 6.6 mg/dL",
+      "About 9.0 mg/dL",
+      "About 11.0 mg/dL",
+      "About 7.8 mg/dL"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "4.0 − 2.5 = 1.5. 0.8 × 1.5 = 1.2. 7.8 + 1.2 = 9.0 mg/dL, in the normal range: the low total mostly reflects her low albumin.",
+      "options": [
+        "6.6 subtracts the correction. Low albumin means less calcium is bound, so the correction is added.",
+        "Correct. 7.8 + 1.2 = 9.0.",
+        "11.0 uses the albumin value itself (0.8 × 4.0) instead of the shortfall from 4.0.",
+        "7.8 is the measured value before adjusting for the low albumin."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-15",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A man's chronic kidney disease has cut his GFR to a quarter of normal. Predict each variable, compared with a healthy person.",
+    "variables": [
+      {
+        "name": "Plasma phosphate",
+        "answer": "up",
+        "why": "The kidneys are the main exit for phosphate, so less is filtered and excreted while intake continues."
+      },
+      {
+        "name": "Calcitriol",
+        "answer": "down",
+        "why": "Damaged kidneys make less of the enzyme that activates vitamin D, and high phosphate suppresses it too."
+      },
+      {
+        "name": "Ionized calcium",
+        "answer": "down",
+        "why": "Less calcitriol means less calcium absorbed from food, and high phosphate binds calcium in the blood."
+      },
+      {
+        "name": "PTH",
+        "answer": "up",
+        "why": "Chief cells of the parathyroid glands sense the low calcium and release more PTH."
+      },
+      {
+        "name": "Plasma potassium",
+        "answer": "up",
+        "why": "Fewer working nephrons secrete less potassium, so it tends to build up, especially after potassium-rich meals."
+      }
+    ],
+    "why": {
+      "correct": "Failing kidneys keep phosphate and make less calcitriol, so calcium falls and PTH rises. The high PTH pulls calcium from bone, weakening it. Potassium tends to rise as secretion falls."
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy",
+      "compartments"
+    ],
+    "q": "A severely malnourished man is admitted and fed generously. Two days later he is weak and struggling to breathe, and his phosphate is 0.9 mg/dL. What caused the fall in phosphate?",
+    "options": [
+      "The food contained too little phosphate",
+      "Insulin drove phosphate into cells to make ATP and glycogen",
+      "His kidneys began excreting extra phosphate in response to PTH",
+      "His bones took up phosphate to mineralize new matrix"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Feeding releases insulin, which drives glucose and phosphate into cells, where phosphate is used to make ATP, glycogen and phosphorylated sugars. His stores were already low, so plasma phosphate crashes. Without it, cells cannot make enough ATP, and the diaphragm weakens.",
+      "options": [
+        "Food contains plenty of phosphate. The fall comes from phosphate moving into cells faster than it can be absorbed.",
+        "Correct. This is refeeding: an internal shift into cells.",
+        "PTH does increase phosphate excretion, but nothing here raised PTH. The fall came within two days of feeding.",
+        "Bone mineralization is slow and would not drop phosphate this fast. The fast shift is into cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "After three days of vomiting, a patient's chloride is low and his bicarbonate is high. Why do the two change in opposite directions?",
+    "options": [
+      "Vomiting removes bicarbonate from the stomach, and chloride falls along with it",
+      "Stomach acid carries chloride out, and bicarbonate rises to balance the charge",
+      "Low chloride makes the kidneys stop secreting acid",
+      "Chloride and bicarbonate are the same ion measured two ways"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Stomach acid is hydrochloric acid, so vomiting removes chloride and hydrogen ions. The ECF must keep equal positive and negative charge, and bicarbonate, the other main anion, rises as chloride falls. The blood becomes alkaline.",
+      "options": [
+        "The stomach secretes acid, not bicarbonate. Vomiting removes acid, which is why bicarbonate rises, not falls.",
+        "Correct. Loss of hydrochloric acid lowers chloride, and bicarbonate rises to keep the charges balanced.",
+        "This reverses cause and effect. The rise in bicarbonate comes first from the loss of stomach acid.",
+        "They are different anions. They trade places because both help balance the positive charge of sodium."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A trauma patient receives 6 L of 0.9% saline. What happens to his plasma chloride, and why?",
+    "options": [
+      "It rises, because saline has half again as much chloride as plasma",
+      "It falls, because saline dilutes the plasma",
+      "It stays the same, because saline is isotonic",
+      "It falls, because the kidneys excrete chloride with the extra water"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "0.9% saline contains 154 mmol/L of chloride, against about 100 in plasma. Large volumes raise plasma chloride, and bicarbonate falls, making the blood mildly acidic.",
+      "options": [
+        "Correct. 154 mmol/L is about half again as much as plasma's 100.",
+        "Saline has the same osmolality as plasma, so it does not dilute it; and its chloride is higher than plasma's.",
+        "Isotonic means the same total particles, not the same mix. Saline has more chloride and no bicarbonate.",
+        "The kidneys do excrete some of the load, but not fast enough to prevent the rise during a large infusion."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A man with heavy alcohol use has a potassium of 2.9 and a calcium of 7.6 mg/dL. Three days of potassium tablets do not raise his potassium. Which test is most likely to explain why?",
+    "options": [
+      "Plasma sodium concentration",
+      "Plasma chloride",
+      "Plasma magnesium",
+      "Blood glucose"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Heavy alcohol use often causes low magnesium. Magnesium normally limits potassium flow out of principal cells; without it, potassium keeps leaking into the urine. Low magnesium also blocks PTH release and action, lowering calcium. Both correct only when magnesium is replaced.",
+      "options": [
+        "Low sodium does not explain potassium that will not correct, or low calcium.",
+        "Chloride changes with vomiting and diuretics, but low chloride does not block potassium replacement or PTH.",
+        "Correct. Low magnesium keeps potassium and calcium low until it is corrected.",
+        "Glucose affects potassium shifts through insulin, but it does not explain both the resistant potassium and the low calcium."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-20",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A pregnant woman is receiving IV magnesium to prevent seizures. Nurses check a sign every hour, because it disappears first as magnesium climbs too high: ____.",
+    "options": [
+      "Tendon reflexes",
+      "Pupil response to light",
+      "Blood glucose",
+      "Skin color"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "High magnesium depresses nerve and muscle, and the tendon reflexes, such as the knee jerk, are lost first, before weakness, slow breathing and cardiac arrest.",
+      "options": [
+        "Correct. Loss of tendon reflexes is the earliest warning.",
+        "The pupil response is not the early sign of high magnesium.",
+        "Magnesium does not change blood glucose in a way that warns of toxicity.",
+        "Skin color changes only late, if breathing fails. It is not the early warning."
+      ]
+    }
+  },
+  {
+    "id": "anp-electrolyte-balance-21",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "figure": "os-26-5",
+    "q": "Using the graph, which ion would change most in the plasma if 1% of the intracellular store leaked out of cells?",
+    "options": [
+      "Sodium",
+      "Chloride",
+      "Potassium",
+      "Bicarbonate"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Potassium is about 140 mEq/L inside cells and under 10 outside, and the ICF is about twice the volume of the ECF. Releasing 1% of the cells' potassium adds several mmol/L to a plasma value of about 4: a large proportional change.",
+      "options": [
+        "Cells hold little sodium, and plasma already has about 140, so a small leak barely changes it.",
+        "Cells hold very little chloride, so a leak adds almost none to plasma's 100 or so.",
+        "Correct. The steep inside-to-outside difference makes plasma potassium very sensitive to leaks.",
+        "Cells hold less bicarbonate than the ECF, so a leak barely changes the plasma value."
+      ]
+    }
+  }
+]
