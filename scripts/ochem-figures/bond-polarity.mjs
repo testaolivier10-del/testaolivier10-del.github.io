@@ -225,7 +225,7 @@ function ethanolPair(o1, opts = {}) {
   s += `<line class="fg-dash-hi" x1="${f1(h1.x + u.x * 14)}" y1="${f1(h1.y + u.y * 14)}" x2="${f1(lpC.x - u.x * 6)}" y2="${f1(lpC.y - u.y * 6)}" style="stroke-width:2.6"></line>`;
   s += A(m1, 'CH₃') + A(c1, 'CH₂') + A(o1, 'O', 'hi') + A(h1, 'H', 'hi');
   s += A(m2, 'CH₃') + A(c2, 'CH₂') + A(o2, 'O', 'hi') + A(h2, 'H');
-  s += dPlus(at(h1, 190, 26)) + dMinus(at(o2, 70, 31));
+  s += dPlus(at(h1, 190, 26)) + dMinus(at(o2, 145, 32));
   return { s, h1, o2, lpC, mid: P((h1.x + lpC.x) / 2, (h1.y + lpC.y) / 2) };
 }
 
@@ -322,7 +322,6 @@ FIGURES.push({
     s += T(195, 232, 'sum = 0, so μ = 0', 'fg-tag-mut');
     s += T(567, 32, 'H₂O: bent', 'fg-lbl');
     s += water(P(480, 104), { len: 58, num: true }).s;
-    s += T(652, 124, 'tip to tail', 'fg-tag-mut');
     s += waterSum(P(652, 196), 56);
     s += T(567, 232, 'sum points to the O side: μ = 1.85 D');
     return s;
@@ -395,7 +394,7 @@ FIGURES.push({
     const e = ethanolPair(P(200, 76));
     s += e.s;
     s += T(e.h1.x + 22, e.h1.y + 4, 'donor: H on O', 'fg-tag', { anchor: 'start' });
-    s += T(e.mid.x - 14, e.mid.y + 4, 'hydrogen bond', 'fg-tag', { anchor: 'end' });
+    s += T(e.mid.x + 20, e.mid.y + 8, 'hydrogen bond', 'fg-tag', { anchor: 'start' });
     s += T(e.o2.x + 40, e.o2.y + 8, 'acceptor: lone', 'fg-tag', { anchor: 'start' }) + T(e.o2.x + 40, e.o2.y + 23, 'pair on O', 'fg-tag', { anchor: 'start' });
     s += T(234, 262, 'MW 46 · boils at 78 °C', 'fg-tag-good');
     s += T(606, 32, 'dimethyl ether, CH₃OCH₃', 'fg-lbl');
@@ -555,7 +554,7 @@ FIGURES.push({
     const e = ethanolPair(P(150, 70));
     s += e.s;
     s += T(e.h1.x + 20, e.h1.y + 4, 'donor: H on O', 'fg-tag', { anchor: 'start' });
-    s += T(e.mid.x - 12, e.mid.y + 4, 'H bond', 'fg-tag', { anchor: 'end' });
+    s += T(e.mid.x + 18, e.mid.y + 8, 'H bond', 'fg-tag', { anchor: 'start' });
     s += T(e.o2.x + 36, e.o2.y + 10, 'acceptor:', 'fg-tag', { anchor: 'start' }) + T(e.o2.x + 36, e.o2.y + 25, 'lone pair', 'fg-tag', { anchor: 'start' });
     return s;
   },
