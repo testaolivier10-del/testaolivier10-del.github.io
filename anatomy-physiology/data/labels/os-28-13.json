@@ -1,0 +1,247 @@
+{
+  "figure": "os-28-13",
+  "labels": [
+    {
+      "id": "neural-plate-border",
+      "name": "Neural plate border",
+      "accept": [
+        "neural plate borders",
+        "neural fold",
+        "neural folds"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "brain-development",
+      "box": [
+        67,
+        6,
+        193,
+        26
+      ]
+    },
+    {
+      "id": "neural-plate",
+      "name": "Neural plate",
+      "accept": [],
+      "lines": [
+        1
+      ],
+      "concept": "brain-development",
+      "box": [
+        305,
+        6,
+        126,
+        26
+      ]
+    },
+    {
+      "id": "ectoderm",
+      "name": "Ectoderm",
+      "accept": [
+        "surface ectoderm"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "germ-layers",
+      "box": [
+        453,
+        6,
+        101,
+        22
+      ]
+    },
+    {
+      "id": "mesoderm",
+      "name": "Mesoderm",
+      "accept": [
+        "paraxial mesoderm"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "germ-layers",
+      "box": [
+        461,
+        194,
+        111,
+        22
+      ]
+    },
+    {
+      "id": "notochord",
+      "name": "Notochord",
+      "accept": [],
+      "lines": [
+        9
+      ],
+      "concept": "somites",
+      "box": [
+        405,
+        228,
+        108,
+        22
+      ]
+    },
+    {
+      "id": "neural-crest",
+      "name": "Neural crest",
+      "accept": [
+        "neural crest cells"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "brain-development",
+      "box": [
+        434,
+        348,
+        126,
+        21
+      ]
+    },
+    {
+      "id": "ectoderm-2",
+      "name": "Ectoderm",
+      "accept": [
+        "surface ectoderm"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "germ-layers",
+      "box": [
+        425,
+        558,
+        101,
+        22
+      ]
+    },
+    {
+      "id": "neural-crest-cells",
+      "name": "Neural crest cells (form components of the PNS)",
+      "accept": [
+        "neural crest cells",
+        "neural crest"
+      ],
+      "lines": [
+        23,
+        24,
+        25
+      ],
+      "concept": "brain-development",
+      "box": [
+        0,
+        687,
+        183,
+        73
+      ]
+    },
+    {
+      "id": "neural-tube",
+      "name": "Neural tube",
+      "accept": [],
+      "lines": [
+        26
+      ],
+      "concept": "brain-development",
+      "box": [
+        442,
+        840,
+        121,
+        22
+      ]
+    },
+    {
+      "id": "notochord-2",
+      "name": "Notochord (mesoderm-derived)",
+      "accept": [
+        "notochord"
+      ],
+      "lines": [
+        27,
+        30
+      ],
+      "concept": "somites",
+      "box": [
+        3,
+        952,
+        202,
+        49
+      ]
+    },
+    {
+      "id": "epidermis",
+      "name": "Epidermis",
+      "accept": [
+        "surface ectoderm",
+        "skin"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "epidermis",
+      "box": [
+        407,
+        952,
+        106,
+        25
+      ]
+    },
+    {
+      "id": "neural-tube-2",
+      "name": "Neural tube",
+      "accept": [],
+      "lines": [
+        31,
+        33
+      ],
+      "concept": "brain-development",
+      "box": [
+        458,
+        993,
+        74,
+        45
+      ]
+    },
+    {
+      "id": "spinal-ganglion",
+      "name": "Spinal ganglion",
+      "accept": [
+        "dorsal root ganglion",
+        "drg",
+        "sensory ganglion",
+        "spinal ganglia"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "spinal-roots",
+      "box": [
+        454,
+        1181,
+        156,
+        26
+      ]
+    },
+    {
+      "id": "somites",
+      "name": "Somites (mesoderm-derived)",
+      "accept": [
+        "somites",
+        "somite"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "somites",
+      "box": [
+        7,
+        1243,
+        284,
+        26
+      ]
+    }
+  ]
+}

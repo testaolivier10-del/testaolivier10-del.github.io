@@ -1,0 +1,252 @@
+{
+  "figure": "os-28-9",
+  "labels": [
+    {
+      "id": "reestablished-uterine-mucosa",
+      "name": "Reestablished uterine mucosa",
+      "accept": [
+        "uterine mucosa",
+        "uterine epithelium",
+        "reestablished endometrial epithelium",
+        "re-established uterine mucosa"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "uterus",
+      "box": [
+        21,
+        38,
+        170,
+        49
+      ]
+    },
+    {
+      "id": "endometrium",
+      "name": "Endometrium",
+      "accept": [
+        "uterine lining"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "uterus",
+      "box": [
+        21,
+        127,
+        149,
+        22
+      ]
+    },
+    {
+      "id": "hypoblast",
+      "name": "Hypoblast",
+      "accept": [
+        "primitive endoderm"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "germ-layers",
+      "box": [
+        21,
+        195,
+        114,
+        28
+      ]
+    },
+    {
+      "id": "trophoblast",
+      "name": "Trophoblast",
+      "accept": [
+        "trophectoderm"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "blastocyst",
+      "box": [
+        21,
+        314,
+        133,
+        27
+      ]
+    },
+    {
+      "id": "epiblast",
+      "name": "Epiblast",
+      "accept": [
+        "primitive ectoderm"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "germ-layers",
+      "box": [
+        737,
+        108,
+        94,
+        27
+      ]
+    },
+    {
+      "id": "amniotic-cavity",
+      "name": "Amniotic cavity",
+      "accept": [
+        "amniotic sac cavity"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        736,
+        211,
+        102,
+        53
+      ]
+    },
+    {
+      "id": "reestablished-uterine-mucosa-2",
+      "name": "Reestablished uterine mucosa",
+      "accept": [
+        "uterine mucosa",
+        "uterine epithelium",
+        "re-established uterine mucosa"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "uterus",
+      "box": [
+        20,
+        520,
+        170,
+        48
+      ]
+    },
+    {
+      "id": "endometrium-2",
+      "name": "Endometrium",
+      "accept": [
+        "uterine lining"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "uterus",
+      "box": [
+        20,
+        602,
+        149,
+        23
+      ]
+    },
+    {
+      "id": "endoderm",
+      "name": "Endoderm",
+      "accept": [
+        "endodermal layer",
+        "endoderm layer"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "germ-layers",
+      "box": [
+        20,
+        671,
+        118,
+        23
+      ]
+    },
+    {
+      "id": "mesoderm",
+      "name": "Mesoderm",
+      "accept": [
+        "mesodermal layer",
+        "mesoderm layer"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "germ-layers",
+      "box": [
+        20,
+        738,
+        121,
+        23
+      ]
+    },
+    {
+      "id": "amniotic-cavity-2",
+      "name": "Amniotic cavity",
+      "accept": [
+        "amniotic sac cavity"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        19,
+        813,
+        167,
+        28
+      ]
+    },
+    {
+      "id": "trophoblast-2",
+      "name": "Trophoblast",
+      "accept": [
+        "trophectoderm"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "blastocyst",
+      "box": [
+        19,
+        888,
+        132,
+        28
+      ]
+    },
+    {
+      "id": "ectoderm",
+      "name": "Ectoderm",
+      "accept": [
+        "ectodermal layer",
+        "ectoderm layer"
+      ],
+      "box": [
+        491,
+        531,
+        100,
+        24
+      ],
+      "concept": "germ-layers"
+    },
+    {
+      "id": "primitive-streak",
+      "name": "Primitive streak",
+      "accept": [
+        "primitive groove"
+      ],
+      "lines": [
+        13,
+        15
+      ],
+      "concept": "germ-layers",
+      "box": [
+        781,
+        737,
+        101,
+        49
+      ]
+    }
+  ]
+}

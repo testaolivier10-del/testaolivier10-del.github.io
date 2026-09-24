@@ -1,0 +1,243 @@
+{
+  "figure": "os-28-22",
+  "labels": [
+    {
+      "id": "ductus-arteriosus",
+      "name": "Ductus arteriosus",
+      "accept": [
+        "arterial duct",
+        "da"
+      ],
+      "lines": [
+        3,
+        5
+      ],
+      "concept": "fetal-circulation",
+      "box": [
+        300,
+        84,
+        115,
+        45
+      ]
+    },
+    {
+      "id": "foramen-ovale",
+      "name": "Foramen ovale",
+      "accept": [
+        "oval foramen",
+        "fo"
+      ],
+      "lines": [
+        13,
+        15
+      ],
+      "concept": "foramen-ovale",
+      "box": [
+        294,
+        326,
+        96,
+        45
+      ]
+    },
+    {
+      "id": "ductus-arteriosus-after-birth",
+      "name": "The ductus arteriosus constricts, allowing all blood leaving the right ventricle to travel to the lungs via the pulmonary arteries.",
+      "accept": [
+        "ligamentum arteriosum",
+        "closed ductus arteriosus",
+        "ductus arteriosus"
+      ],
+      "lines": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "concept": "neonatal-transition",
+      "box": [
+        811,
+        62,
+        233,
+        144
+      ]
+    },
+    {
+      "id": "fossa-ovalis",
+      "name": "The foramen ovale closes, leaving a small depression called the fossa ovalis.",
+      "accept": [
+        "fossa ovalis",
+        "closed foramen ovale",
+        "foramen ovale"
+      ],
+      "lines": [
+        10,
+        11,
+        12
+      ],
+      "concept": "fossa-ovalis",
+      "box": [
+        809,
+        274,
+        268,
+        68
+      ]
+    },
+    {
+      "id": "inferior-vena-cava",
+      "name": "Inferior vena cava",
+      "accept": [
+        "ivc"
+      ],
+      "lines": [
+        20,
+        22
+      ],
+      "concept": "great-vessels",
+      "box": [
+        338,
+        502,
+        108,
+        46
+      ]
+    },
+    {
+      "id": "ductus-venosus",
+      "name": "Ductus venosus",
+      "accept": [
+        "venous duct"
+      ],
+      "lines": [
+        26,
+        28
+      ],
+      "concept": "fetal-circulation",
+      "box": [
+        361,
+        624,
+        98,
+        45
+      ]
+    },
+    {
+      "id": "umbilical-vein",
+      "name": "Blood arrives via umbilical vein",
+      "accept": [
+        "umbilical vein"
+      ],
+      "lines": [
+        29,
+        31,
+        34
+      ],
+      "concept": "umbilical-cord",
+      "box": [
+        9,
+        661,
+        136,
+        68
+      ]
+    },
+    {
+      "id": "portal-vein",
+      "name": "Portal vein",
+      "accept": [
+        "hepatic portal vein"
+      ],
+      "lines": [
+        33,
+        36
+      ],
+      "concept": "hepatic-portal",
+      "box": [
+        377,
+        703,
+        67,
+        45
+      ]
+    },
+    {
+      "id": "umbilical-arteries",
+      "name": "Umbilical arteries",
+      "accept": [
+        "umbilical artery"
+      ],
+      "lines": [
+        40,
+        42
+      ],
+      "concept": "umbilical-cord",
+      "box": [
+        8,
+        858,
+        97,
+        45
+      ]
+    },
+    {
+      "id": "inferior-vena-cava-after-birth",
+      "name": "The inferior vena cava now carries only deoxygenated blood back to the heart.",
+      "accept": [
+        "inferior vena cava",
+        "ivc"
+      ],
+      "lines": [
+        21,
+        23,
+        24,
+        25
+      ],
+      "concept": "great-vessels",
+      "box": [
+        870,
+        516,
+        221,
+        92
+      ]
+    },
+    {
+      "id": "ligamentum-venosum",
+      "name": "The ductus venosus degenerates and becomes the ligamentum venosum.",
+      "accept": [
+        "ligamentum venosum",
+        "closed ductus venosus"
+      ],
+      "lines": [
+        27,
+        30,
+        32,
+        35
+      ],
+      "concept": null,
+      "box": [
+        870,
+        643,
+        216,
+        96
+      ]
+    },
+    {
+      "id": "umbilical-ligaments",
+      "name": "Umbilical ligaments",
+      "accept": [
+        "medial umbilical ligaments",
+        "medial umbilical ligament",
+        "umbilical ligament",
+        "round ligament of the liver",
+        "ligamentum teres"
+      ],
+      "lines": [
+        39,
+        41
+      ],
+      "concept": null,
+      "box": [
+        871,
+        836,
+        102,
+        49
+      ]
+    }
+  ]
+}

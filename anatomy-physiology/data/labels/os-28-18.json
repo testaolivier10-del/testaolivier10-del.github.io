@@ -1,0 +1,72 @@
+{
+  "figure": "os-28-18",
+  "labels": [
+    {
+      "id": "end-of-3rd-trimester",
+      "name": "End of 3rd trimester",
+      "accept": [
+        "end of third trimester",
+        "third trimester",
+        "3rd trimester",
+        "term",
+        "40 weeks"
+      ],
+      "lines": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "concept": "fetal-period",
+      "box": [
+        1,
+        712,
+        190,
+        64
+      ]
+    },
+    {
+      "id": "end-of-2nd-trimester",
+      "name": "End of 2nd trimester",
+      "accept": [
+        "end of second trimester",
+        "second trimester",
+        "2nd trimester"
+      ],
+      "lines": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "concept": "fetal-period",
+      "box": [
+        1,
+        865,
+        197,
+        65
+      ]
+    },
+    {
+      "id": "end-of-1st-trimester",
+      "name": "End of 1st trimester",
+      "accept": [
+        "end of first trimester",
+        "first trimester",
+        "1st trimester"
+      ],
+      "lines": [
+        14,
+        15,
+        16
+      ],
+      "concept": "fetal-period",
+      "box": [
+        3,
+        1053,
+        184,
+        64
+      ]
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "figure": "os-28-11",
+  "labels": [
+    {
+      "id": "maternal-blood-supply",
+      "name": "Maternal blood supply in intervillous space",
+      "accept": [
+        "intervillous space",
+        "intervillus space",
+        "maternal blood",
+        "maternal blood supply",
+        "maternal blood in intervillous space"
+      ],
+      "lines": [
+        0,
+        2,
+        4
+      ],
+      "concept": "placenta",
+      "note": "OpenStax prints 'intervillus space'; the usual spelling is intervillous, and both are accepted.",
+      "box": [
+        896,
+        0,
+        156,
+        69
+      ]
+    },
+    {
+      "id": "uterine-artery-and-vein",
+      "name": "Uterine artery and vein",
+      "accept": [
+        "uterine artery",
+        "uterine vein",
+        "uterine vessels",
+        "uterine arteries",
+        "spiral arteries",
+        "spiral artery"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "uterus",
+      "box": [
+        754,
+        22,
+        136,
+        43
+      ]
+    },
+    {
+      "id": "chorionic-villi",
+      "name": "Chorionic villi",
+      "accept": [
+        "chorionic villus",
+        "villi",
+        "villus",
+        "placental villi"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "placenta",
+      "box": [
+        613,
+        45,
+        130,
+        21
+      ]
+    },
+    {
+      "id": "placenta",
+      "name": "Placenta",
+      "accept": [],
+      "lines": [
+        6
+      ],
+      "concept": "placenta",
+      "box": [
+        459,
+        105,
+        89,
+        20
+      ]
+    },
+    {
+      "id": "yolk-sac",
+      "name": "Yolk sac",
+      "accept": [
+        "yolk sack",
+        "umbilical vesicle"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "embryonic-membranes",
+      "note": "OpenStax prints the misspelling 'Yolk sack'; the label is named correctly and the printed form is accepted. Not covered: it names a real structure.",
+      "box": [
+        456,
+        150,
+        95,
+        21
+      ]
+    },
+    {
+      "id": "amniotic-fluid",
+      "name": "Amniotic fluid",
+      "accept": [
+        "amniotic cavity"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        437,
+        196,
+        131,
+        21
+      ]
+    },
+    {
+      "id": "uterus",
+      "name": "Uterus",
+      "accept": [
+        "myometrium",
+        "uterine wall"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "uterus",
+      "box": [
+        468,
+        328,
+        71,
+        21
+      ]
+    },
+    {
+      "id": "uterus-2",
+      "name": "Uterus",
+      "accept": [
+        "myometrium",
+        "uterine wall"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "uterus",
+      "box": [
+        1031,
+        328,
+        71,
+        21
+      ]
+    },
+    {
+      "id": "chorion",
+      "name": "Chorion",
+      "accept": [
+        "chorionic membrane"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        462,
+        379,
+        82,
+        21
+      ]
+    },
+    {
+      "id": "umbilical-cord",
+      "name": "Umbilical cord",
+      "accept": [
+        "cord",
+        "funiculus umbilicalis"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "umbilical-cord",
+      "box": [
+        435,
+        430,
+        137,
+        21
+      ]
+    },
+    {
+      "id": "amnion",
+      "name": "Amnion",
+      "accept": [
+        "amniotic membrane"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        462,
+        482,
+        81,
+        20
+      ]
+    },
+    {
+      "id": "umbilical-vein",
+      "name": "Umbilical vein",
+      "accept": [],
+      "lines": [
+        14,
+        18
+      ],
+      "concept": "umbilical-cord",
+      "note": "The figure colors the umbilical vein blue and the arteries red, the usual colors for veins and arteries; in the cord the vein carries the oxygen-rich blood. The caption says so.",
+      "box": [
+        516,
+        522,
+        93,
+        43
+      ]
+    },
+    {
+      "id": "umbilical-artery",
+      "name": "Umbilical artery",
+      "accept": [
+        "umbilical arteries"
+      ],
+      "lines": [
+        15,
+        17
+      ],
+      "concept": "umbilical-cord",
+      "note": "Colored red as an artery, but it carries oxygen-poor blood from the fetus to the placenta. The caption says so.",
+      "box": [
+        709,
+        522,
+        93,
+        47
+      ]
+    },
+    {
+      "id": "placenta-2",
+      "name": "Placenta",
+      "accept": [],
+      "lines": [
+        16
+      ],
+      "concept": "placenta",
+      "box": [
+        920,
+        522,
+        90,
+        21
+      ]
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "figure": "os-22-29",
+  "labels": [
+    {
+      "id": "pharynx",
+      "name": "Pharynx",
+      "accept": [
+        "throat",
+        "primitive pharynx"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "pharynx",
+      "box": [
+        228,
+        40,
+        98,
+        28
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus",
+      "accept": [
+        "oesophagus"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "esophagus",
+      "box": [
+        674,
+        36,
+        129,
+        28
+      ]
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "windpipe"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "trachea",
+      "box": [
+        673,
+        73,
+        98,
+        23
+      ]
+    },
+    {
+      "id": "laryngotracheal-tube",
+      "name": "Laryngotracheal tube",
+      "accept": [
+        "laryngotracheal bud",
+        "laryngotracheal diverticulum",
+        "respiratory diverticulum",
+        "lung bud"
+      ],
+      "lines": [
+        4,
+        5
+      ],
+      "concept": "lung-development",
+      "box": [
+        14,
+        154,
+        181,
+        46
+      ]
+    },
+    {
+      "id": "splanchnic-mesoderm",
+      "name": "Splanchnic mesoderm",
+      "accept": [
+        "visceral mesoderm",
+        "splanchnopleuric mesoderm"
+      ],
+      "lines": [
+        8,
+        10
+      ],
+      "concept": "germ-layers",
+      "box": [
+        15,
+        217,
+        127,
+        48
+      ]
+    },
+    {
+      "id": "tracheal-buds",
+      "name": "Tracheal buds",
+      "accept": [
+        "tracheal bud",
+        "lung buds",
+        "lung bud"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "lung-development",
+      "box": [
+        341,
+        219,
+        161,
+        23
+      ]
+    },
+    {
+      "id": "tracheal-buds-2",
+      "name": "Tracheal buds",
+      "accept": [
+        "tracheal bud",
+        "lung buds",
+        "lung bud"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "lung-development",
+      "box": [
+        532,
+        207,
+        160,
+        23
+      ]
+    },
+    {
+      "id": "trachea-2",
+      "name": "Trachea",
+      "accept": [
+        "windpipe"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "trachea",
+      "box": [
+        908,
+        134,
+        99,
+        23
+      ]
+    },
+    {
+      "id": "bronchial-bud",
+      "name": "Bronchial bud",
+      "accept": [
+        "bronchial buds",
+        "primary bronchial bud"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "lung-development",
+      "box": [
+        909,
+        185,
+        155,
+        24
+      ]
+    },
+    {
+      "id": "bronchial-buds",
+      "name": "Bronchial buds",
+      "accept": [
+        "bronchial bud",
+        "secondary bronchial buds"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "lung-development",
+      "box": [
+        690,
+        382,
+        167,
+        23
+      ]
+    },
+    {
+      "id": "trachea-bifurcates",
+      "name": "Trachea bifurcates",
+      "accept": [
+        "trachea",
+        "tracheal bifurcation",
+        "carina"
+      ],
+      "lines": [
+        15,
+        17
+      ],
+      "concept": "trachea",
+      "box": [
+        975,
+        553,
+        115,
+        47
+      ]
+    },
+    {
+      "id": "bronchial-buds-2",
+      "name": "Bronchial buds",
+      "accept": [
+        "bronchial bud"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "lung-development",
+      "box": [
+        926,
+        657,
+        167,
+        24
+      ]
+    },
+    {
+      "id": "bronchial-buds-develop",
+      "name": "Bronchial buds develop",
+      "accept": [
+        "bronchial buds",
+        "bronchial tree",
+        "branching bronchial buds"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "lung-development",
+      "box": [
+        619,
+        765,
+        256,
+        27
+      ]
+    },
+    {
+      "id": "upper-lobe",
+      "name": "Upper lobe",
+      "accept": [
+        "superior lobe",
+        "right upper lobe"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "lungs",
+      "box": [
+        16,
+        547,
+        126,
+        28
+      ]
+    },
+    {
+      "id": "middle-lobe",
+      "name": "Middle lobe",
+      "accept": [
+        "right middle lobe"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "lungs",
+      "box": [
+        16,
+        618,
+        131,
+        23
+      ]
+    },
+    {
+      "id": "lower-lobe",
+      "name": "Lower lobe",
+      "accept": [
+        "inferior lobe",
+        "right lower lobe"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "lungs",
+      "box": [
+        16,
+        700,
+        126,
+        23
+      ]
+    },
+    {
+      "id": "upper-lobe-2",
+      "name": "Upper lobe",
+      "accept": [
+        "superior lobe",
+        "left upper lobe"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "lungs",
+      "box": [
+        448,
+        557,
+        126,
+        28
+      ]
+    },
+    {
+      "id": "lower-lobe-2",
+      "name": "Lower lobe",
+      "accept": [
+        "inferior lobe",
+        "left lower lobe"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "lungs",
+      "box": [
+        348,
+        765,
+        127,
+        23
+      ]
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "figure": "os-28-10",
+  "labels": [
+    {
+      "id": "yolk-sac",
+      "name": "Yolk sac (lined with endoderm)",
+      "accept": [
+        "yolk sac",
+        "yolk sack",
+        "umbilical vesicle"
+      ],
+      "lines": [
+        0,
+        2,
+        3
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        29,
+        90,
+        277,
+        59
+      ]
+    },
+    {
+      "id": "maternal-blood-pool",
+      "name": "Maternal blood pool",
+      "accept": [
+        "maternal blood",
+        "intervillous space",
+        "maternal blood space",
+        "maternal blood lacunae",
+        "lacunae"
+      ],
+      "lines": [
+        1,
+        4,
+        5
+      ],
+      "concept": "placenta",
+      "box": [
+        863,
+        90,
+        141,
+        64
+      ]
+    },
+    {
+      "id": "amniotic-cavity",
+      "name": "Amniotic cavity containing amniotic fluid",
+      "accept": [
+        "amniotic cavity",
+        "amniotic fluid",
+        "amniotic sac"
+      ],
+      "lines": [
+        6,
+        7,
+        10
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        29,
+        230,
+        202,
+        91
+      ]
+    },
+    {
+      "id": "amnion",
+      "name": "Amnion",
+      "accept": [
+        "amniotic membrane"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        29,
+        380,
+        108,
+        27
+      ]
+    },
+    {
+      "id": "endometrium",
+      "name": "Endometrium",
+      "accept": [
+        "uterine lining"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "uterus",
+      "box": [
+        31,
+        473,
+        180,
+        27
+      ]
+    },
+    {
+      "id": "chorion",
+      "name": "Chorion (derived from blastocyst cavity membrane)",
+      "accept": [
+        "chorion",
+        "chorionic membrane"
+      ],
+      "lines": [
+        8,
+        9,
+        11,
+        12,
+        13
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        862,
+        271,
+        228,
+        97
+      ]
+    },
+    {
+      "id": "allantois",
+      "name": "Allantois",
+      "accept": [
+        "allantoic duct"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        862,
+        428,
+        120,
+        27
+      ]
+    },
+    {
+      "id": "endoderm-layer",
+      "name": "Endoderm layer becomes:",
+      "accept": [
+        "endoderm",
+        "endoderm layer",
+        "endodermal layer"
+      ],
+      "lines": [
+        17,
+        18,
+        25
+      ],
+      "concept": "germ-layers",
+      "box": [
+        21,
+        742,
+        226,
+        58
+      ]
+    },
+    {
+      "id": "endoderm-digestive-system",
+      "name": "Digestive system",
+      "accept": [
+        "digestive tract",
+        "gi tract",
+        "gut lining"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        55,
+        805,
+        224,
+        33
+      ]
+    },
+    {
+      "id": "endoderm-liver",
+      "name": "Liver",
+      "accept": [
+        "hepatic"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "major-organs",
+      "box": [
+        55,
+        837,
+        73,
+        27
+      ]
+    },
+    {
+      "id": "endoderm-pancreas",
+      "name": "Pancreas",
+      "accept": [],
+      "lines": [
+        43
+      ],
+      "concept": "major-organs",
+      "box": [
+        55,
+        869,
+        130,
+        27
+      ]
+    },
+    {
+      "id": "endoderm-lungs",
+      "name": "Lungs (inner layers)",
+      "accept": [
+        "lungs",
+        "lung lining",
+        "airway epithelium"
+      ],
+      "lines": [
+        47,
+        48
+      ],
+      "concept": "major-organs",
+      "box": [
+        55,
+        900,
+        252,
+        33
+      ]
+    },
+    {
+      "id": "mesoderm-layer",
+      "name": "Mesoderm layer becomes:",
+      "accept": [
+        "mesoderm",
+        "mesoderm layer",
+        "mesodermal layer"
+      ],
+      "lines": [
+        19,
+        20,
+        23
+      ],
+      "concept": "germ-layers",
+      "box": [
+        380,
+        742,
+        228,
+        58
+      ]
+    },
+    {
+      "id": "mesoderm-circulatory-system",
+      "name": "Circulatory system",
+      "accept": [
+        "cardiovascular system",
+        "heart and blood vessels"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        413,
+        805,
+        246,
+        33
+      ]
+    },
+    {
+      "id": "mesoderm-lungs",
+      "name": "Lungs (epithelial layers)",
+      "accept": [
+        "lungs"
+      ],
+      "lines": [
+        35,
+        36,
+        37
+      ],
+      "concept": "major-organs",
+      "cover": true,
+      "note": "OpenStax lists 'Lungs (epithelial layers)' under mesoderm. The epithelial lining of the airways and alveoli comes from endoderm (the endoderm box's 'Lungs (inner layers)' is right); mesoderm gives the lungs' connective tissue, cartilage and smooth muscle. Covered for good and never asked; the caption explains it.",
+      "box": [
+        413,
+        837,
+        301,
+        33
+      ]
+    },
+    {
+      "id": "mesoderm-skeletal-system",
+      "name": "Skeletal system",
+      "accept": [
+        "skeleton",
+        "bones"
+      ],
+      "lines": [
+        40,
+        46
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        413,
+        868,
+        209,
+        33
+      ]
+    },
+    {
+      "id": "mesoderm-muscular-system",
+      "name": "Muscular system",
+      "accept": [
+        "muscles",
+        "skeletal muscle"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        413,
+        900,
+        224,
+        33
+      ]
+    },
+    {
+      "id": "ectoderm-layer",
+      "name": "Ectoderm layer becomes:",
+      "accept": [
+        "ectoderm",
+        "ectoderm layer",
+        "ectodermal layer"
+      ],
+      "lines": [
+        21,
+        22,
+        24
+      ],
+      "concept": "germ-layers",
+      "box": [
+        796,
+        742,
+        217,
+        58
+      ]
+    },
+    {
+      "id": "ectoderm-hair",
+      "name": "Hair",
+      "accept": [
+        "hairs"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "hair-follicle",
+      "box": [
+        829,
+        805,
+        65,
+        27
+      ]
+    },
+    {
+      "id": "ectoderm-nails",
+      "name": "Nails",
+      "accept": [
+        "nail"
+      ],
+      "lines": [
+        39
+      ],
+      "concept": "nail",
+      "box": [
+        829,
+        837,
+        74,
+        27
+      ]
+    },
+    {
+      "id": "ectoderm-skin",
+      "name": "Skin",
+      "accept": [
+        "epidermis"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": "major-organs",
+      "cover": true,
+      "note": "OpenStax lists 'Skin' under ectoderm. Only the epidermis (and hair, nails and glands) comes from ectoderm; the dermis comes from mesoderm. Covered for good and never asked; the caption explains it.",
+      "box": [
+        829,
+        868,
+        66,
+        28
+      ]
+    },
+    {
+      "id": "ectoderm-nervous-system",
+      "name": "Nervous system",
+      "accept": [
+        "brain and spinal cord",
+        "neural tissue"
+      ],
+      "lines": [
+        50,
+        54
+      ],
+      "concept": "organ-system-roster",
+      "box": [
+        829,
+        900,
+        215,
+        33
+      ]
+    }
+  ]
+}

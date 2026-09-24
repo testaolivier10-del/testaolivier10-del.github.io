@@ -1,0 +1,66 @@
+{
+  "figure": "os-28-7",
+  "labels": [
+    {
+      "id": "internal-os",
+      "name": "Internal os",
+      "accept": [
+        "internal os of the cervix",
+        "internal cervical os",
+        "cervical opening",
+        "internal opening of the cervix"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "uterus",
+      "box": [
+        481,
+        399,
+        131,
+        25
+      ]
+    },
+    {
+      "id": "cervix-not-obstructed",
+      "name": "Cervix is not obstructed.",
+      "accept": [
+        "cervix",
+        "unobstructed cervix",
+        "cervical canal"
+      ],
+      "lines": [
+        4,
+        6
+      ],
+      "concept": "uterus",
+      "box": [
+        251,
+        531,
+        155,
+        54
+      ]
+    },
+    {
+      "id": "placenta-covering-cervix",
+      "name": "Placenta is covering cervix preventing a proper birth.",
+      "accept": [
+        "placenta previa",
+        "placenta",
+        "low-lying placenta"
+      ],
+      "lines": [
+        5,
+        7,
+        8
+      ],
+      "concept": "pregnancy-complications",
+      "box": [
+        857,
+        531,
+        243,
+        88
+      ]
+    }
+  ]
+}

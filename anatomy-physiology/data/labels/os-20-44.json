@@ -1,0 +1,196 @@
+{
+  "figure": "os-20-44",
+  "labels": [
+    {
+      "id": "aorta",
+      "name": "Aorta",
+      "accept": [
+        "aortic arch",
+        "ascending aorta",
+        "arch of aorta"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "great-vessels",
+      "box": [
+        917,
+        510,
+        63,
+        22
+      ]
+    },
+    {
+      "id": "ductus-arteriosus",
+      "name": "Ductus arteriosus",
+      "accept": [
+        "arterial duct",
+        "da",
+        "ductus arteriosus botalli"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "fetal-circulation",
+      "box": [
+        6,
+        520,
+        176,
+        22
+      ]
+    },
+    {
+      "id": "pulmonary-trunk",
+      "name": "Pulmonary trunk",
+      "accept": [
+        "pulmonary artery",
+        "main pulmonary artery"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "great-vessels",
+      "box": [
+        918,
+        547,
+        166,
+        26
+      ]
+    },
+    {
+      "id": "foramen-ovale",
+      "name": "Foramen ovale",
+      "accept": [
+        "oval foramen",
+        "fo"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "foramen-ovale",
+      "box": [
+        7,
+        581,
+        152,
+        21
+      ]
+    },
+    {
+      "id": "ductus-venosus",
+      "name": "Ductus venosus",
+      "accept": [
+        "venous duct"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "fetal-circulation",
+      "box": [
+        6,
+        633,
+        162,
+        22
+      ]
+    },
+    {
+      "id": "aorta-2",
+      "name": "Aorta",
+      "accept": [
+        "descending aorta",
+        "abdominal aorta"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "great-vessels",
+      "box": [
+        917,
+        672,
+        63,
+        22
+      ]
+    },
+    {
+      "id": "inferior-vena-cava",
+      "name": "Inferior vena cava",
+      "accept": [
+        "ivc",
+        "inferior vena cava"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "great-vessels",
+      "box": [
+        918,
+        711,
+        180,
+        21
+      ]
+    },
+    {
+      "id": "umbilical-arteries",
+      "name": "Umbilical arteries",
+      "accept": [
+        "umbilical artery"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "umbilical-cord",
+      "box": [
+        918,
+        782,
+        173,
+        22
+      ]
+    },
+    {
+      "id": "umbilical-vein",
+      "name": "Umbilical vein",
+      "accept": [],
+      "lines": [
+        25
+      ],
+      "concept": "umbilical-cord",
+      "box": [
+        918,
+        827,
+        141,
+        21
+      ]
+    },
+    {
+      "id": "placenta",
+      "name": "Placenta",
+      "accept": [],
+      "lines": [
+        26
+      ],
+      "concept": "placenta",
+      "box": [
+        918,
+        868,
+        94,
+        21
+      ]
+    },
+    {
+      "id": "bladder",
+      "name": "Bladder",
+      "accept": [
+        "urinary bladder"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "urinary-bladder",
+      "box": [
+        918,
+        914,
+        85,
+        22
+      ]
+    }
+  ]
+}

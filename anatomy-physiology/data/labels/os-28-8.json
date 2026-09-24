@@ -1,0 +1,206 @@
+{
+  "figure": "os-28-8",
+  "labels": [
+    {
+      "id": "endometrium",
+      "name": "Endometrium",
+      "accept": [
+        "uterine lining",
+        "lining of the uterus"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "uterus",
+      "box": [
+        591,
+        3,
+        111,
+        18
+      ]
+    },
+    {
+      "id": "blastocyst-cavity",
+      "name": "Blastocyst cavity",
+      "accept": [
+        "blastocoel",
+        "blastocele",
+        "blastocyst cavity"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "blastocyst",
+      "box": [
+        125,
+        142,
+        140,
+        21
+      ]
+    },
+    {
+      "id": "yolk-sac-note",
+      "name": "(develops into the yolk sac)",
+      "accept": [
+        "yolk sac"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "embryonic-membranes",
+      "cover": true,
+      "note": "OpenStax prints that the blastocyst cavity '(develops into the yolk sac)'. That is a simplification: hypoblast cells spread to line the cavity and form the yolk sac, so the cavity does not simply turn into it. Covered for good and never asked; the caption explains it.",
+      "box": [
+        125,
+        161,
+        148,
+        41
+      ]
+    },
+    {
+      "id": "hypoblast",
+      "name": "Hypoblast",
+      "accept": [
+        "primitive endoderm"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "germ-layers",
+      "box": [
+        125,
+        217,
+        89,
+        21
+      ]
+    },
+    {
+      "id": "epiblast",
+      "name": "Epiblast",
+      "accept": [
+        "primitive ectoderm"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "germ-layers",
+      "box": [
+        126,
+        241,
+        73,
+        22
+      ]
+    },
+    {
+      "id": "embryonic-disc",
+      "name": "Embryonic disc",
+      "accept": [
+        "bilaminar disc",
+        "bilaminar embryonic disc",
+        "embryonic disk",
+        "germ disc"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "germ-layers",
+      "box": [
+        0,
+        229,
+        90,
+        38
+      ]
+    },
+    {
+      "id": "amnion",
+      "name": "Amnion",
+      "accept": [
+        "amniotic membrane"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        125,
+        277,
+        70,
+        19
+      ]
+    },
+    {
+      "id": "amniotic-cavity",
+      "name": "Amniotic cavity",
+      "accept": [
+        "amniotic sac cavity"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        125,
+        306,
+        127,
+        22
+      ]
+    },
+    {
+      "id": "trophoblast",
+      "name": "Trophoblast",
+      "accept": [
+        "trophoblast layer",
+        "trophectoderm"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "blastocyst",
+      "box": [
+        0,
+        393,
+        99,
+        22
+      ]
+    },
+    {
+      "id": "cytotrophoblast",
+      "name": "Cytotrophoblast",
+      "accept": [
+        "cytotrophoblast layer",
+        "inner trophoblast layer"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "implantation",
+      "box": [
+        125,
+        381,
+        133,
+        22
+      ]
+    },
+    {
+      "id": "syncytiotrophoblast",
+      "name": "Syncytiotrophoblast",
+      "accept": [
+        "syncytium",
+        "syncytiotrophoblast layer",
+        "syncitiotrophoblast"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "implantation",
+      "box": [
+        125,
+        406,
+        163,
+        22
+      ]
+    }
+  ]
+}

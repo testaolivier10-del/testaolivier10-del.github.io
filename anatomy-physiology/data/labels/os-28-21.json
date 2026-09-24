@@ -1,0 +1,141 @@
+{
+  "figure": "os-28-21",
+  "labels": [
+    {
+      "id": "amniotic-fluid",
+      "name": "Amniotic fluid within uterus",
+      "accept": [
+        "amniotic fluid",
+        "amniotic sac",
+        "amniotic cavity"
+      ],
+      "lines": [
+        16,
+        19
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        438,
+        315,
+        156,
+        53
+      ]
+    },
+    {
+      "id": "cervix",
+      "name": "Cervix",
+      "accept": [
+        "cervix of the uterus",
+        "uterine cervix",
+        "cervical canal"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "uterus",
+      "box": [
+        435,
+        429,
+        82,
+        24
+      ]
+    },
+    {
+      "id": "vagina",
+      "name": "Vagina",
+      "accept": [
+        "birth canal",
+        "vaginal canal"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "vagina-vulva",
+      "box": [
+        435,
+        485,
+        86,
+        29
+      ]
+    },
+    {
+      "id": "undilated-cervix",
+      "name": "Undilated cervix",
+      "accept": [
+        "closed cervix",
+        "cervix",
+        "effaced cervix"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "uterus",
+      "box": [
+        158,
+        530,
+        185,
+        24
+      ]
+    },
+    {
+      "id": "fully-dilated-cervix",
+      "name": "Fully dilated cervix",
+      "accept": [
+        "dilated cervix",
+        "full dilation",
+        "cervix",
+        "fully dilated"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "labor-stages",
+      "box": [
+        784,
+        530,
+        212,
+        29
+      ]
+    },
+    {
+      "id": "dilation-size-note",
+      "name": "(>10 cm in diameter)",
+      "accept": [
+        "10 cm"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "labor-stages",
+      "cover": true,
+      "note": "OpenStax prints that the fully dilated cervix is '>10 cm in diameter'. Full dilation is about 10 cm; the cervix does not open beyond that. Covered for good and never asked; the caption gives the correct figure.",
+      "box": [
+        772,
+        559,
+        234,
+        29
+      ]
+    },
+    {
+      "id": "placenta-detaches",
+      "name": "Placenta detaches and exits through vagina",
+      "accept": [
+        "placenta",
+        "afterbirth",
+        "delivered placenta"
+      ],
+      "lines": [
+        49,
+        51,
+        53
+      ],
+      "concept": "labor-stages",
+      "box": [
+        453,
+        1405,
+        212,
+        87
+      ]
+    }
+  ]
+}

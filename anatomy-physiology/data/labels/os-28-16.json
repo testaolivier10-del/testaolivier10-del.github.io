@@ -1,0 +1,265 @@
+{
+  "figure": "os-28-16",
+  "labels": [
+    {
+      "id": "mullerian-ducts",
+      "name": "Müllerian ducts",
+      "accept": [
+        "mullerian ducts",
+        "mullerian duct",
+        "müllerian duct",
+        "paramesonephric ducts",
+        "paramesonephric duct"
+      ],
+      "box": [
+        409,
+        2,
+        220,
+        29
+      ],
+      "concept": "sex-differentiation"
+    },
+    {
+      "id": "wolffian-ducts",
+      "name": "Wolffian ducts",
+      "accept": [
+        "wolffian duct",
+        "mesonephric ducts",
+        "mesonephric duct"
+      ],
+      "box": [
+        222,
+        262,
+        110,
+        70
+      ],
+      "concept": "sex-differentiation"
+    },
+    {
+      "id": "bipotential-gonads",
+      "name": "Bipotential gonads",
+      "accept": [
+        "bipotential gonad",
+        "indifferent gonads",
+        "indifferent gonad",
+        "gonads",
+        "gonadal ridge"
+      ],
+      "box": [
+        726,
+        265,
+        148,
+        69
+      ],
+      "concept": "sex-differentiation"
+    },
+    {
+      "id": "cloaca",
+      "name": "Cloaca",
+      "accept": [
+        "urogenital sinus"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null,
+      "box": [
+        594,
+        455,
+        110,
+        30
+      ]
+    },
+    {
+      "id": "mullerian-ducts-degrade",
+      "name": "Müllerian ducts degrade",
+      "accept": [
+        "mullerian ducts",
+        "müllerian ducts",
+        "paramesonephric ducts",
+        "mullerian duct"
+      ],
+      "box": [
+        133,
+        755,
+        219,
+        69
+      ],
+      "concept": "sex-differentiation"
+    },
+    {
+      "id": "wolffian-ducts-degrade",
+      "name": "Wolffian ducts degrade",
+      "accept": [
+        "wolffian ducts",
+        "mesonephric ducts",
+        "wolffian duct"
+      ],
+      "box": [
+        757,
+        755,
+        201,
+        69
+      ],
+      "concept": "sex-differentiation"
+    },
+    {
+      "id": "wolffian-duct-derivatives",
+      "name": "Wolffian ducts become epididymis and ductus (vas) deferens",
+      "accept": [
+        "epididymis",
+        "ductus deferens",
+        "vas deferens",
+        "wolffian ducts",
+        "mesonephric ducts"
+      ],
+      "box": [
+        80,
+        1485,
+        337,
+        105
+      ],
+      "concept": "sex-differentiation"
+    },
+    {
+      "id": "mullerian-duct-derivatives",
+      "name": "Müllerian ducts become uterine tubes and uterus",
+      "accept": [
+        "uterine tubes",
+        "uterus",
+        "mullerian ducts",
+        "müllerian ducts",
+        "paramesonephric ducts",
+        "fallopian tubes"
+      ],
+      "box": [
+        700,
+        1485,
+        315,
+        100
+      ],
+      "concept": "sex-differentiation"
+    },
+    {
+      "id": "testes",
+      "name": "Testes",
+      "accept": [
+        "testis",
+        "testicles",
+        "testicle"
+      ],
+      "lines": [
+        54
+      ],
+      "concept": "major-organs",
+      "box": [
+        194,
+        1787,
+        104,
+        29
+      ]
+    },
+    {
+      "id": "ovaries",
+      "name": "Ovaries",
+      "accept": [
+        "ovary"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "ovaries",
+      "box": [
+        798,
+        1786,
+        120,
+        30
+      ]
+    },
+    {
+      "id": "urinary-bladder",
+      "name": "Urinary bladder",
+      "accept": [
+        "bladder"
+      ],
+      "box": [
+        4,
+        1866,
+        113,
+        66
+      ],
+      "concept": "urinary-bladder"
+    },
+    {
+      "id": "urethra",
+      "name": "Urethra",
+      "accept": [],
+      "lines": [
+        59
+      ],
+      "concept": "urethra",
+      "box": [
+        2,
+        1994,
+        117,
+        30
+      ]
+    },
+    {
+      "id": "urinary-bladder-2",
+      "name": "Urinary bladder",
+      "accept": [
+        "bladder"
+      ],
+      "box": [
+        980,
+        1845,
+        117,
+        64
+      ],
+      "concept": "urinary-bladder"
+    },
+    {
+      "id": "urethra-2",
+      "name": "Urethra",
+      "accept": [],
+      "lines": [
+        57
+      ],
+      "concept": "urethra",
+      "box": [
+        983,
+        1945,
+        116,
+        29
+      ]
+    },
+    {
+      "id": "uterus",
+      "name": "Uterus",
+      "accept": [],
+      "lines": [
+        58
+      ],
+      "concept": "uterus",
+      "box": [
+        983,
+        1990,
+        104,
+        30
+      ]
+    },
+    {
+      "id": "vagina",
+      "name": "Vagina",
+      "accept": [],
+      "box": [
+        985,
+        2029,
+        102,
+        38
+      ],
+      "concept": "vagina-vulva"
+    }
+  ]
+}

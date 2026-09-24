@@ -1,0 +1,133 @@
+{
+  "figure": "os-28-2",
+  "labels": [
+    {
+      "id": "acrosome",
+      "name": "Acrosome",
+      "accept": [
+        "acrosomal cap",
+        "acrosomal vesicle"
+      ],
+      "box": [
+        700,
+        405,
+        76,
+        20
+      ],
+      "concept": "sperm-structure"
+    },
+    {
+      "id": "sperm-nucleus",
+      "name": "Sperm nucleus",
+      "accept": [
+        "nucleus of the sperm",
+        "sperm head nucleus",
+        "nucleus"
+      ],
+      "box": [
+        748,
+        439,
+        75,
+        44
+      ],
+      "concept": "sperm-structure"
+    },
+    {
+      "id": "oocyte-cytoplasm",
+      "name": "Oocyte cytoplasm",
+      "accept": [
+        "cytoplasm",
+        "cytoplasm of the oocyte",
+        "ooplasm"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "gamete",
+      "box": [
+        890,
+        404,
+        183,
+        26
+      ]
+    },
+    {
+      "id": "plasma-membrane",
+      "name": "Plasma membrane",
+      "accept": [
+        "oocyte plasma membrane",
+        "cell membrane",
+        "oolemma",
+        "oocyte membrane"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "plasma-membrane",
+      "box": [
+        891,
+        448,
+        192,
+        21
+      ]
+    },
+    {
+      "id": "sperm-receptors",
+      "name": "Sperm receptors in plasma membrane",
+      "accept": [
+        "sperm receptors",
+        "sperm receptor",
+        "sperm-binding receptors",
+        "sperm receptor proteins"
+      ],
+      "lines": [
+        21,
+        23
+      ],
+      "concept": "fertilization",
+      "box": [
+        890,
+        486,
+        194,
+        50
+      ]
+    },
+    {
+      "id": "zona-pellucida",
+      "name": "Zona pellucida",
+      "accept": [
+        "zona",
+        "zona pellucida glycoprotein layer"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "polyspermy-block",
+      "box": [
+        889,
+        550,
+        154,
+        26
+      ]
+    },
+    {
+      "id": "corona-radiata",
+      "name": "Corona radiata",
+      "accept": [
+        "corona",
+        "granulosa cells",
+        "corona radiata cells"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "polyspermy-block",
+      "box": [
+        890,
+        595,
+        155,
+        22
+      ]
+    }
+  ]
+}

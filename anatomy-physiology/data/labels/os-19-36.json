@@ -1,0 +1,603 @@
+{
+  "figure": "os-19-36",
+  "labels": [
+    {
+      "id": "cardiogenic-area",
+      "name": "Cardiogenic area",
+      "accept": [
+        "cardiogenic region",
+        "cardiogenic cords",
+        "heart-forming region"
+      ],
+      "lines": [
+        9,
+        11
+      ],
+      "concept": "heart-tube-formation",
+      "box": [
+        238,
+        145,
+        110,
+        40
+      ]
+    },
+    {
+      "id": "primitive-blood-vessels",
+      "name": "Primitive blood vessels",
+      "accept": [
+        "blood islands",
+        "primitive vessels"
+      ],
+      "lines": [
+        15,
+        19,
+        20
+      ],
+      "concept": "vessel-development",
+      "box": [
+        238,
+        274,
+        83,
+        59
+      ]
+    },
+    {
+      "id": "endocardial-tubes",
+      "name": "Endocardial tubes",
+      "accept": [
+        "endocardial tube",
+        "heart tubes"
+      ],
+      "lines": [
+        6,
+        10
+      ],
+      "concept": "heart-tube-formation",
+      "box": [
+        462,
+        136,
+        109,
+        40
+      ]
+    },
+    {
+      "id": "primitive-heart-tube",
+      "name": "Fusion into primitive heart tube",
+      "accept": [
+        "primitive heart tube",
+        "heart tube",
+        "fused heart tube"
+      ],
+      "box": [
+        674,
+        138,
+        104,
+        60
+      ],
+      "concept": "heart-tube-formation"
+    },
+    {
+      "id": "truncus-arteriosus",
+      "name": "Truncus arteriosus",
+      "accept": [],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        928,
+        66,
+        93,
+        40
+      ]
+    },
+    {
+      "id": "bulbus-cordis",
+      "name": "Bulbus cordis",
+      "accept": [],
+      "lines": [
+        5,
+        8
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        928,
+        118,
+        68,
+        40
+      ]
+    },
+    {
+      "id": "primitive-ventricle",
+      "name": "Primitive ventricle",
+      "accept": [
+        "ventricle"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        929,
+        171,
+        154,
+        20
+      ]
+    },
+    {
+      "id": "primitive-atrium",
+      "name": "Primitive atrium",
+      "accept": [
+        "atrium"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        928,
+        215,
+        83,
+        40
+      ]
+    },
+    {
+      "id": "truncus-arteriosus-23-days",
+      "name": "Truncus arteriosus",
+      "accept": [],
+      "lines": [
+        22,
+        24
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        477,
+        344,
+        93,
+        40
+      ]
+    },
+    {
+      "id": "bulbus-cordis-23-days",
+      "name": "Bulbus cordis",
+      "accept": [],
+      "lines": [
+        28,
+        30
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        483,
+        402,
+        69,
+        39
+      ]
+    },
+    {
+      "id": "ventricle-23-days",
+      "name": "Ventricle",
+      "accept": [
+        "primitive ventricle"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        473,
+        451,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "atrium-23-days",
+      "name": "Atrium",
+      "accept": [
+        "primitive atrium"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        473,
+        481,
+        65,
+        20
+      ]
+    },
+    {
+      "id": "sinus-venosus-23-days",
+      "name": "Sinus venosus",
+      "accept": [],
+      "lines": [
+        39,
+        42
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        473,
+        510,
+        80,
+        39
+      ]
+    },
+    {
+      "id": "ventricle-24-days",
+      "name": "Ventricle",
+      "accept": [
+        "primitive ventricle"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        713,
+        440,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "atrium-24-days",
+      "name": "Atrium",
+      "accept": [
+        "primitive atrium"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        713,
+        470,
+        65,
+        20
+      ]
+    },
+    {
+      "id": "sinus-venosus-24-days",
+      "name": "Sinus venosus",
+      "accept": [],
+      "lines": [
+        38,
+        40
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        712,
+        499,
+        81,
+        39
+      ]
+    },
+    {
+      "id": "aortic-arch-arteries",
+      "name": "Aortic arch arteries",
+      "accept": [
+        "aortic arches",
+        "pharyngeal arch arteries",
+        "branchial arch arteries"
+      ],
+      "lines": [
+        21,
+        23
+      ],
+      "concept": "vessel-development",
+      "box": [
+        961,
+        325,
+        99,
+        40
+      ]
+    },
+    {
+      "id": "truncus-arteriosus-35-days",
+      "name": "Truncus arteriosus",
+      "accept": [],
+      "lines": [
+        26,
+        29
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        961,
+        381,
+        93,
+        39
+      ]
+    },
+    {
+      "id": "right-atrium-35-days",
+      "name": "Right atrium",
+      "accept": [
+        "ra"
+      ],
+      "lines": [
+        25,
+        27
+      ],
+      "concept": "chambers",
+      "box": [
+        756,
+        379,
+        62,
+        39
+      ]
+    },
+    {
+      "id": "left-atrium-35-days",
+      "name": "Left atrium",
+      "accept": [
+        "la"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "chambers",
+      "box": [
+        962,
+        435,
+        97,
+        20
+      ]
+    },
+    {
+      "id": "ventricle-35-days",
+      "name": "Ventricle",
+      "accept": [
+        "ventricles"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        961,
+        467,
+        83,
+        19
+      ]
+    },
+    {
+      "id": "septum-primum",
+      "name": "Septum primum",
+      "accept": [
+        "first septum",
+        "first atrial septum"
+      ],
+      "lines": [
+        48
+      ],
+      "concept": "foramen-ovale",
+      "box": [
+        46,
+        698,
+        141,
+        23
+      ]
+    },
+    {
+      "id": "atrioventricular-canals",
+      "name": "Atrioventricular canals",
+      "accept": [
+        "atrioventricular canal",
+        "av canal",
+        "av canals"
+      ],
+      "lines": [
+        49,
+        50
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        391,
+        698,
+        135,
+        40
+      ]
+    },
+    {
+      "id": "atrium-28-days",
+      "name": "Atrium",
+      "accept": [
+        "atria",
+        "common atrium"
+      ],
+      "lines": [
+        53
+      ],
+      "concept": "chambers",
+      "box": [
+        45,
+        735,
+        65,
+        20
+      ]
+    },
+    {
+      "id": "ventricle-28-days",
+      "name": "Ventricle",
+      "accept": [
+        "ventricles"
+      ],
+      "lines": [
+        56
+      ],
+      "concept": "chambers",
+      "box": [
+        46,
+        775,
+        83,
+        20
+      ]
+    },
+    {
+      "id": "interventricular-septum-28-days",
+      "name": "Interventricular septum",
+      "accept": [
+        "ventricular septum",
+        "ivs"
+      ],
+      "lines": [
+        59,
+        63
+      ],
+      "concept": "septa",
+      "box": [
+        45,
+        820,
+        134,
+        44
+      ]
+    },
+    {
+      "id": "dorsal-endocardial-cushion",
+      "name": "Dorsal endocardial cushion",
+      "accept": [
+        "endocardial cushion",
+        "endocardial cushions"
+      ],
+      "lines": [
+        60,
+        64
+      ],
+      "concept": "embryonic-heart-regions",
+      "box": [
+        391,
+        822,
+        164,
+        40
+      ]
+    },
+    {
+      "id": "foramen-ovale",
+      "name": "Foramen ovale",
+      "accept": [
+        "oval foramen"
+      ],
+      "lines": [
+        47
+      ],
+      "concept": "foramen-ovale",
+      "box": [
+        926,
+        684,
+        133,
+        20
+      ]
+    },
+    {
+      "id": "right-atrium",
+      "name": "Right atrium",
+      "accept": [
+        "ra"
+      ],
+      "lines": [
+        51,
+        54
+      ],
+      "concept": "chambers",
+      "box": [
+        587,
+        724,
+        63,
+        39
+      ]
+    },
+    {
+      "id": "left-atrium",
+      "name": "Left atrium",
+      "accept": [
+        "la"
+      ],
+      "lines": [
+        52
+      ],
+      "concept": "chambers",
+      "box": [
+        926,
+        729,
+        97,
+        20
+      ]
+    },
+    {
+      "id": "tricuspid-valve",
+      "name": "Tricuspid valve",
+      "accept": [
+        "right atrioventricular valve",
+        "right av valve"
+      ],
+      "lines": [
+        55,
+        58
+      ],
+      "concept": "av-valves",
+      "box": [
+        587,
+        771,
+        86,
+        40
+      ]
+    },
+    {
+      "id": "mitral-valve",
+      "name": "Mitral valve",
+      "accept": [
+        "bicuspid valve",
+        "left atrioventricular valve",
+        "left av valve"
+      ],
+      "lines": [
+        57
+      ],
+      "concept": "av-valves",
+      "box": [
+        925,
+        776,
+        104,
+        19
+      ]
+    },
+    {
+      "id": "right-ventricle",
+      "name": "Right ventricle",
+      "accept": [
+        "rv"
+      ],
+      "lines": [
+        62,
+        65
+      ],
+      "concept": "chambers",
+      "box": [
+        587,
+        830,
+        80,
+        40
+      ]
+    },
+    {
+      "id": "left-ventricle",
+      "name": "Left ventricle",
+      "accept": [
+        "lv"
+      ],
+      "lines": [
+        61
+      ],
+      "concept": "chambers",
+      "box": [
+        926,
+        822,
+        114,
+        19
+      ]
+    }
+  ]
+}

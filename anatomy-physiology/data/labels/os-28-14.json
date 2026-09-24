@@ -1,0 +1,143 @@
+{
+  "figure": "os-28-14",
+  "labels": [
+    {
+      "id": "yolk-sac",
+      "name": "Yolk sac",
+      "accept": [
+        "yolk sack",
+        "umbilical vesicle"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        888,
+        219,
+        92,
+        22
+      ]
+    },
+    {
+      "id": "yolk-sac-2",
+      "name": "Yolk sac",
+      "accept": [
+        "yolk sack",
+        "umbilical vesicle",
+        "yolk stalk"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        878,
+        586,
+        92,
+        22
+      ]
+    },
+    {
+      "id": "gut",
+      "name": "Gut",
+      "accept": [
+        "primitive gut",
+        "primitive gut tube",
+        "gut tube",
+        "foregut",
+        "midgut",
+        "hindgut"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "organogenesis",
+      "box": [
+        903,
+        911,
+        48,
+        22
+      ]
+    },
+    {
+      "id": "ectoderm",
+      "name": "Ectoderm",
+      "accept": [],
+      "lines": [
+        11
+      ],
+      "concept": "germ-layers",
+      "box": [
+        81,
+        870,
+        104,
+        22
+      ]
+    },
+    {
+      "id": "mesoderm",
+      "name": "Mesoderm",
+      "accept": [],
+      "lines": [
+        12
+      ],
+      "concept": "germ-layers",
+      "box": [
+        81,
+        894,
+        114,
+        22
+      ]
+    },
+    {
+      "id": "endoderm",
+      "name": "Endoderm",
+      "accept": [],
+      "lines": [
+        14
+      ],
+      "concept": "germ-layers",
+      "box": [
+        81,
+        919,
+        112,
+        22
+      ]
+    },
+    {
+      "id": "amnion",
+      "name": "Amnion",
+      "accept": [
+        "amniotic membrane"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "embryonic-membranes",
+      "box": [
+        80,
+        943,
+        86,
+        22
+      ]
+    },
+    {
+      "id": "hypoblast",
+      "name": "Hypoblast",
+      "accept": [
+        "primitive endoderm"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "germ-layers",
+      "box": [
+        81,
+        967,
+        108,
+        26
+      ]
+    }
+  ]
+}

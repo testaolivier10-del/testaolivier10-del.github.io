@@ -1,0 +1,188 @@
+{
+  "figure": "os-28-5",
+  "labels": [
+    {
+      "id": "trophoblast",
+      "name": "Trophoblast",
+      "accept": [
+        "trophoblast cells",
+        "trophectoderm"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "blastocyst",
+      "box": [
+        805,
+        25,
+        124,
+        26
+      ]
+    },
+    {
+      "id": "inner-cell-mass",
+      "name": "Inner cell mass",
+      "accept": [
+        "icm",
+        "embryoblast"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "blastocyst",
+      "box": [
+        941,
+        25,
+        153,
+        22
+      ]
+    },
+    {
+      "id": "blastocoel",
+      "name": "Blastocoel",
+      "accept": [
+        "blastocyst cavity",
+        "blastocele"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "blastocyst",
+      "box": [
+        909,
+        112,
+        114,
+        21
+      ]
+    },
+    {
+      "id": "eight-cell-stage",
+      "name": "Eight-cell stage",
+      "accept": [
+        "8-cell stage",
+        "eight cell stage",
+        "eight-cell embryo",
+        "8 cell stage"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "cleavage",
+      "box": [
+        284,
+        187,
+        155,
+        26
+      ]
+    },
+    {
+      "id": "morula",
+      "name": "Morula (16 cells)",
+      "accept": [
+        "morula",
+        "16-cell stage",
+        "sixteen-cell stage"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "cleavage",
+      "box": [
+        499,
+        187,
+        167,
+        26
+      ]
+    },
+    {
+      "id": "blastocyst",
+      "name": "Blastocyst (70–100 cells)",
+      "accept": [
+        "blastocyst",
+        "blastula"
+      ],
+      "lines": [
+        14,
+        15
+      ],
+      "concept": "blastocyst",
+      "box": [
+        776,
+        212,
+        245,
+        25
+      ]
+    },
+    {
+      "id": "four-cell-stage",
+      "name": "Four-cell stage",
+      "accept": [
+        "4-cell stage",
+        "four cell stage",
+        "four-cell embryo",
+        "4 cell stage"
+      ],
+      "box": [
+        57,
+        262,
+        140,
+        24
+      ],
+      "concept": "cleavage"
+    },
+    {
+      "id": "two-cell-stage",
+      "name": "Two-cell stage",
+      "accept": [
+        "2-cell stage",
+        "two cell stage",
+        "two-cell embryo",
+        "2 cell stage"
+      ],
+      "box": [
+        57,
+        499,
+        139,
+        22
+      ],
+      "concept": "cleavage"
+    },
+    {
+      "id": "fertilized-oocyte",
+      "name": "Fertilized Oocyte",
+      "accept": [
+        "fertilized oocyte",
+        "zygote",
+        "fertilized egg"
+      ],
+      "box": [
+        48,
+        762,
+        159,
+        28
+      ],
+      "concept": "fertilization"
+    },
+    {
+      "id": "unfertilized-oocyte",
+      "name": "Unfertilized Oocyte",
+      "accept": [
+        "unfertilized oocyte",
+        "oocyte",
+        "egg",
+        "secondary oocyte",
+        "ovum"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "gamete",
+      "box": [
+        33,
+        972,
+        189,
+        26
+      ]
+    }
+  ]
+}

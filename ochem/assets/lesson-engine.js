@@ -131,14 +131,41 @@
        written with textContent into a card the engine replaces between steps,
        so a screen reader is told nothing by it on its own. Sending the verdict
        to the site's live region covers all 58 lessons from here. */
+    /* Feedback strings are authored like the option buttons, with inline
+       markup for formulas and emphasis (C<sub>6</sub>H<sub>4</sub>, <i>cis</i>,
+       &alpha;). They used to be written with textContent, which printed the
+       tags as literal text. Only these inline tags survive; anything else is
+       reduced to its text, so a stray tag can never become markup. */
+    var FEEDBACK_TAGS = { SUB: 1, SUP: 1, I: 1, B: 1, EM: 1, STRONG: 1, BR: 1 };
+    function setInlineHtml(el, text){
+      var tpl = document.createElement('template');
+      tpl.innerHTML = String(text);
+      (function clean(node){
+        Array.prototype.slice.call(node.childNodes).forEach(function(c){
+          if(c.nodeType === 1){
+            clean(c);
+            if(!FEEDBACK_TAGS[c.tagName]){
+              while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c);
+              c.parentNode.removeChild(c);
+            } else {
+              while(c.attributes.length) c.removeAttribute(c.attributes[0].name);
+            }
+          } else if(c.nodeType !== 3){
+            c.parentNode.removeChild(c);
+          }
+        });
+      })(tpl.content);
+      el.textContent = '';
+      el.appendChild(tpl.content);
+    }
     function showFeedback(el, good, text){
       el.className = 'feedback show ' + (good?'good':'bad');
-      el.textContent = text;
+      setInlineHtml(el, text);
       if(window.LevlSound) window.LevlSound.answer(good);
       // The text already opens with its own verdict ("Correct.", "Not quite —
       // try again."), so it is announced as written rather than prefixed with
-      // a second one.
-      if(window.LevlAnnounce) window.LevlAnnounce.say(text);
+      // a second one; the announcement gets the plain text, not the tags.
+      if(window.LevlAnnounce) window.LevlAnnounce.say(el.textContent);
     }
     function nextButtonHtml(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
     /* The tool suggestion goes here rather than into each lesson because this
