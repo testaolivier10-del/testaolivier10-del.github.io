@@ -111,7 +111,7 @@ FIGURES.push({
     const a = P(72, 96), b = P(236, 96);
     s += circ(a, 34, 'fg-orb');
     s += circ(b, 70, 'fg-orb');
-    s += circ(b, 25, 'fg-orb-alt', ' stroke="none"');
+    s += circ(b, 25, 'fg-orb-alt', ' style="stroke:none"');
     s += circ(b, 25, 'fg-orb-node');
     s += nucleus(a) + nucleus(b);
     s += label(a.x, 30, '1s', { size: 13 });
@@ -314,7 +314,7 @@ FIGURES.push({
   lessons: ['orbitals'],
   anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 250',
-  alt: 'A graph of how likely an electron is to be found at each distance from the nucleus. A shaded hump close to the nucleus is the 1s core electrons. The 2s curve has a small inner bump inside that core region, then dips to zero at its node and rises to a large outer hump. The 2p curve starts at zero at the nucleus and has only one hump, farther out, with nothing inside the core.',
+  alt: 'A graph of how likely an electron is to be found at each distance from the nucleus. A shaded hump close to the nucleus is the 1s core electrons. The 2s curve has a small inner bump inside that core region, then dips to zero at its node and rises to a large outer hump. The 2p curve starts at zero at the nucleus and rises into a single hump. Inside the core it is lower than 2s at the very smallest distances and has no separate bump.',
   build() {
     let s = '';
     const x0 = 34, yb = 196, xr = 326, rMax = 12;
@@ -336,13 +336,12 @@ FIGURES.push({
     s += arrow(P(x0, yb), P(x0, 40), { size: 6 });
     s += arrow(P(x0, yb), P(xr + 6, yb), { size: 6 });
     s += tag(x0 + 4, 32, 'chance of finding the electron', { anchor: 'start' });
-    s += tag(xr, yb + 20, 'distance from nucleus →', { anchor: 'end' });
-    s += tag(x0, yb + 20, 'nucleus', { anchor: 'start' });
+    s += tag(xr, yb + 46, 'distance from the nucleus →', { anchor: 'end' });
     // Labels.
     s += tag(X(1), yb - 78, '1s core');
     const bump = P(X(0.76), yb - P2s(0.76) * k2);
-    s += lead(P(bump.x, bump.y - 2), P(X(2.4), 140));
-    s += tag(X(2.5), 140, '2s bump inside the core', { anchor: 'start' });
+    s += lead(P(bump.x + 2, bump.y + 4), P(x0 + 30, yb + 16));
+    s += tag(x0 + 32, yb + 28, '2s bump inside the core', { anchor: 'start' });
     s += tag(X(7.6), yb - P2s(7.5) * k2 - 10, '2s', { anchor: 'start' });
     s += tag(X(3.2) - 4, yb - P2p(3.2) * k2 - 6, '2p', { anchor: 'end' });
     return s;
@@ -366,13 +365,13 @@ FIGURES.push({
       { y: 216, name: '2p', boxes: 3 },
       { y: 166, name: '3s', boxes: 1 },
       { y: 130, name: '3p', boxes: 3 },
-      { y: 86, name: '4s', boxes: 1, hi: true },
+      { y: 86, name: '4s', boxes: 1 },
       { y: 44, name: '3d', boxes: 5 },
     ];
     s += arrow(P(16, 318), P(16, 24), { size: 6 });
     s += `<text class="fg-tag" x="10" y="170" text-anchor="middle" transform="rotate(-90 10 170)">energy</text>`;
     // n = 2 bracket behind its rungs.
-    s += bar(54, 200, 104, 66, { kind: 'good', opacity: 0.16, r: 8 });
+    s += bar(54, 200, 98, 66, { kind: 'good', opacity: 0.16, r: 8 });
     for (const r of rungs) {
       const w = 22, gap = 4, bx = 72;
       for (let i = 0; i < r.boxes; i++) {
@@ -476,8 +475,8 @@ FIGURES.push({
   id: 'periodic-blocks',
   section: 'orbitals',
   anchor: '<h3>What an orbital is</h3>',
-  viewBox: '0 0 760 300',
-  alt: 'The first four rows of the periodic table, every element labeled, with the f-block row drawn separately below. Groups 1 and 2 are shaded as the s-block, groups 3 to 12 (Sc to Zn in row 4) as the d-block, groups 13 to 18 as the p-block. Helium is shaded as s-block although it sits at the top of group 18. Carbon, nitrogen, oxygen and fluorine are outlined. A row of 14 blank cells below is the f-block.',
+  viewBox: '0 0 760 334',
+  alt: 'The first four rows of the periodic table, every element labeled, with the f-block row drawn separately below. Groups 1 and 2 are shaded as the s-block, groups 3 to 12 (Sc to Zn in row 4) as the d-block, groups 13 to 18 as the p-block. Helium is shaded as s-block although it sits at the top of group 18. Carbon, nitrogen, oxygen and fluorine are outlined. Two rows of 14 blank cells below are the f-block.',
   build() {
     let s = '';
     const x0 = 56, cw = 38, ch = 34, y0 = 44;
@@ -494,9 +493,9 @@ FIGURES.push({
     });
     // f-block, pulled out below.
     const fy = y0 + 4 * ch + 28;
-    for (let c = 0; c < 14; c++) s += blockCell(x0 + (2 + c) * cw + 1, fy + 1, cw - 2, ch - 2, 'f', false);
-    s += text(x0 + 2 * cw - 8, fy + ch / 2 + 4, 'f-block', { cls: 'fg-tag', size: 11, anchor: 'end' });
-    s += text(x0 + 9 * cw, fy + ch + 18, 'lanthanides and actinides, drawn below the table', { cls: 'fg-sm', size: 10.5 });
+    for (const k of [0, 1]) for (let c = 0; c < 14; c++) s += blockCell(x0 + (2 + c) * cw + 1, fy + k * ch + 1, cw - 2, ch - 2, 'f', false);
+    s += text(x0 + 2 * cw - 8, fy + ch + 4, 'f-block', { cls: 'fg-tag', size: 11, anchor: 'end' });
+    s += text(x0 + 9 * cw, fy + 2 * ch + 18, 'lanthanides and actinides, drawn below the table', { cls: 'fg-sm', size: 10.5 });
     // Block names under row 4.
     const ly = y0 + 4 * ch + 14;
     s += text(x0 + cw, ly, 's-block', { cls: 'fg-tag', size: 11 });
@@ -510,8 +509,8 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-periodic-blocks',
   lessons: ['orbitals'],
-  viewBox: '0 0 340 222',
-  alt: 'The periodic table’s first four rows and the f-block row as colored blocks. Groups 1 and 2 are the s-block, the ten middle columns the d-block, groups 13 to 18 the p-block, and a separate row of 14 cells below is the f-block. Hydrogen, carbon, nitrogen, oxygen and fluorine are labeled.',
+  viewBox: '0 0 340 240',
+  alt: 'The periodic table’s first four rows and the f-block row as colored blocks. Groups 1 and 2 are the s-block, the ten middle columns the d-block, groups 13 to 18 the p-block, and two separate rows of 14 cells below are the f-block. Hydrogen, carbon, nitrogen, oxygen and fluorine are labeled.',
   build() {
     let s = '';
     const x0 = 17, cw = 17, ch = 24, y0 = 34;
@@ -527,12 +526,12 @@ FIGURES.push({
     s += tag(x0 + 7 * cw, y0 + 2 * ch - 4, 'd-block');
     s += tag(x0 + 15 * cw, y0 - 10, 'p-block');
     const fy = y0 + 4 * ch + 18;
-    for (let c = 0; c < 14; c++) s += blockCell(x0 + (2 + c) * cw + 0.5, fy + 0.5, cw - 1, ch - 1, 'f', false);
-    s += tag(x0 + 2 * cw - 4, fy + 16, 'f-block', { anchor: 'end' });
-    s += tag(170, 212, 'organic chemistry lives in the p-block');
+    for (const k of [0, 1]) for (let c = 0; c < 14; c++) s += blockCell(x0 + (2 + c) * cw + 0.5, fy + k * ch + 0.5, cw - 1, ch - 1, 'f', false);
+    s += tag(x0 + 2 * cw - 4, fy + ch + 4, 'f-block', { anchor: 'end' });
+    s += tag(170, 230, 'organic chemistry lives in the p-block');
     return s;
   },
-  caption: 'Rows 1 to 4, with the f-block row below. C, N, O and F are outlined.',
+  caption: 'Rows 1 to 4, with the two f-block rows below. C, N, O and F are outlined.',
 });
 
 export default FIGURES;
