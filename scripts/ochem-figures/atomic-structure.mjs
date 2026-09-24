@@ -225,7 +225,7 @@ FIGURES.push({
       s += text(x, 75, sym, { cls: 'fg-lbl', size: 13 });
       s += text(x, 114, v, { cls: 'fg-lbl', size: 13 });
     }
-    s += text(87, 42, '3–12', { cls: 'fg-tag-mut', size: 11 });
+    s += `<line class="fg-dash" x1="87" y1="54" x2="87" y2="86"></line>`;
     s += rule(8, 96, 332, 96);
     s += text(170, 142, 'top: group number; bottom: valence electrons', { cls: 'fg-tag-mut', size: 11 });
     s += text(170, 162, 'groups 13 to 18: subtract 10', { cls: 'fg-tag', size: 11 });
