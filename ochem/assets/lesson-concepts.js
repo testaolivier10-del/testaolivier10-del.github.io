@@ -330,12 +330,13 @@
       6:['locant-rules'],
       7:['locant-rules','alphabetization'] } },
 
-    'naming-functional-groups': { n:8, steps:{
+    'naming-functional-groups': { n:13, steps:{
       2:['group-priority'],
-      3:['group-priority','locant-rules'],
-      4:['group-priority','parent-chain'],
-      6:['group-priority','alphabetization'],
-      7:['group-priority'] } },
+      4:['group-priority','locant-rules'],
+      6:['group-priority','parent-chain'],
+      8:['group-priority','alphabetization'],
+      10:['group-priority','locant-rules'],
+      12:['group-priority'] } },
 
     'naming-rings-unsaturation': { n:19, steps:{
       1:['locant-rules'],
