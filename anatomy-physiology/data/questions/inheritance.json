@@ -385,7 +385,7 @@
     ],
     "q": "Why is red–green color blindness about 15 times more common in males than in females?",
     "options": [
-      "Males have one X, so a single recessive allele shows; females need two copies",
+      "Males have one X, so one recessive allele shows; females need two",
       "The allele is on the Y chromosome",
       "Estrogen repairs the color-sensing cones in females",
       "The allele is dominant in males and recessive in females"
@@ -550,7 +550,7 @@
       "The alleles for average height are dominant",
       "Height is set by one gene with two alleles",
       "The environment cancels out every genetic effect",
-      "Most people inherit a mix of height-raising and height-lowering variants that roughly cancel"
+      "They inherit a mix of variants that push both ways"
     ],
     "correct": 3,
     "why": {

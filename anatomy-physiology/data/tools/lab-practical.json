@@ -30131,6 +30131,1199 @@
      ]
     }
    ]
+  },
+  {
+   "id": "blastocyst-implantation",
+   "title": "Blastocyst and implantation",
+   "chapter": "development",
+   "topic": "embryonic-development",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-28-5",
+     "topic": "embryonic-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "trophoblast",
+       "name": "Trophoblast",
+       "accept": [
+        "trophoblast cells",
+        "trophectoderm"
+       ],
+       "box": [
+        805,
+        25,
+        124,
+        26
+       ],
+       "concept": "blastocyst",
+       "taught": "embryonic-development",
+       "fn": "The outer layer of cells of the blastocyst. It attaches to the endometrium and invades it during implantation, and later forms the embryo's share of the chorion; none of it becomes part of the embryo's body."
+      },
+      {
+       "id": "inner-cell-mass",
+       "name": "Inner cell mass",
+       "accept": [
+        "icm",
+        "embryoblast"
+       ],
+       "box": [
+        941,
+        25,
+        153,
+        22
+       ],
+       "concept": "blastocyst",
+       "taught": "embryonic-development",
+       "fn": "The cluster of cells inside the blastocyst, pressed against one side of the cavity. It gives rise to the embryo itself, along with the amnion and yolk sac.",
+       "follow": {
+        "q": "Which part of the blastocyst goes on to form the embryo's body?",
+        "options": [
+         "Trophoblast",
+         "Inner cell mass",
+         "Blastocoel",
+         "Zona pellucida"
+        ],
+        "correct": 1,
+        "why": "The inner cell mass becomes the embryonic disc, and every tissue of the body comes from it. The trophoblast forms the embryo's share of the chorion, the blastocoel is only a fluid-filled space, and the zona pellucida is the oocyte's glycoprotein coat, shed before implantation.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "blastocoel",
+       "name": "Blastocoel",
+       "accept": [
+        "blastocyst cavity",
+        "blastocele"
+       ],
+       "box": [
+        909,
+        112,
+        114,
+        21
+       ],
+       "concept": "blastocyst",
+       "taught": "embryonic-development",
+       "fn": "The fluid-filled cavity inside the blastocyst, enclosed by the trophoblast, with the inner cell mass at one side."
+      },
+      {
+       "id": "eight-cell-stage",
+       "name": "Eight-cell stage",
+       "accept": [
+        "8-cell stage",
+        "eight-cell embryo"
+       ],
+       "box": [
+        284,
+        187,
+        155,
+        26
+       ],
+       "concept": "cleavage",
+       "taught": "embryonic-development",
+       "fn": "The embryo after three cleavage divisions, about day 3. Each division makes more, smaller cells (blastomeres), so the embryo stays about the size of the original oocyte.",
+       "follow": {
+        "q": "During cleavage the zygote divides again and again. What happens to the embryo's overall size?",
+        "options": [
+         "It roughly doubles with each division",
+         "It stays about the same size",
+         "It shrinks to half with each division",
+         "It grows only after the morula forms"
+        ],
+        "correct": 1,
+        "why": "Cleavage divides the cytoplasm of the zygote into more and more cells without a growth phase between divisions, so the cells get smaller while the whole embryo stays about the size of the oocyte, still held inside the zona pellucida. It does not double or shrink, and real growth starts only once the embryo implants and takes in nutrients.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "morula",
+       "name": "Morula (16 cells)",
+       "accept": [
+        "16-cell stage",
+        "sixteen-cell stage"
+       ],
+       "box": [
+        499,
+        187,
+        167,
+        26
+       ],
+       "concept": "cleavage",
+       "taught": "embryonic-development",
+       "fn": "A solid ball of about 16 cells (morula = little mulberry), reached around day 3 to 4 as the embryo nears the uterus."
+      },
+      {
+       "id": "blastocyst",
+       "name": "Blastocyst (70–100 cells)",
+       "accept": [
+        "blastula"
+       ],
+       "box": [
+        776,
+        212,
+        245,
+        25
+       ],
+       "concept": "blastocyst",
+       "taught": "embryonic-development",
+       "fn": "The hollow ball of about 70 to 100 cells that forms by about day 5: an outer trophoblast, an inner cell mass and a fluid-filled blastocoel. It hatches from the zona pellucida and implants in the endometrium.",
+       "follow": {
+        "q": "Where does the blastocyst normally implant?",
+        "options": [
+         "In the wall of the uterine tube",
+         "In the endometrium of the uterus",
+         "On the surface of the ovary",
+         "In the lining of the cervix"
+        ],
+        "correct": 1,
+        "why": "The blastocyst reaches the uterus around day 5, hatches from the zona pellucida and burrows into the endometrium, usually high on the back wall. The uterine tube is where fertilization and cleavage happen, not implantation; the ovary only releases the oocyte, and the cervix is below the normal site.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "four-cell-stage",
+       "name": "Four-cell stage",
+       "accept": [
+        "4-cell stage",
+        "four-cell embryo"
+       ],
+       "box": [
+        57,
+        262,
+        140,
+        24
+       ],
+       "concept": "cleavage",
+       "taught": "embryonic-development",
+       "fn": "The embryo after two cleavage divisions, about day 2, still inside the zona pellucida and moving down the uterine tube."
+      },
+      {
+       "id": "two-cell-stage",
+       "name": "Two-cell stage",
+       "accept": [
+        "2-cell stage",
+        "two-cell embryo"
+       ],
+       "box": [
+        57,
+        499,
+        139,
+        22
+       ],
+       "concept": "cleavage",
+       "taught": "embryonic-development",
+       "fn": "The embryo after the first cleavage division, about 30 hours after fertilization. Cleavage splits the cells without growth, so the two cells together are no bigger than the zygote."
+      },
+      {
+       "id": "fertilized-oocyte",
+       "name": "Fertilized Oocyte",
+       "accept": [
+        "zygote",
+        "fertilized egg"
+       ],
+       "box": [
+        48,
+        762,
+        159,
+        28
+       ],
+       "concept": "fertilization",
+       "taught": "fertilization",
+       "fn": "The oocyte just after a sperm has entered it. Once the sperm and oocyte nuclei combine, it is the zygote, the first cell of the new individual. Fertilization normally happens in the ampulla of the uterine tube."
+      },
+      {
+       "id": "unfertilized-oocyte",
+       "name": "Unfertilized Oocyte",
+       "accept": [
+        "oocyte",
+        "egg",
+        "secondary oocyte",
+        "ovum"
+       ],
+       "box": [
+        33,
+        972,
+        189,
+        26
+       ],
+       "concept": "gamete",
+       "taught": "meiosis",
+       "fn": "The secondary oocyte released at ovulation, still wrapped in its zona pellucida and corona radiata. It survives only about a day unless a sperm fertilizes it."
+      }
+     ]
+    },
+    {
+     "figure": "os-28-8",
+     "topic": "embryonic-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "endometrium",
+       "name": "Endometrium",
+       "accept": [
+        "uterine lining",
+        "lining of the uterus"
+       ],
+       "box": [
+        591,
+        3,
+        111,
+        18
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The inner lining of the uterus. Its glands and blood vessels nourish the implanting embryo, and the trophoblast digests its way into it."
+      },
+      {
+       "id": "blastocyst-cavity",
+       "name": "Blastocyst cavity",
+       "accept": [
+        "blastocoel",
+        "blastocele"
+       ],
+       "box": [
+        125,
+        142,
+        140,
+        21
+       ],
+       "concept": "blastocyst",
+       "taught": "embryonic-development",
+       "fn": "The fluid-filled cavity of the blastocyst (the blastocoel). During the second week, hypoblast cells spread over its inner surface to line the yolk sac."
+      },
+      {
+       "id": "hypoblast",
+       "name": "Hypoblast",
+       "accept": [
+        "primitive endoderm"
+       ],
+       "box": [
+        125,
+        217,
+        89,
+        21
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "The lower layer of the two-layered embryonic disc, facing the blastocyst cavity. Its cells help form the yolk sac, and most of them are replaced by endoderm during gastrulation."
+      },
+      {
+       "id": "epiblast",
+       "name": "Epiblast",
+       "accept": [
+        "primitive ectoderm"
+       ],
+       "box": [
+        126,
+        241,
+        73,
+        22
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "The upper layer of the embryonic disc, facing the amniotic cavity. During gastrulation its cells form all three germ layers, so every tissue of the body comes from it.",
+       "follow": {
+        "q": "During gastrulation, which layer of the embryonic disc gives rise to all three germ layers?",
+        "options": [
+         "Hypoblast",
+         "Epiblast",
+         "Cytotrophoblast",
+         "Syncytiotrophoblast"
+        ],
+        "correct": 1,
+        "why": "Epiblast cells move through the primitive streak to form endoderm and mesoderm, and the ones that stay behind become ectoderm. The hypoblast is mostly pushed aside by the new endoderm, and the two trophoblast layers form the chorion, not the embryo.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "embryonic-disc",
+       "name": "Embryonic disc",
+       "accept": [
+        "bilaminar disc",
+        "bilaminar embryonic disc",
+        "embryonic disk",
+        "germ disc"
+       ],
+       "box": [
+        0,
+        229,
+        90,
+        38
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "The flat, two-layered plate, epiblast over hypoblast, that the inner cell mass becomes in the second week. The embryo's whole body forms from it."
+      },
+      {
+       "id": "amnion",
+       "name": "Amnion",
+       "accept": [
+        "amniotic membrane"
+       ],
+       "box": [
+        125,
+        277,
+        70,
+        19
+       ],
+       "concept": "embryonic-membranes",
+       "taught": "embryonic-development",
+       "fn": "The thin membrane that grows from the epiblast and encloses the amniotic cavity. Its fluid cushions the embryo and lets it move and grow evenly."
+      },
+      {
+       "id": "amniotic-cavity",
+       "name": "Amniotic cavity",
+       "accept": [
+        "amniotic sac cavity"
+       ],
+       "box": [
+        125,
+        306,
+        127,
+        22
+       ],
+       "concept": "embryonic-membranes",
+       "taught": "embryonic-development",
+       "fn": "The fluid-filled space above the epiblast, enclosed by the amnion. It enlarges until it surrounds the whole embryo."
+      },
+      {
+       "id": "trophoblast",
+       "name": "Trophoblast",
+       "accept": [
+        "trophoblast layer",
+        "trophectoderm"
+       ],
+       "box": [
+        0,
+        393,
+        99,
+        22
+       ],
+       "concept": "blastocyst",
+       "taught": "embryonic-development",
+       "fn": "The outer layer of cells of the blastocyst. It attaches to the endometrium and invades it during implantation, and later forms the embryo's share of the chorion; none of it becomes part of the embryo's body."
+      },
+      {
+       "id": "cytotrophoblast",
+       "name": "Cytotrophoblast",
+       "accept": [
+        "cytotrophoblast layer",
+        "inner trophoblast layer"
+       ],
+       "box": [
+        125,
+        381,
+        133,
+        22
+       ],
+       "concept": "implantation",
+       "taught": "embryonic-development",
+       "fn": "The inner layer of the trophoblast, made of separate cells that keep dividing and feed new cells into the syncytiotrophoblast above them."
+      },
+      {
+       "id": "syncytiotrophoblast",
+       "name": "Syncytiotrophoblast",
+       "accept": [
+        "syncytium",
+        "syncytiotrophoblast layer",
+        "syncitiotrophoblast"
+       ],
+       "box": [
+        125,
+        406,
+        163,
+        22
+       ],
+       "concept": "implantation",
+       "taught": "embryonic-development",
+       "fn": "The outer, invading layer of the trophoblast: cells fused into one mass of cytoplasm with many nuclei and no cell boundaries. It digests the endometrium to bury the embryo and secretes hCG, which keeps the corpus luteum making progesterone.",
+       "follow": {
+        "q": "Which layer secretes hCG, the hormone that a pregnancy test detects?",
+        "options": [
+         "Syncytiotrophoblast",
+         "Hypoblast",
+         "Epiblast",
+         "Amnion"
+        ],
+        "correct": 0,
+        "why": "The syncytiotrophoblast, the invading outer layer of the trophoblast, makes hCG from about the time of implantation. hCG keeps the corpus luteum alive and making progesterone. The hypoblast and epiblast form the embryonic disc, and the amnion encloses the amniotic fluid; none of them secretes hCG.",
+        "level": "recall"
+       }
+      }
+     ],
+     "covered": [
+      {
+       "id": "yolk-sac-note",
+       "box": [
+        125,
+        161,
+        148,
+        41
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-28-9",
+     "topic": "embryonic-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "reestablished-uterine-mucosa",
+       "name": "Reestablished uterine mucosa",
+       "accept": [
+        "uterine mucosa",
+        "uterine epithelium",
+        "reestablished endometrial epithelium",
+        "re-established uterine mucosa"
+       ],
+       "box": [
+        21,
+        38,
+        170,
+        49
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The surface lining of the endometrium, grown back over the spot where the blastocyst burrowed in. By about day 12 the embryo lies completely buried in the uterine wall."
+      },
+      {
+       "id": "endometrium",
+       "name": "Endometrium",
+       "accept": [
+        "uterine lining"
+       ],
+       "box": [
+        21,
+        127,
+        149,
+        22
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The inner lining of the uterus. Its glands and blood vessels nourish the implanting embryo, and the trophoblast digests its way into it."
+      },
+      {
+       "id": "hypoblast",
+       "name": "Hypoblast",
+       "accept": [
+        "primitive endoderm"
+       ],
+       "box": [
+        21,
+        195,
+        114,
+        28
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "The lower layer of the two-layered embryonic disc, facing the blastocyst cavity. Its cells help form the yolk sac, and most of them are replaced by endoderm during gastrulation."
+      },
+      {
+       "id": "trophoblast",
+       "name": "Trophoblast",
+       "accept": [
+        "trophectoderm"
+       ],
+       "box": [
+        21,
+        314,
+        133,
+        27
+       ],
+       "concept": "blastocyst",
+       "taught": "embryonic-development",
+       "fn": "The outer layer of cells of the blastocyst. It attaches to the endometrium and invades it during implantation, and later forms the embryo's share of the chorion; none of it becomes part of the embryo's body."
+      },
+      {
+       "id": "epiblast",
+       "name": "Epiblast",
+       "accept": [
+        "primitive ectoderm"
+       ],
+       "box": [
+        737,
+        108,
+        94,
+        27
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "The upper layer of the embryonic disc, facing the amniotic cavity. During gastrulation its cells form all three germ layers, so every tissue of the body comes from it."
+      },
+      {
+       "id": "amniotic-cavity",
+       "name": "Amniotic cavity",
+       "accept": [
+        "amniotic sac cavity"
+       ],
+       "box": [
+        736,
+        211,
+        102,
+        53
+       ],
+       "concept": "embryonic-membranes",
+       "taught": "embryonic-development",
+       "fn": "The fluid-filled space above the epiblast, enclosed by the amnion. It enlarges until it surrounds the whole embryo."
+      },
+      {
+       "id": "reestablished-uterine-mucosa-2",
+       "name": "Reestablished uterine mucosa",
+       "accept": [
+        "uterine mucosa",
+        "uterine epithelium",
+        "re-established uterine mucosa"
+       ],
+       "box": [
+        20,
+        520,
+        170,
+        48
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The surface lining of the endometrium, grown back over the spot where the blastocyst burrowed in. By about day 12 the embryo lies completely buried in the uterine wall."
+      },
+      {
+       "id": "endometrium-2",
+       "name": "Endometrium",
+       "accept": [
+        "uterine lining"
+       ],
+       "box": [
+        20,
+        602,
+        149,
+        23
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The inner lining of the uterus. Its glands and blood vessels nourish the implanting embryo, and the trophoblast digests its way into it."
+      },
+      {
+       "id": "endoderm",
+       "name": "Endoderm",
+       "accept": [
+        "endodermal layer",
+        "endoderm layer"
+       ],
+       "box": [
+        20,
+        671,
+        118,
+        23
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "The innermost germ layer, formed when epiblast cells moving through the primitive streak push the hypoblast aside. It forms the lining of the digestive tract and airways, and glands such as the liver and pancreas."
+      },
+      {
+       "id": "mesoderm",
+       "name": "Mesoderm",
+       "accept": [
+        "mesodermal layer",
+        "mesoderm layer"
+       ],
+       "box": [
+        20,
+        738,
+        121,
+        23
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "The middle germ layer, formed from epiblast cells that move through the primitive streak and spread between the other two layers. It forms muscle, bone and connective tissue, the heart, blood vessels and blood, and the kidneys."
+      },
+      {
+       "id": "amniotic-cavity-2",
+       "name": "Amniotic cavity",
+       "accept": [
+        "amniotic sac cavity"
+       ],
+       "box": [
+        19,
+        813,
+        167,
+        28
+       ],
+       "concept": "embryonic-membranes",
+       "taught": "embryonic-development",
+       "fn": "The fluid-filled space above the epiblast, enclosed by the amnion. It enlarges until it surrounds the whole embryo."
+      },
+      {
+       "id": "trophoblast-2",
+       "name": "Trophoblast",
+       "accept": [
+        "trophectoderm"
+       ],
+       "box": [
+        19,
+        888,
+        132,
+        28
+       ],
+       "concept": "blastocyst",
+       "taught": "embryonic-development",
+       "fn": "The outer layer of cells of the blastocyst. It attaches to the endometrium and invades it during implantation, and later forms the embryo's share of the chorion; none of it becomes part of the embryo's body."
+      },
+      {
+       "id": "ectoderm",
+       "name": "Ectoderm",
+       "accept": [
+        "ectodermal layer",
+        "ectoderm layer"
+       ],
+       "box": [
+        491,
+        531,
+        100,
+        24
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "The outer germ layer, formed from the epiblast cells that stay in place. It forms the epidermis, hair and nails and the whole nervous system."
+      },
+      {
+       "id": "primitive-streak",
+       "name": "Primitive streak",
+       "accept": [
+        "primitive groove"
+       ],
+       "box": [
+        781,
+        737,
+        101,
+        49
+       ],
+       "concept": "germ-layers",
+       "taught": "embryonic-development",
+       "fn": "A groove along the midline of the epiblast that appears at the start of week 3 and marks the embryo's head-to-tail axis. Epiblast cells move in through it to form endoderm and mesoderm (gastrulation).",
+       "follow": {
+        "q": "Epiblast cells move in through the primitive streak. Which germ layer forms from the epiblast cells that stay behind?",
+        "options": [
+         "Endoderm",
+         "Mesoderm",
+         "Ectoderm",
+         "Hypoblast"
+        ],
+        "correct": 2,
+        "why": "The cells that stay on the surface of the epiblast become ectoderm. The first cells to move through the streak displace the hypoblast and become endoderm, and the next ones spread between the layers as mesoderm. The hypoblast is an older layer that the new endoderm replaces.",
+        "level": "apply"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "placenta-fetal-circulation",
+   "title": "Placenta and fetal circulation",
+   "chapter": "development",
+   "topic": "fetal-development-circulation",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-28-11",
+     "topic": "fetal-development-circulation",
+     "core": [
+      "structure-function",
+      "gradients"
+     ],
+     "labels": [
+      {
+       "id": "maternal-blood-supply",
+       "name": "Maternal blood supply in intervillous space",
+       "accept": [
+        "intervillous space",
+        "intervillus space",
+        "maternal blood",
+        "maternal blood supply",
+        "maternal blood in intervillous space"
+       ],
+       "box": [
+        896,
+        0,
+        156,
+        69
+       ],
+       "concept": "placenta",
+       "taught": "placenta",
+       "fn": "Maternal blood from the uterine arteries pools in the intervillous space around the chorionic villi. Oxygen and nutrients diffuse from it into the fetal capillaries inside the villi; the two bloods do not mix."
+      },
+      {
+       "id": "uterine-artery-and-vein",
+       "name": "Uterine artery and vein",
+       "accept": [
+        "uterine artery",
+        "uterine vein",
+        "uterine vessels",
+        "uterine arteries",
+        "spiral arteries",
+        "spiral artery"
+       ],
+       "box": [
+        754,
+        22,
+        136,
+        43
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The mother's vessels in the uterine wall. Branches of the uterine arteries (spiral arteries) open into the intervillous space, and uterine veins drain the used blood back into her circulation."
+      },
+      {
+       "id": "chorionic-villi",
+       "name": "Chorionic villi",
+       "accept": [
+        "chorionic villus",
+        "villi",
+        "villus",
+        "placental villi"
+       ],
+       "box": [
+        613,
+        45,
+        130,
+        21
+       ],
+       "concept": "placenta",
+       "taught": "placenta",
+       "fn": "Finger-like projections of the chorion, each holding fetal capillaries, that hang in the pool of maternal blood. Their large surface is where the fetus takes up oxygen and nutrients and gives off carbon dioxide and wastes.",
+       "follow": {
+        "q": "In the placenta, how do oxygen and nutrients get from the mother's blood into the fetus's blood?",
+        "options": [
+         "Maternal and fetal blood mix in the intervillous space",
+         "They cross the thin villus wall into fetal capillaries",
+         "Maternal red blood cells carry them into fetal vessels",
+         "The umbilical arteries bring them from the uterine arteries"
+        ],
+        "correct": 1,
+        "why": "Maternal blood bathes the chorionic villi, and oxygen and nutrients move down their gradients across the thin villus wall into the fetal capillaries inside. The two bloods stay separate, maternal red blood cells do not cross, and the umbilical arteries carry fetal blood to the placenta, not maternal blood.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "placenta",
+       "name": "Placenta",
+       "accept": [],
+       "box": [
+        459,
+        105,
+        89,
+        20
+       ],
+       "concept": "placenta",
+       "taught": "placenta",
+       "fn": "The disc-shaped organ built from the chorion (the fetal side) and the endometrium (the mother's side). It exchanges gases, nutrients and wastes between mother and fetus without mixing their blood, and it makes hormones that maintain the pregnancy."
+      },
+      {
+       "id": "yolk-sac",
+       "name": "Yolk sac",
+       "accept": [
+        "yolk sack",
+        "umbilical vesicle"
+       ],
+       "box": [
+        456,
+        150,
+        95,
+        21
+       ],
+       "concept": "embryonic-membranes",
+       "taught": "embryonic-development",
+       "fn": "A small membrane sac hanging from the embryo's belly side. In humans it holds no real yolk; early on it makes the first blood cells, and part of it is taken into the gut. It shrinks away before birth."
+      },
+      {
+       "id": "amniotic-fluid",
+       "name": "Amniotic fluid",
+       "accept": [
+        "amniotic cavity"
+       ],
+       "box": [
+        437,
+        196,
+        131,
+        21
+       ],
+       "concept": "embryonic-membranes",
+       "taught": "embryonic-development",
+       "fn": "The fluid inside the amnion. It cushions the fetus, keeps its temperature steady, lets it move freely to build muscle and bone, and is swallowed and drawn into the airways as the gut and lungs develop."
+      },
+      {
+       "id": "uterus",
+       "name": "Uterus",
+       "accept": [
+        "myometrium",
+        "uterine wall"
+       ],
+       "box": [
+        468,
+        328,
+        71,
+        21
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The muscular organ in which the embryo and fetus develop. Its thick smooth-muscle wall, the myometrium, stretches as the fetus grows."
+      },
+      {
+       "id": "uterus-2",
+       "name": "Uterus",
+       "accept": [
+        "myometrium",
+        "uterine wall"
+       ],
+       "box": [
+        1031,
+        328,
+        71,
+        21
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The muscular organ in which the embryo and fetus develop. Its thick smooth-muscle wall, the myometrium, stretches as the fetus grows."
+      },
+      {
+       "id": "chorion",
+       "name": "Chorion",
+       "accept": [
+        "chorionic membrane"
+       ],
+       "box": [
+        462,
+        379,
+        82,
+        21
+       ],
+       "concept": "embryonic-membranes",
+       "taught": "embryonic-development",
+       "fn": "The outermost membrane around the embryo, formed from the trophoblast and a layer of mesoderm. Its villi on the side facing the uterine wall form the fetal part of the placenta."
+      },
+      {
+       "id": "umbilical-cord",
+       "name": "Umbilical cord",
+       "accept": [
+        "cord",
+        "funiculus umbilicalis"
+       ],
+       "box": [
+        435,
+        430,
+        137,
+        21
+       ],
+       "concept": "umbilical-cord",
+       "taught": "placenta",
+       "fn": "The cord joining the fetus to the placenta. It carries two umbilical arteries and one umbilical vein in a protective jelly.",
+       "follow": {
+        "q": "How many blood vessels does a normal umbilical cord contain?",
+        "options": [
+         "One artery and two veins",
+         "Two arteries and one vein",
+         "One artery and one vein",
+         "Two arteries and two veins"
+        ],
+        "correct": 1,
+        "why": "A normal cord has two umbilical arteries, carrying oxygen-poor blood from the fetus to the placenta, and one umbilical vein, carrying oxygen-rich blood back to the fetus. A cord with only one artery is a recognized variant that prompts a closer look at the fetus.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "amnion",
+       "name": "Amnion",
+       "accept": [
+        "amniotic membrane"
+       ],
+       "box": [
+        462,
+        482,
+        81,
+        20
+       ],
+       "concept": "embryonic-membranes",
+       "taught": "embryonic-development",
+       "fn": "The thin inner membrane that holds the amniotic fluid around the fetus. It fuses with the chorion as the amniotic cavity grows."
+      },
+      {
+       "id": "umbilical-vein",
+       "name": "Umbilical vein",
+       "accept": [],
+       "box": [
+        516,
+        522,
+        93,
+        43
+       ],
+       "concept": "umbilical-cord",
+       "taught": "placenta",
+       "fn": "The single vessel in the cord that carries oxygen-rich, nutrient-rich blood from the placenta to the fetus. It is called a vein because it carries blood toward the fetal heart, not because of its oxygen.",
+       "follow": {
+        "q": "The figure colors the umbilical vein blue. What kind of blood does it actually carry?",
+        "options": [
+         "Oxygen-poor blood from the fetus to the placenta",
+         "Oxygen-rich blood from the placenta to the fetus",
+         "Maternal blood from the uterine veins",
+         "Oxygen-poor blood from the placenta to the fetus"
+        ],
+        "correct": 1,
+        "why": "The umbilical vein carries blood that has just picked up oxygen in the placenta toward the fetal heart; the figure uses blue only because it is a vein. The umbilical arteries carry the oxygen-poor blood from the fetus to the placenta, and maternal blood never enters the cord.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "umbilical-artery",
+       "name": "Umbilical artery",
+       "accept": [
+        "umbilical arteries"
+       ],
+       "box": [
+        709,
+        522,
+        93,
+        47
+       ],
+       "concept": "umbilical-cord",
+       "taught": "placenta",
+       "fn": "The paired vessels in the cord that carry oxygen-poor blood and wastes from the fetus to the placenta. They branch from the fetus's internal iliac arteries."
+      },
+      {
+       "id": "placenta-2",
+       "name": "Placenta",
+       "accept": [],
+       "box": [
+        920,
+        522,
+        90,
+        21
+       ],
+       "concept": "placenta",
+       "taught": "placenta",
+       "fn": "The disc-shaped organ built from the chorion (the fetal side) and the endometrium (the mother's side). It exchanges gases, nutrients and wastes between mother and fetus without mixing their blood, and it makes hormones that maintain the pregnancy."
+      }
+     ]
+    },
+    {
+     "figure": "os-20-44",
+     "topic": "fetal-development-circulation",
+     "core": [
+      "structure-function",
+      "gradients"
+     ],
+     "labels": [
+      {
+       "id": "aorta",
+       "name": "Aorta",
+       "accept": [
+        "aortic arch",
+        "ascending aorta",
+        "arch of aorta"
+       ],
+       "box": [
+        917,
+        510,
+        63,
+        22
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The main artery leaving the left ventricle. In the fetus it also receives blood from the pulmonary trunk through the ductus arteriosus, just beyond the arch."
+      },
+      {
+       "id": "ductus-arteriosus",
+       "name": "Ductus arteriosus",
+       "accept": [
+        "arterial duct",
+        "da",
+        "ductus arteriosus botalli"
+       ],
+       "box": [
+        6,
+        520,
+        176,
+        22
+       ],
+       "concept": "fetal-circulation",
+       "taught": "fetal-development-circulation",
+       "fn": "A short fetal vessel joining the pulmonary trunk to the aorta. Because the lungs' vessels strongly resist flow before birth, most blood from the right ventricle takes this shortcut past the lungs.",
+       "follow": {
+        "q": "Before birth, why does most blood in the pulmonary trunk pass through the ductus arteriosus instead of into the lungs?",
+        "options": [
+         "The fluid-filled lungs' vessels resist flow strongly",
+         "Aortic pressure is lower than pulmonary pressure after birth",
+         "The pulmonary valve stays shut until the first breath",
+         "The lungs already finished their gas exchange"
+        ],
+        "correct": 0,
+        "why": "Before birth the lungs are collapsed and full of fluid, and their arterioles are constricted by the low oxygen, so resistance in the pulmonary circuit is high. Blood follows the easier path through the ductus arteriosus into the aorta. The pulmonary valve opens with every beat, the lungs do no gas exchange before birth, and pressure after birth does not explain flow before it.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "pulmonary-trunk",
+       "name": "Pulmonary trunk",
+       "accept": [
+        "pulmonary artery",
+        "main pulmonary artery"
+       ],
+       "box": [
+        918,
+        547,
+        166,
+        26
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The artery leaving the right ventricle. In the fetus most of its blood bypasses the fluid-filled lungs through the ductus arteriosus and goes into the aorta."
+      },
+      {
+       "id": "foramen-ovale",
+       "name": "Foramen ovale",
+       "accept": [
+        "oval foramen",
+        "fo"
+       ],
+       "box": [
+        7,
+        581,
+        152,
+        21
+       ],
+       "concept": "foramen-ovale",
+       "taught": "fetal-development-circulation",
+       "fn": "An opening in the wall between the atria, covered by a flap of the septum primum that lets blood pass only from right to left. It sends the oxygen-rich blood arriving in the inferior vena cava straight to the left side of the heart, bypassing the lungs.",
+       "follow": {
+        "q": "Which way does blood flow through the foramen ovale before birth?",
+        "options": [
+         "From the left atrium to the right atrium",
+         "From the right atrium to the left atrium",
+         "From the right ventricle to the left ventricle",
+         "From the left ventricle to the right ventricle"
+        ],
+        "correct": 1,
+        "why": "Before birth, pressure in the right atrium is higher than in the left, because little blood returns from the lungs to the left atrium. Blood pushes the flap open and passes from right to left. The foramen ovale is between the atria, not the ventricles, and its flap blocks flow in the other direction.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "ductus-venosus",
+       "name": "Ductus venosus",
+       "accept": [
+        "venous duct"
+       ],
+       "box": [
+        6,
+        633,
+        162,
+        22
+       ],
+       "concept": "fetal-circulation",
+       "taught": "fetal-development-circulation",
+       "fn": "A fetal vessel in the liver that carries much of the oxygen-rich blood of the umbilical vein straight into the inferior vena cava, bypassing the liver's capillaries."
+      },
+      {
+       "id": "aorta-2",
+       "name": "Aorta",
+       "accept": [
+        "descending aorta",
+        "abdominal aorta"
+       ],
+       "box": [
+        917,
+        672,
+        63,
+        22
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The descending aorta, carrying mixed blood to the lower body. The umbilical arteries branch from its internal iliac branches to take blood back to the placenta."
+      },
+      {
+       "id": "inferior-vena-cava",
+       "name": "Inferior vena cava",
+       "accept": [
+        "ivc"
+       ],
+       "box": [
+        918,
+        711,
+        180,
+        21
+       ],
+       "concept": "great-vessels",
+       "taught": "heart-anatomy",
+       "fn": "The large vein returning blood from the lower body to the right atrium. In the fetus it also carries the oxygen-rich blood from the ductus venosus, so its blood is the best oxygenated to reach the heart."
+      },
+      {
+       "id": "umbilical-arteries",
+       "name": "Umbilical arteries",
+       "accept": [
+        "umbilical artery"
+       ],
+       "box": [
+        918,
+        782,
+        173,
+        22
+       ],
+       "concept": "umbilical-cord",
+       "taught": "placenta",
+       "fn": "The paired vessels in the cord that carry oxygen-poor blood and wastes from the fetus to the placenta. They branch from the fetus's internal iliac arteries."
+      },
+      {
+       "id": "umbilical-vein",
+       "name": "Umbilical vein",
+       "accept": [],
+       "box": [
+        918,
+        827,
+        141,
+        21
+       ],
+       "concept": "umbilical-cord",
+       "taught": "placenta",
+       "fn": "The single vessel in the cord that carries oxygen-rich, nutrient-rich blood from the placenta to the fetus. It is called a vein because it carries blood toward the fetal heart, not because of its oxygen."
+      },
+      {
+       "id": "placenta",
+       "name": "Placenta",
+       "accept": [],
+       "box": [
+        918,
+        868,
+        94,
+        21
+       ],
+       "concept": "placenta",
+       "taught": "placenta",
+       "fn": "The disc-shaped organ built from the chorion (the fetal side) and the endometrium (the mother's side). It exchanges gases, nutrients and wastes between mother and fetus without mixing their blood, and it makes hormones that maintain the pregnancy."
+      },
+      {
+       "id": "bladder",
+       "name": "Bladder",
+       "accept": [
+        "urinary bladder"
+       ],
+       "box": [
+        918,
+        914,
+        85,
+        22
+       ],
+       "concept": "urinary-bladder",
+       "taught": "kidney-anatomy",
+       "fn": "The fetal urinary bladder. The fetal kidneys make urine from about week 10, and that urine becomes much of the amniotic fluid."
+      }
+     ]
+    }
+   ]
   }
  ],
  "figures": {
@@ -31136,6 +32329,51 @@
    "alt": "The control of testosterone. At the top, hypothalamic neurons release GnRH into portal vessels that reach the anterior pituitary. The pituitary releases FSH and LH. FSH goes to a supporting cell in the wall of a coiled testis tubule, which releases a binding protein and inhibin. LH goes to cells in the spaces between the tubules, which release testosterone. Arrows with minus signs show inhibin acting back on the pituitary and testosterone acting back on the pituitary and hypothalamus. Numbered notes describe the steps.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.8",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-28-5": {
+   "src": "figures/os-28-5.jpg",
+   "w": 1100,
+   "h": 1007,
+   "alt": "A drawing of an ovary, a uterine tube and part of the uterus, with eight numbered boxes connected by arrows to points along the tube. Box 1, beside the ovary: an unfertilized oocyte. Box 2, in the outer tube: the oocyte surrounded by sperm. Boxes 3 to 5, farther along the tube: two cells, four cells, eight cells, and then a solid ball of about 16 cells. Box 6, near the uterus: a hollow ball of cells shown whole and cut open, with an outer layer of flat cells, a cluster of cells inside at one end, and a fluid-filled space. Notes at the bottom: the embryo hatches from its coat, then rotates and implants in the uterine wall.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development",
+   "license": "CC BY 4.0"
+  },
+  "os-28-8": {
+   "src": "figures/os-28-8.jpg",
+   "w": 700,
+   "h": 487,
+   "alt": "A cross-section of an embryo embedded in the uterine lining in the second week. A flat disc of two cell layers, a purple lower layer and a blue upper layer, lies between two spaces: a small cavity above lined by a thin membrane, and a larger cavity below. A thin layer of separate cells surrounds the whole embryo, and outside it a large orange mass without cell boundaries, with scattered nuclei, spreads into the uterine tissue, which contains blood vessels.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development",
+   "license": "CC BY 4.0"
+  },
+  "os-28-9": {
+   "src": "figures/os-28-9.jpg",
+   "w": 1100,
+   "h": 982,
+   "alt": "Two cross-sections of an implanted embryo in the uterine lining. Top: a two-layered disc, a blue upper layer and a purple lower layer, with a fluid space above it, inside a larger sac ringed by an outer layer of cells. Bottom: the same embryo a few days later. A groove in the midline of the upper layer is enlarged in an inset, showing cells slipping down through the groove to form a new middle layer of red cells and to replace the lower layer, giving three layers. A small diagram shows where the section was cut across the oval disc.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.9",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development",
+   "license": "CC BY 4.0"
+  },
+  "os-28-11": {
+   "src": "figures/os-28-11.jpg",
+   "w": 1100,
+   "h": 571,
+   "alt": "Two drawings. Left: an embryo inside a fluid-filled sac lined by a thin membrane, with a small yellow sac near its head, inside the uterus; a rope-like cord runs from the embryo to a thick, disc-shaped region of the uterine wall filled with branching red vessels. Right: an enlarged box of that region. Tree-like projections containing red and blue fetal vessels hang in a space filled with maternal blood, which enters from arteries in the uterine wall and drains into veins. At the bottom, the cord's vessels join the projections: labels mark a vein drawn in blue and an artery drawn in red.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.11",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/28-2-embryonic-development",
+   "license": "CC BY 4.0"
+  },
+  "os-20-44": {
+   "src": "figures/os-20-44.jpg",
+   "w": 1100,
+   "h": 1142,
+   "alt": "An outline drawing of a fetus curled up, with its circulation drawn in color. A red vein runs from the placenta at the right through the cord to the liver, where a short red channel carries it past the liver into a large vein rising to the heart. The heart and the vessels leaving it are purple, showing mixed blood; an opening between the two upper chambers and a short channel between the two great arteries above the heart are marked. Blue vessels branch from the lower body's arteries and run back out through the cord to the placenta. Labels mark the three short cuts, the aorta, the pulmonary trunk, the large vein, the vessels of the cord, the placenta and the bladder.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 20.44",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-6-development-of-blood-vessels-and-fetal-circulation",
    "license": "CC BY 4.0"
   }
  }

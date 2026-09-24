@@ -124,7 +124,7 @@
       "Falling prostaglandin E2",
       "Rising pulmonary artery pressure",
       "Rising prostaglandin E2",
-      "Aortic pressure rising above pulmonary pressure"
+      "Oxygen-rich aortic blood flowing back into the ductus"
     ],
     "correct": [
       0,
@@ -132,13 +132,13 @@
       4
     ],
     "why": {
-      "correct": "Oxygen makes the ductus smooth muscle contract, and losing prostaglandin E2 removes the signal that kept it open. With aortic pressure above pulmonary pressure, flow through the ductus reverses and it constricts.",
+      "correct": "Oxygen makes the ductus smooth muscle contract, and losing prostaglandin E2 removes the signal that kept it open. With aortic pressure above pulmonary pressure, flow through the ductus reverses, so oxygen-rich aortic blood reaches its wall.",
       "options": [
         "Correct. Rising oxygen contracts the ductus smooth muscle.",
         "Correct. Prostaglandin E2 kept the ductus open before birth; its fall lets it close.",
         "Pulmonary pressure falls after birth. A rise would favor flow from the pulmonary trunk into the aorta, as before birth.",
         "Prostaglandin E2 keeps the ductus open. A prostaglandin infusion is used to keep it open on purpose.",
-        "Correct. The pressure reversal ends the fetal flow pattern through the ductus."
+        "Correct. With aortic pressure now above pulmonary pressure, flow reverses, and oxygen-rich aortic blood bathes the ductus wall, adding to the oxygen signal that constricts it."
       ]
     }
   },

@@ -484,7 +484,7 @@
     "options": [
       "Upper myometrial cells divide rapidly during labor",
       "Fluid collects in the upper wall",
-      "After each contraction, upper muscle cells relax but stay a little shorter, pulling the lower part up",
+      "Upper muscle cells stay shorter after each contraction",
       "The lower uterus loses its oxytocin receptor proteins"
     ],
     "correct": 2,
@@ -493,7 +493,7 @@
       "options": [
         "Cell division is far too slow to thicken a wall over hours. The cells change length, not number.",
         "Fluid would not explain why the upper wall thickens while the lower wall thins at the same time.",
-        "Correct. Retraction thickens the upper segment and pulls the lower segment and cervix open.",
+        "Correct. Retraction: each shortening thickens the upper segment and pulls the lower segment and cervix up and open.",
         "Receptor protein numbers set how strongly the muscle responds to oxytocin. They would not thin the lower wall while thickening the upper one."
       ]
     }

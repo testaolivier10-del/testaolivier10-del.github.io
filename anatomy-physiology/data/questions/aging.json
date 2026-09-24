@@ -228,7 +228,7 @@
       "options": [
         "Correct. A stiff aorta cannot absorb each stroke volume, so systolic pressure rises.",
         "Correct. Systolic rises while diastolic stays level or falls.",
-        "Correct. Maximum heart rate falls by about a beat per minute a year.",
+        "Correct. Maximum heart rate falls by roughly 0.7 to 1 beat per minute a year.",
         "Resting cardiac output changes little in healthy aging. What falls is maximal output, the reserve.",
         "Correct. The stiffer ventricle fills less early in diastole."
       ]
@@ -509,7 +509,7 @@
       {
         "name": "Maximum heart rate",
         "answer": "down",
-        "why": "The SA node loses pacemaker cells and responds less to sympathetic stimulation, so the highest rate falls by about a beat a year."
+        "why": "The SA node loses pacemaker cells and responds less to sympathetic stimulation, so the highest rate falls by roughly 0.7 to 1 beat a year."
       },
       {
         "name": "Residual volume",
@@ -600,7 +600,7 @@
     "options": [
       "Supplements stop oxidative damage and slow aging",
       "Reactive oxygen species play no part in aging",
-      "Trials found no benefit, and one found harm",
+      "Trials found no benefit, and some found harm",
       "Antioxidants lengthen telomeres in all cells"
     ],
     "correct": 2,
@@ -609,7 +609,7 @@
       "options": [
         "Supplements do not stop oxidative damage inside cells in any measurable way that slows aging, and trials have not shown a benefit.",
         "Oxidative damage is one contributor to aging; it is just not the single cause.",
-        "Correct. The trials were negative, and one showed harm.",
+        "Correct. The trials were negative, and some showed harm.",
         "No antioxidant has been shown to lengthen telomeres in all cells. Telomerase is what adds repeats."
       ]
     }
@@ -622,7 +622,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Residents of a nursing home, aged 87 to 96, lift weights with their legs three times a week for eight weeks. Their leg strength more than doubles. What does this show?",
+    "q": "Residents of a nursing home, aged 86 to 96, lift weights with their legs three times a week for eight weeks. Their leg strength more than doubles. What does this show?",
     "options": [
       "Their muscles had not aged",
       "Much of the strength lost with age can be regained by training",
