@@ -1,0 +1,94 @@
+{
+  "topic": "male-anatomy",
+  "hook": "<p>Jordan, 15, wakes at 5 a.m. with sudden, severe pain in his left testis and vomits twice. The testis sits high and lies crosswise in the scrotum. The emergency physician calls the surgeon at once: the testis has twisted on its cord, cutting off its own blood supply, and it can usually be saved only if it is untwisted within about six hours. To see why the twist is so dangerous, you need to know what hangs on that cord and how the testis connects to the rest of the male reproductive system.</p>",
+  "prereq": [
+    {
+      "q": "How long is the adult male urethra?",
+      "options": [
+        "About 3 to 4 cm",
+        "About 18 to 20 cm",
+        "About 45 cm"
+      ],
+      "correct": 1,
+      "why": "The male urethra runs about 18 to 20 cm, from the bladder through a gland just below it, through the pelvic floor and along the penis. The female urethra is only 3 to 4 cm.",
+      "review": "kidney-anatomy"
+    },
+    {
+      "q": "What makes a gland exocrine rather than endocrine?",
+      "options": [
+        "It releases its product through a duct onto a surface or into a cavity",
+        "It releases hormones into the blood",
+        "It has no epithelial cells"
+      ],
+      "correct": 0,
+      "why": "Exocrine glands empty through ducts; endocrine glands are ductless and release hormones into the blood.",
+      "review": "glands"
+    },
+    {
+      "q": "Which division of the autonomic nervous system uses norepinephrine at most of its target organs?",
+      "options": [
+        "Parasympathetic",
+        "Sympathetic",
+        "Neither; both use acetylcholine"
+      ],
+      "correct": 1,
+      "why": "Most sympathetic postganglionic neurons release norepinephrine onto adrenergic receptor proteins. Parasympathetic postganglionic neurons release acetylcholine.",
+      "review": "ans-control"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-27-2",
+    "caption": "The male reproductive system in a side view. Hide the labels and trace the route of sperm from the testis to the external urethral opening, naming each duct and gland."
+  },
+  "chain": [
+    {
+      "cause": "Sperm made in the seminiferous tubules pass through the rete testis into the epididymis.",
+      "effect": "Over one to two weeks in the epididymis they gain the ability to swim, and they are stored in its tail."
+    },
+    {
+      "cause": "Sexual stimulation fires sacral parasympathetic neurons, which release nitric oxide in the penis.",
+      "effect": "Smooth muscle relaxes, blood fills the corpora cavernosa and squeezes their veins shut: an erection."
+    },
+    {
+      "cause": "At the peak of stimulation, sympathetic neurons release norepinephrine onto the ducts and glands.",
+      "effect": "The ductus deferens, seminal vesicles and prostate contract and move sperm and fluid into the prostatic urethra while the bladder neck closes (emission)."
+    },
+    {
+      "cause": "Semen in the urethra triggers a spinal reflex through the pudendal nerve.",
+      "effect": "The bulbospongiosus and pelvic floor muscles contract rhythmically and expel the semen (expulsion)."
+    },
+    {
+      "cause": "Sympathetic activity continues after ejaculation.",
+      "effect": "Smooth muscle in the erectile tissue contracts, blood drains out, and the erection subsides."
+    }
+  ],
+  "misconception": {
+    "wrong": "Semen is mostly sperm, made by the testes.",
+    "right": "Sperm are only a few percent of semen volume. About 60 to 70% comes from the seminal vesicles and 20 to 30% from the prostate, with a little mucus from the bulbourethral glands. That is why a vasectomy, which blocks only the sperm, leaves the volume of semen almost unchanged."
+  },
+  "check": [
+    "anp-male-anatomy-1",
+    "anp-male-anatomy-4",
+    "anp-male-anatomy-6",
+    "anp-male-anatomy-8",
+    "anp-male-anatomy-11",
+    "anp-male-anatomy-14",
+    "anp-male-anatomy-15",
+    "anp-male-anatomy-18"
+  ],
+  "summary": "<p>The testes hang in the scrotum, 2 to 3 °C below core temperature, kept cool by the dartos and cremaster muscles and the pampiniform plexus. Inside each testis, seminiferous tubules make sperm and interstitial (Leydig) cells between them make testosterone. Sperm pass through the rete testis into the epididymis, where they mature and are stored, then along the ductus deferens, which runs in the spermatic cord through the inguinal canal, into the ejaculatory duct and the urethra. Semen is mostly fluid from the seminal vesicles (alkaline, with fructose) and the prostate (with PSA), plus mucus from the bulbourethral glands. The penis has two corpora cavernosa and one corpus spongiosum, which holds the urethra and forms the glans. Erection is parasympathetic, through nitric oxide; emission is sympathetic; expulsion is a somatic reflex through the pudendal nerve.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-26",
+      "label": "NREMT: Abdominal emergencies"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-31",
+      "label": "NREMT: Chest and abdominal trauma"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-18",
+      "label": "NREMT: General pharmacology"
+    }
+  ]
+}

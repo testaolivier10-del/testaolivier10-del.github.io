@@ -1,0 +1,56 @@
+{
+  "os-27-9": {
+    "file": "figures/openstax/os-27-9.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.9",
+      "section": "27.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1ea115cf35f7999867f3eda8538332a5f2257792",
+      "page": "27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/1ea115cf35f7999867f3eda8538332a5f2257792",
+    "alt": "Two drawings of the female pelvis. Top: a side view cut down the midline, with the spine behind, the pubic bones in front, the urinary bladder behind the pubic bones, the pink uterus tipped forward over the bladder, the ovary shown in pale green behind the uterus, the vagina running down and forward from the cervix to the outside, and the rectum and anus behind the vagina; the labia, clitoris, mons pubis and urethra are labeled in front. Bottom: a front view into the opened pelvis with the intestines lifted up, showing the uterus in the middle, a uterine tube running out to each side, the fringed ends of the tubes curving over the green ovaries, the ligament joining each ovary to the uterus, the broad ligament draped across, and below them the cervix, vagina and labia.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.9",
+    "labels": [],
+    "w": 1100,
+    "h": 1559,
+    "ext": "jpg"
+  },
+  "os-27-10": {
+    "file": "figures/openstax/os-27-10.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.10",
+      "section": "27.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b83a326160c3c061c9a2a7b969ed62009502b5fb",
+      "page": "27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/b83a326160c3c061c9a2a7b969ed62009502b5fb",
+    "alt": "Two drawings of the vulva. Left: the surface view with the labia parted by fingers, showing the hood over the tip of the clitoris, the inner and outer skin folds, the small urethral opening above the larger vaginal opening, and the anus below. Right: a deeper view with the skin removed, showing the tip and long body of the clitoris, the two teardrop-shaped masses of erectile tissue on either side of the vaginal opening, and a small yellow gland at the lower edge of each, with the duct of the right gland opening beside the vagina.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.10",
+    "labels": [],
+    "w": 729,
+    "h": 428,
+    "ext": "jpg"
+  },
+  "os-27-17": {
+    "file": "figures/openstax/os-27-17.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.17",
+      "section": "27.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/39a2aa2df02ffc83ec7b4cc9b3c6baea6eb0fcf7",
+      "page": "27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/39a2aa2df02ffc83ec7b4cc9b3c6baea6eb0fcf7",
+    "alt": "Two drawings of the breast. Left: a front view with part of the skin removed, showing the pink areola with small glands around the nipple, orange clusters of sacs grouped into lobes, blue ducts running from each lobe to the nipple, yellow fat between the lobes, and bands of supporting tissue. Right: a side section showing the clusters of sacs at the ends of branching ducts, the ducts widening slightly just behind the nipple, fat filling the rest of the breast, and an arrow showing milk flowing out of the nipple.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.17",
+    "labels": [],
+    "w": 697,
+    "h": 347,
+    "ext": "jpg"
+  }
+}

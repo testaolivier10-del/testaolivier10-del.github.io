@@ -1,0 +1,120 @@
+{
+  "ovaries": {
+    "def": "The paired female gonads, almond-sized organs against the pelvic side walls. Their cortex holds ovarian follicles (each an oocyte wrapped in supporting cells) and they make estrogen and progesterone; the ovarian ligament ties each to the uterus and the suspensory ligament, which carries its vessels, ties it to the pelvic wall.",
+    "roots": [
+      [
+        "ov-",
+        "egg"
+      ],
+      [
+        "-ary",
+        "place for"
+      ],
+      [
+        "folliculus",
+        "little bag"
+      ]
+    ],
+    "say": "OH-vuh-reez"
+  },
+  "uterine-tubes": {
+    "def": "Two muscular tubes, about 10 cm long, from the uterus toward the ovaries (also called fallopian tubes or oviducts). Each has an open end fringed with fimbriae, a wide ampulla where sperm usually meet the oocyte, and a narrow isthmus next to the uterus; cilia and smooth muscle move the oocyte toward the uterus.",
+    "roots": [
+      [
+        "fimbria",
+        "fringe"
+      ],
+      [
+        "ampulla",
+        "flask"
+      ],
+      [
+        "isthmos",
+        "narrow passage"
+      ]
+    ],
+    "say": "YOO-ter-in; fim-BREE-ee"
+  },
+  "uterus": {
+    "def": "The hollow, pear-shaped muscular organ in which an embryo develops, with a fundus, body and cervix, draped by the broad ligament. Its wall has an outer perimetrium, a thick smooth muscle myometrium and an inner endometrium, whose functional layer is shed at menstruation and regrown from the basal layer.",
+    "roots": [
+      [
+        "cervix",
+        "neck"
+      ],
+      [
+        "fundus",
+        "bottom"
+      ],
+      [
+        "peri-",
+        "around"
+      ],
+      [
+        "metr-",
+        "uterus"
+      ],
+      [
+        "my/o",
+        "muscle"
+      ],
+      [
+        "endo-",
+        "within"
+      ]
+    ],
+    "say": "YOO-ter-us; en-doh-MEE-tree-um"
+  },
+  "vagina-vulva": {
+    "def": "The vagina is a gland-free, acidic muscular tube, 7 to 10 cm long, from the vaginal opening to the cervix, with a hymen at its opening. The vulva is the external genitals: the mons pubis, labia majora and minora, the clitoris, the vestibule and the greater vestibular (Bartholin's) glands.",
+    "roots": [
+      [
+        "vagina",
+        "sheath"
+      ],
+      [
+        "vulva",
+        "covering"
+      ],
+      [
+        "labium",
+        "lip"
+      ],
+      [
+        "mons",
+        "mound"
+      ],
+      [
+        "hymen",
+        "membrane"
+      ]
+    ],
+    "say": "vuh-JY-nuh; VUL-vuh"
+  },
+  "mammary-glands": {
+    "def": "Exocrine glands in the breast that can make milk. Milk-making alveoli, grouped into lobules and lobes, drain through branching ducts into lactiferous ducts that open at the nipple, with a slight widening near the nipple called the lactiferous sinus; the pigmented areola surrounds the nipple.",
+    "roots": [
+      [
+        "mamma",
+        "breast"
+      ],
+      [
+        "lact-",
+        "milk"
+      ],
+      [
+        "-fer",
+        "carrying"
+      ],
+      [
+        "alveolus",
+        "small cavity"
+      ],
+      [
+        "areola",
+        "small open space"
+      ]
+    ],
+    "say": "MAM-uh-ree; lak-TIF-er-us"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "gamete": {
+    "def": "A sex cell with one set of chromosomes: a sperm in males, an oocyte (egg) in females. An oocyte that has finished meiosis is called an ovum.",
+    "roots": [
+      [
+        "gamet-",
+        "spouse, partner"
+      ],
+      [
+        "oo-",
+        "egg"
+      ],
+      [
+        "-cyte",
+        "cell"
+      ]
+    ],
+    "say": "GAM-eet; OH-oh-site; OH-vum"
+  },
+  "ploidy": {
+    "def": "A diploid (2n) cell holds both members of every chromosome pair, 46 in humans; a haploid (n) cell holds one of each pair, 23. Homologous chromosomes are the two members of a pair, one from each parent, with the same genes in the same order; the versions of a gene they carry are alleles.",
+    "roots": [
+      [
+        "dipl-",
+        "double"
+      ],
+      [
+        "hapl-",
+        "single"
+      ],
+      [
+        "-oid",
+        "like"
+      ],
+      [
+        "homo-",
+        "same"
+      ],
+      [
+        "allel-",
+        "one another"
+      ]
+    ],
+    "say": "DIP-loyd; HAP-loyd; uh-LEEL"
+  },
+  "meiosis": {
+    "def": "The division that makes gametes: one round of DNA copying, then two divisions. Meiosis I pairs the homologs, lets them cross over and separates them; meiosis II separates the sister chromatids, giving four haploid cells that all differ. Failure of chromosomes to separate is nondisjunction.",
+    "roots": [
+      [
+        "meio-",
+        "less"
+      ],
+      [
+        "-osis",
+        "process"
+      ],
+      [
+        "non-",
+        "not"
+      ],
+      [
+        "dis-",
+        "apart"
+      ],
+      [
+        "junct-",
+        "joined"
+      ]
+    ],
+    "say": "my-OH-sis"
+  },
+  "sex-chromosomes": {
+    "def": "The 23rd chromosome pair: XX in a typical female, XY in a typical male. Every egg carries an X and each sperm an X or a Y, so the sperm sets the sex; the SRY gene on the Y turns the early gonad into a testis.",
+    "roots": [],
+    "say": ""
+  }
+}

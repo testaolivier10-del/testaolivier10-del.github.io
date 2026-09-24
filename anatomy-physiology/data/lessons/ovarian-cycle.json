@@ -1,0 +1,80 @@
+{
+  "topic": "ovarian-cycle",
+  "hook": "<p>Dana, 41, has been told by her fertility doctor that her ovaries have few follicles left. She is puzzled: she has had only about 330 periods, and she was born with more than a million egg cells. Where did the rest go? The answer is that ovulation uses up very few of them. Almost every follicle dies without ever releasing its oocyte, and that loss started before Dana was born.</p>",
+  "prereq": [
+    {
+      "q": "A human cell that has completed meiosis I has how many chromosomes?",
+      "options": [
+        "46",
+        "23",
+        "92"
+      ],
+      "correct": 1,
+      "why": "Meiosis I separates the homologous pairs, so each daughter cell has 23 chromosomes (each still made of two sister chromatids). It is haploid.",
+      "review": "meiosis"
+    },
+    {
+      "q": "Which hormones do the ovaries release?",
+      "options": [
+        "Testosterone and inhibin only",
+        "FSH and LH",
+        "Estrogen and progesterone"
+      ],
+      "correct": 2,
+      "why": "The ovaries are gonads that make the steroid hormones estrogen (mainly estradiol) and progesterone. FSH and LH come from the anterior pituitary and act on the ovaries.",
+      "review": "other-endocrine"
+    },
+    {
+      "q": "Where in the ovary are the follicles found?",
+      "options": [
+        "In the cortex",
+        "In the medulla",
+        "In the suspensory ligament"
+      ],
+      "correct": 0,
+      "why": "The outer cortex is packed with follicles. The medulla carries blood vessels and nerves, and the suspensory ligament carries the ovarian vessels to the ovary.",
+      "review": "female-anatomy"
+    }
+  ],
+  "anatomy": {
+    "figure": "follicle-stages",
+    "caption": "The life of one follicle, from a resting primordial follicle to the scar it leaves."
+  },
+  "chain": [
+    {
+      "cause": "FSH rises at the start of a cycle.",
+      "effect": "A group of tertiary follicles, which need FSH to keep growing, grows; their granulosa cells convert theca androgens into estradiol."
+    },
+    {
+      "cause": "The follicle with the most FSH receptor proteins grows fastest and makes the most estradiol.",
+      "effect": "It becomes the dominant follicle and keeps growing as FSH falls, while the others lose their FSH support and undergo atresia."
+    },
+    {
+      "cause": "A sudden large rise in LH reaches the mature vesicular follicle.",
+      "effect": "Meiosis I finishes, the oocyte comes loose, enzymes weaken the follicle wall, and about 34 to 36 hours later the secondary oocyte is released: ovulation."
+    },
+    {
+      "cause": "LH acts on the granulosa and theca cells left in the collapsed follicle.",
+      "effect": "They enlarge, fill with lipid and become the corpus luteum, which secretes progesterone, estradiol and inhibin."
+    },
+    {
+      "cause": "Without a pregnancy, the corpus luteum dies after about 12 to 14 days.",
+      "effect": "Its hormone output falls and it shrinks into the corpus albicans, a pale scar."
+    }
+  ],
+  "misconception": {
+    "wrong": "A woman releases one egg a month, so she runs out of eggs after about 400 cycles.",
+    "right": "Ovulation accounts for only about 400 of the 1 to 2 million oocytes present at birth. Nearly all the rest are lost to atresia: follicles start growing and then die, month after month, from before birth through childhood and adulthood. Each cycle, a whole group of follicles grows and all but one die. The supply runs out in midlife because of that steady loss, not because of the monthly release."
+  },
+  "check": [
+    "anp-ovarian-cycle-1",
+    "anp-ovarian-cycle-3",
+    "anp-ovarian-cycle-5",
+    "anp-ovarian-cycle-8",
+    "anp-ovarian-cycle-10",
+    "anp-ovarian-cycle-13",
+    "anp-ovarian-cycle-16"
+  ],
+  "summary": "<p>Oogenesis starts before birth: oogonia multiply by mitosis and become primary oocytes that arrest in prophase I; none are made after birth. Just before each ovulation, one primary oocyte finishes meiosis I into a secondary oocyte and a polar body, and arrests at metaphase II; it finishes meiosis II only if a sperm enters. Follicles grow from primordial to primary, secondary, tertiary and mature vesicular (Graafian) stages, adding granulosa cells, a theca and a fluid-filled antrum. The late stages need FSH; one dominant follicle is selected and the rest undergo atresia, which removes more than 99% of follicles. Theca cells make androgens under LH, and granulosa cells convert them to estradiol under FSH. A sudden rise in LH triggers ovulation about 34 to 36 hours later. The empty follicle becomes the corpus luteum, which secretes progesterone for about two weeks and then becomes the corpus albicans unless a pregnancy keeps it alive.</p>",
+  "connections": []
+}

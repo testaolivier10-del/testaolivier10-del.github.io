@@ -14233,6 +14233,1548 @@
           ]
         }
       ]
+    },
+    {
+      "id": "met-cyanide",
+      "title": "Cyanide blocks complex IV",
+      "topic": "carbohydrate-metabolism",
+      "theme": "cyanide blocks the electron transport chain",
+      "core": [
+        "energy",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "cyanide kills by stopping oxygen from reaching the cells",
+      "setup": "A man is pulled from a burning building after breathing smoke that contains hydrogen cyanide. Cyanide binds the iron in complex IV of the electron transport chain in his cells. His lungs and blood still work. Predict the changes over the next few minutes.",
+      "start": "Cyanide binds complex IV",
+      "steps": {
+        "c4": "Complex IV cannot pass electrons to oxygen",
+        "back": "Electrons back up along the whole chain",
+        "pump": "H+ pumping stops, and the gradient runs down",
+        "atps": "ATP synthase stops making ATP",
+        "o2": "Cells stop using oxygen",
+        "ven": "Blood leaves the tissues still carrying much of its oxygen",
+        "nad": "NADH cannot be oxidized, so NAD+ runs out in the matrix",
+        "cac": "The citric acid cycle stops",
+        "amp": "ATP falls and AMP rises",
+        "gly": "Glycolysis speeds up",
+        "lac": "Pyruvate is turned into lactate to regenerate NAD+",
+        "ph": "Lactate and H+ build up in the blood",
+        "lung": "Lungs and hemoglobin load oxygen normally",
+        "art": "Oxygen delivered to the tissues is unchanged"
+      },
+      "variables": [
+        {
+          "id": "atp-synthase",
+          "name": "ATP made by ATP synthase",
+          "answer": "down",
+          "chain": [
+            "c4",
+            "back",
+            "pump",
+            "atps"
+          ],
+          "why": "Without electron flow, complexes I and III stop pumping H+. The gradient runs down, and with no H+ flowing back through ATP synthase, it makes no ATP."
+        },
+        {
+          "id": "o2-use",
+          "name": "Oxygen used by the cells",
+          "answer": "down",
+          "chain": [
+            "c4",
+            "o2"
+          ],
+          "why": "Oxygen is used only at complex IV, where it accepts electrons and becomes water. With complex IV blocked, oxygen is no longer taken up."
+        },
+        {
+          "id": "venous-o2",
+          "name": "Oxygen left in the venous blood",
+          "answer": "up",
+          "chain": [
+            "c4",
+            "o2",
+            "ven"
+          ],
+          "why": "Blood delivers oxygen as usual but the tissues take little out, so venous blood keeps much of its oxygen and looks unusually red."
+        },
+        {
+          "id": "arterial-o2",
+          "name": "Oxygen carried to the tissues in arterial blood",
+          "answer": "none",
+          "chain": [
+            "lung",
+            "art"
+          ],
+          "why": "Cyanide acts inside the mitochondria, not in the lungs or on hemoglobin, so the blood arrives as well loaded as before. The problem is use, not delivery."
+        },
+        {
+          "id": "cac",
+          "name": "Rate of the citric acid cycle",
+          "answer": "down",
+          "chain": [
+            "c4",
+            "back",
+            "nad",
+            "cac"
+          ],
+          "why": "The cycle needs NAD+ and FAD, and only the electron transport chain turns NADH and FADH2 back into them. With the chain stopped, the cycle stops within seconds."
+        },
+        {
+          "id": "glycolysis",
+          "name": "Rate of glycolysis",
+          "answer": "up",
+          "chain": [
+            "c4",
+            "back",
+            "pump",
+            "atps",
+            "amp",
+            "gly"
+          ],
+          "why": "As ATP falls, AMP builds up and speeds phosphofructokinase, so glucose is broken down faster, giving 2 ATP per glucose without the mitochondria."
+        },
+        {
+          "id": "lactate",
+          "name": "Blood lactate",
+          "answer": "up",
+          "chain": [
+            "c4",
+            "back",
+            "pump",
+            "atps",
+            "amp",
+            "gly",
+            "lac"
+          ],
+          "why": "Pyruvate cannot enter the stalled mitochondria. Turning it into lactate regenerates the NAD+ that glycolysis needs to keep running, and lactate spills into the blood."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "down",
+          "chain": [
+            "c4",
+            "back",
+            "pump",
+            "atps",
+            "amp",
+            "gly",
+            "lac",
+            "ph"
+          ],
+          "why": "Lactate is made with H+ as fast glycolysis runs, and the H+ builds up in the blood faster than it can be buffered and removed."
+        }
+      ]
+    },
+    {
+      "id": "met-uncoupler",
+      "title": "A drug makes the inner mitochondrial membrane leak H+",
+      "topic": "carbohydrate-metabolism",
+      "core": [
+        "energy",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "burning more fuel always means making more ATP",
+      "setup": "A bodybuilder takes dinitrophenol, an industrial chemical once sold as a weight-loss drug. It carries H+ back across the inner mitochondrial membrane without passing through ATP synthase. Predict the changes in his cells and body over the next hours.",
+      "start": "H+ leaks back into the matrix",
+      "steps": {
+        "leak": "H+ returns to the matrix without passing through ATP synthase",
+        "grad": "The H+ gradient falls",
+        "fast": "The electron transport chain speeds up to rebuild it",
+        "o2": "Oxygen use rises",
+        "fuel": "More fuel is broken down to supply NADH",
+        "less": "Less of the H+ flow passes through ATP synthase",
+        "per": "Less ATP is made from each glucose",
+        "heat": "The energy of the electrons leaves as heat",
+        "temp": "Body temperature rises"
+      },
+      "variables": [
+        {
+          "id": "gradient",
+          "name": "Size of the H+ gradient across the inner membrane",
+          "answer": "down",
+          "chain": [
+            "leak",
+            "grad"
+          ],
+          "why": "The drug gives H+ a second way back into the matrix, so the gradient runs down even though the chain keeps pumping."
+        },
+        {
+          "id": "o2",
+          "name": "Oxygen use by the cells",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "grad",
+            "fast",
+            "o2"
+          ],
+          "why": "Electron flow is held back by the gradient. With the gradient lower, electrons flow faster down the chain to oxygen, so more oxygen is used."
+        },
+        {
+          "id": "fuel",
+          "name": "Fuel broken down per hour",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "grad",
+            "fast",
+            "fuel"
+          ],
+          "why": "A faster chain turns NADH and FADH2 back into NAD+ and FAD faster, so glycolysis and the citric acid cycle can run faster and burn more fuel."
+        },
+        {
+          "id": "atp-per-glucose",
+          "name": "ATP made per glucose broken down",
+          "answer": "down",
+          "chain": [
+            "leak",
+            "less",
+            "per"
+          ],
+          "why": "H+ that leaks back does not turn ATP synthase, so each glucose, which still pumps the same H+, yields fewer ATP."
+        },
+        {
+          "id": "heat",
+          "name": "Heat produced by the cells",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "grad",
+            "fast",
+            "heat"
+          ],
+          "why": "The energy released as electrons pass to oxygen is no longer captured as ATP, so it is released as heat."
+        },
+        {
+          "id": "temp",
+          "name": "Body temperature",
+          "answer": "up",
+          "chain": [
+            "leak",
+            "grad",
+            "fast",
+            "heat",
+            "temp"
+          ],
+          "why": "Heat is made faster than it can be lost. Users of this drug died from body temperatures that rose out of control."
+        }
+      ]
+    },
+    {
+      "id": "met-g6pase-deficiency",
+      "title": "A liver without glucose-6-phosphatase",
+      "topic": "carbohydrate-metabolism",
+      "core": [
+        "energy",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a liver full of glycogen can always keep blood glucose up",
+      "setup": "A toddler was born without glucose-6-phosphatase (glycogen storage disease type I). Compare her with a healthy toddler four hours after the same meal.",
+      "start": "No glucose-6-phosphatase in the liver",
+      "steps": {
+        "noenz": "The liver cannot remove the phosphate from glucose-6-phosphate",
+        "trap": "Glucose-6-phosphate stays trapped in liver cells",
+        "norel": "No free glucose is released into the blood",
+        "bg": "Blood glucose falls a few hours after a meal",
+        "pile": "Glycogen keeps piling up in the liver",
+        "big": "The liver enlarges",
+        "push": "Trapped glucose-6-phosphate is pushed down glycolysis",
+        "lac": "Lactate is made and released",
+        "musc": "Muscle never uses glucose-6-phosphatase anyway",
+        "mnorm": "Muscle breaks down its own glycogen normally"
+      },
+      "variables": [
+        {
+          "id": "liver-release",
+          "name": "Glucose released by the liver",
+          "answer": "down",
+          "chain": [
+            "noenz",
+            "trap",
+            "norel"
+          ],
+          "why": "Glucose from glycogen or gluconeogenesis ends as glucose-6-phosphate, which is charged and cannot use the glucose carriers. Without the enzyme, no free glucose leaves."
+        },
+        {
+          "id": "blood-glucose",
+          "name": "Blood glucose four hours after a meal",
+          "answer": "down",
+          "chain": [
+            "noenz",
+            "trap",
+            "norel",
+            "bg"
+          ],
+          "why": "Once the meal has been absorbed, the liver is the only supply of blood glucose. With that supply cut off, glucose falls sharply between meals."
+        },
+        {
+          "id": "liver-glycogen",
+          "name": "Glycogen stored in the liver",
+          "answer": "up",
+          "chain": [
+            "noenz",
+            "trap",
+            "pile"
+          ],
+          "why": "The liver can still build glycogen and break it down to glucose-6-phosphate, but the glucose has nowhere to go, so glycogen accumulates."
+        },
+        {
+          "id": "liver-size",
+          "name": "Size of the liver",
+          "answer": "up",
+          "chain": [
+            "noenz",
+            "trap",
+            "pile",
+            "big"
+          ],
+          "why": "The extra stored glycogen swells the liver cells, so the liver enlarges."
+        },
+        {
+          "id": "lactate",
+          "name": "Blood lactate",
+          "answer": "up",
+          "chain": [
+            "noenz",
+            "trap",
+            "push",
+            "lac"
+          ],
+          "why": "The trapped glucose-6-phosphate is broken down by glycolysis instead, and much of the pyruvate is turned into lactate, which leaves the liver."
+        },
+        {
+          "id": "muscle",
+          "name": "Muscle use of its own glycogen during play",
+          "answer": "none",
+          "chain": [
+            "musc",
+            "mnorm"
+          ],
+          "why": "Muscle has no glucose-6-phosphatase in anyone. Its glycogen is broken to glucose-6-phosphate that enters glycolysis in the same muscle, so the missing enzyme does not affect it."
+        }
+      ]
+    },
+    {
+      "id": "met-diabetes-ketones",
+      "title": "Type 1 diabetes: two days without insulin",
+      "topic": "lipid-protein-metabolism",
+      "theme": "uncontrolled diabetes and ketones",
+      "core": [
+        "energy",
+        "homeostasis"
+      ],
+      "level": 3,
+      "misconception": "the liver can turn the extra fatty acids into glucose",
+      "setup": "A 20-year-old with type 1 diabetes loses her insulin supplies on a trip and takes none for two days. Compare her now with when she was taking insulin.",
+      "start": "Insulin almost absent",
+      "steps": {
+        "noins": "Insulin almost absent; glucagon high",
+        "brake": "Nothing brakes lipolysis in fat cells",
+        "fa": "Fatty acids pour into the blood",
+        "liv": "The liver takes up fatty acids and runs beta oxidation at a high rate",
+        "acoa": "Acetyl CoA piles up in liver mitochondria",
+        "kb": "Ketone bodies are made faster than other tissues can burn them",
+        "h": "Their H+ is released into the blood",
+        "bic": "Bicarbonate is used up buffering the H+",
+        "ph": "Blood pH falls below 7.35",
+        "breathe": "Low pH stimulates deep, rapid breathing",
+        "co2": "More CO2 is blown off",
+        "ace": "Some acetoacetate breaks down to acetone",
+        "exh": "Acetone leaves in the breath",
+        "oneway": "Acetyl CoA cannot be turned back into pyruvate",
+        "nogl": "No glucose is made from the fatty acids"
+      },
+      "variables": [
+        {
+          "id": "lipolysis",
+          "name": "Lipolysis in adipose tissue",
+          "answer": "up",
+          "chain": [
+            "noins",
+            "brake"
+          ],
+          "why": "Insulin brakes lipolysis even at low levels. With it almost gone, and epinephrine and glucagon unopposed, stored triglyceride is broken down fast."
+        },
+        {
+          "id": "fatty-acids",
+          "name": "Fatty acids in the blood",
+          "answer": "up",
+          "chain": [
+            "noins",
+            "brake",
+            "fa"
+          ],
+          "why": "Fat cells release the fatty acids from lipolysis into the blood, where they travel on albumin."
+        },
+        {
+          "id": "ketones",
+          "name": "Ketone bodies made by the liver",
+          "answer": "up",
+          "chain": [
+            "noins",
+            "brake",
+            "fa",
+            "liv",
+            "acoa",
+            "kb"
+          ],
+          "why": "Beta oxidation makes acetyl CoA faster than the citric acid cycle can take it, and the liver is drawing oxaloacetate off for gluconeogenesis. The extra acetyl CoA is made into ketone bodies."
+        },
+        {
+          "id": "glucose-from-fat",
+          "name": "Glucose the liver makes from fatty acids",
+          "answer": "none",
+          "chain": [
+            "liv",
+            "acoa",
+            "oneway",
+            "nogl"
+          ],
+          "why": "Fatty acids are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward. However much fat is burned, none of it becomes glucose; only glycerol can."
+        },
+        {
+          "id": "bicarbonate",
+          "name": "Blood bicarbonate",
+          "answer": "down",
+          "chain": [
+            "noins",
+            "brake",
+            "fa",
+            "liv",
+            "acoa",
+            "kb",
+            "h",
+            "bic"
+          ],
+          "why": "Acetoacetic and beta-hydroxybutyric acid give up their H+ at body pH. Bicarbonate combines with that H+ and is used up."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "down",
+          "chain": [
+            "noins",
+            "brake",
+            "fa",
+            "liv",
+            "acoa",
+            "kb",
+            "h",
+            "bic",
+            "ph"
+          ],
+          "why": "Once bicarbonate is used up, the H+ is no longer mopped up, and pH falls below 7.35: ketoacidosis."
+        },
+        {
+          "id": "breathing",
+          "name": "Depth and rate of breathing",
+          "answer": "up",
+          "chain": [
+            "kb",
+            "h",
+            "bic",
+            "ph",
+            "breathe"
+          ],
+          "why": "Chemoreceptors sense the rise in H+ and drive the brainstem to deepen and speed breathing."
+        },
+        {
+          "id": "pco2",
+          "name": "Arterial PCO2",
+          "answer": "down",
+          "chain": [
+            "kb",
+            "h",
+            "bic",
+            "ph",
+            "breathe",
+            "co2"
+          ],
+          "why": "Deep, rapid breathing blows off CO2 faster than it is made, so PCO2 falls, which partly offsets the acid."
+        },
+        {
+          "id": "acetone",
+          "name": "Acetone on the breath",
+          "answer": "up",
+          "chain": [
+            "noins",
+            "brake",
+            "fa",
+            "liv",
+            "acoa",
+            "kb",
+            "ace",
+            "exh"
+          ],
+          "why": "With acetoacetate so high, more of it loses CO2 on its own to form acetone, which is volatile and gives the breath a fruity smell."
+        }
+      ]
+    },
+    {
+      "id": "met-statin",
+      "title": "Starting a statin",
+      "topic": "lipid-protein-metabolism",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "statins lower blood cholesterol by blocking its absorption from food",
+      "setup": "A 55-year-old with high LDL starts a daily statin, a drug that blocks HMG CoA reductase. Compare him after two months with before the drug.",
+      "start": "The statin blocks HMG CoA reductase",
+      "steps": {
+        "syn": "Liver cells make less cholesterol",
+        "low": "Cholesterol inside liver cells falls",
+        "rec": "Liver cells make more LDL receptor proteins",
+        "up": "More LDL is pulled out of the blood",
+        "ldl": "Blood LDL falls",
+        "wall": "Less LDL enters artery walls",
+        "plaque": "Plaques grow more slowly"
+      },
+      "variables": [
+        {
+          "id": "synthesis",
+          "name": "Cholesterol made by liver cells",
+          "answer": "down",
+          "chain": [
+            "syn"
+          ],
+          "why": "HMG CoA reductase catalyzes the control step of cholesterol synthesis from acetyl CoA. Blocking it cuts the cells’ own production."
+        },
+        {
+          "id": "receptors",
+          "name": "LDL receptor proteins on liver cells",
+          "answer": "up",
+          "chain": [
+            "syn",
+            "low",
+            "rec"
+          ],
+          "why": "A cell short of cholesterol makes more LDL receptor proteins, just as a cell with plenty makes fewer."
+        },
+        {
+          "id": "uptake",
+          "name": "LDL taken up by the liver",
+          "answer": "up",
+          "chain": [
+            "syn",
+            "low",
+            "rec",
+            "up"
+          ],
+          "why": "More receptor proteins bind more LDL particles and bring them into the cells by endocytosis."
+        },
+        {
+          "id": "blood-ldl",
+          "name": "Blood LDL",
+          "answer": "down",
+          "chain": [
+            "syn",
+            "low",
+            "rec",
+            "up",
+            "ldl"
+          ],
+          "why": "LDL is removed from the blood faster than it is made from VLDL, so its level falls, often by a third to a half."
+        },
+        {
+          "id": "plaque",
+          "name": "Rate of plaque growth in artery walls",
+          "answer": "down",
+          "chain": [
+            "syn",
+            "low",
+            "rec",
+            "up",
+            "ldl",
+            "wall",
+            "plaque"
+          ],
+          "why": "LDL is a direct cause of atherosclerosis: less LDL entering artery walls means slower plaque growth, which is why statins prevent heart attacks and strokes."
+        }
+      ]
+    },
+    {
+      "id": "met-cirrhosis-ammonia",
+      "title": "A failing liver and ammonia",
+      "topic": "lipid-protein-metabolism",
+      "core": [
+        "interdependence",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "liver failure raises blood urea",
+      "setup": "A 60-year-old has advanced cirrhosis: too few liver cells still work. He eats a normal amount of protein. Compare him with a healthy adult on the same diet.",
+      "start": "Too few working liver cells",
+      "steps": {
+        "cyc": "The urea cycle cannot keep up with the ammonia from amino acids",
+        "urea": "Less urea is made",
+        "bun": "Blood urea falls",
+        "uri": "Less urea reaches the urine",
+        "nh3": "Ammonia builds up in the blood",
+        "brain": "Ammonia reaches the brain",
+        "neuro": "Neurotransmission is disturbed and astrocytes swell",
+        "conf": "Confusion and a flapping tremor of the hands"
+      },
+      "variables": [
+        {
+          "id": "urea-made",
+          "name": "Urea made each day",
+          "answer": "down",
+          "chain": [
+            "cyc",
+            "urea"
+          ],
+          "why": "Only liver cells run the urea cycle. With too few working, less ammonia is turned into urea."
+        },
+        {
+          "id": "blood-urea",
+          "name": "Blood urea",
+          "answer": "down",
+          "chain": [
+            "cyc",
+            "urea",
+            "bun"
+          ],
+          "why": "Blood urea reflects the balance of urea made by the liver and removed by the kidneys. The kidneys still work, but less urea is being made, so the level is often low."
+        },
+        {
+          "id": "urine-urea",
+          "name": "Urea excreted in the urine",
+          "answer": "down",
+          "chain": [
+            "cyc",
+            "urea",
+            "bun",
+            "uri"
+          ],
+          "why": "The kidneys can excrete only the urea that reaches them, and less is being made."
+        },
+        {
+          "id": "ammonia",
+          "name": "Blood ammonia",
+          "answer": "up",
+          "chain": [
+            "cyc",
+            "nh3"
+          ],
+          "why": "Deamination of amino acids still releases ammonia, but it is not cleared into urea, so it builds up in the blood."
+        },
+        {
+          "id": "confusion",
+          "name": "Confusion",
+          "answer": "up",
+          "chain": [
+            "cyc",
+            "nh3",
+            "brain",
+            "neuro",
+            "conf"
+          ],
+          "why": "Ammonia disturbs neurotransmission and swells astrocytes even at small rises, so brain function suffers: confusion, a flapping tremor and, eventually, coma."
+        }
+      ]
+    },
+    {
+      "id": "met-after-meal",
+      "title": "A large meal after an afternoon without food",
+      "topic": "absorptive-postabsorptive",
+      "core": [
+        "homeostasis",
+        "energy"
+      ],
+      "level": 2,
+      "misconception": "after a meal the liver keeps making and releasing new glucose",
+      "setup": "You have eaten nothing since lunch, and at 7 pm you eat a large plate of pasta with meat sauce. Compare one hour after the meal with just before it.",
+      "start": "Glucose and amino acids are absorbed",
+      "steps": {
+        "abs": "Glucose and amino acids enter the portal blood",
+        "bg": "Blood glucose rises",
+        "ins": "Beta cells release more insulin",
+        "glu": "Alpha cells release less glucagon",
+        "liv": "The liver takes up glucose and builds glycogen",
+        "stop": "Glycogenolysis stops",
+        "rel": "The liver stops releasing glucose",
+        "gng": "Gluconeogenesis slows; the glucose it still makes goes into glycogen",
+        "glut": "Insulin moves GLUT4 carriers into muscle membranes",
+        "mus": "Muscle takes up glucose",
+        "lip": "Insulin brakes lipolysis",
+        "ffa": "Fat cells release fewer fatty acids",
+        "brain": "Brain glucose uptake does not depend on insulin",
+        "bn": "The brain keeps burning glucose at the same rate"
+      },
+      "variables": [
+        {
+          "id": "insulin",
+          "name": "Blood insulin",
+          "answer": "up",
+          "chain": [
+            "abs",
+            "bg",
+            "ins"
+          ],
+          "why": "Rising glucose and amino acids, and gut hormones released as food arrives, make beta cells release insulin."
+        },
+        {
+          "id": "glucagon",
+          "name": "Blood glucagon",
+          "answer": "down",
+          "chain": [
+            "abs",
+            "bg",
+            "glu"
+          ],
+          "why": "Rising glucose, and insulin from nearby beta cells, hold back glucagon release."
+        },
+        {
+          "id": "liver-output",
+          "name": "Glucose released by the liver",
+          "answer": "down",
+          "chain": [
+            "abs",
+            "bg",
+            "ins",
+            "stop",
+            "rel"
+          ],
+          "why": "With insulin up and glucagon down, glycogen breakdown stops and the liver stops exporting glucose; the gut now supplies the blood."
+        },
+        {
+          "id": "liver-glycogen",
+          "name": "Glycogen in the liver",
+          "answer": "up",
+          "chain": [
+            "abs",
+            "bg",
+            "ins",
+            "liv"
+          ],
+          "why": "Glucose from the portal blood reaches the liver first, and insulin and high glucose switch glycogen synthase on."
+        },
+        {
+          "id": "gng",
+          "name": "Gluconeogenesis in the liver",
+          "answer": "down",
+          "chain": [
+            "abs",
+            "bg",
+            "ins",
+            "gng"
+          ],
+          "why": "Insulin switches gluconeogenesis off and glucagon no longer drives it. It slows rather than stopping, and much of the glucose it still makes is stored as glycogen instead of leaving."
+        },
+        {
+          "id": "muscle",
+          "name": "Glucose uptake by skeletal muscle",
+          "answer": "up",
+          "chain": [
+            "abs",
+            "bg",
+            "ins",
+            "glut",
+            "mus"
+          ],
+          "why": "Insulin moves GLUT4 carriers into the muscle cell membrane, so glucose floods in to be burned or stored as glycogen."
+        },
+        {
+          "id": "fatty-acids",
+          "name": "Fatty acids released from fat cells",
+          "answer": "down",
+          "chain": [
+            "abs",
+            "bg",
+            "ins",
+            "lip",
+            "ffa"
+          ],
+          "why": "Insulin switches lipolysis off within minutes, so fat cells store fat instead of releasing it."
+        },
+        {
+          "id": "brain",
+          "name": "Glucose used by the brain",
+          "answer": "none",
+          "chain": [
+            "brain",
+            "bn"
+          ],
+          "why": "Brain glucose uptake does not depend on insulin, and the brain burns glucose at a steady rate whether you have eaten or not."
+        }
+      ]
+    },
+    {
+      "id": "met-fast-day3",
+      "title": "Three days without food",
+      "topic": "absorptive-postabsorptive",
+      "theme": "prolonged fasting",
+      "core": [
+        "homeostasis",
+        "energy",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "ketone bodies in a fast make the blood acidic",
+      "setup": "A hiker is lost in the mountains with water but no food. Compare her on day 3 with the morning after her last meal, when she had fasted only overnight.",
+      "start": "No food for three days",
+      "steps": {
+        "gone": "Liver glycogen is used up within about a day",
+        "ins": "Insulin falls further; glucagon and cortisol rise",
+        "gng": "All new glucose must come from gluconeogenesis",
+        "lip": "Low insulin frees lipolysis",
+        "fa": "Fatty acids flood into the liver",
+        "kb": "The liver makes ketone bodies",
+        "buf": "A little insulin still limits fat release, and buffers take up the H+",
+        "ph": "Blood pH stays normal"
+      },
+      "variables": [
+        {
+          "id": "glycogen",
+          "name": "Liver glycogen",
+          "answer": "down",
+          "chain": [
+            "gone"
+          ],
+          "why": "Liver glycogen holds only about 100 g, which the brain and other tissues use up within about 24 hours without food."
+        },
+        {
+          "id": "insulin",
+          "name": "Blood insulin",
+          "answer": "down",
+          "chain": [
+            "gone",
+            "ins"
+          ],
+          "why": "With no glucose coming from the gut or from glycogen, blood glucose drifts down and beta cells release less insulin, while glucagon and cortisol rise."
+        },
+        {
+          "id": "gng-share",
+          "name": "Share of the liver’s glucose made by gluconeogenesis",
+          "answer": "up",
+          "chain": [
+            "gone",
+            "ins",
+            "gng"
+          ],
+          "why": "After an overnight fast, about half the glucose leaving the liver comes from glycogen. Once glycogen is gone, all of it must be made new, mostly from muscle amino acids."
+        },
+        {
+          "id": "lipolysis",
+          "name": "Lipolysis in adipose tissue",
+          "answer": "up",
+          "chain": [
+            "ins",
+            "lip"
+          ],
+          "why": "Insulin is the brake on lipolysis. As it falls, and cortisol and growth hormone rise, stored fat is broken down faster."
+        },
+        {
+          "id": "ketones",
+          "name": "Blood ketone bodies",
+          "answer": "up",
+          "chain": [
+            "ins",
+            "lip",
+            "fa",
+            "kb"
+          ],
+          "why": "Fatty acids reach the liver faster than its citric acid cycle can burn the acetyl CoA, so it makes ketone bodies, which rise over the first week."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "none",
+          "chain": [
+            "ins",
+            "lip",
+            "fa",
+            "kb",
+            "buf",
+            "ph"
+          ],
+          "why": "This is ketosis, not ketoacidosis. A little insulin is still present and limits fat release, so ketone bodies stay at a few mmol/L and the body’s buffers take up their H+."
+        }
+      ]
+    },
+    {
+      "id": "met-fast-weeks-l4",
+      "title": "A long fast: day 3, then week 3",
+      "topic": "absorptive-postabsorptive",
+      "core": [
+        "energy",
+        "mass-balance"
+      ],
+      "level": 4,
+      "misconception": "the brain can use only glucose, so a fast always eats up muscle at the same rate",
+      "setup": "A man with normal fat stores takes part in a supervised fast with water only. Follow him from the first days to three weeks in.",
+      "stages": [
+        {
+          "id": "day3",
+          "label": "Day 3",
+          "prompt": "Day 3, compared with the morning after his last meal.",
+          "start": "Liver glycogen is gone",
+          "steps": {
+            "gng": "The liver makes all new glucose by gluconeogenesis",
+            "aa": "Amino acids come mainly from breaking down muscle protein",
+            "need": "The brain still needs about 120 g of glucose a day",
+            "lip": "Low insulin frees lipolysis",
+            "kb": "The liver begins making ketone bodies"
+          },
+          "variables": [
+            {
+              "id": "muscle-protein",
+              "name": "Muscle protein broken down per day",
+              "answer": "up",
+              "chain": [
+                "gng",
+                "aa"
+              ],
+              "why": "Glycerol and lactate cannot supply enough glucose, so most comes from amino acids. Cortisol drives the breakdown of about 75 g of muscle protein a day."
+            },
+            {
+              "id": "glucose-from-aa",
+              "name": "Glucose made from amino acids",
+              "answer": "up",
+              "chain": [
+                "gng",
+                "aa"
+              ],
+              "why": "With glycogen gone, gluconeogenesis must supply all the glucose, and amino acids are its largest source this early in the fast."
+            },
+            {
+              "id": "brain-glucose",
+              "name": "Glucose used by the brain",
+              "answer": "none",
+              "chain": [
+                "need"
+              ],
+              "why": "Ketone bodies are only starting to rise, and the brain burns little fatty acid, so it still depends on about 120 g of glucose a day."
+            },
+            {
+              "id": "ketones",
+              "name": "Blood ketone bodies",
+              "answer": "up",
+              "chain": [
+                "lip",
+                "kb"
+              ],
+              "why": "Low insulin lets fatty acids flood into the liver, which makes ketone bodies from the extra acetyl CoA."
+            }
+          ]
+        },
+        {
+          "id": "week3",
+          "label": "Week 3",
+          "prompt": "Three weeks in, compared with day 3.",
+          "start": "Ketone bodies have risen to several mmol/L",
+          "steps": {
+            "take": "The brain takes up ketone bodies in proportion to their level",
+            "share": "Ketone bodies supply about two thirds of the brain’s energy",
+            "less": "The brain needs only about 40 g of glucose a day",
+            "spare": "Less amino acid is needed to make glucose",
+            "prot": "Muscle protein breakdown falls to about 20 g a day",
+            "urea": "Less nitrogen has to be turned into urea",
+            "thy": "Active thyroid hormone and sympathetic activity fall",
+            "bmr": "Energy use at rest falls"
+          },
+          "variables": [
+            {
+              "id": "brain-ketones",
+              "name": "Ketone bodies burned by the brain",
+              "answer": "up",
+              "chain": [
+                "take",
+                "share"
+              ],
+              "why": "Ketone bodies cross into the brain and are taken up in proportion to their blood level, so as they climb the brain burns more of them."
+            },
+            {
+              "id": "brain-glucose",
+              "name": "Glucose used by the brain",
+              "answer": "down",
+              "chain": [
+                "take",
+                "share",
+                "less"
+              ],
+              "why": "Every bit of energy the brain gets from ketone bodies is energy it no longer needs from glucose, so its need falls from about 120 g to about 40 g a day."
+            },
+            {
+              "id": "muscle-protein",
+              "name": "Muscle protein broken down per day",
+              "answer": "down",
+              "chain": [
+                "take",
+                "share",
+                "less",
+                "spare",
+                "prot"
+              ],
+              "why": "With less glucose to make, less amino acid is needed, so the breakdown of muscle protein falls. This protein sparing is what lets a fast last about two months."
+            },
+            {
+              "id": "urea",
+              "name": "Urea made each day",
+              "answer": "down",
+              "chain": [
+                "take",
+                "share",
+                "less",
+                "spare",
+                "prot",
+                "urea"
+              ],
+              "why": "The nitrogen removed from amino acids leaves as urea. With fewer amino acids broken down, less urea is made."
+            },
+            {
+              "id": "resting-energy",
+              "name": "Energy used at rest",
+              "answer": "down",
+              "chain": [
+                "thy",
+                "bmr"
+              ],
+              "why": "Levels of active thyroid hormone and sympathetic activity fall during a long fast, so the body spends less energy at rest and its stores last longer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "met-hot-humid-exercise",
+      "title": "Training hard on a hot, humid day",
+      "topic": "energy-balance-thermoregulation",
+      "theme": "exercising on a hot humid day",
+      "core": [
+        "homeostasis",
+        "energy",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "more sweat always means more cooling",
+      "setup": "A soccer player trains hard for an hour at 34 °C in humid, still air and drinks nothing. Compare her late in the session with the first minutes.",
+      "start": "Working muscles release heat",
+      "steps": {
+        "humid": "Humid air slows evaporation",
+        "drip": "Much of the sweat drips off instead of evaporating",
+        "core": "Heat gain outruns heat loss; core temperature rises",
+        "sens": "Temperature-sensitive neurons in the hypothalamus and warm thermoreceptors in the skin fire more",
+        "poa": "The preoptic area drives heat-loss responses",
+        "chol": "Sympathetic cholinergic nerves act on skin vessels and sweat glands",
+        "dil": "Skin vessels widen",
+        "sw": "Sweat glands secrete more",
+        "loss": "Water and salt are lost in sweat",
+        "pv": "Plasma volume falls",
+        "pool": "Blood pools in the widened skin vessels",
+        "vr": "Less blood returns to the heart",
+        "sv": "Stroke volume falls",
+        "hr": "Heart rate rises to hold cardiac output",
+        "gut": "Gut and kidney vessels narrow, shifting blood toward the skin"
+      },
+      "variables": [
+        {
+          "id": "core-temp",
+          "name": "Core temperature",
+          "answer": "up",
+          "chain": [
+            "humid",
+            "drip",
+            "core"
+          ],
+          "why": "Near 34 °C the air is almost as warm as skin, so radiation and convection remove little heat and evaporation is the main route left. Humid air slows it, so heat made by the muscles builds up."
+        },
+        {
+          "id": "evap-share",
+          "name": "Share of the sweat that evaporates",
+          "answer": "down",
+          "chain": [
+            "humid",
+            "drip"
+          ],
+          "why": "Water evaporates more slowly into air that already holds a lot of vapor, so more sweat drips off. Dripping sweat removes almost no heat."
+        },
+        {
+          "id": "skin-flow",
+          "name": "Blood flow through the skin",
+          "answer": "up",
+          "chain": [
+            "humid",
+            "drip",
+            "core",
+            "sens",
+            "poa",
+            "chol",
+            "dil"
+          ],
+          "why": "In hairy skin, active dilation by sympathetic cholinergic nerves widens the vessels, bringing warm blood from the core to the surface."
+        },
+        {
+          "id": "sweat",
+          "name": "Sweat rate",
+          "answer": "up",
+          "chain": [
+            "humid",
+            "drip",
+            "core",
+            "sens",
+            "poa",
+            "chol",
+            "sw"
+          ],
+          "why": "Acetylcholine from sympathetic cholinergic fibers drives the eccrine sweat glands harder as core temperature climbs, up to 1 to 2 L an hour."
+        },
+        {
+          "id": "plasma",
+          "name": "Plasma volume",
+          "answer": "down",
+          "chain": [
+            "humid",
+            "drip",
+            "core",
+            "sens",
+            "poa",
+            "chol",
+            "sw",
+            "loss",
+            "pv"
+          ],
+          "why": "Sweat is made from the extracellular fluid, and she drinks nothing to replace it, so plasma volume shrinks."
+        },
+        {
+          "id": "sv",
+          "name": "Stroke volume",
+          "answer": "down",
+          "chain": [
+            "humid",
+            "drip",
+            "core",
+            "sens",
+            "poa",
+            "chol",
+            "dil",
+            "pool",
+            "vr",
+            "sv"
+          ],
+          "why": "A large share of the blood sits in the wide skin vessels, and plasma volume is falling, so less blood returns to fill the heart and each beat ejects less."
+        },
+        {
+          "id": "hr",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "humid",
+            "drip",
+            "core",
+            "sens",
+            "poa",
+            "chol",
+            "dil",
+            "pool",
+            "vr",
+            "sv",
+            "hr"
+          ],
+          "why": "Baroreceptor reflexes and the demands of exercise raise heart rate as stroke volume falls, to keep cardiac output up for both the muscles and the skin."
+        },
+        {
+          "id": "gut-kidney",
+          "name": "Blood flow to the gut and kidneys",
+          "answer": "down",
+          "chain": [
+            "humid",
+            "drip",
+            "core",
+            "sens",
+            "poa",
+            "gut"
+          ],
+          "why": "Heat stress and exercise narrow the vessels of the gut and kidneys, which frees blood for the skin and working muscles."
+        }
+      ]
+    },
+    {
+      "id": "met-cold-water",
+      "title": "Falling into a cold lake",
+      "topic": "energy-balance-thermoregulation",
+      "core": [
+        "homeostasis",
+        "energy"
+      ],
+      "level": 2,
+      "misconception": "narrowing the skin vessels stops heat loss",
+      "setup": "A kayaker capsizes into a 10 °C lake and clings to the boat. Compare the first ten minutes in the water with the moment before he fell in.",
+      "start": "Cold water surrounds the skin",
+      "steps": {
+        "cool": "The skin cools fast",
+        "therm": "Cold thermoreceptors in the skin fire more",
+        "poa": "The preoptic area drives heat-gain responses before the core has cooled",
+        "ne": "Sympathetic nerves release norepinephrine onto skin arterioles",
+        "con": "Skin arterioles narrow",
+        "flow": "Less warm blood reaches the skin",
+        "mn": "Somatic motor neurons drive shivering",
+        "shiv": "Muscles contract out of step; their energy becomes heat",
+        "bat": "Norepinephrine makes brown fat cells leak H+ in their mitochondria",
+        "bheat": "Brown fat releases heat",
+        "fast": "Water carries heat away about 25 times faster than air",
+        "loss": "Heat loss rises despite the narrowed vessels",
+        "nosw": "Nothing drives the sweat glands",
+        "sw": "Sweating stays at its resting level"
+      },
+      "variables": [
+        {
+          "id": "skin-flow",
+          "name": "Blood flow through the skin",
+          "answer": "down",
+          "chain": [
+            "cool",
+            "therm",
+            "poa",
+            "ne",
+            "con",
+            "flow"
+          ],
+          "why": "Norepinephrine narrows the skin arterioles, so less warm blood reaches the surface and the shell becomes insulation for the core."
+        },
+        {
+          "id": "muscle-heat",
+          "name": "Heat made by skeletal muscle",
+          "answer": "up",
+          "chain": [
+            "cool",
+            "therm",
+            "poa",
+            "mn",
+            "shiv"
+          ],
+          "why": "Shivering contractions do no outside work, so almost all their energy becomes heat, raising heat production several times over."
+        },
+        {
+          "id": "brown-fat",
+          "name": "Heat made by brown adipose tissue",
+          "answer": "up",
+          "chain": [
+            "cool",
+            "therm",
+            "poa",
+            "bat",
+            "bheat"
+          ],
+          "why": "Brown fat mitochondria let H+ leak back through a channel protein, so the electron transport chain runs flat out and the energy leaves as heat instead of ATP."
+        },
+        {
+          "id": "heat-loss",
+          "name": "Heat lost from the body",
+          "answer": "up",
+          "chain": [
+            "fast",
+            "loss"
+          ],
+          "why": "Water removes heat by conduction and convection far faster than air, so even with the skin vessels narrowed, he loses heat much faster than before."
+        },
+        {
+          "id": "sweat",
+          "name": "Sweating",
+          "answer": "none",
+          "chain": [
+            "nosw",
+            "sw"
+          ],
+          "why": "The control center is driving heat-gain responses, not heat-loss ones, so the sympathetic cholinergic drive to the sweat glands does not rise."
+        }
+      ]
+    },
+    {
+      "id": "met-weight-loss-l4",
+      "title": "A diet: the first week, then six months",
+      "topic": "energy-balance-thermoregulation",
+      "core": [
+        "energy",
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 4,
+      "misconception": "a steady 500 kcal daily deficit takes off weight at the same rate forever",
+      "setup": "A woman who spends about 2,200 kcal a day starts eating 1,700 kcal a day and keeps it up. Follow her body over the first week and then over months.",
+      "stages": [
+        {
+          "id": "week1",
+          "label": "The first week",
+          "prompt": "The end of the first week, compared with before the diet.",
+          "start": "Intake falls 500 kcal a day below spending",
+          "steps": {
+            "neg": "Energy balance turns negative",
+            "draw": "Stores are drawn on to cover the gap",
+            "gly": "Glycogen is used, and the water stored with it is lost",
+            "fat": "Stored fat is broken down",
+            "wt": "Weight falls faster than the fat loss alone"
+          },
+          "variables": [
+            {
+              "id": "glycogen",
+              "name": "Glycogen stores",
+              "answer": "down",
+              "chain": [
+                "neg",
+                "draw",
+                "gly"
+              ],
+              "why": "Part of each day’s gap is covered from glycogen in liver and muscle, which runs down in the first days of a deficit."
+            },
+            {
+              "id": "fat",
+              "name": "Body fat",
+              "answer": "down",
+              "chain": [
+                "neg",
+                "draw",
+                "fat"
+              ],
+              "why": "Intake is below spending, so lipolysis releases stored fat to cover the rest of the gap."
+            },
+            {
+              "id": "weight",
+              "name": "Body weight",
+              "answer": "down",
+              "chain": [
+                "neg",
+                "draw",
+                "gly",
+                "wt"
+              ],
+              "why": "Glycogen is stored with several times its weight of water, so the first week’s loss is larger than 3,500 kcal per pound would predict."
+            }
+          ]
+        },
+        {
+          "id": "months",
+          "label": "After six months",
+          "prompt": "After six months on the same diet, compared with the first weeks.",
+          "start": "She has lost fat and weight",
+          "steps": {
+            "lep": "Fat cells release less leptin",
+            "hun": "The hypothalamus drives hunger up",
+            "sp": "A smaller body spends less energy to maintain and move",
+            "gap": "The gap between intake and spending narrows",
+            "slow": "Weight loss slows"
+          },
+          "variables": [
+            {
+              "id": "leptin",
+              "name": "Blood leptin",
+              "answer": "down",
+              "chain": [
+                "lep"
+              ],
+              "why": "Fat cells release leptin in proportion to how much fat they hold, so leptin falls as fat is lost."
+            },
+            {
+              "id": "hunger",
+              "name": "Hunger",
+              "answer": "up",
+              "chain": [
+                "lep",
+                "hun"
+              ],
+              "why": "Falling leptin signals the hypothalamus that stores are shrinking, and the neurons that drive hunger win out."
+            },
+            {
+              "id": "spending",
+              "name": "Total energy spending per day",
+              "answer": "down",
+              "chain": [
+                "sp"
+              ],
+              "why": "A lighter body costs less to maintain and to move, so her total metabolic rate falls."
+            },
+            {
+              "id": "rate",
+              "name": "Rate of weight loss",
+              "answer": "down",
+              "chain": [
+                "sp",
+                "gap",
+                "slow"
+              ],
+              "why": "She still eats 1,700 kcal, but now spends less, so the daily deficit shrinks and loss slows toward a new, lower stable weight. That is why 3,500 kcal per pound overestimates loss over months."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "met-bile-blocked",
+      "title": "A blocked bile duct and the fat-soluble vitamins",
+      "topic": "nutrition",
+      "core": [
+        "mass-balance",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "all vitamins are absorbed the same way",
+      "setup": "A gallstone blocks a woman’s common bile duct, and she is not treated for several weeks. Compare her then with before the blockage.",
+      "start": "No bile reaches the duodenum",
+      "steps": {
+        "mic": "Few micelles form",
+        "fat": "Less fat is absorbed",
+        "stool": "Fat stays in the stool",
+        "fsv": "Fat-soluble vitamins, dissolved in the fat, are poorly absorbed",
+        "k": "Vitamin K stores, which last only days to weeks, run down",
+        "fac": "The liver cannot finish clotting factors II, VII, IX and X",
+        "clot": "Blood takes longer to clot",
+        "wsv": "Water-soluble vitamins cross by carriers without bile",
+        "c": "Vitamin C is absorbed normally"
+      },
+      "variables": [
+        {
+          "id": "fat-absorbed",
+          "name": "Fat absorbed from food",
+          "answer": "down",
+          "chain": [
+            "mic",
+            "fat"
+          ],
+          "why": "Bile salts form the micelles that carry the products of fat digestion to the absorptive cells. Without them, much of the fat is not absorbed."
+        },
+        {
+          "id": "stool-fat",
+          "name": "Fat in the stool",
+          "answer": "up",
+          "chain": [
+            "mic",
+            "fat",
+            "stool"
+          ],
+          "why": "Fat that is not absorbed passes on to the colon and leaves in the stool, which becomes pale, greasy and bulky."
+        },
+        {
+          "id": "vit-k",
+          "name": "Vitamin K absorbed",
+          "answer": "down",
+          "chain": [
+            "mic",
+            "fsv"
+          ],
+          "why": "Vitamins A, D, E and K dissolve in fat and are absorbed with it in micelles, so they are lost along with the fat."
+        },
+        {
+          "id": "clotting",
+          "name": "Time for blood to clot",
+          "answer": "up",
+          "chain": [
+            "mic",
+            "fsv",
+            "k",
+            "fac",
+            "clot"
+          ],
+          "why": "Vitamin K stores last only days to weeks. Without it, an enzyme in the liver cannot add the carboxyl groups that let factors II, VII, IX and X bind calcium, so clotting slows."
+        },
+        {
+          "id": "vit-c",
+          "name": "Vitamin C absorbed",
+          "answer": "none",
+          "chain": [
+            "wsv",
+            "c"
+          ],
+          "why": "Vitamin C is water-soluble. It crosses the intestinal lining by carriers straight into the blood and does not need bile."
+        }
+      ]
+    },
+    {
+      "id": "met-scurvy",
+      "title": "Three months without vitamin C",
+      "topic": "nutrition",
+      "core": [
+        "structure-function",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "vitamins are a source of energy",
+      "setup": "A man living alone on tea, toast and canned food has eaten no fruit or vegetables, and no vitamin C, for three months. Compare him now with before.",
+      "start": "The small vitamin C store runs out",
+      "steps": {
+        "fe": "The iron in the collagen-strengthening enzymes is no longer kept in its active form",
+        "enz": "The enzymes stop adding hydroxyl groups to new collagen",
+        "weak": "New collagen is weak and is broken down",
+        "ves": "Small vessel walls weaken",
+        "brui": "Small vessels break: bruises and bleeding gums",
+        "heal": "Wounds heal poorly and old scars reopen",
+        "iron": "Plant iron is not kept in its easily absorbed form",
+        "abs": "Less iron is absorbed from plant foods",
+        "noen": "Vitamin C supplies no energy",
+        "kcal": "Energy intake unchanged"
+      },
+      "variables": [
+        {
+          "id": "enzymes",
+          "name": "Activity of the enzymes that strengthen new collagen",
+          "answer": "down",
+          "chain": [
+            "fe",
+            "enz"
+          ],
+          "why": "These enzymes hold an iron atom that must stay in its reduced form, and vitamin C keeps it that way. Without it, the enzymes stop working."
+        },
+        {
+          "id": "collagen",
+          "name": "Strength of newly made collagen",
+          "answer": "down",
+          "chain": [
+            "fe",
+            "enz",
+            "weak"
+          ],
+          "why": "Without its added hydroxyl groups, new collagen cannot form stable triple helices or cross-link, so it is weak and is broken down."
+        },
+        {
+          "id": "bruising",
+          "name": "Bruising and bleeding gums",
+          "answer": "up",
+          "chain": [
+            "fe",
+            "enz",
+            "weak",
+            "ves",
+            "brui"
+          ],
+          "why": "Collagen is always being replaced, so the walls of small vessels weaken as old collagen is replaced by weak collagen, and they break easily."
+        },
+        {
+          "id": "healing",
+          "name": "Rate of wound healing",
+          "answer": "down",
+          "chain": [
+            "fe",
+            "enz",
+            "weak",
+            "heal"
+          ],
+          "why": "Healing lays down new collagen, which is now too weak to hold, so new wounds do not heal and old scars can reopen."
+        },
+        {
+          "id": "iron",
+          "name": "Iron absorbed from plant foods",
+          "answer": "down",
+          "chain": [
+            "iron",
+            "abs"
+          ],
+          "why": "Vitamin C eaten with a meal keeps plant iron in the form the intestine takes up best, so without it less plant iron is absorbed."
+        },
+        {
+          "id": "energy",
+          "name": "Energy he gets from his food",
+          "answer": "none",
+          "chain": [
+            "noen",
+            "kcal"
+          ],
+          "why": "Vitamins are not fuel: vitamin C adds no kilocalories, so losing it does not change the energy his food supplies."
+        }
+      ]
     }
   ]
 }

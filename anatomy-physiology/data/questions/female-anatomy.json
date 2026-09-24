@@ -1,0 +1,537 @@
+[
+ {
+  "id": "anp-female-anatomy-1",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "figure": "os-27-9",
+  "pin": "fimbriae",
+  "q": "Name the pinned structures.",
+  "options": [
+   "Fimbriae",
+   "Ovarian ligament",
+   "Broad ligament",
+   "Ampulla"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The fimbriae are the finger-like fringes at the open end of each uterine tube. They drape over the ovary and sweep a released oocyte into the tube.",
+   "options": [
+    "Correct. The fringed projections at the end of the tube are the fimbriae.",
+    "The ovarian ligament is a cord running from the ovary to the side of the uterus, not a fringe at the end of the tube.",
+    "The broad ligament is a wide sheet of peritoneum draped over the uterus, tubes and ovaries, not a set of finger-like projections.",
+    "The ampulla is the wide middle part of the tube, farther in from the fringed opening."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-2",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "figure": "os-27-9",
+  "pin": "broad-ligament",
+  "q": "Name the pinned structure.",
+  "options": [
+   "Suspensory ligament of the ovary",
+   "Perimetrium",
+   "Broad ligament",
+   "Round ligament"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The broad ligament is a wide double fold of peritoneum draped over the uterus, uterine tubes and ovaries, anchoring them loosely to the pelvic side walls.",
+   "options": [
+    "The suspensory ligament of the ovary is a narrow fold from the ovary to the pelvic wall that carries the ovarian vessels, not the wide sheet across the uterus.",
+    "The perimetrium is the serous layer covering the uterus itself. The broad ligament is the fold that continues out from it to the pelvic walls.",
+    "Correct. The wide sheet of peritoneum is the broad ligament.",
+    "The round ligaments are cords that run forward from the uterus to the groin."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-3",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "figure": "os-27-9",
+  "pin": "cervix",
+  "q": "Name the pinned structure.",
+  "options": [
+   "Fundus",
+   "Cervix",
+   "Body of the uterus",
+   "Isthmus of the uterine tube"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The cervix is the narrow lower end of the uterus that projects into the top of the vagina, with a canal running through it.",
+   "options": [
+    "The fundus is the rounded top of the uterus, above where the tubes enter.",
+    "Correct. The narrow neck at the bottom of the uterus is the cervix.",
+    "The body is the main central part of the uterus, above the cervix.",
+    "The isthmus is the narrow part of the uterine tube next to the uterus, not the lower end of the uterus."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-4",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which layer of the uterine wall is shed at menstruation?",
+  "options": [
+   "The perimetrium",
+   "The myometrium",
+   "The basal layer of the endometrium",
+   "The functional layer of the endometrium"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "The functional layer is the thick inner part of the endometrium facing the cavity. It breaks down and is shed at menstruation, then is rebuilt from the basal layer.",
+   "options": [
+    "The perimetrium is the outer serous covering and is never shed.",
+    "The myometrium is the smooth muscle layer. It contracts during a period but is not shed.",
+    "The basal layer stays in place. It is the source of the cells that regrow the functional layer.",
+    "Correct. Only the functional layer is shed."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-5",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "misconception": "the whole uterine lining is shed each month",
+  "q": "A patient has had repeated scraping of the uterine cavity, and scarring has destroyed the basal layer of her endometrium in most places. What would you predict about her periods?",
+  "options": [
+   "They become very light or stop, because the lining cannot regrow",
+   "They become heavier, because the myometrium is exposed",
+   "They are unchanged, because only the functional layer is shed",
+   "They stop because her ovaries no longer make estrogen"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The basal layer supplies the cells that rebuild the functional layer each month. Without it, little functional layer grows, so there is little to shed and periods become scant or stop, even though her hormones are normal.",
+   "options": [
+    "Correct. No basal layer means no regrowth, so little or nothing is shed.",
+    "Exposed, scarred muscle does not build a lining to shed, so flow falls rather than rises.",
+    "Only the functional layer is shed, but it has to be regrown from the basal layer first. With the basal layer gone, there is nothing to rebuild it.",
+    "Scraping the uterus does not affect the ovaries; her hormone cycle continues."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-6",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "In which part of the uterine tube do sperm usually meet the oocyte?",
+  "options": [
+   "The isthmus",
+   "The ampulla",
+   "The part inside the uterine wall",
+   "The fimbriae"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The ampulla is the long, wide middle part of the tube. It is where sperm usually reach the oocyte.",
+   "options": [
+    "The isthmus is the narrow part near the uterus; the oocyte usually passes it later.",
+    "Correct. The ampulla is the usual meeting place.",
+    "The part within the uterine wall is the last, shortest segment, which the oocyte reaches only days later.",
+    "The fimbriae catch the oocyte but are outside the tube proper."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-7",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Ms. Reyes has an infection of her cervix that spreads upward. Within weeks she develops inflammation of the peritoneum in her pelvis. Which feature of the anatomy allows the spread?",
+  "options": [
+   "The uterine tubes open into the peritoneal cavity",
+   "The vagina has no glands in its wall",
+   "The urethra opens into the vestibule",
+   "The broad ligament carries blood vessels to the ovaries"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The reproductive tract is a continuous passage: vagina, cervical canal, uterine cavity, uterine tube, and then the tube's open end into the peritoneal cavity. Bacteria can climb that path and reach the peritoneum.",
+   "options": [
+    "Correct. The open ends of the tubes connect the tract to the peritoneal cavity.",
+    "The lack of glands explains where lubrication comes from, not how infection reaches the pelvis.",
+    "The urethra is a separate opening; it explains bladder infections, not pelvic ones.",
+    "Blood vessels in the ligament are not the route; the infection travels along the open lumen of the tract."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-8",
+  "type": "multi",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Select every structure that is part of the vulva.",
+  "options": [
+   "Labia minora",
+   "Cervix",
+   "Clitoris",
+   "Mons pubis",
+   "Greater vestibular glands",
+   "Fimbriae"
+  ],
+  "correct": [
+   0,
+   2,
+   3,
+   4
+  ],
+  "why": {
+   "correct": "The vulva is the external genitals: the mons pubis, labia majora and minora, clitoris, vestibule and the greater vestibular glands that open into it. The cervix and fimbriae are internal.",
+   "options": [
+    "Correct. The labia minora enclose the vestibule.",
+    "The cervix is the lower end of the uterus, inside the body at the top of the vagina.",
+    "Correct. Only its glans is visible, but the clitoris is part of the vulva.",
+    "Correct. The fat pad over the pubic bones is part of the vulva.",
+    "Correct. These glands sit beside the vaginal opening and release mucus into the vestibule.",
+    "The fimbriae are at the ovary end of the uterine tube, deep in the pelvis."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-9",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "What tissue makes up most of the thickness of the uterine wall?",
+  "options": [
+   "Stratified squamous epithelium",
+   "Dense connective tissue",
+   "Smooth muscle",
+   "Adipose tissue"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The myometrium, a thick layer of smooth muscle, makes up most of the wall. Its contractions cause menstrual cramps and push the baby out in childbirth.",
+   "options": [
+    "Stratified squamous epithelium lines the vagina, not the uterus. The uterine lining is simple columnar.",
+    "Dense connective tissue ties the cervix to the pelvic walls but is not the bulk of the wall.",
+    "Correct. The myometrium is smooth muscle.",
+    "Adipose tissue fills the breast and the labia majora, not the uterine wall."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-10",
+  "type": "order",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Put the layers of the uterine wall in order, from the outer surface to the cavity.",
+  "options": [
+   "Perimetrium",
+   "Myometrium",
+   "Basal layer of the endometrium",
+   "Functional layer of the endometrium"
+  ],
+  "why": {
+   "correct": "From outside in: the serous perimetrium, the muscular myometrium, then the endometrium, whose basal layer lies against the muscle and whose functional layer faces the cavity."
+  }
+ },
+ {
+  "id": "anp-female-anatomy-11",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Why is the vagina normally acidic?",
+  "options": [
+   "Glands in its wall secrete acid",
+   "The cervix secretes hydrochloric acid",
+   "Resident bacteria turn glycogen in the lining cells into lactic acid",
+   "Urine flows back into it and acidifies it"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Estrogen makes the vaginal epithelial cells store glycogen. Lactobacilli living in the vagina break it down to lactic acid, which keeps the pH at about 3.8 to 4.5.",
+   "options": [
+    "The vaginal wall has no glands.",
+    "The cervix secretes mucus, not hydrochloric acid, which is made in the stomach.",
+    "Correct. Glycogen from the epithelium is fermented to lactic acid by lactobacilli.",
+    "The urethra opens separately in front of the vagina; urine does not set vaginal pH."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-12",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A 54-year-old woman, several years past her last period, has low estrogen. Her vagina has become dry and prone to infection. Which change best explains the higher infection risk?",
+  "options": [
+   "Its lining stores less glycogen, so less lactic acid is made",
+   "Its glands have stopped making mucus",
+   "Its smooth muscle layer has thickened",
+   "Its lining has become keratinized skin"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Estrogen drives glycogen storage in the vaginal epithelium. With less glycogen, lactobacilli make less lactic acid, the pH rises, and other microbes grow more easily.",
+   "options": [
+    "Correct. Less glycogen means less lactic acid and a less acidic vagina.",
+    "The vaginal wall has no glands to stop working. Lubrication normally seeps through the wall from blood vessels.",
+    "Low estrogen thins the wall rather than thickening its muscle.",
+    "The lining thins but stays a nonkeratinized mucosa; it does not turn into keratinized skin."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-13",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "figure": "os-27-17",
+  "pin": "lactiferous-ducts",
+  "q": "Name the pinned structures.",
+  "options": [
+   "Suspensory ligaments",
+   "Lactiferous ducts",
+   "Areolar glands",
+   "Lobules"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Lactiferous ducts carry milk from the lobes of the mammary gland to openings at the nipple.",
+   "options": [
+    "Suspensory ligaments are bands of connective tissue from the skin to the chest wall; they do not carry milk.",
+    "Correct. These tubes running to the nipple are lactiferous ducts.",
+    "Areolar glands are small glands on the surface of the areola, not the ducts inside the breast.",
+    "Lobules are the clusters of alveoli at the ends of the ducts, not the ducts themselves."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-14",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "figure": "os-27-17",
+  "pin": "alveoli",
+  "q": "Name the pinned structures, where milk is made.",
+  "options": [
+   "Lactiferous sinuses",
+   "Areola",
+   "Alveoli",
+   "Fat tissue"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The alveoli are small sacs lined by milk-making cells and wrapped in contractile myoepithelial cells. Clusters of them form lobules.",
+   "options": [
+    "The lactiferous sinuses are the widened parts of the ducts near the nipple, not where milk is made.",
+    "The areola is the pigmented skin around the nipple.",
+    "Correct. Milk is made in the alveoli.",
+    "Fat fills the spaces between the lobes and sets breast size, but it makes no milk."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-15",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which structure ties the ovary to the pelvic wall and carries the ovarian artery and vein?",
+  "options": [
+   "The ovarian ligament",
+   "The round ligament",
+   "The suspensory ligament of the ovary",
+   "The uterine tube"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The suspensory ligament of the ovary runs from the ovary to the pelvic side wall, and the ovarian vessels and nerves travel inside it.",
+   "options": [
+    "The ovarian ligament ties the ovary to the uterus, not to the pelvic wall.",
+    "The round ligament runs from the uterus forward to the groin.",
+    "Correct. The suspensory ligament carries the ovary's blood supply.",
+    "The uterine tube is not attached to the ovary and carries no ovarian vessels."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-16",
+  "type": "single",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which male structure develops from the same early tissue as the labia majora?",
+  "options": [
+   "Glans penis",
+   "Scrotum",
+   "Bulbourethral glands",
+   "Corpus spongiosum"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The labia majora and the scrotum form from the same pair of skin swellings in the embryo.",
+   "options": [
+    "The glans penis matches the glans of the clitoris.",
+    "Correct. The scrotum is the male counterpart of the labia majora.",
+    "The bulbourethral glands match the greater vestibular glands.",
+    "The corpus spongiosum matches the vestibular bulbs."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-17",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A woman notices a tender swelling at the lower edge of the vaginal opening, on one side. Which structure is most likely blocked?",
+  "options": [
+   "The duct of a greater vestibular gland",
+   "The urethra",
+   "The cervical canal",
+   "A lactiferous duct"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The greater vestibular (Bartholin's) glands lie beside the lower part of the vaginal opening. A blocked duct fills with mucus and can form a cyst or abscess there.",
+   "options": [
+    "Correct. That position matches a greater vestibular gland.",
+    "The urethra opens in the midline in front of the vaginal opening, not at its lower side edge.",
+    "The cervical canal is at the top of the vagina, not at its opening.",
+    "Lactiferous ducts are in the breast."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-18",
+  "type": "error",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A student traced an oocyte from the ovary to the uterus. One step is wrong. Which one?",
+  "options": [
+   "The oocyte leaves the surface of the ovary into the pelvic cavity",
+   "The fimbriae sweep it into the open end of the tube",
+   "It passes directly from the ovary into the tube through a sealed duct",
+   "Cilia and smooth muscle move it through the ampulla and isthmus",
+   "It enters the uterine cavity a few days later"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "There is no duct joining the ovary to the uterine tube. The oocyte enters the pelvic cavity and is caught by the fimbriae.",
+   "options": [
+    "This step is right. The oocyte is released from the ovary's surface.",
+    "This step is right. The fimbriae and their cilia draw it in.",
+    "This is the error. The ovary and tube are not connected.",
+    "This step is right. Cilia and muscle waves move it toward the uterus.",
+    "This step is right. The trip takes about three to four days."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-19",
+  "type": "single",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "What best describes the hymen?",
+  "options": [
+   "A thin fold of mucosa at the vaginal opening whose shape varies widely",
+   "A ring of smooth muscle that closes the vagina",
+   "A layer of the cervix that seals the uterus",
+   "A gland that lubricates the vestibule"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The hymen is a thin fold of mucosa at the vaginal opening. Its shape varies from person to person and with age and estrogen, and its appearance cannot show sexual history.",
+   "options": [
+    "Correct. It is a variable mucosal fold.",
+    "It contains no sphincter muscle and does not close the vagina.",
+    "The cervix has a mucus-filled canal, not a sealing layer called the hymen.",
+    "Lubrication comes from the vaginal wall, the cervix and the greater vestibular glands, not the hymen."
+   ]
+  }
+ },
+ {
+  "id": "anp-female-anatomy-20",
+  "type": "missing",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Complete the path of milk: alveoli → smaller ducts → ____ → openings at the nipple.",
+  "options": [
+   "Lactiferous ducts",
+   "Areolar glands",
+   "Suspensory ligaments",
+   "Uterine tubes"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Milk made in the alveoli drains through branching ducts into the lactiferous ducts, which open at the nipple.",
+   "options": [
+    "Correct. The lactiferous ducts carry milk to the nipple.",
+    "Areolar glands are small separate glands on the areola that release an oily secretion, not milk channels.",
+    "Suspensory ligaments are supporting bands of connective tissue, not ducts.",
+    "Uterine tubes carry oocytes, not milk."
+   ]
+  }
+ }
+]

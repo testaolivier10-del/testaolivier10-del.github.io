@@ -1,0 +1,30 @@
+{
+  "os-27-11": {
+    "file": "figures/openstax/os-27-11.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "27.11",
+      "section": "27.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/cb3a51b134cfa417cf88f924fed1d8731ef8754f",
+      "page": "27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/cb3a51b134cfa417cf88f924fed1d8731ef8754f",
+    "alt": "A flowchart of circles, each marked 2n or n. At the top, an oogonium (2n) divides by mitosis, one daughter looping back to renew it and the other becoming a primary oocyte (2n), beside a signal light and the note that meiosis I begins, then that meiosis arrests in prophase I. A line separates before birth from after puberty. Below it, meiosis I resumes and the cell splits unequally into a large secondary oocyte (n) and a small first polar body (n), which may split into two second polar bodies. A boxed panel shows the secondary oocyte arrested at metaphase II before sperm penetration and, after a sperm enters, completing meiosis to give a large mature ovum (n) and a small polar body.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.11",
+    "labels": [],
+    "w": 690,
+    "h": 578,
+    "ext": "jpg"
+  },
+  "follicle-stages": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 720,
+    "h": 470,
+    "alt": "Eight numbered drawings of one follicle's life, left to right in two rows. 1: a primordial follicle, a small oocyte in a single layer of flat cells. 2: a primary follicle, a larger oocyte in one layer of cube-shaped granulosa cells. 3: a secondary follicle, with several layers of granulosa cells and a new outer layer of theca cells. 4: a tertiary follicle, larger, with a fluid-filled space, the antrum, forming among the granulosa cells. 5: a vesicular (Graafian) follicle, about 2 cm, with a large antrum and the oocyte on a mound of granulosa cells at one side. 6: ovulation, the follicle wall open and the oocyte leaving with a ring of granulosa cells. 7: the corpus luteum, a folded yellow body that lasts about two weeks. 8: the corpus albicans, a small pale scar.",
+    "labels": []
+  }
+}

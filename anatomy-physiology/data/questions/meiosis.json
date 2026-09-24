@@ -1,0 +1,545 @@
+[
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A cell taken from a man's testis holds 23 chromosomes, and each one is made of two sister chromatids. Where is this cell in meiosis?",
+    "options": [
+      "In G1, before its DNA is copied",
+      "Finished with both divisions of meiosis",
+      "Between meiosis I and meiosis II",
+      "In metaphase of an ordinary mitosis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Meiosis I separates the homologs, so each daughter cell gets 23 chromosomes, one from each pair. The sister chromatids are still joined until anaphase II. A haploid cell with double chromosomes has finished meiosis I but not meiosis II.",
+      "options": [
+        "A cell in G1 before meiosis is diploid, with 46 single chromosomes, not 23 double ones.",
+        "After meiosis II each cell has 23 single chromosomes; the sister chromatids have already separated.",
+        "Correct. 23 double chromosomes is the state after meiosis I and before the sisters separate in meiosis II.",
+        "A cell in metaphase of mitosis has all 46 chromosomes, each with two chromatids."
+      ]
+    },
+    "id": "anp-meiosis-1"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the chromosome number doubles in every anaphase",
+    "q": "How many chromosomes does a human cell hold during anaphase I of meiosis?",
+    "options": [
+      "23",
+      "46",
+      "92",
+      "69"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In anaphase I, the homologs move apart but each is still two sister chromatids joined at a centromere. No chromatids split, so the count stays at 46 chromosomes (92 chromatids), 23 moving to each end.",
+      "options": [
+        "23 is the number that ends up at each end, or in each cell after telophase I, not the total in the cell during anaphase I.",
+        "Correct. 46 double chromosomes: the homologs separate but the sisters do not.",
+        "92 is the count in anaphase of mitosis, when sister chromatids split and each becomes a chromosome. In anaphase I they stay joined.",
+        "69 would be one and a half sets, which never occurs in a normal division."
+      ]
+    },
+    "id": "anp-meiosis-2"
+  },
+  {
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every event that happens in meiosis I but never in mitosis.",
+    "options": [
+      "Homologous chromosomes pair up along their length",
+      "Crossing over between homologs",
+      "Pairs of homologs line up across the middle of the cell",
+      "Sister chromatids separate to opposite ends",
+      "A spindle of microtubules forms",
+      "DNA is copied in the S phase before it"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Pairing, crossing over and lining up in pairs are unique to meiosis I. Sister chromatids separate in mitosis and meiosis II, both divisions use a spindle, and both are preceded by one round of DNA copying.",
+      "options": [
+        "Correct. Homologs pair only in prophase I of meiosis.",
+        "Correct. Crossing over needs paired homologs, so it happens only in prophase I.",
+        "Correct. In metaphase I the chromosomes line up as pairs; in mitosis they line up singly.",
+        "Sister chromatids separate in mitosis and in meiosis II, not in meiosis I.",
+        "Every division, mitosis and both divisions of meiosis, uses a spindle.",
+        "DNA is copied once before mitosis and once before meiosis, so this does not tell them apart."
+      ]
+    },
+    "id": "anp-meiosis-3"
+  },
+  {
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the events of meiosis in order, starting after the DNA has been copied.",
+    "options": [
+      "Homologs pair up and cross over",
+      "Pairs of homologs line up across the middle of the cell",
+      "Homologs are pulled to opposite ends",
+      "Two haploid cells form, each chromosome still double",
+      "Sister chromatids separate",
+      "Four haploid cells form, each chromosome single"
+    ],
+    "why": {
+      "correct": "Prophase I pairs the homologs and lets them cross over; metaphase I lines them up as pairs; anaphase I separates the homologs; telophase I gives two haploid cells with double chromosomes. Meiosis II then separates the sister chromatids, giving four haploid cells with single chromosomes."
+    },
+    "id": "anp-meiosis-4"
+  },
+  {
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: prophase I (homologs pair) → metaphase I (pairs line up) → ____ → telophase I (two haploid cells).",
+    "options": [
+      "Anaphase II: sister chromatids separate",
+      "Metaphase II: single chromosomes line up across the middle",
+      "S phase: the DNA is copied",
+      "Anaphase I: homologs move to opposite ends"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Anaphase I comes between metaphase I and telophase I. In it, the homologs of each pair are pulled to opposite ends while each keeps its two sister chromatids.",
+      "options": [
+        "Anaphase II belongs to the second division, after telophase I.",
+        "Metaphase II also belongs to the second division, after telophase I.",
+        "DNA is copied once, before meiosis starts, not between metaphase I and telophase I.",
+        "Correct. Anaphase I separates the homologs."
+      ]
+    },
+    "id": "anp-meiosis-5"
+  },
+  {
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "meiosis I separates sister chromatids",
+    "q": "A student listed the steps of meiosis I. One step is wrong. Which one?",
+    "options": [
+      "Each chromosome pairs with its homolog in prophase I",
+      "Crossing over swaps pieces between homologs",
+      "The pairs line up across the middle of the cell in metaphase I",
+      "Sister chromatids are pulled apart in anaphase I",
+      "Two cells form, each with 23 chromosomes"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Anaphase I separates the homologs, not the sister chromatids. The sisters stay joined at the centromere until anaphase II. That is why each cell after meiosis I has 23 chromosomes that are still double.",
+      "options": [
+        "This step is right. Pairing of homologs is the hallmark of prophase I.",
+        "This step is right. Crossing over happens while the homologs are paired.",
+        "This step is right. In metaphase I, chromosomes line up as pairs.",
+        "This is the error. Anaphase I separates homologs; sister chromatids separate in anaphase II.",
+        "This step is right. Each cell gets one member of each of the 23 pairs."
+      ]
+    },
+    "id": "anp-meiosis-6"
+  },
+  {
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Compare one of the two cells made by meiosis I with the cell that entered meiosis I (after its DNA was copied). Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "Number of chromosomes in the cell",
+        "answer": "down",
+        "why": "Meiosis I sends one homolog of each pair to each cell, so the count falls from 46 to 23."
+      },
+      {
+        "name": "Number of chromatids in the cell",
+        "answer": "down",
+        "why": "Each of the 23 chromosomes still has two chromatids, so the cell has 46 chromatids instead of 92."
+      },
+      {
+        "name": "Chromatids per chromosome",
+        "answer": "none",
+        "why": "Sister chromatids stay joined through meiosis I, so each chromosome is still made of two chromatids."
+      },
+      {
+        "name": "Amount of DNA in the cell",
+        "answer": "down",
+        "why": "Half the chromatids went to the other cell, so each cell has half the DNA: back to the amount of a G1 body cell."
+      }
+    ],
+    "why": {
+      "correct": "Meiosis I is the reduction division. It halves the number of chromosomes and chromatids and the DNA in each cell, but each chromosome stays double until meiosis II."
+    },
+    "id": "anp-meiosis-7"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A boy has the sex chromosomes XXY. Testing shows that he received one X from his mother and both an X and a Y from his father. In which division did the error happen?",
+    "options": [
+      "In the father's meiosis I",
+      "In the father's meiosis II",
+      "In the mother's meiosis I",
+      "In the boy's own early cell divisions"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In a man's meiosis, the X and the Y behave as a homologous pair and separate in anaphase I. A sperm carrying both an X and a Y means that pair failed to separate: nondisjunction in meiosis I.",
+      "options": [
+        "Correct. The X and Y are homologs, and homologs separate in meiosis I.",
+        "In meiosis II, sister chromatids separate. A failure there would give a sperm with two X chromosomes or two Y chromosomes, not one of each.",
+        "The mother gave only her normal single X. The extra chromosome came from the father.",
+        "An error after the egg and sperm joined could not supply a Y from the father alongside his X, and it would usually give a mix of cell lines rather than XXY in every cell."
+      ]
+    },
+    "id": "anp-meiosis-8"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An oocyte carries two copies of chromosome 21 that are identical along their whole length, both copies of the same one of the mother's pair. In which division did nondisjunction most likely happen?",
+    "options": [
+      "Meiosis I",
+      "Meiosis II",
+      "Mitosis of the stem cells before meiosis",
+      "DNA copying in S phase"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Two identical copies are sister chromatids that failed to separate. Sisters separate in anaphase II, so the error was in meiosis II. If the homologs had failed to separate in meiosis I, the oocyte would carry one copy from each of the mother's two chromosome 21s, which differ.",
+      "options": [
+        "Nondisjunction in meiosis I sends both homologs to one cell. Homologs differ in their alleles, so the two copies would not be identical.",
+        "Correct. Identical copies point to sister chromatids that stayed together in meiosis II.",
+        "An error in an earlier mitosis would give a stem cell with an extra chromosome whose copies then pair in meiosis, not simply two identical copies in the oocyte.",
+        "Copying DNA makes the sister chromatids in every cell. Copying itself does not put an extra chromosome into a gamete."
+      ]
+    },
+    "id": "anp-meiosis-9"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A plant has 2n = 12. Ignoring crossing over, how many genetically different gametes can independent assortment produce?",
+    "options": [
+      "64",
+      "12",
+      "24",
+      "4,096"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "2n = 12 means 6 pairs. Each pair can send either homolog to a gamete, and the pairs assort independently: 2⁶ = 64.",
+      "options": [
+        "Correct. 6 pairs, 2 choices each: 2 × 2 × 2 × 2 × 2 × 2 = 64.",
+        "12 is the diploid number, not the number of combinations.",
+        "24 is 2 × 12. The choices for each pair multiply; they are not added or doubled once.",
+        "4,096 is 2¹², which treats all 12 chromosomes as independent choices. Only the 6 pairs are; one member of each pair goes to each gamete."
+      ]
+    },
+    "id": "anp-meiosis-10"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the mother determines the sex of the baby",
+    "q": "A couple asks which of them determines whether their baby will be a boy or a girl. What is the accurate answer?",
+    "options": [
+      "The mother, because the egg carries the X or the Y",
+      "Both equally, because each gives one sex chromosome",
+      "The father, because his sperm carry an X or a Y",
+      "Neither: it depends on hormone levels in pregnancy"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Every egg carries an X, because a woman's cells have two X chromosomes and no Y. A man's X and Y separate in meiosis I, so half his sperm carry an X and half a Y. The sperm that joins the egg decides: X gives XX, Y gives XY.",
+      "options": [
+        "An egg never carries a Y chromosome; a woman has none to give.",
+        "Each parent does give one sex chromosome, but the mother's is always an X, so only the father's contribution varies.",
+        "Correct. The sperm carries either an X or a Y; the egg always carries an X.",
+        "The chromosomes present at the start, and SRY on the Y, set whether the gonad becomes a testis. Hormones follow from that."
+      ]
+    },
+    "id": "anp-meiosis-11"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Tests on a man being checked for infertility show that his cells are XX, with no Y chromosome, yet he has testes. Further testing finds one small piece of Y DNA on one of his X chromosomes. What does that piece most likely contain?",
+    "options": [
+      "The gene for testosterone",
+      "An extra copy of an autosome",
+      "The genes for sperm tails",
+      "The SRY gene"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "SRY is the switch that makes the early gonad become a testis. If crossing over in the father's meiosis moved SRY onto an X, an XX child develops testes and a male body. Other Y genes needed for making sperm are missing, which explains the infertility.",
+      "options": [
+        "Testosterone is a steroid made from cholesterol by enzymes, not a gene product copied from the Y. The testis makes it once SRY has made the gonad a testis.",
+        "An autosome is not Y DNA, and an extra autosome would not produce testes.",
+        "Genes for making sperm would not create testes; the gonad must first become a testis, which is SRY's job.",
+        "Correct. SRY alone is enough to turn the early gonad into a testis."
+      ]
+    },
+    "id": "anp-meiosis-12"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "homologous chromosomes and sister chromatids are the same thing",
+    "q": "What is the difference between homologous chromosomes and sister chromatids?",
+    "options": [
+      "Homologs come one from each parent; sisters are copies from DNA replication",
+      "Homologs are identical copies; sisters come one from each parent",
+      "Homologs carry different genes; sister chromatids carry the same genes",
+      "Homologs are found only in gametes; sisters are found only in body cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Homologous chromosomes are the two members of a pair, one inherited from each parent: same genes in the same order, but possibly different alleles. Sister chromatids are the two identical copies of one chromosome made in S phase and joined at the centromere.",
+      "options": [
+        "Correct. Homologs are a matched pair from two parents; sisters are copies of one chromosome.",
+        "This reverses the two. Sister chromatids are the identical copies.",
+        "Homologs carry the same genes, often in different versions (alleles).",
+        "Body cells hold homologous pairs, and every cell that copies its DNA has sister chromatids. Gametes have no homologous pairs."
+      ]
+    },
+    "id": "anp-meiosis-13"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-3-31",
+    "pin": "sister-chromatids",
+    "q": "Name the pinned structures.",
+    "options": [
+      "Sister chromatids",
+      "Homologous chromosomes",
+      "Centromeres",
+      "Kinetochores"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The two identical halves of one copied chromosome, joined at the centromere, are sister chromatids.",
+      "options": [
+        "Correct. These are the two copies of one chromosome.",
+        "Homologous chromosomes are the two different chromosomes of a pair, one from each parent, shown in different shading.",
+        "The centromere is the narrow joint where the sisters are held, not the two arms.",
+        "Kinetochores are protein structures on the centromere where spindle microtubules attach."
+      ]
+    },
+    "id": "anp-meiosis-14"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-3-31",
+    "pin": "homologous-chromosomes",
+    "q": "Name the pinned pair.",
+    "options": [
+      "Sister chromatids",
+      "Homologous chromosomes",
+      "Two gametes",
+      "Chiasmata"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The two chromosomes of a matching pair, one from each parent, same length and same genes, are homologous chromosomes.",
+      "options": [
+        "Sister chromatids are identical copies joined at one centromere, not two separate chromosomes from two parents.",
+        "Correct. The two members of a pair are homologous chromosomes.",
+        "A gamete is a whole cell, not a chromosome.",
+        "Chiasmata are the crossing points between paired homologs in prophase I. This drawing shows no crossing over."
+      ]
+    },
+    "id": "anp-meiosis-15"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A dog's skin cells each hold 78 chromosomes. How many chromosomes are in each of its sperm?",
+    "options": [
+      "78",
+      "156",
+      "39",
+      "19.5"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Skin cells are diploid, so 2n = 78. Sperm are haploid: n = 78 ÷ 2 = 39.",
+      "options": [
+        "78 is the diploid number. A gamete with 78 would give offspring with 156.",
+        "156 doubles instead of halving.",
+        "Correct. Gametes carry one member of each of the 39 pairs.",
+        "A chromosome cannot be split in half. Meiosis halves the number of whole chromosomes, from 39 pairs to one of each."
+      ]
+    },
+    "id": "anp-meiosis-16"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During meiosis in one cell, one pair of homologs fail to separate in anaphase I, and meiosis II is normal. How many of the four gametes have the wrong number of chromosomes?",
+    "options": [
+      "None of the four",
+      "One of the four",
+      "Two of the four",
+      "All four"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The error in meiosis I puts both homologs into one cell and neither into the other. Meiosis II then splits each cell's chromosomes normally: the first cell gives two gametes with 24 chromosomes, and the second gives two with 22. All four are abnormal.",
+      "options": [
+        "An error that puts both homologs into one cell must change the count in that cell's products and in its partner's.",
+        "One abnormal gamete cannot arise, because an extra chromosome in one cell always means a missing one in another.",
+        "Two of four abnormal is the result of an error in meiosis II in one of the two cells: one gamete with 24, one with 22 and two normal.",
+        "Correct. Meiosis I nondisjunction makes every gamete from that cell abnormal: two with 24 and two with 22."
+      ]
+    },
+    "id": "anp-meiosis-17"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is the female gamete called before it has finished meiosis?",
+    "options": [
+      "Ovum",
+      "Sperm",
+      "Oocyte",
+      "Gonad"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The female gamete is the oocyte. It completes its last division only after a sperm enters it; the finished cell is an ovum.",
+      "options": [
+        "Ovum is the name for the egg after it has finished meiosis.",
+        "Sperm is the male gamete.",
+        "Correct. Oocyte (oo- = egg, -cyte = cell) is the female gamete.",
+        "A gonad is the organ that makes gametes (a testis or an ovary), not the gamete itself."
+      ]
+    },
+    "id": "anp-meiosis-18"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 42-year-old woman asks why her doctor mentioned a higher chance of a chromosome-number problem in a pregnancy at her age. Which explanation fits the evidence best?",
+    "options": [
+      "Her oocytes are copied from stem cells that have gathered many new mutations over her forty-two years",
+      "Her oocytes have paused in meiosis for decades, weakening the proteins holding chromosomes together",
+      "Her ovaries make fewer hormones, so meiosis II is skipped",
+      "Her oocytes lose their mitochondria and cannot power the spindle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Meiosis in the ovary begins before birth and pauses until shortly before an oocyte is released. The proteins that hold homologs and sister chromatids together are not replaced during that pause, so after 40 years chromosomes are more likely to separate early or go to the wrong end: nondisjunction.",
+      "options": [
+        "Oocytes are not produced by continuing stem cell division in adult women; they are all formed before birth. Age-related mutations explain little of the chromosome-number risk.",
+        "Correct. Long storage weakens the cohesion proteins, making nondisjunction more likely.",
+        "Meiosis II is not skipped with age, and skipping it would give gametes with double the DNA, not the pattern seen.",
+        "Older oocytes do have less healthy mitochondria, but the main, best-supported cause of chromosome errors is loss of the proteins that hold chromosomes together."
+      ]
+    },
+    "id": "anp-meiosis-19"
+  },
+  {
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Two brothers have the same parents but look quite different. Which event during their parents' meiosis creates new combinations of alleles on a single chromosome?",
+    "options": [
+      "Independent assortment",
+      "Crossing over",
+      "Nondisjunction",
+      "DNA replication"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Crossing over swaps matching pieces between homologs in prophase I, so a chromosome in a gamete can be part grandmother's, part grandfather's: a new combination of alleles on one chromosome.",
+      "options": [
+        "Independent assortment mixes whole chromosomes: which homolog of each pair goes into a gamete. It does not change what is on any one chromosome.",
+        "Correct. Crossing over recombines alleles within a chromosome.",
+        "Nondisjunction changes the number of chromosomes, not their combinations of alleles, and it is an error, not a routine source of variety.",
+        "Replication makes identical copies; it does not mix the two parents' alleles."
+      ]
+    },
+    "id": "anp-meiosis-20"
+  }
+]

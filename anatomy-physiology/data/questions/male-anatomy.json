@@ -1,0 +1,591 @@
+[
+  {
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the structures in the order sperm pass through them, from where they are made to where they leave the body.",
+    "options": [
+      "Seminiferous tubule",
+      "Epididymis",
+      "Ductus deferens",
+      "Ejaculatory duct",
+      "Prostatic urethra",
+      "Spongy urethra"
+    ],
+    "why": {
+      "correct": "Sperm are made in the seminiferous tubules, mature and are stored in the epididymis, travel the ductus deferens up through the inguinal canal and behind the bladder, enter the ejaculatory duct inside the prostate, and pass through the prostatic, membranous and spongy parts of the urethra to the outside."
+    },
+    "id": "anp-male-anatomy-1"
+  },
+  {
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in the route: seminiferous tubules → rete testis → ____ → ductus deferens → ejaculatory duct.",
+    "options": [
+      "Seminal vesicle",
+      "Epididymis",
+      "Bulbourethral gland",
+      "Inguinal canal"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "From the rete testis, efferent ductules carry sperm into the head of the epididymis. They travel through its body and tail, then into the ductus deferens.",
+      "options": [
+        "The seminal vesicle adds fluid at the start of the ejaculatory duct; sperm do not pass through it.",
+        "Correct. The epididymis lies between the testis and the ductus deferens.",
+        "The bulbourethral glands empty into the spongy urethra; sperm do not pass through them.",
+        "The inguinal canal is a passage in the abdominal wall that the spermatic cord runs through, not a duct between the testis and the ductus deferens."
+      ]
+    },
+    "id": "anp-male-anatomy-2"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which cells of the testis make testosterone?",
+    "options": [
+      "Cells lining the epididymis",
+      "Interstitial (Leydig) cells between the tubules",
+      "Smooth muscle cells of the dartos",
+      "Cells of the tunica albuginea"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Interstitial cells, also called Leydig cells, sit in the connective tissue between the seminiferous tubules. LH from the anterior pituitary drives them to make testosterone.",
+      "options": [
+        "The epididymis lining helps sperm mature; it does not make testosterone.",
+        "Correct. Leydig cells between the tubules are the testis's endocrine cells.",
+        "The dartos is smooth muscle in the scrotal wall that wrinkles the skin in cold.",
+        "The tunica albuginea is the tough connective tissue capsule of the testis."
+      ]
+    },
+    "id": "anp-male-anatomy-3"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "On a cold day, a man's scrotum looks tight and wrinkled, and his testes sit close to his body. Which muscles produce these two changes?",
+    "options": [
+      "The dartos wrinkles the skin; the cremaster lifts the testes",
+      "The cremaster wrinkles the skin; the dartos lifts the testes",
+      "The bulbospongiosus does both",
+      "The detrusor wrinkles the skin; the external urethral sphincter lifts the testes"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The dartos is smooth muscle under the scrotal skin; it contracts in cold and wrinkles the skin, reducing heat loss. The cremaster is skeletal muscle around each testis and its cord; it contracts and pulls the testes toward the warm body.",
+      "options": [
+        "Correct. Dartos: wrinkling. Cremaster: lifting.",
+        "This reverses the two muscles.",
+        "The bulbospongiosus is at the root of the penis and drives expulsion of semen. It does not act on the scrotum.",
+        "The detrusor is the bladder wall muscle and the external urethral sphincter surrounds the urethra; neither acts on the scrotum."
+      ]
+    },
+    "id": "anp-male-anatomy-4"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does the pampiniform plexus cool the blood reaching the testis?",
+    "options": [
+      "Its veins carry cool blood right beside the warm testicular artery",
+      "It releases a local hormone that lowers the testis's rate of metabolism and heat output",
+      "It is a sweat gland network in the scrotal skin",
+      "It holds blood still in the scrotum until it cools"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The plexus is a mesh of veins wound around the testicular artery. Blood returning from the cool scrotum takes up heat from the warm arterial blood flowing the other way, so arterial blood is already cooler when it reaches the testis: countercurrent heat exchange.",
+      "options": [
+        "Correct. Heat passes from the artery to the surrounding veins.",
+        "The plexus is a set of veins; it releases no hormone.",
+        "The plexus lies deep in the spermatic cord, not in the skin, and it is made of veins, not glands.",
+        "Blood keeps flowing through the plexus. Cooling comes from heat exchange between opposite streams, not from blood standing still."
+      ]
+    },
+    "id": "anp-male-anatomy-5"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man has a vasectomy: each ductus deferens is cut and sealed. What happens to his semen and hormones afterward?",
+    "options": [
+      "Semen volume falls by about 90% and testosterone falls",
+      "Semen stops altogether and testosterone rises",
+      "Semen contains sperm but no fructose",
+      "Semen contains no sperm, its volume barely changes, and testosterone is unchanged"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The cut ducts stop sperm from reaching the urethra. Most of the semen comes from the seminal vesicles and prostate, downstream of the cut, so volume barely changes. Testosterone leaves the testis in the blood, not through the ducts, so it is unaffected.",
+      "options": [
+        "Sperm are only a few percent of semen volume, and testosterone travels in the blood, not the ductus deferens.",
+        "The accessory glands still make and release their fluids, and nothing in the operation raises testosterone.",
+        "Fructose comes from the seminal vesicles, which still empty into the ejaculatory ducts. It is the sperm that are missing.",
+        "Correct. Sperm are blocked; gland fluid and blood-borne testosterone are not."
+      ]
+    },
+    "id": "anp-male-anatomy-6"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which accessory gland supplies most of the volume of semen?",
+    "options": [
+      "Prostate",
+      "Bulbourethral glands",
+      "Seminal vesicles",
+      "Epididymis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The seminal vesicles supply about 60 to 70% of semen volume: alkaline fluid with fructose, prostaglandins and a clotting protein.",
+      "options": [
+        "The prostate supplies about 20 to 30%, less than the seminal vesicles.",
+        "The bulbourethral glands add only a small amount of mucus before ejaculation.",
+        "Correct. The seminal vesicles contribute the largest share.",
+        "The epididymis stores sperm; it is part of the duct system, not an accessory gland, and adds little volume."
+      ]
+    },
+    "id": "anp-male-anatomy-7"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 68-year-old man has a weak urine stream, trouble starting, and gets up three times a night to pass urine. Enlargement of which structure best explains this?",
+    "options": [
+      "Seminal vesicles",
+      "Bulbourethral glands",
+      "Epididymis",
+      "Prostate"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The prostate wraps around the first part of the urethra just below the bladder. As it enlarges with age (benign prostatic hyperplasia), it squeezes the prostatic urethra and slows the outflow of urine.",
+      "options": [
+        "The seminal vesicles lie behind the bladder and do not surround the urethra.",
+        "The bulbourethral glands are pea-sized glands in the pelvic floor; their enlargement is rare and not the cause of this common pattern.",
+        "The epididymis is on the back of the testis, far from the urinary outflow.",
+        "Correct. An enlarged prostate narrows the urethra it surrounds."
+      ]
+    },
+    "id": "anp-male-anatomy-8"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Right after ejaculation, semen forms a gel. Fifteen to thirty minutes later it turns liquid again. What produces each change?",
+    "options": [
+      "A seminal vesicle protein forms the gel; prostate PSA dissolves it",
+      "The prostate's fluid forms the gel; the seminal vesicle fluid later dissolves it",
+      "Bulbourethral mucus forms the gel; body heat melts it",
+      "Fructose forms the gel; sperm use up the fructose"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The seminal vesicles add a protein that clots semen into a gel as soon as it is ejaculated. Prostate-specific antigen (PSA), an enzyme from the prostate, breaks that gel down over 15 to 30 minutes, freeing the sperm to swim.",
+      "options": [
+        "Correct. Seminal vesicle protein clots; prostate PSA liquefies.",
+        "This reverses the roles of the two glands.",
+        "Bulbourethral mucus is released before ejaculation as a lubricant. It does not form the clot.",
+        "Fructose is a sugar sperm use for energy; it does not form a gel."
+      ]
+    },
+    "id": "anp-male-anatomy-9"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which erectile column surrounds the urethra and forms the glans penis?",
+    "options": [
+      "Corpus cavernosum",
+      "Tunica albuginea",
+      "Prepuce",
+      "Corpus spongiosum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The single corpus spongiosum runs along the underside of the penis around the spongy urethra and widens at its end into the glans.",
+      "options": [
+        "The two corpora cavernosa lie on the upper side and do not contain the urethra.",
+        "The tunica albuginea is the capsule around each column, not an erectile column.",
+        "The prepuce is the fold of skin over the glans.",
+        "Correct. The corpus spongiosum holds the urethra and forms the glans."
+      ]
+    },
+    "id": "anp-male-anatomy-10"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During an erection, why does the corpus spongiosum stay softer than the corpora cavernosa?",
+    "options": [
+      "It has no arteries of its own and fills only by blood leaking from its neighbors",
+      "Its thin capsule does not trap blood as tightly, so the urethra stays open",
+      "It is made of skeletal muscle instead of erectile tissue",
+      "Sympathetic nerves keep it contracted during an erection"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The corpora cavernosa have a thick tunica albuginea that squeezes their draining veins shut, so pressure inside rises close to arterial pressure. The corpus spongiosum's capsule is thin, so its pressure stays lower. Its softness keeps the urethra inside it open for semen to pass.",
+      "options": [
+        "The corpus spongiosum fills with blood too; it has its own arteries.",
+        "Correct. A thin capsule traps less blood, so the tissue stays compressible and the urethra stays open.",
+        "The corpus spongiosum is erectile tissue with smooth muscle, like the other two columns.",
+        "Sympathetic activity ends an erection in all three columns; it does not keep one soft during it."
+      ]
+    },
+    "id": "anp-male-anatomy-11"
+  },
+  {
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "acetylcholine directly relaxes the erectile tissue",
+    "q": "A student described how an erection happens. One step is wrong. Which one?",
+    "options": [
+      "Parasympathetic neurons in the sacral spinal cord fire",
+      "Nerve endings and endothelium release nitric oxide",
+      "Cyclic GMP rises and the smooth muscle contracts",
+      "Cavernosal arteries widen and blood fills the erectile tissue",
+      "Swelling tissue squeezes the draining veins against the tunica albuginea"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Cyclic GMP makes the smooth muscle relax, not contract. Relaxed arterial walls and relaxed walls around the blood spaces are what let blood rush in.",
+      "options": [
+        "This step is right. Sacral parasympathetic neurons (S2–S4) start the erection.",
+        "This step is right. Nitric oxide is the messenger that reaches the smooth muscle.",
+        "This is the error. cGMP relaxes smooth muscle; contraction would end the erection.",
+        "This step is right. Vasodilation raises inflow.",
+        "This step is right. Compressed veins cut outflow, trapping blood."
+      ]
+    },
+    "id": "anp-male-anatomy-12"
+  },
+  {
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man taking sildenafil for erectile dysfunction is also prescribed nitroglycerin for chest pain. Why is this combination dangerous?",
+    "options": [
+      "Both drugs raise cGMP in vascular smooth muscle, so blood vessels widen too much and blood pressure falls sharply",
+      "Sildenafil blocks the nitroglycerin, so the chest pain is not relieved",
+      "Both drugs constrict arteries and raise blood pressure",
+      "Nitroglycerin blocks nitric oxide and prevents erection"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Nitroglycerin releases nitric oxide, which raises cGMP in vascular smooth muscle. Sildenafil blocks PDE5, the enzyme that breaks cGMP down. Together they relax vessels throughout the body, and blood pressure can fall dangerously.",
+      "options": [
+        "Correct. More cGMP made and less broken down: widespread vasodilation.",
+        "Sildenafil does not block nitroglycerin; it strengthens its effect.",
+        "Both drugs widen vessels, not narrow them.",
+        "Nitroglycerin supplies nitric oxide; it does not block it."
+      ]
+    },
+    "id": "anp-male-anatomy-13"
+  },
+  {
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which division of the nervous system drives emission, the movement of semen into the urethra?",
+    "options": [
+      "Parasympathetic",
+      "Somatic motor",
+      "Enteric",
+      "Sympathetic"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Emission is driven by sympathetic neurons from about T10–L2. Norepinephrine on alpha-1 receptor proteins contracts the smooth muscle of the ductus deferens, seminal vesicles and prostate, and closes the bladder neck.",
+      "options": [
+        "Parasympathetic nerves produce erection, not emission.",
+        "Somatic motor neurons in the pudendal nerve drive expulsion, the next phase, through skeletal muscle.",
+        "The gut's own nerve network does not control the reproductive ducts.",
+        "Correct. Sympathetic nerves contract the smooth muscle of the ducts and glands."
+      ]
+    },
+    "id": "anp-male-anatomy-14"
+  },
+  {
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man starts tamsulosin, a drug that blocks alpha-1 receptor proteins, to ease urine flow past his enlarged prostate. He notices that little or no semen comes out when he ejaculates, and his urine afterward is cloudy. What explains this?",
+    "options": [
+      "The drug stops his testes from making sperm",
+      "The bladder neck does not close, so semen goes back into the bladder",
+      "The drug blocks the pudendal nerve, so the pelvic floor muscles cannot expel semen",
+      "His seminal vesicles have stopped making fluid"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "During emission, norepinephrine on alpha-1 receptor proteins contracts the internal urethral sphincter at the bladder neck. With those receptor proteins blocked, the neck stays open, and when the pelvic muscles contract, semen takes the easier path back into the bladder: retrograde ejaculation. It leaves with the next urine, which looks cloudy.",
+      "options": [
+        "Sperm production depends on hormones, not on alpha-1 receptor proteins in the bladder neck, and would not make urine cloudy.",
+        "Correct. An open bladder neck lets semen flow backward into the bladder.",
+        "The pudendal nerve is somatic and uses acetylcholine at skeletal muscle; an alpha-1 blocker does not block it.",
+        "The seminal vesicles still make fluid; the cloudy urine shows semen was produced but went the wrong way."
+      ]
+    },
+    "id": "anp-male-anatomy-15"
+  },
+  {
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every structure that runs in the spermatic cord.",
+    "options": [
+      "Ductus deferens",
+      "Testicular artery",
+      "Pampiniform plexus",
+      "Ejaculatory duct",
+      "Seminal vesicle",
+      "Cremaster muscle fibers"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      5
+    ],
+    "why": {
+      "correct": "The spermatic cord holds the ductus deferens, the testicular artery, the pampiniform plexus of veins, nerves and lymphatic vessels, wrapped in connective tissue and strands of cremaster muscle. The ejaculatory duct and seminal vesicle lie deep in the pelvis.",
+      "options": [
+        "Correct. The ductus deferens climbs from the scrotum in the cord.",
+        "Correct. The testicular artery reaches the testis through the cord.",
+        "Correct. The veins of the plexus drain the testis through the cord.",
+        "The ejaculatory duct lies inside the prostate, far below the inguinal canal.",
+        "The seminal vesicles sit behind the bladder in the pelvis.",
+        "Correct. Cremaster fibers wrap the cord and the testis."
+      ]
+    },
+    "id": "anp-male-anatomy-16"
+  },
+  {
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Through what passage does the spermatic cord leave the abdominal wall on its way to the scrotum?",
+    "options": [
+      "Femoral canal",
+      "Obturator foramen",
+      "Inguinal canal",
+      "Urogenital opening"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The inguinal canal is a short, slanting passage through the muscles of the lower abdominal wall. The testis came down through it before birth, and the spermatic cord runs through it.",
+      "options": [
+        "The femoral canal lies below the groin ligament, beside the femoral vein, and does not carry the cord.",
+        "The obturator foramen is a large opening in the hip bone, mostly closed by membrane; the cord does not pass through it.",
+        "Correct. The cord runs in the inguinal canal.",
+        "No passage by that name carries the cord."
+      ]
+    },
+    "id": "anp-male-anatomy-17"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-27-2",
+    "pin": "seminal-vesicle",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Seminal vesicle",
+      "Prostate gland",
+      "Bulbourethral gland",
+      "Epididymis"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The coiled, pouch-like gland on the back of the bladder is a seminal vesicle.",
+      "options": [
+        "Correct. The seminal vesicle sits behind the bladder, above the prostate.",
+        "The prostate lies below the bladder, around the urethra.",
+        "The bulbourethral gland is a small round gland below the prostate.",
+        "The epididymis lies on the back of the testis, in the scrotum."
+      ]
+    },
+    "id": "anp-male-anatomy-18"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-27-2",
+    "pin": "prostate-gland",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Urinary bladder",
+      "Seminal vesicle",
+      "Bulbourethral gland",
+      "Prostate gland"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The gland directly below the bladder, wrapped around the first part of the urethra, is the prostate.",
+      "options": [
+        "The bladder is the hollow organ above it.",
+        "The seminal vesicle lies behind the bladder, higher up.",
+        "The bulbourethral gland is smaller and lies below the prostate.",
+        "Correct. The prostate surrounds the prostatic urethra."
+      ]
+    },
+    "id": "anp-male-anatomy-19"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-27-4",
+    "pin": "rete-testis",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Efferent ductule",
+      "Rete testis",
+      "Tunica albuginea",
+      "Head of epididymis"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The network of channels at the back of the testis, where the tubules drain, is the rete testis.",
+      "options": [
+        "The efferent ductules leave the rete and carry sperm into the epididymis.",
+        "Correct. The rete testis collects sperm from the seminiferous tubules.",
+        "The tunica albuginea is the white capsule around the testis.",
+        "The head of the epididymis sits on top of the testis, beyond the efferent ductules."
+      ]
+    },
+    "id": "anp-male-anatomy-20"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-27-7",
+    "pin": "corpora-cavernosa",
+    "q": "Name the pinned structures.",
+    "options": [
+      "Corpus spongiosum",
+      "Corpora cavernosa",
+      "Cavernosal arteries",
+      "Spongy urethra"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The two large columns of erectile tissue on the upper side of the penis are the corpora cavernosa.",
+      "options": [
+        "The corpus spongiosum is the single smaller column below, around the urethra.",
+        "Correct. The two dorsal columns are the corpora cavernosa.",
+        "The cavernosal arteries run inside the corpora cavernosa; they are the small vessels at their centers.",
+        "The spongy urethra runs through the corpus spongiosum."
+      ]
+    },
+    "id": "anp-male-anatomy-21"
+  },
+  {
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-27-3",
+    "pin": "cremaster-muscles",
+    "q": "Name the pinned muscles.",
+    "options": [
+      "Dartos muscles",
+      "Cremaster muscles",
+      "Detrusor muscle",
+      "Scrotal septum"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The strands of skeletal muscle wrapping each testis are the cremaster muscles; they lift the testes in the cold.",
+      "options": [
+        "The dartos is a thin sheet of smooth muscle just under the skin.",
+        "Correct. The cremaster muscles surround the testes and their cords.",
+        "The detrusor is the muscle of the bladder wall.",
+        "The scrotal septum is the midline wall between the two compartments."
+      ]
+    },
+    "id": "anp-male-anatomy-22"
+  }
+]

@@ -2574,6 +2574,189 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "met-thermo-cold-full",
+      "title": "Thermoregulation in full: the core is too cold",
+      "topic": "energy-balance-thermoregulation",
+      "map": "Thermoregulation, full version (hypothalamic loop)",
+      "core": [
+        "homeostasis",
+        "energy"
+      ],
+      "kind": "negative",
+      "scenario": "A hiker waits out a storm on a windy ridge at 2 °C in damp clothes. Within minutes his skin cools, his fingers go pale, and he starts to shiver before his core temperature has fallen at all.",
+      "slots": {
+        "stimulus": {
+          "text": "A fall in skin temperature, and then in core temperature",
+          "short": "Skin, then core, cools",
+          "why": "The stimulus is the change in the regulated variable. Cold skin gives early warning, before the core itself has cooled."
+        },
+        "sensor": {
+          "text": "Cold thermoreceptors in the skin and temperature-sensitive neurons in the hypothalamus",
+          "short": "Skin thermoreceptors; hypothalamic neurons",
+          "why": "Peripheral sensory receptors report the shell; central temperature-sensitive neurons in the hypothalamus, spinal cord and abdomen report the core."
+        },
+        "afferent": {
+          "text": "Sensory neurons to the spinal cord and up to the hypothalamus",
+          "short": "Sensory neurons to the hypothalamus",
+          "why": "The afferent pathway carries the skin’s signals toward the control center. Because this input arrives first, shivering can start before the core has changed."
+        },
+        "control": {
+          "text": "The preoptic area of the hypothalamus, comparing the combined input with its set point",
+          "short": "Preoptic area of the hypothalamus",
+          "why": "The preoptic area at the front of the hypothalamus is the control center: it weighs skin and core input against the set point and drives heat-gain responses."
+        },
+        "efferent": {
+          "text": "Sympathetic nerves releasing norepinephrine to skin arterioles and brown fat; somatic motor neurons to skeletal muscle",
+          "short": "Sympathetic and somatic motor neurons",
+          "why": "Two efferent routes carry the commands: autonomic (sympathetic) fibers to smooth muscle and brown fat, and somatic motor neurons to the muscles that shiver."
+        },
+        "effector": {
+          "text": "Smooth muscle of skin arterioles, skeletal muscle and brown adipose tissue",
+          "short": "Skin arterioles; muscle; brown fat",
+          "why": "Skin arterioles narrow; skeletal muscles contract in rapid, unsynchronized bursts; brown fat cells let H+ leak across their inner mitochondrial membranes and release heat."
+        },
+        "response": {
+          "text": "Less warm blood reaches the skin and more heat is made, so core temperature is held near its set point",
+          "short": "Less heat lost, more made",
+          "why": "Narrow skin vessels turn the shell into insulation, and shivering and brown fat raise heat production. Both oppose the fall."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Sympathetic cholinergic nerves to the sweat glands",
+          "why": "That efferent route drives sweating and active skin vasodilation, the heat-loss responses of the warm loop."
+        },
+        {
+          "text": "The thyroid gland raising heat production within minutes",
+          "why": "Long cold exposure raises thyroid hormone activity a little, but in adults this is slow and minor. The fast responses come from the nervous system."
+        },
+        {
+          "text": "The set point falls to match the cold",
+          "why": "The set point stays put; pyrogens move it in a fever, but cold does not. The loop works by pushing temperature back toward it."
+        },
+        {
+          "text": "Wider skin vessels to warm the fingers",
+          "why": "Widening would carry core heat out to the cold surface. In the cold, skin arterioles narrow, which is why the fingers go pale."
+        }
+      ],
+      "classify": "The responses (less heat lost, more heat made) oppose the stimulus (cooling), so this is negative feedback. As core temperature returns toward the set point, the error signal shrinks and shivering eases off.",
+      "failure": {
+        "part": "effector",
+        "q": "The hiker has drunk several shots of alcohol, which keeps his skin vessels wide even as he chills. What happens to his core temperature on the ridge?",
+        "options": [
+          {
+            "text": "It falls faster than it would sober",
+            "why": "Right. The sensors and control center still call for vasoconstriction, but the vessel effector cannot deliver it, so warm blood keeps flowing to the cold skin and heat is lost faster. Alcohol also dulls judgment, so he may not seek shelter."
+          },
+          {
+            "text": "It stays normal, because the warm, flushed skin feels comfortable",
+            "why": "Feeling warm is not the same as keeping heat. Blood at the surface is losing heat to the cold air."
+          },
+          {
+            "text": "It rises, because the widened vessels carry more heat to the core",
+            "why": "Widened skin vessels carry core heat outward to the surface, where it is lost; they do not bring heat in."
+          },
+          {
+            "text": "It falls only if the sensors are also damaged",
+            "why": "The sensors work normally. A single weakened effector is enough to let the loop fall behind."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "met-thermo-heat-full",
+      "title": "Thermoregulation in full: the core is too warm",
+      "topic": "energy-balance-thermoregulation",
+      "map": "Thermoregulation, full version (hypothalamic loop)",
+      "core": [
+        "homeostasis",
+        "energy",
+        "interdependence"
+      ],
+      "kind": "negative",
+      "scenario": "A cyclist climbs a long hill on a warm afternoon. Her working muscles release heat, her skin flushes, she sweats heavily, and her core temperature rises a little and then holds steady.",
+      "slots": {
+        "stimulus": {
+          "text": "A rise in core temperature from the heat her muscles release",
+          "short": "Core temperature rises",
+          "why": "The stimulus is the rise in the regulated variable: heat is being made faster than it is lost."
+        },
+        "sensor": {
+          "text": "Temperature-sensitive neurons in the hypothalamus and warm thermoreceptors in the skin",
+          "short": "Hypothalamic neurons; skin thermoreceptors",
+          "why": "Central temperature-sensitive neurons report the warming core, and warm thermoreceptors in the skin add input from the shell."
+        },
+        "afferent": {
+          "text": "Sensory neurons from the skin to the spinal cord and up to the hypothalamus",
+          "short": "Skin sensory neurons to the hypothalamus",
+          "why": "The afferent pathway carries skin signals to the control center; the hypothalamic neurons sense blood temperature where they sit."
+        },
+        "control": {
+          "text": "The preoptic area of the hypothalamus",
+          "short": "Preoptic area of the hypothalamus",
+          "why": "The preoptic area compares the combined input with the set point, which is normal here, and drives the heat-loss responses."
+        },
+        "efferent": {
+          "text": "Sympathetic cholinergic nerves to the sweat glands and skin vessels, plus less sympathetic constrictor tone",
+          "short": "Sympathetic cholinergic nerves",
+          "why": "Sympathetic cholinergic fibers release acetylcholine onto eccrine sweat glands and cause active dilation of skin vessels in hairy skin; in the palms, soles and lips the vessels widen as constrictor tone is withdrawn."
+        },
+        "effector": {
+          "text": "Eccrine sweat glands and skin blood vessels",
+          "short": "Sweat glands; skin vessels",
+          "why": "The sweat glands secrete sweat onto the skin, and the smooth muscle of skin vessels relaxes, so skin blood flow can rise many times over."
+        },
+        "response": {
+          "text": "Sweat evaporates and warm blood reaches the skin, so more heat is lost and core temperature is held down",
+          "short": "More heat lost: core held down",
+          "why": "Evaporation removes about 580 kcal per liter of sweat, and blood near the surface loses heat by radiation and convection. Both oppose the rise."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Sympathetic nerves releasing norepinephrine onto brown fat",
+          "why": "Norepinephrine to brown fat makes heat, the opposite of what a warm core needs; it belongs to the cold loop."
+        },
+        {
+          "text": "Wider blood vessels in the gut and kidneys",
+          "why": "In heat stress the vessels of the gut and kidneys narrow, shifting blood toward the skin."
+        },
+        {
+          "text": "Skeletal muscles shivering",
+          "why": "Shivering releases heat. It is a response to cold and would make this rise worse."
+        },
+        {
+          "text": "The set point rises, as in a fever",
+          "why": "Exercise and hot weather leave the set point normal. Pyrogens raise it in a fever; here the loop works to bring temperature down to the usual target."
+        }
+      ],
+      "classify": "The response (more heat lost) opposes the stimulus (a rise in core temperature), so this is negative feedback. Heat loss rises until it matches the heat the muscles make, and temperature holds steady.",
+      "failure": {
+        "part": "effector",
+        "q": "An older man takes an anticholinergic drug, which blocks acetylcholine at muscarinic receptor proteins, and walks to the shops during a heat wave. What happens to his core temperature?",
+        "options": [
+          {
+            "text": "It climbs, because his sweat glands get the command but cannot respond to it",
+            "why": "Right. The sensors and preoptic area work, but the sweat glands cannot respond to the acetylcholine that sympathetic cholinergic fibers release, so the main route of heat loss in hot air fails. This is one reason some drugs raise the risk of heat stroke."
+          },
+          {
+            "text": "It stays normal, because his skin vessels still widen",
+            "why": "Wider skin vessels help only while the air is cooler than the skin. In a heat wave evaporation is the only route left, and it is blocked."
+          },
+          {
+            "text": "It falls, because the drug lowers the set point",
+            "why": "The drug acts at the sweat glands, not on the set point in the hypothalamus."
+          },
+          {
+            "text": "It stays normal, because shivering stops",
+            "why": "He was not shivering. Losing a heat-gain response does nothing to make up for a heat-loss response that has failed."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

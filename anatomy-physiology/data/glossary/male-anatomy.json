@@ -1,0 +1,112 @@
+{
+  "scrotum-testes": {
+    "def": "The scrotum is the skin-and-muscle sac that holds the testes 2 to 3 °C below core temperature. Each testis is divided into lobules of coiled seminiferous tubules, where sperm are made, with interstitial (Leydig) cells between them that make testosterone.",
+    "roots": [
+      [
+        "scrot-",
+        "pouch"
+      ],
+      [
+        "semin-",
+        "seed"
+      ],
+      [
+        "fer-",
+        "to carry"
+      ],
+      [
+        "inter-",
+        "between"
+      ]
+    ],
+    "say": "SKROH-tum; TES-teez; sem-ih-NIF-er-us"
+  },
+  "male-ducts": {
+    "def": "The tubes that carry sperm from the testis: the epididymis, where sperm mature and are stored; the ductus (vas) deferens, which runs in the spermatic cord through the inguinal canal; and the ejaculatory duct, which opens into the urethra inside the prostate.",
+    "roots": [
+      [
+        "epi-",
+        "upon"
+      ],
+      [
+        "didym-",
+        "twin (the testis)"
+      ],
+      [
+        "de-",
+        "away"
+      ],
+      [
+        "fer-",
+        "to carry"
+      ],
+      [
+        "inguin-",
+        "groin"
+      ]
+    ],
+    "say": "ep-ih-DID-ih-mis; DUK-tus DEF-er-enz"
+  },
+  "accessory-glands-male": {
+    "def": "The seminal vesicles, prostate and bulbourethral glands, exocrine glands that add fluid to sperm to make semen. The seminal vesicles supply most of the volume (alkaline, with fructose); the prostate adds a milky fluid with PSA; the bulbourethral glands add mucus before ejaculation.",
+    "roots": [
+      [
+        "semin-",
+        "seed"
+      ],
+      [
+        "vesic-",
+        "small bladder"
+      ],
+      [
+        "pro-",
+        "before"
+      ],
+      [
+        "stat-",
+        "standing"
+      ],
+      [
+        "bulb-",
+        "bulb"
+      ]
+    ],
+    "say": "PROS-tate; bul-boh-yoo-REE-thrul"
+  },
+  "penis": {
+    "def": "The male organ that carries the urethra and delivers semen. It is made mostly of erectile tissue in three columns: two corpora cavernosa on top and a corpus spongiosum below, around the urethra, which widens into the glans penis; the prepuce (foreskin) covers the glans.",
+    "roots": [
+      [
+        "corpus",
+        "body"
+      ],
+      [
+        "cavern-",
+        "hollow"
+      ],
+      [
+        "spongi-",
+        "sponge"
+      ],
+      [
+        "glans",
+        "acorn"
+      ]
+    ],
+    "say": "KOR-por-uh kav-er-NOH-suh; spun-jee-OH-sum"
+  },
+  "erection-ejaculation": {
+    "def": "Erection is the filling of erectile tissue with blood when parasympathetic nerves release nitric oxide and its smooth muscle relaxes. Ejaculation is the release of semen: sympathetic nerves move it into the urethra (emission), then a somatic reflex through the pudendal nerve expels it (expulsion).",
+    "roots": [
+      [
+        "e-",
+        "out"
+      ],
+      [
+        "jacul-",
+        "to throw"
+      ]
+    ],
+    "say": "ee-jak-yoo-LAY-shun"
+  }
+}

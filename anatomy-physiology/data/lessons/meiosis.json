@@ -1,0 +1,90 @@
+{
+  "topic": "meiosis",
+  "hook": "<p>Dana, 39, and her partner are expecting their first child, and a blood screening test suggests the baby may have an extra chromosome. Their genetic counselor explains that the error almost always happens before the pregnancy starts, while the egg was dividing, and that the chance rises with the mother's age. To follow her explanation, you need to know how eggs and sperm are made: by a division that halves the chromosomes, called meiosis.</p>",
+  "prereq": [
+    {
+      "q": "A human body cell has copied its DNA and is in metaphase of mitosis. How many chromosomes and chromatids does it hold?",
+      "options": [
+        "46 chromosomes, 92 chromatids",
+        "92 chromosomes, 92 chromatids",
+        "23 chromosomes, 46 chromatids"
+      ],
+      "correct": 0,
+      "why": "Copying doubles the chromatids, not the chromosomes: each of the 46 chromosomes is now two sister chromatids joined at a centromere. The count reaches 92 chromosomes only in anaphase, when the sisters separate.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "What are sister chromatids?",
+      "options": [
+        "The two chromosomes of a pair, one from each parent",
+        "Two identical copies of one chromosome made by DNA replication",
+        "The two strands of one DNA double helix"
+      ],
+      "correct": 1,
+      "why": "DNA replication in S phase copies each chromosome. The two identical copies stay joined at the centromere and are called sister chromatids.",
+      "review": "dna-genes"
+    },
+    {
+      "q": "Which organs are the gonads?",
+      "options": [
+        "The adrenal glands",
+        "The testes and ovaries",
+        "The pituitary and hypothalamus"
+      ],
+      "correct": 1,
+      "why": "The gonads are the testes and ovaries. They make the gametes and the sex hormones: testosterone from the testes, estrogens and progesterone from the ovaries.",
+      "review": "other-endocrine"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-3-31",
+    "caption": "A homologous pair: one chromosome from each parent. After DNA replication, each is two sister chromatids. Hide the labels and name the pair, the chromatids and the joint between them."
+  },
+  "chain": [
+    {
+      "cause": "A diploid cell in the gonad copies its DNA in S phase.",
+      "effect": "Each of its 46 chromosomes becomes two sister chromatids, 92 chromatids in all."
+    },
+    {
+      "cause": "In prophase I, each chromosome pairs with its homolog along its length.",
+      "effect": "Paired homologs swap matching pieces by crossing over, making chromosomes with new mixes of alleles."
+    },
+    {
+      "cause": "In metaphase I, the pairs line up across the middle, each pair facing a random way.",
+      "effect": "In anaphase I the homologs are pulled to opposite ends, and two haploid cells form, each with 23 chromosomes that are still double."
+    },
+    {
+      "cause": "In meiosis II, the sister chromatids of each chromosome are pulled apart.",
+      "effect": "Four haploid cells form, each with 23 single chromosomes, and no two alike."
+    },
+    {
+      "cause": "A haploid sperm joins a haploid egg.",
+      "effect": "The new cell has 46 chromosomes again: diploid, with one set from each parent."
+    }
+  ],
+  "misconception": {
+    "wrong": "Meiosis is just mitosis done twice.",
+    "right": "Meiosis II does work like mitosis, but meiosis I is different in kind. In meiosis I the homologous chromosomes pair up, cross over, line up as pairs and separate, while the sister chromatids stay together. Mitosis never pairs homologs. That is why mitosis keeps the chromosome number at 46, while meiosis I halves it to 23, and why meiosis makes cells that differ from the parent and from each other."
+  },
+  "check": [
+    "anp-meiosis-2",
+    "anp-meiosis-6",
+    "anp-meiosis-7",
+    "anp-meiosis-8",
+    "anp-meiosis-10",
+    "anp-meiosis-11",
+    "anp-meiosis-13",
+    "anp-meiosis-17"
+  ],
+  "summary": "<p>Gametes (sperm and oocytes) are haploid, n = 23, so that two of them together restore the diploid number, 2n = 46. Homologous chromosomes are the matched pairs, one from each parent, carrying the same genes but possibly different alleles. Meiosis copies DNA once and divides twice. Meiosis I pairs the homologs, lets them cross over and separates them, giving two haploid cells with double chromosomes; meiosis II separates the sister chromatids, giving four haploid cells with single chromosomes. Independent assortment (2<sup>23</sup> combinations) and crossing over make every gamete different. Nondisjunction gives gametes with 24 or 22 chromosomes and is more common in older mothers' oocytes. The sex chromosomes are XX or XY; the sperm decides which, and SRY on the Y makes the early gonad a testis.</p>",
+  "connections": [
+    {
+      "href": "/nremt/study-notes.html#chapter-6",
+      "label": "NREMT: Anatomy and physiology"
+    },
+    {
+      "href": "/nremt/study-notes.html#chapter-8",
+      "label": "NREMT: Life span development"
+    }
+  ]
+}

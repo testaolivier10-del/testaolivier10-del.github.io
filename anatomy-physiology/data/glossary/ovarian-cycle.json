@@ -1,0 +1,78 @@
+{
+  "oogenesis": {
+    "def": "The making of oocytes by meiosis. Oogonia multiply by mitosis before birth and become primary oocytes that pause in prophase I; just before ovulation one finishes meiosis I into a secondary oocyte and a small polar body, and it finishes meiosis II only if a sperm enters.",
+    "roots": [
+      [
+        "oo-",
+        "egg"
+      ],
+      [
+        "-genesis",
+        "making"
+      ],
+      [
+        "-gonium",
+        "seed"
+      ]
+    ],
+    "say": "oh-oh-JEN-uh-sis; oh-oh-GOH-nee-uh"
+  },
+  "follicle-development": {
+    "def": "The growth of an ovarian follicle through the primordial, primary, secondary, tertiary and mature vesicular (Graafian) stages: granulosa cells multiply around the oocyte, theca cells form outside them, and a fluid-filled antrum appears. The late stages need FSH; most growing follicles die by atresia.",
+    "roots": [
+      [
+        "folliculus",
+        "little bag"
+      ],
+      [
+        "granulum",
+        "small grain"
+      ],
+      [
+        "theca",
+        "case"
+      ],
+      [
+        "antrum",
+        "cave"
+      ],
+      [
+        "vesicula",
+        "small bladder"
+      ]
+    ],
+    "say": "gran-yoo-LOH-suh; THEE-kuh"
+  },
+  "ovulation": {
+    "def": "The release of a secondary oocyte, with a ring of granulosa cells, from a mature follicle onto the surface of the ovary. A sudden rise in LH triggers it about 34 to 36 hours later.",
+    "roots": [
+      [
+        "ovul-",
+        "little egg"
+      ],
+      [
+        "-ation",
+        "process"
+      ]
+    ],
+    "say": "ov-yoo-LAY-shun"
+  },
+  "corpus-luteum": {
+    "def": "The temporary endocrine gland formed from a follicle's granulosa and theca cells after ovulation. It secretes progesterone, estradiol and inhibin for about 12 to 14 days, then shrinks into a pale scar, the corpus albicans, unless a pregnancy keeps it alive.",
+    "roots": [
+      [
+        "corpus",
+        "body"
+      ],
+      [
+        "luteus",
+        "yellow"
+      ],
+      [
+        "albicans",
+        "whitening"
+      ]
+    ],
+    "say": "KOR-pus LOO-tee-um; AL-bih-kanz"
+  }
+}

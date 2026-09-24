@@ -1,0 +1,489 @@
+[
+ {
+  "id": "anp-ovarian-cycle-1",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A biopsy of a healthy 25-year-old woman's ovary is taken in the middle of a cycle. Which cells would you expect most of the oocytes in it to be?",
+  "options": [
+   "Oogonia dividing by mitosis",
+   "Secondary oocytes arrested at metaphase II",
+   "Primary oocytes arrested in prophase I",
+   "Mature ova"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Almost all follicles are resting primordial follicles, and their oocytes have been paused in prophase I of meiosis since before birth. Only the one oocyte about to be released each month moves on to become a secondary oocyte.",
+   "options": [
+    "Oogonia exist only before birth; none remain in an adult ovary.",
+    "Only the single oocyte released each month reaches this stage, just before ovulation.",
+    "Correct. The resting pool is primary oocytes paused in prophase I.",
+    "An ovum forms only after a sperm enters a secondary oocyte, outside the ovary."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-2",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "At what stage of meiosis does a primary oocyte wait from before birth until the month it is released?",
+  "options": [
+   "Metaphase II",
+   "Prophase I",
+   "Anaphase I",
+   "Telophase II"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Primary oocytes enter meiosis I before birth and arrest in prophase I, after crossing over. They stay there until the rise in LH before their ovulation.",
+   "options": [
+    "Metaphase II is the second pause, reached by the secondary oocyte just before ovulation.",
+    "Correct. The long arrest is in prophase I.",
+    "Anaphase I separates the homologous pairs; it happens only when meiosis I restarts before ovulation.",
+    "Telophase II happens only if a sperm enters and meiosis II finishes."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-3",
+  "type": "order",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Put the stages of follicle development in order, from the earliest.",
+  "options": [
+   "Primordial follicle",
+   "Primary follicle",
+   "Secondary follicle",
+   "Tertiary follicle with an antrum",
+   "Mature vesicular (Graafian) follicle",
+   "Corpus luteum"
+  ],
+  "why": {
+   "correct": "A resting primordial follicle becomes primary when its flat cells become cube-shaped granulosa cells, secondary when the granulosa layers multiply and a theca forms, tertiary when an antrum appears, and mature vesicular just before ovulation. After ovulation its cells become the corpus luteum."
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-4",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "What is the first polar body?",
+  "options": [
+   "A cell that nourishes the oocyte in the follicle",
+   "The small cell that gets a set of chromosomes but almost no cytoplasm when meiosis I finishes",
+   "A cluster of granulosa cells released with the oocyte",
+   "The scar left after the corpus luteum dies"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Meiosis I in the oocyte divides the cytoplasm unequally. The secondary oocyte keeps nearly all of it, and the first polar body gets one set of chromosomes and very little else. It later breaks down.",
+   "options": [
+    "Granulosa cells nourish the oocyte. The polar body is a product of the oocyte's own division.",
+    "Correct. It is the tiny product of the lopsided first division.",
+    "The ring of granulosa cells released with the oocyte is follicle tissue, not a polar body.",
+    "That scar is the corpus albicans."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-5",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A woman ovulates, but no sperm reaches the released cell. What happens to it?",
+  "options": [
+   "It completes meiosis II and becomes an ovum anyway",
+   "It returns to the ovary and waits for the next cycle",
+   "It dies within about a day, still arrested at metaphase II",
+   "It divides by mitosis in the uterine tube"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The released cell is a secondary oocyte paused at metaphase II. Only the entry of a sperm triggers the rest of meiosis II. Without it, the oocyte stays paused and dies within about 12 to 24 hours.",
+   "options": [
+    "Meiosis II finishes only when a sperm enters; there is no ovum without that trigger.",
+    "The oocyte cannot return to the ovary; it is carried along the uterine tube and breaks down.",
+    "Correct. It stays arrested at metaphase II and dies.",
+    "A secondary oocyte does not divide by mitosis."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-6",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "q": "A granulosa cell culture is given FSH but no androgen. Almost no estradiol is made. Adding androstenedione, an androgen, restores estradiol output. What does this show?",
+  "options": [
+   "FSH itself is converted into estradiol",
+   "Granulosa cells convert androgens from theca cells into estradiol",
+   "Granulosa cells lack FSH receptor proteins",
+   "Estradiol is made only by the theca cells"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "FSH switches on aromatase in granulosa cells, but they cannot make androgens from cholesterol. In the follicle, theca cells stimulated by LH supply those androgens. Adding androgen to the dish replaces the theca cells' contribution.",
+   "options": [
+    "FSH is a protein hormone that signals the cell; it is not a raw material for steroid synthesis.",
+    "Correct. This is the two-cell, two-hormone arrangement.",
+    "If granulosa cells lacked FSH receptor proteins, FSH would not switch on aromatase and the added androgen would not be converted.",
+    "The theca cells make androgens; the granulosa cells make the estradiol, as the experiment shows."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-7",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Which feature first appears at the tertiary follicle stage?",
+  "options": [
+   "A fluid-filled antrum",
+   "Cube-shaped granulosa cells",
+   "A primary oocyte",
+   "A single layer of flat cells"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "A tertiary follicle is defined by fluid-filled gaps between the granulosa cells merging into one space, the antrum.",
+   "options": [
+    "Correct. The antrum marks the tertiary stage.",
+    "Cube-shaped granulosa cells first appear in the primary follicle.",
+    "Every follicle from the primordial stage on contains a primary oocyte.",
+    "A single layer of flat cells is the primordial follicle."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-8",
+  "type": "predict",
+  "level": "apply",
+  "diff": 2,
+  "predictLevel": 2,
+  "core": [
+   "communication",
+   "structure-function"
+  ],
+  "q": "A woman takes a drug that blocks FSH receptor proteins for a month. Predict the change in each variable, compared with a normal month.",
+  "variables": [
+   {
+    "name": "Growth of tertiary follicles",
+    "answer": "down",
+    "why": "From the tertiary stage on, follicles need FSH to keep growing, so without FSH signaling they stall."
+   },
+   {
+    "name": "Estradiol made by the follicles",
+    "answer": "down",
+    "why": "FSH switches on aromatase in granulosa cells; blocked, they cannot convert theca androgens into estradiol."
+   },
+   {
+    "name": "Number of primordial follicles that start to grow",
+    "answer": "none",
+    "why": "The earliest stages run on signals inside the ovary and do not depend on FSH."
+   },
+   {
+    "name": "Chance of ovulation that month",
+    "answer": "down",
+    "why": "Without a mature follicle, there is no follicle ready to release a secondary oocyte."
+   }
+  ],
+  "why": {
+   "correct": "FSH is needed for the late stages of follicle growth and for estradiol production by granulosa cells. Blocking it stalls follicles at the tertiary stage, lowers estradiol and prevents ovulation, while the FSH-independent early stages carry on."
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-9",
+  "type": "multi",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Select every difference between oogenesis and spermatogenesis that is correct.",
+  "options": [
+   "Oogenesis makes one gamete per cell entering meiosis; spermatogenesis makes four",
+   "Oogenesis pauses for years in prophase I",
+   "Spermatogenesis divides the cytoplasm unequally",
+   "Stem cells for oogenesis do not survive past birth",
+   "Oogenesis produces haploid gametes but spermatogenesis produces diploid ones"
+  ],
+  "correct": [
+   0,
+   1,
+   3
+  ],
+  "why": {
+   "correct": "Oogenesis gives one large gamete plus polar bodies, pauses in prophase I and metaphase II, and its oogonia are gone by birth. Spermatogenesis divides the cytoplasm equally, gives four sperm, and runs on stem cells throughout adult life. Both make haploid gametes.",
+   "options": [
+    "Correct. One secondary oocyte (or ovum) versus four sperm.",
+    "Correct. Primary oocytes wait in prophase I from before birth.",
+    "Spermatogenesis divides the cytoplasm equally; oogenesis is the one with unequal divisions.",
+    "Correct. Oogonia do not survive past birth, while spermatogonia divide throughout adult life.",
+    "Both processes are meiosis, so both make haploid gametes."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-10",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "misconception": "ovulation is what uses up the egg supply",
+  "q": "Of the 1 to 2 million oocytes present at birth, about 400 are ovulated. What happens to nearly all the others?",
+  "options": [
+   "They are released during the periods",
+   "They are absorbed by the corpus luteum",
+   "They die in follicles that undergo atresia",
+   "They are stored until midlife and then released"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Atresia is the normal fate of more than 99% of follicles. Follicles start growing and then die, before birth, through childhood and each month in adult life, where a whole group grows and all but one die.",
+   "options": [
+    "A period sheds the functional layer of the endometrium, not oocytes from the ovary.",
+    "The corpus luteum forms from the cells of one emptied follicle; it does not take up other oocytes.",
+    "Correct. Atresia, not ovulation, empties the ovary.",
+    "Very few are left in midlife, and they are not released; the supply runs out."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-11",
+  "type": "graph",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "figure": "follicle-stages",
+  "q": "In the drawing, which stage is the first to have theca cells around the granulosa cells?",
+  "options": [
+   "Primordial follicle",
+   "Primary follicle",
+   "Secondary follicle",
+   "Corpus albicans"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The theca forms from the connective tissue around the follicle at the secondary stage, when the granulosa cells have become several layers thick.",
+   "options": [
+    "A primordial follicle has only a single layer of flat cells.",
+    "A primary follicle has a single layer of cube-shaped granulosa cells and no theca yet.",
+    "Correct. The outer blue-gray ring first appears at the secondary stage.",
+    "The corpus albicans is the scar left long after ovulation, not a growing follicle."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-12",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "figure": "os-27-11",
+  "pin": "first-polar-body",
+  "q": "Name the pinned cell.",
+  "options": [
+   "Secondary oocyte",
+   "Oogonium",
+   "First polar body",
+   "Primary oocyte"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The first polar body is the small haploid cell made when meiosis I finishes. It gets a set of chromosomes but almost no cytoplasm.",
+   "options": [
+    "The secondary oocyte is the large haploid cell from the same division, which keeps nearly all the cytoplasm.",
+    "The oogonium is the diploid stem cell at the top of the chart, before birth.",
+    "Correct. This small cell is the first polar body.",
+    "The primary oocyte is diploid and has not yet finished meiosis I."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-13",
+  "type": "vignette",
+  "level": "analyze",
+  "diff": 3,
+  "core": [
+   "communication",
+   "structure-function"
+  ],
+  "q": "A patient takes high doses of a drug that blocks prostaglandin synthesis around mid-cycle. Ultrasound shows her dominant follicle reached full size, and her LH rose normally, but the follicle did not rupture on schedule. Which step of ovulation did the drug most likely affect?",
+  "options": [
+   "The breakdown of the follicle wall at the bulge",
+   "The completion of meiosis I",
+   "The selection of the dominant follicle",
+   "The release of LH from the pituitary"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "After the rise in LH, protein-digesting enzymes weaken the follicle wall where it bulges from the ovary, and prostaglandins are needed for that step. Blocking them can delay rupture even when everything before it is normal.",
+   "options": [
+    "Correct. Rupture of the wall depends on prostaglandins.",
+    "Meiosis I resumes inside the oocyte in response to LH and does not depend on the wall opening; the question shows a problem with release.",
+    "The follicle had already been selected and reached full size.",
+    "Her LH rose normally, so the pituitary step was intact."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-14",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "communication"
+  ],
+  "q": "What mainly keeps the corpus luteum making progesterone during its roughly two weeks of life?",
+  "options": [
+   "High FSH",
+   "Steady LH from the anterior pituitary",
+   "Estradiol from the next dominant follicle",
+   "Oxytocin"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "LH turns the leftover follicle cells into the corpus luteum and keeps stimulating them. Without a signal from an embryo, the corpus luteum still dies after about 12 to 14 days.",
+   "options": [
+    "FSH stays low while the corpus luteum is active; its main targets are growing follicles.",
+    "Correct. LH supports the corpus luteum.",
+    "No new follicle becomes dominant while the corpus luteum is active.",
+    "Oxytocin acts on smooth muscle of the uterus and breast; it does not support the corpus luteum."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-15",
+  "type": "error",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A student listed the events of ovulation. One is wrong. Which one?",
+  "options": [
+   "A sudden rise in LH reaches the mature follicle",
+   "Meiosis I finishes and a first polar body forms",
+   "The oocyte is shot out of the ovary by a strong contraction of the uterine tube",
+   "Enzymes weaken the follicle wall where it bulges from the ovary",
+   "The oocyte oozes out with a ring of granulosa cells and is drawn into the tube"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The uterine tube does not contract to pull or eject the oocyte from the ovary. The follicle wall weakens and opens, the oocyte oozes out in fluid over a few minutes, and the fimbriae sweep it in.",
+   "options": [
+    "This step is right. The rise in LH triggers ovulation.",
+    "This step is right. Meiosis I finishes shortly before release.",
+    "This is the error. Release is a slow ooze through a weakened wall, not an ejection by the tube.",
+    "This step is right. Protein-digesting enzymes open the wall.",
+    "This step is right. The oocyte leaves wrapped in granulosa cells and is swept into the tube."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-16",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "core": [
+   "structure-function"
+  ],
+  "q": "What is the corpus albicans?",
+  "options": [
+   "A pale scar of connective tissue left when the corpus luteum dies",
+   "The yellow gland that makes progesterone after ovulation",
+   "A follicle that dies before it forms an antrum",
+   "The mound of cells the oocyte sits on"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Once the corpus luteum stops working, it shrinks into a small pale scar of dense connective tissue, the corpus albicans (\"whitening body\").",
+   "options": [
+    "Correct. It is the scar left behind.",
+    "That is the corpus luteum, the stage before it.",
+    "A follicle that dies without releasing its oocyte undergoes atresia; it does not form a corpus albicans.",
+    "That mound is made of granulosa cells inside a mature follicle."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-17",
+  "type": "missing",
+  "level": "apply",
+  "diff": 2,
+  "core": [
+   "structure-function"
+  ],
+  "q": "Complete the sequence: primary oocyte → (meiosis I) → secondary oocyte + first polar body → (sperm enters) → ____ + second polar body.",
+  "options": [
+   "Oogonium",
+   "Ovum",
+   "Primary follicle",
+   "Corpus luteum"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Sperm entry triggers meiosis II in the secondary oocyte, giving one large ovum and a second polar body.",
+   "options": [
+    "The oogonium is the stem cell at the start of oogenesis, before the primary oocyte.",
+    "Correct. The second division gives the ovum.",
+    "A primary follicle is a structure of cells around a primary oocyte, not a product of meiosis II.",
+    "The corpus luteum forms in the ovary from follicle cells, not from the oocyte."
+   ]
+  }
+ },
+ {
+  "id": "anp-ovarian-cycle-18",
+  "type": "vignette",
+  "level": "analyze",
+  "diff": 3,
+  "core": [
+   "structure-function"
+  ],
+  "q": "A 43-year-old and a 26-year-old each release one oocyte. Which statement best explains why the older woman's oocyte is more likely to carry an extra chromosome?",
+  "options": [
+   "Her oocyte was made more recently and had less time to mature",
+   "Her oocyte spent about 43 years paused in meiosis I, and the links holding its chromosome pairs weaken with time",
+   "Older ovaries make oocytes by mitosis instead of meiosis",
+   "Her oocyte skipped meiosis II"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Every oocyte began meiosis I before birth, so an oocyte released at 43 has been paused for about 43 years. The protein links holding paired chromosomes weaken over that time, which makes nondisjunction more likely when meiosis I finally finishes.",
+   "options": [
+    "No oocytes are made after birth; hers is older, not newer.",
+    "Correct. The long pause lets the chromosome links weaken, raising the risk of nondisjunction.",
+    "Oocytes always form by meiosis; no new ones are made in adult ovaries.",
+    "Meiosis II finishes only after a sperm enters, in any woman; skipping it is not the explanation."
+   ]
+  }
+ }
+]

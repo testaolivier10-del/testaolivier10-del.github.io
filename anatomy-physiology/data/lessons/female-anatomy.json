@@ -1,0 +1,46 @@
+{
+  "topic": "female-anatomy",
+  "hook": "<p>Ms. Reyes, 22, has fever and aching pain low in her pelvis on both sides. Three weeks ago she was treated for a chlamydia infection of her cervix but stopped the antibiotics early. Her doctor suspects the bacteria have climbed through the uterus and out the ends of the uterine tubes into her pelvic cavity. That path exists because the female reproductive tract is open at both ends: to the outside through the vagina, and to the peritoneal cavity through the tubes.</p>",
+  "prereq": [
+    {
+      "q": "Which cell structures beat in waves to move fluid and particles along a surface?",
+      "options": ["Microvilli", "Cilia", "Flagella"],
+      "correct": 1,
+      "why": "Cilia are short, numerous projections whose coordinated beating moves fluid and particles across a surface. Microvilli only add surface area, and a flagellum moves the single cell that carries it.",
+      "review": "organelles"
+    },
+    {
+      "q": "Which muscle tissue forms the walls of hollow internal organs and contracts involuntarily?",
+      "options": ["Skeletal muscle tissue", "Cardiac muscle tissue", "Smooth muscle tissue"],
+      "correct": 2,
+      "why": "Smooth muscle tissue lines hollow organs such as the stomach, bladder and uterus and is not under voluntary control.",
+      "review": "muscle-tissue-overview"
+    },
+    {
+      "q": "An exocrine gland releases its product:",
+      "options": ["Through a duct onto a surface", "Directly into the blood", "Only into the lymph"],
+      "correct": 0,
+      "why": "Exocrine glands secrete through ducts onto an epithelial surface or into a cavity. Endocrine glands release hormones into the blood.",
+      "review": "glands"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-27-9",
+    "caption": "The female reproductive organs from the side and from the front. Hide the labels and name the uterus, cervix, ovary, uterine tube, fimbriae and broad ligament."
+  },
+  "chain": [
+    { "cause": "An oocyte leaves the surface of the ovary into the pelvic cavity, next to the open end of the uterine tube.", "effect": "The fimbriae sweep over the ovary, and the beating cilia on them set up a current in the surrounding fluid." },
+    { "cause": "The current carries the oocyte into the funnel-shaped end of the tube.", "effect": "The oocyte enters the ampulla, the wide part of the tube where sperm usually meet it." },
+    { "cause": "Cilia on the tube lining beat toward the uterus and the smooth muscle of the wall contracts in slow waves.", "effect": "The oocyte, or an early embryo, is moved through the narrow isthmus into the uterine cavity over three to four days." },
+    { "cause": "It arrives in a cavity lined by the functional layer of the endometrium.", "effect": "An embryo can embed in that layer; if there is none, the functional layer is later shed with menstruation and the basal layer regrows it." }
+  ],
+  "misconception": {
+    "wrong": "The ovary is joined to the uterine tube, so an oocyte passes straight from the ovary into the tube.",
+    "right": "The ovary and the tube are not connected. The tube's fringed end lies over the ovary and opens into the peritoneal cavity. A released oocyte enters the pelvic cavity first and is swept into the tube by the fimbriae and the current their cilia create. That gap is why infections can spread from the tubes into the pelvis, and why an oocyte can occasionally be missed or even picked up by the tube on the other side."
+  },
+  "check": ["anp-female-anatomy-1", "anp-female-anatomy-4", "anp-female-anatomy-7", "anp-female-anatomy-9", "anp-female-anatomy-12", "anp-female-anatomy-15", "anp-female-anatomy-17"],
+  "summary": "<p>Each ovary, held by the ovarian ligament to the uterus and the suspensory ligament to the pelvic wall, stores oocytes in follicles in its cortex and makes estrogen and progesterone. Each uterine tube is open at its ovary end: fimbriae sweep a released oocyte in, and cilia and smooth muscle carry it through the ampulla and isthmus to the uterus. The uterus has a fundus, body and cervix, is draped by the broad ligament, and has three wall layers: perimetrium, myometrium and endometrium. The endometrium's functional layer is shed at each menstruation, and its basal layer regrows it. The vagina is a gland-free, stretchy, acidic muscular tube. The vulva includes the mons pubis, labia majora and minora, clitoris, and the greater vestibular glands. The mammary glands' alveoli make milk that drains through lactiferous ducts to the nipple.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" }
+  ]
+}
