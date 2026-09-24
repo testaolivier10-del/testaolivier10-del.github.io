@@ -25313,7 +25313,7 @@
               "chain": [
                 "cp"
               ],
-              "why": "Creatine phosphate is the fastest source of new ATP, and it is used up within seconds of all-out work."
+              "why": "Creatine phosphate is the fastest source of new ATP. It falls by about half in the first 10 seconds and to about a quarter of its resting level by the end of a 30-second sprint."
             },
             {
               "id": "lactate",
@@ -25364,7 +25364,7 @@
                 "epoc",
                 "rebuild"
               ],
-              "why": "The creatine kinase reaction runs backward at rest, so about half the store returns in 30 seconds and nearly all within a few minutes."
+              "why": "The creatine kinase reaction runs backward at rest, using ATP from the mitochondria. After a 30-second sprint the fibers are acidic, so rebuilding is slower than after a short burst: about half returns in the first minute, and most, though not all, within 10 minutes."
             },
             {
               "id": "mb",
@@ -25968,7 +25968,7 @@
           "steps": {
             "aerobic": "Aerobic respiration, the fibers’ main source of ATP, stops",
             "little": "The fibers have little capacity for anaerobic glycolysis",
-            "stop": "ATP supply falls, and the fibers stop contracting"
+            "stop": "Creatine phosphate is spent and phosphate builds up, weakening each cross-bridge, so the fibers stop contracting"
           },
           "variables": [
             {
@@ -25989,23 +25989,24 @@
                 "little",
                 "stop"
               ],
-              "why": "With little glycolytic capacity to fall back on, the fibers cannot keep up their ATP supply, and they stop contracting within about a minute."
+              "why": "With little glycolytic capacity to fall back on, the fibers spend most of their creatine phosphate in well under a minute. The phosphate it releases builds up and weakens each cross-bridge’s pull, so they stop contracting within about a minute, well before ATP runs out."
             },
             {
-              "id": "rest",
-              "name": "Contraction of heart muscle whose blood flow is intact",
-              "answer": "none",
+              "id": "gly",
+              "name": "ATP made by anaerobic glycolysis in the region",
+              "answer": "up",
               "chain": [
-                "aerobic"
+                "aerobic",
+                "little"
               ],
-              "why": "Other regions still receive oxygen and keep making ATP aerobically, so they keep beating."
+              "why": "Without oxygen, glycolysis speeds up, but cardiac fibers have little capacity for it, so it makes only a small share of the ATP they were using."
             }
           ]
         },
         {
           "id": "half-hour",
           "label": "After half an hour",
-          "prompt": "About 30 minutes after flow stops, if it has not been restored, compared with the first minute.",
+          "prompt": "About 30 minutes after flow stops, if it has not been restored, and in the hours and weeks that follow. Compare with the first minute unless a variable names another time.",
           "start": "The fibers in the region have gone without oxygen for 20 to 30 minutes",
           "steps": {
             "die": "Cardiac fibers begin to die",
@@ -26024,17 +26025,17 @@
             },
             {
               "id": "troponin",
-              "name": "Cardiac troponin in the blood",
+              "name": "Cardiac troponin in the blood over the next few hours",
               "answer": "up",
               "chain": [
                 "die",
                 "leak"
               ],
-              "why": "Cardiac troponin differs slightly from the skeletal form, so a blood test that finds it shows heart muscle has been damaged."
+              "why": "Once fibers begin to die, they leak their contents, including cardiac troponin, which differs slightly from the skeletal form. It takes an hour or more to rise high enough for a blood test to find it, so a test in the first hour can still be normal. A later rise shows heart muscle has died."
             },
             {
               "id": "force",
-              "name": "Force this part of the wall can produce later",
+              "name": "Force this part of the wall can produce weeks later, compared with before the attack",
               "answer": "down",
               "chain": [
                 "die",
@@ -26056,7 +26057,7 @@
       ],
       "level": 1,
       "misconception": "smooth muscle contracts only when nerves tell it to",
-      "setup": "A surgeon removes a short loop of intestine and places it in warm, oxygenated fluid, cut off from all nerves from the brain and spinal cord. Predict the changes in its wall over the next hour, compared with in the body.",
+      "setup": "A surgeon removes a short loop of intestine and places it in warm, oxygenated fluid, cut off from all nerves from the brain and spinal cord. The small nerve network inside its own wall stays with it. Predict the changes in its wall over the next hour, compared with in the body.",
       "start": "No signals arrive from the brain and spinal cord",
       "steps": {
         "pace": "Pacesetter cells keep producing slow, spontaneous waves",
@@ -26080,7 +26081,7 @@
           "chain": [
             "gap"
           ],
-          "why": "Gap junctions link the fibers into a sheet, so each wave still spreads and the sheet contracts together."
+          "why": "Gap junctions link the fibers into a sheet, so each wave still spreads. The nerve network in the gut wall, which travels with the loop, keeps coordinating the waves."
         }
       ]
     },

@@ -27446,7 +27446,7 @@
    "core": [
     "structure-function"
    ],
-   "intro": "A myogram of one twitch: the tension of a motor unit of slow fibers after a single stimulus at time zero, drawn as a percent of its own peak. Values are typical.",
+   "intro": "A myogram of one twitch: the tension of one motor unit after a single stimulus at time zero, drawn as a percent of its own peak. Values are typical.",
    "alt": "Tension against time over 150 ms. Tension stays at zero for about the first 5 ms, rises to its peak at about 35 ms, then falls more slowly, to about 40 percent by 75 ms, 13 percent by 100 ms and near zero by 150 ms.",
    "x": {
     "min": 0,
@@ -28176,7 +28176,7 @@
      "q": "Which phase lasts longest, and why?",
      "options": [
       "Relaxation, because pumping calcium back is slower than releasing it",
-      "Contraction, because cross-bridges cycle slowly in slow fibers",
+      "Contraction, because cross-bridges cycle slowly",
       "Relaxation, because the fiber must wait for its refractory period to end",
       "The latent period, because acetylcholine takes time to cross the cleft"
      ],
@@ -28199,7 +28199,7 @@
      "type": "shift",
      "level": "apply",
      "diff": 2,
-     "q": "How would the twitch of a fast fiber differ from this slow fiber’s twitch?",
+     "q": "How would the twitch of a much faster fiber differ from this twitch?",
      "options": [
       "Shorter: it peaks sooner and is over far sooner",
       "Longer: it rises more slowly but lasts longer",
@@ -28849,7 +28849,7 @@
     "structure-function",
     "communication"
    ],
-   "intro": "The tension of one muscle fiber over one second, as a percent of its maximum. The lower strip marks each stimulus: first a single stimulus, then two stimuli 40 ms apart, then 20 stimuli per second, then 100 per second. Values are from a simple model with typical proportions.",
+   "intro": "The tension of one muscle fiber over one second, as a percent of its maximum. The lower strip marks each stimulus: first a single stimulus, then two stimuli 40 ms apart, then 20 stimuli per second, then 100 per second. Values are from a simple model that just adds twitches together. Real fibers sum more strongly: 20 stimuli per second often give about half of maximum or more, and 40 per second most of it.",
    "alt": "Two stacked graphs over 1000 ms. The lower strip shows stimuli: one at 0 ms, two at 200 and 240 ms, then evenly spaced stimuli every 50 ms from 400 to 650 ms and every 10 ms from 750 to 1000 ms. Above, tension from one stimulus rises to a peak of about 25 percent and falls back. Two close stimuli give a higher peak of about 36 percent. At 20 per second, tension climbs in waves to a wavy plateau between about 27 and 35 percent. At 100 per second, tension climbs smoothly to a flat plateau of about 100 percent.",
    "x": {
     "min": 0,
@@ -32118,7 +32118,7 @@
    "core": [
     "structure-function"
    ],
-   "intro": "The active tension a muscle fiber can produce when stimulated into complete tetanus at different sarcomere lengths, as a percent of its maximum. Sarcomere length is a percent of resting length.",
+   "intro": "The active tension a muscle fiber can produce when stimulated into complete tetanus at different sarcomere lengths, as a percent of its maximum. Sarcomere length is a percent of resting length, taken here as the length where tension is greatest. The numbers come from classic measurements on single frog fibers, whose filaments match the band worked example (thick 1.6 µm, thin reaching 1.0 µm from each Z disc): there 100 percent is about 2.1 µm, and overlap ends at about 3.6 µm, 170 percent. Human thin filaments are a little longer, so a human curve has the same shape but peaks at about 2.6 to 2.8 µm.",
    "alt": "Active tension against sarcomere length from 60 to 180 percent of resting length. Tension is zero at 60 percent, climbs steeply to about 80 percent of maximum at 80 percent length and to the maximum by 95 percent, stays flat at the maximum to 110 percent, then falls in a straight line to 50 percent at 140 percent length and zero at 170 percent.",
    "x": {
     "min": 60,

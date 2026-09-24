@@ -18205,8 +18205,8 @@
    ],
    "level": "apply",
    "compare": "Creatine phosphate vs anaerobic glycolysis vs aerobic respiration",
-   "front": "How fast is creatine phosphate rebuilt after a sprint?",
-   "back": "About half in 30 seconds and nearly all within a few minutes, using ATP from the mitochondria.",
+   "front": "How fast is creatine phosphate rebuilt after a short sprint?",
+   "back": "About half in 30 seconds and nearly all within a few minutes, using ATP from the mitochondria. After a longer sprint that makes the fibers acidic, it is slower.",
    "why": "That is why sprinters rest between repeats."
   },
   {

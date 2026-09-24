@@ -11942,7 +11942,7 @@
           "id": "ap",
           "label": "Fiber action potential",
           "text": "The end plate potential brings the neighboring sarcolemma to threshold, and an action potential sweeps toward both ends of the fiber.",
-          "why": "Only the membrane around the end plate has the voltage-gated sodium channels needed to fire, and the end plate potential is several times bigger than needed."
+          "why": "The crests of the folds, packed with receptor proteins, do not fire. The fold depths and the membrane around the end plate carry the voltage-gated sodium channels, and the end plate potential is several times bigger than needed to open them."
         },
         {
           "id": "ache",
