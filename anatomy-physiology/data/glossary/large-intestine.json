@@ -1,0 +1,32 @@
+{
+  "large-intestine-regions": {
+    "def": "The large intestine runs from the ileocecal valve to the anus: the cecum (a blind pouch with the appendix), the colon (ascending, transverse, descending and sigmoid, with the right and left colic flexures at its bends), the rectum (with its rectal valves) and the anal canal (with its anal columns and two sphincters).",
+    "roots": [["caecus (Latin)", "blind"], ["sigm-", "the Greek letter S"], ["-oid", "like"], ["rectus", "straight"], ["colic", "of the colon"], ["flexure", "bend"]],
+    "say": "SEE-kum"
+  },
+  "haustra": {
+    "def": "The pouches of the colon wall (singular haustrum), formed because the colon's outer longitudinal muscle is gathered into three ribbons, the teniae coli, whose tone bunches the wall. Epiploic appendages are small fat-filled tags of peritoneum on the surface. Haustral contractions slowly squeeze contents from one pouch to the next.",
+    "roots": [["haustrum (Latin)", "bucket on a water wheel"], ["taenia", "ribbon"], ["coli", "of the colon"], ["epiploon (Greek)", "omentum"]],
+    "say": "HAWS-truh; TEE-nee-ee KOH-lye"
+  },
+  "gut-microbiota": {
+    "def": "The community of trillions of bacteria living mainly in the colon (also called normal flora). They ferment fiber (saccharolytic fermentation) into short-chain fatty acids and gas (flatus), turn bilirubin into stercobilin, make some vitamins, and crowd out harmful microbes.",
+    "roots": [["micro-", "small"], ["bio-", "life"], ["sacchar-", "sugar"], ["-lytic", "breaking down"], ["flatus (Latin)", "a blowing"]],
+    "say": ""
+  },
+  "colon-absorption": {
+    "def": "The colon absorbs about 90% of the roughly 1.5 L of fluid that reaches it each day. Epithelial cells take up sodium actively, chloride follows, and water follows by osmosis; aldosterone increases it. The longer contents stay, the more water is absorbed.",
+    "roots": [],
+    "say": ""
+  },
+  "defecation-reflex": {
+    "def": "A visceral reflex: stretch of the rectum, usually after a mass movement, signals the sacral spinal cord, which makes the rectum contract and the internal anal sphincter relax. The external anal sphincter is voluntary, so you choose when defecation happens, often helped by a Valsalva's maneuver.",
+    "roots": [["de-", "away"], ["faec- (Latin)", "dregs"]],
+    "say": ""
+  },
+  "diarrhea-constipation": {
+    "def": "Diarrhea is three or more loose or watery stools a day, from secretion, unabsorbed solutes, inflammation or fast transit; it loses water, sodium, potassium and bicarbonate. Constipation is infrequent, hard stools, usually from slow transit, which lets the colon absorb more water.",
+    "roots": [["dia-", "through"], ["-rrhea", "flow"], ["con-", "together"], ["stipare (Latin)", "to pack"]],
+    "say": ""
+  }
+}

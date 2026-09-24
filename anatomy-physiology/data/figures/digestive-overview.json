@@ -1,0 +1,87 @@
+{
+  "os-23-2": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.2",
+      "section": "23.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/abe85277d60c52f85be133e1b5ddc40aea009e1c",
+      "page": "23-1-overview-of-the-digestive-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/abe85277d60c52f85be133e1b5ddc40aea009e1c",
+    "alt": "A front view of a person's head and trunk with the digestive organs drawn in place. A single tube runs from the mouth and throat down the neck and chest to a pouch under the left ribs, then through many coils in the abdomen to a wider tube that frames them and ends at the anus. Glands beside the jaw, a large reddish organ under the right ribs with a small green sac beneath it, and a pale gland behind the pouch are labeled as well.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.2",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1367
+  },
+  "os-23-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.3",
+      "section": "23.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/cfa0a944ef93cbf70c104f57c04cbd286ca74e3b",
+      "page": "23-1-overview-of-the-digestive-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/cfa0a944ef93cbf70c104f57c04cbd286ca74e3b",
+    "alt": "A cutaway drawing of a short length of digestive tube with its layers peeled back like nested sleeves. From the central space outward: an inner lining with glands and small patches of lymphoid tissue, a thin muscle layer, a connective tissue layer carrying blood vessels, nerves and a nerve network, a ring of circular muscle and a sheet of lengthwise muscle with a second nerve network between them, and a thin outer covering. A sheet of tissue carrying an artery, a vein and a nerve attaches the tube to the body wall.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.3",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1059,
+    "h": 604
+  },
+  "os-23-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.4",
+      "section": "23.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/70bb035e0afcdda5af86eeb79525b8d2e75b0504",
+      "page": "23-1-overview-of-the-digestive-system"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/70bb035e0afcdda5af86eeb79525b8d2e75b0504",
+    "alt": "A cross section through the upper abdomen, with the back at the top of the drawing. A dark line traces a membrane that lines the inside of the body wall and folds inward to wrap the stomach, the intestines, the liver and the spleen, leaving a thin space between its two layers. The kidneys and pancreas sit against the back wall, behind the membrane.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.4",
+    "labels": [],
+    "ext": "jpg",
+    "w": 826,
+    "h": 589
+  },
+  "os-23-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.5",
+      "section": "23.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d5a1371691fee08cef0c64e47d65e0d95a601e30",
+      "page": "23-2-digestive-system-processes-and-regulation"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/d5a1371691fee08cef0c64e47d65e0d95a601e30",
+    "alt": "Three side-by-side drawings of a tube with a hatched lump of food inside. In each, the wall just behind the lump is squeezed inward while the wall ahead of it is wide, and the squeeze sits a little lower in each drawing, pushing the lump down the tube.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.5",
+    "labels": [],
+    "ext": "jpg",
+    "w": 542,
+    "h": 405
+  },
+  "os-23-20": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.20",
+      "section": "23.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5d96eb41fcdfc0f7134331cec1795295aa0cb659",
+      "page": "23-5-the-small-and-large-intestines"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/5d96eb41fcdfc0f7134331cec1795295aa0cb659",
+    "alt": "Three drawings of a length of intestine pinched at regular intervals into a chain of pockets, each holding a colored lump. In the first, the lumps alternate between two colors. In the second, the pinches have moved to the middle of each old pocket, so each lump is split and pushed together with half of its neighbor. In the third, every lump is an even mix of the two colors.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.20",
+    "labels": [],
+    "ext": "jpg",
+    "w": 442,
+    "h": 484
+  }
+}

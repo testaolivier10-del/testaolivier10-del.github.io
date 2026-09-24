@@ -1,0 +1,38 @@
+{
+  "os-23-21": {
+    "file": "figures/openstax/os-23-21.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.21",
+      "section": "23.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/02fb682d178b7662f7447ac690a161a66886639b",
+      "page": "23-5-the-small-and-large-intestines"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/02fb682d178b7662f7447ac690a161a66886639b",
+    "alt": "A front view of the large intestine framing the faded coils of the small intestine. A yellow-green pouch in the lower right receives the end of the small intestine, with a small worm-like tube hanging below it. From there a gray-green, puckered tube rises up the right side, bends sharply under where the liver would be, crosses the abdomen, bends down again higher on the left, descends the left side and makes an S-shaped loop in the pelvis. It joins a purple straight segment that ends in a short canal at the bottom.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.21",
+    "labels": [],
+    "w": 633,
+    "h": 427,
+    "ext": "jpg"
+  },
+  "os-23-23": {
+    "file": "figures/openstax/os-23-23.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.23",
+      "section": "23.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d41e017155a3d7eb580a2e1e362f2083c8eaae29",
+      "page": "23-5-the-small-and-large-intestines"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/d41e017155a3d7eb580a2e1e362f2083c8eaae29",
+    "alt": "A close view of the outer surface of the colon. The wall bulges into a row of rounded pouches. A narrow pale yellow ribbon of muscle runs lengthwise down the tube, and small yellow fat-filled tags hang from the surface along it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.23",
+    "labels": [],
+    "w": 636,
+    "h": 699,
+    "ext": "jpg"
+  }
+}

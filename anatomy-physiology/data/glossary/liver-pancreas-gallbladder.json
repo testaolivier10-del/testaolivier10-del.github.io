@@ -1,0 +1,32 @@
+{
+  "liver-anatomy": {
+    "def": "The liver is built of lobules: plates of hepatocytes radiating from a central vein, with hepatic sinusoids between the plates and a portal triad (portal vein branch, hepatic artery branch, bile duct) at each corner. Blood flows inward to the central vein; bile flows outward in bile canaliculi to the bile ducts.",
+    "roots": [["hepat-", "liver"], ["-cyte", "cell"], ["lobule", "small lobe"], ["sinus", "cavity"], ["-oid", "like"], ["canaliculus", "little canal"], ["porta", "gate"]],
+    "say": "HEP-uh-toh-site"
+  },
+  "liver-functions": {
+    "def": "The liver's jobs: storing and releasing glucose, making plasma proteins such as albumin and clotting factors, handling the nitrogen from broken-down amino acids, chemically processing drugs and toxins (detoxification), excreting bilirubin, storing iron and vitamins, and making bile.",
+    "roots": [["de-", "remove"], ["tox-", "poison"]],
+    "say": ""
+  },
+  "bile": {
+    "def": "A yellow-green, slightly alkaline fluid made by hepatocytes: water, bicarbonate, bile salts, bilirubin, cholesterol and phospholipids. Its bile salts emulsify fat into tiny droplets; it has no digestive enzymes. It drains through the hepatic ducts and the common bile duct, and its bile salts are reabsorbed in the ileum and reused (the enterohepatic circulation).",
+    "roots": [["emulgere (Latin)", "to milk out"], ["enter-", "intestine"], ["hepat-", "liver"]],
+    "say": ""
+  },
+  "gallbladder": {
+    "def": "A small muscular sac under the liver that stores bile between meals and concentrates it by absorbing salt and water. Cholecystokinin makes it contract and empty bile into the duodenum. Gallstones form in it, most often from cholesterol.",
+    "roots": [["gall", "bile"], ["chole-", "bile"], ["cyst-", "bladder"]],
+    "say": ""
+  },
+  "pancreatic-juice": {
+    "def": "The alkaline fluid the exocrine pancreas secretes into the duodenum, about 1.2 to 1.5 L a day. Duct cells add bicarbonate, which neutralizes stomach acid; acinar cells add enzymes: pancreatic amylase, pancreatic lipase, and protein-digesting enzymes released as inactive precursors (trypsinogen, chymotrypsinogen) that enteropeptidase and trypsin activate in the duodenum.",
+    "roots": [["pan-", "all"], ["creas", "flesh"], ["acinus", "grape, berry"], ["-ogen", "producing (a precursor)"], ["amyl-", "starch"], ["lip-", "fat"], ["-ase", "enzyme"]],
+    "say": "tripp-SIN-oh-jen"
+  },
+  "pancreatitis-hepatitis": {
+    "def": "Pancreatitis is inflammation of the pancreas, often from trypsin activated inside the gland by a gallstone blockage or alcohol. Hepatitis is inflammation of the liver, from viruses, alcohol, fat buildup, drugs or autoimmunity. Cirrhosis is scarring after years of liver injury, which raises portal vein pressure and leaves too few working hepatocytes.",
+    "roots": [["-itis", "inflammation"], ["kirrhos (Greek)", "tawny"]],
+    "say": "sih-ROH-sis"
+  }
+}

@@ -1,0 +1,418 @@
+[
+  {
+    "id": "anp-large-intestine-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-23-21",
+    "pin": "cecum",
+    "q": "Name the pinned region.",
+    "options": ["Ileum", "Sigmoid colon", "Cecum", "Ascending colon"],
+    "correct": 2,
+    "why": {
+      "correct": "The cecum is the blind pouch at the start of the large intestine, in the lower right, below the ileocecal valve. The appendix hangs from it.",
+      "options": [
+        "The ileum is the last part of the small intestine, which opens into the large intestine beside the pinned pouch.",
+        "The sigmoid colon is the S-shaped loop in the pelvis, at the other end of the colon.",
+        "Correct. The blind-ended pouch is the cecum.",
+        "The ascending colon starts above the cecum and rises up the right side."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-23-21",
+    "pin": "sigmoid-colon",
+    "q": "Name the pinned region.",
+    "options": ["Descending colon", "Sigmoid colon", "Rectum", "Transverse colon"],
+    "correct": 1,
+    "why": {
+      "correct": "The sigmoid colon is the S-shaped loop in the pelvis between the descending colon and the rectum.",
+      "options": [
+        "The descending colon runs straight down the left side, above the pinned loop.",
+        "Correct. The S-shaped loop is the sigmoid colon.",
+        "The rectum is the straighter segment that follows the loop, in front of the sacrum.",
+        "The transverse colon crosses the top of the abdomen."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-23-23",
+    "pin": "teniae-coli",
+    "q": "Name the pinned structure.",
+    "options": ["Epiploic appendages", "Haustra", "Mesentery", "Teniae coli"],
+    "correct": 3,
+    "why": {
+      "correct": "The teniae coli are ribbons of longitudinal smooth muscle running the length of the colon. There are three.",
+      "options": [
+        "Epiploic appendages are the small fatty tags hanging from the surface, not the long ribbon.",
+        "Haustra are the pouches between the constrictions, which the teniae coli create.",
+        "A mesentery is a double sheet of peritoneum that suspends the gut from the body wall, not a muscle band on it.",
+        "Correct. The long ribbon of muscle is a tenia coli."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-23-23",
+    "pin": "haustra",
+    "q": "Name the pinned structures.",
+    "options": ["Haustra", "Circular folds", "Villi", "Rugae"],
+    "correct": 0,
+    "why": {
+      "correct": "Haustra are the pouches of the colon wall, formed because the shorter teniae coli bunch the wall up.",
+      "options": [
+        "Correct. The rounded pouches are haustra.",
+        "Circular folds are ridges of the small intestine's mucosa and submucosa, seen from inside, not pouches of the whole wall.",
+        "Villi are microscopic projections of the small intestine's lining; the large intestine has none.",
+        "Rugae are folds in the lining of the stomach."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Put the steps of the defecation reflex in order, starting from a mass movement.",
+    "options": [
+      "A mass movement pushes feces into the rectum",
+      "The rectal wall stretches and its stretch-sensitive sensory receptors fire",
+      "Sensory neurons carry the signal to the sacral spinal cord",
+      "Parasympathetic neurons make the rectum contract and the internal anal sphincter relax",
+      "You choose to relax the external anal sphincter",
+      "Feces pass out through the anal canal"
+    ],
+    "why": {
+      "correct": "Filling stretches the rectum. Stretch-sensitive sensory receptors signal the sacral cord, which sends parasympathetic output that contracts the rectum and relaxes the internal sphincter. The last gate, the external sphincter, is voluntary, so defecation happens only when you relax it."
+    }
+  },
+  {
+    "id": "anp-large-intestine-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "misconception": "the colon absorbs most of the water",
+    "q": "About 9 L of fluid enter your gut each day from food, drink and secretions. Where is most of it absorbed?",
+    "options": ["In the stomach", "In the colon", "In the small intestine", "In the rectum"],
+    "correct": 2,
+    "why": {
+      "correct": "The small intestine absorbs about 7 to 8 L a day. The colon absorbs most of what is left, about 1.3 to 1.4 of the 1.5 L that reaches it. The colon's share is large compared with what arrives, but small compared with the total.",
+      "options": [
+        "The stomach absorbs very little water; its lining is built to hold acid in, not to absorb.",
+        "The colon absorbs about 90% of what reaches it, but only about 1.5 L arrives, a small fraction of the 9 L total.",
+        "Correct. Most absorption, of water as of nutrients, happens in the small intestine.",
+        "The rectum stores feces briefly and absorbs little."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "mass-balance"],
+    "q": "How does the colon absorb water?",
+    "options": ["Carrier proteins pump water molecules across the epithelium using ATP", "It actively absorbs sodium, and water follows by osmosis", "Bacteria in the lumen take up water and carry it into the wall", "Contractions of the haustra force water through the lining"],
+    "correct": 1,
+    "why": {
+      "correct": "Sodium enters the epithelial cells through channels and is pumped out the other side by sodium–potassium pumps; chloride follows. With more solute on the blood side, water moves by osmosis. No transporter pumps water itself.",
+      "options": [
+        "There is no water pump. Water moves passively, following the solute gradient that the sodium pumps set up.",
+        "Correct. Water follows the sodium the colon absorbs.",
+        "Bacteria do not ferry water into the wall.",
+        "Haustral contractions mix and press contents against the lining, which helps contact, but the pressure they make does not drive absorption."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["mass-balance", "communication"],
+    "q": "A patient starts taking an opioid pain drug, which slows the movements of the colon. Predict the change in each variable over the following days.",
+    "variables": [
+      { "name": "Time feces spend in the colon", "answer": "up", "why": "Opioids depress the enteric neurons that drive haustral contractions and mass movements, so contents move more slowly." },
+      { "name": "Water absorbed from each day's contents", "answer": "up", "why": "Contents stay longer in contact with the lining, so more sodium, and water with it, is absorbed." },
+      { "name": "Water content of the stool", "answer": "down", "why": "More water absorbed leaves less in the feces." },
+      { "name": "Number of stools per week", "answer": "down", "why": "Fewer mass movements deliver feces to the rectum less often, so the defecation reflex is triggered less often." }
+    ],
+    "why": {
+      "correct": "Slower movement gives the colon more time to absorb water, so stools become harder, drier and less frequent: opioid constipation. The cause is timing, not a change in the absorbing cells."
+    }
+  },
+  {
+    "id": "anp-large-intestine-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["interdependence"],
+    "q": "A 74-year-old woman finishes a two-week course of a broad-spectrum antibiotic for pneumonia. A week later she has frequent watery diarrhea, cramps and fever. Stool tests find toxins from Clostridioides difficile. Which explanation fits best?",
+    "options": ["The antibiotic thinned her normal colon bacteria, and a resistant species overgrew and made toxins", "The antibiotic destroyed her teniae coli, so her colon moved too fast", "The antibiotic blocked her colon's sodium channels, so no water was absorbed", "The antibiotic made her pancreas stop secreting enzymes"],
+    "correct": 0,
+    "why": {
+      "correct": "A settled gut microbiota crowds out invaders by taking up space and nutrients. Broad-spectrum antibiotics kill many of these bacteria. A resistant species can then overgrow, and its toxins inflame the colon, causing diarrhea.",
+      "options": [
+        "Correct. Loss of the normal flora's crowding-out effect lets the resistant species take over.",
+        "Antibiotics act on bacteria, not on the smooth muscle of the teniae coli.",
+        "Antibiotics do not block the colon's sodium channels. The toxins cause the diarrhea.",
+        "Pancreatic secretion is unaffected; missing enzymes would cause fatty stools, not a toxin-driven inflammatory diarrhea."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-10",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Select every job done by the bacteria of the colon.",
+    "options": ["Fermenting fiber into short-chain fatty acids and gas", "Turning bilirubin into stercobilin", "Making some vitamins, including vitamin K", "Secreting bile salts", "Crowding out harmful microbes", "Absorbing most of the water in the colon"],
+    "correct": [0, 1, 2, 4],
+    "why": {
+      "correct": "Colon bacteria ferment fiber, change bilirubin into the brown pigment stercobilin, make some vitamins, and crowd out invaders. Bile salts come from the liver, and water is absorbed by the colon's own epithelial cells.",
+      "options": [
+        "Correct. Saccharolytic fermentation makes acetate, propionate, butyrate and gas.",
+        "Correct. Bacteria turn bilirubin into urobilinogen and then stercobilin.",
+        "Correct. Some gut bacteria make vitamin K, though how much you absorb is uncertain.",
+        "Bile salts are made by hepatocytes. Bacteria only alter the few that escape reabsorption.",
+        "Correct. A settled community takes up space and nutrients that invaders would need.",
+        "Water absorption is done by the colon's epithelial cells, which absorb sodium and let water follow."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "What forms the haustra of the colon?",
+    "options": ["Fat-filled pouches of peritoneum hanging from the outside", "Circular folds of the mucosa that trap chyme", "Villi arranged in rings", "Longitudinal muscle gathered into three bands shorter than the wall"],
+    "correct": 3,
+    "why": {
+      "correct": "The colon's outer longitudinal muscle is gathered into three ribbons, the teniae coli. They are shorter than the wall and keep up tone, so they bunch it into pouches.",
+      "options": [
+        "Those fatty tags are the epiploic appendages. They hang from the colon but do not make the pouches.",
+        "The large intestine has no circular folds.",
+        "The large intestine has no villi.",
+        "Correct. The teniae coli gather the wall into haustra."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "A 30-year-old man has a spinal cord injury at T6. His sacral cord is intact. After a mass movement fills his rectum, what happens?",
+    "options": ["Nothing, because the defecation reflex needs the brain", "The rectum contracts and the internal sphincter relaxes by reflex, but he neither feels the urge nor controls the external sphincter", "He feels the urge normally but his rectum cannot contract", "His internal sphincter stays closed, but he can relax his external sphincter at will"],
+    "correct": 1,
+    "why": {
+      "correct": "The defecation reflex runs through the sacral cord, which is intact, so stretch still makes the rectum contract and the internal sphincter relax. The injury cuts the pathways to and from the brain, so he loses the sensation of urge and voluntary control of the external sphincter.",
+      "options": [
+        "The reflex arc is in the sacral cord, not the brain, so it still works.",
+        "Correct. The reflex survives; sensation and voluntary control are lost.",
+        "Sensation travels up through the injured cord, so he does not feel the urge normally, while the reflex contraction of the rectum still works.",
+        "The internal sphincter still relaxes by reflex, and voluntary control of the external sphincter needs signals from the brain, which the injury blocks."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function", "communication"],
+    "q": "A student described the anal sphincters. One statement is wrong. Which one?",
+    "options": [
+      "The internal anal sphincter is a thickening of the circular smooth muscle",
+      "The internal anal sphincter relaxes by reflex when the rectum stretches",
+      "The external anal sphincter is smooth muscle controlled by the enteric nervous system",
+      "The external anal sphincter lets you delay defecation",
+      "A Valsalva's maneuver raises pressure inside the abdomen"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The external anal sphincter is skeletal muscle, controlled by somatic motor neurons from the sacral cord. That is why you can control it voluntarily.",
+      "options": [
+        "This statement is right. The internal sphincter is part of the muscularis externa.",
+        "This statement is right. Relaxing it is part of the defecation reflex.",
+        "This is the error. The external sphincter is skeletal muscle under voluntary control.",
+        "This statement is right. Tightening it holds feces in until the urge fades.",
+        "This statement is right. Closing the glottis and tightening the diaphragm and abdominal muscles raises abdominal pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["mass-balance", "gradients"],
+    "q": "A traveler with cholera passes more than 10 L of watery stool a day. The toxin makes his intestinal lining secrete chloride into the lumen. Why does the colon fail to prevent the diarrhea?",
+    "options": ["The toxin destroys the colon so it can no longer absorb water", "The colon stops moving, so fluid pools and leaks out", "Chloride blocks the colon's sodium channels", "The fluid arriving far exceeds the colon's maximum absorption of about 4 to 5 L a day"],
+    "correct": 3,
+    "why": {
+      "correct": "Secreted chloride draws sodium and water into the lumen, so far more fluid than usual leaves the small intestine. The colon keeps absorbing, but it can take up only about 4 to 5 L a day. Everything above that leaves as diarrhea.",
+      "options": [
+        "The colon is not destroyed. Cholera works mainly on the small intestine, and the colon keeps absorbing near its limit.",
+        "Cholera does not stop colon movement; the diarrhea comes from the volume of fluid.",
+        "Chloride does not block sodium channels; the colon's sodium absorption continues.",
+        "Correct. Secretory diarrhea overwhelms the colon's capacity."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "mass-balance"],
+    "q": "A child eats a large bag of sugar-free candy sweetened with sorbitol, which the gut absorbs poorly. By what mechanism does diarrhea follow?",
+    "options": ["Secretory: sorbitol makes the lining secrete chloride", "Osmotic: unabsorbed sorbitol holds water in the lumen", "Inflammatory: sorbitol damages the epithelial cells", "Reflex: sorbitol triggers the defecation reflex directly"],
+    "correct": 1,
+    "why": {
+      "correct": "A solute that stays in the lumen holds water with it by osmosis, so more fluid reaches the colon than it can absorb. Bacteria fermenting the sorbitol add gas.",
+      "options": [
+        "Secretory diarrhea comes from toxins that make cells secrete chloride. Sorbitol acts by staying in the lumen.",
+        "Correct. This is osmotic diarrhea.",
+        "Sorbitol does not damage the lining.",
+        "The defecation reflex is triggered by rectal stretch, not by sorbitol itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Many people feel the urge to defecate soon after breakfast. What explains this?",
+    "options": ["The gastrocolic reflex: stomach stretch triggers mass movements in the colon", "Breakfast is digested so fast that it reaches the rectum within minutes", "Coffee and food relax the external anal sphincter", "Morning cortisol contracts the teniae coli"],
+    "correct": 0,
+    "why": {
+      "correct": "Food stretching the stomach triggers the gastrocolic reflex, which increases colon motility and sets off mass movements. They push feces already in the colon into the rectum, and rectal stretch causes the urge.",
+      "options": [
+        "Correct. The urge comes from contents already in the colon, moved by the reflex.",
+        "Breakfast itself takes a day or more to reach the rectum. What moves is yesterday's residue.",
+        "The external sphincter is voluntary; food does not relax it.",
+        "Cortisol does not drive colon contractions in this way."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which comparison between the small and large intestine is correct?",
+    "options": ["The large intestine is longer than the small intestine", "Only the large intestine has villi", "Only the small intestine has teniae coli", "The large intestine has more goblet cells and no villi"],
+    "correct": 3,
+    "why": {
+      "correct": "The large intestine's lining is flat, with no villi or circular folds, and goblet cells are far more common than in the small intestine. It is wider but much shorter.",
+      "options": [
+        "The large intestine is about 1.5 m; the small intestine is several meters.",
+        "It is the other way round: villi are in the small intestine.",
+        "Teniae coli belong to the large intestine.",
+        "Correct. More goblet cells, no villi."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-18",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Complete the route of contents through the large intestine: cecum → ascending colon → transverse colon → descending colon → ____ → rectum → anal canal.",
+    "options": ["Sigmoid colon", "Ileum", "Appendix", "Duodenum"],
+    "correct": 0,
+    "why": {
+      "correct": "The descending colon leads into the S-shaped sigmoid colon in the pelvis, which joins the rectum.",
+      "options": [
+        "Correct. The sigmoid colon comes between the descending colon and the rectum.",
+        "The ileum is the end of the small intestine, before the cecum.",
+        "The appendix is a blind tube hanging from the cecum; contents do not pass through it.",
+        "The duodenum is the start of the small intestine."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-19",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["mass-balance", "homeostasis"],
+    "q": "A child has had severe watery diarrhea for two days. Predict the change in each variable in the child's blood and body, compared with before the illness.",
+    "variables": [
+      { "name": "Blood volume", "answer": "down", "why": "Water and sodium lost in stool leave the extracellular fluid, including the plasma." },
+      { "name": "Plasma potassium", "answer": "down", "why": "The colon secretes potassium into the lumen, and large volumes of stool carry it out." },
+      { "name": "Plasma bicarbonate", "answer": "down", "why": "Intestinal fluid is rich in bicarbonate, which is lost with the stool." },
+      { "name": "Blood pH", "answer": "down", "why": "Losing bicarbonate removes base from the blood's main buffer, so the blood becomes more acidic." },
+      { "name": "Heart rate", "answer": "up", "why": "Lower blood volume lowers venous return and blood pressure, and the baroreceptor reflex raises sympathetic drive to the heart." }
+    ],
+    "why": {
+      "correct": "Diarrhea removes water, sodium, potassium and bicarbonate from the body. Blood volume falls, so the heart speeds up by reflex; potassium falls; and the loss of bicarbonate makes the blood more acidic."
+    }
+  },
+  {
+    "id": "anp-large-intestine-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why does a high-fiber diet usually relieve constipation?",
+    "options": ["Fiber is digested into glucose, which speeds colon movements", "Fiber holds water in the stool and adds bulk that stretches the colon wall", "Fiber blocks the colon's sodium pumps so no water is absorbed", "Fiber kills the gut bacteria that slow transit"],
+    "correct": 1,
+    "why": {
+      "correct": "Fiber is not digested by your enzymes. It holds water in the stool, feeds bacteria whose bodies add bulk, and makes a larger, softer mass. The stretch of a bigger mass triggers stronger contractions, so transit speeds up.",
+      "options": [
+        "Your enzymes cannot digest most fiber; bacteria ferment some of it into short-chain fatty acids, not glucose for you.",
+        "Correct. Water held in bulky stool and stretch-driven contractions both help.",
+        "Fiber does not block sodium pumps; absorption continues normally.",
+        "Fiber feeds gut bacteria rather than killing them."
+      ]
+    }
+  },
+  {
+    "id": "anp-large-intestine-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["interdependence"],
+    "q": "Why do gut bacteria thrive in the colon but stay sparse in the stomach and upper small intestine?",
+    "options": ["The colon secretes nutrients for bacteria", "The colon has no mucus to keep bacteria off its lining", "Upstream, acid and fast flow keep them down; the colon is slow, warm and low in oxygen", "Bile salts are made only in the colon"],
+    "correct": 2,
+    "why": {
+      "correct": "Stomach acid kills many swallowed bacteria, and the small intestine moves its contents through in a few hours. In the colon contents stay a day or more, with little oxygen and plenty of undigested fiber, so bacteria multiply.",
+      "options": [
+        "The colon does not secrete nutrients for bacteria; they live on undigested food, mostly fiber, and on mucus.",
+        "The colon has a thick mucus layer, which keeps bacteria off the lining.",
+        "Correct. Conditions, not special feeding, favor bacteria in the colon.",
+        "Bile salts are made in the liver, and they tend to hold bacteria down rather than help them."
+      ]
+    }
+  }
+]

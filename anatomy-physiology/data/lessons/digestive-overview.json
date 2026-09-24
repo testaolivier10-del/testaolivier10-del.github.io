@@ -1,0 +1,48 @@
+{
+  "topic": "digestive-overview",
+  "hook": "<p>Mr. Okafor, 58, had part of his intestine removed yesterday. Today his abdomen is swollen and quiet: through a stethoscope the nurse hears none of the usual gurgles, and he cannot keep water down. His surgeon is not surprised. Handling the intestine and the opioid pain medicine have both quieted the nerve network in the gut wall that drives its muscle. By the third day the gurgles return, he passes gas, and he is allowed to eat. This topic explains the tube, the muscle and the nerves he was waiting on.</p>",
+  "prereq": [
+    {
+      "q": "Which layer of a serous membrane lies directly on the surface of an organ?",
+      "options": ["The parietal layer", "The visceral layer", "The fibrous layer"],
+      "correct": 1,
+      "why": "The visceral layer covers the organ itself; the parietal layer lines the wall of the cavity. The thin space between them holds serous fluid.",
+      "review": "body-cavities"
+    },
+    {
+      "q": "Which kind of muscle tissue lines the walls of hollow organs such as blood vessels and the gut, and contracts without conscious control?",
+      "options": ["Skeletal muscle", "Cardiac muscle", "Smooth muscle"],
+      "correct": 2,
+      "why": "Smooth muscle forms the walls of hollow organs. It is involuntary and is controlled by the autonomic nervous system, hormones and local signals.",
+      "review": "muscle-tissue-overview"
+    },
+    {
+      "q": "After a large meal, parasympathetic activity dominates. What happens to movement and secretion in the stomach and intestines?",
+      "options": ["Both increase", "Both decrease", "Movement increases but secretion decreases"],
+      "correct": 0,
+      "why": "The rest-and-digest pattern increases both gut movement and gut secretion; sympathetic activity reduces both.",
+      "review": "ans-control"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-23-2",
+    "caption": "The digestive organs in place. Hide the labels and name each part of the alimentary canal from mouth to anus, then the accessory organs beside it."
+  },
+  "chain": [
+    { "cause": "A mouthful of food stretches a short length of the gut wall.", "effect": "Sensory neurons of the enteric nervous system in the wall detect the stretch and excite enteric interneurons." },
+    { "cause": "The interneurons signal enteric motor neurons on both sides of the stretched spot.", "effect": "Behind the food, excitatory motor neurons release acetylcholine; ahead of it, inhibitory motor neurons release nitric oxide." },
+    { "cause": "Acetylcholine contracts the circular muscle behind the food while nitric oxide relaxes the circular muscle ahead of it.", "effect": "The tube narrows behind the food and widens in front, so the food is pushed forward." },
+    { "cause": "The food now stretches the next length of wall.", "effect": "The same short reflex fires there, so the contraction travels along the tube as a peristaltic wave." },
+    { "cause": "Parasympathetic fibers in the vagus nerve excite the enteric neurons, and sympathetic fibers inhibit them.", "effect": "Peristalsis becomes stronger and more frequent after a meal and weaker during stress, while the ENS still runs the pattern itself." }
+  ],
+  "misconception": {
+    "wrong": "The brain drives the movements of the gut, so cutting the gut's nerve supply stops digestion.",
+    "right": "The enteric nervous system in the gut wall runs peristalsis, segmentation and secretion by itself through short reflexes. A length of intestine removed from the body still pushes its contents along. The vagus and sympathetic nerves only turn this activity up or down. What stops the gut after surgery is not loss of the brain's commands but inhibition of the enteric neurons and muscle by handling, inflammation, sympathetic activity and opioids."
+  },
+  "check": ["anp-digestive-overview-2", "anp-digestive-overview-3", "anp-digestive-overview-6", "anp-digestive-overview-8", "anp-digestive-overview-10", "anp-digestive-overview-12", "anp-digestive-overview-15"],
+  "summary": "<p>The alimentary canal (GI tract) is one tube from mouth to anus: mouth, pharynx, esophagus, stomach, small intestine and large intestine. The accessory organs (teeth, tongue, glands that make saliva, liver, gallbladder, pancreas) work from outside it. Food undergoes ingestion, propulsion, mechanical digestion, chemical digestion, absorption and defecation. The wall has four layers: mucosa, submucosa, muscularis externa (inner circular and outer longitudinal smooth muscle) and serosa. Peristalsis moves contents forward and segmentation mixes them. The enteric nervous system (myenteric and submucosal plexuses) runs these movements and secretions through short reflexes; long reflexes through the brainstem and spinal cord, and the autonomic nerves, adjust it. Gastrin, secretin, CCK and motilin coordinate the organs through the blood. The peritoneum lines the cavity and wraps the organs; mesenteries and the omenta hold the gut and carry its vessels, and retroperitoneal organs such as the pancreas and kidneys lie behind it.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-26", "label": "NREMT: Abdominal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

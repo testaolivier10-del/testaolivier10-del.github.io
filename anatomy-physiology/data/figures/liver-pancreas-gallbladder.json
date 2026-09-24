@@ -1,0 +1,56 @@
+{
+  "os-23-24": {
+    "file": "figures/openstax/os-23-24.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.24",
+      "section": "23.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/182e0270dca32d6c112dddd17fb7aef5a9fffa42",
+      "page": "23-6-accessory-organs-in-digestion-the-liver-pancreas-and-gallbladder"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/182e0270dca32d6c112dddd17fb7aef5a9fffa42",
+    "alt": "A front view of the trunk with the digestive organs faded except the accessory organs. The large reddish-brown liver fills the upper right abdomen under the diaphragm, with a big right lobe and a smaller left lobe; two small lobes show between them. A green pear-shaped gallbladder sits under the right lobe. Thin green ducts from the liver and the gallbladder join into one duct that runs down to the curved first part of the small intestine. The pale yellow, lumpy pancreas lies across the back of the abdomen, its head in the curve of the intestine and its tail reaching the purple spleen on the left; a duct runs along its length.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.24",
+    "labels": [],
+    "w": 805,
+    "h": 1002,
+    "ext": "jpg"
+  },
+  "os-23-25": {
+    "file": "figures/openstax/os-23-25.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.25",
+      "section": "23.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d626425e45148eb41c740661057f2b36f0aaef37",
+      "page": "23-6-accessory-organs-in-digestion-the-liver-pancreas-and-gallbladder"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/d626425e45148eb41c740661057f2b36f0aaef37",
+    "alt": "Three levels of liver structure. Top left: an outline of the liver. Top right: an enlarged patch of its surface showing six-sided lobules packed like honeycomb, each with a dark spot at its center, separated by thin connective tissue. Bottom: one lobule cut open as a block. Plates of reddish liver cells radiate like spokes from a blue vein running up the center, which joins a larger vein at the top. Purple channels run between the plates from the edges to the central vein. At the corners of the lobule stand bundles of three tubes: a blue vein branch, a red artery branch and a green duct. Blue vessels at the bottom are marked as coming from the portal vein.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.25",
+    "labels": [],
+    "w": 721,
+    "h": 824,
+    "ext": "jpg"
+  },
+  "os-23-27": {
+    "file": "figures/openstax/os-23-27.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.27",
+      "section": "23.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/06e02b521c8c634a2768518ea1ddaf1816823aef",
+      "page": "23-6-accessory-organs-in-digestion-the-liver-pancreas-and-gallbladder"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/06e02b521c8c634a2768518ea1ddaf1816823aef",
+    "alt": "A close view of the underside of the liver with the gallbladder cut open. The green, pear-shaped gallbladder has a rounded end, a wide middle and a narrow neck leading into a twisting duct. Two ducts come down from the liver on the left and right and join into one; the twisting duct from the gallbladder joins that duct, and the combined duct continues downward as a single tube, shown cut across at its end.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.27",
+    "labels": [],
+    "w": 787,
+    "h": 641,
+    "ext": "jpg"
+  }
+}

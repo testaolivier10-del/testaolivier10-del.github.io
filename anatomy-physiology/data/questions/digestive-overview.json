@@ -1,0 +1,511 @@
+[
+  {
+    "id": "anp-digestive-overview-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which of these is an accessory digestive organ rather than a part of the alimentary canal?",
+    "options": [
+      "Pancreas",
+      "Esophagus",
+      "Pharynx",
+      "Large intestine"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Food passes through every part of the alimentary canal but never through an accessory organ. The pancreas sits outside the tube and sends its enzymes into it through a duct.",
+      "options": [
+        "Correct. The pancreas makes digestive secretions and delivers them into the tube, but food never enters it.",
+        "Food passes through the esophagus on its way from the pharynx to the stomach, so it is part of the canal.",
+        "The pharynx is shared by food and air, and swallowed food passes through it, so it is part of the canal.",
+        "The large intestine is the last stretch of the tube, ending at the anus."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-2",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "mechanical and chemical digestion are the same process",
+    "q": "Select every example of mechanical digestion.",
+    "options": [
+      "Your molars grinding a peanut",
+      "An enzyme in saliva splitting starch into sugars",
+      "The stomach wall churning its contents",
+      "Rings of intestinal muscle chopping and remixing the contents",
+      "Glucose crossing the intestinal lining into the blood",
+      "Protein being split into amino acids"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "Mechanical digestion makes pieces smaller and mixes them without breaking chemical bonds: chewing, churning and segmentation. Enzymes splitting molecules is chemical digestion, and glucose crossing the lining is absorption.",
+      "options": [
+        "Correct. Grinding breaks the peanut into smaller pieces without changing its molecules.",
+        "Splitting starch breaks chemical bonds by hydrolysis, so this is chemical digestion.",
+        "Correct. Churning breaks up and mixes food physically.",
+        "Correct. This is segmentation, a mixing movement of the wall.",
+        "Moving a nutrient across the lining into the blood is absorption, not digestion.",
+        "Breaking peptide bonds is chemical digestion, done by enzymes."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-3",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the parts of the small intestine's wall in order, from the lumen outward.",
+    "options": [
+      "Simple columnar epithelium",
+      "Lamina propria",
+      "Submucosa",
+      "Circular layer of smooth muscle",
+      "Longitudinal layer of smooth muscle",
+      "Serosa (visceral peritoneum)"
+    ],
+    "why": {
+      "correct": "The mucosa comes first: the epithelium, then the lamina propria beneath it (with the thin muscularis mucosae at its base). Next is the submucosa, then the muscularis externa with its inner circular and outer longitudinal layers, and finally the serosa."
+    }
+  },
+  {
+    "id": "anp-digestive-overview-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-3",
+    "pin": "submucosa",
+    "q": "Name the pinned layer of the GI wall.",
+    "options": [
+      "Submucosa",
+      "Mucosa",
+      "Muscularis",
+      "Serosa"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The submucosa is the connective tissue layer just outside the mucosa. It carries the larger blood vessels and lymphatic vessels and the submucosal plexus.",
+      "options": [
+        "Correct. It lies between the mucosa and the muscle layers.",
+        "The mucosa is the innermost layer, lining the lumen.",
+        "The muscularis lies outside the submucosa, as circular and longitudinal muscle.",
+        "The serosa is the thin outer covering."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "figure": "os-23-3",
+    "pin": "myenteric-plexus",
+    "q": "Name the pinned nerve network.",
+    "options": [
+      "Myenteric plexus",
+      "Submucosal plexus",
+      "Vagus nerve",
+      "Celiac ganglion"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The myenteric plexus lies between the circular and longitudinal muscle layers and controls motility.",
+      "options": [
+        "Correct. Its position between the two muscle layers gives it control of their contractions.",
+        "The submucosal plexus lies in the submucosa, closer to the lumen, and controls secretion and local blood flow.",
+        "The vagus nerve reaches the gut from outside and synapses on enteric neurons; it is not a network within the wall.",
+        "The celiac ganglion is a sympathetic ganglion in front of the aorta, outside the gut wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-6",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "peristalsis is just a squeeze behind the food",
+    "q": "This pathway describes one peristaltic wave. Which step is wrong?",
+    "options": [
+      "Food stretches a short length of the wall",
+      "Enteric sensory neurons detect the stretch",
+      "Circular muscle behind the food contracts",
+      "Circular muscle ahead of the food also contracts, gripping it",
+      "The food is pushed forward and stretches the next length of wall"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Ahead of the food, inhibitory enteric neurons release nitric oxide, which relaxes the circular muscle and widens the tube. If the muscle ahead contracted too, the food would be squeezed from both sides and could not move.",
+      "options": [
+        "This step is right. Distension of the wall is the stimulus that starts the reflex.",
+        "This step is right. Stretch-sensitive enteric sensory neurons start the short reflex.",
+        "This step is right. Excitatory motor neurons release acetylcholine behind the food.",
+        "This is the error. The muscle ahead relaxes; the narrowing behind and widening ahead together push the food forward.",
+        "This step is right. The new stretch repeats the reflex, so the wave travels along the tube."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In an experiment, a length of intestine shows strong rings of contraction that form, relax and re-form between the old rings, but no wave travels along it. What is its contents most likely doing?",
+    "options": [
+      "Moving quickly along the tube toward the anus",
+      "Being pushed back up toward the stomach",
+      "Being absorbed while the contents stay unmixed",
+      "Being mixed while staying in about the same place"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "This is segmentation. Alternating rings of contraction chop and remix the contents and press them against the lining, but they produce little net movement.",
+      "options": [
+        "Fast forward movement needs a traveling contraction, which is peristalsis. The question says no wave travels.",
+        "Pushing contents backward would need a contraction wave traveling the other way. Rings that contract in place move contents both ways about equally.",
+        "Segmentation is itself a mixing movement, so the contents are being mixed.",
+        "Correct. Segmentation mixes contents with secretions and keeps them in contact with the absorptive lining without moving them far."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "A newborn has not passed stool, and his abdomen is swelling. A biopsy shows that the last stretch of his large intestine has no enteric neurons in its wall; the intestine above it is normal. The segment without neurons is narrow and tightly contracted. Why does this segment block the passage of stool?",
+    "options": [
+      "Its muscle has no nerve input, so it is paralyzed and floppy",
+      "Its mucosa cannot absorb water, so stool becomes too large to pass",
+      "Its sympathetic fibers are missing, so its sphincters stay open",
+      "Its circular muscle cannot relax ahead of the stool, so peristaltic waves cannot push anything through"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Peristalsis needs relaxation ahead of the contents, and that relaxation comes from enteric inhibitory neurons releasing nitric oxide. Without them the smooth muscle stays contracted, the segment stays narrow, and no wave can pass through it. The normal intestine above it fills and swells. This condition is called Hirschsprung disease.",
+      "options": [
+        "The segment is narrow and contracted, not floppy. Smooth muscle has its own tone; what the missing neurons remove is the signal that relaxes it.",
+        "The problem is movement, not absorption. The block is in the muscle wall, and stool never reaches the segment's lining in quantity.",
+        "Sympathetic fibers tighten sphincters rather than open them, and the biopsy showed missing enteric neurons, not missing sympathetic fibers.",
+        "Correct. Without inhibitory enteric neurons, the muscle cannot relax, so the segment acts as a fixed narrowing."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student sprinting to catch a train has strong sympathetic activity. Predict the change in each variable in her stomach and intestines, compared with resting after a meal.",
+    "variables": [
+      {
+        "name": "Motility (strength and frequency of contractions)",
+        "answer": "down",
+        "why": "Sympathetic fibers inhibit enteric neurons, so fewer slow waves reach threshold and contractions weaken."
+      },
+      {
+        "name": "Secretion by glands in the gut wall",
+        "answer": "down",
+        "why": "Sympathetic activity inhibits the submucosal plexus neurons that drive secretion."
+      },
+      {
+        "name": "Tone of the gut sphincters",
+        "answer": "up",
+        "why": "Norepinephrine acts on alpha-1 receptor proteins on sphincter smooth muscle and contracts it."
+      },
+      {
+        "name": "Blood flow to the gut",
+        "answer": "down",
+        "why": "Sympathetic vasomotor fibers constrict the gut's arterioles through alpha-1 receptor proteins."
+      }
+    ],
+    "why": {
+      "correct": "The sympathetic division turns the enteric nervous system down and tightens the sphincters, so movement and secretion fall and contents are held in place. Its arterioles narrow, shifting blood toward working muscle."
+    }
+  },
+  {
+    "id": "anp-digestive-overview-10",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A fatty, acidic mixture from the stomach enters the first part of the small intestine. Predict the change in each variable over the next few minutes.",
+    "variables": [
+      {
+        "name": "Secretin in the blood",
+        "answer": "up",
+        "why": "Acid arriving in the first part of the small intestine releases secretin."
+      },
+      {
+        "name": "Cholecystokinin (CCK) in the blood",
+        "answer": "up",
+        "why": "Fats and protein fragments in the first part of the small intestine release CCK."
+      },
+      {
+        "name": "Bicarbonate-rich fluid from the pancreas",
+        "answer": "up",
+        "why": "Secretin acts on the pancreas and the ducts that carry bile to release a watery bicarbonate-rich fluid."
+      },
+      {
+        "name": "Contraction of the gallbladder",
+        "answer": "up",
+        "why": "CCK contracts the gallbladder's smooth muscle, pushing bile into the intestine."
+      },
+      {
+        "name": "Rate of stomach emptying",
+        "answer": "down",
+        "why": "Both secretin and CCK slow stomach emptying, so less arrives until the intestine has handled what it has."
+      }
+    ],
+    "why": {
+      "correct": "Acid releases secretin and fat releases CCK. Secretin brings in bicarbonate to neutralize the acid; CCK brings in bile and pancreatic enzymes to digest the fat. Both hold back the stomach, so the intestine receives new material only as fast as it can process it."
+    }
+  },
+  {
+    "id": "anp-digestive-overview-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Stretch of the stomach wall sends signals up the vagus nerve to the brainstem, which sends signals back down the vagus that increase acid secretion. What kind of reflex is this?",
+    "options": [
+      "A long reflex",
+      "A short reflex",
+      "A somatic reflex",
+      "A hormonal reflex"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A long reflex leaves the gut, is integrated in the central nervous system and returns through autonomic nerves. This vagus-to-brainstem-to-vagus loop is often called a vagovagal reflex.",
+      "options": [
+        "Correct. The loop runs through the brainstem and returns in the vagus nerve, so it is a long reflex.",
+        "A short reflex stays entirely within the enteric nervous system in the gut wall. This one travels to the brainstem.",
+        "A somatic reflex acts on skeletal muscle. This reflex acts on glands through the autonomic nervous system.",
+        "The signal travels in nerves, not through a hormone in the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-12",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "q": "Fill the gap: Acid from the stomach enters the first part of the small intestine → ______ → the pancreas and the ducts that carry bile release bicarbonate-rich fluid → the acid is neutralized → the stimulus is removed",
+    "options": [
+      "Gastrin is released into the blood",
+      "Motilin is released into the blood",
+      "Secretin is released into the blood",
+      "The myenteric plexus stops all contractions"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Acid in the first part of the small intestine releases secretin, which makes the pancreas and the ducts that carry bile secrete bicarbonate. Once the acid is neutralized, secretin release falls: a negative feedback loop.",
+      "options": [
+        "Gastrin comes from the stomach and raises stomach acid secretion, which would add to the acid rather than neutralize it.",
+        "Motilin is released between meals and triggers housekeeping contractions; it does not control bicarbonate secretion.",
+        "Correct. Secretin is the hormone released by acid in the intestine, and its main target is the bicarbonate secretion of the pancreas.",
+        "The myenteric plexus controls muscle, not the pancreas, and stopping all contractions would not neutralize acid."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which organ is retroperitoneal?",
+    "options": [
+      "Stomach",
+      "Most of the small intestine",
+      "Gallbladder",
+      "Pancreas"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The pancreas lies against the back wall of the abdomen, behind the peritoneum, which covers only its front surface.",
+      "options": [
+        "The stomach is wrapped in visceral peritoneum and hangs from folds of it, the omenta.",
+        "Most of the small intestine hangs on a mesentery and is covered by visceral peritoneum.",
+        "The gallbladder sits on the underside of the liver, largely covered by peritoneum.",
+        "Correct. The pancreas sits behind the peritoneum, fixed to the back wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During surgery for a burst appendix, the surgeon finds a fatty sheet of tissue stuck to the inflamed area, walling it off from the rest of the abdomen. It hangs from the stomach in front of the intestines. What is it?",
+    "options": [
+      "The lesser omentum",
+      "The parietal peritoneum",
+      "The greater omentum",
+      "The mesentery of the small intestine"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The greater omentum hangs like an apron from the stomach's lower curve in front of the intestines. It is fatty and rich in immune cells and tends to stick to inflamed organs, which can contain an infection.",
+      "options": [
+        "The lesser omentum is a smaller fold running from the stomach's upper curve to the liver. It does not drape over the intestines.",
+        "The parietal peritoneum lines the abdominal wall; it does not hang from the stomach.",
+        "Correct. Its apron-like position and fat content match the description.",
+        "The mesentery holds the small intestine to the back wall and carries its vessels. It does not hang from the stomach in front of the intestines."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "misconception": "the brain drives gut movement",
+    "q": "In a laboratory, a length of guinea pig intestine is placed in warm, oxygenated salt solution with no nerves connecting it to the brain or spinal cord. A small pellet is put in one end. What happens to the pellet?",
+    "options": [
+      "It stays put until vagal signals are supplied to the muscle",
+      "It is pushed along by peristaltic waves run by the gut wall's own neurons",
+      "It moves only after epinephrine is added to the solution",
+      "It is squeezed by the whole length contracting at once"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The pellet stretches the wall and triggers the peristaltic short reflex through the myenteric plexus, which is entirely within the wall. The intestine propels the pellet with no connection to the central nervous system.",
+      "options": [
+        "The vagus nerve adjusts gut activity but does not start it. The enteric nervous system can run peristalsis with no outside input.",
+        "Correct. The ENS contains sensory neurons, interneurons and motor neurons, so the whole reflex can run inside the wall.",
+        "Sympathetic signals and epinephrine inhibit gut motility; they do not start peristalsis.",
+        "Gap junctions spread contraction locally, but enteric neurons shape it into a wave with relaxation ahead. The whole length does not contract at once."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "An antibiotic that happens to stimulate motilin's receptor proteins is sometimes given to a patient whose stomach empties too slowly. What does the drug imitate?",
+    "options": [
+      "The hormone that makes the gallbladder contract after a fatty meal",
+      "The hormone that raises acid secretion by the stomach",
+      "The hormone that triggers strong clearing contractions of the stomach and small intestine between meals",
+      "The hormone that releases bicarbonate from the pancreas"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Motilin is released between meals, every 90 to 120 minutes, and triggers strong waves of contraction that sweep from the stomach through the small intestine. A drug that imitates it speeds stomach emptying.",
+      "options": [
+        "This describes cholecystokinin, which also slows stomach emptying rather than speeding it.",
+        "This describes gastrin.",
+        "Correct. This is motilin's effect, so stimulating its receptor proteins strengthens stomach contractions.",
+        "This describes secretin, which also slows stomach emptying."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-17",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-4",
+    "pin": "parietal-peritoneum",
+    "q": "Name the pinned layer of membrane.",
+    "options": [
+      "Parietal peritoneum",
+      "Visceral peritoneum",
+      "Peritoneal cavity",
+      "Greater omentum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The parietal peritoneum is the layer lining the inside of the abdominal wall.",
+      "options": [
+        "Correct. It lines the body wall, just inside the muscles.",
+        "The visceral peritoneum covers the organs themselves.",
+        "The peritoneal cavity is the thin space between the two layers, not a layer.",
+        "The greater omentum is a fold hanging from the stomach, not the lining of the wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-digestive-overview-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Pacesetter cells in the stomach produce slow waves about 3 times a minute. After a meal, the stomach contracts about 3 times a minute; between meals it barely contracts, though the slow waves continue. What explains the difference?",
+    "options": [
+      "Between meals the pacesetter cells slow to less than once a minute",
+      "Nerve and hormone signals after a meal push each slow wave past threshold",
+      "After a meal the stomach switches from smooth to skeletal muscle control",
+      "Between meals the gap junctions between the muscle cells close completely"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Slow waves set the maximum rhythm but rarely trigger contraction alone. Acetylcholine from enteric and vagal neurons, and hormones such as gastrin, depolarize the muscle so each wave reaches threshold and fires action potentials. The rate stays about 3 per minute; what changes is whether each wave produces a contraction.",
+      "options": [
+        "The question says the slow waves continue between meals at their usual rate. The rhythm is not what changes.",
+        "Correct. Excitatory input decides whether a slow wave reaches threshold, and that is why contraction follows the meal while the rhythm stays the same.",
+        "The stomach wall is smooth muscle throughout; skeletal muscle is found only at the two ends of the tube.",
+        "Gap junctions do not open and close with meals in this way; the change is in how close the membrane is to threshold."
+      ]
+    }
+  }
+]

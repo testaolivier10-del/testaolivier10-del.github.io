@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 490" width="940" height="490" role="img" aria-label="Left, the spleen seen from the front: a fist-sized, dark red organ with a notch on its inner side, the hilum, where the splenic artery enters and the splenic vein leaves. Right, a magnified slice of its tissue under a thin capsule, with a trabecula running inward. Most of the slice is red pulp, dotted with oval venous sinuses. Scattered through it are three pale round islands of white pulp, each wrapped around a small central artery.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 490" width="940" height="490" role="img" aria-label="Left, the spleen seen from behind: a fist-sized, dark red organ with a notch on its inner side, the hilum, where the splenic artery enters and the splenic vein leaves. Right, a magnified slice of its tissue under a thin capsule, with a trabecula running inward. Most of the slice is red pulp, dotted with oval venous sinuses. Scattered through it are three pale round islands of white pulp, each wrapped around a small central artery.">
 <rect x="0" y="0" width="940" height="490" fill="#FFFFFF"/>
 <g font-family="Helvetica, Arial, sans-serif" fill="#1F2A28">
-<text x="20" y="28" font-size="17" font-weight="800">Spleen: front view and a slice of its tissue</text>
+<text x="20" y="28" font-size="17" font-weight="800">Spleen: back view and a slice of its tissue</text>
 <path d="M60 250 C 40 160 110 70 200 80 C 270 88 300 130 285 170 C 270 200 250 215 262 240 C 272 262 300 280 285 320 C 265 380 170 400 110 360 C 80 340 70 300 60 250 Z" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="3"/>
 <path d="M262 240 C 300 236 330 226 360 220" fill="none" stroke="#D55E00" stroke-width="7"/>
 <path d="M264 258 C 300 262 330 272 360 280" fill="none" stroke="#0072B2" stroke-width="7"/>

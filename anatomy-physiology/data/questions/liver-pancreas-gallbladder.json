@@ -1,0 +1,632 @@
+[
+  {
+    "id": "anp-liver-pancreas-gallbladder-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-25",
+    "pin": "sinusoids",
+    "q": "Name the pinned structures.",
+    "options": [
+      "Bile canaliculi",
+      "Sinusoids",
+      "Central veins",
+      "Portal venules"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The channels running between the plates of hepatocytes, from the edge of the lobule to the central vein, are the hepatic sinusoids: wide, leaky capillaries where portal and arterial blood mix.",
+      "options": [
+        "Bile canaliculi are tiny grooves between neighboring hepatocytes, far too small to show as channels here, and they carry bile, not blood.",
+        "Correct. These are the hepatic sinusoids.",
+        "There is one central vein per lobule, running up its middle. The pinned channels run between the plates toward it.",
+        "Portal venules are the blue vessels at the corners of the lobule, in the portal triads. They feed the sinusoids."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-25",
+    "pin": "bile-duct",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Portal arteriole",
+      "Hepatic vein",
+      "Bile duct",
+      "Lymphatic vessel"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The green tube in the portal triad at the corner of the lobule is a bile duct. It collects bile from the bile canaliculi, which carry bile outward from the hepatocytes.",
+      "options": [
+        "The portal arteriole is the red tube in the triad, a branch of the hepatic artery.",
+        "Hepatic veins are formed from central veins and leave the liver toward the inferior vena cava. They are not in the portal triads.",
+        "Correct. The third member of the portal triad is the bile duct.",
+        "Lymphatic vessels do run with the triads, but the pinned tube is drawn as the bile duct, and it carries bile out of the lobule."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-27",
+    "pin": "cystic-duct",
+    "q": "Name the pinned duct.",
+    "options": [
+      "Common hepatic duct",
+      "Common bile duct",
+      "Right hepatic duct",
+      "Cystic duct"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The cystic duct connects the gallbladder to the common hepatic duct. Bile flows through it both ways: into the gallbladder between meals and out after a meal.",
+      "options": [
+        "The common hepatic duct is formed by the right and left hepatic ducts, before the gallbladder's duct joins it.",
+        "The common bile duct is the single tube below the point where the gallbladder's duct joins.",
+        "The right hepatic duct drains the right half of the liver. It does not reach the gallbladder.",
+        "Correct. The twisting duct leading from the gallbladder's neck is the cystic duct."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-24",
+    "pin": "common-bile-duct",
+    "q": "Name the pinned duct.",
+    "options": [
+      "Common bile duct",
+      "Pancreatic duct",
+      "Cystic duct",
+      "Left hepatic duct"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The common bile duct forms where the cystic duct joins the common hepatic duct. It carries bile from both the liver and the gallbladder down to the duodenum.",
+      "options": [
+        "Correct. This is the common bile duct.",
+        "The pancreatic duct runs the length of the pancreas and joins the common bile duct only at the duodenum.",
+        "The cystic duct is the short duct from the gallbladder, above the pinned duct.",
+        "The left hepatic duct drains the left half of the liver, high up inside the liver."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps in order to trace bile made by a hepatocyte, stored in the gallbladder, and released after a meal.",
+    "options": [
+      "A hepatocyte secretes bile into a bile canaliculus, which carries it to a bile duct in a portal triad",
+      "Bile drains through a hepatic duct into the common hepatic duct",
+      "Bile flows up the cystic duct into the gallbladder, which concentrates it",
+      "After a meal, the gallbladder contracts and bile flows down the cystic duct",
+      "Bile flows down the common bile duct to the hepatopancreatic ampulla",
+      "Bile enters the duodenum at the major duodenal papilla"
+    ],
+    "why": {
+      "correct": "Bile moves outward from the hepatocytes through canaliculi to the triad bile ducts, then through the hepatic ducts to the common hepatic duct. Between meals it backs up the cystic duct into the gallbladder, which concentrates it. After a meal, cholecystokinin contracts the gallbladder, and bile runs back down the cystic duct and the common bile duct to the ampulla and into the duodenum."
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A drug is swallowed and absorbed from the small intestine. Before it reaches the heart, where does it first meet hepatocytes?",
+    "options": [
+      "In the sinusoids of liver lobules, after arriving in the hepatic portal vein",
+      "In the central veins of the lobules, after arriving through the hepatic artery from the aorta",
+      "In the bile canaliculi, after arriving in the common bile duct",
+      "In the hepatic veins, after passing through the inferior vena cava"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Blood from the intestine drains into the hepatic portal vein, whose branches in the portal triads empty into the sinusoids. Hepatocytes lining the sinusoids take up the drug before the blood reaches the central vein and the hepatic veins.",
+      "options": [
+        "Correct. Portal vein branches feed the sinusoids, where blood bathes the hepatocyte plates.",
+        "The hepatic artery brings blood from the aorta, not from the intestine, and central veins collect blood after it has crossed the sinusoids.",
+        "Canaliculi and the bile duct carry bile out of the liver. Absorbed substances do not arrive through them.",
+        "Hepatic veins carry blood out of the liver into the inferior vena cava; blood does not enter the liver that way."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "structure-function",
+      "mass-balance"
+    ],
+    "q": "A gallstone lodges in the common bile duct, above the point where it meets the pancreatic duct, and blocks it completely. Predict the change in each variable over the next few days.",
+    "variables": [
+      {
+        "name": "Bile reaching the duodenum",
+        "answer": "down",
+        "why": "The only route for bile from both the liver and the gallbladder to the duodenum is through the common bile duct."
+      },
+      {
+        "name": "Conjugated bilirubin in the blood",
+        "answer": "up",
+        "why": "Hepatocytes keep conjugating bilirubin, but bile cannot drain, so conjugated bilirubin backs up into the blood."
+      },
+      {
+        "name": "Darkness of the urine",
+        "answer": "up",
+        "why": "Conjugated bilirubin is water-soluble, so the extra in the blood spills into the urine and darkens it."
+      },
+      {
+        "name": "Brown color of the feces",
+        "answer": "down",
+        "why": "With no bilirubin reaching the intestine, bacteria make no stercobilin, so the feces turn pale."
+      },
+      {
+        "name": "Fat left undigested in the feces",
+        "answer": "up",
+        "why": "Without bile salts, fat is not emulsified, lipase has little surface to work on, and more fat passes out undigested."
+      },
+      {
+        "name": "Pancreatic juice reaching the duodenum",
+        "answer": "none",
+        "why": "The stone sits above the junction with the pancreatic duct, so pancreatic juice still drains through the ampulla."
+      }
+    ],
+    "why": {
+      "correct": "A blocked common bile duct stops bile from reaching the gut. Conjugated bilirubin backs up into the blood and urine, the feces lose their brown pigment, and fat digestion falls for lack of bile salts. Pancreatic juice still flows because its duct is below the blockage."
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "structure-function",
+      "mass-balance"
+    ],
+    "q": "A tumor in the head of the pancreas blocks the main pancreatic duct, but not the common bile duct and not the blood supply of the islets. Predict the change in each variable after a mixed meal, compared with before the blockage.",
+    "variables": [
+      {
+        "name": "Lipase reaching the duodenum",
+        "answer": "down",
+        "why": "Acinar cells still make lipase, but it cannot leave the gland through the blocked duct."
+      },
+      {
+        "name": "Fat in the feces",
+        "answer": "up",
+        "why": "Pancreatic lipase does most fat digestion; bile can emulsify the fat, but without lipase it passes out undigested."
+      },
+      {
+        "name": "pH of the chyme in the duodenum",
+        "answer": "down",
+        "why": "The bicarbonate from the duct cells no longer reaches the duodenum, so the stomach acid is neutralized less."
+      },
+      {
+        "name": "Insulin released after the meal",
+        "answer": "none",
+        "why": "The islets release insulin into capillaries, not into the duct, so blocking the duct does not stop it (at least while the islets are undamaged)."
+      },
+      {
+        "name": "Bile reaching the duodenum",
+        "answer": "none",
+        "why": "The common bile duct is open, so bile still drains."
+      }
+    ],
+    "why": {
+      "correct": "Blocking the pancreatic duct stops the exocrine secretion reaching the gut: less lipase means fatty stools, and less bicarbonate leaves the duodenum more acidic. The islets are endocrine and release insulin straight into the blood, so insulin release is unchanged, and bile, with its own duct, still flows."
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-9",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Complete the sequence: trypsinogen reaches the duodenum → ____ on the brush border cuts it → active trypsin forms → trypsin activates chymotrypsinogen and more trypsinogen.",
+    "options": [
+      "Enteropeptidase",
+      "Pepsin",
+      "Cholecystokinin",
+      "Pancreatic amylase"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Enteropeptidase is an enzyme fixed to the brush border of the duodenal lining. It makes the first trypsin, and trypsin activates the rest.",
+      "options": [
+        "Correct. Enteropeptidase starts the cascade, and it exists only in the intestine.",
+        "Pepsin works in the stomach's acid and is inactivated when chyme is neutralized in the duodenum. It does not activate trypsinogen.",
+        "Cholecystokinin is a hormone that makes acinar cells release their enzymes. It does not cut trypsinogen.",
+        "Pancreatic amylase digests starch. It does not act on protein precursors."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "bile digests fat",
+    "q": "Bile contains no enzymes. How, then, does it speed up the digestion of fat?",
+    "options": [
+      "Its bicarbonate splits the bonds that hold fatty acids to glycerol",
+      "Its bilirubin activates pancreatic lipase",
+      "Its bile salts break fat into many small droplets",
+      "Its cholesterol dissolves the fat into the water"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Bile salts have a hydrophobic face that sticks into fat and a hydrophilic face that stays in the water. They coat fat droplets and keep them small once churning breaks them up. Many small droplets have far more surface than a few large ones, and lipase works at that surface.",
+      "options": [
+        "Bicarbonate neutralizes acid. It does not split the bonds in triglycerides; lipase does that.",
+        "Bilirubin is a waste pigment from old red blood cells, carried out in bile. It does not activate lipase.",
+        "Correct. Emulsification multiplies the surface area lipase can reach.",
+        "Cholesterol does not dissolve in water, and bile has to carry it with bile salts and phospholipids. It does not dissolve fat."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fat droplets 0.5 mm across are emulsified into droplets 0.005 mm across, keeping the same total volume. By what factor does the fat's total surface area change?",
+    "options": [
+      "It rises 10-fold",
+      "It rises 100-fold",
+      "It rises 10,000-fold",
+      "It does not change"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The diameter falls 100-fold. Each small droplet has 1,000,000 times less volume, so there are 1,000,000 of them, and each has 10,000 times less area. 1,000,000 ÷ 10,000 = 100, so the total area rises 100-fold.",
+      "options": [
+        "A 10-fold rise would come from a 10-fold fall in diameter. Here the diameter falls 100-fold.",
+        "Correct. Total surface rises by the same factor the diameter falls.",
+        "10,000 is how much smaller each droplet's own area is. It ignores that there are now a million droplets.",
+        "Volume is unchanged, but splitting fat into smaller droplets exposes more surface."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "mass-balance"
+    ],
+    "q": "A 34-year-old woman had the last part of her ileum removed because of Crohn disease. Months later she has pale, greasy stools after fatty meals. Her liver, gallbladder and pancreas are normal. What best explains her symptoms?",
+    "options": [
+      "Her gallbladder can no longer concentrate bile",
+      "Her pancreas no longer releases lipase in response to fat",
+      "Her bile salts are lost instead of being recycled",
+      "Her liver has stopped conjugating bilirubin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "About 95% of bile salts are reabsorbed in the last part of the ileum and returned to the liver in the hepatic portal vein: the enterohepatic circulation. Without that segment they are lost in the feces. The liver makes new ones from cholesterol, but not fast enough, so too few bile salts reach the gut to emulsify a fatty meal.",
+      "options": [
+        "Her gallbladder is normal and still concentrates bile. The problem is how much bile salt there is to concentrate.",
+        "Her pancreas is normal. Lipase is still released; it simply has too little emulsified fat surface to work on.",
+        "Correct. Loss of the terminal ileum breaks the enterohepatic circulation, so bile salts are lost in the feces.",
+        "Her liver is normal. Failure to conjugate bilirubin would cause jaundice, not fatty stools."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "A student described what happens when a fatty meal reaches the duodenum. One step is wrong. Which one?",
+    "options": [
+      "Fat in the chyme makes duodenal enteroendocrine cells release cholecystokinin",
+      "Cholecystokinin travels in the blood to the gallbladder and the pancreas",
+      "Cholecystokinin makes the gallbladder's smooth muscle contract",
+      "Cholecystokinin contracts the hepatopancreatic sphincter",
+      "Bile and enzyme-rich pancreatic juice flow into the duodenum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Cholecystokinin relaxes the hepatopancreatic sphincter. If it contracted the sphincter, bile squeezed out of the gallbladder would have nowhere to go.",
+      "options": [
+        "This step is right. Fat and protein in the duodenum trigger CCK release.",
+        "This step is right. CCK is a hormone and reaches its targets through the blood.",
+        "This step is right. Contraction empties the gallbladder.",
+        "This is the error. CCK relaxes the sphincter, opening the way into the duodenum.",
+        "This step is right. With the gallbladder contracting, the sphincter open and acinar cells stimulated, both fluids enter the duodenum."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "structure-function"
+    ],
+    "q": "An experiment infuses acid into a volunteer's duodenum. Which change in pancreatic secretion follows?",
+    "options": [
+      "A small volume of juice rich in enzymes, driven by cholecystokinin",
+      "A large volume of juice rich in bicarbonate, driven by secretin",
+      "No change, because the pancreas responds only to fat and protein",
+      "Juice rich in trypsin, activated inside the pancreatic duct"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Acid lowers duodenal pH, which releases secretin. Secretin acts mainly on the duct cells, which pour out a large volume of bicarbonate-rich fluid. The bicarbonate neutralizes the acid, removing the stimulus: negative feedback.",
+      "options": [
+        "Cholecystokinin is released by fat and protein, not acid, and it drives the enzyme-rich secretion of the acinar cells.",
+        "Correct. Acid releases secretin, which drives bicarbonate secretion.",
+        "Acid is the main stimulus for secretin, so the pancreas does respond.",
+        "Trypsin is activated in the duodenum by enteropeptidase, never normally in the duct."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 52-year-old man with gallstones has sudden, severe pain in his upper middle abdomen that goes through to his back. His blood lipase is many times normal. Which event most likely started his illness?",
+    "options": [
+      "Bile salts leaked into the blood and dissolved the pancreas",
+      "A stone blocked the cystic duct, stopping bile reaching the duodenum",
+      "Stomach acid flowed back up the pancreatic duct and burned the pancreas",
+      "A stone at the hepatopancreatic ampulla blocked the pancreatic duct, and trypsin became active inside the gland"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "This is acute pancreatitis. A gallstone stuck at the ampulla blocks the pancreatic duct. Enzymes are trapped, trypsin is activated inside the gland, and it activates the other enzymes, which digest pancreatic tissue. Lipase leaks from the damaged gland into the blood.",
+      "options": [
+        "Bile salts emulsify fat; they do not digest tissue, and they do not cause pancreatitis by entering the blood.",
+        "A cystic duct stone causes gallbladder pain under the right ribs. It does not block the pancreatic duct or raise lipase.",
+        "Stomach acid is neutralized in the duodenum and does not travel up the pancreatic duct.",
+        "Correct. Gallstones at the ampulla are one of the two commonest causes of acute pancreatitis."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-16",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every job that hepatocytes do.",
+    "options": [
+      "Make albumin",
+      "Make clotting factors",
+      "Store glycogen",
+      "Make insulin",
+      "Make bile salts from cholesterol",
+      "Make pancreatic lipase"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Hepatocytes make albumin and most clotting factors, store glucose as glycogen, and make bile salts from cholesterol. Insulin comes from the beta cells of the pancreatic islets, and lipase from the pancreatic acinar cells.",
+      "options": [
+        "Correct. Albumin is the main plasma protein, and hepatocytes make it.",
+        "Correct. Hepatocytes make most clotting factors, using vitamin K for factors II, VII, IX and X.",
+        "Correct. Hepatocytes store glucose as glycogen after a meal and release it between meals.",
+        "Insulin is made by beta cells in the pancreatic islets, not by the liver.",
+        "Correct. Bile salts are made from cholesterol in hepatocytes.",
+        "Pancreatic lipase is made by acinar cells in the pancreas."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "A 60-year-old man with cirrhosis has a swollen, fluid-filled abdomen and swollen ankles. His blood albumin is low. Which two changes together best explain the fluid?",
+    "options": [
+      "Raised pressure in the hepatic portal vein, and less albumin holding water in the blood",
+      "Blocked bile ducts, and too much bilirubin pulling water out of vessels",
+      "Loss of bile salts, and poor fat absorption thinning the blood",
+      "Too many clotting factors, and blood clots blocking the veins"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Scar tissue squeezes the sinusoids, so portal vein pressure rises and fluid is pushed out of the congested abdominal vessels. At the same time, fewer working hepatocytes make less albumin, so the blood holds less water by osmosis and more fluid leaks into the tissues.",
+      "options": [
+        "Correct. Portal hypertension and low albumin both push fluid out of the vessels.",
+        "Bilirubin causes jaundice. It is not the solute that holds water in the blood, and bile duct blockage is not the main problem in cirrhosis.",
+        "Poor fat absorption does not thin the blood or cause ascites.",
+        "Cirrhosis lowers clotting factor production, so bleeding, not clotting, is the usual problem."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Blood and bile both move through a liver lobule. How do their directions compare?",
+    "options": [
+      "Both flow outward from the central vein to the portal triads",
+      "Both flow inward from the portal triads to the central vein",
+      "Blood flows inward to the central vein; bile flows outward to the portal triads",
+      "Blood flows outward to the portal triads; bile flows inward and drains into the central vein"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Blood enters at the portal triads, crosses the sinusoids and leaves by the central vein. Bile is secreted into canaliculi between hepatocytes and flows the other way, out to the bile ducts in the portal triads.",
+      "options": [
+        "The central vein collects blood; it is where blood leaves, not where it enters, and bile never enters it.",
+        "Blood flows inward, but bile flows outward to the bile ducts.",
+        "Correct. The two flows run in opposite directions and never mix.",
+        "This reverses both flows."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Between meals, the liver keeps making bile. What makes that bile end up in the gallbladder rather than the duodenum?",
+    "options": [
+      "The gallbladder pumps bile up the common bile duct",
+      "The hepatopancreatic sphincter is closed, so bile backs up the cystic duct",
+      "Secretin closes the common hepatic duct",
+      "Cholecystokinin relaxes the gallbladder wall and draws bile in"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Between meals the hepatopancreatic sphincter stays closed. Bile secreted by the liver has nowhere to go but back up the common bile duct and into the gallbladder through the cystic duct.",
+      "options": [
+        "The gallbladder's muscle contracts to empty it, not to fill it. Filling depends on the closed sphincter downstream.",
+        "Correct. A closed outlet diverts bile into the gallbladder.",
+        "Secretin raises bicarbonate secretion by duct cells; it does not close any duct.",
+        "Cholecystokinin is released after a meal and contracts the gallbladder; between meals it is low."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A person takes a large overdose of acetaminophen. Why is the liver the organ most damaged?",
+    "options": [
+      "The liver stores the drug in hepatocytes instead of excreting it in bile or urine",
+      "Acetaminophen blocks the hepatic artery",
+      "Liver enzymes turn some of the drug into a reactive product that kills hepatocytes",
+      "Acetaminophen dissolves the bile salts inside the canaliculi and blocks bile flow"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The drug reaches the liver first in portal blood, and liver enzymes process it. Most becomes harmless, water-soluble products, but some becomes a reactive product. In an overdose so much reactive product forms that it kills hepatocytes. Detoxification can make a molecule more harmful as well as less.",
+      "options": [
+        "The liver processes acetaminophen for excretion; storing it is not what causes damage.",
+        "Acetaminophen does not block blood vessels.",
+        "Correct. The liver's own processing creates the toxic product.",
+        "Acetaminophen does not act on bile salts."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-21",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-26",
+    "pin": "acinar-cells",
+    "q": "Name the pinned cells, which make the pancreas's digestive enzymes.",
+    "options": [
+      "Pancreatic islet cells",
+      "Acinar cells",
+      "Duct cells",
+      "Hepatocytes"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Acinar cells sit in grape-like clusters (acini) at the ends of the small ducts. They make the pancreatic enzymes and release them into the ducts.",
+      "options": [
+        "Islet cells are the pale clusters with capillaries running through them. They release hormones into the blood, not enzymes into ducts.",
+        "Correct. The acini make the enzymes of pancreatic juice.",
+        "Duct cells line the ducts and add bicarbonate-rich fluid, not most of the enzymes.",
+        "Hepatocytes are liver cells, not pancreatic cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-liver-pancreas-gallbladder-22",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does the pancreas release its protein-digesting enzymes as trypsinogen and chymotrypsinogen rather than as active trypsin and chymotrypsin?",
+    "options": [
+      "Active enzymes inside the gland would digest the acinar cells and ducts",
+      "The active forms are too large to pass through the pancreatic duct",
+      "The precursors digest protein faster in the acid of the stomach",
+      "The active forms would be destroyed by bile salts"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Protein-digesting enzymes do not tell the gland's own proteins from food proteins. Kept as inactive precursors, they cannot digest the pancreas; they are switched on only in the duodenum, where enteropeptidase starts the cascade. When this fails, as in pancreatitis, the gland digests itself.",
+      "options": [
+        "Correct. Zymogens protect the tissue that makes them.",
+        "Size is not the issue; activation cuts off a small piece and makes the enzyme slightly smaller, not larger.",
+        "Pancreatic juice never reaches the stomach, and the precursors do not digest protein anywhere.",
+        "Bile salts do not destroy trypsin or chymotrypsin; both work alongside bile in the duodenum."
+      ]
+    }
+  }
+]

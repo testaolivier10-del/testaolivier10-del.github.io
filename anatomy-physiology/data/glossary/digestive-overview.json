@@ -1,0 +1,42 @@
+{
+  "alimentary-canal": {
+    "def": "The alimentary canal (GI tract) is the continuous tube food passes through: mouth, pharynx, esophagus, stomach, small intestine and large intestine, ending at the anus. The accessory digestive organs (teeth, tongue, glands that make saliva, liver, gallbladder, pancreas) help from outside it; food never passes through them.",
+    "roots": [["aliment-", "nourishment"], ["gastr-", "stomach"], ["intestin-", "gut"]],
+    "say": "al-ih-MEN-tuh-ree"
+  },
+  "digestive-processes": {
+    "def": "The six things that happen to food: ingestion (taking it in), propulsion (moving it along), mechanical digestion (breaking and mixing it without changing its molecules), chemical digestion (enzymes splitting molecules by hydrolysis), absorption (moving nutrients from the lumen into blood or lymph) and defecation (expelling the remains).",
+    "roots": [["in-", "into"], ["gest-", "carry"], ["pro-", "forward"], ["puls-", "push"], ["de-", "away"], ["fec-", "dregs"]],
+    "say": ""
+  },
+  "gi-wall": {
+    "def": "The four layers of the alimentary canal wall, from the lumen outward: mucosa (epithelium, lamina propria and muscularis mucosae), submucosa (connective tissue with vessels and a nerve plexus), muscularis externa (inner circular and outer longitudinal smooth muscle) and serosa (visceral peritoneum), replaced by a fibrous adventitia where there is no peritoneum.",
+    "roots": [["sub-", "below"], ["muscul-", "muscle"], ["ser-", "watery fluid"]],
+    "say": ""
+  },
+  "motility": {
+    "def": "The movements of the GI wall. Peristalsis is a wave of contraction behind the contents with relaxation ahead of them, which pushes them along. Segmentation is alternating rings of contraction that mix the contents with little forward movement.",
+    "roots": [["peri-", "around"], ["stalsis", "squeezing"], ["motil-", "moving"]],
+    "say": "pair-ih-STAL-sis"
+  },
+  "enteric-ns": {
+    "def": "The nervous system in the gut wall: the myenteric plexus between the two muscle layers (motility) and the submucosal plexus in the submucosa (secretion and local blood flow). It can run peristalsis and secretion by itself; the autonomic nervous system adjusts it.",
+    "roots": [["enter-", "intestine"], ["my-", "muscle"], ["plexus", "braid, network"]],
+    "say": "en-TAIR-ik"
+  },
+  "gi-hormones": {
+    "def": "Hormones released from the lining of the stomach and small intestine that coordinate digestion: gastrin (raises stomach acid), secretin (bicarbonate from the pancreas and the ducts that carry bile), cholecystokinin or CCK (gallbladder contraction and pancreatic enzymes; slows stomach emptying) and motilin (clearing contractions between meals).",
+    "roots": [["gastr-", "stomach"], ["chole-", "bile"], ["cyst-", "bladder"], ["kin-", "move"], ["motil-", "moving"]],
+    "say": "koh-lee-sis-toh-KY-nin"
+  },
+  "gi-reflexes": {
+    "def": "A short reflex runs entirely within the enteric nervous system in the gut wall. A long reflex carries signals to the brainstem or spinal cord and back through autonomic nerves, such as the vagus.",
+    "roots": [],
+    "say": ""
+  },
+  "peritoneum-full": {
+    "def": "The peritoneum lines the abdominal wall (parietal layer) and covers the organs (visceral layer). A mesentery is a double fold of it that holds an organ to the back wall and carries its vessels and nerves. The greater omentum hangs from the stomach over the intestines; the lesser omentum joins the stomach to the liver. Retroperitoneal organs, such as the pancreas and kidneys, lie behind it.",
+    "roots": [["mes-", "middle"], ["enter-", "intestine"], ["omentum", "apron"], ["retro-", "behind"]],
+    "say": "mez-en-TAIR-ee"
+  }
+}

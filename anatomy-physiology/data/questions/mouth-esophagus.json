@@ -1,0 +1,504 @@
+[
+  {
+    "id": "anp-mouth-esophagus-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-7",
+    "pin": "uvula",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Uvula",
+      "Soft palate",
+      "Palatine tonsil",
+      "Lingual frenulum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The uvula is the small flap hanging from the middle of the back edge of the soft palate.",
+      "options": [
+        "Correct. It hangs in the midline from the soft palate.",
+        "The soft palate is the muscular back part of the roof of the mouth; the uvula hangs from it.",
+        "The palatine tonsils sit to each side, between the two arches, not in the midline.",
+        "The lingual frenulum is under the tongue, on the floor of the mouth."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-11",
+    "pin": "dentin",
+    "q": "Name the pinned tissue of the tooth.",
+    "options": [
+      "Enamel",
+      "Dentin",
+      "Cementum",
+      "Pulp"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Dentin forms the bulk of the tooth, under the enamel of the crown and the cementum of the root, around the pulp cavity.",
+      "options": [
+        "Enamel is the thin, hard cap on the outside of the crown only.",
+        "Correct. Dentin is the thick layer that makes up most of the tooth.",
+        "Cementum is a thin layer on the outside of the root.",
+        "Pulp fills the central cavity and root canals, inside the dentin."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-13",
+    "pin": "lower-esophageal-sphincter",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Upper esophageal sphincter",
+      "Lower esophageal sphincter",
+      "Diaphragm",
+      "Trachea"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The lower esophageal sphincter is the zone at the junction of the esophagus and the stomach, just below the diaphragm.",
+      "options": [
+        "The upper esophageal sphincter is at the top of the esophagus, where it meets the pharynx.",
+        "Correct. It guards the junction with the stomach.",
+        "The diaphragm is the sheet of muscle the esophagus passes through; it helps the sphincter but is not the pinned structure.",
+        "The trachea lies in front of the esophagus in the neck and upper chest, not at the stomach."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-4",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 5-year-old has a complete set of deciduous teeth. Which kind of tooth is missing from that set but present in the adult set?",
+    "options": [
+      "Incisors",
+      "Canines",
+      "Premolars",
+      "Molars"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The 20 deciduous teeth are 8 incisors, 4 canines and 8 molars. Premolars appear only in the permanent set, replacing the deciduous molars.",
+      "options": [
+        "Children have 8 deciduous incisors, the same number as adults.",
+        "Children have 4 deciduous canines.",
+        "Correct. The deciduous set has no premolars.",
+        "Children have 8 deciduous molars; the permanent molars then erupt behind them."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A dentist drills a small cavity. The patient feels nothing while the drill is in the enamel and flinches as it goes deeper. Which tissue has the drill just reached?",
+    "options": [
+      "Cementum",
+      "The periodontal ligament",
+      "Pulp",
+      "Dentin"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Enamel has no living cells, so drilling it causes no sensation. Dentin, just beneath it, is crossed by tubules holding extensions of living cells, and disturbing them causes pain, before the drill is anywhere near the pulp.",
+      "options": [
+        "Cementum covers the root, below the gum, not the crown under the enamel.",
+        "The periodontal ligament lies outside the root, attaching it to the socket. A drill in the crown does not reach it.",
+        "Reaching the pulp would mean drilling through all the dentin first. Pain starts earlier, in the dentin.",
+        "Correct. Dentin lies directly under the enamel and is sensitive."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "After a stroke in the medulla oblongata, a patient can chew and push food to the back of his mouth, but thin liquids trickle into his larynx and make him cough. Which part of swallowing is failing?",
+    "options": [
+      "The voluntary phase, run by the cerebral cortex",
+      "The pharyngeal phase, run by the brainstem swallowing center",
+      "The esophageal phase, run by the enteric nervous system",
+      "The release of saliva, which lubricates the bolus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The pharyngeal phase is the reflex that seals the airway: vocal fold closure, elevation of the larynx and tipping of the epiglottis, timed by the swallowing center in the medulla and pons. The patient can still start a swallow voluntarily, but the reflex that should protect the airway is slow or weak, so liquid enters the larynx.",
+      "options": [
+        "He can chew and push food back, so the voluntary phase works.",
+        "Correct. Airway protection is part of the pharyngeal phase, and its center is in the damaged brainstem.",
+        "The esophageal phase starts only after the bolus has passed the pharynx. Liquid entering the larynx means the failure is earlier.",
+        "Thin liquids need no lubrication. Their danger is that they move fast and reach the larynx before a weak reflex closes it."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put these events of a swallow in order.",
+    "options": [
+      "The tongue presses the bolus against the hard palate and back into the oropharynx",
+      "Sensory signals from the oropharynx reach the swallowing center in the brainstem",
+      "The soft palate seals the nasopharynx and the vocal folds close",
+      "The larynx rises, the epiglottis tips down, and the upper esophageal sphincter opens",
+      "A peristaltic wave carries the bolus down the esophagus",
+      "The bolus passes the relaxed lower esophageal sphincter into the stomach"
+    ],
+    "why": {
+      "correct": "The voluntary phase delivers the bolus to the oropharynx, which triggers the brainstem reflex. The airway is sealed first (vocal folds closing at the very start), then the larynx rises under the epiglottis and the upper sphincter opens. Peristalsis then carries the bolus through the esophagus to the relaxed lower sphincter."
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-8",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This sequence describes the pharyngeal phase of a swallow. Which step is wrong?",
+    "options": [
+      "The soft palate and uvula lift and seal the nasopharynx",
+      "The vocal folds close",
+      "The larynx is pulled up and forward, and the epiglottis tips over its opening",
+      "Breathing speeds up to keep oxygen flowing during the swallow",
+      "The pharyngeal constrictors squeeze the bolus down into the esophagus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Breathing stops for about a second during the pharyngeal phase. The airway is closed, so air cannot move, and a breath in at that moment would pull food into the larynx.",
+      "options": [
+        "This step is right. The soft palate lifts and keeps food out of the nose.",
+        "This step is right. Closing the vocal folds seals the airway from inside, at the very start of the swallow.",
+        "This step is right. The larynx tucks under the tongue and the epiglottis covers it.",
+        "This is the error. Breathing pauses during the pharyngeal phase.",
+        "This step is right. The constrictors contract from top to bottom as the upper esophageal sphincter opens."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A patient is given atropine, which blocks muscarinic receptor proteins. Predict the change in each variable in his mouth.",
+    "variables": [
+      {
+        "name": "Volume of saliva",
+        "answer": "down",
+        "why": "Parasympathetic fibers drive the large, watery flow of saliva through muscarinic receptor proteins, and atropine blocks them."
+      },
+      {
+        "name": "Starch digestion in the mouth",
+        "answer": "down",
+        "why": "Less saliva means less salivary amylase mixed with the food."
+      },
+      {
+        "name": "Ease of swallowing dry food",
+        "answer": "down",
+        "why": "With little saliva and mucus, chewed food does not bind into a slippery bolus."
+      },
+      {
+        "name": "Ability to taste a dry cracker",
+        "answer": "down",
+        "why": "Taste molecules must dissolve in saliva to reach the taste buds."
+      }
+    ],
+    "why": {
+      "correct": "Atropine removes the parasympathetic drive to the salivary glands, so the mouth becomes dry. Less saliva means less amylase, a stickier bolus that is harder to swallow, and weaker taste."
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 7-year-old who missed his vaccinations has a fever and painful swelling in front of and below both ears, so his cheeks look puffy. Which glands are swollen?",
+    "options": [
+      "The submandibular glands",
+      "The sublingual glands",
+      "The parotid glands",
+      "The palatine tonsils"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The parotid glands sit in front of and below each ear, over the masseter. Mumps, a viral infection prevented by vaccination, typically swells them.",
+      "options": [
+        "The submandibular glands lie under the body of the mandible, not in front of the ears.",
+        "The sublingual glands lie in the floor of the mouth under the tongue.",
+        "Correct. Their position in front of the ears matches the swelling.",
+        "The palatine tonsils sit inside the throat, between the arches at the back of the mouth, where swelling cannot be seen from outside."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Salivary amylase is swallowed with a bolus of bread. What stops it from continuing to digest the starch?",
+    "options": [
+      "It stops working at the back of the throat, where there is no more saliva",
+      "Stomach acid gradually soaks into the bolus and lowers its pH",
+      "The lower esophageal sphincter filters it out of the bolus",
+      "Bile from the gallbladder breaks it down"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Amylase keeps working inside the swallowed bolus until stomach acid penetrates it and lowers the pH below the enzyme's working range, often after half an hour or more.",
+      "options": [
+        "The enzyme travels inside the bolus, so it continues after swallowing.",
+        "Correct. Acid denatures amylase once it reaches the inside of the bolus.",
+        "A sphincter controls the passage of the whole bolus; it cannot separate an enzyme from food.",
+        "Bile enters the small intestine, after the stomach, and it does not break down enzymes."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-12",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every component of saliva that protects the mouth and teeth from bacteria or acid.",
+    "options": [
+      "Lysozyme",
+      "IgA antibodies",
+      "Bicarbonate",
+      "Salivary amylase",
+      "Mucus",
+      "Bile"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Lysozyme damages bacterial walls, IgA binds microbes on mucous membranes, bicarbonate buffers acids made by mouth bacteria, and mucus coats and protects the lining. Amylase digests starch, and bile is not in saliva.",
+      "options": [
+        "Correct. Lysozyme attacks bacteria.",
+        "Correct. IgA is the antibody class secreted onto mucous membranes.",
+        "Correct. Bicarbonate buffers acid that would dissolve enamel.",
+        "Salivary amylase digests starch; it is not a defense.",
+        "Correct. Mucus coats the lining and traps microbes.",
+        "Bile is made by the liver and enters the small intestine. It is not part of saliva."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient is given a drug that blocks transmission at the neuromuscular junctions of skeletal muscle but has no effect on smooth muscle. Which part of the esophagus loses its peristalsis?",
+    "options": [
+      "The upper third",
+      "The lower third",
+      "The whole length equally",
+      "The middle third only"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The muscularis externa of the esophagus is skeletal muscle in its upper third, mixed in its middle and smooth in its lower third. Blocking skeletal neuromuscular junctions stops the upper part, while the smooth muscle below still contracts.",
+      "options": [
+        "Correct. The upper third is skeletal muscle driven directly by brainstem motor neurons.",
+        "The lower third is smooth muscle, which the drug does not affect.",
+        "Only the skeletal part is affected, so the esophagus is not affected evenly.",
+        "The middle third is a mixture of skeletal and smooth muscle, so it is weakened, but the upper third, which is all skeletal, is the part that stops."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "heartburn comes from the heart",
+    "q": "A 45-year-old man has a burning pain behind his sternum most nights when he lies down soon after a large dinner. It eases with antacids. What is the most likely cause?",
+    "options": [
+      "Reduced blood flow to the heart muscle",
+      "Stomach contents flowing back past the lower esophageal sphincter",
+      "Food stuck at the upper esophageal sphincter",
+      "Inflammation of the parotid glands"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is heartburn from reflux. Lying down after a large meal lets acid flow back past the lower esophageal sphincter into the esophagus, whose squamous lining has no defense against it. Frequent reflux like this is GERD.",
+      "options": [
+        "Heart pain is usually brought on by exertion and is not relieved by antacids. Chest pain always needs heart causes ruled out, but this pattern fits reflux.",
+        "Correct. Timing with meals and lying down, and relief with antacids, point to acid reflux.",
+        "Food stuck at the top of the esophagus causes trouble swallowing and a feeling of something in the throat, not nightly burning after meals.",
+        "Parotid inflammation causes swelling in front of the ears, not pain behind the sternum."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-15",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap: A swallow begins → vagal fibers activate enteric inhibitory neurons in the lower esophageal sphincter → ______ → the sphincter relaxes → the bolus enters the stomach",
+    "options": [
+      "The neurons release nitric oxide onto the sphincter's smooth muscle",
+      "The neurons release acetylcholine onto skeletal muscle fibers",
+      "The neurons release norepinephrine onto alpha-1 receptor proteins",
+      "Gravity pushes the sphincter open"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Enteric inhibitory neurons relax gut smooth muscle mainly with nitric oxide, helped by VIP. That is how parasympathetic activity relaxes the lower esophageal sphincter.",
+      "options": [
+        "Correct. Nitric oxide from inhibitory neurons relaxes the sphincter's smooth muscle.",
+        "The lower esophageal sphincter is smooth muscle, and acetylcholine contracts gut smooth muscle rather than relaxing it.",
+        "Norepinephrine on alpha-1 receptor proteins tightens gut sphincters; it is the sympathetic effect.",
+        "The sphincter opens by relaxation of its muscle. It relaxes even when you swallow lying down or upside down."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does acid reflux damage the esophagus while the same acid does not damage the stomach that holds it all day?",
+    "options": [
+      "The esophagus has a thicker muscle layer that the acid can reach more easily",
+      "The esophageal lining is stratified squamous epithelium with no acid defense, unlike the stomach's lining",
+      "The esophagus has a serosa that absorbs acid",
+      "Acid is stronger in the esophagus than in the stomach"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The esophagus is lined by nonkeratinized stratified squamous epithelium, built for abrasion, not acid. The stomach's lining has its own defenses against acid, which the stomach topic explains. Where the two linings meet, the change is abrupt.",
+      "options": [
+        "Acid damages the lining first; muscle thickness has nothing to do with why the lining is vulnerable.",
+        "Correct. The squamous lining lacks the acid defenses of the stomach's lining.",
+        "In the chest the esophagus has an adventitia, not a serosa, and neither layer absorbs acid.",
+        "The acid comes from the stomach, so it is diluted, not concentrated, when it refluxes."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A child's tongue cannot stick out past her lower teeth, and its tip forms a notch when she tries. Which structure is most likely too short?",
+    "options": [
+      "The labial frenulum",
+      "The uvula",
+      "The lingual frenulum",
+      "The soft palate"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The lingual frenulum anchors the underside of the tongue to the floor of the mouth. When it is short (tongue-tie), it tethers the tip, which cannot move forward and is pulled into a notch.",
+      "options": [
+        "The labial frenulum joins a lip to the gum. It does not tether the tongue.",
+        "The uvula hangs from the soft palate and does not attach to the tongue.",
+        "Correct. A short lingual frenulum is tongue-tie.",
+        "The soft palate is the back of the roof of the mouth; it does not hold the tongue tip."
+      ]
+    }
+  },
+  {
+    "id": "anp-mouth-esophagus-18",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A person has a hiatal hernia: the top of the stomach has slid up through the opening in the diaphragm, so the diaphragm no longer wraps the lower esophageal sphincter. Predict the change in each variable after a large meal.",
+    "variables": [
+      {
+        "name": "Pressure holding the lower esophageal sphincter closed",
+        "answer": "down",
+        "why": "The diaphragm's pinch normally adds to the sphincter's own smooth muscle; with the hernia that part is lost."
+      },
+      {
+        "name": "Episodes of reflux into the esophagus",
+        "answer": "up",
+        "why": "A lower closing pressure lets stomach contents push back into the esophagus more easily."
+      },
+      {
+        "name": "Heartburn",
+        "answer": "up",
+        "why": "More acid reaches the unprotected squamous lining of the esophagus."
+      },
+      {
+        "name": "Time for a bolus to travel down the esophagus",
+        "answer": "none",
+        "why": "Peristalsis in the body of the esophagus is unaffected; only the barrier at the bottom is weakened."
+      }
+    ],
+    "why": {
+      "correct": "The lower esophageal barrier has two parts: the sphincter's smooth muscle and the diaphragm around it. A hiatal hernia removes the second part, so reflux and heartburn increase, while peristalsis above is unchanged."
+    }
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "topic": "liver-pancreas-gallbladder",
+  "hook": "<p>Mrs. Alvarez, 48, has had gallstones for years without trouble. This week her eyes turned yellow, her urine went the color of cola and her stools turned pale gray. One stone has slipped out of her gallbladder and jammed in the duct that carries bile to her intestine. To see why one small stone changes her eyes, urine and stools at once, you need to follow bile from the liver cell that makes it to the duodenum.</p>",
+  "prereq": [
+    {
+      "q": "Where does blood from the stomach and intestines go first?",
+      "options": ["Straight to the inferior vena cava", "To the liver, through the hepatic portal vein", "To the kidneys, before it returns to the heart"],
+      "correct": 1,
+      "why": "Veins from the stomach, intestines, spleen and pancreas join into the hepatic portal vein, which carries their blood to the liver's sinusoids before it returns to the heart.",
+      "review": "systemic-veins"
+    },
+    {
+      "q": "What makes a gland exocrine rather than endocrine?",
+      "options": ["It releases its product into a duct that leads to a surface", "It releases a hormone into the blood", "It is made of only one cell"],
+      "correct": 0,
+      "why": "An exocrine gland releases its product into a duct that carries it to a surface, such as the lining of the gut. An endocrine gland has no duct and releases hormones toward capillaries.",
+      "review": "glands"
+    },
+    {
+      "q": "Which hormone do duodenal cells release when fat and protein arrive?",
+      "options": ["Gastrin", "Secretin", "Cholecystokinin"],
+      "correct": 2,
+      "why": "Fat and protein in the duodenum trigger cholecystokinin (CCK). Acid triggers secretin; gastrin comes from the stomach.",
+      "review": "digestive-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-23-24",
+    "caption": "The liver, gallbladder and pancreas. Hide the labels and name the liver's lobes, then trace the ducts from liver and gallbladder to the duodenum."
+  },
+  "chain": [
+    { "cause": "Fatty, acidic chyme enters the duodenum.", "effect": "Enteroendocrine cells in the duodenal wall release cholecystokinin (in response to fat and protein) and secretin (in response to acid) into the blood." },
+    { "cause": "Cholecystokinin reaches the gallbladder and the hepatopancreatic sphincter.", "effect": "The gallbladder contracts and the sphincter relaxes, so concentrated bile flows down the common bile duct into the duodenum." },
+    { "cause": "Cholecystokinin and secretin reach the pancreas.", "effect": "Acinar cells release enzymes and duct cells release bicarbonate, and pancreatic juice flows into the duodenum through the same opening." },
+    { "cause": "Bicarbonate neutralizes the acid chyme.", "effect": "Duodenal pH rises toward neutral, where pancreatic enzymes work, and enteropeptidase on the brush border converts trypsinogen to trypsin, which activates the other protein-digesting enzymes." },
+    { "cause": "Bile salts coat the fat and keep churned droplets small (emulsification).", "effect": "The fat's surface area multiplies, so pancreatic lipase can digest it far faster." }
+  ],
+  "misconception": {
+    "wrong": "Bile digests fat.",
+    "right": "Bile has no digestive enzymes. Its bile salts emulsify fat: they coat it and keep it in tiny droplets, which multiplies the surface that pancreatic lipase can reach. Lipase does the chemical digestion. Without bile, fat digestion is slow and much fat is lost in the feces; without lipase, fat is emulsified but barely digested at all."
+  },
+  "check": ["anp-liver-pancreas-gallbladder-1", "anp-liver-pancreas-gallbladder-7", "anp-liver-pancreas-gallbladder-10", "anp-liver-pancreas-gallbladder-12", "anp-liver-pancreas-gallbladder-14", "anp-liver-pancreas-gallbladder-15", "anp-liver-pancreas-gallbladder-18", "anp-liver-pancreas-gallbladder-22"],
+  "summary": "<p>The liver is built of lobules: plates of hepatocytes between leaky sinusoids, with a central vein in the middle and portal triads (portal vein branch, hepatic artery branch, bile duct) at the corners. Blood flows inward to the central vein; bile flows outward in canaliculi. Hepatocytes store and release glucose, make plasma proteins and clotting factors, process drugs and toxins, excrete bilirubin, store iron and vitamins, and make bile. Bile salts emulsify fat and are recycled through the enterohepatic circulation. The gallbladder stores and concentrates bile and empties it when cholecystokinin contracts it and relaxes the hepatopancreatic sphincter. Pancreatic juice brings bicarbonate (driven by secretin) and enzymes (driven by CCK); its protein-digesting enzymes travel as zymogens that enteropeptidase and trypsin activate in the duodenum. When trypsin is activated inside the gland, the result is pancreatitis. Hepatitis is liver inflammation; cirrhosis is the scarring that follows years of injury.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-26", "label": "NREMT: Abdominal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

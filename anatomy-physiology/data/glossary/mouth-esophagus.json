@@ -1,0 +1,32 @@
+{
+  "oral-cavity": {
+    "def": "The mouth: the oral vestibule between the lips, cheeks and teeth, and the cavity proper inside the teeth. Its roof is the bony hard palate in front and the muscular soft palate behind, with the uvula hanging from it; the fauces opens into the oropharynx. The tongue is skeletal muscle whose papillae grip food or carry taste buds, anchored by the lingual frenulum; the gingiva (gums) cover the bone around the teeth.",
+    "roots": [["or-", "mouth"], ["palat-", "roof of the mouth"], ["uvula", "little grape"], ["lingu-", "tongue"], ["papilla", "nipple"], ["frenulum", "little bridle"]],
+    "say": "FAW-seez (fauces); JIN-jih-vuh (gingiva)"
+  },
+  "teeth": {
+    "def": "Your 20 deciduous (baby) and 32 permanent teeth: incisors cut, canines (cuspids) tear, premolars and molars crush and grind. Each has a crown above the gum and roots in a socket; enamel caps the crown, dentin forms the bulk, the pulp cavity holds vessels and nerves, and cementum covers the root.",
+    "roots": [["dent-", "tooth"], ["incis-", "cut"], ["can-", "dog"], ["mol-", "millstone"], ["decidu-", "falling off"]],
+    "say": ""
+  },
+  "salivary-glands": {
+    "def": "Three pairs of exocrine glands (parotid, submandibular and sublingual) plus many small ones in the mouth lining, which make about 1 to 1.5 L of saliva a day under autonomic control. Saliva is mostly water, with mucus, salivary amylase (starts starch digestion), lingual lipase, lysozyme, IgA and buffers.",
+    "roots": [["saliv-", "spittle"], ["par-", "beside"], ["ot-", "ear"], ["sub-", "below"], ["mandibul-", "lower jaw"], ["amyl-", "starch"], ["-ase", "enzyme"]],
+    "say": "puh-ROT-id"
+  },
+  "mastication": {
+    "def": "Chewing: mechanical digestion in the mouth by the teeth, the muscles of mastication, the tongue and the cheeks, which breaks food into small pieces, mixes it with saliva and shapes it into a bolus, a soft ball ready to swallow.",
+    "roots": [["masticat-", "chew"], ["bolus", "lump"]],
+    "say": "mas-tih-KAY-shun"
+  },
+  "deglutition": {
+    "def": "Swallowing, in three phases: a voluntary phase (the tongue pushes the bolus into the oropharynx), a pharyngeal phase (a brainstem reflex that seals the nose and airway and squeezes the bolus into the esophagus) and an esophageal phase (peristalsis carries it to the stomach).",
+    "roots": [["de-", "down"], ["glut-", "swallow"]],
+    "say": "dee-gloo-TISH-un"
+  },
+  "esophagus": {
+    "def": "The muscular tube, about 25 cm long, from the pharynx through the chest and diaphragm to the stomach. It is lined by stratified squamous epithelium, its muscle changes from skeletal above to smooth below, and it is closed at the top by the upper esophageal sphincter and at the bottom by the lower esophageal sphincter. Reflux of stomach contents past the lower sphincter causes heartburn; frequent reflux is GERD.",
+    "roots": [["esophag-", "carrier of what is eaten"], ["sphincter", "band that binds tight"]],
+    "say": "ih-SOF-uh-gus"
+  }
+}

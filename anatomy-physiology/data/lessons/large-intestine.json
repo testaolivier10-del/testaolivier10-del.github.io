@@ -1,0 +1,49 @@
+{
+  "topic": "large-intestine",
+  "hook": "<p>Mr. Chen, 78, finished a course of a strong antibiotic for pneumonia last week. Now he has watery diarrhea eight times a day, cramps and a fever. The antibiotic cured his lungs, but it also wiped out much of the bacterial community in his colon, and a resistant species has taken over. To understand what went wrong, you need to know what the large intestine and its bacteria normally do.</p>",
+  "prereq": [
+    {
+      "q": "A solute that a membrane holds back is more concentrated on one side. Which way does water move?",
+      "options": ["Toward the side with more solute", "Toward the side with less solute", "It does not move"],
+      "correct": 0,
+      "why": "Water follows solute: it moves by osmosis toward the side where the held-back solute is more concentrated.",
+      "review": "diffusion-osmosis"
+    },
+    {
+      "q": "A reflex whose effectors are smooth muscle, cardiac muscle or glands is called what?",
+      "options": ["A somatic reflex", "A visceral reflex", "A stretch reflex of skeletal muscle"],
+      "correct": 1,
+      "why": "Visceral (autonomic) reflexes act on smooth muscle, cardiac muscle and glands. Somatic reflexes act on skeletal muscle.",
+      "review": "reflexes"
+    },
+    {
+      "q": "Which of these is an accessory digestive organ rather than part of the alimentary canal?",
+      "options": ["The stomach", "The pancreas", "The colon"],
+      "correct": 1,
+      "why": "Food passes through the stomach and colon, which are parts of the alimentary canal. The pancreas makes secretions and delivers them through a duct, so it is an accessory organ.",
+      "review": "digestive-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-23-21",
+    "caption": "The large intestine. Hide the labels and trace the route from the cecum to the anal canal, naming each region and both colic flexures."
+  },
+  "chain": [
+    { "cause": "After a meal, stretch of the stomach triggers the gastrocolic reflex.", "effect": "A mass movement sweeps along the colon and pushes feces into the rectum." },
+    { "cause": "Feces stretch the rectal wall.", "effect": "Stretch-sensitive sensory receptors fire and signal the sacral spinal cord, and you feel the urge." },
+    { "cause": "Parasympathetic neurons from the sacral cord fire.", "effect": "The rectum and sigmoid colon contract and the internal anal sphincter relaxes." },
+    { "cause": "You choose to relax the external anal sphincter and add a Valsalva's maneuver.", "effect": "Pressure in the abdomen rises and feces pass out. If instead you tighten the external sphincter, the rectum relaxes and the urge fades." },
+    { "cause": "Feces held in the rectum stay in contact with the lining.", "effect": "More water is absorbed, so delaying repeatedly makes stools harder." }
+  ],
+  "misconception": {
+    "wrong": "The colon absorbs most of the water that passes through the gut.",
+    "right": "About 9 L a day enter the gut from food, drink and secretions. The small intestine absorbs about 7 to 8 L of it. Only about 1.5 L reaches the colon, which absorbs about 90% of that. The colon's share is small, but it is the last chance, so any change in it shows up in the stool."
+  },
+  "check": ["anp-large-intestine-1", "anp-large-intestine-5", "anp-large-intestine-6", "anp-large-intestine-8", "anp-large-intestine-9", "anp-large-intestine-12", "anp-large-intestine-14", "anp-large-intestine-20"],
+  "summary": "<p>The large intestine runs from the cecum through the ascending, transverse, descending and sigmoid colon to the rectum and anal canal. Its longitudinal muscle is gathered into three teniae coli, which bunch the wall into haustra; its flat lining has no villi and many goblet cells. Trillions of gut bacteria ferment fiber into short-chain fatty acids and gas, turn bilirubin into stercobilin, make some vitamins and crowd out invaders. The colon absorbs about 90% of the fluid that reaches it by absorbing sodium, which water follows by osmosis. Slow haustral contractions mix; a few mass movements a day, often after meals, fill the rectum. Rectal stretch triggers the defecation reflex through the sacral cord, which relaxes the internal anal sphincter; the external anal sphincter is voluntary. Diarrhea follows when too much fluid arrives or it moves too fast; constipation when contents move too slowly and too much water is absorbed.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-26", "label": "NREMT: Abdominal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

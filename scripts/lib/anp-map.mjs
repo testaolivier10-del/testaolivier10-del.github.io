@@ -46,11 +46,24 @@ export function plural(t) {
   if (/[^aeiou]y$/i.test(t)) return t.slice(0, -1) + 'ies';
   return t + 's';
 }
+/* The singular of a multi-word plural alias ("carotid bodies" -> "carotid
+   body"), so a term listed in the plural still catches its singular. Only
+   multi-word terms: a single plural word ("ribs") is usually its own concept
+   name already, and stripping an s from one word misfires ("process"). */
+export function singular(t) {
+  if (isCaseSensitive(t) || !/\s/.test(t)) return null;
+  if (/ies$/i.test(t)) return t.slice(0, -3) + 'y';
+  if (/(ches|shes|xes|zes|sses)$/i.test(t)) return t.slice(0, -2);
+  if (/[^su]s$/i.test(t)) return t.slice(0, -1);
+  return null;
+}
 export function scanUseTerms(concept) {
   const base = scanTerms(concept);
   const have = new Set(base.map(t => t.toLowerCase()));
   const out = [...base];
-  for (const t of base) { const p = plural(t); if (p && !have.has(p.toLowerCase())) out.push(p); }
+  for (const t of base) {
+    for (const v of [plural(t), singular(t)]) if (v && !have.has(v.toLowerCase())) { have.add(v.toLowerCase()); out.push(v); }
+  }
   return out;
 }
 
