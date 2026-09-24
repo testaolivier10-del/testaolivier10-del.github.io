@@ -95,7 +95,7 @@ FIGURES.push({
     s += tag(254, 218, 'boundary 90% of the time');
     return s;
   },
-  caption: 'Hydrogen’s single electron. Left: where it was found, snapshot by snapshot. Right: the orbital, the boundary drawn around most of those dots. The H at the center is the nucleus, one proton.',
+  caption: 'Hydrogen’s single electron. The H at the center of each panel is the nucleus, one proton.',
 });
 
 /* ============================================ 2. s orbitals: 1s and 2s === */
@@ -122,7 +122,7 @@ FIGURES.push({
     s += tag(b.x, 186, 'bigger sphere, node inside');
     return s;
   },
-  caption: 'The dot at each center is the nucleus. The dashed circle inside 2s is its node. The region inside the node has the other shade, for a reason the section on phase explains.',
+  caption: 'The dot at each center is the nucleus. The dashed circle inside 2s is its node. The region inside the node has the other shade, for a reason explained later, under phase.',
 });
 
 /* ===================================== 3. one p orbital, labeled parts === */
@@ -144,14 +144,14 @@ FIGURES.push({
     s += nucleus(c);
     s += tag(250, 58, 'lobe');
     s += tag(90, 58, 'lobe');
-    s += lead(P(c.x + 18, c.y - 70), P(c.x + 40, c.y - 84));
+    s += lead(P(c.x + 14, c.y - 46), P(c.x + 40, c.y - 82));
     s += tag(c.x + 42, c.y - 86, 'nodal plane', { anchor: 'start' });
     s += lead(P(c.x - 4, c.y + 5), P(c.x - 50, c.y + 62));
     s += tag(c.x - 52, c.y + 76, 'nucleus', { anchor: 'end' });
     s += tag(170, 200, 'one orbital, two lobes');
     return s;
   },
-  caption: 'One 2p orbital. The lobes pinch to nothing at the nucleus. The dashed sheet is the nodal plane.',
+  caption: 'One 2p orbital, lying along x. The dashed sheet is its nodal plane, seen at a slant.',
 });
 
 /* ================================== 4. the three p orbitals (notes, wide) === */
@@ -200,7 +200,7 @@ FIGURES.push({
     s += tag(420, 236, '90° to 2px');
     return s;
   },
-  caption: 'The same axes in every panel; z comes out of the page toward you, so its lobes look shorter. In the last panel each orbital sits at 90° to the other two.',
+  caption: 'Same axes in every panel. z comes out of the page toward you, so its lobes look shorter.',
 });
 
 FIGURES.push({
@@ -257,7 +257,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'One example of each type; the dot is the nucleus. Organic chemistry uses s and p. You only need to recognize d and f.',
+  caption: 'One example of each type. The dot is the nucleus.',
 });
 
 /* ========================================= 6. phase, and what overlap does === */
@@ -378,14 +378,13 @@ FIGURES.push({
       s += label(62, r.y + 5, r.name, { size: 13, anchor: 'end' });
       s += tag(bx + r.boxes * (w + gap) + 6, r.y + 4, `holds ${r.boxes * 2}`, { anchor: 'start', cls: 'fg-tag-mut' });
     }
-    s += tag(232, 228, 'n = 2: 4 orbitals,', { anchor: 'start', cls: 'fg-tag-good' });
-    s += tag(232, 244, '8 electrons', { anchor: 'start', cls: 'fg-tag-good' });
-    s += tag(232, 82, '4s sits below 3d,', { anchor: 'start' });
-    s += tag(232, 98, 'so it fills first', { anchor: 'start' });
+    s += tag(170, 250, 'n = 2: 4 orbitals,', { anchor: 'start', cls: 'fg-tag-good' });
+    s += tag(170, 266, '8 electrons', { anchor: 'start', cls: 'fg-tag-good' });
+    s += tag(164, 82, '4s sits below 3d,', { anchor: 'start' });
+    s += tag(164, 98, 'so it fills first', { anchor: 'start' });
     return s;
   },
   caption: 'Fill from the bottom rung up. Each box is one orbital and holds 2.',
-  note: 'An s subshell is always one box, a p always three, a d always five, in any shell. A subshell holds twice its box count, and a shell holds the sum of its rungs: 2 for n = 1, 8 for n = 2, 18 for n = 3.',
 });
 
 /* ============================== 9. C, N, O, F box diagrams (worked example) === */
@@ -421,7 +420,7 @@ FIGURES.push({
     ATOMS.forEach((a, i) => { s += atomBoxes(4 + i * 184, 4, ...a); });
     return s;
   },
-  caption: 'Read each 2p row left to right: the boxes take one electron each before any box takes a second.',
+  caption: 'Compare the 2p rows. Single arrows are the unpaired electrons. For N, O and F, the paired boxes in n = 2 become lone pairs.',
 });
 
 /* ================================== 10. Hund's rule on nitrogen (lesson) === */

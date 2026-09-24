@@ -157,8 +157,8 @@ FIGURES.push({
     s += dMinus(cl.x + 30, cl.y - 24);
     s += tg(hUp.x + 18, hUp.y - 24, 'C–H: ΔEN 0.35', { anchor: 'start' });
     s += tgMut(hUp.x + 18, hUp.y - 10, 'treated as nonpolar', { anchor: 'start' });
-    s += tg(252, 184, 'C–Cl: ΔEN 0.61', { anchor: 'start' });
-    s += tg(252, 198, 'polar', { anchor: 'start' });
+    s += tg(330, 184, 'C–Cl: ΔEN 0.61', { anchor: 'end' });
+    s += tg(330, 198, 'polar', { anchor: 'end' });
     s += tg(170, 238, 'the δ+ carbon is the electron-poor site');
     return s;
   },
@@ -221,12 +221,12 @@ FIGURES.push({
    each bond; the bonds from Cl to the COOH carbon are numbered. */
 function acidRow(y0, nCH2) {
   let s = '';
-  const step = 48;
-  const cl = P(28, y0);
+  const step = 53, x0 = 26;
+  const cl = P(x0, y0);
   const chain = [];
-  for (let i = 0; i < nCH2; i++) chain.push(P(28 + step * (i + 1), y0));
-  const c1 = P(28 + step * (nCH2 + 1), y0);
-  const oh = P(c1.x + step, y0), h = P(oh.x + 40, y0);
+  for (let i = 0; i < nCH2; i++) chain.push(P(x0 + step * (i + 1), y0));
+  const c1 = P(x0 + step * (nCH2 + 1), y0);
+  const oh = P(c1.x + step, y0), h = P(oh.x + 36, y0);
   const oDbl = P(c1.x, y0 - 50);
   // bonds
   s += bond(cl, chain[0], { rFrom: Xr, rTo: Cr, cls: 'fg-bond-hi' });
@@ -239,19 +239,19 @@ function acidRow(y0, nCH2) {
     s += bond(p, hu, { rFrom: Cr, rTo: Hr }) + bond(p, hd, { rFrom: Cr, rTo: Hr }) + H(hu) + H(hd);
   }
   s += lp(oDbl, 45, 22) + lp(oDbl, 135, 22) + lp(oh, 60, 22) + lp(oh, -90, 22);
-  s += lp(cl, 90, 22) + lp(cl, 180, 22) + lp(cl, -90, 22);
+  s += lp(cl, 90, 22) + lp(cl, 180, 21) + lp(cl, -90, 22);
   s += X(cl, 'Cl', 'hi');
   chain.forEach((p) => { s += C(p); });
   s += C(c1) + X(oDbl, 'O') + X(oh, 'O') + H(h);
   // pull arrows over each bond between Cl and C1, pointing toward Cl,
-  // shrinking as they get further away
+  // shrinking and fading as they get further away
   const pts = [cl, ...chain, c1];
   for (let i = 0; i < pts.length - 1; i++) {
     const a = pts[i + 1], b = pts[i];
-    const shrink = Math.min(i * 5, 12);
+    const shrink = Math.min(i * 4, 8);
     const muted = i >= 2;
-    s += arrow(P(a.x - 16 - shrink / 2, y0 - 20), P(b.x + 16 + shrink / 2, y0 - 20), { size: 6, muted });
-    s += tgMut((a.x + b.x) / 2, y0 + 16, String(i + 1));
+    s += arrow(P(a.x - 15 - shrink / 2, y0 - 21), P(b.x + 15 + shrink / 2, y0 - 21), { size: 6, muted });
+    s += tgMut((a.x + b.x) / 2, y0 + 17, String(i + 1));
   }
   return { s, c1 };
 }
@@ -264,18 +264,18 @@ FIGURES.push({
   alt: 'Two acids drawn with every atom labeled. Top: chloroacetic acid, Cl–CH2–C(=O)–O–H. The bonds from chlorine to the carbon of the COOH group are numbered 1 and 2, and a short arrow over each points back toward chlorine. A label reads pKa 2.86: the pull reaches the COOH group. Bottom: 4-chlorobutanoic acid, Cl–CH2–CH2–CH2–C(=O)–O–H. Its bonds from chlorine to the COOH carbon are numbered 1 to 4. The arrows over them shrink and fade with each bond away from chlorine. A label reads pKa 4.52, close to acetic acid’s 4.76: the pull has faded.',
   build() {
     let s = '';
-    s += tgMut(10, 18, 'chloroacetic acid: Cl is 2 bonds from the COOH carbon', { anchor: 'start' });
+    s += tgMut(10, 18, 'chloroacetic acid: Cl is 2 bonds away', { anchor: 'start' });
     const top = acidRow(94, 1);
     s += top.s;
     s += tg(10, 166, 'pKa 2.86: the pull reaches the COOH group', { anchor: 'start' });
     s += rule(10, 178, 330, 178);
-    s += tgMut(10, 198, '4-chlorobutanoic acid: 4 bonds away', { anchor: 'start' });
+    s += tgMut(10, 198, '4-chlorobutanoic acid: Cl is 4 bonds away', { anchor: 'start' });
     const bot = acidRow(280, 3);
     s += bot.s;
     s += tg(10, 352, 'pKa 4.52, close to acetic acid’s 4.76: faded', { anchor: 'start' });
     return s;
   },
-  caption: 'The arrows over the numbered bonds show the pull toward chlorine. In the lower acid they shrink and fade before they reach the COOH group.',
+  caption: 'The numbers count the bonds from chlorine to the carbon of the COOH group. The arrows over them show the pull toward chlorine; in the lower acid they shrink and fade before they get there.',
 });
 
 /* ----------------------------------------------------------- en-pka-ladder ---
@@ -320,7 +320,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-chlorobutane',
   lessons: ['electronegativity'],
-  viewBox: '0 0 340 190',
+  viewBox: '0 0 340 162',
   alt: '2-Chlorobutane with every atom labeled: four carbons in a row, lettered a, b, c and d from left to right. Carbon a carries three hydrogens, carbon b carries one hydrogen and a chlorine (below it, with three lone pairs), carbon c carries two hydrogens and carbon d three hydrogens.',
   build() {
     let s = '';

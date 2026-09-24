@@ -34,7 +34,7 @@ function mol(m) {
     s += `<circle class="fg-panel-hi" cx="${f2(c.x)}" cy="${f2(c.y)}" r="9"></circle>`;
   }
   for (const [a, b, order = 1, cls] of m.bonds || []) {
-    s += bond(A[a], A[b], { order, cls, rFrom: rad(A[a]), rTo: rad(A[b]) });
+    s += bond(A[a], A[b], { order, cls, rFrom: rad(A[a]) + (A[a].k ? 2 : 0), rTo: rad(A[b]) + (A[b].k ? 2 : 0) });
   }
   for (const [id, ang, dist] of m.lp || []) s += lonePair(A[id].x, A[id].y, ang, dist ? { dist } : {});
   for (const [id, ang] of m.dot || []) {
@@ -394,22 +394,35 @@ FIGURES.push({
   id: 'condensed-branches',
   section: 'lewis-structures',
   anchor: '<h3>Reading a condensed formula</h3>',
-  viewBox: '0 0 760 252',
-  alt: 'Three condensed formulas, each drawn out. (CH3)2CHOH: one carbon bonded to two CH3 groups, one H and an O–H. (CH3)3COH: one carbon bonded to three CH3 groups and an O–H, with no H of its own. CH3COOCH3: a carbon bonded to a CH3, double-bonded to one oxygen, and single-bonded to a second oxygen that carries a CH3.',
+  viewBox: '0 0 760 508',
+  alt: 'Five condensed formulas, each drawn out. (CH3)2CHOH: one carbon bonded to two CH3 groups, one H and an O–H. CH3CH(OH)CH3: the same molecule, with the OH hanging off the middle carbon. (CH3)3COH: one carbon bonded to three CH3 groups and an O–H, with no H of its own. C(CH3)4: one carbon bonded to four CH3 groups. CH3COOCH3: a carbon bonded to a CH3, double-bonded to one oxygen, and single-bonded to a second oxygen that carries a CH3.',
   build() {
-    const panels = [
+    const top = [
       { title: '(CH₃)₂CHOH', draw: (cx, cy) => {
         const C = { x: cx - 20, y: cy, l: 'C', k: 'hi' };
         const A = { C, M1: { ...at(C, 180, 52), l: 'CH₃' }, M2: { ...at(C, 90, 50), l: 'CH₃' }, H: { ...at(C, 270, 40), l: 'H' }, O: { ...at(C, 0, 52), l: 'O' } };
         A.HO = { ...at(A.O, 330, 38), l: 'H' };
         return mol({ atoms: A, bonds: [['C', 'M1'], ['C', 'M2'], ['C', 'H'], ['C', 'O'], ['O', 'HO']], lp: [['O', 60], ['O', 130]] });
       }, tags: ['two CH₃ groups on one carbon', 'that carbon keeps one H'] },
+      { title: 'CH₃CH(OH)CH₃', draw: (cx, cy) => {
+        const C = { x: cx, y: cy - 8, l: 'C', k: 'hi' };
+        const A = { C, M1: { ...at(C, 180, 54), l: 'CH₃' }, M2: { ...at(C, 0, 54), l: 'CH₃' }, H: { ...at(C, 270, 40), l: 'H' }, O: { ...at(C, 90, 48), l: 'O' } };
+        A.HO = { ...at(A.O, 0, 38), l: 'H' };
+        return mol({ atoms: A, bonds: [['C', 'M1'], ['C', 'M2'], ['C', 'H'], ['C', 'O'], ['O', 'HO']], lp: [['O', 120], ['O', 200]] });
+      }, tags: ['(OH) hangs on the C before it', 'same molecule as the first'] },
       { title: '(CH₃)₃COH', draw: (cx, cy) => {
         const C = { x: cx - 20, y: cy, l: 'C', k: 'hi' };
         const A = { C, M1: { ...at(C, 180, 52), l: 'CH₃' }, M2: { ...at(C, 90, 50), l: 'CH₃' }, M3: { ...at(C, 270, 50), l: 'CH₃' }, O: { ...at(C, 0, 52), l: 'O' } };
         A.HO = { ...at(A.O, 330, 38), l: 'H' };
         return mol({ atoms: A, bonds: [['C', 'M1'], ['C', 'M2'], ['C', 'M3'], ['C', 'O'], ['O', 'HO']], lp: [['O', 60], ['O', 130]] });
       }, tags: ['three CH₃ groups on one carbon', 'no H left on that carbon'] },
+    ];
+    const bottom = [
+      { title: 'C(CH₃)₄', draw: (cx, cy) => {
+        const C = { x: cx, y: cy, l: 'C', k: 'hi' };
+        const A = { C, M1: { ...at(C, 180, 54), l: 'CH₃' }, M2: { ...at(C, 90, 50), l: 'CH₃' }, M3: { ...at(C, 270, 50), l: 'CH₃' }, M4: { ...at(C, 0, 54), l: 'CH₃' } };
+        return mol({ atoms: A, bonds: [['C', 'M1'], ['C', 'M2'], ['C', 'M3'], ['C', 'M4']] });
+      }, tags: ['four CH₃ groups on one carbon', 'nothing follows the bracket'] },
       { title: 'CH₃COOCH₃', draw: (cx, cy) => {
         const C = { x: cx - 30, y: cy + 4, l: 'C', k: 'hi' };
         const A = { C, M: { ...at(C, 180, 50), l: 'CH₃' }, Od: { ...at(C, 270, 50), l: 'O', k: 'hi' }, Os: { ...at(C, 0, 52), l: 'O', k: 'warn' } };
@@ -417,9 +430,10 @@ FIGURES.push({
         return mol({ atoms: A, bonds: [['C', 'M'], ['C', 'Od', 2], ['C', 'Os'], ['Os', 'T']], lp: [['Od', 225], ['Od', 315], ['Os', 300], ['Os', 120]] });
       }, tags: ['first O: double bond to the C', 'second O: links C to CH₃'] },
     ];
-    return row(panels, { w: 236, h: 222, mcy: 110, tagY: 190 });
+    return row(top, { w: 236, h: 232, mcy: 112, tagY: 198 }) +
+      row(bottom, { x0: 138, y0: 260, w: 236, h: 232, mcy: 112, tagY: 198 });
   },
-  caption: 'Each condensed formula drawn out. The circled carbon is the one the parentheses hang the groups on. In CH₃COOCH₃ the first O takes the double bond and the second (coral) continues the chain.',
+  caption: 'Each condensed formula drawn out. The circled carbon is the one the brackets hang their groups on. In CH₃COOCH₃ the first O takes the double bond and the second (coral) continues the chain.',
 });
 
 FIGURES.push({
@@ -531,7 +545,7 @@ FIGURES.push({
 });
 
 const CO2 = [
-  { title: '1. Count', draw: (x, y) => co2(x, y, 1), tags: ['4 + 6 + 6 = 16', '=electrons to place'] },
+  { title: '1. Count', draw: (x, y) => co2(x, y, 1), tags: ['6 + 4 + 6 = 16', '=electrons to place'] },
   { title: '2. Single bonds', draw: (x, y) => co2(x, y, 2), tags: ['2 bonds use 4', '=12 left'] },
   { title: '3. Fill the O’s', draw: (x, y) => co2(x, y, 3), tags: ['the O’s take all 12', '!C: only 4 electrons'] },
   { title: '4. Move 2 pairs', kind: 'hi', draw: (x, y) => co2(x, y, 4), tags: ['C: 4 bonds = 8 electrons', 'every formal charge 0'] },
@@ -614,7 +628,7 @@ FIGURES.push({
 
 const BF3 = [
   { title: 'BF₃ from above', draw: (x, y) => bf3(x, y + 4), tags: ['!B: 3 bonds, no lone pair', '!6 electrons: 2 short of 8'] },
-  { title: 'tilted to show the plane', draw: (x, y) => bf3Side(x - 10, y), tags: ['=wedge: toward you; hashes: away', 'nothing in the orbital'] },
+  { title: 'tilted to show the plane', draw: (x, y) => bf3Side(x - 10, y), tags: ['=wedge: toward you; hashes: away', 'empty orbital; F lone pairs omitted'] },
 ];
 
 FIGURES.push({
@@ -650,7 +664,7 @@ FIGURES.push({
   viewBox: '0 0 760 300',
   alt: 'Two Lewis structures drawn flat. PCl5: phosphorus bonded to five chlorines, each with three lone pairs, so phosphorus has ten electrons. SF6: sulfur bonded to six fluorines, each with three lone pairs, so sulfur has twelve electrons.',
   build() { return row(EXP, { w: 360, h: 272, gap: 12, mcy: 138, tagY: 240 }); },
-  caption: 'Each halogen keeps its octet; only the central atom goes past eight.',
+  caption: 'Flat drawings: they show which atoms are bonded, not the 3D shape, which Molecular geometry works out. Each halogen keeps its octet.',
 });
 
 FIGURES.push({
@@ -659,7 +673,7 @@ FIGURES.push({
   viewBox: '0 0 340 540',
   alt: 'PCl5 and SF6 stacked: phosphorus with five bonds to chlorine, ten electrons; sulfur with six bonds to fluorine, twelve electrons. Every halogen has three lone pairs.',
   build() { return stack(EXP, { h: 255, mcy: 130, tagY: 222 }); },
-  caption: 'Phosphorus and sulfur, drawn past eight.',
+  caption: 'Phosphorus and sulfur, drawn past eight. The flat drawings show bonds, not 3D shape.',
 });
 
 FIGURES.push({
@@ -675,6 +689,51 @@ FIGURES.push({
     ], { w: 360, h: 258, gap: 12, mcy: 130, tagY: 224 });
   },
   caption: 'Compare sulfur in the two drawings: twelve electrons and no charge, or eight electrons and +2.',
+});
+
+FIGURES.push({
+  id: 'l-sulfuric-two-ways',
+  lessons: ['lewis-structures'],
+  viewBox: '0 0 340 520',
+  alt: 'Sulfuric acid drawn two ways, stacked. Top: sulfur double-bonded to two oxygens and single-bonded to two O–H groups, every formal charge zero, twelve electrons on sulfur. Bottom: sulfur single-bonded to all four oxygens with a 2+ charge; the two oxygens without H each carry three lone pairs and a minus charge; every atom has an octet.',
+  build() {
+    return stack([
+      { title: 'two S=O bonds', draw: (x, y) => sulfuric(x, y, false), tags: ['S: 6 bonds = 12 electrons', '=every formal charge 0'] },
+      { title: 'all single bonds', draw: (x, y) => sulfuric(x, y, true), tags: ['every atom has an octet', '!S +2; two O’s −1 each'] },
+    ], { h: 245, mcy: 112, tagY: 212 });
+  },
+  caption: 'H₂SO₄ two ways. Courses usually grade the top drawing.',
+});
+
+/* Dimethyl sulfoxide drawn with S=O (10 electrons on S) or S⁺–O⁻ (octet). */
+function dmso(cx, cy, separated) {
+  const S0 = { x: cx - 10, y: cy, l: 'S', k: 'hi' };
+  const A = { S: S0, M1: { ...at(S0, 180, 54), l: 'CH₃' }, M2: { ...at(S0, 90, 50), l: 'CH₃' }, O: { ...at(S0, 0, 54), l: 'O', k: separated ? 'warn' : undefined } };
+  const m = { atoms: A, bonds: [['S', 'M1'], ['S', 'M2']], lp: [['S', 270]] };
+  if (separated) {
+    m.bonds.push(['S', 'O']);
+    m.lp.push(['O', 270], ['O', 0], ['O', 90]);
+    m.charges = [['S', '+', 225, 27], ['O', '−', 45, 31]];
+  } else {
+    m.bonds.push(['S', 'O', 2, 'fg-bond-hi']);
+    m.lp.push(['O', 315], ['O', 45]);
+  }
+  return mol(m);
+}
+
+FIGURES.push({
+  id: 'dmso-two-ways',
+  section: 'lewis-structures',
+  anchor: 'Drawn with S⁺–O⁻ bonds instead, sulfur keeps an octet.</p>',
+  viewBox: '0 0 560 214',
+  alt: 'Dimethyl sulfoxide drawn two ways. Left: sulfur bonded to two CH3 groups, double-bonded to oxygen, with one lone pair on sulfur and two on oxygen; every formal charge zero, ten electrons on sulfur. Right: sulfur single-bonded to oxygen with a plus charge and one lone pair; oxygen has three lone pairs and a minus charge; every atom has an octet.',
+  build() {
+    return row([
+      { title: 'S=O', draw: (x, y) => dmso(x, y, false), tags: ['S: 4 bonds + 1 pair = 10 e⁻', '=every formal charge 0'] },
+      { title: 'S⁺–O⁻', draw: (x, y) => dmso(x, y, true), tags: ['S: 3 bonds + 1 pair = 8 e⁻', '!S +1, O −1'] },
+    ], { w: 260, h: 186, gap: 12, mcy: 88, tagY: 156 });
+  },
+  caption: 'Dimethyl sulfoxide, (CH₃)₂SO, a sulfoxide, drawn both ways. A sulfone adds a second oxygen to the same sulfur.',
 });
 
 const RAD = [

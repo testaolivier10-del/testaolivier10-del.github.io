@@ -41,6 +41,9 @@ function pOrb(c, deg, len = 48, w = 13) {
 /* The outline of one pi cloud: a dashed rounded box around two lobes. */
 const cloud = (x1, y1, x2, y2) =>
   `<rect class="fg-dash-hi" x="${r2(x1)}" y="${r2(y1)}" width="${r2(x2 - x1)}" height="${r2(y2 - y1)}" rx="${r2(Math.min(24, (y2 - y1) / 2))}" fill="none"></rect>`;
+/* A group label too long for an atom disc, drawn in a rounded box. */
+const pill = (x, y, lbl, w) =>
+  `<rect class="fg-atom" x="${r2(x - w / 2)}" y="${r2(y - 15)}" width="${w}" height="30" rx="15"></rect>` + atom(x, y, lbl, { kind: 'point' });
 const dot = (x, y) => `<circle class="fg-lp" cx="${r2(x)}" cy="${r2(y)}" r="2.4"></circle>`;
 const Hr = 11, Cr = 14;
 const H = (p, kind) => atom(p.x, p.y, 'H', { r: Hr, ...(kind ? { kind } : {}) });
@@ -87,7 +90,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Gray lobes are hybrid orbitals; the green disc is hydrogen’s 1s. In every row the overlap sits on the dashed line through both nuclei. Compare the gap between the carbons in rows 2 to 4.',
+  caption: 'Gray lobes are hybrid orbitals; the green disc is hydrogen’s 1s. In every row the overlap sits on the dashed line through both nuclei. The carbons in rows 3 and 4 sit closer mostly because of their π bonds, which are not drawn here; s-character adds a smaller part.',
 });
 
 /* ------------------------------------------------------ sigma-rotation ---
@@ -163,13 +166,14 @@ FIGURES.push({
   build() {
     let s = ethenePerspective(140);
     s += text(56, 90, 'p orbital', { cls: 'fg-tag' });
+    s += `<line class="fg-bond-soft" x1="90" y1="92" x2="118" y2="104"></line>`;
     s += text(288, 90, 'upper π cloud', { cls: 'fg-tag' });
     s += text(288, 214, 'lower π cloud', { cls: 'fg-tag' });
     s += text(60, 214, 'the plane', { cls: 'fg-tag-mut' });
     s += text(170, 244, 'one π bond = both clouds together', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'The dashed parallelogram is the flat plane of the six atoms. The two dashed outlines mark the two clouds of the one π bond.',
+  caption: 'The dashed parallelogram is the flat plane of the six atoms. The two dashed outlines mark the two clouds of the one π bond. The two shades mark the two halves (phases) of each p orbital.',
 });
 
 /* --------------------------------------------------------- pi-rotation ---
@@ -229,23 +233,25 @@ FIGURES.push({
   id: 'l-click-bond',
   lessons: ['bonding'],
   viewBox: '0 0 340 230',
-  alt: 'Ethene side on, every atom labeled, with the three parts of the bonding between the carbons drawn separately so each can be clicked: a gray head-on overlap on the axis between the carbons, a cloud above the axis and a cloud below it.',
+  alt: 'Ethene in perspective, every atom labeled, with a dashed parallelogram for the plane of its six atoms. The three parts of the bonding between the carbons are drawn separately so each can be tapped: a gray head-on overlap on the axis between the carbons, a cloud above the plane touching both carbons, and a cloud below it.',
   build() {
     const cy = 112;
     const C1 = pv(-50, 0, cy), C2 = pv(50, 0, cy);
     const hs = [[C1, pv(-94, 60, cy)], [C1, pv(-94, -60, cy)], [C2, pv(94, 60, cy)], [C2, pv(94, -60, cy)]];
-    let s = '';
+    const q = (u, v) => { const p = pv(u, v, cy); return `${r2(p.x)} ${r2(p.y)}`; };
+    let s = `<path class="fg-dash" d="M${q(-140, -85)} L${q(140, -85)} L${q(140, 85)} L${q(-140, 85)} Z"></path>`;
     hs.forEach(([c, h]) => { s += sb(c, h); });
     s += `<g class="hit" data-key="sigma" style="cursor:pointer">${hybrid(C1, 0, 80, 12)}${hybrid(C2, 180, 80, 12)}` +
-         `<rect x="136" y="${cy - 12}" width="68" height="24" fill="transparent"></rect></g>`;
-    s += `<g class="hit" data-key="pi" style="cursor:pointer">${ell(170, cy - 44, 62, 20, 0, 'fg-orb')}</g>`;
-    s += `<g class="hit" data-key="pi" style="cursor:pointer">${ell(170, cy + 44, 62, 20, 0, 'fg-orb-alt')}</g>`;
+         `<rect x="136" y="${cy - 10}" width="68" height="20" fill="transparent"></rect></g>`;
+    s += `<g class="hit" data-key="pi" style="cursor:pointer">${ell(170, cy - 26, 70, 20, 0, 'fg-orb')}</g>`;
+    s += `<g class="hit" data-key="pi" style="cursor:pointer">${ell(170, cy + 26, 70, 20, 0, 'fg-orb-alt')}</g>`;
     hs.forEach(([, h]) => { s += H(h); });
     s += C(C1) + C(C2);
-    s += text(290, cy - 52, 'above', { cls: 'fg-tag' });
-    s += text(290, cy + 4, 'on the axis', { cls: 'fg-tag' });
-    s += text(290, cy + 60, 'below', { cls: 'fg-tag' });
-    s += text(170, 222, 'tap one part', { cls: 'fg-tag-mut' });
+    s += text(292, cy - 52, 'above', { cls: 'fg-tag' });
+    s += text(292, cy + 4, 'on the axis', { cls: 'fg-tag' });
+    s += text(292, cy + 60, 'below', { cls: 'fg-tag' });
+    s += text(170, 196, 'dashed: the plane of the six atoms', { cls: 'fg-tag-mut' });
+    s += text(170, 220, 'tap one part', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Three regions of electron density hold the two carbons together.',
@@ -278,7 +284,7 @@ FIGURES.push({
     s += text(170, 206, 'C–C≡N: one straight line', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'Count one σ for every connection between two atoms, then one π for each extra line.',
+  caption: 'Every connection and every extra line counted.',
 });
 
 /* ------------------------------------------------------- propene-plane ---
@@ -289,7 +295,6 @@ FIGURES.push({
   id: 'propene-plane',
   section: 'bonding',
   anchor: 'the methyl group spins about its single bond.</p>',
-  lessons: ['bonding'],
   viewBox: '0 0 340 246',
   alt: 'Propene with every atom labeled, drawn on a shaded panel that stands for the page. The CH3 carbon, the two carbons of the C=C and the three hydrogens on those two carbons are all drawn in the page. The CH3 carbon carries one more hydrogen in the page and two hydrogens that leave the plane, one on a wedge and one on a hash, labeled as leaving the plane. Hybridization labels read sp3 for the CH3 carbon and sp2 for both carbons of the double bond.',
   build() {
@@ -308,7 +313,7 @@ FIGURES.push({
     s += text(108, 172, 'sp³', { cls: 'fg-tag-mut' });
     s += text(160, 132, 'sp²', { cls: 'fg-tag-mut' });
     s += text(210, 176, 'sp²', { cls: 'fg-tag-mut' });
-    s += text(170, 240, 'in the plane: 3 C + the 3 H on the C=C carbons', { cls: 'fg-tag' });
+    s += text(170, 240, 'always in plane: 3 C + 3 H on the C=C carbons', { cls: 'fg-tag' });
     return s;
   },
   caption: 'The two coral hydrogens leave the plane of the page. The CH₃ group spins; in the position drawn, its third hydrogen happens to lie in the plane.',
@@ -397,13 +402,13 @@ FIGURES.push({
   anchor: 'are 347, 614 and 839 kJ/mol.</p>',
   lessons: ['bonding'],
   viewBox: '0 0 340 330',
-  alt: 'Three rows: ethane, ethene and ethyne. In each, the two carbons are drawn with the distance between them to scale: 154, 134 and 120 picometers. Under each is a bar for the energy needed to break the bond: 83 kcal/mol for ethane, all sigma; 147 for ethene, split into sigma 83 and pi about 64; 200 for ethyne, split into sigma 83, pi about 64 and a second pi about 53.',
+  alt: 'Three rows: an average carbon–carbon single, double and triple bond. In each, the two carbons are drawn with the distance between them to scale: 154, 134 and 120 picometers. Under each is a bar for the energy needed to break the bond: 83 kcal/mol for the single bond, all sigma; 147 for the double bond, split into sigma 83 and pi about 64; 200 for the triple bond, split into sigma 83, pi about 64 and a second pi about 53.',
   build() {
     let s = '';
     const rows = [
-      { t: 'ethane, C–C: 83 kcal/mol to break', a: 'H₃C', b: 'CH₃', d: 154, order: 1, segs: [83] },
-      { t: 'ethene, C=C: 147 kcal/mol to break', a: 'H₂C', b: 'CH₂', d: 134, order: 2, segs: [83, 64] },
-      { t: 'ethyne, C≡C: 200 kcal/mol to break', a: 'HC', b: 'CH', d: 120, order: 3, segs: [83, 64, 53] },
+      { t: 'average C–C bond: 83 kcal/mol to break', a: 'C', b: 'C', d: 154, order: 1, segs: [83] },
+      { t: 'average C=C bond: 147 kcal/mol to break', a: 'C', b: 'C', d: 134, order: 2, segs: [83, 64] },
+      { t: 'average C≡C bond: 200 kcal/mol to break', a: 'C', b: 'C', d: 120, order: 3, segs: [83, 64, 53] },
     ];
     const K = 1.5, x0 = 16;
     const segLbl = ['σ 83', 'π ≈64', 'π ≈53'];
@@ -425,7 +430,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'The carbon–carbon distances are drawn to scale. Each bar is the energy to break that bond, split into the σ bond and the rough share of each π bond.',
+  caption: 'The carbon–carbon distances are drawn to scale. Each bar is the average energy to break that kind of bond, split into the σ bond and the rough share of each π bond.',
 });
 
 /* ------------------------------------------------------ bond-cleavage ---
@@ -436,7 +441,7 @@ FIGURES.push({
   id: 'bond-cleavage',
   section: 'bonding',
   anchor: 'structure</a> forms.</p>',
-  viewBox: '0 0 340 234',
+  viewBox: '0 0 340 262',
   alt: 'Two ways to break a bond, with the shared pair drawn as two dots. Top, homolysis: H3C, two dots, CH3 goes to H3C with one dot plus one dot with CH3, two radicals. Bottom, heterolysis: (CH3)3C, two dots, Cl with three lone pairs goes to a (CH3)3C cation with no dot plus a chloride anion carrying four lone pairs.',
   build() {
     let s = '';
@@ -453,14 +458,15 @@ FIGURES.push({
     // heterolysis
     s += text(10, 136, 'heterolysis of a C–Cl bond', { cls: 'fg-tag', anchor: 'start' });
     const y2 = 180;
-    s += atom(34, y2, '(CH₃)₃C', { kind: 'point' }) + dot(72, y2) + dot(82, y2) + atom(106, y2, 'Cl', { r: 14 });
-    s += lonePair(106, y2, -90, { dist: 22 }) + lonePair(106, y2, 90, { dist: 22 }) + lonePair(106, y2, 0, { dist: 22 });
-    s += arrow(P(140, y2), P(176, y2));
-    s += atom(210, y2, '(CH₃)₃C⁺', { kind: 'point' });
+    s += pill(38, y2, '(CH₃)₃C', 64) + dot(79, y2) + dot(88, y2) + atom(112, y2, 'Cl', { r: 14 });
+    s += lonePair(112, y2, -90, { dist: 22 }) + lonePair(112, y2, 90, { dist: 22 }) + lonePair(112, y2, 0, { dist: 22 });
+    s += arrow(P(143, y2), P(172, y2));
+    s += pill(210, y2, '(CH₃)₃C⁺', 72);
     s += text(256, y2 + 5, '+', { cls: 'fg-lbl' });
     s += atom(298, y2, 'Cl⁻', { r: 15 });
     [0, 90, 180, 270].forEach((a) => { s += lonePair(298, y2, a, { dist: 23 }); });
     s += text(170, 226, 'Cl takes both electrons: a cation and an anion', { cls: 'fg-tag-good' });
+    s += text(170, 252, 'each CH₃ stands for one C with three H', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'The two dots between the atoms are the shared pair. Follow them: in the top row they split one each way, in the bottom row both go to chlorine.',
@@ -485,7 +491,7 @@ FIGURES.push({
   section: 'bonding',
   anchor: 'can change into the other.</p>',
   lessons: ['bonding'],
-  viewBox: '0 0 340 304',
+  viewBox: '0 0 340 332',
   alt: 'The two forms of 2-butene, every atom labeled, stacked. Top, cis-2-butene: both highlighted CH3 groups on the upper side of the C=C, both hydrogens on the lower side. Bottom, trans-2-butene: one CH3 up on the left carbon and one down on the right carbon. A label says the pi bond stops either one turning into the other.',
   build() {
     let s = '';
@@ -496,9 +502,35 @@ FIGURES.push({
     s += italicLabel(170, 174, 'trans', '-2-butene');
     s += butene(238, false);
     s += text(170, 294, 'the CH₃ groups on opposite sides', { cls: 'fg-tag' });
+    s += text(170, 322, 'each CH₃ circle is one C with three H', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Look at which side of the C=C each highlighted CH₃ sits on.',
+});
+
+/* ----------------------------------------------------------- l-butene ---
+   Lesson only: but-1-ene, CH2=CH–CH2–CH3, every atom drawn, for the
+   independent counting question. */
+FIGURES.push({
+  id: 'l-butene',
+  lessons: ['bonding'],
+  viewBox: '0 0 340 200',
+  alt: 'A four-carbon molecule with every atom labeled: a carbon with two hydrogens double-bonded to a carbon with one hydrogen, single-bonded to a carbon with two hydrogens (one on a wedge, one on a hash), single-bonded to a carbon with three hydrogens (one in the page, one on a wedge, one on a hash).',
+  build() {
+    const C1 = P(70, 130), C2 = P(140, 90), C3 = P(210, 130), C4 = P(280, 90);
+    const h1a = at(C1, 150, 50), h1b = at(C1, 270, 50), h2 = at(C2, 90, 50);
+    const h3w = P(193, 177), h3h = P(227, 177);
+    const h4 = at(C4, 90, 50), h4w = P(325, 111), h4h = P(327, 73);
+    const o = { rFrom: Cr, rTo: Hr };
+    let s = sb(C1, C2, Cr, Cr, { order: 2 }) + sb(C2, C3, Cr, Cr) + sb(C3, C4, Cr, Cr);
+    s += sb(C1, h1a) + sb(C1, h1b) + sb(C2, h2) + sb(C4, h4);
+    s += wedge(C3, h3w, { ...o, width: 8 }) + hash(C3, h3h, { ...o, width: 9, rungs: 4 });
+    s += wedge(C4, h4w, { ...o, width: 8 }) + hash(C4, h4h, { ...o, width: 9, rungs: 4 });
+    [h1a, h1b, h2, h3w, h3h, h4, h4w, h4h].forEach((h) => { s += H(h); });
+    s += C(C1) + C(C2) + C(C3) + C(C4);
+    return s;
+  },
+  caption: 'Every atom and every bond is drawn.',
 });
 
 /* ------------------------------------------------------------ l-enyne ---
@@ -518,7 +550,7 @@ FIGURES.push({
     s += C(C1) + C(C2) + C(C3) + C(C4);
     return s;
   },
-  caption: 'Every atom and every bond is drawn.',
+  caption: 'Every atom and every bond is drawn; count each one.',
 });
 
 export default FIGURES;

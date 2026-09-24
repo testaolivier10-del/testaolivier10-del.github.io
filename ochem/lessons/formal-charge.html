@@ -160,7 +160,7 @@
 
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
 
   <div class="lesson-card" id="card"></div>
@@ -192,8 +192,8 @@
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var TOPIC_ID = 'formal-charge';
-  var step = 0; // 0 explain, 1 visualize+interact (NH4+), 2 guided (OH-), 3 independent (H3O+), 4 multiple bond (acetone C=O), 5 why-it-matters, 6 checksum rule, 7 challenge (nitromethane)
-  var TOTAL = 7;
+  var step = 0; // 0 explain (what an atom owns), 1 explain (the bond term), 2 visualize+interact (NH4+), 3 guided (OH-), 4 independent (H3O+), 5 independent (HCN triple bond), 6 why-it-matters (diazomethane), 7 checksum rule, 8 challenge (nitromethane)
+  var TOTAL = 8;
   var card = document.getElementById('card');
   var progFill = document.getElementById('progFill');
   var progLabel = document.getElementById('progLabel');
@@ -201,15 +201,15 @@ document.addEventListener('DOMContentLoaded', function(){
   // This lesson predates the shared lesson engine and owns its own step loop,
   // so its concept mapping lives here rather than in lesson-concepts.js (that
   // file's CI guard counts step objects, which this page doesn't have). Every
-  // graded step here is formal-charge arithmetic; step 5's checksum rule also
-  // leans on reading the Lewis structure.
+  // graded step here is formal-charge arithmetic; the triple-bond step and the
+  // challenge also lean on reading the Lewis structure.
   var STEP_CONCEPTS = {
-    1: ['formal-charge-calc'],
     2: ['formal-charge-calc'],
     3: ['formal-charge-calc'],
-    4: ['formal-charge-calc', 'lewis-structures-drawing'],
-    6: ['formal-charge-calc', 'lewis-structures-drawing'],
-    7: ['formal-charge-calc', 'lewis-structures-drawing']
+    4: ['formal-charge-calc'],
+    5: ['formal-charge-calc', 'lewis-structures-drawing'],
+    7: ['formal-charge-calc', 'lewis-structures-drawing'],
+    8: ['formal-charge-calc', 'lewis-structures-drawing']
   };
   var M = window.OchemMastery;
   var conceptRec = M ? M.lessonRecorder(TOPIC_ID) : null;
@@ -244,12 +244,13 @@ document.addEventListener('DOMContentLoaded', function(){
     updateProgress();
     if(SB) SB.sync(step);
     if(step===0) renderExplain();
-    else if(step===1) renderInteractNH4();
-    else if(step===2) renderGuidedOH();
-    else if(step===3) renderIndependentH3O();
-    else if(step===4) renderMultipleBond();
-    else if(step===5) renderWhyItMatters();
-    else if(step===6) renderChecksum();
+    else if(step===1) renderBondTerm();
+    else if(step===2) renderInteractNH4();
+    else if(step===3) renderGuidedOH();
+    else if(step===4) renderIndependentH3O();
+    else if(step===5) renderTripleBond();
+    else if(step===6) renderWhyItMatters();
+    else if(step===7) renderChecksum();
     // Reaching the challenge step means the lesson has been worked through.
     // This page has no completeLessonRun call of its own, but the concept
     // model still needs the "they went and read it" signal — that is what
@@ -257,33 +258,72 @@ document.addEventListener('DOMContentLoaded', function(){
     else { if(M) M.noteLesson(TOPIC_ID); renderChallenge(); }
   }
 
-  // ---- Step 0: Explain ----
+  /* One multiple-choice step: the choices, the key, and the two verdicts.
+     A wrong pick is marked and the buttons re-open, so the student can try
+     again; the right pick enables Continue. */
+  function wireChoices(key, goodText, badText, onRight){
+    var fb = card.querySelector('#fb');
+    card.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var v = btn.getAttribute('data-v');
+        var isCorrect = v === key;
+        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+        btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        record(isCorrect);
+        if(isCorrect){
+          showFeedback(fb, true, goodText);
+          onRight();
+        } else {
+          showFeedback(fb, false, badText);
+          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
+        }
+      });
+    });
+  }
+  function choiceRow(opts){ return '<div class="choice-row">' + opts.map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>'; }
+
+  // ---- Step 0: Explain — what an atom owns, on water ----
   function renderExplain(){
     card.innerHTML =
       '<div class="step-eyebrow">Explain</div>' +
-      '<h2 class="step-title">Not every atom in a Lewis structure is neutral.</h2>' +
-      '<p class="step-body">An atom’s <b>formal charge</b> compares the electrons it "owns" in a structure to the electrons it would have on its own as a neutral atom. It’s how you spot which Lewis structure is realistic, and which atom in a molecule is actually charged.</p>' +
+      '<h2 class="step-title">Count what each atom owns.</h2>' +
+      '<p class="step-body">Take water, H₂O. A lone oxygen atom brings 6 valence electrons (its outer-shell electrons). In water, the oxygen has two <b>lone pairs</b>, pairs of electrons it keeps to itself, and two bonds, one to each H.</p>' +
+      '<p class="step-body">The rule for ownership: an atom owns both electrons of each lone pair, and <b>one</b> of the two electrons in each bond. So the oxygen owns 4 + 2 = 6. It brought 6, so it is neutral.</p>' +
+      '<!-- fig:l-fc-own-water:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 250" role="img" aria-label="Water drawn with the two electrons of each O–H bond shown as dots. A dashed loop around oxygen takes in its two lone pairs and the one bond electron nearer to it on each side. Oxygen owns six electrons, the same six it brought, so its formal charge is zero."><rect class="fg-panel" x="10" y="10" width="320" height="230" rx="10"></rect><text class="fg-lbl" x="170" y="32" text-anchor="middle" font-size="13">water, H₂O</text><circle class="fg-dash-hi" cx="170" cy="114" r="32"></circle><line class="fg-bond-soft" x1="157.88" y1="121" x2="124.1" y2="140.5"></line><circle class="fg-lp" cx="148.35" cy="126.5" r="2.6"></circle><circle class="fg-lp-mut" cx="133.63" cy="135" r="2.6"></circle><circle class="fg-atom" cx="114.57" cy="146" r="11"></circle><text class="fg-lbl" x="114.57" y="150.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond-soft" x1="182.12" y1="121" x2="215.9" y2="140.5"></line><circle class="fg-lp" cx="191.65" cy="126.5" r="2.6"></circle><circle class="fg-lp-mut" cx="206.37" cy="135" r="2.6"></circle><circle class="fg-atom" cx="225.43" cy="146" r="11"></circle><text class="fg-lbl" x="225.43" y="150.44" text-anchor="middle" font-size="12">H</text><circle class="fg-lp" cx="163.4" cy="93.56" r="2.3"></circle><circle class="fg-lp" cx="155.6" cy="98.06" r="2.3"></circle><circle class="fg-lp" cx="184.4" cy="98.06" r="2.3"></circle><circle class="fg-lp" cx="176.6" cy="93.56" r="2.3"></circle><circle class="fg-atom-hi" cx="170" cy="114" r="14"></circle><text class="fg-lbl" x="170" y="118.44" text-anchor="middle" font-size="12">O</text><text class="fg-tag" x="170" y="190" text-anchor="middle" font-size="11">O brings 6 valence electrons</text><text class="fg-tag" x="170" y="207" text-anchor="middle" font-size="11">owns 4 (lone pairs) + 2 (bonds) = 6</text><text class="fg-tag-good" x="170" y="224" text-anchor="middle" font-size="11">owns 6, brought 6: charge 0</text></svg><figcaption>The dashed loop takes in both lone pairs and one dot from each bond.</figcaption></figure><!-- fig:l-fc-own-water:end -->' +
+      '<p class="step-body">An atom’s <b>formal charge</b> is what it brought minus what it owns:</p>' +
       '<div class="formula">FC = (valence electrons) − (lone-pair electrons) − (number of bonds)</div>' +
-      '<p class="step-body">The bond term counts <b>shared pairs</b>, one per line you have drawn: a single bond is 1, a double bond is <b>2</b>, a triple bond is <b>3</b>. It is the same thing as taking half the bonding electrons — a double bond holds four electrons and the atom owns two of them.</p>' +
-      '<p class="step-body" style="margin-bottom:0;">Get that wrong and every carbonyl in the course comes out charged. The oxygen of a C=O has 2 lone pairs and a double bond: 6 − 4 − 2 = 0, neutral. Count the double bond as one and you get +1 on an oxygen that is not charged at all.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">Every structure in this lesson is a <b>Lewis structure</b>: each bond is a line and each lone pair is two dots. The next lesson shows how to draw one; here you only count.</p>' +
       nextButton('Continue', true);
     card.querySelector('#nextBtn').addEventListener('click', function(){ step=1; render(); });
   }
 
-  // ---- Step 1: Visualize + Interact — NH4+ ----
+  // ---- Step 1: Explain — the bond term counts bonds, on acetone ----
+  function renderBondTerm(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Explain</div>' +
+      '<h2 class="step-title">The last term counts bonds, the lines you draw.</h2>' +
+      '<p class="step-body">Acetone’s oxygen has two lone pairs and a <b>double bond</b> to carbon. A double bond is two lines, so it counts <b>2</b>: 6 − 4 − 2 = 0. The oxygen is neutral, as it should be.</p>' +
+      '<!-- fig:l-fc-bond-term:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 290" role="img" aria-label="Acetone drawn with every atom. The oxygen has two lone pairs and a double bond to the central carbon. Its count is 6 minus 4 minus 2 equals 0. Counting the double bond as one would wrongly give plus one."><rect class="fg-panel" x="10" y="10" width="320" height="270" rx="10"></rect><text class="fg-lbl" x="170" y="32" text-anchor="middle" font-size="13">acetone, (CH₃)₂C=O</text><line class="fg-bond" x1="166" y1="142" x2="166" y2="116"></line><line class="fg-bond" x1="174" y1="142" x2="174" y2="116"></line><line class="fg-bond" x1="157.88" y1="163" x2="133.63" y2="177"></line><line class="fg-bond" x1="182.12" y1="163" x2="206.37" y2="177"></line><line class="fg-bond" x1="128.5" y1="196.12" x2="134" y2="205.65"></line><line class="fg-bond" x1="109.38" y1="191" x2="99.85" y2="196.5"></line><line class="fg-bond" x1="114.5" y1="171.88" x2="109" y2="162.35"></line><line class="fg-bond" x1="211.5" y1="196.12" x2="206" y2="205.65"></line><line class="fg-bond" x1="230.62" y1="191" x2="240.15" y2="196.5"></line><line class="fg-bond" x1="225.5" y1="171.88" x2="231" y2="162.35"></line><circle class="fg-lp" cx="153.2" cy="87.1" r="2.3"></circle><circle class="fg-lp" cx="148.7" cy="94.9" r="2.3"></circle><circle class="fg-lp" cx="191.3" cy="94.9" r="2.3"></circle><circle class="fg-lp" cx="186.8" cy="87.1" r="2.3"></circle><circle class="fg-atom" cx="170" cy="156" r="14"></circle><text class="fg-lbl" x="170" y="160.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom-hi" cx="170" cy="102" r="14"></circle><text class="fg-lbl" x="170" y="106.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="121.5" cy="184" r="14"></circle><text class="fg-lbl" x="121.5" y="188.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="218.5" cy="184" r="14"></circle><text class="fg-lbl" x="218.5" y="188.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="139.5" cy="215.18" r="11"></circle><text class="fg-lbl" x="139.5" y="219.62" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="90.33" cy="202" r="11"></circle><text class="fg-lbl" x="90.33" y="206.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="103.5" cy="152.82" r="11"></circle><text class="fg-lbl" x="103.5" y="157.26" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="200.5" cy="215.18" r="11"></circle><text class="fg-lbl" x="200.5" y="219.62" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="249.67" cy="202" r="11"></circle><text class="fg-lbl" x="249.67" y="206.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="236.5" cy="152.82" r="11"></circle><text class="fg-lbl" x="236.5" y="157.26" text-anchor="middle" font-size="12">H</text><text class="fg-tag-good" x="170" y="226" text-anchor="middle" font-size="11">O: 6 − 4 − 2 = 0 (double bond = 2)</text><text class="fg-tag" x="170" y="243" text-anchor="middle" font-size="11">every C: 4 − 0 − 4 = 0 · each H: 0</text><text class="fg-tag-warn" x="170" y="260" text-anchor="middle" font-size="11">double bond as 1: 6 − 4 − 1 = +1 ✗</text></svg><figcaption>Two lines between C and O mean 2 in the bond term.</figcaption></figure><!-- fig:l-fc-bond-term:end -->' +
+      '<p class="step-body" style="margin-bottom:0;">A single bond counts 1 and a triple bond counts 3. It is the same as taking half the bonding electrons: a double bond holds four electrons, and the atom owns two of them. Count the double bond as 1 and a neutral oxygen comes out +1.</p>' +
+      nextButton('Continue', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=2; render(); });
+  }
+
+  // ---- Step 2: Visualize + Interact — NH4+ ----
   function renderInteractNH4(){
     var countedBonds = 0;
     card.innerHTML =
       '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
       '<h2 class="step-title">Click every bond around nitrogen.</h2>' +
-      '<p class="step-body">This is the ammonium ion, NH₄⁺. Nitrogen has 5 valence electrons. Click each bond line to count them.</p>' +
+      '<p class="step-body">This is the ammonium ion, NH₄⁺. Nitrogen brings 5 valence electrons and has no lone pair here. Click each bond line to count its bonds.</p>' +
       '<div class="scene"><svg viewBox="0 0 220 200">' +
         '<text x="100" y="8" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--muted)">NH₄⁺</text>' +
-        '<g class="bond" data-b="1"><line class="bond-hit" x1="100" y1="100" x2="100" y2="40"/><line class="bond-line" x1="100" y1="100" x2="100" y2="40" stroke="var(--line)" stroke-width="2.5"/></g>' +
-        '<g class="bond" data-b="2"><line class="bond-hit" x1="100" y1="100" x2="160" y2="100"/><line class="bond-line" x1="100" y1="100" x2="160" y2="100" stroke="var(--line)" stroke-width="2.5"/></g>' +
-        '<g class="bond" data-b="3"><line class="bond-hit" x1="100" y1="100" x2="100" y2="160"/><line class="bond-line" x1="100" y1="100" x2="100" y2="160" stroke="var(--line)" stroke-width="2.5"/></g>' +
-        '<g class="bond" data-b="4"><line class="bond-hit" x1="100" y1="100" x2="40" y2="100"/><line class="bond-line" x1="100" y1="100" x2="40" y2="100" stroke="var(--line)" stroke-width="2.5"/></g>' +
+        '<g class="bond hit" data-b="1" tabindex="0" role="button" aria-label="N–H bond"><line class="bond-hit" x1="100" y1="100" x2="100" y2="40"/><line class="bond-line" x1="100" y1="100" x2="100" y2="40" stroke="var(--line)" stroke-width="2.5"/></g>' +
+        '<g class="bond hit" data-b="2" tabindex="0" role="button" aria-label="N–H bond"><line class="bond-hit" x1="100" y1="100" x2="160" y2="100"/><line class="bond-line" x1="100" y1="100" x2="160" y2="100" stroke="var(--line)" stroke-width="2.5"/></g>' +
+        '<g class="bond hit" data-b="3" tabindex="0" role="button" aria-label="N–H bond"><line class="bond-hit" x1="100" y1="100" x2="100" y2="160"/><line class="bond-line" x1="100" y1="100" x2="100" y2="160" stroke="var(--line)" stroke-width="2.5"/></g>' +
+        '<g class="bond hit" data-b="4" tabindex="0" role="button" aria-label="N–H bond"><line class="bond-hit" x1="100" y1="100" x2="40" y2="100"/><line class="bond-line" x1="100" y1="100" x2="40" y2="100" stroke="var(--line)" stroke-width="2.5"/></g>' +
         '<circle cx="100" cy="100" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="100" y="106" text-anchor="middle" font-size="16">N</text>' +
+        '<text x="128" y="80" text-anchor="middle" font-size="16" font-weight="900" fill="var(--accent)">+</text>' +
         '<circle cx="100" cy="30" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="100" y="35" text-anchor="middle" font-size="13">H</text>' +
         '<circle cx="170" cy="100" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="170" y="105" text-anchor="middle" font-size="13">H</text>' +
         '<circle cx="100" cy="170" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="100" y="175" text-anchor="middle" font-size="13">H</text>' +
@@ -300,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     card.querySelectorAll('.bond').forEach(function(g){
       g.style.cursor = 'pointer';
-      g.addEventListener('click', function(){
+      function count(){
         var b = g.getAttribute('data-b');
         if(counted[b]) return;
         counted[b] = true;
@@ -308,19 +348,21 @@ document.addEventListener('DOMContentLoaded', function(){
         countedBonds++;
         hint.textContent = 'Bonds counted: ' + countedBonds + ' / 4';
         if(countedBonds === 4){
-          showFeedback(fb, true, 'Right — 4 bonds, and there are no lone pairs left on nitrogen to count. Formal charge = 5 − 0 − 4 = +1, which matches the ion’s overall +1 charge.');
+          showFeedback(fb, true, 'Right: 4 bonds and no lone pair. Nitrogen owns one electron per bond, 4 in all, but brought 5. Formal charge = 5 − 0 − 4 = +1, which matches the ion’s overall +1 charge.');
           next.disabled = false;
         }
-      });
+      }
+      g.addEventListener('click', count);
+      g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); count(); } });
     });
-    next.addEventListener('click', function(){ step=2; render(); });
+    next.addEventListener('click', function(){ step=3; render(); });
   }
 
-  // ---- Step 2: Guided practice — OH-, walked through sub-questions ----
+  // ---- Step 3: Guided practice — OH-, walked through sub-questions ----
   var guidedQs = [
-    { q: 'How many valence electrons does oxygen have?', opts: ['4','5','6','7'], correct: '6' },
+    { q: 'How many valence electrons does oxygen bring?', opts: ['4','5','6','7'], correct: '6' },
     { q: 'In OH⁻, how many bonds does oxygen have?', opts: ['0','1','2'], correct: '1' },
-    { q: 'How many nonbonding (lone-pair) electrons does oxygen have here?', opts: ['2','4','6'], correct: '6' }
+    { q: 'How many lone-pair electrons does oxygen have here?', opts: ['2','4','6'], correct: '6' }
   ];
   function renderGuidedOH(){
     var gi = 0;
@@ -339,28 +381,12 @@ document.addEventListener('DOMContentLoaded', function(){
           '<circle cx="140" cy="60" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="140" y="65" text-anchor="middle" font-size="13">H</text>' +
         '</svg></div>' +
         '<p class="step-body">' + item.q + '</p>' +
-        '<div class="choice-row">' + item.opts.map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
+        choiceRow(item.opts) +
         feedbackHtml('fb') +
         nextButton(gi < guidedQs.length-1 ? 'Continue' : 'Compute the formal charge', false);
 
-      var fb = card.querySelector('#fb');
       var next = card.querySelector('#nextBtn');
-      card.querySelectorAll('.choice-btn').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          var v = btn.getAttribute('data-v');
-          var isCorrect = v === item.correct;
-          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
-          btn.classList.add(isCorrect ? 'correct' : 'wrong');
-          record(isCorrect);
-          if(isCorrect){
-            showFeedback(fb, true, 'Correct.');
-            next.disabled = false;
-          } else {
-            showFeedback(fb, false, 'Not quite — look at the structure again.');
-            card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
-          }
-        });
-      });
+      wireChoices(item.correct, 'Correct.', 'Not quite. Look at the structure again: count the lines from oxygen, then the dots on it.', function(){ next.disabled = false; });
       next.addEventListener('click', function(){
         gi++;
         if(gi < guidedQs.length) renderSub();
@@ -372,14 +398,14 @@ document.addEventListener('DOMContentLoaded', function(){
         '<div class="step-eyebrow">Guided Practice</div>' +
         '<h2 class="step-title">Put it together.</h2>' +
         '<div class="formula">FC = 6 − 6 − 1 = −1</div>' +
-        '<p class="step-body">Oxygen carries the whole −1 charge in hydroxide — which makes sense, since it’s the only atom in the ion.</p>' +
+        '<p class="step-body">The oxygen owns 6 lone-pair electrons plus 1 from its bond, 7 in all. It brought 6, so it has one extra: −1. The hydrogen is 1 − 0 − 1 = 0, so the oxygen carries the whole −1 of the ion.</p>' +
         nextButton('Continue', true);
-      card.querySelector('#nextBtn').addEventListener('click', function(){ step=3; render(); });
+      card.querySelector('#nextBtn').addEventListener('click', function(){ step=4; render(); });
     }
     renderSub();
   }
 
-  // ---- Step 3: Independent practice — H3O+, no scaffolding ----
+  // ---- Step 4: Independent practice — H3O+, no scaffolding ----
   function renderIndependentH3O(){
     card.innerHTML =
       '<div class="step-eyebrow">Independent Practice</div>' +
@@ -395,139 +421,77 @@ document.addEventListener('DOMContentLoaded', function(){
         '<circle cx="40" cy="118" r="13" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="40" y="123" text-anchor="middle" font-size="13">H</text>' +
       '</svg></div>' +
       '<p class="step-body">What is the formal charge on oxygen?</p>' +
-      '<div class="choice-row">' + ['−1','0','+1','+2'].map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
+      choiceRow(['−1','0','+1','+2']) +
       feedbackHtml('fb') +
       nextButton('Continue', false);
 
-    var fb = card.querySelector('#fb');
     var next = card.querySelector('#nextBtn');
-    card.querySelectorAll('.choice-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var v = btn.getAttribute('data-v');
-        var isCorrect = v === '+1';
-        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
-        btn.classList.add(isCorrect ? 'correct' : 'wrong');
-        record(isCorrect);
-        if(isCorrect){
-          showFeedback(fb, true, 'Correct — 6 valence electrons − 2 lone-pair electrons − 3 bonds = +1. That +1 is exactly the ion’s overall charge.');
-          next.disabled = false;
-        } else {
-          showFeedback(fb, false, 'Count again: oxygen has 6 valence electrons, 1 lone pair (2 electrons), and 3 bonds.');
-          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
-        }
-      });
-    });
-    next.addEventListener('click', function(){ step=4; render(); });
-  }
-
-  // ---- Step 4: A multiple bond — the carbonyl oxygen of acetone ----
-  function renderMultipleBond(){
-    card.innerHTML =
-      '<div class="step-eyebrow">Independent Practice</div>' +
-      '<h2 class="step-title">Now one with a double bond: acetone, CH\u2083COCH\u2083.</h2>' +
-      '<div class="scene"><svg viewBox="0 0 260 180" style="max-width:280px;">' +
-        '<line x1="124" y1="98" x2="124" y2="50" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="138" y1="98" x2="138" y2="50" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="113" y1="112" x2="72" y2="136" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="149" y1="112" x2="190" y2="136" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<circle cx="106" cy="34" r="2.6" class="lp-dot"/><circle cx="112" cy="24" r="2.6" class="lp-dot"/>' +
-        '<circle cx="150" cy="24" r="2.6" class="lp-dot"/><circle cx="156" cy="34" r="2.6" class="lp-dot"/>' +
-        '<circle cx="131" cy="104" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="131" y="110" text-anchor="middle" font-size="15">C</text>' +
-        '<circle cx="131" cy="44" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="131" y="50" text-anchor="middle" font-size="15">O</text>' +
-        '<circle cx="53" cy="147" r="22" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="53" y="152" text-anchor="middle" font-size="12">CH\u2083</text>' +
-        '<circle cx="209" cy="147" r="22" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="209" y="152" text-anchor="middle" font-size="12">CH\u2083</text>' +
-      '</svg></div>' +
-      '<p class="step-body">The oxygen has 6 valence electrons, <b>two lone pairs</b>, and a <b>double bond</b> to carbon. What is its formal charge?</p>' +
-      '<div class="choice-row">' + ['\u22122','\u22121','0','+1'].map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
-      feedbackHtml('fb') +
-      nextButton('Continue', false);
-
-    var fb = card.querySelector('#fb');
-    var next = card.querySelector('#nextBtn');
-    card.querySelectorAll('.choice-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var v = btn.getAttribute('data-v');
-        var isCorrect = v === '0';
-        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
-        btn.classList.add(isCorrect ? 'correct' : 'wrong');
-        record(isCorrect);
-        if(isCorrect){
-          showFeedback(fb, true, 'Correct \u2014 6 \u2212 4 \u2212 2 = 0. The double bond contributes 2 to the bond term, not 1, and a neutral carbonyl oxygen comes out neutral, which is what you want.');
-          next.disabled = false;
-        } else {
-          showFeedback(fb, false, 'The trap is the bond term. Two lone pairs is 4 electrons; the double bond is two shared pairs, so it counts as 2, not 1.');
-          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
-        }
-      });
-    });
+    wireChoices('+1',
+      'Correct: 6 valence electrons − 2 lone-pair electrons − 3 bonds = +1. That +1 is exactly the ion’s overall charge.',
+      'Count again: oxygen brings 6 valence electrons and has 1 lone pair (2 electrons) and 3 bonds.',
+      function(){ next.disabled = false; });
     next.addEventListener('click', function(){ step=5; render(); });
   }
 
-  // ---- Step 5: Why it matters ----
+  // ---- Step 5: Independent practice — a triple bond, the N of HCN ----
+  function renderTripleBond(){
+    card.innerHTML =
+      '<div class="step-eyebrow">Independent Practice</div>' +
+      '<h2 class="step-title">Now one with a triple bond: hydrogen cyanide, HCN.</h2>' +
+      '<!-- fig:l-fc-hcn-ask:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 130" role="img" aria-label="Hydrogen cyanide drawn straight: hydrogen, a single bond to carbon, a triple bond to nitrogen, and one lone pair on nitrogen. A question mark sits over the nitrogen."><rect class="fg-panel" x="10" y="10" width="320" height="110" rx="10"></rect><text class="fg-lbl" x="170" y="32" text-anchor="middle" font-size="13">hydrogen cyanide, HCN</text><line class="fg-bond" x1="117" y1="76" x2="144" y2="76"></line><line class="fg-bond" x1="172" y1="69.6" x2="200" y2="69.6"></line><line class="fg-bond" x1="172" y1="76" x2="200" y2="76"></line><line class="fg-bond" x1="172" y1="82.4" x2="200" y2="82.4"></line><circle class="fg-lp" cx="236" cy="80.5" r="2.3"></circle><circle class="fg-lp" cx="236" cy="71.5" r="2.3"></circle><circle class="fg-atom" cx="106" cy="76" r="11"></circle><text class="fg-lbl" x="106" y="80.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="158" cy="76" r="14"></circle><text class="fg-lbl" x="158" y="80.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom-hi" cx="214" cy="76" r="14"></circle><text class="fg-lbl" x="214" y="80.44" text-anchor="middle" font-size="12">N</text><text class="fg-tag-warn" x="214" y="50" text-anchor="middle" font-size="11">?</text><text class="fg-tag" x="170" y="110" text-anchor="middle" font-size="11">the C≡N triple bond is three lines</text></svg><figcaption>What is the formal charge on the nitrogen?</figcaption></figure><!-- fig:l-fc-hcn-ask:end -->' +
+      '<p class="step-body">The nitrogen brings 5 valence electrons. It has <b>one lone pair</b> and a <b>triple bond</b> to carbon. What is its formal charge?</p>' +
+      choiceRow(['−1','0','+1','+2']) +
+      feedbackHtml('fb') +
+      nextButton('Continue', false);
+
+    var next = card.querySelector('#nextBtn');
+    wireChoices('0',
+      'Correct: 5 − 2 − 3 = 0. The triple bond adds 3 to the bond term. The carbon (4 − 0 − 4) and the hydrogen (1 − 0 − 1) are 0 as well.',
+      'Check the two middle terms. One lone pair is 2 electrons. The triple bond is three lines, so it counts 3, not 1 and not 6.',
+      function(){ next.disabled = false; });
+    next.addEventListener('click', function(){ step=6; render(); });
+  }
+
+  // ---- Step 6: Why it matters — picking the better of two structures ----
   function renderWhyItMatters(){
     card.innerHTML =
       '<div class="step-eyebrow">Why it matters</div>' +
-      '<h2 class="step-title">Formal charge tells you which structure is realistic.</h2>' +
-      '<div class="explain-box">When a molecule or ion could be drawn several valid ways, the <b>best</b> Lewis structure is usually the one where formal charges are smallest and negative charge sits on the most electronegative atom. You’ll use this constantly — to pick the right <b>resonance structure</b> and to find the electron-poor atom that a mechanism attacks, both of which are the business of <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-reactivity\">How Reactions Happen</a>.</div>' +
+      '<h2 class="step-title">Formal charge picks the better of two drawings.</h2>' +
+      '<p class="step-body">Diazomethane, CH₂N₂, can be drawn two ways that both give every atom an octet. Each has one + and one −. In A the − sits on the end nitrogen; in B it sits on the carbon.</p>' +
+      '<!-- fig:l-fc-diazomethane:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 410" role="img" aria-label="Diazomethane drawn two ways, one above the other. Structure A has plus one on the middle nitrogen and minus one on the end nitrogen. Structure B has minus one on carbon and plus one on the middle nitrogen. A is better because the negative charge sits on nitrogen."><rect class="fg-panel-good" x="10" y="10" width="320" height="190" rx="10"></rect><text class="fg-lbl" x="170" y="32" text-anchor="middle" font-size="13">A: H₂C=N⁺=N⁻</text><line class="fg-bond" x1="134" y1="94" x2="162" y2="94"></line><line class="fg-bond" x1="134" y1="102" x2="162" y2="102"></line><line class="fg-bond" x1="190" y1="94" x2="218" y2="94"></line><line class="fg-bond" x1="190" y1="102" x2="218" y2="102"></line><line class="fg-bond" x1="108.53" y1="89.97" x2="97.88" y2="82.51"></line><line class="fg-bond" x1="108.53" y1="106.03" x2="97.88" y2="113.49"></line><circle class="fg-lp" cx="246.9" cy="81.2" r="2.3"></circle><circle class="fg-lp" cx="239.1" cy="76.7" r="2.3"></circle><circle class="fg-lp" cx="239.1" cy="119.3" r="2.3"></circle><circle class="fg-lp" cx="246.9" cy="114.8" r="2.3"></circle><circle class="fg-atom" cx="120" cy="98" r="14"></circle><text class="fg-lbl" x="120" y="102.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom-warn" cx="176" cy="98" r="14"></circle><text class="fg-lbl" x="176" y="102.44" text-anchor="middle" font-size="12">N</text><circle class="fg-atom-hi" cx="232" cy="98" r="14"></circle><text class="fg-lbl" x="232" y="102.44" text-anchor="middle" font-size="12">N</text><circle class="fg-atom" cx="88.87" cy="76.2" r="11"></circle><text class="fg-lbl" x="88.87" y="80.64" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="88.87" cy="119.8" r="11"></circle><text class="fg-lbl" x="88.87" y="124.24" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="176" y="76" text-anchor="middle" font-size="15">+</text><text class="fg-tag-warn" x="266" y="103" text-anchor="middle" font-size="15">−</text><text class="fg-tag" x="170" y="148" text-anchor="middle" font-size="11">middle N: +1 · end N: 5 − 4 − 2 = −1</text><text class="fg-tag" x="170" y="165" text-anchor="middle" font-size="11">C: 4 − 0 − 4 = 0</text><text class="fg-tag-good" x="170" y="182" text-anchor="middle" font-size="11">the − sits on N: better</text><rect class="fg-panel-warn" x="10" y="210" width="320" height="190" rx="10"></rect><text class="fg-lbl" x="170" y="232" text-anchor="middle" font-size="13">B: H₂C⁻–N⁺≡N</text><line class="fg-bond" x1="134" y1="298" x2="162" y2="298"></line><line class="fg-bond" x1="190" y1="291.6" x2="218" y2="291.6"></line><line class="fg-bond" x1="190" y1="298" x2="218" y2="298"></line><line class="fg-bond" x1="190" y1="304.4" x2="218" y2="304.4"></line><line class="fg-bond" x1="108.53" y1="289.97" x2="97.88" y2="282.51"></line><line class="fg-bond" x1="108.53" y1="306.03" x2="97.88" y2="313.49"></line><circle class="fg-lp" cx="124.5" cy="276" r="2.3"></circle><circle class="fg-lp" cx="115.5" cy="276" r="2.3"></circle><circle class="fg-lp" cx="254" cy="302.5" r="2.3"></circle><circle class="fg-lp" cx="254" cy="293.5" r="2.3"></circle><circle class="fg-atom-hi" cx="120" cy="298" r="14"></circle><text class="fg-lbl" x="120" y="302.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom-warn" cx="176" cy="298" r="14"></circle><text class="fg-lbl" x="176" y="302.44" text-anchor="middle" font-size="12">N</text><circle class="fg-atom" cx="232" cy="298" r="14"></circle><text class="fg-lbl" x="232" y="302.44" text-anchor="middle" font-size="12">N</text><circle class="fg-atom" cx="88.87" cy="276.2" r="11"></circle><text class="fg-lbl" x="88.87" y="280.64" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="88.87" cy="319.8" r="11"></circle><text class="fg-lbl" x="88.87" y="324.24" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="176" y="276" text-anchor="middle" font-size="15">+</text><text class="fg-tag-warn" x="120" y="333" text-anchor="middle" font-size="15">−</text><text class="fg-tag" x="170" y="348" text-anchor="middle" font-size="11">middle N: +1 · end N: 5 − 2 − 3 = 0</text><text class="fg-tag" x="170" y="365" text-anchor="middle" font-size="11">C: 4 − 2 − 3 = −1</text><text class="fg-tag-warn" x="170" y="382" text-anchor="middle" font-size="11">the − sits on C: worse</text></svg><figcaption>Same octets, same number of charges. The − moves from nitrogen to carbon.</figcaption></figure><!-- fig:l-fc-diazomethane:end -->' +
+      '<div class="explain-box">Nitrogen is more electronegative than carbon, so it holds a negative charge better. <b>A is the better structure.</b> The ranking rules, in order: the fewest formal charges wins; then a − belongs on the most electronegative atom; then like charges should not sit side by side.</div>' +
+      '<p class="step-body" style="margin-bottom:0;">You will use these rules again to rank drawings of one molecule that differ only in where the electrons sit, in <a class="chapter-ref" href="/ochem/learn.html#m-electron-movement">Drawing Molecules &amp; Moving Electrons</a>.</p>' +
       nextButton('Continue', true);
-    card.querySelector('#nextBtn').addEventListener('click', function(){ step=6; render(); });
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=7; render(); });
   }
 
-  // ---- Step 6: A useful check — formal charges must sum to the overall charge ----
+  // ---- Step 7: A useful check — formal charges must sum to the overall charge ----
   function renderChecksum(){
     card.innerHTML =
       '<div class="step-eyebrow">Explain</div>' +
       '<h2 class="step-title">A built-in check: the formal charges have to add up.</h2>' +
-      '<p class="step-body">For any structure, the sum of every atom\'s formal charge must equal the overall charge on the molecule or ion. If it doesn\'t, you\'ve made an arithmetic mistake somewhere — go back and recount.</p>' +
-      '<p class="step-body">Check it against the three ions you just did: in NH₄⁺, only nitrogen carries a nonzero formal charge (+1), and every hydrogen is 0 — sum = +1, matching the ion. In OH⁻, oxygen is −1 and hydrogen is 0 — sum = −1, matching. In H₃O⁺, oxygen is +1 and every hydrogen is 0 — sum = +1, matching. Acetone is neutral and every atom in it came out 0 — sum = 0, matching.</p>' +
-      '<p class="step-body" style="margin-bottom:0;">For a neutral molecule, this means the formal charges must sum to exactly <b>0</b> — so if you calculate a nonzero total for something you believe is neutral, recheck your bond and lone-pair counts before moving on.</p>' +
-      nextButton('One more — a harder case', true);
-    card.querySelector('#nextBtn').addEventListener('click', function(){ step=7; render(); });
+      '<p class="step-body">Add up the ions you just did. In NH₄⁺, nitrogen is +1 and every hydrogen is 0: sum +1, the ion’s charge. In OH⁻, oxygen is −1 and hydrogen 0: sum −1. In H₃O⁺, oxygen is +1 and the hydrogens 0: sum +1. HCN is neutral, and H, C and N all came out 0: sum 0.</p>' +
+      '<p class="step-body">That always holds. The formal charges of all the atoms add up to the overall charge on the molecule or ion. If they don’t, you have miscounted somewhere, so go back and recount.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">For a neutral molecule, the formal charges must sum to exactly <b>0</b>. A nonzero total for something you believe is neutral means a bond or lone-pair count is off.</p>' +
+      nextButton('One more: a harder case', true);
+    card.querySelector('#nextBtn').addEventListener('click', function(){ step=8; render(); });
   }
 
-  // ---- Step 7: Challenge — nitromethane, a neutral molecule that still carries charges ----
+  // ---- Step 8: Challenge — nitromethane, a neutral molecule that still carries charges ----
   function renderChallenge(){
     card.innerHTML =
       '<div class="step-eyebrow">Challenge</div>' +
-      '<h2 class="step-title">Nitromethane, CH\u2083NO\u2082: what is the formal charge on nitrogen?</h2>' +
-      '<div class="scene"><svg viewBox="0 0 300 180" style="max-width:300px;">' +
-        '<line x1="76" y1="92" x2="112" y2="92" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="146" y1="80" x2="182" y2="52" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="152" y1="88" x2="188" y2="60" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<line x1="149" y1="104" x2="186" y2="132" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<circle cx="186" cy="20" r="2.5" class="lp-dot"/><circle cx="198" cy="16" r="2.5" class="lp-dot"/>' +
-        '<circle cx="216" cy="20" r="2.5" class="lp-dot"/><circle cx="228" cy="16" r="2.5" class="lp-dot"/>' +
-        '<circle cx="198" cy="164" r="2.5" class="lp-dot"/><circle cx="210" cy="168" r="2.5" class="lp-dot"/>' +
-        '<circle cx="228" cy="164" r="2.5" class="lp-dot"/><circle cx="240" cy="168" r="2.5" class="lp-dot"/>' +
-        '<circle cx="216" cy="152" r="2.5" class="lp-dot"/><circle cx="228" cy="156" r="2.5" class="lp-dot"/>' +
-        '<circle cx="54" cy="92" r="22" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="54" y="97" text-anchor="middle" font-size="12">CH\u2083</text>' +
-        '<circle cx="130" cy="92" r="16" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="130" y="98" text-anchor="middle" font-size="15">N</text>' +
-        '<circle cx="200" cy="44" r="14" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="200" y="49" text-anchor="middle" font-size="14">O</text>' +
-        '<circle cx="200" cy="140" r="14" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="atom-label" x="200" y="145" text-anchor="middle" font-size="14">O</text>' +
-        '<text class="atom-label" x="222" y="134" text-anchor="middle" font-size="13">\u2212</text>' +
-      '</svg></div>' +
-      '<p class="step-body">Nitrogen has 5 valence electrons. Here it has <b>no lone pair</b>, a single bond to the methyl carbon, a double bond to the upper oxygen, and a single bond to the lower one \u2014 which carries three lone pairs and a \u22121. The molecule as a whole is neutral.</p>' +
-      '<div class="choice-row">' + ['\u22121','0','+1','+2'].map(function(o){ return '<button class="choice-btn" data-v="' + o + '">' + o + '</button>'; }).join('') + '</div>' +
+      '<h2 class="step-title">Nitromethane, CH₃NO₂: what is the formal charge on nitrogen?</h2>' +
+      '<!-- fig:l-fc-nitro-ask:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 220" role="img" aria-label="Nitromethane drawn with every atom. Carbon carries three hydrogens and bonds to nitrogen. Nitrogen has a double bond to the upper oxygen and a single bond to the lower oxygen, which has three lone pairs and a minus one. Nitrogen has no lone pair, and a question mark sits beside it."><rect class="fg-panel" x="10" y="10" width="320" height="200" rx="10"></rect><text class="fg-lbl" x="170" y="32" text-anchor="middle" font-size="13">nitromethane, CH₃NO₂</text><line class="fg-bond" x1="140" y1="114" x2="170" y2="114"></line><line class="fg-bond" x1="191.07" y1="101.27" x2="210.87" y2="81.47"></line><line class="fg-bond" x1="196.73" y1="106.93" x2="216.53" y2="87.13"></line><line class="fg-bond" x1="193.9" y1="123.9" x2="213.7" y2="143.7"></line><line class="fg-bond" x1="112" y1="114" x2="99" y2="114"></line><line class="fg-bond" x1="126" y1="100" x2="126" y2="87"></line><line class="fg-bond" x1="126" y1="128" x2="126" y2="141"></line><circle class="fg-lp" cx="222.25" cy="51.99" r="2.3"></circle><circle class="fg-lp" cx="213.56" cy="54.32" r="2.3"></circle><circle class="fg-lp" cx="243.68" cy="84.44" r="2.3"></circle><circle class="fg-lp" cx="246.01" cy="75.75" r="2.3"></circle><circle class="fg-lp" cx="242.34" cy="141.22" r="2.3"></circle><circle class="fg-lp" cx="235.97" cy="134.86" r="2.3"></circle><circle class="fg-lp" cx="235.97" cy="172.34" r="2.3"></circle><circle class="fg-lp" cx="242.34" cy="165.97" r="2.3"></circle><circle class="fg-lp" cx="204.86" cy="165.97" r="2.3"></circle><circle class="fg-lp" cx="211.22" cy="172.34" r="2.3"></circle><circle class="fg-atom" cx="126" cy="114" r="14"></circle><text class="fg-lbl" x="126" y="118.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom-hi" cx="184" cy="114" r="14"></circle><text class="fg-lbl" x="184" y="118.44" text-anchor="middle" font-size="12">N</text><circle class="fg-atom" cx="223.6" cy="74.4" r="14"></circle><text class="fg-lbl" x="223.6" y="78.84" text-anchor="middle" font-size="12">O</text><circle class="fg-atom-hi" cx="223.6" cy="153.6" r="14"></circle><text class="fg-lbl" x="223.6" y="158.04" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="88" cy="114" r="11"></circle><text class="fg-lbl" x="88" y="118.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="126" cy="76" r="11"></circle><text class="fg-lbl" x="126" y="80.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="126" cy="152" r="11"></circle><text class="fg-lbl" x="126" y="156.44" text-anchor="middle" font-size="12">H</text><text class="fg-tag-warn" x="259.6" y="158.6" text-anchor="middle" font-size="15">−</text><text class="fg-tag-warn" x="173.74" y="89.81" text-anchor="middle" font-size="11">?</text><text class="fg-tag" x="170" y="200" text-anchor="middle" font-size="11">the molecule as a whole is neutral</text></svg><figcaption>What is the formal charge on the nitrogen?</figcaption></figure><!-- fig:l-fc-nitro-ask:end -->' +
+      '<p class="step-body">Nitrogen brings 5 valence electrons. Here it has <b>no lone pair</b>, a single bond to carbon, a double bond to the upper oxygen, and a single bond to the lower one. The lower oxygen has three lone pairs and a −1. The molecule as a whole is neutral.</p>' +
+      choiceRow(['−1','0','+1','+2']) +
       feedbackHtml('fb') +
       '<div id="doneBox"></div>';
 
-    var fb = card.querySelector('#fb');
-    card.querySelectorAll('.choice-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var v = btn.getAttribute('data-v');
-        var isCorrect = v === '+1';
-        card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
-        btn.classList.add(isCorrect ? 'correct' : 'wrong');
-        record(isCorrect);
-        if(isCorrect){
-          showFeedback(fb, true, 'Correct: 5 \u2212 0 \u2212 4 = +1, counting the double bond as 2. And now the checksum pays off \u2014 +1 on nitrogen and \u22121 on the single-bonded oxygen sum to 0, which is the neutral molecule you were given. A molecule with no overall charge can still have charged atoms inside it, and a nitro group always does.');
-          card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to the textbook</a></div>';
-        } else {
-          showFeedback(fb, false, 'Count the bond term carefully: one bond to carbon, two for the double bond to oxygen, one to the other oxygen. That is 4, with no lone pair to subtract.');
-          card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
-        }
-      });
-    });
+    wireChoices('+1',
+      'Correct: 5 − 0 − 4 = +1, counting the double bond as 2. Now the check pays off: +1 on nitrogen and −1 on the lower oxygen sum to 0, the neutral molecule you were given. A molecule with no overall charge can still have charged atoms inside it, and a nitro group always does.',
+      'Count the bond term carefully: one bond to carbon, two for the double bond to oxygen, one to the other oxygen. That is 4, with no lone pair to subtract.',
+      function(){ card.querySelector('#doneBox').innerHTML = '<div class="actions" style="margin-top:8px;"><a href="../learn.html" class="btn-press">Back to the textbook</a></div>'; });
   }
 
   (function(){

@@ -391,35 +391,35 @@ FIGURES.push({
   id: 'ethene-sigma-pi',
   section: 'hybridization',
   lessons: ['hybridization'],
-  anchor: 'the mechanism behind resonance, amide planarity, and aromaticity.</p>',
-  viewBox: '0 0 340 290',
-  alt: 'Ethene, CH2=CH2, in a flat plane seen from slightly above. Each carbon uses its three gray sp2 hybrids: two reach hydrogens and one meets the other carbon’s hybrid head-on along the C–C line, labeled sigma bond. The leftover p orbital on each carbon stands straight up; the two are parallel and overlap side by side above and below the plane, labeled pi bond.',
+  anchor: 'the next section, Bonding, takes the two apart.</p>',
+  viewBox: '0 0 340 296',
+  alt: 'Ethene, CH2=CH2, lying in a flat plane seen from slightly above. Each carbon has three gray sp2 hybrids 120 degrees apart: two reach hydrogens and one meets the other carbon’s hybrid head-on along the C–C line, marked sigma. The leftover p orbital on each carbon stands straight up through the plane; the two are parallel and overlap side by side above and below the plane, marked pi.',
   build() {
     let s = '';
-    const A = P(128, 164), B = P(212, 164);
-    // plane
-    s += `<path class="fg-dash" d="M20 190 L92 128 L320 128 L248 190 Z"></path>`;
-    // p orbitals and their sideways overlap
-    s += ell(170, 112, 54, 14, 0, 'fg-orb');
-    s += ell(170, 216, 54, 14, 0, 'fg-orb-alt');
-    s += pOrb(A, 90, 88, 15);
-    s += pOrb(B, 90, 88, 15);
-    // hybrids
-    const hA = [150, 210].map((phi) => flatAt(A, phi, 78));
-    const hB = [30, 330].map((phi) => flatAt(B, phi, 78));
-    s += hybrid(A, flatDeg(150), flatLen(150, 62), 12);
-    s += hybrid(B, flatDeg(30), flatLen(30, 62), 12);
-    s += hybrid(A, 0, 50, 13) + hybrid(B, 180, 50, 13);
-    s += hybrid(A, flatDeg(210), flatLen(210, 62), 12);
-    s += hybrid(B, flatDeg(330), flatLen(330, 62), 12);
-    for (const h of [...hA, ...hB]) s += atom(h.x, h.y, 'H', { r: 11 });
+    const A = P(118, 168), B = P(222, 168);
+    const K = 0.62;                       // how much the plane is squashed
+    const inPlane = (c, phi, len) => P(c.x + Math.cos(rad(phi)) * len, c.y - Math.sin(rad(phi)) * len * K);
+    const degTo = (c, e) => (Math.atan2(c.y - e.y, e.x - c.x) * 180) / Math.PI;
+    s += `<path class="fg-dash" d="M60 116 L280 116 L318 222 L22 222 Z"></path>`;
+    // pi: the two p orbitals and their sideways overlap
+    s += ell(170, 124, 52, 12, 0, 'fg-orb');
+    s += ell(170, 212, 52, 12, 0, 'fg-orb-alt');
+    s += pOrb(A, 90, 70, 14);
+    s += pOrb(B, 90, 70, 14);
+    // sigma framework
+    const hs = [[A, 120], [A, 240], [B, 60], [B, 300]].map(([c, phi]) => [c, inPlane(c, phi, 74)]);
+    for (const [c, h] of hs) s += hybrid(c, degTo(c, h), Math.hypot(h.x - c.x, h.y - c.y) - 10, 11);
+    s += hybrid(A, 0, 56, 12) + hybrid(B, 180, 56, 12);
+    for (const [, h] of hs) s += atom(h.x, h.y, 'H', { r: 11 });
     s += atom(A.x, A.y, 'C', { kind: 'hi', r: 12 });
     s += atom(B.x, B.y, 'C', { kind: 'hi', r: 12 });
+    s += tag(170, 128, 'π');
+    s += tag(170, 192, 'σ');
+    s += tag(A.x - 44, A.y + 4, '120°');
     s += tag(170, 44, 'π bond: p orbitals overlap');
     s += tag(170, 60, 'side by side, above and below');
-    s += tag(170, 256, 'σ bond: hybrids meet head-on');
-    s += tag(170, 272, 'along the C–C line');
-    s += `<line class="fg-dash-hi" x1="170" y1="232" x2="170" y2="176"></line>`;
+    s += tag(170, 268, 'σ bond: hybrids meet head-on');
+    s += tag(170, 284, 'along the C–C line');
     return s;
   },
   caption: 'Ethene, CH₂=CH₂. Gray hybrids make the σ bonds, including the one between the carbons; the two parallel leftover p orbitals make the π bond.',
@@ -429,85 +429,60 @@ FIGURES.push({
 FIGURES.push({
   id: 'lone-pairs-are-groups',
   section: 'hybridization',
-  anchor: 'Molecular Geometry, two sections on, explains the size of that squeeze.</p>',
-  viewBox: '0 0 760 250',
-  alt: 'Methane, ammonia and water drawn side by side, each with four electron groups around the central atom. Methane has four bonds; ammonia has three bonds and one lone pair, drawn as two dots in the fourth corner; water has two bonds and two lone pairs in the last two corners. All three are labeled sp3.',
+  anchor: 'Molecular Geometry, later in this chapter, explains the size of that squeeze.</p>',
+  viewBox: '0 0 760 212',
+  alt: 'Methane, ammonia and water drawn side by side as tetrahedral centers, each with two bonds in the page, one wedge toward the reader and one hashed bond away. Methane has four hydrogens. Ammonia has three hydrogens and a lone pair, two dots, where the hashed hydrogen would be. Water has two hydrogens and two lone pairs where the wedge and hash hydrogens would be.',
   build() {
     let s = '';
     const cases = [
-      { x: 14, name: 'methane, CH₄', el: 'C', bonds: 4, count: '4 bonds + 0 pairs' },
-      { x: 268, name: 'ammonia, NH₃', el: 'N', bonds: 3, count: '3 bonds + 1 pair' },
-      { x: 522, name: 'water, H₂O', el: 'O', bonds: 2, count: '2 bonds + 2 pairs' },
+      { x: 14, name: 'methane, CH₄', el: 'C', slots: ['H', 'H', 'H', 'H'], count: '4 bonds + 0 pairs' },
+      { x: 268, name: 'ammonia, NH₃', el: 'N', slots: ['H', 'H', 'H', 'lp'], count: '3 bonds + 1 pair' },
+      { x: 522, name: 'water, H₂O', el: 'O', slots: ['H', 'H', 'lp', 'lp'], count: '2 bonds + 2 pairs' },
     ];
-    const dirs = [140, 40, 220, 320];
     for (const c of cases) {
-      s += panel(c.x, 16, 226, 176);
-      const cc = P(c.x + 113, 108);
-      s += text(cc.x, 40, c.name, { cls: 'fg-lbl', size: 12.5 });
-      dirs.forEach((deg, i) => {
-        if (i < c.bonds) {
-          const e = at(cc, deg, 64);
-          s += bond(cc, e, { rFrom: 16, rTo: 13 });
-          s += atom(e.x, e.y, 'H', { r: 13 });
-        } else {
-          s += `<line class="fg-dash" x1="${r2(at(cc, deg, 18).x)}" y1="${r2(at(cc, deg, 18).y)}" x2="${r2(at(cc, deg, 42).x)}" y2="${r2(at(cc, deg, 42).y)}"></line>`;
-          s += lonePair(cc.x, cc.y, -deg, { dist: 52, spread: 5, r: 2.8 });
-        }
-      });
-      s += atom(cc.x, cc.y, c.el, { kind: 'hi' });
-      s += text(cc.x, 182, c.count + ' = 4 groups', { cls: 'fg-tag-good', size: 11 });
+      s += panel(c.x, 12, 226, 188);
+      const cc = P(c.x + 113, 118);
+      s += text(cc.x, 36, c.name, { cls: 'fg-lbl', size: 12.5 });
+      s += tetCenter(cc, c.el, c.slots, 54);
+      s += text(cc.x, 188, c.count + ' = 4 groups', { cls: 'fg-tag-good', size: 11 });
     }
-    s += rule(14, 208, 746, 208);
-    s += text(380, 230, 'Four groups each, so all three are sp³. The lone pairs fill the corners that have no atom.', { cls: 'fg-lbl', size: 11.5 });
     return s;
   },
-  caption: 'The dots are lone pairs. Each one fills a corner of the tetrahedron, just as a bonded hydrogen does.',
+  caption: 'The dots are lone pairs. Each one takes a corner of the tetrahedron, where a hydrogen would otherwise be. The wedge points toward you and the hashed bond points away.',
 });
 
 /* ==================================== lone pairs are groups (lesson) === */
 FIGURES.push({
   id: 'l-lone-pairs',
   lessons: ['hybridization'],
-  viewBox: '0 0 340 390',
-  alt: 'Methane, ammonia and water stacked, each with four electron groups around the central atom: methane four bonds, ammonia three bonds and a lone pair drawn as two dots, water two bonds and two lone pairs. Each row reads 4 groups, sp3.',
+  viewBox: '0 0 340 262',
+  alt: 'Methane and water stacked, each drawn as a tetrahedral center with two bonds in the page, a wedge and a hashed position. Methane has four hydrogens: 4 groups, sp3. Water has two hydrogens and two lone pairs, drawn as two dots each, in the wedge and hash positions: 4 groups, sp3.',
   build() {
     let s = '';
     const rows = [
-      { name: 'CH₄', el: 'C', bonds: 4, count: '4 bonds + 0 pairs' },
-      { name: 'NH₃', el: 'N', bonds: 3, count: '3 bonds + 1 pair' },
-      { name: 'H₂O', el: 'O', bonds: 2, count: '2 bonds + 2 pairs' },
+      { name: 'methane, CH₄', el: 'C', slots: ['H', 'H', 'H', 'H'], count: '4 bonds + 0 pairs' },
+      { name: 'water, H₂O', el: 'O', slots: ['H', 'H', 'lp', 'lp'], count: '2 bonds + 2 pairs' },
     ];
-    const dirs = [140, 40, 220, 320];
     rows.forEach((r, i) => {
-      const y0 = 8 + i * 126;
-      s += panel(8, y0, 324, 118);
-      const cc = P(84, y0 + 59);
-      dirs.forEach((deg, k) => {
-        if (k < r.bonds) {
-          const e = at(cc, deg, 50);
-          s += bond(cc, e, { rFrom: 15, rTo: 12 });
-          s += atom(e.x, e.y, 'H', { r: 12 });
-        } else {
-          s += lonePair(cc.x, cc.y, -deg, { dist: 40, spread: 5, r: 2.8 });
-        }
-      });
-      s += atom(cc.x, cc.y, r.el, { kind: 'hi', r: 15 });
-      s += label(164, y0 + 40, r.name, { anchor: 'start', size: 13 });
-      s += tag(164, y0 + 64, r.count, { anchor: 'start' });
-      s += text(164, y0 + 86, '= 4 groups → sp³', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+      const y0 = 8 + i * 128;
+      s += panel(8, y0, 324, 120);
+      s += tetCenter(P(84, y0 + 62), r.el, r.slots, 44);
+      s += label(160, y0 + 40, r.name, { anchor: 'start', size: 12.5 });
+      s += tag(160, y0 + 66, r.count, { anchor: 'start' });
+      s += text(160, y0 + 88, '= 4 groups → sp³', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
     });
     return s;
   },
-  caption: 'Two dots are a lone pair. It fills a corner just as a bonded atom does.',
+  caption: 'Two dots are a lone pair. It takes a corner just as a bonded hydrogen does.',
 });
 
 /* ===================================== cation, anion, radical (notes) === */
 FIGURES.push({
   id: 'carbon-ion-shapes',
   section: 'hybridization',
-  anchor: 'the one case where the group count needs a caveat rather than an answer.</p>\n</div>',
+  anchor: 'The radical needs a caveat rather than an answer.</p>\n</div>',
   viewBox: '0 0 760 320',
-  alt: 'Three panels. Methyl cation CH3+: carbon and its three hydrogens lie flat in one plane, drawn in perspective, with an empty p orbital drawn as a dashed outline standing up through the carbon; arrows show that it can be reached from above and from below. Methyl anion CH3−: a pyramid, with the three hydrogens below the carbon and the lone pair, two dots, in the fourth corner on top. Methyl radical CH3•: flat like the cation, with one electron, a single dot, in the p orbital.',
+  alt: 'Three panels. Methyl cation CH3+: carbon and its three hydrogens lie flat in one plane, drawn in perspective, with an empty p orbital drawn as a dashed outline standing up through the carbon; arrows show that it can be reached from above and from below. Methyl anion CH3−: a pyramid, with the three hydrogens below the carbon and the lone pair, two dots, in the fourth corner on top. Methyl radical CH3•: flat like the cation, with one electron in the p orbital, drawn as a single dot where the p orbital meets the carbon.',
   build() {
     let s = '';
     const heads = [
@@ -555,7 +530,7 @@ FIGURES.push({
     // radical
     const c = P(628, 170);
     s += flatCarbon(c, {});
-    s += `<circle class="fg-lp" cx="${c.x}" cy="${c.y - 50}" r="3"></circle>`;
+    s += `<circle class="fg-lp" cx="${c.x}" cy="${c.y - 21}" r="3"></circle>`;
     s += text(c.x + 24, c.y - 58, 'one electron in p', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
@@ -563,51 +538,48 @@ FIGURES.push({
 });
 
 /* ========================================= every atom: three molecules === */
-const hybTag = (x, y, s) => text(x, y, s, { cls: 'fg-tag-good', size: 11 });
+/* A hybridization tag set right against its own atom, in a direction the
+   caller has checked is free of bonds and lone pairs. */
+const hybTag = (c, deg, s, dist = 30) => { const p = at(c, deg, dist); return text(p.x, p.y + 4, s, { cls: 'fg-tag-good', size: 11 }); };
 
 FIGURES.push({
   id: 'every-atom-acetonitrile',
   section: 'hybridization',
   anchor: 'So the C–C≡N unit is linear and the methyl end is tetrahedral, in one molecule.</p>',
-  viewBox: '0 0 760 224',
-  alt: 'Acetonitrile, CH3–C≡N, drawn with every atom. The methyl carbon carries three hydrogens and is labeled sp3. The nitrile carbon and nitrogen are joined by three lines and each is labeled sp. The carbon, carbon and nitrogen lie on one straight line, and the nitrogen’s lone pair points straight out along it.',
+  viewBox: '0 0 760 200',
+  alt: 'Acetonitrile, CH3–C≡N, drawn with every atom. The methyl carbon is tetrahedral, with one hydrogen in the page, one on a wedge and one on a hashed bond, and is tagged sp3. The nitrile carbon and the nitrogen are joined by three lines and each is tagged sp. The two carbons and the nitrogen lie on one straight line, and the nitrogen’s lone pair points straight out along it.',
   build() {
-    let s = panel(14, 10, 732, 204);
-    const c1 = P(150, 96), c2 = P(270, 96), n = P(370, 96);
-    const hs = [at(c1, 90, 56), at(c1, 180, 60), at(c1, 270, 56)];
-    for (const h of hs) { s += bond(c1, h, { rTo: 12 }); s += atom(h.x, h.y, 'H', { r: 12 }); }
+    let s = panel(14, 10, 732, 180);
+    const c1 = P(250, 96), c2 = P(360, 96), n = P(460, 96);
+    s += methyl(c1, 0);
     s += bond(c1, c2);
     s += bond(c2, n, { order: 3 });
     s += atom(c1.x, c1.y, 'C', { kind: 'hi' });
     s += atom(c2.x, c2.y, 'C', { kind: 'hi' });
     s += atom(n.x, n.y, 'N', { kind: 'hi' });
     s += lonePair(n.x, n.y, 0, { dist: 24 });
-    s += hybTag(c1.x + 34, c1.y - 20, 'sp³');
-    s += hybTag(c2.x, c2.y - 26, 'sp');
-    s += hybTag(n.x, n.y - 26, 'sp');
-    s += `<line class="fg-dash-hi" x1="${c1.x}" y1="180" x2="${n.x + 30}" y2="180"></line>`;
-    s += text((c1.x + n.x) / 2 + 14, 200, 'C, C and N on one line: 180°', { cls: 'fg-sm', size: 10.5 });
-    s += text(460, 70, 'CH₃ carbon: 4 bonds = 4 groups', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(460, 92, 'nitrile C: C–C + C≡N = 2 groups', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(460, 114, 'N: C≡N + 1 lone pair = 2 groups', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += hybTag(c1, 55, 'sp³');
+    s += hybTag(c2, 90, 'sp', 28);
+    s += hybTag(n, 90, 'sp', 28);
+    s += `<line class="fg-dash-hi" x1="${c1.x}" y1="150" x2="${n.x + 30}" y2="150"></line>`;
+    s += text((c1.x + n.x) / 2, 170, 'C, C and N on one line: 180°', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'Acetonitrile, CH₃C≡N. The green tag on each carbon and nitrogen is its hybridization.',
+  caption: 'Acetonitrile, CH₃C≡N. Each green tag sits next to the atom it describes.',
 });
 
 FIGURES.push({
   id: 'every-atom-acetic-acid',
   section: 'hybridization',
-  anchor: 'the OH oxygen is sp² as well.</p>',
+  anchor: 'Its shape is still bent, because it has only two neighbors.</p>',
   viewBox: '0 0 760 220',
-  alt: 'Acetic acid, CH3–C(=O)–O–H, drawn with every atom and all four lone pairs. The methyl carbon is labeled sp3. The carbonyl carbon, the double-bonded oxygen and the OH oxygen are each labeled sp2; the OH oxygen’s label is marked as coming from the lone-pair-beside-a-pi-bond rule, not from the plain count.',
+  alt: 'Acetic acid, CH3–C(=O)–O–H, drawn with every atom and all four lone pairs. The methyl carbon is tetrahedral, with one hydrogen in the page, one wedged and one hashed, and is tagged sp3. The carbonyl carbon and the double-bonded oxygen are tagged sp2. The OH oxygen is tagged sp2 with a star, and a note says the plain count would give sp3.',
   build() {
     let s = panel(14, 10, 732, 200);
-    const c1 = P(140, 112), c2 = P(248, 112);
+    const c1 = P(250, 112), c2 = P(358, 112);
     const o1 = at(c2, 60, 62), o2 = at(c2, 300, 62);
     const h = at(o2, 0, 60);
-    const hs = [at(c1, 90, 54), at(c1, 180, 58), at(c1, 270, 54)];
-    for (const x of hs) { s += bond(c1, x, { rTo: 12 }); s += atom(x.x, x.y, 'H', { r: 12 }); }
+    s += methyl(c1, 0);
     s += bond(c1, c2);
     s += bond(c2, o1, { order: 2 });
     s += bond(c2, o2);
@@ -621,52 +593,45 @@ FIGURES.push({
     s += lonePair(o1.x, o1.y, -30);
     s += lonePair(o2.x, o2.y, 80);
     s += lonePair(o2.x, o2.y, 170);
-    s += hybTag(c1.x + 34, c1.y - 20, 'sp³');
-    s += hybTag(c2.x - 30, c2.y - 18, 'sp²');
-    s += hybTag(o1.x + 36, o1.y + 6, 'sp²');
-    s += hybTag(o2.x + 30, o2.y + 34, 'sp² *');
-    s += text(420, 60, 'C=O carbon: CH₃ + OH + C=O = 3 groups', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(420, 82, 'C=O oxygen: C=O + 2 pairs = 3 groups', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(420, 112, '* OH oxygen: the count gives 4 (sp³),', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(420, 128, 'but one of its pairs sits beside the', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(420, 144, 'C=O π bond, so it is sp² by the rule', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(420, 160, 'in the previous section.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += hybTag(c1, 55, 'sp³');
+    s += hybTag(c2, 240, 'sp²', 32);
+    s += hybTag(o1, 0, 'sp²', 34);
+    s += hybTag(o2, 62, 'sp² *', 36);
+    s += text(520, 112, '* the plain count gives sp³; the rule', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(520, 128, 'for a lone pair beside a π bond gives sp²', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
-  caption: 'Acetic acid, CH₃COOH, written out as CH₃–C(=O)–O–H. The starred tag is the one the plain count gets wrong.',
+  caption: 'Acetic acid, CH₃COOH, written out as CH₃–C(=O)–O–H, with each green tag next to its own atom.',
 });
 
 FIGURES.push({
   id: 'every-atom-propenal',
   section: 'hybridization',
-  anchor: 'and that flatness is why its two π systems can talk to each other in Resonance.</p>',
+  anchor: 'calls resonance.</p>',
   viewBox: '0 0 760 210',
-  alt: 'Propenal, CH2=CH–CH=O, drawn as a zigzag with every atom: two carbons joined by a double bond, a single bond to a third carbon, and that carbon double-bonded to oxygen, with each hydrogen drawn. All three carbons and the oxygen are labeled sp2, and a note says all eight atoms lie in one plane.',
+  alt: 'Propenal, CH2=CH–CH=O, drawn as a zigzag with every atom: two carbons joined by a double bond, a single bond to a third carbon, and that carbon double-bonded to oxygen, with each hydrogen drawn. All three carbons and the oxygen are tagged sp2.',
   build() {
     let s = panel(14, 10, 732, 190);
-    const c1 = P(140, 124), c2 = at(c1, 30, 70), c3 = at(c2, -30, 70), o = at(c3, 30, 70);
+    const c1 = P(180, 124), c2 = at(c1, 30, 70), c3 = at(c2, -30, 70), o = at(c3, 30, 70);
     const h1a = at(c1, 150, 56), h1b = at(c1, 270, 54), h2 = at(c2, 90, 54), h3 = at(c3, 270, 54);
     s += bond(c1, c2, { order: 2 });
     s += bond(c2, c3);
     s += bond(c3, o, { order: 2 });
-    for (const [a, h] of [[c1, h1a], [c1, h1b], [c2, h2], [c3, h3]]) {
-      s += bond(a, h, { rTo: 12 });
-      s += atom(h.x, h.y, 'H', { r: 12 });
+    for (const [a, hh] of [[c1, h1a], [c1, h1b], [c2, h2], [c3, h3]]) {
+      s += bond(a, hh, { rTo: 12 });
+      s += atom(hh.x, hh.y, 'H', { r: 12 });
     }
     for (const a of [c1, c2, c3]) s += atom(a.x, a.y, 'C', { kind: 'hi' });
     s += atom(o.x, o.y, 'O', { kind: 'hi' });
     s += lonePair(o.x, o.y, -90);
     s += lonePair(o.x, o.y, 30);
-    s += hybTag(c1.x + 32, c1.y + 22, 'sp²');
-    s += hybTag(c2.x + 30, c2.y - 20, 'sp²');
-    s += hybTag(c3.x + 30, c3.y + 22, 'sp²');
-    s += hybTag(o.x - 32, o.y - 18, 'sp²');
-    s += text(440, 80, 'every heavy atom: 3 groups → sp²', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(440, 102, 'so all 8 atoms (3 C, 1 O, 4 H)', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(440, 118, 'lie in one flat plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += hybTag(c1, -30, 'sp²');
+    s += hybTag(c2, 30, 'sp²');
+    s += hybTag(c3, -30, 'sp²');
+    s += hybTag(o, 30, 'sp²', 32);
     return s;
   },
-  caption: 'Propenal, CH₂=CH–CHO. Four sp² tags and no sp³ tag anywhere, so nothing sticks out of the plane of the page.',
+  caption: 'Propenal, CH₂=CH–CHO, with each green tag next to its own atom.',
 });
 
 /* ===================================== amide lone pair in p (shared) === */
@@ -725,7 +690,7 @@ FIGURES.push({
   id: 'ch-acidity-s-character',
   section: 'hybridization',
   anchor: 'twenty-five powers of ten from the mixing alone.</p>',
-  viewBox: '0 0 760 250',
+  viewBox: '0 0 760 226',
   alt: 'A table-like figure with three rows, sp3, sp2 and sp. Columns: the compound (ethane, ethene, ethyne), the s-character (25, 33 and 50 percent), the pKa of its C–H (about 50, 44 and 25), and a drawing of a carbon with the leftover pair after H+ leaves, the pair drawn further from the carbon for sp3 and closest for sp.',
   build() {
     let s = '';
@@ -751,7 +716,6 @@ FIGURES.push({
       s += lonePair(c.x, c.y, 0, { dist: r.d, spread: 5, r: 2.8 });
       s += text(c.x + 90, y + 4, r.how, { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     });
-    s += text(380, 240, 'Lower pKa means more acidic. Each pKa unit is a factor of 10.', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
   caption: 'Three C–H bonds that differ only in the carbon’s hybridization. Read down the last column: the more s-character, the closer to the carbon the leftover pair sits.',
@@ -819,6 +783,92 @@ FIGURES.push({
     return s;
   },
   caption: 'Wedges point toward you and hashed bonds point away.',
+});
+
+/* ============================== practice molecules, drawn (lesson) === */
+FIGURES.push({
+  id: 'l-formaldehyde',
+  lessons: ['hybridization'],
+  viewBox: '0 0 340 150',
+  alt: 'Formaldehyde drawn with every atom: a carbon bonded to two hydrogens and double-bonded to an oxygen that carries two lone pairs. The carbon is highlighted.',
+  build() {
+    let s = panel(8, 8, 324, 134);
+    const c = P(140, 76), o = P(220, 76);
+    const h1 = at(c, 125, 54), h2 = at(c, 235, 54);
+    s += bond(c, o, { order: 2 });
+    s += bond(c, h1, { rTo: 12 }) + bond(c, h2, { rTo: 12 });
+    s += atom(h1.x, h1.y, 'H', { r: 12 }) + atom(h2.x, h2.y, 'H', { r: 12 });
+    s += atom(c.x, c.y, 'C', { kind: 'warn' });
+    s += atom(o.x, o.y, 'O');
+    s += lonePair(o.x, o.y, -55) + lonePair(o.x, o.y, 55);
+    s += tag(170, 132, 'formaldehyde');
+    return s;
+  },
+  caption: 'Formaldehyde. The highlighted carbon is the one asked about.',
+});
+
+FIGURES.push({
+  id: 'l-co2',
+  lessons: ['hybridization'],
+  viewBox: '0 0 340 120',
+  alt: 'Carbon dioxide drawn with every atom: a carbon double-bonded to an oxygen on each side, each oxygen carrying two lone pairs. The carbon is highlighted.',
+  build() {
+    let s = panel(8, 8, 324, 104);
+    const o1 = P(90, 58), c = P(170, 58), o2 = P(250, 58);
+    s += bond(o1, c, { order: 2 }) + bond(c, o2, { order: 2 });
+    s += atom(o1.x, o1.y, 'O') + atom(o2.x, o2.y, 'O');
+    s += atom(c.x, c.y, 'C', { kind: 'warn' });
+    s += lonePair(o1.x, o1.y, -125) + lonePair(o1.x, o1.y, 125);
+    s += lonePair(o2.x, o2.y, -55) + lonePair(o2.x, o2.y, 55);
+    s += tag(170, 102, 'carbon dioxide');
+    return s;
+  },
+  caption: 'Carbon dioxide. The highlighted carbon is the one asked about.',
+});
+
+FIGURES.push({
+  id: 'l-methyl-acetate',
+  lessons: ['hybridization'],
+  viewBox: '0 0 340 220',
+  alt: 'Methyl acetate drawn with every atom: a CH3 carbon bonded to a carbon that is double-bonded to one oxygen and single-bonded to a second oxygen, which is bonded to another CH3. Both oxygens carry two lone pairs. The single-bonded oxygen, between the C=O carbon and the second CH3, is highlighted.',
+  build() {
+    let s = panel(8, 8, 324, 204);
+    const c1 = P(74, 104), c2 = P(154, 104);
+    const o1 = at(c2, 60, 58), o2 = at(c2, 300, 58);
+    const c3 = at(o2, 0, 76);
+    s += methyl(c1, 0);
+    s += methyl(c3, 180);
+    s += bond(c1, c2) + bond(c2, o1, { order: 2 }) + bond(c2, o2) + bond(o2, c3);
+    s += atom(c1.x, c1.y, 'C') + atom(c2.x, c2.y, 'C') + atom(c3.x, c3.y, 'C');
+    s += atom(o1.x, o1.y, 'O');
+    s += atom(o2.x, o2.y, 'O', { kind: 'warn' });
+    s += lonePair(o1.x, o1.y, -150) + lonePair(o1.x, o1.y, -30);
+    s += lonePair(o2.x, o2.y, 80) + lonePair(o2.x, o2.y, 170);
+    s += tag(o2.x, 202, 'this oxygen', { cls: 'fg-tag-warn' });
+    return s;
+  },
+  caption: 'Methyl acetate, every atom drawn. The highlighted oxygen is the one asked about.',
+});
+
+FIGURES.push({
+  id: 'l-methanol',
+  lessons: ['hybridization'],
+  viewBox: '0 0 340 170',
+  alt: 'Methanol drawn with every atom: a CH3 carbon, with one hydrogen in the page, one wedged and one hashed, bonded to an oxygen that carries one hydrogen and two lone pairs. The oxygen is highlighted.',
+  build() {
+    let s = panel(8, 8, 324, 154);
+    const c = P(130, 92), o = P(210, 92);
+    const h = at(o, -60, 56);
+    s += methyl(c, 0);
+    s += bond(c, o) + bond(o, h, { rTo: 12 });
+    s += atom(h.x, h.y, 'H', { r: 12 });
+    s += atom(c.x, c.y, 'C');
+    s += atom(o.x, o.y, 'O', { kind: 'warn' });
+    s += lonePair(o.x, o.y, -50) + lonePair(o.x, o.y, -115);
+    s += tag(270, 60, 'methanol');
+    return s;
+  },
+  caption: 'Methanol, every atom drawn. The highlighted oxygen is the one asked about.',
 });
 
 export default FIGURES;
