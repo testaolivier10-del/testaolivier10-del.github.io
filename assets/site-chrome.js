@@ -37,6 +37,55 @@
     });
   }
 
+  /* Authored strings across the courses (lesson feedback, explanations,
+     options) carry inline markup for formulas and emphasis:
+     C<sub>6</sub>H<sub>4</sub>, <i>cis</i>, &alpha;. Written with textContent
+     they print as literal tags; written with raw innerHTML any stray tag
+     becomes live markup. This is the one sanitizer for them: only the inline
+     tags below survive, every attribute is dropped, any other element is
+     reduced to its text (script, style and template to nothing), and the
+     parse happens in an inert <template>, so nothing in the string can run.
+       LevlInline.set(el, s)  replace el's contents with the sanitized string
+       LevlInline.html(s)     the sanitized string as HTML, for concatenation
+       LevlInline.text(s)     plain text: tags dropped, entities decoded. For
+                              screen-reader announcements and attributes. A
+                              string with no markup comes back unchanged, so
+                              plain text such as "pKa < 5" is never parsed.
+     Defined first, before anything below can throw, because lesson and
+     practice scripts call it when they render feedback. */
+  var INLINE_TAGS = { SUB: 1, SUP: 1, I: 1, B: 1, EM: 1, STRONG: 1, BR: 1 };
+  var INLINE_DROP = { SCRIPT: 1, STYLE: 1, TEMPLATE: 1, NOSCRIPT: 1, IFRAME: 1, OBJECT: 1 };
+  var HAS_MARKUP = /<\/?[a-z][^>]*>|&(#\d+|#x[0-9a-f]+|[a-z]+\d*);/i;
+  function inlineFragment(s){
+    var tpl = document.createElement('template');
+    tpl.innerHTML = String(s == null ? '' : s);
+    (function clean(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(c){
+        if(c.nodeType === 1){
+          if(INLINE_DROP[c.tagName]){ node.removeChild(c); return; }
+          clean(c);
+          if(INLINE_TAGS[c.tagName]){
+            while(c.attributes.length) c.removeAttribute(c.attributes[0].name);
+          } else {
+            while(c.firstChild) node.insertBefore(c.firstChild, c);
+            node.removeChild(c);
+          }
+        } else if(c.nodeType !== 3){
+          node.removeChild(c);
+        }
+      });
+    })(tpl.content);
+    return tpl.content;
+  }
+  window.LevlInline = {
+    set: function(el, s){ el.textContent = ''; el.appendChild(inlineFragment(s)); },
+    html: function(s){ var d = document.createElement('div'); d.appendChild(inlineFragment(s)); return d.innerHTML; },
+    text: function(s){
+      s = String(s == null ? '' : s);
+      return HAS_MARKUP.test(s) ? inlineFragment(s).textContent : s;
+    }
+  };
+
   var FLAME_SVG =
     '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
       '<path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/>' +

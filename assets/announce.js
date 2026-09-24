@@ -48,7 +48,14 @@
      thing to happen here. Emptying the region first, then writing on a later
      frame, makes the second one a genuine change again. */
   function say(text){
-    text = String(text == null ? '' : text).replace(/\s+/g, ' ').trim();
+    text = String(text == null ? '' : text);
+    /* Callers pass authored strings, and those can carry inline markup
+       (C<sub>6</sub>H<sub>4</sub>, <i>less</i>, &rarr;). A screen reader
+       should hear the formula, not the tags, so the text is reduced to plain
+       text by the site's inline sanitizer (site-chrome.js, which is what loads
+       this file). A string with no markup is left exactly as it was. */
+    if(window.LevlInline) text = window.LevlInline.text(text);
+    text = text.replace(/\s+/g, ' ').trim();
     if(!text) return;
     var el = ensureRegion();
     el.textContent = '';

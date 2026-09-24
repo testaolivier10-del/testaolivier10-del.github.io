@@ -128,35 +128,19 @@
        on too, so the chime's rising run resets on a miss.
 
        It is also the one place the announcement has to be wired: this box is
-       written with textContent into a card the engine replaces between steps,
+       written into a card the engine replaces between steps,
        so a screen reader is told nothing by it on its own. Sending the verdict
        to the site's live region covers all 58 lessons from here. */
     /* Feedback strings are authored like the option buttons, with inline
        markup for formulas and emphasis (C<sub>6</sub>H<sub>4</sub>, <i>cis</i>,
        &alpha;). They used to be written with textContent, which printed the
-       tags as literal text. Only these inline tags survive; anything else is
-       reduced to its text, so a stray tag can never become markup. */
-    var FEEDBACK_TAGS = { SUB: 1, SUP: 1, I: 1, B: 1, EM: 1, STRONG: 1, BR: 1 };
+       tags as literal text. They now go through the site's one inline-markup
+       sanitizer (LevlInline, in site-chrome.js, which every lesson loads
+       first): only inline tags survive, so a stray tag can never become
+       markup. Without it, the tags are stripped rather than printed. */
     function setInlineHtml(el, text){
-      var tpl = document.createElement('template');
-      tpl.innerHTML = String(text);
-      (function clean(node){
-        Array.prototype.slice.call(node.childNodes).forEach(function(c){
-          if(c.nodeType === 1){
-            clean(c);
-            if(!FEEDBACK_TAGS[c.tagName]){
-              while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c);
-              c.parentNode.removeChild(c);
-            } else {
-              while(c.attributes.length) c.removeAttribute(c.attributes[0].name);
-            }
-          } else if(c.nodeType !== 3){
-            c.parentNode.removeChild(c);
-          }
-        });
-      })(tpl.content);
-      el.textContent = '';
-      el.appendChild(tpl.content);
+      if(window.LevlInline) window.LevlInline.set(el, text);
+      else el.textContent = String(text).replace(/<[^>]*>/g, '');
     }
     function showFeedback(el, good, text){
       el.className = 'feedback show ' + (good?'good':'bad');
