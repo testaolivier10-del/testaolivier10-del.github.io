@@ -1,8 +1,8 @@
 {
   "os-25-22": {
     "file": "figures/openstax/os-25-22.jpg",
-    "w": 2281,
-    "h": 950,
+    "w": 1100,
+    "h": 458,
     "source": "openstax",
     "openstax": {
       "figure": "25.22",

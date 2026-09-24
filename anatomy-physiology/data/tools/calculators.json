@@ -4515,9 +4515,10 @@
           }
         },
         {
-          "label": "Gastric juice at 2 L, same absorption",
+          "label": "Gastric juice at 2 L; small intestine absorbs 8,300 mL",
           "values": {
-            "gas": 2000
+            "gas": 2000,
+            "si": 8300
           }
         },
         {
@@ -4543,7 +4544,7 @@
             "tol": {
               "abs": 0.2
             },
-            "prompt": "What percentage of all the water that entered the gut was absorbed?"
+            "prompt": "Food and drink supply {diet} mL; saliva {sal}; gastric juice {gas}; bile {bile}; pancreatic juice {panc}; intestinal juice {int}. The small intestine absorbs {si} mL, the colon adds {cs} mL of its own secretions and absorbs {col} mL. What percentage of all the water that entered the gut was absorbed?"
           }
         ]
       }
