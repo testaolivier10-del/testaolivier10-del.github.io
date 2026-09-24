@@ -539,7 +539,7 @@ FIGURES.push({
 /* Cyanide or a nitrile: carbon, triple bond, nitrogen, drawn in a straight
    line (sp carbon, 180 degrees) along screen angle `deg` from `from`. */
 function nitrile(from, deg, rFrom, cKind) {
-  const cn = armEnd(from, deg, 50), n = armEnd(cn, deg, 40);
+  const cn = armEnd(from, deg, 50), n = armEnd(cn, deg, 46);
   let s = bond(from, cn, { rFrom, rTo: 14 });
   s += bond(cn, n, { rFrom: 14, rTo: 14, order: 3, gap: 3.4 });
   s += A(cn, 'C', { r: 14, kind: cKind }) + A(n, 'N', { r: 14 });
@@ -672,7 +672,7 @@ const productCells = [
     r += bond(k, o2, { rFrom: 14, rTo: 16 }) + A(o2, 'OH');
     r += A(k, 'C', { r: 14, kind: 'hi' });
     let s = skeleton(c, r);
-    s += text(k.x, k.y + 32, 'C1', { cls: 'fg-tag-warn', size: 11 });
+    s += text(k.x - 16, k.y + 30, 'C1', { cls: 'fg-tag-warn', size: 11 });
     s += text(c.x + 21, c.y - 20, 'α', { cls: 'fg-tag-warn', size: 11 });
     s += T(Q, 252, 70, 'an acid counts', { cls: 'fg-tag', size: 11 });
     s += T(Q, 252, 86, 'from its COOH', { cls: 'fg-tag', size: 11 });
