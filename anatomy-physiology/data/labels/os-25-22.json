@@ -10,7 +10,13 @@
       "lines": [
         10
       ],
-      "concept": "amino-acid-metabolism"
+      "concept": "amino-acid-metabolism",
+      "box": [
+        40,
+        408,
+        89,
+        19
+      ]
     },
     {
       "id": "urea",
@@ -19,7 +25,13 @@
       "lines": [
         11
       ],
-      "concept": "urea-cycle"
+      "concept": "urea-cycle",
+      "box": [
+        331,
+        408,
+        51,
+        19
+      ]
     },
     {
       "id": "uric-acid",
@@ -30,7 +42,13 @@
       "lines": [
         12
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        776,
+        408,
+        82,
+        19
+      ]
     }
   ]
 }

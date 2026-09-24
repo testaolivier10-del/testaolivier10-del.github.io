@@ -28,7 +28,13 @@
         0,
         1
       ],
-      "concept": "nephron-vessels"
+      "concept": "nephron-vessels",
+      "box": [
+        0,
+        66,
+        119,
+        66
+      ]
     },
     {
       "id": "afferent-arteriole",
@@ -40,7 +46,13 @@
         2,
         3
       ],
-      "concept": "nephron-vessels"
+      "concept": "nephron-vessels",
+      "box": [
+        0,
+        155,
+        119,
+        66
+      ]
     },
     {
       "id": "proximal-convoluted-tubule",
@@ -55,7 +67,13 @@
         4,
         5
       ],
-      "concept": "renal-tubule"
+      "concept": "renal-tubule",
+      "box": [
+        268,
+        336,
+        255,
+        66
+      ]
     },
     {
       "id": "cortical-radiate-artery",
@@ -70,7 +88,13 @@
         7,
         8
       ],
-      "concept": "renal-blood-supply"
+      "concept": "renal-blood-supply",
+      "box": [
+        0,
+        522,
+        187,
+        72
+      ]
     },
     {
       "id": "venule",
@@ -81,7 +105,13 @@
       "lines": [
         9
       ],
-      "concept": "venule-vein"
+      "concept": "venule-vein",
+      "box": [
+        447,
+        604,
+        107,
+        29
+      ]
     },
     {
       "id": "cortical-radiate-vein",
@@ -96,7 +126,13 @@
         11,
         12
       ],
-      "concept": "renal-blood-supply"
+      "concept": "renal-blood-supply",
+      "box": [
+        447,
+        729,
+        169,
+        66
+      ]
     },
     {
       "id": "loop-of-the-nephron",
@@ -128,7 +164,13 @@
         18,
         19
       ],
-      "concept": "nephron-vessels"
+      "concept": "nephron-vessels",
+      "box": [
+        446,
+        1184,
+        162,
+        102
+      ]
     }
   ]
 }

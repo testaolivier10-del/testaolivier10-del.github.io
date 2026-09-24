@@ -1,0 +1,36 @@
+{
+  "os-25-19": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "25.19",
+      "section": "25.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/525629c64915e60d3e5784ae3888b05921bbd955",
+      "page": "25-6-tubular-reabsorption"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/525629c64915e60d3e5784ae3888b05921bbd955",
+    "alt": "A strip across the wall of the proximal tubule: the pale lumen on the left, one tubule cell with a wavy brush border in the middle, a narrow blue band of interstitial fluid, and a red blood vessel labeled bloodstream on the right. At the top, Na+ moves from the lumen into the cell while H+ moves out into the lumen, at a circle marked ATP. In the lumen, HCO3- and the H+ join to form H2CO3, which carbonic anhydrase splits into water and CO2. The CO2 crosses into the cell, joins water, and carbonic anhydrase forms H2CO3, which splits into H+ and HCO3-. On the right side of the cell, Na+ and HCO3- leave together toward the blood.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.19",
+    "labels": [],
+    "w": 1100,
+    "h": 637,
+    "ext": "jpg"
+  },
+  "os-26-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "26.16",
+      "section": "26.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/83c9f50ee9c3c686b4cc22f943cb7e2c43ad55b4",
+      "page": "26-4-acid-base-balance"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/83c9f50ee9c3c686b4cc22f943cb7e2c43ad55b4",
+    "alt": "A flowchart. A top box, acid/base homeostasis disturbed, splits into two columns. The left column, pH down, leads to acidosis, then stimulates brain and arterial receptors, then respiration rate up, blood CO2 down, blood H2CO3 down and pH up. The right column, pH up, leads to alkalosis, then stimulates brain and arterial receptors, then respiration rate down, blood CO2 up, blood H2CO3 up and pH down. Both columns end in a bottom box, acid/base homeostasis restored.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.16",
+    "labels": [],
+    "w": 495,
+    "h": 903,
+    "ext": "jpg"
+  }
+}

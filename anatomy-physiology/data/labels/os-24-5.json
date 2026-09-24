@@ -11,7 +11,13 @@
       "lines": [
         1
       ],
-      "concept": "glucose"
+      "concept": "glucose",
+      "box": [
+        514,
+        23,
+        228,
+        23
+      ]
     },
     {
       "id": "energy-consuming-phase",
@@ -25,7 +31,13 @@
       "lines": [
         4
       ],
-      "concept": "glycolysis-detail"
+      "concept": "glycolysis-detail",
+      "box": [
+        49,
+        204,
+        274,
+        26
+      ]
     },
     {
       "id": "two-atp-consumed",
@@ -41,7 +53,13 @@
         2,
         5
       ],
-      "concept": "glycolysis-detail"
+      "concept": "glycolysis-detail",
+      "box": [
+        572,
+        195,
+        122,
+        45
+      ]
     },
     {
       "id": "coupling-of-phosphorylation-with-oxidation",
@@ -56,7 +74,13 @@
         9,
         10
       ],
-      "concept": "glycolysis-detail"
+      "concept": "glycolysis-detail",
+      "box": [
+        48,
+        687,
+        180,
+        70
+      ]
     },
     {
       "id": "exergonic-reaction-left",
@@ -68,7 +92,13 @@
       "lines": [
         7
       ],
-      "concept": "energy-forms"
+      "concept": "energy-forms",
+      "box": [
+        329,
+        694,
+        188,
+        26
+      ]
     },
     {
       "id": "exergonic-reaction-right",
@@ -80,7 +110,13 @@
       "lines": [
         8
       ],
-      "concept": "energy-forms"
+      "concept": "energy-forms",
+      "box": [
+        754,
+        694,
+        187,
+        26
+      ]
     },
     {
       "id": "nadh-left",
@@ -89,7 +125,13 @@
       "lines": [
         14
       ],
-      "concept": "redox"
+      "concept": "redox",
+      "box": [
+        171,
+        776,
+        71,
+        21
+      ]
     },
     {
       "id": "nad-plus-left",
@@ -101,7 +143,13 @@
       "lines": [
         11
       ],
-      "concept": "redox"
+      "concept": "redox",
+      "box": [
+        281,
+        774,
+        66,
+        24
+      ]
     },
     {
       "id": "nad-plus-right",
@@ -113,7 +161,13 @@
       "lines": [
         12
       ],
-      "concept": "redox"
+      "concept": "redox",
+      "box": [
+        905,
+        774,
+        85,
+        24
+      ]
     },
     {
       "id": "nadh-right",
@@ -122,7 +176,13 @@
       "lines": [
         13
       ],
-      "concept": "redox"
+      "concept": "redox",
+      "box": [
+        1024,
+        775,
+        71,
+        22
+      ]
     },
     {
       "id": "two-nadh-produced",
@@ -136,7 +196,13 @@
         15,
         17
       ],
-      "concept": "glycolysis-detail"
+      "concept": "glycolysis-detail",
+      "box": [
+        583,
+        777,
+        109,
+        45
+      ]
     },
     {
       "id": "free-phosphate-left",
@@ -149,7 +215,13 @@
       "lines": [
         18
       ],
-      "concept": "atp-hydrolysis"
+      "concept": "atp-hydrolysis",
+      "box": [
+        246,
+        881,
+        161,
+        26
+      ]
     },
     {
       "id": "free-phosphate-right",
@@ -162,7 +234,13 @@
       "lines": [
         19
       ],
-      "concept": "atp-hydrolysis"
+      "concept": "atp-hydrolysis",
+      "box": [
+        857,
+        881,
+        161,
+        26
+      ]
     },
     {
       "id": "endergonic-reaction-left",
@@ -174,7 +252,13 @@
       "lines": [
         22
       ],
-      "concept": "energy-forms"
+      "concept": "energy-forms",
+      "box": [
+        317,
+        964,
+        201,
+        26
+      ]
     },
     {
       "id": "endergonic-reaction-right",
@@ -186,7 +270,13 @@
       "lines": [
         23
       ],
-      "concept": "energy-forms"
+      "concept": "energy-forms",
+      "box": [
+        747,
+        964,
+        201,
+        26
+      ]
     },
     {
       "id": "energy-releasing-phase",
@@ -201,7 +291,13 @@
         24,
         25
       ],
-      "concept": "glycolysis-detail"
+      "concept": "glycolysis-detail",
+      "box": [
+        49,
+        1026,
+        185,
+        50
+      ]
     },
     {
       "id": "four-atp-produced",
@@ -216,7 +312,13 @@
         26,
         27
       ],
-      "concept": "glycolysis-detail"
+      "concept": "glycolysis-detail",
+      "box": [
+        581,
+        1121,
+        110,
+        46
+      ]
     },
     {
       "id": "two-pyruvate-molecules",
@@ -231,7 +333,13 @@
       "lines": [
         29
       ],
-      "concept": "glycolysis-basic"
+      "concept": "glycolysis-basic",
+      "box": [
+        514,
+        1558,
+        243,
+        26
+      ]
     }
   ]
 }

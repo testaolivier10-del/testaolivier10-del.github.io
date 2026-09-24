@@ -1,0 +1,27 @@
+{
+  "acid-sources": {
+    "def": "Your acid comes in two kinds. Volatile acid is carbonic acid from the carbon dioxide cells make, about 13,000 to 20,000 mmol a day, removed by the lungs. Fixed (metabolic) acids, such as sulfuric and phosphoric acid from protein, cannot be breathed out; about 50 to 100 mmol a day must be excreted by the kidneys.",
+    "roots": [["volat-", "to fly"]],
+    "say": ""
+  },
+  "chemical-buffers": {
+    "def": "The three main buffers in body fluids: the bicarbonate buffer (main buffer of extracellular fluid), the phosphate buffer (inside cells and in urine) and the protein buffer (hemoglobin, albumin and proteins inside cells). They act within seconds but remove no acid from the body.",
+    "roots": [],
+    "say": ""
+  },
+  "bicarbonate-ratio": {
+    "def": "Blood pH depends on the ratio of bicarbonate to dissolved carbon dioxide, normally 24 to 1.2, or 20 to 1. The Henderson–Hasselbalch equation gives it: pH = 6.1 + log(HCO3− ÷ (0.03 × PCO2)). Halving the ratio lowers pH by 0.3.",
+    "roots": [],
+    "say": "HEN-der-sun HAS-ul-balk"
+  },
+  "respiratory-ph-control": {
+    "def": "A negative feedback loop in which chemoreceptors sense a change in pH or PCO2 and the respiratory centers change ventilation. More breathing lowers PCO2 and raises pH; less breathing does the opposite. It acts within minutes but cannot remove fixed acid.",
+    "roots": [["re-", "again"], ["spir-", "breathe"]],
+    "say": ""
+  },
+  "renal-ph-control": {
+    "def": "The kidneys' part in acid–base balance: they reclaim filtered bicarbonate, mostly in the proximal tubule, and secrete hydrogen ions that leave bound to phosphate (titratable acid) or ammonia (as ammonium). Each hydrogen ion excreted adds one new bicarbonate to the blood. It takes hours to days.",
+    "roots": [["ren-", "kidney"], ["-al", "pertaining to"]],
+    "say": ""
+  }
+}

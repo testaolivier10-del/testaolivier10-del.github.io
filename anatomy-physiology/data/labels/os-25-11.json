@@ -15,7 +15,13 @@
         0,
         1
       ],
-      "concept": "renal-corpuscle"
+      "concept": "renal-corpuscle",
+      "box": [
+        1023,
+        201,
+        75,
+        46
+      ]
     },
     {
       "id": "filtration-slits",
@@ -29,7 +35,13 @@
         2,
         3
       ],
-      "concept": "filtration-membrane"
+      "concept": "filtration-membrane",
+      "box": [
+        691,
+        230,
+        93,
+        46
+      ]
     },
     {
       "id": "capillary",
@@ -42,7 +54,13 @@
       "lines": [
         4
       ],
-      "concept": "blood-vessel-basics"
+      "concept": "blood-vessel-basics",
+      "box": [
+        914,
+        396,
+        95,
+        26
+      ]
     }
   ]
 }

@@ -12,7 +12,13 @@
       "lines": [
         0
       ],
-      "concept": "etc"
+      "concept": "etc",
+      "box": [
+        77,
+        35,
+        226,
+        26
+      ]
     },
     {
       "id": "atp-synthase",
@@ -21,7 +27,13 @@
       "lines": [
         1
       ],
-      "concept": "etc"
+      "concept": "etc",
+      "box": [
+        76,
+        84,
+        140,
+        26
+      ]
     },
     {
       "id": "intermembrane-space",
@@ -30,7 +42,13 @@
       "lines": [
         2
       ],
-      "concept": "mitochondrion"
+      "concept": "mitochondrion",
+      "box": [
+        1,
+        156,
+        205,
+        24
+      ]
     },
     {
       "id": "cytochrome-c",
@@ -42,7 +60,13 @@
       "lines": [
         3
       ],
-      "concept": "etc"
+      "concept": "etc",
+      "box": [
+        444,
+        256,
+        52,
+        23
+      ]
     },
     {
       "id": "inner-mitochondrial-membrane",
@@ -57,7 +81,13 @@
         6,
         7
       ],
-      "concept": "mitochondrion"
+      "concept": "mitochondrion",
+      "box": [
+        1,
+        320,
+        134,
+        61
+      ]
     },
     {
       "id": "nadh",
@@ -66,7 +96,13 @@
       "lines": [
         8
       ],
-      "concept": "redox"
+      "concept": "redox",
+      "box": [
+        124,
+        425,
+        62,
+        18
+      ]
     },
     {
       "id": "nad-plus",
@@ -78,7 +114,13 @@
       "lines": [
         12
       ],
-      "concept": "redox"
+      "concept": "redox",
+      "box": [
+        137,
+        487,
+        57,
+        22
+      ]
     },
     {
       "id": "fadh2",
@@ -89,7 +131,13 @@
       "lines": [
         9
       ],
-      "concept": "citric-acid-cycle"
+      "concept": "citric-acid-cycle",
+      "box": [
+        263,
+        471,
+        65,
+        23
+      ]
     },
     {
       "id": "fad",
@@ -102,7 +150,13 @@
       ],
       "concept": "redox",
       "cover": true,
-      "note": "OpenStax prints 'FAD+', but FAD carries no positive charge (unlike NAD+); the printed form would teach a wrong formula. Covered for good and never asked."
+      "note": "OpenStax prints 'FAD+', but FAD carries no positive charge (unlike NAD+); the printed form would teach a wrong formula. Covered for good and never asked.",
+      "box": [
+        333,
+        475,
+        54,
+        22
+      ]
     },
     {
       "id": "water",
@@ -114,7 +168,13 @@
       "lines": [
         14
       ],
-      "concept": "water-properties"
+      "concept": "water-properties",
+      "box": [
+        606,
+        609,
+        45,
+        22
+      ]
     },
     {
       "id": "mitochondrial-matrix",
@@ -125,7 +185,13 @@
       "lines": [
         19
       ],
-      "concept": "mitochondrion"
+      "concept": "mitochondrion",
+      "box": [
+        1,
+        685,
+        195,
+        20
+      ]
     },
     {
       "id": "two-free-hydrogen-ions",
@@ -142,7 +208,13 @@
         23,
         27
       ],
-      "concept": "ion"
+      "concept": "ion",
+      "box": [
+        241,
+        685,
+        89,
+        58
+      ]
     },
     {
       "id": "two-electrons-exiting-etc",
@@ -156,7 +228,13 @@
         21,
         24
       ],
-      "concept": "etc"
+      "concept": "etc",
+      "box": [
+        341,
+        685,
+        108,
+        43
+      ]
     },
     {
       "id": "half-an-oxygen-molecule",
@@ -173,7 +251,13 @@
         25,
         26
       ],
-      "concept": "etc"
+      "concept": "etc",
+      "box": [
+        458,
+        685,
+        86,
+        58
+      ]
     }
   ]
 }

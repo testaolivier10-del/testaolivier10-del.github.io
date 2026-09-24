@@ -10,7 +10,13 @@
       "lines": [
         4
       ],
-      "concept": "ureter"
+      "concept": "ureter",
+      "box": [
+        445,
+        99,
+        68,
+        21
+      ]
     },
     {
       "id": "uterus",
@@ -21,7 +27,13 @@
       "lines": [
         10
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        0,
+        139,
+        69,
+        21
+      ]
     },
     {
       "id": "urinary-bladder-female",
@@ -34,7 +46,13 @@
         14,
         18
       ],
-      "concept": "urinary-bladder"
+      "concept": "urinary-bladder",
+      "box": [
+        0,
+        169,
+        77,
+        44
+      ]
     },
     {
       "id": "pubic-bone-female",
@@ -47,7 +65,13 @@
       "lines": [
         23
       ],
-      "concept": "pelvic-girdle"
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        226,
+        110,
+        21
+      ]
     },
     {
       "id": "urethra-female",
@@ -58,7 +82,13 @@
       "lines": [
         27
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        0,
+        256,
+        77,
+        21
+      ]
     },
     {
       "id": "clitoris",
@@ -67,7 +97,13 @@
       "lines": [
         31
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        0,
+        286,
+        71,
+        21
+      ]
     },
     {
       "id": "labium-minora",
@@ -79,7 +115,13 @@
       "lines": [
         35
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        0,
+        315,
+        143,
+        21
+      ]
     },
     {
       "id": "labium-majora",
@@ -91,7 +133,13 @@
       "lines": [
         39
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        0,
+        347,
+        143,
+        25
+      ]
     },
     {
       "id": "cervix",
@@ -103,7 +151,13 @@
       "lines": [
         20
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        444,
+        220,
+        70,
+        21
+      ]
     },
     {
       "id": "rectum-female",
@@ -112,7 +166,13 @@
       "lines": [
         25
       ],
-      "concept": "large-intestine-regions"
+      "concept": "large-intestine-regions",
+      "box": [
+        445,
+        249,
+        81,
+        21
+      ]
     },
     {
       "id": "vagina",
@@ -121,7 +181,13 @@
       "lines": [
         30
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        444,
+        280,
+        76,
+        25
+      ]
     },
     {
       "id": "anus-female",
@@ -132,7 +198,13 @@
       "lines": [
         34
       ],
-      "concept": "large-intestine-regions"
+      "concept": "large-intestine-regions",
+      "box": [
+        444,
+        314,
+        59,
+        21
+      ]
     },
     {
       "id": "urinary-bladder-male",
@@ -144,7 +216,13 @@
       "lines": [
         0
       ],
-      "concept": "urinary-bladder"
+      "concept": "urinary-bladder",
+      "box": [
+        547,
+        40,
+        150,
+        25
+      ]
     },
     {
       "id": "ureter-male",
@@ -155,7 +233,13 @@
       "lines": [
         1
       ],
-      "concept": "ureter"
+      "concept": "ureter",
+      "box": [
+        1019,
+        75,
+        68,
+        21
+      ]
     },
     {
       "id": "pubic-bone-male",
@@ -168,7 +252,13 @@
       "lines": [
         2
       ],
-      "concept": "pelvic-girdle"
+      "concept": "pelvic-girdle",
+      "box": [
+        547,
+        78,
+        112,
+        21
+      ]
     },
     {
       "id": "ductus-deferens",
@@ -180,7 +270,13 @@
         9,
         13
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        546,
+        125,
+        91,
+        46
+      ]
     },
     {
       "id": "seminal-vesicle",
@@ -194,7 +290,13 @@
         7,
         11
       ],
-      "concept": "accessory-glands-male"
+      "concept": "accessory-glands-male",
+      "box": [
+        1018,
+        121,
+        84,
+        45
+      ]
     },
     {
       "id": "urethra-male",
@@ -205,7 +307,13 @@
       "lines": [
         17
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        547,
+        187,
+        79,
+        21
+      ]
     },
     {
       "id": "prostate-gland",
@@ -217,7 +325,13 @@
         16,
         19
       ],
-      "concept": "accessory-glands-male"
+      "concept": "accessory-glands-male",
+      "box": [
+        1018,
+        178,
+        84,
+        49
+      ]
     },
     {
       "id": "penis",
@@ -226,7 +340,13 @@
       "lines": [
         21
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        547,
+        222,
+        62,
+        21
+      ]
     },
     {
       "id": "rectum-male",
@@ -235,7 +355,13 @@
       "lines": [
         24
       ],
-      "concept": "large-intestine-regions"
+      "concept": "large-intestine-regions",
+      "box": [
+        1019,
+        239,
+        80,
+        21
+      ]
     },
     {
       "id": "epididymis",
@@ -246,7 +372,13 @@
       "lines": [
         26
       ],
-      "concept": "male-ducts"
+      "concept": "male-ducts",
+      "box": [
+        547,
+        253,
+        109,
+        25
+      ]
     },
     {
       "id": "anus-male",
@@ -257,7 +389,13 @@
       "lines": [
         29
       ],
-      "concept": "large-intestine-regions"
+      "concept": "large-intestine-regions",
+      "box": [
+        1018,
+        279,
+        58,
+        21
+      ]
     },
     {
       "id": "testis",
@@ -270,7 +408,13 @@
       "lines": [
         32
       ],
-      "concept": "scrotum-testes"
+      "concept": "scrotum-testes",
+      "box": [
+        545,
+        294,
+        65,
+        21
+      ]
     },
     {
       "id": "foreskin",
@@ -281,7 +425,13 @@
       "lines": [
         38
       ],
-      "concept": "penis"
+      "concept": "penis",
+      "box": [
+        547,
+        331,
+        88,
+        21
+      ]
     }
   ]
 }

@@ -15,7 +15,13 @@
         0,
         1
       ],
-      "concept": "adh-collecting-duct"
+      "concept": "adh-collecting-duct",
+      "box": [
+        150,
+        11,
+        336,
+        33
+      ]
     },
     {
       "id": "collecting-tubule-cell",
@@ -30,7 +36,13 @@
       "lines": [
         2
       ],
-      "concept": "renal-tubule"
+      "concept": "renal-tubule",
+      "box": [
+        652,
+        38,
+        269,
+        33
+      ]
     },
     {
       "id": "lumen-of-collecting-tubule",
@@ -46,7 +58,13 @@
         3,
         4
       ],
-      "concept": "renal-tubule"
+      "concept": "renal-tubule",
+      "box": [
+        5,
+        66,
+        337,
+        33
+      ]
     },
     {
       "id": "bloodstream",
@@ -59,7 +77,13 @@
       "lines": [
         5
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        905,
+        119,
+        168,
+        27
+      ]
     },
     {
       "id": "aquaporin-basolateral",
@@ -72,7 +96,13 @@
       "lines": [
         6
       ],
-      "concept": "aquaporin"
+      "concept": "aquaporin",
+      "box": [
+        904,
+        221,
+        139,
+        33
+      ]
     },
     {
       "id": "aquaporin-apical",
@@ -85,7 +115,13 @@
       "lines": [
         8
       ],
-      "concept": "aquaporin"
+      "concept": "aquaporin",
+      "box": [
+        215,
+        344,
+        139,
+        33
+      ]
     },
     {
       "id": "plasma",
@@ -96,7 +132,13 @@
       "lines": [
         9
       ],
-      "concept": "plasma"
+      "concept": "plasma",
+      "box": [
+        905,
+        412,
+        105,
+        27
+      ]
     },
     {
       "id": "interstitial-fluid",
@@ -109,7 +151,13 @@
       "lines": [
         12
       ],
-      "concept": "icf-ecf"
+      "concept": "icf-ecf",
+      "box": [
+        905,
+        601,
+        191,
+        27
+      ]
     }
   ]
 }

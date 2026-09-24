@@ -12,7 +12,13 @@
       "lines": [
         1
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        512,
+        124,
+        57,
+        25
+      ]
     },
     {
       "id": "t11",
@@ -25,7 +31,13 @@
       "lines": [
         4
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        512,
+        191,
+        53,
+        24
+      ]
     },
     {
       "id": "t12",
@@ -38,7 +50,13 @@
       "lines": [
         10
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        512,
+        253,
+        56,
+        25
+      ]
     },
     {
       "id": "l1",
@@ -51,7 +69,13 @@
       "lines": [
         13
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        523,
+        314,
+        35,
+        24
+      ]
     },
     {
       "id": "l2",
@@ -64,7 +88,13 @@
       "lines": [
         17
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        523,
+        381,
+        39,
+        25
+      ]
     },
     {
       "id": "l3",
@@ -77,7 +107,13 @@
       "lines": [
         23
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        523,
+        458,
+        39,
+        25
+      ]
     },
     {
       "id": "l4",
@@ -90,7 +126,13 @@
       "lines": [
         25
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        523,
+        529,
+        39,
+        24
+      ]
     },
     {
       "id": "l5",
@@ -103,7 +145,13 @@
       "lines": [
         29
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        523,
+        593,
+        39,
+        25
+      ]
     },
     {
       "id": "liver",
@@ -112,7 +160,13 @@
       "lines": [
         2
       ],
-      "concept": "major-organs"
+      "concept": "major-organs",
+      "box": [
+        1029,
+        140,
+        67,
+        25
+      ]
     },
     {
       "id": "kidney",
@@ -123,7 +177,13 @@
       "lines": [
         15
       ],
-      "concept": "kidney-location"
+      "concept": "kidney-location",
+      "box": [
+        2,
+        346,
+        89,
+        30
+      ]
     },
     {
       "id": "12th-rib",
@@ -138,7 +198,13 @@
         18,
         19
       ],
-      "concept": "ribs"
+      "concept": "ribs",
+      "box": [
+        997,
+        393,
+        95,
+        24
+      ]
     },
     {
       "id": "ureter",
@@ -149,7 +215,13 @@
       "lines": [
         26
       ],
-      "concept": "ureter"
+      "concept": "ureter",
+      "box": [
+        2,
+        531,
+        82,
+        25
+      ]
     }
   ]
 }

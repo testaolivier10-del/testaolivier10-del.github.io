@@ -12,7 +12,13 @@
       "lines": [
         24
       ],
-      "concept": "core-temperature"
+      "concept": "core-temperature",
+      "box": [
+        51,
+        626,
+        258,
+        28
+      ]
     },
     {
       "id": "receptors-stimulate-heat-producing-mechanisms",
@@ -28,7 +34,13 @@
         20,
         21
       ],
-      "concept": "thermoregulation"
+      "concept": "thermoregulation",
+      "box": [
+        50,
+        374,
+        301,
+        79
+      ]
     },
     {
       "id": "superficial-arteries-constricted",
@@ -48,7 +60,13 @@
         14,
         18
       ],
-      "concept": "vasoconstriction-dilation"
+      "concept": "vasoconstriction-dilation",
+      "box": [
+        449,
+        258,
+        214,
+        155
+      ]
     },
     {
       "id": "shivering",
@@ -64,7 +82,13 @@
         15,
         19
       ],
-      "concept": "skin-thermoregulation"
+      "concept": "skin-thermoregulation",
+      "box": [
+        699,
+        258,
+        158,
+        155
+      ]
     },
     {
       "id": "thyroid-increases-heat-production",
@@ -81,7 +105,13 @@
         7,
         10
       ],
-      "concept": "thyroid-hormones"
+      "concept": "thyroid-hormones",
+      "box": [
+        884,
+        257,
+        198,
+        104
+      ]
     },
     {
       "id": "body-temperature-increases",
@@ -93,7 +123,13 @@
       "lines": [
         22
       ],
-      "concept": "core-temperature"
+      "concept": "core-temperature",
+      "box": [
+        704,
+        601,
+        298,
+        27
+      ]
     },
     {
       "id": "body-temperature-is-high",
@@ -106,7 +142,13 @@
       "lines": [
         28
       ],
-      "concept": "core-temperature"
+      "concept": "core-temperature",
+      "box": [
+        51,
+        1037,
+        266,
+        28
+      ]
     },
     {
       "id": "receptors-initiate-heat-releasing-mechanisms",
@@ -121,7 +163,13 @@
         35,
         39
       ],
-      "concept": "thermoregulation"
+      "concept": "thermoregulation",
+      "box": [
+        50,
+        1659,
+        316,
+        53
+      ]
     },
     {
       "id": "superficial-arteries-dilated",
@@ -144,7 +192,13 @@
         48,
         49
       ],
-      "concept": "vasoconstriction-dilation"
+      "concept": "vasoconstriction-dilation",
+      "box": [
+        453,
+        1630,
+        212,
+        207
+      ]
     },
     {
       "id": "sweating",
@@ -160,7 +214,13 @@
         45,
         47
       ],
-      "concept": "skin-thermoregulation"
+      "concept": "skin-thermoregulation",
+      "box": [
+        730,
+        1715,
+        105,
+        74
+      ]
     },
     {
       "id": "thyroid-decreases-heat-production",
@@ -177,7 +237,13 @@
         38,
         41
       ],
-      "concept": "thyroid-hormones"
+      "concept": "thyroid-hormones",
+      "box": [
+        883,
+        1630,
+        198,
+        104
+      ]
     },
     {
       "id": "body-temperature-decreases",
@@ -189,7 +255,13 @@
       "lines": [
         26
       ],
-      "concept": "core-temperature"
+      "concept": "core-temperature",
+      "box": [
+        704,
+        1024,
+        306,
+        28
+      ]
     }
   ]
 }

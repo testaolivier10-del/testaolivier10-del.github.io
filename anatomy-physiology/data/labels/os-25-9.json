@@ -185,7 +185,13 @@
       "lines": [
         2
       ],
-      "concept": "renal-blood-supply"
+      "concept": "renal-blood-supply",
+      "box": [
+        540,
+        579,
+        110,
+        21
+      ]
     }
   ]
 }

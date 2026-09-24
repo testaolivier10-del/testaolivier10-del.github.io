@@ -11,7 +11,13 @@
       "lines": [
         2
       ],
-      "concept": "protein"
+      "concept": "protein",
+      "box": [
+        258,
+        293,
+        91,
+        22
+      ]
     },
     {
       "id": "complex-carbohydrates",
@@ -27,7 +33,13 @@
         1,
         3
       ],
-      "concept": "carbohydrate"
+      "concept": "carbohydrate",
+      "box": [
+        492,
+        269,
+        150,
+        50
+      ]
     },
     {
       "id": "triglycerides",
@@ -40,7 +52,13 @@
       "lines": [
         4
       ],
-      "concept": "triglyceride"
+      "concept": "triglyceride",
+      "box": [
+        772,
+        293,
+        136,
+        26
+      ]
     },
     {
       "id": "glycogen-storage",
@@ -55,7 +73,13 @@
         9,
         10
       ],
-      "concept": "glycogen"
+      "concept": "glycogen",
+      "box": [
+        619,
+        496,
+        182,
+        70
+      ]
     },
     {
       "id": "amino-acids",
@@ -66,7 +90,13 @@
       "lines": [
         12
       ],
-      "concept": "protein"
+      "concept": "protein",
+      "box": [
+        239,
+        581,
+        131,
+        22
+      ]
     },
     {
       "id": "glucose",
@@ -75,7 +105,13 @@
       "lines": [
         11
       ],
-      "concept": "glucose"
+      "concept": "glucose",
+      "box": [
+        521,
+        580,
+        92,
+        23
+      ]
     },
     {
       "id": "glycerol-and-fatty-acids",
@@ -89,7 +125,13 @@
         13,
         14
       ],
-      "concept": "triglyceride"
+      "concept": "triglyceride",
+      "box": [
+        765,
+        582,
+        134,
+        50
+      ]
     },
     {
       "id": "cannibalization-of-muscle-tissue",
@@ -106,7 +148,13 @@
         20,
         25
       ],
-      "concept": "starvation"
+      "concept": "starvation",
+      "box": [
+        0,
+        648,
+        164,
+        99
+      ]
     },
     {
       "id": "breakdown-of-stored-fat",
@@ -122,7 +170,13 @@
         18,
         23
       ],
-      "concept": "lipolysis"
+      "concept": "lipolysis",
+      "box": [
+        972,
+        660,
+        130,
+        75
+      ]
     },
     {
       "id": "protein-synthesis",
@@ -134,7 +188,13 @@
         21,
         26
       ],
-      "concept": "translation"
+      "concept": "translation",
+      "box": [
+        252,
+        697,
+        103,
+        50
+      ]
     },
     {
       "id": "energy-production",
@@ -148,7 +208,13 @@
         19,
         24
       ],
-      "concept": "cellular-respiration"
+      "concept": "cellular-respiration",
+      "box": [
+        511,
+        686,
+        113,
+        50
+      ]
     },
     {
       "id": "lipid-synthesis-and-storage",
@@ -163,7 +229,13 @@
         22,
         27
       ],
-      "concept": "lipogenesis"
+      "concept": "lipogenesis",
+      "box": [
+        756,
+        699,
+        154,
+        50
+      ]
     }
   ]
 }

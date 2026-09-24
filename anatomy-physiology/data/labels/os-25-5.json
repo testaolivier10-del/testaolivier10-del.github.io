@@ -8,7 +8,13 @@
       "lines": [
         0
       ],
-      "concept": "vertebral-regions"
+      "concept": "vertebral-regions",
+      "box": [
+        994,
+        190,
+        102,
+        26
+      ]
     },
     {
       "id": "uterus",
@@ -19,7 +25,13 @@
       "lines": [
         4
       ],
-      "concept": "uterus"
+      "concept": "uterus",
+      "box": [
+        0,
+        313,
+        80,
+        24
+      ]
     },
     {
       "id": "urinary-bladder",
@@ -30,7 +42,13 @@
       "lines": [
         14
       ],
-      "concept": "urinary-bladder"
+      "concept": "urinary-bladder",
+      "box": [
+        0,
+        439,
+        172,
+        28
+      ]
     },
     {
       "id": "pubic-bone",
@@ -42,7 +60,13 @@
       "lines": [
         24
       ],
-      "concept": "pelvic-girdle"
+      "concept": "pelvic-girdle",
+      "box": [
+        0,
+        512,
+        128,
+        23
+      ]
     },
     {
       "id": "sphincter",
@@ -56,7 +80,13 @@
       "lines": [
         32
       ],
-      "concept": "urethra"
+      "concept": "urethra",
+      "box": [
+        0,
+        549,
+        110,
+        29
+      ]
     },
     {
       "id": "clitoris",
@@ -65,7 +95,13 @@
       "lines": [
         39
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        0,
+        591,
+        82,
+        24
+      ]
     },
     {
       "id": "labium-minora",
@@ -77,7 +113,13 @@
       "lines": [
         43
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        0,
+        651,
+        167,
+        23
+      ]
     },
     {
       "id": "labium-majora",
@@ -89,7 +131,13 @@
       "lines": [
         45
       ],
-      "concept": "vagina-vulva"
+      "concept": "vagina-vulva",
+      "box": [
+        0,
+        707,
+        167,
+        29
+      ]
     },
     {
       "id": "pudendal-nerve",
@@ -101,7 +149,13 @@
         27,
         37
       ],
-      "concept": null
+      "concept": null,
+      "box": [
+        994,
+        538,
+        108,
+        50
+      ]
     },
     {
       "id": "anus",
@@ -112,7 +166,13 @@
       "lines": [
         44
       ],
-      "concept": "large-intestine-regions"
+      "concept": "large-intestine-regions",
+      "box": [
+        993,
+        655,
+        67,
+        24
+      ]
     }
   ]
 }
