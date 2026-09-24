@@ -1,0 +1,20 @@
+{
+  "os-28-22": {
+    "file": "figures/openstax/os-28-22.jpg",
+    "w": 1100,
+    "h": 931,
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.22",
+      "section": "28.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/92934570778a921663777dbb98048ac432701e87",
+      "page": "28-5-adjustments-of-the-infant-at-birth-and-postnatal-stages"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/92934570778a921663777dbb98048ac432701e87",
+    "alt": "Two pairs of line drawings comparing circulation before and immediately after birth. Top pair: the heart and great vessels. Before birth, purple arrows show mixed blood crossing between the atria through the foramen ovale and passing from the pulmonary trunk to the aorta through the ductus arteriosus, both highlighted in yellow. After birth, blue arrows carry oxygen-poor blood from the right ventricle into the pulmonary arteries and red arrows carry oxygen-rich blood through the left heart to the aorta; the ductus arteriosus is shown constricted and the foramen ovale closed. Bottom pair: the liver and its vessels. Before birth, red oxygen-rich blood arrives in the umbilical vein and passes the liver through the ductus venosus, highlighted, into the inferior vena cava, with the portal vein and the paired umbilical arteries also drawn. After birth, the umbilical vessels are empty cords, the ductus venosus has become a ligament, and only blue oxygen-poor blood flows up the inferior vena cava.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.22",
+    "labels": [],
+    "ext": "jpg"
+  }
+}
