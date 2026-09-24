@@ -31,9 +31,9 @@
   "chain": [
     { "cause": "Urine collects in the bladder, and at about 150 to 250 mL the detrusor muscle is stretched.", "effect": "Stretch-sensitive sensory endings in the bladder wall fire, and signals travel in the pelvic nerves to the sacral spinal cord and up to the pontine micturition center." },
     { "cause": "The signals reach the pons and the cerebral cortex.", "effect": "You feel the urge. While the cortex holds the pontine center back, sympathetic fibers keep the detrusor relaxed and the internal urethral sphincter shut, and the pudendal nerve keeps the external urethral sphincter shut." },
-    { "cause": "You decide to empty your bladder, and the cortex releases the pontine micturition center.", "effect": "The pontine center drives the sacral micturition center (S2 to S4), whose parasympathetic fibers release acetylcholine onto the detrusor." },
-    { "cause": "The detrusor contracts, sympathetic output falls and the bladder neck is pulled open.", "effect": "Pressure in the bladder rises and the internal urethral sphincter opens." },
-    { "cause": "Pudendal nerve firing falls.", "effect": "The external urethral sphincter relaxes, urine flows, and flow through the urethra strengthens the detrusor contraction until the bladder is nearly empty." }
+    { "cause": "You decide to empty your bladder, and the cortex releases the pontine micturition center.", "effect": "Pudendal nerve firing falls first, so the external urethral sphincter relaxes. The pontine center also drives the sacral micturition center (S2 to S4)." },
+    { "cause": "A few seconds later, the sacral center's parasympathetic fibers release acetylcholine onto the detrusor, and sympathetic output falls.", "effect": "The detrusor contracts, pressure in the bladder rises, and the bladder neck is pulled open, so the internal urethral sphincter opens." },
+    { "cause": "Urine flows through the urethra.", "effect": "Flow through the urethra sends more sensory signals, which strengthen the detrusor contraction until the bladder is nearly empty." }
   ],
   "misconception": {
     "wrong": "Your kidneys sit low in your back, around your waist or hips.",

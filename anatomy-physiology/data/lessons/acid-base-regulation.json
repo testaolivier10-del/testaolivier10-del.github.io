@@ -1,0 +1,49 @@
+{
+  "topic": "acid-base-regulation",
+  "hook": "<p>Mr. Reyes, 70, has kidney failure and gets dialysis three times a week. His lungs are healthy and he breathes normally, yet between sessions his blood bicarbonate drifts lower every day, and his blood pH with it. Breathing can get rid of carbon dioxide, but not the sulfuric acid made from the protein he eats. To see why each organ can clear only its own kind of acid, you need the three defenses that hold your pH steady: buffers, lungs and kidneys.</p>",
+  "prereq": [
+    {
+      "q": "A patient's blood pH falls from 7.40 to 7.10. What happens to the hydrogen ion concentration?",
+      "options": ["It falls by a third", "It doubles", "It rises by 0.3 nmol/L"],
+      "correct": 1,
+      "why": "The pH scale is logarithmic. A fall of 0.3 units doubles [H+], from 40 to 80 nmol/L.",
+      "review": "acids-bases-ph"
+    },
+    {
+      "q": "What does carbonic anhydrase do?",
+      "options": ["Speeds the reaction between carbon dioxide and water, in whichever direction concentrations push it", "Pumps bicarbonate out of red blood cells in exchange for chloride", "Binds carbon dioxide to the amino groups of hemoglobin"],
+      "correct": 0,
+      "why": "Carbonic anhydrase speeds CO2 + H2O ⇌ H2CO3 in either direction. Band 3 does the bicarbonate–chloride swap, and carbaminohemoglobin forms without the enzyme.",
+      "review": "co2-transport"
+    },
+    {
+      "q": "Which cells of the collecting duct secrete acid or bicarbonate depending on blood pH?",
+      "options": ["Principal cells", "Intercalated cells", "Podocytes"],
+      "correct": 1,
+      "why": "Intercalated cells, scattered among the principal cells, secrete H+ or bicarbonate. Principal cells handle sodium, potassium and water.",
+      "review": "tubular-transport"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-25-19",
+    "caption": "Reclaiming filtered bicarbonate in the proximal tubule. Hide the labels and name the three compartments, then trace a filtered bicarbonate ion from the lumen to the blood."
+  },
+  "chain": [
+    { "cause": "A fixed acid, such as sulfuric acid from a protein-rich meal, adds hydrogen ions to the blood.", "effect": "Bicarbonate takes up the hydrogen ions within seconds, so bicarbonate falls and the bicarbonate to carbon dioxide ratio falls below 20." },
+    { "cause": "The lower ratio lowers blood pH slightly.", "effect": "The carotid bodies sense the fall in arterial pH and signal the respiratory centers." },
+    { "cause": "The respiratory centers drive the diaphragm and intercostal muscles harder.", "effect": "Ventilation rises, more carbon dioxide is breathed out, and PCO2 falls, which brings the ratio back toward 20 and pH toward normal." },
+    { "cause": "Bicarbonate is still low, and more acid reaches the tubule cells.", "effect": "Type A intercalated cells secrete more hydrogen ions, which leave in the urine as titratable acid and ammonium." },
+    { "cause": "Each hydrogen ion excreted leaves a bicarbonate ion behind in the tubule cell.", "effect": "New bicarbonate enters the blood, bicarbonate returns to about 24 mmol/L, and breathing returns to its usual level." }
+  ],
+  "misconception": {
+    "wrong": "Breathing faster can get rid of any excess acid in the body.",
+    "right": "The lungs remove only carbon dioxide, the volatile acid. Fixed acids, such as the sulfuric and phosphoric acids made from your diet, cannot become a gas. Faster breathing lowers PCO2 and so restores the bicarbonate to carbon dioxide ratio, but the bicarbonate that the fixed acid used up stays low. Only the kidneys excrete fixed acid and make the new bicarbonate that replaces it."
+  },
+  "check": ["anp-acid-base-regulation-2", "anp-acid-base-regulation-3", "anp-acid-base-regulation-4", "anp-acid-base-regulation-6", "anp-acid-base-regulation-10", "anp-acid-base-regulation-16", "anp-acid-base-regulation-17", "anp-acid-base-regulation-20"],
+  "summary": "<p>Your body makes about 13,000 mmol of volatile acid (carbon dioxide) a day, removed by the lungs, and 50 to 100 mmol of fixed acid, mainly sulfuric and phosphoric acid from your diet, which only the kidneys can excrete. Chemical buffers (bicarbonate in extracellular fluid, phosphate in cells and urine, and proteins such as hemoglobin) act in seconds but remove no acid. Blood pH follows the ratio of bicarbonate to dissolved carbon dioxide, normally 20 to 1: pH = 6.1 + log(HCO3− ÷ (0.03 × PCO2)). The lungs set the bottom of the ratio within minutes through the chemoreceptor feedback loop. The kidneys set the top over hours to days: the proximal tubule reclaims nearly all filtered bicarbonate, and type A intercalated cells secrete hydrogen ions that leave as titratable acid and ammonium, each one adding a new bicarbonate to the blood. Type B intercalated cells excrete bicarbonate when the blood is too alkaline.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Principles of pathophysiology" },
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" },
+    { "href": "/ochem/lessons/pka.html", "label": "Organic chemistry: pKa" }
+  ]
+}

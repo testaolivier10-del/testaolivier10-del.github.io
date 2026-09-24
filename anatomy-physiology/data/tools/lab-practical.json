@@ -25135,7 +25135,7 @@
          "Pepsin works only in the mouth"
         ],
         "correct": 1,
-        "why": "Pepsinogen is a zymogen, an inactive precursor. Hydrochloric acid in the lumen cuts it into active pepsin, so the enzyme cannot digest the proteins of the chief cells that store it. Pepsin digests protein, not fat, and works in the acid of the stomach.",
+        "why": "Pepsinogen is a zymogen, an inactive precursor. Only in the acid of the lumen does it cut itself into active pepsin, so the enzyme cannot digest the proteins of the chief cells that store it. Pepsin digests protein, not fat, and works in the acid of the stomach.",
         "level": "apply"
        }
       },
@@ -25922,6 +25922,1867 @@
         22
        ],
        "why": "A group heading over the labels below it, not one structure: masked in the quiz because it names the group they belong to."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kidney-section",
+   "title": "Kidney coronal section",
+   "chapter": "urinary",
+   "topic": "kidney-anatomy",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-25-8",
+     "topic": "kidney-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "cortical-blood-vessels",
+       "name": "Cortical blood vessels",
+       "accept": [
+        "cortical radiate artery",
+        "cortical radiate arteries",
+        "cortical radiate vessels",
+        "cortical radiate veins",
+        "interlobular arteries",
+        "interlobular vessels"
+       ],
+       "box": [
+        321,
+        31,
+        138,
+        45
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "The cortical radiate arteries and veins: small branches that run straight out from the arcuate vessels through the cortex toward the surface of the kidney, carrying blood to and from the cortex."
+      },
+      {
+       "id": "arcuate-blood-vessels",
+       "name": "Arcuate blood vessels",
+       "accept": [
+        "arcuate artery",
+        "arcuate arteries",
+        "arcuate vein",
+        "arcuate veins",
+        "arcuate vessels"
+       ],
+       "box": [
+        957,
+        52,
+        139,
+        44
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "The arcuate arteries and veins, which arch over the base of each pyramid at the border between the cortex and the medulla.",
+       "follow": {
+        "q": "Where do the arcuate arteries run?",
+        "options": [
+         "Along the border between the cortex and the medulla, over the pyramid bases",
+         "Inside the renal pelvis",
+         "Along the outer surface of the renal capsule",
+         "Through the renal columns toward the papillae"
+        ],
+        "correct": 0,
+        "why": "Arcuate means \"bowed\". These arteries arch over the base of each pyramid at the corticomedullary border and give off the cortical radiate arteries. The interlobar arteries are the ones that run in the renal columns.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "interlobar-blood-vessels",
+       "name": "Interlobar blood vessels",
+       "accept": [
+        "interlobar artery",
+        "interlobar arteries",
+        "interlobar vein",
+        "interlobar veins",
+        "interlobar vessels"
+       ],
+       "box": [
+        321,
+        117,
+        138,
+        45
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "The interlobar arteries and veins, which run outward through the renal columns between the pyramids, linking the segmental vessels with the arcuate vessels."
+      },
+      {
+       "id": "minor-calyx",
+       "name": "Minor calyx",
+       "accept": [
+        "minor calyces",
+        "minor calices",
+        "minor calix"
+       ],
+       "box": [
+        958,
+        134,
+        118,
+        25
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "A small cup that fits around the papilla of one pyramid and catches the urine that drips from it. Several minor calyces join to form a major calyx.",
+       "follow": {
+        "q": "What drains directly into a minor calyx?",
+        "options": [
+         "A major calyx",
+         "The papilla of a renal pyramid",
+         "The ureter",
+         "A renal column"
+        ],
+        "correct": 1,
+        "why": "Urine leaves each pyramid through the openings at its papilla, and the papilla sits inside a minor calyx. Minor calyces then drain into major calyces, which drain into the renal pelvis. Renal columns are cortical tissue, not a drainage channel.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "major-calyx",
+       "name": "Major calyx",
+       "accept": [
+        "major calyces",
+        "major calices",
+        "major calix"
+       ],
+       "box": [
+        958,
+        193,
+        117,
+        25
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "A larger cup formed where two or three minor calyces meet. The major calyces (usually two or three per kidney) empty into the renal pelvis."
+      },
+      {
+       "id": "renal-vein",
+       "name": "Renal vein",
+       "accept": [
+        "renal veins"
+       ],
+       "box": [
+        319,
+        200,
+        110,
+        21
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "The large vein that carries blood out of the kidney through the hilum to the inferior vena cava. It lies in front of the renal artery at the hilum."
+      },
+      {
+       "id": "renal-pelvis",
+       "name": "Renal pelvis",
+       "accept": [
+        "pelvis of the kidney"
+       ],
+       "box": [
+        959,
+        251,
+        125,
+        26
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "The funnel inside the renal sinus formed where the major calyces join. It collects all the urine the kidney makes and narrows into the ureter as it leaves the hilum.",
+       "follow": {
+        "q": "The renal pelvis narrows to become which structure?",
+        "options": [
+         "The urethra",
+         "The major calyx",
+         "The ureter",
+         "The renal vein"
+        ],
+        "correct": 2,
+        "why": "The funnel-shaped renal pelvis collects urine from the major calyces and continues out of the hilum as the ureter, which carries urine down to the bladder. The urethra drains the bladder, not the kidney.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "renal-nerve",
+       "name": "Renal nerve",
+       "accept": [
+        "renal nerves",
+        "renal plexus"
+       ],
+       "box": [
+        321,
+        273,
+        66,
+        44
+       ],
+       "concept": null,
+       "fn": "Nerves that enter the kidney at the hilum with the renal artery. They carry mainly sympathetic fibers, which can narrow the kidney’s blood vessels."
+      },
+      {
+       "id": "renal-hilum",
+       "name": "Renal hilum",
+       "accept": [
+        "hilum",
+        "hilus",
+        "renal hilus",
+        "hilum of the kidney"
+       ],
+       "box": [
+        216,
+        279,
+        66,
+        45
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "The notch on the concave medial border of the kidney, where the renal artery, renal vein, nerves, lymph vessels and the ureter enter or leave.",
+       "follow": {
+        "q": "Which structure leaves the kidney at the hilum?",
+        "options": [
+         "The ureter",
+         "The adrenal gland",
+         "The 12th rib",
+         "The renal column"
+        ],
+        "correct": 0,
+        "why": "The hilum is the kidney’s doorway on its medial side: the renal artery and nerves enter, and the renal vein, lymph vessels and ureter leave. The adrenal gland sits on top of the kidney, and the renal columns lie inside it.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "pyramid",
+       "name": "Pyramid",
+       "accept": [
+        "renal pyramid",
+        "renal pyramids",
+        "pyramids",
+        "medullary pyramid"
+       ],
+       "box": [
+        959,
+        310,
+        87,
+        25
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "A cone-shaped, striped region of the renal medulla. Its stripes are bundles of fine tubes that carry forming urine toward its tip, the papilla. Each kidney has about 8 to 18 pyramids.",
+       "follow": {
+        "q": "Which way does the base of a renal pyramid face?",
+        "options": [
+         "Toward the renal pelvis",
+         "Toward the renal cortex, at the outer edge of the medulla",
+         "Toward the hilum",
+         "Toward the renal columns on either side"
+        ],
+        "correct": 1,
+        "why": "Each pyramid’s broad base lies against the cortex and its tip, the papilla, points inward toward a minor calyx and the renal pelvis. Renal columns lie along its sides, not at its base.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "renal-artery",
+       "name": "Renal artery",
+       "accept": [
+        "renal arteries"
+       ],
+       "box": [
+        321,
+        348,
+        126,
+        25
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The branch of the abdominal aorta that brings blood to the kidney. It enters at the hilum and divides into segmental arteries. The kidneys take about a fifth of the heart’s output at rest."
+      },
+      {
+       "id": "papilla",
+       "name": "Papilla",
+       "accept": [
+        "renal papilla",
+        "renal papillae",
+        "papillae"
+       ],
+       "box": [
+        958,
+        369,
+        75,
+        25
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "The rounded tip of a renal pyramid, pointing into a minor calyx. Urine drains out through tiny openings on its surface."
+      },
+      {
+       "id": "medulla",
+       "name": "Medulla",
+       "accept": [
+        "renal medulla"
+       ],
+       "box": [
+        321,
+        400,
+        85,
+        22
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "The inner region of the kidney, made of the renal pyramids. It lies deep to the cortex and around the renal sinus."
+      },
+      {
+       "id": "renal-column",
+       "name": "Renal column",
+       "accept": [
+        "renal columns",
+        "column of bertin",
+        "columns of bertin"
+       ],
+       "box": [
+        958,
+        427,
+        139,
+        22
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "An extension of the cortex that reaches inward between two pyramids. The interlobar arteries and veins run through it.",
+       "follow": {
+        "q": "A renal column is made of tissue like that of which region?",
+        "options": [
+         "The renal pelvis",
+         "The renal medulla",
+         "The renal cortex",
+         "The renal capsule"
+        ],
+        "correct": 2,
+        "why": "Renal columns are inward extensions of the cortex that separate neighboring pyramids, so they look and work like cortex. The pyramids between them are the medulla.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "ureter",
+       "name": "Ureter",
+       "accept": [
+        "ureters"
+       ],
+       "box": [
+        321,
+        450,
+        71,
+        21
+       ],
+       "concept": "ureter",
+       "taught": "kidney-anatomy",
+       "fn": "The muscular tube that carries urine from the renal pelvis down to the urinary bladder, moving it along by waves of smooth muscle contraction (peristalsis)."
+      },
+      {
+       "id": "cortex",
+       "name": "Cortex",
+       "accept": [
+        "renal cortex"
+       ],
+       "box": [
+        958,
+        480,
+        73,
+        22
+       ],
+       "concept": "kidney-internal",
+       "taught": "kidney-anatomy",
+       "fn": "The outer, grainy region of the kidney just under the capsule. It surrounds the pyramids and sends renal columns between them."
+      },
+      {
+       "id": "capsule",
+       "name": "Capsule",
+       "accept": [
+        "renal capsule",
+        "fibrous capsule"
+       ],
+       "box": [
+        321,
+        495,
+        88,
+        26
+       ],
+       "concept": "kidney-location",
+       "taught": "kidney-anatomy",
+       "fn": "The renal capsule: a thin, tough layer of dense connective tissue that covers the kidney’s surface and helps keep its shape."
+      }
+     ]
+    },
+    {
+     "figure": "os-25-9",
+     "topic": "kidney-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "cortical-radiate-artery",
+       "name": "Cortical radiate artery",
+       "accept": [
+        "cortical radiate arteries",
+        "interlobular artery",
+        "interlobular arteries",
+        "radial artery"
+       ],
+       "box": [
+        134,
+        257,
+        128,
+        49
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "Small arteries that branch off the arcuate arteries and run straight out through the cortex toward the surface. They feed the smallest arterial branches in the cortex."
+      },
+      {
+       "id": "arcuate-artery",
+       "name": "Arcuate artery",
+       "accept": [
+        "arcuate arteries"
+       ],
+       "box": [
+        77,
+        326,
+        72,
+        49
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "An artery that arches over the base of a pyramid at the border of the cortex and the medulla. It comes from an interlobar artery and gives off the cortical radiate arteries.",
+       "follow": {
+        "q": "Which vessel comes right after the arcuate artery on blood’s path through the kidney?",
+        "options": [
+         "The interlobar artery",
+         "The segmental artery",
+         "The cortical radiate artery",
+         "The renal vein"
+        ],
+        "correct": 2,
+        "why": "The arterial route is renal, segmental, interlobar, arcuate and then cortical radiate arteries. The interlobar and segmental arteries come before the arcuate artery, and the renal vein is on the way out.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "interlobar-artery",
+       "name": "Interlobar artery",
+       "accept": [
+        "interlobar arteries"
+       ],
+       "box": [
+        42,
+        391,
+        93,
+        49
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "An artery that runs outward through a renal column, between two pyramids, from a segmental artery to the arcuate arteries."
+      },
+      {
+       "id": "segmental-artery",
+       "name": "Segmental artery",
+       "accept": [
+        "segmental arteries"
+       ],
+       "box": [
+        26,
+        462,
+        104,
+        49
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "One of the first branches of the renal artery inside the renal sinus. Each supplies one segment of the kidney and divides into interlobar arteries.",
+       "follow": {
+        "q": "A segmental artery branches directly from which vessel?",
+        "options": [
+         "The renal artery",
+         "The arcuate artery",
+         "The abdominal aorta",
+         "The interlobar artery"
+        ],
+        "correct": 0,
+        "why": "The renal artery divides into segmental arteries near the hilum, and each segmental artery divides into interlobar arteries. The aorta gives off the renal artery itself.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "renal-artery",
+       "name": "Renal artery",
+       "accept": [
+        "renal arteries"
+       ],
+       "box": [
+        21,
+        536,
+        59,
+        49
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The branch of the abdominal aorta that carries blood into the kidney at the hilum, where it divides into segmental arteries."
+      },
+      {
+       "id": "cortical-radiate-vein",
+       "name": "Cortical radiate vein",
+       "accept": [
+        "cortical radiate veins",
+        "interlobular vein",
+        "interlobular veins"
+       ],
+       "box": [
+        579,
+        386,
+        114,
+        45
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "A small vein that runs inward through the cortex, collecting blood from the cortex and draining it into an arcuate vein."
+      },
+      {
+       "id": "arcuate-vein",
+       "name": "Arcuate vein",
+       "accept": [
+        "arcuate veins"
+       ],
+       "box": [
+        554,
+        436,
+        76,
+        45
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "A vein that arches along the border of the cortex and the medulla, collecting blood from the cortical radiate veins and draining into an interlobar vein."
+      },
+      {
+       "id": "interlobar-vein",
+       "name": "Interlobar vein",
+       "accept": [
+        "interlobar veins"
+       ],
+       "box": [
+        540,
+        490,
+        92,
+        45
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "A vein that runs through a renal column between two pyramids, carrying blood from the arcuate veins toward the renal vein."
+      },
+      {
+       "id": "renal-vein",
+       "name": "Renal vein",
+       "accept": [
+        "renal veins"
+       ],
+       "box": [
+        540,
+        579,
+        110,
+        21
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "The vein that carries blood out of the kidney at the hilum to the inferior vena cava. The kidney has no segmental veins; interlobar veins join to form it."
+      }
+     ],
+     "covered": [
+      {
+       "id": "peritubular-capillaries",
+       "box": [
+        724,
+        48,
+        204,
+        26
+       ]
+      },
+      {
+       "id": "efferent-arteriole",
+       "box": [
+        566,
+        104,
+        99,
+        45
+       ]
+      },
+      {
+       "id": "glomerulus",
+       "box": [
+        527,
+        172,
+        111,
+        21
+       ]
+      },
+      {
+       "id": "afferent-arteriole",
+       "box": [
+        486,
+        206,
+        80,
+        44
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nephron-vessels",
+   "title": "Nephron and its vessels",
+   "chapter": "urinary",
+   "topic": "nephron",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-25-10",
+     "topic": "nephron",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "glomerular-capsule",
+       "name": "Glomerular capsule",
+       "accept": [
+        "bowman's capsule",
+        "bowmans capsule",
+        "bowman capsule",
+        "capsule"
+       ],
+       "box": [
+        553,
+        0,
+        275,
+        37
+       ],
+       "concept": "renal-corpuscle",
+       "taught": "nephron",
+       "fn": "The double-walled cup (Bowman’s capsule) around the glomerulus. Its inner layer of podocytes covers the capillaries, and the space inside collects the fluid filtered from the blood and passes it into the proximal convoluted tubule.",
+       "follow": {
+        "q": "Fluid filtered out of the glomerulus first enters which space?",
+        "options": [
+         "The lumen of the collecting duct",
+         "The space inside the glomerular capsule",
+         "The peritubular capillaries",
+         "The renal pelvis"
+        ],
+        "correct": 1,
+        "why": "Filtered fluid crosses the capillary wall and the podocyte layer into the capsular space of the glomerular capsule, and from there flows into the proximal convoluted tubule. The collecting duct and renal pelvis come much later.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "efferent-arteriole",
+       "name": "Efferent arteriole",
+       "accept": [
+        "efferent arterioles"
+       ],
+       "box": [
+        0,
+        66,
+        119,
+        66
+       ],
+       "concept": "nephron-vessels",
+       "taught": "nephron",
+       "fn": "The arteriole that carries blood out of the glomerulus. It is narrower than the afferent arteriole, which helps keep pressure high in the glomerulus, and it leads into the peritubular capillaries."
+      },
+      {
+       "id": "afferent-arteriole",
+       "name": "Afferent arteriole",
+       "accept": [
+        "afferent arterioles"
+       ],
+       "box": [
+        0,
+        155,
+        119,
+        66
+       ],
+       "concept": "nephron-vessels",
+       "taught": "nephron",
+       "fn": "The arteriole that brings blood from a cortical radiate artery into the glomerulus. Narrowing or widening it changes the blood flow and pressure in the glomerulus.",
+       "follow": {
+        "q": "Compared with the efferent arteriole, the afferent arteriole is usually",
+        "options": [
+         "narrower, so blood leaves the glomerulus faster than it enters",
+         "wider, which helps keep pressure in the glomerulus high",
+         "the same width, because the two are one vessel",
+         "a vein rather than an arteriole"
+        ],
+        "correct": 1,
+        "why": "Blood enters through the wider afferent arteriole and leaves through the narrower efferent arteriole, so pressure in the glomerular capillaries stays high. Both are arterioles; the glomerulus lies between them.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "proximal-convoluted-tubule",
+       "name": "Proximal convoluted tubule",
+       "accept": [
+        "proximal conboluted tubule",
+        "pct",
+        "proximal tubule",
+        "proximal convoluted tubules"
+       ],
+       "box": [
+        268,
+        336,
+        255,
+        66
+       ],
+       "concept": "renal-tubule",
+       "taught": "nephron",
+       "fn": "The first, coiled part of the renal tubule, leaving the glomerular capsule in the cortex. Its cells have a brush border and many mitochondria, and it takes back most of the filtered water and solutes.",
+       "follow": {
+        "q": "Which part of the renal tubule receives fluid straight from the glomerular capsule?",
+        "options": [
+         "The distal convoluted tubule",
+         "The collecting duct",
+         "The proximal convoluted tubule",
+         "The ascending limb of the nephron loop"
+        ],
+        "correct": 2,
+        "why": "The order is glomerular capsule, proximal convoluted tubule, nephron loop (descending then ascending limb), distal convoluted tubule and collecting duct.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "cortical-radiate-artery",
+       "name": "Cortical radiate artery",
+       "accept": [
+        "cortical radiate arteries",
+        "interlobular artery",
+        "interlobular arteries"
+       ],
+       "box": [
+        0,
+        522,
+        187,
+        72
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "An artery that runs out through the cortex and gives off the afferent arterioles, one to each glomerulus."
+      },
+      {
+       "id": "venule",
+       "name": "Venule",
+       "accept": [
+        "venules"
+       ],
+       "box": [
+        447,
+        604,
+        107,
+        29
+       ],
+       "concept": "venule-vein",
+       "taught": "vessel-structure",
+       "fn": "A small vein that collects blood from the peritubular capillaries and drains it into a cortical radiate vein."
+      },
+      {
+       "id": "cortical-radiate-vein",
+       "name": "Cortical radiate vein",
+       "accept": [
+        "cortical radiate veins",
+        "interlobular vein",
+        "interlobular veins"
+       ],
+       "box": [
+        447,
+        729,
+        169,
+        66
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "A vein in the cortex that collects blood from the venules draining the peritubular capillaries and carries it toward the arcuate veins."
+      },
+      {
+       "id": "loop-of-the-nephron",
+       "name": "Loop of the nephron",
+       "accept": [
+        "nephron loop",
+        "loop of henle",
+        "henle loop"
+       ],
+       "box": [
+        446,
+        975,
+        176,
+        73
+       ],
+       "concept": "renal-tubule",
+       "taught": "nephron",
+       "fn": "The hairpin part of the renal tubule (loop of Henle). Its descending limb dips into the medulla and its ascending limb climbs back to the cortex.",
+       "follow": {
+        "q": "Where does the nephron loop run?",
+        "options": [
+         "It stays within the renal capsule",
+         "Down into the medulla and back up to the cortex",
+         "Through the renal pelvis",
+         "Along the ureter"
+        ],
+        "correct": 1,
+        "why": "The loop starts in the cortex, its descending limb runs down into the medulla, and its ascending limb returns to the cortex, where it becomes the distal convoluted tubule. Long loops belong to juxtamedullary nephrons.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "peritubular-capillary-network",
+       "name": "Peritubular capillary network",
+       "accept": [
+        "peritubular capillaries",
+        "peritubular capillary",
+        "peritubular network"
+       ],
+       "box": [
+        446,
+        1184,
+        162,
+        102
+       ],
+       "concept": "nephron-vessels",
+       "taught": "nephron",
+       "fn": "The capillary bed fed by the efferent arteriole that wraps around the tubules. It takes back the water and solutes the tubules return and drains into venules."
+      }
+     ]
+    },
+    {
+     "figure": "os-25-9",
+     "topic": "nephron",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "peritubular-capillaries",
+       "name": "Peritubular capillaries",
+       "accept": [
+        "peritubular capillary",
+        "peritubular capillary network"
+       ],
+       "box": [
+        724,
+        48,
+        204,
+        26
+       ],
+       "concept": "nephron-vessels",
+       "taught": "nephron",
+       "fn": "The second capillary bed of the nephron, fed by the efferent arteriole. It wraps around the tubules in the cortex and takes back the water and solutes the tubules return to the blood.",
+       "follow": {
+        "q": "What feeds the peritubular capillaries?",
+        "options": [
+         "The afferent arteriole",
+         "The efferent arteriole",
+         "The arcuate vein",
+         "The renal pelvis"
+        ],
+        "correct": 1,
+        "why": "The efferent arteriole leaves the glomerulus and breaks up into the peritubular capillaries, so blood passes through two capillary beds in a row. The afferent arteriole feeds the glomerulus instead.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "efferent-arteriole",
+       "name": "Efferent arteriole",
+       "accept": [
+        "efferent arterioles"
+       ],
+       "box": [
+        566,
+        104,
+        99,
+        45
+       ],
+       "concept": "nephron-vessels",
+       "taught": "nephron",
+       "fn": "The arteriole that carries blood out of the glomerulus. It leads into a second capillary bed, the peritubular capillaries or the vasa recta.",
+       "follow": {
+        "q": "Blood leaving the glomerulus flows next into which vessel?",
+        "options": [
+         "The efferent arteriole",
+         "A cortical radiate vein",
+         "The afferent arteriole",
+         "An arcuate artery"
+        ],
+        "correct": 0,
+        "why": "Blood enters the glomerulus through the afferent arteriole and leaves through the efferent arteriole, which leads into the peritubular capillaries or vasa recta. Only after those capillaries does blood reach the veins.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "glomerulus",
+       "name": "Glomerulus",
+       "accept": [
+        "glomeruli",
+        "glomerular capillaries"
+       ],
+       "box": [
+        527,
+        172,
+        111,
+        21
+       ],
+       "concept": "renal-corpuscle",
+       "taught": "nephron",
+       "fn": "A ball of fenestrated capillaries inside the glomerular capsule, where fluid is pressed out of the blood into the capsule, the first step of urine formation."
+      },
+      {
+       "id": "afferent-arteriole",
+       "name": "Afferent arteriole",
+       "accept": [
+        "afferent arterioles"
+       ],
+       "box": [
+        486,
+        206,
+        80,
+        44
+       ],
+       "concept": "nephron-vessels",
+       "taught": "nephron",
+       "fn": "The small artery that carries blood from a cortical radiate artery into a glomerulus. Its width sets how much blood enters the glomerulus."
+      },
+      {
+       "id": "cortical-radiate-artery",
+       "name": "Cortical radiate artery",
+       "accept": [
+        "cortical radiate arteries",
+        "interlobular artery",
+        "interlobular arteries",
+        "radial artery"
+       ],
+       "box": [
+        134,
+        257,
+        128,
+        49
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "Small arteries that branch off the arcuate arteries and run straight out through the cortex toward the surface. They feed the smallest arterial branches in the cortex."
+      },
+      {
+       "id": "arcuate-artery",
+       "name": "Arcuate artery",
+       "accept": [
+        "arcuate arteries"
+       ],
+       "box": [
+        77,
+        326,
+        72,
+        49
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "An artery that arches over the base of a pyramid at the border of the cortex and the medulla. It comes from an interlobar artery and gives off the cortical radiate arteries.",
+       "follow": {
+        "q": "Which vessel comes right after the arcuate artery on blood’s path through the kidney?",
+        "options": [
+         "The interlobar artery",
+         "The segmental artery",
+         "The cortical radiate artery",
+         "The renal vein"
+        ],
+        "correct": 2,
+        "why": "The arterial route is renal, segmental, interlobar, arcuate and then cortical radiate arteries. The interlobar and segmental arteries come before the arcuate artery, and the renal vein is on the way out.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "interlobar-artery",
+       "name": "Interlobar artery",
+       "accept": [
+        "interlobar arteries"
+       ],
+       "box": [
+        42,
+        391,
+        93,
+        49
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "An artery that runs outward through a renal column, between two pyramids, from a segmental artery to the arcuate arteries."
+      },
+      {
+       "id": "segmental-artery",
+       "name": "Segmental artery",
+       "accept": [
+        "segmental arteries"
+       ],
+       "box": [
+        26,
+        462,
+        104,
+        49
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "One of the first branches of the renal artery inside the renal sinus. Each supplies one segment of the kidney and divides into interlobar arteries.",
+       "follow": {
+        "q": "A segmental artery branches directly from which vessel?",
+        "options": [
+         "The renal artery",
+         "The arcuate artery",
+         "The abdominal aorta",
+         "The interlobar artery"
+        ],
+        "correct": 0,
+        "why": "The renal artery divides into segmental arteries near the hilum, and each segmental artery divides into interlobar arteries. The aorta gives off the renal artery itself.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "renal-artery",
+       "name": "Renal artery",
+       "accept": [
+        "renal arteries"
+       ],
+       "box": [
+        21,
+        536,
+        59,
+        49
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The branch of the abdominal aorta that carries blood into the kidney at the hilum, where it divides into segmental arteries."
+      },
+      {
+       "id": "cortical-radiate-vein",
+       "name": "Cortical radiate vein",
+       "accept": [
+        "cortical radiate veins",
+        "interlobular vein",
+        "interlobular veins"
+       ],
+       "box": [
+        579,
+        386,
+        114,
+        45
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "A small vein that runs inward through the cortex, collecting blood from the cortex and draining it into an arcuate vein."
+      },
+      {
+       "id": "arcuate-vein",
+       "name": "Arcuate vein",
+       "accept": [
+        "arcuate veins"
+       ],
+       "box": [
+        554,
+        436,
+        76,
+        45
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "A vein that arches along the border of the cortex and the medulla, collecting blood from the cortical radiate veins and draining into an interlobar vein."
+      },
+      {
+       "id": "interlobar-vein",
+       "name": "Interlobar vein",
+       "accept": [
+        "interlobar veins"
+       ],
+       "box": [
+        540,
+        490,
+        92,
+        45
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "A vein that runs through a renal column between two pyramids, carrying blood from the arcuate veins toward the renal vein."
+      },
+      {
+       "id": "renal-vein",
+       "name": "Renal vein",
+       "accept": [
+        "renal veins"
+       ],
+       "box": [
+        540,
+        579,
+        110,
+        21
+       ],
+       "concept": "renal-blood-supply",
+       "taught": "kidney-anatomy",
+       "fn": "The vein that carries blood out of the kidney at the hilum to the inferior vena cava. The kidney has no segmental veins; interlobar veins join to form it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "urinary-tract",
+   "title": "Urinary tract",
+   "chapter": "urinary",
+   "topic": "kidney-anatomy",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-25-7",
+     "topic": "kidney-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "t10",
+       "name": "T10",
+       "accept": [
+        "thoracic 10",
+        "thoracic vertebra 10"
+       ],
+       "box": [
+        512,
+        124,
+        57,
+        25
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The 10th thoracic vertebra. It lies above the kidneys, level with the lower ribs."
+      },
+      {
+       "id": "t11",
+       "name": "T11",
+       "accept": [
+        "thoracic 11",
+        "thoracic vertebra 11"
+       ],
+       "box": [
+        512,
+        191,
+        53,
+        24
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The 11th thoracic vertebra. The upper pole of the left kidney reaches about this level."
+      },
+      {
+       "id": "t12",
+       "name": "T12",
+       "accept": [
+        "thoracic 12",
+        "thoracic vertebra 12"
+       ],
+       "box": [
+        512,
+        253,
+        56,
+        25
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The 12th (last) thoracic vertebra, the one the 12th ribs attach to. The kidneys start at about this level.",
+       "follow": {
+        "q": "Between which vertebral levels do the kidneys lie?",
+        "options": [
+         "About C7 to T4",
+         "About T12 to L3",
+         "About L4 to S2",
+         "About T6 to T9"
+        ],
+        "correct": 1,
+        "why": "The kidneys lie against the back wall of the abdomen from about T12 to L3, partly covered by the 11th and 12th ribs. The right kidney sits a little lower than the left because the liver lies above it.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "l1",
+       "name": "L1",
+       "accept": [
+        "lumbar 1",
+        "lumbar vertebra 1"
+       ],
+       "box": [
+        523,
+        314,
+        35,
+        24
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The 1st lumbar vertebra. The renal hilum sits near this level."
+      },
+      {
+       "id": "l2",
+       "name": "L2",
+       "accept": [
+        "lumbar 2",
+        "lumbar vertebra 2"
+       ],
+       "box": [
+        523,
+        381,
+        39,
+        25
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The 2nd lumbar vertebra. It lies beside the middle of the kidneys."
+      },
+      {
+       "id": "l3",
+       "name": "L3",
+       "accept": [
+        "lumbar 3",
+        "lumbar vertebra 3"
+       ],
+       "box": [
+        523,
+        458,
+        39,
+        25
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The 3rd lumbar vertebra. The lower poles of the kidneys reach about this level."
+      },
+      {
+       "id": "l4",
+       "name": "L4",
+       "accept": [
+        "lumbar 4",
+        "lumbar vertebra 4"
+       ],
+       "box": [
+        523,
+        529,
+        39,
+        24
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The 4th lumbar vertebra. It lies below the kidneys, beside the ureters on their way down."
+      },
+      {
+       "id": "l5",
+       "name": "L5",
+       "accept": [
+        "lumbar 5",
+        "lumbar vertebra 5"
+       ],
+       "box": [
+        523,
+        593,
+        39,
+        25
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The 5th (last) lumbar vertebra. It sits on the sacrum, below the kidneys."
+      },
+      {
+       "id": "liver",
+       "name": "Liver",
+       "accept": [],
+       "box": [
+        1029,
+        140,
+        67,
+        25
+       ],
+       "concept": "major-organs",
+       "taught": "body-organization",
+       "fn": "The large organ in the upper right abdomen. It lies above the right kidney and pushes it a little lower than the left.",
+       "follow": {
+        "q": "Why does the right kidney usually sit a little lower than the left?",
+        "options": [
+         "The spleen presses on it",
+         "The liver lies above it",
+         "The heart lies on the right",
+         "The right ureter is shorter"
+        ],
+        "correct": 1,
+        "why": "The liver takes up the upper right abdomen, so the right kidney sits slightly lower. The spleen is on the left, above the left kidney.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "kidney",
+       "name": "Kidney",
+       "accept": [
+        "kidneys"
+       ],
+       "box": [
+        2,
+        346,
+        89,
+        30
+       ],
+       "concept": "kidney-location",
+       "taught": "kidney-anatomy",
+       "fn": "One of two bean-shaped organs that lie behind the peritoneum (retroperitoneal) on either side of the spine. The kidneys filter the blood and make urine."
+      },
+      {
+       "id": "12th-rib",
+       "name": "12th rib",
+       "accept": [
+        "twelfth rib",
+        "rib 12",
+        "floating rib",
+        "12th ribs"
+       ],
+       "box": [
+        997,
+        393,
+        95,
+        24
+       ],
+       "concept": "ribs",
+       "taught": "thoracic-cage",
+       "fn": "The lowest rib, a floating rib. It crosses the back of the upper part of each kidney, so a blow to the lower ribs from behind can injure a kidney."
+      },
+      {
+       "id": "ureter",
+       "name": "Ureter",
+       "accept": [
+        "ureters"
+       ],
+       "box": [
+        2,
+        531,
+        82,
+        25
+       ],
+       "concept": "ureter",
+       "taught": "kidney-anatomy",
+       "fn": "The tube that carries urine from each kidney down to the bladder, running beside the spine and in front of the lower vertebrae."
+      }
+     ]
+    },
+    {
+     "figure": "os-25-3",
+     "topic": "kidney-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "ureter-female",
+       "name": "Ureter",
+       "accept": [
+        "ureters"
+       ],
+       "box": [
+        445,
+        99,
+        68,
+        21
+       ],
+       "concept": "ureter",
+       "taught": "kidney-anatomy",
+       "fn": "The tube that carries urine from the kidney to the bladder. It enters the back of the bladder at a slant, so a filling bladder presses it shut and urine cannot flow back."
+      },
+      {
+       "id": "urinary-bladder-female",
+       "name": "Urinary bladder",
+       "accept": [
+        "bladder"
+       ],
+       "box": [
+        0,
+        169,
+        77,
+        44
+       ],
+       "concept": "urinary-bladder",
+       "taught": "kidney-anatomy",
+       "fn": "The hollow, muscular organ behind the pubic bone that stores urine. Its smooth muscle wall (the detrusor) and stretchy lining let it fill, and the detrusor contracts to empty it."
+      },
+      {
+       "id": "pubic-bone-female",
+       "name": "Pubic bone",
+       "accept": [
+        "pubis",
+        "pubic bones",
+        "pubic symphysis"
+       ],
+       "box": [
+        0,
+        226,
+        110,
+        21
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The front part of the hip bone. The urinary bladder sits just behind the two pubic bones and the joint between them."
+      },
+      {
+       "id": "urethra-female",
+       "name": "Urethra",
+       "accept": [
+        "urethras"
+       ],
+       "box": [
+        0,
+        256,
+        77,
+        21
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The tube that carries urine from the bladder to the outside. In females it is short, about 4 cm, and opens in front of the vaginal opening.",
+       "follow": {
+        "q": "Why do females get bladder infections more often than males?",
+        "options": [
+         "Their ureters are wider",
+         "Their urethra is much shorter, so bacteria reach the bladder more easily",
+         "Their bladder has no sphincter",
+         "Their kidneys sit lower"
+        ],
+        "correct": 1,
+        "why": "The female urethra is about 4 cm long and opens close to the anus, so bacteria have a short path to the bladder. The male urethra is about 20 cm long.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "rectum-female",
+       "name": "Rectum",
+       "accept": [],
+       "box": [
+        445,
+        249,
+        81,
+        21
+       ],
+       "concept": "large-intestine-regions",
+       "taught": "large-intestine",
+       "fn": "The last straight part of the large intestine, lying behind the urinary bladder in the pelvis."
+      },
+      {
+       "id": "anus-female",
+       "name": "Anus",
+       "accept": [
+        "anal opening"
+       ],
+       "box": [
+        444,
+        314,
+        59,
+        21
+       ],
+       "concept": "large-intestine-regions",
+       "taught": "large-intestine",
+       "fn": "The opening at the end of the digestive tract, behind the urethral opening."
+      },
+      {
+       "id": "urinary-bladder-male",
+       "name": "Urinary bladder",
+       "accept": [
+        "bladder"
+       ],
+       "box": [
+        547,
+        40,
+        150,
+        25
+       ],
+       "concept": "urinary-bladder",
+       "taught": "kidney-anatomy",
+       "fn": "The hollow, muscular organ behind the pubic bone that stores urine. Its smooth muscle wall (the detrusor) and stretchy lining let it fill, and the detrusor contracts to empty it."
+      },
+      {
+       "id": "ureter-male",
+       "name": "Ureter",
+       "accept": [
+        "ureters"
+       ],
+       "box": [
+        1019,
+        75,
+        68,
+        21
+       ],
+       "concept": "ureter",
+       "taught": "kidney-anatomy",
+       "fn": "The tube that carries urine from the kidney to the bladder. It enters the back of the bladder at a slant, so a filling bladder presses it shut and urine cannot flow back."
+      },
+      {
+       "id": "pubic-bone-male",
+       "name": "Pubic bone",
+       "accept": [
+        "pubis",
+        "pubic bones",
+        "pubic symphysis"
+       ],
+       "box": [
+        547,
+        78,
+        112,
+        21
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The front part of the hip bone. The urinary bladder sits just behind the two pubic bones and the joint between them."
+      },
+      {
+       "id": "urethra-male",
+       "name": "Urethra",
+       "accept": [
+        "urethras"
+       ],
+       "box": [
+        547,
+        187,
+        79,
+        21
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The tube that carries urine from the bladder to the outside. In males it is about 20 cm long and runs the length of the external genitals.",
+       "follow": {
+        "q": "About how long is the male urethra?",
+        "options": [
+         "About 4 cm",
+         "About 20 cm",
+         "About 50 cm",
+         "About 1 cm"
+        ],
+        "correct": 1,
+        "why": "The male urethra runs about 20 cm from the bladder to its opening at the tip of the external genitals. The female urethra is about 4 cm long.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "rectum-male",
+       "name": "Rectum",
+       "accept": [],
+       "box": [
+        1019,
+        239,
+        80,
+        21
+       ],
+       "concept": "large-intestine-regions",
+       "taught": "large-intestine",
+       "fn": "The last straight part of the large intestine, lying behind the urinary bladder in the pelvis."
+      },
+      {
+       "id": "anus-male",
+       "name": "Anus",
+       "accept": [
+        "anal opening"
+       ],
+       "box": [
+        1018,
+        279,
+        58,
+        21
+       ],
+       "concept": "large-intestine-regions",
+       "taught": "large-intestine",
+       "fn": "The opening at the end of the digestive tract, behind the urethral opening."
+      }
+     ],
+     "covered": [
+      {
+       "id": "uterus",
+       "box": [
+        0,
+        139,
+        69,
+        21
+       ]
+      },
+      {
+       "id": "clitoris",
+       "box": [
+        0,
+        286,
+        71,
+        21
+       ]
+      },
+      {
+       "id": "labium-minora",
+       "box": [
+        0,
+        315,
+        143,
+        21
+       ]
+      },
+      {
+       "id": "labium-majora",
+       "box": [
+        0,
+        347,
+        143,
+        25
+       ]
+      },
+      {
+       "id": "cervix",
+       "box": [
+        444,
+        220,
+        70,
+        21
+       ]
+      },
+      {
+       "id": "vagina",
+       "box": [
+        444,
+        280,
+        76,
+        25
+       ]
+      },
+      {
+       "id": "ductus-deferens",
+       "box": [
+        546,
+        125,
+        91,
+        46
+       ]
+      },
+      {
+       "id": "seminal-vesicle",
+       "box": [
+        1018,
+        121,
+        84,
+        45
+       ]
+      },
+      {
+       "id": "prostate-gland",
+       "box": [
+        1018,
+        178,
+        84,
+        49
+       ]
+      },
+      {
+       "id": "penis",
+       "box": [
+        547,
+        222,
+        62,
+        21
+       ]
+      },
+      {
+       "id": "epididymis",
+       "box": [
+        547,
+        253,
+        109,
+        25
+       ]
+      },
+      {
+       "id": "testis",
+       "box": [
+        545,
+        294,
+        65,
+        21
+       ]
+      },
+      {
+       "id": "foreskin",
+       "box": [
+        547,
+        331,
+        88,
+        21
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-25-5",
+     "topic": "kidney-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "sacrum",
+       "name": "Sacrum",
+       "accept": [],
+       "box": [
+        994,
+        190,
+        102,
+        26
+       ],
+       "concept": "vertebral-regions",
+       "taught": "vertebral-column",
+       "fn": "The triangular bone at the base of the spine. The sacral spinal nerves that control the bladder (S2 to S4) leave through it."
+      },
+      {
+       "id": "urinary-bladder",
+       "name": "Urinary bladder",
+       "accept": [
+        "bladder"
+       ],
+       "box": [
+        0,
+        439,
+        172,
+        28
+       ],
+       "concept": "urinary-bladder",
+       "taught": "kidney-anatomy",
+       "fn": "The muscular sac that stores urine. Parasympathetic nerves from the sacral cord make its detrusor muscle contract during urination."
+      },
+      {
+       "id": "pubic-bone",
+       "name": "Pubic bone",
+       "accept": [
+        "pubis",
+        "pubic symphysis"
+       ],
+       "box": [
+        0,
+        512,
+        128,
+        23
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The front part of the hip bone. The urinary bladder sits just behind the two pubic bones and the joint between them."
+      },
+      {
+       "id": "sphincter",
+       "name": "Sphincter",
+       "accept": [
+        "external urethral sphincter",
+        "urethral sphincter",
+        "external urinary sphincter",
+        "external sphincter"
+       ],
+       "box": [
+        0,
+        549,
+        110,
+        29
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The external urethral sphincter: a ring of skeletal muscle around the urethra that you control on purpose. It stays shut until you decide to urinate.",
+       "follow": {
+        "q": "What kind of muscle forms the external urethral sphincter?",
+        "options": [
+         "Smooth muscle under autonomic control",
+         "Skeletal muscle under voluntary control",
+         "Cardiac muscle",
+         "Smooth muscle under voluntary control"
+        ],
+        "correct": 1,
+        "why": "The external urethral sphincter is skeletal muscle, driven by the pudendal nerve, so you can hold urine on purpose. The internal urethral sphincter at the bladder neck is smooth muscle and works without your control.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "pudendal-nerve",
+       "name": "Pudendal nerve",
+       "accept": [
+        "pudendal nerves"
+       ],
+       "box": [
+        994,
+        538,
+        108,
+        50
+       ],
+       "concept": null,
+       "fn": "A somatic nerve from the sacral spinal cord (S2 to S4). Its motor fibers keep the external urethral sphincter contracted until you choose to urinate.",
+       "follow": {
+        "q": "Which nerve keeps the external urethral sphincter closed?",
+        "options": [
+         "The pudendal nerve",
+         "The vagus nerve",
+         "The phrenic nerve",
+         "The femoral nerve"
+        ],
+        "correct": 0,
+        "why": "The pudendal nerve carries somatic motor fibers from S2 to S4 to the external urethral sphincter. When you decide to urinate, its firing falls and the sphincter relaxes.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "anus",
+       "name": "Anus",
+       "accept": [
+        "anal opening"
+       ],
+       "box": [
+        993,
+        655,
+        67,
+        24
+       ],
+       "concept": "large-intestine-regions",
+       "taught": "large-intestine",
+       "fn": "The opening at the end of the digestive tract, behind the urethral opening."
+      }
+     ],
+     "covered": [
+      {
+       "id": "uterus",
+       "box": [
+        0,
+        313,
+        80,
+        24
+       ]
+      },
+      {
+       "id": "clitoris",
+       "box": [
+        0,
+        591,
+        82,
+        24
+       ]
+      },
+      {
+       "id": "labium-minora",
+       "box": [
+        0,
+        651,
+        167,
+        23
+       ]
+      },
+      {
+       "id": "labium-majora",
+       "box": [
+        0,
+        707,
+        167,
+        29
+       ]
       }
      ]
     }
@@ -26796,6 +28657,60 @@
    "alt": "A front view of the trunk with the digestive organs faded except the accessory organs. The large reddish-brown liver fills the upper right abdomen under the diaphragm, with a big right lobe and a smaller left lobe; two small lobes show between them. A green pear-shaped gallbladder sits under the right lobe. Thin green ducts from the liver and the gallbladder join into one duct that runs down to the curved first part of the small intestine. The pale yellow, lumpy pancreas lies across the back of the abdomen, its head in the curve of the intestine and its tail reaching the purple spleen on the left; a duct runs along its length.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.24",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-6-accessory-organs-in-digestion-the-liver-pancreas-and-gallbladder",
+   "license": "CC BY 4.0"
+  },
+  "os-25-8": {
+   "src": "figures/os-25-8.jpg",
+   "w": 1100,
+   "h": 629,
+   "alt": "An inset shows both kidneys in place on either side of the aorta and inferior vena cava, each capped by an adrenal gland. The main drawing is a kidney cut in a frontal plane. A thin outer capsule covers a pale outer zone. Inside it sit striped, cone-shaped pyramids, separated by bands of the outer tissue that reach inward between them. The tip of each pyramid points into a small cup, the cups join larger cups, and these join a funnel that narrows into the ureter. An artery, a vein and nerves enter at the notch on the kidney's medial side, and their branches run between the pyramids and arch over their bases.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+   "license": "CC BY 4.0"
+  },
+  "os-25-9": {
+   "src": "figures/os-25-9.jpg",
+   "w": 1100,
+   "h": 882,
+   "alt": "On the left, a kidney cut in a frontal plane with its arteries in red and veins in blue. The renal artery splits into a few large branches, which send branches outward between the pyramids; these arch over the pyramid bases and give off small branches that run out toward the surface. Veins follow the same paths back to the renal vein. A wide gray arrow leads to an enlarged drawing on the right of one microscopic filtering unit: a small arteriole feeding a tuft of capillaries inside a cup, a second arteriole leaving the tuft, and a mesh of capillaries wrapped around a long, looping tubule, draining into a small vein.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.9",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+   "license": "CC BY 4.0"
+  },
+  "os-25-10": {
+   "src": "figures/os-25-10.jpg",
+   "w": 1100,
+   "h": 1568,
+   "alt": "One nephron with its blood vessels. On the left, a red artery and a blue vein run up and down side by side. A small arteriole leaves the artery and enters a tuft of capillaries cupped in a hollow capsule; a second arteriole leaves the tuft and branches into a mesh of capillaries that wraps around the coiled tubule and the long hairpin loop that dips downward. The capillary mesh drains through a venule into the vein. The tubule's last part joins a wide duct on the right that runs straight down, with an arrow showing urine flowing on toward the renal papilla.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.10",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+   "license": "CC BY 4.0"
+  },
+  "os-25-7": {
+   "src": "figures/os-25-7.jpg",
+   "w": 1100,
+   "h": 813,
+   "alt": "The lower trunk seen from behind, with the vertebrae numbered from T10 to L5, the lower ribs and the tops of the hip bones. A kidney sits on each side of the spine between about T12 and L3, the right one a little lower than the left, and the 12th rib crosses the back of the upper part of each. A thin ureter runs down from each kidney beside the spine. The liver shows above the right kidney.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-3-gross-anatomy-of-the-kidney",
+   "license": "CC BY 4.0"
+  },
+  "os-25-3": {
+   "src": "figures/os-25-3.jpg",
+   "w": 1100,
+   "h": 400,
+   "alt": "Two side views of the pelvis cut down the midline. (a) Female: the bladder sits just behind the pubic bone, the ureter enters it from behind, and a short urethra runs down and forward from the bladder to open at the body surface in front of the reproductive tract. (b) Male: the bladder sits behind the pubic bone with the ureter entering from behind, and a long urethra runs down through a gland just below the bladder, through the floor of the pelvis and along the length of the external genitals.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.3",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-2-gross-anatomy-of-urine-transport",
+   "license": "CC BY 4.0"
+  },
+  "os-25-5": {
+   "src": "figures/os-25-5.jpg",
+   "w": 1100,
+   "h": 801,
+   "alt": "A side view of the female pelvis cut down the midline, with the sacrum at the back and the pubic bone at the front. The bladder sits behind the pubic bone. Nerves leave the sacral part of the spinal cord through the sacrum and run forward and down; they join to form the pudendal nerve, which reaches the ring of muscle around the urethra, labeled sphincter, and the skin and muscle of the genital region. No autonomic nerves to the bladder are drawn.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.5",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-2-gross-anatomy-of-urine-transport",
    "license": "CC BY 4.0"
   }
  }

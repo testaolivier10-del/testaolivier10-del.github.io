@@ -342,7 +342,7 @@
       "It has no proximal convoluted tubule at all, only a loop",
       "Its renal corpuscle lies in the medulla",
       "It drains straight into the renal pelvis",
-      "A long loop reaching deep into the medulla"
+      "A long loop that reaches deep into the medulla, with vasa recta beside it"
     ],
     "correct": 3,
     "why": {
@@ -422,7 +422,7 @@
       "Macula densa cells in the tubule wall",
       "Podocytes on the glomerular capillaries",
       "Cells of the proximal convoluted tubule next to the capsule",
-      "Juxtaglomerular cells in the afferent arteriole wall"
+      "Juxtaglomerular cells in the wall of the afferent arteriole"
     ],
     "correct": 3,
     "why": {

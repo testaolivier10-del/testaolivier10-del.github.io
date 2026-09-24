@@ -138,11 +138,11 @@
     "core": [
       "mass-balance"
     ],
-    "q": "Mr. Osei, 52, has undiagnosed diabetes mellitus. His plasma glucose is 280 mg/dL, and his urine dipstick shows glucose. His kidneys are healthy. Why is glucose in his urine?",
+    "q": "Mr. Mensah, 52, has undiagnosed diabetes mellitus. His plasma glucose is 280 mg/dL, and his urine dipstick shows glucose. His kidneys are healthy. Why is glucose in his urine?",
     "options": [
-      "His glomeruli have been damaged and now let glucose through",
+      "His glomeruli have been damaged by diabetes and now let glucose through",
       "His tubules secrete excess glucose into the urine",
-      "His filtered glucose load exceeds what some nephrons' carriers can reabsorb",
+      "Some nephrons get more glucose than their carriers can reabsorb",
       "Insulin is needed for the tubule to reabsorb glucose"
     ],
     "correct": 2,
@@ -166,7 +166,7 @@
     ],
     "q": "Glucose's transport maximum is 375 mg/min and GFR is 125 mL/min, so glucose should first appear in urine at 3 mg/mL (300 mg/dL). It actually appears at about 180 mg/dL. What explains the difference?",
     "options": [
-      "Nephrons differ, and those with fewer carriers for their load saturate first",
+      "Nephrons differ, and those with fewer carriers saturate first",
       "GFR rises when glucose is high, pushing extra glucose through",
       "Some glucose is secreted into the tubule even at normal levels",
       "The transport maximum falls whenever glucose rises"
@@ -406,7 +406,7 @@
         "The descending limb loses water to the salty medulla; that makes fluid more concentrated on the way down, not dilute.",
         "Correct. Solute leaves, water stays, and osmolarity falls to about 100.",
         "Water is not secreted; nothing in the tubule actively pumps water.",
-        "Water moves from the tubule to the peritubular capillaries, never the other way in this segment."
+        "Almost no water crosses the wall of the thick ascending limb in either direction, and capillaries do not add water to tubular fluid."
       ]
     }
   },
@@ -499,7 +499,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "A person's PTH release rises. Predict the change in each kidney variable.",
+    "q": "A person's PTH release rises. Predict the immediate change in each kidney variable, before blood calcium has had time to rise.",
     "variables": [
       {
         "name": "Calcium reabsorbed in the distal convoluted tubule",
@@ -523,7 +523,7 @@
       }
     ],
     "why": {
-      "correct": "PTH makes the kidney keep calcium, at the distal tubule, and lose phosphate, at the proximal tubule. Both help raise blood calcium without raising the calcium–phosphate product."
+      "correct": "PTH makes the kidney keep calcium, at the distal tubule, and lose phosphate, at the proximal tubule. Both help raise blood calcium without raising the calcium–phosphate product. Later, if PTH stays high and blood calcium rises, more calcium is filtered, and urine calcium can end up higher than normal."
     }
   },
   {

@@ -1,0 +1,45 @@
+{
+  "topic": "electrolyte-balance",
+  "hook": "<p>Mr. Reyes, 66, has kidney failure and has missed two dialysis sessions. He feels weak, and his ECG shows tall, peaked T waves. His plasma potassium is 6.8 mmol/L. His kidneys are the main exit for potassium, and the extra now sitting outside his cells has pushed the resting potential of his heart cells toward threshold. The first drug he gets is calcium, which will not lower his potassium at all. To see why that makes sense, you need to know how your body keeps each electrolyte in balance.</p>",
+  "prereq": [
+    {
+      "q": "What does aldosterone do in the principal cells of the collecting duct?",
+      "options": ["Increases sodium reabsorption and potassium secretion", "Inserts aquaporins so water is reabsorbed", "Increases calcium reabsorption and phosphate excretion"],
+      "correct": 0,
+      "why": "Aldosterone makes principal cells build more sodium channels, potassium channels and sodium–potassium pumps, so they reabsorb more sodium and secrete more potassium. Aquaporins are ADH's job; calcium and phosphate are PTH's.",
+      "review": "adrenal-glands"
+    },
+    {
+      "q": "Potassium is about 140 mmol/L inside a cell and 4 mmol/L outside. If plasma potassium rises to 8 mmol/L, what happens to the resting membrane potential?",
+      "options": ["It becomes more negative", "It becomes less negative", "It does not change"],
+      "correct": 1,
+      "why": "A smaller concentration gradient means less potassium leaks out, so potassium's equilibrium potential and the resting potential move toward zero: less negative, closer to threshold.",
+      "review": "membrane-potential"
+    },
+    {
+      "q": "Which hormone raises blood calcium by acting on bone, the kidneys and, through calcitriol, the intestine?",
+      "options": ["Calcitonin", "Aldosterone", "Parathyroid hormone"],
+      "correct": 2,
+      "why": "Parathyroid hormone releases calcium from bone, makes the kidneys keep calcium and excrete phosphate, and switches on calcitriol, which raises calcium absorption from food.",
+      "review": "thyroid-parathyroid"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "A potato-and-banana meal adds potassium to the ECF, which holds only about 2% of your body's potassium.", "effect": "Plasma potassium starts to rise." },
+    { "cause": "Insulin released for the meal stimulates sodium–potassium pumps.", "effect": "Potassium moves into cells within minutes, so the rise in plasma potassium stays small." },
+    { "cause": "The small rise in plasma potassium acts directly on the zona glomerulosa of the adrenal cortex.", "effect": "Aldosterone release increases." },
+    { "cause": "Aldosterone makes principal cells build more sodium channels, potassium channels and sodium–potassium pumps.", "effect": "Principal cells secrete more potassium into the urine." },
+    { "cause": "Over the next hours the kidneys excrete the extra potassium.", "effect": "Output matches intake, plasma potassium returns to normal, and aldosterone release falls: negative feedback." }
+  ],
+  "misconception": {
+    "wrong": "A low plasma sodium means the body has too little sodium, so the fix is to give salt.",
+    "right": "Plasma sodium is a concentration, and it mostly reflects water. Hyponatremia almost always means too much water for the sodium present. Many patients with it, such as those with heart failure, have more total sodium than normal, along with even more extra water. Giving salt to them adds volume and worsens edema; the fix depends on the cause, often limiting water."
+  },
+  "check": ["anp-electrolyte-balance-2", "anp-electrolyte-balance-5", "anp-electrolyte-balance-7", "anp-electrolyte-balance-10", "anp-electrolyte-balance-13", "anp-electrolyte-balance-16", "anp-electrolyte-balance-19"],
+  "summary": "<p>Each electrolyte has an external balance, intake against output, set mostly by the kidneys, and an internal balance, its split between cells, bone and ECF. Sodium balance: the amount of sodium sets ECF volume (aldosterone, ANP, pressure natriuresis), while plasma sodium concentration reflects water (ADH, thirst); hyponatremia (below 135 mmol/L) is usually too much water, hypernatremia (above 145) too little, and both are corrected slowly when chronic. Potassium balance: 98% is inside cells, insulin and epinephrine move it in, and principal cells secrete it under aldosterone; hypokalemia makes excitable cells harder to fire, hyperkalemia moves them toward threshold and endangers the heart. Calcium and phosphate balance: PTH and calcitriol are the main regulators, only ionized calcium is active, and alkalosis lowers it; kidney failure raises phosphate, and refeeding can crash it. Chloride follows sodium and trades places with bicarbonate; magnesium is set by the thick ascending limb, and low magnesium keeps potassium and calcium low.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-20", "label": "NREMT: Cardiac emergencies (ECG changes)" },
+    { "href": "/nremt/study-notes.html#chapter-7", "label": "NREMT: Principles of pathophysiology" }
+  ]
+}

@@ -355,7 +355,7 @@
       "Neurons need insulin to take up glucose, and insulin is low",
       "Low glucose triggers a sympathetic discharge that shuts down the brain",
       "Muscle makes glucose by gluconeogenesis and shares it with the brain",
-      "Neurons have almost no glycogen and cannot burn fatty acids"
+      "Neurons have almost no glycogen and burn almost no fatty acids"
     ],
     "correct": 3,
     "why": {

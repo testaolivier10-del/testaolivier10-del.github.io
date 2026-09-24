@@ -8199,7 +8199,7 @@
    "level": "recall",
    "compare": "Jejunum vs ileum",
    "front": "Which jobs belong to the ileum alone?",
-   "back": "Absorbing vitamin B12 bound to intrinsic factor and recovering most of the bile secreted during a meal for reuse.",
+   "back": "Absorbing vitamin B12 bound to intrinsic factor, and reclaiming about 95% of the salts in bile for reuse (not the water of bile, which is absorbed all along the intestine).",
    "why": "The carriers and receptor proteins for both are found only in the terminal ileum, so no other part can take over."
   },
   {
@@ -8347,7 +8347,7 @@
    "level": "analyze",
    "front": "A gallstone blocks the common bile duct. Name three signs.",
    "back": "Jaundice with dark urine, pale feces, and fat in the feces.",
-   "why": "Conjugated bilirubin backs up into the blood and urine instead of reaching the gut, and without bile salts fat is poorly emulsified."
+   "why": "Conjugated bilirubin backs up into the blood and urine instead of reaching the gut, and without bile salts fat is digested more slowly and much of it is not absorbed."
   },
   {
    "id": "gi-secretin-cck-target",

@@ -1,0 +1,580 @@
+[
+  {
+    "id": "anp-fluid-compartments-water-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "compartments"
+    ],
+    "q": "An 80 kg man's total body water is 60% of his body mass. About how much of it is intracellular fluid?",
+    "options": [
+      "16 L",
+      "48 L",
+      "32 L",
+      "24 L"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Total body water = 0.60 × 80 kg = 48 L. Intracellular fluid is about two thirds of that: 48 × 2/3 = 32 L.",
+      "options": [
+        "16 L is one third of 48 L, which is the extracellular fluid, not the intracellular fluid.",
+        "48 L is his total body water. Only part of it is inside cells.",
+        "Correct. Two thirds of 48 L is 32 L.",
+        "24 L is half of 48 L. The intracellular share is two thirds, not half."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "A 60 kg woman's total body water is 50% of her body mass. Estimate her plasma volume.",
+    "options": [
+      "10 L",
+      "7.5 L",
+      "5 L",
+      "2.5 L"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Total body water = 0.50 × 60 = 30 L. ECF is one third: 10 L. Plasma is one quarter of the ECF: 2.5 L.",
+      "options": [
+        "10 L is her whole extracellular fluid. Plasma is only one quarter of it.",
+        "7.5 L is her interstitial fluid, the three quarters of the ECF outside the blood vessels.",
+        "5 L is roughly an adult's whole blood volume, which includes the cells. The question asks for plasma, which works out at 2.5 L here.",
+        "Correct. 30 L × 1/3 × 1/4 = 2.5 L."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "compartments"
+    ],
+    "figure": "os-26-3",
+    "pin": "interstitial-fluid",
+    "q": "Name the pinned fluid.",
+    "options": [
+      "Interstitial fluid",
+      "Plasma",
+      "Intracellular fluid"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The fluid in the spaces between the cells, outside both the cells and the capillary, is interstitial fluid. It is the larger part of the extracellular fluid, about three quarters of it.",
+      "options": [
+        "Correct. The fluid between cells is interstitial fluid.",
+        "Plasma is the fluid inside the capillary, not the fluid between the cells.",
+        "Intracellular fluid is inside the cells, bounded by their plasma membranes."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-4",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "figure": "os-26-5",
+    "q": "A sample of fluid contains about 12 mEq/L of sodium, 140 mEq/L of potassium, and large amounts of phosphate and protein. Using the graph, which fluid is it?",
+    "options": [
+      "Plasma",
+      "Interstitial fluid",
+      "Intracellular fluid",
+      "A mixture of plasma and interstitial fluid"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Only the intracellular fluid bars show low sodium with high potassium, phosphate and protein. The sodium–potassium pump keeps sodium out of cells and potassium in, and phosphates and proteins are trapped inside.",
+      "options": [
+        "Plasma has sodium near 140 and potassium near 4 to 5, the reverse of this sample.",
+        "Interstitial fluid is high in sodium and chloride and low in potassium and protein.",
+        "Correct. Low sodium, high potassium and lots of phosphate and protein mark intracellular fluid.",
+        "Both extracellular fluids are high in sodium and low in potassium, so no mixture of them could give this sample."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-5",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "structure-function"
+    ],
+    "figure": "os-26-5",
+    "q": "On the graph, plasma and interstitial fluid have similar sodium and chloride, but plasma has much more protein. What explains this pattern?",
+    "options": [
+      "Capillary walls let small ions through but hold back most proteins",
+      "Plasma membranes pump protein out of cells into the plasma",
+      "Interstitial fluid proteins are broken down by the cells",
+      "Sodium–potassium pumps in capillary walls keep ions equal"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Plasma and interstitial fluid are separated by capillary walls. Small ions cross freely through the gaps between endothelial cells, so their concentrations even out; plasma proteins mostly cannot cross, so they stay in the plasma.",
+      "options": [
+        "Correct. A barrier permeable to small ions but not to proteins gives exactly this pattern.",
+        "Cells do not pump protein into the plasma. Most plasma proteins are made by the liver and released into the blood, and they stay there because capillary walls hold them back.",
+        "Some interstitial protein is returned to the blood by lymph, but breakdown by cells does not explain why the ions match. The barrier does.",
+        "Ions even out across capillary walls because they cross freely, not because a pump sets them."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "In one day, a woman drinks 1.2 L, gets 0.8 L from food and makes 0.3 L of metabolic water. She passes 1.4 L of urine, loses 0.8 L insensibly, 0.2 L in sweat and 0.1 L in feces. What is her water balance for the day?",
+    "options": [
+      "She loses 0.5 L",
+      "She is in balance",
+      "She gains 0.2 L",
+      "She loses 0.2 L"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Intake = 1.2 + 0.8 + 0.3 = 2.3 L. Output = 1.4 + 0.8 + 0.2 + 0.1 = 2.5 L. Balance = 2.3 − 2.5 = −0.2 L, a loss of 0.2 L.",
+      "options": [
+        "A loss of 0.5 L comes from leaving out the 0.3 L of metabolic water, which is a real gain made inside cells.",
+        "Intake and output do not match here: 2.3 L in and 2.5 L out.",
+        "This reverses the sign. Output is larger than intake, so she loses water.",
+        "Correct. 2.3 L in, 2.5 L out: a loss of 0.2 L."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-7",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Which of these are insensible water losses? Select all that apply.",
+    "options": [
+      "Water vapor in exhaled air",
+      "Sweat from sweat glands",
+      "Water evaporating through the epidermis",
+      "Urine",
+      "Water in feces"
+    ],
+    "correct": [
+      0,
+      2
+    ],
+    "why": {
+      "correct": "Insensible losses are the ones you do not notice: water evaporating through the epidermis and water vapor leaving in each breath. Together they are about 0.7 L a day at rest.",
+      "options": [
+        "Yes. Air leaving the lungs is saturated with water vapor.",
+        "No. Sweat is a separate, visible loss controlled by the body temperature loop.",
+        "Yes. Water diffuses through the epidermis and evaporates, separately from sweat.",
+        "No. Urine is a sensible loss, and the one the kidneys adjust.",
+        "No. Fecal water is a small but sensible loss."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "compartments"
+    ],
+    "q": "A healthy man drinks 2 L of plain water in 15 minutes. Predict the change in each variable over the next hour, compared with before he drank.",
+    "variables": [
+      {
+        "name": "Plasma osmolality",
+        "answer": "down",
+        "why": "The water is absorbed and adds no solute, so the same solute is spread through more water."
+      },
+      {
+        "name": "Intracellular fluid volume",
+        "answer": "up",
+        "why": "The more dilute extracellular fluid is hypotonic to cells, so water moves into them until osmolality is equal again."
+      },
+      {
+        "name": "ADH release",
+        "answer": "down",
+        "why": "Hypothalamic osmoreceptors swell and fire less when plasma osmolality falls, so the posterior pituitary releases less ADH."
+      },
+      {
+        "name": "Water permeability of the collecting ducts",
+        "answer": "down",
+        "why": "With little ADH, principal cells pull their aquaporins back into vesicles, so the ducts become nearly waterproof."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "up",
+        "why": "Water stays in the collecting ducts instead of being reabsorbed, so much more urine is made."
+      },
+      {
+        "name": "Urine osmolality",
+        "answer": "down",
+        "why": "The dilute fluid leaving the loop is not concentrated further in the collecting duct, so urine can fall toward 50 mOsm/L."
+      }
+    ],
+    "why": {
+      "correct": "Pure water dilutes every compartment and enters cells. The fall in plasma osmolality shuts off ADH through the osmoreceptors, the collecting ducts lose their aquaporins, and a large volume of dilute urine removes the extra water over the next few hours."
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-9",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Put the steps of the plasma osmolarity feedback loop in order, starting from a salty meal.",
+    "options": [
+      "Absorbed salt raises plasma osmolality",
+      "Water leaves hypothalamic osmoreceptors, which shrink and fire faster",
+      "The posterior pituitary releases more ADH",
+      "Principal cells insert aquaporins into their apical membranes",
+      "Water is reabsorbed from the collecting ducts into the blood",
+      "Plasma osmolality falls and ADH release decreases"
+    ],
+    "why": {
+      "correct": "Salt raises plasma osmolality, which draws water out of the osmoreceptors. They fire faster and drive ADH release from the posterior pituitary. ADH makes principal cells insert aquaporins, water is reabsorbed, osmolality falls back, and the osmoreceptors ease off: negative feedback."
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-10",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Complete the loop: plasma osmolality rises → osmoreceptors fire faster → ____ → aquaporins inserted in the collecting ducts → water reabsorbed.",
+    "options": [
+      "The posterior pituitary releases ADH",
+      "The adrenal cortex releases aldosterone",
+      "The atria release ANP",
+      "The kidneys release renin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Osmoreceptors drive hypothalamic neurons whose axons end in the posterior pituitary. They release ADH, which acts on principal cells to insert aquaporins.",
+      "options": [
+        "Correct. ADH from the posterior pituitary is the link between osmoreceptors and aquaporins.",
+        "Aldosterone makes principal cells keep sodium and secrete potassium. It does not insert aquaporins, and osmoreceptors do not drive it.",
+        "ANP is released when the atria are stretched, and it makes the kidneys excrete sodium and water, the opposite of this step.",
+        "Renin starts the RAAS in response to low pressure or volume. It is not the step that follows osmoreceptor firing."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "homeostasis"
+    ],
+    "misconception": "dehydration and hypovolemia are the same",
+    "q": "Mr. Okoye, 84, has drunk very little during a three-day heat wave. His plasma osmolality is 312 mOsm/kg and he is confused. What is happening to his brain cells?",
+    "options": [
+      "They swell, because water moves into them",
+      "They shrink, because water moves out of them",
+      "They keep their size, because only his plasma volume has changed",
+      "They keep their size, because the blood–brain barrier stops water moving"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "He has lost more water than solute, so his ECF is more concentrated than his cells. Water follows the solute out of the cells, and they shrink. Shrinking brain cells cause his confusion.",
+      "options": [
+        "Cells swell when the ECF becomes more dilute, as in water intoxication. His plasma is concentrated, so water leaves cells.",
+        "Correct. Hypertonic ECF draws water out of cells, including neurons.",
+        "Cells keep their size only when a loss is isotonic, as in bleeding. A rise in plasma osmolality always moves water out of cells.",
+        "The blood–brain barrier restricts many solutes, but water crosses it and brain cell membranes, so brain cells respond to plasma osmolality."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "compartments"
+    ],
+    "misconception": "dehydration and hypovolemia are the same",
+    "q": "A child loses 1 L of fluid in diarrhea over a day. The fluid has about the same osmolality as her plasma, and she has not drunk anything. Which pattern do you expect?",
+    "options": [
+      "Plasma osmolality rises and her cells shrink",
+      "Plasma osmolality falls and her cells swell",
+      "Both compartments shrink equally, in proportion to their size",
+      "ECF volume falls, plasma osmolality stays normal and cells keep their size"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "An isotonic loss removes salt and water together from the ECF. Osmolality does not change, so no water moves across plasma membranes. Only the ECF shrinks: this is hypovolemia.",
+      "options": [
+        "That is the pattern of losing more water than solute. An isotonic loss leaves osmolality unchanged.",
+        "Osmolality falls only when water is gained or solute is lost in excess of water.",
+        "Losses spread across all compartments only when pure water is lost. Water moves into or out of cells only when ECF osmolality changes.",
+        "Correct. Isotonic loss shrinks the ECF alone. (If she drank plain water to replace it, her plasma would become dilute.)"
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "compartments"
+    ],
+    "q": "A patient receives 1 L of 5% glucose in water (D5W). After the glucose has been taken up and used by cells, about how much of the liter remains in the plasma?",
+    "options": [
+      "About 250 mL",
+      "About 83 mL",
+      "About 333 mL",
+      "About 1,000 mL"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Once the glucose is used, 1 L of free water remains, and it spreads through total body water: two thirds into cells, one third (333 mL) into the ECF. Plasma is a quarter of the ECF: 333 ÷ 4 ≈ 83 mL.",
+      "options": [
+        "250 mL is what stays in the plasma from 1 L of isotonic saline, which stays entirely in the ECF. D5W's free water also enters cells.",
+        "Correct. One third to the ECF, one quarter of that to the plasma: about 83 mL.",
+        "333 mL is the ECF share. Three quarters of it goes to the interstitial fluid, not the plasma.",
+        "The water does not stay in the vessels: it crosses capillary walls and plasma membranes."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "A 70 kg man with 42 L of body water at 290 mOsm/kg drinks 2 L of water, all absorbed before any is excreted. What is his new osmolality?",
+    "options": [
+      "About 277 mOsm/kg",
+      "About 304 mOsm/kg",
+      "About 290 mOsm/kg",
+      "About 145 mOsm/kg"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Total solute = 290 × 42 = 12,180 mOsm. Water adds no solute, so the new osmolality = 12,180 ÷ 44 ≈ 277 mOsm/kg.",
+      "options": [
+        "Correct. The same solute in 44 L instead of 42 L gives about 277 mOsm/kg.",
+        "304 would mean the fluid became more concentrated. Adding water dilutes it.",
+        "Osmolality stays at 290 only if the drink carries solute at the same concentration, as with isotonic saline. Plain water dilutes it.",
+        "145 would mean the water doubled. Two liters added to 42 changes the volume by less than 5%."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "compartments"
+    ],
+    "q": "A man with a lung tumor that secretes ADH has a plasma osmolality of 255 mOsm/kg and concentrated urine. He develops headache and confusion. Which fluid imbalance does he have, and why is his brain affected?",
+    "options": [
+      "Dehydration: his brain cells shrink as water leaves them",
+      "Hypovolemia: his blood pressure is too low to supply the brain",
+      "Overhydration: his brain cells swell as water enters them",
+      "Hypervolemia: fluid leaks from his capillaries into the brain"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Constant ADH (SIADH) makes his kidneys keep water although his plasma is dilute. He has gained water in excess of solute, so ECF osmolality falls, water moves into cells, and swelling brain cells inside the rigid skull cause headache and confusion.",
+      "options": [
+        "Dehydration raises plasma osmolality. His is low, at 255.",
+        "Hypovolemia is an isotonic loss with normal osmolality. His osmolality is low and he is keeping water, not losing it.",
+        "Correct. Water gain lowers osmolality and swells cells; the brain has no room to swell.",
+        "Hypervolemia is an isotonic gain with normal osmolality, and it causes edema by raising capillary pressure. His problem is dilute plasma."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A thirsty hiker drinks a liter of water. Her thirst fades within two minutes, long before the water is absorbed and her plasma osmolality falls. What switches her thirst off so early?",
+    "options": [
+      "The water dilutes the plasma as soon as it reaches the stomach",
+      "ADH released during drinking directly suppresses the thirst center",
+      "Sensory receptors in the mouth and throat report the swallowed water",
+      "The kidneys detect the incoming water and signal the hypothalamus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Sensory receptors in the mouth and throat report swallowed water to the hypothalamus, which damps thirst before any water is absorbed. This early signal limits drinking while the first water is still in the gut.",
+      "options": [
+        "Water in the stomach has not yet entered the blood, so it cannot change plasma osmolality there.",
+        "ADH acts on the kidneys, not on the thirst center, and it falls rather than rises as thirst is satisfied.",
+        "Correct. The early shut-off comes from the mouth and throat.",
+        "The kidneys respond to the water only after it is absorbed, and they do not signal the thirst center."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-17",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "A runner sweats 2 L during a long race in the heat and drinks nothing. Sweat contains less salt than plasma. Predict each variable at the end of the race, compared with the start.",
+    "variables": [
+      {
+        "name": "Plasma osmolality",
+        "answer": "up",
+        "why": "Sweat is more dilute than plasma, so she loses more water than solute and her plasma becomes more concentrated."
+      },
+      {
+        "name": "Intracellular fluid volume",
+        "answer": "down",
+        "why": "The more concentrated ECF draws water out of cells, so they shrink."
+      },
+      {
+        "name": "ADH release",
+        "answer": "up",
+        "why": "Osmoreceptors shrink and fire faster, and the fall in blood volume adds a second push for ADH release."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "down",
+        "why": "ADH inserts aquaporins in the collecting ducts, so more water is reabsorbed and little urine is made."
+      },
+      {
+        "name": "Renin release",
+        "answer": "up",
+        "why": "Plasma volume falls, so pressure in the kidney's small arteries falls and sympathetic activity rises, both of which increase renin release."
+      },
+      {
+        "name": "Thirst",
+        "answer": "up",
+        "why": "The rise in osmolality acts on the osmoreceptors, and angiotensin II from the RAAS adds to it, stimulating the thirst center."
+      }
+    ],
+    "why": {
+      "correct": "Losing dilute sweat raises plasma osmolality and lowers ECF volume. Water leaves cells, and both the osmolality and volume triggers raise ADH, renin and thirst. The kidneys save water, but only drinking can replace the 2 L lost."
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-18",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "compartments"
+    ],
+    "q": "Which conditions typically cause hypervolemia, an excess of ECF volume at normal osmolality? Select all that apply.",
+    "options": [
+      "Heart failure",
+      "Heavy sweating without drinking",
+      "Kidney failure with continued salt and water intake",
+      "Diabetes insipidus",
+      "Too much IV isotonic saline"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "Hypervolemia comes from keeping or receiving salt and water together: heart failure (the kidneys keep salt and water), kidney failure (they cannot excrete it), and excess isotonic IV fluid. Sweating and diabetes insipidus remove water.",
+      "options": [
+        "Yes. A failing heart leaves the kidneys underperfused, and they keep salt and water through the RAAS.",
+        "No. Sweat loss without drinking removes more water than salt: dehydration.",
+        "Yes. Failing kidneys cannot excrete the salt and water taken in.",
+        "No. Without ADH action, the kidneys lose large volumes of water: dehydration if the person cannot drink enough.",
+        "Yes. Isotonic saline stays in the ECF and expands it."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-19",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student described what happens after a person loses a lot of water by sweating. One step is wrong. Which one?",
+    "options": [
+      "Plasma osmolality rises",
+      "Hypothalamic osmoreceptors swell and fire faster",
+      "The posterior pituitary releases more ADH",
+      "Principal cells insert aquaporins and more water is reabsorbed",
+      "A small volume of concentrated urine is made"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "When plasma osmolality rises, water leaves the osmoreceptors, following the solute outside, so they shrink, not swell. Shrinking is what makes them fire faster.",
+      "options": [
+        "This step is right. Sweat is more dilute than plasma, so losing it concentrates the plasma.",
+        "This is the error. Osmoreceptors shrink in concentrated plasma; they swell only when the plasma becomes dilute.",
+        "This step is right. Faster osmoreceptor firing drives ADH release.",
+        "This step is right. ADH makes principal cells insert aquaporins.",
+        "This step is right. With water reabsorbed, the urine is small in volume and concentrated."
+      ]
+    }
+  },
+  {
+    "id": "anp-fluid-compartments-water-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "compartments",
+      "homeostasis"
+    ],
+    "q": "An 85-year-old and a 25-year-old of the same weight each lose 2 L of water on a hot day. Why is the older adult more at risk?",
+    "options": [
+      "Older adults have a larger share of body water in fat tissue",
+      "Older adults have less body water and blunted thirst",
+      "Older adults' kidneys respond more strongly to ADH",
+      "Older adults lose no water through the skin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "With less muscle, an older adult's total body water is a smaller share of body mass, so 2 L is a larger fraction of it and raises osmolality more. Thirst is also blunted with age, so they drink less to correct it.",
+      "options": [
+        "Fat tissue holds little water. Having more fat and less muscle lowers the share of body water, the opposite of what this option implies.",
+        "Correct. A smaller water reserve and weaker thirst both raise the risk.",
+        "The reverse is closer to the truth: ageing kidneys concentrate urine less well, so they save water less effectively.",
+        "Older adults still lose water insensibly through the epidermis and in exhaled air, as everyone does."
+      ]
+    }
+  }
+]

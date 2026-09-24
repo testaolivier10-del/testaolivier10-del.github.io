@@ -17,10 +17,10 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "In the absorptive state, insulin is high and glucagon low. The liver takes up glucose, switches on glycogenesis, and switches off glycogenolysis and gluconeogenesis.",
+      "correct": "In the absorptive state, insulin is high and glucagon low. The liver takes up glucose, switches on glycogenesis, and switches off glycogenolysis. It stops releasing glucose into the blood; the little gluconeogenesis that continues feeds glycogen.",
       "options": [
         "Glycogenolysis is switched off after a meal; the liver is storing glucose, not releasing it.",
-        "Gluconeogenesis is switched off by insulin when glucose is plentiful.",
+        "Insulin stops the liver releasing new glucose into the blood; any glucose it still makes goes into glycogen.",
         "Correct. The fed liver stores glucose as glycogen.",
         "Ketogenesis runs when insulin is low and fat breakdown is fast, not after a carbohydrate meal."
       ]
@@ -232,7 +232,7 @@
       "options": [
         "Muscle glycogen cannot leave the muscle as glucose, and it is small compared with 12 days of need.",
         "Fatty acids cannot become glucose; only the glycerol from fat can.",
-        "The brain takes up very little fatty acid from the blood.",
+        "The brain burns little fatty acid; its neurons carry out very little beta oxidation.",
         "Correct. Ketone bodies stand in for much of the brain's glucose."
       ]
     }

@@ -1,6 +1,6 @@
 {
   "topic": "energy-balance-thermoregulation",
-  "hook": "<p>On a humid 33 °C August afternoon, a 17-year-old lineman collapses on the second day of football practice in full pads. He is confused and combative, his skin is hot and still wet with sweat, and a rectal thermometer reads 41.6 °C. His trainer does not wait for the ambulance: she lowers him into a tub of ice water. Within 15 minutes his temperature is under 39 °C and he is answering questions. The minutes his core spent above 40 °C are what decide how well he recovers.</p>",
+  "hook": "<p>On a humid 33 °C August afternoon, a 17-year-old lineman collapses on the second day of preseason football practice. He is confused and combative, his skin is hot and still wet with sweat, and a rectal thermometer reads 41.6 °C. His trainer does not wait for the ambulance: she lowers him into a tub of ice water. Within 15 minutes his temperature is under 39 °C and he is answering questions. The minutes his core spent above 40 °C are what decide how well he recovers.</p>",
   "prereq": [
     {
       "q": "Which fibers make the sweat glands secrete?",

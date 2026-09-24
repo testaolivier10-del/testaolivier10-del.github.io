@@ -33,7 +33,7 @@
     { "cause": "The higher pressure stretches the wall of the afferent arteriole.", "effect": "Its smooth muscle contracts within seconds (the myogenic mechanism), narrowing the arteriole." },
     { "cause": "Fluid flows faster through the tubule, so more sodium chloride reaches the macula densa.", "effect": "The macula densa releases ATP, broken down to adenosine, which constricts the afferent arteriole further (tubuloglomerular feedback)." },
     { "cause": "The narrower afferent arteriole loses more pressure before blood reaches the glomerulus.", "effect": "Glomerular hydrostatic pressure falls back, so net filtration pressure and GFR return almost to normal." },
-    { "cause": "GFR stays near 125 mL/min across a mean arterial pressure of about 80 to 180 mm Hg.", "effect": "The tubules receive a steady flow of filtrate, so salt and water are neither lost nor held by accident when blood pressure changes." }
+    { "cause": "GFR stays near 125 mL/min across a mean arterial pressure of about 80 to 180 mm Hg.", "effect": "The tubules receive a nearly steady flow of filtrate, so a change in blood pressure does not flood or starve them; how much salt and water leaves is then set mainly by the tubules." }
   ],
   "misconception": {
     "wrong": "Higher blood pressure always means more filtration, so GFR simply follows your blood pressure.",

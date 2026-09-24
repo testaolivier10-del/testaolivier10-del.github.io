@@ -191,9 +191,9 @@
         "why": "With no bilirubin reaching the intestine, bacteria make no stercobilin, so the feces turn pale."
       },
       {
-        "name": "Fat left undigested in the feces",
+        "name": "Fat in the feces",
         "answer": "up",
-        "why": "Without bile salts, fat is not emulsified, lipase has little surface to work on, and more fat passes out undigested."
+        "why": "Without bile salts, fat is not emulsified, so lipase has less surface to work on. Bile salts also carry the digested fat to the lining, so much of what is digested is not absorbed either."
       },
       {
         "name": "Pancreatic juice reaching the duodenum",
@@ -202,7 +202,7 @@
       }
     ],
     "why": {
-      "correct": "A blocked common bile duct stops bile from reaching the gut. Conjugated bilirubin backs up into the blood and urine, the feces lose their brown pigment, and fat digestion falls for lack of bile salts. Pancreatic juice still flows because its duct is below the blockage."
+      "correct": "A blocked common bile duct stops bile from reaching the gut. Conjugated bilirubin backs up into the blood and urine, the feces lose their brown pigment, and less fat is digested and absorbed for lack of bile salts. Pancreatic juice still flows because its duct is below the blockage."
     }
   },
   {

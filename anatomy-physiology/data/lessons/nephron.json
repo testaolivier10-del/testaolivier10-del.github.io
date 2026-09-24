@@ -29,7 +29,7 @@
     "caption": "One nephron and its blood vessels. Hide the labels and name the afferent and efferent arterioles, the glomerular capsule, the proximal convoluted tubule, the nephron loop and the peritubular capillaries."
   },
   "chain": [
-    { "cause": "Blood enters the glomerulus through the wider afferent arteriole and can leave only through the narrower efferent arteriole.", "effect": "Pressure inside the glomerular capillaries stays unusually high." },
+    { "cause": "Blood enters the glomerulus through the afferent arteriole and can leave only through the efferent arteriole, which in most nephrons is narrower and resists the outflow.", "effect": "Pressure inside the glomerular capillaries stays unusually high." },
     { "cause": "High pressure pushes on leaky, fenestrated capillary walls wrapped in podocytes.", "effect": "Plasma fluid, without blood cells and most proteins, is pushed into the capsular space." },
     { "cause": "The fluid flows into the proximal convoluted tubule, whose cells have a brush border of microvilli and many mitochondria.", "effect": "Most of the water and nearly all the useful solutes are taken back into the peritubular capillaries." },
     { "cause": "The remaining fluid runs down and up the nephron loop and passes the macula densa, which senses its sodium chloride.", "effect": "The macula densa signals the juxtaglomerular cells and the afferent arteriole of its own nephron." },

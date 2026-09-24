@@ -180,7 +180,7 @@
     "q": "Ms. Brandt was pulled from a house fire. Her oxygen saturation is 99%, her venous blood is bright red, and her blood lactate is very high. Which explanation fits all three findings?",
     "options": [
       "Her lungs cannot load oxygen onto hemoglobin",
-      "Her muscles make more lactate than the liver clears",
+      "Her working muscles make more lactate than her liver can clear",
       "Her red blood cells have lost their mitochondria",
       "Her tissues get oxygen but cannot pass electrons to it"
     ],
@@ -261,7 +261,7 @@
     "options": [
       "FADH2 carries only one electron",
       "It is made in the cytosol and shuttled in",
-      "Its electrons enter at complex II, skipping the pump in complex I",
+      "Its electrons skip the H+ pump in complex I",
       "Its electrons bypass complexes III and IV"
     ],
     "correct": 2,
@@ -534,7 +534,7 @@
     ],
     "q": "The drug oligomycin blocks the H+ channel of ATP synthase. In isolated mitochondria given plenty of fuel and oxygen, what happens to oxygen use?",
     "options": [
-      "It rises, because the chain runs faster without ATP synthase",
+      "It rises, because the chain runs faster once ATP synthase is blocked",
       "It is unchanged; the chain works apart from ATP synthase",
       "It rises at first, then stops when the fuel runs out",
       "It falls, because the H+ gradient builds up until pumping stalls"

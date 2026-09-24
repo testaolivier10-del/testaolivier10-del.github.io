@@ -193,6 +193,8 @@
         49
       ],
       "concept": "vasoconstriction-dilation",
+      "cover": true,
+      "note": "The printed block ends 'Blood flow is not diverted away from the digestive system.' That is wrong: in heat, sympathetic output narrows the gut and kidney vessels so more blood can go to the skin. Covered for good and never asked; the lesson teaches skin vasodilation and sweating in its own words.",
       "box": [
         453,
         1630,

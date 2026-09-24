@@ -222,12 +222,12 @@
       "The bladder wall stretches as urine collects",
       "Stretch-sensitive sensory endings send signals to the sacral cord and the pons",
       "The cortex releases the pontine micturition center",
+      "Pudendal firing falls and the external urethral sphincter relaxes",
       "Parasympathetic fibers from the sacral micturition center fire",
-      "The detrusor contracts and the internal urethral sphincter opens",
-      "Pudendal firing falls and the external urethral sphincter relaxes"
+      "The detrusor contracts and the internal urethral sphincter opens"
     ],
     "why": {
-      "correct": "Stretch starts the signals. They reach the pons and cortex, and when the cortex allows it, the pontine center drives the sacral micturition center. Its parasympathetic fibers contract the detrusor while the internal sphincter opens, and reduced pudendal firing lets the external sphincter relax, so urine flows."
+      "correct": "Stretch starts the signals. They reach the pons and cortex, and when the cortex allows it, the pontine center switches the bladder from storing to emptying. Pudendal firing falls first, so the external sphincter relaxes. A few seconds later, the sacral micturition center's parasympathetic fibers fire, the detrusor contracts and the internal sphincter opens, so urine flows."
     }
   },
   {
@@ -293,7 +293,7 @@
     "q": "A clot blocks one segmental artery in a patient's right kidney. A scan a week later shows a wedge-shaped area of dead tissue with its broad side at the kidney's surface. Why did no other artery keep that area alive?",
     "options": [
       "The renal vein carried the clot back into that segment",
-      "Segmental arteries do not connect with one another",
+      "Segmental arteries are end arteries that do not connect with one another",
       "The cortex has no capillaries of its own",
       "The adipose capsule compresses the arteries around the segment"
     ],
@@ -320,7 +320,7 @@
     "options": [
       "It is suspended in the peritoneal cavity by a mesentery",
       "It sits below the level of the iliac crest",
-      "It lies behind the peritoneum, against the back wall",
+      "It lies behind the peritoneum, against the muscles of the back wall",
       "It is enclosed by the ribs on all sides"
     ],
     "correct": 2,

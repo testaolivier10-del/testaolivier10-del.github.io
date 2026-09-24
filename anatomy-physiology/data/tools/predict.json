@@ -12975,7 +12975,7 @@
       ],
       "level": 2,
       "misconception": "if a person can still move the tongue, swallowing must be safe",
-      "setup": "A small stroke damages the swallowing center in the medulla oblongata. The cortex and the nerves to the tongue are unharmed. Compare her swallows of water with before the stroke.",
+      "setup": "A small stroke damages the swallowing center in the medulla oblongata. The cortex and the nerves to the tongue are unharmed, and sensation in her larynx and her cough reflex are intact. Compare her swallows of water with before the stroke.",
       "start": "The swallowing center fires late and weakly",
       "steps": {
         "tongue": "The tongue still pushes the bolus back on command",
@@ -13439,8 +13439,8 @@
       "steps": {
         "salts": "No bile salts reach the fat in the duodenum",
         "drops": "Fat stays in large droplets with little surface",
-        "slow": "Pancreatic lipase digests the fat slowly",
-        "fecal": "Undigested fat passes into the feces",
+        "slow": "Lipase works on a smaller fat surface, and the fatty acids it frees have no bile salts to ferry them to the lining",
+        "fecal": "Much of the fat, digested or not, passes into the feces",
         "back": "Bile backs up behind the stone into the liver",
         "blood": "Conjugated bilirubin enters the blood",
         "urine": "Water-soluble conjugated bilirubin passes into the urine",
@@ -13458,7 +13458,7 @@
             "slow",
             "fecal"
           ],
-          "why": "Bile salts do not digest fat; they emulsify it, keeping it in tiny droplets with a large surface. Without them lipase works only on the surface of big drops, so much fat leaves undigested."
+          "why": "Bile salts do not digest fat. They keep it in tiny droplets with a large surface, and they carry the digested products to the absorptive cells (you will see how in Chemical digestion and absorption). Without them, fat is digested more slowly and much of what is digested is not absorbed, so fat appears in the feces."
         },
         {
           "id": "bilirubin",
@@ -13825,7 +13825,7 @@
       "setup": "After knee surgery, a woman takes an opioid pain medicine for two weeks. Compare her colon and stools with before the surgery.",
       "start": "The opioid inhibits the enteric neurons",
       "steps": {
-        "mot": "Haustral contractions and mass movements weaken",
+        "mot": "Propulsive contractions and mass movements weaken",
         "time": "Feces spend longer in the colon",
         "water": "The colon absorbs more water from them",
         "hard": "Stools become harder and drier",
@@ -13834,12 +13834,12 @@
       "variables": [
         {
           "id": "motility",
-          "name": "Colon motility",
+          "name": "Propulsive movement in the colon",
           "answer": "down",
           "chain": [
             "mot"
           ],
-          "why": "The enteric nervous system runs the colon’s contractions. Opioids inhibit its neurons, so haustral contractions and mass movements weaken."
+          "why": "The enteric nervous system runs the colon’s contractions. Opioids inhibit its neurons, so the waves that push contents along, including mass movements, weaken. Squeezing that only mixes the contents in place does not fall, and may even rise."
         },
         {
           "id": "time",
@@ -13849,7 +13849,7 @@
             "mot",
             "time"
           ],
-          "why": "With weaker contractions, contents move more slowly from the cecum to the rectum."
+          "why": "With weaker propulsive contractions, contents move more slowly from the cecum to the rectum."
         },
         {
           "id": "absorbed",
@@ -14029,7 +14029,7 @@
       ],
       "level": 3,
       "misconception": "any length of small intestine can do any job of absorption",
-      "setup": "After years of inflammatory bowel disease, a woman has the last 100 cm of her ileum removed. The rest of her small intestine and her colon are healthy. Compare her a year later with before surgery.",
+      "setup": "After years of inflammatory bowel disease, a woman has the last 150 cm of her ileum removed. The rest of her small intestine and her colon are healthy, and she takes no vitamin supplements. Compare her a year later with before surgery.",
       "start": "The terminal ileum and its carriers are gone",
       "steps": {
         "if": "No cells are left with receptor proteins for the B12–intrinsic factor complex",

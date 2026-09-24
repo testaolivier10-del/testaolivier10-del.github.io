@@ -5788,7 +5788,7 @@
         "distractors": [
           {
             "text": "In the duodenum, B12 crosses the brush border on its own by simple diffusion.",
-            "why": "B12 is large and water-soluble; it cannot cross the membrane on its own. It needs intrinsic factor and the ileum’s receptor proteins."
+            "why": "B12 is large and water-soluble. Only about 1% of a dose slips across without an escort, far too little to absorb what food supplies. The normal route needs intrinsic factor and the ileum’s receptor proteins."
           },
           {
             "text": "In the duodenum, bile salts carry B12 into micelles.",

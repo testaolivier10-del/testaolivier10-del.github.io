@@ -65,16 +65,16 @@
       "Neurons have no mitochondria in which to run beta oxidation",
       "Fatty acids are toxic to astrocytes at any level",
       "Ketone bodies hold more energy per gram than fatty acids",
-      "The brain takes up very little fatty acid from the blood"
+      "Its neurons carry out very little beta oxidation"
     ],
     "correct": 3,
     "why": {
-      "correct": "Fatty acids travel on albumin and cross into the brain only in small amounts, so the brain cannot rely on them. Ketone bodies are small and water-soluble, and the brain takes them up readily once blood levels rise.",
+      "correct": "Fatty acids do reach the brain, but its neurons carry out very little beta oxidation, so fatty acids supply only a small share of its energy. Ketone bodies are small and water-soluble, and the brain takes them up and burns them readily once blood levels rise.",
       "options": [
         "Neurons have many mitochondria; they burn glucose and ketone bodies aerobically.",
-        "Fatty acids are not simply toxic to the brain; the limit is how little reaches it.",
+        "Fatty acids are not simply toxic to the brain; the limit is how little of them its neurons break down.",
         "Ketone bodies are partly oxidized fatty acid products, so they hold less energy per gram than fatty acids, not more.",
-        "Correct. Little fatty acid reaches brain cells, so the liver's ketone bodies stand in."
+        "Correct. The brain burns little fatty acid, so the liver's ketone bodies stand in."
       ]
     }
   },
@@ -564,7 +564,7 @@
       "Glucagon switches on beta oxidation in the liver",
       "Cortisol switches on lipolysis in adipose tissue",
       "Epinephrine switches on ketogenesis in the liver's mitochondria",
-      "Insulin switches on the first step of fat synthesis"
+      "Insulin switches on the committed step of fat synthesis"
     ],
     "correct": 3,
     "why": {

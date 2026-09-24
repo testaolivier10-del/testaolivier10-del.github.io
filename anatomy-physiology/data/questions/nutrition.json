@@ -203,7 +203,7 @@
   {
     "id": "anp-nutrition-8",
     "type": "single",
-    "level": "analyze",
+    "level": "apply",
     "diff": 2,
     "core": [
       "mass-balance"
@@ -238,16 +238,16 @@
     "options": [
       "They make other amino acids into lysine as needed",
       "They swap a different amino acid in where lysine belongs",
-      "Synthesis stalls, and the unused amino acids are burned",
+      "Synthesis slows, and the unused amino acids are burned",
       "They take lysine from stored lysine reserves"
     ],
     "correct": 2,
     "why": {
-      "correct": "Lysine is essential: her cells cannot make it. A ribosome needs every amino acid in the sequence at the moment it adds it, so the protein is not finished. Amino acids are not stored for later, so the unused ones are broken down for fuel. Adding beans, which are rich in lysine, covers the gap.",
+      "correct": "Lysine is essential: her cells cannot make it. Rice supplies some lysine, but less than her cells need. A ribosome needs every amino acid in the sequence at the moment it adds it, so protein building slows to the pace the scarce lysine allows. Amino acids are not stored for later, so the unused ones are broken down for fuel. Adding beans, which are rich in lysine, covers the gap.",
       "options": [
         "Cells cannot build lysine from other amino acids; that is what makes it essential.",
         "The sequence is set by the gene, so a ribosome does not substitute another amino acid for a missing one.",
-        "Correct. The missing essential amino acid limits protein synthesis.",
+        "Correct. The scarce essential amino acid limits protein synthesis.",
         "The body keeps no reserve of free amino acids set aside for later protein building."
       ]
     }

@@ -1,0 +1,22 @@
+{
+  "fluid-compartments": {
+    "def": "The regions of body water, each separated by a barrier: the intracellular fluid inside cells (about two thirds of total body water) and the extracellular fluid outside them (one third), which is three quarters interstitial fluid and one quarter plasma. Total body water is about 60% of body mass in a young man.",
+    "roots": [["com-", "together"], ["partiri", "to divide"], ["intra-", "within"], ["extra-", "outside"]],
+    "say": ""
+  },
+  "water-balance": {
+    "def": "The daily match between water gained (drinks, food and metabolic water made by cellular respiration) and water lost (urine, insensible loss through the skin and breath, sweat and feces), about 2.5 L each way. Only drinking and urine volume are adjusted to keep it balanced.",
+    "roots": [["in-", "not"], ["sensibilis", "perceptible"]],
+    "say": ""
+  },
+  "osmolarity-loop": {
+    "def": "The negative feedback loop that holds plasma osmolality near 285 to 290 mOsm/kg: a rise is sensed by hypothalamic osmoreceptors, which drive ADH release (so the collecting ducts keep water) and thirst (so you drink), and the added water brings osmolality back down.",
+    "roots": [["osmos", "a push"], ["-ality", "state or amount"]],
+    "say": ""
+  },
+  "fluid-imbalance": {
+    "def": "A disturbance of the volume or concentration of the body fluids. Hypovolemia and hypervolemia are losses and gains of salt and water together, which change only the extracellular fluid; dehydration and overhydration (water intoxication when severe) are losses and gains of water in excess of solute, which change osmolality and shrink or swell cells. A fluid shift moves fluid between compartments without changing the total.",
+    "roots": [["hypo-", "under"], ["hyper-", "over"], ["vol-", "volume"], ["-emia", "blood condition"], ["de-", "away"], ["hydr-", "water"]],
+    "say": "hy-poh-voh-LEE-mee-uh"
+  }
+}

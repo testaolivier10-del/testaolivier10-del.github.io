@@ -3795,7 +3795,7 @@
       "meaning": [
         {
           "when": "v <= 1",
-          "text": "With the villus factor at 1, the villi are flattened, as in untreated celiac disease. The surface is {total}-fold, and absorption falls roughly in proportion, which is why people lose weight and develop deficiencies even when they eat enough."
+          "text": "With the villus factor at 1, the villi are flattened, as happens when an immune reaction to gluten (celiac disease) damages the lining. The surface is {total}-fold, and absorption falls roughly in proportion, which is why people lose weight and develop deficiencies even when they eat enough."
         },
         {
           "when": "total < 100",
@@ -3959,7 +3959,7 @@
       "meaning": [
         {
           "when": "1",
-          "text": "The fat now offers {gain} times as much surface, so pancreatic lipase has {gain} times as much to work on. Bile salts do no chemical digestion; this physical change is their whole job, and without them fat is digested slowly and lost in the feces."
+          "text": "The fat now offers {gain} times as much surface, so pancreatic lipase has {gain} times as much to work on. Bile salts do no chemical digestion. This physical change is their first job, and you will see a second one, carrying the digested fat to the lining, in Chemical digestion and absorption. Without bile salts, fat is digested more slowly and much of it is lost in the feces."
         }
       ],
       "presets": [
@@ -4160,6 +4160,10 @@
         {
           "when": "gRatio <= 1",
           "text": "Glucose is at least as concentrated in the lumen as in the cell, so it is moving downhill. SGLT1, driven by a sodium gradient of {naRatio}, carries it in easily, as early in a meal."
+        },
+        {
+          "when": "gRatio > naRatio * naRatio * 90",
+          "text": "Glucose would have to climb a ratio of {gRatio}. Even counting the pull of the cell’s negative inside, two sodium ions running down a ratio of {naRatio} cannot supply that much energy, so SGLT1 cannot move glucose in against a gradient this steep."
         },
         {
           "when": "1",
@@ -4484,7 +4488,7 @@
       "meaning": [
         {
           "when": "feces > 1000",
-          "text": "{feces} mL of stool water a day is diarrhea on a large scale. More fluid is arriving, or less is being absorbed, than the colon can make up for; in cholera over 10 L a day can be lost, with sodium, potassium and bicarbonate."
+          "text": "{feces} mL of stool water a day is diarrhea on a large scale. The colon can absorb up to about 4 to 5 L a day when more reaches it, so stool water climbs this high only when that reserve is overwhelmed or the colon itself absorbs less. In cholera over 10 L a day can be lost, with sodium, potassium and bicarbonate."
         },
         {
           "when": "feces > 250",
@@ -4518,13 +4522,22 @@
           "label": "Gastric juice at 2 L; small intestine absorbs 8,300 mL",
           "values": {
             "gas": 2000,
-            "si": 8300
+            "si": 8300,
+            "col": 1250
           }
         },
         {
-          "label": "Small intestine absorbs 1 L less",
+          "label": "Small intestine absorbs 1 L less; colon absorbs the same",
           "values": {
-            "si": 6800
+            "si": 6800,
+            "col": 1250
+          }
+        },
+        {
+          "label": "Small intestine absorbs 1 L less; colon uses its reserve",
+          "values": {
+            "si": 6800,
+            "col": 2150
           }
         }
       ],

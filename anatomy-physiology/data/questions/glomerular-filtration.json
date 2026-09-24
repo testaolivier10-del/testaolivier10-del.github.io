@@ -318,7 +318,7 @@
     "why": {
       "correct": "When fluid is low, sympathetic activity and angiotensin II are high and tend to clamp the afferent arterioles. Locally made prostaglandins keep them open. Ibuprofen blocks prostaglandin synthesis, so the afferent arterioles narrow, glomerular pressure falls and GFR drops. In a healthy person prostaglandins do little to GFR, so the drug has little effect.",
       "options": [
-        "At ordinary doses the effect on GFR comes from the arterioles, not from damage to the filter.",
+        "Even at high doses, the sharp fall in GFR here comes from the arterioles, not from damage to the podocytes or the filtration slits.",
         "Nothing about ibuprofen blocks the flow of urine, so capsular pressure is unchanged.",
         "Efferent constriction would raise glomerular pressure, not lower GFR, and it is not how ibuprofen acts.",
         "Correct. Removing the protective prostaglandins lets the afferent arterioles narrow."
@@ -477,7 +477,7 @@
     "options": [
       "Protein in the urine irritates the bladder and triggers fluid retention",
       "His glomeruli filter less fluid, so water that should leave in the urine builds up in his tissues",
-      "Albumin lost in the urine lowers blood colloid osmotic pressure, so capillaries filter more fluid into the tissues",
+      "Lost albumin lowers blood colloid osmotic pressure, so capillaries filter more fluid out",
       "Protein in the filtrate raises capsular pressure and forces fluid into the veins"
     ],
     "correct": 2,
@@ -582,7 +582,7 @@
     "options": [
       "Lowers it, by constricting the afferent arteriole",
       "Raises it, by widening the afferent arteriole and relaxing mesangial cells",
-      "Lowers it, by making mesangial cells contract",
+      "Lowers it, by making mesangial cells contract and shrink the filtering surface",
       "No change, because ANP acts only on the heart"
     ],
     "correct": 1,

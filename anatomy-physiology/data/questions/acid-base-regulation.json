@@ -1,0 +1,390 @@
+[
+  {
+    "id": "anp-acid-base-regulation-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Arterial bicarbonate is 24 mmol/L and arterial PCO2 is 40 mm Hg. Using pH = 6.1 + log(HCO3− ÷ (0.03 × PCO2)), what is the pH?",
+    "options": ["7.40", "7.10", "7.60", "6.10"],
+    "correct": 0,
+    "why": {
+      "correct": "Dissolved carbon dioxide = 0.03 × 40 = 1.2 mmol/L. The ratio is 24 ÷ 1.2 = 20, and log 20 = 1.3. pH = 6.1 + 1.3 = 7.4.",
+      "options": [
+        "Correct. A ratio of 20 to 1 gives pH 7.40, the middle of the normal range.",
+        "7.10 is the pH for a ratio of 10, half the normal ratio. Here the ratio is 20.",
+        "7.60 is the pH for a ratio of about 32. That would need more bicarbonate or less carbon dioxide than these values.",
+        "6.10 is the pK of the buffer, the number you add the log to. It is the pH only when the ratio is 1."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A fixed acid uses up half of a man's bicarbonate, leaving 12 mmol/L. Before his breathing changes, his arterial PCO2 is still 40 mm Hg. What is his blood pH?",
+    "options": ["7.30", "7.10", "7.40", "7.20"],
+    "correct": 1,
+    "why": {
+      "correct": "0.03 × 40 = 1.2 mmol/L dissolved carbon dioxide. The ratio is 12 ÷ 1.2 = 10, and log 10 = 1.0, so pH = 6.1 + 1.0 = 7.1. Halving the ratio lowers pH by 0.3.",
+      "options": [
+        "7.30 would need a ratio of 16. That is what the ratio becomes if the lungs later lower PCO2 to 25 mm Hg, not before breathing changes.",
+        "Correct. Half the bicarbonate at the same PCO2 halves the ratio, from 20 to 10, and pH falls from 7.40 to 7.10.",
+        "pH stays 7.40 only if the ratio stays 20. Bicarbonate has halved while carbon dioxide has not changed, so the ratio has halved.",
+        "7.20 is the pH for a ratio of 12.5. Halving 20 gives 10, not 12.5."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-3",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "misconception": "pH depends on the amount of bicarbonate",
+    "q": "Patient A has a bicarbonate of 12 mmol/L and an arterial PCO2 of 20 mm Hg. Patient B has a bicarbonate of 24 mmol/L and an arterial PCO2 of 40 mm Hg. How do their blood pH values compare?",
+    "options": ["Patient A's pH is lower than Patient B's", "Both are about 7.40", "Patient A's pH is higher than Patient B's", "They cannot be compared without measuring hydrogen ions"],
+    "correct": 1,
+    "why": {
+      "correct": "pH depends on the ratio, not the amounts. Patient A: 12 ÷ (0.03 × 20) = 12 ÷ 0.6 = 20. Patient B: 24 ÷ 1.2 = 20. The same ratio gives the same pH, 7.40.",
+      "options": [
+        "Patient A has half the bicarbonate, but also half the carbon dioxide, so the ratio is unchanged and so is the pH.",
+        "Correct. Both ratios are 20 to 1, so both pH values are 7.40, even though Patient A's values are both abnormal.",
+        "A's carbon dioxide is low, which on its own would raise pH, but his bicarbonate is low by the same proportion, which cancels it.",
+        "The Henderson–Hasselbalch equation gives pH from bicarbonate and PCO2 alone. That is how blood gas analyzers relate the three values."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-4",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "Select every acid that must be excreted by the kidneys rather than breathed out or burned as fuel.",
+    "options": ["Sulfuric acid from breaking down dietary protein", "Carbonic acid formed from carbon dioxide", "Phosphoric acid from breaking down phospholipids", "Ketone bodies piling up in untreated type 1 diabetes", "Hydrogen ions released into the blood during a 30-second sprint"],
+    "correct": [0, 2, 3],
+    "why": {
+      "correct": "Fixed acids that the body cannot burn, such as sulfuric and phosphoric acid, can leave only through the kidneys. Ketone bodies are normally burned, but when they are made far faster than they are used, the extra acid must be excreted too. Carbonic acid leaves as carbon dioxide, and the acid of a sprint is reversed as liver and muscle burn the lactate.",
+      "options": [
+        "Correct. Sulfur-containing amino acids yield sulfuric acid, which cannot be breathed out or burned. It is the largest share of the daily fixed acid load.",
+        "Carbonic acid is the volatile acid. It turns into carbon dioxide, which the lungs breathe out within minutes.",
+        "Correct. Phosphoric acid is a fixed acid; the kidneys must excrete it.",
+        "Correct. In ketoacidosis, ketone bodies are made far faster than tissues can burn them, so they act as a fixed acid load that uses up bicarbonate and must be excreted.",
+        "The sprint's acid is buffered by bicarbonate and the carbon dioxide is breathed out. Over the next hour or so, the liver and muscles use the lactate as fuel, which takes the hydrogen ions back up. The kidneys hardly need to act."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "mass-balance"],
+    "q": "Put the steps in order to trace one hydrogen ion from where it is made in a type A intercalated cell to the urine.",
+    "options": [
+      "Carbon dioxide and water combine inside the cell, sped by carbonic anhydrase",
+      "Carbonic acid splits into a hydrogen ion and a bicarbonate ion",
+      "A proton pump spends ATP to move the hydrogen ion into the tubular fluid",
+      "Ammonia in the lumen takes up the hydrogen ion and becomes ammonium",
+      "The charged ammonium cannot diffuse back and leaves in the urine"
+    ],
+    "why": {
+      "correct": "Carbonic anhydrase makes carbonic acid, which splits into H+ and HCO3−. The H+ is pumped into the lumen by an H+-ATPase. There, ammonia takes it up to form ammonium, which is trapped and excreted. The bicarbonate left behind in the cell goes to the blood as new bicarbonate."
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-6",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "misconception": "filtered bicarbonate is moved across unchanged",
+    "q": "A student wrote out how the proximal tubule reclaims filtered bicarbonate. One step is wrong. Which one?",
+    "options": [
+      "Carbonic anhydrase inside the tubule cell forms H+ and HCO3− from carbon dioxide and water",
+      "The H+ enters the lumen in exchange for Na+",
+      "In the lumen, H+ joins filtered HCO3−, and the carbonic acid leaves in the urine",
+      "Carbon dioxide diffuses from the lumen into the tubule cell",
+      "The HCO3− made inside the cell crosses the basolateral membrane with Na+ and enters the peritubular capillaries"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Carbonic acid in the lumen does not leave in the urine. Carbonic anhydrase on the brush border splits it into carbon dioxide and water, and the carbon dioxide diffuses into the cell to be used again. The secreted H+ ends up in water, so no acid is excreted in this process.",
+      "options": [
+        "This step is right. Carbonic anhydrase inside the cell makes the H+ and HCO3− that start the cycle.",
+        "This step is right. The sodium–hydrogen exchanger swaps H+ out for Na+ in, powered by the sodium gradient.",
+        "This is the error. The carbonic acid is split into carbon dioxide and water in the lumen; it is not excreted.",
+        "This step is right. The carbon dioxide formed in the lumen crosses into the cell and feeds carbonic anhydrase again.",
+        "This step is right. A basolateral carrier moves HCO3− out with Na+, so bicarbonate reaches the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-7",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Complete the Henderson–Hasselbalch equation for blood: pH = 6.1 + log ( HCO3− ÷ ____ ).",
+    "options": ["0.03 × PCO2", "PCO2 alone", "0.03 × PO2", "The hydrogen ion concentration"],
+    "correct": 0,
+    "why": {
+      "correct": "The bottom of the ratio is dissolved carbon dioxide: 0.03 mmol/L for each mm Hg of PCO2. At a PCO2 of 40 mm Hg that is 1.2 mmol/L.",
+      "options": [
+        "Correct. 0.03 × PCO2 converts the partial pressure into mmol/L of dissolved carbon dioxide, the same unit as bicarbonate.",
+        "Without the 0.03, the two sides of the ratio are in different units, and 24 ÷ 40 would give a pH near 5.9.",
+        "Oxygen is not part of the carbonic acid–bicarbonate buffer. The equation uses carbon dioxide.",
+        "pH is itself a measure of the hydrogen ion concentration, so it cannot also sit inside the ratio that predicts it."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["homeostasis"],
+    "q": "A climber takes acetazolamide, a drug that blocks carbonic anhydrase in the proximal tubule. Predict the change in each variable over the next day, compared with before the drug.",
+    "variables": [
+      { "name": "Bicarbonate in the urine", "answer": "up", "why": "Without carbonic anhydrase, the proximal tubule secretes less H+ and cannot turn filtered bicarbonate into carbon dioxide, so filtered bicarbonate stays in the lumen and leaves in the urine." },
+      { "name": "Urine pH", "answer": "up", "why": "The urine now carries extra bicarbonate, a base, so it becomes more alkaline." },
+      { "name": "Plasma bicarbonate", "answer": "down", "why": "Bicarbonate lost in the urine is not replaced, so less remains in the blood." },
+      { "name": "Blood pH", "answer": "down", "why": "Less bicarbonate at the same PCO2 lowers the bicarbonate to carbon dioxide ratio, so pH falls." }
+    ],
+    "why": { "correct": "Blocking carbonic anhydrase stops bicarbonate reclaim in the proximal tubule. Bicarbonate spills into the urine, blood bicarbonate and pH fall, and the mild acidity stimulates breathing, which is why the drug helps at altitude." }
+  },
+  {
+    "id": "anp-acid-base-regulation-9",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["homeostasis", "interdependence"],
+    "q": "A student runs an all-out 400 m sprint. Predict each variable in the minutes just after the sprint, compared with rest, and then the last one an hour later, compared with just after the sprint.",
+    "variables": [
+      { "name": "Hydrogen ions in the blood, just after", "answer": "up", "why": "Working muscles release hydrogen ions from splitting glucose and spending ATP faster than they can be handled." },
+      { "name": "Plasma bicarbonate, just after", "answer": "down", "why": "Bicarbonate takes up the extra hydrogen ions, forming carbonic acid and then carbon dioxide, so bicarbonate is used up." },
+      { "name": "Ventilation, just after", "answer": "up", "why": "The carotid bodies sense the lower arterial pH and drive the respiratory centers harder." },
+      { "name": "Arterial PCO2, just after", "answer": "down", "why": "Breathing is driven up faster than carbon dioxide is being made, so more is blown off and PCO2 falls below normal." },
+      { "name": "Plasma bicarbonate, an hour later", "answer": "up", "why": "The liver and muscles use the lactate as fuel, which takes hydrogen ions back up and restores the bicarbonate that was used." }
+    ],
+    "why": { "correct": "Bicarbonate buffers the sprint's acid within seconds, and the lungs breathe off the carbon dioxide and push PCO2 below normal. Over the next hour, burning lactate reverses the acid load and restores bicarbonate, with little work for the kidneys." }
+  },
+  {
+    "id": "anp-acid-base-regulation-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["interdependence", "mass-balance"],
+    "misconception": "the lungs can get rid of any acid",
+    "q": "Mr. Reyes, 70, has kidney failure and gets dialysis three times a week. His lungs are healthy, yet between sessions his plasma bicarbonate falls every day. Why can't his breathing stop the fall?",
+    "options": ["His lungs can remove carbon dioxide but not the sulfuric and phosphoric acids from his diet", "Kidney failure stops his carotid bodies from sensing pH", "His lungs lose bicarbonate into the air he breathes out", "High urea stops carbon dioxide from crossing his alveolar walls"],
+    "correct": 0,
+    "why": {
+      "correct": "Breathing removes only the volatile acid, carbon dioxide. The fixed acids from protein and phosphate compounds can leave only through the kidneys, which also make the new bicarbonate that replaces what those acids use up. Without working kidneys, bicarbonate falls day by day.",
+      "options": [
+        "Correct. Extra breathing can lower PCO2 to keep the ratio closer to normal, but it cannot excrete fixed acid or replace bicarbonate.",
+        "The carotid bodies sense arterial pH directly, and kidney failure does not stop them. His breathing does rise a little as his pH falls.",
+        "Bicarbonate is an ion dissolved in plasma. It does not leave through the lungs; it is turned into carbon dioxide, which does.",
+        "Urea does not block gas exchange. His carbon dioxide leaves normally; the problem is the acid that cannot become a gas."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": ["mass-balance"],
+    "q": "Urine pH cannot fall much below 4.5. About how much urine would it take to excrete 60 mmol of acid as free hydrogen ions at pH 4.5?",
+    "options": ["About 2 L", "About 60 L", "About 1,900 L", "About 190,000 L"],
+    "correct": 2,
+    "why": {
+      "correct": "At pH 4.5, [H+] = 10^−4.5 mol/L = 0.000032 mol/L = 0.032 mmol/L. 60 mmol ÷ 0.032 mmol/L ≈ 1,900 L. That is why almost all urinary acid leaves bound to phosphate or ammonia instead.",
+      "options": [
+        "2 L is a normal daily urine volume. At pH 4.5 it would carry only about 0.06 mmol of free H+.",
+        "60 L would follow if each liter held 1 mmol of free H+. At pH 4.5 each liter holds only about 0.03 mmol.",
+        "Correct. 60 ÷ 0.032 ≈ 1,900 L, which is why urinary buffers are essential.",
+        "190,000 L is a hundred times too large: it treats 10^−4.5 as if it were 10^−6.5."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-12",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "figure": "os-26-16",
+    "q": "Follow the alkalosis column of the flowchart. Why does blood CO2 rise when the respiration rate falls?",
+    "options": ["Slower breathing makes the cells produce more carbon dioxide", "Cells keep making carbon dioxide while less of it is breathed out", "Alkalosis turns bicarbonate directly into carbon dioxide in the lungs", "The chemoreceptors release carbon dioxide into the blood"],
+    "correct": 1,
+    "why": {
+      "correct": "Carbon dioxide production by the cells stays about the same. With less alveolar ventilation, less of it is breathed out each minute, so it builds up in the blood. More carbon dioxide forms more carbonic acid, and pH falls back toward normal.",
+      "options": [
+        "Cells make carbon dioxide according to their metabolism, not according to how fast you breathe.",
+        "Correct. Production stays the same while removal falls, so PCO2 rises.",
+        "Bicarbonate becomes carbon dioxide only by taking up a hydrogen ion. In alkalosis there are fewer free hydrogen ions, and this is not what the flowchart shows.",
+        "Chemoreceptors sense the chemistry of the blood and send nerve signals. They do not release carbon dioxide."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-13",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["mass-balance"],
+    "figure": "os-25-19",
+    "misconception": "bicarbonate reclaim excretes acid",
+    "q": "In this proximal tubule cell, where does the H+ that the cell secretes into the lumen end up?",
+    "options": ["In the urine, as free hydrogen ions that lower the pH of the tubular fluid", "In the bloodstream, carried out with Na+", "In a water molecule, after carbonic acid in the lumen is split", "Bound to ammonia as ammonium in the urine"],
+    "correct": 2,
+    "why": {
+      "correct": "The secreted H+ joins filtered bicarbonate to form carbonic acid, which carbonic anhydrase splits into carbon dioxide and water. The H+ ends up in that water. So bicarbonate reclaim stops a loss of base, but it excretes no acid.",
+      "options": [
+        "In this figure every secreted H+ meets a filtered bicarbonate. Free H+ that lowers urine pH comes later, in the collecting duct, after the bicarbonate is gone.",
+        "What leaves toward the blood with Na+ is HCO3−, not H+.",
+        "Correct. The H+ is recycled into water in the lumen; nothing acidic is excreted.",
+        "Ammonium does carry acid out, but the figure does not show ammonia. Here the H+ meets bicarbonate."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-14",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Within the first seconds after a strong acid enters the blood, which buffer takes up most of the hydrogen ions in the plasma?",
+    "options": ["The phosphate buffer", "Ammonia", "Proteins inside muscle cells", "The bicarbonate buffer"],
+    "correct": 3,
+    "why": {
+      "correct": "The bicarbonate buffer is the main buffer of plasma and interstitial fluid. Bicarbonate takes up the H+, forming carbonic acid, which becomes carbon dioxide and water.",
+      "options": [
+        "Plasma holds only about 1 mmol/L of phosphate, too little for much buffering there. Phosphate matters inside cells and in urine.",
+        "Ammonia buffers hydrogen ions in the urine, not in plasma.",
+        "Intracellular proteins are a large buffer store, but hydrogen ions take minutes to hours to reach them across cell membranes.",
+        "Correct. Bicarbonate, at about 24 mmol/L, takes the first hit."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["interdependence"],
+    "q": "The bicarbonate buffer works best near pH 6.1, far from blood pH 7.4. Why is it still the most important buffer of the extracellular fluid?",
+    "options": ["It releases more hydrogen ions than any other buffer", "It is the only buffer present in plasma", "The lungs adjust one of its partners and the kidneys the other", "Carbonic anhydrase turns it into a strong acid at the pH of blood"],
+    "correct": 2,
+    "why": {
+      "correct": "Carbon dioxide, its acid end, is removed by the lungs, and bicarbonate, its base end, is adjusted by the kidneys. A buffer whose partners can be topped up or drained keeps working long after a closed buffer would be used up.",
+      "options": [
+        "A buffer's value lies in holding pH steady, not in releasing hydrogen ions. Carbonic acid is a weak acid.",
+        "Plasma also holds protein and a little phosphate buffer. Bicarbonate is the main one, not the only one.",
+        "Correct. Both partners can be adjusted, which makes it an open system.",
+        "Carbonic anhydrase speeds the reaction in whichever direction concentrations push it. It does not change the strength of the acid."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "interdependence"],
+    "q": "Ana has been climbing at 4,300 m for four days. She breathes harder than at sea level, and her arterial PCO2 is low. Which change in her kidneys moves her blood pH back toward normal?",
+    "options": ["Type A intercalated cells secrete more hydrogen ions", "Type B intercalated cells secrete more bicarbonate into the urine", "The proximal tubule breaks down more glutamine and excretes more ammonium", "The tubules reclaim more of the filtered bicarbonate"],
+    "correct": 1,
+    "why": {
+      "correct": "Low PCO2 makes her blood alkaline. Low PCO2 also means less H+ forms inside tubule cells, so less bicarbonate is reclaimed, and type B intercalated cells secrete bicarbonate. Losing bicarbonate lowers the top of the ratio to match the lower PCO2, and pH moves back toward normal.",
+      "options": [
+        "More H+ secretion would add new bicarbonate to her blood and make it more alkaline.",
+        "Correct. Excreting bicarbonate brings the ratio back toward 20 to 1.",
+        "More ammonium excretion adds new bicarbonate to the blood. That is the response to acid, not to alkalinity.",
+        "Reclaiming more bicarbonate would keep it in her blood. Her kidneys need to let more go."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "A type A intercalated cell secretes one hydrogen ion, which leaves the body in the urine as part of an ammonium ion. What does this add to the blood?",
+    "options": ["One chloride ion", "One hydrogen ion", "One molecule of carbon dioxide", "One new bicarbonate ion"],
+    "correct": 3,
+    "why": {
+      "correct": "Carbonic anhydrase made that H+ together with an HCO3− inside the cell. The H+ left in the urine, and the HCO3− crossed into the blood. It replaces a bicarbonate ion that a fixed acid used up.",
+      "options": [
+        "Chloride moves the other way: from the blood into the cell, in exchange for the bicarbonate that leaves.",
+        "The hydrogen ion went into the urine. Sending hydrogen ions to the blood is what type B cells do.",
+        "Carbon dioxide was used up inside the cell to make the H+ and HCO3−, not added to the blood.",
+        "Correct. Every H+ excreted on ammonia or phosphate adds one new bicarbonate to the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "A man's glomeruli filter 180 L of plasma a day, and his plasma bicarbonate is 25 mmol/L. How much bicarbonate is filtered each day?",
+    "options": ["4,500 mmol", "205 mmol", "7.2 mmol", "45,000 mmol"],
+    "correct": 0,
+    "why": {
+      "correct": "Filtered load = volume filtered × plasma concentration = 180 L/day × 25 mmol/L = 4,500 mmol/day. Almost all of it must be reclaimed.",
+      "options": [
+        "Correct. 180 × 25 = 4,500 mmol a day, many times the daily fixed acid load.",
+        "205 comes from adding 180 and 25. The filtered load is their product.",
+        "7.2 comes from dividing 180 by 25. Multiply volume by concentration instead.",
+        "45,000 is ten times too large; 180 × 25 is 4,500."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "In 24 hours a woman excretes 20 mmol of titratable acid, 45 mmol of ammonium and 5 mmol of bicarbonate. What is her net acid excretion?",
+    "options": ["70 mmol", "60 mmol", "65 mmol", "25 mmol"],
+    "correct": 1,
+    "why": {
+      "correct": "Net acid excretion = titratable acid + ammonium − urinary bicarbonate = 20 + 45 − 5 = 60 mmol. In balance, this matches her daily fixed acid production.",
+      "options": [
+        "70 adds the bicarbonate. Bicarbonate lost in the urine is base, so it is subtracted.",
+        "Correct. 20 + 45 − 5 = 60 mmol.",
+        "65 leaves out the bicarbonate. Each bicarbonate lost cancels one hydrogen ion excreted.",
+        "25 subtracts the ammonium. Ammonium carries acid out, so it is added."
+      ]
+    }
+  },
+  {
+    "id": "anp-acid-base-regulation-20",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "mass-balance"],
+    "q": "Mr. Osei has had an ongoing fixed acid load for a week. His kidneys are healthy. Which change in his urine best shows that they have stepped up acid excretion?",
+    "options": ["Several times more ammonium than normal", "Several times more titratable acid than normal", "Several times more free hydrogen ions than normal", "More bicarbonate than normal"],
+    "correct": 0,
+    "why": {
+      "correct": "Ammonium is the adjustable route. Over 3 to 5 days, the proximal tubule breaks down more glutamine, and ammonium excretion can rise five- to tenfold, adding an equal amount of new bicarbonate to the blood.",
+      "options": [
+        "Correct. Rising ammonium production is the kidneys' main long-term response to an acid load.",
+        "Titratable acid is limited by how much phosphate is filtered, so it rises only modestly.",
+        "Urine pH cannot fall much below 4.5, where each liter holds only about 0.03 mmol of free H+. Free hydrogen ions carry a tiny share of acid at any pH.",
+        "Losing bicarbonate would make his acid load worse. In an acid load the kidneys reclaim essentially all of it."
+      ]
+    }
+  }
+]

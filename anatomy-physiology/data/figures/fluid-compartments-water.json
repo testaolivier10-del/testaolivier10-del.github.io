@@ -13,7 +13,9 @@
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.4",
     "labels": [],
-    "ext": "jpg"
+    "ext": "jpg",
+    "w": 588,
+    "h": 489
   },
   "os-26-5": {
     "file": "figures/openstax/os-26-5.jpg",
@@ -29,7 +31,9 @@
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.5",
     "labels": [],
-    "ext": "jpg"
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1087
   },
   "os-26-10": {
     "file": "figures/openstax/os-26-10.jpg",
@@ -45,6 +49,8 @@
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.10",
     "labels": [],
-    "ext": "jpg"
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1817
   }
 }
