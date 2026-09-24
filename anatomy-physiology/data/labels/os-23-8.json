@@ -1,0 +1,208 @@
+{
+  "figure": "os-23-8",
+  "labels": [
+    {
+      "id": "epiglottis",
+      "name": "Epiglottis",
+      "accept": [
+        "epiglottis"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "larynx",
+      "box": [
+        455,
+        3,
+        96,
+        26
+      ]
+    },
+    {
+      "id": "palatopharyngeal-arch",
+      "name": "Palatopharyngeal arch",
+      "accept": [
+        "palatopharyngeal arch",
+        "palatopharyngeal fold"
+      ],
+      "lines": [
+        1,
+        2
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        454,
+        57,
+        173,
+        46
+      ]
+    },
+    {
+      "id": "palatine-tonsil",
+      "name": "Palatine tonsil",
+      "accept": [
+        "palatine tonsil",
+        "palatine tonsils"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        455,
+        115,
+        139,
+        21
+      ]
+    },
+    {
+      "id": "lingual-tonsil",
+      "name": "Lingual tonsil",
+      "accept": [
+        "lingual tonsil",
+        "lingual tonsils"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        455,
+        160,
+        132,
+        26
+      ]
+    },
+    {
+      "id": "palatoglossal-arch",
+      "name": "Palatoglossal arch",
+      "accept": [
+        "palatoglossal arch",
+        "palatoglossal fold"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        454,
+        204,
+        135,
+        46
+      ]
+    },
+    {
+      "id": "terminal-sulcus",
+      "name": "Terminal sulcus",
+      "accept": [
+        "terminal sulcus",
+        "sulcus terminalis"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": null,
+      "box": [
+        453,
+        270,
+        157,
+        21
+      ]
+    },
+    {
+      "id": "foliate-papillae",
+      "name": "Foliate papillae",
+      "accept": [
+        "foliate papilla",
+        "foliate papillae"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        455,
+        306,
+        151,
+        25
+      ]
+    },
+    {
+      "id": "circumvallate-papilla",
+      "name": "Circumvallate papilla",
+      "accept": [
+        "circumvallate papillae",
+        "vallate papilla",
+        "vallate papillae",
+        "circumvallate papilla"
+      ],
+      "lines": [
+        24,
+        28
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        454,
+        350,
+        138,
+        50
+      ]
+    },
+    {
+      "id": "dorsum-of-tongue",
+      "name": "Dorsum of tongue",
+      "accept": [
+        "dorsum",
+        "dorsum of the tongue",
+        "dorsal surface of the tongue"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": null,
+      "box": [
+        455,
+        413,
+        173,
+        26
+      ]
+    },
+    {
+      "id": "fungiform-papilla",
+      "name": "Fungiform papilla",
+      "accept": [
+        "fungiform papillae",
+        "fungiform papilla"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        455,
+        460,
+        171,
+        26
+      ]
+    },
+    {
+      "id": "filiform-papilla",
+      "name": "Filiform papilla",
+      "accept": [
+        "filiform papillae",
+        "filiform papilla"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        455,
+        502,
+        146,
+        25
+      ]
+    }
+  ]
+}

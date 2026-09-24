@@ -1,0 +1,410 @@
+{
+  "figure": "os-23-7",
+  "labels": [
+    {
+      "id": "superior-lip",
+      "name": "Superior lip",
+      "accept": [
+        "upper lip",
+        "superior lip"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": null,
+      "box": [
+        847,
+        7,
+        117,
+        25
+      ]
+    },
+    {
+      "id": "superior-labial-frenulum",
+      "name": "Superior labial frenulum",
+      "accept": [
+        "superior labial frenulum",
+        "upper labial frenulum"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        847,
+        65,
+        230,
+        25
+      ]
+    },
+    {
+      "id": "gingivae-upper",
+      "name": "Gingivae (gums)",
+      "accept": [
+        "gingiva",
+        "gingivae",
+        "gums",
+        "gum"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        847,
+        117,
+        163,
+        25
+      ]
+    },
+    {
+      "id": "palatoglossal-arch",
+      "name": "Palatoglossal arch",
+      "accept": [
+        "palatoglossal arch",
+        "palatoglossal fold",
+        "anterior pillar"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        847,
+        200,
+        180,
+        26
+      ]
+    },
+    {
+      "id": "fauces",
+      "name": "Fauces",
+      "accept": [
+        "fauces"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        847,
+        271,
+        79,
+        21
+      ]
+    },
+    {
+      "id": "hard-palate",
+      "name": "Hard palate",
+      "accept": [
+        "hard palate"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        2,
+        309,
+        119,
+        25
+      ]
+    },
+    {
+      "id": "palatopharyngeal-arch",
+      "name": "Palatopharyngeal arch",
+      "accept": [
+        "palatopharyngeal arch",
+        "palatopharyngeal fold",
+        "posterior pillar"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        847,
+        345,
+        219,
+        25
+      ]
+    },
+    {
+      "id": "soft-palate",
+      "name": "Soft palate",
+      "accept": [
+        "soft palate"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        2,
+        369,
+        111,
+        25
+      ]
+    },
+    {
+      "id": "uvula",
+      "name": "Uvula",
+      "accept": [
+        "uvula"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        3,
+        446,
+        64,
+        21
+      ]
+    },
+    {
+      "id": "palatine-tonsil",
+      "name": "Palatine tonsil",
+      "accept": [
+        "palatine tonsil",
+        "palatine tonsils"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        847,
+        459,
+        140,
+        21
+      ]
+    },
+    {
+      "id": "cheek",
+      "name": "Cheek",
+      "accept": [
+        "cheek",
+        "cheeks"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": null,
+      "box": [
+        2,
+        503,
+        72,
+        21
+      ]
+    },
+    {
+      "id": "molars",
+      "name": "Molars",
+      "accept": [
+        "molar",
+        "molars"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "teeth",
+      "box": [
+        2,
+        604,
+        74,
+        21
+      ]
+    },
+    {
+      "id": "tongue",
+      "name": "Tongue (underside)",
+      "accept": [
+        "tongue",
+        "underside of the tongue"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": null,
+      "box": [
+        846,
+        574,
+        191,
+        25
+      ]
+    },
+    {
+      "id": "lingual-frenulum",
+      "name": "Lingual frenulum",
+      "accept": [
+        "lingual frenulum",
+        "frenulum of the tongue"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        847,
+        610,
+        165,
+        25
+      ]
+    },
+    {
+      "id": "submandibular-duct-opening",
+      "name": "Opening duct of submandibular gland",
+      "accept": [
+        "submandibular duct",
+        "opening of submandibular duct",
+        "opening of the submandibular duct",
+        "submandibular duct opening"
+      ],
+      "lines": [
+        22,
+        24
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        846,
+        682,
+        205,
+        51
+      ]
+    },
+    {
+      "id": "premolars",
+      "name": "Premolars",
+      "accept": [
+        "premolar",
+        "premolars",
+        "bicuspids",
+        "bicuspid"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "teeth",
+      "box": [
+        3,
+        721,
+        106,
+        21
+      ]
+    },
+    {
+      "id": "cuspid",
+      "name": "Cuspid (canine)",
+      "accept": [
+        "cuspid",
+        "canine",
+        "canines",
+        "cuspids"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "teeth",
+      "box": [
+        2,
+        784,
+        157,
+        25
+      ]
+    },
+    {
+      "id": "gingivae-lower",
+      "name": "Gingivae (gums)",
+      "accept": [
+        "gingiva",
+        "gingivae",
+        "gums",
+        "gum"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        847,
+        791,
+        163,
+        26
+      ]
+    },
+    {
+      "id": "incisors",
+      "name": "Incisors",
+      "accept": [
+        "incisor",
+        "incisors"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "teeth",
+      "box": [
+        3,
+        838,
+        82,
+        21
+      ]
+    },
+    {
+      "id": "inferior-labial-frenulum",
+      "name": "Inferior labial frenulum",
+      "accept": [
+        "inferior labial frenulum",
+        "lower labial frenulum"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        848,
+        868,
+        216,
+        22
+      ]
+    },
+    {
+      "id": "oral-vestibule",
+      "name": "Oral vestibule",
+      "accept": [
+        "vestibule",
+        "oral vestibule"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "oral-cavity",
+      "box": [
+        2,
+        887,
+        138,
+        21
+      ]
+    },
+    {
+      "id": "inferior-lip",
+      "name": "Inferior lip",
+      "accept": [
+        "lower lip",
+        "inferior lip"
+      ],
+      "lines": [
+        36
+      ],
+      "concept": null,
+      "box": [
+        848,
+        945,
+        102,
+        26
+      ]
+    }
+  ]
+}

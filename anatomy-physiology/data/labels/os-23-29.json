@@ -1,0 +1,285 @@
+{
+  "figure": "os-23-29",
+  "labels": [
+    {
+      "id": "salivary-amylase",
+      "name": "Salivary amylase",
+      "accept": [
+        "amylase",
+        "salivary amylase"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        810,
+        142,
+        223,
+        33
+      ]
+    },
+    {
+      "id": "limit-dextrins",
+      "name": "Limit dextrins",
+      "accept": [
+        "limit dextrin",
+        "alpha-dextrins",
+        "alpha dextrins",
+        "α-dextrins",
+        "limit dextrins"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "carb-digestion",
+      "box": [
+        132,
+        362,
+        175,
+        27
+      ]
+    },
+    {
+      "id": "maltose",
+      "name": "Maltose",
+      "accept": [
+        "maltose"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "carbohydrate",
+      "box": [
+        489,
+        362,
+        108,
+        27
+      ]
+    },
+    {
+      "id": "sucrose",
+      "name": "Sucrose",
+      "accept": [
+        "sucrose"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "carbohydrate",
+      "cover": true,
+      "note": "OpenStax draws sucrose in the disaccharide box fed by salivary amylase acting on starch and glycogen. Amylase makes maltose, maltotriose and limit dextrins only; sucrose comes straight from the diet (table sugar), not from starch. Covered for good and never asked.",
+      "box": [
+        718,
+        362,
+        115,
+        27
+      ]
+    },
+    {
+      "id": "lactose",
+      "name": "Lactose",
+      "accept": [
+        "lactose"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "carbohydrate",
+      "cover": true,
+      "note": "OpenStax draws lactose in the disaccharide box fed by salivary amylase acting on starch and glycogen. Amylase makes maltose, maltotriose and limit dextrins only; lactose comes straight from the diet (milk sugar), not from starch. Covered for good and never asked.",
+      "box": [
+        948,
+        362,
+        109,
+        27
+      ]
+    },
+    {
+      "id": "alpha-dextrinase",
+      "name": "α-Dextrinase",
+      "accept": [
+        "alpha-dextrinase",
+        "alpha dextrinase",
+        "a-dextrinase",
+        "dextrinase",
+        "α-dextrinase"
+      ],
+      "lines": [
+        9,
+        5
+      ],
+      "concept": "carb-digestion",
+      "box": [
+        132,
+        478,
+        173,
+        27
+      ]
+    },
+    {
+      "id": "maltase",
+      "name": "Maltase",
+      "accept": [
+        "maltase"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "brush-border-enzymes",
+      "box": [
+        489,
+        478,
+        108,
+        27
+      ]
+    },
+    {
+      "id": "sucrase",
+      "name": "Sucrase",
+      "accept": [
+        "sucrase"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "brush-border-enzymes",
+      "box": [
+        718,
+        478,
+        115,
+        27
+      ]
+    },
+    {
+      "id": "lactase",
+      "name": "Lactase",
+      "accept": [
+        "lactase"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "brush-border-enzymes",
+      "box": [
+        948,
+        478,
+        109,
+        27
+      ]
+    },
+    {
+      "id": "glucose-from-dextrins",
+      "name": "glucose",
+      "accept": [
+        "glucose"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "glucose",
+      "box": [
+        165,
+        634,
+        108,
+        33
+      ]
+    },
+    {
+      "id": "glucose-from-maltose",
+      "name": "2 glucose",
+      "accept": [
+        "glucose",
+        "2 glucose",
+        "two glucose"
+      ],
+      "lines": [
+        14,
+        11
+      ],
+      "concept": "glucose",
+      "box": [
+        476,
+        634,
+        132,
+        33
+      ]
+    },
+    {
+      "id": "glucose-from-sucrose",
+      "name": "1 glucose",
+      "accept": [
+        "glucose",
+        "1 glucose"
+      ],
+      "lines": [
+        15,
+        12
+      ],
+      "concept": "glucose",
+      "box": [
+        711,
+        634,
+        130,
+        33
+      ]
+    },
+    {
+      "id": "fructose",
+      "name": "1 fructose",
+      "accept": [
+        "fructose",
+        "1 fructose"
+      ],
+      "lines": [
+        19,
+        17
+      ],
+      "concept": "carbohydrate",
+      "box": [
+        710,
+        667,
+        133,
+        27
+      ]
+    },
+    {
+      "id": "glucose-from-lactose",
+      "name": "1 glucose",
+      "accept": [
+        "glucose",
+        "1 glucose"
+      ],
+      "lines": [
+        16,
+        13
+      ],
+      "concept": "glucose",
+      "box": [
+        926,
+        634,
+        130,
+        33
+      ]
+    },
+    {
+      "id": "galactose",
+      "name": "1 galactose",
+      "accept": [
+        "galactose",
+        "1 galactose"
+      ],
+      "lines": [
+        20,
+        18
+      ],
+      "concept": "carbohydrate",
+      "box": [
+        926,
+        667,
+        153,
+        33
+      ]
+    }
+  ]
+}

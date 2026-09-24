@@ -1,0 +1,92 @@
+{
+  "figure": "os-23-18",
+  "labels": [
+    {
+      "id": "duodenum",
+      "name": "Duodenum",
+      "accept": [
+        "duodenum"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "small-intestine-regions",
+      "box": [
+        0,
+        114,
+        113,
+        21
+      ]
+    },
+    {
+      "id": "jejunum",
+      "name": "Jejunum",
+      "accept": [
+        "jejunum"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "small-intestine-regions",
+      "box": [
+        0,
+        198,
+        90,
+        25
+      ]
+    },
+    {
+      "id": "ileum",
+      "name": "Ileum",
+      "accept": [
+        "ileum"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "small-intestine-regions",
+      "box": [
+        0,
+        282,
+        61,
+        21
+      ]
+    },
+    {
+      "id": "large-intestine",
+      "name": "Large intestine",
+      "accept": [
+        "large intestine",
+        "colon",
+        "large bowel"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        0,
+        366,
+        148,
+        25
+      ]
+    },
+    {
+      "id": "rectum",
+      "name": "Rectum",
+      "accept": [
+        "rectum"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        0,
+        450,
+        83,
+        21
+      ]
+    }
+  ]
+}

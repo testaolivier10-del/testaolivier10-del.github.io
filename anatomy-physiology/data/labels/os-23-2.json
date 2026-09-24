@@ -1,0 +1,478 @@
+{
+  "figure": "os-23-2",
+  "labels": [
+    {
+      "id": "salivary-glands",
+      "name": "Salivary glands",
+      "accept": [
+        "salivary glands",
+        "salivary gland"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        857,
+        217,
+        193,
+        28
+      ]
+    },
+    {
+      "id": "mouth",
+      "name": "Mouth",
+      "accept": [
+        "oral cavity",
+        "mouth"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": null,
+      "box": [
+        41,
+        238,
+        77,
+        23
+      ]
+    },
+    {
+      "id": "parotid-gland",
+      "name": "Parotid gland",
+      "accept": [
+        "parotid",
+        "parotid salivary gland"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        871,
+        245,
+        150,
+        28
+      ]
+    },
+    {
+      "id": "tongue",
+      "name": "Tongue",
+      "accept": [
+        "tongue"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": null,
+      "box": [
+        39,
+        271,
+        91,
+        28
+      ]
+    },
+    {
+      "id": "sublingual-gland",
+      "name": "Sublingual gland",
+      "accept": [
+        "sublingual",
+        "sublingual salivary gland"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        872,
+        297,
+        186,
+        28
+      ]
+    },
+    {
+      "id": "submandibular-gland",
+      "name": "Submandibular gland",
+      "accept": [
+        "submandibular",
+        "submandibular salivary gland"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        872,
+        325,
+        230,
+        28
+      ]
+    },
+    {
+      "id": "pharynx",
+      "name": "Pharynx",
+      "accept": [
+        "throat",
+        "pharynx"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "pharynx",
+      "box": [
+        858,
+        432,
+        98,
+        28
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus",
+      "accept": [
+        "oesophagus",
+        "esophagus"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "major-organs",
+      "box": [
+        41,
+        565,
+        130,
+        28
+      ]
+    },
+    {
+      "id": "liver",
+      "name": "Liver",
+      "accept": [
+        "liver"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "major-organs",
+      "box": [
+        41,
+        711,
+        63,
+        24
+      ]
+    },
+    {
+      "id": "stomach",
+      "name": "Stomach",
+      "accept": [
+        "stomach"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "major-organs",
+      "box": [
+        857,
+        789,
+        104,
+        23
+      ]
+    },
+    {
+      "id": "gallbladder",
+      "name": "Gallbladder",
+      "accept": [
+        "gall bladder",
+        "gallbladder"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "major-organs",
+      "box": [
+        40,
+        801,
+        134,
+        24
+      ]
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "accept": [
+        "spleen"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "major-organs",
+      "box": [
+        857,
+        829,
+        85,
+        28
+      ]
+    },
+    {
+      "id": "small-intestine",
+      "name": "Small intestine",
+      "accept": [
+        "small intestine",
+        "small bowel"
+      ],
+      "lines": [
+        12,
+        13
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        40,
+        849,
+        186,
+        24
+      ]
+    },
+    {
+      "id": "pancreas",
+      "name": "Pancreas",
+      "accept": [
+        "pancreas"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "major-organs",
+      "box": [
+        858,
+        872,
+        111,
+        24
+      ]
+    },
+    {
+      "id": "duodenum",
+      "name": "Duodenum",
+      "accept": [
+        "duodenum"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "small-intestine-regions",
+      "box": [
+        54,
+        877,
+        127,
+        24
+      ]
+    },
+    {
+      "id": "large-intestine",
+      "name": "Large intestine",
+      "accept": [
+        "large intestine",
+        "large bowel"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        857,
+        904,
+        187,
+        28
+      ]
+    },
+    {
+      "id": "jejunum",
+      "name": "Jejunum",
+      "accept": [
+        "jejunum"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "small-intestine-regions",
+      "box": [
+        53,
+        905,
+        101,
+        28
+      ]
+    },
+    {
+      "id": "transverse-colon",
+      "name": "Transverse colon",
+      "accept": [
+        "transverse colon"
+      ],
+      "lines": [
+        18
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        869,
+        932,
+        193,
+        23
+      ]
+    },
+    {
+      "id": "ileum",
+      "name": "Ileum",
+      "accept": [
+        "ileum"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "small-intestine-regions",
+      "box": [
+        55,
+        934,
+        68,
+        24
+      ]
+    },
+    {
+      "id": "ascending-colon",
+      "name": "Ascending colon",
+      "accept": [
+        "ascending colon"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        868,
+        1015,
+        186,
+        28
+      ]
+    },
+    {
+      "id": "descending-colon",
+      "name": "Descending colon",
+      "accept": [
+        "descending colon"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        857,
+        1136,
+        199,
+        28
+      ]
+    },
+    {
+      "id": "cecum",
+      "name": "Cecum",
+      "accept": [
+        "caecum",
+        "cecum"
+      ],
+      "lines": [
+        22
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        857,
+        1173,
+        86,
+        24
+      ]
+    },
+    {
+      "id": "sigmoid-colon",
+      "name": "Sigmoid colon",
+      "accept": [
+        "sigmoid colon",
+        "sigmoid"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        857,
+        1212,
+        160,
+        28
+      ]
+    },
+    {
+      "id": "appendix",
+      "name": "Appendix",
+      "accept": [
+        "vermiform appendix",
+        "appendix"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "major-organs",
+      "box": [
+        856,
+        1247,
+        111,
+        28
+      ]
+    },
+    {
+      "id": "rectum",
+      "name": "Rectum",
+      "accept": [
+        "rectum"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        858,
+        1275,
+        92,
+        24
+      ]
+    },
+    {
+      "id": "anal-canal",
+      "name": "Anal canal",
+      "accept": [
+        "anal canal"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "large-intestine-regions",
+      "box": [
+        856,
+        1299,
+        122,
+        23
+      ]
+    },
+    {
+      "id": "anus",
+      "name": "Anus",
+      "accept": [
+        "anus"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": null,
+      "box": [
+        40,
+        1311,
+        66,
+        24
+      ]
+    }
+  ]
+}

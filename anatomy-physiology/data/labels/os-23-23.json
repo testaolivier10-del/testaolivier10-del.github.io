@@ -1,0 +1,62 @@
+{
+  "figure": "os-23-23",
+  "labels": [
+    {
+      "id": "epiploic-appendages",
+      "name": "Epiploic appendages",
+      "accept": [
+        "epiploic appendage",
+        "omental appendages",
+        "epiploic appendages"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "haustra",
+      "box": [
+        437,
+        149,
+        201,
+        25
+      ]
+    },
+    {
+      "id": "haustra",
+      "name": "Haustra",
+      "accept": [
+        "haustrum",
+        "haustra"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "haustra",
+      "box": [
+        437,
+        362,
+        84,
+        21
+      ]
+    },
+    {
+      "id": "teniae-coli",
+      "name": "Teniae coli",
+      "accept": [
+        "tenia coli",
+        "taeniae coli",
+        "taenia coli",
+        "teniae coli"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "haustra",
+      "box": [
+        436,
+        584,
+        110,
+        21
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "figure": "os-23-24",
+  "labels": [
+    {
+      "id": "liver",
+      "name": "Liver",
+      "accept": [
+        "liver"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "major-organs",
+      "box": [
+        650,
+        427,
+        67,
+        22
+      ]
+    },
+    {
+      "id": "right-lobe",
+      "name": "Right lobe",
+      "accept": [
+        "right lobe",
+        "right lobe of the liver"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        657,
+        450,
+        105,
+        25
+      ]
+    },
+    {
+      "id": "quadrate-lobe",
+      "name": "Quadrate lobe",
+      "accept": [
+        "quadrate lobe"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        656,
+        475,
+        144,
+        22
+      ]
+    },
+    {
+      "id": "left-lobe",
+      "name": "Left lobe",
+      "accept": [
+        "left lobe",
+        "left lobe of the liver"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        656,
+        500,
+        92,
+        21
+      ]
+    },
+    {
+      "id": "caudate-lobe",
+      "name": "Caudate lobe",
+      "accept": [
+        "caudate lobe"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        656,
+        525,
+        136,
+        21
+      ]
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "accept": [
+        "spleen"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "major-organs",
+      "box": [
+        656,
+        604,
+        76,
+        25
+      ]
+    },
+    {
+      "id": "gallbladder",
+      "name": "Gallbladder",
+      "accept": [
+        "gall bladder",
+        "gallbladder"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "gallbladder",
+      "box": [
+        0,
+        607,
+        115,
+        21
+      ]
+    },
+    {
+      "id": "right-hepatic-duct",
+      "name": "Right hepatic duct",
+      "accept": [
+        "right hepatic duct"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "bile",
+      "box": [
+        0,
+        660,
+        175,
+        25
+      ]
+    },
+    {
+      "id": "pancreas",
+      "name": "Pancreas",
+      "accept": [
+        "pancreas"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "major-organs",
+      "box": [
+        657,
+        678,
+        98,
+        21
+      ]
+    },
+    {
+      "id": "cystic-duct",
+      "name": "Cystic duct",
+      "accept": [
+        "cystic duct"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "bile",
+      "box": [
+        0,
+        698,
+        110,
+        26
+      ]
+    },
+    {
+      "id": "common-hepatic-duct",
+      "name": "Common hepatic duct",
+      "accept": [
+        "common hepatic duct"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "bile",
+      "box": [
+        0,
+        735,
+        211,
+        25
+      ]
+    },
+    {
+      "id": "pancreatic-duct",
+      "name": "Pancreatic duct",
+      "accept": [
+        "main pancreatic duct",
+        "pancreatic duct"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "pancreatic-juice",
+      "box": [
+        657,
+        745,
+        150,
+        21
+      ]
+    },
+    {
+      "id": "common-bile-duct",
+      "name": "Common bile duct",
+      "accept": [
+        "bile duct",
+        "common bile duct"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "bile",
+      "box": [
+        0,
+        772,
+        176,
+        21
+      ]
+    },
+    {
+      "id": "left-hepatic-duct",
+      "name": "Left hepatic duct",
+      "accept": [
+        "left hepatic duct"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "bile",
+      "box": [
+        0,
+        805,
+        161,
+        25
+      ]
+    }
+  ]
+}

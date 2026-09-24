@@ -1,0 +1,185 @@
+{
+  "figure": "os-23-11",
+  "labels": [
+    {
+      "id": "enamel",
+      "name": "Enamel",
+      "accept": [
+        "enamel"
+      ],
+      "lines": [],
+      "concept": "teeth",
+      "box": [
+        881,
+        8,
+        122,
+        32
+      ]
+    },
+    {
+      "id": "crown",
+      "name": "Crown",
+      "accept": [
+        "crown"
+      ],
+      "lines": [],
+      "concept": "teeth",
+      "box": [
+        0,
+        89,
+        105,
+        33
+      ]
+    },
+    {
+      "id": "dentin",
+      "name": "Dentin",
+      "accept": [
+        "dentine",
+        "dentin"
+      ],
+      "lines": [],
+      "concept": "teeth",
+      "box": [
+        881,
+        113,
+        104,
+        32
+      ]
+    },
+    {
+      "id": "gingiva",
+      "name": "Gingiva (gum)",
+      "accept": [
+        "gingiva",
+        "gum",
+        "gums",
+        "gingivae"
+      ],
+      "lines": [],
+      "concept": "oral-cavity",
+      "box": [
+        879,
+        178,
+        125,
+        83
+      ]
+    },
+    {
+      "id": "neck",
+      "name": "Neck",
+      "accept": [
+        "neck",
+        "neck of the tooth"
+      ],
+      "lines": [],
+      "concept": "teeth",
+      "box": [
+        1,
+        250,
+        77,
+        33
+      ]
+    },
+    {
+      "id": "pulp-cavity",
+      "name": "Pulp cavity (contains blood vessels and nerves)",
+      "accept": [
+        "pulp cavity",
+        "pulp",
+        "pulp chamber"
+      ],
+      "lines": [],
+      "concept": "teeth",
+      "box": [
+        879,
+        280,
+        220,
+        167
+      ]
+    },
+    {
+      "id": "cementum",
+      "name": "Cementum",
+      "accept": [
+        "cement",
+        "cementum"
+      ],
+      "lines": [],
+      "concept": "teeth",
+      "box": [
+        879,
+        465,
+        177,
+        33
+      ]
+    },
+    {
+      "id": "periodontal-ligament",
+      "name": "Periodontal ligament",
+      "accept": [
+        "periodontal ligament",
+        "pdl",
+        "periodontal membrane"
+      ],
+      "lines": [],
+      "concept": "joint-subtypes",
+      "box": [
+        880,
+        527,
+        182,
+        82
+      ]
+    },
+    {
+      "id": "root",
+      "name": "Root",
+      "accept": [
+        "root",
+        "root of the tooth"
+      ],
+      "lines": [],
+      "concept": "teeth",
+      "box": [
+        2,
+        536,
+        77,
+        32
+      ]
+    },
+    {
+      "id": "root-canal",
+      "name": "Root canal",
+      "accept": [
+        "root canal",
+        "pulp canal"
+      ],
+      "lines": [],
+      "concept": "teeth",
+      "box": [
+        881,
+        627,
+        171,
+        32
+      ]
+    },
+    {
+      "id": "bone",
+      "name": "Bone",
+      "accept": [
+        "bone",
+        "alveolar bone",
+        "jaw bone",
+        "alveolar process"
+      ],
+      "lines": [],
+      "concept": "bone-tissue-basic",
+      "box": [
+        881,
+        734,
+        84,
+        32
+      ]
+    }
+  ]
+}

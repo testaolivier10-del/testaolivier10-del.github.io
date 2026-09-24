@@ -1,0 +1,18 @@
+{
+  "os-24-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.3",
+      "section": "24.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1bcb15e08ab236bbd1f973885662a79f930cc8c3",
+      "page": "24-1-overview-of-metabolic-reactions"
+    },
+    "alt": "A flow chart that starts with a drawing of foods at the top: fruit, eggs, milk and meat. Arrows split the food into three columns: proteins, complex carbohydrates and triglycerides. Each is broken down, by arrows marked as catabolic, into its building blocks: amino acids, glucose, and glycerol and fatty acids. All three building blocks feed arrows into a central box, energy production, where ADP becomes ATP. Side arrows marked as anabolic show amino acids built into protein in muscle, glycerol and fatty acids built into stored fat in adipose tissue, and glucose stored as glycogen in the liver and muscle. Return arrows show muscle protein and stored fat being broken back down.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.3",
+    "labels": [],
+    "w": 1100,
+    "h": 1011,
+    "ext": "jpg"
+  }
+}

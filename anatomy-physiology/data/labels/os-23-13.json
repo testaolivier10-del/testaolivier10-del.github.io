@@ -1,0 +1,98 @@
+{
+  "figure": "os-23-13",
+  "labels": [
+    {
+      "id": "upper-esophageal-sphincter",
+      "name": "Upper esophageal sphincter",
+      "accept": [
+        "upper esophageal sphincter",
+        "ues"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "esophagus",
+      "box": [
+        439,
+        263,
+        182,
+        50
+      ]
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "accept": [
+        "trachea",
+        "windpipe"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "major-organs",
+      "box": [
+        0,
+        325,
+        82,
+        21
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus",
+      "accept": [
+        "oesophagus",
+        "esophagus"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "esophagus",
+      "box": [
+        0,
+        574,
+        112,
+        25
+      ]
+    },
+    {
+      "id": "lower-esophageal-sphincter",
+      "name": "Lower esophageal sphincter",
+      "accept": [
+        "lower esophageal sphincter",
+        "les",
+        "cardiac sphincter",
+        "gastroesophageal sphincter"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "esophagus",
+      "box": [
+        436,
+        574,
+        182,
+        50
+      ]
+    },
+    {
+      "id": "stomach",
+      "name": "Stomach",
+      "accept": [
+        "stomach"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "major-organs",
+      "box": [
+        0,
+        775,
+        90,
+        21
+      ]
+    }
+  ]
+}

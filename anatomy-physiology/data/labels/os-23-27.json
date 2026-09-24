@@ -1,0 +1,182 @@
+{
+  "figure": "os-23-27",
+  "labels": [
+    {
+      "id": "left-hepatic-duct",
+      "name": "Left hepatic duct",
+      "accept": [
+        "left hepatic duct"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "bile",
+      "box": [
+        0,
+        16,
+        164,
+        26
+      ]
+    },
+    {
+      "id": "right-hepatic-duct",
+      "name": "Right hepatic duct",
+      "accept": [
+        "right hepatic duct"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "bile",
+      "box": [
+        0,
+        58,
+        178,
+        25
+      ]
+    },
+    {
+      "id": "cystic-duct",
+      "name": "Cystic duct",
+      "accept": [
+        "cystic duct"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "bile",
+      "box": [
+        0,
+        95,
+        114,
+        26
+      ]
+    },
+    {
+      "id": "gallbladder",
+      "name": "Gallbladder",
+      "accept": [
+        "gall bladder",
+        "gallbladder"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "gallbladder",
+      "box": [
+        0,
+        223,
+        132,
+        21
+      ]
+    },
+    {
+      "id": "gallbladder-body",
+      "name": "Body",
+      "accept": [
+        "body",
+        "body of the gallbladder"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "gallbladder",
+      "box": [
+        24,
+        259,
+        59,
+        25
+      ]
+    },
+    {
+      "id": "gallbladder-fundus",
+      "name": "Fundus",
+      "accept": [
+        "fundus",
+        "fundus of the gallbladder"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "gallbladder",
+      "box": [
+        24,
+        293,
+        80,
+        21
+      ]
+    },
+    {
+      "id": "gallbladder-neck",
+      "name": "Neck",
+      "accept": [
+        "neck",
+        "neck of the gallbladder"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "gallbladder",
+      "box": [
+        24,
+        329,
+        58,
+        21
+      ]
+    },
+    {
+      "id": "common-hepatic-duct",
+      "name": "Common hepatic duct",
+      "accept": [
+        "common hepatic duct"
+      ],
+      "lines": [
+        7,
+        8
+      ],
+      "concept": "bile",
+      "box": [
+        518,
+        476,
+        124,
+        50
+      ]
+    },
+    {
+      "id": "common-bile-duct",
+      "name": "Common bile duct",
+      "accept": [
+        "bile duct",
+        "common bile duct"
+      ],
+      "lines": [
+        9,
+        11
+      ],
+      "concept": "bile",
+      "box": [
+        629,
+        581,
+        95,
+        46
+      ]
+    },
+    {
+      "id": "liver",
+      "name": "Liver",
+      "accept": [
+        "liver"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "major-organs",
+      "box": [
+        446,
+        597,
+        57,
+        21
+      ]
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "figure": "os-23-15",
+  "labels": [
+    {
+      "id": "cardia",
+      "name": "Cardia",
+      "accept": [
+        "cardia",
+        "cardiac region"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        934,
+        0,
+        72,
+        21
+      ]
+    },
+    {
+      "id": "esophagus",
+      "name": "Esophagus",
+      "accept": [
+        "oesophagus",
+        "esophagus"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "esophagus",
+      "box": [
+        0,
+        37,
+        110,
+        25
+      ]
+    },
+    {
+      "id": "muscularis-externa",
+      "name": "Muscularis externa",
+      "accept": [
+        "muscularis externa",
+        "muscularis"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "gi-wall",
+      "box": [
+        0,
+        69,
+        199,
+        21
+      ]
+    },
+    {
+      "id": "fundus",
+      "name": "Fundus",
+      "accept": [
+        "fundus",
+        "fundus of the stomach"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        935,
+        70,
+        79,
+        21
+      ]
+    },
+    {
+      "id": "longitudinal-layer",
+      "name": "Longitudinal layer",
+      "accept": [
+        "longitudinal muscle",
+        "longitudinal layer"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "gi-wall",
+      "box": [
+        6,
+        93,
+        172,
+        26
+      ]
+    },
+    {
+      "id": "circular-layer",
+      "name": "Circular layer",
+      "accept": [
+        "circular muscle",
+        "circular layer"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "gi-wall",
+      "box": [
+        5,
+        118,
+        133,
+        25
+      ]
+    },
+    {
+      "id": "oblique-layer",
+      "name": "Oblique layer",
+      "accept": [
+        "oblique muscle",
+        "oblique layer"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "gi-wall",
+      "box": [
+        5,
+        142,
+        132,
+        26
+      ]
+    },
+    {
+      "id": "serosa",
+      "name": "Serosa",
+      "accept": [
+        "serosa",
+        "visceral peritoneum"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "gi-wall",
+      "box": [
+        934,
+        177,
+        77,
+        21
+      ]
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "accept": [
+        "body",
+        "body of the stomach"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        934,
+        296,
+        59,
+        25
+      ]
+    },
+    {
+      "id": "lesser-curvature",
+      "name": "Lesser curvature",
+      "accept": [
+        "lesser curvature"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        263,
+        306,
+        164,
+        21
+      ]
+    },
+    {
+      "id": "pyloric-sphincter",
+      "name": "Pyloric sphincter (valve) at pylorus",
+      "accept": [
+        "pyloric sphincter",
+        "pyloric valve",
+        "pylorus"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        0,
+        350,
+        162,
+        50
+      ]
+    },
+    {
+      "id": "lumen",
+      "name": "Lumen",
+      "accept": [
+        "lumen"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "epithelium",
+      "box": [
+        934,
+        377,
+        74,
+        21
+      ]
+    },
+    {
+      "id": "rugae",
+      "name": "Rugae of mucosa",
+      "accept": [
+        "rugae",
+        "ruga",
+        "gastric folds",
+        "rugae of mucosa"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        935,
+        433,
+        167,
+        25
+      ]
+    },
+    {
+      "id": "duodenum",
+      "name": "Duodenum",
+      "accept": [
+        "duodenum"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "small-intestine-regions",
+      "box": [
+        0,
+        548,
+        108,
+        21
+      ]
+    },
+    {
+      "id": "pyloric-canal",
+      "name": "Pyloric canal",
+      "accept": [
+        "pyloric canal"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        170,
+        636,
+        127,
+        25
+      ]
+    },
+    {
+      "id": "greater-curvature",
+      "name": "Greater curvature",
+      "accept": [
+        "greater curvature"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        701,
+        703,
+        172,
+        22
+      ]
+    },
+    {
+      "id": "pyloric-antrum",
+      "name": "Pyloric antrum",
+      "accept": [
+        "pyloric antrum",
+        "antrum"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "stomach-anatomy",
+      "box": [
+        450,
+        704,
+        142,
+        24
+      ]
+    }
+  ]
+}

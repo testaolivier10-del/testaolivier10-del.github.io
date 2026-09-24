@@ -1,0 +1,525 @@
+{
+  "figure": "os-23-10",
+  "labels": [
+    {
+      "id": "upper-central-incisor",
+      "name": "Central incisor (7–8 yr)",
+      "accept": [
+        "central incisor",
+        "incisor"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        3,
+        181,
+        22
+      ]
+    },
+    {
+      "id": "upper-lateral-incisor",
+      "name": "Lateral incisor (8–9 yr)",
+      "accept": [
+        "lateral incisor",
+        "incisor"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        31,
+        177,
+        21
+      ]
+    },
+    {
+      "id": "upper-canine",
+      "name": "Cuspid or canine (11–12 yr)",
+      "accept": [
+        "canine",
+        "cuspid",
+        "cuspid or canine",
+        "eyetooth"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        55,
+        218,
+        22
+      ]
+    },
+    {
+      "id": "upper-first-premolar",
+      "name": "First premolar or bicuspid (9–10 yr)",
+      "accept": [
+        "first premolar",
+        "first bicuspid",
+        "premolar",
+        "bicuspid"
+      ],
+      "lines": [
+        7,
+        8,
+        9
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        85,
+        144,
+        41
+      ]
+    },
+    {
+      "id": "upper-second-premolar",
+      "name": "Second premolar or bicuspid (10–12 yr)",
+      "accept": [
+        "second premolar",
+        "second bicuspid",
+        "premolar",
+        "bicuspid"
+      ],
+      "lines": [
+        11,
+        13,
+        14
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        139,
+        160,
+        41
+      ]
+    },
+    {
+      "id": "upper-first-molar",
+      "name": "First molar (6–7 yr)",
+      "accept": [
+        "first molar",
+        "molar"
+      ],
+      "lines": [
+        16,
+        17
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        192,
+        152,
+        22
+      ]
+    },
+    {
+      "id": "upper-second-molar",
+      "name": "Second molar (12–13 yr)",
+      "accept": [
+        "second molar",
+        "molar"
+      ],
+      "lines": [
+        19,
+        21,
+        22
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        240,
+        116,
+        42
+      ]
+    },
+    {
+      "id": "upper-third-molar",
+      "name": "Third molar or wisdom tooth",
+      "accept": [
+        "third molar",
+        "wisdom tooth",
+        "molar"
+      ],
+      "lines": [
+        25,
+        28
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        293,
+        117,
+        38
+      ]
+    },
+    {
+      "id": "deciduous-upper-central-incisor",
+      "name": "Central incisor (8–12 mo)",
+      "accept": [
+        "central incisor",
+        "incisor"
+      ],
+      "lines": [
+        27,
+        29,
+        30
+      ],
+      "concept": "teeth",
+      "box": [
+        172,
+        310,
+        119,
+        42
+      ]
+    },
+    {
+      "id": "deciduous-upper-lateral-incisor",
+      "name": "Lateral incisor (12–24 mo)",
+      "accept": [
+        "lateral incisor",
+        "incisor"
+      ],
+      "lines": [
+        31,
+        32
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        379,
+        205,
+        22
+      ]
+    },
+    {
+      "id": "deciduous-upper-canine",
+      "name": "Cuspid or canine (16–24 mo)",
+      "accept": [
+        "canine",
+        "cuspid",
+        "cuspid or canine",
+        "eyetooth"
+      ],
+      "lines": [
+        33,
+        34
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        411,
+        138,
+        41
+      ]
+    },
+    {
+      "id": "deciduous-upper-first-molar",
+      "name": "First molar (12–16 mo)",
+      "accept": [
+        "first molar",
+        "molar"
+      ],
+      "lines": [
+        36,
+        37
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        470,
+        180,
+        21
+      ]
+    },
+    {
+      "id": "deciduous-upper-second-molar",
+      "name": "Second molar (24–32 mo)",
+      "accept": [
+        "second molar",
+        "molar"
+      ],
+      "lines": [
+        39,
+        40
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        504,
+        205,
+        22
+      ]
+    },
+    {
+      "id": "deciduous-lower-second-molar",
+      "name": "Second molar (24–32 mo)",
+      "accept": [
+        "second molar",
+        "molar"
+      ],
+      "lines": [
+        43,
+        44
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        588,
+        205,
+        22
+      ]
+    },
+    {
+      "id": "deciduous-lower-first-molar",
+      "name": "First molar (12–16 mo)",
+      "accept": [
+        "first molar",
+        "molar"
+      ],
+      "lines": [
+        46,
+        47
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        625,
+        180,
+        21
+      ]
+    },
+    {
+      "id": "deciduous-lower-canine",
+      "name": "Cuspid or canine (16–24 mo)",
+      "accept": [
+        "canine",
+        "cuspid",
+        "cuspid or canine",
+        "eyetooth"
+      ],
+      "lines": [
+        48,
+        49
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        657,
+        138,
+        41
+      ]
+    },
+    {
+      "id": "deciduous-lower-lateral-incisor",
+      "name": "Lateral incisor (12–15 mo)",
+      "accept": [
+        "lateral incisor",
+        "incisor"
+      ],
+      "lines": [
+        50,
+        51
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        700,
+        205,
+        21
+      ]
+    },
+    {
+      "id": "deciduous-lower-central-incisor",
+      "name": "Central incisor (6–8 mo)",
+      "accept": [
+        "central incisor",
+        "incisor"
+      ],
+      "lines": [
+        52,
+        57,
+        58
+      ],
+      "concept": "teeth",
+      "box": [
+        171,
+        749,
+        119,
+        42
+      ]
+    },
+    {
+      "id": "lower-third-molar",
+      "name": "Third molar or wisdom tooth",
+      "accept": [
+        "third molar",
+        "wisdom tooth",
+        "molar"
+      ],
+      "lines": [
+        54,
+        59
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        762,
+        117,
+        38
+      ]
+    },
+    {
+      "id": "lower-second-molar",
+      "name": "Second molar (11–13 yr)",
+      "accept": [
+        "second molar",
+        "molar"
+      ],
+      "lines": [
+        60,
+        62,
+        63
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        822,
+        116,
+        42
+      ]
+    },
+    {
+      "id": "lower-first-molar",
+      "name": "First molar (6–7 yr)",
+      "accept": [
+        "first molar",
+        "molar"
+      ],
+      "lines": [
+        65,
+        66
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        895,
+        152,
+        21
+      ]
+    },
+    {
+      "id": "lower-second-premolar",
+      "name": "Second premolar or bicuspid (11–12 yr)",
+      "accept": [
+        "second premolar",
+        "second bicuspid",
+        "premolar",
+        "bicuspid"
+      ],
+      "lines": [
+        70,
+        71,
+        72
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        933,
+        160,
+        41
+      ]
+    },
+    {
+      "id": "lower-first-premolar",
+      "name": "First premolar or bicuspid (9–10 yr)",
+      "accept": [
+        "first premolar",
+        "first bicuspid",
+        "premolar",
+        "bicuspid"
+      ],
+      "lines": [
+        74,
+        75,
+        76
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        981,
+        144,
+        41
+      ]
+    },
+    {
+      "id": "lower-canine",
+      "name": "Cuspid or canine (9–10 yr)",
+      "accept": [
+        "canine",
+        "cuspid",
+        "cuspid or canine",
+        "eyetooth"
+      ],
+      "lines": [
+        78,
+        79
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        1031,
+        209,
+        22
+      ]
+    },
+    {
+      "id": "lower-lateral-incisor",
+      "name": "Lateral incisor (7–8 yr)",
+      "accept": [
+        "lateral incisor",
+        "incisor"
+      ],
+      "lines": [
+        80,
+        81
+      ],
+      "concept": "teeth",
+      "box": [
+        445,
+        1058,
+        177,
+        22
+      ]
+    },
+    {
+      "id": "lower-central-incisor",
+      "name": "Central incisor (7–8 yr)",
+      "accept": [
+        "central incisor",
+        "incisor"
+      ],
+      "lines": [
+        82,
+        83
+      ],
+      "concept": "teeth",
+      "box": [
+        444,
+        1087,
+        181,
+        21
+      ]
+    }
+  ]
+}

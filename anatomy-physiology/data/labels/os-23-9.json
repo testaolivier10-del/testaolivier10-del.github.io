@@ -1,0 +1,112 @@
+{
+  "figure": "os-23-9",
+  "labels": [
+    {
+      "id": "parotid-gland",
+      "name": "Parotid salivary gland",
+      "accept": [
+        "parotid gland",
+        "parotid"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        198,
+        4,
+        209,
+        25
+      ]
+    },
+    {
+      "id": "parotid-duct",
+      "name": "Parotid duct",
+      "accept": [
+        "parotid duct"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        104,
+        65,
+        121,
+        21
+      ]
+    },
+    {
+      "id": "sublingual-ducts",
+      "name": "Sublingual ducts",
+      "accept": [
+        "sublingual duct",
+        "sublingual ducts"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        0,
+        254,
+        106,
+        46
+      ]
+    },
+    {
+      "id": "sublingual-gland",
+      "name": "Sublingual salivary gland",
+      "accept": [
+        "sublingual gland",
+        "sublingual"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        0,
+        419,
+        240,
+        26
+      ]
+    },
+    {
+      "id": "submandibular-gland",
+      "name": "Submandibular salivary gland",
+      "accept": [
+        "submandibular gland",
+        "submandibular"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        302,
+        481,
+        285,
+        26
+      ]
+    },
+    {
+      "id": "submandibular-duct",
+      "name": "Submandibular duct",
+      "accept": [
+        "submandibular duct"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "salivary-glands",
+      "box": [
+        159,
+        519,
+        197,
+        22
+      ]
+    }
+  ]
+}

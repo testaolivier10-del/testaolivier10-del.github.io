@@ -1,0 +1,291 @@
+{
+  "figure": "os-23-4",
+  "labels": [
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "accept": [
+        "spinal cord"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "major-organs",
+      "box": [
+        353,
+        89,
+        116,
+        26
+      ]
+    },
+    {
+      "id": "vertebra",
+      "name": "Vertebra",
+      "accept": [
+        "vertebra",
+        "vertebrae",
+        "vertebral body"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "vertebra-parts",
+      "box": [
+        0,
+        130,
+        89,
+        21
+      ]
+    },
+    {
+      "id": "kidney-right",
+      "name": "Kidney",
+      "accept": [
+        "kidney",
+        "kidneys",
+        "right kidney"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "major-organs",
+      "box": [
+        0,
+        212,
+        74,
+        25
+      ]
+    },
+    {
+      "id": "kidney-left",
+      "name": "Kidney",
+      "accept": [
+        "kidney",
+        "kidneys",
+        "left kidney"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "major-organs",
+      "box": [
+        682,
+        212,
+        75,
+        25
+      ]
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "accept": [
+        "spleen"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "major-organs",
+      "box": [
+        682,
+        252,
+        76,
+        25
+      ]
+    },
+    {
+      "id": "pancreas",
+      "name": "Pancreas",
+      "accept": [
+        "pancreas"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "major-organs",
+      "box": [
+        0,
+        263,
+        97,
+        21
+      ]
+    },
+    {
+      "id": "small-intestine-1",
+      "name": "Small intestine",
+      "accept": [
+        "small intestine",
+        "small bowel"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        682,
+        305,
+        146,
+        21
+      ]
+    },
+    {
+      "id": "liver",
+      "name": "Liver",
+      "accept": [
+        "liver"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "major-organs",
+      "box": [
+        0,
+        315,
+        57,
+        21
+      ]
+    },
+    {
+      "id": "large-intestine-1",
+      "name": "Large intestine",
+      "accept": [
+        "large intestine",
+        "colon",
+        "large bowel"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        682,
+        356,
+        146,
+        26
+      ]
+    },
+    {
+      "id": "gallbladder",
+      "name": "Gallbladder",
+      "accept": [
+        "gall bladder",
+        "gallbladder"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "major-organs",
+      "box": [
+        0,
+        367,
+        119,
+        21
+      ]
+    },
+    {
+      "id": "large-intestine-2",
+      "name": "Large intestine",
+      "accept": [
+        "large intestine",
+        "colon",
+        "large bowel"
+      ],
+      "lines": [
+        23
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        0,
+        427,
+        148,
+        26
+      ]
+    },
+    {
+      "id": "stomach",
+      "name": "Stomach",
+      "accept": [
+        "stomach"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "major-organs",
+      "box": [
+        682,
+        436,
+        93,
+        21
+      ]
+    },
+    {
+      "id": "small-intestine-2",
+      "name": "Small intestine",
+      "accept": [
+        "small intestine",
+        "small bowel"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "alimentary-canal",
+      "box": [
+        0,
+        493,
+        148,
+        22
+      ]
+    },
+    {
+      "id": "visceral-peritoneum",
+      "name": "Visceral peritoneum",
+      "accept": [
+        "visceral peritoneum",
+        "serosa"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "peritoneum-full",
+      "box": [
+        0,
+        562,
+        196,
+        25
+      ]
+    },
+    {
+      "id": "peritoneal-cavity",
+      "name": "Peritoneal cavity",
+      "accept": [
+        "peritoneal cavity"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "peritoneal-cavity",
+      "box": [
+        326,
+        562,
+        164,
+        25
+      ]
+    },
+    {
+      "id": "parietal-peritoneum",
+      "name": "Parietal peritoneum",
+      "accept": [
+        "parietal peritoneum"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "peritoneum-full",
+      "box": [
+        597,
+        562,
+        191,
+        25
+      ]
+    }
+  ]
+}

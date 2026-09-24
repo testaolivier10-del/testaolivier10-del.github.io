@@ -1,0 +1,221 @@
+{
+  "figure": "os-23-25",
+  "labels": [
+    {
+      "id": "central-vein-overview",
+      "name": "Central vein",
+      "accept": [
+        "central vein",
+        "central veins"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        333,
+        119,
+        111,
+        20
+      ]
+    },
+    {
+      "id": "connective-tissue",
+      "name": "Connective tissue",
+      "accept": [
+        "connective tissue",
+        "interlobular connective tissue"
+      ],
+      "lines": [
+        2,
+        4
+      ],
+      "concept": "connective-tissue",
+      "box": [
+        332,
+        170,
+        106,
+        41
+      ]
+    },
+    {
+      "id": "lobules",
+      "name": "Lobules",
+      "accept": [
+        "lobule",
+        "liver lobule",
+        "liver lobules",
+        "hepatic lobule",
+        "hepatic lobules",
+        "lobules"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        333,
+        225,
+        73,
+        20
+      ]
+    },
+    {
+      "id": "interlobular-vein",
+      "name": "Interlobular vein (to hepatic vein)",
+      "accept": [
+        "interlobular vein",
+        "sublobular vein",
+        "hepatic vein"
+      ],
+      "lines": [
+        6,
+        7
+      ],
+      "concept": "hepatic-portal",
+      "cover": true,
+      "note": "OpenStax prints 'Interlobular vein (to hepatic vein)' on the vessel the central vein drains into. In standard usage interlobular veins are branches of the hepatic portal vein running between lobules; the vessel drawn here, collecting from central veins toward the hepatic veins, is a sublobular (collecting) vein. Covered for good and never asked.",
+      "box": [
+        0,
+        335,
+        144,
+        44
+      ]
+    },
+    {
+      "id": "central-vein",
+      "name": "Central vein",
+      "accept": [
+        "central vein",
+        "central veins"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        0,
+        441,
+        111,
+        20
+      ]
+    },
+    {
+      "id": "sinusoids",
+      "name": "Sinusoids",
+      "accept": [
+        "sinusoid",
+        "hepatic sinusoids",
+        "liver sinusoids",
+        "sinusoids"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        592,
+        441,
+        93,
+        20
+      ]
+    },
+    {
+      "id": "plates-of-hepatocytes",
+      "name": "Plates of hepatocytes",
+      "accept": [
+        "hepatocytes",
+        "hepatocyte plates",
+        "hepatic plates",
+        "liver cells",
+        "plates of hepatocytes"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        0,
+        504,
+        113,
+        45
+      ]
+    },
+    {
+      "id": "portal-venule",
+      "name": "Portal venule",
+      "accept": [
+        "portal venule",
+        "portal vein branch",
+        "branch of the hepatic portal vein"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        590,
+        504,
+        120,
+        20
+      ]
+    },
+    {
+      "id": "portal-arteriole",
+      "name": "Portal arteriole",
+      "accept": [
+        "portal arteriole",
+        "hepatic arteriole",
+        "branch of the hepatic artery"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "liver-anatomy",
+      "box": [
+        590,
+        533,
+        133,
+        19
+      ]
+    },
+    {
+      "id": "bile-duct",
+      "name": "Bile duct",
+      "accept": [
+        "bile ductule",
+        "bile duct"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "bile",
+      "box": [
+        590,
+        559,
+        84,
+        19
+      ]
+    },
+    {
+      "id": "from-portal-vein",
+      "name": "From portal vein",
+      "accept": [
+        "portal vein",
+        "hepatic portal vein",
+        "from portal vein"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "hepatic-portal",
+      "box": [
+        270,
+        800,
+        145,
+        23
+      ]
+    }
+  ]
+}
