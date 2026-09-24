@@ -476,11 +476,12 @@
       6:['bond-polarity-dipoles'],
       8:['bond-polarity-dipoles','molecular-geometry-vsepr'] } },
 
-    'bonding': { n:7, steps:{
-      1:['sigma-pi-bonding','valence-electrons'],
-      2:['sigma-pi-bonding','lewis-structures-drawing'],
-      3:['sigma-pi-bonding'],
-      6:['sigma-pi-bonding','valence-electrons'] } },
+    'bonding': { n:12, steps:{
+      4:['sigma-pi-bonding'],
+      6:['sigma-pi-bonding','valence-electrons'],
+      7:['sigma-pi-bonding','lewis-structures-drawing'],
+      9:['sigma-pi-bonding'],
+      11:['sigma-pi-bonding','valence-electrons'] } },
 
     'bronsted': { n:8, steps:{
       1:['bronsted-identification'],

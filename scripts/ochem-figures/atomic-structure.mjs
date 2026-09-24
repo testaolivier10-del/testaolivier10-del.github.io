@@ -155,7 +155,7 @@ FIGURES.push({
   id: 'valence-from-group',
   section: 'atomic-structure',
   anchor: '<h3>Shells and valence electrons</h3>',
-  viewBox: '0 0 680 262',
+  viewBox: '0 0 680 290',
   alt: 'The first three rows of the periodic table. Row 1 holds H and He; row 2 Li, Be, B, C, N, O, F, Ne; row 3 Na, Mg, Al, Si, P, S, Cl, Ar. Group numbers 1, 2 and 13 to 18 head the columns, with a gap between groups 2 and 13 where the ten transition-metal columns, groups 3 to 12, sit from row 4 on. Under the table, the valence electron count for each column is 1, 2, 3, 4, 5, 6, 7 and 8, and the older labels are IA to VIIIA. H, C, N, O, F and Cl are highlighted.',
   build() {
     let s = '';
@@ -181,7 +181,7 @@ FIGURES.push({
         if (!sym) return;
         const x = cols[ci].x;
         s += panel(x - w / 2, y, w, h, { kind: hi.has(sym) ? 'hi' : undefined, r: 6 });
-        s += text(x, y + 25, sym, { cls: 'fg-lbl', size: 13 });
+        s += text(x, y + 25, sym === 'He' ? 'He*' : sym, { cls: 'fg-lbl', size: 13 });
       });
     });
     // the gap
@@ -192,14 +192,46 @@ FIGURES.push({
     const yv = y0 + 3 * (h + gap) + 26;
     s += rule(8, yv - 18, 666, yv - 18);
     s += text(8, yv, 'valence e⁻', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    cols.forEach((c) => { s += text(c.x, yv, c.v, { cls: 'fg-lbl', size: 13 }); });
+    cols.forEach((c) => { s += text(c.x, yv, c.g === '18' ? '8*' : c.v, { cls: 'fg-lbl', size: 13 }); });
     s += text(8, yv + 24, 'older label', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
     cols.forEach((c) => { s += text(c.x, yv + 24, c.old, { cls: 'fg-tag-mut', size: 11 }); });
     s += text(269, yv, 'subtract 10 →', { cls: 'fg-tag', size: 11 });
-    s += text(340, yv + 56, 'He is the one exception: group 18, but only 2 valence electrons (its one shell is full at 2)', { cls: 'fg-tag-mut', size: 11 });
+    s += text(340, yv + 56, '* He is the one exception: group 18, but only 2 valence electrons (its one shell is full at 2)', { cls: 'fg-tag-mut', size: 11 });
+    s += panel(170, yv + 70, 22, 16, { kind: 'hi', r: 4 });
+    s += text(200, yv + 83, 'shaded: the elements organic chemistry uses most', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
     return s;
   },
   caption: 'Read down a column: every element in it has the same number of valence electrons. Across the gap, the group number jumps by ten, so subtract ten. The older labels give the count directly.',
+});
+
+/* ---------------------------------------------------------------- 3b --
+   Lesson-width version of the group shortcut: one row of the table. */
+FIGURES.push({
+  id: 'l-valence-row',
+  lessons: ['atomic-structure'],
+  viewBox: '0 0 340 176',
+  alt: 'Row 2 of the periodic table: Li, Be, then a gap for groups 3 to 12, then B, C, N, O, F, Ne. Above each element is its group number, 1, 2, 13, 14, 15, 16, 17, 18. Below each is its valence electron count, 1 to 8.',
+  build() {
+    let s = '';
+    const cols = [
+      ['1', 24, 'Li', '1'], ['2', 62, 'Be', '2'], ['13', 112, 'B', '3'], ['14', 150, 'C', '4'],
+      ['15', 188, 'N', '5'], ['16', 226, 'O', '6'], ['17', 264, 'F', '7'], ['18', 302, 'Ne', '8'],
+    ];
+    const hi = new Set(['C', 'N', 'O', 'F']);
+    s += tag(170, 16, 'row 2 of the periodic table');
+    for (const [g, x, sym, v] of cols) {
+      s += text(x, 42, g, { cls: 'fg-tag', size: 11 });
+      s += panel(x - 17, 52, 34, 36, { kind: hi.has(sym) ? 'hi' : undefined, r: 6 });
+      s += text(x, 75, sym, { cls: 'fg-lbl', size: 13 });
+      s += text(x, 114, v, { cls: 'fg-lbl', size: 13 });
+    }
+    s += text(87, 42, '3–12', { cls: 'fg-tag-mut', size: 11 });
+    s += rule(8, 96, 332, 96);
+    s += text(170, 142, 'top: group number; bottom: valence electrons', { cls: 'fg-tag-mut', size: 11 });
+    s += text(170, 162, 'groups 13 to 18: subtract 10', { cls: 'fg-tag', size: 11 });
+    return s;
+  },
+  caption: 'Groups 1 and 2 give the count directly. The ten columns of groups 3 to 12 are missing from this row, so from group 13 on, subtract ten.',
 });
 
 /* ---------------------------------------------------------------- 4 ---
@@ -236,6 +268,8 @@ FIGURES.push({
       s += ring(c, 38);
       hs.forEach((h) => { s += pairDots(c, h); s += atom(h.x, h.y, 'H', { r: 13, size: 12 }); });
       s += lp(c, -90, 27);
+      s += `<line class="fg-rule" x1="${c.x + 9}" y1="${c.y - 30}" x2="${c.x + 24}" y2="${c.y - 44}"></line>`;
+      s += text(c.x + 26, c.y - 46, 'lone pair', { cls: 'fg-tag', size: 11, anchor: 'start' });
       s += atom(c.x, c.y, 'N', { kind: 'hi', r: 15, size: 14 });
       s += text(255, 186, '3 shared + 1 lone pair', { cls: 'fg-tag', size: 11 });
       s += text(255, 202, '= 8 around N', { cls: 'fg-lbl', size: 13 });
@@ -274,30 +308,30 @@ FIGURES.push({
   lessons: ['atomic-structure'],
   anchor: '<h3>Transfer or share: the two ways to satisfy an octet</h3>',
   viewBox: '0 0 340 372',
-  alt: 'Top: two hydrogen atoms whose shells overlap, with one pair of electrons in the overlap, labeled as a covalent bond that both atoms count. Bottom: the outer shells of sodium, with one electron, and chlorine, with seven; an arrow carries sodium\'s electron to the empty place in chlorine\'s shell, leaving Na+ and Cl−, labeled as an ionic bond.',
+  alt: 'Top: the outer shells of sodium, with one electron, and chlorine, with seven; an arrow carries sodium\'s electron to the empty place in chlorine\'s shell, leaving Na+ and Cl−, labeled as an ionic bond. Bottom: two hydrogen atoms whose shells overlap, with one pair of electrons in the overlap, labeled as a covalent bond that both atoms count.',
   build() {
     let s = '';
+    // Transfer: outer shells only
+    s += tag(170, 20, 'TRANSFER: an ionic bond', { cls: 'fg-tag-warn' });
+    s += shellAtom(78, 100, 'Na', [1], { r0: 36, kind: 'warn', kPair: false });
+    s += shellAtom(262, 100, 'Cl', [7], { r0: 36, kind: 'warn', hollow: 1 });
+    // Na's one electron (top of its ring) to the gap in Cl's ring (upper left)
+    s += fishhook(P(84, 60), P(221, 90), { bow: -40, side: -1 });
+    s += text(78, 154, 'Na → Na⁺', { cls: 'fg-lbl', size: 13 });
+    s += text(262, 154, 'Cl → Cl⁻', { cls: 'fg-lbl', size: 13 });
+    s += text(170, 174, 'arrow: Na\'s one outer electron moves to Cl', { cls: 'fg-tag-mut', size: 11 });
+    s += rule(16, 190, 324, 190);
     // Sharing
-    s += tag(170, 20, 'SHARING: a covalent bond', { cls: 'fg-tag-good' });
-    const A = P(130, 96), B = P(210, 96);
+    s += tag(170, 212, 'SHARING: a covalent bond', { cls: 'fg-tag-good' });
+    const A = P(130, 288), B = P(210, 288);
     s += `<circle class="fg-orb-node" cx="${A.x}" cy="${A.y}" r="48"></circle>`;
     s += `<circle class="fg-orb-node" cx="${B.x}" cy="${B.y}" r="48"></circle>`;
     s += atom(A.x, A.y, 'H', { r: 13, size: 12 }); s += atom(B.x, B.y, 'H', { r: 13, size: 12 });
-    s += `<circle class="fg-lp" cx="170" cy="90" r="3.6"></circle><circle class="fg-lp" cx="170" cy="102" r="3.6"></circle>`;
-    s += text(170, 166, 'one shared pair; each H counts it: 2 each', { cls: 'fg-tag', size: 11 });
-    s += rule(16, 184, 324, 184);
-    // Transfer: outer shells only
-    s += tag(170, 206, 'TRANSFER: an ionic bond', { cls: 'fg-tag-warn' });
-    s += shellAtom(78, 276, 'Na', [1], { r0: 36, kind: 'warn', kPair: false });
-    s += shellAtom(262, 276, 'Cl', [7], { r0: 36, kind: 'warn', hollow: 1 });
-    // Na's one electron (top of its ring) to the gap in Cl's ring (lower left)
-    s += fishhook(P(84, 236), P(221, 266), { bow: -48, side: -1 });
-    s += text(78, 330, 'Na → Na⁺', { cls: 'fg-lbl', size: 13 });
-    s += text(262, 330, 'Cl → Cl⁻', { cls: 'fg-lbl', size: 13 });
-    s += text(170, 352, 'outer shells only; the ions attract', { cls: 'fg-tag-mut', size: 11 });
+    s += `<circle class="fg-lp" cx="170" cy="282" r="3.6"></circle><circle class="fg-lp" cx="170" cy="294" r="3.6"></circle>`;
+    s += text(170, 360, 'one shared pair; each H counts it: 2 each', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Top: one pair between two hydrogens, counted by both. Bottom: the arrow carries sodium\'s one outer electron into the gap in chlorine\'s outer shell. Nothing is shared.',
+  caption: 'Top: only the outer shells are drawn. Sodium\'s one outer electron fills the gap in chlorine\'s outer shell, and nothing is shared. Bottom: one pair between two hydrogens, counted by both.',
 });
 
 /* ---------------------------------------------------------------- 6 ---
@@ -307,7 +341,7 @@ FIGURES.push({
   id: 'sodium-fluorine-ions',
   section: 'atomic-structure',
   lessons: ['atomic-structure'],
-  anchor: '<h3>Ions: what "cation" and "carbocation" actually mean</h3>',
+  anchor: '<h3>Ions: what "cation" and "anion" mean</h3>',
   viewBox: '0 0 340 348',
   alt: 'Top row: a sodium atom with shells of 2, 8 and 1 electrons loses its one outer electron and becomes Na+, with shells of 2 and 8. Bottom row: a fluorine atom with shells of 2 and 7 gains one electron and becomes F−, with shells of 2 and 8.',
   build() {
@@ -345,7 +379,7 @@ FIGURES.push({
   id: 'carbocation-count',
   section: 'atomic-structure',
   lessons: ['atomic-structure'],
-  anchor: '<h3>Ions: what "cation" and "carbocation" actually mean</h3>',
+  anchor: '<h3>Carbocations and carbanions: the same words on carbon</h3>',
   viewBox: '0 0 340 380',
   alt: 'Top: a carbon bonded to three R groups and a chlorine; the chlorine has three lone pairs, and a curved arrow moves the C–Cl bonding pair onto the chlorine. Counts: 8 electrons around carbon, 4 of them carbon\'s own, charge 0. Bottom: the products, a carbon with three R groups and a positive charge, and a chloride ion with four lone pairs. Counts: 6 electrons around carbon, 3 of them its own, charge +1.',
   build() {
@@ -396,7 +430,7 @@ FIGURES.push({
   id: 'carbon-three-states',
   section: 'atomic-structure',
   lessons: ['atomic-structure'],
-  anchor: '<h3>Ions: what "cation" and "carbocation" actually mean</h3>',
+  anchor: '<h3>Carbocations and carbanions: the same words on carbon</h3>',
   viewBox: '0 0 340 244',
   alt: 'Three carbons side by side. Left, a carbanion: three R groups and a lone pair, 8 electrons around carbon, carbon owns 5, charge −1. Middle, a neutral carbon: three R groups and an H, 8 electrons around carbon, owns 4, charge 0. Right, a carbocation: three R groups only, 6 electrons around carbon, owns 3, charge +1.',
   build() {
