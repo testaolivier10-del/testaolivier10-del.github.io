@@ -8,7 +8,7 @@
    "communication",
    "homeostasis"
   ],
-  "q": "In the middle of the cycle, high estradiol is followed by a surge of LH, which makes the follicle release more estradiol. What kind of control is this?",
+  "q": "In the middle of the cycle, estradiol from the dominant follicle stays high for about two days, and instead of holding LH down it now drives a surge of LH. What kind of control is this?",
   "options": [
    "Negative feedback",
    "Positive feedback",
@@ -17,10 +17,10 @@
   ],
   "correct": 1,
   "why": {
-   "correct": "The response (more LH) strengthens the stimulus (more estradiol), which drives still more LH. That is positive feedback, and it ends only when ovulation and the switch to progesterone remove the stimulus.",
+   "correct": "Sustained high estradiol now pushes GnRH and LH up instead of down, and the rising gonadotropins had been driving the follicle to make still more estradiol. A response that strengthens its own stimulus is positive feedback; it ends when the surge turns the follicle's cells toward making progesterone.",
    "options": [
     "Negative feedback would make high estradiol lower LH, as it does for most of the cycle, not raise it.",
-    "Correct. Each step amplifies the next until an outside event ends the loop.",
+    "Correct. Estradiol and the gonadotropins drive each other higher until the surge turns the follicle toward progesterone.",
     "The loop runs through hormones: estradiol in the blood, GnRH in the portal system and LH in the blood.",
     "Antagonistic hormones oppose each other's effects; here estradiol and LH reinforce each other."
    ]
@@ -62,7 +62,7 @@
    "communication"
   ],
   "figure": "cycle-hormones",
-  "q": "According to the graph, which hormone is highest around day 21, and what makes it?",
+  "q": "According to the graph, which hormone reaches the highest level of its whole cycle around day 21, and what makes it?",
   "options": [
    "LH, from the anterior pituitary",
    "Progesterone, from the corpus luteum",
@@ -71,12 +71,12 @@
   ],
   "correct": 1,
   "why": {
-   "correct": "Around day 21 the corpus luteum is at its most active, and progesterone is at its peak.",
+   "correct": "Around day 21 the corpus luteum is at its most active, and progesterone is at the peak of its curve.",
    "options": [
     "LH is low throughout the luteal phase, held down by progesterone.",
     "Correct. Progesterone from the corpus luteum peaks in the middle of the luteal phase.",
     "FSH is at its lowest in the middle of the luteal phase.",
-    "Estradiol has a smaller second hump then, from the corpus luteum, but no dominant follicle exists in the luteal phase."
+    "Estradiol has only a smaller second hump then, lower than its peak before ovulation, and it comes from the corpus luteum; no dominant follicle exists in the luteal phase."
    ]
   }
  },
@@ -92,7 +92,7 @@
   "figure": "cycle-hormones",
   "q": "According to the graph, resting body temperature rises by about 0.3 to 0.5 °C just after day 14. Why can a woman not use a daily temperature chart to predict ovulation for that cycle?",
   "options": [
-   "The rise follows ovulation, because progesterone from the new corpus luteum causes it",
+   "It comes after ovulation, once progesterone has risen",
    "The rise happens only in cycles without ovulation",
    "Temperature falls, not rises, after ovulation",
    "The rise is caused by the LH surge several days earlier"
@@ -101,7 +101,7 @@
   "why": {
    "correct": "Progesterone raises resting temperature, and progesterone rises only after ovulation, as the corpus luteum forms. By the time temperature goes up, ovulation has already happened.",
    "options": [
-    "Correct. The rise confirms ovulation after the fact.",
+    "Correct. Progesterone from the new corpus luteum causes the rise, so it confirms ovulation after the fact.",
     "A temperature rise is a sign that ovulation did happen; cycles without ovulation have no corpus luteum and usually no rise.",
     "The graph shows a rise, lasting until the end of the cycle.",
     "LH itself does not set temperature; the rise follows the progesterone curve, not the LH peak."
@@ -123,11 +123,11 @@
    "Hypothalamic neurons switch to being stimulated by estradiol",
    "GnRH output rises into the hypophyseal portal system",
    "The pituitary, primed by estradiol, releases a surge of LH",
-   "LH stimulates the follicle to release still more estradiol",
-   "Ovulation and the switch to progesterone remove the stimulus"
+   "LH triggers ovulation and turns the follicle's cells into a corpus luteum",
+   "Estradiol falls as those cells switch to progesterone, removing the stimulus"
   ],
   "why": {
-   "correct": "Sustained high estradiol switches the hypothalamus and pituitary to positive feedback; more GnRH and a more responsive pituitary produce the LH surge, which drives more estradiol. The loop ends with ovulation, when the follicle's cells become the corpus luteum and switch to making progesterone."
+   "correct": "Sustained high estradiol switches the hypothalamus and pituitary to positive feedback; more GnRH and a more responsive pituitary produce the LH surge. The surge triggers ovulation and turns the follicle's cells into the corpus luteum. Those cells switch from estradiol to progesterone, so estradiol falls and the stimulus for the loop is gone."
   }
  },
  {
@@ -138,7 +138,7 @@
   "core": [
    "communication"
   ],
-  "q": "During the luteal phase, why does no new follicle become dominant?",
+  "q": "During the luteal phase, why does no follicle go on to ovulate?",
   "options": [
    "All remaining follicles have already been used up",
    "Progesterone, estradiol and inhibin from the corpus luteum keep FSH and LH low",
@@ -147,10 +147,10 @@
   ],
   "correct": 1,
   "why": {
-   "correct": "The corpus luteum's hormones give strong negative feedback. Progesterone slows GnRH pulses, and FSH and LH fall to their lowest levels. Tertiary follicles need FSH, so none can be selected until the corpus luteum dies.",
+   "correct": "The corpus luteum's hormones give strong negative feedback. Progesterone slows GnRH pulses, FSH and LH fall to their lowest levels, and progesterone blocks the LH surge, so no follicle can mature and be released until the corpus luteum dies.",
    "options": [
-    "Thousands of follicles remain in a young woman's ovaries; lack of FSH, not lack of follicles, is the reason.",
-    "Correct. Negative feedback from the corpus luteum keeps the gonadotropins low.",
+    "Tens of thousands of follicles or more remain in a young woman's ovaries; hormones, not a lack of follicles, are the reason.",
+    "Correct. Negative feedback from the corpus luteum keeps the gonadotropins low and prevents an LH surge.",
     "The corpus luteum occupies only the old follicle's site; its effect on other follicles is through hormones.",
     "Oxytocin acts on the uterus and breast, not on follicle growth."
    ]
@@ -497,9 +497,9 @@
   "q": "According to the graph, FSH starts rising in the last days of the cycle, before the next period begins. What causes this rise?",
   "options": [
    "The LH surge of the next cycle has started early",
-   "The dominant follicle of the next cycle is releasing FSH",
-   "The endometrium releases FSH as it breaks down",
-   "Falling hormones from the dying corpus luteum lift negative feedback"
+   "The dominant follicle of the next cycle is already releasing some FSH",
+   "The endometrium releases FSH into the blood as it breaks down",
+   "The dying corpus luteum's hormones fall, easing negative feedback"
   ],
   "correct": 3,
   "why": {

@@ -135,7 +135,7 @@
     "options": [
       "Semen volume falls by about 90% and testosterone falls",
       "Semen stops altogether and testosterone rises",
-      "Semen contains sperm but no fructose",
+      "Semen still contains sperm, but it loses its fructose and most of its fluid volume",
       "Semen contains no sperm, its volume barely changes, and testosterone is unchanged"
     ],
     "correct": 3,
@@ -144,7 +144,7 @@
       "options": [
         "Sperm are only a few percent of semen volume, and testosterone travels in the blood, not the ductus deferens.",
         "The accessory glands still make and release their fluids, and nothing in the operation raises testosterone.",
-        "Fructose comes from the seminal vesicles, which still empty into the ejaculatory ducts. It is the sperm that are missing.",
+        "The seminal vesicles, which supply the fructose and most of the volume, still empty into the ejaculatory ducts. It is the sperm that are missing.",
         "Correct. Sperm are blocked; gland fluid and blood-borne testosterone are not."
       ]
     },
@@ -318,8 +318,8 @@
     ],
     "q": "A man taking sildenafil for erectile dysfunction is also prescribed nitroglycerin for chest pain. Why is this combination dangerous?",
     "options": [
-      "Both drugs raise cGMP in vascular smooth muscle, so blood vessels widen too much and blood pressure falls sharply",
-      "Sildenafil blocks the nitroglycerin, so the chest pain is not relieved",
+      "Both raise cGMP in vessel walls, so vessels widen and blood pressure falls sharply",
+      "Sildenafil blocks the effect of nitroglycerin on the coronary arteries, so the chest pain is not relieved",
       "Both drugs constrict arteries and raise blood pressure",
       "Nitroglycerin blocks nitric oxide and prevents erection"
     ],
@@ -337,7 +337,7 @@
   },
   {
     "type": "single",
-    "level": "apply",
+    "level": "recall",
     "diff": 2,
     "core": [
       "structure-function"
@@ -368,7 +368,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "A man starts tamsulosin, a drug that blocks alpha-1 receptor proteins, to ease urine flow past his enlarged prostate. He notices that little or no semen comes out when he ejaculates, and his urine afterward is cloudy. What explains this?",
+    "q": "A man starts a drug that blocks alpha-1 receptor proteins to ease urine flow past his enlarged prostate. He notices that little or no semen comes out when he ejaculates. A urine sample taken just afterward is cloudy and full of sperm. What explains this?",
     "options": [
       "The drug stops his testes from making sperm",
       "The bladder neck does not close, so semen goes back into the bladder",
@@ -377,12 +377,12 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "During emission, norepinephrine on alpha-1 receptor proteins contracts the internal urethral sphincter at the bladder neck. With those receptor proteins blocked, the neck stays open, and when the pelvic muscles contract, semen takes the easier path back into the bladder: retrograde ejaculation. It leaves with the next urine, which looks cloudy.",
+      "correct": "During emission, norepinephrine on alpha-1 receptor proteins contracts the internal urethral sphincter at the bladder neck. With those receptor proteins blocked, the neck stays open, and when the pelvic muscles contract, semen takes the easier path back into the bladder: retrograde ejaculation. It leaves with the next urine, which is cloudy and holds sperm. (These drugs can also weaken emission itself, so less semen is made to move; then the urine holds no extra sperm.)",
       "options": [
-        "Sperm production depends on hormones, not on alpha-1 receptor proteins in the bladder neck, and would not make urine cloudy.",
+        "Sperm production depends on hormones, not on alpha-1 receptor proteins in the bladder neck, and the sperm in his urine show they are still being made.",
         "Correct. An open bladder neck lets semen flow backward into the bladder.",
         "The pudendal nerve is somatic and uses acetylcholine at skeletal muscle; an alpha-1 blocker does not block it.",
-        "The seminal vesicles still make fluid; the cloudy urine shows semen was produced but went the wrong way."
+        "The sperm-filled urine shows semen was produced and moved, but went the wrong way."
       ]
     },
     "id": "anp-male-anatomy-15"

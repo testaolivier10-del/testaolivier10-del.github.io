@@ -54,7 +54,7 @@
  {
   "id": "anp-ovarian-cycle-3",
   "type": "order",
-  "level": "apply",
+  "level": "recall",
   "diff": 2,
   "core": [
    "structure-function"
@@ -341,8 +341,8 @@
   "q": "A patient takes high doses of a drug that blocks prostaglandin synthesis around mid-cycle. Ultrasound shows her dominant follicle reached full size, and her LH rose normally, but the follicle did not rupture on schedule. Which step of ovulation did the drug most likely affect?",
   "options": [
    "The breakdown of the follicle wall at the bulge",
-   "The completion of meiosis I",
-   "The selection of the dominant follicle",
+   "The completion of meiosis I in the oocyte",
+   "The selection of the dominant follicle from its group",
    "The release of LH from the pituitary"
   ],
   "correct": 0,
@@ -377,7 +377,7 @@
    "options": [
     "FSH stays low while the corpus luteum is active; its main targets are growing follicles.",
     "Correct. LH supports the corpus luteum.",
-    "No new follicle becomes dominant while the corpus luteum is active.",
+    "Follicles that grow after ovulation do not support the corpus luteum; LH does, and no follicle can ovulate while it is active.",
     "Oxytocin acts on smooth muscle of the uterus and breast; it does not support the corpus luteum."
    ]
   }
@@ -420,10 +420,10 @@
   ],
   "q": "What is the corpus albicans?",
   "options": [
-   "A pale scar of connective tissue left when the corpus luteum dies",
+   "The pale connective tissue scar of a dead corpus luteum",
    "The yellow gland that makes progesterone after ovulation",
    "A follicle that dies before it forms an antrum",
-   "The mound of cells the oocyte sits on"
+   "The mound of granulosa cells the oocyte sits on"
   ],
   "correct": 0,
   "why": {
@@ -439,7 +439,7 @@
  {
   "id": "anp-ovarian-cycle-17",
   "type": "missing",
-  "level": "apply",
+  "level": "recall",
   "diff": 2,
   "core": [
    "structure-function"

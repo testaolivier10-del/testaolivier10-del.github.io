@@ -17,7 +17,7 @@
 <circle cx="540" cy="110" r="58" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2"/>
 <circle cx="540" cy="110" r="51" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="2"/>
 <circle cx="552" cy="104" r="24" fill="#EEF2F1" stroke="#5D6B69" stroke-width="1.5"/>
-<circle cx="514" cy="124" r="15" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+<circle cx="514" cy="124" r="18" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
 <text x="540" y="186" font-size="13" font-weight="700" text-anchor="middle" fill="#1F2A28">4 tertiary follicle:</text>
 <text x="540" y="202" font-size="12" font-weight="600" text-anchor="middle" fill="#1F2A28">antrum forms</text>
 <line x1="92" y1="110" x2="160" y2="110" stroke="#1F2A28" stroke-width="2.2" stroke-dasharray="7 5"/>
@@ -29,22 +29,26 @@
 <circle cx="110" cy="320" r="78" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2"/>
 <circle cx="110" cy="320" r="70" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="2"/>
 <circle cx="120" cy="316" r="56" fill="#EEF2F1" stroke="#5D6B69" stroke-width="1.5"/>
-<circle cx="58" cy="340" r="13" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+<circle cx="76.0" cy="315.2" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="86.6" cy="327.8" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="86.6" cy="344.2" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="76.0" cy="356.8" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="64" cy="336" r="19" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
 <text x="110" y="424" font-size="13" font-weight="700" text-anchor="middle" fill="#1F2A28">5 vesicular (Graafian)</text>
 <text x="110" y="440" font-size="12" font-weight="600" text-anchor="middle" fill="#1F2A28">follicle, about 2 cm</text>
 <text x="122" y="320" font-size="12" font-weight="600" text-anchor="middle" fill="#1F2A28">antrum</text>
 <path d="M600 110 C 690 110, 690 238, 560 238 L 190 238" fill="none" stroke="#1F2A28" stroke-width="2.2" stroke-dasharray="7 5"/>
 <polyline points="202,231 190,238 201,246" fill="none" stroke="#1F2A28" stroke-width="2.2"/>
 <path d="M280 320 a50 50 0 1 0 100 0 l-30 0 a20 20 0 0 1 -40 0 z" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="2"/>
-<circle cx="330" cy="262" r="12" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
-<circle cx="347.0" cy="262.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
-<circle cx="342.0" cy="274.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
-<circle cx="330.0" cy="279.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
-<circle cx="318.0" cy="274.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
-<circle cx="313.0" cy="262.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
-<circle cx="318.0" cy="250.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
-<circle cx="330.0" cy="245.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
-<circle cx="342.0" cy="250.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="330" cy="268" r="16" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+<circle cx="351.0" cy="268.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="344.8" cy="282.8" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="330.0" cy="289.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="315.2" cy="282.8" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="309.0" cy="268.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="315.2" cy="253.2" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="330.0" cy="247.0" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
+<circle cx="344.8" cy="253.2" r="4" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="1.2"/>
 <text x="330" y="394" font-size="13" font-weight="700" text-anchor="middle" fill="#1F2A28">6 ovulation:</text>
 <text x="330" y="410" font-size="12" font-weight="600" text-anchor="middle" fill="#1F2A28">oocyte released</text>
 <circle cx="500" cy="320" r="50" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>

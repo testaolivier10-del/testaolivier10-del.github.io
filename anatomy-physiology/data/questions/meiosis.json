@@ -518,7 +518,7 @@
   },
   {
     "type": "single",
-    "level": "analyze",
+    "level": "apply",
     "diff": 2,
     "core": [
       "structure-function"

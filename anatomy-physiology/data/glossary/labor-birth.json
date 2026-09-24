@@ -1,0 +1,22 @@
+{
+  "parturition": {
+    "def": "Giving birth: the process by which the uterus pushes out the fetus and then the placenta. True labor is contractions that progressively thin and open the cervix; the irregular Braxton Hicks contractions of false labor do not. Lightening is the fetal head dropping into the pelvis in the weeks before.",
+    "roots": [["parturire", "to be in labor"], ["-tion", "process"]],
+    "say": "par-tyoo-RISH-un"
+  },
+  "labor-loop": {
+    "def": "The positive feedback loop of labor: stretch of the cervix sends afferent signals to the hypothalamus, oxytocin is released from the posterior pituitary, and stronger contractions stretch the cervix more. The stretch-to-oxytocin reflex is the Ferguson reflex. Birth ends the loop; it strengthens labor but is not needed for labor to start.",
+    "roots": [],
+    "say": ""
+  },
+  "labor-stages": {
+    "def": "The three stages of labor, each ended by an event: the dilation stage (true labor to full dilation of the cervix at 10 cm), the expulsion stage (full dilation to birth of the baby) and the placental stage (birth to delivery of the afterbirth, the placenta and membranes). An episiotomy is a cut in the perineum to widen the opening.",
+    "roots": [["dilatare", "to widen"], ["episio-", "vulva"], ["-tomy", "cutting"]],
+    "say": "eh-pee-zee-OT-oh-mee"
+  },
+  "postpartum": {
+    "def": "The roughly six weeks after birth, also called the puerperium, while the reproductive organs return to their nonpregnant state. The uterus shrinks back (uterine involution) and the placental site heals, shedding lochia.",
+    "roots": [["post-", "after"], ["partum", "birth"], ["puer", "child"], ["in-", "inward"], ["volvere", "to roll"], ["lochos", "childbirth"]],
+    "say": "pyoo-er-PEER-ee-um; LOH-kee-uh"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "topic": "labor-birth",
+  "hook": "<p>Ms. Adeyemi, 31, is at 40 weeks with her first baby. For six hours her contractions have come every 4 minutes, and her cervix has opened from 4 to 6 cm. Then progress stops: two hours later she is still at 6 cm, and her contractions have grown weaker. The midwife starts a drip of synthetic oxytocin, and within an hour the contractions are strong again. To see why a hormone drip can restart a stalled labor, and why labor could begin without it, you need the positive feedback loop at the heart of birth.</p>",
+  "prereq": [
+    {
+      "q": "In a positive feedback loop, what does the response do to the stimulus that caused it?",
+      "options": ["Strengthens it", "Opposes it", "Holds it at a set point"],
+      "correct": 0,
+      "why": "Positive feedback amplifies its own stimulus, so the change grows until an outside event stops it. Negative feedback opposes the stimulus and holds a variable near a set point.",
+      "review": "homeostasis-feedback"
+    },
+    {
+      "q": "Where is oxytocin released into the blood?",
+      "options": ["The anterior pituitary", "The posterior pituitary", "The adrenal medulla"],
+      "correct": 1,
+      "why": "Oxytocin is made by hypothalamic neurons whose axons end in the posterior pituitary, where it is released into the blood.",
+      "review": "hypothalamus-pituitary"
+    },
+    {
+      "q": "Which layer of the uterine wall contracts during labor?",
+      "options": ["Endometrium", "Perimetrium", "Myometrium"],
+      "correct": 2,
+      "why": "The myometrium is the thick smooth muscle layer of the uterus. The endometrium is the inner lining, and the perimetrium is the outer covering.",
+      "review": "female-anatomy"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-28-21",
+    "caption": "The three stages of labor: dilation of the cervix, expulsion of the baby, and delivery of the placenta. Hide the labels and name the structure that must open to 10 cm."
+  },
+  "chain": [
+    { "cause": "In the last weeks of pregnancy, placental CRH and estrogens rise and the uterus stops responding to progesterone.", "effect": "The myometrium gains gap junctions and oxytocin receptor proteins, prostaglandins rise and the cervix ripens, so the uterus can contract strongly as one unit." },
+    { "cause": "Coordinated contractions, strongest at the fundus, push the fetal head down onto the soft cervix.", "effect": "The cervix is stretched, and its stretch-sensitive sensory receptors send afferent signals to the hypothalamus." },
+    { "cause": "The afferent signals reach the hypothalamus (the Ferguson reflex).", "effect": "Hypothalamic neurons release pulses of oxytocin from the posterior pituitary into the blood." },
+    { "cause": "Oxytocin binds its receptor proteins on myometrial cells and releases prostaglandins from the uterine lining.", "effect": "Contractions become stronger, which pushes the head down harder and stretches the cervix further, so the loop repeats, each time harder." },
+    { "cause": "The cervix reaches full dilation and the baby is pushed out.", "effect": "The stretch stops, which ends the loop; the uterus keeps contracting, shears off the placenta and clamps the vessels of the placental bed." }
+  ],
+  "misconception": {
+    "wrong": "Oxytocin is what starts labor, and without it labor cannot happen or will stall.",
+    "right": "Labor starts from changes in the uterus and placenta: gap junctions, oxytocin receptor proteins, prostaglandins, a ripening cervix and a uterus that stops responding to progesterone. Blood oxytocin barely rises before labor. Oxytocin's positive feedback loop makes contractions stronger once labor is under way, but mice lacking oxytocin give birth normally and women with very little oxytocin have had normal labors. Hospitals give oxytocin when contractions are weak, to strengthen them."
+  },
+  "check": ["anp-labor-birth-1", "anp-labor-birth-4", "anp-labor-birth-6", "anp-labor-birth-8", "anp-labor-birth-10", "anp-labor-birth-11", "anp-labor-birth-12", "anp-labor-birth-18"],
+  "summary": "<p>Parturition is giving birth. True labor opens the cervix; the Braxton Hicks contractions of false labor do not. Near term, placental CRH and estrogens rise, the uterus stops responding to progesterone, and the myometrium gains gap junctions and oxytocin receptor proteins while prostaglandins ripen the cervix. Cervical stretch triggers oxytocin release (the Ferguson reflex), and oxytocin strengthens contractions, which stretch the cervix more: the labor positive feedback loop, which birth ends. It strengthens labor but is not required for labor to start or progress. The dilation stage opens the cervix to 10 cm, the expulsion stage delivers the baby, and the placental stage delivers the afterbirth; a firmly contracted uterus then pinches its own vessels shut, and a relaxed one bleeds. In the six-week postpartum period the uterus involutes and lochia clears.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" }
+  ]
+}

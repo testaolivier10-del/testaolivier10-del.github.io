@@ -156,7 +156,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "A semen analysis shows many sperm with normal heads and tails that barely move. Which part of the sperm is most likely faulty?",
+    "q": "A semen analysis shows many sperm with normal-looking heads and tails that barely move. Of the parts listed, which one is most likely faulty?",
     "options": [
       "The acrosome",
       "The midpiece mitochondria",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "The tail moves by motor proteins that use ATP. The ATP comes from the spiral of mitochondria in the midpiece. With normal heads and tails but little movement, the energy supply is the most likely fault.",
+      "correct": "The tail moves by motor proteins that use ATP. The ATP comes from the spiral of mitochondria in the midpiece. Of the parts listed, only the midpiece mitochondria supply the energy for swimming. (A fault in the tail's own motor proteins, which look normal under a light microscope, can also stop sperm from swimming.)",
       "options": [
         "The acrosome holds enzymes used at the egg; it does not power swimming.",
         "Correct. The midpiece mitochondria make the ATP that drives the flagellum.",
@@ -287,7 +287,7 @@
   },
   {
     "type": "single",
-    "level": "apply",
+    "level": "recall",
     "diff": 2,
     "core": [
       "communication"
@@ -439,7 +439,7 @@
     "q": "Two years after chemotherapy for lymphoma, a man has normal testosterone and LH but a high FSH level and very few sperm. What is the best explanation?",
     "options": [
       "His pituitary is making too much GnRH",
-      "His Leydig cells were destroyed",
+      "His Leydig cells were destroyed, so they no longer make enough testosterone",
       "His testosterone receptor proteins no longer work",
       "His germ cells were destroyed, so his Sertoli cells release less inhibin"
     ],

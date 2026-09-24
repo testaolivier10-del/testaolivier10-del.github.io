@@ -1,0 +1,20 @@
+{
+  "os-28-2": {
+    "file": "figures/openstax/os-28-2.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.2",
+      "section": "28.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/104fc054c328beb7d972cf1b1eba4971b810b53c",
+      "page": "28-1-fertilization"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/104fc054c328beb7d972cf1b1eba4971b810b53c",
+    "alt": "Three numbered drawings. Top left: a round yellow oocyte ringed by a fuzzy pink layer of cells, with many green sperm pointing inward through that layer toward a thin clear band around the oocyte. Top right: the same view, with holes opening in the pink layer as sperm release enzymes against the clear band. Bottom, an enlarged boxed view: several sperm tunnel through the pink cell layer; their caps of enzymes are released at the clear band; one sperm has crossed the band and its head has merged with the oocyte's membrane, its nucleus entering the yellow cytoplasm. Labels mark the acrosome, sperm nucleus, oocyte cytoplasm, plasma membrane, sperm-binding proteins in that membrane, the clear band and the outer cell layer.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.2",
+    "labels": [],
+    "w": 1100,
+    "h": 759,
+    "ext": "jpg"
+  }
+}

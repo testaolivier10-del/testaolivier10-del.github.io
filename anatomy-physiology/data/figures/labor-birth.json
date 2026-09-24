@@ -1,0 +1,20 @@
+{
+  "os-28-21": {
+    "file": "figures/openstax/os-28-21.jpg",
+    "w": 1100,
+    "h": 1722,
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.21",
+      "section": "28.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5977156db7fb8d9873006a8d227432c478590b0b",
+      "page": "28-4-changes-during-pregnancy-labor-and-birth"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/5977156db7fb8d9873006a8d227432c478590b0b",
+    "alt": "Three rows of drawings showing labor. Top row, stage 1: side views of a pregnant uterus with the fetus head-down in amniotic fluid; on the left the cervix below the head is closed and thick, and on the right it has opened fully around the head. Middle row, stage 2: four side views of the birth, with the head emerging face-down, the head turned and the front shoulder delivered, the back shoulder delivered, and finally the lower body and umbilical cord. Bottom row, stage 3: a drawing of the emptied uterus with the placenta peeling off its wall and moving toward the vagina, beside a photograph of a delivered placenta in a tray.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.21",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

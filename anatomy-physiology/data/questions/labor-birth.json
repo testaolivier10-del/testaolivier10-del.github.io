@@ -1,0 +1,527 @@
+[
+  {
+    "id": "anp-labor-birth-1",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "misconception": "painful contractions mean true labor",
+    "q": "At 37 weeks, Ms. Obi has had painful tightenings every 8 to 20 minutes for three hours. They ease when she walks, and her cervix is closed and unchanged two hours apart. What is she having?",
+    "options": [
+      "Braxton Hicks contractions (false labor)",
+      "Early labor, in the latent phase of the dilation stage",
+      "Lightening",
+      "The expulsion stage"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Irregular contractions that ease with walking and do not change the cervix are false labor. True labor is defined by progressive thinning and opening of the cervix, not by pain.",
+      "options": [
+        "Correct. Irregular timing, easing with activity and no change in the cervix mark Braxton Hicks contractions.",
+        "The latent phase is slow, but the cervix does soften, thin and open over time. Hers has not changed at all.",
+        "Lightening is the fetal head dropping into the pelvis. It changes breathing and urination, not contractions.",
+        "The expulsion stage starts only once the cervix is fully dilated at 10 cm."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-2",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Labor is progressing slowly, and an oxytocin drip is started. Predict the change in each variable over the next hour, compared with before the drip.",
+    "variables": [
+      {
+        "name": "Strength of uterine contractions",
+        "answer": "up",
+        "why": "Oxytocin binds the many oxytocin receptor proteins of the term myometrium and releases calcium inside the cells, so each contraction is stronger."
+      },
+      {
+        "name": "Pressure of the fetal head on the cervix",
+        "answer": "up",
+        "why": "Stronger contractions from the fundus push the head down harder onto the cervix."
+      },
+      {
+        "name": "Afferent signals from the cervix to the hypothalamus",
+        "answer": "up",
+        "why": "More stretch of the cervix fires its stretch-sensitive sensory receptors more."
+      },
+      {
+        "name": "Rate of cervical dilation",
+        "answer": "up",
+        "why": "Stronger contractions and more retraction pull the softened cervix open faster."
+      }
+    ],
+    "why": {
+      "correct": "The drip adds oxytocin to the loop from outside. Contractions strengthen, the head presses harder, the cervix stretches more and sends more signals, and the cervix opens faster. This is why hospitals use oxytocin when contractions are weak."
+    }
+  },
+  {
+    "id": "anp-labor-birth-3",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Put the events of labor in order, from the start of true labor.",
+    "options": [
+      "Regular contractions begin to thin and open the cervix",
+      "The cervix reaches full dilation at 10 cm",
+      "The head crowns at the vaginal opening",
+      "The shoulders and body are delivered",
+      "The placenta shears off the shrinking uterine wall",
+      "The afterbirth is delivered and the uterus clamps its vessels"
+    ],
+    "why": {
+      "correct": "Stage 1, the dilation stage, runs from true labor to full dilation. Stage 2, the expulsion stage, runs from full dilation through crowning to delivery of the whole baby. Stage 3, the placental stage, ends with delivery of the placenta and membranes, after which firm contraction pinches the placental-bed vessels shut."
+    }
+  },
+  {
+    "id": "anp-labor-birth-4",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A student wrote out the labor positive feedback loop. One step is wrong. Which one?",
+    "options": [
+      "The fetal head presses on and stretches the cervix",
+      "Stretch-sensitive sensory receptors send afferent signals to the hypothalamus",
+      "The anterior pituitary releases oxytocin into the blood",
+      "Oxytocin makes the myometrium contract harder",
+      "The harder contraction stretches the cervix further"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Oxytocin is made by hypothalamic neurons and released from their axon endings in the posterior pituitary, not the anterior pituitary.",
+      "options": [
+        "This step is right. The head acts as the wedge that stretches the cervix.",
+        "This step is right. The afferent limb of the Ferguson reflex runs from the cervix to the hypothalamus.",
+        "This is the error. Oxytocin comes from the posterior pituitary, which is made of hypothalamic axon endings.",
+        "This step is right. Oxytocin acts on its receptor proteins in the myometrium.",
+        "This step is right. It closes the loop, which is what makes it positive feedback."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-5",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "communication"
+    ],
+    "q": "Fill the gap: besides acting on myometrial cells directly, oxytocin makes the uterine lining and fetal membranes release ____, which add to the contraction and soften the cervix.",
+    "options": [
+      "prostaglandins",
+      "placental progesterone",
+      "CRH",
+      "relaxin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Prostaglandins are local lipid messengers. They contract the myometrium and ripen the cervix, and oxytocin increases their release.",
+      "options": [
+        "Correct. Prostaglandins strengthen contractions and ripen the cervix.",
+        "Progesterone keeps the myometrium quiet. Losing its effect near term frees the uterus to contract; oxytocin does not release it.",
+        "Placental CRH rises in the last weeks and helps drive the estrogen changes before labor. Oxytocin does not release it.",
+        "Relaxin is a hormone of pregnancy, not a local messenger released by oxytocin during contractions."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "homeostasis"
+    ],
+    "misconception": "labor cannot happen without oxytocin",
+    "q": "A woman whose posterior pituitary was damaged years ago, and who now releases almost no oxytocin, goes into spontaneous labor at 39 weeks. Based on current evidence, what is the best prediction?",
+    "options": [
+      "No contractions occur until an oxytocin drip is given",
+      "Contractions begin, but the cervix stops opening at about 3 to 4 cm",
+      "Labor can start and progress, though contractions may be weaker",
+      "Labor runs faster than usual, with a shorter first stage"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Labor starts from changes in the uterus itself: gap junctions, oxytocin receptor proteins, prostaglandins, cervical ripening and loss of progesterone's effect. Mice lacking oxytocin or its receptor protein give birth normally, and women with little oxytocin have had normal labors. Oxytocin's loop strengthens contractions; if they are weak, a drip can be given.",
+      "options": [
+        "Oxytocin barely rises before labor. Contractions start from changes in the uterus and placenta, not from oxytocin.",
+        "Some textbooks predict a stall, but the evidence shows labor can progress without oxytocin. The loop makes contractions stronger; it is not required.",
+        "Correct. Without oxytocin the loop that strengthens contractions is missing, but labor can begin and progress.",
+        "Oxytocin makes contractions stronger. Its absence would not speed labor."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-7",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "What ends the labor positive feedback loop?",
+    "options": [
+      "Oxytocin reaching a set point, which switches off the hypothalamus",
+      "Rising progesterone from the placenta",
+      "Fatigue of the stretch-sensitive sensory receptors in the cervix",
+      "Birth of the baby, which removes the stretch on the cervix"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A positive feedback loop has no set point to return to. It keeps building until an outside event breaks it. Here, birth removes the head from the cervix, the stretch stops and the afferent signals stop.",
+      "options": [
+        "Positive feedback does not settle at a set point; that is how negative feedback behaves.",
+        "Progesterone stays high in the blood through labor, and it falls after the placenta is delivered, not before birth. It is not what stops the loop.",
+        "The sensory receptors keep firing as long as the stretch lasts. The loop stops because the stretch ends.",
+        "Correct. Delivery removes the stimulus, so the loop stops turning."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "Twenty minutes after delivering her placenta, Mrs. Novak is bleeding heavily. Her uterus feels soft and large through the abdomen. Why is she bleeding?",
+    "options": [
+      "Her clotting factors were used up during labor",
+      "Her relaxed myometrium is not pinching the placental-bed arteries shut",
+      "Oxytocin given at delivery has widened the arteries supplying the uterus",
+      "The placenta separated before the baby was born"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is uterine atony. The crisscrossing muscle fibers of the upper uterus are the main brake on bleeding from the placental site; when they relax, the vessels stay open. Rubbing the fundus and giving oxytocin make the uterus contract and clamp them.",
+      "options": [
+        "Clotting seals the vessels only after muscle has closed them. A soft, enlarged uterus points to the muscle, not the clotting system.",
+        "Correct. Atony leaves the vessels open; firm contraction is what closes them.",
+        "Oxytocin makes the myometrium contract, which compresses the vessels. It is the treatment for this bleeding, not the cause.",
+        "Early separation would cause bleeding before the birth. Hers began after the placenta was out, with a soft uterus."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-9",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Select every finding that shows a woman is in true labor rather than false labor.",
+    "options": [
+      "Her cervix has gone from 2 cm to 5 cm dilated in four hours",
+      "Her contractions are painful",
+      "Her contractions come closer together and get longer over several hours",
+      "Her contractions stop when she lies down and rests",
+      "Her cervix has thinned from 30% to 80% effaced"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
+    "why": {
+      "correct": "True labor is defined by progressive change in the cervix, dilation and effacement, and it comes with a regular pattern that builds. Pain and a pattern that fades with rest do not show true labor.",
+      "options": [
+        "Correct. Progressive dilation defines true labor.",
+        "Braxton Hicks contractions can also be painful near term. Pain alone does not distinguish them.",
+        "Correct. A pattern that becomes more frequent and longer is typical of true labor.",
+        "Contractions that stop with rest point to false labor.",
+        "Correct. Progressive effacement is a change in the cervix, which marks true labor."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A woman's cervix is 10 cm dilated and she is pushing with each contraction. The baby has not yet been born. Which stage of labor is she in?",
+    "options": [
+      "The dilation stage",
+      "The placental stage",
+      "The postpartum period",
+      "The expulsion stage"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Each stage is defined by the event that ends it. The expulsion stage runs from full dilation to the birth of the baby, so a fully dilated woman who has not yet delivered is in it.",
+      "options": [
+        "The dilation stage ends when the cervix reaches 10 cm, which hers has.",
+        "The placental stage begins only after the baby is born.",
+        "The postpartum period follows delivery of the placenta.",
+        "Correct. Full dilation to birth is the expulsion stage."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What makes the placenta separate from the uterine wall after the baby is born?",
+    "options": [
+      "The uterus shrinks while the placenta cannot, so it shears away",
+      "Oxytocin digests the tissue anchoring the placenta",
+      "Falling progesterone makes the placenta dissolve",
+      "Traction on the umbilical cord pulls the placenta off the uterine wall"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Separation is mechanical. The emptied uterus keeps contracting and shrinks, and the patch of wall under the placenta shrinks with it. The placenta cannot shrink, so it shears off, and blood collecting behind it helps peel it away.",
+      "options": [
+        "Correct. A shrinking wall under a placenta that cannot shrink shears it off.",
+        "Oxytocin makes muscle contract. It does not digest tissue.",
+        "Progesterone falls after the placenta is delivered, because the placenta makes it. The fall follows separation rather than causing it.",
+        "The cord is only a guide once the placenta has separated. Pulling hard on an attached placenta can turn the uterus inside out, which is why clinicians wait for separation."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-12",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
+    "q": "Predict the change in each variable over the first week after the placenta is delivered, compared with the day before birth.",
+    "variables": [
+      {
+        "name": "Blood progesterone",
+        "answer": "down",
+        "why": "The placenta was the main source of progesterone in late pregnancy. Once it is delivered, the level falls within days."
+      },
+      {
+        "name": "Mass of the uterus",
+        "answer": "down",
+        "why": "With estrogen and progesterone falling and the uterus contracting, the muscle cells break down their own proteins and shrink: uterine involution."
+      },
+      {
+        "name": "Urine output",
+        "answer": "up",
+        "why": "The extra fluid of pregnancy moves back into the blood and is cleared by the kidneys, so she passes large volumes of urine in the first days."
+      },
+      {
+        "name": "Number of myometrial cells",
+        "answer": "none",
+        "why": "Involution shrinks the existing muscle cells rather than removing them, so their number stays about the same."
+      }
+    ],
+    "why": {
+      "correct": "Delivering the placenta removes the hormone source that sustained pregnancy. Hormones fall, the uterus involutes by shrinking its cells, and the kidneys clear the extra fluid of pregnancy."
+    }
+  },
+  {
+    "id": "anp-labor-birth-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "On her second day after birth, Ms. Reyes notices strong cramps in her lower abdomen each time her baby suckles. What explains them?",
+    "options": [
+      "Suckling releases prolactin, which makes the myometrium contract",
+      "Suckling releases oxytocin, which makes the myometrium contract",
+      "The cervix is still dilating after delivery",
+      "Retained placental tissue is being expelled"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Suckling sends nerve signals to the hypothalamus and oxytocin is released. The uterus, still rich in oxytocin receptor proteins, contracts: these are afterpains. They speed uterine involution.",
+      "options": [
+        "Prolactin acts on the milk-making cells of the breast, not the myometrium.",
+        "Correct. Oxytocin released by suckling contracts the uterus and helps it involute.",
+        "Dilation belongs to the first stage of labor. After birth the cervix closes.",
+        "Cramps timed to suckling point to oxytocin, not to retained tissue, which shows as heavy or prolonged bleeding."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "A drug that blocks prostaglandin synthesis can delay preterm labor for a day or two. Which explanation fits what you know about labor?",
+    "options": [
+      "Prostaglandins are the source of oxytocin",
+      "Prostaglandins keep progesterone levels high",
+      "Prostaglandins contract the myometrium and ripen the cervix",
+      "Prostaglandins close the gap junctions between myometrial cells"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Prostaglandins from the fetal membranes and uterine lining contract the myometrium and soften the cervix, and oxytocin adds to their release. Blocking their synthesis weakens contractions and slows ripening.",
+      "options": [
+        "Oxytocin comes from hypothalamic neurons ending in the posterior pituitary, not from prostaglandins.",
+        "Progesterone keeps the uterus quiet. If prostaglandins raised it, blocking them would speed labor, the opposite of what is seen.",
+        "Correct. Removing a signal that contracts the uterus and ripens the cervix delays labor.",
+        "Near term, gap junctions increase, coupling the cells. Closing them would quiet the uterus, so blocking prostaglandins would then speed labor, not delay it."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Why is childbirth an example of positive rather than negative feedback?",
+    "options": [
+      "It uses a hormone rather than a nerve as the efferent pathway",
+      "It keeps a variable close to a set point",
+      "It involves more than one organ",
+      "The response strengthens the stimulus that caused it"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In the labor loop, stretch of the cervix causes oxytocin release and stronger contractions, which cause more stretch. A response that amplifies its own stimulus is positive feedback.",
+      "options": [
+        "Many negative feedback loops also use hormones as the efferent pathway, such as the glucose loops.",
+        "Holding a variable near a set point is what negative feedback does.",
+        "Most homeostatic loops involve several organs, whether positive or negative.",
+        "Correct. The loop amplifies the stretch instead of opposing it."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A clinician recommends against a routine episiotomy for a healthy woman in the second stage. What is the evidence-based reason?",
+    "options": [
+      "An episiotomy slows the birth by adding a step to the second stage",
+      "Routine cutting neither prevents severe tears nor heals better",
+      "The perineum cannot stretch enough for the head without tearing",
+      "An episiotomy is done only in the placental stage"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Trials showed routine episiotomy does not protect against severe tears and heals no better. It is now reserved for specific reasons, such as speeding the birth of a baby in distress.",
+      "options": [
+        "An episiotomy widens the opening, so if anything it speeds the birth. That is why it is still used when the baby needs to be born quickly.",
+        "Correct. The benefit claimed for routine use did not hold up in trials.",
+        "The perineum often stretches enough, and many births cause no tear or only a small one.",
+        "An episiotomy is done as the head is being born, in the expulsion stage."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-17",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-28-21",
+    "pin": "cervix",
+    "q": "Name the pinned structure, which must open to 10 cm before the baby can be pushed out.",
+    "options": [
+      "Cervix",
+      "Vagina",
+      "Fundus",
+      "Amnion"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The cervix is the narrow lower end of the uterus. The dilation stage of labor thins and opens it to about 10 cm.",
+      "options": [
+        "Correct. The cervix thins and dilates during stage 1.",
+        "The vagina lies below the cervix. It stretches during stage 2 but is not what dilates to 10 cm.",
+        "The fundus is the dome at the top of the uterus, where contractions are strongest.",
+        "The amnion is the membrane around the fetus and amniotic fluid, not part of the uterine wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Over a first labor, the wall of the upper uterus becomes thicker while the lower part and cervix become thinner. What explains this?",
+    "options": [
+      "Upper myometrial cells divide rapidly during labor",
+      "Fluid collects in the upper wall",
+      "After each contraction, upper muscle cells relax but stay a little shorter, pulling the lower part up",
+      "The lower uterus loses its oxytocin receptor proteins"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "This is retraction. The upper muscle ends each contraction slightly shorter and thicker, so it draws the thin lower segment and the softened cervix upward around the head: effacement and dilation.",
+      "options": [
+        "Cell division is far too slow to thicken a wall over hours. The cells change length, not number.",
+        "Fluid would not explain why the upper wall thickens while the lower wall thins at the same time.",
+        "Correct. Retraction thickens the upper segment and pulls the lower segment and cervix open.",
+        "Receptor protein numbers set how strongly the muscle responds to oxytocin. They would not thin the lower wall while thickening the upper one."
+      ]
+    }
+  },
+  {
+    "id": "anp-labor-birth-19",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Ten days after an uncomplicated birth, Ms. Tan asks whether her pinkish-brown vaginal discharge and a uterus she can no longer quite feel above her pubic bone are normal. What is the best answer?",
+    "options": [
+      "The discharge should have stopped by day 3",
+      "The uterus should still be at the level of the navel",
+      "Both are normal parts of the postpartum period",
+      "Both suggest retained placental tissue"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Lochia turns from red to pinkish-brown after about 3 or 4 days and can continue for weeks. The fundus drops about 1 cm a day and is barely felt above the pubic symphysis by about two weeks.",
+      "options": [
+        "Lochia usually lasts four to six weeks; only its red phase ends after the first few days.",
+        "The fundus is near the navel on the first day and descends day by day. At day 10 it should be much lower.",
+        "Correct. Changing lochia and a shrinking uterus are signs of normal involution.",
+        "Retained tissue shows as heavy, bright red bleeding and a uterus that stays large, the opposite of what she describes."
+      ]
+    }
+  }
+]

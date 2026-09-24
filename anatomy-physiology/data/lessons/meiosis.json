@@ -1,6 +1,6 @@
 {
   "topic": "meiosis",
-  "hook": "<p>Dana, 39, and her partner are expecting their first child, and a blood screening test suggests the baby may have an extra chromosome. Their genetic counselor explains that the error almost always happens before the pregnancy starts, while the egg was dividing, and that the chance rises with the mother's age. To follow her explanation, you need to know how eggs and sperm are made: by a division that halves the chromosomes, called meiosis.</p>",
+  "hook": "<p>Dana, 39, and her partner are expecting their first child, and a blood screening test suggests the baby may have an extra chromosome. Their genetic counselor explains that the error usually happens, about 9 times in 10, while the egg was dividing, and that the chance rises with the mother's age. To follow her explanation, you need to know how eggs and sperm are made: by a division that halves the chromosomes, called meiosis.</p>",
   "prereq": [
     {
       "q": "A human body cell has copied its DNA and is in metaphase of mitosis. How many chromosomes and chromatids does it hold?",

@@ -1,0 +1,22 @@
+{
+  "capacitation": {
+    "def": "The changes a sperm undergoes over several hours in the female reproductive tract that make it able to fertilize: cholesterol leaves its plasma membrane, calcium and bicarbonate enter, and its tail switches to hyperactivated beating.",
+    "roots": [["capacit-", "able"], ["-ation", "process"]],
+    "say": "kuh-pas-ih-TAY-shun"
+  },
+  "acrosomal-reaction": {
+    "def": "The release of a capacitated sperm's acrosomal enzymes by exocytosis, set off by a rise in calcium in the sperm head. The enzymes, mainly acrosin, digest a path through the zona pellucida.",
+    "roots": [["acro-", "tip"], ["-some", "body"]],
+    "say": "ak-roh-SOH-mul"
+  },
+  "fertilization": {
+    "def": "The joining of a sperm and a secondary oocyte, from the sperm binding the zona pellucida to the combining of their chromosomes, normally in the ampulla of the uterine tube. It is also called conception, and its product is the zygote, a single diploid cell.",
+    "roots": [["zygot-", "yoked, joined"]],
+    "say": "ZY-goht"
+  },
+  "polyspermy-block": {
+    "def": "The oocyte's defenses against polyspermy, the entry of more than one sperm. After one sperm fuses, the cortical reaction releases enzymes that alter the zona pellucida so no other sperm can bind, and the membrane sheds its sperm-binding receptor protein. The corona radiata (the ring of granulosa cells) and the zona pellucida (the glycoprotein coat) are the layers sperm cross; the altered zona is sometimes called the fertilization membrane.",
+    "roots": [["poly-", "many"], ["corona", "crown"], ["zona", "belt"], ["pellucida", "clear"]],
+    "say": "POL-ee-sper-mee"
+  }
+}

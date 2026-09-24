@@ -16938,6 +16938,1513 @@
    ]
   },
   {
+   "id": "ur-gfr-autoregulation",
+   "title": "GFR and arterial pressure: the autoregulation plateau",
+   "topic": "glomerular-filtration",
+   "core": [
+    "homeostasis",
+    "gradients"
+   ],
+   "intro": "Glomerular filtration rate of both kidneys against mean arterial pressure, with the kidney’s own controls working (solid) and, for comparison, if GFR simply followed pressure (dashed). The curves are schematic, drawn from typical values in the chapter’s figure.",
+   "alt": "A graph of GFR in mL/min, 0 to 150, against mean arterial pressure in mm Hg, 0 to 200. The solid curve with autoregulation is zero at 40 mm Hg, climbs steeply to about 55 at 60 and 117 at 80, stays almost flat between 80 and 180 (about 123 at 100 and 132 at 180), then climbs again above 180. The dashed line without autoregulation rises straight from zero at 40 mm Hg through 125 at 100 mm Hg to 150 at about 112 mm Hg.",
+   "x": {
+    "min": 0,
+    "max": 200,
+    "label": "Mean arterial pressure",
+    "unit": "mm Hg",
+    "ticks": [
+     0,
+     40,
+     80,
+     120,
+     160,
+     200
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 150,
+      "label": "GFR",
+      "unit": "mL/min",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100,
+       125,
+       150
+      ]
+     },
+     "series": [
+      {
+       "id": "with",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         40,
+         0
+        ],
+        [
+         50,
+         20
+        ],
+        [
+         60,
+         55
+        ],
+        [
+         70,
+         95
+        ],
+        [
+         80,
+         117
+        ],
+        [
+         90,
+         121
+        ],
+        [
+         100,
+         123
+        ],
+        [
+         120,
+         125
+        ],
+        [
+         140,
+         127
+        ],
+        [
+         160,
+         129
+        ],
+        [
+         180,
+         132
+        ],
+        [
+         190,
+         141
+        ],
+        [
+         197,
+         150
+        ]
+       ],
+       "label": "with autoregulation",
+       "labelAt": [
+        118,
+        112
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "without",
+       "cls": "lo",
+       "dash": true,
+       "pts": [
+        [
+         40,
+         0
+        ],
+        [
+         112,
+         150
+        ]
+       ],
+       "label": "without autoregulation",
+       "labelAt": [
+        80,
+        140
+       ],
+       "anchor": "end"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "low",
+     "x0": 40,
+     "x1": 80,
+     "label": "below the plateau"
+    },
+    {
+     "id": "plateau",
+     "x0": 80,
+     "x1": 180,
+     "label": "autoregulatory range"
+    },
+    {
+     "id": "high",
+     "x0": 180,
+     "x1": 200,
+     "label": "above the range"
+    }
+   ],
+   "questions": [
+    {
+     "id": "gfr-at-100",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the GFR at a normal mean arterial pressure of 100 mm Hg.",
+     "answer": 123,
+     "tol": 6,
+     "unit": "mL/min",
+     "show": {
+      "x": 100,
+      "y": 123
+     },
+     "why": "About 120 to 125 mL/min, the normal GFR of a young adult: about 180 liters of filtrate a day."
+    },
+    {
+     "id": "gfr-at-60",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "After a large bleed, mean arterial pressure falls to 60 mm Hg. Read the GFR.",
+     "answer": 55,
+     "tol": 8,
+     "unit": "mL/min",
+     "show": {
+      "x": 60,
+      "y": 55
+     },
+     "why": "About 55 mL/min, less than half of normal. At 60 mm Hg the pressure is below the plateau, so the afferent arterioles are already as wide as they can go and GFR falls with pressure."
+    },
+    {
+     "id": "without-at-110",
+     "type": "value",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Suppose GFR simply followed pressure. Read the GFR on the dashed line at a MAP of 110 mm Hg, as when you are startled.",
+     "answer": 146,
+     "tol": 6,
+     "unit": "mL/min",
+     "show": {
+      "x": 110,
+      "y": 146
+     },
+     "why": "About 145 mL/min, some 20 mL/min more than normal. Fluid would rush through the tubules faster than they could reabsorb it, and salt, water and nutrients would be lost. The solid curve at 110 barely moves."
+    },
+    {
+     "id": "name-plateau",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Over which range of mean arterial pressure does GFR barely change?",
+     "options": [
+      "About 80 to 180 mm Hg",
+      "About 0 to 40 mm Hg",
+      "About 40 to 80 mm Hg",
+      "Only above about 180 mm Hg, where the arterioles are fully narrowed"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "plateau"
+     },
+     "why": {
+      "correct": "Between about 80 and 180 mm Hg, the myogenic mechanism and tubuloglomerular feedback adjust the afferent arterioles so GBHP, and so GFR, stay nearly constant. Some courses quote 60 to 150 mm Hg, a round figure for organs in general; the kidney’s own plateau starts a little higher and goes further.",
+      "options": [
+       "Right: the plateau of the solid curve.",
+       "Below about 40 mm Hg, GBHP is too low to overcome CHP and BCOP, and filtration stops.",
+       "Here the curve climbs steeply: autoregulation cannot keep up, and GFR falls with pressure.",
+       "Above 180 mm Hg the afferent arterioles cannot narrow any further, so GFR rises again."
+      ]
+     }
+    },
+    {
+     "id": "name-low",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "A man in shock has a MAP of 65 mm Hg, and his urine output has dropped. On which part of the curve is he?",
+     "options": [
+      "Below the plateau, where GFR falls with pressure",
+      "On the plateau, where the afferent arterioles still hold GFR steady",
+      "Above the range, where GFR rises with pressure",
+      "Where filtration has stopped completely"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "low"
+     },
+     "why": {
+      "correct": "At 65 mm Hg he is below the plateau. His afferent arterioles cannot widen any further to protect GBHP, so GFR falls steeply, and strong sympathetic activity lowers it still more.",
+      "options": [
+       "Right: below about 80 mm Hg, GFR follows pressure.",
+       "The plateau starts at about 80 mm Hg; 65 is below it.",
+       "That region is above 180 mm Hg.",
+       "Filtration stops only near 40 mm Hg on this curve; at 65 some filtrate is still made."
+      ]
+     }
+    },
+    {
+     "id": "no-autoregulation",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "An experimental drug stops both the myogenic mechanism and tubuloglomerular feedback, so the afferent arterioles no longer change their width. How does the GFR curve change?",
+     "options": [
+      "It follows the dashed line: GFR rises and falls with pressure",
+      "It stays flat, because the filtration coefficient Kf has not changed at all",
+      "It shifts down but stays flat",
+      "It shifts to the right but keeps its plateau"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "blocked",
+        "cls": "accent",
+        "dash": true,
+        "pts": [
+         [
+          40,
+          0
+         ],
+         [
+          70,
+          62
+         ],
+         [
+          100,
+          125
+         ],
+         [
+          112,
+          150
+         ]
+        ],
+        "label": "mechanisms blocked",
+        "labelAt": [
+         118,
+         146
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The plateau exists only because the afferent arteriole narrows as pressure rises and widens as it falls. Without those two mechanisms, GBHP follows arterial pressure, and GFR does too.",
+      "options": [
+       "Right: no autoregulation, no plateau.",
+       "Kf sets how much fluid crosses per mm Hg; it cannot hold GFR steady when pressure changes.",
+       "A lower flat curve would still need something to hold GFR steady.",
+       "Both mechanisms act through the same arteriole; blocking both removes the plateau rather than moving it."
+      ]
+     }
+    },
+    {
+     "id": "sympathetic",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "During a hemorrhage, strong sympathetic activity constricts the afferent arterioles. How does the GFR curve compare with the solid one?",
+     "options": [
+      "It lies lower: at any pressure, GFR is less",
+      "It lies higher: at any pressure, GFR is more",
+      "It is unchanged, because autoregulation cancels the nerves",
+      "It becomes the dashed line"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "symp",
+        "cls": "symp",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          40,
+          0
+         ],
+         [
+          60,
+          35
+         ],
+         [
+          80,
+          70
+         ],
+         [
+          100,
+          80
+         ],
+         [
+          140,
+          85
+         ],
+         [
+          180,
+          90
+         ]
+        ],
+        "label": "strong sympathetic activity",
+        "labelAt": [
+         140,
+         75
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Nervous and hormonal controls can override autoregulation. Strong sympathetic constriction of the afferent arterioles lowers GBHP at every arterial pressure, so less filtrate and less urine are made, saving blood volume.",
+      "options": [
+       "Right: the nerves pull GFR below the plateau.",
+       "Sympathetic constriction of the afferent arterioles lowers, not raises, glomerular pressure.",
+       "Autoregulation holds GFR steady against changes in pressure; strong sympathetic activity overrides it.",
+       "The dashed line shows the loss of autoregulation, not a deliberate lowering by the nerves."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ur-glucose-tm",
+   "title": "Glucose reabsorption and the transport maximum",
+   "topic": "tubular-transport",
+   "core": [
+    "mass-balance",
+    "gradients"
+   ],
+   "intro": "How much glucose both kidneys filter, reabsorb and excrete each minute as plasma glucose rises, at a GFR of 125 mL/min. Drawn from the chapter’s figure; the curves are schematic.",
+   "alt": "A graph of glucose in mg/min, 0 to 1,000, against plasma glucose in mg/dL, 0 to 800. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed curve follows it up to about 180 mg/dL, bends over and levels off at about 375 mg/min from about 380 mg/dL. The excreted curve is zero up to about 180 mg/dL, then rises, reaching 250 mg/min at 500 mg/dL and running parallel to the filtered line after reabsorption has leveled off.",
+   "x": {
+    "min": 0,
+    "max": 800,
+    "label": "Plasma glucose",
+    "unit": "mg/dL",
+    "ticks": [
+     0,
+     200,
+     400,
+     600,
+     800
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 1000,
+      "label": "Glucose",
+      "unit": "mg/min",
+      "ticks": [
+       0,
+       200,
+       400,
+       600,
+       800,
+       1000
+      ]
+     },
+     "series": [
+      {
+       "id": "filtered",
+       "cls": "shape",
+       "dash": true,
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         800,
+         1000
+        ]
+       ],
+       "label": "filtered",
+       "labelAt": [
+        560,
+        760
+       ],
+       "anchor": "end"
+      },
+      {
+       "id": "reabsorbed",
+       "cls": "o2",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         180,
+         225
+        ],
+        [
+         200,
+         249
+        ],
+        [
+         250,
+         302
+        ],
+        [
+         300,
+         342
+        ],
+        [
+         350,
+         369
+        ],
+        [
+         380,
+         375
+        ],
+        [
+         800,
+         375
+        ]
+       ],
+       "label": "reabsorbed",
+       "labelAt": [
+        620,
+        400
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "excreted",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         180,
+         0
+        ],
+        [
+         200,
+         1
+        ],
+        [
+         250,
+         10
+        ],
+        [
+         300,
+         33
+        ],
+        [
+         350,
+         69
+        ],
+        [
+         380,
+         100
+        ],
+        [
+         500,
+         250
+        ],
+        [
+         800,
+         625
+        ]
+       ],
+       "label": "excreted",
+       "labelAt": [
+        480,
+        140
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 375,
+       "label": "transport maximum",
+       "at": 20,
+       "dash": true,
+       "faint": true
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 180,
+     "label": "renal threshold"
+    }
+   ],
+   "regions": [
+    {
+     "id": "all",
+     "x0": 0,
+     "x1": 180,
+     "label": "all reabsorbed"
+    },
+    {
+     "id": "splay",
+     "x0": 180,
+     "x1": 380,
+     "label": "splay"
+    },
+    {
+     "id": "saturated",
+     "x0": 380,
+     "x1": 800,
+     "label": "carriers saturated"
+    }
+   ],
+   "questions": [
+    {
+     "id": "read-tm",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the highest rate at which the kidneys can reabsorb glucose.",
+     "answer": 375,
+     "tol": 15,
+     "unit": "mg/min",
+     "show": {
+      "x": 600,
+      "y": 375
+     },
+     "why": "About 375 mg/min, the transport maximum. Every symporter is busy, so more glucose in the filtrate cannot speed reabsorption."
+    },
+    {
+     "id": "read-threshold",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "At what plasma glucose does glucose first appear in the urine?",
+     "answer": 180,
+     "tol": 20,
+     "unit": "mg/dL",
+     "show": {
+      "x": 180,
+      "y": 0
+     },
+     "why": "About 180 mg/dL, the renal threshold, where the excreted curve first rises above zero."
+    },
+    {
+     "id": "filtered-100",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the filtered load of glucose at a plasma glucose of 100 mg/dL.",
+     "answer": 125,
+     "tol": 12,
+     "unit": "mg/min",
+     "show": {
+      "x": 100,
+      "y": 125
+     },
+     "why": "About 125 mg/min: GFR × plasma glucose = 125 mL/min × 1 mg/mL. It is well below the transport maximum, so all of it is reabsorbed."
+    },
+    {
+     "id": "excreted-500",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Plasma glucose is 500 mg/dL. Read how much glucose is excreted each minute.",
+     "answer": 250,
+     "tol": 20,
+     "unit": "mg/min",
+     "show": {
+      "x": 500,
+      "y": 250
+     },
+     "why": "About 250 mg/min: 625 filtered − 375 reabsorbed. Past saturation, every extra milligram filtered is excreted, so the excreted line runs parallel to the filtered one."
+    },
+    {
+     "id": "name-splay",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The renal threshold, 180 mg/dL, is lower than transport maximum ÷ GFR, which would give 300 mg/dL. Which part of the graph shows why?",
+     "options": [
+      "The curved splay between about 180 and 380 mg/dL",
+      "The straight filtered line",
+      "The flat part of the reabsorbed curve above 380 mg/dL",
+      "The region below 180 mg/dL where nothing is excreted"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "splay"
+     },
+     "why": {
+      "correct": "Nephrons differ. Some have few carriers for the glucose they filter and saturate early, so glucose starts leaking through them while others still have spare carriers. The bend in the reabsorbed curve and the gradual rise of the excreted curve are that early leak.",
+      "options": [
+       "Right: the splay shows nephrons saturating at different glucose levels.",
+       "The filtered load is a straight line; it has nothing to say about carriers.",
+       "Above 380 mg/dL every nephron is saturated; the splay comes before that.",
+       "Below the threshold every nephron reabsorbs all its glucose, so nothing distinguishes them."
+      ]
+     }
+    },
+    {
+     "id": "name-saturated",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which region does raising plasma glucose further add nothing to the amount reabsorbed?",
+     "options": [
+      "Above about 380 mg/dL",
+      "Below about 180 mg/dL",
+      "Between 180 and 380 mg/dL",
+      "Nowhere: reabsorption always rises with glucose"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "saturated"
+     },
+     "why": {
+      "correct": "Above about 380 mg/dL every symporter in every nephron is busy: carrier saturation. The reabsorbed curve is flat at the transport maximum.",
+      "options": [
+       "Right: the carriers are saturated.",
+       "Below 180 mg/dL reabsorption rises one-for-one with the filtered load.",
+       "In the splay, reabsorption is still rising, just more slowly.",
+       "A fixed number of carriers sets a ceiling on reabsorption."
+      ]
+     }
+    },
+    {
+     "id": "sglt2-blocked",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A drug blocks SGLT2, the symporter that does most of the proximal tubule’s glucose reabsorption. How do the curves change?",
+     "options": [
+      "Reabsorption levels off lower, and glucose spills at normal levels",
+      "Reabsorption levels off higher, and the threshold rises",
+      "The filtered line becomes steeper",
+      "Nothing changes, because the other glucose carriers take over the whole load"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "reab-drug",
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          50,
+          62
+         ],
+         [
+          80,
+          90
+         ],
+         [
+          120,
+          105
+         ],
+         [
+          200,
+          110
+         ],
+         [
+          800,
+          110
+         ]
+        ],
+        "label": "reabsorbed, with drug",
+        "labelAt": [
+         620,
+         150
+        ],
+        "anchor": "start"
+       },
+       {
+        "id": "excr-drug",
+        "cls": "accent",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          60,
+          0
+         ],
+         [
+          80,
+          10
+         ],
+         [
+          120,
+          45
+         ],
+         [
+          200,
+          140
+         ],
+         [
+          500,
+          515
+         ],
+         [
+          650,
+          700
+         ]
+        ],
+        "label": "excreted, with drug",
+        "labelAt": [
+         420,
+         520
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Fewer working carriers means a lower transport maximum and an earlier start of spillover. Glucose then leaves in the urine even at normal blood levels, which is how the drug lowers blood glucose. The filtered load is unchanged.",
+      "options": [
+       "Right: a lower ceiling and a lower threshold.",
+       "Blocking carriers can only lower the ceiling.",
+       "The filtered load depends on GFR and plasma glucose, not on the carriers downstream.",
+       "The remaining carriers take back only a small share, so the ceiling falls."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ur-nephron-osmolarity",
+   "title": "Osmolarity along the nephron",
+   "topic": "urine-concentration",
+   "core": [
+    "gradients",
+    "homeostasis"
+   ],
+   "intro": "The osmolarity of the fluid inside the tubule at seven points from the start of the proximal tubule to the end of the collecting duct, with high ADH (solid) and no ADH (dashed). Drawn from the chapter’s figure.",
+   "alt": "A graph of tubular fluid osmolarity, 0 to 1,300 mOsm/L, at seven points along the nephron. It is 300 at the start and at the end of the proximal tubule, 1,200 at the tip of the loop, about 100 at the start and end of the distal tubule. From there, with high ADH, it rises to 300 at the end of the cortical collecting duct and 1,200 at the end of the collecting duct; with no ADH, it falls to about 75 and then 50. A dotted line marks plasma at 300.",
+   "x": {
+    "min": 0,
+    "max": 6,
+    "label": "Position along the nephron",
+    "cats": [
+     "PCT start",
+     "PCT end",
+     "Loop tip",
+     "DCT start",
+     "DCT end",
+     "Duct in cortex",
+     "Duct end"
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 1300,
+      "label": "Tubular fluid osmolarity",
+      "unit": "mOsm/L",
+      "ticks": [
+       0,
+       300,
+       600,
+       900,
+       1200
+      ]
+     },
+     "series": [
+      {
+       "id": "shared",
+       "cls": "shape",
+       "pts": [
+        [
+         0,
+         300
+        ],
+        [
+         1,
+         300
+        ],
+        [
+         2,
+         1200
+        ],
+        [
+         3,
+         100
+        ],
+        [
+         4,
+         100
+        ]
+       ],
+       "label": "same with or without ADH",
+       "labelAt": [
+        2.1,
+        1150
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "high-adh",
+       "cls": "hi",
+       "pts": [
+        [
+         4,
+         100
+        ],
+        [
+         5,
+         300
+        ],
+        [
+         6,
+         1200
+        ]
+       ],
+       "label": "high ADH",
+       "labelAt": [
+        5.9,
+        1000
+       ],
+       "anchor": "end"
+      },
+      {
+       "id": "no-adh",
+       "cls": "lo",
+       "dash": true,
+       "pts": [
+        [
+         4,
+         100
+        ],
+        [
+         5,
+         75
+        ],
+        [
+         6,
+         50
+        ]
+       ],
+       "label": "no ADH",
+       "labelAt": [
+        5.9,
+        150
+       ],
+       "anchor": "end"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 300,
+       "label": "plasma ≈ 300",
+       "dash": true,
+       "faint": true,
+       "at": 3.2
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "pct",
+     "x0": 0,
+     "x1": 1,
+     "label": "proximal tubule"
+    },
+    {
+     "id": "loop",
+     "x0": 1,
+     "x1": 3,
+     "label": "nephron loop"
+    },
+    {
+     "id": "dct",
+     "x0": 3,
+     "x1": 4,
+     "label": "distal tubule"
+    },
+    {
+     "id": "cd",
+     "x0": 4,
+     "x1": 6,
+     "label": "collecting duct"
+    }
+   ],
+   "questions": [
+    {
+     "id": "loop-tip",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the osmolarity of the tubular fluid at the tip of a long nephron loop.",
+     "answer": 1200,
+     "tol": 60,
+     "unit": "mOsm/L",
+     "show": {
+      "x": 2,
+      "y": 1200
+     },
+     "why": "About 1,200 mOsm/L. The descending limb loses water to the salty inner medulla until its fluid matches it."
+    },
+    {
+     "id": "dct-start",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the osmolarity of the fluid entering the distal tubule.",
+     "answer": 100,
+     "tol": 25,
+     "unit": "mOsm/L",
+     "show": {
+      "x": 3,
+      "y": 100
+     },
+     "why": "About 100 mOsm/L, a third of plasma. The thick ascending limb pumped salt out without letting water follow."
+    },
+    {
+     "id": "no-adh-end",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "With no ADH, read the osmolarity of the urine leaving the collecting duct.",
+     "answer": 50,
+     "tol": 20,
+     "unit": "mOsm/L",
+     "show": {
+      "x": 6,
+      "y": 50
+     },
+     "why": "About 50 mOsm/L. With no aquaporins, water cannot leave the duct, while it keeps reabsorbing some salt, so the fluid becomes more dilute still."
+    },
+    {
+     "id": "name-pct",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "In which segment does the fluid lose about two thirds of its volume but none of its osmolarity?",
+     "options": [
+      "The proximal tubule",
+      "The nephron loop",
+      "The distal tubule",
+      "The collecting duct"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "pct"
+     },
+     "why": {
+      "correct": "The proximal tubule reabsorbs solute and water together: water follows solute through aquaporins and leaky tight junctions, so the fluid stays at 300 mOsm/L as its volume falls.",
+      "options": [
+       "Right: flat at 300 across the proximal tubule.",
+       "The loop first concentrates the fluid to 1,200 and then dilutes it to 100.",
+       "The distal tubule keeps diluting; little water leaves it.",
+       "The collecting duct’s osmolarity swings with ADH."
+      ]
+     }
+    },
+    {
+     "id": "name-split",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Where do the high-ADH and no-ADH paths split?",
+     "options": [
+      "In the collecting duct",
+      "In the proximal tubule",
+      "At the tip of the loop",
+      "In the thick ascending limb"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "cd"
+     },
+     "why": {
+      "correct": "ADH acts on principal cells of the late distal tubule and collecting duct. Every segment before them works the same whatever ADH does, so the paths only split there.",
+      "options": [
+       "Right: ADH changes only the last segments.",
+       "The proximal tubule reabsorbs water whatever ADH does: obligatory reabsorption.",
+       "The loop tip reaches 1,200 either way; the gradient is always there.",
+       "The thick ascending limb is nearly waterproof with or without ADH."
+      ]
+     }
+    },
+    {
+     "id": "loop-diuretic",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A patient takes a loop diuretic that blocks NKCC2, and ADH is high. How does the solid curve change?",
+     "options": [
+      "Peak falls, distal fluid less dilute, final urine far below 1,200",
+      "The loop peak rises to 2,000",
+      "Nothing changes before the collecting duct, because ADH is still high",
+      "The proximal tubule fluid falls to 100"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "furosemide",
+        "cls": "accent",
+        "dash": true,
+        "pts": [
+         [
+          0,
+          300
+         ],
+         [
+          1,
+          300
+         ],
+         [
+          2,
+          450
+         ],
+         [
+          3,
+          290
+         ],
+         [
+          4,
+          280
+         ],
+         [
+          5,
+          300
+         ],
+         [
+          6,
+          400
+         ]
+        ],
+        "label": "loop diuretic, high ADH",
+        "labelAt": [
+         2.2,
+         520
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Without NKCC2 the thick ascending limb stops pumping salt, so it no longer dilutes its fluid and no longer builds the medullary gradient. The descending limb has little salty medulla to lose water to, and even with high ADH the collecting duct can only match a weak gradient. The numbers are schematic.",
+      "options": [
+       "Right: no pumping, no gradient, no concentrated urine.",
+       "Blocking the pump can only weaken the gradient.",
+       "The drug acts in the loop, so the change starts there.",
+       "The proximal tubule is untouched; its fluid stays near 300."
+      ]
+     }
+    },
+    {
+     "id": "low-protein",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Someone on a very low-protein diet makes little urea. With high ADH, how does the end of the solid curve change?",
+     "options": [
+      "The final urine is less concentrated than 1,200",
+      "The final urine is more concentrated than 1,200",
+      "Only the no-ADH path changes",
+      "The proximal tubule fluid falls below 300"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "low-urea",
+        "cls": "accent",
+        "dash": true,
+        "pts": [
+         [
+          4,
+          100
+         ],
+         [
+          5,
+          300
+         ],
+         [
+          6,
+          800
+         ]
+        ],
+        "label": "low-protein diet",
+        "labelAt": [
+         5.9,
+         700
+        ],
+        "anchor": "end"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Urea supplies about half the inner medulla’s osmolarity through urea recycling. With little urea, the inner medulla is less concentrated, so the collecting duct cannot concentrate its fluid as far, even with plenty of ADH. The value shown is schematic.",
+      "options": [
+       "Right: less urea, a weaker inner medulla, less concentrated urine.",
+       "Less urea can only weaken the gradient.",
+       "The high-ADH path is the one that depends on the inner medulla.",
+       "The proximal tubule keeps its fluid at plasma osmolarity."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "ur-urine-volume",
+   "title": "Urine volume needed to carry the day’s waste",
+   "topic": "urine-concentration",
+   "core": [
+    "mass-balance",
+    "homeostasis"
+   ],
+   "intro": "The daily urine volume needed to excrete 600 mOsm of waste solute, at each possible urine osmolarity: volume = solute ÷ concentration. Your kidneys can make urine from about 50 to 1,200 mOsm/L.",
+   "alt": "A curve of daily urine volume in liters, 0 to 12, against urine osmolarity in mOsm/L, 0 to 1,300, for a solute load of 600 mOsm a day. It falls steeply from 12 L at 50 mOsm/L to 6 L at 100 and 2 L at 300, then flattens: 1 L at 600 and 0.5 L at 1,200, the most concentrated urine the kidneys can make.",
+   "x": {
+    "min": 0,
+    "max": 1300,
+    "label": "Urine osmolarity",
+    "unit": "mOsm/L",
+    "ticks": [
+     0,
+     300,
+     600,
+     900,
+     1200
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 12,
+      "label": "Urine volume",
+      "unit": "L/day",
+      "ticks": [
+       0,
+       2,
+       4,
+       6,
+       8,
+       10,
+       12
+      ]
+     },
+     "series": [
+      {
+       "id": "load600",
+       "cls": "deo2",
+       "curve": "smooth",
+       "pts": [
+        [
+         50,
+         12
+        ],
+        [
+         60,
+         10
+        ],
+        [
+         75,
+         8
+        ],
+        [
+         100,
+         6
+        ],
+        [
+         125,
+         4.8
+        ],
+        [
+         150,
+         4
+        ],
+        [
+         200,
+         3
+        ],
+        [
+         250,
+         2.4
+        ],
+        [
+         300,
+         2
+        ],
+        [
+         400,
+         1.5
+        ],
+        [
+         500,
+         1.2
+        ],
+        [
+         600,
+         1
+        ],
+        [
+         800,
+         0.75
+        ],
+        [
+         1000,
+         0.6
+        ],
+        [
+         1200,
+         0.5
+        ]
+       ],
+       "label": "600 mOsm a day",
+       "labelAt": [
+        320,
+        3.2
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 0.5,
+       "label": "least possible: 0.5 L",
+       "dash": true,
+       "faint": true,
+       "at": 130
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 1200,
+     "label": "most concentrated"
+    },
+    {
+     "x": 300,
+     "label": "plasma"
+    }
+   ],
+   "regions": [
+    {
+     "id": "dilute",
+     "x0": 50,
+     "x1": 300,
+     "label": "more dilute than plasma"
+    },
+    {
+     "id": "concentrated",
+     "x0": 300,
+     "x1": 1200,
+     "label": "more concentrated than plasma"
+    }
+   ],
+   "questions": [
+    {
+     "id": "vol-300",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "If the kidneys could make urine only at the osmolarity of plasma, 300 mOsm/L, what daily volume would carry 600 mOsm?",
+     "answer": 2,
+     "tol": 0.25,
+     "unit": "L/day",
+     "show": {
+      "x": 300,
+      "y": 2
+     },
+     "why": "600 mOsm ÷ 300 mOsm/L = 2 L. Without the ability to concentrate or dilute, urine volume would be fixed by the solute load."
+    },
+    {
+     "id": "vol-min",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the smallest daily urine volume that can carry 600 mOsm.",
+     "answer": 0.5,
+     "tol": 0.15,
+     "unit": "L/day",
+     "show": {
+      "x": 1200,
+      "y": 0.5
+     },
+     "why": "600 ÷ 1,200 = 0.5 L. No amount of ADH can push urine past the medulla’s 1,200 mOsm/L, so this is the floor."
+    },
+    {
+     "id": "vol-100",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "After drinking a lot of water, urine is at 100 mOsm/L. Read the daily volume at that concentration.",
+     "answer": 6,
+     "tol": 0.5,
+     "unit": "L/day",
+     "show": {
+      "x": 100,
+      "y": 6
+     },
+     "why": "600 ÷ 100 = 6 L a day. With ADH low, the kidneys excrete the same solute in far more water."
+    },
+    {
+     "id": "name-concentrated",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "On a hot day without water, where on the curve does your urine sit?",
+     "options": [
+      "Toward the right: concentrated urine, small volume",
+      "Toward the left: dilute urine and a large daily volume of it",
+      "Exactly at 300 mOsm/L",
+      "Below the 0.5 L line"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "concentrated"
+     },
+     "why": {
+      "correct": "High ADH lets water leave the collecting duct into the salty medulla, so urine moves toward 1,200 mOsm/L and the volume toward 0.5 L.",
+      "options": [
+       "Right: concentrated urine, small volume.",
+       "That is the low-ADH end, after drinking a lot.",
+       "Urine at 300 would mean ADH is doing little either way.",
+       "No urine concentration can carry 600 mOsm in less than 0.5 L."
+      ]
+     }
+    },
+    {
+     "id": "name-oliguria",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 3,
+     "topic": "renal-function-urine",
+     "q": "A patient passes 400 mL a day (oliguria). Where does that volume fall on this graph, and what does it mean?",
+     "options": [
+      "Below the curve’s floor: no urine can carry the day’s solute",
+      "On the curve at about 1,500 mOsm/L, which the kidneys can reach with enough ADH",
+      "On the plateau, so it is a normal volume",
+      "Above the curve, so solute is lost too fast"
+     ],
+     "correct": 0,
+     "highlight": {
+      "y0": 0,
+      "y1": 0.5
+     },
+     "why": {
+      "correct": "At 400 mL, even maximally concentrated urine carries only 0.4 L × 1,200 mOsm/L = 480 mOsm, less than the 600 made each day, so nitrogen wastes and other solutes accumulate in the blood.",
+      "options": [
+       "Right: 480 mOsm out, 600 made; the rest stays in the blood.",
+       "The kidneys cannot concentrate urine past the medulla’s 1,200 mOsm/L.",
+       "The curve has no plateau; 0.4 L is below anything it reaches.",
+       "Too little volume is the problem here, not too much."
+      ]
+     }
+    },
+    {
+     "id": "high-solute",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "A high-protein diet raises the daily solute load to 900 mOsm, mostly urea. How does the curve change?",
+     "options": [
+      "It moves up: the minimum volume rises to 0.75 L",
+      "It moves down: the minimum falls to 0.25 L",
+      "It does not move, because the kidneys concentrate harder",
+      "Only the dilute end moves"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "load900",
+        "cls": "accent",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          75,
+          12
+         ],
+         [
+          100,
+          9
+         ],
+         [
+          125,
+          7.2
+         ],
+         [
+          150,
+          6
+         ],
+         [
+          200,
+          4.5
+         ],
+         [
+          300,
+          3
+         ],
+         [
+          400,
+          2.25
+         ],
+         [
+          600,
+          1.5
+         ],
+         [
+          800,
+          1.13
+         ],
+         [
+          1000,
+          0.9
+         ],
+         [
+          1200,
+          0.75
+         ]
+        ],
+        "label": "900 mOsm a day",
+        "labelAt": [
+         420,
+         3.6
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Volume = solute ÷ concentration. With more solute and the same 1,200 mOsm/L ceiling, the least possible volume is 900 ÷ 1,200 = 0.75 L. More solute means more obligatory urine.",
+      "options": [
+       "Right: more solute, more water needed at every concentration.",
+       "More solute cannot need less water.",
+       "The ceiling is set by the medulla; it does not rise with the load.",
+       "Every point of the curve scales with the solute load."
+      ]
+     }
+    }
+   ]
+  },
+  {
    "id": "met-atp-by-stage",
    "title": "ATP yield of one glucose, stage by stage",
    "topic": "carbohydrate-metabolism",
@@ -16957,22 +18464,19 @@
      "id": "glycolysis",
      "x0": 0,
      "x1": 1,
-     "label": "glycolysis",
-     "show": true
+     "label": "glycolysis"
     },
     {
      "id": "pyruvate",
      "x0": 1,
      "x1": 2,
-     "label": "pyruvate to acetyl CoA",
-     "show": true
+     "label": "pyruvate to acetyl CoA"
     },
     {
      "id": "cycle",
      "x0": 2,
      "x1": 3,
-     "label": "citric acid cycle",
-     "show": true
+     "label": "citric acid cycle"
     }
    ],
    "panels": [
@@ -17047,9 +18551,10 @@
        ],
        "label": "stage total",
        "labelAt": [
-        2.18,
+        2.5,
         21.2
-       ]
+       ],
+       "anchor": "middle"
       },
       {
        "id": "direct",
@@ -17090,16 +18595,47 @@
        ],
        "label": "made directly",
        "labelAt": [
-        2.24,
+        2.5,
         3.4
-       ]
+       ],
+       "anchor": "middle"
       }
      ],
      "notes": [
       {
        "x": 0.5,
+       "y": 11.6,
+       "text": "glycolysis",
+       "anchor": "middle"
+      },
+      {
+       "x": 0.5,
        "y": 8.3,
        "text": "5 to 7",
+       "anchor": "middle"
+      },
+      {
+       "x": 1.5,
+       "y": 9.4,
+       "text": "pyruvate to",
+       "anchor": "middle"
+      },
+      {
+       "x": 1.5,
+       "y": 7.2,
+       "text": "acetyl CoA",
+       "anchor": "middle"
+      },
+      {
+       "x": 2.5,
+       "y": 12,
+       "text": "citric acid",
+       "anchor": "middle"
+      },
+      {
+       "x": 2.5,
+       "y": 9.8,
+       "text": "cycle",
        "anchor": "middle"
       }
      ]
@@ -18183,7 +19719,7 @@
        {
         "x": 35,
         "y": 150,
-        "label": "evaporation needed"
+        "label": "needed"
        }
       ]
      },
@@ -18194,1513 +19730,6 @@
        "At 35 °C the dry routes remove nothing, however much heat is made.",
        "Core temperature stays steady only if heat lost matches heat made; if evaporation stays at 75, heat builds up.",
        "Sweating less would let heat build up; the water must be replaced by drinking."
-      ]
-     }
-    }
-   ]
-  },
-  {
-   "id": "ur-gfr-autoregulation",
-   "title": "GFR and arterial pressure: the autoregulation plateau",
-   "topic": "glomerular-filtration",
-   "core": [
-    "homeostasis",
-    "gradients"
-   ],
-   "intro": "Glomerular filtration rate of both kidneys against mean arterial pressure, with the kidney’s own controls working (solid) and, for comparison, if GFR simply followed pressure (dashed). The curves are schematic, drawn from typical values in the chapter’s figure.",
-   "alt": "A graph of GFR in mL/min, 0 to 150, against mean arterial pressure in mm Hg, 0 to 200. The solid curve with autoregulation is zero at 40 mm Hg, climbs steeply to about 55 at 60 and 117 at 80, stays almost flat between 80 and 180 (about 123 at 100 and 132 at 180), then climbs again above 180. The dashed line without autoregulation rises straight from zero at 40 mm Hg through 125 at 100 mm Hg to 150 at about 112 mm Hg.",
-   "x": {
-    "min": 0,
-    "max": 200,
-    "label": "Mean arterial pressure",
-    "unit": "mm Hg",
-    "ticks": [
-     0,
-     40,
-     80,
-     120,
-     160,
-     200
-    ]
-   },
-   "panels": [
-    {
-     "h": 1.2,
-     "y": {
-      "min": 0,
-      "max": 150,
-      "label": "GFR",
-      "unit": "mL/min",
-      "ticks": [
-       0,
-       25,
-       50,
-       75,
-       100,
-       125,
-       150
-      ]
-     },
-     "series": [
-      {
-       "id": "with",
-       "cls": "hi",
-       "curve": "smooth",
-       "pts": [
-        [
-         40,
-         0
-        ],
-        [
-         50,
-         20
-        ],
-        [
-         60,
-         55
-        ],
-        [
-         70,
-         95
-        ],
-        [
-         80,
-         117
-        ],
-        [
-         90,
-         121
-        ],
-        [
-         100,
-         123
-        ],
-        [
-         120,
-         125
-        ],
-        [
-         140,
-         127
-        ],
-        [
-         160,
-         129
-        ],
-        [
-         180,
-         132
-        ],
-        [
-         190,
-         141
-        ],
-        [
-         197,
-         150
-        ]
-       ],
-       "label": "with autoregulation",
-       "labelAt": [
-        118,
-        112
-       ],
-       "anchor": "start"
-      },
-      {
-       "id": "without",
-       "cls": "lo",
-       "dash": true,
-       "pts": [
-        [
-         40,
-         0
-        ],
-        [
-         112,
-         150
-        ]
-       ],
-       "label": "without autoregulation",
-       "labelAt": [
-        80,
-        140
-       ],
-       "anchor": "end"
-      }
-     ]
-    }
-   ],
-   "regions": [
-    {
-     "id": "low",
-     "x0": 40,
-     "x1": 80,
-     "label": "below the plateau"
-    },
-    {
-     "id": "plateau",
-     "x0": 80,
-     "x1": 180,
-     "label": "autoregulatory range"
-    },
-    {
-     "id": "high",
-     "x0": 180,
-     "x1": 200,
-     "label": "above the range"
-    }
-   ],
-   "questions": [
-    {
-     "id": "gfr-at-100",
-     "type": "value",
-     "level": "recall",
-     "diff": 1,
-     "q": "Read the GFR at a normal mean arterial pressure of 100 mm Hg.",
-     "answer": 123,
-     "tol": 6,
-     "unit": "mL/min",
-     "show": {
-      "x": 100,
-      "y": 123
-     },
-     "why": "About 120 to 125 mL/min, the normal GFR of a young adult: about 180 liters of filtrate a day."
-    },
-    {
-     "id": "gfr-at-60",
-     "type": "value",
-     "level": "apply",
-     "diff": 2,
-     "q": "After a large bleed, mean arterial pressure falls to 60 mm Hg. Read the GFR.",
-     "answer": 55,
-     "tol": 8,
-     "unit": "mL/min",
-     "show": {
-      "x": 60,
-      "y": 55
-     },
-     "why": "About 55 mL/min, less than half of normal. At 60 mm Hg the pressure is below the plateau, so the afferent arterioles are already as wide as they can go and GFR falls with pressure."
-    },
-    {
-     "id": "without-at-110",
-     "type": "value",
-     "level": "analyze",
-     "diff": 2,
-     "q": "Suppose GFR simply followed pressure. Read the GFR on the dashed line at a MAP of 110 mm Hg, as when you are startled.",
-     "answer": 146,
-     "tol": 6,
-     "unit": "mL/min",
-     "show": {
-      "x": 110,
-      "y": 146
-     },
-     "why": "About 145 mL/min, some 20 mL/min more than normal. Fluid would rush through the tubules faster than they could reabsorb it, and salt, water and nutrients would be lost. The solid curve at 110 barely moves."
-    },
-    {
-     "id": "name-plateau",
-     "type": "phase",
-     "level": "recall",
-     "diff": 1,
-     "q": "Over which range of mean arterial pressure does GFR barely change?",
-     "options": [
-      "About 80 to 180 mm Hg",
-      "About 0 to 40 mm Hg",
-      "About 40 to 80 mm Hg",
-      "Only above about 180 mm Hg, where the arterioles are fully narrowed"
-     ],
-     "correct": 0,
-     "highlight": {
-      "region": "plateau"
-     },
-     "why": {
-      "correct": "Between about 80 and 180 mm Hg, the myogenic mechanism and tubuloglomerular feedback adjust the afferent arterioles so GBHP, and so GFR, stay nearly constant. Some courses quote 60 to 150 mm Hg, a round figure for organs in general; the kidney’s own plateau starts a little higher and goes further.",
-      "options": [
-       "Right: the plateau of the solid curve.",
-       "Below about 40 mm Hg, GBHP is too low to overcome CHP and BCOP, and filtration stops.",
-       "Here the curve climbs steeply: autoregulation cannot keep up, and GFR falls with pressure.",
-       "Above 180 mm Hg the afferent arterioles cannot narrow any further, so GFR rises again."
-      ]
-     }
-    },
-    {
-     "id": "name-low",
-     "type": "phase",
-     "level": "apply",
-     "diff": 2,
-     "q": "A man in shock has a MAP of 65 mm Hg, and his urine output has dropped. On which part of the curve is he?",
-     "options": [
-      "Below the plateau, where GFR falls with pressure",
-      "On the plateau, where the afferent arterioles still hold GFR steady",
-      "Above the range, where GFR rises with pressure",
-      "Where filtration has stopped completely"
-     ],
-     "correct": 0,
-     "highlight": {
-      "region": "low"
-     },
-     "why": {
-      "correct": "At 65 mm Hg he is below the plateau. His afferent arterioles cannot widen any further to protect GBHP, so GFR falls steeply, and strong sympathetic activity lowers it still more.",
-      "options": [
-       "Right: below about 80 mm Hg, GFR follows pressure.",
-       "The plateau starts at about 80 mm Hg; 65 is below it.",
-       "That region is above 180 mm Hg.",
-       "Filtration stops only near 40 mm Hg on this curve; at 65 some filtrate is still made."
-      ]
-     }
-    },
-    {
-     "id": "no-autoregulation",
-     "type": "shift",
-     "level": "analyze",
-     "diff": 2,
-     "q": "An experimental drug stops both the myogenic mechanism and tubuloglomerular feedback, so the afferent arterioles no longer change their width. How does the GFR curve change?",
-     "options": [
-      "It follows the dashed line: GFR rises and falls with pressure",
-      "It stays flat, because the filtration coefficient Kf has not changed at all",
-      "It shifts down but stays flat",
-      "It shifts to the right but keeps its plateau"
-     ],
-     "correct": 0,
-     "overlay": {
-      "series": [
-       {
-        "id": "blocked",
-        "cls": "accent",
-        "dash": true,
-        "pts": [
-         [
-          40,
-          0
-         ],
-         [
-          70,
-          62
-         ],
-         [
-          100,
-          125
-         ],
-         [
-          112,
-          150
-         ]
-        ],
-        "label": "mechanisms blocked",
-        "labelAt": [
-         118,
-         146
-        ],
-        "anchor": "start"
-       }
-      ]
-     },
-     "why": {
-      "correct": "The plateau exists only because the afferent arteriole narrows as pressure rises and widens as it falls. Without those two mechanisms, GBHP follows arterial pressure, and GFR does too.",
-      "options": [
-       "Right: no autoregulation, no plateau.",
-       "Kf sets how much fluid crosses per mm Hg; it cannot hold GFR steady when pressure changes.",
-       "A lower flat curve would still need something to hold GFR steady.",
-       "Both mechanisms act through the same arteriole; blocking both removes the plateau rather than moving it."
-      ]
-     }
-    },
-    {
-     "id": "sympathetic",
-     "type": "shift",
-     "level": "analyze",
-     "diff": 3,
-     "q": "During a hemorrhage, strong sympathetic activity constricts the afferent arterioles. How does the GFR curve compare with the solid one?",
-     "options": [
-      "It lies lower: at any pressure, GFR is less",
-      "It lies higher: at any pressure, GFR is more",
-      "It is unchanged, because autoregulation cancels the nerves",
-      "It becomes the dashed line"
-     ],
-     "correct": 0,
-     "overlay": {
-      "series": [
-       {
-        "id": "symp",
-        "cls": "symp",
-        "dash": true,
-        "curve": "smooth",
-        "pts": [
-         [
-          40,
-          0
-         ],
-         [
-          60,
-          35
-         ],
-         [
-          80,
-          70
-         ],
-         [
-          100,
-          80
-         ],
-         [
-          140,
-          85
-         ],
-         [
-          180,
-          90
-         ]
-        ],
-        "label": "strong sympathetic activity",
-        "labelAt": [
-         140,
-         75
-        ],
-        "anchor": "start"
-       }
-      ]
-     },
-     "why": {
-      "correct": "Nervous and hormonal controls can override autoregulation. Strong sympathetic constriction of the afferent arterioles lowers GBHP at every arterial pressure, so less filtrate and less urine are made, saving blood volume.",
-      "options": [
-       "Right: the nerves pull GFR below the plateau.",
-       "Sympathetic constriction of the afferent arterioles lowers, not raises, glomerular pressure.",
-       "Autoregulation holds GFR steady against changes in pressure; strong sympathetic activity overrides it.",
-       "The dashed line shows the loss of autoregulation, not a deliberate lowering by the nerves."
-      ]
-     }
-    }
-   ]
-  },
-  {
-   "id": "ur-glucose-tm",
-   "title": "Glucose reabsorption and the transport maximum",
-   "topic": "tubular-transport",
-   "core": [
-    "mass-balance",
-    "gradients"
-   ],
-   "intro": "How much glucose both kidneys filter, reabsorb and excrete each minute as plasma glucose rises, at a GFR of 125 mL/min. Drawn from the chapter’s figure; the curves are schematic.",
-   "alt": "A graph of glucose in mg/min, 0 to 1,000, against plasma glucose in mg/dL, 0 to 800. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed curve follows it up to about 180 mg/dL, bends over and levels off at about 375 mg/min from about 380 mg/dL. The excreted curve is zero up to about 180 mg/dL, then rises, reaching 250 mg/min at 500 mg/dL and running parallel to the filtered line after reabsorption has leveled off.",
-   "x": {
-    "min": 0,
-    "max": 800,
-    "label": "Plasma glucose",
-    "unit": "mg/dL",
-    "ticks": [
-     0,
-     200,
-     400,
-     600,
-     800
-    ]
-   },
-   "panels": [
-    {
-     "h": 1.2,
-     "y": {
-      "min": 0,
-      "max": 1000,
-      "label": "Glucose",
-      "unit": "mg/min",
-      "ticks": [
-       0,
-       200,
-       400,
-       600,
-       800,
-       1000
-      ]
-     },
-     "series": [
-      {
-       "id": "filtered",
-       "cls": "shape",
-       "dash": true,
-       "pts": [
-        [
-         0,
-         0
-        ],
-        [
-         800,
-         1000
-        ]
-       ],
-       "label": "filtered",
-       "labelAt": [
-        560,
-        760
-       ],
-       "anchor": "end"
-      },
-      {
-       "id": "reabsorbed",
-       "cls": "o2",
-       "curve": "smooth",
-       "pts": [
-        [
-         0,
-         0
-        ],
-        [
-         180,
-         225
-        ],
-        [
-         200,
-         249
-        ],
-        [
-         250,
-         302
-        ],
-        [
-         300,
-         342
-        ],
-        [
-         350,
-         369
-        ],
-        [
-         380,
-         375
-        ],
-        [
-         800,
-         375
-        ]
-       ],
-       "label": "reabsorbed",
-       "labelAt": [
-        620,
-        400
-       ],
-       "anchor": "start"
-      },
-      {
-       "id": "excreted",
-       "cls": "accent",
-       "curve": "smooth",
-       "pts": [
-        [
-         0,
-         0
-        ],
-        [
-         180,
-         0
-        ],
-        [
-         200,
-         1
-        ],
-        [
-         250,
-         10
-        ],
-        [
-         300,
-         33
-        ],
-        [
-         350,
-         69
-        ],
-        [
-         380,
-         100
-        ],
-        [
-         500,
-         250
-        ],
-        [
-         800,
-         625
-        ]
-       ],
-       "label": "excreted",
-       "labelAt": [
-        690,
-        470
-       ],
-       "anchor": "start"
-      }
-     ],
-     "hlines": [
-      {
-       "y": 375,
-       "label": "transport maximum",
-       "at": 20,
-       "dash": true,
-       "faint": true
-      }
-     ]
-    }
-   ],
-   "vlines": [
-    {
-     "x": 180,
-     "label": "renal threshold"
-    }
-   ],
-   "regions": [
-    {
-     "id": "all",
-     "x0": 0,
-     "x1": 180,
-     "label": "all reabsorbed"
-    },
-    {
-     "id": "splay",
-     "x0": 180,
-     "x1": 380,
-     "label": "splay"
-    },
-    {
-     "id": "saturated",
-     "x0": 380,
-     "x1": 800,
-     "label": "carriers saturated"
-    }
-   ],
-   "questions": [
-    {
-     "id": "read-tm",
-     "type": "value",
-     "level": "recall",
-     "diff": 1,
-     "q": "Read the highest rate at which the kidneys can reabsorb glucose.",
-     "answer": 375,
-     "tol": 15,
-     "unit": "mg/min",
-     "show": {
-      "x": 600,
-      "y": 375
-     },
-     "why": "About 375 mg/min, the transport maximum. Every symporter is busy, so more glucose in the filtrate cannot speed reabsorption."
-    },
-    {
-     "id": "read-threshold",
-     "type": "value",
-     "level": "recall",
-     "diff": 1,
-     "q": "At what plasma glucose does glucose first appear in the urine?",
-     "answer": 180,
-     "tol": 20,
-     "unit": "mg/dL",
-     "show": {
-      "x": 180,
-      "y": 0
-     },
-     "why": "About 180 mg/dL, the renal threshold, where the excreted curve first rises above zero."
-    },
-    {
-     "id": "filtered-100",
-     "type": "value",
-     "level": "apply",
-     "diff": 1,
-     "q": "Read the filtered load of glucose at a plasma glucose of 100 mg/dL.",
-     "answer": 125,
-     "tol": 12,
-     "unit": "mg/min",
-     "show": {
-      "x": 100,
-      "y": 125
-     },
-     "why": "About 125 mg/min: GFR × plasma glucose = 125 mL/min × 1 mg/mL. It is well below the transport maximum, so all of it is reabsorbed."
-    },
-    {
-     "id": "excreted-500",
-     "type": "value",
-     "level": "apply",
-     "diff": 2,
-     "q": "Plasma glucose is 500 mg/dL. Read how much glucose is excreted each minute.",
-     "answer": 250,
-     "tol": 20,
-     "unit": "mg/min",
-     "show": {
-      "x": 500,
-      "y": 250
-     },
-     "why": "About 250 mg/min: 625 filtered − 375 reabsorbed. Past saturation, every extra milligram filtered is excreted, so the excreted line runs parallel to the filtered one."
-    },
-    {
-     "id": "name-splay",
-     "type": "phase",
-     "level": "analyze",
-     "diff": 3,
-     "q": "The renal threshold, 180 mg/dL, is lower than transport maximum ÷ GFR, which would give 300 mg/dL. Which part of the graph shows why?",
-     "options": [
-      "The curved splay between about 180 and 380 mg/dL",
-      "The straight filtered line",
-      "The flat part of the reabsorbed curve above 380 mg/dL",
-      "The region below 180 mg/dL where nothing is excreted"
-     ],
-     "correct": 0,
-     "highlight": {
-      "region": "splay"
-     },
-     "why": {
-      "correct": "Nephrons differ. Some have few carriers for the glucose they filter and saturate early, so glucose starts leaking through them while others still have spare carriers. The bend in the reabsorbed curve and the gradual rise of the excreted curve are that early leak.",
-      "options": [
-       "Right: the splay shows nephrons saturating at different glucose levels.",
-       "The filtered load is a straight line; it has nothing to say about carriers.",
-       "Above 380 mg/dL every nephron is saturated; the splay comes before that.",
-       "Below the threshold every nephron reabsorbs all its glucose, so nothing distinguishes them."
-      ]
-     }
-    },
-    {
-     "id": "name-saturated",
-     "type": "phase",
-     "level": "apply",
-     "diff": 2,
-     "q": "In which region does raising plasma glucose further add nothing to the amount reabsorbed?",
-     "options": [
-      "Above about 380 mg/dL",
-      "Below about 180 mg/dL",
-      "Between 180 and 380 mg/dL",
-      "Nowhere: reabsorption always rises with glucose"
-     ],
-     "correct": 0,
-     "highlight": {
-      "region": "saturated"
-     },
-     "why": {
-      "correct": "Above about 380 mg/dL every symporter in every nephron is busy: carrier saturation. The reabsorbed curve is flat at the transport maximum.",
-      "options": [
-       "Right: the carriers are saturated.",
-       "Below 180 mg/dL reabsorption rises one-for-one with the filtered load.",
-       "In the splay, reabsorption is still rising, just more slowly.",
-       "A fixed number of carriers sets a ceiling on reabsorption."
-      ]
-     }
-    },
-    {
-     "id": "sglt2-blocked",
-     "type": "shift",
-     "level": "analyze",
-     "diff": 3,
-     "q": "A drug blocks SGLT2, the symporter that does most of the proximal tubule’s glucose reabsorption. How do the curves change?",
-     "options": [
-      "Reabsorption levels off lower, and glucose spills at normal levels",
-      "Reabsorption levels off higher, and the threshold rises",
-      "The filtered line becomes steeper",
-      "Nothing changes, because the other glucose carriers take over the whole load"
-     ],
-     "correct": 0,
-     "overlay": {
-      "series": [
-       {
-        "id": "reab-drug",
-        "cls": "o2",
-        "dash": true,
-        "curve": "smooth",
-        "pts": [
-         [
-          0,
-          0
-         ],
-         [
-          50,
-          62
-         ],
-         [
-          80,
-          90
-         ],
-         [
-          120,
-          105
-         ],
-         [
-          200,
-          110
-         ],
-         [
-          800,
-          110
-         ]
-        ],
-        "label": "reabsorbed, with drug",
-        "labelAt": [
-         620,
-         150
-        ],
-        "anchor": "start"
-       },
-       {
-        "id": "excr-drug",
-        "cls": "accent",
-        "dash": true,
-        "curve": "smooth",
-        "pts": [
-         [
-          0,
-          0
-         ],
-         [
-          60,
-          0
-         ],
-         [
-          80,
-          10
-         ],
-         [
-          120,
-          45
-         ],
-         [
-          200,
-          140
-         ],
-         [
-          500,
-          515
-         ],
-         [
-          650,
-          700
-         ]
-        ],
-        "label": "excreted, with drug",
-        "labelAt": [
-         420,
-         520
-        ],
-        "anchor": "end"
-       }
-      ]
-     },
-     "why": {
-      "correct": "Fewer working carriers means a lower transport maximum and an earlier start of spillover. Glucose then leaves in the urine even at normal blood levels, which is how the drug lowers blood glucose. The filtered load is unchanged.",
-      "options": [
-       "Right: a lower ceiling and a lower threshold.",
-       "Blocking carriers can only lower the ceiling.",
-       "The filtered load depends on GFR and plasma glucose, not on the carriers downstream.",
-       "The remaining carriers take back only a small share, so the ceiling falls."
-      ]
-     }
-    }
-   ]
-  },
-  {
-   "id": "ur-nephron-osmolarity",
-   "title": "Osmolarity along the nephron",
-   "topic": "urine-concentration",
-   "core": [
-    "gradients",
-    "homeostasis"
-   ],
-   "intro": "The osmolarity of the fluid inside the tubule at seven points from the start of the proximal tubule to the end of the collecting duct, with high ADH (solid) and no ADH (dashed). Drawn from the chapter’s figure.",
-   "alt": "A graph of tubular fluid osmolarity, 0 to 1,300 mOsm/L, at seven points along the nephron. It is 300 at the start and at the end of the proximal tubule, 1,200 at the tip of the loop, about 100 at the start and end of the distal tubule. From there, with high ADH, it rises to 300 at the end of the cortical collecting duct and 1,200 at the end of the collecting duct; with no ADH, it falls to about 75 and then 50. A dotted line marks plasma at 300.",
-   "x": {
-    "min": 0,
-    "max": 6,
-    "label": "Position along the nephron",
-    "cats": [
-     "PCT start",
-     "PCT end",
-     "Loop tip",
-     "DCT start",
-     "DCT end",
-     "Cortical duct end",
-     "Duct end"
-    ]
-   },
-   "panels": [
-    {
-     "h": 1.2,
-     "y": {
-      "min": 0,
-      "max": 1300,
-      "label": "Tubular fluid osmolarity",
-      "unit": "mOsm/L",
-      "ticks": [
-       0,
-       300,
-       600,
-       900,
-       1200
-      ]
-     },
-     "series": [
-      {
-       "id": "shared",
-       "cls": "shape",
-       "pts": [
-        [
-         0,
-         300
-        ],
-        [
-         1,
-         300
-        ],
-        [
-         2,
-         1200
-        ],
-        [
-         3,
-         100
-        ],
-        [
-         4,
-         100
-        ]
-       ],
-       "label": "same with or without ADH",
-       "labelAt": [
-        2.1,
-        1150
-       ],
-       "anchor": "start"
-      },
-      {
-       "id": "high-adh",
-       "cls": "hi",
-       "pts": [
-        [
-         4,
-         100
-        ],
-        [
-         5,
-         300
-        ],
-        [
-         6,
-         1200
-        ]
-       ],
-       "label": "high ADH",
-       "labelAt": [
-        5.9,
-        1000
-       ],
-       "anchor": "end"
-      },
-      {
-       "id": "no-adh",
-       "cls": "lo",
-       "dash": true,
-       "pts": [
-        [
-         4,
-         100
-        ],
-        [
-         5,
-         75
-        ],
-        [
-         6,
-         50
-        ]
-       ],
-       "label": "no ADH",
-       "labelAt": [
-        5.9,
-        150
-       ],
-       "anchor": "end"
-      }
-     ],
-     "hlines": [
-      {
-       "y": 300,
-       "label": "plasma ≈ 300",
-       "dash": true,
-       "faint": true,
-       "at": 3.2
-      }
-     ]
-    }
-   ],
-   "regions": [
-    {
-     "id": "pct",
-     "x0": 0,
-     "x1": 1,
-     "label": "proximal tubule"
-    },
-    {
-     "id": "loop",
-     "x0": 1,
-     "x1": 3,
-     "label": "nephron loop"
-    },
-    {
-     "id": "dct",
-     "x0": 3,
-     "x1": 4,
-     "label": "distal tubule"
-    },
-    {
-     "id": "cd",
-     "x0": 4,
-     "x1": 6,
-     "label": "collecting duct"
-    }
-   ],
-   "questions": [
-    {
-     "id": "loop-tip",
-     "type": "value",
-     "level": "recall",
-     "diff": 1,
-     "q": "Read the osmolarity of the tubular fluid at the tip of a long nephron loop.",
-     "answer": 1200,
-     "tol": 60,
-     "unit": "mOsm/L",
-     "show": {
-      "x": 2,
-      "y": 1200
-     },
-     "why": "About 1,200 mOsm/L. The descending limb loses water to the salty inner medulla until its fluid matches it."
-    },
-    {
-     "id": "dct-start",
-     "type": "value",
-     "level": "apply",
-     "diff": 1,
-     "q": "Read the osmolarity of the fluid entering the distal tubule.",
-     "answer": 100,
-     "tol": 25,
-     "unit": "mOsm/L",
-     "show": {
-      "x": 3,
-      "y": 100
-     },
-     "why": "About 100 mOsm/L, a third of plasma. The thick ascending limb pumped salt out without letting water follow."
-    },
-    {
-     "id": "no-adh-end",
-     "type": "value",
-     "level": "apply",
-     "diff": 2,
-     "q": "With no ADH, read the osmolarity of the urine leaving the collecting duct.",
-     "answer": 50,
-     "tol": 20,
-     "unit": "mOsm/L",
-     "show": {
-      "x": 6,
-      "y": 50
-     },
-     "why": "About 50 mOsm/L. With no aquaporins, water cannot leave the duct, while it keeps reabsorbing some salt, so the fluid becomes more dilute still."
-    },
-    {
-     "id": "name-pct",
-     "type": "phase",
-     "level": "apply",
-     "diff": 2,
-     "q": "In which segment does the fluid lose about two thirds of its volume but none of its osmolarity?",
-     "options": [
-      "The proximal tubule",
-      "The nephron loop",
-      "The distal tubule",
-      "The collecting duct"
-     ],
-     "correct": 0,
-     "highlight": {
-      "region": "pct"
-     },
-     "why": {
-      "correct": "The proximal tubule reabsorbs solute and water together: water follows solute through aquaporins and leaky tight junctions, so the fluid stays at 300 mOsm/L as its volume falls.",
-      "options": [
-       "Right: flat at 300 across the proximal tubule.",
-       "The loop first concentrates the fluid to 1,200 and then dilutes it to 100.",
-       "The distal tubule keeps diluting; little water leaves it.",
-       "The collecting duct’s osmolarity swings with ADH."
-      ]
-     }
-    },
-    {
-     "id": "name-split",
-     "type": "phase",
-     "level": "apply",
-     "diff": 2,
-     "q": "Where do the high-ADH and no-ADH paths split?",
-     "options": [
-      "In the collecting duct",
-      "In the proximal tubule",
-      "At the tip of the loop",
-      "In the thick ascending limb"
-     ],
-     "correct": 0,
-     "highlight": {
-      "region": "cd"
-     },
-     "why": {
-      "correct": "ADH acts on principal cells of the late distal tubule and collecting duct. Every segment before them works the same whatever ADH does, so the paths only split there.",
-      "options": [
-       "Right: ADH changes only the last segments.",
-       "The proximal tubule reabsorbs water whatever ADH does: obligatory reabsorption.",
-       "The loop tip reaches 1,200 either way; the gradient is always there.",
-       "The thick ascending limb is nearly waterproof with or without ADH."
-      ]
-     }
-    },
-    {
-     "id": "loop-diuretic",
-     "type": "shift",
-     "level": "analyze",
-     "diff": 3,
-     "q": "A patient takes a loop diuretic that blocks NKCC2, and ADH is high. How does the solid curve change?",
-     "options": [
-      "Peak falls, distal fluid less dilute, final urine far below 1,200",
-      "The loop peak rises to 2,000",
-      "Nothing changes before the collecting duct, because ADH is still high",
-      "The proximal tubule fluid falls to 100"
-     ],
-     "correct": 0,
-     "overlay": {
-      "series": [
-       {
-        "id": "furosemide",
-        "cls": "accent",
-        "dash": true,
-        "pts": [
-         [
-          0,
-          300
-         ],
-         [
-          1,
-          300
-         ],
-         [
-          2,
-          450
-         ],
-         [
-          3,
-          290
-         ],
-         [
-          4,
-          280
-         ],
-         [
-          5,
-          300
-         ],
-         [
-          6,
-          400
-         ]
-        ],
-        "label": "loop diuretic, high ADH",
-        "labelAt": [
-         2.2,
-         520
-        ],
-        "anchor": "start"
-       }
-      ]
-     },
-     "why": {
-      "correct": "Without NKCC2 the thick ascending limb stops pumping salt, so it no longer dilutes its fluid and no longer builds the medullary gradient. The descending limb has little salty medulla to lose water to, and even with high ADH the collecting duct can only match a weak gradient. The numbers are schematic.",
-      "options": [
-       "Right: no pumping, no gradient, no concentrated urine.",
-       "Blocking the pump can only weaken the gradient.",
-       "The drug acts in the loop, so the change starts there.",
-       "The proximal tubule is untouched; its fluid stays near 300."
-      ]
-     }
-    },
-    {
-     "id": "low-protein",
-     "type": "shift",
-     "level": "analyze",
-     "diff": 3,
-     "q": "Someone on a very low-protein diet makes little urea. With high ADH, how does the end of the solid curve change?",
-     "options": [
-      "The final urine is less concentrated than 1,200",
-      "The final urine is more concentrated than 1,200",
-      "Only the no-ADH path changes",
-      "The proximal tubule fluid falls below 300"
-     ],
-     "correct": 0,
-     "overlay": {
-      "series": [
-       {
-        "id": "low-urea",
-        "cls": "accent",
-        "dash": true,
-        "pts": [
-         [
-          4,
-          100
-         ],
-         [
-          5,
-          300
-         ],
-         [
-          6,
-          800
-         ]
-        ],
-        "label": "low-protein diet",
-        "labelAt": [
-         5.9,
-         700
-        ],
-        "anchor": "end"
-       }
-      ]
-     },
-     "why": {
-      "correct": "Urea supplies about half the inner medulla’s osmolarity through urea recycling. With little urea, the inner medulla is less concentrated, so the collecting duct cannot concentrate its fluid as far, even with plenty of ADH. The value shown is schematic.",
-      "options": [
-       "Right: less urea, a weaker inner medulla, less concentrated urine.",
-       "Less urea can only weaken the gradient.",
-       "The high-ADH path is the one that depends on the inner medulla.",
-       "The proximal tubule keeps its fluid at plasma osmolarity."
-      ]
-     }
-    }
-   ]
-  },
-  {
-   "id": "ur-urine-volume",
-   "title": "Urine volume needed to carry the day’s waste",
-   "topic": "urine-concentration",
-   "core": [
-    "mass-balance",
-    "homeostasis"
-   ],
-   "intro": "The daily urine volume needed to excrete 600 mOsm of waste solute, at each possible urine osmolarity: volume = solute ÷ concentration. Your kidneys can make urine from about 50 to 1,200 mOsm/L.",
-   "alt": "A curve of daily urine volume in liters, 0 to 12, against urine osmolarity in mOsm/L, 0 to 1,300, for a solute load of 600 mOsm a day. It falls steeply from 12 L at 50 mOsm/L to 6 L at 100 and 2 L at 300, then flattens: 1 L at 600 and 0.5 L at 1,200, the most concentrated urine the kidneys can make.",
-   "x": {
-    "min": 0,
-    "max": 1300,
-    "label": "Urine osmolarity",
-    "unit": "mOsm/L",
-    "ticks": [
-     0,
-     300,
-     600,
-     900,
-     1200
-    ]
-   },
-   "panels": [
-    {
-     "h": 1.2,
-     "y": {
-      "min": 0,
-      "max": 12,
-      "label": "Urine volume",
-      "unit": "L/day",
-      "ticks": [
-       0,
-       2,
-       4,
-       6,
-       8,
-       10,
-       12
-      ]
-     },
-     "series": [
-      {
-       "id": "load600",
-       "cls": "deo2",
-       "curve": "smooth",
-       "pts": [
-        [
-         50,
-         12
-        ],
-        [
-         60,
-         10
-        ],
-        [
-         75,
-         8
-        ],
-        [
-         100,
-         6
-        ],
-        [
-         125,
-         4.8
-        ],
-        [
-         150,
-         4
-        ],
-        [
-         200,
-         3
-        ],
-        [
-         250,
-         2.4
-        ],
-        [
-         300,
-         2
-        ],
-        [
-         400,
-         1.5
-        ],
-        [
-         500,
-         1.2
-        ],
-        [
-         600,
-         1
-        ],
-        [
-         800,
-         0.75
-        ],
-        [
-         1000,
-         0.6
-        ],
-        [
-         1200,
-         0.5
-        ]
-       ],
-       "label": "600 mOsm a day",
-       "labelAt": [
-        320,
-        3.2
-       ],
-       "anchor": "start"
-      }
-     ],
-     "hlines": [
-      {
-       "y": 0.5,
-       "label": "least possible: 0.5 L",
-       "dash": true,
-       "faint": true,
-       "at": 700
-      }
-     ]
-    }
-   ],
-   "vlines": [
-    {
-     "x": 1200,
-     "label": "most concentrated"
-    },
-    {
-     "x": 300,
-     "label": "plasma"
-    }
-   ],
-   "regions": [
-    {
-     "id": "dilute",
-     "x0": 50,
-     "x1": 300,
-     "label": "more dilute than plasma"
-    },
-    {
-     "id": "concentrated",
-     "x0": 300,
-     "x1": 1200,
-     "label": "more concentrated than plasma"
-    }
-   ],
-   "questions": [
-    {
-     "id": "vol-300",
-     "type": "value",
-     "level": "apply",
-     "diff": 1,
-     "q": "If the kidneys could make urine only at the osmolarity of plasma, 300 mOsm/L, what daily volume would carry 600 mOsm?",
-     "answer": 2,
-     "tol": 0.25,
-     "unit": "L/day",
-     "show": {
-      "x": 300,
-      "y": 2
-     },
-     "why": "600 mOsm ÷ 300 mOsm/L = 2 L. Without the ability to concentrate or dilute, urine volume would be fixed by the solute load."
-    },
-    {
-     "id": "vol-min",
-     "type": "value",
-     "level": "recall",
-     "diff": 1,
-     "q": "Read the smallest daily urine volume that can carry 600 mOsm.",
-     "answer": 0.5,
-     "tol": 0.15,
-     "unit": "L/day",
-     "show": {
-      "x": 1200,
-      "y": 0.5
-     },
-     "why": "600 ÷ 1,200 = 0.5 L. No amount of ADH can push urine past the medulla’s 1,200 mOsm/L, so this is the floor."
-    },
-    {
-     "id": "vol-100",
-     "type": "value",
-     "level": "apply",
-     "diff": 2,
-     "q": "After drinking a lot of water, urine is at 100 mOsm/L. Read the daily volume at that concentration.",
-     "answer": 6,
-     "tol": 0.5,
-     "unit": "L/day",
-     "show": {
-      "x": 100,
-      "y": 6
-     },
-     "why": "600 ÷ 100 = 6 L a day. With ADH low, the kidneys excrete the same solute in far more water."
-    },
-    {
-     "id": "name-concentrated",
-     "type": "phase",
-     "level": "apply",
-     "diff": 2,
-     "q": "On a hot day without water, where on the curve does your urine sit?",
-     "options": [
-      "Toward the right: concentrated urine, small volume",
-      "Toward the left: dilute urine and a large daily volume of it",
-      "Exactly at 300 mOsm/L",
-      "Below the 0.5 L line"
-     ],
-     "correct": 0,
-     "highlight": {
-      "region": "concentrated"
-     },
-     "why": {
-      "correct": "High ADH lets water leave the collecting duct into the salty medulla, so urine moves toward 1,200 mOsm/L and the volume toward 0.5 L.",
-      "options": [
-       "Right: concentrated urine, small volume.",
-       "That is the low-ADH end, after drinking a lot.",
-       "Urine at 300 would mean ADH is doing little either way.",
-       "No urine concentration can carry 600 mOsm in less than 0.5 L."
-      ]
-     }
-    },
-    {
-     "id": "name-oliguria",
-     "type": "phase",
-     "level": "analyze",
-     "diff": 3,
-     "topic": "renal-function-urine",
-     "q": "A patient passes 400 mL a day (oliguria). Where does that volume fall on this graph, and what does it mean?",
-     "options": [
-      "Below the curve’s floor: no urine can carry the day’s solute",
-      "On the curve at about 1,500 mOsm/L, which the kidneys can reach with enough ADH",
-      "On the plateau, so it is a normal volume",
-      "Above the curve, so solute is lost too fast"
-     ],
-     "correct": 0,
-     "highlight": {
-      "y0": 0,
-      "y1": 0.5
-     },
-     "why": {
-      "correct": "At 400 mL, even maximally concentrated urine carries only 0.4 L × 1,200 mOsm/L = 480 mOsm, less than the 600 made each day, so nitrogen wastes and other solutes accumulate in the blood.",
-      "options": [
-       "Right: 480 mOsm out, 600 made; the rest stays in the blood.",
-       "The kidneys cannot concentrate urine past the medulla’s 1,200 mOsm/L.",
-       "The curve has no plateau; 0.4 L is below anything it reaches.",
-       "Too little volume is the problem here, not too much."
-      ]
-     }
-    },
-    {
-     "id": "high-solute",
-     "type": "shift",
-     "level": "analyze",
-     "diff": 2,
-     "q": "A high-protein diet raises the daily solute load to 900 mOsm, mostly urea. How does the curve change?",
-     "options": [
-      "It moves up: the minimum volume rises to 0.75 L",
-      "It moves down: the minimum falls to 0.25 L",
-      "It does not move, because the kidneys concentrate harder",
-      "Only the dilute end moves"
-     ],
-     "correct": 0,
-     "overlay": {
-      "series": [
-       {
-        "id": "load900",
-        "cls": "accent",
-        "dash": true,
-        "curve": "smooth",
-        "pts": [
-         [
-          75,
-          12
-         ],
-         [
-          100,
-          9
-         ],
-         [
-          125,
-          7.2
-         ],
-         [
-          150,
-          6
-         ],
-         [
-          200,
-          4.5
-         ],
-         [
-          300,
-          3
-         ],
-         [
-          400,
-          2.25
-         ],
-         [
-          600,
-          1.5
-         ],
-         [
-          800,
-          1.13
-         ],
-         [
-          1000,
-          0.9
-         ],
-         [
-          1200,
-          0.75
-         ]
-        ],
-        "label": "900 mOsm a day",
-        "labelAt": [
-         420,
-         3.6
-        ],
-        "anchor": "start"
-       }
-      ]
-     },
-     "why": {
-      "correct": "Volume = solute ÷ concentration. With more solute and the same 1,200 mOsm/L ceiling, the least possible volume is 900 ÷ 1,200 = 0.75 L. More solute means more obligatory urine.",
-      "options": [
-       "Right: more solute, more water needed at every concentration.",
-       "More solute cannot need less water.",
-       "The ceiling is set by the medulla; it does not rise with the load.",
-       "Every point of the curve scales with the solute load."
       ]
      }
     }

@@ -120,10 +120,10 @@
   "misconception": "the whole uterine lining is shed each month",
   "q": "A patient has had repeated scraping of the uterine cavity, and scarring has destroyed the basal layer of her endometrium in most places. What would you predict about her periods?",
   "options": [
-   "They become very light or stop, because the lining cannot regrow",
-   "They become heavier, because the myometrium is exposed",
-   "They are unchanged, because only the functional layer is shed",
-   "They stop because her ovaries no longer make estrogen"
+   "They become very light or stop",
+   "They become heavier",
+   "They are unchanged",
+   "Her ovaries stop making estrogen, so her periods stop"
   ],
   "correct": 0,
   "why": {
@@ -132,7 +132,7 @@
     "Correct. No basal layer means no regrowth, so little or nothing is shed.",
     "Exposed, scarred muscle does not build a lining to shed, so flow falls rather than rises.",
     "Only the functional layer is shed, but it has to be regrown from the basal layer first. With the basal layer gone, there is nothing to rebuild it.",
-    "Scraping the uterus does not affect the ovaries; her hormone cycle continues."
+    "Scraping the uterus does not affect the ovaries; her hormone cycle continues. Her periods change because the lining cannot regrow."
    ]
   }
  },
@@ -271,7 +271,7 @@
  {
   "id": "anp-female-anatomy-11",
   "type": "single",
-  "level": "apply",
+  "level": "recall",
   "diff": 2,
   "core": [
    "structure-function"
@@ -280,16 +280,16 @@
   "options": [
    "Glands in its wall secrete acid",
    "The cervix secretes hydrochloric acid",
-   "Resident bacteria turn glycogen in the lining cells into lactic acid",
+   "Resident bacteria ferment sugars from glycogen into lactic acid",
    "Urine from the nearby urethra flows back into it and acidifies it"
   ],
   "correct": 2,
   "why": {
-   "correct": "Estrogen makes the vaginal epithelial cells store glycogen. Lactobacilli living in the vagina break it down to lactic acid, which keeps the pH at about 3.8 to 4.5.",
+   "correct": "Estrogen makes the vaginal epithelial cells store glycogen. Glycogen is broken into sugars, which lactobacilli living in the vagina ferment to lactic acid; the acid keeps the pH at about 3.8 to 4.5.",
    "options": [
     "The vaginal wall has no glands.",
     "The cervix secretes mucus, not hydrochloric acid, which is made in the stomach.",
-    "Correct. Glycogen from the epithelium is fermented to lactic acid by lactobacilli.",
+    "Correct. Sugars from the epithelium's glycogen are fermented to lactic acid by lactobacilli.",
     "The urethra opens separately in front of the vagina; urine does not set vaginal pH."
    ]
   }
@@ -369,7 +369,7 @@
   "why": {
    "correct": "The alveoli are small sacs lined by milk-making cells and wrapped in contractile myoepithelial cells. Clusters of them form lobules.",
    "options": [
-    "The lactiferous sinuses are the widened parts of the ducts near the nipple, not where milk is made.",
+    "Textbooks use this name for widened parts of the ducts near the nipple; either way, milk is not made there.",
     "The areola is the pigmented skin around the nipple.",
     "Correct. Milk is made in the alveoli.",
     "Fat fills the spaces between the lobes and sets breast size, but it makes no milk."
@@ -492,10 +492,10 @@
   ],
   "q": "What best describes the hymen?",
   "options": [
-   "A thin fold of mucosa at the vaginal opening whose shape varies widely",
-   "A ring of smooth muscle that closes the vagina",
-   "A layer of the cervix that seals the uterus",
-   "A gland that lubricates the vestibule"
+   "A thin mucosal fold at the opening, variable in shape",
+   "A ring of smooth muscle that keeps the vagina closed",
+   "A layer of the cervix that seals off the uterus",
+   "A small gland that lubricates the vestibule in arousal"
   ],
   "correct": 0,
   "why": {

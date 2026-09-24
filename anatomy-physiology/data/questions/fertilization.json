@@ -1,0 +1,512 @@
+[
+  {
+    "id": "anp-fertilization-1",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "sperm can fertilize as soon as they are ejaculated",
+    "q": "A lab technician mixes freshly collected sperm with an oocyte in plain salt solution. The sperm swim vigorously for hours, but none gets through the zona pellucida. The same sperm succeed after a few hours in a medium containing albumin, bicarbonate and calcium. What did the second medium allow?",
+    "options": [
+      "Capacitation",
+      "The cortical reaction",
+      "Completion of meiosis II in the sperm",
+      "Formation of the acrosome"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Albumin pulls cholesterol from the sperm membrane, and bicarbonate and calcium enter the sperm. These are the changes of capacitation, which makes the sperm able to undergo the acrosomal reaction and fertilize. Swimming alone is not enough.",
+      "options": [
+        "Correct. The medium copies the female tract fluids that capacitate sperm.",
+        "The cortical reaction happens in the oocyte after one sperm has fused with it. It blocks further sperm; it does not help any sperm get in.",
+        "Sperm finish both meiotic divisions in the testis, long before ejaculation. It is the oocyte that finishes meiosis II at fertilization.",
+        "The acrosome forms during spermiogenesis in the testis. These sperm already had one; what they lacked was the ability to use it."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-2",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the steps of fertilization in order, starting when sperm reach the uterine tube.",
+    "options": [
+      "Sperm capacitate over several hours",
+      "Capacitated sperm push through the corona radiata",
+      "The acrosomal reaction releases enzymes that digest a path through the zona pellucida",
+      "One sperm fuses with the oocyte's plasma membrane",
+      "Calcium waves trigger the cortical reaction",
+      "The oocyte completes meiosis II, and the chromosomes of the two pronuclei combine into the zygote"
+    ],
+    "why": {
+      "correct": "Sperm must capacitate before they can fertilize. They then cross the outer layer, the corona radiata, and release their acrosomal enzymes to cross the inner layer, the zona pellucida. Fusion of one sperm starts calcium waves in the oocyte, which trigger the cortical reaction and restart meiosis II. Finally the two haploid pronuclei combine their chromosomes into the diploid zygote."
+    }
+  },
+  {
+    "id": "anp-fertilization-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-28-2",
+    "pin": "zona-pellucida",
+    "q": "Name the pinned layer.",
+    "options": [
+      "Corona radiata",
+      "Zona pellucida",
+      "Oocyte plasma membrane",
+      "Acrosome"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The zona pellucida is the clear glycoprotein coat lying directly against the outside of the oocyte's plasma membrane, inside the corona radiata.",
+      "options": [
+        "The corona radiata is the outer layer of granulosa cells, outside the zona pellucida.",
+        "Correct. This is the zona pellucida, the glycoprotein coat next to the oocyte.",
+        "The plasma membrane is the oocyte's own membrane, the thin line just inside the zona pellucida.",
+        "The acrosome is part of the sperm head, not a layer around the oocyte."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-28-2",
+    "pin": "corona-radiata",
+    "q": "Name the pinned layer.",
+    "options": [
+      "Corona radiata",
+      "Theca",
+      "Zona pellucida",
+      "Cortical granules"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The corona radiata is the outer ring of granulosa cells that left the follicle with the oocyte. Sperm cross it first.",
+      "options": [
+        "Correct. These cells are the corona radiata.",
+        "The theca is the outer layer of the follicle wall. It stays in the ovary and becomes part of the corpus luteum.",
+        "The zona pellucida is the clear, cell-free coat inside the corona radiata.",
+        "Cortical granules are vesicles inside the oocyte, just under its plasma membrane, not a layer of cells outside it."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-5",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a lab experiment, a drug stops cortical granules from fusing with the oocyte's plasma membrane but has no other effect. A sperm fuses with the oocyte. Predict each variable compared with an untreated oocyte.",
+    "variables": [
+      {
+        "name": "Calcium waves in the oocyte after fusion",
+        "answer": "none",
+        "why": "The calcium waves are set off by the enzyme the sperm delivers. The drug acts on granule fusion, which comes after the calcium rise."
+      },
+      {
+        "name": "Cutting of ZP2 in the zona pellucida",
+        "answer": "down",
+        "why": "The enzyme that cuts ZP2 is released from the cortical granules. If they cannot fuse, it stays inside them."
+      },
+      {
+        "name": "Number of sperm able to bind the zona after the first sperm enters",
+        "answer": "up",
+        "why": "With ZP2 uncut, the zona still offers binding sites, so more sperm keep attaching."
+      },
+      {
+        "name": "Chance of polyspermy",
+        "answer": "up",
+        "why": "The zona block is lost, and only the slower membrane block remains, so a second sperm is more likely to get in."
+      },
+      {
+        "name": "Completion of meiosis II",
+        "answer": "none",
+        "why": "Meiosis II is restarted by the calcium waves, not by the cortical granules, so it still finishes."
+      }
+    ],
+    "why": {
+      "correct": "Calcium waves drive two separate outcomes: cortical granule exocytosis and the restart of meiosis II. Blocking only the granules removes the zona block to polyspermy, so more sperm can bind and polyspermy becomes more likely, while meiosis II still finishes."
+    }
+  },
+  {
+    "id": "anp-fertilization-6",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man's sperm cannot swim well, so his partner's oocytes are fertilized by intracytoplasmic sperm injection (ICSI), in which one sperm is injected directly into the oocyte's cytoplasm. Select every step that ICSI bypasses.",
+    "options": [
+      "Crossing the corona radiata",
+      "The acrosomal reaction",
+      "Calcium waves in the oocyte",
+      "Crossing the zona pellucida",
+      "Completion of meiosis II",
+      "Fusion of the sperm and oocyte membranes"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "The needle carries the sperm through the corona radiata, the zona pellucida and the plasma membrane, so the steps for crossing them, including the acrosomal reaction and membrane fusion, are skipped. Once inside, the sperm still has to activate the oocyte with calcium waves, and the oocyte still has to finish meiosis II.",
+      "options": [
+        "Correct. The needle passes through the corona radiata.",
+        "Correct. No enzymes are needed to digest a path, so the acrosomal reaction is bypassed.",
+        "Not bypassed. The injected sperm still releases its enzyme into the cytoplasm, which starts the calcium waves that activate the oocyte.",
+        "Correct. The needle crosses the zona pellucida.",
+        "Not bypassed. The oocyte still finishes meiosis II when the calcium waves release its pause.",
+        "Correct. The sperm is placed inside, so its membrane never fuses with the oocyte's."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A couple has intercourse once, on day 11 of a 28-day cycle, and the woman ovulates on day 14. She becomes pregnant. Which statement best explains how?",
+    "options": [
+      "The oocyte waited in the uterine tube from day 11 until the sperm reached it there",
+      "Some sperm survived in her tract for three days and fertilized the oocyte after ovulation",
+      "Fertilization happened on day 11, and the zygote then paused in the tube until day 14",
+      "Sperm entered the ovary and fertilized the oocyte inside its follicle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Sperm stored in the cervical crypts and the tube's isthmus can survive up to about five days and are released a few at a time. Some were still available when the oocyte arrived after ovulation on day 14.",
+      "options": [
+        "There was no oocyte on day 11; ovulation happened on day 14. Once released, an oocyte lives only 12 to 24 hours.",
+        "Correct. Sperm survival of up to about five days is what makes the fertile window about six days long.",
+        "Fertilization needs an ovulated secondary oocyte. None existed until day 14.",
+        "Sperm do not enter the ovary. Fertilization happens in the ampulla of the uterine tube after the oocyte is released."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A zygote has the sex chromosomes XY. Where did its Y chromosome come from?",
+    "options": [
+      "The secondary oocyte",
+      "The second polar body",
+      "The sperm",
+      "Either gamete, with equal chance"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Every oocyte carries an X chromosome, because the mother is XX. About half of sperm carry a Y, so a Y chromosome in the zygote must have come from the sperm.",
+      "options": [
+        "The mother has no Y chromosome, so no oocyte can carry one.",
+        "The second polar body is discarded by the oocyte and holds maternal chromosomes, one of them an X.",
+        "Correct. The sperm sets the zygote's genetic sex.",
+        "Only the father's gametes can carry a Y. The mother's always carry an X."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-9",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student wrote out the events that follow sperm entry. One step is wrong. Which one?",
+    "options": [
+      "The sperm delivers an enzyme that starts calcium waves in the oocyte",
+      "Cortical granules release their contents under the zona pellucida",
+      "The oocyte, released from its pause, completes meiosis I",
+      "A second polar body is pinched off",
+      "Two haploid pronuclei form and copy their DNA"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The ovulated oocyte already finished meiosis I just before ovulation and is paused at metaphase II. Sperm entry releases that pause, so it completes meiosis II.",
+      "options": [
+        "This step is right. The sperm's enzyme triggers repeated calcium release from the oocyte's endoplasmic reticulum.",
+        "This step is right. That is the cortical reaction, the zona block to polyspermy.",
+        "This is the error. Meiosis I finished before ovulation; the oocyte completes meiosis II after sperm entry.",
+        "This step is right. Meiosis II is lopsided, and the discarded set of chromosomes leaves in the second polar body.",
+        "This step is right. Each pronucleus holds one set of chromosomes and copies its DNA before the first mitotic division."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-10",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Complete the sequence: sperm capacitate → sperm cross the corona radiata → ____ → sperm cross the zona pellucida → one sperm fuses with the oocyte.",
+    "options": [
+      "The acrosomal reaction",
+      "The cortical reaction",
+      "The second polar body forms",
+      "Pronuclei form"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The acrosomal reaction releases the enzymes that digest a path through the zona pellucida, so it comes just before the sperm crosses it.",
+      "options": [
+        "Correct. The acrosome's enzymes open a path through the zona.",
+        "The cortical reaction happens in the oocyte after a sperm has fused, so it comes after the last step shown.",
+        "The second polar body forms when the oocyte finishes meiosis II, after sperm entry.",
+        "Pronuclei form after sperm entry, as the last stage of fertilization."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-11",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every mechanism that keeps a second sperm out of a human oocyte after the first one fuses.",
+    "options": [
+      "An enzyme from the cortical granules cuts the zona protein that sperm bind",
+      "The zona pellucida stiffens",
+      "The oocyte membrane sheds the receptor protein sperm use to bind it",
+      "The corona radiata cells close ranks and seal the path",
+      "The second polar body plugs the entry site"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "The block to polyspermy in human eggs works at the zona, where the cortical reaction cuts ZP2 and stiffens the zona, and at the membrane, which loses its sperm-binding receptor protein.",
+      "options": [
+        "Correct. Cut ZP2 can no longer bind new sperm.",
+        "Correct. The stiffened zona stops sperm already inside it from advancing.",
+        "Correct. Without the receptor protein, sperm that reach the membrane cannot fuse.",
+        "The corona radiata cells are being dispersed by sperm, not tightened. The block acts at the zona and the membrane.",
+        "The second polar body is a tiny cell holding discarded chromosomes. It does not seal anything."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man's semen has normal numbers of sperm that swim well, but every sperm has a round head with no acrosome. In the lab, his sperm reach the zona pellucida of donor oocytes but never get through. Which approach can bypass the problem?",
+    "options": [
+      "Giving him testosterone to make more sperm",
+      "Placing many more of his sperm around each oocyte",
+      "Injecting one sperm directly into each oocyte",
+      "Adding extra albumin and calcium to capacitate his sperm"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Without an acrosome, a sperm has no enzymes to digest a path through the zona pellucida, however many try or however well they are capacitated. Injecting a sperm into the cytoplasm skips the zona entirely; the sperm can still activate the oocyte once inside.",
+      "options": [
+        "Sperm numbers are already normal. More sperm without acrosomes would fail in the same way.",
+        "Every one of his sperm lacks an acrosome, so more of them adds no enzymes. Numbers are not the problem.",
+        "Correct. Intracytoplasmic injection skips the zona, the step these sperm cannot pass.",
+        "Capacitation readies a sperm to release its acrosome's enzymes. A sperm with no acrosome has nothing to release."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a pelvic infection, both of a woman's uterine tubes are scarred shut near the uterus. She still ovulates every month. Why can she not become pregnant without treatment?",
+    "options": [
+      "Her oocytes can no longer complete meiosis I before they are released",
+      "Her ovaries stop releasing oocytes once the tubes are blocked",
+      "Scarring prevents capacitation in the uterus",
+      "Sperm cannot reach the ampulla, where fertilization happens"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Sperm must travel from the uterus through the tube to meet the oocyte in the ampulla. A blockage near the uterus stops them before they reach it. In vitro fertilization works around this by bringing oocytes and sperm together outside the body.",
+      "options": [
+        "Meiosis I finishes just before ovulation, inside the follicle. Tube scarring does not affect it.",
+        "The question says she still ovulates. Ovulation is an event in the ovary, not the tube.",
+        "Capacitation is a change in the sperm driven by tract fluids. Even if some happened in the uterus, capacitated sperm still could not pass the blockage.",
+        "Correct. The blockage separates sperm from oocyte."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-14",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Sperm spend several hours in the fluid of the uterine tube. Predict the change in each variable in a typical sperm by the end of that time.",
+    "variables": [
+      {
+        "name": "Cholesterol in the sperm's plasma membrane",
+        "answer": "down",
+        "why": "Albumin and other proteins in the tract fluid pull cholesterol out of the membrane."
+      },
+      {
+        "name": "Calcium inside the sperm",
+        "answer": "up",
+        "why": "Calcium enters through the sperm's calcium channels, which open during capacitation."
+      },
+      {
+        "name": "Force of the tail's beat",
+        "answer": "up",
+        "why": "The rise in calcium switches the flagellum to hyperactivated, whip-like beating."
+      },
+      {
+        "name": "Number of chromosomes in the sperm",
+        "answer": "none",
+        "why": "Capacitation changes the membrane and the tail. The sperm stays haploid, with 23 chromosomes."
+      }
+    ],
+    "why": {
+      "correct": "These are the changes of capacitation. Tract proteins strip cholesterol from the membrane, calcium enters and the tail becomes hyperactivated, which readies the sperm to cross the layers around the oocyte. Its chromosomes do not change."
+    }
+  },
+  {
+    "id": "anp-fertilization-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is a zygote?",
+    "options": [
+      "The diploid cell formed when the chromosomes of a sperm and an oocyte combine",
+      "A secondary oocyte that has been released at ovulation and is paused at metaphase II",
+      "A sperm that has finished capacitation in the uterine tube and can now fertilize",
+      "The small cell that holds discarded chromosomes from meiosis II"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The zygote is the product of fertilization: a single cell with 46 chromosomes, 23 from each parent. It divides by mitosis to form every cell of the body.",
+      "options": [
+        "Correct. The zygote is the first diploid cell of a new individual.",
+        "The secondary oocyte is the haploid cell released at ovulation, before any sperm has entered.",
+        "A capacitated sperm is still a haploid gamete, not the product of fertilization.",
+        "That is the second polar body, which breaks down."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An early pregnancy loss is examined, and its cells contain 69 chromosomes: two paternal sets and one maternal set. Which failure best explains this?",
+    "options": [
+      "Nondisjunction of one chromosome pair during the father's meiosis",
+      "The oocyte skipped meiosis I",
+      "The zygote copied all of its DNA twice before it first divided",
+      "Two sperm entered the oocyte because the block to polyspermy failed"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Two whole paternal sets plus one maternal set means two sperm delivered their nuclei into one oocyte. That is polyspermy, which the cortical reaction and the membrane block normally prevent.",
+      "options": [
+        "Nondisjunction of one pair adds or removes a single chromosome, giving 45 or 47, not a whole extra set of 23.",
+        "If the oocyte skipped meiosis I, the extra set would be maternal, not paternal.",
+        "Copying DNA twice would double every set equally, maternal and paternal alike, giving 92 chromosomes.",
+        "Correct. Two sperm, each with 23 chromosomes, plus the oocyte's 23 gives 69."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-17",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An experimental contraceptive vaccine makes a woman produce antibodies that coat ZP2 in the zona pellucida of her oocytes. Which step of fertilization would it block?",
+    "options": [
+      "Sperm binding to the zona pellucida",
+      "Capacitation of sperm in her tract",
+      "Calcium waves after sperm fusion",
+      "Completion of meiosis II"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Human sperm bind the zona pellucida through ZP2. Antibodies covering ZP2 would hide those binding sites, so sperm could not attach to the zona and cross it.",
+      "options": [
+        "Correct. Blocking the sperm-binding glycoprotein blocks attachment to the zona.",
+        "Capacitation happens to sperm in the uterus and tube, before they reach the oocyte. Antibodies on the zona would not affect it.",
+        "Calcium waves need a sperm to fuse first. The vaccine acts earlier, at the zona, so no sperm would get that far.",
+        "Meiosis II finishes after sperm entry. The vaccine would act before any sperm entered."
+      ]
+    }
+  },
+  {
+    "id": "anp-fertilization-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why are a person's mitochondria inherited from the mother only?",
+    "options": [
+      "The sperm's mitochondria enter the oocyte but are marked and destroyed",
+      "Sperm have no mitochondria",
+      "The sperm's midpiece and its mitochondria stay outside the zona pellucida",
+      "Mitochondria are built from scratch in the zygote using its nuclear DNA"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The sperm's midpiece, packed with mitochondria, is drawn into the oocyte at fusion. Within days those paternal mitochondria are tagged and broken down, so only the oocyte's mitochondria survive.",
+      "options": [
+        "Correct. Paternal mitochondria enter but are destroyed.",
+        "Sperm do have mitochondria: they fill the midpiece and power the tail.",
+        "The midpiece enters the oocyte along with the nucleus at membrane fusion.",
+        "Mitochondria come only from existing mitochondria, which divide. They carry their own DNA and cannot be built from scratch."
+      ]
+    }
+  }
+]

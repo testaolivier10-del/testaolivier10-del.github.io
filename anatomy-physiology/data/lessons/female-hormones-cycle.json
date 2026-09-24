@@ -61,7 +61,7 @@
   ],
   "misconception": {
     "wrong": "Ovulation happens on day 14 of every cycle.",
-    "right": "Day 14 is ovulation in the 28-day model cycle only. Cycle length varies, and most of the variation falls before ovulation, in the follicular phase. The luteal phase is steadier, usually 12 to 14 days, so ovulation comes about two weeks before the next period starts: around day 18 to 19 in a 32-day cycle, and around day 10 in a 24-day one."
+    "right": "Day 14 is ovulation in the 28-day model cycle only. Cycle length varies, and most of the variation falls before ovulation, in the follicular phase. The luteal phase is steadier, usually 12 to 14 days, so ovulation comes about two weeks before the next period starts: around day 18 in a 32-day cycle, and around day 10 in a 24-day one."
   },
   "check": [
     "anp-female-hormones-cycle-1",

@@ -1,0 +1,48 @@
+{
+  "topic": "embryonic-development",
+  "hook": "<p>Lena's period is due today, and a home pregnancy test shows a faint second line. The hormone the test detects was not made by her ovaries or her pituitary gland. It was made by a hollow ball of cells, smaller than the dot on this i, that burrowed into the wall of her uterus about a week ago. That hormone is the reason her period will not come. Over the next six weeks, the same ball of cells will fold itself into an embryo with a beating heart, a spinal cord and the buds of arms and legs.</p>",
+  "prereq": [
+    {
+      "q": "During mitosis, what happens to the chromosome number of the daughter cells?",
+      "options": ["It halves", "It stays the same as the parent cell's", "It doubles"],
+      "correct": 1,
+      "why": "Mitosis gives two daughter cells with the same chromosome number as the parent. Only meiosis halves it.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "Without a pregnancy, how long does the corpus luteum keep making progesterone?",
+      "options": ["About 12 to 14 days", "About 3 days", "About 3 months"],
+      "correct": 0,
+      "why": "The corpus luteum lasts about 12 to 14 days, then dies. The fall in progesterone sets off the next menstrual period.",
+      "review": "ovarian-cycle"
+    },
+    {
+      "q": "In endochondral ossification, what model is replaced by bone?",
+      "options": ["A sheet of fibrous membrane", "A hyaline cartilage model", "A mass of fat"],
+      "correct": 1,
+      "why": "Endochondral ossification replaces a hyaline cartilage model with bone. Intramembranous ossification forms bone directly in a fibrous membrane.",
+      "review": "bone-development"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-28-5",
+    "caption": "The first week, from fertilization in the ampulla to implantation in the uterus. Hide the labels and name the stages, then the three parts of the blastocyst."
+  },
+  "chain": [
+    { "cause": "The zygote divides by mitosis again and again inside the zona pellucida without growing.", "effect": "Cleavage produces smaller and smaller blastomeres, and by day 3 to 4 a solid morula reaches the uterus." },
+    { "cause": "The morula's outer cells pump sodium into its center, and water follows.", "effect": "A fluid-filled blastocoel forms, and the embryo becomes a blastocyst with an outer trophoblast and an inner cell mass." },
+    { "cause": "The blastocyst hatches from the zona pellucida and sticks to the secretory-phase endometrium around day 6 to 7.", "effect": "The trophoblast forms an invading syncytiotrophoblast, which buries the blastocyst in the endometrium: implantation." },
+    { "cause": "The syncytiotrophoblast secretes human chorionic gonadotropin, which binds LH receptor proteins on the corpus luteum.", "effect": "The corpus luteum survives and keeps secreting progesterone, so the endometrium is not shed and no period comes." },
+    { "cause": "With the embryo secure, the epiblast's cells move through the primitive streak in week 3.", "effect": "Gastrulation forms ectoderm, mesoderm and endoderm, from which every organ is built during the rest of the embryonic period." }
+  ],
+  "misconception": {
+    "wrong": "A pregnancy test detects a hormone made by the mother's body.",
+    "right": "Pregnancy tests detect human chorionic gonadotropin, which is made by the embryo's own syncytiotrophoblast as it implants. The mother's corpus luteum responds to it by staying alive and making progesterone. That is why the test turns positive only after implantation, about a week or more after fertilization, and not at fertilization itself."
+  },
+  "check": ["anp-embryonic-development-1", "anp-embryonic-development-2", "anp-embryonic-development-5", "anp-embryonic-development-8", "anp-embryonic-development-11", "anp-embryonic-development-14", "anp-embryonic-development-18"],
+  "summary": "<p>Cleavage divides the zygote into blastomeres without growth, giving a morula by day 3 to 4. By day 5 it is a blastocyst: a trophoblast, an inner cell mass that forms the embryo, and a fluid-filled blastocoel. It hatches and implants in the secretory endometrium from day 6 to 7, as the syncytiotrophoblast invades. The syncytiotrophoblast secretes hCG, which acts like LH to keep the corpus luteum making progesterone; pregnancy tests detect it. The inner cell mass forms a disc of epiblast and hypoblast, and in week 3 gastrulation through the primitive streak makes ectoderm, mesoderm and endoderm. The notochord induces the neural tube; somites form sclerotomes (vertebrae and ribs), myotomes (skeletal muscle) and dermatomes (dermis). Folding in week 4 makes a body with a gut tube (foregut, midgut, hindgut). The amnion, yolk sac, allantois and chorion surround the embryo. Organogenesis runs to the end of week 8, the end of the embryonic period. Limbs grow from buds under the apical ectodermal ridge; cartilage models become bone and joint interzones become joints.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-8", "label": "NREMT: Life span development" }
+  ]
+}
