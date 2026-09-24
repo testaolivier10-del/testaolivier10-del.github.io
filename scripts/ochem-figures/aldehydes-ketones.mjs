@@ -73,7 +73,8 @@ function path(a, b, cls = 'fg-dash-hi', headCls = 'fg-head') {
 const dline = (a, b, cls = 'fg-dash') => `<line class="${cls}" x1="${r2(a.x)}" y1="${r2(a.y)}" x2="${r2(b.x)}" y2="${r2(b.y)}"></line>`;
 
 /* An arc about c from math angle a1 to a2 (a2 > a1). */
-function arc(c, r, a1, a2, cls = 'fg-bond-soft') {
+function arc(c, r, a1, a2, cls = 'fg-bond-soft', gap = 0) {
+  a1 += gap; a2 -= gap;
   const p1 = at(c, a1, r), p2 = at(c, a2, r);
   const large = a2 - a1 > 180 ? 1 : 0;
   return `<path class="${cls}" d="M${r2(p1.x)} ${r2(p1.y)} A${r} ${r} 0 ${large} 0 ${r2(p2.x)} ${r2(p2.y)}"></path>`;
@@ -174,7 +175,7 @@ FIGURES.push({
     let s = '';
     // Face-on.
     const c = P(180, 162);
-    s += arc(c, 30, 90, 210) + arc(c, 30, 210, 330) + arc(c, 30, 330, 450);
+    s += arc(c, 30, 90, 210, 'fg-bond-soft', 14) + arc(c, 30, 210, 330, 'fg-bond-soft', 14) + arc(c, 30, 330, 450, 'fg-bond-soft', 14);
     s += carbonyl(c, { subs: [{ deg: 210, l: 'H' }, { deg: 330, l: 'H' }], len: 66, cKind: 'hi' }).s;
     s += text(c.x - 50, c.y - 28, '≈120°', { cls: 'fg-sm', size: 10.5 });
     s += text(c.x + 50, c.y - 28, '≈120°', { cls: 'fg-sm', size: 10.5 });
@@ -197,10 +198,8 @@ FIGURES.push({
     s += atom(o.x, o.y, 'O');
     s += atom(e.x, e.y, 'C', { kind: 'hi' });
     s += tag(575, 24, 'edge-on: the plane is the dashed line');
-    s += text(650, 110, 'π bond: above', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(650, 124, 'and below the plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(650, 232, 'bigger on O: the π', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(650, 246, 'electrons sit nearer O', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(575, 62, 'π bond: lobes above and below the plane', { cls: 'fg-sm', size: 10.5 });
+    s += text(575, 258, 'lobes bigger on O: the π electrons sit nearer O', { cls: 'fg-sm', size: 10.5 });
     s += text(424, 186, 'plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
@@ -783,7 +782,7 @@ FIGURES.push({
     let s = '';
     s += tag(170, 20, 'flat: all four atoms in one plane');
     const c = P(170, 124);
-    s += arc(c, 30, 90, 210) + arc(c, 30, 210, 330) + arc(c, 30, 330, 450);
+    s += arc(c, 30, 90, 210, 'fg-bond-soft', 14) + arc(c, 30, 210, 330, 'fg-bond-soft', 14) + arc(c, 30, 330, 450, 'fg-bond-soft', 14);
     s += carbonyl(c, { subs: [{ deg: 210, l: 'H' }, { deg: 330, l: 'H' }], len: 64, cKind: 'hi' }).s;
     s += text(c.x - 64, c.y - 22, '≈120°', { cls: 'fg-lbl', size: 13 });
     s += text(c.x + 64, c.y - 22, '≈120°', { cls: 'fg-lbl', size: 13 });

@@ -78,12 +78,12 @@ FIGURES.push({
     s += B(c, 'C', o, 'O', { order: 2 });
     s += arm(c, 'C', 210, 52, 'CH₃').s + arm(c, 'C', 330, 52, 'CH₃').s;
     s += A(o, 'O') + A(c, 'C', 'warn');
-    s += lonePair(o.x, o.y, 45, { dist: 21 }) + lonePair(o.x, o.y, 135, { dist: 21 });
+    s += lonePair(o.x, o.y, 315, { dist: 21 }) + lonePair(o.x, o.y, 225, { dist: 21 });
     s += curve(P(126, 100), P(134, 66), { bow: 12 });
     const cn = P(120, 196), nn = P(178, 196);
     s += B(cn, 'C', nn, 'N', { order: 3 });
     s += A(cn, 'C', 'hi') + A(nn, 'N');
-    s += lonePair(cn.x, cn.y, 90, { dist: 21 }) + lonePair(nn.x, nn.y, 0, { dist: 21 });
+    s += lonePair(cn.x, cn.y, 270, { dist: 21 }) + lonePair(nn.x, nn.y, 0, { dist: 21 });
     s += chg(98, 182, '−');
     s += curve(P(114, 172), P(114, 140), { bow: 10 });
     s += tg(262, 92, 'flat (trigonal planar)', 'mut');
@@ -101,7 +101,7 @@ FIGURES.push({
     s += B(cc, 'C', nc, 'N', { order: 3 }) + A(cc, 'C', 'hi') + A(nc, 'N');
     s += lonePair(nc.x, nc.y, 180, { dist: 21 });
     s += A(o2, 'O', 'hi') + A(c2, 'C', 'warn');
-    s += lonePair(o2.x, o2.y, 90, { dist: 21 }) + lonePair(o2.x, o2.y, 180, { dist: 21 }) + lonePair(o2.x, o2.y, 0, { dist: 21 });
+    s += lonePair(o2.x, o2.y, 270, { dist: 21 }) + lonePair(o2.x, o2.y, 180, { dist: 21 }) + lonePair(o2.x, o2.y, 0, { dist: 21 });
     s += chg(80, 280, '−');
     const h = P(186, 300), hc = P(246, 300), hn = P(302, 300);
     s += B(h, 'H', hc, 'C') + B(hc, 'C', hn, 'N', { order: 3 });
@@ -144,7 +144,7 @@ FIGURES.push({
       g += arm(c, 'C', 210, 50, 'Nu', 'plain', 'hi').s + arm(c, 'C', 330, 50, 'R', 'wedge').s;
       g += A(o, 'O', 'hi') + A(c, 'C', 'warn');
       g += chg(o.x - 20, o.y - 20, '−');
-      if (withLp) g += lonePair(o.x, o.y, 90, { dist: 21 }) + lonePair(o.x, o.y, 180, { dist: 21 }) + lonePair(o.x, o.y, 0, { dist: 21 });
+      if (withLp) g += lonePair(o.x, o.y, 270, { dist: 21 }) + lonePair(o.x, o.y, 180, { dist: 21 }) + lonePair(o.x, o.y, 0, { dist: 21 });
       return { g, o };
     };
     // ---- top: the intermediate ----
@@ -175,7 +175,7 @@ FIGURES.push({
     // ---- branch 2: collapse ----
     s += box(376, 176, 'Y = Cl, OR…: IT CAN LEAVE');
     const b2 = P(80, 480), I2 = inter(b2, false);
-    s += I2.g + lonePair(I2.o.x, I2.o.y, 180, { dist: 21 }) + lonePair(I2.o.x, I2.o.y, 90, { dist: 21 }) + lonePair(I2.o.x, I2.o.y, 0, { dist: 21 });
+    s += I2.g + lonePair(I2.o.x, I2.o.y, 180, { dist: 21 }) + lonePair(I2.o.x, I2.o.y, 270, { dist: 21 }) + lonePair(I2.o.x, I2.o.y, 0, { dist: 21 });
     const y2 = armEnd(b2, 270, 52);
     s += bond(b2, y2, { rFrom: 14, rTo: 14 }) + A(y2, 'Y');
     s += curve(P(102, 420), P(88, 452), { bow: -14 });
@@ -221,7 +221,7 @@ FIGURES.push({
     // ---- 1. protonate the carbonyl oxygen ----
     s += box(8, 196, 'STEP 1 · THE OXYGEN TAKES A PROTON');
     const u1 = acet(P(90, 140));
-    s += u1.g + lonePair(u1.o.x, u1.o.y, 30, { dist: 21 }) + lonePair(u1.o.x, u1.o.y, 150, { dist: 21 });
+    s += u1.g + lonePair(u1.o.x, u1.o.y, 330, { dist: 21 }) + lonePair(u1.o.x, u1.o.y, 210, { dist: 21 });
     const h1 = P(180, 68), w1 = P(240, 68);
     s += B(h1, 'H', w1, 'O') + A(h1, 'H', 'hi');
     s += water(w1, [30, 330], [270], true);
@@ -235,7 +235,7 @@ FIGURES.push({
     s += u2.g;
     const h2 = armEnd(u2.o, 30, 38);
     s += B(u2.o, 'O', h2, 'H') + A(h2, 'H');
-    s += lonePair(u2.o.x, u2.o.y, 150, { dist: 21 });
+    s += lonePair(u2.o.x, u2.o.y, 210, { dist: 21 });
     s += chg(u2.o.x - 4, u2.o.y - 26, '+');
     s += curve(P(70, 318), P(60, 290), { bow: 12 });
     s += reso(170, 320);
@@ -243,7 +243,7 @@ FIGURES.push({
     s += u3.g;
     const h3 = armEnd(u3.o, 30, 38);
     s += B(u3.o, 'O', h3, 'H') + A(h3, 'H');
-    s += lonePair(u3.o.x, u3.o.y, 150, { dist: 21 }) + lonePair(u3.o.x, u3.o.y, 90, { dist: 21 });
+    s += lonePair(u3.o.x, u3.o.y, 210, { dist: 21 }) + lonePair(u3.o.x, u3.o.y, 270, { dist: 21 });
     s += chg(u3.o.x - 26, u3.o.y + 34, '+');
     s += tg(78, 396, 'every octet full', 'mut');
     s += tg(262, 396, 'C⁺: six electrons', 'warn');
@@ -254,7 +254,7 @@ FIGURES.push({
     s += u4.g;
     const h4 = armEnd(u4.o, 30, 38);
     s += B(u4.o, 'O', h4, 'H') + A(h4, 'H');
-    s += lonePair(u4.o.x, u4.o.y, 150, { dist: 21 }) + lonePair(u4.o.x, u4.o.y, 90, { dist: 21 });
+    s += lonePair(u4.o.x, u4.o.y, 210, { dist: 21 }) + lonePair(u4.o.x, u4.o.y, 270, { dist: 21 });
     s += chg(u4.o.x - 26, u4.o.y + 34, '+');
     const w4 = P(240, 540);
     s += water(w4, [0, 270], [150, 90], false);
@@ -274,7 +274,7 @@ FIGURES.push({
     s += B(op, 'O', hb, 'H') + A(hb, 'H', 'hi') + B(op, 'O', hc, 'H') + A(hc, 'H');
     s += A(op, 'O', 'hi') + A(c5, 'C', 'warn');
     s += chg(op.x - 6, op.y - 26, '+');
-    s += lonePair(op.x, op.y, 200, { dist: 21 });
+    s += lonePair(op.x, op.y, 160, { dist: 21 });
     const w5 = P(276, 700);
     s += water(w5, [30, 330], [210, 150], false);
     s += curve(P(254, 712), P(190, 734), { bow: -12 });
@@ -308,7 +308,7 @@ FIGURES.push({
     s += box(8, 214, 'STEP 1 · HYDRIDE MOVES FROM B TO C');
     const c1 = P(136, 116), p1 = propanal(c1);
     s += p1.g + A(p1.o, 'O') + A(c1, 'C', 'warn');
-    s += lonePair(p1.o.x, p1.o.y, 45, { dist: 21 }) + lonePair(p1.o.x, p1.o.y, 135, { dist: 21 });
+    s += lonePair(p1.o.x, p1.o.y, 315, { dist: 21 }) + lonePair(p1.o.x, p1.o.y, 225, { dist: 21 });
     s += curve(P(142, 94), P(150, 60), { bow: 12 });
     const hh = P(136, 194), bb = P(204, 194);
     s += B(hh, 'H', bb, 'BH₃') + A(hh, 'H', 'hi') + A(bb, 'BH₃');
@@ -324,11 +324,11 @@ FIGURES.push({
     s += p2.g;
     s += arm(c2, 'C', 270, 50, 'H', 'wedge', 'hi').s;
     s += A(p2.o, 'O', 'hi') + A(c2, 'C', 'warn');
-    s += lonePair(p2.o.x, p2.o.y, 90, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 180, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 0, { dist: 21 });
+    s += lonePair(p2.o.x, p2.o.y, 270, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 180, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 0, { dist: 21 });
     s += chg(90, 274, '−');
     const mh = P(190, 294), mo = P(244, 294), mc = P(298, 294);
     s += B(mh, 'H', mo, 'O') + B(mo, 'O', mc, 'CH₃') + A(mh, 'H') + A(mo, 'O') + A(mc, 'CH₃');
-    s += lonePair(mo.x, mo.y, 270, { dist: 21 }) + lonePair(mo.x, mo.y, 90, { dist: 21 });
+    s += lonePair(mo.x, mo.y, 90, { dist: 21 }) + lonePair(mo.x, mo.y, 270, { dist: 21 });
     s += curve(P(136, 290), P(176, 288), { bow: -16 });
     s += curve(P(212, 300), P(236, 314), { bow: 10 });
     s += tg(252, 380, 'tetrahedral', 'mut');
@@ -369,7 +369,7 @@ FIGURES.push({
     s += box(8, 214, 'STEP 1 · CH₃ MOVES FROM Mg TO C');
     const c1 = P(136, 116), p1 = propanal(c1);
     s += p1.g + A(p1.o, 'O') + A(c1, 'C', 'warn');
-    s += lonePair(p1.o.x, p1.o.y, 45, { dist: 21 }) + lonePair(p1.o.x, p1.o.y, 135, { dist: 21 });
+    s += lonePair(p1.o.x, p1.o.y, 315, { dist: 21 }) + lonePair(p1.o.x, p1.o.y, 225, { dist: 21 });
     s += curve(P(142, 94), P(150, 60), { bow: 12 });
     const me = P(136, 194), mg = P(204, 194), br = P(262, 194);
     s += B(me, 'CH₃', mg, 'Mg') + B(mg, 'Mg', br, 'Br');
@@ -386,13 +386,13 @@ FIGURES.push({
     s += p2.g;
     s += arm(c2, 'C', 270, 52, 'CH₃', 'wedge', 'hi').s;
     s += A(p2.o, 'O', 'hi') + A(c2, 'C', 'warn');
-    s += lonePair(p2.o.x, p2.o.y, 90, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 180, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 0, { dist: 21 });
+    s += lonePair(p2.o.x, p2.o.y, 270, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 180, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 0, { dist: 21 });
     s += chg(90, 274, '−');
     s += lbl(46, 256, '⁺MgBr');
     const wh = P(190, 294), wo = P(246, 294);
     s += B(wh, 'H', wo, 'O') + A(wh, 'H');
     for (const a of [30, 330]) { const x = armEnd(wo, a, 38); s += B(wo, 'O', x, 'H') + A(x, 'H'); }
-    s += A(wo, 'O') + lonePair(wo.x, wo.y, 270, { dist: 21 });
+    s += A(wo, 'O') + lonePair(wo.x, wo.y, 90, { dist: 21 });
     s += chg(wo.x - 2, wo.y - 30, '+');
     s += curve(P(136, 290), P(176, 288), { bow: -16 });
     s += curve(P(214, 300), P(238, 314), { bow: 10 });
@@ -432,7 +432,7 @@ FIGURES.push({
     const om = armEnd(c1, 270, 54), mm = armEnd(om, 330, 46);
     s += bond(c1, om, { rFrom: 14, rTo: 14 }) + B(om, 'O', mm, 'CH₃') + A(om, 'O') + A(mm, 'CH₃');
     s += A(o1, 'O', 'hi') + A(c1, 'C', 'warn');
-    s += lonePair(o1.x, o1.y, 180, { dist: 21 }) + lonePair(o1.x, o1.y, 90, { dist: 21 }) + lonePair(o1.x, o1.y, 0, { dist: 21 });
+    s += lonePair(o1.x, o1.y, 180, { dist: 21 }) + lonePair(o1.x, o1.y, 270, { dist: 21 }) + lonePair(o1.x, o1.y, 0, { dist: 21 });
     s += chg(110, 26, '−');
     s += curve(P(152, 44), P(138, 76), { bow: -14 });
     s += curve(P(136, 130), P(146, 150), { bow: -10 });
@@ -445,7 +445,7 @@ FIGURES.push({
     s += ethyl(c2, 'C', 210, -60).s;
     s += arm(c2, 'C', 330, 50, 'CH₃', 'plain', 'hi').s;
     s += A(o2, 'O') + A(c2, 'C', 'warn');
-    s += lonePair(o2.x, o2.y, 45, { dist: 21 }) + lonePair(o2.x, o2.y, 135, { dist: 21 });
+    s += lonePair(o2.x, o2.y, 315, { dist: 21 }) + lonePair(o2.x, o2.y, 225, { dist: 21 });
     s += curve(P(136, 284), P(144, 252), { bow: 12 });
     const me = P(130, 380), mg = P(196, 380), br = P(254, 380);
     s += B(me, 'CH₃', mg, 'Mg') + B(mg, 'Mg', br, 'Br') + A(me, 'CH₃', 'hi') + A(mg, 'Mg') + A(br, 'Br');
@@ -535,7 +535,7 @@ FIGURES.push({
     s += B(c, 'C', n, 'N', { order: 2, cls: 'fg-bond-hi' });
     s += arm(c, 'C', 150, 50, 'CH₃').s + arm(c, 'C', 210, 50, 'CH₃').s;
     s += arm(n, 'N', 300, 50, 'CH₃').s;
-    s += lonePair(n.x, n.y, 60, { dist: 21 });
+    s += lonePair(n.x, n.y, 300, { dist: 21 });
     s += A(c, 'C', 'warn') + A(n, 'N', 'hi');
     s += tg(170, 168, 'IMINE: the double bond goes to N', 'good');
 
@@ -546,7 +546,7 @@ FIGURES.push({
     s += arm(c2, 'C', 90, 50, 'CH₃').s;
     s += B(c2, 'C', n2, 'N');
     s += arm(n2, 'N', 30, 50, 'CH₃').s + arm(n2, 'N', 270, 46, 'CH₃').s;
-    s += lonePair(n2.x, n2.y, 150, { dist: 21 });
+    s += lonePair(n2.x, n2.y, 210, { dist: 21 });
     s += A(c2, 'C', 'warn') + A(n2, 'N');
     s += tg(62, 238, 'the carbon', 'mut') + tg(62, 254, 'next door', 'mut');
     s += tg(170, 362, 'ENAMINE: the double bond goes to C', 'good');
