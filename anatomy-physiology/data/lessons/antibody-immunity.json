@@ -29,7 +29,7 @@
     "caption": "Clonal selection of B cells. Hide the labels and name the cell that releases antibody and the cell that waits for a second exposure."
   },
   "chain": [
-    { "cause": "A protein antigen binds the receptors of a naïve B cell whose receptors fit it, and the B cell takes it in and displays its peptides on MHC class II.", "effect": "A helper T cell that recognizes the same antigen binds the B cell and releases cytokines onto it." },
+    { "cause": "A protein antigen binds the B cell receptors of a naïve B cell that fits it, and the B cell takes it in and displays its peptides on MHC class II.", "effect": "A helper T cell that recognizes the same antigen binds the B cell and releases cytokines onto it." },
     { "cause": "Helper T cell contact and cytokines activate the B cell.", "effect": "It divides into a clone, and many of its daughters switch from IgM to another class, such as IgG." },
     { "cause": "Daughter cells differentiate.", "effect": "Plasma cells release thousands of antibody molecules per second, and memory B cells remain." },
     { "cause": "IgG binds the microbe's antigens with its variable regions, leaving its Fc regions facing out.", "effect": "Phagocytes bind the Fc regions and engulf the coated microbe, and complement is activated on its surface." },

@@ -1,0 +1,46 @@
+{
+  "topic": "innate-immunity",
+  "hook": "<p>Ms. Barros, 34, cut her thumb on a rusty garden fork. Two days later the thumb is red, hot, swollen and throbbing, a bead of yellow pus sits in the cut, and her temperature is 38.8 °C with shaking chills. She has never met these bacteria before, yet her body has been fighting them since the first hour, with defenses she was born with.</p>",
+  "prereq": [
+    {
+      "q": "What makes the walls of small vessels leaky during inflammation?",
+      "options": ["Histamine released by mast cells", "Collagen laid down by fibroblasts", "Fibrin formed from fibrinogen"],
+      "correct": 0,
+      "why": "Mast cells release histamine, which makes the endothelial cells of capillaries and venules pull apart so plasma and protein leak out. Fibroblasts and fibrin act later, in repair and walling off.",
+      "review": "tissue-membranes-repair"
+    },
+    {
+      "q": "Which leukocyte is the most numerous in blood and the first to reach a bacterial infection?",
+      "options": ["Lymphocyte", "Neutrophil", "Monocyte"],
+      "correct": 1,
+      "why": "Neutrophils make up about 50 to 70 percent of leukocytes and arrive at a bacterial infection first. Monocytes follow later and become macrophages.",
+      "review": "leukocytes-platelets"
+    },
+    {
+      "q": "In a negative feedback loop, what does the control center compare the regulated variable with?",
+      "options": ["The effector's output", "The set point", "The afferent pathway"],
+      "correct": 1,
+      "why": "The control center compares the incoming value with the set point and sends signals to effectors that move the variable back toward it.",
+      "review": "homeostasis-feedback"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "Bacteria enter a wound, and pattern recognition receptors on tissue macrophages bind molecules on their walls.", "effect": "The macrophages release cytokines, and mast cells and damaged cells release histamine and prostaglandins." },
+    { "cause": "Histamine and prostaglandins act on nearby arterioles, capillaries and venules.", "effect": "Arterioles dilate and venule walls become leaky, so the site turns red, hot and swollen and plasma proteins, including complement, pour into the tissue." },
+    { "cause": "Complement is activated on the bacterial surface, and cytokines make the venule endothelium sticky.", "effect": "C3b coats the bacteria, while neutrophils roll, stick, squeeze out by diapedesis and follow chemokines and C5a to the site." },
+    { "cause": "Neutrophils bind the C3b-coated bacteria and engulf them.", "effect": "Lysosomal enzymes and the oxidative burst kill the bacteria; the dead neutrophils, microbes and fluid collect as pus." },
+    { "cause": "Cytokines such as interleukin-1 reach the hypothalamus through the blood.", "effect": "Prostaglandin E2 raises the set point, and shivering and skin vasoconstriction raise body temperature into a fever." }
+  ],
+  "misconception": {
+    "wrong": "A fever means the body has lost control of its temperature.",
+    "right": "In a fever the control system works normally; pyrogens have raised its set point. The chills and shivering at the start are the hypothalamus correctly heating you toward the new target, and the sweating at the end is it correctly cooling you when the set point drops. That is why drugs that block prostaglandin synthesis lower a fever but do nothing for overheating from exercise in the heat, where the set point is normal."
+  },
+  "check": ["anp-innate-immunity-1", "anp-innate-immunity-3", "anp-innate-immunity-6", "anp-innate-immunity-9", "anp-innate-immunity-12", "anp-innate-immunity-16", "anp-innate-immunity-18", "anp-innate-immunity-20"],
+  "summary": "<p>Innate immunity is ready from birth, acts in minutes to hours, recognizes patterns shared by groups of microbes and does not improve with repeat exposure; adaptive immunity takes days at first, targets one antigen per lymphocyte and remembers. Surface barriers keep most microbes out, helped by lysozyme and defensins. Pattern recognition receptors such as the Toll-like receptors detect microbes and damage and start the early induced response. Neutrophils and macrophages engulf microbes and kill them with lysosomal enzymes and an oxidative burst; NK cells kill infected and cancer cells that show stress proteins or lack the normal self-identity protein. Inflammation widens and opens vessels, recruits leukocytes by rolling, sticking, diapedesis and chemotaxis, and leaves pus; when it cannot clear its trigger it becomes chronic. Complement, started by the classical, lectin or alternative pathway, opsonizes microbes, promotes inflammation and bursts microbes with the membrane attack complex. Interferons from infected cells make neighbors resist viruses. Pyrogens raise the hypothalamic set point through prostaglandin E2, producing a fever that is negative feedback around a higher target.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" },
+    { "href": "/nremt/study-notes.html#chapter-30", "label": "NREMT: Soft-tissue trauma (wound infection)" },
+    { "href": "/nremt/study-notes.html#chapter-35", "label": "NREMT: Environmental emergencies (fever versus overheating)" }
+  ]
+}

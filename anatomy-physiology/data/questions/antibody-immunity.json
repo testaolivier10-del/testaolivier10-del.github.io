@@ -4,7 +4,9 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "figure": "os-21-24",
     "q": "The second peak on the graph rises sooner and climbs far higher than the first. What best explains the difference?",
     "options": [
@@ -29,7 +31,9 @@
     "type": "graph",
     "level": "analyze",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "figure": "os-21-24",
     "q": "Just after the initial exposure, the curve stays flat for several days. What is happening in the lymph nodes during this flat stretch?",
     "options": [
@@ -54,13 +58,15 @@
     "type": "graph",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "antibody-y",
     "q": "In the diagram, which part of the antibody determines which antigen it binds?",
     "options": [
       "The variable regions at the tips of the arms",
       "The Fc region of the stem",
-      "The hinge",
+      "The hinge where the arms meet the stem",
       "The disulfide bonds"
     ],
     "correct": 0,
@@ -79,7 +85,10 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function", "communication"],
+    "core": [
+      "structure-function",
+      "communication"
+    ],
     "figure": "antibody-y",
     "q": "IgG coats a bacterium, and a macrophage then engulfs it. Which part of the antibody does the macrophage's receptor protein bind?",
     "options": [
@@ -105,14 +114,36 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A woman who had a tetanus vaccine series as a child gets a booster dose twenty years later. Predict each variable after the booster, compared with her very first dose.",
     "variables": [
-      { "name": "Days until antibody rises in the blood", "answer": "down", "why": "Memory B cells need less stimulation and are more numerous than the naïve cells were, so plasma cells appear within 1–3 days instead of 5–10." },
-      { "name": "Peak antibody level", "answer": "up", "why": "Many memory B cells each form a clone of plasma cells, so far more antibody is made, often 10 to 100 times more." },
-      { "name": "Share of the antibody that is IgG", "answer": "up", "why": "Memory B cells have already switched class, so the response is mostly IgG, with little of the IgM that starts a primary response." },
-      { "name": "How tightly the antibody binds the toxin", "answer": "up", "why": "Memory cells come from B cells selected for better-fitting antibody during the first responses (affinity maturation)." },
-      { "name": "Number of memory B cells afterward", "answer": "up", "why": "Each secondary response makes new memory cells as well as plasma cells, so the pool grows." }
+      {
+        "name": "Days until antibody rises in the blood",
+        "answer": "down",
+        "why": "Memory B cells need less stimulation and are more numerous than the naïve cells were, so plasma cells appear within 1–3 days instead of 5–10."
+      },
+      {
+        "name": "Peak antibody level",
+        "answer": "up",
+        "why": "Many memory B cells each form a clone of plasma cells, so far more antibody is made, often 10 to 100 times more."
+      },
+      {
+        "name": "Share of the antibody that is IgG",
+        "answer": "up",
+        "why": "Memory B cells have already switched class, so the response is mostly IgG, with little of the IgM that starts a primary response."
+      },
+      {
+        "name": "How tightly the antibody binds the toxin",
+        "answer": "up",
+        "why": "Memory cells come from B cells selected for better-fitting antibody during the first responses (affinity maturation)."
+      },
+      {
+        "name": "Number of memory B cells afterward",
+        "answer": "up",
+        "why": "Each secondary response makes new memory cells as well as plasma cells, so the pool grows."
+      }
     ],
     "why": {
       "correct": "A second exposure to the same antigen recalls memory B cells. The response starts sooner, goes higher, is mainly IgG, fits better and leaves more memory cells. That is why boosters work."
@@ -123,7 +154,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Put the steps in order, from a protein antigen reaching a lymph node to antibody in the blood.",
     "options": [
       "The antigen binds the receptors of a matching naïve B cell",
@@ -142,7 +175,9 @@
     "type": "multi",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Select every example of passive immunity.",
     "options": [
       "Antivenom given after a snakebite",
@@ -152,7 +187,12 @@
       "IgA a baby swallows in breast milk",
       "Anti-D injected into an Rh-negative mother"
     ],
-    "correct": [0, 2, 4, 5],
+    "correct": [
+      0,
+      2,
+      4,
+      5
+    ],
     "why": {
       "correct": "Passive immunity is protection by antibody someone else made. Antivenom, maternal IgG, IgA in breast milk and injected anti-D are all borrowed antibody. A vaccine and recovery from infection make your own immune system respond: active immunity.",
       "options": [
@@ -170,10 +210,12 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A healthy baby had almost no infections in her first four months, then several colds between six and nine months of age. What best explains the change?",
     "options": [
-      "Her thymus stopped making T cells at six months",
+      "Her thymus stopped making new T cells once she reached six months",
       "IgG from her mother was broken down and left no memory cells",
       "She began making her own IgE",
       "Her own IgM switched irreversibly to IgD"
@@ -194,7 +236,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A man has a fever and a rash. His blood contains IgM against a particular virus but no IgG against it. What does this suggest?",
     "options": [
       "A current or very recent infection",
@@ -218,22 +262,24 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "An 18-month-old responds poorly to a vaccine made of a bacterium's capsule sugar alone, but well to one in which the sugar is attached to a protein. Why does the protein help?",
     "options": [
       "The protein makes the sugar a larger target for IgM",
       "Protein antigens do not need B cells at all",
-      "Helper T cells that recognize the protein can help B cells that recognize the sugar",
-      "The protein stops the sugar from being broken down"
+      "The protein stops the sugar from being broken down before B cells can reach it",
+      "Helper T cells that recognize the protein can help B cells that recognize the sugar"
     ],
-    "correct": 2,
+    "correct": 3,
     "why": {
       "correct": "Capsule sugars are T cell-independent antigens: they give weak, mostly IgM responses with little memory, and poor ones in young children. A B cell that binds the sugar takes in the whole conjugate and displays peptides from the attached protein on MHC class II. Helper T cells that recognize those peptides then help it expand, switch class and form memory. This is a conjugate vaccine.",
       "options": [
         "Size alone does not help. The gain comes from helper T cells, which can then drive class switching and memory.",
         "Protein antigens do need B cells to make antibody. What they add is peptides for helper T cells.",
-        "Correct. Linking the sugar to a protein turns the response into a T cell-dependent one.",
-        "The sugar's lifetime is not the problem. Without T cell help, B cells make a weak response however long the antigen lasts."
+        "The sugar's lifetime is not the problem. Without T cell help, B cells make a weak response however long the antigen lasts.",
+        "Correct. Linking the sugar to a protein turns the response into a T cell-dependent one."
       ]
     }
   },
@@ -242,7 +288,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A B cell switches from making IgM to making IgG. What stays the same?",
     "options": [
       "The heavy chain constant region",
@@ -266,13 +314,15 @@
     "type": "missing",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Complete the sequence: IgG binds antigens on a bacterium → ____ → the phagocyte engulfs the bacterium readily.",
     "options": [
       "The IgG molecules punch holes in the bacterium",
       "Fc receptor proteins on a phagocyte bind the IgG stems",
       "The bacterium displays its peptides on MHC class I",
-      "IgG enters the bacterium and blocks its enzymes"
+      "IgG enters the bacterium and blocks the enzymes it needs to divide"
     ],
     "correct": 1,
     "why": {
@@ -290,7 +340,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A student described how a B cell responds to a protein antigen. One step is wrong. Which one?",
     "options": [
       "The antigen binds B cell receptors in its natural folded shape",
@@ -316,7 +368,9 @@
     "type": "vignette",
     "level": "apply",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A breastfed baby is exposed to a gut virus that her mother had last year. Which antibody in the milk is best placed to protect the lining of her gut?",
     "options": [
       "IgE",
@@ -340,11 +394,13 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Why is IgM better than IgG at clumping bacteria together?",
     "options": [
       "It binds antigens more tightly at each site",
-      "It is the only class that crosses into tissue fluid",
+      "It is the only class able to leave the blood and enter tissue fluid",
       "It carries more light chains than heavy chains",
       "As a pentamer it has ten binding sites to link many cells"
     ],
@@ -364,13 +420,15 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A hiker bitten by a rattlesnake recovers after antivenom. A year later he is bitten again. Will the first antivenom still protect him?",
     "options": [
       "Yes, because the antivenom left memory B cells",
       "Yes, because antivenom antibodies last for decades",
       "No, because antivenom is broken down and leaves no memory",
-      "No, because the first dose made him immune to the snake"
+      "No, because the first dose made him permanently immune to the snake's venom"
     ],
     "correct": 2,
     "why": {
@@ -388,21 +446,23 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "A bacterium survives and multiplies inside macrophages after being engulfed. Which defense is most important for clearing it?",
     "options": [
       "IgA on mucous membranes",
-      "Complement punching holes in the bacterium in the blood",
       "Th1 helper T cells releasing interferon gamma onto the macrophages",
+      "Complement punching holes in the bacterium while it circulates in the blood",
       "Eosinophils releasing their granules"
     ],
-    "correct": 2,
+    "correct": 1,
     "why": {
       "correct": "Antibodies and complement cannot reach a bacterium inside a macrophage. Th1 helper T cells recognize its peptides on the macrophage's MHC class II and release interferon gamma, which switches the macrophage into a more powerful killer.",
       "options": [
         "IgA stops microbes at body surfaces, before they enter. It cannot reach a bacterium inside a cell.",
-        "Complement acts on microbes in fluids. Inside a macrophage, the bacterium is out of its reach.",
         "Correct. Th1 cells arm macrophages against bacteria living inside them.",
+        "Complement acts on microbes in fluids. Inside a macrophage, the bacterium is out of its reach.",
         "Eosinophils are aimed at worms, which are far too big to live inside a macrophage."
       ]
     }
@@ -412,12 +472,14 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Why is a new influenza vaccine made every year, while one measles vaccine series protects for life?",
     "options": [
       "Influenza gradually changes its surface proteins, so last year's antibodies fit less well",
       "Influenza vaccines leave no memory cells",
-      "Measles hides inside nerve cells where antibodies cannot reach it",
+      "Measles virus hides inside nerve cells, where antibodies can never reach it",
       "The body cannot make IgG against influenza"
     ],
     "correct": 0,
@@ -436,9 +498,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which antibody class crosses from a pregnant mother into her fetus?",
-    "options": ["IgM", "IgA", "IgE", "IgG"],
+    "options": [
+      "IgM",
+      "IgA",
+      "IgE",
+      "IgG"
+    ],
     "correct": 3,
     "why": {
       "correct": "IgG is the only class actively carried across to the fetus, mostly in late pregnancy. It protects the newborn for months, and it is why maternal anti-D can harm an Rh-positive fetus.",
@@ -456,13 +525,32 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 2,
-    "core": ["communication", "structure-function"],
+    "core": [
+      "communication",
+      "structure-function"
+    ],
     "q": "A drug blocks the Fc receptor proteins on phagocytes, but antibody production is normal. A bacterium that releases a toxin infects the person. Predict each variable, compared with someone not taking the drug.",
     "variables": [
-      { "name": "Binding of IgG to the bacterium", "answer": "none", "why": "IgG binds with its variable regions, which the drug does not touch." },
-      { "name": "Phagocytes engulfing IgG-coated bacteria", "answer": "down", "why": "Phagocytes grab coated bacteria by binding the IgG Fc regions, and those receptor proteins are blocked." },
-      { "name": "Neutralization of the toxin by antibody", "answer": "none", "why": "Neutralization only needs antibody covering the toxin's binding site, which uses the variable regions." },
-      { "name": "Agglutination of the bacteria", "answer": "none", "why": "Clumping depends on antibodies bridging bacteria with their binding sites, not on phagocytes." }
+      {
+        "name": "Binding of IgG to the bacterium",
+        "answer": "none",
+        "why": "IgG binds with its variable regions, which the drug does not touch."
+      },
+      {
+        "name": "Phagocytes engulfing IgG-coated bacteria",
+        "answer": "down",
+        "why": "Phagocytes grab coated bacteria by binding the IgG Fc regions, and those receptor proteins are blocked."
+      },
+      {
+        "name": "Neutralization of the toxin by antibody",
+        "answer": "none",
+        "why": "Neutralization only needs antibody covering the toxin's binding site, which uses the variable regions."
+      },
+      {
+        "name": "Agglutination of the bacteria",
+        "answer": "none",
+        "why": "Clumping depends on antibodies bridging bacteria with their binding sites, not on phagocytes."
+      }
     ],
     "why": {
       "correct": "Antibody actions split by the part of the antibody they use. Neutralization and agglutination depend on the variable regions and still work. Opsonization depends on phagocytes binding the Fc region, so it fails."
@@ -473,7 +561,9 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which cell releases large amounts of antibody and has cytoplasm packed with rough endoplasmic reticulum?",
     "options": [
       "Memory B cell",
@@ -488,7 +578,7 @@
         "Memory B cells are resting cells that wait for a later exposure. They release little antibody until they become plasma cells.",
         "Helper T cells release cytokines, not antibody.",
         "Correct. Plasma cells are the antibody factories.",
-        "A naïve B cell carries antibody on its surface as a receptor but does not release it in bulk."
+        "A naïve B cell carries antibody on its surface as its B cell receptor but does not release it in bulk."
       ]
     }
   }

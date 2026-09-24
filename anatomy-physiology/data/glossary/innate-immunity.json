@@ -1,0 +1,52 @@
+{
+  "innate-vs-adaptive": {
+    "def": "Innate immunity is the defense present from birth that acts within minutes to hours against patterns shared by groups of microbes, the same way each time. Adaptive immunity is built by lymphocytes that each recognize one antigen; it takes days on first exposure and responds faster the next time.",
+    "roots": [["innatus", "inborn"], ["ad-", "to"], ["aptare", "fit"]],
+    "say": ""
+  },
+  "barriers": {
+    "def": "The first line of defense: intact skin and mucous membranes, their secretions (mucus, tears, saliva, stomach acid) and resident harmless microbes, which keep most microbes from entering the tissues.",
+    "roots": [],
+    "say": ""
+  },
+  "phagocytosis-immune": {
+    "def": "Killing of microbes by phagocytes, mainly neutrophils and macrophages: they find, bind, engulf and digest the microbe in a vesicle fused with lysosomes, using enzymes and an oxidative burst that makes superoxide, hydrogen peroxide and bleach.",
+    "roots": [["phag/o", "eat"], ["cyt/o", "cell"], ["-osis", "process"]],
+    "say": "fag-oh-sy-TOH-sis"
+  },
+  "nk-cell": {
+    "def": "A large granular lymphocyte of innate immunity that kills virus-infected and cancer cells without earlier exposure, when they show stress proteins or lack the normal self-identity protein; it releases granules that trigger the target's apoptosis.",
+    "roots": [],
+    "say": ""
+  },
+  "inflammation": {
+    "def": "The local response to injury or infection: chemical messengers widen and open small vessels (redness, heat, swelling, pain), leukocytes leave the blood by rolling, sticking, diapedesis and chemotaxis toward chemokines, and phagocytes clear the site, leaving pus. Acute inflammation lasts days; chronic inflammation lasts weeks or more and scars.",
+    "roots": [["inflamm/o", "set on fire"], ["dia-", "through"], ["-pedesis", "leaping"], ["chem/o", "chemical"], ["-taxis", "movement toward"]],
+    "say": "dy-uh-peh-DEE-sis"
+  },
+  "fever": {
+    "def": "A rise in body temperature, usually to 38 °C or more, caused by pyrogens raising the hypothalamic set point through prostaglandin E2; heat-gain responses then raise temperature to meet the new set point.",
+    "roots": [["pyr/o", "fire"], ["-gen", "producing"]],
+    "say": "PY-roh-jen"
+  },
+  "complement": {
+    "def": "About 30 plasma proteins that, once activated by the classical, lectin or alternative pathway, split C3 and then coat microbes for phagocytes (opsonization), promote inflammation, and build the membrane attack complex that bursts microbes.",
+    "roots": [["opson", "relish, sauce (Greek)"]],
+    "say": "op-suh-nih-ZAY-shun"
+  },
+  "interferon": {
+    "def": "Cytokines released by virus-infected cells (interferon alpha and beta) that make neighboring cells produce antiviral proteins; interferon gamma, from NK cells and some lymphocytes, activates macrophages.",
+    "roots": [["inter-", "between"], ["ferire", "strike"]],
+    "say": "in-ter-FEER-on"
+  },
+  "antimicrobial-proteins": {
+    "def": "Proteins made in advance that kill microbes directly: lysozyme, an enzyme in tears, saliva and mucus that breaks bacterial cell walls, and defensins, small proteins that punch holes in microbial membranes.",
+    "roots": [["lys/o", "breaking apart"], ["-zyme", "enzyme"]],
+    "say": "LY-soh-zime"
+  },
+  "pattern-recognition": {
+    "def": "Receptor proteins, such as the Toll-like receptors, that bind molecular patterns shared by groups of microbes (or released by damaged cells) and switch on cytokine release, starting the early induced immune response.",
+    "roots": [],
+    "say": ""
+  }
+}
