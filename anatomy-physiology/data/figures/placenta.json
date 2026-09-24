@@ -1,0 +1,30 @@
+{
+  "os-28-11": {
+    "file": "figures/openstax/os-28-11.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.11",
+      "section": "28.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/bb1057e3821ed5058d0a744b9fedc1bf95b36b94",
+      "page": "28-2-embryonic-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/bb1057e3821ed5058d0a744b9fedc1bf95b36b94",
+    "alt": "Two drawings. Left: an embryo inside a fluid-filled sac lined by a thin membrane, with a small yellow sac near its head, inside the uterus; a rope-like cord runs from the embryo to a thick, disc-shaped region of the uterine wall filled with branching red vessels. Right: an enlarged box of that region. Tree-like projections containing red and blue fetal vessels hang in a space filled with maternal blood, which enters from arteries in the uterine wall and drains into veins. At the bottom, the cord's vessels join the projections: labels mark a vein drawn in blue and an artery drawn in red.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.11",
+    "labels": [],
+    "w": 1100,
+    "h": 571,
+    "ext": "jpg"
+  },
+  "pregnancy-hormones": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 720,
+    "h": 420,
+    "alt": "A line graph of four hormones across pregnancy, each drawn as a percent of its own highest level, against weeks of pregnancy from 0 to 40 counted from the last menstrual period. hCG rises steeply from about week 4, peaks at week 10, falls to about 20 percent by week 18 and stays low to the end. Progesterone starts at about 10 percent, stays nearly flat until about week 10, then climbs steadily to its peak at week 40. Estrogens start near zero and climb slowly, then more and more steeply, to their peak at week 40. hPL starts near zero at week 8 and rises steadily to a plateau from about week 36. A shaded band from week 7 to week 9 marks where the main source of progesterone shifts from the corpus luteum to the placenta.",
+    "labels": []
+  }
+}

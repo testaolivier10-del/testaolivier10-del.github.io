@@ -1,0 +1,549 @@
+[
+  {
+    "id": "anp-inheritance-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A person's genotype for a gene is Bb. Which term describes it?",
+    "options": [
+      "Homozygous dominant",
+      "Heterozygous",
+      "Homozygous recessive",
+      "Hemizygous"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Bb means two different alleles of the gene, one on each homologous chromosome. Two different alleles make the person heterozygous.",
+      "options": [
+        "Homozygous dominant would be BB, two copies of the dominant allele.",
+        "Correct. Two different alleles make a heterozygote.",
+        "Homozygous recessive would be bb, two copies of the recessive allele.",
+        "Hemizygous describes a single copy, as for genes on a male's one X chromosome. Bb has two copies."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Two brothers both have the genotype for phenylketonuria (PKU). One was diagnosed by newborn screening and raised on a low-phenylalanine diet and has normal intelligence; the other, born before screening existed, has intellectual disability. What does this show?",
+    "options": [
+      "The brothers must have different genotypes",
+      "Phenotype depends on the environment as well as the genotype",
+      "PKU is a dominant disease",
+      "The diet changed the diagnosed brother's genotype"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Both brothers carry the same genotype, but the diet kept phenylalanine low in one of them, so his brain developed normally. Phenotype is the result of genotype and environment together.",
+      "options": [
+        "The question states both have the PKU genotype. The difference is in what they ate.",
+        "Correct. Same genotype, different phenotype, because of the diet.",
+        "PKU is recessive, and dominance would not explain why the same genotype gave two outcomes.",
+        "Diet cannot change the alleles in a person's cells. It changed how the genotype was expressed as phenotype."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-3",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Both parents are healthy carriers of cystic fibrosis, an autosomal recessive disease. What is the chance that their first child has cystic fibrosis?",
+    "options": [
+      "1 in 2",
+      "3 in 4",
+      "1 in 4",
+      "0, because both parents are healthy"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each carrier (Cc) makes C and c gametes equally. The Punnett square gives 1 CC : 2 Cc : 1 cc, and only cc has the disease: 1 in 4.",
+      "options": [
+        "1 in 2 is the chance that a child is a carrier (Cc), not that the child is affected.",
+        "3 in 4 is the chance that a child is healthy.",
+        "Correct. One box in four is cc.",
+        "Healthy carriers each hide one disease allele, and a child who gets both has the disease."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-4",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Two carrier parents have a son with cystic fibrosis and a daughter who is healthy. What is the chance that the healthy daughter is a carrier?",
+    "options": [
+      "1 in 4",
+      "1 in 2",
+      "2 in 3",
+      "3 in 4"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The square gives CC, Cc, Cc and cc. The daughter is healthy, so she is not cc; that leaves three equally likely boxes, two of which are Cc. Her chance of being a carrier is 2 in 3.",
+      "options": [
+        "1 in 4 is the chance of being affected, which she is not.",
+        "1 in 2 is a carrier's share of all four boxes. Once you know she is healthy, the affected box is removed.",
+        "Correct. Two of the three healthy boxes are carriers.",
+        "3 in 4 is the chance of being healthy for any child before you know the outcome."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "a 1 in 4 risk means one affected child in every four",
+    "q": "A couple who are both carriers of sickle cell disease already have one affected child. They say the next three children should be unaffected, because the risk is 1 in 4. What is the chance their next child has sickle cell disease?",
+    "options": [
+      "0",
+      "1 in 3",
+      "1 in 4",
+      "1 in 2"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Gametes are formed fresh for every pregnancy, and each pregnancy is an independent draw. The 1 in 4 applies to each child, whatever happened before.",
+      "options": [
+        "Earlier children do not use up the risk. Each pregnancy starts again at 1 in 4.",
+        "There is no reason for the risk to change after one affected child; the parents' genotypes are the same.",
+        "Correct. The chance is 1 in 4 for every child of two carriers.",
+        "1 in 2 is the chance of a carrier child, not an affected one."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-6",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-28-26",
+    "q": "This Punnett square shows a family with neurofibromatosis, an autosomal dominant disease. What is the chance that each child is affected?",
+    "options": [
+      "1 in 4",
+      "3 in 4",
+      "1 in 2",
+      "All of them"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The affected parent is Nn and the other nn. Two of the four boxes are Nn, and with a dominant allele one copy causes the disease, so each child has a 1 in 2 chance.",
+      "options": [
+        "1 in 4 would fit two heterozygous carriers of a recessive disease, not this cross.",
+        "3 in 4 would need two affected heterozygous parents (Nn × Nn), each passing N half the time.",
+        "Correct. Half the boxes are Nn.",
+        "Every child would be affected only if the affected parent were NN, which would give N in every gamete."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-7",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "figure": "os-28-25",
+    "q": "In the second-generation cross (Aa × Aa), a child shows the dominant phenotype. What is the chance that this child is heterozygous?",
+    "options": [
+      "1 in 4",
+      "2 in 3",
+      "1 in 2",
+      "3 in 4"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Three boxes show the dominant phenotype: AA, Aa and Aa. Knowing the child shows it removes the aa box, and two of the remaining three are Aa, so the chance is 2 in 3.",
+      "options": [
+        "1 in 4 is the share of aa among all four boxes.",
+        "Correct. Two of the three dominant-phenotype boxes are heterozygous.",
+        "1 in 2 is the share of Aa among all four boxes, before you know the child's phenotype.",
+        "3 in 4 is the chance of the dominant phenotype, not of being heterozygous."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-8",
+    "type": "multi",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A type AB father and a type O mother have children. Select every blood type their children could have.",
+    "options": [
+      "Type A",
+      "Type B",
+      "Type AB",
+      "Type O"
+    ],
+    "correct": [0, 1],
+    "why": {
+      "correct": "The father (AB) gives either A or B; the mother (OO) always gives O. The children are AO (type A) or BO (type B), each with a 1 in 2 chance.",
+      "options": [
+        "Correct. An A from the father with O from the mother gives AO, type A.",
+        "Correct. A B from the father with O from the mother gives BO, type B.",
+        "Type AB needs an A and a B allele. The mother can pass only O, so no child can get both.",
+        "Type O needs two O alleles. The father has none to give."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A type A mother and a type B father have a type O child. The father doubts the child is his. What is the best explanation?",
+    "options": [
+      "A type O child cannot have a type B father",
+      "The child's blood type changed after birth",
+      "Both parents are heterozygous, AO and BO, and each passed on O",
+      "O is dominant, so it can appear from any parents"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Type A can be AO and type B can be BO. If each parent passes the O allele, the child is OO, type O. From an AO × BO cross, each child has a 1 in 4 chance of type O.",
+      "options": [
+        "A type B father who is BO can pass on O. The blood types fit him being the father.",
+        "Blood type is set by the genotype and does not change after birth.",
+        "Correct. Two heterozygous parents can each pass on the recessive O allele.",
+        "O is recessive, not dominant. It shows only when a child has two O alleles."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A person with genotype AB has both A and B antigens on every red cell. Which pattern does this show?",
+    "options": [
+      "Incomplete dominance",
+      "Codominance",
+      "X-linked inheritance",
+      "Polygenic inheritance"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Both alleles are fully expressed side by side: the A enzyme and the B enzyme both work, and both antigens appear. That is codominance.",
+      "options": [
+        "Incomplete dominance gives an intermediate phenotype. Here each allele's full product appears, not a blend.",
+        "Correct. Both alleles show fully in the heterozygote.",
+        "The ABO gene is on an autosome, and the pattern is the same in both sexes.",
+        "ABO type is set by one gene with three alleles, not by many genes of small effect."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A person with sickle cell trait makes both normal and sickle hemoglobin, has red cells that sickle only under severe oxygen shortage, and has no disease. What does this show about dominance?",
+    "options": [
+      "The sickle allele is dominant, because it is expressed",
+      "The pattern depends on which phenotype you measure",
+      "The normal allele is codominant at every level",
+      "Sickle cell trait is an X-linked pattern"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "At the level of hemoglobin molecules the alleles are codominant; at the level of red cell sickling, the heterozygote is in between; at the level of disease, the sickle allele is recessive. Dominance describes a relationship for one phenotype.",
+      "options": [
+        "Being expressed is not the same as being dominant. The heterozygote has no disease, so for disease the sickle allele is recessive.",
+        "Correct. Each level of phenotype shows a different pattern.",
+        "Both alleles are expressed at the molecule level, but the heterozygote has no disease, so the pattern is not codominant for disease.",
+        "The hemoglobin gene is on an autosome, and the trait occurs equally in both sexes."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A woman whose brother has hemophilia A learns she is a carrier. Her husband has normal clotting. What is the chance that their son has hemophilia?",
+    "options": [
+      "1 in 2",
+      "1 in 4",
+      "0",
+      "All sons"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A son gets his X from his mother and his Y from his father. The carrier mother passes her hemophilia X to half her children, so each son has a 1 in 2 chance of being affected.",
+      "options": [
+        "Correct. A son's only X comes from his carrier mother, who passes the allele half the time.",
+        "1 in 4 is the chance for any child of either sex, since only sons can be affected here. For a son it is 1 in 2.",
+        "The father's normal clotting does not protect a son, because a son gets no X from his father.",
+        "The mother has one normal X as well, which she passes to half her sons."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-13",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A man with hemophilia A and a woman who does not carry the allele have children. What should they expect?",
+    "options": [
+      "Half their sons affected and half their daughters carriers",
+      "All their sons affected",
+      "No affected children, but every daughter a carrier",
+      "Half of all children affected, whatever their sex"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The father gives his X, with the hemophilia allele, to every daughter and his Y to every son. Daughters get a normal X from their mother too, so they are carriers; sons get their X from their noncarrier mother, so they are unaffected.",
+      "options": [
+        "That is the pattern for a carrier mother and an unaffected father, the reverse of this family.",
+        "A son receives his father's Y, not his X, so the father cannot pass hemophilia to his sons.",
+        "Correct. Father-to-daughter passing makes all daughters carriers; sons are spared.",
+        "Half of all children affected describes an autosomal dominant allele, not an X-linked recessive one."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-14",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every feature that points to X-linked recessive inheritance in a family tree.",
+    "options": [
+      "Many more affected males than females",
+      "Affected sons of unaffected carrier mothers",
+      "An affected father with an affected son",
+      "Every child of an affected parent affected",
+      "The condition skipping a generation through carrier daughters"
+    ],
+    "correct": [0, 1, 4],
+    "why": {
+      "correct": "Males have one X, so a single recessive allele shows in them. Carrier mothers pass it to half their sons, and an affected man passes it to all daughters, who are carriers, so it can reappear in their sons, skipping a generation.",
+      "options": [
+        "Correct. One copy is enough in males, two are needed in females.",
+        "Correct. Carrier mothers pass the allele to half their sons.",
+        "A father gives his son a Y, not an X, so father-to-son passing rules out X-linked inheritance.",
+        "Every child affected is not typical of any single-gene pattern here; an affected man's sons are unaffected.",
+        "Correct. An affected man's daughters are carriers, and their sons can be affected."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why is red–green color blindness about 15 times more common in males than in females?",
+    "options": [
+      "The allele is on the Y chromosome",
+      "Males have one X, so a single recessive allele shows; females need two copies",
+      "Estrogen repairs the color-sensing cones in females",
+      "The allele is dominant in males and recessive in females"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The genes for the red and green cone pigments are on the X chromosome. A male has no second X to mask a faulty allele, while a female is color blind only if both her X chromosomes carry one.",
+      "options": [
+        "The Y carries few genes, and not these. Color blindness passes from mothers to sons, not fathers to sons.",
+        "Correct. One X in males versus two in females explains the difference.",
+        "Hormones do not repair cone pigments. The difference is in the number of X chromosomes.",
+        "The allele behaves the same way in both sexes; males simply have no second copy."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "The allele for Huntington disease is dominant and eventually fatal, yet it is passed down through many generations. Why?",
+    "options": [
+      "Symptoms usually begin after people have had children",
+      "Carriers with one copy never develop the disease",
+      "The allele is recessive in females",
+      "It spreads because dominant alleles become more common"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A dominant lethal allele can persist only if it acts late or keeps arising by new mutation. Huntington symptoms usually start between 30 and 50, after many people have already had children, each with a 1 in 2 chance of inheriting it.",
+      "options": [
+        "Correct. Late onset lets the allele pass to the next generation before it causes harm.",
+        "With a dominant allele there are no healthy carriers: one copy eventually causes the disease.",
+        "Huntington disease is autosomal and dominant in both sexes.",
+        "Dominance does not make an allele more common. Its frequency depends on survival and reproduction, not on dominance."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-17",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["structure-function"],
+    "q": "Compare a woman who conceives at 40 with the same woman had she conceived at 25. Predict the change in each variable.",
+    "variables": [
+      { "name": "Chance of nondisjunction in her oocytes", "answer": "up", "why": "Her oocytes have been paused in meiosis I for 15 more years, and the proteins holding their paired chromosomes together have weakened further." },
+      { "name": "Risk of a child with trisomy 21", "answer": "up", "why": "More nondisjunction gives more oocytes with an extra chromosome 21, raising the risk from about 1 in 1,200 to about 1 in 100." },
+      { "name": "Chance that a child of hers and a carrier partner has cystic fibrosis, if she is a carrier", "answer": "none", "why": "Segregation of a single gene's alleles is 1 in 2 per gamete at any age, so two carriers still face a 1 in 4 chance." },
+      { "name": "Number of chromosomes in her body cells", "answer": "none", "why": "Her own body cells stay at 46; age affects the separation of chromosomes in oocytes, not her karyotype." }
+    ],
+    "why": {
+      "correct": "Maternal age raises the risk of chromosome-number errors because oocytes wait decades in meiosis I and the proteins holding their chromosomes together weaken. It does not change the 1 in 4 risk from two carriers of a recessive allele."
+    }
+  },
+  {
+    "id": "anp-inheritance-18",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Put the steps of making a karyotype in order.",
+    "options": [
+      "Collect cells, for example white blood cells from a blood sample",
+      "Grow the cells so they divide",
+      "Stop the dividing cells in metaphase",
+      "Stain the chromosomes to show their bands",
+      "Photograph the chromosomes and arrange them in pairs"
+    ],
+    "why": {
+      "correct": "Cells must be dividing to condense their chromosomes. Stopping them in metaphase catches the chromosomes at their most condensed, staining reveals the bands, and arranging them in pairs by size, centromere position and banding gives the karyotype."
+    }
+  },
+  {
+    "id": "anp-inheritance-19",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student explained how most cases of Down syndrome arise. One step is wrong. Which one?",
+    "options": [
+      "An oocyte pauses in meiosis I for decades",
+      "The proteins holding its paired chromosomes together weaken",
+      "In meiosis I, both copies of chromosome 21 go to the same end",
+      "The egg carries 24 chromosomes, including two copies of chromosome 21",
+      "Fertilized by a normal sperm, the zygote has 45 chromosomes"
+    ],
+    "correct": 4,
+    "why": {
+      "correct": "An egg with 24 chromosomes joined by a normal sperm with 23 gives 47, with three copies of chromosome 21: trisomy 21.",
+      "options": [
+        "This step is right. The oocyte waits in meiosis I from before the mother's birth until ovulation.",
+        "This step is right. The proteins are not replaced, so they weaken with age.",
+        "This step is right. That is nondisjunction in meiosis I.",
+        "This step is right. The egg now has one extra chromosome.",
+        "This is the error. 24 + 23 = 47, not 45. A zygote with 45 would come from an egg missing a chromosome."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-20",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Fill the gap: adult height forms a smooth, bell-shaped distribution because it is a ____ trait, shaped by many genes of small effect plus the environment.",
+    "options": [
+      "codominant",
+      "polygenic",
+      "X-linked",
+      "recessive lethal"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Polygenic traits depend on many genes, each adding a small effect, plus environmental factors such as nutrition. Adding up many small effects gives a continuous, bell-shaped spread.",
+      "options": [
+        "Codominance involves two alleles of one gene both showing, which gives a few distinct types, not a smooth range.",
+        "Correct. Many genes of small effect give a bell curve.",
+        "An X-linked trait follows one gene on the X and shows sex differences in who is affected.",
+        "A recessive lethal allele kills homozygotes; it does not produce a continuous range."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why do most people end up near the middle of the range for a polygenic trait such as height?",
+    "options": [
+      "The alleles for average height are dominant",
+      "Most people inherit a mix of height-raising and height-lowering variants that roughly cancel",
+      "Height is set by one gene with two alleles",
+      "The environment cancels out every genetic effect"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "With thousands of variants each adding or subtracting a little, most people inherit a mix of both kinds, and few inherit mostly one kind. That puts most people near the middle and few at the extremes.",
+      "options": [
+        "Dominance describes one gene's alleles. It does not explain why a trait shaped by thousands of variants clusters around the middle.",
+        "Correct. Many small effects in both directions give a bell-shaped spread.",
+        "A single gene with two alleles gives two or three distinct types, not a smooth range.",
+        "Environment matters, but genes still matter: tall parents tend to have tall children."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-22",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A 24-year-old woman has a baby with Down syndrome. The karyotype shows most of an extra chromosome 21 attached to chromosome 14. What is the best next step for the family?",
+    "options": [
+      "Nothing; her risk next time is the low risk for her age",
+      "Karyotype the parents, because one may carry the rearrangement",
+      "Test the baby for cystic fibrosis",
+      "Tell her the risk rises only after age 35"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is translocation Down syndrome. It does not depend on maternal age, and it can be inherited from a parent who carries the rearrangement without symptoms. If a parent carries it, the risk in later pregnancies is much higher than the age-based risk.",
+      "options": [
+        "The age-based risk applies to Down syndrome from nondisjunction. A translocation may come from a parent, which can raise the risk sharply.",
+        "Correct. A parent may be a balanced carrier of the translocation.",
+        "Cystic fibrosis is a single-gene disease and has nothing to do with this karyotype.",
+        "Translocation Down syndrome is not tied to maternal age, so her age does not set her risk."
+      ]
+    }
+  },
+  {
+    "id": "anp-inheritance-23",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A karyotype reads 47,XY,+21. What does it show?",
+    "options": [
+      "A male with trisomy 21",
+      "A female with trisomy 21",
+      "A male missing chromosome 21",
+      "A male with an extra X chromosome"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "47 chromosomes, sex chromosomes XY (male), and +21 marks the extra chromosome 21: trisomy 21, Down syndrome.",
+      "options": [
+        "Correct. XY is male, and +21 is the extra chromosome.",
+        "XY means male; a female would be XX.",
+        "A missing chromosome would give 45, not 47.",
+        "An extra X would read 47,XXY. Here the extra chromosome is number 21."
+      ]
+    }
+  }
+]

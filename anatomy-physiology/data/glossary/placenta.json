@@ -1,0 +1,17 @@
+{
+  "placenta": {
+    "def": "The organ of exchange between fetal and maternal blood, formed from the chorion and the endometrium at the implantation site (placentation). Its chorionic villi, holding fetal capillaries, hang in a pool of maternal blood; the placental barrier between the two bloods is thin and large, so substances cross while the bloods stay apart. It is also a major endocrine gland.",
+    "roots": [["placenta", "flat cake"], ["villus", "shaggy hair"]],
+    "say": "pluh-SEN-tuh"
+  },
+  "umbilical-cord": {
+    "def": "The cord joining the fetus to the placenta, about 50 to 60 cm long at term. It holds two umbilical arteries, which carry oxygen-poor blood from the fetus to the placenta, and one umbilical vein, which carries oxygen-rich blood to the fetus, cushioned in jelly-like connective tissue.",
+    "roots": [["umbilicus", "navel"]],
+    "say": "um-BIL-ih-kul"
+  },
+  "placental-hormones": {
+    "def": "The hormones the placenta makes: hCG, which peaks near week 10; progesterone and estrogens, which it takes over from the corpus luteum by weeks 7 to 9 and raises steadily; human placental lactogen (hPL), which reduces the mother's response to insulin and helps prepare the breasts; and some relaxin, which in humans comes mostly from the corpus luteum.",
+    "roots": [["lact-", "milk"], ["-gen", "producing"], ["relax-", "loosen"]],
+    "say": ""
+  }
+}

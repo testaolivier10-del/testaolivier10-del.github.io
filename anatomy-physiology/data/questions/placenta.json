@@ -1,0 +1,318 @@
+[
+  {
+    "id": "anp-placenta-1",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "q": "A woman who is 10 weeks pregnant develops a blood clot in a leg vein. Her doctor switches her from warfarin, a small molecule, to heparin, a large and highly charged one. Why is heparin preferred in pregnancy?",
+    "options": ["Heparin does not cross the placenta in useful amounts", "Heparin is broken down by the placenta into a harmless form", "Warfarin cannot dissolve clots in pregnant women", "Heparin crosses the placenta and protects the fetus from clots"],
+    "correct": 0,
+    "why": {
+      "correct": "The placental barrier lets small, uncharged or fat-soluble molecules through and holds back large, highly charged ones. Warfarin crosses and can harm the developing fetus; heparin stays in the mother's blood.",
+      "options": ["Correct. Its size and charge keep heparin on the mother's side.", "The placenta does break down a few substances, but heparin is kept out by its size and charge, not destroyed.", "Warfarin works in pregnant women. The concern is that it crosses to the fetus.", "Heparin does not cross in useful amounts, and the fetus does not need an anticoagulant."]
+    }
+  },
+  {
+    "id": "anp-placenta-2",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "pregnancy-hormones",
+    "q": "According to the graph, at about which week of pregnancy does hCG reach its highest level?",
+    "options": ["Week 4", "Week 10", "Week 24", "Week 40"],
+    "correct": 1,
+    "why": {
+      "correct": "The hCG curve climbs steeply from about week 4, peaks at week 10 and then falls to a low plateau by about week 18.",
+      "options": ["At week 4 hCG is only starting to rise from zero.", "Correct. The hCG peak sits at week 10.", "By week 24 hCG has fallen to about 15% of its peak.", "At week 40 hCG is low. It is progesterone and estrogens that peak at the end."]
+    }
+  },
+  {
+    "id": "anp-placenta-3",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["gradients", "structure-function"],
+    "q": "In a pregnancy with placental insufficiency, shallow remodeling of the spiral arteries leaves them narrow, so less maternal blood reaches the intervillous space. Predict each variable in the fetus over the following weeks, compared with a normal pregnancy.",
+    "variables": [
+      { "name": "Oxygen reaching the fetal blood", "answer": "down", "why": "Less maternal blood in the intervillous space means a smaller supply of oxygen at the villi, so less diffuses into fetal blood." },
+      { "name": "Fetal growth rate", "answer": "down", "why": "Less glucose and fewer amino acids reach the fetus, so it grows more slowly." },
+      { "name": "Share of fetal blood flow going to the brain", "answer": "up", "why": "Low oxygen makes the fetus narrow vessels to its kidneys, gut and limbs and redirect blood toward its brain and heart." },
+      { "name": "Fetal urine output", "answer": "down", "why": "With blood diverted away from them, the fetal kidneys filter less and make less urine." },
+      { "name": "Amniotic fluid volume", "answer": "down", "why": "Late in pregnancy, most amniotic fluid is fetal urine, so less urine means less fluid." }
+    ],
+    "why": { "correct": "A placenta that receives too little maternal blood delivers less oxygen and fuel. The fetus grows slowly, protects its brain by redirecting blood, and its kidneys, receiving less, make less urine, so the amniotic fluid shrinks. A small fetus with little amniotic fluid is the classic pattern." }
+  },
+  {
+    "id": "anp-placenta-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-28-11",
+    "pin": "chorionic-villi",
+    "q": "Name the pinned structures, which contain fetal blood vessels.",
+    "options": ["Chorionic villi", "Uterine arteries", "Amnion", "Umbilical cord"],
+    "correct": 0,
+    "why": {
+      "correct": "Chorionic villi are the branching projections of the chorion that hang in the pool of maternal blood. Each contains fetal capillaries in a connective tissue core.",
+      "options": ["Correct. These branching projections are the chorionic villi.", "The uterine arteries are the mother's vessels in the uterine wall, which feed the intervillous space.", "The amnion is the thin membrane lining the fluid-filled sac around the embryo.", "The umbilical cord is the single rope-like stalk joining the embryo to the placenta."]
+    }
+  },
+  {
+    "id": "anp-placenta-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "arteries always carry oxygen-rich blood",
+    "q": "The umbilical vein carries the most oxygen-rich blood in the fetus. Why is it called a vein?",
+    "options": ["Its wall has valves along its length", "It carries blood toward the fetal heart", "Its wall is thinner than an artery's", "It carries blood at low pressure"],
+    "correct": 1,
+    "why": {
+      "correct": "Vessels are named by the direction of flow relative to the heart. The umbilical vein returns blood from the placenta toward the fetal heart, so it is a vein even though its blood is rich in oxygen, just as the pulmonary veins are.",
+      "options": ["Veins are defined by direction of flow, not by valves, and the umbilical vein is not named for them.", "Correct. It carries blood toward the heart.", "Its wall is thinner, but wall thickness does not define an artery or a vein.", "Its pressure is low, but pressure does not decide the name. Direction does."]
+    }
+  },
+  {
+    "id": "anp-placenta-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Late in a pregnancy, the placenta's working exchange area falls to half of normal, and the barrier becomes twice as thick. The partial pressure difference for oxygen is unchanged. By how much does the rate of oxygen transfer change?",
+    "options": ["It is unchanged", "It falls to one-half", "It falls to one-quarter", "It falls to one-eighth"],
+    "correct": 2,
+    "why": {
+      "correct": "The rate of diffusion is proportional to area × partial pressure difference ÷ distance. New rate ÷ old rate = (1/2 × 1) ÷ 2 = 1/4.",
+      "options": ["Both changes slow diffusion, so the rate cannot stay the same.", "One-half accounts for the smaller area but not for the doubled distance.", "Correct. Half the area and twice the distance give one-quarter of the rate.", "One-eighth would need a third halving. Only two factors changed, each by a factor of 2."]
+    }
+  },
+  {
+    "id": "anp-placenta-7",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Select every substance that crosses the placenta mainly by simple diffusion.",
+    "options": ["Oxygen", "Glucose", "Alcohol", "IgG antibodies", "Carbon dioxide", "Amino acids"],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "Small, uncharged or fat-soluble molecules such as oxygen, carbon dioxide and alcohol diffuse through the membranes of the barrier down their gradients. Glucose needs carrier proteins, amino acids are actively transported, and IgG is carried across in vesicles.",
+      "options": ["Correct. Oxygen diffuses down its partial pressure gradient.", "Glucose crosses by facilitated diffusion, through carrier proteins.", "Correct. Alcohol is small and fat-soluble, and it diffuses freely.", "IgG is too large to diffuse. It is carried across by receptor proteins in vesicles.", "Correct. Carbon dioxide diffuses from fetal to maternal blood.", "Amino acids are pumped to the fetus by active transport, against their gradients."]
+    }
+  },
+  {
+    "id": "anp-placenta-8",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "pregnancy-hormones",
+    "q": "The graph shows hCG falling after week 10, yet the endometrium is not shed. What explains this?",
+    "options": ["The falling hCG signals the uterus to stop menstruating", "The corpus luteum grows larger as hCG falls", "The placenta now makes enough progesterone on its own", "hPL takes over hCG's role of keeping the corpus luteum alive"],
+    "correct": 2,
+    "why": {
+      "correct": "hCG was needed to keep the corpus luteum making progesterone. By weeks 7 to 9 the placenta makes enough progesterone itself, and the progesterone curve keeps rising while hCG falls. Progesterone, not hCG, keeps the endometrium in place.",
+      "options": ["A fall in hCG does not act on the uterus. It is progesterone that keeps the endometrium from being shed.", "The corpus luteum depends on hCG, so it does not grow as hCG falls. After weeks 7 to 9 it is simply no longer needed.", "Correct. The placenta has taken over progesterone production.", "hPL acts mainly on the mother's metabolism and the breasts. It does not keep the corpus luteum alive."]
+    }
+  },
+  {
+    "id": "anp-placenta-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients", "structure-function"],
+    "q": "A woman with poorly controlled type 1 diabetes has high blood glucose through much of her pregnancy. What happens in the fetus?",
+    "options": ["Its glucose stays normal because the placenta blocks the extra glucose", "Its glucose rises, and its pancreas secretes more insulin", "Its glucose rises, and her insulin crosses to lower it", "Its glucose falls because her insulin is low"],
+    "correct": 1,
+    "why": {
+      "correct": "Glucose crosses the placenta down its gradient by facilitated diffusion, so high maternal glucose means high fetal glucose. Maternal insulin does not cross, so the fetal pancreas answers the high glucose by secreting more of its own insulin, which also drives extra growth.",
+      "options": ["Glucose carriers move glucose down its gradient, so a higher maternal level pushes more across. The placenta does not cap it.", "Correct. Fetal glucose follows maternal glucose, and the fetal pancreas responds.", "Insulin is a protein too large to cross the placenta in useful amounts.", "Her low insulin raises her own glucose, and that extra glucose crosses to the fetus. Fetal glucose rises, not falls."]
+    }
+  },
+  {
+    "id": "anp-placenta-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A mother with Graves disease has antibodies that stimulate the thyroid. Her newborn has a fast heart rate and a small goiter that fade over about three months. What best explains the baby's condition?",
+    "options": ["The mother's thyroid hormones were stored in the baby's fat", "The baby inherited Graves disease and will keep it for life", "The mother's IgG antibodies crossed the placenta and stimulated the baby's thyroid", "The placenta made thyroid hormone that stayed in the baby"],
+    "correct": 2,
+    "why": {
+      "correct": "Graves disease antibodies are IgG, which the placenta actively carries to the fetus. They stimulate the fetal thyroid as they do the mother's. After birth no more arrive, and the ones present are broken down over weeks to months, so the condition fades.",
+      "options": ["The baby's problem is driven by stimulation of its own thyroid, and it lasts as long as the maternal antibodies do, not by stored hormone.", "The condition fades as the borrowed antibodies disappear, which rules out a lifelong disease of the baby's own immune system.", "Correct. Borrowed IgG antibodies stimulate the baby's thyroid until they are cleared.", "The placenta does not make thyroid hormone. The goiter shows the baby's own thyroid being stimulated."]
+    }
+  },
+  {
+    "id": "anp-placenta-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A baby born at 28 weeks has lower IgG levels than a baby born at 40 weeks. Why?",
+    "options": ["Preterm babies make antibodies faster, so less is needed", "IgG diffuses across the placenta only after the lungs mature", "Most maternal IgG is carried across the placenta in the last three months of pregnancy", "IgG is destroyed during an early birth"],
+    "correct": 2,
+    "why": {
+      "correct": "Receptor proteins on the syncytiotrophoblast carry IgG across, and most of the transfer happens late in pregnancy. A baby born at 28 weeks misses much of it and has less passive immunity.",
+      "options": ["Newborns, especially preterm ones, make antibodies poorly. They depend on borrowed IgG.", "IgG is carried in vesicles, not by diffusion, and its transfer does not depend on the lungs.", "Correct. Most IgG transfer happens in the last three months.", "Birth does not destroy IgG. The preterm baby simply received less of it."]
+    }
+  },
+  {
+    "id": "anp-placenta-12",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student traced maternal blood through the placenta. One step is wrong. Which one?",
+    "options": [
+      "Uterine arteries branch into the spiral arteries of the endometrium",
+      "The widened spiral arteries empty into the intervillous space",
+      "Maternal blood enters the fetal capillaries inside the chorionic villi",
+      "Oxygen diffuses across the placental barrier into fetal blood",
+      "Maternal blood drains out through the uterine veins"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Maternal blood bathes the outside of the villi. It never enters the fetal capillaries: the placental barrier separates the two bloods, and substances cross it instead.",
+      "options": ["This step is right. The spiral arteries are branches of the uterine arteries.", "This step is right. The spiral arteries open into the intervillous space.", "This is the error. The two bloods do not mix; maternal blood stays outside the villi.", "This step is right. Oxygen crosses the barrier by diffusion.", "This step is right. Blood leaves the intervillous space through the uterine veins."]
+    }
+  },
+  {
+    "id": "anp-placenta-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "In a chorionic villus, carbon dioxide diffuses out of the fetal blood into the maternal blood. How does that change oxygen loading by fetal hemoglobin?",
+    "options": ["It increases loading, because losing carbon dioxide shifts the fetal curve left", "It decreases loading, because it shifts the fetal curve right", "It has no effect, because fetal hemoglobin does not respond to carbon dioxide", "It increases loading only because the maternal blood becomes more acidic"],
+    "correct": 0,
+    "why": {
+      "correct": "Less carbon dioxide means fewer hydrogen ions in the fetal blood, which raises hemoglobin's affinity for oxygen: the Bohr effect in reverse. At the same time, the maternal blood gains carbon dioxide and releases more oxygen. Together this is the double Bohr effect.",
+      "options": ["Correct. Losing carbon dioxide shifts the fetal curve left, so it takes up more oxygen.", "A right shift happens when carbon dioxide rises, as in the fetus's own tissues, not when it falls.", "Fetal hemoglobin shows the Bohr effect like adult hemoglobin. It is its weak binding of 2,3-BPG that differs.", "The maternal side does shift right and release more oxygen, but the fetal side's own left shift also increases loading. Both sides contribute."]
+    }
+  },
+  {
+    "id": "anp-placenta-14",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients", "structure-function"],
+    "q": "Put the path of an oxygen molecule in order, from the mother's lungs to a fetal cell.",
+    "options": [
+      "Oxygen diffuses from the mother's alveoli into her blood",
+      "Her blood reaches the uterus through the uterine arteries and spiral arteries",
+      "The blood fills the intervillous space around the chorionic villi",
+      "Oxygen diffuses across the placental barrier into a villus capillary",
+      "The umbilical vein carries the oxygen-rich blood to the fetus",
+      "Oxygen leaves a fetal capillary and enters a fetal cell"
+    ],
+    "why": {
+      "correct": "Oxygen enters the mother's blood in her lungs, travels in her arteries to the spiral arteries and into the intervillous space, crosses the placental barrier into the fetal capillaries of the villi, and returns to the fetus through the umbilical vein before reaching the fetal tissues."
+    }
+  },
+  {
+    "id": "anp-placenta-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "At 12 weeks of pregnancy, a woman has an ovarian cyst removed, and her corpus luteum is removed with it. Her pregnancy continues normally. Why?",
+    "options": ["The corpus luteum regrows from the remaining ovary", "hCG alone keeps the endometrium in place", "By 12 weeks the placenta makes enough progesterone on its own", "Progesterone is not needed after the first month"],
+    "correct": 2,
+    "why": {
+      "correct": "The placenta takes over progesterone production from the corpus luteum by about weeks 7 to 9. By 12 weeks, the corpus luteum can be removed without ending the pregnancy. Removed before about week 7, it would need to be replaced with progesterone.",
+      "options": ["A corpus luteum forms only from a follicle after ovulation. It does not regrow, and ovulation does not happen in pregnancy.", "hCG acts on the corpus luteum, not on the endometrium. With the corpus luteum gone, hCG has nothing to act on.", "Correct. The placenta supplies the progesterone.", "Progesterone is needed throughout pregnancy. It keeps the endometrium in place and the uterine muscle quiet."]
+    }
+  },
+  {
+    "id": "anp-placenta-16",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-28-11",
+    "pin": "umbilical-cord",
+    "q": "Name the pinned structure.",
+    "options": ["Umbilical cord", "Chorion", "Yolk sac", "Allantois"],
+    "correct": 0,
+    "why": {
+      "correct": "The umbilical cord is the rope-like stalk joining the embryo to the placenta. It holds two umbilical arteries and one umbilical vein.",
+      "options": ["Correct. This is the umbilical cord.", "The chorion is the outer membrane surrounding the whole sac, not a stalk.", "The yolk sac is a small sac near the top of the embryo in this drawing, not the stalk to the placenta.", "The allantois is a small early outpouching whose vessels become the cord's vessels. By this stage the cord has formed."]
+    }
+  },
+  {
+    "id": "anp-placenta-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Late in pregnancy, a woman's blood glucose after a meal rises higher and stays up longer than it did before she was pregnant. Which placental hormone is mainly responsible?",
+    "options": ["Human placental lactogen", "Human chorionic gonadotropin", "Relaxin", "Estriol"],
+    "correct": 0,
+    "why": {
+      "correct": "Human placental lactogen makes the mother's cells respond less to insulin. Her glucose stays higher after meals, and more of it crosses to the fetus. It rises with the size of the placenta, so the effect is strongest late in pregnancy.",
+      "options": ["Correct. hPL reduces the mother's response to insulin.", "hCG peaks near week 10 and then falls, so it does not explain an effect that grows late in pregnancy.", "Relaxin peaks early in pregnancy and acts mainly on blood vessels and the kidneys.", "Estriol grows the uterus and breast ducts. It is not the main cause of the mother's reduced insulin response."]
+    }
+  },
+  {
+    "id": "anp-placenta-18",
+    "type": "missing",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Complete the layers of the placental barrier early in pregnancy, from maternal blood to fetal blood: syncytiotrophoblast → ____ → villus connective tissue → fetal capillary endothelium.",
+    "options": ["Cytotrophoblast", "Amnion", "Endometrium", "Hypoblast"],
+    "correct": 0,
+    "why": {
+      "correct": "Under the syncytiotrophoblast lies a layer of cytotrophoblast cells, which becomes patchy later in pregnancy as the barrier thins.",
+      "options": ["Correct. The cytotrophoblast lies under the syncytiotrophoblast.", "The amnion lines the fluid-filled sac around the fetus. It is not part of the villi.", "The endometrium is the mother's tissue around the intervillous space, not a layer inside the villus.", "The hypoblast was a layer of the early embryonic disc. It is not part of the placenta."]
+    }
+  },
+  {
+    "id": "anp-placenta-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which vessels does a normal umbilical cord contain?",
+    "options": ["One artery and two veins", "Two arteries and one vein", "Two arteries and two veins", "One artery and one vein"],
+    "correct": 1,
+    "why": {
+      "correct": "A normal cord holds two umbilical arteries, carrying oxygen-poor blood to the placenta, and one umbilical vein, carrying oxygen-rich blood to the fetus.",
+      "options": ["This reverses the numbers. There are two arteries and one vein.", "Correct. Two arteries and one vein.", "There is only one umbilical vein in a normal cord.", "A cord with a single artery is an uncommon finding that prompts a closer look for other problems."]
+    }
+  },
+  {
+    "id": "anp-placenta-20",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients", "structure-function"],
+    "q": "Early in a pregnancy, the cytotrophoblast fails to invade the spiral arteries deeply, so they keep their smooth muscle. What is the most direct consequence?",
+    "options": ["The two bloods start to mix in the villi", "The arteries stay narrow and can constrict, so less maternal blood reaches the intervillous space", "The fetus stops making fetal hemoglobin", "More maternal blood reaches the villi, because muscular arteries pump it"],
+    "correct": 1,
+    "why": {
+      "correct": "Remodeling replaces the muscle of the spiral arteries so they become wide, low-resistance tubes. Arteries that keep their muscle stay narrow and can still constrict, so resistance stays high and flow into the intervillous space is lower. This is the usual starting point of placental insufficiency.",
+      "options": ["Failed remodeling does not break down the placental barrier. The bloods still stay apart.", "Correct. High resistance means low flow to the placenta.", "Fetal hemoglobin production is set by the fetus's own genes and age, not by the spiral arteries.", "Arterial smooth muscle sets the vessel's width; it does not pump blood. Narrower arteries carry less."]
+    }
+  },
+  {
+    "id": "anp-placenta-21",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "pregnancy-hormones",
+    "q": "According to the graph, which hormone is closest to its own highest level at week 30?",
+    "options": ["hCG", "Progesterone", "Estrogens", "hPL"],
+    "correct": 3,
+    "why": {
+      "correct": "At week 30, hPL is at about 70% of its peak, higher than progesterone (about 60%) and estrogens (about 50%). hPL rises with the size of the placenta and levels off from about week 36.",
+      "options": ["hCG is at only about 15% of its peak at week 30.", "Progesterone is at about 60% of its peak at week 30, below hPL.", "Estrogens are at about 50% of their peak at week 30 and rise most steeply at the end.", "Correct. hPL's curve is highest at week 30."]
+    }
+  }
+]
