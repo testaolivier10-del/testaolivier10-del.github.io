@@ -1,0 +1,332 @@
+{
+  "figure": "os-21-29",
+  "labels": [
+    {
+      "id": "low-grade-fever",
+      "name": "Low-grade fever",
+      "accept": [
+        "low-grade fever",
+        "low grade fever",
+        "fever"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "fever",
+      "box": [
+        603,
+        30,
+        157,
+        22
+      ]
+    },
+    {
+      "id": "fatigue",
+      "name": "Fatigue",
+      "accept": [
+        "fatigue",
+        "tiredness"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": null,
+      "box": [
+        952,
+        30,
+        85,
+        22
+      ]
+    },
+    {
+      "id": "photosensitivity",
+      "name": "Photosensitivity",
+      "accept": [
+        "photosensitivity",
+        "sun sensitivity",
+        "light sensitivity"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": null,
+      "box": [
+        603,
+        50,
+        152,
+        23
+      ]
+    },
+    {
+      "id": "loss-of-appetite",
+      "name": "Loss of appetite",
+      "accept": [
+        "loss of appetite",
+        "poor appetite"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": null,
+      "box": [
+        952,
+        50,
+        150,
+        23
+      ]
+    },
+    {
+      "id": "face",
+      "name": "Face",
+      "accept": [
+        "face"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": null,
+      "box": [
+        952,
+        85,
+        54,
+        19
+      ]
+    },
+    {
+      "id": "mouth-and-nose",
+      "name": "Mouth and nose",
+      "accept": [
+        "mouth and nose",
+        "mouth",
+        "nose"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": null,
+      "box": [
+        603,
+        97,
+        145,
+        20
+      ]
+    },
+    {
+      "id": "butterfly-rash",
+      "name": "Butterfly rash",
+      "accept": [
+        "butterfly rash",
+        "malar rash",
+        "facial rash",
+        "rash"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": null,
+      "box": [
+        952,
+        106,
+        132,
+        22
+      ]
+    },
+    {
+      "id": "ulcers",
+      "name": "Ulcers",
+      "accept": [
+        "ulcers",
+        "ulcer",
+        "mouth ulcers",
+        "sores"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": null,
+      "box": [
+        603,
+        118,
+        76,
+        19
+      ]
+    },
+    {
+      "id": "pleura",
+      "name": "Pleura",
+      "accept": [
+        "pleura",
+        "pleurae"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "major-organs",
+      "box": [
+        952,
+        154,
+        65,
+        19
+      ]
+    },
+    {
+      "id": "muscles",
+      "name": "Muscles",
+      "accept": [
+        "muscles",
+        "muscle"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": null,
+      "box": [
+        603,
+        171,
+        81,
+        19
+      ]
+    },
+    {
+      "id": "inflammation-pleura",
+      "name": "Inflammation",
+      "accept": [
+        "inflammation",
+        "pleurisy",
+        "pleuritis"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "inflammation",
+      "box": [
+        952,
+        175,
+        128,
+        19
+      ]
+    },
+    {
+      "id": "aches",
+      "name": "Aches",
+      "accept": [
+        "aches",
+        "ache",
+        "muscle aches",
+        "pain"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": null,
+      "box": [
+        603,
+        191,
+        74,
+        19
+      ]
+    },
+    {
+      "id": "pericardium",
+      "name": "Pericardium",
+      "accept": [
+        "pericardium"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "pericardium",
+      "box": [
+        952,
+        232,
+        111,
+        19
+      ]
+    },
+    {
+      "id": "joints",
+      "name": "Joints",
+      "accept": [
+        "joints",
+        "joint"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "articulation",
+      "box": [
+        603,
+        245,
+        61,
+        20
+      ]
+    },
+    {
+      "id": "inflammation-pericardium",
+      "name": "Inflammation",
+      "accept": [
+        "inflammation",
+        "pericarditis"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "inflammation",
+      "box": [
+        952,
+        253,
+        129,
+        19
+      ]
+    },
+    {
+      "id": "arthritis",
+      "name": "Arthritis",
+      "accept": [
+        "arthritis",
+        "joint inflammation"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": null,
+      "box": [
+        603,
+        266,
+        85,
+        19
+      ]
+    },
+    {
+      "id": "fingers-and-toes",
+      "name": "Fingers and toes",
+      "accept": [
+        "fingers and toes",
+        "fingers",
+        "toes"
+      ],
+      "box": [
+        956,
+        386,
+        142,
+        21
+      ],
+      "concept": null
+    },
+    {
+      "id": "poor-circulation",
+      "name": "Poor circulation",
+      "accept": [
+        "poor circulation",
+        "reduced blood flow"
+      ],
+      "box": [
+        956,
+        406,
+        142,
+        19
+      ],
+      "concept": null
+    }
+  ]
+}

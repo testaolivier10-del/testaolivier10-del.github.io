@@ -1,0 +1,133 @@
+{
+  "figure": "os-21-16",
+  "labels": [
+    {
+      "id": "protein",
+      "name": "Protein",
+      "accept": [
+        "protein",
+        "protein antigen",
+        "antigen"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "protein",
+      "box": [
+        330,
+        181,
+        90,
+        24
+      ]
+    },
+    {
+      "id": "antigenic-determinant-right",
+      "name": "Antigenic determinant",
+      "accept": [
+        "antigenic determinant",
+        "epitope",
+        "antigenic determinants",
+        "epitopes"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "antigen",
+      "box": [
+        766,
+        384,
+        253,
+        29
+      ]
+    },
+    {
+      "id": "antigenic-determinant-left",
+      "name": "Antigenic determinant",
+      "accept": [
+        "antigenic determinant",
+        "epitope",
+        "antigenic determinants",
+        "epitopes"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "antigen",
+      "box": [
+        316,
+        472,
+        144,
+        52
+      ]
+    },
+    {
+      "id": "antigenic-determinant",
+      "name": "Antigenic determinant",
+      "accept": [
+        "antigenic determinant",
+        "epitope",
+        "antigenic determinants",
+        "epitopes"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "antigen",
+      "box": [
+        616,
+        508,
+        253,
+        29
+      ]
+    },
+    {
+      "id": "antibody-1",
+      "name": "Antibody 1",
+      "accept": [
+        "antibody 1"
+      ],
+      "box": [
+        25,
+        393,
+        117,
+        29
+      ],
+      "concept": "antigen-antibody-basic",
+      "cover": true,
+      "note": "OpenStax prints 'Antibody 1', 'Antibody 2' and 'Antibody 3' on the three lymphocytes, while its caption calls them T cells with three specificities; the drawn objects are cells whose paired receptor arms bind the epitopes, not antibodies. Covered for good and never asked."
+    },
+    {
+      "id": "antibody-2",
+      "name": "Antibody 2",
+      "accept": [
+        "antibody 2"
+      ],
+      "box": [
+        455,
+        749,
+        121,
+        29
+      ],
+      "concept": "antigen-antibody-basic",
+      "cover": true,
+      "note": "OpenStax prints 'Antibody 1', 'Antibody 2' and 'Antibody 3' on the three lymphocytes, while its caption calls them T cells with three specificities; the drawn objects are cells whose paired receptor arms bind the epitopes, not antibodies. Covered for good and never asked."
+    },
+    {
+      "id": "antibody-3",
+      "name": "Antibody 3",
+      "accept": [
+        "antibody 3"
+      ],
+      "box": [
+        912,
+        185,
+        121,
+        29
+      ],
+      "concept": "antigen-antibody-basic",
+      "cover": true,
+      "note": "OpenStax prints 'Antibody 1', 'Antibody 2' and 'Antibody 3' on the three lymphocytes, while its caption calls them T cells with three specificities; the drawn objects are cells whose paired receptor arms bind the epitopes, not antibodies. Covered for good and never asked."
+    }
+  ]
+}

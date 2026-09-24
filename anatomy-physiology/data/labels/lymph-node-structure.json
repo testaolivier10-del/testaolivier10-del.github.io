@@ -213,6 +213,46 @@
         500,
         252
       ]
+    },
+    {
+      "id": "artery",
+      "name": "Artery",
+      "accept": [
+        "artery",
+        "nodal artery",
+        "blood vessel"
+      ],
+      "concept": "blood-vessel-basics",
+      "box": [
+        646,
+        206,
+        38,
+        18
+      ],
+      "at": [
+        600,
+        214
+      ]
+    },
+    {
+      "id": "vein",
+      "name": "Vein",
+      "accept": [
+        "vein",
+        "nodal vein",
+        "blood vessel"
+      ],
+      "concept": "blood-vessel-basics",
+      "box": [
+        646,
+        285,
+        28,
+        18
+      ],
+      "at": [
+        600,
+        276
+      ]
     }
   ]
 }

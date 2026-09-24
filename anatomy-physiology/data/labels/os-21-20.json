@@ -1,0 +1,340 @@
+{
+  "figure": "os-21-20",
+  "labels": [
+    {
+      "id": "antigen-presenting-cell",
+      "name": "Antigen-presenting cell (dendritic cell)",
+      "accept": [
+        "antigen-presenting cell",
+        "antigen presenting cell",
+        "apc",
+        "dendritic cell"
+      ],
+      "lines": [
+        0,
+        1
+      ],
+      "concept": "apc",
+      "box": [
+        0,
+        0,
+        200,
+        43
+      ]
+    },
+    {
+      "id": "cd4",
+      "name": "CD4",
+      "accept": [
+        "cd4",
+        "cd4 protein",
+        "cd4 coreceptor",
+        "cd4 co-receptor"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "helper-t",
+      "box": [
+        185,
+        231,
+        50,
+        19
+      ]
+    },
+    {
+      "id": "activated-th-cell",
+      "name": "Activated TH cell",
+      "accept": [
+        "activated th cell",
+        "th cell",
+        "activated helper t cell",
+        "helper t cell",
+        "helper t lymphocyte"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "helper-t",
+      "box": [
+        280,
+        246,
+        148,
+        23
+      ]
+    },
+    {
+      "id": "mhc-ii",
+      "name": "MHC II",
+      "accept": [
+        "mhc ii",
+        "mhc class ii",
+        "class ii mhc",
+        "mhc 2",
+        "mhc ii protein",
+        "mhc class ii protein"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "mhc",
+      "box": [
+        147,
+        262,
+        69,
+        20
+      ]
+    },
+    {
+      "id": "antigen",
+      "name": "Antigen",
+      "accept": [
+        "antigen",
+        "antigen fragment",
+        "epitope"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "antigen",
+      "box": [
+        145,
+        410,
+        76,
+        24
+      ]
+    },
+    {
+      "id": "t-cell-receptor",
+      "name": "T cell receptor",
+      "accept": [
+        "t cell receptor",
+        "tcr",
+        "t-cell receptor",
+        "antigen receptor"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "clonal-selection",
+      "box": [
+        263,
+        410,
+        131,
+        24
+      ]
+    },
+    {
+      "id": "cytokines",
+      "name": "Cytokines",
+      "accept": [
+        "cytokines",
+        "cytokine"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "paracrine-autocrine",
+      "box": [
+        441,
+        411,
+        95,
+        23
+      ]
+    },
+    {
+      "id": "cd8",
+      "name": "CD8",
+      "accept": [
+        "cd8",
+        "cd8 protein",
+        "cd8 coreceptor",
+        "cd8 co-receptor"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "cytotoxic-t",
+      "box": [
+        164,
+        537,
+        50,
+        20
+      ]
+    },
+    {
+      "id": "granzymes",
+      "name": "Granzymes",
+      "accept": [
+        "granzymes",
+        "granzyme"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "cytotoxic-t",
+      "box": [
+        466,
+        552,
+        108,
+        24
+      ]
+    },
+    {
+      "id": "activated-tc-cell",
+      "name": "Activated TC cell",
+      "accept": [
+        "activated tc cell",
+        "tc cell",
+        "activated cytotoxic t cell",
+        "cytotoxic t cell",
+        "cytotoxic t lymphocyte",
+        "ctl"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "cytotoxic-t",
+      "box": [
+        236,
+        567,
+        148,
+        23
+      ]
+    },
+    {
+      "id": "mhc-i",
+      "name": "MHC I",
+      "accept": [
+        "mhc i",
+        "mhc class i",
+        "class i mhc",
+        "mhc 1",
+        "mhc i protein",
+        "mhc class i protein"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "mhc",
+      "box": [
+        134,
+        568,
+        64,
+        20
+      ]
+    },
+    {
+      "id": "perforins",
+      "name": "Perforins",
+      "accept": [
+        "perforins",
+        "perforin"
+      ],
+      "lines": [
+        19
+      ],
+      "concept": "cytotoxic-t",
+      "box": [
+        475,
+        708,
+        87,
+        20
+      ]
+    },
+    {
+      "id": "antigens",
+      "name": "Antigens",
+      "accept": [
+        "antigens",
+        "antigen",
+        "antigen fragments",
+        "epitopes"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "antigen",
+      "box": [
+        124,
+        738,
+        85,
+        23
+      ]
+    },
+    {
+      "id": "t-cell-receptor-tc",
+      "name": "T cell receptor",
+      "accept": [
+        "t cell receptor",
+        "tcr",
+        "t-cell receptor",
+        "antigen receptor"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "clonal-selection",
+      "box": [
+        220,
+        738,
+        131,
+        23
+      ]
+    },
+    {
+      "id": "helper-t-cells-release-cytokines",
+      "name": "Helper T cells release cytokines that activate much of the adaptive and nonadaptive immune system during infection",
+      "accept": [
+        "helper t cells release cytokines",
+        "helper t cells"
+      ],
+      "lines": [
+        2,
+        3
+      ],
+      "concept": "helper-t",
+      "box": [
+        147,
+        35,
+        495,
+        45
+      ]
+    },
+    {
+      "id": "cytotoxic-t-cells-destroy-infected-cells",
+      "name": "Cytotoxic T cells destroy infected cells by releasing enzymes that rupture cell membranes",
+      "accept": [
+        "cytotoxic t cells destroy infected cells",
+        "cytotoxic t cells"
+      ],
+      "lines": [
+        11,
+        12
+      ],
+      "concept": "cytotoxic-t",
+      "box": [
+        146,
+        480,
+        516,
+        44
+      ]
+    },
+    {
+      "id": "infected-cell",
+      "name": "Infected cell",
+      "accept": [
+        "infected cell",
+        "infected body cell",
+        "target cell"
+      ],
+      "box": [
+        133,
+        605,
+        72,
+        42
+      ],
+      "concept": null
+    }
+  ]
+}

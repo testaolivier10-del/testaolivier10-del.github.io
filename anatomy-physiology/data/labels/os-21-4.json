@@ -1,0 +1,204 @@
+{
+  "figure": "os-21-4",
+  "labels": [
+    {
+      "id": "right-lymphatic-duct",
+      "name": "Right lymphatic duct",
+      "accept": [
+        "right lymphatic duct"
+      ],
+      "lines": [
+        0,
+        4
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        0,
+        0,
+        137,
+        39
+      ]
+    },
+    {
+      "id": "right-internal-jugular-vein",
+      "name": "Right internal jugular vein",
+      "accept": [
+        "right internal jugular vein",
+        "right internal jugular",
+        "right ijv",
+        "internal jugular vein"
+      ],
+      "lines": [
+        1,
+        5
+      ],
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        239,
+        0,
+        123,
+        43
+      ]
+    },
+    {
+      "id": "left-internal-jugular-vein",
+      "name": "Left internal jugular vein",
+      "accept": [
+        "left internal jugular vein",
+        "left internal jugular",
+        "left ijv",
+        "internal jugular vein"
+      ],
+      "lines": [
+        2,
+        6
+      ],
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        466,
+        0,
+        111,
+        43
+      ]
+    },
+    {
+      "id": "thoracic-duct-into-subclavian-vein",
+      "name": "Thoracic duct drains into subclavian vein",
+      "accept": [
+        "thoracic duct",
+        "thoracic duct drains into subclavian vein",
+        "left lymphatic duct"
+      ],
+      "lines": [
+        3,
+        7,
+        8
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        735,
+        0,
+        137,
+        60
+      ]
+    },
+    {
+      "id": "right-subclavian-vein",
+      "name": "Right subclavian vein",
+      "accept": [
+        "right subclavian vein",
+        "right subclavian",
+        "subclavian vein"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        34,
+        274,
+        188,
+        24
+      ]
+    },
+    {
+      "id": "left-subclavian-vein",
+      "name": "Left subclavian vein",
+      "accept": [
+        "left subclavian vein",
+        "left subclavian",
+        "subclavian vein"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "venae-cavae-tributaries",
+      "box": [
+        532,
+        274,
+        176,
+        20
+      ]
+    },
+    {
+      "id": "thoracic-duct",
+      "name": "Thoracic duct",
+      "accept": [
+        "thoracic duct",
+        "left lymphatic duct"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        576,
+        342,
+        126,
+        20
+      ]
+    },
+    {
+      "id": "cisterna-chyli",
+      "name": "Cisterna chyli of thoracic duct",
+      "accept": [
+        "cisterna chyli",
+        "cisterna chyli of thoracic duct",
+        "chyle cistern"
+      ],
+      "lines": [
+        12,
+        14
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        576,
+        377,
+        147,
+        40
+      ]
+    },
+    {
+      "id": "drained-by-right-lymphatic-duct",
+      "name": "Drained by right lymphatic duct",
+      "accept": [
+        "right lymphatic duct",
+        "drained by right lymphatic duct",
+        "right lymphatic duct territory",
+        "right lymphatic duct drainage"
+      ],
+      "lines": [
+        13,
+        15
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        17,
+        397,
+        145,
+        44
+      ]
+    },
+    {
+      "id": "drained-by-thoracic-duct",
+      "name": "Drained by thoracic duct",
+      "accept": [
+        "thoracic duct",
+        "drained by thoracic duct",
+        "thoracic duct territory",
+        "thoracic duct drainage"
+      ],
+      "lines": [
+        16,
+        17
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        576,
+        608,
+        120,
+        40
+      ]
+    }
+  ]
+}

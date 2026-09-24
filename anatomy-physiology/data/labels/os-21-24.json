@@ -1,0 +1,70 @@
+{
+  "figure": "os-21-24",
+  "labels": [
+    {
+      "id": "initial-exposure",
+      "name": "Initial exposure",
+      "accept": [
+        "initial exposure",
+        "first exposure",
+        "primary exposure"
+      ],
+      "box": [
+        104,
+        156,
+        161,
+        86
+      ],
+      "concept": "primary-secondary-response"
+    },
+    {
+      "id": "secondary-exposure",
+      "name": "Secondary exposure",
+      "accept": [
+        "secondary exposure",
+        "second exposure",
+        "repeat exposure",
+        "re-exposure"
+      ],
+      "box": [
+        461,
+        156,
+        187,
+        86
+      ],
+      "concept": "primary-secondary-response"
+    },
+    {
+      "id": "primary-immune-response",
+      "name": "Primary immune response",
+      "accept": [
+        "primary immune response",
+        "primary response",
+        "primary adaptive response"
+      ],
+      "box": [
+        257,
+        353,
+        159,
+        128
+      ],
+      "concept": "primary-secondary-response"
+    },
+    {
+      "id": "secondary-immune-response",
+      "name": "Secondary immune response",
+      "accept": [
+        "secondary immune response",
+        "secondary response",
+        "secondary adaptive response"
+      ],
+      "box": [
+        673,
+        52,
+        305,
+        86
+      ],
+      "concept": "primary-secondary-response"
+    }
+  ]
+}

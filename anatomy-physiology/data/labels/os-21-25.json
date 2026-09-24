@@ -1,0 +1,184 @@
+{
+  "figure": "os-21-25",
+  "labels": [
+    {
+      "id": "activated-b-cell",
+      "name": "Activated B cell",
+      "accept": [
+        "activated b cell",
+        "b cell",
+        "activated b lymphocyte"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "b-cell",
+      "box": [
+        432,
+        0,
+        140,
+        19
+      ]
+    },
+    {
+      "id": "cd4",
+      "name": "CD4",
+      "accept": [
+        "cd4",
+        "cd4 protein",
+        "cd4 coreceptor",
+        "cd4 co-receptor"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "helper-t",
+      "box": [
+        555,
+        43,
+        49,
+        20
+      ]
+    },
+    {
+      "id": "b-cell-receptor",
+      "name": "B cell receptor",
+      "accept": [
+        "b cell receptor",
+        "bcr",
+        "b-cell receptor",
+        "antigen receptor",
+        "surface antibody"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "b-cell",
+      "box": [
+        202,
+        47,
+        132,
+        23
+      ]
+    },
+    {
+      "id": "antigen",
+      "name": "Antigen",
+      "accept": [
+        "antigen",
+        "antigens"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "antigen",
+      "box": [
+        0,
+        49,
+        72,
+        24
+      ]
+    },
+    {
+      "id": "mhc-ii",
+      "name": "MHC II",
+      "accept": [
+        "mhc ii",
+        "mhc class ii",
+        "class ii mhc",
+        "mhc 2",
+        "mhc ii protein",
+        "mhc class ii protein"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "mhc",
+      "box": [
+        466,
+        79,
+        70,
+        19
+      ]
+    },
+    {
+      "id": "b-cell",
+      "name": "B cell",
+      "accept": [
+        "b cell",
+        "b lymphocyte",
+        "naive b cell",
+        "resting b cell"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "b-cell",
+      "box": [
+        202,
+        87,
+        57,
+        19
+      ]
+    },
+    {
+      "id": "helper-t-cell",
+      "name": "Helper T cell",
+      "accept": [
+        "helper t cell",
+        "th cell",
+        "helper t lymphocyte",
+        "cd4 t cell"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "helper-t",
+      "box": [
+        686,
+        108,
+        112,
+        23
+      ]
+    },
+    {
+      "id": "t-cell-receptor",
+      "name": "T cell receptor",
+      "accept": [
+        "t cell receptor",
+        "tcr",
+        "t-cell receptor",
+        "antigen receptor"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "clonal-selection",
+      "box": [
+        508,
+        239,
+        132,
+        24
+      ]
+    },
+    {
+      "id": "cytokine",
+      "name": "Cytokine",
+      "accept": [
+        "cytokine",
+        "cytokines",
+        "interleukin"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "paracrine-autocrine",
+      "box": [
+        320,
+        243,
+        116,
+        27
+      ]
+    }
+  ]
+}

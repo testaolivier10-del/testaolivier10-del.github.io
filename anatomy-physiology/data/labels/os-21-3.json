@@ -1,0 +1,240 @@
+{
+  "figure": "os-21-3",
+  "labels": [
+    {
+      "id": "lymph-capillary",
+      "name": "Lymph capillary",
+      "accept": [
+        "lymph capillary",
+        "lymphatic capillary",
+        "lymph capillaries",
+        "lymphatic capillaries"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        75,
+        73,
+        142,
+        23
+      ]
+    },
+    {
+      "id": "tissue-cells",
+      "name": "Tissue cells",
+      "accept": [
+        "tissue cells",
+        "tissue cell",
+        "body cells",
+        "cells"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": null,
+      "box": [
+        471,
+        92,
+        110,
+        19
+      ]
+    },
+    {
+      "id": "collagen-fiber",
+      "name": "Collagen fiber",
+      "accept": [
+        "collagen fiber",
+        "collagen fibre",
+        "collagen",
+        "collagen fibers"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "ct-fibers",
+      "box": [
+        809,
+        98,
+        128,
+        24
+      ]
+    },
+    {
+      "id": "arteriole",
+      "name": "Arteriole",
+      "accept": [
+        "arteriole"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "arteriole",
+      "box": [
+        0,
+        160,
+        79,
+        19
+      ]
+    },
+    {
+      "id": "interstitial-fluid",
+      "name": "Interstitial fluid",
+      "accept": [
+        "interstitial fluid",
+        "tissue fluid",
+        "isf"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "icf-ecf",
+      "box": [
+        810,
+        179,
+        130,
+        20
+      ]
+    },
+    {
+      "id": "venule",
+      "name": "Venule",
+      "accept": [
+        "venule"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "venule-vein",
+      "box": [
+        520,
+        261,
+        69,
+        19
+      ]
+    },
+    {
+      "id": "lymph",
+      "name": "Lymph (interstitial fluid)",
+      "accept": [
+        "lymph"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "lymph",
+      "box": [
+        810,
+        337,
+        200,
+        23
+      ]
+    },
+    {
+      "id": "tissue-fluid",
+      "name": "Tissue fluid",
+      "accept": [
+        "tissue fluid",
+        "interstitial fluid"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "icf-ecf",
+      "box": [
+        34,
+        388,
+        107,
+        19
+      ]
+    },
+    {
+      "id": "lymphatic-vessel",
+      "name": "Lymphatic vessel",
+      "accept": [
+        "lymphatic vessel",
+        "lymph vessel",
+        "lymphatic"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        410,
+        388,
+        98,
+        40
+      ]
+    },
+    {
+      "id": "endothelial-flaps",
+      "name": "Endothelial “flaps”",
+      "accept": [
+        "endothelial flaps",
+        "endothelial flap",
+        "flaps",
+        "flap",
+        "minivalves",
+        "endothelial minivalves"
+      ],
+      "lines": [
+        11,
+        12
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        484,
+        434,
+        104,
+        44
+      ]
+    },
+    {
+      "id": "lymph-vessel-endothelial-cells",
+      "name": "Lymph vessel endothelial cells",
+      "accept": [
+        "lymph vessel endothelial cells",
+        "endothelial cells",
+        "endothelial cell",
+        "endothelium",
+        "lymphatic endothelial cells"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        809,
+        481,
+        146,
+        40
+      ]
+    },
+    {
+      "id": "backflow-prevention-valve",
+      "name": "Backflow prevention valve",
+      "accept": [
+        "backflow prevention valve",
+        "valve",
+        "lymphatic valve",
+        "one-way valve"
+      ],
+      "lines": [
+        15,
+        16,
+        17
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        484,
+        522,
+        99,
+        62
+      ]
+    }
+  ]
+}

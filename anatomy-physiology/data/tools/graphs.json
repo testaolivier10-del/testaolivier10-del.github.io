@@ -13434,7 +13434,7 @@
      "hlines": [
       {
        "y": 80,
-       "label": "top of the blood column (80 mm)",
+       "label": "80 mm",
        "cls": "shape",
        "dash": true,
        "faint": true,
@@ -14289,8 +14289,8 @@
         ],
         "label": "no iron stores",
         "labelAt": [
-         20,
-         1.9
+         24,
+         0.55
         ]
        }
       ]

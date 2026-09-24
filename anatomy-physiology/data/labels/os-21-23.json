@@ -1,0 +1,210 @@
+{
+  "figure": "os-21-23",
+  "labels": [
+    {
+      "id": "memory-b-cell-secondary",
+      "name": "Memory B cell",
+      "accept": [
+        "memory b cell",
+        "memory cell",
+        "memory b cells",
+        "memory b lymphocyte"
+      ],
+      "lines": [
+        1,
+        3
+      ],
+      "concept": "immune-memory",
+      "box": [
+        970,
+        49,
+        80,
+        41
+      ]
+    },
+    {
+      "id": "clone-of-ancestral-cell",
+      "name": "Clone of ancestral cell",
+      "accept": [
+        "clone of ancestral cell",
+        "clone",
+        "memory b cell",
+        "memory cell"
+      ],
+      "lines": [
+        2,
+        4,
+        6
+      ],
+      "concept": "clonal-selection",
+      "box": [
+        673,
+        54,
+        87,
+        61
+      ]
+    },
+    {
+      "id": "memory-b-cell",
+      "name": "Memory B cell",
+      "accept": [
+        "memory b cell",
+        "memory cell",
+        "memory b cells",
+        "memory b lymphocyte"
+      ],
+      "lines": [
+        5,
+        7
+      ],
+      "concept": "immune-memory",
+      "box": [
+        407,
+        90,
+        79,
+        40
+      ]
+    },
+    {
+      "id": "activated-b-cell",
+      "name": "Activated B cell",
+      "accept": [
+        "activated b cell",
+        "b cell",
+        "activated b lymphocyte"
+      ],
+      "lines": [
+        8,
+        9
+      ],
+      "concept": "b-cell",
+      "box": [
+        272,
+        184,
+        88,
+        41
+      ]
+    },
+    {
+      "id": "antigen",
+      "name": "Antigen",
+      "accept": [
+        "antigen",
+        "antigens"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "antigen",
+      "box": [
+        3,
+        299,
+        75,
+        23
+      ]
+    },
+    {
+      "id": "antigen-bound-to-receptor",
+      "name": "Antigen bound to receptor",
+      "accept": [
+        "antigen bound to receptor",
+        "antigen bound to b cell receptor",
+        "bound antigen",
+        "antigen-receptor binding"
+      ],
+      "lines": [
+        13,
+        14
+      ],
+      "concept": "antigen",
+      "box": [
+        3,
+        431,
+        132,
+        44
+      ]
+    },
+    {
+      "id": "formation-of-clones",
+      "name": "Formation of clones",
+      "accept": [
+        "formation of clones",
+        "clonal expansion",
+        "clonal selection",
+        "cloning"
+      ],
+      "lines": [
+        18,
+        19
+      ],
+      "concept": "clonal-selection",
+      "box": [
+        238,
+        536,
+        95,
+        40
+      ]
+    },
+    {
+      "id": "antibody-molecule",
+      "name": "Antibody molecule",
+      "accept": [
+        "antibody molecule",
+        "antibody",
+        "antibodies",
+        "immunoglobulin"
+      ],
+      "lines": [
+        16,
+        17
+      ],
+      "concept": "antibody-structure",
+      "box": [
+        406,
+        507,
+        87,
+        40
+      ]
+    },
+    {
+      "id": "plasma-cell",
+      "name": "Plasma cell",
+      "accept": [
+        "plasma cell",
+        "plasma cells",
+        "effector b cell"
+      ],
+      "lines": [
+        20,
+        22
+      ],
+      "concept": "plasma-cell",
+      "box": [
+        406,
+        569,
+        75,
+        40
+      ]
+    },
+    {
+      "id": "plasma-cell-secondary",
+      "name": "Plasma cell",
+      "accept": [
+        "plasma cell",
+        "plasma cells",
+        "effector b cell"
+      ],
+      "lines": [
+        21,
+        23
+      ],
+      "concept": "plasma-cell",
+      "box": [
+        828,
+        569,
+        74,
+        40
+      ]
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "figure": "os-21-2",
+  "labels": [
+    {
+      "id": "adenoid",
+      "name": "Adenoid",
+      "accept": [
+        "adenoid",
+        "adenoids",
+        "pharyngeal tonsil"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        0,
+        197,
+        97,
+        24
+      ]
+    },
+    {
+      "id": "tonsil",
+      "name": "Tonsil",
+      "accept": [
+        "tonsil",
+        "tonsils",
+        "palatine tonsil"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "lymphoid-organs",
+      "box": [
+        0,
+        241,
+        70,
+        24
+      ]
+    },
+    {
+      "id": "thymus-enlarged",
+      "name": "Thymus",
+      "accept": [
+        "thymus",
+        "thymus gland"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "thymus",
+      "box": [
+        924,
+        311,
+        100,
+        29
+      ]
+    },
+    {
+      "id": "right-lymphatic-duct",
+      "name": "Right lymphatic duct, entering vein",
+      "accept": [
+        "right lymphatic duct",
+        "right lymphatic duct entering vein"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        0,
+        331,
+        235,
+        56
+      ]
+    },
+    {
+      "id": "lymph-nodes",
+      "name": "Lymph nodes",
+      "accept": [
+        "lymph nodes",
+        "lymph node",
+        "nodes"
+      ],
+      "lines": [
+        5,
+        6
+      ],
+      "concept": "lymph-node",
+      "box": [
+        685,
+        385,
+        158,
+        29
+      ]
+    },
+    {
+      "id": "thymus",
+      "name": "Thymus",
+      "accept": [
+        "thymus",
+        "thymus gland"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "thymus",
+      "box": [
+        683,
+        455,
+        101,
+        29
+      ]
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "accept": [
+        "spleen"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "spleen",
+      "box": [
+        670,
+        650,
+        88,
+        29
+      ]
+    },
+    {
+      "id": "lymph-node",
+      "name": "Lymph node",
+      "accept": [
+        "lymph node",
+        "lymph nodes",
+        "node"
+      ],
+      "lines": [
+        9,
+        10
+      ],
+      "concept": "lymph-node",
+      "box": [
+        804,
+        1035,
+        146,
+        28
+      ]
+    },
+    {
+      "id": "bone-marrow",
+      "name": "Bone marrow",
+      "accept": [
+        "bone marrow",
+        "red bone marrow",
+        "marrow"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "bone-marrow",
+      "box": [
+        0,
+        1298,
+        155,
+        24
+      ]
+    },
+    {
+      "id": "lymph-vessel",
+      "name": "Lymph vessel",
+      "accept": [
+        "lymph vessel",
+        "lymphatic vessel",
+        "lymphatic",
+        "lymphatic vessels"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "lymphatic-vessels",
+      "box": [
+        579,
+        1298,
+        160,
+        29
+      ]
+    }
+  ]
+}
