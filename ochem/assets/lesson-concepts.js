@@ -668,11 +668,13 @@
       1:['lewis-acid-base'], 2:['lewis-acid-base'],
       3:['lewis-acid-base'], 6:['lewis-acid-base'] } },
 
-    'lewis-structures': { n:7, steps:{
-      1:['lewis-structures-drawing'],
-      2:['valence-electrons','lewis-structures-drawing'],
+    'lewis-structures': { n:15, steps:{
+      1:['lewis-structures-drawing','valence-electrons'],
       3:['formal-charge-calc','lewis-structures-drawing'],
-      6:['lewis-structures-drawing'] } },
+      5:['valence-electrons','lewis-structures-drawing'],
+      7:['formal-charge-calc','lewis-structures-drawing'],
+      12:['lewis-structures-drawing'],
+      14:['lewis-structures-drawing'] } },
 
     'markovnikov': { n:8, steps:{
       1:['markovnikov-regiochem'],
