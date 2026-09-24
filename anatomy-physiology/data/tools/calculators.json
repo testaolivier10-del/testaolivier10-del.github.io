@@ -12677,6 +12677,863 @@
           }
         ]
       }
+    },
+    {
+      "id": "mt-sarcomeres-in-series",
+      "group": "muscular",
+      "title": "Sarcomeres along a myofibril",
+      "short": "Sarcomeres = fiber length ÷ sarcomere length",
+      "topic": "skeletal-muscle-structure",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "A myofibril runs the whole length of its muscle fiber, and it is simply sarcomeres joined end to end. Enter the fiber’s length and one sarcomere’s resting length to count the sarcomeres in a row.",
+      "formula": "Sarcomeres in series = fiber length (µm) ÷ sarcomere length (µm); 1 cm = 10,000 µm",
+      "inputs": [
+        {
+          "key": "L",
+          "label": "Fiber length",
+          "sym": "L",
+          "unit": "cm",
+          "default": 4,
+          "min": 0.1,
+          "max": 30,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8,
+              10,
+              12
+            ]
+          },
+          "hint": "Skeletal muscle fibers are often several centimeters long."
+        },
+        {
+          "key": "s",
+          "label": "Sarcomere length at rest",
+          "sym": "s",
+          "unit": "µm",
+          "default": 2.5,
+          "min": 1.5,
+          "max": 3.5,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              2,
+              2.5
+            ]
+          },
+          "hint": "About 2 to 2.5 µm at rest."
+        }
+      ],
+      "derived": [
+        {
+          "key": "um",
+          "expr": "L * 10000",
+          "dp": 0
+        },
+        {
+          "key": "n",
+          "expr": "L * 10000 / s",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Put both lengths in the same unit",
+          "text": "1 cm = 10,000 µm, so {L} cm = {L} × 10,000 = <b>{um} µm</b>."
+        },
+        {
+          "title": "Divide by one sarcomere",
+          "text": "{um} µm ÷ {s} µm = <b>{n}</b> sarcomeres."
+        },
+        {
+          "title": "What it means",
+          "text": "About {n} sarcomeres lie end to end along each myofibril. Each one shortens only a little, but together they shorten the fiber a lot."
+        }
+      ],
+      "results": [
+        {
+          "key": "n",
+          "label": "Sarcomeres in series along one myofibril",
+          "unit": "",
+          "normal": "Worked example: a 4 cm fiber with 2.5 µm sarcomeres holds about 16,000."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "A {L} cm fiber holds about {n} sarcomeres in a row. Because they are in series, their small shortenings add up: that is why the sarcomere, not the fiber, is the functional unit."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 4 cm fiber",
+          "values": {
+            "L": 4,
+            "s": 2.5
+          }
+        },
+        {
+          "label": "A 3 cm fiber",
+          "values": {
+            "L": 3,
+            "s": 2.5
+          }
+        },
+        {
+          "label": "A 10 cm fiber, 2 µm sarcomeres",
+          "values": {
+            "L": 10,
+            "s": 2
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "n",
+            "unit": "sarcomeres",
+            "tol": {
+              "rel": 0.01
+            },
+            "prompt": "A muscle fiber is {L} cm long, and its sarcomeres are each {s} µm long at rest. How many sarcomeres lie end to end along one of its myofibrils?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mt-band-widths",
+      "group": "muscular",
+      "title": "Band widths of a shortening sarcomere",
+      "short": "A = thick; I = sarcomere − thick; H = sarcomere − 2 × thin",
+      "topic": "cross-bridge-cycle",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "In the sliding filament model, neither filament changes length; only their overlap does. Enter the filament lengths and the sarcomere length before and after shortening to find the A band, the I band (both halves together) and the H zone.",
+      "formula": "A band = thick filament length; I band = sarcomere − thick; H zone = sarcomere − 2 × thin (zero once the thin filaments meet)",
+      "inputs": [
+        {
+          "key": "thick",
+          "label": "Thick filament length",
+          "sym": "thick",
+          "unit": "µm",
+          "default": 1.6,
+          "min": 1,
+          "max": 2,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              1.6
+            ]
+          },
+          "hint": "About 1.6 µm in human muscle."
+        },
+        {
+          "key": "thin",
+          "label": "Thin filament reach from its Z disc",
+          "sym": "thin",
+          "unit": "µm",
+          "default": 1,
+          "min": 0.5,
+          "max": 1.5,
+          "step": 0.05,
+          "gen": {
+            "choices": [
+              1
+            ]
+          },
+          "hint": "About 1.0 µm."
+        },
+        {
+          "key": "s1",
+          "label": "Sarcomere length before",
+          "sym": "s₁",
+          "unit": "µm",
+          "default": 2.5,
+          "min": 1.5,
+          "max": 4,
+          "step": 0.05,
+          "gen": [
+            2.2,
+            3,
+            0.1
+          ]
+        },
+        {
+          "key": "s2",
+          "label": "Sarcomere length after",
+          "sym": "s₂",
+          "unit": "µm",
+          "default": 2,
+          "min": 1.5,
+          "max": 4,
+          "step": 0.05,
+          "gen": [
+            2,
+            2.8,
+            0.1
+          ]
+        }
+      ],
+      "invalid": [
+        {
+          "when": "s2 > s1",
+          "text": "The “after” length must be shorter than or equal to the “before” length for a shortening sarcomere."
+        },
+        {
+          "when": "s2 < 2 * thin || s2 < thick",
+          "text": "At this length the thin filaments would crowd past each other and the thick filaments would hit the Z discs; the simple band rules no longer hold."
+        },
+        {
+          "when": "s1 > thick + 2 * thin",
+          "text": "At this length the filaments would not overlap at all, and the fiber could produce no active tension."
+        }
+      ],
+      "derived": [
+        {
+          "key": "A",
+          "expr": "thick",
+          "dp": 2
+        },
+        {
+          "key": "I1",
+          "expr": "s1 - thick",
+          "dp": 2
+        },
+        {
+          "key": "I2",
+          "expr": "s2 - thick",
+          "dp": 2
+        },
+        {
+          "key": "H1",
+          "expr": "s1 - 2 * thin",
+          "dp": 2
+        },
+        {
+          "key": "H2",
+          "expr": "s2 - 2 * thin",
+          "dp": 2
+        },
+        {
+          "key": "dS",
+          "expr": "s1 - s2",
+          "dp": 2
+        },
+        {
+          "key": "slide",
+          "expr": "(s1 - s2) / 2",
+          "dp": 3
+        }
+      ],
+      "steps": [
+        {
+          "title": "A band",
+          "text": "The A band is the length of the thick filaments, which do not change: <b>{A} µm</b> before and after."
+        },
+        {
+          "title": "I band, before and after",
+          "text": "The I band is the part of the sarcomere not covered by thick filaments. Before: {s1} − {thick} = <b>{I1} µm</b>. After: {s2} − {thick} = <b>{I2} µm</b>."
+        },
+        {
+          "title": "H zone, before and after",
+          "text": "The H zone is the part not reached by thin filaments from either end. Before: {s1} − (2 × {thin}) = <b>{H1} µm</b>. After: {s2} − (2 × {thin}) = <b>{H2} µm</b>."
+        },
+        {
+          "title": "Where the shortening came from",
+          "text": "The sarcomere shortened by {s1} − {s2} = {dS} µm, all of it out of the I band ({I1} → {I2} µm). The H zone, inside the unchanged A band, closed by the same {dS} µm because the thin filaments slid {slide} µm farther in from each end."
+        }
+      ],
+      "results": [
+        {
+          "key": "I2",
+          "label": "I band after shortening",
+          "unit": "µm",
+          "normal": "Worked example 1: 0.9 µm before, 0.4 µm after."
+        },
+        {
+          "key": "H2",
+          "label": "H zone after shortening",
+          "unit": "µm",
+          "normal": "Worked example 1: 0.5 µm before, 0 after."
+        },
+        {
+          "key": "A",
+          "label": "A band (unchanged)",
+          "unit": "µm",
+          "normal": "Equal to the thick filament length."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "H2 == 0",
+          "text": "The H zone has closed: the thin filaments from the two ends now meet in the middle. The A band never changed, which is the evidence that the filaments slide rather than shrink."
+        },
+        {
+          "when": "dS == 0",
+          "text": "No shortening: every band keeps its width."
+        },
+        {
+          "when": "1",
+          "text": "The I band narrowed from {I1} to {I2} µm and the H zone from {H1} to {H2} µm, while the A band stayed at {A} µm. The filaments slid; none of them got shorter."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: 2.5 → 2.0 µm",
+          "values": {
+            "thick": 1.6,
+            "thin": 1,
+            "s1": 2.5,
+            "s2": 2
+          }
+        },
+        {
+          "label": "A smaller shortening: 2.4 → 2.1 µm",
+          "values": {
+            "thick": 1.6,
+            "thin": 1,
+            "s1": 2.4,
+            "s2": 2.1
+          }
+        },
+        {
+          "label": "Stretched sarcomere: 3.0 → 2.6 µm",
+          "values": {
+            "thick": 1.6,
+            "thin": 1,
+            "s1": 3,
+            "s2": 2.6
+          }
+        }
+      ],
+      "practice": {
+        "require": "s2 < s1",
+        "asks": [
+          {
+            "key": "I2",
+            "unit": "µm",
+            "tol": {
+              "abs": 0.02
+            },
+            "prompt": "Thick filaments are {thick} µm long and each thin filament reaches {thin} µm in from its Z disc. A sarcomere shortens from {s1} µm to {s2} µm. What is the total width of its I band (both halves together) after shortening?"
+          },
+          {
+            "key": "H2",
+            "unit": "µm",
+            "tol": {
+              "abs": 0.02
+            },
+            "prompt": "Same sarcomere: what is the width of its H zone after shortening?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mt-fiber-shortening",
+      "group": "muscular",
+      "title": "From sarcomeres to a whole fiber",
+      "short": "Fiber shortening = sarcomeres × shortening of each",
+      "topic": "cross-bridge-cycle",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Sarcomeres in series add their shortenings. Enter the fiber length, the resting sarcomere length and how short each sarcomere gets to find how much the whole fiber shortens.",
+      "formula": "Sarcomeres = fiber length ÷ sarcomere length; fiber shortening = sarcomeres × (s₁ − s₂)",
+      "inputs": [
+        {
+          "key": "L",
+          "label": "Fiber length at rest",
+          "sym": "L",
+          "unit": "cm",
+          "default": 4,
+          "min": 0.5,
+          "max": 30,
+          "step": 0.5,
+          "gen": {
+            "choices": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              8,
+              10
+            ]
+          }
+        },
+        {
+          "key": "s1",
+          "label": "Sarcomere length at rest",
+          "sym": "s₁",
+          "unit": "µm",
+          "default": 2.5,
+          "min": 1.8,
+          "max": 3.5,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              2.5
+            ]
+          }
+        },
+        {
+          "key": "s2",
+          "label": "Sarcomere length after shortening",
+          "sym": "s₂",
+          "unit": "µm",
+          "default": 2,
+          "min": 1.5,
+          "max": 3.5,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              1.8,
+              1.9,
+              2,
+              2.1,
+              2.2,
+              2.3
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "when": "s2 >= s1",
+          "text": "For shortening, the sarcomere length after must be less than the length at rest."
+        }
+      ],
+      "derived": [
+        {
+          "key": "n",
+          "expr": "L * 10000 / s1",
+          "dp": 0
+        },
+        {
+          "key": "d",
+          "expr": "s1 - s2",
+          "dp": 2
+        },
+        {
+          "key": "um",
+          "expr": "L * 10000 / s1 * (s1 - s2)",
+          "dp": 0
+        },
+        {
+          "key": "cm",
+          "expr": "L * (s1 - s2) / s1",
+          "dp": 2
+        },
+        {
+          "key": "pct",
+          "expr": "100 * (s1 - s2) / s1",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Count the sarcomeres",
+          "text": "{L} cm = {L} × 10,000 µm; ÷ {s1} µm = <b>{n}</b> sarcomeres in series."
+        },
+        {
+          "title": "Shortening of each",
+          "text": "{s1} − {s2} = <b>{d} µm</b> per sarcomere."
+        },
+        {
+          "title": "Add them up",
+          "text": "{n} × {d} µm = <b>{um} µm</b>."
+        },
+        {
+          "title": "Convert and compare",
+          "text": "{um} µm ÷ 10,000 = <b>{cm} cm</b>, which is {pct}% of the fiber’s length."
+        }
+      ],
+      "results": [
+        {
+          "key": "cm",
+          "label": "Fiber shortening",
+          "unit": "cm",
+          "normal": "Worked example 2: 0.8 cm, a fifth of a 4 cm fiber."
+        },
+        {
+          "key": "pct",
+          "label": "Shortening as a share of fiber length",
+          "unit": "%",
+          "normal": "The same share as each sarcomere shortens."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "Each sarcomere moved only {d} µm, yet the fiber shortened by {cm} cm ({pct}%), because {n} sarcomeres in a row all shortened at once. The fraction is the same at every level: each sarcomere, and so the fiber, shortens by {pct}%."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 2: 4 cm, 2.5 → 2.0 µm",
+          "values": {
+            "L": 4,
+            "s1": 2.5,
+            "s2": 2
+          }
+        },
+        {
+          "label": "A 10 cm fiber, 2.5 → 2.2 µm",
+          "values": {
+            "L": 10,
+            "s1": 2.5,
+            "s2": 2.2
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "cm",
+            "unit": "cm",
+            "tol": {
+              "abs": 0.01,
+              "rel": 0.01
+            },
+            "prompt": "A {L} cm muscle fiber has sarcomeres {s1} µm long at rest. Every sarcomere shortens to {s2} µm. How many centimeters shorter is the fiber?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mt-atp-cp-duration",
+      "group": "muscular",
+      "title": "How long stored ATP and creatine phosphate last",
+      "short": "Time = amount ÷ rate of use",
+      "topic": "muscle-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Each creatine phosphate remakes one ATP. Enter what a kilogram of muscle stores and how fast it spends ATP in an all-out effort to see how long the stores alone could keep it going, ignoring the other energy systems.",
+      "formula": "Time = stored amount ÷ rate of use; ATP available = ATP + creatine phosphate (1 ATP each)",
+      "inputs": [
+        {
+          "key": "atp",
+          "label": "Stored ATP",
+          "sym": "ATP",
+          "unit": "mmol/kg",
+          "default": 6,
+          "min": 1,
+          "max": 20,
+          "step": 0.5,
+          "gen": {
+            "choices": [
+              4,
+              5,
+              6,
+              8
+            ]
+          },
+          "hint": "About 5 to 6 mmol per kilogram of muscle."
+        },
+        {
+          "key": "cp",
+          "label": "Stored creatine phosphate",
+          "sym": "CP",
+          "unit": "mmol/kg",
+          "default": 24,
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "gen": {
+            "choices": [
+              16,
+              20,
+              24,
+              30,
+              32
+            ]
+          },
+          "hint": "About four times the ATP."
+        },
+        {
+          "key": "rate",
+          "label": "ATP spent in an all-out effort",
+          "sym": "rate",
+          "unit": "mmol/kg per s",
+          "default": 3,
+          "min": 0.5,
+          "max": 10,
+          "step": 0.5,
+          "gen": {
+            "choices": [
+              2,
+              2.5,
+              3,
+              4
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "tATP",
+          "expr": "atp / rate",
+          "dp": 1
+        },
+        {
+          "key": "total",
+          "expr": "atp + cp",
+          "dp": 1
+        },
+        {
+          "key": "tAll",
+          "expr": "(atp + cp) / rate",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Stored ATP alone",
+          "text": "Time = amount ÷ rate = {atp} ÷ {rate} = <b>{tATP} s</b>."
+        },
+        {
+          "title": "ATP from creatine phosphate",
+          "text": "Creatine kinase moves one phosphate onto one ADP, so {cp} mmol of creatine phosphate can remake {cp} mmol of ATP."
+        },
+        {
+          "title": "Total ATP available",
+          "text": "{atp} + {cp} = <b>{total} mmol</b> per kilogram."
+        },
+        {
+          "title": "Time for both",
+          "text": "{total} ÷ {rate} = <b>{tAll} s</b>."
+        }
+      ],
+      "results": [
+        {
+          "key": "tATP",
+          "label": "Stored ATP alone",
+          "unit": "s",
+          "normal": "About 2 s in the worked example."
+        },
+        {
+          "key": "tAll",
+          "label": "ATP plus creatine phosphate",
+          "unit": "s",
+          "normal": "About 10 s in the worked example."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "On its own, stored ATP would last about {tATP} s; with creatine phosphate, about {tAll} s. In practice ATP never falls that far: glycolysis speeds up within seconds and shares the load, and ATP stays near three quarters of its resting level even in hard exercise."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 1: 6 ATP, 24 CP, 3 per s",
+          "values": {
+            "atp": 6,
+            "cp": 24,
+            "rate": 3
+          }
+        },
+        {
+          "label": "Practice: 5 ATP, 20 CP, 2.5 per s",
+          "values": {
+            "atp": 5,
+            "cp": 20,
+            "rate": 2.5
+          }
+        },
+        {
+          "label": "After creatine supplements (+25% CP)",
+          "values": {
+            "atp": 6,
+            "cp": 30,
+            "rate": 3
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "tAll",
+            "unit": "s",
+            "tol": {
+              "abs": 0.1,
+              "rel": 0.02
+            },
+            "prompt": "A kilogram of muscle holds {atp} mmol of ATP and {cp} mmol of creatine phosphate, and in an all-out effort it spends {rate} mmol of ATP per second. Ignoring the other energy systems, how many seconds would ATP plus creatine phosphate last?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mt-glucose-per-atp",
+      "group": "muscular",
+      "title": "Glucose needed: anaerobic vs aerobic",
+      "short": "Glucose = ATP needed ÷ ATP per glucose",
+      "topic": "muscle-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Anaerobic glycolysis makes 2 ATP per glucose; aerobic respiration makes about 30 to 32. Enter the ATP a fiber needs and the aerobic yield to compare how much glucose each route uses.",
+      "formula": "Glucose = ATP needed ÷ ATP per glucose (2 anaerobic; about 30–32 aerobic)",
+      "inputs": [
+        {
+          "key": "need",
+          "label": "ATP needed",
+          "sym": "ATP",
+          "unit": "ATP",
+          "default": 62,
+          "min": 2,
+          "max": 10000,
+          "step": 1,
+          "gen": {
+            "choices": [
+              60,
+              62,
+              64,
+              90,
+              93,
+              96,
+              120,
+              124,
+              128,
+              180,
+              186,
+              192
+            ]
+          }
+        },
+        {
+          "key": "aer",
+          "label": "ATP per glucose, aerobic",
+          "sym": "aerobic yield",
+          "unit": "ATP",
+          "default": 31,
+          "min": 30,
+          "max": 32,
+          "step": 1,
+          "gen": {
+            "choices": [
+              30,
+              31,
+              32
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "gA",
+          "expr": "need / 2",
+          "dp": 1
+        },
+        {
+          "key": "gO",
+          "expr": "need / aer",
+          "dp": 2
+        },
+        {
+          "key": "ratio",
+          "expr": "aer / 2",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Anaerobic glycolysis",
+          "text": "2 ATP per glucose: {need} ÷ 2 = <b>{gA} glucose</b>."
+        },
+        {
+          "title": "Aerobic respiration",
+          "text": "{aer} ATP per glucose: {need} ÷ {aer} = <b>{gO} glucose</b>."
+        },
+        {
+          "title": "Compare",
+          "text": "{gA} ÷ {gO} = {aer} ÷ 2 = <b>{ratio}</b>: anaerobic glycolysis uses about {ratio} times as much glucose for the same ATP."
+        }
+      ],
+      "results": [
+        {
+          "key": "gA",
+          "label": "Glucose used anaerobically",
+          "unit": "glucose",
+          "normal": "2 ATP per glucose."
+        },
+        {
+          "key": "gO",
+          "label": "Glucose used aerobically",
+          "unit": "glucose",
+          "normal": "About 30 to 32 ATP per glucose."
+        },
+        {
+          "key": "ratio",
+          "label": "How many times more glucose anaerobically",
+          "unit": "×",
+          "normal": "About 15."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "Making {need} ATP anaerobically burns {gA} glucose, against about {gO} with oxygen. That is why hard efforts, which lean on glycolysis, drain muscle glycogen so quickly. (Glucose from glycogen gives 3 ATP anaerobically, but the gap stays roughly tenfold.)"
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example 2: 62 ATP, 31 per glucose",
+          "values": {
+            "need": 62,
+            "aer": 31
+          }
+        },
+        {
+          "label": "90 ATP, 30 per glucose",
+          "values": {
+            "need": 90,
+            "aer": 30
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "gA",
+            "unit": "glucose",
+            "tol": {
+              "abs": 0.1
+            },
+            "prompt": "A fiber needs {need} ATP. Taking 2 ATP per glucose for anaerobic glycolysis, how many glucose molecules must it use?"
+          },
+          {
+            "key": "gO",
+            "unit": "glucose",
+            "tol": {
+              "abs": 0.05,
+              "rel": 0.02
+            },
+            "prompt": "The same fiber uses aerobic respiration instead, at {aer} ATP per glucose. How many glucose molecules does it need?"
+          }
+        ]
+      }
     }
   ]
 }

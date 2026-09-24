@@ -11832,6 +11832,909 @@
         "why": "The calcaneal tendon inserts on the calcaneus, the heel bone, at the back of the foot."
       },
       "summary": "The gastrocnemius and soleus contract; the calcaneal tendon pulls up on the calcaneus; the foot turns about the ball of the foot; the body weight between them is lifted. For your exam, this is a second-class lever."
+    },
+    {
+      "id": "mt-pull-to-bone",
+      "title": "How a fiber’s pull reaches the bone",
+      "topic": "skeletal-muscle-structure",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "A single muscle fiber is attached to nothing directly. Follow its pull outward, layer by layer, until it moves a bone.",
+      "steps": [
+        {
+          "id": "fiber",
+          "label": "Muscle fiber",
+          "text": "Myosin heads pull the thin filaments, and the muscle fiber shortens.",
+          "why": "The pull starts inside each fiber, where the filaments slide."
+        },
+        {
+          "id": "endo",
+          "label": "Endomysium",
+          "text": "The fiber pulls on the endomysium, the thin layer of loose connective tissue around it.",
+          "why": "The endomysium wraps each individual fiber, so it is the first layer the fiber pulls on."
+        },
+        {
+          "id": "peri",
+          "label": "Perimysium",
+          "text": "The endomysium passes the pull to the perimysium around the fascicle.",
+          "why": "Fibers are bundled into fascicles, and the layers are continuous, so the pull moves out to the next level of bundling."
+        },
+        {
+          "id": "epi",
+          "label": "Epimysium",
+          "text": "The perimysium passes the pull to the epimysium around the whole muscle.",
+          "why": "The epimysium wraps the whole muscle, collecting the pull of every fascicle."
+        },
+        {
+          "id": "tendon",
+          "label": "Tendon",
+          "text": "All three layers merge at the end of the muscle into the dense regular connective tissue of the tendon.",
+          "why": "The wrappings are not separate bags: they run together into the tendon, which is why strains often happen where fibers meet it."
+        },
+        {
+          "id": "bone",
+          "label": "Bone",
+          "text": "The tendon’s collagen fibers run into the periosteum and bone matrix, and the bone moves.",
+          "why": "The tendon is anchored in the bone, so the collected pull of thousands of fibers finally moves it."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The endomysium passes the pull straight to the sarcolemma of the neighboring fiber, which contracts in turn.",
+            "why": "Skeletal fibers do not pass pulls or signals to each other; each one is wrapped separately and passes its pull only outward, through the wrappings."
+          },
+          {
+            "text": "The endomysium passes the pull inward to the myofibrils, which carry it along the fiber to the tendon.",
+            "why": "The myofibrils are inside the fiber and are the source of the pull. The pull travels outward through the wrappings."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The three layers end at the edge of the muscle, and the tendon is glued on beside them as a separate sheet.",
+        "why": "The epimysium, perimysium and endomysium are continuous with each other and merge into the tendon itself. That continuity is what lets the pull pass to the bone."
+      },
+      "summary": "Fiber → endomysium → perimysium → epimysium → tendon → bone. Each connective tissue layer is continuous with the next, so the pull of thousands of fibers is collected and passed to the bone."
+    },
+    {
+      "id": "mt-nmj-transmission",
+      "title": "Neuromuscular junction transmission",
+      "topic": "neuromuscular-junction",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "An action potential reaches the end of a motor neuron’s axon. Trace the signal across the neuromuscular junction until the muscle fiber fires and the junction resets.",
+      "steps": [
+        {
+          "id": "arrive",
+          "label": "Impulse reaches terminal",
+          "text": "An action potential arrives at the axon terminal and depolarizes its membrane.",
+          "why": "Everything at the junction starts with the motor neuron’s command arriving at its terminal."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium enters terminal",
+          "text": "Voltage-gated calcium channels open, and calcium rushes into the terminal down its electrochemical gradient.",
+          "why": "Depolarization is what opens these channels, and calcium is far more concentrated outside the terminal."
+        },
+        {
+          "id": "exo",
+          "label": "Vesicles release ACh",
+          "text": "Calcium binds sensor proteins on docked vesicles, and they fuse with the membrane and empty ACh into the cleft.",
+          "why": "The action potential releases nothing by itself: calcium entry is the trigger for exocytosis."
+        },
+        {
+          "id": "diffuse",
+          "label": "ACh crosses the cleft",
+          "text": "ACh diffuses across the 50 nm synaptic cleft in microseconds.",
+          "why": "The ACh must reach the end plate on the other side of the gap before it can act."
+        },
+        {
+          "id": "bind",
+          "label": "ACh opens channels",
+          "text": "Two ACh molecules bind each nicotinic receptor protein, and its channel opens to sodium and potassium.",
+          "why": "The receptor proteins sit on the crests of the end plate’s folds, facing the terminal, and open only once both binding sites are filled."
+        },
+        {
+          "id": "epp",
+          "label": "End plate potential",
+          "text": "More sodium enters than potassium leaves, and the end plate depolarizes: the end plate potential.",
+          "why": "At about −90 mV, sodium’s inward push is far stronger, so opening the channels depolarizes the end plate."
+        },
+        {
+          "id": "ap",
+          "label": "Fiber action potential",
+          "text": "The end plate potential brings the neighboring sarcolemma to threshold, and an action potential sweeps toward both ends of the fiber.",
+          "why": "Only the membrane around the end plate has the voltage-gated sodium channels needed to fire, and the end plate potential is several times bigger than needed."
+        },
+        {
+          "id": "ache",
+          "label": "AChE ends the signal",
+          "text": "Acetylcholinesterase splits ACh into acetate and choline, and the channels close.",
+          "why": "The enzyme clears the cleft within a millisecond or two, so each nerve impulse gives exactly one action potential in the fiber."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The action potential itself travels across the cleft onto the end plate, carried by sodium ions in the extracellular fluid.",
+            "why": "The 50 nm cleft stops the electrical signal. It is carried across chemically, by ACh released when calcium enters the terminal."
+          },
+          {
+            "text": "Calcium diffuses across the synaptic cleft and binds the end plate, opening its channels.",
+            "why": "Calcium acts inside the terminal, making the vesicles fuse. It is ACh, not calcium, that crosses the cleft and opens the end plate’s channels."
+          }
+        ]
+      },
+      "error": {
+        "at": 7,
+        "text": "The axon terminal takes the ACh back up intact, and the channels close.",
+        "why": "At the neuromuscular junction, acetylcholinesterase in the cleft splits ACh into acetate and choline. Only the choline is taken back into the terminal to make new ACh."
+      },
+      "summary": "Impulse arrives → calcium enters the terminal → vesicles release ACh → ACh crosses the cleft → ACh opens nicotinic receptor channels → end plate potential → action potential in the fiber → acetylcholinesterase ends the signal."
+    },
+    {
+      "id": "mt-ec-coupling",
+      "title": "Excitation–contraction coupling",
+      "topic": "excitation-contraction",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "The end plate potential has brought the sarcolemma to threshold. Trace how that electrical event switches on the filaments deep inside the fiber.",
+      "steps": [
+        {
+          "id": "ap",
+          "label": "Action potential spreads",
+          "text": "An action potential spreads along the sarcolemma from the end plate toward both ends of the fiber.",
+          "why": "The end plate potential brought the neighboring membrane to threshold, so the fiber’s own action potential starts there."
+        },
+        {
+          "id": "tt",
+          "label": "Down the T tubules",
+          "text": "The action potential travels down every T tubule, deep into the fiber.",
+          "why": "T tubule membrane is sarcolemma folded inward, so the action potential continues into it and reaches every triad within a millisecond or two."
+        },
+        {
+          "id": "sensor",
+          "label": "Voltage sensor moves",
+          "text": "At each triad, the DHP receptor protein in the T tubule senses the depolarization and changes shape.",
+          "why": "The voltage sensor sits in the T tubule membrane, right where the action potential arrives."
+        },
+        {
+          "id": "open",
+          "label": "Release channel opens",
+          "text": "The voltage sensor pulls open the ryanodine receptor protein, the SR’s calcium release channel, that it touches.",
+          "why": "In skeletal muscle the two proteins are physically linked, so voltage alone opens the channel, with no messenger crossing the gap."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium leaves the SR",
+          "text": "Calcium flows out of the terminal cisternae into the sarcoplasm, down its steep gradient.",
+          "why": "The pumps have kept calcium in the SR thousands of times more concentrated than in the sarcoplasm, so it floods out once the channels open."
+        },
+        {
+          "id": "tn",
+          "label": "Calcium binds troponin",
+          "text": "Calcium binds troponin on the thin filaments, and troponin changes shape.",
+          "why": "Troponin is the calcium sensor of the thin filament; its binding sites are empty at resting calcium and fill after release."
+        },
+        {
+          "id": "tm",
+          "label": "Tropomyosin moves",
+          "text": "Tropomyosin rolls deeper into the groove and uncovers the myosin-binding sites on actin.",
+          "why": "Troponin was holding tropomyosin over the sites. Once it loosens its hold, the rod shifts and seven sites open at once."
+        },
+        {
+          "id": "pull",
+          "label": "Myosin binds actin",
+          "text": "The energized myosin heads bind the uncovered sites and pull the thin filaments toward the M line.",
+          "why": "The heads were loaded with energy all along; only the covered binding sites were stopping them."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The voltage sensor releases a chemical messenger that diffuses across the gap and binds the SR membrane, opening its channels.",
+            "why": "No chemical messenger crosses the gap in skeletal muscle. The voltage sensor is physically linked to the release channel and pulls it open."
+          },
+          {
+            "text": "Calcium enters the fiber from the extracellular fluid through the T tubules and flows straight to the thin filaments.",
+            "why": "A skeletal fiber’s contraction calcium comes from its SR. Stimulated directly, it keeps contracting in a bath with no calcium."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "Calcium binds tropomyosin, and tropomyosin changes shape.",
+        "why": "Calcium binds troponin, not tropomyosin. Troponin then changes shape and loosens its hold, which lets tropomyosin roll off the binding sites."
+      },
+      "summary": "Action potential along the sarcolemma → down the T tubules → voltage sensor changes shape → release channel pulled open → calcium leaves the SR → calcium binds troponin → tropomyosin uncovers actin → myosin binds and pulls."
+    },
+    {
+      "id": "mt-relaxation",
+      "title": "Muscle relaxation",
+      "topic": "excitation-contraction",
+      "core": [
+        "communication",
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Relaxation is an active process: the chain of contraction is reversed at every link. Start when the motor neuron stops firing.",
+      "steps": [
+        {
+          "id": "silent",
+          "label": "Motor neuron stops",
+          "text": "The motor neuron stops firing, so no more ACh is released.",
+          "why": "A skeletal fiber relaxes only when its motor neuron stops sending commands; there are no inhibitory synapses on it."
+        },
+        {
+          "id": "clear",
+          "label": "AChE clears the cleft",
+          "text": "Acetylcholinesterase splits the remaining ACh, and the end plate returns to rest.",
+          "why": "With no new ACh arriving, the enzyme clears what is left, and no new action potentials start."
+        },
+        {
+          "id": "close",
+          "label": "Release channels close",
+          "text": "With the T tubules at rest, the voltage sensors return to their resting shape and the release channels close.",
+          "why": "The release channels stay open only while the voltage sensors are pulled by a depolarized T tubule."
+        },
+        {
+          "id": "pump",
+          "label": "Pumps return calcium",
+          "text": "Calcium pumps in the SR membrane split ATP to move calcium back into the SR.",
+          "why": "The pumps work all the time; once release stops, they win, lowering calcium in the sarcoplasm by primary active transport."
+        },
+        {
+          "id": "off",
+          "label": "Calcium leaves troponin",
+          "text": "As calcium in the sarcoplasm falls to resting levels, calcium comes off troponin.",
+          "why": "Troponin gives up its calcium only when the calcium around it has been pumped away."
+        },
+        {
+          "id": "cover",
+          "label": "Tropomyosin covers actin",
+          "text": "Tropomyosin slides back over the myosin-binding sites, and the heads can no longer bind.",
+          "why": "Without calcium, troponin holds tropomyosin in its blocking position again."
+        },
+        {
+          "id": "length",
+          "label": "Fiber is pulled longer",
+          "text": "Elastic proteins, opposing muscles and gravity return the fiber to its resting length.",
+          "why": "Once the filaments stop pulling, something else must lengthen the fiber: a muscle fiber cannot push itself longer."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Calcium flows back into the SR on its own, down its concentration gradient, without using energy.",
+            "why": "Calcium is far more concentrated inside the SR, so returning it is uphill. The pumps must split ATP to do it."
+          },
+          {
+            "text": "Calcium leaves the fiber through the T tubules into the extracellular fluid.",
+            "why": "In skeletal muscle, the calcium that triggered contraction came from the SR, and it is pumped back into the SR."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The myofibrils push the sarcomeres apart, lengthening the fiber to its resting length.",
+        "why": "Filaments can only pull. The fiber is returned to its resting length by its own elastic proteins, the pull of opposing muscles and gravity."
+      },
+      "summary": "Motor neuron stops → AChE clears the cleft → release channels close → ATP-driven pumps return calcium to the SR → calcium leaves troponin → tropomyosin covers actin → the fiber is pulled back to resting length."
+    },
+    {
+      "id": "mt-cross-bridge-cycle",
+      "title": "The cross-bridge cycle",
+      "topic": "cross-bridge-cycle",
+      "core": [
+        "energy",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "cycle": true,
+      "intro": "Calcium is bound to troponin and ATP is available. Start with a cocked myosin head that has already split its ATP and still holds ADP and phosphate, and put one turn of the cycle in order.",
+      "steps": [
+        {
+          "id": "cocked",
+          "label": "Cocked head, ADP + Pi",
+          "text": "A myosin head holding ADP and phosphate sits in its cocked, high-energy position.",
+          "why": "The energy from the last ATP split is stored in the bent head, like a set mousetrap, before it binds actin."
+        },
+        {
+          "id": "attach",
+          "label": "Cross-bridge forms",
+          "text": "The cocked head binds an uncovered site on actin, forming a cross-bridge.",
+          "why": "With calcium on troponin, tropomyosin has moved, so the head can reach the binding site."
+        },
+        {
+          "id": "stroke",
+          "label": "Pi released, power stroke",
+          "text": "Binding makes the head release its phosphate, and it pivots toward the M line, dragging the thin filament 5 to 10 nm.",
+          "why": "Releasing phosphate lets the head spring back from its cocked shape: the stored energy becomes movement."
+        },
+        {
+          "id": "adp",
+          "label": "ADP released",
+          "text": "At the end of the stroke the head releases its ADP and stays tightly bound to actin.",
+          "why": "ADP leaves after the stroke, not before, leaving the head in a low-energy shape still gripping actin."
+        },
+        {
+          "id": "detach",
+          "label": "ATP binds, head lets go",
+          "text": "A new ATP binds the head, which changes shape and lets go of actin.",
+          "why": "It is the binding of ATP, not its splitting, that releases the head. Without ATP the cycle stops here, locked, as in rigor."
+        },
+        {
+          "id": "recock",
+          "label": "ATP split, head recocks",
+          "text": "The head’s ATPase splits the ATP into ADP and phosphate, and the energy swings the head back to its cocked position.",
+          "why": "Splitting comes after detachment and resets the head, ready to bind a site farther along the thin filament."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Calcium leaves troponin, and tropomyosin pushes the head off actin.",
+            "why": "Tropomyosin covers binding sites but does not detach heads. Only a new ATP binding makes an attached head let go."
+          },
+          {
+            "text": "The head splits a new ATP while still bound, and the energy released pries it off actin.",
+            "why": "Detachment needs only the binding of ATP. Splitting happens after the head has let go and recocks it."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Binding makes the head take up a new ATP, and the energy of that ATP drives the power stroke.",
+        "why": "The power stroke is powered by energy already stored in the cocked head from an earlier split. Binding to actin releases phosphate, which lets the head spring back; a new ATP arrives only after the stroke."
+      },
+      "summary": "Cocked head (ADP + Pi) → binds actin → phosphate released, power stroke → ADP released, head still bound → ATP binds, head lets go → ATP split, head recocks, and around again while calcium and ATP last."
+    },
+    {
+      "id": "mt-rigor-mortis",
+      "title": "How rigor mortis sets in",
+      "topic": "cross-bridge-cycle",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "After death, muscles stiffen over a few hours and loosen again days later. Trace the chain from the moment circulation stops.",
+      "steps": [
+        {
+          "id": "o2",
+          "label": "Circulation stops",
+          "text": "Circulation stops, no oxygen reaches the muscles, and aerobic respiration ends.",
+          "why": "Aerobic respiration makes most of a fiber’s ATP, and it needs oxygen delivered by the blood."
+        },
+        {
+          "id": "atp",
+          "label": "ATP runs down",
+          "text": "Anaerobic breakdown of glycogen makes a little more ATP, then ATP runs down.",
+          "why": "The fiber’s stored fuel buys only a short delay without oxygen."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium leaks out",
+          "text": "The SR pumps stop and membranes grow leaky, so calcium rises, binds troponin and uncovers actin.",
+          "why": "The pumps are ATPases; without ATP they cannot hold calcium in the SR."
+        },
+        {
+          "id": "bind",
+          "label": "Heads bind and stroke",
+          "text": "Myosin heads bind actin and complete their power stroke.",
+          "why": "The uncovered binding sites let the cocked heads attach, as they would in a contraction."
+        },
+        {
+          "id": "lock",
+          "label": "Heads cannot let go",
+          "text": "No ATP is left to bind the heads, so every cross-bridge stays locked.",
+          "why": "A head lets go of actin only when a new ATP binds it."
+        },
+        {
+          "id": "stiff",
+          "label": "Muscles stiffen",
+          "text": "Filaments bolted together cannot slide, so the muscles resist stretching and the joints are fixed.",
+          "why": "Locked cross-bridges make the muscle stiff rather than pulling hard. Rigor is usually noticeable 2 to 6 hours after death."
+        },
+        {
+          "id": "pass",
+          "label": "Rigor passes off",
+          "text": "Over one to three days, enzymes released inside the dead cells break down the proteins holding the filaments together.",
+          "why": "No ATP returns; the stiffness ends because the structure itself comes apart."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The heads keep splitting ATP made from lactate, so they cycle faster and faster until the muscle shortens.",
+            "why": "After death there is no ATP to split. The heads stop after the power stroke because none can bind the ATP it needs to let go."
+          },
+          {
+            "text": "Calcium binds the myosin heads directly and glues them to actin until the calcium is pumped away.",
+            "why": "Calcium acts through troponin to uncover actin. Heads stay attached because there is no ATP to release them, not because calcium holds them."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Rigor passes off as ATP is made again by anaerobic breakdown of glycogen, letting the heads go.",
+        "why": "Once ATP has run out after death it does not return. Rigor ends because enzymes from the dead cells break down the proteins that hold the filaments together."
+      },
+      "summary": "Circulation stops → ATP runs down → pumps fail and calcium uncovers actin → heads bind and stroke → no ATP to release them → muscles stiff (rigor mortis) → days later, the filament proteins break down and rigor passes."
+    },
+    {
+      "id": "mt-twitch-events",
+      "title": "One muscle twitch",
+      "topic": "muscle-tension",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A single stimulus produces one twitch: a latent period, a contraction phase and a relaxation phase. Put the events in order, starting with the stimulus.",
+      "steps": [
+        {
+          "id": "nmj",
+          "label": "Signal at the junction",
+          "text": "An action potential in the motor neuron reaches the neuromuscular junction and ACh is released.",
+          "why": "Every fiber in the motor unit is triggered by its motor neuron’s action potential."
+        },
+        {
+          "id": "ap",
+          "label": "Fiber action potential",
+          "text": "The fiber fires an action potential that spreads along the sarcolemma and down the T tubules.",
+          "why": "The end plate potential brings the sarcolemma to threshold, and the T tubules carry the signal inward."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium binds troponin",
+          "text": "The SR releases calcium, which binds troponin, and cross-bridges start to form.",
+          "why": "These first steps fill the latent period: the chemistry is under way, but the elastic parts must be taken up before tension shows."
+        },
+        {
+          "id": "rise",
+          "label": "Tension rises",
+          "text": "Cross-bridges cycle and tension climbs to its peak: the contraction phase.",
+          "why": "Once the slack is taken up, the pull of cycling cross-bridges appears as rising tension on the myogram."
+        },
+        {
+          "id": "fall",
+          "label": "Tension falls",
+          "text": "The SR pumps calcium back in, tropomyosin covers actin, and tension falls: the relaxation phase.",
+          "why": "Pumping calcium back takes longer than releasing it, so this is usually the longest phase."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Tension rises at once to its peak, because the action potential itself makes the filaments slide.",
+            "why": "The action potential only triggers calcium release; tension waits through the latent period until cross-bridges have taken up the slack."
+          },
+          {
+            "text": "More motor units are recruited, one after another, until tension reaches its peak.",
+            "why": "Recruitment grades the force of a whole muscle. A single twitch is one fiber or unit responding to one action potential."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Calcium diffuses out of the fiber through the sarcolemma, and tension falls: the relaxation phase.",
+        "why": "Calcium is pumped back into the SR by ATP-driven pumps, not lost from the fiber. That pumping is slower than release, which is why relaxation takes longest."
+      },
+      "summary": "Motor neuron signal → fiber action potential down the T tubules → calcium binds troponin (latent period) → cross-bridges cycle and tension rises (contraction phase) → calcium pumped back and tension falls (relaxation phase)."
+    },
+    {
+      "id": "mt-lift-and-lower",
+      "title": "Lifting and lowering a dumbbell",
+      "topic": "muscle-tension",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You lift a dumbbell by bending your elbow, hold it still, then lower it slowly. Follow the muscle that bends your elbow through the movement.",
+      "steps": [
+        {
+          "id": "recruit",
+          "label": "Motor units recruited",
+          "text": "Motor neurons fire and recruit motor units, smallest first.",
+          "why": "Force starts with the nervous system activating motor units; by the size principle the small ones come first."
+        },
+        {
+          "id": "iso1",
+          "label": "Tension builds, no motion",
+          "text": "Tension rises while the muscle keeps its length, because it is still less than the load.",
+          "why": "Every lift begins isometrically: nothing moves until tension matches the weight."
+        },
+        {
+          "id": "conc",
+          "label": "Concentric: it shortens",
+          "text": "Tension exceeds the load, the muscle shortens and the dumbbell rises.",
+          "why": "Once tension is greater than the load, the thin filaments slide inward and the joint moves."
+        },
+        {
+          "id": "hold",
+          "label": "Isometric hold",
+          "text": "You hold the dumbbell still: tension equals the load and the muscle length does not change.",
+          "why": "Cross-bridges keep cycling and spending ATP, but the filaments do not slide overall, so no external work is done."
+        },
+        {
+          "id": "ecc",
+          "label": "Eccentric: it lengthens",
+          "text": "You lower the dumbbell slowly: the load exceeds the tension and the muscle lengthens while its cross-bridges keep braking.",
+          "why": "The cross-bridges resist being pulled back, so the muscle controls the descent while getting longer."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Tension exceeds the load, the muscle lengthens and the dumbbell rises.",
+            "why": "When tension is greater than the load, the muscle shortens: a concentric contraction. It lengthens only while a load is lowered."
+          },
+          {
+            "text": "The muscle relaxes completely, and the tendon’s recoil lifts the dumbbell.",
+            "why": "A tendon only transmits the muscle’s pull. The dumbbell rises because the muscle keeps working and shortens."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "You lower the dumbbell slowly: the muscle relaxes completely and the weight falls under gravity.",
+        "why": "A slow lowering is an eccentric contraction. The muscle keeps working as it lengthens, its cross-bridges braking the fall; a relaxed muscle would let the weight drop."
+      },
+      "summary": "Motor units recruited → tension builds isometrically → concentric contraction lifts the load → isometric hold → eccentric contraction lowers it under control."
+    },
+    {
+      "id": "mt-lactate-route",
+      "title": "From glycogen to lactate and back",
+      "topic": "muscle-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A fiber works so hard that it makes lactate. Trace the fuel from the fiber’s glycogen to the lactate and on to where the lactate goes.",
+      "steps": [
+        {
+          "id": "glycogen",
+          "label": "Glycogen broken down",
+          "text": "Glycogen stored in the fiber is broken down to glucose units.",
+          "why": "Muscle glycogen is the main fuel for fast glycolysis, and it serves only the fiber that stores it."
+        },
+        {
+          "id": "gly",
+          "label": "Glycolysis",
+          "text": "Glycolysis splits each glucose into two pyruvate, making ATP and NADH.",
+          "why": "Glycolysis is the fast, oxygen-free first stage, making ATP about twice as fast as aerobic respiration."
+        },
+        {
+          "id": "outrun",
+          "label": "Pyruvate piles up",
+          "text": "Pyruvate is made faster than the mitochondria can take it in.",
+          "why": "At high work rates glycolysis outpaces the mitochondria even when the fiber has oxygen."
+        },
+        {
+          "id": "lactate",
+          "label": "Pyruvate to lactate",
+          "text": "Pyruvate is converted to lactate, regenerating NAD+.",
+          "why": "Glycolysis needs NAD+ to keep running, and making lactate supplies it."
+        },
+        {
+          "id": "leave",
+          "label": "Lactate used as fuel",
+          "text": "Lactate leaves the fiber; other fibers and the heart burn it, and the liver makes glucose from it.",
+          "why": "Lactate is a fuel, not a waste, and blood lactate is back to resting within about an hour."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The fiber runs completely out of oxygen, so the mitochondria stop working altogether.",
+            "why": "Lactate forms whenever glycolysis outruns the mitochondria, even with oxygen present; the mitochondria keep working."
+          },
+          {
+            "text": "Creatine kinase turns the pyruvate into creatine phosphate for later use.",
+            "why": "Creatine kinase moves a phosphate between creatine and ADP; it does not act on pyruvate."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Lactate stays in the fiber as a waste, causing next-day soreness until it is slowly excreted.",
+        "why": "Lactate leaves the fiber and is used as fuel within about an hour. Next-day soreness comes from small injuries in the fibers, not lactate."
+      },
+      "summary": "Glycogen → glucose → glycolysis to pyruvate (ATP and NADH) → pyruvate outruns the mitochondria → lactate, regenerating NAD+ → lactate leaves and is burned or made into glucose."
+    },
+    {
+      "id": "mt-angiogenesis",
+      "title": "New capillaries in trained muscle",
+      "topic": "fiber-types",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Endurance training adds capillaries around each muscle fiber. Trace how a training session leads to a new capillary.",
+      "steps": [
+        {
+          "id": "signal",
+          "label": "Low oxygen and shear",
+          "text": "During a session, working fibers are low in oxygen and fast blood flow stretches and shears the capillaries.",
+          "why": "These are the signals that working muscle is short of supply."
+        },
+        {
+          "id": "vegf",
+          "label": "VEGF released",
+          "text": "Muscle fibers and capillary lining cells release growth factors, above all VEGF.",
+          "why": "Low oxygen and shear make the cells release VEGF, the main signal for new vessels."
+        },
+        {
+          "id": "divide",
+          "label": "Endothelial cells divide",
+          "text": "VEGF binds receptor proteins on the endothelium of nearby capillaries, and those cells divide and migrate outward.",
+          "why": "The endothelial cells are the target: VEGF makes them grow a sprout from an existing capillary."
+        },
+        {
+          "id": "join",
+          "label": "Sprout joins up",
+          "text": "The sprout hollows out and joins another capillary, and blood starts to flow through it.",
+          "why": "A sprout carries blood only once it is hollow and connected at both ends."
+        },
+        {
+          "id": "closer",
+          "label": "Shorter oxygen path",
+          "text": "Each fiber’s mitochondria are now closer to a blood supply, so more oxygen reaches each fiber per minute.",
+          "why": "More capillaries shorten the diffusion distance, the payoff of angiogenesis."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "VEGF makes the muscle fibers divide, and the new fibers grow capillaries of their own.",
+            "why": "VEGF acts on the endothelial cells of existing capillaries. Adult skeletal fibers do not divide."
+          },
+          {
+            "text": "VEGF makes the existing capillaries widen to several times their diameter, so each one carries far more blood past the fibers.",
+            "why": "Angiogenesis adds new capillaries by sprouting; it does not simply widen the old ones."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "During a session, working fibers have extra oxygen, and slow blood flow lets the capillaries relax.",
+        "why": "The trigger is the opposite: working fibers are low in oxygen, and fast blood flow stretches and shears the capillaries."
+      },
+      "summary": "Low oxygen and shear during training → VEGF released → endothelial cells of nearby capillaries divide and sprout → sprout joins another capillary → shorter diffusion distance for oxygen."
+    },
+    {
+      "id": "mt-fiber-formation",
+      "title": "Forming and repairing a muscle fiber",
+      "topic": "fiber-types",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A skeletal muscle fiber has hundreds of nuclei because it was built by fusion. Put the stages of fiber formation in order.",
+      "steps": [
+        {
+          "id": "stem",
+          "label": "Stem cells commit",
+          "text": "Muscle stem cells in the embryo commit to becoming muscle as myoblasts.",
+          "why": "Every fiber starts from stem cells that become myoblasts, dividing cells committed to muscle."
+        },
+        {
+          "id": "line",
+          "label": "Myoblasts line up",
+          "text": "Myoblasts divide and line up end to end.",
+          "why": "The cells must multiply and align before they can join into one long cell."
+        },
+        {
+          "id": "fuse",
+          "label": "Fusion into a myotube",
+          "text": "The myoblasts fuse into a myotube, a long young fiber with many nuclei.",
+          "why": "Fusion is why an adult fiber has many nuclei: each came from a separate myoblast."
+        },
+        {
+          "id": "fill",
+          "label": "Myofibrils fill it",
+          "text": "The myotube makes actin and myosin and fills with myofibrils.",
+          "why": "Once formed, the long cell builds the contractile machinery that fills most of its volume."
+        },
+        {
+          "id": "edge",
+          "label": "Nuclei move to the edge",
+          "text": "Its nuclei move to the edge under the sarcolemma, and it becomes a mature fiber.",
+          "why": "The packed myofibrils push the nuclei aside, giving the mature fiber its peripheral nuclei."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "One myoblast copies its nucleus many times without dividing and grows into a long fiber.",
+            "why": "A fiber gets its many nuclei by fusion of many myoblasts, not by one cell copying its nucleus."
+          },
+          {
+            "text": "The myoblasts link into a sheet through gap junctions but stay separate cells.",
+            "why": "Gap junctions link cells that stay separate, as in cardiac muscle. A skeletal fiber is one cell formed by the fusion of many myoblasts."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The mature fiber keeps dividing to add new fibers as the muscle grows.",
+        "why": "Mature skeletal fibers never divide. Growth adds myofibrils to existing fibers, and repair uses muscle stem cells whose myoblasts fuse with damaged fibers."
+      },
+      "summary": "Stem cells become myoblasts → myoblasts divide and line up → fuse into a multinucleated myotube → myotube fills with myofibrils → nuclei move to the edge of a mature fiber."
+    },
+    {
+      "id": "mt-smooth-contraction",
+      "title": "Switching on smooth muscle",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Smooth muscle has no troponin; its switch is on myosin. Trace a contraction from depolarization to the fiber puckering.",
+      "steps": [
+        {
+          "id": "dep",
+          "label": "Membrane depolarizes",
+          "text": "The sarcolemma depolarizes and voltage-gated calcium channels open.",
+          "why": "A signal such as a pacesetter wave, stretch or a transmitter depolarizes the fiber first."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium enters",
+          "text": "Calcium flows in from the extracellular fluid, with some released from the small SR.",
+          "why": "In smooth muscle, much of the calcium comes from outside the cell; the fiber is thin enough for it to reach the filaments quickly."
+        },
+        {
+          "id": "cam",
+          "label": "Calcium binds calmodulin",
+          "text": "Calcium binds calmodulin, smooth muscle’s calcium sensor in the cytosol.",
+          "why": "Calmodulin does the job troponin does in skeletal muscle."
+        },
+        {
+          "id": "mlck",
+          "label": "MLCK switched on",
+          "text": "Calcium–calmodulin activates myosin light-chain kinase (MLCK).",
+          "why": "MLCK is inactive until calcium–calmodulin binds it."
+        },
+        {
+          "id": "phos",
+          "label": "Myosin phosphorylated",
+          "text": "MLCK moves a phosphate from ATP onto a small regulatory protein on each myosin head.",
+          "why": "Phosphorylation is the on switch: it lets the heads bind actin."
+        },
+        {
+          "id": "cycle",
+          "label": "Cross-bridges cycle",
+          "text": "Phosphorylated heads bind actin and cycle, pulling the dense bodies together, and the fiber shortens and puckers.",
+          "why": "The filaments run at angles and are anchored to dense bodies, so pulling them together shortens the whole cell and twists it slightly."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Calcium binds troponin, and tropomyosin rolls off the binding sites on actin.",
+            "why": "That is the skeletal muscle switch. Smooth muscle has no troponin; calcium binds calmodulin instead."
+          },
+          {
+            "text": "Calcium binds the myosin heads directly, and they bind actin at once.",
+            "why": "Calcium does not act on myosin directly. It binds calmodulin, which switches on the kinase that phosphorylates the heads."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Myosin phosphatase moves a phosphate onto each myosin head, letting it bind actin.",
+        "why": "MLCK adds the phosphate. Myosin phosphatase does the opposite: it removes the phosphate, which stops the heads cycling and relaxes the fiber."
+      },
+      "summary": "Depolarization → calcium enters (mostly from outside) → calcium binds calmodulin → MLCK activated → myosin heads phosphorylated → cross-bridges cycle and pull the dense bodies together."
+    },
+    {
+      "id": "mt-smooth-relaxation",
+      "title": "Relaxing smooth muscle",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A smooth muscle fiber relaxes when the switch on myosin is turned off. Put the steps in order, starting as calcium is removed.",
+      "steps": [
+        {
+          "id": "pump",
+          "label": "Calcium removed",
+          "text": "Calcium is pumped out of the cell and back into the SR.",
+          "why": "Relaxation starts with lowering the calcium that switched the fiber on."
+        },
+        {
+          "id": "cam",
+          "label": "Calmodulin lets go",
+          "text": "Calcium leaves calmodulin.",
+          "why": "With less calcium in the cytosol, calmodulin gives up its calcium."
+        },
+        {
+          "id": "mlck",
+          "label": "MLCK switches off",
+          "text": "Without calcium–calmodulin, MLCK switches off.",
+          "why": "MLCK is active only while calcium–calmodulin is bound to it."
+        },
+        {
+          "id": "phosph",
+          "label": "Phosphate removed",
+          "text": "Myosin phosphatase removes the phosphate from the myosin heads.",
+          "why": "The phosphatase works all the time; with MLCK off, it now wins."
+        },
+        {
+          "id": "stop",
+          "label": "Heads stop cycling",
+          "text": "Unphosphorylated heads stop cycling, and the fiber relaxes.",
+          "why": "Without phosphate the heads no longer bind and pull, so tension fades over seconds to minutes."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Troponin takes up the calcium, and tropomyosin covers actin again.",
+            "why": "Smooth muscle has no troponin. Its heads stop cycling when myosin phosphatase removes their phosphate."
+          },
+          {
+            "text": "MLCK removes its own phosphate from the myosin heads.",
+            "why": "MLCK adds phosphate; a separate enzyme, myosin phosphatase, removes it."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Unphosphorylated heads stay attached permanently, locking the fiber in rigor.",
+        "why": "Heads that lose their phosphate stop cycling and the fiber relaxes. If the phosphate comes off while a head is still attached, it detaches slowly as a latch-bridge, holding tension cheaply, but that is not rigor."
+      },
+      "summary": "Calcium pumped out → calcium leaves calmodulin → MLCK switches off → myosin phosphatase removes phosphate → heads stop cycling and the fiber relaxes."
     }
   ]
 }

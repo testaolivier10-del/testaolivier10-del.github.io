@@ -24252,6 +24252,1837 @@
           ]
         }
       ]
+    },
+    {
+      "id": "ms-swallow-hyoid",
+      "title": "The suprahyoid muscles contract in a swallow",
+      "topic": "head-neck-muscles",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "the hyoid bone is held in place by a joint",
+      "setup": "With your lips sealed and your teeth together, you swallow. Predict the changes as the suprahyoid muscles contract, compared with the moment before.",
+      "start": "The suprahyoid muscles contract while the jaw-closing muscles hold the mandible still",
+      "steps": {
+        "fixed": "The mandible and skull are held still, so they act as the origins",
+        "lift": "The suprahyoids pull the hyoid bone up toward the mandible",
+        "box": "The voice box, hanging from the hyoid, rises with it",
+        "stretch": "The infrahyoid strap muscles below the hyoid are stretched"
+      },
+      "variables": [
+        {
+          "id": "hyoid",
+          "name": "Height of the hyoid bone",
+          "answer": "up",
+          "chain": [
+            "fixed",
+            "lift"
+          ],
+          "why": "The hyoid forms no joint with any other bone and hangs in muscles. With the mandible held still, the suprahyoids pull their insertion on the hyoid up toward it."
+        },
+        {
+          "id": "box",
+          "name": "Height of the voice box",
+          "answer": "up",
+          "chain": [
+            "fixed",
+            "lift",
+            "box"
+          ],
+          "why": "The voice box hangs from the hyoid, so it rises with it; that is the jump you feel under your finger when you swallow."
+        },
+        {
+          "id": "infra",
+          "name": "Length of the infrahyoid muscles",
+          "answer": "up",
+          "chain": [
+            "fixed",
+            "lift",
+            "stretch"
+          ],
+          "why": "The infrahyoids run from the hyoid down to the sternum, voice box and scapula. As the hyoid rises, they are stretched, ready to pull it back down after the swallow."
+        },
+        {
+          "id": "jaw",
+          "name": "Opening of the mouth",
+          "answer": "none",
+          "chain": [
+            "fixed"
+          ],
+          "why": "The jaw-closing muscles hold the mandible still. The suprahyoids open the mouth only when the hyoid is held still instead, by the infrahyoids."
+        }
+      ]
+    },
+    {
+      "id": "mt-curare-block",
+      "title": "A curare-type drug at the end plate",
+      "topic": "neuromuscular-junction",
+      "theme": "a drug blocks acetylcholine receptors at the end plate",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the nerve impulse passes directly into the muscle",
+      "setup": "During surgery, a patient receives rocuronium, a curare-type drug that occupies most of the acetylcholine binding sites on the nicotinic receptor proteins of her motor end plates without opening them. Her motor neurons keep firing normally. Predict the changes, compared with before the drug.",
+      "start": "Most ACh binding sites on the end plate are occupied by the drug",
+      "steps": {
+        "nerve": "The motor neuron and its axon terminal are untouched by the drug",
+        "fewer": "Released ACh finds few free binding sites, so few ACh-gated channels open",
+        "epp": "Less sodium enters, so the end plate potential is smaller",
+        "below": "The end plate potential no longer brings the neighboring sarcolemma to threshold",
+        "limp": "Without action potentials, the fibers release no calcium and do not contract"
+      },
+      "variables": [
+        {
+          "id": "release",
+          "name": "ACh released by the axon terminal per nerve impulse",
+          "answer": "none",
+          "chain": [
+            "nerve"
+          ],
+          "why": "Release depends on the action potential opening calcium channels in the terminal, and the drug acts only on the muscle side of the cleft. The same packets of ACh are released as before."
+        },
+        {
+          "id": "epp",
+          "name": "Size of the end plate potential",
+          "answer": "down",
+          "chain": [
+            "fewer",
+            "epp"
+          ],
+          "why": "Each receptor protein needs two ACh molecules to open. With most binding sites taken by the drug, few channels open, so less positive charge flows in and the end plate potential shrinks."
+        },
+        {
+          "id": "ap",
+          "name": "Action potentials in the muscle fibers",
+          "answer": "down",
+          "chain": [
+            "fewer",
+            "epp",
+            "below"
+          ],
+          "why": "The safety margin is used up: once the end plate potential falls below threshold, the voltage-gated sodium channels beside the end plate never open, so no action potential starts."
+        },
+        {
+          "id": "force",
+          "name": "Strength of her skeletal muscle contractions",
+          "answer": "down",
+          "chain": [
+            "fewer",
+            "epp",
+            "below",
+            "limp"
+          ],
+          "why": "A fiber that fires no action potential releases no calcium from its SR, so its myosin heads never bind actin. Every skeletal muscle goes limp, including the breathing muscles, which is why a ventilator breathes for her."
+        }
+      ]
+    },
+    {
+      "id": "mt-ache-inhibitor",
+      "title": "Neostigmine slows acetylcholinesterase",
+      "topic": "neuromuscular-junction",
+      "theme": "acetylcholinesterase is inhibited",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "blocking acetylcholinesterase makes the terminal release more acetylcholine",
+      "setup": "A drug partly inhibits acetylcholinesterase at the neuromuscular junction. Predict the changes after a single nerve impulse, compared with the same impulse before the drug.",
+      "start": "Acetylcholinesterase in the synaptic cleft splits ACh more slowly",
+      "steps": {
+        "terminal": "The action potential and calcium entry in the axon terminal are unchanged",
+        "linger": "ACh stays in the cleft longer before it is split",
+        "rebind": "ACh keeps binding and rebinding receptor proteins, reopening their channels",
+        "long": "The end plate stays depolarized longer",
+        "choline": "Choline, a product of splitting ACh, is formed more slowly"
+      },
+      "variables": [
+        {
+          "id": "release",
+          "name": "ACh released by the terminal",
+          "answer": "none",
+          "chain": [
+            "terminal"
+          ],
+          "why": "Release is set by the action potential opening voltage-gated calcium channels in the terminal. The drug acts on the enzyme in the cleft, after release."
+        },
+        {
+          "id": "time",
+          "name": "Time ACh stays in the synaptic cleft",
+          "answer": "up",
+          "chain": [
+            "linger"
+          ],
+          "why": "Acetylcholinesterase normally clears the cleft within a millisecond or two. With the enzyme slowed, ACh lingers."
+        },
+        {
+          "id": "epp",
+          "name": "Duration of the end plate potential",
+          "answer": "up",
+          "chain": [
+            "linger",
+            "rebind",
+            "long"
+          ],
+          "why": "Each receptor protein lets ACh go after binding it briefly. Lingering ACh binds again and reopens the channels, so positive charge keeps flowing in for longer."
+        },
+        {
+          "id": "aps",
+          "name": "Action potentials in the muscle fiber per nerve impulse",
+          "answer": "up",
+          "chain": [
+            "linger",
+            "rebind",
+            "long"
+          ],
+          "why": "A long end plate potential can bring the neighboring membrane to threshold again after its refractory period, so one nerve impulse can trigger several action potentials instead of one. That is why the muscles quiver."
+        },
+        {
+          "id": "choline",
+          "name": "Rate at which choline is returned to the axon terminal",
+          "answer": "down",
+          "chain": [
+            "linger",
+            "choline"
+          ],
+          "why": "Choline comes only from splitting ACh. Slower splitting makes choline more slowly, so less is taken back up per second."
+        }
+      ]
+    },
+    {
+      "id": "mt-botulinum",
+      "title": "Botulinum toxin at the junction",
+      "topic": "neuromuscular-junction",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "botulinum toxin paralyzes muscle by stopping the nerve impulse",
+      "setup": "A man eats home-canned vegetables contaminated with botulinum toxin, which destroys the proteins his synaptic vesicles need to fuse with the axon terminal membrane. Predict the changes at his neuromuscular junctions a day later, compared with before.",
+      "start": "Vesicles in the axon terminal can no longer fuse with its membrane",
+      "steps": {
+        "ap": "Action potentials still travel along the axon to the terminal",
+        "ca": "Calcium still enters the terminal through its voltage-gated channels",
+        "fuse": "Calcium binds the vesicles, but they cannot fuse and empty",
+        "noach": "Little or no ACh reaches the cleft",
+        "noepp": "No end plate potential reaches threshold, so the fiber does not fire"
+      },
+      "variables": [
+        {
+          "id": "ap",
+          "name": "Action potentials reaching the axon terminal",
+          "answer": "none",
+          "chain": [
+            "ap"
+          ],
+          "why": "The toxin acts inside the terminal on the fusion proteins. The axon still conducts, so each impulse still arrives."
+        },
+        {
+          "id": "ca",
+          "name": "Calcium entering the terminal per impulse",
+          "answer": "none",
+          "chain": [
+            "ap",
+            "ca"
+          ],
+          "why": "The arriving action potential still depolarizes the terminal and opens its calcium channels; the block is on the step after calcium entry."
+        },
+        {
+          "id": "ach",
+          "name": "ACh released into the synaptic cleft",
+          "answer": "down",
+          "chain": [
+            "fuse",
+            "noach"
+          ],
+          "why": "Calcium triggers release by making vesicles fuse. With the fusion proteins destroyed, the vesicles stay full, so almost no ACh is released."
+        },
+        {
+          "id": "force",
+          "name": "Strength of his muscle contractions",
+          "answer": "down",
+          "chain": [
+            "fuse",
+            "noach",
+            "noepp"
+          ],
+          "why": "Without ACh the end plate is not depolarized, the fibers fire no action potentials, and weakness spreads. It can stop his breathing muscles, although his nerves still work."
+        }
+      ]
+    },
+    {
+      "id": "mt-no-calcium-bath",
+      "title": "A nerve–muscle preparation without calcium",
+      "topic": "excitation-contraction",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "skeletal muscle needs calcium from outside the cell to contract",
+      "setup": "In a lab, a frog nerve–muscle preparation is moved into a bath with no calcium. For the next few minutes, the experimenter stimulates it in two ways: through its nerve, and directly with an electrode on the muscle. Predict the changes, compared with the normal bath.",
+      "start": "Calcium is removed from the extracellular fluid around the junction and the fibers",
+      "steps": {
+        "nerveap": "Nerve action potentials still reach the axon terminals",
+        "noca": "No calcium enters the terminals, so the vesicles do not fuse",
+        "noach": "No ACh is released, so the fibers do not fire",
+        "direct": "The electrode depolarizes the sarcolemma to threshold directly",
+        "sr": "The fiber action potential opens the SR release channels, and calcium comes from the SR inside the fiber"
+      },
+      "variables": [
+        {
+          "id": "term",
+          "name": "Action potentials reaching the axon terminals",
+          "answer": "none",
+          "chain": [
+            "nerveap"
+          ],
+          "why": "Action potentials run on sodium and potassium, not calcium, so the nerve keeps conducting."
+        },
+        {
+          "id": "nerve",
+          "name": "Contraction when the nerve is stimulated",
+          "answer": "down",
+          "chain": [
+            "nerveap",
+            "noca",
+            "noach"
+          ],
+          "why": "Transmitter release needs calcium to enter the terminal from outside. With none there, no ACh is released and the fibers stay still."
+        },
+        {
+          "id": "direct",
+          "name": "Contraction when the muscle is stimulated directly",
+          "answer": "none",
+          "chain": [
+            "direct",
+            "sr"
+          ],
+          "why": "A skeletal fiber’s trigger is voltage, and its calcium comes from the SR. Stimulated directly, it keeps contracting normally for a while in a calcium-free bath."
+        }
+      ]
+    },
+    {
+      "id": "mt-dantrolene",
+      "title": "Dantrolene blocks the release channels",
+      "topic": "excitation-contraction",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a drug that weakens muscle must act at the neuromuscular junction",
+      "setup": "A muscle fiber is treated with dantrolene, a drug that blocks the ryanodine receptor proteins, the calcium release channels of the SR. Its motor neuron is then stimulated. Predict the changes, compared with before the drug.",
+      "start": "The SR’s calcium release channels are blocked",
+      "steps": {
+        "junction": "ACh release and the end plate are unaffected",
+        "ap": "The fiber still fires action potentials that run down the T tubules",
+        "sensor": "The voltage sensors in the T tubules still change shape, but cannot pull the blocked channels open",
+        "lessca": "Less calcium leaves the SR",
+        "tropo": "Less calcium binds troponin, so fewer binding sites on actin are uncovered"
+      },
+      "variables": [
+        {
+          "id": "epp",
+          "name": "End plate potential",
+          "answer": "none",
+          "chain": [
+            "junction"
+          ],
+          "why": "The drug acts deep inside the fiber, on the SR. ACh release and its receptor proteins at the end plate work as before."
+        },
+        {
+          "id": "ap",
+          "name": "Action potentials in the sarcolemma and T tubules",
+          "answer": "none",
+          "chain": [
+            "junction",
+            "ap"
+          ],
+          "why": "The voltage-gated sodium and potassium channels of the sarcolemma are untouched, so the fiber is excited normally."
+        },
+        {
+          "id": "ca",
+          "name": "Calcium in the sarcoplasm after each action potential",
+          "answer": "down",
+          "chain": [
+            "ap",
+            "sensor",
+            "lessca"
+          ],
+          "why": "The voltage sensor opens the SR by pulling on the release channel. With the channel blocked, little calcium flows out of the terminal cisternae."
+        },
+        {
+          "id": "force",
+          "name": "Force of contraction",
+          "answer": "down",
+          "chain": [
+            "ap",
+            "sensor",
+            "lessca",
+            "tropo"
+          ],
+          "why": "Calcium is the switch: less of it on troponin leaves more binding sites covered by tropomyosin, so fewer myosin heads can bind and pull."
+        }
+      ]
+    },
+    {
+      "id": "mt-sr-pumps-blocked",
+      "title": "The SR calcium pumps are blocked",
+      "topic": "excitation-contraction",
+      "core": [
+        "communication",
+        "energy"
+      ],
+      "level": 2,
+      "misconception": "relaxation happens on its own once the nerve stops firing",
+      "setup": "An experimental drug blocks the calcium pumps of the sarcoplasmic reticulum. Immediately afterward, a single action potential is triggered in the fiber. Predict the changes, compared with a normal fiber.",
+      "start": "The SR calcium pumps stop moving calcium back into the SR",
+      "steps": {
+        "release": "The action potential opens the release channels as usual",
+        "stay": "Released calcium is not pumped back, so it stays high in the sarcoplasm",
+        "bound": "Calcium stays on troponin, and tropomyosin stays off the binding sites",
+        "pull": "Myosin heads keep binding actin and pulling while ATP lasts",
+        "empty": "The SR is not refilled"
+      },
+      "variables": [
+        {
+          "id": "release",
+          "name": "Calcium released from the SR by this action potential",
+          "answer": "none",
+          "chain": [
+            "release"
+          ],
+          "why": "Release flows through the release channels, pulled open by the voltage sensors. The pumps play no part in it, so this first pulse is normal."
+        },
+        {
+          "id": "high",
+          "name": "Time calcium stays high in the sarcoplasm",
+          "answer": "up",
+          "chain": [
+            "release",
+            "stay"
+          ],
+          "why": "The pumps are what lower calcium after each release. Without them, calcium stays in the sarcoplasm."
+        },
+        {
+          "id": "relax",
+          "name": "Time until the fiber relaxes",
+          "answer": "up",
+          "chain": [
+            "release",
+            "stay",
+            "bound",
+            "pull"
+          ],
+          "why": "Relaxation needs calcium to leave troponin so tropomyosin can cover actin again. With calcium kept high, the filaments keep pulling."
+        },
+        {
+          "id": "store",
+          "name": "Calcium stored in the SR afterward",
+          "answer": "down",
+          "chain": [
+            "release",
+            "stay",
+            "empty"
+          ],
+          "why": "The calcium that left is not pumped back, so the store is lower for the next action potential."
+        }
+      ]
+    },
+    {
+      "id": "mt-t-tubules-detached",
+      "title": "T tubules pinched off the surface",
+      "topic": "excitation-contraction",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the action potential on the fiber surface is enough to reach every myofibril",
+      "setup": "In an experiment, a chemical treatment pinches the T tubules off from the sarcolemma, leaving the rest of a thick fiber intact. The fiber is then stimulated. Predict the changes, compared with an untreated fiber.",
+      "start": "The T tubules are no longer connected to the surface membrane",
+      "steps": {
+        "surface": "The action potential still sweeps along the sarcolemma on the surface",
+        "notube": "The action potential cannot travel into the fiber",
+        "nosensor": "Voltage sensors at the triads deep in the fiber are not depolarized",
+        "nocal": "The SR beside the inner myofibrils releases little calcium",
+        "weak": "Only myofibrils near the surface are switched on"
+      },
+      "variables": [
+        {
+          "id": "surface",
+          "name": "Action potential on the surface sarcolemma",
+          "answer": "none",
+          "chain": [
+            "surface"
+          ],
+          "why": "The surface membrane and its voltage-gated channels are intact, so the fiber still fires along its length."
+        },
+        {
+          "id": "ca",
+          "name": "Calcium released around the central myofibrils",
+          "answer": "down",
+          "chain": [
+            "notube",
+            "nosensor",
+            "nocal"
+          ],
+          "why": "Calcium release needs the voltage change to reach each triad. Without T tubules, the deep triads never see it, and calcium drifting inward from the surface would be far too slow."
+        },
+        {
+          "id": "force",
+          "name": "Force of the whole fiber",
+          "answer": "down",
+          "chain": [
+            "notube",
+            "nosensor",
+            "nocal",
+            "weak"
+          ],
+          "why": "Most myofibrils lie deep in the fiber. With only the outer ones contracting, the fiber pulls weakly."
+        }
+      ]
+    },
+    {
+      "id": "mt-low-blood-calcium",
+      "title": "Blood calcium falls after neck surgery",
+      "topic": "excitation-contraction",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "low blood calcium weakens skeletal muscle because calcium triggers contraction",
+      "setup": "After neck surgery, a patient’s blood calcium falls well below normal. Predict the changes in her nerves and skeletal muscles, compared with before surgery.",
+      "start": "Calcium in the extracellular fluid falls",
+      "steps": {
+        "easy": "Voltage-gated sodium channels in nerve and muscle membranes open more easily, closer to the resting potential",
+        "fire": "Nerve and muscle fibers reach threshold on their own and fire",
+        "spasm": "Muscles contract without a command: cramps and spasms",
+        "sr": "Each skeletal fiber still takes its contraction calcium from its own SR"
+      },
+      "variables": [
+        {
+          "id": "excit",
+          "name": "Excitability of her nerve and muscle membranes",
+          "answer": "up",
+          "chain": [
+            "easy"
+          ],
+          "why": "Low outside calcium lets the sodium channels open at voltages nearer rest, so less of a push is needed to reach threshold."
+        },
+        {
+          "id": "spont",
+          "name": "Action potentials fired with no command from the brain",
+          "answer": "up",
+          "chain": [
+            "easy",
+            "fire"
+          ],
+          "why": "Membranes that sit so close to threshold fire on their own, and every nerve action potential still reaches the muscle."
+        },
+        {
+          "id": "spasm",
+          "name": "Involuntary muscle spasms",
+          "answer": "up",
+          "chain": [
+            "easy",
+            "fire",
+            "spasm"
+          ],
+          "why": "Each unplanned action potential releases calcium from the SR and causes a contraction, so the hands and feet can lock in painful spasms."
+        },
+        {
+          "id": "pulse",
+          "name": "Calcium released from the SR by each action potential",
+          "answer": "none",
+          "chain": [
+            "sr"
+          ],
+          "why": "A skeletal fiber stores its own calcium in the SR and releases it by voltage alone. Low blood calcium does not starve the filaments, which is why the result is spasm, not weakness."
+        }
+      ]
+    },
+    {
+      "id": "mt-malignant-hyperthermia-l4",
+      "title": "A leaky release channel meets an anesthetic",
+      "topic": "excitation-contraction",
+      "core": [
+        "energy",
+        "homeostasis"
+      ],
+      "level": 4,
+      "misconception": "the fever of this reaction comes from an infection",
+      "setup": "Daniel has an inherited fault in his SR release channels. During surgery he breathes an anesthetic gas that makes the faulty channels leak calcium continuously. Follow his muscles and his temperature before and after the team gives dantrolene, which blocks the release channels.",
+      "stages": [
+        {
+          "id": "trigger",
+          "label": "The gas is breathed",
+          "prompt": "In the minutes after the gas reaches his muscles, compared with before it.",
+          "start": "The faulty release channels leak calcium out of the SR",
+          "steps": {
+            "leak": "Calcium pours into the sarcoplasm and stays high",
+            "bind": "Calcium stays on troponin, so myosin heads keep binding actin and pulling in every fiber",
+            "rigid": "Muscles lock rigid",
+            "burn": "Calcium pumps and myosin heads split ATP nonstop",
+            "heat": "The energy released by splitting ATP warms the muscle"
+          },
+          "variables": [
+            {
+              "id": "ca",
+              "name": "Calcium in his muscle fibers’ sarcoplasm",
+              "answer": "up",
+              "chain": [
+                "leak"
+              ],
+              "why": "The leaking channels let calcium out faster than the pumps can return it, so the level stays high."
+            },
+            {
+              "id": "stiff",
+              "name": "Stiffness of his muscles",
+              "answer": "up",
+              "chain": [
+                "leak",
+                "bind",
+                "rigid"
+              ],
+              "why": "With calcium bound to troponin, tropomyosin stays off actin and the myosin heads keep pulling. The muscles lock without any nerve command."
+            },
+            {
+              "id": "atp",
+              "name": "Rate at which his muscles use ATP",
+              "answer": "up",
+              "chain": [
+                "leak",
+                "bind",
+                "burn"
+              ],
+              "why": "The pumps spend ATP trying to return the calcium, and every pull of a myosin head splits another ATP."
+            },
+            {
+              "id": "temp",
+              "name": "Body temperature",
+              "answer": "up",
+              "chain": [
+                "leak",
+                "burn",
+                "heat"
+              ],
+              "why": "Much of the energy of split ATP is released as heat. With so much muscle working nonstop, temperature can climb above 40 °C quickly."
+            }
+          ]
+        },
+        {
+          "id": "dantrolene",
+          "label": "After dantrolene",
+          "prompt": "Some minutes after dantrolene reaches his muscles, compared with the first stage.",
+          "start": "Dantrolene blocks the release channels",
+          "steps": {
+            "stop": "The SR stops leaking calcium",
+            "pump": "The pumps, now winning, return calcium to the SR",
+            "off": "Calcium leaves troponin and tropomyosin covers actin again",
+            "relax": "Myosin heads stop binding actin and the muscles relax",
+            "cool": "ATP use and heat production fall"
+          },
+          "variables": [
+            {
+              "id": "ca",
+              "name": "Calcium in his muscle fibers’ sarcoplasm",
+              "answer": "down",
+              "chain": [
+                "stop",
+                "pump"
+              ],
+              "why": "With the leak plugged, the pumps return calcium to the SR faster than it escapes, so the sarcoplasm’s calcium falls."
+            },
+            {
+              "id": "stiff",
+              "name": "Stiffness of his muscles",
+              "answer": "down",
+              "chain": [
+                "stop",
+                "pump",
+                "off",
+                "relax"
+              ],
+              "why": "Once calcium leaves troponin, tropomyosin covers the binding sites again. Heads with ATP let go, and none rebind."
+            },
+            {
+              "id": "heat",
+              "name": "Heat produced by his muscles",
+              "answer": "down",
+              "chain": [
+                "stop",
+                "pump",
+                "off",
+                "cool"
+              ],
+              "why": "With the myosin heads idle and the pumps no longer fighting a leak, far less ATP is split, so less heat is released and his temperature can come down."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mt-rigor-mortis",
+      "title": "ATP runs out after death",
+      "topic": "cross-bridge-cycle",
+      "theme": "ATP runs out after death",
+      "core": [
+        "energy"
+      ],
+      "level": 2,
+      "misconception": "rigor mortis is a strong contraction",
+      "setup": "A few hours after death, ATP in the muscle fibers has run out. Predict the changes, compared with a living, relaxed muscle.",
+      "start": "Circulation stops, and the fibers can no longer make ATP",
+      "steps": {
+        "pumps": "The SR calcium pumps stop, and membranes grow leaky",
+        "leak": "Calcium leaks into the sarcoplasm, binds troponin and uncovers actin",
+        "bind": "Myosin heads bind actin and complete their power stroke",
+        "lock": "With no ATP to bind, no head can let go",
+        "stiff": "Locked cross-bridges bolt the thick and thin filaments together"
+      },
+      "variables": [
+        {
+          "id": "pumped",
+          "name": "Calcium pumped into the SR",
+          "answer": "down",
+          "chain": [
+            "pumps"
+          ],
+          "why": "Each SR calcium pump is an ATPase that splits ATP to move calcium. With no ATP, the pumps stop."
+        },
+        {
+          "id": "attached",
+          "name": "Number of cross-bridges attached",
+          "answer": "up",
+          "chain": [
+            "pumps",
+            "leak",
+            "bind"
+          ],
+          "why": "Calcium seeping out of the SR and in from outside uncovers the binding sites, so the heads bind actin, as they would in a contraction."
+        },
+        {
+          "id": "detach",
+          "name": "Myosin heads letting go of actin",
+          "answer": "down",
+          "chain": [
+            "bind",
+            "lock"
+          ],
+          "why": "A head lets go only when a new ATP binds it. With none left, every attached head stays attached."
+        },
+        {
+          "id": "stiff",
+          "name": "Resistance of the muscles to being stretched",
+          "answer": "up",
+          "chain": [
+            "bind",
+            "lock",
+            "stiff"
+          ],
+          "why": "Filaments bolted together cannot slide past each other, so joints are fixed in place. The muscle is stiff, not pulling hard: rigor develops little force of its own."
+        }
+      ]
+    },
+    {
+      "id": "mt-calcium-stays-high",
+      "title": "Calcium stays high, ATP plentiful",
+      "topic": "cross-bridge-cycle",
+      "core": [
+        "energy",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "any muscle that cannot relax is in rigor",
+      "setup": "In a living fiber with plenty of ATP, calcium in the sarcoplasm stays high because the SR calcium pumps have been blocked. Predict the changes, compared with a fiber whose pumps work.",
+      "start": "Calcium stays bound to troponin",
+      "steps": {
+        "open": "Tropomyosin stays off the binding sites on actin",
+        "atp": "ATP binds each head after its stroke, and the head lets go",
+        "cycle": "Heads recock, rebind farther along and pull again",
+        "held": "The fiber stays contracted"
+      },
+      "variables": [
+        {
+          "id": "sites",
+          "name": "Binding sites on actin left uncovered",
+          "answer": "up",
+          "chain": [
+            "open"
+          ],
+          "why": "Calcium on troponin keeps tropomyosin rolled into the groove, so the sites stay open to myosin."
+        },
+        {
+          "id": "cycling",
+          "name": "Cross-bridge cycling",
+          "answer": "up",
+          "chain": [
+            "open",
+            "atp",
+            "cycle"
+          ],
+          "why": "Both conditions for cycling hold: the sites are uncovered and ATP is available to release and recock each head."
+        },
+        {
+          "id": "relax",
+          "name": "Time the fiber stays contracted",
+          "answer": "up",
+          "chain": [
+            "open",
+            "atp",
+            "cycle",
+            "held"
+          ],
+          "why": "Relaxation needs calcium to leave troponin, and the pumps that would lower calcium are blocked."
+        },
+        {
+          "id": "rigor",
+          "name": "Heads locked on actin as in rigor",
+          "answer": "none",
+          "chain": [
+            "atp"
+          ],
+          "why": "Rigor needs a lack of ATP. Here every head can still bind ATP and let go, so the heads keep cycling instead of locking. This is a sustained contraction, not rigor."
+        }
+      ]
+    },
+    {
+      "id": "mt-stimulation-rate",
+      "title": "From 2 to 80 stimuli per second",
+      "topic": "muscle-tension",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a stronger contraction needs a bigger calcium release per action potential",
+      "setup": "A researcher raises the rate at which she stimulates a single muscle fiber from 2 per second to 80 per second. Predict the changes.",
+      "start": "Action potentials arrive every 12.5 ms instead of every 500 ms",
+      "steps": {
+        "gap": "A new action potential arrives before the last pulse of calcium has been pumped back",
+        "same": "Each action potential is all-or-none and releases about the same pulse of calcium",
+        "high": "Calcium in the cytosol stays high",
+        "norelax": "The fiber has no time to relax between stimuli",
+        "taut": "Cross-bridges keep cycling long enough to pull the elastic parts fully taut"
+      },
+      "variables": [
+        {
+          "id": "pulse",
+          "name": "Calcium released by each action potential",
+          "answer": "none",
+          "chain": [
+            "same"
+          ],
+          "why": "The fiber’s action potential is all-or-none, and each one opens the release channels the same way. What changes is how often the pulses come."
+        },
+        {
+          "id": "avg",
+          "name": "Average calcium level in the cytosol",
+          "answer": "up",
+          "chain": [
+            "gap",
+            "high"
+          ],
+          "why": "At 80 per second the pumps cannot clear one pulse before the next arrives, so calcium stays high."
+        },
+        {
+          "id": "relax",
+          "name": "Relaxation between contractions",
+          "answer": "down",
+          "chain": [
+            "gap",
+            "high",
+            "norelax"
+          ],
+          "why": "With calcium never falling back to rest, troponin stays switched on and the fiber cannot relax between stimuli."
+        },
+        {
+          "id": "tension",
+          "name": "Peak tension",
+          "answer": "up",
+          "chain": [
+            "gap",
+            "high",
+            "norelax",
+            "taut"
+          ],
+          "why": "Sustained calcium keeps cross-bridges pulling until the elastic parts are fully taut. The twitches fuse into complete tetanus, several times the tension of one twitch."
+        }
+      ]
+    },
+    {
+      "id": "mt-heavier-load",
+      "title": "From a mug to a full kettle",
+      "topic": "muscle-tension",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a muscle pulls harder by making each fiber contract harder",
+      "setup": "You lift a mug, then lift a full kettle with the same arm. Predict how the muscle that bends your elbow changes for the kettle, compared with the mug.",
+      "start": "The load on your forearm is much larger",
+      "steps": {
+        "drive": "The brain and spinal cord drive the motor neurons harder",
+        "recruit": "More motor units are recruited",
+        "large": "By the size principle, larger motor units join once the small ones are active",
+        "rate": "Each active motor unit fires faster, moving toward tetanus",
+        "allnone": "Each fiber still twitches all-or-none"
+      },
+      "variables": [
+        {
+          "id": "units",
+          "name": "Number of active motor units",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "recruit"
+          ],
+          "why": "Recruitment is the main way to raise force: more motor neurons reach threshold and each brings its whole set of fibers."
+        },
+        {
+          "id": "size",
+          "name": "Average size of the motor units that are firing",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "recruit",
+            "large"
+          ],
+          "why": "Small motor neurons reach threshold first. Only a stronger drive brings in the large units, each adding a big step of force."
+        },
+        {
+          "id": "rate",
+          "name": "Firing rate of each active motor unit",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "rate"
+          ],
+          "why": "Faster firing lets calcium stay high between action potentials, so each unit’s twitches sum toward tetanus."
+        },
+        {
+          "id": "fiber",
+          "name": "Calcium released per action potential in one fiber",
+          "answer": "none",
+          "chain": [
+            "allnone"
+          ],
+          "why": "A fiber’s action potential is all-or-none, so each one releases the same pulse of calcium. Force rises through more units and faster firing, not a bigger response per action potential."
+        }
+      ]
+    },
+    {
+      "id": "mt-overstretched-fiber",
+      "title": "Stimulated while overstretched",
+      "topic": "muscle-tension",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a stretched muscle always pulls harder",
+      "setup": "A muscle fiber is stretched to 160 percent of its resting sarcomere length and then stimulated into tetanus. Predict the changes, compared with stimulating it at its resting length.",
+      "start": "The thin filaments are pulled out almost to the ends of the thick filaments",
+      "steps": {
+        "overlap": "Thick and thin filaments overlap much less",
+        "heads": "Few myosin heads can reach actin"
+      },
+      "variables": [
+        {
+          "id": "overlap",
+          "name": "Overlap of thick and thin filaments",
+          "answer": "down",
+          "chain": [
+            "overlap"
+          ],
+          "why": "Stretching slides the thin filaments out along the thick ones, leaving only a short zone where they overlap."
+        },
+        {
+          "id": "bridges",
+          "name": "Cross-bridges that can form at once",
+          "answer": "down",
+          "chain": [
+            "overlap",
+            "heads"
+          ],
+          "why": "A myosin head can bind only where a thin filament lies beside it, so less overlap means fewer cross-bridges."
+        },
+        {
+          "id": "tension",
+          "name": "Active tension the fiber produces",
+          "answer": "down",
+          "chain": [
+            "overlap",
+            "heads"
+          ],
+          "why": "Tension is the sum of attached cross-bridges pulling. At 160 percent it falls to a small fraction of maximum, and at about 170 percent it reaches zero."
+        }
+      ]
+    },
+    {
+      "id": "mt-400-meters",
+      "title": "The end of an all-out 400 m run",
+      "topic": "muscle-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": 2,
+      "misconception": "ATP runs out in hard exercise",
+      "setup": "A student runs 400 meters as fast as she can, which takes about a minute. Predict the changes in her leg muscles at the finish, compared with rest.",
+      "start": "Her leg fibers spend ATP many times faster than at rest",
+      "steps": {
+        "cp": "Creatine kinase remakes ATP from creatine phosphate in the first seconds",
+        "gly": "Glycolysis speeds up and supplies much of the ATP",
+        "lac": "Pyruvate is made faster than the mitochondria take it in, so it becomes lactate",
+        "glycogen": "Glycolysis runs on glycogen stored in the fibers",
+        "remake": "The three systems remake ATP almost as fast as it is spent"
+      },
+      "variables": [
+        {
+          "id": "cp",
+          "name": "Creatine phosphate in the fibers",
+          "answer": "down",
+          "chain": [
+            "cp"
+          ],
+          "why": "Creatine phosphate is spent in the first seconds to remake ATP, and it is not rebuilt until she rests."
+        },
+        {
+          "id": "lactate",
+          "name": "Lactate in the fibers",
+          "answer": "up",
+          "chain": [
+            "gly",
+            "lac"
+          ],
+          "why": "Converting pyruvate to lactate regenerates NAD+, which glycolysis needs to keep running at this pace."
+        },
+        {
+          "id": "glycogen",
+          "name": "Muscle glycogen",
+          "answer": "down",
+          "chain": [
+            "gly",
+            "glycogen"
+          ],
+          "why": "Glycolysis draws mainly on glycogen in the working fibers, and it is wasteful, so the store drops quickly."
+        },
+        {
+          "id": "atp",
+          "name": "ATP in the fibers",
+          "answer": "down",
+          "chain": [
+            "cp",
+            "gly",
+            "remake"
+          ],
+          "why": "It falls only modestly, to roughly three quarters of its resting level, far less than creatine phosphate, because ATP is remade almost as fast as it is spent."
+        }
+      ]
+    },
+    {
+      "id": "mt-sprint-recovery-l4",
+      "title": "A 30-second sprint, then rest",
+      "topic": "muscle-metabolism",
+      "core": [
+        "energy",
+        "homeostasis"
+      ],
+      "level": 4,
+      "misconception": "the extra breathing after exercise only pays back lactic acid",
+      "setup": "A cyclist sprints all-out for 30 seconds, then sits still for 10 minutes. Predict the changes in her leg muscles during the sprint, and then during recovery.",
+      "stages": [
+        {
+          "id": "sprint",
+          "label": "At the end of the sprint",
+          "prompt": "At the end of the 30-second sprint, compared with rest.",
+          "start": "Her leg fibers spend ATP at a very high rate",
+          "steps": {
+            "cp": "Creatine phosphate hands its phosphate to ADP",
+            "gly": "Glycolysis outpaces the mitochondria, making lactate",
+            "mb": "Myoglobin gives up its oxygen as oxygen inside the fibers falls",
+            "o2": "Aerobic respiration climbs and oxygen use rises"
+          },
+          "variables": [
+            {
+              "id": "cp",
+              "name": "Creatine phosphate",
+              "answer": "down",
+              "chain": [
+                "cp"
+              ],
+              "why": "Creatine phosphate is the fastest source of new ATP, and it is used up within seconds of all-out work."
+            },
+            {
+              "id": "lactate",
+              "name": "Lactate in the fibers",
+              "answer": "up",
+              "chain": [
+                "gly"
+              ],
+              "why": "Thirty seconds in, glycolysis supplies a large share of the ATP and makes pyruvate faster than the mitochondria can use it."
+            },
+            {
+              "id": "mb",
+              "name": "Oxygen held by myoglobin",
+              "answer": "down",
+              "chain": [
+                "mb"
+              ],
+              "why": "Myoglobin binds oxygen tightly and releases it only when oxygen in the fiber falls very low, as it does during hard contractions."
+            },
+            {
+              "id": "o2",
+              "name": "Oxygen use by the leg muscles",
+              "answer": "up",
+              "chain": [
+                "o2"
+              ],
+              "why": "All three systems run from the first second, and the aerobic share grows as the sprint goes on."
+            }
+          ]
+        },
+        {
+          "id": "rest",
+          "label": "During 10 minutes of rest",
+          "prompt": "Over the first 10 minutes of rest, compared with the end of the sprint.",
+          "start": "ATP demand falls back toward rest, but the stores are depleted",
+          "steps": {
+            "epoc": "Extra oxygen keeps aerobic respiration running above resting levels",
+            "rebuild": "Creatine kinase uses ATP from the mitochondria to rebuild creatine phosphate",
+            "reload": "Oxygen from the blood reloads myoglobin",
+            "clear": "Lactate leaves the fibers and is burned or made into glucose"
+          },
+          "variables": [
+            {
+              "id": "cp",
+              "name": "Creatine phosphate",
+              "answer": "up",
+              "chain": [
+                "epoc",
+                "rebuild"
+              ],
+              "why": "The creatine kinase reaction runs backward at rest, so about half the store returns in 30 seconds and nearly all within a few minutes."
+            },
+            {
+              "id": "mb",
+              "name": "Oxygen held by myoglobin",
+              "answer": "up",
+              "chain": [
+                "epoc",
+                "reload"
+              ],
+              "why": "With oxygen use falling and blood still flowing fast, oxygen in the fibers rises and myoglobin refills."
+            },
+            {
+              "id": "lactate",
+              "name": "Lactate in the fibers",
+              "answer": "down",
+              "chain": [
+                "clear"
+              ],
+              "why": "Lactate is a fuel, not a waste: resting fibers and heart muscle burn it, and the liver turns it into glucose."
+            },
+            {
+              "id": "o2",
+              "name": "Oxygen use",
+              "answer": "down",
+              "chain": [
+                "epoc"
+              ],
+              "why": "It falls from its peak but stays above resting for minutes. That excess post-exercise oxygen consumption pays for rebuilding the stores and the other costs of recovery."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mt-hitting-the-wall",
+      "title": "Mile 20 of a marathon on no food",
+      "topic": "muscle-metabolism",
+      "core": [
+        "energy"
+      ],
+      "level": 2,
+      "misconception": "hitting the wall means the muscles have run out of ATP",
+      "setup": "A runner who has eaten nothing during a marathon suddenly slows sharply at about mile 20. Predict the changes in her leg muscles, compared with mile 10.",
+      "start": "Her muscle glycogen is nearly used up",
+      "steps": {
+        "glycogen": "Little glycogen is left to feed glycolysis and aerobic respiration",
+        "fat": "Fatty acids become the main fuel",
+        "slow": "Burning fat alone cannot remake ATP fast enough for her pace",
+        "atp": "Force falls before ATP can fall far"
+      },
+      "variables": [
+        {
+          "id": "fat",
+          "name": "Share of ATP made from fatty acids",
+          "answer": "up",
+          "chain": [
+            "glycogen",
+            "fat"
+          ],
+          "why": "With glycogen gone, the fibers lean on fatty acids from fat stored in and around them."
+        },
+        {
+          "id": "pace",
+          "name": "Pace she can hold",
+          "answer": "down",
+          "chain": [
+            "glycogen",
+            "fat",
+            "slow"
+          ],
+          "why": "Fatty acids supply ATP more slowly than glucose does, so the fibers cannot keep up with her race pace. Runners call this hitting the wall."
+        },
+        {
+          "id": "glycogen",
+          "name": "Glycogen in her leg muscles",
+          "answer": "down",
+          "chain": [
+            "glycogen"
+          ],
+          "why": "Hours of running have drawn on the glycogen stored in her fibers, and she has eaten nothing to spare it."
+        },
+        {
+          "id": "atp",
+          "name": "ATP in her fibers",
+          "answer": "none",
+          "chain": [
+            "glycogen",
+            "slow",
+            "atp"
+          ],
+          "why": "Fatigue slows the fibers before ATP can fall far. If ATP did run out, the heads could not let go of actin and the muscle would lock rigid."
+        }
+      ]
+    },
+    {
+      "id": "mt-sprint-vs-marathon",
+      "title": "Marathon pace, then a sprint to the line",
+      "topic": "fiber-types",
+      "theme": "a sprint vs a marathon",
+      "core": [
+        "energy",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the same fibers do all the work at every intensity",
+      "setup": "A runner has held marathon pace for hours, then breaks into an all-out sprint for the finish line. Predict the changes in her leg muscles during the sprint, compared with marathon pace.",
+      "start": "Her leg muscles must produce near-maximal force",
+      "steps": {
+        "drive": "Her motor neurons are driven much harder",
+        "fg": "By the size principle, the large motor units, made of fast glycolytic fibers, join in",
+        "gly": "Fast glycolytic fibers make their ATP mainly by glycolysis",
+        "lac": "Glycolysis outruns the mitochondria, so lactate is made",
+        "tire": "Glycogen falls and phosphate builds up quickly in these fibers"
+      },
+      "variables": [
+        {
+          "id": "fg",
+          "name": "Fast glycolytic fibers working",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "fg"
+          ],
+          "why": "At marathon pace, small motor units of slow oxidative fibers do most of the work. Only near-maximal force brings in the largest units."
+        },
+        {
+          "id": "gly",
+          "name": "Rate of anaerobic glycolysis",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "fg",
+            "gly"
+          ],
+          "why": "The newly recruited fibers have few mitochondria and plenty of glycolytic enzymes, and every working fiber’s ATP demand rises steeply."
+        },
+        {
+          "id": "lactate",
+          "name": "Lactate production",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "fg",
+            "gly",
+            "lac"
+          ],
+          "why": "Pyruvate from fast glycolysis outpaces the mitochondria and is turned into lactate, regenerating NAD+."
+        },
+        {
+          "id": "share",
+          "name": "Share of ATP from aerobic respiration",
+          "answer": "down",
+          "chain": [
+            "drive",
+            "fg",
+            "gly"
+          ],
+          "why": "Aerobic respiration keeps running, but glycolysis now supplies a much bigger share of a far larger total."
+        },
+        {
+          "id": "hold",
+          "name": "How long she can hold this pace",
+          "answer": "down",
+          "chain": [
+            "drive",
+            "fg",
+            "gly",
+            "tire"
+          ],
+          "why": "Fast glycolytic fibers fatigue within a minute or two, so the sprint cannot last the way the steady pace did."
+        }
+      ]
+    },
+    {
+      "id": "mt-endurance-training",
+      "title": "Eight weeks of endurance running",
+      "topic": "fiber-types",
+      "core": [
+        "energy",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "training changes how many muscle fibers you have",
+      "setup": "A previously inactive adult runs 30 minutes a day, five days a week, for eight weeks. Predict the changes in his leg muscles, compared with before training.",
+      "start": "His leg fibers repeatedly work hard aerobically",
+      "steps": {
+        "mito": "Fibers build more mitochondria and aerobic enzymes",
+        "mb": "Fibers make more myoglobin",
+        "lowo2": "Low oxygen and fast blood flow during each session release VEGF",
+        "angio": "New capillaries sprout by angiogenesis",
+        "shift": "Fast glycolytic fibers take on the properties of fast oxidative fibers",
+        "count": "Adult skeletal muscle adds few if any fibers"
+      },
+      "variables": [
+        {
+          "id": "mito",
+          "name": "Mitochondria per fiber",
+          "answer": "up",
+          "chain": [
+            "mito"
+          ],
+          "why": "Repeated aerobic work stimulates each fiber to build more mitochondria, so it can make more ATP with oxygen."
+        },
+        {
+          "id": "cap",
+          "name": "Capillaries around each fiber",
+          "answer": "up",
+          "chain": [
+            "lowo2",
+            "angio"
+          ],
+          "why": "VEGF makes the endothelial cells of nearby capillaries divide and sprout, shortening the diffusion distance for oxygen."
+        },
+        {
+          "id": "mb",
+          "name": "Myoglobin content",
+          "answer": "up",
+          "chain": [
+            "mb"
+          ],
+          "why": "More myoglobin stores and shuttles more oxygen from the fiber surface to its mitochondria."
+        },
+        {
+          "id": "fg",
+          "name": "Proportion of fibers with fast glycolytic properties",
+          "answer": "down",
+          "chain": [
+            "shift"
+          ],
+          "why": "Training shifts fast glycolytic fibers toward fast oxidative ones; conversion between slow and fast types is small in adults."
+        },
+        {
+          "id": "number",
+          "name": "Total number of fibers in the muscle",
+          "answer": "none",
+          "chain": [
+            "count"
+          ],
+          "why": "Training changes what each fiber is like, not how many there are."
+        }
+      ]
+    },
+    {
+      "id": "mt-cast-atrophy",
+      "title": "Six weeks in a cast",
+      "topic": "fiber-types",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "a muscle shrinks because it loses fibers",
+      "setup": "A soccer player’s lower leg is in a cast for six weeks. Predict the changes in his calf muscle, compared with the other leg.",
+      "start": "His calf muscle is used far less than usual",
+      "steps": {
+        "break": "Protein is broken down faster than it is made",
+        "myo": "Each fiber loses myofibrils and gets thinner"
+      },
+      "variables": [
+        {
+          "id": "myo",
+          "name": "Myofibrils per fiber",
+          "answer": "down",
+          "chain": [
+            "break",
+            "myo"
+          ],
+          "why": "Disuse tips the balance toward breaking down actin, myosin and other proteins, so fibers lose myofibrils."
+        },
+        {
+          "id": "size",
+          "name": "Diameter of each fiber",
+          "answer": "down",
+          "chain": [
+            "break",
+            "myo"
+          ],
+          "why": "Myofibrils fill most of a fiber, so losing them shrinks its diameter. That is disuse atrophy."
+        },
+        {
+          "id": "number",
+          "name": "Number of fibers in the muscle",
+          "answer": "none",
+          "chain": [
+            "break"
+          ],
+          "why": "The fibers shrink but survive, and they rebuild their myofibrils once the leg is used again."
+        }
+      ]
+    },
+    {
+      "id": "mt-nerve-cut",
+      "title": "The nerve to a muscle is cut",
+      "topic": "fiber-types",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a muscle with no nerve supply atrophies no more than one kept still in a cast",
+      "setup": "A deep cut severs the nerve to a man’s forearm muscles, and the axons do not regrow. Predict the changes in those muscles over the following months, compared with a forearm kept in a cast for the same time.",
+      "start": "The fibers receive no action potentials at all",
+      "steps": {
+        "silent": "No ACh is released at any end plate",
+        "none": "The fibers never contract, not even with low-level activity",
+        "shrink": "Fibers lose myofibrils severely",
+        "replace": "Over months to years, fibers are replaced by fat and connective tissue"
+      },
+      "variables": [
+        {
+          "id": "contract",
+          "name": "Voluntary contraction of the muscles",
+          "answer": "down",
+          "chain": [
+            "silent",
+            "none"
+          ],
+          "why": "A skeletal fiber contracts only when its motor neuron tells it to. With the axons cut, no command arrives."
+        },
+        {
+          "id": "atrophy",
+          "name": "Severity of atrophy",
+          "answer": "up",
+          "chain": [
+            "silent",
+            "none",
+            "shrink"
+          ],
+          "why": "A muscle in a cast still gets some action potentials; a muscle that has lost its motor neurons gets none, so it wastes far more."
+        },
+        {
+          "id": "fibers",
+          "name": "Muscle fibers remaining after many months",
+          "answer": "down",
+          "chain": [
+            "silent",
+            "none",
+            "shrink",
+            "replace"
+          ],
+          "why": "Unless the axons regrow, the fibers are gradually replaced by fat and connective tissue. Disuse atrophy, by contrast, reverses when the limb is used again."
+        }
+      ]
+    },
+    {
+      "id": "mt-mlck-blocked",
+      "title": "A drug blocks myosin light-chain kinase",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "smooth muscle is switched on by troponin, as skeletal muscle is",
+      "setup": "An experimental drug blocks myosin light-chain kinase (MLCK) in a strip of intestine wall, which is then stimulated. Predict the changes, compared with a strip without the drug.",
+      "start": "MLCK cannot be switched on",
+      "steps": {
+        "entry": "Depolarization still opens calcium channels, and calcium enters",
+        "cam": "Calcium still binds calmodulin",
+        "nophos": "Calcium–calmodulin cannot activate the blocked kinase, so no phosphate is put on the myosin heads",
+        "nocycle": "Unphosphorylated heads do not bind actin and cycle"
+      },
+      "variables": [
+        {
+          "id": "ca",
+          "name": "Calcium entering the fibers",
+          "answer": "none",
+          "chain": [
+            "entry"
+          ],
+          "why": "The drug acts on a step after calcium entry, so the calcium channels still open when the fibers depolarize."
+        },
+        {
+          "id": "cam",
+          "name": "Calcium bound to calmodulin",
+          "answer": "none",
+          "chain": [
+            "entry",
+            "cam"
+          ],
+          "why": "Calmodulin is smooth muscle’s calcium sensor and still binds the calcium that arrives. The block is on the enzyme it would switch on."
+        },
+        {
+          "id": "phos",
+          "name": "Phosphorylated myosin heads",
+          "answer": "down",
+          "chain": [
+            "entry",
+            "cam",
+            "nophos"
+          ],
+          "why": "MLCK is the enzyme that moves a phosphate from ATP onto each myosin head. Blocked, it phosphorylates none."
+        },
+        {
+          "id": "force",
+          "name": "Force of contraction",
+          "answer": "down",
+          "chain": [
+            "entry",
+            "cam",
+            "nophos",
+            "nocycle"
+          ],
+          "why": "In smooth muscle the on switch is on myosin. Without phosphate, the heads cannot cycle, so the strip barely contracts despite the calcium."
+        }
+      ]
+    },
+    {
+      "id": "mt-calcium-channel-blocker",
+      "title": "A calcium channel blocker in artery walls",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "blocking calcium entry would weaken skeletal muscle as much as smooth muscle",
+      "setup": "Mrs. Dube takes a drug that blocks voltage-gated calcium channels in the sarcolemma of the smooth muscle in her artery walls. Predict the changes in that smooth muscle, and in her skeletal muscles, compared with before the drug.",
+      "start": "Less calcium enters her arterial smooth muscle fibers from the extracellular fluid",
+      "steps": {
+        "lessca": "Calcium in the smooth muscle cytosol rises less",
+        "cam": "Less calcium–calmodulin forms, so less MLCK is active",
+        "relax": "Fewer myosin heads are phosphorylated, and the muscle relaxes",
+        "wide": "The artery widens",
+        "sr": "Skeletal fibers take their contraction calcium from the SR, released by voltage alone"
+      },
+      "variables": [
+        {
+          "id": "ca",
+          "name": "Calcium in her arterial smooth muscle cytosol",
+          "answer": "down",
+          "chain": [
+            "lessca"
+          ],
+          "why": "Smooth muscle takes much of its calcium from outside the cell through these channels, so blocking them lowers it."
+        },
+        {
+          "id": "tension",
+          "name": "Tension in her artery walls",
+          "answer": "down",
+          "chain": [
+            "lessca",
+            "cam",
+            "relax"
+          ],
+          "why": "With less calcium–calmodulin, MLCK phosphorylates fewer heads and myosin phosphatase wins, so fewer cross-bridges cycle."
+        },
+        {
+          "id": "diam",
+          "name": "Diameter of her arteries",
+          "answer": "up",
+          "chain": [
+            "lessca",
+            "cam",
+            "relax",
+            "wide"
+          ],
+          "why": "Relaxed smooth muscle in the wall lets the vessel widen: vasodilation."
+        },
+        {
+          "id": "skel",
+          "name": "Strength of her skeletal muscle contractions",
+          "answer": "none",
+          "chain": [
+            "sr"
+          ],
+          "why": "A skeletal fiber’s voltage sensor pulls its SR release channel open directly, and its calcium comes from inside the fiber, so the drug leaves it unaffected."
+        }
+      ]
+    },
+    {
+      "id": "mt-latch-state",
+      "title": "An artery wall enters the latch state",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "energy",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "holding tension always costs as much ATP as building it",
+      "setup": "After a period of contraction, calcium in an artery’s smooth muscle falls partway, and myosin phosphatase removes phosphate from heads that are still attached to actin. Predict the changes as the fiber enters the latch state.",
+      "start": "Calcium falls partway, and heads lose their phosphate while still attached",
+      "steps": {
+        "kinase": "Less calcium–calmodulin forms, so less MLCK is active",
+        "latch": "Dephosphorylated heads stay attached, detaching and reattaching very slowly",
+        "cheap": "Each slow cycle still splits one ATP, but cycles are rare",
+        "hold": "Attached latch-bridges keep holding the thin filaments"
+      },
+      "variables": [
+        {
+          "id": "mlck",
+          "name": "MLCK activity",
+          "answer": "down",
+          "chain": [
+            "kinase"
+          ],
+          "why": "MLCK needs calcium–calmodulin to work, and the lower calcium makes less of it."
+        },
+        {
+          "id": "cycling",
+          "name": "Rate of cross-bridge cycling",
+          "answer": "down",
+          "chain": [
+            "kinase",
+            "latch"
+          ],
+          "why": "A head that loses its phosphate while bound does not let go at the normal rate; it becomes a latch-bridge."
+        },
+        {
+          "id": "atp",
+          "name": "ATP used per second",
+          "answer": "down",
+          "chain": [
+            "kinase",
+            "latch",
+            "cheap"
+          ],
+          "why": "Slow cycling means few ATP split per second, often under a tenth of what skeletal muscle would need for the same force."
+        },
+        {
+          "id": "tension",
+          "name": "Tension in the vessel wall",
+          "answer": "none",
+          "chain": [
+            "latch",
+            "hold"
+          ],
+          "why": "The latch-bridges stay attached and keep holding the filaments, so tension stays close to its level before calcium fell, for hours."
+        }
+      ]
+    },
+    {
+      "id": "mt-bladder-filling",
+      "title": "The bladder fills over three hours",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "pressure in a hollow organ always rises as it fills",
+      "setup": "Mr. Yusuf’s urinary bladder slowly fills from 50 mL to 400 mL over three hours. Predict the changes in its wall, compared with when it held 50 mL.",
+      "start": "Urine slowly stretches the smooth muscle of the bladder wall",
+      "steps": {
+        "stretch": "The wall is stretched to several times its resting size",
+        "jump": "Each bit of stretch raises tension in the wall at first",
+        "settle": "Filaments and cross-bridges rearrange, and tension falls back at the new length",
+        "low": "Pressure inside stays low",
+        "ready": "The fibers can still produce force at the longer length"
+      },
+      "variables": [
+        {
+          "id": "length",
+          "name": "Length of the smooth muscle fibers in the wall",
+          "answer": "up",
+          "chain": [
+            "stretch"
+          ],
+          "why": "The wall stretches to hold the extra volume, so its fibers are much longer."
+        },
+        {
+          "id": "pressure",
+          "name": "Pressure inside the bladder",
+          "answer": "none",
+          "chain": [
+            "stretch",
+            "jump",
+            "settle",
+            "low"
+          ],
+          "why": "Stress-relaxation lets the wall’s tension fall back after each stretch, so pressure barely rises as the bladder fills slowly."
+        },
+        {
+          "id": "emptying",
+          "name": "Force the wall can produce when he empties it",
+          "answer": "none",
+          "chain": [
+            "stretch",
+            "ready"
+          ],
+          "why": "Thin filaments can slide along the whole length of each thick filament, so smooth muscle produces force over a wide range of lengths and the full bladder still contracts strongly."
+        }
+      ]
+    },
+    {
+      "id": "mt-heart-attack-l4",
+      "title": "Blood flow stops to part of the heart wall",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "energy",
+        "structure-function"
+      ],
+      "level": 4,
+      "misconception": "heart muscle can switch to anaerobic glycolysis and keep beating",
+      "setup": "During a heart attack, a clot stops blood flow to part of the heart wall. Follow the cardiac muscle in that region over the first minute and then after half an hour.",
+      "stages": [
+        {
+          "id": "first-minute",
+          "label": "The first minute",
+          "prompt": "About a minute after flow stops, compared with before.",
+          "start": "No oxygen reaches the cardiac muscle fibers in the region",
+          "steps": {
+            "aerobic": "Aerobic respiration, the fibers’ main source of ATP, stops",
+            "little": "The fibers have little capacity for anaerobic glycolysis",
+            "stop": "ATP supply falls, and the fibers stop contracting"
+          },
+          "variables": [
+            {
+              "id": "o2atp",
+              "name": "ATP made by aerobic respiration in the region",
+              "answer": "down",
+              "chain": [
+                "aerobic"
+              ],
+              "why": "Cardiac fibers are packed with mitochondria and depend on oxygen from the blood, which has stopped arriving."
+            },
+            {
+              "id": "contract",
+              "name": "Contraction of the fibers in the region",
+              "answer": "down",
+              "chain": [
+                "aerobic",
+                "little",
+                "stop"
+              ],
+              "why": "With little glycolytic capacity to fall back on, the fibers cannot keep up their ATP supply, and they stop contracting within about a minute."
+            },
+            {
+              "id": "rest",
+              "name": "Contraction of heart muscle whose blood flow is intact",
+              "answer": "none",
+              "chain": [
+                "aerobic"
+              ],
+              "why": "Other regions still receive oxygen and keep making ATP aerobically, so they keep beating."
+            }
+          ]
+        },
+        {
+          "id": "half-hour",
+          "label": "After half an hour",
+          "prompt": "About 30 minutes after flow stops, if it has not been restored, compared with the first minute.",
+          "start": "The fibers in the region have gone without oxygen for 20 to 30 minutes",
+          "steps": {
+            "die": "Cardiac fibers begin to die",
+            "leak": "Dying fibers leak their contents, including cardiac troponin, into the blood",
+            "norepair": "Dead cardiac fibers are not replaced by new muscle"
+          },
+          "variables": [
+            {
+              "id": "dead",
+              "name": "Dead cardiac muscle fibers in the region",
+              "answer": "up",
+              "chain": [
+                "die"
+              ],
+              "why": "Cardiac muscle stops contracting within a minute but begins to die only after 20 to 30 minutes without flow, which is why restoring flow quickly saves muscle."
+            },
+            {
+              "id": "troponin",
+              "name": "Cardiac troponin in the blood",
+              "answer": "up",
+              "chain": [
+                "die",
+                "leak"
+              ],
+              "why": "Cardiac troponin differs slightly from the skeletal form, so a blood test that finds it shows heart muscle has been damaged."
+            },
+            {
+              "id": "force",
+              "name": "Force this part of the wall can produce later",
+              "answer": "down",
+              "chain": [
+                "die",
+                "norepair"
+              ],
+              "why": "Heart muscle does not rebuild itself the way skeletal muscle does with its stem cells, so fibers that die leave that part of the wall weaker."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mt-gut-nerves-cut",
+      "title": "A loop of intestine cut off from its nerves",
+      "topic": "smooth-cardiac-muscle",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 1,
+      "misconception": "smooth muscle contracts only when nerves tell it to",
+      "setup": "A surgeon removes a short loop of intestine and places it in warm, oxygenated fluid, cut off from all nerves from the brain and spinal cord. Predict the changes in its wall over the next hour, compared with in the body.",
+      "start": "No signals arrive from the brain and spinal cord",
+      "steps": {
+        "pace": "Pacesetter cells keep producing slow, spontaneous waves",
+        "gap": "Action potentials spread from fiber to fiber through gap junctions"
+      },
+      "variables": [
+        {
+          "id": "rhythm",
+          "name": "Rhythmic contractions of the wall",
+          "answer": "none",
+          "chain": [
+            "pace",
+            "gap"
+          ],
+          "why": "Single-unit smooth muscle is driven by its own pacesetter cells, not by commands from the brain, so the rhythm continues."
+        },
+        {
+          "id": "coord",
+          "name": "Coordination of neighboring fibers",
+          "answer": "none",
+          "chain": [
+            "gap"
+          ],
+          "why": "Gap junctions link the fibers into a sheet, so each wave still spreads and the sheet contracts together."
+        }
+      ]
     }
   ]
 }

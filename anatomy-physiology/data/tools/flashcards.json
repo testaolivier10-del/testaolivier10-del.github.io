@@ -17058,6 +17058,1761 @@
    "front": "Why is the dorsogluteal site (upper outer buttock) avoided?",
    "back": "A large nerve leaving the pelvis below the piriformis lies close by, and thick fat means the needle often misses the muscle.",
    "why": "Vaccines go into the deltoid or, in infants, the vastus lateralis, not the buttock."
+  },
+  {
+   "id": "mt-levels-order",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Levels of skeletal muscle structure",
+   "front": "List the levels of skeletal muscle structure from largest to smallest.",
+   "back": "Whole muscle → fascicle → muscle fiber → myofibril → sarcomere → filaments (thick and thin).",
+   "why": "Each level is a bundle or chain of the level below: fibers are cells, myofibrils are inside cells, filaments are inside myofibrils."
+  },
+  {
+   "id": "mt-fiber-vs-myofibril",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Levels of skeletal muscle structure",
+   "front": "Muscle fiber vs myofibril: which is a cell?",
+   "back": "The muscle fiber is a whole cell with a sarcolemma and many nuclei. A myofibril is a rod of protein filaments inside that cell, with no membrane of its own.",
+   "why": "Both are long and thin and run the length of the fiber, which is why they are confused."
+  },
+  {
+   "id": "mt-epimysium",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Levels of skeletal muscle structure",
+   "front": "Which connective tissue layer wraps the whole muscle?",
+   "back": "The epimysium, a layer of dense irregular connective tissue.",
+   "why": "epi- = upon: it lies on the outside and lets the muscle slide past its neighbors."
+  },
+  {
+   "id": "mt-perimysium",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Levels of skeletal muscle structure",
+   "front": "Which layer wraps each fascicle, and what runs in it?",
+   "back": "The perimysium; the larger blood vessels and nerves run into the muscle along it.",
+   "why": "peri- = around: it surrounds each bundle of about 10 to more than 100 fibers, the grain of meat."
+  },
+  {
+   "id": "mt-endomysium",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Levels of skeletal muscle structure",
+   "front": "Which layer wraps each muscle fiber, and what does it carry?",
+   "back": "The endomysium, thin loose connective tissue holding the capillaries and nerve branches that reach each fiber.",
+   "why": "endo- = within: it is the innermost wrapping, outside each fiber’s sarcolemma."
+  },
+  {
+   "id": "mt-wrappings-tendon",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does the pull of a muscle fiber reach the bone?",
+   "back": "Fiber → endomysium → perimysium → epimysium → tendon → periosteum and bone matrix.",
+   "why": "The three layers are continuous and merge into the tendon, so the pull of every fiber is collected and passed on."
+  },
+  {
+   "id": "mt-sarcolemma",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the sarcolemma?",
+   "back": "The plasma membrane of a muscle fiber; excitable, with a resting potential of about −85 to −90 mV.",
+   "why": "sarc- = flesh, -lemma = husk. Like any plasma membrane it keeps sodium high outside and potassium high inside."
+  },
+  {
+   "id": "mt-sarcoplasm",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What fills most of the sarcoplasm?",
+   "back": "Myofibrils, about 80% of the fiber’s volume, with rows of mitochondria and glycogen granules between them.",
+   "why": "The packed myofibrils also push the fiber’s many nuclei to the edge, just under the sarcolemma."
+  },
+  {
+   "id": "mt-sarcomere-def",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a sarcomere?",
+   "back": "The stretch of myofibril from one Z disc to the next, about 2 to 2.5 µm at rest: the functional unit of skeletal muscle.",
+   "why": "It is the smallest unit that can contract, and thousands of them in series make up each myofibril."
+  },
+  {
+   "id": "mt-a-band",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "A band vs I band",
+   "front": "What is in the A band?",
+   "back": "The full length of the thick filaments, overlapped by thin filaments except in the H zone. It is dark.",
+   "why": "Its length is set by the thick filaments, so it does not change during contraction."
+  },
+  {
+   "id": "mt-i-band",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "A band vs I band",
+   "front": "What is in the I band?",
+   "back": "Thin filaments only. It is light, and a Z disc runs through its middle.",
+   "why": "Its width is the gap between the ends of neighboring thick filaments, so it narrows as the filaments slide."
+  },
+  {
+   "id": "mt-i-band-belongs",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "A band vs I band",
+   "front": "Why does each I band belong to two sarcomeres?",
+   "back": "A Z disc runs through its middle, and the Z disc is the boundary between sarcomeres.",
+   "why": "So each sarcomere contains one A band and half of an I band at each end."
+  },
+  {
+   "id": "mt-h-zone-m-line",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are the H zone and the M line?",
+   "back": "The H zone is the paler middle of the A band, with thick filaments only; the M line runs down its center and holds the thick filaments in place.",
+   "why": "The thin filaments from the two ends do not reach that far, so only thick filaments are there."
+  },
+  {
+   "id": "mt-cross-section",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "A cross-section of a sarcomere shows only thin filaments. Where was the cut?",
+   "back": "Through the I band.",
+   "why": "The I band has thin filaments only; the H zone has thick only; the rest of the A band shows each thick filament ringed by six thin ones."
+  },
+  {
+   "id": "mt-thick-filament",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a thick filament made of?",
+   "back": "About 300 myosin molecules, each with a long two-chain tail, a hinge and two heads, so about 600 heads per filament.",
+   "why": "The tails pack into the shaft; the heads stick out toward the thin filaments, each with an actin-binding site and an ATPase site."
+  },
+  {
+   "id": "mt-head-direction",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do the myosin heads on the two halves of a thick filament point in opposite directions?",
+   "back": "So both halves pull their thin filaments toward the M line, and the Z discs close in from both ends.",
+   "why": "The heads point away from the M line in mirror image, and the middle of the filament is bare of heads."
+  },
+  {
+   "id": "mt-titin",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does titin do?",
+   "back": "This giant elastic protein runs from each Z disc to the M line, lying among the myosin tails; it centers the thick filaments and acts as a spring.",
+   "why": "Stretch a relaxed muscle and titin resists, then helps it recoil."
+  },
+  {
+   "id": "mt-thin-filament",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which three proteins make a thin filament?",
+   "back": "Actin (two twisted strands of beads), tropomyosin (a rod in the groove) and troponin (a small three-protein complex on tropomyosin).",
+   "why": "Actin carries the myosin-binding sites; tropomyosin and troponin form the switch that covers or uncovers them."
+  },
+  {
+   "id": "mt-switch-rest",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "In a resting fiber, what stops the energized myosin heads from binding actin?",
+   "back": "Tropomyosin covers the myosin-binding sites on actin, held there by troponin.",
+   "why": "With almost no calcium in the sarcoplasm, the troponin–tropomyosin switch is off."
+  },
+  {
+   "id": "mt-sr-def",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "T tubule vs sarcoplasmic reticulum",
+   "front": "What is the sarcoplasmic reticulum?",
+   "back": "The smooth endoplasmic reticulum of a muscle fiber, wrapped around every myofibril, specialized to store calcium; its terminal cisternae are the main stores.",
+   "why": "Pumps in its membrane keep calcium inside it thousands of times more concentrated than in the sarcoplasm."
+  },
+  {
+   "id": "mt-t-tubule-def",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "T tubule vs sarcoplasmic reticulum",
+   "front": "What is a T tubule?",
+   "back": "An infolding of the sarcolemma that runs across the fiber, into its depths; its inside is continuous with the extracellular fluid.",
+   "why": "Because its membrane is sarcolemma, it can carry action potentials deep into the fiber."
+  },
+  {
+   "id": "mt-t-vs-sr-job",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "T tubule vs sarcoplasmic reticulum",
+   "front": "T tubule vs SR: which carries the signal and which holds the calcium?",
+   "back": "The T tubule carries the electrical signal; the SR stores the calcium and releases it when signaled.",
+   "why": "The T tubule is an extension of the outside of the cell; the SR is a closed compartment inside it."
+  },
+  {
+   "id": "mt-triad",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "T tubule vs sarcoplasmic reticulum",
+   "front": "What is a triad?",
+   "back": "One T tubule with a terminal cistern of the SR on each side; two per sarcomere in human skeletal muscle, at the A band–I band junctions.",
+   "why": "It places the arriving electrical signal right against the calcium stores."
+  },
+  {
+   "id": "mt-why-t-tubules",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why does a thick skeletal fiber need T tubules?",
+   "back": "Without them, the signal would reach only the outermost myofibrils and calcium from the surface would arrive too late at the center.",
+   "why": "T tubules carry the surface membrane to every triad within a millisecond or two, so the whole fiber acts at once."
+  },
+  {
+   "id": "mt-cardiac-troponin",
+   "topic": "skeletal-muscle-structure",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can a blood test for cardiac troponin detect a heart attack?",
+   "back": "Heart troponin differs slightly from skeletal troponin, so the test finds troponin leaked from dying heart cells and ignores skeletal troponin.",
+   "why": "A hard workout releases the skeletal form, which the test does not pick up."
+  },
+  {
+   "id": "mt-motor-neuron",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What is a motor neuron?",
+   "back": "A neuron that carries commands from the brain or spinal cord out to an effector; for skeletal muscle, its long axon branches to many fibers.",
+   "why": "Each fiber normally gets one branch, at one junction near its middle: its only source of commands."
+  },
+  {
+   "id": "mt-nmj-parts",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Name the three parts of the neuromuscular junction.",
+   "back": "The axon terminal (full of ACh vesicles), the synaptic cleft (about 50 nm) and the motor end plate (folded sarcolemma).",
+   "why": "The end plate’s folds are packed with ACh receptor proteins at their crests and voltage-gated sodium channels in their depths."
+  },
+  {
+   "id": "mt-calcium-release",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What links the nerve impulse to ACh release?",
+   "back": "Calcium: the impulse opens voltage-gated calcium channels, and calcium entering the terminal makes vesicles fuse and release ACh.",
+   "why": "The action potential itself releases nothing; release needs calcium outside the cell."
+  },
+  {
+   "id": "mt-ach-packets",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why is ACh released in fixed packets?",
+   "back": "Each vesicle holds roughly the same amount of ACh, so release comes one vesicle at a time.",
+   "why": "An action potential releases many packets at once; a single vesicle fusing by chance causes only a tiny depolarization."
+  },
+  {
+   "id": "mt-nicotinic",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What kind of receptor protein is on the motor end plate?",
+   "back": "The nicotinic receptor protein, a ligand-gated channel of five subunits that opens when two ACh molecules bind.",
+   "why": "Its pore lets sodium in and potassium out; sodium’s inward push dominates at −90 mV, so the membrane depolarizes."
+  },
+  {
+   "id": "mt-epp-graded",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "End plate potential vs muscle action potential",
+   "front": "Is the end plate potential graded or all-or-none?",
+   "back": "Graded: its size depends on how much ACh is released and how many receptor proteins are available.",
+   "why": "It is local and fades with distance; its job is to bring the neighboring membrane to threshold."
+  },
+  {
+   "id": "mt-ap-allornone",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "End plate potential vs muscle action potential",
+   "front": "What opens the channels of a muscle fiber action potential?",
+   "back": "Depolarization to threshold opens voltage-gated sodium and potassium channels; the action potential is all-or-none.",
+   "why": "Unlike the end plate potential, it is regenerated along the whole fiber and into its T tubules."
+  },
+  {
+   "id": "mt-safety-margin",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What is the safety margin at the neuromuscular junction?",
+   "back": "One motor neuron action potential depolarizes the end plate about three to five times more than needed to reach threshold.",
+   "why": "So every motor neuron action potential triggers one in each fiber, even if some receptor proteins are lost."
+  },
+  {
+   "id": "mt-ache",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What does acetylcholinesterase do?",
+   "back": "It splits ACh into acetate and choline in the cleft within a millisecond or two, ending the signal.",
+   "why": "Choline is taken back into the terminal to make new ACh; neither product opens the channels."
+  },
+  {
+   "id": "mt-one-to-one",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why does a steady contraction need a steady stream of motor neuron action potentials?",
+   "back": "Each impulse gives one brief pulse of ACh, one end plate potential and one fiber action potential.",
+   "why": "AChE clears the cleft after each release, and there are no inhibitory synapses on skeletal fibers."
+  },
+  {
+   "id": "mt-botox",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Drugs, poisons and disease at the junction",
+   "front": "How does botulinum toxin cause weakness?",
+   "back": "It destroys the proteins vesicles need to fuse, so ACh is not released.",
+   "why": "Nerve impulses still arrive, but no transmitter crosses the cleft; tiny local doses relax chosen muscles for months."
+  },
+  {
+   "id": "mt-curare",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Drugs, poisons and disease at the junction",
+   "front": "How do curare-type drugs such as rocuronium paralyze muscle?",
+   "back": "They occupy the ACh binding sites on nicotinic receptor proteins without opening them, so the end plate potential stays below threshold.",
+   "why": "The nerve still fires and releases ACh; the block is competitive, so more ACh can overcome it."
+  },
+  {
+   "id": "mt-neostigmine",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "compare": "Drugs, poisons and disease at the junction",
+   "front": "Why does neostigmine reverse a curare-type drug?",
+   "back": "It blocks acetylcholinesterase, so ACh builds up in the cleft and outcompetes the remaining drug.",
+   "why": "The curare-type block is competitive, so raising ACh restores the end plate potential."
+  },
+  {
+   "id": "mt-organophosphate",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "compare": "Drugs, poisons and disease at the junction",
+   "front": "Why does a large, lasting block of AChE cause weakness rather than stronger contraction?",
+   "back": "The end plate stays depolarized, the nearby voltage-gated sodium channels close and cannot reopen, and the fiber stops firing.",
+   "why": "At first ACh lingers and triggers extra action potentials, so muscles quiver, then they weaken."
+  },
+  {
+   "id": "mt-no-ca-outside",
+   "topic": "neuromuscular-junction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "A nerve–muscle preparation is put in calcium-free fluid. Why does stimulating the nerve fail to make the muscle contract?",
+   "back": "No calcium enters the axon terminal, so no ACh is released.",
+   "why": "Action potentials still reach the terminal; transmitter release is the step that needs outside calcium."
+  },
+  {
+   "id": "mt-ec-def",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What is excitation–contraction coupling?",
+   "back": "The steps that link an action potential on the sarcolemma to the pulling of the myofilaments, with calcium as the link.",
+   "why": "The action potential releases calcium, and calcium turns on contraction."
+  },
+  {
+   "id": "mt-muscle-ap-rmp",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Neuron vs skeletal muscle fiber action potential",
+   "front": "Resting potential: neuron vs skeletal muscle fiber?",
+   "back": "About −70 mV in a neuron; about −85 to −90 mV in a skeletal muscle fiber.",
+   "why": "Both action potentials use voltage-gated sodium then potassium channels."
+  },
+  {
+   "id": "mt-muscle-ap-speed",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Neuron vs skeletal muscle fiber action potential",
+   "front": "How long does a skeletal muscle fiber action potential last, and how fast does it travel?",
+   "back": "About 2 to 5 ms, traveling about 3 to 5 m/s toward both ends of the fiber.",
+   "why": "A large insulated axon conducts up to about 120 m/s, and its action potential lasts about 1 to 2 ms."
+  },
+  {
+   "id": "mt-muscle-ap-trigger",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Neuron vs skeletal muscle fiber action potential",
+   "front": "What does each action potential trigger: neuron vs muscle fiber?",
+   "back": "A neuron’s triggers neurotransmitter release at its axon terminals; a muscle fiber’s triggers calcium release from the SR.",
+   "why": "The fiber’s action potential runs along the sarcolemma and down every T tubule to reach the SR."
+  },
+  {
+   "id": "mt-dhp",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What does the DHP receptor protein do in skeletal muscle?",
+   "back": "It is the voltage sensor in the T tubule membrane: it changes shape when the membrane depolarizes.",
+   "why": "It is named for a family of drugs that bind it, not for any messenger in the body."
+  },
+  {
+   "id": "mt-ryanodine",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What is the ryanodine receptor protein?",
+   "back": "The SR’s calcium release channel, in the membrane of the terminal cistern.",
+   "why": "In skeletal muscle it is physically linked to the voltage sensor, which pulls it open."
+  },
+  {
+   "id": "mt-no-messenger",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "In skeletal muscle, what crosses the gap between the T tubule and the SR to open the release channels?",
+   "back": "Nothing: the voltage sensor is physically linked to the release channel and pulls it open, like a hand pulling a plug.",
+   "why": "Voltage alone does the work. In heart muscle, calcium entering from outside opens the release channels instead."
+  },
+  {
+   "id": "mt-ca-from-inside",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why can a skeletal fiber stimulated directly keep contracting in a calcium-free bath for a while?",
+   "back": "Its trigger is voltage, and its contraction calcium comes from the SR inside the fiber.",
+   "why": "Through its nerve it would stop, because transmitter release needs outside calcium."
+  },
+  {
+   "id": "mt-troponin-switch",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "How does calcium switch on the thin filament?",
+   "back": "Calcium binds troponin, troponin loosens its hold, and tropomyosin rolls deeper into the groove, uncovering the myosin-binding sites.",
+   "why": "Each tropomyosin rod covers seven actin molecules, so one shift uncovers seven sites."
+  },
+  {
+   "id": "mt-ca-is-switch",
+   "topic": "excitation-contraction",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Does calcium power contraction?",
+   "back": "No. ATP powers it; calcium is the switch that allows it.",
+   "why": "While calcium stays on troponin and ATP is available, the filaments keep pulling."
+  },
+  {
+   "id": "mt-timing",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "After one stimulus, when do the action potential, calcium and force peak?",
+   "back": "The action potential is over within about 5 ms; calcium peaks in under 10 ms; force peaks around 35 ms.",
+   "why": "Force lags because slack in the tendon and connective tissue must be taken up, and it lasts until the pumps clear the calcium."
+  },
+  {
+   "id": "mt-relax-active",
+   "topic": "excitation-contraction",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Why is relaxation an active process?",
+   "back": "Calcium must be pumped back into the SR by calcium ATPases against a steep gradient, using ATP.",
+   "why": "Each pump moves two calcium ions for every ATP it splits: primary active transport."
+  },
+  {
+   "id": "mt-relax-ryr",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "During contraction vs during relaxation",
+   "front": "Ryanodine receptor proteins: during contraction vs during relaxation?",
+   "back": "Open during contraction, pulled by the voltage sensors; closed during relaxation.",
+   "why": "When the T tubules return to rest, the voltage sensors return to their resting shape and let go."
+  },
+  {
+   "id": "mt-relax-pumps",
+   "topic": "excitation-contraction",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "During contraction vs during relaxation",
+   "front": "SR calcium pumps: during contraction vs during relaxation?",
+   "back": "Working in both; during contraction they are outpaced by release, during relaxation they win.",
+   "why": "That is why calcium falls only once release stops."
+  },
+  {
+   "id": "mt-relax-sites",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "During contraction vs during relaxation",
+   "front": "Myosin-binding sites on actin: during contraction vs during relaxation?",
+   "back": "Uncovered during contraction; covered by tropomyosin during relaxation.",
+   "why": "With calcium gone from troponin, troponin holds tropomyosin back over the sites."
+  },
+  {
+   "id": "mt-cannot-push",
+   "topic": "excitation-contraction",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What returns a relaxed fiber to its resting length?",
+   "back": "Its own elastic proteins, the pull of opposing muscles and gravity.",
+   "why": "Filaments can only pull; a muscle fiber cannot push itself longer."
+  },
+  {
+   "id": "mt-hypocalcemia",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why does low blood calcium cause muscle spasms, not weakness?",
+   "back": "Low outside calcium lets voltage-gated sodium channels open closer to rest, so nerves and muscle fibers fire on their own.",
+   "why": "Skeletal fibers take their contraction calcium from the SR, so low blood calcium does not starve the filaments."
+  },
+  {
+   "id": "mt-leaky-channel",
+   "topic": "excitation-contraction",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "In the inherited leaky release channel disorder, why does body temperature soar under some anesthetic gases?",
+   "back": "Calcium leaks from the SR nonstop, so pumps and myosin heads split ATP continuously and release heat.",
+   "why": "Muscles lock rigid too. Dantrolene blocks the release channels and stops the leak."
+  },
+  {
+   "id": "mt-sliding",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the sliding filament model?",
+   "back": "During contraction the thin filaments slide past the thick filaments toward the center of the sarcomere; neither filament changes length.",
+   "why": "The evidence: as muscle shortens, the A band keeps its width while the I band and H zone narrow."
+  },
+  {
+   "id": "mt-bands-a",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The bands during contraction",
+   "front": "During contraction, what happens to the A band?",
+   "back": "Nothing: it keeps the same width.",
+   "why": "It is the length of the thick filaments, which do not shorten."
+  },
+  {
+   "id": "mt-bands-i-h",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The bands during contraction",
+   "front": "During contraction, what happens to the I band and the H zone?",
+   "back": "Both narrow; the H zone disappears at full contraction.",
+   "why": "Both are defined by a gap between filaments of the other kind, and overlap closes those gaps."
+  },
+  {
+   "id": "mt-bands-shortening",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "The bands during contraction",
+   "front": "A sarcomere shortens by 0.5 µm. Which band accounts for that shortening?",
+   "back": "The I band: sarcomere length = A band + I band, and the A band does not change.",
+   "why": "The H zone, inside the A band, also closes by 0.5 µm because the thin filaments slide 0.25 µm farther in from each end."
+  },
+  {
+   "id": "mt-cross-bridge",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a cross-bridge?",
+   "back": "A myosin head bound to actin, bridging from a thick filament to a thin one.",
+   "why": "It exists only while the head is attached."
+  },
+  {
+   "id": "mt-cycle-steps",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "List the steps of the cross-bridge cycle.",
+   "back": "Cocked head binds actin → phosphate released, power stroke → ADP released → ATP binds, head lets go → ATP split, head recocks.",
+   "why": "It repeats as long as calcium stays on troponin and ATP is available."
+  },
+  {
+   "id": "mt-power-stroke",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What is the power stroke, and what releases it?",
+   "back": "The head’s pivot toward the M line, dragging the thin filament 5 to 10 nm; binding to actin makes the head release its phosphate, which lets it spring back.",
+   "why": "ADP is released at the end of the stroke, leaving the head tightly bound to actin."
+  },
+  {
+   "id": "mt-atp-detach",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "What ATP does in the cross-bridge cycle",
+   "front": "What makes a myosin head let go of actin?",
+   "back": "The binding of a new ATP, not its splitting.",
+   "why": "In its ATP-bound shape the head no longer grips actin."
+  },
+  {
+   "id": "mt-atp-recock",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "What ATP does in the cross-bridge cycle",
+   "front": "What does splitting ATP do in the cross-bridge cycle?",
+   "back": "It provides the energy that swings the head back into its cocked position.",
+   "why": "The energy is stored in the bent head and released as movement in the next power stroke."
+  },
+  {
+   "id": "mt-atp-relax",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "What ATP does in the cross-bridge cycle",
+   "front": "What is ATP’s third job in a contracting fiber, besides detaching and recocking the heads?",
+   "back": "Powering the SR calcium pumps that return calcium, so the fiber can relax.",
+   "why": "Without it, calcium stays high and the fiber cannot relax."
+  },
+  {
+   "id": "mt-noca-state",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "No calcium vs no ATP",
+   "front": "No calcium but ATP present: what state are the myosin heads in?",
+   "back": "Cocked, holding ADP and phosphate, unattached; the muscle is relaxed and easily stretched.",
+   "why": "Tropomyosin covers the binding sites, so no cross-bridges form."
+  },
+  {
+   "id": "mt-noatp-state",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "No calcium vs no ATP",
+   "front": "Calcium present but no ATP: what state are the myosin heads in?",
+   "back": "Attached to actin and unable to let go; every cross-bridge is locked and the muscle is stiff (rigor).",
+   "why": "The binding sites are uncovered, but no ATP arrives to release the heads."
+  },
+  {
+   "id": "mt-rigor-cause",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "What causes rigor mortis?",
+   "back": "After death ATP runs out: calcium leaks in and uncovers actin, heads bind and stroke, and with no ATP none can let go.",
+   "why": "Locked cross-bridges bolt the filaments together, so the muscles resist stretching."
+  },
+  {
+   "id": "mt-rigor-time",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "When does rigor mortis appear and pass off?",
+   "back": "It is noticeable about 2 to 6 hours after death, complete in about 12 hours, and passes off over one to three days.",
+   "why": "It passes as enzymes from the dead cells break down the proteins holding the filaments together; heat speeds its onset, cold slows it."
+  },
+  {
+   "id": "mt-rigor-not-contraction",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "Is a muscle in rigor mortis strongly contracted?",
+   "back": "No. It develops little force of its own; it is stiff because every cross-bridge is locked and cannot be stretched.",
+   "why": "Adding ATP back to a fiber in rigor in the lab releases it."
+  },
+  {
+   "id": "mt-cycle-speed",
+   "topic": "cross-bridge-cycle",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "What mainly sets how fast a muscle can shorten?",
+   "back": "How fast its myosin heads split ATP, which sets how fast they cycle.",
+   "why": "Fibers whose myosin splits ATP faster contract faster; force depends instead on how many cross-bridges are attached at once."
+  },
+  {
+   "id": "mt-tension-load",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Muscle tension vs load?",
+   "back": "Tension is the force a contracting muscle exerts on what it is attached to; the load is the opposing force.",
+   "why": "Whether the joint moves depends on which is larger."
+  },
+  {
+   "id": "mt-motor-unit",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a motor unit?",
+   "back": "One motor neuron together with all the muscle fibers it supplies.",
+   "why": "One action potential makes every fiber in the unit contract together; the unit’s fibers are scattered through the muscle."
+  },
+  {
+   "id": "mt-unit-size",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Small vs large motor units: which muscles use each?",
+   "back": "Small units (10 to 20 fibers) give fine control, as in the eye and fingers; large units (1,000 or more) give great force, as in the thigh and back.",
+   "why": "The size of a unit sets the step in force when one more unit joins."
+  },
+  {
+   "id": "mt-twitch-phases",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three phases of a muscle twitch.",
+   "back": "Latent period, contraction phase, relaxation phase.",
+   "why": "Relaxation is usually longest, because pumping calcium back takes longer than releasing it."
+  },
+  {
+   "id": "mt-latent",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What happens during the latent period?",
+   "back": "The action potential spreads, calcium is released and binds troponin, and cross-bridges start taking up slack, but tension has not risen yet.",
+   "why": "latent = hidden: the chemistry is under way while the myogram is still flat."
+  },
+  {
+   "id": "mt-summation",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What causes wave summation?",
+   "back": "A second action potential releases calcium before the first pulse has been pumped back, so calcium stays high longer and tension climbs higher.",
+   "why": "Each release is the same size; what changes is the timing."
+  },
+  {
+   "id": "mt-tetanus-types",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Incomplete vs complete tetanus?",
+   "back": "Incomplete (unfused): the fiber relaxes a little between stimuli, giving a wavy plateau. Complete (fused): no relaxation at all, a smooth maximum.",
+   "why": "Complete tetanus is often three to five times the tension of one twitch."
+  },
+  {
+   "id": "mt-tetanus-normal",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Is physiological tetanus normal?",
+   "back": "Yes: your motor units work in incomplete tetanus whenever you hold a cup or stand.",
+   "why": "The disease tetanus is different: a toxin blocks inhibitory neurons in the spinal cord, so muscles lock in spasm."
+  },
+  {
+   "id": "mt-why-summation-possible",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why can skeletal muscle be summed into tetanus?",
+   "back": "Its action potential and refractory period last only a few milliseconds, while its twitch lasts tens of milliseconds.",
+   "why": "So a new action potential can release more calcium while the fiber is still contracting."
+  },
+  {
+   "id": "mt-treppe",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is treppe, and what best explains it?",
+   "back": "In a rested muscle stimulated slowly, each twitch fully relaxes yet peaks a little higher than the last; repeated activity adds phosphate groups to part of the myosin molecule, making cross-bridges respond more strongly to the same calcium.",
+   "why": "Older textbooks blame calcium buildup and warming, which may add a little. Treppe is one reason athletes warm up."
+  },
+  {
+   "id": "mt-recruitment",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are the two ways the nervous system grades the force of a whole muscle?",
+   "back": "Recruitment (how many motor units fire) and firing rate (how fast each fires).",
+   "why": "A fiber’s twitch is all-or-none, so force is graded by numbers and timing, not by making fibers contract harder."
+  },
+  {
+   "id": "mt-size-principle",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What is the size principle?",
+   "back": "Small motor units are recruited first and large ones last, because small motor neurons reach threshold with less input.",
+   "why": "It gives fine steps of force at low effort and big steps near maximum."
+  },
+  {
+   "id": "mt-smooth-movement",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Each motor unit ripples in incomplete tetanus. Why are movements smooth?",
+   "back": "Different units fire out of step, so as one unit’s tension dips, another’s rises, and the ripples cancel at the tendon.",
+   "why": "Rotating which units are active also spreads the work during a long hold."
+  },
+  {
+   "id": "mt-tone",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What produces resting muscle tone?",
+   "back": "Mostly passive elasticity of the connective tissue and elastic proteins; low-level motor unit activity adds to it in postural muscles and when a muscle is stretched.",
+   "why": "For your exam: many textbooks define tone as constant partial contraction from motor units always active at rest; give that if asked."
+  },
+  {
+   "id": "mt-hypo-hyper",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Hypotonia vs hypertonia?",
+   "back": "Hypotonia: low tone, a floppy limb, as after damage to the motor neurons. Hypertonia: high tone, a stiff limb, as after some brain or spinal cord damage.",
+   "why": "Doctors test tone by moving a relaxed limb and feeling its resistance."
+  },
+  {
+   "id": "mt-iso-length",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Isotonic vs isometric contraction",
+   "front": "Isotonic vs isometric: what happens to muscle length?",
+   "back": "Isotonic: length changes (shortens or lengthens) and the joint moves. Isometric: length stays the same and the joint does not move.",
+   "why": "iso- = equal; ton- = tension; metr- = measure (length)."
+  },
+  {
+   "id": "mt-iso-tension",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Isotonic vs isometric contraction",
+   "front": "Isotonic vs isometric: how does tension compare with the load?",
+   "back": "Isotonic: tension is greater than the load (concentric) or less than it (eccentric). Isometric: tension equals the load, or the load cannot move.",
+   "why": "The balance of tension and load decides whether anything moves."
+  },
+  {
+   "id": "mt-iso-work",
+   "topic": "muscle-tension",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Isotonic vs isometric contraction",
+   "front": "Does an isometric contraction do work?",
+   "back": "No external work, because the load does not move, yet ATP is spent and heat is released.",
+   "why": "The cross-bridges cycle and pull, but the filaments do not slide overall."
+  },
+  {
+   "id": "mt-concentric-eccentric",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Isotonic vs isometric contraction",
+   "front": "Concentric vs eccentric contraction?",
+   "back": "Concentric: tension exceeds the load and the muscle shortens (lifting). Eccentric: the load exceeds the tension and the muscle lengthens while braking (lowering).",
+   "why": "Both are isotonic contractions."
+  },
+  {
+   "id": "mt-eccentric-special",
+   "topic": "muscle-tension",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "compare": "Isotonic vs isometric contraction",
+   "front": "What is special about eccentric contractions?",
+   "back": "They hold more tension than an isometric contraction for less ATP, and unaccustomed eccentric work causes the most next-day soreness.",
+   "why": "Cross-bridges are pulled off actin rather than completing their cycle; soreness comes from small injuries to the fibers."
+  },
+  {
+   "id": "mt-lift-starts-isometric",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does every lift begin with an isometric phase?",
+   "back": "Tension must rise until it matches the load before anything moves.",
+   "why": "After that, tension greater than the load shortens the muscle."
+  },
+  {
+   "id": "mt-length-tension",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "At what sarcomere length is tension greatest, and why?",
+   "back": "Around resting length (about 95 to 110% of it), where thin filaments overlap all the heads of the thick filaments without meeting in the middle.",
+   "why": "The largest number of cross-bridges can form there."
+  },
+  {
+   "id": "mt-lt-extremes",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does active tension fall at very long and very short sarcomere lengths?",
+   "back": "Long: the filaments overlap less, reaching zero at about 170%. Short: thin filaments crowd past each other and thick filaments hit the Z discs, reaching zero at about 60%.",
+   "why": "Bones and joints keep most muscles within about 70 to 130% of resting length, near the top of the curve."
+  },
+  {
+   "id": "mt-atp-uses",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "Where does a working muscle fiber spend ATP?",
+   "back": "On cross-bridge cycling, on the SR calcium pumps, and on the sodium–potassium pump.",
+   "why": "In a sprint a muscle can use ATP a hundred times faster than at rest."
+  },
+  {
+   "id": "mt-atp-store",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "How long would the ATP stored in a fiber last at a sprint?",
+   "back": "About 2 seconds; with creatine phosphate, about 10 seconds.",
+   "why": "ATP barely falls in practice, because the fiber remakes it as fast as it spends it."
+  },
+  {
+   "id": "mt-cp-reaction",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Creatine phosphate vs anaerobic glycolysis vs aerobic respiration",
+   "front": "What does creatine kinase do?",
+   "back": "It transfers phosphate from creatine phosphate to ADP: creatine phosphate + ADP → creatine + ATP.",
+   "why": "One fast step, beside the myosin heads, needing no oxygen. At rest the reaction runs backward to rebuild the store."
+  },
+  {
+   "id": "mt-cp-refill",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Creatine phosphate vs anaerobic glycolysis vs aerobic respiration",
+   "front": "How fast is creatine phosphate rebuilt after a sprint?",
+   "back": "About half in 30 seconds and nearly all within a few minutes, using ATP from the mitochondria.",
+   "why": "That is why sprinters rest between repeats."
+  },
+  {
+   "id": "mt-gly-features",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Creatine phosphate vs anaerobic glycolysis vs aerobic respiration",
+   "front": "Anaerobic glycolysis in muscle: fuel, speed and yield?",
+   "back": "Mainly muscle glycogen; about twice as fast as aerobic respiration; only 2 ATP per glucose (3 from glycogen).",
+   "why": "It makes lactate, which regenerates the NAD+ glycolysis needs."
+  },
+  {
+   "id": "mt-aer-features",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "compare": "Creatine phosphate vs anaerobic glycolysis vs aerobic respiration",
+   "front": "Aerobic respiration in muscle: fuel, speed and yield?",
+   "back": "Glucose, fatty acids, lactate and some amino acids; slowest to supply ATP; about 30 to 32 ATP per glucose.",
+   "why": "It runs in mitochondria as long as oxygen and fuel arrive, and supplies over 95% of ATP in gentle exercise."
+  },
+  {
+   "id": "mt-ens-roles",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Creatine phosphate vs anaerobic glycolysis vs aerobic respiration",
+   "front": "Which energy system mainly covers each part of an all-out effort?",
+   "back": "Creatine phosphate: the first ~10 s. Anaerobic glycolysis: ~10 s to 1–2 min. Aerobic respiration: beyond 1–2 min.",
+   "why": "Examples: a jump or 60 m sprint; a 400 m run; a marathon."
+  },
+  {
+   "id": "mt-ens-overlap",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "compare": "Creatine phosphate vs anaerobic glycolysis vs aerobic respiration",
+   "front": "Do the energy systems switch on one after another?",
+   "back": "No: all three run from the first second; what changes is each one’s share.",
+   "why": "Glycolysis peaks within the first half-minute, and aerobic respiration overtakes it at roughly a minute and a quarter."
+  },
+  {
+   "id": "mt-lactate-when",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "When does a muscle fiber make lactate?",
+   "back": "Whenever glycolysis makes pyruvate faster than the mitochondria take it in, even with oxygen present.",
+   "why": "“Anaerobic” describes the pathway, which uses no oxygen, not a fiber with no oxygen at all."
+  },
+  {
+   "id": "mt-lactate-fate",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What happens to lactate made in working muscle?",
+   "back": "Neighboring fibers and the heart burn it, and the liver makes glucose from it; blood lactate returns to rest within about an hour.",
+   "why": "Lactate is a fuel, not a waste product."
+  },
+  {
+   "id": "mt-myoglobin",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What does myoglobin do?",
+   "back": "It stores a little oxygen in the fiber, releasing it only when oxygen falls very low, and shuttles oxygen to the mitochondria.",
+   "why": "It binds oxygen more tightly than the carrier in red blood cells, and makes oxidative fibers dark red."
+  },
+  {
+   "id": "mt-fatigue-causes",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "What are the best-supported causes of peripheral muscle fatigue?",
+   "back": "Phosphate buildup, reduced calcium release and, in long events, glycogen depletion; acid and ion shifts contribute less.",
+   "why": "Causes differ by task, and researchers are still weighing them."
+  },
+  {
+   "id": "mt-fatigue-atp",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "Does ATP run out in a fatigued muscle?",
+   "back": "No: ATP stays near three quarters of its resting level even in severe fatigue.",
+   "why": "If ATP ran out, myosin heads could not detach and the fiber would lock rigid, as in rigor mortis."
+  },
+  {
+   "id": "mt-lactate-myth",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Does lactate cause muscle fatigue or next-day soreness?",
+   "back": "No: lactate is a fuel and does not weaken rested muscle, and it is gone within an hour; soreness comes from small injuries inside the fibers.",
+   "why": "For your exam: many textbooks still blame lactic acid buildup; if that is the only answer offered, choose it."
+  },
+  {
+   "id": "mt-wall",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "What is “hitting the wall” in an endurance event?",
+   "back": "Muscle glycogen runs out, fat burning alone cannot supply ATP fast enough, and pace drops sharply.",
+   "why": "It happens in events lasting well over an hour."
+  },
+  {
+   "id": "mt-central-fatigue",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "Central vs peripheral fatigue?",
+   "back": "Central: the brain and spinal cord send weaker drive to the motor neurons. Peripheral: changes inside the muscle fibers.",
+   "why": "Encouragement or a shock to the nerve can often squeeze out more force in central fatigue."
+  },
+  {
+   "id": "mt-epoc",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What does excess post-exercise oxygen consumption pay for?",
+   "back": "Rebuilding ATP and creatine phosphate, reloading myoglobin and blood oxygen, clearing lactate, and the raised costs of recovery (heat, hormones, breathing, repair).",
+   "why": "For your exam: older books call it the oxygen debt; the terms refer to the same measured oxygen."
+  },
+  {
+   "id": "mt-ft-two-questions",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Slow oxidative vs fast oxidative vs fast glycolytic fibers",
+   "front": "Which two properties sort skeletal muscle fibers into types?",
+   "back": "How fast they contract (set mainly by their myosin) and how they mainly make ATP (oxidative or glycolytic).",
+   "why": "Fast myosin splits ATP several times faster; oxidative fibers rely on mitochondria, glycolytic ones on glycolysis."
+  },
+  {
+   "id": "mt-ft-names",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Slow oxidative vs fast oxidative vs fast glycolytic fibers",
+   "front": "Give the other names of slow oxidative, fast oxidative and fast glycolytic fibers.",
+   "back": "Slow oxidative: slow-twitch, type I. Fast oxidative: type IIa. Fast glycolytic: type IIx.",
+   "why": "FO and FG together are the fast-twitch fibers. Older books say “type IIb”, which human limb muscles barely have."
+  },
+  {
+   "id": "mt-ft-so",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Slow oxidative vs fast oxidative vs fast glycolytic fibers",
+   "front": "Describe slow oxidative fibers.",
+   "back": "Slow; many mitochondria, much myoglobin and many capillaries (red); small diameter; low force; very fatigue resistant; small, first-recruited motor units.",
+   "why": "Used for posture, walking and distance running."
+  },
+  {
+   "id": "mt-ft-fg",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Slow oxidative vs fast oxidative vs fast glycolytic fibers",
+   "front": "Describe fast glycolytic fibers.",
+   "back": "Fast; few mitochondria and little myoglobin (pale); large glycogen stores; large diameter; high force; fatigue within a minute or two; large, last-recruited units.",
+   "why": "Used for jumping, throwing, lifting heavy loads and sprinting."
+  },
+  {
+   "id": "mt-ft-fo",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Slow oxidative vs fast oxidative vs fast glycolytic fibers",
+   "front": "Describe fast oxidative fibers.",
+   "back": "Fast; many mitochondria and much myoglobin (red to pink) with good glycolytic capacity; intermediate diameter and force; fairly fatigue resistant.",
+   "why": "Used for brisk running and middle-distance events."
+  },
+  {
+   "id": "mt-ft-thin",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Slow oxidative vs fast oxidative vs fast glycolytic fibers",
+   "front": "Why are oxidative fibers thin and glycolytic fibers thick?",
+   "back": "Oxidative fibers need a short distance for oxygen to diffuse to their mitochondria; glycolytic fibers do not wait for oxygen, so they can be thick and pack in many myofibrils.",
+   "why": "More myofibrils give fast glycolytic fibers their great force."
+  },
+  {
+   "id": "mt-ft-fg-tire",
+   "topic": "fiber-types",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Slow oxidative vs fast oxidative vs fast glycolytic fibers",
+   "front": "Why do fast glycolytic fibers tire quickly?",
+   "back": "Their glycogen runs down and phosphate builds up quickly.",
+   "why": "They have few mitochondria to remake ATP aerobically."
+  },
+  {
+   "id": "mt-ft-mixture",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Are human muscles made of one fiber type?",
+   "back": "No: every muscle is a mixture, in proportions that follow its job; all fibers in one motor unit are the same type.",
+   "why": "A deep calf muscle that holds posture is often 70 to 80% slow oxidative; eye muscles are mostly fast."
+  },
+  {
+   "id": "mt-ft-recruit",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "By the size principle, which fibers do everyday low-force tasks use?",
+   "back": "Mainly fatigue-resistant slow oxidative fibers, in the small motor units recruited first.",
+   "why": "Fast glycolytic fibers, in the largest units, join only for near-maximal force."
+  },
+  {
+   "id": "mt-ft-inherited",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Does training change the proportion of slow to fast fibers?",
+   "back": "Little in adults: the proportion is strongly inherited. Training changes what each fiber is like.",
+   "why": "Among the fast fibers, training shifts fast glycolytic properties toward fast oxidative."
+  },
+  {
+   "id": "mt-endurance",
+   "topic": "fiber-types",
+   "core": [
+    "energy"
+   ],
+   "level": "recall",
+   "front": "What does endurance training change in muscle?",
+   "back": "More mitochondria, more myoglobin, more capillaries, and fast glycolytic fibers shifting toward fast oxidative.",
+   "why": "The muscle barely grows; its fibers get better at aerobic respiration."
+  },
+  {
+   "id": "mt-angiogenesis",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is angiogenesis, and what drives it in trained muscle?",
+   "back": "The growth of new capillaries by sprouting from existing ones, driven mainly by VEGF released when fibers are low in oxygen and capillaries are sheared.",
+   "why": "VEGF makes nearby endothelial cells divide and migrate into a sprout that joins another capillary."
+  },
+  {
+   "id": "mt-hypertrophy",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How does skeletal muscle grow with resistance training?",
+   "back": "By hypertrophy: each fiber adds myofibrils and thickens, gaining nuclei from muscle stem cells; fiber number stays about the same.",
+   "why": "Fast fibers grow the most; early strength gains come mostly from the nervous system recruiting more units."
+  },
+  {
+   "id": "mt-hyperplasia",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Hypertrophy vs hyperplasia?",
+   "back": "Hypertrophy is growth by enlarging existing cells; hyperplasia is growth by adding cells.",
+   "why": "Smooth muscle can do both, as in the pregnant uterus; adult skeletal muscle grows almost only by hypertrophy."
+  },
+  {
+   "id": "mt-atrophy",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What causes skeletal muscle atrophy?",
+   "back": "Much less use than usual: disuse (cast, bed rest, spaceflight), loss of the motor neuron, or long fasting and serious illness.",
+   "why": "Fibers lose myofibrils as protein is broken down faster than it is made; disuse atrophy is reversible."
+  },
+  {
+   "id": "mt-denervation",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why is atrophy after the nerve is cut worse than atrophy in a cast?",
+   "back": "The fibers receive no action potentials at all, and unless the axon regrows they are replaced by fat and connective tissue.",
+   "why": "A muscle in a cast still gets some activity and rebuilds once used again."
+  },
+  {
+   "id": "mt-satellite",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How does skeletal muscle repair a small injury?",
+   "back": "Muscle stem cells between the sarcolemma and basal lamina divide; their myoblast daughters fuse with the damaged fiber or with each other.",
+   "why": "Mature fibers never divide. After large injuries, fibroblasts fill the gap with scar tissue."
+  },
+  {
+   "id": "mt-formation",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How does a skeletal muscle fiber form?",
+   "back": "Myoblasts divide, line up and fuse into a multinucleated myotube, which fills with myofibrils and matures as its nuclei move to the edge.",
+   "why": "Fusion is why each fiber has many nuclei."
+  },
+  {
+   "id": "mt-sarcopenia",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What causes sarcopenia?",
+   "back": "Loss of motor neurons, shrinking of fast fibers, fewer and less active muscle stem cells, and less activity and protein.",
+   "why": "From about 50, about 1% of muscle mass is lost per year; resistance training builds muscle at any age."
+  },
+  {
+   "id": "mt-sarcopenia-power",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Why does power fall faster than strength with age?",
+   "back": "Fast fibers shrink most, and surviving motor units become fewer but larger.",
+   "why": "Catching yourself when you trip depends on producing force quickly."
+  },
+  {
+   "id": "mt-duchenne",
+   "topic": "fiber-types",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What goes wrong in Duchenne muscular dystrophy?",
+   "back": "Without working dystrophin, each contraction tears the sarcolemma; calcium leaks in, fibers die, and repair eventually falls behind.",
+   "why": "The gene is on the X chromosome, so it mainly affects boys; blood creatine kinase is very high."
+  },
+  {
+   "id": "mt-smooth-structure",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How are the filaments arranged in a smooth muscle fiber?",
+   "back": "In a crisscross lattice anchored to dense bodies, with no sarcomeres, no Z discs and no T tubules.",
+   "why": "Pulling the dense bodies together makes the fiber shorten and pucker; heads along the whole thick filament let it shorten far."
+  },
+  {
+   "id": "mt-smooth-switch",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Skeletal vs smooth vs cardiac contraction mechanism",
+   "front": "In smooth muscle, which protein senses calcium, and where is the switch?",
+   "back": "Calmodulin senses calcium; the switch is on the thick filament: MLCK phosphorylates the myosin heads.",
+   "why": "Smooth muscle has no troponin."
+  },
+  {
+   "id": "mt-smooth-steps",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "List the steps that switch on smooth muscle.",
+   "back": "Calcium rises → binds calmodulin → calcium–calmodulin activates MLCK → MLCK phosphorylates myosin heads → heads bind actin and cycle.",
+   "why": "Relaxation reverses it: calcium falls, MLCK switches off and myosin phosphatase removes the phosphate."
+  },
+  {
+   "id": "mt-smooth-calcium-source",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Skeletal vs smooth vs cardiac contraction mechanism",
+   "front": "Main source of contraction calcium: skeletal vs smooth vs cardiac?",
+   "back": "Skeletal: the SR. Smooth: the extracellular fluid, plus some from the SR. Cardiac: mostly the SR, released when calcium enters from outside.",
+   "why": "Smooth fibers are thin enough for entering calcium to reach the filaments quickly."
+  },
+  {
+   "id": "mt-smooth-balance",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "What sets smooth muscle force besides calcium?",
+   "back": "The balance between MLCK and myosin phosphatase.",
+   "why": "Some signals raise force at the same calcium by slowing the phosphatase; nitric oxide relaxes smooth muscle by lowering calcium and speeding it."
+  },
+  {
+   "id": "mt-latch",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "What is the latch state?",
+   "back": "When phosphate is removed from heads still attached to actin, they detach and reattach very slowly; these latch-bridges hold tension for hours on very little ATP.",
+   "why": "It forms as calcium falls partway; it is how artery walls hold steady tension around the clock."
+  },
+  {
+   "id": "mt-smooth-triggers",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Skeletal vs smooth vs cardiac contraction mechanism",
+   "front": "What can trigger smooth muscle contraction?",
+   "back": "Involuntary nerve fibers, hormones, local chemicals, stretch and spontaneous electrical activity.",
+   "why": "Its nerve fibers release transmitter from swellings along their axons into the tissue fluid, not at neuromuscular junctions."
+  },
+  {
+   "id": "mt-single-unit",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Single-unit vs multi-unit smooth muscle",
+   "front": "Describe single-unit smooth muscle.",
+   "back": "Fibers linked by many gap junctions contract together as one sheet, driven by pacesetter activity and stretch; nerves and hormones adjust them.",
+   "why": "Found in the walls of the stomach, intestines, uterus, urinary bladder and small blood vessels."
+  },
+  {
+   "id": "mt-multi-unit",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Single-unit vs multi-unit smooth muscle",
+   "front": "Describe multi-unit smooth muscle.",
+   "back": "Fibers with few or no gap junctions, each contracting only when its own nerve endings stimulate it; fine, graded control.",
+   "why": "Found in the arrector pili, the muscles of the pupil, larger airways and large arteries."
+  },
+  {
+   "id": "mt-su-mu-stretch",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Single-unit vs multi-unit smooth muscle",
+   "front": "Single-unit vs multi-unit: spontaneous activity and response to stretch?",
+   "back": "Single-unit: spontaneous, and contracts when stretched (also shows stress-relaxation). Multi-unit: rarely spontaneous, little response to stretch.",
+   "why": "Single-unit rhythm comes from pacesetter cells; multi-unit muscle waits for its nerves."
+  },
+  {
+   "id": "mt-pacesetter",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Single-unit vs multi-unit smooth muscle",
+   "front": "What sets the rhythm of single-unit smooth muscle in the gut?",
+   "back": "Pacesetter cells, whose potential rises and falls in slow spontaneous waves; in the stomach and intestines these are mainly the cells of Cajal, linked to the muscle by gap junctions.",
+   "why": "For your exam: “pacesetter cells” is the expected answer; many textbooks call them smooth muscle fibers."
+  },
+  {
+   "id": "mt-stress-relaxation",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is the stress-relaxation response?",
+   "back": "After being stretched, smooth muscle slowly lets its tension fall back while staying at the new length.",
+   "why": "It lets hollow organs such as the bladder fill with little rise in pressure."
+  },
+  {
+   "id": "mt-force-grading",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Skeletal vs smooth vs cardiac contraction mechanism",
+   "front": "How is force graded: skeletal vs smooth vs cardiac?",
+   "back": "Skeletal: recruitment and firing rate. Smooth: calcium level and the MLCK–phosphatase balance. Cardiac: calcium released per beat (and stretch); no motor units.",
+   "why": "Every cardiac fiber contracts with every beat, so the heart cannot recruit more."
+  },
+  {
+   "id": "mt-tetanus-three",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Skeletal vs smooth vs cardiac contraction mechanism",
+   "front": "Can each muscle type be driven into tetanus?",
+   "back": "Skeletal: yes. Smooth: sustained contraction is normal. Cardiac: no.",
+   "why": "A ventricular fiber’s action potential lasts 250 to 300 ms and it cannot fire again until nearly relaxed."
+  },
+  {
+   "id": "mt-gap-junctions",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Skeletal vs smooth vs cardiac contraction mechanism",
+   "front": "Gap junctions between fibers: skeletal vs smooth vs cardiac?",
+   "back": "Skeletal: none. Smooth: many (single-unit) or few (multi-unit). Cardiac: yes, in the intercalated discs.",
+   "why": "Gap junctions let an electrical change spread from fiber to fiber, so linked fibers contract together."
+  },
+  {
+   "id": "mt-atp-hold",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Skeletal vs smooth vs cardiac contraction mechanism",
+   "front": "ATP cost of holding tension: skeletal vs smooth vs cardiac?",
+   "back": "Skeletal: high. Smooth: very low, thanks to latch-bridges. Cardiac: does not hold; it relaxes every beat.",
+   "why": "Latch-bridges cycle very slowly, so few ATP are split per second."
+  },
+  {
+   "id": "mt-autorhythmicity",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is autorhythmicity in the heart?",
+   "back": "The ability to set a rhythm without an outside signal: about 1% of cardiac fibers drift to threshold and fire on their own.",
+   "why": "Their action potentials spread through gap junctions, so a transplanted heart with no nerves still beats."
+  },
+  {
+   "id": "mt-cardiac-calcium",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What opens the SR release channels in cardiac muscle?",
+   "back": "Calcium entering from the extracellular fluid during the action potential.",
+   "why": "In skeletal muscle voltage alone opens them; that is why heart contraction depends on calcium outside the cell."
+  },
+  {
+   "id": "mt-cardiac-aerobic",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "energy"
+   ],
+   "level": "apply",
+   "front": "Why does heart muscle stop contracting within about a minute when its blood flow stops?",
+   "back": "It is almost entirely aerobic, with little capacity for anaerobic glycolysis.",
+   "why": "It begins to die after 20 to 30 minutes without flow, so restoring flow quickly saves muscle."
   }
  ]
 }

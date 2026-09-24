@@ -26641,6 +26641,6989 @@
      }
     }
    ]
+  },
+  {
+   "id": "mt-ec-timing",
+   "title": "One stimulus: action potential, calcium and force",
+   "topic": "excitation-contraction",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "intro": "One skeletal muscle fiber is stimulated once at time zero. From the top: the membrane potential of its sarcolemma, the calcium level in its sarcoplasm and the force it produces. Calcium and force are drawn as a percent of their own peaks. Values are typical, not from one fiber.",
+   "alt": "Three stacked graphs over 150 ms. Top: the membrane potential rests at −90 mV, spikes to +30 mV at about 2 ms and is back at −90 mV by 5 ms. Middle: calcium rises from zero to its peak at about 8 ms, then falls, to about 30 percent by 30 ms and near zero by 60 ms. Bottom: force stays at zero for the first 5 ms, rises to its peak at about 35 ms and falls slowly, to about 10 percent by 100 ms and zero by about 135 ms.",
+   "x": {
+    "min": 0,
+    "max": 150,
+    "label": "Time after the stimulus",
+    "unit": "ms",
+    "ticks": [
+     0,
+     25,
+     50,
+     75,
+     100,
+     125,
+     150
+    ]
+   },
+   "panels": [
+    {
+     "h": 0.8,
+     "y": {
+      "min": -100,
+      "max": 40,
+      "label": "Membrane potential",
+      "unit": "mV",
+      "ticks": [
+       -90,
+       -50,
+       0,
+       30
+      ]
+     },
+     "series": [
+      {
+       "id": "vm",
+       "cls": "accent",
+       "pts": [
+        [
+         0,
+         -90
+        ],
+        [
+         1,
+         -89
+        ],
+        [
+         1.5,
+         -50
+        ],
+        [
+         2,
+         30
+        ],
+        [
+         2.6,
+         10
+        ],
+        [
+         3.4,
+         -55
+        ],
+        [
+         4.3,
+         -84
+        ],
+        [
+         5,
+         -90
+        ],
+        [
+         150,
+         -90
+        ]
+       ],
+       "label": "action potential",
+       "labelAt": [
+        9,
+        15
+       ],
+       "anchor": "start"
+      }
+     ]
+    },
+    {
+     "h": 0.8,
+     "y": {
+      "min": 0,
+      "max": 130,
+      "label": "Calcium in sarcoplasm",
+      "unit": "% of peak",
+      "ticks": [
+       0,
+       50,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "ca",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         3,
+         12
+        ],
+        [
+         4,
+         40
+        ],
+        [
+         5,
+         65
+        ],
+        [
+         6,
+         85
+        ],
+        [
+         8,
+         100
+        ],
+        [
+         10,
+         95
+        ],
+        [
+         15,
+         75
+        ],
+        [
+         20,
+         55
+        ],
+        [
+         25,
+         41
+        ],
+        [
+         30,
+         30
+        ],
+        [
+         40,
+         15
+        ],
+        [
+         50,
+         7
+        ],
+        [
+         60,
+         3
+        ],
+        [
+         80,
+         1
+        ],
+        [
+         100,
+         0
+        ],
+        [
+         150,
+         0
+        ]
+       ],
+       "label": "calcium",
+       "labelAt": [
+        16,
+        95
+       ],
+       "anchor": "start"
+      }
+     ]
+    },
+    {
+     "h": 0.9,
+     "y": {
+      "min": 0,
+      "max": 130,
+      "label": "Force",
+      "unit": "% of peak",
+      "ticks": [
+       0,
+       50,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "force",
+       "cls": "eff",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         5,
+         0
+        ],
+        [
+         7,
+         2
+        ],
+        [
+         10,
+         10
+        ],
+        [
+         15,
+         30
+        ],
+        [
+         20,
+         55
+        ],
+        [
+         25,
+         77
+        ],
+        [
+         30,
+         93
+        ],
+        [
+         35,
+         100
+        ],
+        [
+         40,
+         97
+        ],
+        [
+         50,
+         83
+        ],
+        [
+         60,
+         63
+        ],
+        [
+         70,
+         44
+        ],
+        [
+         80,
+         29
+        ],
+        [
+         90,
+         17
+        ],
+        [
+         100,
+         9
+        ],
+        [
+         110,
+         4
+        ],
+        [
+         120,
+         2
+        ],
+        [
+         135,
+         0.5
+        ],
+        [
+         150,
+         0
+        ]
+       ],
+       "label": "force",
+       "labelAt": [
+        55,
+        95
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "ap",
+     "x0": 0,
+     "x1": 5,
+     "label": "AP"
+    },
+    {
+     "id": "rise",
+     "x0": 5,
+     "x1": 35,
+     "label": "force rising"
+    },
+    {
+     "id": "cafall",
+     "x0": 10,
+     "x1": 60,
+     "label": "calcium falling"
+    },
+    {
+     "id": "tail",
+     "x0": 60,
+     "x1": 135,
+     "label": "force fading"
+    }
+   ],
+   "questions": [
+    {
+     "id": "force-peak",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "At about what time after the stimulus does force peak?",
+     "answer": 35,
+     "tol": 5,
+     "unit": "ms",
+     "show": {
+      "x": 35,
+      "y": 100,
+      "panel": 2
+     },
+     "why": "About 35 ms, long after the action potential ended at about 5 ms and after calcium has already started to fall. Force lags because the filaments must first take up the slack in the tendon and connective tissue."
+    },
+    {
+     "id": "ca-peak",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "At about what time does calcium in the sarcoplasm peak?",
+     "answer": 8,
+     "tol": 3,
+     "unit": "ms",
+     "show": {
+      "x": 8,
+      "y": 100,
+      "panel": 1
+     },
+     "why": "About 8 ms, a few milliseconds after the action potential. The action potential runs down the T tubules, the voltage sensors pull the release channels open, and calcium floods out of the SR within milliseconds."
+    },
+    {
+     "id": "ca-falling",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Between about 10 and 60 ms, the calcium trace falls back toward rest. What is happening to the calcium?",
+     "options": [
+      "The SR’s pumps split ATP to move it back into the SR",
+      "It diffuses out of the fiber into the extracellular fluid",
+      "Troponin absorbs it and breaks it down",
+      "The T tubules carry it back to the surface of the fiber"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "cafall"
+     },
+     "why": {
+      "correct": "The release channels closed when the action potential ended, and the calcium pumps in the SR membrane, each a calcium ATPase, return calcium to the SR against its gradient. That takes tens of milliseconds.",
+      "options": [
+       "Right: active transport back into the SR.",
+       "The calcium came from the SR, and it goes back there; it is not lost from the fiber.",
+       "Troponin binds calcium and lets it go again; nothing breaks calcium down.",
+       "The T tubules carry the electrical signal, not calcium. Their inside is extracellular fluid."
+      ]
+     }
+    },
+    {
+     "id": "force-after-ap",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "The action potential is over by about 5 ms, yet force keeps rising until about 35 ms. Over that stretch, what keeps the filaments pulling?",
+     "options": [
+      "Calcium is still bound to troponin, and ATP keeps the heads cycling",
+      "The action potential keeps running along the T tubules for 30 ms",
+      "Tropomyosin actively pushes the thin filaments inward",
+      "The SR keeps releasing calcium until force peaks"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "rise"
+     },
+     "why": {
+      "correct": "Calcium has not yet been pumped away, so troponin keeps tropomyosin off actin, and with ATP the heads bind, pull and recock again and again. Force builds while they take up the slack.",
+      "options": [
+       "Right: calcium on troponin plus ATP keeps the cycle going.",
+       "Each action potential lasts only 2 to 5 ms, in the T tubules as on the surface.",
+       "Tropomyosin is a blocker, not a motor; the myosin heads do the pulling.",
+       "The release channels close as soon as the membrane returns to rest; calcium is already falling well before force peaks."
+      ]
+     }
+    },
+    {
+     "id": "dantrolene",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "The fiber is treated with dantrolene, which blocks the SR release channels, and stimulated again. How do the calcium and force curves change?",
+     "options": [
+      "Both are much smaller; the action potential is unchanged",
+      "Calcium is unchanged, but force is smaller",
+      "Both last much longer, at the same height",
+      "The action potential disappears, so both stay flat"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "ca-dant",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          2,
+          0
+         ],
+         [
+          3,
+          3.6
+         ],
+         [
+          4,
+          12
+         ],
+         [
+          5,
+          19.5
+         ],
+         [
+          6,
+          25.5
+         ],
+         [
+          8,
+          30
+         ],
+         [
+          10,
+          28.5
+         ],
+         [
+          15,
+          22.5
+         ],
+         [
+          20,
+          16.5
+         ],
+         [
+          25,
+          12.3
+         ],
+         [
+          30,
+          9
+         ],
+         [
+          40,
+          4.5
+         ],
+         [
+          50,
+          2.1
+         ],
+         [
+          60,
+          0.9
+         ],
+         [
+          80,
+          0.3
+         ],
+         [
+          100,
+          0
+         ],
+         [
+          150,
+          0
+         ]
+        ],
+        "label": "with dantrolene",
+        "labelAt": [
+         20,
+         40
+        ],
+        "anchor": "start"
+       },
+       {
+        "id": "f-dant",
+        "panel": 2,
+        "cls": "eff",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          5,
+          0
+         ],
+         [
+          7,
+          0.5
+         ],
+         [
+          10,
+          2.5
+         ],
+         [
+          15,
+          7.5
+         ],
+         [
+          20,
+          13.8
+         ],
+         [
+          25,
+          19.3
+         ],
+         [
+          30,
+          23.3
+         ],
+         [
+          35,
+          25
+         ],
+         [
+          40,
+          24.3
+         ],
+         [
+          50,
+          20.8
+         ],
+         [
+          60,
+          15.8
+         ],
+         [
+          70,
+          11
+         ],
+         [
+          80,
+          7.3
+         ],
+         [
+          90,
+          4.3
+         ],
+         [
+          100,
+          2.3
+         ],
+         [
+          110,
+          1
+         ],
+         [
+          120,
+          0.5
+         ],
+         [
+          135,
+          0.1
+         ],
+         [
+          150,
+          0
+         ]
+        ],
+        "label": "with dantrolene",
+        "labelAt": [
+         45,
+         40
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The sarcolemma still fires, but the voltage sensors cannot pull the blocked channels open, so little calcium leaves the SR. Less calcium on troponin means fewer heads can bind, and force falls.",
+      "options": [
+       "Right: less release, less force.",
+       "Force depends on calcium; if calcium were unchanged, force would be too.",
+       "That is what blocking the pumps would do. Dantrolene blocks release, so there is less calcium, not calcium that lingers.",
+       "Dantrolene acts on the SR, not on the voltage-gated channels of the sarcolemma, so the action potential still fires."
+      ]
+     }
+    },
+    {
+     "id": "pumps-blocked",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Instead, a drug blocks the SR calcium pumps just before the stimulus. How do the calcium and force curves change?",
+     "options": [
+      "Calcium stays high and force stays up long after 60 ms",
+      "Calcium peaks higher and falls faster",
+      "Calcium never rises, so there is no force",
+      "Nothing changes, because the pumps work only at rest"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "ca-pump",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          2,
+          0
+         ],
+         [
+          3,
+          12
+         ],
+         [
+          4,
+          40
+         ],
+         [
+          5,
+          65
+         ],
+         [
+          6,
+          85
+         ],
+         [
+          8,
+          100
+         ],
+         [
+          10,
+          99
+         ],
+         [
+          20,
+          96
+         ],
+         [
+          40,
+          93
+         ],
+         [
+          60,
+          90
+         ],
+         [
+          80,
+          88
+         ],
+         [
+          100,
+          86
+         ],
+         [
+          150,
+          83
+         ]
+        ],
+        "label": "pumps blocked",
+        "labelAt": [
+         95,
+         110
+        ],
+        "anchor": "start"
+       },
+       {
+        "id": "f-pump",
+        "panel": 2,
+        "cls": "eff",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          5,
+          0
+         ],
+         [
+          7,
+          2
+         ],
+         [
+          10,
+          10
+         ],
+         [
+          15,
+          30
+         ],
+         [
+          20,
+          55
+         ],
+         [
+          25,
+          77
+         ],
+         [
+          30,
+          93
+         ],
+         [
+          35,
+          100
+         ],
+         [
+          40,
+          104
+         ],
+         [
+          50,
+          110
+         ],
+         [
+          60,
+          114
+         ],
+         [
+          80,
+          118
+         ],
+         [
+          100,
+          120
+         ],
+         [
+          150,
+          122
+         ]
+        ],
+        "label": "pumps blocked",
+        "labelAt": [
+         95,
+         108
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Release is normal, but nothing returns the calcium to the SR. It stays on troponin, the heads keep cycling while ATP lasts, and the fiber cannot relax.",
+      "options": [
+       "Right: without the pumps there is no relaxation.",
+       "The pumps do not affect how much calcium is released; they only remove it afterward.",
+       "Release goes through the release channels, which still open normally.",
+       "The pumps are what bring calcium down after every release; blocking them is what keeps it high."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "mt-twitch",
+   "title": "One muscle twitch",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "A myogram of one twitch: the tension of a motor unit of slow fibers after a single stimulus at time zero, drawn as a percent of its own peak. Values are typical.",
+   "alt": "Tension against time over 150 ms. Tension stays at zero for about the first 5 ms, rises to its peak at about 35 ms, then falls more slowly, to about 40 percent by 75 ms, 13 percent by 100 ms and near zero by 150 ms.",
+   "x": {
+    "min": 0,
+    "max": 150,
+    "label": "Time after the stimulus",
+    "unit": "ms",
+    "ticks": [
+     0,
+     25,
+     50,
+     75,
+     100,
+     125,
+     150
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 120,
+      "label": "Tension",
+      "unit": "% of peak",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "twitch",
+       "cls": "eff",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         1,
+         0
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         3,
+         0
+        ],
+        [
+         4,
+         0
+        ],
+        [
+         5,
+         0
+        ],
+        [
+         6,
+         0.8
+        ],
+        [
+         7,
+         2.9
+        ],
+        [
+         8,
+         6
+        ],
+        [
+         9,
+         10.1
+        ],
+        [
+         10,
+         14.7
+        ],
+        [
+         11,
+         19.8
+        ],
+        [
+         12,
+         25.2
+        ],
+        [
+         13,
+         30.8
+        ],
+        [
+         14,
+         36.5
+        ],
+        [
+         15,
+         42.2
+        ],
+        [
+         16,
+         47.7
+        ],
+        [
+         17,
+         53.1
+        ],
+        [
+         18,
+         58.3
+        ],
+        [
+         19,
+         63.3
+        ],
+        [
+         20,
+         68
+        ],
+        [
+         21,
+         72.3
+        ],
+        [
+         22,
+         76.4
+        ],
+        [
+         23,
+         80.1
+        ],
+        [
+         24,
+         83.5
+        ],
+        [
+         25,
+         86.6
+        ],
+        [
+         26,
+         89.3
+        ],
+        [
+         27,
+         91.7
+        ],
+        [
+         28,
+         93.7
+        ],
+        [
+         29,
+         95.5
+        ],
+        [
+         30,
+         96.9
+        ],
+        [
+         31,
+         98.1
+        ],
+        [
+         32,
+         98.9
+        ],
+        [
+         33,
+         99.5
+        ],
+        [
+         34,
+         99.9
+        ],
+        [
+         35,
+         100
+        ],
+        [
+         36,
+         99.9
+        ],
+        [
+         37,
+         99.6
+        ],
+        [
+         38,
+         99.1
+        ],
+        [
+         39,
+         98.4
+        ],
+        [
+         40,
+         97.5
+        ],
+        [
+         41,
+         96.5
+        ],
+        [
+         42,
+         95.4
+        ],
+        [
+         43,
+         94.1
+        ],
+        [
+         44,
+         92.7
+        ],
+        [
+         45,
+         91.3
+        ],
+        [
+         46,
+         89.7
+        ],
+        [
+         47,
+         88.1
+        ],
+        [
+         48,
+         86.4
+        ],
+        [
+         49,
+         84.6
+        ],
+        [
+         50,
+         82.8
+        ],
+        [
+         51,
+         80.9
+        ],
+        [
+         52,
+         79
+        ],
+        [
+         53,
+         77.1
+        ],
+        [
+         54,
+         75.2
+        ],
+        [
+         55,
+         73.2
+        ],
+        [
+         56,
+         71.3
+        ],
+        [
+         57,
+         69.3
+        ],
+        [
+         58,
+         67.4
+        ],
+        [
+         59,
+         65.4
+        ],
+        [
+         60,
+         63.5
+        ],
+        [
+         61,
+         61.6
+        ],
+        [
+         62,
+         59.7
+        ],
+        [
+         63,
+         57.8
+        ],
+        [
+         64,
+         56
+        ],
+        [
+         65,
+         54.1
+        ],
+        [
+         66,
+         52.3
+        ],
+        [
+         67,
+         50.6
+        ],
+        [
+         68,
+         48.9
+        ],
+        [
+         69,
+         47.2
+        ],
+        [
+         70,
+         45.5
+        ],
+        [
+         71,
+         43.9
+        ],
+        [
+         72,
+         42.3
+        ],
+        [
+         73,
+         40.8
+        ],
+        [
+         74,
+         39.3
+        ],
+        [
+         75,
+         37.8
+        ],
+        [
+         76,
+         36.4
+        ],
+        [
+         77,
+         35
+        ],
+        [
+         78,
+         33.7
+        ],
+        [
+         79,
+         32.4
+        ],
+        [
+         80,
+         31.1
+        ],
+        [
+         81,
+         29.9
+        ],
+        [
+         82,
+         28.7
+        ],
+        [
+         83,
+         27.6
+        ],
+        [
+         84,
+         26.4
+        ],
+        [
+         85,
+         25.4
+        ],
+        [
+         86,
+         24.3
+        ],
+        [
+         87,
+         23.3
+        ],
+        [
+         88,
+         22.4
+        ],
+        [
+         89,
+         21.4
+        ],
+        [
+         90,
+         20.5
+        ],
+        [
+         91,
+         19.7
+        ],
+        [
+         92,
+         18.8
+        ],
+        [
+         93,
+         18
+        ],
+        [
+         94,
+         17.2
+        ],
+        [
+         95,
+         16.5
+        ],
+        [
+         96,
+         15.8
+        ],
+        [
+         97,
+         15.1
+        ],
+        [
+         98,
+         14.4
+        ],
+        [
+         99,
+         13.8
+        ],
+        [
+         100,
+         13.2
+        ],
+        [
+         101,
+         12.6
+        ],
+        [
+         102,
+         12
+        ],
+        [
+         103,
+         11.5
+        ],
+        [
+         104,
+         10.9
+        ],
+        [
+         105,
+         10.4
+        ],
+        [
+         106,
+         10
+        ],
+        [
+         107,
+         9.5
+        ],
+        [
+         108,
+         9.1
+        ],
+        [
+         109,
+         8.7
+        ],
+        [
+         110,
+         8.3
+        ],
+        [
+         111,
+         7.9
+        ],
+        [
+         112,
+         7.5
+        ],
+        [
+         113,
+         7.1
+        ],
+        [
+         114,
+         6.8
+        ],
+        [
+         115,
+         6.5
+        ],
+        [
+         116,
+         6.2
+        ],
+        [
+         117,
+         5.9
+        ],
+        [
+         118,
+         5.6
+        ],
+        [
+         119,
+         5.3
+        ],
+        [
+         120,
+         5.1
+        ],
+        [
+         121,
+         4.8
+        ],
+        [
+         122,
+         4.6
+        ],
+        [
+         123,
+         4.4
+        ],
+        [
+         124,
+         4.2
+        ],
+        [
+         125,
+         4
+        ],
+        [
+         126,
+         3.8
+        ],
+        [
+         127,
+         3.6
+        ],
+        [
+         128,
+         3.4
+        ],
+        [
+         129,
+         3.2
+        ],
+        [
+         130,
+         3.1
+        ],
+        [
+         131,
+         2.9
+        ],
+        [
+         132,
+         2.8
+        ],
+        [
+         133,
+         2.6
+        ],
+        [
+         134,
+         2.5
+        ],
+        [
+         135,
+         2.4
+        ],
+        [
+         136,
+         2.3
+        ],
+        [
+         137,
+         2.2
+        ],
+        [
+         138,
+         2
+        ],
+        [
+         139,
+         1.9
+        ],
+        [
+         140,
+         1.8
+        ],
+        [
+         141,
+         1.8
+        ],
+        [
+         142,
+         1.7
+        ],
+        [
+         143,
+         1.6
+        ],
+        [
+         144,
+         1.5
+        ],
+        [
+         145,
+         1.4
+        ],
+        [
+         146,
+         1.4
+        ],
+        [
+         147,
+         1.3
+        ],
+        [
+         148,
+         1.2
+        ],
+        [
+         149,
+         1.2
+        ],
+        [
+         150,
+         1.1
+        ]
+       ],
+       "label": "one twitch",
+       "labelAt": [
+        60,
+        80
+       ],
+       "anchor": "start"
+      }
+     ],
+     "marks": [
+      {
+       "x": 0,
+       "y": 0,
+       "label": "stimulus"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "latent",
+     "x0": 0,
+     "x1": 5,
+     "label": "first"
+    },
+    {
+     "id": "contraction",
+     "x0": 5,
+     "x1": 35,
+     "label": "second"
+    },
+    {
+     "id": "relaxation",
+     "x0": 35,
+     "x1": 150,
+     "label": "third"
+    }
+   ],
+   "questions": [
+    {
+     "id": "peak-time",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "At about what time does tension peak?",
+     "answer": 35,
+     "tol": 5,
+     "unit": "ms",
+     "show": {
+      "x": 35,
+      "y": 100
+     },
+     "why": "About 35 ms. Tension climbs while cross-bridges cycle and the elastic parts are pulled taut, and it peaks once calcium is being pumped back faster than it is released."
+    },
+    {
+     "id": "latent",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "The myogram stays flat for the first few milliseconds. Which phase is this, and what is happening?",
+     "options": [
+      "The latent period: the action potential spreads and calcium is released",
+      "The relaxation phase: calcium is pumped back into the SR",
+      "The latent period: the fiber is refractory and cannot respond",
+      "The contraction phase: cross-bridges pull but the filaments do not slide"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "latent"
+     },
+     "why": {
+      "correct": "In the latent period the action potential runs along the sarcolemma and down the T tubules, the SR releases calcium and cross-bridges begin taking up slack. The chemistry is under way, but tension has not shown yet.",
+      "options": [
+       "Right: the hidden period.",
+       "Relaxation comes last, after the peak.",
+       "It is the latent period, but not because the fiber is refractory: the fiber has just fired, and the events that follow its action potential are what fill this time.",
+       "In the contraction phase tension rises; here it has not started."
+      ]
+     }
+    },
+    {
+     "id": "longest",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Which phase lasts longest, and why?",
+     "options": [
+      "Relaxation, because pumping calcium back is slower than releasing it",
+      "Contraction, because cross-bridges cycle slowly in slow fibers",
+      "Relaxation, because the fiber must wait for its refractory period to end",
+      "The latent period, because acetylcholine takes time to cross the cleft"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "relaxation"
+     },
+     "why": {
+      "correct": "Calcium floods out of the SR through open channels in milliseconds, but the pumps must return it against a steep gradient, which takes much longer. Tension fades as calcium leaves troponin.",
+      "options": [
+       "Right: the pumps set the pace of relaxation.",
+       "Here the contraction phase is about 30 ms, shorter than the relaxation phase.",
+       "The refractory period is over within a few milliseconds; relaxation waits on the calcium pumps.",
+       "The latent period is the shortest phase, only a few milliseconds."
+      ]
+     }
+    },
+    {
+     "id": "fast-fiber",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "How would the twitch of a fast fiber, such as one in a muscle that moves the eye, differ?",
+     "options": [
+      "Shorter: it peaks sooner and is over far sooner",
+      "Longer: it rises more slowly but lasts longer",
+      "The same timing, but twice as tall",
+      "The same shape, but it starts later"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "fast",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          2,
+          0
+         ],
+         [
+          3,
+          6
+         ],
+         [
+          4,
+          19.8
+         ],
+         [
+          5,
+          36.5
+         ],
+         [
+          6,
+          53.1
+         ],
+         [
+          7,
+          68
+         ],
+         [
+          8,
+          80.1
+         ],
+         [
+          9,
+          89.3
+         ],
+         [
+          10,
+          95.5
+         ],
+         [
+          11,
+          98.9
+         ],
+         [
+          12,
+          100
+         ],
+         [
+          13,
+          99.1
+         ],
+         [
+          14,
+          96.5
+         ],
+         [
+          15,
+          92.7
+         ],
+         [
+          16,
+          88.1
+         ],
+         [
+          17,
+          82.8
+         ],
+         [
+          18,
+          77.1
+         ],
+         [
+          19,
+          71.3
+         ],
+         [
+          20,
+          65.4
+         ],
+         [
+          21,
+          59.7
+         ],
+         [
+          22,
+          54.1
+         ],
+         [
+          23,
+          48.9
+         ],
+         [
+          24,
+          43.9
+         ],
+         [
+          25,
+          39.3
+         ],
+         [
+          26,
+          35
+         ],
+         [
+          27,
+          31.1
+         ],
+         [
+          28,
+          27.6
+         ],
+         [
+          29,
+          24.3
+         ],
+         [
+          30,
+          21.4
+         ],
+         [
+          31,
+          18.8
+         ],
+         [
+          32,
+          16.5
+         ],
+         [
+          33,
+          14.4
+         ],
+         [
+          34,
+          12.6
+         ],
+         [
+          35,
+          10.9
+         ],
+         [
+          36,
+          9.5
+         ],
+         [
+          37,
+          8.3
+         ],
+         [
+          38,
+          7.1
+         ],
+         [
+          39,
+          6.2
+         ],
+         [
+          40,
+          5.3
+         ],
+         [
+          41,
+          4.6
+         ],
+         [
+          42,
+          4
+         ],
+         [
+          43,
+          3.4
+         ],
+         [
+          44,
+          2.9
+         ],
+         [
+          45,
+          2.5
+         ],
+         [
+          46,
+          2.2
+         ],
+         [
+          47,
+          1.8
+         ],
+         [
+          48,
+          1.6
+         ],
+         [
+          49,
+          1.4
+         ],
+         [
+          50,
+          1.2
+         ],
+         [
+          51,
+          1
+         ],
+         [
+          52,
+          0.8
+         ],
+         [
+          53,
+          0.7
+         ],
+         [
+          54,
+          0.6
+         ],
+         [
+          55,
+          0.5
+         ],
+         [
+          56,
+          0.4
+         ],
+         [
+          57,
+          0.4
+         ],
+         [
+          58,
+          0.3
+         ],
+         [
+          59,
+          0.3
+         ],
+         [
+          60,
+          0.2
+         ],
+         [
+          61,
+          0.2
+         ],
+         [
+          62,
+          0.2
+         ],
+         [
+          63,
+          0.1
+         ],
+         [
+          64,
+          0.1
+         ],
+         [
+          65,
+          0.1
+         ],
+         [
+          66,
+          0.1
+         ],
+         [
+          67,
+          0.1
+         ],
+         [
+          68,
+          0.1
+         ],
+         [
+          69,
+          0.1
+         ],
+         [
+          70,
+          0
+         ],
+         [
+          71,
+          0
+         ],
+         [
+          72,
+          0
+         ],
+         [
+          73,
+          0
+         ],
+         [
+          74,
+          0
+         ],
+         [
+          75,
+          0
+         ],
+         [
+          76,
+          0
+         ],
+         [
+          77,
+          0
+         ],
+         [
+          78,
+          0
+         ],
+         [
+          79,
+          0
+         ],
+         [
+          80,
+          0
+         ],
+         [
+          81,
+          0
+         ],
+         [
+          82,
+          0
+         ],
+         [
+          83,
+          0
+         ],
+         [
+          84,
+          0
+         ],
+         [
+          85,
+          0
+         ],
+         [
+          86,
+          0
+         ],
+         [
+          87,
+          0
+         ],
+         [
+          88,
+          0
+         ],
+         [
+          89,
+          0
+         ],
+         [
+          90,
+          0
+         ],
+         [
+          91,
+          0
+         ],
+         [
+          92,
+          0
+         ],
+         [
+          93,
+          0
+         ],
+         [
+          94,
+          0
+         ],
+         [
+          95,
+          0
+         ],
+         [
+          96,
+          0
+         ],
+         [
+          97,
+          0
+         ],
+         [
+          98,
+          0
+         ],
+         [
+          99,
+          0
+         ],
+         [
+          100,
+          0
+         ],
+         [
+          101,
+          0
+         ],
+         [
+          102,
+          0
+         ],
+         [
+          103,
+          0
+         ],
+         [
+          104,
+          0
+         ],
+         [
+          105,
+          0
+         ],
+         [
+          106,
+          0
+         ],
+         [
+          107,
+          0
+         ],
+         [
+          108,
+          0
+         ],
+         [
+          109,
+          0
+         ],
+         [
+          110,
+          0
+         ],
+         [
+          111,
+          0
+         ],
+         [
+          112,
+          0
+         ],
+         [
+          113,
+          0
+         ],
+         [
+          114,
+          0
+         ],
+         [
+          115,
+          0
+         ],
+         [
+          116,
+          0
+         ],
+         [
+          117,
+          0
+         ],
+         [
+          118,
+          0
+         ],
+         [
+          119,
+          0
+         ],
+         [
+          120,
+          0
+         ],
+         [
+          121,
+          0
+         ],
+         [
+          122,
+          0
+         ],
+         [
+          123,
+          0
+         ],
+         [
+          124,
+          0
+         ],
+         [
+          125,
+          0
+         ],
+         [
+          126,
+          0
+         ],
+         [
+          127,
+          0
+         ],
+         [
+          128,
+          0
+         ],
+         [
+          129,
+          0
+         ],
+         [
+          130,
+          0
+         ],
+         [
+          131,
+          0
+         ],
+         [
+          132,
+          0
+         ],
+         [
+          133,
+          0
+         ],
+         [
+          134,
+          0
+         ],
+         [
+          135,
+          0
+         ],
+         [
+          136,
+          0
+         ],
+         [
+          137,
+          0
+         ],
+         [
+          138,
+          0
+         ],
+         [
+          139,
+          0
+         ],
+         [
+          140,
+          0
+         ],
+         [
+          141,
+          0
+         ],
+         [
+          142,
+          0
+         ],
+         [
+          143,
+          0
+         ],
+         [
+          144,
+          0
+         ],
+         [
+          145,
+          0
+         ],
+         [
+          146,
+          0
+         ],
+         [
+          147,
+          0
+         ],
+         [
+          148,
+          0
+         ],
+         [
+          149,
+          0
+         ],
+         [
+          150,
+          0
+         ]
+        ],
+        "label": "fast fiber",
+        "labelAt": [
+         16,
+         104
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Fast fibers make myosin that splits ATP faster, so their cross-bridges cycle faster, and they pump calcium back into the SR faster. An eye muscle’s twitch can be over in about 10 to 30 ms.",
+      "options": [
+       "Right: faster myosin and faster pumps.",
+       "That describes a slower fiber, not a fast one.",
+       "The y axis is a percent of each twitch’s own peak; what differs between fiber types here is timing.",
+       "A fast fiber starts sooner, not later."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "mt-summation-tetanus",
+   "title": "Twitch, summation and tetanus",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "intro": "The tension of one muscle fiber over one second, as a percent of its maximum. The lower strip marks each stimulus: first a single stimulus, then two stimuli 40 ms apart, then 20 stimuli per second, then 100 per second. Values are from a simple model with typical proportions.",
+   "alt": "Two stacked graphs over 1000 ms. The lower strip shows stimuli: one at 0 ms, two at 200 and 240 ms, then evenly spaced stimuli every 50 ms from 400 to 650 ms and every 10 ms from 750 to 1000 ms. Above, tension from one stimulus rises to a peak of about 25 percent and falls back. Two close stimuli give a higher peak of about 36 percent. At 20 per second, tension climbs in waves to a wavy plateau between about 27 and 35 percent. At 100 per second, tension climbs smoothly to a flat plateau of about 100 percent.",
+   "x": {
+    "min": 0,
+    "max": 1000,
+    "label": "Time",
+    "unit": "ms",
+    "ticks": [
+     0,
+     200,
+     400,
+     600,
+     800,
+     1000
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Tension",
+      "unit": "% of maximum",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "tension",
+       "cls": "eff",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         2,
+         0.6
+        ],
+        [
+         4,
+         2.1
+        ],
+        [
+         6,
+         4.3
+        ],
+        [
+         8,
+         6.7
+        ],
+        [
+         10,
+         9.2
+        ],
+        [
+         12,
+         11.7
+        ],
+        [
+         14,
+         14
+        ],
+        [
+         16,
+         16.2
+        ],
+        [
+         18,
+         18.1
+        ],
+        [
+         20,
+         19.8
+        ],
+        [
+         22,
+         21.2
+        ],
+        [
+         24,
+         22.3
+        ],
+        [
+         26,
+         23.3
+        ],
+        [
+         28,
+         24
+        ],
+        [
+         30,
+         24.5
+        ],
+        [
+         32,
+         24.8
+        ],
+        [
+         34,
+         25
+        ],
+        [
+         36,
+         25
+        ],
+        [
+         38,
+         24.8
+        ],
+        [
+         40,
+         24.6
+        ],
+        [
+         42,
+         24.2
+        ],
+        [
+         44,
+         23.8
+        ],
+        [
+         46,
+         23.2
+        ],
+        [
+         48,
+         22.6
+        ],
+        [
+         50,
+         22
+        ],
+        [
+         52,
+         21.3
+        ],
+        [
+         54,
+         20.6
+        ],
+        [
+         56,
+         19.8
+        ],
+        [
+         58,
+         19
+        ],
+        [
+         60,
+         18.2
+        ],
+        [
+         62,
+         17.4
+        ],
+        [
+         64,
+         16.6
+        ],
+        [
+         66,
+         15.8
+        ],
+        [
+         68,
+         15
+        ],
+        [
+         70,
+         14.3
+        ],
+        [
+         72,
+         13.5
+        ],
+        [
+         74,
+         12.8
+        ],
+        [
+         76,
+         12.1
+        ],
+        [
+         78,
+         11.4
+        ],
+        [
+         80,
+         10.7
+        ],
+        [
+         82,
+         10.1
+        ],
+        [
+         84,
+         9.5
+        ],
+        [
+         86,
+         8.9
+        ],
+        [
+         88,
+         8.3
+        ],
+        [
+         90,
+         7.8
+        ],
+        [
+         92,
+         7.3
+        ],
+        [
+         94,
+         6.8
+        ],
+        [
+         96,
+         6.3
+        ],
+        [
+         98,
+         5.9
+        ],
+        [
+         100,
+         5.5
+        ],
+        [
+         102,
+         5.1
+        ],
+        [
+         104,
+         4.7
+        ],
+        [
+         106,
+         4.4
+        ],
+        [
+         108,
+         4.1
+        ],
+        [
+         110,
+         3.8
+        ],
+        [
+         112,
+         3.5
+        ],
+        [
+         114,
+         3.2
+        ],
+        [
+         116,
+         3
+        ],
+        [
+         118,
+         2.8
+        ],
+        [
+         120,
+         2.5
+        ],
+        [
+         122,
+         2.4
+        ],
+        [
+         124,
+         2.2
+        ],
+        [
+         126,
+         2
+        ],
+        [
+         128,
+         1.8
+        ],
+        [
+         130,
+         1.7
+        ],
+        [
+         132,
+         1.6
+        ],
+        [
+         134,
+         1.4
+        ],
+        [
+         136,
+         1.3
+        ],
+        [
+         138,
+         1.2
+        ],
+        [
+         140,
+         1.1
+        ],
+        [
+         142,
+         1
+        ],
+        [
+         144,
+         0.9
+        ],
+        [
+         146,
+         0.9
+        ],
+        [
+         148,
+         0.8
+        ],
+        [
+         150,
+         0.7
+        ],
+        [
+         152,
+         0.7
+        ],
+        [
+         154,
+         0.6
+        ],
+        [
+         156,
+         0.6
+        ],
+        [
+         158,
+         0.5
+        ],
+        [
+         160,
+         0.5
+        ],
+        [
+         162,
+         0.4
+        ],
+        [
+         164,
+         0.4
+        ],
+        [
+         166,
+         0.4
+        ],
+        [
+         168,
+         0.3
+        ],
+        [
+         170,
+         0.3
+        ],
+        [
+         172,
+         0.3
+        ],
+        [
+         174,
+         0.2
+        ],
+        [
+         176,
+         0.2
+        ],
+        [
+         178,
+         0.2
+        ],
+        [
+         180,
+         0.2
+        ],
+        [
+         182,
+         0.2
+        ],
+        [
+         184,
+         0.2
+        ],
+        [
+         186,
+         0.1
+        ],
+        [
+         188,
+         0.1
+        ],
+        [
+         190,
+         0.1
+        ],
+        [
+         192,
+         0.1
+        ],
+        [
+         194,
+         0.1
+        ],
+        [
+         196,
+         0.1
+        ],
+        [
+         198,
+         0.1
+        ],
+        [
+         200,
+         0.1
+        ],
+        [
+         202,
+         0.7
+        ],
+        [
+         204,
+         2.2
+        ],
+        [
+         206,
+         4.3
+        ],
+        [
+         208,
+         6.7
+        ],
+        [
+         210,
+         9.2
+        ],
+        [
+         212,
+         11.7
+        ],
+        [
+         214,
+         14.1
+        ],
+        [
+         216,
+         16.2
+        ],
+        [
+         218,
+         18.1
+        ],
+        [
+         220,
+         19.8
+        ],
+        [
+         222,
+         21.2
+        ],
+        [
+         224,
+         22.4
+        ],
+        [
+         226,
+         23.3
+        ],
+        [
+         228,
+         24
+        ],
+        [
+         230,
+         24.5
+        ],
+        [
+         232,
+         24.8
+        ],
+        [
+         234,
+         25
+        ],
+        [
+         236,
+         25
+        ],
+        [
+         238,
+         24.9
+        ],
+        [
+         240,
+         24.6
+        ],
+        [
+         242,
+         24.7
+        ],
+        [
+         244,
+         25.5
+        ],
+        [
+         246,
+         26.7
+        ],
+        [
+         248,
+         28
+        ],
+        [
+         250,
+         29.5
+        ],
+        [
+         252,
+         30.9
+        ],
+        [
+         254,
+         32.2
+        ],
+        [
+         256,
+         33.3
+        ],
+        [
+         258,
+         34.2
+        ],
+        [
+         260,
+         35
+        ],
+        [
+         262,
+         35.5
+        ],
+        [
+         264,
+         35.9
+        ],
+        [
+         266,
+         36
+        ],
+        [
+         268,
+         36
+        ],
+        [
+         270,
+         35.9
+        ],
+        [
+         272,
+         35.5
+        ],
+        [
+         274,
+         35.1
+        ],
+        [
+         276,
+         34.5
+        ],
+        [
+         278,
+         33.9
+        ],
+        [
+         280,
+         33.1
+        ],
+        [
+         282,
+         32.2
+        ],
+        [
+         284,
+         31.3
+        ],
+        [
+         286,
+         30.4
+        ],
+        [
+         288,
+         29.3
+        ],
+        [
+         290,
+         28.3
+        ],
+        [
+         292,
+         27.2
+        ],
+        [
+         294,
+         26.1
+        ],
+        [
+         296,
+         25
+        ],
+        [
+         298,
+         23.9
+        ],
+        [
+         300,
+         22.8
+        ],
+        [
+         302,
+         21.7
+        ],
+        [
+         304,
+         20.7
+        ],
+        [
+         306,
+         19.6
+        ],
+        [
+         308,
+         18.6
+        ],
+        [
+         310,
+         17.6
+        ],
+        [
+         312,
+         16.6
+        ],
+        [
+         314,
+         15.7
+        ],
+        [
+         316,
+         14.7
+        ],
+        [
+         318,
+         13.9
+        ],
+        [
+         320,
+         13
+        ],
+        [
+         322,
+         12.2
+        ],
+        [
+         324,
+         11.4
+        ],
+        [
+         326,
+         10.7
+        ],
+        [
+         328,
+         10
+        ],
+        [
+         330,
+         9.3
+        ],
+        [
+         332,
+         8.7
+        ],
+        [
+         334,
+         8.1
+        ],
+        [
+         336,
+         7.6
+        ],
+        [
+         338,
+         7
+        ],
+        [
+         340,
+         6.5
+        ],
+        [
+         342,
+         6.1
+        ],
+        [
+         344,
+         5.6
+        ],
+        [
+         346,
+         5.2
+        ],
+        [
+         348,
+         4.8
+        ],
+        [
+         350,
+         4.5
+        ],
+        [
+         352,
+         4.1
+        ],
+        [
+         354,
+         3.8
+        ],
+        [
+         356,
+         3.5
+        ],
+        [
+         358,
+         3.3
+        ],
+        [
+         360,
+         3
+        ],
+        [
+         362,
+         2.8
+        ],
+        [
+         364,
+         2.5
+        ],
+        [
+         366,
+         2.3
+        ],
+        [
+         368,
+         2.2
+        ],
+        [
+         370,
+         2
+        ],
+        [
+         372,
+         1.8
+        ],
+        [
+         374,
+         1.7
+        ],
+        [
+         376,
+         1.5
+        ],
+        [
+         378,
+         1.4
+        ],
+        [
+         380,
+         1.3
+        ],
+        [
+         382,
+         1.2
+        ],
+        [
+         384,
+         1.1
+        ],
+        [
+         386,
+         1
+        ],
+        [
+         388,
+         0.9
+        ],
+        [
+         390,
+         0.8
+        ],
+        [
+         392,
+         0.8
+        ],
+        [
+         394,
+         0.7
+        ],
+        [
+         396,
+         0.6
+        ],
+        [
+         398,
+         0.6
+        ],
+        [
+         400,
+         0.5
+        ],
+        [
+         402,
+         1.1
+        ],
+        [
+         404,
+         2.6
+        ],
+        [
+         406,
+         4.7
+        ],
+        [
+         408,
+         7
+        ],
+        [
+         410,
+         9.5
+        ],
+        [
+         412,
+         12
+        ],
+        [
+         414,
+         14.3
+        ],
+        [
+         416,
+         16.4
+        ],
+        [
+         418,
+         18.3
+        ],
+        [
+         420,
+         19.9
+        ],
+        [
+         422,
+         21.3
+        ],
+        [
+         424,
+         22.5
+        ],
+        [
+         426,
+         23.4
+        ],
+        [
+         428,
+         24.1
+        ],
+        [
+         430,
+         24.6
+        ],
+        [
+         432,
+         24.9
+        ],
+        [
+         434,
+         25.1
+        ],
+        [
+         436,
+         25.1
+        ],
+        [
+         438,
+         24.9
+        ],
+        [
+         440,
+         24.7
+        ],
+        [
+         442,
+         24.3
+        ],
+        [
+         444,
+         23.8
+        ],
+        [
+         446,
+         23.3
+        ],
+        [
+         448,
+         22.7
+        ],
+        [
+         450,
+         22
+        ],
+        [
+         452,
+         21.8
+        ],
+        [
+         454,
+         22.4
+        ],
+        [
+         456,
+         23.4
+        ],
+        [
+         458,
+         24.6
+        ],
+        [
+         460,
+         26
+        ],
+        [
+         462,
+         27.4
+        ],
+        [
+         464,
+         28.7
+        ],
+        [
+         466,
+         29.9
+        ],
+        [
+         468,
+         30.9
+        ],
+        [
+         470,
+         31.7
+        ],
+        [
+         472,
+         32.3
+        ],
+        [
+         474,
+         32.7
+        ],
+        [
+         476,
+         33
+        ],
+        [
+         478,
+         33.1
+        ],
+        [
+         480,
+         33
+        ],
+        [
+         482,
+         32.8
+        ],
+        [
+         484,
+         32.5
+        ],
+        [
+         486,
+         32
+        ],
+        [
+         488,
+         31.4
+        ],
+        [
+         490,
+         30.7
+        ],
+        [
+         492,
+         30
+        ],
+        [
+         494,
+         29.2
+        ],
+        [
+         496,
+         28.3
+        ],
+        [
+         498,
+         27.4
+        ],
+        [
+         500,
+         26.4
+        ],
+        [
+         502,
+         25.9
+        ],
+        [
+         504,
+         26.1
+        ],
+        [
+         506,
+         26.8
+        ],
+        [
+         508,
+         27.8
+        ],
+        [
+         510,
+         28.9
+        ],
+        [
+         512,
+         30.1
+        ],
+        [
+         514,
+         31.1
+        ],
+        [
+         516,
+         32.1
+        ],
+        [
+         518,
+         32.9
+        ],
+        [
+         520,
+         33.5
+        ],
+        [
+         522,
+         34
+        ],
+        [
+         524,
+         34.3
+        ],
+        [
+         526,
+         34.4
+        ],
+        [
+         528,
+         34.4
+        ],
+        [
+         530,
+         34.2
+        ],
+        [
+         532,
+         33.9
+        ],
+        [
+         534,
+         33.5
+        ],
+        [
+         536,
+         32.9
+        ],
+        [
+         538,
+         32.3
+        ],
+        [
+         540,
+         31.6
+        ],
+        [
+         542,
+         30.8
+        ],
+        [
+         544,
+         29.9
+        ],
+        [
+         546,
+         29
+        ],
+        [
+         548,
+         28
+        ],
+        [
+         550,
+         27
+        ],
+        [
+         552,
+         26.4
+        ],
+        [
+         554,
+         26.6
+        ],
+        [
+         556,
+         27.3
+        ],
+        [
+         558,
+         28.2
+        ],
+        [
+         560,
+         29.3
+        ],
+        [
+         562,
+         30.4
+        ],
+        [
+         564,
+         31.4
+        ],
+        [
+         566,
+         32.3
+        ],
+        [
+         568,
+         33.1
+        ],
+        [
+         570,
+         33.7
+        ],
+        [
+         572,
+         34.2
+        ],
+        [
+         574,
+         34.5
+        ],
+        [
+         576,
+         34.6
+        ],
+        [
+         578,
+         34.6
+        ],
+        [
+         580,
+         34.4
+        ],
+        [
+         582,
+         34
+        ],
+        [
+         584,
+         33.6
+        ],
+        [
+         586,
+         33
+        ],
+        [
+         588,
+         32.4
+        ],
+        [
+         590,
+         31.7
+        ],
+        [
+         592,
+         30.8
+        ],
+        [
+         594,
+         30
+        ],
+        [
+         596,
+         29
+        ],
+        [
+         598,
+         28.1
+        ],
+        [
+         600,
+         27
+        ],
+        [
+         602,
+         26.5
+        ],
+        [
+         604,
+         26.7
+        ],
+        [
+         606,
+         27.3
+        ],
+        [
+         608,
+         28.2
+        ],
+        [
+         610,
+         29.3
+        ],
+        [
+         612,
+         30.4
+        ],
+        [
+         614,
+         31.4
+        ],
+        [
+         616,
+         32.4
+        ],
+        [
+         618,
+         33.1
+        ],
+        [
+         620,
+         33.8
+        ],
+        [
+         622,
+         34.2
+        ],
+        [
+         624,
+         34.5
+        ],
+        [
+         626,
+         34.6
+        ],
+        [
+         628,
+         34.6
+        ],
+        [
+         630,
+         34.4
+        ],
+        [
+         632,
+         34.1
+        ],
+        [
+         634,
+         33.6
+        ],
+        [
+         636,
+         33.1
+        ],
+        [
+         638,
+         32.4
+        ],
+        [
+         640,
+         31.7
+        ],
+        [
+         642,
+         30.8
+        ],
+        [
+         644,
+         30
+        ],
+        [
+         646,
+         29
+        ],
+        [
+         648,
+         28.1
+        ],
+        [
+         650,
+         27.1
+        ],
+        [
+         652,
+         26.5
+        ],
+        [
+         654,
+         26.7
+        ],
+        [
+         656,
+         27.3
+        ],
+        [
+         658,
+         28.2
+        ],
+        [
+         660,
+         29.3
+        ],
+        [
+         662,
+         30.4
+        ],
+        [
+         664,
+         31.4
+        ],
+        [
+         666,
+         32.4
+        ],
+        [
+         668,
+         33.1
+        ],
+        [
+         670,
+         33.8
+        ],
+        [
+         672,
+         34.2
+        ],
+        [
+         674,
+         34.5
+        ],
+        [
+         676,
+         34.6
+        ],
+        [
+         678,
+         34.6
+        ],
+        [
+         680,
+         34.4
+        ],
+        [
+         682,
+         34.1
+        ],
+        [
+         684,
+         33.6
+        ],
+        [
+         686,
+         33.1
+        ],
+        [
+         688,
+         32.4
+        ],
+        [
+         690,
+         31.7
+        ],
+        [
+         692,
+         30.8
+        ],
+        [
+         694,
+         30
+        ],
+        [
+         696,
+         29
+        ],
+        [
+         698,
+         28.1
+        ],
+        [
+         700,
+         27.1
+        ],
+        [
+         702,
+         26
+        ],
+        [
+         704,
+         25
+        ],
+        [
+         706,
+         23.9
+        ],
+        [
+         708,
+         22.9
+        ],
+        [
+         710,
+         21.8
+        ],
+        [
+         712,
+         20.8
+        ],
+        [
+         714,
+         19.7
+        ],
+        [
+         716,
+         18.7
+        ],
+        [
+         718,
+         17.7
+        ],
+        [
+         720,
+         16.8
+        ],
+        [
+         722,
+         15.9
+        ],
+        [
+         724,
+         14.9
+        ],
+        [
+         726,
+         14.1
+        ],
+        [
+         728,
+         13.2
+        ],
+        [
+         730,
+         12.4
+        ],
+        [
+         732,
+         11.7
+        ],
+        [
+         734,
+         10.9
+        ],
+        [
+         736,
+         10.2
+        ],
+        [
+         738,
+         9.6
+        ],
+        [
+         740,
+         8.9
+        ],
+        [
+         742,
+         8.3
+        ],
+        [
+         744,
+         7.8
+        ],
+        [
+         746,
+         7.2
+        ],
+        [
+         748,
+         6.7
+        ],
+        [
+         750,
+         6.2
+        ],
+        [
+         752,
+         6.4
+        ],
+        [
+         754,
+         7.4
+        ],
+        [
+         756,
+         9.1
+        ],
+        [
+         758,
+         11
+        ],
+        [
+         760,
+         13.1
+        ],
+        [
+         762,
+         15.8
+        ],
+        [
+         764,
+         19.1
+        ],
+        [
+         766,
+         22.6
+        ],
+        [
+         768,
+         26.2
+        ],
+        [
+         770,
+         29.6
+        ],
+        [
+         772,
+         33.2
+        ],
+        [
+         774,
+         37
+        ],
+        [
+         776,
+         40.8
+        ],
+        [
+         778,
+         44.4
+        ],
+        [
+         780,
+         47.6
+        ],
+        [
+         782,
+         50.8
+        ],
+        [
+         784,
+         54.1
+        ],
+        [
+         786,
+         57.3
+        ],
+        [
+         788,
+         60.2
+        ],
+        [
+         790,
+         62.8
+        ],
+        [
+         792,
+         65.2
+        ],
+        [
+         794,
+         67.8
+        ],
+        [
+         796,
+         70.1
+        ],
+        [
+         798,
+         72.3
+        ],
+        [
+         800,
+         74.1
+        ],
+        [
+         802,
+         75.9
+        ],
+        [
+         804,
+         77.7
+        ],
+        [
+         806,
+         79.5
+        ],
+        [
+         808,
+         81
+        ],
+        [
+         810,
+         82.3
+        ],
+        [
+         812,
+         83.5
+        ],
+        [
+         814,
+         84.8
+        ],
+        [
+         816,
+         86
+        ],
+        [
+         818,
+         87.1
+        ],
+        [
+         820,
+         87.9
+        ],
+        [
+         822,
+         88.8
+        ],
+        [
+         824,
+         89.7
+        ],
+        [
+         826,
+         90.5
+        ],
+        [
+         828,
+         91.3
+        ],
+        [
+         830,
+         91.8
+        ],
+        [
+         832,
+         92.4
+        ],
+        [
+         834,
+         93
+        ],
+        [
+         836,
+         93.6
+        ],
+        [
+         838,
+         94.1
+        ],
+        [
+         840,
+         94.5
+        ],
+        [
+         842,
+         94.8
+        ],
+        [
+         844,
+         95.3
+        ],
+        [
+         846,
+         95.7
+        ],
+        [
+         848,
+         96.1
+        ],
+        [
+         850,
+         96.3
+        ],
+        [
+         852,
+         96.5
+        ],
+        [
+         854,
+         96.8
+        ],
+        [
+         856,
+         97.1
+        ],
+        [
+         858,
+         97.3
+        ],
+        [
+         860,
+         97.4
+        ],
+        [
+         862,
+         97.6
+        ],
+        [
+         864,
+         97.8
+        ],
+        [
+         866,
+         98
+        ],
+        [
+         868,
+         98.2
+        ],
+        [
+         870,
+         98.2
+        ],
+        [
+         872,
+         98.3
+        ],
+        [
+         874,
+         98.5
+        ],
+        [
+         876,
+         98.7
+        ],
+        [
+         878,
+         98.8
+        ],
+        [
+         880,
+         98.8
+        ],
+        [
+         882,
+         98.8
+        ],
+        [
+         884,
+         98.9
+        ],
+        [
+         886,
+         99.1
+        ],
+        [
+         888,
+         99.1
+        ],
+        [
+         890,
+         99.1
+        ],
+        [
+         892,
+         99.1
+        ],
+        [
+         894,
+         99.2
+        ],
+        [
+         896,
+         99.3
+        ],
+        [
+         898,
+         99.4
+        ],
+        [
+         900,
+         99.3
+        ],
+        [
+         902,
+         99.3
+        ],
+        [
+         904,
+         99.4
+        ],
+        [
+         906,
+         99.5
+        ],
+        [
+         908,
+         99.5
+        ],
+        [
+         910,
+         99.4
+        ],
+        [
+         912,
+         99.4
+        ],
+        [
+         914,
+         99.5
+        ],
+        [
+         916,
+         99.6
+        ],
+        [
+         918,
+         99.6
+        ],
+        [
+         920,
+         99.5
+        ],
+        [
+         922,
+         99.5
+        ],
+        [
+         924,
+         99.6
+        ],
+        [
+         926,
+         99.7
+        ],
+        [
+         928,
+         99.7
+        ],
+        [
+         930,
+         99.6
+        ],
+        [
+         932,
+         99.5
+        ],
+        [
+         934,
+         99.6
+        ],
+        [
+         936,
+         99.7
+        ],
+        [
+         938,
+         99.7
+        ],
+        [
+         940,
+         99.6
+        ],
+        [
+         942,
+         99.6
+        ],
+        [
+         944,
+         99.6
+        ],
+        [
+         946,
+         99.7
+        ],
+        [
+         948,
+         99.7
+        ],
+        [
+         950,
+         99.6
+        ],
+        [
+         952,
+         99.6
+        ],
+        [
+         954,
+         99.7
+        ],
+        [
+         956,
+         99.7
+        ],
+        [
+         958,
+         99.8
+        ],
+        [
+         960,
+         99.7
+        ],
+        [
+         962,
+         99.6
+        ],
+        [
+         964,
+         99.7
+        ],
+        [
+         966,
+         99.7
+        ],
+        [
+         968,
+         99.8
+        ],
+        [
+         970,
+         99.7
+        ],
+        [
+         972,
+         99.6
+        ],
+        [
+         974,
+         99.7
+        ],
+        [
+         976,
+         99.8
+        ],
+        [
+         978,
+         99.8
+        ],
+        [
+         980,
+         99.7
+        ],
+        [
+         982,
+         99.6
+        ],
+        [
+         984,
+         99.7
+        ],
+        [
+         986,
+         99.8
+        ],
+        [
+         988,
+         99.8
+        ],
+        [
+         990,
+         99.7
+        ],
+        [
+         992,
+         99.6
+        ],
+        [
+         994,
+         99.7
+        ],
+        [
+         996,
+         99.8
+        ],
+        [
+         998,
+         99.8
+        ],
+        [
+         1000,
+         99.7
+        ]
+       ],
+       "label": "tension",
+       "labelAt": [
+        560,
+        72
+       ],
+       "anchor": "middle"
+      }
+     ]
+    },
+    {
+     "h": 0.35,
+     "y": {
+      "min": 0,
+      "max": 1.2,
+      "label": "Stimuli",
+      "unitless": true,
+      "ticks": []
+     },
+     "series": [
+      {
+       "id": "stim",
+       "cls": "accent",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         0,
+         1
+        ],
+        [
+         0.01,
+         0
+        ],
+        [
+         200,
+         0
+        ],
+        [
+         200,
+         1
+        ],
+        [
+         200.01,
+         0
+        ],
+        [
+         240,
+         0
+        ],
+        [
+         240,
+         1
+        ],
+        [
+         240.01,
+         0
+        ],
+        [
+         400,
+         0
+        ],
+        [
+         400,
+         1
+        ],
+        [
+         400.01,
+         0
+        ],
+        [
+         450,
+         0
+        ],
+        [
+         450,
+         1
+        ],
+        [
+         450.01,
+         0
+        ],
+        [
+         500,
+         0
+        ],
+        [
+         500,
+         1
+        ],
+        [
+         500.01,
+         0
+        ],
+        [
+         550,
+         0
+        ],
+        [
+         550,
+         1
+        ],
+        [
+         550.01,
+         0
+        ],
+        [
+         600,
+         0
+        ],
+        [
+         600,
+         1
+        ],
+        [
+         600.01,
+         0
+        ],
+        [
+         650,
+         0
+        ],
+        [
+         650,
+         1
+        ],
+        [
+         650.01,
+         0
+        ],
+        [
+         750,
+         0
+        ],
+        [
+         750,
+         1
+        ],
+        [
+         750.01,
+         0
+        ],
+        [
+         760,
+         0
+        ],
+        [
+         760,
+         1
+        ],
+        [
+         760.01,
+         0
+        ],
+        [
+         770,
+         0
+        ],
+        [
+         770,
+         1
+        ],
+        [
+         770.01,
+         0
+        ],
+        [
+         780,
+         0
+        ],
+        [
+         780,
+         1
+        ],
+        [
+         780.01,
+         0
+        ],
+        [
+         790,
+         0
+        ],
+        [
+         790,
+         1
+        ],
+        [
+         790.01,
+         0
+        ],
+        [
+         800,
+         0
+        ],
+        [
+         800,
+         1
+        ],
+        [
+         800.01,
+         0
+        ],
+        [
+         810,
+         0
+        ],
+        [
+         810,
+         1
+        ],
+        [
+         810.01,
+         0
+        ],
+        [
+         820,
+         0
+        ],
+        [
+         820,
+         1
+        ],
+        [
+         820.01,
+         0
+        ],
+        [
+         830,
+         0
+        ],
+        [
+         830,
+         1
+        ],
+        [
+         830.01,
+         0
+        ],
+        [
+         840,
+         0
+        ],
+        [
+         840,
+         1
+        ],
+        [
+         840.01,
+         0
+        ],
+        [
+         850,
+         0
+        ],
+        [
+         850,
+         1
+        ],
+        [
+         850.01,
+         0
+        ],
+        [
+         860,
+         0
+        ],
+        [
+         860,
+         1
+        ],
+        [
+         860.01,
+         0
+        ],
+        [
+         870,
+         0
+        ],
+        [
+         870,
+         1
+        ],
+        [
+         870.01,
+         0
+        ],
+        [
+         880,
+         0
+        ],
+        [
+         880,
+         1
+        ],
+        [
+         880.01,
+         0
+        ],
+        [
+         890,
+         0
+        ],
+        [
+         890,
+         1
+        ],
+        [
+         890.01,
+         0
+        ],
+        [
+         900,
+         0
+        ],
+        [
+         900,
+         1
+        ],
+        [
+         900.01,
+         0
+        ],
+        [
+         910,
+         0
+        ],
+        [
+         910,
+         1
+        ],
+        [
+         910.01,
+         0
+        ],
+        [
+         920,
+         0
+        ],
+        [
+         920,
+         1
+        ],
+        [
+         920.01,
+         0
+        ],
+        [
+         930,
+         0
+        ],
+        [
+         930,
+         1
+        ],
+        [
+         930.01,
+         0
+        ],
+        [
+         940,
+         0
+        ],
+        [
+         940,
+         1
+        ],
+        [
+         940.01,
+         0
+        ],
+        [
+         950,
+         0
+        ],
+        [
+         950,
+         1
+        ],
+        [
+         950.01,
+         0
+        ],
+        [
+         960,
+         0
+        ],
+        [
+         960,
+         1
+        ],
+        [
+         960.01,
+         0
+        ],
+        [
+         970,
+         0
+        ],
+        [
+         970,
+         1
+        ],
+        [
+         970.01,
+         0
+        ],
+        [
+         980,
+         0
+        ],
+        [
+         980,
+         1
+        ],
+        [
+         980.01,
+         0
+        ],
+        [
+         990,
+         0
+        ],
+        [
+         990,
+         1
+        ],
+        [
+         990.01,
+         0
+        ],
+        [
+         1000,
+         0
+        ],
+        [
+         1000,
+         1
+        ],
+        [
+         1000.01,
+         0
+        ]
+       ],
+       "nolabel": true
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "single",
+     "x0": 0,
+     "x1": 180,
+     "label": "one"
+    },
+    {
+     "id": "sum",
+     "x0": 180,
+     "x1": 380,
+     "label": "two"
+    },
+    {
+     "id": "incomplete",
+     "x0": 390,
+     "x1": 700,
+     "label": "20 per s"
+    },
+    {
+     "id": "complete",
+     "x0": 740,
+     "x1": 1000,
+     "label": "100 per s"
+    }
+   ],
+   "questions": [
+    {
+     "id": "twitch-peak",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the peak tension of the single twitch.",
+     "answer": 25,
+     "tol": 3,
+     "unit": "%",
+     "show": {
+      "x": 36,
+      "y": 25
+     },
+     "why": "About 25 percent of maximum. The pumps clear the calcium before the cross-bridges have pulled the fiber’s elastic parts fully taut, so a single twitch reaches only a fraction of what the fiber can do."
+    },
+    {
+     "id": "tetanus-ratio",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Complete tetanus reaches about 100 percent. About how many times the single twitch’s peak is that?",
+     "answer": 4,
+     "tol": 0.6,
+     "unit": "times",
+     "why": "100 ÷ 25 = 4. Complete tetanus is often three to five times the tension of one twitch, although each action potential releases about the same pulse of calcium."
+    },
+    {
+     "id": "incomplete",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "In which stretch does the fiber relax a little between stimuli, giving a wavy plateau?",
+     "options": [
+      "At 20 stimuli per second",
+      "At 100 stimuli per second",
+      "After the single stimulus",
+      "After the two close stimuli"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "incomplete"
+     },
+     "why": {
+      "correct": "That is incomplete (unfused) tetanus: stimuli come often enough for tension to build, but calcium falls a little between them, so each wave dips slightly.",
+      "options": [
+       "Right: incomplete tetanus.",
+       "At 100 per second the fiber has no time to relax at all: complete tetanus, a smooth plateau.",
+       "After a single stimulus the fiber relaxes fully; there is no plateau.",
+       "Two close stimuli make one summed peak, not a plateau."
+      ]
+     }
+    },
+    {
+     "id": "why-sum",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Why does the second of two close stimuli produce a higher peak than a single twitch?",
+     "options": [
+      "Calcium is released again before the first pulse has been pumped back",
+      "The second action potential releases twice as much calcium",
+      "More motor units are recruited by the second stimulus",
+      "The second action potential is larger than the first"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "sum"
+     },
+     "why": {
+      "correct": "That is wave summation. Calcium stays high for longer, cross-bridges keep cycling, the elastic parts are pulled more taut, and tension climbs higher than one twitch can reach.",
+      "options": [
+       "Right: calcium stays high for longer.",
+       "Each action potential releases about the same calcium; it is the timing that changes.",
+       "This is one fiber; recruitment adds motor units to a whole muscle.",
+       "Action potentials are all-or-none: every one is the same size."
+      ]
+     }
+    },
+    {
+     "id": "faster",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "The rate in the stretch from 400 to 650 ms is raised from 20 to 40 stimuli per second. How does that part of the curve change?",
+     "options": [
+      "Higher, with smaller ripples",
+      "Lower, because the fiber tires faster",
+      "Higher, with bigger ripples",
+      "Unchanged, because each twitch is all-or-none"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "rate60",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          390,
+          0.8
+         ],
+         [
+          392,
+          0.8
+         ],
+         [
+          394,
+          0.7
+         ],
+         [
+          396,
+          0.6
+         ],
+         [
+          398,
+          0.6
+         ],
+         [
+          400,
+          0.5
+         ],
+         [
+          402,
+          1.1
+         ],
+         [
+          404,
+          2.6
+         ],
+         [
+          406,
+          4.7
+         ],
+         [
+          408,
+          7
+         ],
+         [
+          410,
+          9.5
+         ],
+         [
+          412,
+          12
+         ],
+         [
+          414,
+          14.3
+         ],
+         [
+          416,
+          16.4
+         ],
+         [
+          418,
+          18.3
+         ],
+         [
+          420,
+          19.9
+         ],
+         [
+          422,
+          21.3
+         ],
+         [
+          424,
+          22.5
+         ],
+         [
+          426,
+          23.5
+         ],
+         [
+          428,
+          25.1
+         ],
+         [
+          430,
+          27.1
+         ],
+         [
+          432,
+          29.2
+         ],
+         [
+          434,
+          31.3
+         ],
+         [
+          436,
+          33.3
+         ],
+         [
+          438,
+          35.1
+         ],
+         [
+          440,
+          36.7
+         ],
+         [
+          442,
+          38
+         ],
+         [
+          444,
+          39
+         ],
+         [
+          446,
+          39.8
+         ],
+         [
+          448,
+          40.4
+         ],
+         [
+          450,
+          40.7
+         ],
+         [
+          452,
+          41.2
+         ],
+         [
+          454,
+          42.2
+         ],
+         [
+          456,
+          43.3
+         ],
+         [
+          458,
+          44.5
+         ],
+         [
+          460,
+          45.7
+         ],
+         [
+          462,
+          46.8
+         ],
+         [
+          464,
+          47.7
+         ],
+         [
+          466,
+          48.4
+         ],
+         [
+          468,
+          48.9
+         ],
+         [
+          470,
+          49.2
+         ],
+         [
+          472,
+          49.3
+         ],
+         [
+          474,
+          49.2
+         ],
+         [
+          476,
+          49
+         ],
+         [
+          478,
+          49.2
+         ],
+         [
+          480,
+          49.7
+         ],
+         [
+          482,
+          50.4
+         ],
+         [
+          484,
+          51.2
+         ],
+         [
+          486,
+          51.8
+         ],
+         [
+          488,
+          52.4
+         ],
+         [
+          490,
+          52.8
+         ],
+         [
+          492,
+          53.1
+         ],
+         [
+          494,
+          53.2
+         ],
+         [
+          496,
+          53.1
+         ],
+         [
+          498,
+          52.8
+         ],
+         [
+          500,
+          52.4
+         ],
+         [
+          502,
+          52.1
+         ],
+         [
+          504,
+          52.3
+         ],
+         [
+          506,
+          52.7
+         ],
+         [
+          508,
+          53.2
+         ],
+         [
+          510,
+          53.7
+         ],
+         [
+          512,
+          54.2
+         ],
+         [
+          514,
+          54.5
+         ],
+         [
+          516,
+          54.7
+         ],
+         [
+          518,
+          54.7
+         ],
+         [
+          520,
+          54.6
+         ],
+         [
+          522,
+          54.3
+         ],
+         [
+          524,
+          53.8
+         ],
+         [
+          526,
+          53.3
+         ],
+         [
+          528,
+          53.2
+         ],
+         [
+          530,
+          53.4
+         ],
+         [
+          532,
+          53.8
+         ],
+         [
+          534,
+          54.3
+         ],
+         [
+          536,
+          54.7
+         ],
+         [
+          538,
+          55
+         ],
+         [
+          540,
+          55.2
+         ],
+         [
+          542,
+          55.3
+         ],
+         [
+          544,
+          55.2
+         ],
+         [
+          546,
+          55
+         ],
+         [
+          548,
+          54.5
+         ],
+         [
+          550,
+          54
+         ],
+         [
+          552,
+          53.6
+         ],
+         [
+          554,
+          53.7
+         ],
+         [
+          556,
+          53.9
+         ],
+         [
+          558,
+          54.4
+         ],
+         [
+          560,
+          54.8
+         ],
+         [
+          562,
+          55.1
+         ],
+         [
+          564,
+          55.4
+         ],
+         [
+          566,
+          55.5
+         ],
+         [
+          568,
+          55.5
+         ],
+         [
+          570,
+          55.3
+         ],
+         [
+          572,
+          54.9
+         ],
+         [
+          574,
+          54.4
+         ],
+         [
+          576,
+          53.9
+         ],
+         [
+          578,
+          53.7
+         ],
+         [
+          580,
+          53.9
+         ],
+         [
+          582,
+          54.2
+         ],
+         [
+          584,
+          54.6
+         ],
+         [
+          586,
+          55
+         ],
+         [
+          588,
+          55.3
+         ],
+         [
+          590,
+          55.5
+         ],
+         [
+          592,
+          55.6
+         ],
+         [
+          594,
+          55.4
+         ],
+         [
+          596,
+          55.2
+         ],
+         [
+          598,
+          54.7
+         ],
+         [
+          600,
+          54.2
+         ],
+         [
+          602,
+          53.8
+         ],
+         [
+          604,
+          53.8
+         ],
+         [
+          606,
+          54.1
+         ],
+         [
+          608,
+          54.5
+         ],
+         [
+          610,
+          54.9
+         ],
+         [
+          612,
+          55.2
+         ],
+         [
+          614,
+          55.5
+         ],
+         [
+          616,
+          55.6
+         ],
+         [
+          618,
+          55.5
+         ],
+         [
+          620,
+          55.3
+         ],
+         [
+          622,
+          55
+         ],
+         [
+          624,
+          54.5
+         ],
+         [
+          626,
+          53.9
+         ],
+         [
+          628,
+          53.8
+         ],
+         [
+          630,
+          53.9
+         ],
+         [
+          632,
+          54.3
+         ],
+         [
+          634,
+          54.7
+         ],
+         [
+          636,
+          55.1
+         ],
+         [
+          638,
+          55.4
+         ],
+         [
+          640,
+          55.5
+         ],
+         [
+          642,
+          55.6
+         ],
+         [
+          644,
+          55.5
+         ],
+         [
+          646,
+          55.2
+         ],
+         [
+          648,
+          54.8
+         ],
+         [
+          650,
+          54.2
+         ],
+         [
+          652,
+          53.8
+         ],
+         [
+          654,
+          53.8
+         ],
+         [
+          656,
+          54.1
+         ],
+         [
+          658,
+          54.5
+         ],
+         [
+          660,
+          54.9
+         ],
+         [
+          662,
+          55.2
+         ],
+         [
+          664,
+          55.5
+         ],
+         [
+          666,
+          55.6
+         ],
+         [
+          668,
+          55.5
+         ],
+         [
+          670,
+          55.3
+         ],
+         [
+          672,
+          55
+         ],
+         [
+          674,
+          54.5
+         ],
+         [
+          676,
+          53.8
+         ],
+         [
+          678,
+          53
+         ],
+         [
+          680,
+          52.1
+         ],
+         [
+          682,
+          51.1
+         ],
+         [
+          684,
+          49.9
+         ],
+         [
+          686,
+          48.7
+         ],
+         [
+          688,
+          47.3
+         ],
+         [
+          690,
+          45.9
+         ],
+         [
+          692,
+          44.5
+         ],
+         [
+          694,
+          43
+         ],
+         [
+          696,
+          41.4
+         ],
+         [
+          698,
+          39.9
+         ],
+         [
+          700,
+          38.3
+         ]
+        ],
+        "label": "40 per s",
+        "labelAt": [
+         520,
+         64
+        ],
+        "anchor": "middle"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Stimuli now come every 25 ms instead of 50, so less calcium is cleared between them. Tension builds higher and the dips shrink, moving toward complete tetanus.",
+      "options": [
+       "Right: toward fusion.",
+       "Over a quarter of a second, a fiber does not fatigue noticeably; the faster rate builds more tension.",
+       "Ripples shrink, not grow, because there is less time to relax between stimuli.",
+       "Each action potential is all-or-none, but more of them per second keeps calcium higher, and tension sums."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "mt-length-tension",
+   "title": "The length–tension relationship",
+   "topic": "muscle-tension",
+   "core": [
+    "structure-function"
+   ],
+   "intro": "The active tension a muscle fiber can produce when stimulated into complete tetanus at different sarcomere lengths, as a percent of its maximum. Sarcomere length is a percent of resting length.",
+   "alt": "Active tension against sarcomere length from 60 to 180 percent of resting length. Tension is zero at 60 percent, climbs steeply to about 80 percent of maximum at 80 percent length and to the maximum by 95 percent, stays flat at the maximum to 110 percent, then falls in a straight line to 50 percent at 140 percent length and zero at 170 percent.",
+   "x": {
+    "min": 60,
+    "max": 180,
+    "label": "Sarcomere length",
+    "unit": "% of resting",
+    "ticks": [
+     60,
+     80,
+     100,
+     120,
+     140,
+     160,
+     180
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Active tension",
+      "unit": "% of maximum",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "lt",
+       "cls": "eff",
+       "pts": [
+        [
+         60,
+         0
+        ],
+        [
+         65,
+         22
+        ],
+        [
+         70,
+         42
+        ],
+        [
+         75,
+         62
+        ],
+        [
+         80,
+         80
+        ],
+        [
+         85,
+         89
+        ],
+        [
+         90,
+         95
+        ],
+        [
+         95,
+         100
+        ],
+        [
+         110,
+         100
+        ],
+        [
+         120,
+         83.3
+        ],
+        [
+         130,
+         66.7
+        ],
+        [
+         140,
+         50
+        ],
+        [
+         150,
+         33.3
+        ],
+        [
+         160,
+         16.7
+        ],
+        [
+         170,
+         0
+        ],
+        [
+         180,
+         0
+        ]
+       ],
+       "label": "active tension",
+       "labelAt": [
+        142,
+        60
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "short",
+     "x0": 60,
+     "x1": 80,
+     "label": "short"
+    },
+    {
+     "id": "optimal",
+     "x0": 95,
+     "x1": 110,
+     "label": "optimal"
+    },
+    {
+     "id": "stretched",
+     "x0": 110,
+     "x1": 170,
+     "label": "stretched"
+    }
+   ],
+   "questions": [
+    {
+     "id": "at-140",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the tension the fiber can produce at 140 percent of resting length.",
+     "answer": 50,
+     "tol": 5,
+     "unit": "%",
+     "show": {
+      "x": 140,
+      "y": 50
+     },
+     "why": "About 50 percent. The thin filaments have been pulled partway off the thick filaments, so only about half as many myosin heads can reach actin."
+    },
+    {
+     "id": "zero-long",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At what sarcomere length does active tension reach zero on the stretched side?",
+     "answer": 170,
+     "tol": 4,
+     "unit": "% of resting",
+     "why": "About 170 percent. At that length the thin filaments no longer overlap the thick filaments at all, so no myosin head can bind actin and the fiber can produce no active tension."
+    },
+    {
+     "id": "optimal",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Where does the fiber produce its greatest tension, and why?",
+     "options": [
+      "Around resting length, where the most myosin heads can reach actin",
+      "At the longest lengths, where the filaments are stretched tightest",
+      "At the shortest lengths, where the filaments overlap most",
+      "Anywhere, because tension does not depend on length"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "optimal"
+     },
+     "why": {
+      "correct": "Near resting length, the thin filaments overlap the whole part of each thick filament that carries heads, without yet meeting in the middle, so the largest number of cross-bridges can form.",
+      "options": [
+       "Right: optimal overlap.",
+       "Stretching pulls the thin filaments off the thick ones, so fewer heads reach actin and tension falls.",
+       "At short lengths the thin filaments crowd past each other and the thick filaments butt against the Z discs, so tension falls steeply.",
+       "The curve shows a strong dependence on length, set by filament overlap."
+      ]
+     }
+    },
+    {
+     "id": "short-side",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "On the short side, tension falls steeply below about 80 percent. What causes that fall?",
+     "options": [
+      "Thin filaments crowd past each other and thick filaments butt against the Z discs",
+      "The thin filaments slide off the ends of the thick filaments",
+      "The sarcomere runs out of ATP when it is short",
+      "Calcium cannot reach troponin in a short sarcomere"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "short"
+     },
+     "why": {
+      "correct": "When the sarcomere is too short, the thin filaments from the two ends overlap each other in the middle and get in each other’s way, and the thick filaments hit the Z discs. Tension reaches zero at about 60 percent.",
+      "options": [
+       "Right: crowding and collision.",
+       "Sliding off the thick filaments happens on the stretched side, at long lengths.",
+       "ATP supply does not depend on sarcomere length.",
+       "Calcium release and binding are the same at every length on this curve; overlap is what changes."
+      ]
+     }
+    },
+    {
+     "id": "half-units",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The whole muscle is tested the same way, but only half of its motor units are stimulated. Plotted as a percent of what the whole muscle can produce, how does the curve change?",
+     "options": [
+      "Half as tall, with its peak at the same length",
+      "Same height, with its peak moved to longer lengths",
+      "Half as tall, with its peak moved to shorter lengths",
+      "Unchanged, because every fiber is at the same length"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "half",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          60,
+          0
+         ],
+         [
+          65,
+          11
+         ],
+         [
+          70,
+          21
+         ],
+         [
+          75,
+          31
+         ],
+         [
+          80,
+          40
+         ],
+         [
+          85,
+          44.5
+         ],
+         [
+          90,
+          47.5
+         ],
+         [
+          95,
+          50
+         ],
+         [
+          110,
+          50
+         ],
+         [
+          120,
+          41.7
+         ],
+         [
+          130,
+          33.4
+         ],
+         [
+          140,
+          25
+         ],
+         [
+          150,
+          16.7
+         ],
+         [
+          160,
+          8.4
+         ],
+         [
+          170,
+          0
+         ],
+         [
+          180,
+          0
+         ]
+        ],
+        "label": "half the motor units",
+        "labelAt": [
+         112,
+         55
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Each stimulated fiber still follows the same overlap rule, so the shape and the optimal length stay the same. With half the fibers pulling, the tension at every length is halved.",
+      "options": [
+       "Right: fewer fibers, same overlap rule.",
+       "Where the peak sits is set by filament overlap in each sarcomere, which recruitment does not change.",
+       "The optimal length does not move; only the height changes.",
+       "Every fiber is at the same length, but fewer of them are pulling, so the total tension is lower."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "mt-energy-systems",
+   "title": "Energy systems over the first minutes of exercise",
+   "topic": "muscle-metabolism",
+   "core": [
+    "energy"
+   ],
+   "intro": "During three minutes of all-out exercise. Top: the share of the ATP spent in the working muscle that each energy system supplies. Bottom: the ATP and creatine phosphate left in the working fibers, as a percent of their resting levels. Values are typical and vary with the person and the task.",
+   "alt": "Two stacked graphs over 180 seconds. Top: stored ATP and creatine phosphate supply about 85 percent of the ATP at the start, falling to about 22 percent by 20 seconds and near zero after a minute. Anaerobic glycolysis starts at about 12 percent, peaks at about 56 percent around 20 seconds and then declines to about 14 percent by 3 minutes. Aerobic respiration starts at about 3 percent, rises steadily, crosses glycolysis at about 75 seconds and reaches about 85 percent by 3 minutes. Bottom: creatine phosphate falls to about 50 percent of resting by 10 seconds and about 15 percent by a minute. ATP falls only slowly, to about 75 percent of resting by 90 seconds, and stays there.",
+   "x": {
+    "min": 0,
+    "max": 180,
+    "label": "Time from the start of all-out exercise",
+    "unit": "s",
+    "ticks": [
+     0,
+     30,
+     60,
+     90,
+     120,
+     150,
+     180
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 100,
+      "label": "Share of ATP supplied",
+      "unit": "%",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "cp",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         85
+        ],
+        [
+         5,
+         58.8
+        ],
+        [
+         10,
+         41.9
+        ],
+        [
+         15,
+         30
+        ],
+        [
+         20,
+         21.9
+        ],
+        [
+         30,
+         15
+        ],
+        [
+         45,
+         6.9
+        ],
+        [
+         60,
+         3.1
+        ],
+        [
+         75,
+         1.9
+        ],
+        [
+         90,
+         1.9
+        ],
+        [
+         120,
+         1.2
+        ],
+        [
+         150,
+         1.2
+        ],
+        [
+         180,
+         1.2
+        ]
+       ],
+       "label": "creatine phosphate and stored ATP",
+       "labelAt": [
+        8,
+        90
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "gly",
+       "cls": "symp",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         11.9
+        ],
+        [
+         5,
+         35
+        ],
+        [
+         10,
+         48.1
+        ],
+        [
+         15,
+         53.8
+        ],
+        [
+         20,
+         56.2
+        ],
+        [
+         30,
+         55
+        ],
+        [
+         45,
+         53.1
+        ],
+        [
+         60,
+         51
+        ],
+        [
+         75,
+         49
+        ],
+        [
+         90,
+         45
+        ],
+        [
+         120,
+         31.9
+        ],
+        [
+         150,
+         20
+        ],
+        [
+         180,
+         13.8
+        ]
+       ],
+       "label": "anaerobic glycolysis",
+       "labelAt": [
+        30,
+        62
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "aer",
+       "cls": "eff",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         3.1
+        ],
+        [
+         5,
+         6.2
+        ],
+        [
+         10,
+         10
+        ],
+        [
+         15,
+         16.2
+        ],
+        [
+         20,
+         21.9
+        ],
+        [
+         30,
+         30
+        ],
+        [
+         45,
+         40
+        ],
+        [
+         60,
+         46
+        ],
+        [
+         75,
+         49
+        ],
+        [
+         90,
+         53.1
+        ],
+        [
+         120,
+         66.9
+        ],
+        [
+         150,
+         78.8
+        ],
+        [
+         180,
+         85
+        ]
+       ],
+       "label": "aerobic respiration",
+       "labelAt": [
+        125,
+        80
+       ],
+       "anchor": "start"
+      }
+     ]
+    },
+    {
+     "h": 0.9,
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Left in the fibers",
+      "unit": "% of resting",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "atp",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         100
+        ],
+        [
+         10,
+         94
+        ],
+        [
+         20,
+         88
+        ],
+        [
+         30,
+         84
+        ],
+        [
+         45,
+         80
+        ],
+        [
+         60,
+         77
+        ],
+        [
+         90,
+         75
+        ],
+        [
+         120,
+         75
+        ],
+        [
+         150,
+         75
+        ],
+        [
+         180,
+         75
+        ]
+       ],
+       "label": "ATP",
+       "labelAt": [
+        150,
+        84
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "pcr",
+       "cls": "lo",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         100
+        ],
+        [
+         5,
+         72
+        ],
+        [
+         10,
+         52
+        ],
+        [
+         15,
+         40
+        ],
+        [
+         20,
+         32
+        ],
+        [
+         30,
+         24
+        ],
+        [
+         45,
+         18
+        ],
+        [
+         60,
+         15
+        ],
+        [
+         90,
+         13
+        ],
+        [
+         120,
+         12
+        ],
+        [
+         150,
+         12
+        ],
+        [
+         180,
+         12
+        ]
+       ],
+       "label": "creatine phosphate",
+       "labelAt": [
+        40,
+        30
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "early",
+     "x0": 0,
+     "x1": 10,
+     "label": "0–10 s"
+    },
+    {
+     "id": "middle",
+     "x0": 10,
+     "x1": 75,
+     "label": "10–75 s"
+    },
+    {
+     "id": "late",
+     "x0": 75,
+     "x1": 180,
+     "label": "after 75 s"
+    }
+   ],
+   "questions": [
+    {
+     "id": "crossover",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At about what time does aerobic respiration overtake anaerobic glycolysis?",
+     "answer": 75,
+     "tol": 8,
+     "unit": "s",
+     "show": {
+      "x": 75,
+      "y": 49
+     },
+     "why": "At about 75 seconds, a minute and a quarter in. Aerobic respiration runs from the first second but is slow to reach full speed, because oxygen delivery and its many steps take time."
+    },
+    {
+     "id": "atp-low",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read how far ATP in the fibers has fallen by the end, as a percent of its resting level.",
+     "answer": 75,
+     "tol": 5,
+     "unit": "%",
+     "show": {
+      "x": 180,
+      "y": 75,
+      "panel": 1
+     },
+     "why": "Only to about 75 percent, about three quarters. The fiber remakes ATP almost as fast as it spends it, and fatigue slows the cross-bridges and calcium release before ATP can fall far. If ATP ran out, the heads could not let go of actin."
+    },
+    {
+     "id": "gly-peak",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "During which stretch does anaerobic glycolysis supply the largest share of the ATP?",
+     "options": [
+      "From about 10 to 75 seconds",
+      "The first 10 seconds",
+      "After about 75 seconds",
+      "It supplies the same share throughout"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "middle"
+     },
+     "why": {
+      "correct": "Glycolysis speeds up within seconds, peaks around 20 seconds and leads until aerobic respiration overtakes it. A 400 m run falls in this stretch.",
+      "options": [
+       "Right: roughly 10 seconds to a minute and a quarter.",
+       "In the first seconds creatine phosphate supplies most of the new ATP, fastest of all.",
+       "After 75 seconds aerobic respiration leads, and glycolysis keeps declining.",
+       "Every system’s share changes; only their total stays at 100 percent."
+      ]
+     }
+    },
+    {
+     "id": "all-three",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "What does the top panel show about the first 10 seconds?",
+     "options": [
+      "All three systems are already running, with creatine phosphate leading",
+      "Only creatine phosphate is running; the others switch on later",
+      "Glycolysis supplies most of the ATP from the first second",
+      "Aerobic respiration supplies nothing until creatine phosphate is gone"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "early"
+     },
+     "why": {
+      "correct": "The systems overlap rather than taking turns. Creatine phosphate dominates at first because one fast reaction remakes ATP right beside the heads, but glycolysis and aerobic respiration are running and climbing from the first second.",
+      "options": [
+       "Right: all three from the start.",
+       "All three lines are above zero from the start; the relay picture is wrong.",
+       "Glycolysis rises fast but does not lead until about 10 seconds.",
+       "Aerobic respiration is small at first but present from the first second."
+      ]
+     }
+    },
+    {
+     "id": "gentle",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "The same person walks briskly for three minutes instead. How does the aerobic respiration curve change?",
+     "options": [
+      "It rises much sooner and supplies nearly all the ATP after a minute or two",
+      "It stays the same, because the systems always switch at 75 seconds",
+      "It falls, because gentle exercise uses creatine phosphate",
+      "It never rises, because walking needs no ATP"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "aer-walk",
+        "cls": "eff",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          10
+         ],
+         [
+          10,
+          40
+         ],
+         [
+          20,
+          60
+         ],
+         [
+          30,
+          75
+         ],
+         [
+          45,
+          85
+         ],
+         [
+          60,
+          90
+         ],
+         [
+          90,
+          94
+         ],
+         [
+          120,
+          96
+         ],
+         [
+          150,
+          97
+         ],
+         [
+          180,
+          97
+         ]
+        ],
+        "label": "brisk walk",
+        "labelAt": [
+         60,
+         100
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "At a gentle pace, ATP demand is low enough for the mitochondria to meet it almost alone once oxygen delivery rises: over 95 percent of the ATP comes from aerobic respiration after the first minutes.",
+      "options": [
+       "Right: gentle work is aerobic.",
+       "The crossover time depends on how hard the work is; at a gentle pace there is little glycolysis to overtake.",
+       "Creatine phosphate covers only the first seconds of any effort, and gentle work spends it slowly.",
+       "All muscle work needs ATP; the question is which system supplies it."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "mt-stress-relaxation",
+   "title": "The stretch response of smooth muscle",
+   "topic": "smooth-cardiac-muscle",
+   "core": [
+    "structure-function",
+    "homeostasis"
+   ],
+   "intro": "A strip of bladder wall (smooth muscle) and a relaxed skeletal muscle are each suddenly stretched to 130 percent of their starting length at 10 seconds and held there. The graph shows their tension, as a percent of the peak just after the stretch. Values are typical.",
+   "alt": "Tension against time over 120 seconds. Both start at 20 percent. At 10 seconds both jump to 100 percent. The skeletal muscle line drops only slightly, to about 92 percent, and stays there. The smooth muscle line falls back steadily, to about 50 percent by 28 seconds and about 23 percent by 70 seconds, close to where it started, although it is still stretched.",
+   "x": {
+    "min": 0,
+    "max": 120,
+    "label": "Time",
+    "unit": "s",
+    "ticks": [
+     0,
+     20,
+     40,
+     60,
+     80,
+     100,
+     120
+    ]
+   },
+   "panels": [
+    {
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Tension",
+      "unit": "% of peak",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "sk",
+       "cls": "lo",
+       "pts": [
+        [
+         0,
+         20
+        ],
+        [
+         10,
+         20
+        ],
+        [
+         10.2,
+         99.6
+        ],
+        [
+         11.2,
+         97.9
+        ],
+        [
+         12.2,
+         96.6
+        ],
+        [
+         13.2,
+         95.6
+        ],
+        [
+         14.2,
+         94.8
+        ],
+        [
+         15.2,
+         94.2
+        ],
+        [
+         16.2,
+         93.7
+        ],
+        [
+         17.2,
+         93.3
+        ],
+        [
+         18.2,
+         93
+        ],
+        [
+         19.2,
+         92.8
+        ],
+        [
+         20.2,
+         92.6
+        ],
+        [
+         21.2,
+         92.5
+        ],
+        [
+         22.2,
+         92.4
+        ],
+        [
+         23.2,
+         92.3
+        ],
+        [
+         24.2,
+         92.2
+        ],
+        [
+         25.2,
+         92.2
+        ],
+        [
+         26.2,
+         92.1
+        ],
+        [
+         27.2,
+         92.1
+        ],
+        [
+         28.2,
+         92.1
+        ],
+        [
+         29.2,
+         92.1
+        ],
+        [
+         30.2,
+         92.1
+        ],
+        [
+         35.2,
+         92
+        ],
+        [
+         40.2,
+         92
+        ],
+        [
+         45.2,
+         92
+        ],
+        [
+         50.2,
+         92
+        ],
+        [
+         55.2,
+         92
+        ],
+        [
+         60.2,
+         92
+        ],
+        [
+         65.2,
+         92
+        ],
+        [
+         70.2,
+         92
+        ],
+        [
+         75.2,
+         92
+        ],
+        [
+         80.2,
+         92
+        ],
+        [
+         85.2,
+         92
+        ],
+        [
+         90.2,
+         92
+        ],
+        [
+         95.2,
+         92
+        ],
+        [
+         100.2,
+         92
+        ],
+        [
+         105.2,
+         92
+        ],
+        [
+         110.2,
+         92
+        ],
+        [
+         115.2,
+         92
+        ]
+       ],
+       "label": "skeletal muscle",
+       "labelAt": [
+        60,
+        100
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "sm",
+       "cls": "eff",
+       "pts": [
+        [
+         0,
+         20
+        ],
+        [
+         10,
+         20
+        ],
+        [
+         10.2,
+         99.1
+        ],
+        [
+         11.2,
+         94.8
+        ],
+        [
+         12.2,
+         90.8
+        ],
+        [
+         13.2,
+         87
+        ],
+        [
+         14.2,
+         83.4
+        ],
+        [
+         15.2,
+         79.9
+        ],
+        [
+         16.2,
+         76.7
+        ],
+        [
+         17.2,
+         73.6
+        ],
+        [
+         18.2,
+         70.7
+        ],
+        [
+         19.2,
+         68
+        ],
+        [
+         20.2,
+         65.4
+        ],
+        [
+         21.2,
+         62.9
+        ],
+        [
+         22.2,
+         60.6
+        ],
+        [
+         23.2,
+         58.4
+        ],
+        [
+         24.2,
+         56.3
+        ],
+        [
+         25.2,
+         54.4
+        ],
+        [
+         26.2,
+         52.5
+        ],
+        [
+         27.2,
+         50.8
+        ],
+        [
+         28.2,
+         49.1
+        ],
+        [
+         29.2,
+         47.5
+        ],
+        [
+         30.2,
+         46
+        ],
+        [
+         35.2,
+         39.7
+        ],
+        [
+         40.2,
+         34.9
+        ],
+        [
+         45.2,
+         31.3
+        ],
+        [
+         50.2,
+         28.6
+        ],
+        [
+         55.2,
+         26.5
+        ],
+        [
+         60.2,
+         24.9
+        ],
+        [
+         65.2,
+         23.7
+        ],
+        [
+         70.2,
+         22.8
+        ],
+        [
+         75.2,
+         22.1
+        ],
+        [
+         80.2,
+         21.6
+        ],
+        [
+         85.2,
+         21.2
+        ],
+        [
+         90.2,
+         20.9
+        ],
+        [
+         95.2,
+         20.7
+        ],
+        [
+         100.2,
+         20.5
+        ],
+        [
+         105.2,
+         20.4
+        ],
+        [
+         110.2,
+         20.3
+        ],
+        [
+         115.2,
+         20.2
+        ]
+       ],
+       "label": "smooth muscle",
+       "labelAt": [
+        40,
+        38
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 10,
+     "label": "stretched"
+    }
+   ],
+   "regions": [
+    {
+     "id": "before",
+     "x0": 0,
+     "x1": 10,
+     "label": "before"
+    },
+    {
+     "id": "relax",
+     "x0": 10,
+     "x1": 70,
+     "label": "held stretched"
+    },
+    {
+     "id": "after",
+     "x0": 70,
+     "x1": 120,
+     "label": "later"
+    }
+   ],
+   "questions": [
+    {
+     "id": "at-70",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the smooth muscle’s tension at 70 seconds.",
+     "answer": 22,
+     "tol": 4,
+     "unit": "%",
+     "show": {
+      "x": 70,
+      "y": 22.9
+     },
+     "why": "About 22 percent, back near its starting 20 percent, although the strip is still held 30 percent longer. That fall is stress-relaxation."
+    },
+    {
+     "id": "what-is-it",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "In the stretch held from 10 to 70 seconds, what is the smooth muscle doing?",
+     "options": [
+      "Stress-relaxation: its filaments rearrange and tension falls back at the new length",
+      "Tetanus: its tension sums to a plateau",
+      "Losing its stretch: the strip shortens back to its starting length",
+      "Fatigue: it runs out of ATP and gives up"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "relax"
+     },
+     "why": {
+      "correct": "After a stretch, smooth muscle slowly lets its tension fall back while it stays at the new length, as its filaments and cross-bridges rearrange and the fibers settle at the longer length.",
+      "options": [
+       "Right: the stress-relaxation response.",
+       "Tetanus is a rise in tension from rapid stimulation; here tension falls.",
+       "The strip is held at 130 percent the whole time; only its tension changes.",
+       "Tension falls without any loss of ATP; the strip can still contract strongly at the new length."
+      ]
+     }
+    },
+    {
+     "id": "bladder",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "How does the smooth muscle curve explain why pressure in a filling bladder stays low?",
+     "options": [
+      "After each stretch the wall’s tension falls back, so the wall fits each new volume without squeezing harder",
+      "The bladder wall is skeletal muscle, which keeps its tension low",
+      "The stretch makes the wall contract, pushing urine out as it arrives",
+      "Smooth muscle cannot produce tension once it has been stretched"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "relax"
+     },
+     "why": {
+      "correct": "As urine slowly stretches the wall, stress-relaxation lets its tension return toward the starting level at each new length, so the pressure inside barely rises from 50 to 400 mL.",
+      "options": [
+       "Right: stress-relaxation lets the bladder store.",
+       "The bladder wall is smooth muscle; the skeletal muscle line keeps its tension high.",
+       "A sudden stretch can trigger a contraction, but a slow, sustained stretch is met by stress-relaxation, and storage organs mostly relax as they fill.",
+       "Smooth muscle produces force over a wide range of lengths, so a full bladder still contracts strongly."
+      ]
+     }
+    },
+    {
+     "id": "second-stretch",
+     "type": "shift",
+     "level": "apply",
+     "diff": 2,
+     "q": "At 70 seconds the smooth muscle strip is stretched a second time, by the same amount, and held. How does its curve continue?",
+     "options": [
+      "Tension jumps again, then falls back most of the way once more",
+      "Tension jumps and stays high this time",
+      "Tension does not change, because the strip has already relaxed",
+      "Tension falls below its starting level"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "sm2",
+        "cls": "hi",
+        "dash": true,
+        "pts": [
+         [
+          70,
+          22.9
+         ],
+         [
+          70.2,
+          99.2
+         ],
+         [
+          71.2,
+          95.2
+         ],
+         [
+          72.2,
+          91.5
+         ],
+         [
+          73.2,
+          87.9
+         ],
+         [
+          74.2,
+          84.6
+         ],
+         [
+          75.2,
+          81.4
+         ],
+         [
+          76.2,
+          78.4
+         ],
+         [
+          77.2,
+          75.6
+         ],
+         [
+          78.2,
+          72.9
+         ],
+         [
+          79.2,
+          70.4
+         ],
+         [
+          80.2,
+          68
+         ],
+         [
+          81.2,
+          65.7
+         ],
+         [
+          82.2,
+          63.6
+         ],
+         [
+          83.2,
+          61.5
+         ],
+         [
+          84.2,
+          59.6
+         ],
+         [
+          85.2,
+          57.8
+         ],
+         [
+          86.2,
+          56.1
+         ],
+         [
+          87.2,
+          54.5
+         ],
+         [
+          88.2,
+          52.9
+         ],
+         [
+          89.2,
+          51.5
+         ],
+         [
+          90.2,
+          50.1
+         ],
+         [
+          95.2,
+          44.2
+         ],
+         [
+          100.2,
+          39.8
+         ],
+         [
+          105.2,
+          36.5
+         ],
+         [
+          110.2,
+          33.9
+         ],
+         [
+          115.2,
+          32
+         ]
+        ],
+        "label": "second stretch",
+        "labelAt": [
+         78,
+         90
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Each new stretch raises tension at once, and each is met by stress-relaxation. That is how a filling bladder relaxes to fit every new volume.",
+      "options": [
+       "Right: the same response at the new length.",
+       "Staying high is how skeletal muscle responds; smooth muscle relaxes again.",
+       "The new stretch raises tension at first, before it falls back.",
+       "Tension falls back toward, not below, its level before the stretch."
+      ]
+     }
+    }
+   ]
   }
  ]
 }
