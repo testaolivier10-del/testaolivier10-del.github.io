@@ -4,9 +4,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "In a glomerulus, glomerular hydrostatic pressure is 60 mm Hg, capsular hydrostatic pressure is 15 mm Hg and blood colloid osmotic pressure is 32 mm Hg. What is the net filtration pressure?",
-    "options": ["+13 mm Hg", "+107 mm Hg", "+43 mm Hg", "−13 mm Hg"],
+    "options": [
+      "+13 mm Hg",
+      "+107 mm Hg",
+      "+43 mm Hg",
+      "−13 mm Hg"
+    ],
     "correct": 0,
     "why": {
       "correct": "NFP = GBHP − (CHP + BCOP) = 60 − (15 + 32) = 60 − 47 = +13 mm Hg. Positive, so fluid is filtered into the capsule.",
@@ -23,7 +30,9 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "An enlarged gland presses on a man's urethra, and urine backs up into both kidneys. His capsular hydrostatic pressure rises to 25 mm Hg. Glomerular hydrostatic pressure is 55 mm Hg and blood colloid osmotic pressure is 30 mm Hg. What happens to filtration?",
     "options": [
       "It doubles, because more pressure is in the system",
@@ -47,9 +56,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A patient's kidneys have a filtration coefficient of 12 mL/min per mm Hg and a net filtration pressure of 8 mm Hg. What is the GFR?",
-    "options": ["20 mL/min", "1.5 mL/min", "96 mL/min", "960 mL/min"],
+    "options": [
+      "20 mL/min",
+      "1.5 mL/min",
+      "96 mL/min",
+      "960 mL/min"
+    ],
     "correct": 2,
     "why": {
       "correct": "GFR = Kf × NFP = 12 mL/min/mm Hg × 8 mm Hg = 96 mL/min. The mm Hg units cancel.",
@@ -67,14 +83,37 @@
     "level": "apply",
     "diff": 2,
     "predictLevel": 2,
-    "core": ["gradients", "homeostasis"],
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
     "q": "The afferent arterioles of both kidneys constrict, and nothing else changes. Predict the change in each variable.",
     "variables": [
-      { "name": "Renal blood flow", "answer": "down", "why": "Narrowing a vessel in series with the whole kidney raises resistance, so less blood flows through." },
-      { "name": "Glomerular hydrostatic pressure", "answer": "down", "why": "More pressure is lost across the narrowed afferent arteriole before blood reaches the glomerulus." },
-      { "name": "Net filtration pressure", "answer": "down", "why": "NFP = GBHP − (CHP + BCOP). GBHP falls while the opposing pressures stay the same." },
-      { "name": "GFR", "answer": "down", "why": "GFR = Kf × NFP, and NFP has fallen." },
-      { "name": "Hydrostatic pressure in the peritubular capillaries", "answer": "down", "why": "Less pressure passes through the glomerulus and efferent arteriole to the capillaries downstream." }
+      {
+        "name": "Renal blood flow",
+        "answer": "down",
+        "why": "Narrowing a vessel in series with the whole kidney raises resistance, so less blood flows through."
+      },
+      {
+        "name": "Glomerular hydrostatic pressure",
+        "answer": "down",
+        "why": "More pressure is lost across the narrowed afferent arteriole before blood reaches the glomerulus."
+      },
+      {
+        "name": "Net filtration pressure",
+        "answer": "down",
+        "why": "NFP = GBHP − (CHP + BCOP). GBHP falls while the opposing pressures stay the same."
+      },
+      {
+        "name": "GFR",
+        "answer": "down",
+        "why": "GFR = Kf × NFP, and NFP has fallen."
+      },
+      {
+        "name": "Hydrostatic pressure in the peritubular capillaries",
+        "answer": "down",
+        "why": "Less pressure passes through the glomerulus and efferent arteriole to the capillaries downstream."
+      }
     ],
     "why": {
       "correct": "Constricting the afferent arteriole cuts off pressure and flow before the glomerulus. Glomerular pressure, NFP and GFR all fall, along with renal blood flow and the pressure in the capillaries downstream."
@@ -86,14 +125,37 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 2,
-    "core": ["gradients", "homeostasis"],
+    "core": [
+      "gradients",
+      "homeostasis"
+    ],
     "q": "The efferent arterioles of both kidneys constrict moderately, and nothing else changes. Predict the change in each variable.",
     "variables": [
-      { "name": "Renal blood flow", "answer": "down", "why": "The efferent arteriole is in series with the rest of the kidney's vessels, so narrowing it raises total resistance and lowers flow." },
-      { "name": "Glomerular hydrostatic pressure", "answer": "up", "why": "Blood backs up behind the narrowed exit, so pressure in the glomerular capillaries rises." },
-      { "name": "GFR", "answer": "up", "why": "Higher GBHP raises net filtration pressure, and with moderate constriction that outweighs the slower flow." },
-      { "name": "Filtration fraction", "answer": "up", "why": "GFR rises while renal plasma flow falls, so a larger share of the plasma is filtered." },
-      { "name": "Colloid osmotic pressure in the peritubular capillaries", "answer": "up", "why": "More protein-free fluid has been filtered out of the same plasma, so the proteins left in it are more concentrated." }
+      {
+        "name": "Renal blood flow",
+        "answer": "down",
+        "why": "The efferent arteriole is in series with the rest of the kidney's vessels, so narrowing it raises total resistance and lowers flow."
+      },
+      {
+        "name": "Glomerular hydrostatic pressure",
+        "answer": "up",
+        "why": "Blood backs up behind the narrowed exit, so pressure in the glomerular capillaries rises."
+      },
+      {
+        "name": "GFR",
+        "answer": "up",
+        "why": "Higher GBHP raises net filtration pressure, and with moderate constriction that outweighs the slower flow."
+      },
+      {
+        "name": "Filtration fraction",
+        "answer": "up",
+        "why": "GFR rises while renal plasma flow falls, so a larger share of the plasma is filtered."
+      },
+      {
+        "name": "Colloid osmotic pressure in the peritubular capillaries",
+        "answer": "up",
+        "why": "More protein-free fluid has been filtered out of the same plasma, so the proteins left in it are more concentrated."
+      }
     ],
     "why": {
       "correct": "Narrowing the exit from the glomerulus raises pressure inside it, so GFR rises even though total flow falls. A larger fraction of the plasma is filtered, which concentrates the proteins in the blood reaching the peritubular capillaries. If the constriction were severe, the protein concentration would climb so high along the glomerulus that GFR would fall instead."
@@ -104,11 +166,13 @@
     "type": "graph",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "figure": "gfr-autoregulation",
     "q": "A person's mean arterial pressure rises from point B (100 mm Hg) to 160 mm Hg during a stressful moment. Read the solid curve. What happens to GFR?",
     "options": [
-      "It rises by about 60 percent, in step with pressure",
+      "It rises by about 60 percent, in step with the rise in pressure",
       "It barely changes, from about 123 to about 129 mL/min",
       "It falls, because the arterioles close completely",
       "It rises past 150 mL/min, as on the dashed line"
@@ -129,7 +193,9 @@
     "type": "graph",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "figure": "gfr-autoregulation",
     "q": "After a heavy bleed, a patient's mean arterial pressure is at point A (60 mm Hg). Why is GFR there so far below normal, although it is higher than the dashed line?",
     "options": [
@@ -154,11 +220,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-25-11",
     "pin": "filtration-slits",
     "q": "Name the pinned gaps between the podocytes' interlocking branches.",
-    "options": ["Fenestrations", "Filtration slits", "Intercellular clefts", "Capsular space"],
+    "options": [
+      "Fenestrations",
+      "Filtration slits",
+      "Intercellular clefts",
+      "Capsular space"
+    ],
     "correct": 1,
     "why": {
       "correct": "Filtration slits are the narrow gaps between the interlocking pedicels of neighboring podocytes. A thin slit diaphragm bridges each one.",
@@ -175,11 +248,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "figure": "os-25-12",
     "pin": "fenestrations",
     "q": "Name the pinned pores in the capillary wall.",
-    "options": ["Filtration slits", "Tight junctions", "Pedicels", "Fenestrations"],
+    "options": [
+      "Filtration slits",
+      "Tight junctions",
+      "Pedicels",
+      "Fenestrations"
+    ],
     "correct": 3,
     "why": {
       "correct": "Fenestrations (fenestra = window) are round pores through the endothelial cells of the glomerular capillaries. They are large enough to let all dissolved substances through but stop blood cells.",
@@ -196,7 +276,10 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "A cyclist is hit by a car and loses about 1.5 L of blood. His urine output drops sharply over the next hour. What best explains the fall in GFR?",
     "options": [
       "Strong sympathetic activation constricts his afferent arterioles",
@@ -220,7 +303,10 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "After three days of vomiting, a woman who is low on fluid takes high doses of ibuprofen for a headache. Her GFR falls sharply. Why does the ibuprofen matter more for her than for a healthy person?",
     "options": [
       "Ibuprofen damages the podocytes and blocks the filtration slits",
@@ -244,7 +330,10 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "Mr. Osei has narrowed arteries to both kidneys. After he starts an ACE inhibitor, his GFR falls by half. Which change in his glomeruli explains this?",
     "options": [
       "Less angiotensin II lets his efferent arterioles relax, so glomerular pressure falls",
@@ -268,10 +357,24 @@
     "type": "multi",
     "level": "recall",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which substances pass freely from the blood into the glomerular filtrate? Select all that apply.",
-    "options": ["Glucose", "Albumin", "Urea", "Red blood cells", "Sodium ions", "Amino acids"],
-    "correct": [0, 2, 4, 5],
+    "options": [
+      "Glucose",
+      "Albumin",
+      "Urea",
+      "Red blood cells",
+      "Sodium ions",
+      "Amino acids"
+    ],
+    "correct": [
+      0,
+      2,
+      4,
+      5
+    ],
     "why": {
       "correct": "Small solutes such as glucose, urea, sodium and amino acids cross all three layers of the filter freely, so their concentrations in the filtrate match plasma. Cells and large proteins such as albumin are held back.",
       "options": [
@@ -289,7 +392,10 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "Order the steps of tubuloglomerular feedback after a nephron's GFR rises.",
     "options": [
       "Filtrate flows faster through the tubule",
@@ -308,9 +414,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Fill the gap in the layers of the filtration membrane, from the blood side: fenestrated endothelium → ____ → filtration slits between podocyte pedicels.",
-    "options": ["Glomerular basement membrane", "Parietal layer of the capsule", "Capsular space", "Mesangial cells"],
+    "options": [
+      "Glomerular basement membrane",
+      "Parietal layer of the capsule",
+      "Capsular space",
+      "Mesangial cells"
+    ],
     "correct": 0,
     "why": {
       "correct": "The glomerular basement membrane, formed from the fused basement membranes of the endothelium and the podocytes, lies between the two cell layers. It is thick and negatively charged, and it holds back large proteins.",
@@ -327,7 +440,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A student wrote the myogenic mechanism for a rise in blood pressure. One step is wrong. Which one?",
     "options": [
       "Mean arterial pressure rises",
@@ -353,12 +468,15 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis", "interdependence"],
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
     "misconception": "protein in urine is harmless",
     "q": "A man with long-standing diabetes mellitus has foamy urine that tests strongly positive for protein, and his ankles and eyelids have become puffy. What links his urine to his swelling?",
     "options": [
       "Protein in the urine irritates the bladder and triggers fluid retention",
-      "His glomeruli filter less fluid, so water builds up in the tissues",
+      "His glomeruli filter less fluid, so water that should leave in the urine builds up in his tissues",
       "Albumin lost in the urine lowers blood colloid osmotic pressure, so capillaries filter more fluid into the tissues",
       "Protein in the filtrate raises capsular pressure and forces fluid into the veins"
     ],
@@ -378,9 +496,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "A urine sample contains red blood cells that are misshapen and packed into cylinder-shaped plugs, along with a lot of protein. Where is the bleeding most likely coming from?",
-    "options": ["The urethra", "The bladder lining", "The glomeruli", "The renal pelvis"],
+    "options": [
+      "The urethra",
+      "The bladder lining",
+      "The glomeruli",
+      "The renal pelvis"
+    ],
     "correct": 2,
     "why": {
       "correct": "Red cells squeezed through an inflamed filtration membrane come out misshapen, and the tubules mold them into cylinder-shaped plugs. Protein leaking through the same damaged filter usually comes with them. This pattern points to the glomeruli.",
@@ -397,9 +522,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "A patient's renal plasma flow is 600 mL/min and his GFR is 120 mL/min. What is his filtration fraction?",
-    "options": ["5 percent", "20 percent", "72 percent", "480 mL/min"],
+    "options": [
+      "5 percent",
+      "20 percent",
+      "72 percent",
+      "480 mL/min"
+    ],
     "correct": 1,
     "why": {
       "correct": "Filtration fraction = GFR ÷ renal plasma flow = 120 ÷ 600 = 0.20, or 20 percent. One fifth of the plasma reaching the glomeruli is filtered; the rest leaves in the efferent arterioles.",
@@ -416,13 +548,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "Blood colloid osmotic pressure is about 25 mm Hg as blood enters a glomerulus but about 35 mm Hg as it leaves. What causes the rise?",
     "options": [
       "The liver adds albumin to the blood inside the glomerulus",
       "Protein-free fluid is filtered out, concentrating the proteins left behind",
       "Podocytes secrete protein into the capillaries",
-      "Blood cells break down and release protein as they pass through"
+      "Blood cells break down and release their protein as they pass through the capillary loops"
     ],
     "correct": 1,
     "why": {
@@ -440,7 +574,10 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis", "communication"],
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
     "q": "A fast IV infusion stretches a patient's atria, and they release ANP. What does ANP do to GFR, and how?",
     "options": [
       "Lowers it, by constricting the afferent arteriole",
@@ -465,13 +602,31 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 4,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A resting person's mean arterial pressure falls suddenly from 100 to 85 mm Hg and stays there. Predict each variable about a minute later, after autoregulation has acted, compared with before the fall.",
     "variables": [
-      { "name": "Diameter of the afferent arterioles", "answer": "up", "why": "Less stretch relaxes their smooth muscle (myogenic mechanism), and less sodium chloride at the macula densa lowers adenosine release (tubuloglomerular feedback), so the afferent arterioles widen." },
-      { "name": "Glomerular hydrostatic pressure", "answer": "none", "why": "It dipped at first, but the wider afferent arterioles lose less pressure, bringing it back almost to normal." },
-      { "name": "GFR", "answer": "none", "why": "85 mm Hg is still on the plateau, so autoregulation returns GFR almost to its old value." },
-      { "name": "Renin release", "answer": "up", "why": "Less stretch of the afferent arteriole and less sodium chloride at the macula densa both make the juxtaglomerular cells release more renin." }
+      {
+        "name": "Diameter of the afferent arterioles",
+        "answer": "up",
+        "why": "Less stretch relaxes their smooth muscle (myogenic mechanism), and less sodium chloride at the macula densa lowers adenosine release (tubuloglomerular feedback), so the afferent arterioles widen."
+      },
+      {
+        "name": "Glomerular hydrostatic pressure",
+        "answer": "none",
+        "why": "It dipped at first, but the wider afferent arterioles lose less pressure, bringing it back almost to normal."
+      },
+      {
+        "name": "GFR",
+        "answer": "none",
+        "why": "85 mm Hg is still on the plateau, so autoregulation returns GFR almost to its old value."
+      },
+      {
+        "name": "Renin release",
+        "answer": "up",
+        "why": "Less stretch of the afferent arteriole and less sodium chloride at the macula densa both make the juxtaglomerular cells release more renin."
+      }
     ],
     "why": {
       "correct": "At the moment pressure falls, glomerular pressure and GFR dip. Within seconds, the myogenic mechanism and tubuloglomerular feedback widen the afferent arterioles, and both return almost to normal. The same signals raise renin release, which starts the body-wide response to the lower pressure."
@@ -482,9 +637,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "About how much glomerular filtrate do the two kidneys of a healthy young adult make?",
-    "options": ["About 1.5 L a day", "About 125 mL a day", "About 18 L a day", "About 180 L a day"],
+    "options": [
+      "About 1.5 L a day",
+      "About 125 mL a day",
+      "About 18 L a day",
+      "About 180 L a day"
+    ],
     "correct": 3,
     "why": {
       "correct": "A normal GFR is about 125 mL/min. Over 1,440 minutes that is about 180 L a day, of which more than 99 percent is taken back.",
@@ -501,9 +663,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Which layer of the filtration membrane stops blood cells from entering the filtrate?",
-    "options": ["The filtration slits", "The parietal layer of the capsule", "The glomerular basement membrane", "The fenestrated endothelium"],
+    "options": [
+      "The filtration slits",
+      "The parietal layer of the capsule",
+      "The glomerular basement membrane",
+      "The fenestrated endothelium"
+    ],
     "correct": 3,
     "why": {
       "correct": "The fenestrations in the endothelium, about 70 to 100 nm across, are far smaller than any blood cell, so cells stay in the capillary. The deeper layers hold back proteins.",
