@@ -296,7 +296,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Only cervical vertebrae have transverse foramina. Stacked, they form a channel for an artery and vein running up to the brain.",
+      "correct": "Only cervical vertebrae have transverse foramina. Stacked, they form a channel for the artery that runs up to the back of the brain.",
       "options": [
         "Correct. Transverse foramina mark a cervical vertebra.",
         "Thoracic vertebrae have costal facets on their transverse processes, not holes.",
@@ -371,7 +371,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "In a cut down the midline of the lower back, order these structures from front to back.",
+    "q": "In a cut down the midline of the mid-back (thoracic region), order these structures from front to back.",
     "options": [
       "Anterior longitudinal ligament",
       "Vertebral body",
@@ -410,7 +410,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "In a herniated disc, the outer rings of the anulus fibrosus tear and the gel of the nucleus pulposus is squeezed out, usually backward and to one side, where it presses on a nerve leaving through the intervertebral foramen.",
+      "correct": "In a herniated disc, the outer rings of the anulus fibrosus tear and the gel of the nucleus pulposus is squeezed out, usually backward and to one side, where it presses on a nerve on its way to an intervertebral foramen.",
       "options": [
         "The disc stays anchored to the bodies above and below it; the whole disc does not slide out.",
         "Correct. The nucleus herniates through a tear in the anulus.",
@@ -491,10 +491,10 @@
     ],
     "q": "An 80-year-old woman with osteoporosis has lost 5 cm of height, and her upper back has become rounded and hunched. What most likely caused the change in her spine?",
     "options": [
-      "Her lumbar curve became exaggerated",
-      "Her cervical vertebrae fused",
-      "The fronts of weakened thoracic vertebral bodies collapsed into wedges",
-      "Her coccyx broke and tilted forward"
+      "Her lumbar curve became an exaggerated swayback",
+      "Several of her cervical vertebrae fused into one block",
+      "Weak thoracic vertebral bodies collapsed at the front",
+      "Her coccyx broke and tilted forward in a fall"
     ],
     "correct": 2,
     "why": {

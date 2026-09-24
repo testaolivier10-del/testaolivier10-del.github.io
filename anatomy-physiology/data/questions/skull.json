@@ -380,7 +380,7 @@
       "The bone is thin there, and a large artery runs just inside it",
       "The foramen magnum lies directly beneath it",
       "The frontal sinus lies right under it and quickly fills with blood",
-      "The sagittal suture there is still unfused in teenagers"
+      "The sagittal suture lies directly under the spot"
     ],
     "correct": 0,
     "why": {
@@ -389,7 +389,7 @@
         "Correct. The pterion is thin and overlies a large artery.",
         "The foramen magnum is in the base of the skull at the back, far from the side of the head.",
         "The frontal sinus is in the forehead above the eyebrows, not on the side of the head.",
-        "The sagittal suture runs along the top midline, not on the side, and adult sutures are closed seams by this age."
+        "The sagittal suture runs along the top midline of the head, far from the side where he was hit, so it is not under this spot."
       ]
     }
   },
@@ -532,10 +532,10 @@
     ],
     "q": "After a car crash, a man cannot smell his coffee, and clear, watery fluid drips from his nose when he leans forward. Which part of the skull is most likely broken?",
     "options": [
-      "The zygomatic arch",
-      "The sella turcica",
+      "The zygomatic arch of the cheek",
+      "The sella turcica of the sphenoid bone",
       "The cribriform plate of the ethmoid",
-      "The mastoid process"
+      "The mastoid process behind the ear"
     ],
     "correct": 2,
     "why": {

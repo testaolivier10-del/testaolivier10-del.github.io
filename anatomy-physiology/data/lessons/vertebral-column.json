@@ -31,8 +31,8 @@
   "chain": [
     { "cause": "Lifting while bent forward squeezes the front edges of the lumbar vertebral bodies together.", "effect": "The pressure pushes the gel of the nucleus pulposus backward inside the disc." },
     { "cause": "The nucleus presses on the back of the anulus fibrosus, where the rings are thinnest and have weakened with age.", "effect": "The fibers of the anulus tear, and the nucleus pushes out through the gap: a herniated disc." },
-    { "cause": "The posterior longitudinal ligament covers only the midline of the back of the disc.", "effect": "The bulge usually goes backward and to one side, next to the intervertebral foramen." },
-    { "cause": "The bulge presses on the nerve leaving the spinal cord through that foramen.", "effect": "The squeezed nerve causes pain, tingling or weakness along the area it serves, often down one leg." }
+    { "cause": "The posterior longitudinal ligament covers only the midline of the back of the disc.", "effect": "The bulge usually goes backward and to one side, into the vertebral canal just inside the intervertebral foramen." },
+    { "cause": "The bulge presses on a nerve running down the canal toward its exit gap. In the lower back, this is usually the nerve that leaves one level lower.", "effect": "The squeezed nerve causes pain, tingling or weakness along the area it serves, often down one leg." }
   ],
   "misconception": {
     "wrong": "A \"slipped disc\" is a disc that has slid out of place from between the vertebrae.",

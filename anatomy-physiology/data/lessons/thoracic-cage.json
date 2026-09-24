@@ -29,7 +29,7 @@
     "caption": "The sternum and the thoracic cage from the front. Hide the labels, name the three parts of the sternum and its landmarks, then count the ribs down from the sternal angle."
   },
   "chain": [
-    { "cause": "Each rib's head and tubercle meet the thoracic vertebrae at the back.", "effect": "The rib can swing up and down around its back end, like the handle of a bucket." },
+    { "cause": "Each rib's head, and in most ribs its tubercle, meets the thoracic vertebrae at the back.", "effect": "The rib can swing up and down, hinged at its back end." },
     { "cause": "At the front, each rib continues as a costal cartilage of hyaline cartilage, joined to the sternum directly or through the cartilage above.", "effect": "The front of the cage can bend and twist instead of being held rigid." },
     { "cause": "When muscles lift the ribs, their curved bodies swing outward and the sternum moves forward.", "effect": "The cage widens from side to side and from front to back." },
     { "cause": "When the force stops, the bent costal cartilages spring back to their resting shape.", "effect": "The cage returns to its resting size, which is also what lets the chest recoil after each CPR compression." }
@@ -39,7 +39,7 @@
     "right": "Floating ribs (11 and 12) are attached at the back, where their heads meet the vertebrae, just like every other rib. What they lack is a front attachment: their short cartilages end in the muscles of the abdominal wall instead of reaching the sternum. \"Floating\" describes only the front end."
   },
   "check": ["anp-thoracic-cage-1", "anp-thoracic-cage-3", "anp-thoracic-cage-9", "anp-thoracic-cage-10", "anp-thoracic-cage-11", "anp-thoracic-cage-13", "anp-thoracic-cage-14"],
-  "summary": "<p>The thoracic cage is the 12 thoracic vertebrae, 12 pairs of ribs with their costal cartilages, and the sternum. The sternum has a manubrium, a body and a xiphoid process; the jugular notch is at its top, and the sternal angle marks the second rib, which is how ribs are counted. A rib has a head that meets two vertebral bodies, a neck, a tubercle that meets a transverse process, an angle, a body and a costal groove that shelters a nerve and vessels. Ribs 1 to 7 are true ribs, 8 to 12 are false ribs, and 11 and 12 are floating ribs with no front attachment. The costal cartilages make the cage flexible.</p>",
+  "summary": "<p>The thoracic cage is the 12 thoracic vertebrae, 12 pairs of ribs with their costal cartilages, and the sternum. The sternum has a manubrium, a body and a xiphoid process; the jugular notch is at its top, and the sternal angle marks the second rib, which is how ribs are counted. A typical rib has a head that meets two vertebral bodies, a neck, a tubercle that meets a transverse process, an angle, a body and a costal groove that shelters a nerve and vessels. Ribs 1 to 7 are true ribs, 8 to 12 are false ribs, and 11 and 12 are floating ribs with no front attachment. The costal cartilages make the cage flexible.</p>",
   "connections": [
     { "href": "/nremt/study-notes.html#chapter-21", "label": "NREMT: Resuscitation" },
     { "href": "/nremt/study-notes.html#chapter-31", "label": "NREMT: Chest and abdominal trauma" }

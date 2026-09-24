@@ -508,7 +508,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Order the bones that carry the weight of the trunk down to the foot when you stand on one leg.",
+    "q": "Order the structures that carry the weight of the trunk down to the foot when you stand on one leg.",
     "options": [
       "Sacrum",
       "Ilium",
@@ -615,7 +615,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "A 30-year-old who is training for her first marathon has had aching pain on the top of her foot, over the middle of the second toe's long bone, for three weeks. It gets worse the farther she runs. Which bone is most likely cracked?",
+    "q": "A 30-year-old who is training for her first marathon has had aching pain on the top of her foot, in line with her second toe and a few centimeters back from where the toe begins, for three weeks. It gets worse the farther she runs. Which bone is most likely cracked?",
     "options": [
       "The talus",
       "The second metatarsal",
@@ -624,7 +624,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "The second and third metatarsals are long and thin and take repeated load in running. Mounting mileage can crack them without a single injury: a stress fracture. Pain over the middle of the long bone of the second toe points to the second metatarsal.",
+      "correct": "The second and third metatarsals are long and thin and take repeated load in running. Mounting mileage can crack them without a single injury: a stress fracture. Pain on the top of the foot, in line with the second toe and just back from it, points to the second metatarsal.",
       "options": [
         "The talus is at the ankle, under the tibia, not in the middle of the foot.",
         "Correct. The second metatarsal is the classic site of a runner's stress fracture.",
@@ -667,7 +667,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Which bone of the leg is not part of the knee?",
+    "q": "Which of these bones near the knee does not form part of the knee?",
     "options": [
       "Femur",
       "Tibia",
