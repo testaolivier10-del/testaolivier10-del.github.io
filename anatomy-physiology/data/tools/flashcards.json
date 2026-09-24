@@ -14100,7 +14100,7 @@
    ],
    "level": "apply",
    "front": "Where does amniotic fluid come from late in pregnancy?",
-   "back": "Mostly fetal urine, from about week 9 after fertilization; the fetus also swallows it.",
+   "back": "Mostly fetal urine. The kidneys start adding urine at about week 9 after fertilization, and it becomes the main source in the second half of pregnancy; the fetus also swallows the fluid.",
    "why": "Early on it is water from maternal plasma; once the kidneys work, their urine becomes the main source."
   },
   {
@@ -14745,7 +14745,7 @@
    ],
    "level": "apply",
    "front": "Why does blood pressure dip in mid-pregnancy despite a higher cardiac output?",
-   "back": "Total peripheral resistance falls by about a quarter to a third, slightly more than output rises.",
+   "back": "Total peripheral resistance falls by about a quarter to a third. Pressure is output times resistance, and 1.4 × 0.7 ≈ 0.98, so the fall in resistance slightly outweighs the rise in output.",
    "why": "Mean arterial pressure is cardiac output times resistance, so the two changes nearly cancel."
   },
   {
@@ -14980,7 +14980,7 @@
    "level": "recall",
    "front": "What is the Ferguson reflex?",
    "back": "Stretch of the cervix triggers oxytocin release from the posterior pituitary through a nerve-to-pituitary reflex.",
-   "why": "It is the afferent half of the labor positive feedback loop; oxytocin then strengthens the contractions that stretch the cervix more."
+   "why": "It is the stretch-to-oxytocin half of the labor positive feedback loop; oxytocin then strengthens the contractions that stretch the cervix more."
   },
   {
    "id": "dv-loop-ends",

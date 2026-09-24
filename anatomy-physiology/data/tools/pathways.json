@@ -9092,13 +9092,13 @@
           "id": "meiosis2",
           "label": "Meiosis II finishes",
           "text": "The oocyte completes meiosis II and pinches off the second polar body.",
-          "why": "The same calcium waves release the oocyte from its pause in metaphase II; its set of chromosomes must be halved before the nuclei form."
+          "why": "The same calcium waves release the oocyte from its pause in metaphase II; its sister chromatids must separate before the nuclei form."
         },
         {
           "id": "pronuclei",
           "label": "Pronuclei form",
           "text": "Male and female pronuclei form, each copies its DNA, and they move toward the center of the cell.",
-          "why": "The female pronucleus can form only once meiosis II has left the oocyte with a single set of chromosomes."
+          "why": "The female pronucleus can form only once meiosis II has finished: the sister chromatids have separated, one set stays in the oocyte and the other leaves in the second polar body."
         },
         {
           "id": "zygote",
@@ -9263,10 +9263,10 @@
           "why": "The endometrium depends on progesterone; this is the result the whole chain protects."
         },
         {
-          "id": "test",
-          "label": "hCG in the urine",
-          "text": "hCG spills into the mother’s urine, where a home pregnancy test can detect it around the day her period is due.",
-          "why": "hCG appears in the blood about 8 to 10 days after fertilization and in the urine after that; by the day the period is due, there is usually enough to detect."
+          "id": "handover",
+          "label": "Trophoblast takes over",
+          "text": "From about weeks 7 to 9 of pregnancy, the tissues grown from the trophoblast make enough progesterone themselves, and the corpus luteum is no longer needed.",
+          "why": "The embryo stays implanted, so its trophoblast keeps growing until its tissues can make the progesterone; the corpus luteum only bridges the gap."
         }
       ],
       "missing": {
@@ -9287,7 +9287,7 @@
         "text": "The corpus luteum shrinks into a scar, because hCG replaces its hormones.",
         "why": "hCG is not a replacement for progesterone. It rescues the corpus luteum, which survives and keeps making progesterone until the trophoblast’s tissues take over."
       },
-      "summary": "The invading syncytiotrophoblast secretes hCG, which binds LH receptor proteins on the corpus luteum, so it survives past its usual two weeks and keeps secreting progesterone. Progesterone keeps the endometrium, and the embryo in it, in place. hCG spills into the urine, which is what pregnancy tests detect."
+      "summary": "The invading syncytiotrophoblast secretes hCG, which binds LH receptor proteins on the corpus luteum, so it survives past its usual two weeks and keeps secreting progesterone. Progesterone keeps the endometrium, and the embryo in it, in place, until the trophoblast’s own tissues make enough progesterone at about weeks 7 to 9. hCG also spills into the urine, which is what pregnancy tests detect."
     },
     {
       "id": "dv-gastrulation",
@@ -9344,16 +9344,16 @@
           "why": "The neural plate is induced by the notochord, so it cannot form before the rod beneath it."
         },
         {
-          "id": "tube",
-          "label": "Neural tube closes",
-          "text": "The neural folds rise and meet over the midline, closing the neural tube from about day 22 to day 28, while neural crest cells break away.",
-          "why": "The plate must first fold up before its edges can meet and close into a tube."
+          "id": "somites",
+          "label": "Somites form",
+          "text": "From about day 20, the mesoderm beside the neural plate breaks into paired somites, head end first.",
+          "why": "Somites form in the mesoderm alongside the notochord and neural plate, once there is mesoderm there to divide, and they begin before the tube closes."
         },
         {
-          "id": "somites",
-          "label": "Somites split",
-          "text": "The mesoderm beside the tube breaks into paired somites, which split into sclerotome, myotome and dermatome.",
-          "why": "Somites form in the mesoderm alongside the neural tube, from about day 20, and then divide into the parts that make vertebrae, muscle and dermis."
+          "id": "tube",
+          "label": "Neural tube closes",
+          "text": "The neural folds rise and meet over the midline, closing the neural tube from about day 22 to day 28, while neural crest cells break away; the somites then split into sclerotome, myotome and dermatome.",
+          "why": "The plate must first fold up before its edges can meet and close into a tube, and closing takes about a week, so it ends after the first somites have formed."
         }
       ],
       "missing": {
@@ -9374,7 +9374,7 @@
         "text": "Signals from the yolk sac make the endoderm thicken into the neural plate.",
         "why": "The nervous system comes from ectoderm, and the signal comes from the notochord beneath it. Endoderm forms the linings of the gut and airways."
       },
-      "summary": "The two-layered disc of epiblast and hypoblast gains a primitive streak around day 15. Epiblast cells move through it: the first replace the hypoblast as endoderm, the next form mesoderm, and those left on top become ectoderm. Mesoderm forms the notochord, which makes the ectoderm above it into the neural plate; the plate folds and closes into the neural tube by about day 28, and the mesoderm beside it forms somites, which split into sclerotome, myotome and dermatome."
+      "summary": "The two-layered disc of epiblast and hypoblast gains a primitive streak around day 15. Epiblast cells move through it: the first replace the hypoblast as endoderm, the next form mesoderm, and those left on top become ectoderm. Mesoderm forms the notochord, which makes the ectoderm above it into the neural plate. From about day 20 the mesoderm beside it breaks into somites; the plate folds and closes into the neural tube by about day 28, and the somites split into sclerotome, myotome and dermatome."
     },
     {
       "id": "dv-fetal-shunts",
@@ -9718,7 +9718,7 @@
           "id": "descend",
           "label": "Testes descend",
           "text": "Mostly in the last three months, the testes descend through the inguinal canals into the scrotum.",
-          "why": "The testes can only move into the scrotum once the scrotum has formed, late in pregnancy."
+          "why": "The testes form high in the abdomen and descend last, mostly in the last three months of pregnancy, long after DHT has built the scrotum."
         }
       ],
       "missing": {
@@ -9857,7 +9857,7 @@
         {
           "id": "signs",
           "label": "Hypertension, protein, edema",
-          "text": "Arterioles constrict and blood pressure rises above 140/90 mm Hg after week 20; capillaries leak; protein spills into the urine; platelets fall.",
+          "text": "Arterioles constrict and blood pressure rises to 140/90 mm Hg or more after week 20; capillaries leak; protein spills into the urine; platelets fall.",
           "why": "Every sign comes from damaged endothelium in a different organ, so they follow the damage."
         },
         {

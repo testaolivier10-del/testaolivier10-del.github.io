@@ -23683,7 +23683,7 @@
       "x": 36,
       "y": 2813
      },
-     "why": "About 2,380 g at 34 weeks and 2,810 g at 36: roughly 430 g in two weeks, about 220 g a week. At week 20 the whole fetus weighs little more than that."
+     "why": "About 2,380 g at 34 weeks and 2,810 g at 36: roughly 430 g in two weeks, about 220 g a week. At week 20 the whole fetus weighs only about one and a half times that."
     },
     {
      "id": "viable",
@@ -23716,7 +23716,7 @@
      "type": "phase",
      "level": "apply",
      "diff": 2,
-     "q": "In which stretch does the fetus gain the most grams per week, and what is it mostly adding?",
+     "q": "In which stretch does the fetus gain the most grams per week, and what builds up in its body then?",
      "options": [
       "The last 8 weeks: fat, including brown fat, under the skin",
       "Weeks 20 to 24: new organs still being formed from the germ layers",
@@ -23728,12 +23728,12 @@
       "region": "fat"
      },
      "why": {
-      "correct": "The curve is steepest from about week 32 on. In the last weeks fat builds up under the skin and fills out the wrinkled skin, and brown fat is laid down for keeping warm after birth.",
+      "correct": "The curve is steepest from about week 32 on. Most of the grams are still lean tissue and water, but fat now builds up under the skin and fills out the wrinkled skin, and brown fat is laid down for keeping warm after birth.",
       "options": [
-       "Right: fat fills the last weeks.",
+       "Right: the steepest stretch, when fat builds up.",
        "Every organ system is present by about week 10; the fetal period is growth and maturation, not new organs.",
-       "Bones ossify and grow throughout, but the steepest gain in grams is late, and it is mostly fat.",
-       "The curve gets steeper with time: the fetus adds far more grams a week near term than at 20 weeks."
+       "Bones ossify and grow throughout, but the steepest gain in grams is late, not at 20 to 24 weeks.",
+       "The weekly gain grows from about 75 g at week 20 to over 200 g in the last weeks, so the grams per week are far from equal."
       ]
      }
     },
@@ -24323,7 +24323,7 @@
      "diff": 2,
      "q": "When is her blood pressure lowest, and why does it not rise with the cardiac output?",
      "options": [
-      "Weeks 14 to 24: resistance falls slightly more than output rises",
+      "Weeks 14 to 24: the fall in resistance outweighs the output rise",
       "Weeks 32 to 40: the heart has tired",
       "Weeks 0 to 3: she has lost blood volume",
       "Weeks 24 to 40: resistance rises above its value before pregnancy"
@@ -24333,7 +24333,7 @@
       "region": "dip"
      },
      "why": {
-      "correct": "Mean arterial pressure is cardiac output times total peripheral resistance. Progesterone and nitric oxide relax the arterioles, and the placenta adds a low-resistance bed, so resistance falls as fast as output rises; the product dips, most in mid-pregnancy.",
+      "correct": "Mean arterial pressure is cardiac output times total peripheral resistance. Progesterone and nitric oxide relax the arterioles, and the placenta adds a low-resistance bed, so resistance falls about as much as output rises. The product, 1.40 × 0.66 ≈ 0.92 at week 20, dips below 1, most in mid-pregnancy.",
       "options": [
        "Right: the fall in resistance slightly outweighs the rise in output.",
        "Late in pregnancy the pressure returns toward her usual level; it is not at its lowest then.",
@@ -24534,7 +24534,7 @@
      "type": "value",
      "level": "apply",
      "diff": 1,
-     "q": "Read the rate at 45. About how many times the rate at 25 (0.83 per 1,000) is it?",
+     "q": "Read the rate at a maternal age of 45, per 1,000 births.",
      "answer": 33,
      "tol": 3,
      "unit": "per 1,000",
@@ -24619,7 +24619,7 @@
       ]
      },
      "why": {
-      "correct": "In the translocation form, most of an extra chromosome 21 is attached to another chromosome, often inherited from a parent who carries the rearrangement. It does not come from nondisjunction during the long pause in meiosis I, so it does not depend on the mother’s age.",
+      "correct": "In the translocation form, most of an extra chromosome 21 is attached to another chromosome; in about a quarter of cases this is inherited from a parent who carries the rearrangement. It does not come from nondisjunction during the long pause in meiosis I, so it does not depend on the mother’s age.",
       "options": [
        "Right: flat, because it has nothing to do with the pause.",
        "Only nondisjunction rises with age; the translocation form has a different cause.",

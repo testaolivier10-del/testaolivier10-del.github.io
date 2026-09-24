@@ -11211,6 +11211,11 @@
               "tone": "ok"
             },
             {
+              "when": "D < 154",
+              "label": "before viability",
+              "tone": "lo"
+            },
+            {
               "when": "D < 259",
               "label": "preterm if born now (before 37 weeks)",
               "tone": "lo"
@@ -11241,16 +11246,36 @@
       ],
       "meaning": [
         {
+          "when": "D < 35",
+          "text": "At {wk} weeks on the clinical count, about {fwk} weeks after fertilization, organs have not begun to form yet. A harmful exposure now usually either ends the pregnancy or does no lasting harm, because the few cells left can replace damaged ones. The most sensitive window, while organs form, is weeks 3 to 8 after fertilization (weeks 5 to 10 on this count)."
+        },
+        {
           "when": "D < 70",
           "text": "At {wk} weeks on the clinical count, about {fwk} weeks after fertilization, this is still the embryonic period: organs are forming, and an embryo is most easily harmed by a harmful exposure now."
+        },
+        {
+          "when": "D < 140",
+          "text": "At {wk} weeks and {dd} days, the fetus could not survive outside the uterus. A pregnancy lost before about week 20 is a miscarriage, not a preterm birth. The fetal period is mostly growth and maturation."
+        },
+        {
+          "when": "D < 154",
+          "text": "At {wk} weeks and {dd} days, a baby born now would be preterm and still short of the edge of viability, weeks 22 to 24, when the lungs first become able to exchange gas. It would almost certainly not survive."
         },
         {
           "when": "D < 259",
           "text": "At {wk} weeks and {dd} days, a baby born now would be preterm, before 37 weeks. The fetal period is mostly growth and maturation; the lungs are among the last organs to be ready."
         },
         {
+          "when": "D < 280",
+          "text": "At {wk} weeks and {dd} days she is at term (37 to just under 42 weeks). Her due date is {due} days from now, though only a small minority of babies arrive on the due date itself."
+        },
+        {
+          "when": "D < 281",
+          "text": "At {wk} weeks she is at term and on her due date. Only a small minority of babies arrive on the due date itself."
+        },
+        {
           "when": "D < 294",
-          "text": "At {wk} weeks and {dd} days she is at term (37 to just under 42 weeks). Only a small minority of babies arrive on the due date itself, {due} days from now."
+          "text": "At {wk} weeks and {dd} days she is {late} days past her due date but still at term (37 to just under 42 weeks)."
         },
         {
           "when": "1",
@@ -11321,8 +11346,8 @@
           "max": 110,
           "step": 1,
           "gen": [
-            60,
-            80,
+            68,
+            72,
             1
           ]
         },
@@ -11336,8 +11361,8 @@
           "max": 110,
           "step": 1,
           "gen": [
-            60,
-            80,
+            68,
+            72,
             1
           ]
         },
@@ -11366,8 +11391,8 @@
           "max": 130,
           "step": 1,
           "gen": [
-            75,
-            95,
+            82,
+            88,
             1
           ]
         },
@@ -11381,8 +11406,8 @@
           "max": 130,
           "step": 1,
           "gen": [
-            70,
-            90,
+            78,
+            84,
             1
           ]
         },
@@ -11396,7 +11421,7 @@
           "max": 50,
           "step": 1,
           "gen": [
-            20,
+            25,
             35,
             1
           ],
@@ -11443,6 +11468,17 @@
           "key": "dM",
           "expr": "M0 * HR1 * SV1 / (HR0 * SV0) * (1 - drop / 100) - M0",
           "dp": 1
+        },
+        {
+          "key": "dMd",
+          "expr": "M0 - M0 * HR1 * SV1 / (HR0 * SV0) * (1 - drop / 100)",
+          "dp": 1
+        }
+      ],
+      "invalid": [
+        {
+          "when": "HR1 * SV1 < HR0 * SV0",
+          "text": "These values have cardiac output falling. In pregnancy it rises, by about 30 to 50%; check the values."
         }
       ],
       "steps": [
@@ -11483,8 +11519,12 @@
       ],
       "meaning": [
         {
+          "when": "both < 0.9",
+          "text": "Cardiac output rose {rise}%, but resistance fell {drop}%, so pressure falls by {dMd:1} mm Hg. That is more than the usual mid-pregnancy dip of a few mm Hg: here the fall in resistance clearly outweighs the rise in output."
+        },
+        {
           "when": "both < 0.99",
-          "text": "Cardiac output rose {rise}%, but resistance fell {drop}%, so pressure falls slightly, by {dM:1} mm Hg: the mid-pregnancy dip. The fall in resistance slightly outweighs the rise in output."
+          "text": "Cardiac output rose {rise}%, but resistance fell {drop}%, so pressure falls by {dMd:1} mm Hg. A fall of a few mm Hg is the usual mid-pregnancy dip: the fall in resistance slightly outweighs the rise in output."
         },
         {
           "when": "both <= 1.01",
@@ -11520,6 +11560,7 @@
         }
       ],
       "practice": {
+        "require": "r >= 1.25 && r <= 1.55 && both >= 0.9 && both <= 1.01",
         "asks": [
           {
             "key": "M1",
@@ -11731,6 +11772,7 @@
         }
       ],
       "practice": {
+        "require": "pu > 0 && !(re == 0 && gr == 2)",
         "asks": [
           {
             "key": "total",
@@ -12125,7 +12167,7 @@
           "sym": "age",
           "unit": "years",
           "default": 70,
-          "min": 20,
+          "min": 25,
           "max": 95,
           "step": 1,
           "gen": [

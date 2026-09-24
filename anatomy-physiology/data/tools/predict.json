@@ -20555,7 +20555,7 @@
             "kidney",
             "fluid"
           ],
-          "why": "From about week 9 after fertilization, fetal urine is the main source of amniotic fluid. Less kidney blood flow means less urine, so the fluid volume falls."
+          "why": "In the second half of pregnancy, fetal urine is the main source of amniotic fluid. Less kidney blood flow means less urine, so the fluid volume falls."
         }
       ]
     },
@@ -21138,7 +21138,7 @@
                 "vent",
                 "co2"
               ],
-              "why": "Ventilation rises by 40 to 50% while her oxygen use rises only 20 to 30%, so she clears carbon dioxide faster than she makes it, and PaCO2 falls toward 30 mm Hg."
+              "why": "Breathing rises more than her carbon dioxide production, so she clears carbon dioxide faster than she makes it and PaCO2 falls; later in pregnancy it settles near 30 mm Hg."
             },
             {
               "id": "ph",
@@ -21153,7 +21153,7 @@
             },
             {
               "id": "fetal",
-              "name": "Ease with which the fetus unloads carbon dioxide across the placenta",
+              "name": "Ease with which the fetus unloads carbon dioxide across the placenta, once it depends on the placenta",
               "answer": "up",
               "chain": [
                 "vent",
@@ -21955,7 +21955,7 @@
         },
         {
           "id": "stored",
-          "name": "Milk already stored in the alveoli",
+          "name": "Milk the alveolar cells made before this feed began",
           "answer": "none",
           "chain": [
             "made"
@@ -22027,7 +22027,7 @@
       "steps": {
         "glue": "The proteins holding its paired chromosomes together have weakened",
         "nd": "Nondisjunction in meiosis I is more likely",
-        "t21": "An oocyte with two copies of chromosome 21 is more likely to be fertilized",
+        "t21": "More of her oocytes carry two copies of chromosome 21, so a fertilized one is more likely to be trisomic",
         "trans": "A translocation form arises from a rearrangement, not from the pause"
       },
       "variables": [
@@ -22059,7 +22059,7 @@
           "chain": [
             "trans"
           ],
-          "why": "In about 4% of cases, the extra chromosome 21 is attached to another chromosome. That form comes from a rearrangement, often carried by a parent, and does not depend on the mother’s age."
+          "why": "In about 4% of cases, the extra chromosome 21 is attached to another chromosome. That form comes from a rearrangement, in about a quarter of cases carried by a parent, and does not depend on the mother’s age."
         }
       ]
     },
