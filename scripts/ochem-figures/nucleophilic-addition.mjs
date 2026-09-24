@@ -69,60 +69,61 @@ FIGURES.push({
   lessons: ['nucleophilic-addition'],
   anchor: '<h3>Two steps, one example</h3>',
   alt: 'Three stacked panels. First, acetone with a flat carbonyl carbon at 120 degrees; a cyanide ion below uses the lone pair on its carbon to attack the carbonyl carbon, and a second arrow moves the pi bond onto the oxygen. Second, the tetrahedral alkoxide: the carbon now carries O minus, two CH3 groups and CN, drawn with a wedge and a hash; a lone pair on the O minus takes the proton of H–CN, and the H–C bond electrons stay on carbon as cyanide. Third, the product, acetone cyanohydrin, with cyanide ion given back.',
-  viewBox: '0 0 340 700',
+  viewBox: '0 0 340 820',
   build() {
     let s = '';
     // ---- panel 1: attack ----
-    s += box(8, 222, 'STEP 1 · CYANIDE ATTACKS THE CARBON');
+    s += box(8, 262, 'STEP 1 · CYANIDE ATTACKS THE CARBON');
     const c = P(120, 122), o = P(120, 60);
     s += B(c, 'C', o, 'O', { order: 2 });
     s += arm(c, 'C', 210, 52, 'CH₃').s + arm(c, 'C', 330, 52, 'CH₃').s;
     s += A(o, 'O') + A(c, 'C', 'warn');
-    s += lonePair(o.x, o.y, 315, { dist: 21 }) + lonePair(o.x, o.y, 225, { dist: 21 });
-    s += curve(P(126, 100), P(134, 66), { bow: 12 });
-    const cn = P(120, 196), nn = P(178, 196);
+    s += lonePair(o.x, o.y, 225, { dist: 21 }) + lonePair(o.x, o.y, 315, { dist: 21 });
+    s += curve(P(126, 100), P(136, 64), { bow: 12 });
+    const cn = P(120, 190), nn = P(120, 242);
     s += B(cn, 'C', nn, 'N', { order: 3 });
     s += A(cn, 'C', 'hi') + A(nn, 'N');
-    s += lonePair(cn.x, cn.y, 270, { dist: 21 }) + lonePair(nn.x, nn.y, 0, { dist: 21 });
-    s += chg(98, 182, '−');
-    s += curve(P(114, 172), P(114, 140), { bow: 10 });
+    s += lonePair(cn.x, cn.y, 270, { dist: 21 }) + lonePair(nn.x, nn.y, 90, { dist: 21 });
+    s += chg(96, 174, '−');
+    s += curve(P(126, 166), P(126, 140), { bow: -10 });
     s += tg(262, 92, 'flat (trigonal planar)', 'mut');
     s += tg(262, 110, 'sp² carbon', 'mut');
     s += tg(262, 128, 'bond angles 120°', 'mut');
-    s += tg(250, 214, 'cyanide ion', 'mut');
+    s += tg(210, 226, 'cyanide ion', 'mut');
 
     // ---- panel 2: the tetrahedral alkoxide takes a proton ----
-    s += box(238, 262, 'STEP 2 · THE ALKOXIDE TAKES A PROTON');
-    const c2 = P(100, 362), o2 = P(100, 300);
+    s += box(278, 262, 'STEP 2 · THE ALKOXIDE TAKES A PROTON');
+    const c2 = P(100, 402), o2 = P(100, 340);
     s += B(c2, 'C', o2, 'O');
     s += arm(c2, 'C', 210, 52, 'CH₃').s + arm(c2, 'C', 330, 52, 'CH₃', 'wedge').s;
     const cc = armEnd(c2, 270, 54), nc = armEnd(c2, 270, 108);
     s += hash(c2, cc, { rFrom: 14, rTo: 14, width: 11, rungs: 4 });
     s += B(cc, 'C', nc, 'N', { order: 3 }) + A(cc, 'C', 'hi') + A(nc, 'N');
-    s += lonePair(nc.x, nc.y, 180, { dist: 21 });
+    s += lonePair(nc.x, nc.y, 90, { dist: 21 });
     s += A(o2, 'O', 'hi') + A(c2, 'C', 'warn');
     s += lonePair(o2.x, o2.y, 270, { dist: 21 }) + lonePair(o2.x, o2.y, 180, { dist: 21 }) + lonePair(o2.x, o2.y, 0, { dist: 21 });
-    s += chg(80, 280, '−');
-    const h = P(186, 300), hc = P(246, 300), hn = P(302, 300);
+    s += chg(78, 320, '−');
+    const h = P(186, 340), hc = P(246, 340), hn = P(302, 340);
     s += B(h, 'H', hc, 'C') + B(hc, 'C', hn, 'N', { order: 3 });
-    s += A(h, 'H') + A(hc, 'C') + A(hn, 'N');
-    s += curve(P(126, 296), P(172, 294), { bow: -16 });
-    s += curve(P(214, 306), P(242, 318), { bow: 10 });
-    s += tg(252, 398, 'tetrahedral', 'mut');
-    s += tg(252, 416, 'sp³ carbon', 'mut');
-    s += tg(252, 434, 'bond angles 109.5°', 'mut');
+    s += A(h, 'H') + A(hc, 'C') + A(hn, 'N') + lonePair(hn.x, hn.y, 0, { dist: 21 });
+    s += curve(P(126, 336), P(172, 334), { bow: -16 });
+    s += curve(P(214, 346), P(242, 358), { bow: 10 });
+    s += tg(252, 438, 'tetrahedral', 'mut');
+    s += tg(252, 456, 'sp³ carbon', 'mut');
+    s += tg(252, 474, 'bond angles 109.5°', 'mut');
 
     // ---- panel 3: the product ----
-    s += box(508, 186, 'PRODUCT · ACETONE CYANOHYDRIN');
-    const c3 = P(100, 600), o3 = P(100, 544);
+    s += box(548, 264, 'PRODUCT · ACETONE CYANOHYDRIN');
+    const c3 = P(100, 666), o3 = P(100, 606);
     s += B(c3, 'C', o3, 'OH');
     s += arm(c3, 'C', 210, 52, 'CH₃').s + arm(c3, 'C', 330, 52, 'CH₃', 'wedge').s;
-    const cc3 = armEnd(c3, 270, 50), nc3 = P(cc3.x + 56, cc3.y);
+    const cc3 = armEnd(c3, 270, 54), nc3 = armEnd(c3, 270, 108);
     s += hash(c3, cc3, { rFrom: 14, rTo: 14, width: 11, rungs: 4 });
     s += B(cc3, 'C', nc3, 'N', { order: 3 }) + A(cc3, 'C', 'hi') + A(nc3, 'N');
+    s += lonePair(nc3.x, nc3.y, 90, { dist: 21 });
     s += A(o3, 'OH') + A(c3, 'C', 'warn');
-    s += lbl(250, 604, '+  ⁻C≡N');
-    s += tg(250, 628, 'cyanide is given back', 'mut');
+    s += lbl(252, 690, '+  ⁻C≡N');
+    s += tg(252, 714, 'cyanide is given back', 'mut');
     return s;
   },
   caption: 'Acetone and cyanide ion, with the HCN that supplies the proton. Compare the flat carbon in panel 1 with the tetrahedral carbon in panel 2.',
@@ -198,7 +199,7 @@ FIGURES.push({
   lessons: ['nucleophilic-addition'],
   anchor: '<h3>Under acid: the proton goes on first</h3>',
   alt: 'Four stacked panels for water adding to acetone with an acid catalyst. Step 1: a lone pair on the carbonyl oxygen takes a proton from H3O+, and the H–O bond electrons stay on the water. Step 2: the resulting cation drawn as two resonance contributors, one with C=O+ and every octet full, the other with the positive charge on carbon, which has only six electrons. Step 3: a water lone pair attacks that carbon. Step 4: a second water takes a proton from the added OH2+ group, giving the neutral hydrate, propane-2,2-diol, and giving H3O+ back.',
-  viewBox: '0 0 340 836',
+  viewBox: '0 0 340 846',
   build() {
     let s = '';
     const acet = (c, opts = {}) => {
@@ -213,8 +214,8 @@ FIGURES.push({
       let g = '';
       for (const a of hAngles) { const hh = armEnd(o, a, 38); g += B(o, 'O', hh, 'H') + A(hh, 'H'); }
       g += A(o, 'O');
-      for (const a of lpAngles) g += lonePair(o.x, o.y, a, { dist: 21 });
-      if (plus) g += chg(o.x + 22, o.y - 22, '+');
+      for (const a of lpAngles) g += lonePair(o.x, o.y, -a, { dist: 21 });
+      if (plus) g += chg(o.x, o.y - 30, '+');
       return g;
     };
 
@@ -224,9 +225,9 @@ FIGURES.push({
     s += u1.g + lonePair(u1.o.x, u1.o.y, 330, { dist: 21 }) + lonePair(u1.o.x, u1.o.y, 210, { dist: 21 });
     const h1 = P(180, 68), w1 = P(240, 68);
     s += B(h1, 'H', w1, 'O') + A(h1, 'H', 'hi');
-    s += water(w1, [30, 330], [270], true);
+    s += water(w1, [30, 330], [290], true);
     s += curve(P(110, 64), P(166, 62), { bow: -16 });
-    s += curve(P(206, 74), P(232, 88), { bow: 10 });
+    s += curve(P(208, 74), P(227, 82), { bow: 10 });
     s += tg(240, 150, 'H₃O⁺, the acid catalyst', 'mut');
 
     // ---- 2. two contributors ----
@@ -256,31 +257,29 @@ FIGURES.push({
     s += B(u4.o, 'O', h4, 'H') + A(h4, 'H');
     s += lonePair(u4.o.x, u4.o.y, 210, { dist: 21 }) + lonePair(u4.o.x, u4.o.y, 270, { dist: 21 });
     s += chg(u4.o.x - 26, u4.o.y + 34, '+');
-    const w4 = P(240, 540);
-    s += water(w4, [0, 270], [150, 90], false);
-    s += curve(P(220, 530), P(118, 536), { bow: 22 });
-    s += tg(240, 460, 'a neutral water', 'mut');
-    s += tg(240, 476, 'molecule', 'mut');
+    const w4 = P(236, 530);
+    s += water(w4, [30, 330], [150, 210], false);
+    s += curve(P(216, 522), P(118, 534), { bow: 20 });
+    s += tg(236, 592, 'a neutral water molecule', 'mut');
 
     // ---- 4. a second water takes the extra proton ----
-    s += box(612, 216, 'STEP 4 · A SECOND WATER TAKES A PROTON');
-    const c5 = P(84, 734), o5 = armEnd(c5, 90, 58);
+    s += box(612, 226, 'STEP 4 · A SECOND WATER TAKES A PROTON');
+    const c5 = P(86, 724), o5 = armEnd(c5, 90, 58);
     s += B(c5, 'C', o5, 'OH') + A(o5, 'OH');
-    s += arm(c5, 'C', 210, 50, 'CH₃').s;
-    s += arm(c5, 'C', 270, 50, 'CH₃', 'hash').s;
-    const op = armEnd(c5, 330, 56);
-    s += wedge(c5, op, { rFrom: 14, rTo: 14, width: 9 });
-    const hb = armEnd(op, 20, 50), hc = armEnd(op, 280, 42);
+    s += arm(c5, 'C', 210, 50, 'CH₃').s + arm(c5, 'C', 270, 50, 'CH₃').s;
+    const op = armEnd(c5, 330, 60);
+    s += B(c5, 'C', op, 'O');
+    const hb = P(op.x + 72, op.y), hc = armEnd(op, 290, 42);
     s += B(op, 'O', hb, 'H') + A(hb, 'H', 'hi') + B(op, 'O', hc, 'H') + A(hc, 'H');
     s += A(op, 'O', 'hi') + A(c5, 'C', 'warn');
-    s += chg(op.x - 6, op.y - 26, '+');
-    s += lonePair(op.x, op.y, 160, { dist: 21 });
-    const w5 = P(276, 700);
-    s += water(w5, [30, 330], [210, 150], false);
-    s += curve(P(254, 712), P(190, 734), { bow: -12 });
-    s += curve(P(160, 760), P(142, 778), { bow: 10 });
-    s += tg(236, 808, 'product: the hydrate,', 'good');
-    s += tg(236, 826, 'and H₃O⁺ is back', 'good');
+    s += chg(op.x - 4, op.y - 28, '+');
+    s += lonePair(op.x, op.y, 135, { dist: 21 });
+    const w5 = P(282, 700);
+    s += water(w5, [60, 330], [200, 130], false);
+    s += curve(P(262, 708), P(hb.x + 10, hb.y - 12), { bow: -10 });
+    s += curve(P(op.x + 40, op.y + 6), P(op.x + 13, op.y + 16), { bow: 12 });
+    s += tg(236, 810, 'product: the hydrate,', 'good');
+    s += tg(236, 828, 'and H₃O⁺ is back', 'good');
     return s;
   },
   caption: 'Water adding to acetone in dilute acid, one panel per step. The coral carbon is the one that changes from flat to tetrahedral.',

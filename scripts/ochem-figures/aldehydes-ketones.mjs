@@ -34,7 +34,7 @@ function atom(x, y, l, o = {}) {
     ? `<circle class="fg-atom" cx="${r2(x)}" cy="${r2(y)}" r="${r2(o.r ?? 16)}"></circle>` : '';
   return back + atom0(x, y, l, o);
 }
-const rOf = (l) => (l.length >= 5 ? 21 : l.length >= 3 ? 17 : l === 'H' ? 12 : 15);
+const rOf = (l) => (l.length >= 5 ? 21 : l.length === 4 ? 20 : l.length >= 3 ? 17 : l === 'H' ? 12 : 15);
 
 /* A plain, wedged or hashed bond from c to a labelled group, plus the group. */
 function arm(c, deg, len, l, o = {}) {
@@ -94,6 +94,9 @@ function eqArrows(a, b, gap = 6) {
   return arrow(P(a.x - px, a.y - py), P(b.x - px, b.y - py), { size: 7 }) +
          arrow(P(b.x + px, b.y + py), P(a.x + px, a.y + py), { size: 7 });
 }
+/* The C=O pi pair moving onto oxygen, for a C=O drawn straight up: from the
+   middle of the double bond, round the right-hand side, into the oxygen. */
+const piToO = (c, o, skel = false) => curve(P(c.x + 7, c.y - (skel ? 8 : 20)), P(o.x + 16, o.y + 3), { bow: -22 });
 const charge = (x, y, s, cls = 'fg-warn') => text(x, y, s, { cls, size: 15 });
 
 /* The edge-on carbonyl: C at c, O to the right along the axis, the plane as
@@ -106,8 +109,8 @@ function edgeOn(c, { g1 = 'R', g2 = 'R′', len = 58, oLen = 84, lps = true, pla
   const back = arm(c, 160, len, g2, { kind: 'hash' });
   const front = arm(c, 200, len, g1, { kind: 'wedge' });
   if (halos) {
-    s += halo(back.e, g2 === 'H' ? 15 : 27);
-    s += halo(front.e, g1 === 'H' ? 15 : 27);
+    s += halo(back.e, g2 === 'H' ? 15 : 31);
+    s += halo(front.e, g1 === 'H' ? 15 : 31);
   }
   s += back.s + front.s;
   s += bond(c, o, { order: 2, rFrom: 16, rTo: 15 });
@@ -218,9 +221,9 @@ FIGURES.push({
     const c1 = P(210, 140);
     const a = carbonyl(c1, { subs: [{ deg: 210, l: 'R' }, { deg: 330, l: 'R′' }], len: 58 });
     s += a.s;
-    s += text(c1.x + 30, c1.y + 22, 'δ+', { cls: 'fg-warn', size: 13 });
-    s += text(a.o.x + 34, a.o.y + 16, 'δ−', { cls: 'fg-hi', size: 13 });
-    s += curve(P(c1.x - 7, c1.y - 30), P(a.o.x - 16, a.o.y + 4), { bow: -16 });
+    s += text(c1.x - 32, c1.y + 2, 'δ+', { cls: 'fg-warn', size: 13 });
+    s += text(a.o.x - 34, a.o.y + 16, 'δ−', { cls: 'fg-hi', size: 13 });
+    s += piToO(c1, a.o);
     s += label(210, 212, 'major contributor');
     s += text(210, 230, 'every atom has an octet', { cls: 'fg-sm', size: 10.5 });
 
@@ -261,7 +264,7 @@ FIGURES.push({
     const k = carbonyl(c, { subs: [{ deg: 210, l: 'R' }, { deg: 330, l: 'R′' }], len: 56, cKind: 'warn' });
     s += k.s;
     s += curve(P(nu.x + 24, nu.y - 4), P(c.x - 18, c.y - 4), { bow: -22 });
-    s += curve(P(c.x + 6, c.y - 30), P(k.o.x + 16, k.o.y + 4), { bow: -14 });
+    s += piToO(c, k.o);
     s += arrow(P(300, 118), P(368, 118), { muted: true });
     // Tetrahedral alkoxide.
     const t = P(480, 124);
@@ -304,7 +307,7 @@ FIGURES.push({
     s += charge(o3.x - 4, o3.y - 24, '+');
     s += atom(c3.x, c3.y, 'C', { kind: 'warn' });
     s += text(650, 290, '+  A', { cls: 'fg-lbl', size: 13, anchor: 'start' });
-    s += charge(688, 282, '−', 'fg-hi');
+    s += charge(685, 284, '−', 'fg-hi');
     s += text(620, 340, 'carbon is now even', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(620, 354, 'more electron-poor', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
@@ -388,11 +391,11 @@ FIGURES.push({
     const o2 = at(t, -18, 64);
     s += bond(t, o2, { rFrom: 16, rTo: 16 });
     s += atom(o2.x, o2.y, 'O⁻', { kind: 'hi' });
-    s += arm(t, 238, 58, 'R′', { kind: 'hash' }).s;
-    s += arm(t, 205, 60, 'R', { kind: 'wedge' }).s;
+    s += arm(t, 256, 60, 'R′', { kind: 'hash' }).s;
+    s += arm(t, 222, 60, 'R', { kind: 'wedge' }).s;
     s += atom(t.x, t.y, 'C', { kind: 'warn' });
-    s += text(504, 168, 'where R and', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(504, 182, 'R′ were', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(484, 136, 'dashed: where', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(484, 150, 'R and R′ were', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += tag(614, 24, 'after the bond forms');
     s += text(614, 290, 'R and R′ fold away from Nu:', { cls: 'fg-tag', size: 11 });
     s += text(614, 306, 'a tetrahedral, sp³ carbon', { cls: 'fg-tag', size: 11 });
@@ -405,7 +408,7 @@ FIGURES.push({
 function aldKet(cx, cy, ald, lesson) {
   let s = '';
   const c = P(cx, cy);
-  const eo = edgeOn(c, { g1: 'CH₃', g2: ald ? 'H' : 'CH₃', len: 60, oLen: 84, plane: [120, 128], halos: true });
+  const eo = edgeOn(c, { g1: 'CH₃', g2: ald ? 'H' : 'CH₃', len: 52, oLen: 84, plane: [120, 128], halos: true });
   s += eo.s;
   s += nuApproach(c, 107, 150, { stop: 24 }).s;
   s += text(c.x + 24, c.y + 36, ald ? 'δ+' : 'δ+', { cls: 'fg-warn', size: ald ? 16 : 11 });
@@ -486,7 +489,7 @@ FIGURES.push({
     s += arm(t, 118, 54, 'OH', { kind: 'wedge', atomKind: 'hi' }).s;
     s += arm(t, 62, 54, 'OH', { kind: 'hash', atomKind: 'hi' }).s;
     s += atom(t.x, t.y, 'C', { kind: 'hi' });
-    s += label(530, 196, 'the hydrate (a gem-diol)');
+    s += '<text class="fg-lbl" x="530" y="196" text-anchor="middle" font-size="12.5">the hydrate (a <tspan font-style="italic">gem</tspan>-diol)</text>';
     s += text(640, 80, 'two OH on', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(640, 94, 'the same carbon', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
@@ -576,9 +579,9 @@ FIGURES.push({
     s += bond(p[0], c2, { rFrom: 0, rTo: 16, order: 2 });
     const o2 = at(c2, 60, 54), h2 = at(c2, 300, 50);
     s += bond(c2, o2, { rFrom: 16, rTo: 15 });
-    s += lp(o2, 150) + lp(o2, 60) + lp(o2, -30);
+    s += lp(o2, 350) + lp(o2, 110) + lp(o2, 170);
     s += atom(o2.x, o2.y, 'O', { kind: 'hi' });
-    s += charge(o2.x + 22, o2.y - 18, '−', 'fg-hi');
+    s += charge(o2.x + 18, o2.y - 18, '−', 'fg-hi');
     s += bond(c2, h2, { rFrom: 16, rTo: 12 }) + atom(h2.x, h2.y, 'H', { r: 12 });
     s += atom(c2.x, c2.y, 'C', { kind: 'hi' });
     s += charge(p[1].x + 8, p[1].y - 10, '+');
@@ -620,7 +623,7 @@ FIGURES.push({
         g += lp(o, 150) + lp(o, 30);
         g += atom(o.x, o.y, 'O');
         g += curve(P((c3.x + c4.x) / 2 + 2, (c3.y + c4.y) / 2 - 8), P((c2.x + c3.x) / 2 + 2, (c2.y + c3.y) / 2 - 8), { bow: -14 });
-        g += curve(P(c2.x + 6, c2.y - 26), P(o.x + 16, o.y + 6), { bow: -12 });
+        g += piToO(c2, o, true);
       }
       g += text(c3.x, c3.y + 24, 'α', { cls: 'fg-lbl', size: 13 });
       g += text(c4.x + 2, c4.y + 26, 'β', { cls: 'fg-lbl', size: 13 });
@@ -661,7 +664,7 @@ FIGURES.push({
     s += lp(b1, 210, { dist: 12 });
     s += charge(b1.x - 6, b1.y + 24, '−', 'fg-hi');
     s += curve(P(b1.x - 8, b1.y + 8), P((b1.x + b2.x) / 2 - 4, (b1.y + b2.y) / 2 + 8), { bow: 16 });
-    s += curve(P(b2.x + 6, b2.y - 26), P(bo.x + 16, bo.y + 6), { bow: -12 });
+    s += piToO(b2, bo, true);
     s += resArrow(P(450, 312), P(510, 312));
     // Enolate form.
     const e1 = P(550, 340), e2 = P(600, 312), e3 = P(650, 340), eo = P(600, 262);
@@ -682,7 +685,7 @@ FIGURES.push({
   section: 'aldehydes-ketones',
   anchor: '<h3>Where they come from</h3>',
   alt: 'Four routes. Propyne with water, acid and a mercury(II) salt gives acetone. Propyne by hydroboration then oxidation gives propanal. Ozonolysis of 2-methylbut-2-ene gives acetone and acetaldehyde. Still to come: oxidizing propan-2-ol gives acetone, and oxidizing ethanol gives acetaldehyde and then acetic acid.',
-  viewBox: '0 0 760 470',
+  viewBox: '0 0 760 570',
   build() {
     let s = '';
     const propyne = (x, y) => {
@@ -711,7 +714,7 @@ FIGURES.push({
     s += text(640, y + 4, 'ketone', { cls: 'fg-tag', size: 11, anchor: 'start' });
 
     // Row B: hydroboration–oxidation.
-    y = 170;
+    y = 180;
     s += rowLabel(y, 'hydroborate an alkyne', '(O on the end C)');
     s += propyne(200, y);
     s += step(380, y, '1. R₂BH', '2. H₂O₂, NaOH');
@@ -724,7 +727,7 @@ FIGURES.push({
     s += text(660, y + 4, 'aldehyde', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
 
     // Row C: ozonolysis.
-    y = 280;
+    y = 300;
     s += rowLabel(y, 'cut an alkene', '(ozonolysis)');
     {
       const a = P(200, y - 22), b = P(236, y), c = P(200, y + 22), d = P(280, y), e = P(316, y + 22);
@@ -740,31 +743,38 @@ FIGURES.push({
       s += bond(b, h, { rFrom: 0, rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12, kind: 'warn' });
     }
 
-    s += rule(20, 342, 740, 342);
+    s += rule(20, 352, 740, 352);
 
     // Row D: alcohol oxidation, taught later.
-    y = 420;
+    y = 424;
     s += rowLabel(y, 'oxidize an alcohol', '(taught later)');
     {
-      const a = P(190, y + 14), b = P(222, y - 6), c = P(254, y + 14), o = P(222, y - 48);
+      const a = P(200, y + 14), b = P(236, y - 6), c = P(272, y + 14), o = P(236, y - 48);
       s += sk(a, b) + sk(b, c) + bond(b, o, { rFrom: 0, rTo: 16 }) + atom(o.x, o.y, 'OH');
     }
-    s += arrow(P(270, y), P(318, y), { muted: true }) + text(294, y - 10, '[O]', { cls: 'fg-sm', size: 10.5 });
-    s += acetone(330, y);
-    s += rule(420, 360, 420, 460);
+    s += arrow(P(300, y), P(360, y), { muted: true }) + text(330, y - 10, '[O]', { cls: 'fg-sm', size: 10.5 });
+    s += acetone(390, y);
+    s += text(500, y + 4, '2° alcohol → ketone', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    y = 526;
     {
-      const a = P(440, y + 14), b = P(472, y - 6), o = P(504, y + 14);
+      const a = P(200, y + 14), b = P(236, y - 6), o = P(272, y + 14);
       s += sk(a, b) + bond(b, o, { rFrom: 0, rTo: 16 }) + atom(o.x, o.y, 'OH');
     }
-    s += arrow(P(526, y), P(566, y), { muted: true }) + text(546, y - 10, '[O]', { cls: 'fg-sm', size: 10.5 });
+    s += arrow(P(300, y), P(350, y), { muted: true }) + text(325, y - 10, '[O]', { cls: 'fg-sm', size: 10.5 });
     {
-      const a = P(578, y + 14), b = P(608, y - 6), o = P(638, y + 14);
+      const a = P(370, y + 14), b = P(406, y - 6), o = P(442, y + 14);
       s += sk(a, b) + bond(b, o, { order: 2, rFrom: 0, rTo: 15 }) + atom(o.x, o.y, 'O');
+      const h = at(b, 90, 36);
+      s += bond(b, h, { rFrom: 0, rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12, kind: 'warn' });
     }
-    s += arrow(P(656, y), P(690, y), { muted: true }) + text(673, y - 10, '[O]', { cls: 'fg-sm', size: 10.5 });
-    s += text(700, y + 4, 'acid', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += text(260, y + 40, '2° alcohol → ketone', { cls: 'fg-sm', size: 10.5 });
-    s += text(580, y + 40, '1° alcohol → aldehyde → acid', { cls: 'fg-sm', size: 10.5 });
+    s += arrow(P(472, y), P(522, y), { muted: true }) + text(497, y - 10, '[O]', { cls: 'fg-sm', size: 10.5 });
+    {
+      const a = P(540, y + 14), b = P(576, y - 6), o = P(612, y + 14), oh = P(576, y - 48);
+      s += sk(a, b) + bond(b, o, { order: 2, rFrom: 0, rTo: 15 }) + atom(o.x, o.y, 'O');
+      s += bond(b, oh, { rFrom: 0, rTo: 16 }) + atom(oh.x, oh.y, 'OH');
+    }
+    s += text(640, y - 4, '1° alcohol →', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(640, y + 10, 'aldehyde → acid', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
   caption: 'Three routes you have already met, and one still to come. [O] is shorthand for “an oxidizing agent”. In the last route, the aldehyde is a stop on the way to the carboxylic acid.',
@@ -792,9 +802,9 @@ FIGURES.push({
     const c1 = P(80, 350);
     const a = carbonyl(c1, { subs: [{ deg: 210, l: 'R' }, { deg: 330, l: 'R′' }], len: 52 });
     s += a.s;
-    s += text(c1.x + 28, c1.y + 22, 'δ+', { cls: 'fg-lbl', size: 13 });
-    s += text(a.o.x + 34, a.o.y + 14, 'δ−', { cls: 'fg-lbl', size: 13 });
-    s += curve(P(c1.x - 7, c1.y - 28), P(a.o.x - 16, a.o.y + 4), { bow: -14 });
+    s += text(c1.x - 32, c1.y + 2, 'δ+', { cls: 'fg-lbl', size: 13 });
+    s += text(a.o.x - 34, a.o.y + 16, 'δ−', { cls: 'fg-lbl', size: 13 });
+    s += piToO(c1, a.o);
     s += resArrow(P(140, 330), P(196, 330));
     const c2 = P(260, 350);
     s += arm(c2, 210, 52, 'R').s + arm(c2, 330, 52, 'R′').s;
