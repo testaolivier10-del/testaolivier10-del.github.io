@@ -321,7 +321,7 @@ FIGURES.push({
   build() {
     let s = panel(14, 8, 362, 284) + panel(386, 8, 362, 284);
     s += T(195, 32, 'CCl₄: four identical corners', 'fg-lbl');
-    s += umbrella(P(116, 150), 'Cl');
+    s += umbrella(P(130, 150), 'Cl');
     // the sum
     s += T(296, 66, 'top C–Cl', 'fg-sm');
     s += vec(P(276, 150), P(276, 90));
@@ -330,7 +330,7 @@ FIGURES.push({
     s += T(195, 250, 'equal length, opposite ways', 'fg-tag-mut');
     s += T(195, 270, 'sum = 0, so μ = 0', 'fg-tag-mut');
     s += T(567, 32, 'CHCl₃: one corner swapped', 'fg-lbl');
-    s += umbrella(P(488, 150), 'H');
+    s += umbrella(P(500, 150), 'H');
     s += T(530, 72, 'C–H: no arrow', 'fg-sm', { anchor: 'start' });
     s += vec(P(676, 96), P(676, 164), { thick: true });
     s += T(676, 186, 'lower three,', 'fg-sm') + T(676, 200, 'nothing opposing', 'fg-sm');
@@ -369,23 +369,23 @@ FIGURES.push({
   id: 'hydrogen-bond',
   section: 'bond-polarity',
   anchor: 'is worth a hundred degrees.</p>',
-  viewBox: '0 0 760 300',
+  viewBox: '0 0 760 262',
   alt: 'Left: two ethanol molecules, CH3–CH2–O–H. The O–H hydrogen of the upper one, delta plus, points at a lone pair on the oxygen of the lower one, delta minus, joined by a thick dashed line labeled hydrogen bond. The hydrogen is labeled donor and the lone pair acceptor. Right: dimethyl ether, CH3–O–CH3, with two lone pairs on the oxygen and every hydrogen on a carbon, labeled acceptor only, no donor.',
   build() {
-    let s = panel(14, 8, 440, 284) + panel(464, 8, 284, 284);
+    let s = panel(14, 8, 440, 246) + panel(464, 8, 284, 246);
     s += T(234, 32, 'ethanol, CH₃CH₂OH', 'fg-lbl');
     const e = ethanolPair(P(170, 78));
     s += e.s;
-    s += T(282, 112, 'donor: H on O', 'fg-tag', { anchor: 'start' });
-    s += T(282, 148, 'hydrogen bond', 'fg-tag', { anchor: 'start' });
-    s += T(282, 184, 'acceptor: lone', 'fg-tag', { anchor: 'start' }) + T(282, 199, 'pair on O', 'fg-tag', { anchor: 'start' });
-    s += T(234, 268, 'MW 46 · boils at 78 °C', 'fg-tag-good');
+    s += T(212, 118, 'donor: H on O', 'fg-tag', { anchor: 'start' });
+    s += T(186, 152, 'hydrogen bond', 'fg-tag', { anchor: 'end' });
+    s += T(262, 176, 'acceptor: lone', 'fg-tag', { anchor: 'start' }) + T(262, 191, 'pair on O', 'fg-tag', { anchor: 'start' });
+    s += T(234, 236, 'MW 46 · boils at 78 °C', 'fg-tag-good');
     s += T(606, 32, 'dimethyl ether, CH₃OCH₃', 'fg-lbl');
     s += ether(P(606, 120));
     s += T(606, 76, 'lone pairs: can accept', 'fg-sm');
     s += T(606, 178, 'every H is on a carbon:', 'fg-sm');
     s += T(606, 194, 'nothing to donate', 'fg-sm');
-    s += T(606, 268, 'MW 46 · boils at −24 °C', 'fg-tag-warn');
+    s += T(606, 236, 'MW 46 · boils at −24 °C', 'fg-tag-warn');
     return s;
   },
   caption: 'Same formula, C₂H₆O. Follow the dashed line in ethanol from the hydrogen to the lone pair it points at, then look for a hydrogen in dimethyl ether that could do the same.',
@@ -395,17 +395,17 @@ FIGURES.push({
   id: 'water-hbonds',
   section: 'bond-polarity',
   anchor: 'although acetone has the larger dipole moment.</p>',
-  viewBox: '0 0 600 330',
+  viewBox: '0 0 620 318',
   alt: 'A central water molecule, its oxygen and two hydrogens highlighted, surrounded by four neighbors. Each of its two hydrogens points at a lone pair on a neighbor below it, and each of its two lone pairs receives a hydrogen from a neighbor above it. Four dashed hydrogen bonds in all.',
   build() {
-    let s = panel(14, 8, 572, 314);
-    s += waterNet(P(190, 166));
-    s += T(468, 118, 'the central water:', 'fg-lbl');
-    s += T(468, 146, 'gives 2 hydrogen bonds', 'fg-tag');
-    s += T(468, 162, '(its two H)', 'fg-sm');
-    s += T(468, 190, 'takes 2 hydrogen bonds', 'fg-tag');
-    s += T(468, 206, '(its two lone pairs)', 'fg-sm');
-    s += T(468, 240, 'boils at 100 °C', 'fg-tag-good');
+    let s = panel(14, 8, 592, 302);
+    s += waterNet(P(210, 158));
+    s += T(488, 110, 'the central water:', 'fg-lbl');
+    s += T(488, 138, 'gives 2 hydrogen bonds', 'fg-tag');
+    s += T(488, 154, '(its two H)', 'fg-sm');
+    s += T(488, 182, 'takes 2 hydrogen bonds', 'fg-tag');
+    s += T(488, 198, '(its two lone pairs)', 'fg-sm');
+    s += T(488, 232, 'boils at 100 °C', 'fg-tag-good');
     return s;
   },
   caption: 'Count the dashed lines around the highlighted molecule, and check which end of each one sits on it.',
@@ -485,7 +485,7 @@ FIGURES.push({
   build() {
     let s = panel(4, 4, 332, 222) + panel(4, 234, 332, 118);
     s += T(170, 28, 'CCl₄: tetrahedral', 'fg-lbl');
-    s += umbrella(P(160, 126), 'Cl');
+    s += umbrella(P(160, 124), 'Cl', { len: 66 });
     s += T(170, 258, 'top arrow vs the lower three, added', 'fg-lbl');
     s += vec(P(140, 330), P(140, 272));
     s += vec(P(200, 272), P(200, 330));
@@ -504,7 +504,7 @@ FIGURES.push({
   build() {
     let s = panel(4, 4, 332, 222);
     s += T(170, 28, 'CHCl₃: H in the top corner', 'fg-lbl');
-    s += umbrella(P(160, 126), 'H');
+    s += umbrella(P(160, 124), 'H', { len: 66 });
     return s;
   },
   caption: 'The C–H bond carries no arrow.',

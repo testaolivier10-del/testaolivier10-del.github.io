@@ -209,8 +209,8 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-valence-row',
   lessons: ['atomic-structure'],
-  viewBox: '0 0 340 176',
-  alt: 'Row 2 of the periodic table: Li, Be, then a gap for groups 3 to 12, then B, C, N, O, F, Ne. Above each element is its group number, 1, 2, 13, 14, 15, 16, 17, 18. Below each is its valence electron count, 1 to 8.',
+  viewBox: '0 0 340 198',
+  alt: 'Row 2 of the periodic table: Li, Be, then a gap for groups 3 to 12, then B, C, N, O, F, Ne. Above each element is its group number, 1, 2, 13, 14, 15, 16, 17, 18. Below each is its valence electron count, 1 to 8. C, N, O and F are shaded as the elements organic chemistry uses most.',
   build() {
     let s = '';
     const cols = [
@@ -229,6 +229,8 @@ FIGURES.push({
     s += rule(8, 96, 332, 96);
     s += text(170, 142, 'top: group number; bottom: valence electrons', { cls: 'fg-tag-mut', size: 11 });
     s += text(170, 162, 'groups 13 to 18: subtract 10', { cls: 'fg-tag', size: 11 });
+    s += panel(22, 176, 20, 14, { kind: 'hi', r: 4 });
+    s += text(48, 187, 'shaded: the elements organic chemistry uses most', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
     return s;
   },
   caption: 'Groups 1 and 2 give the count directly. The ten columns of groups 3 to 12 are missing from this row, so from group 13 on, subtract ten.',
@@ -455,7 +457,7 @@ FIGURES.push({
       s += text(k.x, 212, `charge ${k.q}`, { cls: 'fg-lbl', size: 13 });
     }
     s += rule(113, 30, 113, 218); s += rule(226, 30, 226, 218);
-    s += text(170, 238, 'R = any carbon group', { cls: 'fg-tag-mut', size: 11 });
+    s += text(170, 238, 'R = any carbon-based group', { cls: 'fg-tag-mut', size: 11 });
     return s;
   },
   caption: 'Only the carbocation falls short of 8. Its carbon has an empty orbital, room for one pair, and that is where an incoming pair goes.',
