@@ -1,0 +1,403 @@
+[
+  {
+    "id": "anp-absorptive-postabsorptive-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis", "energy"],
+    "q": "An hour after a large pasta meal, what is the liver doing with glucose arriving in the portal blood?",
+    "options": [
+      "Releasing more glucose from its glycogen",
+      "Making glucose from amino acids",
+      "Taking it up and storing it as glycogen",
+      "Turning it into ketone bodies"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In the absorptive state, insulin is high and glucagon low. The liver takes up glucose, switches on glycogenesis, and switches off glycogenolysis and gluconeogenesis.",
+      "options": [
+        "Glycogenolysis is switched off after a meal; the liver is storing glucose, not releasing it.",
+        "Gluconeogenesis is switched off by insulin when glucose is plentiful.",
+        "Correct. The fed liver stores glucose as glycogen.",
+        "Ketogenesis runs when insulin is low and fat breakdown is fast, not after a carbohydrate meal."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "energy"],
+    "q": "At 6 a.m., after 11 hours without food, where is the glucose in a healthy person's blood coming from?",
+    "options": [
+      "Muscle glycogen, released into the blood",
+      "The liver, from glycogen and gluconeogenesis",
+      "Last night's dinner, still being absorbed",
+      "Fatty acids converted to glucose by the liver"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "After an overnight fast, the liver releases glucose from glycogenolysis and gluconeogenesis, roughly half from each.",
+      "options": [
+        "Muscle cannot release glucose into the blood, because it lacks glucose-6-phosphatase.",
+        "Correct. The liver supplies the blood's glucose between meals.",
+        "Absorption of a meal is over within about four hours.",
+        "Fatty acids cannot be made into glucose, because acetyl CoA cannot become pyruvate."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-3",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": ["homeostasis", "energy", "mass-balance"],
+    "q": "A healthy adult has had only water for 7 days. Predict the change in each variable compared with the same person after an ordinary overnight fast.",
+    "variables": [
+      { "name": "Insulin in the blood", "answer": "down", "why": "Without food, glucose stays at the low end of normal and beta cells release little insulin." },
+      { "name": "Lipolysis in adipose tissue", "answer": "up", "why": "Low insulin removes the brake on lipolysis, and growth hormone, cortisol and sympathetic activity push it further." },
+      { "name": "Ketone bodies in the blood", "answer": "up", "why": "The liver turns the flood of fatty acids into ketone bodies, whose level climbs over the first week." },
+      { "name": "Liver glycogen", "answer": "down", "why": "Liver glycogen is used up within about a day; after a week almost none is left." },
+      { "name": "Glucose used by the brain each day", "answer": "down", "why": "The brain takes up ketone bodies in proportion to their level, so it needs less glucose." }
+    ],
+    "why": {
+      "correct": "A week without food drives insulin down and lipolysis up across the endocrine system and adipose tissue. The liver's glycogen is gone, and it makes ketone bodies from fatty acids. The brain, the nervous system's heaviest glucose user, switches partly to ketone bodies, lowering its glucose need and sparing muscle protein."
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-4",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": ["energy"],
+    "figure": "fasting-fuel-days",
+    "q": "Use the graph. About what share of the brain's energy do ketone bodies supply at day 14 of the fast?",
+    "options": ["About 10%", "About 40%", "About 60%", "About 90%"],
+    "correct": 2,
+    "why": {
+      "correct": "At day 14, glucose supplies about 40% of the brain's energy, and ketone bodies supply the rest, about 60%.",
+      "options": [
+        "About 10% is the ketone share near day 2, before levels have risen.",
+        "About 40% is glucose's share at day 14, not the ketone bodies' share.",
+        "Correct. The dashed ketone line is near 60% at day 14.",
+        "Ketone bodies never supply that much in the graph; glucose still supplies about a third even at day 28."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-5",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["energy", "interdependence"],
+    "figure": "fasting-fuel-days",
+    "q": "Use the graph. Why does muscle protein breakdown fall from about 75 to about 20 g a day as the fast goes on?",
+    "options": [
+      "The muscles have run out of protein",
+      "The brain needs less glucose as ketone bodies rise",
+      "Insulin rises and blocks protein breakdown",
+      "The liver switches to making glucose from fatty acids"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Early in a fast, most new glucose is made from amino acids. As ketone bodies rise, the brain takes more of its energy from them, so less glucose, and therefore less protein, is needed.",
+      "options": [
+        "Most muscle protein is still there at day 28; breakdown falls because less is needed.",
+        "Correct. The two panels move together: more ketone use, less protein broken down.",
+        "Insulin stays low throughout a fast; that is what keeps lipolysis and ketogenesis high.",
+        "Fatty acids cannot be made into glucose; they are made into ketone bodies instead."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-6",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Select every hormone usually classed as catabolic, one that releases stored fuel into the blood.",
+    "options": ["Insulin", "Glucagon", "Epinephrine", "Cortisol", "IGF-1"],
+    "correct": [1, 2, 3],
+    "why": {
+      "correct": "Glucagon, epinephrine and cortisol break down stores and raise blood glucose, opposing insulin. Insulin and IGF-1 build and store.",
+      "options": [
+        "Insulin is the main anabolic hormone: it drives uptake and storage.",
+        "Correct. Glucagon releases glucose from the liver.",
+        "Correct. Epinephrine drives glycogenolysis and lipolysis.",
+        "Correct. Cortisol breaks down muscle protein and drives gluconeogenesis.",
+        "IGF-1, made in response to growth hormone, builds protein and tissue: it is anabolic."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["energy", "homeostasis"],
+    "q": "Between meals, skeletal muscle burns mostly fatty acids rather than glucose. What does this switch achieve for the body as a whole?",
+    "options": [
+      "It keeps the limited glucose supply for the brain and red blood cells",
+      "It lets muscle release its glycogen as glucose for other tissues",
+      "It raises insulin release from the pancreas",
+      "It lets the liver turn fatty acids into glucose"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Glucose between meals comes only from the liver's glycogen and gluconeogenesis. When muscle and most other tissues burn fat instead, that glucose is left for the brain and red blood cells, which depend on it. This is glucose sparing.",
+      "options": [
+        "Correct. Glucose sparing protects the brain's supply.",
+        "Muscle keeps its glycogen for itself; it cannot release glucose into the blood.",
+        "Insulin is low between meals, and burning fat does not raise it.",
+        "Fatty acids cannot be made into glucose."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-8",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "energy"],
+    "q": "A 26-year-old hiker is found alert after 12 days with water but no food. Her liver glycogen was used up on the first day. What mainly allowed her brain to keep working?",
+    "options": [
+      "Her muscles released their glycogen as glucose",
+      "Her liver made glucose from her fat's fatty acids",
+      "Her brain switched to burning fatty acids from her blood",
+      "Her brain drew much of its energy from ketone bodies"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "After a few days, ketone bodies made by the liver from fatty acids rise high enough that the brain takes them up and burns them. This cut her brain's glucose need, and the smaller amount of glucose it still needed came from gluconeogenesis, mostly from amino acids.",
+      "options": [
+        "Muscle glycogen cannot leave the muscle as glucose, and it is small compared with 12 days of need.",
+        "Fatty acids cannot become glucose; only the glycerol from fat can.",
+        "The brain takes up very little fatty acid from the blood.",
+        "Correct. Ketone bodies stand in for much of the brain's glucose."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-9",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["homeostasis", "communication"],
+    "q": "A man with type 1 diabetes has run out of insulin for three days. His blood glucose is 450 mg/dL. Which pattern best describes what his tissues are doing?",
+    "options": [
+      "The absorptive state: storing the extra glucose as glycogen and fat",
+      "A fasting pattern: releasing glucose and burning fat despite high glucose",
+      "Normal between-meal balance, with glucagon matching the glucose level",
+      "The absorptive state in the liver, with fasting only in muscle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Without insulin, the signal of plenty is missing. His liver keeps releasing glucose, muscle and fat take little up, lipolysis runs unchecked and the liver makes ketone bodies. His body acts as if it were fasting, even with glucose far above normal.",
+      "options": [
+        "Storage in the absorptive state depends on insulin, which he lacks.",
+        "Correct. Hormonally, he is in an extreme fasting state.",
+        "With no insulin, glucagon is not restrained, and the liver keeps adding glucose to already high blood levels.",
+        "Without insulin, the liver also releases glucose rather than storing it."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-10",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["energy"],
+    "q": "Put the body's main sources of blood glucose in order, from the end of a meal into the second week without food.",
+    "options": [
+      "Glucose absorbed from the meal",
+      "Glucose released from liver glycogen",
+      "Glucose made in the liver, mainly from amino acids",
+      "Less glucose needed, as the brain burns ketone bodies"
+    ],
+    "why": {
+      "correct": "First the meal supplies glucose. Between meals the liver breaks down its glycogen. Once glycogen runs out, within about a day, gluconeogenesis from amino acids takes over. After several days, rising ketone bodies cut the brain's glucose need, sparing protein."
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-11",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A student described what happens in the hours after a meal. One step is wrong. Which one?",
+    "options": [
+      "Glucose and amino acids reach the liver through the hepatic portal vein",
+      "Beta cells release insulin as glucose rises",
+      "Alpha cells raise glucagon release to match",
+      "Muscle moves GLUT4 into its membrane and stores glycogen",
+      "Adipose tissue stores triglyceride and switches off lipolysis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "After a carbohydrate meal, glucagon release falls. Rising glucose and insulin damp the alpha cells. High insulin with low glucagon is what defines the absorptive state.",
+      "options": [
+        "This step is right. The portal vein carries absorbed glucose and amino acids to the liver first.",
+        "This step is right. Rising glucose drives insulin release.",
+        "This is the error. Glucagon falls after a carbohydrate meal.",
+        "This step is right. Insulin moves GLUT4 to the membrane, and muscle stores glycogen.",
+        "This step is right. Insulin drives fat storage and blocks lipolysis."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-12",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["mass-balance"],
+    "q": "Fill the gap: after a fatty meal, fat cells take up fatty acids from chylomicrons because insulin raises ____ in adipose capillaries.",
+    "options": ["Lipoprotein lipase", "Glucose-6-phosphatase", "Glycogen phosphorylase", "Hexokinase"],
+    "correct": 0,
+    "why": {
+      "correct": "Insulin raises lipoprotein lipase in adipose tissue, which hydrolyzes the triglycerides in chylomicrons and VLDL so that the fatty acids can enter fat cells.",
+      "options": [
+        "Correct. Lipoprotein lipase unloads triglycerides from lipoproteins.",
+        "Glucose-6-phosphatase frees glucose from the liver; it has nothing to do with fat uptake.",
+        "Glycogen phosphorylase breaks down glycogen, and it is switched off after a meal.",
+        "Hexokinase traps glucose inside cells; it does not act on chylomicrons."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication", "energy"],
+    "q": "On the second day of a fast, which hormone mainly drives the breakdown of muscle protein that supplies the liver with amino acids for glucose?",
+    "options": ["Insulin", "Cortisol", "Glucagon", "IGF-1"],
+    "correct": 1,
+    "why": {
+      "correct": "Cortisol breaks down muscle protein, releasing amino acids, and switches on gluconeogenesis in the liver. Its effects build over hours, which suits a fast lasting days.",
+      "options": [
+        "Insulin builds protein and is low during a fast.",
+        "Correct. Cortisol drives muscle protein breakdown and gluconeogenesis.",
+        "Glucagon acts mainly on the liver, where it speeds gluconeogenesis, but it has little effect on muscle, which has almost no glucagon receptor proteins.",
+        "IGF-1 builds protein and tissue."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication", "energy"],
+    "misconception": "skipping meals burns mostly muscle",
+    "q": "Growth hormone release rises during a fast. Which combination of its effects helps a fasting person most?",
+    "options": [
+      "It builds glycogen and lowers blood glucose",
+      "It releases fat for fuel while limiting muscle protein loss",
+      "It raises insulin release and stores fat",
+      "It blocks ketogenesis and raises glucose use"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Growth hormone is catabolic for fat, driving lipolysis so that tissues burn fat, and anabolic for protein, through IGF-1, which limits muscle breakdown. It also opposes insulin's effect on glucose, helping keep blood glucose up.",
+      "options": [
+        "Growth hormone raises blood glucose rather than lowering it.",
+        "Correct. Fat out, protein kept: both help during a fast.",
+        "Growth hormone opposes insulin and releases fat rather than storing it.",
+        "By releasing fatty acids, growth hormone supports ketogenesis, and it reduces glucose use."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance", "energy"],
+    "q": "In the absorptive state, a man's liver glycogen stores are full and glucose keeps arriving. What does the liver do with the extra glucose?",
+    "options": [
+      "Releases it straight back into the blood",
+      "Turns it into fatty acids and exports them as triglycerides in VLDL",
+      "Makes it into ketone bodies for the brain",
+      "Stores it as free glucose in liver cells"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "With glycogen full and insulin high, the liver turns extra glucose into fatty acids by lipogenesis, builds triglycerides, and exports them in VLDL to adipose tissue for storage.",
+      "options": [
+        "In the fed state the liver takes glucose up; it releases glucose when glucose is low.",
+        "Correct. Excess glucose becomes fat, exported in VLDL.",
+        "Ketogenesis is switched off when insulin is high.",
+        "Free glucose is not stored; it is trapped as glucose-6-phosphate and sent into glycogen or other pathways."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["mass-balance"],
+    "q": "A 3-year-old in a famine area eats mainly cassava, a root low in protein. His arms are thin, but his belly and legs are swollen. His plasma albumin is very low. What explains the swelling?",
+    "options": [
+      "Fat has built up under the skin of his legs and belly",
+      "Low albumin lowers colloid osmotic pressure, so fluid leaves capillaries",
+      "His kidneys are keeping too much sodium because of high insulin",
+      "His muscles are growing from the carbohydrate in his diet"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Albumin, made by the liver, provides most of the colloid osmotic pressure that holds fluid in capillaries. With too little, fluid collects in the tissues: edema. This picture, called kwashiorkor, is linked to diets very low in protein, although other factors also seem to contribute.",
+      "options": [
+        "The swelling is fluid, not fat; he is wasting elsewhere.",
+        "Correct. Low albumin lets fluid leave the blood and collect in the tissues.",
+        "A child eating so little has low insulin, and the albumin finding explains the edema.",
+        "A diet so low in protein cannot build muscle; his arms are thin."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Which tissue keeps depending on glucose from the blood throughout the postabsorptive state, because it has no mitochondria?",
+    "options": ["Skeletal muscle", "Heart muscle", "Red blood cells", "Liver"],
+    "correct": 2,
+    "why": {
+      "correct": "Mature red blood cells have no mitochondria, so they cannot burn fatty acids or ketone bodies. They make ATP by glycolysis alone, from blood glucose.",
+      "options": [
+        "Skeletal muscle switches to fatty acids between meals.",
+        "Heart muscle burns mainly fatty acids, and ketone bodies too.",
+        "Correct. Without mitochondria, red blood cells rely on glucose.",
+        "The liver burns fatty acids between meals while it releases glucose for others."
+      ]
+    }
+  },
+  {
+    "id": "anp-absorptive-postabsorptive-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["energy", "mass-balance"],
+    "q": "Two adults fast on water alone. One starts with 25 kg of body fat, the other with 8 kg. Which will likely survive longer, and why?",
+    "options": [
+      "The leaner one, because muscle stores more energy than fat",
+      "The one with more fat, because fat supplies most energy and spares protein",
+      "Both the same, because survival depends on glycogen",
+      "The leaner one, because fat blocks ketogenesis"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "While fat lasts, it supplies most of the energy, and ketone bodies from it spare muscle protein. When fat runs out, protein breakdown rises and death follows. More fat means a longer protected phase.",
+      "options": [
+        "Fat holds about 9 kcal per gram and muscle protein about 4, and losing protein is what kills.",
+        "Correct. Survival depends mainly on how much fat a person starts with.",
+        "Glycogen lasts only about a day and hardly affects survival over weeks.",
+        "Fat is the source of ketone bodies, not a block to them."
+      ]
+    }
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "kidney-location": {
+    "def": "The kidneys are retroperitoneal, on either side of the spine from about T12 to L3, the right a little lower than the left. From outside in, each is wrapped by the renal fascia, the adipose capsule (renal fat pad) and the renal capsule.",
+    "roots": [["ren-", "kidney"], ["retro-", "behind"], ["adip-", "fat"]],
+    "say": ""
+  },
+  "kidney-internal": {
+    "def": "The regions of a kidney cut in a frontal plane: the outer renal cortex; the renal medulla, split into cone-shaped renal pyramids with renal columns between them; the renal papilla at each pyramid's tip; and the minor calyces, major calyces and renal pelvis that collect urine and leave at the renal hilum.",
+    "roots": [["cortex", "bark"], ["medulla", "inner part"], ["papilla", "nipple"], ["calyx", "cup"], ["pelvis", "basin"], ["hilum", "small notch"]],
+    "say": "KAY-lix, KAY-lih-seez"
+  },
+  "renal-blood-supply": {
+    "def": "Blood enters each kidney by the renal artery and branches in order into segmental, interlobar, arcuate and cortical radiate arteries; veins with matching names return it to the renal vein. The kidneys receive about 20 to 25 percent of resting cardiac output.",
+    "roots": [["inter-", "between"], ["lob-", "lobe"], ["arcu-", "bow"], ["radiate", "spreading like rays"]],
+    "say": "AR-kyoo-ate"
+  },
+  "ureter": {
+    "def": "A muscular tube, about 25 to 30 cm long, that carries urine from the renal pelvis to the bladder by peristalsis. It is lined by transitional epithelium and enters the bladder at a slant that acts as a one-way valve.",
+    "roots": [["uret-", "to urinate"]],
+    "say": "YOOR-eh-ter"
+  },
+  "urinary-bladder": {
+    "def": "A hollow, stretchy muscular bag behind the pubic bone that stores urine. Its wall is the detrusor muscle, its lining is transitional epithelium folded into rugae when empty, and the smooth trigone on its floor joins the two ureter openings to the urethral opening.",
+    "roots": [["detrudere", "to push down"], ["tri-", "three"], ["gon-", "angle"]],
+    "say": "dee-TROO-sor; TRY-gone"
+  },
+  "urethra": {
+    "def": "The tube that carries urine from the bladder to the outside: about 3 to 4 cm long in females and about 20 cm in males. The involuntary internal urethral sphincter (smooth muscle, at the bladder neck) and the voluntary external urethral sphincter (skeletal muscle, in the pelvic floor) hold urine in.",
+    "roots": [["urethr-", "urethra, from ourein, to urinate"], ["sphincter", "that which binds tight"]],
+    "say": "yoo-REE-thruh"
+  },
+  "micturition": {
+    "def": "Micturition (urination) is the emptying of the bladder. In the micturition reflex, stretch signals from the bladder reach the pons; when the cortex allows it, the pons drives the sacral micturition center (S2 to S4), whose parasympathetic fibers contract the detrusor while both urethral sphincters relax.",
+    "roots": [["mictur-", "to urinate"]],
+    "say": "mik-choo-RISH-un"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "os-25-18": {
+    "file": "figures/openstax/os-25-18.jpg",
+    "w": 2232,
+    "h": 1600,
+    "source": "openstax",
+    "openstax": {
+      "figure": "25.18",
+      "section": "25.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/50b987db044d6e4744f0d3fe9edd829396c21a48",
+      "page": "25-6-tubular-reabsorption"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/50b987db044d6e4744f0d3fe9edd829396c21a48",
+    "alt": "A strip across the wall of the proximal tubule. On the left is the pale lumen of the tubule, bordered by a wavy brush border; in the middle is one large tubule cell; to the right is a narrow blue band of interstitial space, then a red blood vessel labeled bloodstream. Arrows show H+ leaving the cell into the lumen in exchange for Na+ entering, and Na+ entering the cell together with Cl−, Ca2+, amino acids, glucose and phosphate; these then continue across the cell and interstitial space into the blood. Mg2+ enters the cell, and water crosses all the way to the blood. At the top right, an ATP-driven pump moves Na+ out of the cell into the interstitial space and K+ into the cell.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.18",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "glucose-transport-maximum": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 640,
+    "h": 460,
+    "alt": "A graph of glucose handling by both kidneys against plasma glucose concentration from 0 to 800 mg/dL. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed amount follows the filtered load exactly up to about 180 mg/dL, then bends over and levels off at the transport maximum of about 375 mg/min from about 350 mg/dL upward. The excreted amount is zero up to about 180 mg/dL, the renal threshold, then rises, running parallel to the filtered load once reabsorption has leveled off. A marker at 90 mg/dL shows a normal fasting glucose, where all filtered glucose is reabsorbed.",
+    "labels": []
+  }
+}

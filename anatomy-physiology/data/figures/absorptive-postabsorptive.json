@@ -1,0 +1,12 @@
+{
+  "fasting-fuel-days": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 640,
+    "h": 560,
+    "alt": "Two stacked graphs over 28 days without food, with water. Top: where the brain gets its energy, in percent. Glucose supplies 100 percent for the first day, then its share falls to about 75 percent by day 3, 50 percent by day 7 and about a third by day 28. Ketone bodies supply the rest, rising from almost nothing to about two thirds. A dashed line at day 1 marks the point where liver glycogen is nearly gone. Bottom: muscle protein broken down per day, in grams. It is about 75 grams a day in the first days, then falls to about 50 by day 7, 30 by day 14 and about 20 by day 28.",
+    "labels": []
+  }
+}

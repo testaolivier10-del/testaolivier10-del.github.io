@@ -1,0 +1,48 @@
+{
+  "topic": "tubular-transport",
+  "hook": "<p>Mrs. Kowalski, 58, has type 2 diabetes. Her doctor starts a tablet that makes her urine test strongly positive for glucose, and tells her this is the drug working. Her blood glucose falls over the next weeks. To see how a drug can lower blood glucose by making the kidneys let sugar go, you need to know how the renal tubule reabsorbs glucose, and what limits how much it can take back.</p>",
+  "prereq": [
+    {
+      "q": "What does secondary active transport use to move a solute against its gradient?",
+      "options": ["ATP bound directly to the carrier", "The downhill flow of another ion, usually sodium", "Osmotic pressure"],
+      "correct": 1,
+      "why": "A secondary active carrier couples the solute to sodium moving down the gradient that the sodium–potassium pump maintains. The pump spends the ATP; the carrier spends the gradient.",
+      "review": "active-transport"
+    },
+    {
+      "q": "When every carrier protein for a solute is busy, what happens if the solute's concentration rises further?",
+      "options": ["The transport rate stays at its maximum", "The transport rate keeps rising in proportion", "The carriers reverse direction"],
+      "correct": 0,
+      "why": "This is carrier saturation. Once all carriers are occupied, the rate can't rise, however much solute is present.",
+      "review": "passive-transport"
+    },
+    {
+      "q": "Which part of the nephron receives fluid directly from the glomerular capsule?",
+      "options": ["The nephron loop", "The collecting duct", "The proximal convoluted tubule"],
+      "correct": 2,
+      "why": "Filtrate flows from the capsule into the proximal convoluted tubule, then the nephron loop, the distal convoluted tubule and the collecting duct.",
+      "review": "nephron"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-25-18",
+    "caption": "The wall of the proximal tubule, from the lumen through the tubule cell and the interstitial space to the blood. Hide the labels and name each region a reabsorbed molecule crosses."
+  },
+  "chain": [
+    { "cause": "The sodium–potassium pump on the basolateral membrane moves sodium out of the tubule cell.", "effect": "Sodium inside the cell stays low and the cell interior stays negative, so sodium in the lumen has a steep gradient into the cell." },
+    { "cause": "Sodium flows into the cell down that gradient on apical symporters and antiporters.", "effect": "Glucose, amino acids and phosphate are carried in with it, and H+ is pushed out in exchange." },
+    { "cause": "Solute leaves the lumen, leaving the tubular fluid slightly more dilute than the cells and interstitial fluid.", "effect": "Water follows by osmosis, through aquaporins and the leaky tight junctions." },
+    { "cause": "As water leaves, chloride, potassium, calcium and urea become more concentrated in the lumen than in the blood.", "effect": "They diffuse out passively, much of it between the cells." },
+    { "cause": "Reabsorbed solute and water collect in the interstitial fluid next to the peritubular capillaries, whose hydrostatic pressure is low and colloid osmotic pressure high.", "effect": "They enter the blood, and about two thirds of the filtrate has been returned before the fluid reaches the nephron loop." }
+  ],
+  "misconception": {
+    "wrong": "Glucose in the urine means the kidneys are failing.",
+    "right": "Healthy kidneys filter glucose freely and reabsorb it on a limited number of carriers. When plasma glucose rises above the renal threshold, about 180 mg/dL, some nephrons' carriers saturate and glucose spills into the urine even though the kidneys are working normally. Glucose in the urine usually points to high blood glucose, as in diabetes mellitus, or to a drug that blocks the carriers, not to kidney damage."
+  },
+  "check": ["anp-tubular-transport-3", "anp-tubular-transport-5", "anp-tubular-transport-6", "anp-tubular-transport-8", "anp-tubular-transport-11", "anp-tubular-transport-14", "anp-tubular-transport-18"],
+  "summary": "<p>The renal tubule returns about 99% of the 180 L you filter each day. For any substance, excreted = filtered − reabsorbed + secreted. Substances cross the wall through cells (transcellular) or between them (paracellular, through leaky tight junctions in the proximal tubule). The basolateral sodium–potassium pump drives almost everything: sodium flows in and carries glucose, amino acids and phosphate with it by secondary active transport. The proximal tubule reabsorbs about 65% of sodium and water and nearly all nutrients, leaving fluid at 300 mOsm/L. Carriers saturate at a transport maximum (glucose about 375 mg/min), so glucose appears in urine above a renal threshold of about 180 mg/dL. The descending limb loses water; the thick ascending limb pumps salt out on NKCC2 but keeps water, diluting the fluid to about 100 mOsm/L. The distal tubule reabsorbs sodium with chloride and calcium under PTH. In the collecting duct, principal cells reabsorb sodium and secrete potassium under aldosterone and reabsorb water under ADH, while intercalated cells handle acid–base balance. The tubule also secretes potassium, H+ and drugs. About 80 to 85% of water reabsorption is obligatory; the rest, facultative and set by ADH, decides your urine volume.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Diabetic emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" }
+  ]
+}

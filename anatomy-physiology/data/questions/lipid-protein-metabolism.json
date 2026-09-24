@@ -136,7 +136,7 @@
     "q": "Jordan, 14, arrives with vomiting, deep rapid breathing and a blood glucose of 480 mg/dL. His breath smells like nail-polish remover. Which molecule causes the smell, and where does it come from?",
     "options": [
       "Beta-hydroxybutyrate, released by muscle",
-      "Ammonia, released by the liver as amino acids break down",
+      "Ammonia, released as amino acids break down",
       "Acetone, formed from acetoacetate made in the liver",
       "Glucose, leaving the blood through the lungs"
     ],
@@ -368,7 +368,7 @@
     "q": "A man with acute viral hepatitis has blood ALT and AST levels 20 times normal. Why do these enzymes rise?",
     "options": [
       "Damaged liver cells leak their transaminases into the blood",
-      "The liver makes more of them to handle the extra amino acids",
+      "The liver makes more of them for extra amino acids",
       "The virus produces transaminases as it replicates",
       "The kidneys stop excreting them"
     ],

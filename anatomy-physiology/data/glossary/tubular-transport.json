@@ -1,0 +1,37 @@
+{
+  "tubular-reabsorption": {
+    "def": "The movement of a substance from the fluid inside the renal tubule back into the blood of the peritubular capillaries. It crosses the tubule wall through the cells (the transcellular route) or between them through the tight junctions (the paracellular route), which are leaky in the proximal tubule.",
+    "roots": [["re-", "back"], ["ab-", "away"], ["sorb-", "to suck in"], ["trans-", "across"], ["para-", "beside"]],
+    "say": ""
+  },
+  "pct-reabsorption": {
+    "def": "The bulk reabsorption done by the proximal convoluted tubule: about 65% of filtered sodium and water, nearly all glucose and amino acids, most bicarbonate and phosphate, and about half the urea. Solute and water leave together, so the fluid leaving it is still about 300 mOsm/L.",
+    "roots": [["proxim-", "nearest"]],
+    "say": ""
+  },
+  "transport-maximum": {
+    "def": "The transport maximum (Tm) is the highest rate at which the tubules can reabsorb a substance once all its carriers are busy; for glucose it is about 375 mg/min. The renal threshold is the plasma level at which the substance first appears in urine, about 180 mg/dL for glucose; glucose in urine is called glucosuria or glycosuria.",
+    "roots": [["glyc-", "sugar"], ["-uria", "condition of the urine"]],
+    "say": "gloo-koh-SOOR-ee-uh"
+  },
+  "loop-transport": {
+    "def": "The descending limb of the nephron loop lets water out but little salt; the ascending limb lets salt out but almost no water. In the thick ascending limb, the Na–K–2Cl cotransporter (NKCC2) moves 1 Na+, 1 K+ and 2 Cl− into the cells, diluting the tubular fluid to about 100 mOsm/L.",
+    "roots": [["co-", "together"]],
+    "say": ""
+  },
+  "distal-transport": {
+    "def": "The final adjustments to the urine. The distal convoluted tubule reabsorbs sodium with chloride, and calcium under PTH. In the collecting duct, principal cells reabsorb sodium and secrete potassium under aldosterone and reabsorb water under ADH; intercalated cells secrete acid or bicarbonate.",
+    "roots": [["dist-", "far"], ["inter-", "between"], ["calated", "inserted"]],
+    "say": "in-TER-kuh-lay-tid"
+  },
+  "tubular-secretion": {
+    "def": "The movement of a substance from the peritubular capillaries into the tubular fluid, adding to what was filtered. The tubule secretes potassium, H+, and many organic acids and bases, including drugs such as penicillin.",
+    "roots": [["secret-", "separated, set apart"]],
+    "say": ""
+  },
+  "obligatory-facultative": {
+    "def": "Obligatory water reabsorption is the water that follows solute out of the proximal tubule and descending limb whatever the body needs, roughly 80 to 85% of what is filtered. Facultative water reabsorption is the adjustable rest, in the late distal tubule and collecting duct, and happens only when ADH is present.",
+    "roots": [["obligare", "to bind"], ["facultas", "ability, option"]],
+    "say": ""
+  }
+}

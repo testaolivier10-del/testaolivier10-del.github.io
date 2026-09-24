@@ -1,0 +1,421 @@
+[
+  {
+    "id": "anp-tubular-transport-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["mass-balance"],
+    "q": "A woman's glomeruli filter 170 L a day and she passes 1.7 L of urine. What percentage of the filtered water does her renal tubule reabsorb?",
+    "options": ["1%", "90%", "99%", "10%"],
+    "correct": 2,
+    "why": {
+      "correct": "Water reabsorbed = 170 − 1.7 = 168.3 L. As a share of the water filtered: 168.3 ÷ 170 = 0.99, or 99%.",
+      "options": [
+        "1% is the share that leaves as urine (1.7 ÷ 170), not the share reabsorbed.",
+        "90% would leave 17 L of urine a day, ten times what she passes.",
+        "Correct. 168.3 of 170 L comes back to the blood.",
+        "10% is the share that would be reabsorbed if most of the filtrate became urine; she passes only 1.7 L."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "A man's GFR is 180 L/day and his plasma sodium is 140 mmol/L. He excretes 200 mmol of sodium a day. How much sodium does his tubule reabsorb each day?",
+    "options": ["25,200 mmol", "25,000 mmol", "25,400 mmol", "320 mmol"],
+    "correct": 1,
+    "why": {
+      "correct": "Filtered load = GFR × plasma concentration = 180 × 140 = 25,200 mmol/day. Reabsorbed = filtered − excreted = 25,200 − 200 = 25,000 mmol/day, about 99.2%.",
+      "options": [
+        "25,200 mmol is the filtered load. Some of it, 200 mmol, is excreted, so less than that is reabsorbed.",
+        "Correct. 25,200 − 200 = 25,000 mmol.",
+        "25,400 comes from adding the excreted sodium to the filtered load. Excreted sodium is subtracted.",
+        "320 comes from adding 180 and 140. The filtered load is their product, not their sum."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-3",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "A toxin blocks the sodium–potassium pumps of proximal tubule cells. None of the apical glucose carriers uses ATP. What happens to glucose reabsorption?",
+    "options": [
+      "It stops, as cell sodium rises and the inward sodium gradient disappears",
+      "It continues unchanged, since the glucose carriers need no ATP",
+      "It speeds up, as sodium builds up inside the cell and drives the carriers harder",
+      "It switches to the paracellular route between the cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Glucose enters by secondary active transport: it rides in with sodium, which flows down the gradient that the basolateral pump makes. With the pump stopped, sodium leaks in and is not removed, the gradient runs down, and the symporters have nothing to drive them.",
+      "options": [
+        "Correct. The pump spends the ATP; the symporters spend the sodium gradient it makes.",
+        "The carriers need no ATP directly, but they need the sodium gradient, and only the pump maintains it.",
+        "Sodium building up inside the cell lowers the gradient into the cell, which slows the symporters rather than speeding them.",
+        "The paracellular route is passive and carries no glucose against its gradient. Glucose in the lumen falls to near zero, below plasma, so it could not diffuse back that way."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-4",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["mass-balance"],
+    "q": "Which segment of the renal tubule reabsorbs the largest share of filtered sodium and water?",
+    "options": ["Nephron loop", "Proximal convoluted tubule", "Distal convoluted tubule", "Collecting duct"],
+    "correct": 1,
+    "why": {
+      "correct": "The proximal convoluted tubule reabsorbs about 65% of filtered sodium and water, plus nearly all glucose and amino acids.",
+      "options": [
+        "The loop reabsorbs about 25% of sodium and 15% of water: a lot, but less than the proximal tubule.",
+        "Correct. About two thirds of both come back here.",
+        "The distal tubule reabsorbs only about 5% of the sodium and very little water.",
+        "The collecting duct handles the last few percent. It decides the final urine but moves the least volume."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-5",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "figure": "glucose-transport-maximum",
+    "q": "Use the graph. At a plasma glucose of 600 mg/dL, about how much glucose is excreted in urine each minute?",
+    "options": ["750 mg/min", "About 375 mg/min", "0 mg/min", "About 190 mg/min"],
+    "correct": 1,
+    "why": {
+      "correct": "At 600 mg/dL the filtered line reads 750 mg/min and the reabsorbed line is flat at the transport maximum, 375 mg/min. Excreted = 750 − 375 = 375 mg/min, which is where the excreted line sits.",
+      "options": [
+        "750 mg/min is the filtered load. Half of it is still reabsorbed.",
+        "Correct. Filtered minus the transport maximum: 750 − 375.",
+        "Excretion is zero only below the renal threshold, about 180 mg/dL.",
+        "About 190 mg/min is what the excreted line shows near 450 mg/dL, not 600."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "Mr. Osei, 52, has undiagnosed diabetes mellitus. His plasma glucose is 280 mg/dL, and his urine dipstick shows glucose. His kidneys are healthy. Why is glucose in his urine?",
+    "options": [
+      "His glomeruli have been damaged and now let glucose through",
+      "His tubules secrete excess glucose into the urine",
+      "His filtered glucose load exceeds what some of his nephrons' carriers can reabsorb",
+      "Insulin is needed for the tubule to reabsorb glucose"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Glucose is always filtered. At 280 mg/dL, he is above the renal threshold of about 180 mg/dL: nephrons with fewer carriers for their load are saturated, and glucose passes them into the urine.",
+      "options": [
+        "Glucose is small and is filtered freely by healthy glomeruli at any blood level. Filtration of glucose is normal; what fails is reabsorbing all of it.",
+        "Glucose is not secreted by the tubule. It is filtered, then reabsorbed on sodium–glucose symporters.",
+        "Correct. His filtered load is above the renal threshold, so reabsorption can't keep up everywhere.",
+        "The tubule reabsorbs glucose with sodium symporters that work without insulin. Insulin controls glucose uptake into muscle and fat."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["mass-balance"],
+    "q": "Glucose's transport maximum is 375 mg/min and GFR is 125 mL/min, so glucose should first appear in urine at 3 mg/mL (300 mg/dL). It actually appears at about 180 mg/dL. What explains the difference?",
+    "options": [
+      "Nephrons differ, and those with fewer carriers per unit of filtered load saturate first",
+      "GFR rises when glucose is high, pushing extra glucose through",
+      "Some glucose is secreted into the tubule even at normal levels",
+      "The transport maximum falls whenever glucose rises"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The 300 mg/dL figure assumes every nephron saturates at the same moment. They don't: nephrons with fewer carriers for their filtered load spill glucose early. That produces the curved splay on the graph between about 180 and 350 mg/dL.",
+      "options": [
+        "Correct. Uneven nephrons make the kidney as a whole leak before its average limit.",
+        "The calculation already uses the GFR, and a small rise in GFR would not move the threshold down by 120 mg/dL.",
+        "Glucose is not secreted by the tubule; at normal levels urine glucose is zero.",
+        "The transport maximum is set by the number of carriers, which does not fall as glucose rises; the flat part of the graph stays at 375 mg/min."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-8",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["mass-balance", "gradients"],
+    "q": "A benign tumor of the zona glomerulosa releases large amounts of aldosterone. Predict the change in each variable, compared with before the tumor.",
+    "variables": [
+      { "name": "Number of open sodium channels in principal cells", "answer": "up", "why": "Aldosterone makes principal cells build more apical sodium channels, potassium channels and basolateral pumps." },
+      { "name": "Sodium reabsorbed in the collecting duct", "answer": "up", "why": "More channels and pumps move more sodium from the lumen into the blood." },
+      { "name": "Potassium secreted into the urine", "answer": "up", "why": "Sodium entering the principal cells leaves the lumen more negative, and the extra potassium channels let more potassium leave the cells into the urine." },
+      { "name": "Plasma potassium", "answer": "down", "why": "Potassium lost in urine exceeds intake, so plasma potassium falls, sometimes to hypokalemia." },
+      { "name": "Glucose reabsorbed in the proximal tubule", "answer": "none", "why": "Aldosterone acts on principal cells at the end of the tubule. Glucose reabsorption in the proximal tubule is unchanged." }
+    ],
+    "why": { "correct": "Aldosterone acts on principal cells: more sodium channels, potassium channels and pumps. Sodium reabsorption and potassium secretion both rise, so the body keeps sodium and loses potassium. The proximal tubule's glucose handling is not affected." }
+  },
+  {
+    "id": "anp-tubular-transport-9",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Put the steps in order to show how a glucose molecule in the filtrate returns to the blood.",
+    "options": [
+      "The basolateral sodium–potassium pump keeps sodium inside the proximal tubule cell low",
+      "Sodium flows into the cell down its gradient on a symporter, carrying glucose with it",
+      "Glucose builds up inside the cell above its level in the interstitial fluid",
+      "Glucose leaves the cell across the basolateral membrane by facilitated diffusion",
+      "Glucose moves from the interstitial fluid into a peritubular capillary"
+    ],
+    "why": { "correct": "The pump makes the sodium gradient; the symporter spends it to bring glucose in; glucose concentrates in the cell; it leaves down its own gradient on a basolateral carrier; and it enters the peritubular capillary, whose low hydrostatic and high colloid osmotic pressure favor uptake." }
+  },
+  {
+    "id": "anp-tubular-transport-10",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "Select every substance the renal tubule secretes into the tubular fluid.",
+    "options": ["Potassium", "Glucose", "Penicillin", "Amino acids", "H+", "Albumin"],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "Potassium (by principal cells), H+ (by the proximal tubule and intercalated cells) and drugs such as penicillin (by organic acid carriers in the proximal tubule) are secreted. Glucose and amino acids are filtered and reabsorbed; albumin is mostly held back by the filter.",
+      "options": [
+        "Correct. Principal cells secrete it, and nearly all the potassium in urine comes from that secretion.",
+        "Glucose is filtered and reabsorbed, never secreted.",
+        "Correct. Proximal tubule carriers for organic acids secrete penicillin.",
+        "Amino acids are filtered and then reabsorbed on sodium symporters.",
+        "Correct. The proximal tubule and intercalated cells secrete it.",
+        "Albumin is a large protein that the filtration membrane mostly holds back. It is not secreted."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-11",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "A student described how the thick ascending limb works. One step is wrong. Which one?",
+    "options": [
+      "NKCC2 carries 1 Na+, 1 K+ and 2 Cl− from the lumen into the cell",
+      "Most of the potassium leaks back into the lumen through potassium channels",
+      "The lumen becomes positively charged, pushing calcium and magnesium out between the cells",
+      "Water follows the salt out of the tubule by osmosis",
+      "The fluid leaving the segment is more dilute than plasma"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The thick ascending limb is nearly impermeable to water, so water cannot follow the salt. That is exactly why the fluid leaving it is dilute.",
+      "options": [
+        "This step is right. That is the stoichiometry of the Na–K–2Cl cotransporter.",
+        "This step is right. Potassium recycling keeps NKCC2 supplied and charges the lumen positive.",
+        "This step is right. The positive lumen drives paracellular reabsorption of calcium, magnesium and sodium.",
+        "This is the error. Water stays in the lumen, because this segment has almost no aquaporins.",
+        "This step is right. Salt out, water in: the fluid falls to about 100 mOsm/L."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-12",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["mass-balance"],
+    "q": "Complete the kidney's mass balance: amount excreted = amount filtered − amount reabsorbed + amount ____.",
+    "options": ["Secreted", "Diffused", "Metabolized", "Stored"],
+    "correct": 0,
+    "why": {
+      "correct": "Tubular secretion adds a substance to the tubular fluid, so it is added to what was filtered and not reabsorbed.",
+      "options": [
+        "Correct. Secretion adds to the amount excreted.",
+        "Diffusion is a way substances move, including during reabsorption; it is not a separate term in the balance.",
+        "The tubule cells do metabolize a few substances, but the standard balance for excretion is filtered − reabsorbed + secreted.",
+        "The tubule does not store substances; it passes them to the blood or the urine."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["mass-balance"],
+    "q": "A drug blocks the action of aldosterone in the collecting duct. Which cells lose their aldosterone response?",
+    "options": ["Intercalated cells", "Podocytes", "Proximal tubule cells", "Principal cells"],
+    "correct": 3,
+    "why": {
+      "correct": "Principal cells carry the sodium channels, potassium channels and pumps that aldosterone increases. Blocking aldosterone lowers their sodium reabsorption and potassium secretion, so the drug makes the body lose sodium and keep potassium.",
+      "options": [
+        "Intercalated cells handle acid–base balance and respond mainly to blood pH.",
+        "Podocytes form the filtration slits of the glomerular capsule; they don't reabsorb sodium.",
+        "Proximal tubule cells respond to angiotensin II and PTH; aldosterone's main target is further along.",
+        "Correct. Principal cells are aldosterone's target."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["mass-balance"],
+    "q": "A researcher measures a new drug: 50 mg/min is filtered, and 120 mg/min appears in the urine. What must the renal tubule be doing with it?",
+    "options": [
+      "Reabsorbing 70 mg/min",
+      "Neither reabsorbing nor secreting it",
+      "Filtering it a second time in the collecting duct",
+      "Secreting at least 70 mg/min"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Excreted = filtered − reabsorbed + secreted. More is excreted than was filtered, so there must be net secretion: 120 − 50 = 70 mg/min at least, more if some is also reabsorbed.",
+      "options": [
+        "Reabsorption would make the urine amount smaller than the filtered amount, not larger.",
+        "Without either process, excretion would equal filtration: 50 mg/min.",
+        "Filtration happens only in the glomerulus. The collecting duct cannot filter.",
+        "Correct. Only secretion can make excretion exceed filtration."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["gradients"],
+    "q": "Fluid entering the nephron loop is about 300 mOsm/L. Fluid leaving the thick ascending limb is about 100 mOsm/L. What makes it dilute?",
+    "options": [
+      "The descending limb adds water to the tubular fluid",
+      "The thick ascending limb removes salt but not water",
+      "The thick ascending limb secretes water into the tubule",
+      "The peritubular capillaries add water to the tubular fluid"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "NKCC2 pumps salt out of the thick ascending limb, and the segment is nearly waterproof, so solute leaves and water stays. The fluid gets more dilute as it rises.",
+      "options": [
+        "The descending limb loses water to the salty medulla; that makes fluid more concentrated on the way down, not dilute.",
+        "Correct. Solute leaves, water stays, and osmolarity falls to about 100.",
+        "Water is not secreted; nothing in the tubule actively pumps water.",
+        "Water moves from the tubule to the peritubular capillaries, never the other way in this segment."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["gradients"],
+    "q": "Which route across the tubule wall passes between cells, through the tight junctions?",
+    "options": ["Transcellular route", "Endocytosis", "Paracellular route", "Facilitated diffusion"],
+    "correct": 2,
+    "why": {
+      "correct": "The paracellular route (para- = beside) runs between neighboring cells through their tight junctions. It is passive and needs no carrier. The proximal tubule's leaky tight junctions let water and small ions take it.",
+      "options": [
+        "The transcellular route goes through a cell, across two membranes.",
+        "Endocytosis takes material into a cell in a vesicle; it is part of a transcellular route.",
+        "Correct. Between the cells.",
+        "Facilitated diffusion is a way to cross a membrane on a carrier, so it belongs to the transcellular route."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-17",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-25-18",
+    "pin": "interstitial-space",
+    "q": "Name the pinned region.",
+    "options": ["Interstitial space", "Lumen of the proximal tubule", "Bloodstream", "Brush border"],
+    "correct": 0,
+    "why": {
+      "correct": "The interstitial space lies between the tubule cell's basolateral membrane and the peritubular capillary. Everything the tubule reabsorbs passes through its fluid before entering the blood.",
+      "options": [
+        "Correct. It is the thin fluid space between the cell and the capillary.",
+        "The lumen is on the other side of the cell, against the brush border.",
+        "The bloodstream is inside the capillary, beyond the interstitial space.",
+        "The brush border is the microvilli on the lumen side of the cell."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A person drinks 2 L of water quickly, and ADH release falls. Which water reabsorption falls?",
+    "options": [
+      "Obligatory water reabsorption in the proximal tubule",
+      "Water reabsorption in the descending limb",
+      "Facultative water reabsorption in the collecting duct",
+      "Water reabsorption in the thick ascending limb"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Facultative water reabsorption depends on ADH putting aquaporins into principal cells. With less ADH, the collecting duct lets less water out, and a large volume of dilute urine follows.",
+      "options": [
+        "The proximal tubule reabsorbs water whatever ADH does, because it is always permeable to water. That is why it is called obligatory.",
+        "The descending limb is always permeable to water, so its reabsorption is obligatory too.",
+        "Correct. Only this part is set by ADH.",
+        "The thick ascending limb reabsorbs essentially no water at any ADH level."
+      ]
+    }
+  },
+  {
+    "id": "anp-tubular-transport-19",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 1,
+    "core": ["homeostasis"],
+    "q": "A person's PTH release rises. Predict the change in each kidney variable.",
+    "variables": [
+      { "name": "Calcium reabsorbed in the distal convoluted tubule", "answer": "up", "why": "PTH increases calcium reabsorption through channels in the distal tubule." },
+      { "name": "Calcium in the urine", "answer": "down", "why": "More filtered calcium is reabsorbed, so less is left to leave in the urine." },
+      { "name": "Phosphate reabsorbed in the proximal tubule", "answer": "down", "why": "PTH removes sodium–phosphate symporters from proximal tubule membranes." },
+      { "name": "Phosphate in the urine", "answer": "up", "why": "Less phosphate is reabsorbed, so more is excreted." }
+    ],
+    "why": { "correct": "PTH makes the kidney keep calcium, at the distal tubule, and lose phosphate, at the proximal tubule. Both help raise blood calcium without raising the calcium–phosphate product." }
+  },
+  {
+    "id": "anp-tubular-transport-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["gradients"],
+    "q": "Fluid reabsorbed by the proximal tubule moves readily from the interstitial fluid into the peritubular capillaries. Which pair of pressures in those capillaries favors this?",
+    "options": [
+      "High hydrostatic and low colloid osmotic pressure",
+      "Low hydrostatic and low colloid osmotic pressure",
+      "Low hydrostatic and high colloid osmotic pressure",
+      "High hydrostatic and high colloid osmotic pressure"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The blood has passed two arterioles, so its hydrostatic pressure is low, and a fifth of its plasma was filtered off while the proteins stayed, so its colloid osmotic pressure is high. Both favor fluid moving into the capillary.",
+      "options": [
+        "High hydrostatic pressure with low colloid osmotic pressure would push fluid out of the capillary, the way the glomerulus filters.",
+        "Low hydrostatic pressure helps, but low colloid osmotic pressure would weaken the pull of fluid into the capillary.",
+        "Correct. Low push out, strong pull in.",
+        "High hydrostatic pressure would oppose uptake. Peritubular blood has already lost pressure through the afferent and efferent arterioles."
+      ]
+    }
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "topic": "absorptive-postabsorptive",
+  "hook": "<p>A 26-year-old hiker is found after 12 days lost in a national park. She had a stream to drink from but no food. She has lost 7 kg and is weak, but she is alert and her blood glucose is 68 mg/dL. Her liver glycogen ran out on the first day, and her brain needs glucose every minute. Her blood holds the answer: her ketone bodies are fifty times higher than yours are right now.</p>",
+  "prereq": [
+    {
+      "q": "What does insulin do to muscle and fat cells?",
+      "options": ["Moves GLUT4 glucose carriers into their plasma membranes", "Makes them release glucose into the blood", "Blocks their uptake of amino acids"],
+      "correct": 0,
+      "why": "Insulin moves GLUT4 carriers from vesicles to the plasma membrane, so glucose enters muscle and fat cells by facilitated diffusion.",
+      "review": "pancreas-glucose"
+    },
+    {
+      "q": "Which fuel does the liver make from acetyl CoA when fat breakdown is fast?",
+      "options": ["Glucose", "Ketone bodies", "Glycogen"],
+      "correct": 1,
+      "why": "Ketogenesis turns excess acetyl CoA into ketone bodies. Acetyl CoA cannot be turned into glucose or glycogen.",
+      "review": "lipid-protein-metabolism"
+    },
+    {
+      "q": "What does cortisol do to muscle protein?",
+      "options": ["Builds it up", "Has no effect on it", "Breaks it down, releasing amino acids"],
+      "correct": 2,
+      "why": "Cortisol breaks down muscle protein and switches on gluconeogenesis in the liver, which turns the released amino acids into glucose.",
+      "review": "adrenal-glands"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "Hours after the last meal, blood glucose falls and insulin falls while glucagon rises.", "effect": "The liver breaks down its glycogen and releases glucose, and fat cells release fatty acids, which most tissues burn instead of glucose." },
+    { "cause": "Within about a day, liver glycogen runs out.", "effect": "All new glucose must come from gluconeogenesis, mostly from amino acids released by breaking down muscle protein." },
+    { "cause": "Low insulin keeps lipolysis high, so fatty acids flood the liver.", "effect": "The liver makes ketone bodies, and their blood level climbs over the first week." },
+    { "cause": "The brain takes up ketone bodies in proportion to their blood level.", "effect": "Ketone bodies supply more and more of its energy, and its glucose need falls from about 120 g to about 40 g a day." },
+    { "cause": "Less glucose is needed.", "effect": "Less muscle protein has to be broken down to make it, so protein is spared and survival stretches to weeks." }
+  ],
+  "misconception": {
+    "wrong": "As soon as you skip meals, your body starts burning mostly muscle for energy.",
+    "right": "Between meals and over a day or two without food, fat supplies most of your energy: most tissues switch to fatty acids and keep glucose for the brain. Some muscle protein is broken down in the first days to make glucose, but as ketone bodies rise, the brain needs less glucose and protein breakdown falls to a fraction of its early rate. Muscle becomes the main fuel only in late starvation, when fat stores are nearly gone."
+  },
+  "check": ["anp-absorptive-postabsorptive-1", "anp-absorptive-postabsorptive-3", "anp-absorptive-postabsorptive-5", "anp-absorptive-postabsorptive-7", "anp-absorptive-postabsorptive-9", "anp-absorptive-postabsorptive-11", "anp-absorptive-postabsorptive-14"],
+  "summary": "<p>In the absorptive (fed) state, about four hours after a meal, insulin is high and glucagon low: the liver stores glucose as glycogen and turns the excess into fat, muscle takes up glucose and amino acids, adipose tissue stores triglyceride, and glucose is the main fuel. In the postabsorptive (fasting) state, insulin is low and glucagon high: the liver releases glucose from glycogenolysis and gluconeogenesis, adipose tissue releases fatty acids, and most tissues burn fat, sparing glucose for the brain and red blood cells. Insulin is the main anabolic hormone; glucagon, epinephrine and cortisol are catabolic, and growth hormone is anabolic for protein but catabolic for fat. In a longer fast, liver glycogen runs out within a day, glucose is made mostly from muscle protein, and ketone bodies rise until they supply about two thirds of the brain's energy, sparing protein. Starvation ends when fat runs out and protein breakdown rises again.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Diabetic emergencies and altered mental status" }
+  ]
+}

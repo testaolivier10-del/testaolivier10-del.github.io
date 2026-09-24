@@ -1,0 +1,568 @@
+[
+  {
+    "id": "anp-kidney-anatomy-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-8",
+    "pin": "renal-pelvis",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Renal pelvis",
+      "Major calyx",
+      "Renal sinus fat",
+      "Ureter"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The renal pelvis is the funnel at the center of the kidney, formed where the major calyces join. It narrows into the ureter as it leaves the hilum.",
+      "options": [
+        "Correct. The funnel that collects urine from the major calyces is the renal pelvis.",
+        "A major calyx is one of the two or three large cups that empty into this funnel, not the funnel itself.",
+        "The renal sinus is the space inside the hilum, filled with fat, that holds the pelvis and vessels. It is not the urine-filled funnel.",
+        "The ureter is the tube that continues from the funnel outside the kidney, down toward the bladder."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-8",
+    "pin": "renal-column",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Renal pyramid",
+      "Renal papilla",
+      "Renal column",
+      "Minor calyx"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Renal columns are bands of cortex-like tissue that reach inward between the pyramids. The interlobar arteries and veins run through them.",
+      "options": [
+        "A renal pyramid is the striped cone of medulla on either side of this band, not the band between them.",
+        "A renal papilla is the rounded tip of a pyramid, pointing into a minor calyx.",
+        "Correct. The tissue between two pyramids is a renal column.",
+        "A minor calyx is the cup around a papilla, part of the urine-collecting system."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-8",
+    "pin": "minor-calyx",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Major calyx",
+      "Minor calyx",
+      "Renal papilla",
+      "Renal pelvis"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A minor calyx is the small cup that surrounds the tip of one renal papilla and receives the urine dripping from it.",
+      "options": [
+        "A major calyx is larger and forms where several minor calyces join.",
+        "Correct. The small cup around a papilla is a minor calyx.",
+        "The renal papilla is the tip of the pyramid that this cup surrounds.",
+        "The renal pelvis is the central funnel that the major calyces empty into."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-9",
+    "pin": "arcuate-artery",
+    "q": "Name the pinned artery.",
+    "options": [
+      "Interlobar artery",
+      "Segmental artery",
+      "Cortical radiate artery",
+      "Arcuate artery"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Arcuate arteries arch along the boundary between cortex and medulla, over the base of each pyramid. They come from the interlobar arteries and give off the cortical radiate arteries.",
+      "options": [
+        "Interlobar arteries run outward between the pyramids, through the renal columns, before they bend into arches.",
+        "Segmental arteries are the first branches of the renal artery, in the renal sinus near the hilum.",
+        "Cortical radiate arteries run straight out from the arches into the cortex, toward the surface.",
+        "Correct. The artery arching over the base of a pyramid is an arcuate artery."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-9",
+    "pin": "segmental-artery",
+    "q": "Name the pinned artery.",
+    "options": [
+      "Segmental artery",
+      "Renal artery",
+      "Interlobar artery",
+      "Arcuate artery"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Segmental arteries are the first branches of the renal artery, in the renal sinus. Each supplies one segment of the kidney and does not connect with its neighbors.",
+      "options": [
+        "Correct. The renal artery divides into about five segmental arteries.",
+        "The renal artery is the single vessel from the aorta that enters at the hilum, before it divides.",
+        "Interlobar arteries are the next branches, running out between the pyramids.",
+        "Arcuate arteries are further out, arching over the bases of the pyramids."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-25-5",
+    "pin": "pudendal-nerve",
+    "q": "Name the pinned nerve, which keeps the external urethral sphincter contracted.",
+    "options": [
+      "Vagus nerve",
+      "Pelvic splanchnic nerve",
+      "Pudendal nerve",
+      "Femoral nerve"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The pudendal nerve is a somatic nerve from S2 to S4. Its motor neurons release acetylcholine onto the skeletal muscle of the external urethral sphincter and keep it closed until you decide to empty your bladder.",
+      "options": [
+        "The vagus nerve carries parasympathetic fibers to organs of the chest and upper abdomen, not to the bladder or its sphincters.",
+        "The pelvic splanchnic nerves carry parasympathetic fibers that contract the detrusor. They supply smooth muscle, not the skeletal muscle of the external sphincter.",
+        "Correct. The pudendal nerve drives the voluntary external urethral sphincter.",
+        "The femoral nerve supplies the front of the thigh, not the pelvic floor."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-7",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the arteries that carry blood into the kidney, starting at the aorta.",
+    "options": [
+      "Renal artery",
+      "Segmental artery",
+      "Interlobar artery",
+      "Arcuate artery",
+      "Cortical radiate artery"
+    ],
+    "why": {
+      "correct": "The renal artery enters at the hilum and divides into segmental arteries in the renal sinus. These give interlobar arteries, which run between the pyramids, then arcuate arteries, which arch over the pyramid bases, then cortical radiate arteries, which run out into the cortex."
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-8",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order the structures a drop of urine passes through after it drips from a renal papilla, until it leaves the body.",
+    "options": [
+      "Minor calyx",
+      "Major calyx",
+      "Renal pelvis",
+      "Ureter",
+      "Urinary bladder",
+      "Urethra"
+    ],
+    "why": {
+      "correct": "Urine drips from the renal papilla into a minor calyx. Minor calyces join into a major calyx, and the major calyces empty into the renal pelvis, which narrows into the ureter. The ureter carries urine to the bladder, and the urethra carries it out."
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-9",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "Order the steps of the micturition reflex, from a filling bladder to urine flowing.",
+    "options": [
+      "The bladder wall stretches as urine collects",
+      "Stretch-sensitive sensory endings send signals to the sacral cord and the pons",
+      "The cortex releases the pontine micturition center",
+      "Parasympathetic fibers from the sacral micturition center fire",
+      "The detrusor contracts and the internal urethral sphincter opens",
+      "Pudendal firing falls and the external urethral sphincter relaxes"
+    ],
+    "why": {
+      "correct": "Stretch starts the signals. They reach the pons and cortex, and when the cortex allows it, the pontine center drives the sacral micturition center. Its parasympathetic fibers contract the detrusor while the internal sphincter opens, and reduced pudendal firing lets the external sphincter relax, so urine flows."
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-10",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in the arterial path: renal artery → segmental artery → ____ → arcuate artery → cortical radiate artery.",
+    "options": [
+      "Interlobar artery",
+      "Inferior vena cava",
+      "Abdominal aorta",
+      "Gonadal artery"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Interlobar arteries (inter- = between) run outward between the pyramids, through the renal columns, from the segmental arteries to the arcuate arteries.",
+      "options": [
+        "Correct. Interlobar arteries link the segmental and arcuate arteries.",
+        "The inferior vena cava receives blood from the renal veins; it is not on the arterial path into the kidney.",
+        "The abdominal aorta is where the renal artery comes from, before this path begins.",
+        "The gonadal artery is a separate branch of the aorta to the testis or ovary; it is not part of the path inside the kidney."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "List the three coverings of the kidney in order, from the outside in.",
+    "options": [
+      "Renal capsule, adipose capsule, renal fascia",
+      "Adipose capsule, renal fascia, renal capsule",
+      "Renal fascia, renal capsule, adipose capsule",
+      "Renal fascia, adipose capsule, renal capsule"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The renal fascia is the outer sheet that anchors the kidney. Inside it is the adipose capsule, the cushion of fat. The renal capsule is the thin, tough layer stuck to the kidney's surface.",
+      "options": [
+        "This is the right list read backward: the renal capsule is the innermost layer, on the kidney's surface.",
+        "The adipose capsule lies inside the renal fascia, not outside it.",
+        "The fat lies between the fascia and the capsule; the renal capsule is stuck directly to the kidney.",
+        "Correct. Fascia, then fat, then the capsule on the surface."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A clot blocks one segmental artery in a patient's right kidney. A scan a week later shows a wedge-shaped area of dead tissue with its broad side at the kidney's surface. Why did no other artery keep that area alive?",
+    "options": [
+      "The renal vein carried the clot back into that segment",
+      "Segmental arteries do not connect with one another",
+      "The cortex has no capillaries of its own",
+      "The adipose capsule compresses the arteries around the segment"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Segmental arteries are end arteries: each supplies its own segment, and neighboring segmental arteries do not join. When one is blocked, no other vessel can bring blood in, so the wedge of tissue it fed dies.",
+      "options": [
+        "Clots in arteries travel toward smaller arteries, not backward from the veins. The problem is the lack of any alternative arterial route.",
+        "Correct. With no connections between segmental arteries, a blocked one leaves its segment without blood.",
+        "The cortex is full of capillaries and receives most of the kidney's blood flow; they are downstream of the blocked artery.",
+        "The fat cushions the kidney from outside. It does not squeeze arteries shut."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A surgeon removes a patient's kidney through a cut in the flank and back, without ever opening the peritoneal cavity. Which fact about the kidney makes this possible?",
+    "options": [
+      "It is suspended in the peritoneal cavity by a mesentery",
+      "It sits below the level of the iliac crest",
+      "It lies behind the peritoneum, against the back wall",
+      "It is enclosed by the ribs on all sides"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The kidneys are retroperitoneal: they lie against the muscles of the back wall of the abdomen, with the peritoneum covering only their front surfaces. A surgeon coming from behind reaches the kidney before reaching the peritoneum.",
+      "options": [
+        "Organs on a mesentery, such as most of the small intestine, lie inside the peritoneal cavity. The kidneys are not among them.",
+        "The kidneys sit high, from about T12 to L3, above the iliac crest.",
+        "Correct. Being retroperitoneal lets a surgeon reach the kidney from behind.",
+        "Only the upper part of each kidney is covered behind by the 11th and 12th ribs; the rest lies below them."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "When the bladder contracts, why is urine not pushed back up the ureters toward the kidneys?",
+    "options": [
+      "Each ureter has a ring of skeletal muscle that closes it",
+      "The ureters pass through the bladder wall at a slant, and bladder pressure squeezes them shut",
+      "The trigone contracts first and seals the bladder floor, including both ureter openings",
+      "Peristalsis stops in the ureters whenever you are lying down"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each ureter runs obliquely through about 2 cm of bladder wall. When the bladder fills or contracts, its pressure flattens that slanted tunnel, which works as a one-way valve: a peristaltic wave can push urine in, but bladder pressure cannot force it back out.",
+      "options": [
+        "The ureters have smooth muscle, not a skeletal-muscle sphincter. The valve comes from their slanted path through the wall.",
+        "Correct. The oblique passage through the bladder wall acts as a valve.",
+        "The trigone is a smooth triangle of lining on the bladder floor. It does not seal the ureter openings by contracting.",
+        "Peristalsis moves urine down the ureters in any position, including lying down."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Bacteria from the skin reach the bladder much more often in women than in men. Which anatomical difference best explains this?",
+    "options": [
+      "The female bladder has no trigone",
+      "The female urethra has no external sphincter",
+      "The female urethra is about 3 to 4 cm long, the male about 20 cm",
+      "The female ureters enter the front of the bladder instead of the back"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Bacteria near the urethral opening have only 3 to 4 cm to travel to reach a woman's bladder, compared with about 20 cm in a man, and the male urethra also has two bends.",
+      "options": [
+        "Both sexes have a trigone, the smooth triangle between the ureter openings and the urethral opening.",
+        "Both sexes have an external urethral sphincter of skeletal muscle in the pelvic floor.",
+        "Correct. A much shorter urethra gives bacteria a much shorter route to the bladder.",
+        "In both sexes, the ureters enter the back of the bladder."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-16",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "A patient with an overactive bladder takes a drug that blocks muscarinic receptor proteins. Predict how each variable changes compared with before the drug.",
+    "variables": [
+      {
+        "name": "Strength of detrusor contractions",
+        "answer": "down",
+        "why": "Parasympathetic fibers contract the detrusor by releasing acetylcholine onto muscarinic receptor proteins. Blocking those receptor proteins weakens the contraction."
+      },
+      {
+        "name": "Volume the bladder holds before an urgent need to empty",
+        "answer": "up",
+        "why": "With weaker, less frequent detrusor contractions, the bladder can fill further before pressure rises enough to force an urgent need to empty."
+      },
+      {
+        "name": "Strength of the external urethral sphincter",
+        "answer": "none",
+        "why": "The external sphincter is skeletal muscle driven by the pudendal nerve through nicotinic receptor proteins, which this drug does not block."
+      },
+      {
+        "name": "Volume left in the bladder after emptying",
+        "answer": "up",
+        "why": "A weaker detrusor contraction may not empty the bladder fully, so more urine can be left behind."
+      }
+    ],
+    "why": {
+      "correct": "The drug removes the parasympathetic drive on the detrusor. Contractions weaken, so the bladder holds more before urgency and may empty less completely. The voluntary external sphincter works through a different receptor protein and is unaffected."
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does the right kidney usually sit a little lower than the left?",
+    "options": [
+      "The liver occupies the space above it",
+      "The heart pushes it downward",
+      "The aorta lies on the right side of the spine",
+      "It is larger and heavier than the left"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The liver fills the upper right part of the abdomen, so the right kidney sits about 1 to 2 cm lower than the left.",
+      "options": [
+        "Correct. The large liver above it pushes the right kidney down a little.",
+        "The heart lies in the thorax, above the diaphragm, and tilts to the left. It does not reach the kidneys.",
+        "The aorta lies slightly to the left of the midline; the inferior vena cava is on the right.",
+        "The two kidneys are about the same size. Their difference in height comes from the liver."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-18",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student wrote the path of urine from a pyramid to the bladder. One step is wrong. Which one?",
+    "options": [
+      "Renal papilla",
+      "Minor calyx",
+      "Renal column",
+      "Renal pelvis",
+      "Ureter",
+      "Urinary bladder"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Renal columns are bands of tissue between the pyramids that carry blood vessels. Urine never passes through them. The step after the minor calyx should be the major calyx.",
+      "options": [
+        "Correct step. Urine leaves the kidney tissue through tiny openings on the renal papilla.",
+        "Correct step. The minor calyx cups the papilla and receives the urine.",
+        "This is the wrong step. Renal columns are tissue between the pyramids, not part of the collecting system; the major calyx belongs here.",
+        "Correct step. The major calyces empty into the renal pelvis.",
+        "Correct step. The renal pelvis narrows into the ureter.",
+        "Correct step. The ureter carries urine to the bladder."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-19",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which statements about the urinary bladder are correct? Select all that apply.",
+    "options": [
+      "Its smooth muscle is called the detrusor",
+      "It is lined by transitional epithelium that folds into rugae when empty",
+      "The trigone lies between the two ureter openings and the urethral opening",
+      "It lies in the pelvic cavity, behind the pubic bone",
+      "The trigone is where the lining folds most as the bladder empties"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "The bladder is a stretchy muscular bag behind the pubic bone. Its wall is the detrusor muscle, its lining is transitional epithelium that folds into rugae when empty, and the smooth triangle of the trigone joins the ureter openings to the urethral opening.",
+      "options": [
+        "Correct. The detrusor is the smooth muscle of the bladder wall.",
+        "Correct. Transitional epithelium lines it and folds into rugae when the bladder is empty.",
+        "Correct. These three openings are the corners of the trigone.",
+        "Correct. The bladder sits in the pelvic cavity just behind the pubic bone.",
+        "The trigone is the one part of the lining that stays smooth. It has no rugae."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-20",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication",
+      "structure-function"
+    ],
+    "q": "After an injury to the nerves of the pelvic floor, a patient can no longer tighten the muscle she used to squeeze to hold in urine, although her bladder still contracts normally when she empties it. Which structure has lost its nerve supply?",
+    "options": [
+      "The detrusor muscle, supplied by parasympathetic fibers",
+      "The internal urethral sphincter, supplied by sympathetic fibers",
+      "The trigone, supplied by sensory fibers",
+      "The external urethral sphincter, via the pudendal nerve"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The muscle you squeeze on purpose to hold in urine is the external urethral sphincter, skeletal muscle in the pelvic floor, driven by the pudendal nerve. Voluntary tightening is lost when that nerve is damaged, while the parasympathetic supply that contracts the detrusor still works.",
+      "options": [
+        "Her bladder still contracts normally, so the parasympathetic supply to the detrusor is working.",
+        "The internal sphincter is smooth muscle under involuntary control. She never tightened it on purpose.",
+        "The trigone is lining, not a muscle she could squeeze.",
+        "Correct. Losing voluntary squeezing points to the pudendal nerve and the external sphincter."
+      ]
+    }
+  },
+  {
+    "id": "anp-kidney-anatomy-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "At rest, the kidneys receive about 20 to 25 percent of cardiac output, although they weigh less than half a percent of the body. What is that flow mainly for?",
+    "options": [
+      "Supplying the kidney cells with oxygen for their own work",
+      "Warming the blood before it returns to the heart",
+      "Storing a reserve of blood for use during bleeding",
+      "Providing the plasma from which urine is made"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The kidneys make urine out of plasma. Their blood flow is set far above their own oxygen needs, and it is the large volume of plasma passing through them each minute that lets them adjust the blood's water, salt and wastes.",
+      "options": [
+        "Kidney cells do use a lot of oxygen, but the blood flow is several times what they need. The flow is mainly raw material for urine.",
+        "The kidneys do not heat the blood; core temperature is set by metabolism in organs throughout the body.",
+        "The veins, not the kidneys, hold most of the body's blood reserve.",
+        "Correct. The kidneys process plasma, so they need a large flow of it."
+      ]
+    }
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "os-25-20": {
+    "file": "figures/openstax/os-25-20.jpg",
+    "w": 1733,
+    "h": 1558,
+    "source": "openstax",
+    "openstax": {
+      "figure": "25.20",
+      "section": "25.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/eba3777c71567633192ca0dee6cc558d283711f6",
+      "page": "25-6-tubular-reabsorption"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/eba3777c71567633192ca0dee6cc558d283711f6",
+    "alt": "Left: a small drawing of a nephron with its long loop, the bottom of the loop boxed. Right: an enlarged U-shaped loop under the heading interstitial osmolality, in mOsmol per kg. In the descending limb on the left, arrows show water leaving and urea entering, and the fluid rises from 300 at the top through 500, 700 and 900 to 1,200 at the bend. Numbers down the middle give the surrounding interstitial fluid: 300 at the top, then 400, 500, 600, 700, 800, 900, 1,000 and 1,100 near the bottom. In the ascending limb on the right, red arrows show Na+ and Cl− leaving at each level while curved arrows show water staying inside, and the fluid falls from 1,100 near the bend through 700, 500 and 300 to 100 at the top.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.20",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-26-12": {
+    "file": "figures/openstax/os-26-12.jpg",
+    "w": 1464,
+    "h": 1067,
+    "source": "openstax",
+    "openstax": {
+      "figure": "26.12",
+      "section": "26.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/7b965fe5e6f495cbfe9981ab7ff608671db402b7",
+      "page": "26-2-water-balance"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/7b965fe5e6f495cbfe9981ab7ff608671db402b7",
+    "alt": "A strip across the wall of a collecting duct. On the left, the pale yellow lumen labeled lumen of collecting tubule, with water shown as blue arrows. In the middle, two stacked cells labeled collecting tubule cell; round storage vesicles studded with pink dots, the aquaporins, sit inside them. In the upper cell only two aquaporins sit in the membrane facing the lumen and two water arrows enter. In the lower cell, dotted arrows show vesicles fusing with that membrane, labeled aquaporin pores are inserted into cell membrane, increasing flow of water out of the tubule, and four water arrows enter. Water leaves both cells through aquaporins on the far side, crosses a thin blue band labeled interstitial fluid, and enters a red vessel labeled bloodstream and plasma.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 26.12",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "nephron-osmolarity": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 740,
+    "h": 470,
+    "alt": "A graph of the osmolarity of the fluid inside the tubule, from 0 to 1,300 mOsm/L, at six points along the nephron from left to right: start of the proximal tubule, end of the proximal tubule, tip of the nephron loop, start of the distal tubule, end of the distal tubule, and end of the collecting duct. A shaded band marks the points that lie in the renal medulla. The fluid is 300 at the start and still 300 at the end of the proximal tubule. It climbs to 1,200 at the tip of the loop, deep in the medulla, then falls to about 100 by the start of the distal tubule and stays about 100 through it. There the line splits. With high ADH, it rises to 300 by the end of the cortical collecting duct and to 1,200 at the end of the collecting duct. With no ADH, shown dashed, it falls to about 50. A dotted line at 300 marks the osmolarity of plasma.",
+    "labels": []
+  }
+}

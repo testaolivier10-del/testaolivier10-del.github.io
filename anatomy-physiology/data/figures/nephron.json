@@ -1,0 +1,16 @@
+{
+  "os-25-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "25.10",
+      "section": "25.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1ef73612fb66334a23403dba3d0bf6fc711e988b",
+      "page": "25-3-gross-anatomy-of-the-kidney"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/1ef73612fb66334a23403dba3d0bf6fc711e988b",
+    "alt": "One nephron with its blood vessels. On the left, a red artery and a blue vein run up and down side by side. A small arteriole leaves the artery and enters a tuft of capillaries cupped in a hollow capsule; a second arteriole leaves the tuft and branches into a mesh of capillaries that wraps around the coiled tubule and the long hairpin loop that dips downward. The capillary mesh drains through a venule into the vein. The tubule's last part joins a wide duct on the right that runs straight down, with an arrow showing urine flowing on toward the renal papilla.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.10",
+    "labels": []
+  }
+}

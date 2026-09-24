@@ -1,0 +1,22 @@
+{
+  "absorptive-state": {
+    "def": "The fed state, about four hours after a meal, when nutrients are being absorbed. Insulin is high and glucagon low, glucose is the main fuel, and the liver, muscle and adipose tissue store the extra as glycogen, protein and fat.",
+    "roots": [["ab-", "away, from"], ["sorb-", "suck in"]],
+    "say": ""
+  },
+  "postabsorptive-state": {
+    "def": "The fasting state between meals and overnight, when no nutrients are arriving from the gut. Insulin is low and glucagon high, the liver releases glucose from glycogen and gluconeogenesis, and most tissues burn fatty acids, sparing glucose for the brain and red blood cells.",
+    "roots": [["post-", "after"]],
+    "say": ""
+  },
+  "starvation": {
+    "def": "Severe, prolonged lack of food energy, in which the body lives on its own tissues. Fat and ketone bodies carry it for weeks while sparing protein; when fat runs out, protein breakdown rises and heart and breathing muscle waste.",
+    "roots": [],
+    "say": ""
+  },
+  "fuel-hormones": {
+    "def": "The hormones that decide whether fuel is stored or released. Insulin is the main anabolic hormone (building and storing); glucagon, epinephrine and cortisol are catabolic hormones that release fuel and raise blood glucose; growth hormone builds protein but releases fat.",
+    "roots": [["ana-", "up"], ["cata-", "down"], ["bol-", "throw"]],
+    "say": ""
+  }
+}
