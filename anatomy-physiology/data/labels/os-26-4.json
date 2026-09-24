@@ -1,0 +1,78 @@
+{
+  "figure": "os-26-4",
+  "labels": [
+    {
+      "id": "intracellular-fluid",
+      "name": "Intracellular fluid",
+      "accept": [
+        "icf",
+        "intracellular"
+      ],
+      "lines": [],
+      "box": [
+        311,
+        100,
+        102,
+        41
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "interstitial-fluid",
+      "name": "Interstitial fluid",
+      "accept": [
+        "if",
+        "isf",
+        "tissue fluid",
+        "interstitial"
+      ],
+      "lines": [],
+      "box": [
+        327,
+        326,
+        84,
+        41
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "plasma",
+      "name": "Plasma",
+      "accept": [
+        "blood plasma"
+      ],
+      "lines": [],
+      "box": [
+        186,
+        263,
+        70,
+        28
+      ],
+      "concept": "plasma"
+    },
+    {
+      "id": "other-fluid",
+      "name": "Other fluid",
+      "accept": [
+        "transcellular fluid",
+        "other fluids"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "extracellular-fluid",
+      "name": "Extracellular fluid",
+      "accept": [
+        "ecf",
+        "extracellular"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "icf-ecf"
+    }
+  ]
+}

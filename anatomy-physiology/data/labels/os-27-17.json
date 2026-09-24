@@ -1,0 +1,121 @@
+{
+  "figure": "os-27-17",
+  "labels": [
+    {
+      "id": "areolar-glands",
+      "name": "Areolar glands",
+      "accept": [
+        "areolar gland",
+        "montgomery glands",
+        "montgomery's glands",
+        "glands of montgomery"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "fat-tissue",
+      "name": "Fat tissue",
+      "accept": [
+        "fat",
+        "adipose tissue",
+        "adipose"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "loose-ct"
+    },
+    {
+      "id": "alveoli",
+      "name": "Alveoli",
+      "accept": [
+        "alveolus",
+        "mammary alveoli",
+        "mammary alveolus",
+        "milk alveoli"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "lactiferous-ducts",
+      "name": "Lactiferous ducts",
+      "accept": [
+        "lactiferous duct",
+        "milk ducts",
+        "milk duct"
+      ],
+      "lines": [
+        3,
+        4
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "areola",
+      "name": "Areola",
+      "accept": [
+        "areolae"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "lobule",
+      "name": "Lobule (contains alveoli)",
+      "accept": [
+        "lobule",
+        "lobules",
+        "mammary lobule"
+      ],
+      "lines": [
+        6,
+        8
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "suspensory-ligament",
+      "name": "Suspensory ligament",
+      "accept": [
+        "suspensory ligaments",
+        "suspensory ligaments of the breast",
+        "cooper's ligaments",
+        "cooper's ligament"
+      ],
+      "lines": [
+        10,
+        12
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "lactiferous-sinuses",
+      "name": "Lactiferous sinuses",
+      "accept": [
+        "lactiferous sinus"
+      ],
+      "lines": [
+        9,
+        11
+      ],
+      "concept": "mammary-glands"
+    },
+    {
+      "id": "nipple",
+      "name": "Nipple",
+      "accept": [],
+      "lines": [
+        13
+      ],
+      "concept": "mammary-glands"
+    }
+  ]
+}

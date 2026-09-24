@@ -1,0 +1,238 @@
+{
+  "figure": "os-27-13",
+  "labels": [
+    {
+      "id": "gnrh-follicular",
+      "name": "GnRH",
+      "accept": [
+        "gonadotropin-releasing hormone"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "releasing-hormones"
+    },
+    {
+      "id": "fsh-follicular",
+      "name": "FSH",
+      "accept": [
+        "follicle-stimulating hormone"
+      ],
+      "lines": [
+        15
+      ],
+      "concept": "anterior-pituitary-hormones"
+    },
+    {
+      "id": "lh-follicular",
+      "name": "LH",
+      "accept": [
+        "luteinizing hormone"
+      ],
+      "lines": [
+        17
+      ],
+      "concept": "anterior-pituitary-hormones"
+    },
+    {
+      "id": "estradiol-feedback-follicular",
+      "name": "Estradiol",
+      "accept": [
+        "estrogen",
+        "e2"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "gonadal-hormones"
+    },
+    {
+      "id": "follicles-follicular",
+      "name": "Follicles",
+      "accept": [
+        "follicle",
+        "ovarian follicles",
+        "ovarian follicle"
+      ],
+      "lines": [
+        25
+      ],
+      "concept": "ovaries"
+    },
+    {
+      "id": "estradiol-uterus-follicular",
+      "name": "Estradiol",
+      "accept": [
+        "estrogen",
+        "e2"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "gonadal-hormones"
+    },
+    {
+      "id": "endometrium-follicular",
+      "name": "Endometrium",
+      "accept": [],
+      "lines": [
+        43
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "gnrh-ovulation",
+      "name": "GnRH",
+      "accept": [
+        "gonadotropin-releasing hormone"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "releasing-hormones"
+    },
+    {
+      "id": "estradiol-feedback-ovulation",
+      "name": "Estradiol",
+      "accept": [
+        "estrogen",
+        "e2"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "gonadal-hormones"
+    },
+    {
+      "id": "fsh-ovulation",
+      "name": "FSH",
+      "accept": [
+        "follicle-stimulating hormone"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "anterior-pituitary-hormones"
+    },
+    {
+      "id": "lh-ovulation",
+      "name": "LH",
+      "accept": [
+        "luteinizing hormone"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "anterior-pituitary-hormones"
+    },
+    {
+      "id": "follicles-ovulation",
+      "name": "Follicles",
+      "accept": [
+        "follicle",
+        "ovarian follicles",
+        "ovarian follicle"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "ovaries"
+    },
+    {
+      "id": "estradiol-uterus-ovulation",
+      "name": "Estradiol",
+      "accept": [
+        "estrogen",
+        "e2"
+      ],
+      "lines": [
+        34
+      ],
+      "concept": "gonadal-hormones"
+    },
+    {
+      "id": "endometrium-ovulation",
+      "name": "Endometrium",
+      "accept": [],
+      "lines": [
+        44
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "gnrh-luteal",
+      "name": "GnRH",
+      "accept": [
+        "gonadotropin-releasing hormone"
+      ],
+      "lines": [
+        50
+      ],
+      "concept": "releasing-hormones"
+    },
+    {
+      "id": "fsh-luteal",
+      "name": "FSH",
+      "accept": [
+        "follicle-stimulating hormone"
+      ],
+      "lines": [
+        55
+      ],
+      "concept": "anterior-pituitary-hormones"
+    },
+    {
+      "id": "lh-luteal",
+      "name": "LH",
+      "accept": [
+        "luteinizing hormone"
+      ],
+      "lines": [
+        56
+      ],
+      "concept": "anterior-pituitary-hormones"
+    },
+    {
+      "id": "progesterone-feedback-luteal",
+      "name": "Progesterone",
+      "accept": [
+        "p4"
+      ],
+      "lines": [
+        58
+      ],
+      "concept": "gonadal-hormones"
+    },
+    {
+      "id": "corpus-luteum",
+      "name": "Corpus luteum",
+      "accept": [
+        "corpora lutea"
+      ],
+      "lines": [
+        61
+      ],
+      "concept": "corpus-luteum"
+    },
+    {
+      "id": "progesterone-uterus-luteal",
+      "name": "Progesterone",
+      "accept": [
+        "p4"
+      ],
+      "lines": [
+        66
+      ],
+      "concept": "gonadal-hormones"
+    },
+    {
+      "id": "endometrium-luteal",
+      "name": "Endometrium",
+      "accept": [],
+      "lines": [
+        69
+      ],
+      "concept": "uterus"
+    }
+  ]
+}

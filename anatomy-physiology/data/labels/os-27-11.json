@@ -1,0 +1,85 @@
+{
+  "figure": "os-27-11",
+  "labels": [
+    {
+      "id": "oogonium",
+      "name": "Oogonium",
+      "accept": [
+        "oogonia"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "oogenesis"
+    },
+    {
+      "id": "primary-oocyte",
+      "name": "Primary oocyte",
+      "accept": [
+        "primary oocytes"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "oogenesis"
+    },
+    {
+      "id": "secondary-oocyte",
+      "name": "Secondary oocyte",
+      "accept": [
+        "secondary oocytes"
+      ],
+      "lines": [
+        17,
+        22
+      ],
+      "concept": "oogenesis"
+    },
+    {
+      "id": "first-polar-body",
+      "name": "First polar body",
+      "accept": [
+        "polar body",
+        "1st polar body"
+      ],
+      "lines": [
+        18,
+        23
+      ],
+      "concept": "oogenesis"
+    },
+    {
+      "id": "mature-ovum",
+      "name": "Mature ovum",
+      "accept": [
+        "ovum",
+        "egg",
+        "ova"
+      ],
+      "lines": [
+        34,
+        41
+      ],
+      "concept": "gamete"
+    },
+    {
+      "id": "second-polar-bodies",
+      "name": "Second polar bodies",
+      "accept": [
+        "second polar body",
+        "polar bodies",
+        "polar body",
+        "2nd polar bodies"
+      ],
+      "lines": [],
+      "box": [
+        503,
+        482,
+        92,
+        31
+      ],
+      "concept": "oogenesis",
+      "note": "OpenStax draws the first polar body always dividing again into two cells it labels second polar bodies. In people the first polar body often breaks down without dividing, so one oocyte's meiosis ends with two or three polar bodies. The label names the cells correctly and is kept."
+    }
+  ]
+}

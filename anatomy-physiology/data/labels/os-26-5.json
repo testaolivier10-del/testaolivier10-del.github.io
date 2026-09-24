@@ -1,0 +1,160 @@
+{
+  "figure": "os-26-5",
+  "labels": [
+    {
+      "id": "intracellular-fluid",
+      "name": "Intracellular fluid (ICF)",
+      "accept": [
+        "intracellular fluid",
+        "icf"
+      ],
+      "lines": [
+        2,
+        1
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "interstitial-fluid",
+      "name": "Interstitial fluid (IF) (part of ECF)",
+      "accept": [
+        "interstitial fluid",
+        "if",
+        "isf",
+        "tissue fluid"
+      ],
+      "lines": [
+        3,
+        4,
+        5,
+        9,
+        6,
+        7
+      ],
+      "concept": "icf-ecf"
+    },
+    {
+      "id": "plasma",
+      "name": "Plasma (ECF)",
+      "accept": [
+        "plasma",
+        "blood plasma"
+      ],
+      "lines": [
+        11,
+        10
+      ],
+      "concept": "plasma"
+    },
+    {
+      "id": "sodium",
+      "name": "Na+",
+      "accept": [
+        "sodium",
+        "sodium ion",
+        "na",
+        "na+"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "ecf-icf-composition"
+    },
+    {
+      "id": "chloride",
+      "name": "Cl−",
+      "accept": [
+        "chloride",
+        "chloride ion",
+        "cl",
+        "cl-"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "electrolyte"
+    },
+    {
+      "id": "bicarbonate",
+      "name": "HCO3−",
+      "accept": [
+        "bicarbonate",
+        "bicarbonate ion",
+        "hco3",
+        "hco3-"
+      ],
+      "lines": [],
+      "box": [
+        404,
+        1039,
+        97,
+        36
+      ],
+      "concept": "bicarbonate-buffer"
+    },
+    {
+      "id": "potassium",
+      "name": "K+",
+      "accept": [
+        "potassium",
+        "potassium ion",
+        "k",
+        "k+"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "ecf-icf-composition",
+      "note": "The chart draws extracellular potassium (interstitial fluid and plasma) near 8 to 9 mEq/L; the usual plasma value is about 3.5 to 5 mEq/L. Its plasma sodium bar also sits near 150 rather than about 140. The notes caption says so."
+    },
+    {
+      "id": "phosphate",
+      "name": "HPO4 2−",
+      "accept": [
+        "phosphate",
+        "hydrogen phosphate",
+        "hpo4",
+        "hpo4 2-",
+        "hpo42-"
+      ],
+      "lines": [],
+      "box": [
+        657,
+        1033,
+        108,
+        42
+      ],
+      "concept": "electrolyte"
+    },
+    {
+      "id": "magnesium",
+      "name": "Mg2+",
+      "accept": [
+        "magnesium",
+        "magnesium ion",
+        "mg",
+        "mg2+"
+      ],
+      "lines": [],
+      "box": [
+        804,
+        1033,
+        64,
+        42
+      ],
+      "concept": "electrolyte"
+    },
+    {
+      "id": "protein",
+      "name": "Protein",
+      "accept": [
+        "proteins",
+        "protein anions"
+      ],
+      "lines": [
+        29
+      ],
+      "concept": "protein"
+    }
+  ]
+}

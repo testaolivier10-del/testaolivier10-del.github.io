@@ -1,0 +1,93 @@
+{
+  "figure": "os-25-19",
+  "labels": [
+    {
+      "id": "lumen-of-proximal-tubule",
+      "name": "Lumen of proximal tubule",
+      "accept": [
+        "lumen",
+        "tubule lumen",
+        "tubular lumen",
+        "proximal tubule lumen"
+      ],
+      "lines": [
+        0,
+        3
+      ],
+      "concept": "renal-tubule"
+    },
+    {
+      "id": "proximal-convoluted-tubule-cell",
+      "name": "Proximal convoluted tubule cell",
+      "accept": [
+        "proximal tubule cell",
+        "pct cell",
+        "tubule cell"
+      ],
+      "lines": [
+        1,
+        4
+      ],
+      "concept": "renal-tubule"
+    },
+    {
+      "id": "bloodstream",
+      "name": "Bloodstream",
+      "accept": [
+        "blood",
+        "peritubular capillary",
+        "capillary"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": null
+    },
+    {
+      "id": "carbonic-anhydrase-lumen",
+      "name": "Carbonic anhydrase enzyme",
+      "accept": [
+        "carbonic anhydrase",
+        "ca"
+      ],
+      "lines": [
+        9,
+        10,
+        11
+      ],
+      "concept": "carbonic-anhydrase"
+    },
+    {
+      "id": "carbonic-anhydrase-cell",
+      "name": "Carbonic anhydrase enzyme",
+      "accept": [
+        "carbonic anhydrase",
+        "ca"
+      ],
+      "lines": [],
+      "box": [
+        597,
+        403,
+        138,
+        97
+      ],
+      "concept": "carbonic-anhydrase"
+    },
+    {
+      "id": "atp",
+      "name": "ATP",
+      "accept": [
+        "adenosine triphosphate"
+      ],
+      "lines": [],
+      "box": [
+        364,
+        165,
+        54,
+        28
+      ],
+      "concept": "atp",
+      "note": "OpenStax marks the apical H+ exit with ATP, as if a pump spent ATP directly. Most H+ leaves the proximal tubule cell on the sodium–hydrogen exchanger, driven by the sodium gradient (secondary active transport); an ATP-using proton pump adds a smaller share. The notes caption says so."
+    }
+  ]
+}

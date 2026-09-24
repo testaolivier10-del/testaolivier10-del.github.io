@@ -1,0 +1,77 @@
+{
+  "figure": "os-26-16",
+  "labels": [
+    {
+      "id": "acidosis",
+      "name": "ACIDOSIS",
+      "accept": [
+        "acidosis",
+        "acidemia"
+      ],
+      "lines": [],
+      "box": [
+        60,
+        178,
+        93,
+        20
+      ],
+      "concept": "acidosis-alkalosis-basic"
+    },
+    {
+      "id": "alkalosis",
+      "name": "ALKALOSIS",
+      "accept": [
+        "alkalosis",
+        "alkalemia"
+      ],
+      "lines": [],
+      "box": [
+        335,
+        178,
+        108,
+        20
+      ],
+      "concept": "acidosis-alkalosis-basic"
+    },
+    {
+      "id": "receptors-acidosis",
+      "name": "Stimulates brain and arterial receptors",
+      "accept": [
+        "brain and arterial receptors",
+        "chemoreceptors",
+        "central and peripheral chemoreceptors",
+        "central chemoreceptors",
+        "peripheral chemoreceptors"
+      ],
+      "lines": [],
+      "box": [
+        15,
+        271,
+        183,
+        45
+      ],
+      "concept": "receptor-types-stimulus",
+      "note": "OpenStax prints 'brain and arterial receptors': these are the central chemoreceptors in the medulla and the peripheral chemoreceptors in the carotid and aortic bodies (the course writes 'chemoreceptors', never a bare 'receptors'). The notes caption says so."
+    },
+    {
+      "id": "receptors-alkalosis",
+      "name": "Stimulates brain and arterial receptors",
+      "accept": [
+        "brain and arterial receptors",
+        "chemoreceptors",
+        "central and peripheral chemoreceptors",
+        "central chemoreceptors",
+        "peripheral chemoreceptors"
+      ],
+      "lines": [],
+      "box": [
+        298,
+        271,
+        183,
+        45
+      ],
+      "concept": "receptor-types-stimulus",
+      "note": "OpenStax prints 'brain and arterial receptors': these are the central chemoreceptors in the medulla and the peripheral chemoreceptors in the carotid and aortic bodies. In alkalosis they are stimulated less, not more, which the figure's 'Stimulates' does not show; the falling respiration rate below it does."
+    }
+  ]
+}

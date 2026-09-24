@@ -1,0 +1,148 @@
+{
+  "figure": "os-27-10",
+  "labels": [
+    {
+      "id": "prepuce",
+      "name": "Prepuce",
+      "accept": [
+        "clitoral hood",
+        "prepuce of clitoris",
+        "hood"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "glans-clitoris",
+      "name": "Glans clitoris",
+      "accept": [
+        "glans of clitoris",
+        "clitoris"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "labia-minora",
+      "name": "Labia minora",
+      "accept": [
+        "labium minus",
+        "inner labia"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "corpus-cavernosum",
+      "name": "Corpus cavernosum",
+      "accept": [
+        "corpora cavernosa",
+        "body of clitoris",
+        "crus of clitoris"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "bulb-of-vestibule",
+      "name": "Bulb of vestibule",
+      "accept": [
+        "vestibular bulb",
+        "bulbs of vestibule",
+        "vestibular bulbs"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "urethral-opening",
+      "name": "Urethral opening",
+      "accept": [
+        "external urethral opening",
+        "external urethral orifice",
+        "urethral orifice",
+        "urethral meatus"
+      ],
+      "lines": [
+        7
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "labia-majora",
+      "name": "Labia majora",
+      "accept": [
+        "labium majus",
+        "outer labia"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "vaginal-opening",
+      "name": "Vaginal opening",
+      "accept": [
+        "vaginal orifice",
+        "introitus",
+        "vaginal introitus"
+      ],
+      "lines": [
+        9
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "opening-of-bartholins-gland",
+      "name": "Opening of right Bartholin's gland",
+      "accept": [
+        "opening of bartholin's gland",
+        "bartholin's gland opening",
+        "duct of bartholin's gland",
+        "greater vestibular gland opening"
+      ],
+      "lines": [
+        10,
+        11
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "anus",
+      "name": "Anus",
+      "accept": [
+        "anal opening"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "large-intestine-regions"
+    },
+    {
+      "id": "bartholins-glands",
+      "name": "Bartholin's glands",
+      "accept": [
+        "bartholin's gland",
+        "bartholin glands",
+        "bartholin gland",
+        "greater vestibular glands",
+        "greater vestibular gland"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "vagina-vulva"
+    }
+  ]
+}

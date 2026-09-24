@@ -1,0 +1,132 @@
+{
+  "figure": "os-27-6",
+  "labels": [
+    {
+      "id": "acrosome",
+      "name": "Acrosome",
+      "accept": [
+        "acrosomal cap",
+        "acrosomal vesicle"
+      ],
+      "lines": [
+        0
+      ],
+      "concept": "sperm-structure"
+    },
+    {
+      "id": "plasma-membrane",
+      "name": "Plasma membrane",
+      "accept": [
+        "cell membrane"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "plasma-membrane"
+    },
+    {
+      "id": "nucleus",
+      "name": "Nucleus",
+      "accept": [],
+      "lines": [
+        3
+      ],
+      "concept": "nucleus"
+    },
+    {
+      "id": "mitochondria",
+      "name": "Mitochondria",
+      "accept": [
+        "mitochondrion"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "mitochondrion"
+    },
+    {
+      "id": "centriole",
+      "name": "Centriole",
+      "accept": [
+        "centrioles"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "cytoskeleton"
+    },
+    {
+      "id": "flagellum",
+      "name": "Flagellum",
+      "accept": [
+        "flagella"
+      ],
+      "lines": [
+        6
+      ],
+      "concept": "cilia-flagella"
+    },
+    {
+      "id": "axial-filament",
+      "name": "Axial filament",
+      "accept": [
+        "axoneme",
+        "microtubules"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "cilia-flagella"
+    },
+    {
+      "id": "head",
+      "name": "Head",
+      "accept": [
+        "sperm head",
+        "head of sperm"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "sperm-structure"
+    },
+    {
+      "id": "mid-piece",
+      "name": "Mid-piece",
+      "accept": [
+        "midpiece",
+        "middle piece"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "sperm-structure"
+    },
+    {
+      "id": "tail",
+      "name": "Tail",
+      "accept": [
+        "sperm tail",
+        "principal piece",
+        "tail of sperm"
+      ],
+      "lines": [
+        13
+      ],
+      "concept": "sperm-structure"
+    },
+    {
+      "id": "end-piece",
+      "name": "End piece",
+      "accept": [
+        "endpiece",
+        "terminal piece"
+      ],
+      "lines": [
+        14,
+        15
+      ],
+      "concept": "sperm-structure"
+    }
+  ]
+}

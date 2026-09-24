@@ -1,0 +1,301 @@
+{
+  "figure": "os-27-9",
+  "labels": [
+    {
+      "id": "uterus",
+      "name": "Uterus",
+      "accept": [
+        "womb"
+      ],
+      "lines": [
+        1
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "ovary",
+      "name": "Ovary",
+      "accept": [
+        "ovaries"
+      ],
+      "lines": [
+        2
+      ],
+      "concept": "ovaries"
+    },
+    {
+      "id": "posterior-fornix",
+      "name": "Posterior fornix of the vagina",
+      "accept": [
+        "posterior fornix",
+        "posterior fornix of uterus",
+        "posterior vaginal fornix",
+        "vaginal fornix",
+        "fornix"
+      ],
+      "lines": [
+        4,
+        7,
+        8
+      ],
+      "concept": "vagina-vulva",
+      "cover": true,
+      "note": "OpenStax prints 'Posterior fornix of uterus', but the fornix is the recess of the vagina around the cervix: the posterior fornix is part of the vagina, not the uterus. Covered for good and never asked (decision 48)."
+    },
+    {
+      "id": "cervix",
+      "name": "Cervix",
+      "accept": [
+        "uterine cervix",
+        "cervix of uterus"
+      ],
+      "lines": [
+        12
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "rectum",
+      "name": "Rectum",
+      "accept": [],
+      "lines": [
+        15
+      ],
+      "concept": "large-intestine-regions"
+    },
+    {
+      "id": "vagina",
+      "name": "Vagina",
+      "accept": [],
+      "lines": [
+        17
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "anus",
+      "name": "Anus",
+      "accept": [
+        "anal opening",
+        "anal canal"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "large-intestine-regions"
+    },
+    {
+      "id": "bladder",
+      "name": "Bladder",
+      "accept": [
+        "urinary bladder"
+      ],
+      "lines": [
+        3
+      ],
+      "concept": "urinary-bladder"
+    },
+    {
+      "id": "pubic-symphysis",
+      "name": "Pubic symphysis",
+      "accept": [
+        "symphysis pubis"
+      ],
+      "lines": [
+        5
+      ],
+      "concept": "pelvic-girdle"
+    },
+    {
+      "id": "mons-pubis",
+      "name": "Mons pubis",
+      "accept": [
+        "mons",
+        "mons veneris"
+      ],
+      "lines": [
+        10
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "urethra",
+      "name": "Urethra",
+      "accept": [
+        "female urethra"
+      ],
+      "lines": [
+        14
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "clitoris",
+      "name": "Clitoris",
+      "accept": [
+        "glans clitoris"
+      ],
+      "lines": [
+        16
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "labia-minora-lateral",
+      "name": "Labia minora",
+      "accept": [
+        "labium minora",
+        "labium minus",
+        "labia minora",
+        "inner labia"
+      ],
+      "lines": [
+        18,
+        19
+      ],
+      "concept": "vagina-vulva",
+      "note": "OpenStax prints 'Labium minora'; the singular is labium minus and the plural labia minora. Named correctly here; the printed form is accepted."
+    },
+    {
+      "id": "labia-majora-lateral",
+      "name": "Labia majora",
+      "accept": [
+        "labium majora",
+        "labium majus",
+        "labia majora",
+        "outer labia"
+      ],
+      "lines": [
+        21,
+        22
+      ],
+      "concept": "vagina-vulva",
+      "note": "OpenStax prints 'Labium majora'; the singular is labium majus and the plural labia majora. Named correctly here; the printed form is accepted."
+    },
+    {
+      "id": "ovary-anterior",
+      "name": "Ovary",
+      "accept": [
+        "ovaries"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "ovaries"
+    },
+    {
+      "id": "fimbriae",
+      "name": "Fimbriae",
+      "accept": [
+        "fimbria"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "uterine-tubes"
+    },
+    {
+      "id": "ovarian-ligament",
+      "name": "Ovarian ligament",
+      "accept": [
+        "ligament of the ovary",
+        "ovarian ligaments"
+      ],
+      "lines": [
+        28,
+        29
+      ],
+      "concept": "ovaries"
+    },
+    {
+      "id": "uterus-anterior",
+      "name": "Uterus",
+      "accept": [
+        "womb"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "broad-ligament",
+      "name": "Broad ligament",
+      "accept": [
+        "broad ligaments"
+      ],
+      "lines": [
+        32,
+        34
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "uterine-tube",
+      "name": "Uterine tube (oviduct)",
+      "accept": [
+        "uterine tube",
+        "uterine tubes",
+        "oviduct",
+        "oviducts",
+        "fallopian tube",
+        "fallopian tubes"
+      ],
+      "lines": [
+        33,
+        35,
+        36
+      ],
+      "concept": "uterine-tubes"
+    },
+    {
+      "id": "cervix-anterior",
+      "name": "Cervix",
+      "accept": [
+        "uterine cervix",
+        "cervix of uterus"
+      ],
+      "lines": [
+        38
+      ],
+      "concept": "uterus"
+    },
+    {
+      "id": "labia-minora",
+      "name": "Labia minora",
+      "accept": [
+        "labium minus",
+        "labium minora",
+        "inner labia"
+      ],
+      "lines": [
+        37,
+        39
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "vagina-anterior",
+      "name": "Vagina",
+      "accept": [],
+      "lines": [
+        40
+      ],
+      "concept": "vagina-vulva"
+    },
+    {
+      "id": "labia-majora",
+      "name": "Labia majora",
+      "accept": [
+        "labium majus",
+        "labium majora",
+        "outer labia"
+      ],
+      "lines": [
+        41,
+        42
+      ],
+      "concept": "vagina-vulva"
+    }
+  ]
+}

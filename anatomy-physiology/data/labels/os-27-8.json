@@ -1,0 +1,139 @@
+{
+  "figure": "os-27-8",
+  "labels": [
+    {
+      "id": "gnrh",
+      "name": "GnRH",
+      "accept": [
+        "gonadotropin-releasing hormone"
+      ],
+      "lines": [
+        4
+      ],
+      "concept": "releasing-hormones"
+    },
+    {
+      "id": "fsh-release",
+      "name": "FSH release",
+      "accept": [
+        "fsh",
+        "follicle-stimulating hormone"
+      ],
+      "lines": [
+        11
+      ],
+      "concept": "anterior-pituitary-hormones"
+    },
+    {
+      "id": "lh-release",
+      "name": "LH release",
+      "accept": [
+        "lh",
+        "luteinizing hormone"
+      ],
+      "lines": [],
+      "box": [
+        538,
+        409,
+        93,
+        26
+      ],
+      "concept": "anterior-pituitary-hormones"
+    },
+    {
+      "id": "leydig-cells",
+      "name": "Leydig (interstitial) cells",
+      "accept": [
+        "leydig cells",
+        "leydig cell",
+        "interstitial cells",
+        "interstitial cell",
+        "interstitial endocrine cells"
+      ],
+      "lines": [
+        20
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "interstitial-space",
+      "name": "Interstitial space",
+      "accept": [
+        "interstitium",
+        "interstitial tissue"
+      ],
+      "lines": [
+        26,
+        28
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "seminiferous-tubule",
+      "name": "Seminiferous tubule",
+      "accept": [
+        "seminiferous tubules"
+      ],
+      "lines": [
+        31,
+        32
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "sertoli-cell",
+      "name": "Sertoli cell",
+      "accept": [
+        "sertoli cells",
+        "sustentacular cell",
+        "sustentacular cells",
+        "nurse cell"
+      ],
+      "lines": [
+        33
+      ],
+      "concept": "sustentacular-cells"
+    },
+    {
+      "id": "inhibin-release",
+      "name": "Inhibin release",
+      "accept": [
+        "inhibin"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "hpg-male"
+    },
+    {
+      "id": "androgen-binding-protein",
+      "name": "Androgen-binding protein (ABP) release",
+      "accept": [
+        "androgen-binding protein",
+        "abp",
+        "androgen binding protein"
+      ],
+      "lines": [
+        34,
+        35
+      ],
+      "concept": "sustentacular-cells",
+      "note": "OpenStax prints 'Androgen-binding protein (ABP) release' with an arrow running on to 'Testosterone release', which reads as if ABP triggers testosterone release. Sertoli cells secrete ABP into the tubule, where it binds testosterone made by the Leydig cells and keeps its concentration high; it does not cause testosterone release. The label names the protein correctly and is kept."
+    },
+    {
+      "id": "testosterone-release",
+      "name": "Testosterone release",
+      "accept": [
+        "testosterone"
+      ],
+      "lines": [],
+      "box": [
+        714,
+        700,
+        111,
+        39
+      ],
+      "concept": "gonadal-hormones"
+    }
+  ]
+}

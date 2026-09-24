@@ -1,0 +1,47 @@
+{
+  "topic": "fertilization",
+  "hook": "<p>Priya and her husband have been trying to conceive for two years. His semen analysis shows plenty of sperm that swim well, but under the microscope their heads are round and smooth: they have no acrosome. At their fertility clinic, sperm placed around her oocytes never get in. When an embryologist injects a single sperm straight into each oocyte, three of them start dividing. To see why the injection worked when swimming could not, you need the steps a sperm has to pass through to fertilize an oocyte.</p>",
+  "prereq": [
+    {
+      "q": "A human oocyte has 23 chromosomes and a sperm has 23. What are the two gametes called, and what will the cell they form be?",
+      "options": ["Both haploid; the new cell will be diploid", "Both diploid; the new cell will be haploid", "Both diploid; the new cell will have 92 chromosomes"],
+      "correct": 0,
+      "why": "Gametes are haploid: one set of 23 chromosomes. Two haploid gametes together restore the diploid number, 46.",
+      "review": "meiosis"
+    },
+    {
+      "q": "What is the acrosome of a sperm?",
+      "options": ["The mitochondria-packed midpiece that powers the tail", "A cap-like sac of digestive enzymes over the front of the nucleus", "The protein coat that holds the sperm's DNA tightly"],
+      "correct": 1,
+      "why": "The acrosome is a sac of digestive enzymes, made from the Golgi apparatus, that sits over the front of the sperm's head.",
+      "review": "male-physiology"
+    },
+    {
+      "q": "At what stage is the oocyte paused when it is released at ovulation?",
+      "options": ["Prophase I, as a primary oocyte", "Metaphase II, as a secondary oocyte", "Finished meiosis, as a mature ovum"],
+      "correct": 1,
+      "why": "Just before ovulation the primary oocyte finishes meiosis I. The secondary oocyte then starts meiosis II and pauses at metaphase II; it finishes only if a sperm enters.",
+      "review": "ovarian-cycle"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-28-2",
+    "caption": "A sperm crossing the corona radiata and the zona pellucida to reach the oocyte's plasma membrane. Hide the labels and name the two layers around the oocyte, from outside in."
+  },
+  "chain": [
+    { "cause": "Sperm spend several hours in the fluids of the uterus and uterine tube, which strip cholesterol from their membranes and let calcium and bicarbonate in.", "effect": "The sperm capacitate: their tails switch to hyperactivated beating and their acrosomes become ready to release enzymes." },
+    { "cause": "Capacitated sperm reach the oocyte in the ampulla and push through the corona radiata, helped by hyaluronidase on their heads.", "effect": "Calcium rises in the sperm head and the acrosomal reaction releases acrosin and other enzymes." },
+    { "cause": "The released enzymes and the sperm's forceful beating cut a tunnel through the zona pellucida.", "effect": "One sperm reaches the oocyte's plasma membrane, binds it and fuses with it, and its nucleus enters." },
+    { "cause": "An enzyme carried in by the sperm sets off waves of calcium release inside the oocyte.", "effect": "Cortical granules release their contents, which alter the zona pellucida so no other sperm can bind: the block to polyspermy." },
+    { "cause": "The same calcium waves release the oocyte from its pause at metaphase II.", "effect": "Meiosis II finishes with a second polar body, two haploid pronuclei form and copy their DNA, and their chromosomes combine into the diploid zygote." }
+  ],
+  "misconception": {
+    "wrong": "The first sperm to reach the oocyte is the one that fertilizes it.",
+    "right": "The first sperm to arrive, some within minutes of intercourse, have not yet capacitated, and an uncapacitated sperm cannot fertilize. Fertilization needs a sperm that has spent hours in the female tract and is ready at the moment it meets the oocyte. The fertilizing sperm is usually one that was held in the tube's reservoir and released later. Speed matters far less than timing."
+  },
+  "check": ["anp-fertilization-1", "anp-fertilization-2", "anp-fertilization-5", "anp-fertilization-7", "anp-fertilization-9", "anp-fertilization-12", "anp-fertilization-16"],
+  "summary": "<p>Fertilization normally happens in the ampulla of the uterine tube. The oocyte lives 12 to 24 hours after ovulation and sperm up to about five days, so the fertile window is about six days. Sperm must capacitate for several hours in the female tract, losing membrane cholesterol, taking in calcium and switching to hyperactivated motility. They pass the corona radiata, and the acrosomal reaction releases enzymes that cut through the zona pellucida. One sperm fuses with the oocyte and triggers calcium waves. These cause the cortical reaction, which changes the zona so no other sperm can bind (the block to polyspermy), and they restart meiosis II, which ends with a second polar body. The two pronuclei combine their chromosomes to form the diploid zygote, whose genetic sex is set by the sperm's X or Y.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" }
+  ]
+}
