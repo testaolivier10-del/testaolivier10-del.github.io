@@ -72,8 +72,8 @@ export const TABLES = [
   /* ---- Nomenclature --------------------------------------------------- */
   { id: 'suffix-prefix', topic: 'naming-functional-groups', head: ['Group', 'As suffix', 'As prefix'], key: 0,
     ask: 'Suffix as the principal group — and the prefix when it is demoted?' },
-  { id: 'common-names', topic: 'naming-functional-groups', head: ['Common name', 'Systematic name'], key: 0,
-    ask: 'Systematic (IUPAC) name?' },
+  { id: 'common-names', topic: 'naming-functional-groups', head: ['Common name', 'Systematic name', 'Preferred IUPAC name (2013)'], key: 0,
+    ask: 'Systematic name, and the preferred IUPAC name?' },
 
   /* ---- Acids & bases -------------------------------------------------- */
   { id: 'pka', topic: 'pka', head: ['Acid', 'pKa', 'Conjugate base'], key: 0,
