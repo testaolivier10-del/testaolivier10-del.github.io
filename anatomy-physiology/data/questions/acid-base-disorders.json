@@ -63,7 +63,7 @@
     "diff": 3,
     "core": ["homeostasis", "interdependence"],
     "q": "Priya has lived at a research station at 4,300 m for three weeks. Her ABG: pH 7.44, PaCO2 32 mm Hg, HCO3− 21 mmol/L. How do you classify it?",
-    "options": ["No acid–base disorder, because the pH is normal", "Fully compensated metabolic acidosis", "Partially compensated respiratory alkalosis", "Fully compensated respiratory alkalosis"],
+    "options": ["No acid–base disorder", "Fully compensated metabolic acidosis", "Partially compensated respiratory alkalosis", "Fully compensated respiratory alkalosis"],
     "correct": 3,
     "why": {
       "correct": "The pH is within range but on the alkaline side of 7.40. Low PaCO2 pushes toward alkaline and matches that side, so the primary disorder is respiratory alkalosis, from the extra breathing that low oxygen drives. Bicarbonate has fallen with it, from weeks of kidney bicarbonate loss, and pH is back in range: fully compensated.",
@@ -393,7 +393,7 @@
     "core": ["homeostasis"],
     "misconception": "a normal pH means no acid–base disorder",
     "q": "A man with long-standing COPD has an ABG of pH 7.37, PaCO2 56 mm Hg and HCO3− 31 mmol/L. How do you classify it?",
-    "options": ["Fully compensated respiratory acidosis", "Normal: the pH is within 7.35 to 7.45", "Fully compensated metabolic alkalosis", "Partially compensated respiratory acidosis"],
+    "options": ["Fully compensated respiratory acidosis", "No acid–base disorder", "Fully compensated metabolic alkalosis", "Partially compensated respiratory acidosis"],
     "correct": 0,
     "why": {
       "correct": "The pH is within range but on the acid side of 7.40. High PaCO2 pushes toward acid and matches that side, so it is the primary disorder. Bicarbonate has risen with it, from days of renal compensation, and the pH is back in range: fully compensated respiratory acidosis.",

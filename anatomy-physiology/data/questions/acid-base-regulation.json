@@ -280,13 +280,13 @@
     "diff": 3,
     "core": ["interdependence"],
     "q": "The bicarbonate buffer works best near pH 6.1, far from blood pH 7.4. Why is it still the most important buffer of the extracellular fluid?",
-    "options": ["It releases more hydrogen ions than any other buffer", "It is the only buffer present in plasma", "The lungs adjust one of its partners and the kidneys the other", "Carbonic anhydrase turns it into a strong acid at the pH of blood"],
+    "options": ["It releases more hydrogen ions than any other buffer", "It binds hydrogen ions more tightly than any other buffer", "The lungs adjust one of its partners and the kidneys the other", "Carbonic anhydrase turns it into a strong acid at the pH of blood"],
     "correct": 2,
     "why": {
       "correct": "Carbon dioxide, its acid end, is removed by the lungs, and bicarbonate, its base end, is adjusted by the kidneys. A buffer whose partners can be topped up or drained keeps working long after a closed buffer would be used up.",
       "options": [
         "A buffer's value lies in holding pH steady, not in releasing hydrogen ions. Carbonic acid is a weak acid.",
-        "Plasma also holds protein and a little phosphate buffer. Bicarbonate is the main one, not the only one.",
+        "Its low pK of 6.1 means bicarbonate holds hydrogen ions less tightly than the histidine side chains of proteins, not more. Its strength lies elsewhere.",
         "Correct. Both partners can be adjusted, which makes it an open system.",
         "Carbonic anhydrase speeds the reaction in whichever direction concentrations push it. It does not change the strength of the acid."
       ]
