@@ -278,7 +278,7 @@ FIGURES.push({
     }
     // Nitrile: acrylonitrile, CH2=CH–C≡N.
     {
-      const x = 386, y = 234, cx = x + 180, cy = y + 106;
+      const x = 386, y = 234, cx = x + 180, cy = y + 116;
       box(x, y, 'Nitrile', 'acrylonitrile, CH₂=CHCN');
       const C1 = P(cx - 96, cy + 12), C2 = at(C1, -30, 50), C3 = at(C2, 30, 50), N = at(C3, 30, 64);
       const A = {
@@ -291,7 +291,7 @@ FIGURES.push({
         lp: [['n', 30]],
         hl: [{ atoms: ['c', 'n'], bonds: [['c', 'n']] }],
       });
-      s += good(cx, y + 196, 'the C≡N is the group (its C=C is an alkene)');
+      s += good(cx, y + 199, 'the C≡N is the group (its C=C is an alkene)');
     }
     return s;
   },
@@ -329,7 +329,7 @@ FIGURES.push({
         A.r = { ...at(A.x, 150, 50), l: 'R' };
         A.t = { ...at(A.x, 30, t.tail === 'H' ? 42 : 50), l: t.tail };
         B.push(['r', 'x'], ['x', 't']);
-        lp.push(['x', 225], ['x', 315]);
+        lp.push(['x', 195], ['x', 345]);
       }
       s += mol({ atoms: A, bonds: B, lp, hl: [{ atoms: ['x'] }] });
       s += small(cx, 172, t.ex);
@@ -424,10 +424,10 @@ FIGURES.push({
 const CARB = [
   { name: 'Aldehyde',        X: 'H',   what: 'attached: H',               lp: [] },
   { name: 'Ketone',          X: 'R′',  what: 'attached: a second carbon', lp: [] },
-  { name: 'Carboxylic acid', X: 'OH',  what: 'attached: OH',              lp: [335, 95] },
-  { name: 'Ester',           X: 'OR′', what: 'attached: O–carbon',        lp: [335, 95] },
-  { name: 'Amide',           X: 'NH₂', what: 'attached: N',               lp: [95], more: 'NH₂, NHR′ or NR′₂' },
-  { name: 'Acid chloride',   X: 'Cl',  what: 'attached: Cl',              lp: [305, 35, 125] },
+  { name: 'Carboxylic acid', X: 'OH',  what: 'attached: OH',              lp: [300, 30] },
+  { name: 'Ester',           X: 'OR′', what: 'attached: O–carbon',        lp: [300, 30] },
+  { name: 'Amide',           X: 'NH₂', what: 'attached: N',               lp: [350], more: 'NH₂, NHR′ or NR′₂' },
+  { name: 'Acid chloride',   X: 'Cl',  what: 'attached: Cl',              lp: [285, 345, 45] },
 ];
 function carbonyl(cx, cy, c) {
   const C = P(cx, cy), O = P(cx, cy - 54), R = P(cx - 48, cy + 34), Xp = P(cx + 48, cy + 34);
@@ -566,7 +566,7 @@ function threeFormulas(cell) {
     const [cx, cy] = pan(2, 'CH₃OCH₃', 'ether: C–O–C, no C=O');
     const O = P(cx, cy - 8);
     const A = { o: { ...O, l: 'O', k: 'warn' }, a: { ...at(O, 150, 54), l: 'CH₃' }, b: { ...at(O, 30, 54), l: 'CH₃' } };
-    s += mol({ atoms: A, bonds: [['o', 'a'], ['o', 'b']], lp: [['o', 225], ['o', 315]] });
+    s += mol({ atoms: A, bonds: [['o', 'a'], ['o', 'b']], lp: [['o', 195], ['o', 345]] });
   }
   return s;
 }
