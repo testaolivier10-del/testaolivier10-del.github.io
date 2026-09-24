@@ -61,6 +61,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/lymph-immune.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/nervous-tissue.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -102,7 +107,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/energy.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -127,7 +132,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/mass-balance.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -181,6 +186,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/adaptive-immunity.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/adrenal-glands.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -202,6 +212,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/ans-signaling.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/antibody-immunity.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -308,6 +323,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cell-junctions.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/cell-mediated-immunity.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -441,6 +461,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/immune-disorders.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/innate-immunity.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/leukocytes-platelets.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -453,6 +483,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/lung-volumes.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/lymphatic-system.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -562,7 +597,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/systemic-veins.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -631,6 +666,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/adaptive-immunity.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/adrenal-glands.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -652,6 +692,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/ans-signaling.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/antibody-immunity.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -722,7 +767,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/brain-regions.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -758,6 +803,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/cell-junctions.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/cell-mediated-immunity.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -891,6 +941,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/immune-disorders.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/innate-immunity.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/leukocytes-platelets.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -902,6 +962,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/lung-volumes.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/lymphatic-system.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -1012,7 +1077,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/systemic-veins.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>

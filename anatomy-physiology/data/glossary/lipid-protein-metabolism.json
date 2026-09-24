@@ -1,0 +1,37 @@
+{
+  "lipolysis": {
+    "def": "The hydrolysis of stored triglycerides into glycerol and fatty acids inside fat cells. Epinephrine, norepinephrine, cortisol and growth hormone switch it on; insulin switches it off.",
+    "roots": [["lip-", "fat"], ["-lysis", "splitting"]],
+    "say": "lih-POL-ih-sis"
+  },
+  "beta-oxidation": {
+    "def": "The breakdown of a fatty acid inside mitochondria, two carbons at a time, into acetyl CoA; each turn also makes one FADH2 and one NADH. It needs oxygen, because the carriers must be reoxidized by the electron transport chain.",
+    "roots": [["beta", "second letter of the Greek alphabet: the carbon being oxidized"]],
+    "say": "BAY-tuh"
+  },
+  "ketogenesis": {
+    "def": "The liver's conversion of excess acetyl CoA into ketone bodies (acetoacetate, beta-hydroxybutyrate and a little acetone), which other tissues burn. A raised blood level is ketosis; enough to acidify the blood is ketoacidosis.",
+    "roots": [["ket-", "ketone"], ["-genesis", "making"], ["-osis", "condition"]],
+    "say": "kee-toh-JEN-eh-sis"
+  },
+  "lipogenesis": {
+    "def": "The building of fatty acids and triglycerides from acetyl CoA, mainly in the liver and adipose tissue when fuel is plentiful and insulin is high.",
+    "roots": [["lip-", "fat"], ["-genesis", "making"]],
+    "say": ""
+  },
+  "lipoproteins": {
+    "def": "Particles that carry lipids in the blood: a core of triglycerides and cholesterol inside a shell of phospholipids and apolipoproteins. VLDL carries liver-made triglycerides, which lipoprotein lipase unloads into tissues; LDL carries cholesterol to cells; HDL returns cholesterol to the liver.",
+    "roots": [["lipo-", "fat"]],
+    "say": ""
+  },
+  "amino-acid-metabolism": {
+    "def": "The handling of amino acids beyond protein building. Transamination moves each amino group onto glutamate; deamination in the liver releases it as ammonia; the carbon skeleton is burned or made into glucose (glucogenic amino acids) or into ketone bodies or fat (ketogenic amino acids).",
+    "roots": [["trans-", "across"], ["de-", "remove"], ["-genic", "producing"]],
+    "say": ""
+  },
+  "urea-cycle": {
+    "def": "A loop of reactions in liver cells that combines ammonia, bicarbonate and a nitrogen from aspartate into urea, spending 3 ATP per urea. Urea is far less toxic than ammonia and is excreted by the kidneys.",
+    "roots": [["ur-", "urine"]],
+    "say": "yoo-REE-uh"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "topic": "lipid-protein-metabolism",
+  "hook": "<p>Jordan, 14, has lost 5 kg in a month, drinks water constantly, and has been vomiting since last night. In the emergency department he is breathing deeply and fast, and his breath smells like nail-polish remover. His blood glucose is 480 mg/dL, his blood pH is 7.12, and a urine strip turns dark purple for ketones. His pancreas has stopped making insulin, and without it, his fat is being burned faster than his body can handle the products.</p>",
+  "prereq": [
+    {
+      "q": "What is a triglyceride made of?",
+      "options": ["One glycerol joined to three fatty acids", "Three glucose units in a chain", "One fatty acid joined to three glycerols"],
+      "correct": 0,
+      "why": "A triglyceride is one glycerol with three fatty acids attached by dehydration synthesis.",
+      "review": "biomolecules"
+    },
+    {
+      "q": "Which step of glucose breakdown cannot run backward, so its product can never be turned into glucose?",
+      "options": ["Glucose to glucose-6-phosphate", "Pyruvate to acetyl CoA", "Citrate to isocitrate"],
+      "correct": 1,
+      "why": "The enzyme complex that turns pyruvate into acetyl CoA works in one direction only, so carbon that reaches acetyl CoA cannot be made into glucose.",
+      "review": "carbohydrate-metabolism"
+    },
+    {
+      "q": "Which blood pH is acidosis?",
+      "options": ["7.40", "7.45", "7.20"],
+      "correct": 2,
+      "why": "Normal blood pH is 7.35 to 7.45. Below 7.35 is acidosis.",
+      "review": "acids-bases-ph"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-24-12",
+    "caption": "The structure of a lipoprotein. Hide the labels and name the molecules of the shell, the proteins embedded in it, and the fuel packed in the core."
+  },
+  "chain": [
+    { "cause": "Insulin is almost absent, as in untreated type 1 diabetes, and glucagon is high.", "effect": "Nothing holds back lipolysis, so adipose tissue releases fatty acids into the blood at a high rate." },
+    { "cause": "The liver takes up the flood of fatty acids and runs beta oxidation at full speed.", "effect": "Acetyl CoA is made faster than the citric acid cycle can use it, especially as oxaloacetate is drawn off for gluconeogenesis." },
+    { "cause": "Acetyl CoA piles up in liver mitochondria.", "effect": "The liver turns it into ketone bodies (acetoacetate and beta-hydroxybutyrate) and releases them far faster than other tissues burn them." },
+    { "cause": "Ketone bodies are acids and give up their H+ in the blood.", "effect": "Bicarbonate is used up and blood pH falls: ketoacidosis, with deep rapid breathing and acetone on the breath." }
+  ],
+  "misconception": {
+    "wrong": "When you run out of glucose, your body turns stored fat into glucose.",
+    "right": "Only the small glycerol part of a triglyceride can become glucose. Fatty acids, which carry nearly all the energy in fat, are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward. So the glucose made when glycogen runs out comes from glycerol, lactate and, above all, amino acids from muscle protein. Fat's contribution is indirect: fatty acids fuel most other tissues, and the liver makes ketone bodies that the brain can use, which spares glucose and protein."
+  },
+  "check": ["anp-lipid-protein-metabolism-1", "anp-lipid-protein-metabolism-4", "anp-lipid-protein-metabolism-7", "anp-lipid-protein-metabolism-9", "anp-lipid-protein-metabolism-12", "anp-lipid-protein-metabolism-15", "anp-lipid-protein-metabolism-18"],
+  "summary": "<p>Lipolysis splits stored triglycerides into glycerol, which the liver can make into glucose, and fatty acids, which travel on albumin; epinephrine, cortisol and growth hormone switch it on and insulin switches it off. Beta oxidation in mitochondria cuts fatty acids into acetyl CoA two carbons at a time, making FADH2 and NADH each turn; a 16-carbon fatty acid yields about 106 ATP, and fat can be burned only with oxygen. When acetyl CoA piles up in the liver, ketogenesis turns it into ketone bodies (acetoacetate, beta-hydroxybutyrate and a little acetone) that heart, muscle and, after a few days, brain can burn. Ketosis is normal; ketoacidosis, from nearly absent insulin, acidifies the blood. Lipogenesis builds fatty acids from acetyl CoA when insulin is high. Lipoproteins carry lipids in blood: chylomicrons and VLDL deliver triglycerides through lipoprotein lipase, LDL delivers cholesterol and causes atherosclerosis, and HDL returns cholesterol to the liver. Amino acids lose their nitrogen by transamination and deamination; the toxic ammonia is made into urea by the urea cycle in the liver and excreted by the kidneys. Glucogenic amino acids can become glucose; fatty acids and ketogenic amino acids cannot.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-22", "label": "NREMT: Diabetic emergencies" },
+    { "href": "/ochem/lessons/lipids.html", "label": "Organic chemistry: Lipids" },
+    { "href": "/ochem/lessons/amino-acids.html", "label": "Organic chemistry: Amino acids" }
+  ]
+}

@@ -1,0 +1,580 @@
+[
+  {
+    "id": "anp-lipid-protein-metabolism-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "q": "Stearic acid has 18 carbons. Using 2.5 ATP per NADH, 1.5 per FADH2, 10 per acetyl CoA and an activation cost of 2 ATP, how much ATP does its complete oxidation yield?",
+    "options": [
+      "90 ATP",
+      "106 ATP",
+      "120 ATP",
+      "122 ATP"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "18 carbons give 9 acetyl CoA in 8 turns. Beta oxidation: 8 FADH2 × 1.5 = 12 and 8 NADH × 2.5 = 20. Citric acid cycle: 9 × 10 = 90. Total 12 + 20 + 90 = 122, minus 2 for activation = 120 ATP.",
+      "options": [
+        "90 counts only the acetyl CoA passing through the citric acid cycle, leaving out the NADH and FADH2 made by beta oxidation itself.",
+        "106 is the yield for 16-carbon palmitic acid. Stearic acid has one more turn and one more acetyl CoA.",
+        "Correct. 12 + 20 + 90 − 2 = 120 ATP.",
+        "122 forgets the 2 ATP spent activating the fatty acid."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A 12-carbon fatty acid is broken down completely by beta oxidation. How many turns does it take, and how many acetyl CoA does it give?",
+    "options": [
+      "6 turns; 6 acetyl CoA",
+      "6 turns; 12 acetyl CoA",
+      "5 turns; 6 acetyl CoA",
+      "5 turns; 5 acetyl CoA"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each acetyl CoA holds 2 carbons, so 12 carbons give 6 acetyl CoA. Each turn cuts off one acetyl CoA, but the last turn splits a four-carbon piece into two, so only 5 turns are needed.",
+      "options": [
+        "6 acetyl CoA is right, but the last turn yields two acetyl CoA at once, so it takes 5 turns, not 6.",
+        "Each acetyl CoA carries 2 carbons, so 12 carbons make 6, not 12.",
+        "Correct. 12 ÷ 2 = 6 acetyl CoA, in 6 − 1 = 5 turns.",
+        "5 turns is right, but the final turn leaves two acetyl CoA, making 6 in all."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-3",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy",
+      "interdependence"
+    ],
+    "q": "After several days without food, a person's brain gets much of its energy from ketone bodies. Why can't it simply burn the fatty acids that are plentiful in the blood?",
+    "options": [
+      "Neurons have no mitochondria in which to run beta oxidation",
+      "Fatty acids are toxic to astrocytes at any level",
+      "Ketone bodies hold more energy per gram than fatty acids",
+      "The brain takes up very little fatty acid from the blood"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Fatty acids travel on albumin and cross into the brain only in small amounts, so the brain cannot rely on them. Ketone bodies are small and water-soluble, and the brain takes them up readily once blood levels rise.",
+      "options": [
+        "Neurons have many mitochondria; they burn glucose and ketone bodies aerobically.",
+        "Fatty acids are not simply toxic to the brain; the limit is how little reaches it.",
+        "Ketone bodies are partly oxidized fatty acid products, so they hold less energy per gram than fatty acids, not more.",
+        "Correct. Little fatty acid reaches brain cells, so the liver's ketone bodies stand in."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-4",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "energy"
+    ],
+    "q": "A 14-year-old with undiagnosed type 1 diabetes has had almost no insulin for several days. Predict the change in each variable, compared with a healthy teenager.",
+    "variables": [
+      {
+        "name": "Lipolysis in adipose tissue",
+        "answer": "up",
+        "why": "Insulin normally holds lipolysis back; with none, and with glucagon high, fatty acids pour out of fat cells."
+      },
+      {
+        "name": "Ketone bodies in the blood",
+        "answer": "up",
+        "why": "The liver's beta oxidation makes acetyl CoA faster than its citric acid cycle can use it, and it turns the excess into ketone bodies."
+      },
+      {
+        "name": "Blood bicarbonate",
+        "answer": "down",
+        "why": "Ketone bodies release H+, and bicarbonate is used up buffering it."
+      },
+      {
+        "name": "Blood pH",
+        "answer": "down",
+        "why": "Once buffering cannot keep up with the acid, pH falls below 7.35: ketoacidosis."
+      },
+      {
+        "name": "Depth and rate of breathing",
+        "answer": "up",
+        "why": "Low blood pH stimulates chemoreceptors, which drive deep, rapid breathing that blows off CO2."
+      },
+      {
+        "name": "Blood glucose",
+        "answer": "up",
+        "why": "Without insulin, muscle and fat take up little glucose, and the liver keeps releasing it."
+      }
+    ],
+    "why": {
+      "correct": "Across the endocrine, metabolic and respiratory systems: no insulin means unchecked lipolysis and high glucagon, so the liver makes ketone bodies at its maximum rate. Their acid uses up bicarbonate and lowers pH, and the respiratory system responds with deep, fast breathing. Glucose is high at the same time because insulin-driven uptake has stopped."
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-5",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Jordan, 14, arrives with vomiting, deep rapid breathing and a blood glucose of 480 mg/dL. His breath smells like nail-polish remover. Which molecule causes the smell, and where does it come from?",
+    "options": [
+      "Beta-hydroxybutyrate, released by muscle",
+      "Ammonia, released by the liver as amino acids break down",
+      "Acetone, formed from acetoacetate made in the liver",
+      "Glucose, leaving the blood through the lungs"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Some of the acetoacetate the liver makes loses CO2 on its own and becomes acetone. Acetone is volatile, so it leaves in the breath and gives the fruity, nail-polish smell.",
+      "options": [
+        "Beta-hydroxybutyrate is the main ketone body in blood, but it is made by the liver, not muscle, and it is not volatile.",
+        "Ammonia has a sharp smell, but it is made into urea by the liver; the fruity smell here comes from a ketone body.",
+        "Correct. Acetone from acetoacetate leaves in the breath.",
+        "Glucose does not evaporate and has no smell; high glucose is lost in urine, not breath."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "interdependence"
+    ],
+    "q": "The liver makes ketone bodies but does not burn them. Why?",
+    "options": [
+      "It lacks the enzyme to turn acetoacetate back into acetyl CoA",
+      "It has no mitochondria of its own in which to oxidize them",
+      "Ketone bodies are strong acids that liver cells cannot take up",
+      "Insulin stops the liver from using them"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The liver makes ketone bodies but lacks the enzyme needed to convert acetoacetate back to acetyl CoA. So it exports them, and heart, muscle, kidney and brain burn them instead.",
+      "options": [
+        "Correct. Missing one enzyme makes the liver a producer, not a user.",
+        "Liver cells are packed with mitochondria; ketogenesis itself happens there.",
+        "The liver releases ketone bodies rather than taking them up, and its inability to burn them is about an enzyme, not uptake.",
+        "Ketone bodies are made when insulin is low; insulin is not what stops the liver using them."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A woman on a very low-carbohydrate diet has blood ketone bodies of 1.5 mmol/L and a blood pH of 7.40. A man with untreated type 1 diabetes has ketone bodies of 12 mmol/L and a pH of 7.15. What best explains the difference?",
+    "options": [
+      "She makes a different ketone body that does not act as an acid",
+      "Her insulin still limits fat release, so production stays low",
+      "His kidneys have stopped excreting ketone bodies into the urine",
+      "Her liver cannot make ketone bodies once her blood glucose is low"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Both are making ketone bodies, the same acids. She still has insulin, which limits fat release, so ketone levels stay low enough for tissues to burn them and buffers to absorb their H+: ketosis. He has almost no insulin, so production runs far ahead of use and his pH falls: ketoacidosis.",
+      "options": [
+        "Ketosis and ketoacidosis involve the same ketone bodies, all acids; the difference is how much is made.",
+        "Correct. Insulin is the brake that keeps ketosis from becoming ketoacidosis.",
+        "His kidneys are excreting large amounts of ketone bodies; the problem is production far above what can be cleared.",
+        "Her liver is making ketone bodies, which is why her level is raised at all."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication",
+      "energy"
+    ],
+    "q": "Select every hormone that switches lipolysis on in adipose tissue.",
+    "options": [
+      "Epinephrine",
+      "Insulin",
+      "Cortisol",
+      "Growth hormone",
+      "Norepinephrine"
+    ],
+    "correct": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "Epinephrine and norepinephrine switch lipolysis on quickly through beta receptor proteins and cyclic AMP; cortisol and growth hormone raise it more slowly. Insulin switches it off, even at low levels.",
+      "options": [
+        "Correct. Epinephrine raises lipolysis within minutes, as in exercise or stress.",
+        "Insulin blocks lipolysis; it is the main brake on fat release after a meal.",
+        "Correct. Cortisol helps release fatty acids and glycerol from fat.",
+        "Correct. Growth hormone makes fat cells break down stored fat.",
+        "Correct. Norepinephrine from sympathetic nerves acts on the same beta receptor proteins as epinephrine."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "mass-balance"
+    ],
+    "q": "A statin blocks HMG CoA reductase in liver cells. Why does the LDL level in the blood fall?",
+    "options": [
+      "Liver cells short of cholesterol make more LDL receptor proteins",
+      "The liver makes fewer LDL receptor proteins, so LDL leaves the blood",
+      "The drug binds LDL particles and speeds their breakdown in the blood",
+      "Less cholesterol is absorbed from food into the blood"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Blocking HMG CoA reductase cuts cholesterol synthesis in liver cells. Short of cholesterol, the cells make more LDL receptor proteins, pull more LDL out of the blood by receptor-mediated endocytosis, and the blood level falls.",
+      "options": [
+        "Correct. The liver makes up for lost synthesis by taking cholesterol from the blood.",
+        "Fewer LDL receptor proteins would leave more LDL in the blood, not less.",
+        "Statins act on an enzyme inside liver cells, not on LDL particles in the blood.",
+        "Statins block synthesis inside cells; they do not mainly change absorption from the gut."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-10",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Which lipoprotein carries excess cholesterol from body cells back to the liver?",
+    "options": [
+      "Chylomicron",
+      "VLDL",
+      "LDL",
+      "HDL"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "HDL (high-density lipoprotein) collects excess cholesterol from cells, including those in artery walls, and returns it to the liver.",
+      "options": [
+        "Chylomicrons carry dietary triglycerides from the intestine.",
+        "VLDL carries triglycerides the liver has made out to muscle and adipose tissue.",
+        "LDL carries cholesterol out to body cells, not back to the liver.",
+        "Correct. HDL returns cholesterol to the liver."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A child is born without working lipoprotein lipase. After a fatty meal, a sample of her plasma looks milky and stays that way for hours. Which explanation fits?",
+    "options": [
+      "Her intestine cannot package dietary fat into chylomicrons",
+      "Her liver cannot take up LDL particles from the blood",
+      "Her fat cells break down their stored fat much too fast",
+      "Her chylomicrons cannot unload triglycerides into tissues"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Lipoprotein lipase on capillary walls hydrolyzes the triglycerides in chylomicrons so the fatty acids can enter muscle and fat cells. Without it, chylomicrons full of triglyceride stay in the blood, and these large particles scatter light, making plasma milky.",
+      "options": [
+        "Her plasma is milky because it is full of chylomicrons, so her intestine is making them.",
+        "A problem with LDL uptake raises cholesterol, but LDL particles are small and do not make plasma milky.",
+        "Lipolysis inside fat cells releases fatty acids bound to albumin, which do not make plasma milky.",
+        "Correct. Without the enzyme, chylomicrons cannot give up their triglycerides."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-12",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Put the steps in order to follow stored fat to ATP in a working muscle.",
+    "options": [
+      "Lipolysis in adipose tissue releases fatty acids into the blood",
+      "Fatty acids travel bound to albumin and enter the muscle cell",
+      "Carnitine carries the activated fatty acid into the mitochondrion",
+      "Beta oxidation cuts the chain into acetyl CoA, making FADH2 and NADH",
+      "Acetyl CoA enters the citric acid cycle",
+      "NADH and FADH2 drive the electron transport chain and ATP synthase"
+    ],
+    "why": {
+      "correct": "Fat is released by lipolysis, carried on albumin, activated and carried into mitochondria on carnitine, cut into acetyl CoA by beta oxidation, and oxidized in the citric acid cycle; the carriers from both drive oxidative phosphorylation."
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-13",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Put the steps in order to follow the nitrogen of an amino acid from muscle protein to urine.",
+    "options": [
+      "Transamination moves the amino group onto alpha-ketoglutarate, making glutamate",
+      "Deamination in liver mitochondria releases the amino group as ammonia",
+      "The urea cycle combines ammonia and a second nitrogen from aspartate into urea",
+      "Urea travels in the blood to the kidneys",
+      "The kidneys excrete urea in the urine"
+    ],
+    "why": {
+      "correct": "The amino group is first collected on glutamate by transamination, then released as ammonia by deamination in the liver. The urea cycle turns it into urea, which the blood carries to the kidneys for excretion."
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A man with acute viral hepatitis has blood ALT and AST levels 20 times normal. Why do these enzymes rise?",
+    "options": [
+      "Damaged liver cells leak their transaminases into the blood",
+      "The liver makes more of them to handle the extra amino acids",
+      "The virus produces transaminases as it replicates",
+      "The kidneys stop excreting them"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "ALT and AST are transaminases found in large amounts inside liver cells. When hepatitis damages those cells, the enzymes leak into the blood, so their blood levels track liver cell injury.",
+      "options": [
+        "Correct. Injured liver cells release their contents, including these enzymes.",
+        "The rise reflects leakage from injured cells, not extra production.",
+        "Viruses use the host cell's machinery; they do not make transaminases.",
+        "The rise comes from the injured liver, not from reduced removal."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-15",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "A student outlined how the body disposes of amino acid nitrogen. One step is wrong. Which one?",
+    "options": [
+      "Amino groups are collected onto glutamate by transamination",
+      "Glutamate is deaminated in the liver, releasing ammonia",
+      "The kidneys run the urea cycle, turning ammonia into urea",
+      "Urea carries two nitrogen atoms and is far less toxic than ammonia",
+      "Urea leaves the body in the urine"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The urea cycle runs in the liver, partly in its mitochondria and partly in its cytosol. The kidneys excrete the urea the liver makes; they do not make it.",
+      "options": [
+        "This step is right. Transaminases pass amino groups to alpha-ketoglutarate, making glutamate.",
+        "This step is right. Deamination in liver mitochondria releases ammonia.",
+        "This is the error. The liver, not the kidneys, runs the urea cycle.",
+        "This step is right. One nitrogen comes from ammonia and one from aspartate.",
+        "This step is right. The kidneys excrete urea."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-16",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "mass-balance",
+      "interdependence"
+    ],
+    "q": "A woman has advanced cirrhosis, and her liver cells can no longer keep up with urea synthesis. Predict the change in each variable compared with a healthy person eating the same diet.",
+    "variables": [
+      {
+        "name": "Ammonia in the blood",
+        "answer": "up",
+        "why": "Ammonia from amino acid breakdown and from gut bacteria is no longer turned into urea fast enough."
+      },
+      {
+        "name": "Urea in the blood",
+        "answer": "down",
+        "why": "Less urea is being made, so less reaches the blood."
+      },
+      {
+        "name": "Alertness and clear thinking",
+        "answer": "down",
+        "why": "Ammonia reaching the brain disturbs neurotransmission and swells astrocytes, causing confusion."
+      }
+    ],
+    "why": {
+      "correct": "The urea cycle is the liver's way of detoxifying ammonia. When it fails, ammonia rises and urea falls, and the brain suffers first."
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Leucine is a purely ketogenic amino acid. What can the body make from its carbon skeleton?",
+    "options": [
+      "Glucose, by way of pyruvate",
+      "Urea, built from its carbon atoms in the liver",
+      "Acetyl CoA or ketone bodies, not glucose",
+      "Only new leucine for protein synthesis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A ketogenic amino acid's skeleton becomes acetyl CoA or acetoacetate. These can be burned, or made into ketone bodies or fat, but because acetyl CoA cannot become pyruvate, never into glucose.",
+      "options": [
+        "Glucogenic amino acids give pyruvate; leucine's skeleton does not.",
+        "Urea carries the nitrogen, not the carbon skeleton.",
+        "Correct. Ketogenic skeletons end as acetyl CoA or ketone bodies.",
+        "Leucine not needed for protein is broken down; the body keeps no store of it."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "mass-balance",
+      "energy"
+    ],
+    "misconception": "fat can be turned into glucose",
+    "q": "Which part of a stored triglyceride can the liver turn into glucose?",
+    "options": [
+      "All three fatty acids",
+      "Both the glycerol and the fatty acids",
+      "Neither part",
+      "Only the glycerol backbone"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Glycerol enters gluconeogenesis as a three-carbon sugar phosphate. Fatty acids are broken down to acetyl CoA, which cannot become pyruvate, so they cannot be made into glucose.",
+      "options": [
+        "Fatty acids end as acetyl CoA, which cannot be turned back into pyruvate or glucose.",
+        "Only glycerol can; fatty acids cannot.",
+        "Glycerol from stored fat is a real, if small, source of new glucose.",
+        "Correct. Glycerol is the only part of a triglyceride that can become glucose."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-19",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "figure": "os-24-14",
+    "q": "Use the figure. Which ketone body is made by adding hydrogen to acetoacetate?",
+    "options": [
+      "Beta-hydroxybutyrate",
+      "Acetone",
+      "HMG CoA",
+      "Acetyl CoA"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The last step shown adds two hydrogens to acetoacetate's ketone group, turning it into beta-hydroxybutyrate, the main ketone body in the blood.",
+      "options": [
+        "Correct. Beta-hydroxybutyrate is the reduced form of acetoacetate.",
+        "Acetone forms when acetoacetate loses CO2, not when it gains hydrogen, and it is not drawn in this figure.",
+        "HMG CoA comes before acetoacetate in the pathway, not after it.",
+        "Acetyl CoA is the starting material, at the far left."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-20",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "mass-balance"
+    ],
+    "q": "Fill the gap: amino acid → transamination → glutamate → ____ → ammonia → urea cycle.",
+    "options": [
+      "Deamination",
+      "Lipolysis",
+      "Beta oxidation",
+      "Lipogenesis"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Deamination removes the amino group from glutamate as ammonia, in liver mitochondria.",
+      "options": [
+        "Correct. Deamination releases the amino group as ammonia.",
+        "Lipolysis splits triglycerides, not amino acids.",
+        "Beta oxidation breaks down fatty acids.",
+        "Lipogenesis builds fatty acids and triglycerides."
+      ]
+    }
+  },
+  {
+    "id": "anp-lipid-protein-metabolism-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "communication"
+    ],
+    "q": "For a week, a man eats far more carbohydrate than he burns. Which change in his liver turns the extra glucose into fat?",
+    "options": [
+      "Glucagon switches on beta oxidation in the liver",
+      "Cortisol switches on lipolysis in adipose tissue",
+      "Epinephrine switches on ketogenesis in the liver's mitochondria",
+      "Insulin switches on the first step of fat synthesis"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "High insulin after carbohydrate meals switches on the enzyme that makes malonyl CoA from acetyl CoA, the committed step of lipogenesis. Glucose carbon passes through acetyl CoA and citrate into new fatty acids, which the liver packs into VLDL for storage in adipose tissue.",
+      "options": [
+        "Glucagon is low when carbohydrate is plentiful, and beta oxidation breaks fat down rather than building it.",
+        "Lipolysis releases stored fat; it does not build new fat.",
+        "Ketogenesis runs when insulin is low and fat breakdown is fast, not when carbohydrate is plentiful.",
+        "Correct. Insulin drives lipogenesis."
+      ]
+    }
+  }
+]

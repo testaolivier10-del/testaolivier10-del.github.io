@@ -1,0 +1,34 @@
+{
+  "os-24-12": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.12",
+      "section": "24.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/8efe4a8994fcf89a6e1dbcfcf49c4183e66ef958",
+      "page": "24-3-lipid-metabolism"
+    },
+    "alt": "A cutaway drawing of a round lipid particle, shown half as a solid ball and half as a cross-section. The outer shell is a single layer of phospholipids, drawn as white heads facing outward with short tails pointing inward. Large blue proteins sit embedded in the shell, labeled as embedded apolipoproteins. The core, seen in the cut half, is packed with pale yellow rods and strands labeled as triglycerides.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.12",
+    "labels": [],
+    "w": 1100,
+    "h": 879,
+    "ext": "jpg"
+  },
+  "os-24-14": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "24.14",
+      "section": "24.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e3bfec0963e339f0391b5bed0ab4893b13b0c4b1",
+      "page": "24-3-lipid-metabolism"
+    },
+    "alt": "A reaction pathway drawn as chemical structures from left to right. Two acetyl CoA molecules join to form acetoacetyl CoA, a four-carbon chain still attached to coenzyme A. Several arrows lead to a six-carbon molecule labeled beta-hydroxy-beta-methylglutaryl CoA, or HMG CoA. Removing the part attached to coenzyme A leaves acetoacetate, a four-carbon molecule with a carboxylate group at one end and a ketone group near the other. Adding two hydrogen atoms to that ketone group turns acetoacetate into beta-hydroxybutyrate.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 24.14",
+    "labels": [],
+    "w": 1100,
+    "h": 315,
+    "ext": "jpg"
+  }
+}

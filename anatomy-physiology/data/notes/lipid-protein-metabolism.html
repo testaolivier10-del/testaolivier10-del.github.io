@@ -1,0 +1,252 @@
+<p>Glucose is only part of the story. Most of the energy you store is fat, and every day you break down and rebuild a few hundred grams of protein. This page covers fat metabolism from storage to ATP: lipolysis, beta oxidation, ketone bodies and ketogenesis, and the building of fat (lipogenesis); how lipoproteins such as LDL and HDL carry fat and cholesterol in the blood; and protein metabolism: how amino acids are broken down and how the urea cycle turns their nitrogen into a waste your kidneys can excrete.</p>
+
+<h2>Fat is your main energy store</h2>
+<p>A lean 70 kg adult carries about 12 kg of fat. At 9 kcal per gram, that is roughly 100,000 kcal, enough to fuel several weeks without food. The same person's glycogen, about 500 g in liver and muscle, holds about 2,000 kcal: less than one day's needs.</p>
+<p>Fat is stored as triglycerides inside adipocytes, the fat cells of adipose tissue. To be used, it has to be released from those cells, carried in the blood, taken into mitochondria and broken down to acetyl CoA, which enters the same citric acid cycle as glucose does. The route is in <a class="figref" href="#fig-fat-atp">Figure 1</a>.</p>
+
+<h2>Lipolysis: releasing stored fat</h2>
+<p><em>Lipolysis</em> (lip- = fat, -lysis = splitting) is the hydrolysis of stored triglycerides into glycerol and fatty acids. Enzymes called lipases, inside the adipocyte, remove the three fatty acids one at a time, adding a water molecule at each bond.</p>
+<ul>
+<li><strong>Fatty acids</strong> leave the adipocyte and travel in the blood bound to albumin, which carries these water-insoluble molecules. Heart, skeletal muscle, liver and kidney cells take them up and burn them.</li>
+<li><strong>Glycerol</strong> dissolves in plasma and travels to the liver, which can use it to make glucose by gluconeogenesis.</li>
+</ul>
+<p>Lipolysis is set by hormones:</p>
+<ul>
+<li><strong>Switched on</strong> by epinephrine and norepinephrine (through beta receptor proteins, cyclic AMP and protein kinase A), and more slowly by cortisol and growth hormone. Exercise, stress and a long gap since your last meal all raise it.</li>
+<li><strong>Switched off</strong> by insulin, even at low levels. After a meal, insulin rises and fatty acid release from fat falls within minutes.</li>
+</ul>
+<p>That insulin brake is why fat breakdown runs out of control in untreated type 1 diabetes, as you will see below.</p>
+
+<h2>Beta oxidation: fatty acids to acetyl CoA</h2>
+<p>A typical fatty acid, palmitic acid, is a chain of 16 carbons. <em>Beta oxidation</em> (also written β-oxidation; also called fatty acid oxidation) cuts it into two-carbon pieces of acetyl CoA, inside the mitochondrion.</p>
+<ol>
+<li><strong>Activation.</strong> In the cytosol, the fatty acid is joined to coenzyme A. This costs the equivalent of 2 ATP, once per fatty acid.</li>
+<li><strong>Entry.</strong> The inner mitochondrial membrane does not let the activated fatty acid through. It is passed across on a carrier molecule called carnitine, then joined to CoA again inside the matrix.</li>
+<li><strong>One turn of beta oxidation.</strong> Four enzyme steps oxidize the third carbon from the CoA end, the beta carbon (beta = second letter of the Greek alphabet: the carbon next to the one bonded to CoA is alpha, and the next is beta). Each turn makes <strong>1 FADH<sub>2</sub></strong> and <strong>1 NADH</strong>, and cuts off <strong>1 acetyl CoA</strong>. The fatty acid left behind is two carbons shorter.</li>
+<li><strong>Repeat.</strong> The shortened chain goes around again. A 16-carbon chain needs 7 turns, and the last turn leaves two acetyl CoA, so it yields 8 acetyl CoA in all.</li>
+</ol>
+<p>The acetyl CoA enters the citric acid cycle, and the NADH and FADH<sub>2</sub> feed the electron transport chain. Every step after activation happens in the mitochondrion and depends on the electron transport chain to regenerate NAD<sup>+</sup> and FAD. So fat can be burned only with oxygen: there is no anaerobic route for fat.</p>
+<div class="worked">
+<h3>Worked example: ATP from one palmitic acid</h3>
+<p><strong>Problem.</strong> How much ATP does complete oxidation of one 16-carbon palmitic acid yield? Use 2.5 ATP per NADH, 1.5 per FADH<sub>2</sub> and 10 per acetyl CoA passed through the citric acid cycle.</p>
+<ol>
+<li><strong>Count the turns.</strong> 16 carbons ÷ 2 = 8 acetyl CoA, made in 16 ÷ 2 − 1 = 7 turns.</li>
+<li><strong>Carriers from beta oxidation.</strong> 7 FADH<sub>2</sub> × 1.5 = 10.5 ATP; 7 NADH × 2.5 = 17.5 ATP. Subtotal 28 ATP.</li>
+<li><strong>Acetyl CoA through the citric acid cycle.</strong> 8 × 10 = 80 ATP.</li>
+<li><strong>Subtract the activation cost.</strong> 28 + 80 − 2 = 106 ATP.</li>
+<li><strong>Compare with glucose.</strong> Glucose gives about 32 ATP from 6 carbons, about 5.3 per carbon. Palmitic acid gives 106 from 16 carbons, about 6.6 per carbon. Its carbons are less oxidized to start with, so each has more electrons to hand to the chain.</li>
+</ol>
+<p><strong>Answer.</strong> About 106 ATP per palmitic acid.</p>
+</div>
+<figure id="fig-fat-atp" class="anp-fig">
+<svg viewBox="0 0 640 350" role="img" aria-label="Fat to ATP. Stored triglyceride in a fat cell is split by lipolysis into glycerol and fatty acids. Glycerol goes to the liver, which can make new glucose from it. Fatty acids are carried into a mitochondrion by carnitine. There, beta oxidation cuts off two carbons per turn as acetyl CoA, making one FADH2 and one NADH each turn. Acetyl CoA enters the citric acid cycle, and the NADH and FADH2 feed the electron transport chain, which makes ATP.">
+<rect class="shape" x="20" y="20" width="190" height="44"/>
+<text class="lbl-sm" x="115" y="38" text-anchor="middle">stored triglyceride</text>
+<text class="lbl-sm" x="115" y="54" text-anchor="middle">(fat cell)</text>
+<line class="flows" x1="90" y1="64" x2="70" y2="118"/>
+<line class="flows" x1="140" y1="64" x2="180" y2="118"/>
+<text class="lbl-sm" x="92" y="98">lipolysis</text>
+<rect class="shape" x="20" y="122" width="100" height="32"/>
+<text class="lbl-sm" x="70" y="143" text-anchor="middle">glycerol</text>
+<rect class="shape" x="130" y="122" width="110" height="32"/>
+<text class="lbl-sm" x="185" y="143" text-anchor="middle">fatty acids</text>
+<line class="flows" x1="70" y1="154" x2="70" y2="246"/>
+<rect class="lo" x="10" y="250" width="130" height="44"/>
+<text class="lbl-sm" x="75" y="268" text-anchor="middle">liver: new</text>
+<text class="lbl-sm" x="75" y="284" text-anchor="middle">glucose</text>
+<ellipse class="memb" cx="440" cy="200" rx="185" ry="140"/>
+<text class="lbl" x="440" y="92" text-anchor="middle">mitochondrion</text>
+<line class="flows" x1="240" y1="140" x2="318" y2="150"/>
+<text class="lbl-sm" x="150" y="190">carnitine carries</text>
+<text class="lbl-sm" x="150" y="205">it across</text>
+<rect class="shape" x="320" y="118" width="240" height="40"/>
+<text class="lbl-sm" x="440" y="135" text-anchor="middle">beta oxidation:</text>
+<text class="lbl-sm" x="440" y="151" text-anchor="middle">2 carbons cut off per turn</text>
+<text class="lbl-sm" x="440" y="178" text-anchor="middle">each turn: 1 FADH2 + 1 NADH</text>
+<line class="flows" x1="440" y1="184" x2="440" y2="206"/>
+<rect class="accent" x="360" y="208" width="160" height="32"/>
+<text class="lbl" x="440" y="229" text-anchor="middle">acetyl CoA</text>
+<line class="flows" x1="440" y1="240" x2="440" y2="262"/>
+<rect class="shape" x="345" y="264" width="190" height="32"/>
+<text class="lbl-sm" x="440" y="285" text-anchor="middle">citric acid cycle</text>
+<text class="lbl-sm" x="440" y="318" text-anchor="middle">NADH, FADH2 → electron transport chain → ATP</text>
+</svg>
+<figcaption>Fat to ATP. Lipolysis releases glycerol, which the liver can make into glucose, and fatty acids, which beta oxidation cuts into acetyl CoA inside mitochondria. Dashed arrows mean "is converted to" or "moves to".</figcaption>
+</figure>
+<p>Two tissues cannot use fatty acids. Red blood cells have no mitochondria. The brain takes up very little fatty acid from the blood, and its neurons rely on glucose. That is why, when food is scarce, the liver's next pathway matters so much.</p>
+
+<h2>Ketogenesis: ketone bodies from acetyl CoA</h2>
+<p>When fat breakdown is fast, the liver's mitochondria make more acetyl CoA than their citric acid cycle can take. At the same time, the liver is drawing oxaloacetate off to make glucose, so there is less oxaloacetate to accept acetyl groups. Acetyl CoA builds up, and the liver turns it into <em>ketone bodies</em>.</p>
+<p><em>Ketogenesis</em> (-genesis = making) is the liver's conversion of acetyl CoA into ketone bodies, in its mitochondria (<a class="figref" href="#fig-os-24-14">Figure 2</a>):</p>
+<ol>
+<li>Two acetyl CoA join to make a four-carbon molecule.</li>
+<li>A third acetyl CoA is added and then removed again, releasing <strong>acetoacetate</strong>, the first ketone body.</li>
+<li>Much of the acetoacetate gains two hydrogens (from NADH) to become <strong><em>beta-hydroxybutyrate</em></strong>, the main ketone body in the blood.</li>
+<li>A small amount of acetoacetate loses CO2 on its own, forming <strong>acetone</strong>. Acetone is volatile and leaves in the breath, giving it a fruity smell.</li>
+</ol>
+<figure id="fig-os-24-14" data-fig="os-24-14"><figcaption>Ketogenesis in liver mitochondria. Acetyl CoA units are joined, by way of HMG CoA, into acetoacetate, which is reduced to beta-hydroxybutyrate. (Making HMG CoA uses a third acetyl CoA, which is released again when acetoacetate forms; the figure does not draw it.)</figcaption></figure>
+<p>The name "ketone body" comes from acetoacetate and acetone, which have a ketone group (a carbon double-bonded to an oxygen in the middle of a chain). Beta-hydroxybutyrate has none, but it is counted with them.</p>
+<h3>Who uses them</h3>
+<p>The liver makes ketone bodies but cannot use them: it lacks the enzyme that turns acetoacetate back into acetyl CoA. So it exports them. Heart, skeletal muscle and kidney cells take them up, turn them back into acetyl CoA and burn them. After a few days without food, the brain does too, and ketone bodies then supply much of its energy. This spares glucose, and the muscle protein that would otherwise be broken down to make it.</p>
+<h3>Ketosis and ketoacidosis</h3>
+<p>Acetoacetic acid and beta-hydroxybutyric acid are acids. At body pH they give up their H<sup>+</sup>. Whether that matters depends on how much is made.</p>
+<ul>
+<li><em>Ketosis</em> (-osis = condition) is a raised level of ketone bodies in the blood: a normal response to a day or more without food or to a very low-carbohydrate diet. Levels stay below about 3 mmol/L. Insulin is still present and limits fat release, the body's buffers take up the H<sup>+</sup>, and blood pH stays normal.</li>
+<li><em>Ketoacidosis</em> is ketosis severe enough to make the blood acidic. It happens when insulin is almost absent, as in untreated type 1 diabetes. Ketone bodies can reach 10 mmol/L or more, bicarbonate is used up buffering their H<sup>+</sup>, and blood pH falls below 7.35. It is a medical emergency.</li>
+</ul>
+<table class="compare">
+<thead><tr><th></th><th>Ketosis</th><th>Ketoacidosis</th></tr></thead>
+<tbody>
+<tr><th>Typical cause</th><td>A day or more without food; very low-carbohydrate diet</td><td>Almost no insulin (untreated type 1 diabetes); less often, heavy alcohol use with no food</td></tr>
+<tr><th>Insulin</th><td>Low but present</td><td>Nearly absent</td></tr>
+<tr><th>Blood ketone bodies</th><td>Up to about 3 mmol/L</td><td>Often above 10 mmol/L</td></tr>
+<tr><th>Blood glucose</th><td>Normal or low</td><td>Usually very high in diabetes</td></tr>
+<tr><th>Blood pH</th><td>Normal (7.35–7.45)</td><td>Below 7.35</td></tr>
+<tr><th>Is it dangerous?</th><td>No, in a healthy person</td><td>Yes: an emergency</td></tr>
+</tbody>
+</table>
+<h3>Why missing insulin causes ketoacidosis</h3>
+<ol>
+<li>With no insulin, nothing holds back lipolysis, and glucagon is high. Fatty acids pour out of adipose tissue.</li>
+<li>The liver takes up fatty acids faster than ever. High glucagon and low insulin steer them into its mitochondria for beta oxidation, and acetyl CoA piles up.</li>
+<li>The liver makes ketone bodies at its highest rate, far faster than other tissues can burn them.</li>
+<li>Their H<sup>+</sup> uses up bicarbonate, and blood pH falls.</li>
+<li>The low pH stimulates breathing: deep, rapid breaths blow off CO2, which partly offsets the acid. Acetone gives the breath a fruity smell.</li>
+<li>Meanwhile glucose is high, so large volumes of urine carry water and ketone bodies out, and the person becomes badly dehydrated.</li>
+</ol>
+<p>Treatment is insulin, which stops lipolysis and ketogenesis, with fluids and potassium.</p>
+
+<h2>Lipogenesis: building fat</h2>
+<p><em>Lipogenesis</em> (lip- = fat, -genesis = making) is the building of fatty acids and triglycerides. It runs mainly in the liver and adipose tissue when fuel is plentiful and insulin is high.</p>
+<ol>
+<li>Glucose, some amino acids and alcohol are broken down to acetyl CoA inside mitochondria.</li>
+<li>Acetyl CoA cannot cross the inner membrane, so it leaves as citrate, which is split back into acetyl CoA in the cytosol.</li>
+<li>An enzyme that needs biotin adds CO2 to acetyl CoA, making a three-carbon molecule (malonyl CoA). This is the committed step, and insulin switches it on.</li>
+<li>A large enzyme, fatty acid synthase, builds a chain two carbons at a time, using electrons from NADPH (a carrier related to NADH), until it reaches 16 carbons.</li>
+<li>Three fatty acids are joined to glycerol to make a triglyceride. The liver packages its triglycerides into particles for export (below); adipose tissue stores its own.</li>
+</ol>
+<p>In people eating ordinary diets, most of the fat stored in adipose tissue started as fat in food; turning carbohydrate into new fat adds much more only when carbohydrate intake is large for days.</p>
+<p>Lipogenesis is a one-way street for carbon, too. Glucose carbon can become fatty acids, but fatty acids cannot become glucose, because the step from pyruvate to acetyl CoA cannot be reversed. Only the glycerol backbone of a triglyceride can become glucose.</p>
+<h3>Cholesterol is built from acetyl CoA too</h3>
+<p>Cells also build cholesterol from acetyl CoA, in a long pathway whose control step is catalyzed by an enzyme called HMG CoA reductase. The statin drugs block this enzyme. Your body makes most of its own cholesterol, and nearly every cell can make some. Measurements in people suggest the liver makes only a modest share of the total, perhaps around a tenth. But the liver dominates cholesterol handling: it takes up most of the cholesterol-carrying particles cleared from the blood, and it sends cholesterol out of the body in bile, either unchanged or as bile salts, the main route by which cholesterol leaves.</p>
+<aside class="for-your-exam"><p>For your exam: many textbooks and exams say the liver makes most of your cholesterol (often "about 80%"). Studies measuring synthesis organ by organ in humans find that most is made outside the liver, which in turn dominates uptake and excretion. If a question asks which organ makes most cholesterol, your course may expect "the liver".</p></aside>
+
+<h2>Lipoproteins: carrying lipids in the blood</h2>
+<p>Blood is mostly water, and triglycerides and cholesterol do not dissolve in it. They travel in <em>lipoproteins</em>: particles with a core of triglycerides and cholesterol and a shell of phospholipids, free cholesterol and proteins called apolipoproteins (<a class="figref" href="#fig-os-24-12">Figure 3</a>). You met the largest, the chylomicron, in fat absorption. The apolipoproteins act as address labels: receptor proteins on cells recognize them, and enzymes are switched on by them.</p>
+<figure id="fig-os-24-12" data-fig="os-24-12"><figcaption>Structure of a lipoprotein, here a chylomicron. A shell of phospholipids with embedded apolipoproteins surrounds a core of triglycerides (and, not labeled, cholesterol). Other lipoproteins have the same plan with different proportions.</figcaption></figure>
+<p>Lipoproteins are named by density. Lipid is less dense than protein, so the more triglyceride a particle carries, the lower its density.</p>
+<table class="compare">
+<thead><tr><th></th><th>Chylomicron</th><th>VLDL</th><th>LDL</th><th>HDL</th></tr></thead>
+<tbody>
+<tr><th>Full name</th><td>Chylomicron</td><td>Very-low-density lipoprotein</td><td>Low-density lipoprotein</td><td>High-density lipoprotein</td></tr>
+<tr><th>Made in</th><td>Intestinal absorptive cells</td><td>Liver</td><td>Blood, from VLDL after it gives up its triglycerides</td><td>Liver and intestine, as small particles that grow in the blood</td></tr>
+<tr><th>Main cargo</th><td>Dietary triglycerides</td><td>Triglycerides the liver made</td><td>Cholesterol</td><td>Cholesterol collected from tissues</td></tr>
+<tr><th>Delivers to</th><td>Muscle and adipose tissue, then the liver</td><td>Muscle and adipose tissue</td><td>Liver and other body cells</td><td>Liver</td></tr>
+<tr><th>Size</th><td>Largest</td><td>Large</td><td>Small</td><td>Smallest</td></tr>
+</tbody>
+</table>
+<h3>Delivering triglycerides: lipoprotein lipase</h3>
+<p><em>Lipoprotein lipase</em> is an enzyme on the inner surface of capillaries in muscle, heart and adipose tissue. It hydrolyzes the triglycerides inside passing chylomicrons and VLDL, and the fatty acids released enter the nearby cells: muscle burns them, and adipocytes store them again as triglyceride. Insulin raises lipoprotein lipase in adipose tissue after a meal, so dietary fat is steered into storage. The shrunken particles that remain go to the liver (chylomicron remnants) or become LDL (from VLDL).</p>
+<h3>Delivering and collecting cholesterol: LDL and HDL</h3>
+<p>Cells take up LDL through LDL receptor proteins, by receptor-mediated endocytosis, and use its cholesterol for membranes and, in some glands, steroid hormones. When a cell has enough cholesterol, it makes fewer LDL receptor proteins. HDL does the reverse job: it collects excess cholesterol from cells, including cells in artery walls, and returns it to the liver.</p>
+<table class="compare">
+<thead><tr><th></th><th>LDL</th><th>HDL</th></tr></thead>
+<tbody>
+<tr><th>Direction of cholesterol</th><td>From the liver's particles out to body cells</td><td>From body cells back to the liver</td></tr>
+<tr><th>Made from</th><td>VLDL, in the blood</td><td>Small particles from the liver and intestine</td></tr>
+<tr><th>Taken up by</th><td>LDL receptor proteins, mostly in the liver</td><td>The liver</td></tr>
+<tr><th>Effect of a high blood level</th><td>More LDL enters artery walls and drives plaque growth; a direct cause of atherosclerosis</td><td>Linked to lower risk of heart disease</td></tr>
+<tr><th>Common nickname</th><td>"Bad cholesterol"</td><td>"Good cholesterol"</td></tr>
+<tr><th>What changing it with drugs does</th><td>Lowering it (with statins and other drugs) prevents heart attacks and strokes</td><td>Drugs that raised it have not prevented heart attacks</td></tr>
+</tbody>
+</table>
+<p>The last row is why the nicknames mislead. Both particles carry the same cholesterol molecule. LDL is a cause of atherosclerosis: lowering it lowers risk, and people born with very high LDL develop heart disease early. A high HDL level goes with lower risk, but raising HDL with drugs has not helped, so HDL is best seen as a sign of good health rather than a cause of it.</p>
+<p>Statins show how the parts connect. By blocking HMG CoA reductase, they cut cholesterol synthesis in liver cells. The cells respond by making more LDL receptor proteins, pull more LDL out of the blood, and the LDL level falls, often by a third to a half.</p>
+
+<h2>Amino acid metabolism</h2>
+<p>You break down and rebuild about 250 to 300 g of your own protein every day, far more than you eat. Amino acids released by that breakdown join those from your food in a shared pool, and most are reused to build new protein. But your body has no store of amino acids. Those not needed for building are broken down, even while you are eating.</p>
+<p><em>Amino acid metabolism</em> is how the body handles amino acids beyond protein building: removing the nitrogen, then using the carbon skeleton. Each amino acid has an amino group (–NH<sub>2</sub>) that must be removed before its carbon can be burned or made into glucose.</p>
+<h3>Step 1: transamination</h3>
+<p><em>Transamination</em> (trans- = across) moves the amino group from an amino acid onto a carbon skeleton from the citric acid cycle (alpha-ketoglutarate), which becomes the amino acid glutamate. The original amino acid is left as a keto acid, its carbon skeleton. The enzymes, called transaminases, need a coenzyme made from vitamin B6.</p>
+<p>Two transaminases, ALT and AST, are abundant inside liver cells. When liver cells are damaged, as in hepatitis, these enzymes leak into the blood, and their blood levels are used as a test for liver injury.</p>
+<h3>Step 2: deamination</h3>
+<p>Glutamate collects amino groups from many amino acids. In liver mitochondria, <em>deamination</em> (de- = remove) strips its amino group off as <em>ammonia</em> (NH<sub>3</sub>), turning glutamate back into alpha-ketoglutarate, ready to collect another amino group. At body pH, most ammonia carries an extra H<sup>+</sup> as NH<sub>4</sub><sup>+</sup>.</p>
+<p>Ammonia is toxic, especially to the brain. Even a small rise in the blood disturbs neurotransmission and swells astrocytes. So it is not allowed to build up: the liver turns it into urea almost as fast as it forms.</p>
+<h3>Step 3: using the carbon skeleton</h3>
+<p>Once the nitrogen is gone, the carbon skeletons enter pathways you already know:</p>
+<ul>
+<li><em>Glucogenic amino acids</em> (gluc- = glucose, -genic = producing), such as alanine, give pyruvate or citric acid cycle molecules, which the liver can build into glucose.</li>
+<li><em>Ketogenic amino acids</em> give acetyl CoA or acetoacetate, which can be burned or made into ketone bodies or fat, but never into glucose. Leucine and lysine are the only amino acids that are purely ketogenic.</li>
+<li>Several amino acids, such as phenylalanine and tyrosine, are both.</li>
+</ul>
+<p>Most amino acids are glucogenic. That is why, when glycogen runs out and no food comes in, muscle protein is broken down to supply glucose, and why sparing it matters.</p>
+
+<h2>The urea cycle</h2>
+<p>Every day, an adult eating a normal diet makes about 20 to 30 g of <em>urea</em>, the main way nitrogen leaves the body. The <em>urea cycle</em> is the loop of five reactions in liver cells that turns ammonia into urea. It runs partly in the mitochondria and partly in the cytosol.</p>
+<ol>
+<li><strong>Nitrogen 1.</strong> In the mitochondrion, ammonia joins bicarbonate (from CO2), using 2 ATP, to make carbamoyl phosphate.</li>
+<li>Carbamoyl phosphate joins ornithine, the carrier molecule of the cycle, to make citrulline, which moves to the cytosol.</li>
+<li><strong>Nitrogen 2.</strong> Citrulline picks up a second amino group from the amino acid aspartate, using another ATP (worth 2 high-energy bonds), to make argininosuccinate.</li>
+<li>Argininosuccinate splits into the amino acid arginine and fumarate. Fumarate is also a citric acid cycle molecule, so this links the two cycles.</li>
+<li><strong>Urea released.</strong> Arginase splits arginine into urea and ornithine. Ornithine returns to the mitochondrion to start the next turn.</li>
+</ol>
+<p>Urea (CO(NH<sub>2</sub>)<sub>2</sub>) carries two nitrogens, one from ammonia and one from aspartate. It is small, water-soluble and far less toxic than ammonia. It leaves the liver in the blood, and your kidneys excrete it in urine. Each urea costs the liver 3 ATP (4 high-energy phosphate bonds).</p>
+<figure id="fig-urea-path" class="anp-fig">
+<svg viewBox="0 0 640 350" role="img" aria-label="What happens to an amino acid. Its amino group is moved to glutamate by transamination, using vitamin B6. In the liver, deamination removes it from glutamate as ammonia. The urea cycle in the liver turns ammonia into urea, which travels in the blood to the kidneys and leaves in urine. The carbon skeleton left by transamination either becomes pyruvate or citric acid cycle molecules, which can become glucose (glucogenic), or becomes acetyl CoA, which can become ketone bodies or fat (ketogenic).">
+<rect class="shape" x="20" y="30" width="120" height="36"/>
+<text class="lbl-sm" x="80" y="53" text-anchor="middle">amino acid</text>
+<line class="flows" x1="140" y1="48" x2="198" y2="48"/>
+<text class="lbl-sm" x="145" y="22">transamination</text>
+<rect class="shape" x="200" y="30" width="120" height="36"/>
+<text class="lbl-sm" x="260" y="53" text-anchor="middle">glutamate</text>
+<line class="flows" x1="320" y1="48" x2="378" y2="48"/>
+<text class="lbl-sm" x="322" y="22">deamination (liver)</text>
+<rect class="hi" x="380" y="30" width="110" height="36"/>
+<text class="lbl-sm" x="435" y="53" text-anchor="middle">ammonia</text>
+<line class="flows" x1="435" y1="66" x2="435" y2="118"/>
+<rect class="accent" x="360" y="120" width="150" height="40"/>
+<text class="lbl-sm" x="435" y="137" text-anchor="middle">urea cycle</text>
+<text class="lbl-sm" x="435" y="152" text-anchor="middle">(liver)</text>
+<line class="flows" x1="435" y1="160" x2="435" y2="208"/>
+<rect class="shape" x="380" y="210" width="110" height="36"/>
+<text class="lbl-sm" x="435" y="233" text-anchor="middle">urea</text>
+<line class="flows" x1="490" y1="228" x2="528" y2="228"/>
+<rect class="lo" x="530" y="210" width="100" height="36"/>
+<text class="lbl-sm" x="580" y="233" text-anchor="middle">urine</text>
+<text class="lbl-sm" x="520" y="268">via blood to</text>
+<text class="lbl-sm" x="520" y="283">the kidneys</text>
+<line class="flows" x1="80" y1="66" x2="80" y2="128"/>
+<rect class="shape" x="20" y="130" width="190" height="40"/>
+<text class="lbl-sm" x="115" y="147" text-anchor="middle">carbon skeleton</text>
+<text class="lbl-sm" x="115" y="162" text-anchor="middle">(keto acid)</text>
+<line class="flows" x1="60" y1="170" x2="60" y2="218"/>
+<rect class="shape" x="10" y="220" width="200" height="44"/>
+<text class="lbl-sm" x="110" y="238" text-anchor="middle">glucogenic: pyruvate or cycle</text>
+<text class="lbl-sm" x="110" y="254" text-anchor="middle">molecules → glucose</text>
+<line class="flows" x1="170" y1="170" x2="280" y2="288"/>
+<rect class="shape" x="200" y="290" width="200" height="44"/>
+<text class="lbl-sm" x="300" y="308" text-anchor="middle">ketogenic: acetyl CoA →</text>
+<text class="lbl-sm" x="300" y="324" text-anchor="middle">ketone bodies or fat</text>
+</svg>
+<figcaption>Amino acid to urea. The amino group is removed by transamination and deamination and made into urea in the liver; the carbon skeleton is burned or built into glucose, ketone bodies or fat. Dashed arrows mean "is converted to" or "moves to".</figcaption>
+</figure>
+<p>Two failures show why each organ matters:</p>
+<ul>
+<li><strong>Failing liver.</strong> In advanced cirrhosis, the liver cannot keep up. Ammonia rises in the blood and reaches the brain, causing confusion, a flapping tremor of the hands, and eventually coma. Blood urea is often low, because little is being made.</li>
+<li><strong>Failing kidneys.</strong> The liver still makes urea, but the kidneys cannot excrete it, so blood urea rises. Measuring blood urea nitrogen is one of the basic tests of kidney function.</li>
+</ul>
+<aside class="going-further"><p>Going further: children born without one of the urea cycle enzymes become lethargic, vomit and can fall into a coma within days of birth, once protein feeding starts, because ammonia builds up. Treatment limits protein and gives drugs that let nitrogen leave by other routes.</p></aside>
+
+<h2>Putting fuels together</h2>
+<p>Carbohydrate, fat and protein all funnel into acetyl CoA and the citric acid cycle, so the cell's machinery for ATP is shared. The paths between them are not all two-way:</p>
+<table class="compare">
+<thead><tr><th>Can the body turn…</th><th>…into glucose?</th><th>…into fatty acids?</th></tr></thead>
+<tbody>
+<tr><th>Glucose</th><td>(it is glucose)</td><td>Yes, by way of acetyl CoA</td></tr>
+<tr><th>Fatty acids</th><td>No: acetyl CoA cannot become pyruvate</td><td>(they are fatty acids)</td></tr>
+<tr><th>Glycerol</th><td>Yes, in the liver</td><td>It forms the backbone of new triglycerides</td></tr>
+<tr><th>Glucogenic amino acids</th><td>Yes, once the nitrogen is removed</td><td>Yes, by way of acetyl CoA</td></tr>
+<tr><th>Ketogenic amino acids</th><td>No</td><td>Yes</td></tr>
+</tbody>
+</table>
+<p>This one-way rule decides what the body burns when food stops coming in: the subject of the next topic.</p>

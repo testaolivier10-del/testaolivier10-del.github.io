@@ -1,0 +1,553 @@
+[
+  {
+    "id": "anp-carbohydrate-metabolism-1",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "q": "Hexokinase turns glucose into glucose-6-phosphate as soon as it enters a cell. Which consequence of this step keeps glucose moving into the cell?",
+    "options": [
+      "It keeps free glucose inside low, so glucose keeps flowing in",
+      "It raises the cell's ATP level, which then powers glucose pumps",
+      "It opens more glucose carriers in the membrane",
+      "It makes glucose soluble in the lipid bilayer"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Glucose enters most cells by facilitated diffusion, down its concentration gradient. Hexokinase converts it at once to charged glucose-6-phosphate, which the carriers do not carry out. Free glucose inside stays low, so the gradient into the cell is kept.",
+      "options": [
+        "Correct. Trapping glucose as glucose-6-phosphate keeps the inward gradient.",
+        "This step spends ATP rather than making it, and entry through glucose carriers is facilitated diffusion, not pumping.",
+        "Hexokinase acts inside the cell; it does not change the number of carriers. Insulin does that in muscle and fat.",
+        "Adding a charged phosphate makes the molecule less able to cross lipid, not more."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "energy"
+    ],
+    "q": "A resting muscle cell is full of ATP. What happens to the rate of glycolysis, and which enzyme mainly causes it?",
+    "options": [
+      "It speeds up, because pyruvate kinase is activated",
+      "It stays the same, because glycolysis is not regulated",
+      "It slows down, because ATP inhibits phosphofructokinase",
+      "It slows down, because hexokinase runs out of glucose"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Phosphofructokinase, which commits the sugar to glycolysis, is inhibited by high ATP (and by citrate) and activated by AMP. When ATP is plentiful, glycolysis slows; when ATP is spent and AMP rises, it speeds up.",
+      "options": [
+        "High ATP signals that the cell needs no more; it slows glycolysis rather than speeding it.",
+        "Glycolysis is tightly regulated, mainly at phosphofructokinase.",
+        "Correct. ATP inhibits phosphofructokinase, the main control point.",
+        "A resting, well-fed muscle has glucose available; the slowdown comes from the ATP signal, not a lack of glucose."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "figure": "os-24-5",
+    "q": "Use the figure. In which panel is NADH made, and how many NADH are made per glucose?",
+    "options": [
+      "The first panel; 2 NADH",
+      "The middle panel; 2 NADH",
+      "The last panel; 4 NADH",
+      "The middle panel; 4 NADH"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In the middle panel, each three-carbon piece gives two electrons to NAD+, making one NADH, and the energy released adds a free phosphate. With two pieces per glucose, 2 NADH are made.",
+      "options": [
+        "The first panel is the energy-consuming phase, where 2 ATP add phosphates to glucose; no NADH is made there.",
+        "Correct. Each of the two three-carbon pieces makes one NADH in the middle panel.",
+        "The last panel makes 4 ATP, not NADH.",
+        "One NADH is made per three-carbon piece, and there are two pieces, so 2 in all."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "mass-balance"
+    ],
+    "q": "How many CO2 molecules does the citric acid cycle itself release from one glucose, and how many does the whole of aerobic respiration release?",
+    "options": [
+      "2 from the cycle; 6 in all",
+      "4 from the cycle; 4 in all",
+      "6 from the cycle; 6 in all",
+      "4 from the cycle; 6 in all"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Each turn of the cycle releases 2 CO2, and one glucose gives two acetyl CoA, so the cycle releases 4. The other 2 are released as each pyruvate becomes acetyl CoA. All 6 carbons of glucose leave as CO2.",
+      "options": [
+        "2 is the release per turn. One glucose drives two turns.",
+        "This misses the 2 CO2 released when the two pyruvate become acetyl CoA, before the cycle.",
+        "The cycle releases 4; the other 2 come from the pyruvate step, outside the cycle.",
+        "Correct. 4 from two turns of the cycle, plus 2 from pyruvate breakdown."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-5",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Put the stages in order to follow the carbon and electrons of glucose to ATP.",
+    "options": [
+      "Glycolysis splits glucose into two pyruvate in the cytosol",
+      "Pyruvate enters the mitochondrion and becomes acetyl CoA, releasing CO2",
+      "The citric acid cycle releases the remaining carbons as CO2 and loads NADH and FADH2",
+      "NADH and FADH2 pass electrons down the electron transport chain to oxygen",
+      "H+ pumped by the chain flows back through ATP synthase, making most of the ATP"
+    ],
+    "why": {
+      "correct": "Glucose is split in the cytosol; each pyruvate becomes acetyl CoA in the matrix; the citric acid cycle finishes oxidizing the carbon and loads the carriers; the carriers feed the electron transport chain; and the H+ gradient it builds drives ATP synthase."
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-6",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "energy",
+      "gradients"
+    ],
+    "q": "Cyanide blocks complex IV of the electron transport chain in a person's cells. Predict the change in each variable within minutes.",
+    "variables": [
+      {
+        "name": "Oxygen used by the cells",
+        "answer": "down",
+        "why": "Complex IV is where oxygen accepts electrons; with it blocked, oxygen is no longer taken up."
+      },
+      {
+        "name": "H+ gradient across the inner mitochondrial membrane",
+        "answer": "down",
+        "why": "Electrons stop flowing, so the complexes stop pumping H+, and the gradient runs down through ATP synthase and small leaks."
+      },
+      {
+        "name": "ATP made by ATP synthase",
+        "answer": "down",
+        "why": "With no gradient to drive it, ATP synthase stops making ATP."
+      },
+      {
+        "name": "Lactate released into the blood",
+        "answer": "up",
+        "why": "Falling ATP speeds glycolysis, and pyruvate is turned into lactate to regenerate NAD+."
+      },
+      {
+        "name": "Oxygen left in venous blood",
+        "answer": "up",
+        "why": "Oxygen is still delivered but the tissues cannot use it, so more of it stays in the blood returning to the heart."
+      }
+    ],
+    "why": {
+      "correct": "Blocking complex IV stops electron flow and oxygen use. No H+ is pumped, the gradient collapses and oxidative phosphorylation stops. Cells fall back on glycolysis and lactate production, and unused oxygen stays in venous blood."
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-7",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "q": "Ms. Brandt was pulled from a house fire. Her oxygen saturation is 99%, her venous blood is bright red, and her blood lactate is very high. Which explanation fits all three findings?",
+    "options": [
+      "Her lungs cannot load oxygen onto hemoglobin",
+      "Her muscles make more lactate than the liver clears",
+      "Her red blood cells have lost their mitochondria",
+      "Her tissues get oxygen but cannot pass electrons to it"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Cyanide from burning plastics blocks complex IV. Oxygen reaches the tissues but cannot accept electrons, so it stays in the venous blood, which looks red. Without oxidative phosphorylation, cells rely on glycolysis and turn pyruvate into lactate.",
+      "options": [
+        "Her saturation of 99% shows oxygen is loading normally in the lungs.",
+        "That could explain high lactate, but not venous blood full of oxygen: working muscle takes more oxygen out, not less.",
+        "Mature red blood cells never have mitochondria; that is normal and does not explain these findings.",
+        "Correct. A block at the end of the chain explains high venous oxygen and high lactate together."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "One turn of the citric acid cycle makes 3 NADH, 1 FADH2 and 1 ATP. Using current values (2.5 ATP per NADH, 1.5 per FADH2), how much ATP does one turn yield in all?",
+    "options": [
+      "5 ATP",
+      "9 ATP",
+      "10 ATP",
+      "12 ATP"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "3 NADH × 2.5 = 7.5; 1 FADH2 × 1.5 = 1.5; plus 1 ATP made directly. 7.5 + 1.5 + 1 = 10 ATP per turn, or 20 per glucose.",
+      "options": [
+        "5 counts only the carriers (3 + 1 + 1) as if each were worth one ATP.",
+        "9 leaves out the ATP made directly in the cycle.",
+        "Correct. 7.5 + 1.5 + 1 = 10.",
+        "12 uses the older whole-number values (3 × 3 + 2 + 1). Current values are 2.5 and 1.5."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-9",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "figure": "atp-yield-stages",
+    "q": "Use the graph. The citric acid cycle stage has the longest bar. What does that bar mostly represent?",
+    "options": [
+      "ATP made directly by the enzymes of the cycle itself, in the matrix",
+      "ATP made in the cytosol from pyruvate",
+      "ATP spent in running the cycle",
+      "ATP made by ATP synthase from the cycle's NADH and FADH2"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Only 2 of the stage's 20 ATP are made directly. The other 18 come from the 6 NADH and 2 FADH2 the cycle makes, whose electrons drive the electron transport chain and ATP synthase.",
+      "options": [
+        "The direct part is the short segment, 2 ATP per glucose.",
+        "The cycle runs in the mitochondrial matrix, and pyruvate breakdown has its own bar.",
+        "The bars show ATP made, not ATP spent.",
+        "Correct. Most of the bar is credit for the loaded carriers the cycle hands to the chain."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy",
+      "gradients"
+    ],
+    "q": "Why does one FADH2 yield less ATP than one NADH?",
+    "options": [
+      "FADH2 carries only one electron",
+      "It is made in the cytosol and shuttled in",
+      "Its electrons enter at complex II, skipping the pump in complex I",
+      "Its electrons bypass complexes III and IV"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "NADH gives its electrons to complex I, which pumps H+. FADH2 gives its electrons to complex II, which pumps none, so they pass through only complexes III and IV. They pump about 6 H+ instead of about 10, which makes about 1.5 ATP instead of 2.5.",
+      "options": [
+        "FADH2 carries two electrons, like NADH.",
+        "The FADH2 of the citric acid cycle is made by an enzyme in the inner membrane itself, not in the cytosol.",
+        "Correct. Entering after complex I means fewer H+ are pumped.",
+        "Its electrons do pass through complexes III and IV; they skip only complex I."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-11",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "q": "A student described how the electron transport chain leads to ATP synthesis. One step is wrong. Which one?",
+    "options": [
+      "NADH gives its electrons to complex I",
+      "Electrons pass along the complexes toward oxygen, releasing energy",
+      "The complexes pump H+ from the intermembrane space into the matrix",
+      "Oxygen accepts electrons and H+ at complex IV, forming water",
+      "H+ flows through ATP synthase, which joins ADP and phosphate"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The complexes pump H+ out of the matrix into the intermembrane space. That builds a high H+ concentration outside the inner membrane, so H+ can then flow back into the matrix through ATP synthase.",
+      "options": [
+        "This step is right. Complex I accepts electrons from NADH.",
+        "This step is right. Each transfer releases a little energy.",
+        "This is the error. The pumps move H+ out of the matrix, not into it.",
+        "This step is right. Oxygen is the terminal electron acceptor.",
+        "This step is right. The returning H+ drives ATP synthase."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "homeostasis"
+    ],
+    "q": "Skeletal muscle stores about four times as much glycogen as the liver. Why can't a person's muscle glycogen keep the glucose in their blood up between meals?",
+    "options": [
+      "Muscle glycogen is broken down only during sleep",
+      "Muscle cells lack glycogen phosphorylase",
+      "Insulin blocks glucose from leaving muscle cells between meals",
+      "Muscle has no glucose-6-phosphatase to free glucose"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Glycogen breakdown gives glucose-1-phosphate, which becomes glucose-6-phosphate. Only liver and kidney cells have glucose-6-phosphatase to remove the phosphate. In muscle, glucose-6-phosphate stays trapped and goes into glycolysis in that muscle.",
+      "options": [
+        "Muscle breaks glycogen down whenever it works, day or night; the question is where the glucose goes.",
+        "Muscle has plenty of glycogen phosphorylase; that is how it uses its own glycogen during exercise.",
+        "Between meals insulin is low, and the block is an enzyme that muscle lacks, not a hormone.",
+        "Correct. Without glucose-6-phosphatase, muscle keeps its glucose for itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "q": "Glycogen phosphorylase breaks glycogen by phosphorolysis rather than hydrolysis. What does this gain a working muscle?",
+    "options": [
+      "One ATP per glucose, as the hexokinase step is skipped",
+      "Glucose leaves the muscle faster to feed the brain",
+      "The glucose units can then be oxidized without any oxygen",
+      "Phosphorolysis releases heat that warms the muscle"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Phosphorolysis adds phosphate across each bond, so each glucose leaves glycogen as glucose-1-phosphate and becomes glucose-6-phosphate without spending ATP. Glycolysis then nets 3 ATP from that glucose instead of 2.",
+      "options": [
+        "Correct. The phosphate comes free from phosphorolysis, saving the ATP that hexokinase would spend.",
+        "Muscle cannot release glucose into the blood; the phosphorylated sugar stays in the cell.",
+        "Whether the sugar is oxidized with or without oxygen depends on the mitochondria and oxygen supply, not on how it left glycogen.",
+        "The gain is in ATP, not heat."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-14",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "mass-balance",
+      "energy"
+    ],
+    "q": "Select every molecule the liver can use as raw material for gluconeogenesis.",
+    "options": [
+      "Lactate",
+      "Alanine",
+      "Glycerol",
+      "Fatty acids",
+      "Acetyl CoA"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "why": {
+      "correct": "Lactate and alanine become pyruvate, and glycerol enters as a three-carbon sugar phosphate; all three can be built into glucose. Fatty acids are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward, so neither can become glucose.",
+      "options": [
+        "Correct. Lactate is turned back into pyruvate.",
+        "Correct. Alanine, from muscle protein, becomes pyruvate once its nitrogen is removed.",
+        "Correct. Glycerol from stored fat enters as a three-carbon sugar phosphate.",
+        "Fatty acids are broken down to acetyl CoA, which cannot become pyruvate.",
+        "The step that makes acetyl CoA from pyruvate is one way only, so acetyl CoA cannot become glucose."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "Fill the gap in the first step of the citric acid cycle: acetyl CoA (2 carbons) + oxaloacetate (4 carbons) → ____ (6 carbons).",
+    "options": [
+      "Citrate",
+      "Pyruvate",
+      "Glucose-6-phosphate",
+      "Succinate"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Acetyl CoA joins oxaloacetate to make citrate, the six-carbon molecule that gives the citric acid cycle its name.",
+      "options": [
+        "Correct. The first product is citrate.",
+        "Pyruvate is a three-carbon molecule made by glycolysis, before the cycle.",
+        "Glucose-6-phosphate is made in the first step of glycolysis, in the cytosol.",
+        "Succinate is a four-carbon molecule made later in the cycle."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "What is the terminal electron acceptor of the electron transport chain?",
+    "options": [
+      "NAD+",
+      "Carbon dioxide",
+      "Oxygen",
+      "ATP synthase"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At complex IV, each O2 accepts 4 electrons and 4 H+ and becomes 2 water molecules. Removing electrons from the end of the chain keeps them moving.",
+      "options": [
+        "NAD+ accepts electrons earlier, from fuel molecules, and delivers them to the chain as NADH.",
+        "CO2 is a waste product of the citric acid cycle; it does not accept electrons from the chain.",
+        "Correct. Oxygen accepts the electrons at the end of the chain.",
+        "ATP synthase uses the H+ gradient; it does not accept electrons."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "energy"
+    ],
+    "q": "A 1-year-old has an enlarged liver and becomes shaky and drowsy three to four hours after each feed. Her blood lactate is high. Her liver can build glycogen and break it down to glucose-6-phosphate. Which enzyme is she most likely missing?",
+    "options": [
+      "Glycogen synthase",
+      "Hexokinase",
+      "Glycogen phosphorylase",
+      "Glucose-6-phosphatase"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Without glucose-6-phosphatase, the liver cannot release free glucose from either glycogen or gluconeogenesis. Blood glucose falls a few hours after each feed, glycogen piles up and enlarges the liver, and the trapped glucose-6-phosphate is pushed down glycolysis into lactate. This is glycogen storage disease type I.",
+      "options": [
+        "Without glycogen synthase, glycogen could not be built, and the liver would not enlarge with stored glycogen.",
+        "The question says she makes glucose-6-phosphate normally, and the liver has its own form of hexokinase for glucose uptake.",
+        "She can break glycogen down to glucose-6-phosphate, so phosphorylase works.",
+        "Correct. The final step of glucose release is missing."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "interdependence"
+    ],
+    "q": "In a sprint, muscle turns glucose into lactate, and the liver turns that lactate back into glucose (the Cori cycle). What is the net ATP cost of one round trip?",
+    "options": [
+      "It costs 4 ATP",
+      "It gains 2 ATP",
+      "It costs 6 ATP",
+      "It costs nothing"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Muscle gains 2 ATP from glycolysis of one glucose to 2 lactate. The liver spends 4 ATP and 2 GTP, 6 in all, to rebuild one glucose. Net: 2 − 6 = −4 ATP.",
+      "options": [
+        "Correct. 2 gained − 6 spent = 4 ATP lost per turn.",
+        "The muscle gains 2, but the liver spends 6 rebuilding the glucose, so the loop as a whole costs energy.",
+        "6 is the liver's cost alone; the muscle's gain of 2 offsets part of it.",
+        "Rebuilding glucose costs more than glycolysis yields, so the loop cannot be free."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-19",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients"
+    ],
+    "figure": "os-24-8",
+    "q": "Use the figure. Where is the H+ concentration highest while the chain is running?",
+    "options": [
+      "In the mitochondrial matrix",
+      "Inside the inner mitochondrial membrane's lipid layer",
+      "In the intermembrane space",
+      "Inside the ATP synthase channel"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Complexes I, III and IV pump H+ out of the matrix into the intermembrane space, drawn above the membrane with many H+. That high concentration drives H+ back through ATP synthase.",
+      "options": [
+        "The pumps remove H+ from the matrix, so its H+ concentration is lower.",
+        "H+ is charged and does not collect in the lipid core of the membrane.",
+        "Correct. The pumped H+ gathers in the intermembrane space.",
+        "The channel is only a path for H+ to flow down its gradient; it does not store H+."
+      ]
+    }
+  },
+  {
+    "id": "anp-carbohydrate-metabolism-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "energy"
+    ],
+    "q": "The drug oligomycin blocks the H+ channel of ATP synthase. In isolated mitochondria given plenty of fuel and oxygen, what happens to oxygen use?",
+    "options": [
+      "It rises, because the chain runs faster without ATP synthase",
+      "It is unchanged; the chain works apart from ATP synthase",
+      "It rises at first, then stops when the fuel runs out",
+      "It falls, because the H+ gradient builds up until pumping stalls"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "With ATP synthase blocked, H+ cannot flow back into the matrix. The gradient grows until the pumps cannot push H+ against it, electrons stop moving, and oxygen use falls. The chain and ATP synthase are coupled through the gradient.",
+      "options": [
+        "The chain can run only as fast as H+ returns to the matrix; blocking the return slows it.",
+        "The two are linked by the gradient, so blocking one slows the other.",
+        "Fuel is plentiful here; oxygen use falls because of the gradient, not because fuel runs out.",
+        "Correct. A gradient that cannot be spent stops the pumps, and electron flow to oxygen slows."
+      ]
+    }
+  }
+]

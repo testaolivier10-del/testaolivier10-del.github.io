@@ -40,6 +40,7 @@ review by a licensed A&P instructor.
   returned by lymph.
 - **Note:** this reverses the Phase 0 proposal, which taught the classic picture first. The
   decided rule puts the evidence-based model first.
+- **Lymph volume (added in Phase 2, `lymphatic-system`):** about 8 L/day enters the lymphatic capillaries; the nodes return up to half of it, so about 3–4 L/day reaches the veins. For your exam: about 3 L/day (the 10–15% of filtrate not reabsorbed).
 
 ### coagulation-model: how clotting is described
 - **Status:** pending review.
@@ -338,6 +339,24 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** the calcitonin-in-adults and oxytocin-in-labor positions are applied in the endocrine chapter too (thyroid-parathyroid, hypothalamus-pituitary and the tools).
 - **For your exam:** as in those entries.
 
+### th-subsets: which helper T cells help B cells?
+- **Status:** pending review.
+- **Where:** `cell-mediated-immunity`, `antibody-immunity`, `immune-disorders`.
+- **Evidence-based position:** follicular helper T cells in germinal centers give most of the help B cells need for high-affinity, class-switched antibody; Th2 cytokines (IL-4, IL-5, IL-13) steer responses toward IgE, eosinophils and worm expulsion; Th17 cells recruit neutrophils at barrier surfaces.
+- **For your exam:** many texts teach only Th1 (cell-mediated) and Th2 (help for B cells). If only those are offered for "helps B cells", the answer is Th2.
+
+### hypersensitivity-classification: four types or more?
+- **Status:** pending review.
+- **Where:** `immune-disorders`.
+- **Evidence-based position:** Gell and Coombs types I–IV are the taught scheme, noting that real diseases mix types; stimulating or blocking antibodies (Graves disease, myasthenia gravis) are taught as type II. Some texts call them "type V", and the 2023 EAACI nomenclature splits type IV and uses V–VII for other mechanisms.
+- **For your exam:** four types, with Graves disease and myasthenia gravis under type II.
+
+### tonsillectomy-long-term: does removing tonsils weaken immunity?
+- **Status:** pending review.
+- **Where:** `lymphatic-system`.
+- **Evidence-based position:** no major lasting drop in antibody levels; a large Danish cohort linked childhood removal with more later respiratory, allergic and infectious disease, but causation is unproven. Taught as an open question.
+- **For your exam:** removing the tonsils does not meaningfully weaken immunity, because other MALT compensates.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -587,6 +606,49 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
 - **Map gaps:** isthmus, follicular and chief cells, the calcium-sensing receptor, 25-hydroxyvitamin D,
   tetany, Hashimoto thyroiditis, somatostatin, supraoptic and paraventricular nuclei, short-loop
   feedback, central vs nephrogenic diabetes insipidus, phosphatase, glycoprotein hormones.
+
+## Phase 2: lymphatic and immune chapter, judgment calls for instructor review
+
+- **Positions taught:** fever as negative feedback around a raised set point; trained immunity in
+  a going-further box (qualifying "innate immunity has no memory"); dendritic cells are "by far
+  the best" at switching on naive T cells; peripheral tolerance mostly via resting dendritic
+  cells, with long-lasting (not permanent) anergy; MHC class I peptides from the proteasome,
+  including faulty new proteins; AIRE deficiency mainly targets the parathyroid and adrenal glands;
+  CD8 T cells, not antibodies, control early HIV; GAMED taught as a list, not an abundance order
+  (true order G > A > M > D > E); hypersensitivity "usually" needs an earlier symptom-free
+  exposure (ABO reactions are the exception); beta-2 stimulation lowers mast cell release; IgA is
+  made in the largest amount each day; lymphedema's fibrosis driven by white cells drawn into
+  stagnant fluid; the spleen's platelet reserve is released after splenectomy; "pathogen" is taught
+  late (in antibody-immunity), so earlier topics say "microbe" — the map may want it earlier.
+- **Normal values chosen:** 500–700 lymph nodes; spleen about 150 g holding about a third of the
+  platelets; the thoracic duct drains about three quarters of the body; about 98% of thymocytes
+  die; blood lymphocytes T 70–80%, B 10–15%, NK 5–15%; 1 in 100,000 to 1 in a million naive cells
+  fit an epitope; divisions every 6–8 hours, clones of tens of thousands or more; memory cells
+  100–1,000 times more numerous; HLA versions in the tens of thousands; 1–10% of T cells react to
+  a foreign HLA type; primary response antibody after 5–10 days, peaking at 7–14 days, secondary
+  lag 1–3 days, peak 10–100 times higher; serum IgG 75–80%, IgA 10–15%, IgM 5–10%, IgD under 1%,
+  IgE well under 0.1%; IgG half-life about 3 weeks; CD4 count 500–1,500 per µL, AIDS below 200;
+  about 10 years untreated to AIDS; about 85% of generalized myasthenia with AChR antibodies; about
+  4 in 5 people with autoimmune disease are women (lupus 9 in 10); fever from 38 °C, danger above
+  about 41 °C, 10–12% more energy per °C; epinephrine for anaphylaxis per the 2023 AAAAI/ACAAI
+  parameter (0.01 mg/kg IM, max 0.5 mg adult and 0.3 mg child; auto-injectors 0.3 and 0.15 mg;
+  repeat after 5–15 minutes); antivenom protection lasts only days.
+- **Tool values:** the antibody-response graph's secondary peak about 12 times the primary; the
+  HIV graph is schematic (early weeks stretched, with an axis break).
+- **Figures:** Figure 21.16 prints "Antibody 1–3" on lymphocytes its caption calls T cells
+  (covered; an author should decide the cell type); 21.20's heading says the enzymes "rupture cell
+  membranes" and draws the target shattered (heading covered, captions correct it to apoptosis);
+  21.28 not used (credits T cells with antibody-dependent killing, which NK cells do); 21.26 and
+  21.22 replaced with our own drawings; 21.7–21.11 credit third-party micrographs, so the node and
+  spleen are our own drawings and there is no spleen or node histology station; 21.29's "Pleura"
+  label is tied to the general organs concept and stays visible.
+- **Map gaps:** subcapsular sinus, paracortex, medullary sinus, the spleen's central artery and
+  venous sinus, chronic granulomatous disease, AIRE, hapten, cross-presentation, C-reactive
+  protein, Toll-like receptors, HLA, CD28/B7, FOXP3, affinity maturation, conjugate vaccine,
+  immune complex, molecular mimicry, opportunistic infection, PD-1 and CTLA-4, CAR T cells,
+  Lambert–Eaton syndrome.
+- **Etymology to confirm:** interferon ("interfere"), opsonin, tonsilla (uncertain origin),
+  anaphylaxis ("ana-" = against), the bursa of Fabricius for "B".
 
 ## Decided at the Phase 0 reviews
 

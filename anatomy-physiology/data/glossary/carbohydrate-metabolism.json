@@ -1,0 +1,32 @@
+{
+  "glycolysis-detail": {
+    "def": "The ten steps of glycolysis in two phases. In the energy-consuming phase, hexokinase traps glucose as glucose-6-phosphate and 2 ATP are spent; in the energy-yielding phase, each three-carbon half is oxidized, making NADH, and 4 ATP are made, for a net 2 ATP, 2 NADH and 2 pyruvate.",
+    "roots": [["glyco-", "sugar"], ["-lysis", "splitting"], ["hex-", "six"], ["kinase", "enzyme that adds a phosphate from ATP"]],
+    "say": "HEK-soh-KY-nays"
+  },
+  "acetyl-coa": {
+    "def": "The step in the mitochondrial matrix that removes one carbon from pyruvate as CO2, makes NADH, and attaches the remaining two-carbon acetyl group to coenzyme A, a carrier made from vitamin B5. The step cannot run backward.",
+    "roots": [["acet-", "vinegar"]],
+    "say": "ASS-eh-til koh-AY"
+  },
+  "citric-acid-cycle": {
+    "def": "A loop of eight reactions in the mitochondrial matrix, also called the Krebs or TCA cycle, that joins acetyl CoA to oxaloacetate and rebuilds oxaloacetate. Each turn releases 2 CO2 and makes 3 NADH, 1 FADH2 and 1 ATP.",
+    "roots": [["citr-", "lemon"], ["tri-", "three"]],
+    "say": ""
+  },
+  "etc": {
+    "def": "The protein complexes of the inner mitochondrial membrane that pass electrons from NADH and FADH2 to oxygen, the terminal electron acceptor, and pump H+ into the intermembrane space. H+ flowing back through ATP synthase makes ATP (chemiosmosis); together this is oxidative phosphorylation.",
+    "roots": [["chemi-", "chemical"], ["osmo-", "push"]],
+    "say": "kem-ee-oz-MOH-sis"
+  },
+  "atp-yield": {
+    "def": "The ATP made from one glucose broken down fully with oxygen: about 30–32, using about 2.5 ATP per NADH and 1.5 per FADH2. Only 4 are made directly; the rest come from oxidative phosphorylation. Older texts give 36–38.",
+    "roots": [],
+    "say": ""
+  },
+  "glucose-storage-detail": {
+    "def": "The steps of glucose storage and release. Glycogen synthase builds glycogen from activated glucose; glycogen phosphorylase clips glucose off by phosphorolysis, and glucose-6-phosphatase in liver and kidney frees it into the blood. Gluconeogenesis makes glucose from lactate, amino acids and glycerol, bypassing glycolysis's three one-way steps.",
+    "roots": [["gluc-", "glucose"], ["neo-", "new"], ["-genesis", "making"], ["-lysis", "splitting"]],
+    "say": ""
+  }
+}

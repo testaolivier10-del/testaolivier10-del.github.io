@@ -1,0 +1,49 @@
+{
+  "topic": "kidney-anatomy",
+  "hook": "<p>Dev, 24, is tackled from behind during a rugby match and lands hard on the ground. He has pain over his left lower ribs, near his spine, and his urine an hour later is pink. His abdomen is soft and his belly is not tender. The team doctor suspects a bruised left kidney, not a torn spleen or bowel: the kidneys sit high in the back, behind the peritoneum, right under the lowest ribs.</p>",
+  "prereq": [
+    {
+      "q": "What does it mean that an organ is retroperitoneal?",
+      "options": ["It hangs from a mesentery inside the peritoneal cavity", "It lies behind the peritoneum, covered by it on its front surface only", "It lies in the thoracic cavity above the diaphragm"],
+      "correct": 1,
+      "why": "Retroperitoneal (retro- = behind) organs lie against the back wall of the abdomen, behind the peritoneum, which covers only their front surfaces. The pancreas, the aorta and the kidneys are examples.",
+      "review": "digestive-overview"
+    },
+    {
+      "q": "Which epithelium can stretch from about six cell layers thick to two or three without tearing?",
+      "options": ["Transitional epithelium", "Simple squamous epithelium", "Pseudostratified ciliated columnar epithelium"],
+      "correct": 0,
+      "why": "Transitional epithelium is stratified, with dome-shaped surface cells that flatten as the organ fills. It lines the ureters, the bladder and the first part of the urethra.",
+      "review": "epithelium"
+    },
+    {
+      "q": "In a visceral reflex, what is the effector?",
+      "options": ["A skeletal muscle under voluntary control", "Smooth muscle, cardiac muscle or a gland", "A sensory receptor in the skin"],
+      "correct": 1,
+      "why": "Visceral (autonomic) reflexes act on smooth muscle, cardiac muscle or glands through autonomic motor neurons. Somatic reflexes act on skeletal muscle.",
+      "review": "reflexes"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-25-8",
+    "caption": "A kidney cut in a frontal plane. Hide the labels and name the cortex, medulla, pyramid, papilla, renal column, minor and major calyx, renal pelvis and the vessels at the hilum."
+  },
+  "chain": [
+    { "cause": "Urine collects in the bladder, and at about 150 to 250 mL the detrusor muscle is stretched.", "effect": "Stretch-sensitive sensory endings in the bladder wall fire, and signals travel in the pelvic nerves to the sacral spinal cord and up to the pontine micturition center." },
+    { "cause": "The signals reach the pons and the cerebral cortex.", "effect": "You feel the urge. While the cortex holds the pontine center back, sympathetic fibers keep the detrusor relaxed and the internal urethral sphincter shut, and the pudendal nerve keeps the external urethral sphincter shut." },
+    { "cause": "You decide to empty your bladder, and the cortex releases the pontine micturition center.", "effect": "The pontine center drives the sacral micturition center (S2 to S4), whose parasympathetic fibers release acetylcholine onto the detrusor." },
+    { "cause": "The detrusor contracts, sympathetic output falls and the bladder neck is pulled open.", "effect": "Pressure in the bladder rises and the internal urethral sphincter opens." },
+    { "cause": "Pudendal nerve firing falls.", "effect": "The external urethral sphincter relaxes, urine flows, and flow through the urethra strengthens the detrusor contraction until the bladder is nearly empty." }
+  ],
+  "misconception": {
+    "wrong": "Your kidneys sit low in your back, around your waist or hips.",
+    "right": "Your kidneys sit high, beside the spine from about T12 to L3. The 11th and 12th ribs cover the back of their upper parts, and the right kidney sits a little lower than the left because the liver is above it. That is why a blow to the lower ribs from behind can injure a kidney, and why kidney pain is felt in the flank, just below the ribs, not low in the back."
+  },
+  "check": ["anp-kidney-anatomy-1", "anp-kidney-anatomy-4", "anp-kidney-anatomy-7", "anp-kidney-anatomy-8", "anp-kidney-anatomy-12", "anp-kidney-anatomy-14", "anp-kidney-anatomy-15"],
+  "summary": "<p>The two kidneys make urine; the ureters carry it to the urinary bladder, which stores it; and the urethra carries it out. The kidneys are retroperitoneal, from about T12 to L3, the right a little lower than the left, wrapped from outside in by renal fascia, the adipose capsule and the renal capsule. Inside, the renal cortex surrounds the pyramids of the renal medulla, with renal columns between them. Each pyramid's papilla drains into a minor calyx; minor calyces join into major calyces and then the renal pelvis, which leaves the hilum as the ureter. Blood runs renal artery, segmental, interlobar, arcuate and cortical radiate arteries, and back through matching veins to the renal vein. The ureters move urine by peristalsis and enter the bladder at a slant that works as a valve. The bladder's detrusor muscle and transitional epithelium let it stretch, and the trigone marks its floor. The involuntary internal and voluntary external urethral sphincters hold urine in until the micturition reflex, switched by the pons under the cortex's control, contracts the detrusor and opens both sphincters.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-31", "label": "NREMT: Chest and abdominal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}
