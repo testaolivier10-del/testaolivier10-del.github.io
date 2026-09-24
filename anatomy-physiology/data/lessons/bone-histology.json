@@ -1,0 +1,46 @@
+{
+  "topic": "bone-histology",
+  "hook": "<p>Mia is 4 and has already broken eleven bones, some from nothing more than a tumble on the carpet. An X-ray shows plenty of mineral in her bones. The problem is a single faulty gene for collagen. Bone that is hard but lacks good collagen behaves like chalk: it snaps instead of bending. To see why both parts matter, and which cells build and remove them, you need to look at bone under the microscope.</p>",
+  "prereq": [
+    {
+      "q": "What is an ion?",
+      "options": ["An atom or molecule with an electric charge", "A molecule made of amino acids", "A neutral atom with a full outer shell"],
+      "correct": 0,
+      "why": "An ion is an atom or group of atoms that has gained or lost electrons, so it carries a charge. Calcium ions (Ca2+) and phosphate ions are the ions of bone mineral.",
+      "review": "atoms-ions-bonds"
+    },
+    {
+      "q": "Which connective tissue fiber is made of a tough protein that resists pulling?",
+      "options": ["Elastic fibers", "Collagen fibers", "Reticular fibers"],
+      "correct": 1,
+      "why": "Collagen fibers are thick bundles of collagen protein with great tensile strength. They are the main fiber of bone matrix.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "In an adult, where is red bone marrow found?",
+      "options": ["In the shafts of the long bones of the limbs", "In the articular cartilage", "In the flat bones, vertebrae, hip bones and the upper ends of the thigh and upper arm bones"],
+      "correct": 2,
+      "why": "Through childhood, yellow marrow replaces red marrow in the limb shafts. Adult red marrow remains in the flat bones, vertebrae, hip bones and the proximal epiphyses of the thigh and upper arm bones.",
+      "review": "bone-structure"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-6-11",
+    "caption": "The four bone cells. Hide the labels and name each cell from its shape: the one with long arms, the row on the bone surface, the flat stem cell, and the giant cell with many nuclei."
+  },
+  "chain": [
+    { "cause": "An osteogenic cell in the periosteum or endosteum divides.", "effect": "One daughter differentiates into an osteoblast on the bone surface." },
+    { "cause": "The osteoblast secretes osteoid: collagen and ground substance.", "effect": "Calcium phosphate crystals deposit along the collagen, and the matrix hardens." },
+    { "cause": "Matrix builds up around the osteoblast until the cell is enclosed.", "effect": "It now sits in a lacuna and has become an osteocyte." },
+    { "cause": "The osteocyte is walled in by mineral that nutrients cannot cross.", "effect": "It depends on its arms in the canaliculi, which link it to neighbors and to the vessels in the central canal." }
+  ],
+  "misconception": {
+    "wrong": "Bone's strength comes from its minerals, so harder bone is always stronger bone.",
+    "right": "Mineral makes bone hard and resistant to squeezing, but on its own it is brittle, like chalk. Collagen makes bone resist pulling and bend slightly before breaking. Bone with too little good collagen, as in brittle bone disease, snaps easily even when its mineral content is normal. Strength comes from the two together."
+  },
+  "check": ["anp-bone-histology-1", "anp-bone-histology-7", "anp-bone-histology-8", "anp-bone-histology-10", "anp-bone-histology-12", "anp-bone-histology-13", "anp-bone-histology-15"],
+  "summary": "<p>Bone matrix is about one third organic, mostly collagen, which resists pulling, and two thirds mineral, hydroxyapatite crystals of calcium phosphate, which resist squeezing. Newly laid, unmineralized matrix is osteoid. Four cells run bone: osteogenic cells, the dividing stem cells; osteoblasts, which build matrix; osteocytes, former osteoblasts trapped in lacunae that maintain matrix and sense load; and osteoclasts, huge fused cells of the macrophage line that resorb bone with acid and enzymes, releasing calcium and phosphate into the blood. Compact (cortical) bone is built of osteons: lamellae around a central canal, with osteocytes in lacunae linked by canaliculi, and perforating canals joining the osteons. Spongy (cancellous) bone is a lattice of trabeculae with marrow between them and no osteons; in flat skull bones it is called the diploë.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "os-9-8": {
+    "file": "figures/openstax/os-9-8.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.8",
+      "section": "9.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/af381be8a652836be808fde38c82b77265f65701",
+      "page": "9-4-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/af381be8a652836be808fde38c82b77265f65701",
+    "alt": "A section through a joint between two bone ends. Each bone end is capped with a smooth blue layer of cartilage. A space filled with pale fluid separates the two caps. A two-layer sleeve encloses the space: a thin red inner lining and a tougher grey outer layer that blends into the covering of each bone.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.8",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1244
+  },
+  "os-9-9": {
+    "file": "figures/openstax/os-9-9.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.9",
+      "section": "9.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e00e1ed48c5356f8c7d104f93d7b74b5dfa8dbbf",
+      "page": "9-4-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e00e1ed48c5356f8c7d104f93d7b74b5dfa8dbbf",
+    "alt": "A section through the knee from the side. The thigh bone sits on the shin bone, with the kneecap in front. Several flattened fluid-filled sacs lie between the kneecap, its tendon and ligament, the skin, and the bones, and a yellow pad of fat sits behind the ligament below the kneecap. Two crossing ligaments run inside the joint between the bones.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.9",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 882
+  },
+  "os-9-10": {
+    "file": "figures/openstax/os-9-10.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.10",
+      "section": "9.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c13e0675f88df80a649c4b816686318261b55b45",
+      "page": "9-4-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/c13e0675f88df80a649c4b816686318261b55b45",
+    "alt": "A front view of a whole skeleton with six boxes pulled out to simple models of joint shapes: a peg turning in a ring at the top of the neck; a cylinder rolling in a trough at the elbow; two saddle shapes at the base of the thumb; flat plates sliding on each other in the foot; an oval fitting into an oval hollow at the wrist; and a ball in a cup at the hip. Curved arrows on each model show the directions it can move.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.10",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1311
+  },
+  "os-9-11": {
+    "file": "figures/openstax/os-9-11.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.11",
+      "section": "9.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e805ac89b71c1ed264f89d79472b1ed9d7d0834e",
+      "page": "9-4-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e805ac89b71c1ed264f89d79472b1ed9d7d0834e",
+    "alt": "Two drawings of the hip joint side by side. On the left, the ball of the thigh bone is covered with smooth, even cartilage and sits in its socket with a clear gap. On the right, the cartilage is thin and cracked, patches of bare bone show through, and the gap between the bones is narrower.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.11",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 519
+  },
+  "os-9-15": {
+    "file": "figures/openstax/os-9-15.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.15",
+      "section": "9.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e83762d74165f8aa5a0abf095d5258cb87d50efd",
+      "page": "9-6-anatomy-of-selected-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e83762d74165f8aa5a0abf095d5258cb87d50efd",
+    "alt": "The jaw joint. A small skull in the corner marks the joint just in front of the ear. The enlarged view shows the rounded top of the lower jaw sitting under a hollow in the skull bone, with a thin plate of cartilage between them dividing the joint into an upper and a lower fluid space, all enclosed by a sleeve of tissue. Arrows show the jaw's top gliding forward.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.15",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1039
+  },
+  "os-9-16": {
+    "file": "figures/openstax/os-9-16.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.16",
+      "section": "9.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/deb43b18831a471fdffb254114dde51a3b5ab776",
+      "page": "9-6-anatomy-of-selected-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/deb43b18831a471fdffb254114dde51a3b5ab776",
+    "alt": "A front section through the right shoulder. The large rounded head of the upper arm bone rests against a small shallow socket on the shoulder blade, deepened by a rim of cartilage. A loose sleeve surrounds the joint. Above it, a bony shelf of the shoulder blade and a ligament form a roof, with a flattened fluid sac underneath. Two tendons pass near the joint, one running over the top and one running down the front of the arm in its own sheath.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.16",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 804
+  },
+  "os-9-17": {
+    "file": "figures/openstax/os-9-17.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.17",
+      "section": "9.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/582fa0c75619f48d848c99ffa7da390d990565ad",
+      "page": "9-6-anatomy-of-selected-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/582fa0c75619f48d848c99ffa7da390d990565ad",
+    "alt": "Three views of the elbow. A lengthwise section shows the lower end of the upper arm bone fitting into a deep notch of the ulna, with cartilage on both surfaces, a fluid space, fat pads, and a fluid sac behind the point of the elbow. The outer view shows a ring of ligament around the head of the radius and a fan-shaped ligament on the outer side. The inner view shows a triangular ligament on the inner side joining the upper arm bone to the ulna.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.17",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 939
+  },
+  "os-9-18": {
+    "file": "figures/openstax/os-9-18.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.18",
+      "section": "9.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/95ce63923c32fe5333a26c3905f644f625697917",
+      "page": "9-6-anatomy-of-selected-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/95ce63923c32fe5333a26c3905f644f625697917",
+    "alt": "Three views of the right hip joint. A front section shows the head of the femur deep in the socket of the hip bone, a rim of cartilage deepening the socket, a small ligament from the socket to the femoral head, and a thick sleeve around the joint. Front and back views show strong bands of ligament spiraling around the sleeve from the hip bone to the femur.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.18",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 2021
+  },
+  "os-9-19": {
+    "file": "figures/openstax/os-9-19.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.19",
+      "section": "9.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/34a9f927c0e23c676167851497ca3562507a76eb",
+      "page": "9-6-anatomy-of-selected-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/34a9f927c0e23c676167851497ca3562507a76eb",
+    "alt": "Three views of the right knee. A side section shows the thigh bone on the shin bone, the kneecap in front, two crossing ligaments inside the joint, C-shaped cartilage pads between the bones, and several fluid sacs. A view from above the shin bone shows the two C-shaped pads and where the crossing ligaments attach. A front view shows the kneecap in the tendon from the thigh, the ligament below it, and a ligament on each side of the knee.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.19",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 843
+  },
+  "os-9-20": {
+    "file": "figures/openstax/os-9-20.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.20",
+      "section": "9.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2f97fe1da02800bd10a6ec261e4f1f4699151dd9",
+      "page": "9-6-anatomy-of-selected-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/2f97fe1da02800bd10a6ec261e4f1f4699151dd9",
+    "alt": "A front view of a right knee struck from the outer side, shown by a large red arrow. Three injuries are shown: the ligament on the inner side of the knee is torn, the inner C-shaped cartilage pad is damaged, and one of the crossing ligaments inside the knee is torn.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.20",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 658
+  },
+  "os-9-21": {
+    "file": "figures/openstax/os-9-21.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.21",
+      "section": "9.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/27a2d5bcbb13d9e7d6033a5bc33567f34a342ad5",
+      "page": "9-6-anatomy-of-selected-synovial-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/27a2d5bcbb13d9e7d6033a5bc33567f34a342ad5",
+    "alt": "Inner and outer views of the right ankle and foot. The inner view shows a broad fan-shaped ligament spreading down from the inner bump of the tibia to the ankle bones, and the joint below the talus. The outer view shows the fibula joined to the tibia by ligaments and a membrane, and short ligaments running from the outer bump of the fibula forward to the talus and down to the heel bone.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.21",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1246
+  }
+}

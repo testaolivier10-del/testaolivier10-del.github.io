@@ -1,0 +1,32 @@
+{
+  "vertebral-regions": {
+    "def": "The five regions of the vertebral column, the stack of bones from the skull to the pelvis: 7 cervical vertebrae (C1–C7), 12 thoracic (T1–T12), 5 lumbar (L1–L5), the sacrum (5 fused) and the coccyx (usually 4 fused).",
+    "roots": [["vertebra", "joint, from vertere = to turn"], ["cervic-", "neck"], ["thorac-", "chest"], ["lumb-", "loin"], ["sacr-", "sacred"], ["coccyx", "cuckoo"]],
+    "say": "VER-tuh-bree; SAY-krum; KOK-siks"
+  },
+  "vertebra-parts": {
+    "def": "The shared plan of a vertebra: a weight-bearing body in front and a vertebral arch (two pedicles and two laminae) behind, enclosing the vertebral foramen. One spinous, two transverse and four articular processes stick out from the arch, and nerves leave between vertebrae through the intervertebral foramina.",
+    "roots": [["pedicle", "little foot"], ["lamina", "thin plate"], ["inter-", "between"], ["cost-", "rib"]],
+    "say": "PED-ih-kul; LAM-ih-nee"
+  },
+  "atlas-axis": {
+    "def": "The first two cervical vertebrae. The atlas (C1) is a ring with no body or spinous process that carries the skull; the axis (C2) has an upward peg, the dens, around which the atlas and skull turn.",
+    "roots": [["Atlas", "the giant who held up the heavens"], ["dens", "tooth"]],
+    "say": "AT-lus; AK-sis; DENZ"
+  },
+  "spinal-curvatures": {
+    "def": "The four side-view curves of the adult spine: cervical and lumbar curves bow forward (lordosis), thoracic and sacrococcygeal curves bow backward (kyphosis). The thoracic and sacrococcygeal curves are primary, present before birth; the cervical and lumbar curves are secondary, forming after birth. Scoliosis is an abnormal sideways bend.",
+    "roots": [["kyph-", "hump"], ["lord-", "bent backward"], ["scoli-", "crooked"], ["-osis", "condition"]],
+    "say": "ky-FOH-sis; lor-DOH-sis; skoh-lee-OH-sis"
+  },
+  "intervertebral-disc": {
+    "def": "The fibrocartilage pad between two vertebral bodies: a tough outer ring, the anulus fibrosus, around a soft gel core, the nucleus pulposus. In a herniated disc, the core pushes out through a tear in the ring.",
+    "roots": [["anulus", "ring"], ["fibrosus", "fibrous"], ["nucleus", "kernel"], ["pulp-", "soft, fleshy"]],
+    "say": "AN-yoo-lus fy-BROH-sus; NOO-klee-us pul-POH-sus"
+  },
+  "vertebral-ligaments": {
+    "def": "The long ligaments that tie the vertebrae together: the anterior and posterior longitudinal ligaments along the front and back of the bodies, the elastic ligamentum flavum between laminae, the supraspinous ligament along the spinous process tips, and its neck version, the nuchal ligament.",
+    "roots": [["flav-", "yellow"], ["supra-", "above"], ["nucha", "nape of the neck"]],
+    "say": "lig-uh-MEN-tum FLAY-vum; NOO-kul"
+  }
+}

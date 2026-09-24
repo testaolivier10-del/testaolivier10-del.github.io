@@ -1,0 +1,47 @@
+{
+  "topic": "bone-development",
+  "hook": "<p>Leo, 11, lands badly off a trampoline and breaks his leg just above the knee. The X-ray shows the break running through a band of cartilage near the end of his thigh bone. His surgeon lines the pieces up with great care and warns that, even after the bone heals, that leg may grow more slowly than the other. That band is where Leo's bone is still getting longer. An adult has no such band, and no longer grows in height.</p>",
+  "prereq": [
+    {
+      "q": "What are the cells of cartilage called, and how do they get their nutrients?",
+      "options": ["Chondrocytes, by diffusion through the matrix", "Osteocytes, through canaliculi", "Fibroblasts, from capillaries in the matrix"],
+      "correct": 0,
+      "why": "Chondrocytes sit in lacunae in cartilage matrix. Cartilage has no blood vessels, so nutrients reach them by diffusing through the matrix from the perichondrium.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "Which part of a long bone is its widened end?",
+      "options": ["The diaphysis", "The epiphysis", "The medullary cavity"],
+      "correct": 1,
+      "why": "Each widened end is an epiphysis; the shaft is the diaphysis, and the flared zone between them is the metaphysis.",
+      "review": "bone-structure"
+    },
+    {
+      "q": "Which bone cell lays down new bone matrix?",
+      "options": ["Osteoclast", "Osteocyte", "Osteoblast"],
+      "correct": 2,
+      "why": "Osteoblasts secrete osteoid, which then mineralizes. Osteoclasts resorb bone, and osteocytes maintain it.",
+      "review": "bone-histology"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-6-18",
+    "caption": "The zones of the epiphyseal plate, from the epiphysis at the top to the new bone of the metaphysis at the bottom. Hide the labels and name each zone from what its chondrocytes are doing."
+  },
+  "chain": [
+    { "cause": "Chondrocytes in the proliferative zone divide and stack up, adding cells and matrix.", "effect": "The plate thickens on its epiphysis side, pushing the epiphysis away from the diaphysis." },
+    { "cause": "Older chondrocytes, pushed down the stack, stop dividing and swell.", "effect": "The matrix around the enlarged cells calcifies." },
+    { "cause": "Calcified matrix blocks diffusion of nutrients to the chondrocytes.", "effect": "The chondrocytes die, leaving columns of calcified cartilage with empty spaces." },
+    { "cause": "Blood vessels and osteogenic cells from the diaphysis invade the spaces.", "effect": "Osteoblasts lay bone on the calcified columns, so the diaphysis grows longer while the plate keeps the same thickness." }
+  ],
+  "misconception": {
+    "wrong": "During development, cartilage hardens and turns into bone.",
+    "right": "Cartilage never becomes bone. In endochondral ossification, the cartilage model's matrix calcifies, its chondrocytes die, and osteoblasts that arrive with invading blood vessels lay new bone on the leftover scaffold, which osteoclasts later clear away. Bone replaces cartilage. Calcified cartilage is still cartilage, and chondrocytes do not become bone cells."
+  },
+  "check": ["anp-bone-development-5", "anp-bone-development-6", "anp-bone-development-8", "anp-bone-development-9", "anp-bone-development-13", "anp-bone-development-14", "anp-bone-development-15"],
+  "summary": "<p>Ossification is bone formation by osteoblasts, starting at ossification centers. In intramembranous ossification, bone forms directly in a sheet of mesenchyme: the skull roof, most bones of the face and the collarbones. In endochondral ossification, which forms most bones, a hyaline cartilage model is replaced by bone: its middle calcifies, a bone collar forms, a nutrient artery brings in bone-forming cells to make the primary ossification center in the diaphysis, osteoclasts open the medullary cavity, and secondary ossification centers form in the epiphyses. Cartilage remains as articular cartilage and as the epiphyseal plate, whose zones (reserve zone, proliferative zone, zone of maturation and hypertrophy, zone of calcified matrix) add cartilage that bone then replaces. That interstitial growth of cartilage lengthens the bone until the plates close in the late teens, leaving epiphyseal lines. Bones widen by appositional growth: osteoblasts add bone under the periosteum while osteoclasts remove it inside.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-8", "label": "NREMT: Life span development" }
+  ]
+}

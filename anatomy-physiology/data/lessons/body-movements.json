@@ -1,0 +1,47 @@
+{
+  "topic": "body-movements",
+  "hook": "<p>Six weeks after shoulder surgery, Mr. Chen, 58, sees his physical therapist. She measures how far his arm moves and writes: \"flexion 110°, abduction 80°, lateral rotation 20°.\" Any clinician who reads the note knows exactly which way his arm moves well and which way it is still stiff, because each of those words names one direction from one starting posture.</p>",
+  "prereq": [
+    {
+      "q": "Which plane divides the body into right and left parts?",
+      "options": ["Frontal plane", "Sagittal plane", "Transverse plane"],
+      "correct": 1,
+      "why": "A sagittal plane runs vertically from front to back and divides the body into right and left parts. The frontal plane divides front from back, and the transverse plane divides upper from lower.",
+      "review": "body-planes"
+    },
+    {
+      "q": "Which type of synovial joint allows a bone to turn around its own long axis in a ring?",
+      "options": ["Hinge joint", "Pivot joint", "Saddle joint"],
+      "correct": 1,
+      "why": "In a pivot joint, a rounded peg turns inside a ring of bone and ligament, so the bone turns around its long axis. A hinge swings in one plane, and a saddle joint swings in two planes.",
+      "review": "synovial-joints"
+    },
+    {
+      "q": "In anatomical position, which way do the palms face?",
+      "options": ["Forward", "Backward", "Toward the thighs"],
+      "correct": 0,
+      "why": "In anatomical position you stand upright facing forward with your arms at your sides and your palms facing forward.",
+      "review": "anatomical-position"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-9-12",
+    "caption": "Movements at the shoulder, hip, knee, neck and trunk. Hide the labels and name each movement from the direction of its arrow before you check."
+  },
+  "chain": [
+    { "cause": "You start in anatomical position: palm forward, and the radius lies parallel to the ulna.", "effect": "The forearm is supinated." },
+    { "cause": "The head of the radius turns inside the annular ligament at the proximal radioulnar joint.", "effect": "The shaft of the radius turns, and its lower end swings around the ulna at the distal radioulnar joint." },
+    { "cause": "The lower end of the radius moves around the ulna.", "effect": "The radius crosses over the ulna, which stays in place." },
+    { "cause": "The hand is joined to the radius at the radiocarpal joint, so it moves with the radius.", "effect": "The palm turns to face backward: the forearm is pronated, with no movement at the wrist." }
+  ],
+  "misconception": {
+    "wrong": "Flexion means moving a body part forward.",
+    "right": "Flexion means decreasing the angle between two bones in the sagittal plane, measured from anatomical position. At most joints that carries the part forward, but at the knee flexion carries the leg backward, toward the back of the thigh. Judge flexion by the angle, not by the direction of travel."
+  },
+  "check": ["anp-body-movements-1", "anp-body-movements-4", "anp-body-movements-7", "anp-body-movements-10", "anp-body-movements-12", "anp-body-movements-15", "anp-body-movements-18"],
+  "summary": "<p>Movements are named from anatomical position by plane and direction. Flexion decreases the angle between bones in the sagittal plane and extension increases it; hyperextension goes past anatomical position. Abduction moves a limb away from the midline in the frontal plane and adduction back; lateral flexion bends the trunk or neck sideways. Medial and lateral rotation turn a bone on its long axis, and circumduction sweeps a limb in a cone. Special movements: supination and pronation (forearm), dorsiflexion and plantar flexion (ankle), inversion and eversion (foot), protraction and retraction, elevation and depression, lateral and medial excursion (jaw), superior and inferior rotation (scapula), and opposition and reposition (thumb).</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-5", "label": "NREMT: Medical terminology" },
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" }
+  ]
+}

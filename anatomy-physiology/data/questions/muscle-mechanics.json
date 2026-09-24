@@ -1,0 +1,473 @@
+[
+  {
+    "id": "anp-muscle-mechanics-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-11-3",
+    "pin": "belly",
+    "q": "Name the pinned part of this spindle-shaped muscle.",
+    "options": ["Origin", "Belly", "Insertion", "Aponeurosis"],
+    "correct": 1,
+    "why": {
+      "correct": "The belly is the thick, fleshy middle of a muscle, between the tendons that run to its origin and insertion.",
+      "options": [
+        "The origin is the attachment that stays still, at one end of the muscle, not its fleshy middle.",
+        "Correct. The fleshy middle part of the muscle is its belly.",
+        "The insertion is the attachment on the bone that moves, at the other end of the muscle.",
+        "An aponeurosis is a flat sheet of dense connective tissue that attaches some muscles. It is not the fleshy middle."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-3",
+    "pin": "bipennate",
+    "q": "Name the fascicle arrangement at the pin: short fascicles slant into both sides of a central tendon.",
+    "options": ["Unipennate", "Multipennate", "Bipennate", "Convergent"],
+    "correct": 2,
+    "why": {
+      "correct": "Fascicles that attach at an angle on both sides of one central tendon, like both sides of a feather, make a bipennate muscle.",
+      "options": [
+        "A unipennate muscle has fascicles on only one side of its tendon.",
+        "A multipennate muscle has several tendons, with fascicles converging on them from many angles.",
+        "Correct. Fascicles on both sides of a central tendon are bipennate.",
+        "A convergent muscle fans out from one tendon over a broad origin. Its fascicles do not line both sides of a long central tendon."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-11-3",
+    "pin": "convergent",
+    "q": "Name the fascicle arrangement at the pin, on the fan-shaped chest muscle.",
+    "options": ["Parallel", "Convergent", "Circular", "Unipennate"],
+    "correct": 1,
+    "why": {
+      "correct": "A fan of fascicles spreading from one tendon over a broad origin is a convergent arrangement.",
+      "options": [
+        "Parallel fascicles run side by side along the whole length of the muscle, not in a fan.",
+        "Correct. A fan-shaped muscle whose fascicles meet at one tendon is convergent.",
+        "Circular fascicles run in rings around an opening, as around the mouth.",
+        "Unipennate fascicles slant into one side of a long tendon, like half a feather."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-11-3",
+    "pin": "circular",
+    "q": "Name the fascicle arrangement at the pin, around the mouth.",
+    "options": ["Convergent", "Multipennate", "Fusiform", "Circular"],
+    "correct": 3,
+    "why": {
+      "correct": "Fascicles running in a ring around an opening form a circular muscle. One that guards an opening is called a sphincter.",
+      "options": [
+        "Convergent fascicles fan out from one tendon; they do not form a ring.",
+        "Multipennate fascicles slant onto several tendons, as in the thick muscle over the shoulder.",
+        "A fusiform muscle is a parallel muscle with a thick belly tapering at both ends.",
+        "Correct. The ring of fascicles around the mouth is a circular muscle."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "You bend your elbow to lift a cup. The large muscle on the front of your upper arm attaches to the scapula above and to the radius below. Which statement is correct?",
+    "options": [
+      "The scapula attachment is the insertion, because it is higher",
+      "The radius attachment is the origin, because it is distal",
+      "Both attachments are origins, because the muscle has two ends",
+      "The radius attachment is the insertion, because the radius moves"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The insertion is the attachment on the bone that moves. When you lift the cup, the forearm (with the radius) swings up while the scapula stays put, so the radius attachment is the insertion and the scapula attachment is the origin.",
+      "options": [
+        "Height does not decide it. The scapula stays still, which makes its attachment the origin.",
+        "The origin is usually the proximal, stable attachment. The distal radius attachment moves, so it is the insertion.",
+        "A muscle has an origin at the stable end and an insertion at the moving end, not two origins. (Some muscles have several heads at their origin, but they still have an insertion.)",
+        "Correct. The radius moves, so that attachment is the insertion."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A rock climber hangs from a ledge by her hands and bends her elbows to pull her body up. The same muscles that bend her elbow when she lifts a cup are doing the work. What is happening at their attachments?",
+    "options": [
+      "The muscles are pushing the upper arm away from the forearm",
+      "The origin is moving toward the fixed insertion: a reverse action",
+      "The insertion is pulling toward the origin as usual",
+      "The antagonists on the back of the arm have become the prime movers"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "With the hands fixed on the ledge, the forearm is the stable end. The muscles still pull their two ends together, but now the upper arm and trunk (the usual origin) move up toward the forearm (the usual insertion). This is a reverse action.",
+      "options": [
+        "Muscles only pull; they cannot push bones apart.",
+        "Correct. The usual origin moves toward the fixed insertion.",
+        "In a pull-up the forearm is fixed, so the insertion is not the part that moves.",
+        "Bending the elbow is still flexion, so the flexors on the front of the arm remain the prime movers. The muscles on the back of the arm straighten the elbow."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-7",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which statements about the roles muscles take in a movement are correct? Select all that apply.",
+    "options": [
+      "The prime mover is also called the agonist",
+      "A synergist helps the prime mover or steadies the movement",
+      "A fixator holds a bone still so the prime mover has a stable base",
+      "An antagonist makes the same movement as the prime mover",
+      "A muscle keeps the same role in every movement it takes part in"
+    ],
+    "correct": [0, 1, 2],
+    "why": {
+      "correct": "The prime mover (agonist) does most of the work, synergists help or steady it, fixators hold the base still, and the antagonist makes the opposite movement. Roles belong to movements: the same muscle can be an antagonist in one movement and the prime mover in the next.",
+      "options": [
+        "Correct. Prime mover and agonist are two names for the muscle most responsible for a movement.",
+        "Correct. Synergists add force to the same movement or keep it moving in the right direction.",
+        "Correct. A fixator is a kind of synergist that stabilizes the bone the prime mover pulls from.",
+        "Incorrect. An antagonist makes the opposite movement; it relaxes and lengthens, often braking, while the prime mover contracts.",
+        "Incorrect. The muscle on the back of the arm is the antagonist when you bend the elbow and the prime mover when you straighten it."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "After an injury, the muscles that hold a patient's scapula against the chest wall are weak. When he tries to push a heavy door with an outstretched arm, his scapula slides and lifts off the rib cage and the push is weak. Which role were the weakened muscles playing?",
+    "options": ["Fixators", "Antagonists", "Prime movers of the elbow", "Sphincters"],
+    "correct": 0,
+    "why": {
+      "correct": "Muscles that hold a bone still so other muscles can pull from it are fixators. With a loose scapula, the arm muscles have no steady base, so their pull moves the scapula instead of the arm.",
+      "options": [
+        "Correct. Holding the scapula steady as a base is the fixator's job.",
+        "Antagonists produce the opposite movement. Weak antagonists would not make the scapula slide during a push.",
+        "The elbow's prime movers straighten or bend the elbow. They work from the arm bones, not from the scapula's position on the rib cage.",
+        "A sphincter is a ring of muscle that closes an opening, such as the mouth. It plays no part in pushing a door."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "You tip your head back to look at the ceiling. The skull pivots on the atlanto-occipital joint, the weight of the face is in front of the joint, and muscles pull down on the back of the skull behind it. Which lever class is this?",
+    "options": ["Second class", "Third class", "First class", "It is not a lever"],
+    "correct": 2,
+    "why": {
+      "correct": "The joint (fulcrum) sits between the effort at the back of the skull and the load of the face in front. A fulcrum in the middle makes a first-class lever, like a seesaw.",
+      "options": [
+        "In a second-class lever the load sits in the middle, between the fulcrum and the effort. Here the joint is in the middle.",
+        "In a third-class lever the effort sits in the middle. Here the muscles pull behind the joint, not between the joint and the face.",
+        "Correct. Fulcrum in the middle makes a first-class lever.",
+        "The skull is a rigid bar turning about a joint under a muscle's pull, which is exactly what a lever is."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-10",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which movement is the usual textbook example of a second-class lever in the body?",
+    "options": ["Bending the elbow to lift a cup", "Rising onto the toes", "Closing the jaw", "Nodding the head"],
+    "correct": 1,
+    "why": {
+      "correct": "Rising onto the toes is the standard second-class example: the ball of the foot is the fulcrum, body weight is the load in the middle, and the calf muscles pull up on the heel bone at the far end.",
+      "options": [
+        "Bending the elbow is third-class: the muscle's pull lies between the elbow and the load in the hand.",
+        "Correct. The load sits between the fulcrum at the ball of the foot and the effort at the heel.",
+        "Closing the jaw is third-class: the chewing muscles pull between the jaw joint and the food.",
+        "Nodding at the atlanto-occipital joint is first-class: the joint lies between the effort and the load."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "You bite a nut with your front teeth. The jaw pivots at the temporomandibular joint, the chewing muscles attach partway along the mandible, and the nut is at the front. Which lever class is at work?",
+    "options": ["First class", "Second class", "Third class", "A mix of first and second class"],
+    "correct": 2,
+    "why": {
+      "correct": "The muscles pull between the fulcrum (the jaw joint) and the load (the nut at the front teeth). Effort in the middle makes a third-class lever.",
+      "options": [
+        "A first-class lever has the fulcrum in the middle. Here the jaw joint is at one end.",
+        "A second-class lever has the load in the middle. Here the nut is at the far end.",
+        "Correct. Effort in the middle is third-class.",
+        "Each lever has one arrangement; with the effort in the middle, this one is simply third-class."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A muscle inserts 5 cm from a joint and holds a 20-newton load 30 cm from that joint, with the bone still. Ignoring the weight of the bone, how hard must the muscle pull?",
+    "options": ["About 3 newtons", "20 newtons", "120 newtons", "600 newtons"],
+    "correct": 2,
+    "why": {
+      "correct": "At balance, effort × effort arm = load × load arm. Effort × 5 cm = 20 N × 30 cm = 600 N·cm, so effort = 600 ÷ 5 = 120 N. The muscle pulls six times the load, because its effort arm is one sixth as long as the load arm.",
+      "options": [
+        "About 3 N would come from dividing the load by the six-fold ratio. With the effort arm shorter than the load arm, the muscle must pull more than the load, not less.",
+        "Pulling with the same force as the load would balance only if both arms were the same length.",
+        "Correct. 20 N × 30 cm ÷ 5 cm = 120 N.",
+        "600 is the product of the load and its arm (600 N·cm). It still has to be divided by the 5-cm effort arm."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-13",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Most levers in the body are third-class, with the muscle inserting close to the joint. What does this arrangement gain, and at what cost?",
+    "options": [
+      "It gains force; the cost is a smaller range of movement",
+      "It gains speed and range at the hand or foot; the cost is that the muscle must pull much harder than the load",
+      "It gains stability; the cost is that joints can only move in one plane",
+      "It gains nothing mechanically; muscles are placed near joints only because of space"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "With the effort arm shorter than the load arm, a short shortening of the muscle swings the far end of the bone a long way in the same time, so the hand or foot moves far and fast. The price is a mechanical advantage below 1: the muscle and tendon carry forces several times the load.",
+      "options": [
+        "A third-class lever loses force, not gains it: its effort arm is always shorter than its load arm.",
+        "Correct. Range and speed are gained; force is lost.",
+        "The lever class does not set joint stability or the planes a joint moves in; the joint's shape and ligaments do.",
+        "The arrangement has a clear mechanical effect: it multiplies the distance and speed of movement at the end of the limb."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Two muscles have the same volume. One is pennate with short, angled fibers; the other is parallel with long fibers. Which comparison is correct?",
+    "options": [
+      "The pennate muscle produces more force; the parallel muscle shortens farther",
+      "The parallel muscle produces more force; the pennate muscle shortens farther",
+      "They produce the same force because their volume is the same",
+      "The pennate muscle both produces more force and shortens farther"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Short, angled fibers let more fibers pack side by side into the pennate muscle, so more cross-bridges pull at once and it is stronger. Long parallel fibers have more sarcomeres in series, so the parallel muscle shortens a longer distance, faster.",
+      "options": [
+        "Correct. Pennate means more force; parallel means more range and speed.",
+        "This reverses both effects. More fibers side by side gives the pennate muscle more force; longer fibers give the parallel muscle more range.",
+        "Force depends on how many fibers pull side by side, not on volume alone. The pennate muscle fits more fibers into the same volume.",
+        "Short fibers cannot shorten as far as long ones. The pennate muscle gives up range to gain force."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-15",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Put these events in order, from the signal to the muscle to the movement of a cup in your hand as you bend your elbow.",
+    "options": [
+      "Motor neurons signal the prime mover's fibers",
+      "The fibers shorten and pull on the muscle's connective tissue wrappings",
+      "The tendon pulls on the insertion on the radius",
+      "The forearm pivots at the elbow joint, the fulcrum",
+      "The hand and cup swing up through a larger distance than the insertion moves"
+    ],
+    "why": {
+      "correct": "The signal makes the fibers shorten. Their pull passes through the wrappings into the tendon, which pulls the insertion toward the origin. The forearm turns about the elbow as a lever, and because the insertion is close to the elbow, the hand travels much farther than the insertion does.",
+      "options": [
+        "The movement starts with the motor neurons firing the muscle's fibers.",
+        "Shortening fibers pull on the endomysium, perimysium and epimysium around them.",
+        "The wrappings merge into the tendon, which transmits the pull to the insertion.",
+        "Pulled at its insertion, the forearm turns about the elbow joint.",
+        "With the effort close to the fulcrum, the far end of the lever moves farther and faster."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-16",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Decode the name flexor pollicis longus: flexor = bends a joint; pollicis = ____; longus = long.",
+    "options": ["Of the thumb", "Of the smallest finger", "Of the chest", "With two heads"],
+    "correct": 0,
+    "why": {
+      "correct": "Pollex is Latin for thumb, and pollicis means \"of the thumb\". Flexor pollicis longus is the long muscle that flexes the thumb.",
+      "options": [
+        "Correct. Pollicis means of the thumb.",
+        "The smallest finger is digiti minimi, as in abductor digiti minimi.",
+        "The chest is pectoral-.",
+        "Two heads is biceps (-ceps = heads)."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-17",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "These statements describe what happens as you slowly bend your elbow to lift a book. One is wrong. Find it.",
+    "options": [
+      "The prime mover on the front of the upper arm contracts",
+      "Synergists in the arm and forearm add force to the same movement",
+      "Fixators hold the scapula steady",
+      "The origin on the scapula moves toward the insertion on the forearm",
+      "The antagonist on the back of the upper arm relaxes and is stretched"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In an ordinary curl the scapula is held still and the forearm moves, so the insertion moves toward the origin, not the other way round.",
+      "options": [
+        "Correct statement. The front upper-arm muscle is the prime mover for elbow flexion.",
+        "Correct statement. Muscles beneath it and in the forearm are synergists for flexion.",
+        "Correct statement. Fixators steady the scapula so the prime mover has a stable base.",
+        "This is the wrong one. The scapula (origin) stays still; the forearm (insertion) moves toward it.",
+        "Correct statement. The antagonist lengthens while the prime mover contracts."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-18",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Suppose a muscle's tendon inserted twice as far from the elbow as usual, with everything else the same. Predict the effect when the muscle holds the same weight in the hand with the elbow bent.",
+    "variables": [
+      {
+        "name": "Mechanical advantage (effort arm ÷ load arm)",
+        "answer": "up",
+        "why": "The effort arm doubles while the load arm stays the same, so the ratio doubles."
+      },
+      {
+        "name": "Force the muscle must pull with to hold the weight",
+        "answer": "down",
+        "why": "Effort × effort arm must equal load × load arm. With a longer effort arm, a smaller effort balances the same load."
+      },
+      {
+        "name": "Distance the hand moves for each centimeter the muscle shortens",
+        "answer": "down",
+        "why": "The ratio of load arm to effort arm falls, so each centimeter of shortening swings the hand through a shorter distance: force is gained, range and speed are lost."
+      }
+    ],
+    "why": {
+      "correct": "Moving the insertion away from the joint lengthens the effort arm. The lever gains mechanical advantage, so less muscle force is needed, but it loses the multiplication of distance and speed at the hand."
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "You slowly lower a heavy grocery bag by straightening your elbow. What is the muscle on the front of your upper arm doing?",
+    "options": [
+      "Contracting while it lengthens, braking the fall of the bag",
+      "Completely relaxed, since straightening is done by its antagonist",
+      "Pushing the forearm down",
+      "Shortening to straighten the elbow"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Gravity would drop the bag. The front upper-arm muscle keeps its cross-bridges working while it is pulled longer, an eccentric contraction, so it controls the speed of the fall.",
+      "options": [
+        "Correct. This is an eccentric contraction that brakes the movement.",
+        "If it relaxed completely, the bag would drop. In slow lowering, gravity straightens the elbow and the flexor controls the rate.",
+        "Muscles cannot push; they can only pull.",
+        "The front muscle bends the elbow when it shortens. Here the elbow is straightening, so it is lengthening."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "In a muscle name, what does the word \"rectus\" tell you?",
+    "options": [
+      "The muscle has fascicles running straight, parallel to the midline",
+      "The muscle is the largest in its group",
+      "The muscle closes an opening",
+      "The muscle has three heads at its origin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Rectus means straight. It names a muscle by the direction of its fascicles, which run parallel to the body's midline or to the long axis of a bone.",
+      "options": [
+        "Correct. Rectus describes straight fascicles.",
+        "Largest is maximus.",
+        "A muscle that closes an opening is a sphincter; orbicularis (small circle) describes its ring shape.",
+        "Three heads is triceps."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-mechanics-21",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which statement about the fulcrum of a lever in the body is correct?",
+    "options": [
+      "It is the point where the muscle attaches",
+      "It is the joint the bone turns about",
+      "It is the weight being moved",
+      "It is the belly of the prime mover"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The fulcrum is the fixed pivot a lever turns about. In the body, the bone is the bar and the joint is the fulcrum.",
+      "options": [
+        "Where the muscle pulls is the effort, not the fulcrum.",
+        "Correct. The joint is the fulcrum.",
+        "The weight being moved is the load.",
+        "The belly is the fleshy middle of a muscle. It is part of the effort side, not a pivot."
+      ]
+    }
+  }
+]

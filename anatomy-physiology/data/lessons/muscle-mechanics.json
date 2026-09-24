@@ -1,0 +1,48 @@
+{
+  "topic": "muscle-mechanics",
+  "hook": "<p>Jordan, 34, feels a pop at the front of his elbow while lifting a heavy box. A bulge appears high on his upper arm. He can still bend his elbow, but it is weak, and turning a screwdriver palm-up is hard. The tendon that attaches the main elbow-bending muscle to his forearm has torn away from the bone, and his other elbow flexors are now doing all the work.</p>",
+  "prereq": [
+    {
+      "q": "Bending your elbow so your hand moves toward your shoulder is which movement?",
+      "options": ["Extension", "Flexion", "Abduction"],
+      "correct": 1,
+      "why": "Flexion decreases the angle between two bones at a joint. Bending the elbow brings the forearm toward the upper arm, which is flexion. Extension straightens the joint, and abduction moves a part away from the midline.",
+      "review": "body-movements"
+    },
+    {
+      "q": "What attaches a skeletal muscle to a bone?",
+      "options": ["A ligament", "A tendon", "A bursa"],
+      "correct": 1,
+      "why": "Tendons are cords of dense regular connective tissue that attach muscle to bone. Ligaments join bone to bone, and a bursa is a fluid-filled sac that cushions where parts rub.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "What is a fascicle in a skeletal muscle?",
+      "options": ["A single muscle fiber", "A bundle of muscle fibers wrapped in perimysium", "The whole muscle wrapped in epimysium"],
+      "correct": 1,
+      "why": "A fascicle is a bundle of muscle fibers surrounded by perimysium. Each fiber inside has its own endomysium, and the epimysium wraps the whole muscle.",
+      "review": "skeletal-muscle-structure"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-11-3",
+    "caption": "The shapes of skeletal muscles. Hide the labels and name each fascicle arrangement, then find the belly and the ends that run to the origin and insertion on the spindle-shaped muscle."
+  },
+  "chain": [
+    { "cause": "Motor neurons signal the fibers of the prime mover.", "effect": "The fibers shorten and pull on their endomysium, perimysium and epimysium." },
+    { "cause": "The connective tissue wrappings merge into the tendon.", "effect": "The tendon pulls on the bones at both ends of the muscle." },
+    { "cause": "Fixators and the body's own weight hold the origin's bone still.", "effect": "Only the insertion's bone moves, pulled toward the origin." },
+    { "cause": "The moving bone turns about the joint, a lever with the joint as its fulcrum.", "effect": "With the insertion close to the joint (a third-class lever), the far end of the bone moves far and fast, while the muscle pulls several times harder than the load." },
+    { "cause": "To reverse the movement, the antagonist on the other side of the joint contracts.", "effect": "It pulls the bone back, since the first muscle cannot push." }
+  ],
+  "misconception": {
+    "wrong": "Muscles can push as well as pull, so one muscle can both bend and straighten a joint.",
+    "right": "A muscle fiber can only shorten and pull. When it stops, it simply stops pulling. Straightening a bent elbow takes a different muscle on the other side of the joint (the antagonist), or gravity. That is why muscles are arranged in opposing sets across every joint that moves both ways."
+  },
+  "check": ["anp-muscle-mechanics-1", "anp-muscle-mechanics-5", "anp-muscle-mechanics-7", "anp-muscle-mechanics-9", "anp-muscle-mechanics-12", "anp-muscle-mechanics-14", "anp-muscle-mechanics-16"],
+  "summary": "<p>Muscles only pull. Each pulls its insertion, on the bone that moves, toward its origin, on the bone that stays still. In a movement, the prime mover (agonist) does most of the work, synergists help, fixators steady the base and the antagonist makes the opposite movement. Bones are levers turning about joints: the fulcrum is in the middle of a first-class lever, the load in a second-class and the effort in a third-class lever. Most body levers are third-class, trading force for speed and range. Fascicles can be parallel, convergent, pennate or circular: pennate muscles are stronger for their size, parallel muscles shorten farther. Muscle names describe location, shape, size, fascicle direction, number of heads, attachments and action.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" }
+  ]
+}

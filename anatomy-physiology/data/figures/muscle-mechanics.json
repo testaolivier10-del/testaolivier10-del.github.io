@@ -1,0 +1,30 @@
+{
+  "os-11-2": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.2",
+      "section": "11.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/65c4b1e3b50850bba91cc19941e76c0e582603d3",
+      "page": "11-1-interactions-of-skeletal-muscles-their-fascicle-arrangement-and-their-lever-systems"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/65c4b1e3b50850bba91cc19941e76c0e582603d3",
+    "alt": "Two drawings of a bent arm holding a glass. In the first, the long muscle on the front of the upper arm runs from the shoulder to the forearm, with arrows showing it pulling upward, and a second muscle runs along the thumb side of the forearm. In the second, the front muscle is cut away to show a deeper muscle beneath it that crosses the elbow.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.2",
+    "labels": []
+  },
+  "os-11-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.3",
+      "section": "11.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/fde597da151fdaad2c66817c8a6d6cbae22ab966",
+      "page": "11-1-interactions-of-skeletal-muscles-their-fascicle-arrangement-and-their-lever-systems"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/fde597da151fdaad2c66817c8a6d6cbae22ab966",
+    "alt": "A front view of the whole muscular system with boxes drawn around seven muscles, each enlarged around the edge: a ring of muscle around the mouth, a fan-shaped chest muscle, a thick feathered muscle capping the shoulder, a spindle-shaped arm muscle with its belly and tendons marked, a forearm muscle with fibers slanting into one side of a tendon, a front-of-thigh muscle with fibers slanting into both sides of a central tendon, and a long strap-like muscle crossing the thigh.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.3",
+    "labels": []
+  }
+}

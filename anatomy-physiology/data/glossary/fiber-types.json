@@ -1,0 +1,22 @@
+{
+  "fiber-types": {
+    "def": "The three kinds of skeletal muscle fiber, sorted by contraction speed and main ATP pathway: slow oxidative (slow-twitch, type I), fast oxidative (type IIa) and fast glycolytic (type IIx). Fast oxidative and fast glycolytic fibers are the fast-twitch fibers.",
+    "roots": [["oxid-", "oxygen"], ["glyco-", "sugar"], ["-lytic", "splitting"]],
+    "say": ""
+  },
+  "hypertrophy-atrophy": {
+    "def": "Hypertrophy is growth of a tissue by enlargement of its existing cells, as when muscle fibers add myofibrils after resistance training. Atrophy is shrinking as cells lose size, as with disuse, loss of the motor neuron or aging. Hyperplasia is growth by adding cells, which adds few if any fibers in adult skeletal muscle.",
+    "roots": [["hyper-", "over"], ["troph-", "nourishment, growth"], ["a-", "without"], ["-plasia", "formation"]],
+    "say": "hy-PER-troh-fee; AT-roh-fee"
+  },
+  "muscle-regeneration-disorders": {
+    "def": "Skeletal muscle forms when myoblasts fuse into myotubes that mature into fibers, and it is repaired by muscle stem cells lying on each fiber's surface that become myoblasts and fuse with damaged fibers. Sarcopenia is the age-related loss of muscle mass and strength; muscular dystrophy is a group of inherited diseases in which fibers degenerate and are replaced by fat and connective tissue.",
+    "roots": [["my/o", "muscle"], ["-blast", "forming cell"], ["sarc/o", "flesh"], ["-penia", "deficiency"], ["dys-", "bad"]],
+    "say": "sar-koh-PEE-nee-uh; DIS-troh-fee"
+  },
+  "angiogenesis": {
+    "def": "The growth of new capillaries by sprouting from existing ones, driven by growth factors such as VEGF released when tissue is low in oxygen. In muscle, endurance training triggers it, shortening the distance oxygen must diffuse to each fiber.",
+    "roots": [["angi/o", "vessel"], ["-genesis", "formation"]],
+    "say": "an-jee-oh-JEN-eh-sis"
+  }
+}

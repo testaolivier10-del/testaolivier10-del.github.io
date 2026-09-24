@@ -1,0 +1,66 @@
+{
+  "os-10-3": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.3",
+      "section": "10.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/7990f132356dc4b9ee2949417ac064b52b47b06f",
+      "page": "10-2-skeletal-muscle"
+    },
+    "alt": "Three enlargements, one below the other. At the top, a whole muscle tapering to a tendon is cut across to show its outer sheath of connective tissue and, inside it, many bundles of fibers, each bundle wrapped in its own layer. In the middle, one bundle is cut across to show the individual fibers, each wrapped in a thin layer, with blood vessels and nerve fibers running between them and a small flattened cell against one fiber. At the bottom, one fiber is cut across to show its outer membrane, nuclei at its edge, and many rod-like bundles packed inside, one of which is pulled out.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.3",
+    "labels": [],
+    "w": 1100,
+    "h": 1136,
+    "ext": "jpg"
+  },
+  "os-10-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.4",
+      "section": "10.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/079419aef68b615feb19ec1d7a05d558e06b5adc",
+      "page": "10-2-skeletal-muscle"
+    },
+    "alt": "At the top, a striped muscle fiber cut across, with nuclei on its surface, mitochondria between the rod-like bundles inside it, and one bundle pulled out. At the bottom, a length of that bundle enlarged: a lacy network of sacs wraps its left end, and the cut-away middle shows interlocking thick and thin filaments forming repeating units, with brackets marking the light and dark bands, the zone at the center of the dark band, the line at its middle, and the zigzag discs that bound each unit.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.4",
+    "labels": [],
+    "w": 801,
+    "h": 642,
+    "ext": "jpg"
+  },
+  "os-10-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.5",
+      "section": "10.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/20598ea3cb1cf18c62196a5f93bbe36a1a6d246f",
+      "page": "10-2-skeletal-muscle"
+    },
+    "alt": "At the top, one repeating unit of a myofibril, with purple thick filaments in the middle and green thin filaments reaching in from zigzag discs at each end; brackets mark the light and dark bands and the zones at the center. Below left, a stretch of thick filament bristling with paired heads, and one of its molecules enlarged: a twisted tail, a flexible hinge, and two heads, each with a site for binding actin and a site for binding ATP. Below right, a stretch of thin filament: two twisted strands of beads, a thin rod lying along the groove, and small round complexes spaced along the rod, with one bead marked as a binding site for myosin.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.5",
+    "labels": [],
+    "w": 830,
+    "h": 765,
+    "ext": "jpg"
+  },
+  "os-10-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.7",
+      "section": "10.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d9b10442a6f0569d0b57588ff01150c417d02884",
+      "page": "10-2-skeletal-muscle"
+    },
+    "alt": "A cutaway of the surface of a muscle fiber. The outer membrane, peeled up, has pores that lead into narrow tubes dipping straight down into the fiber and ringing the striped bundles inside. A lacy network of sacs wraps each bundle, and it swells into wide ring-shaped sacs on either side of each tube. A bracket at the bottom marks one tube with the two sacs beside it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.7",
+    "labels": [],
+    "w": 577,
+    "h": 368,
+    "ext": "jpg"
+  }
+}

@@ -1,0 +1,353 @@
+[
+  {
+    "id": "anp-skeletal-muscle-structure-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-10-3",
+    "pin": "perimysium",
+    "q": "Name the pinned connective tissue layer.",
+    "options": ["Perimysium", "Epimysium", "Endomysium", "Sarcolemma"],
+    "correct": 0,
+    "why": {
+      "correct": "The perimysium wraps each fascicle, a bundle of muscle fibers. The larger blood vessels and nerves run into the muscle along it.",
+      "options": [
+        "Correct. The layer around each bundle of fibers is the perimysium (peri- = around).",
+        "The epimysium wraps the whole muscle, outside all the fascicles.",
+        "The endomysium is the thin layer around each single fiber, inside a fascicle.",
+        "The sarcolemma is the plasma membrane of one fiber, not a connective tissue layer."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-10-3",
+    "pin": "endomysium",
+    "q": "Name the pinned connective tissue layer.",
+    "options": ["Epimysium", "Endomysium", "Perimysium", "Deep fascia"],
+    "correct": 1,
+    "why": {
+      "correct": "The endomysium (endo- = within) is the thin layer of loose connective tissue around each individual muscle fiber. It carries the capillaries that supply the fiber.",
+      "options": [
+        "The epimysium surrounds the whole muscle.",
+        "Correct. The layer around each single fiber is the endomysium.",
+        "The perimysium surrounds a whole fascicle, not one fiber.",
+        "Deep fascia lies outside the epimysium and groups whole muscles together."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-10-7",
+    "pin": "t-tubule",
+    "q": "Name the pinned structure.",
+    "options": ["Terminal cisterna", "Mitochondrion", "T tubule", "Myofibril"],
+    "correct": 2,
+    "why": {
+      "correct": "A T tubule is a narrow infolding of the sarcolemma that runs straight into the fiber and carries the electrical signal deep inside.",
+      "options": [
+        "The terminal cisternae are the wide sacs of the sarcoplasmic reticulum on either side of the tube.",
+        "Mitochondria are rounded organelles between the myofibrils; the pinned structure is a tube opening from the surface membrane.",
+        "Correct. The tube running in from the sarcolemma is a transverse tubule.",
+        "A myofibril is a striped rod of filaments; the pinned structure is a membrane tube ringing it."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-10-5",
+    "pin": "tropomyosin",
+    "q": "Name the pinned protein of the thin filament.",
+    "options": ["Troponin", "Actin", "Myosin", "Tropomyosin"],
+    "correct": 3,
+    "why": {
+      "correct": "Tropomyosin is the long, thin rod lying in the groove between the two twisted actin strands. At rest it covers the myosin-binding sites.",
+      "options": [
+        "Troponin is the small round complex attached to tropomyosin at intervals, not the long rod.",
+        "Actin forms the two twisted strands of beads that the rod lies along.",
+        "Myosin makes up the thick filament, not the thin one.",
+        "Correct. The rod along the groove is tropomyosin."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-5",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Put these levels of skeletal muscle structure in order, from largest to smallest.",
+    "options": ["Whole muscle", "Fascicle", "Muscle fiber", "Myofibril", "Sarcomere", "Thick filament"],
+    "why": {
+      "correct": "A muscle is a bundle of fascicles; a fascicle is a bundle of fibers (cells); each fiber is packed with myofibrils; each myofibril is a chain of sarcomeres; and each sarcomere is built from thick and thin filaments."
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A researcher cuts across a sarcomere and sees only thin filaments in the cross-section. Where was the cut?",
+    "options": ["Through the H zone", "Through the I band", "Through the M line", "Through the A band outside the H zone"],
+    "correct": 1,
+    "why": {
+      "correct": "The I band is the part of the sarcomere where thin filaments are not overlapped by thick ones, so a cut there shows thin filaments alone.",
+      "options": [
+        "The H zone holds thick filaments only; the thin filaments do not reach that far in.",
+        "Correct. The I band contains thin filaments only.",
+        "The M line is at the center of the thick filaments, where proteins link them; a cut there shows thick filaments.",
+        "Outside the H zone the A band has both kinds, each thick filament ringed by six thin ones."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-7",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What marks the two ends of a sarcomere?",
+    "options": ["Two M lines", "Two H zones", "Two Z discs", "Two triads"],
+    "correct": 2,
+    "why": {
+      "correct": "A sarcomere runs from one Z disc to the next. The Z discs anchor the thin filaments.",
+      "options": [
+        "The M line is at the center of a sarcomere, not its ends.",
+        "The H zone is the paler middle of the A band, at the sarcomere's center.",
+        "Correct. Z disc to Z disc defines one sarcomere.",
+        "Triads are membrane structures (a T tubule and two terminal cisternae) near the A band edges. They do not define the sarcomere."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-8",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every protein that is part of a thin filament.",
+    "options": ["Actin", "Myosin", "Troponin", "Tropomyosin", "Titin"],
+    "correct": [0, 2, 3],
+    "why": {
+      "correct": "A thin filament is two twisted strands of actin, with tropomyosin lying in the groove and troponin attached to the tropomyosin at intervals.",
+      "options": [
+        "Correct. Actin forms the backbone of the thin filament.",
+        "Myosin forms the thick filament, and its heads reach toward the thin filament.",
+        "Correct. Troponin is the small complex on tropomyosin that can bind calcium.",
+        "Correct. Tropomyosin is the rod that covers the myosin-binding sites at rest.",
+        "Titin runs from the Z disc to the M line through the thick filament. It is not part of the thin filament."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A pathologist looks at a muscle biopsy cut across. Each individual fiber is surrounded by a thin layer of connective tissue that contains capillaries. Which layer is this?",
+    "options": ["Epimysium", "Perimysium", "Deep fascia", "Endomysium"],
+    "correct": 3,
+    "why": {
+      "correct": "The endomysium surrounds each single muscle fiber and holds the capillaries that supply it with oxygen and fuel.",
+      "options": [
+        "The epimysium is a thick layer around the whole muscle, not around single fibers.",
+        "The perimysium surrounds groups of fibers (fascicles), not each fiber.",
+        "Deep fascia lies outside whole muscles.",
+        "Correct. A thin layer around each fiber, carrying capillaries, is the endomysium."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A dye that cannot cross cell membranes is added to the fluid around a living muscle fiber. A few seconds later, where inside the fiber's outline will the dye be found?",
+    "options": ["In the sarcoplasmic reticulum", "In the T tubules", "In the myofibrils", "In the sarcoplasm between the myofibrils"],
+    "correct": 1,
+    "why": {
+      "correct": "A T tubule is an infolding of the sarcolemma, so its inside is open to the extracellular fluid. The dye flows into the T tubules without crossing any membrane.",
+      "options": [
+        "The SR is a closed compartment inside the cell; reaching it would mean crossing the sarcolemma and the SR membrane.",
+        "Correct. The T tubules are continuous with the fluid outside the cell.",
+        "The myofibrils lie in the sarcoplasm, inside the sarcolemma, which the dye cannot cross.",
+        "The sarcoplasm is the cytoplasm, inside the cell membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What makes up a triad in a skeletal muscle fiber?",
+    "options": ["One T tubule and two terminal cisternae", "Three myofibrils bound together", "One thick filament and two thin filaments", "A Z disc and the two I band halves beside it"],
+    "correct": 0,
+    "why": {
+      "correct": "A triad is one T tubule with a terminal cistern of the sarcoplasmic reticulum on each side. It is where the electrical signal meets the calcium store.",
+      "options": [
+        "Correct. Tri- = three: a T tubule flanked by two terminal cisternae.",
+        "Myofibrils are not grouped in threes; a triad is a membrane structure.",
+        "Each thick filament is surrounded by six thin filaments, and filaments are not what the word triad names.",
+        "A Z disc with half an I band on each side describes the region around a sarcomere boundary, not a triad."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A skeletal muscle fiber is 80 µm thick, yet the myofibrils at its center start contracting almost as soon as those at its surface. What makes this possible?",
+    "options": ["Calcium from the extracellular fluid diffuses quickly to the center", "Gap junctions pass the signal from myofibril to myofibril", "T tubules carry the electrical signal from the sarcolemma into the fiber's depths", "The nuclei at the center relay the signal"],
+    "correct": 2,
+    "why": {
+      "correct": "T tubules are infoldings of the sarcolemma that reach every myofibril. The electrical signal travels down them to the triads throughout the fiber, where the SR beside each myofibril holds the calcium.",
+      "options": [
+        "Calcium diffusing inward from the surface would reach the center far too slowly; the calcium used comes from the SR inside the fiber.",
+        "Myofibrils are not cells, so there are no gap junctions between them.",
+        "Correct. T tubules bring the surface membrane, and its signal, to every triad.",
+        "A skeletal muscle fiber's nuclei lie at its edge, just under the sarcolemma, and they do not relay signals."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student described the structure of a skeletal muscle. One statement is wrong. Which one?",
+    "options": [
+      "The epimysium wraps the whole muscle",
+      "Each fascicle is a bundle of muscle fibers wrapped in perimysium",
+      "Each myofibril is wrapped in its own sarcolemma",
+      "Each myofibril is a chain of sarcomeres joined end to end",
+      "Thin filaments are anchored at the Z discs"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The sarcolemma is the plasma membrane of the whole fiber, the cell. Myofibrils are structures inside the cell, with no membrane of their own; the SR network wraps around them.",
+      "options": [
+        "This statement is right. The epimysium surrounds the whole muscle.",
+        "This statement is right. The perimysium wraps each fascicle.",
+        "This is the error. There is one sarcolemma per fiber, and the myofibrils sit inside it.",
+        "This statement is right. A myofibril is thousands of sarcomeres in series.",
+        "This statement is right. The Z discs anchor the thin filaments at each end of a sarcomere."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "In a resting muscle fiber, the myosin heads are loaded with energy, yet they do not bind actin. What prevents them?",
+    "options": ["Tropomyosin covers the myosin-binding sites on actin", "The thick and thin filaments do not overlap at rest", "The myosin heads have no ATP bound", "Titin holds the myosin heads against the thick filament"],
+    "correct": 0,
+    "why": {
+      "correct": "At rest, tropomyosin lies over the myosin-binding sites on actin, held in place by troponin. Until calcium binds troponin, the heads cannot reach actin.",
+      "options": [
+        "Correct. Tropomyosin blocks the binding sites while calcium is low.",
+        "The filaments do overlap at rest, throughout the A band outside the H zone.",
+        "The heads carry the products of split ATP at rest; lack of ATP is not what holds them off.",
+        "Titin centers the thick filament and gives elasticity; it does not restrain the heads."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Fill the gap: the dark band of a sarcomere, which spans the full length of the thick filaments, is the ____.",
+    "options": ["I band", "A band", "Z disc", "M line"],
+    "correct": 1,
+    "why": {
+      "correct": "The A band (dArk, anisotropic) is the length of the thick filaments, including the parts overlapped by thin filaments.",
+      "options": [
+        "The I band is the light band, where only thin filaments are.",
+        "Correct. The A band spans the thick filaments.",
+        "The Z disc is a thin line at each end of the sarcomere, anchoring thin filaments.",
+        "The M line is a thin line at the center of the A band, not the whole dark band."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A muscle fiber is 3 cm long and its sarcomeres are 2.5 µm long. About how many sarcomeres lie end to end along one of its myofibrils?",
+    "options": ["1,200", "7,500", "75,000", "12,000"],
+    "correct": 3,
+    "why": {
+      "correct": "Convert to the same unit: 3 cm = 30,000 µm. Then divide: 30,000 µm ÷ 2.5 µm = 12,000 sarcomeres.",
+      "options": [
+        "This result comes from converting 3 cm to 3,000 µm; 1 cm is 10,000 µm, not 1,000.",
+        "This comes from multiplying 3 by 2.5 instead of dividing the fiber's length by the sarcomere's length.",
+        "This is too large by a factor of about six; check the division 30,000 ÷ 2.5.",
+        "Correct. 30,000 µm ÷ 2.5 µm = 12,000."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why does a skeletal muscle fiber look striped across its whole width, rather than only along scattered lines?",
+    "options": ["Its nuclei are lined up in rows across the fiber", "Its sarcoplasmic reticulum forms dark rings at regular intervals", "The bands of neighboring myofibrils are lined up side by side", "Collagen of the endomysium wraps it in bands"],
+    "correct": 2,
+    "why": {
+      "correct": "Each myofibril has alternating dark A bands and light I bands, and neighboring myofibrils keep their bands in step. Lined up across the fiber, they form continuous stripes.",
+      "options": [
+        "The nuclei are scattered along the edge of the fiber, not arranged in rows that make stripes.",
+        "The SR wraps every myofibril as a lacy network; the stripes come from the filaments, not the SR.",
+        "Correct. The striations are the aligned bands of all the myofibrils.",
+        "The endomysium lies outside the fiber and has no banded pattern."
+      ]
+    }
+  },
+  {
+    "id": "anp-skeletal-muscle-structure-18",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A sprinter feels a sudden pain at the back of her thigh near where the muscle becomes tendon. How does the force of her muscle fibers reach that tendon?",
+    "options": ["Each fiber is attached directly to the bone by its own sarcolemma", "The fibers' pull passes through the endomysium, perimysium and epimysium, which merge into the tendon", "The myofibrils extend out of the fibers into the tendon", "The deep fascia around the muscle pulls on the tendon alone"],
+    "correct": 1,
+    "why": {
+      "correct": "The three connective tissue layers are continuous with each other and merge into the tendon's collagen. Each fiber's pull passes outward through them, so a hard sprint concentrates force where muscle meets tendon.",
+      "options": [
+        "Fibers do not reach the bone; the connective tissue wrappings and tendon connect them to it.",
+        "Correct. The wrappings collect each fiber's pull and pass it to the tendon.",
+        "Myofibrils stay inside their fibers; they end at the fiber's ends, where proteins link them to the sarcolemma and the connective tissue outside.",
+        "Deep fascia groups whole muscles; the pull reaches the tendon through the muscle's own wrappings."
+      ]
+    }
+  }
+]

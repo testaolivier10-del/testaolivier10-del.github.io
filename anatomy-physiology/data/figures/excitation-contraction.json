@@ -1,0 +1,44 @@
+{
+  "os-10-8": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.8",
+      "section": "10.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/d27415657173fa90321a95a51a9637b20d168b70",
+      "page": "10-3-muscle-fiber-contraction-and-relaxation"
+    },
+    "alt": "A sequence from top to bottom. A nerve ending on a muscle fiber releases dots from its vesicles into the gap below it, where they bind channels in the folded fiber membrane. A red arrow shows the electrical signal spreading along the membrane and down a tube into the fiber. The tube touches a long sac full of small circles, and red arrows show the circles pouring out of the sac. Below, the circles attach to small round proteins on a beaded filament, and a myosin head carrying ADP and phosphate swings against it. At the bottom, the fiber and then the whole muscle are drawn shorter and thicker, with arrows pressing in from both ends.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.8",
+    "labels": [],
+    "w": 838,
+    "h": 1105,
+    "ext": "jpg"
+  },
+  "os-10-9": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.9",
+      "section": "10.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/aa1cd0ddb04d7fe1e9990764a2609235d96ac0c5",
+      "page": "10-3-muscle-fiber-contraction-and-relaxation"
+    },
+    "alt": "The same nerve ending, tube and sac as in the contraction drawing, but now red arrows point up, carrying the small circles back into the sac. Below, the beaded filament has its round proteins free of circles, and the myosin head lies back against its filament, not touching the beads. At the bottom, the fiber and then the whole muscle are drawn longer and thinner, with arrows pulling out at both ends.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.9",
+    "labels": [],
+    "w": 750,
+    "h": 914,
+    "ext": "jpg"
+  },
+  "ec-coupling-timing": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 760,
+    "h": 500,
+    "alt": "Three stacked graphs on one time axis from 0 to 120 milliseconds after a single stimulus to a skeletal muscle fiber. The action potential on the sarcolemma is a brief spike, over within about 5 milliseconds. Calcium in the sarcoplasm rises just after it, peaks in under 10 milliseconds and falls back over the next 40 to 50 milliseconds as it is pumped into the sarcoplasmic reticulum. Force rises more slowly, peaks at about 35 milliseconds, after calcium has begun to fall, and returns almost to zero by about 110 milliseconds.",
+    "labels": []
+  }
+}

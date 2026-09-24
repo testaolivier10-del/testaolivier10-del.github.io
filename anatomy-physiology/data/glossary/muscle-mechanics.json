@@ -1,0 +1,27 @@
+{
+  "origin-insertion": {
+    "def": "The origin is a muscle's attachment on the bone that stays still, usually proximal; the insertion is its attachment on the bone that moves. Contraction pulls the insertion toward the origin. The belly is the fleshy middle of the muscle.",
+    "roots": [["origo", "beginning"], ["in-", "into"], ["serere", "to join"]],
+    "say": ""
+  },
+  "muscle-roles": {
+    "def": "The jobs muscles take in a movement: the prime mover (agonist) does most of the work, synergists help or steady it, fixators hold the base bone still, and the antagonist makes the opposite movement. A muscle's role depends on the movement.",
+    "roots": [["agon", "contest"], ["anti-", "against"], ["syn-", "together"], ["erg-", "work"]],
+    "say": "AG-uh-nist; an-TAG-uh-nist; SIN-er-jist"
+  },
+  "lever-systems": {
+    "def": "A lever is a rigid bar that turns about a pivot, the fulcrum. In the body a bone is the bar, a joint is the fulcrum, the muscle's pull is the effort and the part moved is the load. The fulcrum is in the middle of a first-class lever, the load in a second-class and the effort in a third-class lever.",
+    "roots": [["fulcire", "to prop up"]],
+    "say": "FUL-krum"
+  },
+  "muscle-naming": {
+    "def": "Muscle names are built from word parts describing location, shape, size, direction of the fascicles, number of heads at the origin, attachments (origin first) and action.",
+    "roots": [["-ceps", "heads"], ["rectus", "straight"], ["maximus", "largest"], ["longus", "long"], ["brevis", "short"], ["levator", "lifter"]],
+    "say": ""
+  },
+  "fascicle-arrangement": {
+    "def": "The pattern of fascicles in a muscle: parallel (strap-like or spindle-shaped fusiform), convergent (a fan), pennate (angled onto a tendon: unipennate, bipennate or multipennate) or circular (a ring around an opening, a sphincter). Pennate muscles are stronger for their size; parallel muscles shorten farther and faster.",
+    "roots": [["fusus", "spindle"], ["penna", "feather"], ["uni-", "one"], ["bi-", "two"], ["multi-", "many"], ["sphingein", "to bind tight"]],
+    "say": "PEN-ate; SFINK-ter"
+  }
+}

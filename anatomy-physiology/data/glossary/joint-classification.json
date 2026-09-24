@@ -1,0 +1,22 @@
+{
+  "articulation": {
+    "def": "A joint: any place where a bone meets another bone, a cartilage or a tooth. Some joints move freely and some do not move at all.",
+    "roots": [["articul-", "joint"], ["-ation", "the act of"], ["arthr/o", "joint"]],
+    "say": "ar-tik-yoo-LAY-shun"
+  },
+  "joint-structural-classes": {
+    "def": "The three kinds of joint sorted by what joins the bones: fibrous joints (dense connective tissue, no space), cartilaginous joints (cartilage, no space) and synovial joints (bone ends separated by a fluid-filled space lined by synovial membrane).",
+    "roots": [["syn-", "together"], ["ov-", "egg"], ["chondr/o", "cartilage"]],
+    "say": "sih-NOH-vee-ul"
+  },
+  "joint-subtypes": {
+    "def": "The subtypes of fibrous joint (suture between skull bones; syndesmosis, where a ligament or interosseous membrane joins two bones; gomphosis, a tooth held in its socket by the periodontal ligament) and of cartilaginous joint (synchondrosis, joined by hyaline cartilage; symphysis, joined by fibrocartilage). A joint that has turned to bone is a synostosis.",
+    "roots": [["sutura", "seam"], ["desm-", "band"], ["gomph-", "bolt, peg"], ["physis", "growth"], ["ost-", "bone"], ["odont-", "tooth"], ["peri-", "around"], ["inter-", "between"], ["osse-", "bone"]],
+    "say": "sin-dez-MOH-sis; gom-FOH-sis; sin-kon-DROH-sis; SIM-fih-sis; sin-os-TOH-sis"
+  },
+  "joint-functional-classes": {
+    "def": "The three kinds of joint sorted by how much they move: a synarthrosis is immobile or nearly so, an amphiarthrosis is slightly movable, and a diarthrosis is freely movable.",
+    "roots": [["syn-", "together"], ["amphi-", "on both sides"], ["dia-", "through, apart"], ["arthr/o", "joint"], ["-osis", "condition"]],
+    "say": "sin-ar-THROH-sis; am-fee-ar-THROH-sis; dy-ar-THROH-sis"
+  }
+}

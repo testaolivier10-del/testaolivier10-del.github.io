@@ -1,0 +1,58 @@
+{
+  "os-11-7": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.7",
+      "section": "11.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9b369a7466ec2ef44a97decc8de15593c7189e13",
+      "page": "11-3-axial-muscles-of-the-head-neck-and-back"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/9b369a7466ec2ef44a97decc8de15593c7189e13",
+    "alt": "The muscles of the face and scalp from the front and from the left side. Rings of muscle surround each eye and the mouth, a flat muscle forms the wall of each cheek, and a scalp muscle with a front belly over the forehead and a back belly over the back of the skull is joined by a broad sheet of tendon over the crown.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.7",
+    "labels": []
+  },
+  "os-11-10": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.10",
+      "section": "11.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ab1788cf84af87d53f164d88eca34105c82c2f48",
+      "page": "11-3-axial-muscles-of-the-head-neck-and-back"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/ab1788cf84af87d53f164d88eca34105c82c2f48",
+    "alt": "The chewing muscles. On the left, a side view of the head shows a fan-shaped muscle over the temple and a thick muscle over the angle of the jaw. On the right, a skull with part of the lower jaw cut away shows two deeper muscles: one running horizontally back to the jaw joint and one running down to the inside of the jaw's angle.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.10",
+    "labels": []
+  },
+  "os-11-13": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.13",
+      "section": "11.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ebf1c2fc60b3f970a32460af1c2639b3e89546a5",
+      "page": "11-3-axial-muscles-of-the-head-neck-and-back"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/ebf1c2fc60b3f970a32460af1c2639b3e89546a5",
+    "alt": "The front of the neck from below the chin to the collarbones. Small muscles run from the hyoid bone up to the underside of the jaw, and flat strap-like muscles run from the hyoid down past the cartilage of the voice box and the thyroid gland to the sternum and the scapula.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.13",
+    "labels": []
+  },
+  "os-11-14": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.14",
+      "section": "11.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c6b4c0fc14243be85bfe162be2b6cf0a1a39eede",
+      "page": "11-3-axial-muscles-of-the-head-neck-and-back"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/c6b4c0fc14243be85bfe162be2b6cf0a1a39eede",
+    "alt": "Three views of the neck. The left-side view shows a long diagonal muscle from the sternum and clavicle to behind the ear, with deeper muscles running from the neck vertebrae down to the upper ribs. The two back views show the muscles of the back of the neck, superficial and then deep.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.14",
+    "labels": []
+  }
+}

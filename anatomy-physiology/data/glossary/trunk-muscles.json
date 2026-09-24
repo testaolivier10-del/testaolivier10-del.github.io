@@ -1,0 +1,22 @@
+{
+  "back-muscles": {
+    "def": "The muscles along the vertebral column. The erector spinae (iliocostalis, longissimus and spinalis groups, lateral to medial) runs from the pelvis and lower spine to the ribs, vertebrae and skull and extends the spine; the splenius extends the head and turns it to the same side.",
+    "roots": [["erector", "one that raises"], ["ilio-", "ilium"], ["cost-", "rib"], ["longissimus", "longest"], ["splenion", "bandage"]],
+    "say": "ih-REK-tor SPY-nee; il-ee-oh-kos-TAY-liss; SPLEE-nee-us"
+  },
+  "abdominal-wall": {
+    "def": "The muscles of the abdominal wall: the vertical rectus abdominis, crossed by tendinous intersections and wrapped in the rectus sheath that meets its partner at the linea alba; three flat layers, the external oblique, internal oblique and transversus abdominis; and the quadratus lumborum in the back wall. They compress the abdomen and bend and twist the trunk.",
+    "roots": [["rectus", "straight"], ["abdomin-", "belly"], ["transversus", "across"], ["linea alba", "white line"], ["quadratus", "four-sided"], ["lumb-", "lower back"]],
+    "say": "REK-tus ab-DOM-in-iss; LIN-ee-uh AL-buh; kwad-RAY-tus lum-BOR-um"
+  },
+  "breathing-muscles": {
+    "def": "The diaphragm, which flattens as it contracts and enlarges the chest, and the intercostal muscles between the ribs: the external intercostals lift the ribs as you breathe in, and the internal and innermost intercostals pull them down in forceful breathing out.",
+    "roots": [["inter-", "between"], ["cost-", "rib"]],
+    "say": "in-ter-KOS-tul"
+  },
+  "pelvic-floor": {
+    "def": "The sling of muscle that closes the bottom of the pelvis and supports the pelvic organs: the pelvic diaphragm, made of the levator ani and coccygeus. Below it lies the perineum, a diamond-shaped region divided into the urogenital triangle in front and the anal triangle behind.",
+    "roots": [["levator", "lifter"], ["ani", "of the anus"], ["peri-", "around"]],
+    "say": "leh-VAY-tor AY-nye; pair-ih-NEE-um"
+  }
+}

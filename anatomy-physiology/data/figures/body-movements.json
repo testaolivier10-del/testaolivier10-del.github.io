@@ -1,0 +1,38 @@
+{
+  "os-9-12": {
+    "file": "figures/openstax/os-9-12.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.12",
+      "section": "9.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/619024c8facab9b35a8593fb3b9ef215ccfdf7e0",
+      "page": "9-5-types-of-body-movements"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/619024c8facab9b35a8593fb3b9ef215ccfdf7e0",
+    "alt": "Six drawings of a man showing movements. From the side: the arm swinging forward and the leg bending back at the knee, then the arm swinging back and the leg swinging back; the head bending forward and tipping back; the trunk bending forward and arching back. From the front: one arm raised out to the side and brought back down, the other hand tracing a circle; and the head turning side to side while the thigh turns inward and outward.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.12",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1303
+  },
+  "os-9-13": {
+    "file": "figures/openstax/os-9-13.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.13",
+      "section": "9.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/8782cf72dca7895dd21c9c591f4411c0aa148ec5",
+      "page": "9-5-types-of-body-movements"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/8782cf72dca7895dd21c9c591f4411c0aa148ec5",
+    "alt": "Six drawings of more movements. Two forearms: one with the palm facing forward and the two forearm bones parallel, one with the palm facing back and the bones crossed. A foot with the toes pulled up toward the shin and pointed down. Two feet with the soles turned inward and outward. A head with the jaw pushed forward and pulled back, then with the jaw raised and lowered. A hand with the thumb tip touching the tip of a finger.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.13",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 1188
+  }
+}

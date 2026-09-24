@@ -1,0 +1,393 @@
+[
+  {
+    "id": "anp-bone-structure-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-7",
+    "pin": "diaphysis",
+    "q": "Name the pinned region of this long bone.",
+    "options": ["Epiphysis", "Diaphysis", "Metaphysis", "Medullary cavity"],
+    "correct": 1,
+    "why": {
+      "correct": "The diaphysis is the shaft: the long middle part of the bone between the two flared ends.",
+      "options": [
+        "An epiphysis is one of the widened ends of the bone, not the long middle part.",
+        "Correct. The long shaft is the diaphysis.",
+        "A metaphysis is the short flared zone where the shaft widens into an end. The pinned region runs most of the bone's length.",
+        "The medullary cavity is the hollow inside the shaft. The pinned region is the whole shaft, wall and all."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-7",
+    "pin": "medullary-cavity",
+    "q": "Name the pinned space.",
+    "options": ["Medullary cavity", "Nutrient foramen", "Metaphysis", "Endosteum"],
+    "correct": 0,
+    "why": {
+      "correct": "The medullary cavity is the hollow inside the diaphysis. In an adult it is filled with yellow marrow.",
+      "options": [
+        "Correct. The hollow center of the shaft is the medullary cavity.",
+        "A nutrient foramen is a small hole through the shaft wall for the nutrient artery, not the long central space.",
+        "The metaphysis is the flared region between the shaft and an end, not a space inside the shaft.",
+        "The endosteum is the thin cell layer lining the cavity, not the cavity itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-7",
+    "pin": "periosteum",
+    "q": "Name the pinned membrane.",
+    "options": ["Endosteum", "Articular cartilage", "Periosteum", "Perichondrium"],
+    "correct": 2,
+    "why": {
+      "correct": "The periosteum is the membrane covering the outer surface of the bone. Its fibrous layer anchors tendons and ligaments, and it is rich in nerves and vessels.",
+      "options": [
+        "The endosteum lines the inside of the bone, facing the medullary cavity, not its outer surface.",
+        "Articular cartilage covers only the joint surfaces at the ends, and it is cartilage, not a membrane over the shaft.",
+        "Correct. The outer membrane of a bone is the periosteum.",
+        "The perichondrium wraps cartilage, not bone. The shaft of an adult long bone is covered by periosteum."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-7",
+    "pin": "yellow-bone-marrow",
+    "q": "Name the pinned tissue.",
+    "options": ["Red bone marrow", "Articular cartilage", "Endosteum", "Yellow bone marrow"],
+    "correct": 3,
+    "why": {
+      "correct": "Yellow bone marrow fills the medullary cavity of an adult's long bones. It is mostly adipose tissue.",
+      "options": [
+        "Red marrow in an adult long bone sits in the lattice of the ends, not in the middle of the shaft's cavity.",
+        "Articular cartilage caps the joint surfaces at the ends of the bone, not the inside of the shaft.",
+        "The endosteum is a thin lining of cells, not the tissue filling the cavity.",
+        "Correct. The fatty tissue in the shaft's cavity is yellow bone marrow."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-7",
+    "pin": "nutrient-artery",
+    "q": "Name the pinned vessel.",
+    "options": ["Nutrient artery", "Nutrient vein", "Periosteum", "Metaphysis"],
+    "correct": 0,
+    "why": {
+      "correct": "The nutrient artery is the main artery of a long bone. It enters the diaphysis through a nutrient foramen and branches along the medullary cavity.",
+      "options": [
+        "Correct. The artery entering the middle of the shaft is the nutrient artery.",
+        "A nutrient vein does leave through the same hole, but the drawn vessel is red and carries blood into the bone: it is the artery.",
+        "The periosteum is the membrane over the bone's surface, not a vessel.",
+        "The metaphysis is a region of the bone near each end, not a vessel."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-6-10",
+    "pin": "tuberosity",
+    "q": "Name the pinned marking on this upper arm bone: a large, rough raised area on the shaft.",
+    "options": ["Condyle", "Tuberosity", "Fossa", "Facet"],
+    "correct": 1,
+    "why": {
+      "correct": "A tuberosity is a large, rough, raised area where a tendon attaches. This one is where a shoulder muscle pulls on the upper arm bone.",
+      "options": [
+        "A condyle is a smooth, rounded knob that forms a joint, found at the end of a bone rather than midway along the shaft.",
+        "Correct. A rough raised area for a tendon is a tuberosity.",
+        "A fossa is a shallow depression, not a raised area.",
+        "A facet is a small, flat, smooth joint surface, not a rough attachment area."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-10",
+    "pin": "crest",
+    "q": "Name the pinned marking on the hip bone.",
+    "options": ["Spine", "Fossa", "Crest", "Head"],
+    "correct": 2,
+    "why": {
+      "correct": "A crest is a long, prominent ridge. This is the curved top edge of the hip bone, which you can feel at your waist.",
+      "options": [
+        "A spine is a sharp, slender, pointed process, not a long curved ridge.",
+        "A fossa is a shallow basin. On this figure the fossa lies just below the ridge, on the inner face of the bone.",
+        "Correct. The long curved ridge is a crest.",
+        "A head is a rounded end set on a neck that forms a joint, not a ridge along a bone's edge."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "bones are classified by size",
+    "q": "A bone of the finger is about 2 cm long. It has a narrow shaft and a widened end at each end. How is it classified?",
+    "options": ["Short bone", "Sesamoid bone", "Irregular bone", "Long bone"],
+    "correct": 3,
+    "why": {
+      "correct": "Bones are classified by shape, not size. A bone that is longer than it is wide, with a shaft and two ends, is a long bone, however small.",
+      "options": [
+        "Short bones are about as wide as they are long, like the cube-shaped bones of the wrist. A finger bone has a clear shaft.",
+        "A sesamoid bone is a small round bone that forms inside a tendon. A finger bone forms a normal part of the finger's frame and has a shaft.",
+        "Irregular bones have complex shapes that fit no other group. A shaft with two ends is the long-bone pattern.",
+        "Correct. Shape, not size, makes it a long bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-9",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which statement describes a sesamoid bone?",
+    "options": ["A thin, curved bone with two broad surfaces", "A cube-shaped bone found in groups", "A small round bone that forms inside a tendon", "A bone of complex shape found in the spine"],
+    "correct": 2,
+    "why": {
+      "correct": "A sesamoid bone (sesam- = sesame seed) is a small, round bone that develops inside a tendon where it crosses a joint. The bone at the front of the knee is the largest.",
+      "options": [
+        "That describes a flat bone, such as the breastbone or a rib.",
+        "That describes short bones, such as those of the wrist and ankle.",
+        "Correct. Sesamoid bones sit inside tendons.",
+        "That describes an irregular bone, such as a vertebra."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A hematologist needs a sample of a 45-year-old man's blood-forming marrow. She takes it from the back of his hip bone rather than from the middle of his thigh bone's shaft. Why?",
+    "options": ["The shaft's cavity holds mostly yellow marrow in an adult", "The hip bone has no periosteum to pierce", "Red marrow is found only in flat bones in newborns", "The thigh bone's shaft is solid bone with no cavity"],
+    "correct": 0,
+    "why": {
+      "correct": "Through childhood, fat cells replace the red marrow in the shafts of the limb bones. In an adult, red marrow remains mainly in the flat bones, vertebrae and hip bones, and in the upper ends of the thigh and upper arm bones. The shaft's cavity holds yellow marrow, which makes no blood cells.",
+      "options": [
+        "Correct. An adult's long-bone shafts hold yellow marrow; the hip bone still holds red marrow.",
+        "The hip bone is covered by periosteum like every other bone surface that is not a joint surface. The site is chosen for its marrow, not its covering.",
+        "Newborns have red marrow in almost every bone. It is in adults that red marrow retreats to the flat bones, vertebrae, hip bones and the upper ends of two long bones.",
+        "The shaft of a long bone is a hollow tube: its medullary cavity is filled with yellow marrow in an adult."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A soccer player is kicked on the front of his shin, where the bone lies just under the skin. The pain is sharp and intense. Which structure's nerve endings are mostly responsible?",
+    "options": ["The yellow marrow", "The periosteum", "The articular cartilage", "The endosteum"],
+    "correct": 1,
+    "why": {
+      "correct": "The periosteum covers the outer surface of the bone and is packed with sensory nerve endings. On the shin, a blow crushes it between the skin and the bone.",
+      "options": [
+        "Yellow marrow lies deep inside the shaft and is mostly fat. A blow to the surface does not reach it first.",
+        "Correct. The periosteum is richly supplied with nerves and lies right under the skin on the shin.",
+        "Articular cartilage covers joint surfaces at the ends of the bone, not the middle of the shin. It has no nerves at all.",
+        "The endosteum lines the inside of the bone and has fewer nerves. The periosteum takes the blow."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-12",
+    "type": "multi",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function", "homeostasis"],
+    "q": "Select every function of the skeletal system.",
+    "options": ["Storing calcium and phosphate", "Making blood cells", "Making vitamin D from sunlight", "Protecting the brain, heart and lungs", "Storing fat", "Filtering waste from the blood"],
+    "correct": [0, 1, 3, 4],
+    "why": {
+      "correct": "The skeleton supports the body, protects organs, allows movement, stores minerals (about 99% of the body's calcium), makes blood cells in red marrow, and stores fat in yellow marrow.",
+      "options": [
+        "Correct. Bone is the body's mineral bank.",
+        "Correct. Red marrow carries out hematopoiesis.",
+        "Vitamin D is made in the skin, from a cholesterol derivative, when ultraviolet light strikes it. Bone uses calcium, but it does not make the vitamin.",
+        "Correct. The skull, vertebrae and rib cage enclose the brain, spinal cord, heart and lungs.",
+        "Correct. Yellow marrow is mostly adipose tissue that stores triglycerides.",
+        "Filtering waste from the blood is done by the kidneys, not by bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-13",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A needle is pushed straight through the middle of an adult's long bone shaft from the outside. Put the layers in the order it meets them.",
+    "options": ["Fibrous layer of the periosteum", "Cellular layer of the periosteum", "Dense bone of the shaft wall", "Endosteum", "Yellow marrow in the medullary cavity"],
+    "why": {
+      "correct": "The periosteum's outer fibrous layer comes first, then its inner cellular layer, which lies against the bone. Next is the thick wall of dense bone, then the endosteum lining the inside of that wall, and finally the medullary cavity, filled with yellow marrow in an adult."
+    }
+  },
+  {
+    "id": "anp-bone-structure-14",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Moving from the middle of a long bone to one end: diaphysis, then ____, then epiphysis.",
+    "options": ["Medullary cavity", "Metaphysis", "Periosteum", "Articular cartilage"],
+    "correct": 1,
+    "why": {
+      "correct": "The metaphysis (meta- = between) is the flared region where the shaft widens into the end of the bone.",
+      "options": [
+        "The medullary cavity is inside the shaft, not a region between the shaft and the end.",
+        "Correct. The metaphysis lies between diaphysis and epiphysis.",
+        "The periosteum covers the outside of the whole bone. It is not a region along its length.",
+        "Articular cartilage caps the epiphysis at the joint, beyond it rather than before it."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-15",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student describes the outside of a long bone, working from the shaft toward the joint. One statement is wrong. Which one?",
+    "options": ["The shaft is covered by periosteum", "Tendons blend into the periosteum's fibrous layer", "The periosteum continues over the articular cartilage", "The articular cartilage is hyaline cartilage", "The articular cartilage has no blood vessels"],
+    "correct": 2,
+    "why": {
+      "correct": "The periosteum covers the bone everywhere except where articular cartilage covers it. The joint surfaces are bare cartilage, which is what lets two bones glide on each other.",
+      "options": [
+        "This statement is right. Periosteum covers the outer surface of the shaft.",
+        "This statement is right. Tendon collagen blends into the fibrous layer, so a muscle's pull passes into the bone.",
+        "This is the error. The periosteum stops at the edge of the articular cartilage; the joint surface itself has no periosteum.",
+        "This statement is right. Articular cartilage is hyaline cartilage.",
+        "This statement is right. Articular cartilage has no blood vessels; it gets its nutrients from the fluid in the joint."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which bone marking is shaped to form a joint with another bone?",
+    "options": ["Crest", "Tuberosity", "Trochanter", "Condyle"],
+    "correct": 3,
+    "why": {
+      "correct": "A condyle is a smooth, rounded knob that meets another bone at a joint, like the two knobs at the lower end of the thigh bone that form the knee.",
+      "options": [
+        "A crest is a long ridge where muscles attach, not a joint surface.",
+        "A tuberosity is a rough raised area where a tendon attaches.",
+        "A trochanter is a very large process on the thigh bone where muscles attach.",
+        "Correct. Condyles, heads and facets are the joint-forming markings."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "An anthropologist compares the skeletons of two men of the same height. One has much larger, rougher tuberosities and crests. What is the most likely difference between them in life?",
+    "options": ["He had heavier muscle use, pulling harder on those sites", "He had more red marrow in his long bones", "He was older when he stopped growing", "He had thicker articular cartilage at his joints"],
+    "correct": 0,
+    "why": {
+      "correct": "Tuberosities and crests are where tendons pull. Where muscles pull hard and often for years, the bone under the tendon grows more raised and rough. Heavy, repeated muscle use is the likely difference.",
+      "options": [
+        "Correct. The shape of a marking follows the pull on it.",
+        "Red marrow sits inside the bone and does not shape surface markings.",
+        "Rougher attachment sites reflect how hard muscles pulled on the bone, not the age growth stopped.",
+        "Articular cartilage covers joint surfaces; tuberosities and crests are attachment sites away from the joints."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function", "homeostasis"],
+    "q": "Over several months, a woman loses blood slowly from a bleeding stomach ulcer. Her marrow cannot keep up. Which change in her bones helps her make more blood cells?",
+    "options": ["Articular cartilage is replaced by red marrow", "Red marrow turns into yellow marrow", "Some yellow marrow turns back into red marrow", "The periosteum begins making blood cells"],
+    "correct": 2,
+    "why": {
+      "correct": "Yellow marrow keeps the ability to become red marrow. When the demand for blood cells stays high, stem cells repopulate it and it starts making blood cells again.",
+      "options": [
+        "Articular cartilage covers the joint surfaces and does not contain marrow; it is not converted.",
+        "Red marrow turning yellow is the normal change through childhood. It would reduce blood cell formation, not raise it.",
+        "Correct. Yellow marrow can revert to red when more blood cells are needed.",
+        "The periosteum holds bone-building cells and stem cells for bone, but it does not make blood cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What passes through the nutrient foramen of a long bone?",
+    "options": ["The main tendon of the nearest muscle", "Yellow marrow leaving the bone", "The nutrient artery and vein", "The periosteum folding into the cavity"],
+    "correct": 2,
+    "why": {
+      "correct": "The nutrient foramen is a small slanting hole through the shaft wall. The nutrient artery enters through it and the nutrient vein leaves, and nerves travel with them.",
+      "options": [
+        "Tendons attach to the periosteum and bone surface. They do not pass through holes into the cavity.",
+        "Marrow stays inside the bone. The hole carries vessels.",
+        "Correct. The nutrient foramen carries the bone's main vessels.",
+        "The periosteum covers the outer surface; the inner surfaces are lined by endosteum."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-structure-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A cancer drug kills dividing stem cells in the red marrow. Which blood components will the patient's blood tests show falling over the next weeks?",
+    "options": ["White blood cells only", "Red blood cells only", "Red blood cells, white blood cells and platelets", "Platelets only"],
+    "correct": 2,
+    "why": {
+      "correct": "Red blood cells, white blood cells and platelets all come from stem cells in red marrow. Damage the stem cells and, as old cells die off, all three fall; the shortest-lived fall first.",
+      "options": [
+        "White blood cells do fall, but they are not the only product of the marrow's stem cells.",
+        "Red blood cells do fall, but more slowly, and the other lines fall too.",
+        "Correct. Hematopoiesis makes all three from the same stem cells.",
+        "Platelets fall, but so do the other cells made from the same stem cells."
+      ]
+    }
+  }
+]

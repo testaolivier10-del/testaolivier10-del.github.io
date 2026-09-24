@@ -1,0 +1,27 @@
+{
+  "ossification": {
+    "def": "The formation of bone tissue by osteoblasts, also called osteogenesis. It begins at an ossification center and follows one of two routes: intramembranous or endochondral.",
+    "roots": [["oss-", "bone"], ["-fication", "making"], ["-genesis", "origin"]],
+    "say": "oss-ih-fih-KAY-shun"
+  },
+  "intramembranous-ossification": {
+    "def": "Bone formation directly within a sheet of mesenchyme, with no cartilage stage. It forms the flat bones of the skull roof, most bones of the face and the collarbones.",
+    "roots": [["intra-", "within"], ["membran-", "thin sheet"]],
+    "say": ""
+  },
+  "endochondral-ossification": {
+    "def": "Bone formation in which a hyaline cartilage model is broken down and replaced by bone, starting at a primary ossification center in the diaphysis and later at secondary ossification centers in the epiphyses. It forms most of the skeleton.",
+    "roots": [["endo-", "within"], ["chondr-", "cartilage"]],
+    "say": "en-doh-KON-drul"
+  },
+  "epiphyseal-plate": {
+    "def": "The disc of hyaline cartilage between the epiphysis and diaphysis of a growing long bone (the growth plate). Its four zones (reserve zone, proliferative zone, zone of maturation and hypertrophy, zone of calcified matrix) add cartilage that bone replaces; when growth ends it becomes the epiphyseal line.",
+    "roots": [["epi-", "upon"], ["-physis", "growth"], ["prolifer-", "bear offspring"], ["hyper-", "over"], ["-trophy", "growth"]],
+    "say": "ep-ih-FIZ-ee-ul"
+  },
+  "bone-growth": {
+    "def": "Long bones lengthen by interstitial growth of cartilage at the epiphyseal plates, which bone then replaces, and widen by appositional growth: osteoblasts add bone under the periosteum while osteoclasts remove bone inside.",
+    "roots": [["inter-", "between"], ["ad-", "to"], ["posit-", "placed"]],
+    "say": "ap-oh-ZISH-un-ul"
+  }
+}

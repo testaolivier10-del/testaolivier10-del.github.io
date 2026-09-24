@@ -1,0 +1,38 @@
+{
+  "os-9-5": {
+    "file": "figures/openstax/os-9-5.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.5",
+      "section": "9.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/073eb52cb2117e3f7eb47972846807c673e4607e",
+      "page": "9-2-fibrous-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/073eb52cb2117e3f7eb47972846807c673e4607e",
+    "alt": "Three drawings of joints held together by fibrous tissue. Left: a curved piece of skull with a wavy seam between two bones, enlarged to show dense fibrous tissue filling the seam. Middle: the two forearm bones side by side, joined along their length by a broad sheet of fibers. Right: a tooth cut lengthwise, sitting in its bony socket, with a thin layer of fibers between the root and the socket.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.5",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 484
+  },
+  "os-9-7": {
+    "file": "figures/openstax/os-9-7.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "9.7",
+      "section": "9.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/23e473ddc4c0f0aefc92481d82ac0c89b877f739",
+      "page": "9-3-cartilaginous-joints"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/23e473ddc4c0f0aefc92481d82ac0c89b877f739",
+    "alt": "Two joints held together by cartilage. Left: the upper end of a growing long bone, with a band of cartilage separating the rounded end from the shaft. Right: the front of the bony pelvis, where the two hip bones meet at the midline across a pad of cartilage.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 9.7",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 521
+  }
+}

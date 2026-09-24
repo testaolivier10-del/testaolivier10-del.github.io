@@ -1,0 +1,22 @@
+{
+  "shoulder-muscles": {
+    "def": "Muscles that position the scapula (trapezius, rhomboid major and minor, serratus anterior, pectoralis minor) and muscles that move the humerus (pectoralis major, latissimus dorsi, deltoid, teres major, coracobrachialis). The deltoid is the prime mover of abduction, the pectoralis major of flexion and the latissimus dorsi of extension.",
+    "roots": [["delt-", "triangle"], ["trapez-", "four-sided table"], ["serratus", "saw-toothed"], ["pector-", "chest"], ["latissimus", "widest"], ["dorsi", "of the back"], ["teres", "round"]],
+    "say": "DEL-toyd; truh-PEE-zee-us; luh-TISS-ih-mus DOR-sye"
+  },
+  "rotator-cuff": {
+    "def": "Four muscles (supraspinatus, infraspinatus, teres minor, subscapularis; SITS) whose tendons wrap the shoulder joint and hold the head of the humerus in the glenoid cavity. The first three insert on the greater tubercle, the subscapularis on the lesser tubercle.",
+    "roots": [["supra-", "above"], ["infra-", "below"], ["sub-", "under"]],
+    "say": "soo-pruh-spy-NAY-tus; sub-skap-yoo-LAIR-iss"
+  },
+  "arm-muscles": {
+    "def": "Muscles that move the forearm: the biceps brachii, brachialis and brachioradialis flex the elbow; the triceps brachii extends it; the pronator teres and pronator quadratus turn the palm down; the supinator and biceps brachii turn it up.",
+    "roots": [["bi-", "two"], ["tri-", "three"], ["-ceps", "heads"], ["brachi-", "arm"], ["quadratus", "four-sided"]],
+    "say": "BY-seps BRAY-kee-eye; bray-kee-AL-iss; bray-kee-oh-ray-dee-AL-iss"
+  },
+  "forearm-muscles": {
+    "def": "Forearm muscles that move the wrist and fingers: flexors on the palm side from the medial epicondyle (flexor carpi radialis and ulnaris, palmaris longus, flexor digitorum superficialis and profundus) and extensors on the back from the lateral epicondyle (extensor carpi radialis longus and brevis, extensor carpi ulnaris, extensor digitorum). These are the extrinsic hand muscles; the intrinsic hand muscles, including the thenar and hypothenar eminences, lie in the hand.",
+    "roots": [["carp-", "wrist"], ["digit-", "finger"], ["profundus", "deep"], ["thenar", "palm"], ["hypo-", "below"]],
+    "say": "THEE-nar; HY-poh-thee-nar"
+  }
+}

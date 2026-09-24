@@ -1,0 +1,553 @@
+[
+  {
+    "id": "anp-muscle-metabolism-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "What does the enzyme creatine kinase do in a working muscle fiber?",
+    "options": [
+      "Splits glucose into two pyruvate molecules in the cytosol",
+      "Moves phosphate from creatine phosphate to ADP",
+      "Pumps calcium back into the sarcoplasmic reticulum",
+      "Binds oxygen and releases it to the mitochondria"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Creatine kinase transfers the phosphate group of creatine phosphate to ADP in one step, giving creatine and ATP. At rest it runs the other way and rebuilds creatine phosphate.",
+      "options": [
+        "That is glycolysis, a chain of ten enzyme reactions, not creatine kinase.",
+        "Correct. Creatine phosphate + ADP gives creatine + ATP.",
+        "That is the SR's calcium pump, which spends ATP rather than making it.",
+        "That is myoglobin, an oxygen-binding protein, not an enzyme."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "A sprinter explodes out of the blocks. During the first 5 seconds, where does most of the ATP his leg muscles spend come from?",
+    "options": [
+      "Aerobic respiration of fatty acids",
+      "Anaerobic glycolysis of glucose from the blood",
+      "Stored ATP and creatine phosphate",
+      "Lactate taken up from the blood"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Stored ATP and creatine phosphate are right beside the myosin heads, and creatine kinase remakes ATP in one step, so they supply most of the ATP in the first seconds of an all-out effort.",
+      "options": [
+        "Aerobic respiration is the slowest system to deliver ATP; in the first seconds of a sprint it supplies only a small share.",
+        "Glycolysis speeds up within seconds, but in the first 5 seconds creatine phosphate supplies more. And muscle glycolysis runs mainly on stored glycogen, not glucose from the blood.",
+        "Correct. Creatine phosphate dominates the first seconds.",
+        "Lactate is a fuel for steadier work later. At the start of a sprint, muscle is making lactate, not using it."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A kilogram of muscle holds 5 mmol of ATP and 20 mmol of creatine phosphate, and during an all-out effort it spends 2.5 mmol of ATP per second. Ignoring glycolysis and aerobic respiration, how long could stored ATP plus creatine phosphate supply it?",
+    "options": [
+      "2 seconds",
+      "8 seconds",
+      "10 seconds",
+      "62.5 seconds"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each creatine phosphate remakes one ATP, so the total available is 5 + 20 = 25 mmol. Time = 25 mmol ÷ 2.5 mmol per second = 10 seconds.",
+      "options": [
+        "2 seconds is how long the stored ATP alone would last (5 ÷ 2.5). Creatine phosphate adds much more.",
+        "8 seconds counts only the creatine phosphate (20 ÷ 2.5) and leaves out the stored ATP.",
+        "Correct. (5 + 20) ÷ 2.5 = 10 seconds.",
+        "62.5 comes from multiplying 25 by 2.5. Time is the amount divided by the rate."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-4",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A fiber needs 90 ATP. Taking 2 ATP per glucose for anaerobic glycolysis and 30 per glucose for aerobic respiration, how many glucose molecules does each route use?",
+    "options": [
+      "Anaerobic 45, aerobic 3",
+      "Anaerobic 3, aerobic 45",
+      "Anaerobic 180, aerobic 2,700",
+      "Anaerobic 30, aerobic 2"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Anaerobic: 90 ÷ 2 = 45 glucose. Aerobic: 90 ÷ 30 = 3 glucose. Anaerobic glycolysis uses 15 times as much glucose for the same ATP, which is why hard efforts drain glycogen fast.",
+      "options": [
+        "Correct. 90 ÷ 2 = 45 and 90 ÷ 30 = 3.",
+        "The two numbers are swapped. The route with the lower yield per glucose needs more glucose.",
+        "These come from multiplying 90 by the yields. Glucose needed is ATP needed divided by ATP per glucose.",
+        "These are not 90 divided by either yield; check the division."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A student runs 400 meters as fast as she can, which takes about a minute. Predict the change in each variable in her leg muscles at the end of the run, compared with rest.",
+    "variables": [
+      {
+        "name": "Rate of glycolysis",
+        "answer": "up",
+        "why": "Rising ADP and phosphate and falling creatine phosphate speed up the glycolytic enzymes, which supply ATP fast."
+      },
+      {
+        "name": "Lactate production",
+        "answer": "up",
+        "why": "Glycolysis makes pyruvate faster than the mitochondria can take it in, so pyruvate is turned into lactate, regenerating NAD+."
+      },
+      {
+        "name": "Creatine phosphate",
+        "answer": "down",
+        "why": "Creatine phosphate is spent in the first seconds to remake ATP and is not rebuilt until she rests."
+      },
+      {
+        "name": "Muscle glycogen",
+        "answer": "down",
+        "why": "Glycolysis runs mainly on glycogen stored in the fibers, and it uses glucose wastefully, 2 ATP each."
+      },
+      {
+        "name": "ATP concentration in the fibers",
+        "answer": "none",
+        "why": "ATP stays close to its resting level because the energy systems remake it almost as fast as it is spent; it falls only modestly even in hard work."
+      }
+    ],
+    "why": {
+      "correct": "A one-minute all-out run spends creatine phosphate early and relies heavily on fast glycolysis, which burns glycogen and produces lactate. Aerobic respiration is climbing too. Through it all, ATP itself stays nearly constant, because it is remade as fast as it is used."
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-6",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "figure": "os-10-12",
+    "q": "In the middle panel, pyruvate from glycolysis can take two routes. In a hard-working muscle fiber, what sends pyruvate to become lactate?",
+    "options": [
+      "Glycolysis making pyruvate faster than the mitochondria can take it in",
+      "The fiber having run completely out of ATP",
+      "Creatine kinase converting pyruvate to lactate",
+      "A lack of glucose entering from the blood"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Lactate forms when pyruvate is produced faster than the mitochondria can use it, which happens at high work rates even when some oxygen is present. Turning pyruvate into lactate regenerates the NAD+ that keeps glycolysis running.",
+      "options": [
+        "Correct. Lactate forms when glycolysis outpaces the mitochondria.",
+        "ATP in a working fiber stays near its resting level. If it truly ran out, the fiber would lock in rigor.",
+        "Creatine kinase handles creatine phosphate and ADP. A different enzyme converts pyruvate to lactate.",
+        "Glycolysis in muscle runs mainly on stored glycogen, and making lactate requires glycolysis to be running fast, not starved of glucose."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "misconception": "energy systems switch on one after another",
+    "q": "Thirty seconds into an all-out cycling sprint, which statement best describes the rider's leg muscles?",
+    "options": [
+      "Only glycolysis is running; creatine phosphate is switched off",
+      "Only aerobic respiration is running, since the start is over",
+      "Creatine phosphate is still supplying nearly all the ATP",
+      "All three run; glycolysis supplies the most"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The energy systems overlap. At 30 seconds, creatine phosphate is largely spent, glycolysis supplies the largest share and aerobic respiration a growing one. No system switches off; only their shares change.",
+      "options": [
+        "Creatine kinase keeps working as long as some creatine phosphate remains, and aerobic respiration runs from the start too.",
+        "Aerobic respiration is rising, but at 30 seconds of an all-out effort it supplies well under half of the ATP.",
+        "Stored ATP and creatine phosphate last only about 10 seconds of all-out work.",
+        "Correct. All three run; their shares shift over time."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "structure-function"
+    ],
+    "q": "A biology student notes that a seal's swimming muscles look almost black, and a chicken's leg meat is darker than its breast meat. What best explains the dark color in both?",
+    "options": [
+      "They contain more glycogen",
+      "They contain more creatine phosphate",
+      "They contain more lactate",
+      "They contain more myoglobin"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Myoglobin is a red, iron-containing oxygen-binding protein. Muscles that work for long periods on aerobic respiration, such as a chicken's legs, and those of diving mammals hold much more of it, which darkens them.",
+      "options": [
+        "Glycogen is a colorless storage carbohydrate; it does not color muscle.",
+        "Creatine phosphate is a colorless small molecule.",
+        "Lactate is colorless, and it does not accumulate in resting muscle.",
+        "Correct. Myoglobin is the red pigment of muscle."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "q": "Myoglobin binds oxygen more tightly than the oxygen carrier in red blood cells does. What is the effect of this in a muscle fiber?",
+    "options": [
+      "It pulls oxygen from the blood and keeps it until oxygen in the fiber falls very low",
+      "It stops the mitochondria from ever running short of oxygen",
+      "It makes the fiber less able to take up oxygen from the blood",
+      "It lets the fiber make ATP without mitochondria"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Because myoglobin binds oxygen more tightly, oxygen moves from the blood onto myoglobin, and myoglobin gives it up only when oxygen in the fiber drops low, as at the start of exercise or during a strong contraction. It is a small reserve and a shuttle toward the mitochondria.",
+      "options": [
+        "Correct. Tighter binding makes it a reserve released at low oxygen.",
+        "The store is small, enough for seconds of hard work. Mitochondria can still run short of oxygen in sustained hard exercise.",
+        "Tighter binding does the opposite: it helps draw oxygen from the blood into the fiber.",
+        "Myoglobin only holds oxygen. ATP made with oxygen is made in the mitochondria."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-10",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "q": "Even in severe muscle fatigue, ATP inside the fibers stays near three quarters of its resting level. Why is it important that ATP does not run out?",
+    "options": [
+      "Without ATP, the fibers would relax completely and become floppy",
+      "Without ATP, glycolysis would speed up and flood the fiber with lactate",
+      "Without ATP, the fiber would release more calcium from its SR",
+      "Without ATP, myosin heads could not detach from actin"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A myosin head needs a fresh ATP to let go of actin. With no ATP, cross-bridges stay locked and the fiber becomes rigid, as in rigor mortis. Fatigue slows the cross-bridges and calcium release before ATP can fall that far.",
+      "options": [
+        "The opposite happens. Relaxation needs ATP for the SR's calcium pump and for detaching the myosin heads.",
+        "Glycolysis needs ATP to start each glucose; with no ATP, it could not run at all.",
+        "Calcium release is triggered by action potentials, not by a lack of ATP. Without ATP the SR pump could not take calcium back, but the locked cross-bridges are the critical problem.",
+        "Correct. ATP is needed to release myosin from actin; without it, rigor."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "At about mile 20 of a marathon, a runner who has eaten nothing during the race suddenly slows sharply and says her legs feel empty. What is the most likely cause?",
+    "options": [
+      "Her creatine phosphate stores have just run out",
+      "Her muscle glycogen is nearly used up",
+      "Lactic acid has poisoned her muscles",
+      "Her muscle fibers have run completely out of ATP"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "After about two hours of running, muscle glycogen can be nearly used up. Fatty acids alone cannot be burned fast enough to supply ATP at racing pace, so her pace drops sharply: \"hitting the wall\".",
+      "options": [
+        "Creatine phosphate matters in the first seconds of hard effort. It was spent and rebuilt many times over the race; it does not suddenly run out at mile 20.",
+        "Correct. Glycogen depletion limits long endurance events.",
+        "Lactate is a fuel, not a poison, and in a steady marathon it stays fairly low.",
+        "ATP stays near its resting level even in severe fatigue. If it truly ran out, her muscles would lock rigid."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "misconception": "lactic acid causes next-day muscle soreness",
+    "q": "Two days after his first long downhill hike, Mr. Park's thigh muscles are sore and tender. A friend says it is lactic acid left in his muscles. What is the better explanation?",
+    "options": [
+      "Lactate has crystallized in the muscle fibers",
+      "His muscles have run out of creatine phosphate",
+      "Small fiber injuries from eccentric work",
+      "Myoglobin has leaked out of his damaged muscle fibers"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Blood lactate returns to resting levels within about an hour, so it cannot explain soreness two days later. Downhill walking is mostly eccentric work for the thigh muscles, which causes small injuries inside the fibers; the soreness comes from that damage and the repair that follows.",
+      "options": [
+        "Lactate dissolves and is cleared or burned within about an hour; it does not crystallize in muscle.",
+        "Creatine phosphate is rebuilt within minutes of rest.",
+        "Correct. Delayed soreness comes from small muscle injuries, especially after eccentric work.",
+        "A small leak of muscle proteins can accompany the injury, but the soreness itself comes from the injury and repair, not from myoglobin."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-13",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "After a hard 5-minute run, you keep breathing heavily while you stand still. Select everything this excess post-exercise oxygen consumption pays for.",
+    "options": [
+      "Rebuilding creatine phosphate and ATP",
+      "Reloading myoglobin with oxygen",
+      "Storing extra oxygen for the next run",
+      "Clearing lactate by burning it or turning it into glucose",
+      "The higher costs of a warmer body and raised hormone levels"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "why": {
+      "correct": "EPOC pays for restoring creatine phosphate and ATP, reloading oxygen onto myoglobin and in the blood, clearing lactate, and the raised costs of recovery: a warmer body, hormones released in exercise, breathing and circulation and tissue repair. It is not a reserve banked for later.",
+      "options": [
+        "Correct. Aerobic respiration rebuilds the phosphate stores within minutes.",
+        "Correct. Myoglobin gave up its oxygen during the run.",
+        "The body does not bank extra oxygen beyond its normal stores; EPOC restores those stores and pays recovery costs.",
+        "Correct. Lactate is burned or converted to glucose in the liver.",
+        "Correct. Warmth speeds every reaction, and hormones raise metabolism for a while."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-14",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Put these events in order for a fiber working so hard that it makes lactate.",
+    "options": [
+      "Glycogen in the fiber is broken down to glucose units",
+      "Glycolysis splits each glucose into two pyruvate, making ATP and NADH",
+      "Pyruvate is produced faster than the mitochondria can take it in",
+      "Pyruvate is converted to lactate, regenerating NAD+",
+      "Lactate leaves the fiber and is burned by other tissues or made into glucose by the liver"
+    ],
+    "why": {
+      "correct": "Glycogen supplies glucose, glycolysis makes pyruvate, ATP and NADH, and when pyruvate outruns the mitochondria it is turned into lactate, which regenerates NAD+ so glycolysis can continue. Lactate then leaves and is used as fuel elsewhere."
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-15",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A student described the creatine phosphate system. One step is wrong. Which one?",
+    "options": [
+      "At rest, ATP from the mitochondria is used to make creatine phosphate",
+      "At the start of hard effort, ADP builds up beside the myosin heads",
+      "Creatine kinase uses oxygen to move phosphate onto ADP",
+      "Creatine phosphate supplies most new ATP for about 10 seconds"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Creatine kinase needs no oxygen. It transfers the phosphate from creatine phosphate to ADP in a single step, which is why this system is the fastest.",
+      "options": [
+        "This step is right. The reaction reverses at rest, rebuilding creatine phosphate from ATP.",
+        "This step is right. Splitting ATP in the cross-bridge cycle leaves ADP behind.",
+        "This is the error. The creatine phosphate system is anaerobic.",
+        "This step is right. Together with stored ATP it covers roughly the first 10 seconds of all-out work."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-16",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "Complete the reaction catalyzed by creatine kinase: creatine phosphate + ADP → creatine + ____.",
+    "options": [
+      "ATP",
+      "Lactate",
+      "Pyruvate",
+      "Glucose"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The phosphate group moves from creatine phosphate onto ADP, making ATP.",
+      "options": [
+        "Correct. ADP plus a phosphate is ATP.",
+        "Lactate comes from pyruvate at the end of anaerobic glycolysis, not from creatine phosphate.",
+        "Pyruvate is the product of glycolysis.",
+        "Glucose is a fuel broken down in glycolysis; creatine kinase does not make it."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A man is freed after his legs were pinned under rubble for six hours. Later his urine is dark, tea-colored. Which muscle protein is most likely responsible?",
+    "options": [
+      "Actin",
+      "Myoglobin",
+      "Creatine kinase",
+      "Troponin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Crushed muscle fibers break down and release myoglobin into the blood. It is small enough to be filtered by the kidneys, its red-brown color darkens the urine, and it can damage the kidneys, which is why crush victims get plenty of fluid.",
+      "options": [
+        "Actin is a large filament protein; it does not color the urine.",
+        "Correct. Myoglobin is the red pigment released from damaged muscle.",
+        "Creatine kinase also leaks from damaged fibers and is measured in blood tests, but it is colorless and does not darken urine.",
+        "Troponin leaks from damaged muscle too, but in tiny amounts, and it is colorless."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Twenty minutes into a steady, comfortable bike ride, how are the rider's leg muscles mainly making ATP?",
+    "options": [
+      "Aerobic respiration of fatty acids and glucose",
+      "Anaerobic glycolysis of muscle glycogen",
+      "Creatine phosphate rebuilt between pedal strokes",
+      "Stored ATP from before the ride"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In steady exercise lasting more than a few minutes, over 95 percent of the ATP comes from aerobic respiration. At a comfortable intensity, fatty acids supply much of the fuel, with glucose and glycogen supplying the rest.",
+      "options": [
+        "Correct. Steady, moderate work runs on aerobic respiration.",
+        "Glycolysis runs, but at a comfortable pace its pyruvate goes on into the mitochondria. Anaerobic glycolysis dominates only in hard efforts of up to a couple of minutes.",
+        "Creatine phosphate smooths out each contraction's demand, but it must itself be rebuilt with ATP from aerobic respiration; it is not the original source.",
+        "Stored ATP would last only a couple of seconds of hard work."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy"
+    ],
+    "q": "During a series of hard, repeated contractions, which change inside the fibers is best supported as a major cause of the falling force?",
+    "options": [
+      "Lactate poisoning the myosin heads",
+      "ATP falling to zero",
+      "Inorganic phosphate building up",
+      "Myoglobin running out of iron"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Breaking down creatine phosphate and ATP releases inorganic phosphate. It weakens each cross-bridge's pull and reduces calcium release from the SR, and it is one of the best-supported causes of fatigue in hard, repeated contractions.",
+      "options": [
+        "Lactate is a fuel, and adding it to rested muscle does not weaken it.",
+        "ATP stays near three quarters of its resting level even in severe fatigue.",
+        "Correct. Phosphate buildup is a leading cause of peripheral fatigue.",
+        "Myoglobin keeps its iron; it may give up its oxygen, but that does not destroy it."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-metabolism-20",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": [
+      "energy",
+      "homeostasis"
+    ],
+    "q": "A student sprints up four flights of stairs and then sits down. Predict how each variable changes over her first 10 minutes of rest, compared with the moment she stops.",
+    "variables": [
+      {
+        "name": "Oxygen use",
+        "answer": "down",
+        "why": "Oxygen use falls from its peak, but it stays above resting for several minutes (EPOC) while stores are rebuilt, so it declines gradually rather than dropping at once."
+      },
+      {
+        "name": "Creatine phosphate in her leg muscles",
+        "answer": "up",
+        "why": "At rest, creatine kinase runs in reverse, using ATP from aerobic respiration to rebuild creatine phosphate; about half returns in 30 seconds."
+      },
+      {
+        "name": "Oxygen bound to myoglobin",
+        "answer": "up",
+        "why": "Oxygen delivered by the blood reloads the myoglobin that gave up its oxygen during the sprint."
+      },
+      {
+        "name": "Blood lactate",
+        "answer": "down",
+        "why": "Heart and resting muscle burn lactate and the liver turns it into glucose, clearing it within about an hour."
+      }
+    ],
+    "why": {
+      "correct": "Immediately after the sprint, creatine phosphate and myoglobin oxygen are low and lactate is high. During recovery, extra oxygen (EPOC) powers aerobic respiration that rebuilds creatine phosphate, reloads myoglobin and clears lactate, and oxygen use drifts back toward resting."
+    }
+  }
+]

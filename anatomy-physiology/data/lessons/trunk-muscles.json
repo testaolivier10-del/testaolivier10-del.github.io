@@ -1,0 +1,47 @@
+{
+  "topic": "trunk-muscles",
+  "hook": "<p>Dana, 32, had her second baby three months ago. Since then, every time she coughs, sneezes or jumps on the trampoline with her son, a little urine leaks. Each of those movements squeezes her abdomen hard. The muscle sling that should tighten at the same moment and hold her bladder shut was stretched during the birth and now lags behind.</p>",
+  "prereq": [
+    {
+      "q": "Which structure separates the thoracic cavity from the abdominopelvic cavity?",
+      "options": ["The diaphragm", "The pleura", "The sternum"],
+      "correct": 0,
+      "why": "The diaphragm is the dome-shaped sheet between the thoracic cavity above and the abdominopelvic cavity below. The pleura lines the lungs, and the sternum is the breastbone.",
+      "review": "body-cavities"
+    },
+    {
+      "q": "Which parts of a vertebra project to the sides, giving muscles a place to attach?",
+      "options": ["The vertebral bodies", "The transverse processes", "The intervertebral discs"],
+      "correct": 1,
+      "why": "The transverse processes stick out to each side of the vertebral arch and anchor muscles and ribs. The spinous process projects backward; the body bears weight; the discs sit between bodies.",
+      "review": "vertebral-column"
+    },
+    {
+      "q": "In a muscle name, what does \"transversus\" describe?",
+      "options": ["Fascicles that run across the body", "A muscle with three heads", "A muscle that lifts a bone"],
+      "correct": 0,
+      "why": "Transversus means across: the muscle's fascicles run horizontally. Three heads is triceps; a lifting muscle is a levator.",
+      "review": "muscle-mechanics"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-11-16",
+    "caption": "The abdominal wall. Hide the labels and name the vertical strap in front, its bands of tendon and the midline seam, then the three flat muscles from outside in, and the muscle in the back wall."
+  },
+  "chain": [
+    { "cause": "The rectus abdominis, obliques and transversus abdominis contract together, as in a cough.", "effect": "They squeeze the abdomen, whose soft contents cannot be compressed, so the pressure inside it rises." },
+    { "cause": "The raised abdominal pressure pushes up on the relaxed diaphragm.", "effect": "The diaphragm is driven up into the chest and air is forced out of the lungs." },
+    { "cause": "The same pressure pushes down on the pelvic organs.", "effect": "The levator ani contracts at the same moment, holding the organs up and squeezing the urethra and rectum shut." },
+    { "cause": "If the levator ani is weak or slow, it cannot match the rising pressure.", "effect": "The pelvic organs are pushed down and a little urine can leak." }
+  ],
+  "misconception": {
+    "wrong": "The external and internal obliques both turn the trunk toward their own side.",
+    "right": "One external oblique turns the trunk toward the opposite side; one internal oblique turns it toward the same side. Their fibers run at right angles, so the left external oblique and the right internal oblique line up in one diagonal and work together to turn you to the right."
+  },
+  "check": ["anp-trunk-muscles-1", "anp-trunk-muscles-5", "anp-trunk-muscles-8", "anp-trunk-muscles-9", "anp-trunk-muscles-11", "anp-trunk-muscles-12", "anp-trunk-muscles-18"],
+  "summary": "<p>The erector spinae (iliocostalis, longissimus and spinalis, lateral to medial) extends the spine and brakes forward bending; the splenius extends the head and turns it to the same side. The rectus abdominis flexes the spine; the external oblique, internal oblique and transversus abdominis cross in three directions, compress the abdomen and twist the trunk, and their aponeuroses form the rectus sheath and meet at the linea alba. The quadratus lumborum bends the lower spine sideways. The diaphragm flattens to enlarge the chest; the external intercostals lift the ribs and the internal intercostals lower them in forceful breathing out. The levator ani and coccygeus form the pelvic floor, which supports the pelvic organs; below lies the perineum with its urogenital and anal triangles.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-31", "label": "NREMT: Chest and abdominal trauma" }
+  ]
+}

@@ -1,0 +1,642 @@
+[
+  {
+    "id": "anp-vertebral-column-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-23",
+    "pin": "lamina",
+    "q": "Name the pinned part of the vertebral arch.",
+    "options": [
+      "Pedicle",
+      "Transverse process",
+      "Lamina",
+      "Spinous process"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The laminae are the two flat plates that angle in from the pedicles and meet in the midline behind the vertebral foramen, where the spinous process begins.",
+      "options": [
+        "The pedicles are the short stalks that come straight back from the body; the laminae continue from them.",
+        "The transverse processes point out to the sides from where each pedicle meets its lamina.",
+        "Correct. This flat plate of the arch is a lamina.",
+        "The spinous process points backward from where the two laminae meet; it is not the plate itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-23",
+    "pin": "pedicle",
+    "q": "Name the pinned part of the vertebral arch.",
+    "options": [
+      "Lamina",
+      "Pedicle",
+      "Vertebral body",
+      "Superior articular process"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The pedicles are the two short, thick stalks that come straight back from the vertebral body and form the sides of the vertebral arch.",
+      "options": [
+        "The laminae are the flat plates behind the pedicles that meet in the midline.",
+        "Correct. The short stalk joining the arch to the body is a pedicle.",
+        "The vertebral body is the thick front part that bears weight, in front of the arch.",
+        "The superior articular processes point upward from the arch and carry the facets that meet the vertebra above."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-23",
+    "pin": "vertebral-foramen",
+    "q": "Name the pinned opening.",
+    "options": [
+      "Intervertebral foramen",
+      "Transverse foramen",
+      "Vertebral foramen",
+      "Sacral foramen"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The vertebral foramen is the large hole between the body and the arch. Stacked, the vertebral foramina form the vertebral canal, which holds the spinal cord.",
+      "options": [
+        "The intervertebral foramen is the gap between two neighboring vertebrae, at the side, where a nerve leaves.",
+        "Transverse foramina are small holes in the transverse processes of cervical vertebrae only.",
+        "Correct. The central hole holding the spinal cord is the vertebral foramen.",
+        "Sacral foramina are the paired holes through the sacrum."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-25",
+    "pin": "dens-of-axis",
+    "q": "Name the pinned structure of the second cervical vertebra.",
+    "options": [
+      "Dens",
+      "Anterior arch",
+      "Spinous process",
+      "Transverse process"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The dens is the tooth-shaped peg that rises from the body of the axis (C2) into the front of the atlas's ring. The atlas and skull turn around it.",
+      "options": [
+        "Correct. The upward peg of the axis is the dens.",
+        "The anterior arch is the front of the atlas's ring, which the dens presses against.",
+        "The spinous process points backward from the arch, not up from the body.",
+        "The transverse processes point out to the sides."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-24",
+    "pin": "nucleus-pulposus",
+    "q": "Name the pinned part of the intervertebral disc.",
+    "options": [
+      "Anulus fibrosus",
+      "Nucleus pulposus",
+      "Vertebral body",
+      "Ligamentum flavum"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The nucleus pulposus is the soft, gel-like core of the disc, mostly water held by water-binding molecules.",
+      "options": [
+        "The anulus fibrosus is the ring of fibrocartilage around the core, not the core itself.",
+        "Correct. The soft center of the disc is the nucleus pulposus.",
+        "The vertebral body is bone, above and below the disc.",
+        "The ligamentum flavum joins the laminae behind the vertebral canal, not the bodies."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-24",
+    "pin": "anulus-fibrosus",
+    "q": "Name the pinned part of the intervertebral disc.",
+    "options": [
+      "Nucleus pulposus",
+      "Posterior longitudinal ligament",
+      "Vertebral foramen",
+      "Anulus fibrosus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The anulus fibrosus is the tough outer ring of the disc: layers of fibrocartilage whose collagen fibers run at alternating angles.",
+      "options": [
+        "The nucleus pulposus is the soft core inside the ring.",
+        "The posterior longitudinal ligament runs along the back of the vertebral bodies, not around the disc.",
+        "The vertebral foramen is the hole in the vertebra behind the body.",
+        "Correct. The fibrous ring is the anulus fibrosus."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-29",
+    "pin": "sacral-promontory",
+    "q": "Name the pinned landmark on the front of the sacrum.",
+    "options": [
+      "Sacral hiatus",
+      "Sacral canal",
+      "Sacral promontory",
+      "Coccyx"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The sacral promontory is the forward-jutting upper front edge of the first sacral body.",
+      "options": [
+        "The sacral hiatus is the opening at the lower end of the sacral canal, on the back of the sacrum.",
+        "The sacral canal runs down inside the sacrum and opens at the top of its back surface, not on its front edge.",
+        "Correct. The jutting upper front edge is the sacral promontory.",
+        "The coccyx hangs below the sacrum."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-8",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-31",
+    "pin": "nuchal-ligament",
+    "q": "Name the pinned band at the back of the neck.",
+    "options": [
+      "Supraspinous ligament",
+      "Nuchal ligament",
+      "Anterior longitudinal ligament",
+      "Ligamentum flavum"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The nuchal ligament is the thick sheet at the back of the neck, running from C7 up to the back of the skull. It is the neck's version of the supraspinous ligament.",
+      "options": [
+        "The supraspinous ligament joins the tips of the spinous processes from C7 down, below the neck.",
+        "Correct. The broad sheet at the nape of the neck is the nuchal ligament.",
+        "The anterior longitudinal ligament runs down the front of the vertebral bodies.",
+        "The ligamenta flava join the laminae inside the column and cannot be seen from the side like this."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-9",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-20",
+    "pin": "coccyx",
+    "q": "Name the pinned bone at the lower end of the column.",
+    "options": [
+      "Sacrum",
+      "Coccyx",
+      "Fifth lumbar vertebra",
+      "Hip bone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The coccyx, the tailbone, is usually four small fused vertebrae hanging below the sacrum.",
+      "options": [
+        "The sacrum is the larger triangular bone just above it.",
+        "Correct. The small tail at the bottom is the coccyx.",
+        "L5 is the lowest movable vertebra, above the sacrum.",
+        "The hip bones lie to each side of the sacrum; they are not part of the column."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-10",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-26",
+    "pin": "superior-costal-facet",
+    "q": "Name the pinned smooth pit on the side of this thoracic vertebral body.",
+    "options": [
+      "Superior articular facet",
+      "Transverse foramen",
+      "Intervertebral foramen",
+      "Costal facet"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Costal facets are smooth pits on thoracic vertebrae where the ribs meet the bone: on the sides of the bodies and on the transverse processes of T1 to T10.",
+      "options": [
+        "The superior articular facets are on the upward processes of the arch and meet the vertebra above, not a rib.",
+        "Transverse foramina are holes in the transverse processes of cervical vertebrae.",
+        "The intervertebral foramen is a gap between two vertebrae, not a smooth pit on one body.",
+        "Correct. A rib meets the body at this costal facet."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An isolated vertebra has a small hole in each transverse process. Which region is it from?",
+    "options": [
+      "Cervical",
+      "Thoracic",
+      "Lumbar",
+      "Sacral"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Only cervical vertebrae have transverse foramina. Stacked, they form a channel for an artery and vein running up to the brain.",
+      "options": [
+        "Correct. Transverse foramina mark a cervical vertebra.",
+        "Thoracic vertebrae have costal facets on their transverse processes, not holes.",
+        "Lumbar transverse processes are long and thin, with no holes.",
+        "Sacral vertebrae are fused into the sacrum; their holes are the sacral foramina."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In the lab you pick up a vertebra with a very large, thick, kidney-shaped body, a short blunt spinous process pointing straight back, and no facets or holes on its transverse processes. Where in the column did it come from?",
+    "options": [
+      "The neck",
+      "The chest",
+      "The lower back",
+      "The fused sacrum"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Lumbar vertebrae carry the weight of the whole trunk, so their bodies are the largest. Their spinous processes are short and hatchet-shaped, and they have neither transverse foramina nor costal facets.",
+      "options": [
+        "Cervical vertebrae have small bodies and holes in their transverse processes.",
+        "Thoracic vertebrae have costal facets for ribs and long, downward-sloping spinous processes.",
+        "Correct. This is a lumbar vertebra.",
+        "Sacral vertebrae are fused into one bone and are not found as single vertebrae in an adult."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-13",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which features belong to the atlas (C1)? Select all that apply.",
+    "options": [
+      "It has no vertebral body",
+      "It has a dens",
+      "It has no spinous process",
+      "Its upper facets hold the occipital condyles",
+      "It has a bifid spinous process"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "The atlas is a ring of bone with no body and no spinous process. The occipital condyles of the skull rest in its large upper facets.",
+      "options": [
+        "Yes. The atlas is a ring with a front and back arch and no body.",
+        "No. The dens belongs to the axis (C2) and rises into the atlas's ring.",
+        "Yes. The atlas has only a small bump where a spinous process would be.",
+        "Yes. The skull rocks on these facets when you nod.",
+        "No. Bifid spinous processes are found on C2 to C6; the atlas has no spinous process at all."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-14",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a cut down the midline of the lower back, order these structures from front to back.",
+    "options": [
+      "Anterior longitudinal ligament",
+      "Vertebral body",
+      "Posterior longitudinal ligament",
+      "Spinal cord in the vertebral canal",
+      "Ligamentum flavum",
+      "Supraspinous ligament"
+    ],
+    "why": {
+      "correct": "From front to back: the anterior longitudinal ligament covers the front of the bodies; then the vertebral body; the posterior longitudinal ligament on the back of the body; the vertebral canal with the spinal cord; the ligamentum flavum joining the laminae; and the supraspinous ligament on the tips of the spinous processes.",
+      "options": [
+        "The anterior longitudinal ligament lies on the front of the bodies.",
+        "The body is the front part of each vertebra.",
+        "The posterior longitudinal ligament lies on the back of the bodies, inside the canal.",
+        "The canal lies between the body in front and the arch behind.",
+        "The ligamentum flavum joins the laminae, which form the back wall of the canal.",
+        "The supraspinous ligament joins the tips of the spinous processes, the farthest back."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a slipped disc slides out of place",
+    "q": "A 42-year-old lifts a heavy box while bent forward and feels sudden low back pain that shoots down the back of one leg. Imaging shows soft disc material pressing on a nerve at L5 on one side. What happened?",
+    "options": [
+      "The whole disc slid out from between the vertebral bodies as one piece",
+      "The nucleus pulposus pushed out through a tear in the anulus fibrosus",
+      "The ligamentum flavum snapped and folded into the canal",
+      "The vertebral body of L5 collapsed into a wedge"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In a herniated disc, the outer rings of the anulus fibrosus tear and the gel of the nucleus pulposus is squeezed out, usually backward and to one side, where it presses on a nerve leaving through the intervertebral foramen.",
+      "options": [
+        "The disc stays anchored to the bodies above and below it; the whole disc does not slide out.",
+        "Correct. The nucleus herniates through a tear in the anulus.",
+        "The ligamentum flavum is elastic and does not snap with lifting; this would not produce soft disc material on the nerve.",
+        "A wedge collapse of a vertebral body is a compression fracture, typical of osteoporosis, and it is bone, not soft disc material."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-16",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which curves of the spine are primary curves?",
+    "options": [
+      "Cervical and lumbar",
+      "Thoracic and lumbar",
+      "Cervical and sacrococcygeal",
+      "Thoracic and sacrococcygeal"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The primary curves are the thoracic and sacrococcygeal curves. They bow backward and are kept from the C-shaped curve of the fetus.",
+      "options": [
+        "The cervical and lumbar curves are the secondary curves, which form after birth.",
+        "The thoracic curve is primary, but the lumbar curve is secondary.",
+        "The sacrococcygeal curve is primary, but the cervical curve is secondary.",
+        "Correct. The thoracic and sacrococcygeal curves are primary."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-17",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A healthy adult stands and walks for 12 hours after waking. Predict the change in each variable by evening, compared with first thing in the morning.",
+    "variables": [
+      {
+        "name": "Water content of the nuclei pulposi",
+        "answer": "down",
+        "why": "The weight of the body above squeezes water out of the gel-like nuclei over the day."
+      },
+      {
+        "name": "Height of each intervertebral disc",
+        "answer": "down",
+        "why": "As the nuclei lose water, each disc becomes slightly thinner."
+      },
+      {
+        "name": "The person's total standing height",
+        "answer": "down",
+        "why": "Twenty-three slightly thinner discs add up to a loss of about 1 to 2 cm, regained overnight lying down."
+      },
+      {
+        "name": "Height of each vertebral body",
+        "answer": "none",
+        "why": "The vertebral bodies are bone and do not measurably compress under everyday loads."
+      }
+    ],
+    "why": {
+      "correct": "Standing load squeezes water out of the nuclei pulposi, so the discs thin and the person is slightly shorter by evening. The bony vertebral bodies do not change. Lying down overnight lets the discs take water back up."
+    }
+  },
+  {
+    "id": "anp-vertebral-column-18",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An 80-year-old woman with osteoporosis has lost 5 cm of height, and her upper back has become rounded and hunched. What most likely caused the change in her spine?",
+    "options": [
+      "Her lumbar curve became exaggerated",
+      "Her cervical vertebrae fused",
+      "The fronts of weakened thoracic vertebral bodies collapsed into wedges",
+      "Her coccyx broke and tilted forward"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In osteoporosis, the front of the thoracic vertebral bodies can crush into wedge shapes. Each wedge tilts the column forward, exaggerating the thoracic curve into a hunch (kyphosis) and shortening the trunk.",
+      "options": [
+        "An exaggerated lumbar curve is a swayback (lordosis), which does not round the upper back.",
+        "Fused cervical vertebrae would stiffen the neck but would not round the upper back or cost 5 cm.",
+        "Correct. Wedge collapse of thoracic bodies produces kyphosis and height loss.",
+        "A broken coccyx causes pain on sitting and does not change the curve of the upper back."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-19",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: the vertebral arch = two pedicles + two ____.",
+    "options": [
+      "transverse processes",
+      "laminae",
+      "articular processes",
+      "costal facets"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The vertebral arch is formed by two pedicles that come back from the body and two laminae that meet behind the vertebral foramen.",
+      "options": [
+        "The transverse processes stick out from the arch; they do not form its loop.",
+        "Correct. Pedicles and laminae make up the arch.",
+        "The articular processes stick up and down from the arch to meet neighboring vertebrae.",
+        "Costal facets are smooth pits for ribs on thoracic vertebrae."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-20",
+    "type": "error",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student listed the regions of the adult vertebral column from top to bottom. One entry is wrong. Which one?",
+    "options": [
+      "7 cervical vertebrae",
+      "12 thoracic vertebrae",
+      "5 lumbar vertebrae",
+      "The sacrum, from 3 fused vertebrae",
+      "The coccyx, usually from 4 fused vertebrae"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The sacrum forms from 5 fused sacral vertebrae. The other counts are right: 7 cervical, 12 thoracic, 5 lumbar, and a coccyx of usually 4 (3 to 5) fused vertebrae.",
+      "options": [
+        "This entry is right. There are 7 cervical vertebrae, C1 to C7.",
+        "This entry is right. There are 12 thoracic vertebrae, one for each pair of ribs.",
+        "This entry is right. There are 5 lumbar vertebrae, L1 to L5.",
+        "This is the error. The sacrum forms from 5 fused vertebrae, not 3.",
+        "This entry is right. The coccyx usually has 4 fused vertebrae, with 3 to 5 in some people."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-21",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which ligament of the vertebral column is made mostly of elastic fibers?",
+    "options": [
+      "Anterior longitudinal ligament",
+      "Posterior longitudinal ligament",
+      "Ligamentum flavum",
+      "Supraspinous ligament"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The ligamentum flavum (flav- = yellow) joins the laminae of neighboring vertebrae. Its elastic fibers give it its yellow color; they stretch when you bend forward and help pull you back upright.",
+      "options": [
+        "The anterior longitudinal ligament is broad, strong dense connective tissue along the front of the bodies.",
+        "The posterior longitudinal ligament is a narrow band of dense connective tissue on the back of the bodies.",
+        "Correct. The ligamentum flavum is mostly elastic fibers.",
+        "The supraspinous ligament is dense connective tissue joining the tips of the spinous processes."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What passes through each intervertebral foramen?",
+    "options": [
+      "The spinal cord",
+      "A nerve leaving the spinal cord",
+      "An artery rising to the brain",
+      "The nucleus pulposus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each intervertebral foramen is the gap on either side between two neighboring vertebrae, formed by notches in their pedicles. A nerve leaves the spinal cord through it.",
+      "options": [
+        "The spinal cord runs down the vertebral canal, formed by the stacked vertebral foramina.",
+        "Correct. A nerve exits through each intervertebral foramen.",
+        "The artery to the back of the brain rises through the transverse foramina of the cervical vertebrae.",
+        "The nucleus pulposus stays inside the disc unless it herniates, and then it may press into this gap."
+      ]
+    }
+  },
+  {
+    "id": "anp-vertebral-column-23",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A driver's car is hit from behind, and her head snaps backward over the headrest. Which ligament is most likely to be stretched or torn?",
+    "options": [
+      "Supraspinous ligament",
+      "Ligamentum flavum",
+      "Nuchal ligament",
+      "Anterior longitudinal ligament"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Snapping the head back bends the neck backward. The anterior longitudinal ligament runs down the front of the vertebral bodies and resists exactly that movement, so it takes the strain.",
+      "options": [
+        "The supraspinous ligament is on the back of the column; bending backward slackens it.",
+        "The ligamenta flava lie behind the canal and are slack, not stretched, when the neck bends backward.",
+        "The nuchal ligament at the back of the neck is slackened when the head goes back.",
+        "Correct. Backward bending strains the anterior longitudinal ligament."
+      ]
+    }
+  }
+]

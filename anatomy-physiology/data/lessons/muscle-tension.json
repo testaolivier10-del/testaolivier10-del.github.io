@@ -1,0 +1,47 @@
+{
+  "topic": "muscle-tension",
+  "hook": "<p>Mr. Okafor, 58, is six weeks out from knee surgery. His physical therapist asks him to press his leg against her hand without moving it, then to lower himself slowly into a chair, then to stand up again. Each task uses the same thigh muscle in a different way. To see why the slow sit-down is the hardest to control, you need to know how a muscle whose fibers either fire or don't can produce every force from a gentle hold to a full push.</p>",
+  "prereq": [
+    {
+      "q": "What does calcium do when the sarcoplasmic reticulum releases it into the cytosol?",
+      "options": ["Binds troponin, which moves tropomyosin off actin's binding sites", "Binds the myosin head and splits ATP", "Carries the action potential down the T tubules"],
+      "correct": 0,
+      "why": "Calcium binds troponin. Troponin shifts tropomyosin away from the binding sites on actin, so myosin heads can attach and cross-bridges form.",
+      "review": "excitation-contraction"
+    },
+    {
+      "q": "What ends a contraction when the motor neuron stops firing?",
+      "options": ["The sarcomeres run out of actin", "The SR's calcium pump draws calcium back in", "The myosin heads lose their ATP permanently"],
+      "correct": 1,
+      "why": "With no new action potentials, the SR's calcium pump clears calcium from the cytosol. Tropomyosin covers actin's binding sites again, and cross-bridges stop forming.",
+      "review": "excitation-contraction"
+    },
+    {
+      "q": "At a neuromuscular junction, what does the motor neuron release onto the muscle fiber?",
+      "options": ["Calcium", "Acetylcholine", "ATP"],
+      "correct": 1,
+      "why": "The motor neuron's axon terminal releases acetylcholine, which binds receptor proteins on the end plate and triggers an action potential in the muscle fiber.",
+      "review": "neuromuscular-junction"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-13",
+    "caption": "The same elbow muscle lifting (concentric), lowering (eccentric) and holding (isometric) a dumbbell. Hide the labels and name each kind of contraction."
+  },
+  "chain": [
+    { "cause": "You decide to lift a heavy bag, and input to the motor neurons of your arm muscle rises.", "effect": "Small motor neurons reach threshold first, then larger ones join: more motor units are recruited." },
+    { "cause": "Each recruited motor neuron fires action potentials, faster as input grows.", "effect": "Every fiber in each unit fires; new action potentials arrive before calcium from the last one has been pumped back into the SR." },
+    { "cause": "Calcium in the cytosol stays high between action potentials.", "effect": "Cross-bridges keep cycling, twitches sum toward tetanus, and each fiber's tension rises several-fold." },
+    { "cause": "Tension summed across all active fibers rises until it matches the weight of the bag.", "effect": "Until then the muscle contracts isometrically; once tension exceeds the load, the muscle shortens and the bag rises (a concentric contraction)." }
+  ],
+  "misconception": {
+    "wrong": "To lift something heavier, each muscle fiber contracts harder, and a contracting muscle always shortens.",
+    "right": "A fiber's twitch is all-or-none. Your nervous system raises force by recruiting more motor units and firing them faster, so twitches sum toward tetanus. And contraction means cross-bridges are pulling, not that the muscle shortens: a muscle can contract while holding still (isometric) or while being lengthened (eccentric), as when you lower yourself into a chair."
+  },
+  "check": ["anp-muscle-tension-2", "anp-muscle-tension-5", "anp-muscle-tension-6", "anp-muscle-tension-9", "anp-muscle-tension-12", "anp-muscle-tension-14", "anp-muscle-tension-18"],
+  "summary": "<p>A motor unit is one motor neuron and all the fibers it supplies; small units allow fine control and large units give force. One action potential gives one twitch, with a latent period, a contraction phase and a longer relaxation phase. When action potentials arrive before the fiber relaxes, calcium stays high and twitches add up (wave summation), up to incomplete and then complete tetanus. Force is graded by recruitment, from small units to large ones, and by firing rate. Muscle tone is a relaxed muscle's resistance to stretch, largely passive, with some motor units firing in postural and stretched muscles. In an isotonic contraction length changes (concentric: shortens; eccentric: lengthens); in an isometric contraction it does not. Tension is greatest at the optimal length, where thick and thin filaments overlap best.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

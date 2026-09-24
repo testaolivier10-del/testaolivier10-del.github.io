@@ -1,0 +1,602 @@
+[
+ {
+  "id": "anp-synovial-joints-1",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "figure": "os-9-8",
+  "pin": "articular-cartilage",
+  "q": "Name the pinned structure.",
+  "options": [
+   "Articular cartilage",
+   "Synovial membrane",
+   "Fibrous membrane",
+   "Periosteum"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The smooth layer of hyaline cartilage capping each bone end inside a synovial joint is the articular cartilage.",
+   "options": [
+    "Correct. This cap on the bone end is articular cartilage.",
+    "The synovial membrane lines the inside of the capsule, not the contact surfaces of the bones.",
+    "The fibrous membrane is the outer layer of the capsule, wrapped around the outside of the joint.",
+    "The periosteum covers the outer surface of the bone outside the joint, not the surfaces that meet."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-2",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "figure": "os-9-8",
+  "pin": "joint-cavity-containing-synovial-fluid",
+  "q": "Name the pinned space.",
+  "options": [
+   "Medullary cavity",
+   "Bursa",
+   "Joint cavity",
+   "Articular disc"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The narrow space between the cartilage-covered bone ends, filled with synovial fluid, is the joint cavity.",
+   "options": [
+    "The medullary cavity is the hollow inside the shaft of a long bone, holding marrow.",
+    "A bursa is a separate sac of synovial fluid outside the joint, between tissues that slide over bone.",
+    "Correct. This is the joint cavity, filled with synovial fluid.",
+    "An articular disc is a solid pad of fibrocartilage, not a fluid-filled space."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-3",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-8",
+  "pin": "fibrous-membrane-outer",
+  "q": "Name the pinned layer.",
+  "options": [
+   "Synovial membrane",
+   "Fibrous membrane of the articular capsule",
+   "Articular cartilage",
+   "Endosteum"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The outer layer of the articular capsule is the fibrous membrane, dense connective tissue that attaches to the periosteum of each bone and holds the bones together.",
+   "options": [
+    "The synovial membrane is the inner layer of the capsule, lining the cavity.",
+    "Correct. The tough outer layer is the fibrous membrane.",
+    "Articular cartilage covers the bone ends inside the cavity, not the outside of the joint.",
+    "The endosteum lines the inner surfaces of bone, such as the medullary cavity."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-4",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "q": "Which structure makes synovial fluid?",
+  "options": [
+   "Articular cartilage",
+   "The fibrous membrane of the articular capsule",
+   "The synovial membrane",
+   "The periosteum"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The synovial membrane lines the joint cavity. Fluid filters out of its small blood vessels, and its cells add the slippery molecules that make synovial fluid thick.",
+   "options": [
+    "Articular cartilage is fed by synovial fluid; it does not make it.",
+    "The fibrous membrane is the tough outer layer that holds the bones together. It does not line the cavity.",
+    "Correct. The synovial membrane makes synovial fluid.",
+    "The periosteum covers bone outside the joint and has nothing to do with synovial fluid."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-5",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "misconception": "articular cartilage has its own blood supply",
+  "q": "A patient keeps an injured knee completely still in a brace for many weeks. Why can this harm the knee's articular cartilage?",
+  "options": [
+   "Cartilage cells need nerve signals set off by movement in order to survive",
+   "Without loading and release, less fluid is pumped through the cartilage",
+   "The synovial membrane stops making fluid when the joint is still",
+   "Blood vessels in the cartilage narrow when the joint does not move"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Articular cartilage has no blood vessels. Loading squeezes fluid out and releasing draws fresh synovial fluid in, carrying nutrients to the chondrocytes. A joint that never moves or bears load loses that pumping, so the cartilage is poorly fed.",
+   "options": [
+    "Chondrocytes are fed by fluid, not by nerve signals, and cartilage has no nerves.",
+    "Correct. Movement and loading pump nutrients into avascular cartilage.",
+    "The synovial membrane keeps making fluid. The problem is that the fluid is not pumped through the cartilage.",
+    "Articular cartilage has no blood vessels at all, so none can narrow."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-6",
+  "type": "multi",
+  "level": "recall",
+  "diff": 2,
+  "q": "Which of these are true of a bursa? Select all that apply.",
+  "options": [
+   "It is a sac of synovial membrane holding synovial fluid",
+   "It lets skin, tendon or muscle glide over bone",
+   "It is made of fibrocartilage",
+   "A tendon sheath is a bursa wrapped around a tendon",
+   "It lies inside the joint cavity between the bone ends"
+  ],
+  "correct": [
+   0,
+   1,
+   3
+  ],
+  "why": {
+   "correct": "A bursa is a flattened sac of synovial membrane with a film of synovial fluid, placed where tissues slide over bone. A tendon sheath is a tube-shaped bursa around a tendon.",
+   "options": [
+    "Yes. A bursa is a sac of synovial membrane with synovial fluid inside.",
+    "Yes. It sits between moving layers so they glide.",
+    "No. A pad of fibrocartilage inside a joint is an articular disc, not a bursa.",
+    "Yes. A tendon sheath is a bursa stretched into a sleeve around a tendon.",
+    "No. Bursae lie outside the joint cavity, between skin, tendon, muscle and bone."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-7",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-9",
+  "pin": "prepatellar-bursa",
+  "q": "Name the pinned sac.",
+  "options": [
+   "Prepatellar bursa",
+   "Suprapatellar bursa",
+   "Joint cavity",
+   "Infrapatellar fat pad"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The sac between the skin and the front of the patella is the prepatellar bursa, a subcutaneous bursa (pre- = in front of).",
+   "options": [
+    "Correct. The sac in front of the patella, under the skin, is the prepatellar bursa.",
+    "The suprapatellar bursa lies above the patella, behind the tendon from the thigh, not in front of the patella.",
+    "The joint cavity lies between the femur and the tibia, not in front of the patella.",
+    "The infrapatellar fat pad is a mass of fat behind the patellar ligament, not a fluid sac."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-8",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "q": "Which type of synovial joint allows movement in every plane and turning of the bone?",
+  "options": [
+   "Hinge joint",
+   "Condyloid (ellipsoid) joint",
+   "Saddle joint",
+   "Ball-and-socket joint"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "A ball-and-socket joint is multiaxial: the round head can swing in every plane and turn in its cup. The shoulder and the hip are examples.",
+   "options": [
+    "A hinge joint is uniaxial and swings in one plane only.",
+    "A condyloid joint is biaxial: it swings in two planes but cannot turn.",
+    "A saddle joint is biaxial, with a wide range, but it does not allow the free turning of a ball in a socket.",
+    "Correct. Ball-and-socket joints are multiaxial."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-9",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "The dens of the axis turns inside a ring formed by the atlas and a ligament. Which joint type and axis count fit this joint?",
+  "options": [
+   "Pivot joint; uniaxial",
+   "Plane joint; nonaxial",
+   "Condyloid joint; biaxial",
+   "Hinge joint; uniaxial"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "A peg turning inside a ring is a pivot joint. It moves around one axis, the bone's long axis, so it is uniaxial. This is the atlantoaxial joint, which turns the head side to side.",
+   "options": [
+    "Correct. Peg in a ring means pivot, and one axis means uniaxial.",
+    "A plane joint has flat surfaces that glide. The dens is a rounded peg in a ring.",
+    "A condyloid joint fits an oval surface into an oval hollow and does not turn. The atlas on the occipital condyles is condyloid, but that is a different joint.",
+    "A hinge swings a bone back and forth in one plane. The atlantoaxial joint turns the atlas around the dens instead."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-10",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "Your thumb can sweep across your palm to touch your little finger, but your index finger cannot move that way at its base. What explains the difference?",
+  "options": [
+   "The thumb has one fewer phalanx",
+   "The thumb's carpometacarpal joint is a saddle joint",
+   "The thumb's joints have no articular cartilage",
+   "The thumb's metacarpal is joined to the carpals by a symphysis"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The joint between the trapezium and the first metacarpal is a saddle joint, biaxial with a wide range. The finger carpometacarpal joints are plane joints that only glide slightly.",
+   "options": [
+    "The thumb does have only two phalanges, but the sweep happens at its base, at the carpometacarpal joint, so phalanx count does not explain it.",
+    "Correct. The saddle shape of the thumb's carpometacarpal joint allows the wide two-plane movement.",
+    "All synovial joints, including the thumb's, have articular cartilage.",
+    "The thumb's carpometacarpal joint is synovial. A symphysis would barely move."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-11",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-19",
+  "pin": "anterior-cruciate-ligament",
+  "q": "Name the pinned ligament.",
+  "options": [
+   "Posterior cruciate ligament",
+   "Patellar ligament",
+   "Anterior cruciate ligament",
+   "Fibular collateral ligament"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The ligament that crosses inside the knee from the front of the tibia up and back to the femur is the anterior cruciate ligament (ACL).",
+   "options": [
+    "The posterior cruciate ligament runs from the back of the tibia up and forward, the other arm of the X.",
+    "The patellar ligament lies in front of the knee, from the patella to the tibial tuberosity.",
+    "Correct. This is the anterior cruciate ligament.",
+    "The fibular collateral ligament lies on the outer side of the knee, outside the capsule, running to the fibula."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-12",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-19",
+  "pin": "medial-meniscus",
+  "q": "Name the pinned structure on the top of the tibia.",
+  "options": [
+   "Lateral meniscus",
+   "Medial meniscus",
+   "Articular cartilage",
+   "Tibial collateral ligament"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The C-shaped fibrocartilage pad on the inner (medial) tibial condyle is the medial meniscus.",
+   "options": [
+    "The lateral meniscus sits on the outer tibial condyle.",
+    "Correct. This is the medial meniscus.",
+    "Articular cartilage is the thin hyaline layer on the bone surface. The meniscus is a thicker fibrocartilage pad resting on it.",
+    "The tibial collateral ligament runs down the inner side of the knee from femur to tibia, not across the top of the tibia."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-13",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "During a knee exam, a clinician pulls the patient's tibia forward while holding the femur still, and the tibia slides forward much farther than on the other knee. Which structure is most likely torn?",
+  "options": [
+   "Posterior cruciate ligament",
+   "Anterior cruciate ligament",
+   "Lateral meniscus",
+   "Patellar ligament"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The anterior cruciate ligament stops the tibia from sliding forward under the femur. When it is torn, the tibia can be pulled forward too far.",
+   "options": [
+    "The posterior cruciate ligament stops the tibia sliding backward, so its tear shows when the tibia is pushed back.",
+    "Correct. Excess forward slide of the tibia points to the anterior cruciate ligament.",
+    "The menisci deepen and cushion the tibial surfaces; they do not act as the main restraint on forward slide.",
+    "The patellar ligament carries the pull of the thigh muscles to the tibia and does not restrain forward slide."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-14",
+  "type": "vignette",
+  "level": "analyze",
+  "diff": 3,
+  "q": "A football player takes a hard blow to the outer side of his straightened knee. The inner side of the knee is painful and gaps open when stressed. Which ligament has most likely torn, and which cartilage pad is attached to it?",
+  "options": [
+   "Tibial collateral ligament; medial meniscus",
+   "Fibular collateral ligament; lateral meniscus",
+   "Posterior cruciate ligament; lateral meniscus",
+   "Patellar ligament; medial meniscus"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "A blow to the outer side pushes the knee inward, stretching the inner side. The tibial collateral ligament braces the inner side and is attached to the medial meniscus, so the two are often injured together.",
+   "options": [
+    "Correct. The inner ligament tears, and the medial meniscus attached to it is at risk.",
+    "The fibular collateral ligament is on the outer side. A blow from the outside compresses that side rather than stretching it.",
+    "The posterior cruciate ligament restrains backward slide of the tibia, not inward bending of the knee.",
+    "The patellar ligament is in front of the knee and is not stretched by a sideways blow."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-15",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "Why is the glenohumeral joint dislocated more often than the hip joint?",
+  "options": [
+   "Its capsule is thicker and stiffer than the hip's",
+   "It has an articular disc that slips out of place",
+   "Its socket is shallow and it relies mainly on muscles",
+   "It is a hinge joint, while the hip is ball-and-socket"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The glenoid cavity is small and shallow, the capsule is loose, and the rotator cuff tendons do most of the holding. The hip has a deep acetabulum and a thick capsule with strong ligaments.",
+   "options": [
+    "The shoulder's capsule is loose, not thick. A thick capsule would make it more stable.",
+    "The glenohumeral joint has a labrum around its rim but no articular disc between the bones.",
+    "Correct. A shallow socket held mainly by muscles is easy to push out of place.",
+    "Both the shoulder and the hip are ball-and-socket joints."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-16",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-16",
+  "pin": "glenoid-labrum",
+  "q": "Name the pinned rim of fibrocartilage.",
+  "options": [
+   "Acetabular labrum",
+   "Articular disc",
+   "Glenoid labrum",
+   "Subacromial bursa"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The ring of fibrocartilage around the rim of the glenoid cavity of the scapula is the glenoid labrum. It deepens the shallow shoulder socket.",
+   "options": [
+    "The acetabular labrum rims the socket of the hip, not the shoulder.",
+    "An articular disc lies between two bone ends. The labrum is a rim around the socket's edge.",
+    "Correct. This is the glenoid labrum.",
+    "The subacromial bursa is a fluid sac above the joint, under the acromion."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-17",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "A toddler is swung by the arms, then cries and will not use one arm, holding it still at his side. X-rays are normal. The head of the radius has slipped partly out of a ring of ligament. Which term describes the injury?",
+  "options": [
+   "Ulnar collateral ligament sprain",
+   "Humeroulnar joint dislocation",
+   "Olecranon fracture",
+   "Radial head subluxation"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "The head of the radius turns inside the annular ligament at the proximal radioulnar joint. A sharp pull slides it partly out while the surfaces still touch: a partial dislocation, or subluxation.",
+   "options": [
+    "A sprain is a stretch or tear of a ligament. Here the bone has slipped out of the ligament's ring.",
+    "A dislocation separates the joint surfaces completely. Here they are only partly out of line, and the humeroulnar joint is not involved.",
+    "A fracture is a break in a bone. The X-rays are normal.",
+    "Correct. This is a subluxation of the radial head from the annular ligament."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-18",
+  "type": "order",
+  "level": "apply",
+  "diff": 2,
+  "q": "Order the steps of osteoarthritis in a knee.",
+  "options": [
+   "Repeated loading or an old injury damages the articular cartilage",
+   "The cartilage softens, frays and thins",
+   "The space between the bones narrows on an X-ray",
+   "Bone rubs on bone and bony spurs grow at the edges",
+   "The joint hurts with use and moves less"
+  ],
+  "why": {
+   "correct": "Cartilage damage comes first. As the cartilage thins, the gap between the bones narrows. Once it wears through, bone meets bone and spurs form, and pain and stiffness follow.",
+   "options": [
+    "The disease begins with damage to the avascular cartilage, which repairs poorly.",
+    "Damaged cartilage loses its structure and thins.",
+    "Thinner cartilage fills less of the space between the bones, so the gap looks narrower.",
+    "Where cartilage is gone, bone rubs bone and reacts by thickening and forming spurs.",
+    "Bone-on-bone contact and irritation of the synovial membrane cause pain and stiffness."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-19",
+  "type": "error",
+  "level": "apply",
+  "diff": 2,
+  "q": "This list pairs named joints with their type. One pairing is wrong. Find it.",
+  "options": [
+   "Atlantoaxial joint: pivot",
+   "Radiocarpal joint: condyloid",
+   "Interphalangeal joint: hinge",
+   "Distal tibiofibular joint: plane",
+   "Sternoclavicular joint: saddle"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "The distal tibiofibular joint is not synovial at all. The lower ends of the tibia and fibula are joined by strong ligaments, a syndesmosis.",
+   "options": [
+    "Correct pairing. The atlas turns around the dens.",
+    "Correct pairing. The wrist joint is condyloid.",
+    "Correct pairing. The joints between the finger bones are hinges.",
+    "This is the wrong pairing. The distal tibiofibular joint is a fibrous syndesmosis.",
+    "Correct pairing. The sternoclavicular joint is a saddle joint with an articular disc."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-20",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "q": "A runner lands on the outer edge of her foot, and her sole rolls sharply inward. The outer side of her ankle swells, and the bones are not broken. Which ligament is most likely injured, and what is the injury called?",
+  "options": [
+   "Anterior talofibular ligament; a sprain",
+   "Deltoid ligament; a sprain",
+   "Anterior talofibular ligament; a dislocation",
+   "Iliofemoral ligament; a subluxation"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Rolling the sole inward stretches the outer side of the ankle, where the ligaments are smaller and weaker. The anterior talofibular ligament gives first. A stretched or torn ligament is a sprain.",
+   "options": [
+    "Correct. The anterior talofibular ligament is the one most often sprained.",
+    "The deltoid ligament is on the inner side and is compressed, not stretched, when the sole rolls inward. It is also very strong.",
+    "The ligament is right, but a dislocation means the bone surfaces are forced fully apart, which is not described.",
+    "The iliofemoral ligament is at the hip, not the ankle."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-21",
+  "type": "single",
+  "level": "recall",
+  "diff": 2,
+  "q": "Which ligament lies outside the knee's articular capsule, separate from it?",
+  "options": [
+   "Fibular collateral ligament",
+   "Anterior cruciate ligament",
+   "Tibial collateral ligament",
+   "Posterior cruciate ligament"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The fibular collateral ligament runs from the femur to the head of the fibula outside the capsule, so it is an extrinsic ligament.",
+   "options": [
+    "Correct. It is an extrinsic ligament.",
+    "The anterior cruciate ligament is intracapsular: inside the capsule, covered by synovial membrane.",
+    "The tibial collateral ligament is part of the capsule's fibrous membrane, so it is intrinsic.",
+    "The posterior cruciate ligament is intracapsular, like the anterior one."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-synovial-joints-22",
+  "type": "predict",
+  "level": "analyze",
+  "diff": 2,
+  "q": "The anterior cruciate ligament of a knee is torn and not repaired. Predict the change in each.",
+  "variables": [
+   {
+    "name": "How far the tibia can slide forward under the femur",
+    "answer": "up",
+    "why": "The anterior cruciate ligament is the main restraint on forward slide of the tibia, so with it torn the tibia slides farther."
+   },
+   {
+    "name": "Shear forces on the menisci during pivoting",
+    "answer": "up",
+    "why": "When the tibia shifts and twists abnormally, the femur grinds across the menisci, loading them in ways they are not built for."
+   },
+   {
+    "name": "How far the knee can be pushed inward at the inner side",
+    "answer": "none",
+    "why": "Inward bending is restrained by the tibial collateral ligament, which is intact, so this does not change."
+   }
+  ],
+  "why": {
+   "correct": "Losing the anterior cruciate ligament removes the restraint on forward slide of the tibia. The unstable knee grinds its menisci and cartilage when it pivots, but restraints handled by other ligaments stay the same."
+  },
+  "core": [
+   "structure-function"
+  ]
+ }
+]

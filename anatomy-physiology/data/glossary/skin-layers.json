@@ -1,0 +1,52 @@
+{
+  "integument": {
+    "def": "The skin: the body's outer covering, made of the epidermis and dermis. With the hair, nails and skin glands it forms the integumentary system.",
+    "roots": [["in-", "on"], ["teg-", "to cover"]],
+    "say": "in-TEG-yoo-ment"
+  },
+  "epidermis": {
+    "def": "The surface layer of the skin: a keratinized stratified squamous epithelium with no blood vessels, fed by diffusion from the dermis. About 90% of its cells are keratinocytes.",
+    "roots": [["epi-", "upon"], ["derm-", "skin"]],
+    "say": ""
+  },
+  "keratinocyte": {
+    "def": "The main cell of the epidermis. It is made in the stratum basale, fills with keratin as it is pushed toward the surface, seals the spaces around it with lipid, and dies as a flat cell of the stratum corneum.",
+    "roots": [["kerat-", "horn"], ["-cyte", "cell"]],
+    "say": "keh-RAT-in-oh-site"
+  },
+  "epidermal-strata": {
+    "def": "The layers of the epidermis, deep to superficial: stratum basale (dividing basal cells), stratum spinosum (keratin-making cells joined by desmosomes), stratum granulosum (keratohyalin and lipid granules; cells die), stratum lucidum (clear, eleiden-filled, thick skin only) and stratum corneum (flat dead cells, shed).",
+    "roots": [["stratum", "layer"], ["bas-", "base"], ["spin-", "thorn"], ["granul-", "little grain"], ["lucid-", "clear"], ["corne-", "horn"]],
+    "say": "STRAY-tum"
+  },
+  "thick-thin-skin": {
+    "def": "Two kinds of skin that differ in their epidermis. Thick skin, on the palms and soles, has five strata including a stratum lucidum, a very deep stratum corneum, friction ridges and no hair. Thin skin, everywhere else, has four strata and usually hair.",
+    "roots": [],
+    "say": ""
+  },
+  "melanocyte": {
+    "def": "A pigment cell in the stratum basale that makes melanin from tyrosine, packs it into melanosomes and passes them along its branches to keratinocytes, where melanin caps the nucleus and absorbs UV light.",
+    "roots": [["melan-", "black"], ["-cyte", "cell"], ["-some", "body"]],
+    "say": "meh-LAN-oh-site"
+  },
+  "epidermal-other-cells": {
+    "def": "Tactile (Merkel) cells in the stratum basale press against sensory nerve fibers and signal light touch. Langerhans cells (the epidermal dendritic cell type), mainly in the stratum spinosum, come from the bone marrow and take up foreign material.",
+    "roots": [["tact-", "touch"], ["dendr-", "tree"]],
+    "say": "LAHNG-er-hahns"
+  },
+  "dermis": {
+    "def": "The connective tissue layer of the skin beneath the epidermis. Its thin papillary layer (areolar tissue) rises into dermal papillae; its thick reticular layer (dense irregular tissue) gives the skin strength and stretch and holds the larger vessels, nerves and glands.",
+    "roots": [["derm-", "skin"], ["papill-", "nipple"], ["reticul-", "little net"]],
+    "say": ""
+  },
+  "hypodermis": {
+    "def": "The layer of areolar and adipose tissue beneath the dermis, also called the subcutaneous layer or superficial fascia. It anchors the skin loosely to the deep fascia over the muscles, stores fat, and insulates and cushions.",
+    "roots": [["hypo-", "below"], ["sub-", "under"], ["cutane-", "skin"], ["fasci-", "band"]],
+    "say": ""
+  },
+  "skin-color": {
+    "def": "The color set by melanin in the keratinocytes, carotene from the diet in the stratum corneum and fat, and blood in the dermis. Erythema is redness from vasodilation, pallor is paleness from less blood in the skin, and cyanosis is a bluish color when blood carries too little oxygen.",
+    "roots": [["carot-", "carrot"], ["erythem-", "redness"], ["cyan-", "dark blue"], ["-osis", "condition"]],
+    "say": "sy-uh-NOH-sis"
+  }
+}

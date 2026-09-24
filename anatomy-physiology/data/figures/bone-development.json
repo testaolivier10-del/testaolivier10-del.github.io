@@ -1,0 +1,74 @@
+{
+  "os-6-16": {
+    "file": "figures/openstax/os-6-16.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.16",
+      "section": "6.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/adc7826f821d921d2b47a768327e1204b1a47dc7",
+      "page": "6-4-bone-formation-and-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/adc7826f821d921d2b47a768327e1204b1a47dc7",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.16",
+    "labels": [],
+    "w": 1100,
+    "h": 768,
+    "ext": "jpg"
+  },
+  "os-6-17": {
+    "file": "figures/openstax/os-6-17.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.17",
+      "section": "6.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/acb367be0c8eb09417dd0588910685533efa0c80",
+      "page": "6-4-bone-formation-and-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/acb367be0c8eb09417dd0588910685533efa0c80",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.17",
+    "labels": [],
+    "w": 1100,
+    "h": 1468,
+    "ext": "jpg"
+  },
+  "os-6-18": {
+    "file": "figures/openstax/os-6-18.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.18",
+      "section": "6.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/aaa021b0d0eab80f66f4c7fab30575cb0ccb0b42",
+      "page": "6-4-bone-formation-and-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/aaa021b0d0eab80f66f4c7fab30575cb0ccb0b42",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.18",
+    "labels": [],
+    "w": 800,
+    "h": 1246,
+    "ext": "jpg"
+  },
+  "os-6-19": {
+    "file": "figures/openstax/os-6-19.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.19",
+      "section": "6.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1011ce9dedcd336147e9ed747d0d4998bb876bb7",
+      "page": "6-4-bone-formation-and-development"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/1011ce9dedcd336147e9ed747d0d4998bb876bb7",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.19",
+    "labels": [],
+    "w": 790,
+    "h": 625,
+    "ext": "jpg"
+  }
+}

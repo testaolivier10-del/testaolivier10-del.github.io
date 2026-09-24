@@ -1,0 +1,27 @@
+{
+  "bone-cells": {
+    "def": "The four cells of bone tissue: osteogenic cells (dividing stem cells), osteoblasts (build matrix), osteocytes (osteoblasts trapped in lacunae that maintain matrix and sense load) and osteoclasts (huge fused cells of the macrophage line that resorb bone).",
+    "roots": [["oste-", "bone"], ["-genic", "producing"], ["-blast", "bud, builder"], ["-cyte", "cell"], ["-clast", "break"]],
+    "say": "OSS-tee-oh-blast; OSS-tee-oh-klast"
+  },
+  "bone-matrix": {
+    "def": "The extracellular material of bone: about one third collagen and ground substance, which resists pulling, and two thirds hydroxyapatite crystals of calcium phosphate, which resist squeezing. Osteoid is new matrix before it mineralizes.",
+    "roots": [["hydroxy-", "containing hydroxide"], ["apatite", "a calcium phosphate mineral"], ["-oid", "like"]],
+    "say": "hy-DROK-see-AP-uh-tite"
+  },
+  "compact-bone": {
+    "def": "Dense bone built of osteons, forming the shaft wall of long bones and the outer shell of every bone. Also called cortical bone; about 80% of the skeleton's mass.",
+    "roots": [["cortex", "bark, outer layer"]],
+    "say": ""
+  },
+  "osteon": {
+    "def": "The cylindrical unit of compact bone: rings of matrix (lamellae) around a central canal carrying vessels and nerves, with osteocytes in lacunae linked by canaliculi. Perforating canals join neighboring osteons.",
+    "roots": [["oste-", "bone"], ["lamella", "thin plate"], ["lacuna", "small pit"], ["canaliculus", "little canal"]],
+    "say": "OSS-tee-on; kan-uh-LIK-yuh-lye"
+  },
+  "spongy-bone": {
+    "def": "Bone built as a lattice of thin struts, the trabeculae, with marrow in the spaces and no osteons. It fills the ends of long bones and the inside of other bones; in flat skull bones it is called the diploë. Also called cancellous bone.",
+    "roots": [["trabecula", "little beam"], ["cancell-", "lattice"], ["diplo-", "double"]],
+    "say": "truh-BEK-yuh-lee; DIP-loh-ee"
+  }
+}

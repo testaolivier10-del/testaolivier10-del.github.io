@@ -56,6 +56,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/development.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/digestive.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -232,6 +237,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/adrenal-glands.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/aging.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -451,6 +461,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/embryonic-development.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/energy-balance-thermoregulation.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -477,6 +492,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/female-hormones-cycle.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/fertilization.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/fetal-development-circulation.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -551,12 +576,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/inheritance.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/innate-immunity.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/kidney-anatomy.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/labor-birth.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -691,8 +726,23 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/placenta.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/plasma-membrane.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/postnatal-lactation.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/pregnancy.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -852,6 +902,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/adrenal-glands.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/aging.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -1071,6 +1126,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/embryonic-development.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/energy-balance-thermoregulation.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -1097,6 +1157,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/female-hormones-cycle.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/fertilization.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/fetal-development-circulation.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -1171,12 +1241,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/inheritance.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/innate-immunity.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/kidney-anatomy.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/labor-birth.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -1311,8 +1391,23 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/placenta.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/plasma-membrane.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/postnatal-lactation.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/pregnancy.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>

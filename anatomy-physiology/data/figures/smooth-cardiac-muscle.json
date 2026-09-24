@@ -1,0 +1,18 @@
+{
+  "os-10-24": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.24",
+      "section": "10.8",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2255189e4f98b63248832ebc1d6b99623b1d0a96",
+      "page": "10-8-smooth-muscle"
+    },
+    "alt": "Two drawings of smooth muscle fibers. On the left, a relaxed fiber is long and spindle-shaped, crossed by a diagonal network of lines, the intermediate filaments, that join small dark dots, the dense bodies, spread through the cell and along its edge. On the right, a contracted fiber is shorter and wider, with a bulging, puckered outline, and arrows at both ends pointing inward; its dense bodies have been pulled closer together.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.24",
+    "labels": [],
+    "w": 1126,
+    "h": 233,
+    "ext": "jpg"
+  }
+}

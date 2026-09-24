@@ -1,0 +1,572 @@
+[
+ {
+  "id": "anp-body-movements-1",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "q": "Which movement decreases the angle between two bones in the sagittal plane?",
+  "options": [
+   "Abduction",
+   "Extension",
+   "Flexion",
+   "Rotation"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Flexion is a sagittal-plane movement that makes the angle between two bones smaller, such as bending the elbow.",
+   "options": [
+    "Abduction moves a limb away from the midline in the frontal plane.",
+    "Extension is the opposite of flexion: it makes the angle larger again.",
+    "Correct. Flexion decreases the angle.",
+    "Rotation turns a bone around its own long axis in the transverse plane."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-2",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "figure": "os-9-12",
+  "pin": "circumduction",
+  "q": "Name the pinned movement.",
+  "options": [
+   "Rotation",
+   "Circumduction",
+   "Abduction",
+   "Opposition"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The hand traces a circle while the shoulder stays put, so the arm sweeps out a cone. That is circumduction.",
+   "options": [
+    "Rotation turns the bone around its own long axis; it does not trace a circle with the limb's end.",
+    "Correct. Tracing a circle with the end of the limb is circumduction.",
+    "Abduction lifts the arm out to the side in one direction only.",
+    "Opposition is a thumb movement that brings the thumb tip to a fingertip."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-3",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "figure": "os-9-12",
+  "pin": "abduction",
+  "q": "Name the pinned movement.",
+  "options": [
+   "Adduction",
+   "Flexion",
+   "Abduction",
+   "Elevation"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The arm moves out to the side, away from the midline, in the frontal plane. That is abduction.",
+   "options": [
+    "Adduction brings the arm back toward the midline, the return movement.",
+    "Flexion at the shoulder lifts the arm forward in the sagittal plane, not out to the side.",
+    "Correct. Moving the arm away from the midline is abduction.",
+    "Elevation moves a bone such as the scapula or mandible upward; it is not the name for lifting the arm sideways."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-4",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-12",
+  "pin": "lateral-rotation",
+  "q": "Name the pinned movement of the thigh.",
+  "options": [
+   "Lateral rotation",
+   "Medial rotation",
+   "Circumduction",
+   "Abduction of the thigh"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The thigh turns on its long axis so that its front faces away from the midline. That is lateral rotation.",
+   "options": [
+    "Correct. The front of the limb turns outward.",
+    "Medial rotation turns the front of the limb toward the midline, the opposite way.",
+    "Circumduction sweeps the limb in a cone; here the thigh only turns on its axis.",
+    "Abduction moves the whole limb away from the midline; it does not turn the limb on its long axis."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-5",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "figure": "os-9-13",
+  "pin": "dorsiflexion",
+  "q": "Name the pinned movement of the foot.",
+  "options": [
+   "Plantar flexion",
+   "Inversion",
+   "Dorsiflexion",
+   "Eversion"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Lifting the top of the foot toward the shin is dorsiflexion.",
+   "options": [
+    "Plantar flexion points the foot down, the opposite movement.",
+    "Inversion turns the sole inward; it does not lift the foot toward the shin.",
+    "Correct. The top of the foot moves toward the shin.",
+    "Eversion turns the sole outward."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-6",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-13",
+  "pin": "eversion",
+  "q": "Name the pinned movement of the foot.",
+  "options": [
+   "Inversion",
+   "Eversion",
+   "Dorsiflexion",
+   "Abduction"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The sole of the foot turns outward, away from the midline. That is eversion.",
+   "options": [
+    "Inversion turns the sole inward, toward the other foot.",
+    "Correct. The sole faces outward.",
+    "Dorsiflexion lifts the top of the foot toward the shin; the sole does not turn.",
+    "The foot's sideways turning of the sole has its own name; abduction is used for limbs moving away from the midline."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-7",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-13",
+  "pin": "protraction-of-mandible",
+  "q": "Name the pinned movement of the jaw.",
+  "options": [
+   "Elevation",
+   "Lateral excursion",
+   "Protraction",
+   "Depression"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Jutting the lower jaw forward is protraction of the mandible.",
+   "options": [
+    "Elevation raises the mandible to close the mouth.",
+    "Lateral excursion slides the jaw to one side.",
+    "Correct. Moving the jaw forward is protraction.",
+    "Depression lowers the mandible to open the mouth."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-8",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "q": "In anatomical position, what position is the forearm in?",
+  "options": [
+   "Supinated",
+   "Pronated",
+   "Flexed",
+   "Hyperextended"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "In anatomical position the palms face forward and the radius and ulna lie parallel. That is the supinated position.",
+   "options": [
+    "Correct. Anatomical position has the forearm supinated.",
+    "In the pronated position the palm faces backward and the radius crosses the ulna.",
+    "The elbow is straight in anatomical position, not flexed.",
+    "Hyperextension is extension past anatomical position, so anatomical position cannot be hyperextended."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-9",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "misconception": "flexion always moves a part forward",
+  "q": "You bend your knee to bring your heel toward your buttock. What is the movement at the knee?",
+  "options": [
+   "Extension",
+   "Flexion",
+   "Hyperextension",
+   "Adduction"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The angle between the thigh and the leg gets smaller, so this is flexion. At the knee, flexion carries the leg backward.",
+   "options": [
+    "The leg does move backward, but direction of travel does not name the movement. The angle decreases, so it is flexion, not extension.",
+    "Correct. Flexion is defined by the angle getting smaller.",
+    "The leg does pass behind the body, but hyperextension is extension past anatomical position. The knee is bending, not straightening.",
+    "Adduction is a frontal-plane movement toward the midline. The heel moves backward in the sagittal plane."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-10",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "A waiter carries a tray on his upturned palm. Which forearm movement turned his palm up from the palm-down position?",
+  "options": [
+   "Pronation",
+   "Supination",
+   "Dorsiflexion",
+   "Lateral excursion"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "Turning the palm up (forward, in anatomical terms) is supination: the radius swings back to lie parallel with the ulna.",
+   "options": [
+    "Pronation turns the palm down or backward, the opposite way.",
+    "Correct. Palm up is supination.",
+    "Dorsiflexion is a movement of the foot at the ankle.",
+    "Lateral excursion is sideways movement of the mandible."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-11",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "At which joints does pronation of the forearm happen?",
+  "options": [
+   "The radiocarpal joint of the wrist",
+   "The humeroulnar joint",
+   "The proximal and distal radioulnar joints",
+   "The midcarpal joint between the carpal rows"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "In pronation the head of the radius turns in the annular ligament at the proximal radioulnar joint, and the lower end of the radius swings around the ulna at the distal radioulnar joint. The hand goes along with the radius.",
+   "options": [
+    "The radiocarpal joint is the wrist. The wrist does not turn the palm; the hand simply rides on the radius.",
+    "The humeroulnar joint is the elbow's hinge. It bends and straightens the elbow but cannot turn the forearm.",
+    "Correct. Pronation happens between the radius and the ulna.",
+    "The midcarpal joint lies between the two rows of carpal bones and only glides."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-12",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "q": "In a rear-end car crash, the driver's head is thrown backward past its upright position, and the ligaments in the front of the neck are strained. Which movement caused the injury?",
+  "options": [
+   "Hyperflexion of the neck",
+   "Lateral flexion of the neck",
+   "Rotation of the neck",
+   "Hyperextension of the neck"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "The head moved backward beyond anatomical position in the sagittal plane: hyperextension. It stretches the structures on the front of the neck.",
+   "options": [
+    "Hyperflexion is flexion beyond the normal range, bending the head forward.",
+    "Lateral flexion tilts the head toward a shoulder, in the frontal plane.",
+    "Rotation turns the head side to side around the axis of the neck.",
+    "Correct. The head went backward past upright: hyperextension."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-13",
+  "type": "multi",
+  "level": "apply",
+  "diff": 2,
+  "q": "Which of these movements happen in the frontal plane? Select all that apply.",
+  "options": [
+   "Abduction of the arm at the shoulder",
+   "Lateral flexion of the trunk",
+   "Flexion of the elbow",
+   "Adduction of the thigh at the hip",
+   "Medial rotation of the thigh"
+  ],
+  "correct": [
+   0,
+   1,
+   3
+  ],
+  "why": {
+   "correct": "The frontal plane divides front from back, so movements in it carry parts out to the side or back to the midline: abduction, adduction and lateral flexion.",
+   "options": [
+    "Yes. Lifting the arm out to the side is a frontal-plane movement.",
+    "Yes. Bending the trunk to the side is a frontal-plane movement.",
+    "No. Elbow flexion happens in the sagittal plane.",
+    "Yes. Bringing the thigh toward the midline is a frontal-plane movement.",
+    "No. Rotation turns a bone around its long axis in the transverse plane."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-14",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "Which joint type cannot perform circumduction?",
+  "options": [
+   "Condyloid joint",
+   "Saddle joint",
+   "Ball-and-socket joint",
+   "Hinge joint"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "Circumduction strings together movement in two planes: flexion, abduction, extension and adduction. A hinge joint moves in one plane only, so it cannot circumduct.",
+   "options": [
+    "A condyloid joint moves in two planes, so it can circumduct (the wrist, the knuckles).",
+    "A saddle joint moves in two planes, so it can circumduct (the base of the thumb).",
+    "A ball-and-socket joint moves in every plane and circumducts easily (the shoulder, the hip).",
+    "Correct. A hinge moves in one plane and cannot sweep a cone."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-15",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "A person shrugs her shoulders up toward her ears. What movement do her scapulae make?",
+  "options": [
+   "Protraction",
+   "Superior rotation",
+   "Elevation",
+   "Abduction"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Moving a bone straight up is elevation. Shrugging elevates the scapulae.",
+   "options": [
+    "Protraction moves the scapulae forward around the rib cage, as when you reach forward.",
+    "Superior rotation turns the scapula so the glenoid cavity tips up, as when the arm is raised overhead. A shrug lifts the whole scapula without turning it.",
+    "Correct. Shrugging is elevation.",
+    "Abduction describes a limb moving away from the midline, not the scapula moving up."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-16",
+  "type": "order",
+  "level": "apply",
+  "diff": 2,
+  "q": "You draw a large circle with your straight arm, starting with it hanging at your side and moving it forward first. Order the movements at the shoulder.",
+  "options": [
+   "Flexion",
+   "Abduction",
+   "Extension",
+   "Adduction"
+  ],
+  "why": {
+   "correct": "Circumduction is the four angular movements in sequence. Starting forward: flexion lifts the arm forward, abduction carries it out to the side, extension swings it back, and adduction returns it to your side.",
+   "options": [
+    "The arm first rises forward: flexion.",
+    "It then swings out to the side: abduction.",
+    "It then moves back behind the side: extension.",
+    "It finally returns to the side of the body: adduction."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-17",
+  "type": "missing",
+  "level": "apply",
+  "diff": 2,
+  "q": "Fill the gap. Dorsiflexion : plantar flexion :: inversion : ____",
+  "options": [
+   "Eversion",
+   "Pronation",
+   "Abduction",
+   "Depression"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Dorsiflexion and plantar flexion are an opposite pair at the ankle. Inversion's opposite is eversion: turning the sole outward instead of inward.",
+   "options": [
+    "Correct. Eversion is the opposite of inversion.",
+    "Pronation is the forearm movement that turns the palm backward, the opposite of supination.",
+    "Abduction is the opposite of adduction.",
+    "Depression is the opposite of elevation."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-18",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "You touch the tip of your thumb to the tip of your little finger. What is this movement, and where does it mainly happen?",
+  "options": [
+   "Opposition, at the thumb's carpometacarpal joint",
+   "Adduction, at the thumb's interphalangeal joint",
+   "Flexion, at the radiocarpal joint",
+   "Reposition, at the metacarpophalangeal joint of the little finger"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Bringing the thumb tip across the palm to a fingertip is opposition. It happens mainly at the saddle-shaped carpometacarpal joint at the base of the thumb.",
+   "options": [
+    "Correct. Opposition at the thumb's saddle joint.",
+    "The thumb's interphalangeal joint is a hinge that only bends the tip; it cannot carry the thumb across the palm.",
+    "Flexion at the wrist bends the whole hand forward; it does not bring the thumb to a finger.",
+    "Reposition is the return of the thumb to its resting place, the opposite movement."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-19",
+  "type": "error",
+  "level": "apply",
+  "diff": 2,
+  "q": "This list pairs each movement with where it happens. One pairing is wrong. Find it.",
+  "options": [
+   "Pronation: radioulnar joints",
+   "Inversion: subtalar joint",
+   "Lateral excursion: temporomandibular joint",
+   "Plantar flexion: radiocarpal joint",
+   "Rotation of the head: atlantoaxial joint"
+  ],
+  "correct": 3,
+  "why": {
+   "correct": "Plantar flexion points the foot down at the talocrural (ankle) joint. The radiocarpal joint is the wrist.",
+   "options": [
+    "Correct pairing. The radius turns around the ulna at the radioulnar joints.",
+    "Correct pairing. Turning the sole inward happens mostly at the subtalar joint.",
+    "Correct pairing. The jaw slides sideways at the temporomandibular joint.",
+    "This is the wrong pairing. Plantar flexion happens at the ankle, not the wrist.",
+    "Correct pairing. Shaking the head \"no\" happens at the atlantoaxial pivot joint."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-20",
+  "type": "predict",
+  "level": "analyze",
+  "diff": 2,
+  "q": "Starting in anatomical position, a person flexes her elbow fully, then pronates her forearm. Predict the change in each compared with the start.",
+  "variables": [
+   {
+    "name": "Angle between the upper arm and the forearm",
+    "answer": "down",
+    "why": "Flexion at the elbow decreases the angle between the humerus and the forearm bones."
+   },
+   {
+    "name": "How much the radius crosses over the ulna",
+    "answer": "up",
+    "why": "In anatomical position the radius and ulna are parallel. Pronation swings the radius across the ulna."
+   },
+   {
+    "name": "Angle at the wrist between the forearm and the hand",
+    "answer": "none",
+    "why": "Neither movement happens at the wrist. The hand rides along with the radius during pronation, so the wrist angle does not change."
+   }
+  ],
+  "why": {
+   "correct": "Elbow flexion closes the elbow angle, and pronation crosses the radius over the ulna. The wrist takes no part in either."
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-body-movements-21",
+  "type": "single",
+  "level": "analyze",
+  "diff": 3,
+  "q": "A patient can lift his arm out to the side only to about shoulder height; above that it stops. His glenohumeral joint moves normally when tested alone. Which movement is most likely missing?",
+  "options": [
+   "Superior rotation of the scapula",
+   "Medial rotation of the humerus",
+   "Depression of the scapula",
+   "Lateral flexion of the neck"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "Raising the arm high overhead needs the scapula to turn so that its glenoid cavity tips upward: superior rotation. If the scapula does not rotate, the arm stops a little past shoulder height even with a healthy shoulder joint.",
+   "options": [
+    "Correct. Without superior rotation of the scapula the arm cannot go high overhead.",
+    "Medial rotation of the humerus turns the arm inward on its axis; it does not raise it overhead.",
+    "Depression lowers the scapula, which would not help lift the arm.",
+    "Lateral flexion of the neck tilts the head and does not lift the arm."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ }
+]

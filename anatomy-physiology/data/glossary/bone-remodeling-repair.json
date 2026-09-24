@@ -1,0 +1,22 @@
+{
+  "bone-remodeling": {
+    "def": "The continual replacement of old bone by new at the same site: osteoclasts resorb, then osteoblasts refill, with little change in shape. Bone modeling instead builds and removes on different surfaces, changing shape. Wolff's law: bone adapts its mass and structure to the loads placed on it.",
+    "roots": [],
+    "say": "VOLFS law"
+  },
+  "fracture-types": {
+    "def": "Ways of describing a broken bone: open (skin broken) or closed, displaced (ends out of line) or not, complete or incomplete (greenstick), by the line of the break (transverse, oblique, spiral) and by the number of pieces (comminuted: three or more).",
+    "roots": [["fract-", "broken"], ["comminut-", "broken into small pieces"]],
+    "say": ""
+  },
+  "fracture-repair": {
+    "def": "The four stages of healing a broken bone: fracture hematoma, fibrocartilaginous callus (internal and external callus), bony callus of spongy bone, and remodeling. Closed or open reduction puts the ends back in line.",
+    "roots": [["hemat-", "blood"], ["-oma", "mass"], ["callus", "hard skin"]],
+    "say": "hee-muh-TOH-muh"
+  },
+  "osteoporosis": {
+    "def": "A disease of low bone mass and weakened inner structure, from years of resorption outpacing formation, so bones break from minor falls or ordinary loads, typically the vertebrae, hip and wrist. The bone that remains is normally mineralized.",
+    "roots": [["osteo-", "bone"], ["por-", "pore"], ["-osis", "condition"]],
+    "say": "oss-tee-oh-puh-ROH-sis"
+  }
+}

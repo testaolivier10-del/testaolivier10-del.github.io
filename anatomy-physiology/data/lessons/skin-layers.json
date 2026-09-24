@@ -1,0 +1,47 @@
+{
+  "topic": "skin-layers",
+  "hook": "<p>Priya, 34, slices her fingertip on a mandoline and then scrapes her knee on the same day. The scrape oozes a little clear fluid but barely bleeds; the fingertip cut bleeds freely. A week later the scrape has vanished without a mark, while the cut has left a thin line. The difference is how deep each injury went: the skin is built in layers, and each layer behaves differently when you damage it.</p>",
+  "prereq": [
+    {
+      "q": "What kind of epithelium covers the surface of your skin?",
+      "options": ["Simple squamous epithelium", "Keratinized stratified squamous epithelium", "Transitional epithelium"],
+      "correct": 1,
+      "why": "The epidermis is many layers of cells (stratified) whose surface cells are flat (squamous) and filled with keratin (keratinized), which makes it tough and dry.",
+      "review": "epithelium"
+    },
+    {
+      "q": "Which kind of connective tissue has thick collagen bundles running in many directions?",
+      "options": ["Dense irregular connective tissue", "Dense regular connective tissue", "Adipose tissue"],
+      "correct": 0,
+      "why": "Dense irregular connective tissue has collagen bundles in many directions, so it resists pulling from any direction. Dense regular tissue, as in tendons, has them in one direction.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "Which cell junction holds neighboring epithelial cells together like rivets?",
+      "options": ["Gap junction", "Tight junction", "Desmosome"],
+      "correct": 2,
+      "why": "Desmosomes anchor neighboring cells to each other through their intermediate filaments, so a sheet of cells resists being pulled apart.",
+      "review": "cell-junctions"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-5-2",
+    "caption": "A block of skin: epidermis, dermis and the hypodermis beneath. Hide the labels and name the three layers."
+  },
+  "chain": [
+    { "cause": "A basal cell in the stratum basale divides by mitosis.", "effect": "One daughter stays as a stem cell and the other is pushed upward by the cells made beneath it." },
+    { "cause": "The pushed-up cell enters the stratum spinosum.", "effect": "It becomes a keratinocyte that makes keratin filaments and many desmosomes that bind it to its neighbors." },
+    { "cause": "The keratinocyte is pushed into the stratum granulosum.", "effect": "Keratohyalin bundles its keratin, lamellar granules release lipid sheets between the cells, and the nucleus and organelles break down, so the cell dies." },
+    { "cause": "The dead, keratin-filled cell reaches the stratum corneum (passing the stratum lucidum in thick skin).", "effect": "It lies flat among the lipid sheets, part of a tough, water-resistant layer, until the desmosomes holding it are broken down and it is shed." }
+  ],
+  "misconception": {
+    "wrong": "People with darker skin have more melanocytes.",
+    "right": "People of every skin tone have about the same number of melanocytes at a given body site. Skin color comes from what the melanocytes make and hand over: in darker skin the melanosomes are larger, more heavily pigmented, more numerous in the keratinocytes and slower to be broken down. Sun exposure raises melanin output (a tan) without adding melanocytes."
+  },
+  "check": ["anp-skin-layers-1", "anp-skin-layers-6", "anp-skin-layers-7", "anp-skin-layers-10", "anp-skin-layers-11", "anp-skin-layers-14", "anp-skin-layers-17", "anp-skin-layers-18"],
+  "summary": "<p>The skin (integument) has two layers over a third. The epidermis is keratinized stratified squamous epithelium with no blood vessels. Its keratinocytes are made by basal cells in the stratum basale and pass up through the stratum spinosum (keratin and desmosomes), the stratum granulosum (keratohyalin, lamellar granule lipids, cell death), the stratum lucidum in thick skin, and the stratum corneum, where they are shed. Thick skin, on the palms and soles, has five strata and no hair; thin skin has four. Melanocytes in the stratum basale pass melanin to keratinocytes, where it shields DNA from UV; tactile cells signal touch; Langerhans cells take up foreign material. The dermis has a loose papillary layer with dermal papillae and a dense irregular reticular layer. The hypodermis of areolar and adipose tissue anchors the skin to the deep fascia. Skin color comes from melanin, carotene and blood: erythema, pallor and cyanosis reflect blood flow and oxygen.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-30", "label": "NREMT: Soft-tissue trauma" },
+    { "href": "/nremt/study-notes.html#chapter-13", "label": "NREMT: Vital signs and monitoring (skin color)" }
+  ]
+}

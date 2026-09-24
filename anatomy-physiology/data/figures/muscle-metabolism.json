@@ -1,0 +1,18 @@
+{
+  "os-10-12": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.12",
+      "section": "10.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/b54437d9c1a12b07842921d529ee26b6b8a788a5",
+      "page": "10-3-muscle-fiber-contraction-and-relaxation"
+    },
+    "alt": "A three-panel diagram of how muscle remakes ATP. Top panel: in resting muscle, ATP and creatine combine to form creatine phosphate and ADP; in active muscle, the enzyme creatine kinase moves the phosphate from creatine phosphate back to ADP, giving creatine and ATP for contraction. Middle panel: glucose from the blood and from muscle glycogen enters glycolysis, which yields 2 ATP and 2 pyruvate; with oxygen, pyruvate goes on to aerobic respiration, and without it, it leaves as lactic acid to the blood. Bottom panel: glucose from the blood, pyruvic acid and fatty acids enter a mitochondrion, which uses oxygen to make many ATP, heat, carbon dioxide and water.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.12",
+    "labels": [],
+    "w": 902,
+    "h": 1014,
+    "ext": "jpg"
+  }
+}

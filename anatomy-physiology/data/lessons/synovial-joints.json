@@ -1,0 +1,47 @@
+{
+  "topic": "synovial-joints",
+  "hook": "<p>Jada, 19, plants her foot to cut past a defender in a soccer game, hears a pop in her right knee and falls. Within two hours the knee is swollen and tight. Months later, before surgery, it keeps giving way whenever she twists. An MRI shows a torn anterior cruciate ligament, one of the two ligaments that cross inside the knee.</p>",
+  "prereq": [
+    {
+      "q": "Which structural class of joint has a fluid-filled space between the bones?",
+      "options": ["Fibrous joint", "Cartilaginous joint", "Synovial joint"],
+      "correct": 2,
+      "why": "Only synovial joints have a fluid-filled space between the bone ends. Fibrous and cartilaginous joints are solid all the way across.",
+      "review": "joint-classification"
+    },
+    {
+      "q": "What kind of tissue is a ligament?",
+      "options": ["Dense regular connective tissue", "Hyaline cartilage", "Loose areolar connective tissue"],
+      "correct": 0,
+      "why": "Ligaments are cords of dense regular connective tissue, with collagen bundles running parallel. That makes them strong along one line of pull.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "Which bone has a head that sits in the acetabulum?",
+      "options": ["The humerus", "The femur", "The tibia"],
+      "correct": 1,
+      "why": "The acetabulum is the socket on the side of the hip bone, and the head of the femur sits in it. The head of the humerus sits against the glenoid cavity of the scapula.",
+      "review": "lower-limb"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-9-8",
+    "caption": "A typical synovial joint. Hide the labels and name the articular cartilage, the joint cavity with its synovial fluid, and the two layers of the articular capsule."
+  },
+  "chain": [
+    { "cause": "Jada's foot is planted and her nearly straight knee twists while her body moves on, driving the tibia forward under the femur.", "effect": "The anterior cruciate ligament, which stops the tibia sliding forward, is stretched past its limit and tears." },
+    { "cause": "The torn ligament's blood vessels break inside the capsule.", "effect": "Blood fills the joint cavity, and the knee swells tight within a few hours." },
+    { "cause": "With the ligament torn, nothing inside the knee holds the tibia back from sliding forward on the femur.", "effect": "When she pivots, the tibia shifts forward and twists, and the knee gives way." },
+    { "cause": "Each episode of giving way grinds and shears the femur against the tibia.", "effect": "The menisci and articular cartilage are damaged, which raises the risk of osteoarthritis in that knee later in life." }
+  ],
+  "misconception": {
+    "wrong": "Articular cartilage has a blood supply, so a damaged joint surface heals the way a broken bone does.",
+    "right": "Articular cartilage has no blood vessels. Its chondrocytes get oxygen and nutrients from synovial fluid, which is pushed out of the cartilage when a joint is loaded and drawn back in when the load comes off. With no blood supply to bring in repair cells, damaged cartilage heals poorly, which is why cartilage injuries tend to lead to osteoarthritis."
+  },
+  "check": ["anp-synovial-joints-1", "anp-synovial-joints-5", "anp-synovial-joints-8", "anp-synovial-joints-11", "anp-synovial-joints-14", "anp-synovial-joints-17", "anp-synovial-joints-20"],
+  "summary": "<p>A synovial joint has articular cartilage on each bone end, a joint cavity of synovial fluid, and an articular capsule with an outer fibrous membrane and an inner synovial membrane. Synovial fluid lowers friction and feeds the avascular cartilage. Articular discs improve fit; intrinsic, extrinsic and intracapsular ligaments limit movement. Bursae and tendon sheaths let skin, tendons and muscles glide over bone. The six types are plane, hinge, pivot, condyloid, saddle and ball-and-socket, from uniaxial to multiaxial. The knee depends on its menisci and cruciate, collateral and patellar ligaments; the shallow, loose shoulder depends on the rotator cuff; the deep hip is stable. Sprains tear ligaments, dislocations and subluxations push surfaces out of line, and osteoarthritis wears down the whole joint.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

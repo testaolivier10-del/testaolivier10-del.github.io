@@ -1,0 +1,32 @@
+{
+  "hair-follicle": {
+    "def": "A hair is a strand of dead cells filled with hard keratin; it grows from a hair follicle, a tube of epidermis that dips into the dermis. The shaft projects above the skin and the root lies in the follicle; the matrix in the bulb, over the hair papilla, divides to make the hair, whose layers are the medulla, cortex and cuticle.",
+    "roots": [["follic-", "little bag"], ["papill-", "nipple"], ["medull-", "marrow, inner part"], ["cortex", "bark"], ["cut-", "skin"], ["-icle", "small"]],
+    "say": "FOL-ih-kul"
+  },
+  "arrector-pili": {
+    "def": "A small bundle of smooth muscle running from a hair follicle to the papillary dermis. Cold or fear makes it contract involuntarily, pulling the slanted hair upright and raising a goose bump.",
+    "roots": [["arrect-", "raised"], ["pil-", "hair"]],
+    "say": "ah-REK-tor PIE-lie"
+  },
+  "sebaceous-gland": {
+    "def": "An oil gland in the dermis, usually emptying into a hair follicle, that secretes by the holocrine mode. Its product, sebum, is a mix of lipids and cell debris that keeps hair supple, slows water loss and slows some bacteria and fungi.",
+    "roots": [["seb-", "grease, tallow"]],
+    "say": "seh-BAY-shus"
+  },
+  "sweat-glands": {
+    "def": "Coiled tubular glands, also called sudoriferous glands. Eccrine glands, over almost all skin, open at surface pores and make watery sweat; apocrine glands, in the armpits and groin, open into hair follicles from puberty and make a thicker secretion that bacteria turn into body odor.",
+    "roots": [["sudor", "sweat"], ["-fer", "carrying"], ["ec-", "out"], ["crin-", "to separate"], ["apo-", "away from"]],
+    "say": "soo-dor-IF-er-us"
+  },
+  "nail": {
+    "def": "A plate of hard keratin made by the nail matrix under the nail root. The visible nail body slides over the nail bed; the lunula is the visible white edge of the matrix, the eponychium (cuticle) seals its base, and the hyponychium seals under its free edge.",
+    "roots": [["onych-", "nail"], ["epi-", "upon"], ["hypo-", "below"], ["lun-", "moon"], ["-ula", "little"]],
+    "say": "ep-oh-NIK-ee-um"
+  },
+  "hair-growth-cycle": {
+    "def": "The repeating cycle of a hair follicle: anagen (growth, years on the scalp), catagen (a few weeks in which the follicle shrinks and a club hair forms) and telogen (about 3 months of rest before the old hair is pushed out by a new one).",
+    "roots": [["ana-", "up"], ["cata-", "down"], ["tel-", "end"], ["gen-", "to produce"]],
+    "say": "AN-uh-jen, KAT-uh-jen, TEE-loh-jen"
+  }
+}

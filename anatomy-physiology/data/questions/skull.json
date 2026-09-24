@@ -1,0 +1,656 @@
+[
+  {
+    "id": "anp-skull-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-5",
+    "pin": "pterion",
+    "q": "Name the pinned area where four skull bones meet.",
+    "options": [
+      "Pterion",
+      "Mastoid process",
+      "Zygomatic arch",
+      "Coronal suture"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The pterion is the small H-shaped area on the side of the skull where the frontal, parietal, temporal and sphenoid bones meet. It is one of the thinnest parts of the skull.",
+      "options": [
+        "Correct. This is the pterion, where four bones meet over a large artery.",
+        "The mastoid process is the knob of the temporal bone behind the ear, lower and farther back.",
+        "The zygomatic arch is the bony bar of the cheek below this area.",
+        "The coronal suture runs across the top of the head between the frontal and parietal bones; it is one of the seams that ends near here, not the meeting area itself."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-4",
+    "pin": "zygomatic-bone",
+    "q": "Name the pinned bone.",
+    "options": [
+      "Maxilla",
+      "Nasal bone",
+      "Zygomatic bone",
+      "Temporal bone"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The zygomatic bone is the cheekbone. It forms the outer wall and part of the floor of the eye socket.",
+      "options": [
+        "The maxilla is the upper jaw, below and toward the midline from the cheekbone.",
+        "The nasal bones are the two small bones forming the bridge of the nose.",
+        "Correct. The cheekbone is the zygomatic bone.",
+        "The temporal bone is a cranial bone on the side of the head around the ear, behind the cheekbone."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-8",
+    "pin": "foramen-magnum",
+    "q": "Name the pinned opening.",
+    "options": [
+      "Jugular foramen",
+      "Carotid canal",
+      "Foramen lacerum",
+      "Foramen magnum"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The foramen magnum is the large hole in the occipital bone. The lower end of the brain passes through it and becomes the spinal cord.",
+      "options": [
+        "The jugular foramen is a smaller opening at the side, between the temporal and occipital bones.",
+        "The carotid canal is a small tunnel in the temporal bone that carries the main artery to the front of the brain.",
+        "The foramen lacerum is a ragged gap near the tip of the temporal bone's dense ridge, filled with cartilage in life.",
+        "Correct. The great central hole in the occipital bone is the foramen magnum."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-11",
+    "pin": "hypophyseal-fossa",
+    "q": "Name the pinned hollow in the middle of the skull base.",
+    "options": [
+      "Hypophyseal fossa",
+      "Sphenoid sinus",
+      "Mandibular fossa",
+      "Cribriform plate"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The hypophyseal fossa is the seat of the sella turcica, the saddle-shaped part of the sphenoid bone. It holds the pituitary gland.",
+      "options": [
+        "Correct. This pocket of the sella turcica holds the pituitary gland.",
+        "The sphenoid sinus is the air space inside the body of the sphenoid, just below this pocket.",
+        "The mandibular fossa is on the underside of the temporal bone, where the jaw hinges, not inside the brain case.",
+        "The cribriform plate is the sieve-like part of the ethmoid, farther forward, in the roof of the nose."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-18",
+    "pin": "maxillary-sinus",
+    "q": "Name the pinned air space.",
+    "options": [
+      "Frontal sinus",
+      "Ethmoid air cells",
+      "Maxillary sinus",
+      "Sphenoid sinus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The maxillary sinus sits in each maxilla, beside the nose and below the eye. It is the largest paranasal sinus.",
+      "options": [
+        "The frontal sinus is in the forehead, above the eyebrows.",
+        "The ethmoid air cells are a cluster of small spaces between the eyes.",
+        "Correct. The large air space in the cheek is the maxillary sinus.",
+        "The sphenoid sinus is deep in the middle of the skull, behind the nose."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-33",
+    "pin": "anterior-fontanelle",
+    "q": "Name the pinned structure on this newborn skull.",
+    "options": [
+      "Posterior fontanelle",
+      "Anterior fontanelle",
+      "Sagittal suture",
+      "Ossification center"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The anterior fontanelle is the large diamond-shaped soft spot on top of the head where the frontal and parietal bones will meet. It usually closes between about 1 and 2 years of age.",
+      "options": [
+        "The posterior fontanelle is the small triangle at the back of the head, between the parietal and occipital bones.",
+        "Correct. The large diamond at the front of the top of the head is the anterior fontanelle.",
+        "The sagittal suture is the seam that runs along the midline between the two parietal bones, not the wide membrane-covered area.",
+        "An ossification center is the point in the middle of each bone where bone first formed."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-5",
+    "pin": "mastoid-process",
+    "q": "Name the pinned process.",
+    "options": [
+      "Styloid process",
+      "Mastoid process",
+      "Occipital condyle",
+      "Condylar process of the mandible"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The mastoid process is the rounded knob of the temporal bone behind the ear. It holds small air cells and anchors muscles of the neck.",
+      "options": [
+        "The styloid process is the thin spike pointing down in front of the mastoid, not the rounded knob.",
+        "Correct. The knob behind the ear is the mastoid process.",
+        "The occipital condyles are on the underside of the skull beside the foramen magnum.",
+        "The condylar process of the mandible is the top of the jaw's upright arm, in front of the ear opening."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-8",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-4",
+    "pin": "vomer-bone",
+    "q": "Name the pinned bone.",
+    "options": [
+      "Vomer bone",
+      "Inferior nasal concha",
+      "Ethmoid bone",
+      "Palatine bone"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The vomer is the thin plate forming the lower part of the bony septum of the nose. The perpendicular plate of the ethmoid forms the upper part.",
+      "options": [
+        "Correct. The lower part of the bony wall dividing the nose is the vomer.",
+        "The inferior nasal conchae are curled shelves on the side walls of the nose, not the midline wall.",
+        "The ethmoid forms the upper part of the bony septum, through its perpendicular plate, not this lower part.",
+        "The palatine bones form the back of the bony roof of the mouth, behind and below this area."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-9",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-5",
+    "pin": "lambdoid-suture",
+    "q": "Name the pinned seam at the back of the skull.",
+    "options": [
+      "Squamous suture",
+      "Sagittal suture",
+      "Coronal suture",
+      "Lambdoid suture"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The lambdoid suture joins the parietal bones to the occipital bone at the back of the skull. With the sagittal suture it forms the shape of the Greek letter lambda.",
+      "options": [
+        "The squamous suture joins the parietal bone to the scale-like upper part of the temporal bone, on the side of the head.",
+        "The sagittal suture runs along the midline of the top of the head between the parietal bones.",
+        "The coronal suture runs across the top of the head between the frontal and parietal bones.",
+        "Correct. The seam between the parietal and occipital bones is the lambdoid suture."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-10",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-7-8",
+    "pin": "occipital-condyle",
+    "q": "Name the pinned structure beside the large hole in the skull base.",
+    "options": [
+      "Mastoid process",
+      "Occipital condyle",
+      "Styloid process",
+      "Mandibular fossa"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The occipital condyles are two rounded knobs beside the foramen magnum. They rest on the topmost vertebra, where the head nods.",
+      "options": [
+        "The mastoid process lies farther out, behind the ear.",
+        "Correct. The knobs beside the foramen magnum are the occipital condyles.",
+        "The styloid process is a thin spike of the temporal bone, lateral to this area.",
+        "The mandibular fossa is a hollow in the temporal bone in front of the ear, where the jaw hinges."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "bones near the nose are all facial bones",
+    "q": "Which of these is a facial bone rather than a cranial bone?",
+    "options": [
+      "Sphenoid",
+      "Ethmoid",
+      "Vomer",
+      "Occipital"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The vomer is one of the 14 facial bones. It forms the lower part of the bony septum of the nose.",
+      "options": [
+        "The sphenoid is a cranial bone that stretches across the middle of the skull base.",
+        "The ethmoid is a cranial bone, even though much of it sits behind the nose.",
+        "Correct. The vomer is a facial bone.",
+        "The occipital bone is the cranial bone at the back and base of the brain case."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-12",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which suture joins the right and left parietal bones?",
+    "options": [
+      "Coronal suture",
+      "Sagittal suture",
+      "Lambdoid suture",
+      "Squamous suture"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The sagittal suture runs along the midline of the top of the head, in the sagittal plane, joining the two parietal bones.",
+      "options": [
+        "The coronal suture joins the frontal bone to both parietal bones, running across the head from side to side.",
+        "Correct. The midline seam between the parietal bones is the sagittal suture.",
+        "The lambdoid suture joins the parietal bones to the occipital bone at the back.",
+        "The squamous suture joins each parietal bone to the temporal bone below it."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-13",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which bones form part of the walls of the orbit? Select all that apply.",
+    "options": [
+      "Frontal",
+      "Parietal",
+      "Zygomatic",
+      "Vomer",
+      "Sphenoid",
+      "Lacrimal"
+    ],
+    "correct": [
+      0,
+      2,
+      4,
+      5
+    ],
+    "why": {
+      "correct": "Seven bones build each orbit: the frontal, zygomatic, maxilla, lacrimal, ethmoid, sphenoid and palatine. The parietal bones and the vomer are not among them.",
+      "options": [
+        "Yes. The frontal bone forms the roof of the orbit.",
+        "No. The parietal bones form the side walls and roof of the brain case, well above and behind the eye.",
+        "Yes. The zygomatic bone forms the outer wall and part of the floor.",
+        "No. The vomer lies in the midline of the nose, between the two orbits.",
+        "Yes. The sphenoid forms the back of the orbit, around the optic canal.",
+        "Yes. The small lacrimal bone lies in the inner wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-14",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 17-year-old is hit on the side of the head, just above the middle of the cheek arch, by a baseball. He talks normally for an hour, then becomes drowsy and confused. A scan shows blood collecting inside the skull under the spot that was hit. Why is this spot so dangerous?",
+    "options": [
+      "The bone is thin there, and a large artery runs just inside it",
+      "The foramen magnum lies directly beneath it",
+      "The frontal sinus lies right under it and quickly fills with blood",
+      "The sagittal suture there is still unfused in teenagers"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The blow landed on the pterion, where the frontal, parietal, temporal and sphenoid bones meet. The bone is thin there, and the artery that enters the skull through the foramen spinosum runs along its inner surface. A crack can tear the artery, and the blood that collects presses on the brain.",
+      "options": [
+        "Correct. The pterion is thin and overlies a large artery.",
+        "The foramen magnum is in the base of the skull at the back, far from the side of the head.",
+        "The frontal sinus is in the forehead above the eyebrows, not on the side of the head.",
+        "The sagittal suture runs along the top midline, not on the side, and adult sutures are closed seams by this age."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-15",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 9-month-old has had frequent watery stools for two days. As the nurse holds her upright, she feels a dip at the soft spot on the top of the head toward the front. Which soft spot is this, and what does the finding suggest?",
+    "options": [
+      "Posterior fontanelle; raised pressure inside the skull",
+      "Anterior fontanelle; dehydration",
+      "Anterior fontanelle; raised pressure inside the skull",
+      "Posterior fontanelle; dehydration"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The soft spot on top of the head toward the front is the anterior fontanelle, which stays open until about 1 to 2 years. When an infant loses body water, the volume inside the skull falls a little and the membrane sinks.",
+      "options": [
+        "The posterior fontanelle is at the back of the head and usually closes by 2 to 3 months, and raised pressure makes a soft spot bulge, not sink.",
+        "Correct. A sunken anterior fontanelle suggests dehydration.",
+        "The location is right, but raised pressure inside the skull makes the fontanelle bulge and feel tense.",
+        "The posterior fontanelle is at the back of the head and is usually closed by 9 months."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A woman with a two-week cold has throbbing pain in her right cheek, just beside her nose and below her eye, which gets worse when she bends forward. Which air space is most likely blocked?",
+    "options": [
+      "Frontal sinus",
+      "Sphenoid sinus",
+      "Ethmoid air cells",
+      "Maxillary sinus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The maxillary sinus sits in the maxilla, in the cheek beside the nose and below the eye. When its lining swells, its opening into the nose closes, mucus builds up and pressure rises.",
+      "options": [
+        "The frontal sinus causes pain above the eyebrow, in the forehead.",
+        "The sphenoid sinus is deep in the middle of the skull; its pain is felt deep in the head or behind the eyes.",
+        "The ethmoid air cells lie between the eyes, so their pain is felt at the bridge of the nose.",
+        "Correct. Cheek pain beside the nose points to the maxillary sinus."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-17",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Order these landmarks of the floor of the brain case from front to back.",
+    "options": [
+      "Crista galli",
+      "Sella turcica",
+      "Petrous ridge",
+      "Foramen magnum"
+    ],
+    "why": {
+      "correct": "Moving back along the floor: the crista galli rises from the ethmoid in the anterior cranial fossa, the sella turcica of the sphenoid sits in the middle cranial fossa, the petrous ridge of each temporal bone marks the back edge of the middle fossa, and the foramen magnum opens in the posterior cranial fossa.",
+      "options": [
+        "The crista galli is in the anterior cranial fossa, the front step.",
+        "The sella turcica is in the middle of the skull base, in the middle cranial fossa.",
+        "The petrous ridges separate the middle cranial fossa from the posterior one.",
+        "The foramen magnum is in the posterior cranial fossa, the deepest step."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-18",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: the bony septum of the nose = the perpendicular plate of the ethmoid bone above + the ____ below.",
+    "options": [
+      "inferior nasal concha",
+      "vomer",
+      "palatine process",
+      "crista galli"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The bony septum has two parts: the perpendicular plate of the ethmoid above and the vomer below. Septal cartilage completes the wall in front.",
+      "options": [
+        "The inferior nasal conchae are on the side walls of the nose, not in the midline wall.",
+        "Correct. The vomer forms the lower part of the bony septum.",
+        "The palatine processes of the maxillae form the floor of the nose and the roof of the mouth, below the septum.",
+        "The crista galli points up into the brain case from the ethmoid, above the nose."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-19",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student traced how tears drain from the eye. One step is wrong. Which one?",
+    "options": [
+      "Tears collect at the inner corner of the eye",
+      "They enter a groove formed by the lacrimal bone",
+      "They pass down the nasolacrimal canal",
+      "They empty into the maxillary sinus"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Tears drain from the inner corner of the eye through the groove of the lacrimal bone and down the nasolacrimal canal, which opens into the nose below the inferior nasal concha. They do not enter any sinus.",
+      "options": [
+        "This step is right. Tears flow across the eye to its inner corner.",
+        "This step is right. The lacrimal bone (lacrima = tear) holds the groove where drainage begins.",
+        "This step is right. The nasolacrimal canal runs between the maxilla and lacrimal bone.",
+        "This is the error. The canal opens into the nose under the inferior nasal concha, not into the maxillary sinus."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-20",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a car crash, a man cannot smell his coffee, and clear, watery fluid drips from his nose when he leans forward. Which part of the skull is most likely broken?",
+    "options": [
+      "The zygomatic arch",
+      "The sella turcica",
+      "The cribriform plate of the ethmoid",
+      "The mastoid process"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The cribriform plate forms the roof of the nose and the floor under the front of the brain. The nerve fibers for smell pass up through its holes, so a break can tear them, and it can open a path for the fluid around the brain to leak into the nose.",
+      "options": [
+        "A broken zygomatic arch flattens the cheek and can make chewing painful, but it does not open the brain case into the nose.",
+        "The sella turcica holds the pituitary gland in the middle of the skull base; it is not where the smell fibers pass.",
+        "Correct. A fracture through the cribriform plate explains both findings.",
+        "A mastoid fracture is behind the ear; any fluid leak from it comes out of the ear, not the nose, and smell is unaffected."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-21",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the hip bones are axial because they are in the trunk",
+    "q": "Which bone belongs to the appendicular skeleton?",
+    "options": [
+      "The hyoid bone",
+      "A hip bone",
+      "The mandible",
+      "The breastbone"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The appendicular skeleton is the limbs plus the bones that attach them to the trunk. The hip bones anchor the legs, so they are appendicular, even though they sit low on the trunk.",
+      "options": [
+        "The hyoid is part of the axial skeleton, in the midline of the neck.",
+        "Correct. The hip bones attach the legs to the trunk.",
+        "The mandible is a facial bone, part of the skull and so of the axial skeleton.",
+        "The breastbone is part of the rib cage, in the axial skeleton."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What makes the hyoid bone unusual?",
+    "options": [
+      "It is the largest facial bone",
+      "It forms the roof of the mouth",
+      "It touches no other bone",
+      "It holds the pituitary gland"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The hyoid hangs in the upper neck by ligaments from the styloid processes and is held by muscles; it does not meet any other bone.",
+      "options": [
+        "The mandible, not the hyoid, is the largest facial bone, and the hyoid is not part of the skull.",
+        "The palatine processes of the maxillae and the palatine bones form the bony roof of the mouth.",
+        "Correct. The hyoid touches no other bone.",
+        "The pituitary gland sits in the hypophyseal fossa of the sphenoid bone."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-23",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which part of the mandible fits into the mandibular fossa of the temporal bone, where the jaw hinges?",
+    "options": [
+      "Coronoid process",
+      "Angle of the mandible",
+      "Condylar process",
+      "Mental foramen"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The rounded condylar process at the top back of each ramus of the mandible sits in the mandibular fossa, just in front of the ear.",
+      "options": [
+        "The coronoid process is the flat projection in front, which anchors a chewing muscle.",
+        "The angle is the lower back corner of the mandible, below the ear.",
+        "Correct. The condylar process fits into the mandibular fossa.",
+        "The mental foramen is a hole on the front of the mandible beside the chin."
+      ]
+    }
+  },
+  {
+    "id": "anp-skull-24",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The sella turcica is part of which bone?",
+    "options": [
+      "Ethmoid",
+      "Temporal",
+      "Occipital",
+      "Sphenoid"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The sella turcica is the saddle-shaped part of the sphenoid bone in the middle of the skull base. Its hypophyseal fossa holds the pituitary gland.",
+      "options": [
+        "The ethmoid lies in front of it and forms the cribriform plate and crista galli.",
+        "The temporal bones lie to each side and form the petrous ridges.",
+        "The occipital bone lies behind it and holds the foramen magnum.",
+        "Correct. The sella turcica is part of the sphenoid."
+      ]
+    }
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "facial-expression-muscles": {
+    "def": "Muscles that originate mostly on skull bones and insert into the skin of the face and scalp, so they move skin rather than bones. They include the occipitofrontalis (frontalis and occipitalis joined by the epicranial aponeurosis), orbicularis oculi, orbicularis oris, zygomaticus major and buccinator.",
+    "roots": [["orbicul-", "small circle"], ["ocul-", "eye"], ["or-", "mouth"], ["bucc-", "cheek"], ["epi-", "upon"], ["crani-", "skull"]],
+    "say": "or-bik-yoo-LAIR-iss; BUCK-sin-ay-tor; zy-go-MAT-ik-us"
+  },
+  "mastication-muscles": {
+    "def": "The four chewing muscles, which originate on the skull and insert on the mandible: the masseter, temporalis and medial pterygoid close the jaw, and the lateral pterygoid protracts it, helps open it and grinds side to side.",
+    "roots": [["masticare", "to chew"], ["pteryg-", "wing"]],
+    "say": "MASS-uh-ter; TER-ih-goyd"
+  },
+  "neck-muscles": {
+    "def": "Muscles of the neck: the sternocleidomastoid (one side turns the face to the opposite side; both flex the neck), the scalenes (lift the first two ribs and flex the neck), the suprahyoid muscles that raise the hyoid, and the infrahyoid strap muscles that lower and steady it.",
+    "roots": [["stern-", "sternum"], ["cleido-", "clavicle"], ["supra-", "above"], ["infra-", "below"], ["scalen-", "uneven"]],
+    "say": "stur-no-kly-doh-MASS-toyd; SKAY-leenz"
+  }
+}

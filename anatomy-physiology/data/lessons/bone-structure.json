@@ -1,0 +1,47 @@
+{
+  "topic": "bone-structure",
+  "hook": "<p>Dev, 19, crashes his bike and breaks the shaft of his thigh bone. By the time he reaches the emergency department his thigh is swollen and tense, his pulse is 118, and he is pale. There is no open wound, yet he has lost more than a liter of blood. It has poured into his thigh from inside the bone. To see where that blood came from, and why the break hurts so much, you need to know what a long bone is made of.</p>",
+  "prereq": [
+    {
+      "q": "What kind of cell can divide to make more of itself and also give rise to specialized cells?",
+      "options": ["A stem cell", "A fibroblast", "A red blood cell"],
+      "correct": 0,
+      "why": "A stem cell divides to renew itself and to produce daughter cells that differentiate into specialized cells.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "Which kind of cartilage covers the ends of bones at joints?",
+      "options": ["Elastic cartilage", "Fibrocartilage", "Hyaline cartilage"],
+      "correct": 2,
+      "why": "Articular cartilage is hyaline cartilage: smooth, glassy and firm, with no blood vessels.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "Which tissue, with collagen fibers running in many directions, resists pulling from any direction?",
+      "options": ["Dense regular connective tissue", "Dense irregular connective tissue", "Adipose tissue"],
+      "correct": 1,
+      "why": "Dense irregular connective tissue has collagen bundles running every which way, so it resists tension from any direction. It forms the dermis and the fibrous covering of bones.",
+      "review": "connective-tissue"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-6-7",
+    "caption": "A long bone from the thigh, upper half cut open. Hide the labels and name the shaft, the flared regions, the ends, the central cavity, the two kinds of marrow, the outer membrane and the artery entering the shaft."
+  },
+  "chain": [
+    { "cause": "A fall bends the thigh bone's shaft beyond what its dense wall can bear, and the diaphysis breaks.", "effect": "The broken wall tears the periosteum over it and the branches of the nutrient artery inside the medullary cavity." },
+    { "cause": "Torn vessels in the periosteum, the shaft wall and the marrow bleed.", "effect": "Blood collects around the break and spreads through the thigh, which can hold more than a liter." },
+    { "cause": "Swelling and the broken ends stretch and tear the periosteum.", "effect": "Its dense sensory nerve endings fire, and the break is intensely painful." },
+    { "cause": "Blood lost into the thigh lowers the volume circulating in the vessels.", "effect": "Heart rate rises, which is why Dev's pulse is fast before any blood is seen outside his body." }
+  ],
+  "misconception": {
+    "wrong": "Bones are dry, dead, solid sticks, like the skeletons in a lab.",
+    "right": "A lab skeleton has been cleaned of everything alive. In your body, each bone is an organ: its shaft is a hollow tube, its cavity holds marrow that makes blood cells or stores fat, a membrane full of nerves and vessels wraps it, and a nutrient artery feeds it. That is why a broken bone bleeds heavily and hurts, and why bone can grow and repair itself."
+  },
+  "check": ["anp-bone-structure-1", "anp-bone-structure-8", "anp-bone-structure-10", "anp-bone-structure-11", "anp-bone-structure-13", "anp-bone-structure-16", "anp-bone-structure-18"],
+  "summary": "<p>Your skeleton supports and protects the body, lets muscles move it, stores about 99% of your calcium, makes blood cells and stores fat. Blood cell formation, hematopoiesis, happens in red bone marrow, where stem cells make red and white blood cells and platelets. Bones are classified by shape as long, short, flat, irregular or sesamoid. A long bone has a shaft (diaphysis) around a medullary cavity, flared metaphyses, and widened ends (epiphyses) capped with articular cartilage. Red marrow makes blood cells; yellow marrow stores fat and fills adult long-bone shafts. The periosteum covers the outside, anchoring tendons and carrying nerves; the endosteum lines the inside. A nutrient artery enters through a nutrient foramen. Bone markings, such as tuberosities, crests, condyles, heads and fossae, are named for their shape, which follows the job done there.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

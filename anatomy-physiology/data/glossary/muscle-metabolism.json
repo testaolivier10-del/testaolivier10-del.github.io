@@ -1,0 +1,32 @@
+{
+  "creatine-phosphate": {
+    "def": "A small molecule in muscle that stores a high-energy phosphate group, also called phosphocreatine. The enzyme creatine kinase moves the phosphate to ADP to remake ATP in one step, covering about the first 10 seconds of all-out effort, and rebuilds creatine phosphate at rest.",
+    "roots": [["kin-", "move"], ["-ase", "enzyme"]],
+    "say": "KREE-uh-teen"
+  },
+  "muscle-anaerobic": {
+    "def": "Fast production of ATP in muscle by splitting glucose, mostly from the fiber's own glycogen, to pyruvate and turning pyruvate into lactate without using oxygen. It yields 2 ATP per glucose and dominates efforts of about 10 seconds to a couple of minutes.",
+    "roots": [["an-", "without"], ["aer-", "air"], ["glyco-", "sugar"], ["-lysis", "splitting"]],
+    "say": ""
+  },
+  "muscle-aerobic": {
+    "def": "The complete breakdown of glucose, fatty acids, lactate and some amino acids with oxygen in a muscle fiber's mitochondria, yielding about 30–32 ATP per glucose. It supplies nearly all ATP in activity lasting more than a few minutes.",
+    "roots": [["aer-", "air"]],
+    "say": ""
+  },
+  "myoglobin": {
+    "def": "A red, iron-containing protein in muscle fibers that binds oxygen more tightly than the blood's oxygen carrier. It stores a little oxygen, releasing it when oxygen in the fiber falls low, and speeds oxygen's movement to the mitochondria.",
+    "roots": [["my/o", "muscle"], ["glob-", "ball"], ["-in", "protein"]],
+    "say": "MY-oh-gloh-bin"
+  },
+  "muscle-fatigue": {
+    "def": "A decline in a muscle's ability to produce force during repeated or sustained activity, which recovers with rest. It comes from weaker drive from the nervous system and from changes in the fibers, mainly phosphate buildup, reduced calcium release and, in long events, glycogen depletion; ATP does not run out.",
+    "roots": [["fatig-", "to tire"]],
+    "say": ""
+  },
+  "epoc": {
+    "def": "Excess post-exercise oxygen consumption: the extra oxygen used after exercise, above resting use, to rebuild ATP and creatine phosphate, reload myoglobin, clear lactate and pay for a warmer body, raised hormones and repair. The older name is oxygen debt.",
+    "roots": [],
+    "say": "EE-pok"
+  }
+}

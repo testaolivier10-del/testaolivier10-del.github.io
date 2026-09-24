@@ -1,0 +1,56 @@
+{
+  "os-5-2": {
+    "file": "figures/openstax/os-5-2.jpg",
+    "w": 1100,
+    "h": 862,
+    "source": "openstax",
+    "openstax": {
+      "figure": "5.2",
+      "section": "5.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e6f48dafa8ec810f4b5ffb432f8e6e21cacee048",
+      "page": "5-1-layers-of-the-skin"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e6f48dafa8ec810f4b5ffb432f8e6e21cacee048",
+    "alt": "A cut-away block of skin. A thin pale top layer, the epidermis, covers a thick pink middle layer, the dermis, which holds hairs and their roots, small oil glands beside them, a slanting strip of muscle attached to one hair, a coiled sweat gland with a duct rising to a pore, an onion-like nerve ending, nerve fibers, and red and blue blood vessels. The bottom layer, the hypodermis, is made of rounded yellow fat lobules with larger blood vessels running through it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.2",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-5-5": {
+    "file": "figures/openstax/os-5-5.jpg",
+    "w": 1080,
+    "h": 854,
+    "source": "openstax",
+    "openstax": {
+      "figure": "5.5",
+      "section": "5.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/045ab901dc23689d26c1b4144f6e6b21d4dcc222",
+      "page": "5-1-layers-of-the-skin"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/045ab901dc23689d26c1b4144f6e6b21d4dcc222",
+    "alt": "A drawing of the epidermis of thick skin in five bands. At the bottom, a single row of tall cells rests on the pink dermis, which bulges up into it; a branching pigment cell and a blue touch-sensitive cell touching a nerve fiber sit in this row. Above it are many rows of rounded cells with nuclei, then a few rows of flatter cells speckled with small granules, then a thin clear band of flat cells with no nuclei, and on top many layers of flat dead cells, some flaking off the surface.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.5",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-5-8": {
+    "file": "figures/openstax/os-5-8.jpg",
+    "w": 1100,
+    "h": 868,
+    "source": "openstax",
+    "openstax": {
+      "figure": "5.8",
+      "section": "5.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e075e7ceda284cd08bab46db8b11255e0577e9e6",
+      "page": "5-1-layers-of-the-skin"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e075e7ceda284cd08bab46db8b11255e0577e9e6",
+    "alt": "Two columns of epidermis side by side, labeled dark and light. In each, a branching pigment cell sits at the base and passes small packets of pigment up into the surrounding cells. On the dark side the packets are dark brown, numerous and spread through the cells up toward the surface. On the light side the packets are pale and fewer, and the upper cells carry little pigment.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.8",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

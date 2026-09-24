@@ -1,0 +1,92 @@
+{
+  "os-6-6": {
+    "file": "figures/openstax/os-6-6.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.6",
+      "section": "6.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/8c39869bbb68827024b1fcdd62601e63aac06f78",
+      "page": "6-2-bone-classification"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/8c39869bbb68827024b1fcdd62601e63aac06f78",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.6",
+    "labels": [],
+    "w": 1012,
+    "h": 1173,
+    "ext": "jpg"
+  },
+  "os-6-7": {
+    "file": "figures/openstax/os-6-7.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.7",
+      "section": "6.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/584a309c687dbba48af841cf629d2a6937ad6599",
+      "page": "6-3-bone-structure"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/584a309c687dbba48af841cf629d2a6937ad6599",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.7",
+    "labels": [],
+    "w": 1100,
+    "h": 1858,
+    "ext": "jpg"
+  },
+  "os-6-8": {
+    "file": "figures/openstax/os-6-8.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.8",
+      "section": "6.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/672d391b03509aa4dfecbb7fe15b4febbc463e3f",
+      "page": "6-3-bone-structure"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/672d391b03509aa4dfecbb7fe15b4febbc463e3f",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.8",
+    "labels": [],
+    "w": 1071,
+    "h": 535,
+    "ext": "jpg"
+  },
+  "os-6-10": {
+    "file": "figures/openstax/os-6-10.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.10",
+      "section": "6.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9e8765e3048c7163a4b0565c51937fa2dda34d99",
+      "page": "6-3-bone-structure"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/9e8765e3048c7163a4b0565c51937fa2dda34d99",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.10",
+    "labels": [],
+    "w": 992,
+    "h": 1065,
+    "ext": "jpg"
+  },
+  "os-6-15": {
+    "file": "figures/openstax/os-6-15.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.15",
+      "section": "6.3",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2b3b375ed1494bd5fa45e7013127277ac283a7d9",
+      "page": "6-3-bone-structure"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/2b3b375ed1494bd5fa45e7013127277ac283a7d9",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.15",
+    "labels": [],
+    "w": 1087,
+    "h": 1620,
+    "ext": "jpg"
+  }
+}

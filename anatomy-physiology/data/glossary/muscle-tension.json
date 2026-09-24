@@ -1,0 +1,37 @@
+{
+  "motor-unit": {
+    "def": "One motor neuron together with all the skeletal muscle fibers it supplies. One action potential in the neuron makes every fiber in the unit contract; small units allow fine control and large units produce great force.",
+    "roots": [["mot-", "move"]],
+    "say": ""
+  },
+  "twitch": {
+    "def": "A single brief contraction and relaxation of a muscle fiber or motor unit in response to one action potential. On a myogram it shows a latent period, a contraction phase and a longer relaxation phase.",
+    "roots": [["my/o", "muscle"], ["-gram", "record"], ["latent", "hidden"]],
+    "say": "MY-oh-gram"
+  },
+  "summation-tetanus": {
+    "def": "Wave summation is the adding together of twitches when action potentials arrive before the fiber has relaxed. At higher frequencies it becomes incomplete tetanus, then complete tetanus, a smooth sustained contraction. Treppe is the staircase rise in twitch strength in a rested muscle stimulated slowly.",
+    "roots": [["tetan-", "rigid, tense"], ["treppe", "staircase (German)"]],
+    "say": "TET-uh-nus; TREP-uh"
+  },
+  "recruitment": {
+    "def": "Increasing a muscle's force by activating more motor units, from the smallest to the largest (the size principle). Together with faster firing, it produces the graded muscle response.",
+    "roots": [["recruit", "to enlist"]],
+    "say": ""
+  },
+  "muscle-tone": {
+    "def": "The slight tension and resistance to stretch of a relaxed skeletal muscle, from its passive elasticity plus low-level motor unit firing in postural and stretched muscles. Hypotonia is abnormally low tone; hypertonia is abnormally high tone.",
+    "roots": [["ton-", "tension"], ["hypo-", "under"], ["hyper-", "over"]],
+    "say": ""
+  },
+  "contraction-types": {
+    "def": "Muscle tension is the force a contracting muscle exerts on its attachments. In an isotonic contraction the muscle's length changes: it shortens in a concentric contraction and lengthens under load in an eccentric one. In an isometric contraction tension rises but length does not change.",
+    "roots": [["iso-", "equal"], ["ton-", "tension"], ["metr-", "length, measure"], ["ec-", "out of"], ["centr-", "center"]],
+    "say": "eye-soh-TON-ik; eye-soh-MET-rik"
+  },
+  "length-tension": {
+    "def": "The dependence of the tension a muscle fiber can produce on its sarcomere length. Tension is greatest at the optimal length, near resting length, where thick and thin filaments overlap best, and falls when the sarcomere is shorter or much longer.",
+    "roots": [],
+    "say": ""
+  }
+}

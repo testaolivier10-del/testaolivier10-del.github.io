@@ -1,0 +1,47 @@
+{
+  "topic": "vertebral-column",
+  "hook": "<p>Marcus, 42, bends over to lift a heavy box and feels something give in his lower back. Within minutes, pain shoots from his buttock down the back of his left leg into his foot, and his toes tingle. His back bones are not broken. The soft center of one of the pads between two lumbar vertebrae has pushed out and is pressing on a nerve.</p>",
+  "prereq": [
+    {
+      "q": "What kind of cartilage is tough enough to form the pads between the vertebrae?",
+      "options": ["Hyaline cartilage", "Elastic cartilage", "Fibrocartilage"],
+      "correct": 2,
+      "why": "Fibrocartilage has thick bundles of collagen fibers, which make it resist both squeezing and pulling. That is why it forms the intervertebral discs. Hyaline cartilage covers bone ends, and elastic cartilage shapes the outer ear.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "Which body region is the lower back, between the ribs and the pelvis?",
+      "options": ["Cervical region", "Thoracic region", "Lumbar region"],
+      "correct": 2,
+      "why": "The lumbar region is the lower back. The cervical region is the neck and the thoracic region is the chest.",
+      "review": "body-regions"
+    },
+    {
+      "q": "Which division of the skeleton does the backbone belong to?",
+      "options": ["The axial skeleton", "The appendicular skeleton", "Neither: it forms its own division"],
+      "correct": 0,
+      "why": "The backbone is part of the axial skeleton, the upright core with the skull and rib cage. The appendicular skeleton is the limbs and the bones that attach them.",
+      "review": "skull"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-7-23",
+    "caption": "A typical vertebra from above and three stacked vertebrae from behind and to one side. Hide the labels and name the body, the parts of the arch and the seven processes."
+  },
+  "chain": [
+    { "cause": "Lifting while bent forward squeezes the front edges of the lumbar vertebral bodies together.", "effect": "The pressure pushes the gel of the nucleus pulposus backward inside the disc." },
+    { "cause": "The nucleus presses on the back of the anulus fibrosus, where the rings are thinnest and have weakened with age.", "effect": "The fibers of the anulus tear, and the nucleus pushes out through the gap: a herniated disc." },
+    { "cause": "The posterior longitudinal ligament covers only the midline of the back of the disc.", "effect": "The bulge usually goes backward and to one side, next to the intervertebral foramen." },
+    { "cause": "The bulge presses on the nerve leaving the spinal cord through that foramen.", "effect": "The squeezed nerve causes pain, tingling or weakness along the area it serves, often down one leg." }
+  ],
+  "misconception": {
+    "wrong": "A \"slipped disc\" is a disc that has slid out of place from between the vertebrae.",
+    "right": "Discs do not slip. Each disc is firmly attached to the vertebral bodies above and below it. In a herniated disc, the tough outer ring (the anulus fibrosus) tears, and some of the soft core (the nucleus pulposus) bulges out through the tear. The rest of the disc stays where it is."
+  },
+  "check": ["anp-vertebral-column-1", "anp-vertebral-column-5", "anp-vertebral-column-11", "anp-vertebral-column-12", "anp-vertebral-column-15", "anp-vertebral-column-16", "anp-vertebral-column-17", "anp-vertebral-column-23"],
+  "summary": "<p>The adult vertebral column has 7 cervical, 12 thoracic and 5 lumbar vertebrae, plus the fused sacrum and coccyx. Each vertebra has a weight-bearing body and an arch of pedicles and laminae around the vertebral foramen, with spinous, transverse and articular processes; nerves leave through the intervertebral foramina. Cervical vertebrae have transverse foramina, thoracic vertebrae have costal facets, and lumbar vertebrae have the biggest bodies. The atlas carries the skull and turns around the dens of the axis. The thoracic and sacrococcygeal curves are primary; the cervical and lumbar curves form after birth. Each disc is an anulus fibrosus around a nucleus pulposus, and long ligaments tie the column together.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" },
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" }
+  ]
+}

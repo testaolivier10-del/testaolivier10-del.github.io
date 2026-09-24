@@ -1,0 +1,47 @@
+{
+  "topic": "joint-classification",
+  "hook": "<p>Ms. Reyes is 32 weeks pregnant and has sharp pain at the front of her pelvis every time she climbs stairs or stands on one leg. An ultrasound shows that the gap between her two pubic bones, usually 4 to 5 mm, has widened to 12 mm. Nothing is broken. The joint is doing what its tissue allows, and in pregnancy that tissue has loosened.</p>",
+  "prereq": [
+    {
+      "q": "Which kind of cartilage forms the intervertebral discs and the menisci of the knee?",
+      "options": ["Hyaline cartilage", "Fibrocartilage", "Elastic cartilage"],
+      "correct": 1,
+      "why": "Fibrocartilage is packed with thick collagen bundles, so it resists both squeezing and pulling. It forms the intervertebral discs and the knee menisci. Hyaline cartilage covers bone ends, and elastic cartilage forms the ear flap.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "What does a ligament join?",
+      "options": ["Muscle to bone", "Bone to bone", "Skin to muscle"],
+      "correct": 1,
+      "why": "A ligament is a cord of dense regular connective tissue that joins bone to bone. A tendon joins muscle to bone.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "What does a synovial membrane do?",
+      "options": ["Lines the cavities of movable joints and releases a slippery fluid", "Covers the outer surface of a bone", "Lines the body cavities and covers the organs in them"],
+      "correct": 0,
+      "why": "A synovial membrane is a connective tissue membrane that lines the spaces inside movable joints and releases a thick, slippery fluid. The periosteum covers bone, and serous membranes line body cavities.",
+      "review": "tissue-membranes-repair"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-9-5",
+    "caption": "The three kinds of fibrous joint. Hide the labels and name the suture, the syndesmosis with its interosseous membrane, and the gomphosis with its periodontal ligament."
+  },
+  "chain": [
+    { "cause": "During pregnancy, hormones loosen the collagen in the fibrocartilage pad and the ligaments of the pubic symphysis.", "effect": "The pad and ligaments stretch more when a load pulls or shears across them." },
+    { "cause": "The joint's tissue stretches more under each load.", "effect": "The gap between the two pubic bones widens, and the bones shift more each time weight moves from one leg to the other." },
+    { "cause": "The bones shift farther than usual against each other.", "effect": "The joint surfaces shear and stretch pain-sensitive tissue, so standing on one leg or climbing stairs hurts at the front of the pelvis." },
+    { "cause": "After delivery, the hormone levels fall and the collagen tightens again.", "effect": "The tissue stretches less, the gap narrows back toward 4 to 5 mm, and the joint returns to being only slightly movable." }
+  ],
+  "misconception": {
+    "wrong": "A joint is a place where bones move.",
+    "right": "A joint is any place where a bone meets another bone, a cartilage or a tooth. Many joints barely move or do not move at all: the sutures of an adult skull and the joint between a tooth and its socket are joints, and they are classified as synarthroses (immobile joints). How much a joint moves depends on the tissue between the bones."
+  },
+  "check": ["anp-joint-classification-1", "anp-joint-classification-4", "anp-joint-classification-7", "anp-joint-classification-9", "anp-joint-classification-12", "anp-joint-classification-14"],
+  "summary": "<p>A joint (articulation) is where a bone meets another bone, a cartilage or a tooth. Structurally, fibrous joints join bones with dense connective tissue: sutures in the skull, syndesmoses with a ligament or interosseous membrane, and gomphoses where the periodontal ligament holds a tooth. Cartilaginous joints join bones with hyaline cartilage (synchondrosis) or fibrocartilage (symphysis). Synovial joints separate the bone ends with a fluid-filled space. Functionally, a synarthrosis is immobile, an amphiarthrosis slightly movable and a diarthrosis freely movable. A synostosis is a joint that has turned to bone. The more a joint can move, the less stable it is.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" }
+  ]
+}

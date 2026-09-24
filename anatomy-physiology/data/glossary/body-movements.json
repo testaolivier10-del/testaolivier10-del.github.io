@@ -1,0 +1,22 @@
+{
+  "flexion-extension": {
+    "def": "Flexion is a sagittal-plane movement that decreases the angle between two bones or bends the trunk or neck forward; extension increases the angle and returns the part toward anatomical position. Hyperextension is extension past anatomical position, and hyperflexion is flexion beyond the normal range.",
+    "roots": [["flex-", "bend"], ["ex-", "out"], ["tens-", "stretch"], ["hyper-", "beyond"]],
+    "say": "FLEK-shun; ek-STEN-shun"
+  },
+  "abduction-adduction": {
+    "def": "Abduction moves a limb away from the midline of the body in the frontal plane; adduction moves it back toward the midline. Fingers abduct away from the middle finger and toes away from the second toe.",
+    "roots": [["ab-", "away from"], ["ad-", "toward"], ["duct-", "lead"]],
+    "say": "ab-DUK-shun; uh-DUK-shun"
+  },
+  "rotation-circumduction": {
+    "def": "Rotation turns a bone around its own long axis; in a limb it is medial rotation if the front of the limb turns toward the midline and lateral rotation if it turns away. Circumduction moves the end of a limb in a circle, sweeping a cone, by flexion, abduction, extension and adduction in sequence. The scapula's superior and inferior rotation tip its glenoid cavity up and down.",
+    "roots": [["rota-", "wheel"], ["circum-", "around"], ["duct-", "lead"]],
+    "say": "ser-kum-DUK-shun"
+  },
+  "special-movements": {
+    "def": "Movements found at only a few joints: supination (palm forward or up) and pronation (palm backward or down, radius crossing the ulna) of the forearm; dorsiflexion and plantar flexion at the ankle; inversion and eversion of the sole; protraction and retraction; elevation and depression; lateral and medial excursion of the jaw; lateral flexion of the trunk or neck; and opposition and reposition of the thumb.",
+    "roots": [["supin-", "lying on the back"], ["pron-", "bent forward"], ["dors-", "back"], ["plant-", "sole"], ["vers-", "turn"], ["tract-", "pull"], ["pro-", "forward"]],
+    "say": "soo-pih-NAY-shun; proh-NAY-shun; dor-sih-FLEK-shun"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "os-10-20": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.20",
+      "section": "10.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/bb9784c735e296ca16ff3af22dc418ffd036aea2",
+      "page": "10-6-exercise-and-muscle-performance"
+    },
+    "alt": "Two side-by-side drawings of the bones of the upper arm and elbow with the muscle on the front of the upper arm. On the left, labeled normal muscle, the muscle belly is full and thick. On the right, labeled atrophied muscle, the same muscle is visibly thinner along its whole length.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.20",
+    "labels": [],
+    "w": 1135,
+    "h": 672,
+    "ext": "jpg"
+  }
+}

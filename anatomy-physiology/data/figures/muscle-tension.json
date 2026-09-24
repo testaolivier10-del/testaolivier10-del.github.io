@@ -1,0 +1,82 @@
+{
+  "os-10-13": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.13",
+      "section": "10.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/385a6ffe78f42f8c409401a1239eca47202fbb7b",
+      "page": "10-4-nervous-system-control-of-muscle-tension"
+    },
+    "alt": "Three rows of drawings of the upper arm muscle that bends the elbow, each beside a man holding a dumbbell. Top row: the muscle shortens and the forearm rises as the weight is lifted (concentric). Middle row: the muscle lengthens while still working as the weight is lowered (eccentric). Bottom row: the muscle works but its length and the elbow angle stay the same while the weight is held still (isometric).",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.13",
+    "labels": [],
+    "w": 741,
+    "h": 1083,
+    "ext": "jpg"
+  },
+  "os-10-14": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.14",
+      "section": "10.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e49c4199749b70779ff60b6ce90cc734a2478391",
+      "page": "10-4-nervous-system-control-of-muscle-tension"
+    },
+    "alt": "A graph of tension, as a percent of maximum, against sarcomere length, as a percent of resting length. Tension is zero at 60 percent, rises steeply to about 80 percent tension at 80 percent length, is at its maximum from about 95 to 110 percent length, then falls in a straight line to zero at about 170 percent. Small sketches below show thick and thin filaments crowded together when short, partly overlapping in the middle range and pulled apart with no overlap when very long.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.14",
+    "labels": [],
+    "w": 634,
+    "h": 479,
+    "ext": "jpg"
+  },
+  "os-10-15": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.15",
+      "section": "10.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/70ce61f1d91bfabb1380bc8e4536bbab0dc8cc05",
+      "page": "10-4-nervous-system-control-of-muscle-tension"
+    },
+    "alt": "A graph of tension against time for one twitch after a single stimulus at time zero. For the first few milliseconds, the latent period, tension stays flat. Tension then rises during the contraction period to a peak at about 27 milliseconds, and falls more slowly during the relaxation period, reaching baseline at about 100 milliseconds.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.15",
+    "labels": [],
+    "w": 789,
+    "h": 506,
+    "ext": "jpg"
+  },
+  "os-10-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.16",
+      "section": "10.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/8dcd185fc693a743ca3fab91514e09341203d403",
+      "page": "10-4-nervous-system-control-of-muscle-tension"
+    },
+    "alt": "Two graphs of tension against time. On the left, wave summation: a series of twitches, each starting before the last one has relaxed, so the wavy trace climbs higher with each stimulus. On the right, tetanus: tension rises smoothly to a high, flat plateau with no dips between stimuli, then falls when stimulation stops.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.16",
+    "labels": [],
+    "w": 763,
+    "h": 314,
+    "ext": "jpg"
+  },
+  "os-10-17": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.17",
+      "section": "10.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9dae424d070461811aaffd6f7528e9f45efbe02b",
+      "page": "10-4-nervous-system-control-of-muscle-tension"
+    },
+    "alt": "A graph of tension against time showing a row of separate twitches, each fully relaxing before the next, with each peak slightly higher than the one before it, like steps on a staircase.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.17",
+    "labels": [],
+    "w": 371,
+    "h": 314,
+    "ext": "jpg"
+  }
+}

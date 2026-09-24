@@ -1,0 +1,47 @@
+{
+  "topic": "bone-remodeling-repair",
+  "hook": "<p>Ruth, 79, is reaching into a kitchen cupboard when her hip gives way and she falls. The X-ray shows a broken hip, the upper end of her thigh bone. Her family assumes the fall broke it. Her surgeon suspects the reverse: her bone had been thinning silently for thirty years, until it snapped under an ordinary step and she fell. To understand how bone can quietly disappear, and how the same cells will now try to heal it, you need to know that adult bone is never finished.</p>",
+  "prereq": [
+    {
+      "q": "What is the first event in the body's response to tissue injury, before repair begins?",
+      "options": ["Scar tissue replaces the damaged cells", "Inflammation: vessels widen and leak, and the area swells", "Stem cells rebuild the tissue immediately"],
+      "correct": 1,
+      "why": "Injury triggers inflammation first: local vessels widen and become leaky, fluid and white blood cells enter, and macrophages begin clearing debris. Repair follows.",
+      "review": "tissue-membranes-repair"
+    },
+    {
+      "q": "Which bone cell resorbs bone by dissolving mineral with acid and digesting collagen with enzymes?",
+      "options": ["Osteoclast", "Osteoblast", "Osteogenic cell"],
+      "correct": 0,
+      "why": "Osteoclasts, huge fused cells of the macrophage line, pump out hydrogen ions and release lysosomal enzymes onto the bone.",
+      "review": "bone-histology"
+    },
+    {
+      "q": "What forms when blood leaves a torn vessel and its proteins set into a mesh that traps blood cells?",
+      "options": ["A callus", "A blood clot", "An abscess"],
+      "correct": 1,
+      "why": "Blood that escapes from a torn vessel clots. In a fracture, the clot around the break is the fracture hematoma, the first stage of repair.",
+      "review": "connective-tissue"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-6-21",
+    "caption": "The four stages of fracture repair. Hide the labels and name the mass of clotted blood, the soft calluses inside and outside the break, and the spongy bone that joins the ends."
+  },
+  "chain": [
+    { "cause": "A break tears blood vessels in the periosteum, bone and marrow.", "effect": "Blood pools and clots around the break, forming a fracture hematoma, and osteocytes at the broken ends die." },
+    { "cause": "Inflammation and the hematoma call in cells, and capillaries grow into the clot.", "effect": "Fibroblasts and chondrocytes build a soft fibrocartilaginous callus, internal and external, that bridges the break." },
+    { "cause": "Osteogenic cells from the periosteum and endosteum become osteoblasts in the callus.", "effect": "The cartilage calcifies and is replaced by spongy bone, forming a bony callus that joins the ends." },
+    { "cause": "Loads on the healing bone steer osteoclasts and osteoblasts (Wolff's law).", "effect": "Extra bone is removed and compact bone is restored, so the bone is remodeled close to its original shape." }
+  ],
+  "misconception": {
+    "wrong": "Once an adult's bones stop growing, they stay the same until old age.",
+    "right": "Adult bone is replaced all the time. Osteoclasts and osteoblasts remodel about a tenth of your skeleton each year, swapping old, cracked bone for new and moving calcium in and out. Load steers the process: bones used heavily gain bone, and unloaded bones lose it within weeks. When resorption outpaces formation for years, the result is osteoporosis."
+  },
+  "check": ["anp-bone-remodeling-repair-6", "anp-bone-remodeling-repair-7", "anp-bone-remodeling-repair-8", "anp-bone-remodeling-repair-9", "anp-bone-remodeling-repair-12", "anp-bone-remodeling-repair-16", "anp-bone-remodeling-repair-18"],
+  "summary": "<p>Bone remodeling replaces old bone with new at the same site: osteoclasts resorb a pit or tunnel over weeks, and osteoblasts fill it over months. It repairs microscopic damage and moves calcium and phosphate. Bone modeling, building and removal on different surfaces, changes a bone's shape. By Wolff's law, bone adapts to load: loaded osteocytes shift their signals toward formation, and unloaded bone is lost. Fractures are described as open or closed, displaced or not, complete or incomplete (greenstick), by the line of the break (transverse, oblique, spiral) and by the number of pieces (comminuted). Repair runs from a fracture hematoma to a fibrocartilaginous callus, then a bony callus of spongy bone, then remodeling; closed or open reduction and immobilization help. Bone mass peaks around 30 and then falls, fastest in women in their fifties. Osteoporosis is too little bone, normally mineralized, from years of resorption outpacing formation, causing fractures of the vertebrae, hip and wrist.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/nremt/study-notes.html#chapter-8", "label": "NREMT: Life span development" }
+  ]
+}

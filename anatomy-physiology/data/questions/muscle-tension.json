@@ -1,0 +1,543 @@
+[
+  {
+    "id": "anp-muscle-tension-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is a motor unit?",
+    "options": [
+      "One muscle fiber and the several motor neurons that supply it",
+      "One motor neuron and all the muscle fibers it supplies",
+      "A bundle of muscle fibers wrapped in perimysium",
+      "The motor neuron's axon terminal and the end plate it faces"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A motor unit is one motor neuron together with every muscle fiber its axon branches reach. One action potential in that neuron makes all of those fibers contract.",
+      "options": [
+        "It is the other way round. Each skeletal muscle fiber has one neuromuscular junction and answers to one motor neuron; one neuron supplies many fibers.",
+        "Correct. One neuron plus all of its fibers.",
+        "That is a fascicle, an anatomical bundle. A motor unit's fibers are scattered through the muscle and do not match fascicle boundaries.",
+        "That describes a single neuromuscular junction, one contact point between a neuron and one fiber, not the whole unit."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An eye surgeon notes that the muscles that turn the eyeball have about 10 to 20 fibers per motor unit, while a large calf muscle has over 1,000. What does this difference allow the eye muscles to do?",
+    "options": [
+      "Contract with far greater total force than the calf",
+      "Keep contracting without ever relaxing",
+      "Make very small, precise adjustments in force",
+      "Contract without needing motor neurons"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Each extra motor unit adds its fibers' force all at once. When a unit has only 10 to 20 fibers, each step in force is tiny, so the eye can be turned by very small, precise amounts.",
+      "options": [
+        "Small motor units give fine control, not great force. The calf, with large units and many more fibers, produces far more force.",
+        "Motor unit size says nothing about relaxing; every twitch still ends with calcium being pumped back into the SR.",
+        "Correct. Small units mean small steps of force, which allows fine control.",
+        "Every skeletal muscle fiber, eye muscles included, contracts only when its motor neuron fires."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-3",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-10-15",
+    "q": "During the first few milliseconds after the stimulus on this myogram, tension is flat. What is happening in the fiber during that time?",
+    "options": [
+      "The action potential spreads and calcium is released from the SR",
+      "Nothing: the fiber is waiting for a second stimulus",
+      "Calcium is being pumped back into the SR",
+      "Cross-bridges are detaching as ATP runs out"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "This is the latent period. The action potential travels along the sarcolemma and down the T tubules, the SR releases calcium, and calcium binds troponin. Cross-bridges are only starting to form and take up slack, so no tension shows yet.",
+      "options": [
+        "Correct. Excitation–contraction coupling is under way; tension just has not risen yet.",
+        "One stimulus is enough to produce a full twitch. The fiber is busy with excitation–contraction coupling, not waiting.",
+        "Calcium is pumped back during the relaxation period, at the end of the twitch, not at the start.",
+        "ATP does not run out in a single twitch, and detaching cross-bridges would lower tension that had already risen."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-4",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-10-15",
+    "q": "On this myogram, the relaxation period lasts much longer than the contraction period. What best explains this?",
+    "options": [
+      "The motor neuron keeps firing throughout the relaxation period",
+      "The tendon must be stretched before tension can fall",
+      "Acetylcholine stays bound until relaxation ends",
+      "Calcium pumping is slower than calcium release"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Tension falls only as calcium is cleared from the cytosol and tropomyosin covers the binding sites again. The SR's calcium pump moves calcium against its gradient and takes longer than the burst of release, so relaxation is the slow part of a twitch.",
+      "options": [
+        "A twitch is the response to one action potential. If the neuron kept firing, the result would be summation, not a slow relaxation.",
+        "Tension falls as the tendon and connective tissue recoil, not as they are stretched. The stretching happens while tension rises.",
+        "Acetylcholinesterase breaks acetylcholine down within milliseconds, long before the twitch ends.",
+        "Correct. Relaxation waits on the calcium pump, which is slower than release."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-5",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-10-16",
+    "q": "What is the main difference between the stimulation that produced the left trace and the stimulation that produced the right trace?",
+    "options": [
+      "The right trace came from a stronger shock to each fiber",
+      "Far more stimuli per second on the right",
+      "The right trace came from a muscle with fewer motor units",
+      "The right trace came from a single stimulus held for longer"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Both traces come from repeated stimuli. On the left, each stimulus arrives before the fiber has relaxed, so twitches sum in waves. On the right, stimuli arrive so fast that there is no time to relax at all, and the waves fuse into complete tetanus.",
+      "options": [
+        "A fiber's twitch is all-or-none: once a shock reaches threshold, a stronger shock does not make that fiber contract harder. Frequency, not strength, changes the pattern.",
+        "Correct. Higher frequency turns wave summation into complete tetanus.",
+        "The traces show how one set of fibers responds over time. Fewer motor units would lower tension, not smooth out the waves.",
+        "One action potential gives one twitch however long the shock lasts. A sustained contraction needs repeated action potentials."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-6",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A researcher raises the rate at which she stimulates a muscle fiber from 2 per second to 80 per second. Predict the change in each variable.",
+    "variables": [
+      {
+        "name": "Time between action potentials",
+        "answer": "down",
+        "why": "At 80 per second, a new action potential arrives every 12.5 ms instead of every 500 ms."
+      },
+      {
+        "name": "Calcium released by each action potential",
+        "answer": "none",
+        "why": "Each action potential is all-or-none and releases about the same pulse of calcium from the SR; what changes is how often the pulses come."
+      },
+      {
+        "name": "Average calcium level in the cytosol",
+        "answer": "up",
+        "why": "Calcium is released again before the pumps have cleared the last release, so it stays high."
+      },
+      {
+        "name": "Relaxation between contractions",
+        "answer": "down",
+        "why": "There is no time to pump calcium back between stimuli, so the fiber cannot relax."
+      },
+      {
+        "name": "Peak tension",
+        "answer": "up",
+        "why": "Sustained high calcium keeps cross-bridges cycling long enough to pull the elastic parts fully taut, so the twitches sum toward complete tetanus."
+      }
+    ],
+    "why": {
+      "correct": "Raising the frequency shortens the gap between action potentials until calcium can no longer be cleared between them. Calcium stays high, the fiber stops relaxing, and tension sums from separate twitches to complete tetanus, several times a single twitch's tension."
+    }
+  },
+  {
+    "id": "anp-muscle-tension-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the events of one muscle twitch in order, starting with the stimulus.",
+    "options": [
+      "An action potential in the motor neuron reaches the neuromuscular junction",
+      "The muscle fiber action potential spreads down the T tubules",
+      "The SR releases calcium, which binds troponin",
+      "Cross-bridges cycle and tension rises",
+      "The SR pumps calcium back in and tension falls"
+    ],
+    "why": {
+      "correct": "The latent period covers the first three steps: the motor neuron signal, the fiber's action potential down the T tubules and the release of calcium onto troponin. Tension rises only when cross-bridges cycle (the contraction phase) and falls as calcium is pumped back (the relaxation phase)."
+    }
+  },
+  {
+    "id": "anp-muscle-tension-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why can a skeletal muscle fiber be driven into tetanus?",
+    "options": [
+      "Its action potential and refractory period are far shorter than its twitch",
+      "Its motor neuron can release acetylcholine without stopping",
+      "Its SR has no calcium pump, so calcium stays in the cytosol",
+      "Its fibers are joined by gap junctions that share calcium"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A skeletal fiber's action potential and refractory period last a few milliseconds, but its twitch lasts tens of milliseconds. So new action potentials, each releasing more calcium, can fire while the fiber is still contracting, and the twitches sum.",
+      "options": [
+        "Correct. A short refractory period lets new action potentials fire during the twitch.",
+        "Acetylcholine is released only when an action potential reaches the terminal, and acetylcholinesterase clears it fast. Each release triggers one fiber action potential.",
+        "The SR does have a calcium pump; it is what ends each twitch. Tetanus happens because release outpaces pumping.",
+        "Skeletal muscle fibers are not joined by gap junctions; each fiber is excited by its own neuromuscular junction."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-9",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "You switch from lifting a mug to lifting a full kettle with the same arm. Select every change your nervous system uses to raise the force of the muscle.",
+    "options": [
+      "Recruiting more motor units",
+      "Firing each active motor neuron at a higher rate",
+      "Making each fiber's action potential larger",
+      "Bringing in larger motor units",
+      "Making each fiber's twitch stronger than all-or-none allows"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Force is graded by recruitment (more units, with larger ones joining as force rises) and by firing rate (moving units from summation toward tetanus). A single fiber's action potential and twitch are all-or-none, so the nervous system cannot make an individual fiber contract harder by a stronger signal.",
+      "options": [
+        "Correct. More motor units means more fibers pulling.",
+        "Correct. Faster firing makes twitches sum toward tetanus.",
+        "Action potentials are all-or-none; a fiber's action potential is the same size whenever it fires.",
+        "Correct. By the size principle, larger units join as the required force grows.",
+        "A fiber's response to one action potential is fixed; extra force comes from more fibers and faster firing, not a bigger twitch."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "As you slowly squeeze a hand grip harder and harder, in what order are the motor units of your forearm muscles recruited?",
+    "options": [
+      "Largest units first, then smaller ones",
+      "All units at once, each firing at a low rate",
+      "In random order each time",
+      "Smallest first, then larger"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Small motor neurons reach threshold with less synaptic input, so they fire first. Larger ones join only as input grows. This size principle gives fine steps of force at low effort and big steps at high effort.",
+      "options": [
+        "The largest motor neurons need the most input to reach threshold, so they join last, not first.",
+        "Force rises by adding units one after another; firing all of them at once would give a large jump in force even for a light grip.",
+        "Recruitment order is orderly and repeatable, set by motor neuron size.",
+        "Correct. This is the size principle."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a fitness class, Ms. Obi holds a plank position for 45 seconds. Her abdominal muscles are working hard, but her trunk does not move. What type of contraction is this?",
+    "options": [
+      "Concentric",
+      "Eccentric",
+      "Isometric",
+      "A single twitch"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Her muscles develop tension that matches the load (her body weight), so their length and the joint angles stay the same. Tension without a change in length is an isometric contraction.",
+      "options": [
+        "In a concentric contraction the muscle shortens and a joint moves. Her trunk stays still.",
+        "In an eccentric contraction the muscle lengthens under load. Her muscle length is not changing.",
+        "Correct. Tension rises, length stays the same.",
+        "A twitch lasts about a tenth of a second. A 45-second hold needs many motor units firing repeatedly, in summation and tetanus."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "a contracting muscle always shortens",
+    "q": "A man slowly lowers a heavy box from chest height to the floor, bending his elbows. What is the muscle that bends his elbow doing?",
+    "options": [
+      "Relaxing completely, so that gravity alone lowers the box",
+      "Contracting while it lengthens",
+      "Contracting while shortening, pulling the box down",
+      "Contracting isometrically, at a fixed length"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The weight of the box is greater than the tension in the muscle, so the muscle is pulled longer. Its cross-bridges keep working to resist, which controls the speed. This is an eccentric contraction.",
+      "options": [
+        "If the muscle relaxed completely, the box would drop, not descend slowly. Controlled lowering needs active tension.",
+        "Correct. Active tension while the muscle lengthens is an eccentric contraction.",
+        "Gravity pulls the box down; the muscle that bends the elbow would shorten only if the box were being lifted.",
+        "The elbow angle is changing, so the muscle's length is changing. An isometric contraction would hold the box still."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-13",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student described how a muscle builds tension when you lift a dumbbell. One step is wrong. Which one?",
+    "options": [
+      "Motor neurons fire and recruit motor units",
+      "Tension rises while the muscle holds its length",
+      "Tension becomes greater than the weight of the dumbbell",
+      "The muscle lengthens as the dumbbell rises"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Once tension exceeds the load, the muscle that lifts the dumbbell shortens: a concentric contraction. It lengthens only when lowering a load, in an eccentric contraction.",
+      "options": [
+        "This step is right. Recruited motor units supply the tension.",
+        "This step is right. Every lift begins isometrically, until tension matches the load.",
+        "This step is right. Only when tension exceeds the load does the dumbbell move.",
+        "This is the error. Lifting is a concentric contraction, so the muscle shortens."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-14",
+    "type": "graph",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-10-14",
+    "q": "A muscle fiber is stretched to 160 percent of its resting sarcomere length and then stimulated. Using the graph, what happens and why?",
+    "options": [
+      "At its maximum, because more stretch stores more force in the fiber",
+      "Low, because little filament overlap remains",
+      "Tension is zero, because thick filaments hit the Z discs",
+      "Tension is normal, because length does not affect tension"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "At 160 percent the line is near the bottom of its falling slope. The thin filaments have been pulled almost off the thick filaments, so few myosin heads can reach actin and few cross-bridges form.",
+      "options": [
+        "Active tension depends on filament overlap, not on how far the fiber is stretched. Past the middle range, more stretch means less overlap and less tension.",
+        "Correct. Little overlap means few cross-bridges and little tension.",
+        "Thick filaments hit the Z discs when the sarcomere is too short, not too long. At 160 percent a little overlap remains.",
+        "The graph shows tension changing strongly with length. That is the length–tension relationship."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does a fiber produce little tension when its sarcomeres are only 60 to 70 percent of resting length?",
+    "options": [
+      "The thin filaments have slid off the thick filaments",
+      "Calcium cannot reach troponin when a fiber is this short",
+      "The myosin heads have all used up their ATP",
+      "Thin filaments collide; thick ones press on Z discs"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "When a sarcomere is very short, the thin filaments from each end crowd past each other in the middle and get in each other's way, and the thick filaments butt against the Z discs. Fewer cross-bridges can pull usefully, so tension falls.",
+      "options": [
+        "Losing overlap is the problem at very long lengths, not short ones. When short, the filaments overlap too much.",
+        "Calcium release does not depend on how long the sarcomeres are in this way. The limit is mechanical.",
+        "ATP supply is not set by sarcomere length. A rested fiber at any length has ATP available.",
+        "Correct. Crowding in the middle and thick filaments against the Z discs limit tension."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A pediatrician lifts a newborn's arm and lets it go. The arm flops down with almost no resistance, and the baby lies with limbs spread flat. Which term describes this finding?",
+    "options": [
+      "Hypertonia",
+      "Complete tetanus",
+      "Hypotonia",
+      "Treppe"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Low resistance to passive movement and a floppy posture mean reduced muscle tone: hypotonia.",
+      "options": [
+        "Hypertonia is increased tone: the limb would feel stiff and resist being moved.",
+        "Complete tetanus is a sustained, fused contraction, the opposite of a floppy limb.",
+        "Correct. Hypo- means under: low tone.",
+        "Treppe is the staircase rise in twitch strength in a rested muscle; it does not describe resting tone."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-17",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Complete the phases of a muscle twitch: latent period → ____ → relaxation phase.",
+    "options": [
+      "Contraction phase",
+      "Refractory period of the fiber",
+      "Complete tetanus",
+      "Recruitment phase"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A twitch has three phases: the latent period (no tension yet), the contraction phase (tension rises) and the relaxation phase (tension falls).",
+      "options": [
+        "Correct. Tension rises in the contraction phase.",
+        "The refractory period belongs to the action potential, and it is over within a few milliseconds, early in the twitch.",
+        "Complete tetanus is a fused contraction from many stimuli, not a phase of one twitch.",
+        "Recruitment is adding motor units to raise force; it is not a phase of a single twitch."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In complete tetanus, a fiber produces several times the tension of one twitch, although each action potential releases about the same calcium. What explains the extra tension?",
+    "options": [
+      "Each action potential in tetanus is larger than in a twitch",
+      "Tetanus recruits extra fibers into the motor unit",
+      "Calcium stays high long enough for the elastic parts to be pulled fully taut",
+      "The myosin heads switch to a stronger power stroke"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In a single twitch, calcium is cleared before the cross-bridges have finished stretching the fiber's elastic parts, so tension never reaches its full value. When action potentials arrive faster than calcium is cleared, calcium stays high, cross-bridges keep cycling and tension builds to its maximum.",
+      "options": [
+        "Action potentials are all-or-none; they are the same size in a twitch and in tetanus.",
+        "A motor unit's fibers are fixed by the branches of its neuron. Adding fibers is recruitment of other units, not tetanus of one fiber.",
+        "Correct. Sustained calcium allows sustained cycling and full tension.",
+        "The power stroke is the same; what changes is how long cross-bridges keep cycling."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-19",
+    "type": "graph",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-10-17",
+    "q": "This trace, from a rested muscle stimulated slowly, shows each twitch relaxing fully, yet each peak is a little higher than the last. What is this pattern called?",
+    "options": [
+      "Wave summation",
+      "Treppe",
+      "Incomplete tetanus",
+      "Recruitment"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Treppe (staircase) is the rise in twitch strength over the first several twitches of a rested muscle, with full relaxation between them.",
+      "options": [
+        "In wave summation each twitch starts before the last has relaxed. Here each twitch relaxes fully.",
+        "Correct. A staircase of peaks with full relaxation between twitches is treppe.",
+        "In incomplete tetanus the fiber relaxes only partly between stimuli, giving a wavy plateau above baseline.",
+        "Recruitment adds motor units in a whole muscle. This trace shows a change in the twitches themselves."
+      ]
+    }
+  },
+  {
+    "id": "anp-muscle-tension-20",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Reyes steps on a rusty nail. Ten days later his jaw muscles lock and his back arches in sustained spasms. A student says, \"That's tetanus, just like the lab trace.\" What is the key difference between his disease and physiological tetanus?",
+    "options": [
+      "His muscle fibers have lost their calcium pumps",
+      "A toxin removes spinal inhibition of motor neurons",
+      "His muscles are in a single twitch that never ends",
+      "His muscles have lost all of the motor neurons that supply them"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Physiological tetanus is a normal fused contraction from fast motor neuron firing. In the disease, a bacterial toxin blocks inhibitory neurons in the spinal cord, so motor neurons fire without restraint and muscles are driven into sustained, painful contraction.",
+      "options": [
+        "The toxin acts on neurons in the spinal cord, not on the muscle fibers' calcium pumps.",
+        "Correct. The disease is a failure of the nervous system's brakes on motor neuron firing.",
+        "A single twitch always ends when calcium is pumped back. His sustained spasm comes from repeated firing.",
+        "Losing motor neurons would cause weakness and floppy muscles, not sustained spasm."
+      ]
+    }
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "synovial-joint-structure": {
+    "def": "The shared parts of a synovial joint: articular cartilage on each bone end, a joint cavity filled with synovial fluid, and an articular capsule with an outer fibrous membrane and an inner synovial membrane. Some add an articular disc of fibrocartilage and intrinsic (in the capsule), extrinsic (outside it) or intracapsular (inside it) ligaments.",
+    "roots": [["articul-", "joint"], ["capsula", "little box"], ["intra-", "within"], ["extra-", "outside"]],
+    "say": "ar-TIK-yoo-lur KAP-sool"
+  },
+  "bursa": {
+    "def": "A flattened sac of synovial membrane holding a film of synovial fluid, placed where skin, a tendon or a muscle slides over bone (subcutaneous, submuscular or subtendinous bursae). A tendon sheath is a tube-shaped bursa wrapped around a tendon.",
+    "roots": [["bursa", "purse"], ["sub-", "under"], ["cutane-", "skin"]],
+    "say": "BUR-suh; plural BUR-see"
+  },
+  "synovial-joint-types": {
+    "def": "The six shapes of synovial joint: plane (gliding), hinge and pivot (uniaxial), condyloid and saddle (biaxial), and ball-and-socket (multiaxial). The number of axes is how many lines a bone can move around.",
+    "roots": [["uni-", "one"], ["bi-", "two"], ["multi-", "many"], ["condyl-", "knuckle"]],
+    "say": "KON-dih-loyd"
+  },
+  "knee-shoulder": {
+    "def": "The knee joint is a mostly hinge joint between femur and tibia, held by the medial and lateral menisci, the anterior and posterior cruciate ligaments, the tibial and fibular collateral ligaments and the patellar ligament. The glenohumeral (shoulder) joint is a ball-and-socket joint with a shallow socket rimmed by the glenoid labrum, a loose capsule, and the rotator cuff tendons as its main support.",
+    "roots": [["cruci-", "cross"], ["meniskos", "crescent"], ["labrum", "lip"], ["glen-", "socket"]],
+    "say": "KROO-shee-ate; meh-NIS-kus; glen-oh-HYOO-mer-ul"
+  },
+  "other-named-joints": {
+    "def": "The temporomandibular joint (jaw, with an articular disc), the elbow joint (humeroulnar and humeroradial joints, the annular ligament around the radial head, and ulnar and radial collateral ligaments), the hip joint (deep acetabulum, acetabular labrum, iliofemoral ligament), and the ankle or talocrural joint (a hinge braced by the deltoid ligament inside and the anterior talofibular ligament outside).",
+    "roots": [["annul-", "ring"], ["crur-", "leg"], ["tempor-", "temple"], ["mandibul-", "jaw"]],
+    "say": "tem-puh-roh-man-DIB-yoo-lur; tay-loh-KROO-rul"
+  },
+  "joint-injuries": {
+    "def": "A sprain is a stretch or tear of a ligament. A dislocation forces the surfaces of a joint completely out of contact; a subluxation is a partial dislocation in which they still touch but are out of line.",
+    "roots": [["sub-", "partly"], ["luxat-", "put out of place"]],
+    "say": "sub-luk-SAY-shun"
+  },
+  "osteoarthritis": {
+    "def": "The most common joint disease: articular cartilage thins and wears through, the bone beneath thickens and grows spurs, and the synovial membrane becomes mildly inflamed, causing pain with use, stiffness and less movement.",
+    "roots": [["oste/o", "bone"], ["arthr/o", "joint"], ["-itis", "inflammation"]],
+    "say": "os-tee-oh-ar-THRY-tis"
+  },
+  "named-small-joints": {
+    "def": "Joints named for the bones they join, such as the sternoclavicular (saddle), acromioclavicular (plane), sacroiliac, atlanto-occipital (condyloid), atlantoaxial (pivot), zygapophysial (facet), radioulnar (pivot), radiocarpal (condyloid), carpometacarpal, metacarpophalangeal, interphalangeal (hinge), subtalar and metatarsophalangeal joints; the distal tibiofibular joint is a syndesmosis.",
+    "roots": [["inter-", "between"], ["phalang-", "finger or toe bone"], ["zygo-", "yoke"], ["apophysis", "outgrowth"]],
+    "say": "zy-guh-puh-FIZ-ee-ul"
+  }
+}

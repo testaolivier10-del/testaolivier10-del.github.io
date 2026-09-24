@@ -1,0 +1,48 @@
+{
+  "topic": "skeletal-muscle-structure",
+  "hook": "<p>Nine-year-old Leo has trouble climbing stairs, so his doctor sends a tiny piece of his thigh muscle to the lab. Under the microscope, the pathologist checks each level of the muscle in turn: are the bundles and their wrappings normal, are the fibers the right size with their nuclei at the edge, and are the stripes crisp and evenly spaced? Reading that slide means knowing how a skeletal muscle is built, from the whole organ down to its protein filaments.</p>",
+  "prereq": [
+    {
+      "q": "Which kind of connective tissue forms tendons?",
+      "options": ["Dense regular connective tissue", "Loose areolar connective tissue", "Adipose tissue"],
+      "correct": 0,
+      "why": "Tendons are dense regular connective tissue: tightly packed collagen fibers all running in one direction, which resists pulling along that line.",
+      "review": "connective-tissue"
+    },
+    {
+      "q": "What does the smooth endoplasmic reticulum do in most cells?",
+      "options": ["Makes proteins for export on its ribosomes", "Makes lipids and stores calcium ions", "Packages proteins into vesicles for secretion"],
+      "correct": 1,
+      "why": "Smooth ER has no ribosomes. It makes lipids and, in many cells, stores calcium ions. In muscle it is specialized for calcium storage.",
+      "review": "organelles"
+    },
+    {
+      "q": "Skeletal muscle fibers look striped under a microscope. What is a skeletal muscle fiber?",
+      "options": ["A protein thread in the extracellular matrix", "A bundle of many small cells", "One long cell with many nuclei"],
+      "correct": 2,
+      "why": "A muscle fiber is one whole cell. In the embryo many cells fuse to form it, so it has many nuclei.",
+      "review": "muscle-tissue-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-3",
+    "caption": "A skeletal muscle from the whole organ down to the myofibril. Hide the labels and name each connective tissue wrapping and each level of bundling."
+  },
+  "chain": [
+    { "cause": "Myosin heads on the thick filaments pull the thin filaments toward the M line.", "effect": "Each sarcomere shortens as its Z discs move closer together." },
+    { "cause": "Thousands of sarcomeres, joined end to end in every myofibril, shorten at the same time.", "effect": "Each myofibril shortens, and the muscle fiber that holds it shortens." },
+    { "cause": "Each shortening fiber pulls on the endomysium around it.", "effect": "The pull passes to the perimysium around its fascicle and the epimysium around the whole muscle." },
+    { "cause": "The three wrappings merge into the tendon, whose collagen runs into the bone.", "effect": "The tendon pulls on the bone, and the bone moves at its joint." }
+  ],
+  "misconception": {
+    "wrong": "A myofibril and a muscle fiber are the same thing.",
+    "right": "A muscle fiber is a whole cell, with a sarcolemma, many nuclei and mitochondria. A myofibril is a rod of protein filaments inside that cell, one of hundreds or thousands packed in its sarcoplasm. Myofibrils have no membrane and no nuclei of their own. Fibers are cells; myofibrils are inside cells; filaments are inside myofibrils."
+  },
+  "check": ["anp-skeletal-muscle-structure-1", "anp-skeletal-muscle-structure-5", "anp-skeletal-muscle-structure-6", "anp-skeletal-muscle-structure-9", "anp-skeletal-muscle-structure-12", "anp-skeletal-muscle-structure-14", "anp-skeletal-muscle-structure-16"],
+  "summary": "<p>A skeletal muscle is bundles within bundles. The epimysium wraps the whole muscle, the perimysium wraps each fascicle, and the endomysium wraps each fiber; all three merge into the tendon, which carries the pull to bone. A muscle fiber is one cell: its plasma membrane is the sarcolemma and its cytoplasm the sarcoplasm, packed with myofibrils, mitochondria and glycogen. Each myofibril is a chain of sarcomeres, the functional units, running from Z disc to Z disc. Thick filaments of myosin form the dark A band, with the H zone and M line at its center; thin filaments of actin, anchored at the Z discs, reach into it and alone form the light I band. On the thin filament, tropomyosin covers the myosin-binding sites on actin, held there by troponin, which can bind calcium. The sarcoplasmic reticulum stores calcium around every myofibril, and T tubules, infoldings of the sarcolemma, carry the electrical signal deep into the fiber, where each one meets two terminal cisternae in a triad.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology (the musculoskeletal system)" },
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" },
+    { "href": "/ochem/lessons/peptides-proteins.html", "label": "Organic chemistry: peptides and proteins" }
+  ]
+}

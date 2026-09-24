@@ -1,0 +1,476 @@
+[
+  {
+    "id": "anp-upper-limb-muscles-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-22",
+    "pin": "serratus-anterior",
+    "q": "Name the pinned saw-toothed muscle on the side of the chest wall.",
+    "options": ["Pectoralis minor", "Serratus anterior", "External oblique", "Latissimus dorsi"],
+    "correct": 1,
+    "why": {
+      "correct": "The serratus anterior's finger-like slips come from the upper eight or nine ribs and wrap around to the medial border of the scapula.",
+      "options": [
+        "The pectoralis minor runs from ribs 3 to 5 up to the coracoid process; it has no saw-tooth row of slips along the side of the chest.",
+        "Correct. The saw-toothed slips on the ribs are the serratus anterior.",
+        "The external oblique covers the abdomen below the ribs, though its upper slips interlock with the serratus anterior.",
+        "The latissimus dorsi covers the lower back and side, behind this muscle."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-11-22",
+    "pin": "trapezius",
+    "q": "Name the pinned large, flat muscle of the upper back.",
+    "options": ["Rhomboid major", "Latissimus dorsi", "Deltoid", "Trapezius"],
+    "correct": 3,
+    "why": {
+      "correct": "The trapezius runs from the skull and the spine down to T12 and out to the clavicle, acromion and spine of the scapula. Its parts elevate, retract and depress the scapula.",
+      "options": [
+        "The rhomboids lie under the trapezius, between the spine and the medial border of the scapula.",
+        "The latissimus dorsi covers the lower back, below the trapezius.",
+        "The deltoid caps the shoulder, lateral to the trapezius.",
+        "Correct. The large diamond over the upper back is the trapezius."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-11-23",
+    "pin": "latissimus-dorsi",
+    "q": "Name the pinned broad muscle of the lower back.",
+    "options": ["Latissimus dorsi", "Trapezius", "Teres major", "Erector spinae"],
+    "correct": 0,
+    "why": {
+      "correct": "The latissimus dorsi (widest of the back) runs from the lower spine, sacrum, iliac crest and lowest ribs to the intertubercular groove of the humerus.",
+      "options": [
+        "Correct. The widest muscle of the back is the latissimus dorsi.",
+        "The trapezius covers the upper back and neck, above this muscle.",
+        "The teres major is a much smaller muscle running from the inferior angle of the scapula to the humerus.",
+        "The erector spinae lies deeper, in columns right beside the spine."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-23",
+    "pin": "infraspinatus",
+    "q": "In this back view of the deep shoulder muscles, name the pinned rotator cuff muscle below the spine of the scapula.",
+    "options": ["Supraspinatus", "Teres major", "Infraspinatus", "Subscapularis"],
+    "correct": 2,
+    "why": {
+      "correct": "The infraspinatus fills the infraspinous fossa, below the spine of the scapula, and inserts on the greater tubercle. It rotates the arm laterally.",
+      "options": [
+        "The supraspinatus lies above the spine of the scapula, in the supraspinous fossa.",
+        "The teres major runs from the inferior angle of the scapula; it is not part of the rotator cuff.",
+        "Correct. Below the spine is the infraspinatus.",
+        "The subscapularis lies on the rib-side face of the scapula and cannot be seen from behind."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 3,
+    "core": ["structure-function"],
+    "figure": "os-11-23",
+    "pin": "subscapularis",
+    "q": "In this front view with the chest muscles cut away, name the pinned rotator cuff muscle on the rib-side face of the scapula.",
+    "options": ["Serratus anterior", "Subscapularis", "Pectoralis minor", "Teres minor"],
+    "correct": 1,
+    "why": {
+      "correct": "The subscapularis fills the subscapular fossa on the front (rib-side) face of the scapula and inserts on the lesser tubercle. It rotates the arm medially.",
+      "options": [
+        "The serratus anterior runs from the ribs to the medial border of the scapula; its slips lie on the chest wall, not in the scapula's front hollow.",
+        "Correct. The rotator cuff muscle on the front of the scapula is the subscapularis.",
+        "The pectoralis minor runs from ribs 3 to 5 to the coracoid process, in front of the scapula but not filling its hollow.",
+        "The teres minor is on the back, along the lateral border of the scapula."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-25",
+    "pin": "brachioradialis",
+    "q": "Name the pinned muscle running down the thumb side of the forearm from the lower humerus.",
+    "options": ["Pronator teres", "Flexor carpi radialis", "Brachioradialis", "Brachialis"],
+    "correct": 2,
+    "why": {
+      "correct": "The brachioradialis runs from the lateral edge of the lower humerus to the styloid process of the radius. It flexes the elbow, most strongly with the thumb up.",
+      "options": [
+        "The pronator teres runs diagonally across the upper forearm from the medial epicondyle to the middle of the radius.",
+        "The flexor carpi radialis starts on the medial epicondyle and runs to the wrist, closer to the middle of the forearm.",
+        "Correct. This is the brachioradialis.",
+        "The brachialis lies in the arm under the biceps brachii and ends at the ulna, not in the forearm."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-25",
+    "pin": "pronator-quadratus",
+    "q": "In this deep palm-side view, name the pinned square muscle across the lower radius and ulna.",
+    "options": ["Supinator", "Pronator teres", "Flexor digitorum profundus", "Pronator quadratus"],
+    "correct": 3,
+    "why": {
+      "correct": "The pronator quadratus is a flat four-sided muscle across the lower ends of the ulna and radius. It is the main pronator of the forearm.",
+      "options": [
+        "The supinator wraps the upper radius near the elbow, not the lower end near the wrist.",
+        "The pronator teres is a diagonal muscle in the upper forearm, from the medial epicondyle to the middle of the radius.",
+        "The flexor digitorum profundus is a long muscle whose tendons run to the fingertips.",
+        "Correct. The square muscle near the wrist is the pronator quadratus."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-8",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-25",
+    "pin": "extensor-digitorum",
+    "q": "On the back of the forearm, name the pinned muscle whose four tendons fan out to the fingers.",
+    "options": ["Extensor digitorum", "Extensor carpi ulnaris", "Extensor carpi radialis longus", "Flexor digitorum superficialis"],
+    "correct": 0,
+    "why": {
+      "correct": "The extensor digitorum starts on the lateral epicondyle and sends four tendons across the back of the hand to fingers 2 to 5. It extends the fingers.",
+      "options": [
+        "Correct. The four-tendon finger extensor is the extensor digitorum.",
+        "The extensor carpi ulnaris runs along the little-finger side to the fifth metacarpal; it moves the wrist, not the fingers.",
+        "The extensor carpi radialis longus runs along the thumb side to the second metacarpal and moves the wrist.",
+        "The flexor digitorum superficialis is on the palm side of the forearm."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Mr. Brooks, 58, has painted ceilings for 30 years. He now has pain at the top of his shoulder and weakness when he raises his arm out to the side. An MRI shows a torn tendon passing between the head of the humerus and the acromion. Which muscle's tendon is most likely torn?",
+    "options": ["Subscapularis", "Biceps brachii, short head", "Teres major", "Supraspinatus"],
+    "correct": 3,
+    "why": {
+      "correct": "The supraspinatus tendon runs over the top of the shoulder joint, under the acromion, to the greater tubercle. Years of overhead work pinch and fray it there. It helps abduct the arm, so a tear makes raising the arm to the side weak and painful.",
+      "options": [
+        "The subscapularis runs across the front of the joint to the lesser tubercle, not under the acromion.",
+        "The short head of the biceps brachii starts on the coracoid process at the front and does not pass between the humerus and the acromion.",
+        "The teres major runs from the inferior angle of the scapula to the front of the humerus, well below the acromion.",
+        "Correct. The supraspinatus is the cuff tendon that tears most often."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-10",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which muscles belong to the rotator cuff? Select all that apply.",
+    "options": ["Supraspinatus", "Infraspinatus", "Teres major", "Teres minor", "Subscapularis", "Deltoid"],
+    "correct": [0, 1, 3, 4],
+    "why": {
+      "correct": "The rotator cuff is SITS: supraspinatus, infraspinatus, teres minor and subscapularis. Their tendons wrap the shoulder joint and hold the head of the humerus in the glenoid cavity.",
+      "options": [
+        "Yes. The S of SITS; it passes over the top of the joint.",
+        "Yes. The I of SITS; it lies below the spine of the scapula.",
+        "No. The teres major moves the humerus with the latissimus dorsi, but it does not join the cuff around the joint capsule.",
+        "Yes. The T of SITS; it lies along the lateral border of the scapula.",
+        "Yes. The final S of SITS, on the front of the scapula.",
+        "No. The deltoid lies over the cuff and abducts the arm, but it is not part of the cuff."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-11",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which rotator cuff muscle inserts on the lesser tubercle of the humerus?",
+    "options": ["Supraspinatus", "Subscapularis", "Infraspinatus", "Teres minor"],
+    "correct": 1,
+    "why": {
+      "correct": "The subscapularis runs from the front of the scapula across the front of the joint to the lesser tubercle. It rotates the arm medially.",
+      "options": [
+        "The supraspinatus inserts on the greater tubercle.",
+        "Correct. Only the subscapularis uses the lesser tubercle.",
+        "The infraspinatus inserts on the greater tubercle.",
+        "The teres minor inserts on the greater tubercle."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-12",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "After surgery near her armpit, a patient pushes against a wall with both hands. The medial border of her right scapula lifts away from her ribs. Which muscle is not working?",
+    "options": ["Rhomboid major", "Trapezius", "Serratus anterior", "Pectoralis major"],
+    "correct": 2,
+    "why": {
+      "correct": "The serratus anterior pulls the medial border of the scapula forward around the chest wall and holds it flat against the ribs. When it fails, pushing forces the border to lift off: a winged scapula.",
+      "options": [
+        "The rhomboids pull the scapula back toward the spine. Losing them would not make the border lift off the ribs during a push.",
+        "The trapezius elevates, retracts and depresses the scapula; the classic winging on pushing points to the muscle that holds the scapula to the chest wall.",
+        "Correct. A winged scapula on pushing means the serratus anterior is not working.",
+        "The pectoralis major moves the humerus, not the scapula."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-13",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Which muscle is the prime mover for abducting the arm, raising it out to the side?",
+    "options": ["Pectoralis major", "Latissimus dorsi", "Deltoid", "Teres major"],
+    "correct": 2,
+    "why": {
+      "correct": "The deltoid runs from the clavicle, acromion and spine of the scapula over the top of the shoulder to the deltoid tuberosity. Pulling from above the joint, it lifts the arm out to the side.",
+      "options": [
+        "The pectoralis major flexes and adducts the arm, bringing it forward and across the chest.",
+        "The latissimus dorsi extends and adducts the arm, pulling it down and back.",
+        "Correct. The deltoid is the prime mover of abduction.",
+        "The teres major adducts and extends the arm with the latissimus dorsi."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A swimmer pulls her raised arm down and back through the water, rotating it inward. Which muscle is the prime mover of this stroke?",
+    "options": ["Latissimus dorsi", "Deltoid", "Trapezius", "Supraspinatus"],
+    "correct": 0,
+    "why": {
+      "correct": "The latissimus dorsi extends, adducts and medially rotates the arm, pulling it down and back from its broad origin on the lower back and pelvis.",
+      "options": [
+        "Correct. Extension, adduction and medial rotation are the latissimus dorsi's actions.",
+        "The deltoid's main job is abduction, raising the arm, which is the opposite of this pull.",
+        "The trapezius moves the scapula, not the humerus.",
+        "The supraspinatus helps abduct the arm, the opposite direction."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-15",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "An injury paralyzes all the extensor muscles on the back of the forearm, while the forearm flexors and all arm muscles still work. Predict each change.",
+    "variables": [
+      {
+        "name": "Ability to hold the wrist straight with the palm facing down",
+        "answer": "down",
+        "why": "The wrist extensors (extensor carpi radialis longus and brevis, extensor carpi ulnaris) hold the wrist up against gravity. Without them the hand drops."
+      },
+      {
+        "name": "Ability to straighten the fingers at the knuckles",
+        "answer": "down",
+        "why": "The extensor digitorum is the main muscle that straightens the fingers from the forearm, and it is paralyzed."
+      },
+      {
+        "name": "Strength of bending the elbow",
+        "answer": "none",
+        "why": "The elbow flexors, the biceps brachii and brachialis, are arm muscles and still work normally."
+      }
+    ],
+    "why": {
+      "correct": "The extensors on the back of the forearm straighten the wrist and fingers. Losing them makes the wrist drop and the fingers stay bent, while the elbow flexors in the arm are unaffected."
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-16",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "You reach up and grab a jar on a high shelf. Order the muscle actions from the trunk outward along the limb.",
+    "options": [
+      "The serratus anterior and trapezius rotate the scapula so the shoulder socket faces up",
+      "The deltoid and pectoralis major raise the humerus",
+      "The triceps brachii straightens the elbow",
+      "The finger flexors in the forearm curl the fingers around the jar"
+    ],
+    "why": {
+      "correct": "The limb works as a chain, each group moving the bone beyond the one it sits on: trunk muscles position the scapula, trunk and scapular muscles move the humerus, arm muscles move the forearm, and forearm muscles move the fingers.",
+      "options": [
+        "Trunk muscles first turn the scapula, a base for raising the arm overhead.",
+        "Muscles from the trunk and girdle then lift the humerus.",
+        "The arm muscle on the back of the humerus straightens the elbow.",
+        "Forearm muscles send tendons into the fingers to grip."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-17",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Common origins in the forearm: wrist and finger extensors → lateral epicondyle of the humerus; wrist and finger flexors → ____.",
+    "options": ["Olecranon", "Medial epicondyle of the humerus", "Coracoid process", "Deltoid tuberosity"],
+    "correct": 1,
+    "why": {
+      "correct": "Most flexors on the palm side of the forearm start from a common tendon on the medial epicondyle, and most extensors on the back from a common tendon on the lateral epicondyle.",
+      "options": [
+        "The olecranon is where the triceps brachii inserts, not where forearm flexors start.",
+        "Correct. The flexors share an origin on the medial epicondyle.",
+        "The coracoid process anchors the short head of the biceps brachii, the pectoralis minor and the coracobrachialis.",
+        "The deltoid tuberosity is where the deltoid inserts."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-18",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "This traces the biceps brachii from origin to insertion. One step is wrong. Find it.",
+    "options": [
+      "The long head originates just above the glenoid cavity",
+      "Its tendon runs down through the intertubercular groove",
+      "It joins the short head, from the coracoid process, to form the belly on the front of the arm",
+      "The muscle inserts on the olecranon of the ulna"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The biceps brachii inserts on the radial tuberosity, which is why it can supinate the forearm. The olecranon is the insertion of its antagonist, the triceps brachii.",
+      "options": [
+        "Correct step. The long head starts on a small bump above the glenoid cavity.",
+        "Correct step. The long head's tendon runs in the intertubercular groove.",
+        "Correct step. The two heads join into one belly on the front of the arm.",
+        "This is the wrong step. It inserts on the radial tuberosity, not the olecranon."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "With your elbow bent, you turn a stiff screw clockwise with your right hand, rolling the palm from facing down to facing up. Which muscles power this?",
+    "options": [
+      "Pronator teres and pronator quadratus",
+      "Brachioradialis and flexor carpi ulnaris",
+      "Triceps brachii and extensor digitorum",
+      "Supinator and biceps brachii"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Turning the palm up is supination. The supinator wraps the upper radius and rolls it, and the biceps brachii, pulling on the radial tuberosity, is the strongest supinator when the elbow is bent.",
+      "options": [
+        "The pronators turn the palm down, the opposite movement.",
+        "The brachioradialis mainly flexes the elbow and the flexor carpi ulnaris flexes the wrist; neither is a main supinator.",
+        "The triceps brachii extends the elbow and the extensor digitorum extends the fingers; neither turns the palm up.",
+        "Correct. Supination by the supinator and biceps brachii."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-20",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A carpenter has pain over the outer bump of his elbow that worsens when he grips a screwdriver and bends his wrist back against resistance. Which structures are most likely strained?",
+    "options": [
+      "The common tendon of the wrist extensors at the lateral epicondyle",
+      "The common tendon of the wrist flexors at the medial epicondyle",
+      "The tendon of the triceps brachii at the olecranon",
+      "The tendons of the rotator cuff"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Pain at the lateral epicondyle that rises when the wrist is extended against resistance points to the extensors' common origin: tennis elbow.",
+      "options": [
+        "Correct. The wrist extensors start from the lateral epicondyle, the outer bump.",
+        "The flexors start on the medial epicondyle, the inner bump; strain there is golfer's elbow.",
+        "The triceps brachii inserts on the olecranon, the point of the elbow, and extends the elbow rather than the wrist.",
+        "The rotator cuff is at the shoulder, not the elbow."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Why does the brachialis flex the elbow equally well whether the palm faces up or down, while the biceps brachii pulls hardest with the palm up?",
+    "options": [
+      "The brachialis is pennate and the biceps brachii is circular",
+      "The brachialis inserts on the ulna, which does not rotate; the biceps brachii inserts on the radius, which rolls around as the palm turns",
+      "The brachialis crosses the shoulder, and the biceps brachii does not",
+      "The biceps brachii relaxes whenever the forearm is pronated"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The ulna stays put when the forearm pronates and supinates, so the brachialis always pulls in the same line. The radius rolls over the ulna; with the palm down, the biceps tendon is wrapped around the radius and its pull partly goes into turning the palm up rather than bending the elbow.",
+      "options": [
+        "Neither muscle is circular; circular muscles surround openings. The difference comes from where each inserts.",
+        "Correct. Insertion on the non-rotating ulna versus the rolling radius explains it.",
+        "It is the other way round: the biceps brachii crosses the shoulder, and the brachialis starts on the humerus.",
+        "The biceps brachii still contracts with the palm down; it is simply less effective at flexing in that position."
+      ]
+    }
+  },
+  {
+    "id": "anp-upper-limb-muscles-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What is the thenar eminence?",
+    "options": [
+      "The fleshy mound of intrinsic muscles at the base of the thumb",
+      "The bump of the medial epicondyle at the elbow",
+      "The mound on the little-finger side of the palm",
+      "A band of tendon holding the flexor tendons at the wrist"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The thenar eminence is the mound at the base of the thumb, made of intrinsic hand muscles that abduct, flex and oppose the thumb.",
+      "options": [
+        "Correct. The thenar eminence moves the thumb.",
+        "The medial epicondyle is a bone marking at the elbow, the origin of the forearm flexors.",
+        "The mound on the little-finger side is the hypothenar eminence.",
+        "The band at the wrist is the flexor retinaculum, which roofs the carpal tunnel."
+      ]
+    }
+  }
+]

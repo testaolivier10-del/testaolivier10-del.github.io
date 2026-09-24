@@ -1,0 +1,462 @@
+[
+ {
+  "id": "anp-joint-classification-1",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "q": "Which statement defines a joint (articulation)?",
+  "options": [
+   "Any place where a bone meets another bone, a cartilage or a tooth",
+   "A place where two bones move freely against each other",
+   "A cord of dense connective tissue that joins two bones",
+   "The smooth cartilage that covers the end of a bone"
+  ],
+  "correct": 0,
+  "misconception": "joints always move",
+  "why": {
+   "correct": "A joint is defined by two structures meeting and being held together, not by movement. Many joints barely move.",
+   "options": [
+    "Correct. Any meeting point of bone with bone, cartilage or tooth is a joint.",
+    "This describes only freely movable joints. Skull sutures are joints too, and they do not move in an adult.",
+    "This describes a ligament, which can help hold a joint together but is not the joint itself.",
+    "This describes the cartilage on a bone end, one part found in some joints, not the joint itself."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-2",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "figure": "os-9-5",
+  "pin": "syndesmosis",
+  "q": "Name the pinned joint.",
+  "options": [
+   "Syndesmosis",
+   "Suture",
+   "Gomphosis",
+   "Symphysis"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "The radius and ulna are joined along their length by a sheet of fibers, the interosseous membrane. A fibrous joint where bones are held by a ligament or membrane is a syndesmosis.",
+   "options": [
+    "Correct. A sheet of fibers joining two separated bones is a syndesmosis.",
+    "A suture joins the interlocking edges of skull bones with very short fibers, not two forearm bones by a long sheet.",
+    "A gomphosis holds a tooth in its socket.",
+    "A symphysis joins bones with a pad of fibrocartilage, not a sheet of fibers."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-3",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "figure": "os-9-5",
+  "pin": "gomphosis",
+  "q": "Name the pinned joint.",
+  "options": [
+   "Synchondrosis",
+   "Syndesmosis",
+   "Gomphosis",
+   "Suture"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The joint between a tooth root and its bony socket is a gomphosis, a fibrous joint held by the periodontal ligament.",
+   "options": [
+    "A synchondrosis joins bones with hyaline cartilage, such as the epiphyseal plate. A tooth is held by fibers.",
+    "A syndesmosis joins two bones with a ligament or interosseous membrane, like the radius and ulna.",
+    "Correct. A tooth held in its socket by fibers is a gomphosis.",
+    "A suture joins two skull bones along a wavy seam."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-4",
+  "type": "image",
+  "level": "recall",
+  "diff": 2,
+  "figure": "os-9-5",
+  "pin": "periodontal-ligament",
+  "q": "Name the pinned tissue that holds the tooth in its socket.",
+  "options": [
+   "Interosseous membrane",
+   "Periodontal ligament",
+   "Articular cartilage",
+   "Periosteum"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The periodontal ligament is the thin layer of collagen fibers running from the tooth root to the socket wall. It forms the gomphosis.",
+   "options": [
+    "An interosseous membrane is the broad sheet of fibers between two long bones, such as the radius and ulna.",
+    "Correct. The fibers around the tooth root are the periodontal ligament.",
+    "Articular cartilage is hyaline cartilage covering bone ends, not fibers around a tooth root.",
+    "The periosteum is the membrane covering the outer surface of a bone, not the fibers tying a tooth to its socket."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-5",
+  "type": "image",
+  "level": "recall",
+  "diff": 1,
+  "figure": "os-9-7",
+  "pin": "pubic-symphysis",
+  "q": "Name the pinned joint.",
+  "options": [
+   "Sacrum",
+   "Pubic symphysis",
+   "Acetabulum",
+   "Epiphyseal plate"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "The pad of fibrocartilage joining the two pubic bones at the front of the pelvis is the pubic symphysis.",
+   "options": [
+    "The sacrum is the bone at the back of the pelvis, not the joint at the front midline.",
+    "Correct. The fibrocartilage joint at the front midline of the pelvis is the pubic symphysis.",
+    "The acetabulum is the socket on the side of each hip bone that holds the head of the femur.",
+    "The epiphyseal plate is the hyaline cartilage joint inside a growing long bone."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-6",
+  "type": "single",
+  "level": "recall",
+  "diff": 1,
+  "q": "What feature separates a synovial joint from fibrous and cartilaginous joints?",
+  "options": [
+   "It occurs in the limbs but not in the head",
+   "Its bones are joined by fibrocartilage",
+   "A fluid-filled space separates the bone ends",
+   "Its bone ends are covered by a layer of periosteum"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "In a synovial joint the bone ends are separated by a narrow fluid-filled space, lined by a synovial membrane. Fibrous and cartilaginous joints are solid all the way across.",
+   "options": [
+    "Synovial joints occur in the jaw and spine as well as the limbs, so location does not define them.",
+    "Joining bones by fibrocartilage describes a symphysis, a cartilaginous joint.",
+    "Correct. The fluid-filled space is the defining feature.",
+    "The contact surfaces of bone ends in a synovial joint are covered by cartilage, not periosteum."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-7",
+  "type": "multi",
+  "level": "recall",
+  "diff": 2,
+  "q": "Which of these are fibrous joints? Select all that apply.",
+  "options": [
+   "Coronal suture",
+   "Tooth in its socket",
+   "Radius and ulna joined by an interosseous membrane",
+   "Pubic symphysis",
+   "Epiphyseal plate"
+  ],
+  "correct": [
+   0,
+   1,
+   2
+  ],
+  "why": {
+   "correct": "Sutures, gomphoses and syndesmoses are the three fibrous joints. The pubic symphysis and the epiphyseal plate are cartilaginous.",
+   "options": [
+    "Yes. A suture is a fibrous joint between skull bones.",
+    "Yes. A tooth in its socket is a gomphosis, a fibrous joint.",
+    "Yes. Bones joined by an interosseous membrane form a syndesmosis, a fibrous joint.",
+    "No. The pubic symphysis joins bones with fibrocartilage, so it is cartilaginous.",
+    "No. The epiphyseal plate is hyaline cartilage, a synchondrosis."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-8",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "An X-ray of a 25-year-old shows a thin line of dense bone where the epiphyseal plate of the femur used to be. How is that site classified now?",
+  "options": [
+   "Synchondrosis",
+   "Symphysis",
+   "Synostosis",
+   "Syndesmosis"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "When growth in length stops, bone replaces the hyaline cartilage of the plate. A joint whose connecting tissue has been replaced by bone, fusing two bones into one, is a synostosis.",
+   "options": [
+    "The plate was a synchondrosis while it was cartilage. Once bone replaces the cartilage, it no longer is.",
+    "A symphysis is joined by fibrocartilage, such as the pubic symphysis. The growth plate was never fibrocartilage.",
+    "Correct. The old growth plate is now bone, so it is a synostosis.",
+    "A syndesmosis joins two bones with a ligament or interosseous membrane. There is no ligament here."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-9",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "A joint is made of a pad of fibrocartilage between two bones and allows a little bending. Which pair of labels fits it?",
+  "options": [
+   "Symphysis; amphiarthrosis",
+   "Synchondrosis; synarthrosis",
+   "Suture; synarthrosis",
+   "Syndesmosis; diarthrosis"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "A fibrocartilage pad makes a symphysis, and slight movement makes it an amphiarthrosis. The intervertebral discs and the pubic symphysis fit this pair.",
+   "options": [
+    "Correct. Fibrocartilage pad plus slight movement is a symphysis and an amphiarthrosis.",
+    "A synchondrosis uses hyaline cartilage and barely moves. This joint uses fibrocartilage and bends.",
+    "A suture is a fibrous joint between skull bones with no cartilage pad.",
+    "A syndesmosis is fibrous, not cartilaginous, and it is not freely movable."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-10",
+  "type": "vignette",
+  "level": "apply",
+  "diff": 2,
+  "q": "Ms. Reyes, 32 weeks pregnant, has pain at the front of her pelvis. Ultrasound shows her pubic symphysis gap has widened from 5 mm to 12 mm. Which best explains the widening?",
+  "options": [
+   "The fibrocartilage has turned to bone",
+   "Hormones loosened the joint's collagen",
+   "The joint has become a synovial joint",
+   "A fluid-filled space formed between the bones"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "In pregnancy, hormones loosen the collagen in the fibrocartilage pad and ligaments of the pubic symphysis. The tissue stretches more under load, so the gap widens and the bones shift.",
+   "options": [
+    "Bone formation would lock the joint and narrow the movement, not widen the gap. That would be a synostosis.",
+    "Correct. Looser collagen stretches more, and the joint gives more.",
+    "The joint's structural class does not change. It is still a fibrocartilage symphysis; only its tissue has become more stretchy.",
+    "The pubic symphysis has no fluid-filled space. It stays a solid fibrocartilage joint."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-11",
+  "type": "order",
+  "level": "apply",
+  "diff": 2,
+  "q": "Order these joints from least movable to most movable.",
+  "options": [
+   "Sagittal suture",
+   "Pubic symphysis",
+   "Joint between the upper arm bone and the shoulder blade"
+  ],
+  "why": {
+   "correct": "A suture is a synarthrosis (immobile), the pubic symphysis is an amphiarthrosis (slightly movable), and the shoulder is a synovial diarthrosis (freely movable).",
+   "options": [
+    "The sagittal suture's interlocking edges and short fibers allow almost no movement.",
+    "The pubic symphysis gives a little because its fibrocartilage pad bends.",
+    "The shoulder is a synovial joint that moves freely in many directions."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-12",
+  "type": "missing",
+  "level": "apply",
+  "diff": 2,
+  "q": "Fill the gap. Suture : synarthrosis :: intervertebral disc : ____",
+  "options": [
+   "Amphiarthrosis",
+   "Diarthrosis",
+   "Synostosis",
+   "Syndesmosis"
+  ],
+  "correct": 0,
+  "why": {
+   "correct": "A suture is an immobile joint, a synarthrosis. An intervertebral disc allows slight movement, so it is an amphiarthrosis.",
+   "options": [
+    "Correct. The disc is slightly movable.",
+    "A diarthrosis is freely movable, like a synovial joint. One disc allows only slight movement.",
+    "A synostosis is a joint that has turned to bone. A healthy disc is fibrocartilage.",
+    "A syndesmosis is a structural subtype (a fibrous joint), not a functional class, and a disc is cartilaginous."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-13",
+  "type": "error",
+  "level": "apply",
+  "diff": 2,
+  "q": "This list pairs each joint with its structural subtype. One pairing is wrong. Find it.",
+  "options": [
+   "Coronal suture: suture",
+   "Tooth in its socket: gomphosis",
+   "First rib and manubrium: symphysis",
+   "Radius and ulna along their length: syndesmosis",
+   "Pubic bones at the midline: symphysis"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "The first rib's costal cartilage joins it to the manubrium with hyaline cartilage, making a synchondrosis, not a symphysis. A symphysis uses fibrocartilage.",
+   "options": [
+    "Correct pairing. The coronal suture is a suture.",
+    "Correct pairing. A tooth in its socket is a gomphosis.",
+    "This is the wrong pairing. The first rib and manubrium are joined by hyaline cartilage, a synchondrosis.",
+    "Correct pairing. The interosseous membrane makes a syndesmosis.",
+    "Correct pairing. The pubic symphysis is joined by fibrocartilage."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-14",
+  "type": "single",
+  "level": "analyze",
+  "diff": 3,
+  "q": "Which statement about the two classification schemes is accurate?",
+  "options": [
+   "Every synovial joint is a diarthrosis",
+   "Every cartilaginous joint is an amphiarthrosis",
+   "Fibrous joints include immobile and slightly movable ones",
+   "Structural and functional classes are two names for one grouping"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "Sutures and gomphoses are immobile fibrous joints, while syndesmoses are slightly movable fibrous joints. One structural class spans two functional classes.",
+   "options": [
+    "Almost all synovial joints are diarthroses, but a few, such as the joint between the sacrum and hip bone, are held so tightly that they barely move.",
+    "Synchondroses such as the epiphyseal plate are cartilaginous but nearly immobile, so they are synarthroses.",
+    "Correct. Fibrous joints span synarthroses and amphiarthroses.",
+    "The two schemes are separate. Structure predicts function most of the time, but the exceptions above show the groupings differ."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-15",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "A newborn's skull bones can shift and overlap slightly during birth. What property of the newborn's skull joints explains this?",
+  "options": [
+   "The sutures are synovial joints at birth",
+   "Wide fibrous tissue lies between the bones",
+   "The skull bones are joined by fibrocartilage",
+   "The sutures have already become synostoses"
+  ],
+  "correct": 1,
+  "why": {
+   "correct": "In a newborn, the fibrous tissue between skull bones is wide, especially at the fontanelles, so the bones have room to shift. As the child grows, the bone edges come together and interlock.",
+   "options": [
+    "Skull sutures are fibrous joints at every age. They never have a fluid-filled space.",
+    "Correct. Wide bands of fibrous tissue let the bones move slightly.",
+    "Skull bones are joined by fibrous tissue, not fibrocartilage.",
+    "A synostosis is fused bone, which would allow no movement at all. Most sutures fuse much later, if at all."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-16",
+  "type": "predict",
+  "level": "analyze",
+  "diff": 2,
+  "q": "A disease slowly replaces the fibrocartilage of the intervertebral discs in the lower back with bone. Predict the change in each.",
+  "variables": [
+   {
+    "name": "Movement between neighboring lumbar vertebrae",
+    "answer": "down",
+    "why": "Bone does not bend the way fibrocartilage does, so the vertebrae can no longer tilt or squeeze against each other."
+   },
+   {
+    "name": "How many of these joints are synostoses",
+    "answer": "up",
+    "why": "Each disc replaced by bone fuses two vertebrae into one piece, which is the definition of a synostosis."
+   },
+   {
+    "name": "How far the lower back can bend forward in total",
+    "answer": "down",
+    "why": "Bending of the whole spine is the sum of small movements at many discs. Each fused level adds nothing, so the total falls."
+   }
+  ],
+  "why": {
+   "correct": "Replacing a flexible fibrocartilage pad with bone turns an amphiarthrosis into a synostosis. Each level loses its small movement, and the lower back as a whole bends less."
+  },
+  "core": [
+   "structure-function"
+  ]
+ },
+ {
+  "id": "anp-joint-classification-17",
+  "type": "single",
+  "level": "apply",
+  "diff": 2,
+  "q": "Why does a syndesmosis usually allow more movement than a suture?",
+  "options": [
+   "Its bones are covered with hyaline cartilage",
+   "It has a narrow fluid-filled space between its two bones",
+   "Its fibers are longer and the bones farther apart",
+   "It contains a pad of fibrocartilage"
+  ],
+  "correct": 2,
+  "why": {
+   "correct": "In a suture, interlocking bone edges are bound by very short fibers. In a syndesmosis, the bones sit farther apart and are joined by a longer ligament or membrane, which can give a little.",
+   "options": [
+    "Neither suture nor syndesmosis relies on hyaline cartilage; both are fibrous joints.",
+    "A fluid-filled space defines a synovial joint. A syndesmosis is solid fibrous tissue.",
+    "Correct. Longer fibers between more widely spaced bones allow more movement.",
+    "A fibrocartilage pad defines a symphysis, a cartilaginous joint."
+   ]
+  },
+  "core": [
+   "structure-function"
+  ]
+ }
+]

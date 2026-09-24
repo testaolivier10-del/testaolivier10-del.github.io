@@ -1,0 +1,559 @@
+[
+  {
+    "id": "anp-fiber-types-1",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function",
+      "energy"
+    ],
+    "q": "Which fiber type contracts slowly, is rich in mitochondria and myoglobin, and resists fatigue for hours?",
+    "options": [
+      "Fast glycolytic",
+      "Fast oxidative",
+      "Slow oxidative",
+      "Smooth muscle fiber"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Slow oxidative (slow-twitch, type I) fibers have slow myosin and make their ATP by aerobic respiration, supported by many mitochondria, much myoglobin and many capillaries. They can work for hours.",
+      "options": [
+        "Fast glycolytic fibers are fast, have few mitochondria and little myoglobin, and tire within a minute or two.",
+        "Fast oxidative fibers are rich in mitochondria and myoglobin, but they contract fast, not slowly.",
+        "Correct. Slow myosin plus aerobic metabolism.",
+        "Fiber types describe skeletal muscle. Smooth muscle is a different tissue."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-2",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A sports scientist takes thigh muscle biopsies from an elite marathon runner. Which result would you expect?",
+    "options": [
+      "Mostly fast glycolytic fibers with large glycogen stores",
+      "Mostly slow oxidative fibers with many capillaries",
+      "Equal numbers of the three types, all pale in color",
+      "Fibers much thicker than in untrained people"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Elite distance runners' leg muscles are often 70 to 80 percent slow oxidative fibers, and training has given those fibers even more mitochondria, myoglobin and capillaries.",
+      "options": [
+        "That describes a sprinter or thrower, whose events need brief, high power.",
+        "Correct. Endurance athletes have mostly slow oxidative fibers.",
+        "An elite marathoner's muscle is dominated by slow fibers, which are red, not pale.",
+        "Endurance training improves aerobic capacity with little growth in fiber size; thicker fibers come from resistance training."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "In a biopsy, a technician counts 90 slow oxidative, 70 fast oxidative and 40 fast glycolytic fibers. What percentage of the fibers are slow-twitch?",
+    "options": [
+      "35%",
+      "45%",
+      "55%",
+      "80%"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Total = 90 + 70 + 40 = 200. Only slow oxidative fibers are slow-twitch: 90 ÷ 200 = 0.45, or 45%.",
+      "options": [
+        "35% is 70 ÷ 200, the fast oxidative fibers, which are fast-twitch.",
+        "Correct. 90 ÷ 200 = 45%.",
+        "55% is the fast-twitch share: (70 + 40) ÷ 200.",
+        "80% adds slow oxidative and fast oxidative fibers ((90 + 70) ÷ 200). Fast oxidative fibers are fast-twitch."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-4",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Why do fast glycolytic fibers fatigue within a minute or two of hard work?",
+    "options": [
+      "Their myosin cannot split ATP",
+      "They have no sarcoplasmic reticulum",
+      "They burn glycogen fast and build up phosphate",
+      "Their motor neurons fire too slowly to keep the fibers contracting"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "With few mitochondria and little myoglobin, fast glycolytic fibers make most of their ATP by anaerobic glycolysis and creatine phosphate. Their glycogen is used up fast and phosphate accumulates, so their force falls quickly.",
+      "options": [
+        "Their myosin splits ATP very fast; that is what makes them fast fibers.",
+        "All skeletal fibers have an SR, and fast fibers have an especially well-developed one.",
+        "Correct. A glycolytic fiber spends its fuel quickly and builds up phosphate.",
+        "Fast glycolytic fibers belong to large motor units whose neurons fire at high rates when recruited."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-5",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Slow oxidative fibers are thinner than fast glycolytic fibers. How does their small diameter suit their metabolism?",
+    "options": [
+      "A thin fiber holds more glycogen per unit of its volume",
+      "A thin fiber contracts faster than a thick one",
+      "Oxygen has less distance to diffuse",
+      "A thin fiber needs no myoglobin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Oxidative fibers depend on oxygen arriving from capillaries around them. A small diameter keeps every mitochondrion close to the surface, so the diffusion distance for oxygen is short. A glycolytic fiber does not wait for oxygen, so it can be thick and hold many myofibrils.",
+      "options": [
+        "Slow oxidative fibers actually have low glycogen stores; the glycogen-rich fibers are the thick, glycolytic ones.",
+        "Contraction speed depends on the myosin version and calcium handling, not on diameter. Slow oxidative fibers are thin and slow.",
+        "Correct. Short diffusion distance supports aerobic metabolism.",
+        "Slow oxidative fibers have the most myoglobin of all."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-6",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "energy",
+      "structure-function"
+    ],
+    "q": "A runner who has been running at marathon pace starts an all-out sprint for the finish line. Predict the change in each variable in her leg muscles during the sprint.",
+    "variables": [
+      {
+        "name": "Recruitment of fast glycolytic fibers",
+        "answer": "up",
+        "why": "By the size principle, the largest motor units, made of fast glycolytic fibers, join only when near-maximal force is needed."
+      },
+      {
+        "name": "Rate of anaerobic glycolysis",
+        "answer": "up",
+        "why": "Fast glycolytic fibers make their ATP mainly by glycolysis, and every working fiber's ATP demand rises steeply."
+      },
+      {
+        "name": "Lactate production",
+        "answer": "up",
+        "why": "Glycolysis makes pyruvate faster than the mitochondria can take it in, so pyruvate is converted to lactate."
+      },
+      {
+        "name": "Share of ATP from aerobic respiration",
+        "answer": "down",
+        "why": "Aerobic respiration keeps running, but glycolysis now supplies a much larger share of the far greater total."
+      },
+      {
+        "name": "How long she can keep this pace",
+        "answer": "down",
+        "why": "Fast glycolytic fibers fatigue within a minute or two as glycogen falls and phosphate builds up."
+      }
+    ],
+    "why": {
+      "correct": "At marathon pace, small motor units of slow oxidative fibers do most of the work aerobically. A sprint recruits the large, fast glycolytic units too, which make ATP fast by glycolysis, produce lactate and tire quickly, so the burst cannot last."
+    }
+  },
+  {
+    "id": "anp-fiber-types-7",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "energy",
+      "structure-function"
+    ],
+    "q": "A previously inactive adult completes eight weeks of regular endurance running. Predict the change in each variable in his leg muscles.",
+    "variables": [
+      {
+        "name": "Mitochondria per fiber",
+        "answer": "up",
+        "why": "Repeated aerobic work stimulates fibers to build more mitochondria and aerobic enzymes."
+      },
+      {
+        "name": "Capillaries around each fiber",
+        "answer": "up",
+        "why": "Low oxygen and shear in working muscle release VEGF, which drives angiogenesis."
+      },
+      {
+        "name": "Myoglobin content",
+        "answer": "up",
+        "why": "Oxidative fibers adapt to training by making more myoglobin."
+      },
+      {
+        "name": "Proportion of fast glycolytic fibers",
+        "answer": "down",
+        "why": "Training shifts fast glycolytic fibers toward fast oxidative properties."
+      },
+      {
+        "name": "Total number of fibers in the muscle",
+        "answer": "none",
+        "why": "Training changes what fibers are like, not how many there are; adult skeletal muscle adds few if any fibers."
+      }
+    ],
+    "why": {
+      "correct": "Endurance training makes fibers better at aerobic respiration: more mitochondria, myoglobin and capillaries, and a shift of fast glycolytic fibers toward fast oxidative. The number of fibers does not change."
+    }
+  },
+  {
+    "id": "anp-fiber-types-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "Select every change that endurance training produces in skeletal muscle.",
+    "options": [
+      "More capillaries around each fiber",
+      "More mitochondria in each fiber",
+      "Many new fibers formed by division",
+      "More myoglobin",
+      "Large increase in fiber diameter",
+      "Fast glycolytic fibers taking on fast oxidative properties"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Endurance training improves aerobic capacity: angiogenesis adds capillaries, fibers build more mitochondria and myoglobin, and fast glycolytic fibers shift toward fast oxidative. Fiber number does not rise, and large increases in diameter come from resistance training.",
+      "options": [
+        "Correct. Angiogenesis adds capillaries.",
+        "Correct. More mitochondria means more aerobic capacity.",
+        "Adult skeletal muscle fibers do not divide, and hyperplasia adds few if any fibers.",
+        "Correct. More myoglobin stores and shuttles more oxygen.",
+        "Endurance training causes little hypertrophy; thick fibers are a result of heavy resistance training.",
+        "Correct. The fast fibers become more oxidative."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "muscles grow by adding new fibers",
+    "q": "After a year of heavy weight training, Ms. Tran's thigh muscles are much larger. What mainly accounts for the growth?",
+    "options": [
+      "Existing fibers dividing into two",
+      "Existing fibers adding myofibrils",
+      "Fat building up between the fibers",
+      "Tendons lengthening to make room for more fibers"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is hypertrophy: existing fibers make more actin and myosin and add myofibrils, so each fiber's diameter grows. Muscle stem cells fuse with the fibers and add nuclei to support the extra protein.",
+      "options": [
+        "Mature skeletal muscle fibers never divide, and hyperplasia adds few if any fibers in adult humans.",
+        "Correct. Hypertrophy of existing fibers.",
+        "Training builds muscle protein, not fat. Fat replacing fibers happens in diseases such as muscular dystrophy.",
+        "Tendons do not grow to hold new fibers; fiber number stays about the same."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-10",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During pregnancy the uterus wall thickens partly because its smooth muscle cells divide. What is this kind of growth called?",
+    "options": [
+      "Hypertrophy",
+      "Atrophy",
+      "Angiogenesis",
+      "Hyperplasia"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Growth by adding more cells is hyperplasia. In the pregnant uterus, smooth muscle cells mostly enlarge (hypertrophy), but some also divide (hyperplasia).",
+      "options": [
+        "Hypertrophy is growth by enlargement of existing cells. It is the main change in the uterus too, but it does not add cells.",
+        "Atrophy is shrinking, the opposite of growth.",
+        "Angiogenesis is new capillary growth, which also happens in the pregnant uterus, but it is not growth by muscle cell division.",
+        "Correct. More cells means hyperplasia."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A soccer player's cast is removed after six weeks. His calf is visibly thinner than on the other leg. What has happened, and what is the outlook?",
+    "options": [
+      "Disuse atrophy; it will reverse with use",
+      "Muscular dystrophy, which will slowly progress",
+      "Fibers were lost for good and replaced by scar tissue from fibroblasts",
+      "Hypertrophy of the fat under the skin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Without use, the fibers broke down protein faster than they made it and lost myofibrils: disuse atrophy. The fibers and their motor neurons are still there, so with training they rebuild their myofibrils.",
+      "options": [
+        "Correct. Disuse atrophy is reversible.",
+        "Muscular dystrophy is an inherited disease that affects many muscles; a cast does not cause it.",
+        "Disuse shrinks fibers but does not kill them. Scar replaces muscle after large injuries, not after immobilization.",
+        "The calf is thinner, not thicker, and the change is in the muscle."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A deep cut severs the nerve to a man's forearm muscles, and the axons do not regrow. Compared with a forearm kept in a cast for the same time, how will his muscles change?",
+    "options": [
+      "Less atrophy, because the fibers are not being strained",
+      "The same atrophy, because both muscles are unused",
+      "Hypertrophy, because the fibers contract on their own",
+      "Worse atrophy, ending in fat and scar"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In a cast, motor neurons still fire and fibers still get some activity and nerve contact. With the nerve cut, the fibers receive no action potentials at all. They atrophy severely, and over months to years, without reinnervation, they are replaced by fat and connective tissue.",
+      "options": [
+        "Loss of the nerve causes more atrophy, not less; lack of strain is not protective here.",
+        "Denervated muscle loses much more than muscle that keeps its motor neurons.",
+        "Skeletal muscle fibers contract only when their motor neuron fires; cut off, they cannot drive their own growth.",
+        "Correct. Denervation atrophy is severe and, without regrowth of the axons, permanent."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-13",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the stages of skeletal muscle fiber formation in order.",
+    "options": [
+      "Muscle stem cells commit to becoming muscle",
+      "Myoblasts divide and line up",
+      "Myoblasts fuse into a myotube with many nuclei",
+      "The myotube fills with myofibrils",
+      "Nuclei move to the edge of a mature fiber"
+    ],
+    "why": {
+      "correct": "Stem cells become myoblasts, which multiply and line up, then fuse into a multinucleated myotube. The myotube builds myofibrils, and as it matures its nuclei move to the edge, giving the adult fiber's many peripheral nuclei."
+    }
+  },
+  {
+    "id": "anp-fiber-types-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 4-year-old boy has trouble climbing stairs and pushes on his thighs with his hands to stand up. His calves look large and his blood creatine kinase is very high. What best explains the large calves?",
+    "options": [
+      "Hypertrophy of normal fibers compensating for weakness",
+      "Fibers replaced by fat and connective tissue",
+      "Extra fibers made by hyperplasia",
+      "Swelling from lactate stored in the fibers"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is Duchenne muscular dystrophy. Without dystrophin, each contraction tears the sarcolemma, fibers die and leak creatine kinase, and repair gradually falls behind. Fat and connective tissue take the place of the lost fibers, so the calves look big while being weak.",
+      "options": [
+        "Some fibers may enlarge early, but the bulk of the enlarged calf is not muscle; the boy is getting weaker, not stronger.",
+        "Correct. The large calves are fat and connective tissue, not muscle.",
+        "Hyperplasia adds few if any fibers in skeletal muscle, and the fibers here are dying.",
+        "Lactate is not stored in fibers; it leaves and is used as fuel within about an hour."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What triggers angiogenesis in muscle during endurance training?",
+    "options": [
+      "VEGF released from working muscle low in oxygen",
+      "Lactate binding to receptor proteins on red blood cells in the muscle",
+      "Fast glycolytic fibers dividing into capillaries",
+      "Loss of the motor neuron supplying the muscle"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "During repeated training sessions, working fibers are low in oxygen and capillaries are sheared by fast flow. Fibers and capillary lining cells release VEGF, which makes endothelial cells of nearby capillaries divide and sprout into new capillaries.",
+      "options": [
+        "Correct. VEGF drives new capillary sprouting.",
+        "Red blood cells do not build capillaries. New capillaries sprout from the endothelium of existing ones.",
+        "Muscle fibers do not become capillaries; new capillaries sprout from existing capillaries.",
+        "Losing the nerve causes atrophy, not new capillary growth."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Mr. Alvarez, 78, can still lift his grocery bags slowly, but he often stumbles and cannot catch himself in time. Which age-related change best explains his trouble catching himself?",
+    "options": [
+      "His slow oxidative fibers have turned into fast glycolytic fibers",
+      "His muscle fibers have begun to divide abnormally",
+      "His muscles store more myoglobin, slowing them",
+      "His fast fibers have shrunk most, cutting his power"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In sarcopenia, fast fibers shrink the most, so power, the ability to produce force quickly, falls even more than strength. Catching yourself after a trip needs fast, forceful contraction. Loss of motor neurons, leaving fewer but larger motor units, also coarsens control.",
+      "options": [
+        "Aging does not convert slow fibers into fast ones; if anything, fast fibers are lost or shrink.",
+        "Mature skeletal muscle fibers never divide.",
+        "Myoglobin does not slow contraction; speed depends on the myosin and calcium handling.",
+        "Correct. Loss of fast-fiber size costs power, which a quick recovery step needs."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-17",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student described how skeletal muscle repairs a small injury. One step is wrong. Which one?",
+    "options": [
+      "Muscle stem cells lying on the injured fiber's surface become active",
+      "The stem cells divide, and some daughters become myoblasts",
+      "The damaged mature fiber divides to replace its lost part",
+      "Myoblasts fuse with the damaged fiber, adding nuclei and patching it"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Mature skeletal muscle fibers never divide. Repair comes from muscle stem cells, whose myoblast daughters fuse with the damaged fiber or with each other.",
+      "options": [
+        "This step is right. Stem cells between the sarcolemma and the basal lamina start the repair.",
+        "This step is right. Some daughters become myoblasts and others return to rest, keeping the supply.",
+        "This is the error. Mature fibers do not divide.",
+        "This step is right. Fusion patches the fiber and adds nuclei."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "You walk slowly across a room, then jump as high as you can. Which fibers in your calf muscles are active in each task?",
+    "options": [
+      "Walking: fast glycolytic only. Jumping: slow oxidative only",
+      "Walking: all three types equally. Jumping: all three equally",
+      "Walking: mainly slow oxidative. Jumping: all three types",
+      "Walking: none. Jumping: fast glycolytic only"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Slow oxidative fibers belong to the smallest motor units, which are recruited first, so gentle walking uses mainly them. A maximal jump recruits all motor units, from small to large, so all three types contract.",
+      "options": [
+        "It is the reverse: low-force tasks use the small slow units, and a maximal effort adds the large fast ones.",
+        "Recruitment follows force. A slow walk needs only a small part of the muscle's units.",
+        "Correct. Small slow units first; large fast units join for maximal force.",
+        "Walking uses the calf muscles. And even in a jump, the small slow units fire first and stay active as the larger ones join."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-19",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Complete the order in which fiber types are recruited as the force a muscle must produce rises: slow oxidative → fast oxidative → ____.",
+    "options": [
+      "Smooth muscle",
+      "Fast glycolytic",
+      "Slow oxidative again, at a higher rate",
+      "Cardiac muscle"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "By the size principle, small motor units (slow oxidative fibers) are recruited first, then intermediate ones (fast oxidative), then the largest (fast glycolytic).",
+      "options": [
+        "Smooth muscle is a different tissue, not part of a skeletal muscle's motor units.",
+        "Correct. The largest units, of fast glycolytic fibers, come last.",
+        "Firing rate does rise with force, but the next type recruited is fast glycolytic.",
+        "Cardiac muscle is found only in the heart and has no motor units."
+      ]
+    }
+  },
+  {
+    "id": "anp-fiber-types-20",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Twins are separated at birth. One becomes a sprinter and the other an office worker. What would you predict about their thigh muscles as adults?",
+    "options": [
+      "Very different proportions of slow and fast fibers, set by training",
+      "Similar slow-to-fast proportions, but different fiber size and aerobic capacity",
+      "Identical muscles in every respect, set by their genes",
+      "The sprinter's muscle will have twice as many fibers"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The proportion of slow to fast fibers is strongly inherited and changes little with training in adults. Training changes what each fiber is like: the sprinter's fast fibers will be larger and more powerful, with shifts within the fast types.",
+      "options": [
+        "Training shifts properties within the fast types but converts few fibers between slow and fast, so the proportions stay similar.",
+        "Correct. Inheritance sets the mix; training changes the fibers' size and properties.",
+        "Training clearly changes fiber size, mitochondria and capillaries, so the muscles will not be identical.",
+        "Adult skeletal muscle adds few if any fibers; growth is hypertrophy of existing ones."
+      ]
+    }
+  }
+]

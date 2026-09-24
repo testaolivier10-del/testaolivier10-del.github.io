@@ -1,0 +1,354 @@
+[
+  {
+    "id": "anp-bone-development-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-18",
+    "pin": "proliferative-zone",
+    "q": "Name the pinned zone of the epiphyseal plate, where chondrocytes are stacked like coins.",
+    "options": ["Reserve zone", "Zone of calcified matrix", "Proliferative zone", "Zone of maturation and hypertrophy"],
+    "correct": 2,
+    "why": {
+      "correct": "In the proliferative zone, chondrocytes divide rapidly and line up in stacks. Their division is the main source of growth in length.",
+      "options": [
+        "The reserve zone has small, scattered cells that rarely divide, nearest the epiphysis.",
+        "In the zone of calcified matrix the chondrocytes are dead and the matrix is calcified.",
+        "Correct. Stacks of flat, dividing cells mark the proliferative zone.",
+        "In the zone of maturation and hypertrophy the cells have stopped dividing and are much larger."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-18",
+    "pin": "reserve-zone",
+    "q": "Name the pinned zone, nearest the epiphysis.",
+    "options": ["Proliferative zone", "Reserve zone", "Zone of maturation and hypertrophy", "Zone of calcified matrix"],
+    "correct": 1,
+    "why": {
+      "correct": "The reserve zone lies against the epiphysis. Its scattered chondrocytes rarely divide; the zone anchors the plate to the epiphysis.",
+      "options": [
+        "The proliferative zone lies just below it, with cells in stacks.",
+        "Correct. The zone nearest the epiphysis is the reserve zone.",
+        "The zone of maturation and hypertrophy is farther toward the diaphysis, with enlarged cells.",
+        "The zone of calcified matrix is the last zone before bone, nearest the diaphysis."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-17",
+    "pin": "primary-ossification-center",
+    "q": "Name the pinned site, where spongy bone first forms in the middle of the shaft.",
+    "options": ["Secondary ossification center", "Epiphyseal plate", "Medullary cavity", "Primary ossification center"],
+    "correct": 3,
+    "why": {
+      "correct": "The primary ossification center forms in the diaphysis when a nutrient artery invades the calcified middle of the cartilage model and osteoblasts lay down spongy bone.",
+      "options": [
+        "Secondary ossification centers form later, in the epiphyses.",
+        "The epiphyseal plate is the disc of cartilage left between epiphysis and diaphysis at the end of the process.",
+        "The medullary cavity opens later, when osteoclasts clear the spongy bone from the center.",
+        "Correct. The first bone in the shaft is the primary ossification center."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-19",
+    "pin": "epiphyseal-line",
+    "q": "Name the pinned feature in this adult bone.",
+    "options": ["Epiphyseal plate", "Epiphyseal line", "Articular cartilage", "Metaphysis"],
+    "correct": 1,
+    "why": {
+      "correct": "The epiphyseal line is the thin line of bone left where an epiphyseal plate used to be, after growth in length has stopped.",
+      "options": [
+        "An epiphyseal plate is cartilage in a growing bone. This bone is mature, and the plate has been replaced.",
+        "Correct. A plate that has closed leaves an epiphyseal line.",
+        "Articular cartilage covers the joint surface at the very end of the bone.",
+        "The metaphysis is the whole flared region; the pinned feature is the thin line within it."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "An embryo's flat skull roof bones are forming. What are they forming from?",
+    "options": ["Hyaline cartilage models", "Fibrocartilage", "Sheets of mesenchyme", "Epiphyseal plates"],
+    "correct": 2,
+    "why": {
+      "correct": "The flat bones of the skull roof form by intramembranous ossification: osteoblasts differentiate from mesenchymal cells within a sheet of mesenchyme and lay down bone directly, with no cartilage stage.",
+      "options": [
+        "Cartilage models are the starting point for endochondral ossification, which forms the limb bones, vertebrae and skull base.",
+        "Fibrocartilage is not a template for bone formation.",
+        "Correct. Skull roof bones form directly in mesenchyme.",
+        "Epiphyseal plates are found in growing long bones, not in flat skull bones."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-6",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A gene change in achondroplasia slows chondrocyte division in the proliferative zone. Affected people have short arms and legs, while the dome of the skull is normal-sized. Why is the skull dome spared?",
+    "options": ["It forms by intramembranous ossification, with no epiphyseal plates", "Its epiphyseal plates close before birth", "Skull bones have no osteoblasts", "Its cartilage model is replaced faster"],
+    "correct": 0,
+    "why": {
+      "correct": "The flat bones of the skull dome form directly in mesenchyme and grow at their edges, without cartilage models or epiphyseal plates. A defect in plate chondrocytes shortens the long bones, which lengthen at the plates, and spares bones that never use them.",
+      "options": [
+        "Correct. No cartilage, no plates, so a plate defect cannot slow them.",
+        "The skull dome never has epiphyseal plates at all; they are features of long bones.",
+        "All bone, including skull bone, is laid down by osteoblasts.",
+        "The skull dome has no cartilage model to replace; that is the point of intramembranous ossification."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "An 11-year-old breaks the lower end of his thigh bone through the epiphyseal plate. As it heals, bone forms a bridge across the plate. What is the main risk?",
+    "options": ["The bone will grow too wide", "That leg will grow less in length", "The medullary cavity will fill with bone", "The articular cartilage will turn to bone"],
+    "correct": 1,
+    "why": {
+      "correct": "Growth in length depends on the plate's cartilage continuing to divide and being replaced by bone. A bony bridge tethers the epiphysis to the diaphysis and stops growth at that site, so the leg can end up shorter, or angled if only one side is bridged.",
+      "options": [
+        "Width comes from appositional growth at the periosteum, which a plate injury does not stop or speed.",
+        "Correct. A bridged plate cannot push the epiphysis away, so lengthening slows or stops.",
+        "The medullary cavity is carved and kept open by osteoclasts; the plate injury does not change that.",
+        "Articular cartilage is separate from the plate and stays cartilage for life."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["structure-function"],
+    "q": "A child takes a drug for several months that blocks cell division in the proliferative zone of her epiphyseal plates. Predict the change in each variable, compared with before the drug.",
+    "variables": [
+      { "name": "Number of new chondrocytes made in the plate", "answer": "down", "why": "The proliferative zone is where plate chondrocytes divide; blocking division stops new cells being made." },
+      { "name": "Rate of growth in length", "answer": "down", "why": "Fewer new cells means less cartilage added to push the epiphysis away, so there is less cartilage for bone to replace and the diaphysis lengthens more slowly." },
+      { "name": "Appositional growth at the periosteum", "answer": "none", "why": "Width growth depends on osteoblasts under the periosteum, which the drug does not target." },
+      { "name": "Thickness of the epiphyseal plate", "answer": "down", "why": "Bone keeps replacing cartilage on the diaphysis side while little new cartilage is added on the epiphysis side, so the plate thins." }
+    ],
+    "why": { "correct": "Growth in length is interstitial growth of cartilage in the proliferative zone. Block it and less cartilage is made, lengthening slows, and the plate thins because replacement by bone continues. Growth in width uses a different mechanism and continues." }
+  },
+  {
+    "id": "anp-bone-development-9",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Put the steps of endochondral ossification of a long bone in order.",
+    "options": ["Chondrocytes build a hyaline cartilage model", "Chondrocytes in the middle of the shaft enlarge and the matrix calcifies", "A bone collar forms around the shaft", "A nutrient artery invades and a primary ossification center forms", "Osteoclasts open the medullary cavity", "Secondary ossification centers form in the epiphyses"],
+    "why": {
+      "correct": "A cartilage model forms first. Its middle calcifies and its chondrocytes die, while the perichondrium becomes periosteum and lays a bone collar. A nutrient artery brings in bone-forming cells, creating the primary ossification center; osteoclasts then hollow out the medullary cavity. Around birth and in childhood, the epiphyses ossify from secondary centers."
+    }
+  },
+  {
+    "id": "anp-bone-development-10",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Put the zones of the epiphyseal plate in order, from the epiphysis side to the diaphysis side.",
+    "options": ["Reserve zone", "Proliferative zone", "Zone of maturation and hypertrophy", "Zone of calcified matrix"],
+    "why": {
+      "correct": "From the epiphysis: resting cells in the reserve zone, dividing cells in the proliferative zone, enlarging cells in the zone of maturation and hypertrophy, and dying cells in calcified matrix, which bone then replaces."
+    }
+  },
+  {
+    "id": "anp-bone-development-11",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A student lists the steps of intramembranous ossification. One step is wrong. Which one?",
+    "options": ["Mesenchymal cells cluster and become osteoblasts", "Osteoblasts lay down a hyaline cartilage model", "Osteoid mineralizes and trapped osteoblasts become osteocytes", "Trabeculae form around blood vessels and the periosteum forms", "Compact bone plates form beneath the periosteum"],
+    "correct": 1,
+    "why": {
+      "correct": "Intramembranous ossification has no cartilage stage: osteoblasts secrete osteoid directly in the mesenchyme. A cartilage model belongs to endochondral ossification, and chondrocytes, not osteoblasts, build it.",
+      "options": [
+        "This step is right. An ossification center begins as clustered mesenchymal cells becoming osteoblasts.",
+        "This is the error. Osteoblasts secrete osteoid, not cartilage, and this route uses no cartilage model.",
+        "This step is right. Osteoid mineralizes, and enclosed osteoblasts become osteocytes.",
+        "This step is right. Spongy bone forms first, and surface mesenchyme becomes periosteum.",
+        "This step is right. Compact bone forms at the surfaces, with spongy bone between."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-12",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Complete the chain in the middle of a cartilage model: chondrocytes enlarge → the matrix calcifies → ____ → blood vessels and osteoblasts invade.",
+    "options": ["The chondrocytes turn into osteoblasts", "The chondrocytes, cut off from diffusion, die", "The chondrocytes divide into stacks", "The matrix is converted directly into bone"],
+    "correct": 1,
+    "why": {
+      "correct": "Cartilage has no blood vessels, so chondrocytes depend on diffusion through their matrix. Calcified matrix blocks diffusion, the chondrocytes die, and their empty spaces are invaded by vessels and bone-forming cells.",
+      "options": [
+        "Chondrocytes do not become osteoblasts. Osteoblasts come from osteogenic cells that arrive with the vessels.",
+        "Correct. Calcified matrix starves the chondrocytes.",
+        "Division into stacks happens in the proliferative zone of the plate, before cells enlarge, not after calcification.",
+        "Cartilage is not converted into bone. It is removed and replaced by bone laid down by osteoblasts."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-13",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A 24-year-old man hopes a supplement will make him taller. His knee X-ray shows a thin line of dense bone at the ends of his long bones where the growth plates once were. What can you tell him?",
+    "options": ["His bones can still grow in length slowly", "His bones can grow in length if the line is stimulated", "His bones can no longer grow in length", "His bones can no longer grow in width"],
+    "correct": 2,
+    "why": {
+      "correct": "Those thin lines are epiphyseal lines. His plates have closed and been replaced by bone, so there is no cartilage left to grow interstitially. No supplement can add length. His bones can still thicken slowly by appositional growth.",
+      "options": [
+        "Growth in length needs an open plate of cartilage. The lines show his plates have closed.",
+        "An epiphyseal line is bone, and bone cannot grow from within, so there is nothing to stimulate.",
+        "Correct. Closed plates mean no more growth in length.",
+        "Appositional growth at the periosteum continues through life, so width can still increase slowly."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "misconception": "cartilage turns into bone",
+    "q": "During endochondral ossification, what happens to the cartilage of the model?",
+    "options": ["Its chondrocytes become osteocytes", "It hardens into bone as minerals are added", "It stays inside the bone as a core", "It is broken down and replaced by bone"],
+    "correct": 3,
+    "why": {
+      "correct": "Cartilage never becomes bone. Its matrix calcifies, its chondrocytes die, and invading osteoblasts lay bone on the leftover calcified columns, which osteoclasts later clear away. Bone replaces the cartilage.",
+      "options": [
+        "Osteocytes come from osteoblasts, which come from osteogenic cells, not from chondrocytes.",
+        "Calcified cartilage is still cartilage; it only serves as a temporary scaffold for new bone.",
+        "Only the articular cartilage and, until growth ends, the epiphyseal plate remain. The rest is removed.",
+        "Correct. The model is a template that bone replaces."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "As a child's long bone shaft gets wider, its wall stays about the same thickness relative to the bone. Which pair of events explains this?",
+    "options": ["Osteoblasts add bone at the periosteum while osteoclasts remove it at the endosteum", "Chondrocytes divide in the shaft wall while osteoblasts add bone at the endosteum", "Osteoclasts remove bone at the periosteum while osteoblasts add bone at the endosteum", "The epiphyseal plate adds bone to the outside of the shaft"],
+    "correct": 0,
+    "why": {
+      "correct": "Appositional growth adds new bone under the periosteum, on the outside. Osteoclasts on the endosteum remove bone from the inside, widening the medullary cavity. The bone widens without its wall becoming ever thicker and heavier.",
+      "options": [
+        "Correct. Build outside, remove inside.",
+        "There is no cartilage in the shaft wall to divide, and adding bone inside would narrow the cavity.",
+        "That reversal would make the bone narrower, not wider.",
+        "The epiphyseal plate adds length at the ends; it does not add bone to the shaft's surface."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Why can a long bone grow in length only through cartilage at the epiphyseal plate, and not by bone expanding from within?",
+    "options": ["Bone has no blood supply", "Bone's mineralized matrix is too rigid to expand around new cells", "Osteocytes divide too slowly", "Osteoblasts can work only in cartilage"],
+    "correct": 1,
+    "why": {
+      "correct": "Interstitial growth needs a matrix that can stretch as cells inside it divide and add more matrix. Cartilage matrix can; mineralized bone matrix cannot. Bone can only grow by adding layers to a surface, so length is gained by growing cartilage that bone then replaces.",
+      "options": [
+        "Bone is richly supplied with blood, through nutrient arteries and central canals.",
+        "Correct. Rigid matrix rules out growth from within.",
+        "Osteocytes do not divide at all, but even dividing cells could not expand rigid matrix around themselves.",
+        "Osteoblasts work on bone surfaces everywhere, including under the periosteum and endosteum."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-17",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Select every example of appositional growth.",
+    "options": ["Osteoblasts under the periosteum adding bone to the shaft surface", "Chondrocytes dividing in the proliferative zone", "A new layer of bone added around the outside of a skull bone", "Chondrocytes swelling in the zone of maturation and hypertrophy", "Cartilage growing by adding layers from its perichondrium"],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "Appositional growth adds new layers to a surface. Bone grows wider this way, skull bones thicken this way, and cartilage can also grow this way from its perichondrium. Division and swelling of cells inside the plate expand the tissue from within: interstitial growth.",
+      "options": [
+        "Correct. Adding bone to the outer surface is appositional.",
+        "Division inside the tissue is interstitial growth.",
+        "Correct. Layering bone onto a surface is appositional.",
+        "Swelling of cells inside the plate expands it from within: interstitial.",
+        "Correct. New cartilage laid on the surface by cells of the perichondrium is appositional."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-development-18",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 2,
+    "core": ["structure-function"],
+    "q": "A rare inherited disorder leaves a child's osteoclasts unable to resorb bone, while osteoblasts work normally. Predict the change in each variable as the child grows, compared with a healthy child.",
+    "variables": [
+      { "name": "Size of the medullary cavity", "answer": "down", "why": "Osteoclasts open and widen the medullary cavity. Without resorption, the cavity stays small and filled with bone." },
+      { "name": "Density of the bones", "answer": "up", "why": "Osteoblasts keep adding bone and none is removed, so the bones become abnormally dense." },
+      { "name": "Space available for red marrow", "answer": "down", "why": "Marrow lives in the medullary cavity and the spaces of spongy bone, which stay filled with bone when it is not cleared." },
+      { "name": "Clearing of calcified cartilage below the epiphyseal plate", "answer": "down", "why": "Osteoclasts remove the old calcified cartilage and first bone below the plate; without them this material accumulates." }
+    ],
+    "why": { "correct": "Bone growth needs removal as well as building. Osteoclasts hollow the medullary cavity, clear old cartilage below the plates and keep marrow spaces open. Without them, bone piles up: dense bone, a small cavity and little room for red marrow." }
+  },
+  {
+    "id": "anp-bone-development-19",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "Where do secondary ossification centers form?",
+    "options": ["In the epiphyses", "In the middle of the diaphysis", "In the periosteum", "In the medullary cavity"],
+    "correct": 0,
+    "why": {
+      "correct": "Secondary ossification centers form in the epiphyses, around birth and through childhood, after the primary center has formed in the diaphysis.",
+      "options": [
+        "Correct. The ends of the bone ossify from secondary centers.",
+        "The middle of the diaphysis is the site of the primary ossification center.",
+        "The periosteum lays down the bone collar and adds width; it is not an ossification center.",
+        "The medullary cavity is a space carved out by osteoclasts, not a site where bone forms."
+      ]
+    }
+  }
+]

@@ -1,0 +1,489 @@
+[
+  {
+    "id": "anp-trunk-muscles-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-11-16",
+    "pin": "external-oblique",
+    "q": "Name the pinned muscle, the outermost flat muscle on the side of the abdomen.",
+    "options": ["Internal oblique", "Transversus abdominis", "External oblique", "Rectus abdominis"],
+    "correct": 2,
+    "why": {
+      "correct": "The external oblique is the outermost of the three flat abdominal muscles. It originates on the lower eight ribs, and its fascicles run down and toward the midline.",
+      "options": [
+        "The internal oblique lies just beneath the external oblique, with fibers at right angles to it.",
+        "The transversus abdominis is the deepest of the three flat muscles, with horizontal fibers.",
+        "Correct. The outermost flat muscle is the external oblique.",
+        "The rectus abdominis is the vertical strap at the front, beside the midline, not the flat muscle of the side wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-16",
+    "pin": "transversus-abdominis",
+    "q": "In the window cut through the abdominal wall, name the pinned deepest layer, whose fibers run horizontally.",
+    "options": ["Transversus abdominis", "Internal oblique", "External oblique", "Quadratus lumborum"],
+    "correct": 0,
+    "why": {
+      "correct": "The transversus abdominis is the innermost flat muscle. Its fibers run horizontally around the belly like a belt, and compressing the abdomen is its main job.",
+      "options": [
+        "Correct. Horizontal fibers in the deepest layer mark the transversus abdominis.",
+        "The internal oblique is the middle layer, with fibers running up and toward the midline.",
+        "The external oblique is the outermost layer, with fibers running down and toward the midline.",
+        "The quadratus lumborum is in the back wall of the abdomen, between the twelfth rib and the iliac crest."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-16",
+    "pin": "quadratus-lumborum",
+    "q": "In this view of the back wall of the abdomen, name the pinned four-sided muscle between the twelfth rib and the iliac crest.",
+    "options": ["Transversus abdominis", "Erector spinae", "Rectus abdominis", "Quadratus lumborum"],
+    "correct": 3,
+    "why": {
+      "correct": "The quadratus lumborum runs from the iliac crest to the twelfth rib and the lumbar transverse processes, forming part of the back wall of the abdomen.",
+      "options": [
+        "The transversus abdominis wraps the front and sides of the abdomen, not the back wall between rib and pelvis.",
+        "The erector spinae lies behind the vertebrae, along the back, not in the abdominal back wall seen from the front.",
+        "The rectus abdominis runs up the front of the abdomen.",
+        "Correct. This is the quadratus lumborum."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 3,
+    "core": ["structure-function"],
+    "figure": "os-11-15",
+    "pin": "iliocostalis-lumborum",
+    "q": "Name the pinned part of the erector spinae, the outermost of its three columns in the lower back.",
+    "options": ["Spinalis", "Longissimus", "Iliocostalis", "Splenius"],
+    "correct": 2,
+    "why": {
+      "correct": "The iliocostalis is the outermost (most lateral) of the three columns of the erector spinae, running from the iliac crest to the ribs. In the lower back it is the iliocostalis lumborum.",
+      "options": [
+        "The spinalis is the most medial column, running between the spinous processes.",
+        "The longissimus is the middle column.",
+        "Correct. The outermost column is the iliocostalis.",
+        "The splenius lies at the back of the neck and upper back, not in the lower back."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-17",
+    "pin": "central-tendon-of-diaphragm",
+    "q": "In this view of the diaphragm from below, name the pinned flat sheet of tendon at the top of the dome.",
+    "options": ["Linea alba", "Central tendon", "Epicranial aponeurosis", "Rectus sheath"],
+    "correct": 1,
+    "why": {
+      "correct": "The diaphragm's muscle fibers run from the lower edge of the rib cage and the lumbar vertebrae to its central tendon, which they pull down when they contract.",
+      "options": [
+        "The linea alba is the midline seam of the front abdominal wall, not part of the diaphragm.",
+        "Correct. This is the central tendon of the diaphragm.",
+        "The epicranial aponeurosis covers the top of the skull.",
+        "The rectus sheath wraps the rectus abdominis in the front abdominal wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-18",
+    "pin": "external-intercostal",
+    "q": "In this close-up of one space between two ribs, name the pinned outer layer, whose fibers run down and forward.",
+    "options": ["Internal intercostal", "Innermost intercostal", "External intercostal", "External oblique"],
+    "correct": 2,
+    "why": {
+      "correct": "The external intercostals form the outer layer between the ribs. Their fibers run down and forward, and they lift the ribs when you breathe in.",
+      "options": [
+        "The internal intercostals lie beneath the externals, with fibers running down and back.",
+        "The innermost intercostals are the deepest layer.",
+        "Correct. The outer layer with down-and-forward fibers is the external intercostal.",
+        "The external oblique covers the abdomen below the ribs; it does not fill the spaces between ribs."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-7",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "figure": "os-11-19",
+    "pin": "levator-ani",
+    "q": "Name the pinned funnel-shaped muscle of the pelvic floor, made of the pubococcygeus and iliococcygeus.",
+    "options": ["Levator ani", "Coccygeus", "Transversus abdominis", "Quadratus lumborum"],
+    "correct": 0,
+    "why": {
+      "correct": "The levator ani is the broad funnel of the pelvic floor. Its parts, the pubococcygeus and iliococcygeus, run from the pubis and the side walls of the pelvis to the coccyx.",
+      "options": [
+        "Correct. The two parts together make the levator ani.",
+        "The coccygeus is the small triangular muscle behind the levator ani, from the ischial spine to the sacrum and coccyx.",
+        "The transversus abdominis wraps the abdomen; it does not form the floor of the pelvis.",
+        "The quadratus lumborum is in the back wall of the abdomen, above the pelvis."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-8",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A surgeon cuts through the side wall of the abdomen, away from the midline. Put the layers in the order the scalpel meets them, from outside in.",
+    "options": [
+      "Skin",
+      "Subcutaneous tissue",
+      "External oblique",
+      "Internal oblique",
+      "Transversus abdominis"
+    ],
+    "why": {
+      "correct": "Beneath the skin and subcutaneous tissue, the three flat muscles lie outermost to innermost: external oblique, internal oblique, transversus abdominis.",
+      "options": [
+        "The skin is the outer covering.",
+        "The subcutaneous tissue lies under the skin.",
+        "The external oblique is the outermost muscle layer.",
+        "The internal oblique lies beneath the external oblique, its fibers at right angles.",
+        "The transversus abdominis is the deepest of the three flat muscles."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A golfer twists his trunk to the right. Which pair of abdominal muscles works together to turn it?",
+    "options": [
+      "Right external oblique and left internal oblique",
+      "Left external oblique and right internal oblique",
+      "Both external obliques",
+      "Both rectus abdominis muscles"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "An external oblique turns the trunk toward the opposite side and an internal oblique toward the same side. Turning right uses the left external oblique and the right internal oblique, whose fibers line up diagonally across the body.",
+      "options": [
+        "This pair turns the trunk to the left.",
+        "Correct. Left external plus right internal turns the trunk right.",
+        "The two external obliques pull in opposite rotational directions, so together they flex the trunk and compress the abdomen rather than turn it.",
+        "The rectus abdominis muscles flex the spine; they do not rotate it."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-10",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Which statements about the rectus abdominis are correct? Select all that apply.",
+    "options": [
+      "It originates on the pubic crest and pubic symphysis",
+      "It inserts on the xiphoid process and costal cartilages",
+      "It flexes the vertebral column",
+      "Its fibers run horizontally around the belly",
+      "It lies in the back wall of the abdomen"
+    ],
+    "correct": [0, 1, 2],
+    "why": {
+      "correct": "The rectus abdominis runs straight up the front of the abdomen from the pubis to the xiphoid process and ribs 5 to 7, and it flexes the spine and compresses the abdomen.",
+      "options": [
+        "Correct. Its origin is the pubic crest and pubic symphysis.",
+        "Correct. It inserts on the xiphoid process and the costal cartilages of ribs 5 to 7.",
+        "Correct. It is the prime mover of a sit-up or curl.",
+        "Incorrect. Rectus means straight: its fibers run vertically. Horizontal fibers belong to the transversus abdominis.",
+        "Incorrect. It is in the front wall. The quadratus lumborum is in the back wall."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-11",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Dana, 32, had her second baby three months ago. Since then she leaks a little urine when she coughs, sneezes or jumps. Which muscle's weakness best explains this?",
+    "options": [
+      "Rectus abdominis",
+      "Diaphragm",
+      "Quadratus lumborum",
+      "Levator ani"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A cough raises the pressure inside the abdomen. The levator ani normally contracts at the same moment, supporting the bladder and squeezing the urethra shut. Stretched or torn during birth, it cannot hold against the pressure, so urine leaks.",
+      "options": [
+        "A weak rectus abdominis would make the cough weaker, lowering the pressure on the bladder rather than letting urine escape.",
+        "The diaphragm forms the top of the abdominal cavity. It does not close the urethra.",
+        "The quadratus lumborum is in the back wall of the abdomen and does not support the pelvic organs.",
+        "Correct. The weakened pelvic floor fails to resist the pressure rise."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "What happens when the diaphragm contracts?",
+    "options": [
+      "Its dome flattens and moves down, making the chest cavity taller",
+      "Its dome rises, making the chest cavity smaller",
+      "It pulls the ribs down and in",
+      "It pushes air out of the lungs"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The diaphragm's fibers run from the lower rim of the rib cage to the central tendon at the top of the dome. Shortening, they pull the tendon down, so the dome flattens and the chest cavity gets taller. Air flows in.",
+      "options": [
+        "Correct. Contraction flattens and lowers the dome.",
+        "The dome rises when the diaphragm relaxes, not when it contracts.",
+        "Pulling the ribs down is done by the internal intercostals and abdominal muscles, in forceful breathing out.",
+        "Contraction enlarges the chest, so air flows in, not out."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "You blow hard to put out birthday candles. Which intercostal muscles are contracting, and what do they do to the ribs?",
+    "options": [
+      "External intercostals, lifting the ribs",
+      "External intercostals, pulling the ribs down",
+      "Internal intercostals, pulling the ribs down and in",
+      "Internal intercostals, lifting the ribs up and out"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "A forceful breath out is active. The internal intercostals (with the innermost intercostals and the abdominal muscles) pull the ribs down and in, shrinking the chest fast.",
+      "options": [
+        "The external intercostals do lift the ribs, but that enlarges the chest for breathing in.",
+        "The external intercostals' down-and-forward fibers lift the ribs, not lower them.",
+        "Correct. The internal intercostals lower the ribs in forceful breathing out.",
+        "Most of the internal intercostals lower the ribs; lifting them would draw air in."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-14",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "You cough hard. Predict what happens to each variable at the moment of the cough.",
+    "variables": [
+      {
+        "name": "Pressure inside the abdomen",
+        "answer": "up",
+        "why": "The rectus abdominis, obliques and transversus abdominis squeeze the abdomen, and its soft contents cannot be compressed, so the pressure rises."
+      },
+      {
+        "name": "Height of the diaphragm's dome",
+        "answer": "up",
+        "why": "The pressurized abdominal contents push up on the relaxed diaphragm, driving it higher into the chest and forcing air out."
+      },
+      {
+        "name": "Contraction of the levator ani",
+        "answer": "up",
+        "why": "The pelvic floor contracts with the abdominal wall, holding the pelvic organs up against the pressure rise and keeping the urethra closed."
+      }
+    ],
+    "why": {
+      "correct": "A cough is a sudden squeeze by the abdominal wall. The pressure rise pushes the diaphragm up and air out, while the pelvic floor contracts to hold the bottom of the trunk closed."
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "The aponeuroses of the three flat abdominal muscles → wrap the rectus abdominis as the rectus sheath → the sheaths of the right and left sides meet in the midline at the ____.",
+    "options": ["Central tendon", "Linea alba", "Inguinal ligament", "Tendinous intersections"],
+    "correct": 1,
+    "why": {
+      "correct": "The linea alba (white line) is the collagen seam where the two rectus sheaths meet, from the xiphoid process to the pubic symphysis.",
+      "options": [
+        "The central tendon is the tendon at the top of the diaphragm.",
+        "Correct. The two sheaths meet at the linea alba.",
+        "The inguinal ligament is the lower free edge of the external oblique's aponeurosis, in the groin, not the midline seam.",
+        "Tendinous intersections cross each rectus abdominis horizontally; they do not join the two sides."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-16",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "These steps describe a breath in at rest. One step is wrong. Find it.",
+    "options": [
+      "The diaphragm's muscle fibers contract",
+      "They pull the central tendon down",
+      "The dome of the diaphragm flattens",
+      "The chest cavity becomes shorter from top to bottom",
+      "Air flows into the lungs"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Flattening the dome lowers the floor of the chest, so the chest cavity becomes taller, not shorter. A larger chest is what lets air flow in.",
+      "options": [
+        "Correct step. A breath in starts with the diaphragm contracting.",
+        "Correct step. The fibers insert on the central tendon and pull it down.",
+        "Correct step. With the tendon pulled down, the dome flattens.",
+        "This is the wrong step. The chest cavity becomes taller.",
+        "Correct step. The enlarged chest lets air flow in."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "The perineum is divided into two triangles by a line between the ischial tuberosities. What does the back (anal) triangle contain?",
+    "options": [
+      "The anal opening",
+      "The openings of the urethra and the external genitals",
+      "The pubic symphysis",
+      "The central tendon"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The anal triangle, behind the line between the ischial tuberosities, contains the anal opening.",
+      "options": [
+        "Correct. The anal triangle holds the anal opening.",
+        "The urethral opening and the external genitals are in the urogenital triangle, in front.",
+        "The pubic symphysis is the front corner of the whole diamond, in the urogenital triangle.",
+        "The central tendon belongs to the diaphragm, at the top of the abdomen."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Sitting quietly and breathing normally, you let a breath out. Which muscles contract to push the air out?",
+    "options": [
+      "The internal intercostals",
+      "The abdominal muscles",
+      "The diaphragm",
+      "None: the lungs and chest wall recoil on their own"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Breathing out at rest is passive. The diaphragm and intercostals relax, and the stretched lungs and chest wall spring back, pushing air out.",
+      "options": [
+        "The internal intercostals join in only when you breathe out forcefully.",
+        "The abdominal muscles squeeze air out only in forceful breathing out, a cough or a sneeze.",
+        "The diaphragm contracts to breathe in; it relaxes as you breathe out.",
+        "Correct. Breathing out at rest needs no muscle contraction."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Turning your head to look over your right shoulder uses the right splenius. Which other neck muscle works with it?",
+    "options": [
+      "The right sternocleidomastoid",
+      "The left splenius",
+      "The left sternocleidomastoid",
+      "The left erector spinae"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "One splenius turns the face toward its own side; one sternocleidomastoid turns it toward the opposite side. So a turn to the right pairs the right splenius with the left sternocleidomastoid.",
+      "options": [
+        "The right sternocleidomastoid turns the face to the left, against the movement.",
+        "The left splenius turns the face to the left, against the movement.",
+        "Correct. Right splenius plus left sternocleidomastoid turn the face right.",
+        "The erector spinae mainly extends the spine and bends it to the side; it is not the partner that turns the head."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "What makes the separate blocks of a \"six-pack\"?",
+    "options": [
+      "The three flat muscles overlapping",
+      "Tendinous intersections crossing the rectus abdominis",
+      "The linea alba dividing each side into blocks",
+      "The costal cartilages under the skin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Bands of tendon called tendinous intersections cross each rectus abdominis, dividing it into blocks. The linea alba runs down the middle between the two sides.",
+      "options": [
+        "The flat muscles lie on the sides of the abdomen, not across the front blocks.",
+        "Correct. The tendinous intersections create the blocks.",
+        "The linea alba is a single vertical seam; it separates right from left, not one block from the next.",
+        "The costal cartilages are higher, at the edge of the rib cage, and form no blocks on the abdomen."
+      ]
+    }
+  },
+  {
+    "id": "anp-trunk-muscles-21",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "Before lifting a heavy box, a weightlifter takes a deep breath, holds it and tightens his belly. How does this help protect his spine?",
+    "options": [
+      "It stretches the erector spinae so they can relax during the lift",
+      "The pressurized abdomen, capped by the contracted diaphragm and pelvic floor, stiffens the trunk around the spine",
+      "It lowers the pressure in the abdomen so the organs weigh less",
+      "It moves the lungs down to support the lumbar vertebrae"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The diaphragm above, the pelvic floor below and the abdominal wall around all contract, so the abdomen becomes a sealed, pressurized cylinder. Its contents cannot be compressed, so it stiffens the trunk and shares the load on the spine.",
+      "options": [
+        "The erector spinae must work hard during the lift; bracing adds support, it does not let them relax.",
+        "Correct. Raised pressure in a sealed abdomen stiffens the trunk.",
+        "Tightening the belly raises the pressure in the abdomen, it does not lower it, and the organs' weight is unchanged.",
+        "The lungs stay in the chest above the diaphragm; they cannot reach the lumbar spine."
+      ]
+    }
+  }
+]

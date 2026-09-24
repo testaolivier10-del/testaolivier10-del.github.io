@@ -1,0 +1,47 @@
+{
+  "topic": "skin-accessory",
+  "hook": "<p>Grace, 29, calls her doctor in a panic. Three months after giving birth, her hair is coming out in handfuls in the shower. Her scalp looks healthy and she has no bald patches. Her doctor tells her the hair will grow back, and it does. To see why the loss came months after the birth, and why it was temporary, you need to know how a hair follicle grows, rests and sheds.</p>",
+  "prereq": [
+    {
+      "q": "In which layer of the epidermis do cells divide to make new keratinocytes?",
+      "options": ["Stratum corneum", "Stratum basale", "Stratum granulosum"],
+      "correct": 1,
+      "why": "Basal cells in the stratum basale divide throughout life. Hair and nails grow from matrix cells that work the same way.",
+      "review": "skin-layers"
+    },
+    {
+      "q": "In which mode of secretion does the whole cell burst and become the product?",
+      "options": ["Merocrine", "Apocrine", "Holocrine"],
+      "correct": 2,
+      "why": "In holocrine secretion a cell fills with product and breaks apart, so the gland needs new cells from dividing stem cells. The skin's oil glands work this way.",
+      "review": "glands"
+    },
+    {
+      "q": "Which type of muscle tissue is involuntary and has no striations?",
+      "options": ["Smooth muscle", "Skeletal muscle", "Cardiac muscle"],
+      "correct": 0,
+      "why": "Smooth muscle has no striations and contracts without conscious control. The tiny muscle that raises each hair is smooth muscle.",
+      "review": "muscle-tissue-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-5-11",
+    "caption": "A hair in its follicle, with its sebaceous gland and arrector pili muscle. Hide the labels and name the parts of the hair, the follicle and the structures attached to it."
+  },
+  "chain": [
+    { "cause": "A major shock to the body, such as childbirth or a high fever, acts on scalp follicles that are growing.", "effect": "Many anagen follicles switch into catagen at the same time." },
+    { "cause": "In catagen, the matrix stops dividing and the lower follicle shrinks.", "effect": "Each hair stops growing, and its base hardens into a club that stays anchored in the follicle." },
+    { "cause": "The follicles enter telogen together and rest for about three months.", "effect": "The club hairs stay in place, so no extra shedding is seen yet." },
+    { "cause": "The follicles start a new anagen together, and new hairs grow up beneath the club hairs.", "effect": "The club hairs are pushed out in large numbers about three months after the shock, and the new hairs replace them." }
+  ],
+  "misconception": {
+    "wrong": "Shaving makes hair grow back thicker, darker and faster.",
+    "right": "Shaving cuts only the dead hair shaft at the skin surface. The living matrix sits deep in the hair bulb and is untouched, so the width, color and growth rate of the hair do not change. Regrowing hair feels coarse because its cut end is blunt instead of tapered, and short new hair has not yet been lightened by sun."
+  },
+  "check": ["anp-skin-accessory-1", "anp-skin-accessory-8", "anp-skin-accessory-11", "anp-skin-accessory-13", "anp-skin-accessory-15", "anp-skin-accessory-17", "anp-skin-accessory-20"],
+  "summary": "<p>Hair, nails and skin glands all grow from the epidermis. A hair is dead cells filled with hard keratin, made by the matrix in the hair bulb over the hair papilla; its shaft projects above the skin and its root lies in the follicle, and it has a medulla, cortex and cuticle. Follicles cycle through anagen (growth), catagen (regression) and telogen (rest); the length of anagen sets how long a hair gets. The arrector pili, a smooth muscle, raises the hair in cold or fear. Sebaceous glands, the holocrine oil glands, empty sebum into follicles. Eccrine sweat glands open at surface pores and make watery sweat whose salt the duct partly takes back; apocrine sweat glands open into follicles from puberty and make a thicker secretion that bacteria turn into odor. A nail is a hard keratin plate made by the nail matrix, sliding over the nail bed, sealed by the eponychium and hyponychium.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-13", "label": "NREMT: Vital signs and monitoring (capillary refill)" },
+    { "href": "/nremt/study-notes.html#chapter-30", "label": "NREMT: Soft-tissue trauma" }
+  ]
+}

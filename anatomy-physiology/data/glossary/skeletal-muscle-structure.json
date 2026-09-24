@@ -1,0 +1,42 @@
+{
+  "muscle-wrappings": {
+    "def": "The three connective tissue layers of a skeletal muscle: the epimysium around the whole muscle, the perimysium around each fascicle (a bundle of fibers), and the endomysium around each fiber. They merge at the ends of the muscle into its tendon.",
+    "roots": [["epi-", "upon"], ["peri-", "around"], ["endo-", "within"], ["mys/o", "muscle"], ["fasciculus", "little bundle (Latin)"]],
+    "say": "ep-ih-MIZ-ee-um, pair-ih-MIZ-ee-um, en-doh-MIZ-ee-um"
+  },
+  "sarcolemma": {
+    "def": "The sarcolemma is the plasma membrane of a muscle fiber, and the sarcoplasm is its cytoplasm, packed with myofibrils, mitochondria and glycogen.",
+    "roots": [["sarc/o", "flesh"], ["-lemma", "husk, sheath"], ["-plasm", "something formed"]],
+    "say": "sar-koh-LEM-uh, SAR-koh-plaz-um"
+  },
+  "myofibril": {
+    "def": "A long rod of contractile protein filaments inside a muscle fiber, running the fiber's length. It is a chain of sarcomeres, and hundreds to thousands of myofibrils fill each fiber.",
+    "roots": [["my/o", "muscle"], ["fibril", "small fiber"]],
+    "say": "my-oh-FY-bril"
+  },
+  "sarcomere": {
+    "def": "The repeating unit of a myofibril, from one Z disc to the next, and the smallest unit that can contract. Its bands are the dark A band (thick filaments), the light I band (thin filaments only), the H zone (thick only) and the M line at the center.",
+    "roots": [["sarc/o", "flesh"], ["-mere", "part"]],
+    "say": "SAR-koh-meer"
+  },
+  "thick-filament": {
+    "def": "A filament made of about 300 myosin molecules. Their tails form the shaft, and their heads stick out toward the thin filaments; each myosin head has a site that binds actin and a site that binds and splits ATP.",
+    "roots": [],
+    "say": ""
+  },
+  "thin-filament": {
+    "def": "A filament of two twisted strands of actin, with the rod-shaped protein tropomyosin lying along its groove and the calcium-binding complex troponin attached to the tropomyosin. At rest tropomyosin covers the myosin-binding sites on actin.",
+    "roots": [["tropo-", "turning"], ["my/o", "muscle"]],
+    "say": "TROH-poh-nin, troh-poh-MY-oh-sin"
+  },
+  "sarcoplasmic-reticulum": {
+    "def": "The smooth endoplasmic reticulum of a muscle fiber: a network of tubes and sacs around every myofibril that stores calcium ions. Its wide end sacs beside the T tubules are the terminal cisternae.",
+    "roots": [["sarc/o", "flesh"], ["reticulum", "little net"], ["cisterna", "reservoir"]],
+    "say": "sar-koh-PLAZ-mik reh-TIK-yoo-lum"
+  },
+  "t-tubule": {
+    "def": "A transverse tubule: a narrow infolding of the sarcolemma that runs into the fiber and carries action potentials deep inside. Its inside is open to the extracellular fluid. One T tubule and the two terminal cisternae beside it form a triad.",
+    "roots": [["trans-", "across"], ["tubulus", "small tube"], ["tri-", "three"]],
+    "say": ""
+  }
+}

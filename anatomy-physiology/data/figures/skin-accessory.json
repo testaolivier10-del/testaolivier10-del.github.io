@@ -1,0 +1,56 @@
+{
+  "os-5-11": {
+    "file": "figures/openstax/os-5-11.jpg",
+    "w": 614,
+    "h": 749,
+    "source": "openstax",
+    "openstax": {
+      "figure": "5.11",
+      "section": "5.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/af7bb6428ef5fd9abf377d458c9872ba3524b5ce",
+      "page": "5-2-accessory-structures-of-the-skin"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/af7bb6428ef5fd9abf377d458c9872ba3524b5ce",
+    "alt": "A block of skin cut through one hair. The hair rises from a teardrop-shaped pocket that dips down through the dermis to the fat below. At its base, a swollen bulb wraps around a small knot of blood vessels, and a layer of dividing cells sits just above that knot. Colored sheaths line the pocket around the hair. A lobed gland opens into the pocket partway up, and a slanting strip of muscle runs from the pocket's side up toward the surface. A boxed inset marks the part of the hair above the skin, which has an inner core, a middle layer and an outer coat.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.11",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-5-13": {
+    "file": "figures/openstax/os-5-13.jpg",
+    "w": 1100,
+    "h": 398,
+    "source": "openstax",
+    "openstax": {
+      "figure": "5.13",
+      "section": "5.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/4621e0a4c89f1599f51f44f623ad9ff5af83632d",
+      "page": "5-2-accessory-structures-of-the-skin"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/4621e0a4c89f1599f51f44f623ad9ff5af83632d",
+    "alt": "Two drawings of a fingertip. On the left, the top of the finger shows the nail plate, its white free edge at the tip, a pale crescent near its base, a thin band of skin lying over the base of the plate, and the folds of skin along its base and sides. On the right, a side view cut lengthwise shows the nail plate lying on the skin, its hidden base tucked under a fold of skin, the thickened skin under the tip, and the layers of skin and the bone inside the finger.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.13",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-5-14": {
+    "file": "figures/openstax/os-5-14.jpg",
+    "w": 673,
+    "h": 648,
+    "source": "openstax",
+    "openstax": {
+      "figure": "5.14",
+      "section": "5.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/165243e3ee0af241298758d053efbf42c7fce142",
+      "page": "5-2-accessory-structures-of-the-skin"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/165243e3ee0af241298758d053efbf42c7fce142",
+    "alt": "A block of skin showing a sweat gland: a tight coil of tubing deep in the dermis, with a single duct that winds up through the dermis and epidermis and opens at a tiny pore on the surface. Several pores dot the skin surface, and hairs, fat lobules, blood vessels and nerve fibers fill the rest of the block.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 5.14",
+    "labels": [],
+    "ext": "jpg"
+  }
+}

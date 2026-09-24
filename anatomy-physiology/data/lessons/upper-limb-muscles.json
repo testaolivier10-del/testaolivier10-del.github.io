@@ -1,0 +1,48 @@
+{
+  "topic": "upper-limb-muscles",
+  "hook": "<p>Mr. Brooks, 58, has painted ceilings for 30 years. Lately his shoulder aches at night, and lifting his arm out to the side to reach a high shelf hurts and feels weak. An MRI shows a torn tendon lying in the narrow space between the head of his humerus and the acromion. It belongs to one of the four small muscles that hold his shoulder joint together.</p>",
+  "prereq": [
+    {
+      "q": "Where is the greater tubercle?",
+      "options": ["On the lateral side of the top of the humerus", "On the medial epicondyle at the elbow", "On the spine of the scapula"],
+      "correct": 0,
+      "why": "The greater tubercle is the large bump on the lateral side of the top of the humerus, beside the head. The lesser tubercle is smaller and faces forward; the intertubercular groove runs between them.",
+      "review": "upper-limb"
+    },
+    {
+      "q": "The glenoid cavity of the scapula is best described as:",
+      "options": ["A deep socket that surrounds most of the humerus's head", "A shallow socket much smaller than the humerus's head", "A groove for a tendon"],
+      "correct": 1,
+      "why": "The glenoid cavity is a shallow socket, far smaller than the head of the humerus. That gives the shoulder its huge range but little bony stability.",
+      "review": "upper-limb"
+    },
+    {
+      "q": "When the elbow flexors contract to bend the elbow, the muscle on the back of the arm is the:",
+      "options": ["Synergist", "Fixator", "Antagonist"],
+      "correct": 2,
+      "why": "The muscle that produces the opposite movement, here extension, is the antagonist. It relaxes and lengthens, often braking the movement.",
+      "review": "muscle-mechanics"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-11-23",
+    "caption": "Muscles that move the humerus. Hide the labels and name the large chest muscle, the broad back muscle and the shoulder cap, then the four rotator cuff muscles in the deep views."
+  },
+  "chain": [
+    { "cause": "Trunk muscles (trapezius, serratus anterior) rotate the scapula.", "effect": "The glenoid cavity turns upward, giving the humerus a base to rise from." },
+    { "cause": "The rotator cuff muscles contract around the shoulder joint.", "effect": "They hold the head of the humerus pressed into the shallow glenoid cavity." },
+    { "cause": "With the head held in place, the deltoid pulls on the deltoid tuberosity from above the joint.", "effect": "The humerus swings out to the side (abduction) instead of sliding up out of the socket." },
+    { "cause": "The triceps brachii pulls on the olecranon.", "effect": "The elbow straightens, carrying the hand toward the target." },
+    { "cause": "Forearm flexors send long tendons through the carpal tunnel into the fingers.", "effect": "The fingers curl and grip." }
+  ],
+  "misconception": {
+    "wrong": "The rotator cuff is one muscle that rotates the arm.",
+    "right": "The rotator cuff is four muscles (supraspinatus, infraspinatus, teres minor and subscapularis) whose tendons blend with the shoulder joint capsule. Their main job is holding the head of the humerus in the shallow glenoid cavity while the bigger muscles move the arm. They do rotate the arm too, but in opposite directions: the infraspinatus and teres minor laterally, the subscapularis medially."
+  },
+  "check": ["anp-upper-limb-muscles-3", "anp-upper-limb-muscles-4", "anp-upper-limb-muscles-9", "anp-upper-limb-muscles-10", "anp-upper-limb-muscles-13", "anp-upper-limb-muscles-17", "anp-upper-limb-muscles-19"],
+  "summary": "<p>The trapezius, rhomboids, serratus anterior and pectoralis minor position the scapula. The pectoralis major flexes the arm, the latissimus dorsi extends it, and the deltoid abducts it. The rotator cuff (supraspinatus, infraspinatus, teres minor, subscapularis) holds the humerus in its socket. The biceps brachii, brachialis and brachioradialis flex the elbow and the triceps brachii extends it; the pronators turn the palm down and the supinator and biceps brachii turn it up. Wrist and finger flexors start on the medial epicondyle, extensors on the lateral epicondyle. Extrinsic hand muscles give grip strength, and intrinsic ones, including the thenar and hypothenar eminences, make fine movements.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-32", "label": "NREMT: Musculoskeletal trauma" }
+  ]
+}

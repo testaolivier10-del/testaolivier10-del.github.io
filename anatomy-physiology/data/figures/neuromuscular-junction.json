@@ -1,0 +1,28 @@
+{
+  "os-10-6": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "10.6",
+      "section": "10.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ff663ee127683f7dd83c225b6d39d277da9256ed",
+      "page": "10-2-skeletal-muscle"
+    },
+    "alt": "Three enlargements, one below the other. At the top, an axon in a segmented insulating sheath branches onto the surface of a muscle fiber, which is cut across to show its bundles inside. In the middle, the swollen nerve ending sits in a dip in the fiber's membrane, holding round vesicles filled with dots; a narrow gap separates it from a deeply folded patch of fiber membrane studded with channel proteins, and dots are being released into the gap. At the bottom, a closer view shows vesicles fusing with the nerve ending's membrane and spilling dots into the gap, and dots binding a channel in the folded fiber membrane, with an arrow showing sodium ions entering the fiber through it.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 10.6",
+    "labels": [],
+    "w": 1100,
+    "h": 1917,
+    "ext": "jpg"
+  },
+  "end-plate-traces": {
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep",
+    "ext": "svg",
+    "w": 760,
+    "h": 420,
+    "alt": "Graph of membrane potential at the motor end plate against time over 12 milliseconds, with a dashed threshold line at about minus 55 millivolts. Trace A, a normal junction, rises from rest at about minus 90 past threshold and fires an action potential peaking near plus 30, then returns to rest. Trace B, after a drug blocks most acetylcholine receptor proteins, rises only to about minus 75, stays below threshold and fades back to rest with no action potential.",
+    "labels": []
+  }
+}

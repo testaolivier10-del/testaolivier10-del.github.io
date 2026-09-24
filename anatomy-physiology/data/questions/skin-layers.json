@@ -1,0 +1,615 @@
+[
+  {
+    "id": "anp-skin-layers-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-5",
+    "pin": "stratum-basale",
+    "q": "Name the pinned layer.",
+    "options": [
+      "Stratum spinosum",
+      "Stratum basale",
+      "Stratum granulosum",
+      "Stratum corneum"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The stratum basale is the deepest layer of the epidermis: a single row of cells resting on the basement membrane, where the dermis bulges up into it. Its basal cells divide throughout life, and melanocytes and tactile cells sit among them.",
+      "options": [
+        "The stratum spinosum lies just above the pinned layer and is 8 to 10 rows of cells thick, not a single row on the dermis.",
+        "Correct. The single deepest row, touching the dermis, is the stratum basale.",
+        "The stratum granulosum lies higher up, where cells flatten and fill with granules.",
+        "The stratum corneum is the surface layer of flat dead cells, at the opposite end of the epidermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-5",
+    "pin": "stratum-granulosum",
+    "q": "Name the pinned layer.",
+    "options": [
+      "Stratum lucidum",
+      "Papillary layer of the dermis",
+      "Stratum granulosum",
+      "Stratum spinosum"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The stratum granulosum is the band of flattening cells speckled with granules: keratohyalin granules that bundle keratin, and lamellar granules that release lipids between the cells.",
+      "options": [
+        "The stratum lucidum is the thin clear band just above, made of flat dead cells with no nuclei and no visible granules.",
+        "The papillary layer is the top of the dermis, below the whole epidermis, not a band of granule-filled cells within it.",
+        "Correct. Flattening cells full of small granules make the stratum granulosum.",
+        "The stratum spinosum is the thicker band of rounder cells below, which still have large nuclei and no granules."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-5",
+    "pin": "stratum-lucidum",
+    "q": "Name the pinned layer. It is present only in the skin of the palms and soles.",
+    "options": [
+      "Stratum lucidum",
+      "Stratum corneum",
+      "Stratum granulosum",
+      "Papillary layer"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The stratum lucidum is a thin, clear band of flat dead cells filled with eleiden. It lies between the stratum granulosum and the stratum corneum, and only thick skin has it.",
+      "options": [
+        "Correct. The clear band found only in thick skin is the stratum lucidum.",
+        "The stratum corneum is the much thicker surface layer above it, present in both thick and thin skin.",
+        "The stratum granulosum lies below the clear band and has visible granules and nuclei.",
+        "The papillary layer is part of the dermis, below the whole epidermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-2",
+    "pin": "hypodermis",
+    "q": "Name the pinned layer.",
+    "options": [
+      "Dermis",
+      "Epidermis",
+      "Deep fascia",
+      "Hypodermis"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The hypodermis, or subcutaneous layer, lies under the dermis. It is areolar and adipose tissue, which is why it looks like yellow fat lobules, and larger blood vessels run through it.",
+      "options": [
+        "The dermis is the thick pink layer above the fat, made of dense connective tissue.",
+        "The epidermis is the thin surface layer at the top of the block.",
+        "The deep fascia is the dense sheet around the muscles, below the hypodermis; the block does not reach it.",
+        "Correct. The fatty layer beneath the dermis is the hypodermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-5",
+    "pin": "merkel-cell",
+    "q": "Name the pinned cell in the deepest layer, which presses against a nerve fiber.",
+    "options": [
+      "Melanocyte",
+      "Tactile cell",
+      "Epidermal dendritic cell",
+      "Basal cell"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A tactile cell, also called a Merkel cell, sits in the stratum basale and presses against the flattened end of a sensory nerve fiber. It signals that nerve fiber when the skin is pressed.",
+      "options": [
+        "A melanocyte also sits in the stratum basale, but it has long branches that pass pigment to keratinocytes and does not sit on a nerve fiber.",
+        "Correct. The cell paired with a nerve ending is the tactile (Merkel) cell.",
+        "Langerhans cells sit mainly in the stratum spinosum and take up foreign material; they are not paired with nerve fibers.",
+        "Basal cells are the dividing stem cells of the stratum basale; they are not linked to nerve fibers."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-6",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A keratinocyte forms in the palm and is pushed toward the surface. Put the layers it passes through in order, starting where it is made.",
+    "options": [
+      "Stratum basale",
+      "Stratum spinosum",
+      "Stratum granulosum",
+      "Stratum lucidum",
+      "Stratum corneum"
+    ],
+    "why": {
+      "correct": "Basal cells divide in the stratum basale. The new keratinocyte makes keratin in the stratum spinosum, forms granules and loses its nucleus in the stratum granulosum, passes through the clear stratum lucidum (present in the thick skin of the palm), and ends as a dead flat cell in the stratum corneum before it is shed."
+    }
+  },
+  {
+    "id": "anp-skin-layers-7",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Ana gets a paper cut on her finger. It stings, but it does not bleed. Which statement best explains why?",
+    "options": [
+      "The cut stayed in the epidermis, which has no blood vessels",
+      "Keratin in the cut cells plugs the torn vessels right away",
+      "The paper edge seals the tiny vessels it cuts by friction heat",
+      "The stratum corneum contains clotting cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The epidermis is avascular: its cells are fed by diffusion from capillaries in the dermis. A cut that stays in the epidermis reaches no vessel, so it does not bleed. It can still sting, because some nerve endings reach into the lower epidermis.",
+      "options": [
+        "Correct. No blood vessels in the epidermis means a shallow cut does not bleed.",
+        "Keratin is a structural protein inside keratinocytes. It plays no part in stopping blood flow.",
+        "A paper cut makes no significant heat. The reason is where the cut stops, not how it seals.",
+        "The stratum corneum is dead keratin-filled cells. Clotting depends on platelets and proteins in the blood, which the epidermis does not contain."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-8",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which cells divide to replace the keratinocytes that are shed from the surface?",
+    "options": [
+      "Tactile cells in the stratum basale",
+      "Keratinocytes in the stratum corneum",
+      "Basal cells in the stratum basale",
+      "Fibroblasts in the papillary layer"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Basal cells are stem cells in the stratum basale. Each division leaves one stem cell in place and pushes the other up to become a keratinocyte, so the epidermis renews itself from the bottom.",
+      "options": [
+        "Tactile cells pass touch signals to nerve fibers; they do not supply new keratinocytes.",
+        "Stratum corneum cells are dead. They have no nucleus and cannot divide.",
+        "Correct. The dividing stem cells of the epidermis are the basal cells.",
+        "Fibroblasts make the fibers of the dermis. They do not form epithelial cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-9",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A skin sample under the microscope has five epidermal strata, including a clear band of dead cells, a very deep stratum corneum, and no hairs. Where was it most likely taken from?",
+    "options": [
+      "The skin over the upper back",
+      "The sole of the foot",
+      "The scalp",
+      "The eyelid"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Five strata, a stratum lucidum and a very thick stratum corneum with no hair are the marks of thick skin, found on the palms, the soles and the palm side of the fingers and toes.",
+      "options": [
+        "The upper back has the thickest skin overall because of its deep dermis, but its epidermis is thin skin with four strata and hair.",
+        "Correct. The sole is covered by thick skin.",
+        "The scalp is thin skin with a great deal of hair.",
+        "The eyelid has some of the thinnest skin on the body, with only four strata."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-10",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which features belong to thick skin? Select all that apply.",
+    "options": [
+      "A stratum lucidum",
+      "Friction ridges",
+      "Hair on its surface",
+      "A very thick stratum corneum",
+      "A thicker dermis than any thin skin"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Thick skin, on the palms and soles, has five strata including the stratum lucidum, a very thick stratum corneum, friction ridges from rows of dermal papillae, and no hair. \"Thick\" describes its epidermis, not its dermis.",
+      "options": [
+        "Yes. Only thick skin has the clear stratum lucidum.",
+        "Yes. Rows of dermal papillae push thick skin into friction ridges, the fingerprints of the fingers.",
+        "No. Thick skin is hairless.",
+        "Yes. The stratum corneum of thick skin is many times deeper than in thin skin.",
+        "No. The skin of the upper back has a deeper dermis than the palm, yet it is thin skin. The name refers to the epidermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "darker skin has more melanocytes",
+    "q": "Two adults of similar age, one with very dark skin and one with very light skin, have skin samples taken from the same body site. What is the main difference you would expect to find?",
+    "options": [
+      "The dark sample has several times as many melanocytes",
+      "The light sample has melanocytes only in the dermis",
+      "The dark sample has larger, more pigmented melanosomes in its keratinocytes",
+      "The light sample has no melanin at all"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "People of all skin tones have about the same number of melanocytes at a given body site. Skin color depends on what those melanocytes make and pass on: in darker skin the melanosomes are larger, more heavily pigmented, more numerous in the keratinocytes and slower to be broken down.",
+      "options": [
+        "Melanocyte numbers are similar across skin tones. The difference is in their melanin output and the melanosomes they deliver.",
+        "Melanocytes sit in the stratum basale in everyone, not in the dermis.",
+        "Correct. Melanosome size, pigment content and number set skin color.",
+        "Light skin still contains melanin, just less of it, often with more of the reddish pheomelanin."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-12",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "A student described how skin tans after a week in strong sun. One step is wrong. Which one?",
+    "options": [
+      "UV light damages DNA in keratinocytes",
+      "Damaged keratinocytes release paracrine signals to nearby melanocytes",
+      "Melanocytes make more melanin from the amino acid tyrosine",
+      "Melanocytes release their melanin into the dermis, which darkens",
+      "Keratinocytes take in melanosomes, and melanin caps their nuclei"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Melanocytes pass melanosomes along their branches to the keratinocytes of the epidermis. The pigment that makes a tan is in the keratinocytes, not in the dermis, which is why a tan fades as those cells are shed.",
+      "options": [
+        "This step is right. UV damage to keratinocyte DNA starts the response.",
+        "This step is right. The damaged keratinocytes signal the melanocytes around them.",
+        "This step is right. Melanocytes build melanin from tyrosine with the enzyme tyrosinase.",
+        "This is the error. Melanin goes to the keratinocytes of the epidermis, not into the dermis.",
+        "This step is right. The melanin cap shades each nucleus from UV."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-13",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in the layers of thin skin, from deep to superficial: stratum basale → ____ → stratum granulosum → stratum corneum.",
+    "options": [
+      "Stratum lucidum",
+      "Stratum spinosum",
+      "Papillary layer of the dermis",
+      "Reticular layer"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Thin skin has four strata: basale, spinosum, granulosum and corneum. The stratum spinosum, where keratinocytes make keratin and are held together by desmosomes, lies just above the stratum basale.",
+      "options": [
+        "The stratum lucidum lies between the granulosum and corneum, and only in thick skin.",
+        "Correct. The stratum spinosum comes next above the basale.",
+        "The papillary layer is the upper dermis, below the stratum basale, not inside the epidermis.",
+        "The reticular layer is the deep dermis, well below the epidermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-14",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A newborn has an inherited defect that stops the cells of the stratum granulosum from releasing the contents of their lamellar granules. What problem would you predict?",
+    "options": [
+      "The skin loses water much faster than normal",
+      "The epidermis has no keratin filaments",
+      "The skin cannot tan",
+      "Basal cells stop dividing"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Lamellar granules release lipids into the spaces between cells, where they spread into sheets that seal the stratum corneum like mortar between bricks. Without that lipid seal, water escapes through the gaps between the dead cells, so the skin dries and loses water quickly.",
+      "options": [
+        "Correct. The lipid sheets from lamellar granules are the main seal against water loss.",
+        "Keratin filaments are made in the stratum spinosum and bundled by keratohyalin, not by lamellar granules.",
+        "Tanning depends on melanocytes and melanin, which lamellar granules do not affect.",
+        "Basal cells lie below the stratum granulosum. A lipid defect higher up does not stop their division."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which layer makes up most of the dermis and is built of dense irregular connective tissue?",
+    "options": [
+      "Papillary layer",
+      "Hypodermis",
+      "Stratum spinosum",
+      "Reticular layer"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The reticular layer is about 80% of the dermis. Its thick collagen bundles run in many directions, with elastic fibers among them, so it resists pulling from any direction.",
+      "options": [
+        "The papillary layer is the thin upper part of the dermis, made of loose (areolar) tissue.",
+        "The hypodermis lies beneath the dermis and is areolar and adipose tissue, not part of the dermis.",
+        "The stratum spinosum is a layer of the epidermis, made of epithelial cells.",
+        "Correct. The thick, deep, dense irregular layer is the reticular layer."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A surgeon removes a mole from a patient's forearm and makes the cut along the skin's tension lines. Why does this cut usually heal with a thinner scar?",
+    "options": [
+      "It avoids all blood vessels in the dermis",
+      "It runs parallel to most collagen bundles",
+      "It stays within the epidermis",
+      "It passes neatly between the rows of dermal papillae"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "In each area the reticular layer's collagen bundles run mostly in one direction, the tension line. A cut parallel to them separates few bundles and is not pulled open by them, so its edges stay close and less scar tissue is needed.",
+      "options": [
+        "Blood vessels are spread through the dermis in every direction, so no cut line avoids them all.",
+        "Correct. Cutting along the collagen keeps the edges together.",
+        "Removing a mole means cutting through the dermis. The direction of the cut, not its depth, gives the benefit here.",
+        "The dermal papillae are tiny bumps at the top of the dermis. Any cut crosses many of them."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which statement about the hypodermis is correct?",
+    "options": [
+      "It is the deepest layer of the epidermis",
+      "It is dense regular connective tissue around muscles",
+      "It is also called the superficial fascia",
+      "It contains the friction ridges"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The hypodermis, or subcutaneous layer, is also called the superficial fascia. It is areolar and adipose tissue that ties the dermis loosely to the deep fascia over the muscles.",
+      "options": [
+        "The deepest layer of the epidermis is the stratum basale. The hypodermis lies below the dermis, outside the skin itself.",
+        "That describes fascia around muscles, the deep fascia, which lies under the hypodermis.",
+        "Correct. Superficial fascia is an older name for the hypodermis.",
+        "Friction ridges are made by the dermal papillae of thick skin, at the top of the dermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-18",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A paramedic is checking a patient with very dark skin for cyanosis. Where is a bluish color easiest to see?",
+    "options": [
+      "The skin of the upper back, between the shoulders",
+      "The skin of the forehead",
+      "The skin over the knee",
+      "The lips and the inside of the lower eyelid"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Melanin in the epidermis hides color changes from the blood beneath. The lips, gums, tongue and inside of the lower eyelid have little melanin and thin coverings over their blood vessels, so a bluish tint shows there first.",
+      "options": [
+        "The upper back has thick dermis and normal melanin, so a color change from the blood is hard to see.",
+        "The forehead has the same melanin as the rest of the face, which masks the color of blood.",
+        "The skin over the knee is pigmented and often thickened, so it hides the color of blood.",
+        "Correct. Areas with little melanin show cyanosis best."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-19",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a hot shower, the skin of Leo's back is flushed red. What causes this erythema?",
+    "options": [
+      "More melanin moving into the keratinocytes",
+      "Carotene collecting in the stratum corneum",
+      "Fewer red blood cells in the dermis",
+      "Vasodilation that fills dermal capillaries with more blood"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Heat causes vasodilation of the small vessels of the dermis. More blood flows into the capillaries, and its red color shows through the epidermis as erythema.",
+      "options": [
+        "Melanin production takes days to rise and gives a brown tan, not a quick red flush.",
+        "Carotene gives a slow, yellow-orange tint from diet, not a red flush after heat.",
+        "Less blood in the dermis would cause pallor, the opposite of redness.",
+        "Correct. Erythema is redness from more blood in the dermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-20",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A toddler who eats large amounts of carrot and sweet potato puree develops orange palms and soles. He is active and well, and the whites of his eyes are white. Which explains the color?",
+    "options": [
+      "Carotene stored in the stratum corneum and fat",
+      "His melanocytes are making extra red pigment",
+      "His skin blood vessels are widening",
+      "His blood is carrying too little oxygen"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Carotene is a yellow-orange, lipid-soluble plant pigment. It collects in the stratum corneum and the fat of the hypodermis. The thick stratum corneum of the palms and soles holds the most, so they turn orange first. It is harmless and fades when the diet changes.",
+      "options": [
+        "Correct. A diet rich in carotene tints the skin, most where the stratum corneum is thick.",
+        "Melanocytes make eumelanin and pheomelanin in response to UV and genes, not to diet, and they would not color only the palms and soles.",
+        "Vasodilation causes a red flush that comes and goes, not a lasting orange color on the palms and soles.",
+        "Too little oxygen in the blood causes a bluish color, cyanosis, not orange."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-21",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Langerhans cells, the epidermal dendritic cell type, are found mainly in which layer, and what do they do?",
+    "options": [
+      "Stratum basale; they make melanin",
+      "Stratum corneum; they help shed the dead surface cells",
+      "Papillary layer; they make collagen",
+      "Stratum spinosum; they take up foreign material"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Langerhans cells come from the bone marrow and sit mainly in the stratum spinosum. Their branching arms spread between keratinocytes, and they take up microbes and other foreign material that enter the epidermis.",
+      "options": [
+        "Melanin is made by melanocytes in the stratum basale, not by Langerhans cells.",
+        "The stratum corneum is dead cells; shedding happens as desmosomes between surface cells are broken down.",
+        "Collagen is made by fibroblasts in the dermis.",
+        "Correct. They sit in the stratum spinosum and take up foreign material."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-22",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-8",
+    "q": "Compare the dark and light columns. What does the drawing show differs between darker and lighter skin?",
+    "options": [
+      "The number of melanocytes at the base",
+      "The pigment the melanosomes deliver",
+      "The number of epidermal layers",
+      "Where the melanocytes sit"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Each column has one melanocyte at the base, in the same place. What differs is the melanosomes: on the dark side they are darker and spread through many keratinocytes up toward the surface; on the light side they are pale and fewer.",
+      "options": [
+        "Both columns show a single melanocyte at the base. Melanocyte numbers are about the same in all skin tones.",
+        "Correct. The melanosomes, and the pigment they deliver, differ.",
+        "Both columns show the same layers of keratinocytes.",
+        "In both columns the melanocyte sits at the bottom of the epidermis, on the dermis."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-layers-23",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A new pair of shoes rubs one spot on Mia's heel all day, and a fluid-filled blister forms. Where has the fluid collected?",
+    "options": [
+      "Between the dermis and the hypodermis",
+      "Inside the stratum basale cells",
+      "At the junction of epidermis and dermis",
+      "Inside the adipose tissue of the hypodermis"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Repeated rubbing shears the epidermis against the dermis. Where the layers or the lower epidermal cells pull apart, fluid from the dermis's capillaries seeps into the gap and lifts the epidermis into a blister. The dermal papillae normally resist that shearing by interlocking the two layers.",
+      "options": [
+        "The hypodermis is loosely attached and slides; friction separates the more tightly joined epidermis and dermis instead.",
+        "The fluid collects in a space between cells or layers, not inside the cells.",
+        "Correct. A friction blister is a split at or just above the junction of epidermis and dermis.",
+        "Adipose tissue lies deep in the hypodermis, far below where rubbing splits the skin."
+      ]
+    }
+  }
+]

@@ -1,0 +1,416 @@
+[
+  {
+    "id": "anp-neuromuscular-junction-1",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Put the events of transmission at the neuromuscular junction in order.",
+    "options": [
+      "An action potential depolarizes the axon terminal",
+      "Voltage-gated calcium channels open and calcium enters the terminal",
+      "Synaptic vesicles fuse with the terminal membrane and release acetylcholine",
+      "Acetylcholine diffuses across the synaptic cleft",
+      "Acetylcholine binds nicotinic receptor proteins and their channels open",
+      "The end plate potential brings the neighboring sarcolemma to threshold"
+    ],
+    "why": {
+      "correct": "The nerve impulse opens calcium channels; calcium triggers exocytosis of acetylcholine; acetylcholine crosses the cleft and opens ligand-gated channels on the end plate; the resulting end plate potential brings the nearby membrane to threshold, and the muscle fiber fires an action potential."
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "figure": "os-10-6",
+    "pin": "ach-receptor",
+    "q": "Name the pinned structure.",
+    "options": ["Acetylcholine receptor protein", "Synaptic vesicle", "Voltage-gated calcium channel", "Acetylcholinesterase"],
+    "correct": 0,
+    "why": {
+      "correct": "The pinned protein sits in the folded membrane of the motor end plate. It is a nicotinic acetylcholine receptor protein, a ligand-gated channel that lets sodium in when acetylcholine binds.",
+      "options": [
+        "Correct. It is the ACh receptor protein, a channel in the end plate.",
+        "Synaptic vesicles are the round sacs inside the axon terminal, not proteins in the muscle membrane.",
+        "Voltage-gated calcium channels are in the axon terminal's membrane, not in the end plate.",
+        "AChE is an enzyme anchored in the cleft; it is not a channel through the end plate membrane."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-3",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["communication"],
+    "misconception": "the nerve impulse passes directly into the muscle",
+    "q": "A patient receives a drug that blocks most of the acetylcholine receptor proteins at the motor end plate. Her motor neurons keep firing normally. Predict the change in each variable.",
+    "variables": [
+      { "name": "Action potentials reaching the axon terminal", "answer": "none", "why": "The drug acts on the muscle side of the junction; the motor neuron and its axon are unaffected." },
+      { "name": "Acetylcholine released per nerve impulse", "answer": "none", "why": "Calcium entry and exocytosis in the terminal are unchanged, so the same amount of acetylcholine is released." },
+      { "name": "Size of the end plate potential", "answer": "down", "why": "With most receptor proteins blocked, fewer ligand-gated channels open, so less sodium enters the end plate." },
+      { "name": "Action potentials in the muscle fibers", "answer": "down", "why": "Once the end plate potential falls below threshold, the neighboring sarcolemma no longer fires." },
+      { "name": "Strength of contraction", "answer": "down", "why": "Fibers that no longer fire action potentials do not contract, so the muscle weakens or goes limp." }
+    ],
+    "why": {
+      "correct": "Blocking the receptor proteins breaks the chain at the muscle side: acetylcholine is released normally but cannot open enough channels. The end plate potential shrinks below threshold, the fibers stop firing, and the muscle weakens, even though the nerve is working."
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-4",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["communication"],
+    "q": "A drug partly inhibits acetylcholinesterase. Predict the change in each variable at the neuromuscular junction after a single nerve impulse, compared with normal.",
+    "variables": [
+      { "name": "Acetylcholine released by the terminal", "answer": "none", "why": "Release depends on calcium entry into the terminal, which the drug does not change." },
+      { "name": "Time acetylcholine stays in the synaptic cleft", "answer": "up", "why": "With less enzyme activity, acetylcholine is split more slowly and lingers." },
+      { "name": "Duration of the end plate potential", "answer": "up", "why": "Lingering acetylcholine keeps binding receptor proteins and reopening their channels, so the depolarization lasts longer." },
+      { "name": "Choline returned to the axon terminal per second", "answer": "down", "why": "Choline comes from splitting acetylcholine; slower splitting produces choline more slowly." }
+    ],
+    "why": {
+      "correct": "Acetylcholinesterase ends each signal by splitting acetylcholine. Slowing it leaves acetylcholine in the cleft longer, so each release opens channels for longer and the end plate stays depolarized longer. Release itself is unchanged."
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "In a lab, a nerve–muscle preparation is placed in a fluid with no calcium. Stimulating the nerve still produces action potentials that reach the axon terminals, but the muscle does not respond. What explains this?",
+    "options": [
+      "The muscle fibers cannot fire action potentials without extracellular calcium",
+      "The action potential cannot depolarize the terminal without calcium",
+      "Calcium entering the terminal is what triggers the vesicles to release acetylcholine",
+      "Acetylcholinesterase needs calcium to split acetylcholine"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Release is calcium-triggered. The action potential opens voltage-gated calcium channels, and the calcium that flows in makes the vesicles fuse. With no calcium outside, nothing flows in and no acetylcholine is released.",
+      "options": [
+        "The muscle fiber's action potential depends on voltage-gated sodium and potassium channels; the experiment fails before that, at release.",
+        "The question says the action potentials do reach and depolarize the terminals; it is the next step that fails.",
+        "Correct. No calcium entry means no exocytosis of acetylcholine.",
+        "If the enzyme failed, acetylcholine would linger and the muscle would respond more, not less."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "A man who ate home-canned vegetables develops drooping eyelids, then weakness spreading down his body. His nerves conduct action potentials normally, but his muscles barely respond. Botulinum toxin is suspected. Which step does it block?",
+    "options": [
+      "Calcium entry into the axon terminal",
+      "Fusion of synaptic vesicles with the terminal membrane",
+      "Binding of acetylcholine to receptor proteins",
+      "Breakdown of acetylcholine in the cleft"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Botulinum toxin destroys proteins the vesicles need to fuse with the terminal membrane. Calcium enters normally, but acetylcholine stays inside the terminal, so the muscle gets no signal.",
+      "options": [
+        "Calcium channels open normally in botulism; the failure comes one step later, at fusion.",
+        "Correct. Without vesicle fusion, no acetylcholine is released.",
+        "Blocking the receptor proteins is how curare-type drugs work; the toxin acts inside the terminal.",
+        "Blocking breakdown would make acetylcholine linger and cause quivering, not a failure of release."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-7",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["communication"],
+    "figure": "end-plate-traces",
+    "q": "Trace B was recorded from the same end plate as trace A after a drug was given. Why does trace B show no action potential?",
+    "options": [
+      "The drug raised the threshold of the sarcolemma",
+      "The drug stopped the axon terminal from releasing any acetylcholine",
+      "The end plate potential was too small to reach threshold",
+      "The drug held the membrane depolarized so the sodium channels could not reopen"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In trace B the membrane depolarizes only to about −75 mV and fades, well below the threshold line at about −55 mV. With most receptor proteins blocked, too few channels open, and a graded potential that does not reach threshold triggers nothing.",
+      "options": [
+        "The threshold line is the same for both traces; what changed is how far the membrane depolarized.",
+        "Trace B still shows a small depolarization, so some acetylcholine was released and bound. With no release at all there would be no bump.",
+        "Correct. The end plate potential stayed below threshold.",
+        "Trace B returns to rest within a few milliseconds; it does not stay depolarized."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-8",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "At the end of surgery, neostigmine, an acetylcholinesterase inhibitor, reverses paralysis caused by rocuronium, a curare-type drug. Why does it work?",
+    "options": [
+      "It destroys rocuronium in the synaptic cleft",
+      "It makes the motor neurons fire faster",
+      "It lowers the threshold of the sarcolemma",
+      "Acetylcholine builds up and outcompetes rocuronium for the binding sites"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Rocuronium blocks the receptor proteins competitively. Slowing acetylcholinesterase lets acetylcholine accumulate in the cleft, and at higher concentration it wins more binding sites, opens more channels and brings the end plate potential back above threshold.",
+      "options": [
+        "Neostigmine inhibits the enzyme that splits acetylcholine; it does not break down rocuronium.",
+        "Neostigmine acts at the junction, not on how often the motor neuron fires.",
+        "The threshold of the sarcolemma is unchanged; the end plate potential grows back to reach it.",
+        "Correct. More acetylcholine competes the blocker off the receptor proteins."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-9",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Select every statement that is true of the end plate potential.",
+    "options": [
+      "Its size depends on how much acetylcholine binds",
+      "It is all-or-none",
+      "It is caused by ligand-gated channels opening",
+      "It spreads along the whole fiber without fading",
+      "In a healthy junction, it is several times larger than needed to reach threshold"
+    ],
+    "correct": [0, 2, 4],
+    "why": {
+      "correct": "The end plate potential is a graded, local depolarization made by acetylcholine opening ligand-gated channels. In a healthy junction it is large enough to bring the neighboring membrane to threshold with room to spare. The action potential it triggers is what is all-or-none and travels the whole fiber.",
+      "options": [
+        "Correct. More acetylcholine and more open channels make a bigger end plate potential.",
+        "It is graded; the action potential it triggers is all-or-none.",
+        "Correct. Acetylcholine opens the nicotinic receptor channels.",
+        "It fades within a short distance; the action potential carries the signal along the fiber.",
+        "Correct. This safety margin makes transmission reliable."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-10",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Fill the gap: acetylcholinesterase splits acetylcholine into acetate and ____, which the axon terminal takes back up to make more acetylcholine.",
+    "options": ["Choline", "Calcium", "Acetyl phosphate", "Glucose"],
+    "correct": 0,
+    "why": {
+      "correct": "Acetylcholine is built from an acetyl group and choline. The enzyme splits it back into acetate and choline, and a transport protein returns the choline to the terminal.",
+      "options": [
+        "Correct. Choline is recycled into new acetylcholine.",
+        "Calcium triggers release; it is not a product of splitting acetylcholine.",
+        "The products are acetate and choline; no phosphate is involved.",
+        "Glucose is a fuel, not part of acetylcholine."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-11",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "A student wrote the steps at the neuromuscular junction. One step is wrong. Which one?",
+    "options": [
+      "The action potential opens voltage-gated calcium channels in the axon terminal",
+      "Calcium triggers exocytosis of acetylcholine",
+      "Acetylcholine opens nicotinic receptor channels, and sodium flows in",
+      "The end plate potential triggers an action potential in the neighboring sarcolemma",
+      "The axon terminal takes acetylcholine back up intact to end the signal"
+    ],
+    "correct": 4,
+    "why": {
+      "correct": "At the neuromuscular junction, acetylcholinesterase in the cleft ends the signal by splitting acetylcholine into acetate and choline. Only the choline is taken back into the terminal.",
+      "options": [
+        "This step is right. Depolarization of the terminal opens its calcium channels.",
+        "This step is right. Calcium entry makes the vesicles fuse and release acetylcholine.",
+        "This step is right. The receptor protein is a ligand-gated channel, and sodium's inward push dominates.",
+        "This step is right. The end plate potential brings the nearby membrane, rich in voltage-gated sodium channels, to threshold.",
+        "This is the error. Acetylcholine is split in the cleft, not taken back intact."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication", "gradients"],
+    "q": "The nicotinic receptor channel lets both sodium and potassium through. Why does opening it depolarize a muscle fiber resting at about −90 mV?",
+    "options": [
+      "Potassium cannot pass through the channel at rest",
+      "Sodium's inward drive is much stronger than potassium's outward drive at −90 mV",
+      "Acetylcholine carries positive charge into the cell",
+      "The channel pumps sodium in using ATP"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "At −90 mV, sodium is pulled in by both its concentration gradient and the negative inside, so its inward push is large. Potassium is near its equilibrium potential, about −90 mV, so its outward push is small. More positive charge enters than leaves.",
+      "options": [
+        "Potassium can pass, but at −90 mV it is close to its equilibrium potential, so little leaves.",
+        "Correct. The electrochemical gradient for sodium dominates.",
+        "Acetylcholine binds the outside of the channel and is not carried across the membrane.",
+        "A channel allows passive flow down gradients; it does not pump."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-13",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "In an experiment, a toxin destroys about half of the acetylcholine receptor proteins at every end plate in a muscle. The muscle still contracts normally at rest. What best explains this?",
+    "options": [
+      "The remaining receptor proteins still make an end plate potential that reaches threshold",
+      "The muscle fibers switch to being excited by calcium instead",
+      "The motor neurons release twice as much acetylcholine to compensate",
+      "Half the fibers now contract twice as strongly"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "A normal end plate potential is about three to five times larger than needed to reach threshold. Halving the receptor proteins shrinks it, but it can still reach threshold, so every fiber still fires. Weakness appears only when the end plate potential falls below threshold, often first during repeated firing.",
+      "options": [
+        "Correct. The safety margin absorbs the loss.",
+        "Skeletal muscle fibers are excited only through their neuromuscular junctions; no calcium-based excitation takes over.",
+        "Release depends on calcium entry into the terminal, which the toxin does not change.",
+        "An action potential in a fiber is all-or-none, and each fiber's response does not double to cover for another."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["communication"],
+    "q": "A farmworker is splashed with an organophosphate insecticide, which blocks acetylcholinesterase. At first his muscles quiver; hours later they are weak, and he struggles to breathe. What explains the later weakness?",
+    "options": [
+      "His motor neurons have run out of acetylcholine",
+      "Acetylcholine has destroyed the receptor proteins",
+      "Constant acetylcholine keeps the end plate depolarized, so the nearby sodium channels cannot reopen",
+      "The insecticide blocks calcium channels in the axon terminals"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "With the enzyme blocked, acetylcholine lingers and keeps the end plate depolarized. Early on, the prolonged end plate potential fires repeated action potentials, so muscles quiver. With lasting depolarization, voltage-gated sodium channels around the end plate close and stay closed, so the fiber can no longer fire.",
+      "options": [
+        "The terminals still make and release acetylcholine; the problem is that it is not cleared.",
+        "Acetylcholine binds and releases its receptor proteins without destroying them.",
+        "Correct. A persistently depolarized membrane cannot fire new action potentials.",
+        "Organophosphates block acetylcholinesterase, not calcium channels."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-15",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "Where is acetylcholinesterase found at the neuromuscular junction?",
+    "options": [
+      "Inside the synaptic vesicles",
+      "In the sarcoplasmic reticulum",
+      "Anchored in the synaptic cleft",
+      "In the cytosol of the axon terminal"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Acetylcholinesterase is anchored in the basal lamina of the synaptic cleft, where it splits acetylcholine as soon as it is released.",
+      "options": [
+        "The vesicles hold acetylcholine; the enzyme that splits it would destroy it there.",
+        "The SR stores calcium inside the muscle fiber and plays no part in clearing acetylcholine.",
+        "Correct. The enzyme sits in the cleft, between terminal and end plate.",
+        "Acetylcholine is made in the terminal's cytosol; the enzyme that splits it acts outside, in the cleft."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "A motor neuron fires a single action potential. What happens in each muscle fiber it supplies?",
+    "options": [
+      "Each fiber fires one action potential",
+      "Each fiber fires only if other motor neurons fire at the same moment",
+      "Each fiber makes a small graded potential that fades without firing",
+      "Only the fibers nearest the axon fire"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Transmission at the neuromuscular junction is one for one. Each impulse releases enough acetylcholine to bring every fiber the neuron supplies to threshold, and each fires one action potential.",
+      "options": [
+        "Correct. The large end plate potential guarantees one muscle action potential per nerve impulse.",
+        "Each fiber has one junction from one motor neuron, and that single input is enough; no adding up of inputs is needed.",
+        "That describes most single inputs between neurons in the brain, not the neuromuscular junction.",
+        "Every branch of the axon ends on its own fiber and releases acetylcholine there."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-17",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["communication"],
+    "q": "What is a motor neuron?",
+    "options": [
+      "A neuron that carries information from the skin to the spinal cord",
+      "A neuron that carries commands from the brain or spinal cord out to an effector",
+      "A glial cell that insulates axons in muscle",
+      "A muscle fiber that sets the rhythm for its neighbors"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "A motor neuron is the efferent pathway to an effector. Those that supply skeletal muscle have cell bodies in the spinal cord or brain and long axons that end at neuromuscular junctions.",
+      "options": [
+        "Carrying information in from the skin is an afferent job, the opposite direction.",
+        "Correct. Motor neurons carry commands out to effectors such as skeletal muscle fibers.",
+        "Glial cells insulate axons, but they are not neurons.",
+        "Skeletal muscle fibers do not set their own rhythm; they fire only when a motor neuron signals."
+      ]
+    }
+  },
+  {
+    "id": "anp-neuromuscular-junction-18",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["communication"],
+    "q": "Ms. Alvarez received rocuronium during surgery. Monitoring shows her motor neurons fire normally and release normal amounts of acetylcholine, yet her diaphragm does not move. Where along the pathway has transmission failed?",
+    "options": [
+      "At calcium entry into the axon terminal",
+      "At the release of acetylcholine",
+      "At the binding of acetylcholine to receptor proteins on the end plate",
+      "At the sarcoplasmic reticulum inside the fibers"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Rocuronium occupies the acetylcholine binding sites on the nicotinic receptor proteins without opening them. Acetylcholine is released but cannot open enough channels, so the end plate potential stays below threshold.",
+      "options": [
+        "Calcium entry must be normal, because the terminals are releasing normal amounts of acetylcholine.",
+        "The question states that release is normal.",
+        "Correct. The receptor proteins are blocked.",
+        "The fibers never fire an action potential, so the problem is upstream of anything inside them."
+      ]
+    }
+  }
+]

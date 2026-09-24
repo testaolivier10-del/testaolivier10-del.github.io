@@ -1,0 +1,56 @@
+{
+  "os-6-20": {
+    "file": "figures/openstax/os-6-20.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.20",
+      "section": "6.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/36e517c3fba65b06eedcb11f46d0e56fd2fc11b6",
+      "page": "6-5-fractures-bone-repair"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/36e517c3fba65b06eedcb11f46d0e56fd2fc11b6",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.20",
+    "labels": [],
+    "w": 686,
+    "h": 1300,
+    "ext": "jpg"
+  },
+  "os-6-21": {
+    "file": "figures/openstax/os-6-21.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.21",
+      "section": "6.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/0736a77ec98630659d782ff9c623d4d22aac2315",
+      "page": "6-5-fractures-bone-repair"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/0736a77ec98630659d782ff9c623d4d22aac2315",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.21",
+    "labels": [],
+    "w": 1036,
+    "h": 400,
+    "ext": "jpg"
+  },
+  "os-6-23": {
+    "file": "figures/openstax/os-6-23.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "6.23",
+      "section": "6.6",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/1987ba7d7c781f93fe62ae196462d9033d709e64",
+      "page": "6-6-exercise-nutrition-hormones-and-bone-tissue"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/1987ba7d7c781f93fe62ae196462d9033d709e64",
+    "alt": "TODO alt text placeholder",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 6.23",
+    "labels": [],
+    "w": 860,
+    "h": 553,
+    "ext": "jpg"
+  }
+}

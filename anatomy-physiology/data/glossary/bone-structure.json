@@ -1,0 +1,37 @@
+{
+  "skeletal-functions": {
+    "def": "The six jobs of the skeleton: support, protection of organs, movement (muscles pull on bones), mineral storage (about 99% of the body's calcium), blood cell formation in red marrow, and fat storage in yellow marrow.",
+    "roots": [["skelet-", "dried up (a dried body)"]],
+    "say": ""
+  },
+  "hematopoiesis-basic": {
+    "def": "Blood cell formation: stem cells in red bone marrow divide and differentiate into red blood cells, white blood cells and platelets. Also called hemopoiesis.",
+    "roots": [["hemato-", "blood"], ["-poiesis", "making"]],
+    "say": "hee-mat-oh-poy-EE-sis"
+  },
+  "bone-shapes": {
+    "def": "Sorting bones by shape into long (a shaft and two ends), short (cube-like), flat (thin, with two broad surfaces), irregular (complex shapes) and sesamoid (small round bones inside tendons). Shape, not size, decides the group.",
+    "roots": [["sesam-", "sesame seed"], ["-oid", "like"]],
+    "say": "SESS-uh-moyd"
+  },
+  "long-bone-parts": {
+    "def": "The regions of a long bone: the diaphysis (shaft) around the medullary cavity, the flared metaphyses, and the epiphyses (widened ends) capped with articular cartilage. A nutrient artery enters the shaft through a nutrient foramen.",
+    "roots": [["dia-", "through"], ["-physis", "growth"], ["epi-", "upon"], ["meta-", "between"], ["medulla", "marrow, inner part"]],
+    "say": "dy-AF-ih-sis; eh-PIF-ih-sis"
+  },
+  "bone-marrow": {
+    "def": "The soft tissue inside bones. Red bone marrow makes blood cells; yellow bone marrow is mostly fat. In adults, red marrow remains mainly in flat bones, vertebrae, hip bones and the upper ends of the thigh and upper arm bones, and yellow marrow fills long-bone shafts.",
+    "roots": [],
+    "say": ""
+  },
+  "bone-membranes": {
+    "def": "The periosteum is the two-layered membrane covering a bone's outer surface except at joints: an outer fibrous layer that anchors tendons and ligaments, and an inner cellular layer that can build bone. The endosteum is a thin cell layer lining the bone's inner surfaces.",
+    "roots": [["peri-", "around"], ["oste-", "bone"], ["endo-", "within"]],
+    "say": "pair-ee-OSS-tee-um; en-DOSS-tee-um"
+  },
+  "bone-markings": {
+    "def": "Named surface features of bones. Projections for tendons and ligaments include tuberosities, tubercles, trochanters, crests, spines and epicondyles; joint-forming projections include heads, condyles and facets; a fossa is a shallow depression and a meatus is a canal.",
+    "roots": [["tuber", "swelling"], ["condyl-", "knuckle"], ["fossa", "ditch"], ["meatus", "passage"]],
+    "say": ""
+  }
+}

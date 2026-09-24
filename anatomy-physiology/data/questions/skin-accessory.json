@@ -1,0 +1,624 @@
+[
+  {
+    "id": "anp-skin-accessory-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-11",
+    "pin": "hair-matrix",
+    "q": "Name the pinned layer of dividing cells in the hair bulb.",
+    "options": [
+      "Hair papilla",
+      "Hair matrix",
+      "Inner root sheath",
+      "Hair cortex"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The hair matrix is the layer of rapidly dividing cells in the bulb, just above the papilla. Its new cells are pushed upward, fill with hard keratin and die, forming the hair.",
+      "options": [
+        "The hair papilla is the knob of connective tissue with capillaries beneath the matrix. It supplies the matrix but does not make the hair.",
+        "Correct. The dividing cells that make the hair form the hair matrix.",
+        "The inner root sheath lines the follicle around the hair; it is not the growing layer at the base.",
+        "The cortex is the middle layer of the hair itself, made of dead cells, not a layer of dividing cells in the bulb."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-11",
+    "pin": "arrector-pili-muscle",
+    "q": "Name the pinned structure.",
+    "options": [
+      "Sebaceous gland",
+      "Inner root sheath of the follicle",
+      "Arrector pili muscle",
+      "Outer root sheath"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The arrector pili is a small bundle of smooth muscle that runs from the side of the follicle up to the papillary dermis. When it contracts it pulls the hair upright and makes a goose bump.",
+      "options": [
+        "The sebaceous gland is the lobed oil gland that opens into the follicle, not the slanting strip of muscle.",
+        "The inner root sheath lines the follicle right around the hair; it is not a strip of muscle outside the follicle.",
+        "Correct. The slanting strip of smooth muscle is the arrector pili.",
+        "The outer root sheath is part of the follicle wall, wrapped around the hair."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-11",
+    "pin": "sebaceous-gland",
+    "q": "Name the pinned gland.",
+    "options": [
+      "Eccrine sweat gland",
+      "Apocrine sweat gland",
+      "Ceruminous gland",
+      "Sebaceous gland"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The sebaceous gland is a lobed oil gland beside the follicle. Its cells fill with lipid and burst, and the sebum flows into the follicle and up onto the hair.",
+      "options": [
+        "An eccrine sweat gland is a tight coil deep in the dermis with its own duct to a surface pore, not a lobed gland on the side of a follicle.",
+        "An apocrine sweat gland is a coiled tube that empties into a follicle higher up; the lobed shape here is an alveolar oil gland.",
+        "Ceruminous glands are found only in the ear canal.",
+        "Correct. The lobed gland emptying into the follicle is a sebaceous gland."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-13",
+    "pin": "lunula",
+    "q": "Name the pinned white crescent.",
+    "options": [
+      "Lunula",
+      "Free edge",
+      "Eponychium",
+      "Hyponychium"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The lunula is the white crescent at the base of the nail body: the visible part of the nail matrix. Its thick layer of cells hides the capillaries beneath, so it looks white.",
+      "options": [
+        "Correct. The white crescent at the base of the nail is the lunula.",
+        "The free edge is the white rim at the tip of the nail, not the crescent at its base.",
+        "The eponychium is the thin band of skin lying over the base of the nail, just behind the lunula.",
+        "The hyponychium is the thickened skin under the free edge at the fingertip."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-5",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-13",
+    "pin": "eponychium",
+    "q": "Name the pinned band of skin lying on the base of the nail.",
+    "options": [
+      "Hyponychium",
+      "Lateral nail fold",
+      "Eponychium",
+      "Nail bed"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The eponychium, also called the nail cuticle, is a thin band of stratum corneum that grows from the proximal nail fold onto the base of the nail body and seals the gap between them.",
+      "options": [
+        "The hyponychium lies under the free edge at the other end of the nail.",
+        "The lateral nail folds run along the sides of the nail, not across its base.",
+        "Correct. The band over the nail's base is the eponychium, or cuticle.",
+        "The nail bed lies beneath the nail body and cannot be seen from above as a band of skin."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-6",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-5-14",
+    "pin": "eccrine-sweat-gland",
+    "q": "Name the pinned gland, whose duct opens at a pore on the skin surface.",
+    "options": [
+      "Sebaceous gland",
+      "Eccrine sweat gland",
+      "Apocrine sweat gland",
+      "Hair bulb"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "An eccrine sweat gland is a coiled tube deep in the dermis with its own duct that winds up to a pore on the skin surface.",
+      "options": [
+        "A sebaceous gland is lobed and empties into a hair follicle, not through a pore of its own.",
+        "Correct. A coiled gland with its own duct to a surface pore is an eccrine sweat gland.",
+        "An apocrine sweat gland's duct empties into a hair follicle, not onto the skin surface.",
+        "The hair bulb is the swollen base of a follicle, around the hair papilla."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-7",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which layer of a hair holds most of its pigment and gives it most of its strength?",
+    "options": [
+      "Medulla",
+      "Cuticle",
+      "Cortex",
+      "Hair papilla"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The cortex is the thick middle layer of tightly packed, keratin-filled cells. It holds most of the melanin and gives the hair its strength.",
+      "options": [
+        "The medulla is the loose central core, often absent in fine hairs.",
+        "The cuticle is a single thin layer of shingle-like cells on the outside.",
+        "Correct. The cortex holds most of the pigment and strength.",
+        "The hair papilla is connective tissue at the base of the follicle, not a layer of the hair."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-8",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Grace, 29, notices large amounts of hair coming out when she brushes, about three months after giving birth. Her scalp looks normal. What best explains the timing?",
+    "options": [
+      "Childbirth destroyed many hair matrix cells, which cannot be replaced",
+      "Her sebaceous glands stopped making sebum at delivery",
+      "Her arrector pili muscles are pulling hairs out",
+      "Many follicles entered catagen and telogen together at the birth, then shed as new hairs grew"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A major shock such as childbirth pushes many anagen follicles into catagen and telogen at the same time. Telogen lasts about 3 months; when those follicles start a new anagen, the new hairs push the old club hairs out together. The follicles are intact, so the hair regrows.",
+      "options": [
+        "The matrix cells are not destroyed; the follicles are resting. The hair grows back once they re-enter anagen.",
+        "Sebum oils the hair but does not hold it in the follicle, and loss of sebum would not cause shedding three months later.",
+        "The arrector pili raises a hair by tilting it; it cannot pull hairs out.",
+        "Correct. Follicles pushed into the resting phase together shed together about three months later."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-9",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient starts a chemotherapy drug that kills rapidly dividing cells. Predict the change in each variable over the next few weeks, compared with before treatment.",
+    "variables": [
+      {
+        "name": "Cell division in the matrix of anagen follicles",
+        "answer": "down",
+        "why": "The drug kills or stops rapidly dividing cells, and anagen matrix cells are among the fastest-dividing cells in the body."
+      },
+      {
+        "name": "Rate of hair lengthening",
+        "answer": "down",
+        "why": "Hair grows only from matrix cell division, so when division stops the hair stops lengthening and its base becomes thin and weak."
+      },
+      {
+        "name": "Number of hairs shed",
+        "answer": "up",
+        "why": "The weakened hairs of anagen follicles break or fall out, and most scalp follicles are in anagen, so shedding rises sharply."
+      },
+      {
+        "name": "Number of melanocytes in the skin of the arm",
+        "answer": "none",
+        "why": "Melanocytes in the skin divide rarely, so a drug aimed at rapidly dividing cells leaves their number about the same over a few weeks."
+      }
+    ],
+    "why": {
+      "correct": "Chemotherapy stops the rapidly dividing matrix cells of anagen follicles, so hairs stop growing and fall out within weeks. Because about 85 to 90% of scalp follicles are in anagen, the loss is widespread. The follicles survive, so hair regrows after treatment."
+    }
+  },
+  {
+    "id": "anp-skin-accessory-10",
+    "type": "order",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put the events of one hair growth cycle in order, starting with the growth phase.",
+    "options": [
+      "Matrix cells divide and the hair lengthens (anagen)",
+      "The matrix stops dividing and the lower follicle shrinks (catagen)",
+      "The club hair rests in the follicle (telogen)",
+      "A new hair grows beneath and pushes the club hair out"
+    ],
+    "why": {
+      "correct": "In anagen, matrix cells divide and the hair grows. In catagen, division stops, the follicle shrinks and the base of the hair becomes a club. In telogen, the club hair rests. When the next anagen begins, a new hair grows up beneath the old one and pushes it out, and the cycle repeats."
+    }
+  },
+  {
+    "id": "anp-skin-accessory-11",
+    "type": "multi",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which features describe apocrine sweat glands? Select all that apply.",
+    "options": [
+      "Their ducts empty into hair follicles",
+      "They start working at puberty",
+      "They are densest on the palms and soles",
+      "Their secretion contains proteins and lipids",
+      "They are the main glands that release heat through sweat"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "why": {
+      "correct": "Apocrine sweat glands, in the armpits, groin and around the nipples, empty into hair follicles, start working at puberty, and make a thicker secretion with proteins and lipids that bacteria turn into body odor. Eccrine glands are the densest on palms and soles and the ones that release heat.",
+      "options": [
+        "Yes. Apocrine ducts open into hair follicles above the sebaceous glands.",
+        "Yes. They become active at puberty.",
+        "No. The palms and soles have no hair follicles and are packed with eccrine glands instead.",
+        "Yes. Proteins and lipids make apocrine secretion thicker than eccrine sweat.",
+        "No. Heat loss through sweat is the job of eccrine glands; apocrine glands respond mainly to emotional stress."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fresh secretion collected from an armpit's apocrine glands has almost no smell. The same person has body odor a few hours after exercise. What produces the odor?",
+    "options": [
+      "Sebum turning rancid in the air",
+      "Salt crystals left by eccrine sweat",
+      "Skin bacteria breaking down proteins and lipids in the secretion",
+      "Apocrine cells bursting and releasing their contents onto the skin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Apocrine secretion contains proteins and lipids. Bacteria living on the skin feed on them, and the small, strong-smelling molecules they release are body odor. Deodorants work largely by slowing those bacteria.",
+      "options": [
+        "Sebum is on skin everywhere, yet odor comes mainly from areas with apocrine glands.",
+        "Eccrine sweat is mostly water and salt and has no smell of its own.",
+        "Correct. Bacteria acting on the proteins and lipids in apocrine secretion make the odor.",
+        "Apocrine glands release their product mainly by exocytosis, and in any case the fresh secretion has no smell."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-13",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During a long race on a hot day, a runner's sweat rate is very high, and dried white salt streaks form on her shirt. On an easy walk her sweat leaves no streaks. Why is her fast sweat saltier?",
+    "options": [
+      "Fast-flowing sweat leaves the duct less time to take back sodium and chloride",
+      "Her apocrine glands take over at high sweat rates",
+      "Her sebaceous glands add salt to the sweat during hard work",
+      "The secreting coil adds extra salt when it works hard"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The secreting coil makes a watery fluid like protein-free plasma. As it flows up the duct, duct cells take back sodium and chloride. The faster the flow, the less time for that, so more salt stays in the sweat that reaches the skin.",
+      "options": [
+        "Correct. Less time in the duct means less salt taken back, so fast sweat is saltier.",
+        "Apocrine glands respond to emotion, not heat, and they are few; heavy sweating in a race comes from eccrine glands.",
+        "Sebaceous glands make an oily lipid product, not salt.",
+        "The coil's fluid starts at about the same salt level whatever the rate. What changes with flow is how much the duct takes back."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Sebaceous glands release their product by the holocrine mode. A drug that blocked mitosis in the stem cells at the edge of each sebaceous alveolus would most likely have what effect?",
+    "options": [
+      "Sebum output would fall",
+      "Sebum output would rise",
+      "Sebum would become watery",
+      "Sweat output would fall"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "In holocrine secretion the whole cell bursts and becomes the product, so the gland uses up cells as it secretes. It depends on stem cells dividing to replace them. Block that division, and fewer cells fill with lipid and burst, so sebum output falls.",
+      "options": [
+        "Correct. A holocrine gland needs a steady supply of new cells.",
+        "The gland would run short of cells to fill and burst, so output falls, not rises.",
+        "Sebum is made of lipids and cell debris; blocking cell division reduces the amount, not the water content.",
+        "Sweat glands release by exocytosis and do not use up their cells, so this drug's effect on sebaceous stem cells would not reduce sweat."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-15",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "shaving makes hair grow back thicker",
+    "q": "A teenager worries that shaving his legs will make the hair grow back thicker and darker. Which statement is correct?",
+    "options": [
+      "Shaving stimulates the hair matrix to make wider hairs",
+      "Shaving removes the cuticle, so regrown hair looks darker",
+      "Shaving cuts dead shaft only; the regrown blunt tip just feels coarser",
+      "Shaving moves follicles from telogen into anagen"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Shaving cuts the hair shaft at the surface. The shaft is dead and the matrix sits deep in the bulb, untouched, so the hair's width, color and growth rate do not change. The cut end is blunt instead of tapered, which feels stubbly, and short new hair has not yet been lightened by sun.",
+      "options": [
+        "The matrix is deep in the follicle and receives no signal from a cut at the surface.",
+        "The cuticle is part of each hair and is made fresh by the matrix; shaving the shaft does not change the new hair's layers or pigment.",
+        "Correct. Only dead shaft is removed, so the new hair is the same; it only feels coarser.",
+        "The growth cycle is set inside the follicle, not by cutting the shaft above the skin."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-16",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap in how a nail grows: cells made in the ____ fill with hard keratin, die, and are pushed forward as the nail body toward the free edge.",
+    "options": [
+      "Nail bed",
+      "Nail matrix",
+      "Hyponychium",
+      "Eponychium"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The nail matrix, the thickened layer of dividing cells under the nail root, makes the nail. Its new cells fill with hard keratin, die, and are pushed forward.",
+      "options": [
+        "The nail bed lies under the nail body and the plate slides over it; it does not make the nail.",
+        "Correct. The nail matrix makes new nail.",
+        "The hyponychium is thickened skin under the free edge; it seals, but does not make, the nail.",
+        "The eponychium is a band of stratum corneum over the nail's base; it does not make the nail plate."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-17",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Two patients crush a fingertip. In one, the injury tears the nail bed under the middle of the nail. In the other, it crushes the tissue under the proximal nail fold. Which patient is more likely to have a permanently ridged or split nail, and why?",
+    "options": [
+      "The nail bed patient, because the nail bed makes the nail",
+      "Neither, because nails are dead and regrow from the free edge",
+      "Both equally, because the lunula covers the whole nail bed",
+      "The proximal fold patient, because the nail matrix lies there"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The nail matrix, under the nail root beneath the proximal nail fold, makes the nail. Scarring there changes the plate the matrix produces, leaving it ridged or split for good. The nail bed only supports the plate as it slides forward, so injury there usually heals without a lasting deformity.",
+      "options": [
+        "The nail bed supports the plate; the matrix, not the bed, makes it.",
+        "Nails grow from the matrix at their base, not from the free edge.",
+        "The lunula is only the visible front of the matrix at the base of the nail; it does not cover the nail bed.",
+        "Correct. Damage to the matrix changes the nail it makes."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-18",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "The arrector pili is made of which tissue, and how is it controlled?",
+    "options": [
+      "Smooth muscle; involuntary",
+      "Skeletal muscle; voluntary",
+      "Cardiac muscle; involuntary",
+      "Dense regular connective tissue; not controlled"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The arrector pili is a small bundle of smooth muscle. It contracts involuntarily when nerve signals triggered by cold or fear reach it, raising the hair.",
+      "options": [
+        "Correct. Smooth muscle, contracting involuntarily.",
+        "You cannot raise goose bumps at will the way you move a skeletal muscle. The arrector pili is smooth muscle.",
+        "Cardiac muscle is found only in the heart wall.",
+        "The arrector pili contracts; connective tissue cannot."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-19",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A student described how eccrine sweat is made. One step is wrong. Which one?",
+    "options": [
+      "Cells of the secreting coil release a watery, protein-free fluid",
+      "The fluid flows into the duct toward the surface",
+      "Duct cells add extra sodium and chloride to the fluid",
+      "The sweat reaches a pore on the skin surface",
+      "The sweat on the skin is about 99% water"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Duct cells take back sodium and chloride from the fluid; they do not add them. That is why sweat on the skin is less salty than the fluid first made in the coil, especially when sweat flows slowly.",
+      "options": [
+        "This step is right. The coil makes a fluid like plasma with its proteins removed.",
+        "This step is right. The duct carries the fluid up through the dermis and epidermis.",
+        "This is the error. The duct removes sodium and chloride; it does not add them.",
+        "This step is right. Each eccrine duct opens at its own pore.",
+        "This step is right. Sweat is mostly water, with some salt, potassium and lactate."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Eyebrow hairs and scalp hairs lengthen at about the same rate, yet eyebrows stay short. What best explains this?",
+    "options": [
+      "Eyebrow hairs are worn down by friction against the skin of the brow",
+      "Eyebrow follicles have no hair matrix",
+      "Eyebrow hairs lack a cortex, so they break off",
+      "Eyebrow follicles stay in anagen for only a few months"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A hair's maximum length is its growth rate times the length of anagen. Scalp follicles stay in anagen for years; eyebrow follicles for only a few months, so the hair enters catagen and telogen, and is shed, while still short.",
+      "options": [
+        "Uncut eyebrows reach the same short length whether or not they are rubbed; the limit is set in the follicle.",
+        "Every growing hair needs a matrix; without one, eyebrows would not grow at all.",
+        "Eyebrow hairs are terminal hairs with a normal cortex.",
+        "Correct. A short anagen phase limits how long the hair gets."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-21",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "An EMT presses on a patient's fingernail until the pink area under it turns white, then releases. The pink returns in about one second. What was the pink color she saw?",
+    "options": [
+      "Pigment in the nail body",
+      "Blood in the capillaries of the dermis under the nail bed",
+      "Melanin passed from the nail matrix into the cells of the nail body",
+      "Carotene in the hyponychium"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The nail plate is clear dead keratin with no pigment. The pink is blood in the dense capillaries of the dermis beneath the nail bed. Pressing squeezes the blood out; releasing lets it flow back in, and the speed of return reflects blood flow to the fingertip.",
+      "options": [
+        "The nail body is clear, which is why the color beneath it shows through.",
+        "Correct. The pink is blood in dermal capillaries under the nail bed.",
+        "Melanin would give a brown color that does not blanch when pressed.",
+        "Carotene is yellow-orange and does not change with pressure."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-22",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "What is the difference between the hair shaft and the hair root?",
+    "options": [
+      "The shaft projects above the skin; the root lies within the follicle",
+      "The shaft is alive and the root is dead",
+      "The shaft is made of keratin; the root is made of dense connective tissue",
+      "The shaft grows and the root rests"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The shaft is the part of the hair above the skin surface; the root is the part inside the follicle, below the surface. Both are dead keratinized cells; only the matrix at the base is alive and growing.",
+      "options": [
+        "Correct. The shaft is above the surface and the root below it.",
+        "Both the shaft and the root are dead keratin-filled cells. The living cells are in the matrix of the bulb.",
+        "Both parts are keratinized cells. The connective tissue at the base is the papilla, not the root.",
+        "Growing and resting are phases of the whole follicle over time, not parts of one hair."
+      ]
+    }
+  },
+  {
+    "id": "anp-skin-accessory-23",
+    "type": "single",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Electron microscope studies show that apocrine sweat glands release their product mainly by which mode of secretion?",
+    "options": [
+      "Holocrine: the whole cell bursts",
+      "Merocrine: vesicles release their contents by exocytosis",
+      "Apocrine: the top of the cell pinches off",
+      "Endocrine: the product enters the blood"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Despite the name, apocrine sweat glands release their product mainly by exocytosis, the merocrine mode. The name is historical. Many exams still give them as the example of apocrine secretion; the milk-making glands of the breast are the clear case of true apocrine release.",
+      "options": [
+        "Holocrine secretion, where the whole cell bursts, is how sebaceous glands work.",
+        "Correct. The evidence shows mainly merocrine release.",
+        "This is the historical claim that gave the glands their name, and the answer many exams expect, but microscopy shows mainly exocytosis.",
+        "Sweat glands are exocrine: their product leaves through a duct, not into the blood."
+      ]
+    }
+  }
+]

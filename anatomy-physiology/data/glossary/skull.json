@@ -1,0 +1,47 @@
+{
+  "axial-appendicular": {
+    "def": "The two divisions of the skeleton. The axial skeleton (80 bones) is the upright core: skull, hyoid, ear bones, backbone and rib cage. The appendicular skeleton (126 bones) is the limbs plus the shoulder and hip bones that attach them to the trunk.",
+    "roots": [["axi-", "axis, central line"], ["append-", "to hang on"], ["-ular", "pertaining to"]],
+    "say": "AK-see-ul; ap-en-DIK-yoo-lur"
+  },
+  "cranial-bones": {
+    "def": "The eight bones of the brain case (cranium): the frontal, two parietal, two temporal, occipital, sphenoid and ethmoid bones. Its domed top is the calvaria.",
+    "roots": [["crani/o", "skull"], ["pariet-", "wall"], ["occiput", "back of the head"], ["sphen-", "wedge"], ["ethm-", "sieve"]],
+    "say": "KRAY-nee-ul; puh-RY-uh-tul; ok-SIP-ih-tul; SFEE-noyd; ETH-moyd"
+  },
+  "facial-bones": {
+    "def": "The fourteen bones of the face: two each of the maxilla, zygomatic, nasal, lacrimal and palatine bones and the inferior nasal conchae, plus the single vomer and mandible. The mandible is the only skull bone that moves freely.",
+    "roots": [["maxilla", "jaw"], ["zygo-", "yoke, join"], ["lacrima", "tear"], ["palat-", "roof of the mouth"], ["concha", "shell"], ["vomer", "plowshare"], ["mandere", "to chew"]],
+    "say": "mak-SIL-uh; zy-go-MAT-ik; LAK-rih-mul; PAL-uh-tine; KONG-kee; VOH-mer; MAN-dih-bul"
+  },
+  "sutures": {
+    "def": "The interlocking seams between skull bones, bound by a thin layer of dense connective tissue. The named ones are the coronal (frontal to parietals), sagittal (between the parietals), lambdoid (parietals to occipital) and squamous (parietal to temporal) sutures.",
+    "roots": [["sutura", "seam"], ["corona", "crown"], ["sagitta", "arrow"], ["lambda", "Greek letter Λ"], ["squam-", "scale"]],
+    "say": "SOO-churz; LAM-doyd; SKWAY-mus"
+  },
+  "skull-foramina": {
+    "def": "The holes (foramina), canals, fissures and passages through the skull bones that carry nerves and blood vessels. The largest is the foramen magnum in the occipital bone, where the lower end of the brain becomes the spinal cord.",
+    "roots": [["foramen", "hole"], ["magnum", "great"], ["meatus", "passage"]],
+    "say": "for-AY-men MAG-num; for-AM-ih-nuh"
+  },
+  "skull-landmarks": {
+    "def": "Named features of the skull, such as the orbit (eye socket), mastoid and styloid processes, zygomatic arch, sella turcica, cribriform plate, the three cranial fossae and the pterion. Each is described by the bone it belongs to.",
+    "roots": [["mast-", "breast"], ["styl-", "pointed stick"], ["cribr-", "sieve"], ["pter-", "wing"], ["petr-", "rock"]],
+    "say": "MAS-toyd; STY-loyd; SEL-uh TUR-sih-kuh; KRIB-rih-form; TEER-ee-on"
+  },
+  "paranasal-sinuses": {
+    "def": "Air-filled spaces inside the frontal, maxillary, sphenoid and ethmoid bones, lined by mucous membrane and draining into the nose. The maxillary sinus is the largest.",
+    "roots": [["para-", "beside"], ["nas-", "nose"], ["sinus", "hollow"]],
+    "say": "pair-uh-NAY-zul SY-nus-ez"
+  },
+  "fontanelle": {
+    "def": "A soft spot of a newborn's skull: an area covered by tough membrane where several skull bones have not yet grown to meet. The anterior fontanelle is the largest and usually closes by about 1 to 2 years.",
+    "roots": [["fontanelle", "little fountain"]],
+    "say": "fon-tuh-NEL"
+  },
+  "hyoid": {
+    "def": "A small U-shaped bone in the upper neck, just above the voice box. It touches no other bone: ligaments hang it from the styloid processes, and muscles and the tongue attach to it.",
+    "roots": [["hyo-", "U-shaped (the letter upsilon)"], ["-oid", "like"]],
+    "say": "HY-oyd"
+  }
+}

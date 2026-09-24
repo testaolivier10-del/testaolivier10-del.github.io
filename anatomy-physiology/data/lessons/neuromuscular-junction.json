@@ -1,0 +1,49 @@
+{
+  "topic": "neuromuscular-junction",
+  "hook": "<p>Before Ms. Alvarez's abdominal surgery, the anesthesiologist puts her to sleep and then injects rocuronium. Within a minute every skeletal muscle in her body goes limp, including her diaphragm, so a ventilator breathes for her. Her nerves still fire and her muscles are healthy: the drug acts in the narrow gap where each nerve ending meets a muscle fiber. When surgery ends, a second drug, neostigmine, lets her breathe on her own again.</p>",
+  "prereq": [
+    {
+      "q": "What opens a ligand-gated channel?",
+      "options": ["A change in membrane voltage", "A specific molecule binding to it", "Stretching of the membrane"],
+      "correct": 1,
+      "why": "A ligand-gated channel opens when a specific molecule, its ligand, binds a site on the channel protein. Voltage opens voltage-gated channels, and stretch opens mechanically gated ones.",
+      "review": "passive-transport"
+    },
+    {
+      "q": "A depolarization stops short of threshold. What happens?",
+      "options": ["A smaller action potential fires", "A full action potential fires after a delay", "It fades away with no action potential"],
+      "correct": 2,
+      "why": "Action potentials are all-or-none. A depolarization that does not reach threshold is a graded potential that simply fades.",
+      "review": "action-potential-basics"
+    },
+    {
+      "q": "At a synapse between a neuron and its target cell, what carries the signal across the synaptic cleft?",
+      "options": ["A neurotransmitter, by diffusion", "Ions flowing through gap junctions", "The action potential itself"],
+      "correct": 0,
+      "why": "The two cells do not touch. The axon terminal releases a neurotransmitter, which diffuses across the cleft and binds receptor proteins on the other cell.",
+      "review": "chemical-signaling"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-6",
+    "caption": "The neuromuscular junction at three magnifications. Hide the labels and name the axon terminal's vesicles, the synaptic cleft, the motor end plate and its receptor proteins."
+  },
+  "chain": [
+    { "cause": "An action potential travels down the motor neuron's axon and depolarizes its axon terminal.", "effect": "Voltage-gated calcium channels in the terminal open, and calcium ions rush in." },
+    { "cause": "Calcium binds sensor proteins on the docked synaptic vesicles.", "effect": "The vesicles fuse with the terminal membrane and release acetylcholine into the synaptic cleft by exocytosis." },
+    { "cause": "Acetylcholine diffuses across the cleft and binds nicotinic receptor proteins on the motor end plate.", "effect": "Their channels open, sodium flows in, and the end plate depolarizes: the end plate potential." },
+    { "cause": "The end plate potential spreads to the neighboring sarcolemma and brings it to threshold.", "effect": "Voltage-gated sodium channels open, and an action potential spreads along the muscle fiber." },
+    { "cause": "Acetylcholinesterase in the cleft splits acetylcholine into acetate and choline.", "effect": "The channels of the receptor proteins close and the end plate returns to rest, ready for the next nerve impulse." }
+  ],
+  "misconception": {
+    "wrong": "The nerve's electrical impulse jumps straight across into the muscle fiber.",
+    "right": "The axon terminal and the muscle fiber do not touch, and no current passes between them. The action potential in the terminal lets calcium in, calcium releases acetylcholine, and acetylcholine diffuses across the cleft and opens channels in the end plate. The muscle fiber then makes its own, new action potential. That chemical step is why drugs and toxins that change release, binding or breakdown of acetylcholine can weaken or paralyze muscles whose nerves are working normally."
+  },
+  "check": ["anp-neuromuscular-junction-1", "anp-neuromuscular-junction-3", "anp-neuromuscular-junction-5", "anp-neuromuscular-junction-7", "anp-neuromuscular-junction-9", "anp-neuromuscular-junction-11", "anp-neuromuscular-junction-14"],
+  "summary": "<p>A motor neuron carries commands from the brain or spinal cord to skeletal muscle fibers; each fiber has one neuromuscular junction, where the motor neuron's axon terminal faces the folded motor end plate across a synaptic cleft about 50 nm wide. An action potential in the terminal opens voltage-gated calcium channels, and entering calcium triggers exocytosis of synaptic vesicles full of acetylcholine. Acetylcholine diffuses across the cleft and binds nicotinic receptor proteins, ligand-gated channels that let sodium in, producing the end plate potential: a graded depolarization several times larger than needed to reach threshold. It triggers an action potential in the neighboring sarcolemma, one for every motor neuron impulse. Acetylcholinesterase in the cleft splits acetylcholine into acetate and choline within about a millisecond, ending the signal; the choline is taken back into the terminal. Botulinum toxin blocks release, curare-type drugs block the receptor proteins, and AChE inhibitors make acetylcholine linger.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
+    { "href": "/nremt/study-notes.html#chapter-25", "label": "NREMT: Poisoning and overdose emergencies (organophosphates)" },
+    { "href": "/ochem/lessons/esters-amides.html", "label": "Organic chemistry: esters and amides (acetylcholine is an ester)" }
+  ]
+}

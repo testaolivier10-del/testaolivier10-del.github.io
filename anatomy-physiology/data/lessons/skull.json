@@ -1,0 +1,48 @@
+{
+  "topic": "skull",
+  "hook": "<p>Jordan, 17, is hit on the side of the head by a baseball, just above his cheek. He jokes with his coach for an hour, then gets a headache, starts vomiting and becomes hard to wake. A scan shows a thin crack at the spot where four skull bones meet, and blood collecting under it from a torn artery. Knowing the skull's bones, seams and weak spots is how you know that blow was dangerous.</p>",
+  "prereq": [
+    {
+      "q": "Which bone marking is a rounded knob at the end of a bone, where it meets another bone?",
+      "options": ["Fossa", "Condyle", "Crest"],
+      "correct": 1,
+      "why": "A condyle is a rounded knob where one bone meets another. A fossa is a shallow hollow, and a crest is a raised ridge.",
+      "review": "bone-structure"
+    },
+    {
+      "q": "How do the flat bones of the brain case form?",
+      "options": ["By intramembranous ossification, directly inside a sheet of connective tissue", "By endochondral ossification, replacing a cartilage model", "By appositional growth on the surface of cartilage"],
+      "correct": 0,
+      "why": "The flat bones of the skull form by intramembranous ossification: bone is laid down directly inside a sheet of connective tissue, without a cartilage model. Endochondral ossification builds most other bones from cartilage.",
+      "review": "bone-development"
+    },
+    {
+      "q": "Which body cavity holds the brain?",
+      "options": ["The cranial cavity, part of the dorsal body cavity", "The thoracic cavity, part of the ventral body cavity", "The vertebral canal, part of the ventral body cavity"],
+      "correct": 0,
+      "why": "The brain sits in the cranial cavity, the upper part of the dorsal body cavity. The vertebral canal, also dorsal, holds the spinal cord, and the thoracic cavity is ventral.",
+      "review": "body-cavities"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-7-5",
+    "caption": "The skull from the right side. Hide the labels, then name the cranial bones, the four sutures and the pterion before the facial bones and the processes around the ear."
+  },
+  "chain": [
+    { "cause": "The flat bones of the brain case form by intramembranous ossification, each spreading outward from an ossification center in a sheet of connective tissue.", "effect": "At birth the bones have not yet grown far enough to meet each other." },
+    { "cause": "Where several bones have not met, only a tough fibrous membrane covers the brain.", "effect": "These membrane-covered areas are the fontanelles, and narrow open seams run along every bone edge." },
+    { "cause": "Bones separated by membrane can slide and overlap.", "effect": "The head narrows as it passes through the birth canal, and afterward the skull can expand as the brain grows." },
+    { "cause": "The bone edges keep growing toward each other through infancy.", "effect": "The fontanelles shrink and close, the posterior one by about 2 to 3 months and the anterior one by about 1 to 2 years." },
+    { "cause": "The jagged bone edges end up interlocked, bound by a thin layer of dense connective tissue.", "effect": "The sutures hold the cranial bones almost motionless, so the adult brain case is a rigid box." }
+  ],
+  "misconception": {
+    "wrong": "A baby's soft spot is an open hole in the skull with nothing protecting the brain.",
+    "right": "A fontanelle is not a hole. It is an area where the skull bones have not yet grown to meet, covered by a tough sheet of fibrous membrane, with the scalp over it. You can touch it gently and feel a pulse through it. It is less protected than bone, but it is closed, and it usually disappears by the second year as the bones meet."
+  },
+  "check": ["anp-skull-1", "anp-skull-3", "anp-skull-6", "anp-skull-11", "anp-skull-14", "anp-skull-15", "anp-skull-17", "anp-skull-21"],
+  "summary": "<p>The skeleton divides into the axial skeleton (skull, hyoid, ear bones, backbone and rib cage) and the appendicular skeleton (the limbs and the shoulder and hip bones that attach them). The skull has 8 cranial bones around the brain and 14 facial bones. The coronal, sagittal, lambdoid and squamous sutures lock the cranial bones together; the pterion is a thin spot over a large artery. The brain case floor steps down through the anterior, middle and posterior cranial fossae, and foramina such as the foramen magnum carry nerves and vessels. The frontal, maxillary, sphenoid and ethmoid sinuses are air spaces lined by mucous membrane. Fontanelles are membrane-covered gaps in a newborn's skull that close as the bones meet. The hyoid touches no other bone.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" }
+  ]
+}

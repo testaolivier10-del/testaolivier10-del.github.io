@@ -1,0 +1,114 @@
+{
+  "os-7-2": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.2",
+      "section": "7.1",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/396b721fa42661991f46848191e060757148dcca",
+      "page": "7-1-divisions-of-the-skeletal-system"
+    },
+    "alt": "Front and back views of a whole adult skeleton. The skull, backbone, breastbone and ribs are shaded one color, and the bones of the arms and legs with the shoulder and hip bones that attach them are shaded a second color, with a key naming the two divisions.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.2",
+    "labels": [],
+    "w": 1100,
+    "h": 1119,
+    "ext": "jpg"
+  },
+  "os-7-4": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.4",
+      "section": "7.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/2b992922f28d116ef649105fc6d93b2880df5084",
+      "page": "7-2-the-skull"
+    },
+    "alt": "The skull seen from the front. The forehead bone sits above two eye sockets, each walled by several smaller bones with openings at the back. Below them is the pear-shaped opening of the nose, divided by a thin bony wall and holding curled shelves of bone. The upper jaw bones hold the upper teeth, the cheekbones sit at the outer corners, and the separate lower jaw holds the lower teeth, with a small hole in the chin region on each side.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.4",
+    "labels": [],
+    "w": 1100,
+    "h": 931,
+    "ext": "jpg"
+  },
+  "os-7-5": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.5",
+      "section": "7.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/3472f5e5dae7c27e5804994fecb91df8407342aa",
+      "page": "7-2-the-skull"
+    },
+    "alt": "The skull seen from the right side. The large rounded brain case is made of plates joined by wavy seams, with a circled spot on the side of the head where four bones meet. A bony bar runs from the cheek back toward the ear opening, with a knob behind the ear and a thin spike pointing down beneath it. The lower jaw hinges just in front of the ear opening.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.5",
+    "labels": [],
+    "w": 1100,
+    "h": 755,
+    "ext": "jpg"
+  },
+  "os-7-8": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.8",
+      "section": "7.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/a396a2846f29c7093bc703fe88e037c012b24076",
+      "page": "7-2-the-skull"
+    },
+    "alt": "Two views of the base of the skull. The top drawing looks up at the skull from below with the lower jaw removed: the bony roof of the mouth, the large central hole at the back, the rounded knobs beside it, and many smaller holes and canals. The bottom drawing looks down into the brain case with the top removed: the floor steps down in three levels from front to back, with a saddle-shaped hollow in the middle, a sieve-like plate in front and paired holes on each side.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.8",
+    "labels": [],
+    "w": 1100,
+    "h": 1492,
+    "ext": "jpg"
+  },
+  "os-7-11": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.11",
+      "section": "7.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/98cad99778c06d84cea34f7635f9d18b915d2209",
+      "page": "7-2-the-skull"
+    },
+    "alt": "The skull cut down the midline and seen from the inside. It shows the inner face of the brain case, the saddle-shaped hollow in the middle of the skull base, the air spaces in the forehead bone and behind the nose, the bony wall that divides the nose, the lower jaw with a hole on its inner face, and the small U-shaped bone floating in the upper neck below the jaw.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.11",
+    "labels": [],
+    "w": 1100,
+    "h": 760,
+    "ext": "jpg"
+  },
+  "os-7-18": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.18",
+      "section": "7.2",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/0d234f53a2901b8424eb5b6411ddabcb203fe879",
+      "page": "7-2-the-skull"
+    },
+    "alt": "Front and side views of a woman's head with the air-filled spaces in the skull bones shown in color: one above the eyebrows, a cluster between the eyes, one deep behind the nose, and a large pair in the cheeks beside the nose.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.18",
+    "labels": [],
+    "w": 827,
+    "h": 558,
+    "ext": "jpg"
+  },
+  "os-7-33": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "7.33",
+      "section": "7.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/c4a2504be4fa31bc72531e2bb8e729247e02043e",
+      "page": "7-5-embryonic-development-of-the-axial-skeleton"
+    },
+    "alt": "A newborn's skull seen from above and from the side. The skull bones are separate plates, each with a central point where bone first formed, and the gaps between them are wide. Soft membrane-filled areas lie where several bones meet: a large diamond-shaped one on top toward the front, a smaller one at the back, and paired ones on each side.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 7.33",
+    "labels": [],
+    "w": 1100,
+    "h": 371,
+    "ext": "jpg"
+  }
+}

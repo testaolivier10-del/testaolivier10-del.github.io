@@ -1,0 +1,41 @@
+{
+  "topic": "muscle-metabolism",
+  "hook": "<p>Jada, 17, runs the 400 meters. She flies through the first 200, but in the final stretch her legs burn and tighten, her stride shortens and two runners pass her. Her coach says she \"ran out of gas\". Her muscles still hold plenty of ATP. What changed is which systems were remaking it, and what those systems left behind in her fibers.</p>",
+  "prereq": [
+    {
+      "q": "How many ATP does one glucose yield when it is split to lactate without oxygen?",
+      "options": ["2", "About 30–32", "36–38"],
+      "correct": 0,
+      "why": "Glycolysis alone nets 2 ATP per glucose; turning pyruvate into lactate makes none but regenerates NAD+. Complete aerobic breakdown gives about 30–32.",
+      "review": "cellular-respiration"
+    },
+    {
+      "q": "In the cross-bridge cycle, what does a fresh ATP do when it binds a myosin head attached to actin?",
+      "options": ["Makes the head release actin", "Releases calcium from the SR", "Pulls tropomyosin over actin"],
+      "correct": 0,
+      "why": "ATP binding lets the myosin head detach from actin; splitting it then re-cocks the head. Without ATP, heads stay attached, as in rigor mortis.",
+      "review": "cross-bridge-cycle"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-12",
+    "caption": "How a muscle fiber remakes ATP: creatine phosphate (top), glycolysis (middle) and aerobic respiration in mitochondria (bottom)."
+  },
+  "chain": [
+    { "cause": "A hard run starts, and cross-bridges and calcium pumps split ATP many times faster than at rest.", "effect": "ADP builds up, and creatine kinase moves phosphate from creatine phosphate onto it, keeping ATP nearly constant for the first seconds." },
+    { "cause": "Creatine phosphate falls, and ADP and phosphate rise.", "effect": "Glycolysis speeds up, breaking down muscle glycogen and making ATP fast, but only 2 per glucose." },
+    { "cause": "Glycolysis now makes pyruvate faster than the mitochondria can take it in.", "effect": "Pyruvate is turned into lactate, regenerating NAD+ so glycolysis keeps running; lactate leaves the fiber as fuel for other tissues." },
+    { "cause": "Phosphate from spent creatine phosphate and ATP accumulates in the fiber.", "effect": "Each cross-bridge pulls less hard and the SR releases less calcium, so force falls: muscle fatigue, while ATP stays near three quarters of its resting level." },
+    { "cause": "The run ends, but creatine phosphate, myoglobin oxygen and lactate are all away from their resting values.", "effect": "Oxygen use stays high for minutes (EPOC) while aerobic respiration rebuilds the stores and clears lactate." }
+  ],
+  "misconception": {
+    "wrong": "Lactic acid is a waste product that poisons tired muscles and causes the soreness you feel the next day.",
+    "right": "Lactate is a fuel: heart muscle and other fibers burn it, and the liver makes glucose from it. It is cleared within about an hour. Fatigue during hard work comes mainly from phosphate buildup and reduced calcium release, and next-day soreness from small injuries in the fibers, especially after eccentric work."
+  },
+  "check": ["anp-muscle-metabolism-2", "anp-muscle-metabolism-3", "anp-muscle-metabolism-5", "anp-muscle-metabolism-7", "anp-muscle-metabolism-9", "anp-muscle-metabolism-12", "anp-muscle-metabolism-19"],
+  "summary": "<p>Muscle keeps ATP nearly constant by remaking it as fast as it is spent. Creatine phosphate, through creatine kinase, remakes ATP in one step and covers about the first 10 seconds of all-out work. Anaerobic glycolysis, mainly from muscle glycogen, is fast but yields only 2 ATP per glucose and makes lactate when it outpaces the mitochondria; lactate is a fuel, not a waste. Aerobic respiration yields about 30–32 ATP per glucose, burns fatty acids and lactate too, and supplies nearly all ATP in activity longer than a few minutes. The systems overlap. Myoglobin stores and shuttles oxygen inside fibers. Muscle fatigue comes from reduced drive, phosphate buildup, less calcium release and, in long events, glycogen depletion, not from ATP running out. EPOC is the extra oxygen used after exercise to restore stores and pay the costs of recovery.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-34", "label": "NREMT: Multisystem trauma (crush injury)" },
+    { "href": "/ochem/lessons/carbohydrates.html", "label": "Organic chemistry: carbohydrates" }
+  ]
+}

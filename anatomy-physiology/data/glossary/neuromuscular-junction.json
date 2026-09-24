@@ -1,0 +1,37 @@
+{
+  "motor-neuron": {
+    "def": "A neuron that carries commands from the brain or spinal cord out to an effector. Those that supply skeletal muscle send one long axon to the muscle, where it branches, each branch ending on one muscle fiber.",
+    "roots": [["motor", "mover (Latin)"], ["neur/o", "nerve"]],
+    "say": ""
+  },
+  "nmj": {
+    "def": "The synapse between a motor neuron's axon terminal and a skeletal muscle fiber: the terminal, a synaptic cleft about 50 nm wide, and the motor end plate, a folded patch of sarcolemma packed with acetylcholine receptor proteins. Each fiber normally has one.",
+    "roots": [["neur/o", "nerve"], ["muscul/o", "muscle"]],
+    "say": "NOOR-oh-MUS-kyoo-lar"
+  },
+  "acetylcholine": {
+    "def": "The neurotransmitter that motor neurons release onto skeletal muscle, made from an acetyl group and choline. It is also used by some autonomic neurons and in the brain.",
+    "roots": [["acetyl", "an acetyl group (from acetum, vinegar)"], ["chol/e", "bile, where choline was first found"]],
+    "say": "a-SEE-til-KOH-leen"
+  },
+  "synaptic-vesicle-release": {
+    "def": "The release of neurotransmitter from synaptic vesicles, small sacs in an axon terminal, when an action potential opens voltage-gated calcium channels and entering calcium triggers the vesicles to fuse with the membrane by exocytosis.",
+    "roots": [["syn-", "together"], ["vesicula", "little bladder"]],
+    "say": ""
+  },
+  "nicotinic-nmj": {
+    "def": "The nicotinic receptor proteins on the motor end plate: ligand-gated channels that open when two acetylcholine molecules bind, letting sodium in (and a little potassium out), which depolarizes the end plate. A compound in tobacco also opens them, hence the name.",
+    "roots": [],
+    "say": "nik-oh-TIN-ik"
+  },
+  "end-plate-potential": {
+    "def": "The graded depolarization of the motor end plate caused by acetylcholine opening the end plate's acetylcholine-gated channels. In a healthy junction it is several times larger than needed to bring the neighboring sarcolemma to threshold.",
+    "roots": [],
+    "say": ""
+  },
+  "acetylcholinesterase": {
+    "def": "The enzyme anchored in the synaptic cleft that splits acetylcholine into acetate and choline within about a millisecond, ending each signal; the choline is taken back into the axon terminal and reused.",
+    "roots": [["-ester-", "the ester bond it splits"], ["-ase", "enzyme"]],
+    "say": "a-SEE-til-KOH-lin-ES-ter-ayss"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "topic": "head-neck-muscles",
+  "hook": "<p>Ms. Alvarez, 45, wakes up and sees in the mirror that the right side of her face has dropped. She cannot raise her right eyebrow or close her right eye fully, her smile pulls to the left, and coffee dribbles from the right corner of her mouth. She can still chew hard food normally. Every one of those signs points to a named facial muscle, and the chewing muscles are spared.</p>",
+  "prereq": [
+    {
+      "q": "Which bone is the lower jaw?",
+      "options": ["Maxilla", "Mandible", "Zygomatic bone"],
+      "correct": 1,
+      "why": "The mandible is the lower jaw, the only movable bone of the skull. The maxilla forms the upper jaw, and the zygomatic bone is the cheekbone.",
+      "review": "skull"
+    },
+    {
+      "q": "What is special about the hyoid bone?",
+      "options": ["It forms a joint with the mandible", "It forms no joint with any other bone", "It is part of the cervical vertebrae"],
+      "correct": 1,
+      "why": "The hyoid hangs in the neck from muscles and ligaments and forms no joint with any other bone.",
+      "review": "skull"
+    },
+    {
+      "q": "The name \"sternohyoid\" tells you what about the muscle?",
+      "options": ["Its shape", "Its attachments: from the sternum to the hyoid", "Its number of heads"],
+      "correct": 1,
+      "why": "Muscle names often list the attachments, origin first. The sternohyoid runs from the sternum to the hyoid bone.",
+      "review": "muscle-mechanics"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-11-7",
+    "caption": "The muscles of facial expression from the front and side. Hide the labels and name the two rings, the cheek muscle and the two bellies of the scalp muscle with the sheet of tendon between them."
+  },
+  "chain": [
+    { "cause": "A facial muscle originates on a skull bone and inserts into the skin.", "effect": "When it contracts, it pulls the skin toward the bone, changing your expression rather than moving a joint." },
+    { "cause": "The chewing muscles originate on the skull and insert on the mandible.", "effect": "Their pull moves the mandible at the temporomandibular joint." },
+    { "cause": "Three of the four chewing muscles (masseter, temporalis, medial pterygoid) pull the mandible up.", "effect": "Closing the jaw is strong, and biting force is high." },
+    { "cause": "Opening relies on the lateral pterygoids, the suprahyoid muscles and gravity.", "effect": "Opening the jaw is much weaker than closing it." },
+    { "cause": "During a swallow the suprahyoid muscles pull the hyoid up, and then the infrahyoid muscles pull it down.", "effect": "The hyoid and the voice box rise and fall with every swallow." }
+  ],
+  "misconception": {
+    "wrong": "The buccinator is a chewing muscle, because it helps you chew.",
+    "right": "The buccinator inserts into the lips and cheek, not the mandible, so it cannot move the jaw. It is a muscle of facial expression: it presses the cheek against the teeth, keeping food on the teeth while the true chewing muscles (masseter, temporalis and the two pterygoids) move the mandible."
+  },
+  "check": ["anp-head-neck-muscles-1", "anp-head-neck-muscles-4", "anp-head-neck-muscles-7", "anp-head-neck-muscles-10", "anp-head-neck-muscles-11", "anp-head-neck-muscles-12", "anp-head-neck-muscles-15"],
+  "summary": "<p>Facial expression muscles insert into skin: the occipitofrontalis raises the eyebrows, the orbicularis oculi and orbicularis oris close the eye and lips, the zygomaticus major smiles, and the buccinator presses the cheek to the teeth. The chewing muscles insert on the mandible: the masseter, temporalis and medial pterygoid close the jaw, and the lateral pterygoid protracts it and helps open it. One sternocleidomastoid tilts the head to its side and turns the face to the other side; both flex the neck. The scalenes lift the first two ribs. Suprahyoid muscles raise the hyoid and help open the jaw; infrahyoid muscles lower and steady it.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology" },
+    { "href": "/nremt/study-notes.html#chapter-33", "label": "NREMT: Trauma to the head, neck and spine" }
+  ]
+}

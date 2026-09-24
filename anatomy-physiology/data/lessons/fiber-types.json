@@ -1,0 +1,47 @@
+{
+  "topic": "fiber-types",
+  "hook": "<p>Mr. Alvarez, 78, spent ten days in the hospital with a lung infection. Before, he walked to the store every day. Now he needs both arms to push up from a chair, and his physical therapist worries he will fall. His muscles have shrunk from disuse on top of years of age-related loss. Whether he regains his strength depends on what kinds of fibers his muscles hold and how they respond to being used again.</p>",
+  "prereq": [
+    {
+      "q": "Which protein stores oxygen inside muscle fibers and gives them a red color?",
+      "options": ["Myoglobin", "Creatine kinase", "Troponin"],
+      "correct": 0,
+      "why": "Myoglobin is a red, iron-containing protein that binds oxygen in the cytosol of muscle fibers and releases it when oxygen in the fiber falls.",
+      "review": "muscle-metabolism"
+    },
+    {
+      "q": "How many ATP does anaerobic glycolysis make per glucose, compared with aerobic respiration?",
+      "options": ["2 compared with about 30–32", "About 30–32 compared with 2", "The same number, but faster"],
+      "correct": 0,
+      "why": "Anaerobic glycolysis nets 2 ATP per glucose, fast but wasteful. Aerobic respiration yields about 30–32 per glucose but needs oxygen and delivers ATP more slowly.",
+      "review": "muscle-metabolism"
+    },
+    {
+      "q": "What is a stem cell?",
+      "options": ["An unspecialized cell that can divide and give rise to specialized cells", "A mature cell that has stopped dividing", "A cell that has lost its nucleus"],
+      "correct": 0,
+      "why": "Stem cells are unspecialized cells that divide to renew themselves and produce daughter cells that differentiate into specialized cells.",
+      "review": "cell-cycle"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-20",
+    "caption": "A normal arm muscle and the same muscle after atrophy from disuse. Each fiber has lost myofibrils; the number of fibers is the same."
+  },
+  "chain": [
+    { "cause": "A person starts regular endurance running, and their leg fibers repeatedly work hard with limited oxygen.", "effect": "The fibers build more mitochondria and myoglobin, and fast glycolytic fibers shift toward fast oxidative ones." },
+    { "cause": "Low oxygen and fast blood flow in the working muscle make fibers and capillary lining cells release VEGF.", "effect": "Endothelial cells of existing capillaries divide and sprout new capillaries: angiogenesis." },
+    { "cause": "More capillaries surround each fiber.", "effect": "Oxygen's diffusion distance to the mitochondria shortens, and more oxygen reaches each fiber per minute." },
+    { "cause": "More oxygen reaches fibers that now have more mitochondria.", "effect": "More ATP comes from aerobic respiration at any pace, less from glycolysis, so the runner makes less lactate and can keep going longer." }
+  ],
+  "misconception": {
+    "wrong": "Muscles grow by making new fibers, and training can turn slow-twitch fibers into fast-twitch ones (or the reverse) at will.",
+    "right": "Adult skeletal muscle grows almost entirely by hypertrophy: existing fibers add myofibrils, and muscle stem cells fuse with them to add nuclei. The ratio of slow to fast fibers is largely inherited; training mostly changes what each fiber is like, such as its size, mitochondria and capillaries, and shifts fibers within the fast types."
+  },
+  "check": ["anp-fiber-types-3", "anp-fiber-types-5", "anp-fiber-types-6", "anp-fiber-types-9", "anp-fiber-types-12", "anp-fiber-types-14", "anp-fiber-types-18"],
+  "summary": "<p>Skeletal muscle fibers differ in contraction speed, set by their myosin, and in how they make ATP. Slow oxidative (slow-twitch, type I) fibers are thin, red, rich in mitochondria, myoglobin and capillaries, and resist fatigue; fast glycolytic (type IIx) fibers are thick, pale and powerful but tire quickly; fast oxidative (type IIa) fibers are in between. Every muscle is a mixture, largely inherited, and small slow units are recruited before large fast ones. Endurance training adds mitochondria, myoglobin and capillaries through angiogenesis; resistance training causes hypertrophy, with little or no hyperplasia. Disuse, loss of the motor neuron and aging (sarcopenia) cause atrophy. Myoblasts fuse into myotubes to form fibers, and muscle stem cells repair small injuries; in muscular dystrophy, fibers lacking dystrophin tear and are replaced by fat and connective tissue.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-8", "label": "NREMT: Life span development (aging)" },
+    { "href": "/nremt/study-notes.html#chapter-37", "label": "NREMT: Patients with special challenges" }
+  ]
+}

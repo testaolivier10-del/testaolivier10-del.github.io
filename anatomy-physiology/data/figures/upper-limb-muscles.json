@@ -1,0 +1,58 @@
+{
+  "os-11-22": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.22",
+      "section": "11.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/58c020b883b7c60d8e02f501379e7174288dde1a",
+      "page": "11-5-muscles-of-the-pectoral-girdle-and-upper-limbs"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/58c020b883b7c60d8e02f501379e7174288dde1a",
+    "alt": "Muscles around the shoulder blade. On the left, the front of the chest with the large chest muscle cut away shows a small muscle from the ribs to the coracoid process and a row of saw-toothed slips from the ribs wrapping back toward the scapula. On the right, the upper back from behind shows a large diamond-shaped sheet from the skull and spine to the shoulder, and, on the other side where it is removed, two diamond-shaped muscles between the spine and the scapula.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.22",
+    "labels": []
+  },
+  "os-11-23": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.23",
+      "section": "11.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e5ba9b5bb7343a347f55336ebd7a61f3b35b0cdc",
+      "page": "11-5-muscles-of-the-pectoral-girdle-and-upper-limbs"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e5ba9b5bb7343a347f55336ebd7a61f3b35b0cdc",
+    "alt": "Four views of the muscles that move the humerus. The top views show the large fan-shaped chest muscle, the broad sheet of the lower back and the thick triangular muscle capping the shoulder. The bottom views show the deeper shoulder muscles from the front and from behind, including the four small muscles that run from the scapula to the top of the humerus.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.23",
+    "labels": []
+  },
+  "os-11-25": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.25",
+      "section": "11.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/6668b272a691b8377071de429a1336fec0469a5c",
+      "page": "11-5-muscles-of-the-pectoral-girdle-and-upper-limbs"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/6668b272a691b8377071de429a1336fec0469a5c",
+    "alt": "Six views of the left arm and forearm. The top pair shows the two-headed muscle on the front of the upper arm with a deeper muscle beneath it, and the three-headed muscle on the back. The middle pair shows the superficial forearm muscles on the palm side and on the back, with long tendons running into the hand. The bottom pair shows the deep forearm muscles, including a small square muscle across the lower ends of the two forearm bones.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.25",
+    "labels": []
+  },
+  "os-11-28": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "11.28",
+      "section": "11.5",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/49b609261eb97e71f9ddf62a249b747ebd49279e",
+      "page": "11-5-muscles-of-the-pectoral-girdle-and-upper-limbs"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/49b609261eb97e71f9ddf62a249b747ebd49279e",
+    "alt": "Four views of the small muscles inside the left hand. The palm view shows fleshy mounds at the base of the thumb and along the little-finger side, with thin muscles running beside the finger tendons. The other views show muscles lying between the long bones of the hand, on the palm side and on the back.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 11.28",
+    "labels": []
+  }
+}

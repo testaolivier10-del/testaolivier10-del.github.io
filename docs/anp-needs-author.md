@@ -158,7 +158,7 @@ review by a licensed A&P instructor.
 ### oxytocin-in-labor: is oxytocin needed for labor to progress?
 - **Status:** pending review.
 - **Where:** `homeostasis-feedback` (childbirth loop), the feedback loop builder's childbirth
-  failure question, later `labor-birth`.
+  failure question, `labor-birth` (notes For your exam note).
 - **Evidence-based position:** oxytocin strengthens contractions through the positive feedback
   loop, but labor can still start and progress without it: mice lacking oxytocin or its receptor
   give birth normally (Nishimori 1996; Takayanagi 2005), and women with little oxytocin have had
@@ -528,9 +528,9 @@ review by a licensed A&P instructor.
 
 ### ovary-default: is the ovary the "default" gonad?
 - **Status:** pending review.
-- **Where:** `meiosis` (notes For your exam note).
-- **Evidence-based position:** ovary development is actively switched on by its own genes (RSPO1/WNT4/beta-catenin, FOXL2), which also hold off the testis program throughout life; loss of FOXL2 in adult mouse ovaries turns granulosa cells toward Sertoli-like cells. SRY tips the balance toward a testis; without it the ovary program wins, but it is not a passive default.
-- **For your exam:** older texts say the ovary is the "default" that forms whenever SRY is absent. The exam answer to "what makes the gonad a testis?" is SRY on the Y chromosome.
+- **Where:** `meiosis` (notes For your exam note); `fetal-development-circulation` (sex differentiation, For your exam note; logged here rather than as a separate female-default entry).
+- **Evidence-based position:** ovary development is actively switched on by its own genes (RSPO1/WNT4/beta-catenin, FOXL2), which also hold off the testis program throughout life; loss of FOXL2 in adult mouse ovaries turns granulosa cells toward Sertoli-like cells (Uhlenhaut et al., Cell 2009). SRY tips the balance toward a testis; without it the ovary program wins, but it is not a passive default. The fetal-development page adds the part of the claim that holds: without testis hormones, the ducts and the external genitalia develop as female.
+- **For your exam:** older texts say the ovary is the "default" that forms whenever SRY is absent, and many courses say female development is the "default" when there is no Y chromosome. The exam answer to "what makes the gonad a testis?" is SRY on the Y chromosome.
 
 ### erection-mediator: acetylcholine or nitric oxide?
 - **Status:** pending review.
@@ -549,6 +549,60 @@ review by a licensed A&P instructor.
 - **Where:** `male-anatomy` (notes Point and Shoot paragraph; question 15).
 - **Evidence-based position:** selective alpha-1A blockers (tamsulosin, silodosin) mainly cause reduced or absent emission; true retrograde ejaculation is more typical after prostate surgery or nerve damage from diabetes. The notes say this. Question 15 keeps retrograde ejaculation in an unnamed alpha-1 blocker but proves it with sperm in the urine, and its explanation notes that these drugs can also weaken emission itself.
 - **For your exam:** many texts and pharmacology lists say alpha-blockers cause retrograde ejaculation. The page has no For your exam note; question 15 matches that answer.
+
+### acrosome-reaction-trigger: what sets off the acrosomal reaction?
+- **Status:** pending review.
+- **Where:** `fertilization` (notes, acrosomal reaction and For your exam note; questions on the acrosomal reaction).
+- **Evidence-based position:** a rise in calcium in the sperm head sets off the reaction, but where it starts is not settled. Filming of mouse fertilization showed that most fertilizing sperm have already reacted before they reach the zona pellucida, while crossing the cumulus cells (Jin et al., PNAS 2011); sperm binding to the zona depends on whether ZP2 has been cleaved, not on ZP3 triggering the reaction (Avella et al., Sci Transl Med 2014). In humans, sperm first bind the zona through ZP2, and progesterone from the cumulus cells is one candidate trigger. The notes teach the classic model (Figure 1) and the newer evidence side by side and call the human site debated.
+- **For your exam:** many courses teach that binding to a zona pellucida glycoprotein (often named as ZP3) triggers the acrosomal reaction. Give that answer if asked. Either way, a sperm that cannot release its acrosome's enzymes cannot cross the zona pellucida.
+
+### fast-block-mammals: is there a fast electrical block to polyspermy in humans?
+- **Status:** pending review.
+- **Where:** `fertilization` (notes, blocks to polyspermy and For your exam note).
+- **Evidence-based position:** the fast electrical block (a depolarization of the oocyte's membrane within seconds) is shown in sea urchins and frogs; mammalian eggs, human eggs included, do not appear to use one (Jaffe, Am J Physiol 1983). In mammals the block is the cortical reaction (an enzyme released from the cortical granules cuts ZP2 and the zona stiffens) plus the membrane block, in which the oocyte sheds its sperm-binding receptor protein, JUNO (Bianchi and Wright, NEJM 2016). The notes teach it this way and do not name JUNO.
+- **For your exam:** some courses describe a fast block (membrane depolarization) followed by a slow block (the cortical reaction). If a question asks for the fast block, that is the expected answer.
+
+### relaxin-source-role: where relaxin comes from and what it does in human pregnancy
+- **Status:** pending review.
+- **Where:** `placenta` (notes relaxin bullet and For your exam note; an option of question anp-placenta-17).
+- **Evidence-based position:** in humans, circulating relaxin comes mainly from the corpus luteum, with smaller amounts from the placenta and uterine lining, and peaks in the first trimester. It acts mainly on blood vessels and the kidneys (vasodilation, the early rise in kidney blood flow; Conrad, Am J Physiol 2011). Serum levels do not track pelvic joint laxity (Marnach et al., Obstet Gynecol 2003), and women without a corpus luteum, who have almost no circulating relaxin, carry pregnancies to term. The loosening of pelvic ligaments and the softening of the cervix come mainly from studies in other mammals.
+- **For your exam:** many courses teach that relaxin, from the placenta, relaxes the pubic symphysis and the pelvic ligaments and softens the cervix before birth. Give that answer if asked.
+
+### ductus-venosus-and-lung-flow-shares: how much blood the fetal shunts carry
+- **Status:** pending review.
+- **Where:** `fetal-development-circulation` (notes, fetal circulation steps; lesson). Related: the development tools' fetal-shunt items.
+- **Evidence-based position:** Doppler ultrasound in human fetuses finds that the ductus venosus shunts about 20–30% of umbilical venous blood late in pregnancy, more earlier on (Kiserud et al., Lancet 1991 and Ultrasound Obstet Gynecol 2000), and that the lungs receive about 13–25% of the combined output of both ventricles in the second half of pregnancy (Rasanen et al., Circulation 1996). Both shares are higher than the older values of about 8–10% for the lungs, which came from fetal lambs. The notes say textbooks often give about half for the ductus venosus and that ultrasound suggests "perhaps a fifth to a third" late in pregnancy, and that "about a tenth to a quarter" of the combined output reaches the lungs, more late in pregnancy.
+- **For your exam:** textbooks often say that about half of umbilical blood bypasses the liver through the ductus venosus and that the lungs receive only about 10% of the output. The page gives the textbook half in the text and has no separate For your exam note.
+
+### dating-convention: counting from fertilization or from the last period
+- **Status:** pending review.
+- **Where:** `embryonic-development` ("Counting the weeks": days and weeks after fertilization); `fetal-development-circulation` onward ("Two ways of counting, again": the clinical count), `placenta`, `pregnancy`, `labor-birth`; the gestational-age calculator and the chapter's graphs (weeks from the last period).
+- **Evidence-based position:** not a scientific dispute but a convention the course must pick. Embryonic events are given in days or weeks after fertilization (the embryologists' count; Moore, The Developing Human). From the fetal period on, the course uses the clinical count from the first day of the last menstrual period, about two weeks longer (ACOG Committee Opinion 700). The embryonic period is weeks 1–8 after fertilization, the fetal period from about week 10 of pregnancy (week 9 after fertilization), term 37 to just under 42 weeks. Each page says which count it uses, and some give both.
+- **For your exam:** textbooks mix the two counts. Many A&P texts date everything from fertilization (for example, the fetal period from week 9), while clinical sources and pregnancy questions use gestational age (term at 37 to 42 weeks from the last period). Check which count a question uses. The pages have no For your exam note.
+
+### hpl-insulin-resistance: which hormone makes the mother insulin resistant?
+- **Status:** pending review.
+- **Where:** `placenta` (lesson step 5; notes hPL bullet; question anp-placenta-17), `pregnancy` (notes).
+- **Evidence-based position:** insulin resistance in late pregnancy has several hormonal causes: hPL, placental growth hormone, progesterone, cortisol and prolactin, plus inflammatory and fat-tissue signals (Newbern and Freemark 2011; Catalano, Reproduction 2014). Animal and cell studies suggest placental growth hormone may matter as much as hPL or more (Barbour et al., Endocrinology 2002). The placenta notes name hPL "together with a placental growth hormone, progesterone and cortisol"; question 17 keys hPL as the best of its options; the pregnancy notes name hPL alone.
+- **For your exam:** most textbooks and exams name human placental lactogen as the hormone that causes the mother's insulin resistance. The pages have no For your exam note, since hPL is the keyed answer.
+
+### labor-trigger: what starts human labor?
+- **Status:** pending review.
+- **Where:** `labor-birth` (notes For your exam note; lesson causal chain; flashcard dv-labor-trigger).
+- **Evidence-based position:** not fully known. Placental CRH rises steeply near term, and earlier in women who deliver preterm (McLean et al., Nat Med 1995); it drives the fetal adrenal to make DHEA-S, which the placenta turns into estrogens. The uterus stops responding to progesterone (functional progesterone withdrawal, for example through a shift in its progesterone receptor types) while blood progesterone stays high (Mesiano, Semin Reprod Med 2007; Norwitz et al., NEJM 1999). Estrogen then raises gap junctions, oxytocin receptor proteins and prostaglandin production. The fall in progesterone before labor is real in sheep, where fetal cortisol makes the placenta convert progesterone into estrogen.
+- **For your exam:** many textbooks say progesterone falls and estrogen rises, so the estrogen-to-progesterone ratio rises. If a question asks what shifts before labor, "rising estrogen relative to progesterone" is the expected answer.
+
+### milk-ejection-feedback: is the let-down reflex positive feedback?
+- **Status:** pending review. Course classification decided (spec decision 62).
+- **Where:** `postnatal-lactation` (notes For your exam note); the pathways tool (pathway dv-milk-ejection); flashcard dv-letdown-class; the prediction item dv-letdown-stress.
+- **Evidence-based position:** a neuroendocrine reflex: suckling stimulates sensory receptors in the nipple, the hypothalamus signals the posterior pituitary to release oxytocin, and myoepithelial cells around the alveoli contract and eject milk (Crowley, Compr Physiol 2015). The ejected milk does not strengthen the stimulus the way contractions strengthen cervical stretch, and the reflex ends when feeding stops. Per spec decision 62, the tools show it as a pathway (suckling to hypothalamus to posterior pituitary oxytocin to myoepithelial cells to ejection), not as a loop in the feedback loop builder, and the dependency map lists it with the chapter's pathways. Labor stays the chapter's positive feedback loop.
+- **For your exam:** OpenStax (28.6, Figure 28.23) and many texts call it a positive feedback loop and give it as the second example after childbirth. If asked for a second example of positive feedback, "the milk ejection reflex" is often the expected answer.
+
+### aging-theories: one cause or many?
+- **Status:** pending review.
+- **Where:** `aging` (notes For your exam note on theories of aging; notes on the brain, senescent cells and a going-further box on telomere length; flashcard dv-theories).
+- **Evidence-based position:** aging is a set of interacting damage and response processes (the hallmarks of aging; López-Otín et al., Cell 2023), not one cause. Oxidative damage contributes, but reactive oxygen species are also normal signals, and antioxidant supplements have not slowed aging or prevented chronic disease (Bjelakovic et al., Cochrane 2012); beta-carotene raised lung cancer in smokers (ATBC 1994, CARET 1996) and vitamin E raised prostate cancer (SELECT 2011). Neuron numbers in most of the cortex are largely kept; the loss is in neuron size, dendrites, synapses and white matter (Pakkenberg and Gundersen 1997). Telomere length in blood cells is a poor measure of an individual's biological age. Removing senescent cells delays age-related problems in mice; human trials are early.
+- **For your exam:** many textbooks list separate theories of aging; the free radical theory and the telomere (Hayflick) theory are the expected examples. Older texts may also say the brain loses many neurons with age.
 
 ## Open items
 
@@ -1138,6 +1192,127 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
 - **Etymology to confirm:** clitoris (no root given, because the origin of Greek kleitoris is
   uncertain), pubertas, prolifer-, theca, Graafian.
 - **Names:** the androgen insensitivity vignette uses "she" (raised as a girl).
+
+## Phase 2: development chapter, judgment calls for instructor review
+
+- **Positions taught:** the embryonic period is weeks 1–8 after fertilization and the fetal
+  period runs from about week 10 of pregnancy to birth, with embryonic events counted from
+  fertilization and everything from the fetal period on counted from the last period
+  (dating-convention, above); vessels form from hemangioblasts, a shared precursor of blood cells
+  and vessel lining; the placental hormone GDF15, acting on the brainstem, is "now thought to be
+  a main driver" of pregnancy nausea; trophoblast plugs hold back maternal blood flow into the
+  placenta until about weeks 10–12 (going-further box); drugs that block prostaglandin synthesis,
+  such as ibuprofen, are "avoided late in pregnancy" (FDA advice limits NSAIDs from 20 weeks and
+  avoids them from 30); human plasma progesterone does not fall before labor (labor-trigger,
+  above); oxytocin strengthens contractions through positive feedback but labor can start and
+  progress without it (oxytocin-in-labor, above, now with a For your exam note in `labor-birth`);
+  active labor from about 6 cm; postpartum hemorrhage as 1,000 mL or more (ACOG), with 500 mL
+  after vaginal birth (WHO) noted; episiotomy not routine; delayed cord clamping for about 30–60
+  seconds; the Apgar score's limits (resuscitation never waits for the 1-minute score, and a low
+  score alone does not prove oxygen starvation); most term babies are born head first facing the
+  mother's back "usually", since about 5% of head-first births are face up; the milk ejection
+  reflex is a neuroendocrine reflex, not positive feedback (milk-ejection-feedback, above; spec
+  decision 62); in aging, neuron numbers in most of the cortex are largely kept, the fall in
+  basal metabolic rate comes mostly from lost muscle, with a small fall in the tissues' own rate
+  after about 60 (Pontzer et al., Science 2021), the fall in GFR with age is part of normal aging
+  (with wide variation), telomere length is a weak biomarker, senolytics are early in humans, and
+  reserve and homeostenosis frame the chapter (aging-theories, above); familial
+  hypercholesterolemia is taught as incomplete dominance by dose (usually listed as autosomal
+  dominant); sickle cell shows codominance, incomplete dominance or recessive inheritance
+  depending on the phenotype measured; a dominant lethal allele "harms anyone with one copy" and
+  persists only if it acts after people have had children (Huntington disease) or new mutations
+  keep creating it; the female-default claim in `fetal-development-circulation` is logged with
+  ovary-default, above, not as a separate entry.
+- **Numbers hedged in the notes:** the ductus venosus share (textbook half, ultrasound a fifth to
+  a third) and the lungs' share of combined output (a tenth to a quarter) are logged above; the
+  blastocyst is about 70 to 100 cells when it first forms, and more over the next two days (Hardy
+  et al. 1989; matches OpenStax Figure 28.5).
+- **Normal values chosen (conception to birth):** sperm fertile up to about 5 days in the female
+  tract and the oocyte 12–24 hours; hCG detectable 8–10 days after fertilization, doubling every
+  2–3 days early on and peaking at about week 10; the progesterone source shifts from the corpus
+  luteum to the placenta at about weeks 7–9; 42–44 somite pairs; neural tube closure days 22–28
+  and the first heartbeat about day 22 after fertilization; placenta about 22 cm and 500 g at
+  term, barrier 2–4 µm thick, exchange area about 12 m², uterine blood flow 500–700 mL/min;
+  intervillous PO2 about 35–50, umbilical vein about 30 and umbilical arteries about 15–20 mm Hg;
+  cord 50–60 cm; single umbilical artery in about 1 in 100–200; congenital heart defects about 1
+  in 100 births; patent foramen ovale in about 25% of adults; term 37 to just under 42 weeks,
+  about 50 cm and 3.4 kg at birth.
+- **Normal values chosen (pregnancy):** blood volume +40–50%, cardiac output +30–50% (heart rate
+  rising first, from about week 5, stroke volume from about week 8), total peripheral resistance
+  down a quarter to a third; minute ventilation +40–50%, PaCO2 about 30 mm Hg, bicarbonate 18–22
+  mEq/L; GFR +50%; hemoglobin low limit about 11 g/dL; weight gain 11–16 kg for a normal starting
+  weight; about 340 extra kcal a day in the second trimester and 450 in the third; ectopic
+  pregnancy 1–2%, placenta previa about 1 in 200, preeclampsia 3–5% (blood pressure 140/90 mm Hg
+  or more after week 20), gestational diabetes 6–9% with about half later developing type 2
+  diabetes, recognized miscarriage 10–15%.
+- **Normal values chosen (birth to old age):** oxytocin receptor proteins in the uterus rise
+  about 100-fold by term; stage 1 of labor 12 hours or more in a first birth, stage 2 up to about
+  3 hours, stage 3 5–30 minutes; head first (vertex) in about 95%; the uterus shrinks from about
+  1 kg to under 100 g, the fundus falling about 1 cm a day; postpartum depression about 1 in 8;
+  lung blood flow rises about eightfold at the first breaths; the ductus arteriosus closes
+  functionally in 1–3 days and the ductus venosus in 1–2 weeks; milk comes in 30–72 hours after
+  birth, about 750–800 mL a day at full supply, about 4% fat, 7% lactose and 1% protein;
+  lactational amenorrhea about 98% effective under its conditions; Down syndrome about 1 in 700
+  births, with maternal-age risks of about 1 in 1,200 at 25, 1 in 350 at 35, 1 in 100 at 40 and 1
+  in 30 at 45, about 95% from nondisjunction and 4% from translocation (about a quarter of
+  translocations inherited from a carrier parent); Klinefelter about 1 in 600 boys, Turner about
+  1 in 2,500 girls; telomeres about 10 kb, losing 50–100 base pairs per division; the Hayflick
+  limit 40–60 divisions; bone loss 0.5–1% a year after about 30; GFR falling about 1 mL/min a
+  year after 40; VO2max falling about 10% a decade; maximum heart rate falling roughly 0.7 to 1
+  beat per minute a year (the 208 − 0.7 × age rule fits older adults better than 220 − age);
+  brain volume falling about 0.2% a year from 35 and more than 0.5% after 60 (Hedman 2012); the
+  Fiatarone 1990 strength trial in residents aged 86 to 96; a record human lifespan of 122 years.
+- **Audit judgment calls (question writing):** across the whole bank 17.2% of single-key items
+  are keyed on the longest option, below the 18–30% target, so the development audit fixed only
+  gross length tells (key 1.4–2 times the next option) by shortening the key and left mild ones;
+  a postnatal-lactation multi-select keeps two complementary correct options on ductus closure
+  (rising blood oxygen, and oxygen-rich aortic blood flowing back into the ductus); the
+  inheritance notes tie genes escaping X-inactivation to Turner short stature without naming the
+  pseudoautosomal region or SHOX; the aging notes explain atrial fibrillation's rise with age by
+  diastolic stiffening and atrial scarring ("scarring" for fibrosis); several antioxidant trials
+  showed harm (beta-carotene in ATBC and CARET, vitamin E in SELECT), so the aging key says
+  "some" trials.
+- **Figures:** Figure 28.10 lists "Lungs (epithelial layers)" under mesoderm and "Skin" under
+  ectoderm (both covered for good and never asked, decision 48; the caption explains); 28.8's
+  "(develops into the yolk sac)" note is covered (the hypoblast lines the cavity to form the yolk
+  sac); 28.21's ">10 cm" dilation is covered (full dilation is about 10 cm); 28.11 prints "Yolk
+  sack" and "intervillus space" (both named correctly, printed forms accepted) and colors the
+  umbilical vein blue and the arteries red (label notes and caption give the oxygen content);
+  28.10's "Maternal blood pool" label carries the placenta concept, so it is covered on the
+  embryonic-development page until the placenta topic; the after-birth sentences on 28.22 ("The
+  ductus arteriosus constricts...", "The foramen ovale closes...") are labeled as whole
+  sentences, answered by ligamentum arteriosum and fossa ovalis; 28.2 draws the classic
+  zona-triggered acrosome reaction (acrosome-reaction-trigger, above); 19.36's 22-day heart shows
+  four regions, with the sinus venosus first at days 23–24 (caption fixed). Not used: 28.20 (its
+  catalog name is wrong; it shows hCG, estrogen and progesterone across pregnancy, which the
+  LevlPrep graph replaces), 28.23 (puts prolactin in the posterior pituitary and draws sinuses).
+  28.24 and 28.27–28.29 credit third parties and need license verification, so there is no
+  karyotype figure. 28.25 and 28.26 (Punnett squares) and the chapter's LevlPrep SVGs (pregnancy
+  hormones, aging reserve) got no label files: they are diagrams with their own text, not
+  lab-practical anatomy.
+- **Tool calls (tool writer and tool audit):** the fetal growth graph starts at week 20 and plots
+  median weights from a Hadlock-type ultrasound standard, with bands for the edge of viability
+  (weeks 22–24) and term; the fetal growth question now asks what "builds up" late, since fat is
+  only about a quarter of the grams gained from week 32 to 40; the mother's circulation graph is
+  a schematic of percent changes (heart rate, stroke volume, cardiac output, resistance) and mean
+  arterial pressure from 90 mm Hg, kept within published ranges rather than one study's data,
+  with resistance at about −34% and output +40% at week 20; the trisomy 21 graph draws the notes'
+  approximate population rates as filled points at eight ages, joined by a smooth line, with a
+  translocation-only overlay; the gestational-age calculator puts the due date at day 280 (40
+  weeks from the last period) without naming Naegele's rule, and its bands are embryonic period
+  (before day 70), before viability (before day 154), preterm if born now (before day 259), term
+  (to day 293) and past term, with extra meanings before day 35 (usually all-or-none), before day
+  140 (a loss is a miscarriage) and before day 154 (short of the edge of viability); the maximum
+  heart rate calculator uses 208 − 0.7 × age (Tanaka 2001) and shows 220 − age for comparison,
+  with ages from 25; the pregnancy MAP calculator's practice cases are limited to output rises of
+  25–55% with the usual small pressure dip; the Apgar practice cases never draw an absent pulse
+  or a crying baby scored as not breathing (both stay reachable by hand); milk ejection is a
+  pathway, not a feedback loop (spec decision 62), and the chapter's loops are labor (positive)
+  and newborn brown fat (negative); the resistance-training prediction item dropped its
+  bone-density variable, keeping leg strength, fall risk and maximum heart rate; translocation
+  Down syndrome is "in about a quarter of cases inherited from a carrier parent".
+- **Map gaps:** the writers reported many chapter terms without a map concept; none is used on an
+  earlier page.
 
 ## Decided at the Phase 0 reviews
 

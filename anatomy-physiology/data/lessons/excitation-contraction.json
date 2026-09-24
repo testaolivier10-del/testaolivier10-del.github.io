@@ -1,0 +1,49 @@
+{
+  "topic": "excitation-contraction",
+  "hook": "<p>Twenty minutes into a routine knee operation, 24-year-old Daniel's jaw muscles lock tight, his heart races and his temperature starts climbing a degree every few minutes. The anesthetist stops the anesthetic gas and gives dantrolene. Daniel was born with a faulty calcium release channel in his muscle fibers, harmless until the gas made it leak. To see why one leaky channel can lock every muscle in the body, you need the chain that links a muscle fiber's action potential to its contraction.</p>",
+  "prereq": [
+    {
+      "q": "What does the end plate potential do at a healthy neuromuscular junction?",
+      "options": ["Brings the neighboring sarcolemma to threshold, so the fiber fires an action potential", "Travels the whole length of the fiber without fading", "Releases calcium from the axon terminal"],
+      "correct": 0,
+      "why": "The end plate potential is a large, local, graded depolarization. It brings the sarcolemma next to the end plate to threshold, and that membrane fires the action potential that travels along the fiber.",
+      "review": "neuromuscular-junction"
+    },
+    {
+      "q": "In a resting muscle fiber, what stops the myosin heads from binding actin?",
+      "options": ["The Z discs hold the thin filaments away from the thick ones", "Tropomyosin covers the myosin-binding sites on actin", "The myosin heads carry no energy until they are signaled"],
+      "correct": 1,
+      "why": "At rest, tropomyosin lies over the myosin-binding sites on actin, held in place by troponin.",
+      "review": "skeletal-muscle-structure"
+    },
+    {
+      "q": "The sodium–potassium pump uses ATP directly to move ions against their gradients. What kind of transport is that?",
+      "options": ["Facilitated diffusion", "Secondary active transport", "Primary active transport"],
+      "correct": 2,
+      "why": "Primary active transport uses the energy of ATP directly, through a pump that is itself an ATPase.",
+      "review": "active-transport"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-10-8",
+    "caption": "From nerve impulse to contraction. Hide the labels and trace the signal from the nerve ending to the T tubule, the calcium store and the thin filament."
+  },
+  "chain": [
+    { "cause": "The end plate potential brings the sarcolemma to threshold.", "effect": "An action potential spreads along the sarcolemma and down every T tubule into the fiber." },
+    { "cause": "The action potential depolarizes the T tubule membrane at each triad.", "effect": "DHP receptors, the voltage sensors, change shape and pull open the ryanodine receptors in the terminal cisternae." },
+    { "cause": "The ryanodine receptors are open.", "effect": "Calcium flows out of the sarcoplasmic reticulum, and its concentration in the sarcoplasm rises about a hundredfold." },
+    { "cause": "Calcium binds troponin.", "effect": "Troponin changes shape and tropomyosin rolls off the myosin-binding sites on actin." },
+    { "cause": "The binding sites are uncovered.", "effect": "Myosin heads bind actin and pull, and the sarcomeres shorten until calcium pumps return the calcium to the SR." }
+  ],
+  "misconception": {
+    "wrong": "The calcium that triggers skeletal muscle contraction flows in from outside the cell.",
+    "right": "In skeletal muscle, the calcium comes from the sarcoplasmic reticulum inside the fiber. The action potential in the T tubule changes the shape of the DHP receptor, which is physically linked to the ryanodine receptor and pulls it open. Voltage alone is the trigger, so a skeletal muscle fiber keeps contracting in a bath with no calcium. Heart muscle is the one that depends on calcium entering from outside."
+  },
+  "check": ["anp-excitation-contraction-1", "anp-excitation-contraction-3", "anp-excitation-contraction-5", "anp-excitation-contraction-7", "anp-excitation-contraction-9", "anp-excitation-contraction-12", "anp-excitation-contraction-15"],
+  "summary": "<p>Excitation–contraction coupling links the muscle fiber action potential to contraction, and calcium is the link. The action potential, lasting only 2 to 5 ms, spreads from the end plate along the sarcolemma and down the T tubules. At each triad, DHP receptors in the T tubule membrane sense the voltage change and, being physically linked to them, pull open the ryanodine receptors of the sarcoplasmic reticulum. Calcium flows out of the SR and binds troponin, which moves tropomyosin off the myosin-binding sites on actin, and myosin heads bind and pull. Relaxation reverses the chain: the motor neuron stops firing, acetylcholinesterase clears the cleft, the release channels close, and SR calcium pumps (calcium ATPases) use ATP to pump calcium back. Calcium leaves troponin and tropomyosin covers actin again. Because pumping takes tens of milliseconds, force outlasts the brief action potential.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-6", "label": "NREMT: Anatomy and physiology (the musculoskeletal system)" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
+    { "href": "/nremt/study-notes.html#chapter-35", "label": "NREMT: Environmental emergencies (heat and body temperature)" }
+  ]
+}

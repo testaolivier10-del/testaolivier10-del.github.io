@@ -1,0 +1,387 @@
+[
+  {
+    "id": "anp-bone-remodeling-repair-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "figure": "os-6-21",
+    "pin": "hematoma",
+    "q": "Name the pinned mass in the first stage of fracture repair.",
+    "options": ["External callus", "Fracture hematoma", "Bony callus", "Internal callus"],
+    "correct": 1,
+    "why": {
+      "correct": "The fracture hematoma is the clotted blood that pools around a break from torn vessels in the periosteum, bone and marrow. It is the first stage of repair.",
+      "options": [
+        "The external callus forms later, as cartilage and collagen bulging around the outside of the break.",
+        "Correct. Clotted blood filling the break is the fracture hematoma.",
+        "The bony callus of spongy bone forms weeks later, after the cartilage callus.",
+        "The internal callus forms later, between the broken ends, from collagen and cartilage."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "figure": "os-6-21",
+    "pin": "external-callus",
+    "q": "Name the pinned collar of tissue bulging around the outside of the break.",
+    "options": ["External callus", "Periosteum", "Fracture hematoma", "Internal callus"],
+    "correct": 0,
+    "why": {
+      "correct": "The external callus is the collar of fibrocartilage and collagen around the outside of the break. With the internal callus, it splints the broken ends.",
+      "options": [
+        "Correct. The outer bulge of the soft callus is the external callus.",
+        "The periosteum is the thin membrane over the bone; the callus bulges well beyond it.",
+        "The hematoma is clotted blood, the stage before the callus forms.",
+        "The internal callus lies between the broken ends and in the medullary cavity, not around the outside."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-20",
+    "pin": "greenstick",
+    "q": "Name the pinned type of fracture, in which the bone breaks only partway across.",
+    "options": ["Transverse fracture", "Impacted fracture", "Greenstick fracture", "Comminuted fracture"],
+    "correct": 2,
+    "why": {
+      "correct": "A greenstick fracture is incomplete: the bone breaks on one side and bends on the other, like a fresh twig. It is typical of children.",
+      "options": [
+        "A transverse fracture goes straight across the whole bone.",
+        "In an impacted fracture, one end of a complete break is driven into the other.",
+        "Correct. A break partway across is a greenstick fracture.",
+        "A comminuted fracture breaks the bone into three or more pieces."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-4",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "figure": "os-6-20",
+    "pin": "comminuted",
+    "q": "Name the pinned type of fracture, with the bone broken into several pieces.",
+    "options": ["Spiral fracture", "Comminuted fracture", "Oblique fracture", "Greenstick fracture"],
+    "correct": 1,
+    "why": {
+      "correct": "A comminuted fracture shatters the bone into three or more fragments, usually from a high-energy injury or a fall on fragile bone.",
+      "options": [
+        "A spiral fracture winds around the shaft in one line; it does not shatter the bone.",
+        "Correct. Several fragments make it comminuted.",
+        "An oblique fracture is a single break at an angle.",
+        "A greenstick fracture is a break only partway across."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-5",
+    "type": "graph",
+    "level": "apply",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "figure": "os-6-23",
+    "q": "According to the graph, at about what age does bone mass peak in both sexes?",
+    "options": ["About 10 years", "About 20 years", "About 30 to 40 years", "About 55 years"],
+    "correct": 2,
+    "why": {
+      "correct": "Both curves climb through childhood and the teens, level off, and reach their highest point at about 30 to 40 years before starting to fall.",
+      "options": [
+        "At 10, both curves are still climbing steeply.",
+        "At 20, both curves are still rising, though more slowly.",
+        "Correct. The curves reach their plateau and peak at about 30 to 40.",
+        "By 55, both curves are falling, and the female curve is falling steeply."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-6",
+    "type": "graph",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "figure": "os-6-23",
+    "q": "Using the graph, during which period does bone mass fall fastest, and in whom?",
+    "options": ["Women, from about 50 to 60", "Men, from about 30 to 40", "Men, from about 80 to 100", "Women, from about 70 to 100"],
+    "correct": 0,
+    "why": {
+      "correct": "The female curve drops steeply between about 50 and 60, far faster than at any other time or in men. Those are the years around the end of a woman's reproductive life, when a hormonal brake on osteoclasts is lost.",
+      "options": [
+        "Correct. The steepest drop on the graph is the female curve in the fifties.",
+        "Men are at or near their peak at 30 to 40; their curve is almost flat there.",
+        "Men do lose bone steadily late in life, but the slope is gentle compared with women in their fifties.",
+        "After 60, the female curve falls again at a gentle, steady rate, much like the male curve."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-7",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Put the stages of fracture repair in order.",
+    "options": ["Blood from torn vessels clots around the break, forming a fracture hematoma", "Capillaries grow in and fibroblasts and chondrocytes build a fibrocartilaginous callus", "Osteoblasts replace the cartilage with spongy bone, forming a bony callus", "Osteoclasts remove extra bone and compact bone replaces the spongy bone of the shaft"],
+    "why": {
+      "correct": "Repair runs from hematoma to soft callus to bony callus to remodeling. The hematoma is invaded by vessels and becomes a soft callus of collagen and cartilage; that cartilage is replaced by spongy bone, as in endochondral ossification; and remodeling restores compact bone and the bone's shape over months to years."
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-8",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": ["homeostasis", "structure-function"],
+    "q": "A healthy 30-year-old is confined to bed for three months. Predict the change in each variable in his leg bones by the end of that time, compared with before.",
+    "variables": [
+      { "name": "Load on the leg bones", "answer": "down", "why": "Lying in bed, the legs no longer carry body weight or the pull of walking muscles." },
+      { "name": "Osteoclast activity", "answer": "up", "why": "Unloaded osteocytes release more of the signal that makes osteoclasts form, so resorption rises." },
+      { "name": "Osteoblast activity", "answer": "down", "why": "Unloaded osteocytes release more of the signal that holds osteoblasts back, so formation falls." },
+      { "name": "Bone mass", "answer": "down", "why": "With resorption above formation, each remodeling cycle removes more bone than it replaces: Wolff's law in reverse." },
+      { "name": "Calcium released from the leg bones", "answer": "up", "why": "Osteoclasts dissolve mineral, so more calcium leaves the bones; much of it is lost in the urine." }
+    ],
+    "why": { "correct": "Bone follows load. Without load, osteocytes shift their signals toward resorption: osteoclasts work harder, osteoblasts less, bone mass falls and calcium is released. Spongy bone, with its large surface, loses bone fastest." }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A professional tennis player's racket arm has upper arm bones with walls about 30% thicker than those of her other arm. What best explains the difference?",
+    "options": ["Her racket arm received more calcium from the blood", "Her racket arm's growth plates closed later", "Repeated heavy loading made the bone add mass", "Her racket arm has more red marrow"],
+    "correct": 2,
+    "why": {
+      "correct": "Wolff's law: bone adapts to the loads placed on it. Years of hitting loaded the racket arm's bones heavily, osteocytes signaled for more formation and less resorption, and bone was added until the thicker wall brought strain back down.",
+      "options": [
+        "Both arms receive the same blood, so a difference between them cannot come from something carried in it.",
+        "Growth plates in the two arms close at about the same time, and thicker walls reflect width, not length.",
+        "Correct. Load drives bone formation.",
+        "Marrow type does not thicken the bone's wall, and adult upper arm shafts hold mainly yellow marrow."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-10",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "After a motorcycle crash, a rider's broken lower leg bone is sticking out through a wound in the skin. How is this fracture classified, and what is the main extra danger?",
+    "options": ["Closed; nerve damage", "Greenstick; slower growth", "Comminuted; fat loss", "Open; bone infection"],
+    "correct": 3,
+    "why": {
+      "correct": "A fracture with broken skin over it is an open fracture. The wound lets bacteria reach the bone, so infection of the bone is the main added danger, which makes it an emergency.",
+      "options": [
+        "A closed fracture has intact skin; this one has a wound.",
+        "A greenstick fracture is an incomplete break in a child's bone; a bone end through the skin is a complete break.",
+        "It may also be comminuted, but the defining feature described is the skin wound, and the main danger is infection.",
+        "Correct. Broken skin makes it open, and infection is the main extra risk."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-11",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A skier's boot stays fixed in the binding as she falls and her body twists around her leg. What type of fracture line is most likely in her lower leg bone?",
+    "options": ["A transverse fracture", "A spiral fracture", "An impacted fracture", "A compression fracture"],
+    "correct": 1,
+    "why": {
+      "correct": "A twisting force applied along a long bone breaks it along a helix that winds around the shaft: a spiral fracture.",
+      "options": [
+        "A transverse fracture runs straight across the bone and usually comes from a direct blow or bending, not twisting.",
+        "Correct. Twisting makes a spiral fracture.",
+        "An impacted fracture comes from a force driving one end into the other, along the bone's length.",
+        "A compression fracture crushes spongy bone, such as a vertebra, under a squeezing load."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-12",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "Why are greenstick fractures common in children but rare in adults?",
+    "options": ["Children's bones have no compact bone", "Children's bones hold more collagen relative to mineral, so they bend before breaking", "Children's bones have open growth plates in the shaft", "Children have fewer osteoclasts"],
+    "correct": 1,
+    "why": {
+      "correct": "A child's bone has proportionally more collagen and less mineral than an adult's, so it is more flexible. Under a bending load it can crack on the stretched side and bend on the other, like a green twig.",
+      "options": [
+        "Children's bones have compact bone walls, just thinner than adults'.",
+        "Correct. More flexible bone bends and breaks partway.",
+        "Growth plates are near the ends of the bone, not in the shaft where greenstick fractures occur.",
+        "Osteoclast numbers do not explain how a bone breaks in the moment of injury."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-13",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "In an adult's compact bone, osteoclasts tunnel through an old osteon and osteoblasts then fill the tunnel with a new osteon. The bone's size and shape do not change. What is this process?",
+    "options": ["Bone modeling", "Appositional growth", "Bone remodeling", "Endochondral ossification"],
+    "correct": 2,
+    "why": {
+      "correct": "Bone remodeling replaces old bone with new at the same site, resorption followed by formation, with little change in size or shape.",
+      "options": [
+        "In bone modeling, building and removal happen on different surfaces, which changes the bone's shape or size.",
+        "Appositional growth adds layers to a surface and makes the bone wider.",
+        "Correct. Same site, old for new, no change in shape: remodeling.",
+        "Endochondral ossification replaces cartilage with bone during development, not old bone with new."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-14",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "A student describes one remodeling cycle at a patch of adult bone. One step is wrong. Which one?",
+    "options": ["Osteocytes near old or cracked bone signal the surface", "Osteoclast precursors arrive and fuse into osteoclasts", "Osteoclasts resorb a pit over two to four weeks", "Osteocytes divide to fill the pit with new bone", "The new osteoid mineralizes over the following months"],
+    "correct": 3,
+    "why": {
+      "correct": "Osteocytes do not divide or build new bone. Osteoblasts, made from osteogenic cells, move into the pit and fill it with osteoid over about three to four months.",
+      "options": [
+        "This step is right. Osteocytes act as the sensors that start remodeling.",
+        "This step is right. Osteoclasts form by fusion of precursors from the blood.",
+        "This step is right. Resorption is the fast part of the cycle.",
+        "This is the error. Osteoblasts, not osteocytes, fill the pit, and osteocytes never divide.",
+        "This step is right. Osteoid laid by osteoblasts mineralizes over time."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-15",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": ["homeostasis"],
+    "q": "Complete the stages of fracture repair: fracture hematoma → ____ → bony callus → remodeling.",
+    "options": ["Epiphyseal plate", "Fibrocartilaginous callus", "Primary ossification center", "Granulation of the periosteum"],
+    "correct": 1,
+    "why": {
+      "correct": "After the hematoma, capillaries, fibroblasts and chondrocytes turn it into a soft fibrocartilaginous callus, which bone then replaces.",
+      "options": [
+        "An epiphyseal plate is the growth cartilage of a growing long bone, not a stage of repair.",
+        "Correct. The soft callus comes between hematoma and bony callus.",
+        "A primary ossification center is a stage of development before birth, not of fracture repair.",
+        "Granulation tissue does form in the hematoma, but the stage that follows is named for the callus of collagen and cartilage it produces."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-16",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis", "structure-function"],
+    "misconception": "osteoporotic bone is soft or poorly mineralized",
+    "q": "Mrs. Okafor, 81, has osteoporosis. A sample of her hip bone is examined. Compared with a healthy 30-year-old's bone, which finding is expected?",
+    "options": ["The bone present is soft because it lacks mineral", "The bone is dense but brittle from faulty collagen", "There is too little bone, but what remains is normally mineralized", "The trabeculae are thicker to make up for weakness"],
+    "correct": 2,
+    "why": {
+      "correct": "In osteoporosis, resorption has outpaced formation for years, so there is too little bone, with thin and disconnected trabeculae and a thinner compact wall. The bone that remains has normal mineral in its matrix.",
+      "options": [
+        "Soft, poorly mineralized bone is a different disease, caused by too little vitamin D. In osteoporosis the mineral content of the remaining bone is normal.",
+        "Faulty collagen causes brittle bone disease from childhood, not the age-related loss of bone mass in osteoporosis.",
+        "Correct. Osteoporosis is a lack of bone, not a lack of mineral in the bone.",
+        "Trabeculae thin and disconnect in osteoporosis; they do not thicken."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-17",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": ["homeostasis"],
+    "q": "Select every factor that raises the risk of osteoporosis.",
+    "options": ["Long-term use of steroid medicines", "Regular weight-bearing exercise", "Smoking", "A low peak bone mass in young adulthood", "Being female", "Adequate calcium and vitamin D"],
+    "correct": [0, 2, 3, 4],
+    "why": {
+      "correct": "Anything that lowers peak bone mass or tips remodeling toward resorption raises the risk: long-term steroid medicines, smoking, a low peak and female sex (a lower peak and faster loss after the reproductive years).",
+      "options": [
+        "Correct. Long-term steroid medicines slow bone formation.",
+        "Weight-bearing exercise loads bone and, through Wolff's law, protects it.",
+        "Correct. Smoking lowers bone mass and slows fracture healing.",
+        "Correct. A low peak leaves less bone to lose before it becomes fragile.",
+        "Correct. Women reach a lower peak and lose bone fast for several years at the end of their reproductive years.",
+        "Enough calcium and vitamin D supports bone formation and is part of prevention."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-18",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": ["structure-function"],
+    "q": "A patient keeps taking off his splint and moving his broken wrist. What is the most likely effect on healing?",
+    "options": ["Faster healing, because movement loads the bone", "Repeated disruption of the new vessels and callus, delaying union", "A larger fracture hematoma that heals stronger", "Earlier conversion of spongy bone to compact bone"],
+    "correct": 1,
+    "why": {
+      "correct": "Early healing depends on capillaries growing into the hematoma and a soft callus bridging the gap. Too much movement tears these fragile structures again and again, so the bony callus is delayed and the break may fail to join.",
+      "options": [
+        "Load helps bone once the callus is firm, during remodeling. Early movement at the break itself disrupts the soft callus.",
+        "Correct. Motion keeps breaking the new vessels and callus.",
+        "More bleeding does not produce a stronger repair; it only adds swelling.",
+        "Remodeling to compact bone comes last and needs a stable bony callus first."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-19",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": ["structure-function"],
+    "q": "A fracture in a long-term smoker with narrowed blood vessels heals much more slowly than the same fracture in a healthy nonsmoker. Which step of repair is most directly slowed?",
+    "options": ["Clotting of blood in the fracture hematoma", "The death of osteocytes at the broken ends", "Growth of capillaries that bring in cells to build the callus", "The final reshaping of the bone along load lines"],
+    "correct": 2,
+    "why": {
+      "correct": "The soft and bony calluses depend on new capillaries growing into the hematoma, bringing oxygen, nutrients and the cells that become fibroblasts, chondrocytes and osteoblasts. Poor blood supply slows that ingrowth, so every later stage is delayed.",
+      "options": [
+        "Clotting does not depend on the vessels growing in; a clot forms in minutes either way.",
+        "Osteocyte death at the ends is caused by the injury itself, not by the patient's circulation.",
+        "Correct. The callus is built by cells that arrive with new vessels.",
+        "Remodeling is last and would be slow too, but the first bottleneck is the vessel ingrowth that the callus needs."
+      ]
+    }
+  },
+  {
+    "id": "anp-bone-remodeling-repair-20",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": ["structure-function"],
+    "q": "A surgeon opens the skin and fixes a broken bone's ends in line with a metal plate and screws. What is this called?",
+    "options": ["Open reduction", "Closed reduction", "Open fracture", "Bone modeling"],
+    "correct": 0,
+    "why": {
+      "correct": "Reduction means putting the broken ends back into line. When a surgeon does it through an incision, often with plates, screws or a rod, it is an open reduction.",
+      "options": [
+        "Correct. Aligning the ends through a surgical opening is open reduction.",
+        "Closed reduction aligns the ends from outside without cutting the skin.",
+        "An open fracture is a type of break with a wound over it, not a treatment.",
+        "Bone modeling is a natural process of shaping bone, not a surgical procedure."
+      ]
+    }
+  }
+]
