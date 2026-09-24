@@ -2311,6 +2311,269 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "gastrin-acid",
+      "title": "Stomach acid shuts off gastrin",
+      "topic": "stomach",
+      "map": "Gastric acid and gastrin (low pH shuts gastrin off)",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "An hour into a steak dinner, the parietal cells have been secreting acid steadily. Food buffered the acid at first, but now the pH in the antrum is falling below 3, and gastrin release begins to slow.",
+      "slots": {
+        "stimulus": {
+          "text": "Acid builds up and the pH in the antrum falls below about 3",
+          "short": "Antrum pH falls",
+          "why": "The regulated variable is the acidity of the stomach contents. Acid secreted in response to the meal outpaces the food’s buffering, and the pH drops."
+        },
+        "sensor": {
+          "text": "D cells in the lining of the antrum detect the low pH",
+          "short": "D cells sense low pH",
+          "why": "D cells are enteroendocrine cells that respond to acid in the lumen. They are the sensing part of this loop."
+        },
+        "afferent": {
+          "text": "Somatostatin released by the D cells onto the neighboring G cells",
+          "short": "Somatostatin (local)",
+          "why": "The D cells pass the signal on as a local messenger. Somatostatin diffuses to the G cells beside them instead of traveling in the blood."
+        },
+        "control": {
+          "text": "G cells in the antrum set how much gastrin to release",
+          "short": "G cells set gastrin output",
+          "why": "The G cells add up their inputs (protein fragments, stretch and vagal signals pushing up, somatostatin pushing down) and release gastrin accordingly."
+        },
+        "efferent": {
+          "text": "Less gastrin carried in the blood",
+          "short": "Gastrin in the blood",
+          "why": "Gastrin leaves the antrum in the blood and reaches the body of the stomach, where the acid is made. The command is a hormone."
+        },
+        "effector": {
+          "text": "ECL cells and parietal cells in the body of the stomach",
+          "short": "ECL cells and parietal cells",
+          "why": "Gastrin acts mostly by making ECL cells release histamine onto the parietal cells, and partly on the parietal cells directly. With less gastrin, both are driven less."
+        },
+        "response": {
+          "text": "Acid secretion slows, so the pH stops falling",
+          "short": "Less acid: pH steadies",
+          "why": "Fewer hydrogen ions are pumped into the lumen, which opposes the fall in pH. When a new meal buffers the acid and the pH rises, the brake lifts again."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Chief cells release pepsinogen",
+          "why": "Pepsinogen digests protein once it is activated. It does not measure or set the acidity."
+        },
+        {
+          "text": "Sensory neurons carry the pH to the hypothalamus",
+          "why": "The pH is sensed and acted on inside the stomach wall itself. No signal goes to the brain in this loop."
+        },
+        {
+          "text": "Parietal cells pump more H+ as the pH falls",
+          "why": "That would push the pH further from where it started, the opposite of what a negative feedback loop does."
+        },
+        {
+          "text": "Secretin from the small intestine",
+          "why": "Secretin also slows acid secretion, but it responds to acid arriving in the small intestine. This loop is sensed in the antrum."
+        }
+      ],
+      "classify": "The response (less acid secreted) opposes the stimulus (a falling pH), and the product, acid, switches off its own stimulus, gastrin. That makes this negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "In autoimmune gastritis, the immune system destroys the parietal cells but leaves the G cells and D cells in the antrum. What happens to gastrin?",
+        "options": [
+          {
+            "text": "Gastrin rises very high",
+            "why": "Right. Without parietal cells no acid is made, the pH in the antrum never falls, and the D cells never release somatostatin. With the brake gone, the G cells release gastrin freely."
+          },
+          {
+            "text": "Gastrin falls to almost nothing, because acid-making cells are gone",
+            "why": "The G cells are intact. Losing the parietal cells removes the acid that normally restrains them, so gastrin rises."
+          },
+          {
+            "text": "Gastrin is unchanged, because it is controlled by the vagus alone",
+            "why": "Vagal signals are one input, but low pH through somatostatin is the brake. That brake is what is lost."
+          },
+          {
+            "text": "The D cells take over acid secretion",
+            "why": "D cells make somatostatin, not acid. Only parietal cells make hydrochloric acid."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "enterogastric-brake",
+      "title": "A full small intestine slows the stomach",
+      "topic": "stomach",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "After a fatty, acidic meal, chyme leaves the stomach faster than the first part of the small intestine can neutralize and digest it. Within minutes, the stomach’s waves weaken and the pylorus tightens.",
+      "slots": {
+        "stimulus": {
+          "text": "The first part of the small intestine fills with acid, fat and concentrated chyme",
+          "short": "Intestine overloaded",
+          "why": "The regulated variable is how much chyme the small intestine is handling at once. Chyme arriving faster than it can be processed raises the stretch, acidity and solute load there."
+        },
+        "sensor": {
+          "text": "Stretch- and chemical-sensitive sensory receptors and enteroendocrine cells in the intestinal wall",
+          "short": "Sensors in the intestinal wall",
+          "why": "Sensory neurons detect stretch and chemicals in the lumen, and enteroendocrine cells sense acid, fat and protein fragments."
+        },
+        "afferent": {
+          "text": "Enteric and vagal sensory fibers, plus secretin and CCK in the blood",
+          "short": "Sensory fibers, secretin, CCK",
+          "why": "The signal travels two ways at once: nerve fibers carry it into the enteric plexuses and up the vagus, and the hormones carry it in the blood."
+        },
+        "control": {
+          "text": "The enteric plexuses and the brainstem",
+          "short": "Enteric plexuses, brainstem",
+          "why": "Short reflexes run through the enteric plexuses; long reflexes run through the brainstem. Together they make up the enterogastric reflex."
+        },
+        "efferent": {
+          "text": "Less vagal excitation and more sympathetic drive to the stomach",
+          "short": "Less vagal, more sympathetic",
+          "why": "The reflex turns down the nerves that excite the stomach and turns up those that inhibit it, while the hormones act on the stomach directly."
+        },
+        "effector": {
+          "text": "The smooth muscle of the antrum and the pyloric sphincter",
+          "short": "Antrum and pyloric sphincter",
+          "why": "The antrum’s mixing waves push chyme toward the pylorus, and the sphincter decides how much passes. Changing both changes the rate of emptying."
+        },
+        "response": {
+          "text": "Antral waves weaken and the pylorus tightens, so emptying slows until the intestine catches up",
+          "short": "Emptying slows",
+          "why": "Less chyme enters, so the intestine has time to neutralize and digest what it has. As its load falls, the brake eases and emptying speeds up again."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The stomach empties faster to clear the chyme",
+          "why": "That would increase the load on the overloaded intestine, the opposite of the correcting response."
+        },
+        {
+          "text": "Gastrin rises and speeds emptying",
+          "why": "Gastrin mainly drives acid secretion and has little effect on emptying. The brake here comes from the intestine."
+        },
+        {
+          "text": "Motilin sweeps the intestine clear",
+          "why": "Motilin drives the strong contractions between meals and is stopped by eating. It plays no part in a meal-time brake."
+        }
+      ],
+      "classify": "The response (slower emptying) reduces the stimulus (an overloaded small intestine), so this is negative feedback.",
+      "failure": {
+        "part": "sensor",
+        "q": "Suppose a drug blocked the sensory neurons and enteroendocrine cells of the first part of the small intestine. What would happen after an acidic, fatty meal?",
+        "options": [
+          {
+            "text": "Chyme would empty too fast for the intestine to handle",
+            "why": "Right. With no sensing, the enterogastric reflex and the secretin and CCK brake never start, so the stomach empties as if the intestine were empty."
+          },
+          {
+            "text": "The stomach would stop emptying, because the pylorus would stay shut",
+            "why": "The sensors apply the brake. Blocking them removes the brake; it does not apply it."
+          },
+          {
+            "text": "Nothing, because the stomach senses its own contents",
+            "why": "The stomach sets its mixing, but the pace of emptying is set mainly by what the small intestine receives."
+          },
+          {
+            "text": "Acid secretion would stop",
+            "why": "Blocking this loop removes one of the brakes on acid secretion, so acid would not fall."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "secretin-bicarbonate",
+      "title": "Secretin neutralizes acid in the duodenum",
+      "topic": "liver-pancreas-gallbladder",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "A squirt of chyme at pH 2 enters the duodenum. Within a minute, pancreatic juice rich in bicarbonate follows it, and the duodenal contents rise back to a pH of about 6 to 7.",
+      "slots": {
+        "stimulus": {
+          "text": "Acid chyme lowers the pH in the duodenum",
+          "short": "Duodenal pH falls",
+          "why": "The regulated variable is the pH of the duodenal contents. Acid from the stomach pushes it far below the near-neutral range the pancreatic enzymes need."
+        },
+        "sensor": {
+          "text": "Enteroendocrine cells in the duodenal lining detect the acid",
+          "short": "Duodenal enteroendocrine cells",
+          "why": "These cells respond to hydrogen ions in the lumen. They are the sensors of this loop."
+        },
+        "afferent": {
+          "text": "No separate pathway: the sensing cells are the releasing cells",
+          "short": "None: same cells",
+          "why": "The cells that sense the acid are the ones that release secretin, so nothing needs to carry the signal between sensor and control center."
+        },
+        "control": {
+          "text": "The same enteroendocrine cells set how much secretin to release",
+          "short": "Cells set secretin output",
+          "why": "The more acid arrives, the more secretin these cells release."
+        },
+        "efferent": {
+          "text": "Secretin carried in the blood",
+          "short": "Secretin in the blood",
+          "why": "Secretin leaves through the capillaries of the duodenal wall and reaches the pancreas in the blood. The command is a hormone."
+        },
+        "effector": {
+          "text": "Duct cells of the pancreas (and of the bile ducts)",
+          "short": "Pancreatic duct cells",
+          "why": "Secretin targets the duct cells, which make bicarbonate and add a large volume of watery, alkaline fluid to the pancreatic juice. Bile duct cells add some too."
+        },
+        "response": {
+          "text": "Bicarbonate neutralizes the acid and the duodenal pH rises to about 6 to 7",
+          "short": "Acid neutralized: pH rises",
+          "why": "Bicarbonate combines with hydrogen ions to form carbonic acid, which breaks down into carbon dioxide and water. With the acid gone, secretin release falls."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Acinar cells release trypsinogen and lipase",
+          "why": "That is CCK’s main effect on the pancreas. Enzymes do not neutralize acid."
+        },
+        {
+          "text": "The gallbladder contracts",
+          "why": "Gallbladder contraction is driven by CCK in response to fat, not by secretin in response to acid."
+        },
+        {
+          "text": "Parietal cells secrete more acid",
+          "why": "Secretin does the opposite: it slows acid secretion by the stomach."
+        }
+      ],
+      "classify": "The response (acid neutralized) removes the stimulus (low duodenal pH) that released secretin, so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "A tumor squeezes the main pancreatic duct shut, so pancreatic juice cannot reach the duodenum. What happens to secretin and the duodenal pH after a meal?",
+        "options": [
+          {
+            "text": "Secretin stays high and the duodenum stays acidic",
+            "why": "Right. The sensor and control center work, but the effector’s product cannot reach the duodenum. The acid is never removed, so the signal never switches off."
+          },
+          {
+            "text": "Secretin falls, because the pancreas stops responding",
+            "why": "Secretin release depends on acid in the duodenum, not on the pancreas. The acid stays, so secretin stays high."
+          },
+          {
+            "text": "The duodenum is neutralized normally by bile",
+            "why": "Bile adds a little bicarbonate, but pancreatic juice supplies most of it. The duodenum stays acidic."
+          },
+          {
+            "text": "Nothing changes, because the stomach stops secreting acid",
+            "why": "Secretin slows acid secretion but does not stop it, and the stomach keeps sending acid chyme."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

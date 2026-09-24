@@ -7739,6 +7739,1055 @@
    "front": "Name three ways a cancer escapes the immune system.",
    "back": "Losing MHC class I (hiding from cytotoxic T cells), putting PD-L1 on its surface to switch T cells off, and drawing in regulatory T cells and releasing suppressive cytokines.",
    "why": "Checkpoint inhibitors block PD-1, PD-L1 or CTLA-4 to release those brakes; their side effects are T cell attacks on healthy organs."
+  },
+  {
+   "id": "gi-gsc-source",
+   "topic": "digestive-overview",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Gastrin vs secretin vs cholecystokinin",
+   "front": "Gastrin vs secretin vs CCK: where is each made, and what releases it?",
+   "back": "Gastrin: lower stomach lining, released by protein fragments, stretch and the vagus. Secretin: first part of the small intestine, released by acid. CCK: first parts of the small intestine, released by fats and protein fragments.",
+   "why": "Each hormone is made where its stimulus arrives: gastrin where food sits in the stomach, secretin and CCK where the stomach’s output enters the intestine."
+  },
+  {
+   "id": "gi-gsc-effect",
+   "topic": "digestive-overview",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Gastrin vs secretin vs cholecystokinin",
+   "front": "Gastrin vs secretin vs CCK: main effect of each?",
+   "back": "Gastrin: more stomach acid. Secretin: bicarbonate-rich fluid from the pancreas and the ducts that carry bile. CCK: gallbladder contracts and the pancreas releases enzymes.",
+   "why": "Gastrin pushes the stomach’s own work forward; secretin neutralizes the acid that released it; CCK brings in bile and enzymes for the fat and protein that released it."
+  },
+  {
+   "id": "gi-gsc-emptying",
+   "topic": "digestive-overview",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Gastrin vs secretin vs cholecystokinin",
+   "front": "Which of gastrin, secretin and CCK slow stomach emptying?",
+   "back": "Secretin and CCK slow it; gastrin has little effect on it.",
+   "why": "Secretin and CCK come from the intestine and hold the stomach back until the intestine has dealt with what it already has."
+  },
+  {
+   "id": "gi-gsc-off",
+   "topic": "digestive-overview",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Gastrin vs secretin vs cholecystokinin",
+   "front": "Gastrin vs secretin vs CCK: what switches each off?",
+   "back": "Gastrin: strong acid in the stomach. Secretin: the acid being neutralized. CCK: fats and proteins being digested and absorbed.",
+   "why": "Each is negative feedback: the hormone’s own effect removes the stimulus that released it."
+  },
+  {
+   "id": "gi-mech-chem",
+   "topic": "digestive-overview",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Mechanical vs chemical digestion",
+   "front": "Mechanical vs chemical digestion: what changes in each?",
+   "back": "Mechanical: only the size of the pieces; the molecules stay the same. Chemical: the molecules themselves, as enzymes break bonds by hydrolysis.",
+   "why": "Chewing and churning break food apart physically; only enzymes split the bonds that make starch, protein and fat into absorbable monomers."
+  },
+  {
+   "id": "gi-mech-helps",
+   "topic": "digestive-overview",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Mechanical vs chemical digestion",
+   "front": "Mechanical digestion makes nothing absorbable. Why does it still matter?",
+   "back": "Smaller pieces have more surface, and enzymes can only act on a particle’s surface.",
+   "why": "The same meat swallowed whole digests far more slowly than when it is chewed well, because the enzymes reach less of it."
+  },
+  {
+   "id": "gi-peri-seg",
+   "topic": "digestive-overview",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Peristalsis vs segmentation",
+   "front": "Peristalsis vs segmentation: job and net movement?",
+   "back": "Peristalsis: propulsion, moving contents forward, often a long way. Segmentation: mixing, with very little net movement.",
+   "why": "Peristalsis is a contraction that travels along the tube; segmentation is rings that contract in place and then alternate."
+  },
+  {
+   "id": "gi-peristalsis-how",
+   "topic": "digestive-overview",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Peristalsis vs segmentation",
+   "front": "What two things must happen at once for peristalsis to push food forward?",
+   "back": "Behind the food, circular muscle contracts (acetylcholine); ahead of it, circular muscle relaxes (nitric oxide).",
+   "why": "Without the relaxation ahead, the food would be squeezed against a closed tube. Enteric motor neurons produce both halves as a short reflex."
+  },
+  {
+   "id": "gi-four-layers",
+   "topic": "digestive-overview",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "The four layers of the GI wall, from the lumen outward?",
+   "back": "Mucosa, submucosa, muscularis externa, serosa (adventitia where there is no peritoneum, as around the esophagus in the chest).",
+   "why": "Every part of the tube keeps this plan; each organ changes the details, such as the stomach’s extra oblique muscle layer."
+  },
+  {
+   "id": "gi-plexuses",
+   "topic": "digestive-overview",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Myenteric vs submucosal plexus: where is each, and what does it control?",
+   "back": "Myenteric: between the circular and longitudinal muscle layers; controls motility. Submucosal: in the submucosa; controls secretion and local blood flow in the lining.",
+   "why": "Each plexus sits next to what it controls: the muscle layers or the glands and vessels of the lining."
+  },
+  {
+   "id": "gi-ens-ans",
+   "topic": "digestive-overview",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Does the brain run peristalsis?",
+   "back": "No. The enteric nervous system runs it by short reflexes; the autonomic nerves only turn it up (parasympathetic) or down (sympathetic).",
+   "why": "A length of intestine removed from the body, kept warm and oxygenated, still pushes a ball along by peristalsis."
+  },
+  {
+   "id": "gi-short-long",
+   "topic": "digestive-overview",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Short vs long GI reflex?",
+   "back": "Short: stays inside the gut wall, through the enteric plexuses. Long: travels to the brainstem or spinal cord and back through autonomic nerves.",
+   "why": "Long reflexes let the gut respond to things outside it, such as the smell of food or fear; stretch of the stomach increasing acid through the vagus is a long, vagovagal reflex."
+  },
+  {
+   "id": "gi-retroperitoneal",
+   "topic": "digestive-overview",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name digestive organs that are retroperitoneal.",
+   "back": "The pancreas, most of the first part of the small intestine, and the parts of the large intestine running up the right side and down the left side.",
+   "why": "They lie against the back wall behind the peritoneum, covered only in front, so they are held fixed instead of hanging on a mesentery."
+  },
+  {
+   "id": "gi-teeth-jobs",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Incisors vs canines vs premolars vs molars",
+   "front": "Incisors vs canines vs premolars vs molars: shape and job?",
+   "back": "Incisors: chisel blade, cut. Canines: single point, tear. Premolars: two cusps, crush and grind. Molars: broad, four or five cusps, grind.",
+   "why": "Each crown’s shape matches its job, from cutting at the front to grinding at the back."
+  },
+  {
+   "id": "gi-teeth-count",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Incisors vs canines vs premolars vs molars",
+   "front": "How many teeth in the adult and deciduous sets, and which kinds does the deciduous set lack?",
+   "back": "Adult: 32 (8 incisors, 4 canines, 8 premolars, 12 molars). Deciduous: 20, with no premolars and no third molars.",
+   "why": "Each quarter of an adult mouth holds two incisors, one canine, two premolars and three molars: 8 × 4 = 32."
+  },
+  {
+   "id": "gi-enamel",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can a cavity in enamel never grow back?",
+   "back": "Enamel has no living cells once the tooth has come in, so nothing can rebuild it.",
+   "why": "Minerals from saliva, helped by fluoride, can reharden an early weak spot, but a hole once formed stays."
+  },
+  {
+   "id": "gi-salivary-glands",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Parotid vs submandibular vs sublingual gland: where, and what kind of saliva?",
+   "back": "Parotid: in front of and below the ear; watery, rich in enzyme. Submandibular: under the mandible; mixed, most saliva at rest. Sublingual: floor of the mouth; mostly mucus.",
+   "why": "The parotid is the largest, the sublingual the smallest; all three reach the mouth through ducts, as exocrine glands do."
+  },
+  {
+   "id": "gi-saliva-contents",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does saliva contain besides water?",
+   "back": "Mucus, salivary amylase, a trace of lingual lipase, lysozyme, defensins, IgA, and bicarbonate and phosphate, which buffer acids.",
+   "why": "Mucus binds and lubricates the bolus, amylase starts starch digestion, the defenses damage bacteria, and the buffers protect enamel."
+  },
+  {
+   "id": "gi-lingual-lipase",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which enzyme does the fat digestion that happens before the small intestine in adults?",
+   "back": "Gastric lipase, from the chief cells of the stomach. Lingual lipase is only a trace in humans.",
+   "why": "Lingual lipase matters in rats and mice, but in humans there is only a trace of it, so pre-duodenal fat digestion is done by gastric lipase."
+  },
+  {
+   "id": "gi-saliva-control",
+   "topic": "mouth-esophagus",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why does anxiety leave your mouth dry and sticky?",
+   "back": "Sympathetic activity makes the salivary glands release only a small volume of thick saliva; the large watery flow needs parasympathetic signals.",
+   "why": "Salivation is controlled almost entirely by autonomic nerves, not hormones, and both divisions increase secretion, in different amounts."
+  },
+  {
+   "id": "gi-swallow-phases",
+   "topic": "mouth-esophagus",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "The three phases of swallowing, and which one you control?",
+   "back": "Voluntary (tongue pushes the bolus into the oropharynx), pharyngeal (a brainstem reflex seals the nose and airway), esophageal (peristalsis to the stomach). Only the voluntary phase.",
+   "why": "Once the bolus touches the oropharynx, the swallowing center fires a fixed sequence you cannot stop."
+  },
+  {
+   "id": "gi-airway-seal",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "In a swallow, what closes the airway first?",
+   "back": "The vocal folds close, at or before the start of the larynx’s rise; then the larynx rises and the epiglottis tips over its opening.",
+   "why": "Sealing from inside comes first, so the airway is already closed before the bolus is squeezed past it."
+  },
+  {
+   "id": "gi-ues-les",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Upper vs lower esophageal sphincter",
+   "front": "Upper vs lower esophageal sphincter: muscle type, and what closure prevents?",
+   "back": "Upper: skeletal muscle; stops air entering the esophagus as you breathe in. Lower: smooth muscle helped by the diaphragm; stops stomach contents flowing back up.",
+   "why": "Both are closed at rest. The upper opens when its motor neurons stop and the larynx pulls it open; the lower relaxes when enteric neurons release nitric oxide."
+  },
+  {
+   "id": "gi-esophagus-muscle",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What kind of muscle is in the wall of the esophagus?",
+   "back": "Skeletal in the upper third, a mixture in the middle third, smooth in the lower third.",
+   "why": "The top is driven directly by brainstem motor neurons; the lower part also relies on the enteric nervous system."
+  },
+  {
+   "id": "gi-gerd-cause",
+   "topic": "mouth-esophagus",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What causes reflux in most people with GERD?",
+   "back": "Brief relaxations of the lower esophageal sphincter not linked to swallowing, set off by stretch of the upper stomach after a meal.",
+   "why": "A constantly weak sphincter and a hiatal hernia make it worse, but transient relaxations are the main cause."
+  },
+  {
+   "id": "gi-gland-parietal",
+   "topic": "stomach",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Gastric gland cells",
+   "front": "What do parietal cells secrete?",
+   "back": "Hydrochloric acid and intrinsic factor.",
+   "why": "Acid denatures protein, kills microbes and activates pepsin; intrinsic factor lets you absorb vitamin B12."
+  },
+  {
+   "id": "gi-gland-chief",
+   "topic": "stomach",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Gastric gland cells",
+   "front": "What do chief cells secrete?",
+   "back": "Pepsinogen and gastric lipase.",
+   "why": "Pepsinogen becomes pepsin in acid and starts protein digestion; gastric lipase starts fat digestion."
+  },
+  {
+   "id": "gi-gland-endocrine",
+   "topic": "stomach",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Gastric gland cells",
+   "front": "G cells vs ECL cells vs D cells: what does each release?",
+   "back": "G cells: gastrin into the blood. ECL cells: histamine onto the parietal cells. D cells: somatostatin, which restrains the others.",
+   "why": "These enteroendocrine cells release their products toward the blood or neighboring cells, not into the lumen."
+  },
+  {
+   "id": "gi-three-signals",
+   "topic": "stomach",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why does an H<sub>2</sub> blocker cut acid strongly, though it blocks only one of three signals?",
+   "back": "Acetylcholine, gastrin and histamine together produce far more acid than the sum of each alone, and gastrin acts mostly through histamine.",
+   "why": "Remove histamine and both its own effect and most of gastrin’s are lost. A proton pump inhibitor goes further, blocking the pump itself."
+  },
+  {
+   "id": "gi-alkaline-tide",
+   "topic": "stomach",
+   "core": [
+    "gradients",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What is the alkaline tide?",
+   "back": "During a meal, blood leaving the stomach is slightly alkaline, because every H<sup>+</sup> secreted leaves a bicarbonate ion that enters the blood.",
+   "why": "Carbonic anhydrase makes H<sup>+</sup> and HCO<sub>3</sub><sup>−</sup> together; the H<sup>+</sup> goes to the lumen and the bicarbonate to the blood, until pancreatic bicarbonate secretion balances it."
+  },
+  {
+   "id": "gi-zymogen",
+   "topic": "stomach",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do chief cells make pepsinogen instead of pepsin?",
+   "back": "Pepsinogen is an inactive zymogen, so it can be stored without digesting the cell’s own proteins.",
+   "why": "It becomes pepsin only in acid below about pH 5, and pepsin then activates more pepsinogen: positive feedback."
+  },
+  {
+   "id": "gi-intrinsic-factor",
+   "topic": "stomach",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which secretion of the stomach can you not live without?",
+   "back": "Intrinsic factor.",
+   "why": "Without it you absorb almost no vitamin B12. A person without a stomach digests food well with small meals but needs B12 replacement for life."
+  },
+  {
+   "id": "gi-phases-where",
+   "topic": "stomach",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Cephalic vs gastric vs intestinal phase",
+   "front": "Cephalic vs gastric vs intestinal phase: where is the stimulus?",
+   "back": "Cephalic: head (sight, smell, taste, thought, chewing). Gastric: stomach (stretch, protein, rising pH). Intestinal: first part of the small intestine (acid, fat, stretch).",
+   "why": "The phases are named for where the stimulus is, not where the secretion happens."
+  },
+  {
+   "id": "gi-phases-share",
+   "topic": "stomach",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Cephalic vs gastric vs intestinal phase",
+   "front": "Which phase of gastric secretion supplies most of the acid, and which mostly inhibits?",
+   "back": "The gastric phase supplies about half or more; the cephalic about a third. The intestinal phase mostly inhibits.",
+   "why": "In the intestinal phase, the enterogastric reflex, secretin and CCK act as the brake on the stomach."
+  },
+  {
+   "id": "gi-emptying-order",
+   "topic": "stomach",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Rank carbohydrate, protein and fat by how fast they leave the stomach.",
+   "back": "Carbohydrate fastest, protein slower, fat slowest.",
+   "why": "Fat releases the most CCK, and CCK weakens the antrum’s waves and tightens the pylorus."
+  },
+  {
+   "id": "gi-barrier",
+   "topic": "stomach",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What makes up the gastric mucosal barrier?",
+   "back": "Alkaline mucus with bicarbonate, tight junctions, renewal of the surface cells every 3 to 5 days, mucosal blood flow, and prostaglandins.",
+   "why": "Together they keep the cell surface near pH 7 while the lumen, less than a millimeter away, is near pH 1 to 2."
+  },
+  {
+   "id": "gi-ulcer-causes",
+   "topic": "stomach",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What causes most peptic ulcers?",
+   "back": "Helicobacter pylori infection and NSAIDs, both of which weaken the mucosal barrier.",
+   "why": "Ulcers usually form because the barrier fails, not because acid secretion is high. Stress and spicy food are not causes."
+  },
+  {
+   "id": "gi-vomit-force",
+   "topic": "stomach",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "In vomiting, what supplies the force?",
+   "back": "The diaphragm and abdominal muscles contracting together; the stomach and lower esophageal sphincter are relaxed.",
+   "why": "The relaxed stomach is squeezed between them. Repeated vomiting loses H<sup>+</sup> and Cl<sup>−</sup> and leads to alkalosis and low potassium."
+  },
+  {
+   "id": "gi-jej-ile-structure",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Jejunum vs ileum",
+   "front": "Jejunum vs ileum: how do their walls and folds differ?",
+   "back": "Jejunum: thicker, wider, redder, with tall close circular folds, tall villi and few Peyer’s patches. Ileum: thinner, paler, with low sparse folds, shorter villi and many Peyer’s patches.",
+   "why": "The jejunum does most nutrient absorption, so its surface is largest; the ileum’s many lymphoid nodules guard the approach to the bacteria-rich large intestine."
+  },
+  {
+   "id": "gi-jej-ile-job",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Jejunum vs ileum",
+   "front": "Which jobs belong to the ileum alone?",
+   "back": "Absorbing vitamin B12 bound to intrinsic factor and recovering most of the bile secreted during a meal for reuse.",
+   "why": "The carriers and receptor proteins for both are found only in the terminal ileum, so no other part can take over."
+  },
+  {
+   "id": "gi-length",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How long is the small intestine in a living adult?",
+   "back": "About 3 to 5 meters. After death, when its muscle loses tone, it measures about 6 meters.",
+   "why": "Living muscle keeps some tone and shortens the tube. Exams may still give the older 6 m (20 ft) figure."
+  },
+  {
+   "id": "gi-surface",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How large is the absorptive surface of the small intestine, and how much do folds, villi and microvilli multiply it?",
+   "back": "About 30 m², roughly 100- to 200-fold a smooth tube. The textbook estimate is 3 × 10 × 20 = 600-fold, or 200 to 300 m².",
+   "why": "Direct measurements in the living intestine found smaller multipliers than the old estimates; exams may still expect the tennis-court figure."
+  },
+  {
+   "id": "gi-villus-core",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What carries absorbed nutrients away inside a villus?",
+   "back": "Blood capillaries take sugars, amino acids and water; a central lacteal takes absorbed fat.",
+   "why": "Fat is packaged into droplets too large for blood capillaries, so it enters the lymphatic lacteal instead."
+  },
+  {
+   "id": "gi-crypts",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does cancer chemotherapy so often damage the gut?",
+   "back": "Stem cells in the intestinal glands divide constantly to replace the lining every 3 to 5 days, and chemotherapy kills dividing cells.",
+   "why": "The intestinal lining is one of the fastest-renewing tissues in the body."
+  },
+  {
+   "id": "gi-intestinal-juice",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Is intestinal juice rich in digestive enzymes?",
+   "back": "No. It is 1 to 2 L a day of watery, slightly alkaline fluid with mucus and very little enzyme.",
+   "why": "Its job is to keep chyme fluid. The last digestive cuts are made by brush border enzymes fixed in the microvillus membrane."
+  },
+  {
+   "id": "gi-brush-border",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Brush border enzymes",
+   "front": "Lactase, sucrase, maltase: substrate and products?",
+   "back": "Lactase: lactose to glucose and galactose. Sucrase: sucrose to glucose and fructose. Maltase: maltose to two glucose.",
+   "why": "Each is named for its substrate, and each sits in the microvillus membrane beside the carriers that absorb its products."
+  },
+  {
+   "id": "gi-lactase-first",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Brush border enzymes",
+   "front": "When the villi are damaged, which brush border enzyme is usually the first to fall?",
+   "back": "Lactase.",
+   "why": "It is the least abundant of them, so losing cells shows first as lactase shortage; it recovers when the lining heals."
+  },
+  {
+   "id": "gi-seg-mmc",
+   "topic": "small-intestine",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Segmentation vs migrating motor complex",
+   "front": "Segmentation vs migrating motor complex: when, trigger, and job?",
+   "back": "Segmentation: during and after a meal, driven by chyme stretching the wall; mixes. Migrating motor complex: between meals, every 90 to 120 minutes, driven by motilin; sweeps residue and bacteria into the large intestine.",
+   "why": "Eating stops the migrating motor complex at once, and segmentation takes over again."
+  },
+  {
+   "id": "gi-liver-blood",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What share of the liver’s blood comes from the hepatic portal vein, and what share from the hepatic artery?",
+   "back": "About three quarters from the hepatic portal vein, about a quarter from the hepatic artery.",
+   "why": "Portal blood is rich in absorbed nutrients but partly deoxygenated; the artery supplies oxygenated blood."
+  },
+  {
+   "id": "gi-lobule-flow",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "In a liver lobule, which way do blood and bile flow?",
+   "back": "Blood flows inward, from the portal triads through the sinusoids to the central vein. Bile flows outward, through the canaliculi to the bile ducts in the triads.",
+   "why": "The two run in opposite directions in separate channels and never mix."
+  },
+  {
+   "id": "gi-bile-salts",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Does bile digest fat?",
+   "back": "No. Bile has no enzymes. Its bile salts emulsify fat into tiny droplets, multiplying the surface pancreatic lipase can act on.",
+   "why": "A bile salt has a hydrophobic face in the fat and a hydrophilic face in the water, which stops droplets merging again."
+  },
+  {
+   "id": "gi-gallbladder",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Does the gallbladder make bile?",
+   "back": "No. It stores and concentrates it, up to about tenfold, by absorbing sodium and letting water follow.",
+   "why": "Between meals the closed hepatopancreatic sphincter backs bile up the cystic duct into the gallbladder; CCK empties it after a meal."
+  },
+  {
+   "id": "gi-cbd-stone",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "A gallstone blocks the common bile duct. Name three signs.",
+   "back": "Jaundice with dark urine, pale feces, and fat in the feces.",
+   "why": "Conjugated bilirubin backs up into the blood and urine instead of reaching the gut, and without bile salts fat is poorly emulsified."
+  },
+  {
+   "id": "gi-secretin-cck-target",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Secretin vs CCK on the pancreas",
+   "front": "Secretin vs CCK: which pancreatic cells does each target, and what juice results?",
+   "back": "Secretin: duct cells; a large volume rich in bicarbonate, with few enzymes. CCK: acinar cells; a small volume rich in enzymes.",
+   "why": "Each hormone calls for what removes its own stimulus: bicarbonate for acid, enzymes for fat and protein."
+  },
+  {
+   "id": "gi-secretin-cck-gb",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Secretin vs CCK on the pancreas",
+   "front": "Secretin vs CCK: effect on the gallbladder and the hepatopancreatic sphincter?",
+   "back": "CCK contracts the gallbladder and relaxes the sphincter. Secretin has little direct effect on either.",
+   "why": "Bile is needed for fat, and fat is CCK’s stimulus, not secretin’s."
+  },
+  {
+   "id": "gi-enteropeptidase",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is the pancreas not digested by its own trypsin?",
+   "back": "It makes trypsinogen, an inactive zymogen, which is switched on only by enteropeptidase on the duodenal brush border.",
+   "why": "The acinar cells also make a trypsin inhibitor, and their secretions keep flowing out of the gland. In acute pancreatitis, trypsin is activated inside the gland."
+  },
+  {
+   "id": "gi-panc-bicarb",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "gradients",
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "How is making pancreatic bicarbonate the mirror image of making stomach acid?",
+   "back": "Pancreatic duct cells put bicarbonate into the duct and H<sup>+</sup> into the blood; parietal cells put H<sup>+</sup> into the stomach and bicarbonate into the blood.",
+   "why": "So blood leaving the stomach after a meal is slightly alkaline (the alkaline tide), and blood leaving the pancreas slightly acidic."
+  },
+  {
+   "id": "gi-hep-cirr-what",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Hepatitis vs cirrhosis",
+   "front": "Hepatitis vs cirrhosis: what is each?",
+   "back": "Hepatitis: inflammation of the liver, acute or long-lasting. Cirrhosis: scarring that replaces normal lobules with scar bands and nodules, after years of injury.",
+   "why": "Long-lasting hepatitis from any cause can end in cirrhosis."
+  },
+  {
+   "id": "gi-hep-cirr-recovery",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Hepatitis vs cirrhosis",
+   "front": "Can cirrhosis get better?",
+   "back": "Partly. Scarring can regress once the cause is removed, as when hepatitis C is cured, but the liver seldom returns fully to normal.",
+   "why": "Cirrhosis that has already caused complications regresses least; hepatitis often recovers fully once its cause is gone."
+  },
+  {
+   "id": "gi-stellate",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Hepatitis vs cirrhosis",
+   "front": "Which cells lay down the scar in cirrhosis?",
+   "back": "Hepatic stellate cells, star-shaped cells just outside the sinusoid lining, once activated by repeated injury.",
+   "why": "They are not the macrophages of the sinusoids; activated, they make collagen."
+  },
+  {
+   "id": "gi-cirrhosis-portal",
+   "topic": "liver-pancreas-gallbladder",
+   "core": [
+    "structure-function",
+    "interdependence"
+   ],
+   "level": "analyze",
+   "compare": "Hepatitis vs cirrhosis",
+   "front": "Why does cirrhosis cause bleeding veins at the lower esophagus?",
+   "back": "Scar squeezes the sinusoids, pressure in the hepatic portal vein rises, and blood backs up into veins linking the portal system to the systemic veins, which swell and can rupture.",
+   "why": "Portal vein pressure is raised in cirrhosis but usually normal in hepatitis."
+  },
+  {
+   "id": "gi-si-li-surface",
+   "topic": "large-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Small vs large intestine",
+   "front": "Small vs large intestine: surface of the lining and goblet cells?",
+   "back": "Small: circular folds, villi and microvilli; goblet cells present. Large: no circular folds or villi, a flat surface with deep glands; very many goblet cells.",
+   "why": "Nutrients are absorbed in the small intestine, which needs the surface; the colon needs mucus to lubricate drying feces and keep bacteria off its cells."
+  },
+  {
+   "id": "gi-si-li-muscle",
+   "topic": "large-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Small vs large intestine",
+   "front": "Small vs large intestine: outer longitudinal muscle and main movements?",
+   "back": "Small: a continuous layer; segmentation after meals and the migrating motor complex between them. Large: three teniae coli that gather it into haustra; slow haustral contractions and a few mass movements a day.",
+   "why": "The teniae coli are shorter than the colon wall, so their tone bunches it into pouches."
+  },
+  {
+   "id": "gi-si-li-water",
+   "topic": "large-intestine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Small vs large intestine",
+   "front": "Small vs large intestine: how much water does each absorb a day?",
+   "back": "Small intestine: about 7 to 8 L. Large intestine: about 1.3 L, around 90% of what reaches it.",
+   "why": "The colon’s share is small, but it is the last chance, so any change in it shows in the stool."
+  },
+  {
+   "id": "gi-si-li-size",
+   "topic": "large-intestine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Small vs large intestine",
+   "front": "Small vs large intestine: length, width, and time contents spend there?",
+   "back": "Small: about 3 to 5 m in life, 2.5 cm wide, 3 to 5 hours. Large: about 1.5 m, 6 to 7 cm wide, 12 to 48 hours or longer.",
+   "why": "“Small” and “large” refer to width, not length."
+  },
+  {
+   "id": "gi-si-li-bacteria",
+   "topic": "large-intestine",
+   "core": [
+    "interdependence"
+   ],
+   "level": "recall",
+   "compare": "Small vs large intestine",
+   "front": "Small vs large intestine: enzymes and bacteria?",
+   "back": "Small: brush border enzymes plus pancreatic juice and bile; relatively few bacteria. Large: no digestive enzymes of its own; trillions of bacteria do the breaking down.",
+   "why": "Stomach acid and fast flow keep bacteria sparse higher up; the slow, oxygen-poor, fiber-rich colon lets them thrive."
+  },
+  {
+   "id": "gi-bacteria-ratio",
+   "topic": "large-intestine",
+   "core": [
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "Do bacteria outnumber your own cells ten to one?",
+   "back": "No: roughly 38 trillion bacteria and 30 trillion human cells, about one to one.",
+   "why": "A careful recount in 2016 replaced the old ten-to-one estimate, though some exams still expect it."
+  },
+  {
+   "id": "gi-scfa",
+   "topic": "large-intestine",
+   "core": [
+    "energy",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "What do colon bacteria make from fiber, and why does it matter?",
+   "back": "Short-chain fatty acids (acetate, propionate, butyrate) and gases. Butyrate is the main fuel of the colon’s epithelial cells.",
+   "why": "You have no enzymes for most fiber, so bacterial fermentation recovers some of its energy, roughly 5 to 10% of your daily energy."
+  },
+  {
+   "id": "gi-colon-water",
+   "topic": "large-intestine",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "How does the colon absorb water, with no water pump?",
+   "back": "It absorbs sodium through apical channels, pumps it out with sodium–potassium pumps, chloride follows, and water follows by osmosis.",
+   "why": "Aldosterone adds channels and pumps, so the colon saves more sodium and water when your body is low on them."
+  },
+  {
+   "id": "gi-anal-sphincters",
+   "topic": "large-intestine",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Internal vs external anal sphincter",
+   "front": "Internal vs external anal sphincter: muscle, control and nerves?",
+   "back": "Internal: smooth muscle, involuntary, autonomic and enteric nerves; relaxes by reflex when the rectum stretches. External: skeletal muscle, voluntary, somatic motor neurons from the sacral cord.",
+   "why": "The reflex opens the internal sphincter; the external one stays closed until you decide to relax it."
+  },
+  {
+   "id": "gi-cord-injury",
+   "topic": "large-intestine",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "compare": "Internal vs external anal sphincter",
+   "front": "A spinal cord injury above the sacral segments: what happens to defecation?",
+   "back": "The reflex still works, but the person no longer feels the urge or controls the external anal sphincter.",
+   "why": "The reflex arc runs through the sacral cord (S2–S4); the injury cuts only the path to and from the brain."
+  },
+  {
+   "id": "gi-diarrhea-constipation",
+   "topic": "large-intestine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "Diarrhea vs constipation",
+   "front": "Diarrhea vs constipation: time in the colon and water absorbed?",
+   "back": "Diarrhea: time usually shortened, less water absorbed. Constipation: time usually lengthened, more water absorbed.",
+   "why": "The colon keeps absorbing water for as long as contents stay, so time decides how hard the stool is."
+  },
+  {
+   "id": "gi-diarrhea-danger",
+   "topic": "large-intestine",
+   "core": [
+    "mass-balance",
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Diarrhea vs constipation",
+   "front": "Diarrhea vs constipation: main danger?",
+   "back": "Diarrhea: loss of water, sodium, potassium and bicarbonate. Constipation: discomfort and, rarely, a blockage of hard stool.",
+   "why": "Stool water carries potassium, which the colon secretes, and bicarbonate, so severe diarrhea lowers blood volume and potassium and makes the blood more acidic."
+  },
+  {
+   "id": "gi-diarrhea-types",
+   "topic": "large-intestine",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Diarrhea vs constipation",
+   "front": "Secretory vs osmotic diarrhea: mechanism and example?",
+   "back": "Secretory: a toxin makes the lining secrete chloride, and sodium and water follow (cholera). Osmotic: an unabsorbed solute holds water in the lumen (magnesium laxatives, sorbitol).",
+   "why": "Either way, more water stays in the lumen than the colon can take back."
+  },
+  {
+   "id": "gi-enz-amylase",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Digestive enzymes by source, substrate and product",
+   "front": "Salivary and pancreatic amylase: substrate and products?",
+   "back": "Starch and glycogen, split into maltose, maltotriose and α-dextrins.",
+   "why": "Amylase cannot cut the bond at a branch point, so α-dextrins keep their branches until brush border α-dextrinase splits them."
+  },
+  {
+   "id": "gi-enz-pepsin-trypsin",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Digestive enzymes by source, substrate and product",
+   "front": "Pepsin vs trypsin, chymotrypsin and elastase: source and products?",
+   "back": "Pepsin: stomach chief cells; large polypeptides. Trypsin, chymotrypsin, elastase: pancreas; shorter peptides.",
+   "why": "Each cuts inside the chain, at bonds next to particular amino acids; peptidases then finish the pieces."
+  },
+  {
+   "id": "gi-enz-exopeptidases",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Digestive enzymes by source, substrate and product",
+   "front": "Carboxypeptidase vs aminopeptidase: source, and which end does each trim?",
+   "back": "Carboxypeptidase: pancreas; removes amino acids from the carboxyl end. Aminopeptidase: brush border; removes them from the amino end.",
+   "why": "Trimming from both ends, with dipeptidase splitting dipeptides, leaves single amino acids and short peptides."
+  },
+  {
+   "id": "gi-enz-lipases",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Digestive enzymes by source, substrate and product",
+   "front": "Gastric vs pancreatic lipase: products and share of fat digestion?",
+   "back": "Gastric: fatty acids and diglycerides, a small share (roughly 10 to 30% in adults). Pancreatic: fatty acids and monoglycerides, most of it.",
+   "why": "Pancreatic lipase works on bile-emulsified droplets, anchored to their surface by colipase."
+  },
+  {
+   "id": "gi-enz-nucleases",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Digestive enzymes by source, substrate and product",
+   "front": "How are DNA and RNA from food digested?",
+   "back": "Pancreatic ribonuclease and deoxyribonuclease cut them into nucleotides; brush border nucleosidases and phosphatases split those into pentose sugars, nitrogenous bases and phosphate.",
+   "why": "Every cell you eat contains nucleic acids, and only these small parts can be absorbed."
+  },
+  {
+   "id": "gi-sglt1",
+   "topic": "digestion-absorption",
+   "core": [
+    "gradients",
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "SGLT1 uses no ATP. Why does stopping the sodium–potassium pumps stop glucose absorption?",
+   "back": "The pumps keep sodium low inside the cell; SGLT1 is powered by sodium running down that gradient. Without the pumps, the gradient collapses.",
+   "why": "This is secondary active transport: the energy comes from the ATP the pumps spent, one step removed."
+  },
+  {
+   "id": "gi-fructose",
+   "topic": "digestion-absorption",
+   "core": [
+    "gradients"
+   ],
+   "level": "recall",
+   "front": "How do glucose, galactose and fructose enter and leave an absorptive cell?",
+   "back": "Glucose and galactose enter with sodium through SGLT1; fructose enters by facilitated diffusion through GLUT5. All three leave through GLUT2.",
+   "why": "Each membrane has its own carriers, and that difference makes absorption run one way."
+  },
+  {
+   "id": "gi-peptides-absorbed",
+   "topic": "digestion-absorption",
+   "core": [
+    "gradients"
+   ],
+   "level": "apply",
+   "front": "Are dietary proteins absorbed only as single amino acids?",
+   "back": "No: much crosses the brush border as dipeptides and tripeptides, carried with hydrogen ions and split inside the cell. Almost all reaches the blood as amino acids.",
+   "why": "Many textbooks and exams still say \"absorbed as amino acids\", which is true of what enters the blood."
+  },
+  {
+   "id": "gi-micelle-chylo-where",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Micelle vs chylomicron",
+   "front": "Micelle vs chylomicron: where does each form, and what is its job?",
+   "back": "Micelle: in the lumen; carries digested lipids to the brush border. Chylomicron: inside the absorptive cell; carries absorbed lipids out of the cell.",
+   "why": "Micelles need bile salts and release their lipids at the membrane; chylomicrons are rebuilt triglycerides packaged for export."
+  },
+  {
+   "id": "gi-micelle-chylo-route",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Micelle vs chylomicron",
+   "front": "Where do chylomicrons go, and why not into the blood capillaries?",
+   "back": "Into the lacteal, then the lymph, the thoracic duct and the veins where the left internal jugular and subclavian veins meet.",
+   "why": "They are tens to hundreds of times wider than a micelle, too large for blood capillaries, so absorbed fat reaches the blood without passing the liver first."
+  },
+  {
+   "id": "gi-b12-steps",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function",
+    "interdependence"
+   ],
+   "level": "analyze",
+   "front": "Name four organs vitamin B12 absorption depends on.",
+   "back": "Stomach (acid, pepsin, intrinsic factor), pancreas (proteases that free it from haptocorrin), terminal ileum (receptor proteins), and liver (stores 3 to 5 years’ worth).",
+   "why": "A break anywhere causes deficiency, but only years later because of the liver’s store. High oral doses let a small fraction cross without intrinsic factor."
+  },
+  {
+   "id": "gi-water-balance",
+   "topic": "digestion-absorption",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "About how much water passes through the gut each day, and how much leaves in the feces?",
+   "back": "About 9 L in (about 2 L from food and drink, 7 L from secretions); about 150 mL leaves in the feces, so about 98% is absorbed.",
+   "why": "Water in = water absorbed + water in the feces. Gastric juice alone is about 2 L a day."
+  },
+  {
+   "id": "gi-ors",
+   "topic": "digestion-absorption",
+   "core": [
+    "gradients",
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "Why does an oral rehydration solution need glucose as well as salt?",
+   "back": "Cholera toxin does not stop SGLT1, so glucose carries sodium into the cells, and water follows, even while secretion continues.",
+   "why": "Salt alone is absorbed poorly when the gut is secreting; coupling sodium to glucose opens a route the toxin leaves intact."
+  },
+  {
+   "id": "gi-lactose-intol-vs-allergy",
+   "topic": "digestion-absorption",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "compare": "Lactose intolerance vs milk allergy",
+   "front": "Lactose intolerance vs milk allergy: cause and molecule?",
+   "back": "Intolerance: too little lactase to digest lactose, a sugar; no immune response. Allergy: an immune response, often IgE-mediated, to milk proteins such as casein.",
+   "why": "Intolerance depends on the dose and small amounts are usually tolerated; in an allergy even tiny amounts can trigger a reaction."
+  },
+  {
+   "id": "gi-lactose-symptoms",
+   "topic": "digestion-absorption",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "compare": "Lactose intolerance vs milk allergy",
+   "front": "Why does undigested lactose cause gas and diarrhea?",
+   "back": "It holds water in the lumen by osmosis, and colon bacteria ferment it into hydrogen, carbon dioxide and fatty acids.",
+   "why": "The gas causes bloating and flatus; the water and extra solutes cause osmotic diarrhea. The absorbed hydrogen is what the breath test detects."
+  },
+  {
+   "id": "gi-thoracic-duct",
+   "topic": "digestion-absorption",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Where does the thoracic duct return absorbed fat to the blood?",
+   "back": "At the left venous angle, where the left internal jugular and left subclavian veins meet.",
+   "why": "Chyle climbs from the cisterna chyli through the thoracic duct, so absorbed long-chain fat bypasses the liver on its first pass."
   }
  ]
 }

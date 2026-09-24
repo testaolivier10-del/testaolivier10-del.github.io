@@ -16,6 +16,10 @@
     {
       "id": "endocrine",
       "title": "Endocrine system"
+    },
+    {
+      "id": "digestive",
+      "title": "Digestive system"
     }
   ],
   "calculators": [
@@ -3649,6 +3653,897 @@
               "rel": 0.01
             },
             "prompt": "A glucose meter reads {mm} mmol/L. What is that in mg/dL?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "surface-amplification",
+      "group": "digestive",
+      "title": "Folds, villi and microvilli: how much surface?",
+      "short": "total = folds × villi × microvilli",
+      "topic": "small-intestine",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Each level of folding in the small intestine multiplies the surface made by the level before it, so the factors multiply. Textbooks often use about 3 for circular folds, 10 for villi and 20 for microvilli. Direct measurements give smaller factors (about 1.6 for the folds and 60 to 120 for villi and microvilli together), so the real total is roughly 100- to 200-fold. Enter a factor for each level.",
+      "formula": "Total amplification = circular folds × villi × microvilli",
+      "inputs": [
+        {
+          "key": "f",
+          "label": "Circular folds multiply the surface by",
+          "sym": "folds",
+          "unit": "×",
+          "default": 3,
+          "min": 1,
+          "max": 5,
+          "step": 0.1,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              1,
+              1.5,
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "key": "v",
+          "label": "Villi multiply it by",
+          "sym": "villi",
+          "unit": "×",
+          "default": 10,
+          "min": 1,
+          "max": 20,
+          "step": 0.5,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              1,
+              5,
+              8,
+              10
+            ]
+          }
+        },
+        {
+          "key": "m",
+          "label": "Microvilli multiply it by",
+          "sym": "microvilli",
+          "unit": "×",
+          "default": 20,
+          "min": 1,
+          "max": 40,
+          "step": 1,
+          "dp": 0,
+          "gen": {
+            "choices": [
+              10,
+              15,
+              20,
+              25
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "fv",
+          "expr": "f * v",
+          "dp": 1
+        },
+        {
+          "key": "total",
+          "expr": "f * v * m",
+          "dp": 0
+        },
+        {
+          "key": "share",
+          "expr": "f * v * m / 600 * 100",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Start with a smooth tube",
+          "text": "Call the inner surface of a smooth tube of the same length and width 1."
+        },
+        {
+          "title": "Circular folds",
+          "text": "1 × {f} = <b>{f}</b>. The folds of the mucosa and submucosa multiply the smooth surface."
+        },
+        {
+          "title": "Villi on the folds",
+          "text": "{f} × {v} = <b>{fv}</b>. Villi cover the whole mucosa, folds included, so their factor multiplies the folded surface."
+        },
+        {
+          "title": "Microvilli on every absorptive cell",
+          "text": "{fv} × {m} = <b>{total}</b>. Microvilli cover every absorptive cell on every villus, so their factor multiplies again."
+        },
+        {
+          "title": "Compare with the textbook estimate",
+          "text": "{total} ÷ 600 = {share}% of the textbook total of 3 × 10 × 20 = 600."
+        }
+      ],
+      "results": [
+        {
+          "key": "total",
+          "label": "Total surface amplification",
+          "unit": "×",
+          "normal": "Measured in living people: roughly 100- to 200-fold (about 30 m² in all). Textbook estimate: about 600-fold.",
+          "bands": [
+            {
+              "when": "total < 100",
+              "label": "far below normal",
+              "tone": "lo"
+            },
+            {
+              "when": "total <= 250",
+              "label": "about the measured range",
+              "tone": "ok"
+            },
+            {
+              "label": "about the textbook estimate or above",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "v <= 1",
+          "text": "With the villus factor at 1, the villi are flattened, as in untreated celiac disease. The surface is {total}-fold, and absorption falls roughly in proportion, which is why people lose weight and develop deficiencies even when they eat enough."
+        },
+        {
+          "when": "total < 100",
+          "text": "A {total}-fold surface is well below the roughly 100- to 200-fold measured in healthy people. Absorption falls roughly in proportion to the lost surface."
+        },
+        {
+          "when": "total <= 250",
+          "text": "A {total}-fold surface is about what direct measurements find: the small intestine’s lining covers roughly 30 m², about 15 to 20 times the area of your skin."
+        },
+        {
+          "when": "1",
+          "text": "A {total}-fold surface is about the textbook estimate of 600-fold, which older books turned into \"a tennis court\" (200 to 300 m²). Measurements in living people give about 30 m². For an exam, the textbook figures may still be expected."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Textbook estimate: 3 × 10 × 20",
+          "values": {
+            "f": 3,
+            "v": 10,
+            "m": 20
+          }
+        },
+        {
+          "label": "Flattened villi: 3 × 1 × 20",
+          "values": {
+            "f": 3,
+            "v": 1,
+            "m": 20
+          }
+        },
+        {
+          "label": "Measured folds, villi and microvilli: 1.6 × 5 × 18",
+          "values": {
+            "f": 1.6,
+            "v": 5,
+            "m": 18
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "total",
+            "unit": "×",
+            "tol": {
+              "abs": 1,
+              "rel": 0.01
+            },
+            "prompt": "Circular folds multiply the surface by {f}, villi by {v} and microvilli by {m}. By how much do they multiply it together?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "emulsification-surface",
+      "group": "digestive",
+      "title": "Emulsification: how much surface for lipase?",
+      "short": "surface gain = large diameter ÷ small diameter",
+      "topic": "liver-pancreas-gallbladder",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "Bile salts keep churned fat in tiny droplets. Lipase works only at a droplet’s surface, so what matters is how much surface the same volume of fat offers. Enter the diameter of a large droplet and of the small droplets it is broken into.",
+      "formula": "Surface gain = D ÷ d (number of droplets = (D ÷ d)³; area of each = 1 ÷ (D ÷ d)²)",
+      "inputs": [
+        {
+          "key": "D",
+          "label": "Diameter of the large droplet",
+          "sym": "D",
+          "unit": "mm",
+          "default": 1,
+          "min": 0.01,
+          "max": 10,
+          "step": 0.01,
+          "dp": 2,
+          "gen": {
+            "choices": [
+              0.5,
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "key": "d",
+          "label": "Diameter of each small droplet",
+          "sym": "d",
+          "unit": "mm",
+          "default": 0.01,
+          "min": 0.001,
+          "max": 10,
+          "step": 0.001,
+          "dp": 3,
+          "gen": {
+            "choices": [
+              0.005,
+              0.01,
+              0.02,
+              0.05
+            ]
+          }
+        }
+      ],
+      "invalid": [
+        {
+          "when": "d >= D",
+          "text": "The small droplets must be smaller than the large one."
+        }
+      ],
+      "derived": [
+        {
+          "key": "r",
+          "expr": "D / d",
+          "dp": 0
+        },
+        {
+          "key": "n",
+          "expr": "(D / d) ^ 3",
+          "dp": 0
+        },
+        {
+          "key": "each",
+          "expr": "(D / d) ^ 2",
+          "dp": 0
+        },
+        {
+          "key": "gain",
+          "expr": "D / d",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "How many times smaller?",
+          "text": "{D} mm ÷ {d} mm = <b>{r}</b>. Each small droplet is {r} times narrower."
+        },
+        {
+          "title": "Count the new droplets",
+          "text": "Volume scales with diameter cubed, so each small droplet has {r}³ = {n} times less volume. The same fat makes <b>{n}</b> small droplets."
+        },
+        {
+          "title": "Area of each small droplet",
+          "text": "Area scales with diameter squared, so each small droplet has {r}² = {each} times less area than the large one."
+        },
+        {
+          "title": "Total area",
+          "text": "{n} droplets × (1/{each} of the original area each) = <b>{gain} times</b> the original area."
+        }
+      ],
+      "results": [
+        {
+          "key": "gain",
+          "label": "Increase in fat surface",
+          "unit": "×",
+          "normal": "Dividing the diameter by some number multiplies the surface by that same number."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "1",
+          "text": "The fat now offers {gain} times as much surface, so pancreatic lipase has {gain} times as much to work on. Bile salts do no chemical digestion; this physical change is their whole job, and without them fat is digested slowly and lost in the feces."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 1 mm to 0.01 mm",
+          "values": {
+            "D": 1,
+            "d": 0.01
+          }
+        },
+        {
+          "label": "A smaller split: 1 mm to 0.1 mm",
+          "values": {
+            "D": 1,
+            "d": 0.1
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "gain",
+            "unit": "×",
+            "tol": {
+              "abs": 0.5,
+              "rel": 0.01
+            },
+            "prompt": "A fat droplet {D} mm across is emulsified into droplets {d} mm across, with the same total volume. By how many times does the total surface grow?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sglt1-gradients",
+      "group": "digestive",
+      "title": "SGLT1: can glucose still enter?",
+      "short": "compare the sodium and glucose gradients",
+      "topic": "digestion-absorption",
+      "core": [
+        "gradients",
+        "energy"
+      ],
+      "level": "analyze",
+      "diff": 2,
+      "intro": "SGLT1 carries two sodium ions and one glucose together, or nothing. Sodium running down its steep gradient can drag glucose up a gentler one. Enter the concentrations on each side of the brush border. The tool compares the two concentration ratios; it does not calculate energies, and the cell’s negative inside adds a further pull on sodium.",
+      "formula": "Sodium ratio = [Na+] lumen ÷ [Na+] cell; glucose ratio = [glucose] cell ÷ [glucose] lumen",
+      "inputs": [
+        {
+          "key": "nao",
+          "label": "Sodium in the lumen",
+          "sym": "[Na+] lumen",
+          "unit": "mM",
+          "default": 140,
+          "min": 10,
+          "max": 160,
+          "step": 1,
+          "dp": 0,
+          "gen": {
+            "choices": [
+              140
+            ]
+          }
+        },
+        {
+          "key": "nai",
+          "label": "Sodium inside the cell",
+          "sym": "[Na+] cell",
+          "unit": "mM",
+          "default": 15,
+          "min": 5,
+          "max": 160,
+          "step": 1,
+          "dp": 0,
+          "gen": {
+            "choices": [
+              10,
+              15,
+              20,
+              70,
+              140
+            ]
+          }
+        },
+        {
+          "key": "go",
+          "label": "Glucose in the lumen",
+          "sym": "[glucose] lumen",
+          "unit": "mM",
+          "default": 1,
+          "min": 0.1,
+          "max": 100,
+          "step": 0.1,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              0.5,
+              1,
+              2,
+              10,
+              20
+            ]
+          }
+        },
+        {
+          "key": "gi",
+          "label": "Glucose inside the cell",
+          "sym": "[glucose] cell",
+          "unit": "mM",
+          "default": 5,
+          "min": 0.1,
+          "max": 100,
+          "step": 0.1,
+          "dp": 1,
+          "gen": {
+            "choices": [
+              2,
+              5,
+              8
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "naRatio",
+          "expr": "nao / nai",
+          "dp": 1
+        },
+        {
+          "key": "gRatio",
+          "expr": "gi / go",
+          "dp": 1
+        }
+      ],
+      "steps": [
+        {
+          "title": "Glucose’s own gradient",
+          "text": "Glucose is {gi} mM inside and {go} mM in the lumen: a ratio of <b>{gRatio}</b>. Above 1 means the cell already holds more, so glucose alone would diffuse out, and a simple carrier could not absorb it."
+        },
+        {
+          "title": "Sodium’s gradient",
+          "text": "Sodium is {nao} mM in the lumen and {nai} mM inside: <b>{naRatio}</b> times higher outside. The negative inside of the cell adds to the inward push on this positive ion."
+        },
+        {
+          "title": "Coupling",
+          "text": "SGLT1 moves two sodium ions with each glucose, or nothing. When two sodium ions have a steep gradient to run down, they release more energy than one glucose uses climbing a gentler one, so the pair moves in."
+        },
+        {
+          "title": "What keeps sodium low inside",
+          "text": "Sodium–potassium pumps on the basolateral membrane spend ATP to push sodium out. Stop them, and sodium inside rises toward {nao} mM and the ratio falls toward 1: SGLT1 loses its power source."
+        }
+      ],
+      "results": [
+        {
+          "key": "naRatio",
+          "label": "Sodium gradient (lumen ÷ cell)",
+          "unit": "",
+          "normal": "About 140 ÷ 15, over 9, while the pumps run.",
+          "bands": [
+            {
+              "when": "naRatio < 2",
+              "label": "gradient collapsed",
+              "tone": "lo"
+            },
+            {
+              "when": "naRatio < 5",
+              "label": "weakened",
+              "tone": "lo"
+            },
+            {
+              "label": "steep: SGLT1 powered",
+              "tone": "ok"
+            }
+          ]
+        },
+        {
+          "key": "gRatio",
+          "label": "Glucose ratio (cell ÷ lumen)",
+          "unit": "",
+          "bands": [
+            {
+              "when": "gRatio <= 1",
+              "label": "downhill for glucose",
+              "tone": "ok"
+            },
+            {
+              "label": "uphill for glucose",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "naRatio < 2",
+          "text": "With sodium only {naRatio} times higher outside, the gradient has collapsed, as when the sodium–potassium pumps stop. SGLT1 has no energy source, so it cannot move glucose against its gradient, even though SGLT1 itself never uses ATP."
+        },
+        {
+          "when": "gRatio <= 1",
+          "text": "Glucose is at least as concentrated in the lumen as in the cell, so it is moving downhill. SGLT1, driven by a sodium gradient of {naRatio}, carries it in easily, as early in a meal."
+        },
+        {
+          "when": "1",
+          "text": "Glucose has to climb a ratio of {gRatio}, but sodium is {naRatio} times higher outside and two sodium ions move with each glucose. Glucose still enters, powered by the sodium gradient, as late in absorbing a meal."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: late in a meal",
+          "values": {
+            "nao": 140,
+            "nai": 15,
+            "go": 1,
+            "gi": 5
+          }
+        },
+        {
+          "label": "Early in a meal: glucose high in the lumen",
+          "values": {
+            "nao": 140,
+            "nai": 15,
+            "go": 20,
+            "gi": 5
+          }
+        },
+        {
+          "label": "Pumps stopped: sodium inside rises",
+          "values": {
+            "nao": 140,
+            "nai": 130,
+            "go": 1,
+            "gi": 5
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "naRatio",
+            "unit": "",
+            "tol": {
+              "abs": 0.1,
+              "rel": 0.02
+            },
+            "prompt": "Sodium is {nao} mM in the lumen and {nai} mM in the absorptive cell. How many times higher is it outside?"
+          },
+          {
+            "key": "gRatio",
+            "unit": "",
+            "tol": {
+              "abs": 0.1,
+              "rel": 0.02
+            },
+            "prompt": "Glucose is {gi} mM in the cell and {go} mM in the lumen. What is the ratio of cell to lumen?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gut-water-balance",
+      "group": "digestive",
+      "title": "A day’s water balance in the gut",
+      "short": "feces = water in − water absorbed",
+      "topic": "digestion-absorption",
+      "core": [
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "About 9 L of water pass through your gut each day, and almost all of it comes back. Enter what goes in and what each segment absorbs. The defaults are the chapter figure’s round numbers; gastric juice is usually put at about 2 L a day, and the figure rounds it to 1.5 L.",
+      "formula": "Water in feces = (food and drink + secretions) − water absorbed",
+      "inputs": [
+        {
+          "key": "diet",
+          "label": "Food and drink",
+          "sym": "diet",
+          "unit": "mL",
+          "default": 2000,
+          "min": 500,
+          "max": 6000,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            1500,
+            3000,
+            100
+          ]
+        },
+        {
+          "key": "sal",
+          "label": "Saliva",
+          "sym": "saliva",
+          "unit": "mL",
+          "default": 1500,
+          "min": 0,
+          "max": 3000,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            1000,
+            1500,
+            100
+          ]
+        },
+        {
+          "key": "gas",
+          "label": "Gastric juice",
+          "sym": "gastric",
+          "unit": "mL",
+          "default": 1500,
+          "min": 0,
+          "max": 4000,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            1500,
+            2500,
+            100
+          ]
+        },
+        {
+          "key": "bile",
+          "label": "Bile",
+          "sym": "bile",
+          "unit": "mL",
+          "default": 1000,
+          "min": 0,
+          "max": 2000,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            500,
+            1000,
+            100
+          ]
+        },
+        {
+          "key": "panc",
+          "label": "Pancreatic juice",
+          "sym": "pancreatic",
+          "unit": "mL",
+          "default": 1000,
+          "min": 0,
+          "max": 2500,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            1000,
+            1500,
+            100
+          ]
+        },
+        {
+          "key": "int",
+          "label": "Intestinal juice",
+          "sym": "intestinal",
+          "unit": "mL",
+          "default": 2000,
+          "min": 0,
+          "max": 4000,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            1000,
+            2000,
+            100
+          ]
+        },
+        {
+          "key": "si",
+          "label": "Absorbed by the small intestine",
+          "sym": "small intestine",
+          "unit": "mL",
+          "default": 7800,
+          "min": 0,
+          "max": 20000,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            7000,
+            8500,
+            100
+          ]
+        },
+        {
+          "key": "cs",
+          "label": "Colon’s own mucous secretions",
+          "sym": "colon secretions",
+          "unit": "mL",
+          "default": 200,
+          "min": 0,
+          "max": 1000,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            100,
+            300,
+            50
+          ]
+        },
+        {
+          "key": "col",
+          "label": "Absorbed by the colon",
+          "sym": "colon",
+          "unit": "mL",
+          "default": 1250,
+          "min": 0,
+          "max": 6000,
+          "step": 50,
+          "dp": 0,
+          "gen": [
+            1000,
+            1500,
+            50
+          ]
+        }
+      ],
+      "invalid": [
+        {
+          "when": "si > diet + sal + gas + bile + panc + int",
+          "text": "The small intestine cannot absorb more than reaches it."
+        },
+        {
+          "when": "col > diet + sal + gas + bile + panc + int - si + cs",
+          "text": "The colon cannot absorb more than reaches it."
+        }
+      ],
+      "derived": [
+        {
+          "key": "upper",
+          "expr": "diet + sal + gas + bile + panc + int",
+          "dp": 0
+        },
+        {
+          "key": "total",
+          "expr": "diet + sal + gas + bile + panc + int + cs",
+          "dp": 0
+        },
+        {
+          "key": "absorbed",
+          "expr": "si + col",
+          "dp": 0
+        },
+        {
+          "key": "feces",
+          "expr": "diet + sal + gas + bile + panc + int + cs - si - col",
+          "dp": 0
+        },
+        {
+          "key": "pct",
+          "expr": "(si + col) / (diet + sal + gas + bile + panc + int + cs) * 100",
+          "dp": 1
+        },
+        {
+          "key": "toColon",
+          "expr": "diet + sal + gas + bile + panc + int - si + cs",
+          "dp": 0
+        },
+        {
+          "key": "siPct",
+          "expr": "si / (diet + sal + gas + bile + panc + int) * 100",
+          "dp": 0
+        },
+        {
+          "key": "colPct",
+          "expr": "col / (diet + sal + gas + bile + panc + int - si + cs) * 100",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Total water in",
+          "text": "{diet} + {sal} + {gas} + {bile} + {panc} + {int} = {upper} mL from food, drink and the upper secretions. Add the colon’s {cs} mL: <b>{total} mL</b> in all."
+        },
+        {
+          "title": "Total absorbed",
+          "text": "{si} + {col} = <b>{absorbed} mL</b>."
+        },
+        {
+          "title": "Left in the feces",
+          "text": "{total} − {absorbed} = <b>{feces} mL</b>."
+        },
+        {
+          "title": "Percentage absorbed",
+          "text": "{absorbed} ÷ {total} = <b>{pct}%</b>."
+        },
+        {
+          "title": "Each segment’s share",
+          "text": "The small intestine absorbed {si} of the {upper} mL that reached it: {siPct}%. The colon absorbed {col} of the {toColon} mL that reached it: {colPct}%."
+        }
+      ],
+      "results": [
+        {
+          "key": "feces",
+          "label": "Water in the feces",
+          "unit": "mL",
+          "normal": "About 100 to 200 mL a day.",
+          "bands": [
+            {
+              "when": "feces < 50",
+              "label": "very little: hard stools",
+              "tone": "lo"
+            },
+            {
+              "when": "feces <= 250",
+              "label": "about normal",
+              "tone": "ok"
+            },
+            {
+              "label": "more than normal: loose or watery stools",
+              "tone": "hi"
+            }
+          ]
+        },
+        {
+          "key": "pct",
+          "label": "Water absorbed",
+          "unit": "%",
+          "normal": "About 98%."
+        }
+      ],
+      "meaning": [
+        {
+          "when": "feces > 1000",
+          "text": "{feces} mL of stool water a day is diarrhea on a large scale. More fluid is arriving, or less is being absorbed, than the colon can make up for; in cholera over 10 L a day can be lost, with sodium, potassium and bicarbonate."
+        },
+        {
+          "when": "feces > 250",
+          "text": "{feces} mL is more than the usual 100 to 200 mL, so stools are looser. Even a small fall in the percentage absorbed shows up as a large change in the stool, because so much water passes through the gut."
+        },
+        {
+          "when": "feces < 50",
+          "text": "Only {feces} mL is left, less than usual: the stools will be hard. More time in the colon, as in constipation, lets it absorb more."
+        },
+        {
+          "when": "1",
+          "text": "About {feces} mL leaves in the feces, and {pct}% of the water is absorbed. Mass balance: water in = water absorbed + water in the feces."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example (the figure’s numbers)",
+          "values": {
+            "diet": 2000,
+            "sal": 1500,
+            "gas": 1500,
+            "bile": 1000,
+            "panc": 1000,
+            "int": 2000,
+            "si": 7800,
+            "cs": 200,
+            "col": 1250
+          }
+        },
+        {
+          "label": "Gastric juice at 2 L, same absorption",
+          "values": {
+            "gas": 2000
+          }
+        },
+        {
+          "label": "Small intestine absorbs 1 L less",
+          "values": {
+            "si": 6800
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "feces",
+            "unit": "mL",
+            "tol": {
+              "abs": 5
+            },
+            "prompt": "Food and drink supply {diet} mL; saliva {sal}; gastric juice {gas}; bile {bile}; pancreatic juice {panc}; intestinal juice {int}. The small intestine absorbs {si} mL, the colon adds {cs} mL of its own secretions and absorbs {col} mL. How much water leaves in the feces?"
+          },
+          {
+            "key": "pct",
+            "unit": "%",
+            "tol": {
+              "abs": 0.2
+            },
+            "prompt": "What percentage of all the water that entered the gut was absorbed?"
           }
         ]
       }

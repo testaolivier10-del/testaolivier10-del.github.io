@@ -1,0 +1,32 @@
+{
+  "metabolic-rate": {
+    "def": "The rate at which the body uses energy, and so makes heat. The basal metabolic rate (BMR), measured awake at rest after a 12-hour fast in a warm room, is about 60 to 70% of the total metabolic rate, which also includes handling food and physical activity.",
+    "roots": [["meta-", "change"], ["bol-", "throw"]],
+    "say": ""
+  },
+  "energy-balance": {
+    "def": "The relation between energy taken in as food and energy spent. A positive balance is stored, mostly as fat; a negative balance draws stores down. Body mass index (kg/m²) screens body weight, and dietary guidelines give official advice on healthy eating.",
+    "roots": [],
+    "say": ""
+  },
+  "appetite": {
+    "def": "The control of hunger and eating by the hypothalamus. Ghrelin from the empty stomach raises hunger; stomach stretch and gut hormones produce satiety, the fullness that ends a meal; leptin from fat reports long-term stores.",
+    "roots": [["sati-", "enough"]],
+    "say": "GREL-in"
+  },
+  "core-temperature": {
+    "def": "The temperature of the deep tissues (brain, chest and abdominal organs), held near 36.6 to 37 °C, as opposed to the shell of skin and limbs, whose temperature varies widely with blood flow and surroundings.",
+    "roots": [],
+    "say": ""
+  },
+  "thermoregulation": {
+    "def": "Control of core temperature by the preoptic area of the hypothalamus, which matches heat loss to heat production: skin vasodilation and sweating when warm; skin vasoconstriction, shivering and nonshivering thermogenesis in brown fat when cold.",
+    "roots": [["therm-", "heat"], ["-genesis", "making"]],
+    "say": ""
+  },
+  "heat-cold-illness": {
+    "def": "Illness when temperature control is overwhelmed. Hyperthermia (heat gain beyond heat loss) ranges from heat exhaustion, with a normal brain, to heat stroke, a core above about 40 °C with brain dysfunction. Hypothermia is a core below 35 °C; frostbite is frozen tissue.",
+    "roots": [["hyper-", "above"], ["hypo-", "below"], ["therm-", "heat"]],
+    "say": ""
+  }
+}

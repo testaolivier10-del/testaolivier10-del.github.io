@@ -4,9 +4,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "A patient's urine creatinine is 90 mg/dL, her urine flow is 1.5 mL/min and her plasma creatinine is 1.0 mg/dL. What is her creatinine clearance?",
-    "options": ["60 mL/min", "135 mL/min", "1.35 mL/min", "91.5 mL/min"],
+    "options": [
+      "60 mL/min",
+      "135 mL/min",
+      "1.35 mL/min",
+      "91.5 mL/min"
+    ],
     "correct": 1,
     "why": {
       "correct": "C = (U × V) ÷ P = (90 × 1.5) ÷ 1.0 = 135 mL/min. U and P are both in mg/dL, so their units cancel and the answer is in mL/min.",
@@ -23,9 +30,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "A man collects 2,880 mL of urine in 24 hours. His urine creatinine is 60 mg/dL and his plasma creatinine is 1.5 mg/dL. What is his creatinine clearance?",
-    "options": ["80 mL/min", "115,200 mL/min", "45 mL/min", "120 mL/min"],
+    "options": [
+      "80 mL/min",
+      "115,200 mL/min",
+      "45 mL/min",
+      "120 mL/min"
+    ],
     "correct": 0,
     "why": {
       "correct": "First turn the volume into a flow: 2,880 mL ÷ 1,440 min = 2.0 mL/min. Then C = (60 × 2.0) ÷ 1.5 = 80 mL/min, below normal.",
@@ -42,13 +56,15 @@
     "type": "single",
     "level": "analyze",
     "diff": 2,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "In a healthy person, the renal clearance of a nutrient is 0 mL/min even though it is freely filtered. What does that mean?",
     "options": [
       "It is secreted and reabsorbed equally",
       "It is filtered, then all of it is reabsorbed",
       "It is not filtered",
-      "It is broken down in the urine"
+      "It is broken down by enzymes in the bladder urine"
     ],
     "correct": 1,
     "why": {
@@ -57,7 +73,7 @@
         "Balanced secretion and reabsorption would leave the filtered amount in the urine, so clearance would equal GFR, not zero.",
         "Correct. All of the filtered load returns to the blood.",
         "The question says it is freely filtered.",
-        "Urine does not digest nutrients; the zero reflects reabsorption in the tubule."
+        "Urine has no enzymes that destroy filtered nutrients; the zero reflects reabsorption in the tubule."
       ]
     }
   },
@@ -66,7 +82,9 @@
     "type": "single",
     "level": "analyze",
     "diff": 3,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "A person's GFR is 120 mL/min. A drug that is freely filtered has a renal clearance of 40 mL/min. What does the tubule do with it overall?",
     "options": [
       "Net secretion",
@@ -90,11 +108,13 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "Mr. Haas, 66, had a plasma creatinine of 1.0 mg/dL a year ago. It is now steady at 2.0 mg/dL. His muscle mass hasn't changed. About how has his GFR changed?",
     "options": [
       "It has doubled",
-      "It has fallen by about 10%",
+      "It has fallen by only about 10%",
       "It hasn't changed",
       "It has fallen by about half"
     ],
@@ -114,7 +134,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "Why does creatinine clearance run about 10 to 20% higher than the true GFR?",
     "options": [
       "The proximal tubule secretes a little creatinine",
@@ -139,27 +161,69 @@
     "level": "analyze",
     "diff": 3,
     "predictLevel": 3,
-    "core": ["homeostasis", "interdependence"],
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
     "q": "A man loses 1.5 L of blood in a car crash. Predict the change in each variable across the cardiovascular, nervous, endocrine and urinary systems over the first hour.",
     "variables": [
-      { "name": "Sympathetic activity to the kidneys", "answer": "up", "why": "Lower arterial pressure reduces baroreceptor firing, and the cardiovascular center raises sympathetic output." },
-      { "name": "GFR", "answer": "down", "why": "Low arterial pressure falls below the range autoregulation can cover, and sympathetic nerves constrict the afferent arterioles." },
-      { "name": "Renin release", "answer": "up", "why": "Less stretch of the juxtaglomerular cells and more sympathetic stimulation both raise renin." },
-      { "name": "ADH release", "answer": "up", "why": "A volume loss of this size, about a quarter of blood volume, is far above the 5 to 10% that triggers ADH." },
-      { "name": "Urine volume", "answer": "down", "why": "Less is filtered, and ADH and aldosterone make the tubule reabsorb more of what is filtered." },
-      { "name": "Sodium in the urine", "answer": "down", "why": "Angiotensin II and aldosterone raise sodium reabsorption, and pressure natriuresis works in reverse at low pressure." }
+      {
+        "name": "Sympathetic activity to the kidneys",
+        "answer": "up",
+        "why": "Lower arterial pressure reduces baroreceptor firing, and the cardiovascular center raises sympathetic output."
+      },
+      {
+        "name": "GFR",
+        "answer": "down",
+        "why": "Low arterial pressure falls below the range autoregulation can cover, and sympathetic nerves constrict the afferent arterioles."
+      },
+      {
+        "name": "Renin release",
+        "answer": "up",
+        "why": "Less stretch of the juxtaglomerular cells and more sympathetic stimulation both raise renin."
+      },
+      {
+        "name": "ADH release",
+        "answer": "up",
+        "why": "A volume loss of this size, about a quarter of blood volume, is far above the 5 to 10% that triggers ADH."
+      },
+      {
+        "name": "Urine volume",
+        "answer": "down",
+        "why": "Less is filtered, and ADH and aldosterone make the tubule reabsorb more of what is filtered."
+      },
+      {
+        "name": "Sodium in the urine",
+        "answer": "down",
+        "why": "Angiotensin II and aldosterone raise sodium reabsorption, and pressure natriuresis works in reverse at low pressure."
+      }
     ],
-    "why": { "correct": "Hemorrhage lowers pressure. The baroreceptor reflex raises sympathetic drive, which constricts the afferent arterioles and releases renin; ADH rises steeply. GFR falls, and the tubule keeps sodium and water, so the man passes a small volume of concentrated, low-sodium urine while his kidneys conserve volume." }
+    "why": {
+      "correct": "Hemorrhage lowers pressure. The baroreceptor reflex raises sympathetic drive, which constricts the afferent arterioles and releases renin; ADH rises steeply. GFR falls, and the tubule keeps sodium and water, so the man passes a small volume of concentrated, low-sodium urine while his kidneys conserve volume."
+    }
   },
   {
     "id": "anp-renal-function-urine-8",
     "type": "multi",
     "level": "recall",
     "diff": 1,
-    "core": ["communication"],
+    "core": [
+      "communication"
+    ],
     "q": "Select every hormone the kidney itself makes.",
-    "options": ["Renin", "ADH", "Erythropoietin (EPO)", "Aldosterone", "Calcitriol", "ANP"],
-    "correct": [0, 2, 4],
+    "options": [
+      "Renin",
+      "ADH",
+      "Erythropoietin (EPO)",
+      "Aldosterone",
+      "Calcitriol",
+      "ANP"
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ],
     "why": {
       "correct": "Juxtaglomerular cells release renin, cells between the tubules release EPO, and tubule cells make calcitriol by activating vitamin D. ADH, aldosterone and ANP are made elsewhere and act on the kidney.",
       "options": [
@@ -177,9 +241,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Which hormone makes the kidney excrete more potassium while keeping more sodium?",
-    "options": ["ANP", "PTH", "ADH", "Aldosterone"],
+    "options": [
+      "ANP",
+      "PTH",
+      "ADH",
+      "Aldosterone"
+    ],
     "correct": 3,
     "why": {
       "correct": "Aldosterone adds sodium channels, potassium channels and pumps to principal cells. They reabsorb more sodium and secrete more potassium.",
@@ -196,7 +267,9 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A tumor makes a person's parathyroid glands release too much PTH. How does their urine change?",
     "options": [
       "More phosphate and less calcium, at first",
@@ -220,10 +293,12 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Ms. Bell, 27, has had burning on urination and a frequent urge to void for two days. She has no fever or flank pain. Her dipstick is positive for nitrite and leukocyte esterase. What is the most likely diagnosis?",
     "options": [
-      "Kidney stone blocking the ureter",
+      "A kidney stone blocking one of the ureters",
       "Urinary tract infection of the bladder",
       "Acute kidney injury",
       "Stress incontinence"
@@ -244,7 +319,9 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "After a hot marathon, a runner passes a small amount of dark yellow urine with a specific gravity of 1.030. What does this show?",
     "options": [
       "Her collecting ducts are blocked",
@@ -268,9 +345,16 @@
     "type": "single",
     "level": "recall",
     "diff": 1,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "An adult patient's urine output over 24 hours is 250 mL. What is this called?",
-    "options": ["Polyuria", "Oliguria", "Anuria", "Normal output"],
+    "options": [
+      "Polyuria",
+      "Oliguria",
+      "Anuria",
+      "Normal output"
+    ],
     "correct": 1,
     "why": {
       "correct": "Oliguria (olig- = little) is less than about 400 mL a day in an adult. 250 mL is below that but above the 50 to 100 mL cutoff for anuria.",
@@ -287,7 +371,9 @@
     "type": "order",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "Put the steps of pressure natriuresis in order.",
     "options": [
       "Arterial pressure rises",
@@ -296,14 +382,18 @@
       "More sodium and water leave in the urine",
       "Blood volume falls, and arterial pressure comes back down"
     ],
-    "why": { "correct": "A rise in arterial pressure raises pressure around the tubules, the proximal tubule pulls its sodium–hydrogen exchangers from the membrane and reabsorbs less, sodium and water are excreted, and the lower volume brings pressure back down: negative feedback without any hormone." }
+    "why": {
+      "correct": "A rise in arterial pressure raises pressure around the tubules, the proximal tubule pulls its sodium–hydrogen exchangers from the membrane and reabsorbs less, sodium and water are excreted, and the lower volume brings pressure back down: negative feedback without any hormone."
+    }
   },
   {
     "id": "anp-renal-function-urine-15",
     "type": "vignette",
     "level": "analyze",
     "diff": 2,
-    "core": ["interdependence"],
+    "core": [
+      "interdependence"
+    ],
     "q": "Mrs. Tran, 70, has stage 4 chronic kidney disease. She is pale and tired, and her hemoglobin is 9 g/dL. Her iron and vitamin B12 levels are normal. What most likely explains her anemia?",
     "options": [
       "Her kidneys filter red blood cells into the urine",
@@ -327,13 +417,16 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["homeostasis", "interdependence"],
+    "core": [
+      "homeostasis",
+      "interdependence"
+    ],
     "q": "Mr. Diallo, 59, on hemodialysis, misses two sessions and comes in weak, with a plasma potassium of 7.2 mmol/L. Which consequence is the most immediate danger?",
     "options": [
       "Anemia from low EPO",
       "Weak bones from low calcitriol",
       "An arrhythmia from hyperkalemia",
-      "Itching from retained wastes"
+      "Itching from retained nitrogen wastes"
     ],
     "correct": 2,
     "why": {
@@ -351,7 +444,9 @@
     "type": "error",
     "level": "apply",
     "diff": 2,
-    "core": ["gradients"],
+    "core": [
+      "gradients"
+    ],
     "q": "A student described hemodialysis. One step is wrong. Which one?",
     "options": [
       "Blood is pumped through a filter beside a semipermeable membrane",
@@ -377,10 +472,12 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "A man has passed two calcium oxalate stones. What single change most lowers his risk of another?",
     "options": [
-      "Drinking enough to pass more than about 2.5 L of urine a day",
+      "Passing more than about 2.5 L of urine a day",
       "Cutting all calcium from his diet",
       "Taking a loop diuretic",
       "Drinking less so his urine is more concentrated"
@@ -401,7 +498,9 @@
     "type": "vignette",
     "level": "apply",
     "diff": 2,
-    "core": ["structure-function"],
+    "core": [
+      "structure-function"
+    ],
     "q": "Mrs. Okafor, 45, has had three children. She leaks small spurts of urine when she coughs or lifts her toddler, but never feels a sudden urge. Which type of incontinence is this, and what is the first treatment?",
     "options": [
       "Urge incontinence; drugs that relax the detrusor",
@@ -425,10 +524,12 @@
     "type": "vignette",
     "level": "analyze",
     "diff": 3,
-    "core": ["interdependence"],
+    "core": [
+      "interdependence"
+    ],
     "q": "After three days of vomiting, Mr. Lind, 80, takes high doses of ibuprofen for a painful knee. His urine output falls and his creatinine rises. How did the ibuprofen contribute?",
     "options": [
-      "It blocked prostaglandins that were widening his afferent arterioles",
+      "It blocked prostaglandins that were protecting his GFR",
       "It blocked NKCC2 and caused a large water loss",
       "It raised his ADH, stopping urine flow",
       "It crystallized in his ureters and blocked them"
@@ -449,9 +550,16 @@
     "type": "missing",
     "level": "recall",
     "diff": 1,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "q": "Complete the renal clearance formula: C = (U × V) ÷ ____.",
-    "options": ["P, the plasma concentration", "GFR", "Urine specific gravity", "Time"],
+    "options": [
+      "P, the plasma concentration",
+      "GFR, the glomerular filtration rate",
+      "Urine specific gravity",
+      "Time"
+    ],
     "correct": 0,
     "why": {
       "correct": "U × V is the amount excreted per minute. Dividing it by the plasma concentration gives the volume of plasma that contained that amount: the clearance.",
@@ -468,9 +576,16 @@
     "type": "single",
     "level": "apply",
     "diff": 2,
-    "core": ["homeostasis"],
+    "core": [
+      "homeostasis"
+    ],
     "q": "A woman who bled heavily after an injury has a low urine output and a rising creatinine. Her kidney tissue is healthy, and her output recovers once blood is transfused. How is her acute kidney injury classified?",
-    "options": ["Postrenal", "Chronic", "Intrinsic", "Prerenal"],
+    "options": [
+      "Postrenal",
+      "Chronic",
+      "Intrinsic",
+      "Prerenal"
+    ],
     "correct": 3,
     "why": {
       "correct": "The problem was too little blood reaching healthy kidneys. That is prerenal AKI, which reverses when perfusion is restored.",
@@ -487,11 +602,18 @@
     "type": "image",
     "level": "recall",
     "diff": 1,
-    "core": ["mass-balance"],
+    "core": [
+      "mass-balance"
+    ],
     "figure": "os-25-22",
     "pin": "urea",
     "q": "Name the pinned molecule.",
-    "options": ["Urea", "Ammonia", "Uric acid", "Creatinine"],
+    "options": [
+      "Urea",
+      "Ammonia",
+      "Uric acid",
+      "Creatinine"
+    ],
     "correct": 0,
     "why": {
       "correct": "Urea is a single carbon double-bonded to an oxygen, with two nitrogen groups. The liver makes it from ammonia, and it is the largest solute in urine.",

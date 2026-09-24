@@ -15818,6 +15818,1124 @@
      }
     }
    ]
+  },
+  {
+   "id": "gastric-ph-gastrin",
+   "title": "Stomach pH and gastrin around a meal",
+   "topic": "stomach",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "intro": "The pH of the stomach contents and the gastrin level in the blood, from half an hour before a protein-rich meal eaten at time 0 until four hours after it. The curves are schematic, drawn from typical values.",
+   "alt": "Two stacked graphs over time from 30 minutes before a meal to 240 minutes after. Top: pH of the stomach contents. It sits near 2 before the meal, jumps to about 5 within minutes of eating, stays near 5 for about 30 minutes, then falls, crossing 3 at about 90 minutes and reaching about 1.6 by 4 hours. Bottom: gastrin in the blood, near 20 pg/mL before the meal, rising to a peak of about 85 at 40 minutes, then falling back to about 20 by 4 hours as the pH drops below 3.",
+   "x": {
+    "min": -30,
+    "max": 240,
+    "label": "Time after the meal",
+    "unit": "min",
+    "ticks": [
+     0,
+     60,
+     120,
+     180,
+     240
+    ]
+   },
+   "panels": [
+    {
+     "h": 1,
+     "y": {
+      "min": 1,
+      "max": 6,
+      "label": "pH of stomach contents",
+      "unit": "pH units",
+      "ticks": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ]
+     },
+     "series": [
+      {
+       "id": "ph",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         -30,
+         2
+        ],
+        [
+         0,
+         2
+        ],
+        [
+         5,
+         5
+        ],
+        [
+         15,
+         5.2
+        ],
+        [
+         30,
+         4.8
+        ],
+        [
+         60,
+         3.8
+        ],
+        [
+         90,
+         3
+        ],
+        [
+         120,
+         2.4
+        ],
+        [
+         150,
+         2
+        ],
+        [
+         180,
+         1.8
+        ],
+        [
+         240,
+         1.6
+        ]
+       ],
+       "label": "stomach pH",
+       "labelAt": [
+        70,
+        4.3
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 3,
+       "label": "below about 3: somatostatin brakes gastrin"
+      }
+     ]
+    },
+    {
+     "h": 1,
+     "y": {
+      "min": 0,
+      "max": 140,
+      "label": "Gastrin in the blood",
+      "unit": "pg/mL",
+      "ticks": [
+       0,
+       35,
+       70,
+       105,
+       140
+      ]
+     },
+     "series": [
+      {
+       "id": "gastrin",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         -30,
+         20
+        ],
+        [
+         0,
+         22
+        ],
+        [
+         10,
+         40
+        ],
+        [
+         20,
+         65
+        ],
+        [
+         40,
+         85
+        ],
+        [
+         60,
+         80
+        ],
+        [
+         90,
+         60
+        ],
+        [
+         120,
+         40
+        ],
+        [
+         150,
+         28
+        ],
+        [
+         180,
+         24
+        ],
+        [
+         240,
+         20
+        ]
+       ],
+       "label": "gastrin",
+       "labelAt": [
+        70,
+        95
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 0,
+     "label": "meal eaten"
+    }
+   ],
+   "regions": [
+    {
+     "id": "buffered",
+     "x0": 0,
+     "x1": 75,
+     "label": "food buffers the acid"
+    },
+    {
+     "id": "brake",
+     "x0": 90,
+     "x1": 240,
+     "label": "pH below 3"
+    }
+   ],
+   "questions": [
+    {
+     "id": "ph-after-eating",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the pH of the stomach contents 15 minutes after the meal.",
+     "answer": 5.2,
+     "tol": 0.4,
+     "unit": "",
+     "show": {
+      "x": 15,
+      "y": 5.2
+     },
+     "why": "About 5. Food, especially protein, buffers the acid already in the stomach, so the pH jumps from about 2 to about 5 even though acid secretion is rising."
+    },
+    {
+     "id": "peak-gastrin",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the peak gastrin level, in pg/mL.",
+     "answer": 85,
+     "tol": 8,
+     "unit": "pg/mL",
+     "show": {
+      "x": 40,
+      "y": 85,
+      "panel": 1
+     },
+     "why": "About 85 pg/mL, four times the fasting level, 40 minutes into the meal. Protein fragments, stretch and vagal signals all drive the G cells while the pH is still high."
+    },
+    {
+     "id": "why-gastrin-rises",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Where does food buffering the acid help gastrin rise?",
+     "options": [
+      "The first hour or so after eating",
+      "The half hour before the meal",
+      "From 90 minutes on",
+      "Only at the very end, after 3 hours"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "buffered"
+     },
+     "why": {
+      "correct": "While food holds the pH above 3, D cells release little somatostatin, so nothing brakes the G cells. Protein, stretch and vagal signals push gastrin up.",
+      "options": [
+       "Right: a high pH means no somatostatin brake while the G cells are being stimulated.",
+       "Before the meal the pH is near 2 and there is no protein to stimulate the G cells, so gastrin stays low.",
+       "By then the pH has fallen below 3 and gastrin is falling, not rising.",
+       "Late in the meal the pH is lowest and gastrin is back near its fasting level."
+      ]
+     }
+    },
+    {
+     "id": "the-brake",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Where is gastrin falling because the acid itself is switching it off?",
+     "options": [
+      "From about 90 minutes on, once the pH is below 3",
+      "In the first 20 minutes after eating",
+      "Before the meal",
+      "Nowhere: gastrin falls only when the meal leaves the stomach"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "brake"
+     },
+     "why": {
+      "correct": "As acid accumulates, the pH in the antrum drops below about 3, D cells release somatostatin, and the G cells slow down: the product switches off its own stimulus.",
+      "options": [
+       "Right: low pH, somatostatin, less gastrin. Negative feedback.",
+       "Gastrin is climbing steeply in the first 20 minutes, while the pH is high.",
+       "Before the meal gastrin is low and flat, not falling.",
+       "Gastrin falls while food is still in the stomach, because the pH has dropped; that is the feedback loop at work."
+      ]
+     }
+    },
+    {
+     "id": "ppi",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The same person eats the same meal after a week of taking a proton pump inhibitor. How do the two curves change?",
+     "options": [
+      "pH stays high and gastrin stays higher for longer",
+      "pH falls lower and gastrin falls lower",
+      "pH is unchanged, but gastrin rises higher",
+      "Neither changes, because the drug acts only between meals"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "ph-ppi",
+        "panel": 0,
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          -30,
+          4
+         ],
+         [
+          0,
+          4
+         ],
+         [
+          5,
+          5.5
+         ],
+         [
+          30,
+          5.4
+         ],
+         [
+          60,
+          5
+         ],
+         [
+          120,
+          4.6
+         ],
+         [
+          180,
+          4.4
+         ],
+         [
+          240,
+          4.2
+         ]
+        ],
+        "label": "on a proton pump inhibitor",
+        "labelAt": [
+         130,
+         5.5
+        ],
+        "anchor": "start"
+       },
+       {
+        "id": "gastrin-ppi",
+        "panel": 1,
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          -30,
+          40
+         ],
+         [
+          0,
+          40
+         ],
+         [
+          20,
+          80
+         ],
+         [
+          40,
+          110
+         ],
+         [
+          60,
+          115
+         ],
+         [
+          120,
+          95
+         ],
+         [
+          180,
+          75
+         ],
+         [
+          240,
+          60
+         ]
+        ],
+        "label": "on a proton pump inhibitor",
+        "labelAt": [
+         130,
+         120
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The drug blocks the proton pumps, so little acid is made and the pH never falls below 3. Without low pH there is little somatostatin, so the brake on the G cells stays off and gastrin runs higher and longer. The parietal cells cannot answer it, because their pumps are blocked.",
+      "options": [
+       "Right: no acid, no brake, more gastrin.",
+       "Less acid means a higher pH, not a lower one, and a higher pH removes the brake on gastrin.",
+       "Blocking the pumps is exactly what changes the pH: less H+ reaches the stomach contents.",
+       "Omeprazole blocks pumps that are working after a meal as well; that is when it matters most."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "gastric-emptying",
+   "title": "How fast the stomach empties",
+   "topic": "stomach",
+   "core": [
+    "homeostasis",
+    "structure-function"
+   ],
+   "intro": "The share of a drink of water and of a mixed solid meal still in the stomach over the four hours after swallowing, as measured by imaging. The curves are schematic, drawn from typical values for healthy adults.",
+   "alt": "A graph of percent of the meal remaining in the stomach, from 100 at time 0 down to 0, over 240 minutes. Water empties at once and fast: about 42% remains at 20 minutes, 8% at 1 hour and none by 2 hours. The mixed solid meal barely leaves for the first 30 minutes, then empties steadily: about 72% remains at 1 hour, 36% at 2 hours and 5% at 4 hours. A dashed line marks 50%.",
+   "x": {
+    "min": 0,
+    "max": 240,
+    "label": "Time after swallowing",
+    "unit": "min",
+    "ticks": [
+     0,
+     60,
+     120,
+     180,
+     240
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 100,
+      "label": "Meal remaining in the stomach",
+      "unit": "%",
+      "ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "water",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         100
+        ],
+        [
+         10,
+         65
+        ],
+        [
+         20,
+         42
+        ],
+        [
+         30,
+         28
+        ],
+        [
+         45,
+         15
+        ],
+        [
+         60,
+         8
+        ],
+        [
+         90,
+         2
+        ],
+        [
+         120,
+         0
+        ],
+        [
+         240,
+         0
+        ]
+       ],
+       "label": "water",
+       "labelAt": [
+        28,
+        18
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "meal",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         100
+        ],
+        [
+         15,
+         98
+        ],
+        [
+         30,
+         92
+        ],
+        [
+         60,
+         72
+        ],
+        [
+         90,
+         52
+        ],
+        [
+         120,
+         36
+        ],
+        [
+         150,
+         24
+        ],
+        [
+         180,
+         15
+        ],
+        [
+         210,
+         9
+        ],
+        [
+         240,
+         5
+        ]
+       ],
+       "label": "mixed solid meal",
+       "labelAt": [
+        125,
+        45
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 50,
+       "label": "half emptied"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "lag",
+     "x0": 0,
+     "x1": 30,
+     "label": "solids held back"
+    },
+    {
+     "id": "steady",
+     "x0": 30,
+     "x1": 240,
+     "label": "steady emptying of solids"
+    }
+   ],
+   "questions": [
+    {
+     "id": "water-half",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "About how many minutes does it take for half of the water to leave the stomach?",
+     "answer": 17,
+     "tol": 5,
+     "unit": "min",
+     "show": {
+      "x": 17,
+      "y": 50
+     },
+     "why": "About 15 to 20 minutes. Liquid needs no grinding, so it starts passing the pylorus within minutes."
+    },
+    {
+     "id": "meal-two-hours",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "What percent of the mixed meal is still in the stomach 2 hours after eating?",
+     "answer": 36,
+     "tol": 5,
+     "unit": "%",
+     "show": {
+      "x": 120,
+      "y": 36
+     },
+     "why": "About a third. A mixed meal takes 2 to 4 hours to leave, a few milliliters at a time."
+    },
+    {
+     "id": "lag-phase",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "For the first half hour the solid meal hardly leaves, though water empties at once. What is the stomach doing in that stretch?",
+     "options": [
+      "Grinding the solids into particles small enough to pass the pylorus",
+      "Waiting for the small intestine to release gastrin",
+      "Absorbing the nutrients before passing them on",
+      "Holding the pylorus wide open while acid builds up in the stomach contents"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "lag"
+     },
+     "why": {
+      "correct": "Mixing waves drive the contents against a closing pylorus. Only the most liquid part squirts through; solid pieces are flung back and ground until they are smaller than about 1 to 2 mm. Until enough chyme is made, little solid leaves.",
+      "options": [
+       "Right: solids must become chyme before they can pass.",
+       "Gastrin comes from the stomach’s own G cells and mainly drives acid; it is not what holds solids back.",
+       "The stomach absorbs almost no nutrients; alcohol and aspirin are among the few things that cross its lining.",
+       "The pylorus closes as each wave arrives; that is what holds the solids back for grinding."
+      ]
+     }
+    },
+    {
+     "id": "fatty-meal",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "The same meal is eaten with a large amount of added fat. How does the solid-meal curve change?",
+     "options": [
+      "It empties more slowly: the curve lies higher",
+      "It empties faster: the curve lies lower",
+      "It is unchanged; fat affects only digestion, not emptying",
+      "The lag disappears, and it empties as fast as water"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "fatty",
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          100
+         ],
+         [
+          30,
+          95
+         ],
+         [
+          60,
+          82
+         ],
+         [
+          90,
+          68
+         ],
+         [
+          120,
+          55
+         ],
+         [
+          150,
+          43
+         ],
+         [
+          180,
+          33
+         ],
+         [
+          210,
+          25
+         ],
+         [
+          240,
+          18
+         ]
+        ],
+        "label": "with added fat",
+        "labelAt": [
+         180,
+         42
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Fat reaching the first part of the small intestine releases CCK and triggers the enterogastric reflex. They weaken the antrum’s waves and tighten the pylorus, so fat empties slowest of all the nutrients.",
+      "options": [
+       "Right: fat releases the most CCK, and CCK slows emptying.",
+       "Fat does the opposite: it holds food in the stomach longer.",
+       "The pace of emptying is set by what the small intestine receives, and fat is its strongest brake.",
+       "Solids still need grinding, and fat adds a brake; nothing about fat makes a meal behave like water."
+      ]
+     }
+    },
+    {
+     "id": "gastroparesis",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Years of diabetes have damaged a man’s vagus nerves and enteric neurons. How does his solid-meal curve compare?",
+     "options": [
+      "Far slower: much of the meal is still there at 4 hours",
+      "Faster, because the pylorus no longer closes",
+      "The same, because the pacesetter cells still make slow waves",
+      "Faster for water, and unchanged for solids"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "paresis",
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          100
+         ],
+         [
+          30,
+          98
+         ],
+         [
+          60,
+          92
+         ],
+         [
+          120,
+          80
+         ],
+         [
+          180,
+          68
+         ],
+         [
+          240,
+          58
+         ]
+        ],
+        "label": "gastroparesis",
+        "labelAt": [
+         150,
+         88
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Slow waves set the rhythm, but nerves decide whether each wave produces a contraction. With the nerves damaged, the mixing waves are weak, solids are ground slowly and the stomach empties very slowly: gastroparesis. Food is vomited undigested hours later.",
+      "options": [
+       "Right: weak waves, slow grinding, slow emptying.",
+       "The problem is weak contraction of the antrum, which slows emptying rather than speeding it.",
+       "A slow wave alone rarely makes the muscle contract; without the nerves, most waves produce no contraction.",
+       "Liquids empty more slowly too, though less dramatically; the solid curve is the one most affected."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "lactose-breath-test",
+   "title": "The hydrogen breath test for low lactase",
+   "topic": "digestion-absorption",
+   "core": [
+    "mass-balance"
+   ],
+   "intro": "Hydrogen in exhaled breath after drinking 50 g of lactose at time 0, in a person who still makes lactase and in one who does not. A rise of 20 parts per million or more above the starting level is the usual cutoff for poor lactose digestion. The curves are schematic, drawn from typical values.",
+   "alt": "A graph of hydrogen in the breath, in parts per million, over 180 minutes after drinking lactose. The person who makes lactase stays near 5 to 7 the whole time. The person with low lactase stays near 5 to 10 for the first hour, then rises, crossing 25 at about 90 minutes and reaching about 62 at 3 hours. A dashed line at 25 marks 20 above the starting level.",
+   "x": {
+    "min": 0,
+    "max": 180,
+    "label": "Time after drinking lactose",
+    "unit": "min",
+    "ticks": [
+     0,
+     30,
+     60,
+     90,
+     120,
+     150,
+     180
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.2,
+     "y": {
+      "min": 0,
+      "max": 80,
+      "label": "Hydrogen in the breath",
+      "unit": "ppm",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80
+      ]
+     },
+     "series": [
+      {
+       "id": "persistent",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         5
+        ],
+        [
+         30,
+         6
+        ],
+        [
+         60,
+         6
+        ],
+        [
+         90,
+         7
+        ],
+        [
+         120,
+         6
+        ],
+        [
+         150,
+         6
+        ],
+        [
+         180,
+         5
+        ]
+       ],
+       "label": "makes lactase",
+       "labelAt": [
+        120,
+        12
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "low",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         5
+        ],
+        [
+         30,
+         6
+        ],
+        [
+         60,
+         10
+        ],
+        [
+         90,
+         25
+        ],
+        [
+         120,
+         45
+        ],
+        [
+         150,
+         58
+        ],
+        [
+         180,
+         62
+        ]
+       ],
+       "label": "low lactase",
+       "labelAt": [
+        100,
+        58
+       ],
+       "anchor": "end"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 25,
+       "label": "cutoff: 20 above start"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "early",
+     "x0": 0,
+     "x1": 60,
+     "label": "first hour"
+    },
+    {
+     "id": "rise",
+     "x0": 75,
+     "x1": 180,
+     "label": "lactose in the colon"
+    }
+   ],
+   "questions": [
+    {
+     "id": "low-150",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the breath hydrogen of the person with low lactase at 150 minutes.",
+     "answer": 58,
+     "tol": 5,
+     "unit": "ppm",
+     "show": {
+      "x": 150,
+      "y": 58
+     },
+     "why": "About 58 ppm, more than 50 above the starting level. Colon bacteria are fermenting the undigested lactose, and some of their hydrogen is breathed out."
+    },
+    {
+     "id": "cross-cutoff",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "At about what time does the low-lactase curve cross the cutoff line?",
+     "answer": 90,
+     "tol": 12,
+     "unit": "min",
+     "show": {
+      "x": 90,
+      "y": 25
+     },
+     "why": "At about 90 minutes. The test is positive from then on, because hydrogen has risen more than 20 ppm above where it started."
+    },
+    {
+     "id": "flat-first-hour",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "Why is there almost no rise in the first hour, even in the person with low lactase?",
+     "options": [
+      "The lactose has not yet reached the colon",
+      "SGLT1 is absorbing the lactose in that hour",
+      "Stomach acid digests the lactose first",
+      "Lactase works only in the first hour"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "early"
+     },
+     "why": {
+      "correct": "The hydrogen comes from bacteria fermenting lactose in the colon. It takes time for the drink to leave the stomach and pass along the small intestine, so the rise starts only when the undigested lactose arrives.",
+      "options": [
+       "Right: no lactose in the colon yet, so no fermentation.",
+       "SGLT1 carries glucose and galactose, not lactose. Lactose must first be split by lactase.",
+       "Acid does not split lactose; only lactase at the brush border does.",
+       "The person who makes lactase keeps making it; the flat start is about travel time, not enzyme timing."
+      ]
+     }
+    },
+    {
+     "id": "lactase-tablets",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "The person with low lactase repeats the test, this time taking lactase tablets with the drink. How does her curve change?",
+     "options": [
+      "It stays near its starting level",
+      "It rises earlier and higher",
+      "It rises just as before, because the tablets act only in the colon",
+      "It falls below zero"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "tablets",
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          5
+         ],
+         [
+          30,
+          6
+         ],
+         [
+          60,
+          7
+         ],
+         [
+          90,
+          9
+         ],
+         [
+          120,
+          11
+         ],
+         [
+          150,
+          12
+         ],
+         [
+          180,
+          12
+         ]
+        ],
+        "label": "with lactase tablets",
+        "labelAt": [
+         140,
+         22
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The tablets supply the missing enzyme, so most of the lactose is split into glucose and galactose and absorbed in the small intestine. Little reaches the colon, so bacteria make little hydrogen.",
+      "options": [
+       "Right: lactose is digested and absorbed before the colon.",
+       "An earlier, higher rise would need more lactose in the colon, and the tablets reduce it.",
+       "Lactase has to act in the small intestine, where the products can be absorbed; that is where the tablets work.",
+       "Breath hydrogen cannot fall below zero; at most it returns to the starting level."
+      ]
+     }
+    },
+    {
+     "id": "after-antibiotics",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "The same person with low lactase takes the test a few days after a course of broad-spectrum antibiotics. How might her curve look?",
+     "options": [
+      "Flatter: the test can miss her low lactase",
+      "Higher, because antibiotics destroy lactase",
+      "Unchanged, because the hydrogen comes from her own cells",
+      "Earlier, because antibiotics speed up the gut"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "antibiotic",
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          4
+         ],
+         [
+          30,
+          5
+         ],
+         [
+          60,
+          6
+         ],
+         [
+          90,
+          10
+         ],
+         [
+          120,
+          16
+         ],
+         [
+          150,
+          20
+         ],
+         [
+          180,
+          21
+         ]
+        ],
+        "label": "after antibiotics",
+        "labelAt": [
+         150,
+         12
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The hydrogen is made by colon bacteria, not by her cells. With many bacteria killed, the undigested lactose is fermented less, the rise may stay below the cutoff, and the test gives a false negative. She may still get diarrhea from the lactose’s osmotic effect.",
+      "options": [
+       "Right: fewer bacteria, less hydrogen, a falsely reassuring result.",
+       "Antibiotics kill bacteria; they do not act on lactase in her own cells.",
+       "Human cells do not make hydrogen gas. Only the bacteria’s fermentation does.",
+       "Timing depends on how fast the lactose reaches the colon; the main change is how much hydrogen is made there."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

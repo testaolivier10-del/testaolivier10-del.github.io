@@ -1,0 +1,48 @@
+{
+  "topic": "glomerular-filtration",
+  "hook": "<p>Mr. Osei, 68, has narrowed arteries to both kidneys. His blood pressure is high, so his doctor starts an ACE inhibitor. A week later his blood tests show that his kidneys are clearing wastes at half their old rate, though his blood pressure is now normal. The drug has not damaged his kidneys: it has taken away the angiotensin II that was squeezing his efferent arterioles and keeping enough pressure in his glomeruli to filter.</p>",
+  "prereq": [
+    {
+      "q": "In a systemic capillary, the capillary hydrostatic pressure is 35 mm Hg, the blood colloid osmotic pressure is 25 mm Hg and the interstitial forces are both 0. What is the net filtration pressure?",
+      "options": ["+60 mm Hg", "+10 mm Hg", "−10 mm Hg"],
+      "correct": 1,
+      "why": "NFP = (outward) − (inward) = 35 − 25 = +10 mm Hg. Positive means fluid filters out of the capillary.",
+      "review": "capillary-exchange"
+    },
+    {
+      "q": "In a nephron, which vessel carries blood out of the glomerulus?",
+      "options": ["The efferent arteriole", "A venule", "The afferent arteriole"],
+      "correct": 0,
+      "why": "Blood leaves the glomerulus through the efferent arteriole, which then feeds the peritubular capillaries or the vasa recta. The afferent arteriole brings blood in.",
+      "review": "nephron"
+    },
+    {
+      "q": "What happens to an arteriole's smooth muscle when a rise in pressure stretches it?",
+      "options": ["It relaxes, and the arteriole widens", "It contracts, and the arteriole narrows", "It does not respond without a nerve signal"],
+      "correct": 1,
+      "why": "This is the myogenic response: stretch opens mechanically gated channels, calcium enters, and the smooth muscle contracts, so flow stays nearly steady.",
+      "review": "bp-short-term"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-25-16",
+    "caption": "The pressures across the glomerular capillary wall. Hide the labels and name the pressure pushing fluid out and the two pushing it back."
+  },
+  "chain": [
+    { "cause": "Mean arterial pressure rises, for example as you climb stairs.", "effect": "More pressure reaches the glomerulus, so glomerular hydrostatic pressure, net filtration pressure and GFR start to rise." },
+    { "cause": "The higher pressure stretches the wall of the afferent arteriole.", "effect": "Its smooth muscle contracts within seconds (the myogenic mechanism), narrowing the arteriole." },
+    { "cause": "Fluid flows faster through the tubule, so more sodium chloride reaches the macula densa.", "effect": "The macula densa releases ATP, broken down to adenosine, which constricts the afferent arteriole further (tubuloglomerular feedback)." },
+    { "cause": "The narrower afferent arteriole loses more pressure before blood reaches the glomerulus.", "effect": "Glomerular hydrostatic pressure falls back, so net filtration pressure and GFR return almost to normal." },
+    { "cause": "GFR stays near 125 mL/min across a mean arterial pressure of about 80 to 180 mm Hg.", "effect": "The tubules receive a steady flow of filtrate, so salt and water are neither lost nor held by accident when blood pressure changes." }
+  ],
+  "misconception": {
+    "wrong": "Higher blood pressure always means more filtration, so GFR simply follows your blood pressure.",
+    "right": "Between a mean arterial pressure of about 80 and 180 mm Hg, autoregulation holds GFR almost constant: the myogenic mechanism and tubuloglomerular feedback narrow the afferent arteriole when pressure rises and widen it when pressure falls. GFR follows pressure only outside that range, or when sympathetic nerves and hormones deliberately change it."
+  },
+  "check": ["anp-glomerular-filtration-2", "anp-glomerular-filtration-4", "anp-glomerular-filtration-7", "anp-glomerular-filtration-9", "anp-glomerular-filtration-10", "anp-glomerular-filtration-14", "anp-glomerular-filtration-17", "anp-glomerular-filtration-20"],
+  "summary": "<p>Glomerular filtration pushes plasma fluid through the filtration membrane: a fenestrated endothelium that stops blood cells, a thick, negatively charged basement membrane, and podocyte pedicels with filtration slits; together they hold back almost all protein. Glomerular hydrostatic pressure (about 55 mm Hg) pushes fluid out; capsular hydrostatic pressure (about 15) and blood colloid osmotic pressure (about 30 on average) push back, leaving a net filtration pressure of about 10 mm Hg. GFR = K<sub>f</sub> × NFP, about 125 mL/min or 180 L a day, of which more than 99% is taken back. Autoregulation, through the myogenic mechanism and tubuloglomerular feedback at the macula densa, keeps GFR nearly constant between a MAP of about 80 and 180 mm Hg by adjusting the afferent arteriole. Strong sympathetic activation constricts the afferent arterioles and lowers GFR; angiotensin II constricts the efferent arteriole and protects GFR; ANP and local prostaglandins raise it. A damaged filter lets protein (proteinuria) or red cells (hematuria) into the urine.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" }
+  ]
+}

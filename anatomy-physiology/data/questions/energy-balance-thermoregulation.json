@@ -1,0 +1,552 @@
+[
+  {
+    "id": "anp-energy-balance-thermoregulation-1",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy"
+    ],
+    "q": "A resting woman uses 200 mL of oxygen per minute. Each liter of oxygen consumed goes with about 4.8 kcal of energy released. What is her metabolic rate in kcal per day?",
+    "options": [
+      "About 1,380 kcal/day",
+      "About 960 kcal/day",
+      "About 1,730 kcal/day",
+      "About 13,800 kcal/day"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Oxygen per day: 200 mL/min × 1,440 min/day = 288,000 mL = 288 L. Energy: 288 L × 4.8 kcal/L = 1,382 kcal/day.",
+      "options": [
+        "Correct. 288 L × 4.8 kcal/L ≈ 1,380 kcal/day.",
+        "960 is 200 × 4.8, the kcal for 200 liters, not for a day's oxygen use.",
+        "1,730 kcal/day is the answer for 250 mL/min, not 200.",
+        "This is ten times too large: 288,000 mL is 288 L, not 2,880 L."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-2",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "A woman is 1.60 m tall and weighs 70 kg. What is her BMI, and which category is it in?",
+    "options": [
+      "21.9: healthy weight",
+      "43.8: obesity",
+      "31.2: obesity",
+      "27.3: overweight"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "BMI = weight ÷ height². 1.60 × 1.60 = 2.56; 70 ÷ 2.56 = 27.3 kg/m², which falls in the overweight range of 25 to 29.9.",
+      "options": [
+        "21.9 would need a weight of about 56 kg at this height.",
+        "43.8 divides by the height without squaring it (70 ÷ 1.60).",
+        "31.2 does not follow from these numbers; squaring 1.60 gives 2.56, and 70 ÷ 2.56 = 27.3.",
+        "Correct. 70 ÷ 2.56 = 27.3."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-3",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "mass-balance"
+    ],
+    "q": "A man eats 500 kcal a day more than he spends, every day for 4 weeks. Using about 7,700 kcal per kilogram of adipose tissue, about how much fat does he gain?",
+    "options": [
+      "About 0.5 kg",
+      "About 1.8 kg",
+      "About 3.5 kg",
+      "About 14 kg"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Surplus: 500 kcal × 28 days = 14,000 kcal. 14,000 ÷ 7,700 ≈ 1.8 kg. Over many more months, the gain would slow as his larger body spends more.",
+      "options": [
+        "0.5 kg is the gain from about one week, not four.",
+        "Correct. 14,000 ÷ 7,700 ≈ 1.8 kg.",
+        "3.5 kg would need about 27,000 kcal of surplus, roughly twice this.",
+        "14 is the surplus in thousands of kilocalories, not kilograms."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-4",
+    "type": "predict",
+    "level": "analyze",
+    "diff": 3,
+    "predictLevel": 3,
+    "core": [
+      "homeostasis",
+      "energy"
+    ],
+    "q": "A runner does the same 60-minute run on a hot, humid day (32 °C, 85% humidity) that she usually does on a cool, dry day. Predict each variable at the end of the hot run, compared with the end of the cool run.",
+    "variables": [
+      {
+        "name": "Skin blood flow",
+        "answer": "up",
+        "why": "The hypothalamus drives more active vasodilation through sympathetic cholinergic nerves as core and skin temperature rise."
+      },
+      {
+        "name": "Sweat rate",
+        "answer": "up",
+        "why": "The same nerves drive the sweat glands harder in response to the greater heat load."
+      },
+      {
+        "name": "Share of her sweat that evaporates",
+        "answer": "down",
+        "why": "Humid air is close to saturated, so evaporation slows and much of the sweat drips off."
+      },
+      {
+        "name": "Core temperature",
+        "answer": "up",
+        "why": "Air near skin temperature blocks radiation and convection, and humid air limits evaporation, so heat loss falls short of heat production."
+      },
+      {
+        "name": "Stroke volume",
+        "answer": "down",
+        "why": "Sweat losses shrink plasma volume and more blood sits in the widened skin vessels, so less returns to fill the heart."
+      },
+      {
+        "name": "Heart rate",
+        "answer": "up",
+        "why": "With a smaller stroke volume, heart rate rises to keep cardiac output up for both muscles and skin."
+      }
+    ],
+    "why": {
+      "correct": "Across the nervous, integumentary and cardiovascular systems: the heat load raises skin blood flow and sweating, but humidity blocks evaporation, so core temperature climbs. Sweat losses and blood held in the skin cut venous return and stroke volume, and heart rate rises to compensate. This is the setting for heat exhaustion and heat stroke."
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "homeostasis"
+    ],
+    "q": "A cyclist makes 870 kcal of heat per hour in air hotter than his skin. Each liter of sweat that evaporates removes about 580 kcal. At least how much sweat must evaporate each hour to remove the heat he makes?",
+    "options": [
+      "About 0.7 L",
+      "About 1.0 L",
+      "About 1.5 L",
+      "About 5.0 L"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In air hotter than skin, evaporation is the only route of heat loss. 870 ÷ 580 = 1.5 L per hour must evaporate, and more must be secreted if some drips off.",
+      "options": [
+        "0.7 L would remove only about 400 kcal.",
+        "1.0 L removes 580 kcal, less than the 870 kcal he makes.",
+        "Correct. 870 ÷ 580 = 1.5 L.",
+        "5.0 L would remove about 2,900 kcal, far more than he makes."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-6",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A 17-year-old collapses at football practice on a humid day. He is confused, his skin is hot and sweaty, and his rectal temperature is 41.6 °C. What should be done first?",
+    "options": [
+      "Give a fever-reducing drug by mouth",
+      "Wrap him in a blanket until the ambulance arrives",
+      "Give salty fluids and let him rest seated",
+      "Cool him rapidly, ideally by cold-water immersion"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A core temperature above 40 °C with confusion is heat stroke. Damage depends on how long the core stays that hot, so the priority is rapid cooling, best by immersing him in cold water, before transport if that can be done safely.",
+      "options": [
+        "His set point is normal; heat gain has outrun heat loss. Fever-reducing drugs lower a raised set point, so they do not help, and he cannot swallow safely while confused.",
+        "A blanket would trap heat and let his temperature keep rising.",
+        "Fluids and rest suit heat exhaustion, where the brain works normally. His confusion marks heat stroke, and he should not drink while confused.",
+        "Correct. Rapid cooling is the treatment for heat stroke."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-7",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Two hikers feel faint on a hot day. Both are sweating, with core temperatures of 39.5 °C. Which finding best tells heat stroke apart from heat exhaustion?",
+    "options": [
+      "Whether the skin is sweaty",
+      "Whether the heart rate is fast",
+      "Whether the person is confused",
+      "Whether the person feels nauseated"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Heat stroke is defined by brain dysfunction with a very high core temperature. Confusion, odd behavior, seizures or coma point to heat stroke; in heat exhaustion the brain works normally.",
+      "options": [
+        "People with exertional heat stroke are often still sweating, so sweaty skin does not rule it out.",
+        "A fast heart rate is common in both.",
+        "Correct. Brain dysfunction marks heat stroke.",
+        "Nausea is common in heat exhaustion and does not separate the two."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 1,
+    "core": [
+      "gradients"
+    ],
+    "q": "The air temperature is 40 °C, above skin temperature. By which route can the body still lose heat?",
+    "options": [
+      "Radiation",
+      "Conduction",
+      "Convection",
+      "Evaporation"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Radiation, conduction and convection all move heat from warmer to cooler. When the surroundings are hotter than the skin, they add heat. Evaporation removes heat whatever the air temperature, as long as the air is not saturated.",
+      "options": [
+        "Radiation now brings heat in from hotter surroundings.",
+        "Conduction adds heat from any surface hotter than the skin.",
+        "Moving air hotter than the skin adds heat by convection.",
+        "Correct. Evaporation of sweat is the only route left."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-9",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "Six months after losing 12 kg on a diet, a man says he is hungrier than before he started. Which change in his hormones best explains it?",
+    "options": [
+      "Lower leptin and higher ghrelin",
+      "Higher leptin and lower ghrelin",
+      "Higher insulin and higher leptin",
+      "Lower ghrelin and lower insulin"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "With less fat, fat cells release less leptin, so the hypothalamus drives hunger and saves energy. Ghrelin from the stomach also tends to rise after weight loss. Both push toward regaining the lost weight.",
+      "options": [
+        "Correct. Falling leptin and rising ghrelin both raise hunger.",
+        "High leptin and low ghrelin would both reduce hunger.",
+        "Higher insulin and leptin would signal plenty and reduce hunger.",
+        "Lower ghrelin would reduce hunger, not raise it."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-10",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Select every signal that helps end a meal (promotes satiety).",
+    "options": [
+      "Stretch of the stomach wall",
+      "Ghrelin",
+      "Cholecystokinin from the small intestine",
+      "GLP-1 from the gut",
+      "An empty stomach"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "Stomach stretch, carried by the vagus nerve, and gut hormones released as food reaches the small intestine, such as cholecystokinin and GLP-1, act on the brainstem and hypothalamus to end a meal. Ghrelin and an empty stomach drive hunger.",
+      "options": [
+        "Correct. Stretch-sensitive sensory receptors report a full stomach through the vagus nerve.",
+        "Ghrelin rises before meals and raises hunger.",
+        "Correct. Cholecystokinin is released as fat and protein reach the duodenum.",
+        "Correct. GLP-1 increases satiety; drugs that mimic it reduce appetite.",
+        "An empty stomach releases ghrelin, which makes you hungry."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-11",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "energy",
+      "gradients"
+    ],
+    "q": "How does brown adipose tissue make heat without shivering?",
+    "options": [
+      "Its cells contract rapidly like skeletal muscle",
+      "It stores heat in its fat and releases it when cold",
+      "It burns glucose anaerobically to lactate",
+      "Its mitochondria let H+ leak back without making ATP"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Norepinephrine from sympathetic nerves makes brown fat cells break down fat and open a channel protein in the inner mitochondrial membrane. H+ leaks back into the matrix without passing through ATP synthase, so the electron transport chain runs flat out and the energy is released as heat instead of ATP.",
+      "options": [
+        "Brown fat does not contract; that is shivering, in skeletal muscle.",
+        "Fat stores chemical energy, not heat; heat must be made by oxidizing the fuel.",
+        "Brown fat's heat comes from oxidizing fuel in its many mitochondria, not from anaerobic glycolysis.",
+        "Correct. Uncoupling the H+ gradient from ATP synthesis turns fuel into heat."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-12",
+    "type": "error",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A student traced the body's response to stepping out into freezing wind. One step is wrong. Which one?",
+    "options": [
+      "Cold thermoreceptors in the skin increase their firing",
+      "Sensory signals reach the preoptic area of the hypothalamus",
+      "Sympathetic nerves widen the arterioles of the skin",
+      "Skeletal muscles begin to shiver",
+      "Heat loss falls and heat production rises"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "In the cold, sympathetic nerves release norepinephrine onto skin arterioles, narrowing them. Less warm blood reaches the surface, so the shell insulates the core.",
+      "options": [
+        "This step is right. Skin sensors report the cold first, before the core cools.",
+        "This step is right. The preoptic area is the temperature control center.",
+        "This is the error. Skin arterioles narrow in the cold; they widen in the heat.",
+        "This step is right. Shivering raises heat production.",
+        "This step is right. Both effects oppose the fall in temperature: negative feedback."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-13",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Put the parts of the heat-loss loop in order, starting from a rise in core temperature during exercise.",
+    "options": [
+      "Core temperature rises",
+      "Temperature-sensitive neurons in the hypothalamus fire faster",
+      "The preoptic area compares the input with its set point",
+      "Sympathetic cholinergic nerves carry the command to the skin",
+      "Sweat glands secrete and skin vessels widen",
+      "Evaporation and blood flow to the skin carry heat away, and core temperature falls back"
+    ],
+    "why": {
+      "correct": "Stimulus, sensor, control center, efferent pathway, effectors, response. Because the response opposes the stimulus, this is negative feedback."
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-14",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A man is pulled from icy water after 40 minutes. His core temperature is 29 °C. He has stopped shivering, is drowsy, and his heart rate is 40. Why must rescuers move him gently?",
+    "options": [
+      "Moving him would restart shivering and exhaust him",
+      "Movement makes his skin vessels constrict further",
+      "His cold heart can fibrillate if handled roughly",
+      "His bones are brittle from the cold"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "At a core temperature near or below 30 °C, the heart muscle is cold and electrically unstable. Jostling can trigger ventricular fibrillation. Rescuers keep him horizontal, handle him gently and rewarm him.",
+      "options": [
+        "Shivering stops in moderate hypothermia because heat production fails, and it would help rather than harm.",
+        "Skin vessel tone is not the danger here.",
+        "Correct. A cold heart is prone to fatal rhythms.",
+        "Cold does not make bones brittle at these temperatures."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A climber has frostbitten toes and is still 6 hours from shelter over frozen ground. Why should the toes not be rewarmed yet?",
+    "options": [
+      "Thawing then refreezing is worse than staying frozen",
+      "Rewarming is useless once tissue has frozen",
+      "Warm water would raise his core temperature too fast",
+      "Rewarming stops the toes from sweating"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Frostbitten tissue should be rewarmed rapidly in warm water, but only when it will not freeze again. Thawing damages small vessels, and refreezing thawed tissue causes far worse injury.",
+      "options": [
+        "Correct. A thaw–refreeze cycle is worse than delaying rewarming.",
+        "Rapid rewarming in warm water is the treatment once refreezing is not a risk.",
+        "Warming a foot in warm water does not dangerously raise core temperature.",
+        "Sweating is not the concern in frostbite."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-16",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "Both a child with influenza and a marathon runner have a core temperature of 39.5 °C. Why does a fever-reducing drug lower the child's temperature but not the runner's?",
+    "options": [
+      "The runner's sweat washes the drug out of the blood",
+      "The drug works only in children",
+      "The runner's muscles make heat the drug cannot reach",
+      "Only the child's set point is raised"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In fever, pyrogens raise the hypothalamic set point, and fever-reducing drugs block the prostaglandins that do this. The runner has hyperthermia: her set point is normal, and heat gain has outrun heat loss. There is no raised set point for the drug to lower.",
+      "options": [
+        "Sweat does not remove these drugs to any important degree.",
+        "These drugs lower fever in adults too.",
+        "The issue is not where the heat is made but whether the set point is raised.",
+        "Correct. Fever and hyperthermia differ at the set point."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-17",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "energy",
+      "communication"
+    ],
+    "q": "A woman with untreated hyperthyroidism eats more than usual yet is losing weight, and she feels hot. What best explains both?",
+    "options": [
+      "Her raised BMR makes her spend more energy, released as heat",
+      "Her appetite hormones have stopped working properly",
+      "She is absorbing much less of her food from the gut",
+      "Her brown fat has been replaced by ordinary white fat"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Thyroid hormones raise the number of sodium–potassium pumps and mitochondria in cells, so they use more ATP and oxygen. Her BMR rises, she spends more energy than she eats, and the extra energy is released as heat.",
+      "options": [
+        "Correct. A raised BMR explains both weight loss and feeling hot.",
+        "Her hunger is rising in response to greater spending, which shows appetite regulation is working.",
+        "The weight loss comes from greater spending, not poor absorption.",
+        "Hyperthyroidism raises heat production; losing brown fat would lower it."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-18",
+    "type": "graph",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "homeostasis"
+    ],
+    "figure": "os-24-23",
+    "q": "Use the figure. Which response to low body temperature uses skeletal muscle?",
+    "options": [
+      "Sweating",
+      "Narrowing of skin arteries",
+      "Shivering",
+      "Flushing of the skin"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Shivering is rapid, involuntary contraction of skeletal muscle. It does no outside work, so its energy becomes heat.",
+      "options": [
+        "Sweating is a response to high temperature, by sweat glands.",
+        "Narrowing of skin vessels uses smooth muscle in the vessel walls, not skeletal muscle.",
+        "Correct. Shivering is done by skeletal muscle.",
+        "Flushing, from widened skin vessels, is a response to high temperature."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 25-year-old rugby player is 1.80 m tall and weighs 105 kg, with little body fat. His BMI is 32.4. What does this show about BMI?",
+    "options": [
+      "He has obesity, because a BMI over 30 always means excess fat",
+      "BMI underestimates fat in athletes",
+      "BMI cannot tell muscle from fat",
+      "His height was measured wrongly"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "BMI uses only weight and height. Muscle is dense and heavy, so a very muscular person can have a high BMI with little fat. BMI is a screen, not a measure of body fat.",
+      "options": [
+        "His BMI is in the obesity range, but he has little body fat; BMI does not measure fat.",
+        "For him, BMI overestimates fat, not underestimates it.",
+        "Correct. BMI does not distinguish muscle from fat.",
+        "The numbers are consistent: 105 ÷ (1.80 × 1.80) = 32.4."
+      ]
+    }
+  },
+  {
+    "id": "anp-energy-balance-thermoregulation-20",
+    "type": "missing",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "energy"
+    ],
+    "q": "Fill the gap: total metabolic rate = basal metabolic rate + energy to digest and store food + ____.",
+    "options": [
+      "Physical activity",
+      "Shivering alone",
+      "Body mass index",
+      "Heat lost by radiation"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Total energy use has three parts: the BMR, the energy used handling food (about 10%), and physical activity, the most variable part.",
+      "options": [
+        "Correct. Physical activity is the third part.",
+        "Shivering is only one kind of muscle activity, and it happens mainly in the cold.",
+        "BMI is a ratio of weight to height, not a use of energy.",
+        "Radiation is a way heat leaves the body, not a separate use of energy."
+      ]
+    }
+  }
+]

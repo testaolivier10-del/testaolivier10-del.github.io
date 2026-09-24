@@ -12843,6 +12843,1396 @@
           "why": "The antibodies target the receptor proteins on the muscle side. The axon terminal releases acetylcholine normally; only its effect is smaller."
         }
       ]
+    },
+    {
+      "id": "gi-sprint-after-lunch",
+      "title": "A hard sprint just after lunch",
+      "topic": "digestive-overview",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "the brain runs the gut, so the gut simply stops when the nerves from the brain change their output",
+      "setup": "Twenty minutes after lunch, a student sprints hard for two minutes to catch a bus that is pulling away. Compare her gut during the sprint with just before it.",
+      "start": "Sympathetic activity rises sharply",
+      "steps": {
+        "ens": "Sympathetic fibers inhibit the enteric neurons",
+        "mot": "Peristalsis and segmentation weaken",
+        "sec": "The glands of the gut wall secrete less",
+        "sph": "The gut sphincters tighten (alpha-1)",
+        "art": "The gut’s arterioles narrow",
+        "flow": "Blood flow to the gut falls, and more goes to the working muscles"
+      },
+      "variables": [
+        {
+          "id": "motility",
+          "name": "Motility of the stomach and intestine",
+          "answer": "down",
+          "chain": [
+            "ens",
+            "mot"
+          ],
+          "why": "Sympathetic fibers do not stop the enteric nervous system; they turn it down. With the enteric neurons inhibited, fewer slow waves reach threshold and the contractions weaken."
+        },
+        {
+          "id": "secretion",
+          "name": "Secretion by the gut’s glands",
+          "answer": "down",
+          "chain": [
+            "ens",
+            "sec"
+          ],
+          "why": "Secretion is run by the submucosal plexus. Sympathetic input inhibits it, the reverse of the rest-and-digest pattern."
+        },
+        {
+          "id": "sphincters",
+          "name": "Tone of the gut sphincters",
+          "answer": "up",
+          "chain": [
+            "sph"
+          ],
+          "why": "Norepinephrine acts on alpha-1 receptor proteins on sphincter smooth muscle and contracts it, so contents are held back while motility is low."
+        },
+        {
+          "id": "blood-flow",
+          "name": "Blood flow to the gut",
+          "answer": "down",
+          "chain": [
+            "art",
+            "flow"
+          ],
+          "why": "Sympathetic fibers narrow the gut’s arterioles. Their resistance rises, so flow to the gut falls and more of the cardiac output reaches skeletal muscle."
+        }
+      ]
+    },
+    {
+      "id": "gi-hiatal-hernia",
+      "title": "The diaphragm no longer pinches the lower esophagus",
+      "topic": "mouth-esophagus",
+      "core": [
+        "structure-function"
+      ],
+      "level": 1,
+      "misconception": "heartburn is a problem of the heart",
+      "setup": "In a hiatal hernia, the top of the stomach slides up through the opening in the diaphragm, so the diaphragm no longer wraps around the lower esophageal sphincter. Compare with before the hernia.",
+      "start": "The diaphragm’s pinch around the sphincter is lost",
+      "steps": {
+        "pressure": "Pressure in the sphincter zone falls",
+        "reflux": "Stomach contents flow back up more easily",
+        "burn": "Acid irritates the squamous lining of the esophagus",
+        "swallow": "Swallowing still relaxes the sphincter through nitric oxide"
+      },
+      "variables": [
+        {
+          "id": "pressure",
+          "name": "Pressure in the lower esophageal sphincter zone",
+          "answer": "down",
+          "chain": [
+            "pressure"
+          ],
+          "why": "The closing pressure comes from two sources: the thickened smooth muscle and the diaphragm pinching it. Losing the diaphragm’s part lowers the total."
+        },
+        {
+          "id": "reflux",
+          "name": "Reflux of stomach contents into the esophagus",
+          "answer": "up",
+          "chain": [
+            "pressure",
+            "reflux"
+          ],
+          "why": "Reflux happens whenever pressure in the stomach beats the pressure in the sphincter zone. With the zone weaker, that happens more often."
+        },
+        {
+          "id": "heartburn",
+          "name": "Heartburn",
+          "answer": "up",
+          "chain": [
+            "pressure",
+            "reflux",
+            "burn"
+          ],
+          "why": "Stratified squamous epithelium resists rough food but has little protection against acid, so more reflux means more burning pain behind the sternum. It has nothing to do with the heart."
+        },
+        {
+          "id": "opening",
+          "name": "Relaxation of the sphincter when you swallow",
+          "answer": "none",
+          "chain": [
+            "swallow"
+          ],
+          "why": "Opening is still run by vagal fibers and enteric inhibitory neurons releasing nitric oxide, so the bolus still passes normally."
+        }
+      ]
+    },
+    {
+      "id": "gi-stroke-swallow",
+      "title": "A brainstem stroke delays the swallowing reflex",
+      "topic": "mouth-esophagus",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "if a person can still move the tongue, swallowing must be safe",
+      "setup": "A small stroke damages the swallowing center in the medulla oblongata. The cortex and the nerves to the tongue are unharmed. Compare her swallows of water with before the stroke.",
+      "start": "The swallowing center fires late and weakly",
+      "steps": {
+        "tongue": "The tongue still pushes the bolus back on command",
+        "late": "The pharyngeal phase starts late",
+        "seal": "The vocal folds and epiglottis close the airway late",
+        "slip": "Water slips into the larynx before the airway is sealed",
+        "cough": "Sensory receptors in the larynx trigger coughing",
+        "lung": "Aspirated liquid carries mouth bacteria into the lungs"
+      },
+      "variables": [
+        {
+          "id": "voluntary",
+          "name": "The tongue’s push in the voluntary phase",
+          "answer": "none",
+          "chain": [
+            "tongue"
+          ],
+          "why": "The voluntary phase is started by you and carried out by the tongue muscles, which are unharmed. The damage is in the reflex that should follow."
+        },
+        {
+          "id": "aspiration",
+          "name": "Liquid entering the larynx",
+          "answer": "up",
+          "chain": [
+            "late",
+            "seal",
+            "slip"
+          ],
+          "why": "Thin liquid reaches the pharynx fast. If the reflex that closes the vocal folds and tips the epiglottis fires late, some of it runs into the open larynx first: aspiration."
+        },
+        {
+          "id": "coughing",
+          "name": "Coughing while drinking",
+          "answer": "up",
+          "chain": [
+            "late",
+            "seal",
+            "slip",
+            "cough"
+          ],
+          "why": "Liquid in the larynx stimulates its sensory receptors, which trigger the cough reflex to expel it."
+        },
+        {
+          "id": "pneumonia",
+          "name": "Risk of pneumonia",
+          "answer": "up",
+          "chain": [
+            "late",
+            "seal",
+            "slip",
+            "lung"
+          ],
+          "why": "Repeated aspiration carries mouth bacteria into the lower airways, and if the cough cannot clear them, pneumonia can follow."
+        }
+      ]
+    },
+    {
+      "id": "gi-sham-feeding",
+      "title": "Chewing food without swallowing it",
+      "topic": "stomach",
+      "core": [
+        "communication"
+      ],
+      "level": 1,
+      "misconception": "the stomach only starts secreting once food lands in it",
+      "setup": "In a physiology experiment, a volunteer smells, chews and tastes a meal but spits it out instead of swallowing (sham feeding). Nothing reaches his stomach. Compare his stomach with before the meal was served.",
+      "start": "Sight, smell, taste and chewing act on the brain",
+      "steps": {
+        "vagus": "The hypothalamus and medulla oblongata send signals down the vagus nerves",
+        "ach": "Vagal and enteric neurons release acetylcholine onto parietal and chief cells",
+        "acid": "Parietal cells secrete acid",
+        "g": "Vagal signals stimulate the G cells",
+        "gastrin": "G cells release gastrin"
+      },
+      "variables": [
+        {
+          "id": "vagal",
+          "name": "Vagal output to the stomach",
+          "answer": "up",
+          "chain": [
+            "vagus"
+          ],
+          "why": "This is the cephalic phase: signals about food reach the hypothalamus and medulla oblongata, which increase vagal output before any food arrives."
+        },
+        {
+          "id": "acid",
+          "name": "Acid secreted by the stomach",
+          "answer": "up",
+          "chain": [
+            "vagus",
+            "ach",
+            "acid"
+          ],
+          "why": "Acetylcholine acts on the parietal cells’ muscarinic receptor proteins and switches acid secretion on. The cephalic phase supplies roughly a third of a meal’s acid."
+        },
+        {
+          "id": "gastrin",
+          "name": "Gastrin in the blood",
+          "answer": "up",
+          "chain": [
+            "vagus",
+            "g",
+            "gastrin"
+          ],
+          "why": "Vagal signals also stimulate the G cells of the antrum, so gastrin rises even though no protein has reached them."
+        }
+      ]
+    },
+    {
+      "id": "gi-proton-pump-inhibitor",
+      "title": "Taking a proton pump inhibitor",
+      "topic": "stomach",
+      "theme": "a proton pump inhibitor",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a drug that blocks acid also switches off the hormone that drives acid",
+      "setup": "A man with a peptic ulcer takes omeprazole, a proton pump inhibitor, every morning for eight weeks. Compare his stomach and blood an hour after a meal with the same time after a meal before he started.",
+      "start": "Omeprazole blocks the H+/K+ proton pumps of the parietal cells",
+      "steps": {
+        "pump": "Parietal cells pump far less H+ into the gland lumen",
+        "acid": "Less hydrochloric acid reaches the stomach contents",
+        "ph": "The pH of the stomach contents stays higher",
+        "dcell": "D cells in the antrum release less somatostatin",
+        "gastrin": "The brake on the G cells lifts, so they release more gastrin",
+        "pepsin": "Less pepsinogen is converted to pepsin",
+        "tide": "Less bicarbonate is left behind to enter the blood"
+      },
+      "variables": [
+        {
+          "id": "acid",
+          "name": "Acid secreted after a meal",
+          "answer": "down",
+          "chain": [
+            "pump",
+            "acid"
+          ],
+          "why": "The proton pump is the last step of acid secretion. Blocking it cuts acid whatever mix of acetylcholine, gastrin and histamine is arriving."
+        },
+        {
+          "id": "ph",
+          "name": "pH of the stomach contents",
+          "answer": "up",
+          "chain": [
+            "pump",
+            "acid",
+            "ph"
+          ],
+          "why": "Fewer hydrogen ions reach the lumen, and food buffers those that do, so the pH stays higher. That is what lets the ulcer heal."
+        },
+        {
+          "id": "gastrin",
+          "name": "Gastrin in the blood",
+          "answer": "up",
+          "chain": [
+            "pump",
+            "acid",
+            "ph",
+            "dcell",
+            "gastrin"
+          ],
+          "why": "Acid normally switches off its own stimulus: low pH in the antrum makes D cells release somatostatin, which restrains the G cells. With the pH held higher, that brake weakens and gastrin rises. The parietal cells cannot answer it, because the pump is blocked."
+        },
+        {
+          "id": "pepsin",
+          "name": "Pepsin activity in the stomach",
+          "answer": "down",
+          "chain": [
+            "acid",
+            "ph",
+            "pepsin"
+          ],
+          "why": "Pepsinogen activates only in acid below about pH 5, and pepsin works best near pH 2. With less acid, less pepsin is made and it works poorly."
+        },
+        {
+          "id": "tide",
+          "name": "The alkaline tide after a meal",
+          "answer": "down",
+          "chain": [
+            "pump",
+            "tide"
+          ],
+          "why": "Every H+ pumped into the stomach leaves a bicarbonate ion that goes to the blood. Fewer pumped hydrogen ions mean less bicarbonate added."
+        }
+      ]
+    },
+    {
+      "id": "gi-autoimmune-parietal",
+      "title": "The immune system destroys the parietal cells",
+      "topic": "stomach",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "pernicious anemia comes from eating too little vitamin B12",
+      "setup": "Over many years, a woman’s immune system destroys the parietal cells of her stomach. Her diet contains plenty of vitamin B12. Compare her, years into the disease, with before it began.",
+      "start": "Parietal cells are destroyed",
+      "steps": {
+        "acid": "Almost no hydrochloric acid is secreted",
+        "ph": "The stomach contents stay close to neutral",
+        "dcell": "D cells sense no acid, so somatostatin stays low",
+        "gastrin": "G cells release gastrin freely",
+        "if": "No intrinsic factor is secreted",
+        "b12": "Almost none of the vitamin B12 in food is absorbed",
+        "store": "The liver’s B12 store runs out over the years",
+        "rbc": "Developing red blood cells cannot divide normally",
+        "count": "Fewer red blood cells are made: pernicious anemia"
+      },
+      "variables": [
+        {
+          "id": "acid",
+          "name": "Acid secreted by the stomach",
+          "answer": "down",
+          "chain": [
+            "acid"
+          ],
+          "why": "Only parietal cells make hydrochloric acid. With them gone, the stomach secretes almost none."
+        },
+        {
+          "id": "gastrin",
+          "name": "Gastrin in the blood",
+          "answer": "up",
+          "chain": [
+            "acid",
+            "ph",
+            "dcell",
+            "gastrin"
+          ],
+          "why": "Acid is gastrin’s brake: low pH in the antrum releases somatostatin, which restrains the G cells. The G cells sit in the antrum and survive, and with no acid the brake never engages, so gastrin climbs very high."
+        },
+        {
+          "id": "b12",
+          "name": "Vitamin B12 absorbed from food",
+          "answer": "down",
+          "chain": [
+            "if",
+            "b12"
+          ],
+          "why": "Parietal cells also make intrinsic factor. Only B12 bound to intrinsic factor can be taken up in the intestine, so almost none is absorbed however much she eats."
+        },
+        {
+          "id": "rbc",
+          "name": "Red blood cell count",
+          "answer": "down",
+          "chain": [
+            "if",
+            "b12",
+            "store",
+            "rbc",
+            "count"
+          ],
+          "why": "Developing red blood cells need B12 to divide normally. Once the liver’s store is used up, which takes years, fewer red blood cells are made. The fix is B12 by injection or in very large oral doses, not more B12 in food."
+        }
+      ]
+    },
+    {
+      "id": "gi-repeated-vomiting",
+      "title": "A day of repeated vomiting",
+      "topic": "stomach",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "losing stomach acid makes the blood acidic",
+      "setup": "A child with a stomach virus vomits stomach contents every hour for a day and keeps no fluid down. Compare her blood at the end of the day with before she fell ill.",
+      "start": "Stomach contents are lost through the mouth",
+      "steps": {
+        "hcl": "H+ and Cl− secreted by the parietal cells are lost",
+        "tide": "Each H+ secreted left a bicarbonate ion in the blood",
+        "alk": "The extra bicarbonate makes the blood alkaline (alkalosis)",
+        "k": "Potassium is lost in the vomit and in the urine",
+        "water": "Water from drinks and secretions is lost",
+        "vol": "Blood volume falls",
+        "hr": "The baroreflex speeds the heart"
+      },
+      "variables": [
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "up",
+          "chain": [
+            "hcl",
+            "tide",
+            "alk"
+          ],
+          "why": "For every hydrogen ion a parietal cell secretes, a bicarbonate ion enters the blood. Normally that is balanced when the acid reaches the intestine; vomited acid never gets there, so bicarbonate piles up and the blood becomes alkaline."
+        },
+        {
+          "id": "chloride",
+          "name": "Chloride in the blood",
+          "answer": "down",
+          "chain": [
+            "hcl"
+          ],
+          "why": "Chloride follows H+ into the stomach to make hydrochloric acid. Vomiting throws that chloride away, and the parietal cells keep taking more from the blood to replace it."
+        },
+        {
+          "id": "potassium",
+          "name": "Potassium in the blood",
+          "answer": "down",
+          "chain": [
+            "k"
+          ],
+          "why": "Some potassium is lost in the vomit, and more is lost in the urine, so blood potassium falls (hypokalemia)."
+        },
+        {
+          "id": "volume",
+          "name": "Blood volume",
+          "answer": "down",
+          "chain": [
+            "water",
+            "vol"
+          ],
+          "why": "Water is lost in the vomit and none is kept down to replace it, so plasma volume falls."
+        },
+        {
+          "id": "hr",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "water",
+            "vol",
+            "hr"
+          ],
+          "why": "Lower blood volume lowers venous return and blood pressure. Baroreceptors fire less, and the baroreflex raises sympathetic drive to the heart."
+        }
+      ]
+    },
+    {
+      "id": "gi-daily-nsaid",
+      "title": "Months of daily ibuprofen",
+      "topic": "stomach",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "ulcers come from too much acid, stress or spicy food",
+      "setup": "A man with back pain takes high doses of ibuprofen, an NSAID, every day for months. Compare the lining of his stomach with before.",
+      "start": "Ibuprofen blocks prostaglandin production in the gastric mucosa",
+      "steps": {
+        "pg": "Prostaglandins in the gastric mucosa fall",
+        "mucus": "Surface cells secrete less mucus and bicarbonate",
+        "flow": "Blood flow in the mucosa falls",
+        "barrier": "The gastric mucosal barrier weakens",
+        "ulcer": "Acid and pepsin can erode the lining"
+      },
+      "variables": [
+        {
+          "id": "bicarb",
+          "name": "Bicarbonate secreted into the mucus layer",
+          "answer": "down",
+          "chain": [
+            "pg",
+            "mucus"
+          ],
+          "why": "Mucosal prostaglandins drive the surface cells to secrete mucus and bicarbonate. Without them, less bicarbonate reaches the gel that keeps the cell surface near pH 7."
+        },
+        {
+          "id": "flow",
+          "name": "Blood flow in the gastric mucosa",
+          "answer": "down",
+          "chain": [
+            "pg",
+            "flow"
+          ],
+          "why": "Prostaglandins keep the mucosa’s vessels open. Less flow carries away less of any acid that gets in."
+        },
+        {
+          "id": "ulcer",
+          "name": "Risk of a peptic ulcer",
+          "answer": "up",
+          "chain": [
+            "pg",
+            "mucus",
+            "barrier",
+            "ulcer"
+          ],
+          "why": "An ulcer forms when the barrier weakens, usually not because acid secretion rises. With thinner mucus, less bicarbonate and less blood flow, acid and pepsin reach the cells and erode them."
+        }
+      ]
+    },
+    {
+      "id": "gi-flattened-villi",
+      "title": "A disease flattens the villi",
+      "topic": "small-intestine",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "eating more always makes up for poor absorption",
+      "setup": "In untreated celiac disease, an immune reaction to gluten in wheat flattens the villi of a man’s small intestine. He eats a normal amount of food. Compare with a healthy intestine.",
+      "start": "The villi are flattened",
+      "steps": {
+        "area": "The absorptive surface shrinks to a fraction of normal",
+        "abs": "Fewer nutrients are absorbed from each meal",
+        "weight": "He loses weight and develops deficiencies",
+        "cells": "Brush border enzymes are lost with the damaged villus cells",
+        "lact": "Lactase, the least abundant, falls first"
+      },
+      "variables": [
+        {
+          "id": "area",
+          "name": "Absorptive surface of the small intestine",
+          "answer": "down",
+          "chain": [
+            "area"
+          ],
+          "why": "Villi multiply the surface several times over. Flatten them and much of that multiplication is lost, even if the circular folds remain."
+        },
+        {
+          "id": "absorption",
+          "name": "Nutrients absorbed from each meal",
+          "answer": "down",
+          "chain": [
+            "area",
+            "abs"
+          ],
+          "why": "The rate of absorption rises and falls with the area of the surface it crosses, so less area means less absorbed per meal."
+        },
+        {
+          "id": "weight",
+          "name": "Body weight",
+          "answer": "down",
+          "chain": [
+            "area",
+            "abs",
+            "weight"
+          ],
+          "why": "Enough food is eaten, but less of it crosses into the blood, so he loses weight and becomes short of iron and other nutrients."
+        },
+        {
+          "id": "lactase",
+          "name": "Lactase activity",
+          "answer": "down",
+          "chain": [
+            "cells",
+            "lact"
+          ],
+          "why": "Brush border enzymes are built into the absorptive cells, so they go when the villi are damaged. Lactase is the least abundant and is usually the first to fall. It recovers when the lining heals."
+        }
+      ]
+    },
+    {
+      "id": "gi-gallstone-common-duct",
+      "title": "A gallstone blocks the common bile duct",
+      "topic": "liver-pancreas-gallbladder",
+      "theme": "a gallstone blocks the common bile duct",
+      "core": [
+        "structure-function",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "without bile, no fat can be digested at all",
+      "setup": "A gallstone lodges in a woman’s common bile duct above the point where the pancreatic duct joins it. No bile reaches her duodenum, but pancreatic juice still does. Compare her over the next week with before.",
+      "start": "No bile reaches the duodenum",
+      "steps": {
+        "salts": "No bile salts reach the fat in the duodenum",
+        "drops": "Fat stays in large droplets with little surface",
+        "slow": "Pancreatic lipase digests the fat slowly",
+        "fecal": "Undigested fat passes into the feces",
+        "back": "Bile backs up behind the stone into the liver",
+        "blood": "Conjugated bilirubin enters the blood",
+        "urine": "Water-soluble conjugated bilirubin passes into the urine",
+        "gut": "No bilirubin reaches the gut, so no brown stercobilin is made",
+        "panc": "Pancreatic juice still reaches the duodenum"
+      },
+      "variables": [
+        {
+          "id": "fecal-fat",
+          "name": "Fat in the feces",
+          "answer": "up",
+          "chain": [
+            "salts",
+            "drops",
+            "slow",
+            "fecal"
+          ],
+          "why": "Bile salts do not digest fat; they emulsify it, keeping it in tiny droplets with a large surface. Without them lipase works only on the surface of big drops, so much fat leaves undigested."
+        },
+        {
+          "id": "bilirubin",
+          "name": "Bilirubin in the blood",
+          "answer": "up",
+          "chain": [
+            "back",
+            "blood"
+          ],
+          "why": "Hepatocytes keep conjugating bilirubin and secreting it into bile. With the exit blocked, it backs up into the blood: obstructive jaundice."
+        },
+        {
+          "id": "urine",
+          "name": "Darkness of the urine",
+          "answer": "up",
+          "chain": [
+            "back",
+            "blood",
+            "urine"
+          ],
+          "why": "Conjugated bilirubin is water-soluble, so once it is in the blood it passes into the urine and darkens it."
+        },
+        {
+          "id": "stool-color",
+          "name": "Brown color of the feces",
+          "answer": "down",
+          "chain": [
+            "gut"
+          ],
+          "why": "Feces are brown because bacteria in the intestine turn bilirubin into stercobilin. No bilirubin reaches the gut, so the feces turn pale."
+        },
+        {
+          "id": "protein",
+          "name": "Protein digestion",
+          "answer": "none",
+          "chain": [
+            "panc"
+          ],
+          "why": "Protein is digested by pepsin and by trypsin and the other pancreatic enzymes, which still arrive. Bile has no digestive enzymes."
+        }
+      ]
+    },
+    {
+      "id": "gi-pancreatic-duct-blocked",
+      "title": "The pancreatic duct is blocked",
+      "topic": "liver-pancreas-gallbladder",
+      "theme": "the pancreatic duct is blocked",
+      "core": [
+        "structure-function",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "blocking the pancreas’s duct also stops insulin reaching the blood",
+      "setup": "A tumor in the head of the pancreas squeezes the main pancreatic duct shut. The common bile duct is still open. Compare the next few days with before the blockage.",
+      "start": "Pancreatic juice cannot reach the duodenum",
+      "steps": {
+        "lip": "Almost no pancreatic lipase reaches the fat",
+        "fat": "Fat passes undigested into pale, greasy feces",
+        "prot": "No trypsin, chymotrypsin or elastase reaches the lumen",
+        "protd": "Protein digestion in the small intestine falls",
+        "bicarb": "No bicarbonate-rich juice neutralizes the acid chyme",
+        "acid": "The duodenal contents stay acidic",
+        "secretin": "Acid keeps stimulating secretin release",
+        "bile": "Bile still flows into the duodenum",
+        "emul": "Bile salts still emulsify the fat",
+        "islet": "The islets release insulin into their capillaries, not the duct"
+      },
+      "variables": [
+        {
+          "id": "fecal-fat",
+          "name": "Fat in the feces",
+          "answer": "up",
+          "chain": [
+            "lip",
+            "fat"
+          ],
+          "why": "Pancreatic lipase does most fat digestion. Gastric lipase does only a small share, so most fat leaves undigested."
+        },
+        {
+          "id": "protein",
+          "name": "Protein digestion",
+          "answer": "down",
+          "chain": [
+            "prot",
+            "protd"
+          ],
+          "why": "Pepsin does only a minority of protein digestion. Most is done by the pancreatic enzymes, and they can no longer reach the lumen."
+        },
+        {
+          "id": "duodenal-ph",
+          "name": "pH of the duodenal contents",
+          "answer": "down",
+          "chain": [
+            "bicarb",
+            "acid"
+          ],
+          "why": "Bicarbonate from the pancreatic duct cells normally neutralizes acid chyme. Without it, the duodenum stays acidic, relying only on its alkaline mucus."
+        },
+        {
+          "id": "secretin",
+          "name": "Secretin in the blood",
+          "answer": "up",
+          "chain": [
+            "bicarb",
+            "acid",
+            "secretin"
+          ],
+          "why": "Secretin is released by acid and switched off when the acid is neutralized. Its effect cannot reach the duodenum, so the stimulus persists and secretin stays high."
+        },
+        {
+          "id": "emulsify",
+          "name": "Emulsification of fat",
+          "answer": "none",
+          "chain": [
+            "bile",
+            "emul"
+          ],
+          "why": "Emulsification is done by bile salts, and the bile duct is open. The fat is emulsified but barely digested."
+        },
+        {
+          "id": "insulin",
+          "name": "Insulin reaching the blood",
+          "answer": "none",
+          "chain": [
+            "islet"
+          ],
+          "why": "The islets are endocrine: they release insulin into capillaries, not into the duct, so a blocked duct does not stop it."
+        }
+      ]
+    },
+    {
+      "id": "gi-fatty-meal",
+      "title": "Fatty chyme reaches the duodenum",
+      "topic": "liver-pancreas-gallbladder",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the liver makes more bile on the spot to handle a fatty meal",
+      "setup": "You eat a large cheeseburger and fries. Compare what happens while fatty chyme is entering the duodenum with the fasting hours before the meal.",
+      "start": "Fat and protein fragments reach the duodenum",
+      "steps": {
+        "cck": "Enteroendocrine cells release CCK into the blood",
+        "gb": "The smooth muscle of the gallbladder contracts",
+        "sph": "The hepatopancreatic sphincter relaxes",
+        "bile": "Stored, concentrated bile flows into the duodenum",
+        "acinar": "Acinar cells release pancreatic enzymes",
+        "empty": "CCK slows gastric emptying"
+      },
+      "variables": [
+        {
+          "id": "cck",
+          "name": "CCK in the blood",
+          "answer": "up",
+          "chain": [
+            "cck"
+          ],
+          "why": "Fat and protein fragments in the duodenum stimulate its enteroendocrine cells to release cholecystokinin."
+        },
+        {
+          "id": "bile-in",
+          "name": "Bile entering the duodenum",
+          "answer": "up",
+          "chain": [
+            "cck",
+            "gb",
+            "sph",
+            "bile"
+          ],
+          "why": "CCK contracts the gallbladder and relaxes the hepatopancreatic sphincter at the same time, so the bile stored between meals is squeezed out."
+        },
+        {
+          "id": "gallbladder",
+          "name": "Volume of bile in the gallbladder",
+          "answer": "down",
+          "chain": [
+            "cck",
+            "gb"
+          ],
+          "why": "Between meals the gallbladder fills with bile; now it contracts and empties."
+        },
+        {
+          "id": "enzymes",
+          "name": "Pancreatic enzyme secretion",
+          "answer": "up",
+          "chain": [
+            "cck",
+            "acinar"
+          ],
+          "why": "CCK acts on the acinar cells, which release their stored enzymes by exocytosis."
+        },
+        {
+          "id": "emptying",
+          "name": "Rate of gastric emptying",
+          "answer": "down",
+          "chain": [
+            "cck",
+            "empty"
+          ],
+          "why": "CCK weakens the antrum’s waves and tightens the pylorus, so the stomach holds a fatty meal longer while the intestine digests what it already has."
+        }
+      ]
+    },
+    {
+      "id": "gi-acid-duodenum",
+      "title": "Acid chyme arrives in the duodenum",
+      "topic": "liver-pancreas-gallbladder",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the stomach decides by itself how fast to empty and how much acid to make",
+      "setup": "A squirt of chyme at pH 2 passes the pylorus into the duodenum. Compare the next few minutes with just before it arrived.",
+      "start": "Acid lowers the pH in the duodenum",
+      "steps": {
+        "sec": "Enteroendocrine cells release secretin",
+        "duct": "Pancreatic duct cells secrete bicarbonate-rich fluid",
+        "vol": "A large volume of watery pancreatic juice flows",
+        "hblood": "Duct cells send H+ into the blood leaving the pancreas",
+        "stom": "Secretin slows acid secretion and gastric emptying"
+      },
+      "variables": [
+        {
+          "id": "secretin",
+          "name": "Secretin in the blood",
+          "answer": "up",
+          "chain": [
+            "sec"
+          ],
+          "why": "Acid is secretin’s stimulus. Enteroendocrine cells in the duodenal lining sense it and release secretin into the blood."
+        },
+        {
+          "id": "juice",
+          "name": "Volume of pancreatic juice",
+          "answer": "up",
+          "chain": [
+            "sec",
+            "duct",
+            "vol"
+          ],
+          "why": "Secretin targets the duct cells, which add a large volume of watery, bicarbonate-rich fluid. The bicarbonate neutralizes the acid that triggered the secretin."
+        },
+        {
+          "id": "venous-ph",
+          "name": "pH of the blood leaving the pancreas",
+          "answer": "down",
+          "chain": [
+            "sec",
+            "duct",
+            "hblood"
+          ],
+          "why": "Making bicarbonate is the mirror image of making acid: the duct cells put bicarbonate into the duct and hydrogen ions into the blood, so blood leaving the pancreas is slightly more acidic."
+        },
+        {
+          "id": "gastric-acid",
+          "name": "Acid secretion by the stomach",
+          "answer": "down",
+          "chain": [
+            "sec",
+            "stom"
+          ],
+          "why": "Secretin slows acid secretion and gastric emptying, so the stomach sends less acid until the duodenum has neutralized what it has."
+        }
+      ]
+    },
+    {
+      "id": "gi-cirrhosis",
+      "title": "Years of cirrhosis",
+      "topic": "liver-pancreas-gallbladder",
+      "core": [
+        "structure-function",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "cirrhosis only affects the liver",
+      "setup": "A man has had cirrhosis for years. Bands of scar divide his liver into nodules, and many hepatocytes have been lost. Compare him with a person with a healthy liver.",
+      "start": "Scar replaces normal lobules, and fewer hepatocytes work",
+      "steps": {
+        "squeeze": "Scar tissue squeezes the sinusoids",
+        "portal": "Pressure in the hepatic portal vein rises",
+        "veins": "Blood backs up into veins at the lower esophagus",
+        "leak": "Fluid leaks from congested vessels into the peritoneal cavity",
+        "alb": "Hepatocytes make less albumin",
+        "clot": "Hepatocytes make fewer clotting factors",
+        "slow": "Blood clots more slowly",
+        "bili": "Less bilirubin is taken up and secreted into bile",
+        "jaund": "Bilirubin builds up in the blood"
+      },
+      "variables": [
+        {
+          "id": "portal",
+          "name": "Pressure in the hepatic portal vein",
+          "answer": "up",
+          "chain": [
+            "squeeze",
+            "portal"
+          ],
+          "why": "All the portal blood must cross the sinusoids. Scar squeezes them, so resistance rises and pressure builds in the portal vein behind them."
+        },
+        {
+          "id": "varices",
+          "name": "Swelling of the veins at the lower esophagus",
+          "answer": "up",
+          "chain": [
+            "squeeze",
+            "portal",
+            "veins"
+          ],
+          "why": "Blood that cannot get through the liver backs up into veins that link the portal system to the systemic veins. They swell and can burst and bleed heavily."
+        },
+        {
+          "id": "ascites",
+          "name": "Fluid in the peritoneal cavity",
+          "answer": "up",
+          "chain": [
+            "squeeze",
+            "portal",
+            "leak"
+          ],
+          "why": "Raised pressure in the congested vessels pushes fluid out of them into the peritoneal cavity: ascites. Low albumin makes it worse."
+        },
+        {
+          "id": "albumin",
+          "name": "Plasma albumin",
+          "answer": "down",
+          "chain": [
+            "alb"
+          ],
+          "why": "Albumin is made by hepatocytes. With fewer of them working, less is made."
+        },
+        {
+          "id": "clotting",
+          "name": "Time for blood to clot",
+          "answer": "up",
+          "chain": [
+            "clot",
+            "slow"
+          ],
+          "why": "Hepatocytes make most clotting factors. With fewer factors, the cascade runs slowly and the patient bruises and bleeds easily."
+        },
+        {
+          "id": "bilirubin",
+          "name": "Bilirubin in the blood",
+          "answer": "up",
+          "chain": [
+            "bili",
+            "jaund"
+          ],
+          "why": "Hepatocytes clear bilirubin from the blood and secrete it into bile. With fewer working, bilirubin accumulates and the skin turns yellow."
+        }
+      ]
+    },
+    {
+      "id": "gi-opioid-colon",
+      "title": "Two weeks of opioid pain medicine",
+      "topic": "large-intestine",
+      "core": [
+        "structure-function",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "constipation means the colon is absorbing too little",
+      "setup": "After knee surgery, a woman takes an opioid pain medicine for two weeks. Compare her colon and stools with before the surgery.",
+      "start": "The opioid inhibits the enteric neurons",
+      "steps": {
+        "mot": "Haustral contractions and mass movements weaken",
+        "time": "Feces spend longer in the colon",
+        "water": "The colon absorbs more water from them",
+        "hard": "Stools become harder and drier",
+        "fewer": "Fewer mass movements push feces into the rectum"
+      },
+      "variables": [
+        {
+          "id": "motility",
+          "name": "Colon motility",
+          "answer": "down",
+          "chain": [
+            "mot"
+          ],
+          "why": "The enteric nervous system runs the colon’s contractions. Opioids inhibit its neurons, so haustral contractions and mass movements weaken."
+        },
+        {
+          "id": "time",
+          "name": "Time contents spend in the colon",
+          "answer": "up",
+          "chain": [
+            "mot",
+            "time"
+          ],
+          "why": "With weaker contractions, contents move more slowly from the cecum to the rectum."
+        },
+        {
+          "id": "absorbed",
+          "name": "Water absorbed from the feces",
+          "answer": "up",
+          "chain": [
+            "mot",
+            "time",
+            "water"
+          ],
+          "why": "The colon keeps absorbing sodium, and water follows, for as long as the contents stay. More time means more water taken out."
+        },
+        {
+          "id": "stool-water",
+          "name": "Water content of the stool",
+          "answer": "down",
+          "chain": [
+            "mot",
+            "time",
+            "water",
+            "hard"
+          ],
+          "why": "With more water removed, stools are harder and drier, which slows them further: constipation feeds itself."
+        },
+        {
+          "id": "frequency",
+          "name": "Bowel movements per week",
+          "answer": "down",
+          "chain": [
+            "mot",
+            "fewer"
+          ],
+          "why": "Mass movements are what fill the rectum and trigger the defecation reflex. Fewer of them means fewer bowel movements."
+        }
+      ]
+    },
+    {
+      "id": "gi-broad-antibiotic",
+      "title": "A course of broad-spectrum antibiotics",
+      "topic": "large-intestine",
+      "core": [
+        "interdependence",
+        "energy"
+      ],
+      "level": 2,
+      "misconception": "gut bacteria are only germs, so killing them can only help",
+      "setup": "A man takes a broad-spectrum antibiotic for ten days. Compare his colon near the end of the course with before it.",
+      "start": "Many of the normal colon bacteria are killed",
+      "steps": {
+        "ferm": "Less fiber is fermented",
+        "scfa": "Fewer short-chain fatty acids, such as butyrate, are made",
+        "fuel": "The colon’s epithelial cells get less of their main fuel",
+        "gas": "Less gas is made from fiber",
+        "space": "Space and nutrients open up for resistant microbes",
+        "cdiff": "Clostridioides difficile can overgrow"
+      },
+      "variables": [
+        {
+          "id": "scfa",
+          "name": "Short-chain fatty acids made in the colon",
+          "answer": "down",
+          "chain": [
+            "ferm",
+            "scfa"
+          ],
+          "why": "You have no enzymes for most fiber; colon bacteria ferment it into acetate, propionate and butyrate. Fewer bacteria, less fermentation."
+        },
+        {
+          "id": "fuel",
+          "name": "Butyrate available to the colon’s epithelial cells",
+          "answer": "down",
+          "chain": [
+            "ferm",
+            "scfa",
+            "fuel"
+          ],
+          "why": "Butyrate made by bacteria is the main fuel of the colon’s own lining cells, so they get less of it."
+        },
+        {
+          "id": "gas",
+          "name": "Gas made from fiber",
+          "answer": "down",
+          "chain": [
+            "ferm",
+            "gas"
+          ],
+          "why": "Hydrogen, carbon dioxide and methane are products of fermentation, so less fermentation makes less gas."
+        },
+        {
+          "id": "cdiff",
+          "name": "Risk of Clostridioides difficile overgrowth",
+          "answer": "up",
+          "chain": [
+            "space",
+            "cdiff"
+          ],
+          "why": "A settled community crowds out invaders. With it thinned out, a resistant species can overgrow and release toxins that inflame the colon and cause severe diarrhea."
+        }
+      ]
+    },
+    {
+      "id": "gi-lactase-deficiency",
+      "title": "A milkshake with too little lactase",
+      "topic": "digestion-absorption",
+      "theme": "lactase deficiency",
+      "core": [
+        "mass-balance",
+        "gradients"
+      ],
+      "level": 2,
+      "misconception": "lactose intolerance is an allergy to milk",
+      "setup": "A 25-year-old whose lactase production fell after childhood drinks a large milkshake, about 50 g of lactose, on an empty stomach. Compare the next few hours with a friend who still makes plenty of lactase and drinks the same milkshake.",
+      "start": "Little lactase at the brush border",
+      "steps": {
+        "undig": "Most of the lactose stays undigested in the lumen",
+        "mono": "Less glucose and galactose are released for SGLT1 to absorb",
+        "osm": "Undigested lactose holds water in the lumen by osmosis",
+        "colon": "Lactose and extra water reach the colon",
+        "ferm": "Colon bacteria ferment the lactose",
+        "breath": "Some of the hydrogen made is absorbed and breathed out",
+        "stool": "The extra water and solutes cause osmotic diarrhea",
+        "immune": "No antibody or immune cell reacts to the milk"
+      },
+      "variables": [
+        {
+          "id": "glucose",
+          "name": "Rise in blood glucose after the milkshake",
+          "answer": "down",
+          "chain": [
+            "undig",
+            "mono"
+          ],
+          "why": "Only monosaccharides can be absorbed. Undigested lactose releases no glucose or galactose for SGLT1, so her blood glucose rises less than her friend’s."
+        },
+        {
+          "id": "breath-h2",
+          "name": "Hydrogen in her exhaled breath",
+          "answer": "up",
+          "chain": [
+            "undig",
+            "colon",
+            "ferm",
+            "breath"
+          ],
+          "why": "Colon bacteria ferment the lactose into hydrogen, carbon dioxide and fatty acids. Some hydrogen enters the blood and is breathed out, which is what the hydrogen breath test measures."
+        },
+        {
+          "id": "stool-water",
+          "name": "Water in the stool",
+          "answer": "up",
+          "chain": [
+            "undig",
+            "osm",
+            "colon",
+            "stool"
+          ],
+          "why": "Unabsorbed lactose holds water in the lumen, and fermentation adds more solute in the colon. The colon cannot absorb all of it: osmotic diarrhea."
+        },
+        {
+          "id": "antibody",
+          "name": "Antibody response to the milk",
+          "answer": "none",
+          "chain": [
+            "immune"
+          ],
+          "why": "Lactose intolerance is a shortage of an enzyme, not an immune reaction. A milk allergy is the immune response to milk proteins, and it is a different condition."
+        }
+      ]
+    },
+    {
+      "id": "gi-terminal-ileum-removed",
+      "title": "The last part of the ileum is removed",
+      "topic": "digestion-absorption",
+      "core": [
+        "structure-function",
+        "mass-balance"
+      ],
+      "level": 3,
+      "misconception": "any length of small intestine can do any job of absorption",
+      "setup": "After years of inflammatory bowel disease, a woman has the last 100 cm of her ileum removed. The rest of her small intestine and her colon are healthy. Compare her a year later with before surgery.",
+      "start": "The terminal ileum and its carriers are gone",
+      "steps": {
+        "if": "No cells are left with receptor proteins for the B12–intrinsic factor complex",
+        "b12": "Almost no vitamin B12 is absorbed",
+        "salts": "Bile salts are not reabsorbed and are lost in the feces",
+        "pool": "The bile salt pool shrinks",
+        "mic": "Fewer micelles carry lipids to the brush border",
+        "fat": "Fat absorption falls, and fat appears in the feces",
+        "vitk": "Vitamin K, which travels with fat, is poorly absorbed",
+        "clot": "The liver makes fewer active clotting factors"
+      },
+      "variables": [
+        {
+          "id": "b12",
+          "name": "Vitamin B12 absorbed each day",
+          "answer": "down",
+          "chain": [
+            "if",
+            "b12"
+          ],
+          "why": "The receptor proteins that take up B12 bound to intrinsic factor are found only in the terminal ileum. No other part of the intestine can take over."
+        },
+        {
+          "id": "fecal-salts",
+          "name": "Bile salts lost in the feces",
+          "answer": "up",
+          "chain": [
+            "salts"
+          ],
+          "why": "About 95% of bile salts are normally reabsorbed by carriers in the last part of the ileum. With those carriers gone, most are lost each time they are secreted."
+        },
+        {
+          "id": "fecal-fat",
+          "name": "Fat in the feces",
+          "answer": "up",
+          "chain": [
+            "salts",
+            "pool",
+            "mic",
+            "fat"
+          ],
+          "why": "The liver cannot make new bile salts fast enough to replace a pool lost with every meal. Fewer bile salts mean less emulsification and fewer micelles, so less fat is absorbed."
+        },
+        {
+          "id": "clotting",
+          "name": "Time for blood to clot",
+          "answer": "up",
+          "chain": [
+            "salts",
+            "pool",
+            "mic",
+            "vitk",
+            "clot"
+          ],
+          "why": "Vitamin K dissolves in fat and is absorbed with it. Without enough vitamin K, the liver cannot finish making factors II, VII, IX and X, so clotting slows."
+        }
+      ]
+    },
+    {
+      "id": "gi-cholera-rehydration-l4",
+      "title": "Cholera, then oral rehydration",
+      "topic": "digestion-absorption",
+      "core": [
+        "mass-balance",
+        "gradients",
+        "homeostasis"
+      ],
+      "level": 4,
+      "misconception": "drinking is useless in cholera because the gut is secreting, not absorbing",
+      "setup": "A woman catches cholera. The toxin of Vibrio cholerae reaches the cells of her intestinal glands. First she goes untreated for several hours; then she is given an oral rehydration solution of salt and glucose.",
+      "stages": [
+        {
+          "id": "untreated",
+          "label": "The first hours, untreated",
+          "prompt": "Six hours into the illness, with no treatment, compared with before she fell ill.",
+          "start": "The toxin locks the chloride channels of the intestinal glands open",
+          "steps": {
+            "cl": "Chloride pours into the lumen",
+            "na": "Sodium and water follow the chloride",
+            "stool": "More fluid arrives than the villi and colon can absorb",
+            "vol": "Blood volume falls",
+            "hr": "The baroreflex speeds the heart",
+            "k": "Potassium, secreted by the colon, is lost in the stool",
+            "hco3": "Bicarbonate is lost in the stool",
+            "acid": "The blood becomes more acidic"
+          },
+          "variables": [
+            {
+              "id": "stool",
+              "name": "Volume of watery stool",
+              "answer": "up",
+              "chain": [
+                "cl",
+                "na",
+                "stool"
+              ],
+              "why": "Chloride secretion drags sodium and water into the lumen faster than the intestine can take them back, so liters of watery stool pour out."
+            },
+            {
+              "id": "volume",
+              "name": "Blood volume",
+              "answer": "down",
+              "chain": [
+                "cl",
+                "na",
+                "stool",
+                "vol"
+              ],
+              "why": "The water in the stool comes from the extracellular fluid, so plasma volume falls. More than 10 liters a day can be lost."
+            },
+            {
+              "id": "hr",
+              "name": "Heart rate",
+              "answer": "up",
+              "chain": [
+                "cl",
+                "na",
+                "stool",
+                "vol",
+                "hr"
+              ],
+              "why": "Lower volume lowers venous return and blood pressure, baroreceptors fire less, and sympathetic drive speeds the heart."
+            },
+            {
+              "id": "potassium",
+              "name": "Blood potassium",
+              "answer": "down",
+              "chain": [
+                "k"
+              ],
+              "why": "Stool water carries potassium, which the colon secretes, so blood potassium falls."
+            },
+            {
+              "id": "ph",
+              "name": "Blood pH",
+              "answer": "down",
+              "chain": [
+                "hco3",
+                "acid"
+              ],
+              "why": "Stool water also carries bicarbonate. Losing base leaves the blood more acidic."
+            }
+          ]
+        },
+        {
+          "id": "ors",
+          "label": "Two hours of oral rehydration",
+          "prompt": "After two hours of drinking the salt and glucose solution, with the toxin still active, compared with the untreated hours.",
+          "start": "Glucose and sodium from the solution reach the brush border",
+          "steps": {
+            "sglt": "SGLT1, untouched by the toxin, carries sodium and glucose into the absorptive cells",
+            "water": "Water follows them into the body by osmosis",
+            "vol": "Blood volume recovers",
+            "hr": "The baroreflex lets the heart slow",
+            "tox": "The toxin still holds the chloride channels open",
+            "cl": "Chloride secretion continues"
+          },
+          "variables": [
+            {
+              "id": "sodium-in",
+              "name": "Sodium absorbed through SGLT1",
+              "answer": "up",
+              "chain": [
+                "sglt"
+              ],
+              "why": "Each glucose that SGLT1 carries brings two sodium ions with it. The toxin does not affect SGLT1, so glucose in the solution drives sodium in."
+            },
+            {
+              "id": "volume",
+              "name": "Blood volume",
+              "answer": "up",
+              "chain": [
+                "sglt",
+                "water",
+                "vol"
+              ],
+              "why": "Sodium and glucose moving from the lumen into the body pull water after them by osmosis, faster than the toxin drives it out."
+            },
+            {
+              "id": "hr",
+              "name": "Heart rate",
+              "answer": "down",
+              "chain": [
+                "sglt",
+                "water",
+                "vol",
+                "hr"
+              ],
+              "why": "As volume and blood pressure recover, baroreceptors fire more and sympathetic drive to the heart eases."
+            },
+            {
+              "id": "chloride",
+              "name": "Chloride secreted into the lumen",
+              "answer": "none",
+              "chain": [
+                "tox",
+                "cl"
+              ],
+              "why": "The solution does not undo the toxin; the chloride channels stay open. It works by opening a second route that brings sodium and water back, not by stopping the loss."
+            }
+          ]
+        }
+      ]
     }
   ]
 }

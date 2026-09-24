@@ -4971,6 +4971,913 @@
         "why": "Allergy is a Th2 response. IL-4 from Th2 cells drives the switch to IgE; interferon gamma from Th1 cells blocks Th2 development and steers B cells toward the IgG types that coat microbes."
       },
       "summary": "Th2 cells and IL-4, class switch to IgE, IgE arms mast cells, re-exposure cross-links IgE, degranulation, symptoms. Where the mast cells sit decides the symptoms; when an allergen reaches the blood and mast cells degranulate everywhere at once, the result is anaphylaxis."
+    },
+    {
+      "id": "gi-food-route",
+      "title": "Food through the GI tract",
+      "topic": "digestive-overview",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "Follow a bite of a cheese sandwich from the moment it enters your mouth to what is left when it leaves your body. Put the parts of the alimentary canal in order.",
+      "steps": [
+        {
+          "id": "mouth",
+          "label": "Mouth",
+          "text": "The mouth: teeth chew the bite and saliva wets it.",
+          "why": "Ingestion happens here, so the mouth is the start of the tube."
+        },
+        {
+          "id": "pharynx",
+          "label": "Pharynx",
+          "text": "The pharynx: a swallow pushes the chewed food into the throat.",
+          "why": "The pharynx is shared with the airway and links the mouth to the esophagus."
+        },
+        {
+          "id": "esophagus",
+          "label": "Esophagus",
+          "text": "The esophagus: peristalsis carries the food down through the chest.",
+          "why": "The esophagus runs from the bottom of the pharynx through the diaphragm to the stomach."
+        },
+        {
+          "id": "stomach",
+          "label": "Stomach",
+          "text": "The stomach: the food is held for a few hours and churned into a thin paste.",
+          "why": "The stomach sits just below the diaphragm, where the esophagus ends."
+        },
+        {
+          "id": "small",
+          "label": "Small intestine",
+          "text": "The small intestine: most chemical digestion and nearly all absorption happen along its few meters.",
+          "why": "It receives the stomach’s contents a little at a time, and the accessory organs’ ducts open into its first part."
+        },
+        {
+          "id": "large",
+          "label": "Large intestine",
+          "text": "The large intestine: water is absorbed and what is left becomes feces.",
+          "why": "It frames the small intestine and receives whatever the small intestine did not absorb."
+        },
+        {
+          "id": "anus",
+          "label": "Anus",
+          "text": "The anus: feces leave the body by defecation.",
+          "why": "The tube ends here, so defecation is the last of the six digestive processes."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "The larynx: the food passes through the voice box on its way down.",
+            "why": "The larynx is the entrance to the airway. During a swallow it is sealed off so food does not enter it."
+          },
+          {
+            "text": "The liver: the food is broken down by bile before it reaches the stomach.",
+            "why": "The liver is an accessory organ. Food never passes through it; its bile reaches the small intestine through a duct."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The pancreas: food passes through it and is digested by its enzymes.",
+        "why": "The pancreas is an accessory organ outside the tube. Its enzymes travel to the small intestine through a duct, and food never enters it."
+      },
+      "summary": "Mouth, pharynx, esophagus, stomach, small intestine, large intestine, anus: one continuous tube. The accessory organs (teeth, tongue, glands that make saliva, liver, gallbladder, pancreas) help from outside it, and food never passes through them."
+    },
+    {
+      "id": "gi-swallowing",
+      "title": "The three phases of swallowing",
+      "topic": "mouth-esophagus",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You decide to swallow a bite of chewed food. In about a second, more than 25 pairs of muscles act in a fixed order. Trace the swallow from the tongue to the stomach.",
+      "steps": [
+        {
+          "id": "tongue",
+          "label": "Tongue pushes bolus back",
+          "text": "Voluntary phase: the tongue presses the bolus up against the hard palate and back into the oropharynx.",
+          "why": "This is the only step you control. It starts everything that follows."
+        },
+        {
+          "id": "sense",
+          "label": "Swallowing center triggered",
+          "text": "Touch-sensitive sensory receptors in the oropharynx signal the swallowing center in the brainstem through the glossopharyngeal and vagus nerves.",
+          "why": "The reflex needs the bolus to touch the back of the mouth first; from here on, you cannot stop it."
+        },
+        {
+          "id": "seal",
+          "label": "Nose and airway sealed",
+          "text": "Pharyngeal phase: the soft palate lifts to seal the nasopharynx, and the vocal folds close to seal the airway from inside.",
+          "why": "The swallowing center protects the nose and airway first, before the bolus is squeezed through the pharynx."
+        },
+        {
+          "id": "larynx",
+          "label": "Larynx rises, epiglottis tips",
+          "text": "Muscles on the hyoid bone pull the larynx up and forward, and the epiglottis tips down over its opening; breathing pauses.",
+          "why": "The vocal folds close at or before the start of this rise, which adds a second cover over the already closed airway."
+        },
+        {
+          "id": "squeeze",
+          "label": "Constrictors squeeze",
+          "text": "The pharyngeal constrictors contract from top to bottom while the upper esophageal sphincter relaxes and is pulled open.",
+          "why": "Only once the airway is covered is the bolus squeezed down; the rising larynx is what pulls the sphincter open."
+        },
+        {
+          "id": "wave",
+          "label": "Peristalsis down esophagus",
+          "text": "Esophageal phase: the upper esophageal sphincter closes behind the bolus, and a peristaltic wave carries it down in about 5 to 10 seconds.",
+          "why": "The bolus must be inside the esophagus before the sphincter can close behind it and the wave can start."
+        },
+        {
+          "id": "enter",
+          "label": "Bolus enters stomach",
+          "text": "The bolus reaches the lower esophageal sphincter, relaxed by nitric oxide since the swallow began, and passes into the stomach.",
+          "why": "This is the end of the tube’s journey through the chest; the sphincter then closes again behind the bolus."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The epiglottis lifts up and the larynx drops, opening the airway wide so you can keep breathing in and out during the swallow.",
+            "why": "Breathing pauses during a swallow. The larynx rises and the epiglottis tips down to cover the airway."
+          },
+          {
+            "text": "The upper esophageal sphincter contracts hard to stop the bolus entering too fast.",
+            "why": "The upper sphincter is closed between swallows and relaxes during one; it closes again only after the bolus has passed."
+          },
+          {
+            "text": "Gravity carries the bolus down the pharynx without any muscle action.",
+            "why": "The bolus is squeezed down by the constrictors. You can swallow upside down."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Pharyngeal phase: the soft palate drops to close off the mouth, and the vocal folds open wide so air can escape.",
+        "why": "The soft palate lifts to seal the nasopharynx, and the vocal folds close, so food cannot go up into the nose or down into the airway."
+      },
+      "summary": "Voluntary push by the tongue; then a brainstem reflex that seals the nose and airway, lifts the larynx, tips the epiglottis and squeezes the bolus into the esophagus; then peristalsis carries it to a lower esophageal sphincter that has been relaxed since the swallow began."
+    },
+    {
+      "id": "gi-gastric-phases",
+      "title": "Phases of gastric secretion",
+      "topic": "stomach",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You smell dinner cooking, eat a plate of chicken, and an hour later the first chyme leaves your stomach. Trace how acid secretion is switched on, peaks and is braked.",
+      "steps": [
+        {
+          "id": "think",
+          "label": "Smell and sight of food",
+          "text": "The sight, smell, taste or thought of food acts on the hypothalamus and medulla oblongata.",
+          "why": "The cephalic phase starts in the head, before any food reaches the stomach."
+        },
+        {
+          "id": "vagus",
+          "label": "Vagus releases ACh",
+          "text": "Vagal signals release acetylcholine onto parietal and chief cells and stimulate the G cells, so acid secretion begins.",
+          "why": "The brain’s signal reaches the stomach through the vagus nerves. This phase supplies roughly a third of the acid."
+        },
+        {
+          "id": "stretch",
+          "label": "Food stretches stomach",
+          "text": "Food arrives and stretches the stomach wall; short reflexes and vagovagal reflexes add acetylcholine.",
+          "why": "The gastric phase begins only when food is in the stomach."
+        },
+        {
+          "id": "gastrin",
+          "label": "Protein releases gastrin",
+          "text": "Protein fragments stimulate the G cells, and gastrin, mostly through histamine from ECL cells, drives the largest share of the meal’s acid.",
+          "why": "Food first buffers the acid and raises the pH, lifting the brake on gastrin, so the gastric phase secretes the most."
+        },
+        {
+          "id": "brake",
+          "label": "Low pH brakes gastrin",
+          "text": "As acid accumulates, the pH in the antrum falls below about 3, and somatostatin from D cells slows gastrin release.",
+          "why": "This brake follows the acid it responds to: the product switches off its own stimulus."
+        },
+        {
+          "id": "enter",
+          "label": "Chyme enters intestine",
+          "text": "Chyme passes the pylorus into the first part of the small intestine.",
+          "why": "The intestinal phase is named for this: the stimulus is now in the small intestine."
+        },
+        {
+          "id": "inhibit",
+          "label": "Intestine slows stomach",
+          "text": "Acid, fat and stretch there trigger the enterogastric reflex and release secretin and CCK, which slow acid secretion and emptying.",
+          "why": "The intestinal phase is mostly a brake: the intestine holds the stomach back until it has dealt with what it received."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "As acid accumulates, the low pH in the antrum makes the G cells release even more gastrin, which drives acid secretion higher still.",
+            "why": "Low pH shuts gastrin off, through somatostatin. The loop is negative feedback, not positive."
+          },
+          {
+            "text": "Pepsin digests the G cells, so gastrin release stops.",
+            "why": "The mucosal barrier protects the lining from pepsin. Gastrin falls because low pH releases somatostatin."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Acid, fat and stretch there trigger the enterogastric reflex, which speeds up the stomach so it empties faster.",
+        "why": "The enterogastric reflex slows the stomach: it weakens the antrum’s waves and tightens the pyloric sphincter so the intestine is not overloaded."
+      },
+      "summary": "Cephalic phase (head, vagus): about a third of the acid. Gastric phase (stretch, protein, gastrin): about half or more, braked by low pH through somatostatin. Intestinal phase (acid, fat, stretch in the small intestine): mostly a brake, through the enterogastric reflex, secretin and CCK."
+    },
+    {
+      "id": "gi-parietal-acid",
+      "title": "How a parietal cell makes hydrochloric acid",
+      "topic": "stomach",
+      "core": [
+        "gradients",
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Within minutes of the first bite, the fluid in your gastric glands reaches a pH near 1. Trace how a parietal cell builds that million-fold gradient.",
+      "steps": [
+        {
+          "id": "signal",
+          "label": "Signals stimulate the cell",
+          "text": "Acetylcholine, histamine and gastrin act on the parietal cell’s receptor proteins.",
+          "why": "The cell makes acid on command; together these three signals drive far more secretion than any one alone."
+        },
+        {
+          "id": "ca",
+          "label": "Carbonic anhydrase",
+          "text": "Inside the cell, carbonic anhydrase combines CO2 and water, and the carbonic acid splits into H+ and HCO3−.",
+          "why": "The H+ to be secreted has to be made first. The HCO3− left behind is traded for Cl− and enters the blood: the alkaline tide."
+        },
+        {
+          "id": "pump",
+          "label": "Proton pump pushes H+ out",
+          "text": "The H+/K+ proton pump spends ATP to push H+ into the gland lumen and bring K+ in.",
+          "why": "Moving H+ against a million-fold gradient needs primary active transport, and it can only pump H+ that the cell has made."
+        },
+        {
+          "id": "cl",
+          "label": "Cl− follows: HCl",
+          "text": "Cl− leaves through channels in the same membrane, and H+ and Cl− together make hydrochloric acid in the lumen.",
+          "why": "The acid forms in the lumen, not in the cell, once both ions have been moved there."
+        },
+        {
+          "id": "ph",
+          "label": "Stomach pH falls",
+          "text": "The pH of the stomach contents falls toward 1 to 2.",
+          "why": "Acid added to the lumen faster than food buffers it lowers the pH."
+        },
+        {
+          "id": "pepsin",
+          "label": "Pepsin switched on",
+          "text": "In the acid, pepsinogen from the chief cells cuts itself into active pepsin.",
+          "why": "Pepsinogen activates only below about pH 5, so it has to wait for the acid."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "H+ diffuses out of the cell through open channels into the gland lumen, moving down its concentration gradient without any ATP.",
+            "why": "The lumen holds over a million times more H+ than the cell. H+ must be pumped uphill, using ATP."
+          },
+          {
+            "text": "Vesicles of ready-made hydrochloric acid are released by exocytosis.",
+            "why": "Parietal cells make acid by pumping ions, not by storing and releasing acid."
+          },
+          {
+            "text": "Sodium–potassium pumps push H+ out in exchange for sodium.",
+            "why": "The pump that secretes H+ is the H+/K+ ATPase, which trades H+ for K+."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "Inside the cell, carbonic anhydrase splits hydrochloric acid into H+ and Cl−.",
+        "why": "Carbonic anhydrase combines CO2 with water; the H+ comes from carbonic acid. Hydrochloric acid only forms in the lumen."
+      },
+      "summary": "Signals on; carbonic anhydrase makes H+ and HCO3− from CO2 and water; the proton pump spends ATP pushing H+ out; Cl− follows to make HCl in the lumen; the pH falls; pepsinogen becomes pepsin. The bicarbonate goes to the blood as the alkaline tide."
+    },
+    {
+      "id": "gi-bile-route",
+      "title": "Bile from liver to duodenum",
+      "topic": "liver-pancreas-gallbladder",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "A hepatocyte secretes bile between meals. Follow it until, after your next fatty meal, it reaches the duodenum.",
+      "steps": [
+        {
+          "id": "canal",
+          "label": "Bile canaliculi",
+          "text": "Hepatocytes secrete bile into bile canaliculi, tiny grooves between neighboring cells.",
+          "why": "Bile starts in the hepatocytes, the cells that make it."
+        },
+        {
+          "id": "triad",
+          "label": "Bile ducts in portal triads",
+          "text": "The canaliculi carry bile outward, away from the central vein, to the bile ducts in the portal triads.",
+          "why": "Bile flows outward in the lobule, the opposite direction to blood."
+        },
+        {
+          "id": "hepatic",
+          "label": "Right and left hepatic ducts",
+          "text": "Bile ducts merge into the right and left hepatic ducts, which drain the two halves of the liver.",
+          "why": "Small ducts join into larger ones as they leave the liver."
+        },
+        {
+          "id": "common-hepatic",
+          "label": "Common hepatic duct",
+          "text": "The two hepatic ducts join to form the common hepatic duct.",
+          "why": "The two halves’ ducts must join before the cystic duct can meet them."
+        },
+        {
+          "id": "store",
+          "label": "Cystic duct to gallbladder",
+          "text": "With the hepatopancreatic sphincter closed, bile backs up the cystic duct into the gallbladder, which concentrates it.",
+          "why": "Between meals the exit is closed, so bile collects in the gallbladder until a meal."
+        },
+        {
+          "id": "squeeze",
+          "label": "Gallbladder contracts",
+          "text": "After a fatty meal, CCK contracts the gallbladder, and bile flows down the cystic duct into the common bile duct.",
+          "why": "The cystic duct carries bile both ways: in to be stored, out after a meal."
+        },
+        {
+          "id": "ampulla",
+          "label": "Hepatopancreatic ampulla",
+          "text": "The common bile duct runs behind the duodenum and through the pancreas to meet the main pancreatic duct at the hepatopancreatic ampulla.",
+          "why": "In most people the bile and pancreatic routes share one chamber before the duodenum."
+        },
+        {
+          "id": "duodenum",
+          "label": "Into the duodenum",
+          "text": "CCK relaxes the hepatopancreatic sphincter, and bile enters the duodenum at the major duodenal papilla.",
+          "why": "The sphincter is the last gate; it opens only when CCK signals that fat has arrived."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The hepatic ducts empty into the hepatic veins.",
+            "why": "The hepatic veins carry blood to the inferior vena cava. Bile and blood never mix."
+          },
+          {
+            "text": "The hepatic ducts drain straight into the gallbladder, which makes more bile.",
+            "why": "The gallbladder stores and concentrates bile; it does not make any. Bile reaches it by the cystic duct."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The common bile duct joins the hepatic portal vein, which carries the bile to the duodenum.",
+        "why": "The hepatic portal vein carries blood from the gut to the liver. Bile travels only in ducts, joining the pancreatic duct at the hepatopancreatic ampulla."
+      },
+      "summary": "Hepatocytes, bile canaliculi, bile ducts in the portal triads, right and left hepatic ducts, common hepatic duct; between meals up the cystic duct into the gallbladder; after a meal back down into the common bile duct, the hepatopancreatic ampulla and, through the relaxed sphincter, the duodenum."
+    },
+    {
+      "id": "gi-enterohepatic",
+      "title": "The enterohepatic circulation of bile salts",
+      "topic": "liver-pancreas-gallbladder",
+      "core": [
+        "mass-balance",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "cycle": true,
+      "intro": "Your body holds only 2 to 4 g of bile salts, yet one fatty meal needs more than that. Follow a bile salt around the loop that lets it be used again and again.",
+      "steps": [
+        {
+          "id": "secrete",
+          "label": "Hepatocytes secrete",
+          "text": "Hepatocytes secrete bile salts into bile.",
+          "why": "The liver is where bile salts are made from cholesterol and where recycled ones are sent out again."
+        },
+        {
+          "id": "store",
+          "label": "Stored in gallbladder",
+          "text": "Between meals, bile is stored and concentrated in the gallbladder.",
+          "why": "Bile made between meals waits here until CCK releases it."
+        },
+        {
+          "id": "emulsify",
+          "label": "Emulsify fat in intestine",
+          "text": "After a meal, bile salts enter the duodenum and emulsify fat along the small intestine.",
+          "why": "They do their job in the lumen before anything can reclaim them."
+        },
+        {
+          "id": "ileum",
+          "label": "Absorbed in terminal ileum",
+          "text": "Carriers in the last part of the ileum absorb about 95% of them.",
+          "why": "Only the terminal ileum has these carriers, so bile salts are reclaimed at the end of the small intestine, after the fat has been absorbed."
+        },
+        {
+          "id": "portal",
+          "label": "Hepatic portal vein",
+          "text": "They travel in the hepatic portal vein back to the liver.",
+          "why": "Blood from the intestine drains to the liver first."
+        },
+        {
+          "id": "uptake",
+          "label": "Taken up from sinusoids",
+          "text": "Hepatocytes take them up from the sinusoids, ready to secrete them again.",
+          "why": "The loop closes: the same bile salts are secreted again, several times a day."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The colon absorbs almost all of them along with the water.",
+            "why": "Most bile salts are reclaimed before the colon, by carriers in the terminal ileum. Only a small amount reaches the colon."
+          },
+          {
+            "text": "They are broken down, and the liver makes a completely new supply for every meal.",
+            "why": "The pool is too small for that. About 95% are reabsorbed; only the few percent lost in the feces are replaced from cholesterol."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "They enter the lacteals and travel in the lymph through the thoracic duct back to the liver.",
+        "why": "Bile salts are absorbed into the blood capillaries and travel in the hepatic portal vein. The lacteal route is for packaged fat droplets."
+      },
+      "summary": "Liver, bile, gallbladder, duodenum and small intestine, terminal ileum, hepatic portal vein, liver again. About 95% is reclaimed each pass; the small loss in the feces is replaced from cholesterol. Remove the terminal ileum and the pool drains away."
+    },
+    {
+      "id": "gi-trypsin-activation",
+      "title": "Switching on the pancreas’s protein-digesting enzymes",
+      "topic": "liver-pancreas-gallbladder",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "The pancreas makes enzymes strong enough to digest it, yet in health it is never digested. Trace how those enzymes stay switched off until they reach the gut.",
+      "steps": [
+        {
+          "id": "make",
+          "label": "Zymogens made in acini",
+          "text": "Acinar cells make trypsinogen, chymotrypsinogen and proelastase as inactive zymogens, along with a trypsin inhibitor.",
+          "why": "Making them inactive is what protects the acinar cells that make them."
+        },
+        {
+          "id": "duct",
+          "label": "Down the pancreatic duct",
+          "text": "The zymogens are released by exocytosis and flow down the pancreatic duct into the duodenum.",
+          "why": "They must leave the gland before anything can switch them on."
+        },
+        {
+          "id": "ep",
+          "label": "Enteropeptidase cuts",
+          "text": "Enteropeptidase on the duodenal brush border cuts a short piece off trypsinogen, making active trypsin.",
+          "why": "Enteropeptidase exists only in the intestine, so this first cut happens only there."
+        },
+        {
+          "id": "self",
+          "label": "Trypsin activates trypsin",
+          "text": "Trypsin cuts more trypsinogen into trypsin, so activation speeds up.",
+          "why": "Trypsin can only activate its own precursor once the first trypsin exists."
+        },
+        {
+          "id": "others",
+          "label": "Trypsin activates the rest",
+          "text": "Trypsin activates chymotrypsinogen into chymotrypsin, proelastase into elastase, and the other protein-digesting precursors.",
+          "why": "One enzyme, trypsin, is the master switch for all the others."
+        },
+        {
+          "id": "digest",
+          "label": "Proteins cut into peptides",
+          "text": "The active enzymes cut proteins and polypeptides into shorter peptides.",
+          "why": "Only active enzymes can digest; this is the payoff of the cascade."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Stomach acid entering the duodenum lowers the pH, and the acid itself cuts trypsinogen into active trypsin.",
+            "why": "Acid switches on pepsinogen, not trypsinogen, and bicarbonate neutralizes the acid in the duodenum anyway. Enteropeptidase makes the first trypsin."
+          },
+          {
+            "text": "Bile salts cut trypsinogen into trypsin.",
+            "why": "Bile has no enzymes; bile salts emulsify fat. Enteropeptidase is the switch."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "Acinar cells make active trypsin and store it in their vesicles, ready to release.",
+        "why": "Active trypsin inside the gland would digest it; that is what happens in acute pancreatitis. The cells make inactive trypsinogen."
+      },
+      "summary": "Zymogens made and shipped out, enteropeptidase in the duodenum makes the first trypsin, trypsin makes more of itself and switches on chymotrypsin and elastase, and only then does protein digestion begin. A trypsin inhibitor and the constant flow down the ducts add more safety."
+    },
+    {
+      "id": "gi-carbohydrate-digestion",
+      "title": "Carbohydrate digestion and absorption",
+      "topic": "digestion-absorption",
+      "core": [
+        "gradients",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You eat a slice of bread and drink a glass of milk. Trace the starch and sugars from your mouth to the liver.",
+      "steps": [
+        {
+          "id": "mouth",
+          "label": "Salivary amylase",
+          "text": "Salivary amylase starts cutting starch into shorter chains and maltose while you chew.",
+          "why": "Carbohydrate digestion is the only one that starts in the mouth."
+        },
+        {
+          "id": "stops",
+          "label": "Acid stops amylase",
+          "text": "In the stomach, amylase keeps working inside the bolus until acid soaks in and stops it.",
+          "why": "Acid needs time to penetrate a swallowed mouthful, often half an hour or more."
+        },
+        {
+          "id": "pancreatic",
+          "label": "Pancreatic amylase",
+          "text": "In the small intestine, pancreatic amylase cuts the rest of the starch into maltose, maltotriose and α-dextrins.",
+          "why": "Pancreatic amylase does most of the work, once bicarbonate has neutralized the chyme."
+        },
+        {
+          "id": "brush",
+          "label": "Brush border enzymes",
+          "text": "Brush border α-dextrinase, maltase, sucrase and lactase split the fragments and the eaten disaccharides into monosaccharides.",
+          "why": "Only monosaccharides can be absorbed, and the last cut happens right at the membrane that absorbs them."
+        },
+        {
+          "id": "enter",
+          "label": "SGLT1 and GLUT5",
+          "text": "Glucose and galactose enter the absorptive cell with sodium through SGLT1; fructose enters by facilitated diffusion through GLUT5.",
+          "why": "The monosaccharides are released beside their carriers, which carry them across the apical membrane."
+        },
+        {
+          "id": "exit",
+          "label": "Out through GLUT2",
+          "text": "All three leave through the basolateral membrane by facilitated diffusion through GLUT2.",
+          "why": "Sugar builds up inside the cell, so it can move out down its gradient."
+        },
+        {
+          "id": "portal",
+          "label": "Hepatic portal vein",
+          "text": "They enter the villus capillaries and travel in the hepatic portal vein to the liver.",
+          "why": "Blood from the intestine drains to the liver before the rest of the body."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Pancreatic amylase goes on to split the maltose, and the sucrose and lactose from the meal, into single sugars in the lumen.",
+            "why": "Amylase makes maltose but cannot split it, and it does not act on sucrose or lactose. The brush border enzymes finish the job."
+          },
+          {
+            "text": "The short fragments are absorbed as they are and split inside the liver.",
+            "why": "Only monosaccharides can cross the brush border, so the fragments must be split first."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Glucose, galactose and fructose all enter the absorptive cell with sodium through SGLT1.",
+        "why": "SGLT1 carries glucose and galactose. Fructose enters by facilitated diffusion through a different carrier, GLUT5."
+      },
+      "summary": "Salivary amylase, then pancreatic amylase, make maltose, maltotriose and α-dextrins; brush border enzymes finish them into monosaccharides; SGLT1 (with sodium) and GLUT5 bring them in, GLUT2 lets them out, and the hepatic portal vein carries them to the liver."
+    },
+    {
+      "id": "gi-protein-digestion",
+      "title": "Protein digestion and absorption",
+      "topic": "digestion-absorption",
+      "core": [
+        "gradients",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You eat a piece of grilled fish. Trace its protein from the stomach to the liver.",
+      "steps": [
+        {
+          "id": "denature",
+          "label": "Acid unfolds protein",
+          "text": "Stomach acid unfolds (denatures) the proteins, exposing their peptide bonds.",
+          "why": "Acid itself splits few bonds; it prepares proteins for enzymes, so it acts first."
+        },
+        {
+          "id": "pepsin",
+          "label": "Pepsin: large polypeptides",
+          "text": "Pepsin cuts the proteins into large polypeptides.",
+          "why": "Pepsin needs acid, so it works in the stomach. It does only about 10 to 15% of protein digestion."
+        },
+        {
+          "id": "neutral",
+          "label": "Bicarbonate stops pepsin",
+          "text": "In the duodenum, bicarbonate from the pancreas neutralizes the chyme, and pepsin stops working.",
+          "why": "The pancreatic enzymes need a near-neutral pH, so neutralizing comes before them."
+        },
+        {
+          "id": "pancreatic",
+          "label": "Pancreatic proteases",
+          "text": "Trypsin, chymotrypsin and elastase cut inside the chains, and carboxypeptidase trims amino acids from the carboxyl end.",
+          "why": "Once switched on by enteropeptidase and trypsin, these enzymes do most protein digestion in the lumen."
+        },
+        {
+          "id": "brush",
+          "label": "Brush border peptidases",
+          "text": "Brush border aminopeptidase and dipeptidase finish the job, leaving amino acids, dipeptides and tripeptides.",
+          "why": "The last cuts happen at the membrane, right beside the carriers."
+        },
+        {
+          "id": "enter",
+          "label": "Into the absorptive cell",
+          "text": "Amino acids enter with sodium; dipeptides and tripeptides enter with hydrogen ions and are split inside the cell.",
+          "why": "Carriers take up the products at the brush border once they are small enough."
+        },
+        {
+          "id": "blood",
+          "label": "To the liver in portal blood",
+          "text": "Amino acids leave through basolateral carriers into the villus capillaries and the hepatic portal vein.",
+          "why": "Almost all of it reaches the blood as single amino acids, which drain to the liver first."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "Pepsin keeps working in the duodenum and does most of the digestion there.",
+            "why": "Pepsin stops working as the pH rises toward neutral. It does only a minority of protein digestion."
+          },
+          {
+            "text": "Bile salts break the peptide bonds of the polypeptides.",
+            "why": "Bile has no enzymes. Peptide bonds are cut by the pancreatic proteases and brush border peptidases."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Amino acids are packaged into chylomicrons and leave through the lacteal.",
+        "why": "Chylomicrons carry absorbed fat. Amino acids are water-soluble and go into the villus capillaries and the hepatic portal vein."
+      },
+      "summary": "Acid unfolds; pepsin makes large polypeptides; bicarbonate neutralizes; trypsin, chymotrypsin, elastase and carboxypeptidase make short peptides; brush border peptidases leave amino acids, dipeptides and tripeptides; these enter with sodium or hydrogen ions and reach the liver as amino acids in portal blood."
+    },
+    {
+      "id": "gi-lipid-digestion",
+      "title": "Lipid digestion and absorption",
+      "topic": "digestion-absorption",
+      "core": [
+        "structure-function",
+        "gradients"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "You eat a buttered roll. The fat does not dissolve in water, but everything between it and your blood does. Trace how a triglyceride gets from the duodenum into your blood.",
+      "steps": [
+        {
+          "id": "emulsify",
+          "label": "Bile salts emulsify",
+          "text": "In the duodenum, bile salts coat the fat, and churning breaks it into tiny droplets.",
+          "why": "Lipase is water-soluble and works only at a droplet’s surface, so the surface must be made large first."
+        },
+        {
+          "id": "lipase",
+          "label": "Pancreatic lipase",
+          "text": "Pancreatic lipase, anchored by colipase, splits each triglyceride into two fatty acids and a monoglyceride.",
+          "why": "Digestion follows emulsification: the enzyme works on the enlarged surface."
+        },
+        {
+          "id": "micelle",
+          "label": "Micelles form",
+          "text": "Fatty acids and monoglycerides gather with bile salts into micelles, which carry them through the still water layer to the brush border.",
+          "why": "Only the digested products fit into micelles."
+        },
+        {
+          "id": "enter",
+          "label": "Enter the cell",
+          "text": "At the brush border, fatty acids and monoglycerides leave the micelle and cross the apical membrane; the bile salts stay in the lumen.",
+          "why": "The micelle delivers its cargo at the surface; the bile salts go on to be reclaimed in the ileum."
+        },
+        {
+          "id": "rebuild",
+          "label": "Triglycerides rebuilt",
+          "text": "In the smooth endoplasmic reticulum, fatty acids are joined back onto monoglycerides to make triglycerides again.",
+          "why": "This happens inside the cell, and keeping free fatty acids low there lets more diffuse in."
+        },
+        {
+          "id": "package",
+          "label": "Chylomicrons packaged",
+          "text": "The endoplasmic reticulum and Golgi apparatus wrap the triglycerides and cholesterol in phospholipid and protein, making chylomicrons.",
+          "why": "Triglycerides must be rebuilt before they can be packaged."
+        },
+        {
+          "id": "lacteal",
+          "label": "Into the lacteal",
+          "text": "Chylomicrons leave by exocytosis and enter the lacteal, because they are too large for the villus’s blood capillaries.",
+          "why": "Size decides the route: blood capillaries exclude chylomicrons, lymphatic capillaries take them in."
+        },
+        {
+          "id": "duct",
+          "label": "Thoracic duct to veins",
+          "text": "Chyle flows to the cisterna chyli and the thoracic duct, which empties where the left internal jugular and subclavian veins meet.",
+          "why": "Lymph returns to the blood at the base of the neck, so absorbed fat reaches the blood without passing through the liver first."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "The rebuilt triglycerides diffuse straight out into the villus capillaries.",
+            "why": "Long-chain fats are packaged into chylomicrons, which are too large for blood capillaries."
+          },
+          {
+            "text": "The triglycerides are packed back into micelles inside the cell.",
+            "why": "Micelles form in the lumen with bile salts, which stay outside the cell. Inside, the fats are packaged into chylomicrons."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Chylomicrons enter the blood capillaries of the villus and travel in the hepatic portal vein to the liver.",
+        "why": "Chylomicrons are too large for the blood capillaries. They enter the lacteal and travel in lymph, reaching the blood at the left venous angle."
+      },
+      "summary": "Emulsify, digest, micelles, enter, rebuild, package, lacteal, thoracic duct. Short- and medium-chain fatty acids are the exception: they enter the villus capillaries and go straight to the liver."
+    },
+    {
+      "id": "gi-b12-route",
+      "title": "The escorted route of vitamin B12",
+      "topic": "digestion-absorption",
+      "core": [
+        "structure-function",
+        "interdependence"
+      ],
+      "level": "analyze",
+      "diff": 3,
+      "kind": "causal",
+      "intro": "Vitamin B12 is too large to cross the brush border by any ordinary carrier. Trace the escorted route it takes from a bite of egg to your liver.",
+      "steps": [
+        {
+          "id": "free",
+          "label": "Freed from food protein",
+          "text": "In the stomach, acid and pepsin free B12 from the food proteins it is bound to.",
+          "why": "B12 must be released from food before anything else can bind it."
+        },
+        {
+          "id": "hapto",
+          "label": "Binds haptocorrin",
+          "text": "Free B12 binds haptocorrin, a protein from saliva that protects it from acid.",
+          "why": "Haptocorrin is waiting in the stomach and grabs B12 as soon as it is freed, before intrinsic factor can."
+        },
+        {
+          "id": "switch",
+          "label": "Switch to intrinsic factor",
+          "text": "In the duodenum, pancreatic proteases digest haptocorrin, and B12 binds intrinsic factor from the parietal cells.",
+          "why": "Intrinsic factor cannot bind B12 while haptocorrin holds it, so the swap waits for the pancreatic enzymes."
+        },
+        {
+          "id": "ileum",
+          "label": "Taken up in terminal ileum",
+          "text": "In the terminal ileum, receptor proteins bind the B12–intrinsic factor complex, and the cells take it in by receptor-mediated endocytosis.",
+          "why": "These receptor proteins are found only at the far end of the ileum, so uptake happens late."
+        },
+        {
+          "id": "blood",
+          "label": "Into the blood",
+          "text": "B12 leaves the absorptive cell bound to a transport protein in the blood.",
+          "why": "It crosses the cell before it can be carried away."
+        },
+        {
+          "id": "liver",
+          "label": "Stored in the liver",
+          "text": "The liver stores enough B12 to last three to five years.",
+          "why": "The store is filled from the blood, so it comes last, and it explains why deficiency appears years after the route breaks."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "In the duodenum, B12 crosses the brush border on its own by simple diffusion.",
+            "why": "B12 is large and water-soluble; it cannot cross the membrane on its own. It needs intrinsic factor and the ileum’s receptor proteins."
+          },
+          {
+            "text": "In the duodenum, bile salts carry B12 into micelles.",
+            "why": "Micelles carry fats. B12 dissolves in water and is escorted by intrinsic factor."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "In the jejunum, carriers take up the B12–intrinsic factor complex by facilitated diffusion.",
+        "why": "The complex is taken up only in the terminal ileum, by receptor-mediated endocytosis. That is why removing the terminal ileum causes B12 deficiency."
+      },
+      "summary": "Freed by acid and pepsin, guarded by haptocorrin, handed to intrinsic factor in the duodenum, taken up in the terminal ileum, carried in the blood, stored in the liver. A break anywhere, from parietal cells to pancreas to ileum, causes deficiency years later."
+    },
+    {
+      "id": "gi-defecation-reflex",
+      "title": "The defecation reflex",
+      "topic": "large-intestine",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Half an hour after breakfast, you feel the urge to go. Trace the reflex from the stomach to the moment of defecation.",
+      "steps": [
+        {
+          "id": "gastrocolic",
+          "label": "Gastrocolic reflex",
+          "text": "Food stretching the stomach triggers the gastrocolic reflex, which increases colon motility.",
+          "why": "Mass movements are most likely in the first hour after a meal, so eating starts the chain."
+        },
+        {
+          "id": "mass",
+          "label": "Mass movement",
+          "text": "A mass movement sweeps feces from the colon into the rectum.",
+          "why": "The rectum is usually empty; a mass movement is what fills it."
+        },
+        {
+          "id": "stretch",
+          "label": "Rectal wall stretches",
+          "text": "Stretch-sensitive sensory receptors in the rectal wall fire.",
+          "why": "Feces must arrive in the rectum before they can stretch it."
+        },
+        {
+          "id": "cord",
+          "label": "Signal to sacral cord",
+          "text": "Sensory neurons carry the signal to the sacral spinal cord (S2–S4) and up to the brain, where you feel the urge.",
+          "why": "The signal has to reach the cord before the cord can respond."
+        },
+        {
+          "id": "para",
+          "label": "Rectum contracts, IAS opens",
+          "text": "Parasympathetic neurons from the sacral cord contract the rectum and sigmoid colon and relax the internal anal sphincter.",
+          "why": "This is the reflex output, the step you do not control."
+        },
+        {
+          "id": "choose",
+          "label": "You relax the EAS",
+          "text": "You decide to go: you relax the external anal sphincter and pelvic floor, often adding a Valsalva’s maneuver.",
+          "why": "The external anal sphincter is skeletal muscle under voluntary control, the final gate."
+        },
+        {
+          "id": "out",
+          "label": "Feces pass out",
+          "text": "Pressure in the abdomen rises, and feces pass out through the anus.",
+          "why": "Defecation happens only once both sphincters are open."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Sympathetic neurons contract the rectum and relax the internal anal sphincter.",
+            "why": "The reflex output is parasympathetic, from the sacral cord. Sympathetic activity tightens sphincters and slows the gut."
+          },
+          {
+            "text": "You relax the internal anal sphincter on purpose.",
+            "why": "The internal anal sphincter is smooth muscle, not under your control. It relaxes by reflex."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "You decide to go: you relax the internal anal sphincter, the one under your control.",
+        "why": "The sphincter you control is the external anal sphincter, which is skeletal muscle. The internal one is smooth muscle and relaxes by reflex."
+      },
+      "summary": "Meal, gastrocolic reflex, mass movement, rectal stretch, sacral cord, parasympathetic contraction of the rectum and relaxation of the internal anal sphincter, then your choice at the external anal sphincter. Put it off, and the rectum relaxes and the urge fades until the next mass movement."
     }
   ]
 }

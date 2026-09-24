@@ -355,7 +355,7 @@
     "options": [
       "At the tip of the nephron loop",
       "At the end of the proximal tubule",
-      "At the start of the distal tubule",
+      "At the start of the distal convoluted tubule",
       "At the end of the collecting duct"
     ],
     "correct": 3,
@@ -462,7 +462,7 @@
       "It blocks potassium reabsorption in the proximal tubule",
       "It lowers aldosterone, which normally keeps potassium",
       "It pumps potassium directly into the urine",
-      "It sends more sodium and fluid to the principal cells, which secrete more potassium"
+      "It sends more sodium and fluid on to the collecting duct's principal cells"
     ],
     "correct": 3,
     "why": {
@@ -485,7 +485,7 @@
     ],
     "q": "People who eat very little protein for months can't concentrate their urine as fully as others. Why?",
     "options": [
-      "They make less urea, so the inner medulla has less urea to build its gradient",
+      "Their inner medulla has less urea",
       "They make less ADH, since ADH is a protein",
       "Their thick ascending limbs lose their NKCC2 carriers",
       "Their glomeruli filter less water"
@@ -539,10 +539,10 @@
     ],
     "q": "A patient with a swollen brain after a head injury is given mannitol, which is filtered but not reabsorbed. Why does her urine output rise?",
     "options": [
-      "Mannitol blocks NKCC2 in the thick ascending limb",
+      "Mannitol blocks NKCC2 in the thick ascending limb of the loop",
       "Mannitol stays in the tubule and holds water there by osmosis",
       "Mannitol lowers ADH release from the posterior pituitary",
-      "Mannitol blocks aldosterone's receptor protein"
+      "Mannitol blocks aldosterone's receptor protein on principal cells"
     ],
     "correct": 1,
     "why": {
@@ -565,9 +565,9 @@
     ],
     "q": "Which statement correctly compares the countercurrent multiplier and the countercurrent exchanger?",
     "options": [
-      "The multiplier uses energy to build the gradient; the exchanger is passive and preserves it",
+      "The multiplier uses energy to build the gradient; the exchanger passively preserves it",
       "The exchanger uses energy to build the gradient; the multiplier is passive and preserves it",
-      "Both use energy directly, one in the loop and one in the collecting duct",
+      "Both use energy directly: one in the nephron loop and the other in the collecting duct",
       "Both are passive; the gradient comes from ADH"
     ],
     "correct": 0,

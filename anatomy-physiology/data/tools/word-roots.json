@@ -1602,6 +1602,288 @@
       "meaning": "strength",
       "origin": "Greek",
       "from": "sthenos (strength)"
+    },
+    {
+      "id": "aliment/o",
+      "type": "root",
+      "form": "aliment/o",
+      "meaning": "nourishment, food",
+      "origin": "Latin",
+      "from": "alimentum (food, nourishment), from alere (to nourish)"
+    },
+    {
+      "id": "gest/o",
+      "type": "root",
+      "form": "gest/o",
+      "meaning": "carry",
+      "origin": "Latin",
+      "from": "gerere, gestus (to carry, bear)"
+    },
+    {
+      "id": "puls/o",
+      "type": "root",
+      "form": "puls/o",
+      "meaning": "push, drive",
+      "origin": "Latin",
+      "from": "pellere, pulsus (to push, drive)"
+    },
+    {
+      "id": "fec/o",
+      "type": "root",
+      "form": "fec/o, faec/o",
+      "meaning": "dregs, waste",
+      "origin": "Latin",
+      "from": "faex, faecis (dregs, sediment)"
+    },
+    {
+      "id": "-stalsis",
+      "type": "suffix",
+      "form": "-stalsis",
+      "meaning": "squeezing, constriction",
+      "origin": "Greek",
+      "from": "stalsis (a checking, compression), from stellein (to draw in)"
+    },
+    {
+      "id": "de-down-",
+      "type": "prefix",
+      "form": "de-",
+      "meaning": "down, down from",
+      "origin": "Latin",
+      "from": "de (down from)",
+      "note": "The same Latin prefix as the de- of removal; here it keeps its oldest sense, down."
+    },
+    {
+      "id": "glut/o",
+      "type": "root",
+      "form": "glut/o",
+      "meaning": "swallow",
+      "origin": "Latin",
+      "from": "glutire (to swallow)"
+    },
+    {
+      "id": "mastic/o",
+      "type": "root",
+      "form": "mastic/o",
+      "meaning": "chew",
+      "origin": "Latin, from Greek",
+      "from": "masticare (to chew), from Greek mastichan (to gnash the teeth)"
+    },
+    {
+      "id": "lingu/o",
+      "type": "root",
+      "form": "lingu/o",
+      "meaning": "tongue",
+      "origin": "Latin",
+      "from": "lingua (tongue)"
+    },
+    {
+      "id": "mandibul/o",
+      "type": "root",
+      "form": "mandibul/o",
+      "meaning": "lower jaw",
+      "origin": "Latin",
+      "from": "mandibula (jaw), from mandere (to chew)"
+    },
+    {
+      "id": "dent/i",
+      "type": "root",
+      "form": "dent/i",
+      "meaning": "tooth",
+      "origin": "Latin",
+      "from": "dens, dentis (tooth)"
+    },
+    {
+      "id": "odont/o",
+      "type": "root",
+      "form": "odont/o",
+      "meaning": "tooth",
+      "origin": "Greek",
+      "from": "odous, odontos (tooth)"
+    },
+    {
+      "id": "decidu/o",
+      "type": "root",
+      "form": "decidu/o",
+      "meaning": "falling off, shed",
+      "origin": "Latin",
+      "from": "deciduus (falling off), from decidere (to fall down)"
+    },
+    {
+      "id": "incis/o",
+      "type": "root",
+      "form": "incis/o",
+      "meaning": "cut into",
+      "origin": "Latin",
+      "from": "incidere, incisus (to cut into)"
+    },
+    {
+      "id": "mol/o",
+      "type": "root",
+      "form": "mol/o",
+      "meaning": "millstone, grinding",
+      "origin": "Latin",
+      "from": "mola (millstone)"
+    },
+    {
+      "id": "circum-",
+      "type": "prefix",
+      "form": "circum-",
+      "meaning": "around",
+      "origin": "Latin",
+      "from": "circum (around)"
+    },
+    {
+      "id": "vall/o",
+      "type": "root",
+      "form": "vall/o",
+      "meaning": "wall, rampart",
+      "origin": "Latin",
+      "from": "vallum (rampart), vallare (to surround with a wall)"
+    },
+    {
+      "id": "fil/i",
+      "type": "root",
+      "form": "fil/i",
+      "meaning": "thread",
+      "origin": "Latin",
+      "from": "filum (thread)"
+    },
+    {
+      "id": "fung/i",
+      "type": "root",
+      "form": "fung/i",
+      "meaning": "mushroom",
+      "origin": "Latin",
+      "from": "fungus (mushroom)"
+    },
+    {
+      "id": "-form",
+      "type": "suffix",
+      "form": "-form",
+      "meaning": "having the shape of",
+      "origin": "Latin",
+      "from": "forma (shape)"
+    },
+    {
+      "id": "esophag/o",
+      "type": "root",
+      "form": "esophag/o",
+      "meaning": "the esophagus",
+      "origin": "Greek",
+      "from": "oisophagos (carrier of what is eaten)"
+    },
+    {
+      "id": "amyl/o",
+      "type": "root",
+      "form": "amyl/o",
+      "meaning": "starch",
+      "origin": "Greek",
+      "from": "amylon (starch; literally, not ground at a mill)"
+    },
+    {
+      "id": "lip/o",
+      "type": "root",
+      "form": "lip/o",
+      "meaning": "fat",
+      "origin": "Greek",
+      "from": "lipos (fat)"
+    },
+    {
+      "id": "pept/o",
+      "type": "root",
+      "form": "pept/o, peps/o",
+      "meaning": "digestion",
+      "origin": "Greek",
+      "from": "peptein (to digest), pepsis (digestion)"
+    },
+    {
+      "id": "ile/o",
+      "type": "root",
+      "form": "ile/o",
+      "meaning": "the ileum",
+      "origin": "Latin, from Greek",
+      "from": "ileum, linked to Greek eilein (to roll up), for its coils"
+    },
+    {
+      "id": "cec/o",
+      "type": "root",
+      "form": "cec/o",
+      "meaning": "blind",
+      "origin": "Latin",
+      "from": "caecus (blind)",
+      "note": "Used for the blind-ended pouch at the start of the large intestine."
+    },
+    {
+      "id": "sucr/o",
+      "type": "root",
+      "form": "sucr/o",
+      "meaning": "sugar",
+      "origin": "French, from Latin",
+      "from": "sucre (sugar), from Medieval Latin succarum"
+    },
+    {
+      "id": "pancreat/o",
+      "type": "root",
+      "form": "pancreat/o",
+      "meaning": "the pancreas",
+      "origin": "Greek",
+      "from": "pankreas (all flesh: pan, all + kreas, flesh)"
+    },
+    {
+      "id": "cirrh/o",
+      "type": "root",
+      "form": "cirrh/o",
+      "meaning": "tawny, orange-yellow",
+      "origin": "Greek",
+      "from": "kirrhos (tawny)"
+    },
+    {
+      "id": "sigm/o",
+      "type": "root",
+      "form": "sigm/o",
+      "meaning": "the letter S",
+      "origin": "Greek",
+      "from": "sigma (the Greek letter S)"
+    },
+    {
+      "id": "col/o",
+      "type": "root",
+      "form": "col/o",
+      "meaning": "colon",
+      "origin": "Greek",
+      "from": "kolon (the large intestine)"
+    },
+    {
+      "id": "-rrhea",
+      "type": "suffix",
+      "form": "-rrhea",
+      "meaning": "flow, discharge",
+      "origin": "Greek",
+      "from": "rhoia (a flowing), from rhein (to flow)"
+    },
+    {
+      "id": "stip/o",
+      "type": "root",
+      "form": "stip/o",
+      "meaning": "pack, press together",
+      "origin": "Latin",
+      "from": "stipare (to pack, cram)"
+    },
+    {
+      "id": "prote/o",
+      "type": "root",
+      "form": "prote/o",
+      "meaning": "protein",
+      "origin": "Greek",
+      "from": "prōteios (of the first rank), via the word protein"
+    },
+    {
+      "id": "chyl/o",
+      "type": "root",
+      "form": "chyl/o",
+      "meaning": "juice",
+      "origin": "Greek",
+      "from": "chylos (juice)"
     }
   ],
   "terms": [
@@ -6964,6 +7246,1211 @@
       ],
       "literal": "a condition of muscle without strength",
       "meaning": "muscle weakness; in myasthenia gravis, weakness that worsens with use because antibodies remove acetylcholine receptor proteins"
+    },
+    {
+      "id": "alimentary",
+      "term": "alimentary",
+      "topic": "digestive-overview",
+      "concept": "alimentary-canal",
+      "segs": [
+        [
+          "aliment",
+          "aliment/o"
+        ],
+        [
+          "ary",
+          "-ary"
+        ]
+      ],
+      "literal": "pertaining to nourishment",
+      "meaning": "describing the digestive tube that runs from mouth to anus"
+    },
+    {
+      "id": "ingestion",
+      "term": "ingestion",
+      "topic": "digestive-overview",
+      "concept": "digestive-processes",
+      "segs": [
+        [
+          "in",
+          "in-"
+        ],
+        [
+          "gest",
+          "gest/o"
+        ],
+        [
+          "ion",
+          "-ation"
+        ]
+      ],
+      "literal": "carrying in",
+      "meaning": "taking food into the mouth"
+    },
+    {
+      "id": "digestion",
+      "term": "digestion",
+      "topic": "digestive-overview",
+      "concept": "digestive-processes",
+      "segs": [
+        [
+          "di",
+          "dis-"
+        ],
+        [
+          "gest",
+          "gest/o"
+        ],
+        [
+          "ion",
+          "-ation"
+        ]
+      ],
+      "literal": "carrying apart",
+      "meaning": "breaking food down into pieces and molecules small enough to absorb"
+    },
+    {
+      "id": "propulsion",
+      "term": "propulsion",
+      "topic": "digestive-overview",
+      "concept": "digestive-processes",
+      "segs": [
+        [
+          "pro",
+          "pro-"
+        ],
+        [
+          "puls",
+          "puls/o"
+        ],
+        [
+          "ion",
+          "-ation"
+        ]
+      ],
+      "literal": "pushing forward",
+      "meaning": "moving food along the digestive tube"
+    },
+    {
+      "id": "defecation",
+      "term": "defecation",
+      "topic": "digestive-overview",
+      "concept": "digestive-processes",
+      "segs": [
+        [
+          "de",
+          "de-"
+        ],
+        [
+          "fec",
+          "fec/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "removing the dregs",
+      "meaning": "expelling what was not digested or absorbed, as feces, through the anus"
+    },
+    {
+      "id": "peristalsis",
+      "term": "peristalsis",
+      "topic": "digestive-overview",
+      "concept": "motility",
+      "segs": [
+        [
+          "peri",
+          "peri-"
+        ],
+        [
+          "stalsis",
+          "-stalsis"
+        ]
+      ],
+      "literal": "squeezing around",
+      "meaning": "a wave of contraction that travels along the tube, pushing its contents ahead of it"
+    },
+    {
+      "id": "submucosa",
+      "term": "submucosa",
+      "topic": "digestive-overview",
+      "concept": "gi-wall",
+      "segs": [
+        [
+          "sub",
+          "sub-"
+        ],
+        [
+          "mucosa",
+          "muc/o"
+        ]
+      ],
+      "literal": "below the mucous (membrane)",
+      "meaning": "the connective tissue layer of the gut wall just outside the mucosa, carrying vessels and a nerve network"
+    },
+    {
+      "id": "myenteric",
+      "term": "myenteric",
+      "topic": "digestive-overview",
+      "concept": "enteric-ns",
+      "segs": [
+        [
+          "my",
+          "my/o"
+        ],
+        [
+          "enter",
+          "enter/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to intestinal muscle",
+      "meaning": "describing the nerve plexus between the gut’s two muscle layers, which controls motility"
+    },
+    {
+      "id": "mesentery",
+      "term": "mesentery",
+      "topic": "digestive-overview",
+      "concept": "peritoneum-full",
+      "segs": [
+        [
+          "mes",
+          "meso-"
+        ],
+        [
+          "enter",
+          "enter/o"
+        ],
+        [
+          "y"
+        ]
+      ],
+      "literal": "the middle of the intestine",
+      "meaning": "a double layer of peritoneum that holds the intestine to the back wall of the abdomen and carries its vessels"
+    },
+    {
+      "id": "retroperitoneal",
+      "term": "retroperitoneal",
+      "topic": "digestive-overview",
+      "concept": "peritoneum-full",
+      "segs": [
+        [
+          "retro",
+          "retro-"
+        ],
+        [
+          "peri",
+          "peri-"
+        ],
+        [
+          "ton",
+          "ton/o"
+        ],
+        [
+          "e"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to behind the membrane stretched around",
+      "meaning": "lying against the back wall of the abdomen, behind the peritoneum"
+    },
+    {
+      "id": "gastrin",
+      "term": "gastrin",
+      "topic": "digestive-overview",
+      "concept": "gi-hormones",
+      "segs": [
+        [
+          "gastr",
+          "gastr/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a stomach substance",
+      "meaning": "the hormone from the lower stomach lining that increases acid secretion"
+    },
+    {
+      "id": "cholecystokinin",
+      "term": "cholecystokinin",
+      "topic": "digestive-overview",
+      "concept": "gi-hormones",
+      "segs": [
+        [
+          "chole",
+          "chol/e"
+        ],
+        [
+          "cyst",
+          "cyst/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "kin",
+          "kine/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a substance that moves the bile bladder",
+      "meaning": "the intestinal hormone that makes the gallbladder contract and the pancreas release its enzymes"
+    },
+    {
+      "id": "sublingual",
+      "term": "sublingual",
+      "topic": "mouth-esophagus",
+      "concept": "salivary-glands",
+      "segs": [
+        [
+          "sub",
+          "sub-"
+        ],
+        [
+          "lingu",
+          "lingu/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to below the tongue",
+      "meaning": "the smallest salivary gland, in the floor of the mouth, making mostly mucus"
+    },
+    {
+      "id": "submandibular",
+      "term": "submandibular",
+      "topic": "mouth-esophagus",
+      "concept": "salivary-glands",
+      "segs": [
+        [
+          "sub",
+          "sub-"
+        ],
+        [
+          "mandibul",
+          "mandibul/o"
+        ],
+        [
+          "ar",
+          "-ar"
+        ]
+      ],
+      "literal": "pertaining to below the lower jaw",
+      "meaning": "the salivary gland under the mandible that makes most of the saliva at rest"
+    },
+    {
+      "id": "parotid",
+      "term": "parotid",
+      "topic": "mouth-esophagus",
+      "concept": "salivary-glands",
+      "segs": [
+        [
+          "par",
+          "para-"
+        ],
+        [
+          "ot",
+          "ot/o"
+        ],
+        [
+          "id"
+        ]
+      ],
+      "literal": "beside the ear",
+      "meaning": "the largest salivary gland, in front of and below each ear, making watery saliva rich in enzyme"
+    },
+    {
+      "id": "amylase",
+      "term": "amylase",
+      "topic": "mouth-esophagus",
+      "concept": "salivary-glands",
+      "segs": [
+        [
+          "amyl",
+          "amyl/o"
+        ],
+        [
+          "ase",
+          "-ase"
+        ]
+      ],
+      "literal": "starch enzyme",
+      "meaning": "an enzyme that splits starch into shorter sugar chains and maltose"
+    },
+    {
+      "id": "lipase",
+      "term": "lipase",
+      "topic": "mouth-esophagus",
+      "concept": "salivary-glands",
+      "segs": [
+        [
+          "lip",
+          "lip/o"
+        ],
+        [
+          "ase",
+          "-ase"
+        ]
+      ],
+      "literal": "fat enzyme",
+      "meaning": "an enzyme that splits fatty acids off triglycerides"
+    },
+    {
+      "id": "dentition",
+      "term": "dentition",
+      "topic": "mouth-esophagus",
+      "concept": "teeth",
+      "segs": [
+        [
+          "dent",
+          "dent/i"
+        ],
+        [
+          "ition",
+          "-ation"
+        ]
+      ],
+      "literal": "teething",
+      "meaning": "the set of teeth in the mouth: 20 deciduous, then 32 permanent"
+    },
+    {
+      "id": "deciduous",
+      "term": "deciduous",
+      "topic": "mouth-esophagus",
+      "concept": "teeth",
+      "segs": [
+        [
+          "decidu",
+          "decidu/o"
+        ],
+        [
+          "ous",
+          "-ous"
+        ]
+      ],
+      "literal": "falling off",
+      "meaning": "describing the 20 baby teeth, which are shed as the permanent teeth come in"
+    },
+    {
+      "id": "incisor",
+      "term": "incisor",
+      "topic": "mouth-esophagus",
+      "concept": "teeth",
+      "segs": [
+        [
+          "incis",
+          "incis/o"
+        ],
+        [
+          "or",
+          "-or"
+        ]
+      ],
+      "literal": "one that cuts into",
+      "meaning": "a chisel-shaped front tooth that cuts and bites off food"
+    },
+    {
+      "id": "premolar",
+      "term": "premolar",
+      "topic": "mouth-esophagus",
+      "concept": "teeth",
+      "segs": [
+        [
+          "pre",
+          "pre-"
+        ],
+        [
+          "mol",
+          "mol/o"
+        ],
+        [
+          "ar",
+          "-ar"
+        ]
+      ],
+      "literal": "in front of the grinders",
+      "meaning": "a tooth with two cusps, in front of the molars, that crushes and grinds"
+    },
+    {
+      "id": "periodontal",
+      "term": "periodontal",
+      "topic": "mouth-esophagus",
+      "concept": "teeth",
+      "segs": [
+        [
+          "peri",
+          "peri-"
+        ],
+        [
+          "odont",
+          "odont/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to around the tooth",
+      "meaning": "describing the ligament whose fibers hold a tooth’s root in its socket"
+    },
+    {
+      "id": "circumvallate",
+      "term": "circumvallate",
+      "topic": "mouth-esophagus",
+      "concept": "oral-cavity",
+      "segs": [
+        [
+          "circum",
+          "circum-"
+        ],
+        [
+          "vallate",
+          "vall/o"
+        ]
+      ],
+      "literal": "walled around",
+      "meaning": "describing the 8 to 12 large papillae in a V at the back of the tongue, each sunk in a moat"
+    },
+    {
+      "id": "filiform",
+      "term": "filiform",
+      "topic": "mouth-esophagus",
+      "concept": "oral-cavity",
+      "segs": [
+        [
+          "fil",
+          "fil/i"
+        ],
+        [
+          "i"
+        ],
+        [
+          "form",
+          "-form"
+        ]
+      ],
+      "literal": "thread-shaped",
+      "meaning": "describing the most numerous tongue papillae, thin and keratinized, with no taste buds"
+    },
+    {
+      "id": "fungiform",
+      "term": "fungiform",
+      "topic": "mouth-esophagus",
+      "concept": "oral-cavity",
+      "segs": [
+        [
+          "fung",
+          "fung/i"
+        ],
+        [
+          "i"
+        ],
+        [
+          "form",
+          "-form"
+        ]
+      ],
+      "literal": "mushroom-shaped",
+      "meaning": "describing the scattered mushroom-shaped tongue papillae with taste buds on top"
+    },
+    {
+      "id": "mastication",
+      "term": "mastication",
+      "topic": "mouth-esophagus",
+      "concept": "mastication",
+      "segs": [
+        [
+          "mastic",
+          "mastic/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the act of chewing",
+      "meaning": "chewing: the mechanical digestion done in the mouth"
+    },
+    {
+      "id": "deglutition",
+      "term": "deglutition",
+      "topic": "mouth-esophagus",
+      "concept": "deglutition",
+      "segs": [
+        [
+          "de",
+          "de-down-"
+        ],
+        [
+          "glut",
+          "glut/o"
+        ],
+        [
+          "ition",
+          "-ation"
+        ]
+      ],
+      "literal": "swallowing down",
+      "meaning": "swallowing: moving a bolus from the mouth to the stomach"
+    },
+    {
+      "id": "gastroesophageal",
+      "term": "gastroesophageal",
+      "topic": "mouth-esophagus",
+      "concept": "esophagus",
+      "segs": [
+        [
+          "gastr",
+          "gastr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "esophag",
+          "esophag/o"
+        ],
+        [
+          "e"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to the stomach and esophagus",
+      "meaning": "describing the junction of the stomach and esophagus, and reflux across it, as in GERD"
+    },
+    {
+      "id": "enteroendocrine",
+      "term": "enteroendocrine",
+      "topic": "stomach",
+      "concept": "gastric-glands",
+      "segs": [
+        [
+          "entero",
+          "enter/o"
+        ],
+        [
+          "endo",
+          "endo-"
+        ],
+        [
+          "crine",
+          "-crine"
+        ]
+      ],
+      "literal": "intestinal, secreting within",
+      "meaning": "describing gut lining cells that release hormones and local messengers toward the blood"
+    },
+    {
+      "id": "pepsinogen",
+      "term": "pepsinogen",
+      "topic": "stomach",
+      "concept": "pepsin",
+      "segs": [
+        [
+          "peps",
+          "pept/o"
+        ],
+        [
+          "in",
+          "-in"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gen",
+          "-gen"
+        ]
+      ],
+      "literal": "producer of the digesting substance",
+      "meaning": "the inactive precursor of pepsin, made and stored by chief cells"
+    },
+    {
+      "id": "zymogen",
+      "term": "zymogen",
+      "topic": "stomach",
+      "concept": "zymogen",
+      "segs": [
+        [
+          "zym",
+          "zym/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gen",
+          "-gen"
+        ]
+      ],
+      "literal": "producer of ferment",
+      "meaning": "an inactive enzyme precursor that must be cut before it works"
+    },
+    {
+      "id": "enterogastric",
+      "term": "enterogastric",
+      "topic": "stomach",
+      "concept": "chyme-emptying",
+      "segs": [
+        [
+          "entero",
+          "enter/o"
+        ],
+        [
+          "gastr",
+          "gastr/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the intestine and stomach",
+      "meaning": "describing the reflex by which the small intestine slows the stomach’s emptying"
+    },
+    {
+      "id": "ileocecal",
+      "term": "ileocecal",
+      "topic": "small-intestine",
+      "concept": "small-intestine-regions",
+      "segs": [
+        [
+          "ile",
+          "ile/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cec",
+          "cec/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to the ileum and the blind pouch",
+      "meaning": "describing the valve where the ileum joins the large intestine"
+    },
+    {
+      "id": "lacteal",
+      "term": "lacteal",
+      "topic": "small-intestine",
+      "concept": "absorptive-surface",
+      "segs": [
+        [
+          "lact",
+          "lact/o"
+        ],
+        [
+          "eal",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to milk",
+      "meaning": "the lymphatic capillary in each villus, which takes up absorbed fat and looks milky after a fatty meal"
+    },
+    {
+      "id": "lactase",
+      "term": "lactase",
+      "topic": "small-intestine",
+      "concept": "brush-border-enzymes",
+      "segs": [
+        [
+          "lact",
+          "lact/o"
+        ],
+        [
+          "ase",
+          "-ase"
+        ]
+      ],
+      "literal": "milk enzyme",
+      "meaning": "the brush border enzyme that splits lactose into glucose and galactose"
+    },
+    {
+      "id": "sucrase",
+      "term": "sucrase",
+      "topic": "small-intestine",
+      "concept": "brush-border-enzymes",
+      "segs": [
+        [
+          "sucr",
+          "sucr/o"
+        ],
+        [
+          "ase",
+          "-ase"
+        ]
+      ],
+      "literal": "sugar enzyme",
+      "meaning": "the brush border enzyme that splits sucrose into glucose and fructose"
+    },
+    {
+      "id": "peptidase",
+      "term": "peptidase",
+      "topic": "small-intestine",
+      "concept": "brush-border-enzymes",
+      "segs": [
+        [
+          "pept",
+          "pept/o"
+        ],
+        [
+          "id"
+        ],
+        [
+          "ase",
+          "-ase"
+        ]
+      ],
+      "literal": "digestion enzyme",
+      "meaning": "an enzyme that splits short peptides into amino acids"
+    },
+    {
+      "id": "gastroileal",
+      "term": "gastroileal",
+      "topic": "small-intestine",
+      "concept": "small-intestine-motility",
+      "segs": [
+        [
+          "gastr",
+          "gastr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "ile",
+          "ile/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "pertaining to the stomach and ileum",
+      "meaning": "describing the reflex by which a meal in the stomach speeds the ileum and opens the ileocecal sphincter"
+    },
+    {
+      "id": "hepatocyte",
+      "term": "hepatocyte",
+      "topic": "liver-pancreas-gallbladder",
+      "concept": "liver-anatomy",
+      "segs": [
+        [
+          "hepat",
+          "hepat/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "liver cell",
+      "meaning": "the liver’s main working cell, arranged in plates between the sinusoids"
+    },
+    {
+      "id": "hepatitis",
+      "term": "hepatitis",
+      "topic": "liver-pancreas-gallbladder",
+      "concept": "pancreatitis-hepatitis",
+      "segs": [
+        [
+          "hepat",
+          "hepat/o"
+        ],
+        [
+          "itis",
+          "-itis"
+        ]
+      ],
+      "literal": "inflamed liver",
+      "meaning": "inflammation of the liver, from viruses, alcohol, fat buildup, drugs or autoimmunity"
+    },
+    {
+      "id": "pancreatitis",
+      "term": "pancreatitis",
+      "topic": "liver-pancreas-gallbladder",
+      "concept": "pancreatitis-hepatitis",
+      "segs": [
+        [
+          "pancreat",
+          "pancreat/o"
+        ],
+        [
+          "itis",
+          "-itis"
+        ]
+      ],
+      "literal": "inflamed pancreas",
+      "meaning": "inflammation of the pancreas, in which its own enzymes, switched on too early, digest it"
+    },
+    {
+      "id": "cirrhosis",
+      "term": "cirrhosis",
+      "topic": "liver-pancreas-gallbladder",
+      "concept": "pancreatitis-hepatitis",
+      "segs": [
+        [
+          "cirrh",
+          "cirrh/o"
+        ],
+        [
+          "osis",
+          "-osis"
+        ]
+      ],
+      "literal": "a tawny condition",
+      "meaning": "scarring that replaces the liver’s lobules with bands of scar and nodules",
+      "note": "Named for the orange-yellow color of the scarred liver."
+    },
+    {
+      "id": "enterohepatic",
+      "term": "enterohepatic",
+      "topic": "liver-pancreas-gallbladder",
+      "concept": "bile",
+      "segs": [
+        [
+          "entero",
+          "enter/o"
+        ],
+        [
+          "hepat",
+          "hepat/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the intestine and liver",
+      "meaning": "describing the loop that carries bile salts from the ileum back to the liver for reuse"
+    },
+    {
+      "id": "enteropeptidase",
+      "term": "enteropeptidase",
+      "topic": "liver-pancreas-gallbladder",
+      "concept": "pancreatic-juice",
+      "segs": [
+        [
+          "entero",
+          "enter/o"
+        ],
+        [
+          "pept",
+          "pept/o"
+        ],
+        [
+          "id"
+        ],
+        [
+          "ase",
+          "-ase"
+        ]
+      ],
+      "literal": "intestinal digestion enzyme",
+      "meaning": "the brush border enzyme of the duodenum that turns trypsinogen into trypsin"
+    },
+    {
+      "id": "hepatopancreatic",
+      "term": "hepatopancreatic",
+      "topic": "liver-pancreas-gallbladder",
+      "concept": "pancreatic-juice",
+      "segs": [
+        [
+          "hepato",
+          "hepat/o"
+        ],
+        [
+          "pancreat",
+          "pancreat/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the liver and pancreas",
+      "meaning": "describing the ampulla and sphincter where the common bile duct and pancreatic duct meet"
+    },
+    {
+      "id": "cystic",
+      "term": "cystic",
+      "topic": "liver-pancreas-gallbladder",
+      "concept": "bile",
+      "segs": [
+        [
+          "cyst",
+          "cyst/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the bladder",
+      "meaning": "describing the duct that links the gallbladder to the common bile duct"
+    },
+    {
+      "id": "sigmoid",
+      "term": "sigmoid",
+      "topic": "large-intestine",
+      "concept": "large-intestine-regions",
+      "segs": [
+        [
+          "sigm",
+          "sigm/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ]
+      ],
+      "literal": "S-shaped",
+      "meaning": "the S-shaped last part of the colon, in the pelvis"
+    },
+    {
+      "id": "gastrocolic",
+      "term": "gastrocolic",
+      "topic": "large-intestine",
+      "concept": "defecation-reflex",
+      "segs": [
+        [
+          "gastr",
+          "gastr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "col",
+          "col/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to the stomach and colon",
+      "meaning": "describing the reflex by which food stretching the stomach increases colon motility"
+    },
+    {
+      "id": "diarrhea",
+      "term": "diarrhea",
+      "topic": "large-intestine",
+      "concept": "diarrhea-constipation",
+      "segs": [
+        [
+          "dia",
+          "dia-"
+        ],
+        [
+          "rrhea",
+          "-rrhea"
+        ]
+      ],
+      "literal": "a flowing through",
+      "meaning": "passing three or more loose or watery stools a day"
+    },
+    {
+      "id": "constipation",
+      "term": "constipation",
+      "topic": "large-intestine",
+      "concept": "diarrhea-constipation",
+      "segs": [
+        [
+          "con",
+          "con-"
+        ],
+        [
+          "stip",
+          "stip/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "a packing together",
+      "meaning": "passing hard stools infrequently, or with straining"
+    },
+    {
+      "id": "microbiota",
+      "term": "microbiota",
+      "topic": "large-intestine",
+      "concept": "gut-microbiota",
+      "segs": [
+        [
+          "micro",
+          "micro-"
+        ],
+        [
+          "bi",
+          "bi/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "ta"
+        ]
+      ],
+      "literal": "small life",
+      "meaning": "the community of microbes that lives in the gut, mostly in the colon"
+    },
+    {
+      "id": "saccharolytic",
+      "term": "saccharolytic",
+      "topic": "large-intestine",
+      "concept": "gut-microbiota",
+      "segs": [
+        [
+          "sacchar",
+          "sacchar/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lytic",
+          "-lytic"
+        ]
+      ],
+      "literal": "sugar-breaking",
+      "meaning": "describing bacterial fermentation that breaks down carbohydrates such as fiber"
+    },
+    {
+      "id": "proteolysis",
+      "term": "proteolysis",
+      "topic": "digestion-absorption",
+      "concept": "protein-digestion",
+      "segs": [
+        [
+          "prote",
+          "prote/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lysis",
+          "-lysis"
+        ]
+      ],
+      "literal": "breaking apart protein",
+      "meaning": "the splitting of proteins by hydrolysis of their peptide bonds"
+    },
+    {
+      "id": "dipeptidase",
+      "term": "dipeptidase",
+      "topic": "digestion-absorption",
+      "concept": "protein-digestion",
+      "segs": [
+        [
+          "di",
+          "di-"
+        ],
+        [
+          "pept",
+          "pept/o"
+        ],
+        [
+          "id"
+        ],
+        [
+          "ase",
+          "-ase"
+        ]
+      ],
+      "literal": "enzyme for two digested pieces",
+      "meaning": "the brush border enzyme that splits a dipeptide into two amino acids"
+    },
+    {
+      "id": "chylomicron",
+      "term": "chylomicron",
+      "topic": "digestion-absorption",
+      "concept": "lipid-digestion",
+      "segs": [
+        [
+          "chyl",
+          "chyl/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "micr",
+          "micro-"
+        ],
+        [
+          "on"
+        ]
+      ],
+      "literal": "a small (particle) of juice",
+      "meaning": "a droplet of triglycerides coated in phospholipid and protein, sent from absorptive cells into the lacteals"
+    },
+    {
+      "id": "monoglyceride",
+      "term": "monoglyceride",
+      "topic": "digestion-absorption",
+      "concept": "lipid-digestion",
+      "segs": [
+        [
+          "mono",
+          "mono-"
+        ],
+        [
+          "glycer",
+          "glyc/o"
+        ],
+        [
+          "ide",
+          "-ide"
+        ]
+      ],
+      "literal": "a one-(fatty acid) glycerol compound",
+      "meaning": "glycerol still carrying one fatty acid, a product of pancreatic lipase",
+      "note": "Glycerol is named from Greek glykeros, sweet, for its sweet taste."
+    },
+    {
+      "id": "nuclease",
+      "term": "nuclease",
+      "topic": "digestion-absorption",
+      "concept": "nucleic-acid-digestion",
+      "segs": [
+        [
+          "nucle",
+          "nucle/o"
+        ],
+        [
+          "ase",
+          "-ase"
+        ]
+      ],
+      "literal": "nucleus enzyme",
+      "meaning": "an enzyme that splits nucleic acids (DNA or RNA) into nucleotides"
     }
   ]
 }
