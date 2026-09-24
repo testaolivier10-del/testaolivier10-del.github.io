@@ -276,7 +276,7 @@ review by a licensed A&P instructor.
 
 ### active-cutaneous-vasodilation: why skin vessels widen in heat
 - **Status:** pending review.
-- **Where:** `ans-control` (going-further box), later thermoregulation.
+- **Where:** `ans-control` (going-further box), `skin-functions` (notes For your exam note), later thermoregulation.
 - **Evidence-based position:** in hairy skin about 80–90% of the heat-induced rise in skin blood flow comes from active widening by sympathetic cholinergic nerves (cotransmitters and nitric oxide, not ACh itself). In the hairless skin of the palms, soles and lips it comes from withdrawal of sympathetic constrictor tone.
 - **For your exam:** many texts say skin vessels widen in heat only because sympathetic tone falls.
 
@@ -627,6 +627,126 @@ review by a licensed A&P instructor.
 - **Where:** `lower-limb-muscles` (notes injection sites section, Figure 4 and going-further box; questions anp-lower-limb-muscles-13, -14 and -22; lab set injection-sites on os-11-5; pathway ms-ventrogluteal).
 - **Evidence-based position:** the ventrogluteal site is preferred for larger-volume intramuscular injections in adults and children; the vastus lateralis for infants; the deltoid for most adult vaccines, with small volumes (about 1 mL; some sources allow up to 2 mL), about 2–3 finger widths below the acromion. The dorsogluteal site is avoided and is never used for vaccines, at any age (CDC/ACIP General Best Practice Guidelines for Immunization: sciatic nerve risk and poorer absorption through fat). The notes give "typically up to about 1 mL" for the deltoid and no fixed limits for the other sites, and a going-further box says volume limits, needle lengths and age cutoffs differ between guidelines and facilities.
 - **For your exam:** nursing exams may cite specific volume limits (often 1 mL for the deltoid and 3 mL for the ventrogluteal site) that differ between textbooks; use the limit your program teaches. The page has no separate For your exam note; its going-further box says to follow the program's and facility's protocol.
+
+### langerhans-origin: where Langerhans cells come from
+- **Status:** pending review.
+- **Where:** `skin-layers` (notes, "Tactile cells and Langerhans cells" and For your exam note; glossary epidermal-other-cells; question anp-skin-layers-21 explanation).
+- **Evidence-based position:** Langerhans cells settle in the epidermis before birth, mainly from fetal liver monocytes with a small yolk-sac contribution, and then renew themselves locally for life; cells from the bone marrow replace them mainly after severe skin inflammation (Hoeffel et al., J Exp Med 2012; Collin and Milne, Curr Opin Hematol 2016; human hand-transplant studies). The notes teach it this way.
+- **For your exam:** many textbooks say Langerhans cells come from the bone marrow and migrate to the epidermis. The notes' For your exam note says that if a question asks where they come from, "bone marrow" may be the expected answer.
+
+### spinosum-spines: real structure or artifact?
+- **Status:** pending review.
+- **Where:** `skin-layers` (notes, stratum spinosum paragraph).
+- **Evidence-based position:** the "spines" are cell processes anchored by desmosomes. They look spiny on a slide because the cells shrink during tissue preparation while the desmosomes hold (Ross and Pawlina, Histology, ch. 15). The notes call them an artifact of slide preparation.
+- **For your exam:** some intro texts simply say the cells have spiny projections; either description should be accepted. The page has no For your exam note.
+
+### skin-color-latitude: why skin color varies with latitude
+- **Status:** pending review.
+- **Where:** `skin-functions` (notes, going-further box).
+- **Evidence-based position:** the balance hypothesis (more melanin near the equator protects folate and DNA from strong UV; lighter skin far from it lets enough UVB through to make vitamin D) fits the global pattern well but is not proven; sexual selection, genetic drift and diet also contributed (Jablonski and Chaplin, PNAS 2010). The box presents it as the leading explanation, hedged.
+- **For your exam:** texts that mention it usually give the vitamin D and folate balance as the explanation. The page has no For your exam note.
+
+### vitamin-d-status: vitamin or hormone precursor?
+- **Status:** pending review.
+- **Where:** `skin-functions` (notes, vitamin D synthesis section).
+- **Evidence-based position:** with enough UVB the skin makes all the vitamin D the body needs, and its active form (calcitriol) acts as a hormone, so it is better described as a prohormone than a dietary vitamin (Holick, NEJM 2007). The notes say it "is not strictly a vitamin".
+- **For your exam:** exams and nutrition texts classify vitamin D as a fat-soluble vitamin. The page has no For your exam note.
+
+### kidney-vitamin-d-25ohd: 25-hydroxyvitamin D in kidney failure
+- **Status:** pending review.
+- **Where:** the prediction scenario ig-kidney-vitamin-d ("Failing kidneys and vitamin D", topic `skin-functions`), variable d25; notes, vitamin D section ("a person with badly damaged kidneys can have plenty of 25-hydroxyvitamin D").
+- **Evidence-based position:** the scenario is an idealized model (same sun and diet as a healthy man, liver working), in which 25-hydroxyvitamin D is unchanged and only the kidney step fails. In real chronic kidney disease 25-hydroxyvitamin D is often low too, for other reasons (urinary loss of its carrier protein, less skin synthesis, less time outdoors; KDIGO CKD-MBD guideline 2017). The variable's explanation now says so and keeps the key "no change". The tool auditor suggested dropping the variable altogether, which would remove any risk of marking a real-world "down" wrong.
+- **For your exam:** exams expect "the kidney step fails, so active calcitriol is low while 25-hydroxyvitamin D can be normal". The page has no separate For your exam note.
+
+### parkland-starting-rate: 4 mL or 2 mL per kg per %TBSA
+- **Status:** pending review. Needs a clinical reviewer.
+- **Where:** `skin-injury` (notes, going-further box on burn fluids).
+- **Evidence-based position:** the American Burn Association's 2024 guideline recommends starting adult burn resuscitation at 2 mL × kg × %TBSA and adjusting the rate hour by hour to a urine output of about 0.5 mL/kg/h, to limit over-resuscitation (Cartotto et al., J Burn Care Res 2024). The going-further box gives the classic 4 mL Parkland formula first, then the ABA starting rate. The writer kept both in a going-further box; the instructor should decide whether the lower starting rate belongs in the core text.
+- **For your exam:** most A&P, EMT and nursing materials still teach the Parkland formula: 4 mL × kg × %TBSA over 24 hours, half in the first 8 hours. The page has no separate For your exam note.
+
+### hypertrophic-chondrocyte-fate: do the enlarged chondrocytes die?
+- **Status:** pending review.
+- **Where:** `bone-development` (lesson misconception; notes, endochondral ossification step 2, zone of calcified matrix and For your exam note; questions anp-bone-development-9, -12 and -14).
+- **Evidence-based position:** the cartilage matrix does not turn into bone: it calcifies, and bone laid down by osteoblasts replaces it. Many hypertrophic chondrocytes die, but lineage-tracing studies in mice show that a substantial share, up to most in some studies, survive and become osteoblasts and osteocytes, in development, growth plates and fracture callus (Yang et al., PNAS 2014; Zhou et al., PLoS Genet 2014; Long et al., eLife 2022). Human data are limited. Two distractors that the new evidence made partly true ("the chondrocytes turn into osteoblasts", "its chondrocytes become osteocytes") were replaced.
+- **For your exam:** the notes' For your exam note says textbooks teach that the enlarged chondrocytes die and are replaced by bone cells that arrive with the vessels, and that if a question asks what happens to the chondrocytes, the expected answer is that they die. Question anp-bone-development-12 keeps "the chondrocytes, cut off from diffusion, die" as its key.
+
+### growth-plate-length-source: which zone makes a bone longer?
+- **Status:** pending review.
+- **Where:** `bone-development` (notes, epiphyseal plate zones; questions anp-bone-development-1 and -8 explanations).
+- **Evidence-based position:** chondrocyte hypertrophy (each cell enlarges about 5 to 20 times) supplies the largest share of lengthening; division in the proliferative zone supplies the cells, and matrix adds the rest (Hunziker and Schenk, J Physiol 1989; Wilsman et al., J Orthop Res 1996; Cooper et al., Nature 2013). The notes no longer call the proliferative zone "where the length comes from".
+- **For your exam:** many textbooks say growth in length comes from cell division in the proliferative zone. If asked where new chondrocytes are made or which zone "drives" growth, that is the expected answer. The page has no separate For your exam note.
+
+### paranasal-sinus-function: what the sinuses are for
+- **Status:** pending review.
+- **Where:** `skull` (notes, "The paranasal sinuses" and For your exam note).
+- **Evidence-based position:** the function of the paranasal sinuses is not established. Lightening the skull and adding mucus to the nasal cavity are plausible but their importance is unproven, and a role in voice resonance is doubtful (Keir, J Laryngol Otol 2009). The notes do not present any of them as settled.
+- **For your exam:** the notes' For your exam note gives the usual list: making the skull lighter, adding resonance to the voice, and warming, moistening and adding mucus to inhaled air.
+
+### kyphosis-lordosis-naming: normal curves or abnormal ones?
+- **Status:** pending review.
+- **Where:** `vertebral-column` (notes, abnormal curves and For your exam note; glossary entry for the spinal curves).
+- **Evidence-based position:** not a scientific dispute but a naming convention. Clinicians use kyphosis and lordosis for the direction of the normal curves ("normal lumbar lordosis") and hyperkyphosis and hyperlordosis for exaggerated ones. The notes use kyphosis and lordosis for the exaggerated curves, as most courses do, and explain the clinical usage in the note. The auditor noted that the glossary entry for the spinal curves uses the clinical sense for the normal curves, which differs from the notes' main usage; left for the author.
+- **For your exam:** the note says most courses use the words only for the abnormal curves: kyphosis is a hunched upper back and lordosis is a swayback. Name them that way if asked about an abnormal curve.
+
+### false-ribs-count: ribs 8 to 12 or 8 to 10?
+- **Status:** pending review.
+- **Where:** `thoracic-cage` (notes, lesson, glossary and For your exam note).
+- **Evidence-based position:** false ribs are ribs 8 to 12, with 11 and 12 as the floating ribs within that group (Terminologia Anatomica, costae spuriae 8–12; Gray's Anatomy for Students). The page teaches it this way.
+- **For your exam:** the note says five false ribs per side is the usual answer; a few sources count only ribs 8 to 10 as false and list the floating ribs as a separate third group.
+
+### fibula-weight-share: does the fibula bear weight?
+- **Status:** pending review.
+- **Where:** `lower-limb` (notes, fibula paragraph, tibia and fibula table, For your exam note).
+- **Evidence-based position:** the fibula carries a small share of the load through the leg, roughly 6 to 17% depending on ankle position and study (about 6–7% in neutral standing, more in dorsiflexion; Lambert 1971, Takebe et al., Clin Orthop 1984, Goh et al. 1992). The tibia carries almost all of it. The notes say the fibula carries very little, not none.
+- **For your exam:** the note says many courses call the fibula non-weight-bearing; if asked which leg bone bears the weight, the answer is the tibia.
+
+### unhappy-triad-meniscus: which meniscus tears with the ACL?
+- **Status:** pending review.
+- **Where:** `synovial-joints` (notes, Figure 5 caption and For your exam note; the figure os-9-20 shows the classic triad).
+- **Evidence-based position:** in acute ACL tears from a blow to the outer side of the knee, the lateral meniscus is torn more often than the medial. The classic "unhappy triad" (tibial collateral ligament, medial meniscus, ACL) overstates medial meniscus involvement; medial tears become more common later, in knees that have gone unstable (Shelbourne and Nitz, Am J Sports Med 1991). The page does not use the word "triad", which a later concept owns, and says "the classic unhappy combined knee injury".
+- **For your exam:** the note says exams expect the O'Donoghue combination: a torn tibial collateral ligament, medial meniscus and ACL after a blow to the outer side of the knee.
+
+### osteoarthritis-inflammation: is osteoarthritis "noninflammatory"?
+- **Status:** pending review.
+- **Where:** `synovial-joints` (notes, osteoarthritis section and For your exam note); the joints pathway "How osteoarthritis develops", where mild synovial inflammation is folded into the cartilage-thinning step.
+- **Evidence-based position:** osteoarthritis is a disease of the whole joint (cartilage, bone under it, synovial membrane and ligaments), started by load and aging, with low-grade inflammation of the synovial membrane taking part from early on (Loeser et al., Arthritis Rheum 2012; Robinson et al., Nat Rev Rheumatol 2016).
+- **For your exam:** the note says osteoarthritis is often described as "wear and tear" and "noninflammatory", to set it apart from rheumatoid arthritis, and that "wear-and-tear, degenerative joint disease" is the expected answer.
+
+### plane-joint-axes: nonaxial or multiaxial?
+- **Status:** pending review.
+- **Where:** `synovial-joints` (notes, joint types table and the note under it).
+- **Evidence-based position:** a textbook convention, not a science dispute. Plane joints make small gliding movements. OpenStax (9.4) calls them multiaxial, because the glides can go in several directions; many other texts call them nonaxial, because they glide rather than swing around an axis. The notes teach "glides only" and name both conventions.
+- **For your exam:** use your course text's term. The page has no separate For your exam note; the table note gives both.
+
+### muscle-tone-source: what resting muscle tone is
+- **Status:** pending review.
+- **Where:** `muscle-tension` (notes, "Muscle tone" and For your exam note; lesson summary).
+- **Evidence-based position:** in a fully relaxed muscle, resting tone is mostly passive stiffness of the muscle and its connective tissue; recordings show little or no motor unit activity (Basmajian, Muscles Alive; Masi and Hannon, J Bodyw Mov Ther 2008). Active firing adds to it in postural muscles and when a muscle is stretched.
+- **For your exam:** the note says many textbooks define tone as "a constant partial contraction, because some motor units are always active, even at rest", and to give that answer if asked.
+
+### treppe-mechanism: why twitches get stronger at first
+- **Status:** pending review.
+- **Where:** `muscle-tension` (notes, "Treppe").
+- **Evidence-based position:** staircase potentiation in mammalian fast-twitch muscle comes mainly from phosphorylation of the myosin regulatory light chain by skeletal myosin light-chain kinase, which makes the filaments more sensitive to calcium; it is absent in mice lacking that kinase (Vandenboom et al., J Muscle Res Cell Motil 2013; Stull et al., J Biol Chem 2011). Calcium buildup and warming add little. The notes teach light-chain phosphorylation and say older textbooks give calcium buildup and warming, which "may add a little".
+- **For your exam:** most A&P textbooks attribute treppe to more calcium in the cytosol and to warming that makes enzymes work faster. The page has no separate For your exam note; the auditor suggested adding one.
+
+### fiber-type-heritability: are fiber-type proportions fixed by genes?
+- **Status:** pending review.
+- **Where:** `fiber-types` (notes: "The proportion of slow to fast fibers is strongly inherited and changes little with training in adults"; question anp-fiber-types-20, now about identical twins).
+- **Evidence-based position:** family and twin studies put the genetic share of the variation in the type I proportion at about 40–50%, with a large environmental share (Simoneau and Bouchard, FASEB J 1995). Training readily shifts type IIx fibers toward IIa; true conversion between type I and type II in adults is limited but not zero, especially after years of endurance training. The auditor suggested "largely inherited" in place of "strongly inherited"; the notes have not been changed. Question 20's key (similar proportions in identical twins) still stands as the best answer.
+- **For your exam:** most textbooks say the fiber-type proportion is genetically determined and fixed, with training changing only fiber size and oxidative capacity. The page has no separate For your exam note.
+
+### skeletal-hyperplasia: can adult muscle gain fibers?
+- **Status:** pending review.
+- **Where:** `fiber-types` (notes, "Hyperplasia"; question anp-fiber-types-20 explanations).
+- **Evidence-based position:** in adult humans, strength training enlarges muscle almost entirely by hypertrophy. Hyperplasia (by muscle satellite cells forming new fibers or by fiber splitting) is seen in some animal models, but the human evidence is indirect and the effect small at most (Kelley, J Appl Physiol 1996; MacDougall et al., J Appl Physiol 1984). The notes say hyperplasia "adds few if any fibers".
+- **For your exam:** textbooks say adult skeletal muscle fibers cannot divide, so muscle grows only by hypertrophy; give that answer. The page has no separate For your exam note.
+
+### fast-fiber-naming: type IIx or IIb?
+- **Status:** pending review.
+- **Where:** `fiber-types` (notes, fiber types table and going-further box).
+- **Evidence-based position:** human fast glycolytic fibers make the IIx form of myosin heavy chain. True IIb myosin is found in small mammals such as rats and mice but is essentially absent from adult human limb muscle (Schiaffino and Reggiani, Physiol Rev 2011). The notes use IIx and explain the older name in the going-further box.
+- **For your exam:** many textbooks and exams label the human fast glycolytic fiber "type IIb". The page has no separate For your exam note.
 
 ## Open items
 
@@ -1400,6 +1520,340 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
 - **Map fixes:** "ramus" for the mandible and the ischiopubic ramus (decision 64 (2)) is the only
   map fix this chapter needed; the other items on the Phase 3 map-fix list belong to the skeleton
   and muscle tissue chapters.
+
+## Phase 3: integumentary chapter, judgment calls for instructor review
+
+- **Positions taught:** apocrine sweat glands release their product mainly by exocytosis, with a
+  For your exam note in `skin-accessory` (apocrine-secretion-mode, above); in heat, most of the
+  rise in skin blood flow in hairy skin comes from nerves actively widening the vessels, with
+  withdrawal of constrictor signals in the palms, soles and lips, and a For your exam note in
+  `skin-functions` (active-cutaneous-vasodilation, above); Langerhans cells settle in the skin
+  before birth (langerhans-origin, above); the spines of the stratum spinosum are a preparation
+  artifact at the desmosomes (spinosum-spines, above); vitamin D is "not strictly a vitamin"
+  (vitamin-d-status, above); the folate and vitamin D explanation of skin color is hedged
+  (skin-color-latitude, above). Also taught as stated: a friction blister splits within the upper
+  living layers of the epidermis, not at the junction with the dermis; cyanosis appears when much
+  of the blood in the skin has given up its oxygen; hair shedding months after childbirth is
+  hormonal (pregnancy hormones hold follicles in their growth phase, then fall), not a shock
+  effect; 7-dehydrocholesterol is the last molecule before cholesterol on the cholesterol-building
+  path, not made from cholesterol; albinism is little or no melanin, not always none; the
+  collapsed overheated athlete in the `skin-functions` hook is lowered into ice water (cold-water
+  immersion), and the tool takes him out at about 39 °C because his temperature keeps falling
+  afterward (NATA 2015, ACSM 2023).
+- **Numbers:** a keratinocyte takes about 4 to 8 weeks from the stratum basale to being shed;
+  epidermis about 0.1 mm in thin skin and 0.4 to 1.5 mm in thick skin; skin about 1.8 m²; scalp
+  anagen 2 to 7 years (85 to 90% of follicles), catagen 2 to 3 weeks, telogen about 3 months;
+  hair grows about 0.3 to 0.4 mm a day, eyelashes two to three times more slowly; shedding about 2
+  to 3 months after a shock (the auditor proposed "about 3 months (2 to 4)"; the reviewer kept
+  "2 to 3"); fingernails about 3 mm a month, toenails 12 to 18 months to regrow; 2 to 4 million
+  eccrine glands; little or no winter vitamin D farther than about 40 degrees from the equator;
+  about 580 kcal removed per liter of sweat evaporated; the infant rule of nines gives the head 18%
+  and each lower limb 13.5% (often rounded to 14%), so the column sums to 100; the palm with the
+  fingers is about 1%; body-wide capillary leak from a burn of roughly 20% or more; a healed scar
+  reaches at most about 80% of normal strength; burn fluids (parkland-starting-rate, above; needs
+  a clinical reviewer).
+- **Simplifications:** keratinization is described as a programmed cell death; "nerve signals"
+  stands in for sympathetic signals, which a later chapter teaches; the heat-loss graph is a
+  rounded model with resting heat production of about 100 W (the tool auditor's question about
+  that number was rejected as a standard round figure).
+- **Course-order workarounds:** estrogen is not named in the postpartum shedding explanation
+  ("pregnancy hormones"); "Langerhans cells" is used for the epidermal dendritic cells, because
+  the multi-word plural failed the ordering check; the OpenStax label "Cutaneous vascular plexus"
+  is tied to the blood vessel basics concept, since the map has no concept for it.
+- **Figures and labels:** 8 figures and 3 lab sets (skin layers, strata of thick skin, and hair
+  follicle, glands and nail). The histology station for the strata of thick skin uses the OpenStax
+  drawing os-5-5, and the thin-skin comparison station was skipped, because the OpenStax skin
+  micrographs (Figures 5.3, 5.4 and 5.6) are University of Michigan images that are not cleared
+  for commercial use (decisions 22 and 23). On `skin-layers`, Figure os-5-2 has many labels
+  covered because the hair, glands and sensory endings are taught in the next topics (decision
+  30); this is by design. The OpenStax catalog's alt text for Figure 5.23 says the head is 19%,
+  but the image prints 9%; the course's alt text follows the image.
+- **Audit judgment calls (question writing):** long keys were shortened or distractors
+  lengthened with real content in all four topics; the friction blister question's key was wrong
+  (it said the junction) and now reads "Within the upper living layers of the epidermis".
+- **Tool calls (tool writer and tool audit):** the chapter's two feedback loops are the skin's
+  halves of temperature control ("Too warm: the skin sheds heat", "Too cold: the skin holds heat
+  in"); the tanning items now say UV causes immediate darkening of existing melanin within
+  minutes, that tanning comes mainly from melanocytes making more melanin, and that repeated UV
+  modestly raises melanocyte numbers (Stierner 1989), so no item keys "melanocyte number: no
+  change" for tanning; the puberty item asks about the number of eccrine glands (none) rather
+  than sweat output, which rises with puberty (Falk 1992); the humid-heat overlay was recomputed
+  so heat builds up above about 33 °C, matching its key; the rule-of-nines calculator halves only
+  the head, an arm or a leg, and takes 0 or 100% for each trunk region; a superficial burn does
+  kill epidermal cells (they peel) but does not blister; burn depth follows the heat-burn rule,
+  with electrical burns named as the exception; "almost all" new epidermal cells come from the
+  basal layer; the in- of integument means "on, over". The failing-kidneys vitamin D item keeps
+  25-hydroxyvitamin D at "no change" in its simplified case (kidney-vitamin-d-25ohd, above).
+  One published page outside the chapter changed: `sensory-pathways` listed hair follicle endings
+  as encapsulated; they now sit with the unencapsulated endings, matching the skin chapter.
+- **Map fixes:** none needed. The writer's list of words with no map concept (lamellar granules,
+  keratinization, eumelanin and pheomelanin, friction ridges, tension lines, vellus and terminal
+  hair, root sheaths, hair root plexus, ceruminous glands, 7-dehydrocholesterol,
+  25-hydroxyvitamin D, hypertrophic scar, eschar, the palm method, myofibroblasts) was not added:
+  each is defined on its page, but none gets a glossary hover.
+
+## Phase 3: bone tissue chapter, judgment calls for instructor review
+
+- **Positions taught:** the hormone from the parathyroid glands and activated vitamin D do nearly
+  all everyday calcium regulation, and calcitonin is minor in adults, with a For your exam note in
+  `bone-calcium` (calcitonin-in-adults, above); the enlarged chondrocytes of the growth plate
+  mostly die, but some survive and become bone cells, with a For your exam note giving "they die"
+  (hypertrophic-chondrocyte-fate, above); enlargement of the chondrocytes, not division, supplies
+  most of the growth in length (growth-plate-length-source, above). Also taught as stated: the
+  calcium-raising hormone and cancer cells in bone switch on osteoclasts through bone-building
+  cells, not directly; bone resorption speeds up within hours but recruiting new osteoclasts takes
+  days; the middle of the cartilage model calcifies as the bone collar forms (one step, since
+  textbooks differ on which comes first); red marrow forms when blood-forming stem cells carried
+  in by blood vessels settle in spongy bone; in osteogenesis imperfecta the bones are thin but the
+  bone present is fully mineralized; most hip fractures in older adults come from an ordinary fall
+  onto thinned bone, not a break that causes the fall; in achondroplasia the skull's dome grows to
+  full size, often larger than average; bone mass peaks by about age 30 (the OpenStax graph reads
+  30 to 40).
+- **Numbers:** 206 bones; about 99% of the body's calcium and 85% of its phosphate in bone; about
+  a kilogram of calcium in the skeleton, about a gram in the fluid outside cells and about a
+  quarter of that in the plasma; bone matrix about one third organic; osteocytes over 90% of bone
+  cells; compact bone about 80% of skeletal mass; no osteocyte more than about a tenth of a
+  millimeter from a central canal; about 10% of the skeleton remodeled a year; resorption 2 to 4
+  weeks and formation 3 to 4 months per remodeling cycle; astronauts lose about 1 to 2% of hip and
+  spine bone a month; the racket arm of lifelong tennis players has about 25 to 30% more bone;
+  growth plates close at about 15 to 21; normal total blood calcium 8.5 to 10.5 mg/dL, about 50%
+  free, 40% bound to plasma proteins and 10% bound to small ions; cytosolic calcium about 10,000
+  times lower than outside; calcium intake 1,000 mg a day for adults, 1,300 mg for teenagers and
+  1,200 mg for women over 50 and everyone over 70; vitamin D 600 IU, 800 IU over 70; calcium
+  absorption about 10 to 15% rising to 30 to 40% or more with activated vitamin D.
+- **Simplifications:** osteoblasts are taught as not dividing (the osteogenic cells divide);
+  sclerostin and RANKL are not named; the clavicle is listed as intramembranous (its ends form
+  partly on cartilage); low blood calcium is explained as removing a brake on sodium channels; the
+  large urine volume of high calcium is taught as a failure of urine concentration; a spiral
+  fracture in a child who cannot yet walk is taught as a possible sign of abuse.
+- **Course-order workarounds:** bones are not named ("the thigh bone"), because the skeleton
+  chapter comes next; osteogenesis imperfecta is introduced as brittle bone disease; vitamins C
+  and K are not named; the parathyroid hormone, calcitonin and calcitriol are named only in
+  preview boxes, and the text says "the calcium-raising hormone from the small neck glands", "the
+  thyroid's hormone" and "activated vitamin D", since the endocrine chapter teaches them; menopause
+  and estrogen appear only in preview boxes or as "the ovaries' hormone" and "the end of the
+  reproductive years".
+- **Figures and labels:** 15 figures and 3 lab sets (long bone, bone histology, and epiphyseal
+  plate and bone formation). The histology station uses OpenStax drawings (bone cells os-6-11,
+  flat bone os-6-9 and spongy bone os-6-13), because OpenStax's bone micrographs are University of
+  Michigan images that are not cleared (decisions 22 and 23), and the osteon drawing, Figure 6.12,
+  is not registered. Figure 6.24 was not used because it shows calcitonin as an equal partner and
+  the calcium-raising hormone acting directly on osteoclasts, against the positions above. Two
+  printed figures have caveats the captions do not fully fix: Figure 6.13 draws spongy bone's
+  struts with osteon rings (struts usually have none), and Figure 6.20 draws its "closed" fracture
+  displaced. The OpenStax lifespan graph (Figure 6.23, in `bone-remodeling-repair`) prints a male
+  peak near 1,500 g of calcium; see the tool calls below.
+- **Audit judgment calls (question writing):** the "blood holds about a gram" line was wrong
+  (that gram is the whole fluid outside cells) and was fixed; image stems no longer state the
+  definition of the pinned structure; two items moved down a level (analyze to apply, apply to
+  recall). The auditor judged the writer's simplifications above standard, not contested.
+- **Tool calls (tool writer and tool audit):** the chapter's loops are blood calcium falls, blood
+  calcium rises (calcitonin labeled minor) and Wolff's law. **Bone mass graph rescaled (Phase 3
+  publish check):** the graph "Bone mass across the lifespan" (bt-bone-mass-lifespan) followed
+  OpenStax Figure 6.23, with a male peak of about 1,510 g of calcium and a female peak of about
+  1,220 g. Direct measurements of total-body calcium by neutron activation find about 1,140 g on
+  average in adult men (range about 830 to 1,360 g) and less in women (about 540 to 1,050 g),
+  standard texts give about 1,000 to 1,200 g for an adult, and the course's own notes and
+  calcium calculator say "about a kilogram". Every value on the graph (both curves, the two
+  overlays, the label positions and the y axis) was multiplied by 0.8: men now peak at about
+  1,210 g and fall to about 815 g at 100; women peak at about 975 g, fall to about 640 g at 60 and
+  435 g at 100. The questions' answers moved with it (male peak about 1,200 g, the sex gap about
+  235 g, a woman at 100 about 435 g), and the intro and alt text say the shape follows Figure 6.23
+  while the grams follow direct measurements. The OpenStax figure in the notes is unchanged and
+  its caption gives no grams. Some nutrition sources give higher adult values (about 1,200 g in
+  women and 1,400 g in men), so the instructor may prefer a different scale. The six-month bed
+  rest overlay removes about 2% of skeletal calcium (LeBlanc et al. 1990). Also: the
+  calcium-raising hormone curve is shifted so its half-maximum sits at 9.1 mg/dL, a little below
+  resting calcium, so resting release is about a quarter to a third of maximum; the
+  parathyroid-removal item asks about the share of calcium reabsorbed, since the amount in urine
+  falls with the lower filtered load; the kidney step of the calcium pathway no longer has to
+  follow bone resorption; an osteoblast is surrounded by osteoid before the osteoid mineralizes;
+  Trousseau's sign is explained by the cuff cutting off the arm's blood flow, in plain words.
+- **Map fixes:** decision 64 (5) adds the growth plate zone's printed label "maturation and
+  hypertrophy", and 64 (6) adds "protuberance", "canal (bone)", "sinus (bone)" and
+  "fissure (bone)" to the bone markings; "sulcus", "foramen" and "fovea" stay with their owners.
+  Words the writer found with no map concept (resorption, bone collar, zone of ossification,
+  resting zone, fracture types, peak bone mass, coupling, tetany, and the Haversian and Volkmann
+  synonyms) were not added.
+
+## Phase 3: skeleton chapter, judgment calls for instructor review
+
+- **Positions taught:** the function of the paranasal sinuses is not established
+  (paranasal-sinus-function, above); kyphosis and lordosis name the exaggerated curves, with the
+  clinical usage explained (kyphosis-lordosis-naming, above); false ribs are 8 to 12
+  (false-ribs-count, above); the fibula carries a small share of body weight
+  (fibula-weight-share, above). Also taught as stated: in a blowout fracture the orbit's floor
+  breaks most often, the inner wall next; the hyoid breaks mainly when the neck is squeezed hard;
+  cranial sutures are not yet fused at 17; a flail chest is two or more neighboring ribs each
+  broken in two or more places (some sources require three); a herniated lumbar disc presses on
+  the nerve root passing down to leave one level lower, not the one leaving at its own level; the
+  vertebral veins run down through the transverse foramina; the adult spinal cord ends at about
+  L1 to L2; a rib hinged at its back end is the pump-handle movement; the mandible is the only
+  freely movable skull bone (the ear ossicles are not mentioned); the hyoid touches no other
+  bone; sex differences in the pelvis are overlapping averages.
+- **Numbers:** 206 bones (80 axial, 126 appendicular); the posterior fontanelle closes at about 2
+  to 3 months, the anterior at about 1 to 2 years, the sphenoid and mastoid ones at 6 to 18
+  months; intervertebral discs make up about a quarter of the column's length, and height changes
+  1 to 2 cm over a day; the coccyx has about 4 fused vertebrae (3 to 5); the subpubic angle is
+  about 80 to 90 degrees or more in females and 50 to 60 in males; the femoral neck meets the
+  shaft at about 125 degrees; the sternum is about 15 to 17 cm long, and the xiphoid process
+  ossifies around 40; the neck curve appears at about 3 to 4 months and the lower-back curve at
+  about 1 year; the clavicle most often breaks in its middle third; the shoulder is the most often
+  dislocated joint.
+- **Course-order workarounds:** before decision 64 the skull page wrote around "foramen ovale" and
+  "nasal septum", and printed "ramus" labels (the ischiopubic ramus) were covered; those
+  words can now be printed. "Knee joint" and "sacroiliac joint" are taught in `synovial-joints`,
+  so skeleton items say "part of the knee" and name the bones instead. Nerves are described, not
+  named (the carpal tunnel carries "one major nerve to the thumb side of the hand").
+- **Etymology and mnemonics to confirm:** temporal, fontanelle, pubis, vertebra and olecranon;
+  mnemonics for the carpals and tarsals and for the 7, 12 and 5 vertebrae per region.
+- **Figures and labels:** 31 figures and 6 lab sets (skull, vertebrae by region, thoracic cage,
+  pectoral girdle and upper limb, pelvic girdle and lower limb, and the whole skeleton). **For
+  confirmation:** Figure 7.21 (abnormal curves, os-7-21) includes photographs and X-rays, but its
+  OpenStax caption carries no third-party credit, so it is used as OpenStax's own CC BY 4.0 work
+  under decision 22; the credits should be confirmed. The right-side skull view (os-7-5) shows
+  three sutures, not four (the sagittal suture is not visible from the side), and the captions
+  say so.
+- **Audit judgment calls (question writing):** two proposed length edits were rejected because
+  the new key would have become the longest option; `upper-limb` stays at 33% of items with the
+  key as the longest option, a little above the 18–30% target.
+- **Tool calls (tool writer and tool audit):** the chapter has no feedback loops, graphs or
+  calculators (it is anatomy; the map lists none), so its tools are pathways, prediction
+  scenarios, flashcards, word roots and the lab practical. Calls made in the tool audit: staged
+  prediction prompts state their baseline ("compared with before the fall"); the skull-floor
+  pathway merges steps that lie side by side rather than in a fixed order; a scaphoid fracture
+  "can" kill the near piece, more likely the nearer the break is to that end; the broken lateral
+  malleolus scenario also tears the ligament on the inner side, since an isolated fibula break is
+  usually stable; the medial longitudinal arch ends at the metatarsal heads; the lower limb
+  parallels the upper limb, but not bone for bone; the sella turcica is a saddle-shaped hollow,
+  not a bump; the septal cartilage forms the front of the nasal septum (the flexible tip is shaped
+  by other cartilages); styloid comes from Greek stylos, pillar, and pterion means "a little
+  wing".
+- **Map fixes:** decision 64 (1) (foramen ovale and nasal septum) and 64 (2) (ramus) were made for
+  this chapter.
+
+## Phase 3: joints chapter, judgment calls for instructor review
+
+- **Positions taught:** the lateral meniscus is torn more often than the medial in fresh ACL
+  tears, with the classic combination as the exam answer (unhappy-triad-meniscus, above);
+  osteoarthritis is a whole-joint disease with low-grade inflammation of the synovial membrane
+  (osteoarthritis-inflammation, above); plane joints glide, and both axis conventions are named
+  (plane-joint-axes, above). Also taught as stated: the joint between the sacrum and hip bone is
+  structurally synovial for much of its surface and functionally close to an amphiarthrosis; the
+  manubriosternal joint is a symphysis; the joints of ribs 2 to 7 with the sternum are synovial;
+  the midcarpal and subtalar joints are plane joints; the distal tibiofibular joint is a
+  syndesmosis; the tibial collateral ligament is part of the capsule and the fibular collateral
+  ligament lies outside it; gomphoses are not the only joints that do not join bone to bone (a
+  tooth forms one side); the neck and shoulder can hyperextend; thumb abduction lifts the thumb
+  forward, away from the palm; the ankle has its own movement names because books disagree on
+  whether lifting the foot is flexion or extension; the flexed knee rotates too; relaxin is not
+  named (relaxin-source-role, above).
+- **Numbers:** the pubic symphysis is about 4 to 5 mm wide and widens a few millimeters in
+  pregnancy; the hook's 12 mm gap is described as more than usual (more than about 10 mm is
+  separation of the joint); the glenoid cavity is about a third the size of the humeral head; the
+  bony acetabulum covers a little less than half a sphere, and with the labrum holds more than
+  half of the femoral head; the shoulder joint alone lifts the arm a little past shoulder height.
+- **Course-order workarounds:** the word "triad" belongs to the muscle fiber's T tubule triad, a
+  later concept, so the knee injury is "the classic unhappy combined knee injury"; "sacroiliac
+  joint" is taught in `synovial-joints`, so `joint-classification` says "the joint between the
+  sacrum and each hip bone".
+- **Etymology to confirm:** synovial (syn- plus ov-, egg, for the egg-white-like fluid) and gomph-
+  (peg or bolt).
+- **Figures and labels:** 15 figures and 3 lab sets (synovial joint structure, the knee, and
+  movements at synovial joints). Three OpenStax figures print misspelled labels (Figure 9.16
+  "long heed", Figure 9.17 "branchialis", Figure 9.18 "tronchanter"); the lab practical accepts
+  the correct spellings. Figure 9.20 shows the classic triad; its caption points to the For your
+  exam note.
+- **Audit judgment calls (question writing):** the three topics had the key as the longest option
+  in only 16% of items, below the 18–30% target, so distractors were trimmed to bring it to 29%;
+  "every" distractors were rewritten as specific false claims.
+- **Tool calls (tool writer and tool audit):** the chapter has no feedback loops or calculators;
+  its graphs are the hip, knee and ankle angles through one stride and cartilage under load.
+  Calls made: pronation turns the head of the radius and swings its lower end in one step; the
+  osteoarthritis pathway folds mild synovial inflammation into the cartilage-thinning step,
+  because it runs alongside cartilage loss rather than after bone spurs; the pregnancy scenario
+  states her pain in late pregnancy so "pain eases after delivery" can be keyed; symphysis is
+  decoded as sym- plus -physis, "a growing together"; the gait graph's hip line crosses zero at
+  about 42% of the stride.
+- **Map fixes:** none needed.
+
+## Phase 3: muscle tissue chapter, judgment calls for instructor review
+
+- **Positions taught:** resting muscle tone is mostly passive stiffness (muscle-tone-source,
+  above); treppe comes mainly from myosin light-chain phosphorylation (treppe-mechanism, above);
+  fiber-type proportion is strongly inherited (fiber-type-heritability, above, where the auditor
+  suggests "largely"); adult muscle grows almost entirely by hypertrophy (skeletal-hyperplasia,
+  above); the human fast glycolytic fiber is type IIx (fast-fiber-naming, above); lactate is a fuel
+  and fatigue has several causes, with a For your exam note in `muscle-metabolism`
+  (exercise-acidosis-and-lactate, above). Two more For your exam notes carry terminology rather
+  than contested science, so they have no entry above: "oxygen debt" is the older name for EPOC
+  (`muscle-metabolism`), and the rhythm of single-unit smooth muscle in the gut starts mainly in
+  the interstitial cells of Cajal, with "pacesetter cells" the expected answer either way
+  (`smooth-cardiac-muscle`; the auditor judged it settled). Also taught as stated: phosphate
+  leaves the myosin head with the power stroke and ADP at its end (the order is debated; the
+  caption of OpenStax Figure 10.11 is corrected); rigor mortis is calcium leaking in with no ATP
+  to release the heads, so the stiffness is locked cross-bridges, not contraction; the spasms of
+  low blood calcium come from sodium channels opening too easily; the delay before a twitch's
+  force rises is the time to take up slack in the elastic parts; titin runs from the Z disc to
+  the M line and lies along the thick filament among the myosin tails (2023 cryo-EM); ATP falls
+  only modestly in hard exercise (about a quarter in an all-out 400 m run); glucose units from
+  glycogen net 3 ATP in glycolysis; smooth muscle holds the latch state only while stimulation
+  continues at a lower level; nerves and hormones decide whether each slow wave in the gut reaches
+  threshold; heart muscle stops contracting within about a minute of losing its blood flow, and
+  cells start to die after about 20 to 30 minutes; a human sarcomere resting at about 2.5 µm sits
+  near the top of its length–tension curve.
+- **Numbers:** resting membrane potential −85 to −90 mV, threshold about −55 mV, action potential
+  2 to 5 ms, conducted at 3 to 5 m/s; about 10,000 acetylcholine receptor proteins per square
+  micrometer at the end plate; the synaptic cleft about 50 nm, more than twice that of most
+  neuron synapses; thousands of acetylcholine molecules per vesicle and dozens to over a hundred
+  vesicles per impulse; cytosolic calcium rises about 100-fold; tropomyosin spans 7 actins; each
+  SR pump moves 2 calcium ions per ATP; the power stroke moves 5 to 10 nm; about 600 heads per
+  thick filament; rigor starts 2 to 6 hours after death, peaks at about 12 hours and passes in 1 to
+  3 days; thick filaments 1.6 µm and thin 1.0 µm (the classic frog values; human thin filaments
+  are about 1.2 to 1.3 µm), resting sarcomere 2.5 µm; a twitch is about a fifth to a third of
+  maximum force and tetanus about 3 to 5 times a twitch; motor units range from 10 to 20 fibers
+  (eye muscles) to over 1,000 (calf); creatine phosphate is about 4 times the ATP store and lasts
+  about 10 seconds; aerobic respiration overtakes glycolysis at about 75 seconds; about 400 g of
+  glycogen in the muscles; sarcopenia about 1% a year after 50; Duchenne muscular dystrophy in 1 in
+  3,500 to 5,000 boys; the latch state uses under a tenth of the ATP; the bladder stays at low
+  pressure from about 50 to 400 mL.
+- **Course-order workarounds:** myasthenia gravis is described in plain words; "nicotinic" is
+  explained without nicotine; malignant hyperthermia and tetanus are described but not named (a
+  "quiver", not a twitch); the soleus, sphincters and the iris are written around; the gut's own
+  nerve network is described, not named (the enteric nervous system comes later); the bladder
+  neck, not a smooth muscle ring, helps keep the bladder closed (female-internal-sphincter,
+  above). Before decision 64 the writer used "muscle stem cells" and avoided myosin's "light
+  chain"; both can now be printed.
+- **Figures and labels:** 19 figures (17 OpenStax, and two LevlPrep drawings: the end-plate
+  traces and the excitation–contraction timing) and 4 lab sets (skeletal muscle organization, the
+  sarcomere, the neuromuscular junction, and skeletal, cardiac and smooth muscle). The histology
+  station is built from cleared OpenStax drawings (os-10-4, os-10-22 and os-10-24), because the
+  muscle micrographs (Figures 10.2, 10.21 and 10.23) are University of Michigan images that are not
+  cleared, the same call as the existing muscle tissues set. OpenStax Figure 10.12 prints "lactic
+  acid" and labels its branch "no oxygen"; the caption says the product exists as lactate and that
+  lactate forms whenever glycolysis outpaces the mitochondria, even with oxygen present. The inline triad diagram's sensor label was moved off the SR, and
+  the energy systems figure was redrawn so glycolysis and aerobic respiration cross at about 75
+  seconds, as the caption says.
+- **Audit judgment calls (question writing):** long keys were shortened across the eight topics
+  (the key is the longest option in about a quarter of items); a drug item that could allow one
+  power stroke now asks about the end state after repeated stimulation; the twins item now says
+  identical twins.
+- **Tool calls (tool writer and tool audit):** the chapter has no feedback loops (the map lists
+  none). Calls made: the length–tension graph uses the classic frog percentages (100% is the
+  length of greatest tension, about 2.1 µm there) and its intro says the human curve has the same
+  shape but peaks at about 2.6 to 2.8 µm; the summation graph just adds twitches, and its intro
+  says real fibers sum more strongly (20 stimuli a second often gives half of maximum or more);
+  the twitch graph no longer calls its 35 ms peak a slow fiber's (human slow units
+  usually peak at about 50 to 100 ms); after a 30-second sprint about half the
+  creatine phosphate returns in the first minute and most within 10 minutes (Bogdanis 1995), and
+  the flashcard's 30-second half-time is limited to short sprints; heart muscle cut off from its
+  blood flow stops contracting while ATP is still near normal, as phosphate builds up; a
+  troponin test soon after a heart attack can be normal, and the rise comes over the next hours;
+  an isolated loop of intestine keeps the nerve network in its own wall; the crests of the end
+  plate do not fire, while the depths of its folds carry voltage-gated sodium channels.
+- **Map fixes:** decision 64 (3) (satellite cell) and 64 (4) (heavy and light chain) were made for
+  this chapter. Titin, calsequestrin and the DHP and ryanodine receptors are defined on the pages
+  but are not map concepts, so they get no glossary hover.
 
 ## Decided at the Phase 0 reviews
 

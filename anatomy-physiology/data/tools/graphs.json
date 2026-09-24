@@ -34812,8 +34812,8 @@
     "homeostasis",
     "structure-function"
    ],
-   "intro": "Bone mass here is the mass of calcium in the whole skeleton, which tracks the amount of bone. The curves show typical values for men and women from birth to 100, following OpenStax Figure 6.23. Whether bone is gained, kept or lost depends on the balance between osteoblasts and osteoclasts at each age.",
-   "alt": "Two curves of skeletal calcium in grams against age from 0 to 100 years. Both rise steeply through childhood and the teens. The male curve peaks at about 1,510 grams between 35 and 40 and falls slowly to about 1,020 grams at 100. The female curve peaks at about 1,220 grams at 35, falls slowly to about 1,100 grams at 50, then drops steeply to about 800 grams at 60, and falls slowly to about 545 grams at 100.",
+   "intro": "Bone mass here is the mass of calcium in the whole skeleton, which tracks the amount of bone. The curves show typical values for men and women from birth to 100. Their shape follows OpenStax Figure 6.23; the grams are scaled to direct measurements of adult total-body calcium, about 1,000 to 1,200 g in young men. Whether bone is gained, kept or lost depends on the balance between osteoblasts and osteoclasts at each age.",
+   "alt": "Two curves of skeletal calcium in grams against age from 0 to 100 years. Both rise steeply through childhood and the teens. The male curve peaks at about 1,210 grams between 35 and 40 and falls slowly to about 815 grams at 100. The female curve peaks at about 975 grams at 35, falls slowly to about 880 grams at 50, then drops steeply to about 640 grams at 60, and falls slowly to about 435 grams at 100.",
    "x": {
     "min": 0,
     "max": 100,
@@ -34837,7 +34837,7 @@
     {
      "y": {
       "min": 0,
-      "max": 1600,
+      "max": 1300,
       "label": "Calcium in the skeleton",
       "unit": "g",
       "ticks": [
@@ -34846,8 +34846,7 @@
        500,
        750,
        1000,
-       1250,
-       1500
+       1250
       ]
      },
      "series": [
@@ -34862,69 +34861,69 @@
         ],
         [
          5,
-         280
+         225
         ],
         [
          10,
-         560
+         450
         ],
         [
          15,
-         900
+         720
         ],
         [
          20,
-         1240
+         990
         ],
         [
          25,
-         1420
+         1135
         ],
         [
          30,
-         1490
+         1190
         ],
         [
          35,
-         1510
+         1210
         ],
         [
          40,
-         1510
+         1210
         ],
         [
          45,
-         1490
+         1190
         ],
         [
          50,
-         1460
+         1170
         ],
         [
          60,
-         1400
-        ],
-        [
-         70,
-         1320
-        ],
-        [
-         80,
-         1220
-        ],
-        [
-         90,
          1120
         ],
         [
+         70,
+         1055
+        ],
+        [
+         80,
+         975
+        ],
+        [
+         90,
+         895
+        ],
+        [
          100,
-         1020
+         815
         ]
        ],
        "label": "men",
        "labelAt": [
         72,
-        1380
+        1105
        ],
        "anchor": "start"
       },
@@ -34940,85 +34939,85 @@
         ],
         [
          5,
-         230
+         185
         ],
         [
          10,
-         470
+         375
         ],
         [
          15,
-         760
+         610
         ],
         [
          20,
-         1020
+         815
         ],
         [
          25,
-         1160
-        ],
-        [
-         30,
-         1210
-        ],
-        [
-         35,
-         1220
-        ],
-        [
-         40,
-         1210
-        ],
-        [
-         45,
-         1170
-        ],
-        [
-         50,
-         1100
-        ],
-        [
-         53,
-         1060
-        ],
-        [
-         55,
-         1010
-        ],
-        [
-         57,
          930
         ],
         [
-         60,
-         800
+         30,
+         970
         ],
         [
-         63,
+         35,
+         975
+        ],
+        [
+         40,
+         970
+        ],
+        [
+         45,
+         935
+        ],
+        [
+         50,
+         880
+        ],
+        [
+         53,
+         850
+        ],
+        [
+         55,
+         810
+        ],
+        [
+         57,
          745
         ],
         [
+         60,
+         640
+        ],
+        [
+         63,
+         595
+        ],
+        [
          70,
-         705
+         565
         ],
         [
          80,
-         650
+         520
         ],
         [
          90,
-         600
+         480
         ],
         [
          100,
-         545
+         435
         ]
        ],
        "label": "women",
        "labelAt": [
         72,
-        620
+        495
        ],
        "anchor": "start"
       }
@@ -35052,14 +35051,14 @@
      "level": "recall",
      "diff": 1,
      "q": "Read the peak calcium content of the male skeleton.",
-     "answer": 1500,
-     "tol": 60,
+     "answer": 1200,
+     "tol": 50,
      "unit": "g",
      "show": {
       "x": 37,
-      "y": 1510
+      "y": 1210
      },
-     "why": "About 1,500 g, reached in the thirties. Women peak lower, near 1,200 g. Either way, an adult skeleton holds a kilogram or more of calcium, the bank the blood draws on."
+     "why": "About 1,200 g, reached in the thirties. Women peak lower, a little under 1,000 g. Either way, an adult skeleton holds about a kilogram of calcium, the bank the blood draws on."
     },
     {
      "id": "gap",
@@ -35067,14 +35066,14 @@
      "level": "apply",
      "diff": 2,
      "q": "At their peaks, how many more grams of calcium does the typical male skeleton hold than the female skeleton?",
-     "answer": 290,
-     "tol": 60,
+     "answer": 235,
+     "tol": 50,
      "unit": "g",
      "show": {
       "x": 35,
-      "y": 1220
+      "y": 975
      },
-     "why": "About 1,510 − 1,220 = about 290 g. Men usually reach a higher peak, so women start their later losses from a lower level, one reason osteoporosis is more common in women."
+     "why": "About 1,210 − 975 = about 235 g. Men usually reach a higher peak, so women start their later losses from a lower level, one reason osteoporosis is more common in women."
     },
     {
      "id": "female-100",
@@ -35082,14 +35081,14 @@
      "level": "recall",
      "diff": 1,
      "q": "Read the calcium content of the female skeleton at 100.",
-     "answer": 545,
-     "tol": 50,
+     "answer": 435,
+     "tol": 40,
      "unit": "g",
      "show": {
       "x": 100,
-      "y": 545
+      "y": 435
      },
-     "why": "About 545 g, less than half her peak. Decades of remodeling cycles that each remove slightly more than they replace, plus the fast loss in her fifties, add up."
+     "why": "About 435 g, less than half her peak. Decades of remodeling cycles that each remove slightly more than they replace, plus the fast loss in her fifties, add up."
     },
     {
      "id": "gain-phase",
@@ -35172,73 +35171,73 @@
          ],
          [
           5,
-          220
+          175
          ],
          [
           10,
-          440
+          350
          ],
          [
           15,
-          690
+          550
          ],
          [
           20,
-          900
+          720
          ],
          [
           25,
-          1010
+          810
          ],
          [
           30,
-          1050
+          840
          ],
          [
           35,
-          1060
+          850
          ],
          [
           40,
-          1050
+          840
          ],
          [
           45,
-          1015
+          810
          ],
          [
           50,
-          950
+          760
          ],
          [
           55,
-          870
+          695
          ],
          [
           60,
-          670
+          535
          ],
          [
           70,
-          580
+          465
          ],
          [
           80,
-          530
+          425
          ],
          [
           90,
-          485
+          390
          ],
          [
           100,
-          440
+          350
          ]
         ],
         "label": "low calcium, little exercise",
         "labelAt": [
          3,
-         1120
+         895
         ],
         "anchor": "start"
        }
@@ -35277,45 +35276,45 @@
         "pts": [
          [
           40,
-          1510
+          1210
          ],
          [
           40.5,
-          1480
+          1185
          ],
          [
           41,
-          1475
+          1180
          ],
          [
           43,
-          1485
+          1190
          ],
          [
           45,
-          1480
+          1185
          ],
          [
           50,
-          1452
+          1160
          ],
          [
           60,
-          1392
+          1115
          ],
          [
           70,
-          1312
+          1050
          ],
          [
           80,
-          1212
+          970
          ]
         ],
         "label": "after bed rest",
         "labelAt": [
          45,
-         1300
+         1040
         ],
         "anchor": "start"
        }
