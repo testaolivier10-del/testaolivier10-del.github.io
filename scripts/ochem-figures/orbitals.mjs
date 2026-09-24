@@ -62,7 +62,7 @@ FIGURES.push({
   id: 'h-1s-cloud',
   section: 'orbitals',
   lessons: ['orbitals'],
-  anchor: '<!-- anchor:h-1s-cloud -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 222',
   alt: 'Two panels about hydrogen’s one electron. Left: a nucleus labeled H nucleus, one proton, surrounded by hundreds of dots, each a place the electron was found in one snapshot. The dots are densest near the nucleus and thin out with distance. Right: the same nucleus inside a shaded circle labeled 1s orbital, the boundary that holds the electron 90 percent of the time.',
   build() {
@@ -103,7 +103,7 @@ FIGURES.push({
   id: 's-orbitals',
   section: 'orbitals',
   lessons: ['orbitals'],
-  anchor: '<!-- anchor:s-orbitals -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 200',
   alt: 'Two s orbitals drawn as circles, each with the nucleus at its center. Left: 1s, a small sphere. Right: 2s, a larger sphere with a dashed circle inside it labeled node; inside the node is a small inner region in the other shade, and outside it the main region.',
   build() {
@@ -131,7 +131,7 @@ FIGURES.push({
   id: 'p-orbital',
   section: 'orbitals',
   lessons: ['orbitals'],
-  anchor: '<!-- anchor:p-orbital -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 210',
   alt: 'One 2p orbital lying along the x axis: two teardrop lobes that meet at the nucleus, one to the right in the green shade and one to the left in the lilac shade. A dashed flat plane seen at a slant passes through the nucleus at right angles to the axis, labeled nodal plane, where the electron is never found.',
   build() {
@@ -180,7 +180,7 @@ function pAxes(c, show, opts = {}) {
 FIGURES.push({
   id: 'p-three-axes',
   section: 'orbitals',
-  anchor: '<!-- anchor:p-three-axes -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 760 270',
   alt: 'Three panels built up one at a time on the same x, y and z axes, with z drawn coming toward the reader down and to the left. Panel 1: the 2px orbital, two lobes along x. Panel 2: 2py added, two lobes along y, at 90 degrees to 2px. Panel 3: 2pz added, two shorter-looking lobes along z, toward and away from the reader, at 90 degrees to both.',
   build() {
@@ -227,7 +227,7 @@ FIGURES.push({
   id: 'orbital-shapes',
   section: 'orbitals',
   lessons: ['orbitals'],
-  anchor: '<!-- anchor:orbital-shapes -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 360',
   alt: 'Four panels. s: a sphere, one per shell, from n = 1. p: two lobes, three per shell, from n = 2. d: a four-lobed cloverleaf with the lobes alternating in shade, five per shell, from n = 3. f: a six-lobed flower with alternating shades, seven per shell, from n = 4. A dot marks the nucleus in each.',
   build() {
@@ -266,7 +266,7 @@ FIGURES.push({
   id: 'phase-overlap',
   section: 'orbitals',
   lessons: ['orbitals'],
-  anchor: '<!-- anchor:phase-overlap -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 380',
   alt: 'Three rows. Row 1: one p orbital with a plus sign in one lobe and a minus sign in the other, and a dashed node between them; the signs are phase, not charge. Row 2: two hydrogen atoms, each labeled H, whose 1s spheres are both in the same shade and overlap; the overlap region between them is where the shared pair sits, a bond. Row 3: the same two hydrogens with spheres in opposite shades; the waves cancel and a dashed node runs between the two nuclei, so there is no bond.',
   build() {
@@ -310,7 +310,7 @@ FIGURES.push({
   id: 'penetration',
   section: 'orbitals',
   lessons: ['orbitals'],
-  anchor: '<!-- anchor:penetration -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 250',
   alt: 'A graph of how likely an electron is to be found at each distance from the nucleus. A shaded hump close to the nucleus is the 1s core electrons. The 2s curve has a small inner bump inside that core region, then dips to zero at its node and rises to a large outer hump. The 2p curve starts at zero at the nucleus and has only one hump, farther out, with nothing inside the core.',
   build() {
@@ -355,7 +355,7 @@ FIGURES.push({
   id: 'orbital-energy-ladder',
   section: 'orbitals',
   lessons: ['orbitals'],
-  anchor: '<!-- anchor:orbital-energy-ladder -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 340 330',
   alt: 'An energy ladder of subshells from 1s at the bottom to 3d at the top, each drawn as its boxes: one box for each s, three for each p, five for 3d. The 4s rung sits below the 3d rung. The 2s and 2p rungs are bracketed together as n = 2: four orbitals, eight electrons.',
   build() {
@@ -416,7 +416,7 @@ const ATOMS = [
 FIGURES.push({
   id: 'config-boxes',
   section: 'orbitals',
-  anchor: '<!-- anchor:config-boxes -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 740 204',
   alt: 'Orbital box diagrams for carbon, nitrogen, oxygen and fluorine, side by side, with 1s at the bottom, then 2s, then three 2p boxes. In all four, 1s and 2s each hold a pair of opposite arrows. Carbon: one up arrow in each of two 2p boxes, the third empty. Nitrogen: one up arrow in each of the three 2p boxes. Oxygen: one 2p box paired, two singles. Fluorine: two 2p boxes paired, one single. Under each: its configuration and its count of unpaired electrons and paired boxes.',
   build() {
@@ -475,7 +475,7 @@ const ORGANIC = new Set(['C', 'N', 'O', 'F']);
 FIGURES.push({
   id: 'periodic-blocks',
   section: 'orbitals',
-  anchor: '<!-- anchor:periodic-blocks -->',
+  anchor: '<h3>What an orbital is</h3>',
   viewBox: '0 0 760 300',
   alt: 'The first four rows of the periodic table, every element labeled, with the f-block row drawn separately below. Groups 1 and 2 are shaded as the s-block, groups 3 to 12 (Sc to Zn in row 4) as the d-block, groups 13 to 18 as the p-block. Helium is shaded as s-block although it sits at the top of group 18. Carbon, nitrogen, oxygen and fluorine are outlined. A row of 14 blank cells below is the f-block.',
   build() {

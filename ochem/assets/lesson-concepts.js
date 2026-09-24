@@ -446,12 +446,13 @@
       6:['huckel-aromaticity'],
       7:['huckel-aromaticity'] } },
 
-    'atomic-structure': { n:13, steps:{
+    'atomic-structure': { n:15, steps:{
       3:['valence-electrons'],
       4:['valence-electrons'],
       5:['valence-electrons'],
-      10:['valence-electrons'],
-      12:['valence-electrons'] } },
+      7:['valence-electrons'],
+      12:['valence-electrons'],
+      14:['valence-electrons'] } },
 
     'axial-equatorial': { n:7, steps:{
       1:['chair-axial-equatorial'],
