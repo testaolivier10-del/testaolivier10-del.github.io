@@ -466,6 +466,36 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** bp-short-term gives organ autoregulation as about 60–150 mm Hg and names the kidneys; the kidney's GFR plateau is about 80–180. Suggested optional phrase after "60 to 150 mm Hg": "(the exact range differs between organs; in the kidney it runs a little higher, about 80 to 180)".
 - **For your exam:** n/a (wording).
 
+### hypernatremia-correction-rate: how fast chronic hypernatremia may be corrected
+- **Status:** pending review.
+- **Where:** `electrolyte-balance` (hypernatremia paragraph; comparison table row "Danger of correcting a chronic case too fast").
+- **Evidence-based position:** brain swelling from fast correction of chronic hypernatremia is well documented in infants and children. In adults, observational data (Chauhan et al., CJASN 2019, and later hospital cohorts) show no cerebral edema or excess deaths with faster correction, and slow correction may be linked to worse outcomes. The page teaches the brain-adaptation mechanism, says the harm is shown mainly in children and less clearly in adults, and keeps the usual advice of lowering sodium by no more than about 10 mmol/L a day.
+- **For your exam:** correct chronic hypernatremia slowly (about 0.5 mmol/L an hour, 10 to 12 mmol/L a day), because fast correction causes cerebral edema.
+
+### albumin-adjusted-calcium: how far to trust "corrected" calcium
+- **Status:** pending review.
+- **Where:** `electrolyte-balance` (worked example 4; question 14).
+- **Evidence-based position:** the adjustment (measured calcium + 0.8 × (4.0 − albumin)) is taught as a rough bedside estimate that misclassifies most often when albumin is low, where it can hide a real hypocalcemia; ionized calcium, measured directly, is the reference. Some laboratory bodies now advise against reporting "corrected" calcium; the auditor saw a reported 2026 IFCC/EFLM/IOF statement only through search summaries, so it needs verifying.
+- **For your exam:** nursing and A&P exams still expect the formula, and a normal adjusted value read as "normal calcium".
+
+### dehydration-terminology: what "dehydration" means
+- **Status:** pending review.
+- **Where:** `fluid-compartments-water` (notes Hypovolemia and Dehydration sections and For your exam note, lesson misconception, questions 11 and 12); `electrolyte-balance` (hypernatremia).
+- **Evidence-based position:** the physiological split is kept. Hypovolemia is salt and water lost together, with osmolality about normal, so only the ECF shrinks; dehydration in the strict sense is water lost in excess of solute, so osmolality and sodium rise and the ICF shrinks too. Vomiting and most diarrhea are taught as mostly isotonic volume losses, with a hedge that some diarrheas (osmotic diarrhea, gastroenteritis in children) lose more water than salt.
+- **For your exam:** many nursing texts use "dehydration" for any fluid loss and divide it into isotonic, hypertonic and hypotonic dehydration, so an exam may call a diarrhea-induced volume loss "isotonic dehydration". The page tells students to read how the question uses the word.
+
+### main-intracellular-buffer: proteins or phosphate?
+- **Status:** pending review.
+- **Where:** `acid-base-regulation` (protein buffers, For your exam note).
+- **Evidence-based position:** inside cells, proteins and phosphates (organic phosphates such as ATP and 2,3-BPG, plus inorganic phosphate) buffer together, and proteins supply the larger share, because most body protein is inside cells (Guyton and Hall). Texts genuinely split: many A&P texts stress phosphate.
+- **For your exam:** many A&P textbooks call the phosphate buffer the main intracellular buffer. If both are offered, give the answer your course textbook gives.
+
+### fully-compensated: can compensation return pH to normal?
+- **Status:** pending review.
+- **Where:** `acid-base-disorders` (Compensation, For your exam note; worked example 8; questions 4 and 21), ABG interpreter.
+- **Evidence-based position:** compensation seldom brings pH all the way back to normal; the main exception is respiratory alkalosis lasting days to weeks. A normal pH with both PaCO2 and bicarbonate well outside their ranges suggests two disorders at once, checked against expected-compensation rules (Winter's formula and similar, in a going-further box).
+- **For your exam:** nursing and paramedic exams call any gas with both numbers abnormal and a pH of 7.35 to 7.45 "fully compensated", naming the primary disorder from the side of 7.40 the pH sits on. Use that label when asked.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -875,6 +905,89 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
 - **Etymology to confirm:** obligatory, facultative, intercalated, calculus, dialysis.
 - **Names:** "Mr. Osei" is reused with different ages in about six chapters (ecg, lung-volumes,
   biomolecules, brain-regions, respiratory-disorders, acid-base-regulation).
+
+## Phase 2: fluid, electrolyte and acid-base chapter, judgment calls for instructor review
+
+- **Positions taught:** ADH release starts at a plasma osmolality of about 280–285 mOsm/kg and
+  thirst slightly higher (the order is debated); urea raises measured osmolality but not
+  tonicity; a small rise in potassium makes cells easier to excite and a larger one harder;
+  hypokalemia makes skeletal muscle harder to fire but slows cardiac repolarization (flat T, U
+  wave, extra beats); acidemia shifts potassium out of cells mainly with mineral acids, little
+  with lactic or keto acids; DKA potassium is high at first from insulin lack and
+  hyperosmolality despite a total-body loss; vomiting alkalosis is generated by the alkaline
+  tide and kept up by the kidneys holding bicarbonate when volume, chloride and potassium are
+  low (paradoxical aciduria in a going-further box); diarrhea gives a normal-gap, high-chloride
+  acidosis, but in cholera with shock the gap can rise (Wang 1986); DKA criteria follow the 2024
+  ADA/EASD/JBDS/AACE/DTS consensus (glucose 200 mg/dL or known diabetes, beta-hydroxybutyrate
+  3.0 mmol/L or more, pH below 7.30 or bicarbonate below 18); aldosterone raises H+ secretion
+  directly on type A intercalated cells and indirectly through principal-cell sodium uptake;
+  the bicarbonate buffer matters because it is an open system, not because of its pK;
+  "balanced" crystalloids make little or no difference to outcomes (going further); the
+  revised Starling view of how much of an infusion stays in plasma is a going-further box; IV
+  magnesium is described in plain words as given to "pregnant women with a dangerous rise in
+  blood pressure"; paper-bag rebreathing is no longer recommended; hypoxic drive, calcitonin,
+  dehydration, the intracellular buffer, compensation, corrected calcium and hypernatremia
+  correction are logged above.
+- **Normal values chosen:** total body water 60% of body mass in a young adult man, 50–55% in
+  women, 45–50% in older adults, about 75% in infants; ICF two thirds and ECF one third (three
+  quarters interstitial, one quarter plasma); transcellular fluid about 1 L; daily intake 1.5 L
+  drink, 0.75 L food, 0.25 L metabolic water; output 1.5 L urine, 0.7 L insensible, 0.2 L
+  feces, 0.1 L sweat; kidneys excrete at most about 0.7–1 L of water an hour; sodium 135–145
+  mmol/L (severe below 125), chronic hyponatremia corrected by no more than about 8–10 mmol/L a
+  day; calculated osmolality = 2 × Na + glucose/18 + BUN/2.8; potassium 3.5–5.0 mmol/L (some
+  labs 5.5), about 3,500 mmol inside cells vs 60 in the ECF, intake 70–100 mmol a day, 90% out
+  in urine; IV calcium protects the heart for 30–60 minutes; total calcium 8.5–10.5 mg/dL (50%
+  ionized, 40% bound, 10% complexed); phosphate 2.5–4.5 mg/dL, 85% in bone; chloride 98–106
+  mmol/L; magnesium 1.7–2.2 mg/dL, 60% in bone. Blood gas: pH 7.35–7.45, PaCO2 35–45 mm Hg,
+  bicarbonate 22–26 mmol/L, PaO2 about 80–100 mm Hg; anion gap about 8–12 mmol/L on modern
+  analyzers (older 8–16 or 12 ± 4 in a going-further box), albumin correction about 2.5 per 1
+  g/dL fall; CO2 13,000–20,000 mmol a day; fixed acid about 1 mmol/kg a day; filtered
+  bicarbonate 4,320 mmol a day, 80% reclaimed proximally and 10–15% in the thick ascending limb;
+  titratable acid 20–30 and ammonium 30–50 mmol a day, ammonium up five- to tenfold over 3–5
+  days; lowest urine pH 4.5; respiratory compensation full in 12–24 hours, renal in 3–5 days;
+  compensation rules of thumb (Winter's formula 1.5 × HCO3 + 8 ± 2; PaCO2 up about 0.7 per 1
+  mmol/L in metabolic alkalosis and rarely above about 55; bicarbonate up 1 per 10 mm Hg acute,
+  3.5–4 chronic in respiratory acidosis; down 2 acute, 4–5 chronic in respiratory alkalosis).
+- **Simplifications:** the potassium shift with acidosis is given without its mechanism;
+  hypokalemia is taught as hyperpolarizing (the paradoxical depolarization at very low
+  potassium appears only as a caveat on the potassium graph); FGF23 is a going-further box; the
+  ADH and thirst threshold graph is schematic; the edema example uses a sodium of 130; very high
+  cortisol in Cushing syndrome "acts like aldosterone" (the enzyme overflow is not named);
+  glutamine yields two ammonium and two new bicarbonate; the type A intercalated cell H+/K+ pump
+  is "the same kind" as the stomach's; the bicarbonate exchanger is named band 3; urea synthesis
+  using bicarbonate is not taught; ROME is taught as a student aid; pregnancy is not named as a
+  cause of respiratory alkalosis (taught later).
+- **Tool calls (tool audit):** the diuretic scenario asks about sodium "in her urine in the hours
+  after a dose", because within days the RAAS and the distal segments catch more between doses
+  (diuretic braking) and daily output again matches intake at a smaller ECF; the ABG interpreter
+  gives no label when the pH is in range and only one of PaCO2 and bicarbonate is abnormal (it
+  says to recheck and interpret with the patient), and "uncompensated" only when the pH is out
+  of range; the anion-gap calculator's practice cases are limited to gaps of 8–35, and a gap
+  below 8 gets its own message (uncommon, most often low albumin, then lab error); the
+  body-water calculator keeps its infant preset but warns that the two-thirds / one-third split
+  is an adult rule (in a newborn the ECF is close to half of body water or more). Also: the
+  failing-kidneys graph item asks about kidneys that "could not raise their H+ secretion" (kidneys
+  failing outright would let bicarbonate drift down); the insulin preset in the potassium-shift
+  calculator says the potassium must still be removed; the SIADH urine osmolality is compared with
+  what his dilute plasma should produce; the burns scenario leaves out evaporation; a
+  high-protein diet roughly doubles ammonium; the steak dinner adds about 40 mmol of hydrogen
+  ions as sulfuric acid; the dialysis item drops the calcitriol step (a fixed background); the
+  renal new-bicarbonate pathway merges bicarbonate exit into its final step (6 steps), since exit
+  runs in parallel with H+ secretion; the potassium graph notes that real cells fall short of
+  the Nernst line at low potassium.
+- **Figures:** Figure 26.5 draws plasma sodium near 150 and potassium near 9 (caption gives the
+  clinical 140 and 4); 26.4 shows the ICF at about 55% of body water (the course uses two
+  thirds); 25.19 draws ATP on the apical H+ exit (caption: mostly the sodium–hydrogen exchanger);
+  26.16 prints "brain and arterial receptors" (caption: chemoreceptors); 26.18 lists seizures
+  under muscular signs (caption note); 26.13 (sodium trigger, ambiguous potassium box) and 26.17
+  are not used.
+- **Map gaps:** transcellular fluid, mEq, third spacing, osmotic demyelination, Chvostek and
+  Trousseau signs, U wave, torsades, refeeding, FGF23, pseudohyperkalemia, potassium binders,
+  balanced crystalloids and lactated Ringer's, ionized and adjusted calcium, BUN, glutamine,
+  titratable acid, net acid excretion, type A and B intercalated cells, Kussmaul breathing,
+  Winter's formula, mixed disorder, lactic acidosis, paradoxical aciduria, pK.
+- **Etymology to confirm:** natrium, kalium, magnesium, insensible, volatile, titratable,
+  compensation, metabolic.
 
 ## Decided at the Phase 0 reviews
 
