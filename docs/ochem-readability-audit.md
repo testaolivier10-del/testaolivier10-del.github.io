@@ -1,6 +1,7 @@
 # Ochem readability and diagram audit (Phase 0)
 
-Date: 2026-09-24. Status: **awaiting owner review.** Nothing in the course has been changed yet.
+Date: 2026-09-24. Status: Phase 0 approved. **Phase 1 done** (functional groups and all four nomenclature
+topics rewritten and audited; see `docs/ochem-phase1-report.md`), waiting on the owner's review before Phase 2.
 
 ## What this is
 

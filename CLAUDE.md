@@ -10,3 +10,10 @@ the ordering build check reads; `docs/anp-phase0.md` explains it.
 the finished course (Phases 2 and 3).
 `docs/anp-needs-author.md` holds open questions and contested science for human
 review; add to it instead of guessing.
+
+## Ochem readability and diagram pass
+
+`docs/ochem-readability-audit.md` lists every notes and lesson page's findings, worst first, and
+`docs/ochem-phase1-report.md` reports the first rewrites. Open points for a person go in
+`docs/ochem-needs-author.md`. Figures for a rewritten topic live in `scripts/ochem-figures/<topic>.mjs`
+and can also appear in its lesson (see the header of `scripts/build-ochem-figures.mjs`).
