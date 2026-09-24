@@ -620,7 +620,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Priority falls left to right, row by row, as far as the amine. The shaded panels are the acid and its derivatives. Under each drawing is the suffix that group takes.',
+  caption: 'Priority falls left to right, row by row, as far as the amine. The shaded panels are the acid and its derivatives. Under each drawing is the suffix that group takes; the alkene and alkyne panels are marked as not on the list.',
 });
 
 FIGURES.push({
