@@ -16093,7 +16093,7 @@
    "level": "recall",
    "front": "What is mechanical advantage?",
    "back": "Effort arm ÷ load arm.",
-   "why": "Above 1, the muscle can move more than it pulls; below 1, it must pull harder than the load but moves the load farther and faster."
+   "why": "Above 1, the muscle can hold a load heavier than its own pull; below 1, it must pull harder than the load but moves the load farther and faster."
   },
   {
    "id": "ms-elbow-worked",
@@ -16764,8 +16764,8 @@
    ],
    "level": "analyze",
    "compare": "Wrist and finger flexors vs extensors",
-   "front": "Which two muscles bend the wrist toward the thumb?",
-   "back": "Flexor carpi radialis and extensor carpi radialis (longus and brevis) together.",
+   "front": "Which muscles bend the wrist toward the thumb?",
+   "back": "The flexor carpi radialis with the extensor carpi radialis longus and brevis, working together.",
    "why": "The flexor and extensor on the same edge cancel each other’s flexion and extension and add their sideways pull."
   },
   {
@@ -16798,7 +16798,7 @@
    ],
    "level": "recall",
    "front": "Which muscles fill the anterior and posterior compartments of the arm?",
-   "back": "Anterior: biceps brachii, brachialis, coracobrachialis (flex the elbow). Posterior: triceps brachii (extends it).",
+   "back": "Anterior: biceps brachii and brachialis (flex the elbow), plus the coracobrachialis (flexes the arm at the shoulder). Posterior: triceps brachii (extends the elbow).",
    "why": "Muscles in one compartment usually share a main action."
   },
   {

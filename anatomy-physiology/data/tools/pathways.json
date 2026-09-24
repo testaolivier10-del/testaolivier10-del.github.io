@@ -11204,7 +11204,7 @@
       "level": "apply",
       "diff": 2,
       "kind": "causal",
-      "intro": "You lift a glass by bending your elbow. Put the causes in order, from the muscle’s pull to the fast sweep of your hand and back down again.",
+      "intro": "You lift a glass by bending your elbow. Put the causes in order, from the muscle’s pull to the fast sweep of your hand, then straightening the elbow against resistance.",
       "steps": [
         {
           "id": "fix",
@@ -11239,8 +11239,8 @@
         {
           "id": "return",
           "label": "Antagonist straightens it",
-          "text": "To put the glass down against resistance, the back-of-arm muscle pulls on the olecranon and straightens the elbow.",
-          "why": "The front muscle cannot push, so reversing the movement takes the muscle on the other side of the joint (or gravity)."
+          "text": "To press the forearm down against resistance, such as pushing down on a tabletop, the back-of-arm muscle pulls on the olecranon and straightens the elbow.",
+          "why": "The front muscle cannot push, so straightening against resistance takes the muscle on the other side of the joint. Just lowering the glass is different: gravity moves it and the front muscle brakes it eccentrically."
         }
       ],
       "missing": {
@@ -11258,7 +11258,7 @@
       },
       "error": {
         "at": 5,
-        "text": "To put the glass down against resistance, the front upper-arm muscle pushes the forearm back down.",
+        "text": "To press the forearm down against resistance, the front upper-arm muscle pushes the forearm back down.",
         "why": "A muscle cannot push. Straightening the elbow against resistance is the job of its antagonist, the muscle on the back of the upper arm."
       },
       "summary": "Fixators hold the scapula; the prime mover pulls its insertion; the forearm turns at the elbow as a third-class lever; the hand sweeps far and fast; the antagonist brakes the end of a fast lift and then straightens the elbow to reverse it."
@@ -11444,7 +11444,7 @@
       "error": {
         "at": 4,
         "text": "At the same moment, the levator ani relaxes, letting the pressure escape downward through the pelvic floor.",
-        "why": "The levator ani contracts, not relaxes, during a cough. Relaxing it is what lets a little urine leak when the pelvic floor is weak."
+        "why": "The levator ani contracts, not relaxes, during a cough. When it is weak, it tightens too late and too weakly to hold the urethra shut, and that is what lets a little urine leak."
       },
       "summary": "The diaphragm fills the lungs; the abdominal wall muscles squeeze; abdominal pressure rises; the pressure drives the diaphragm up and air out; the levator ani tightens at the same moment to hold the pelvic organs up and the openings shut."
     },
@@ -11614,7 +11614,7 @@
           "id": "nerve",
           "label": "Nerve squeezed",
           "text": "The nerve that passes through the tunnel with the tendons is squeezed.",
-          "why": "The nerve is the softest thing in the tunnel, so it suffers first from the pressure."
+          "why": "The nerve is the most pressure-sensitive thing in the tunnel: even a modest rise in pressure squeezes its small blood vessels and disturbs its signals."
         },
         {
           "id": "numb",

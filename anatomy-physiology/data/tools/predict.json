@@ -24268,7 +24268,7 @@
         "fixed": "The mandible and skull are held still, so they act as the origins",
         "lift": "The suprahyoids pull the hyoid bone up toward the mandible",
         "box": "The voice box, hanging from the hyoid, rises with it",
-        "stretch": "The infrahyoid strap muscles below the hyoid are stretched"
+        "stretch": "The sternohyoid and omohyoid, running down from the hyoid to the sternum and scapula, are stretched"
       },
       "variables": [
         {
@@ -24294,14 +24294,14 @@
         },
         {
           "id": "infra",
-          "name": "Length of the infrahyoid muscles",
+          "name": "Length of the sternohyoid and omohyoid",
           "answer": "up",
           "chain": [
             "fixed",
             "lift",
             "stretch"
           ],
-          "why": "The infrahyoids run from the hyoid down to the sternum, voice box and scapula. As the hyoid rises, they are stretched, ready to pull it back down after the swallow."
+          "why": "These infrahyoids run from the hyoid down to the sternum and scapula. As the hyoid rises they are stretched, ready to pull it back down after the swallow."
         },
         {
           "id": "jaw",

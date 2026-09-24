@@ -25133,7 +25133,7 @@
      "id": "far",
      "x0": 8,
      "x1": 12,
-     "label": "pull under 4 × the weight"
+     "label": "pull 4 × the weight or less"
     }
    ],
    "questions": [
@@ -25410,8 +25410,8 @@
     "structure-function",
     "gradients"
    ],
-   "intro": "An illustrative case: the pressure inside the anterior compartment of the leg in the hours after a tibia fracture, until a surgeon slits the fascia open at 6.5 hours. The numbers are typical, not from one patient, and the pressure treated as dangerous differs between guidelines; around 30 mmHg is a common working figure.",
-   "alt": "Compartment pressure in mmHg, from 0 to 100, over 10 hours. It starts at about 8 mmHg, climbs steadily to about 30 mmHg at 4 hours and about 44 mmHg at 6 hours, peaks at about 46 mmHg at 6.5 hours when the fascia is slit, then drops to about 12 mmHg by 7 hours and settles near 8 mmHg. A dashed line at 30 mmHg marks the danger level, and a line at 90 mmHg marks the average pressure in the main artery, which the compartment never approaches.",
+   "intro": "An illustrative case: the pressure inside the anterior compartment of the leg in the hours after a tibia fracture, until a surgeon slits the fascia open at 6.5 hours. The numbers are typical, not from one patient. Current guidelines judge mainly from the signs, above all pain out of proportion to the injury. When the pressure is measured, they compare it with the lower number of the blood pressure: danger when the gap between them falls below about 30 mmHg. With a lower number of about 70 mmHg, that is a compartment pressure of about 40 mmHg. The graph uses 30 mmHg, a common working danger level.",
+   "alt": "Compartment pressure in mmHg, from 0 to 100, over 10 hours. It starts at about 8 mmHg, climbs steadily to about 30 mmHg at 4 hours and about 44 mmHg at 6 hours, peaks at about 46 mmHg at 6.5 hours when the fascia is slit, then drops to about 12 mmHg by 7 hours and settles near 8 mmHg. A dashed line at 30 mmHg marks a common working danger level, and a line at 90 mmHg marks the average pressure in the main artery, which the compartment never approaches.",
    "x": {
     "min": 0,
     "max": 10,
@@ -25445,7 +25445,7 @@
      "hlines": [
       {
        "y": 30,
-       "label": "danger level, about 30 mmHg",
+       "label": "a common working danger level, 30 mmHg",
        "at": 0.2,
        "dash": true
       },
