@@ -221,7 +221,7 @@
         "paranasal sinus",
         "frontal sinus"
       ],
-      "concept": "paranasal-sinuses",
+      "concept": "bone-markings",
       "lines": [
         42
       ],
@@ -310,7 +310,7 @@
       "accept": [
         "canal"
       ],
-      "concept": null,
+      "concept": "bone-markings",
       "lines": [
         53
       ],
@@ -328,7 +328,7 @@
         "fissure",
         "superior orbital fissure"
       ],
-      "concept": null,
+      "concept": "bone-markings",
       "lines": [
         54
       ],
@@ -346,7 +346,7 @@
         "protuberance",
         "mental protuberance"
       ],
-      "concept": null,
+      "concept": "bone-markings",
       "lines": [
         63
       ],

@@ -5992,2405 +5992,6 @@
    ]
   },
   {
-   "id": "long-bone",
-   "title": "Long bone anatomy",
-   "chapter": "bone-tissue",
-   "topic": "bone-structure",
-   "histology": false,
-   "stations": [
-    {
-     "figure": "os-6-7",
-     "topic": "bone-structure",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "articular-cartilage",
-       "name": "Articular cartilage",
-       "accept": [],
-       "box": [
-        861,
-        17,
-        241,
-        34
-       ],
-       "concept": "cartilage-example-sites",
-       "taught": "connective-tissue",
-       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
-      },
-      {
-       "id": "proximal-epiphysis",
-       "name": "Proximal epiphysis",
-       "accept": [],
-       "box": [
-        0,
-        87,
-        134,
-        67
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The rounded end of a long bone nearest the trunk. It is filled with a lattice of bone holding red bone marrow, and its surface meets the next bone at a joint."
-      },
-      {
-       "id": "metaphysis",
-       "name": "Metaphysis",
-       "accept": [],
-       "box": [
-        0,
-        251,
-        160,
-        34
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
-      },
-      {
-       "id": "red-bone-marrow",
-       "name": "Red bone marrow",
-       "accept": [
-        "red marrow"
-       ],
-       "box": [
-        696,
-        409,
-        250,
-        28
-       ],
-       "concept": "bone-marrow",
-       "taught": "bone-structure",
-       "fn": "Soft tissue in the spaces of the bone ends (and in flat bones such as the hip bone) that makes new blood cells, the process called hematopoiesis.",
-       "follow": {
-        "q": "Which job of the skeleton does red bone marrow carry out?",
-        "options": [
-         "Making blood cells",
-         "Storing fat for energy",
-         "Anchoring tendons to bone",
-         "Reducing friction at joints"
-        ],
-        "correct": 0,
-        "why": "Red bone marrow is where hematopoiesis happens: it makes red blood cells, white blood cells and platelets. Fat storage belongs to yellow bone marrow, tendons anchor in the periosteum, and articular cartilage reduces friction at joints.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "medullary-cavity",
-       "name": "Medullary cavity",
-       "accept": [
-        "marrow cavity"
-       ],
-       "box": [
-        696,
-        481,
-        227,
-        34
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The hollow space running down the inside of the diaphysis. In an adult it holds yellow bone marrow; hollowing the shaft keeps the bone light without losing much strength."
-      },
-      {
-       "id": "endosteum",
-       "name": "Endosteum",
-       "accept": [],
-       "box": [
-        696,
-        856,
-        162,
-        28
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
-      },
-      {
-       "id": "yellow-bone-marrow",
-       "name": "Yellow bone marrow",
-       "accept": [
-        "yellow marrow"
-       ],
-       "box": [
-        695,
-        920,
-        282,
-        28
-       ],
-       "concept": "bone-marrow",
-       "taught": "bone-structure",
-       "fn": "Fatty marrow that fills the medullary cavity of an adult long bone. It stores fat as an energy reserve and can turn back into red bone marrow after severe blood loss.",
-       "follow": {
-        "q": "Yellow bone marrow is mostly made of which tissue?",
-        "options": [
-         "Hyaline cartilage from the bone ends",
-         "Adipose tissue",
-         "Blood-forming tissue",
-         "Dense connective tissue"
-        ],
-        "correct": 1,
-        "why": "Yellow marrow is mainly fat cells, an energy store. Blood-forming tissue is red marrow, hyaline cartilage caps the joint surfaces, and dense connective tissue forms the outer periosteum.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "diaphysis",
-       "name": "Diaphysis",
-       "accept": [
-        "shaft"
-       ],
-       "box": [
-        0,
-        932,
-        139,
-        34
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The long, tubular shaft of a long bone, between the two ends. Its thick wall of dense bone surrounds the medullary cavity and bears most of the load along the bone.",
-       "follow": {
-        "q": "Which pair of structures lies inside the diaphysis of an adult long bone?",
-        "options": [
-         "Articular cartilage and red marrow",
-         "Epiphyses and periosteum",
-         "Medullary cavity and yellow marrow",
-         "Nutrient artery and articular cartilage"
-        ],
-        "correct": 2,
-        "why": "The shaft is a tube: its hollow medullary cavity holds yellow marrow in an adult. Articular cartilage sits on the ends, red marrow mostly fills the ends, and the periosteum wraps the outside.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "periosteum",
-       "name": "Periosteum",
-       "accept": [],
-       "box": [
-        696,
-        1006,
-        162,
-        28
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
-      },
-      {
-       "id": "nutrient-artery",
-       "name": "Nutrient artery",
-       "accept": [],
-       "box": [
-        696,
-        1176,
-        202,
-        34
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The main artery of a long bone. It enters the diaphysis through a nutrient foramen near the middle of the shaft and branches toward both ends, supplying the marrow and the inner part of the shaft wall.",
-       "follow": {
-        "q": "Through which opening does the nutrient artery reach the medullary cavity?",
-        "options": [
-         "The articular cartilage at each end",
-         "A gap in the endosteum at the metaphysis",
-         "The medullary cavity opening at the epiphysis",
-         "The nutrient foramen in the shaft"
-        ],
-        "correct": 3,
-        "why": "The nutrient artery passes through a nutrient foramen, a slanted hole through the wall of the diaphysis. Articular cartilage has no vessels, and the medullary cavity is closed off from the outside by bone.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "metaphysis-distal",
-       "name": "Metaphysis",
-       "accept": [
-        "distal metaphysis"
-       ],
-       "box": [
-        0,
-        1465,
-        160,
-        34
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
-      },
-      {
-       "id": "distal-epiphysis",
-       "name": "Distal epiphysis",
-       "accept": [],
-       "box": [
-        0,
-        1690,
-        134,
-        68
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The rounded end of a long bone farthest from the trunk. Like the proximal end, it is filled with a lattice of bone and red bone marrow and is capped with articular cartilage where it meets the next bone."
-      },
-      {
-       "id": "articular-cartilage-distal",
-       "name": "Articular cartilage",
-       "accept": [],
-       "box": [
-        694,
-        1778,
-        245,
-        34
-       ],
-       "concept": "cartilage-example-sites",
-       "taught": "connective-tissue",
-       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
-      }
-     ],
-     "covered": [
-      {
-       "id": "spongy-bone",
-       "box": [
-        697,
-        262,
-        190,
-        36
-       ]
-      },
-      {
-       "id": "epiphyseal-line",
-       "box": [
-        696,
-        338,
-        213,
-        34
-       ]
-      },
-      {
-       "id": "compact-bone",
-       "box": [
-        697,
-        545,
-        202,
-        38
-       ]
-      }
-     ]
-    },
-    {
-     "figure": "os-6-15",
-     "topic": "bone-structure",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "articular-cartilage",
-       "name": "Articular cartilage",
-       "accept": [],
-       "box": [
-        922,
-        64,
-        166,
-        94
-       ],
-       "concept": "cartilage-example-sites",
-       "taught": "connective-tissue",
-       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
-      },
-      {
-       "id": "epiphyseal-artery-and-vein",
-       "name": "Epiphyseal artery and vein",
-       "accept": [
-        "epiphyseal artery",
-        "epiphyseal vein",
-        "epiphyseal vessels"
-       ],
-       "box": [
-        80,
-        106,
-        212,
-        144
-       ],
-       "concept": null,
-       "fn": "Vessels that enter and leave the epiphysis directly through small holes in the bone end. They supply the red bone marrow and bone tissue of the end, separate from the nutrient artery of the shaft."
-      },
-      {
-       "id": "metaphyseal-artery-and-vein",
-       "name": "Metaphyseal artery and vein",
-       "accept": [
-        "metaphyseal artery",
-        "metaphyseal vein",
-        "metaphyseal vessels"
-       ],
-       "box": [
-        80,
-        306,
-        242,
-        144
-       ],
-       "concept": null,
-       "fn": "Vessels that pass through the wall of the metaphysis to supply the flared region between shaft and end. Together with the epiphyseal and nutrient vessels they give a long bone several routes for blood."
-      },
-      {
-       "id": "periosteum",
-       "name": "Periosteum",
-       "accept": [],
-       "box": [
-        762,
-        570,
-        212,
-        46
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
-      },
-      {
-       "id": "nutrient-artery-and-vein",
-       "name": "Nutrient artery and vein",
-       "accept": [
-        "nutrient artery",
-        "nutrient vein",
-        "nutrient vessels"
-       ],
-       "box": [
-        74,
-        832,
-        172,
-        144
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The main vessels of a long bone. The nutrient artery enters the shaft near its middle and branches up and down the medullary cavity; the nutrient vein leaves by the same hole."
-      },
-      {
-       "id": "nutrient-foramen",
-       "name": "Nutrient foramen",
-       "accept": [],
-       "box": [
-        76,
-        1032,
-        166,
-        94
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "A small hole that runs slantwise through the wall of the diaphysis. The nutrient artery and vein pass through it into and out of the medullary cavity.",
-       "follow": {
-        "q": "What passes through a nutrient foramen?",
-        "options": [
-         "The nutrient artery and vein",
-         "The tendon of a muscle",
-         "Yellow bone marrow leaving the bone",
-         "Articular cartilage cells"
-        ],
-        "correct": 0,
-        "why": "This hole carries the bone’s main artery in and its vein out. Tendons attach to the surface, marrow stays inside, and cartilage cells stay in the cartilage cap.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "medullary-cavity",
-       "name": "Medullary cavity",
-       "accept": [
-        "marrow cavity"
-       ],
-       "box": [
-        762,
-        1086,
-        300,
-        46
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The hollow space running down the inside of the diaphysis. In an adult it holds yellow bone marrow; hollowing the shaft keeps the bone light without losing much strength."
-      },
-      {
-       "id": "metaphyseal-artery-and-vein-distal",
-       "name": "Metaphyseal artery and vein",
-       "accept": [
-        "metaphyseal artery",
-        "metaphyseal vein",
-        "metaphyseal vessels"
-       ],
-       "box": [
-        0,
-        1290,
-        290,
-        94
-       ],
-       "concept": null,
-       "fn": "Vessels that pass through the wall of the metaphysis at the far end of the bone to supply the flared region between shaft and end."
-      },
-      {
-       "id": "metaphysis",
-       "name": "Metaphysis",
-       "accept": [],
-       "box": [
-        0,
-        1458,
-        220,
-        44
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
-      }
-     ],
-     "covered": [
-      {
-       "id": "compact-bone",
-       "box": [
-        762,
-        704,
-        170,
-        94
-       ]
-      },
-      {
-       "id": "epiphyseal-line",
-       "box": [
-        812,
-        1482,
-        206,
-        96
-       ]
-      }
-     ]
-    },
-    {
-     "figure": "os-6-8",
-     "topic": "bone-structure",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "endosteum-inset",
-       "name": "Endosteum",
-       "accept": [],
-       "box": [
-        787,
-        144,
-        116,
-        21
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
-      },
-      {
-       "id": "periosteum-inset",
-       "name": "Periosteum",
-       "accept": [],
-       "box": [
-        185,
-        196,
-        116,
-        21
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
-      },
-      {
-       "id": "endosteum",
-       "name": "Endosteum",
-       "accept": [],
-       "box": [
-        581,
-        299,
-        116,
-        21
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
-      },
-      {
-       "id": "periosteum-fibrous-layer",
-       "name": "Periosteum (fibrous layer)",
-       "accept": [
-        "fibrous layer",
-        "fibrous layer of periosteum",
-        "periosteum fibrous layer",
-        "outer fibrous layer",
-        "fibrous periosteum"
-       ],
-       "box": [
-        0,
-        341,
-        137,
-        50
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The outer layer of the periosteum, made of dense connective tissue. Tendons and ligaments anchor into it, and it carries the vessels and nerves that enter the bone."
-      },
-      {
-       "id": "periosteum-cellular-layer",
-       "name": "Periosteum (cellular layer)",
-       "accept": [
-        "cellular layer",
-        "cellular layer of periosteum",
-        "periosteum cellular layer",
-        "inner cellular layer",
-        "osteogenic layer"
-       ],
-       "box": [
-        0,
-        439,
-        140,
-        51
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The inner layer of the periosteum, pressed against the bone. It holds cells that can lay down new bone and cells that break it down, so the bone can thicken or be repaired from the outside.",
-       "follow": {
-        "q": "A bone must be thickened from its outer surface. Which layer holds the cells that do this?",
-        "options": [
-         "The fibrous outer layer of the periosteum",
-         "The cellular layer of the periosteum",
-         "The articular cartilage",
-         "The yellow bone marrow"
-        ],
-        "correct": 1,
-        "why": "Bone-building and bone-removing cells sit in the inner cellular layer, against the bone. The fibrous layer is anchoring tissue, articular cartilage only caps joint surfaces, and yellow marrow is a fat store inside the shaft.",
-        "level": "apply"
-       }
-      }
-     ],
-     "covered": [
-      {
-       "id": "osteoclast",
-       "box": [
-        580,
-        334,
-        111,
-        21
-       ]
-      },
-      {
-       "id": "osteocyte-in-lacuna",
-       "box": [
-        398,
-        355,
-        106,
-        46
-       ]
-      },
-      {
-       "id": "bone-matrix",
-       "box": [
-        581,
-        369,
-        123,
-        21
-       ]
-      },
-      {
-       "id": "osteocyte",
-       "box": [
-        580,
-        402,
-        106,
-        25
-       ]
-      },
-      {
-       "id": "osteogenic-cell",
-       "box": [
-        580,
-        434,
-        154,
-        26
-       ]
-      },
-      {
-       "id": "osteoblast",
-       "box": [
-        580,
-        477,
-        112,
-        21
-       ]
-      }
-     ]
-    },
-    {
-     "figure": "os-6-6",
-     "topic": "bone-structure",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "flat-bone",
-       "name": "Flat bone",
-       "accept": [
-        "flat"
-       ],
-       "box": [
-        134,
-        4,
-        90,
-        20
-       ],
-       "concept": "bone-shapes",
-       "taught": "bone-structure",
-       "fn": "A thin, flat, often curved bone made of two plates of dense bone with a layer of lattice bone between. Flat bones such as the breastbone, ribs and skull roof protect organs and give muscles broad surfaces."
-      },
-      {
-       "id": "irregular-bone",
-       "name": "Irregular bone",
-       "accept": [
-        "irregular"
-       ],
-       "box": [
-        772,
-        4,
-        128,
-        24
-       ],
-       "concept": "bone-shapes",
-       "taught": "bone-structure",
-       "fn": "A bone with a complex shape that fits none of the other groups, such as a vertebra or a bone of the face."
-      },
-      {
-       "id": "vertebra",
-       "name": "Vertebra",
-       "accept": [
-        "vertebrae"
-       ],
-       "box": [
-        888,
-        101,
-        84,
-        19
-       ],
-       "concept": null,
-       "fn": "One of the stacked bones of the backbone. Its complex shape makes it an irregular bone."
-      },
-      {
-       "id": "long-bone",
-       "name": "Long bone",
-       "accept": [
-        "long"
-       ],
-       "box": [
-        0,
-        364,
-        97,
-        24
-       ],
-       "concept": "bone-shapes",
-       "taught": "bone-structure",
-       "fn": "A bone longer than it is wide, with a shaft and two ends. Long bones such as the thigh bone and the finger bones act as rigid bars that muscles pull on to move the body.",
-       "follow": {
-        "q": "Which feature makes a bone a long bone?",
-        "options": [
-         "It is longer than 20 cm",
-         "It is found in a limb",
-         "It is longer than it is wide",
-         "It contains red bone marrow in its ends"
-        ],
-        "correct": 2,
-        "why": "Shape, not size, defines the group: a long bone has a shaft longer than it is wide, so even a tiny finger bone is a long bone. Other bone shapes also hold red marrow.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "short-bones",
-       "name": "Short bones",
-       "accept": [
-        "short bone",
-        "short"
-       ],
-       "box": [
-        784,
-        572,
-        114,
-        19
-       ],
-       "concept": "bone-shapes",
-       "taught": "bone-structure",
-       "fn": "Bones about as wide as they are long, roughly cube-shaped, such as the bones of the wrist and ankle. They give stability with a little gliding movement."
-      },
-      {
-       "id": "sesamoid-bone",
-       "name": "Sesamoid bone",
-       "accept": [
-        "sesamoid"
-       ],
-       "box": [
-        111,
-        836,
-        142,
-        19
-       ],
-       "concept": "bone-shapes",
-       "taught": "bone-structure",
-       "fn": "A small, round bone that forms inside a tendon where it passes over a joint, like the bone at the front of the knee. It protects the tendon and improves its pull."
-      }
-     ],
-     "covered": [
-      {
-       "id": "sternum",
-       "box": [
-        36,
-        184,
-        83,
-        20
-       ]
-      },
-      {
-       "id": "femur",
-       "box": [
-        0,
-        650,
-        65,
-        20
-       ]
-      },
-      {
-       "id": "lateral-cuneiform",
-       "box": [
-        604,
-        788,
-        94,
-        41
-       ]
-      },
-      {
-       "id": "intermediate-cuneiform",
-       "box": [
-        604,
-        876,
-        117,
-        41
-       ]
-      },
-      {
-       "id": "medial-cuneiform",
-       "box": [
-        604,
-        959,
-        94,
-        40
-       ]
-      },
-      {
-       "id": "patella",
-       "box": [
-        45,
-        999,
-        68,
-        20
-       ]
-      }
-     ]
-    },
-    {
-     "figure": "os-6-10",
-     "topic": "bone-structure",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "crest",
-       "name": "Crest",
-       "accept": [
-        "iliac crest"
-       ],
-       "box": [
-        587,
-        62,
-        57,
-        20
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A long, prominent ridge of bone, like the curved top edge of the hip bone. Muscles attach along its length."
-      },
-      {
-       "id": "fossa",
-       "name": "Fossa",
-       "accept": [],
-       "box": [
-        789,
-        62,
-        62,
-        20
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A shallow basin or depression in a bone. It may hold part of another bone when a joint moves, or give a muscle a broad surface to attach to."
-      },
-      {
-       "id": "head",
-       "name": "Head",
-       "accept": [],
-       "box": [
-        218,
-        92,
-        56,
-        20
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A large, rounded end of a bone that sits on a narrower neck and meets another bone at a joint, as at the top of the upper arm bone and the thigh bone."
-      },
-      {
-       "id": "tubercle",
-       "name": "Tubercle",
-       "accept": [
-        "greater tubercle"
-       ],
-       "box": [
-        184,
-        151,
-        83,
-        19
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A small, rounded bump on a bone where a tendon or ligament attaches, like the bumps at the upper end of the upper arm bone."
-      },
-      {
-       "id": "tuberosity",
-       "name": "Tuberosity",
-       "accept": [
-        "deltoid tuberosity"
-       ],
-       "box": [
-        155,
-        360,
-        98,
-        24
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A large, rough, raised area on a bone where a strong muscle attaches through its tendon, like the rough patch partway down the upper arm bone where the shoulder muscle pulls.",
-       "follow": {
-        "q": "A marking is large and rough, and a tendon attaches there. Which kind of marking is it?",
-        "options": [
-         "A facet",
-         "A condyle",
-         "A crest",
-         "A tuberosity"
-        ],
-        "correct": 3,
-        "why": "Rough projections are built for pulling tendons: a large, rough one is a tuberosity. A facet and a condyle are smooth joint surfaces, and a fossa is a depression, not a projection.",
-        "level": "apply"
-       }
-      },
-      {
-       "id": "fossa-humerus",
-       "name": "Fossa",
-       "accept": [],
-       "box": [
-        149,
-        481,
-        62,
-        19
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A shallow basin in a bone surface. This one, at the lower end of the upper arm bone, receives part of a forearm bone when the elbow bends."
-      },
-      {
-       "id": "condyle",
-       "name": "Condyle",
-       "accept": [],
-       "box": [
-        277,
-        610,
-        81,
-        24
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A smooth, rounded knob at the end of a bone that meets another bone at a joint, like the knobs at the lower end of the upper arm bone."
-      },
-      {
-       "id": "tubercle-femur",
-       "name": "Tubercle",
-       "accept": [
-        "adductor tubercle"
-       ],
-       "box": [
-        158,
-        611,
-        83,
-        19
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A small, rounded bump on a bone where a tendon or ligament attaches; this one sits just above the lower end of the thigh bone."
-      },
-      {
-       "id": "facet",
-       "name": "Facet",
-       "accept": [],
-       "box": [
-        197,
-        643,
-        58,
-        19
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "A small, flat, smooth surface where a bone meets another bone at a joint, like the surfaces where each vertebra meets the next."
-      },
-      {
-       "id": "condyles",
-       "name": "Condyles",
-       "accept": [
-        "condyle"
-       ],
-       "box": [
-        51,
-        726,
-        91,
-        23
-       ],
-       "concept": "bone-markings",
-       "taught": "bone-structure",
-       "fn": "The two smooth, rounded knobs at the lower end of the thigh bone. They rest on the leg bone below and form the knee."
-      },
-      {
-       "id": "canal",
-       "name": "Canal",
-       "accept": [],
-       "box": [
-        535,
-        765,
-        61,
-        19
-       ],
-       "concept": null,
-       "fn": "A tunnel through bone that carries vessels or nerves along its length. This one, in the skull, leads from the eye socket toward the brain."
-      },
-      {
-       "id": "fissure",
-       "name": "Fissure",
-       "accept": [
-        "superior orbital fissure"
-       ],
-       "box": [
-        911,
-        765,
-        73,
-        20
-       ],
-       "concept": null,
-       "fn": "A narrow slit through a bone, or between two bones, that lets vessels and nerves pass. This one lies at the back of the eye socket."
-      },
-      {
-       "id": "protuberance",
-       "name": "Protuberance",
-       "accept": [
-        "mental protuberance"
-       ],
-       "box": [
-        536,
-        1015,
-        124,
-        19
-       ],
-       "concept": null,
-       "fn": "A bump that sticks out from a bone surface, like the point of the chin on the lower jaw."
-      }
-     ],
-     "covered": [
-      {
-       "id": "fovea-capitis",
-       "box": [
-        69,
-        69,
-        120,
-        23
-       ]
-      },
-      {
-       "id": "sulcus",
-       "box": [
-        396,
-        170,
-        68,
-        19
-       ]
-      },
-      {
-       "id": "pelvis",
-       "box": [
-        712,
-        442,
-        65,
-        19
-       ]
-      },
-      {
-       "id": "humerus",
-       "box": [
-        355,
-        560,
-        93,
-        19
-       ]
-      },
-      {
-       "id": "sinus",
-       "box": [
-        681,
-        612,
-        59,
-        20
-       ]
-      },
-      {
-       "id": "femur",
-       "box": [
-        0,
-        684,
-        67,
-        20
-       ]
-      },
-      {
-       "id": "foramen",
-       "box": [
-        911,
-        710,
-        83,
-        20
-       ]
-      }
-     ],
-     "shown": [
-      {
-       "id": "skull",
-       "why": "The name of the whole drawing, not a marking on it."
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "bone-tissue-histology",
-   "title": "Histology station: bone cells and bone tissue",
-   "chapter": "bone-tissue",
-   "topic": "bone-histology",
-   "histology": true,
-   "stations": [
-    {
-     "figure": "os-6-11",
-     "topic": "bone-histology",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "osteocyte",
-       "name": "Osteocyte",
-       "accept": [
-        "osteocytes"
-       ],
-       "box": [
-        0,
-        494,
-        123,
-        75
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "A mature bone cell trapped in a lacuna inside the matrix. Its long arms run through canaliculi to touch its neighbors; it maintains the bone tissue around it and senses strain.",
-       "follow": {
-        "q": "How does an osteocyte form?",
-        "options": [
-         "An osteoblast is walled in by its own matrix",
-         "An osteoclast fuses with neighboring cells",
-         "An osteogenic cell divides inside a lacuna",
-         "Two osteoclasts fuse inside the calcified matrix"
-        ],
-        "correct": 0,
-        "why": "Osteoblasts lay down matrix around themselves until they are trapped in a lacuna; they then become osteocytes. Osteoclasts form by fusion of blood-forming cells and do not become osteocytes, and osteogenic cells divide on bone surfaces, not in lacunae.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "osteoblast",
-       "name": "Osteoblast",
-       "accept": [
-        "osteoblasts"
-       ],
-       "box": [
-        159,
-        494,
-        193,
-        50
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "A bone-building cell on the bone surface. It secretes the organic part of the matrix (osteoid) and helps it mineralize; when it is walled in by its own matrix it becomes an osteocyte."
-      },
-      {
-       "id": "osteogenic-cell",
-       "name": "Osteogenic cell",
-       "accept": [
-        "osteogenic cells",
-        "osteoprogenitor cell",
-        "osteoprogenitor"
-       ],
-       "box": [
-        411,
-        494,
-        166,
-        50
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "A flat stem cell in the inner periosteum and the endosteum. It is the only bone cell that divides; its daughters become osteoblasts."
-      },
-      {
-       "id": "osteoclast",
-       "name": "Osteoclast",
-       "accept": [
-        "osteoclasts"
-       ],
-       "box": [
-        641,
-        494,
-        147,
-        50
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "A very large cell with many nuclei on the bone surface. It dissolves the mineral and digests the collagen of bone, breaking bone down (resorption).",
-       "follow": {
-        "q": "An osteoclast is large and has many nuclei. Why?",
-        "options": [
-         "It divides its nucleus without dividing",
-         "It forms by fusion of several cells",
-         "It engulfs whole osteocytes",
-         "It grows from an osteogenic cell over years"
-        ],
-        "correct": 1,
-        "why": "Osteoclasts form when several precursor cells from the blood-forming lineage fuse, so one cell carries many nuclei. It does not arise from the osteogenic cell line, which makes osteoblasts, and it does not engulf cells.",
-        "level": "apply"
-       }
-      }
-     ]
-    },
-    {
-     "figure": "os-6-13",
-     "topic": "bone-histology",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "spongy-bone",
-       "name": "Spongy bone",
-       "accept": [
-        "cancellous bone",
-        "trabecular bone"
-       ],
-       "box": [
-        251,
-        34,
-        133,
-        25
-       ],
-       "concept": "spongy-bone",
-       "taught": "bone-histology",
-       "fn": "Bone built as a lattice of thin struts (trabeculae) instead of solid layers. It fills the ends of long bones, where it is light but strong along the lines of stress."
-      },
-      {
-       "id": "compact-bone",
-       "name": "Compact bone",
-       "accept": [
-        "cortical bone"
-       ],
-       "box": [
-        138,
-        224,
-        145,
-        26
-       ],
-       "concept": "compact-bone",
-       "taught": "bone-histology",
-       "fn": "The dense, solid bone that forms the wall of the shaft and the outer shell of every bone. It is made of tightly packed osteons."
-      },
-      {
-       "id": "trabeculae",
-       "name": "Trabeculae",
-       "accept": [
-        "trabecula",
-        "trabeculas"
-       ],
-       "box": [
-        402,
-        225,
-        113,
-        21
-       ],
-       "concept": "spongy-bone",
-       "taught": "bone-histology",
-       "fn": "The thin struts and plates of bone that make up spongy bone. They line up along the lines of stress, and the spaces between them hold red marrow.",
-       "follow": {
-        "q": "Why does spongy bone have no osteons or central canals?",
-        "options": [
-         "Its cells need no oxygen to survive",
-         "It has no living cells in its matrix",
-         "Its trabeculae are thin, near marrow spaces",
-         "Its trabeculae are made of hyaline cartilage"
-        ],
-        "correct": 2,
-        "why": "Each trabecula is thin enough that osteocytes are supplied by diffusion through canaliculi from the marrow spaces around it, so no central canal is needed. Spongy bone is living bone tissue with osteocytes, not cartilage.",
-        "level": "apply"
-       }
-      },
-      {
-       "id": "lacuna",
-       "name": "Lacuna",
-       "accept": [
-        "lacunae"
-       ],
-       "box": [
-        913,
-        339,
-        79,
-        22
-       ],
-       "concept": "osteon",
-       "taught": "bone-histology",
-       "fn": "A small cavity in the bone matrix that holds one osteocyte. Lacunae sit between the lamellae."
-      },
-      {
-       "id": "osteocyte",
-       "name": "Osteocyte",
-       "accept": [
-        "osteocytes"
-       ],
-       "box": [
-        912,
-        425,
-        105,
-        25
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "A mature bone cell in its lacuna. It maintains the matrix around it and passes signals and nutrients to its neighbors through canaliculi."
-      },
-      {
-       "id": "osteoclast",
-       "name": "Osteoclast",
-       "accept": [
-        "osteoclasts"
-       ],
-       "box": [
-        912,
-        485,
-        110,
-        21
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "A large cell with many nuclei on the surface of a trabecula. It breaks down (resorbs) bone, working with osteoblasts to reshape the struts."
-      },
-      {
-       "id": "osteoblasts",
-       "name": "Osteoblasts aligned along trabeculae of new bone",
-       "accept": [],
-       "box": [
-        912,
-        555,
-        190,
-        70
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "Bone-building cells lined up along the surface of a trabecula. They lay down new matrix, which thickens the strut."
-      },
-      {
-       "id": "canaliculi-openings",
-       "name": "Canaliculi openings on surface",
-       "accept": [
-        "canaliculi openings",
-        "canaliculi",
-        "canaliculus"
-       ],
-       "box": [
-        148,
-        628,
-        108,
-        70
-       ],
-       "concept": "osteon",
-       "taught": "bone-histology",
-       "fn": "The tiny openings of canaliculi on the surface of a trabecula. Through them, osteocytes inside the strut exchange nutrients and wastes with the marrow space."
-      },
-      {
-       "id": "endosteum",
-       "name": "Endosteum",
-       "accept": [],
-       "box": [
-        305,
-        628,
-        115,
-        21
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The thin cell layer covering the surfaces of the trabeculae. It holds osteogenic cells, osteoblasts and osteoclasts."
-      },
-      {
-       "id": "lamellae-trabecula",
-       "name": "Lamellae",
-       "accept": [
-        "lamella"
-       ],
-       "box": [
-        443,
-        628,
-        95,
-        21
-       ],
-       "concept": "osteon",
-       "taught": "bone-histology",
-       "fn": "The thin layers of matrix that build up a trabecula, laid down one on top of another."
-      },
-      {
-       "id": "canaliculi",
-       "name": "Canaliculi",
-       "accept": [
-        "canaliculus"
-       ],
-       "box": [
-        912,
-        655,
-        101,
-        22
-       ],
-       "concept": "osteon",
-       "taught": "bone-histology",
-       "fn": "Tiny channels in the matrix that link lacunae with each other and with the bone surface. The arms of osteocytes run through them, carrying nutrients, wastes and signals.",
-       "follow": {
-        "q": "An osteocyte is walled in by hard matrix. How does it get nutrients?",
-        "options": [
-         "Through blood vessels inside its lacuna",
-         "By dissolving the matrix around it",
-         "By diffusion straight through the hard mineral",
-         "Through canaliculi linking it to other cells"
-        ],
-        "correct": 3,
-        "why": "Osteocyte arms run through canaliculi and join at gap junctions, so nutrients and signals pass from cell to cell out to the nearest vessel or marrow space. There is no vessel in a lacuna, the mineral blocks diffusion, and osteocytes do not dissolve their own walls to feed.",
-        "level": "apply"
-       }
-      },
-      {
-       "id": "lamellae",
-       "name": "Lamellae",
-       "accept": [
-        "lamella"
-       ],
-       "box": [
-        913,
-        707,
-        95,
-        21
-       ],
-       "concept": "osteon",
-       "taught": "bone-histology",
-       "fn": "Thin layers of mineralized matrix. Their collagen fibers run in a different direction in each layer, which helps bone resist twisting."
-      }
-     ]
-    },
-    {
-     "figure": "os-6-9",
-     "topic": "bone-histology",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "compact-bone",
-       "name": "Compact bone",
-       "accept": [
-        "cortical bone"
-       ],
-       "box": [
-        717,
-        113,
-        96,
-        46
-       ],
-       "concept": "compact-bone",
-       "taught": "bone-histology",
-       "fn": "The dense, solid bone that forms the outer plates of this flat bone. Its tightly packed osteons resist bending and twisting."
-      },
-      {
-       "id": "periosteum",
-       "name": "Periosteum",
-       "accept": [],
-       "box": [
-        0,
-        287,
-        112,
-        21
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The two-layer membrane covering the outer surfaces of the bone, anchoring tendons and carrying vessels and nerves into the bone."
-      },
-      {
-       "id": "spongy-bone",
-       "name": "Spongy bone (diploë)",
-       "accept": [
-        "diploe",
-        "diploë",
-        "spongy bone diploe",
-        "cancellous bone"
-       ],
-       "box": [
-        684,
-        355,
-        130,
-        50
-       ],
-       "concept": "spongy-bone",
-       "taught": "bone-histology",
-       "fn": "The layer of spongy bone sandwiched between the two plates of compact bone in a flat skull bone, called the diploë. Its lattice of trabeculae makes the bone light, and its spaces hold red marrow.",
-       "follow": {
-        "q": "What fills the spaces between the trabeculae of the diploë?",
-        "options": [
-         "Red bone marrow",
-         "Yellow bone marrow",
-         "Osteons",
-         "Articular cartilage"
-        ],
-        "correct": 0,
-        "why": "The spaces in spongy bone of flat bones hold red marrow, which makes blood cells. Yellow marrow fills the shaft of adult long bones, osteons are the units of compact bone, and articular cartilage only caps joint surfaces.",
-        "level": "recall"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "epiphyseal-plate",
-   "title": "Epiphyseal plate zones and bone formation",
-   "chapter": "bone-tissue",
-   "topic": "bone-development",
-   "histology": false,
-   "stations": [
-    {
-     "figure": "os-6-18",
-     "topic": "bone-development",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "reserve-zone",
-       "name": "Reserve zone",
-       "accept": [
-        "zone of reserve cartilage",
-        "resting zone"
-       ],
-       "box": [
-        79,
-        221,
-        139,
-        21
-       ],
-       "concept": "epiphyseal-plate",
-       "taught": "bone-development",
-       "fn": "The zone of the epiphyseal plate nearest the epiphysis: small, scattered chondrocytes that rarely divide. It anchors the plate to the epiphysis, whose vessels feed the plate.",
-       "follow": {
-        "q": "A growth-plate injury kills the cells nearest the epiphysis. Why can this stop growth at that plate?",
-        "options": [
-         "It removes the zone where bone replaces cartilage",
-         "It removes the cells that supply the dividing zone",
-         "It blocks the nutrient artery of the shaft",
-         "It destroys the calcified matrix that is later turned into bone"
-        ],
-        "correct": 1,
-        "why": "The reserve and proliferative zones supply the new chondrocytes that lengthen the plate; lose them and the plate stops adding cartilage. Bone forms on the diaphysis side, which is not where the injury is, and the nutrient artery supplies the shaft, not the plate.",
-        "level": "apply"
-       }
-      },
-      {
-       "id": "proliferative-zone",
-       "name": "Proliferative zone",
-       "accept": [
-        "zone of proliferation",
-        "proliferation zone"
-       ],
-       "box": [
-        79,
-        373,
-        170,
-        21
-       ],
-       "concept": "epiphyseal-plate",
-       "taught": "bone-development",
-       "fn": "The zone where chondrocytes divide rapidly and stack in columns like piles of coins. The new cells push the epiphysis away from the diaphysis; this is where most length comes from.",
-       "follow": {
-        "q": "In which zone do chondrocytes divide to add length?",
-        "options": [
-         "Reserve zone",
-         "Zone of calcified matrix",
-         "Proliferative zone",
-         "Zone of ossification"
-        ],
-        "correct": 2,
-        "why": "Rapid division in stacks happens in the proliferative zone. Reserve-zone cells rarely divide, calcified-matrix cells are dying, and the zone of ossification is where bone replaces the cartilage.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "calcified-matrix",
-       "name": "Calcified matrix",
-       "accept": [
-        "zone of calcified matrix",
-        "calcification zone"
-       ],
-       "box": [
-        78,
-        894,
-        155,
-        21
-       ],
-       "concept": "epiphyseal-plate",
-       "taught": "bone-development",
-       "fn": "The zone where the matrix around the enlarged chondrocytes calcifies. Cut off from diffusion, the chondrocytes die, leaving columns of calcified cartilage."
-      },
-      {
-       "id": "primary-spongiosa",
-       "name": "Primary spongiosa",
-       "accept": [],
-       "box": [
-        667,
-        1029,
-        107,
-        51
-       ],
-       "concept": null,
-       "fn": "The first spongy bone laid down on the calcified cartilage columns just below the plate; it still has cartilage at its core."
-      },
-      {
-       "id": "zone-of-ossification",
-       "name": "Zone of ossification",
-       "accept": [
-        "ossification zone",
-        "osseous tissue zone"
-       ],
-       "box": [
-        141,
-        1099,
-        115,
-        47
-       ],
-       "concept": "epiphyseal-plate",
-       "taught": "bone-development",
-       "fn": "The region below the plate, on the diaphysis side, where capillaries and osteogenic cells invade the empty spaces and osteoblasts lay bone on the calcified cartilage columns."
-      },
-      {
-       "id": "metaphysis",
-       "name": "Metaphysis",
-       "accept": [],
-       "box": [
-        78,
-        1058,
-        32,
-        116
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The flared region between the diaphysis and the epiphysis. In a growing bone it holds the epiphyseal plate and the new bone forming below it."
-      },
-      {
-       "id": "secondary-spongiosa",
-       "name": "Secondary spongiosa",
-       "accept": [],
-       "box": [
-        667,
-        1167,
-        113,
-        50
-       ],
-       "concept": null,
-       "fn": "Deeper, older spongy bone below the primary spongiosa, where osteoclasts have cleared the cartilage cores and the trabeculae have been rebuilt."
-      }
-     ],
-     "covered": [
-      {
-       "id": "maturation-hypertrophy",
-       "box": [
-        78,
-        625,
-        150,
-        50
-       ]
-      }
-     ]
-    },
-    {
-     "figure": "os-6-19",
-     "topic": "bone-development",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "epiphysis",
-       "name": "Epiphysis",
-       "accept": [
-        "proximal epiphysis"
-       ],
-       "box": [
-        347,
-        48,
-        100,
-        26
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The rounded end of the long bone, filled with spongy bone and red marrow. In a child it is separated from the metaphysis by the epiphyseal plate."
-      },
-      {
-       "id": "metaphysis",
-       "name": "Metaphysis",
-       "accept": [
-        "proximal metaphysis"
-       ],
-       "box": [
-        339,
-        88,
-        116,
-        25
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The flared region where the shaft widens toward the epiphysis. The epiphyseal plate lies in it in a growing bone."
-      },
-      {
-       "id": "epiphyseal-line",
-       "name": "Epiphyseal line",
-       "accept": [],
-       "box": [
-        680,
-        222,
-        112,
-        46
-       ],
-       "concept": "epiphyseal-plate",
-       "taught": "bone-development",
-       "fn": "A thin line of bone where the epiphyseal plate used to be. It forms when growth in length ends and bone replaces the last of the plate’s cartilage."
-      },
-      {
-       "id": "diaphysis",
-       "name": "Diaphysis",
-       "accept": [
-        "shaft"
-       ],
-       "box": [
-        346,
-        235,
-        101,
-        25
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The shaft of the long bone, between the two metaphyses. It grows in width by appositional growth under the periosteum."
-      },
-      {
-       "id": "epiphyseal-plate",
-       "name": "Epiphyseal plate (growth plate)",
-       "accept": [
-        "growth plate"
-       ],
-       "box": [
-        0,
-        242,
-        112,
-        100
-       ],
-       "concept": "epiphyseal-plate",
-       "taught": "bone-development",
-       "fn": "The disc of hyaline cartilage between the epiphysis and the diaphysis of a growing long bone. Its chondrocytes keep dividing while bone replaces cartilage on the diaphysis side, so the bone gets longer.",
-       "follow": {
-        "q": "Why can a bone no longer grow in length once the epiphyseal plate has become an epiphyseal line?",
-        "options": [
-         "The periosteum has stopped making cells",
-         "The medullary cavity has filled with red marrow",
-         "The osteoclasts in the shaft have died",
-         "Bone has replaced all the plate’s cartilage"
-        ],
-        "correct": 3,
-        "why": "Growth in length needs dividing cartilage in the plate. When the chondrocytes stop dividing and bone replaces the last of the cartilage, only a bony line remains. The periosteum still adds width, and marrow and osteoclasts do not set length.",
-        "level": "apply"
-       }
-      },
-      {
-       "id": "metaphysis-distal",
-       "name": "Metaphysis",
-       "accept": [
-        "distal metaphysis"
-       ],
-       "box": [
-        339,
-        437,
-        116,
-        25
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The flared region where the shaft widens toward the lower epiphysis; it holds the lower epiphyseal plate in a growing bone."
-      },
-      {
-       "id": "epiphysis-distal",
-       "name": "Epiphysis",
-       "accept": [
-        "distal epiphysis"
-       ],
-       "box": [
-        347,
-        485,
-        100,
-        25
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The rounded lower end of the long bone, filled with spongy bone and red marrow and separated from the metaphysis by an epiphyseal plate while the bone grows."
-      }
-     ],
-     "covered": [
-      {
-       "id": "femur",
-       "box": [
-        334,
-        540,
-        124,
-        49
-       ]
-      }
-     ]
-    },
-    {
-     "figure": "os-6-17",
-     "topic": "bone-development",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "perichondrium",
-       "name": "Perichondrium",
-       "accept": [],
-       "box": [
-        99,
-        6,
-        128,
-        19
-       ],
-       "concept": "cartilage",
-       "taught": "connective-tissue",
-       "fn": "The dense connective tissue sheath around the cartilage model. When blood vessels invade it, its cells become osteoblasts and it becomes the periosteum."
-      },
-      {
-       "id": "primary-ossification-center",
-       "name": "Primary ossification center",
-       "accept": [
-        "primary center of ossification"
-       ],
-       "box": [
-        644,
-        69,
-        102,
-        60
-       ],
-       "concept": "endochondral-ossification",
-       "taught": "bone-development",
-       "fn": "The first site of bone formation in the cartilage model, in the middle of the diaphysis. A nutrient artery brings in osteogenic cells, and osteoblasts lay spongy bone on the remains of calcified cartilage.",
-       "follow": {
-        "q": "What arrives with the nutrient artery to start the primary ossification center?",
-        "options": [
-         "Osteogenic cells and osteoclast precursors",
-         "Chondrocytes from the surrounding perichondrium",
-         "Mesenchymal cells from the overlying skin",
-         "Red marrow from the epiphyses"
-        ],
-        "correct": 0,
-        "why": "The invading artery carries osteogenic cells, which become osteoblasts, and the precursors of osteoclasts. Chondrocytes are what is being replaced, and marrow and mesenchyme do not come from those places.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "hyaline-cartilage",
-       "name": "Hyaline cartilage",
-       "accept": [
-        "cartilage"
-       ],
-       "box": [
-        113,
-        81,
-        82,
-        43
-       ],
-       "concept": "cartilage",
-       "taught": "connective-tissue",
-       "fn": "The cartilage that forms the model of the future long bone. Bone later replaces it everywhere except the articular cartilage and the epiphyseal plate."
-      },
-      {
-       "id": "calcified-matrix",
-       "name": "Calcified matrix",
-       "accept": [
-        "calcified cartilage"
-       ],
-       "box": [
-        164,
-        174,
-        82,
-        40
-       ],
-       "concept": null,
-       "fn": "Cartilage matrix in the middle of the model that has taken up calcium salts. It blocks diffusion, so the chondrocytes in it die and leave cavities."
-      },
-      {
-       "id": "periosteum",
-       "name": "Periosteum",
-       "accept": [],
-       "box": [
-        395,
-        181,
-        103,
-        19
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The former perichondrium, now with blood vessels. Its osteoblasts lay a collar of compact bone around the middle of the shaft."
-      },
-      {
-       "id": "uncalcified-matrix",
-       "name": "Uncalcified matrix",
-       "accept": [
-        "uncalcified cartilage"
-       ],
-       "box": [
-        164,
-        253,
-        101,
-        40
-       ],
-       "concept": null,
-       "fn": "Cartilage matrix that has not yet calcified, at the ends of the model. Nutrients still diffuse through it, so its chondrocytes stay alive."
-      },
-      {
-       "id": "uncalcified-matrix-d",
-       "name": "Uncalcified matrix",
-       "accept": [
-        "uncalcified cartilage"
-       ],
-       "box": [
-        930,
-        271,
-        101,
-        40
-       ],
-       "concept": null,
-       "fn": "Living hyaline cartilage still filling the bone end before a secondary ossification center forms in it."
-      },
-      {
-       "id": "nutrient-artery",
-       "name": "Nutrient artery",
-       "accept": [],
-       "box": [
-        639,
-        283,
-        77,
-        44
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The artery that grows into the middle of the cartilage model through the bone collar, bringing the cells that form the primary ossification center."
-      },
-      {
-       "id": "spongy-bone",
-       "name": "Spongy bone",
-       "accept": [
-        "cancellous bone"
-       ],
-       "box": [
-        412,
-        289,
-        74,
-        40
-       ],
-       "concept": "spongy-bone",
-       "taught": "bone-histology",
-       "fn": "The first bone laid down at the primary ossification center, on the remains of calcified cartilage."
-      },
-      {
-       "id": "calcified-matrix-d",
-       "name": "Calcified matrix",
-       "accept": [
-        "calcified cartilage"
-       ],
-       "box": [
-        697,
-        378,
-        82,
-        39
-       ],
-       "concept": null,
-       "fn": "Calcified cartilage matrix at the edge of the growing bone end, where chondrocytes die and bone will replace the cartilage."
-      },
-      {
-       "id": "periosteum-d",
-       "name": "Periosteum",
-       "accept": [],
-       "box": [
-        674,
-        462,
-        146,
-        63
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The membrane covering the shaft. Osteoblasts in it keep adding compact bone to the outside of the shaft, widening it."
-      },
-      {
-       "id": "medullary-cavity",
-       "name": "Medullary cavity",
-       "accept": [
-        "marrow cavity"
-       ],
-       "box": [
-        981,
-        472,
-        92,
-        44
-       ],
-       "concept": "long-bone-parts",
-       "taught": "bone-structure",
-       "fn": "The space in the middle of the shaft, opened as osteoclasts break down the first spongy bone there."
-      },
-      {
-       "id": "artery-and-vein-d",
-       "name": "Artery and vein",
-       "accept": [
-        "blood vessels",
-        "artery",
-        "vein"
-       ],
-       "box": [
-        946,
-        640,
-        154,
-        63
-       ],
-       "concept": "blood-vessel-basics",
-       "taught": "body-organization",
-       "fn": "Vessels entering the shaft; they carry nutrients, osteogenic cells and osteoclast precursors to the forming bone."
-      },
-      {
-       "id": "secondary-ossification-center",
-       "name": "Secondary ossification center",
-       "accept": [
-        "secondary center of ossification"
-       ],
-       "box": [
-        917,
-        822,
-        103,
-        60
-       ],
-       "concept": "endochondral-ossification",
-       "taught": "bone-development",
-       "fn": "A site of bone formation in an epiphysis, forming around birth or after. Vessels enter the bone end and spongy bone replaces the cartilage there, leaving cartilage only on the joint surface and at the epiphyseal plate."
-      },
-      {
-       "id": "articular-cartilage",
-       "name": "Articular cartilage",
-       "accept": [],
-       "box": [
-        438,
-        918,
-        155,
-        24
-       ],
-       "concept": "cartilage-example-sites",
-       "taught": "connective-tissue",
-       "fn": "Hyaline cartilage left on the joint surface of the bone end after ossification. It stays cartilage for life."
-      },
-      {
-       "id": "artery-and-vein-e",
-       "name": "Artery and vein",
-       "accept": [
-        "blood vessels",
-        "artery",
-        "vein"
-       ],
-       "box": [
-        674,
-        940,
-        81,
-        39
-       ],
-       "concept": "blood-vessel-basics",
-       "taught": "body-organization",
-       "fn": "Vessels growing into the cartilage of the bone end; they bring the cells that start the secondary ossification center."
-      },
-      {
-       "id": "uncalcified-matrix-e",
-       "name": "Uncalcified matrix",
-       "accept": [
-        "uncalcified cartilage"
-       ],
-       "box": [
-        939,
-        994,
-        101,
-        40
-       ],
-       "concept": null,
-       "fn": "Cartilage in the bone end that has not calcified; part of it will remain as the epiphyseal plate."
-      },
-      {
-       "id": "spongy-bone-f",
-       "name": "Spongy bone",
-       "accept": [
-        "cancellous bone"
-       ],
-       "box": [
-        316,
-        1000,
-        74,
-        40
-       ],
-       "concept": "spongy-bone",
-       "taught": "bone-histology",
-       "fn": "Spongy bone filling the epiphysis after the secondary ossification center has replaced the cartilage there. Its spaces hold red marrow."
-      },
-      {
-       "id": "epiphyseal-plate",
-       "name": "Epiphyseal plate",
-       "accept": [
-        "growth plate"
-       ],
-       "box": [
-        316,
-        1162,
-        100,
-        43
-       ],
-       "concept": "epiphyseal-plate",
-       "taught": "bone-development",
-       "fn": "The disc of cartilage left between the epiphysis and the diaphysis. It keeps lengthening the bone until growth ends."
-      },
-      {
-       "id": "artery-and-vein-e-shaft",
-       "name": "Artery and vein",
-       "accept": [
-        "blood vessels",
-        "artery",
-        "vein"
-       ],
-       "box": [
-        947,
-        1230,
-        153,
-        63
-       ],
-       "concept": "blood-vessel-basics",
-       "taught": "body-organization",
-       "fn": "Vessels supplying the shaft of the developing bone with nutrients and bone-forming cells."
-      }
-     ]
-    },
-    {
-     "figure": "os-6-16",
-     "topic": "bone-development",
-     "core": [
-      "structure-function"
-     ],
-     "labels": [
-      {
-       "id": "mesenchymal-cells",
-       "name": "Mesenchymal cells",
-       "accept": [
-        "mesenchymal cell",
-        "mesenchyme"
-       ],
-       "box": [
-        404,
-        16,
-        128,
-        43
-       ],
-       "concept": "mesenchyme",
-       "taught": "connective-tissue",
-       "fn": "Unspecialized embryonic connective tissue cells. In intramembranous ossification they cluster and turn directly into osteogenic cells and osteoblasts."
-      },
-      {
-       "id": "osteoid-b",
-       "name": "Osteoid",
-       "accept": [],
-       "box": [
-        957,
-        94,
-        77,
-        20
-       ],
-       "concept": "bone-matrix",
-       "taught": "bone-histology",
-       "fn": "Freshly secreted, not yet mineralized matrix around the trapped cells."
-      },
-      {
-       "id": "collagen-fibers",
-       "name": "Collagen fibers",
-       "accept": [
-        "collagen fiber",
-        "collagen"
-       ],
-       "box": [
-        404,
-        115,
-        138,
-        24
-       ],
-       "concept": "ct-fibers",
-       "taught": "connective-tissue",
-       "fn": "Protein fibers of the surrounding embryonic connective tissue, in which the bone begins to form."
-      },
-      {
-       "id": "osteoblast-b",
-       "name": "Osteoblast",
-       "accept": [
-        "osteoblasts"
-       ],
-       "box": [
-        957,
-        133,
-        102,
-        20
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "A bone-building cell lining the edge of the new bone, adding more matrix."
-      },
-      {
-       "id": "ossification-center",
-       "name": "Ossification center",
-       "accept": [
-        "center of ossification"
-       ],
-       "box": [
-        404,
-        167,
-        110,
-        42
-       ],
-       "concept": "ossification",
-       "taught": "bone-development",
-       "fn": "The cluster of cells where bone first forms. Here mesenchymal cells become osteoblasts, which begin laying down matrix.",
-       "follow": {
-        "q": "In intramembranous ossification, what does bone form in?",
-        "options": [
-         "A hyaline cartilage model",
-         "A sheet of mesenchyme",
-         "A blood clot at the site",
-         "Yellow bone marrow"
-        ],
-        "correct": 1,
-        "why": "Intramembranous bone forms directly in mesenchyme with no cartilage stage, as in the flat bones of the skull. A cartilage model belongs to endochondral ossification, and clots and marrow are not where bone first forms.",
-        "level": "recall"
-       }
-      },
-      {
-       "id": "osteocyte",
-       "name": "Osteocyte",
-       "accept": [
-        "osteocytes"
-       ],
-       "box": [
-        957,
-        169,
-        97,
-        24
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "An osteoblast that has walled itself in with matrix and now sits in a lacuna, maintaining the new bone."
-      },
-      {
-       "id": "new-bone-matrix",
-       "name": "New bone matrix",
-       "accept": [],
-       "box": [
-        957,
-        226,
-        97,
-        43
-       ],
-       "concept": "bone-matrix",
-       "taught": "bone-histology",
-       "fn": "Osteoid that has mineralized with calcium salts, forming hard new bone."
-      },
-      {
-       "id": "osteoid",
-       "name": "Osteoid",
-       "accept": [],
-       "box": [
-        404,
-        272,
-        77,
-        21
-       ],
-       "concept": "bone-matrix",
-       "taught": "bone-histology",
-       "fn": "The unmineralized organic matrix, mostly collagen, that osteoblasts secrete. Calcium salts later deposit in it to harden it."
-      },
-      {
-       "id": "osteoblast",
-       "name": "Osteoblast",
-       "accept": [
-        "osteoblasts"
-       ],
-       "box": [
-        404,
-        305,
-        103,
-        20
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "A bone-building cell. In the ossification center it secretes osteoid around itself."
-      },
-      {
-       "id": "mesenchyme-periosteum",
-       "name": "Mesenchyme forms the periosteum",
-       "accept": [
-        "mesenchyme",
-        "periosteum"
-       ],
-       "box": [
-        404,
-        403,
-        124,
-        69
-       ],
-       "concept": "mesenchyme",
-       "taught": "connective-tissue",
-       "fn": "Mesenchyme that condenses on the surface of the new bone and becomes the periosteum."
-      },
-      {
-       "id": "fibrous-periosteum",
-       "name": "Fibrous periosteum",
-       "accept": [],
-       "box": [
-        957,
-        412,
-        106,
-        46
-       ],
-       "concept": "bone-membranes",
-       "taught": "bone-structure",
-       "fn": "The outer fibrous layer of the periosteum that has formed from the surface mesenchyme."
-      },
-      {
-       "id": "osteoblast-d",
-       "name": "Osteoblast",
-       "accept": [
-        "osteoblasts"
-       ],
-       "box": [
-        957,
-        482,
-        102,
-        20
-       ],
-       "concept": "bone-cells",
-       "taught": "bone-histology",
-       "fn": "Bone-building cells under the periosteum, laying down compact bone on the surface."
-      },
-      {
-       "id": "compact-bone",
-       "name": "Compact bone",
-       "accept": [
-        "cortical bone"
-       ],
-       "box": [
-        957,
-        527,
-        135,
-        24
-       ],
-       "concept": "compact-bone",
-       "taught": "bone-histology",
-       "fn": "The layer of compact bone laid down on the surface, under the periosteum, replacing the outer spongy bone."
-      },
-      {
-       "id": "trabeculae",
-       "name": "Trabeculae",
-       "accept": [
-        "trabecula"
-       ],
-       "box": [
-        404,
-        583,
-        105,
-        19
-       ],
-       "concept": "spongy-bone",
-       "taught": "bone-histology",
-       "fn": "Struts of new bone that grow and join into a network, forming spongy bone around blood vessels."
-      },
-      {
-       "id": "spongy-bone",
-       "name": "Spongy bone",
-       "accept": [
-        "cancellous bone",
-        "diploe",
-        "diploë"
-       ],
-       "box": [
-        957,
-        659,
-        145,
-        69
-       ],
-       "concept": "spongy-bone",
-       "taught": "bone-histology",
-       "fn": "The spongy bone left in the middle of a flat bone, between the compact plates; its spaces hold red marrow."
-      },
-      {
-       "id": "blood-vessel",
-       "name": "Blood vessel",
-       "accept": [
-        "blood vessels",
-        "vessel"
-       ],
-       "box": [
-        405,
-        688,
-        118,
-        20
-       ],
-       "concept": "blood-vessel-basics",
-       "taught": "body-organization",
-       "fn": "A blood vessel trapped between the growing trabeculae; its tissue later becomes red marrow."
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "skull",
    "title": "Skull: anterior, lateral and inferior views",
    "chapter": "skeleton",
@@ -18207,6 +15808,2423 @@
       {
        "id": "lower-limb",
        "why": "A group heading over the bone labels below it; it points to no single structure."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "long-bone",
+   "title": "Long bone anatomy",
+   "chapter": "bone-tissue",
+   "topic": "bone-structure",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-6-7",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [],
+       "box": [
+        861,
+        17,
+        241,
+        34
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
+      },
+      {
+       "id": "proximal-epiphysis",
+       "name": "Proximal epiphysis",
+       "accept": [],
+       "box": [
+        0,
+        87,
+        134,
+        67
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The rounded end of a long bone nearest the trunk. It is filled with a lattice of bone holding red bone marrow, and its surface meets the next bone at a joint."
+      },
+      {
+       "id": "metaphysis",
+       "name": "Metaphysis",
+       "accept": [],
+       "box": [
+        0,
+        251,
+        160,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
+      },
+      {
+       "id": "red-bone-marrow",
+       "name": "Red bone marrow",
+       "accept": [
+        "red marrow"
+       ],
+       "box": [
+        696,
+        409,
+        250,
+        28
+       ],
+       "concept": "bone-marrow",
+       "taught": "bone-structure",
+       "fn": "Soft tissue in the spaces of the bone ends (and in flat bones such as the hip bone) that makes new blood cells, the process called hematopoiesis.",
+       "follow": {
+        "q": "Which job of the skeleton does red bone marrow carry out?",
+        "options": [
+         "Making blood cells",
+         "Storing fat for energy",
+         "Anchoring tendons to bone",
+         "Reducing friction at joints"
+        ],
+        "correct": 0,
+        "why": "Red bone marrow is where hematopoiesis happens: it makes red blood cells, white blood cells and platelets. Fat storage belongs to yellow bone marrow, tendons anchor in the periosteum, and articular cartilage reduces friction at joints.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "medullary-cavity",
+       "name": "Medullary cavity",
+       "accept": [
+        "marrow cavity"
+       ],
+       "box": [
+        696,
+        481,
+        227,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The hollow space running down the inside of the diaphysis. In an adult it holds yellow bone marrow; hollowing the shaft keeps the bone light without losing much strength."
+      },
+      {
+       "id": "endosteum",
+       "name": "Endosteum",
+       "accept": [],
+       "box": [
+        696,
+        856,
+        162,
+        28
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
+      },
+      {
+       "id": "yellow-bone-marrow",
+       "name": "Yellow bone marrow",
+       "accept": [
+        "yellow marrow"
+       ],
+       "box": [
+        695,
+        920,
+        282,
+        28
+       ],
+       "concept": "bone-marrow",
+       "taught": "bone-structure",
+       "fn": "Fatty marrow that fills the medullary cavity of an adult long bone. It stores fat as an energy reserve and can turn back into red bone marrow after severe blood loss.",
+       "follow": {
+        "q": "Yellow bone marrow is mostly made of which tissue?",
+        "options": [
+         "Hyaline cartilage from the bone ends",
+         "Adipose tissue",
+         "Blood-forming tissue",
+         "Dense connective tissue"
+        ],
+        "correct": 1,
+        "why": "Yellow marrow is mainly fat cells, an energy store. Blood-forming tissue is red marrow, hyaline cartilage caps the joint surfaces, and dense connective tissue forms the outer periosteum.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "diaphysis",
+       "name": "Diaphysis",
+       "accept": [
+        "shaft"
+       ],
+       "box": [
+        0,
+        932,
+        139,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The long, tubular shaft of a long bone, between the two ends. Its thick wall of dense bone surrounds the medullary cavity and bears most of the load along the bone.",
+       "follow": {
+        "q": "Which pair of structures lies inside the diaphysis of an adult long bone?",
+        "options": [
+         "Articular cartilage and red marrow",
+         "Epiphyses and periosteum",
+         "Medullary cavity and yellow marrow",
+         "Nutrient artery and articular cartilage"
+        ],
+        "correct": 2,
+        "why": "The shaft is a tube: its hollow medullary cavity holds yellow marrow in an adult. Articular cartilage sits on the ends, red marrow mostly fills the ends, and the periosteum wraps the outside.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "periosteum",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        696,
+        1006,
+        162,
+        28
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
+      },
+      {
+       "id": "nutrient-artery",
+       "name": "Nutrient artery",
+       "accept": [],
+       "box": [
+        696,
+        1176,
+        202,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The main artery of a long bone. It enters the diaphysis through a nutrient foramen near the middle of the shaft and branches toward both ends, supplying the marrow and the inner part of the shaft wall.",
+       "follow": {
+        "q": "Through which opening does the nutrient artery reach the medullary cavity?",
+        "options": [
+         "The articular cartilage at each end",
+         "A gap in the endosteum at the metaphysis",
+         "The medullary cavity opening at the epiphysis",
+         "The nutrient foramen in the shaft"
+        ],
+        "correct": 3,
+        "why": "The nutrient artery passes through a nutrient foramen, a slanted hole through the wall of the diaphysis. Articular cartilage has no vessels, and the medullary cavity is closed off from the outside by bone.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "metaphysis-distal",
+       "name": "Metaphysis",
+       "accept": [
+        "distal metaphysis"
+       ],
+       "box": [
+        0,
+        1465,
+        160,
+        34
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
+      },
+      {
+       "id": "distal-epiphysis",
+       "name": "Distal epiphysis",
+       "accept": [],
+       "box": [
+        0,
+        1690,
+        134,
+        68
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The rounded end of a long bone farthest from the trunk. Like the proximal end, it is filled with a lattice of bone and red bone marrow and is capped with articular cartilage where it meets the next bone."
+      },
+      {
+       "id": "articular-cartilage-distal",
+       "name": "Articular cartilage",
+       "accept": [],
+       "box": [
+        694,
+        1778,
+        245,
+        34
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
+      }
+     ],
+     "covered": [
+      {
+       "id": "spongy-bone",
+       "box": [
+        697,
+        262,
+        190,
+        36
+       ]
+      },
+      {
+       "id": "epiphyseal-line",
+       "box": [
+        696,
+        338,
+        213,
+        34
+       ]
+      },
+      {
+       "id": "compact-bone",
+       "box": [
+        697,
+        545,
+        202,
+        38
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-15",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [],
+       "box": [
+        922,
+        64,
+        166,
+        94
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "The thin, smooth cap of hyaline cartilage on the end of a bone where it meets another bone. It has no periosteum over it; it cuts friction and absorbs shock as the bones move against each other."
+      },
+      {
+       "id": "epiphyseal-artery-and-vein",
+       "name": "Epiphyseal artery and vein",
+       "accept": [
+        "epiphyseal artery",
+        "epiphyseal vein",
+        "epiphyseal vessels"
+       ],
+       "box": [
+        80,
+        106,
+        212,
+        144
+       ],
+       "concept": null,
+       "fn": "Vessels that enter and leave the epiphysis directly through small holes in the bone end. They supply the red bone marrow and bone tissue of the end, separate from the nutrient artery of the shaft."
+      },
+      {
+       "id": "metaphyseal-artery-and-vein",
+       "name": "Metaphyseal artery and vein",
+       "accept": [
+        "metaphyseal artery",
+        "metaphyseal vein",
+        "metaphyseal vessels"
+       ],
+       "box": [
+        80,
+        306,
+        242,
+        144
+       ],
+       "concept": null,
+       "fn": "Vessels that pass through the wall of the metaphysis to supply the flared region between shaft and end. Together with the epiphyseal and nutrient vessels they give a long bone several routes for blood."
+      },
+      {
+       "id": "periosteum",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        762,
+        570,
+        212,
+        46
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
+      },
+      {
+       "id": "nutrient-artery-and-vein",
+       "name": "Nutrient artery and vein",
+       "accept": [
+        "nutrient artery",
+        "nutrient vein",
+        "nutrient vessels"
+       ],
+       "box": [
+        74,
+        832,
+        172,
+        144
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The main vessels of a long bone. The nutrient artery enters the shaft near its middle and branches up and down the medullary cavity; the nutrient vein leaves by the same hole."
+      },
+      {
+       "id": "nutrient-foramen",
+       "name": "Nutrient foramen",
+       "accept": [],
+       "box": [
+        76,
+        1032,
+        166,
+        94
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "A small hole that runs slantwise through the wall of the diaphysis. The nutrient artery and vein pass through it into and out of the medullary cavity.",
+       "follow": {
+        "q": "What passes through a nutrient foramen?",
+        "options": [
+         "The nutrient artery and vein",
+         "The tendon of a muscle",
+         "Yellow bone marrow leaving the bone",
+         "Articular cartilage cells"
+        ],
+        "correct": 0,
+        "why": "This hole carries the bone’s main artery in and its vein out. Tendons attach to the surface, marrow stays inside, and cartilage cells stay in the cartilage cap.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "medullary-cavity",
+       "name": "Medullary cavity",
+       "accept": [
+        "marrow cavity"
+       ],
+       "box": [
+        762,
+        1086,
+        300,
+        46
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The hollow space running down the inside of the diaphysis. In an adult it holds yellow bone marrow; hollowing the shaft keeps the bone light without losing much strength."
+      },
+      {
+       "id": "metaphyseal-artery-and-vein-distal",
+       "name": "Metaphyseal artery and vein",
+       "accept": [
+        "metaphyseal artery",
+        "metaphyseal vein",
+        "metaphyseal vessels"
+       ],
+       "box": [
+        0,
+        1290,
+        290,
+        94
+       ],
+       "concept": null,
+       "fn": "Vessels that pass through the wall of the metaphysis at the far end of the bone to supply the flared region between shaft and end."
+      },
+      {
+       "id": "metaphysis",
+       "name": "Metaphysis",
+       "accept": [],
+       "box": [
+        0,
+        1458,
+        220,
+        44
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the narrow diaphysis widens into an epiphysis. In a child it holds the disc of cartilage that lets the bone grow in length."
+      }
+     ],
+     "covered": [
+      {
+       "id": "compact-bone",
+       "box": [
+        762,
+        704,
+        170,
+        94
+       ]
+      },
+      {
+       "id": "epiphyseal-line",
+       "box": [
+        812,
+        1482,
+        206,
+        96
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-8",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "endosteum-inset",
+       "name": "Endosteum",
+       "accept": [],
+       "box": [
+        787,
+        144,
+        116,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
+      },
+      {
+       "id": "periosteum-inset",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        185,
+        196,
+        116,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The tough two-layer membrane that wraps the outside of a bone everywhere except the joint surfaces. Its dense outer layer anchors tendons and ligaments and carries vessels and nerves into the bone; its inner cellular layer holds cells that build and break down bone."
+      },
+      {
+       "id": "endosteum",
+       "name": "Endosteum",
+       "accept": [],
+       "box": [
+        581,
+        299,
+        116,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The thin layer of flat cells lining every inner surface of bone: the medullary cavity, the struts of the lattice in the bone ends, and the canals through the bone. Like the periosteum, it holds cells that can build bone and cells that break it down."
+      },
+      {
+       "id": "periosteum-fibrous-layer",
+       "name": "Periosteum (fibrous layer)",
+       "accept": [
+        "fibrous layer",
+        "fibrous layer of periosteum",
+        "periosteum fibrous layer",
+        "outer fibrous layer",
+        "fibrous periosteum"
+       ],
+       "box": [
+        0,
+        341,
+        137,
+        50
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The outer layer of the periosteum, made of dense connective tissue. Tendons and ligaments anchor into it, and it carries the vessels and nerves that enter the bone."
+      },
+      {
+       "id": "periosteum-cellular-layer",
+       "name": "Periosteum (cellular layer)",
+       "accept": [
+        "cellular layer",
+        "cellular layer of periosteum",
+        "periosteum cellular layer",
+        "inner cellular layer",
+        "osteogenic layer"
+       ],
+       "box": [
+        0,
+        439,
+        140,
+        51
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The inner layer of the periosteum, pressed against the bone. It holds cells that can lay down new bone and cells that break it down, so the bone can thicken or be repaired from the outside.",
+       "follow": {
+        "q": "A bone must be thickened from its outer surface. Which layer holds the cells that do this?",
+        "options": [
+         "The fibrous outer layer of the periosteum",
+         "The cellular layer of the periosteum",
+         "The articular cartilage",
+         "The yellow bone marrow"
+        ],
+        "correct": 1,
+        "why": "Bone-building and bone-removing cells sit in the inner cellular layer, against the bone. The fibrous layer is anchoring tissue, articular cartilage only caps joint surfaces, and yellow marrow is a fat store inside the shaft.",
+        "level": "apply"
+       }
+      }
+     ],
+     "covered": [
+      {
+       "id": "osteoclast",
+       "box": [
+        580,
+        334,
+        111,
+        21
+       ]
+      },
+      {
+       "id": "osteocyte-in-lacuna",
+       "box": [
+        398,
+        355,
+        106,
+        46
+       ]
+      },
+      {
+       "id": "bone-matrix",
+       "box": [
+        581,
+        369,
+        123,
+        21
+       ]
+      },
+      {
+       "id": "osteocyte",
+       "box": [
+        580,
+        402,
+        106,
+        25
+       ]
+      },
+      {
+       "id": "osteogenic-cell",
+       "box": [
+        580,
+        434,
+        154,
+        26
+       ]
+      },
+      {
+       "id": "osteoblast",
+       "box": [
+        580,
+        477,
+        112,
+        21
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-6",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "flat-bone",
+       "name": "Flat bone",
+       "accept": [
+        "flat"
+       ],
+       "box": [
+        134,
+        4,
+        90,
+        20
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "A thin, flat, often curved bone made of two plates of dense bone with a layer of lattice bone between. Flat bones such as the breastbone, ribs and skull roof protect organs and give muscles broad surfaces."
+      },
+      {
+       "id": "irregular-bone",
+       "name": "Irregular bone",
+       "accept": [
+        "irregular"
+       ],
+       "box": [
+        772,
+        4,
+        128,
+        24
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "A bone with a complex shape that fits none of the other groups, such as a vertebra or a bone of the face."
+      },
+      {
+       "id": "vertebra",
+       "name": "Vertebra",
+       "accept": [
+        "vertebrae"
+       ],
+       "box": [
+        888,
+        101,
+        84,
+        19
+       ],
+       "concept": null,
+       "fn": "One of the stacked bones of the backbone. Its complex shape makes it an irregular bone."
+      },
+      {
+       "id": "long-bone",
+       "name": "Long bone",
+       "accept": [
+        "long"
+       ],
+       "box": [
+        0,
+        364,
+        97,
+        24
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "A bone longer than it is wide, with a shaft and two ends. Long bones such as the thigh bone and the finger bones act as rigid bars that muscles pull on to move the body.",
+       "follow": {
+        "q": "Which feature makes a bone a long bone?",
+        "options": [
+         "It is longer than 20 cm",
+         "It is found in a limb",
+         "It is longer than it is wide",
+         "It contains red bone marrow in its ends"
+        ],
+        "correct": 2,
+        "why": "Shape, not size, defines the group: a long bone has a shaft longer than it is wide, so even a tiny finger bone is a long bone. Other bone shapes also hold red marrow.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "short-bones",
+       "name": "Short bones",
+       "accept": [
+        "short bone",
+        "short"
+       ],
+       "box": [
+        784,
+        572,
+        114,
+        19
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "Bones about as wide as they are long, roughly cube-shaped, such as the bones of the wrist and ankle. They give stability with a little gliding movement."
+      },
+      {
+       "id": "sesamoid-bone",
+       "name": "Sesamoid bone",
+       "accept": [
+        "sesamoid"
+       ],
+       "box": [
+        111,
+        836,
+        142,
+        19
+       ],
+       "concept": "bone-shapes",
+       "taught": "bone-structure",
+       "fn": "A small, round bone that forms inside a tendon where it passes over a joint, like the bone at the front of the knee. It protects the tendon and improves its pull."
+      }
+     ],
+     "covered": [
+      {
+       "id": "sternum",
+       "box": [
+        36,
+        184,
+        83,
+        20
+       ]
+      },
+      {
+       "id": "femur",
+       "box": [
+        0,
+        650,
+        65,
+        20
+       ]
+      },
+      {
+       "id": "lateral-cuneiform",
+       "box": [
+        604,
+        788,
+        94,
+        41
+       ]
+      },
+      {
+       "id": "intermediate-cuneiform",
+       "box": [
+        604,
+        876,
+        117,
+        41
+       ]
+      },
+      {
+       "id": "medial-cuneiform",
+       "box": [
+        604,
+        959,
+        94,
+        40
+       ]
+      },
+      {
+       "id": "patella",
+       "box": [
+        45,
+        999,
+        68,
+        20
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-10",
+     "topic": "bone-structure",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "crest",
+       "name": "Crest",
+       "accept": [
+        "iliac crest"
+       ],
+       "box": [
+        587,
+        62,
+        57,
+        20
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A long, prominent ridge of bone, like the curved top edge of the hip bone. Muscles attach along its length."
+      },
+      {
+       "id": "fossa",
+       "name": "Fossa",
+       "accept": [],
+       "box": [
+        789,
+        62,
+        62,
+        20
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A shallow basin or depression in a bone. It may hold part of another bone when a joint moves, or give a muscle a broad surface to attach to."
+      },
+      {
+       "id": "head",
+       "name": "Head",
+       "accept": [],
+       "box": [
+        218,
+        92,
+        56,
+        20
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A large, rounded end of a bone that sits on a narrower neck and meets another bone at a joint, as at the top of the upper arm bone and the thigh bone."
+      },
+      {
+       "id": "tubercle",
+       "name": "Tubercle",
+       "accept": [
+        "greater tubercle"
+       ],
+       "box": [
+        184,
+        151,
+        83,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A small, rounded bump on a bone where a tendon or ligament attaches, like the bumps at the upper end of the upper arm bone."
+      },
+      {
+       "id": "tuberosity",
+       "name": "Tuberosity",
+       "accept": [
+        "deltoid tuberosity"
+       ],
+       "box": [
+        155,
+        360,
+        98,
+        24
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A large, rough, raised area on a bone where a strong muscle attaches through its tendon, like the rough patch partway down the upper arm bone where the shoulder muscle pulls.",
+       "follow": {
+        "q": "A marking is large and rough, and a tendon attaches there. Which kind of marking is it?",
+        "options": [
+         "A facet",
+         "A condyle",
+         "A crest",
+         "A tuberosity"
+        ],
+        "correct": 3,
+        "why": "Rough projections are built for pulling tendons: a large, rough one is a tuberosity. A facet and a condyle are smooth joint surfaces, and a fossa is a depression, not a projection.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "fossa-humerus",
+       "name": "Fossa",
+       "accept": [],
+       "box": [
+        149,
+        481,
+        62,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A shallow basin in a bone surface. This one, at the lower end of the upper arm bone, receives part of a forearm bone when the elbow bends."
+      },
+      {
+       "id": "condyle",
+       "name": "Condyle",
+       "accept": [],
+       "box": [
+        277,
+        610,
+        81,
+        24
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A smooth, rounded knob at the end of a bone that meets another bone at a joint, like the knobs at the lower end of the upper arm bone."
+      },
+      {
+       "id": "tubercle-femur",
+       "name": "Tubercle",
+       "accept": [
+        "adductor tubercle"
+       ],
+       "box": [
+        158,
+        611,
+        83,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A small, rounded bump on a bone where a tendon or ligament attaches; this one sits just above the lower end of the thigh bone."
+      },
+      {
+       "id": "sinus",
+       "name": "Sinus",
+       "accept": [
+        "paranasal sinus",
+        "frontal sinus"
+       ],
+       "box": [
+        681,
+        612,
+        59,
+        20
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "An air-filled space inside a bone, lined with a moist membrane. Sinuses in the bones around the nose make the skull lighter and give the voice resonance."
+      },
+      {
+       "id": "facet",
+       "name": "Facet",
+       "accept": [],
+       "box": [
+        197,
+        643,
+        58,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A small, flat, smooth surface where a bone meets another bone at a joint, like the surfaces where each vertebra meets the next."
+      },
+      {
+       "id": "condyles",
+       "name": "Condyles",
+       "accept": [
+        "condyle"
+       ],
+       "box": [
+        51,
+        726,
+        91,
+        23
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "The two smooth, rounded knobs at the lower end of the thigh bone. They rest on the leg bone below and form the knee."
+      },
+      {
+       "id": "canal",
+       "name": "Canal",
+       "accept": [],
+       "box": [
+        535,
+        765,
+        61,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A tunnel through bone that carries vessels or nerves along its length. This one, in the skull, leads from the eye socket toward the brain."
+      },
+      {
+       "id": "fissure",
+       "name": "Fissure",
+       "accept": [
+        "superior orbital fissure"
+       ],
+       "box": [
+        911,
+        765,
+        73,
+        20
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A narrow slit through a bone, or between two bones, that lets vessels and nerves pass. This one lies at the back of the eye socket."
+      },
+      {
+       "id": "protuberance",
+       "name": "Protuberance",
+       "accept": [
+        "mental protuberance"
+       ],
+       "box": [
+        536,
+        1015,
+        124,
+        19
+       ],
+       "concept": "bone-markings",
+       "taught": "bone-structure",
+       "fn": "A bump that sticks out from a bone surface, like the point of the chin on the lower jaw."
+      }
+     ],
+     "covered": [
+      {
+       "id": "fovea-capitis",
+       "box": [
+        69,
+        69,
+        120,
+        23
+       ]
+      },
+      {
+       "id": "sulcus",
+       "box": [
+        396,
+        170,
+        68,
+        19
+       ]
+      },
+      {
+       "id": "pelvis",
+       "box": [
+        712,
+        442,
+        65,
+        19
+       ]
+      },
+      {
+       "id": "humerus",
+       "box": [
+        355,
+        560,
+        93,
+        19
+       ]
+      },
+      {
+       "id": "femur",
+       "box": [
+        0,
+        684,
+        67,
+        20
+       ]
+      },
+      {
+       "id": "foramen",
+       "box": [
+        911,
+        710,
+        83,
+        20
+       ]
+      }
+     ],
+     "shown": [
+      {
+       "id": "skull",
+       "why": "The name of the whole drawing, not a marking on it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bone-tissue-histology",
+   "title": "Histology station: bone cells and bone tissue",
+   "chapter": "bone-tissue",
+   "topic": "bone-histology",
+   "histology": true,
+   "stations": [
+    {
+     "figure": "os-6-11",
+     "topic": "bone-histology",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "osteocyte",
+       "name": "Osteocyte",
+       "accept": [
+        "osteocytes"
+       ],
+       "box": [
+        0,
+        494,
+        123,
+        75
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A mature bone cell trapped in a lacuna inside the matrix. Its long arms run through canaliculi to touch its neighbors; it maintains the bone tissue around it and senses strain.",
+       "follow": {
+        "q": "How does an osteocyte form?",
+        "options": [
+         "An osteoblast is walled in by its own matrix",
+         "An osteoclast fuses with neighboring cells",
+         "An osteogenic cell divides inside a lacuna",
+         "Two osteoclasts fuse inside the calcified matrix"
+        ],
+        "correct": 0,
+        "why": "Osteoblasts lay down matrix around themselves until they are trapped in a lacuna; they then become osteocytes. Osteoclasts form by fusion of blood-forming cells and do not become osteocytes, and osteogenic cells divide on bone surfaces, not in lacunae.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "osteoblast",
+       "name": "Osteoblast",
+       "accept": [
+        "osteoblasts"
+       ],
+       "box": [
+        159,
+        494,
+        193,
+        50
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A bone-building cell on the bone surface. It secretes the organic part of the matrix (osteoid) and helps it mineralize; when it is walled in by its own matrix it becomes an osteocyte."
+      },
+      {
+       "id": "osteogenic-cell",
+       "name": "Osteogenic cell",
+       "accept": [
+        "osteogenic cells",
+        "osteoprogenitor cell",
+        "osteoprogenitor"
+       ],
+       "box": [
+        411,
+        494,
+        166,
+        50
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A flat stem cell in the inner periosteum and the endosteum. It is the only bone cell that divides; its daughters become osteoblasts."
+      },
+      {
+       "id": "osteoclast",
+       "name": "Osteoclast",
+       "accept": [
+        "osteoclasts"
+       ],
+       "box": [
+        641,
+        494,
+        147,
+        50
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A very large cell with many nuclei on the bone surface. It dissolves the mineral and digests the collagen of bone, breaking bone down (resorption).",
+       "follow": {
+        "q": "An osteoclast is large and has many nuclei. Why?",
+        "options": [
+         "It divides its nucleus without dividing",
+         "It forms by fusion of several cells",
+         "It engulfs whole osteocytes",
+         "It grows from an osteogenic cell over years"
+        ],
+        "correct": 1,
+        "why": "Osteoclasts form when several precursor cells from the blood-forming lineage fuse, so one cell carries many nuclei. It does not arise from the osteogenic cell line, which makes osteoblasts, and it does not engulf cells.",
+        "level": "apply"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-6-13",
+     "topic": "bone-histology",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "spongy-bone",
+       "name": "Spongy bone",
+       "accept": [
+        "cancellous bone",
+        "trabecular bone"
+       ],
+       "box": [
+        251,
+        34,
+        133,
+        25
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "Bone built as a lattice of thin struts (trabeculae) instead of solid layers. It fills the ends of long bones, where it is light but strong along the lines of stress."
+      },
+      {
+       "id": "compact-bone",
+       "name": "Compact bone",
+       "accept": [
+        "cortical bone"
+       ],
+       "box": [
+        138,
+        224,
+        145,
+        26
+       ],
+       "concept": "compact-bone",
+       "taught": "bone-histology",
+       "fn": "The dense, solid bone that forms the wall of the shaft and the outer shell of every bone. It is made of tightly packed osteons."
+      },
+      {
+       "id": "trabeculae",
+       "name": "Trabeculae",
+       "accept": [
+        "trabecula",
+        "trabeculas"
+       ],
+       "box": [
+        402,
+        225,
+        113,
+        21
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "The thin struts and plates of bone that make up spongy bone. They line up along the lines of stress, and the spaces between them hold red marrow.",
+       "follow": {
+        "q": "Why does spongy bone have no osteons or central canals?",
+        "options": [
+         "Its cells need no oxygen to survive",
+         "It has no living cells in its matrix",
+         "Its trabeculae are thin, near marrow spaces",
+         "Its trabeculae are made of hyaline cartilage"
+        ],
+        "correct": 2,
+        "why": "Each trabecula is thin enough that osteocytes are supplied by diffusion through canaliculi from the marrow spaces around it, so no central canal is needed. Spongy bone is living bone tissue with osteocytes, not cartilage.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "lacuna",
+       "name": "Lacuna",
+       "accept": [
+        "lacunae"
+       ],
+       "box": [
+        913,
+        339,
+        79,
+        22
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "A small cavity in the bone matrix that holds one osteocyte. Lacunae sit between the lamellae."
+      },
+      {
+       "id": "osteocyte",
+       "name": "Osteocyte",
+       "accept": [
+        "osteocytes"
+       ],
+       "box": [
+        912,
+        425,
+        105,
+        25
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A mature bone cell in its lacuna. It maintains the matrix around it and passes signals and nutrients to its neighbors through canaliculi."
+      },
+      {
+       "id": "osteoclast",
+       "name": "Osteoclast",
+       "accept": [
+        "osteoclasts"
+       ],
+       "box": [
+        912,
+        485,
+        110,
+        21
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A large cell with many nuclei on the surface of a trabecula. It breaks down (resorbs) bone, working with osteoblasts to reshape the struts."
+      },
+      {
+       "id": "osteoblasts",
+       "name": "Osteoblasts aligned along trabeculae of new bone",
+       "accept": [],
+       "box": [
+        912,
+        555,
+        190,
+        70
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "Bone-building cells lined up along the surface of a trabecula. They lay down new matrix, which thickens the strut."
+      },
+      {
+       "id": "canaliculi-openings",
+       "name": "Canaliculi openings on surface",
+       "accept": [
+        "canaliculi openings",
+        "canaliculi",
+        "canaliculus"
+       ],
+       "box": [
+        148,
+        628,
+        108,
+        70
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "The tiny openings of canaliculi on the surface of a trabecula. Through them, osteocytes inside the strut exchange nutrients and wastes with the marrow space."
+      },
+      {
+       "id": "endosteum",
+       "name": "Endosteum",
+       "accept": [],
+       "box": [
+        305,
+        628,
+        115,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The thin cell layer covering the surfaces of the trabeculae. It holds osteogenic cells, osteoblasts and osteoclasts."
+      },
+      {
+       "id": "lamellae-trabecula",
+       "name": "Lamellae",
+       "accept": [
+        "lamella"
+       ],
+       "box": [
+        443,
+        628,
+        95,
+        21
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "The thin layers of matrix that build up a trabecula, laid down one on top of another."
+      },
+      {
+       "id": "canaliculi",
+       "name": "Canaliculi",
+       "accept": [
+        "canaliculus"
+       ],
+       "box": [
+        912,
+        655,
+        101,
+        22
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "Tiny channels in the matrix that link lacunae with each other and with the bone surface. The arms of osteocytes run through them, carrying nutrients, wastes and signals.",
+       "follow": {
+        "q": "An osteocyte is walled in by hard matrix. How does it get nutrients?",
+        "options": [
+         "Through blood vessels inside its lacuna",
+         "By dissolving the matrix around it",
+         "By diffusion straight through the hard mineral",
+         "Through canaliculi linking it to other cells"
+        ],
+        "correct": 3,
+        "why": "Osteocyte arms run through canaliculi and join at gap junctions, so nutrients and signals pass from cell to cell out to the nearest vessel or marrow space. There is no vessel in a lacuna, the mineral blocks diffusion, and osteocytes do not dissolve their own walls to feed.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "lamellae",
+       "name": "Lamellae",
+       "accept": [
+        "lamella"
+       ],
+       "box": [
+        913,
+        707,
+        95,
+        21
+       ],
+       "concept": "osteon",
+       "taught": "bone-histology",
+       "fn": "Thin layers of mineralized matrix. Their collagen fibers run in a different direction in each layer, which helps bone resist twisting."
+      }
+     ]
+    },
+    {
+     "figure": "os-6-9",
+     "topic": "bone-histology",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "compact-bone",
+       "name": "Compact bone",
+       "accept": [
+        "cortical bone"
+       ],
+       "box": [
+        717,
+        113,
+        96,
+        46
+       ],
+       "concept": "compact-bone",
+       "taught": "bone-histology",
+       "fn": "The dense, solid bone that forms the outer plates of this flat bone. Its tightly packed osteons resist bending and twisting."
+      },
+      {
+       "id": "periosteum",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        0,
+        287,
+        112,
+        21
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The two-layer membrane covering the outer surfaces of the bone, anchoring tendons and carrying vessels and nerves into the bone."
+      },
+      {
+       "id": "spongy-bone",
+       "name": "Spongy bone (diploë)",
+       "accept": [
+        "diploe",
+        "diploë",
+        "spongy bone diploe",
+        "cancellous bone"
+       ],
+       "box": [
+        684,
+        355,
+        130,
+        50
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "The layer of spongy bone sandwiched between the two plates of compact bone in a flat skull bone, called the diploë. Its lattice of trabeculae makes the bone light, and its spaces hold red marrow.",
+       "follow": {
+        "q": "What fills the spaces between the trabeculae of the diploë?",
+        "options": [
+         "Red bone marrow",
+         "Yellow bone marrow",
+         "Osteons",
+         "Articular cartilage"
+        ],
+        "correct": 0,
+        "why": "The spaces in spongy bone of flat bones hold red marrow, which makes blood cells. Yellow marrow fills the shaft of adult long bones, osteons are the units of compact bone, and articular cartilage only caps joint surfaces.",
+        "level": "recall"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "epiphyseal-plate",
+   "title": "Epiphyseal plate zones and bone formation",
+   "chapter": "bone-tissue",
+   "topic": "bone-development",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-6-18",
+     "topic": "bone-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "reserve-zone",
+       "name": "Reserve zone",
+       "accept": [
+        "zone of reserve cartilage",
+        "resting zone"
+       ],
+       "box": [
+        79,
+        221,
+        139,
+        21
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The zone of the epiphyseal plate nearest the epiphysis: small, scattered chondrocytes that rarely divide. It anchors the plate to the epiphysis, whose vessels feed the plate.",
+       "follow": {
+        "q": "A growth-plate injury kills the cells nearest the epiphysis. Why can this stop growth at that plate?",
+        "options": [
+         "It removes the zone where bone replaces cartilage",
+         "It removes the cells that supply the dividing zone",
+         "It blocks the nutrient artery of the shaft",
+         "It destroys the calcified matrix that is later turned into bone"
+        ],
+        "correct": 1,
+        "why": "The reserve and proliferative zones supply the new chondrocytes that lengthen the plate; lose them and the plate stops adding cartilage. Bone forms on the diaphysis side, which is not where the injury is, and the nutrient artery supplies the shaft, not the plate.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "proliferative-zone",
+       "name": "Proliferative zone",
+       "accept": [
+        "zone of proliferation",
+        "proliferation zone"
+       ],
+       "box": [
+        79,
+        373,
+        170,
+        21
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The zone where chondrocytes divide rapidly and stack in columns like piles of coins. The new cells push the epiphysis away from the diaphysis; this is where most length comes from.",
+       "follow": {
+        "q": "In which zone do chondrocytes divide to add length?",
+        "options": [
+         "Reserve zone",
+         "Zone of calcified matrix",
+         "Proliferative zone",
+         "Zone of ossification"
+        ],
+        "correct": 2,
+        "why": "Rapid division in stacks happens in the proliferative zone. Reserve-zone cells rarely divide, calcified-matrix cells are dying, and the zone of ossification is where bone replaces the cartilage.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "maturation-hypertrophy",
+       "name": "Maturation and hypertrophy",
+       "accept": [
+        "zone of maturation and hypertrophy",
+        "hypertrophic zone",
+        "zone of hypertrophy"
+       ],
+       "box": [
+        78,
+        625,
+        150,
+        50
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The zone of maturation and hypertrophy: older chondrocytes pushed down the stacks stop dividing and swell to several times their size. Their enlargement adds length and readies the matrix around them to calcify."
+      },
+      {
+       "id": "calcified-matrix",
+       "name": "Calcified matrix",
+       "accept": [
+        "zone of calcified matrix",
+        "calcification zone"
+       ],
+       "box": [
+        78,
+        894,
+        155,
+        21
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The zone where the matrix around the enlarged chondrocytes calcifies. Cut off from diffusion, the chondrocytes die, leaving columns of calcified cartilage."
+      },
+      {
+       "id": "primary-spongiosa",
+       "name": "Primary spongiosa",
+       "accept": [],
+       "box": [
+        667,
+        1029,
+        107,
+        51
+       ],
+       "concept": null,
+       "fn": "The first spongy bone laid down on the calcified cartilage columns just below the plate; it still has cartilage at its core."
+      },
+      {
+       "id": "zone-of-ossification",
+       "name": "Zone of ossification",
+       "accept": [
+        "ossification zone",
+        "osseous tissue zone"
+       ],
+       "box": [
+        141,
+        1099,
+        115,
+        47
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The region below the plate, on the diaphysis side, where capillaries and osteogenic cells invade the empty spaces and osteoblasts lay bone on the calcified cartilage columns."
+      },
+      {
+       "id": "metaphysis",
+       "name": "Metaphysis",
+       "accept": [],
+       "box": [
+        78,
+        1058,
+        32,
+        116
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region between the diaphysis and the epiphysis. In a growing bone it holds the epiphyseal plate and the new bone forming below it."
+      },
+      {
+       "id": "secondary-spongiosa",
+       "name": "Secondary spongiosa",
+       "accept": [],
+       "box": [
+        667,
+        1167,
+        113,
+        50
+       ],
+       "concept": null,
+       "fn": "Deeper, older spongy bone below the primary spongiosa, where osteoclasts have cleared the cartilage cores and the trabeculae have been rebuilt."
+      }
+     ]
+    },
+    {
+     "figure": "os-6-19",
+     "topic": "bone-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "epiphysis",
+       "name": "Epiphysis",
+       "accept": [
+        "proximal epiphysis"
+       ],
+       "box": [
+        347,
+        48,
+        100,
+        26
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The rounded end of the long bone, filled with spongy bone and red marrow. In a child it is separated from the metaphysis by the epiphyseal plate."
+      },
+      {
+       "id": "metaphysis",
+       "name": "Metaphysis",
+       "accept": [
+        "proximal metaphysis"
+       ],
+       "box": [
+        339,
+        88,
+        116,
+        25
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the shaft widens toward the epiphysis. The epiphyseal plate lies in it in a growing bone."
+      },
+      {
+       "id": "epiphyseal-line",
+       "name": "Epiphyseal line",
+       "accept": [],
+       "box": [
+        680,
+        222,
+        112,
+        46
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "A thin line of bone where the epiphyseal plate used to be. It forms when growth in length ends and bone replaces the last of the plate’s cartilage."
+      },
+      {
+       "id": "diaphysis",
+       "name": "Diaphysis",
+       "accept": [
+        "shaft"
+       ],
+       "box": [
+        346,
+        235,
+        101,
+        25
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The shaft of the long bone, between the two metaphyses. It grows in width by appositional growth under the periosteum."
+      },
+      {
+       "id": "epiphyseal-plate",
+       "name": "Epiphyseal plate (growth plate)",
+       "accept": [
+        "growth plate"
+       ],
+       "box": [
+        0,
+        242,
+        112,
+        100
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The disc of hyaline cartilage between the epiphysis and the diaphysis of a growing long bone. Its chondrocytes keep dividing while bone replaces cartilage on the diaphysis side, so the bone gets longer.",
+       "follow": {
+        "q": "Why can a bone no longer grow in length once the epiphyseal plate has become an epiphyseal line?",
+        "options": [
+         "The periosteum has stopped making cells",
+         "The medullary cavity has filled with red marrow",
+         "The osteoclasts in the shaft have died",
+         "Bone has replaced all the plate’s cartilage"
+        ],
+        "correct": 3,
+        "why": "Growth in length needs dividing cartilage in the plate. When the chondrocytes stop dividing and bone replaces the last of the cartilage, only a bony line remains. The periosteum still adds width, and marrow and osteoclasts do not set length.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "metaphysis-distal",
+       "name": "Metaphysis",
+       "accept": [
+        "distal metaphysis"
+       ],
+       "box": [
+        339,
+        437,
+        116,
+        25
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The flared region where the shaft widens toward the lower epiphysis; it holds the lower epiphyseal plate in a growing bone."
+      },
+      {
+       "id": "epiphysis-distal",
+       "name": "Epiphysis",
+       "accept": [
+        "distal epiphysis"
+       ],
+       "box": [
+        347,
+        485,
+        100,
+        25
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The rounded lower end of the long bone, filled with spongy bone and red marrow and separated from the metaphysis by an epiphyseal plate while the bone grows."
+      }
+     ],
+     "covered": [
+      {
+       "id": "femur",
+       "box": [
+        334,
+        540,
+        124,
+        49
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-6-17",
+     "topic": "bone-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "perichondrium",
+       "name": "Perichondrium",
+       "accept": [],
+       "box": [
+        99,
+        6,
+        128,
+        19
+       ],
+       "concept": "cartilage",
+       "taught": "connective-tissue",
+       "fn": "The dense connective tissue sheath around the cartilage model. When blood vessels invade it, its cells become osteoblasts and it becomes the periosteum."
+      },
+      {
+       "id": "primary-ossification-center",
+       "name": "Primary ossification center",
+       "accept": [
+        "primary center of ossification"
+       ],
+       "box": [
+        644,
+        69,
+        102,
+        60
+       ],
+       "concept": "endochondral-ossification",
+       "taught": "bone-development",
+       "fn": "The first site of bone formation in the cartilage model, in the middle of the diaphysis. A nutrient artery brings in osteogenic cells, and osteoblasts lay spongy bone on the remains of calcified cartilage.",
+       "follow": {
+        "q": "What arrives with the nutrient artery to start the primary ossification center?",
+        "options": [
+         "Osteogenic cells and osteoclast precursors",
+         "Chondrocytes from the surrounding perichondrium",
+         "Mesenchymal cells from the overlying skin",
+         "Red marrow from the epiphyses"
+        ],
+        "correct": 0,
+        "why": "The invading artery carries osteogenic cells, which become osteoblasts, and the precursors of osteoclasts. Chondrocytes are what is being replaced, and marrow and mesenchyme do not come from those places.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "hyaline-cartilage",
+       "name": "Hyaline cartilage",
+       "accept": [
+        "cartilage"
+       ],
+       "box": [
+        113,
+        81,
+        82,
+        43
+       ],
+       "concept": "cartilage",
+       "taught": "connective-tissue",
+       "fn": "The cartilage that forms the model of the future long bone. Bone later replaces it everywhere except the articular cartilage and the epiphyseal plate."
+      },
+      {
+       "id": "calcified-matrix",
+       "name": "Calcified matrix",
+       "accept": [
+        "calcified cartilage"
+       ],
+       "box": [
+        164,
+        174,
+        82,
+        40
+       ],
+       "concept": null,
+       "fn": "Cartilage matrix in the middle of the model that has taken up calcium salts. It blocks diffusion, so the chondrocytes in it die and leave cavities."
+      },
+      {
+       "id": "periosteum",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        395,
+        181,
+        103,
+        19
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The former perichondrium, now with blood vessels. Its osteoblasts lay a collar of compact bone around the middle of the shaft."
+      },
+      {
+       "id": "uncalcified-matrix",
+       "name": "Uncalcified matrix",
+       "accept": [
+        "uncalcified cartilage"
+       ],
+       "box": [
+        164,
+        253,
+        101,
+        40
+       ],
+       "concept": null,
+       "fn": "Cartilage matrix that has not yet calcified, at the ends of the model. Nutrients still diffuse through it, so its chondrocytes stay alive."
+      },
+      {
+       "id": "uncalcified-matrix-d",
+       "name": "Uncalcified matrix",
+       "accept": [
+        "uncalcified cartilage"
+       ],
+       "box": [
+        930,
+        271,
+        101,
+        40
+       ],
+       "concept": null,
+       "fn": "Living hyaline cartilage still filling the bone end before a secondary ossification center forms in it."
+      },
+      {
+       "id": "nutrient-artery",
+       "name": "Nutrient artery",
+       "accept": [],
+       "box": [
+        639,
+        283,
+        77,
+        44
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The artery that grows into the middle of the cartilage model through the bone collar, bringing the cells that form the primary ossification center."
+      },
+      {
+       "id": "spongy-bone",
+       "name": "Spongy bone",
+       "accept": [
+        "cancellous bone"
+       ],
+       "box": [
+        412,
+        289,
+        74,
+        40
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "The first bone laid down at the primary ossification center, on the remains of calcified cartilage."
+      },
+      {
+       "id": "calcified-matrix-d",
+       "name": "Calcified matrix",
+       "accept": [
+        "calcified cartilage"
+       ],
+       "box": [
+        697,
+        378,
+        82,
+        39
+       ],
+       "concept": null,
+       "fn": "Calcified cartilage matrix at the edge of the growing bone end, where chondrocytes die and bone will replace the cartilage."
+      },
+      {
+       "id": "periosteum-d",
+       "name": "Periosteum",
+       "accept": [],
+       "box": [
+        674,
+        462,
+        146,
+        63
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The membrane covering the shaft. Osteoblasts in it keep adding compact bone to the outside of the shaft, widening it."
+      },
+      {
+       "id": "medullary-cavity",
+       "name": "Medullary cavity",
+       "accept": [
+        "marrow cavity"
+       ],
+       "box": [
+        981,
+        472,
+        92,
+        44
+       ],
+       "concept": "long-bone-parts",
+       "taught": "bone-structure",
+       "fn": "The space in the middle of the shaft, opened as osteoclasts break down the first spongy bone there."
+      },
+      {
+       "id": "artery-and-vein-d",
+       "name": "Artery and vein",
+       "accept": [
+        "blood vessels",
+        "artery",
+        "vein"
+       ],
+       "box": [
+        946,
+        640,
+        154,
+        63
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "Vessels entering the shaft; they carry nutrients, osteogenic cells and osteoclast precursors to the forming bone."
+      },
+      {
+       "id": "secondary-ossification-center",
+       "name": "Secondary ossification center",
+       "accept": [
+        "secondary center of ossification"
+       ],
+       "box": [
+        917,
+        822,
+        103,
+        60
+       ],
+       "concept": "endochondral-ossification",
+       "taught": "bone-development",
+       "fn": "A site of bone formation in an epiphysis, forming around birth or after. Vessels enter the bone end and spongy bone replaces the cartilage there, leaving cartilage only on the joint surface and at the epiphyseal plate."
+      },
+      {
+       "id": "articular-cartilage",
+       "name": "Articular cartilage",
+       "accept": [],
+       "box": [
+        438,
+        918,
+        155,
+        24
+       ],
+       "concept": "cartilage-example-sites",
+       "taught": "connective-tissue",
+       "fn": "Hyaline cartilage left on the joint surface of the bone end after ossification. It stays cartilage for life."
+      },
+      {
+       "id": "artery-and-vein-e",
+       "name": "Artery and vein",
+       "accept": [
+        "blood vessels",
+        "artery",
+        "vein"
+       ],
+       "box": [
+        674,
+        940,
+        81,
+        39
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "Vessels growing into the cartilage of the bone end; they bring the cells that start the secondary ossification center."
+      },
+      {
+       "id": "uncalcified-matrix-e",
+       "name": "Uncalcified matrix",
+       "accept": [
+        "uncalcified cartilage"
+       ],
+       "box": [
+        939,
+        994,
+        101,
+        40
+       ],
+       "concept": null,
+       "fn": "Cartilage in the bone end that has not calcified; part of it will remain as the epiphyseal plate."
+      },
+      {
+       "id": "spongy-bone-f",
+       "name": "Spongy bone",
+       "accept": [
+        "cancellous bone"
+       ],
+       "box": [
+        316,
+        1000,
+        74,
+        40
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "Spongy bone filling the epiphysis after the secondary ossification center has replaced the cartilage there. Its spaces hold red marrow."
+      },
+      {
+       "id": "epiphyseal-plate",
+       "name": "Epiphyseal plate",
+       "accept": [
+        "growth plate"
+       ],
+       "box": [
+        316,
+        1162,
+        100,
+        43
+       ],
+       "concept": "epiphyseal-plate",
+       "taught": "bone-development",
+       "fn": "The disc of cartilage left between the epiphysis and the diaphysis. It keeps lengthening the bone until growth ends."
+      },
+      {
+       "id": "artery-and-vein-e-shaft",
+       "name": "Artery and vein",
+       "accept": [
+        "blood vessels",
+        "artery",
+        "vein"
+       ],
+       "box": [
+        947,
+        1230,
+        153,
+        63
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "Vessels supplying the shaft of the developing bone with nutrients and bone-forming cells."
+      }
+     ]
+    },
+    {
+     "figure": "os-6-16",
+     "topic": "bone-development",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "mesenchymal-cells",
+       "name": "Mesenchymal cells",
+       "accept": [
+        "mesenchymal cell",
+        "mesenchyme"
+       ],
+       "box": [
+        404,
+        16,
+        128,
+        43
+       ],
+       "concept": "mesenchyme",
+       "taught": "connective-tissue",
+       "fn": "Unspecialized embryonic connective tissue cells. In intramembranous ossification they cluster and turn directly into osteogenic cells and osteoblasts."
+      },
+      {
+       "id": "osteoid-b",
+       "name": "Osteoid",
+       "accept": [],
+       "box": [
+        957,
+        94,
+        77,
+        20
+       ],
+       "concept": "bone-matrix",
+       "taught": "bone-histology",
+       "fn": "Freshly secreted, not yet mineralized matrix around the trapped cells."
+      },
+      {
+       "id": "collagen-fibers",
+       "name": "Collagen fibers",
+       "accept": [
+        "collagen fiber",
+        "collagen"
+       ],
+       "box": [
+        404,
+        115,
+        138,
+        24
+       ],
+       "concept": "ct-fibers",
+       "taught": "connective-tissue",
+       "fn": "Protein fibers of the surrounding embryonic connective tissue, in which the bone begins to form."
+      },
+      {
+       "id": "osteoblast-b",
+       "name": "Osteoblast",
+       "accept": [
+        "osteoblasts"
+       ],
+       "box": [
+        957,
+        133,
+        102,
+        20
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A bone-building cell lining the edge of the new bone, adding more matrix."
+      },
+      {
+       "id": "ossification-center",
+       "name": "Ossification center",
+       "accept": [
+        "center of ossification"
+       ],
+       "box": [
+        404,
+        167,
+        110,
+        42
+       ],
+       "concept": "ossification",
+       "taught": "bone-development",
+       "fn": "The cluster of cells where bone first forms. Here mesenchymal cells become osteoblasts, which begin laying down matrix.",
+       "follow": {
+        "q": "In intramembranous ossification, what does bone form in?",
+        "options": [
+         "A hyaline cartilage model",
+         "A sheet of mesenchyme",
+         "A blood clot at the site",
+         "Yellow bone marrow"
+        ],
+        "correct": 1,
+        "why": "Intramembranous bone forms directly in mesenchyme with no cartilage stage, as in the flat bones of the skull. A cartilage model belongs to endochondral ossification, and clots and marrow are not where bone first forms.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "osteocyte",
+       "name": "Osteocyte",
+       "accept": [
+        "osteocytes"
+       ],
+       "box": [
+        957,
+        169,
+        97,
+        24
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "An osteoblast that has walled itself in with matrix and now sits in a lacuna, maintaining the new bone."
+      },
+      {
+       "id": "new-bone-matrix",
+       "name": "New bone matrix",
+       "accept": [],
+       "box": [
+        957,
+        226,
+        97,
+        43
+       ],
+       "concept": "bone-matrix",
+       "taught": "bone-histology",
+       "fn": "Osteoid that has mineralized with calcium salts, forming hard new bone."
+      },
+      {
+       "id": "osteoid",
+       "name": "Osteoid",
+       "accept": [],
+       "box": [
+        404,
+        272,
+        77,
+        21
+       ],
+       "concept": "bone-matrix",
+       "taught": "bone-histology",
+       "fn": "The unmineralized organic matrix, mostly collagen, that osteoblasts secrete. Calcium salts later deposit in it to harden it."
+      },
+      {
+       "id": "osteoblast",
+       "name": "Osteoblast",
+       "accept": [
+        "osteoblasts"
+       ],
+       "box": [
+        404,
+        305,
+        103,
+        20
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "A bone-building cell. In the ossification center it secretes osteoid around itself."
+      },
+      {
+       "id": "mesenchyme-periosteum",
+       "name": "Mesenchyme forms the periosteum",
+       "accept": [
+        "mesenchyme",
+        "periosteum"
+       ],
+       "box": [
+        404,
+        403,
+        124,
+        69
+       ],
+       "concept": "mesenchyme",
+       "taught": "connective-tissue",
+       "fn": "Mesenchyme that condenses on the surface of the new bone and becomes the periosteum."
+      },
+      {
+       "id": "fibrous-periosteum",
+       "name": "Fibrous periosteum",
+       "accept": [],
+       "box": [
+        957,
+        412,
+        106,
+        46
+       ],
+       "concept": "bone-membranes",
+       "taught": "bone-structure",
+       "fn": "The outer fibrous layer of the periosteum that has formed from the surface mesenchyme."
+      },
+      {
+       "id": "osteoblast-d",
+       "name": "Osteoblast",
+       "accept": [
+        "osteoblasts"
+       ],
+       "box": [
+        957,
+        482,
+        102,
+        20
+       ],
+       "concept": "bone-cells",
+       "taught": "bone-histology",
+       "fn": "Bone-building cells under the periosteum, laying down compact bone on the surface."
+      },
+      {
+       "id": "compact-bone",
+       "name": "Compact bone",
+       "accept": [
+        "cortical bone"
+       ],
+       "box": [
+        957,
+        527,
+        135,
+        24
+       ],
+       "concept": "compact-bone",
+       "taught": "bone-histology",
+       "fn": "The layer of compact bone laid down on the surface, under the periosteum, replacing the outer spongy bone."
+      },
+      {
+       "id": "trabeculae",
+       "name": "Trabeculae",
+       "accept": [
+        "trabecula"
+       ],
+       "box": [
+        404,
+        583,
+        105,
+        19
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "Struts of new bone that grow and join into a network, forming spongy bone around blood vessels."
+      },
+      {
+       "id": "spongy-bone",
+       "name": "Spongy bone",
+       "accept": [
+        "cancellous bone",
+        "diploe",
+        "diploë"
+       ],
+       "box": [
+        957,
+        659,
+        145,
+        69
+       ],
+       "concept": "spongy-bone",
+       "taught": "bone-histology",
+       "fn": "The spongy bone left in the middle of a flat bone, between the compact plates; its spaces hold red marrow."
+      },
+      {
+       "id": "blood-vessel",
+       "name": "Blood vessel",
+       "accept": [
+        "blood vessels",
+        "vessel"
+       ],
+       "box": [
+        405,
+        688,
+        118,
+        20
+       ],
+       "concept": "blood-vessel-basics",
+       "taught": "body-organization",
+       "fn": "A blood vessel trapped between the growing trabeculae; its tissue later becomes red marrow."
       }
      ]
     }
