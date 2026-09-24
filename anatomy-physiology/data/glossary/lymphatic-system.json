@@ -21,7 +21,7 @@
   },
   "lymphoid-organs": {
     "def": "Primary lymphoid organs (red bone marrow and the thymus) are where lymphocytes are made and mature; secondary lymphoid organs (lymph nodes, the spleen and mucosa-associated lymphoid tissue such as the tonsils, Peyer's patches and BALT) are where mature lymphocytes meet antigens.",
-    "roots": [["-oid", "resembling"], ["tonsilla", "small stake or almond"]],
+    "roots": [["-oid", "resembling"], ["tonsilla", "Latin name for the tonsils, of uncertain origin"]],
     "say": ""
   },
   "lymphedema": {

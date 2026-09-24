@@ -134,7 +134,7 @@
       {
         "name": "Amount of HIV in the blood",
         "answer": "up",
-        "why": "As helper T cells collapse, cytotoxic T cells and antibodies no longer hold the virus down."
+        "why": "As helper T cells collapse, cytotoxic T cells lose their help and no longer hold the virus down."
       }
     ],
     "why": {
@@ -159,7 +159,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "In the chronic phase, cytotoxic T cells and antibodies hold the virus at a steady level, but never clear it, and the CD4 count declines year after year. Symptoms are few until the count gets low.",
+      "correct": "In the chronic phase, cytotoxic T cells hold the virus at a steady level, but never clear it, and the CD4 count declines year after year. Symptoms are few until the count gets low.",
       "options": [
         "The virus line never reaches zero, and the CD4 line slopes down, not up.",
         "Correct. A steady virus level and a slowly falling CD4 count mark the chronic phase.",
@@ -181,16 +181,16 @@
     "options": [
       "The virus runs out of CD4 cells to infect in the blood and lymph nodes",
       "Antiretroviral drugs taken at diagnosis",
-      "Cytotoxic T cells and antibodies against HIV appear",
+      "HIV-specific cytotoxic T cells appear and kill infected cells",
       "The CD4 count rises above 1,000"
     ],
     "correct": 2,
     "why": {
-      "correct": "Within a few weeks, the adaptive response catches up: cytotoxic T cells kill infected cells and antibodies appear (seroconversion). Together they pull the virus down to a steady level, although they cannot clear it.",
+      "correct": "Within a few weeks, HIV-specific cytotoxic T cells expand and kill infected cells, and the virus falls to a steady level. Antibodies appear around the same time (seroconversion) but do little to control the virus, which mutates around them.",
       "options": [
-        "The CD4 count dips but then partly recovers to hundreds per microliter, so there are plenty of cells left to infect.",
+        "Fewer cells to infect may contribute, but the drop matches the arrival of HIV-specific cytotoxic T cells, and removing those cells in animal studies makes the virus climb again.",
         "The graph shows untreated infection. The drop happens without drugs.",
-        "Correct. The adaptive immune response lowers the virus to its steady level.",
+        "Correct. Cytotoxic T cells lower the virus to its steady level.",
         "The CD4 count only partly recovers, to about 750, and does not return to its starting level."
       ]
     }
@@ -299,7 +299,7 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "Hypersensitivity needs a first, symptom-free exposure. The first sting triggered Th2 help and class switching to venom-specific IgE, which coated his mast cells. The second sting cross-linked that IgE and triggered widespread degranulation.",
+      "correct": "An allergy needs a first, symptom-free exposure. The first sting triggered Th2 help and class switching to venom-specific IgE, which coated his mast cells. The second sting cross-linked that IgE and triggered widespread degranulation.",
       "options": [
         "The dose of a single sting varies little. The change is in his immune system, not the bee.",
         "IgM does not arm mast cells, and blocking the venom would prevent a reaction, not cause one.",
@@ -343,7 +343,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "Minutes after an antibiotic injection, a woman has hives, wheezing and a blood pressure of 70/40. What should be given first?",
+    "q": "Minutes after an antibiotic injection, a woman has hives, wheezing, a blood pressure of 70/40 and a heart rate of 128. What should be given first?",
     "options": [
       "An oral antihistamine",
       "A corticosteroid tablet",
@@ -373,8 +373,8 @@
     "options": [
       "Her motor neurons stop making acetylcholine after a few hours",
       "Her acetylcholinesterase is missing, so acetylcholine builds up",
-      "Her muscle fibers run out of ATP faster than normal",
-      "With fewer receptor proteins, end plate potentials fall below threshold as release declines"
+      "Her muscle fibers run out of ATP faster than normal after repeated contractions",
+      "Her end plates have fewer receptor proteins, so they fail as release declines"
     ],
     "correct": 3,
     "why": {
@@ -536,7 +536,7 @@
       "options": [
         "Correct. Fading maternal IgG unmasks the missing T cells.",
         "In healthy babies the thymus makes T cells well before birth. In SCID the T cells never develop at all.",
-        "Most vaccines are inactivated and cannot cause infection. The timing matches the loss of maternal antibody.",
+        "First vaccines are given at 2 months, and a single vaccine would not explain one severe infection after another with many kinds of microbe. (A live vaccine, such as oral rotavirus vaccine, can itself make a baby with SCID ill.) The timing matches the loss of maternal antibody.",
         "His B cells were never able to make useful antibody without helper T cells; that did not change at 4 months."
       ]
     }
@@ -606,7 +606,7 @@
       "The strep bacteria spread through the blood and settled directly on the heart valve",
       "The child is allergic to strep, and mast cells in the heart degranulated",
       "Antibodies against a strep protein also bind a similar protein on heart tissue",
-      "The infection destroyed his regulatory T cells"
+      "The infection destroyed the child's regulatory T cells"
     ],
     "correct": 2,
     "why": {
@@ -630,7 +630,7 @@
     "q": "Which statement about rheumatoid arthritis is correct?",
     "options": [
       "It is wear and tear of joint cartilage that builds up with age and years of heavy use",
-      "An autoimmune inflammation of synovial membranes in small joints on both sides",
+      "It is autoimmune inflammation of synovial membranes in small joints on both sides",
       "It is caused by IgE binding pollen in the joints",
       "It affects one large joint after an injury"
     ],

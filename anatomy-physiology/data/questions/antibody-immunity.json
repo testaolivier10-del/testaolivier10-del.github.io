@@ -35,7 +35,7 @@
       "communication"
     ],
     "figure": "os-21-24",
-    "q": "Just after the initial exposure, the curve stays flat for several days. What is happening in the lymph nodes during this flat stretch?",
+    "q": "Just after the initial exposure, antibody stays low for a while before it climbs. What is happening in the lymph nodes during this early stretch?",
     "options": [
       "Memory B cells are releasing IgG",
       "Antigen is being broken down so none reaches the B cells",
@@ -432,10 +432,10 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "Antivenom is passive immunity: antibodies made in another animal. They work at once but are broken down over weeks, and because his own B cells did not make them, no memory cells formed.",
+      "correct": "Antivenom is passive immunity: antibodies made in another animal. They work at once but are broken down within days to weeks, and because his own B cells did not make them, no memory cells formed.",
       "options": [
         "Memory B cells come only from your own immune response. Borrowed antibodies do not create them.",
-        "Borrowed antibodies last weeks to a few months, not decades.",
+        "Borrowed antibodies last days to a few months, not decades.",
         "Correct. Passive immunity is immediate but temporary.",
         "The answer contradicts itself: if he were immune, he would be protected. Antivenom does not make you immune."
       ]
@@ -477,7 +477,7 @@
     ],
     "q": "Why is a new influenza vaccine made every year, while one measles vaccine series protects for life?",
     "options": [
-      "Influenza gradually changes its surface proteins, so last year's antibodies fit less well",
+      "Influenza's surface proteins keep changing, so old antibodies fit less well",
       "Influenza vaccines leave no memory cells",
       "Measles virus hides inside nerve cells, where antibodies can never reach it",
       "The body cannot make IgG against influenza"

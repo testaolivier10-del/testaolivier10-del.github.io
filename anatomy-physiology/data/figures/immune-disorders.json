@@ -23,7 +23,7 @@
     "ext": "svg",
     "w": 640,
     "h": 400,
-    "alt": "A graph of untreated HIV infection over about ten years. The CD4 helper T cell count, per microliter of blood, starts near 1,000, dips sharply in the first weeks, partly recovers to about 750, then falls slowly for years and crosses the dashed line at 200 marked AIDS. The amount of virus in the blood spikes very high in the first weeks, falls to a lower steady level after antibodies appear, then climbs again in the late years as the CD4 count collapses. Three phases are labeled along the top: acute infection, chronic phase with few symptoms, and AIDS.",
+    "alt": "A graph of untreated HIV infection over about ten years. The CD4 helper T cell count, per microliter of blood, starts near 1,000, dips sharply in the first weeks, partly recovers to about 750, then falls slowly for years and crosses the dashed line at 200 marked AIDS. The amount of virus in the blood spikes very high in the first weeks, falls to a lower steady level as cytotoxic T cells respond, then climbs again in the late years as the CD4 count collapses. Three phases are labeled along the top: acute infection, chronic phase with few symptoms, and AIDS. The first weeks are stretched out at the left, marked by a break in the time axis; the rest of the axis is in years.",
     "labels": []
   }
 }

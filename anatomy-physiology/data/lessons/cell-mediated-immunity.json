@@ -26,12 +26,12 @@
   ],
   "anatomy": {
     "figure": "os-21-20",
-    "caption": "Helper and cytotoxic T cells. Hide the labels and name the protein that pairs with MHC II, the one that pairs with MHC I, and the two weapons the cytotoxic T cell releases."
+    "caption": "Helper and cytotoxic T cells. Hide the labels and name the protein that pairs with MHC II, the one that pairs with MHC I, and the two weapons the cytotoxic T cell releases. The printed heading says the enzymes \"rupture cell membranes\", and the dead cell is drawn shattered. In fact perforin makes small pores, and the target dies by apoptosis, breaking into tidy membrane-wrapped fragments."
   },
   "chain": [
     { "cause": "A dendritic cell engulfs a virus at the site of infection, senses it, and carries viral peptides in its MHC proteins to a lymph node.", "effect": "It displays those peptides and makes B7 proteins on its surface." },
     { "cause": "A naïve T cell whose receptor fits one of the peptides binds it (signal 1), and its CD28 binds the B7 (costimulation, signal 2).", "effect": "The T cell is activated and starts making IL-2 and IL-2 receptor proteins." },
-    { "cause": "IL-2 acts on the same cell and its neighbors.", "effect": "The T cell divides again and again: clonal expansion into thousands of identical effector T cells and some memory T cells." },
+    { "cause": "IL-2 acts on the same cell and its neighbors.", "effect": "The T cell divides again and again: clonal expansion into tens of thousands to millions of identical effector T cells and some memory T cells." },
     { "cause": "Effector cytotoxic T cells leave the node and find infected cells showing the viral peptide in MHC class I.", "effect": "They release perforin and granzymes and engage Fas, switching on the target's caspases." },
     { "cause": "Caspases take the infected cell apart from inside.", "effect": "The cell dies by apoptosis before it can release new virus, and macrophages engulf the fragments." }
   ],

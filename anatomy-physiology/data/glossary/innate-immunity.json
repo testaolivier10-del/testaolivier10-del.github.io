@@ -36,7 +36,7 @@
   },
   "interferon": {
     "def": "Cytokines released by virus-infected cells (interferon alpha and beta) that make neighboring cells produce antiviral proteins; interferon gamma, from NK cells and some lymphocytes, activates macrophages.",
-    "roots": [["inter-", "between"], ["ferire", "strike"]],
+    "roots": [["interfere", "to get in the way of (named for interfering with virus growth)"], ["-on", "protein or particle"]],
     "say": "in-ter-FEER-on"
   },
   "antimicrobial-proteins": {

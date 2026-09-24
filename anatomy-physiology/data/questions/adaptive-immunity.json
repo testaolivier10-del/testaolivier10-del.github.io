@@ -88,7 +88,7 @@
       "structure-function",
       "communication"
     ],
-    "q": "Mature red blood cells carry no MHC class I. Why can they not display it, and what follows if a parasite lives inside them?",
+    "q": "Mature red blood cells carry almost no MHC class I. Why can they not display it, and what follows if a parasite lives inside them?",
     "options": [
       "They have no nucleus or endoplasmic reticulum, so T cells cannot detect the parasite",
       "Their membrane is too thin to hold MHC, so the parasite is detected by complement alone",
@@ -131,10 +131,10 @@
     "why": {
       "correct": "The antigen-presenting cells are dendritic cells, macrophages and B cells. They take in material from outside and display its peptides on MHC class II.",
       "options": [
-        "Correct. Dendritic cells are the most important antigen-presenting cells, and the only ones that switch on naive T cells.",
+        "Correct. Dendritic cells are the most important antigen-presenting cells, and they start almost every naive T cell response.",
         "Correct. Macrophages show what they have swallowed on class II.",
         "Correct. B cells take in the antigen their antigen receptors bind and show its peptides on class II.",
-        "Red blood cells carry neither class I nor class II.",
+        "Red blood cells carry almost no class I and no class II.",
         "Neutrophils engulf microbes but are not antigen-presenting cells; they do not normally carry class II.",
         "Muscle fibers carry class I, like other nucleated cells, but not class II."
       ]
@@ -293,7 +293,7 @@
       "options": [
         "Correct. Clonal expansion follows selection.",
         "Deletion happens to self-reactive thymocytes during maturation, not to mature lymphocytes that meet a foreign antigen.",
-        "Anergy follows binding without the second, confirming signal, as with self antigen on ordinary tissue cells. It would stop the response, not continue it.",
+        "Anergy follows binding without the second, confirming signal, as with self antigen on resting dendritic cells. It would stop the response, not continue it.",
         "Each cell keeps its antigen receptor specificity; its clone carries the same antigen receptor."
       ]
     }
@@ -307,19 +307,19 @@
       "communication",
       "homeostasis"
     ],
-    "q": "A mature T cell whose receptor fits a thyroid protein escaped negative selection. It meets that protein, on MHC, on an ordinary thyroid cell that gives no second, confirming signal. What is most likely to happen?",
+    "q": "A mature T cell whose receptor fits a thyroid protein escaped negative selection. In a lymph node, it meets that protein, on MHC, on a resting dendritic cell that carried it from the thyroid, detected no danger and gives no second, confirming signal. What is most likely to happen?",
     "options": [
       "The T cell switches on and attacks the thyroid",
-      "The thyroid cell is killed by NK cells",
+      "The dendritic cell is killed by NK cells",
       "The T cell travels back to the thymus to be tested a second time",
-      "The T cell becomes permanently unresponsive (clonal anergy)"
+      "The T cell stops responding for a long time (clonal anergy)"
     ],
     "correct": 3,
     "why": {
-      "correct": "A naive T cell needs two signals: its antigen receptor binding peptide on MHC, and a confirming signal from a dendritic cell that has detected danger. Binding without the second signal makes it permanently unresponsive. This clonal anergy is part of peripheral tolerance.",
+      "correct": "A naive T cell needs two signals: its antigen receptor binding peptide on MHC, and a confirming signal from a dendritic cell that has detected danger. Binding without the second signal makes it unresponsive for a long time. This clonal anergy is part of peripheral tolerance.",
       "options": [
-        "Switching on needs the second signal, which an ordinary tissue cell does not give. Attack would require tolerance to fail.",
-        "The thyroid cell still displays normal MHC class I and shows no stress proteins, so NK cells leave it alone.",
+        "Switching on needs the second signal, which a resting dendritic cell does not give. Attack would require tolerance to fail.",
+        "The dendritic cell displays normal MHC class I and shows no stress proteins, so NK cells leave it alone.",
         "Mature T cells do not return to the thymus to be retested. Tolerance out in the body is peripheral tolerance.",
         "Correct. Binding without a confirming signal causes anergy."
       ]
@@ -345,7 +345,7 @@
       "correct": "Her first infection left memory B and T cells: far more numerous than the original naive cells, long-lived, and quick to switch on. When the virus returned, they responded within a day or two and cleared it before she felt ill.",
       "options": [
         "Innate immunity recognizes patterns shared by groups of microbes and does not become specific to one virus.",
-        "Individual antibody molecules last weeks, not decades. Protection this long depends on long-lived memory cells.",
+        "The antibody molecules made at age 5 were broken down within weeks. Any antibody in her blood now is newly made by cells left from that first response, and her memory cells add a fast, strong new response.",
         "Her MHC proteins are inherited and do not change. Losing the ability to present the virus would make her more vulnerable, not less.",
         "Correct. Immunological memory rests on memory cells."
       ]
@@ -368,7 +368,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Each child inherits one of each parent's two sets of MHC genes. The chance that a brother inherited the same set from the mother (1 in 2) and the same set from the father (1 in 2) is 1 in 4. An unrelated donor, drawn from thousands of MHC versions, is far less likely to match.",
+      "correct": "Each child inherits one of each parent's two sets of MHC genes. The chance that a brother inherited the same set from the mother (1 in 2) and the same set from the father (1 in 2) is 1 in 4. An unrelated donor, drawn from tens of thousands of MHC versions, is far less likely to match.",
       "options": [
         "Correct. Two independent 1-in-2 chances give 1 in 4.",
         "Only identical twins always match. Other siblings inherit sets independently.",
@@ -497,7 +497,7 @@
       "communication",
       "homeostasis"
     ],
-    "q": "A child is born without working AIRE, so the epithelial cells of her thymic medulla cannot show proteins normally made only in other organs, such as the insulin-making cells of the pancreas. Years later her T cells attack those pancreatic cells. Which step of tolerance failed?",
+    "q": "A child is born without working AIRE, so the epithelial cells of her thymic medulla cannot show proteins normally made only in other organs, such as the hormone-making cells of the parathyroid glands. Years later her T cells attack those parathyroid cells. Which step of tolerance failed?",
     "options": [
       "Positive selection in the cortex",
       "Negative selection in the medulla",
@@ -511,7 +511,7 @@
         "Positive selection checks only whether a thymocyte can bind self MHC. It does not remove self-reactive cells.",
         "Correct. Central tolerance failed because the self proteins were never shown in the medulla.",
         "Clonal expansion happens after a mature cell is selected by antigen. The problem is that the self-reactive cells survived maturation.",
-        "Processing in the skin concerns antigens met out in the body. The failure here is in the thymus, where tolerance to the pancreas is normally built."
+        "Processing in the skin concerns antigens met out in the body. The failure here is in the thymus, where tolerance to the parathyroid is normally built."
       ]
     }
   },

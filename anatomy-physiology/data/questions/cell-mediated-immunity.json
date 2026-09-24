@@ -46,7 +46,7 @@
     "why": {
       "correct": "CD4 is the coreceptor protein on helper T cells. It clamps onto the MHC class II protein beside the T cell receptor.",
       "options": [
-        "CD8 is on cytotoxic T cells and binds MHC class I. It is pinned in the lower panel, not on the helper T cell.",
+        "CD8 is on cytotoxic T cells and binds MHC class I. It is labeled in the lower panel, on the cytotoxic T cell, not on the helper T cell.",
         "MHC II is on the dendritic cell, holding the antigen. The pinned protein is on the T cell.",
         "Correct. CD4 on the helper T cell binds MHC class II.",
         "The T cell receptor grips the antigen in the MHC groove. The pinned protein sits beside it and binds the MHC protein itself."
@@ -175,7 +175,7 @@
     ],
     "q": "A T cell that escaped negative selection binds a self-peptide in MHC on a healthy dendritic cell that has not met any microbe. What is the most likely outcome?",
     "options": [
-      "The T cell becomes anergic, because it receives recognition without costimulation",
+      "The T cell becomes anergic and stops responding to that peptide",
       "The T cell expands into a large clone and attacks the healthy tissue the peptide came from",
       "The dendritic cell kills the T cell with perforin",
       "The T cell becomes a memory cell and waits for a second signal"
@@ -237,7 +237,7 @@
     "options": [
       "Cytotoxic T cells, so viruses destroy his gut, skin and islets",
       "Helper T cells, so none of his lymphocytes can be activated",
-      "Regulatory T cells, so T cells that react to his own tissues are not held back",
+      "Regulatory T cells, so his self-reactive T cells go unchecked",
       "Dendritic cells, so his T cells never receive costimulation"
     ],
     "correct": 2,

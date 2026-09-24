@@ -15,7 +15,7 @@
     "say": ""
   },
   "mhc": {
-    "def": "Membrane glycoproteins coded by the major histocompatibility complex that hold peptides for T cells to inspect. Class I, on nearly all nucleated cells, shows peptides made inside the cell; class II, on antigen-presenting cells, shows peptides from material taken in. Their genes vary enormously between people (MHC polymorphism).",
+    "def": "Membrane glycoproteins coded by the major histocompatibility complex that hold peptides for T cells to inspect. Class I, on nearly all nucleated cells, shows peptides made inside the cell; class II, mainly on antigen-presenting cells, shows peptides from material taken in. Their genes vary enormously between people (MHC polymorphism).",
     "roots": [["hist/o", "tissue"], ["poly-", "many"], ["morph/o", "form"]],
     "say": ""
   },

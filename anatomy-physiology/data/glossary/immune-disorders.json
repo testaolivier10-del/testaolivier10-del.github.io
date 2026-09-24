@@ -1,6 +1,6 @@
 {
   "hypersensitivity": {
-    "def": "An immune response that damages your own tissues, usually against a harmless antigen (an allergen), after a symptom-free first exposure (sensitization). Type I is IgE on mast cells (immediate; allergy), type II antibody against cell-surface antigens, type III immune complexes, and type IV T cells (delayed).",
+    "def": "An immune response that damages your own tissues, usually against a harmless antigen (an allergen), usually after a symptom-free first exposure (sensitization). Type I is IgE on mast cells (immediate; allergy), type II antibody against cell-surface antigens, type III immune complexes, and type IV T cells (delayed).",
     "roots": [["hyper-", "over, excessive"], ["all/o", "other"], ["-gen", "producing"]],
     "say": ""
   },

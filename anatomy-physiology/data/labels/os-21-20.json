@@ -318,7 +318,9 @@
         480,
         516,
         44
-      ]
+      ],
+      "cover": true,
+      "note": "OpenStax prints 'Cytotoxic T cells destroy infected cells by releasing enzymes that rupture cell membranes' and draws the target cell shattered; the course teaches that perforin and granzymes trigger apoptosis of the target cell. Covered for good and never asked."
     },
     {
       "id": "infected-cell",
