@@ -1,0 +1,296 @@
+{
+  "figure": "os-27-2",
+  "labels": [
+    {
+      "id": "penis",
+      "name": "Penis",
+      "accept": [],
+      "lines": [
+        6
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "corona",
+      "name": "Corona",
+      "accept": [
+        "corona of glans",
+        "corona of the glans"
+      ],
+      "lines": [
+        8
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "glans-penis",
+      "name": "Glans penis",
+      "accept": [
+        "glans"
+      ],
+      "lines": [
+        10,
+        13
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "prepuce",
+      "name": "Prepuce (foreskin)",
+      "accept": [
+        "prepuce",
+        "foreskin"
+      ],
+      "lines": [
+        17,
+        18
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "scrotum-external",
+      "name": "Scrotum",
+      "accept": [],
+      "lines": [
+        16
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "prostate-gland",
+      "name": "Prostate gland",
+      "accept": [
+        "prostate"
+      ],
+      "lines": [
+        21
+      ],
+      "concept": "accessory-glands-male"
+    },
+    {
+      "id": "ductus-deferens",
+      "name": "Ductus (vas) deferens",
+      "accept": [
+        "ductus deferens",
+        "vas deferens",
+        "vas",
+        "deferent duct"
+      ],
+      "lines": [
+        24
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "suspensory-ligament-of-penis",
+      "name": "Suspensory ligament of penis",
+      "accept": [
+        "suspensory ligament",
+        "suspensory ligament of the penis"
+      ],
+      "lines": [
+        26
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "ampulla-of-ductus-deferens",
+      "name": "Ampulla of ductus deferens",
+      "accept": [
+        "ampulla",
+        "ampulla of the ductus deferens",
+        "ampulla of vas deferens",
+        "ampulla of the vas deferens"
+      ],
+      "lines": [
+        27
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "urinary-bladder",
+      "name": "Urinary bladder",
+      "accept": [
+        "bladder"
+      ],
+      "lines": [
+        28
+      ],
+      "concept": "urinary-bladder"
+    },
+    {
+      "id": "pubic-symphysis",
+      "name": "Pubic symphysis",
+      "accept": [
+        "symphysis pubis"
+      ],
+      "lines": [
+        31
+      ],
+      "concept": "pelvic-girdle"
+    },
+    {
+      "id": "seminal-vesicle",
+      "name": "Seminal vesicle",
+      "accept": [
+        "seminal vesicles",
+        "seminal gland",
+        "seminal glands"
+      ],
+      "lines": [
+        30
+      ],
+      "concept": "accessory-glands-male"
+    },
+    {
+      "id": "ejaculatory-duct",
+      "name": "Ejaculatory duct",
+      "accept": [
+        "ejaculatory ducts"
+      ],
+      "lines": [
+        32
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "prostatic-urethra",
+      "name": "Prostatic urethra",
+      "accept": [],
+      "lines": [
+        33
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "deep-muscles-of-perineum",
+      "name": "Deep muscles of perineum",
+      "accept": [
+        "deep perineal muscles",
+        "deep muscles of the perineum",
+        "deep transverse perineal muscle",
+        "urogenital diaphragm"
+      ],
+      "lines": [
+        35
+      ],
+      "concept": "pelvic-floor"
+    },
+    {
+      "id": "bulbourethral-gland",
+      "name": "Bulbourethral gland",
+      "accept": [
+        "bulbourethral glands",
+        "cowper's gland",
+        "cowper gland",
+        "cowper's glands"
+      ],
+      "lines": [
+        37
+      ],
+      "concept": "accessory-glands-male"
+    },
+    {
+      "id": "muscles-of-perineum-surrounding-anus",
+      "name": "Muscles of perineum surrounding anus",
+      "accept": [
+        "external anal sphincter",
+        "anal sphincter",
+        "muscles surrounding anus",
+        "perineal muscles around the anus"
+      ],
+      "lines": [
+        38,
+        39
+      ],
+      "concept": "pelvic-floor"
+    },
+    {
+      "id": "corpus-cavernosum",
+      "name": "Corpus cavernosum",
+      "accept": [
+        "corpora cavernosa"
+      ],
+      "lines": [
+        40
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "membranous-urethra",
+      "name": "Membranous urethra",
+      "accept": [
+        "intermediate urethra"
+      ],
+      "lines": [
+        41
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "spongy-urethra",
+      "name": "Spongy urethra",
+      "accept": [
+        "penile urethra"
+      ],
+      "lines": [
+        43
+      ],
+      "concept": "urethra"
+    },
+    {
+      "id": "testis",
+      "name": "Testis",
+      "accept": [
+        "testes",
+        "testicle"
+      ],
+      "lines": [
+        45
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "epididymis",
+      "name": "Epididymis",
+      "accept": [],
+      "lines": [
+        46
+      ],
+      "concept": "male-ducts"
+    },
+    {
+      "id": "scrotum",
+      "name": "Scrotum",
+      "accept": [],
+      "lines": [
+        47
+      ],
+      "concept": "scrotum-testes"
+    },
+    {
+      "id": "corpus-spongiosum",
+      "name": "Corpus spongiosum",
+      "accept": [],
+      "lines": [
+        48
+      ],
+      "concept": "penis"
+    },
+    {
+      "id": "external-urethral-opening",
+      "name": "External urethral opening",
+      "accept": [
+        "external urethral orifice",
+        "urethral opening",
+        "external urethral meatus",
+        "urethral meatus",
+        "urethral orifice"
+      ],
+      "lines": [
+        49
+      ],
+      "concept": "urethra"
+    }
+  ]
+}
