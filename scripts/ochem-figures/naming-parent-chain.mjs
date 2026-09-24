@@ -561,7 +561,7 @@ FIGURES.push({
       { e2: '1', e1: '2', s1: '3', a4: '4', a5: '5', a6: '6', a7: '7', a8: '8' });
     return s;
   },
-  caption: 'Both highlighted paths are eight carbons long. Count the branches each one leaves behind.',
+  caption: 'Count the branches each path leaves behind.',
 });
 
 /* Step 8 question: 2,6,6-trimethyloctane numbered both ways. The sum and
