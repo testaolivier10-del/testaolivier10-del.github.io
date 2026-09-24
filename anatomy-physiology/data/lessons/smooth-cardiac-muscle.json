@@ -33,7 +33,7 @@
     { "cause": "Calcium in the cytosol rises and binds calmodulin.", "effect": "Calcium–calmodulin activates myosin light-chain kinase." },
     { "cause": "Myosin light-chain kinase moves phosphate from ATP onto the myosin heads.", "effect": "The phosphorylated heads bind actin and cross-bridges cycle." },
     { "cause": "Cross-bridges pull thin filaments anchored to dense bodies.", "effect": "The dense bodies are drawn together, and the fiber shortens and puckers; gap junctions spread the signal, so the whole sheet contracts." },
-    { "cause": "Calcium is pumped away and myosin phosphatase removes phosphate from heads still attached to actin.", "effect": "Those latch-bridges detach very slowly, so tension is held for a long time on little ATP until the fiber relaxes." }
+    { "cause": "During a long contraction, calcium falls partway, and myosin phosphatase removes phosphate from some heads while they are still attached to actin.", "effect": "Those latch-bridges detach very slowly, so tension is held for a long time on little ATP; only when calcium falls fully do they let go and the fiber relaxes." }
   ],
   "misconception": {
     "wrong": "All muscle contracts the same way: calcium binds troponin, and tropomyosin moves off actin.",

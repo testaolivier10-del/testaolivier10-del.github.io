@@ -149,7 +149,7 @@
       "Its cross-bridges never detach, as in rigor mortis",
       "It makes its ATP without using mitochondria at all",
       "It stays in complete tetanus from constant nerve firing",
-      "Latch-bridges that cycle very slowly"
+      "Myosin heads held on as slowly cycling latch-bridges"
     ],
     "correct": 3,
     "why": {
@@ -251,7 +251,7 @@
       "structure-function",
       "communication"
     ],
-    "q": "A surgeon removes a short loop of intestine and places it in warm, oxygenated fluid with no nerve connections. Its wall keeps contracting in slow, regular, coordinated waves. What makes this possible?",
+    "q": "A surgeon removes a short loop of intestine and places it in warm, oxygenated fluid, cut off from all nerves from the brain and spinal cord. Its wall keeps contracting in slow, regular, coordinated waves. What makes this possible?",
     "options": [
       "Motor neurons inside the fluid stimulate each fiber separately",
       "Each fiber contracts on its own, at its own random rhythm",
@@ -260,11 +260,11 @@
     ],
     "correct": 3,
     "why": {
-      "correct": "Intestinal smooth muscle is single-unit. Pacesetter cells produce slow, spontaneous waves of depolarization, and gap junctions spread the resulting action potentials through the sheet, so it contracts as one unit without any nerve input.",
+      "correct": "Intestinal smooth muscle is single-unit. Pacesetter cells produce slow, spontaneous waves of depolarization, and gap junctions spread the resulting action potentials through the sheet, so it contracts as one unit without any input from the brain or spinal cord.",
       "options": [
-        "The loop has no nerve connections, and the fluid contains no motor neurons.",
+        "The loop has been cut off from the brain and spinal cord, and the fluid contains no motor neurons.",
         "Random, independent contractions would not give regular, coordinated waves; the fibers are coupled.",
-        "Smooth muscle has no neuromuscular junctions, and the nerves have been disconnected.",
+        "Smooth muscle has no neuromuscular junctions, and the outside nerves have been cut.",
         "Correct. Pacesetter rhythm plus gap junctions coordinates the sheet."
       ]
     }
@@ -316,7 +316,7 @@
     "q": "Compare the relaxed and contracted fibers. Why does the contracted fiber bulge and pucker instead of simply getting shorter?",
     "options": [
       "Its sarcomeres shorten unevenly along the fiber",
-      "Diagonal filaments pull dense bodies together",
+      "Filaments running diagonally pull the dense bodies together",
       "The intermediate filaments contract and squeeze the cell",
       "Water rushes into the cell each time it contracts"
     ],
@@ -447,7 +447,7 @@
       "structure-function",
       "energy"
     ],
-    "q": "During a heart attack, blood flow to part of the heart wall stops. Skeletal muscle can keep working for a minute or more without blood flow, but cardiac muscle is damaged within minutes. Which feature best explains the difference?",
+    "q": "During a heart attack, blood flow to part of the heart wall stops. The muscle there stops contracting within about a minute and begins to die after 20 to 30 minutes, while resting skeletal muscle can survive a surgical tourniquet for an hour or more. Which feature best explains the difference?",
     "options": [
       "Cardiac muscle has no myoglobin",
       "Its near-total reliance on aerobic respiration",
@@ -456,7 +456,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "Cardiac muscle makes nearly all its ATP in its many mitochondria, which fill about a third of each fiber, and has little capacity for anaerobic glycolysis. Without oxygen from the blood, its ATP supply fails quickly.",
+      "correct": "Cardiac muscle makes nearly all its ATP in its many mitochondria, which fill about a third of each fiber, and has little capacity for anaerobic glycolysis. Without oxygen from the blood, its ATP supply fails within about a minute.",
       "options": [
         "Cardiac muscle is rich in myoglobin, but that small store lasts only seconds.",
         "Correct. Dependence on aerobic respiration makes it vulnerable.",

@@ -1,6 +1,6 @@
 {
   "topic": "bone-remodeling-repair",
-  "hook": "<p>Ruth, 79, is reaching into a kitchen cupboard when her hip gives way and she falls. The X-ray shows a broken hip, the upper end of her thigh bone. Her family assumes the fall broke it. Her surgeon suspects the reverse: her bone had been thinning silently for thirty years, until it snapped under an ordinary step and she fell. To understand how bone can quietly disappear, and how the same cells will now try to heal it, you need to know that adult bone is never finished.</p>",
+  "hook": "<p>Ruth, 79, trips while reaching into a kitchen cupboard and falls onto her side. The X-ray shows a broken hip, the upper end of her thigh bone. Her surgeon explains that a fall from standing would not break healthy bone: her bone had been thinning silently for thirty years, so an ordinary fall was enough to snap it. To understand how bone can quietly disappear, and how the same cells will now try to heal it, you need to know that adult bone is never finished.</p>",
   "prereq": [
     {
       "q": "What is the first event in the body's response to tissue injury, before repair begins?",

@@ -149,7 +149,7 @@
     ],
     "figure": "os-6-10",
     "pin": "tuberosity",
-    "q": "Name the pinned marking on this upper arm bone: a large, rough raised area on the shaft.",
+    "q": "Name the pinned marking on this upper arm bone.",
     "options": [
       "Epicondyle",
       "Tuberosity",
@@ -525,10 +525,10 @@
     ],
     "q": "A cancer drug kills dividing stem cells in the red marrow. Which blood components will the patient's blood tests show falling over the next weeks?",
     "options": [
-      "White blood cells only",
-      "Red blood cells only",
+      "White blood cells, but not red cells or platelets",
+      "Red blood cells, but not white cells or platelets",
       "Red blood cells, white blood cells and platelets",
-      "Platelets only"
+      "Platelets, but not red or white blood cells"
     ],
     "correct": 2,
     "why": {

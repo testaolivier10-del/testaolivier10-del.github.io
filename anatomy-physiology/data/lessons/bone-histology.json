@@ -1,6 +1,6 @@
 {
   "topic": "bone-histology",
-  "hook": "<p>Mia is 4 and has already broken eleven bones, some from nothing more than a tumble on the carpet. An X-ray shows plenty of mineral in her bones. The problem is a single faulty gene for collagen. Bone that is hard but lacks good collagen behaves like chalk: it snaps instead of bending. To see why both parts matter, and which cells build and remove them, you need to look at bone under the microscope.</p>",
+  "hook": "<p>Mia is 4 and has already broken eleven bones, some from nothing more than a tumble on the carpet. Her X-rays show thin bones, but the bone she has is fully mineralized. The problem is a single faulty gene for collagen. Bone that is hard but lacks good collagen behaves like chalk: it snaps instead of bending. To see why both parts matter, and which cells build and remove them, you need to look at bone under the microscope.</p>",
   "prereq": [
     {
       "q": "What is an ion?",

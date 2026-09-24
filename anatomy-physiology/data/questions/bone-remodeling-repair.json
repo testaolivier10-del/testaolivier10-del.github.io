@@ -65,7 +65,7 @@
     ],
     "figure": "os-6-20",
     "pin": "greenstick",
-    "q": "Name the pinned type of fracture, in which the bone breaks only partway across.",
+    "q": "Name the pinned type of fracture.",
     "options": [
       "Transverse fracture",
       "Impacted fracture",
@@ -93,7 +93,7 @@
     ],
     "figure": "os-6-20",
     "pin": "comminuted",
-    "q": "Name the pinned type of fracture, with the bone broken into several pieces.",
+    "q": "Name the pinned type of fracture.",
     "options": [
       "Compression fracture",
       "Comminuted fracture",
@@ -281,7 +281,7 @@
   {
     "id": "anp-bone-remodeling-repair-11",
     "type": "vignette",
-    "level": "analyze",
+    "level": "apply",
     "diff": 2,
     "core": [
       "structure-function"
@@ -315,7 +315,7 @@
     "q": "Why are greenstick fractures common in children but rare in adults?",
     "options": [
       "Children's bones have no compact bone",
-      "Children's bones hold more collagen relative to mineral, so they bend before breaking",
+      "Children's bones hold more collagen relative to mineral",
       "Children's bones have open growth plates in the shaft",
       "Children have fewer osteoclasts"
     ],

@@ -65,7 +65,7 @@
     ],
     "figure": "os-6-11",
     "pin": "osteogenic-cell",
-    "q": "Name the pinned flat cell, the stem cell of bone.",
+    "q": "Name the pinned cell.",
     "options": [
       "Osteogenic cell",
       "Osteoblast",
@@ -201,18 +201,18 @@
     "core": [
       "structure-function"
     ],
-    "q": "Mia, 4, has had eleven broken bones. Her bones contain a normal amount of mineral, but a gene change makes her collagen faulty. Why do her bones break so easily?",
+    "q": "Mia, 4, has had eleven broken bones. The bone she makes is fully mineralized, but a gene change makes her collagen faulty. Why do her bones break so easily?",
     "options": [
       "Her bones cannot store calcium",
       "Her bone lacks the flexibility to bend under a load",
-      "Her osteoclasts cannot resorb bone",
-      "Her bones have too few lacunae"
+      "Her osteoclasts cannot resorb old or damaged bone",
+      "Her bones have too few lacunae for osteocytes"
     ],
     "correct": 1,
     "why": {
       "correct": "Collagen resists pulling and gives bone slight flexibility. Mineral without good collagen is like chalk: hard but brittle, so it snaps instead of bending. This inherited condition is called brittle bone disease.",
       "options": [
-        "The question says her bones hold a normal amount of mineral, so storage is not the problem.",
+        "The question says her bone is fully mineralized, so storing mineral is not the problem.",
         "Correct. Faulty collagen leaves hard but brittle bone.",
         "Osteoclasts are not affected by a collagen defect, and failing to resorb bone would not in itself make bones snap.",
         "Lacunae hold osteocytes. A collagen defect does not remove them, and it is the matrix that sets strength."
@@ -495,9 +495,9 @@
     ],
     "q": "When an adult's bone is being lost, the spongy bone of the vertebrae thins faster than the compact bone of the limb shafts. Which property of spongy bone best explains this?",
     "options": [
-      "It has no osteocytes",
-      "It contains no collagen",
-      "It has no blood supply",
+      "It has no osteocytes to sense load on it",
+      "It contains no collagen to hold its mineral",
+      "It has no blood supply to feed its cells",
       "Its large surface gives bone cells more room to work"
     ],
     "correct": 3,

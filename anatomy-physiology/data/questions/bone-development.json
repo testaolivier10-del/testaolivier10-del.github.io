@@ -11,7 +11,7 @@
     "options": ["Reserve zone", "Zone of calcified matrix", "Proliferative zone", "Zone of maturation and hypertrophy"],
     "correct": 2,
     "why": {
-      "correct": "In the proliferative zone, chondrocytes divide rapidly and line up in stacks. Their division is the main source of growth in length.",
+      "correct": "In the proliferative zone, chondrocytes divide rapidly and line up in stacks. Their division supplies the cells whose later enlargement lengthens the bone.",
       "options": [
         "The reserve zone has small, scattered cells that rarely divide, nearest the epiphysis.",
         "In the zone of calcified matrix the chondrocytes are dead and the matrix is calcified.",
@@ -86,7 +86,7 @@
   {
     "id": "anp-bone-development-5",
     "type": "single",
-    "level": "apply",
+    "level": "recall",
     "diff": 1,
     "core": ["structure-function"],
     "q": "An embryo's flat skull roof bones are forming. What are they forming from?",
@@ -108,8 +108,8 @@
     "level": "analyze",
     "diff": 3,
     "core": ["structure-function"],
-    "q": "A gene change in achondroplasia slows chondrocyte division in the proliferative zone. Affected people have short arms and legs, while the dome of the skull is normal-sized. Why is the skull dome spared?",
-    "options": ["It forms by intramembranous ossification, with no epiphyseal plates", "Its epiphyseal plates close before birth", "Skull bones have no osteoblasts", "Its cartilage model is replaced faster"],
+    "q": "A gene change in achondroplasia slows chondrocyte division in the proliferative zone. Affected people have short arms and legs, while the dome of the skull grows to full size, often larger than average. Why is the skull dome spared?",
+    "options": ["It forms by intramembranous ossification, with no epiphyseal plates", "Its epiphyseal plates close before birth, ending growth early", "Skull bones have no osteoblasts", "Its cartilage model is replaced by bone faster than in the limbs"],
     "correct": 0,
     "why": {
       "correct": "The flat bones of the skull dome form directly in mesenchyme and grow at their edges, without cartilage models or epiphyseal plates. A defect in plate chondrocytes shortens the long bones, which lengthen at the plates, and spares bones that never use them.",
@@ -154,7 +154,7 @@
       { "name": "Appositional growth at the periosteum", "answer": "none", "why": "Width growth depends on osteoblasts under the periosteum, which the drug does not target." },
       { "name": "Thickness of the epiphyseal plate", "answer": "down", "why": "Bone keeps replacing cartilage on the diaphysis side while little new cartilage is added on the epiphysis side, so the plate thins." }
     ],
-    "why": { "correct": "Growth in length is interstitial growth of cartilage in the proliferative zone. Block it and less cartilage is made, lengthening slows, and the plate thins because replacement by bone continues. Growth in width uses a different mechanism and continues." }
+    "why": { "correct": "Growth in length starts with cell division in the proliferative zone. Block it and less cartilage is made, lengthening slows, and the plate thins because replacement by bone continues. Growth in width uses a different mechanism and continues." }
   },
   {
     "id": "anp-bone-development-9",
@@ -163,9 +163,9 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Put the steps of endochondral ossification of a long bone in order.",
-    "options": ["Chondrocytes build a hyaline cartilage model", "Chondrocytes in the middle of the shaft enlarge and the matrix calcifies", "A bone collar forms around the shaft", "A nutrient artery invades and a primary ossification center forms", "Osteoclasts open the medullary cavity", "Secondary ossification centers form in the epiphyses"],
+    "options": ["Chondrocytes build a hyaline cartilage model", "The middle of the model calcifies as a bone collar forms around it", "A nutrient artery invades and a primary ossification center forms", "Osteoclasts open the medullary cavity", "Secondary ossification centers form in the epiphyses"],
     "why": {
-      "correct": "A cartilage model forms first. Its middle calcifies and its chondrocytes die, while the perichondrium becomes periosteum and lays a bone collar. A nutrient artery brings in bone-forming cells, creating the primary ossification center; osteoclasts then hollow out the medullary cavity. Around birth and in childhood, the epiphyses ossify from secondary centers."
+      "correct": "A cartilage model forms first. Its middle calcifies and many of its chondrocytes die, while the perichondrium becomes periosteum and lays a bone collar. A nutrient artery brings in bone-forming cells, creating the primary ossification center; osteoclasts then hollow out the medullary cavity. Around birth and in childhood, the epiphyses ossify from secondary centers."
     }
   },
   {
@@ -207,12 +207,12 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Complete the chain in the middle of a cartilage model: chondrocytes enlarge → the matrix calcifies → ____ → blood vessels and osteoblasts invade.",
-    "options": ["The chondrocytes turn into osteoblasts", "The chondrocytes, cut off from diffusion, die", "The chondrocytes divide into stacks", "The matrix is converted directly into bone"],
+    "options": ["The chondrocytes secrete osteoid around themselves", "The chondrocytes, cut off from diffusion, die", "The chondrocytes divide into stacks", "The matrix is converted directly into bone"],
     "correct": 1,
     "why": {
-      "correct": "Cartilage has no blood vessels, so chondrocytes depend on diffusion through their matrix. Calcified matrix blocks diffusion, the chondrocytes die, and their empty spaces are invaded by vessels and bone-forming cells.",
+      "correct": "Cartilage has no blood vessels, so chondrocytes depend on diffusion through their matrix. Calcified matrix blocks diffusion, many of the chondrocytes die, and their empty spaces are invaded by vessels and bone-forming cells.",
       "options": [
-        "Chondrocytes do not become osteoblasts. Osteoblasts come from osteogenic cells that arrive with the vessels.",
+        "Chondrocytes make cartilage matrix, not osteoid. Osteoid is laid down by osteoblasts, which arrive with the vessels.",
         "Correct. Calcified matrix starves the chondrocytes.",
         "Division into stacks happens in the proliferative zone of the plate, before cells enlarge, not after calcification.",
         "Cartilage is not converted into bone. It is removed and replaced by bone laid down by osteoblasts."
@@ -246,12 +246,12 @@
     "core": ["structure-function"],
     "misconception": "cartilage turns into bone",
     "q": "During endochondral ossification, what happens to the cartilage of the model?",
-    "options": ["Its chondrocytes become osteocytes", "It hardens into bone as minerals are added", "It stays inside the bone as a core", "It is broken down and replaced by bone"],
+    "options": ["It is converted into fibrocartilage", "It hardens into bone as minerals are added", "It stays inside the bone as a core", "It is broken down and replaced by bone"],
     "correct": 3,
     "why": {
-      "correct": "Cartilage never becomes bone. Its matrix calcifies, its chondrocytes die, and invading osteoblasts lay bone on the leftover calcified columns, which osteoclasts later clear away. Bone replaces the cartilage.",
+      "correct": "Cartilage does not harden into bone. Its matrix calcifies, many of its chondrocytes die, and invading osteoblasts lay bone on the leftover calcified columns, which osteoclasts later clear away. Bone replaces the cartilage.",
       "options": [
-        "Osteocytes come from osteoblasts, which come from osteogenic cells, not from chondrocytes.",
+        "The model is hyaline cartilage, and bone replaces it; it does not turn into another kind of cartilage.",
         "Calcified cartilage is still cartilage; it only serves as a temporary scaffold for new bone.",
         "Only the articular cartilage and, until growth ends, the epiphyseal plate remain. The rest is removed.",
         "Correct. The model is a template that bone replaces."
@@ -284,7 +284,7 @@
     "diff": 3,
     "core": ["structure-function"],
     "q": "Why can a long bone grow in length only through cartilage at the epiphyseal plate, and not by bone expanding from within?",
-    "options": ["Bone has no blood supply", "Bone's mineralized matrix is too rigid to expand around new cells", "Osteocytes divide too slowly", "Osteoblasts can work only in cartilage"],
+    "options": ["Bone has no blood supply", "Bone's mineralized matrix is too rigid to expand around new cells", "Osteocytes in their lacunae divide too slowly to add length", "Osteoblasts need a cartilage surface to lay down bone"],
     "correct": 1,
     "why": {
       "correct": "Interstitial growth needs a matrix that can stretch as cells inside it divide and add more matrix. Cartilage matrix can; mineralized bone matrix cannot. Bone can only grow by adding layers to a surface, so length is gained by growing cartilage that bone then replaces.",

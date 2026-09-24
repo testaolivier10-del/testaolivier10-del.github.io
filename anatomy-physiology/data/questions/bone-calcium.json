@@ -305,8 +305,8 @@
     ],
     "q": "For years, a 45-year-old has eaten far less calcium than she needs. Her blood calcium is normal on every test. What does the normal result tell you?",
     "options": [
-      "Her diet has been adequate after all",
-      "The feedback loop has kept blood calcium steady by drawing on her bones",
+      "Her diet has been adequate for her needs after all",
+      "Her bones have been covering the shortfall",
       "Her kidneys have been making calcium",
       "Her blood calcium test must be wrong"
     ],
@@ -497,7 +497,7 @@
       "About 1,300 mg of calcium a day from food",
       "Enough vitamin D from sunlight, food or a supplement",
       "Enough protein in her diet",
-      "Swimming as her only exercise",
+      "Swimming instead of running and jumping sports",
       "Regular running and jumping sports",
       "Replacing milk with sugary soft drinks"
     ],

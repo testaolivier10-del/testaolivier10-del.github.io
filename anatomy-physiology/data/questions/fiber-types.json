@@ -403,7 +403,7 @@
   {
     "id": "anp-fiber-types-15",
     "type": "single",
-    "level": "apply",
+    "level": "recall",
     "diff": 2,
     "core": [
       "structure-function"
@@ -507,7 +507,7 @@
   {
     "id": "anp-fiber-types-19",
     "type": "missing",
-    "level": "apply",
+    "level": "recall",
     "diff": 2,
     "core": [
       "structure-function"
