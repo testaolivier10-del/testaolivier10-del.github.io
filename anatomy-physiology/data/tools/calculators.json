@@ -4969,7 +4969,7 @@
       "level": "apply",
       "diff": 2,
       "intro": "Count the ATP made from one glucose broken down fully with oxygen. Current values are about 2.5 ATP per NADH and 1.5 per FADH2. The 2 NADH from glycolysis are made in the cytosol; a shuttle passes their electrons in, worth 2.5 or 1.5 each. Change the values to see where older counts of 36 to 38 come from.",
-      "formula": "ATP = 4 (direct) + 10 NADH × (ATP per NADH), with glycolysis’s 2 NADH at the shuttle value, + 2 FADH2 × (ATP per FADH2)",
+      "formula": "ATP = 4 (direct) + 8 mitochondrial NADH × (ATP per NADH) + 2 glycolytic NADH × (shuttle value) + 2 FADH2 × (ATP per FADH2)",
       "inputs": [
         {
           "key": "n",
@@ -5020,7 +5020,9 @@
           "gen": {
             "choices": [
               1.5,
-              2.5
+              2.5,
+              2,
+              3
             ]
           }
         }
@@ -5153,6 +5155,7 @@
         }
       ],
       "practice": {
+        "require": "(n == 2.5 && f == 1.5 && (s == 2.5 || s == 1.5)) || (n == 3 && f == 2 && (s == 3 || s == 2))",
         "asks": [
           {
             "key": "total",
@@ -5370,7 +5373,7 @@
       "inputs": [
         {
           "key": "vo2",
-          "label": "Oxygen use at rest",
+          "label": "Oxygen use",
           "sym": "O2 use",
           "unit": "mL/min",
           "default": 250,

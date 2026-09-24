@@ -6443,7 +6443,7 @@
    "level": "analyze",
    "front": "Does the brain need insulin to take up glucose?",
    "back": "No. Neurons take glucose in through carriers that are always in the membrane, but they depend entirely on how much glucose is in the blood.",
-   "why": "Neurons store almost no glycogen and cannot burn fatty acids, so a low blood glucose affects the brain within minutes."
+   "why": "Neurons store almost no glycogen and burn almost no fatty acids, so a low blood glucose affects the brain within minutes."
   },
   {
    "id": "t1-vs-t2-defect",
@@ -9023,7 +9023,6 @@
     "gradients"
    ],
    "level": "apply",
-   "compare": "Energy-consuming vs energy-yielding phase of glycolysis",
    "front": "Why does hexokinase adding a phosphate to glucose keep glucose flowing into the cell?",
    "back": "Glucose-6-phosphate is charged and the membrane glucose carriers do not carry it, so it is trapped, and free glucose inside the cell stays low.",
    "why": "Low free glucose inside keeps the concentration gradient pointing inward, so facilitated diffusion keeps bringing glucose in."
@@ -9164,7 +9163,7 @@
    "level": "analyze",
    "front": "A drug lets H<sup>+</sup> leak back across the inner mitochondrial membrane without passing through ATP synthase. What happens to fuel use, ATP and heat?",
    "back": "Fuel and oxygen use rise, ATP made falls, and heat rises.",
-   "why": "The chain runs flat out trying to rebuild the gradient, but the energy leaves as heat instead of ATP. Dinitrophenol killed users this way; brown fat does it deliberately with its own channel protein."
+   "why": "The chain runs flat out trying to rebuild the gradient, but the energy leaves as heat instead of ATP. Dinitrophenol killed users this way; brown fat does the same through its own channel protein when norepinephrine switches it on."
   },
   {
    "id": "met-g6pase",
@@ -9868,7 +9867,7 @@
    "level": "apply",
    "front": "How does brown adipose tissue make heat without shivering?",
    "back": "Norepinephrine makes brown fat cells break down fat and run their mitochondria with a channel protein that lets H<sup>+</sup> leak back across the inner membrane, so the energy leaves as heat instead of ATP.",
-   "why": "The electron transport chain runs flat out because the gradient never builds up. Adults keep small deposits in the neck, above the collarbones and along the spine."
+   "why": "The leak keeps the gradient low, so the electron transport chain runs flat out. Adults keep small deposits in the neck, above the collarbones and along the spine; how much heat they add in adults is still being studied."
   },
   {
    "id": "met-shiver",
@@ -9913,7 +9912,7 @@
    ],
    "level": "analyze",
    "compare": "Heat exhaustion vs heat stroke",
-   "front": "Why can core temperature keep climbing in heat stroke even after the heat source is gone?",
+   "front": "In heat stroke, why can core temperature run away once heat gain has outrun heat loss?",
    "back": "Heat speeds chemical reactions in every cell, so they make still more heat: a harmful positive feedback loop.",
    "why": "Once heat loss has been outrun, each rise in temperature raises heat production, until proteins unfold above about 41 to 42 °C."
   },

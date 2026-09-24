@@ -1,0 +1,42 @@
+{
+  "genotype-phenotype": {
+    "def": "Genotype is the set of alleles a person carries for a gene or trait; phenotype is what is expressed and can be observed or measured, such as a blood type or a disease. Phenotype depends on genotype and environment. A trait is any inherited characteristic.",
+    "roots": [["geno-", "birth, origin"], ["pheno-", "to show"], ["type-", "model"]],
+    "say": "JEE-noh-type; FEE-noh-type"
+  },
+  "allele": {
+    "def": "One version of a gene. A person with two identical alleles of a gene is homozygous; with two different alleles, heterozygous. A gene with multiple alleles, such as ABO, has more than two versions in the population, though each person carries only two.",
+    "roots": [["allelon", "of one another"], ["homo-", "same"], ["hetero-", "different"], ["zyg-", "joined"]],
+    "say": "uh-LEEL"
+  },
+  "dominance": {
+    "def": "A dominant allele shows its effect with one copy; a recessive allele only with two. A carrier is a healthy heterozygote with one recessive disease allele. Autosomal dominant and recessive patterns involve genes on autosomes; a recessive lethal allele kills only homozygotes, a dominant lethal allele anyone with one copy.",
+    "roots": [["dominari", "to rule"], ["recedere", "to draw back"]],
+    "say": ""
+  },
+  "punnett": {
+    "def": "A grid that lists every equally likely combination of two parents' gametes, giving the chance of each genotype in a child. It rests on Mendelian inheritance and the law of segregation: each gamete carries one allele of each gene, each with a 1 in 2 chance.",
+    "roots": [],
+    "say": "PUN-it"
+  },
+  "codominance": {
+    "def": "In incomplete dominance, the heterozygote's phenotype falls between the two homozygotes'. In codominance, the heterozygote fully expresses both alleles, as in blood type AB, where A and B are codominant.",
+    "roots": [["co-", "together"]],
+    "say": ""
+  },
+  "sex-linked": {
+    "def": "Inheritance of genes on the X chromosome. Males have one X, so an X-linked recessive allele, such as the one for hemophilia A, shows in any male who has it and passes from carrier mothers to half their sons; an X-linked dominant allele shows with one copy in either sex.",
+    "roots": [["hemi-", "half"]],
+    "say": ""
+  },
+  "polygenic": {
+    "def": "Inheritance of a trait shaped by many genes, each with a small effect, plus the environment, such as height or blood pressure. It gives a continuous, bell-shaped range rather than distinct types.",
+    "roots": [["poly-", "many"], ["gen-", "producing"]],
+    "say": ""
+  },
+  "chromosomal-disorders": {
+    "def": "Disorders caused by an extra, missing or rearranged chromosome, seen on a karyotype (the chromosomes photographed in metaphase and arranged in pairs). A trisomy is three copies of one chromosome; trisomy 21 causes Down syndrome, whose risk rises with maternal age.",
+    "roots": [["karyo-", "nucleus"], ["tri-", "three"], ["-somy", "body (chromosome)"]],
+    "say": "KAIR-ee-oh-type"
+  }
+}

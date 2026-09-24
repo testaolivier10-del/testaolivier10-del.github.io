@@ -14245,7 +14245,7 @@
       ],
       "level": 2,
       "misconception": "cyanide kills by stopping oxygen from reaching the cells",
-      "setup": "A man is pulled from a burning building after breathing smoke that contains hydrogen cyanide. Cyanide binds the iron in complex IV of the electron transport chain in his cells. His lungs and blood still work. Predict the changes over the next few minutes.",
+      "setup": "A laboratory technician breathes hydrogen cyanide gas from a spilled container. Cyanide binds the iron in complex IV of the electron transport chain in his cells. His lungs and blood are not affected. Predict the changes over the next few minutes.",
       "start": "Cyanide binds complex IV",
       "steps": {
         "c4": "Complex IV cannot pass electrons to oxygen",
@@ -14596,7 +14596,7 @@
             "noins",
             "brake"
           ],
-          "why": "Insulin brakes lipolysis even at low levels. With it almost gone, and epinephrine and glucagon unopposed, stored triglyceride is broken down fast."
+          "why": "Insulin brakes lipolysis even at low levels. With it almost gone, and epinephrine, cortisol and growth hormone unopposed, stored triglyceride is broken down fast."
         },
         {
           "id": "fatty-acids",
@@ -14964,7 +14964,7 @@
             "ins",
             "gng"
           ],
-          "why": "Insulin switches gluconeogenesis off and glucagon no longer drives it. It slows rather than stopping, and much of the glucose it still makes is stored as glycogen instead of leaving."
+          "why": "Insulin slows gluconeogenesis and glucagon no longer drives it. It slows rather than stopping, and much of the glucose it still makes is stored as glycogen instead of leaving."
         },
         {
           "id": "muscle",
@@ -15292,7 +15292,7 @@
             "humid",
             "drip"
           ],
-          "why": "Water evaporates more slowly into air that already holds a lot of vapor, so more sweat drips off. Dripping sweat removes almost no heat."
+          "why": "Humid air can take up only a limited amount of vapor. As her sweat rate climbs past that limit, a growing share drips off instead of evaporating, and dripping sweat removes almost no heat."
         },
         {
           "id": "skin-flow",

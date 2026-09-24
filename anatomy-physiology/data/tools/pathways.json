@@ -6010,7 +6010,7 @@
       "steps": [
         {
           "id": "bind",
-          "label": "Glucagon binds its receptor",
+          "label": "Glucagon binds its receptor protein",
           "text": "Glucagon binds receptor proteins on the liver cell’s plasma membrane.",
           "why": "Glucagon is a water-soluble hormone, so it acts from outside the cell, and everything else follows its binding."
         },
@@ -6233,7 +6233,7 @@
         "at": 4,
         "distractors": [
           {
-            "text": "The activated fatty acid diffuses freely across the inner mitochondrial membrane, because the membrane’s lipid layer lets fatty molecules straight through.",
+            "text": "The activated fatty acid diffuses freely across the inner mitochondrial membrane.",
             "why": "The inner membrane is not permeable to it; the carnitine carrier is required, which is why this step can limit fat burning."
           },
           {
@@ -6551,7 +6551,7 @@
         {
           "id": "gut",
           "label": "CCK and GLP-1 released",
-          "text": "As food reaches the small intestine, it releases cholecystokinin and GLP-1, which act on the brainstem and hypothalamus.",
+          "text": "As food reaches the small intestine, cells in its lining release cholecystokinin and GLP-1, which act on the brainstem and hypothalamus.",
           "why": "These hormones are released only once food has left the stomach for the small intestine."
         },
         {
@@ -6613,7 +6613,7 @@
         {
           "id": "convert",
           "label": "Converted to vitamin A",
-          "text": "Inside the absorptive cells, beta-carotene is converted to vitamin A.",
+          "text": "Inside the absorptive cells, much of the beta-carotene is converted to vitamin A.",
           "why": "The gut does the conversion after absorption, so this comes after the micelle step."
         },
         {

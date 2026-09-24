@@ -1,0 +1,44 @@
+{
+  "topic": "inheritance",
+  "hook": "<p>Mr. and Mrs. Okafor are both healthy. Their first child, a son, was diagnosed with cystic fibrosis after newborn screening, and his older sister wants to know if she could pass it on. Their genetic counselor draws a simple two-by-two grid on a notepad and, in a few minutes, gives the family three numbers: the chance their next child is affected, the chance a healthy child is a carrier, and the chance for their daughter's own children. This page teaches that grid and the rules behind it.</p>",
+  "prereq": [
+    {
+      "q": "What is an allele?",
+      "options": ["One version of a gene", "One of the two strands of DNA", "A chromosome with no partner"],
+      "correct": 0,
+      "why": "An allele is one version of a gene. You carry two copies of each autosomal gene, one from each parent, and they may be the same allele or different ones.",
+      "review": "meiosis"
+    },
+    {
+      "q": "In which division of meiosis do homologous chromosomes separate?",
+      "options": ["Meiosis II", "Meiosis I", "Both divisions equally"],
+      "correct": 1,
+      "why": "Homologs pair and then separate in meiosis I; sister chromatids separate in meiosis II. That separation of homologs puts the two alleles of each gene into different cells.",
+      "review": "meiosis"
+    },
+    {
+      "q": "A person with type AB blood carries which antigens on their red cells?",
+      "options": ["Neither A nor B", "A only", "Both A and B"],
+      "correct": 2,
+      "why": "Type AB red cells carry both the A and the B antigen, which is why type AB plasma has neither anti-A nor anti-B.",
+      "review": "blood-typing"
+    }
+  ],
+  "anatomy": null,
+  "chain": [
+    { "cause": "Each body cell carries two alleles of every autosomal gene, one on each homologous chromosome.", "effect": "The pair of alleles, the genotype, can be homozygous or heterozygous." },
+    { "cause": "In anaphase I of meiosis, homologous chromosomes move to opposite ends of the cell.", "effect": "Each gamete receives only one allele of each gene, with a 1 in 2 chance for each (the law of segregation)." },
+    { "cause": "Any egg can be fertilized by any sperm.", "effect": "A child's genotype is a random combination, and a Punnett square lists each equally likely combination." },
+    { "cause": "The two alleles in a child interact: one may mask the other, both may show, or the heterozygote may be in between.", "effect": "The genotype is expressed as a phenotype (dominant, recessive, codominant or incompletely dominant), which the environment can also change." },
+    { "cause": "Alleles on the X chromosome have no partner in a male.", "effect": "X-linked recessive traits show in males with one copy, so they affect many more males than females." }
+  ],
+  "misconception": {
+    "wrong": "A dominant allele is stronger, so it becomes more common over the generations, and a 1 in 4 risk means exactly one affected child in every four.",
+    "right": "Dominance describes how two alleles behave in one person for one phenotype, not how common an allele is: polydactyly is dominant but rare, and the O allele is recessive but the most common ABO allele. And a Punnett square gives a chance for each child. Gametes are formed fresh for every pregnancy, so two carriers who already have an affected child still face a 1 in 4 chance with the next."
+  },
+  "check": ["anp-inheritance-3", "anp-inheritance-4", "anp-inheritance-5", "anp-inheritance-9", "anp-inheritance-11", "anp-inheritance-13", "anp-inheritance-17", "anp-inheritance-22"],
+  "summary": "<p>Your genotype is the pair of alleles you carry for a gene; your phenotype is what shows, and the environment shapes it too. Homozygous means two identical alleles, heterozygous two different ones, and a gene with multiple alleles, like ABO, still gives each person only two. A dominant allele shows with one copy, a recessive one only with two, so carriers of recessive diseases are healthy heterozygotes. Segregation in meiosis I sends one allele into each gamete, and a Punnett square gives the chance for each child: 1 in 4 affected from two carriers, 1 in 2 from one heterozygous parent with a dominant disease. In incomplete dominance the heterozygote is in between; in codominance (type AB) both alleles show. X-linked recessive traits affect mostly males, pass from carrier mothers to half their sons and never from father to son. Polygenic traits like height form a bell curve. Chromosomal disorders, seen on a karyotype, include trisomy 21, Down syndrome, whose risk rises with maternal age.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-8", "label": "NREMT: Life span development" }
+  ]
+}

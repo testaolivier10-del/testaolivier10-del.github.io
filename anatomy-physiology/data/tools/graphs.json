@@ -19388,7 +19388,7 @@
     "gradients"
    ],
    "intro": "A lightly dressed adult resting in still air of different temperatures, with core temperature held steady. Heat made at rest stays about 75 kcal an hour; the two lines show how that heat leaves. Schematic, typical values.",
-   "alt": "Line graph of heat flow in kcal per hour against air temperature from 15 to 40 °C. Heat made stays flat at about 75. Heat lost by radiation, conduction and convection falls from about 67 at 15 °C to 60 at 20, 30 at 30 and zero at 35 °C, and becomes a heat gain of about 22 at 40 °C. Heat lost by evaporation rises from about 8 at 15 °C and 15 at 20 to 45 at 30, 75 at 35 and 97 at 40 °C.",
+   "alt": "Line graph of heat flow in kcal per hour against air temperature from 15 to 40 °C. Heat made stays flat at about 75. Heat lost by radiation, conduction and convection stays near 60 from 15 to 20 °C (skin vessels narrow in the cooler air), falls to 30 at 30 and zero at 35 °C, and becomes a heat gain of about 22 at 40 °C. Heat lost by evaporation stays near 15 up to 20 °C, then rises to 45 at 30, 75 at 35 and 97 at 40 °C.",
    "x": {
     "min": 15,
     "max": 40,
@@ -19463,7 +19463,7 @@
        "pts": [
         [
          15,
-         67
+         60
         ],
         [
          20,
@@ -19499,7 +19499,7 @@
        "pts": [
         [
          15,
-         8
+         15
         ],
         [
          20,
