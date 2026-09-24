@@ -157,7 +157,7 @@
     if(m === 'topic') return topicSelect();
     if(m === 'chapter') return '<label class="anp-pr-field"><span>Chapter</span><select id="anp-pr-chapter">' +
       optionList(builtChapters(), state.chapter, function(c){ return c.n + '. ' + c.title; }) + '</select></label>' +
-      '<p class="anp-small">Only chapters with built topics are listed. The pilot covers Foundations and the cardiovascular system.</p>';
+      (builtChapters().length < CUR.chapters.length ? '<p class="anp-small">Only chapters with built topics are listed.</p>' : '');
     if(m === 'core') return '<label class="anp-pr-field"><span>Core concept</span><select id="anp-pr-core">' +
       optionList(coresWithQuestions(), state.core, function(c){ return c.name; }) + '</select></label>';
     if(m === 'studied'){

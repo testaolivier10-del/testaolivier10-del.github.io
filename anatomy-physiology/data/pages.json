@@ -24,7 +24,7 @@
       "section": "exams",
       "h1": "Exams",
       "title": "A&P exams and TEAS practice | Anatomy & Physiology",
-      "desc": "Timed anatomy and physiology exams: unit quizzes, full system exams and a TEAS A&P practice mode, each ending with a full review.",
+      "desc": "Timed anatomy and physiology exams: unit quizzes, system exams, A&P I and II cumulative finals and TEAS A&P practice, each ending with a full review.",
       "script": "apps/exams.js",
       "css": "apps/apps.css"
     },

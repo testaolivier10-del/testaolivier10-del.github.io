@@ -449,7 +449,7 @@ function glossaryPage() {
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-glossary">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }], depth)}
-  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length} terms so far. Each one links to the page that teaches it.</p>
+  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length} terms${C.built.size === map.topics.length ? '' : ' so far'}. Each one links to the page that teaches it.</p>
     <label class="anp-filter">Find a term <input type="search" id="gl-filter" autocomplete="off"></label></header>
   <nav class="anp-letters" aria-label="Jump to letter">${letters.map(l => `<a href="#l-${l}">${l}</a>`).join('')}</nav>
   <dl class="anp-terms">${letters.map(l => `<div class="anp-letter" id="l-${l}"><h2>${l}</h2>${entries.filter(e => e.c.term[0].toUpperCase() === l).map(({ c, g }) => {
@@ -537,7 +537,7 @@ function homePage() {
   <section class="anp-part" aria-labelledby="h-covers">
     <h2 id="h-covers">What the course covers</h2>
     <p>${map.chapters.length} chapters and ${map.topics.length} topics: the full scope of a two-semester college A&amp;P course, matched to the OpenStax <i>Anatomy and Physiology 2e</i> textbook, the HAPS learning outcomes and the TEAS&nbsp;7 A&amp;P content areas. Each topic has an interactive lesson and a full notes page.</p>
-    <p class="anp-small">In this Beta, ${nb} topics are built: Foundations and the cardiovascular system. The rest are listed so you can see where everything fits; they arrive chapter by chapter.</p>
+    <p class="anp-small">${nb === map.topics.length ? `All ${nb} topics are built, each with its lesson, notes and questions.` : `In this Beta, ${nb} of ${map.topics.length} topics are built. The rest are listed so you can see where everything fits; they arrive chapter by chapter.`}</p>
   </section>
 
   <section class="anp-part" aria-labelledby="h-how">
@@ -561,7 +561,7 @@ function homePage() {
     <ul class="anp-cards anp-cards-sm">
       <li><a href="practice.html"><b>Practice</b><span>Topic, system and core concept drills, mixed review and your missed questions.</span></a></li>
       <li><a href="review.html"><b>Review</b><span>Your spaced review queue.</span></a></li>
-      <li><a href="exams.html"><b>Exams</b><span>Unit quizzes, system exams and TEAS A&amp;P practice.</span></a></li>
+      <li><a href="exams.html"><b>Exams</b><span>Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice.</span></a></li>
       <li><a href="tools.html"><b>Tools</b><span>Lab practical, predict the change, feedback loops, pathways, graphs, calculators and word roots.</span></a></li>
       <li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary and comparison tables.</span></a></li>
       <li><a href="glossary.html"><b>Glossary</b><span>Every term, with word roots and where it is taught.</span></a></li>

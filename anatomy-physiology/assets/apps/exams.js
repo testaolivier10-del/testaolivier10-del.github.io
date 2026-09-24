@@ -111,6 +111,20 @@
     }
     return out;
   }
+  /* The levels in a random order weighted by the target mix, used to break
+     ties when levelMix hands out the questions the floors leave over. With a
+     fixed order the tie always went to recall, so every one-question pick (each
+     TEAS area's first question, a small chapter's share of a final) was a
+     recall question. */
+  function levelOrder(){
+    var ks = Object.keys(LEVEL_MIX), out = [];
+    while(ks.length){
+      var r = Math.random() * ks.reduce(function(s, k){ return s + LEVEL_MIX[k]; }, 0), i = 0;
+      while(i < ks.length - 1 && (r -= LEVEL_MIX[ks[i]]) >= 0) i++;
+      out.push(ks.splice(i, 1)[0]);
+    }
+    return out;
+  }
   /* n questions in the target level mix, each level spread over topics; any
      shortfall in one level is made up from the others. */
   function levelMix(pool, n){
@@ -119,10 +133,10 @@
     pool.forEach(function(q){ (lv[q.level] || lv.apply).push(q); });
     var want = {}, got = 0;
     Object.keys(lv).forEach(function(l){ want[l] = Math.min(lv[l].length, Math.floor(n * LEVEL_MIX[l])); got += want[l]; });
-    var guard = 0;
+    var guard = 0, ties = levelOrder();
     while(got < n && guard++ < 1000){
       var best = null;
-      Object.keys(lv).forEach(function(l){ if(want[l] < lv[l].length && (!best || want[l] / LEVEL_MIX[l] < want[best] / LEVEL_MIX[best])) best = l; });
+      ties.forEach(function(l){ if(want[l] < lv[l].length && (!best || want[l] / LEVEL_MIX[l] < want[best] / LEVEL_MIX[best])) best = l; });
       if(!best) break;
       want[best]++; got++;
     }
@@ -248,8 +262,11 @@
         '<fieldset class="anp-ex-group anp-ex-inline"><legend>Length</legend>' + [50, 100, 0].map(function(v){
           return '<label class="anp-pr-chip"><input type="radio" name="finalLen" value="' + v + '"' + (cfg.finalLen === v ? ' checked' : '') + '><span>' + (v || 'All') + '</span></label>';
         }).join('') + '</fieldset>' + timingField() +
-        '<div class="anp-ex-note"><p><b>What this final covers today.</b> ' + plural(plan.built.length, 'chapter') + ' of ' + plan.chapters.length + ' in ' + (cfg.course === 'I' ? 'A&amp;P I' : 'A&amp;P II') +
-        (endo ? ' (with endocrine)' : '') + ' have questions so far, about ' + cover + '% of its topics. Questions are split across those chapters by their share of the course\'s topics; chapters still being written are left out, not filled in from elsewhere.</p>' +
+        '<div class="anp-ex-note"><p>' + (plan.built.length === plan.chapters.length ?
+          '<b>How this final is split.</b> Questions come from all ' + plan.chapters.length + ' chapters of ' + (cfg.course === 'I' ? 'A&amp;P I' : 'A&amp;P II') + (endo ? ' with endocrine' : '') +
+            ', each in proportion to its share of the course\'s topics.' :
+          '<b>What this final covers today.</b> ' + plural(plan.built.length, 'chapter') + ' of ' + plan.chapters.length + ' in ' + (cfg.course === 'I' ? 'A&amp;P I' : 'A&amp;P II') +
+            (endo ? ' (with endocrine)' : '') + ' have questions so far, about ' + cover + '% of its topics. Questions are split across those chapters by their share of the course\'s topics; chapters still being written are left out, not filled in from elsewhere.') + '</p>' +
         (plan.built.length ? '<ul class="anp-ex-alloc">' + plan.built.map(function(c){ return '<li><span>' + esc(chLabel(c)) + '</span><b>' + plan.alloc[c.id] + '</b></li>'; }).join('') + '</ul>' : '') + '</div>';
     }
     if(k === 'custom'){
@@ -602,7 +619,7 @@
       '<div class="anp-pr-score"><span class="anp-pr-score-big">' + right + '<small>/' + total + '</small></span>' +
         '<span><b>' + p + '%' + (k === 'teas' ? ' on this TEAS-style set' : '') + '</b><span class="anp-small">' + esc(run.label) +
         ' · ' + (timeUp ? 'time ran out' : 'finished in ' + mmss(used)) + '</span></span></div>' +
-      (k === 'teas' ? '<p class="anp-ex-note">This is an estimate: the area mix is a guess at the real weighting, because ATI does not publish it, and ' + (teasPlan().scaled ? 'only the built areas are included. ' : '') + 'A score here is practice, not a prediction of your TEAS score.</p><p class="anp-disclaimer">' + esc(TEAS_DISCLAIMER) + '</p>' : '') +
+      (k === 'teas' ? '<p class="anp-ex-note">This is an estimate: the area mix is a guess at the real weighting, because ATI does not publish it' + (teasPlan().scaled ? ', and only the built areas are included' : '') + '. A score here is practice, not a prediction of your TEAS score.</p><p class="anp-disclaimer">' + esc(TEAS_DISCLAIMER) + '</p>' : '') +
       (missedN ? '<p>' + plural(missedN, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>.</p>' : '<p>Every question right.</p>') +
       (weak.length ? '<h2>Study next</h2><ul class="anp-pr-next-list">' + weak.map(function(x){
         return '<li><div><b>' + esc(TOPIC[x.key].title) + '</b><span class="anp-small">' + x.c + ' of ' + x.n + ' right</span></div>' +
