@@ -4348,6 +4348,629 @@
         "why": "Light shuts the pathway down. Norepinephrine, and so melatonin, is released in darkness, and light stops it within minutes."
       },
       "summary": "Eye, SCN, spinal cord, superior cervical ganglion, sympathetic fibers, norepinephrine, pinealocytes, melatonin. At night, as timed by the SCN, the pathway runs; light turns it off within minutes. Evening light and screens also reset the SCN clock itself later."
+    },
+    {
+      "id": "lymph-flow",
+      "title": "Lymph flow from tissue to vein",
+      "topic": "lymphatic-system",
+      "core": [
+        "mass-balance",
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "A splinter in your left foot lets bacteria into the tissue. Trace the fluid around it from the moment it enters the lymphatic system until it is back in your blood.",
+      "steps": [
+        {
+          "id": "capillary",
+          "label": "Lymphatic capillary",
+          "text": "Interstitial fluid pushes the overlapping endothelial flaps inward and enters a blind-ended lymphatic capillary, becoming lymph.",
+          "why": "Entry comes first: the flaps open only when pressure outside is higher than inside, so fluid, protein and bacteria can get in but not back out."
+        },
+        {
+          "id": "collecting",
+          "label": "Collecting vessels",
+          "text": "Valved collecting vessels carry the lymph up the leg, pushed by their own smooth muscle and by the calf muscles.",
+          "why": "Lymphatic capillaries join into collecting vessels. Their one-way valves turn each squeeze into flow toward the heart."
+        },
+        {
+          "id": "afferent",
+          "label": "Afferent vessels to a node",
+          "text": "Afferent lymphatic vessels deliver the lymph into lymph nodes behind the knee and in the groin.",
+          "why": "Collecting vessels pass through lymph nodes before they merge, so lymph is filtered before it can reach the blood."
+        },
+        {
+          "id": "sinuses",
+          "label": "Node sinuses",
+          "text": "The lymph trickles slowly through the sinuses, where macrophages engulf the bacteria and lymphocytes meet their antigens.",
+          "why": "Inside the node, the many afferent vessels and the wide maze of sinuses slow the lymph, giving macrophages time to clear it."
+        },
+        {
+          "id": "efferent",
+          "label": "Efferent vessel",
+          "text": "Lymph leaves each node through an efferent lymphatic vessel at the hilum.",
+          "why": "There is only one exit, on the indented side of the node, after the lymph has crossed the cortex and medulla."
+        },
+        {
+          "id": "trunk",
+          "label": "Left lumbar trunk",
+          "text": "Vessels from the leg merge into the left lumbar trunk.",
+          "why": "Collecting vessels leaving the nodes merge into large trunks named for the region they drain; the lumbar trunks drain the legs."
+        },
+        {
+          "id": "cisterna",
+          "label": "Cisterna chyli",
+          "text": "The lumbar trunk empties into the cisterna chyli in front of the first two lumbar vertebrae.",
+          "why": "The cisterna chyli is the sac where the thoracic duct begins, receiving the lumbar and intestinal trunks."
+        },
+        {
+          "id": "duct",
+          "label": "Thoracic duct",
+          "text": "The lymph climbs the thoracic duct in front of the spine, through the chest.",
+          "why": "The thoracic duct drains about three quarters of the body, including both legs, so lymph from the left foot takes this route."
+        },
+        {
+          "id": "vein",
+          "label": "Left venous junction",
+          "text": "It empties into the blood where the left internal jugular vein meets the left subclavian vein, and travels on to the superior vena cava.",
+          "why": "The duct ends at the left venous junction, returning the filtered fluid and protein to the blood near the heart."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The lymph flows straight through the node in seconds, since nothing there acts on it before it leaves.",
+            "why": "Lymph is slowed on purpose. Filtering by macrophages and lymphocytes is the whole point of passing through a node."
+          },
+          {
+            "text": "Blood capillaries in the node add fluid to the lymph, so more lymph leaves the node than entered it.",
+            "why": "The reverse happens: blood capillaries in the node take back water, so less lymph leaves than entered, richer in lymphocytes."
+          },
+          {
+            "text": "The lymph enters the spleen, where red pulp macrophages remove the bacteria before it moves on.",
+            "why": "The spleen has no afferent lymphatic vessels. It filters blood, not lymph."
+          }
+        ]
+      },
+      "error": {
+        "at": 8,
+        "text": "It empties into the blood where the right internal jugular vein meets the right subclavian vein.",
+        "why": "That junction receives the right lymphatic duct, which drains only the right arm, the right side of the chest and the right side of the head and neck. Lymph from the left foot travels in the thoracic duct to the left venous junction."
+      },
+      "summary": "Lymphatic capillary, collecting vessels, afferent vessels, node sinuses, efferent vessel, lumbar trunk, cisterna chyli, thoracic duct, left venous junction. Roughly 8 L of fluid a day enters lymph in the tissues; the nodes return up to half of it to the blood directly, so about 3 to 4 L (the classic exam figure is about 3 L) reaches the veins through the ducts."
+    },
+    {
+      "id": "inflammatory-response",
+      "title": "The inflammatory response",
+      "topic": "innate-immunity",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "You cut your thumb on a dirty garden tool. Within minutes the edges redden; within hours they swell and fill with neutrophils; days later the cut is clean. Put the steps of inflammation in order.",
+      "steps": [
+        {
+          "id": "alarm",
+          "label": "Alarm signals released",
+          "text": "Mast cells release histamine, damaged cells release prostaglandins, and macrophages whose pattern recognition receptor proteins bind the bacteria release cytokines.",
+          "why": "Everything that follows is driven by these chemical messengers, so their release comes first."
+        },
+        {
+          "id": "dilate",
+          "label": "Arterioles dilate",
+          "text": "Histamine and prostaglandins dilate the arterioles, so more blood flows in: redness and heat.",
+          "why": "The messengers act on the nearest vessels first, widening them within minutes."
+        },
+        {
+          "id": "leak",
+          "label": "Vessels leak",
+          "text": "Capillary and venule endothelial cells pull apart, and plasma with its proteins leaks out: swelling.",
+          "why": "The same messengers open gaps in the vessel walls, letting complement, antibodies and clotting proteins reach the tissue."
+        },
+        {
+          "id": "roll",
+          "label": "Leukocytes roll and stick",
+          "text": "Cytokines make the venule walls sticky; leukocytes in the slowed blood roll along the wall, then stop and hold tight.",
+          "why": "Blood has slowed in the widened vessels, and adhesion proteins on the endothelium catch passing leukocytes."
+        },
+        {
+          "id": "diapedesis",
+          "label": "Diapedesis",
+          "text": "Each leukocyte squeezes between two endothelial cells and out into the tissue.",
+          "why": "A leukocyte must first be held against the wall before it can squeeze through it."
+        },
+        {
+          "id": "chemotaxis",
+          "label": "Chemotaxis",
+          "text": "The leukocytes crawl up the gradient of chemokines, complement fragments and bacterial products to the bacteria.",
+          "why": "Once in the tissue, the cell has to find the microbes, and it follows the rising concentration of attractants."
+        },
+        {
+          "id": "kill",
+          "label": "Phagocytes kill",
+          "text": "Neutrophils, then macrophages, engulf the bacteria and kill them with lysosomal enzymes and the oxidative burst.",
+          "why": "Killing needs the phagocytes to have arrived at the microbes."
+        },
+        {
+          "id": "pus",
+          "label": "Pus forms",
+          "text": "Neutrophils die within a day or two; dead cells, microbes, debris and leaked plasma collect as pus.",
+          "why": "Pus is what is left after neutrophils have done their work and died at the site."
+        },
+        {
+          "id": "repair",
+          "label": "Resolution and repair",
+          "text": "Macrophages engulf the dying neutrophils and switch to signals that end inflammation and start tissue repair.",
+          "why": "Repair can begin only once the microbes are gone and the debris is cleared."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Each leukocyte bursts on the endothelium, releasing its granules into the blood.",
+            "why": "Leukocytes leave the blood intact. They squeeze between endothelial cells and do their work in the tissue."
+          },
+          {
+            "text": "Each leukocyte is pumped out through the lymphatic capillaries into the tissue.",
+            "why": "Lymphatic capillaries carry fluid away from the tissue, not leukocytes into it. Leukocytes leave the blood by diapedesis."
+          },
+          {
+            "text": "Each leukocyte waits in the venule until the bacteria reach the bloodstream.",
+            "why": "Leukocytes leave the venule and go to the bacteria in the tissue, which is how an infection is kept local."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "Histamine and prostaglandins constrict the arterioles, so less blood flows in: the site turns pale and cool.",
+        "why": "Inflammatory messengers dilate the arterioles. The extra blood flow is what makes an inflamed area red and hot."
+      },
+      "summary": "Alarm signals, vasodilation, leak, rolling and sticking, diapedesis, chemotaxis, phagocytosis, pus, repair. The same order runs whether the trigger is bacteria in a cut or a sprain; messengers drive both the vessel changes and the arrival of leukocytes."
+    },
+    {
+      "id": "phagocyte-kill",
+      "title": "How a phagocyte kills",
+      "topic": "innate-immunity",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "A neutrophil has left a venule near an infected cut. Put the steps by which it finds and kills one bacterium in order.",
+      "steps": [
+        {
+          "id": "find",
+          "label": "Chemotaxis",
+          "text": "The neutrophil crawls toward the bacterium, following the rising concentration of attracting chemicals.",
+          "why": "A phagocyte must reach its target before it can do anything to it."
+        },
+        {
+          "id": "bind",
+          "label": "Binding",
+          "text": "It binds the bacterium, directly through pattern recognition receptor proteins or through complement (C3b) coating it.",
+          "why": "Engulfing needs a firm grip first; coating by C3b (opsonization) makes that grip much easier."
+        },
+        {
+          "id": "engulf",
+          "label": "Engulfing",
+          "text": "Its membrane flows around the bacterium and closes it into a vesicle.",
+          "why": "Once the bacterium is gripped, the membrane can wrap it."
+        },
+        {
+          "id": "fuse",
+          "label": "Fusion with lysosomes",
+          "text": "The vesicle fuses with lysosomes and granules, which pour in digestive enzymes, lysozyme and defensins.",
+          "why": "The weapons are stored separately in lysosomes and granules, so they must be delivered into the vesicle."
+        },
+        {
+          "id": "burst",
+          "label": "Oxidative burst",
+          "text": "An enzyme in the vesicle membrane makes superoxide from oxygen, which becomes hydrogen peroxide and hypochlorous acid.",
+          "why": "These reactive chemicals are made inside the closed vesicle, where they kill the trapped bacterium without harming the cell."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "It releases a pore-forming protein onto the bacterium without touching it.",
+            "why": "Releasing pore-forming granules onto a target is how NK cells kill infected body cells. A neutrophil grips a bacterium and engulfs it."
+          },
+          {
+            "text": "It waits for antibody-producing cells to arrive before it can act at all.",
+            "why": "Neutrophils act within hours, long before antibodies are made on a first infection. They bind microbes directly or through complement."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The phagocyte uses the extra oxygen it takes up to make more ATP, which powers the enzymes that digest the bacterium.",
+        "why": "The oxygen in the oxidative burst is used to make weapons (superoxide, hydrogen peroxide, hypochlorous acid), not ATP. That is why a phagocyte’s oxygen use jumps as it kills."
+      },
+      "summary": "Find, bind, engulf, fuse with lysosomes, kill with the oxidative burst. In chronic granulomatous disease the burst enzyme is faulty, so phagocytes engulf bacteria but cannot kill many of them."
+    },
+    {
+      "id": "thymus-selection",
+      "title": "Making a T cell in the thymus",
+      "topic": "adaptive-immunity",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A lymphoid stem cell in the red bone marrow gives rise to a cell that will become a T cell. Put the steps that turn it into a mature, naïve T cell in order.",
+      "steps": [
+        {
+          "id": "leave",
+          "label": "Thymocyte leaves marrow",
+          "text": "An immature T cell, a thymocyte, leaves the bone marrow and travels in the blood to the thymus.",
+          "why": "T cells are made in the marrow but mature only in the thymus."
+        },
+        {
+          "id": "build",
+          "label": "Random receptor built",
+          "text": "In the thymus cortex it cuts and joins gene pieces at random to build its own unique T cell receptor protein.",
+          "why": "The thymocyte needs a finished antigen receptor protein before it can be tested."
+        },
+        {
+          "id": "positive",
+          "label": "Positive selection",
+          "text": "Cortical epithelial cells show it self peptides on self MHC; if its receptor protein binds self MHC at least weakly, it gets a survival signal.",
+          "why": "A receptor protein that cannot bind your MHC would be useless, so the first test keeps only cells that can use self MHC."
+        },
+        {
+          "id": "negative",
+          "label": "Negative selection",
+          "text": "In the medulla, dendritic and epithelial cells show self peptides from all over the body; a thymocyte that binds them too strongly is killed.",
+          "why": "Only cells that passed the first test are worth checking for danger; this second test removes self-reactive cells (clonal deletion)."
+        },
+        {
+          "id": "release",
+          "label": "Naïve T cell released",
+          "text": "The survivors, about 2 percent, leave the thymus as mature, naïve T cells.",
+          "why": "Release comes last, after both tests; the survivors can see foreign peptides on self MHC without reacting strongly to self."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "In the medulla, each thymocyte meets foreign antigens from microbes and keeps whichever it binds best.",
+            "why": "Thymocytes are tested against self, not against microbes; they meet foreign antigen only later, in the lymph nodes."
+          },
+          {
+            "text": "In the medulla, thymocytes that bind self peptides strongly are kept, because they bind most firmly.",
+            "why": "Strong binding to self means the cell could attack your own tissues. Those cells are deleted, not kept."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "Cortical epithelial cells show it self peptides on self MHC; if its receptor protein cannot bind self MHC at all, it gets a survival signal.",
+        "why": "It is the reverse. A thymocyte whose receptor protein binds self MHC at least weakly survives; one that cannot bind it at all dies of neglect."
+      },
+      "summary": "Marrow, thymus cortex (receptor built, positive selection), thymus medulla (negative selection), release. About 98 percent of thymocytes fail and die by apoptosis. The survivors are restricted to self MHC and tolerant of self."
+    },
+    {
+      "id": "t-cell-activation",
+      "title": "Antigen presentation to T cell activation",
+      "topic": "cell-mediated-immunity",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A virus infects the lining of your nose. A week later your blood holds a large clone of T cells that recognize it. Trace the steps from the dendritic cell that meets the virus to the effector and memory T cells.",
+      "steps": [
+        {
+          "id": "capture",
+          "label": "Dendritic cell captures",
+          "text": "A dendritic cell under the lining engulfs virus and is switched on by its pattern recognition receptor proteins.",
+          "why": "Detecting danger is what makes the dendritic cell stop sampling and move; without it, no response starts."
+        },
+        {
+          "id": "process",
+          "label": "Antigen processing",
+          "text": "It cuts viral proteins into peptides and loads them into its MHC proteins.",
+          "why": "A T cell can see only a short peptide held in an MHC protein, so the antigen has to be processed first."
+        },
+        {
+          "id": "migrate",
+          "label": "Travels to lymph node",
+          "text": "It travels through afferent lymphatic vessels to the paracortex of the nearest lymph node.",
+          "why": "Naïve T cells circulate between the blood and lymph nodes, never into the tissue, so the antigen must be carried to them."
+        },
+        {
+          "id": "signal1",
+          "label": "Signal 1: recognition",
+          "text": "A rare naïve T cell whose receptor protein fits one displayed peptide binds it, with CD4 or CD8 clamping onto the MHC.",
+          "why": "Recognition can happen only once the loaded dendritic cell is in the node, where thousands of T cells pass through each hour."
+        },
+        {
+          "id": "signal2",
+          "label": "Signal 2: costimulation",
+          "text": "CD28 on the T cell binds B7 on the dendritic cell, confirming that the antigen came with danger.",
+          "why": "Signal 1 alone leads to anergy. The confirming signal must come with recognition for the T cell to switch on."
+        },
+        {
+          "id": "signal3",
+          "label": "Signal 3: cytokines",
+          "text": "Cytokines from the dendritic cell and nearby cells steer what kind of effector cell the T cell will become.",
+          "why": "Once the T cell is committed to responding, the cytokines around it decide its direction, such as Th1 or Th2."
+        },
+        {
+          "id": "il2",
+          "label": "IL-2 made",
+          "text": "The activated T cell makes IL-2 and the receptor protein for it, stimulating itself.",
+          "why": "Activation switches on the IL-2 genes; this autocrine loop drives the divisions that follow."
+        },
+        {
+          "id": "expand",
+          "label": "Clonal expansion",
+          "text": "It divides every 6 to 8 hours, building a clone of tens of thousands to millions of identical cells over about a week.",
+          "why": "Division follows the IL-2 signal, and it is the reason a first response takes about a week."
+        },
+        {
+          "id": "differentiate",
+          "label": "Effector and memory cells",
+          "text": "Most of the clone become short-lived effector T cells that leave the node; a smaller number become memory T cells.",
+          "why": "Differentiation comes after expansion, and the effector cells then do the work in the tissues."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Naïve T cells leave the blood and search the lining of the nose for the dendritic cell.",
+            "why": "Naïve T cells circulate between the blood and the lymph nodes and never wander into a small patch of infected tissue. The dendritic cell carries the antigen to them."
+          },
+          {
+            "text": "It releases its loaded MHC proteins into the blood, where passing T cells can find them.",
+            "why": "MHC proteins stay in the presenting cell’s membrane. The whole dendritic cell travels through afferent lymph to the node."
+          },
+          {
+            "text": "It stays in the lining and waits for T cells to pass through the infected tissue.",
+            "why": "The dendritic cell stops sampling and migrates. By the time it reaches the paracortex, a day or so later, it is covered in loaded MHC proteins."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "CD28 on the T cell binds B7 on the dendritic cell, which a resting dendritic cell from healthy tissue makes in plenty.",
+        "why": "A dendritic cell makes plenty of B7 only after its pattern recognition receptor proteins have sensed a microbe. A resting one gives signal 1 without signal 2, and a T cell that meets it becomes anergic, which protects healthy tissue."
+      },
+      "summary": "Capture, processing, migration to the lymph node, recognition, costimulation, cytokines, IL-2, clonal expansion, effector and memory cells. The two-signal rule means a T cell expands only when its antigen appears together with signs of infection."
+    },
+    {
+      "id": "cytotoxic-kill",
+      "title": "A cytotoxic T cell kills an infected cell",
+      "topic": "cell-mediated-immunity",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "An effector cytotoxic T cell arrives in virus-infected tissue in your airway lining. Put the steps by which it kills one infected cell in order.",
+      "steps": [
+        {
+          "id": "recognize",
+          "label": "Recognition",
+          "text": "Its T cell receptor protein and CD8 bind a viral peptide held in MHC class I on an infected cell.",
+          "why": "Killing is aimed; the T cell must first find a cell showing its peptide."
+        },
+        {
+          "id": "aim",
+          "label": "Aim",
+          "text": "It grips that cell tightly and turns its store of granules toward the contact point.",
+          "why": "Pointing the granules at the contact point means the weapons hit only the infected cell."
+        },
+        {
+          "id": "perforin",
+          "label": "Perforin",
+          "text": "The granules release perforin, which inserts into the target’s plasma membrane and forms pores.",
+          "why": "Pores come first, to open a route into the target."
+        },
+        {
+          "id": "granzymes",
+          "label": "Granzymes",
+          "text": "Granzymes enter through the pores and activate the target’s own caspases.",
+          "why": "Granzymes need the pores perforin made to get inside the target."
+        },
+        {
+          "id": "apoptosis",
+          "label": "Apoptosis",
+          "text": "The target dies by apoptosis within minutes, breaking into tidy fragments, with the virus inside it destroyed.",
+          "why": "Caspases carry out apoptosis once they are switched on."
+        },
+        {
+          "id": "detach",
+          "label": "Moves on",
+          "text": "The cytotoxic T cell lets go and moves on to kill the next infected cell.",
+          "why": "The killer is not used up; one cell can kill many targets in a row."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The granules release antibody, which coats the target so the T cell can engulf it.",
+            "why": "T cells do not make antibody, and a cytotoxic T cell does not engulf its target. Its granules release perforin."
+          },
+          {
+            "text": "The granules release histamine, which makes the target cell swell and burst.",
+            "why": "Histamine is a mast cell messenger. The target is killed by apoptosis, from inside, not by bursting."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The target swells and bursts open, spilling its contents, including new virus, into the tissue.",
+        "why": "The target dies by apoptosis, breaking into tidy, membrane-wrapped fragments that macrophages engulf. Virus still being assembled is destroyed with it, and there is little inflammation."
+      },
+      "summary": "Recognize, aim, perforin, granzymes, caspases and apoptosis, detach and repeat. Fas ligand binding Fas on the target is a second route to the same caspases."
+    },
+    {
+      "id": "b-cell-antibody",
+      "title": "B cell activation to antibody",
+      "topic": "antibody-immunity",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Tetanus toxoid from a first vaccine dose reaches a lymph node. Trace the steps from a naïve B cell that fits it to the antibody that neutralizes tetanus toxin.",
+      "steps": [
+        {
+          "id": "bind",
+          "label": "Antigen binds BCR",
+          "text": "The toxoid binds the B cell receptor proteins of a naïve B cell that fits it, and the B cell takes it inside.",
+          "why": "A B cell receptor protein binds the antigen in its natural, folded shape; no MHC is needed for this first step."
+        },
+        {
+          "id": "present",
+          "label": "Presents on MHC II",
+          "text": "The B cell cuts the protein into peptides and displays them in MHC class II.",
+          "why": "This turns the B cell into an antigen-presenting cell, so a helper T cell can recognize it."
+        },
+        {
+          "id": "help",
+          "label": "Helper T cell help",
+          "text": "A helper T cell already activated against the same antigen binds the peptide, engages CD40 with CD40 ligand and releases cytokines onto the B cell.",
+          "why": "Most protein antigens are T cell-dependent: without this help the B cell cannot respond fully."
+        },
+        {
+          "id": "expand",
+          "label": "Clonal expansion",
+          "text": "The activated B cell divides into a clone.",
+          "why": "Help switches on division, building the numbers the response needs."
+        },
+        {
+          "id": "germinal",
+          "label": "Germinal center",
+          "text": "In a germinal center, clone members switch class from IgM to IgG and are selected for better-fitting antibody.",
+          "why": "Class switching and affinity maturation happen after expansion, and they also need helper T cell contact."
+        },
+        {
+          "id": "differentiate",
+          "label": "Plasma and memory cells",
+          "text": "Daughter cells become plasma cells and memory B cells.",
+          "why": "Differentiation comes last in the B cell’s own story; memory B cells will drive the secondary response."
+        },
+        {
+          "id": "release",
+          "label": "Antibody released",
+          "text": "Each plasma cell releases about 2,000 antibody molecules per second into the blood and tissue fluid.",
+          "why": "Plasma cells are packed with rough ER for exactly this export."
+        },
+        {
+          "id": "neutralize",
+          "label": "Neutralization",
+          "text": "The antibody binds tetanus toxin and covers the part that attaches to nerve endings.",
+          "why": "Antibody can act only after it has been released and reaches the toxin."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "A cytotoxic T cell recognizes the peptide and kills the B cell, which releases its stored antibody.",
+            "why": "Cytotoxic T cells kill infected cells. A B cell is switched on by a helper T cell’s contact and cytokines."
+          },
+          {
+            "text": "A dendritic cell binds the B cell directly and releases antibody onto it to switch it on.",
+            "why": "Dendritic cells activate helper T cells; the helper T cell is the one that helps the B cell."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "In a germinal center, clone members switch class from IgG to IgM and are selected for better-fitting antibody.",
+        "why": "Every B cell starts out making IgM (with IgD). Class switching goes from IgM to IgG, IgA or IgE, keeping the same variable region, and it cannot be reversed because the DNA is cut out."
+      },
+      "summary": "Bind and take in antigen, present on MHC class II, get helper T cell help, expand, switch class and improve fit, become plasma and memory cells, release antibody, neutralize. T cell-independent antigens such as repeating capsule sugars skip the help, giving mostly IgM and few memory cells."
+    },
+    {
+      "id": "type-i-hypersensitivity",
+      "title": "Type I hypersensitivity: from sensitization to symptoms",
+      "topic": "immune-disorders",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A child prone to allergy breathes in grass pollen one spring with no symptoms. The next spring, the same pollen sets off sneezing within minutes. Put the steps in order.",
+      "steps": [
+        {
+          "id": "th2",
+          "label": "Th2 cells release IL-4",
+          "text": "On the first exposure, Th2 helper T cells that recognize the pollen release IL-4.",
+          "why": "Sensitization starts with helper T cells; IL-4 is the cytokine that steers B cells toward IgE."
+        },
+        {
+          "id": "switch",
+          "label": "Class switch to IgE",
+          "text": "B cells that recognize the pollen switch class to IgE, and plasma cells release it.",
+          "why": "The B cells need the IL-4 signal before they switch."
+        },
+        {
+          "id": "arm",
+          "label": "IgE arms mast cells",
+          "text": "IgE binds by its Fc region to receptor proteins on mast cells in the lining of the nose.",
+          "why": "The IgE must be made before it can sit on mast cells; the child is now sensitized but has no symptoms."
+        },
+        {
+          "id": "crosslink",
+          "label": "Re-exposure cross-links IgE",
+          "text": "The next spring, pollen binds two neighboring IgE molecules on a mast cell and cross-links them.",
+          "why": "A reaction needs this later exposure; the first contact only primed the system."
+        },
+        {
+          "id": "degranulate",
+          "label": "Degranulation",
+          "text": "Within seconds the mast cell releases histamine and tryptase, then makes leukotrienes and prostaglandins.",
+          "why": "Cross-linking is the trigger for the mast cell to release its granules."
+        },
+        {
+          "id": "effects",
+          "label": "Symptoms",
+          "text": "Histamine widens and opens small vessels, stimulates itch nerves and increases mucus: sneezing and a running nose.",
+          "why": "The mediators have to be released before they can act on nearby vessels, glands and nerves."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "IgE circulates free in the blood, waiting to meet the pollen in the plasma.",
+            "why": "Almost all IgE sits bound to mast cells and basophils by its Fc region. That is where the pollen meets it."
+          },
+          {
+            "text": "The pollen itself binds straight to histamine stores inside the mast cells.",
+            "why": "Pollen does not enter mast cells. It acts from outside by cross-linking IgE bound to their surface."
+          }
+        ]
+      },
+      "error": {
+        "at": 0,
+        "text": "On the first exposure, Th1 helper T cells that recognize the pollen release interferon gamma.",
+        "why": "Allergy is a Th2 response. IL-4 from Th2 cells drives the switch to IgE; interferon gamma from Th1 cells blocks Th2 development and steers B cells toward the IgG types that coat microbes."
+      },
+      "summary": "Th2 cells and IL-4, class switch to IgE, IgE arms mast cells, re-exposure cross-links IgE, degranulation, symptoms. Where the mast cells sit decides the symptoms; when an allergen reaches the blood and mast cells degranulate everywhere at once, the result is anaphylaxis."
     }
   ]
 }

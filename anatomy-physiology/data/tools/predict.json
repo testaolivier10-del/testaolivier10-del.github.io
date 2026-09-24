@@ -11610,6 +11610,1239 @@
           "why": "Without norepinephrine, pinealocytes stop making and releasing melatonin within minutes. The same light signal also resets the suprachiasmatic nucleus itself, which is why light at night, including from screens, pushes the body clock later."
         }
       ]
+    },
+    {
+      "id": "spleen-removed",
+      "title": "The spleen is removed",
+      "theme": "the spleen is removed",
+      "topic": "lymphatic-system",
+      "core": [
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "the spleen is just a large lymph node that filters lymph",
+      "setup": "A car crash tears a 30-year-old woman’s spleen beyond repair, and surgeons remove it. Predict the changes over the following months, compared with before the injury.",
+      "start": "The spleen is removed",
+      "steps": {
+        "reserve": "The platelets the spleen held in reserve are no longer held back",
+        "plt": "They circulate: the platelet count rises",
+        "nored": "No red pulp to squeeze-test blood cells",
+        "oldrbc": "Old and misshapen red cells stay in the blood longer",
+        "liver": "Liver macrophages take over some of the filtering, but not all",
+        "caps": "Sugar-coated bacteria in the blood are cleared less well",
+        "sepsis": "Risk of an overwhelming bloodstream infection rises for life",
+        "nodes": "Lymph still flows through the lymph nodes",
+        "lymph": "Filtering of lymph is unchanged"
+      },
+      "variables": [
+        {
+          "id": "platelets",
+          "name": "Platelet count",
+          "answer": "up",
+          "chain": [
+            "reserve",
+            "plt"
+          ],
+          "why": "The spleen normally holds about a third of your platelets in reserve. Without it, those platelets stay in the circulating blood, so the count rises."
+        },
+        {
+          "id": "old-rbc",
+          "name": "Old and misshapen red cells in the blood",
+          "answer": "up",
+          "chain": [
+            "nored",
+            "oldrbc"
+          ],
+          "why": "In the red pulp, stiff old red cells get stuck in the narrow slits of the venous sinuses and are engulfed. Without that squeeze test they stay in circulation longer, until macrophages elsewhere remove them."
+        },
+        {
+          "id": "infection",
+          "name": "Risk of an overwhelming bloodstream infection",
+          "answer": "up",
+          "chain": [
+            "nored",
+            "liver",
+            "caps",
+            "sepsis"
+          ],
+          "why": "Red pulp macrophages are the main way to clear bacteria wrapped in a slippery sugar coat, which are hard to engulf anywhere else. The liver takes over only part of the job, so the risk stays higher for life. That is why she gets extra vaccines and should seek care at the first sign of a fever."
+        },
+        {
+          "id": "lymph-filter",
+          "name": "Filtering of lymph by lymph nodes",
+          "answer": "none",
+          "chain": [
+            "nodes",
+            "lymph"
+          ],
+          "why": "The spleen has no afferent lymphatic vessels: it filters blood, not lymph. Lymph goes on passing through the lymph nodes, whose macrophages and lymphocytes clear it as before."
+        }
+      ]
+    },
+    {
+      "id": "armpit-nodes-removed",
+      "title": "Lymph nodes of the armpit are removed",
+      "topic": "lymphatic-system",
+      "core": [
+        "mass-balance",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "lymphedema is caused by capillaries filtering too much fluid",
+      "setup": "During breast cancer surgery, the lymph nodes of a woman’s left armpit are removed and the area is treated with radiation. Months later her left arm begins to swell. Compare her left arm with her right.",
+      "start": "Nodes and lymphatic vessels of the left armpit are lost",
+      "steps": {
+        "block": "Lymph from the left arm has too few routes back to the blood",
+        "same": "Blood capillaries in the arm are unchanged",
+        "filt": "Capillaries filter at the usual rate",
+        "stay": "Filtered fluid stays in the tissue",
+        "isf": "Interstitial fluid volume rises: the arm swells",
+        "prot": "Leaked plasma protein is not carried away",
+        "protup": "Protein in the interstitial fluid rises",
+        "cells": "Stagnant fluid draws in lymphocytes, whose signals drive fibroblasts",
+        "firm": "Collagen and fat build up: the arm turns firm and stops pitting",
+        "skin": "Skin infections become more likely"
+      },
+      "variables": [
+        {
+          "id": "filtration",
+          "name": "Fluid filtered out of the blood capillaries",
+          "answer": "none",
+          "chain": [
+            "same",
+            "filt"
+          ],
+          "why": "Nothing in the blood capillaries has changed: capillary pressure and plasma protein are normal, so they filter at the usual rate. Lymphedema is a failure of drainage, not of filtration."
+        },
+        {
+          "id": "swelling",
+          "name": "Interstitial fluid volume in the arm",
+          "answer": "up",
+          "chain": [
+            "block",
+            "stay",
+            "isf"
+          ],
+          "why": "Fluid keeps filtering out at the normal rate, but with the drainage route cut, less of it returns to the blood. The difference collects in the tissue."
+        },
+        {
+          "id": "protein",
+          "name": "Protein in the interstitial fluid",
+          "answer": "up",
+          "chain": [
+            "block",
+            "prot",
+            "protup"
+          ],
+          "why": "Only the lymphatic route can return leaked plasma protein to the blood. With it blocked, protein builds up in the tissue, which is why lymphedema fluid is protein-rich."
+        },
+        {
+          "id": "firmness",
+          "name": "Firmness of the tissue over months",
+          "answer": "up",
+          "chain": [
+            "block",
+            "stay",
+            "cells",
+            "firm"
+          ],
+          "why": "The stagnant, protein-rich fluid keeps drawing lymphocytes into the tissue. Their chemical signals drive fibroblasts to lay down collagen, and fat builds up, so the swelling turns firm and stops pitting under a thumb."
+        },
+        {
+          "id": "infection",
+          "name": "Risk of skin infection in the arm",
+          "answer": "up",
+          "chain": [
+            "block",
+            "stay",
+            "skin"
+          ],
+          "why": "Bacteria that get into the skin are carried to lymph nodes less well, and the stagnant fluid gives them a place to grow."
+        }
+      ]
+    },
+    {
+      "id": "fever-course-l4",
+      "title": "A fever starts, then breaks",
+      "topic": "innate-immunity",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "a fever means the body has lost control of its temperature",
+      "setup": "Macrophages fighting an infected cut release interleukin-1 and other pyrogens. Prostaglandin E2 in the hypothalamus raises the set point from 36.6 to 39 °C. Follow the fever from its start to its end.",
+      "stages": [
+        {
+          "id": "rise",
+          "label": "Minutes after the set point rises",
+          "prompt": "Compared with just before the set point rose.",
+          "start": "The set point jumps to 39 °C",
+          "steps": {
+            "below": "Body temperature, still 36.6 °C, is now below the set point",
+            "symp": "Sympathetic signals constrict skin arterioles",
+            "skin": "Less warm blood flows through the skin",
+            "shiver": "Motor signals make skeletal muscles shiver",
+            "heat": "Less heat lost and more heat made",
+            "temp": "Body temperature climbs toward 39 °C",
+            "feel": "You feel cold: the chill"
+          },
+          "variables": [
+            {
+              "id": "skin-flow",
+              "name": "Blood flow through the skin",
+              "answer": "down",
+              "chain": [
+                "below",
+                "symp",
+                "skin"
+              ],
+              "why": "The hypothalamus responds exactly as it would to cold: sympathetic signals constrict the skin arterioles, so the skin turns pale and the hands feel cold, and less heat leaves at the surface."
+            },
+            {
+              "id": "shivering",
+              "name": "Shivering",
+              "answer": "up",
+              "chain": [
+                "below",
+                "shiver"
+              ],
+              "why": "Your temperature is below the new target, so the hypothalamus signals skeletal muscles to shiver, releasing heat. The control system is working normally, just toward a higher set point."
+            },
+            {
+              "id": "temperature",
+              "name": "Body temperature",
+              "answer": "up",
+              "chain": [
+                "below",
+                "symp",
+                "skin",
+                "shiver",
+                "heat",
+                "temp"
+              ],
+              "why": "Heat is kept in and made faster than it is lost, so temperature rises until it meets the new set point. Then the chills stop."
+            },
+            {
+              "id": "feel-cold",
+              "name": "Feeling cold",
+              "answer": "up",
+              "chain": [
+                "below",
+                "feel"
+              ],
+              "why": "You feel chilled and reach for a blanket even though your temperature is normal or rising, because it is still below what the hypothalamus is now aiming for."
+            }
+          ]
+        },
+        {
+          "id": "break",
+          "label": "When the pyrogens are cleared",
+          "prompt": "Hours later the infection is under control and the pyrogens are cleared while body temperature is 39 °C. Compared with the plateau just before.",
+          "start": "The set point falls back to 36.6 °C",
+          "steps": {
+            "above": "Body temperature, 39 °C, is now above the set point",
+            "dil": "Skin arterioles dilate: flushed, warm skin",
+            "sweat": "Sweat glands release sweat",
+            "loss": "Heat is lost faster than it is made",
+            "temp": "Body temperature falls toward 36.6 °C"
+          },
+          "variables": [
+            {
+              "id": "skin-flow",
+              "name": "Blood flow through the skin",
+              "answer": "up",
+              "chain": [
+                "above",
+                "dil"
+              ],
+              "why": "With temperature above the set point, the hypothalamus runs its heat-loss responses: the skin arterioles dilate and warm blood flows near the surface."
+            },
+            {
+              "id": "sweating",
+              "name": "Sweating",
+              "answer": "up",
+              "chain": [
+                "above",
+                "sweat"
+              ],
+              "why": "Sweat glands are signaled to release sweat, which carries heat away as it evaporates. This is the drenching sweat that ends a fever."
+            },
+            {
+              "id": "temperature",
+              "name": "Body temperature",
+              "answer": "down",
+              "chain": [
+                "above",
+                "dil",
+                "sweat",
+                "loss",
+                "temp"
+              ],
+              "why": "Heat now leaves faster than it is made, so temperature falls until it meets the normal set point again. The same negative feedback loop that raised it now lowers it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "splinter-inflammation",
+      "title": "Bacteria enter a fingertip",
+      "topic": "innate-immunity",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 2,
+      "misconception": "the redness and swelling are damage done by the bacteria",
+      "setup": "A splinter carries bacteria into your fingertip. Predict the changes at the site and in your blood over the next day, compared with before the splinter.",
+      "start": "Bacteria enter the tissue",
+      "steps": {
+        "alarm": "Mast cells release histamine; macrophages release cytokines",
+        "dil": "Arterioles at the site dilate",
+        "flow": "More blood flows in: redness and heat",
+        "leak": "Capillary and venule walls pull apart and leak",
+        "swell": "Plasma pours into the tissue: swelling",
+        "prot": "Plasma proteins, including complement, enter the tissue",
+        "sticky": "Cytokines make the venule walls sticky",
+        "out": "Neutrophils roll, stick, squeeze out and follow chemotaxis",
+        "site": "Neutrophils crowd the site",
+        "marrow": "Cytokines in the blood make the marrow release neutrophils",
+        "wbc": "The blood white cell count rises"
+      },
+      "variables": [
+        {
+          "id": "blood-flow",
+          "name": "Blood flow to the fingertip",
+          "answer": "up",
+          "chain": [
+            "alarm",
+            "dil",
+            "flow"
+          ],
+          "why": "Histamine and prostaglandins relax the arterioles at the site, so more blood flows in. That is the redness and heat."
+        },
+        {
+          "id": "fluid",
+          "name": "Interstitial fluid at the site",
+          "answer": "up",
+          "chain": [
+            "alarm",
+            "leak",
+            "swell"
+          ],
+          "why": "The same messengers make capillary and venule endothelial cells pull apart, so plasma leaks out faster than it can drain away: swelling."
+        },
+        {
+          "id": "complement",
+          "name": "Complement proteins in the tissue",
+          "answer": "up",
+          "chain": [
+            "alarm",
+            "leak",
+            "prot"
+          ],
+          "why": "Complement circulates in the plasma. When the vessels leak, it pours into the tissue with the plasma, where it can coat the bacteria."
+        },
+        {
+          "id": "neutrophils-site",
+          "name": "Neutrophils at the site",
+          "answer": "up",
+          "chain": [
+            "alarm",
+            "sticky",
+            "out",
+            "site"
+          ],
+          "why": "Cytokines switch on adhesion proteins on the venule wall. Neutrophils roll, stick, squeeze out between endothelial cells and crawl up the gradient of attractants to the bacteria."
+        },
+        {
+          "id": "wbc",
+          "name": "White cell count in the blood",
+          "answer": "up",
+          "chain": [
+            "alarm",
+            "marrow",
+            "wbc"
+          ],
+          "why": "Cytokines that reach the blood make the bone marrow release its reserve of neutrophils, so the count rises in a bacterial infection."
+        }
+      ]
+    },
+    {
+      "id": "first-vaccine-dose",
+      "title": "A first dose of a new vaccine",
+      "topic": "adaptive-immunity",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "lymphocytes shape their antigen receptor proteins to fit a new antigen",
+      "setup": "A child gets her first dose of a vaccine containing an antigen her immune system has never met. Predict the changes one to two weeks later, compared with before the dose.",
+      "start": "The new antigen reaches a lymph node",
+      "steps": {
+        "select": "The rare naïve lymphocytes that already fit an epitope are selected",
+        "divide": "They divide every 6 to 8 hours for several days",
+        "clone": "Each forms a clone of identical cells",
+        "node": "The draining lymph node swells",
+        "mem": "Some clone members become long-lived memory cells",
+        "made": "Antigen receptor proteins were built at random before the antigen arrived",
+        "shape": "No lymphocyte changes its receptor protein to fit the antigen"
+      },
+      "variables": [
+        {
+          "id": "matching",
+          "name": "Lymphocytes that fit the vaccine antigen",
+          "answer": "up",
+          "chain": [
+            "select",
+            "divide",
+            "clone"
+          ],
+          "why": "Only about 1 in 100,000 to 1 in a million naïve lymphocytes fits any one epitope. The antigen selects those cells, and they multiply into clones of tens of thousands or more."
+        },
+        {
+          "id": "node",
+          "name": "Size of the lymph node draining the injection site",
+          "answer": "up",
+          "chain": [
+            "select",
+            "divide",
+            "node"
+          ],
+          "why": "Clonal expansion happens in the lymph node, and more lymphocytes are held back from leaving, so the node swells."
+        },
+        {
+          "id": "memory",
+          "name": "Memory cells for this antigen",
+          "answer": "up",
+          "chain": [
+            "select",
+            "divide",
+            "clone",
+            "mem"
+          ],
+          "why": "A smaller part of each clone becomes long-lived memory cells. Their larger numbers are what make a later exposure faster and stronger."
+        },
+        {
+          "id": "receptor-shape",
+          "name": "Shape of any one lymphocyte’s antigen receptor protein",
+          "answer": "none",
+          "chain": [
+            "made",
+            "shape"
+          ],
+          "why": "Each lymphocyte joined the gene pieces for its receptor protein at random while it matured. The antigen does not reshape any receptor protein; it selects the cells whose receptor proteins already fit."
+        }
+      ]
+    },
+    {
+      "id": "no-thymus",
+      "title": "A baby is born without a thymus",
+      "topic": "adaptive-immunity",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "every lymphocyte matures in the thymus",
+      "setup": "A baby girl is born without a thymus; her bone marrow is normal. Compare her at four months with a healthy baby.",
+      "start": "No thymus",
+      "steps": {
+        "nowhere": "Thymocytes from the marrow have nowhere to mature",
+        "fewt": "Few mature T cells reach the body",
+        "blood": "T cells in the blood are scarce",
+        "para": "The paracortex of her lymph nodes is nearly empty",
+        "infect": "Virus-infected cells are not found and removed: infections linger",
+        "marrow": "Her bone marrow works normally",
+        "innate": "Neutrophils, macrophages and NK cells are made and work as usual",
+        "bmat": "B cells still mature in the marrow"
+      },
+      "variables": [
+        {
+          "id": "t-cells",
+          "name": "T cells in the blood",
+          "answer": "down",
+          "chain": [
+            "nowhere",
+            "fewt",
+            "blood"
+          ],
+          "why": "T cells leave the marrow as thymocytes and mature only in the thymus. Without it, almost none become mature T cells."
+        },
+        {
+          "id": "paracortex",
+          "name": "Lymphocytes in the paracortex of lymph nodes",
+          "answer": "down",
+          "chain": [
+            "nowhere",
+            "fewt",
+            "para"
+          ],
+          "why": "The deep cortex of a lymph node is where T cells gather. With few T cells, it is nearly empty."
+        },
+        {
+          "id": "viral",
+          "name": "Viral and fungal infections that will not clear",
+          "answer": "up",
+          "chain": [
+            "nowhere",
+            "fewt",
+            "infect"
+          ],
+          "why": "T cells are what find and kill infected cells and coordinate the rest of the response. Without them, viral and fungal infections persist."
+        },
+        {
+          "id": "neutrophils",
+          "name": "Neutrophil count",
+          "answer": "none",
+          "chain": [
+            "marrow",
+            "innate"
+          ],
+          "why": "Neutrophils are made in the bone marrow and belong to innate immunity. They need no thymus, so their numbers and function are normal."
+        },
+        {
+          "id": "b-cells",
+          "name": "B cells in the blood",
+          "answer": "none",
+          "chain": [
+            "marrow",
+            "bmat"
+          ],
+          "why": "B cells finish maturing in the bone marrow, not the thymus, so their numbers are normal."
+        }
+      ]
+    },
+    {
+      "id": "tacrolimus",
+      "title": "A transplant patient takes tacrolimus",
+      "topic": "cell-mediated-immunity",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "anti-rejection drugs act only on the transplanted organ",
+      "setup": "After a kidney transplant, a man takes tacrolimus, which stops activated T cells from making IL-2. Predict the changes, compared with the same man without the drug.",
+      "start": "Activated T cells cannot make IL-2",
+      "steps": {
+        "nosignal": "No IL-2 growth signal after activation",
+        "noexp": "Clonal expansion of T cells is blocked",
+        "fewer": "Few effector T cells form against donor HLA",
+        "reject": "Acute rejection is less likely",
+        "every": "The block hits every T cell response, not only the graft",
+        "infect": "Infections become more likely",
+        "hla": "The drug does not act on the donor’s cells",
+        "same": "Donor HLA on the kidney is unchanged"
+      },
+      "variables": [
+        {
+          "id": "expansion",
+          "name": "Clonal expansion of activated T cells",
+          "answer": "down",
+          "chain": [
+            "nosignal",
+            "noexp"
+          ],
+          "why": "An activated T cell drives its own division by making IL-2 and the receptor protein for it. Without IL-2, it cannot expand into a clone."
+        },
+        {
+          "id": "rejection",
+          "name": "Risk of acute rejection",
+          "answer": "down",
+          "chain": [
+            "nosignal",
+            "noexp",
+            "fewer",
+            "reject"
+          ],
+          "why": "Acute rejection is carried out by the recipient’s helper and cytotoxic T cells reacting to donor HLA. Without clonal expansion, too few effector cells form to destroy the graft."
+        },
+        {
+          "id": "infection",
+          "name": "Risk of infections",
+          "answer": "up",
+          "chain": [
+            "nosignal",
+            "noexp",
+            "every",
+            "infect"
+          ],
+          "why": "The drug cannot tell a T cell reacting to the graft from one reacting to a virus. All T cell responses are damped, so recipients get more infections and some virus-driven cancers."
+        },
+        {
+          "id": "donor-hla",
+          "name": "HLA proteins on the donor kidney’s cells",
+          "answer": "none",
+          "chain": [
+            "hla",
+            "same"
+          ],
+          "why": "The drug acts on the recipient’s T cells. The graft still carries the donor’s HLA, which is why the drug must be taken for life."
+        }
+      ]
+    },
+    {
+      "id": "virus-hides-mhc",
+      "title": "A virus switches off MHC class I",
+      "topic": "cell-mediated-immunity",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "a cell that hides from cytotoxic T cells is safe from all immune killing",
+      "setup": "A virus makes the cells it infects stop putting MHC class I on their surface. Predict the immune response, compared with an infection by a similar virus that does not do this.",
+      "start": "Infected cells show little MHC class I",
+      "steps": {
+        "nopep": "Viral peptides are not displayed on the cell surface",
+        "blind": "Cytotoxic T cells cannot recognize the infected cells",
+        "ctl": "Killing by cytotoxic T cells falls",
+        "missing": "The self-identity signal NK cells check for is missing",
+        "nk": "NK cells detect the loss and are no longer held back",
+        "nkkill": "Killing by NK cells rises",
+        "free": "Free virus between cells still carries its surface proteins",
+        "ab": "Antibody binding of free virus is unaffected"
+      },
+      "variables": [
+        {
+          "id": "ctl-killing",
+          "name": "Killing of infected cells by cytotoxic T cells",
+          "answer": "down",
+          "chain": [
+            "nopep",
+            "blind",
+            "ctl"
+          ],
+          "why": "A cytotoxic T cell sees only a peptide held in MHC class I, using its T cell receptor protein and CD8. With no MHC class I, there is nothing for it to recognize."
+        },
+        {
+          "id": "nk-killing",
+          "name": "Killing of infected cells by NK cells",
+          "answer": "up",
+          "chain": [
+            "missing",
+            "nk",
+            "nkkill"
+          ],
+          "why": "NK cells are held back by MHC class I on healthy cells. A cell that has lost it tips the balance toward \"kill me\", so NK cells attack it."
+        },
+        {
+          "id": "antibody",
+          "name": "Antibody binding to free virus particles",
+          "answer": "none",
+          "chain": [
+            "free",
+            "ab"
+          ],
+          "why": "Antibody binds whole antigens on the virus’s surface, with no MHC involved. Hiding MHC class I inside infected cells does not change the free virus."
+        }
+      ]
+    },
+    {
+      "id": "second-exposure",
+      "title": "A tetanus booster ten years later",
+      "theme": "second exposure to the same antigen",
+      "topic": "antibody-immunity",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a booster simply repeats the first response",
+      "setup": "A woman had her first tetanus vaccination as a child. Ten years after her last dose she gets a booster. Compare her antibody response to this booster with her response to her very first dose.",
+      "start": "Memory B cells meet tetanus toxoid again",
+      "steps": {
+        "mem": "Memory B cells far outnumber the original naïve B cells",
+        "fast": "They switch on faster, with less stimulation",
+        "lag": "Antibody appears in about 1 to 3 days instead of 5 to 10",
+        "many": "Many more plasma cells form",
+        "peak": "The peak is often 10 to 100 times higher",
+        "switched": "Memory B cells already make switched antibody",
+        "igg": "Mostly IgG from the start, not IgM first",
+        "matured": "Their antibody has been through affinity maturation",
+        "fit": "The antibody binds the toxin more tightly",
+        "marrow": "More long-lived plasma cells settle in the marrow",
+        "last": "Antibody stays high for months or years"
+      },
+      "variables": [
+        {
+          "id": "lag",
+          "name": "Time before antibody appears in the blood",
+          "answer": "down",
+          "chain": [
+            "mem",
+            "fast",
+            "lag"
+          ],
+          "why": "The first time, the few naïve B cells that fit had to be found, activated and expanded, which took 5 to 10 days. Memory B cells are more numerous and quicker to switch on, so antibody appears within 1 to 3 days."
+        },
+        {
+          "id": "peak",
+          "name": "Peak antibody level",
+          "answer": "up",
+          "chain": [
+            "mem",
+            "fast",
+            "many",
+            "peak"
+          ],
+          "why": "Far more memory cells respond, and they produce far more plasma cells, so the peak is often 10 to 100 times higher than in the primary response."
+        },
+        {
+          "id": "igg",
+          "name": "Share of the antibody that is IgG",
+          "answer": "up",
+          "chain": [
+            "mem",
+            "switched",
+            "igg"
+          ],
+          "why": "A primary response makes IgM first, then IgG. Memory B cells have already switched class, so the secondary response is mostly IgG from the start."
+        },
+        {
+          "id": "fit",
+          "name": "How tightly the antibody binds the toxin",
+          "answer": "up",
+          "chain": [
+            "mem",
+            "matured",
+            "fit"
+          ],
+          "why": "Memory B cells come from germinal centers, where cells with better-fitting antibody were selected. The booster recalls those cells, and they improve further."
+        },
+        {
+          "id": "duration",
+          "name": "How long antibody stays high",
+          "answer": "up",
+          "chain": [
+            "mem",
+            "many",
+            "marrow",
+            "last"
+          ],
+          "why": "After a primary response antibody falls within weeks. After a secondary response more plasma cells move to the bone marrow and keep releasing antibody, so the level stays high for months or years."
+        }
+      ]
+    },
+    {
+      "id": "tetanus-immune-globulin",
+      "title": "Borrowed antibody for a dirty wound",
+      "topic": "antibody-immunity",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "passive immunity leaves lasting protection",
+      "setup": "A man who was never vaccinated against tetanus gets a deep, dirty wound. He is given tetanus immune globulin: antibody against tetanus toxin collected from other people. Predict the changes over the next day, compared with before the injection.",
+      "start": "Ready-made antitoxin antibody is injected",
+      "steps": {
+        "blood": "Antitoxin reaches his blood and tissue fluid within hours",
+        "level": "Antitoxin in his blood rises at once",
+        "neut": "Antibody covers the part of the toxin that binds nerve endings",
+        "less": "Less toxin reaches his nerve endings",
+        "noag": "No antigen has selected any of his own B cells",
+        "nomem": "No memory B cells form"
+      },
+      "variables": [
+        {
+          "id": "antitoxin",
+          "name": "Antitoxin antibody in his blood",
+          "answer": "up",
+          "chain": [
+            "blood",
+            "level"
+          ],
+          "why": "Passive immunity works at once: the antibody was made by someone else, so there is no lag while his own B cells respond."
+        },
+        {
+          "id": "toxin-binding",
+          "name": "Tetanus toxin reaching his nerve endings",
+          "answer": "down",
+          "chain": [
+            "blood",
+            "neut",
+            "less"
+          ],
+          "why": "This is neutralization. Antibody bound to the toxin blocks the part that attaches to nerve endings, so it cannot act."
+        },
+        {
+          "id": "memory",
+          "name": "His memory B cells against tetanus toxin",
+          "answer": "none",
+          "chain": [
+            "noag",
+            "nomem"
+          ],
+          "why": "Borrowed antibody does not activate his own B cells, so no memory cells form. The antibody is cleared over weeks, which is why he is also given the vaccine to start active immunity."
+        }
+      ]
+    },
+    {
+      "id": "hiv-untreated",
+      "title": "Ten years of untreated HIV",
+      "theme": "HIV destroys helper T cells",
+      "topic": "immune-disorders",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 2,
+      "misconception": "HIV only weakens the response to HIV itself",
+      "setup": "A man has had untreated HIV infection for ten years. Predict the changes, compared with the year after his first, acute illness ended.",
+      "start": "HIV keeps infecting and killing CD4 cells",
+      "steps": {
+        "loss": "Helper T cells are lost faster than they are replaced",
+        "cd4": "The CD4 count falls toward or below 200 per microliter",
+        "nobhelp": "B cells get little helper T cell help",
+        "ab": "Weak antibody response to a new protein antigen",
+        "noctlhelp": "Cytotoxic T cells get little IL-2 and licensing",
+        "ctl": "Weak cytotoxic response to a new virus",
+        "opp": "Opportunistic infections such as Pneumocystis appear",
+        "noskin": "HIV does not infect the epidermis",
+        "skin": "The skin barrier is unchanged"
+      },
+      "variables": [
+        {
+          "id": "cd4",
+          "name": "CD4 count",
+          "answer": "down",
+          "chain": [
+            "loss",
+            "cd4"
+          ],
+          "why": "Infected helper T cells are killed by the virus and by cytotoxic T cells, and uninfected ones die in the constant immune activation. The count falls slowly, year after year."
+        },
+        {
+          "id": "vaccine-antibody",
+          "name": "Antibody response to a new protein vaccine",
+          "answer": "down",
+          "chain": [
+            "loss",
+            "cd4",
+            "nobhelp",
+            "ab"
+          ],
+          "why": "Most protein antigens are T cell-dependent: a B cell needs a helper T cell’s contact and cytokines to expand, switch class and make memory. With few helper T cells, the response is weak."
+        },
+        {
+          "id": "ctl-response",
+          "name": "Cytotoxic T cell response to a newly caught virus",
+          "answer": "down",
+          "chain": [
+            "loss",
+            "cd4",
+            "noctlhelp",
+            "ctl"
+          ],
+          "why": "Helper T cells supply IL-2 and license dendritic cells to activate cytotoxic T cells. Without that help, cytotoxic responses are weak too."
+        },
+        {
+          "id": "opportunistic",
+          "name": "Opportunistic infections",
+          "answer": "up",
+          "chain": [
+            "loss",
+            "cd4",
+            "noctlhelp",
+            "ctl",
+            "opp"
+          ],
+          "why": "With both arms of adaptive immunity failing, microbes that rarely trouble healthy people cause disease. A CD4 count below 200 or one of these defining illnesses marks AIDS."
+        },
+        {
+          "id": "skin",
+          "name": "Barrier function of intact skin",
+          "answer": "none",
+          "chain": [
+            "noskin",
+            "skin"
+          ],
+          "why": "HIV infects cells that carry CD4. The keratinized layers of the skin are not among them, so this first line of defense still works."
+        }
+      ]
+    },
+    {
+      "id": "hiv-acute-l4",
+      "title": "The first months of HIV infection",
+      "topic": "immune-disorders",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "antibodies are what bring HIV down after the first weeks",
+      "setup": "A woman is infected with HIV and is not yet diagnosed or treated. Follow her blood through the first months.",
+      "stages": [
+        {
+          "id": "acute",
+          "label": "About two weeks after infection",
+          "prompt": "About two weeks after infection, compared with before it.",
+          "start": "HIV enters CD4 cells and copies itself",
+          "steps": {
+            "explode": "The virus multiplies explosively with no adaptive response yet",
+            "viral": "HIV in the blood soars",
+            "kill": "Infected helper T cells die",
+            "cd4": "The CD4 count dips",
+            "lag": "B cells have not yet expanded and released antibody",
+            "test": "An antibody test is still negative: the window period"
+          },
+          "variables": [
+            {
+              "id": "viral-load",
+              "name": "HIV in the blood",
+              "answer": "up",
+              "chain": [
+                "explode",
+                "viral"
+              ],
+              "why": "In the first weeks nothing specific is yet acting against the virus, so it multiplies explosively, often with a flu-like illness. She is highly infectious."
+            },
+            {
+              "id": "cd4",
+              "name": "CD4 count",
+              "answer": "down",
+              "chain": [
+                "explode",
+                "kill",
+                "cd4"
+              ],
+              "why": "HIV binds CD4 and kills the helper T cells it infects, so the count dips."
+            },
+            {
+              "id": "antibody",
+              "name": "Antibody against HIV in the blood",
+              "answer": "none",
+              "chain": [
+                "lag",
+                "test"
+              ],
+              "why": "A primary antibody response needs time for clonal selection and expansion. Before seroconversion an antibody test can be negative even though she is infected."
+            }
+          ]
+        },
+        {
+          "id": "months",
+          "label": "Three months later",
+          "prompt": "Three months after infection, compared with the peak of the acute phase.",
+          "start": "Cytotoxic T cells against HIV have expanded",
+          "steps": {
+            "ctl": "CD8 cytotoxic T cells kill infected cells showing HIV peptides",
+            "viral": "HIV in the blood falls to a lower, steady level",
+            "recover": "Fewer helper T cells are being killed",
+            "cd4": "The CD4 count partly recovers",
+            "bcells": "B cells have expanded and plasma cells release antibody",
+            "sero": "Antibody becomes detectable: seroconversion",
+            "escape": "The virus mutates around the antibodies"
+          },
+          "variables": [
+            {
+              "id": "viral-load",
+              "name": "HIV in the blood",
+              "answer": "down",
+              "chain": [
+                "ctl",
+                "viral"
+              ],
+              "why": "The fall comes mainly from CD8 cytotoxic T cells killing infected cells before they release new virus. It never reaches zero: the virus hides silently in some memory T cells."
+            },
+            {
+              "id": "cd4",
+              "name": "CD4 count",
+              "answer": "up",
+              "chain": [
+                "ctl",
+                "viral",
+                "recover",
+                "cd4"
+              ],
+              "why": "With less virus, fewer helper T cells are killed, so the count rebounds partway. It then falls slowly for years without treatment."
+            },
+            {
+              "id": "antibody",
+              "name": "Antibody against HIV in the blood",
+              "answer": "up",
+              "chain": [
+                "bcells",
+                "sero",
+                "escape"
+              ],
+              "why": "Antibody appears within a few weeks to 3 months, which is why the test turns positive. It does little to control HIV, because the error-prone copying lets the virus change the parts antibodies bind."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anaphylaxis",
+      "title": "Anaphylaxis after eating peanut",
+      "theme": "anaphylaxis",
+      "topic": "immune-disorders",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "anaphylaxis is just a large skin reaction",
+      "setup": "A man sensitized to peanut eats a cookie that contains it. Within minutes, mast cells and basophils throughout his body degranulate. Predict the changes, compared with just before.",
+      "start": "Peanut protein cross-links IgE on mast cells everywhere",
+      "steps": {
+        "release": "Histamine and leukotrienes are released throughout the body",
+        "dil": "Arterioles and veins dilate",
+        "tpr": "TPR falls",
+        "pool": "Blood pools in widened veins",
+        "leak": "Capillaries and venules leak plasma",
+        "vol": "Plasma volume falls",
+        "vr": "Venous return falls",
+        "co": "Less filling: cardiac output falls",
+        "map": "MAP = CO × TPR falls: distributive shock",
+        "baro": "Baroreceptors fire less; sympathetic output rises",
+        "hr": "Heart rate rises",
+        "smooth": "Smooth muscle of the small airways contracts",
+        "air": "The airways narrow: wheezing"
+      },
+      "variables": [
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "down",
+          "chain": [
+            "release",
+            "dil",
+            "tpr"
+          ],
+          "why": "Histamine and leukotrienes relax the smooth muscle of arterioles everywhere at once. Wider arterioles mean lower resistance."
+        },
+        {
+          "id": "plasma",
+          "name": "Plasma volume",
+          "answer": "down",
+          "chain": [
+            "release",
+            "leak",
+            "vol"
+          ],
+          "why": "The same mediators make capillaries and venules leaky, and plasma pours into the tissues. In a severe reaction a large share can leave the vessels within minutes."
+        },
+        {
+          "id": "venous-return",
+          "name": "Venous return",
+          "answer": "down",
+          "chain": [
+            "release",
+            "dil",
+            "pool",
+            "leak",
+            "vol",
+            "vr"
+          ],
+          "why": "Blood pools in the widened veins and plasma leaks away, so less blood returns to the heart."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "down",
+          "chain": [
+            "release",
+            "dil",
+            "tpr",
+            "pool",
+            "vr",
+            "co",
+            "map"
+          ],
+          "why": "Both terms of MAP = CO × TPR fall: TPR from vasodilation and cardiac output from low venous return. This is distributive shock with a hypovolemic part from the leak."
+        },
+        {
+          "id": "heart-rate",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "release",
+            "dil",
+            "tpr",
+            "map",
+            "baro",
+            "hr"
+          ],
+          "why": "The fall in MAP reduces baroreceptor firing, so the brainstem raises sympathetic output and lowers parasympathetic output, and the heart speeds up."
+        },
+        {
+          "id": "airways",
+          "name": "Diameter of the small airways",
+          "answer": "down",
+          "chain": [
+            "release",
+            "smooth",
+            "air"
+          ],
+          "why": "Histamine and leukotrienes contract airway smooth muscle and thicken mucus, so the airways narrow and he wheezes. This reaches past the immune system to breathing."
+        }
+      ]
+    },
+    {
+      "id": "epinephrine-anaphylaxis",
+      "title": "Epinephrine for anaphylaxis",
+      "topic": "immune-disorders",
+      "core": [
+        "communication",
+        "homeostasis"
+      ],
+      "level": 3,
+      "misconception": "an antihistamine is the treatment for anaphylaxis",
+      "setup": "Minutes into the same man’s anaphylaxis, 0.3 mg of epinephrine from an auto-injector is given into his outer thigh muscle. Predict the changes over the next several minutes, compared with just before the injection.",
+      "start": "Epinephrine binds adrenergic receptor proteins",
+      "steps": {
+        "a1": "Alpha-1: smooth muscle of arterioles and veins contracts",
+        "tpr": "TPR rises",
+        "vr": "Venous return rises",
+        "leak": "Less plasma leaks from capillaries",
+        "b1": "Beta-1: heart rate and contractility rise",
+        "co": "Cardiac output rises",
+        "map": "MAP rises",
+        "b2": "Beta-2: airway smooth muscle relaxes",
+        "air": "The airways widen",
+        "camp": "Beta-2 raises cyclic AMP in mast cells",
+        "med": "Mast cells release fewer mediators"
+      },
+      "variables": [
+        {
+          "id": "tpr",
+          "name": "Total peripheral resistance",
+          "answer": "up",
+          "chain": [
+            "a1",
+            "tpr"
+          ],
+          "why": "Through alpha-1 receptor proteins, epinephrine contracts the smooth muscle of arterioles, reversing the vasodilation."
+        },
+        {
+          "id": "co",
+          "name": "Cardiac output",
+          "answer": "up",
+          "chain": [
+            "a1",
+            "vr",
+            "b1",
+            "co"
+          ],
+          "why": "Veins constrict and return more blood, and through beta-1 receptor proteins the heart beats faster and more forcefully."
+        },
+        {
+          "id": "map",
+          "name": "Mean arterial pressure",
+          "answer": "up",
+          "chain": [
+            "a1",
+            "tpr",
+            "vr",
+            "b1",
+            "co",
+            "map"
+          ],
+          "why": "Both terms of MAP = CO × TPR rise. An antihistamine cannot do this: it blocks only histamine, not leukotrienes, and acts slowly."
+        },
+        {
+          "id": "leak",
+          "name": "Plasma leak into the tissues",
+          "answer": "down",
+          "chain": [
+            "a1",
+            "leak"
+          ],
+          "why": "Constricted vessels leak less, so the swollen lips, tongue and throat shrink."
+        },
+        {
+          "id": "airways",
+          "name": "Diameter of the small airways",
+          "answer": "up",
+          "chain": [
+            "b2",
+            "air"
+          ],
+          "why": "Through beta-2 receptor proteins, airway smooth muscle relaxes and the airways widen."
+        },
+        {
+          "id": "mediators",
+          "name": "Further mediator release by mast cells",
+          "answer": "down",
+          "chain": [
+            "b2",
+            "camp",
+            "med"
+          ],
+          "why": "Beta-2 stimulation raises cyclic AMP inside mast cells, which reduces further release of histamine and leukotrienes."
+        }
+      ]
+    },
+    {
+      "id": "myasthenia-effort",
+      "title": "Myasthenia gravis and a sustained upward gaze",
+      "topic": "immune-disorders",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "myasthenia gravis damages the nerves to the muscles",
+      "setup": "A woman with myasthenia gravis looks up at the ceiling and holds her gaze for a minute. Compare the last few seconds with the same test in a healthy person.",
+      "start": "IgG binds acetylcholine receptor proteins at the end plate",
+      "steps": {
+        "loss": "Receptor proteins are taken in and destroyed; complement damages the folds",
+        "few": "Fewer acetylcholine receptor proteins at the end plate",
+        "epp": "Each release of acetylcholine gives a smaller end plate potential",
+        "rep": "With repeated firing, each impulse releases a little less acetylcholine",
+        "thr": "More end plate potentials fall below threshold",
+        "weak": "Fewer fibers contract: the eyelid droops",
+        "nerve": "The axon terminals are not attacked",
+        "ach": "Acetylcholine release per impulse matches a healthy person’s"
+      },
+      "variables": [
+        {
+          "id": "receptors",
+          "name": "Acetylcholine receptor proteins at each end plate",
+          "answer": "down",
+          "chain": [
+            "loss",
+            "few"
+          ],
+          "why": "Antibody cross-links the receptor proteins so the muscle cell takes them in and breaks them down faster, and complement damages the end plate."
+        },
+        {
+          "id": "epp",
+          "name": "Size of each end plate potential",
+          "answer": "down",
+          "chain": [
+            "loss",
+            "few",
+            "epp"
+          ],
+          "why": "The same amount of acetylcholine finds fewer receptor proteins to open, so less current flows in."
+        },
+        {
+          "id": "lid",
+          "name": "Strength of the eyelid-raising muscle",
+          "answer": "down",
+          "chain": [
+            "loss",
+            "few",
+            "epp",
+            "rep",
+            "thr",
+            "weak"
+          ],
+          "why": "Normally the end plate potential is far above threshold. Hers starts closer to it, so as release falls with repeated firing, more fibers fail to reach threshold and the eyelid droops. The weakness is fatigable."
+        },
+        {
+          "id": "ach",
+          "name": "Acetylcholine released per nerve impulse",
+          "answer": "none",
+          "chain": [
+            "nerve",
+            "ach"
+          ],
+          "why": "The antibodies target the receptor proteins on the muscle side. The axon terminal releases acetylcholine normally; only its effect is smaller."
+        }
+      ]
     }
   ]
 }

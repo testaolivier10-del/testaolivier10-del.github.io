@@ -2220,6 +2220,97 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "fever-set-point",
+      "title": "Fever: the set point is raised",
+      "topic": "innate-immunity",
+      "map": "Fever: raising the temperature set point",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "You wake with a sore throat. Macrophages fighting the infection release interleukin-1, and prostaglandin E2 in your hypothalamus raises the set point from 36.6 to 39 °C. Your hands go pale and cold, you shiver under two blankets, and over the next hour your temperature climbs to 39 °C and then holds there.",
+      "slots": {
+        "stimulus": {
+          "text": "Pyrogens raise the set point, so body temperature is now below it",
+          "short": "Temperature now below the set point",
+          "why": "The stimulus is the gap between the regulated variable and its set point. Your temperature has not changed; the target has moved up, which opens the same gap cold weather would."
+        },
+        "sensor": {
+          "text": "Temperature-sensing nerve endings in the skin and temperature-sensitive neurons in the hypothalamus",
+          "short": "Skin and hypothalamic thermosensors",
+          "why": "These sensory receptors report the actual temperature, exactly as they do on any day. They work normally in a fever."
+        },
+        "afferent": {
+          "text": "Sensory nerves carrying temperature signals to the hypothalamus",
+          "short": "Sensory nerves to the hypothalamus",
+          "why": "The afferent pathway carries information toward the control center. Signals from the skin travel on sensory nerves; the hypothalamic neurons sense blood temperature where they sit."
+        },
+        "control": {
+          "text": "The hypothalamus, comparing body temperature with its raised set point",
+          "short": "Hypothalamus (raised set point)",
+          "why": "The control center compares the reading with the set point. Prostaglandin E2 has raised that set point, so a normal 36.6 °C now reads as too cold."
+        },
+        "efferent": {
+          "text": "Sympathetic nerves to skin blood vessels; motor nerves to skeletal muscles",
+          "short": "Sympathetic and motor nerves",
+          "why": "The efferent pathway carries commands away from the control center: sympathetic fibers to the skin arterioles and somatic motor neurons to the muscles that shiver."
+        },
+        "effector": {
+          "text": "Skin arterioles (constrict) and skeletal muscles (shiver)",
+          "short": "Skin arterioles; skeletal muscles",
+          "why": "The smooth muscle of skin arterioles contracts, keeping warm blood away from the surface, and skeletal muscles contract in rapid small bursts, releasing heat."
+        },
+        "response": {
+          "text": "Less heat lost and more heat made, so temperature rises to the new set point and the gap closes",
+          "short": "Temperature rises to the new set point",
+          "why": "The response opposes the stimulus: the gap was \"too cold for the set point\", and warming closes it. Once temperature reaches 39 °C, the chills stop."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Sweat glands release sweat",
+          "why": "Sweating removes heat. It runs when temperature is above the set point, as it is when the fever breaks, not while temperature is climbing toward a raised set point."
+        },
+        {
+          "text": "The hypothalamus loses control, so temperature drifts upward",
+          "why": "Control is intact. Every part of the loop works normally; it is steering toward a higher target, which is why fever-reducing drugs that lower the set point work."
+        },
+        {
+          "text": "Skin arterioles dilate to carry heat to the surface",
+          "why": "Dilation sheds heat. During the rising phase the arterioles constrict, which is why the skin looks pale and the hands feel cold."
+        },
+        {
+          "text": "Warm-sensitive nerve endings fire faster as the fever begins",
+          "why": "At the start your temperature is still normal, so nothing warms these endings. The change is in the set point, not in what the sensors detect."
+        }
+      ],
+      "classify": "The response (warming) closes the gap between body temperature and the set point, so this is negative feedback, just around a higher set point. Once the gap closes, the heat-gain responses ease off, and temperature holds at the new value instead of spiraling upward as it would in positive feedback.",
+      "failure": {
+        "part": "control",
+        "q": "At the height of the fever, with temperature steady at 39 °C, you take a drug that blocks prostaglandin synthesis, and the set point falls back to 36.6 °C. What happens next?",
+        "options": [
+          {
+            "text": "Skin vessels dilate and you sweat until temperature falls back toward 36.6 °C",
+            "why": "Right. Temperature is now above the set point, so the same loop runs its heat-loss responses. This is the flushed, sweaty feeling of a fever breaking."
+          },
+          {
+            "text": "Temperature stays at 39 °C, because the drug does not act on the skin or the sweat glands",
+            "why": "The drug does not need to act on the effectors. It changes the set point, and the intact loop then moves temperature to match it."
+          },
+          {
+            "text": "You shiver harder, because the drug lowers heat production",
+            "why": "With temperature above the set point, the hypothalamus stops heat-gain responses such as shivering."
+          },
+          {
+            "text": "Nothing changes until the infection is fully cleared",
+            "why": "The set point follows prostaglandin E2, not the microbes directly. Blocking its synthesis lowers the set point even while the infection is still present."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

@@ -42,7 +42,7 @@
   "check": ["anp-leukocytes-platelets-1", "anp-leukocytes-platelets-4", "anp-leukocytes-platelets-6", "anp-leukocytes-platelets-8", "anp-leukocytes-platelets-12", "anp-leukocytes-platelets-15", "anp-leukocytes-platelets-16"],
   "summary": "<p>Leukocytes keep their nucleus and organelles, number about 4,500–11,000 per µL, and work mostly outside the blood, squeezing through capillary walls toward chemical signals. Granulocytes have visible granules: neutrophils (50–70%, many-lobed nucleus, first to engulf bacteria), eosinophils (red-orange granules, attack parasitic worms, gather in allergies) and basophils (dark granules of histamine). Agranulocytes lack visible granules: lymphocytes (large round nucleus; specific immunity, including cells that release antibodies) and monocytes (largest, kidney-shaped nucleus; become macrophages). An antigen is a molecule the immune system recognizes as a specific target; an antibody is a Y-shaped protein that binds one antigen. The differential count gives each type's share; leukocytosis and leukopenia are high and low totals. Leukemia is cancer of blood-forming cells in the marrow; lymphoma is cancer of lymphocytes in lymph nodes. Platelets (thrombocytes) are nucleus-free fragments of megakaryocytes, 150,000–450,000 per µL, living 7–10 days, with granules and contractile proteins that let them seal breaks in vessel walls.</p>",
   "connections": [
-    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases and sepsis" },
+    { "href": "/nremt/study-notes.html#chapter-24", "label": "NREMT: Infectious diseases" },
     { "href": "/nremt/study-notes.html#chapter-28", "label": "NREMT: Hematologic and renal emergencies" }
   ]
 }

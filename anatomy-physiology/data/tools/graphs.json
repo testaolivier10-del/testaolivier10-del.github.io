@@ -14868,6 +14868,950 @@
      }
     }
    ]
+  },
+  {
+   "id": "antibody-response",
+   "title": "Primary and secondary antibody responses",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "intro": "Antibody against one antigen in the serum of a person exposed to it at day 0 and again at day 50. IgM and IgG are drawn separately. The gap between exposures is shortened to fit the page; memory lasts years. Values are typical, not from one person.",
+   "alt": "Antibody level in relative units over 80 days. After the first exposure at day 0 nothing appears for about 5 days. IgM rises from about day 6 to a small peak of about 6 at day 10 and falls away by day 30. IgG rises from about day 8 to a peak of about 8 at day 14 and falls to about 1 by day 50. After the second exposure at day 50, IgG starts rising within 1 to 2 days, climbs steeply to about 100 by day 59 and is still about 75 at day 80. IgM makes only a small bump of about 3 after the second exposure.",
+   "x": {
+    "min": 0,
+    "max": 80,
+    "label": "Time after the first exposure",
+    "unit": "days",
+    "ticks": [
+     0,
+     10,
+     20,
+     30,
+     40,
+     50,
+     60,
+     70,
+     80
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.3,
+     "y": {
+      "min": 0,
+      "max": 110,
+      "label": "Antibody level in serum",
+      "unit": "relative units",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80,
+       100
+      ]
+     },
+     "series": [
+      {
+       "id": "igg",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         7,
+         0
+        ],
+        [
+         8,
+         0.5
+        ],
+        [
+         10,
+         3
+        ],
+        [
+         12,
+         6
+        ],
+        [
+         14,
+         8
+        ],
+        [
+         16,
+         7
+        ],
+        [
+         20,
+         5
+        ],
+        [
+         25,
+         3
+        ],
+        [
+         30,
+         2
+        ],
+        [
+         40,
+         1.2
+        ],
+        [
+         50,
+         1
+        ],
+        [
+         51,
+         1.5
+        ],
+        [
+         52,
+         5
+        ],
+        [
+         53,
+         20
+        ],
+        [
+         54,
+         42
+        ],
+        [
+         55,
+         64
+        ],
+        [
+         57,
+         90
+        ],
+        [
+         59,
+         100
+        ],
+        [
+         62,
+         98
+        ],
+        [
+         66,
+         92
+        ],
+        [
+         70,
+         86
+        ],
+        [
+         75,
+         80
+        ],
+        [
+         80,
+         75
+        ]
+       ],
+       "label": "IgG",
+       "labelAt": [
+        63,
+        104
+       ],
+       "anchor": "start"
+      },
+      {
+       "id": "igm",
+       "cls": "lo",
+       "dash": true,
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         0
+        ],
+        [
+         5,
+         0
+        ],
+        [
+         6,
+         0.5
+        ],
+        [
+         8,
+         3
+        ],
+        [
+         10,
+         6
+        ],
+        [
+         12,
+         5
+        ],
+        [
+         14,
+         3
+        ],
+        [
+         18,
+         1.5
+        ],
+        [
+         25,
+         0.5
+        ],
+        [
+         35,
+         0
+        ],
+        [
+         50,
+         0
+        ],
+        [
+         51,
+         0
+        ],
+        [
+         53,
+         1.5
+        ],
+        [
+         55,
+         3
+        ],
+        [
+         58,
+         2
+        ],
+        [
+         62,
+         1
+        ],
+        [
+         70,
+         0.3
+        ],
+        [
+         80,
+         0.2
+        ]
+       ],
+       "label": "IgM",
+       "labelAt": [
+        3,
+        12
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 0,
+     "label": "first exposure"
+    },
+    {
+     "x": 50,
+     "label": "second exposure"
+    }
+   ],
+   "regions": [
+    {
+     "id": "lag",
+     "x0": 0,
+     "x1": 6,
+     "label": "lag"
+    },
+    {
+     "id": "primary",
+     "x0": 6,
+     "x1": 30,
+     "label": "primary response"
+    },
+    {
+     "id": "secondary",
+     "x0": 50,
+     "x1": 80,
+     "label": "secondary response"
+    }
+   ],
+   "questions": [
+    {
+     "id": "primary-peak-day",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "On about which day after the first exposure does IgG reach its primary peak?",
+     "answer": 14,
+     "tol": 2,
+     "unit": "days",
+     "show": {
+      "x": 14,
+      "y": 8
+     },
+     "why": "About day 14. The few naïve B cells that fit had to be selected, expand into clones and become plasma cells, so a primary response peaks one to two weeks after exposure."
+    },
+    {
+     "id": "secondary-peak",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the peak IgG level after the second exposure.",
+     "answer": 100,
+     "tol": 5,
+     "unit": "relative units",
+     "show": {
+      "x": 59,
+      "y": 100
+     },
+     "why": "About 100 relative units, reached about 9 days after the second exposure. Memory B cells far outnumber the original naïve cells and produce many more plasma cells."
+    },
+    {
+     "id": "fold-rise",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "About how many times higher is the secondary IgG peak than the primary IgG peak?",
+     "answer": 12.5,
+     "tol": 2.5,
+     "unit": "times",
+     "why": "About 100 ÷ 8 ≈ 12 times. Secondary peaks are often 10 to 100 times higher than primary ones; this graph sits at the low end of that range."
+    },
+    {
+     "id": "lag-phase",
+     "type": "phase",
+     "level": "recall",
+     "diff": 1,
+     "q": "Where is the lag of the primary response, when the antigen is present but no antibody has appeared yet?",
+     "options": [
+      "Days 0 to about 6",
+      "Days 6 to 14",
+      "Days 50 to 52",
+      "Days 60 to 80"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "lag"
+     },
+     "why": {
+      "correct": "For about the first 5 days nothing is measurable. The rare naïve B cells that fit are being selected, helped by helper T cells and expanded, and antibody appears only once plasma cells form.",
+      "options": [
+       "Right: no antibody is detectable for the first 5 or so days.",
+       "By then antibody is rising; this is the primary response itself, first IgM, then IgG.",
+       "That is the much shorter lag of the secondary response, only 1 to 2 days here.",
+       "This is the secondary response staying high, not a lag."
+      ]
+     }
+    },
+    {
+     "id": "first-class",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "During which stretch is IgM the main antibody class?",
+     "options": [
+      "About days 6 to 11",
+      "About days 14 to 30",
+      "About days 52 to 60",
+      "Throughout both responses"
+     ],
+     "correct": 0,
+     "highlight": {
+      "x0": 6,
+      "x1": 11,
+      "label": "IgM leads"
+     },
+     "why": {
+      "correct": "Every B cell starts out making IgM. Class switching to IgG takes a few more days, so IgM leads early in the primary response. Finding IgM against a microbe therefore points to a current or recent infection.",
+      "options": [
+       "Right: IgM rises and peaks first, then IgG overtakes it.",
+       "By then IgG has overtaken IgM, and IgM is falling away.",
+       "Memory B cells have already switched class, so the secondary response is mostly IgG.",
+       "IgM leads only early in the first response; after that IgG dominates."
+      ]
+     }
+    },
+    {
+     "id": "new-antigen",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Suppose that at day 50 the person meets a different antigen, one never met before, instead of the same one again. What does IgG against the new antigen do?",
+     "options": [
+      "A slow, small rise like the first response",
+      "The same fast, steep rise as the secondary response",
+      "A fast rise to a level halfway between the two peaks",
+      "No rise at all, because the immune system is still busy"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "new-igg",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          50,
+          0
+         ],
+         [
+          57,
+          0
+         ],
+         [
+          58,
+          0.5
+         ],
+         [
+          60,
+          3
+         ],
+         [
+          62,
+          6
+         ],
+         [
+          64,
+          8
+         ],
+         [
+          66,
+          7
+         ],
+         [
+          70,
+          5
+         ],
+         [
+          75,
+          3
+         ],
+         [
+          80,
+          2
+         ]
+        ],
+        "label": "IgG to a new antigen",
+        "labelAt": [
+         62,
+         22
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Memory is specific. The memory B cells from the first exposure fit only the first antigen, so a new antigen must start from the few naïve cells that fit it: a lag of about a week and a low peak.",
+      "options": [
+       "Right: a new antigen gets a primary response, whatever else the body has met.",
+       "A fast, steep rise needs memory cells for that very antigen, and none exist yet.",
+       "Memory for one antigen gives no partial head start against another.",
+       "Many different clones respond at once; meeting one antigen does not stop a response to another."
+      ]
+     }
+    },
+    {
+     "id": "sugar-vaccine",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "A one-year-old gets two doses of a vaccine made only of a bacterial capsule sugar, a T cell-independent antigen, at day 0 and day 50. How does the response to the second dose compare with the graph?",
+     "options": [
+      "Mostly IgM and small, with little boost from the first dose",
+      "Larger and faster than the secondary response shown",
+      "The same as the secondary response shown",
+      "Mostly IgE, because sugars switch B cells to IgE"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "ti-igm",
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          50,
+          0
+         ],
+         [
+          53,
+          0
+         ],
+         [
+          54,
+          1
+         ],
+         [
+          56,
+          3
+         ],
+         [
+          58,
+          4
+         ],
+         [
+          61,
+          3
+         ],
+         [
+          66,
+          1.5
+         ],
+         [
+          72,
+          0.5
+         ],
+         [
+          80,
+          0.2
+         ]
+        ],
+        "label": "capsule sugar alone: mostly IgM",
+        "labelAt": [
+         62,
+         22
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "Repeating sugar chains cross-link many B cell receptor proteins and switch B cells on without helper T cells. Without that help there is little class switching, little improvement of fit and few memory cells, and children under about 2 respond poorly anyway. That is why capsule sugars are attached to a protein in conjugate vaccines.",
+      "options": [
+       "Right: without helper T cell help, the second dose looks much like the first.",
+       "A bigger, faster response needs memory B cells, which T cell-independent antigens barely make.",
+       "The response on the graph depends on helper T cells, which a sugar alone does not recruit.",
+       "Switching to IgE needs helper T cell contact and IL-4; sugars alone give mostly IgM."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "hiv-course",
+   "title": "The course of untreated HIV infection",
+   "topic": "immune-disorders",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "intro": "CD4 count and HIV in the blood over the years of an untreated infection. The first weeks are stretched out on the left; the rest of the axis is in years. The curves are schematic: timing varies widely between people.",
+   "alt": "Two stacked graphs. The time axis runs from infection through 2 weeks, 6 weeks, 3 months, 6 months, then 1, 3, 5, 7, 9 and 11 years. Top: CD4 count falls from about 1,000 per microliter to about 600 at 2 weeks, recovers partway to about 800 by 6 months, then falls steadily to about 520 at 5 years and crosses 200 at about 10 years. Bottom: HIV in the blood, on a log scale, soars to about 10 million copies per mL in the first weeks, falls to a steady level of about 30,000 by 6 months, then slowly climbs again in later years.",
+   "x": {
+    "min": 0,
+    "max": 10,
+    "label": "Time since infection",
+    "cats": [
+     "0",
+     "2 wk",
+     "6 wk",
+     "3 mo",
+     "6 mo",
+     "1 yr",
+     "3 yr",
+     "5 yr",
+     "7 yr",
+     "9 yr",
+     "11 yr"
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.1,
+     "y": {
+      "min": 0,
+      "max": 1200,
+      "label": "CD4 count",
+      "unit": "cells/µL",
+      "ticks": [
+       0,
+       200,
+       400,
+       600,
+       800,
+       1000,
+       1200
+      ]
+     },
+     "series": [
+      {
+       "id": "cd4",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         1000
+        ],
+        [
+         0.5,
+         800
+        ],
+        [
+         1,
+         600
+        ],
+        [
+         2,
+         680
+        ],
+        [
+         3,
+         770
+        ],
+        [
+         4,
+         800
+        ],
+        [
+         5,
+         770
+        ],
+        [
+         6,
+         650
+        ],
+        [
+         7,
+         520
+        ],
+        [
+         8,
+         390
+        ],
+        [
+         9,
+         260
+        ],
+        [
+         9.5,
+         200
+        ],
+        [
+         10,
+         140
+        ]
+       ],
+       "label": "CD4 count",
+       "labelAt": [
+        5.2,
+        900
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 200,
+       "label": "below 200: AIDS"
+      }
+     ]
+    },
+    {
+     "h": 1,
+     "y": {
+      "min": 1,
+      "max": 8,
+      "label": "HIV in the blood",
+      "unit": "log10 copies/mL",
+      "ticks": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ]
+     },
+     "series": [
+      {
+       "id": "virus",
+       "cls": "hi",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         1
+        ],
+        [
+         0.5,
+         4
+        ],
+        [
+         1,
+         6.6
+        ],
+        [
+         1.4,
+         7
+        ],
+        [
+         2,
+         6
+        ],
+        [
+         3,
+         4.9
+        ],
+        [
+         4,
+         4.5
+        ],
+        [
+         5,
+         4.5
+        ],
+        [
+         6,
+         4.6
+        ],
+        [
+         7,
+         4.7
+        ],
+        [
+         8,
+         4.9
+        ],
+        [
+         9,
+         5.2
+        ],
+        [
+         10,
+         5.8
+        ]
+       ],
+       "label": "HIV in the blood",
+       "labelAt": [
+        2.2,
+        7.2
+       ],
+       "anchor": "start"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 1.3,
+       "label": "limit of detection"
+      }
+     ]
+    }
+   ],
+   "regions": [
+    {
+     "id": "acute",
+     "x0": 0,
+     "x1": 2.5,
+     "label": "acute"
+    },
+    {
+     "id": "chronic",
+     "x0": 2.5,
+     "x1": 9.5,
+     "label": "chronic phase"
+    },
+    {
+     "id": "aids",
+     "x0": 9.5,
+     "x1": 10.5,
+     "label": "AIDS"
+    }
+   ],
+   "questions": [
+    {
+     "id": "cd4-five-years",
+     "type": "value",
+     "level": "recall",
+     "diff": 1,
+     "q": "Read the CD4 count five years after infection.",
+     "answer": 520,
+     "tol": 40,
+     "unit": "cells/µL",
+     "show": {
+      "x": 7,
+      "y": 520
+     },
+     "why": "About 520 per microliter, within or just below the normal range of about 500 to 1,500. Most people feel well at this stage, although the count is falling year after year."
+    },
+    {
+     "id": "peak-virus",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the peak of HIV in the blood during the acute phase, in log10 copies per mL.",
+     "answer": 7,
+     "tol": 0.3,
+     "unit": "log10 copies/mL",
+     "show": {
+      "x": 1.4,
+      "y": 7,
+      "panel": 1
+     },
+     "why": "About 7, which is 10 to the 7th: about 10 million copies per mL. In the first weeks nothing specific is acting against the virus yet, so it multiplies explosively and the person is highly infectious."
+    },
+    {
+     "id": "window",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "During which stretch can an antibody test be negative even though the person is infected and highly infectious?",
+     "options": [
+      "The first weeks to 3 months",
+      "Between 1 and 5 years",
+      "After the CD4 count falls below 200",
+      "At no point: the test is always positive once infected"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "acute"
+     },
+     "why": {
+      "correct": "This is the window period before seroconversion. A primary antibody response takes time, so antibody usually becomes detectable within a few weeks to 3 months, while virus in the blood is at its highest.",
+      "options": [
+       "Right: before seroconversion the antibody test can miss the infection.",
+       "By then antibody has long been present; the test is positive.",
+       "Antibody is still present in AIDS; the test stays positive.",
+       "Antibody takes weeks to appear, so an early test can be falsely negative."
+      ]
+     }
+    },
+    {
+     "id": "what-controls",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 3,
+     "q": "Where is the virus held at a lower, steady level, and what mainly holds it there?",
+     "options": [
+      "The chronic phase; cytotoxic T cells kill infected cells",
+      "The chronic phase; antibodies neutralize the free virus",
+      "The acute phase; helper T cells kill the virus directly",
+      "The AIDS stretch; the virus runs out of cells to infect"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "chronic"
+     },
+     "why": {
+      "correct": "CD8 cytotoxic T cells kill infected cells before they release new virus, bringing the level down after the acute peak and holding it for years. They never clear it, because silent virus hides in some memory T cells.",
+      "options": [
+       "Right: the fall and the steady level come mainly from cytotoxic T cells.",
+       "Antibodies appear, but the error-prone virus mutates around them; they are not what controls it.",
+       "Helper T cells kill nothing themselves, and in the acute phase the virus is rising, not held steady.",
+       "In AIDS the virus rises again as cytotoxic responses fail without helper T cells."
+      ]
+     }
+    },
+    {
+     "id": "treatment",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Combination antiretroviral therapy is started five years after infection. How do the two curves change?",
+     "options": [
+      "HIV falls below detection and the CD4 count climbs",
+      "HIV falls below detection, but the CD4 count keeps falling",
+      "The CD4 count climbs, but HIV in the blood is unchanged",
+      "Both curves stay the same; the drugs act only on latent virus"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "cd4-treated",
+        "panel": 0,
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          7,
+          520
+         ],
+         [
+          7.5,
+          590
+         ],
+         [
+          8,
+          650
+         ],
+         [
+          9,
+          700
+         ],
+         [
+          10,
+          730
+         ]
+        ],
+        "label": "on treatment",
+        "labelAt": [
+         8.1,
+         780
+        ],
+        "anchor": "start"
+       },
+       {
+        "id": "virus-treated",
+        "panel": 1,
+        "cls": "o2",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          7,
+          4.7
+         ],
+         [
+          7.2,
+          3
+         ],
+         [
+          7.5,
+          1.3
+         ],
+         [
+          8,
+          1.2
+         ],
+         [
+          10,
+          1.2
+         ]
+        ],
+        "label": "on treatment",
+        "labelAt": [
+         8.1,
+         2
+        ],
+        "anchor": "start"
+       }
+      ]
+     },
+     "why": {
+      "correct": "The drugs block viral enzymes, so new cells stop being infected and HIV in the blood falls below detection. With fewer helper T cells being killed, the CD4 count recovers. The drugs cannot reach silent DNA inside memory T cells, so they control HIV without curing it.",
+      "options": [
+       "Right: virus falls and helper T cells recover.",
+       "With the virus suppressed, helper T cells are no longer being destroyed, so the count recovers.",
+       "The CD4 count rises because the virus falls; the two move together.",
+       "The drugs block viral enzymes in active infection; latent virus is exactly what they cannot reach."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

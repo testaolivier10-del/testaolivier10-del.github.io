@@ -6782,6 +6782,963 @@
    "front": "Why do anabolic steroids shrink the testes?",
    "back": "High androgen feeds back to suppress GnRH, LH and FSH, so the testes lose their drive and sperm production falls.",
    "why": "The same negative feedback can leave the user with low testosterone for months after stopping."
+  },
+  {
+   "id": "lym-daily-volume",
+   "topic": "lymphatic-system",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "About how much fluid enters lymph each day, and how much reaches the veins through the lymphatic ducts?",
+   "back": "About 8 L enters lymph in the tissues; lymph nodes return up to half straight to the blood, so about 3 to 4 L reaches the veins through the ducts. The classic exam answer for lymph returned to the blood is about 3 L a day.",
+   "why": "Capillaries filter along almost their whole length and reabsorb little; without lymphatic return, blood volume would fall and tissues would swell."
+  },
+  {
+   "id": "lym-capillary-flaps",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can fluid enter a lymphatic capillary but not leak back out?",
+   "back": "Overlapping endothelial cells act as one-way flaps: higher pressure outside pushes them in; higher pressure inside presses them shut.",
+   "why": "Anchoring filaments pull the vessel open as the tissue swells, so drainage speeds up just when there is more fluid to remove."
+  },
+  {
+   "id": "lym-pumps",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Lymph has no heart. What moves it toward the veins?",
+   "back": "Smooth muscle in each valved segment of the collecting vessels, the skeletal muscle pump, the respiratory pump and the pulse of nearby arteries.",
+   "why": "One-way valves turn every squeeze into forward flow, which is why lymph flow in a still limb nearly stops."
+  },
+  {
+   "id": "lym-two-ducts",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Thoracic duct vs right lymphatic duct: what does each drain, and where does it empty?",
+   "back": "Thoracic duct: both legs, abdomen, pelvis and the left side of the chest, arm, head and neck (about three quarters of the body), into the left internal jugular–subclavian junction. Right lymphatic duct: right arm, right chest, right head and neck, into the right junction.",
+   "why": "The thoracic duct begins at the cisterna chyli, which receives the lumbar and intestinal trunks."
+  },
+  {
+   "id": "lym-primary-secondary",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Primary vs secondary lymphoid organs",
+   "front": "Primary vs secondary lymphoid organs: examples, and what happens in each?",
+   "back": "Primary (red bone marrow, thymus): lymphocytes are made and mature, with no foreign antigen needed. Secondary (lymph nodes, spleen, tonsils, Peyer’s patches, other MALT): mature lymphocytes gather and meet antigens.",
+   "why": "Maturing happens before a lymphocyte meets anything foreign; responding needs antigen brought in by lymph, blood or across a mucous membrane."
+  },
+  {
+   "id": "lym-node-flow",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does lymph slow down inside a lymph node, and why does that matter?",
+   "back": "Several afferent vessels feed one or two efferent vessels, and the maze of sinuses has a wide total cross section.",
+   "why": "Slow lymph lingers beside the macrophages lining the sinuses, giving them time to engulf bacteria, debris and cancer cells."
+  },
+  {
+   "id": "lym-node-zones",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "In a lymph node, which lymphocytes gather in the nodules of the cortex, and which in the paracortex?",
+   "back": "Cortex nodules (follicles): the line of lymphocytes that can become antibody-releasing cells; a germinal center forms when they meet their antigen. Paracortex (deep cortex): mostly the thymus-matured line.",
+   "why": "Lymphocytes enter from the blood in the paracortex, through high endothelial venules."
+  },
+  {
+   "id": "lym-pulp",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "White pulp vs red pulp",
+   "front": "White pulp vs red pulp of the spleen: what fills each and what does it do?",
+   "back": "White pulp: lymphocytes around central arteries, where lymphocytes meet antigens carried in the blood. Red pulp (about three quarters): blood in cords and venous sinuses, where macrophages remove old red cells, platelets and bacteria.",
+   "why": "Blood must squeeze through narrow slits into the sinuses; stiff old or sickled red cells get stuck and are engulfed."
+  },
+  {
+   "id": "lym-spleen-not-node",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Is the spleen a large lymph node?",
+   "back": "No. It has no afferent lymphatic vessels, so no lymph reaches it: it filters blood, not lymph.",
+   "why": "That is why losing the spleen raises the risk of bloodstream infection while the lymph nodes go on filtering lymph as before."
+  },
+  {
+   "id": "lym-asplenia",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Name three lasting effects of losing the spleen.",
+   "back": "More old and misshapen red cells in circulation; a higher platelet count; a lifelong higher risk of overwhelming infection with sugar-coated bacteria.",
+   "why": "The spleen held about a third of the platelets and was the main filter for bacteria that are hard to engulf elsewhere, so patients get extra vaccines."
+  },
+  {
+   "id": "lym-edema-types",
+   "topic": "lymphatic-system",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "compare": "Edema from high capillary pressure vs lymphedema",
+   "front": "Edema from high capillary pressure vs lymphedema: what fails, protein content, and pitting?",
+   "back": "High capillary pressure: filtration outruns normal drainage; fluid low in protein; pits easily, often both legs. Lymphedema: drainage fails at normal filtration; fluid rich in protein; pits early, then turns firm and non-pitting, usually one limb.",
+   "why": "Stagnant, protein-rich fluid draws in lymphocytes whose signals make fibroblasts lay down collagen, and fat builds up."
+  },
+  {
+   "id": "lym-cancer-nodes",
+   "topic": "lymphatic-system",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why do surgeons examine the first lymph node draining a tumor?",
+   "back": "Cancer cells that break off a tumor travel in lymph and are caught first in that node.",
+   "why": "A hard, painless, growing node may hold cancer cells dividing there, unlike the tender swelling of a node fighting an infection."
+  },
+  {
+   "id": "inn-vs-adaptive-when",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Innate vs adaptive immunity",
+   "front": "Innate vs adaptive immunity: how fast does each act?",
+   "back": "Innate: ready at birth, acts within minutes to hours. Adaptive: about a week to build on first exposure, peaking in one to two weeks.",
+   "why": "Adaptive responses start from the few lymphocytes that fit, which must multiply first."
+  },
+  {
+   "id": "inn-vs-adaptive-what",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Innate vs adaptive immunity",
+   "front": "Innate vs adaptive immunity: what does each recognize?",
+   "back": "Innate: molecular patterns shared by whole groups of microbes, and signs of damage. Adaptive: one specific antigen per lymphocyte.",
+   "why": "Innate cells use inherited pattern recognition receptor proteins; each lymphocyte’s receptor protein fits one antigen."
+  },
+  {
+   "id": "inn-vs-adaptive-memory",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Innate vs adaptive immunity",
+   "front": "Innate vs adaptive immunity: which improves with repeat exposure?",
+   "back": "Adaptive: faster and stronger the next time, through memory. Innate: essentially the same response each time.",
+   "why": "Memory lymphocytes left from the first response are more numerous and switch on more easily."
+  },
+  {
+   "id": "inn-vs-adaptive-cells",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Innate vs adaptive immunity",
+   "front": "Innate vs adaptive immunity: main cells and molecules?",
+   "back": "Innate: neutrophils, macrophages, eosinophils, mast cells, NK cells; complement, interferons, antimicrobial proteins, cytokines. Adaptive: the two main lines of lymphocytes; antibodies, and receptor proteins on lymphocytes that fit one antigen.",
+   "why": "The two work together: innate cells alert lymphocytes, and adaptive immunity points innate killers at its targets."
+  },
+  {
+   "id": "inn-prr",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What do pattern recognition receptor proteins (such as Toll-like receptor proteins) bind?",
+   "back": "Molecules microbes make and you do not, and cannot easily change: bacterial wall molecules, flagellar protein, viral double-stranded RNA. Some also bind molecules from your own damaged cells.",
+   "why": "Binding damage signals is why a sterile injury, with no microbe present, still inflames."
+  },
+  {
+   "id": "inn-inflammation-signs",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Link each sign of inflammation to its cause: redness and heat, swelling, pain.",
+   "back": "Redness and heat: arterioles dilate. Swelling: capillaries and venules leak plasma. Pain: prostaglandins act on pain-sensing endings, plus pressure from swelling.",
+   "why": "Histamine and prostaglandins drive both vessel changes; the leak also delivers complement, antibodies and clotting proteins."
+  },
+  {
+   "id": "inn-leukocyte-exit",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "In what order do leukocytes leave the blood at an inflamed site?",
+   "back": "Rolling, sticking, diapedesis (squeezing between endothelial cells), then chemotaxis toward the attractants.",
+   "why": "Cytokines make the venule wall sticky; the leukocyte must be held against the wall before it can squeeze through."
+  },
+  {
+   "id": "inn-acute-chronic",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Acute vs chronic inflammation",
+   "front": "Acute vs chronic inflammation: duration, main cells, outcome?",
+   "back": "Acute: hours to days; neutrophils; usually full resolution. Chronic: weeks to years; macrophages and lymphocytes; ongoing damage and fibrosis.",
+   "why": "Chronic inflammation persists when a microbe, foreign material or trigger cannot be cleared, as in atherosclerosis or inhaled silica."
+  },
+  {
+   "id": "inn-oxidative-burst",
+   "topic": "innate-immunity",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a phagocyte’s oxygen use jump when it kills?",
+   "back": "The oxidative burst: an enzyme in the vesicle membrane makes superoxide from oxygen, which becomes hydrogen peroxide and, in neutrophils, hypochlorous acid.",
+   "why": "The oxygen is used to make weapons, not ATP. In chronic granulomatous disease this enzyme is faulty and phagocytes cannot kill many bacteria."
+  },
+  {
+   "id": "inn-nk",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "How does an NK cell decide to kill a cell?",
+   "back": "It weighs “kill me” stress proteins against the “leave me alone” self-identity protein. Too little self-identity protein or many stress proteins tip it to kill.",
+   "why": "Many viruses and cancers switch off the self-identity protein to hide from lymphocytes, which exposes them to NK cells."
+  },
+  {
+   "id": "inn-complement",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What three things does complement do once C3 is split?",
+   "back": "Opsonization (C3b coats microbes for phagocytes), inflammation (C3a and C5a trigger mast cells; C5a attracts neutrophils), and the membrane attack complex (C5b to C9 punch a pore).",
+   "why": "All three pathways, classical, lectin and alternative, converge on splitting C3. Opsonization is the most important of the three."
+  },
+  {
+   "id": "inn-interferon",
+   "topic": "innate-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "How do type I interferons slow a virus’s spread?",
+   "back": "An infected cell releases them; they bind neighboring cells and switch on genes for antiviral proteins that block viral protein synthesis and break down viral RNA.",
+   "why": "The infected cell usually cannot save itself, but paracrine warning makes its neighbors resist infection."
+  },
+  {
+   "id": "inn-fever-set-point",
+   "topic": "innate-immunity",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What causes the chills at the start of a fever?",
+   "back": "Pyrogens make prostaglandin E2 raise the hypothalamic set point, so normal body temperature is now below it; the hypothalamus runs heat-gain responses: skin vasoconstriction and shivering.",
+   "why": "Fever is negative feedback around a higher set point; when the set point falls again, you flush and sweat."
+  },
+  {
+   "id": "inn-fever-vs-heat",
+   "topic": "innate-immunity",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Fever vs overheating",
+   "front": "Fever vs overheating from hard exercise in the heat: set point, and do fever-reducing drugs help?",
+   "back": "Fever: set point raised by pyrogens; body temperature rises to meet it; drugs that block prostaglandin synthesis lower it. Overheating: set point normal; temperature is above it; those drugs do nothing, cooling is needed.",
+   "why": "The drugs work by lowering the set point, which is only raised in a fever."
+  },
+  {
+   "id": "adp-epitope",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "What is an epitope?",
+   "back": "The small part of an antigen, about 5 to 20 amino acids or a few sugars, that one antigen receptor protein or antibody binds.",
+   "why": "A protein has many epitopes and a bacterium hundreds of proteins, so many different lymphocytes respond at once: a polyclonal response."
+  },
+  {
+   "id": "adp-b-vs-t",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "B cell vs T cell",
+   "front": "B cell vs T cell: where does each mature and what does its antigen receptor protein bind?",
+   "back": "B cell: red bone marrow; binds epitopes on intact antigens, free or on surfaces. T cell: thymus; binds short peptides held on MHC proteins on another cell.",
+   "why": "A B cell needs no presenting cell; a T cell sees nothing unless a cell displays the antigen on MHC."
+  },
+  {
+   "id": "adp-mhc-classes",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "MHC class I vs class II",
+   "front": "MHC class I vs class II: which cells carry it, and where do its peptides come from?",
+   "back": "Class I: nearly all nucleated cells; peptides from proteins made inside the cell, loaded in the ER. Class II: mainly antigen-presenting cells (dendritic cells, macrophages, B cells); peptides from material taken in from outside, loaded in vesicles fused with lysosomes.",
+   "why": "Class I says “this cell is infected or abnormal”; class II says “this is what I found in the tissues”."
+  },
+  {
+   "id": "adp-dendritic",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why do dendritic cells start almost every new T cell response?",
+   "back": "They sample the skin and mucous membranes, engulf microbes, then carry processed antigen through afferent lymph to a lymph node’s paracortex, where naïve T cells pass through.",
+   "why": "Naïve T cells circulate between blood and lymph nodes and never wander into a small cut, so the antigen must be brought to them."
+  },
+  {
+   "id": "adp-diversity",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "With about 20,000 genes, how do you make millions of different antigen receptor proteins?",
+   "back": "Each maturing lymphocyte cuts and joins gene pieces at random, adding or removing a few DNA letters at each join.",
+   "why": "The receptor proteins exist before any antigen arrives; the antigen selects cells that already fit rather than shaping them."
+  },
+  {
+   "id": "adp-thymus-tests",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Positive vs negative selection in the thymus: what does each test, and where?",
+   "back": "Positive (cortex): can the receptor protein bind self MHC at least weakly? If not, the cell dies of neglect. Negative (mostly medulla): does it bind self peptide on self MHC too strongly? If so, it is killed (clonal deletion).",
+   "why": "About 98 percent of thymocytes fail. The survivors see foreign peptides on self MHC without reacting strongly to self."
+  },
+  {
+   "id": "adp-anergy",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "What happens to a T cell that binds its self peptide on a resting dendritic cell?",
+   "back": "It becomes unresponsive for a long time: clonal anergy.",
+   "why": "A resting dendritic cell has detected no danger and gives no confirming second signal. This is part of peripheral tolerance."
+  },
+  {
+   "id": "adp-clonal-selection",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why does a first response to a new antigen take about a week?",
+   "back": "Only about 1 in 100,000 to 1 in a million naïve lymphocytes fits any one epitope; the antigen selects them, and they must divide every 6 to 8 hours for several days to build clones of tens of thousands or more.",
+   "why": "Clonal expansion is also why the lymph nodes draining an infection swell."
+  },
+  {
+   "id": "adp-memory",
+   "topic": "adaptive-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why is a second encounter with the same microbe met faster?",
+   "back": "Memory cells left from clonal expansion are 100 to 1,000 times more numerous than the original naïve cells, live for years or decades and switch on faster with less stimulation.",
+   "why": "The response starts within a day or two, so the microbe is usually cleared before illness. Vaccines work this way."
+  },
+  {
+   "id": "adp-mhc-sibling",
+   "topic": "adaptive-immunity",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why are brothers and sisters checked first as bone marrow donors?",
+   "back": "They have a 1 in 4 chance of inheriting the same two sets of MHC genes.",
+   "why": "MHC genes are the most variable in the population, so an unrelated donor almost never matches."
+  },
+  {
+   "id": "cmi-cd4-cd8",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Which MHC class does CD4 bind, and which does CD8 bind?",
+   "back": "CD4 binds MHC class II; CD8 binds MHC class I. (4 × 2 = 8 and 8 × 1 = 8.)",
+   "why": "The coreceptor clamps onto the MHC beside the T cell receptor protein, so it decides which cells a T cell can respond to."
+  },
+  {
+   "id": "cmi-types-marker",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Helper vs cytotoxic vs regulatory T cells",
+   "front": "Helper vs cytotoxic vs regulatory T cells: surface marker and MHC class recognized?",
+   "back": "Helper: CD4, class II. Cytotoxic: CD8, class I. Regulatory: CD4 (with FOXP3 inside), class II.",
+   "why": "Class I is on nearly every cell, so the killer answers it; class II is on presenting cells, so the coordinators answer it."
+  },
+  {
+   "id": "cmi-types-action",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Helper vs cytotoxic vs regulatory T cells",
+   "front": "Helper vs cytotoxic vs regulatory T cells: main action and main tools?",
+   "back": "Helper: directs other cells (cytokines such as interferon gamma, IL-2, IL-4, and contact). Cytotoxic: kills infected and abnormal cells (perforin, granzymes, Fas ligand). Regulatory: suppresses other lymphocytes (IL-10, TGF-beta, IL-2 uptake).",
+   "why": "Regulatory T cells also strip B7 from dendritic cells, so other T cells cannot get costimulation."
+  },
+  {
+   "id": "cmi-types-loss",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "compare": "Helper vs cytotoxic vs regulatory T cells",
+   "front": "Helper vs cytotoxic vs regulatory T cells: what happens if each type is lost?",
+   "back": "Helper: most adaptive responses fail, antibody and cytotoxic. Cytotoxic: viral infections and some cancers spread. Regulatory: T cells attack the body’s own tissues (as in IPEX, from a broken FOXP3 gene).",
+   "why": "Helper T cells sit at the hub: B cells and cytotoxic T cells both depend on their signals."
+  },
+  {
+   "id": "cmi-three-signals",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What three signals does a naïve T cell need to switch on?",
+   "back": "Signal 1: its T cell receptor protein binds peptide on MHC. Signal 2: costimulation, CD28 binding B7. Signal 3: cytokines that steer what it becomes.",
+   "why": "A dendritic cell makes plenty of B7 only after sensing a microbe, so signal 1 without signal 2 leads to anergy instead."
+  },
+  {
+   "id": "cmi-il2",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "How does IL-2 drive clonal expansion of an activated T cell?",
+   "back": "The activated T cell makes both IL-2 and the receptor protein for it, so it stimulates its own division (autocrine signaling).",
+   "why": "Drugs such as tacrolimus block IL-2 production, which is how they prevent transplant rejection."
+  },
+  {
+   "id": "cmi-th1-th2",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Th1 vs Th2 cells",
+   "front": "Th1 vs Th2 cells: main cytokines and what each is best against?",
+   "back": "Th1: interferon gamma and IL-2; arm macrophages and cytotoxic T cells against viruses and bacteria living inside cells. Th2: IL-4, IL-5, IL-13; direct eosinophils, mast cells and mucus against parasitic worms.",
+   "why": "Each holds the other back: interferon gamma blocks Th2 development and IL-4 blocks Th1. Th2 gone wrong gives allergy."
+  },
+  {
+   "id": "cmi-apoptosis",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why does a cytotoxic T cell kill by apoptosis instead of bursting the target?",
+   "back": "Apoptosis breaks the cell into tidy fragments that macrophages engulf, destroying virus still being assembled inside, with little inflammation.",
+   "why": "Perforin makes pores and granzymes enter to switch on the target’s own caspases; Fas ligand binding Fas does the same."
+  },
+  {
+   "id": "cmi-ctl-vs-nk",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Cytotoxic T cell vs natural killer cell",
+   "front": "Cytotoxic T cell vs NK cell: what does each recognize, and which leaves memory?",
+   "back": "Cytotoxic T cell: one specific peptide in MHC class I; needs about a week of activation first; leaves memory cells. NK cell: stress signals and missing MHC class I; acts within hours; mostly no memory.",
+   "why": "Both kill the same way, with perforin, granzymes and Fas ligand, ending in apoptosis."
+  },
+  {
+   "id": "cmi-rejection-tempos",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Hyperacute vs acute vs chronic rejection",
+   "front": "Hyperacute vs acute vs chronic rejection: timing and main cause?",
+   "back": "Hyperacute: minutes to hours, antibodies already present against ABO or HLA on the donor’s vessels. Acute: days to months, recipient T cells attacking donor HLA. Chronic: months to years, slow T cell and antibody damage.",
+   "why": "Hyperacute is prevented by ABO matching and crossmatching; acute by drugs that suppress T cells; chronic is the main long-term cause of graft loss."
+  },
+  {
+   "id": "cmi-hla-strong",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why is transplant rejection so vigorous?",
+   "back": "Between 1 and 10% of all your T cells react to any one foreign HLA type, compared with far fewer than 1 in 10,000 for a typical microbial peptide.",
+   "why": "Donor HLA with its own peptides looks to your T cells like self MHC holding a foreign peptide."
+  },
+  {
+   "id": "cmi-gvhd",
+   "topic": "cell-mediated-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What is graft-versus-host disease?",
+   "back": "Mature T cells in a donor bone marrow graft recognize the recipient’s HLA as foreign and attack the recipient’s skin, liver and gut.",
+   "why": "The recipient’s own immune system has been wiped out, so nothing stops the donor cells. The same cells can attack leftover leukemia cells."
+  },
+  {
+   "id": "ab-humoral-vs-cell",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Humoral vs cell-mediated immunity",
+   "front": "Humoral vs cell-mediated immunity: main cells and weapon?",
+   "back": "Humoral: B cells and plasma cells; antibodies released into body fluids. Cell-mediated: T cells; the T cell itself, acting by contact and cytokines.",
+   "why": "Helper T cells link the two arms: they help B cells as well as cytotoxic T cells."
+  },
+  {
+   "id": "ab-humoral-vs-cell-targets",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Humoral vs cell-mediated immunity",
+   "front": "Humoral vs cell-mediated immunity: what does each recognize and what is it best against?",
+   "back": "Humoral: whole antigens in their natural shape; toxins, and bacteria and viruses outside cells. Cell-mediated: short peptides held in MHC; viruses and bacteria inside cells, and abnormal cells.",
+   "why": "Antibodies cannot reach a virus once it is inside a cell, so only cells that detect peptides on MHC can find it there."
+  },
+  {
+   "id": "ab-structure",
+   "topic": "antibody-immunity",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Describe the structure of an antibody.",
+   "back": "Two identical heavy chains and two identical light chains joined by disulfide bonds into a Y. The variable regions at the arm tips form two identical antigen-binding sites; the Fc stem is heavy chain constant region only.",
+   "why": "The variable end decides what it binds; the constant end, which sets the class, decides what happens next."
+  },
+  {
+   "id": "ab-igg",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "The five antibody classes",
+   "front": "IgG: shape, share of serum antibody, main jobs?",
+   "back": "Monomer; about 75–80%; neutralizes, coats microbes for phagocytes, activates complement; the main antibody of a second exposure.",
+   "why": "It is the only class actively carried across to the fetus, giving a newborn months of protection copied from the mother."
+  },
+  {
+   "id": "ab-iga",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "The five antibody classes",
+   "front": "IgA: shape and where it works?",
+   "back": "Monomer in blood, dimer in secretions; guards mucus, tears, saliva, breast milk and the gut lining, blocking microbes before they get in.",
+   "why": "You make more IgA than every other class combined, but most leaves the blood for secretions, so it ranks second in serum."
+  },
+  {
+   "id": "ab-igm",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "The five antibody classes",
+   "front": "IgM: shape and main jobs?",
+   "back": "Pentamer when released (monomer on B cells); the first antibody of a first exposure; best at agglutination and at activating complement.",
+   "why": "Ten binding sites let it grab and clump microbes even when each site fits loosely. It is too large to cross to the fetus."
+  },
+  {
+   "id": "ab-ige",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "The five antibody classes",
+   "front": "IgE: where it sits and what it does?",
+   "back": "Bound by its Fc region to mast cells and basophils; triggers them against worms, and causes allergy symptoms. The scarcest class in serum.",
+   "why": "An antigen linking two IgE molecules makes the mast cell release histamine."
+  },
+  {
+   "id": "ab-igd",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "The five antibody classes",
+   "front": "IgD: where it is found?",
+   "back": "On the surface of naïve B cells, as a B cell receptor protein alongside IgM. Its role is unclear; under 1% of serum antibody.",
+   "why": "The memory aid GAMED lists all five classes: IgG, IgA, IgM, IgE, IgD."
+  },
+  {
+   "id": "ab-placenta",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "The five antibody classes",
+   "front": "Which antibody class crosses from mother to fetus, and what follows from that?",
+   "back": "Only IgG. So anti-D (an IgG) can cause hemolytic disease of the newborn, while anti-A and anti-B, mostly IgM, usually do not harm an ABO-mismatched fetus.",
+   "why": "IgG is small and actively carried across in late pregnancy; IgM is a large pentamer."
+  },
+  {
+   "id": "ab-class-switch",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What is class switching, and what decides the new class?",
+   "back": "A B cell changes from IgM to IgG, IgA or IgE, keeping the same variable region, by cutting out DNA. Helper T cell contact (CD40 ligand–CD40) is needed; IL-4 steers to IgE, TGF-beta to IgA, interferon gamma to IgG.",
+   "why": "The new antibody binds exactly the same antigen but its stem, and so its job, differs. The switch cannot be reversed."
+  },
+  {
+   "id": "ab-actions",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Which antibody actions depend on the variable region, and which on the Fc region?",
+   "back": "Variable region: neutralization and agglutination. Fc region: opsonization, complement activation and directing killer cells.",
+   "why": "An antibody kills nothing itself; it binds, blocks and flags, and other cells and proteins do the destruction."
+  },
+  {
+   "id": "ab-primary-secondary",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Primary vs secondary response",
+   "front": "Primary vs secondary antibody response: lag, peak and main class?",
+   "back": "Primary: lag of about 5–10 days, peaking in one to two weeks; low peak; IgM first, then IgG. Secondary: lag of about 1–3 days; peak often 10 to 100 times higher; mostly IgG, better fitting and lasting months or years.",
+   "why": "Memory B cells are more numerous, need less stimulation and already make switched, well-fitting antibody."
+  },
+  {
+   "id": "ab-igm-recent",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "A patient has IgM against a virus. What does that suggest, compared with IgG alone?",
+   "back": "IgM points to a current or recent infection; IgG alone points to an older infection or a vaccine.",
+   "why": "Every B cell makes IgM first; switching to IgG takes days, and IgM falls away within weeks."
+  },
+  {
+   "id": "ab-window",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What is the window period of an infection?",
+   "back": "The time before seroconversion, when antibody is not yet detectable, so an antibody test is negative even though the person is infected.",
+   "why": "A primary response needs days to weeks for clonal selection and expansion before antibody appears."
+  },
+  {
+   "id": "ab-active-passive",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Active vs passive immunity",
+   "front": "Active vs passive immunity: who makes the antibodies, how fast, how long, memory?",
+   "back": "Active: you do; a week or more; years to a lifetime; memory cells form. Passive: someone else (a person, an animal or a lab); at once; days to a few months; no memory cells.",
+   "why": "Borrowed antibody is broken down and does not activate your own B cells."
+  },
+  {
+   "id": "ab-active-passive-examples",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Active vs passive immunity",
+   "front": "Give a natural and an artificial example of active and of passive immunity.",
+   "back": "Active: recovering from chickenpox; a vaccine. Passive: IgG crossing to the fetus or IgA in breast milk; antivenom, tetanus immune globulin, anti-D injections.",
+   "why": "The deciding question is who made the antibodies, not whether a needle was involved."
+  },
+  {
+   "id": "ab-conjugate",
+   "topic": "antibody-immunity",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why are vaccines against capsule bacteria made as conjugate vaccines?",
+   "back": "Capsule sugars are T cell-independent antigens: mostly IgM, little memory, and poor responses under about age 2. Attaching the sugar to a protein lets helper T cells that recognize the protein help the B cells that recognize the sugar.",
+   "why": "With helper T cell help, B cells can switch class, improve their fit and form memory cells."
+  },
+  {
+   "id": "ab-plasma-cell",
+   "topic": "antibody-immunity",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why is a plasma cell packed with rough ER?",
+   "back": "It makes and exports antibody, about 2,000 molecules per second.",
+   "why": "Some plasma cells move to the bone marrow and keep releasing antibody for years, which is why antibody can stay up long after a vaccine."
+  },
+  {
+   "id": "imd-three-kinds",
+   "topic": "immune-disorders",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What are the three kinds of immune disorder?",
+   "back": "Too much against something harmless (hypersensitivity), aimed at yourself (autoimmune disease), and too little (immunodeficiency).",
+   "why": "The same weapons that protect you do damage when aimed at the wrong target, or when they are missing."
+  },
+  {
+   "id": "imd-type-i",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Hypersensitivity types",
+   "front": "Type I hypersensitivity: what does the damage, timing, examples?",
+   "back": "IgE on mast cells and basophils releasing histamine and other mediators; minutes after re-exposure; hay fever, hives, food allergy, anaphylaxis.",
+   "why": "The allergen cross-links two IgE molecules on a mast cell, which degranulates within seconds."
+  },
+  {
+   "id": "imd-type-ii",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Hypersensitivity types",
+   "front": "Type II hypersensitivity: what does the damage, examples?",
+   "back": "IgG or IgM bound to an antigen fixed on a cell surface or its receptor proteins; transfusion reaction, hemolytic disease of the newborn, Graves disease, myasthenia gravis.",
+   "why": "Bound antibody activates complement, coats the cell for phagocytes, directs NK cells, or blocks or switches on a receptor protein."
+  },
+  {
+   "id": "imd-type-iii",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Hypersensitivity types",
+   "front": "Type III hypersensitivity: what does the damage, examples?",
+   "back": "Antibody–antigen immune complexes formed in the blood that lodge in small vessel walls, joints and the kidneys’ filters; lupus, kidney inflammation after strep throat.",
+   "why": "The lodged complexes activate complement, which calls in neutrophils whose enzymes damage the tissue."
+  },
+  {
+   "id": "imd-type-iv",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Hypersensitivity types",
+   "front": "Type IV hypersensitivity: what does the damage, timing, examples?",
+   "back": "Th1 cells, macrophages and cytotoxic T cells; 24 to 72 hours; poison ivy, nickel allergy, the tuberculin skin test, type 1 diabetes.",
+   "why": "It is delayed because memory T cells take time to gather at the site. Types I to III are caused by antibodies; type IV by T cells."
+  },
+  {
+   "id": "imd-sensitization",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why does no one have an allergic reaction on the immune system’s very first meeting with an allergen?",
+   "back": "The first contact only sensitizes: it makes IgE or memory T cells against the allergen. A later exposure causes the reaction.",
+   "why": "Someone who reacts badly to a “first” bee sting was usually sensitized by an earlier sting they never noticed."
+  },
+  {
+   "id": "imd-anaphylaxis-map",
+   "topic": "immune-disorders",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why does MAP fall in anaphylaxis?",
+   "back": "Both terms of MAP = CO × TPR fall: vasodilation lowers TPR, and pooling plus plasma leak lower venous return and so cardiac output.",
+   "why": "It is distributive shock with a hypovolemic part from the leak; the falling MAP reduces baroreceptor firing and the heart rate climbs."
+  },
+  {
+   "id": "imd-epinephrine-receptors",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "How does epinephrine reverse each part of anaphylaxis?",
+   "back": "Alpha-1: vessels constrict, TPR and venous return rise, leak falls. Beta-1: heart rate and contractility rise. Beta-2: airways widen, and mast cells release less.",
+   "why": "It is the only drug that works against every part of anaphylaxis at once."
+  },
+  {
+   "id": "imd-epinephrine-dose",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "How is epinephrine given for anaphylaxis, and at what dose?",
+   "back": "Into the outer thigh muscle: 0.01 mg per kg from a vial, up to 0.5 mg in an adult and 0.3 mg in a child; auto-injectors give 0.3 mg (adults and larger children) or 0.15 mg (small children). Repeat after 5 to 15 minutes if needed.",
+   "why": "Lay the person flat with legs raised: standing up can leave too little venous return to fill the heart."
+  },
+  {
+   "id": "imd-antihistamine",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why is an antihistamine not a substitute for epinephrine in anaphylaxis?",
+   "back": "It blocks only histamine, not leukotrienes, acts slowly, and does nothing for low blood pressure or narrowed airways; it relieves itching and hives.",
+   "why": "Epinephrine reverses vasodilation, leak, weak cardiac output and airway narrowing through its adrenergic receptor proteins."
+  },
+  {
+   "id": "imd-autoimmune-causes",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Name four things that can tip self-tolerance into autoimmune disease.",
+   "back": "Genes (certain HLA types), molecular mimicry (a microbe antigen resembling self, as in rheumatic fever), sex (about four in five patients are women), and tissue damage or infection putting B7 on dendritic cells.",
+   "why": "Self-reactive cells that escaped negative selection are normally held back by anergy and regulatory T cells."
+  },
+  {
+   "id": "imd-ra-lupus",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Rheumatoid arthritis vs lupus",
+   "front": "Rheumatoid arthritis vs lupus: main target and main damage?",
+   "back": "RA: synovial membranes of small joints on both sides; T and B cells and TNF erode cartilage and bone; rheumatoid factor. Lupus: antibodies against nuclear contents, including DNA; immune complexes lodge in vessels, joints, kidneys, skin and serous membranes.",
+   "why": "Kidney damage is the most dangerous part of lupus; drugs that block TNF now prevent most joint damage in RA."
+  },
+  {
+   "id": "imd-myasthenia",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why is the weakness of myasthenia gravis worse with repeated effort?",
+   "back": "Antibodies remove acetylcholine receptor proteins, so each end plate potential is smaller; as acetylcholine release falls with repeated firing, more end plate potentials drop below threshold.",
+   "why": "Pyridostigmine, an acetylcholinesterase inhibitor, lets acetylcholine bind more of the remaining receptor proteins."
+  },
+  {
+   "id": "imd-scid",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why do babies with SCID seem well for a few months?",
+   "back": "Their mother’s IgG, carried across in late pregnancy, protects them until it is broken down.",
+   "why": "SCID leaves no working T cells and no useful antibody; a bone marrow transplant, or in some forms gene therapy, can cure it."
+  },
+  {
+   "id": "imd-hiv-target",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Which cells does HIV infect, and why those?",
+   "back": "Cells carrying CD4: helper T cells, and also macrophages and dendritic cells. Its envelope protein binds CD4, then a chemokine receptor protein.",
+   "why": "Losing helper T cells makes both antibody and cytotoxic responses fail."
+  },
+  {
+   "id": "imd-hiv-control",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "After the acute phase of HIV, what brings the virus down to a steady level?",
+   "back": "Mainly CD8 cytotoxic T cells killing infected cells. Antibodies appear but the virus mutates around them.",
+   "why": "Cytotoxic T cells never clear HIV, because silent virus hides in some long-lived memory T cells."
+  },
+  {
+   "id": "imd-aids",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "When is AIDS diagnosed?",
+   "back": "When the CD4 count falls below 200 per microliter, or a defining illness appears, such as Pneumocystis lung infection or Kaposi sarcoma. The normal count is about 500 to 1,500.",
+   "why": "Untreated, the chronic phase lasts about ten years on average. Treatment that keeps the virus undetectable prevents sexual transmission."
+  },
+  {
+   "id": "imd-cancer-escape",
+   "topic": "immune-disorders",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Name three ways a cancer escapes the immune system.",
+   "back": "Losing MHC class I (hiding from cytotoxic T cells), putting PD-L1 on its surface to switch T cells off, and drawing in regulatory T cells and releasing suppressive cytokines.",
+   "why": "Checkpoint inhibitors block PD-1, PD-L1 or CTLA-4 to release those brakes; their side effects are T cell attacks on healthy organs."
   }
  ]
 }

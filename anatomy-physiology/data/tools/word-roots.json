@@ -1471,6 +1471,137 @@
       "meaning": "day",
       "origin": "Latin",
       "from": "dies (day)"
+    },
+    {
+      "id": "-edema",
+      "type": "suffix",
+      "form": "-edema",
+      "meaning": "swelling",
+      "origin": "Greek",
+      "from": "oidēma (a swelling)"
+    },
+    {
+      "id": "tonsill/o",
+      "type": "root",
+      "form": "tonsill/o",
+      "meaning": "tonsil",
+      "origin": "Latin",
+      "from": "tonsillae (the tonsils)"
+    },
+    {
+      "id": "chem/o",
+      "type": "root",
+      "form": "chem/o",
+      "meaning": "chemical",
+      "origin": "Greek, through Arabic",
+      "from": "khēmeia (the art of alchemy), through Arabic al-kīmiyā"
+    },
+    {
+      "id": "-pedesis",
+      "type": "suffix",
+      "form": "-pedesis",
+      "meaning": "leaping",
+      "origin": "Greek",
+      "from": "pēdēsis (a leaping), from pēdan (to leap)"
+    },
+    {
+      "id": "opson/o",
+      "type": "root",
+      "form": "opson/o",
+      "meaning": "relish, food prepared for eating",
+      "origin": "Greek",
+      "from": "opson (a relish or sauce eaten with bread)",
+      "note": "Coating a microbe makes it “tasty” to phagocytes."
+    },
+    {
+      "id": "pyr/o",
+      "type": "root",
+      "form": "pyr/o",
+      "meaning": "fire",
+      "origin": "Greek",
+      "from": "pyr (fire)"
+    },
+    {
+      "id": "thym/o",
+      "type": "root",
+      "form": "thym/o",
+      "meaning": "thymus",
+      "origin": "Greek",
+      "from": "thymos (the thymus gland)"
+    },
+    {
+      "id": "clon/o",
+      "type": "root",
+      "form": "clon/o",
+      "meaning": "twig, offshoot",
+      "origin": "Greek",
+      "from": "klōn (a twig)",
+      "note": "A clone is a set of cells all descended from one cell, like cuttings from one plant."
+    },
+    {
+      "id": "tox/o",
+      "type": "root",
+      "form": "tox/o",
+      "meaning": "poison",
+      "origin": "Greek",
+      "from": "toxikon (poison for arrows), from toxon (a bow)"
+    },
+    {
+      "id": "stimul/o",
+      "type": "root",
+      "form": "stimul/o",
+      "meaning": "goad, spur to action",
+      "origin": "Latin",
+      "from": "stimulus (a pointed stick for driving cattle)"
+    },
+    {
+      "id": "perfor/o",
+      "type": "root",
+      "form": "perfor/o",
+      "meaning": "bore through",
+      "origin": "Latin",
+      "from": "perforare (to bore through)"
+    },
+    {
+      "id": "immun/o",
+      "type": "root",
+      "form": "immun/o",
+      "meaning": "exempt, protected",
+      "origin": "Latin",
+      "from": "immunis (exempt from a public duty or tax)"
+    },
+    {
+      "id": "-ity",
+      "type": "suffix",
+      "form": "-ity",
+      "meaning": "a state or quality",
+      "origin": "Latin",
+      "from": "-itas"
+    },
+    {
+      "id": "ana-against-",
+      "type": "prefix",
+      "form": "ana-",
+      "meaning": "against, the reverse of",
+      "origin": "Greek",
+      "from": "ana (back, backward, against)",
+      "note": "Coined in 1902 for an injection that made animals less protected instead of more."
+    },
+    {
+      "id": "phylax/o",
+      "type": "root",
+      "form": "phylax/o",
+      "meaning": "protection, guarding",
+      "origin": "Greek",
+      "from": "phylaxis (a guarding)"
+    },
+    {
+      "id": "sthen/o",
+      "type": "root",
+      "form": "sthen/o",
+      "meaning": "strength",
+      "origin": "Greek",
+      "from": "sthenos (strength)"
     }
   ],
   "terms": [
@@ -6330,6 +6461,506 @@
       ],
       "literal": "about a day",
       "meaning": "describing a body rhythm that cycles about every 24 hours, even without outside time cues"
+    },
+    {
+      "id": "lymphedema",
+      "term": "lymphedema",
+      "topic": "lymphatic-system",
+      "concept": "lymphedema",
+      "segs": [
+        [
+          "lymph",
+          "lymph/o"
+        ],
+        [
+          "edema",
+          "-edema"
+        ]
+      ],
+      "literal": "clear-fluid swelling",
+      "meaning": "protein-rich swelling of a limb or region whose lymphatic drainage has failed"
+    },
+    {
+      "id": "splenectomy",
+      "term": "splenectomy",
+      "topic": "lymphatic-system",
+      "concept": "spleen",
+      "segs": [
+        [
+          "splen",
+          "splen/o"
+        ],
+        [
+          "ectomy",
+          "-ectomy"
+        ]
+      ],
+      "literal": "removal of the spleen",
+      "meaning": "surgery to take out the spleen, which leaves a lifelong higher risk of bloodstream infection with sugar-coated bacteria"
+    },
+    {
+      "id": "tonsillectomy",
+      "term": "tonsillectomy",
+      "topic": "lymphatic-system",
+      "concept": "lymphoid-organs",
+      "segs": [
+        [
+          "tonsill",
+          "tonsill/o"
+        ],
+        [
+          "ectomy",
+          "-ectomy"
+        ]
+      ],
+      "literal": "removal of the tonsils",
+      "meaning": "surgery to take out the palatine tonsils, done mainly for repeated severe sore throats or tonsils that block breathing during sleep"
+    },
+    {
+      "id": "adenoids",
+      "term": "adenoids",
+      "topic": "lymphatic-system",
+      "concept": "lymphoid-organs",
+      "segs": [
+        [
+          "aden",
+          "aden/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ],
+        [
+          "s"
+        ]
+      ],
+      "literal": "gland-like (bodies)",
+      "meaning": "the pharyngeal tonsil at the back of the upper throat, when it is enlarged",
+      "note": "Early anatomists took this lymphoid tissue for a gland."
+    },
+    {
+      "id": "phagocyte",
+      "term": "phagocyte",
+      "topic": "innate-immunity",
+      "concept": "phagocytosis-immune",
+      "segs": [
+        [
+          "phag",
+          "phag/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "an eating cell",
+      "meaning": "a cell, such as a neutrophil or macrophage, that engulfs and kills microbes"
+    },
+    {
+      "id": "chemotaxis",
+      "term": "chemotaxis",
+      "topic": "innate-immunity",
+      "concept": "inflammation",
+      "segs": [
+        [
+          "chem",
+          "chem/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "tax",
+          "tax/o"
+        ],
+        [
+          "is"
+        ]
+      ],
+      "literal": "arrangement by chemicals",
+      "meaning": "movement of a cell toward the highest concentration of an attracting chemical",
+      "note": "In biology -taxis came to mean movement in response to something."
+    },
+    {
+      "id": "diapedesis",
+      "term": "diapedesis",
+      "topic": "innate-immunity",
+      "concept": "inflammation",
+      "segs": [
+        [
+          "dia",
+          "dia-"
+        ],
+        [
+          "pedesis",
+          "-pedesis"
+        ]
+      ],
+      "literal": "a leaping through",
+      "meaning": "a leukocyte squeezing between two endothelial cells to leave the blood"
+    },
+    {
+      "id": "opsonization",
+      "term": "opsonization",
+      "topic": "innate-immunity",
+      "concept": "complement",
+      "segs": [
+        [
+          "opson",
+          "opson/o"
+        ],
+        [
+          "ization",
+          "-ization"
+        ]
+      ],
+      "literal": "the process of making (something) into a relish",
+      "meaning": "coating of a microbe with proteins such as C3b that phagocytes grab, so it is engulfed more readily"
+    },
+    {
+      "id": "pyrogen",
+      "term": "pyrogen",
+      "topic": "innate-immunity",
+      "concept": "fever",
+      "segs": [
+        [
+          "pyr",
+          "pyr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gen",
+          "-gen"
+        ]
+      ],
+      "literal": "a fire producer",
+      "meaning": "a chemical, such as interleukin-1, that raises the hypothalamic set point and causes fever"
+    },
+    {
+      "id": "lysozyme",
+      "term": "lysozyme",
+      "topic": "innate-immunity",
+      "concept": "antimicrobial-proteins",
+      "segs": [
+        [
+          "lys",
+          "lys/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "zym",
+          "zym/o"
+        ],
+        [
+          "e"
+        ]
+      ],
+      "literal": "a ferment that breaks apart",
+      "meaning": "an enzyme in tears, saliva and neutrophil granules that breaks down bacterial cell walls"
+    },
+    {
+      "id": "thymocyte",
+      "term": "thymocyte",
+      "topic": "adaptive-immunity",
+      "concept": "t-cell",
+      "segs": [
+        [
+          "thym",
+          "thym/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cyte",
+          "-cyte"
+        ]
+      ],
+      "literal": "thymus cell",
+      "meaning": "an immature T cell that has left the bone marrow to mature in the thymus"
+    },
+    {
+      "id": "epitope",
+      "term": "epitope",
+      "topic": "adaptive-immunity",
+      "concept": "antigen",
+      "segs": [
+        [
+          "epi",
+          "epi-"
+        ],
+        [
+          "top",
+          "top/o"
+        ],
+        [
+          "e"
+        ]
+      ],
+      "literal": "a place upon",
+      "meaning": "the small part of an antigen that one antigen receptor protein or antibody actually binds"
+    },
+    {
+      "id": "anergy",
+      "term": "anergy",
+      "topic": "adaptive-immunity",
+      "concept": "self-tolerance",
+      "segs": [
+        [
+          "an",
+          "a-"
+        ],
+        [
+          "erg",
+          "erg/o"
+        ],
+        [
+          "y"
+        ]
+      ],
+      "literal": "without work",
+      "meaning": "a lasting unresponsive state of a lymphocyte that met its antigen without a confirming second signal"
+    },
+    {
+      "id": "polyclonal",
+      "term": "polyclonal",
+      "topic": "adaptive-immunity",
+      "concept": "clonal-selection",
+      "segs": [
+        [
+          "poly",
+          "poly-"
+        ],
+        [
+          "clon",
+          "clon/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "of many offshoots",
+      "meaning": "describing a response in which many different lymphocyte clones, each fitting a different epitope, respond to one microbe"
+    },
+    {
+      "id": "cytotoxic",
+      "term": "cytotoxic",
+      "topic": "cell-mediated-immunity",
+      "concept": "cytotoxic-t",
+      "segs": [
+        [
+          "cyt",
+          "cyt/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "tox",
+          "tox/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "pertaining to cell poison",
+      "meaning": "able to kill cells; used for the CD8 T cells that kill infected and abnormal cells"
+    },
+    {
+      "id": "perforin",
+      "term": "perforin",
+      "topic": "cell-mediated-immunity",
+      "concept": "cytotoxic-t",
+      "segs": [
+        [
+          "perfor",
+          "perfor/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a boring-through protein",
+      "meaning": "the protein a cytotoxic T cell releases that inserts into a target cell’s membrane and forms pores"
+    },
+    {
+      "id": "costimulation",
+      "term": "costimulation",
+      "topic": "cell-mediated-immunity",
+      "concept": "t-activation",
+      "segs": [
+        [
+          "co",
+          "con-"
+        ],
+        [
+          "stimul",
+          "stimul/o"
+        ],
+        [
+          "ation",
+          "-ation"
+        ]
+      ],
+      "literal": "the process of spurring together",
+      "meaning": "the second, confirming signal a T cell needs, from CD28 binding B7, before it will switch on"
+    },
+    {
+      "id": "immunoglobulin",
+      "term": "immunoglobulin",
+      "topic": "antibody-immunity",
+      "concept": "antibody-structure",
+      "segs": [
+        [
+          "immun",
+          "immun/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "glob",
+          "glob/o"
+        ],
+        [
+          "ul"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a protection globule protein",
+      "meaning": "another name for an antibody, one of the globulin proteins of the immune system"
+    },
+    {
+      "id": "pathogen",
+      "term": "pathogen",
+      "topic": "antibody-immunity",
+      "concept": "pathogen-responses",
+      "segs": [
+        [
+          "path",
+          "path/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gen",
+          "-gen"
+        ]
+      ],
+      "literal": "a producer of suffering",
+      "meaning": "a microbe or parasite that can cause disease"
+    },
+    {
+      "id": "seroconversion",
+      "term": "seroconversion",
+      "topic": "antibody-immunity",
+      "concept": "primary-secondary-response",
+      "segs": [
+        [
+          "ser",
+          "ser/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "con",
+          "con-"
+        ],
+        [
+          "vers",
+          "vers/o"
+        ],
+        [
+          "ion",
+          "-ation"
+        ]
+      ],
+      "literal": "a turning around of the serum",
+      "meaning": "the point at which antibody against an infection first becomes detectable in the blood"
+    },
+    {
+      "id": "anaphylaxis",
+      "term": "anaphylaxis",
+      "topic": "immune-disorders",
+      "concept": "anaphylaxis",
+      "segs": [
+        [
+          "ana",
+          "ana-against-"
+        ],
+        [
+          "phylax",
+          "phylax/o"
+        ],
+        [
+          "is"
+        ]
+      ],
+      "literal": "the reverse of protection",
+      "meaning": "a severe, whole-body allergic reaction in which mast cells everywhere degranulate at once"
+    },
+    {
+      "id": "autoimmunity",
+      "term": "autoimmunity",
+      "topic": "immune-disorders",
+      "concept": "autoimmunity",
+      "segs": [
+        [
+          "auto",
+          "auto-"
+        ],
+        [
+          "immun",
+          "immun/o"
+        ],
+        [
+          "ity",
+          "-ity"
+        ]
+      ],
+      "literal": "the state of immunity to self",
+      "meaning": "an adaptive immune response against your own antigens"
+    },
+    {
+      "id": "myasthenia",
+      "term": "myasthenia",
+      "topic": "immune-disorders",
+      "concept": "myasthenia-gravis",
+      "segs": [
+        [
+          "my",
+          "my/o"
+        ],
+        [
+          "a",
+          "a-"
+        ],
+        [
+          "sthen",
+          "sthen/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "a condition of muscle without strength",
+      "meaning": "muscle weakness; in myasthenia gravis, weakness that worsens with use because antibodies remove acetylcholine receptor proteins"
     }
   ]
 }

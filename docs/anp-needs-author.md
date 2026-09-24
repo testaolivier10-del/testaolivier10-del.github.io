@@ -320,6 +320,24 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** O-negative red cells are given when there is no time to type; otherwise hospitals give type-specific, crossmatched blood. "Universal recipient" (AB positive) is an exam term, rarely used in practice. For plasma, AB is the universal donor.
 - **For your exam:** O negative = universal donor; AB positive = universal recipient.
 
+### stress-exhaustion-stage: do the adrenals wear out under stress?
+- **Status:** pending review.
+- **Where:** `adrenal-glands`.
+- **Evidence-based position:** under ordinary chronic stress the adrenal glands do not wear out; cortisol stays normal or high or its daily rhythm flattens, and harm comes from long exposure to stress hormones. "Adrenal fatigue" is not a recognized diagnosis (Cadegiani & Kater 2016).
+- **For your exam:** the stage of exhaustion is when resources are depleted and resistance fails.
+
+### adrenal-androgens-sex-drive: do adrenal androgens drive adult sex drive?
+- **Status:** pending review.
+- **Where:** `adrenal-glands`.
+- **Evidence-based position:** the clear roles are pubic and underarm hair at puberty and serving as precursors for stronger androgens and estrogens; DHEA replacement trials show no significant effect on women's sexual function. The page still teaches the textbook role; an author should decide.
+- **For your exam:** many textbooks say adrenal androgens contribute to sex drive in women.
+
+### calcitonin and oxytocin (see above)
+- **Status:** pending review.
+- **Where:** `thyroid-parathyroid`, `hypothalamus-pituitary`.
+- **Evidence-based position:** the calcitonin-in-adults and oxytocin-in-labor positions are applied in the endocrine chapter too (thyroid-parathyroid, hypothalamus-pituitary and the tools).
+- **For your exam:** as in those entries.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -528,6 +546,47 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   polycythemia vera, sickle cell trait, hepcidin, von Willebrand disease, PT/INR/aPTT, tPA,
   D-dimer, protein C, thrombomodulin, Virchow's triad, DIC, the blast cell stages; the alias
   "sensitization" belongs to hypersensitivity, so the Rh pages say "sensitized".
+
+## Phase 2: endocrine chapter, judgment calls for instructor review
+
+- **Positions taught:** thyroid hormones enter cells on transporter proteins (the hormone-action
+  page makes them the exception to lipid-soluble diffusion); T4 takes about 5–6 weeks to level
+  off, hence the six-week TSH recheck; ACTH stays low for weeks after stopping long-term
+  steroids; prolactin is held back mainly by dopamine; growth hormone acts mostly through IGF-1;
+  primary aldosteronism comes from a one-sided tumor or overgrowth of both glands; only strong
+  alcoholic drinks raise urine beyond their own water; thymosins are hedged; the 2022 names for
+  diabetes insipidus (arginine vasopressin deficiency and resistance) are in a going-further
+  note; old diabetes names (juvenile-onset, adult-onset) are mapped to type 1 and type 2; in
+  type 1 diabetes the glucagon response to lows fades, so epinephrine is the main defense.
+- **Normal values chosen:** plasma osmolality 275–295 mOsm/kg and an ADH trigger at a 5–10%
+  volume fall (matching the published chapters); lipid-soluble hormones more than 90% bound;
+  epinephrine half-life about 2 minutes, T4 about a week; about 90% of thyroid output as T4; T3
+  binds about 10 times more tightly; 2–3 months of stored hormone; iodine need 150 µg a day;
+  total blood calcium 8.5–10.5 mg/dL; calcium absorption 10–15% without calcitriol, 30–40% with
+  it; fasting glucose 70–99 mg/dL, diabetes cutoffs 126 fasting, 200 at 2 hours and A1C 6.5%;
+  hypoglycemia below 70 (important below 54); counterregulation thresholds about 80 and 65–70;
+  kidney glucose threshold about 180 mg/dL; one to three million islets; glycogen 100 g in the
+  liver and 400 g in muscle; adrenal gland 4–5 g; cortisol about 90% bound; body clock 24.2 h.
+- **Simplifications:** the insulin receptor as "an enzyme that adds phosphate groups"; GLUT
+  types not named; only the vascular permissive effect of cortisol; estrogen closes growth plates
+  in both sexes; sweating in hypoglycemia from sympathetic cholinergic fibers; diabetic
+  ketoacidosis described as "acid blood from unchecked fat breakdown" until ketones are taught;
+  the tool graph's insulin-resistance curve is schematic.
+- **Figures:** Figure 17.16 prints that PTH inhibits osteoblasts and stimulates osteoclasts
+  directly and that calcitonin stimulates osteoblasts (covered; PTH acts through osteoblasts);
+  17.19 prints that glucagon inhibits glucose uptake and puts gluconeogenesis in the ER
+  (covered); 17.8, 17.11 and 17.3 not used (swapped nuclei, ADH as a releasing hormone, wrong
+  amino acids); 17.13 prints "basal metabolic rate" (covered until metabolism); no cleared
+  thyroid or adrenal micrograph (17.12 and 17.17 need verification), so the adrenal panel is our
+  own drawing; the islet station uses Figure 23.26, a drawing.
+- **Lab sets:** the gland-location set belongs to hormone-action, so the pineal and parathyroid
+  labels stay covered; a later full set could ask them.
+- **Etymology to confirm:** glucagon ("-agon", leading, or "glucose agonist" as its discoverers
+  reportedly meant; both are given); calcitonin; oxytocin; thymus; melatonin; estrogen;
+  aldosterone.
+- **Map gaps:** isthmus, follicular and chief cells, the calcium-sensing receptor, 25-hydroxyvitamin D,
+  tetany, Hashimoto thyroiditis, somatostatin, supraoptic and paraventricular nuclei, short-loop
+  feedback, central vs nephrogenic diabetes insipidus, phosphatase, glycoprotein hormones.
 
 ## Decided at the Phase 0 reviews
 
