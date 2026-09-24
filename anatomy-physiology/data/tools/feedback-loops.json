@@ -2289,24 +2289,24 @@
       ],
       "classify": "The response (warming) closes the gap between body temperature and the set point, so this is negative feedback, just around a higher set point. Once the gap closes, the heat-gain responses ease off, and temperature holds at the new value instead of spiraling upward as it would in positive feedback.",
       "failure": {
-        "part": "control",
-        "q": "At the height of the fever, with temperature steady at 39 °C, you take a drug that blocks prostaglandin synthesis, and the set point falls back to 36.6 °C. What happens next?",
+        "part": "effector",
+        "q": "A patient on a breathing machine in intensive care has been given a drug that stops his skeletal muscles from contracting. Pyrogens from an infection then raise his set point to 39 °C. What happens to his temperature?",
         "options": [
           {
-            "text": "Skin vessels dilate and you sweat until temperature falls back toward 36.6 °C",
-            "why": "Right. Temperature is now above the set point, so the same loop runs its heat-loss responses. This is the flushed, sweaty feeling of a fever breaking."
+            "text": "It rises more slowly, because only the skin arterioles can respond",
+            "why": "Right. The sensors, pathways and hypothalamus all work, and skin vasoconstriction still keeps heat in, but without shivering much less heat is made. The loop can correct only as fast as its effectors allow."
           },
           {
-            "text": "Temperature stays at 39 °C, because the drug does not act on the skin or the sweat glands",
-            "why": "The drug does not need to act on the effectors. It changes the set point, and the intact loop then moves temperature to match it."
+            "text": "It rises just as fast, because the hypothalamus sends stronger commands",
+            "why": "Stronger commands cannot make paralyzed muscles contract. With one effector missing, heat is gained more slowly."
           },
           {
-            "text": "You shiver harder, because the drug lowers heat production",
-            "why": "With temperature above the set point, the hypothalamus stops heat-gain responses such as shivering."
+            "text": "It falls, because the set point drops to match what the muscles can do",
+            "why": "The set point follows prostaglandin E2, not the state of the effectors. It stays at 39 °C while the loop falls behind."
           },
           {
-            "text": "Nothing changes until the infection is fully cleared",
-            "why": "The set point follows prostaglandin E2, not the microbes directly. Blocking its synthesis lowers the set point even while the infection is still present."
+            "text": "It stays at 36.6 °C, because the fever depends entirely on shivering",
+            "why": "Skin vasoconstriction still cuts heat loss, and the body keeps making heat by its metabolism, so temperature can still drift up, only more slowly."
           }
         ],
         "correct": 0

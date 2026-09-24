@@ -15301,7 +15301,7 @@
         ],
         "label": "IgG to a new antigen",
         "labelAt": [
-         62,
+         52,
          22
         ],
         "anchor": "start"
@@ -15376,9 +15376,9 @@
           0.2
          ]
         ],
-        "label": "capsule sugar alone: mostly IgM",
+        "label": "sugar alone: mostly IgM",
         "labelAt": [
-         62,
+         52,
          22
         ],
         "anchor": "start"
