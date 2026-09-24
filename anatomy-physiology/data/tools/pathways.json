@@ -13559,7 +13559,7 @@
           "id": "basale",
           "label": "Stratum basale",
           "text": "A basal cell resting on the basement membrane divides by mitosis; one daughter stays as a stem cell.",
-          "why": "The only dividing cells of the epidermis sit in its deepest layer, closest to the capillaries of the dermis."
+          "why": "Almost all new epidermal cells come from its deepest layer, closest to the capillaries of the dermis."
         },
         {
           "id": "spinosum",
@@ -13597,7 +13597,7 @@
         "distractors": [
           {
             "text": "The cell divides again by mitosis, doubling the number of cells in the layer.",
-            "why": "Keratinocytes above the stratum basale do not divide. All new cells come from the basal cells at the bottom."
+            "why": "Cells that have left the stratum basale divide little if at all, and never enough to double a layer. New cells come from the basal cells at the bottom."
           },
           {
             "text": "Capillaries of the dermis grow up between the cells to feed them.",
@@ -13667,11 +13667,11 @@
         "distractors": [
           {
             "text": "UV light makes new melanocytes divide and crowd the stratum basale.",
-            "why": "A tan comes from existing melanocytes making more melanin; the number of melanocytes is about the same in darker and lighter skin."
+            "why": "The lasting darkening of a tan comes mainly from melanocytes making more melanin and passing it on, not from a crowd of new melanocytes. The step here is the signal from the damaged keratinocytes."
           },
           {
-            "text": "The melanin already in the skin absorbs the UV and turns darker, like a photograph.",
-            "why": "Melanin turns UV energy into harmless heat; it does not darken on the spot. The skin darkens over days as new melanin is made and passed on."
+            "text": "Keratinocytes start making their own melanin from tyrosine.",
+            "why": "Only melanocytes make melanin. Keratinocytes receive it, packed in melanosomes, once the melanocytes have been signaled."
           }
         ]
       },
@@ -13943,7 +13943,7 @@
           },
           {
             "text": "Hypodermis only, with the epidermis and dermis above it left intact.",
-            "why": "Heat reaches the deep layers through the surface, so a burn always destroys the layers above its deepest one."
+            "why": "Heat reaches the deep layers through the surface, so a heat burn destroys the layers above its deepest one. Electrical burns are the exception: current can injure deep tissue under skin that looks only mildly burned."
           }
         ]
       },
@@ -14153,8 +14153,8 @@
         "at": 2,
         "distractors": [
           {
-            "text": "The damaged cell always dies at once, so the damage cannot be passed on.",
-            "why": "Badly damaged cells may die, but a cell that copies its DNA before repairing it passes the error on, which is how cancer starts."
+            "text": "The damaged cells are carried up to the surface and shed before they can divide.",
+            "why": "UVB also reaches the dividing basal cells. A basal cell that copies its DNA before repairing it passes the error on, and that is how the damage becomes a mutation."
           },
           {
             "text": "Melanin in the cell turns the damaged bases back to normal.",

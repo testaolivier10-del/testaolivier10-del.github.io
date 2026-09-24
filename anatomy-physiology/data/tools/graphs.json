@@ -33970,29 +33970,33 @@
          ],
          [
           32,
-          50
+          56
+         ],
+         [
+          33,
+          67
          ],
          [
           34,
-          55
+          69
          ],
          [
           36,
-          56
+          70
          ],
          [
           38,
-          56
+          70
          ],
          [
           40,
-          56
+          70
          ]
         ],
         "label": "humid air",
         "labelAt": [
          38,
-         70
+         78
         ],
         "anchor": "middle"
        }
@@ -34265,7 +34269,7 @@
           80
          ]
         ],
-        "label": "a year on: about 80%",
+        "label": "levels off near 80%",
         "labelAt": [
          18,
          90
@@ -34695,7 +34699,7 @@
      "type": "shift",
      "level": "apply",
      "diff": 2,
-     "q": "At month 12, she starts a cancer drug that kills rapidly dividing cells. How does the scalp hair line change?",
+     "q": "At month 12, the person starts a cancer drug that kills rapidly dividing cells. How does the scalp hair line change?",
      "options": [
       "It stops rising and drops to zero within weeks",
       "It keeps rising at the same rate",

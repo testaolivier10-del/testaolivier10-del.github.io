@@ -13688,7 +13688,7 @@
       ],
       "level": "apply",
       "diff": 2,
-      "intro": "The rule of nines estimates the share of the total body surface area (TBSA) that is burned. Count only partial-thickness and full-thickness burns, not superficial ones. For each region, enter how much of it is burned: 100% for the whole region, 50% for one side (front or back), 0% for none. Set the patient to 1 for an infant, whose large head counts for more and whose short legs count for less.",
+      "intro": "The rule of nines estimates the share of the total body surface area (TBSA) that is burned. Count only partial-thickness and full-thickness burns, not superficial ones. For each region, enter how much of it is burned: 100% for the whole region, 50% for one side (front or back) of the head, an arm or a leg, 0% for none. The front and the back of the trunk are separate regions: enter 0 or 100% for each. Set the patient to 1 for an infant, whose large head counts for more and whose short legs count for less.",
       "formula": "Adult: head and neck 9, each arm 9, front of trunk 18, back of trunk 18, each leg 18, genital area 1. Infant: head and neck 18, each leg 13.5, the rest the same. %TBSA = Σ region value × share burned",
       "inputs": [
         {
@@ -13768,14 +13768,13 @@
           "sym": "front",
           "min": 0,
           "max": 100,
-          "step": 50,
+          "step": 100,
           "unit": "% of region",
           "default": 100,
           "gen": {
             "choices": [
               0,
               0,
-              50,
               100
             ]
           }
@@ -13786,14 +13785,13 @@
           "sym": "back",
           "min": 0,
           "max": 100,
-          "step": 50,
+          "step": 100,
           "unit": "% of region",
           "default": 0,
           "gen": {
             "choices": [
               0,
               0,
-              50,
               100
             ]
           }

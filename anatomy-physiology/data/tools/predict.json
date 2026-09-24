@@ -27212,14 +27212,14 @@
         "structure-function"
       ],
       "level": 1,
-      "misconception": "a tan means your skin has more pigment cells",
+      "misconception": "a tan is pigment made by the surface skin cells",
       "setup": "After a week of spending several hours a day in strong sun, the skin on your shoulders has darkened. Predict the changes in that skin compared with before the week began.",
       "start": "UV light damages DNA in the keratinocytes",
       "steps": {
         "signal": "Damaged keratinocytes release paracrine signals that act on nearby melanocytes",
         "make": "Melanocytes make more melanin and pass more melanosomes to the keratinocytes",
         "cap": "More melanin caps the keratinocyte nuclei, and the skin looks darker",
-        "count": "No new melanocytes are made; the same cells simply work harder"
+        "count": "Keratinocytes make no melanin of their own; they receive it from melanocytes"
       },
       "variables": [
         {
@@ -27245,12 +27245,12 @@
         },
         {
           "id": "number",
-          "name": "Number of melanocytes in the stratum basale",
+          "name": "Melanin made by the keratinocytes themselves",
           "answer": "none",
           "chain": [
             "count"
           ],
-          "why": "A week of tanning comes from each melanocyte making and passing on more melanin. Skin color differences, including a tan, come mainly from melanin output, not from the number of melanocytes."
+          "why": "Keratinocytes do not make melanin. They only take in melanosomes from melanocytes, so the darkening comes from what the melanocytes make and pass on."
         }
       ]
     },
@@ -27418,8 +27418,8 @@
       "stages": [
         {
           "id": "weeks",
-          "label": "The first weeks after the fever",
-          "prompt": "Two to three weeks after the fever, compared with before the illness.",
+          "label": "About a month after the fever",
+          "prompt": "About four weeks after the fever, compared with before the illness.",
           "start": "The fever acts as a major shock to his body",
           "steps": {
             "push": "Many anagen follicles are pushed into catagen and then telogen together",
@@ -27510,7 +27510,7 @@
         "apo": "Apocrine sweat glands in the armpits and groin start working",
         "bact": "Bacteria on the skin break down the proteins and lipids of the apocrine secretion",
         "odor": "Their products cause body odor",
-        "ecc": "Eccrine sweat glands have worked since birth and respond to heat as before"
+        "ecc": "Eccrine sweat glands have worked since birth; puberty adds no new ones"
       },
       "variables": [
         {
@@ -27545,12 +27545,12 @@
         },
         {
           "id": "eccrine",
-          "name": "Eccrine sweat produced in a warm room",
+          "name": "Number of eccrine sweat glands",
           "answer": "none",
           "chain": [
             "ecc"
           ],
-          "why": "Eccrine glands work from birth, and their main trigger is heat. Puberty does not switch them on."
+          "why": "Eccrine glands are present and working from birth, and puberty adds no new ones. What switches on at puberty is the apocrine glands."
         }
       ]
     },
@@ -27808,7 +27808,7 @@
                 "cond",
                 "cool"
               ],
-              "why": "Heat now leaves much faster than his muscles make it, so his temperature falls quickly. The trainer takes him out once it nears normal so it does not overshoot."
+              "why": "Heat now leaves much faster than his muscles make it, so his temperature falls quickly. The trainer takes him out when it has fallen to about 39 °C, because it keeps dropping for a while after he leaves the water."
             },
             {
               "id": "evap",
@@ -27838,7 +27838,7 @@
         "uvb": "Little UVB reaches the 7-dehydrocholesterol in her keratinocytes",
         "pre": "Little previtamin D3, and so little vitamin D3, is made in her skin",
         "liver": "The liver has less vitamin D3 to turn into 25-hydroxyvitamin D",
-        "melanin": "Her melanocytes are not changed by moving"
+        "melanin": "Her melanocytes are the same cells as before"
       },
       "variables": [
         {
@@ -27864,12 +27864,12 @@
         },
         {
           "id": "melanin",
-          "name": "Melanin in her skin",
+          "name": "Number of melanocytes in her skin",
           "answer": "none",
           "chain": [
             "melanin"
           ],
-          "why": "Moving does not change her melanocytes. Her skin may lighten slightly as a tan fades, but the cause of her low vitamin D is the missing UVB, not her pigment."
+          "why": "Moving does not change her melanocytes. Her skin may lighten a little as an old tan is shed, but the cause of her low vitamin D is the missing UVB, not her pigment."
         }
       ]
     },
@@ -27910,7 +27910,7 @@
             "skin",
             "liver"
           ],
-          "why": "The liver step works normally, so the main blood form can be at a healthy level even though the last step fails."
+          "why": "In this simplified case the liver step works normally, so the main blood form can be at a healthy level even though the last step fails. Real kidney disease often lowers it too, for other reasons."
         },
         {
           "id": "active",

@@ -604,6 +604,30 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** aging is a set of interacting damage and response processes (the hallmarks of aging; López-Otín et al., Cell 2023), not one cause. Oxidative damage contributes, but reactive oxygen species are also normal signals, and antioxidant supplements have not slowed aging or prevented chronic disease (Bjelakovic et al., Cochrane 2012); beta-carotene raised lung cancer in smokers (ATBC 1994, CARET 1996) and vitamin E raised prostate cancer (SELECT 2011). Neuron numbers in most of the cortex are largely kept; the loss is in neuron size, dendrites, synapses and white matter (Pakkenberg and Gundersen 1997). Telomere length in blood cells is a poor measure of an individual's biological age. Removing senescent cells delays age-related problems in mice; human trials are early.
 - **For your exam:** many textbooks list separate theories of aging; the free radical theory and the telomere (Hayflick) theory are the expected examples. Older texts may also say the brain loses many neurons with age.
 
+### tiptoe-lever-class: is rising onto the toes a second-class lever?
+- **Status:** pending review.
+- **Where:** `muscle-mechanics` (notes lever comparison table and going-further box on the second-class lever; questions anp-muscle-mechanics-9 to -11; flashcard ms-second-class); `lower-limb-muscles` (pathway ms-tiptoe-lever).
+- **Evidence-based position:** the lever class depends on which point is taken as the pivot, a convention, not a fact about the foot. With the ball of the foot as the fulcrum it is second-class; with the ankle joint as the axis (calf pulling up behind it, the floor pushing up in front) it is first-class. The two give the same forces only if the load at the ankle is taken as everything the leg pushes down on the foot with, body weight plus the calf's own pull (standard statics). Worked that way, the calf pulls with more than twice body weight, so the second-class shortcut, which suggests a pull smaller than the load, underestimates the calf's pull. The notes now say this in the going-further box and keep the textbook classification.
+- **For your exam:** A&P textbooks and exams expect "second-class lever" for standing on tiptoe. The going-further box ends: "For your exam, give the textbook answer: rising onto the toes is a second-class lever."
+
+### supraspinatus-initiates-abduction: does the supraspinatus start abduction alone?
+- **Status:** pending review.
+- **Where:** `upper-limb-muscles` (notes rotator cuff section, For your exam note).
+- **Evidence-based position:** recordings of muscle activity show the supraspinatus and deltoid are both active from the start of abduction and throughout it; the supraspinatus mainly compresses and centers the head of the humerus in the glenoid cavity so the deltoid's upward pull turns into rotation rather than sliding (Howell et al., J Bone Joint Surg Am 1986). It does not act alone for the first 15 degrees.
+- **For your exam:** many textbooks and exams say the supraspinatus initiates abduction (the first 15 degrees or so) and the deltoid takes over. The notes' For your exam note says: "If asked which muscle initiates abduction, answer the supraspinatus."
+
+### elbow-flexion-prime-mover: biceps brachii or brachialis?
+- **Status:** pending review.
+- **Where:** `upper-limb-muscles` (notes arm muscles section, For your exam note; question anp-upper-limb-muscles-21).
+- **Evidence-based position:** the brachialis is the main elbow flexor in every forearm position, because it inserts on the ulna, which does not rotate; the biceps brachii flexes hardest with the forearm supinated and is also a strong supinator (Basmajian and Latif, J Bone Joint Surg Am 1957). Question 21 asks why the brachialis flexes equally well palm up or palm down, keyed on the ulnar versus radial insertion.
+- **For your exam:** intro A&P texts and exams usually name the biceps brachii as the prime mover of elbow flexion, with the brachialis and brachioradialis as synergists. The notes' For your exam note says to give the biceps brachii unless a question says otherwise.
+
+### im-injection-sites: site choice, landmarks and volume limits
+- **Status:** pending review. Needs a clinical (nursing) reviewer.
+- **Where:** `lower-limb-muscles` (notes injection sites section, Figure 4 and going-further box; questions anp-lower-limb-muscles-13, -14 and -22; lab set injection-sites on os-11-5; pathway ms-ventrogluteal).
+- **Evidence-based position:** the ventrogluteal site is preferred for larger-volume intramuscular injections in adults and children; the vastus lateralis for infants; the deltoid for most adult vaccines, with small volumes (about 1 mL; some sources allow up to 2 mL), about 2–3 finger widths below the acromion. The dorsogluteal site is avoided and is never used for vaccines, at any age (CDC/ACIP General Best Practice Guidelines for Immunization: sciatic nerve risk and poorer absorption through fat). The notes give "typically up to about 1 mL" for the deltoid and no fixed limits for the other sites, and a going-further box says volume limits, needle lengths and age cutoffs differ between guidelines and facilities.
+- **For your exam:** nursing exams may cite specific volume limits (often 1 mL for the deltoid and 3 mL for the ventrogluteal site) that differ between textbooks; use the limit your program teaches. The page has no separate For your exam note; its going-further box says to follow the program's and facility's protocol.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -1313,6 +1337,69 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   Down syndrome is "in about a quarter of cases inherited from a carrier parent".
 - **Map gaps:** the writers reported many chapter terms without a map concept; none is used on an
   earlier page.
+
+## Phase 3: muscular system chapter, judgment calls for instructor review
+
+- **Positions taught:** rising onto the toes is taught as the textbook second-class lever, with a
+  going-further box that the class depends on the chosen pivot and that the second-class shortcut
+  underestimates the calf's pull (tiptoe-lever-class, above); the supraspinatus and deltoid work
+  together from the start of abduction (supraspinatus-initiates-abduction, above); the brachialis
+  is the main elbow flexor in every forearm position (elbow-flexion-prime-mover, above); the
+  scalenes are active in most breaths at rest, with the classic "accessory muscle" and "diaphragm
+  plus external intercostals" answers in For your exam notes in `head-neck-muscles` and
+  `trunk-muscles` (quiet-inspiration-muscles, above, not a separate entry); most rotator cuff
+  tears come from age-related wear of the tendon, with repeated overhead work adding strain
+  (impingement's role is debated, so the notes no longer give it as the single cause); the
+  gluteus maximus does little in easy walking on level ground and works hardest climbing stairs,
+  running or rising from a squat; the erector spinae go electrically quiet at the bottom of a full
+  forward bend (the flexion-relaxation phenomenon, going-further box, unnamed); in the tools,
+  setting a glass down is gravity-driven with the elbow flexors braking eccentrically, not the
+  triceps; stress
+  incontinence with a weak pelvic floor comes from weak or late contraction during the pressure
+  rise; the injection sites follow current practice (ventrogluteal preferred for larger volumes,
+  vastus lateralis for infants, deltoid for most adult vaccines with small volumes, dorsogluteal
+  avoided and never used for vaccines) with exact limits left to the program (im-injection-sites,
+  above; needs a clinical reviewer).
+- **Numbers:** the palmaris longus is absent on one or both sides in about one person in seven;
+  the deltoid site is about two to three finger widths (2.5 to 5 cm) below the acromion and takes
+  typically up to about 1 mL; the lever worked example is a 40 N weight held 32 cm from the elbow
+  with the muscle inserting 4 cm from it (a 320 N pull).
+- **Course-order workarounds:** the lever and naming topic (`muscle-mechanics`) comes before any
+  named muscle, so its examples use plain descriptions ("the front upper-arm muscle"); the larynx
+  ("voice box"), facial nerve, inspiration and expiration, thoracolumbar fascia, aorta and vena
+  cava, femoral vessels, ischemia and gait are written around, since later concepts own them;
+  nerve names are avoided in the notes and tools because the spinal nerves come later (the
+  sciatic nerve appears only in a preview box; the deltoid site's nerve is "a nerve that winds
+  around the back of the humerus"). The "ramus" problem the writer reported is fixed by spec
+  decision 64 (2).
+- **Figures and labels:** 18 figures and 5 lab sets (head and neck, trunk, upper limb, lower limb,
+  and injection sites). No cleared figure shows the injection sites, so that set uses the
+  whole-body muscle figure os-11-5. Printed variant spellings are accepted as answers: "Tensor
+  fascia latae", "Rhomboides" and "Peroneus longus". **For decision:** the `muscle-mechanics`
+  lesson figure os-11-2 has all of its labels covered, because the muscles it names are taught in
+  the next four topics; either replace it with a LevlPrep drawing that shows only fascicle
+  arrangements, or accept it as is.
+- **Audit judgment calls (question writing):** long keys in the five topics were shortened to
+  bring the longest-key rate to 28% (27 of 95), inside the 18–30% target; identification stems no
+  longer give the answer away through a root taught in the notes (for example "two bellies" for
+  the digastric); the vaccine question keeps "avoided at every age" for the dorsogluteal site,
+  since CDC guidance never uses the buttock for vaccines.
+- **Tool calls (tool writer and tool audit):** the chapter has no feedback loops (the dependency
+  map lists none: muscles move bones through levers, which are pathways and calculators, not
+  regulated variables); there is no tiptoe force calculator, because the second-class shortcut
+  would give a calf pull below body weight, the opposite of the worked answer (tiptoe-lever-class,
+  above), so the lever calculators use the elbow; the compartment pressure graph is an
+  illustrative case ("typical, not from one patient") and follows BOAST 10 wording: diagnosis
+  mainly from the signs, and when pressure is measured, danger when the gap to the lower number of
+  the blood pressure falls below about 30 mmHg, with the graph's 30 mmHg line labeled "a common
+  working danger level"; agonist and antagonist were not added as word-root entries (the roots are
+  taught in the notes, and the word-root tool keeps the chapter's muscle names and fascicle
+  shapes); the chewing-cycle pathway keeps grinding after closing (the slow-closing power stroke);
+  the carpal tunnel items explain the median nerve's vulnerability by its pressure-sensitive blood
+  supply, not softness, and call it "the nerve squeezed in the tunnel" without naming it.
+- **Map fixes:** "ramus" for the mandible and the ischiopubic ramus (decision 64 (2)) is the only
+  map fix this chapter needed; the other items on the Phase 3 map-fix list belong to the skeleton
+  and muscle tissue chapters.
 
 ## Decided at the Phase 0 reviews
 

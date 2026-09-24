@@ -19753,7 +19753,7 @@
    "level": "recall",
    "front": "What happens in the stratum basale, and which cells live there?",
    "back": "Basal (stem) cells divide by mitosis; melanocytes and tactile cells also sit here.",
-   "why": "It is the only layer of the epidermis whose cells divide, and it rests on the basement membrane nearest the dermal capillaries."
+   "why": "It is where almost all epidermal cell division happens, resting on the basement membrane nearest the dermal capillaries."
   },
   {
    "id": "ig-spinosum",
@@ -20407,7 +20407,7 @@
    "compare": "Radiation vs conduction vs convection vs evaporation",
    "front": "When the air is hotter than your skin, which heat-loss route still works?",
    "back": "Only evaporation. Radiation, conduction and convection run backward and add heat.",
-   "why": "Evaporation needs no gradient; it only needs air that can take up water vapor."
+   "why": "Evaporation needs no temperature gradient. It needs air that holds less water vapor than the wet skin surface, which is why it fails in humid air."
   },
   {
    "id": "ig-hr-580",
@@ -20679,7 +20679,7 @@
    "compare": "Burn depth classification",
    "front": "Burn depth: which burn blisters, and which does not?",
    "back": "Partial-thickness burns blister; superficial and full-thickness burns do not.",
-   "why": "Blisters need fluid leaking from living, injured dermal capillaries under dead epidermis. A superficial burn has no dead epidermis to lift; a full-thickness burn has no living capillaries."
+   "why": "Blisters need fluid leaking from injured but living dermal capillaries under dead epidermis. In a superficial burn the dermis is only irritated, so too little fluid leaks to lift the dead cells; in a full-thickness burn the capillaries are dead."
   },
   {
    "id": "ig-bd-pain",
