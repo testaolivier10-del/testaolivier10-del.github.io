@@ -205,7 +205,7 @@
     "options": [
       "Her clotting factors were used up during labor",
       "Her relaxed myometrium is not pinching the placental-bed arteries shut",
-      "Oxytocin given at delivery has widened the arteries supplying the uterus",
+      "Oxytocin given at delivery has widened her uterine arteries",
       "The placenta separated before the baby was born"
     ],
     "correct": 1,
@@ -290,7 +290,7 @@
       "The uterus shrinks while the placenta cannot, so it shears away",
       "Oxytocin digests the tissue anchoring the placenta",
       "Falling progesterone makes the placenta dissolve",
-      "Traction on the umbilical cord pulls the placenta off the uterine wall"
+      "Traction on the cord pulls the placenta off the wall"
     ],
     "correct": 0,
     "why": {

@@ -1,0 +1,48 @@
+{
+  "topic": "postnatal-lactation",
+  "hook": "<p>Baby Lina is born at 30 weeks. Within minutes she is breathing 80 times a minute and grunting, and the skin between her ribs sinks in with every breath. The team slips a small mask over her nose to hold her airways under steady pressure and gives surfactant down a tube into her trachea. Two floors up, a full-term baby born the same hour has already cried, turned pink and latched onto his mother's breast. Both babies face the same tasks in their first days: open the lungs, reroute the blood, stay warm and start feeding. This page explains how each happens, and what goes wrong when one does not.</p>",
+  "prereq": [
+    {
+      "q": "Which fetal shunt carries blood from the pulmonary trunk to the aorta?",
+      "options": ["Foramen ovale", "Ductus venosus", "Ductus arteriosus"],
+      "correct": 2,
+      "why": "The ductus arteriosus joins the pulmonary trunk to the aorta, sending most of the right ventricle's output past the fetal lungs. The foramen ovale links the atria, and the ductus venosus bypasses the liver.",
+      "review": "fetal-development-circulation"
+    },
+    {
+      "q": "What does surfactant do in the alveoli?",
+      "options": ["Lowers surface tension, so alveoli stay open more easily", "Carries oxygen across the respiratory membrane", "Kills microbes that reach the alveoli"],
+      "correct": 0,
+      "why": "Surfactant's phospholipids push between the water molecules lining the alveoli and weaken their pull on each other, so surface tension falls and the alveoli resist collapse.",
+      "review": "ventilation-mechanics"
+    },
+    {
+      "q": "What mainly holds prolactin release back?",
+      "options": ["Oxytocin", "Dopamine from the hypothalamus", "Growth hormone"],
+      "correct": 1,
+      "why": "Prolactin is the one anterior pituitary hormone held back more than it is pushed: dopamine from the hypothalamus holds it down, and less dopamine lets it rise.",
+      "review": "hypothalamus-pituitary"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-28-22",
+    "caption": "Circulation before and after birth. Hide the labels and name the three fetal shunts, then say what each becomes."
+  },
+  "chain": [
+    { "cause": "At birth, rising CO2, falling O2, cold, touch and noise drive the brainstem breathing centers.", "effect": "The baby takes its first breaths; air opens the alveoli, and surfactant keeps them from collapsing completely after each breath." },
+    { "cause": "Air and oxygen in the lungs relax the pulmonary arterioles.", "effect": "Pulmonary vascular resistance falls, lung blood flow rises about eightfold, and far more blood returns to the left atrium." },
+    { "cause": "Clamping the cord removes the low-resistance placenta and stops return through the umbilical vein.", "effect": "Systemic resistance and aortic pressure rise, and right atrial pressure falls below left." },
+    { "cause": "Left atrial pressure exceeds right, and aortic pressure exceeds pulmonary pressure.", "effect": "The foramen ovale is pressed shut, and flow through the ductus arteriosus reverses." },
+    { "cause": "Blood oxygen rises and prostaglandin E2 falls.", "effect": "The ductus arteriosus constricts within days and later becomes the ligamentum arteriosum, leaving the two circuits in series." }
+  ],
+  "misconception": {
+    "wrong": "Prolactin makes milk flow out of the breast when the baby suckles.",
+    "right": "Two hormones do two jobs. Prolactin, released when suckling lowers dopamine, makes the alveolar cells produce milk for the next feed. Oxytocin, released through the milk ejection reflex, contracts the myoepithelial cells and squeezes out the milk already made, within a minute. A mother can have full breasts yet no flow if stress blocks oxytocin, and a drug that acts like dopamine stops production without touching ejection."
+  },
+  "check": ["anp-postnatal-lactation-1", "anp-postnatal-lactation-2", "anp-postnatal-lactation-3", "anp-postnatal-lactation-11", "anp-postnatal-lactation-14", "anp-postnatal-lactation-16", "anp-postnatal-lactation-19", "anp-postnatal-lactation-22"],
+  "summary": "<p>At birth the lungs, already draining, open with a hard first breath, and surfactant keeps them open. Expanded, oxygenated lungs lower pulmonary resistance while clamping the cord raises systemic resistance, so left-sided pressures rise above right: the foramen ovale is pressed shut, and the ductus arteriosus constricts as oxygen rises and prostaglandin E2 falls, becoming the ligamentum arteriosum. A patent ductus shunts blood from the aorta into the lungs. Surfactant shortage causes respiratory distress syndrome in preterm babies. The Apgar score rates color, heart rate, reflex response, tone and breathing at 1 and 5 minutes. Newborns pass meconium within two days and keep warm mainly by burning brown fat. After the placenta is delivered, falling progesterone lets milk come in; suckling lowers dopamine so prolactin makes the next feed, and releases oxytocin, which ejects milk now. Colostrum is rich in IgA, which gives passive immunity to the baby's gut.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies (newborn care)" },
+    { "href": "/nremt/study-notes.html#chapter-8", "label": "NREMT: Life span development" }
+  ]
+}

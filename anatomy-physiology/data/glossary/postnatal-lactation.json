@@ -1,0 +1,27 @@
+{
+  "neonatal-transition": {
+    "def": "The changes in the first minutes to weeks after birth as breathing starts: pulmonary resistance falls and systemic resistance rises, the foramen ovale is pressed shut, the ductus arteriosus constricts and becomes the ligamentum arteriosum, and the ductus venosus closes. Meconium, the dark first stool made before birth, is passed within about two days.",
+    "roots": [["ligamentum", "band"], ["mekon", "poppy juice"]],
+    "say": "meh-KOH-nee-um"
+  },
+  "neonatal-respiratory-distress": {
+    "def": "Trouble breathing in a newborn's first hours: fast breathing, grunting, nostril flaring, chest wall sinking in and a bluish color. Its main cause in preterm babies is respiratory distress syndrome, a shortage of surfactant that lets alveoli collapse after each breath.",
+    "roots": [["hyal-", "glass"]],
+    "say": ""
+  },
+  "apgar": {
+    "def": "A 0-to-10 score of a newborn's condition at 1 and 5 minutes after birth, rating appearance (color), pulse, grimace (reflex response), activity (muscle tone) and respiration from 0 to 2 each. 7 to 10 is reassuring.",
+    "roots": [],
+    "say": "AP-gar"
+  },
+  "lactation": {
+    "def": "Making and releasing milk. Prolactin, which rises when suckling lowers dopamine, makes the milk; oxytocin, released in the milk ejection (let-down) reflex, contracts the myoepithelial cells and ejects it. Colostrum is the first, IgA-rich milk; foremilk is thinner and hindmilk richer in fat.",
+    "roots": [["lact-", "milk"], ["colostrum", "first milk"]],
+    "say": "kuh-LOSS-trum"
+  },
+  "neonatal-thermoregulation": {
+    "def": "How a newborn keeps its body temperature. A large surface for its size, wet skin, little fat and weak shivering make it lose heat fast; it makes heat mainly by nonshivering thermogenesis in brown fat, which uses oxygen and glucose.",
+    "roots": [["thermo-", "heat"]],
+    "say": ""
+  }
+}

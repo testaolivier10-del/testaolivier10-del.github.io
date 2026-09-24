@@ -1,0 +1,48 @@
+{
+  "topic": "placenta",
+  "hook": "<p>Dana, 27, smokes a pack of cigarettes a day and is 34 weeks pregnant. At her checkup the fetus measures small for its age, and the ultrasound shows less amniotic fluid than expected. Nothing is wrong with the fetus's own organs. The problem is upstream: every molecule of oxygen and glucose the fetus uses has to cross the placenta, and the carbon monoxide and nicotine in Dana's blood are crossing too. To see what went wrong, you need to know how the placenta is built and how things cross it.</p>",
+  "prereq": [
+    {
+      "q": "Which way does a substance move by net diffusion?",
+      "options": ["From where it is less concentrated to where it is more concentrated", "From where it is more concentrated to where it is less concentrated", "Always from blood into cells"],
+      "correct": 1,
+      "why": "Net diffusion runs down the concentration gradient, from higher to lower concentration, and it is faster over a larger area and a shorter distance.",
+      "review": "diffusion-osmosis"
+    },
+    {
+      "q": "What makes a blood vessel an artery?",
+      "options": ["It carries oxygen-rich blood", "It carries blood away from the heart", "It has valves"],
+      "correct": 1,
+      "why": "Arteries carry blood away from the heart and veins carry it toward the heart, whatever its oxygen content. The pulmonary arteries carry oxygen-poor blood.",
+      "review": "body-organization"
+    },
+    {
+      "q": "Which cells of the implanting embryo secrete hCG?",
+      "options": ["The syncytiotrophoblast", "The inner cell mass", "The hypoblast"],
+      "correct": 0,
+      "why": "The syncytiotrophoblast, the invading outer layer of the trophoblast, secretes hCG, which keeps the corpus luteum alive.",
+      "review": "embryonic-development"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-28-11",
+    "caption": "The placenta, its villi and the umbilical cord. Hide the labels and name the villi, the cord and its vessels. Note that the figure colors vessels by type, so the umbilical vein, which carries oxygen-rich blood, is drawn blue."
+  },
+  "chain": [
+    { "cause": "Cytotrophoblast cells invade the spiral arteries of the endometrium and replace their smooth muscle.", "effect": "The arteries widen and their resistance falls, so much more maternal blood pours into the intervillous space around the chorionic villi." },
+    { "cause": "Maternal blood bathes the villi, whose placental barrier is large (about 12 square meters) and only a few micrometers thick in places.", "effect": "Oxygen, glucose and other nutrients cross quickly into the fetal capillaries, by diffusion, facilitated diffusion and active transport." },
+    { "cause": "The villus capillaries drain into the umbilical vein.", "effect": "Oxygen-rich, nutrient-rich blood travels through the umbilical cord to the fetus, while the two umbilical arteries bring oxygen-poor blood and wastes back to the placenta." },
+    { "cause": "The growing syncytiotrophoblast makes more and more progesterone, estrogens and human placental lactogen.", "effect": "By weeks 7 to 9 the placenta supplies enough progesterone on its own, so the corpus luteum is no longer needed and hCG falls after its peak." },
+    { "cause": "Human placental lactogen rises with the mass of the placenta.", "effect": "The mother's cells respond less to insulin, so her blood glucose stays higher after meals and more glucose crosses to the fetus." }
+  ],
+  "misconception": {
+    "wrong": "The placenta filters out harmful substances and protects the fetus from them.",
+    "right": "The placental barrier sorts molecules by size, charge and lipid solubility, not by whether they are harmful. Small or fat-soluble substances cross whatever their effect: alcohol, nicotine, carbon monoxide and many medicines reach the fetus, and so do some viruses and some harmful maternal antibodies. The practical rule is that most things in the mother's blood reach the fetus to some degree."
+  },
+  "check": ["anp-placenta-1", "anp-placenta-3", "anp-placenta-5", "anp-placenta-7", "anp-placenta-10", "anp-placenta-13", "anp-placenta-16"],
+  "summary": "<p>The placenta forms from the chorion and the endometrium at the implantation site. Chorionic villi with fetal capillaries hang in the intervillous space, which fills with maternal blood from spiral arteries the trophoblast has widened. The placental barrier keeps the two bloods apart but grows thin and large, so gases, alcohol and many drugs cross by simple diffusion, glucose by facilitated diffusion, amino acids, calcium and iron by active transport, and IgG in vesicles; large proteins such as insulin and heparin do not cross. Fetal hemoglobin and the double Bohr effect help fetal blood load oxygen at low partial pressures. The umbilical cord holds two umbilical arteries, carrying oxygen-poor blood to the placenta, and one umbilical vein, carrying oxygen-rich blood to the fetus. The placental hormones are hCG, peaking near week 10; progesterone and estrogens, which the placenta takes over from the corpus luteum by weeks 7 to 9 and raises steadily; hPL, which reduces the mother's response to insulin; and relaxin, mostly from the corpus luteum in humans.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-36", "label": "NREMT: Obstetric and gynecologic emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" }
+  ]
+}

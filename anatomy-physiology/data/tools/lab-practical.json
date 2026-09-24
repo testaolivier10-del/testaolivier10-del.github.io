@@ -27787,6 +27787,2350 @@
      ]
     }
    ]
+  },
+  {
+   "id": "male-reproductive",
+   "title": "Male reproductive anatomy (midsagittal)",
+   "chapter": "reproductive",
+   "topic": "male-anatomy",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-27-2",
+     "topic": "male-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "penis",
+       "name": "Penis",
+       "accept": [],
+       "box": [
+        661,
+        151,
+        59,
+        20
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The male organ of copulation and the outlet for both urine and semen. Its shaft holds three columns of erectile tissue around the spongy urethra."
+      },
+      {
+       "id": "corona",
+       "name": "Corona",
+       "accept": [
+        "corona of glans",
+        "corona of the glans"
+       ],
+       "box": [
+        660,
+        256,
+        76,
+        20
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The raised rim at the base of the glans, where the glans meets the shaft of the penis."
+      },
+      {
+       "id": "glans-penis",
+       "name": "Glans penis",
+       "accept": [
+        "glans"
+       ],
+       "box": [
+        660,
+        296,
+        63,
+        47
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The enlarged, cap-shaped tip of the penis, formed by the widened end of the corpus spongiosum. It is rich in sensory nerve endings, and the external urethral opening sits at its tip."
+      },
+      {
+       "id": "prepuce",
+       "name": "Prepuce (foreskin)",
+       "accept": [
+        "foreskin"
+       ],
+       "box": [
+        213,
+        395,
+        91,
+        46
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The loose fold of skin that covers the glans of an uncircumcised penis. Circumcision removes it."
+      },
+      {
+       "id": "scrotum-external",
+       "name": "Scrotum",
+       "accept": [],
+       "box": [
+        407,
+        394,
+        83,
+        21
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The skin-covered sac that hangs outside the body cavity and holds the testes. It keeps them a few degrees cooler than the core of the body, which sperm production needs."
+      },
+      {
+       "id": "prostate-gland",
+       "name": "Prostate gland",
+       "accept": [
+        "prostate"
+       ],
+       "box": [
+        473,
+        583,
+        134,
+        24
+       ],
+       "concept": "accessory-glands-male",
+       "taught": "male-anatomy",
+       "fn": "A walnut-sized gland wrapped around the urethra just below the urinary bladder. It adds a thin, milky fluid, about a third of the volume of semen."
+      },
+      {
+       "id": "ductus-deferens",
+       "name": "Ductus (vas) deferens",
+       "accept": [
+        "vas deferens",
+        "vas",
+        "deferent duct"
+       ],
+       "box": [
+        0,
+        654,
+        198,
+        24
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The muscular duct that carries sperm from the tail of the epididymis up through the spermatic cord and inguinal canal, over the bladder, to the ejaculatory duct. Cutting it (vasectomy) keeps sperm out of the semen.",
+       "follow": {
+        "q": "A vasectomy keeps sperm out of the semen. Which structure does it cut?",
+        "options": [
+         "Epididymis",
+         "Spongy urethra",
+         "Ductus deferens",
+         "Ejaculatory duct"
+        ],
+        "correct": 2,
+        "why": "A vasectomy cuts and ties the ductus deferens on each side, in the scrotum where it is easy to reach, so sperm from the epididymis can no longer reach the ejaculatory duct. The epididymis sits on the testis, and the ejaculatory ducts and urethra lie deep in the pelvis and also carry the glands' fluids, which still make up almost all of the semen.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "suspensory-ligament-of-penis",
+       "name": "Suspensory ligament of penis",
+       "accept": [
+        "suspensory ligament",
+        "suspensory ligament of the penis"
+       ],
+       "box": [
+        0,
+        682,
+        262,
+        24
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "A band of connective tissue that anchors the root of the penis to the front of the pubic symphysis."
+      },
+      {
+       "id": "ampulla-of-ductus-deferens",
+       "name": "Ampulla of ductus deferens",
+       "accept": [
+        "ampulla",
+        "ampulla of the ductus deferens",
+        "ampulla of vas deferens",
+        "ampulla of the vas deferens"
+       ],
+       "box": [
+        863,
+        684,
+        239,
+        24
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The widened last part of the ductus deferens, behind the bladder, where it joins the duct of the seminal vesicle to form the ejaculatory duct."
+      },
+      {
+       "id": "urinary-bladder",
+       "name": "Urinary bladder",
+       "accept": [
+        "bladder"
+       ],
+       "box": [
+        0,
+        715,
+        142,
+        23
+       ],
+       "concept": "urinary-bladder",
+       "taught": "kidney-anatomy",
+       "fn": "The muscular sac that stores urine. In males the prostate lies just below it and the seminal vesicles lie behind it."
+      },
+      {
+       "id": "pubic-symphysis",
+       "name": "Pubic symphysis",
+       "accept": [
+        "symphysis pubis"
+       ],
+       "box": [
+        0,
+        748,
+        153,
+        24
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The cartilage joint that joins the two pubic bones at the front of the pelvis. The root of the penis is anchored in front of it."
+      },
+      {
+       "id": "seminal-vesicle",
+       "name": "Seminal vesicle",
+       "accept": [
+        "seminal vesicles",
+        "seminal gland",
+        "seminal glands"
+       ],
+       "box": [
+        863,
+        729,
+        145,
+        20
+       ],
+       "concept": "accessory-glands-male",
+       "taught": "male-anatomy",
+       "fn": "One of a pair of glands behind the bladder. It makes most of the volume of semen, a thick fluid rich in the sugar fructose that fuels the sperm.",
+       "follow": {
+        "q": "Which glands make most of the volume of semen?",
+        "options": [
+         "Prostate gland",
+         "Seminal vesicles",
+         "Bulbourethral glands",
+         "Testes"
+        ],
+        "correct": 1,
+        "why": "The seminal vesicles supply roughly two thirds of the volume of semen, a thick fluid rich in fructose. The prostate adds most of the rest, the bulbourethral glands add only a few drops of mucus before ejaculation, and the sperm from the testes make up a tiny fraction of the volume.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "ejaculatory-duct",
+       "name": "Ejaculatory duct",
+       "accept": [
+        "ejaculatory ducts"
+       ],
+       "box": [
+        864,
+        780,
+        148,
+        24
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "A short duct formed where the ampulla of the ductus deferens joins the duct of the seminal vesicle. It runs through the prostate and empties into the prostatic urethra."
+      },
+      {
+       "id": "prostatic-urethra",
+       "name": "Prostatic urethra",
+       "accept": [],
+       "box": [
+        864,
+        809,
+        151,
+        20
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The first part of the male urethra, running through the prostate. The ejaculatory ducts and the ducts of the prostate open into it."
+      },
+      {
+       "id": "deep-muscles-of-perineum",
+       "name": "Deep muscles of perineum",
+       "accept": [
+        "deep perineal muscles",
+        "deep muscles of the perineum",
+        "deep transverse perineal muscle",
+        "urogenital diaphragm"
+       ],
+       "box": [
+        864,
+        837,
+        238,
+        24
+       ],
+       "concept": "pelvic-floor",
+       "taught": "trunk-muscles",
+       "fn": "The layer of skeletal muscle in the pelvic floor that the membranous urethra passes through. It includes the external urethral sphincter, which lets you hold urine by choice."
+      },
+      {
+       "id": "bulbourethral-gland",
+       "name": "Bulbourethral gland",
+       "accept": [
+        "bulbourethral glands",
+        "cowper's gland",
+        "cowper gland",
+        "cowper's glands"
+       ],
+       "box": [
+        864,
+        865,
+        176,
+        24
+       ],
+       "concept": "accessory-glands-male",
+       "taught": "male-anatomy",
+       "fn": "A pea-sized gland beside the membranous urethra. Just before ejaculation it releases clear mucus that lubricates the urethra and neutralizes traces of acidic urine."
+      },
+      {
+       "id": "muscles-of-perineum-surrounding-anus",
+       "name": "Muscles of perineum surrounding anus",
+       "accept": [
+        "external anal sphincter",
+        "anal sphincter",
+        "muscles surrounding anus",
+        "perineal muscles around the anus"
+       ],
+       "box": [
+        863,
+        893,
+        188,
+        47
+       ],
+       "concept": "pelvic-floor",
+       "taught": "trunk-muscles",
+       "fn": "Skeletal muscle of the pelvic floor that rings the anus. It forms the external anal sphincter, which keeps the anus closed until you choose to open it."
+      },
+      {
+       "id": "corpus-cavernosum",
+       "name": "Corpus cavernosum",
+       "accept": [
+        "corpora cavernosa"
+       ],
+       "box": [
+        0,
+        926,
+        182,
+        24
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "One of the two paired columns of erectile tissue along the top of the penis. When they fill with blood the penis becomes stiff."
+      },
+      {
+       "id": "membranous-urethra",
+       "name": "Membranous urethra",
+       "accept": [
+        "intermediate urethra"
+       ],
+       "box": [
+        864,
+        940,
+        188,
+        20
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The short middle part of the male urethra, passing through the deep muscles of the perineum between the prostate and the penis."
+      },
+      {
+       "id": "spongy-urethra",
+       "name": "Spongy urethra",
+       "accept": [
+        "penile urethra"
+       ],
+       "box": [
+        631,
+        969,
+        142,
+        24
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The longest part of the male urethra, running through the corpus spongiosum to the external urethral opening. It carries both urine and semen."
+      },
+      {
+       "id": "testis",
+       "name": "Testis",
+       "accept": [
+        "testes",
+        "testicle"
+       ],
+       "box": [
+        630,
+        1006,
+        62,
+        20
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "One of the paired male gonads, inside the scrotum. Its coiled seminiferous tubules make sperm, and the cells between the tubules make testosterone."
+      },
+      {
+       "id": "epididymis",
+       "name": "Epididymis",
+       "accept": [],
+       "box": [
+        632,
+        1034,
+        103,
+        23
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "A single, tightly coiled tube about 6 m long lying along the back of the testis. Sperm mature and are stored here, gaining the ability to swim.",
+       "follow": {
+        "q": "Where do sperm gain the ability to swim and wait until ejaculation?",
+        "options": [
+         "Seminal vesicle",
+         "Prostate gland",
+         "Ejaculatory duct",
+         "Epididymis"
+        ],
+        "correct": 3,
+        "why": "Sperm leave the testis unable to swim and mature over about two weeks in the epididymis, which also stores them. The seminal vesicles and prostate are glands that add fluid, not storage sites, and the ejaculatory duct is only a short passage through the prostate.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "scrotum",
+       "name": "Scrotum",
+       "accept": [],
+       "box": [
+        631,
+        1068,
+        82,
+        20
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The skin-covered sac that hangs outside the body cavity and holds the testes. It keeps them a few degrees cooler than the core of the body, which sperm production needs."
+      },
+      {
+       "id": "corpus-spongiosum",
+       "name": "Corpus spongiosum",
+       "accept": [],
+       "box": [
+        0,
+        1069,
+        181,
+        25
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The single column of erectile tissue along the underside of the penis. It surrounds the spongy urethra and widens at the tip into the glans. It stays softer during erection, so the urethra stays open."
+      },
+      {
+       "id": "external-urethral-opening",
+       "name": "External urethral opening",
+       "accept": [
+        "external urethral orifice",
+        "urethral opening",
+        "external urethral meatus",
+        "urethral meatus",
+        "urethral orifice"
+       ],
+       "box": [
+        116,
+        1168,
+        224,
+        24
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The opening at the tip of the glans penis through which urine and semen leave the body."
+      }
+     ]
+    },
+    {
+     "figure": "os-27-4",
+     "topic": "male-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "spermatic-cord",
+       "name": "Spermatic cord",
+       "accept": [],
+       "box": [
+        142,
+        88,
+        138,
+        24
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The bundle running between the abdomen and each testis: the ductus deferens, testicular artery, veins, nerves and lymphatic vessels, wrapped in connective tissue and the cremaster muscle."
+      },
+      {
+       "id": "cremaster-muscle",
+       "name": "Cremaster muscle",
+       "accept": [
+        "cremaster",
+        "cremaster muscles"
+       ],
+       "box": [
+        596,
+        139,
+        100,
+        41
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "Skeletal muscle in the spermatic cord that wraps the testis. It contracts in the cold, pulling the testis up toward the warm body, and relaxes to lower it again.",
+       "follow": {
+        "q": "A man steps into a cold pool. What do his cremaster muscles do?",
+        "options": [
+         "Contract, pulling the testes up",
+         "Relax, letting the testes hang lower",
+         "Contract, pushing sperm into the ductus deferens",
+         "Relax, so more blood reaches the testes"
+        ],
+        "correct": 0,
+        "why": "Cold makes the cremaster muscles contract and pull the testes up against the warm body, which holds their temperature steady. They relax again in the warmth, letting the testes hang lower to lose heat. They do not move sperm along the ducts, and the change is about heat, not blood flow.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "tunica-vaginalis",
+       "name": "Tunica vaginalis",
+       "accept": [],
+       "box": [
+        595,
+        215,
+        146,
+        24
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The outer, double-layered serous sac around the front and sides of the testis, with a film of fluid between its layers."
+      },
+      {
+       "id": "efferent-ductule",
+       "name": "Efferent ductule",
+       "accept": [
+        "efferent ductules",
+        "efferent ducts",
+        "efferent duct"
+       ],
+       "box": [
+        0,
+        209,
+        74,
+        41
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "One of about a dozen small ducts that carry sperm from the rete testis into the head of the epididymis."
+      },
+      {
+       "id": "head-of-epididymis",
+       "name": "Head of epididymis",
+       "accept": [
+        "epididymis head",
+        "head of the epididymis"
+       ],
+       "box": [
+        595,
+        283,
+        101,
+        44
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The top part of the epididymis, where the efferent ductules bring sperm in from the testis."
+      },
+      {
+       "id": "body-of-epididymis",
+       "name": "Body of epididymis",
+       "accept": [
+        "epididymis body",
+        "body of the epididymis"
+       ],
+       "box": [
+        0,
+        290,
+        97,
+        44
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The middle part of the epididymis, running down the back of the testis, where sperm keep maturing."
+      },
+      {
+       "id": "seminiferous-tubule-lobules",
+       "name": "Seminiferous tubule lobules",
+       "accept": [
+        "lobules",
+        "testicular lobules",
+        "lobule",
+        "seminiferous tubules",
+        "seminiferous tubule"
+       ],
+       "box": [
+        595,
+        396,
+        128,
+        40
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The wedge-shaped compartments of the testis, about 250 of them, each holding one to four tightly coiled seminiferous tubules, where sperm are made."
+      },
+      {
+       "id": "ductus-deferens",
+       "name": "Ductus deferens",
+       "accept": [
+        "vas deferens",
+        "vas",
+        "deferent duct"
+       ],
+       "box": [
+        0,
+        398,
+        81,
+        41
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The muscular duct that carries sperm from the tail of the epididymis up through the spermatic cord and inguinal canal, over the bladder, to the ejaculatory duct."
+      },
+      {
+       "id": "septa-tunica-albuginea",
+       "name": "Septa (tunica albuginea)",
+       "accept": [
+        "septum",
+        "testicular septa",
+        "septa of the testis"
+       ],
+       "box": [
+        595,
+        475,
+        123,
+        45
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "Thin walls that run inward from the tunica albuginea and divide the testis into lobules. The printed \"(tunica albuginea)\" names the capsule they grow from."
+      },
+      {
+       "id": "rete-testis",
+       "name": "Rete testis",
+       "accept": [
+        "rete"
+       ],
+       "box": [
+        0,
+        498,
+        52,
+        41
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "A network of channels at the back of the testis that collects sperm from the straight tubules and passes them to the efferent ductules.",
+       "follow": {
+        "q": "Put the route right: sperm leave the seminiferous tubules and pass through which structure just before the efferent ductules?",
+        "options": [
+         "Ductus deferens",
+         "Rete testis",
+         "Tail of epididymis",
+         "Ejaculatory duct"
+        ],
+        "correct": 1,
+        "why": "The order is seminiferous tubule, straight tubule, rete testis, efferent ductules, then the head, body and tail of the epididymis, the ductus deferens and the ejaculatory duct. The rete testis is the network at the back of the testis that feeds the efferent ductules; the others all come later on the route.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "tunica-albuginea",
+       "name": "Tunica albuginea",
+       "accept": [],
+       "box": [
+        595,
+        549,
+        150,
+        24
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The tough, white capsule of dense connective tissue directly around the testis. It sends septa inward that divide the testis into lobules."
+      },
+      {
+       "id": "straight-tubule",
+       "name": "Straight tubule",
+       "accept": [
+        "straight tubules",
+        "tubulus rectus",
+        "tubuli recti"
+       ],
+       "box": [
+        0,
+        580,
+        73,
+        40
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The short, straight end of a seminiferous tubule that carries sperm into the rete testis."
+      },
+      {
+       "id": "tail-of-epididymis",
+       "name": "Tail of epididymis",
+       "accept": [
+        "epididymis tail",
+        "tail of the epididymis"
+       ],
+       "box": [
+        400,
+        665,
+        155,
+        23
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The lowest part of the epididymis, where mature sperm are stored before the tube continues as the ductus deferens."
+      }
+     ]
+    },
+    {
+     "figure": "os-27-3",
+     "topic": "male-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "raphe",
+       "name": "Raphe",
+       "accept": [
+        "scrotal raphe",
+        "median raphe"
+       ],
+       "box": [
+        90,
+        314,
+        53,
+        19
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The visible midline ridge of the scrotal skin. It marks where the scrotal septum lies inside."
+      },
+      {
+       "id": "scrotal-septum",
+       "name": "Scrotal septum",
+       "accept": [
+        "septum of scrotum",
+        "septum"
+       ],
+       "box": [
+        262,
+        61,
+        57,
+        35
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The wall of connective tissue and smooth muscle that divides the scrotum into two compartments, one for each testis."
+      },
+      {
+       "id": "cremaster-muscles",
+       "name": "Cremaster muscles",
+       "accept": [
+        "cremaster muscle",
+        "cremaster",
+        "cremasteric muscle"
+       ],
+       "box": [
+        260,
+        315,
+        78,
+        33
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "Skeletal muscle in the spermatic cord that wraps the testis. It contracts in the cold, pulling the testis up toward the warm body, and relaxes to lower it again."
+      },
+      {
+       "id": "dartos-muscles",
+       "name": "Dartos muscles",
+       "accept": [
+        "dartos muscle",
+        "dartos",
+        "tunica dartos"
+       ],
+       "box": [
+        378,
+        315,
+        63,
+        33
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "A layer of smooth muscle just under the scrotal skin. It contracts in the cold, wrinkling the skin and drawing the scrotum closer to the body to hold in heat."
+      },
+      {
+       "id": "plexus-of-testicular-veins",
+       "name": "Plexus of testicular veins",
+       "accept": [
+        "pampiniform plexus",
+        "testicular veins",
+        "testicular vein plexus"
+       ],
+       "box": [
+        478,
+        44,
+        70,
+        49
+       ],
+       "concept": "venae-cavae-tributaries",
+       "taught": "systemic-veins",
+       "fn": "The tangle of veins around the testicular artery in the spermatic cord (the pampiniform plexus). Cooler blood coming back from the testis takes heat from the arterial blood going in, which helps keep the testis cool."
+      },
+      {
+       "id": "ductus-deferens",
+       "name": "Ductus deferens",
+       "accept": [
+        "vas deferens",
+        "vas",
+        "deferent duct"
+       ],
+       "box": [
+        560,
+        44,
+        66,
+        32
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The muscular duct that carries sperm from the tail of the epididymis up through the spermatic cord and inguinal canal, over the bladder, to the ejaculatory duct."
+      },
+      {
+       "id": "spermatic-cord",
+       "name": "Spermatic cord",
+       "accept": [],
+       "box": [
+        626,
+        44,
+        75,
+        32
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "The bundle running between the abdomen and each testis: the ductus deferens, testicular artery, veins, nerves and lymphatic vessels, wrapped in connective tissue and the cremaster muscle."
+      },
+      {
+       "id": "testicular-artery",
+       "name": "Testicular artery",
+       "accept": [
+        "gonadal artery"
+       ],
+       "box": [
+        724,
+        67,
+        71,
+        36
+       ],
+       "concept": "abdominal-arteries",
+       "taught": "systemic-arteries",
+       "fn": "The artery that supplies each testis. It branches from the abdominal aorta just below the renal arteries and runs down in the spermatic cord."
+      },
+      {
+       "id": "autonomic-nerve",
+       "name": "Autonomic nerve",
+       "accept": [
+        "autonomic nerves",
+        "autonomic fibers"
+       ],
+       "box": [
+        724,
+        115,
+        77,
+        32
+       ],
+       "concept": "autonomic-ns-basic",
+       "taught": "nervous-system-organization",
+       "fn": "A nerve in the spermatic cord carrying autonomic fibers to the testis and its blood vessels."
+      },
+      {
+       "id": "lymphatic-vessel",
+       "name": "Lymphatic vessel",
+       "accept": [
+        "lymphatic vessels",
+        "lymphatic",
+        "lymph vessel"
+       ],
+       "box": [
+        724,
+        160,
+        75,
+        32
+       ],
+       "concept": "lymphatic-vessels",
+       "taught": "lymphatic-system",
+       "fn": "A vessel in the spermatic cord that drains lymph from the testis up to lymph nodes in the abdomen."
+      },
+      {
+       "id": "testis",
+       "name": "Testis",
+       "accept": [
+        "testes",
+        "testicle"
+       ],
+       "box": [
+        724,
+        237,
+        48,
+        16
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "One of the paired male gonads, inside the scrotum. Its coiled seminiferous tubules make sperm, and the cells between the tubules make testosterone."
+      },
+      {
+       "id": "epididymis",
+       "name": "Epididymis",
+       "accept": [],
+       "box": [
+        533,
+        315,
+        79,
+        19
+       ],
+       "concept": "male-ducts",
+       "taught": "male-anatomy",
+       "fn": "A single, tightly coiled tube about 6 m long lying along the back of the testis. Sperm mature and are stored here, gaining the ability to swim."
+      }
+     ]
+    },
+    {
+     "figure": "os-27-7",
+     "topic": "male-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "penile-venules",
+       "name": "Penile venules (uncompressed)",
+       "accept": [
+        "venules",
+        "penile veins"
+       ],
+       "box": [
+        345,
+        41,
+        111,
+        34
+       ],
+       "concept": "venule-vein",
+       "taught": "vessel-structure",
+       "fn": "Small veins that drain blood out of the erectile tissue. In the relaxed penis they stay open, so blood leaves as fast as it arrives; during erection the swollen tissue presses them flat."
+      },
+      {
+       "id": "deep-dorsal-vein",
+       "name": "Deep dorsal vein",
+       "accept": [
+        "deep dorsal vein of the penis",
+        "dorsal vein"
+       ],
+       "box": [
+        339,
+        89,
+        115,
+        19
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The vein along the top of the penis, between the corpora cavernosa, that drains blood from the erectile tissue."
+      },
+      {
+       "id": "corpora-cavernosa",
+       "name": "Corpora cavernosa",
+       "accept": [
+        "corpus cavernosum",
+        "cavernous bodies"
+       ],
+       "box": [
+        338,
+        126,
+        130,
+        19
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The two columns of erectile tissue along the top of the penis. During erection their spaces fill with blood and they do most of the stiffening."
+      },
+      {
+       "id": "cavernosal-arteries",
+       "name": "Cavernosal arteries",
+       "accept": [
+        "cavernosal artery",
+        "deep arteries of the penis",
+        "deep artery of the penis",
+        "cavernous arteries",
+        "cavernous artery"
+       ],
+       "box": [
+        329,
+        165,
+        133,
+        16
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "An artery running down the center of each corpus cavernosum. When parasympathetic signals relax its smooth muscle, it widens and floods the erectile tissue with blood.",
+       "follow": {
+        "q": "What starts an erection?",
+        "options": [
+         "The deep dorsal vein widens",
+         "Skeletal muscle in the shaft contracts",
+         "The cavernosal arteries widen",
+         "The corpus spongiosum fills with air"
+        ],
+        "correct": 2,
+        "why": "Parasympathetic signals relax the smooth muscle of the cavernosal arteries, so they widen and blood pours into the erectile tissue. The swelling tissue then squeezes the venules and veins that drain it, trapping blood. A wider vein would let blood out faster, and the shaft has no skeletal muscle doing the stiffening.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "spongy-urethra",
+       "name": "Spongy urethra",
+       "accept": [
+        "penile urethra",
+        "urethra"
+       ],
+       "box": [
+        344,
+        202,
+        106,
+        19
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The longest part of the male urethra, running through the corpus spongiosum to the external urethral opening. It carries both urine and semen."
+      },
+      {
+       "id": "prepuce",
+       "name": "Prepuce",
+       "accept": [
+        "foreskin"
+       ],
+       "box": [
+        368,
+        238,
+        63,
+        19
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The loose fold of skin that covers the glans of an uncircumcised penis. Circumcision removes it."
+      },
+      {
+       "id": "corpus-spongiosum",
+       "name": "Corpus spongiosum",
+       "accept": [],
+       "box": [
+        328,
+        269,
+        134,
+        19
+       ],
+       "concept": "penis",
+       "taught": "male-anatomy",
+       "fn": "The single column of erectile tissue along the underside of the penis. It surrounds the spongy urethra and widens at the tip into the glans. It stays softer during erection, so the urethra stays open.",
+       "follow": {
+        "q": "Which column of erectile tissue surrounds the urethra?",
+        "options": [
+         "Corpus spongiosum",
+         "Corpora cavernosa",
+         "Tunica albuginea",
+         "Deep dorsal vein"
+        ],
+        "correct": 0,
+        "why": "The single corpus spongiosum runs along the underside of the penis around the spongy urethra and widens into the glans. The paired corpora cavernosa lie above it, the tunica albuginea is the tough covering around the columns, and the deep dorsal vein runs along the top.",
+        "level": "recall"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "female-reproductive",
+   "title": "Female reproductive anatomy (midsagittal)",
+   "chapter": "reproductive",
+   "topic": "female-anatomy",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-27-9",
+     "topic": "female-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "uterus",
+       "name": "Uterus",
+       "accept": [
+        "womb"
+       ],
+       "box": [
+        906,
+        295,
+        94,
+        26
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The hollow, pear-shaped muscular organ in the pelvis between the bladder and the rectum. Its thick smooth-muscle wall (myometrium) and inner lining (endometrium) hold and nourish a developing baby."
+      },
+      {
+       "id": "ovary",
+       "name": "Ovary",
+       "accept": [
+        "ovaries"
+       ],
+       "box": [
+        905,
+        340,
+        87,
+        33
+       ],
+       "concept": "ovaries",
+       "taught": "female-anatomy",
+       "fn": "One of the paired female gonads, beside the uterus. It holds the oocytes, each in a follicle, and makes estrogen and progesterone."
+      },
+      {
+       "id": "cervix",
+       "name": "Cervix",
+       "accept": [
+        "uterine cervix",
+        "cervix of uterus"
+       ],
+       "box": [
+        905,
+        481,
+        92,
+        27
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The narrow lower end of the uterus that projects into the top of the vagina. Its canal links the cavity of the uterus with the vagina.",
+       "follow": {
+        "q": "Which part of the uterus projects into the top of the vagina?",
+        "options": [
+         "Fundus",
+         "Body",
+         "Broad ligament",
+         "Cervix"
+        ],
+        "correct": 3,
+        "why": "The cervix is the narrow lower end of the uterus, and it pokes into the top of the vagina with its canal opening there. The fundus is the rounded top above the tubes, the body is the main middle part, and the broad ligament is a sheet of peritoneum, not part of the uterus.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "rectum",
+       "name": "Rectum",
+       "accept": [],
+       "box": [
+        906,
+        531,
+        107,
+        27
+       ],
+       "concept": "large-intestine-regions",
+       "taught": "large-intestine",
+       "fn": "The last straight part of the large intestine, lying behind the vagina and uterus."
+      },
+      {
+       "id": "vagina",
+       "name": "Vagina",
+       "accept": [],
+       "box": [
+        905,
+        588,
+        98,
+        32
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The muscular tube, about 10 cm long, from the cervix to the outside. It receives the penis, lets menstrual flow out and forms the birth canal."
+      },
+      {
+       "id": "anus",
+       "name": "Anus",
+       "accept": [
+        "anal opening",
+        "anal canal"
+       ],
+       "box": [
+        904,
+        651,
+        77,
+        27
+       ],
+       "concept": "large-intestine-regions",
+       "taught": "large-intestine",
+       "fn": "The opening at the end of the digestive tract, behind the vaginal opening."
+      },
+      {
+       "id": "bladder",
+       "name": "Bladder",
+       "accept": [
+        "urinary bladder"
+       ],
+       "box": [
+        0,
+        362,
+        106,
+        27
+       ],
+       "concept": "urinary-bladder",
+       "taught": "kidney-anatomy",
+       "fn": "The muscular sac that stores urine. It lies in front of the uterus and above the front wall of the vagina."
+      },
+      {
+       "id": "pubic-symphysis",
+       "name": "Pubic symphysis",
+       "accept": [
+        "symphysis pubis"
+       ],
+       "box": [
+        0,
+        416,
+        218,
+        32
+       ],
+       "concept": "pelvic-girdle",
+       "taught": "lower-limb",
+       "fn": "The cartilage joint that joins the two pubic bones at the front of the pelvis. The mons pubis lies over it."
+      },
+      {
+       "id": "mons-pubis",
+       "name": "Mons pubis",
+       "accept": [
+        "mons",
+        "mons veneris"
+       ],
+       "box": [
+        0,
+        459,
+        152,
+        32
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The rounded pad of fat and hair-bearing skin over the pubic symphysis."
+      },
+      {
+       "id": "urethra",
+       "name": "Urethra",
+       "accept": [
+        "female urethra"
+       ],
+       "box": [
+        0,
+        513,
+        102,
+        27
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The short tube, about 4 cm long, that carries urine from the bladder to its opening just in front of the vaginal opening. In females it carries only urine.",
+       "follow": {
+        "q": "Why are bladder infections more common in females than in males?",
+        "options": [
+         "The female bladder wall has no smooth muscle layer",
+         "The female urethra also carries menstrual flow out",
+         "Its urethra is short and opens near the anus",
+         "Females have no sphincters around the urethra"
+        ],
+        "correct": 2,
+        "why": "The female urethra is only about 4 cm long and opens in the vestibule, not far from the anus, so bacteria reach the bladder easily. The bladder wall is muscular in both sexes, menstrual flow leaves through the vagina, not the urethra, and both sexes have urethral sphincters.",
+        "level": "apply"
+       }
+      },
+      {
+       "id": "clitoris",
+       "name": "Clitoris",
+       "accept": [
+        "glans clitoris"
+       ],
+       "box": [
+        0,
+        568,
+        94,
+        28
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "A small erectile organ at the front of the vulva, where the labia minora meet. Like the penis, it has erectile tissue and many sensory nerve endings."
+      },
+      {
+       "id": "labia-minora-lateral",
+       "name": "Labia minora",
+       "accept": [
+        "labium minora",
+        "labium minus",
+        "inner labia"
+       ],
+       "box": [
+        0,
+        625,
+        193,
+        27
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The thin inner folds of hairless skin on either side of the vestibule, around the urethral and vaginal openings. They meet at the front to form the hood over the clitoris."
+      },
+      {
+       "id": "labia-majora-lateral",
+       "name": "Labia majora",
+       "accept": [
+        "labium majora",
+        "labium majus",
+        "outer labia"
+       ],
+       "box": [
+        0,
+        677,
+        193,
+        32
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The outer pair of fat-filled, hair-bearing skin folds that enclose and protect the rest of the vulva."
+      },
+      {
+       "id": "ovary-anterior",
+       "name": "Ovary",
+       "accept": [
+        "ovaries"
+       ],
+       "box": [
+        836,
+        958,
+        87,
+        33
+       ],
+       "concept": "ovaries",
+       "taught": "female-anatomy",
+       "fn": "One of the paired female gonads, beside the uterus. It holds the oocytes, each in a follicle, and makes estrogen and progesterone."
+      },
+      {
+       "id": "fimbriae",
+       "name": "Fimbriae",
+       "accept": [
+        "fimbria"
+       ],
+       "box": [
+        75,
+        1000,
+        120,
+        27
+       ],
+       "concept": "uterine-tubes",
+       "taught": "female-anatomy",
+       "fn": "The finger-like fringes at the open end of each uterine tube. They drape over the ovary and sweep a released oocyte into the tube.",
+       "follow": {
+        "q": "What do the fimbriae do?",
+        "options": [
+         "Anchor the ovary to the side of the uterus",
+         "Sweep an oocyte into the tube",
+         "Moisten the vagina with mucus",
+         "Make estrogen and progesterone"
+        ],
+        "correct": 1,
+        "why": "The fimbriae are the fringed, moving ends of the uterine tube; they sweep over the ovary and draw a released oocyte into the tube. The ovarian ligament anchors the ovary, the greater vestibular glands moisten the vestibule, and the ovary itself makes the hormones.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "ovarian-ligament",
+       "name": "Ovarian ligament",
+       "accept": [
+        "ligament of the ovary",
+        "ovarian ligaments"
+       ],
+       "box": [
+        836,
+        1034,
+        118,
+        65
+       ],
+       "concept": "ovaries",
+       "taught": "female-anatomy",
+       "fn": "A cord of connective tissue that ties each ovary to the side of the uterus."
+      },
+      {
+       "id": "uterus-anterior",
+       "name": "Uterus",
+       "accept": [
+        "womb"
+       ],
+       "box": [
+        75,
+        1081,
+        94,
+        27
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The hollow, pear-shaped muscular organ in the pelvis between the bladder and the rectum. Its thick smooth-muscle wall (myometrium) and inner lining (endometrium) hold and nourish a developing baby."
+      },
+      {
+       "id": "broad-ligament",
+       "name": "Broad ligament",
+       "accept": [
+        "broad ligaments"
+       ],
+       "box": [
+        836,
+        1135,
+        118,
+        64
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "A wide double fold of peritoneum draped over the uterus, uterine tubes and ovaries, anchoring them to the side walls of the pelvis."
+      },
+      {
+       "id": "uterine-tube",
+       "name": "Uterine tube (oviduct)",
+       "accept": [
+        "uterine tubes",
+        "oviduct",
+        "oviducts",
+        "fallopian tube",
+        "fallopian tubes"
+       ],
+       "box": [
+        73,
+        1146,
+        112,
+        89
+       ],
+       "concept": "uterine-tubes",
+       "taught": "female-anatomy",
+       "fn": "The tube, about 10 cm long, that runs from beside each ovary to the top of the uterus. Its cilia and smooth muscle move an oocyte along toward the uterus, and it is where sperm usually meet the oocyte."
+      },
+      {
+       "id": "cervix-anterior",
+       "name": "Cervix",
+       "accept": [
+        "uterine cervix",
+        "cervix of uterus"
+       ],
+       "box": [
+        74,
+        1304,
+        92,
+        28
+       ],
+       "concept": "uterus",
+       "taught": "female-anatomy",
+       "fn": "The narrow lower end of the uterus that projects into the top of the vagina. Its canal links the cavity of the uterus with the vagina."
+      },
+      {
+       "id": "labia-minora",
+       "name": "Labia minora",
+       "accept": [
+        "labium minus",
+        "labium minora",
+        "inner labia"
+       ],
+       "box": [
+        692,
+        1287,
+        97,
+        58
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The thin inner folds of hairless skin on either side of the vestibule, around the urethral and vaginal openings. They meet at the front to form the hood over the clitoris."
+      },
+      {
+       "id": "vagina-anterior",
+       "name": "Vagina",
+       "accept": [],
+       "box": [
+        74,
+        1377,
+        98,
+        33
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The muscular tube, about 10 cm long, from the cervix to the outside. It receives the penis, lets menstrual flow out and forms the birth canal."
+      },
+      {
+       "id": "labia-majora",
+       "name": "Labia majora",
+       "accept": [
+        "labium majus",
+        "labium majora",
+        "outer labia"
+       ],
+       "box": [
+        168,
+        1442,
+        174,
+        32
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The outer pair of fat-filled, hair-bearing skin folds that enclose and protect the rest of the vulva."
+      }
+     ],
+     "covered": [
+      {
+       "id": "posterior-fornix",
+       "box": [
+        904,
+        396,
+        198,
+        58
+       ]
+      }
+     ]
+    },
+    {
+     "figure": "os-27-10",
+     "topic": "female-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "prepuce",
+       "name": "Prepuce",
+       "accept": [
+        "clitoral hood",
+        "prepuce of clitoris",
+        "hood"
+       ],
+       "box": [
+        311,
+        61,
+        63,
+        19
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The fold of skin, formed where the labia minora meet at the front, that covers the glans of the clitoris."
+      },
+      {
+       "id": "glans-clitoris",
+       "name": "Glans clitoris",
+       "accept": [
+        "glans of clitoris",
+        "clitoris"
+       ],
+       "box": [
+        310,
+        86,
+        92,
+        16
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The exposed tip of the clitoris, packed with sensory nerve endings."
+      },
+      {
+       "id": "labia-minora",
+       "name": "Labia minora",
+       "accept": [
+        "labium minus",
+        "inner labia"
+       ],
+       "box": [
+        311,
+        112,
+        92,
+        16
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The thin inner folds of hairless skin on either side of the vestibule, around the urethral and vaginal openings. They meet at the front to form the hood over the clitoris."
+      },
+      {
+       "id": "corpus-cavernosum",
+       "name": "Corpus cavernosum",
+       "accept": [
+        "corpora cavernosa",
+        "body of clitoris",
+        "crus of clitoris"
+       ],
+       "box": [
+        310,
+        138,
+        136,
+        19
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "One of the paired columns of erectile tissue that form the body of the clitoris. Like the corpora cavernosa of the penis, they fill with blood during sexual arousal."
+      },
+      {
+       "id": "bulb-of-vestibule",
+       "name": "Bulb of vestibule",
+       "accept": [
+        "vestibular bulb",
+        "bulbs of vestibule",
+        "vestibular bulbs"
+       ],
+       "box": [
+        311,
+        166,
+        112,
+        16
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "A mass of erectile tissue on each side of the vaginal opening, under the labia. It fills with blood during sexual arousal."
+      },
+      {
+       "id": "urethral-opening",
+       "name": "Urethral opening",
+       "accept": [
+        "external urethral opening",
+        "external urethral orifice",
+        "urethral orifice",
+        "urethral meatus"
+       ],
+       "box": [
+        311,
+        189,
+        114,
+        19
+       ],
+       "concept": "urethra",
+       "taught": "kidney-anatomy",
+       "fn": "The opening of the urethra, between the clitoris and the vaginal opening."
+      },
+      {
+       "id": "labia-majora",
+       "name": "Labia majora",
+       "accept": [
+        "labium majus",
+        "outer labia"
+       ],
+       "box": [
+        311,
+        207,
+        92,
+        19
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The outer pair of fat-filled, hair-bearing skin folds that enclose and protect the rest of the vulva."
+      },
+      {
+       "id": "vaginal-opening",
+       "name": "Vaginal opening",
+       "accept": [
+        "vaginal orifice",
+        "introitus",
+        "vaginal introitus"
+       ],
+       "box": [
+        310,
+        232,
+        111,
+        19
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "The opening of the vagina into the vestibule, just behind the urethral opening."
+      },
+      {
+       "id": "opening-of-bartholins-gland",
+       "name": "Opening of right Bartholin's gland",
+       "accept": [
+        "opening of bartholin's gland",
+        "bartholin's gland opening",
+        "duct of bartholin's gland",
+        "greater vestibular gland opening"
+       ],
+       "box": [
+        310,
+        264,
+        115,
+        36
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "Where the duct of a greater vestibular (Bartholin's) gland opens, beside the vaginal opening."
+      },
+      {
+       "id": "anus",
+       "name": "Anus",
+       "accept": [
+        "anal opening"
+       ],
+       "box": [
+        196,
+        338,
+        44,
+        16
+       ],
+       "concept": "large-intestine-regions",
+       "taught": "large-intestine",
+       "fn": "The opening at the end of the digestive tract, behind the vaginal opening."
+      },
+      {
+       "id": "bartholins-glands",
+       "name": "Bartholin's glands",
+       "accept": [
+        "bartholin's gland",
+        "bartholin glands",
+        "bartholin gland",
+        "greater vestibular glands",
+        "greater vestibular gland"
+       ],
+       "box": [
+        437,
+        351,
+        121,
+        19
+       ],
+       "concept": "vagina-vulva",
+       "taught": "female-anatomy",
+       "fn": "A pair of pea-sized glands beside and behind the vaginal opening (the greater vestibular glands). During sexual arousal they release mucus that moistens the vestibule.",
+       "follow": {
+        "q": "A blocked duct makes a painful swelling beside the vaginal opening. Which glands are involved?",
+        "options": [
+         "Areolar glands",
+         "Bulbourethral glands",
+         "Paraurethral (lesser vestibular) glands",
+         "Greater vestibular glands"
+        ],
+        "correct": 3,
+        "why": "The greater vestibular (Bartholin's) glands sit beside the vaginal opening, and a blocked duct makes a cyst there. The paraurethral glands are tiny glands beside the urethral opening, areolar glands are in the breast, and the bulbourethral glands are the male counterpart of the greater vestibular glands.",
+        "level": "apply"
+       }
+      }
+     ]
+    },
+    {
+     "figure": "os-27-17",
+     "topic": "female-anatomy",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "areolar-glands",
+       "name": "Areolar glands",
+       "accept": [
+        "areolar gland",
+        "montgomery glands",
+        "montgomery's glands",
+        "glands of montgomery"
+       ],
+       "box": [
+        1,
+        5,
+        111,
+        20
+       ],
+       "concept": "mammary-glands",
+       "taught": "female-anatomy",
+       "fn": "Small glands on the surface of the areola. Their oily secretion protects the skin of the nipple and areola."
+      },
+      {
+       "id": "fat-tissue",
+       "name": "Fat tissue",
+       "accept": [
+        "fat",
+        "adipose tissue",
+        "adipose"
+       ],
+       "box": [
+        331,
+        43,
+        78,
+        17
+       ],
+       "concept": "loose-ct",
+       "taught": "connective-tissue",
+       "fn": "Adipose tissue that fills the spaces between the lobes and gives the breast most of its size."
+      },
+      {
+       "id": "alveoli",
+       "name": "Alveoli",
+       "accept": [
+        "alveolus",
+        "mammary alveoli",
+        "mammary alveolus",
+        "milk alveoli"
+       ],
+       "box": [
+        340,
+        102,
+        58,
+        17
+       ],
+       "concept": "mammary-glands",
+       "taught": "female-anatomy",
+       "fn": "Small sacs lined with milk-making cells and wrapped in contractile cells that squeeze the milk out. Clusters of alveoli form lobules.",
+       "follow": {
+        "q": "Where in the breast is milk made?",
+        "options": [
+         "Alveoli",
+         "Lactiferous sinuses",
+         "Areolar glands",
+         "Lactiferous ducts"
+        ],
+        "correct": 0,
+        "why": "Milk is made by the cells lining the alveoli. The lactiferous ducts carry it to the nipple, the lactiferous sinuses are widened parts of those ducts where it collects, and the areolar glands make an oily secretion for the skin, not milk.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "lactiferous-ducts",
+       "name": "Lactiferous ducts",
+       "accept": [
+        "lactiferous duct",
+        "milk ducts",
+        "milk duct"
+       ],
+       "box": [
+        326,
+        146,
+        87,
+        35
+       ],
+       "concept": "mammary-glands",
+       "taught": "female-anatomy",
+       "fn": "Ducts that carry milk from the lobes of the mammary gland to openings on the nipple."
+      },
+      {
+       "id": "areola",
+       "name": "Areola",
+       "accept": [
+        "areolae"
+       ],
+       "box": [
+        65,
+        169,
+        57,
+        17
+       ],
+       "concept": "mammary-glands",
+       "taught": "female-anatomy",
+       "fn": "The ring of pigmented skin around the nipple."
+      },
+      {
+       "id": "lobule",
+       "name": "Lobule (contains alveoli)",
+       "accept": [
+        "lobules",
+        "mammary lobule"
+       ],
+       "box": [
+        308,
+        230,
+        122,
+        38
+       ],
+       "concept": "mammary-glands",
+       "taught": "female-anatomy",
+       "fn": "A cluster of milk-making alveoli that drains into a duct. Several lobules make up each lobe of the mammary gland."
+      },
+      {
+       "id": "suspensory-ligament",
+       "name": "Suspensory ligament",
+       "accept": [
+        "suspensory ligaments",
+        "suspensory ligaments of the breast",
+        "cooper's ligaments",
+        "cooper's ligament"
+       ],
+       "box": [
+        323,
+        296,
+        94,
+        39
+       ],
+       "concept": "mammary-glands",
+       "taught": "female-anatomy",
+       "fn": "Bands of connective tissue running from the skin through the breast to the tissue over the chest muscles. They support the breast."
+      },
+      {
+       "id": "lactiferous-sinuses",
+       "name": "Lactiferous sinuses",
+       "accept": [
+        "lactiferous sinus"
+       ],
+       "box": [
+        612,
+        280,
+        86,
+        35
+       ],
+       "concept": "mammary-glands",
+       "taught": "female-anatomy",
+       "fn": "Widened parts of the lactiferous ducts just behind the nipple, where milk collects."
+      },
+      {
+       "id": "nipple",
+       "name": "Nipple",
+       "accept": [],
+       "box": [
+        56,
+        322,
+        56,
+        20
+       ],
+       "concept": "mammary-glands",
+       "taught": "female-anatomy",
+       "fn": "The raised tip of the breast, where the lactiferous ducts open to the surface."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sperm-testis",
+   "title": "Sperm and testis cells",
+   "chapter": "reproductive",
+   "topic": "male-physiology",
+   "histology": false,
+   "stations": [
+    {
+     "figure": "os-27-6",
+     "topic": "male-physiology",
+     "core": [
+      "structure-function"
+     ],
+     "labels": [
+      {
+       "id": "acrosome",
+       "name": "Acrosome",
+       "accept": [
+        "acrosomal cap",
+        "acrosomal vesicle"
+       ],
+       "box": [
+        14,
+        4,
+        75,
+        16
+       ],
+       "concept": "sperm-structure",
+       "taught": "male-physiology",
+       "fn": "A cap-like sac over the front of the sperm head, filled with enzymes that let the sperm digest a path through the layers around an oocyte.",
+       "follow": {
+        "q": "What does the acrosome hold?",
+        "options": [
+         "Mitochondria",
+         "Enzymes",
+         "The nucleus",
+         "Microtubules"
+        ],
+        "correct": 1,
+        "why": "The acrosome is a sac of enzymes over the front of the head that the sperm uses to digest its way through the layers around an oocyte. The mitochondria are in the midpiece, the nucleus is under the acrosome in the head, and microtubules form the core of the tail.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "plasma-membrane",
+       "name": "Plasma membrane",
+       "accept": [
+        "cell membrane"
+       ],
+       "box": [
+        102,
+        21,
+        128,
+        16
+       ],
+       "concept": "plasma-membrane",
+       "taught": "plasma-membrane",
+       "fn": "The membrane that encloses the whole sperm cell, head to tail."
+      },
+      {
+       "id": "nucleus",
+       "name": "Nucleus",
+       "accept": [],
+       "box": [
+        129,
+        38,
+        61,
+        16
+       ],
+       "concept": "nucleus",
+       "taught": "dna-genes",
+       "fn": "The nucleus in the sperm head, holding a haploid set of 23 chromosomes packed very tightly."
+      },
+      {
+       "id": "mitochondria",
+       "name": "Mitochondria",
+       "accept": [
+        "mitochondrion"
+       ],
+       "box": [
+        214,
+        43,
+        91,
+        16
+       ],
+       "concept": "mitochondrion",
+       "taught": "organelles",
+       "fn": "Mitochondria wound in a spiral around the midpiece. They make the ATP that powers the beating tail."
+      },
+      {
+       "id": "centriole",
+       "name": "Centriole",
+       "accept": [
+        "centrioles"
+       ],
+       "box": [
+        153,
+        57,
+        67,
+        16
+       ],
+       "concept": "cytoskeleton",
+       "taught": "organelles",
+       "fn": "A centriole at the base of the head, from which the core of the tail grows."
+      },
+      {
+       "id": "flagellum",
+       "name": "Flagellum",
+       "accept": [
+        "flagella"
+       ],
+       "box": [
+        304,
+        68,
+        71,
+        19
+       ],
+       "concept": "cilia-flagella",
+       "taught": "organelles",
+       "fn": "The whip-like tail, one long flagellum whose beating drives the sperm forward."
+      },
+      {
+       "id": "axial-filament",
+       "name": "Axial filament",
+       "accept": [
+        "axoneme",
+        "microtubules"
+       ],
+       "box": [
+        366,
+        4,
+        95,
+        16
+       ],
+       "concept": "cilia-flagella",
+       "taught": "organelles",
+       "fn": "The core of microtubules running the length of the tail. Motor proteins slide the microtubules past each other, which bends the flagellum."
+      },
+      {
+       "id": "head",
+       "name": "Head",
+       "accept": [
+        "sperm head",
+        "head of sperm"
+       ],
+       "box": [
+        41,
+        161,
+        45,
+        16
+       ],
+       "concept": "sperm-structure",
+       "taught": "male-physiology",
+       "fn": "The front part of the sperm, holding the nucleus under the acrosome."
+      },
+      {
+       "id": "mid-piece",
+       "name": "Mid-piece",
+       "accept": [
+        "midpiece",
+        "middle piece"
+       ],
+       "box": [
+        157,
+        161,
+        72,
+        19
+       ],
+       "concept": "sperm-structure",
+       "taught": "male-physiology",
+       "fn": "The short section behind the head, packed with mitochondria that supply ATP for swimming.",
+       "follow": {
+        "q": "Which part of a sperm holds the mitochondria that power its tail?",
+        "options": [
+         "Head",
+         "Acrosome",
+         "Midpiece",
+         "End piece"
+        ],
+        "correct": 2,
+        "why": "The mitochondria are wound around the midpiece, right where the tail starts, so the ATP they make is close to the beating flagellum. The head holds the nucleus, the acrosome holds enzymes, and the end piece is the thin tip of the tail.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "tail",
+       "name": "Tail",
+       "accept": [
+        "sperm tail",
+        "principal piece",
+        "tail of sperm"
+       ],
+       "box": [
+        456,
+        161,
+        34,
+        16
+       ],
+       "concept": "sperm-structure",
+       "taught": "male-physiology",
+       "fn": "The long main part of the flagellum, which beats to push the sperm forward."
+      },
+      {
+       "id": "end-piece",
+       "name": "End piece",
+       "accept": [
+        "endpiece",
+        "terminal piece"
+       ],
+       "box": [
+        680,
+        161,
+        45,
+        36
+       ],
+       "concept": "sperm-structure",
+       "taught": "male-physiology",
+       "fn": "The thin last stretch of the tail, where the flagellum ends."
+      }
+     ]
+    },
+    {
+     "figure": "os-27-8",
+     "topic": "male-physiology",
+     "core": [
+      "homeostasis",
+      "communication"
+     ],
+     "labels": [
+      {
+       "id": "gnrh",
+       "name": "GnRH",
+       "accept": [
+        "gonadotropin-releasing hormone"
+       ],
+       "box": [
+        748,
+        86,
+        63,
+        20
+       ],
+       "concept": "releasing-hormones",
+       "taught": "hypothalamus-pituitary",
+       "fn": "Gonadotropin-releasing hormone, released by the hypothalamus into the portal vessels. It stimulates the anterior pituitary to release FSH and LH."
+      },
+      {
+       "id": "fsh-release",
+       "name": "FSH release",
+       "accept": [
+        "fsh",
+        "follicle-stimulating hormone"
+       ],
+       "box": [
+        459,
+        384,
+        113,
+        19
+       ],
+       "concept": "anterior-pituitary-hormones",
+       "taught": "hypothalamus-pituitary",
+       "fn": "Follicle-stimulating hormone from the anterior pituitary. In males it acts on Sertoli cells to support sperm production."
+      },
+      {
+       "id": "lh-release",
+       "name": "LH release",
+       "accept": [
+        "lh",
+        "luteinizing hormone"
+       ],
+       "box": [
+        538,
+        409,
+        93,
+        26
+       ],
+       "concept": "anterior-pituitary-hormones",
+       "taught": "hypothalamus-pituitary",
+       "fn": "Luteinizing hormone from the anterior pituitary. In males it stimulates the Leydig cells to make testosterone.",
+       "follow": {
+        "q": "A drug blocks LH from acting in the testis. Which output falls first?",
+        "options": [
+         "Testosterone from Leydig cells",
+         "Inhibin release from Sertoli cells",
+         "GnRH release from the hypothalamus",
+         "FSH release from the pituitary"
+        ],
+        "correct": 0,
+        "why": "LH acts on the Leydig cells, so blocking it cuts testosterone production first. With less testosterone feeding back, GnRH and FSH release rise rather than fall, and inhibin comes from Sertoli cells, which respond mainly to FSH.",
+        "level": "analyze"
+       }
+      },
+      {
+       "id": "leydig-cells",
+       "name": "Leydig (interstitial) cells",
+       "accept": [
+        "leydig cell",
+        "interstitial cells",
+        "interstitial cell",
+        "interstitial endocrine cells"
+       ],
+       "box": [
+        640,
+        479,
+        203,
+        23
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "Cells in the tissue between the seminiferous tubules. LH stimulates them to make testosterone."
+      },
+      {
+       "id": "interstitial-space",
+       "name": "Interstitial space",
+       "accept": [
+        "interstitium",
+        "interstitial tissue"
+       ],
+       "box": [
+        498,
+        559,
+        91,
+        44
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "The tissue between the seminiferous tubules, holding the Leydig cells and blood vessels."
+      },
+      {
+       "id": "seminiferous-tubule",
+       "name": "Seminiferous tubule",
+       "accept": [
+        "seminiferous tubules"
+       ],
+       "box": [
+        478,
+        628,
+        120,
+        41
+       ],
+       "concept": "scrotum-testes",
+       "taught": "male-anatomy",
+       "fn": "One of the coiled tubules of the testis where sperm are made. Its wall holds germ cells at every stage, supported by Sertoli cells."
+      },
+      {
+       "id": "sertoli-cell",
+       "name": "Sertoli cell",
+       "accept": [
+        "sertoli cells",
+        "sustentacular cell",
+        "sustentacular cells",
+        "nurse cell"
+       ],
+       "box": [
+        194,
+        677,
+        98,
+        20
+       ],
+       "concept": "sustentacular-cells",
+       "taught": "male-physiology",
+       "fn": "A tall supporting cell in the wall of the seminiferous tubule. Driven by FSH and testosterone, it nurtures developing sperm, forms the blood-testis barrier, makes androgen-binding protein and releases inhibin.",
+       "follow": {
+        "q": "Which cells does FSH act on to support sperm production?",
+        "options": [
+         "Leydig cells",
+         "Spermatogonia",
+         "Anterior pituitary cells",
+         "Sertoli cells"
+        ],
+        "correct": 3,
+        "why": "FSH binds to Sertoli cells, which then nurture the developing sperm and release inhibin and androgen-binding protein. Leydig cells respond to LH, the spermatogonia are nursed by the Sertoli cells rather than acted on directly, and the pituitary makes FSH rather than responding to it.",
+        "level": "recall"
+       }
+      },
+      {
+       "id": "inhibin-release",
+       "name": "Inhibin release",
+       "accept": [
+        "inhibin"
+       ],
+       "box": [
+        143,
+        608,
+        131,
+        19
+       ],
+       "concept": "hpg-male",
+       "taught": "male-physiology",
+       "fn": "Inhibin, a hormone released by Sertoli cells. It feeds back on the anterior pituitary to lower FSH release."
+      },
+      {
+       "id": "androgen-binding-protein",
+       "name": "Androgen-binding protein (ABP) release",
+       "accept": [
+        "androgen-binding protein",
+        "abp"
+       ],
+       "box": [
+        292,
+        697,
+        188,
+        40
+       ],
+       "concept": "sustentacular-cells",
+       "taught": "male-physiology",
+       "fn": "A protein Sertoli cells secrete into the tubule. It binds testosterone and keeps its concentration high around the developing sperm."
+      },
+      {
+       "id": "testosterone-release",
+       "name": "Testosterone release",
+       "accept": [
+        "testosterone"
+       ],
+       "box": [
+        714,
+        700,
+        111,
+        39
+       ],
+       "concept": "gonadal-hormones",
+       "taught": "other-endocrine",
+       "fn": "Testosterone from the Leydig cells. It drives sperm production and feeds back to lower GnRH and LH release."
+      }
+     ]
+    }
+   ]
   }
  ],
  "figures": {
@@ -28711,6 +31055,87 @@
    "alt": "A side view of the female pelvis cut down the midline, with the sacrum at the back and the pubic bone at the front. The bladder sits behind the pubic bone. Nerves leave the sacral part of the spinal cord through the sacrum and run forward and down; they join to form the pudendal nerve, which reaches the ring of muscle around the urethra, labeled sphincter, and the skin and muscle of the genital region. No autonomic nerves to the bladder are drawn.",
    "credit": "OpenStax Anatomy and Physiology 2e, Figure 25.5",
    "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-2-gross-anatomy-of-urine-transport",
+   "license": "CC BY 4.0"
+  },
+  "os-27-2": {
+   "src": "figures/os-27-2.jpg",
+   "w": 1100,
+   "h": 1190,
+   "alt": "Three drawings. A standing man with a box over the groin leads to side views of the external genitals, one with the foreskin and one without, showing the shaft, the rim and cap at the tip, and the scrotum. The large bottom drawing is a side view of the male pelvis cut down the midline: the bladder, the gland below it, the paired pouch-shaped glands behind the bladder, the tube running up from the testis over the bladder, the short duct through the gland, the urethra running the length of the penis, the spongy tissue of the penis in two layers, an upper column and a lower one around the urethra that swells into the tip, and the testis with the coiled tube on its back inside the scrotum.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.2",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-27-4": {
+   "src": "figures/os-27-4.jpg",
+   "w": 743,
+   "h": 686,
+   "alt": "A testis cut open in a side view, inside its coverings. Walls of connective tissue divide it into wedge-shaped lobules packed with coiled tubules. Straight tubules lead to a network at the back, then small ductules into the head of a comma-shaped coiled tube on the back of the testis, which runs down as its body and tail and turns up as the sperm duct into a cord that rises toward the groin, wrapped in a thin skeletal muscle.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.4",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-27-3": {
+   "src": "figures/os-27-3.jpg",
+   "w": 800,
+   "h": 352,
+   "alt": "Three front views of the scrotum. The first shows its skin with a midline ridge. The second shows the muscle layer: thin smooth muscle under the skin, a dividing wall down the middle, and skeletal muscle strands wrapping each side. The third shows the deep tissues: each testis with the coiled tube on its back, and a cord rising from it that holds the sperm duct, an artery, a mesh of veins, a nerve and a lymphatic vessel.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.3",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-27-7": {
+   "src": "figures/os-27-7.jpg",
+   "w": 781,
+   "h": 718,
+   "alt": "Four drawings of the penis. Top row, relaxed: a side view and a cross section showing two large columns of spongy tissue on top with an artery in each, a smaller column below surrounding the urethra, and veins near the surface. Bottom row, erect: the same views, with the arteries widened, the spongy tissue swollen with blood, and the surface veins squeezed flat. Numbered notes describe the three steps.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.7",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-27-9": {
+   "src": "figures/os-27-9.jpg",
+   "w": 1100,
+   "h": 1559,
+   "alt": "Two drawings of the female pelvis. Top: a side view cut down the midline, with the spine behind, the pubic bones in front, the urinary bladder behind the pubic bones, the pink uterus tipped forward over the bladder, the ovary shown in pale green behind the uterus, the vagina running down and forward from the cervix to the outside, and the rectum and anus behind the vagina; the labia, clitoris, mons pubis and urethra are labeled in front. Bottom: a front view into the opened pelvis with the intestines lifted up, showing the uterus in the middle, a uterine tube running out to each side, the fringed ends of the tubes curving over the green ovaries, the ligament joining each ovary to the uterus, the broad ligament draped across, and below them the cervix, vagina and labia.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.9",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-27-10": {
+   "src": "figures/os-27-10.jpg",
+   "w": 729,
+   "h": 428,
+   "alt": "Two drawings of the vulva. Left: the surface view with the labia parted by fingers, showing the hood over the tip of the clitoris, the inner and outer skin folds, the small urethral opening above the larger vaginal opening, and the anus below. Right: a deeper view with the skin removed, showing the tip and long body of the clitoris, the two teardrop-shaped masses of erectile tissue on either side of the vaginal opening, and a small yellow gland at the lower edge of each, with the duct of the right gland opening beside the vagina.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.10",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-27-17": {
+   "src": "figures/os-27-17.jpg",
+   "w": 697,
+   "h": 347,
+   "alt": "Two drawings of the breast. Left: a front view with part of the skin removed, showing the pink areola with small glands around the nipple, orange clusters of sacs grouped into lobes, blue ducts running from each lobe to the nipple, yellow fat between the lobes, and bands of supporting tissue. Right: a side section showing the clusters of sacs at the ends of branching ducts, the ducts widening slightly just behind the nipple, fat filling the rest of the breast, and an arrow showing milk flowing out of the nipple.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.17",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-27-6": {
+   "src": "figures/os-27-6.jpg",
+   "w": 727,
+   "h": 198,
+   "alt": "A sperm cell drawn lengthwise. The oval head holds the nucleus under a cap-like sac at the front and is wrapped in plasma membrane. Behind a centriole, the short middle piece is packed with a spiral of mitochondria. A long whip-like tail, with a central core of filaments, ends in a short end piece.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.6",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
+   "license": "CC BY 4.0"
+  },
+  "os-27-8": {
+   "src": "figures/os-27-8.jpg",
+   "w": 1100,
+   "h": 739,
+   "alt": "The control of testosterone. At the top, hypothalamic neurons release GnRH into portal vessels that reach the anterior pituitary. The pituitary releases FSH and LH. FSH goes to a supporting cell in the wall of a coiled testis tubule, which releases a binding protein and inhibin. LH goes to cells in the spaces between the tubules, which release testosterone. Arrows with minus signs show inhibin acting back on the pituitary and testosterone acting back on the pituitary and hypothalamus. Numbered notes describe the steps.",
+   "credit": "OpenStax Anatomy and Physiology 2e, Figure 27.8",
+   "page": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-testicular-reproductive-system",
    "license": "CC BY 4.0"
   }
  }

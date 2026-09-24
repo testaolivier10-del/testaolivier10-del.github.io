@@ -1,0 +1,38 @@
+{
+  "os-28-25": {
+    "file": "figures/openstax/os-28-25.jpg",
+    "w": 1100,
+    "h": 923,
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.25",
+      "section": "28.7",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/45ee871a77d6c25e7316eec205b8cb241722d5c2",
+      "page": "28-7-patterns-of-inheritance"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/45ee871a77d6c25e7316eec205b8cb241722d5c2",
+    "alt": "Two Punnett squares, one above the other. Top, labeled generation 1 cross: AA crossed with aa. The AA parent's A alleles run down the side and the aa parent's a alleles across the top; all four boxes read Aa, and an arrow leads to the note that all offspring in generation 2 are Aa, showing the dominant phenotype. Bottom, labeled generation 2 cross: Aa crossed with Aa, with A and a down the side and across the top. The boxes read AA, Aa, Aa and aa, and an arrow leads to the note that in generation 3, 75% are AA or Aa, showing the dominant phenotype, and 25% are aa, showing the recessive phenotype.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.25",
+    "labels": [],
+    "ext": "jpg"
+  },
+  "os-28-26": {
+    "file": "figures/openstax/os-28-26.jpg",
+    "w": 1100,
+    "h": 456,
+    "source": "openstax",
+    "openstax": {
+      "figure": "28.26",
+      "section": "28.7",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/e65e955e089efef3f5b7e13ace74bf4327148acd",
+      "page": "28-7-patterns-of-inheritance"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/e65e955e089efef3f5b7e13ace74bf4327148acd",
+    "alt": "A Punnett square for the cross Nn times nn. The Nn parent's alleles, N and n, run down the side and the nn parent's two n alleles across the top. The top two boxes read Nn and the bottom two read nn. An arrow leads to the note that in generation 2, 50% are Nn and have neurofibromatosis, and 50% are nn and do not show the disease.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 28.26",
+    "labels": [],
+    "ext": "jpg"
+  }
+}
