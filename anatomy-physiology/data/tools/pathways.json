@@ -11834,907 +11834,811 @@
       "summary": "The gastrocnemius and soleus contract; the calcaneal tendon pulls up on the calcaneus; the foot turns about the ball of the foot; the body weight between them is lifted. For your exam, this is a second-class lever."
     },
     {
-      "id": "mt-pull-to-bone",
-      "title": "How a fiber’s pull reaches the bone",
-      "topic": "skeletal-muscle-structure",
+      "id": "sk-skull-midline",
+      "title": "Over the top of the skull, front to back",
+      "topic": "skull",
       "core": [
         "structure-function"
       ],
       "level": "recall",
       "diff": 1,
       "kind": "flow",
-      "intro": "A single muscle fiber is attached to nothing directly. Follow its pull outward, layer by layer, until it moves a bone.",
+      "intro": "Run a finger from your forehead, over the top of your head, down to the base of the skull at the back. Put the bones and seams you cross in order.",
       "steps": [
         {
-          "id": "fiber",
-          "label": "Muscle fiber",
-          "text": "Myosin heads pull the thin filaments, and the muscle fiber shortens.",
-          "why": "The pull starts inside each fiber, where the filaments slide."
+          "id": "frontal",
+          "label": "Frontal bone",
+          "text": "You start on the frontal bone, the forehead and the front of the brain case.",
+          "why": "The frontal bone forms the forehead and the roofs of the eye sockets, so it is the front of the route."
         },
         {
-          "id": "endo",
-          "label": "Endomysium",
-          "text": "The fiber pulls on the endomysium, the thin layer of loose connective tissue around it.",
-          "why": "The endomysium wraps each individual fiber, so it is the first layer the fiber pulls on."
+          "id": "coronal",
+          "label": "Coronal suture",
+          "text": "You cross the coronal suture, which runs side to side across the top of the head like the band of a crown.",
+          "why": "The coronal suture is the seam behind the frontal bone, joining it to the two parietal bones."
         },
         {
-          "id": "peri",
-          "label": "Perimysium",
-          "text": "The endomysium passes the pull to the perimysium around the fascicle.",
-          "why": "Fibers are bundled into fascicles, and the layers are continuous, so the pull moves out to the next level of bundling."
+          "id": "parietal",
+          "label": "Parietal bones",
+          "text": "You run along the sagittal suture on the midline, with a parietal bone on each side.",
+          "why": "The two parietal bones form most of the roof, and the sagittal suture joins them along the midline behind the coronal suture."
         },
         {
-          "id": "epi",
-          "label": "Epimysium",
-          "text": "The perimysium passes the pull to the epimysium around the whole muscle.",
-          "why": "The epimysium wraps the whole muscle, collecting the pull of every fascicle."
+          "id": "lambdoid",
+          "label": "Lambdoid suture",
+          "text": "You cross the lambdoid suture, shaped like the Greek letter lambda with the sagittal suture.",
+          "why": "The lambdoid suture joins the back edges of the parietal bones to the occipital bone."
         },
         {
-          "id": "tendon",
-          "label": "Tendon",
-          "text": "All three layers merge at the end of the muscle into the dense regular connective tissue of the tendon.",
-          "why": "The wrappings are not separate bags: they run together into the tendon, which is why strains often happen where fibers meet it."
+          "id": "occipital",
+          "label": "Occipital bone",
+          "text": "You reach the occipital bone at the back of the head.",
+          "why": "The occipital bone forms the back and much of the base of the brain case, behind the lambdoid suture."
         },
         {
-          "id": "bone",
-          "label": "Bone",
-          "text": "The tendon’s collagen fibers run into the periosteum and bone matrix, and the bone moves.",
-          "why": "The tendon is anchored in the bone, so the collected pull of thousands of fibers finally moves it."
-        }
-      ],
-      "missing": {
-        "at": 2,
-        "distractors": [
-          {
-            "text": "The endomysium passes the pull straight to the sarcolemma of the neighboring fiber, which contracts in turn.",
-            "why": "Skeletal fibers do not pass pulls or signals to each other; each one is wrapped separately and passes its pull only outward, through the wrappings."
-          },
-          {
-            "text": "The endomysium passes the pull inward to the myofibrils, which carry it along the fiber to the tendon.",
-            "why": "The myofibrils are inside the fiber and are the source of the pull. The pull travels outward through the wrappings."
-          }
-        ]
-      },
-      "error": {
-        "at": 4,
-        "text": "The three layers end at the edge of the muscle, and the tendon is glued on beside them as a separate sheet.",
-        "why": "The epimysium, perimysium and endomysium are continuous with each other and merge into the tendon itself. That continuity is what lets the pull pass to the bone."
-      },
-      "summary": "Fiber → endomysium → perimysium → epimysium → tendon → bone. Each connective tissue layer is continuous with the next, so the pull of thousands of fibers is collected and passed to the bone."
-    },
-    {
-      "id": "mt-nmj-transmission",
-      "title": "Neuromuscular junction transmission",
-      "topic": "neuromuscular-junction",
-      "core": [
-        "communication"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "An action potential reaches the end of a motor neuron’s axon. Trace the signal across the neuromuscular junction until the muscle fiber fires and the junction resets.",
-      "steps": [
-        {
-          "id": "arrive",
-          "label": "Impulse reaches terminal",
-          "text": "An action potential arrives at the axon terminal and depolarizes its membrane.",
-          "why": "Everything at the junction starts with the motor neuron’s command arriving at its terminal."
-        },
-        {
-          "id": "ca",
-          "label": "Calcium enters terminal",
-          "text": "Voltage-gated calcium channels open, and calcium rushes into the terminal down its electrochemical gradient.",
-          "why": "Depolarization is what opens these channels, and calcium is far more concentrated outside the terminal."
-        },
-        {
-          "id": "exo",
-          "label": "Vesicles release ACh",
-          "text": "Calcium binds sensor proteins on docked vesicles, and they fuse with the membrane and empty ACh into the cleft.",
-          "why": "The action potential releases nothing by itself: calcium entry is the trigger for exocytosis."
-        },
-        {
-          "id": "diffuse",
-          "label": "ACh crosses the cleft",
-          "text": "ACh diffuses across the 50 nm synaptic cleft in microseconds.",
-          "why": "The ACh must reach the end plate on the other side of the gap before it can act."
-        },
-        {
-          "id": "bind",
-          "label": "ACh opens channels",
-          "text": "Two ACh molecules bind each nicotinic receptor protein, and its channel opens to sodium and potassium.",
-          "why": "The receptor proteins sit on the crests of the end plate’s folds, facing the terminal, and open only once both binding sites are filled."
-        },
-        {
-          "id": "epp",
-          "label": "End plate potential",
-          "text": "More sodium enters than potassium leaves, and the end plate depolarizes: the end plate potential.",
-          "why": "At about −90 mV, sodium’s inward push is far stronger, so opening the channels depolarizes the end plate."
-        },
-        {
-          "id": "ap",
-          "label": "Fiber action potential",
-          "text": "The end plate potential brings the neighboring sarcolemma to threshold, and an action potential sweeps toward both ends of the fiber.",
-          "why": "Only the membrane around the end plate has the voltage-gated sodium channels needed to fire, and the end plate potential is several times bigger than needed."
-        },
-        {
-          "id": "ache",
-          "label": "AChE ends the signal",
-          "text": "Acetylcholinesterase splits ACh into acetate and choline, and the channels close.",
-          "why": "The enzyme clears the cleft within a millisecond or two, so each nerve impulse gives exactly one action potential in the fiber."
-        }
-      ],
-      "missing": {
-        "at": 2,
-        "distractors": [
-          {
-            "text": "The action potential itself travels across the cleft onto the end plate, carried by sodium ions in the extracellular fluid.",
-            "why": "The 50 nm cleft stops the electrical signal. It is carried across chemically, by ACh released when calcium enters the terminal."
-          },
-          {
-            "text": "Calcium diffuses across the synaptic cleft and binds the end plate, opening its channels.",
-            "why": "Calcium acts inside the terminal, making the vesicles fuse. It is ACh, not calcium, that crosses the cleft and opens the end plate’s channels."
-          }
-        ]
-      },
-      "error": {
-        "at": 7,
-        "text": "The axon terminal takes the ACh back up intact, and the channels close.",
-        "why": "At the neuromuscular junction, acetylcholinesterase in the cleft splits ACh into acetate and choline. Only the choline is taken back into the terminal to make new ACh."
-      },
-      "summary": "Impulse arrives → calcium enters the terminal → vesicles release ACh → ACh crosses the cleft → ACh opens nicotinic receptor channels → end plate potential → action potential in the fiber → acetylcholinesterase ends the signal."
-    },
-    {
-      "id": "mt-ec-coupling",
-      "title": "Excitation–contraction coupling",
-      "topic": "excitation-contraction",
-      "core": [
-        "communication"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "The end plate potential has brought the sarcolemma to threshold. Trace how that electrical event switches on the filaments deep inside the fiber.",
-      "steps": [
-        {
-          "id": "ap",
-          "label": "Action potential spreads",
-          "text": "An action potential spreads along the sarcolemma from the end plate toward both ends of the fiber.",
-          "why": "The end plate potential brought the neighboring membrane to threshold, so the fiber’s own action potential starts there."
-        },
-        {
-          "id": "tt",
-          "label": "Down the T tubules",
-          "text": "The action potential travels down every T tubule, deep into the fiber.",
-          "why": "T tubule membrane is sarcolemma folded inward, so the action potential continues into it and reaches every triad within a millisecond or two."
-        },
-        {
-          "id": "sensor",
-          "label": "Voltage sensor moves",
-          "text": "At each triad, the DHP receptor protein in the T tubule senses the depolarization and changes shape.",
-          "why": "The voltage sensor sits in the T tubule membrane, right where the action potential arrives."
-        },
-        {
-          "id": "open",
-          "label": "Release channel opens",
-          "text": "The voltage sensor pulls open the ryanodine receptor protein, the SR’s calcium release channel, that it touches.",
-          "why": "In skeletal muscle the two proteins are physically linked, so voltage alone opens the channel, with no messenger crossing the gap."
-        },
-        {
-          "id": "ca",
-          "label": "Calcium leaves the SR",
-          "text": "Calcium flows out of the terminal cisternae into the sarcoplasm, down its steep gradient.",
-          "why": "The pumps have kept calcium in the SR thousands of times more concentrated than in the sarcoplasm, so it floods out once the channels open."
-        },
-        {
-          "id": "tn",
-          "label": "Calcium binds troponin",
-          "text": "Calcium binds troponin on the thin filaments, and troponin changes shape.",
-          "why": "Troponin is the calcium sensor of the thin filament; its binding sites are empty at resting calcium and fill after release."
-        },
-        {
-          "id": "tm",
-          "label": "Tropomyosin moves",
-          "text": "Tropomyosin rolls deeper into the groove and uncovers the myosin-binding sites on actin.",
-          "why": "Troponin was holding tropomyosin over the sites. Once it loosens its hold, the rod shifts and seven sites open at once."
-        },
-        {
-          "id": "pull",
-          "label": "Myosin binds actin",
-          "text": "The energized myosin heads bind the uncovered sites and pull the thin filaments toward the M line.",
-          "why": "The heads were loaded with energy all along; only the covered binding sites were stopping them."
+          "id": "magnum",
+          "label": "Foramen magnum",
+          "text": "Under the base of the skull you reach the foramen magnum, where the brain becomes the spinal cord.",
+          "why": "The foramen magnum is the large hole in the base of the occipital bone, the end of this route."
         }
       ],
       "missing": {
         "at": 3,
         "distractors": [
           {
-            "text": "The voltage sensor releases a chemical messenger that diffuses across the gap and binds the SR membrane, opening its channels.",
-            "why": "No chemical messenger crosses the gap in skeletal muscle. The voltage sensor is physically linked to the release channel and pulls it open."
+            "text": "You cross the squamous suture, the seam that joins each parietal bone to the thin, scale-like upper part of the temporal bone.",
+            "why": "The squamous suture is on the side of the head, joining a parietal bone to the temporal bone below it, not on the midline route."
           },
           {
-            "text": "Calcium enters the fiber from the extracellular fluid through the T tubules and flows straight to the thin filaments.",
-            "why": "A skeletal fiber’s contraction calcium comes from its SR. Stimulated directly, it keeps contracting in a bath with no calcium."
+            "text": "You cross the pterion, where four bones meet.",
+            "why": "The pterion is on the side of the head at the temple, not along the midline at the back."
           }
         ]
       },
       "error": {
+        "at": 1,
+        "text": "You cross the sagittal suture, which runs side to side across the top of the head like the band of a crown.",
+        "why": "The seam that runs side to side like a crown’s band is the coronal suture. The sagittal suture runs front to back along the midline."
+      },
+      "summary": "Frontal bone, coronal suture, the two parietal bones joined by the sagittal suture, lambdoid suture, occipital bone, then the foramen magnum in the skull base."
+    },
+    {
+      "id": "sk-cranial-fossae",
+      "title": "Down the steps of the skull floor",
+      "topic": "skull",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "Look down into the brain case from above. The floor steps down from front to back. Put the landmarks in order from front to back.",
+      "steps": [
+        {
+          "id": "crista",
+          "label": "Crista galli",
+          "text": "At the front, the crista galli sticks up from the middle of the cribriform plate.",
+          "why": "The crista galli and cribriform plate belong to the ethmoid bone, in the front of the floor between the eye sockets."
+        },
+        {
+          "id": "anterior",
+          "label": "Anterior cranial fossa",
+          "text": "The shallow, highest step, formed mostly by the frontal bone, holds the front of the brain.",
+          "why": "The anterior fossa is the first and highest step. Its back edge is the sphenoid’s lesser wings."
+        },
+        {
+          "id": "sella",
+          "label": "Sella turcica",
+          "text": "In the middle of the floor sits the saddle-shaped sella turcica, holding the pituitary gland.",
+          "why": "The sella turcica is part of the sphenoid, which lies across the middle of the skull base behind the anterior fossa."
+        },
+        {
+          "id": "middle",
+          "label": "Middle cranial fossa",
+          "text": "The deeper, butterfly-shaped step, formed by the sphenoid and temporal bones, holds the lower sides of the brain.",
+          "why": "The middle fossa spreads out on each side of the sella turcica, one step lower than the anterior fossa."
+        },
+        {
+          "id": "petrous",
+          "label": "Petrous ridge",
+          "text": "The dense, rock-like petrous ridge of each temporal bone marks the back edge of the middle step.",
+          "why": "The petrous ridge, which houses the hearing and balance organs, is the border between the middle and posterior fossae."
+        },
+        {
+          "id": "posterior",
+          "label": "Posterior cranial fossa",
+          "text": "The deepest step, formed mostly by the occipital bone, holds the lowest back part of the brain.",
+          "why": "The posterior fossa lies behind the petrous ridges, the lowest step of the floor."
+        },
+        {
+          "id": "magnum",
+          "label": "Foramen magnum",
+          "text": "In the bottom of the deepest step, the foramen magnum leads down to the spinal cord.",
+          "why": "The foramen magnum is in the occipital bone at the floor of the posterior fossa, the lowest point of the route."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The lesser wings of the sphenoid, which curve out on each side behind the cribriform plate, mark the back edge of the middle step.",
+            "why": "The lesser wings are the back edge of the anterior fossa. The middle fossa ends at the petrous ridges."
+          },
+          {
+            "text": "The squamous suture runs across the floor.",
+            "why": "The squamous suture is on the outer side wall of the skull, not in the floor of the brain case."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "In the middle of the floor sits the cribriform plate, holding the pituitary gland.",
+        "why": "The cribriform plate is in the front of the floor and carries the nerve fibers for smell. The pituitary gland sits in the sella turcica of the sphenoid."
+      },
+      "summary": "Crista galli and cribriform plate, anterior fossa (frontal bone), sella turcica of the sphenoid, middle fossa (sphenoid and temporal), petrous ridge, posterior fossa (occipital), foramen magnum."
+    },
+    {
+      "id": "sk-fontanelles",
+      "title": "From soft spots to sutures",
+      "topic": "skull",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A newborn’s skull bones are separate plates. Put the events from before birth to the closed adult skull in order.",
+      "steps": [
+        {
+          "id": "centers",
+          "label": "Ossification centers",
+          "text": "Before birth, each flat bone of the brain case starts at an ossification center in a sheet of connective tissue and spreads outward.",
+          "why": "The flat skull bones form by intramembranous ossification, so everything that follows starts with bone spreading from these centers."
+        },
+        {
+          "id": "birth",
+          "label": "Plates overlap at birth",
+          "text": "At birth the bones have not met; separated by membrane, they slide and overlap as the head passes through the birth canal.",
+          "why": "The edges have not grown far enough to meet by birth, so the membrane-filled gaps let the plates move."
+        },
+        {
+          "id": "posterior",
+          "label": "Posterior closes",
+          "text": "The small posterior fontanelle, between the parietal and occipital bones, closes within about 2 to 3 months.",
+          "why": "It is the smallest gap, so the growing edges close it first."
+        },
+        {
+          "id": "side",
+          "label": "Side fontanelles close",
+          "text": "The sphenoidal and mastoid fontanelles on each side close at about 6 to 18 months.",
+          "why": "These side gaps are larger than the posterior one and close over the following year."
+        },
+        {
+          "id": "anterior",
+          "label": "Anterior closes",
+          "text": "The large, diamond-shaped anterior fontanelle closes at about 1 to 2 years.",
+          "why": "It is the largest gap, where the frontal and parietal bones meet, so it is the last to close."
+        },
+        {
+          "id": "sutures",
+          "label": "Sutures lock",
+          "text": "The jagged edges interlock, bound by a thin layer of dense connective tissue, and the brain case becomes a rigid box.",
+          "why": "Once the membranes have shrunk to thin seams, the bone edges interlock and the seams become sutures."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "The posterior fontanelle reopens for a while so that the skull bones can keep growing as the brain grows.",
+            "why": "Fontanelles do not reopen. Growth happens at the seams while the bone edges spread toward each other."
+          },
+          {
+            "text": "The mandible fuses to the temporal bones, closing the last gap.",
+            "why": "The mandible never fuses to the skull; it stays the one freely movable skull bone. The last gap to close is the anterior fontanelle."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "The large anterior fontanelle closes within about 2 to 3 months.",
+        "why": "The anterior fontanelle is the largest and closes last, at about 1 to 2 years. The one that closes by 2 to 3 months is the small posterior fontanelle."
+      },
+      "summary": "Ossification centers spread outward; at birth the plates are still separate and can overlap; the posterior fontanelle closes by 2 to 3 months, the sphenoidal and mastoid by 6 to 18 months, the anterior by 1 to 2 years; then the edges interlock into sutures."
+    },
+    {
+      "id": "sk-spinal-curves",
+      "title": "How the spinal curves develop",
+      "topic": "vertebral-column",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A newborn’s column is a single C. An adult’s is a gentle S with four curves. Put the events in order.",
+      "steps": [
+        {
+          "id": "fetal",
+          "label": "Fetal C curve",
+          "text": "Before birth the whole column bows backward in one C, the shape of the curled fetus.",
+          "why": "This is where the primary curves come from: the thoracic and sacrococcygeal curves keep this backward bow."
+        },
+        {
+          "id": "head",
+          "label": "Lifting the head",
+          "text": "At about 3 to 4 months the baby starts lifting its head, and the muscles at the back of the neck pull on the cervical vertebrae.",
+          "why": "Holding up the head is the first new use of the column after birth."
+        },
+        {
+          "id": "cervical",
+          "label": "Cervical curve forms",
+          "text": "The neck bows forward: the cervical curve, the first secondary curve.",
+          "why": "The pull at the back of the neck bends the column there in the opposite direction to the fetal C."
+        },
+        {
+          "id": "walk",
+          "label": "Sitting, standing, walking",
+          "text": "Around the first birthday the child sits, stands and walks, holding the trunk upright over the legs.",
+          "why": "Sitting and walking come after head control, near the end of the first year."
+        },
+        {
+          "id": "lumbar",
+          "label": "Lumbar curve forms",
+          "text": "The lower back is pulled forward: the lumbar curve, the second secondary curve.",
+          "why": "Holding the trunk upright over the legs bends the lower back forward."
+        },
+        {
+          "id": "wedge",
+          "label": "Wedge-shaped discs",
+          "text": "Over the following years, the discs and bodies in these regions grow slightly thicker in front, making the curves permanent.",
+          "why": "The curves are held first by the pulls on the column; the wedge shapes then build them into the bones and discs."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The chest region bows forward as the baby’s trunk is held up: the thoracic curve, the first new curve.",
+            "why": "The thoracic curve is a primary curve that bows backward from before birth. The curve that forms when the head is lifted is the cervical curve."
+          },
+          {
+            "text": "The sacrum fuses and the sacrococcygeal curve forms.",
+            "why": "The sacrococcygeal curve is a primary curve kept from the fetal C, and the sacral vertebrae fuse much later, in the teens and twenties."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The lower back bows backward: the lumbar curve, the second primary curve.",
+        "why": "The lumbar curve bows forward and is a secondary curve, formed after birth. Only the thoracic and sacrococcygeal curves are primary."
+      },
+      "summary": "The fetal C (primary curves: thoracic and sacrococcygeal), then lifting the head at 3 to 4 months (cervical curve), then sitting, standing and walking near 1 year (lumbar curve), then wedge-shaped discs and bodies make the S permanent."
+    },
+    {
+      "id": "sk-disc-herniation",
+      "title": "How a lumbar disc herniates",
+      "topic": "vertebral-column",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A man lifts a heavy box while bent forward and feels pain shoot down his leg. Put the steps from the lift to the leg pain in order.",
+      "steps": [
+        {
+          "id": "lift",
+          "label": "Lifting bent forward",
+          "text": "Lifting while bent forward squeezes the front edges of two lumbar vertebral bodies together.",
+          "why": "The load and the bent posture start the chain by squeezing the front of the disc."
+        },
+        {
+          "id": "push",
+          "label": "Nucleus pushed back",
+          "text": "The gel of the nucleus pulposus is pushed backward inside the disc.",
+          "why": "The nucleus cannot be compressed, so squeezed at the front it moves toward the back."
+        },
+        {
+          "id": "tear",
+          "label": "Anulus tears",
+          "text": "The back of the anulus fibrosus, thin and weakened with age, tears.",
+          "why": "The nucleus presses hardest on the back of the anulus, where the rings are thinnest."
+        },
+        {
+          "id": "out",
+          "label": "Nucleus herniates",
+          "text": "Part of the nucleus pushes out through the tear.",
+          "why": "Only once the rings have torn can the core escape the disc."
+        },
+        {
+          "id": "side",
+          "label": "Bulge to one side",
+          "text": "The bulge goes backward and to one side, into the canal just inside the intervertebral foramen.",
+          "why": "The narrow posterior longitudinal ligament covers only the midline, so the bulge is steered to the side."
+        },
+        {
+          "id": "nerve",
+          "label": "Nerve squeezed",
+          "text": "It presses on the nerve running down the canal toward the next foramen below.",
+          "why": "In the lower back the nerve heading down past the bulge is usually the one that exits one level lower; the spinal cord ends at about L1 to L2, so no cord is there."
+        },
+        {
+          "id": "leg",
+          "label": "Pain down the leg",
+          "text": "Pain, tingling or weakness spreads along the area the squeezed nerve serves, often down one leg.",
+          "why": "Symptoms follow the nerve’s territory, not the spot on the back where the disc is."
+        }
+      ],
+      "missing": {
         "at": 5,
-        "text": "Calcium binds tropomyosin, and tropomyosin changes shape.",
-        "why": "Calcium binds troponin, not tropomyosin. Troponin then changes shape and loosens its hold, which lets tropomyosin roll off the binding sites."
-      },
-      "summary": "Action potential along the sarcolemma → down the T tubules → voltage sensor changes shape → release channel pulled open → calcium leaves the SR → calcium binds troponin → tropomyosin uncovers actin → myosin binds and pulls."
-    },
-    {
-      "id": "mt-relaxation",
-      "title": "Muscle relaxation",
-      "topic": "excitation-contraction",
-      "core": [
-        "communication",
-        "energy"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "Relaxation is an active process: the chain of contraction is reversed at every link. Start when the motor neuron stops firing.",
-      "steps": [
-        {
-          "id": "silent",
-          "label": "Motor neuron stops",
-          "text": "The motor neuron stops firing, so no more ACh is released.",
-          "why": "A skeletal fiber relaxes only when its motor neuron stops sending commands; there are no inhibitory synapses on it."
-        },
-        {
-          "id": "clear",
-          "label": "AChE clears the cleft",
-          "text": "Acetylcholinesterase splits the remaining ACh, and the end plate returns to rest.",
-          "why": "With no new ACh arriving, the enzyme clears what is left, and no new action potentials start."
-        },
-        {
-          "id": "close",
-          "label": "Release channels close",
-          "text": "With the T tubules at rest, the voltage sensors return to their resting shape and the release channels close.",
-          "why": "The release channels stay open only while the voltage sensors are pulled by a depolarized T tubule."
-        },
-        {
-          "id": "pump",
-          "label": "Pumps return calcium",
-          "text": "Calcium pumps in the SR membrane split ATP to move calcium back into the SR.",
-          "why": "The pumps work all the time; once release stops, they win, lowering calcium in the sarcoplasm by primary active transport."
-        },
-        {
-          "id": "off",
-          "label": "Calcium leaves troponin",
-          "text": "As calcium in the sarcoplasm falls to resting levels, calcium comes off troponin.",
-          "why": "Troponin gives up its calcium only when the calcium around it has been pumped away."
-        },
-        {
-          "id": "cover",
-          "label": "Tropomyosin covers actin",
-          "text": "Tropomyosin slides back over the myosin-binding sites, and the heads can no longer bind.",
-          "why": "Without calcium, troponin holds tropomyosin in its blocking position again."
-        },
-        {
-          "id": "length",
-          "label": "Fiber is pulled longer",
-          "text": "Elastic proteins, opposing muscles and gravity return the fiber to its resting length.",
-          "why": "Once the filaments stop pulling, something else must lengthen the fiber: a muscle fiber cannot push itself longer."
-        }
-      ],
-      "missing": {
-        "at": 3,
         "distractors": [
           {
-            "text": "Calcium flows back into the SR on its own, down its concentration gradient, without using energy.",
-            "why": "Calcium is far more concentrated inside the SR, so returning it is uphill. The pumps must split ATP to do it."
+            "text": "It presses on the spinal cord itself at the level of the disc, squeezing it against the back of the canal.",
+            "why": "In adults the spinal cord ends at about L1 to L2, above the lower lumbar discs where most herniations happen. Below that the canal holds nerves, not cord."
           },
           {
-            "text": "Calcium leaves the fiber through the T tubules into the extracellular fluid.",
-            "why": "In skeletal muscle, the calcium that triggered contraction came from the SR, and it is pumped back into the SR."
-          }
-        ]
-      },
-      "error": {
-        "at": 6,
-        "text": "The myofibrils push the sarcomeres apart, lengthening the fiber to its resting length.",
-        "why": "Filaments can only pull. The fiber is returned to its resting length by its own elastic proteins, the pull of opposing muscles and gravity."
-      },
-      "summary": "Motor neuron stops → AChE clears the cleft → release channels close → ATP-driven pumps return calcium to the SR → calcium leaves troponin → tropomyosin covers actin → the fiber is pulled back to resting length."
-    },
-    {
-      "id": "mt-cross-bridge-cycle",
-      "title": "The cross-bridge cycle",
-      "topic": "cross-bridge-cycle",
-      "core": [
-        "energy",
-        "structure-function"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "cycle": true,
-      "intro": "Calcium is bound to troponin and ATP is available. Start with a cocked myosin head that has already split its ATP and still holds ADP and phosphate, and put one turn of the cycle in order.",
-      "steps": [
-        {
-          "id": "cocked",
-          "label": "Cocked head, ADP + Pi",
-          "text": "A myosin head holding ADP and phosphate sits in its cocked, high-energy position.",
-          "why": "The energy from the last ATP split is stored in the bent head, like a set mousetrap, before it binds actin."
-        },
-        {
-          "id": "attach",
-          "label": "Cross-bridge forms",
-          "text": "The cocked head binds an uncovered site on actin, forming a cross-bridge.",
-          "why": "With calcium on troponin, tropomyosin has moved, so the head can reach the binding site."
-        },
-        {
-          "id": "stroke",
-          "label": "Pi released, power stroke",
-          "text": "Binding makes the head release its phosphate, and it pivots toward the M line, dragging the thin filament 5 to 10 nm.",
-          "why": "Releasing phosphate lets the head spring back from its cocked shape: the stored energy becomes movement."
-        },
-        {
-          "id": "adp",
-          "label": "ADP released",
-          "text": "At the end of the stroke the head releases its ADP and stays tightly bound to actin.",
-          "why": "ADP leaves after the stroke, not before, leaving the head in a low-energy shape still gripping actin."
-        },
-        {
-          "id": "detach",
-          "label": "ATP binds, head lets go",
-          "text": "A new ATP binds the head, which changes shape and lets go of actin.",
-          "why": "It is the binding of ATP, not its splitting, that releases the head. Without ATP the cycle stops here, locked, as in rigor."
-        },
-        {
-          "id": "recock",
-          "label": "ATP split, head recocks",
-          "text": "The head’s ATPase splits the ATP into ADP and phosphate, and the energy swings the head back to its cocked position.",
-          "why": "Splitting comes after detachment and resets the head, ready to bind a site farther along the thin filament."
-        }
-      ],
-      "missing": {
-        "at": 4,
-        "distractors": [
-          {
-            "text": "Calcium leaves troponin, and tropomyosin pushes the head off actin.",
-            "why": "Tropomyosin covers binding sites but does not detach heads. Only a new ATP binding makes an attached head let go."
-          },
-          {
-            "text": "The head splits a new ATP while still bound, and the energy released pries it off actin.",
-            "why": "Detachment needs only the binding of ATP. Splitting happens after the head has let go and recocks it."
-          }
-        ]
-      },
-      "error": {
-        "at": 2,
-        "text": "Binding makes the head take up a new ATP, and the energy of that ATP drives the power stroke.",
-        "why": "The power stroke is powered by energy already stored in the cocked head from an earlier split. Binding to actin releases phosphate, which lets the head spring back; a new ATP arrives only after the stroke."
-      },
-      "summary": "Cocked head (ADP + Pi) → binds actin → phosphate released, power stroke → ADP released, head still bound → ATP binds, head lets go → ATP split, head recocks, and around again while calcium and ATP last."
-    },
-    {
-      "id": "mt-rigor-mortis",
-      "title": "How rigor mortis sets in",
-      "topic": "cross-bridge-cycle",
-      "core": [
-        "energy"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "After death, muscles stiffen over a few hours and loosen again days later. Trace the chain from the moment circulation stops.",
-      "steps": [
-        {
-          "id": "o2",
-          "label": "Circulation stops",
-          "text": "Circulation stops, no oxygen reaches the muscles, and aerobic respiration ends.",
-          "why": "Aerobic respiration makes most of a fiber’s ATP, and it needs oxygen delivered by the blood."
-        },
-        {
-          "id": "atp",
-          "label": "ATP runs down",
-          "text": "Anaerobic breakdown of glycogen makes a little more ATP, then ATP runs down.",
-          "why": "The fiber’s stored fuel buys only a short delay without oxygen."
-        },
-        {
-          "id": "ca",
-          "label": "Calcium leaks out",
-          "text": "The SR pumps stop and membranes grow leaky, so calcium rises, binds troponin and uncovers actin.",
-          "why": "The pumps are ATPases; without ATP they cannot hold calcium in the SR."
-        },
-        {
-          "id": "bind",
-          "label": "Heads bind and stroke",
-          "text": "Myosin heads bind actin and complete their power stroke.",
-          "why": "The uncovered binding sites let the cocked heads attach, as they would in a contraction."
-        },
-        {
-          "id": "lock",
-          "label": "Heads cannot let go",
-          "text": "No ATP is left to bind the heads, so every cross-bridge stays locked.",
-          "why": "A head lets go of actin only when a new ATP binds it."
-        },
-        {
-          "id": "stiff",
-          "label": "Muscles stiffen",
-          "text": "Filaments bolted together cannot slide, so the muscles resist stretching and the joints are fixed.",
-          "why": "Locked cross-bridges make the muscle stiff rather than pulling hard. Rigor is usually noticeable 2 to 6 hours after death."
-        },
-        {
-          "id": "pass",
-          "label": "Rigor passes off",
-          "text": "Over one to three days, enzymes released inside the dead cells break down the proteins holding the filaments together.",
-          "why": "No ATP returns; the stiffness ends because the structure itself comes apart."
-        }
-      ],
-      "missing": {
-        "at": 4,
-        "distractors": [
-          {
-            "text": "The heads keep splitting ATP made from lactate, so they cycle faster and faster until the muscle shortens.",
-            "why": "After death there is no ATP to split. The heads stop after the power stroke because none can bind the ATP it needs to let go."
-          },
-          {
-            "text": "Calcium binds the myosin heads directly and glues them to actin until the calcium is pumped away.",
-            "why": "Calcium acts through troponin to uncover actin. Heads stay attached because there is no ATP to release them, not because calcium holds them."
-          }
-        ]
-      },
-      "error": {
-        "at": 6,
-        "text": "Rigor passes off as ATP is made again by anaerobic breakdown of glycogen, letting the heads go.",
-        "why": "Once ATP has run out after death it does not return. Rigor ends because enzymes from the dead cells break down the proteins that hold the filaments together."
-      },
-      "summary": "Circulation stops → ATP runs down → pumps fail and calcium uncovers actin → heads bind and stroke → no ATP to release them → muscles stiff (rigor mortis) → days later, the filament proteins break down and rigor passes."
-    },
-    {
-      "id": "mt-twitch-events",
-      "title": "One muscle twitch",
-      "topic": "muscle-tension",
-      "core": [
-        "structure-function",
-        "communication"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "A single stimulus produces one twitch: a latent period, a contraction phase and a relaxation phase. Put the events in order, starting with the stimulus.",
-      "steps": [
-        {
-          "id": "nmj",
-          "label": "Signal at the junction",
-          "text": "An action potential in the motor neuron reaches the neuromuscular junction and ACh is released.",
-          "why": "Every fiber in the motor unit is triggered by its motor neuron’s action potential."
-        },
-        {
-          "id": "ap",
-          "label": "Fiber action potential",
-          "text": "The fiber fires an action potential that spreads along the sarcolemma and down the T tubules.",
-          "why": "The end plate potential brings the sarcolemma to threshold, and the T tubules carry the signal inward."
-        },
-        {
-          "id": "ca",
-          "label": "Calcium binds troponin",
-          "text": "The SR releases calcium, which binds troponin, and cross-bridges start to form.",
-          "why": "These first steps fill the latent period: the chemistry is under way, but the elastic parts must be taken up before tension shows."
-        },
-        {
-          "id": "rise",
-          "label": "Tension rises",
-          "text": "Cross-bridges cycle and tension climbs to its peak: the contraction phase.",
-          "why": "Once the slack is taken up, the pull of cycling cross-bridges appears as rising tension on the myogram."
-        },
-        {
-          "id": "fall",
-          "label": "Tension falls",
-          "text": "The SR pumps calcium back in, tropomyosin covers actin, and tension falls: the relaxation phase.",
-          "why": "Pumping calcium back takes longer than releasing it, so this is usually the longest phase."
-        }
-      ],
-      "missing": {
-        "at": 2,
-        "distractors": [
-          {
-            "text": "Tension rises at once to its peak, because the action potential itself makes the filaments slide.",
-            "why": "The action potential only triggers calcium release; tension waits through the latent period until cross-bridges have taken up the slack."
-          },
-          {
-            "text": "More motor units are recruited, one after another, until tension reaches its peak.",
-            "why": "Recruitment grades the force of a whole muscle. A single twitch is one fiber or unit responding to one action potential."
+            "text": "The whole disc slides out from between the vertebrae.",
+            "why": "Discs do not slip out; each is firmly attached to the bodies above and below. Only part of the nucleus bulges through the tear."
           }
         ]
       },
       "error": {
         "at": 4,
-        "text": "Calcium diffuses out of the fiber through the sarcolemma, and tension falls: the relaxation phase.",
-        "why": "Calcium is pumped back into the SR by ATP-driven pumps, not lost from the fiber. That pumping is slower than release, which is why relaxation takes longest."
+        "text": "The bulge goes straight back in the midline, where the posterior longitudinal ligament is weakest.",
+        "why": "The posterior longitudinal ligament covers the midline of the back of the disc, so the bulge is pushed backward and to one side, where the anulus has no ligament over it."
       },
-      "summary": "Motor neuron signal → fiber action potential down the T tubules → calcium binds troponin (latent period) → cross-bridges cycle and tension rises (contraction phase) → calcium pumped back and tension falls (relaxation phase)."
+      "summary": "Bent lifting squeezes the front of the disc, the nucleus is pushed back, the weakened back of the anulus tears, the nucleus herniates backward and to one side, it presses on the nerve heading down to the next foramen, and pain spreads along that nerve’s territory."
     },
     {
-      "id": "mt-lift-and-lower",
-      "title": "Lifting and lowering a dumbbell",
-      "topic": "muscle-tension",
-      "core": [
-        "structure-function"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "You lift a dumbbell by bending your elbow, hold it still, then lower it slowly. Follow the muscle that bends your elbow through the movement.",
-      "steps": [
-        {
-          "id": "recruit",
-          "label": "Motor units recruited",
-          "text": "Motor neurons fire and recruit motor units, smallest first.",
-          "why": "Force starts with the nervous system activating motor units; by the size principle the small ones come first."
-        },
-        {
-          "id": "iso1",
-          "label": "Tension builds, no motion",
-          "text": "Tension rises while the muscle keeps its length, because it is still less than the load.",
-          "why": "Every lift begins isometrically: nothing moves until tension matches the weight."
-        },
-        {
-          "id": "conc",
-          "label": "Concentric: it shortens",
-          "text": "Tension exceeds the load, the muscle shortens and the dumbbell rises.",
-          "why": "Once tension is greater than the load, the thin filaments slide inward and the joint moves."
-        },
-        {
-          "id": "hold",
-          "label": "Isometric hold",
-          "text": "You hold the dumbbell still: tension equals the load and the muscle length does not change.",
-          "why": "Cross-bridges keep cycling and spending ATP, but the filaments do not slide overall, so no external work is done."
-        },
-        {
-          "id": "ecc",
-          "label": "Eccentric: it lengthens",
-          "text": "You lower the dumbbell slowly: the load exceeds the tension and the muscle lengthens while its cross-bridges keep braking.",
-          "why": "The cross-bridges resist being pulled back, so the muscle controls the descent while getting longer."
-        }
-      ],
-      "missing": {
-        "at": 2,
-        "distractors": [
-          {
-            "text": "Tension exceeds the load, the muscle lengthens and the dumbbell rises.",
-            "why": "When tension is greater than the load, the muscle shortens: a concentric contraction. It lengthens only while a load is lowered."
-          },
-          {
-            "text": "The muscle relaxes completely, and the tendon’s recoil lifts the dumbbell.",
-            "why": "A tendon only transmits the muscle’s pull. The dumbbell rises because the muscle keeps working and shortens."
-          }
-        ]
-      },
-      "error": {
-        "at": 4,
-        "text": "You lower the dumbbell slowly: the muscle relaxes completely and the weight falls under gravity.",
-        "why": "A slow lowering is an eccentric contraction. The muscle keeps working as it lengthens, its cross-bridges braking the fall; a relaxed muscle would let the weight drop."
-      },
-      "summary": "Motor units recruited → tension builds isometrically → concentric contraction lifts the load → isometric hold → eccentric contraction lowers it under control."
-    },
-    {
-      "id": "mt-lactate-route",
-      "title": "From glycogen to lactate and back",
-      "topic": "muscle-metabolism",
-      "core": [
-        "energy"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "A fiber works so hard that it makes lactate. Trace the fuel from the fiber’s glycogen to the lactate and on to where the lactate goes.",
-      "steps": [
-        {
-          "id": "glycogen",
-          "label": "Glycogen broken down",
-          "text": "Glycogen stored in the fiber is broken down to glucose units.",
-          "why": "Muscle glycogen is the main fuel for fast glycolysis, and it serves only the fiber that stores it."
-        },
-        {
-          "id": "gly",
-          "label": "Glycolysis",
-          "text": "Glycolysis splits each glucose into two pyruvate, making ATP and NADH.",
-          "why": "Glycolysis is the fast, oxygen-free first stage, making ATP about twice as fast as aerobic respiration."
-        },
-        {
-          "id": "outrun",
-          "label": "Pyruvate piles up",
-          "text": "Pyruvate is made faster than the mitochondria can take it in.",
-          "why": "At high work rates glycolysis outpaces the mitochondria even when the fiber has oxygen."
-        },
-        {
-          "id": "lactate",
-          "label": "Pyruvate to lactate",
-          "text": "Pyruvate is converted to lactate, regenerating NAD+.",
-          "why": "Glycolysis needs NAD+ to keep running, and making lactate supplies it."
-        },
-        {
-          "id": "leave",
-          "label": "Lactate used as fuel",
-          "text": "Lactate leaves the fiber; other fibers and the heart burn it, and the liver makes glucose from it.",
-          "why": "Lactate is a fuel, not a waste, and blood lactate is back to resting within about an hour."
-        }
-      ],
-      "missing": {
-        "at": 2,
-        "distractors": [
-          {
-            "text": "The fiber runs completely out of oxygen, so the mitochondria stop working altogether.",
-            "why": "Lactate forms whenever glycolysis outruns the mitochondria, even with oxygen present; the mitochondria keep working."
-          },
-          {
-            "text": "Creatine kinase turns the pyruvate into creatine phosphate for later use.",
-            "why": "Creatine kinase moves a phosphate between creatine and ADP; it does not act on pyruvate."
-          }
-        ]
-      },
-      "error": {
-        "at": 4,
-        "text": "Lactate stays in the fiber as a waste, causing next-day soreness until it is slowly excreted.",
-        "why": "Lactate leaves the fiber and is used as fuel within about an hour. Next-day soreness comes from small injuries in the fibers, not lactate."
-      },
-      "summary": "Glycogen → glucose → glycolysis to pyruvate (ATP and NADH) → pyruvate outruns the mitochondria → lactate, regenerating NAD+ → lactate leaves and is burned or made into glucose."
-    },
-    {
-      "id": "mt-angiogenesis",
-      "title": "New capillaries in trained muscle",
-      "topic": "fiber-types",
-      "core": [
-        "structure-function",
-        "communication"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "Endurance training adds capillaries around each muscle fiber. Trace how a training session leads to a new capillary.",
-      "steps": [
-        {
-          "id": "signal",
-          "label": "Low oxygen and shear",
-          "text": "During a session, working fibers are low in oxygen and fast blood flow stretches and shears the capillaries.",
-          "why": "These are the signals that working muscle is short of supply."
-        },
-        {
-          "id": "vegf",
-          "label": "VEGF released",
-          "text": "Muscle fibers and capillary lining cells release growth factors, above all VEGF.",
-          "why": "Low oxygen and shear make the cells release VEGF, the main signal for new vessels."
-        },
-        {
-          "id": "divide",
-          "label": "Endothelial cells divide",
-          "text": "VEGF binds receptor proteins on the endothelium of nearby capillaries, and those cells divide and migrate outward.",
-          "why": "The endothelial cells are the target: VEGF makes them grow a sprout from an existing capillary."
-        },
-        {
-          "id": "join",
-          "label": "Sprout joins up",
-          "text": "The sprout hollows out and joins another capillary, and blood starts to flow through it.",
-          "why": "A sprout carries blood only once it is hollow and connected at both ends."
-        },
-        {
-          "id": "closer",
-          "label": "Shorter oxygen path",
-          "text": "Each fiber’s mitochondria are now closer to a blood supply, so more oxygen reaches each fiber per minute.",
-          "why": "More capillaries shorten the diffusion distance, the payoff of angiogenesis."
-        }
-      ],
-      "missing": {
-        "at": 2,
-        "distractors": [
-          {
-            "text": "VEGF makes the muscle fibers divide, and the new fibers grow capillaries of their own.",
-            "why": "VEGF acts on the endothelial cells of existing capillaries. Adult skeletal fibers do not divide."
-          },
-          {
-            "text": "VEGF makes the existing capillaries widen to several times their diameter, so each one carries far more blood past the fibers.",
-            "why": "Angiogenesis adds new capillaries by sprouting; it does not simply widen the old ones."
-          }
-        ]
-      },
-      "error": {
-        "at": 0,
-        "text": "During a session, working fibers have extra oxygen, and slow blood flow lets the capillaries relax.",
-        "why": "The trigger is the opposite: working fibers are low in oxygen, and fast blood flow stretches and shears the capillaries."
-      },
-      "summary": "Low oxygen and shear during training → VEGF released → endothelial cells of nearby capillaries divide and sprout → sprout joins another capillary → shorter diffusion distance for oxygen."
-    },
-    {
-      "id": "mt-fiber-formation",
-      "title": "Forming and repairing a muscle fiber",
-      "topic": "fiber-types",
+      "id": "sk-rib-parts",
+      "title": "Along a rib, back to front",
+      "topic": "thoracic-cage",
       "core": [
         "structure-function"
       ],
       "level": "recall",
       "diff": 1,
-      "kind": "causal",
-      "intro": "A skeletal muscle fiber has hundreds of nuclei because it was built by fusion. Put the stages of fiber formation in order.",
+      "kind": "flow",
+      "intro": "Follow a typical true rib, the fifth, from where it meets the vertebral column to the sternum.",
       "steps": [
         {
-          "id": "stem",
-          "label": "Stem cells commit",
-          "text": "Muscle stem cells in the embryo commit to becoming muscle as myoblasts.",
-          "why": "Every fiber starts from stem cells that become myoblasts, dividing cells committed to muscle."
+          "id": "head",
+          "label": "Head",
+          "text": "The head meets the costal facets on the bodies of T4 and T5 and the disc between them.",
+          "why": "The head is the back end of the rib, where it starts at the vertebral bodies."
         },
         {
-          "id": "line",
-          "label": "Myoblasts line up",
-          "text": "Myoblasts divide and line up end to end.",
-          "why": "The cells must multiply and align before they can join into one long cell."
+          "id": "neck",
+          "label": "Neck",
+          "text": "The short, narrow neck runs out from the head.",
+          "why": "The neck is the narrow part just beyond the head."
         },
         {
-          "id": "fuse",
-          "label": "Fusion into a myotube",
-          "text": "The myoblasts fuse into a myotube, a long young fiber with many nuclei.",
-          "why": "Fusion is why an adult fiber has many nuclei: each came from a separate myoblast."
+          "id": "tubercle",
+          "label": "Tubercle",
+          "text": "The tubercle meets the costal facet on the transverse process of T5.",
+          "why": "The tubercle is where the neck meets the rest of the rib, level with its own vertebra’s transverse process."
         },
         {
-          "id": "fill",
-          "label": "Myofibrils fill it",
-          "text": "The myotube makes actin and myosin and fills with myofibrils.",
-          "why": "Once formed, the long cell builds the contractile machinery that fills most of its volume."
+          "id": "angle",
+          "label": "Angle",
+          "text": "At the angle, the rib bends sharply and turns forward.",
+          "why": "The angle lies a few centimeters beyond the tubercle; it is the rib’s weakest point."
         },
         {
-          "id": "edge",
-          "label": "Nuclei move to the edge",
-          "text": "Its nuclei move to the edge under the sarcolemma, and it becomes a mature fiber.",
-          "why": "The packed myofibrils push the nuclei aside, giving the mature fiber its peripheral nuclei."
+          "id": "body",
+          "label": "Body with costal groove",
+          "text": "The body curves around the side of the chest, with the costal groove along its lower inner edge.",
+          "why": "After turning at the angle, the long body carries the rib around the side of the chest."
+        },
+        {
+          "id": "cartilage",
+          "label": "Costal cartilage",
+          "text": "At its front end the rib continues as a bar of hyaline cartilage.",
+          "why": "Every rib ends in front in costal cartilage, which lets the cage flex."
+        },
+        {
+          "id": "sternum",
+          "label": "Sternum",
+          "text": "The fifth rib’s own cartilage reaches the side of the body of the sternum.",
+          "why": "Ribs 1 to 7 are true ribs, so the cartilage reaches the sternum directly."
         }
       ],
       "missing": {
         "at": 2,
         "distractors": [
           {
-            "text": "One myoblast copies its nucleus many times without dividing and grows into a long fiber.",
-            "why": "A fiber gets its many nuclei by fusion of many myoblasts, not by one cell copying its nucleus."
+            "text": "The tubercle meets the body of T6.",
+            "why": "The tubercle meets the transverse process of the rib’s own vertebra, T5. It is the head that meets vertebral bodies (T4 and T5)."
           },
           {
-            "text": "The myoblasts link into a sheet through gap junctions but stay separate cells.",
-            "why": "Gap junctions link cells that stay separate, as in cardiac muscle. A skeletal fiber is one cell formed by the fusion of many myoblasts."
+            "text": "The costal groove shelters a nerve, an artery and a vein along the rib’s upper edge, next to the neck.",
+            "why": "The costal groove runs along the lower inner edge of the body, farther along the rib, not next to the neck."
           }
         ]
       },
       "error": {
-        "at": 4,
-        "text": "The mature fiber keeps dividing to add new fibers as the muscle grows.",
-        "why": "Mature skeletal fibers never divide. Growth adds myofibrils to existing fibers, and repair uses muscle stem cells whose myoblasts fuse with damaged fibers."
+        "at": 6,
+        "text": "The fifth rib’s cartilage joins the cartilage of the rib above and reaches the sternum only through it.",
+        "why": "That describes ribs 8 to 10. The fifth rib is a true rib, whose own cartilage reaches the sternum directly."
       },
-      "summary": "Stem cells become myoblasts → myoblasts divide and line up → fuse into a multinucleated myotube → myotube fills with myofibrils → nuclei move to the edge of a mature fiber."
+      "summary": "Head (meets the bodies of T4 and T5), neck, tubercle (meets the transverse process of T5), angle, body with the costal groove, costal cartilage, and for a true rib the sternum directly."
     },
     {
-      "id": "mt-smooth-contraction",
-      "title": "Switching on smooth muscle",
-      "topic": "smooth-cardiac-muscle",
-      "core": [
-        "structure-function",
-        "communication"
-      ],
-      "level": "apply",
-      "diff": 2,
-      "kind": "causal",
-      "intro": "Smooth muscle has no troponin; its switch is on myosin. Trace a contraction from depolarization to the fiber puckering.",
-      "steps": [
-        {
-          "id": "dep",
-          "label": "Membrane depolarizes",
-          "text": "The sarcolemma depolarizes and voltage-gated calcium channels open.",
-          "why": "A signal such as a pacesetter wave, stretch or a transmitter depolarizes the fiber first."
-        },
-        {
-          "id": "ca",
-          "label": "Calcium enters",
-          "text": "Calcium flows in from the extracellular fluid, with some released from the small SR.",
-          "why": "In smooth muscle, much of the calcium comes from outside the cell; the fiber is thin enough for it to reach the filaments quickly."
-        },
-        {
-          "id": "cam",
-          "label": "Calcium binds calmodulin",
-          "text": "Calcium binds calmodulin, smooth muscle’s calcium sensor in the cytosol.",
-          "why": "Calmodulin does the job troponin does in skeletal muscle."
-        },
-        {
-          "id": "mlck",
-          "label": "MLCK switched on",
-          "text": "Calcium–calmodulin activates myosin light-chain kinase (MLCK).",
-          "why": "MLCK is inactive until calcium–calmodulin binds it."
-        },
-        {
-          "id": "phos",
-          "label": "Myosin phosphorylated",
-          "text": "MLCK moves a phosphate from ATP onto a small regulatory protein on each myosin head.",
-          "why": "Phosphorylation is the on switch: it lets the heads bind actin."
-        },
-        {
-          "id": "cycle",
-          "label": "Cross-bridges cycle",
-          "text": "Phosphorylated heads bind actin and cycle, pulling the dense bodies together, and the fiber shortens and puckers.",
-          "why": "The filaments run at angles and are anchored to dense bodies, so pulling them together shortens the whole cell and twists it slightly."
-        }
-      ],
-      "missing": {
-        "at": 2,
-        "distractors": [
-          {
-            "text": "Calcium binds troponin, and tropomyosin rolls off the binding sites on actin.",
-            "why": "That is the skeletal muscle switch. Smooth muscle has no troponin; calcium binds calmodulin instead."
-          },
-          {
-            "text": "Calcium binds the myosin heads directly, and they bind actin at once.",
-            "why": "Calcium does not act on myosin directly. It binds calmodulin, which switches on the kinase that phosphorylates the heads."
-          }
-        ]
-      },
-      "error": {
-        "at": 4,
-        "text": "Myosin phosphatase moves a phosphate onto each myosin head, letting it bind actin.",
-        "why": "MLCK adds the phosphate. Myosin phosphatase does the opposite: it removes the phosphate, which stops the heads cycling and relaxes the fiber."
-      },
-      "summary": "Depolarization → calcium enters (mostly from outside) → calcium binds calmodulin → MLCK activated → myosin heads phosphorylated → cross-bridges cycle and pull the dense bodies together."
-    },
-    {
-      "id": "mt-smooth-relaxation",
-      "title": "Relaxing smooth muscle",
-      "topic": "smooth-cardiac-muscle",
+      "id": "sk-count-ribs",
+      "title": "Counting ribs from the sternal angle",
+      "topic": "thoracic-cage",
       "core": [
         "structure-function"
       ],
       "level": "apply",
       "diff": 2,
-      "kind": "causal",
-      "intro": "A smooth muscle fiber relaxes when the switch on myosin is turned off. Put the steps in order, starting as calcium is removed.",
+      "kind": "flow",
+      "intro": "A clinician needs to find the fourth space between the ribs. The first rib cannot be felt. Put the steps in order.",
       "steps": [
         {
-          "id": "pump",
-          "label": "Calcium removed",
-          "text": "Calcium is pumped out of the cell and back into the SR.",
-          "why": "Relaxation starts with lowering the calcium that switched the fiber on."
+          "id": "notch",
+          "label": "Jugular notch",
+          "text": "Find the jugular notch, the dip at the top of the manubrium between the collarbones.",
+          "why": "The jugular notch is the easiest landmark to feel, so the count starts here."
         },
         {
-          "id": "cam",
-          "label": "Calmodulin lets go",
-          "text": "Calcium leaves calmodulin.",
-          "why": "With less calcium in the cytosol, calmodulin gives up its calcium."
+          "id": "angle",
+          "label": "Sternal angle",
+          "text": "Slide down about 5 cm to the horizontal ridge where the manubrium meets the body: the sternal angle.",
+          "why": "The sternal angle lies about 5 cm below the jugular notch."
         },
         {
-          "id": "mlck",
-          "label": "MLCK switches off",
-          "text": "Without calcium–calmodulin, MLCK switches off.",
-          "why": "MLCK is active only while calcium–calmodulin is bound to it."
+          "id": "rib2",
+          "label": "Second rib",
+          "text": "Slide sideways onto the second rib’s cartilage, which attaches at the sternal angle.",
+          "why": "The second rib attaches right at the level of the sternal angle, which is why the count starts from it and not from the hidden first rib."
         },
         {
-          "id": "phosph",
-          "label": "Phosphate removed",
-          "text": "Myosin phosphatase removes the phosphate from the myosin heads.",
-          "why": "The phosphatase works all the time; with MLCK off, it now wins."
+          "id": "space2",
+          "label": "Second space",
+          "text": "Move down into the space below the second rib: the second space.",
+          "why": "Each space is numbered for the rib above it."
         },
         {
-          "id": "stop",
-          "label": "Heads stop cycling",
-          "text": "Unphosphorylated heads stop cycling, and the fiber relaxes.",
-          "why": "Without phosphate the heads no longer bind and pull, so tension fades over seconds to minutes."
+          "id": "rib3",
+          "label": "Third rib",
+          "text": "Move down onto the third rib, then the third space below it.",
+          "why": "The ribs and spaces alternate as you move down."
+        },
+        {
+          "id": "space4",
+          "label": "Fourth space",
+          "text": "Cross the fourth rib into the fourth space.",
+          "why": "The fourth space lies directly below the fourth rib."
         }
       ],
       "missing": {
-        "at": 3,
+        "at": 2,
         "distractors": [
           {
-            "text": "Troponin takes up the calcium, and tropomyosin covers actin again.",
-            "why": "Smooth muscle has no troponin. Its heads stop cycling when myosin phosphatase removes their phosphate."
+            "text": "Slide sideways onto the first rib, which attaches at the sternal angle and is easy to feel just below the collarbone.",
+            "why": "The first rib attaches to the manubrium and is hidden behind the collarbone. The rib at the sternal angle is the second."
           },
           {
-            "text": "MLCK removes its own phosphate from the myosin heads.",
-            "why": "MLCK adds phosphate; a separate enzyme, myosin phosphatase, removes it."
+            "text": "Slide down to the xiphoid process and count the ribs upward.",
+            "why": "No ribs attach to the xiphoid process, so it gives no rib to start from."
           }
         ]
       },
       "error": {
-        "at": 4,
-        "text": "Unphosphorylated heads stay attached permanently, locking the fiber in rigor.",
-        "why": "Heads that lose their phosphate stop cycling and the fiber relaxes. If the phosphate comes off while a head is still attached, it detaches slowly as a latch-bridge, holding tension cheaply, but that is not rigor."
+        "at": 1,
+        "text": "Slide down about 5 cm to the ridge where the body meets the xiphoid process: the sternal angle.",
+        "why": "The sternal angle is where the manubrium meets the body, not where the body meets the xiphoid process."
       },
-      "summary": "Calcium pumped out → calcium leaves calmodulin → MLCK switches off → myosin phosphatase removes phosphate → heads stop cycling and the fiber relaxes."
+      "summary": "Jugular notch, down about 5 cm to the sternal angle, sideways onto the second rib’s cartilage, then down: second space, third rib, third space, fourth rib, fourth space."
+    },
+    {
+      "id": "sk-arm-force",
+      "title": "A fall on an outstretched hand",
+      "topic": "upper-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "When you fall onto an outstretched hand, the force travels up the limb to the trunk. Put the bones it passes through in order.",
+      "steps": [
+        {
+          "id": "palm",
+          "label": "Palm and carpals",
+          "text": "The force enters through the palm and the carpals.",
+          "why": "The hand strikes the ground first."
+        },
+        {
+          "id": "scaphoid",
+          "label": "Scaphoid",
+          "text": "The scaphoid, bridging the two rows of carpals, passes it to the radius.",
+          "why": "The scaphoid and lunate are the carpals that meet the radius, and the scaphoid carries much of the load, which is why it breaks so often."
+        },
+        {
+          "id": "radius",
+          "label": "Radius",
+          "text": "The wide lower end of the radius takes most of the load at the wrist.",
+          "why": "The radius, not the ulna, carries most of the wrist, which is why its lower end breaks in a Colles fracture."
+        },
+        {
+          "id": "humerus",
+          "label": "Humerus",
+          "text": "The force passes up the forearm into the humerus.",
+          "why": "The forearm bones meet the humerus at the elbow, so the force continues up the arm."
+        },
+        {
+          "id": "scapula",
+          "label": "Glenoid cavity",
+          "text": "The head of the humerus pushes on the glenoid cavity of the scapula.",
+          "why": "The head of the humerus sits in the glenoid cavity, the only place the arm meets the girdle."
+        },
+        {
+          "id": "clavicle",
+          "label": "Clavicle",
+          "text": "The acromion passes the force to the clavicle.",
+          "why": "The scapula does not meet the trunk, so the only bony route onward is through the acromion to the clavicle, the strut that often breaks."
+        },
+        {
+          "id": "sternum",
+          "label": "Manubrium",
+          "text": "The clavicle delivers the force to the manubrium of the sternum.",
+          "why": "The sternal end of the clavicle meets the manubrium, the only bony link between the arm and the trunk."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "The scapula passes the force straight to the ribs behind it.",
+            "why": "The scapula does not meet the ribs or the vertebral column; muscles hold it against the cage. The bony route runs through the clavicle."
+          },
+          {
+            "text": "The coracoid process passes the force to the first rib.",
+            "why": "The coracoid process is a hook for muscles and meets no bone. The acromion is the part of the scapula that meets the clavicle."
+          }
+        ]
+      },
+      "error": {
+        "at": 2,
+        "text": "The small lower end of the ulna takes most of the load at the wrist.",
+        "why": "The ulna is small at the wrist and large at the elbow. The radius is the forearm bone that carries the wrist."
+      },
+      "summary": "Palm and carpals, scaphoid, lower end of the radius, humerus, glenoid cavity of the scapula, acromion to the clavicle, and the clavicle to the manubrium: the only bony route from arm to trunk."
+    },
+    {
+      "id": "sk-carpals",
+      "title": "The carpals, row by row",
+      "topic": "upper-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "In anatomical position, name the carpals from lateral (thumb side) to medial, first the row next to the forearm, then the row next to the metacarpals.",
+      "steps": [
+        {
+          "id": "scaphoid",
+          "label": "Scaphoid",
+          "text": "Scaphoid, the boat-shaped bone under the thumb side of the forearm.",
+          "why": "The proximal row starts on the thumb side, where the scaphoid meets the radius."
+        },
+        {
+          "id": "lunate",
+          "label": "Lunate",
+          "text": "Lunate, the moon-shaped bone that also meets the radius.",
+          "why": "Next to the scaphoid, the lunate is the second carpal that meets the radius."
+        },
+        {
+          "id": "triquetrum",
+          "label": "Triquetrum",
+          "text": "Triquetrum, the three-cornered bone.",
+          "why": "Moving toward the little-finger side of the proximal row."
+        },
+        {
+          "id": "pisiform",
+          "label": "Pisiform",
+          "text": "Pisiform, the pea-sized sesamoid bone on the palm side of the triquetrum.",
+          "why": "The pisiform ends the proximal row on the little-finger side, the knob you feel at the base of the palm."
+        },
+        {
+          "id": "trapezium",
+          "label": "Trapezium",
+          "text": "Trapezium, under the thumb.",
+          "why": "The distal row starts again on the thumb side, where the trapezium sits under the thumb’s metacarpal."
+        },
+        {
+          "id": "trapezoid",
+          "label": "Trapezoid",
+          "text": "Trapezoid, beside the trapezium.",
+          "why": "The trapezoid sits next to the trapezium, toward the index finger."
+        },
+        {
+          "id": "capitate",
+          "label": "Capitate",
+          "text": "Capitate, the largest carpal, with a rounded head.",
+          "why": "The capitate lies in the middle of the distal row."
+        },
+        {
+          "id": "hamate",
+          "label": "Hamate",
+          "text": "Hamate, with a hook on its palm side.",
+          "why": "The hamate ends the distal row on the little-finger side."
+        }
+      ],
+      "missing": {
+        "at": 4,
+        "distractors": [
+          {
+            "text": "Trapezoid, under the thumb.",
+            "why": "The trapezium, not the trapezoid, sits under the thumb; both words with an M go together (trapeziuM, thuMb)."
+          },
+          {
+            "text": "Lunate, under the thumb, in the row next to the metacarpals.",
+            "why": "The lunate is in the proximal row, next to the scaphoid, where it meets the radius. The carpal under the thumb in the distal row is the trapezium."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "Hamate, the hook-shaped bone that also meets the radius.",
+        "why": "The hamate is the last bone of the distal row. The second bone of the proximal row, which meets the radius with the scaphoid, is the lunate."
+      },
+      "summary": "Proximal row: scaphoid, lunate, triquetrum, pisiform. Distal row: trapezium, trapezoid, capitate, hamate. “Some Lovers Try Positions That They Can’t Handle.”"
+    },
+    {
+      "id": "sk-weight-path",
+      "title": "Body weight from trunk to foot",
+      "topic": "lower-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "flow",
+      "intro": "When you stand on one leg, the weight of your head and trunk travels down to the ground. Put the path in order.",
+      "steps": [
+        {
+          "id": "sacrum",
+          "label": "Sacrum",
+          "text": "The weight of the trunk presses down on the wedge-shaped sacrum.",
+          "why": "The vertebral column ends in the sacrum, which carries the load of everything above."
+        },
+        {
+          "id": "ilium",
+          "label": "Ilium",
+          "text": "The sacrum passes the load to the hip bones, and thick bone of the ilium carries it around.",
+          "why": "The sacrum sits wedged between the two hip bones, held by strong ligaments."
+        },
+        {
+          "id": "acetabulum",
+          "label": "Acetabulum",
+          "text": "The acetabulum presses down on the head of the femur.",
+          "why": "The ilium carries the load to the acetabulum, the socket where the femur meets the hip bone."
+        },
+        {
+          "id": "neck",
+          "label": "Femoral neck",
+          "text": "The load travels through the angled femoral neck into the shaft.",
+          "why": "The neck joins the head to the shaft at about 125 degrees; it is the femur’s weak point."
+        },
+        {
+          "id": "condyles",
+          "label": "Femoral condyles",
+          "text": "The femoral condyles rest on the condyles of the tibia.",
+          "why": "The shaft carries the load down to the knee, where the femur’s condyles meet the tibia."
+        },
+        {
+          "id": "tibia",
+          "label": "Tibia",
+          "text": "The tibia carries almost all of the load down the leg.",
+          "why": "The fibula does not reach the femur, so the tibia takes nearly all the weight."
+        },
+        {
+          "id": "talus",
+          "label": "Talus",
+          "text": "The tibia rests on the talus, the only foot bone that meets the leg.",
+          "why": "The talus sits on top of the foot, gripped by the two malleoli."
+        },
+        {
+          "id": "foot",
+          "label": "Heel and ball of foot",
+          "text": "The talus passes the load back to the calcaneus and forward along the arches to the ball of the foot.",
+          "why": "The arches spread the weight between the heel and the heads of the metatarsals."
+        }
+      ],
+      "missing": {
+        "at": 5,
+        "distractors": [
+          {
+            "text": "The fibula carries most of the load down the leg.",
+            "why": "The fibula is thin and does not reach the femur; it carries only about 6 to 17 percent of body weight."
+          },
+          {
+            "text": "The patella carries the load from the femur to the leg.",
+            "why": "The patella sits in a tendon in front of the knee and glides in a groove on the femur; it does not carry weight down to the leg."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "The tibia rests on the calcaneus, the only foot bone that meets the leg.",
+        "why": "The calcaneus is the heel bone, below the talus. The talus is the only foot bone that meets the leg."
+      },
+      "summary": "Sacrum, ilium, acetabulum, femoral head and neck, shaft, femoral condyles on the tibial condyles, tibia, talus, then back to the calcaneus and forward along the arches."
+    },
+    {
+      "id": "sk-medial-arch",
+      "title": "Along the medial longitudinal arch",
+      "topic": "lower-limb",
+      "core": [
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "flow",
+      "intro": "Trace the high arch along the inner side of the foot, from the heel to the big toe.",
+      "steps": [
+        {
+          "id": "calcaneus",
+          "label": "Calcaneus",
+          "text": "Start at the calcaneus, the heel bone.",
+          "why": "The medial longitudinal arch begins at the heel, which touches the ground behind."
+        },
+        {
+          "id": "talus",
+          "label": "Talus",
+          "text": "Rise to the talus, sitting on top of the calcaneus.",
+          "why": "The talus sits above the calcaneus and forms the top of the arch, where the tibia rests."
+        },
+        {
+          "id": "navicular",
+          "label": "Navicular",
+          "text": "Move forward to the navicular, in front of the talus on the inner side.",
+          "why": "The navicular lies directly in front of the talus."
+        },
+        {
+          "id": "cuneiforms",
+          "label": "Cuneiforms",
+          "text": "Continue to the cuneiforms, in a row in front of the navicular.",
+          "why": "The three cuneiforms sit in front of the navicular."
+        },
+        {
+          "id": "metatarsals",
+          "label": "First metatarsals",
+          "text": "Reach the first three metatarsals, whose heads form the ball of the foot.",
+          "why": "The cuneiforms meet the bases of the first three metatarsals."
+        },
+        {
+          "id": "hallux",
+          "label": "Hallux",
+          "text": "End at the two phalanges of the big toe.",
+          "why": "The first metatarsal leads to the hallux, the big toe."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "Move forward to the cuboid, in front of the talus on the inner side.",
+            "why": "The cuboid sits in front of the calcaneus on the outer side, in the lateral arch."
+          },
+          {
+            "text": "Drop down to the lateral malleolus.",
+            "why": "The lateral malleolus is the lower end of the fibula on the outer ankle, not part of the foot’s arches."
+          }
+        ]
+      },
+      "error": {
+        "at": 3,
+        "text": "Continue to the cuboid, in a row in front of the navicular.",
+        "why": "The bones in a row in front of the navicular are the three cuneiforms. The cuboid lies on the outer side, in front of the calcaneus."
+      },
+      "summary": "Calcaneus, talus, navicular, cuneiforms, first three metatarsals, then the phalanges of the big toe. The lateral arch runs calcaneus, cuboid, fourth and fifth metatarsals."
     }
   ]
 }

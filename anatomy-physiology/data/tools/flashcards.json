@@ -18813,6 +18813,865 @@
    "front": "Why does heart muscle stop contracting within about a minute when its blood flow stops?",
    "back": "It is almost entirely aerobic, with little capacity for anaerobic glycolysis.",
    "why": "It begins to die after 20 to 30 minutes without flow, so restoring flow quickly saves muscle."
+  },
+  {
+   "id": "jt-sf-schemes",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Structural vs functional joint classes",
+   "front": "Structural vs functional classification: what question does each ask?",
+   "back": "Structural: what tissue joins the bones, and is there a space between them? Functional: how much movement does the joint allow?",
+   "why": "The two schemes are independent, so every joint gets one label from each; the tissue usually predicts the movement, but not always."
+  },
+  {
+   "id": "jt-sf-tissue",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Structural vs functional joint classes",
+   "front": "Fibrous vs cartilaginous vs synovial joints: what joins the bones?",
+   "back": "Fibrous: dense connective tissue (collagen fibers). Cartilaginous: hyaline cartilage or fibrocartilage. Synovial: a fibrous sleeve around the joint, with the bone ends separated by fluid.",
+   "why": "The connecting tissue is the whole basis of the structural scheme."
+  },
+  {
+   "id": "jt-sf-space",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Structural vs functional joint classes",
+   "front": "Fibrous vs cartilaginous vs synovial joints: is there a space between the bones?",
+   "back": "Fibrous: no. Cartilaginous: no. Synovial: yes, a narrow fluid-filled space.",
+   "why": "The fluid-filled space is the one feature that sets synovial joints apart; the other two are solid all the way across."
+  },
+  {
+   "id": "jt-sf-subtypes",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Structural vs functional joint classes",
+   "front": "Fibrous vs cartilaginous vs synovial joints: what are the subtypes?",
+   "back": "Fibrous: suture, syndesmosis, gomphosis. Cartilaginous: synchondrosis, symphysis. Synovial: six shapes (plane, hinge, pivot, condyloid, saddle, ball-and-socket).",
+   "why": "Fibrous subtypes differ in fiber length and what they join; cartilaginous subtypes differ in the kind of cartilage; synovial types differ in surface shape."
+  },
+  {
+   "id": "jt-sf-usual",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Structural vs functional joint classes",
+   "front": "Fibrous vs cartilaginous vs synovial joints: usual functional class?",
+   "back": "Fibrous: synarthrosis (sutures, gomphoses) or amphiarthrosis (syndesmoses). Cartilaginous: synarthrosis (synchondroses) or amphiarthrosis (symphyses). Synovial: diarthrosis.",
+   "why": "Longer or more flexible connecting tissue allows more movement, and a fluid-filled space allows the most."
+  },
+  {
+   "id": "jt-sf-example",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Structural vs functional joint classes",
+   "front": "Fibrous vs cartilaginous vs synovial joints: one example each?",
+   "back": "Fibrous: the coronal suture, or a tooth in its socket. Cartilaginous: the epiphyseal plate, or the pubic symphysis. Synovial: the shoulder, or the knuckles.",
+   "why": "Each example shows its class’s connecting tissue: collagen fibers, cartilage, or a fluid-filled space."
+  },
+  {
+   "id": "jt-sf-exception",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "compare": "Structural vs functional joint classes",
+   "front": "Name a synovial joint that is functionally close to an amphiarthrosis.",
+   "back": "The joint between the sacrum and each hip bone.",
+   "why": "It has a fluid-filled space for much of its surface, but very strong ligaments hold it so tightly that it moves only slightly."
+  },
+  {
+   "id": "jt-sf-span",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Structural vs functional joint classes",
+   "front": "Can one structural class include joints of two functional classes?",
+   "back": "Yes. Fibrous joints include immobile sutures and slightly movable syndesmoses; cartilaginous joints include nearly immobile synchondroses and slightly movable symphyses.",
+   "why": "Within a class, how far the bones can move depends on how long and flexible the connecting tissue is."
+  },
+  {
+   "id": "jt-sf-functional",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Structural vs functional joint classes",
+   "front": "Synarthrosis vs amphiarthrosis vs diarthrosis?",
+   "back": "Synarthrosis: immobile or nearly so. Amphiarthrosis: slightly movable. Diarthrosis: freely movable.",
+   "why": "They are points on one line from locked to free; moving toward free, mobility rises and stability falls."
+  },
+  {
+   "id": "jt-definition",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a joint (articulation)?",
+   "back": "Any place where a bone meets another bone, a cartilage or a tooth.",
+   "why": "A joint does not have to move; skull sutures are joints. What makes a joint is two structures meeting and being held together."
+  },
+  {
+   "id": "jt-tradeoff",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Mobility vs stability at a joint: how are they related?",
+   "back": "They pull against each other: the tighter the tissue binding two bones, the less they move and the harder the joint is to disrupt.",
+   "why": "Tight binding tissue both limits movement and resists forces that would push the bones out of line."
+  },
+  {
+   "id": "jt-suture",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What holds the bones together at a suture, and why does it barely move?",
+   "back": "A thin layer of dense fibrous tissue between wavy, interlocking bone edges.",
+   "why": "Interlocking edges plus very short fibers leave almost no room for movement."
+  },
+  {
+   "id": "jt-fontanelle",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can a newborn’s skull bones shift and overlap during birth?",
+   "back": "The fibrous tissue between them is wide, forming broad soft areas at the fontanelles.",
+   "why": "Wider, longer connecting tissue lets the bones move, and the open seams also let the skull grow with the brain."
+  },
+  {
+   "id": "jt-syndesmosis",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Syndesmosis: what joins the bones, and two examples?",
+   "back": "A ligament or an interosseous membrane. Examples: the membrane between the radius and ulna; the tibia and fibula, including the ligaments just above the ankle.",
+   "why": "The fibers are longer than in a suture, so a syndesmosis gives a little: an amphiarthrosis."
+  },
+  {
+   "id": "jt-gomphosis",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a gomphosis, and what makes it unique?",
+   "back": "The fibrous joint between a tooth and its bony socket, held by the periodontal ligament. It is the only joint where a tooth forms one side.",
+   "why": "The periodontal ligament’s collagen fibers run from root to socket wall, holding the tooth but letting it shift a fraction of a millimeter."
+  },
+  {
+   "id": "jt-synostosis",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a synostosis? Give an example.",
+   "back": "A former joint where bone has replaced the connecting tissue, fusing two bones into one. Example: the two halves of the frontal bone, or a closed epiphyseal plate.",
+   "why": "When bone fills the joint, nothing separates the bones any more, so they become one."
+  },
+  {
+   "id": "jt-ss-cartilage",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Synchondrosis vs symphysis",
+   "front": "Synchondrosis vs symphysis: which cartilage?",
+   "back": "Synchondrosis: hyaline cartilage. Symphysis: fibrocartilage.",
+   "why": "The subtype of a cartilaginous joint is named for the kind of cartilage that joins the bones."
+  },
+  {
+   "id": "jt-ss-movement",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Synchondrosis vs symphysis",
+   "front": "Synchondrosis vs symphysis: how much movement, and why?",
+   "back": "Synchondrosis: barely moves (synarthrosis). Symphysis: gives a little (amphiarthrosis).",
+   "why": "Fibrocartilage is packed with thick collagen bundles that resist squeezing and pulling yet let the pad bend a little."
+  },
+  {
+   "id": "jt-ss-examples",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Synchondrosis vs symphysis",
+   "front": "Synchondrosis vs symphysis: examples?",
+   "back": "Synchondrosis: the epiphyseal plate; the first rib and manubrium. Symphysis: the pubic symphysis, the intervertebral discs, the manubrium and body of the sternum.",
+   "why": "Every symphysis sits on the midline of the body."
+  },
+  {
+   "id": "jt-discs-add-up",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Each intervertebral disc allows only a little movement. Why can your spine bend a long way?",
+   "back": "The small movements of many discs add up.",
+   "why": "Each symphysis is an amphiarthrosis, but the vertebral column has many of them in a row."
+  },
+  {
+   "id": "jt-pregnancy",
+   "topic": "joint-classification",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "In pregnancy the pubic symphysis widens and moves more. Has its joint class changed?",
+   "back": "No. It is still a fibrocartilage symphysis; only how stretchy its collagen is has changed.",
+   "why": "Hormones loosen the collagen of the pad and its ligaments, so the tissue gives more and movement follows; afterward it tightens again."
+  },
+  {
+   "id": "jt-six-axes",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The six synovial joint types",
+   "front": "The six synovial joint types: how many axes does each allow?",
+   "back": "Plane: glides only. Hinge: one. Pivot: one. Condyloid: two. Saddle: two. Ball-and-socket: three.",
+   "why": "The shape of the joint surfaces decides which ways the bones can move. Books disagree on how to count a plane joint’s axes, but its movement is always small."
+  },
+  {
+   "id": "jt-six-plane",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The six synovial joint types",
+   "front": "Plane joint: surfaces, movement, example?",
+   "back": "Flat on flat; small glides only; between the carpal bones (also the tarsals and the vertebral articular processes).",
+   "why": "Two flat surfaces can only slide over each other, and the ligaments keep the slides small."
+  },
+  {
+   "id": "jt-six-hinge",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The six synovial joint types",
+   "front": "Hinge joint: surfaces, movement, example?",
+   "back": "A spool-shaped surface in a curved trough; swings back and forth in one plane; the elbow (also the finger joints and the ankle).",
+   "why": "The spool can only roll in its trough, like a door on its hinge, so it is uniaxial."
+  },
+  {
+   "id": "jt-six-pivot",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The six synovial joint types",
+   "front": "Pivot joint: surfaces, movement, example?",
+   "back": "A rounded peg in a ring of bone and ligament; turns around the bone’s long axis; the dens of the axis in the ring of the atlas (also the head of the radius).",
+   "why": "A peg in a ring can only spin, so the joint is uniaxial."
+  },
+  {
+   "id": "jt-six-condyloid",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The six synovial joint types",
+   "front": "Condyloid joint: surfaces, movement, example?",
+   "back": "An oval surface in an oval hollow; swings in two planes but cannot turn; the wrist between the radius and carpals (also the knuckles).",
+   "why": "An oval cannot spin in an oval hollow, so it moves forward and back and side to side only: biaxial."
+  },
+  {
+   "id": "jt-six-saddle",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The six synovial joint types",
+   "front": "Saddle joint: surfaces, movement, example?",
+   "back": "Two saddle-shaped surfaces fitting like a rider on a horse; swings in two planes with a wide range; the base of the thumb (trapezium and first metacarpal).",
+   "why": "Each surface curves up one way and down the other, allowing two planes of movement with more range than a condyloid joint."
+  },
+  {
+   "id": "jt-six-ball",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "The six synovial joint types",
+   "front": "Ball-and-socket joint: surfaces, movement, example?",
+   "back": "A round head in a cup-shaped socket; swings in every plane and turns; the shoulder and the hip.",
+   "why": "A sphere can move in any direction and spin in its cup, so the joint is multiaxial."
+  },
+  {
+   "id": "jt-six-thumb",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "The six synovial joint types",
+   "front": "Why can your thumb sweep across your palm when your wrist cannot?",
+   "back": "The thumb’s carpometacarpal joint is a saddle joint; the wrist’s radiocarpal joint is condyloid.",
+   "why": "A saddle joint moves in two planes with a wider range than a condyloid joint."
+  },
+  {
+   "id": "jt-parts",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the four parts every synovial joint has.",
+   "back": "Articular cartilage on the bone ends, a joint cavity, synovial fluid filling it, and a two-layer articular capsule.",
+   "why": "The capsule’s fibrous membrane holds the bones together, and its synovial membrane makes the fluid that fills the cavity."
+  },
+  {
+   "id": "jt-capsule-layers",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What are the two layers of the articular capsule, and what does each do?",
+   "back": "Outer fibrous membrane: dense irregular connective tissue that attaches to each bone’s periosteum and holds the bones together. Inner synovial membrane: lines every surface in the cavity not covered by cartilage and makes synovial fluid.",
+   "why": "Strength comes from the outer layer’s collagen; the inner layer’s cells and small blood vessels produce the fluid."
+  },
+  {
+   "id": "jt-fluid-jobs",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What three jobs does synovial fluid do?",
+   "back": "Lowers friction, feeds the articular cartilage, and spreads load.",
+   "why": "Slippery molecules coat the cartilage; loading pumps fluid in and out of the cartilage; fluid squeezed out forms a pressurized film that shares the load."
+  },
+  {
+   "id": "jt-cartilage-fed",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Articular cartilage has no blood vessels. How is it fed?",
+   "back": "By synovial fluid, pumped in and out of it by loading and unloading.",
+   "why": "Load squeezes fluid out; when the load comes off, the cartilage springs back and draws fresh fluid in, and nutrients diffuse to the chondrocytes."
+  },
+  {
+   "id": "jt-ligament-kinds",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Intrinsic vs extrinsic vs intracapsular ligament?",
+   "back": "Intrinsic: a thickened band within the fibrous membrane. Extrinsic: outside the capsule, separate from it. Intracapsular: inside the capsule, covered by synovial membrane.",
+   "why": "Ligaments are named by where they sit relative to the capsule; an intracapsular ligament is covered by synovial membrane, so it is outside the fluid-filled cavity."
+  },
+  {
+   "id": "jt-disc",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What does an articular disc do? Give two examples.",
+   "back": "A fibrocartilage pad between the bone ends that makes mismatched surfaces fit and spreads load. Examples: the menisci of the knee; the discs of the jaw joint and sternoclavicular joint.",
+   "why": "Filling the gap between two surfaces that do not match spreads force over a larger area."
+  },
+  {
+   "id": "jt-bursa",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is a bursa, and what is a tendon sheath?",
+   "back": "A bursa is a flattened sac of synovial membrane holding a film of synovial fluid. A tendon sheath is a bursa stretched into a tube around a tendon.",
+   "why": "Both sit between layers that slide over each other, so they glide instead of rubbing."
+  },
+  {
+   "id": "jt-cruciates",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "ACL vs PCL: what does each stop?",
+   "back": "ACL: stops the tibia sliding forward under the femur. PCL: stops the tibia sliding backward.",
+   "why": "They are named for where they attach on the tibia; the ACL runs from the front of the tibia up and back, the PCL from the back up and forward."
+  },
+  {
+   "id": "jt-collaterals",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Tibial vs fibular collateral ligament: side, job, and relation to the capsule?",
+   "back": "Tibial: inner side, stops the knee being pushed inward, intrinsic (part of the capsule). Fibular: outer side, stops the knee being pushed outward, extrinsic (separate from the capsule).",
+   "why": "Each is pulled tight by force that opens its own side of the knee."
+  },
+  {
+   "id": "jt-menisci",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What do the menisci do for the knee?",
+   "back": "They deepen the nearly flat tibial surfaces into shallow cups and spread the femur’s load over a larger area.",
+   "why": "They are C-shaped fibrocartilage pads, thick at the outer edge and thin at the inner edge."
+  },
+  {
+   "id": "jt-knee-rotation",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Can the knee rotate?",
+   "back": "A little, but only when it is bent. It works mostly as a hinge.",
+   "why": "When the knee is bent, the tibia can turn a little on the femur; straightened, it acts as a hinge only."
+  },
+  {
+   "id": "jt-unhappy-triad",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "The classic \"unhappy\" knee injury from a blow to the outer side: what is torn? (and the exam caveat)",
+   "back": "For your exam: the tibial collateral ligament, the medial meniscus and the ACL. Studies of fresh ACL tears find the lateral meniscus torn more often than the medial.",
+   "why": "The blow pushes the knee inward, tearing the tibial collateral ligament, which is attached to the medial meniscus. The medial meniscus tears more often later, in knees that stay unstable."
+  },
+  {
+   "id": "jt-acl-mechanism",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "How does an ACL usually tear?",
+   "back": "Without contact: the foot is planted, then the body twists or stops suddenly with the knee nearly straight.",
+   "why": "The tibia is fixed while momentum drives it forward or twists it under the femur, pulling the ACL past its limit."
+  },
+  {
+   "id": "jt-sh-socket",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Shoulder vs hip joint",
+   "front": "Shoulder vs hip: the socket?",
+   "back": "Shoulder: the glenoid cavity, small and shallow, about a third the size of the humeral head. Hip: the acetabulum, deep; with its labrum it grips more than half the femoral head.",
+   "why": "A deep socket holds the ball by its shape; a shallow one needs other structures to hold it."
+  },
+  {
+   "id": "jt-sh-rim",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Shoulder vs hip joint",
+   "front": "Shoulder vs hip: the fibrocartilage rim?",
+   "back": "Shoulder: the glenoid labrum. Hip: the acetabular labrum.",
+   "why": "Each is a ring of fibrocartilage around the socket rim that deepens it."
+  },
+  {
+   "id": "jt-sh-capsule",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Shoulder vs hip joint",
+   "front": "Shoulder vs hip: the capsule?",
+   "back": "Shoulder: loose, especially underneath. Hip: thick and tight, reinforced by strong spiraling ligaments.",
+   "why": "A loose capsule allows range; a tight one gives stability."
+  },
+  {
+   "id": "jt-sh-stability",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Shoulder vs hip joint",
+   "front": "Shoulder vs hip: main source of stability?",
+   "back": "Shoulder: the rotator cuff tendons. Hip: the bony socket and strong ligaments, especially the iliofemoral ligament.",
+   "why": "The shoulder’s shallow socket and loose capsule leave muscles to do the holding; the hip’s shape and ligaments hold it passively."
+  },
+  {
+   "id": "jt-sh-range",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Shoulder vs hip joint",
+   "front": "Shoulder vs hip: range of movement and dislocation?",
+   "back": "Shoulder: the widest range in the body and the most often dislocated joint. Hip: wide but less range, and dislocates rarely, only with great force.",
+   "why": "Mobility costs stability: the shoulder trades stability for range, the hip the reverse."
+  },
+  {
+   "id": "jt-shoulder-direction",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Which way does the humeral head usually dislocate, and why?",
+   "back": "Forward and down.",
+   "why": "That is where the capsule is weakest and no rotator cuff tendon crosses the joint."
+  },
+  {
+   "id": "jt-tmj",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How does the temporomandibular joint move when you open wide?",
+   "back": "Both ways: in the lower cavity the mandible swings like a hinge; in the upper cavity the disc and condyle glide forward.",
+   "why": "The articular disc splits the joint into two cavities, each allowing a different movement."
+  },
+  {
+   "id": "jt-atlas-pair",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Atlanto-occipital vs atlantoaxial joint?",
+   "back": "Atlanto-occipital: skull on atlas, condyloid, nods \"yes\". Atlantoaxial: atlas on axis around the dens, pivot, shakes \"no\".",
+   "why": "A condyloid joint swings but cannot turn; a pivot turns around the long axis."
+  },
+  {
+   "id": "jt-elbow-three",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Which three joints share the elbow’s capsule?",
+   "back": "The humeroulnar joint (the hinge), the humeroradial joint, and the proximal radioulnar joint (a pivot).",
+   "why": "One capsule encloses all three, so the elbow can bend and the forearm can turn."
+  },
+  {
+   "id": "jt-ankle-sides",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does a rolled ankle usually injure the outer side?",
+   "back": "Forced inward rolling of the sole pulls the outer side open, where three small, separate ligaments are weaker than the broad inner ligament; the anterior talofibular tears first.",
+   "why": "The imbalance between a strong inner fan and weaker outer bands decides which side gives."
+  },
+  {
+   "id": "jt-inj-defs",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Sprain vs dislocation vs subluxation",
+   "front": "Sprain vs dislocation vs subluxation?",
+   "back": "Sprain: a stretch or tear of a ligament. Dislocation: the bone surfaces forced completely out of contact. Subluxation: a partial dislocation; surfaces still touch but out of line.",
+   "why": "A fracture is a break in a bone; these three injure the ligaments or the joint’s alignment."
+  },
+  {
+   "id": "jt-inj-heal",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Sprain vs dislocation vs subluxation",
+   "front": "Why do sprains heal slowly?",
+   "back": "Ligaments are dense regular connective tissue with a poor blood supply.",
+   "why": "Repair depends on cells and materials delivered by blood, so tissue with little blood supply heals slowly."
+  },
+  {
+   "id": "jt-inj-toddler",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Sprain vs dislocation vs subluxation",
+   "front": "A toddler swung by the arms will not use one arm. What is the injury?",
+   "back": "A subluxation: the radial head has slipped partly out of the annular ligament.",
+   "why": "In toddlers the annular ligament is loose and the radial head small, so a sharp pull can slide it partly out."
+  },
+  {
+   "id": "jt-oa-what",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is osteoarthritis?",
+   "back": "The most common joint disease: a disease of the whole synovial joint (cartilage, bone, synovial membrane and ligaments), starting with damage to the articular cartilage.",
+   "why": "Cartilage has no blood supply to bring in repair cells, so damage outpaces repair."
+  },
+  {
+   "id": "jt-oa-signs",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Osteoarthritis: why does the joint space narrow on an X-ray, and why do spurs form?",
+   "back": "The cartilage filling the space thins; where it wears through, bone grinds on bone and reacts by thickening and growing spurs at the edges.",
+   "why": "X-rays show bone, so the gap between bones is a measure of the cartilage thickness."
+  },
+  {
+   "id": "jt-oa-exam",
+   "topic": "synovial-joints",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Osteoarthritis: \"wear and tear, noninflammatory\" or not? (the exam caveat)",
+   "back": "For your exam: \"wear-and-tear, degenerative joint disease\" is the expected answer. Current evidence: a whole-joint disease with low-grade inflammation of the synovial membrane.",
+   "why": "Fragments of cartilage irritate the synovial membrane, which becomes mildly inflamed and makes extra fluid; the old label sets it apart from arthritis in which the body attacks its own synovial membrane."
+  },
+  {
+   "id": "jt-mp-plane",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Movement pairs by plane",
+   "front": "Flexion/extension vs abduction/adduction vs rotation: which plane?",
+   "back": "Flexion and extension: sagittal. Abduction and adduction: frontal. Rotation: transverse.",
+   "why": "Each pair is defined by the plane the part moves in, measured from anatomical position."
+  },
+  {
+   "id": "jt-mp-away",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Movement pairs by plane",
+   "front": "Flexion/extension vs abduction/adduction vs rotation: which word names the move away from anatomical position?",
+   "back": "Flexion (angle smaller); abduction (away from the midline); medial or lateral rotation.",
+   "why": "One word of each pair names leaving anatomical position; the other names the return."
+  },
+  {
+   "id": "jt-mp-beyond",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Movement pairs by plane",
+   "front": "Flexion/extension vs abduction/adduction: what is the movement beyond anatomical position called?",
+   "back": "Hyperextension (extension past anatomical position); adduction past the midline, as when the arm crosses the body.",
+   "why": "Anatomical position is the zero; moving past it in the return direction continues the same movement beyond zero."
+  },
+  {
+   "id": "jt-knee-flexion",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Knee flexion carries the leg backward, elbow flexion carries the forearm forward. Why are both flexion?",
+   "back": "In both, the angle between the two bones gets smaller.",
+   "why": "Flexion is defined by the angle closing in the sagittal plane, not by the direction the part moves; the knee bends the opposite way from the elbow."
+  },
+  {
+   "id": "jt-rc-what",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Rotation vs circumduction",
+   "front": "Rotation vs circumduction: what moves?",
+   "back": "Rotation: the bone turns around its own long axis. Circumduction: the far end of the limb traces a circle, so the limb sweeps a cone.",
+   "why": "In rotation the bone’s far end stays in place and spins; in circumduction it travels around a circle."
+  },
+  {
+   "id": "jt-rc-made",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Rotation vs circumduction",
+   "front": "Rotation vs circumduction: what is each made of, and which joints allow it?",
+   "back": "Rotation: a single turning movement; pivot and ball-and-socket joints. Circumduction: flexion, abduction, extension and adduction in sequence; condyloid, saddle and ball-and-socket joints.",
+   "why": "Rotation needs a joint that lets the bone spin; circumduction needs one that moves in at least two planes."
+  },
+  {
+   "id": "jt-rc-example",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Rotation vs circumduction",
+   "front": "Rotation vs circumduction: an example of each?",
+   "back": "Rotation: shaking your head \"no\". Circumduction: drawing a circle in the air with a straight arm.",
+   "why": "The head spins on the atlantoaxial pivot; the arm sweeps a cone at the ball-and-socket shoulder."
+  },
+  {
+   "id": "jt-medial-lateral-rot",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Medial vs lateral rotation of the thigh?",
+   "back": "Medial: the front of the thigh turns toward the midline (knee and toes point in). Lateral: it turns away (toes point out).",
+   "why": "Rotation in a limb is named by which way the front of the bone turns."
+  },
+  {
+   "id": "jt-sup-pro",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Supination vs pronation: palm, and the radius and ulna?",
+   "back": "Supination: palm forward or up; radius and ulna parallel. Pronation: palm backward or down; the radius crossed over the ulna.",
+   "why": "The radial head turns in the annular ligament and the lower radius swings around the ulna; the hand rides along with the radius, and the wrist does not move."
+  },
+  {
+   "id": "jt-dorsi-plantar",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Dorsiflexion vs plantar flexion: what moves, and at which joint?",
+   "back": "Dorsiflexion lifts the top of the foot toward the shin; plantar flexion points the foot and toes down. Both happen at the talocrural (ankle) joint.",
+   "why": "The ankle is a hinge, so the foot tips up and down in one plane; these names avoid the disagreement over which to call flexion."
+  },
+  {
+   "id": "jt-inv-ev",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Inversion vs eversion: what moves, and where?",
+   "back": "Inversion turns the sole inward, eversion outward. They happen mostly at the subtalar joint and between the tarsal bones, not at the ankle joint.",
+   "why": "The talocrural hinge only tips the foot up and down; turning the sole needs the joints below the talus."
+  },
+  {
+   "id": "jt-pro-ret",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Protraction vs retraction: examples?",
+   "back": "Protraction: jutting the jaw forward; sliding the scapula forward to push a door. Retraction: pulling them back, as in squeezing the shoulder blades together.",
+   "why": "Both move a bone forward or back in the transverse plane."
+  },
+  {
+   "id": "jt-elev-dep",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Elevation vs depression: examples?",
+   "back": "Elevation: shrugging the scapulae; closing the mouth. Depression: dropping the shoulders; opening the mouth.",
+   "why": "Both move a bone up or down; the mandible elevates to close and depresses to open."
+  },
+  {
+   "id": "jt-sup-rot-scap",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why can you not raise your arm overhead without superior rotation of the scapula?",
+   "back": "The scapula must turn so the glenoid cavity tips upward; without it, the arm stops a little past shoulder height.",
+   "why": "The glenohumeral joint alone runs out of range; tipping the socket upward lets the humerus keep rising."
+  },
+  {
+   "id": "jt-opposition",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is opposition, and where does it happen?",
+   "back": "Bringing the thumb tip across the palm to touch a fingertip, at the saddle-shaped carpometacarpal joint of the thumb.",
+   "why": "It combines flexion, abduction and a slight turning of the first metacarpal, which the saddle joint’s wide two-plane range allows."
+  },
+  {
+   "id": "jt-lateral-flexion",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "What is lateral flexion?",
+   "back": "Bending the trunk or neck sideways, a frontal-plane movement of the vertebral column.",
+   "why": "The trunk and neck have no limb to abduct, so bending sideways gets its own name."
+  },
+  {
+   "id": "jt-three-questions",
+   "topic": "body-movements",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "What three questions name any movement?",
+   "back": "Which joint? Which plane? Which direction from anatomical position?",
+   "why": "Every movement word is defined by a joint, a plane and a direction from the anatomical-position zero."
   }
  ]
 }
