@@ -5976,6 +5976,812 @@
    "front": "Why do ABO differences between mother and fetus usually cause only mild disease?",
    "back": "Most anti-A and anti-B cannot reach the fetus, and fetal red cells carry A and B antigens only weakly.",
    "why": "A type O mother has some anti-A and anti-B of the crossing kind, so her type A or B baby can be mildly affected even in a first pregnancy."
+  },
+  {
+   "id": "steroid-vs-peptide-source",
+   "topic": "hormone-action",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Steroid vs peptide hormones",
+   "front": "Steroid vs peptide hormones: what is each built from, and does each dissolve in water or lipid?",
+   "back": "Peptide and protein hormones: amino acids; water-soluble. Steroid hormones: cholesterol; lipid-soluble.",
+   "why": "What a hormone is built from decides whether it dissolves in the watery plasma or in the lipid bilayer, and that sets how it travels and acts."
+  },
+  {
+   "id": "steroid-vs-peptide-storage",
+   "topic": "hormone-action",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Steroid vs peptide hormones",
+   "front": "Steroid vs peptide hormones: how does the gland store and release each?",
+   "back": "Peptide: made ahead, stored in vesicles, released by exocytosis. Steroid: not stored; made on demand and diffuses out as soon as it is made.",
+   "why": "A lipid-soluble steroid would leak straight through a vesicle membrane, so it cannot be stored that way."
+  },
+  {
+   "id": "steroid-vs-peptide-transport",
+   "topic": "hormone-action",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Steroid vs peptide hormones",
+   "front": "Steroid vs peptide hormones: how does each travel in the blood, and which lasts longer?",
+   "back": "Peptide: mostly free in the plasma; half-life of minutes. Steroid: mostly bound to carrier proteins; half-life of hours.",
+   "why": "Binding to carrier proteins shields a hormone from the liver’s enzymes and from filtering by the kidneys, so bound hormones last longer."
+  },
+  {
+   "id": "steroid-vs-peptide-receptor",
+   "topic": "hormone-action",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Steroid vs peptide hormones",
+   "front": "Steroid vs peptide hormones: where is each one’s receptor protein, and what does it change?",
+   "back": "Peptide: receptor protein in the plasma membrane; switches existing proteins on or off. Steroid: receptor protein inside the cell; changes which genes are transcribed.",
+   "why": "A water-soluble hormone cannot cross the bilayer, so it must act from outside through a second messenger. A steroid crosses and acts on DNA."
+  },
+  {
+   "id": "steroid-vs-peptide-speed",
+   "topic": "hormone-action",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Steroid vs peptide hormones",
+   "front": "Steroid vs peptide hormones: which acts faster, and which can be taken as a tablet?",
+   "back": "Peptide: seconds to minutes; usually not a tablet, because it is digested like any protein. Steroid: hours to days; yes, absorbed intact.",
+   "why": "Changing existing proteins is fast; making new proteins through transcription and translation takes hours."
+  },
+  {
+   "id": "free-hormone-active",
+   "topic": "hormone-action",
+   "core": [
+    "communication",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Which form of a lipid-soluble hormone is active: bound or free?",
+   "back": "Only free hormone. It alone can leave the capillaries and bind receptor proteins.",
+   "why": "The bound form is a reservoir. A small change in binding can double the free hormone, even when the total barely changes."
+  },
+  {
+   "id": "half-life-rule",
+   "topic": "hormone-action",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "A hormone’s half-life is 10 minutes. Its gland stops at a level of 80 units. What is the level 30 minutes later?",
+   "back": "10 units: three half-lives, 80 → 40 → 20 → 10, one eighth of the start.",
+   "why": "Each half-life removes half of what is left, so after n half-lives the fraction left is (1/2)<sup>n</sup>."
+  },
+  {
+   "id": "camp-order",
+   "topic": "hormone-action",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "front": "Put the cAMP pathway in order, from hormone to response.",
+   "back": "Hormone binds receptor protein → G protein → adenylyl cyclase → ATP to cAMP → protein kinase A → proteins phosphorylated → response.",
+   "why": "Each step switches on the next, and each multiplies the signal, which is why a tiny hormone concentration can change a whole organ."
+  },
+  {
+   "id": "camp-off",
+   "topic": "hormone-action",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What three things end a cAMP signal?",
+   "back": "Phosphodiesterase breaks cAMP down to AMP, phosphatases remove the added phosphates, and the G protein switches itself off.",
+   "why": "A signal that could not be stopped would be useless; blocking phosphodiesterase (theophylline) makes cAMP last longer."
+  },
+  {
+   "id": "three-stimuli",
+   "topic": "hormone-action",
+   "core": [
+    "communication",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Name the three kinds of stimulus for hormone release, with an example of each.",
+   "back": "Humoral: a change in a blood ion or nutrient (high glucose, low calcium). Hormonal: another hormone (a pituitary hormone driving the thyroid gland). Neural: nerve fibers (sympathetic fibers on the adrenal medulla).",
+   "why": "Whatever starts release, negative feedback usually stops it, because the hormone’s effect removes the stimulus."
+  },
+  {
+   "id": "three-interactions",
+   "topic": "hormone-action",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Permissive, synergistic, antagonistic: define each with an example.",
+   "back": "Permissive: A lets B work fully (the thyroid gland’s hormones and epinephrine). Synergistic: together more than the sum (epinephrine and a glucose-raising pancreatic hormone). Antagonistic: opposite effects on one variable (the two pancreatic hormones that lower and raise glucose in the blood).",
+   "why": "Permissive effects often work by raising the number of the other hormone’s receptor proteins."
+  },
+  {
+   "id": "ant-post-tissue",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "compare": "Anterior vs posterior pituitary",
+   "front": "Anterior vs posterior pituitary: other name, tissue and embryonic origin?",
+   "back": "Anterior: adenohypophysis; glandular epithelium; an upgrowth from the roof of the mouth. Posterior: neurohypophysis; nervous tissue (hypothalamic axons and glia); a downgrowth of the hypothalamus.",
+   "why": "Two glands with different origins explain why the hypothalamus controls them in two different ways."
+  },
+  {
+   "id": "ant-post-control",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "communication",
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Anterior vs posterior pituitary",
+   "front": "Anterior vs posterior pituitary: how does the hypothalamus control each?",
+   "back": "Anterior: by releasing and inhibiting hormones carried in the hypophyseal portal system. Posterior: by nerve impulses in the same neurons that make its hormones.",
+   "why": "The anterior lobe has no nerve link to the brain, so the signal must travel in blood; the posterior lobe is made of the neurons’ axons."
+  },
+  {
+   "id": "ant-post-hormones",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Anterior vs posterior pituitary",
+   "front": "Anterior vs posterior pituitary: which hormones does each release, and which makes its own?",
+   "back": "Anterior: makes and releases GH, TSH, ACTH, FSH, LH and prolactin (FLAT PiG). Posterior: makes none; stores and releases ADH and oxytocin made in the hypothalamus.",
+   "why": "The four in FLAT are tropic hormones that drive other endocrine glands."
+  },
+  {
+   "id": "portal-why",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Why does the hypothalamus reach the anterior pituitary through a portal system rather than the general circulation?",
+   "back": "The portal veins carry its hormones straight from the first capillary network to the second, undiluted.",
+   "why": "Tiny amounts reach high concentrations at the pituitary, and almost none reaches the rest of the body."
+  },
+  {
+   "id": "prolactin-cut-stalk",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "The infundibulum is cut. Which anterior pituitary hormone rises, and why?",
+   "back": "Prolactin, because dopamine, its inhibiting hormone, can no longer reach the anterior pituitary.",
+   "why": "Prolactin is held back more than it is pushed; the other anterior hormones depend on releasing hormones and fall."
+  },
+  {
+   "id": "gh-igf",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "How does growth hormone make long bones grow?",
+   "back": "Mostly through IGF-1 from the liver and other tissues, which makes chondrocytes in the epiphyseal plates divide.",
+   "why": "GH also acts directly on fuel use: it breaks down fat and raises the glucose in the blood."
+  },
+  {
+   "id": "gigantism-vs-acromegaly",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "front": "Gigantism vs acromegaly: what decides which one too much GH causes?",
+   "back": "Whether the epiphyseal plates are still open. Open (childhood): gigantism, very tall. Closed (adult): acromegaly, thick hands, feet, jaw and face, no change in height.",
+   "why": "Only open plates can lengthen long bones; closed bones can still thicken."
+  },
+  {
+   "id": "axis-fault-reading",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Low final hormone with high tropic hormone points to which level of an axis? And low with low?",
+   "back": "Low with high: the target gland has failed. Low with low: the pituitary or hypothalamus has failed.",
+   "why": "Long-loop feedback: when the target gland fails, the brake comes off and the healthy pituitary releases more tropic hormone."
+  },
+  {
+   "id": "adh-triggers",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What is ADH’s main trigger, and what else raises or lowers it?",
+   "back": "Main: a rise in plasma osmolarity sensed by osmoreceptors. Also raised by a large fall in blood volume or pressure (about 5 to 10% or more), nausea and pain; lowered by alcohol.",
+   "why": "Osmoreceptors respond to a rise of only 1–2%, so osmolarity is by far the most sensitive signal."
+  },
+  {
+   "id": "di-vs-siadh",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Diabetes insipidus vs SIADH",
+   "front": "Diabetes insipidus vs SIADH: urine volume, urine concentration and plasma sodium?",
+   "back": "Diabetes insipidus: very large volume of very dilute urine; plasma sodium high or high-normal. SIADH: small volume of concentrated urine; plasma sodium low.",
+   "why": "Too little ADH action means water is not kept; too much means too much water is kept and the plasma is diluted."
+  },
+  {
+   "id": "oxytocin-labor",
+   "topic": "hypothalamus-pituitary",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "What does oxytocin do in labor, and is labor impossible without it?",
+   "back": "It strengthens uterine contractions through positive feedback. Labor can still start and progress without it; hospitals give it when contractions are weak.",
+   "why": "Mice lacking oxytocin or its receptor protein give birth normally. (For your exam: oxytocin strengthens uterine contractions through positive feedback.)"
+  },
+  {
+   "id": "hypo-vs-hyper-cause",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Hypothyroid vs hyperthyroid",
+   "front": "Hypothyroid vs hyperthyroid: most common cause of each, and the TSH level?",
+   "back": "Hypothyroidism: Hashimoto thyroiditis (worldwide, iodine deficiency); TSH high when the gland itself fails. Hyperthyroidism: Graves disease; TSH very low.",
+   "why": "In Graves disease an immune protein switches on the TSH receptor protein, and feedback drives TSH down."
+  },
+  {
+   "id": "hypo-vs-hyper-signs",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "homeostasis",
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Hypothyroid vs hyperthyroid",
+   "front": "Hypothyroid vs hyperthyroid: temperature, weight and heart rate?",
+   "back": "Hypothyroid: feels cold, gains a little weight despite a poor appetite, slow heart rate. Hyperthyroid: feels hot, loses weight despite a big appetite, fast heart rate at rest.",
+   "why": "Thyroid hormones set how many pumps and mitochondria cells make, and how many beta-1 receptor proteins the heart has."
+  },
+  {
+   "id": "hypo-vs-hyper-nerves",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Hypothyroid vs hyperthyroid",
+   "front": "Hypothyroid vs hyperthyroid: nervous system, skin and gut?",
+   "back": "Hypothyroid: slowed thinking, tiredness, slow reflexes; dry, thick skin; slow bowel. Hyperthyroid: anxiety, fine tremor, brisk reflexes; warm, moist skin; frequent bowel movements.",
+   "why": "Almost every sign follows from more or less oxygen use, heat and sympathetic sensitivity in every tissue."
+  },
+  {
+   "id": "goiter-both-ways",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Hypothyroid vs hyperthyroid",
+   "front": "Why can a goiter come with too little thyroid hormone or with too much?",
+   "back": "Iodine deficiency: low hormone, TSH high, TSH makes the gland grow. Graves disease: a stimulating immune protein makes it grow and overproduce.",
+   "why": "Both drive the TSH receptor protein, so a goiter alone does not tell you the hormone level."
+  },
+  {
+   "id": "t4-vs-t3",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "T4 vs T3",
+   "front": "T4 vs T3: which does the gland mostly release, and which is active?",
+   "back": "The gland releases mostly T4 (about 90%). T3 is the active form, binding the receptor protein about ten times more tightly; most T3 is made from T4 in target tissues.",
+   "why": "T4 works as a long-lasting reserve that tissues activate as they need it."
+  },
+  {
+   "id": "t4-steady-state",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "analyze",
+   "front": "A patient starts levothyroxine. Why is TSH rechecked after about six weeks, not after a few days?",
+   "back": "T4’s half-life is about a week, so its blood level keeps climbing for about five to six weeks before it levels off.",
+   "why": "A level takes about five half-lives to reach a steady state; testing sooner would catch it still rising."
+  },
+  {
+   "id": "tsh-first-test",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Why is TSH usually the first blood test for a thyroid problem?",
+   "back": "The pituitary is very sensitive to feedback: a small fall in free T4 produces a large rise in TSH.",
+   "why": "TSH moves a lot for a small change in the thyroid gland’s output, so it flags a problem early."
+  },
+  {
+   "id": "iodine-steps",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "How does a follicular cell get iodide from the blood?",
+   "back": "A cotransporter carries iodide in together with sodium, concentrating it 20 to 40 times: secondary active transport driven by the sodium gradient.",
+   "why": "The gland takes up radioactive iodine the same way, which is how that treatment targets it."
+  },
+  {
+   "id": "calcitonin-minor",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "After the whole thyroid gland is removed (parathyroid glands intact), does blood calcium change?",
+   "back": "No: it stays normal, although calcitonin is lost.",
+   "why": "In adults, PTH and calcitriol are the main regulators; calcitonin’s effect is small. (For your exam: calcitonin is the hormone that lowers blood calcium, by inhibiting osteoclasts.)"
+  },
+  {
+   "id": "pth-three-targets",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "recall",
+   "front": "What does PTH do at bone, at the kidneys, and through calcitriol?",
+   "back": "Bone: binds osteoblasts, which make osteoclasts form and dissolve bone. Kidneys: keep calcium, lose phosphate. Calcitriol: switches on its making, so the intestine absorbs more calcium.",
+   "why": "Net effect: higher blood calcium and lower blood phosphate."
+  },
+  {
+   "id": "pth-hyper-vs-hypo",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Hyperparathyroidism vs hypoparathyroidism",
+   "front": "Hyperparathyroidism vs hypoparathyroidism: calcium, phosphate and nerve and muscle excitability?",
+   "back": "Hyper: calcium high, phosphate low, nerves and muscles less excitable (weakness, slow gut). Hypo: calcium low, phosphate high, overexcitable (tingling, cramps, tetany).",
+   "why": "Low extracellular calcium lets voltage-gated sodium channels open more easily."
+  },
+  {
+   "id": "osteomalacia-vs-osteoporosis",
+   "topic": "thyroid-parathyroid",
+   "core": [
+    "structure-function"
+   ],
+   "level": "apply",
+   "compare": "Osteomalacia vs osteoporosis",
+   "front": "Osteomalacia vs osteoporosis: what is wrong with the bone?",
+   "back": "Osteomalacia: matrix is laid down but not mineralized, so bone is soft (too little vitamin D). Osteoporosis: too little bone, but what there is is normally mineralized.",
+   "why": "Without calcitriol, too little calcium and phosphate reach the osteoid."
+  },
+  {
+   "id": "insulin-vs-glucagon-cells",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Insulin vs glucagon",
+   "front": "Insulin vs glucagon: which cells make each, and what is the main stimulus?",
+   "back": "Insulin: beta cells; high blood glucose (also amino acids, gut hormones, the vagus nerve). Glucagon: alpha cells; low blood glucose (also amino acids, sympathetic activity and epinephrine).",
+   "why": "Both are islet cells that sense glucose directly, so the loop needs no nerve."
+  },
+  {
+   "id": "insulin-vs-glucagon-liver",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis",
+    "energy"
+   ],
+   "level": "apply",
+   "compare": "Insulin vs glucagon",
+   "front": "Insulin vs glucagon: effect on glycogen and gluconeogenesis in the liver?",
+   "back": "Insulin: glycogenesis on; glycogenolysis and gluconeogenesis off. Glucagon: glycogenolysis and gluconeogenesis on; glycogenesis off.",
+   "why": "The two are antagonistic: the glucose level at any moment reflects the balance between them."
+  },
+  {
+   "id": "insulin-vs-glucagon-targets",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Insulin vs glucagon",
+   "front": "Insulin vs glucagon: main targets, and the effect on glucose uptake by muscle and fat?",
+   "back": "Insulin: liver, skeletal muscle and adipose tissue; uptake up, by moving GLUT4 to the membrane. Glucagon: mainly the liver; no direct effect on uptake.",
+   "why": "Skeletal muscle has almost no glucagon receptor proteins, so its glycogen stays in the muscle."
+  },
+  {
+   "id": "insulin-vs-glucagon-class",
+   "topic": "pancreas-glucose",
+   "core": [
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Insulin vs glucagon",
+   "front": "Insulin vs glucagon: chemical class and how each signals inside the cell?",
+   "back": "Insulin: a small protein; its receptor protein is itself an enzyme that phosphorylates proteins. Glucagon: a peptide; G protein–coupled receptor protein, cAMP and protein kinase A.",
+   "why": "Both are water-soluble, so both act from the plasma membrane."
+  },
+  {
+   "id": "beta-cell-sensing",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis",
+    "energy"
+   ],
+   "level": "apply",
+   "front": "How does a beta cell sense a rise in glucose?",
+   "back": "Glucose enters and is broken down, ATP rises, ATP closes potassium channels, the cell depolarizes, calcium channels open, and calcium triggers insulin exocytosis.",
+   "why": "The beta cell is its own sensor and control center; sulfonylurea drugs close the same potassium channels directly."
+  },
+  {
+   "id": "brain-glucose",
+   "topic": "pancreas-glucose",
+   "core": [
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "Does the brain need insulin to take up glucose?",
+   "back": "No. Neurons take glucose in through carriers that are always in the membrane, but they depend entirely on how much glucose is in the blood.",
+   "why": "Neurons store almost no glycogen and cannot burn fatty acids, so a low blood glucose affects the brain within minutes."
+  },
+  {
+   "id": "t1-vs-t2-defect",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Type 1 vs type 2 diabetes",
+   "front": "Type 1 vs type 2 diabetes: main defect and insulin level?",
+   "back": "Type 1: beta cells destroyed by the immune system; insulin very low or absent. Type 2: insulin resistance, then beta cells that cannot keep up; insulin normal or high early, falling later.",
+   "why": "In type 2, beta cells release extra insulin for years before glucose rises."
+  },
+  {
+   "id": "t1-vs-t2-onset",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "compare": "Type 1 vs type 2 diabetes",
+   "front": "Type 1 vs type 2 diabetes: share of cases, usual onset and treatment?",
+   "back": "Type 1: about 5–10%; often childhood but any age, sudden over weeks; insulin always. Type 2: about 90–95%; usually adults, gradual over years; activity, diet, weight loss and drugs such as metformin, insulin if needed.",
+   "why": "For your exam: “juvenile-onset” and “adult-onset” are outdated names for type 1 and type 2."
+  },
+  {
+   "id": "t1-vs-t2-acid",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis",
+    "energy"
+   ],
+   "level": "analyze",
+   "compare": "Type 1 vs type 2 diabetes",
+   "front": "Type 1 vs type 2 diabetes: which carries the high risk of acid blood from fat breakdown, and why?",
+   "back": "Type 1. With no insulin, nothing blocks fat breakdown, and glucagon is high, so the liver pours out acids made from fat.",
+   "why": "In type 2, even a little insulin holds back fat breakdown."
+  },
+  {
+   "id": "polyuria-cause",
+   "topic": "pancreas-glucose",
+   "core": [
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "Why does untreated diabetes cause polyuria and polydipsia?",
+   "back": "Above about 180 mg/dL the kidney’s glucose carriers are saturated; glucose left in the urine holds water by osmosis, so urine volume rises, the plasma concentrates, and thirst rises.",
+   "why": "Water follows the glucose that the kidneys cannot take back."
+  },
+  {
+   "id": "diabetes-diagnosis",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "What results diagnose diabetes (each confirmed on a second test)?",
+   "back": "Fasting glucose 126 mg/dL or more; 200 or more two hours after a glucose drink; A1C 6.5% or more; or a random 200 or more with the classic symptoms.",
+   "why": "A1C reflects the average glucose over the past two to three months."
+  },
+  {
+   "id": "glucose-conversion",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "Convert a glucose of 7.0 mmol/L to mg/dL.",
+   "back": "126 mg/dL (7.0 × 18).",
+   "why": "Glucose weighs 180 g per mole, and a liter is 10 dL, so 1 mmol/L = 18 mg/dL."
+  },
+  {
+   "id": "hypoglycemia-defense",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "In what order does the body defend against a falling blood glucose?",
+   "back": "About 80 mg/dL: beta cells cut insulin. About 65–70: alpha cells raise glucagon and the adrenal medulla raises epinephrine. Lower: warning symptoms, then brain symptoms.",
+   "why": "Only insulin lowers glucose, but several hormones raise it; the first defenses act on the liver."
+  },
+  {
+   "id": "hypoglycemia-treatment",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "front": "How is hypoglycemia treated in a conscious and in an unconscious person?",
+   "back": "Conscious: about 15 g of fast sugar, recheck after 15 minutes. Unconscious: nothing by mouth; glucagon by injection or nasal spray, or glucose into a vein.",
+   "why": "Glucagon works by making the liver release glucose; anything by mouth could be inhaled."
+  },
+  {
+   "id": "adrenal-zones",
+   "topic": "adrenal-glands",
+   "core": [
+    "structure-function"
+   ],
+   "level": "recall",
+   "front": "Name the three zones of the adrenal cortex, from outside in, and the main hormone of each.",
+   "back": "Zona glomerulosa: aldosterone. Zona fasciculata: cortisol. Zona reticularis: adrenal androgens such as DHEA.",
+   "why": "Memory hook: salt, sugar, sex. All three are steroids made from cholesterol."
+  },
+  {
+   "id": "ald-cort-epi-source",
+   "topic": "adrenal-glands",
+   "core": [
+    "structure-function",
+    "communication"
+   ],
+   "level": "recall",
+   "compare": "Aldosterone vs cortisol vs epinephrine",
+   "front": "Aldosterone vs cortisol vs epinephrine: source and chemical class?",
+   "back": "Aldosterone: zona glomerulosa; steroid (mineralocorticoid). Cortisol: zona fasciculata; steroid (glucocorticoid). Epinephrine: chromaffin cells of the medulla; amine (catecholamine).",
+   "why": "Cortex and medulla are two glands in one, with different origins and different kinds of hormone."
+  },
+  {
+   "id": "ald-cort-epi-stimulus",
+   "topic": "adrenal-glands",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Aldosterone vs cortisol vs epinephrine",
+   "front": "Aldosterone vs cortisol vs epinephrine: main stimulus for each?",
+   "back": "Aldosterone: high plasma potassium and angiotensin II. Cortisol: ACTH (stress, daily rhythm). Epinephrine: sympathetic preganglionic fibers releasing acetylcholine.",
+   "why": "That is why a pituitary failure lowers cortisol but mostly spares aldosterone."
+  },
+  {
+   "id": "ald-cort-epi-speed",
+   "topic": "adrenal-glands",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "compare": "Aldosterone vs cortisol vs epinephrine",
+   "front": "Aldosterone vs cortisol vs epinephrine: mechanism and speed?",
+   "back": "Aldosterone and cortisol: lipid-soluble, intracellular receptor protein, new proteins; act over hours and last a day or more. Epinephrine: water-soluble, membrane receptor proteins and second messengers; acts in seconds, lasts minutes.",
+   "why": "Making new proteins takes hours; switching existing proteins on takes seconds."
+  },
+  {
+   "id": "ald-cort-epi-lack",
+   "topic": "adrenal-glands",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "compare": "Aldosterone vs cortisol vs epinephrine",
+   "front": "Aldosterone vs cortisol vs epinephrine: what happens with too little of each?",
+   "back": "Aldosterone: low sodium, high potassium, low blood volume. Cortisol: weakness, low blood glucose, low blood pressure. Epinephrine: usually no disease, because sympathetic nerves cover.",
+   "why": "The sympathetic nerves release norepinephrine directly onto most of epinephrine’s targets."
+  },
+  {
+   "id": "raas-order",
+   "topic": "adrenal-glands",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "recall",
+   "front": "Put the renin–angiotensin–aldosterone system in order.",
+   "back": "Low pressure in the kidney → renin → angiotensinogen (from the liver) cut to angiotensin I → ACE (mostly in the lungs) makes angiotensin II → aldosterone, vasoconstriction, ADH and thirst.",
+   "why": "Every product travels in the blood, so four organs can take part without sitting near one another."
+  },
+  {
+   "id": "ace-inhibitor-potassium",
+   "topic": "adrenal-glands",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "Why does a person taking an ACE inhibitor tend to keep more potassium?",
+   "back": "Less angiotensin II means less aldosterone, and aldosterone is what makes the kidney secrete potassium.",
+   "why": "Aldosterone makes the last stretch of the kidney’s tubules keep sodium and lose potassium."
+  },
+  {
+   "id": "cortisol-effects",
+   "topic": "adrenal-glands",
+   "core": [
+    "energy",
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Name cortisol’s four groups of effects.",
+   "back": "Raises blood glucose (gluconeogenesis, protein breakdown, insulin resistance); damps inflammation and immunity; permissive for vessel responses to sympathetic signals; slows bone building and affects mood and sleep.",
+   "why": "The same actions, in excess, explain the signs of Cushing syndrome."
+  },
+  {
+   "id": "addison-vs-cushing",
+   "topic": "adrenal-glands",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Addison disease vs Cushing syndrome",
+   "front": "Addison disease vs Cushing syndrome: cortisol, ACTH, blood pressure and blood glucose?",
+   "back": "Addison: cortisol low, ACTH high, blood pressure low, glucose low. Cushing: cortisol high, ACTH low with medication or an adrenal tumor (high with a pituitary tumor), blood pressure high, glucose high.",
+   "why": "ACTH follows feedback: it rises when the cortex fails and falls when cortisol comes from elsewhere."
+  },
+  {
+   "id": "addison-skin",
+   "topic": "adrenal-glands",
+   "core": [
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why does the skin darken in Addison disease but not when the pituitary fails?",
+   "back": "In Addison disease ACTH is very high, and ACTH and a related hormone cut from the same precursor stimulate melanocytes. When the pituitary fails, ACTH is low.",
+   "why": "Low cortisol takes the brake off a healthy pituitary."
+  },
+  {
+   "id": "steroid-taper",
+   "topic": "adrenal-glands",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "analyze",
+   "front": "Why must a glucocorticoid drug taken for months be tapered, not stopped suddenly?",
+   "back": "The drug suppressed CRH and ACTH, and the zona fasciculata shrank. After stopping, ACTH stays low for weeks, so there is little cortisol from either source and an adrenal crisis can follow.",
+   "why": "Tapering gives the hypothalamus, pituitary and cortex time to restart."
+  },
+  {
+   "id": "exhaustion-stage",
+   "topic": "adrenal-glands",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "analyze",
+   "front": "What happens in the stage of exhaustion of the stress response?",
+   "back": "Prolonged exposure to the stress hormones does damage: muscle wasting, high blood glucose, raised blood pressure, weaker immune defenses. The adrenal glands do not run out.",
+   "why": "Long-term stress usually keeps cortisol normal or high. (For your exam: resources are depleted and resistance fails.)"
+  },
+  {
+   "id": "stress-timescales",
+   "topic": "adrenal-glands",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Alarm reaction vs stage of resistance: which hormones carry each?",
+   "back": "Alarm (seconds to minutes): sympathetic nerves and epinephrine. Resistance (hours to weeks): cortisol, with angiotensin II, aldosterone and ADH holding salt and water.",
+   "why": "Nerve and amine signals act in seconds; steroids act over hours through new proteins."
+  },
+  {
+   "id": "melatonin-control",
+   "topic": "other-endocrine",
+   "core": [
+    "communication"
+   ],
+   "level": "apply",
+   "front": "What controls melatonin release?",
+   "back": "Light, through melanopsin-containing retinal ganglion cells, the suprachiasmatic nucleus and sympathetic fibers from the superior cervical ganglion. Darkness turns release on; light shuts it off within minutes.",
+   "why": "Melatonin is a timing signal telling the body’s clocks what time of night it is, more than a sleeping pill."
+  },
+  {
+   "id": "scn-clock",
+   "topic": "other-endocrine",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "recall",
+   "front": "Where is the master clock, and what resets it each day?",
+   "back": "The suprachiasmatic nucleus of the hypothalamus, just above the optic chiasm; morning light resets it.",
+   "why": "Left without time cues, most people drift to a cycle of about 24.2 hours."
+  },
+  {
+   "id": "anp-effects",
+   "topic": "other-endocrine",
+   "core": [
+    "homeostasis",
+    "mass-balance"
+   ],
+   "level": "apply",
+   "front": "What releases ANP, and what does it do?",
+   "back": "Stretch of the heart’s upper chambers. The kidneys excrete more sodium and water, renin, aldosterone and ADH fall, and vessels dilate.",
+   "why": "ANP is the counterweight to the renin–angiotensin–aldosterone system."
+  },
+  {
+   "id": "epo-trigger",
+   "topic": "other-endocrine",
+   "core": [
+    "homeostasis",
+    "interdependence"
+   ],
+   "level": "apply",
+   "front": "What makes the kidneys release erythropoietin, and what does it do?",
+   "back": "Hypoxia in the kidney tissue. EPO makes the red bone marrow produce more red blood cells, raising oxygen delivery over weeks.",
+   "why": "The kidney receives a lot of blood but extracts little oxygen, so its tissue oxygen tracks what the blood can deliver."
+  },
+  {
+   "id": "hypoxia-vs-hypoxemia",
+   "topic": "other-endocrine",
+   "core": [
+    "homeostasis"
+   ],
+   "level": "apply",
+   "compare": "Hypoxia vs hypoxemia",
+   "front": "Hypoxia vs hypoxemia: what does each mean, and can one occur without the other?",
+   "back": "Hypoxemia: too little oxygen in the arterial blood. Hypoxia: too little oxygen reaching the tissues. After a large bleed, tissues are hypoxic without hypoxemia.",
+   "why": "With too few red cells and too little flow, each milliliter of blood can carry normal oxygen yet deliver too little."
+  },
+  {
+   "id": "leptin-resistance",
+   "topic": "other-endocrine",
+   "core": [
+    "homeostasis",
+    "energy"
+   ],
+   "level": "analyze",
+   "front": "Why does giving leptin do little for most people with obesity?",
+   "back": "Most have high leptin already; their brains respond to it weakly (leptin resistance).",
+   "why": "Only the rare children born unable to make leptin are helped by injections."
+  },
+  {
+   "id": "estrogen-plates",
+   "topic": "other-endocrine",
+   "core": [
+    "structure-function"
+   ],
+   "level": "analyze",
+   "front": "Which hormone closes the epiphyseal plates in both sexes?",
+   "back": "Estrogen. In males, much of it is made from testosterone by aromatase.",
+   "why": "Men without working aromatase or estrogen receptor protein keep growing into their twenties and thirties."
+  },
+  {
+   "id": "anabolic-feedback",
+   "topic": "other-endocrine",
+   "core": [
+    "homeostasis",
+    "communication"
+   ],
+   "level": "apply",
+   "front": "Why do anabolic steroids shrink the testes?",
+   "back": "High androgen feeds back to suppress GnRH, LH and FSH, so the testes lose their drive and sperm production falls.",
+   "why": "The same negative feedback can leave the user with low testosterone for months after stopping."
   }
  ]
 }

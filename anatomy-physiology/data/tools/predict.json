@@ -10099,6 +10099,1519 @@
           "why": "Anti-D binds only cells that carry the D antigen. Her own cells are Rh negative, so they are untouched."
         }
       ]
+    },
+    {
+      "id": "carrier-displacement",
+      "title": "A drug knocks a steroid off its carrier proteins",
+      "topic": "hormone-action",
+      "core": [
+        "communication",
+        "mass-balance"
+      ],
+      "level": 1,
+      "misconception": "the total level of a hormone is what sets its effect",
+      "setup": "A steroid hormone circulates mostly bound to carrier proteins in the plasma. A new drug binds the same carrier proteins and pushes some of the hormone off. Compare the first hour on the drug with just before, before the gland or the liver has had time to adjust.",
+      "start": "The drug takes over binding sites on the carrier proteins",
+      "steps": {
+        "off": "Hormone is pushed off the carrier proteins",
+        "bound": "Less hormone is bound",
+        "free": "More hormone is free in the plasma",
+        "same": "No hormone is added or removed yet",
+        "total": "Total hormone is unchanged for now",
+        "bind": "More free hormone reaches target cells and binds their receptor proteins"
+      },
+      "variables": [
+        {
+          "id": "bound",
+          "name": "Hormone bound to carrier proteins",
+          "answer": "down",
+          "chain": [
+            "off",
+            "bound"
+          ],
+          "why": "The drug occupies binding sites, so some hormone that was riding on the carrier proteins is released and less remains bound."
+        },
+        {
+          "id": "free",
+          "name": "Free hormone in the plasma",
+          "answer": "up",
+          "chain": [
+            "off",
+            "free"
+          ],
+          "why": "Every hormone molecule pushed off a carrier protein becomes free hormone. Because the free share is small to start with, even a few percent more makes a large relative rise."
+        },
+        {
+          "id": "total",
+          "name": "Total hormone in the plasma (bound plus free)",
+          "answer": "none",
+          "chain": [
+            "same",
+            "total"
+          ],
+          "why": "The drug only moves hormone from the bound form to the free form. Nothing has been secreted or cleared yet, so the total stays the same at first."
+        },
+        {
+          "id": "effect",
+          "name": "Hormone effect on target cells",
+          "answer": "up",
+          "chain": [
+            "off",
+            "free",
+            "bind"
+          ],
+          "why": "Only free hormone can leave the capillaries and bind receptor proteins, so the extra free hormone acts on the targets. Over the following hours, faster clearance and negative feedback bring the free level back toward normal."
+        }
+      ]
+    },
+    {
+      "id": "pde-blocker",
+      "title": "Theophylline blocks phosphodiesterase in airway muscle",
+      "topic": "hormone-action",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a drug must bind the receptor protein to change a hormone signal",
+      "setup": "Epinephrine is relaxing airway smooth muscle through the cAMP pathway. A patient then takes theophylline, which blocks phosphodiesterase in that muscle. Compare the muscle cells a few minutes later with before the drug, with the same level of epinephrine.",
+      "start": "Theophylline blocks phosphodiesterase",
+      "steps": {
+        "pde": "cAMP is broken down to AMP more slowly",
+        "camp": "cAMP builds up in the cell",
+        "pka": "More protein kinase A is switched on",
+        "phos": "More target proteins are phosphorylated",
+        "relax": "The smooth muscle relaxes more",
+        "airway": "The airways widen",
+        "outside": "The drug acts inside the cell, after the receptor protein",
+        "bindng": "Epinephrine binds its receptor protein as before"
+      },
+      "variables": [
+        {
+          "id": "camp",
+          "name": "cAMP in the smooth muscle cells",
+          "answer": "up",
+          "chain": [
+            "pde",
+            "camp"
+          ],
+          "why": "Adenylyl cyclase keeps making cAMP from ATP, but phosphodiesterase, which breaks it down, is blocked. Making continues while removal slows, so cAMP rises."
+        },
+        {
+          "id": "pka",
+          "name": "Active protein kinase A",
+          "answer": "up",
+          "chain": [
+            "pde",
+            "camp",
+            "pka"
+          ],
+          "why": "cAMP is what switches on protein kinase A, so more cAMP means more of the kinase is active."
+        },
+        {
+          "id": "airway",
+          "name": "Diameter of the airways",
+          "answer": "up",
+          "chain": [
+            "pde",
+            "camp",
+            "pka",
+            "phos",
+            "relax",
+            "airway"
+          ],
+          "why": "More kinase activity phosphorylates more of the proteins that relax the muscle, so the airway walls relax and the airways widen. That is why the drug was used for narrowed airways."
+        },
+        {
+          "id": "binding",
+          "name": "Epinephrine bound to its receptor proteins",
+          "answer": "none",
+          "chain": [
+            "outside",
+            "bindng"
+          ],
+          "why": "The drug acts on the enzyme that ends the signal inside the cell. The hormone level and its binding to the receptor protein are unchanged."
+        }
+      ]
+    },
+    {
+      "id": "stalk-cut",
+      "title": "The pituitary stalk is cut",
+      "topic": "hypothalamus-pituitary",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "cutting the link to the hypothalamus lowers every pituitary hormone",
+      "setup": "A head injury tears the infundibulum, cutting both the hypophyseal portal veins and the axons that run down to the posterior pituitary. The pituitary gland itself is unharmed. Compare a few days later with before the injury.",
+      "start": "The infundibulum is torn",
+      "steps": {
+        "portal": "Portal veins no longer carry hypothalamic hormones down",
+        "rel": "Releasing hormones (TRH, CRH, GHRH) stop reaching the anterior pituitary",
+        "dop": "Dopamine stops reaching the anterior pituitary",
+        "tsh": "TSH release falls",
+        "acth": "ACTH release falls",
+        "prl": "Prolactin cells are released from their brake",
+        "axons": "Axons to the posterior pituitary are cut",
+        "adh": "ADH release falls",
+        "water": "The kidneys keep less water"
+      },
+      "variables": [
+        {
+          "id": "tsh",
+          "name": "TSH",
+          "answer": "down",
+          "chain": [
+            "portal",
+            "rel",
+            "tsh"
+          ],
+          "why": "TSH release is driven by TRH arriving through the portal veins. With the veins cut, the drive is lost and TSH falls."
+        },
+        {
+          "id": "acth",
+          "name": "ACTH",
+          "answer": "down",
+          "chain": [
+            "portal",
+            "rel",
+            "acth"
+          ],
+          "why": "ACTH depends on CRH delivered through the portal system, so it falls for the same reason."
+        },
+        {
+          "id": "prolactin",
+          "name": "Prolactin",
+          "answer": "up",
+          "chain": [
+            "portal",
+            "dop",
+            "prl"
+          ],
+          "why": "Prolactin is held back more than it is pushed: dopamine from the hypothalamus inhibits it. Cutting the portal veins removes that brake, so prolactin rises while the other anterior hormones fall."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "axons",
+            "adh",
+            "water"
+          ],
+          "why": "ADH is made in hypothalamic cell bodies and released from axon terminals in the posterior lobe. With the axons cut, little ADH reaches the blood, the kidney cells keep few aquaporins, and a large volume of dilute urine flows out."
+        }
+      ]
+    },
+    {
+      "id": "salty-snack",
+      "title": "A bag of salted chips",
+      "topic": "hypothalamus-pituitary",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "ADH responds mainly to blood volume",
+      "setup": "You eat a large bag of salted chips and drink nothing. The salt is absorbed into your blood. Compare half an hour later with before the snack.",
+      "start": "Absorbed salt raises plasma osmolarity",
+      "steps": {
+        "shrink": "Water leaves the osmoreceptors, which shrink",
+        "fire": "Osmoreceptors fire faster",
+        "thirst": "The thirst center is excited",
+        "adhn": "ADH-making neurons are excited",
+        "adh": "More ADH is released from the posterior pituitary",
+        "aqua": "Kidney cells insert more aquaporins",
+        "keep": "More water returns from the urine to the blood"
+      },
+      "variables": [
+        {
+          "id": "osmo",
+          "name": "Osmoreceptor firing",
+          "answer": "up",
+          "chain": [
+            "shrink",
+            "fire"
+          ],
+          "why": "Water follows solute out of the osmoreceptors, they shrink, channels that open as the membrane slackens let ions in, and the cells depolarize and fire faster."
+        },
+        {
+          "id": "adh",
+          "name": "ADH in the blood",
+          "answer": "up",
+          "chain": [
+            "shrink",
+            "fire",
+            "adhn",
+            "adh"
+          ],
+          "why": "The osmoreceptors excite the neurons that make ADH, so their axon terminals in the posterior pituitary release more of it. A rise in osmolarity is ADH’s main and most sensitive trigger."
+        },
+        {
+          "id": "thirst",
+          "name": "Thirst",
+          "answer": "up",
+          "chain": [
+            "shrink",
+            "fire",
+            "thirst"
+          ],
+          "why": "The same osmoreceptors excite the thirst center in the hypothalamus, so you want to drink."
+        },
+        {
+          "id": "urine-vol",
+          "name": "Urine volume",
+          "answer": "down",
+          "chain": [
+            "shrink",
+            "fire",
+            "adhn",
+            "adh",
+            "aqua",
+            "keep"
+          ],
+          "why": "ADH, through cAMP, moves aquaporins into the membranes of the last stretch of the kidney’s tubules. More water returns to the blood, so you pass a small volume of concentrated urine."
+        }
+      ]
+    },
+    {
+      "id": "gh-tumor-adult",
+      "title": "A growth hormone–secreting tumor in an adult",
+      "topic": "hypothalamus-pituitary",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": 2,
+      "misconception": "too much growth hormone makes an adult taller",
+      "setup": "A 42-year-old man has a benign pituitary tumor that makes far too much growth hormone. His epiphyseal plates closed years ago. Compare him after several years of the tumor with before it began.",
+      "start": "The tumor releases too much GH",
+      "steps": {
+        "liver": "The liver and other tissues release more IGF-1",
+        "closed": "The epiphyseal plates have already closed",
+        "height": "Long bones cannot lengthen",
+        "thick": "Bones of the hands, feet, jaw and face thicken",
+        "fb": "GH and IGF-1 feed back on the hypothalamus",
+        "ghrh": "Less GHRH is released",
+        "glu": "Muscle and fat take up less glucose and the liver releases more"
+      },
+      "variables": [
+        {
+          "id": "igf",
+          "name": "IGF-1",
+          "answer": "up",
+          "chain": [
+            "liver"
+          ],
+          "why": "GH makes the liver, and many tissues on their own, release IGF-1, which carries most of GH’s growth effects."
+        },
+        {
+          "id": "height",
+          "name": "Height",
+          "answer": "none",
+          "chain": [
+            "closed",
+            "height"
+          ],
+          "why": "Height grows only while the epiphyseal plates are open. In an adult they have closed, so extra GH cannot lengthen the long bones. This is acromegaly, not gigantism."
+        },
+        {
+          "id": "jaw",
+          "name": "Size of the jaw and hands",
+          "answer": "up",
+          "chain": [
+            "liver",
+            "thick"
+          ],
+          "why": "Bones can still thicken, and soft tissues still grow, so the jaw juts, the hands and feet widen, and his ring and shoe sizes go up."
+        },
+        {
+          "id": "ghrh",
+          "name": "GHRH from the hypothalamus",
+          "answer": "down",
+          "chain": [
+            "liver",
+            "fb",
+            "ghrh"
+          ],
+          "why": "High GH and IGF-1 feed back to cut GHRH and raise somatostatin release. The tumor ignores the brake, so GH stays high while GHRH falls."
+        },
+        {
+          "id": "glucose",
+          "name": "Glucose in the blood",
+          "answer": "up",
+          "chain": [
+            "glu"
+          ],
+          "why": "GH makes muscle and fat take up less glucose and the liver release more, so the glucose level runs high."
+        }
+      ]
+    },
+    {
+      "id": "thyroid-removed",
+      "title": "The thyroid gland is removed",
+      "topic": "thyroid-parathyroid",
+      "theme": "the thyroid is removed",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "losing the thyroid gland’s calcitonin makes blood calcium rise",
+      "setup": "A surgeon removes a patient’s whole thyroid gland but leaves all four parathyroid glands intact and working. For this question, no replacement hormone is given. Compare two months later with before the surgery.",
+      "start": "No thyroid gland is left",
+      "steps": {
+        "t4": "No T4 is made",
+        "t3": "Tissues have no T4 to convert, so T3 falls",
+        "brake": "Long-loop feedback is lost",
+        "trh": "The hypothalamus releases more TRH",
+        "tsh": "The anterior pituitary releases more TSH",
+        "pumps": "Cells make fewer pumps and mitochondria",
+        "heat": "Less oxygen used; less heat made",
+        "beta": "Heart cells make fewer beta-1 receptor proteins",
+        "hr": "The heart beats more slowly",
+        "ccell": "Calcitonin is lost, a minor effect in adults",
+        "pth": "The parathyroid glands still sense calcium and release PTH",
+        "ca": "Blood calcium is held in range"
+      },
+      "variables": [
+        {
+          "id": "t4",
+          "name": "T4 in the blood",
+          "answer": "down",
+          "chain": [
+            "t4"
+          ],
+          "why": "All T4 comes from the follicular cells, so with the gland gone, T4 falls. With a half-life of about a week, it falls over several weeks, not at once."
+        },
+        {
+          "id": "tsh",
+          "name": "TSH",
+          "answer": "up",
+          "chain": [
+            "t4",
+            "brake",
+            "trh",
+            "tsh"
+          ],
+          "why": "Thyroid hormones normally hold TSH down. As they fall, the brake comes off both the hypothalamus and the anterior pituitary, and TSH rises high: low final hormone with high tropic hormone."
+        },
+        {
+          "id": "heat",
+          "name": "Heat production (feels cold)",
+          "answer": "down",
+          "chain": [
+            "t4",
+            "t3",
+            "pumps",
+            "heat"
+          ],
+          "why": "T3 makes cells build sodium–potassium pumps and mitochondria. Without it they use less ATP and oxygen, make less heat, and the person feels cold."
+        },
+        {
+          "id": "hr",
+          "name": "Resting heart rate",
+          "answer": "down",
+          "chain": [
+            "t4",
+            "t3",
+            "beta",
+            "hr"
+          ],
+          "why": "Thyroid hormones keep heart cells stocked with beta-1 receptor proteins, the permissive effect on epinephrine. With fewer of them, the heart beats more slowly."
+        },
+        {
+          "id": "calcium",
+          "name": "Blood calcium",
+          "answer": "none",
+          "chain": [
+            "ccell",
+            "pth",
+            "ca"
+          ],
+          "why": "The parafollicular cells go with the gland, so calcitonin is lost. In adults that hardly matters: PTH and calcitriol are the main regulators, and people without a thyroid gland keep normal calcium as long as their parathyroid glands work."
+        }
+      ]
+    },
+    {
+      "id": "iodine-deficiency",
+      "title": "Too little iodine in the diet",
+      "topic": "thyroid-parathyroid",
+      "theme": "iodine deficiency",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "a goiter means the thyroid gland is overactive",
+      "setup": "A woman lives inland, far from the sea, where the soil is poor in iodine and salt is not iodized. She has eaten very little iodine for years. Compare her now with someone of the same age who gets about 150 micrograms a day.",
+      "start": "Too little iodine reaches the follicular cells",
+      "steps": {
+        "noI": "Too few iodines can be attached to thyroglobulin",
+        "t4": "T4 and T3 fall",
+        "brake": "Long-loop feedback weakens",
+        "tsh": "The anterior pituitary releases more TSH",
+        "grow": "TSH drives follicular cells to grow and make thyroglobulin",
+        "goiter": "The gland swells: a goiter",
+        "rate": "Cells use less oxygen and fuel"
+      },
+      "variables": [
+        {
+          "id": "t4",
+          "name": "T4 in the blood",
+          "answer": "down",
+          "chain": [
+            "noI",
+            "t4"
+          ],
+          "why": "Each T4 molecule needs four iodines attached to tyrosines in thyroglobulin. Without enough iodine the follicular cells cannot finish the hormone, however hard they work."
+        },
+        {
+          "id": "tsh",
+          "name": "TSH",
+          "answer": "up",
+          "chain": [
+            "noI",
+            "t4",
+            "brake",
+            "tsh"
+          ],
+          "why": "Low thyroid hormone releases the brake on the anterior pituitary, so TSH rises."
+        },
+        {
+          "id": "size",
+          "name": "Size of the thyroid gland",
+          "answer": "up",
+          "chain": [
+            "noI",
+            "t4",
+            "brake",
+            "tsh",
+            "grow",
+            "goiter"
+          ],
+          "why": "TSH makes follicular cells grow and make thyroglobulin. The gland swells even though it cannot make enough hormone, so this goiter comes with too little hormone, not too much."
+        },
+        {
+          "id": "metab",
+          "name": "Oxygen use by her cells at rest",
+          "answer": "down",
+          "chain": [
+            "noI",
+            "t4",
+            "rate"
+          ],
+          "why": "With less thyroid hormone, cells make fewer sodium–potassium pumps and mitochondria, so they use less ATP and oxygen: she is hypothyroid."
+        }
+      ]
+    },
+    {
+      "id": "parathyroid-damage",
+      "title": "The parathyroid glands are bruised in neck surgery",
+      "topic": "thyroid-parathyroid",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "low calcium makes nerves and muscles less excitable",
+      "setup": "During thyroid surgery, all four parathyroid glands are bruised and stop releasing hormone for a while. Compare the next evening with before the operation.",
+      "start": "The chief cells stop releasing PTH",
+      "steps": {
+        "pth": "PTH falls",
+        "bone": "Osteoclasts release less calcium from bone",
+        "kid": "The kidneys let more calcium go and keep more phosphate",
+        "ctr": "The kidneys make less calcitriol",
+        "gut": "The intestine absorbs less calcium",
+        "ca": "Blood calcium falls",
+        "po4": "Blood phosphate rises",
+        "na": "Voltage-gated sodium channels open more easily",
+        "tet": "Nerves and muscles become overexcitable"
+      },
+      "variables": [
+        {
+          "id": "ca",
+          "name": "Blood calcium",
+          "answer": "down",
+          "chain": [
+            "pth",
+            "bone",
+            "kid",
+            "ctr",
+            "gut",
+            "ca"
+          ],
+          "why": "PTH is the main hormone that raises blood calcium. Without it, bone releases less calcium, the kidneys keep less, and with less calcitriol the intestine absorbs less, so calcium falls."
+        },
+        {
+          "id": "po4",
+          "name": "Blood phosphate",
+          "answer": "up",
+          "chain": [
+            "pth",
+            "kid",
+            "po4"
+          ],
+          "why": "PTH normally makes the kidneys lose phosphate in the urine. Without it, they keep more, and phosphate rises."
+        },
+        {
+          "id": "calcitriol",
+          "name": "Calcitriol",
+          "answer": "down",
+          "chain": [
+            "pth",
+            "ctr"
+          ],
+          "why": "PTH switches on the kidney enzyme that makes calcitriol, so with PTH low, less calcitriol is made and the intestine absorbs less calcium."
+        },
+        {
+          "id": "excite",
+          "name": "Excitability of nerves and muscles",
+          "answer": "up",
+          "chain": [
+            "pth",
+            "bone",
+            "kid",
+            "ca",
+            "na",
+            "tet"
+          ],
+          "why": "Low extracellular calcium lets voltage-gated sodium channels open more easily. Nerves fire on their own: tingling around the mouth, cramps and tetany."
+        }
+      ]
+    },
+    {
+      "id": "graves-disease",
+      "title": "Graves disease",
+      "topic": "thyroid-parathyroid",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "high thyroid hormone always comes with high TSH",
+      "setup": "A woman’s immune system makes a protein that binds the TSH receptor protein on her follicular cells and switches it on, as TSH does. Compare her after a few months with before the disease began.",
+      "start": "An immune protein switches on the TSH receptor proteins",
+      "steps": {
+        "drive": "Follicular cells are driven nonstop",
+        "t4": "T4 and T3 rise",
+        "fb": "High thyroid hormone brakes the pituitary",
+        "tsh": "TSH falls almost to zero",
+        "grow": "The gland keeps growing",
+        "beta": "Heart cells make more beta-1 receptor proteins",
+        "hr": "The heart beats faster",
+        "burn": "Cells burn more fuel and make more heat",
+        "wt": "She loses weight despite eating more"
+      },
+      "variables": [
+        {
+          "id": "t4",
+          "name": "T4 in the blood",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "t4"
+          ],
+          "why": "The immune protein acts like TSH on every step, from iodide trapping to release, but feedback cannot turn it off."
+        },
+        {
+          "id": "tsh",
+          "name": "TSH",
+          "answer": "down",
+          "chain": [
+            "drive",
+            "t4",
+            "fb",
+            "tsh"
+          ],
+          "why": "The pituitary sees high thyroid hormone and cuts TSH release. That does not help, because the gland is being driven by the immune protein, not by TSH."
+        },
+        {
+          "id": "size",
+          "name": "Size of the thyroid gland",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "grow"
+          ],
+          "why": "Switching on the TSH receptor protein also makes the follicular cells grow, so Graves disease often causes a goiter."
+        },
+        {
+          "id": "hr",
+          "name": "Resting heart rate",
+          "answer": "up",
+          "chain": [
+            "drive",
+            "t4",
+            "beta",
+            "hr"
+          ],
+          "why": "Thyroid hormones raise the number of beta-1 receptor proteins on heart cells, so the heart responds more to sympathetic signals and races at rest."
+        },
+        {
+          "id": "weight",
+          "name": "Body weight",
+          "answer": "down",
+          "chain": [
+            "drive",
+            "t4",
+            "burn",
+            "wt"
+          ],
+          "why": "Every cell uses more oxygen and fuel and makes more heat, so she loses weight despite a big appetite."
+        }
+      ]
+    },
+    {
+      "id": "untreated-type-1",
+      "title": "Untreated type 1 diabetes",
+      "topic": "pancreas-glucose",
+      "theme": "untreated type 1 diabetes",
+      "core": [
+        "homeostasis",
+        "mass-balance",
+        "energy"
+      ],
+      "level": 3,
+      "misconception": "without insulin, cells have plenty of glucose because the blood is full of it",
+      "setup": "A 12-year-old’s immune system has destroyed nearly all her beta cells over the past few months, and she has not yet been diagnosed or given insulin. Compare her now with before her beta cells were lost.",
+      "start": "Almost no insulin is released",
+      "steps": {
+        "glut": "Muscle and fat move few GLUT4 carriers to their membranes",
+        "liver": "The liver keeps releasing glucose",
+        "glu": "Blood glucose rises",
+        "sat": "Kidney carriers can take back only so much glucose",
+        "urine": "Glucose stays in the urine",
+        "osm": "Glucose holds water in the kidney fluid by osmosis",
+        "poly": "Urine volume rises (polyuria)",
+        "conc": "The plasma becomes more concentrated",
+        "drink": "Thirst rises (polydipsia)",
+        "fat": "Nothing blocks fat breakdown",
+        "alpha": "Alpha cells lose the beta cells’ brake: glucagon high",
+        "acid": "The liver pours out acids made from fat",
+        "ph": "The blood becomes acidic",
+        "breathe": "Deep, rapid breathing blows off carbon dioxide",
+        "lose": "Calories are lost as glucose, and fat and muscle are broken down"
+      },
+      "variables": [
+        {
+          "id": "glucose",
+          "name": "Blood glucose",
+          "answer": "up",
+          "chain": [
+            "glut",
+            "liver",
+            "glu"
+          ],
+          "why": "With almost no insulin, muscle and fat let little glucose in, and the liver keeps making and releasing glucose. Nothing else lowers it, so blood glucose climbs."
+        },
+        {
+          "id": "glucagon",
+          "name": "Glucagon",
+          "answer": "up",
+          "chain": [
+            "alpha"
+          ],
+          "why": "Insulin from neighboring beta cells normally damps the alpha cells. With the beta cells gone, the brake is lost and glucagon runs high even though glucose is already high."
+        },
+        {
+          "id": "urine",
+          "name": "Urine volume",
+          "answer": "up",
+          "chain": [
+            "glut",
+            "liver",
+            "glu",
+            "sat",
+            "urine",
+            "osm",
+            "poly"
+          ],
+          "why": "Once blood glucose passes about 180 mg/dL, the kidney’s carriers are saturated and glucose stays in the urine. It holds water with it by osmosis, so urine volume rises."
+        },
+        {
+          "id": "thirst",
+          "name": "Thirst",
+          "answer": "up",
+          "chain": [
+            "glut",
+            "liver",
+            "glu",
+            "sat",
+            "urine",
+            "osm",
+            "poly",
+            "conc",
+            "drink"
+          ],
+          "why": "Losing so much water raises the concentration of the plasma and lowers blood volume, and both drive thirst."
+        },
+        {
+          "id": "weight",
+          "name": "Body weight",
+          "answer": "down",
+          "chain": [
+            "glut",
+            "liver",
+            "glu",
+            "sat",
+            "urine",
+            "lose"
+          ],
+          "why": "Calories leave in the urine as glucose, and cells short of glucose break down fat and muscle, so she loses weight despite eating."
+        },
+        {
+          "id": "ph",
+          "name": "Blood pH",
+          "answer": "down",
+          "chain": [
+            "fat",
+            "alpha",
+            "acid",
+            "ph"
+          ],
+          "why": "With no insulin to block fat breakdown and glucagon high, the liver turns fatty acids into acids faster than tissues can burn them, and they lower the blood pH."
+        },
+        {
+          "id": "breathing",
+          "name": "Depth and rate of breathing",
+          "answer": "up",
+          "chain": [
+            "fat",
+            "alpha",
+            "acid",
+            "ph",
+            "breathe"
+          ],
+          "why": "Acid in the blood drives breathing harder. Deep, rapid breaths blow off carbon dioxide, which partly offsets the fall in pH."
+        }
+      ]
+    },
+    {
+      "id": "insulin-overdose",
+      "title": "Too much insulin before a skipped meal",
+      "topic": "pancreas-glucose",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "the brain can switch to fat when blood glucose falls",
+      "setup": "A man with type 1 diabetes injects his usual mealtime insulin, then skips the meal. An hour later his blood glucose is 50 mg/dL. Compare now with before the injection.",
+      "start": "Injected insulin acts with no meal to match it",
+      "steps": {
+        "in": "Muscle and fat take glucose in; the liver stops releasing it",
+        "low": "Blood glucose falls below 70 mg/dL",
+        "alpha": "Alpha cells release more glucagon",
+        "med": "The adrenal medulla releases more epinephrine",
+        "symp": "Sympathetic activity rises",
+        "hr": "The heart beats faster and harder",
+        "sweat": "Sympathetic cholinergic fibers drive the sweat glands",
+        "brain": "Neurons, with almost no stored glycogen, run short of glucose",
+        "conf": "Confusion and trouble concentrating"
+      },
+      "variables": [
+        {
+          "id": "glucagon",
+          "name": "Glucagon",
+          "answer": "up",
+          "chain": [
+            "in",
+            "low",
+            "alpha"
+          ],
+          "why": "At about 65 to 70 mg/dL, the alpha cells raise glucagon release. It is one of the first defenses, making the liver release glucose."
+        },
+        {
+          "id": "epi",
+          "name": "Epinephrine",
+          "answer": "up",
+          "chain": [
+            "in",
+            "low",
+            "med"
+          ],
+          "why": "The adrenal medulla joins in at about the same glucose level, raising glucose release from the liver."
+        },
+        {
+          "id": "hr",
+          "name": "Heart rate",
+          "answer": "up",
+          "chain": [
+            "in",
+            "low",
+            "med",
+            "symp",
+            "hr"
+          ],
+          "why": "Sympathetic activation and circulating epinephrine speed the heart. A pounding heart is one of the warning signs of a low."
+        },
+        {
+          "id": "sweat",
+          "name": "Sweating",
+          "answer": "up",
+          "chain": [
+            "in",
+            "low",
+            "symp",
+            "sweat"
+          ],
+          "why": "Sweat glands are driven by sympathetic cholinergic fibers, so sweating comes with the other warning signs."
+        },
+        {
+          "id": "thinking",
+          "name": "Clarity of thinking",
+          "answer": "down",
+          "chain": [
+            "in",
+            "low",
+            "brain",
+            "conf"
+          ],
+          "why": "Neurons store almost no glycogen and cannot burn fatty acids, so they depend on glucose from the blood minute by minute. As it falls, thinking becomes slow and confused."
+        }
+      ]
+    },
+    {
+      "id": "steroid-withdrawal-l4",
+      "title": "Months of steroid tablets, then stopping suddenly",
+      "topic": "adrenal-glands",
+      "theme": "long-term steroid therapy, then stopping suddenly",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 4,
+      "misconception": "the adrenal glands restart as soon as the steroid drug is stopped",
+      "setup": "A woman takes a high dose of prednisone, a synthetic glucocorticoid, every day for six months for inflammatory lung disease. Then she runs out and stops it all at once.",
+      "stages": [
+        {
+          "id": "on",
+          "label": "After months on the drug",
+          "prompt": "After six months of daily prednisone, compared with before she started it.",
+          "start": "Prednisone acts like cortisol on the hypothalamus and pituitary",
+          "steps": {
+            "fb": "Long-loop negative feedback is strong",
+            "crh": "CRH release falls",
+            "acth": "ACTH release falls",
+            "shrink": "Without ACTH, the zona fasciculata shrinks",
+            "own": "Her own cortisol output falls",
+            "gluc": "The drug drives gluconeogenesis and insulin resistance",
+            "glu": "Blood glucose rises",
+            "ang": "Angiotensin II and potassium still drive the zona glomerulosa",
+            "ald": "Aldosterone output is kept"
+          },
+          "variables": [
+            {
+              "id": "acth",
+              "name": "ACTH",
+              "answer": "down",
+              "chain": [
+                "fb",
+                "crh",
+                "acth"
+              ],
+              "why": "The drug acts on the hypothalamus and anterior pituitary just as cortisol does, so CRH and ACTH release are held down."
+            },
+            {
+              "id": "own-cortisol",
+              "name": "Cortisol made by her own adrenal glands",
+              "answer": "down",
+              "chain": [
+                "fb",
+                "crh",
+                "acth",
+                "shrink",
+                "own"
+              ],
+              "why": "ACTH keeps the zona fasciculata large and working. With ACTH suppressed for months, the zone shrinks and makes little cortisol."
+            },
+            {
+              "id": "glucose",
+              "name": "Blood glucose",
+              "answer": "up",
+              "chain": [
+                "gluc",
+                "glu"
+              ],
+              "why": "The drug does what cortisol does in excess: it switches on gluconeogenesis and makes muscle and fat respond less to insulin, so glucose rises."
+            },
+            {
+              "id": "aldo",
+              "name": "Aldosterone",
+              "answer": "none",
+              "chain": [
+                "ang",
+                "ald"
+              ],
+              "why": "Aldosterone’s main drivers are angiotensin II and plasma potassium, not ACTH, so the zona glomerulosa keeps working."
+            }
+          ]
+        },
+        {
+          "id": "off",
+          "label": "The first days after stopping",
+          "prompt": "In the first few days after stopping, compared with while she was still taking the drug.",
+          "start": "The drug is gone from her blood",
+          "steps": {
+            "gone": "No glucocorticoid comes from the drug",
+            "slow": "The hypothalamus and pituitary take weeks to restart",
+            "acth": "ACTH stays low",
+            "small": "The shrunken zona fasciculata cannot make much cortisol",
+            "total": "Total glucocorticoid falls far below normal",
+            "gng": "Less gluconeogenesis in the liver",
+            "glu": "Blood glucose falls",
+            "perm": "Vessels lose cortisol’s permissive effect",
+            "bp": "Vessels respond weakly to sympathetic signals: blood pressure falls",
+            "ang": "Angiotensin II and potassium still drive the zona glomerulosa",
+            "ald": "Aldosterone output is kept"
+          },
+          "variables": [
+            {
+              "id": "acth",
+              "name": "ACTH",
+              "answer": "none",
+              "chain": [
+                "gone",
+                "slow",
+                "acth"
+              ],
+              "why": "The brake has lifted, but the suppressed hypothalamus and pituitary need weeks to months to recover, so ACTH stays low at first instead of jumping up."
+            },
+            {
+              "id": "gc",
+              "name": "Total glucocorticoid activity (drug plus her own cortisol)",
+              "answer": "down",
+              "chain": [
+                "gone",
+                "slow",
+                "acth",
+                "small",
+                "total"
+              ],
+              "why": "The drug has gone, ACTH is still low, and the shrunken zona fasciculata cannot make up the gap. There is little glucocorticoid from either source."
+            },
+            {
+              "id": "glucose",
+              "name": "Blood glucose",
+              "answer": "down",
+              "chain": [
+                "gone",
+                "total",
+                "gng",
+                "glu"
+              ],
+              "why": "Without cortisol driving gluconeogenesis, the liver makes less glucose, and glucose can fall low, especially under stress."
+            },
+            {
+              "id": "bp",
+              "name": "Blood pressure",
+              "answer": "down",
+              "chain": [
+                "gone",
+                "total",
+                "perm",
+                "bp"
+              ],
+              "why": "Cortisol keeps vascular smooth muscle able to respond to norepinephrine and epinephrine. Without it, vessels respond weakly and pressure falls. That is how an adrenal crisis begins, and why these drugs are tapered."
+            },
+            {
+              "id": "aldo",
+              "name": "Aldosterone",
+              "answer": "none",
+              "chain": [
+                "ang",
+                "ald"
+              ],
+              "why": "The zona glomerulosa was never under ACTH’s main control, so it keeps making aldosterone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acth-tumor",
+      "title": "A pituitary tumor secreting ACTH",
+      "topic": "adrenal-glands",
+      "theme": "a pituitary tumor secreting ACTH",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "high cortisol always means low ACTH",
+      "setup": "A benign tumor of the anterior pituitary releases ACTH on its own and responds only weakly to feedback (Cushing disease). Compare the patient after a year with before the tumor.",
+      "start": "The tumor releases too much ACTH",
+      "steps": {
+        "acth": "ACTH is high",
+        "zf": "ACTH drives the zona fasciculata",
+        "cort": "Cortisol rises",
+        "grow": "Both adrenal cortexes enlarge",
+        "fb": "Cortisol feeds back on the hypothalamus",
+        "crh": "CRH release falls",
+        "gng": "Gluconeogenesis rises and muscle and fat resist insulin",
+        "glu": "Blood glucose rises",
+        "prot": "Muscle protein is broken down",
+        "mus": "Thigh and shoulder muscles weaken"
+      },
+      "variables": [
+        {
+          "id": "cortisol",
+          "name": "Cortisol",
+          "answer": "up",
+          "chain": [
+            "acth",
+            "zf",
+            "cort"
+          ],
+          "why": "ACTH binds receptor proteins on zona fasciculata cells and makes them make and release cortisol, so excess ACTH means excess cortisol."
+        },
+        {
+          "id": "crh",
+          "name": "CRH",
+          "answer": "down",
+          "chain": [
+            "acth",
+            "zf",
+            "cort",
+            "fb",
+            "crh"
+          ],
+          "why": "The hypothalamus still obeys feedback: high cortisol cuts CRH. The tumor ignores the brake, so ACTH and cortisol both stay high while CRH falls."
+        },
+        {
+          "id": "size",
+          "name": "Size of the adrenal cortexes",
+          "answer": "up",
+          "chain": [
+            "acth",
+            "grow"
+          ],
+          "why": "Over weeks, ACTH keeps the zona fasciculata and zona reticularis large; too much of it makes them grow."
+        },
+        {
+          "id": "glucose",
+          "name": "Blood glucose",
+          "answer": "up",
+          "chain": [
+            "acth",
+            "zf",
+            "cort",
+            "gng",
+            "glu"
+          ],
+          "why": "Cortisol switches on gluconeogenesis and makes muscle and fat respond less to insulin, so glucose runs high, often to the point of diabetes."
+        },
+        {
+          "id": "muscle",
+          "name": "Strength of the thigh and shoulder muscles",
+          "answer": "down",
+          "chain": [
+            "acth",
+            "zf",
+            "cort",
+            "prot",
+            "mus"
+          ],
+          "why": "Cortisol breaks down muscle protein to supply amino acids for gluconeogenesis, so the large muscles of the thighs and shoulders waste and weaken."
+        }
+      ]
+    },
+    {
+      "id": "addison-disease",
+      "title": "Addison disease",
+      "topic": "adrenal-glands",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 3,
+      "misconception": "adrenal insufficiency affects only cortisol",
+      "setup": "A man’s immune system slowly destroys his adrenal cortexes. All three zones fail. Compare him after this has developed with before.",
+      "start": "The adrenal cortexes are destroyed",
+      "steps": {
+        "cort": "Cortisol falls",
+        "fb": "Negative feedback on the pituitary is lost",
+        "acth": "ACTH rises very high",
+        "mel": "ACTH and a related hormone stimulate melanocytes",
+        "skin": "Skin darkens",
+        "ald": "Aldosterone falls",
+        "na": "The kidneys lose sodium and water",
+        "k": "The kidneys keep potassium",
+        "kup": "Plasma potassium rises",
+        "vol": "Blood volume falls",
+        "perm": "Vessels respond weakly to sympathetic signals",
+        "bp": "Blood pressure falls",
+        "gng": "Less gluconeogenesis",
+        "glu": "Blood glucose falls"
+      },
+      "variables": [
+        {
+          "id": "acth",
+          "name": "ACTH",
+          "answer": "up",
+          "chain": [
+            "cort",
+            "fb",
+            "acth"
+          ],
+          "why": "The pituitary is healthy. With cortisol low, feedback no longer holds it back, so ACTH rises very high: low final hormone with high tropic hormone points to the target gland."
+        },
+        {
+          "id": "skin",
+          "name": "Skin color (darkness)",
+          "answer": "up",
+          "chain": [
+            "cort",
+            "fb",
+            "acth",
+            "mel",
+            "skin"
+          ],
+          "why": "ACTH is cut from a larger precursor that also yields a melanocyte-stimulating hormone, and at high levels ACTH itself stimulates melanocytes, so skin creases and gums darken."
+        },
+        {
+          "id": "potassium",
+          "name": "Plasma potassium",
+          "answer": "up",
+          "chain": [
+            "ald",
+            "k",
+            "kup"
+          ],
+          "why": "Aldosterone normally makes the kidney secrete potassium. Without it, potassium stays in the blood."
+        },
+        {
+          "id": "bp",
+          "name": "Blood pressure",
+          "answer": "down",
+          "chain": [
+            "ald",
+            "na",
+            "vol",
+            "cort",
+            "perm",
+            "bp"
+          ],
+          "why": "Two losses add up: without aldosterone the kidneys lose sodium and water, so volume falls, and without cortisol the vessels respond weakly to sympathetic signals."
+        },
+        {
+          "id": "glucose",
+          "name": "Blood glucose",
+          "answer": "down",
+          "chain": [
+            "cort",
+            "gng",
+            "glu"
+          ],
+          "why": "Cortisol drives gluconeogenesis. Without it, the liver makes less glucose, and glucose runs low, especially between meals."
+        }
+      ]
+    },
+    {
+      "id": "ace-blocker-aldosterone",
+      "title": "An ACE inhibitor for raised blood pressure",
+      "topic": "adrenal-glands",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "blocking ACE lowers renin",
+      "setup": "A man with raised blood pressure starts a drug that blocks angiotensin-converting enzyme (ACE). Compare him a few weeks later with before the drug.",
+      "start": "ACE is blocked",
+      "steps": {
+        "ang2": "Less angiotensin I is converted to angiotensin II",
+        "ald": "The zona glomerulosa releases less aldosterone",
+        "na": "The kidney keeps less sodium, and less water follows",
+        "k": "The kidney secretes less potassium",
+        "kup": "Plasma potassium tends to rise",
+        "vc": "Less vasoconstriction of small arteries",
+        "bp": "Blood pressure falls",
+        "fb": "Angiotensin II and lower pressure both act back on the renin cells",
+        "ren": "The kidney releases more renin"
+      },
+      "variables": [
+        {
+          "id": "ang2",
+          "name": "Angiotensin II",
+          "answer": "down",
+          "chain": [
+            "ang2"
+          ],
+          "why": "ACE, on the inner lining of blood vessels and most plentiful in the lungs, is the enzyme that makes angiotensin II from angiotensin I. Blocking it cuts angiotensin II."
+        },
+        {
+          "id": "aldo",
+          "name": "Aldosterone",
+          "answer": "down",
+          "chain": [
+            "ang2",
+            "ald"
+          ],
+          "why": "Angiotensin II is one of the two main signals for aldosterone release, so less of it means less aldosterone."
+        },
+        {
+          "id": "potassium",
+          "name": "Plasma potassium",
+          "answer": "up",
+          "chain": [
+            "ang2",
+            "ald",
+            "k",
+            "kup"
+          ],
+          "why": "Aldosterone makes the kidney secrete potassium. With less aldosterone, a little more potassium stays in the blood, which is why potassium is checked on these drugs."
+        },
+        {
+          "id": "volume",
+          "name": "Blood volume",
+          "answer": "down",
+          "chain": [
+            "ang2",
+            "ald",
+            "na"
+          ],
+          "why": "Aldosterone makes the kidney reabsorb sodium, and water follows by osmosis. With less aldosterone, a little more sodium and water leave in the urine, so volume falls slightly and pressure with it."
+        },
+        {
+          "id": "renin",
+          "name": "Renin",
+          "answer": "up",
+          "chain": [
+            "ang2",
+            "vc",
+            "bp",
+            "fb",
+            "ren"
+          ],
+          "why": "The drug acts after renin. With less angiotensin II and lower pressure in the kidney’s small arteries, the renin-releasing cells release more renin. It has little effect, because the next step is blocked."
+        }
+      ]
+    },
+    {
+      "id": "altitude-epo-l4",
+      "title": "Moving to a mountain town",
+      "topic": "other-endocrine",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": 4,
+      "misconception": "more red blood cells appear within hours at altitude",
+      "setup": "A climber moves to a town at 3,500 meters and stays there. Each breath carries about a third less oxygen than at sea level.",
+      "stages": [
+        {
+          "id": "hours",
+          "label": "The first day",
+          "prompt": "About a day after arriving, compared with sea level.",
+          "start": "Less oxygen reaches the kidney tissue",
+          "steps": {
+            "sense": "Oxygen-sensing kidney cells detect hypoxia",
+            "gene": "A protein that is normally broken down survives and switches on the EPO gene",
+            "epo": "EPO release rises",
+            "marrow": "Red bone marrow starts making more red blood cells",
+            "time": "New red blood cells take days to mature and enter the blood",
+            "count": "Red blood cell count has not yet changed"
+          },
+          "variables": [
+            {
+              "id": "epo",
+              "name": "EPO in the blood",
+              "answer": "up",
+              "chain": [
+                "sense",
+                "gene",
+                "epo"
+              ],
+              "why": "The kidneys sense hypoxia directly. A protein that is normally broken down within minutes survives in low oxygen, enters the nucleus and switches on the EPO gene, so EPO rises within hours."
+            },
+            {
+              "id": "rbc",
+              "name": "Red blood cell count",
+              "answer": "none",
+              "chain": [
+                "sense",
+                "gene",
+                "epo",
+                "marrow",
+                "time",
+                "count"
+              ],
+              "why": "EPO acts on the cells in the marrow that make red blood cells, but it takes days before new cells enter the blood and weeks before the count rises much."
+            }
+          ]
+        },
+        {
+          "id": "weeks",
+          "label": "Several weeks later",
+          "prompt": "After several weeks living at altitude, compared with that first day.",
+          "start": "EPO has kept the marrow busy for weeks",
+          "steps": {
+            "made": "Many new red blood cells have entered the blood",
+            "count": "Red blood cell count rises",
+            "carry": "The blood carries more oxygen",
+            "kid": "More oxygen reaches the kidney tissue",
+            "fb": "EPO release falls back: negative feedback"
+          },
+          "variables": [
+            {
+              "id": "rbc",
+              "name": "Red blood cell count",
+              "answer": "up",
+              "chain": [
+                "made",
+                "count"
+              ],
+              "why": "Weeks of EPO keep more red cell precursors alive and dividing, so the count climbs."
+            },
+            {
+              "id": "o2",
+              "name": "Oxygen carried by each liter of blood",
+              "answer": "up",
+              "chain": [
+                "made",
+                "count",
+                "carry"
+              ],
+              "why": "Red blood cells carry almost all the oxygen in the blood, so more of them in each liter means more oxygen carried."
+            },
+            {
+              "id": "epo",
+              "name": "EPO in the blood",
+              "answer": "down",
+              "chain": [
+                "made",
+                "count",
+                "carry",
+                "kid",
+                "fb"
+              ],
+              "why": "As oxygen delivery to the kidney improves, the sensing cells release less EPO. The response has removed part of its own stimulus: negative feedback."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saline-anp",
+      "title": "Two liters of saline in an hour",
+      "topic": "other-endocrine",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "level": 2,
+      "misconception": "the heart plays no part in hormone control of salt and water",
+      "setup": "A patient is given two liters of saline through a drip over one hour. Compare the end of the hour with before the drip.",
+      "start": "Blood volume rises",
+      "steps": {
+        "ret": "More blood returns to the heart",
+        "str": "The walls of the upper chambers are stretched",
+        "anp": "Stretched muscle cells there release ANP",
+        "filt": "The kidneys filter more and reabsorb less sodium",
+        "na": "More sodium and water leave in the urine",
+        "ren": "Renin release falls",
+        "ald": "Aldosterone release falls",
+        "vd": "Vascular smooth muscle relaxes"
+      },
+      "variables": [
+        {
+          "id": "anp",
+          "name": "ANP in the blood",
+          "answer": "up",
+          "chain": [
+            "ret",
+            "str",
+            "anp"
+          ],
+          "why": "The extra volume returns to the heart and stretches its upper chambers, and their stretched muscle cells release ANP."
+        },
+        {
+          "id": "sodium",
+          "name": "Sodium excreted in the urine",
+          "answer": "up",
+          "chain": [
+            "ret",
+            "str",
+            "anp",
+            "filt",
+            "na"
+          ],
+          "why": "ANP makes the kidneys filter more fluid and reabsorb less sodium, so sodium, and water with it, leaves in the urine."
+        },
+        {
+          "id": "aldo",
+          "name": "Aldosterone",
+          "answer": "down",
+          "chain": [
+            "ret",
+            "str",
+            "anp",
+            "ren",
+            "ald"
+          ],
+          "why": "ANP cuts renin release, and so angiotensin II, and aldosterone release falls with it. The signals that make the kidneys keep salt are removed."
+        },
+        {
+          "id": "vessels",
+          "name": "Diameter of small arteries",
+          "answer": "up",
+          "chain": [
+            "ret",
+            "str",
+            "anp",
+            "vd"
+          ],
+          "why": "ANP relaxes vascular smooth muscle: vasodilation. All its effects lower volume and pressure, and as stretch eases, ANP falls again."
+        }
+      ]
+    },
+    {
+      "id": "night-light",
+      "title": "Bright light in the middle of the night",
+      "topic": "other-endocrine",
+      "core": [
+        "communication"
+      ],
+      "level": 2,
+      "misconception": "melatonin is controlled by the image the eyes see",
+      "setup": "At 2 a.m. a sleeper is woken and turns on a bright, blue-rich light. Compare five minutes later with just before the light went on.",
+      "start": "Bright light reaches the retina",
+      "steps": {
+        "mel": "Melanopsin-containing retinal ganglion cells fire",
+        "scn": "They signal the suprachiasmatic nucleus",
+        "symp": "The pathway down to the superior cervical ganglion shuts down",
+        "ne": "Less norepinephrine reaches the pinealocytes",
+        "stop": "Melatonin release stops within minutes"
+      },
+      "variables": [
+        {
+          "id": "ne",
+          "name": "Norepinephrine released onto pinealocytes",
+          "answer": "down",
+          "chain": [
+            "mel",
+            "scn",
+            "symp",
+            "ne"
+          ],
+          "why": "At night, sympathetic fibers from the superior cervical ganglion release norepinephrine onto the pineal gland. Light, through the suprachiasmatic nucleus, shuts that pathway down."
+        },
+        {
+          "id": "melatonin",
+          "name": "Melatonin in the blood",
+          "answer": "down",
+          "chain": [
+            "mel",
+            "scn",
+            "symp",
+            "ne",
+            "stop"
+          ],
+          "why": "Without norepinephrine, pinealocytes stop making and releasing melatonin within minutes. That is why light at night, including from screens, pushes the body clock later."
+        }
+      ]
     }
   ]
 }

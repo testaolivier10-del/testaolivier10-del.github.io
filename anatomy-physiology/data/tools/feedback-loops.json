@@ -1608,6 +1608,704 @@
         ],
         "correct": 0
       }
+    },
+    {
+      "id": "glucose-high-insulin",
+      "title": "Blood glucose rises: insulin",
+      "topic": "pancreas-glucose",
+      "map": "Blood glucose: glucose high and glucose low",
+      "core": [
+        "homeostasis",
+        "energy"
+      ],
+      "kind": "negative",
+      "scenario": "You eat a bowl of rice. Forty-five minutes later your blood glucose has climbed from about 88 to about 135 mg/dL. By two hours it is back below 100.",
+      "slots": {
+        "stimulus": {
+          "text": "Blood glucose rises after a meal",
+          "short": "Blood glucose rises",
+          "why": "The regulated variable is the glucose concentration of the plasma. Glucose absorbed from the meal pushes it above its fasting level."
+        },
+        "sensor": {
+          "text": "Beta cells of the pancreatic islets: more glucose enters, their ATP rises and their potassium channels close",
+          "short": "Beta cells (ATP closes K+ channels)",
+          "why": "A beta cell is its own sensor. Glucose enters by facilitated diffusion, its breakdown raises ATP, and ATP closes ATP-sensitive potassium channels, so the cell depolarizes."
+        },
+        "afferent": {
+          "text": "No separate pathway: the sensing cells are the releasing cells",
+          "short": "None: same cells",
+          "why": "Sensor and control center are the same beta cells, so no nerve or hormone carries the information between them."
+        },
+        "control": {
+          "text": "The same beta cells set how much insulin to release",
+          "short": "Beta cells set insulin output",
+          "why": "Depolarization opens voltage-gated calcium channels, and the calcium that enters triggers exocytosis of insulin: the more glucose, the more insulin."
+        },
+        "efferent": {
+          "text": "Insulin carried in the blood",
+          "short": "Insulin in the blood",
+          "why": "Insulin leaves through the islet’s capillaries and reaches its targets in the blood. The command is a hormone, not a nerve signal."
+        },
+        "effector": {
+          "text": "Liver, skeletal muscle and adipose tissue",
+          "short": "Liver, muscle, fat",
+          "why": "These cells carry insulin’s receptor protein. Muscle and fat move GLUT4 carriers to their membranes; the liver switches on glycogenesis and switches off glycogenolysis and gluconeogenesis."
+        },
+        "response": {
+          "text": "Glucose moves into cells and into storage, so blood glucose falls back to its fasting level",
+          "short": "Glucose stored: level falls",
+          "why": "Glucose leaves the plasma for muscle, fat and liver, opposing the rise. As it falls, beta cell ATP falls, the potassium channels reopen and insulin release drops."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Alpha cells release glucagon",
+          "why": "Glucagon raises blood glucose. After a meal, high glucose and insulin hold the alpha cells back."
+        },
+        {
+          "text": "Sensory nerves carry the glucose level to the hypothalamus",
+          "why": "The beta cells sense glucose themselves. The loop needs no nerve at all."
+        },
+        {
+          "text": "The brain takes up more glucose because insulin moves its carriers",
+          "why": "Neurons take in glucose through carriers that are always in the membrane, so their uptake does not depend on insulin."
+        },
+        {
+          "text": "The liver breaks glycogen down and releases glucose",
+          "why": "That would push glucose higher. Insulin switches glycogenolysis off."
+        }
+      ],
+      "classify": "The response (glucose leaves the blood) opposes the stimulus (a rise in blood glucose), and the fall removes the signal that drove insulin release, so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "In early type 2 diabetes, muscle, fat and liver cells respond less to a normal amount of insulin. What happens after a meal?",
+        "options": [
+          {
+            "text": "Beta cells release more insulin, and glucose stays near normal at first",
+            "why": "Right. The sensor and control center still work: glucose stays higher for longer, so the beta cells release more insulin, which partly overcomes the resistance. Glucose rises only once the beta cells cannot keep up."
+          },
+          {
+            "text": "Insulin release stops, because the resistant cells no longer need any insulin",
+            "why": "The beta cells respond to glucose, not to how well the targets respond. Resistance leaves glucose higher, which drives more insulin, not less."
+          },
+          {
+            "text": "Glucose falls too low, because the extra insulin overshoots",
+            "why": "The extra insulin only makes up for weaker responses. The effectors respond less, so glucose does not overshoot."
+          },
+          {
+            "text": "Nothing changes, because the brain takes over glucose control",
+            "why": "The brain is not part of this loop, and only insulin lowers blood glucose."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "glucose-low-glucagon",
+      "title": "Blood glucose falls: glucagon",
+      "topic": "pancreas-glucose",
+      "map": "Blood glucose: glucose high and glucose low",
+      "core": [
+        "homeostasis",
+        "energy"
+      ],
+      "kind": "negative",
+      "scenario": "You skip breakfast. Five hours after dinner, your brain has been taking about 5 grams of glucose an hour out of your blood, yet your blood glucose stays near 80 mg/dL.",
+      "slots": {
+        "stimulus": {
+          "text": "Blood glucose falls between meals",
+          "short": "Blood glucose falls",
+          "why": "Glucose keeps leaving the plasma for the brain and other tissues, pushing the level down toward the bottom of its range."
+        },
+        "sensor": {
+          "text": "Alpha cells of the pancreatic islets, helped by glucose-sensing neurons in the hypothalamus",
+          "short": "Alpha cells sense the fall",
+          "why": "Alpha cells respond directly to low glucose, and less insulin from the beta cells next door takes the brake off them."
+        },
+        "afferent": {
+          "text": "No separate pathway for the alpha cells: they sense and respond themselves",
+          "short": "None: same cells",
+          "why": "As in the insulin arm, the islet cells are both sensor and control center, so the loop needs no nerve."
+        },
+        "control": {
+          "text": "The same alpha cells set how much glucagon to release",
+          "short": "Alpha cells set glucagon output",
+          "why": "The lower the glucose, the more glucagon the alpha cells release."
+        },
+        "efferent": {
+          "text": "Glucagon carried in the blood",
+          "short": "Glucagon in the blood",
+          "why": "Glucagon, a water-soluble peptide, travels in the blood to its main target."
+        },
+        "effector": {
+          "text": "Liver cells",
+          "short": "Liver cells",
+          "why": "Glucagon binds G protein–coupled receptor proteins on liver cells. Skeletal muscle has almost none, so its glycogen stays in the muscle."
+        },
+        "response": {
+          "text": "The liver breaks down glycogen and makes new glucose, releasing it into the blood, so glucose rises back",
+          "short": "Liver releases glucose: level rises",
+          "why": "cAMP and protein kinase A switch on glycogenolysis and gluconeogenesis and switch off glycogenesis. Glucose pours out of the liver and opposes the fall."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Skeletal muscle breaks down its glycogen and releases glucose into the blood",
+          "why": "A muscle cell lacks the enzyme that frees glucose to leave it, and muscle has almost no glucagon receptor proteins, so muscle glycogen fuels only that muscle."
+        },
+        {
+          "text": "Beta cells release more insulin",
+          "why": "Insulin lowers glucose. As glucose falls, beta cells cut insulin release first, at about 80 mg/dL."
+        },
+        {
+          "text": "Muscle and fat move GLUT4 carriers into their membranes",
+          "why": "That is insulin’s effect, and it would pull more glucose out of the blood."
+        }
+      ],
+      "classify": "The response (the liver releases glucose) opposes the stimulus (a fall in blood glucose), so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "A person has fasted for two days, and their liver glycogen is used up. The alpha cells still release glucagon. How does the liver keep answering it?",
+        "options": [
+          {
+            "text": "By making new glucose from amino acids, glycerol and lactate",
+            "why": "Right. Liver glycogen runs low within about a day, and from then on gluconeogenesis, also switched on by glucagon, supplies most of the glucose."
+          },
+          {
+            "text": "It cannot: blood glucose falls steadily until the person eats",
+            "why": "Glucagon drives two processes. With glycogen gone, gluconeogenesis keeps glucose up, so the level holds."
+          },
+          {
+            "text": "By releasing glucose from the muscles’ glycogen store",
+            "why": "Muscle glycogen cannot leave the muscle cell as glucose."
+          },
+          {
+            "text": "By making glycogen faster",
+            "why": "Glycogenesis stores glucose; glucagon switches it off."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "thyroid-axis",
+      "title": "Thyroid hormone falls: the thyroid axis",
+      "topic": "thyroid-parathyroid",
+      "map": "Thyroid hormone axis",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "A patient’s dose of levothyroxine is cut by mistake. Over the next weeks free T4 in the blood drifts down, and a blood test shows a raised TSH. When the dose is restored, TSH returns to normal.",
+      "slots": {
+        "stimulus": {
+          "text": "Free T4 and T3 in the blood fall",
+          "short": "Thyroid hormone falls",
+          "why": "The regulated variable is the level of free thyroid hormone in the blood."
+        },
+        "sensor": {
+          "text": "Cells of the anterior pituitary and neurons of the hypothalamus that respond to thyroid hormone",
+          "short": "Pituitary and hypothalamus cells",
+          "why": "Thyroid hormone enters these cells and holds back TRH and TSH release. When less arrives, the brake weakens. The pituitary is the main site."
+        },
+        "afferent": {
+          "text": "The level of thyroid hormone itself, carried to them in the blood",
+          "short": "Thyroid hormone in the blood",
+          "why": "The information travels as the hormone level in the blood reaching the brain and pituitary. No nerve reports it."
+        },
+        "control": {
+          "text": "The hypothalamus (TRH) and the anterior pituitary (TSH)",
+          "short": "Hypothalamus and pituitary",
+          "why": "TRH travels through the hypophyseal portal system and drives the anterior pituitary, which sets how much TSH to release."
+        },
+        "efferent": {
+          "text": "TSH carried in the blood to the thyroid gland",
+          "short": "TSH in the blood",
+          "why": "TSH is the tropic hormone that carries the command to the target gland."
+        },
+        "effector": {
+          "text": "Follicular cells of the thyroid gland",
+          "short": "Follicular cells",
+          "why": "TSH binds receptor proteins on the follicular cells and, through cAMP, speeds iodide trapping, thyroglobulin making, iodination and the endocytosis of thyroid colloid."
+        },
+        "response": {
+          "text": "More T4 and T3 are released, so their level rises back",
+          "short": "More T4 and T3 released",
+          "why": "The follicular cells free T4 and T3 from thyroglobulin and release them into the capillaries, opposing the fall."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Parafollicular cells release calcitonin",
+          "why": "Calcitonin comes from the C cells and acts on calcium, not on thyroid hormone."
+        },
+        {
+          "text": "The posterior pituitary releases TSH",
+          "why": "TSH comes from the anterior pituitary. The posterior lobe releases only ADH and oxytocin."
+        },
+        {
+          "text": "Thyroid hormone switches off TSH release",
+          "why": "That is what happens when thyroid hormone is high. Here it is low, so TSH rises."
+        }
+      ],
+      "classify": "The response (more T4 and T3) opposes the stimulus (low T4 and T3), and the rising hormone then brakes TRH and TSH again, so this is negative feedback.",
+      "failure": {
+        "part": "efferent",
+        "q": "A pituitary tumor destroys the TSH-making cells. What pattern of hormones do you expect?",
+        "options": [
+          {
+            "text": "Low TSH and low T4",
+            "why": "Right. With no TSH, the follicular cells are no longer driven, so T4 falls too. Both low points to the pituitary or hypothalamus."
+          },
+          {
+            "text": "Low TSH and high T4",
+            "why": "That is the pattern of a gland overproducing on its own, as in Graves disease, where feedback drives TSH down."
+          },
+          {
+            "text": "High TSH and low T4",
+            "why": "That is the pattern when the thyroid gland itself fails: feedback is lost and the healthy pituitary releases more TSH."
+          },
+          {
+            "text": "Normal T4, because the thyroid gland works on its own",
+            "why": "The follicular cells need TSH to keep releasing hormone and to keep their size."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "cortisol-axis",
+      "title": "Cortisol falls: the pituitary–adrenal axis",
+      "topic": "adrenal-glands",
+      "map": "Cortisol axis",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "kind": "negative",
+      "scenario": "A patient taking a drug that partly blocks cortisol synthesis has a lower cortisol level for a few days. Blood tests show ACTH climbing, and cortisol creeps back toward normal.",
+      "slots": {
+        "stimulus": {
+          "text": "Cortisol in the blood falls",
+          "short": "Cortisol falls",
+          "why": "The regulated variable is the level of cortisol in the blood (set around a daily rhythm)."
+        },
+        "sensor": {
+          "text": "Neurons of the hypothalamus and cells of the anterior pituitary that respond to cortisol",
+          "short": "Hypothalamus and pituitary cells",
+          "why": "Cortisol normally holds back CRH and ACTH release. When less of it arrives, these cells release more."
+        },
+        "afferent": {
+          "text": "The cortisol level itself, carried to them in the blood",
+          "short": "Cortisol in the blood",
+          "why": "The information travels as the hormone level reaching the brain and pituitary, not as a nerve signal."
+        },
+        "control": {
+          "text": "The hypothalamus (CRH) and the anterior pituitary (ACTH)",
+          "short": "Hypothalamus and pituitary",
+          "why": "CRH travels through the hypophyseal portal system and makes the anterior pituitary release ACTH."
+        },
+        "efferent": {
+          "text": "ACTH carried in the blood to the adrenal glands",
+          "short": "ACTH in the blood",
+          "why": "ACTH is the tropic hormone that carries the command to the adrenal cortex."
+        },
+        "effector": {
+          "text": "Cells of the zona fasciculata of the adrenal cortex",
+          "short": "Zona fasciculata cells",
+          "why": "ACTH binds receptor proteins on zona fasciculata cells, which make and release cortisol within minutes."
+        },
+        "response": {
+          "text": "More cortisol is made and released, so its level rises back",
+          "short": "More cortisol released",
+          "why": "Cortisol is made on demand and diffuses out, opposing the fall. As it rises, it brakes CRH and ACTH again."
+        }
+      },
+      "distractors": [
+        {
+          "text": "The zona glomerulosa releases more aldosterone",
+          "why": "Aldosterone answers mainly to angiotensin II and potassium, and it does not feed back on this axis."
+        },
+        {
+          "text": "Sympathetic fibers make the adrenal medulla release epinephrine",
+          "why": "That is the fast, neural stress response, not the hormonal loop that holds cortisol steady."
+        },
+        {
+          "text": "The adrenal cortex releases stored cortisol from vesicles",
+          "why": "Steroids are not stored. The cortex makes cortisol as it is needed and it diffuses straight out."
+        }
+      ],
+      "classify": "The response (cortisol rises) opposes the stimulus (cortisol falls), and cortisol then inhibits CRH and ACTH release, so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "An immune attack destroys the adrenal cortex (Addison disease). What happens to ACTH?",
+        "options": [
+          {
+            "text": "It rises very high, as cortisol no longer brakes the pituitary",
+            "why": "Right. The sensor and control center are intact and keep driving ACTH up, but the destroyed effector cannot answer. The high ACTH also darkens the skin."
+          },
+          {
+            "text": "It falls, because the adrenal glands no longer need it",
+            "why": "The pituitary responds to the low cortisol it senses, not to whether the adrenal glands can respond."
+          },
+          {
+            "text": "It stays normal, because the axis is balanced",
+            "why": "The balance depends on cortisol feeding back. With no cortisol, nothing holds ACTH down."
+          },
+          {
+            "text": "It falls, because aldosterone rises to take over cortisol’s feedback role",
+            "why": "All three zones fail in Addison disease, so aldosterone falls too, and aldosterone does not control ACTH."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "calcium-low-pth",
+      "title": "Blood calcium falls: PTH and calcitriol",
+      "topic": "thyroid-parathyroid",
+      "map": "Blood calcium, full version",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "For a week, a woman eats almost no dairy or other calcium-rich food. Her blood calcium dips slightly, then holds steady near 9 mg/dL.",
+      "slots": {
+        "stimulus": {
+          "text": "Blood calcium falls",
+          "short": "Calcium falls",
+          "why": "The regulated variable is the concentration of calcium ions in the blood, held at about 8.5 to 10.5 mg/dL."
+        },
+        "sensor": {
+          "text": "Calcium-sensing receptor proteins on the chief cells of the parathyroid glands",
+          "short": "Chief cells’ calcium sensors",
+          "why": "When calcium falls, fewer calcium ions bind the sensing receptor protein, and the chief cells release more hormone within seconds."
+        },
+        "afferent": {
+          "text": "No separate pathway: the chief cells sense and respond themselves",
+          "short": "None: same cells",
+          "why": "This is a humoral stimulus. The chief cells are both the sensor and the control center."
+        },
+        "control": {
+          "text": "The chief cells set how much PTH to release",
+          "short": "Chief cells set PTH output",
+          "why": "The lower the calcium, the more PTH the chief cells release."
+        },
+        "efferent": {
+          "text": "PTH in the blood, and calcitriol that PTH has the kidneys make",
+          "short": "PTH, then calcitriol",
+          "why": "PTH carries the command to bone and kidney, and switches on the kidney enzyme that makes calcitriol, which carries it to the intestine."
+        },
+        "effector": {
+          "text": "Bone (through osteoblasts that activate osteoclasts), kidney tubules and the intestine",
+          "short": "Bone, kidneys, intestine",
+          "why": "PTH binds osteoblasts, which make more osteoclasts form and work; kidney tubules keep calcium and lose phosphate; calcitriol makes the intestine absorb more calcium."
+        },
+        "response": {
+          "text": "Calcium is released from bone, kept by the kidneys and absorbed from food, so blood calcium rises back",
+          "short": "Calcium rises back",
+          "why": "All three routes add calcium to the blood, opposing the fall. As it returns to range, PTH release falls."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Parafollicular cells release calcitonin",
+          "why": "Calcitonin is released when calcium is high, and it lowers calcium, the wrong direction here."
+        },
+        {
+          "text": "PTH binds osteoclasts directly and makes them dissolve bone",
+          "why": "PTH binds osteoblasts, not osteoclasts. The osteoblasts then signal osteoclasts to form and work harder."
+        },
+        {
+          "text": "The kidneys excrete more calcium in the urine",
+          "why": "PTH makes the kidneys keep calcium. Losing more would lower calcium further."
+        }
+      ],
+      "classify": "The response (calcium rises) opposes the stimulus (calcium falls), so this is negative feedback.",
+      "failure": {
+        "part": "efferent",
+        "q": "A man’s kidneys fail, so they can no longer make calcitriol, though his parathyroid glands work. What happens?",
+        "options": [
+          {
+            "text": "PTH rises and calcium tends to fall, because the intestine absorbs little calcium",
+            "why": "Right. One arm of the efferent pathway is broken. Without calcitriol, the intestine absorbs little calcium, calcium dips, and the chief cells release more and more PTH to pull calcium from bone."
+          },
+          {
+            "text": "PTH falls, because calcitriol normally drives it",
+            "why": "PTH drives calcitriol, not the other way round. Low calcium drives PTH up."
+          },
+          {
+            "text": "Calcium rises, because bone keeps releasing it",
+            "why": "Bone helps, but without intestinal absorption the body loses its main supply, so calcium tends to fall."
+          },
+          {
+            "text": "Nothing changes, because calcitonin takes over",
+            "why": "Calcitonin lowers calcium, and in adults its effect is minor. It cannot replace calcitriol."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "calcium-high",
+      "title": "Blood calcium rises: less PTH (and calcitonin, minor)",
+      "topic": "thyroid-parathyroid",
+      "map": "Blood calcium, full version",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "After a large calcium supplement and a big glass of milk, a man’s blood calcium rises a little above its set point. Within hours it is back in range.",
+      "slots": {
+        "stimulus": {
+          "text": "Blood calcium rises",
+          "short": "Calcium rises",
+          "why": "Calcium absorbed from the gut pushes the level above its set point."
+        },
+        "sensor": {
+          "text": "Calcium-sensing receptor proteins on the chief cells (and the parafollicular cells of the thyroid gland)",
+          "short": "Chief cells (and C cells)",
+          "why": "More calcium binds the chief cells’ sensing receptor protein, which cuts PTH release. The C cells also sense the rise."
+        },
+        "afferent": {
+          "text": "No separate pathway: the gland cells sense and respond themselves",
+          "short": "None: same cells",
+          "why": "As with low calcium, the sensing cells are also the control center."
+        },
+        "control": {
+          "text": "Chief cells cut PTH release; C cells release calcitonin",
+          "short": "Chief cells and C cells",
+          "why": "The main change is less PTH. The C cells add calcitonin, a minor extra brake in adults."
+        },
+        "efferent": {
+          "text": "Less PTH in the blood, plus a little calcitonin (minor in adults)",
+          "short": "Less PTH; calcitonin (minor)",
+          "why": "With less PTH, less calcitriol is made too. Calcitonin quickly stops osteoclasts, but people without it keep normal calcium."
+        },
+        "effector": {
+          "text": "Bone, kidney tubules and the intestine",
+          "short": "Bone, kidneys, intestine",
+          "why": "The same targets, now driven less: osteoclasts slow, the kidneys let calcium go, and with less calcitriol the intestine absorbs less."
+        },
+        "response": {
+          "text": "Less calcium enters the blood and more leaves in the urine, so blood calcium falls back",
+          "short": "Calcium falls back",
+          "why": "The response opposes the rise and brings calcium back within about 10% of its set point."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Chief cells release more PTH",
+          "why": "More PTH would raise calcium further. High calcium cuts PTH release."
+        },
+        {
+          "text": "The kidneys make more calcitriol",
+          "why": "PTH switches the calcitriol step on, so with PTH low, less calcitriol is made."
+        },
+        {
+          "text": "Calcitonin from the parathyroid glands",
+          "why": "Calcitonin comes from the parafollicular (C) cells of the thyroid gland, not the parathyroid glands."
+        }
+      ],
+      "classify": "The response (calcium falls) opposes the stimulus (calcium rises), so this is negative feedback.",
+      "failure": {
+        "part": "efferent",
+        "q": "A woman’s thyroid gland, and with it all her C cells, is removed. Her parathyroid glands are unharmed. How does her calcium control change?",
+        "options": [
+          {
+            "text": "Hardly at all: falling PTH still does most of the work",
+            "why": "Right. Calcitonin is a minor brake in adults. People without a thyroid gland keep normal calcium as long as their parathyroid glands work. (For your exam, calcitonin is still named as the hormone that lowers calcium.)"
+          },
+          {
+            "text": "Calcium rises out of control, because nothing lowers it",
+            "why": "PTH falling is the main way calcium is lowered, and that still works."
+          },
+          {
+            "text": "Calcium falls, because calcitonin normally raises it",
+            "why": "Calcitonin lowers calcium; it does not raise it."
+          },
+          {
+            "text": "PTH stops, because the thyroid gland controls it",
+            "why": "The chief cells sense calcium themselves; they do not need the thyroid gland."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "potassium-aldosterone",
+      "title": "Plasma potassium rises: aldosterone",
+      "topic": "adrenal-glands",
+      "core": [
+        "homeostasis",
+        "mass-balance"
+      ],
+      "kind": "negative",
+      "scenario": "After a large meal of bananas and potatoes, plasma potassium creeps up. Over the next hours the extra potassium leaves in the urine and the level settles.",
+      "slots": {
+        "stimulus": {
+          "text": "Plasma potassium rises",
+          "short": "Potassium rises",
+          "why": "The regulated variable is the potassium concentration of the plasma. Even a small rise matters, because it changes the resting membrane potential of every cell."
+        },
+        "sensor": {
+          "text": "Cells of the zona glomerulosa of the adrenal cortex",
+          "short": "Zona glomerulosa cells",
+          "why": "Potassium acts on the glomerulosa cells directly; they are their own sensor."
+        },
+        "afferent": {
+          "text": "No separate pathway: potassium acts on the releasing cells themselves",
+          "short": "None: same cells",
+          "why": "Like the islet cells and chief cells, these cells sense the variable and respond without a nerve."
+        },
+        "control": {
+          "text": "The same glomerulosa cells set how much aldosterone to make",
+          "short": "Glomerulosa cells set output",
+          "why": "The higher the potassium, the more aldosterone they make and release."
+        },
+        "efferent": {
+          "text": "Aldosterone carried in the blood",
+          "short": "Aldosterone in the blood",
+          "why": "Aldosterone, a lipid-soluble steroid, travels mostly on carrier proteins to its target."
+        },
+        "effector": {
+          "text": "Cells of the last stretch of the kidney’s tubules",
+          "short": "Last stretch of kidney tubules",
+          "why": "Aldosterone binds an intracellular receptor protein and makes the cells build more sodium channels and sodium–potassium pumps."
+        },
+        "response": {
+          "text": "More potassium is secreted into the urine, so plasma potassium falls back",
+          "short": "Potassium excreted: level falls",
+          "why": "Potassium leaves in the urine, opposing the rise. As potassium falls, the glomerulosa cells ease off."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Osmoreceptors make the posterior pituitary release ADH",
+          "why": "ADH answers to plasma osmolarity and makes the kidneys keep water. It does not set how much potassium they secrete."
+        },
+        {
+          "text": "ACTH from the anterior pituitary drives the zona fasciculata",
+          "why": "The zona fasciculata makes cortisol. ACTH has only a small, short-lived effect on aldosterone."
+        },
+        {
+          "text": "The kidneys keep more potassium",
+          "why": "Keeping potassium would push the level higher. Aldosterone makes the kidney lose it."
+        }
+      ],
+      "classify": "The response (potassium falls) opposes the stimulus (potassium rises), so this is negative feedback.",
+      "failure": {
+        "part": "effector",
+        "q": "A patient takes a drug that blocks aldosterone’s receptor protein in the kidney. What happens to plasma potassium after a potassium-rich meal?",
+        "options": [
+          {
+            "text": "It rises more and stays up longer",
+            "why": "Right. The glomerulosa cells still sense the rise and release aldosterone, but the kidney cells cannot respond, so less potassium is secreted."
+          },
+          {
+            "text": "It falls faster, because aldosterone release rises",
+            "why": "Aldosterone may rise, but it cannot act on a blocked receptor protein."
+          },
+          {
+            "text": "It stays normal, because cortisol takes aldosterone’s place in the kidney",
+            "why": "An enzyme in those kidney cells inactivates cortisol, and the drug blocks the receptor protein anyway."
+          },
+          {
+            "text": "It stays normal, because potassium leaves in sweat instead",
+            "why": "Sweat glands answer to aldosterone too, and they lose only small amounts."
+          }
+        ],
+        "correct": 0
+      }
+    },
+    {
+      "id": "epo-oxygen",
+      "title": "Oxygen delivery to the kidney falls: erythropoietin",
+      "topic": "other-endocrine",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "kind": "negative",
+      "scenario": "A runner moves to a mountain town at 3,500 meters. For weeks, EPO in her blood is raised; by two months her red blood cell count has climbed and EPO is back near normal.",
+      "slots": {
+        "stimulus": {
+          "text": "Less oxygen reaches the kidney tissue (hypoxia)",
+          "short": "Kidney oxygen falls",
+          "why": "The regulated variable is oxygen delivery. The kidney gets plenty of blood but extracts little oxygen, so its tissue oxygen tracks what the blood can deliver."
+        },
+        "sensor": {
+          "text": "Oxygen-sensing cells in the tissue between the kidney’s tubes",
+          "short": "Oxygen-sensing kidney cells",
+          "why": "In low oxygen, a protein that is normally broken down within minutes survives, enters the nucleus and switches on the EPO gene."
+        },
+        "afferent": {
+          "text": "No separate pathway: the sensing cells make the hormone themselves",
+          "short": "None: same cells",
+          "why": "The cells that sense oxygen are the ones that release EPO."
+        },
+        "control": {
+          "text": "The same kidney cells set how much EPO to release",
+          "short": "Kidney cells set EPO output",
+          "why": "The lower the oxygen, the more EPO gene is switched on and the more EPO is released."
+        },
+        "efferent": {
+          "text": "EPO carried in the blood to the red bone marrow",
+          "short": "EPO in the blood",
+          "why": "EPO is a hormone: the command travels in the blood."
+        },
+        "effector": {
+          "text": "The cells in the red bone marrow that make red blood cells",
+          "short": "Red bone marrow",
+          "why": "EPO keeps more of the red cell–making cells alive and dividing."
+        },
+        "response": {
+          "text": "More red blood cells enter the blood, so it carries more oxygen and kidney oxygen rises back",
+          "short": "More red cells: oxygen delivery rises",
+          "why": "Within days new cells appear; over weeks the count rises, oxygen delivery improves, and EPO release falls back."
+        }
+      },
+      "distractors": [
+        {
+          "text": "Carotid body chemoreceptors signal the brainstem",
+          "why": "Those sensors drive breathing, not red cell production."
+        },
+        {
+          "text": "The liver releases IGF-1",
+          "why": "IGF-1 answers to growth hormone and drives growth, not red cell production."
+        },
+        {
+          "text": "Red bone marrow senses the low oxygen and makes more cells on its own",
+          "why": "The marrow is the effector. It responds to EPO; the sensor is in the kidney."
+        }
+      ],
+      "classify": "The response (more oxygen delivered) opposes the stimulus (too little oxygen reaching the kidney), so this is negative feedback.",
+      "failure": {
+        "part": "sensor",
+        "q": "A man’s kidneys have slowly failed over years, and the EPO-making cells are lost. What happens?",
+        "options": [
+          {
+            "text": "Too few red blood cells: he feels tired and breathless",
+            "why": "Right. Without the sensor and source of EPO, the marrow gets too little signal, red cell production falls, and injections of synthetic EPO are often needed."
+          },
+          {
+            "text": "His red cell count rises, because the marrow is freed from control",
+            "why": "The marrow needs EPO to keep making red cells at the usual rate. Without it, production falls."
+          },
+          {
+            "text": "Nothing changes, because the liver makes all the EPO",
+            "why": "In adults the kidneys make most EPO, so kidney failure leaves too little."
+          },
+          {
+            "text": "He breathes faster to make up, so red cell count stays normal",
+            "why": "Breathing faster does not make red blood cells."
+          }
+        ],
+        "correct": 0
+      }
     }
   ]
 }

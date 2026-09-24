@@ -3693,6 +3693,661 @@
         "why": "Most anti-A and anti-B are too large to cross to the fetus. The severe disease comes from anti-D, which does cross."
       },
       "summary": "Rh-positive fetal cells enter an Rh-negative mother at the first birth; she makes anti-D over weeks; in the next Rh-positive pregnancy her anti-D crosses and destroys fetal red cells, causing anemia, erythroblasts in the blood and severe jaundice after birth. Anti-D immune globulin at about 28 weeks and within 72 hours of delivery clears fetal cells before she can make her own anti-D."
+    },
+    {
+      "id": "camp-cascade",
+      "title": "The cAMP cascade: water-soluble hormone to cell response",
+      "topic": "hormone-action",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Epinephrine reaches a liver cell and, within seconds, glycogen starts to break down. Trace the signal from the hormone outside the cell to the response inside, and then how it is switched off.",
+      "steps": [
+        {
+          "id": "bind",
+          "label": "Hormone binds",
+          "text": "Epinephrine, the first messenger, binds its receptor protein in the plasma membrane.",
+          "why": "A water-soluble hormone cannot cross the lipid bilayer, so the signal starts at a receptor protein on the outer surface."
+        },
+        {
+          "id": "gprot",
+          "label": "G protein on",
+          "text": "The receptor protein changes shape and switches on a G protein on the inner face of the membrane.",
+          "why": "The shape change reaches through the membrane. The G protein is the relay between the receptor protein and the enzyme."
+        },
+        {
+          "id": "ac",
+          "label": "Adenylyl cyclase on",
+          "text": "The G protein switches on adenylyl cyclase, an enzyme in the membrane.",
+          "why": "Adenylyl cyclase is the enzyme that makes the second messenger, so it must be switched on before any cAMP appears."
+        },
+        {
+          "id": "camp",
+          "label": "ATP to cAMP",
+          "text": "Adenylyl cyclase turns many ATP molecules into cyclic AMP (cAMP), the second messenger.",
+          "why": "Each active enzyme makes many cAMP molecules: the signal is amplified inside the cell."
+        },
+        {
+          "id": "pka",
+          "label": "Protein kinase A on",
+          "text": "cAMP binds and switches on protein kinase A.",
+          "why": "Protein kinase A stays off until cAMP binds it, so it comes after cAMP has built up."
+        },
+        {
+          "id": "phos",
+          "label": "Proteins phosphorylated",
+          "text": "Protein kinase A phosphorylates target proteins, including other kinases: a phosphorylation cascade.",
+          "why": "Each kinase adds phosphate groups to many proteins, amplifying the signal again."
+        },
+        {
+          "id": "resp",
+          "label": "Cell responds",
+          "text": "The phosphorylated enzymes change their activity, and the liver cell breaks glycogen down to glucose.",
+          "why": "Phosphorylation changes an enzyme’s shape and so its activity. Which proteins a cell contains decides what the response is."
+        },
+        {
+          "id": "off",
+          "label": "Signal switched off",
+          "text": "Phosphodiesterase breaks cAMP down to AMP, phosphatases remove the phosphates, and the G protein switches itself off.",
+          "why": "The response lasts only while new cAMP is being made. Once the hormone lets go, these enzymes return the cell to rest."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "The G protein carries the hormone into the nucleus.",
+            "why": "The hormone never enters the cell. The G protein passes the signal to a membrane enzyme."
+          },
+          {
+            "text": "Phosphodiesterase makes cAMP from ATP.",
+            "why": "Phosphodiesterase breaks cAMP down; adenylyl cyclase makes it."
+          },
+          {
+            "text": "The G protein opens calcium channels in the endoplasmic reticulum, releasing calcium as the second messenger.",
+            "why": "That is the calcium pathway, where a different enzyme makes IP3. In the cAMP pathway the G protein switches on adenylyl cyclase."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "cAMP enters the nucleus and switches on transcription of new genes.",
+        "why": "cAMP acts in the cytosol by switching on protein kinase A, which changes proteins the cell already has. Changing transcription directly is how lipid-soluble hormones act."
+      },
+      "summary": "Hormone, receptor protein, G protein, adenylyl cyclase, cAMP, protein kinase A, phosphorylated proteins, response. Every step multiplies the signal, and phosphodiesterase, phosphatases and the G protein’s own switch end it."
+    },
+    {
+      "id": "lipid-hormone-protein",
+      "title": "Lipid-soluble hormone to new protein",
+      "topic": "hormone-action",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A woman starts a steroid tablet for a skin disease. Nothing visible happens that day, but her rash settles over two or three days. Trace the hormone from the blood to the change in her cells.",
+      "steps": [
+        {
+          "id": "free",
+          "label": "Leaves carrier protein",
+          "text": "The steroid comes off its carrier protein in the plasma and leaves the capillary as free hormone.",
+          "why": "Only free hormone can leave the blood and reach target cells; bound hormone is a reservoir."
+        },
+        {
+          "id": "cross",
+          "label": "Crosses the membrane",
+          "text": "The free hormone diffuses through the phospholipid bilayer of the target cell.",
+          "why": "A lipid-soluble hormone dissolves in the bilayer, so it needs no surface receptor protein to get in."
+        },
+        {
+          "id": "bind",
+          "label": "Binds receptor protein",
+          "text": "It binds its receptor protein in the cytosol or the nucleus; a cytosolic complex then moves into the nucleus.",
+          "why": "Only target cells carry this intracellular receptor protein, so only they respond."
+        },
+        {
+          "id": "hre",
+          "label": "Binds DNA",
+          "text": "The hormone–receptor complex binds a hormone response element, a short DNA sequence near the genes it controls.",
+          "why": "The complex must reach the DNA before it can change which genes are read."
+        },
+        {
+          "id": "tx",
+          "label": "Transcription changes",
+          "text": "The complex acts as a transcription factor, switching transcription of those genes on or off.",
+          "why": "Binding the hormone response element lets the complex speed or block the reading of nearby genes into mRNA."
+        },
+        {
+          "id": "tl",
+          "label": "mRNA translated",
+          "text": "The new mRNA leaves the nucleus and is translated into new proteins.",
+          "why": "Proteins can be made only after their mRNA exists, which is why the response takes hours."
+        },
+        {
+          "id": "act",
+          "label": "Cell’s activity changes",
+          "text": "The new enzymes, channels or transporters change what the cell does, and the effect lasts as long as the proteins do.",
+          "why": "The response is carried by proteins the cell did not have before, so it starts slowly and lasts for days."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The hormone–receptor complex moves back to the plasma membrane and switches on a G protein on its inner face.",
+            "why": "G proteins relay signals from membrane receptor proteins for water-soluble hormones. This complex acts on DNA."
+          },
+          {
+            "text": "The hormone is broken down to release a second messenger.",
+            "why": "No second messenger is needed: the hormone–receptor complex itself acts on DNA."
+          },
+          {
+            "text": "The complex moves the cell’s existing enzymes to the membrane.",
+            "why": "The lipid-soluble route makes new proteins; it does not act by moving old ones."
+          }
+        ]
+      },
+      "error": {
+        "at": 1,
+        "text": "The free hormone binds a receptor protein on the outer surface of the plasma membrane and stays outside the cell.",
+        "why": "That is how water-soluble hormones act. A steroid dissolves in the lipid bilayer and binds its receptor protein inside the cell."
+      },
+      "summary": "Free hormone, through the membrane, intracellular receptor protein, hormone response element, transcription, translation, new proteins. Making new proteins takes hours, and the proteins last, so these hormones act slowly and for a long time."
+    },
+    {
+      "id": "adh-release",
+      "title": "Posterior pituitary: making and releasing ADH",
+      "topic": "hypothalamus-pituitary",
+      "core": [
+        "communication",
+        "structure-function"
+      ],
+      "level": "recall",
+      "diff": 1,
+      "kind": "causal",
+      "intro": "After a salty meal, ADH appears in your blood within minutes. Follow one ADH molecule from where it is made to the blood.",
+      "steps": [
+        {
+          "id": "make",
+          "label": "Made in cell body",
+          "text": "A neuron of the supraoptic nucleus in the hypothalamus makes ADH as a peptide and packs it into vesicles.",
+          "why": "ADH is made by hypothalamic neurons, not by the pituitary gland, so the story starts in the cell body."
+        },
+        {
+          "id": "travel",
+          "label": "Carried down the axon",
+          "text": "The vesicles travel down the axon, through the infundibulum, to axon terminals in the posterior pituitary.",
+          "why": "The posterior pituitary is made of these axons, so the hormone reaches it by moving along them."
+        },
+        {
+          "id": "store",
+          "label": "Stored in terminals",
+          "text": "The vesicles are stored in the axon terminals until the neuron fires.",
+          "why": "The posterior pituitary makes no hormone; it stores what arrives."
+        },
+        {
+          "id": "fire",
+          "label": "Neuron fires",
+          "text": "Osmoreceptors excite the neuron, and action potentials run down the axon to the terminals.",
+          "why": "Release is set by nerve signals, so an action potential must arrive before any ADH leaves."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium enters",
+          "text": "Voltage-gated calcium channels open in the terminals and calcium enters.",
+          "why": "As at a synapse, calcium entry is the trigger for exocytosis."
+        },
+        {
+          "id": "exo",
+          "label": "Exocytosis",
+          "text": "The vesicles fuse with the membrane and release ADH by exocytosis.",
+          "why": "Calcium makes the vesicles fuse, emptying their hormone outside the cell."
+        },
+        {
+          "id": "blood",
+          "label": "Into the blood",
+          "text": "ADH diffuses into capillaries in the posterior pituitary and is carried away in the blood.",
+          "why": "Only in the blood is it a hormone, reaching the kidneys and vessels far away."
+        }
+      ],
+      "missing": {
+        "at": 1,
+        "distractors": [
+          {
+            "text": "The ADH is released into the first capillary network and carried by the hypophyseal portal veins to the anterior pituitary.",
+            "why": "The portal veins carry releasing and inhibiting hormones to the anterior lobe. ADH travels inside axons to the posterior lobe."
+          },
+          {
+            "text": "Cells of the posterior pituitary copy the hormone and make more of it.",
+            "why": "The posterior pituitary makes no hormones; it only stores and releases ADH and oxytocin."
+          },
+          {
+            "text": "The ADH is released into the cerebrospinal fluid.",
+            "why": "ADH is carried down axons and released into the blood."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "ADH diffuses out through the membrane of the axon terminal, because it is lipid-soluble.",
+        "why": "ADH is a peptide, water-soluble, and cannot cross the bilayer. It leaves by exocytosis of its vesicles."
+      },
+      "summary": "Made in the hypothalamus, carried down the axon, stored in the posterior pituitary, released by exocytosis when the neuron fires. Neurons that release hormones: nerve signals decide when ADH enters the blood."
+    },
+    {
+      "id": "thyroid-hormone-synthesis",
+      "title": "Making and releasing thyroid hormone",
+      "topic": "thyroid-parathyroid",
+      "core": [
+        "structure-function",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Iodine from a pinch of iodized salt ends up, weeks later, as part of a T4 molecule in your blood. Trace the steps inside a thyroid follicle.",
+      "steps": [
+        {
+          "id": "trap",
+          "label": "Iodide trapped",
+          "text": "A cotransporter in the follicular cell’s membrane pulls iodide in from the blood along with sodium.",
+          "why": "Iodide must be concentrated inside the cell before any can be attached; this secondary active transport uses the sodium gradient."
+        },
+        {
+          "id": "tg",
+          "label": "Thyroglobulin made",
+          "text": "The follicular cell makes thyroglobulin and releases it into the thyroid colloid by exocytosis.",
+          "why": "The hormones are built on tyrosines within thyroglobulin, so the protein must be in the colloid first."
+        },
+        {
+          "id": "iod",
+          "label": "Iodine attached",
+          "text": "At the cell’s inner surface, an enzyme converts iodide to a reactive form and attaches it to tyrosines in thyroglobulin.",
+          "why": "Iodination happens where iodide and thyroglobulin meet, at the edge of the colloid."
+        },
+        {
+          "id": "couple",
+          "label": "Tyrosines coupled",
+          "text": "Pairs of iodinated tyrosines join, still part of thyroglobulin, to make T4 and T3.",
+          "why": "Coupling needs tyrosines that already carry iodine."
+        },
+        {
+          "id": "store",
+          "label": "Stored in colloid",
+          "text": "The finished hormones stay attached to thyroglobulin in the colloid, enough for two to three months.",
+          "why": "Storage comes before release; the gland holds far more hormone than any other."
+        },
+        {
+          "id": "endo",
+          "label": "Colloid taken back",
+          "text": "When TSH arrives, the follicular cells take colloid back in by endocytosis.",
+          "why": "The hormone is still attached to thyroglobulin, so the cell must bring the colloid inside to free it."
+        },
+        {
+          "id": "lyso",
+          "label": "Lysosomes free T4, T3",
+          "text": "Lysosomes digest the thyroglobulin, freeing T4 and T3.",
+          "why": "Digesting the protein backbone releases the hormones from it."
+        },
+        {
+          "id": "out",
+          "label": "Into the blood",
+          "text": "T4 and T3 leave the cell into the capillaries, where most binds carrier proteins.",
+          "why": "Once free of thyroglobulin, the hormones can leave for the blood and reach every tissue."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "TSH carries iodine into the colloid.",
+            "why": "TSH is a signal that speeds each step; it does not carry iodine."
+          },
+          {
+            "text": "The follicular cell builds T4 inside its own cytosol and releases it straight into the capillaries as soon as each molecule is made.",
+            "why": "The hormones are built on thyroglobulin in the colloid and stored there before release."
+          },
+          {
+            "text": "Parafollicular cells attach iodine to calcitonin.",
+            "why": "Parafollicular cells make calcitonin, which has no iodine. Follicular cells build T4 and T3."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "The finished hormones are stored for a few minutes inside vesicles in the follicular cells.",
+        "why": "Thyroid hormone is stored outside the cells, in the colloid, attached to thyroglobulin, and the store lasts two to three months."
+      },
+      "summary": "Trap iodide, make thyroglobulin, attach iodine, couple, store in the colloid, take the colloid back, digest it, release T4 and T3. TSH speeds every step."
+    },
+    {
+      "id": "beta-cell-insulin",
+      "title": "How a beta cell releases insulin",
+      "topic": "pancreas-glucose",
+      "core": [
+        "homeostasis",
+        "energy"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "After a meal, blood glucose climbs and insulin rises within minutes. Trace what happens inside one beta cell.",
+      "steps": [
+        {
+          "id": "enter",
+          "label": "Glucose enters",
+          "text": "Blood glucose rises, and glucose enters the beta cell by facilitated diffusion through glucose carrier proteins.",
+          "why": "More glucose outside means more glucose inside; the beta cell senses glucose by taking it in."
+        },
+        {
+          "id": "atp",
+          "label": "ATP rises",
+          "text": "The cell breaks the glucose down in cellular respiration, and its ATP level rises.",
+          "why": "The cell reads the glucose level as its ATP level, so glucose must be broken down first."
+        },
+        {
+          "id": "katp",
+          "label": "K+ channels close",
+          "text": "ATP binds and closes ATP-sensitive potassium channels in the plasma membrane.",
+          "why": "These channels respond to ATP, so they close only once ATP has risen."
+        },
+        {
+          "id": "dep",
+          "label": "Membrane depolarizes",
+          "text": "Fewer potassium ions leak out, so the membrane depolarizes.",
+          "why": "Potassium leaving normally holds the membrane negative; blocking the leak lets it become less negative."
+        },
+        {
+          "id": "ca",
+          "label": "Calcium flows in",
+          "text": "Depolarization opens voltage-gated calcium channels, and calcium ions flow in.",
+          "why": "Voltage-gated channels open only after the membrane has depolarized."
+        },
+        {
+          "id": "exo",
+          "label": "Insulin released",
+          "text": "Calcium triggers exocytosis of vesicles packed with insulin, which enters the islet’s capillaries.",
+          "why": "As at a synapse, calcium entry makes the vesicles fuse and empty."
+        }
+      ],
+      "missing": {
+        "at": 2,
+        "distractors": [
+          {
+            "text": "ATP opens more potassium channels, so the cell hyperpolarizes.",
+            "why": "ATP closes these channels. Opening more would hyperpolarize the cell and stop insulin release."
+          },
+          {
+            "text": "A sensory nerve tells the beta cell that glucose is high.",
+            "why": "The beta cell is its own sensor; no nerve is needed."
+          },
+          {
+            "text": "Glucose binds a receptor protein on the surface and switches on cAMP.",
+            "why": "The beta cell senses glucose by breaking it down and reading the rise in ATP."
+          }
+        ]
+      },
+      "error": {
+        "at": 4,
+        "text": "Depolarization opens voltage-gated sodium channels, and sodium triggers exocytosis of insulin.",
+        "why": "The trigger for exocytosis is calcium, entering through voltage-gated calcium channels."
+      },
+      "summary": "Glucose in, ATP up, potassium channels shut, the membrane depolarizes, calcium enters, insulin out. As glucose falls, ATP falls, the channels reopen and release slows: the loop turns itself off."
+    },
+    {
+      "id": "raas-steps",
+      "title": "The renin–angiotensin–aldosterone system",
+      "topic": "adrenal-glands",
+      "core": [
+        "homeostasis",
+        "interdependence"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "After a day of vomiting, a man’s blood volume and blood pressure are low, and his kidneys make very little urine. Trace the hormone chain that makes them keep salt and water.",
+      "steps": [
+        {
+          "id": "fall",
+          "label": "Pressure falls",
+          "text": "Blood pressure in the kidney’s small arteries falls, and sympathetic nerves fire more.",
+          "why": "The chain starts with what the kidney senses: lower pressure, sympathetic signals through beta-1 receptor proteins, and less salt flowing past its sensing cells."
+        },
+        {
+          "id": "renin",
+          "label": "Kidney releases renin",
+          "text": "Specialized kidney cells release renin, an enzyme, into the blood.",
+          "why": "Renin is the first product. How much is released sets how fast the whole chain runs."
+        },
+        {
+          "id": "ang1",
+          "label": "Angiotensin I made",
+          "text": "Renin cuts angiotensinogen, a protein the liver releases all the time, into angiotensin I.",
+          "why": "Angiotensinogen is always in the plasma, so renin is the step that decides how much angiotensin I is made."
+        },
+        {
+          "id": "ang2",
+          "label": "ACE makes angiotensin II",
+          "text": "Angiotensin-converting enzyme (ACE), on the inner lining of blood vessels and most plentiful in the lungs, converts angiotensin I into angiotensin II.",
+          "why": "Angiotensin I does very little itself; ACE turns it into the active hormone."
+        },
+        {
+          "id": "ald",
+          "label": "Aldosterone released",
+          "text": "Angiotensin II makes the zona glomerulosa of the adrenal cortex release aldosterone.",
+          "why": "The adrenal step comes after angiotensin II, its main volume signal. Angiotensin II also constricts small arteries and raises ADH and thirst."
+        },
+        {
+          "id": "tub",
+          "label": "New channels and pumps",
+          "text": "Aldosterone makes cells of the last stretch of the kidney’s tubules build more sodium channels and sodium–potassium pumps.",
+          "why": "Aldosterone is a steroid: it acts by making new proteins, so this step takes hours."
+        },
+        {
+          "id": "na",
+          "label": "Sodium kept, potassium lost",
+          "text": "More sodium is reabsorbed into the blood and more potassium is secreted into the urine.",
+          "why": "The new channels and pumps move the ions; potassium leaves as sodium is taken back."
+        },
+        {
+          "id": "water",
+          "label": "Water follows",
+          "text": "Water follows the sodium by osmosis, as long as ADH has made the tubes permeable, and blood volume rises.",
+          "why": "Water moves only after the sodium has moved, so volume recovers last."
+        },
+        {
+          "id": "fb",
+          "label": "Renin falls",
+          "text": "As volume and pressure recover, the kidney releases less renin and the chain winds down.",
+          "why": "The response removes its own stimulus: negative feedback."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The liver converts angiotensin I into renin.",
+            "why": "The liver supplies angiotensinogen. Renin comes from the kidney and acts before angiotensin I exists."
+          },
+          {
+            "text": "Angiotensin I acts directly on the adrenal cortex.",
+            "why": "Angiotensin I does very little itself; it must first be converted to angiotensin II."
+          },
+          {
+            "text": "Angiotensin I travels to the adrenal medulla, whose chromaffin cells convert it into aldosterone and release it into the blood within seconds, before any enzyme acts.",
+            "why": "Aldosterone is a steroid made from cholesterol by the zona glomerulosa of the cortex. It is not made from angiotensin."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "More potassium is reabsorbed into the blood and more sodium is secreted into the urine.",
+        "why": "That is backward. Aldosterone makes the kidney keep sodium and lose potassium, which is why a person on an ACE blocker tends to keep more potassium."
+      },
+      "summary": "Low pressure, renin, angiotensinogen to angiotensin I, ACE to angiotensin II, aldosterone, new channels and pumps, sodium kept and potassium lost, water follows, volume restored, renin falls. Every product travels in the blood, linking kidney, liver, lungs and adrenal cortex."
+    },
+    {
+      "id": "hpa-axis",
+      "title": "The hypothalamic–pituitary–adrenal axis",
+      "topic": "adrenal-glands",
+      "core": [
+        "homeostasis",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "A hiker breaks her ankle on a remote trail. Hours later, still waiting for rescue, her cortisol is several times its usual level. Trace how the stress reaches her adrenal cortex, and how the rise is limited.",
+      "steps": [
+        {
+          "id": "stress",
+          "label": "Stress sensed",
+          "text": "Pain and fear of the injury act on the hypothalamus.",
+          "why": "Physical and psychological stress both reach the hypothalamus, which is where the axis starts."
+        },
+        {
+          "id": "crh",
+          "label": "CRH released",
+          "text": "Hypothalamic neurons release corticotropin-releasing hormone (CRH) into the hypophyseal portal system.",
+          "why": "The hypothalamus controls the anterior pituitary with hormones, not nerves, so it releases CRH into the portal blood."
+        },
+        {
+          "id": "portal",
+          "label": "Portal veins",
+          "text": "The portal veins carry CRH, undiluted, down the infundibulum to the anterior pituitary.",
+          "why": "The portal system delivers CRH straight to the pituitary before it could be diluted in the whole circulation."
+        },
+        {
+          "id": "acth",
+          "label": "ACTH released",
+          "text": "CRH makes cells of the anterior pituitary release ACTH into the blood.",
+          "why": "ACTH is the tropic hormone; it must be released before the adrenal cortex is driven."
+        },
+        {
+          "id": "zf",
+          "label": "Zona fasciculata",
+          "text": "ACTH binds receptor proteins on zona fasciculata cells, which make and release cortisol within minutes.",
+          "why": "The adrenal cortex answers only after ACTH reaches it in the blood."
+        },
+        {
+          "id": "act",
+          "label": "Cortisol acts",
+          "text": "Cortisol raises blood glucose by driving gluconeogenesis and breaking down muscle protein, and damps inflammation.",
+          "why": "Cortisol acts on target tissues once it is in the blood; as a steroid, its effects build over hours."
+        },
+        {
+          "id": "fb",
+          "label": "Feedback brakes CRH, ACTH",
+          "text": "Cortisol inhibits CRH release by the hypothalamus and ACTH release by the pituitary.",
+          "why": "Long-loop negative feedback limits the rise, although strong stress can override it."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "CRH acts directly on the adrenal cortex to release cortisol.",
+            "why": "CRH reaches only the anterior pituitary through the portal veins. ACTH carries the signal to the adrenal cortex."
+          },
+          {
+            "text": "The posterior pituitary releases ACTH down the axons of the hypothalamus.",
+            "why": "ACTH comes from the anterior pituitary. The posterior lobe releases only ADH and oxytocin."
+          },
+          {
+            "text": "Sympathetic fibers carry the signal to the adrenal cortex.",
+            "why": "Sympathetic fibers drive the adrenal medulla. The cortex answers to ACTH in the blood."
+          }
+        ]
+      },
+      "error": {
+        "at": 6,
+        "text": "Cortisol stimulates more CRH and ACTH release, so the rise keeps growing.",
+        "why": "Cortisol inhibits CRH and ACTH: negative feedback. That is also why steroid drugs suppress the axis and must be tapered."
+      },
+      "summary": "Stress, hypothalamus, CRH through the portal system, anterior pituitary, ACTH in the blood, zona fasciculata, cortisol, targets, and cortisol braking CRH and ACTH. A three-gland axis held by negative feedback."
+    },
+    {
+      "id": "light-melatonin",
+      "title": "Darkness to melatonin",
+      "topic": "other-endocrine",
+      "core": [
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "kind": "causal",
+      "intro": "Evening falls and the room goes dark. Two or three hours before bedtime, melatonin starts to climb in your blood. Trace the pathway from your eyes to the pineal gland, and how light shuts it off.",
+      "steps": [
+        {
+          "id": "rgc",
+          "label": "Retinal ganglion cells",
+          "text": "A small set of retinal ganglion cells containing melanopsin sense light, and in darkness they fall quiet.",
+          "why": "These cells carry light information, not images; darkness is signaled by their silence."
+        },
+        {
+          "id": "scn",
+          "label": "Suprachiasmatic nucleus",
+          "text": "Their axons leave the visual pathway at the optic chiasm and reach the suprachiasmatic nucleus of the hypothalamus.",
+          "why": "The SCN, the master clock, combines the light signal with its own daily rhythm."
+        },
+        {
+          "id": "cord",
+          "label": "Down the spinal cord",
+          "text": "From the hypothalamus, the signal runs down into the spinal cord.",
+          "why": "The pineal gland is controlled by the sympathetic system, whose preganglionic neurons are in the spinal cord."
+        },
+        {
+          "id": "scg",
+          "label": "Superior cervical ganglion",
+          "text": "Sympathetic fibers leave the cord and relay in the superior cervical ganglion of the sympathetic chain.",
+          "why": "The postganglionic neurons that reach the head sit in this ganglion."
+        },
+        {
+          "id": "pineal",
+          "label": "Back up to the pineal",
+          "text": "Postganglionic sympathetic fibers run back up to the pineal gland.",
+          "why": "The signal must travel back into the skull to reach its target."
+        },
+        {
+          "id": "ne",
+          "label": "Norepinephrine released",
+          "text": "At night, the fibers release norepinephrine onto pinealocytes.",
+          "why": "The pathway is active in darkness, so norepinephrine release is highest at night."
+        },
+        {
+          "id": "mel",
+          "label": "Melatonin released",
+          "text": "Pinealocytes make melatonin from serotonin and release it into the blood.",
+          "why": "Norepinephrine is the signal that switches melatonin production on."
+        }
+      ],
+      "missing": {
+        "at": 3,
+        "distractors": [
+          {
+            "text": "The optic nerve carries the signal straight to the pineal gland.",
+            "why": "No direct nerve reaches the pineal gland from the eye. The signal goes through the SCN and the sympathetic chain."
+          },
+          {
+            "text": "The parasympathetic vagus nerve carries the signal to the pineal gland.",
+            "why": "The pineal gland’s drive is sympathetic, from the superior cervical ganglion."
+          },
+          {
+            "text": "The anterior pituitary releases a tropic hormone into the blood, which reaches the pineal gland and makes it release melatonin.",
+            "why": "The pineal gland is controlled by nerves, not by a pituitary hormone."
+          }
+        ]
+      },
+      "error": {
+        "at": 5,
+        "text": "In bright light, the fibers release the most norepinephrine onto pinealocytes.",
+        "why": "Light shuts the pathway down. Norepinephrine, and so melatonin, is released in darkness, and light stops it within minutes."
+      },
+      "summary": "Eye, SCN, spinal cord, superior cervical ganglion, sympathetic fibers, norepinephrine, pinealocytes, melatonin. Darkness turns the pathway on; light turns it off, which is why evening light and screens push the body clock later."
     }
   ]
 }

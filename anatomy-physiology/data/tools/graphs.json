@@ -14306,6 +14306,568 @@
      }
     }
    ]
+  },
+  {
+   "id": "glucose-insulin-meal",
+   "title": "Blood glucose and insulin after a meal",
+   "topic": "pancreas-glucose",
+   "core": [
+    "homeostasis",
+    "energy"
+   ],
+   "intro": "Blood glucose and plasma insulin over the three hours after a carbohydrate meal eaten at time 0. The top panel also shows a person with type 2 diabetes. Values are typical, not from one person.",
+   "alt": "Two stacked graphs over 180 minutes after a meal. Top: blood glucose in mg/dL. In a healthy person it starts at about 88, peaks at about 134 at 45 minutes, falls below 100 by about 2 hours and dips to about 85 at 2.5 to 3 hours. In type 2 diabetes it starts at 140, peaks at about 240 at 90 minutes and is still about 190 at 3 hours. Bottom: plasma insulin in the healthy person in microunits per mL, starting at about 6, rising within 5 minutes, peaking at about 58 at 45 minutes and falling to about 7 by 3 hours.",
+   "x": {
+    "min": 0,
+    "max": 180,
+    "label": "Time after the meal",
+    "unit": "min",
+    "ticks": [
+     0,
+     30,
+     60,
+     90,
+     120,
+     150,
+     180
+    ]
+   },
+   "panels": [
+    {
+     "h": 1.3,
+     "y": {
+      "min": 50,
+      "max": 260,
+      "label": "Blood glucose",
+      "unit": "mg/dL",
+      "ticks": [
+       50,
+       100,
+       150,
+       200,
+       250
+      ]
+     },
+     "series": [
+      {
+       "id": "healthy",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         88
+        ],
+        [
+         5,
+         95
+        ],
+        [
+         10,
+         102
+        ],
+        [
+         15,
+         108
+        ],
+        [
+         20,
+         114
+        ],
+        [
+         30,
+         126
+        ],
+        [
+         45,
+         134
+        ],
+        [
+         60,
+         130
+        ],
+        [
+         75,
+         121
+        ],
+        [
+         90,
+         112
+        ],
+        [
+         105,
+         105
+        ],
+        [
+         120,
+         97
+        ],
+        [
+         135,
+         91
+        ],
+        [
+         150,
+         86
+        ],
+        [
+         165,
+         85
+        ],
+        [
+         180,
+         86
+        ]
+       ],
+       "label": "healthy",
+       "labelAt": [
+        120,
+        80
+       ],
+       "anchor": "middle"
+      },
+      {
+       "id": "t2d",
+       "cls": "hi",
+       "dash": true,
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         140
+        ],
+        [
+         10,
+         152
+        ],
+        [
+         20,
+         168
+        ],
+        [
+         30,
+         185
+        ],
+        [
+         45,
+         209
+        ],
+        [
+         60,
+         228
+        ],
+        [
+         75,
+         237
+        ],
+        [
+         90,
+         240
+        ],
+        [
+         105,
+         236
+        ],
+        [
+         120,
+         228
+        ],
+        [
+         135,
+         219
+        ],
+        [
+         150,
+         208
+        ],
+        [
+         165,
+         198
+        ],
+        [
+         180,
+         190
+        ]
+       ],
+       "label": "type 2 diabetes",
+       "labelAt": [
+        150,
+        225
+       ],
+       "anchor": "middle"
+      }
+     ],
+     "hlines": [
+      {
+       "y": 99,
+       "label": "top of normal fasting range"
+      }
+     ]
+    },
+    {
+     "h": 0.9,
+     "y": {
+      "min": 0,
+      "max": 80,
+      "label": "Plasma insulin (healthy)",
+      "unit": "µU/mL",
+      "ticks": [
+       0,
+       20,
+       40,
+       60,
+       80
+      ]
+     },
+     "series": [
+      {
+       "id": "insulin",
+       "cls": "accent",
+       "curve": "smooth",
+       "pts": [
+        [
+         0,
+         6
+        ],
+        [
+         5,
+         22
+        ],
+        [
+         10,
+         26
+        ],
+        [
+         15,
+         31
+        ],
+        [
+         20,
+         36
+        ],
+        [
+         30,
+         50
+        ],
+        [
+         45,
+         58
+        ],
+        [
+         60,
+         54
+        ],
+        [
+         75,
+         45
+        ],
+        [
+         90,
+         36
+        ],
+        [
+         105,
+         28
+        ],
+        [
+         120,
+         20
+        ],
+        [
+         135,
+         15
+        ],
+        [
+         150,
+         10
+        ],
+        [
+         165,
+         8
+        ],
+        [
+         180,
+         7
+        ]
+       ],
+       "label": "insulin",
+       "labelAt": [
+        75,
+        62
+       ],
+       "anchor": "start"
+      }
+     ]
+    }
+   ],
+   "vlines": [
+    {
+     "x": 0,
+     "label": "meal eaten"
+    }
+   ],
+   "regions": [
+    {
+     "id": "rise",
+     "x0": 0,
+     "x1": 45,
+     "label": "glucose rising"
+    },
+    {
+     "id": "return",
+     "x0": 45,
+     "x1": 120,
+     "label": "glucose returning"
+    },
+    {
+     "id": "dip",
+     "x0": 140,
+     "x1": 180,
+     "label": "slight dip"
+    }
+   ],
+   "questions": [
+    {
+     "id": "peak-glucose",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the highest blood glucose the healthy person reaches.",
+     "answer": 134,
+     "tol": 5,
+     "unit": "mg/dL",
+     "show": {
+      "x": 45,
+      "y": 134
+     },
+     "why": "About 134 mg/dL, at about 45 minutes. After a meal, glucose in a healthy person usually peaks below 140 mg/dL."
+    },
+    {
+     "id": "peak-insulin",
+     "type": "value",
+     "level": "apply",
+     "diff": 1,
+     "q": "Read the peak plasma insulin in the healthy person.",
+     "answer": 58,
+     "tol": 4,
+     "unit": "µU/mL",
+     "show": {
+      "x": 45,
+      "y": 58,
+      "panel": 1
+     },
+     "why": "About 58 µU/mL, nearly ten times the fasting level of about 6, reached at about 45 minutes, the same time as the glucose peak. Insulin rises and falls with glucose because the beta cells respond to it directly."
+    },
+    {
+     "id": "t2d-two-hours",
+     "type": "value",
+     "level": "apply",
+     "diff": 2,
+     "q": "Read the blood glucose of the person with type 2 diabetes two hours after the meal.",
+     "answer": 228,
+     "tol": 8,
+     "unit": "mg/dL",
+     "show": {
+      "x": 120,
+      "y": 228
+     },
+     "why": "About 228 mg/dL. A glucose of 200 mg/dL or more two hours after a standard glucose drink is one of the diagnostic criteria for diabetes. Insulin-resistant muscle, fat and liver clear the glucose slowly."
+    },
+    {
+     "id": "back-in-range",
+     "type": "phase",
+     "level": "apply",
+     "diff": 2,
+     "q": "During which stretch is insulin falling while glucose returns toward its fasting level?",
+     "options": [
+      "About 45 to 120 minutes",
+      "The first 45 minutes",
+      "After about 140 minutes, when glucose is lowest",
+      "Throughout the three hours"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "return"
+     },
+     "why": {
+      "correct": "After the 45-minute peak, insulin is moving glucose into muscle, fat and liver, so glucose falls. As it falls, beta cell ATP falls, potassium channels reopen and insulin release drops: the response removes its own stimulus.",
+      "options": [
+       "Right: both fall together from about 45 to 120 minutes.",
+       "In the first 45 minutes both glucose and insulin are rising.",
+       "By then glucose has already returned and slightly undershot; insulin is already low.",
+       "Insulin rises for the first 45 minutes, then falls."
+      ]
+     }
+    },
+    {
+     "id": "undershoot",
+     "type": "phase",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Where does the healthy person’s glucose dip slightly below its starting value, and why?",
+     "options": [
+      "After about 140 minutes: insulin’s effect outlasts the stimulus briefly",
+      "At the 45-minute peak, when insulin is at its very highest level",
+      "In the first 5 minutes: the meal has not been absorbed",
+      "Around 90 minutes: glucagon is released"
+     ],
+     "correct": 0,
+     "highlight": {
+      "region": "dip"
+     },
+     "why": {
+      "correct": "Insulin moved glucose into storage and is still falling back when glucose reaches its starting level, so glucose undershoots a little, to about 85 mg/dL, before glucagon and the liver bring it back.",
+      "options": [
+       "Right: a small undershoot as insulin’s action lags behind glucose.",
+       "At 45 minutes glucose is at its highest, not its lowest.",
+       "Glucose begins rising within minutes of eating; it does not dip first.",
+       "At 90 minutes glucose is still above its starting value, and glucagon raises glucose rather than lowering it."
+      ]
+     }
+    },
+    {
+     "id": "type-1",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 2,
+     "q": "Someone with untreated type 1 diabetes eats the same meal. How does the insulin curve change?",
+     "options": [
+      "It stays flat near zero",
+      "It rises higher than normal to make up for the glucose",
+      "It peaks later but reaches the same height",
+      "It is unchanged; only the glucose curve differs"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "t1-insulin",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          1
+         ],
+         [
+          30,
+          1.5
+         ],
+         [
+          60,
+          2
+         ],
+         [
+          90,
+          1.5
+         ],
+         [
+          120,
+          1
+         ],
+         [
+          180,
+          1
+         ]
+        ],
+        "label": "untreated type 1",
+        "labelAt": [
+         120,
+         8
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "In type 1 diabetes the immune system has destroyed the beta cells, so almost no insulin is released, however high glucose climbs. With nothing to move glucose into muscle and fat, glucose would rise even higher than in type 2.",
+      "options": [
+       "Right: no beta cells, no insulin response.",
+       "That is what beta cells do in early type 2 diabetes. In type 1 they are gone.",
+       "A late but normal peak would need working beta cells.",
+       "The insulin curve is exactly what fails in type 1 diabetes."
+      ]
+     }
+    },
+    {
+     "id": "early-type-2",
+     "type": "shift",
+     "level": "analyze",
+     "diff": 3,
+     "q": "In early type 2 diabetes, muscle, fat and liver respond weakly to insulin, but the beta cells still work well. Blood glucose after the meal is near normal. How does the insulin curve compare with the healthy one?",
+     "options": [
+      "Higher and longer-lasting",
+      "Lower",
+      "Flat near zero",
+      "The same, because glucose is the same"
+     ],
+     "correct": 0,
+     "overlay": {
+      "series": [
+       {
+        "id": "resistant-insulin",
+        "panel": 1,
+        "cls": "hi",
+        "dash": true,
+        "curve": "smooth",
+        "pts": [
+         [
+          0,
+          14
+         ],
+         [
+          15,
+          50
+         ],
+         [
+          30,
+          70
+         ],
+         [
+          45,
+          78
+         ],
+         [
+          60,
+          76
+         ],
+         [
+          90,
+          60
+         ],
+         [
+          120,
+          42
+         ],
+         [
+          150,
+          28
+         ],
+         [
+          180,
+          20
+         ]
+        ],
+        "label": "insulin resistance",
+        "labelAt": [
+         120,
+         55
+        ]
+       }
+      ]
+     },
+     "why": {
+      "correct": "Each unit of insulin does less, so glucose stays a little higher for a little longer and keeps driving the beta cells. They release much more insulin, which keeps glucose near normal. Only when they can no longer keep up does glucose rise.",
+      "options": [
+       "Right: more insulin makes up for the resistance, for years.",
+       "Lower insulin would let glucose climb; that happens only late, when the beta cells fail.",
+       "A flat curve means no beta cells, as in type 1 diabetes.",
+       "The same glucose is being held only because more insulin is needed to hold it."
+      ]
+     }
+    }
+   ]
   }
  ]
 }

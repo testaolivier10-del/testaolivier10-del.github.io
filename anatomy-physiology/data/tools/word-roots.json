@@ -1285,6 +1285,192 @@
       "meaning": "glue",
       "origin": "Latin",
       "from": "gluten (glue)"
+    },
+    {
+      "id": "andr/o",
+      "type": "root",
+      "form": "andr/o",
+      "meaning": "male, man",
+      "origin": "Greek",
+      "from": "anēr, andros (man)"
+    },
+    {
+      "id": "thyr/o",
+      "type": "root",
+      "form": "thyr/o, thyre/o",
+      "meaning": "shield; the thyroid gland",
+      "origin": "Greek",
+      "from": "thyreos (a large door-shaped shield)"
+    },
+    {
+      "id": "aden/o",
+      "type": "root",
+      "form": "aden/o",
+      "meaning": "gland",
+      "origin": "Greek",
+      "from": "adēn (gland)"
+    },
+    {
+      "id": "-physis",
+      "type": "suffix",
+      "form": "-physis",
+      "meaning": "growth, a growing part",
+      "origin": "Greek",
+      "from": "physis (growth, nature), from phyein (to grow)"
+    },
+    {
+      "id": "stat/o",
+      "type": "root",
+      "form": "stat/o, -stat",
+      "meaning": "stopping, holding still",
+      "origin": "Greek",
+      "from": "statos (standing, placed), from histanai (to make stand)"
+    },
+    {
+      "id": "lact/o",
+      "type": "root",
+      "form": "lact/o",
+      "meaning": "milk",
+      "origin": "Latin",
+      "from": "lac, lactis (milk)"
+    },
+    {
+      "id": "oxy-",
+      "type": "prefix",
+      "form": "oxy-",
+      "meaning": "quick, sharp",
+      "origin": "Greek",
+      "from": "oxys (sharp, swift)",
+      "note": "Not the same as ox/o (oxygen), although oxygen was also named from oxys."
+    },
+    {
+      "id": "toc/o",
+      "type": "root",
+      "form": "toc/o",
+      "meaning": "childbirth",
+      "origin": "Greek",
+      "from": "tokos (childbirth, offspring)"
+    },
+    {
+      "id": "-uretic",
+      "type": "suffix",
+      "form": "-uretic",
+      "meaning": "relating to urine; promoting urine flow",
+      "origin": "Greek",
+      "from": "ourētikos (of urine), from ourein (to urinate)"
+    },
+    {
+      "id": "acr/o",
+      "type": "root",
+      "form": "acr/o",
+      "meaning": "extremity, tip, top",
+      "origin": "Greek",
+      "from": "akron (tip, extremity)"
+    },
+    {
+      "id": "gon/o",
+      "type": "root",
+      "form": "gon/o",
+      "meaning": "seed, offspring; the gonads",
+      "origin": "Greek",
+      "from": "gonos (seed, offspring)"
+    },
+    {
+      "id": "calc/i",
+      "type": "root",
+      "form": "calc/i, calc/o",
+      "meaning": "calcium; lime",
+      "origin": "Latin",
+      "from": "calx, calcis (lime, limestone)"
+    },
+    {
+      "id": "-ol",
+      "type": "suffix",
+      "form": "-ol",
+      "meaning": "an alcohol: a molecule with an OH group (naming ending)",
+      "origin": "Latin, from Arabic",
+      "from": "taken from alcohol (Medieval Latin, from Arabic al-kuḥl), in chemistry naming"
+    },
+    {
+      "id": "malac/o",
+      "type": "root",
+      "form": "malac/o",
+      "meaning": "softening, soft",
+      "origin": "Greek",
+      "from": "malakos (soft), malakia (softness)"
+    },
+    {
+      "id": "insul/o",
+      "type": "root",
+      "form": "insul/o",
+      "meaning": "island",
+      "origin": "Latin",
+      "from": "insula (island)"
+    },
+    {
+      "id": "gluc/o",
+      "type": "root",
+      "form": "gluc/o",
+      "meaning": "glucose; sweet",
+      "origin": "Greek",
+      "from": "glykys (sweet)"
+    },
+    {
+      "id": "-agon",
+      "type": "suffix",
+      "form": "-agon",
+      "meaning": "leading, driving out",
+      "origin": "Greek",
+      "from": "agōn (leading), from agein (to lead)",
+      "note": "Not the same as agon/o (contest) in agonist, which comes from agōn in the sense of a struggle."
+    },
+    {
+      "id": "-genesis",
+      "type": "suffix",
+      "form": "-genesis",
+      "meaning": "making, origin",
+      "origin": "Greek",
+      "from": "genesis (origin, creation)"
+    },
+    {
+      "id": "dips/o",
+      "type": "root",
+      "form": "dips/o",
+      "meaning": "thirst",
+      "origin": "Greek",
+      "from": "dipsa (thirst)"
+    },
+    {
+      "id": "natri/o",
+      "type": "root",
+      "form": "natri/o",
+      "meaning": "sodium",
+      "origin": "Latin",
+      "from": "natrium (sodium), from natron (a sodium salt, via Arabic from Egyptian)"
+    },
+    {
+      "id": "lept/o",
+      "type": "root",
+      "form": "lept/o",
+      "meaning": "thin, slender",
+      "origin": "Greek",
+      "from": "leptos (thin)"
+    },
+    {
+      "id": "circa-",
+      "type": "prefix",
+      "form": "circa-",
+      "meaning": "about, around",
+      "origin": "Latin",
+      "from": "circa (about, around)"
+    },
+    {
+      "id": "di/e",
+      "type": "root",
+      "form": "di/e",
+      "meaning": "day",
+      "origin": "Latin",
+      "from": "dies (day)"
     }
   ],
   "terms": [
@@ -5372,6 +5558,778 @@
       ],
       "literal": "blood loosening",
       "meaning": "describing the bursting of red blood cells, as in a transfusion reaction or hemolytic disease of the newborn"
+    },
+    {
+      "id": "androgen",
+      "term": "androgen",
+      "topic": "hormone-action",
+      "concept": "hormone-classes",
+      "segs": [
+        [
+          "andr",
+          "andr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gen",
+          "-gen"
+        ]
+      ],
+      "literal": "male producer",
+      "meaning": "a steroid hormone that drives male characteristics, such as a deeper voice; made by the testes and adrenal glands in both sexes"
+    },
+    {
+      "id": "synergistic",
+      "term": "synergistic",
+      "topic": "hormone-action",
+      "concept": "hormone-interactions",
+      "segs": [
+        [
+          "syn",
+          "syn-"
+        ],
+        [
+          "erg",
+          "erg/o"
+        ],
+        [
+          "ist",
+          "-ist"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "working together",
+      "meaning": "describing two hormones whose combined effect is greater than the sum of their separate effects"
+    },
+    {
+      "id": "hypophysis",
+      "term": "hypophysis",
+      "topic": "hypothalamus-pituitary",
+      "concept": "pituitary-gland",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "physis",
+          "-physis"
+        ]
+      ],
+      "literal": "growth below",
+      "meaning": "the older name for the pituitary gland, which hangs below the brain"
+    },
+    {
+      "id": "adenohypophysis",
+      "term": "adenohypophysis",
+      "topic": "hypothalamus-pituitary",
+      "concept": "pituitary-gland",
+      "segs": [
+        [
+          "aden",
+          "aden/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "physis",
+          "-physis"
+        ]
+      ],
+      "literal": "the gland part of the growth below",
+      "meaning": "the anterior pituitary, the glandular front lobe that makes its own hormones"
+    },
+    {
+      "id": "neurohypophysis",
+      "term": "neurohypophysis",
+      "topic": "hypothalamus-pituitary",
+      "concept": "pituitary-gland",
+      "segs": [
+        [
+          "neur",
+          "neur/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "physis",
+          "-physis"
+        ]
+      ],
+      "literal": "the nerve part of the growth below",
+      "meaning": "the posterior pituitary, made of hypothalamic axons, which stores and releases ADH and oxytocin"
+    },
+    {
+      "id": "somatostatin",
+      "term": "somatostatin",
+      "topic": "hypothalamus-pituitary",
+      "concept": "releasing-hormones",
+      "segs": [
+        [
+          "somat",
+          "somat/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "stat",
+          "stat/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a substance that stops the body",
+      "meaning": "growth hormone–inhibiting hormone, which holds back growth hormone release"
+    },
+    {
+      "id": "prolactin",
+      "term": "prolactin",
+      "topic": "hypothalamus-pituitary",
+      "concept": "anterior-pituitary-hormones",
+      "segs": [
+        [
+          "pro",
+          "pro-"
+        ],
+        [
+          "lact",
+          "lact/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a substance for milk",
+      "meaning": "the anterior pituitary hormone that makes the breast’s milk-producing glands grow and make milk"
+    },
+    {
+      "id": "oxytocin",
+      "term": "oxytocin",
+      "topic": "hypothalamus-pituitary",
+      "concept": "oxytocin",
+      "segs": [
+        [
+          "oxy",
+          "oxy-"
+        ],
+        [
+          "toc",
+          "toc/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a substance for quick childbirth",
+      "meaning": "the posterior pituitary hormone that strengthens contractions of the uterus in labor and squeezes milk toward the nipple"
+    },
+    {
+      "id": "antidiuretic",
+      "term": "antidiuretic",
+      "topic": "hypothalamus-pituitary",
+      "concept": "adh",
+      "segs": [
+        [
+          "anti",
+          "anti-"
+        ],
+        [
+          "di",
+          "dia-"
+        ],
+        [
+          "uretic",
+          "-uretic"
+        ]
+      ],
+      "literal": "against passing urine through",
+      "meaning": "describing the hormone (ADH) that makes the kidneys keep water, so less urine is passed"
+    },
+    {
+      "id": "acromegaly",
+      "term": "acromegaly",
+      "topic": "hypothalamus-pituitary",
+      "concept": "pituitary-disorders",
+      "segs": [
+        [
+          "acr",
+          "acr/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "megaly",
+          "-megaly"
+        ]
+      ],
+      "literal": "enlargement of the extremities",
+      "meaning": "too much growth hormone in adulthood: the bones of the hands, feet, jaw and face thicken, but height does not change"
+    },
+    {
+      "id": "gonadotropin",
+      "term": "gonadotropin",
+      "topic": "hypothalamus-pituitary",
+      "concept": "anterior-pituitary-hormones",
+      "segs": [
+        [
+          "gon",
+          "gon/o"
+        ],
+        [
+          "ad"
+        ],
+        [
+          "o"
+        ],
+        [
+          "trop",
+          "trop/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a substance acting on the seed glands",
+      "meaning": "FSH or LH, the anterior pituitary hormones that act on the ovaries and testes"
+    },
+    {
+      "id": "adrenocorticotropic",
+      "term": "adrenocorticotropic",
+      "topic": "hypothalamus-pituitary",
+      "concept": "anterior-pituitary-hormones",
+      "segs": [
+        [
+          "ad",
+          "ad-"
+        ],
+        [
+          "ren",
+          "ren/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cortic",
+          "cortic/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "trop",
+          "trop/o"
+        ],
+        [
+          "ic",
+          "-ic"
+        ]
+      ],
+      "literal": "acting on the outer layer of the gland near the kidney",
+      "meaning": "describing ACTH, the pituitary hormone that drives the outer layer of the adrenal gland"
+    },
+    {
+      "id": "thyroid",
+      "term": "thyroid",
+      "topic": "thyroid-parathyroid",
+      "concept": "thyroid-gland",
+      "segs": [
+        [
+          "thyr",
+          "thyr/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ]
+      ],
+      "literal": "shield-like",
+      "meaning": "the butterfly-shaped gland in the front of the neck, named for the shield-shaped cartilage above it"
+    },
+    {
+      "id": "parathyroid",
+      "term": "parathyroid",
+      "topic": "thyroid-parathyroid",
+      "concept": "parathyroid-glands",
+      "segs": [
+        [
+          "para",
+          "para-"
+        ],
+        [
+          "thyr",
+          "thyr/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ]
+      ],
+      "literal": "beside the shield-like gland",
+      "meaning": "one of the small glands on the back of the thyroid gland that release PTH"
+    },
+    {
+      "id": "hypothyroidism",
+      "term": "hypothyroidism",
+      "topic": "thyroid-parathyroid",
+      "concept": "thyroid-disorders",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "thyr",
+          "thyr/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ],
+        [
+          "ism",
+          "-ism"
+        ]
+      ],
+      "literal": "a condition of the thyroid working below normal",
+      "meaning": "too little thyroid hormone: feeling cold, a slow heart and slowed thinking"
+    },
+    {
+      "id": "hyperthyroidism",
+      "term": "hyperthyroidism",
+      "topic": "thyroid-parathyroid",
+      "concept": "thyroid-disorders",
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "thyr",
+          "thyr/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ],
+        [
+          "ism",
+          "-ism"
+        ]
+      ],
+      "literal": "a condition of the thyroid working above normal",
+      "meaning": "too much thyroid hormone: feeling hot, weight loss, a racing heart and tremor"
+    },
+    {
+      "id": "calcitonin",
+      "term": "calcitonin",
+      "topic": "thyroid-parathyroid",
+      "concept": "calcitonin",
+      "segs": [
+        [
+          "calci",
+          "calc/i"
+        ],
+        [
+          "ton",
+          "ton/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a substance for calcium tone",
+      "meaning": "the C cell hormone that inhibits osteoclasts and lowers blood calcium; a minor regulator in adults"
+    },
+    {
+      "id": "calcitriol",
+      "term": "calcitriol",
+      "topic": "thyroid-parathyroid",
+      "concept": "calcitriol",
+      "segs": [
+        [
+          "calci",
+          "calc/i"
+        ],
+        [
+          "tri",
+          "tri-"
+        ],
+        [
+          "ol",
+          "-ol"
+        ]
+      ],
+      "literal": "a calcium alcohol with three OH groups",
+      "meaning": "the active form of vitamin D, made in the kidneys, which makes the intestine absorb calcium"
+    },
+    {
+      "id": "osteomalacia",
+      "term": "osteomalacia",
+      "topic": "thyroid-parathyroid",
+      "concept": "calcitriol",
+      "segs": [
+        [
+          "oste",
+          "oste/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "malac",
+          "malac/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "a condition of softening of bone",
+      "meaning": "soft adult bone whose matrix is laid down but not mineralized, usually from too little vitamin D"
+    },
+    {
+      "id": "insulin",
+      "term": "insulin",
+      "topic": "pancreas-glucose",
+      "concept": "insulin",
+      "segs": [
+        [
+          "insul",
+          "insul/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "the substance of the islands",
+      "meaning": "the beta cell hormone that moves glucose into muscle, fat and liver and lowers blood glucose"
+    },
+    {
+      "id": "glucagon",
+      "term": "glucagon",
+      "topic": "pancreas-glucose",
+      "concept": "glucagon",
+      "segs": [
+        [
+          "gluc",
+          "gluc/o"
+        ],
+        [
+          "agon",
+          "-agon"
+        ]
+      ],
+      "literal": "glucose leader",
+      "meaning": "the alpha cell hormone that makes the liver release glucose and raises blood glucose"
+    },
+    {
+      "id": "glycogenesis",
+      "term": "glycogenesis",
+      "topic": "pancreas-glucose",
+      "concept": "glucose-storage-terms",
+      "segs": [
+        [
+          "glyc",
+          "glyc/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "genesis",
+          "-genesis"
+        ]
+      ],
+      "literal": "making sugar",
+      "meaning": "building glycogen from glucose, in liver and skeletal muscle after a meal"
+    },
+    {
+      "id": "glycogenolysis",
+      "term": "glycogenolysis",
+      "topic": "pancreas-glucose",
+      "concept": "glucose-storage-terms",
+      "segs": [
+        [
+          "glyc",
+          "glyc/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "gen",
+          "-gen"
+        ],
+        [
+          "o"
+        ],
+        [
+          "lysis",
+          "-lysis"
+        ]
+      ],
+      "literal": "breaking apart the sugar former",
+      "meaning": "breaking glycogen back down into glucose"
+    },
+    {
+      "id": "gluconeogenesis",
+      "term": "gluconeogenesis",
+      "topic": "pancreas-glucose",
+      "concept": "glucose-storage-terms",
+      "segs": [
+        [
+          "gluc",
+          "gluc/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "neo",
+          "neo-"
+        ],
+        [
+          "genesis",
+          "-genesis"
+        ]
+      ],
+      "literal": "making new glucose",
+      "meaning": "making glucose from molecules that are not carbohydrates, such as lactate, glycerol and amino acids, mainly in the liver"
+    },
+    {
+      "id": "hyperglycemia",
+      "term": "hyperglycemia",
+      "topic": "pancreas-glucose",
+      "concept": "diabetes-mellitus",
+      "segs": [
+        [
+          "hyper",
+          "hyper-"
+        ],
+        [
+          "glyc",
+          "glyc/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of more than normal sugar",
+      "meaning": "a blood glucose that stays too high, as in diabetes mellitus"
+    },
+    {
+      "id": "hypoglycemia",
+      "term": "hypoglycemia",
+      "topic": "pancreas-glucose",
+      "concept": "hypoglycemia",
+      "segs": [
+        [
+          "hypo",
+          "hypo-"
+        ],
+        [
+          "glyc",
+          "glyc/o"
+        ],
+        [
+          "emia",
+          "-emia"
+        ]
+      ],
+      "literal": "a blood condition of less than normal sugar",
+      "meaning": "a blood glucose below 70 mg/dL"
+    },
+    {
+      "id": "polyuria",
+      "term": "polyuria",
+      "topic": "pancreas-glucose",
+      "concept": "diabetes-mellitus",
+      "segs": [
+        [
+          "poly",
+          "poly-"
+        ],
+        [
+          "uria",
+          "-uria"
+        ]
+      ],
+      "literal": "much urine",
+      "meaning": "passing large volumes of urine, as when glucose in the urine holds water with it"
+    },
+    {
+      "id": "polydipsia",
+      "term": "polydipsia",
+      "topic": "pancreas-glucose",
+      "concept": "diabetes-mellitus",
+      "segs": [
+        [
+          "poly",
+          "poly-"
+        ],
+        [
+          "dips",
+          "dips/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "a condition of much thirst",
+      "meaning": "excessive thirst, driven by water lost in large volumes of urine"
+    },
+    {
+      "id": "polyphagia",
+      "term": "polyphagia",
+      "topic": "pancreas-glucose",
+      "concept": null,
+      "segs": [
+        [
+          "poly",
+          "poly-"
+        ],
+        [
+          "phag",
+          "phag/o"
+        ],
+        [
+          "ia",
+          "-ia"
+        ]
+      ],
+      "literal": "a condition of much eating",
+      "meaning": "excessive hunger and eating, as when cells short of glucose drive appetite in untreated diabetes"
+    },
+    {
+      "id": "adrenal",
+      "term": "adrenal",
+      "topic": "adrenal-glands",
+      "concept": "adrenal-cortex",
+      "segs": [
+        [
+          "ad",
+          "ad-"
+        ],
+        [
+          "ren",
+          "ren/o"
+        ],
+        [
+          "al",
+          "-al"
+        ]
+      ],
+      "literal": "near the kidney",
+      "meaning": "describing the glands that cap the upper end of each kidney"
+    },
+    {
+      "id": "glucocorticoid",
+      "term": "glucocorticoid",
+      "topic": "adrenal-glands",
+      "concept": "cortisol",
+      "segs": [
+        [
+          "gluc",
+          "gluc/o"
+        ],
+        [
+          "o"
+        ],
+        [
+          "cortic",
+          "cortic/o"
+        ],
+        [
+          "oid",
+          "-oid"
+        ]
+      ],
+      "literal": "glucose-related, like the cortex hormones",
+      "meaning": "a steroid of the adrenal cortex, mainly cortisol, named for its effect on blood glucose"
+    },
+    {
+      "id": "natriuretic",
+      "term": "natriuretic",
+      "topic": "other-endocrine",
+      "concept": "anp",
+      "segs": [
+        [
+          "natri",
+          "natri/o"
+        ],
+        [
+          "uretic",
+          "-uretic"
+        ]
+      ],
+      "literal": "relating to sodium in the urine",
+      "meaning": "describing a hormone, such as ANP, that makes the kidneys excrete sodium"
+    },
+    {
+      "id": "leptin",
+      "term": "leptin",
+      "topic": "other-endocrine",
+      "concept": "leptin",
+      "segs": [
+        [
+          "lept",
+          "lept/o"
+        ],
+        [
+          "in",
+          "-in"
+        ]
+      ],
+      "literal": "a substance for thinness",
+      "meaning": "the hormone fat cells release in proportion to their stores, which tells the hypothalamus energy stores are full"
+    },
+    {
+      "id": "circadian",
+      "term": "circadian",
+      "topic": "other-endocrine",
+      "concept": "circadian-rhythm",
+      "segs": [
+        [
+          "circa",
+          "circa-"
+        ],
+        [
+          "di",
+          "di/e"
+        ],
+        [
+          "an"
+        ]
+      ],
+      "literal": "about a day",
+      "meaning": "describing a body rhythm that cycles about every 24 hours, even without outside time cues"
     }
   ]
 }

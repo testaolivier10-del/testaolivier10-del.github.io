@@ -12,6 +12,10 @@
     {
       "id": "blood",
       "title": "Blood"
+    },
+    {
+      "id": "endocrine",
+      "title": "Endocrine system"
     }
   ],
   "calculators": [
@@ -3079,6 +3083,563 @@
               "abs": 1
             },
             "prompt": "A patient’s white cell count is {W} per µL, and {P}% of the white cells are neutrophils. What is the absolute neutrophil count?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hormone-half-life",
+      "group": "endocrine",
+      "title": "Hormone clearance and half-life",
+      "short": "Level = start × (½)<sup>n</sup>",
+      "topic": "hormone-action",
+      "core": [
+        "mass-balance",
+        "communication"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "When a gland stops secreting, the hormone already in the blood is cleared at a steady fractional rate. The half-life is the time for half of it to go. Enter the starting level, the half-life and the time since secretion stopped.",
+      "formula": "Level after time t = starting level × (1/2)<sup>n</sup>, where n = t ÷ half-life",
+      "inputs": [
+        {
+          "key": "L0",
+          "label": "Blood level when secretion stops",
+          "sym": "L<sub>0</sub>",
+          "unit": "units",
+          "default": 80,
+          "min": 1,
+          "max": 10000,
+          "step": 1,
+          "gen": {
+            "choices": [
+              40,
+              64,
+              80,
+              96,
+              120,
+              160,
+              200,
+              320,
+              400,
+              800
+            ]
+          }
+        },
+        {
+          "key": "h",
+          "label": "Half-life",
+          "sym": "t<sub>½</sub>",
+          "unit": "min",
+          "default": 10,
+          "min": 1,
+          "max": 20000,
+          "step": 1,
+          "hint": "epinephrine about 2 min; most peptides a few minutes; the thyroid gland’s main hormone about a week (10,080 min)",
+          "gen": {
+            "choices": [
+              2,
+              5,
+              10,
+              15,
+              20,
+              30,
+              60
+            ]
+          }
+        },
+        {
+          "key": "t",
+          "label": "Time since secretion stopped",
+          "sym": "t",
+          "unit": "min",
+          "default": 30,
+          "min": 0,
+          "max": 100000,
+          "step": 1,
+          "gen": {
+            "choices": [
+              10,
+              20,
+              30,
+              40,
+              60,
+              90,
+              120
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "n",
+          "expr": "t / h",
+          "dp": 2
+        },
+        {
+          "key": "frac",
+          "expr": "0.5 ^ (t / h)",
+          "dp": 4
+        },
+        {
+          "key": "pct",
+          "expr": "100 * 0.5 ^ (t / h)",
+          "dp": 1
+        },
+        {
+          "key": "L",
+          "expr": "L0 * 0.5 ^ (t / h)",
+          "dp": 2
+        }
+      ],
+      "steps": [
+        {
+          "title": "Count the half-lives",
+          "text": "n = {t} min ÷ {h} min per half-life = <b>{n} half-lives</b>."
+        },
+        {
+          "title": "Find the fraction left",
+          "text": "Each half-life halves what is left, so the fraction left is (1/2)<sup>{n}</sup> = <b>{frac}</b>, which is {pct}%."
+        },
+        {
+          "title": "Multiply by the starting level",
+          "text": "Level = {L0} × {frac} = <b>{L} units</b>."
+        },
+        {
+          "title": "Check by halving",
+          "text": "When n is a whole number you can halve step by step: {L0}, then half of that once per half-life, until you have halved n times."
+        }
+      ],
+      "results": [
+        {
+          "key": "L",
+          "label": "Level left in the blood",
+          "unit": "units",
+          "normal": "After 1 half-life, 50% is left; after 2, 25%; after 3, 12.5%; after 5, about 3%.",
+          "bands": [
+            {
+              "when": "pct < 5",
+              "label": "almost all cleared",
+              "tone": "lo"
+            },
+            {
+              "when": "pct < 50",
+              "label": "most cleared",
+              "tone": "ok"
+            },
+            {
+              "label": "most still present",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "pct < 5",
+          "text": "After about five half-lives, less than 5% is left, and the hormone’s effect has essentially gone. A hormone with a half-life of minutes, like epinephrine, is gone within a quarter of an hour of the gland stopping."
+        },
+        {
+          "when": "n < 1",
+          "text": "Less than one half-life has passed, so more than half of the hormone is still in the blood. A hormone with a long half-life, like the thyroid gland’s main hormone (about a week), lingers for weeks after its gland stops."
+        },
+        {
+          "when": "1",
+          "text": "{pct}% of the starting level is left. The shorter the half-life, the faster the level follows the gland: short half-lives suit signals that must switch off quickly."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 80 units, half-life 10 min, 30 min later",
+          "values": {
+            "L0": 80,
+            "h": 10,
+            "t": 30
+          }
+        },
+        {
+          "label": "Epinephrine: half-life 2 min, 10 min later",
+          "values": {
+            "L0": 100,
+            "h": 2,
+            "t": 10
+          }
+        },
+        {
+          "label": "The thyroid gland’s main hormone: half-life 1 week (10,080 min), 1 week later",
+          "values": {
+            "L0": 100,
+            "h": 10080,
+            "t": 10080
+          }
+        }
+      ],
+      "practice": {
+        "require": "round(t / h) == t / h && t / h <= 5",
+        "asks": [
+          {
+            "key": "L",
+            "unit": "units",
+            "tol": {
+              "rel": 0.02,
+              "abs": 0.1
+            },
+            "prompt": "A hormone’s level is {L0} units when its gland suddenly stops secreting. Its half-life is {h} minutes. What is the level {t} minutes later?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "free-hormone",
+      "group": "endocrine",
+      "title": "Free and bound hormone",
+      "short": "Free = total × (100 − % bound) ÷ 100",
+      "topic": "hormone-action",
+      "core": [
+        "communication",
+        "mass-balance"
+      ],
+      "level": "apply",
+      "diff": 2,
+      "intro": "A lipid-soluble hormone rides mostly on carrier proteins. Only the free part can leave the capillaries and bind receptor proteins, so the free level is what acts. Enter the total level and the percentage bound; add a second percentage to see what a change in binding does.",
+      "formula": "Free hormone = total × (100 − percent bound) ÷ 100",
+      "inputs": [
+        {
+          "key": "T",
+          "label": "Total hormone (bound + free)",
+          "sym": "total",
+          "unit": "units",
+          "default": 400,
+          "min": 1,
+          "max": 10000,
+          "step": 1,
+          "gen": {
+            "choices": [
+              100,
+              200,
+              250,
+              300,
+              400,
+              500,
+              800,
+              1000
+            ]
+          }
+        },
+        {
+          "key": "b1",
+          "label": "Percent bound, before",
+          "sym": "bound<sub>1</sub>",
+          "unit": "%",
+          "default": 97,
+          "min": 0,
+          "max": 99.9,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              90,
+              95,
+              96,
+              97,
+              98,
+              99
+            ]
+          }
+        },
+        {
+          "key": "b2",
+          "label": "Percent bound, after a change",
+          "sym": "bound<sub>2</sub>",
+          "unit": "%",
+          "default": 94,
+          "min": 0,
+          "max": 99.9,
+          "step": 0.1,
+          "gen": {
+            "choices": [
+              80,
+              88,
+              90,
+              92,
+              94,
+              95,
+              96
+            ]
+          }
+        }
+      ],
+      "derived": [
+        {
+          "key": "f1pct",
+          "expr": "100 - b1",
+          "dp": 1
+        },
+        {
+          "key": "f1",
+          "expr": "T * (100 - b1) / 100",
+          "dp": 2
+        },
+        {
+          "key": "f2pct",
+          "expr": "100 - b2",
+          "dp": 1
+        },
+        {
+          "key": "f2",
+          "expr": "T * (100 - b2) / 100",
+          "dp": 2
+        },
+        {
+          "key": "ratio",
+          "expr": "(100 - b2) / (100 - b1)",
+          "dp": 2
+        }
+      ],
+      "invalid": [
+        {
+          "when": "b1 >= 100 || b2 >= 100",
+          "text": "Some hormone is always free, so the percent bound must be below 100."
+        }
+      ],
+      "steps": [
+        {
+          "title": "Find the free fraction before",
+          "text": "100% − {b1}% = <b>{f1pct}% free</b>."
+        },
+        {
+          "title": "Free hormone before",
+          "text": "{f1pct}% of {T} = {f1pct} ÷ 100 × {T} = <b>{f1} units</b>."
+        },
+        {
+          "title": "Find the free fraction after",
+          "text": "100% − {b2}% = <b>{f2pct}% free</b>."
+        },
+        {
+          "title": "Free hormone after",
+          "text": "{f2pct}% of {T} = <b>{f2} units</b>, if the total has not yet changed."
+        },
+        {
+          "title": "Compare",
+          "text": "Free hormone changes by a factor of {f2pct} ÷ {f1pct} = <b>{ratio}</b>, although the percent bound moved only from {b1}% to {b2}%."
+        }
+      ],
+      "results": [
+        {
+          "key": "f2",
+          "label": "Free hormone after the change",
+          "unit": "units",
+          "bands": [
+            {
+              "when": "ratio > 1.2",
+              "label": "more active hormone",
+              "tone": "hi"
+            },
+            {
+              "when": "ratio < 0.83",
+              "label": "less active hormone",
+              "tone": "lo"
+            },
+            {
+              "label": "about the same",
+              "tone": "ok"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "ratio > 1.2",
+          "text": "Free hormone rises by a factor of {ratio}. Because the free share is small, a few percent less binding makes a big difference to the active hormone. Over the following hours the extra free hormone is cleared faster and, through negative feedback, the gland slows, so the free level drifts back toward normal."
+        },
+        {
+          "when": "ratio < 0.83",
+          "text": "Free hormone falls to {ratio} times its old level. More binding locks more hormone in the reservoir, so less reaches the target cells until the gland makes up the difference."
+        },
+        {
+          "when": "1",
+          "text": "The free level has barely changed, so the target cells see about the same amount of active hormone."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 400 units, 97% then 94% bound",
+          "values": {
+            "T": 400,
+            "b1": 97,
+            "b2": 94
+          }
+        },
+        {
+          "label": "The thyroid gland’s hormones: over 99% bound",
+          "values": {
+            "T": 1000,
+            "b1": 99.9,
+            "b2": 99.8
+          }
+        },
+        {
+          "label": "A steroid that is about 90% bound",
+          "values": {
+            "T": 300,
+            "b1": 90,
+            "b2": 90
+          }
+        }
+      ],
+      "practice": {
+        "require": "b2 < b1",
+        "asks": [
+          {
+            "key": "f2",
+            "unit": "units",
+            "tol": {
+              "rel": 0.01,
+              "abs": 0.1
+            },
+            "prompt": "A hormone’s total level is {T} units and {b1}% is bound. A drug displaces some of it, so only {b2}% is bound and the total has not yet changed. What is the free level now?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "glucose-units",
+      "group": "endocrine",
+      "title": "Blood glucose units: mmol/L to mg/dL",
+      "short": "mg/dL = mmol/L × 18",
+      "topic": "pancreas-glucose",
+      "core": [
+        "homeostasis"
+      ],
+      "level": "apply",
+      "diff": 1,
+      "intro": "Most of the world reports blood glucose in mmol/L; the United States uses mg/dL. One mole of glucose weighs 180 g, so 1 mmol/L is 180 mg in 10 dL: 18 mg/dL. Enter a reading in mmol/L.",
+      "formula": "Glucose (mg/dL) = glucose (mmol/L) × 18",
+      "inputs": [
+        {
+          "key": "mm",
+          "label": "Glucose reading",
+          "sym": "glucose",
+          "unit": "mmol/L",
+          "default": 7,
+          "min": 1,
+          "max": 40,
+          "step": 0.1,
+          "dp": 1,
+          "gen": [
+            2.5,
+            16,
+            0.1
+          ]
+        }
+      ],
+      "derived": [
+        {
+          "key": "mg",
+          "expr": "mm * 18",
+          "dp": 0
+        }
+      ],
+      "steps": [
+        {
+          "title": "Find the conversion factor",
+          "text": "1 mmol of glucose weighs 180 mg, and a liter is 10 dL, so 1 mmol/L = 180 mg ÷ 10 dL = <b>18 mg/dL</b>."
+        },
+        {
+          "title": "Multiply",
+          "text": "{mm} mmol/L × 18 = <b>{mg} mg/dL</b>."
+        },
+        {
+          "title": "Going the other way",
+          "text": "To turn mg/dL into mmol/L, divide by 18: {mg} ÷ 18 = {mm} mmol/L."
+        }
+      ],
+      "results": [
+        {
+          "key": "mg",
+          "label": "Glucose",
+          "unit": "mg/dL",
+          "normal": "Fasting: about 70–99 mg/dL (3.9–5.5 mmol/L). After a meal it usually peaks below 140.",
+          "bands": [
+            {
+              "when": "mg < 70",
+              "label": "hypoglycemia",
+              "tone": "lo"
+            },
+            {
+              "when": "mg < 100",
+              "label": "normal fasting range",
+              "tone": "ok"
+            },
+            {
+              "when": "mg < 126",
+              "label": "above the fasting range",
+              "tone": "hi"
+            },
+            {
+              "label": "at or above the fasting cutoff for diabetes",
+              "tone": "hi"
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "when": "mg < 54",
+          "text": "{mg} mg/dL is below 54, clinically important hypoglycemia whatever the symptoms. The brain, which depends on blood glucose minute by minute, is running short."
+        },
+        {
+          "when": "mg < 70",
+          "text": "{mg} mg/dL is hypoglycemia. Glucagon and epinephrine rise, and a conscious person should take about 15 g of fast sugar and recheck after 15 minutes."
+        },
+        {
+          "when": "mg < 100",
+          "text": "{mg} mg/dL is inside the normal fasting range."
+        },
+        {
+          "when": "mg < 126",
+          "text": "{mg} mg/dL is above the normal fasting range but below the diagnostic cutoff. After a meal, values up to about 140 are normal."
+        },
+        {
+          "when": "1",
+          "text": "{mg} mg/dL. If this was a fasting reading, and a repeat on another day is also 126 or more, it meets the diagnostic cutoff for diabetes. Random readings of 200 or more with the classic symptoms also qualify."
+        }
+      ],
+      "presets": [
+        {
+          "label": "Worked example: 7.0 mmol/L",
+          "values": {
+            "mm": 7
+          }
+        },
+        {
+          "label": "A normal fasting reading: 5.0 mmol/L",
+          "values": {
+            "mm": 5
+          }
+        },
+        {
+          "label": "A low: 3.0 mmol/L",
+          "values": {
+            "mm": 3
+          }
+        },
+        {
+          "label": "Very high: 15.0 mmol/L",
+          "values": {
+            "mm": 15
+          }
+        }
+      ],
+      "practice": {
+        "asks": [
+          {
+            "key": "mg",
+            "unit": "mg/dL",
+            "tol": {
+              "abs": 1,
+              "rel": 0.01
+            },
+            "prompt": "A glucose meter reads {mm} mmol/L. What is that in mg/dL?"
           }
         ]
       }
