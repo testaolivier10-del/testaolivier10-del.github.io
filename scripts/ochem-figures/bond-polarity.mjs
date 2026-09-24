@@ -131,11 +131,17 @@ function water(c, opts = {}) {
   return { s, h1, h2 };
 }
 /* Tip-to-tail for water: the two O–H arrows, then their sum. */
-function waterSum(s0, len = 58) {
+function waterSum(s0, len = 58, labels = true) {
   const half = 52.25;
   const v1 = at(P(0, 0), 90 - half, len), v2 = at(P(0, 0), 90 + half, len);
   const p1 = P(s0.x + v1.x, s0.y + v1.y), p2 = P(p1.x + v2.x, p1.y + v2.y);
-  return vec(s0, p1, { cross: false }) + vec(p1, p2, { cross: false }) + vec(s0, p2, { thick: true, cross: false });
+  let s = vec(s0, p1, { cross: false }) + vec(p1, p2, { cross: false }) + vec(s0, p2, { thick: true, cross: false });
+  if (labels) {
+    s += T(s0.x + v1.x / 2 + 12, s0.y + v1.y / 2 + 14, 'O–H 1', 'fg-tag', { anchor: 'start' });
+    s += T(p1.x - v2.x / 2 + 16, p1.y + v2.y / 2 - 4, 'O–H 2', 'fg-tag', { anchor: 'start' });
+    s += T(s0.x - 12, (s0.y + p2.y) / 2 + 4, 'sum', 'fg-tag', { anchor: 'end' });
+  }
+  return s;
 }
 
 /* ------------------------------------------------ tetrahedral umbrella --- */
@@ -168,13 +174,14 @@ function umbrella(c, top, opts = {}) {
 }
 
 /* ---------------------------------------------------------- acetone --- */
-function acetone(c) {
-  const o = at(c, 0, 56), m1 = at(c, 150, 56), m2 = at(c, 210, 56);
+function acetone(c, opts = {}) {
+  const L = opts.len ?? 56;
+  const o = at(c, 0, L), m1 = at(c, 150, L), m2 = at(c, 210, L);
   let s = bnd(c, o, 'C', 'O', 2) + bnd(c, m1, 'C', 'CH₃') + bnd(c, m2, 'C', 'CH₃');
   s += dip(c, o, { x: 0, y: -1 }, 24, 6, 4);
   s += lonePair(o.x, o.y, -60, { dist: 22 }) + lonePair(o.x, o.y, 60, { dist: 22 });
   s += A(c, 'C') + A(o, 'O', 'hi') + A(m1, 'CH₃') + A(m2, 'CH₃');
-  s += dPlus(P(c.x, c.y + 30)) + dMinus(P(o.x + 30, o.y));
+  s += dPlus(P(c.x, c.y + 30)) + dMinus(opts.dmBelow ? P(o.x, o.y + 34) : P(o.x + 30, o.y));
   return { s, o, c };
 }
 function butane(x, y, gap = 52) {
@@ -304,8 +311,7 @@ FIGURES.push({
     s += T(567, 32, 'H₂O: bent', 'fg-lbl');
     s += water(P(480, 104), { len: 58 }).s;
     s += T(668, 54, 'tip to tail', 'fg-tag-mut');
-    s += waterSum(P(668, 196), 56);
-    s += T(706, 136, 'sum', 'fg-tag');
+    s += waterSum(P(652, 196), 56);
     s += T(567, 232, 'sum points to the O side: μ = 1.85 D');
     return s;
   },
@@ -416,16 +422,16 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-bond-dipoles',
   lessons: ['bond-polarity'],
-  viewBox: '0 0 340 316',
+  viewBox: '0 0 340 328',
   alt: 'Two bonds. C–O: carbon delta plus, oxygen delta minus, the arrow points at oxygen with its cross bar at carbon. C–Li: the arrow is reversed and points at carbon, which is delta minus, with lithium delta plus.',
   build() {
-    let s = panel(4, 4, 332, 150) + panel(4, 162, 332, 150);
+    let s = panel(4, 4, 332, 156) + panel(4, 168, 332, 156);
     s += T(170, 28, 'C–O: EN 2.55 vs 3.44', 'fg-lbl');
     s += pairBond(120, 94, 'C', 'O', 'L', { hi: 'hi' });
-    s += T(170, 146, 'arrow points at O, the δ− end');
-    s += T(170, 186, 'C–Li: EN 2.55 vs 0.98', 'fg-lbl');
-    s += pairBond(120, 252, 'C', 'Li', 'R');
-    s += T(170, 304, 'reversed: carbon is the δ− end');
+    s += T(170, 150, 'arrow points at O, the δ− end');
+    s += T(170, 192, 'C–Li: EN 2.55 vs 0.98', 'fg-lbl');
+    s += pairBond(120, 258, 'C', 'Li', 'R');
+    s += T(170, 314, 'reversed: carbon is the δ− end');
     return s;
   },
   caption: 'Cross bar at the δ+ end, arrowhead at the δ− end.',
@@ -470,8 +476,7 @@ FIGURES.push({
   build() {
     let s = panel(4, 4, 332, 168);
     s += T(170, 28, 'water’s two arrows, tip to tail', 'fg-lbl');
-    s += waterSum(P(170, 148), 60);
-    s += T(214, 96, 'sum', 'fg-tag', { anchor: 'start' });
+    s += waterSum(P(146, 150), 64);
     return s;
   },
   caption: 'The sideways parts cancel; the upward parts add.',
@@ -514,20 +519,14 @@ FIGURES.push({
   id: 'l-dipole-dipole',
   lessons: ['bond-polarity'],
   viewBox: '0 0 340 186',
-  alt: 'Two acetone molecules, one above the other and offset. Each has a carbon double-bonded to an oxygen on its right and two CH3 groups on its left, carbon delta plus and oxygen delta minus. The delta-minus oxygen of the upper molecule sits next to the delta-plus carbon of the lower one, joined by a dashed line.',
+  alt: 'Two acetone molecules side by side. Each has a carbon double-bonded to an oxygen on its right and two CH3 groups on its left, carbon delta plus and oxygen delta minus. The delta-minus oxygen of the upper molecule sits next to the delta-plus carbon of the lower one, joined by a dashed line.',
   build() {
     let s = panel(4, 4, 332, 178);
     s += T(170, 28, 'two acetones, μ = 2.88 D', 'fg-lbl');
-    const a1 = acetone(P(98, 84));
-    const a2c = P(226, 138);
-    const u = unit(a1.o, a2c);
-    s += `<line class="fg-dash-hi" x1="${f1(a1.o.x + u.x * 22)}" y1="${f1(a1.o.y + u.y * 22)}" x2="${f1(a2c.x - u.x * 36)}" y2="${f1(a2c.y - u.y * 36)}" style="stroke-width:2.4"></line>`;
-    s += a1.s;
-    // lower molecule without its own arrow, to keep the pair readable
-    const o = at(a2c, 0, 56), m1 = at(a2c, 150, 56), m2 = at(a2c, 210, 56);
-    s += bnd(a2c, o, 'C', 'O', 2) + bnd(a2c, m1, 'C', 'CH₃') + bnd(a2c, m2, 'C', 'CH₃');
-    s += A(a2c, 'C') + A(o, 'O', 'hi') + A(m1, 'CH₃') + A(m2, 'CH₃');
-    s += dPlus(P(a2c.x + 4, a2c.y - 28)) + dMinus(P(o.x + 30, o.y));
+    const a1 = acetone(P(68, 104), { len: 46, dmBelow: true }), a2 = acetone(P(222, 104), { len: 46, dmBelow: true });
+    s += `<line class="fg-dash-hi" x1="${f1(a1.o.x + 24)}" y1="${f1(a1.o.y)}" x2="${f1(a2.c.x - 18)}" y2="${f1(a2.c.y)}" style="stroke-width:2.4"></line>`;
+    s += a1.s + a2.s;
+    s += T(170, 172, 'O of one next to C of the next');
     return s;
   },
   caption: 'The δ− oxygen of one molecule sits by the δ+ carbon of the next.',
