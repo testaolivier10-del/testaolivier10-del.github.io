@@ -7,7 +7,9 @@
    dashed wedge away, with the wedge and the dash next to each other. An angle
    arc is drawn only between two plain bonds, because only those two are seen
    at their true angle; an angle between out-of-plane bonds is written as
-   text instead. Lone pairs are drawn on the central atom only. */
+   text instead. Lone pairs are drawn on the central atom only. In the
+   ethanol and acetic acid chains the carbons' two in-plane bonds are drawn
+   as an ordinary 120° zigzag with no arc; only arcs are claims about angle. */
 import { atom, bond, wedge, hash, arrow, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
 
 const FIGURES = [];
@@ -126,7 +128,7 @@ const SHAPES = [
   { name: 'Trigonal planar', count: '3 groups, 0 lone pairs', f: 'BF₃',
     draw: (c) => star(c, 'B', [{ deg: 90, len: 56, l: 'F' }, { deg: 210, len: 56, l: 'F' }, { deg: 330, len: 56, l: 'F' }]) + angle(c, 210, 330, 32, '120°', { gap: 13 }) },
   { name: 'Bent', count: '3 groups, 1 lone pair', f: 'SO₂',
-    draw: (c) => star(c, 'S', [{ deg: 90, kind: 'lp' }, { deg: 210, kind: 'double', len: 58, l: 'O' }, { deg: 330, kind: 'double', len: 58, l: 'O' }]) + angle(c, 210, 330, 32, '<120°', { gap: 13 }) },
+    draw: (c) => star(c, 'S', [{ deg: 90, kind: 'lp' }, { deg: 213, kind: 'double', len: 58, l: 'O' }, { deg: 327, kind: 'double', len: 58, l: 'O' }]) + angle(c, 213, 327, 32, '<120°', { gap: 13 }) },
   { name: 'Tetrahedral', count: '4 groups, 0 lone pairs', f: 'CH₄', draw: (c) => tetFamily(c, 'CH4', { len: 56 }) },
   { name: 'Trigonal pyramidal', count: '4 groups, 1 lone pair', f: 'NH₃', draw: (c) => tetFamily(c, 'NH3', { len: 56 }) },
   { name: 'Bent', count: '4 groups, 2 lone pairs', f: 'H₂O', draw: (c) => tetFamily(c, 'H2O', { len: 56 }) },
@@ -209,28 +211,28 @@ FIGURES.push({
   section: 'molecular-geometry',
   anchor: 'The molecule as a whole has no single shape — it has a shape at every atom.</p>',
   viewBox: '0 0 760 300',
-  alt: 'Ethanol and acetic acid drawn with every atom. In ethanol both carbons are tetrahedral, each with two hydrogens or a hydrogen and a neighbor in the plane, one hydrogen on a solid wedge and one on a dashed wedge; the oxygen has two bonds and two lone pairs and is bent, about 108 degrees. In acetic acid the CH3 carbon is tetrahedral, the carbonyl carbon is trigonal planar with its three neighbors 120 degrees apart, the carbonyl oxygen has three groups (one double bond and two lone pairs), and the OH oxygen is bent.',
+  alt: 'Ethanol and acetic acid drawn with every atom. In ethanol both carbons are tetrahedral, each with two bonds in the plane, one hydrogen on a solid wedge and one on a dashed wedge; the oxygen has two bonds and two lone pairs and is bent, the C–O–H angle marked about 108 degrees. In acetic acid, CH3C(=O)OH, the CH3 carbon is tetrahedral, the carbonyl carbon is trigonal planar with its three neighbors 120 degrees apart, the C=O oxygen has three groups (one double bond and two lone pairs), and the OH oxygen, with two neighbors, is bent.',
   build() {
     let s = '';
     // Ethanol
     s += panel(14, 12, 360, 276);
     s += text(194, 36, 'ethanol, CH₃CH₂OH', { cls: 'fg-lbl', size: 13 });
     {
-      const C1 = P(92, 170), C2 = P(170, 125), O = P(248, 170), Ho = at(O, 30, 52);
+      const C1 = P(92, 170), C2 = P(170, 125), O = at(C2, -36, 90), Ho = at(O, 36, 52);
       s += bond(C1, C2, { rFrom: 16, rTo: 16 }); s += bond(C2, O, { rFrom: 16, rTo: 16 }); s += bond(O, Ho, { rFrom: 16, rTo: 12 });
       s += star(C1, 'C', [{ deg: 150, len: 46, l: 'H' }, { deg: 250, len: 44, kind: 'wedge', l: 'H' }, { deg: 292, len: 44, kind: 'hash', l: 'H' }]);
       s += star(C2, 'C', [{ deg: 112, len: 44, kind: 'wedge', l: 'H' }, { deg: 68, len: 44, kind: 'hash', l: 'H' }]);
       s += atom(Ho.x, Ho.y, 'H', { r: 12 });
       s += lp(O, 225); s += lp(O, 315);
       s += atom(O.x, O.y, 'O', { kind: 'hi' });
-      s += angle(O, 30, 150, 30, '~108°', { gap: 12 });
+      s += angle(O, 36, 144, 30, '~108°', { gap: 12 });
       s += geoTag(56, 250, 'C: 4 groups', 'tetrahedral');
-      s += geoTag(170, 214, 'C: 4 groups', 'tetrahedral');
+      s += geoTag(94, 88, 'C: 4 groups', 'tetrahedral');
       s += geoTag(300, 250, 'O: 4 groups', 'bent');
     }
     // Acetic acid
     s += panel(386, 12, 360, 276);
-    s += text(566, 36, 'acetic acid, CH₃COOH', { cls: 'fg-lbl', size: 13 });
+    s += text(566, 36, 'acetic acid, CH₃C(=O)OH', { cls: 'fg-lbl', size: 13 });
     {
       const C1 = P(462, 180), C2 = P(540, 135), Od = at(C2, 90, 54), Os = P(618, 180), Ho = at(Os, 30, 52);
       s += bond(C1, C2, { rFrom: 16, rTo: 16 }); s += bond(C2, Os, { rFrom: 16, rTo: 16 }); s += bond(Os, Ho, { rFrom: 16, rTo: 12 });
@@ -244,13 +246,12 @@ FIGURES.push({
       s += angle(C2, 210, 330, 30, '120°', { gap: 13 });
       s += geoTag(426, 260, 'C: 4 groups', 'tetrahedral');
       s += geoTag(540, 222, 'C: 3 groups', 'trigonal planar');
-      s += geoTag(672, 260, 'O: 4 groups', 'bent');
-      s += geoTag(652, 64, 'O: 3 groups', 'flat, like the C');
+      s += geoTag(672, 260, 'O: 2 neighbors', 'bent');
+      s += geoTag(652, 64, 'O: 3 groups', 'C=O counts once');
     }
     return s;
   },
-  caption: 'Ethanol and acetic acid with every atom drawn and the group count written at each carbon and oxygen. The only flat center in either molecule is the carbonyl carbon of acetic acid, with the oxygen it is double-bonded to.',
-  note: 'The two oxygens of acetic acid differ. The OH oxygen has two bonds and two lone pairs: four groups, bent, like water. The C=O oxygen has one double bond and two lone pairs: three groups, so its lone pairs lie in the plane of the carbonyl.',
+  caption: 'Ethanol and acetic acid with every atom drawn and the shape written at each carbon and oxygen. The carbonyl carbon is the flat center you find by counting.',
 });
 
 /* ---------------------------------------------------------- open-faces ---
@@ -265,10 +266,10 @@ function openFaces(ox, oy, stacked) {
   s += bond(C, O, { order: 2, rFrom: 16, rTo: 14 }); s += bond(C, H1, { rFrom: 16, rTo: 12 }); s += bond(C, H2, { rFrom: 16, rTo: 12 });
   s += atom(O.x, O.y, 'O', { r: 14 }); s += atom(H1.x, H1.y, 'H', { r: 12 }); s += atom(H2.x, H2.y, 'H', { r: 12 });
   s += atom(C.x, C.y, 'C', { kind: 'hi' });
-  s += arrow(P(C.x, C.y - 84), P(C.x, C.y - 22));
-  s += arrow(P(C.x, C.y + 84), P(C.x, C.y + 22));
-  s += text(C.x + 10, C.y - 70, 'top face: open', { cls: 'fg-tag', size: 11, anchor: 'start' });
-  s += text(C.x + 10, C.y + 80, 'bottom face: open', { cls: 'fg-tag', size: 11, anchor: 'start' });
+  s += arrow(P(C.x - 30, C.y - 84), P(C.x - 7, C.y - 21));
+  s += arrow(P(C.x - 30, C.y + 84), P(C.x - 7, C.y + 21));
+  s += text(C.x - 12, C.y - 70, 'from above the plane', { cls: 'fg-tag', size: 11, anchor: 'start' });
+  s += text(C.x - 12, C.y + 80, 'from below the plane', { cls: 'fg-tag', size: 11, anchor: 'start' });
   s += text(ox + 150, oy + 24, 'formaldehyde, H₂C=O: C has 3 groups', { cls: 'fg-lbl', size: 13 });
   // Tetrahedral carbon.
   const bx = stacked ? ox : ox + 316, by = stacked ? oy + 232 : oy;
@@ -284,7 +285,7 @@ FIGURES.push({
   section: 'molecular-geometry',
   anchor: 'every one of them traces back to a group count you can do in five seconds.</p>',
   viewBox: '0 0 660 240',
-  alt: 'Left: formaldehyde lying on a shaded plane, its carbon bonded to an oxygen by a double bond and to two hydrogens, all in the plane. One arrow comes down onto the carbon from above and one comes up from below, labeled top face open and bottom face open. Right: methane drawn with two plain bonds, a solid wedge and a dashed wedge, labeled no open face: nothing adds unless a group leaves.',
+  alt: 'Left: formaldehyde lying on a shaded plane, its carbon bonded to an oxygen by a double bond and to two hydrogens, all in the plane. One arrow comes down onto the carbon from above the plane and one comes up from below it. Right: methane drawn with two plain bonds, a solid wedge and a dashed wedge, labeled no open face: nothing adds unless a group leaves.',
   build() {
     return panel(14, 8, 300, 224) + panel(330, 8, 300, 224) + openFaces(14, 8, false);
   },
@@ -500,14 +501,15 @@ FIGURES.push({
   id: 'l-hydronium',
   lessons: ['molecular-geometry'],
   viewBox: '0 0 340 170',
-  alt: 'Hydronium, H3O+: a positively charged oxygen with two hydrogens on plain lines, one on a solid wedge, and one lone pair.',
+  alt: 'Hydronium, H3O+, as a flat Lewis structure: a positively charged oxygen with three O–H bonds, to the left, right and below, and one lone pair above. A tag says the drawing shows the count, not the shape.',
   build() {
     let s = panel(4, 4, 332, 162);
-    s += text(170, 26, 'H₃O⁺: 3 bonds + 1 lone pair', { cls: 'fg-lbl', size: 13 });
-    s += tetFamily(P(170, 100), 'H3O');
+    s += text(170, 26, 'H₃O⁺: Lewis structure', { cls: 'fg-lbl', size: 13 });
+    s += star(P(170, 86), 'O⁺', [{ deg: 180, len: 52, l: 'H' }, { deg: 0, len: 52, l: 'H' }, { deg: 270, len: 44, l: 'H' }, { deg: 90, kind: 'lp' }], { rc: 17 });
+    s += text(170, 158, 'shows the count, not the shape', { cls: 'fg-tag-mut', size: 11 });
     return s;
   },
-  caption: 'Hydronium, with its lone pair drawn.',
+  caption: 'Hydronium, drawn flat to show its bonds and lone pair.',
 });
 
 FIGURES.push({
