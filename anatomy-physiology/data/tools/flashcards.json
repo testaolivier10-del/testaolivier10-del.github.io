@@ -5778,7 +5778,7 @@
    ],
    "level": "apply",
    "front": "Why is aspirin often stopped a week before surgery?",
-   "back": "It permanently blocks the platelet enzyme that makes thromboxane A2, and a platelet cannot make new enzyme, so the effect lasts for the platelet’s 7–10 day life.",
+   "back": "It permanently blocks the platelet enzyme that makes thromboxane A2, and a platelet, with no nucleus, can make almost no new enzyme, so the effect lasts for the platelet’s 7–10 day life.",
    "why": "Only new platelets, made after the last dose, work normally."
   },
   {
@@ -6698,7 +6698,7 @@
    ],
    "level": "apply",
    "front": "What controls melatonin release?",
-   "back": "Light, through melanopsin-containing retinal ganglion cells, the suprachiasmatic nucleus and sympathetic fibers from the superior cervical ganglion. Darkness turns release on; light shuts it off within minutes.",
+   "back": "Light, through melanopsin-containing retinal ganglion cells, the suprachiasmatic nucleus and sympathetic fibers from the superior cervical ganglion. At night, as timed by the suprachiasmatic nucleus, the pathway drives release; light shuts it off within minutes.",
    "why": "Melatonin is a timing signal telling the body’s clocks what time of night it is, more than a sleeping pill."
   },
   {

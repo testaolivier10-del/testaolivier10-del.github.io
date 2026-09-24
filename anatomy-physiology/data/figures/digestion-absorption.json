@@ -1,0 +1,56 @@
+{
+  "os-23-29": {
+    "file": "figures/openstax/os-23-29.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.29",
+      "section": "23.7",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/107362a1a09bafad94581b66928ea133539858e0",
+      "page": "23-7-chemical-digestion-and-absorption-a-closer-look"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/107362a1a09bafad94581b66928ea133539858e0",
+    "alt": "A flow chart. A top box of starch and glycogen is cut by salivary amylase into two groups: short branched polysaccharides (limit dextrins) on the left and three disaccharides on the right, maltose, sucrose and lactose. Below each, an enzyme is named: alpha-dextrinase, maltase, sucrase and lactase. The bottom boxes give the monosaccharides produced: glucose from the dextrins; two glucose from maltose; one glucose and one fructose from sucrose; one glucose and one galactose from lactose.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.29",
+    "labels": [],
+    "w": 1100,
+    "h": 727,
+    "ext": "jpg"
+  },
+  "os-23-32": {
+    "file": "figures/openstax/os-23-32.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.32",
+      "section": "23.7",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/9435f708b8ca8f90c01ef22fa59df6b19524052f",
+      "page": "23-7-chemical-digestion-and-absorption-a-closer-look"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/9435f708b8ca8f90c01ef22fa59df6b19524052f",
+    "alt": "The digestive tract drawn as one long tube from mouth to anus, with arrows showing water entering and leaving each day. Arrows in: food and drink 2000 mL, saliva 1500 mL, gastric secretions 1500 mL, bile 1000 mL, pancreatic juice 1000 mL, intestinal secretions 2000 mL, and colonic mucous secretions 200 mL. Volumes inside the tube: 5000 mL after the stomach, 9000 mL in the upper small intestine, 1200 mL at its end and 1400 mL in the colon. Arrows out: the small intestine reabsorbs 7800 mL, the colon reabsorbs 1250 mL, and 150 mL is lost in the feces.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.32",
+    "labels": [],
+    "w": 636,
+    "h": 818,
+    "ext": "jpg"
+  },
+  "os-23-33": {
+    "file": "figures/openstax/os-23-33.jpg",
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.33",
+      "section": "23.7",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/ee5d4d78da8a6418debe94999ced693451cd30c0",
+      "page": "23-7-chemical-digestion-and-absorption-a-closer-look"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/ee5d4d78da8a6418debe94999ced693451cd30c0",
+    "alt": "A cross-section of the intestinal lining. At the top, in the lumen, large round fat droplets become small spiky droplets (an emulsion) and then tiny clusters (micelles). From a micelle, a small lipid droplet crosses the brush border of an absorptive cell. Inside the cell it joins others near the green Golgi apparatus, is packed into a small round particle, and leaves through the bottom of the cell. Below the cell, the particle enters a pale green blind-ended lymph vessel (a lacteal) that sits inside a loop of red blood capillary.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.33",
+    "labels": [],
+    "w": 640,
+    "h": 827,
+    "ext": "jpg"
+  }
+}

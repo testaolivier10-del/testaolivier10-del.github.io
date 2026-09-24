@@ -10891,62 +10891,6 @@
        "fn": "The stem cell of the lymphoid line. Its descendants are the lymphoid white blood cells, the immune system's specialized defenders."
       },
       {
-       "id": "megakaryoblast",
-       "name": "Megakaryoblast",
-       "accept": [],
-       "box": [
-        2,
-        452,
-        140,
-        23
-       ],
-       "concept": "hematopoiesis",
-       "taught": "blood-composition",
-       "fn": "The earliest recognizable cell of the platelet line, formed from a myeloid stem cell. It grows into a megakaryocyte."
-      },
-      {
-       "id": "myeloblast",
-       "name": "Myeloblast",
-       "accept": [],
-       "box": [
-        368,
-        452,
-        99,
-        23
-       ],
-       "concept": "hematopoiesis",
-       "taught": "blood-composition",
-       "fn": "An early cell, formed from a myeloid stem cell, that develops into the white blood cells with visible granules in their cytoplasm."
-      },
-      {
-       "id": "monoblast",
-       "name": "Monoblast",
-       "accept": [],
-       "box": [
-        561,
-        452,
-        96,
-        19
-       ],
-       "concept": "hematopoiesis",
-       "taught": "blood-composition",
-       "fn": "An early cell, formed from a myeloid stem cell, that develops into the largest white blood cells, which become macrophages once they leave the blood for the tissues."
-      },
-      {
-       "id": "lymphoblast",
-       "name": "Lymphoblast",
-       "accept": [],
-       "box": [
-        799,
-        452,
-        115,
-        23
-       ],
-       "concept": "hematopoiesis",
-       "taught": "blood-composition",
-       "fn": "The early cell of the lymphoid line, formed from a lymphoid stem cell. It develops into the lymphoid white blood cells."
-      },
-      {
        "id": "megakaryocyte",
        "name": "Megakaryocyte",
        "accept": [
@@ -10993,6 +10937,42 @@
       }
      ],
      "covered": [
+      {
+       "id": "megakaryoblast",
+       "box": [
+        2,
+        452,
+        140,
+        23
+       ]
+      },
+      {
+       "id": "myeloblast",
+       "box": [
+        368,
+        452,
+        99,
+        23
+       ]
+      },
+      {
+       "id": "monoblast",
+       "box": [
+        561,
+        452,
+        96,
+        19
+       ]
+      },
+      {
+       "id": "lymphoblast",
+       "box": [
+        799,
+        452,
+        115,
+        23
+       ]
+      },
       {
        "id": "proerythroblast",
        "box": [

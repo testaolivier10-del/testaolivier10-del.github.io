@@ -1,0 +1,36 @@
+{
+  "os-23-15": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.15",
+      "section": "23.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/5af25f8d997d4e131865ab78ac754796ffcaecfc",
+      "page": "23-4-the-stomach"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/5af25f8d997d4e131865ab78ac754796ffcaecfc",
+    "alt": "A J-shaped pouch cut open from the front. The esophagus enters at the top; a dome rises beside that entry on the right of the drawing, and the large middle region curves down and across to a narrowing tube on the left that ends at a thick muscular ring leading into the intestine. Three muscle layers are peeled back on the front wall, running lengthwise, around and diagonally. The inner lining is thrown into long folds. Arrows mark the short inner curve and the long outer curve.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.15",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 726
+  },
+  "os-23-16": {
+    "source": "openstax",
+    "openstax": {
+      "figure": "23.16",
+      "section": "23.4",
+      "url": "https://openstax.org/apps/archive/20260604.144757/resources/6d88b0ea24be4b818870fa0c858c61f370184854",
+      "page": "23-4-the-stomach"
+    },
+    "url": "https://openstax.org/apps/archive/20260604.144757/resources/6d88b0ea24be4b818870fa0c858c61f370184854",
+    "alt": "Three panels of the stomach wall at increasing magnification. A small stomach shows where the sample comes from. A block of wall shows the lining dotted with pits that lead down into tube-shaped glands, then a thin muscle layer, a connective tissue layer with vessels, three layers of muscle running in different directions and a thin outer covering. An enlarged gland shows large round cells with folded interiors near its upper part, many smaller cells with granules lower down, and a few pale hormone-secreting cells at its base.",
+    "license": "CC BY 4.0",
+    "credit": "OpenStax Anatomy and Physiology 2e, Figure 23.16",
+    "labels": [],
+    "ext": "jpg",
+    "w": 1100,
+    "h": 515
+  }
+}

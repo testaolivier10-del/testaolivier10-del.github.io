@@ -234,8 +234,8 @@
     "q": "A 74-year-old woman finishes a two-week course of a broad-spectrum antibiotic for pneumonia. A week later she has frequent watery diarrhea, cramps and fever. Stool tests find toxins from Clostridioides difficile. Which explanation fits best?",
     "options": [
       "The antibiotic thinned her normal colon bacteria, and a resistant species overgrew and made toxins",
-      "The antibiotic destroyed her teniae coli, so her colon moved too fast",
-      "The antibiotic blocked her colon's sodium channels, so no water was absorbed",
+      "The antibiotic damaged her teniae coli and sped up her colon",
+      "The antibiotic blocked her colon's sodium channels and stopped water absorption",
       "The antibiotic made her pancreas stop secreting enzymes"
     ],
     "correct": 0,
@@ -320,7 +320,7 @@
     ],
     "q": "A 30-year-old man has a spinal cord injury at T6. His sacral cord is intact. After a mass movement fills his rectum, what happens?",
     "options": [
-      "Nothing, because the defecation reflex needs the brain",
+      "Nothing happens until signals arrive from the brain",
       "The rectum contracts and the internal sphincter relaxes by reflex, but he neither feels the urge nor controls the external sphincter",
       "He feels the urge normally but his rectum cannot contract",
       "His internal sphincter stays closed, but he can relax his external sphincter at will"
@@ -329,7 +329,7 @@
     "why": {
       "correct": "The defecation reflex runs through the sacral cord, which is intact, so stretch still makes the rectum contract and the internal sphincter relax. The injury cuts the pathways to and from the brain, so he loses the sensation of urge and voluntary control of the external sphincter.",
       "options": [
-        "The reflex arc is in the sacral cord, not the brain, so it still works.",
+        "The reflex arc runs through the sacral cord, not the brain, so it works without signals from the brain.",
         "Correct. The reflex survives; sensation and voluntary control are lost.",
         "Sensation travels up through the injured cord, so he does not feel the urge normally, while the reflex contraction of the rectum still works.",
         "The internal sphincter still relaxes by reflex, and voluntary control of the external sphincter needs signals from the brain, which the injury blocks."
@@ -377,7 +377,7 @@
     "q": "A traveler with cholera passes more than 10 L of watery stool a day. The toxin makes his intestinal lining secrete chloride into the lumen. Why does the colon fail to prevent the diarrhea?",
     "options": [
       "The toxin destroys the colon so it can no longer absorb water",
-      "The colon stops moving, so fluid pools and leaks out",
+      "The colon stops moving and fluid pools in it and leaks out",
       "Chloride blocks the colon's sodium channels",
       "The fluid arriving far exceeds the colon's maximum absorption of about 4 to 5 L a day"
     ],
@@ -456,8 +456,8 @@
     "q": "Which comparison between the small and large intestine is correct?",
     "options": [
       "The large intestine is longer as well as wider than the small intestine",
-      "Only the large intestine has villi",
-      "Only the small intestine has teniae coli",
+      "The large intestine has villi and the small intestine does not",
+      "The small intestine has teniae coli and the large intestine does not",
       "The large intestine has more goblet cells and no villi"
     ],
     "correct": 3,
@@ -551,7 +551,7 @@
     "options": [
       "Fiber is digested into glucose, which speeds colon movements",
       "Fiber holds water in the stool and adds bulk that stretches the colon wall",
-      "Fiber blocks the sodium pumps of the colon's epithelial cells, so no water is absorbed",
+      "Fiber blocks the sodium pumps of the colon's epithelial cells and stops water absorption",
       "Fiber kills the gut bacteria that slow transit"
     ],
     "correct": 1,
@@ -578,7 +578,7 @@
       "The colon secretes sugars and amino acids that feed the bacteria living in it",
       "The colon has no mucus layer to keep bacteria away from its lining cells",
       "Upstream, acid and fast flow keep them down; the colon is slow, warm and low in oxygen",
-      "Bile salts are made only in the colon"
+      "Bile salts are made in the colon and feed bacteria there"
     ],
     "correct": 2,
     "why": {
@@ -587,7 +587,7 @@
         "The colon does not secrete nutrients for bacteria; they live on undigested food, mostly fiber, and on mucus.",
         "The colon has a thick mucus layer, which keeps bacteria off the lining.",
         "Correct. Conditions, not special feeding, favor bacteria in the colon.",
-        "Bile salts are made in the liver, and they tend to hold bacteria down rather than help them."
+        "Bile salts are made in the liver, and they tend to hold bacteria down rather than feed them."
       ]
     }
   }

@@ -1,0 +1,52 @@
+{
+  "stomach-anatomy": {
+    "def": "The stomach's regions: the cardia around the esophageal opening, the dome-shaped fundus, the large body, and the pyloric part (the wide pyloric antrum, the narrow pyloric canal and the pylorus, whose pyloric sphincter controls emptying). Rugae are folds of the lining that flatten as it fills.",
+    "roots": [["cardi-", "heart"], ["fundus", "bottom"], ["pylor-", "gatekeeper"], ["antrum", "cave"], ["ruga", "wrinkle"]],
+    "say": "ROO-jee (rugae); pie-LOR-us"
+  },
+  "gastric-glands": {
+    "def": "Tube-shaped glands that open into the gastric pits of the stomach lining. They contain mucous neck cells (thin mucus), parietal cells (hydrochloric acid and intrinsic factor), chief cells (pepsinogen and gastric lipase) and enteroendocrine cells, including G cells, which release gastrin.",
+    "roots": [["gastr-", "stomach"], ["pariet-", "wall"], ["entero-", "gut"], ["endo-", "within"], ["crin-", "secrete"]],
+    "say": "puh-RY-uh-tul"
+  },
+  "hcl-secretion": {
+    "def": "Parietal cells make hydrochloric acid: carbonic anhydrase forms H+ and bicarbonate, the H+/K+ ATPase (proton pump) moves H+ into the lumen, and Cl− follows through channels. The bicarbonate goes to the blood, making it slightly alkaline after a meal (the alkaline tide). Acetylcholine, gastrin and histamine stimulate it.",
+    "roots": [["hydro-", "water, hydrogen"], ["chlor-", "chlorine"]],
+    "say": ""
+  },
+  "pepsin": {
+    "def": "The stomach's protein-digesting enzyme, which splits proteins into polypeptides and works best near pH 2. Chief cells secrete it as inactive pepsinogen, which acid converts to pepsin; pepsin then activates more pepsinogen.",
+    "roots": [["peps-", "digestion"], ["-gen", "producing"]],
+    "say": "PEP-sin; pep-SIN-oh-jen"
+  },
+  "intrinsic-factor": {
+    "def": "A glycoprotein secreted by parietal cells that binds vitamin B12 in the small intestine; only the combination can be absorbed, in the last part of the small intestine. Without it, B12 deficiency causes pernicious anemia.",
+    "roots": [["intrinsic", "on the inside"]],
+    "say": ""
+  },
+  "gastric-phases": {
+    "def": "The three phases that control gastric secretion: the cephalic phase (sight, smell, taste and thought of food act through the vagus nerves), the gastric phase (stretch and protein in the stomach act through reflexes and gastrin; the largest share) and the intestinal phase (chyme in the small intestine mostly inhibits the stomach).",
+    "roots": [["cephal-", "head"], ["gastr-", "stomach"], ["intestin-", "gut"]],
+    "say": "seh-FAL-ik"
+  },
+  "chyme-emptying": {
+    "def": "Mixing waves of the stomach grind and mix food into chyme, a soupy acidic paste, and push a few milliliters at a time through the pylorus. Gastric emptying takes about 2 to 4 hours for a mixed meal; the enterogastric reflex and the hormones CCK and secretin slow it when acid, fat or concentrated chyme reach the small intestine.",
+    "roots": [["chym-", "juice"], ["entero-", "intestine"], ["gastr-", "stomach"]],
+    "say": "KIME"
+  },
+  "mucosal-barrier": {
+    "def": "The defenses that keep acid and pepsin from digesting the stomach wall: an alkaline mucus layer holding bicarbonate, tight junctions, replacement of surface cells every few days, mucosal blood flow and prostaglandins. When Helicobacter pylori infection or NSAIDs weaken it, acid and pepsin can erode the lining and cause a peptic ulcer.",
+    "roots": [["pept-", "digestion"], ["helico-", "spiral"], ["pylor-", "gatekeeper"]],
+    "say": "hel-ih-koh-BAK-ter pie-LOR-ee"
+  },
+  "vomiting": {
+    "def": "A reflex coordinated by a network of neurons in the medulla oblongata that expels the contents of the stomach through the mouth. The airway is closed, the stomach and lower esophageal sphincter relax, and the diaphragm and abdominal muscles contract hard to squeeze the stomach.",
+    "roots": [["emesis", "vomiting"]],
+    "say": ""
+  },
+  "zymogen": {
+    "def": "An inactive enzyme precursor (proenzyme), stored and secreted in a form that cannot digest the cell that makes it and activated only after release, for example pepsinogen becoming pepsin in stomach acid.",
+    "roots": [["zym-", "ferment, enzyme"], ["-gen", "producing"], ["pro-", "before"]],
+    "say": "ZY-moh-jen"
+  }
+}

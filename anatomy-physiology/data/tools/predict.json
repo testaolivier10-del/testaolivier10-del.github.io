@@ -9014,7 +9014,7 @@
                 "kidney",
                 "epo"
               ],
-              "why": "Diluted blood carries less oxygen per liter, so less reaches the kidney cells, and they release more EPO."
+              "why": "Diluted blood carries less oxygen per liter, so less reaches the kidney cells, and they release more EPO. EPO peaked a day or two after the bleed and is now easing back, but on day four it is still above its level just after the bleed."
             },
             {
               "id": "reticulocytes",
@@ -9221,8 +9221,8 @@
       ],
       "level": 2,
       "misconception": "all jaundice turns the urine dark",
-      "setup": "An inherited defect makes a man’s red cells fragile, and macrophages destroy them after about 30 days instead of 120. His marrow and liver are healthy. Predict his blood and urine, compared with a healthy person.",
-      "start": "Red cells are destroyed four times faster",
+      "setup": "An inherited defect makes a man’s red cells fragile, and macrophages destroy them after about 15 days instead of 120. His marrow and liver are healthy. Predict his blood and urine, compared with a healthy person.",
+      "start": "Red cells are destroyed eight times faster",
       "steps": {
         "heme": "Much more heme is broken down each day",
         "bili": "More unconjugated bilirubin enters the plasma than the liver can handle",
@@ -9274,7 +9274,7 @@
             "fewer",
             "hb"
           ],
-          "why": "The marrow speeds up but cannot fully match a fourfold faster loss, so red cells and hemoglobin settle lower: a hemolytic anemia."
+          "why": "A healthy marrow can speed up several times over, but an eightfold faster loss is more than it can fully match, so red cells and hemoglobin settle lower: a hemolytic anemia."
         },
         {
           "id": "reticulocytes",
@@ -9371,7 +9371,7 @@
       "level": 2,
       "misconception": "sickled cells cause harm only by being too few",
       "setup": "A teenager with sickle cell disease has a stomach bug, becomes dehydrated and spends a cold night outdoors. Predict the next day, compared with his usual state.",
-      "start": "Dehydration and cold crowd HbS and make it give up oxygen",
+      "start": "Dehydration crowds HbS together, and cold slows blood through chilled small vessels, where HbS gives up its oxygen",
       "steps": {
         "patch": "Deoxygenated HbS shows a sticky patch on its surface",
         "fibers": "HbS molecules line up into long, stiff fibers",
@@ -10243,7 +10243,7 @@
       ],
       "level": 2,
       "misconception": "cutting the link to the hypothalamus lowers every pituitary hormone",
-      "setup": "A head injury tears the infundibulum, cutting both the hypophyseal portal veins and the axons that run down to the posterior pituitary. The pituitary gland itself is unharmed. Compare a few days later with before the injury.",
+      "setup": "A head injury tears the infundibulum, cutting both the hypophyseal portal veins and the axons that run down to the posterior pituitary. The pituitary gland itself is unharmed. Compare a day or two later with before the injury.",
       "start": "The infundibulum is torn",
       "steps": {
         "portal": "Portal veins no longer carry hypothalamic hormones down",
@@ -10619,10 +10619,9 @@
       "start": "The chief cells stop releasing PTH",
       "steps": {
         "pth": "PTH falls",
-        "bone": "Osteoclasts release less calcium from bone",
-        "kid": "The kidneys let more calcium go and keep more phosphate",
+        "less": "Bone releases less calcium, the kidneys keep less, and the intestine absorbs less",
+        "kid": "The kidneys keep more phosphate",
         "ctr": "The kidneys make less calcitriol",
-        "gut": "The intestine absorbs less calcium",
         "ca": "Blood calcium falls",
         "po4": "Blood phosphate rises",
         "na": "Voltage-gated sodium channels open more easily",
@@ -10635,10 +10634,7 @@
           "answer": "down",
           "chain": [
             "pth",
-            "bone",
-            "kid",
-            "ctr",
-            "gut",
+            "less",
             "ca"
           ],
           "why": "PTH is the main hormone that raises blood calcium. Without it, bone releases less calcium, the kidneys keep less, and with less calcitriol the intestine absorbs less, so calcium falls."
@@ -10670,8 +10666,7 @@
           "answer": "up",
           "chain": [
             "pth",
-            "bone",
-            "kid",
+            "less",
             "ca",
             "na",
             "tet"
@@ -10777,8 +10772,7 @@
       "setup": "A 12-year-old’s immune system has destroyed nearly all her beta cells over the past few months, and she has not yet been diagnosed or given insulin. Compare her now with before her beta cells were lost.",
       "start": "Almost no insulin is released",
       "steps": {
-        "glut": "Muscle and fat move few GLUT4 carriers to their membranes",
-        "liver": "The liver keeps releasing glucose",
+        "glut": "Muscle and fat take in little glucose, and the liver keeps releasing it",
         "glu": "Blood glucose rises",
         "sat": "Kidney carriers can take back only so much glucose",
         "urine": "Glucose stays in the urine",
@@ -10786,7 +10780,7 @@
         "poly": "Urine volume rises (polyuria)",
         "conc": "The plasma becomes more concentrated",
         "drink": "Thirst rises (polydipsia)",
-        "fat": "Nothing blocks fat breakdown",
+        "fat": "Nothing blocks fat breakdown, and glucagon runs high",
         "alpha": "Alpha cells lose the beta cells’ brake: glucagon high",
         "acid": "The liver pours out acids made from fat",
         "ph": "The blood becomes acidic",
@@ -10800,7 +10794,6 @@
           "answer": "up",
           "chain": [
             "glut",
-            "liver",
             "glu"
           ],
           "why": "With almost no insulin, muscle and fat let little glucose in, and the liver keeps making and releasing glucose. Nothing else lowers it, so blood glucose climbs."
@@ -10820,7 +10813,6 @@
           "answer": "up",
           "chain": [
             "glut",
-            "liver",
             "glu",
             "sat",
             "urine",
@@ -10835,7 +10827,6 @@
           "answer": "up",
           "chain": [
             "glut",
-            "liver",
             "glu",
             "sat",
             "urine",
@@ -10852,7 +10843,6 @@
           "answer": "down",
           "chain": [
             "glut",
-            "liver",
             "glu",
             "sat",
             "urine",
@@ -10866,7 +10856,6 @@
           "answer": "down",
           "chain": [
             "fat",
-            "alpha",
             "acid",
             "ph"
           ],
@@ -10878,7 +10867,6 @@
           "answer": "up",
           "chain": [
             "fat",
-            "alpha",
             "acid",
             "ph",
             "breathe"
@@ -10902,7 +10890,6 @@
       "steps": {
         "in": "Muscle and fat take glucose in; the liver stops releasing it",
         "low": "Blood glucose falls below 70 mg/dL",
-        "alpha": "Alpha cells release more glucagon",
         "med": "The adrenal medulla releases more epinephrine",
         "symp": "Sympathetic activity rises",
         "hr": "The heart beats faster and harder",
@@ -10912,17 +10899,6 @@
       },
       "variables": [
         {
-          "id": "glucagon",
-          "name": "Glucagon",
-          "answer": "up",
-          "chain": [
-            "in",
-            "low",
-            "alpha"
-          ],
-          "why": "At about 65 to 70 mg/dL, the alpha cells raise glucagon release. It is one of the first defenses, making the liver release glucose."
-        },
-        {
           "id": "epi",
           "name": "Epinephrine",
           "answer": "up",
@@ -10931,7 +10907,7 @@
             "low",
             "med"
           ],
-          "why": "The adrenal medulla joins in at about the same glucose level, raising glucose release from the liver."
+          "why": "The adrenal medulla responds at about 65 to 70 mg/dL, raising glucose release from the liver. In type 1 diabetes the alpha cells’ glucagon response to a low usually fades within the first few years, so epinephrine becomes the main defense."
         },
         {
           "id": "hr",
@@ -11240,7 +11216,7 @@
         "k": "The kidneys keep potassium",
         "kup": "Plasma potassium rises",
         "vol": "Blood volume falls",
-        "perm": "Vessels respond weakly to sympathetic signals",
+        "perm": "Without cortisol, vessels respond weakly to sympathetic signals",
         "bp": "Blood pressure falls",
         "gng": "Less gluconeogenesis",
         "glu": "Blood glucose falls"
@@ -11282,6 +11258,16 @@
           "why": "Aldosterone normally makes the kidney secrete potassium. Without it, potassium stays in the blood."
         },
         {
+          "id": "vessel-tone",
+          "name": "Vessel constriction in response to sympathetic signals",
+          "answer": "down",
+          "chain": [
+            "cort",
+            "perm"
+          ],
+          "why": "Cortisol keeps vessel smooth muscle responsive to norepinephrine. Without it, the same sympathetic signals constrict the vessels less, which adds to the fall in blood pressure."
+        },
+        {
           "id": "bp",
           "name": "Blood pressure",
           "answer": "down",
@@ -11289,11 +11275,9 @@
             "ald",
             "na",
             "vol",
-            "cort",
-            "perm",
             "bp"
           ],
-          "why": "Two losses add up: without aldosterone the kidneys lose sodium and water, so volume falls, and without cortisol the vessels respond weakly to sympathetic signals."
+          "why": "Two losses add up: without aldosterone the kidneys lose sodium and water, so blood volume falls, and at the same time, without cortisol, the vessels constrict weakly when sympathetic nerves signal them."
         },
         {
           "id": "glucose",
@@ -11390,104 +11374,118 @@
       ]
     },
     {
-      "id": "altitude-epo-l4",
-      "title": "Moving to a mountain town",
+      "id": "steroid-cycle-l4",
+      "title": "A year of anabolic steroids, then stopping",
       "topic": "other-endocrine",
       "core": [
-        "homeostasis",
-        "interdependence"
+        "communication",
+        "homeostasis"
       ],
       "level": 4,
-      "misconception": "more red blood cells appear within hours at altitude",
-      "setup": "A climber moves to a town at 3,500 meters and stays there. Each breath carries about a third less oxygen than at sea level.",
+      "misconception": "a man’s own testosterone comes back as soon as he stops taking anabolic steroids",
+      "setup": "A 25-year-old man injects high doses of an anabolic steroid for a year while he trains, then stops. Follow his muscles and his own hormones.",
       "stages": [
         {
-          "id": "hours",
-          "label": "The first day",
-          "prompt": "About a day after arriving, compared with sea level.",
-          "start": "Less oxygen reaches the kidney tissue",
+          "id": "on",
+          "label": "Months on the drug",
+          "prompt": "After several months on the drug, compared with before he started.",
+          "start": "A high level of a synthetic androgen circulates in his blood",
           "steps": {
-            "sense": "Oxygen-sensing kidney cells detect hypoxia",
-            "gene": "A protein that is normally broken down survives and switches on the EPO gene",
-            "epo": "EPO release rises",
-            "marrow": "Red bone marrow starts making more red blood cells",
-            "time": "New red blood cells take days to mature and enter the blood",
-            "count": "Red blood cell count has not yet changed"
+            "bind": "The drug binds androgen receptor proteins in skeletal muscle fibers",
+            "prot": "Muscle fibers make protein faster",
+            "hyper": "Muscle fibers hypertrophy",
+            "brake": "The high androgen level brakes the hypothalamus and anterior pituitary",
+            "lh": "GnRH, LH and FSH release fall",
+            "own": "Without LH, his testes make little testosterone of their own",
+            "shrink": "Without LH and FSH, his testes shrink"
           },
           "variables": [
             {
-              "id": "epo",
-              "name": "EPO in the blood",
+              "id": "muscle",
+              "name": "Muscle mass",
               "answer": "up",
               "chain": [
-                "sense",
-                "gene",
-                "epo"
+                "bind",
+                "prot",
+                "hyper"
               ],
-              "why": "The kidneys sense hypoxia directly. A protein that is normally broken down within minutes survives in low oxygen, enters the nucleus and switches on the EPO gene, so EPO rises within hours."
+              "why": "At high doses the drug binds androgen receptor proteins in skeletal muscle, speeds protein synthesis, and the fibers grow thicker (hypertrophy)."
             },
             {
-              "id": "rbc",
-              "name": "Red blood cell count",
-              "answer": "none",
+              "id": "lh",
+              "name": "LH in his blood",
+              "answer": "down",
               "chain": [
-                "sense",
-                "gene",
-                "epo",
-                "marrow",
-                "time",
-                "count"
+                "brake",
+                "lh"
               ],
-              "why": "EPO acts on the cells in the marrow that make red blood cells, but it takes days before new cells enter the blood and weeks before the count rises much."
+              "why": "Androgens exert negative feedback on the hypothalamus and anterior pituitary. The drug keeps that brake on hard, so GnRH, LH and FSH fall."
+            },
+            {
+              "id": "own-t",
+              "name": "Testosterone made by his own testes",
+              "answer": "down",
+              "chain": [
+                "brake",
+                "lh",
+                "own"
+              ],
+              "why": "LH is the signal that drives the testes to make testosterone. With LH suppressed, his own production falls, even though the drug floods his blood with androgen."
+            },
+            {
+              "id": "testes",
+              "name": "Size of his testes",
+              "answer": "down",
+              "chain": [
+                "brake",
+                "lh",
+                "shrink"
+              ],
+              "why": "LH and FSH keep the testes working and full-sized. With both suppressed for months, the testes shrink and sperm production falls."
             }
           ]
         },
         {
-          "id": "weeks",
-          "label": "Several weeks later",
-          "prompt": "After several weeks living at altitude, compared with that first day.",
-          "start": "EPO has kept the marrow busy for weeks",
+          "id": "off",
+          "label": "Two months after stopping",
+          "prompt": "Two months after his last dose, compared with while he was on the drug.",
+          "start": "The drug clears from his blood while his own LH is still suppressed",
           "steps": {
-            "made": "Many new red blood cells have entered the blood",
-            "count": "Red blood cell count rises",
-            "carry": "The blood carries more oxygen",
-            "kid": "More oxygen reaches the kidney tissue",
-            "fb": "EPO release falls back: negative feedback"
+            "total": "Total androgen in his blood falls low",
+            "loss": "Muscle fibers make protein more slowly and shrink",
+            "lift": "The feedback brake on his hypothalamus and pituitary lifts",
+            "climb": "GnRH and LH begin to climb, but slowly"
           },
           "variables": [
             {
-              "id": "rbc",
-              "name": "Red blood cell count",
-              "answer": "up",
-              "chain": [
-                "made",
-                "count"
-              ],
-              "why": "Weeks of EPO keep more red cell precursors alive and dividing, so the count climbs."
-            },
-            {
-              "id": "o2",
-              "name": "Oxygen carried by each liter of blood",
-              "answer": "up",
-              "chain": [
-                "made",
-                "count",
-                "carry"
-              ],
-              "why": "Red blood cells carry almost all the oxygen in the blood, so more of them in each liter means more oxygen carried."
-            },
-            {
-              "id": "epo",
-              "name": "EPO in the blood",
+              "id": "androgen",
+              "name": "Total androgen in his blood (the drug plus his own testosterone)",
               "answer": "down",
               "chain": [
-                "made",
-                "count",
-                "carry",
-                "kid",
-                "fb"
+                "total"
               ],
-              "why": "As oxygen delivery to the kidney improves, the sensing cells release less EPO. The response has removed part of its own stimulus: negative feedback."
+              "why": "The drug is gone, and his own axis has not caught up: after a year of suppression, LH recovers slowly, so his testes still make little testosterone. For weeks to months he has less androgen than before he ever started."
+            },
+            {
+              "id": "muscle",
+              "name": "Muscle mass",
+              "answer": "down",
+              "chain": [
+                "total",
+                "loss"
+              ],
+              "why": "With little androgen binding the receptor proteins in his muscle fibers, protein synthesis slows and the fibers shrink, so much of the drug-built muscle is lost."
+            },
+            {
+              "id": "brake",
+              "name": "Negative feedback holding back his hypothalamus and pituitary",
+              "answer": "down",
+              "chain": [
+                "total",
+                "lift",
+                "climb"
+              ],
+              "why": "With so little androgen in his blood, the brake on GnRH and LH lifts. His axis starts to climb back, but it can take months to reach its old level: negative feedback restores the set point slowly."
             }
           ]
         }
@@ -11609,7 +11607,7 @@
             "ne",
             "stop"
           ],
-          "why": "Without norepinephrine, pinealocytes stop making and releasing melatonin within minutes. That is why light at night, including from screens, pushes the body clock later."
+          "why": "Without norepinephrine, pinealocytes stop making and releasing melatonin within minutes. The same light signal also resets the suprachiasmatic nucleus itself, which is why light at night, including from screens, pushes the body clock later."
         }
       ]
     }

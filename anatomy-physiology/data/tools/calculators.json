@@ -2591,6 +2591,11 @@
               "tone": "hi"
             },
             {
+              "when": "H < 42 || H > 47",
+              "label": "in range for one sex only",
+              "tone": "ok"
+            },
+            {
               "label": "within the usual range",
               "tone": "ok"
             }
@@ -2605,6 +2610,10 @@
         {
           "when": "H > 52",
           "text": "Red cells fill more of the blood than usual. Either there are more red cells, or plasma water has been lost, as in dehydration, which raises the share without adding a single cell. More red cells also make the blood more viscous."
+        },
+        {
+          "when": "H < 42 || H > 47",
+          "text": "A hematocrit of {H}% is in range for one sex but not the other: below 42% is low for a man, and above 47% is high for a woman. Always compare with the range for the patient’s sex."
         },
         {
           "when": "1",

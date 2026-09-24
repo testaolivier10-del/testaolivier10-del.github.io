@@ -158,13 +158,13 @@
     "options": [
       "A hematopoietic stem cell divides",
       "One daughter cell becomes a myeloid stem cell",
-      "Thrombopoietin drives it to become a megakaryoblast",
-      "The megakaryoblast grows into a megakaryocyte with a huge, many-lobed nucleus",
+      "Thrombopoietin drives it down the platelet-making line",
+      "It grows into a megakaryocyte with a huge, many-lobed nucleus",
       "The megakaryocyte pushes extensions of cytoplasm into a marrow vessel",
       "Flowing blood pinches the extensions into platelets"
     ],
     "why": {
-      "correct": "Platelets come from the myeloid branch. A myeloid stem cell, driven by thrombopoietin, becomes a megakaryoblast and then a giant megakaryocyte, which copies its DNA without dividing. The megakaryocyte reaches into a marrow vessel, and the blood breaks its extensions into thousands of platelets."
+      "correct": "Platelets come from the myeloid branch. A myeloid stem cell, driven by thrombopoietin, becomes a giant megakaryocyte, which copies its DNA without dividing. The megakaryocyte reaches into a marrow vessel, and the blood breaks its extensions into thousands of platelets."
     }
   },
   {
@@ -321,7 +321,7 @@
     "options": [
       "Lymphoid stem cell",
       "Megakaryocyte",
-      "Monoblast",
+      "Red blood cell",
       "Mesenchymal cell"
     ],
     "correct": 0,
@@ -330,7 +330,7 @@
       "options": [
         "Correct. The lymphoid stem cell is the other branch.",
         "A megakaryocyte is a late cell on the myeloid branch that sheds platelets.",
-        "A monoblast is a stage on the myeloid branch that leads to one kind of white blood cell.",
+        "Red blood cells come from the myeloid branch, not a separate branch of their own.",
         "Mesenchymal cells are embryonic connective tissue cells, not a branch of blood cell production."
       ]
     }

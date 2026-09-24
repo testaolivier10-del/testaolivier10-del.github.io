@@ -1,0 +1,491 @@
+[
+  {
+    "id": "anp-small-intestine-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-18",
+    "pin": "jejunum",
+    "q": "Name the pinned region of the small intestine.",
+    "options": [
+      "Duodenum",
+      "Jejunum",
+      "Ileum",
+      "Large intestine"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "The jejunum is the middle region, coiled mostly in the upper left abdomen, between the duodenum and the ileum.",
+      "options": [
+        "The duodenum is the short, curved first part near the stomach.",
+        "Correct. It follows the duodenum and lies mostly in the upper left.",
+        "The ileum is the last region, coiled lower down on the right and in the pelvis.",
+        "The large intestine frames the small intestine around the edges."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-18",
+    "pin": "duodenum",
+    "q": "Name the pinned region of the small intestine.",
+    "options": [
+      "Jejunum",
+      "Ileum",
+      "Duodenum",
+      "Pyloric antrum"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The duodenum is the short, curved first region of the small intestine, which receives chyme from the stomach.",
+      "options": [
+        "The jejunum follows the duodenum and is much longer and coiled.",
+        "The ileum is the final region, low on the right.",
+        "Correct. It is the first, short, C-shaped region.",
+        "The pyloric antrum is part of the stomach, just before the pylorus."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-3",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A surgeon removes a patient's last meter of small intestine because of disease. Which lifelong treatment is the patient most likely to need?",
+    "options": [
+      "Tablets of lactase taken with every meal",
+      "Drugs that reduce stomach acid secretion",
+      "Injections of vitamin B12",
+      "Injections of insulin before meals"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The ileum is the only place where vitamin B12, bound to intrinsic factor, is absorbed. Without it, B12 from food cannot be taken up, so it must be given by injection.",
+      "options": [
+        "Lactase sits in the brush border of the whole small intestine and is most active in the jejunum, which remains.",
+        "Stomach acid is made by the stomach, which is untouched.",
+        "Correct. Removing the ileum removes the site of B12 absorption.",
+        "Insulin comes from the pancreatic islets, not the intestine."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-4",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which region of the small intestine has the most Peyer's patches?",
+    "options": [
+      "Ileum",
+      "Duodenum",
+      "Jejunum",
+      "They are spread evenly along its length"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Peyer's patches, clusters of lymphoid nodules in the wall, are most numerous in the ileum, the stretch closest to the bacteria-rich large intestine.",
+      "options": [
+        "Correct. They cluster in the ileum.",
+        "The duodenum has few Peyer's patches; its distinctive feature is the duodenal glands.",
+        "The jejunum has few; it is recognized by its tall circular folds and villi.",
+        "They are concentrated in the ileum, not spread evenly."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-5",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why does the first part of the duodenum contain glands that secrete a thick, alkaline mucus?",
+    "options": [
+      "It is where most fat is absorbed into the lacteals of the villi",
+      "It is where the migrating motor complex begins between meals",
+      "It receives the acidic chyme from the stomach first",
+      "It is where vitamin B12 is absorbed with intrinsic factor"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Chyme leaves the stomach at a pH near 2 and hits the first part of the duodenum before the pancreas's bicarbonate has mixed in. The alkaline mucus of the duodenal glands coats and protects that lining. That is also where most small-intestine ulcers form.",
+      "options": [
+        "Most fat is absorbed further along, mainly in the jejunum, and alkaline mucus does not absorb fat.",
+        "The migrating motor complex starts in the stomach and is driven by motilin; it has nothing to do with mucus secretion.",
+        "Correct. The alkaline mucus meets the incoming acid.",
+        "Vitamin B12 is absorbed at the far end of the small intestine, in the ileum."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-6",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function",
+      "gradients"
+    ],
+    "q": "Circular folds multiply the small intestine's surface about 3 times, villi about 10 times and microvilli about 20 times. A disease flattens the villi but leaves the folds and microvilli. By roughly how much does the absorptive surface fall?",
+    "options": [
+      "To about half of normal",
+      "To about one tenth of normal",
+      "To about one twentieth of normal",
+      "It stays about the same"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Normal: 3 × 10 × 20 = 600 times a smooth tube. With flat villi: 3 × 1 × 20 = 60. That is one tenth of normal, so absorption falls roughly tenfold.",
+      "options": [
+        "Losing a factor of 10 cuts the surface far more than in half.",
+        "Correct. 60 is one tenth of 600.",
+        "A twentyfold loss would mean losing the microvilli, which remain here.",
+        "The microvilli stand on the villi, so flattening the villi removes most of the surface they sit on."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-7",
+    "type": "order",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Put these structures of the small intestine in order of size, from largest to smallest.",
+    "options": [
+      "Circular fold",
+      "Villus",
+      "Absorptive cell",
+      "Microvillus"
+    ],
+    "why": {
+      "correct": "Circular folds are ridges up to about 1 cm tall, each covered in villi 0.5 to 1 mm tall. Each villus is covered in absorptive cells, and each cell carries a few thousand microvilli about 1 µm tall."
+    }
+  },
+  {
+    "id": "anp-small-intestine-8",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "intestinal juice is full of enzymes",
+    "q": "Select every enzyme that is built into the brush border of the small intestine's absorptive cells.",
+    "options": [
+      "Lactase",
+      "Sucrase",
+      "Pepsin",
+      "Maltase",
+      "Salivary amylase",
+      "Peptidases"
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "why": {
+      "correct": "Lactase, sucrase, maltase and the peptidases are brush border enzymes, anchored in the membrane of the microvilli. Pepsin comes from the stomach's chief cells, and salivary amylase from the salivary glands.",
+      "options": [
+        "Correct. Lactase splits lactose at the brush border.",
+        "Correct. Sucrase splits sucrose at the brush border.",
+        "Pepsin is secreted by chief cells in the stomach and stops working at the higher pH of the small intestine.",
+        "Correct. Maltase splits maltose into two glucose.",
+        "Salivary amylase is made in the salivary glands and works in the mouth and inside the swallowed bolus.",
+        "Correct. Peptidases split short peptides into amino acids."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-9",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: A child drinks milk → lactose reaches the small intestine → ______ → glucose and galactose are absorbed by the absorptive cells",
+    "options": [
+      "Pepsin carried from the stomach splits lactose in the lumen",
+      "Intestinal juice from the glands splits lactose in the lumen",
+      "Lactose is absorbed whole and split later inside the liver",
+      "Brush border lactase splits it into glucose and galactose"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Lactase, built into the microvillus membrane, splits lactose into glucose and galactose right beside the transporters that absorb them.",
+      "options": [
+        "Pepsin digests protein, not sugars.",
+        "Intestinal juice is mostly water and mucus with very little enzyme; lactose is split at the brush border.",
+        "Disaccharides such as lactose are not absorbed whole; they must be split into single sugars first.",
+        "Correct. Lactase is a brush border enzyme."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-10",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "A person who has not eaten since the evening before eats a large breakfast. Predict the change in each variable over the next half hour, compared with before the meal.",
+    "variables": [
+      {
+        "name": "Migrating motor complexes in the small intestine",
+        "answer": "down",
+        "why": "Eating stops the fasting pattern at once, and motilin release falls."
+      },
+      {
+        "name": "Segmentation in the small intestine",
+        "answer": "up",
+        "why": "Chyme stretching the wall drives the enteric nervous system into the mixing pattern that follows a meal."
+      },
+      {
+        "name": "Motility of the ileum",
+        "answer": "up",
+        "why": "Through the gastroileal reflex, food entering the stomach increases ileal contractions."
+      },
+      {
+        "name": "Opening of the ileocecal sphincter",
+        "answer": "up",
+        "why": "The gastroileal reflex relaxes the sphincter, so leftover contents move into the large intestine."
+      }
+    ],
+    "why": {
+      "correct": "Eating switches the small intestine from the fasting sweep of the migrating motor complex to the mixing pattern of segmentation. At the same time, the gastroileal reflex empties the ileum into the large intestine, making room for the new meal."
+    }
+  },
+  {
+    "id": "anp-small-intestine-11",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "After a fatty meal, the lymph in the lymphatic vessels of the mesentery looks milky white. Why?",
+    "options": [
+      "Milk proteins are absorbed whole from the lumen into the lymph",
+      "White blood cells in the lymph multiply rapidly after every meal",
+      "Mucus from intestinal juice drains into the lymph vessels",
+      "Absorbed fat, in droplets too big for capillaries, enters lacteals"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Absorptive cells package digested fat into droplets that are too large to cross into blood capillaries. They enter the lacteal in the core of each villus, and the fat-laden lymph looks milky.",
+      "options": [
+        "Proteins are split into amino acids and absorbed into the blood capillaries, not the lymph.",
+        "The milky color comes from fat droplets, not from cells.",
+        "Intestinal juice is secreted into the lumen, not into the lymph.",
+        "Correct. Fat droplets in the lymph give it the milky look that named the lacteals."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-12",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "During a cholera outbreak, a man passes liters of watery stool a day. Cholera toxin locks open the chloride channels of the cells in his intestinal glands. Why does this produce so much water loss?",
+    "options": [
+      "Chloride pours into the lumen and water follows, outpacing reabsorption",
+      "The toxin destroys the villi, so no water is absorbed at all",
+      "Chloride enters the gland cells and draws water out of the lumen",
+      "The toxin blocks the lacteals, so fluid backs up into the intestine"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The intestinal glands normally secrete intestinal juice by moving chloride into the lumen, with sodium and water following. Locked-open channels drive this secretion far beyond normal, and the villi cannot take all that water back, so it leaves as watery stool.",
+      "options": [
+        "Correct. The glands' secretion of chloride, sodium and water outpaces absorption.",
+        "Cholera leaves the villi intact; that is why a glucose and salt drink still works, since their absorptive cells still take up sodium with glucose.",
+        "The channels move chloride out of the cells into the lumen. Water follows the solute into the lumen, not out of it.",
+        "Cholera toxin acts on the chloride channels of the glands, not on the lymphatic vessels."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-13",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A patient receiving chemotherapy, which kills rapidly dividing cells, develops sores in the mouth and a damaged, leaky intestinal lining within a week. Why is the intestinal lining so quickly affected?",
+    "options": [
+      "Chemotherapy is concentrated in bile, which is secreted into the intestine",
+      "Its stem cells divide constantly, renewing the lining every few days",
+      "The villi are made of smooth muscle, which chemotherapy targets directly",
+      "The drug digests the brush border enzymes on the microvilli"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Stem cells at the base of the intestinal glands divide all the time, and their daughters live only 3 to 5 days before being shed from the villus tips. A drug that stops cell division halts the supply, so within days the lining thins and breaks down.",
+      "options": [
+        "The effect comes from blocked cell division throughout the body, not from delivery in bile.",
+        "Correct. Rapid renewal makes the lining one of the tissues most sensitive to drugs that kill dividing cells.",
+        "Villi are covered by epithelium over a core of connective tissue; only a few smooth muscle strands run in them, and smooth muscle is not what is damaged.",
+        "Chemotherapy does not digest enzymes. The enzymes disappear because the cells that carry them are not replaced."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "How do the circular folds of the small intestine differ from the rugae of the stomach?",
+    "options": [
+      "Circular folds flatten when the intestine fills, but rugae do not",
+      "Circular folds are folds of muscle, while rugae are folds of serosa",
+      "Circular folds are microscopic, while rugae can be seen by eye",
+      "Circular folds are permanent; rugae flatten as the stomach fills"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Both are folds of the mucosa and submucosa, but circular folds are permanent ridges that increase absorptive surface and slow the chyme, while rugae are temporary folds that let the stomach expand.",
+      "options": [
+        "It is the other way round: rugae flatten, circular folds stay.",
+        "Both are folds of mucosa and submucosa; neither is a fold of muscle or serosa.",
+        "Both can be seen by eye; circular folds are up to about 1 cm tall.",
+        "Correct. Their permanence fits their job of adding absorptive area."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-15",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In a fasting person, a band of strong peristaltic contraction starts in the stomach about every 90 to 120 minutes and travels down to the ileum. What is this pattern for, and what triggers it?",
+    "options": [
+      "It mixes chyme with pancreatic secretions, triggered by secretin",
+      "It clears residue and bacteria, triggered by motilin",
+      "It empties bile from the gallbladder, triggered by CCK after a meal",
+      "It relaxes the ileocecal sphincter after meals, triggered by gastrin"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "This is the migrating motor complex. Released between meals, motilin triggers it, and it sweeps undigested particles, shed cells and bacteria toward the large intestine. Eating stops it.",
+      "options": [
+        "Mixing with secretions is segmentation, which happens after meals. Secretin releases bicarbonate and does not start this pattern.",
+        "Correct. The migrating motor complex is the fasting housekeeper.",
+        "CCK contracts the gallbladder after fatty meals, not in fasting.",
+        "Relaxing the ileocecal sphincter after a meal is the gastroileal reflex."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-16",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Priya has celiac disease, and her villi are flattened. She gets bloating and loose stools after milk but not after plain rice. Which brush border change best explains this?",
+    "options": [
+      "Her pancreas has stopped secreting its digestive enzymes into the duodenum",
+      "Her stomach no longer secretes pepsin because of the immune reaction",
+      "She has lost most lactase, the scarcest brush border enzyme",
+      "She has lost her maltase, so she cannot digest the starch in rice"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Brush border enzymes are part of the absorptive cells on the villi, so flattened villi carry far less of them. Lactase is the least abundant, so it is usually the first to fall short, and lactose goes undigested. Starch is still split to maltose by pancreatic enzymes, and the remaining maltase activity copes.",
+      "options": [
+        "Celiac disease damages the intestinal lining, not the pancreas, and a pancreatic problem would affect rice starch too.",
+        "Pepsin digests protein, and the stomach is not affected by celiac disease.",
+        "Correct. Lactase falls first when villi are damaged.",
+        "If she could not digest starch, rice would cause symptoms too. Maltase is more abundant than lactase and is not the first to run short."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-17",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "This pathway follows starch through the small intestine. Which step is wrong?",
+    "options": [
+      "Enzymes from the pancreas split starch in the lumen into maltose and short chains",
+      "Segmentation presses the maltose against the brush border",
+      "Maltase in the microvillus membrane splits maltose into two glucose",
+      "Glucose enters the lacteal in the core of the villus",
+      "The blood carries glucose from the intestine to the liver"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Glucose, like amino acids, enters the blood capillaries of the villus and travels in the hepatic portal vein to the liver. The lacteal carries absorbed fat.",
+      "options": [
+        "This step is right. Pancreatic enzymes leave maltose and short sugar chains.",
+        "This step is right. Mixing keeps fresh contents in contact with the brush border.",
+        "This step is right. Maltase is a brush border enzyme.",
+        "This is the error. Glucose enters the blood capillaries, not the lacteal.",
+        "This step is right. The hepatic portal vein carries absorbed sugars to the liver first."
+      ]
+    }
+  },
+  {
+    "id": "anp-small-intestine-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A surgeon opening the abdomen finds a loop of small intestine with a thick, red wall and tall, closely packed circular folds inside. Which region is this most likely to be?",
+    "options": [
+      "Jejunum",
+      "Ileum",
+      "Duodenum",
+      "The first part of the large intestine"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The jejunum has a thicker, redder wall, from its rich blood supply, and the tallest, most closely packed circular folds. The ileum is thinner and paler with low, sparse folds.",
+      "options": [
+        "Correct. Thick red wall and tall folds mark the jejunum.",
+        "The ileum has a thinner, paler wall and low, sparse circular folds.",
+        "The duodenum is mostly retroperitoneal and fixed behind the peritoneum; a free loop is jejunum or ileum.",
+        "The large intestine is wider and does not have circular folds like these."
+      ]
+    }
+  }
+]

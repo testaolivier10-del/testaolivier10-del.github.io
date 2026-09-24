@@ -1,0 +1,49 @@
+{
+  "topic": "small-intestine",
+  "hook": "<p>Priya, 24, has lost 6 kg in a year without trying. She feels bloated after meals, her stools are loose, pale and hard to flush, and her blood tests show iron deficiency. She eats well. A biopsy from the first part of her small intestine shows that the finger-like projections of its lining have flattened almost completely. She has celiac disease, an immune reaction to gluten in wheat, and it has taken away most of her absorptive surface. On a gluten-free diet the projections grow back within months.</p>",
+  "prereq": [
+    {
+      "q": "Which change would speed diffusion of a nutrient across a membrane barrier?",
+      "options": ["A thicker barrier", "A larger surface area", "A smaller concentration gradient"],
+      "correct": 1,
+      "why": "Diffusion rate rises with surface area and concentration gradient and falls with the thickness of the barrier.",
+      "review": "diffusion-osmosis"
+    },
+    {
+      "q": "What are microvilli?",
+      "options": ["Hair-like projections that beat to move mucus", "Tiny finger-like folds of the plasma membrane, supported by actin, that increase surface area", "Channels that join neighboring cells"],
+      "correct": 1,
+      "why": "Microvilli are membrane projections with a core of actin filaments. They do not move; cilia beat, and gap junctions join cells.",
+      "review": "organelles"
+    },
+    {
+      "q": "What does segmentation do to the contents of the gut?",
+      "options": ["Mixes them with little forward movement", "Pushes them rapidly toward the anus", "Absorbs them into the blood"],
+      "correct": 0,
+      "why": "Segmentation is alternating rings of contraction that chop and remix the contents; peristalsis is what moves them along.",
+      "review": "digestive-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-23-18",
+    "caption": "The small intestine in place. Hide the labels and name its three regions, from the stomach's outlet to the large intestine."
+  },
+  "chain": [
+    { "cause": "Chyme enters the duodenum and stretches its wall.", "effect": "Segmentation mixes it with bile and pancreatic secretions and presses it against the lining again and again." },
+    { "cause": "Enzymes from the pancreas split starch and proteins in the lumen.", "effect": "Short pieces, such as maltose and small peptides, reach the brush border of the absorptive cells." },
+    { "cause": "Brush border enzymes in the microvillus membrane, such as maltase and the peptidases, cut these pieces.", "effect": "Single sugars and amino acids are released right beside the transporters that carry them into the cell." },
+    { "cause": "The monomers cross the absorptive cells into the core of each villus.", "effect": "Sugars and amino acids enter the blood capillaries and travel to the liver; fat, packaged into droplets, enters the lacteal." },
+    { "cause": "The circular folds, villi and microvilli multiply the surface doing this about 600-fold.", "effect": "Absorption keeps pace with digestion, and nearly all nutrients are taken up before the chyme leaves the ileum." }
+  ],
+  "misconception": {
+    "wrong": "Digestion in the small intestine happens in the fluid of the lumen, and intestinal juice is full of digestive enzymes.",
+    "right": "Intestinal juice from the intestinal glands is mostly water and mucus, with very little enzyme. The enzymes in the lumen come from the pancreas, and they leave short pieces. The final step, splitting those pieces into single sugars and amino acids, is done by brush border enzymes built into the membrane of the microvilli, right where the products are absorbed."
+  },
+  "check": ["anp-small-intestine-3", "anp-small-intestine-5", "anp-small-intestine-6", "anp-small-intestine-9", "anp-small-intestine-11", "anp-small-intestine-13", "anp-small-intestine-16"],
+  "summary": "<p>The small intestine has three regions: the duodenum (receives chyme, bile and pancreatic secretions; duodenal glands secrete alkaline mucus), the jejunum (absorbs most nutrients; tall circular folds and villi) and the ileum (absorbs vitamin B12 and recovers bile; many Peyer's patches; ends at the ileocecal valve). Circular folds, villi and microvilli multiply its surface about 600-fold. Each villus holds blood capillaries and a lacteal, which takes up fat. Intestinal glands between the villi renew the lining every 3 to 5 days, defend it with Paneth cells, and secrete 1 to 2 L a day of watery intestinal juice. Brush border enzymes (lactase, sucrase, maltase and peptidases) finish digestion at the microvillus membrane. After a meal, segmentation mixes chyme and moves it slowly; between meals the migrating motor complex, triggered by motilin, sweeps the tube clean; and the gastroileal reflex relaxes the ileocecal sphincter when a new meal arrives.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-26", "label": "NREMT: Abdominal emergencies" },
+    { "href": "/ochem/lessons/carbohydrates.html", "label": "Organic chemistry: Carbohydrates" },
+    { "href": "/ochem/lessons/peptides-proteins.html", "label": "Organic chemistry: Peptides and proteins" }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "topic": "stomach",
+  "hook": "<p>Mr. Brennan, 52, has taken ibuprofen every day for a year for back pain. This morning he felt faint getting out of bed, and his stools have been black and sticky for two days. A camera passed through his mouth finds a bleeding ulcer in his stomach lining, and a biopsy shows spiral bacteria in the mucus. His stomach makes no more acid than yours. What failed is the barrier that normally keeps that acid off his stomach wall, and both the drug and the bacteria helped break it down.</p>",
+  "prereq": [
+    {
+      "q": "What makes a transporter an example of primary active transport?",
+      "options": ["It uses ATP directly to move a substance against its gradient", "It lets a substance move down its gradient through a channel", "It uses the sodium gradient built by another pump"],
+      "correct": 0,
+      "why": "Primary active transport spends ATP directly, as the sodium–potassium pump does. Using a gradient built by another pump is secondary active transport; moving down a gradient is passive.",
+      "review": "active-transport"
+    },
+    {
+      "q": "What does carbonic anhydrase speed up?",
+      "options": ["The splitting of ATP", "The reaction of carbon dioxide with water to form carbonic acid", "The binding of oxygen to hemoglobin"],
+      "correct": 1,
+      "why": "Carbonic anhydrase speeds CO2 + H2O ⇌ H2CO3, which splits into H+ and bicarbonate.",
+      "review": "co2-transport"
+    },
+    {
+      "q": "What is the main effect of gastrin?",
+      "options": ["It slows emptying of the stomach", "It makes the gallbladder contract", "It increases acid secretion by the stomach"],
+      "correct": 2,
+      "why": "Gastrin, released from the lower stomach by protein, stretch and vagal signals, raises stomach acid secretion.",
+      "review": "digestive-overview"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-23-15",
+    "caption": "The stomach cut open from the front. Hide the labels and name its four regions, the pyloric sphincter, the rugae and the three muscle layers."
+  },
+  "chain": [
+    { "cause": "Protein fragments in the stomach and vagal signals stimulate the G cells.", "effect": "G cells release gastrin into the blood." },
+    { "cause": "Gastrin, acetylcholine and histamine act on the parietal cells.", "effect": "Carbonic anhydrase makes H+ and bicarbonate, and the H+/K+ proton pump spends ATP to push H+ into the gland's lumen, where it pairs with Cl− as hydrochloric acid." },
+    { "cause": "Acid reaches the pepsinogen released by the chief cells.", "effect": "Pepsinogen cuts itself into active pepsin, and pepsin activates more, so protein digestion begins." },
+    { "cause": "Acid keeps accumulating and the pH in the antrum falls below about 3.", "effect": "D cells release somatostatin, which shuts off gastrin release." },
+    { "cause": "With less gastrin, the parietal cells receive a weaker stimulus.", "effect": "Acid secretion falls: negative feedback keeps the stomach from over-acidifying." }
+  ],
+  "misconception": {
+    "wrong": "The stomach is where most food is digested and absorbed, and its acid does the digesting.",
+    "right": "Acid denatures proteins, kills microbes and activates pepsin, but splits few bonds itself. Pepsin does only a minority of protein digestion, and the stomach absorbs almost no nutrients. The small intestine does most digestion and nearly all absorption. People whose stomach has been removed digest food well on small meals; what they cannot do without is intrinsic factor, so they need vitamin B12 injections."
+  },
+  "check": ["anp-stomach-4", "anp-stomach-5", "anp-stomach-7", "anp-stomach-9", "anp-stomach-12", "anp-stomach-15", "anp-stomach-17", "anp-stomach-19"],
+  "summary": "<p>The stomach's regions are the cardia, fundus, body and pyloric part (antrum, canal and pylorus, guarded by the pyloric sphincter). Rugae and relaxation let it fill; an extra oblique muscle layer lets it churn. Gastric pits lead into gastric glands with mucous neck cells, parietal cells (hydrochloric acid and intrinsic factor), chief cells (pepsinogen and gastric lipase) and enteroendocrine cells such as G cells (gastrin). Parietal cells make acid with carbonic anhydrase and the H+/K+ proton pump, releasing bicarbonate into the blood as the alkaline tide. Acid turns the zymogen pepsinogen into pepsin. Intrinsic factor is needed to absorb vitamin B12. Secretion runs in cephalic, gastric and intestinal phases, and low pH shuts off gastrin. Mixing waves make chyme; the enterogastric reflex, CCK and secretin set the pace of gastric emptying. Mucus, bicarbonate, tight junctions, renewal, blood flow and prostaglandins form the mucosal barrier, which Helicobacter pylori and NSAIDs break down to cause peptic ulcers. Vomiting is a reflex coordinated in the medulla oblongata and powered by the diaphragm and abdominal muscles.</p>",
+  "connections": [
+    { "href": "/nremt/study-notes.html#chapter-26", "label": "NREMT: Abdominal emergencies" },
+    { "href": "/nremt/study-notes.html#chapter-18", "label": "NREMT: General pharmacology" },
+    { "href": "/ochem/lessons/bronsted.html", "label": "Organic chemistry: Brønsted acids and bases" }
+  ]
+}

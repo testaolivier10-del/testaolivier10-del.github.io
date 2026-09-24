@@ -1,0 +1,37 @@
+{
+  "carb-digestion": {
+    "def": "Salivary and pancreatic amylase cut starch into maltose, maltotriose and α-dextrins; brush border enzymes (α-dextrinase, maltase, sucrase, lactase) finish them into glucose, galactose and fructose. Glucose and galactose enter absorptive cells with sodium through SGLT1, the sodium-glucose cotransporter (secondary active transport); fructose enters by facilitated diffusion. All three leave into the villus capillaries.",
+    "roots": [["amyl-", "starch"], ["-ase", "enzyme"], ["dextr-", "right"], ["-ose", "sugar"]],
+    "say": ""
+  },
+  "protein-digestion": {
+    "def": "Proteolysis, the splitting of proteins at their peptide bonds: pepsin in the stomach, then trypsin, chymotrypsin, elastase and carboxypeptidase from the pancreas, then aminopeptidase and dipeptidase at the brush border. Amino acids enter absorptive cells with sodium, and dipeptides and tripeptides with hydrogen ions; they reach the blood as amino acids.",
+    "roots": [["prote-", "protein"], ["-lysis", "splitting"], ["pept-", "digestion"]],
+    "say": "proh-tee-OL-ih-sis"
+  },
+  "lipid-digestion": {
+    "def": "Bile salts emulsify fat; pancreatic lipase splits triglycerides into fatty acids and monoglycerides; micelles carry these to the brush border; absorptive cells rebuild triglycerides and package them into chylomicrons, which enter the lacteals as chyle and reach the blood through the thoracic duct.",
+    "roots": [["mono-", "one"], ["mica (Latin)", "crumb"], ["chyl-", "juice"], ["micr-", "small"]],
+    "say": "KY-loh-MY-kron"
+  },
+  "nucleic-acid-digestion": {
+    "def": "Pancreatic nucleases (ribonuclease for RNA, deoxyribonuclease for DNA) cut nucleic acids into nucleotides; brush border nucleosidases and phosphatases split these into pentose sugars, nitrogenous bases and phosphate, which are absorbed by active transport.",
+    "roots": [["nucle-", "nucleus"], ["-ase", "enzyme"]],
+    "say": ""
+  },
+  "vitamin-absorption": {
+    "def": "Vitamins that dissolve in fat, such as D and K, are absorbed with dietary fat in micelles and leave in chylomicrons; vitamins that dissolve in water use carriers. Vitamin B12 needs intrinsic factor from the stomach and pancreatic proteases, and is absorbed in the terminal ileum by receptor-mediated endocytosis.",
+    "roots": [],
+    "say": ""
+  },
+  "water-electrolyte-absorption": {
+    "def": "About 9 L of water enter the gut each day, and about 98% is absorbed, most in the small intestine. The gut absorbs sodium (with sugars and amino acids, in exchange for hydrogen ions, or through channels) and chloride, and water follows by osmosis. Calcium absorption depends on calcitriol, and iron absorption is set by need.",
+    "roots": [],
+    "say": ""
+  },
+  "lactose-intolerance": {
+    "def": "Bloating, cramps, gas and diarrhea after eating more lactose than the remaining lactase can digest. Undigested lactose holds water in the gut and is fermented by colon bacteria. Low adult lactase (lactase non-persistence) is the pattern in most of the world's adults; it is not an allergy.",
+    "roots": [["lact-", "milk"], ["-ose", "sugar"]],
+    "say": ""
+  }
+}

@@ -3526,8 +3526,8 @@
         "at": 3,
         "distractors": [
           {
-            "text": "Tissue factor with VIIa activates IX.",
-            "why": "Tissue factor and VIIa belong to the extrinsic pathway, and the aPTT tube has no tissue factor added. In the intrinsic pathway, IXa with VIIIa activates X."
+            "text": "XIa activates X directly, without IX.",
+            "why": "XIa’s target is IX. It is IXa, with its cofactor VIIIa, that activates X, which is why missing VIII or IX lengthens the aPTT."
           },
           {
             "text": "IXa activates VIII, which cuts prothrombin directly.",
@@ -4347,7 +4347,7 @@
         "text": "In bright light, the fibers release the most norepinephrine onto pinealocytes.",
         "why": "Light shuts the pathway down. Norepinephrine, and so melatonin, is released in darkness, and light stops it within minutes."
       },
-      "summary": "Eye, SCN, spinal cord, superior cervical ganglion, sympathetic fibers, norepinephrine, pinealocytes, melatonin. Darkness turns the pathway on; light turns it off, which is why evening light and screens push the body clock later."
+      "summary": "Eye, SCN, spinal cord, superior cervical ganglion, sympathetic fibers, norepinephrine, pinealocytes, melatonin. At night, as timed by the SCN, the pathway runs; light turns it off within minutes. Evening light and screens also reset the SCN clock itself later."
     }
   ]
 }

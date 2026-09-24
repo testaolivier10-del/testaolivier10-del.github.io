@@ -1,0 +1,22 @@
+{
+  "small-intestine-regions": {
+    "def": "The three regions of the small intestine: the duodenum (about 25 cm; receives chyme, bile and pancreatic secretions; duodenal glands secrete alkaline mucus), the jejunum (absorbs most nutrients) and the ileum (absorbs vitamin B12 and recovers bile; ends at the ileocecal valve, or ileocecal sphincter, which opens into the large intestine).",
+    "roots": [["duoden-", "twelve each"], ["jejun-", "empty"], ["ile-", "to roll up"]],
+    "say": "doo-oh-DEE-num; jeh-JOO-num; IL-ee-um"
+  },
+  "absorptive-surface": {
+    "def": "The three levels that multiply the small intestine's absorptive surface: circular folds (permanent ridges of mucosa and submucosa), villi (finger-like projections of the mucosa, each with blood capillaries and a central lacteal for fat) and microvilli on each absorptive cell. Intestinal glands between the villi renew the lining and secrete watery intestinal juice.",
+    "roots": [["plica", "fold"], ["villus", "shaggy hair"], ["lact-", "milk"]],
+    "say": "VIL-eye (villi); LAK-tee-ul"
+  },
+  "brush-border-enzymes": {
+    "def": "Enzymes built into the membrane of the microvilli that finish digestion at the absorbing surface: lactase (lactose to glucose and galactose), sucrase (sucrose to glucose and fructose), maltase (maltose to two glucose) and peptidases (short peptides to amino acids).",
+    "roots": [["lact-", "milk"], ["sucr-", "sugar"], ["pept-", "digested, protein fragment"], ["-ase", "enzyme"]],
+    "say": ""
+  },
+  "small-intestine-motility": {
+    "def": "After a meal, segmentation mixes chyme and moves it slowly, with short peristaltic waves. Between meals, the migrating motor complex, triggered by motilin, sweeps residue and bacteria from the stomach to the end of the ileum. The gastroileal reflex increases ileal motility and relaxes the ileocecal sphincter when food enters the stomach.",
+    "roots": [["gastr-", "stomach"], ["ile-", "ileum"]],
+    "say": ""
+  }
+}

@@ -119,7 +119,7 @@
     "core": [
       "structure-function"
     ],
-    "q": "Put the steps in order to trace bile made by a hepatocyte, stored in the gallbladder, and released after a meal.",
+    "q": "Trace bile made by a hepatocyte, stored in the gallbladder and released after a meal. Put the steps in order.",
     "options": [
       "A hepatocyte secretes bile into a bile canaliculus, which carries it to a bile duct in a portal triad",
       "Bile drains through a hepatic duct into the common hepatic duct",
@@ -395,7 +395,7 @@
     "options": [
       "A small volume of juice rich in enzymes, driven by cholecystokinin",
       "A large volume of juice rich in bicarbonate, driven by secretin",
-      "No change, because the pancreas responds only to fat and protein",
+      "No change in pancreatic secretion",
       "Juice rich in trypsin, activated inside the pancreatic duct"
     ],
     "correct": 1,
@@ -404,7 +404,7 @@
       "options": [
         "Cholecystokinin is released by fat and protein, not acid, and it drives the enzyme-rich secretion of the acinar cells.",
         "Correct. Acid releases secretin, which drives bicarbonate secretion.",
-        "Acid is the main stimulus for secretin, so the pancreas does respond.",
+        "The pancreas does respond: acid is the main stimulus for secretin, which drives bicarbonate secretion.",
         "Trypsin is activated in the duodenum by enteropeptidase, never normally in the duct."
       ]
     }
@@ -534,7 +534,7 @@
     "q": "Between meals, the liver keeps making bile. What makes that bile end up in the gallbladder rather than the duodenum?",
     "options": [
       "The gallbladder pumps bile up the common bile duct",
-      "The hepatopancreatic sphincter is closed, so bile backs up the cystic duct",
+      "The hepatopancreatic sphincter is closed and bile backs up the cystic duct",
       "Secretin closes the common hepatic duct",
       "Cholecystokinin relaxes the gallbladder wall and draws bile in"
     ],

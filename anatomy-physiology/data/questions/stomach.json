@@ -1,0 +1,558 @@
+[
+  {
+    "id": "anp-stomach-1",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-15",
+    "pin": "fundus",
+    "q": "Name the pinned region of the stomach.",
+    "options": [
+      "Fundus",
+      "Cardia",
+      "Body",
+      "Pyloric antrum"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The fundus is the dome that bulges up beside the opening from the esophagus, under the diaphragm.",
+      "options": [
+        "Correct. It rises above the level of the esophageal opening.",
+        "The cardia is the small region right around the esophageal opening, not the dome beside it.",
+        "The body is the large central region below the fundus.",
+        "The pyloric antrum is the wide part of the pyloric region, near the outlet."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-2",
+    "type": "image",
+    "level": "recall",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-16",
+    "pin": "parietal-cell",
+    "q": "Name the pinned cell of the gastric gland.",
+    "options": [
+      "Chief cell",
+      "Parietal cell",
+      "Enteroendocrine cell",
+      "Mucous neck cell"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Parietal cells are the large, rounded cells that bulge from the upper part of the gland wall. They secrete hydrochloric acid and intrinsic factor.",
+      "options": [
+        "Chief cells are smaller, granule-filled cells concentrated lower in the gland.",
+        "Correct. Their size, shape and position in the upper gland identify them.",
+        "Enteroendocrine cells are few and sit near the base of the gland.",
+        "Mucous neck cells line the neck of the gland, just below the pit, and are not the large bulging cells."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-3",
+    "type": "image",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "figure": "os-23-15",
+    "pin": "rugae",
+    "q": "Name the pinned folds of the stomach lining.",
+    "options": [
+      "Rugae",
+      "Gastric pits",
+      "Oblique layer",
+      "Lesser curvature"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Rugae are the large folds of mucosa and submucosa in an empty or partly filled stomach. They flatten as the stomach fills.",
+      "options": [
+        "Correct. These are the visible folds of the lining.",
+        "Gastric pits are microscopic openings in the surface, too small to see as folds.",
+        "The oblique layer is muscle in the wall, not folds of the lining.",
+        "The lesser curvature is the short inner edge of the stomach."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-4",
+    "type": "order",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "gradients",
+      "structure-function"
+    ],
+    "q": "Put the steps of acid secretion by a parietal cell in order.",
+    "options": [
+      "Carbon dioxide and water combine inside the cell, sped up by carbonic anhydrase",
+      "Carbonic acid splits into H+ and bicarbonate",
+      "The H+/K+ ATPase spends ATP to pump H+ into the lumen in exchange for K+",
+      "Cl− leaves the cell into the lumen through channels",
+      "H+ and Cl− form hydrochloric acid in the lumen of the gland"
+    ],
+    "why": {
+      "correct": "Carbonic anhydrase makes carbonic acid, which splits into H+ and bicarbonate. The proton pump moves H+ into the lumen against a huge gradient, Cl− follows through channels, and the two make hydrochloric acid outside the cell. Meanwhile the bicarbonate goes to the blood."
+    }
+  },
+  {
+    "id": "anp-stomach-5",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "A patient with a peptic ulcer takes a proton pump inhibitor, which blocks the H+/K+ ATPase of parietal cells. Predict the change in each variable after a meal, compared with before treatment.",
+    "variables": [
+      {
+        "name": "pH of the stomach contents",
+        "answer": "up",
+        "why": "With the pump blocked, far less H+ is moved into the lumen, so the contents are less acidic."
+      },
+      {
+        "name": "Conversion of pepsinogen to pepsin",
+        "answer": "down",
+        "why": "Pepsinogen needs acid, below about pH 5, to cut itself into pepsin."
+      },
+      {
+        "name": "Gastrin in the blood",
+        "answer": "up",
+        "why": "Low pH normally releases somatostatin, which shuts gastrin off. Without the acid, that brake is removed and G cells keep releasing gastrin."
+      },
+      {
+        "name": "Bicarbonate added to the blood by the stomach (alkaline tide)",
+        "answer": "down",
+        "why": "One bicarbonate enters the blood for each H+ secreted, so less acid means less alkaline tide."
+      }
+    ],
+    "why": {
+      "correct": "Blocking the final step of acid secretion raises the stomach's pH, so less pepsin is activated and less bicarbonate goes to the blood. The rise in pH also removes the negative feedback on gastrin, which rises."
+    }
+  },
+  {
+    "id": "anp-stomach-6",
+    "type": "single",
+    "level": "recall",
+    "diff": 1,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Which cell of the gastric glands secretes pepsinogen?",
+    "options": [
+      "Parietal cell",
+      "Chief cell",
+      "G cell",
+      "Surface mucous cell"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "Chief cells, mostly at the base of the gastric glands, make and store pepsinogen and release it into the gland's lumen.",
+      "options": [
+        "Parietal cells secrete hydrochloric acid and intrinsic factor.",
+        "Correct. Chief cells secrete pepsinogen and gastric lipase.",
+        "G cells are enteroendocrine cells that release gastrin into the blood.",
+        "Surface mucous cells secrete mucus and bicarbonate."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-7",
+    "type": "missing",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Fill the gap: Chief cells release pepsinogen into the gland → ______ → pepsin activates more pepsinogen → proteins are split into polypeptides",
+    "options": [
+      "Bicarbonate in the mucus layer converts pepsinogen into pepsin",
+      "Intrinsic factor binds pepsinogen and switches on its active site",
+      "Gastrin reaches the gland lumen and cuts a piece off pepsinogen",
+      "Acid makes pepsinogen cut itself into pepsin"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "In acid, pepsinogen changes shape and removes a short piece of itself, uncovering its active site. The pepsin formed then activates more pepsinogen, a positive feedback loop.",
+      "options": [
+        "Bicarbonate raises the pH, which would keep pepsinogen inactive; that is part of how the mucus layer protects the lining.",
+        "Intrinsic factor binds vitamin B12, not pepsinogen.",
+        "Gastrin is a hormone released into the blood; it stimulates acid secretion but does not cut pepsinogen.",
+        "Correct. Acid starts the activation, and pepsin then speeds it up."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-8",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Why can chief cells store large amounts of pepsinogen without damaging themselves?",
+    "options": [
+      "Chief cells contain no protein for the enzyme to digest",
+      "Pepsinogen is stored bound to intrinsic factor, which blocks its active site",
+      "Pepsinogen stays inactive until acid converts it",
+      "A layer of mucus surrounds each granule inside the chief cell"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "Pepsinogen is a zymogen: its active site is covered until acid outside the cell triggers its conversion to pepsin. Stored inside the cell, it cannot digest the cell's proteins.",
+      "options": [
+        "Every cell is full of protein, including its membranes and enzymes.",
+        "Intrinsic factor is made by parietal cells and binds vitamin B12, not pepsinogen.",
+        "Correct. Being made and stored as an inactive zymogen protects the cell that makes it.",
+        "The mucus layer lies on the surface of the lining, outside the cells, not around granules inside them."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-9",
+    "type": "vignette",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "A 60-year-old woman has anemia with unusually large red blood cells. Tests show antibodies against her parietal cells. Her doctor prescribes vitamin B12 injections. Why not simply advise her to eat more foods rich in B12?",
+    "options": [
+      "Her stomach acid destroys the B12 in her food before it can be absorbed",
+      "B12 in food is digested by pepsin into inactive fragments in her stomach",
+      "Her liver can no longer store B12, so she needs a steady supply by injection",
+      "She lacks intrinsic factor, so she cannot absorb B12 from food"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Parietal cells secrete intrinsic factor, which binds B12 in the small intestine so the lining of its last part can absorb it. Autoimmune destruction of parietal cells removes intrinsic factor, so dietary B12 passes through unabsorbed. Injections bypass the gut. This is pernicious anemia.",
+      "options": [
+        "Acid helps free B12 from food proteins; it does not destroy it. Her problem is the opposite: she has lost her parietal cells and has little acid.",
+        "Pepsin frees B12 from the proteins it is bound to in food; it does not inactivate the vitamin.",
+        "Her liver can store B12. The problem is getting B12 across the intestinal lining.",
+        "Correct. The problem is absorption, not intake, so more dietary B12 would not help."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-10",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "structure-function",
+      "communication"
+    ],
+    "q": "A woman takes high-dose ibuprofen daily for arthritis and develops a stomach ulcer, though her acid secretion is normal. How does the drug make an ulcer more likely?",
+    "options": [
+      "It blocks prostaglandin production, weakening the mucosal barrier",
+      "It raises gastrin release, so her stomach secretes much more acid than before",
+      "It kills the surface mucous cells directly on contact, as a detergent would",
+      "It activates pepsinogen while it is still stored inside the chief cells"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "Prostaglandins made in the stomach lining increase mucus and bicarbonate secretion and blood flow to the mucosa. NSAIDs such as ibuprofen block prostaglandin production, so the mucosal barrier weakens and normal amounts of acid and pepsin can erode the lining.",
+      "options": [
+        "Correct. Removing prostaglandins removes part of the mucosal barrier.",
+        "The question says her acid secretion is normal. NSAID ulcers come from a weaker barrier, not more acid.",
+        "NSAIDs can irritate the lining on contact, but their main effect is throughout the body, through blocked prostaglandin production. Ulcers form even when the drug is given by injection.",
+        "Pepsinogen is activated by acid in the lumen, outside the cells. Ibuprofen does not change that."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-11",
+    "type": "multi",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Select every feature that helps protect the stomach lining from its own acid and pepsin.",
+    "options": [
+      "A thick mucus layer with bicarbonate trapped in it",
+      "Tight junctions between the epithelial cells",
+      "Replacement of surface cells every few days",
+      "Prostaglandins made in the mucosa",
+      "Pepsin working best at neutral pH",
+      "Stratified squamous epithelium lining the stomach"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "why": {
+      "correct": "The mucosal barrier includes alkaline mucus, tight junctions, rapid cell renewal, mucosal blood flow and prostaglandins that support the others. Pepsin works best in acid, and the stomach is lined by simple columnar epithelium.",
+      "options": [
+        "Correct. The mucus holds bicarbonate, keeping the cell surface near pH 7.",
+        "Correct. Tight junctions stop acid leaking between the cells.",
+        "Correct. Rapid renewal replaces damaged surface cells quickly.",
+        "Correct. Prostaglandins increase mucus, bicarbonate and blood flow.",
+        "Pepsin works best near pH 2 and is inactive near neutral pH, which is why the alkaline surface protects the cells.",
+        "The stomach is lined by simple columnar epithelium. Stratified squamous epithelium lines the esophagus, which has no acid defense."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-12",
+    "type": "error",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "homeostasis",
+      "communication"
+    ],
+    "q": "This pathway describes control of acid secretion during the gastric phase. Which step is wrong?",
+    "options": [
+      "Protein fragments in the stomach stimulate G cells",
+      "G cells release gastrin into the blood",
+      "Gastrin increases acid secretion, partly by releasing histamine",
+      "The falling pH stimulates the G cells to release even more gastrin",
+      "The stomach contents become strongly acidic"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "A falling pH inhibits gastrin release: below about pH 3, D cells release somatostatin, which shuts the G cells off. This negative feedback limits acid secretion.",
+      "options": [
+        "This step is right. Peptides and amino acids stimulate G cells directly.",
+        "This step is right. Gastrin is a hormone carried by the blood.",
+        "This step is right. Gastrin acts mainly through histamine-releasing cells and partly on parietal cells.",
+        "This is the error. Low pH inhibits gastrin release through somatostatin.",
+        "This step is right. Increased acid secretion lowers the pH of the contents."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-13",
+    "type": "predict",
+    "level": "apply",
+    "diff": 2,
+    "predictLevel": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "In a physiology experiment, a volunteer chews a tasty meal and spits it out without swallowing (sham feeding). Predict the change in each variable, compared with before the meal.",
+    "variables": [
+      {
+        "name": "Vagal signals to the stomach",
+        "answer": "up",
+        "why": "The sight, smell, taste and chewing of food act on the hypothalamus and medulla oblongata, which increase vagal output."
+      },
+      {
+        "name": "Acid secretion by the stomach",
+        "answer": "up",
+        "why": "Acetylcholine from vagal and enteric neurons stimulates the parietal cells: the cephalic phase."
+      },
+      {
+        "name": "Gastrin in the blood",
+        "answer": "up",
+        "why": "Vagal signals stimulate the G cells to release gastrin even with no food in the stomach."
+      },
+      {
+        "name": "Stretch of the stomach wall",
+        "answer": "none",
+        "why": "No food was swallowed, so the stomach does not fill."
+      }
+    ],
+    "why": {
+      "correct": "Sham feeding isolates the cephalic phase. Food acting on the head drives the vagus nerves, which stimulate acid and gastrin release without any food or stretch in the stomach."
+    }
+  },
+  {
+    "id": "anp-stomach-14",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "communication"
+    ],
+    "q": "Walking past a bakery, you smell fresh bread and your stomach begins to secrete acid. Which phase of gastric secretion is this?",
+    "options": [
+      "Cephalic phase",
+      "Gastric phase",
+      "Intestinal phase",
+      "Esophageal phase"
+    ],
+    "correct": 0,
+    "why": {
+      "correct": "The cephalic phase is driven by the head: the smell, sight, taste or thought of food increases vagal output to the stomach before any food arrives.",
+      "options": [
+        "Correct. The stimulus acts on the brain, and the vagus nerves carry the signal to the stomach.",
+        "The gastric phase needs food in the stomach, stretching it and stimulating the G cells.",
+        "The intestinal phase begins when chyme enters the small intestine, and it mostly inhibits secretion.",
+        "The esophageal phase is part of swallowing, not a phase of gastric secretion."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-15",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "Two friends eat meals with the same calories. One eats plain rice and the other a fatty cheeseburger. An hour later, the cheeseburger eater's stomach is much fuller. What mainly explains the difference?",
+    "options": [
+      "Fat stretches the stomach more, and stretch weakens its mixing waves",
+      "Fat raises gastrin release, and gastrin tightens the pyloric sphincter",
+      "Fat in the small intestine releases CCK and triggers the enterogastric reflex",
+      "Rice is absorbed through the stomach wall, so less of it remains to empty"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "The small intestine sets the pace of gastric emptying. Fat arriving there is the strongest stimulus for CCK release and the enterogastric reflex, which weaken the antrum's contractions and tighten the pylorus. Carbohydrate empties fastest.",
+      "options": [
+        "Stretch of the stomach speeds emptying rather than slowing it, and equal meals stretch it similarly.",
+        "Gastrin is released by protein and stretch, not mainly by fat, and its effect is on acid secretion.",
+        "Correct. Signals from the intestine, not from the stomach, hold a fatty meal back.",
+        "The stomach absorbs almost no nutrients; rice leaves faster because carbohydrate triggers weaker braking signals from the intestine."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-16",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "During a mixing wave, the pyloric sphincter closes as the wave reaches it. What does this closure do to the stomach's contents?",
+    "options": [
+      "It pushes all of the stomach's contents into the small intestine at once",
+      "It lets a little through and throws the rest back, grinding it",
+      "It stops all mixing until the stomach is stretched by the next meal",
+      "It sends the contents back up into the esophagus"
+    ],
+    "correct": 1,
+    "why": {
+      "correct": "As the sphincter closes, only a small squirt of liquid chyme gets through. The rest is forced back into the body of the stomach, and the collision grinds and mixes it. Repeated waves turn food into chyme.",
+      "options": [
+        "Emptying happens a few milliliters per wave, over hours, not all at once.",
+        "Correct. This backward throw is how the stomach grinds food into particles small enough to pass.",
+        "The closure is part of mixing, not a pause in it.",
+        "The contents are thrown back into the body of the stomach. The lower esophageal sphincter stays closed."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-17",
+    "type": "vignette",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "homeostasis"
+    ],
+    "q": "A 3-year-old has vomited repeatedly for two days. Which change in her blood is most likely?",
+    "options": [
+      "Acidosis, with low bicarbonate",
+      "A rise in blood potassium",
+      "No lasting change in blood pH",
+      "Alkalosis, with high bicarbonate"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "Vomit carries H+ and Cl− from the stomach. For each H+ the parietal cells secrete, a bicarbonate ion enters the blood, and when that acid is lost instead of reaching the intestine, the bicarbonate stays. The blood becomes alkaline. Potassium is lost too, so hypokalemia is common.",
+      "options": [
+        "Bicarbonate-rich fluid is secreted further down the intestine. Vomiting mainly loses acid from the stomach.",
+        "Potassium falls with repeated vomiting: it is lost in the vomit and, even more, in the urine.",
+        "The kidneys respond over hours to days and cannot fully correct the change while acid keeps being lost, especially with water loss.",
+        "Correct. Losing stomach acid leaves extra bicarbonate in the blood."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-18",
+    "type": "single",
+    "level": "analyze",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "misconception": "the stomach forcefully contracts to vomit",
+    "q": "Which muscles supply the force that expels the stomach's contents during vomiting?",
+    "options": [
+      "The stomach's three layers of smooth muscle, contracting from the pylorus upward",
+      "The esophageal muscle, pulling contents up by reverse peristalsis",
+      "The diaphragm and abdominal wall muscles squeezing the stomach",
+      "The pyloric sphincter, pushing the contents back toward the esophagus"
+    ],
+    "correct": 2,
+    "why": {
+      "correct": "During vomiting the stomach and lower esophageal sphincter relax. The diaphragm and abdominal wall muscles contract together, raising the pressure around the stomach and driving its contents up and out.",
+      "options": [
+        "The stomach is relaxed during the expulsion. Its wall is the container, not the pump.",
+        "The esophagus is a passive route during expulsion; it does not pump contents upward.",
+        "Correct. Skeletal muscles of breathing and the abdominal wall provide the force.",
+        "A sphincter controls an opening; it cannot push the whole stomach's contents."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-19",
+    "type": "single",
+    "level": "analyze",
+    "diff": 3,
+    "core": [
+      "communication"
+    ],
+    "q": "An H2 blocker blocks only the histamine signal to parietal cells, yet it reduces acid secretion stimulated by food by well over half. Why is the effect so large?",
+    "options": [
+      "Histamine is the only signal that parietal cells respond to",
+      "The drug also blocks the proton pump on the parietal cell membrane",
+      "Blocking histamine raises somatostatin release, which then blocks the pump",
+      "The three stimuli amplify each other, and gastrin acts largely via histamine"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "The three stimuli amplify each other, so removing one cuts the combined effect by much more than a third. And much of gastrin's effect passes through the histamine-releasing cells, so blocking histamine also blunts gastrin.",
+      "options": [
+        "Parietal cells respond to acetylcholine and gastrin as well; that is why a proton pump inhibitor, which blocks the final step, is even stronger.",
+        "H2 blockers act on H2 receptor proteins. The pump is blocked by a different drug class, proton pump inhibitors.",
+        "Somatostatin is released by low pH. An H2 blocker raises the pH, if anything reducing somatostatin.",
+        "Correct. Mutual amplification, and gastrin's reliance on histamine, make histamine a strong lever."
+      ]
+    }
+  },
+  {
+    "id": "anp-stomach-20",
+    "type": "single",
+    "level": "apply",
+    "diff": 2,
+    "core": [
+      "structure-function"
+    ],
+    "q": "Helicobacter pylori lives in the stomach despite its acid. How does it survive?",
+    "options": [
+      "It lives inside parietal cells, well away from the acid in the lumen",
+      "It forms tough spores that acid cannot damage",
+      "It stops the parietal cells around it from secreting any acid",
+      "It lives in the mucus and makes an enzyme whose product neutralizes acid"
+    ],
+    "correct": 3,
+    "why": {
+      "correct": "H. pylori swims into the mucus layer, where the pH is near neutral, and its enzyme urease makes a base that buffers the acid in its surroundings. The infection inflames the lining and weakens the mucosal barrier.",
+      "options": [
+        "It lives on and in the mucus over the surface cells, not inside parietal cells.",
+        "H. pylori does not rely on spores in the stomach; it survives as an active spiral bacterium.",
+        "Many infected people secrete normal or even increased amounts of acid.",
+        "Correct. The mucus niche and the base made by its urease protect it."
+      ]
+    }
+  }
+]

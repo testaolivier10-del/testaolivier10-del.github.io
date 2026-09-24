@@ -1710,7 +1710,7 @@
         "energy"
       ],
       "kind": "negative",
-      "scenario": "You skip breakfast. Five hours after dinner, your brain has been taking about 5 grams of glucose an hour out of your blood, yet your blood glucose stays near 80 mg/dL.",
+      "scenario": "You skip breakfast. By mid-morning, some fifteen hours after dinner, your brain has been taking about 5 grams of glucose an hour out of your blood, yet your blood glucose stays near 80 mg/dL.",
       "slots": {
         "stimulus": {
           "text": "Blood glucose falls between meals",
@@ -1797,7 +1797,7 @@
         "communication"
       ],
       "kind": "negative",
-      "scenario": "A patient’s dose of levothyroxine is cut by mistake. Over the next weeks free T4 in the blood drifts down, and a blood test shows a raised TSH. When the dose is restored, TSH returns to normal.",
+      "scenario": "For months, a woman eats food that is low in iodine. Her free T4 drifts down, a blood test shows a raised TSH, and TSH drives her follicular cells to trap iodide harder. Her free T4 creeps back toward normal.",
       "slots": {
         "stimulus": {
           "text": "Free T4 and T3 in the blood fall",
@@ -1976,7 +1976,7 @@
         "stimulus": {
           "text": "Blood calcium falls",
           "short": "Calcium falls",
-          "why": "The regulated variable is the concentration of calcium ions in the blood, held at about 8.5 to 10.5 mg/dL."
+          "why": "The regulated variable is the concentration of calcium in the blood. Total calcium is held at about 8.5 to 10.5 mg/dL, and the free calcium ions, about half of it, are what the chief cells sense."
         },
         "sensor": {
           "text": "Calcium-sensing receptor proteins on the chief cells of the parathyroid glands",
@@ -2216,92 +2216,6 @@
           {
             "text": "It stays normal, because potassium leaves in sweat instead",
             "why": "Sweat glands answer to aldosterone too, and they lose only small amounts."
-          }
-        ],
-        "correct": 0
-      }
-    },
-    {
-      "id": "epo-oxygen",
-      "title": "Oxygen delivery to the kidney falls: erythropoietin",
-      "topic": "other-endocrine",
-      "core": [
-        "homeostasis",
-        "interdependence"
-      ],
-      "kind": "negative",
-      "scenario": "A runner moves to a mountain town at 3,500 meters. For weeks, EPO in her blood is raised; by two months her red blood cell count has climbed and EPO is back near normal.",
-      "slots": {
-        "stimulus": {
-          "text": "Less oxygen reaches the kidney tissue (hypoxia)",
-          "short": "Kidney oxygen falls",
-          "why": "The regulated variable is oxygen delivery. The kidney gets plenty of blood but extracts little oxygen, so its tissue oxygen tracks what the blood can deliver."
-        },
-        "sensor": {
-          "text": "Oxygen-sensing cells in the tissue between the kidney’s tubes",
-          "short": "Oxygen-sensing kidney cells",
-          "why": "In low oxygen, a protein that is normally broken down within minutes survives, enters the nucleus and switches on the EPO gene."
-        },
-        "afferent": {
-          "text": "No separate pathway: the sensing cells make the hormone themselves",
-          "short": "None: same cells",
-          "why": "The cells that sense oxygen are the ones that release EPO."
-        },
-        "control": {
-          "text": "The same kidney cells set how much EPO to release",
-          "short": "Kidney cells set EPO output",
-          "why": "The lower the oxygen, the more EPO gene is switched on and the more EPO is released."
-        },
-        "efferent": {
-          "text": "EPO carried in the blood to the red bone marrow",
-          "short": "EPO in the blood",
-          "why": "EPO is a hormone: the command travels in the blood."
-        },
-        "effector": {
-          "text": "The cells in the red bone marrow that make red blood cells",
-          "short": "Red bone marrow",
-          "why": "EPO keeps more of the red cell–making cells alive and dividing."
-        },
-        "response": {
-          "text": "More red blood cells enter the blood, so it carries more oxygen and kidney oxygen rises back",
-          "short": "More red cells: oxygen delivery rises",
-          "why": "Within days new cells appear; over weeks the count rises, oxygen delivery improves, and EPO release falls back."
-        }
-      },
-      "distractors": [
-        {
-          "text": "Carotid body chemoreceptors signal the brainstem",
-          "why": "Those sensors drive breathing, not red cell production."
-        },
-        {
-          "text": "The liver releases IGF-1",
-          "why": "IGF-1 answers to growth hormone and drives growth, not red cell production."
-        },
-        {
-          "text": "Red bone marrow senses the low oxygen and makes more cells on its own",
-          "why": "The marrow is the effector. It responds to EPO; the sensor is in the kidney."
-        }
-      ],
-      "classify": "The response (more oxygen delivered) opposes the stimulus (too little oxygen reaching the kidney), so this is negative feedback.",
-      "failure": {
-        "part": "sensor",
-        "q": "A man’s kidneys have slowly failed over years, and the EPO-making cells are lost. What happens?",
-        "options": [
-          {
-            "text": "Too few red blood cells: he feels tired and breathless",
-            "why": "Right. Without the sensor and source of EPO, the marrow gets too little signal, red cell production falls, and injections of synthetic EPO are often needed."
-          },
-          {
-            "text": "His red cell count rises, because the marrow is freed from control",
-            "why": "The marrow needs EPO to keep making red cells at the usual rate. Without it, production falls."
-          },
-          {
-            "text": "Nothing changes, because the liver makes all the EPO",
-            "why": "In adults the kidneys make most EPO, so kidney failure leaves too little."
-          },
-          {
-            "text": "He breathes faster to make up, so red cell count stays normal",
-            "why": "Breathing faster does not make red blood cells."
           }
         ],
         "correct": 0

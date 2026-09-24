@@ -1,0 +1,50 @@
+{
+  "topic": "digestion-absorption",
+  "hook": "<p>Ms. Okoye, 29, moved from Lagos to Chicago and started having a latte every morning. Within an hour or two she is bloated, crampy and running to the bathroom. She eats cheese and yogurt without trouble. Her small intestine is healthy; it simply makes little of one enzyme, lactase, like the small intestines of most adults worldwide. To see why one missing enzyme causes all of this, you need to know how each nutrient is split and carried across the gut lining.</p>",
+  "prereq": [
+    {
+      "q": "In secondary active transport, what directly powers the movement of the transported molecule?",
+      "options": ["ATP bound to the carrier", "The gradient of another ion, usually sodium", "Osmosis"],
+      "correct": 1,
+      "why": "A secondary active carrier uses the energy of an ion, usually sodium, flowing down its gradient. The sodium–potassium pump spends the ATP that keeps that gradient steep.",
+      "review": "active-transport"
+    },
+    {
+      "q": "Where do the enzymes of the brush border sit?",
+      "options": ["In pancreatic juice", "On the microvilli of the absorptive cells", "In the gastric glands"],
+      "correct": 1,
+      "why": "Brush border enzymes such as lactase, sucrase and maltase are fixed to the membrane of the microvilli, so they finish digestion right where absorption happens.",
+      "review": "small-intestine"
+    },
+    {
+      "q": "What do bile salts do to fat?",
+      "options": ["Emulsify it into tiny droplets", "Split it into fatty acids", "Carry it into the blood"],
+      "correct": 0,
+      "why": "Bile salts coat fat droplets and keep them small, which multiplies the surface lipase can work on. Lipase does the splitting.",
+      "review": "liver-pancreas-gallbladder"
+    }
+  ],
+  "anatomy": {
+    "figure": "os-23-33",
+    "caption": "Lipid absorption across an absorptive cell. Hide the labels and trace a fat molecule from the lumen, through micelles and the cell, into the lacteal."
+  },
+  "chain": [
+    { "cause": "Sodium–potassium pumps on the basolateral membrane of each absorptive cell spend ATP pushing sodium out.", "effect": "Sodium inside the cell stays low, so sodium in the lumen has a steep gradient into the cell." },
+    { "cause": "Sodium flows into the cell through SGLT1, which carries glucose or galactose with it.", "effect": "Glucose and galactose enter the cell even when they are more concentrated inside than in the lumen." },
+    { "cause": "Glucose builds up inside the cell.", "effect": "It leaves across the basolateral membrane by facilitated diffusion and enters the villus capillaries, then the hepatic portal vein." },
+    { "cause": "Sodium and glucose have moved from the lumen to the blood side of the epithelium.", "effect": "Water follows by osmosis, through and between the cells." },
+    { "cause": "Every absorbed sugar, amino acid and salt pulls water with it.", "effect": "About 98% of the 9 L of water entering the gut each day is absorbed, and only about 150 mL leaves in the feces." }
+  ],
+  "misconception": {
+    "wrong": "All digested nutrients go straight from the intestine to the liver in the hepatic portal vein.",
+    "right": "Sugars, amino acids, short-chain fatty acids and most vitamins that dissolve in water do: they enter the villus capillaries, which drain into the hepatic portal vein. But long-chain fats are rebuilt into triglycerides and packaged into chylomicrons, which are too large for blood capillaries. They enter the lacteals, travel in lymph through the thoracic duct, and join the blood at the left subclavian vein, reaching the rest of the body before the liver. Vitamins that dissolve in fat travel with them."
+  },
+  "check": ["anp-digestion-absorption-5", "anp-digestion-absorption-6", "anp-digestion-absorption-8", "anp-digestion-absorption-9", "anp-digestion-absorption-12", "anp-digestion-absorption-13", "anp-digestion-absorption-16", "anp-digestion-absorption-19"],
+  "summary": "<p>Digestion splits food by hydrolysis; absorption carries the products across the epithelium. Amylase cuts starch into maltose, maltotriose and α-dextrins, and brush border enzymes finish them into glucose, galactose and fructose; glucose and galactose enter with sodium through SGLT1, fructose by facilitated diffusion. Proteolysis runs from pepsin to the pancreatic enzymes (trypsin, chymotrypsin, elastase, carboxypeptidase) to brush border aminopeptidase and dipeptidase; amino acids and small peptides enter on carriers and reach the blood as amino acids. Fat is emulsified, split by lipase into fatty acids and monoglycerides, carried in micelles, rebuilt inside the cell and sent out in chylomicrons to the lacteals as chyle. Nucleases and brush border enzymes split nucleic acids into sugars, bases and phosphate. Vitamins that dissolve in fat need fat absorption; B12 needs intrinsic factor and the terminal ileum. Water follows absorbed sodium. Low lactase leaves lactose to hold water and feed colon bacteria: lactose intolerance.</p>",
+  "connections": [
+    { "href": "/ochem/lessons/carbohydrates.html", "label": "Organic chemistry: Carbohydrates" },
+    { "href": "/ochem/lessons/peptides-proteins.html", "label": "Organic chemistry: Peptides and proteins" },
+    { "href": "/ochem/lessons/lipids.html", "label": "Organic chemistry: Lipids" },
+    { "href": "/nremt/study-notes.html#chapter-26", "label": "NREMT: Abdominal emergencies" }
+  ]
+}

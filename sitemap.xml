@@ -26,6 +26,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/chapters/blood.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/cardiovascular.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -201,6 +206,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/blood-composition.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/blood-flow-heart.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -208,6 +218,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/blood-pressure-flow.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/blood-typing.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -356,6 +371,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/erythrocytes.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/gas-exchange.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -386,6 +406,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/hemostasis.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/higher-functions.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
@@ -393,6 +418,11 @@
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/homeostasis-feedback.html</loc>
     <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/lessons/leukocytes-platelets.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -517,7 +547,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/ventilation-mechanics.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -596,6 +626,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/blood-composition.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/blood-flow-heart.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -606,8 +641,13 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/blood-typing.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/body-cavities.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -622,7 +662,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/body-regions.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -702,7 +742,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/co2-transport.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -751,6 +791,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/erythrocytes.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/gas-exchange.html</loc>
     <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
@@ -777,7 +822,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/heart-chambers-valves.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/hemostasis.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -787,6 +837,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/homeostasis-feedback.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/anatomy-physiology/notes/leukocytes-platelets.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
@@ -917,7 +972,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/vessel-structure.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -932,7 +987,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/word-parts.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>

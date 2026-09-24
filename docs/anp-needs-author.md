@@ -302,6 +302,24 @@ review by a licensed A&P instructor.
 - **Evidence-based position:** the notes explain the test by what is heard (air conduction louder than bone conduction is normal) and flag that "positive" means normal.
 - **For your exam:** "Rinne positive" = normal or sensorineural loss; "Rinne negative" = conductive loss.
 
+### blood-temperature: 38 °C or 37 °C?
+- **Status:** pending review.
+- **Where:** `blood-composition`.
+- **Evidence-based position:** blood deep in the trunk is at core temperature, about 37 °C; pulmonary artery blood is the clinical reference for core temperature.
+- **For your exam:** many textbooks, OpenStax included, give 38 °C (100.4 °F).
+
+### heparin-natural-anticoagulant: is heparin one of the body's own anticoagulants?
+- **Status:** pending review.
+- **Where:** `hemostasis`.
+- **Evidence-based position:** heparin is stored in mast cell (and basophil) granules and is not normally in plasma. The heparin-like molecules (heparan sulfate) on the vessel lining are what speed antithrombin.
+- **For your exam:** many textbooks list heparin from basophils and mast cells as a natural anticoagulant.
+
+### universal-donor: universal donor and recipient
+- **Status:** pending review.
+- **Where:** `blood-typing`.
+- **Evidence-based position:** O-negative red cells are given when there is no time to type; otherwise hospitals give type-specific, crossmatched blood. "Universal recipient" (AB positive) is an exam term, rarely used in practice. For plasma, AB is the universal donor.
+- **For your exam:** O negative = universal donor; AB positive = universal recipient.
+
 ## Open items
 
 None blocking. The Phase 1 review list below collects judgment calls for the instructor review.
@@ -478,6 +496,38 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   label beside the submandibular ganglion (covered); 15.6 prints presynaptic and postsynaptic
   for preganglionic and postganglionic; 15.9 and 15.11 not used (wrong claims, misspelled
   Edinger–Westphal).
+
+## Phase 2: blood chapter, judgment calls for instructor review
+
+- **Positions taught:** the cell-based model of clotting first, with tissue factor acting as
+  platelets stick, and the lab intrinsic/extrinsic model for exams (coagulation-model); neutrophils
+  circulate for under a day (labeling studies range from hours to about 5 days); many tissue
+  macrophages descend from cells present before birth; the two-branch blood cell tree as a
+  simplification; how injected anti-D prevents sensitization is not fully understood; gut bacteria's
+  vitamin K contribution is uncertain, and newborn deficiency comes from low stores and little in
+  breast milk; ABO antibodies as a response to similar sugars on bacteria; platelets make a few
+  proteins from stored RNA but no new RNA; anemia speeds breathing mainly on exertion (oxygen
+  sensors are not triggered).
+- **Normal values chosen:** hematocrit 37–47% (women) and 42–52% (men), from Figure 18.2 (many
+  labs use 36–46 and 41–50); hemoglobin 13.5–17.5 and 12–15.5 g/dL with the WHO anemia cutoffs;
+  red cells 4.2–5.4 and 4.7–6.1 million per µL; white cells 4,500–11,000 per µL; platelets
+  150,000–450,000 per µL; blood volume about 70 mL/kg; plasma proteins albumin 55–60%, globulins
+  35–38%, fibrinogen 4–7%; bilirubin below 1.2 mg/dL, jaundice above 2.5–3; PT 11–13.5 s, aPTT
+  25–35 s; bleeding risk below 50,000 platelets with injury and 10,000–20,000 without; about
+  2.4 million red cells made a second; the marrow makes 100 billion or more white cells a day;
+  newborn red cells live 60–90 days; Rh positive in about 85% of people of European ancestry.
+- **Tool values:** a healthy marrow can raise red cell output about 6–8 times; the bleed graph
+  (1 L of 5 L lost: hematocrit 45 to about 36% by day 2–3, reticulocytes peaking near 4% at days
+  7–10, recovery by about 8 weeks) uses typical numbers; the clotting loop is fitted to the seven
+  slots as a local positive loop with no nerve or brain.
+- **Figures:** Figure 18.2's tube titles ("Anemia", "Polycythemia") are covered so they don't
+  give away answers; 18.9, 18.13 and 18.14 credit third parties and are not used, so there is no
+  blood smear station; 18.16 (a commercial typing card) is replaced by our own drawing; the
+  catalog lists 18.6 as CC BY with no credit (confirmed on the OpenStax page).
+- **Map gaps:** band cells, reticulocyte count, hemolysis, H antigen, anti-D immune globulin,
+  polycythemia vera, sickle cell trait, hepcidin, von Willebrand disease, PT/INR/aPTT, tPA,
+  D-dimer, protein C, thrombomodulin, Virchow's triad, DIC, the blast cell stages; the alias
+  "sensitization" belongs to hypersensitivity, so the Rh pages say "sensitized".
 
 ## Decided at the Phase 0 reviews
 

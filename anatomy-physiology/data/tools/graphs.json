@@ -13771,7 +13771,7 @@
      "type": "shift",
      "level": "analyze",
      "diff": 2,
-     "q": "The woman who gave tube 1 has 5 L of blood. She is given 2 L of salt solution through a drip, which for this question stays in her blood, and a new sample is spun. How does the red column in her tube change?",
+     "q": "The man who gave tube 1 has 5 L of blood. He is given 2 L of salt solution through a drip, which for this question stays in his blood, and a new sample is spun. How does the red column in his tube change?",
      "options": [
       "Shorter: about 26 mm, a hematocrit of about 32%",
       "Taller, because the drip adds volume to the blood",
@@ -13812,7 +13812,7 @@
       ]
      },
      "why": {
-      "correct": "Her red cell volume is 45% of 5 L = 2.25 L. After the drip, the same 2.25 L sits in 7 L of blood: 2.25 ÷ 7 = 0.32, so the hematocrit is about 32%, and the red column in an 80 mm sample is about 0.32 × 80 = 26 mm. Adding plasma volume lowers the hematocrit without removing a single red cell.",
+      "correct": "His red cell volume is 45% of 5 L = 2.25 L. After the drip, the same 2.25 L sits in 7 L of blood: 2.25 ÷ 7 = 0.32, so the hematocrit is about 32%, and the red column in an 80 mm sample is about 0.32 × 80 = 26 mm. Adding plasma volume lowers the hematocrit without removing a single red cell.",
       "options": [
        "Right: the same red cells are spread through more blood.",
        "The added volume is fluid, not cells, so red cells become a smaller share of the sample.",
@@ -14078,7 +14078,7 @@
       "x": 3,
       "y": 36
      },
-     "why": "About 36%. She lost a fifth of her red cells: 45% of 5 L is 2.25 L, less 0.45 L lost, leaves 1.8 L. Once fluid from the tissues has refilled her blood to about 5 L, 1.8 ÷ 5 = 36%."
+     "why": "About 36%. She lost a fifth of her red cells: 45% of 5 L is 2.25 L, less 0.45 L lost, leaves 1.8 L. Once fluid from her tissues, and then water she drinks and her kidneys hold back, has refilled her blood to about 5 L, 1.8 ÷ 5 = 36%."
     },
     {
      "id": "retic-peak",
@@ -14508,15 +14508,15 @@
      "h": 0.9,
      "y": {
       "min": 0,
-      "max": 80,
+      "max": 140,
       "label": "Plasma insulin (healthy)",
       "unit": "µU/mL",
       "ticks": [
        0,
-       20,
-       40,
-       60,
-       80
+       35,
+       70,
+       105,
+       140
       ]
      },
      "series": [
@@ -14814,45 +14814,45 @@
         "pts": [
          [
           0,
-          14
+          15
          ],
          [
           15,
-          50
+          45
          ],
          [
           30,
-          70
+          85
          ],
          [
           45,
-          78
+          105
          ],
          [
           60,
-          76
+          115
          ],
          [
           90,
-          60
+          100
          ],
          [
           120,
-          42
+          75
          ],
          [
           150,
-          28
+          50
          ],
          [
           180,
-          20
+          35
          ]
         ],
         "label": "insulin resistance",
         "labelAt": [
          120,
-         55
+         95
         ]
        }
       ]
