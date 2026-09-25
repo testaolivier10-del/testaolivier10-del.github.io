@@ -96,12 +96,13 @@
       6:['nitrile-as-acyl-level'],
       7:['nitrile-as-acyl-level'] } },
 
-    'hydrates-cyanohydrins': { n:8, steps:{
-      2:['addition-equilibrium'],
-      3:['addition-equilibrium','aldehyde-oxidizability'],
-      4:['addition-equilibrium','aldehyde-oxidizability'],
-      6:['addition-equilibrium','tetrahedral-intermediate'],
-      7:['addition-equilibrium','carbonyl-electrophilicity'] } },
+    'hydrates-cyanohydrins': { n:15, steps:{
+      4:['addition-equilibrium'],
+      6:['addition-equilibrium','aldehyde-oxidizability'],
+      7:['addition-equilibrium','aldehyde-oxidizability'],
+      9:['addition-equilibrium','tetrahedral-intermediate'],
+      12:['addition-equilibrium','tetrahedral-intermediate'],
+      14:['addition-equilibrium','carbonyl-electrophilicity'] } },
 
     /* Step 2 sorts five test results, 3 is why a weak oxidant is the right
        tool for a test, 4 is the hemiacetal opening, 6 the reagent choice

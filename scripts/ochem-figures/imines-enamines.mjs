@@ -569,7 +569,7 @@ FIGURES.push({
   viewBox: '0 0 256 722',
   alt: 'Two stacked panels. Primary amine: water removes the N–H proton of the iminium ion, giving the imine (CH3)2C=N–CH3. Secondary amine: water removes a proton from the alpha carbon, the C–H electrons form a C=C bond and the C=N pi electrons move onto nitrogen, giving the enamine CH2=C(CH3)–N(CH3)2.',
   build() {
-    return pImine(12, 6) + pEnam(12, 366) + gapArrow(P(128, 358), P(128, 358));
+    return pImine(12, 6) + pEnam(12, 366);
   },
   caption: 'Same iminium, different proton: from nitrogen (top) or from the α carbon (bottom).',
 });
