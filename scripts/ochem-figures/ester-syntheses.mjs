@@ -474,7 +474,7 @@ FIGURES.push({
   id: 'tertiary-e2',
   section: 'ester-syntheses',
   lessons: ['ester-syntheses'],
-  alt: 'The malonate carbanion meets tert-butyl bromide. Its lone pair takes a hydrogen from one of the methyl groups, that C–H bond becomes a C=C, and bromide leaves: an E2. The products are 2-methylpropene, diethyl malonate back again and bromide, with no new bond to the alpha carbon.',
+  alt: 'The malonate carbanion meets tert-butyl bromide. Its lone pair takes a hydrogen from one of the methyl groups, the electrons of that C–H bond form the new C=C, and bromide leaves: an E2. The products are 2-methylpropene, diethyl malonate back again and bromide, with no new bond to the alpha carbon.',
   viewBox: '0 0 340 424',
   build() { return pE2(8, 8, 208) + gapArrow(P(170, 220), P(170, 240)) + pE2Products(8, 248, 168); },
   caption: 'Three curved arrows, one E2. The anion ends up with a hydrogen, not a new carbon group.',

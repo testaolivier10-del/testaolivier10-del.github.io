@@ -201,9 +201,12 @@
       8:['enamine-nucleophile'],
       11:['enamine-nucleophile','amine-condensation'] } },
 
-    'michael-robinson': { n:8, steps:{
-      2:['product-spacing'], 3:['product-spacing'], 4:['product-spacing'],
-      6:['product-spacing'], 7:['product-spacing'] } },
+    'michael-robinson': { n:11, steps:{
+      3:['product-spacing'],
+      4:['product-spacing'],
+      5:['product-spacing'],
+      8:['product-spacing'],
+      10:['product-spacing'] } },
 
     'ester-syntheses': { n:11, steps:{
       3:['activating-group'],
