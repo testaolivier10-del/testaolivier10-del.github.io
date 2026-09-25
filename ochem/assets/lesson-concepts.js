@@ -430,12 +430,14 @@
       7:['alkyne-acidity','curved-arrow-direction','acetylide-alkylation'],
       8:['markovnikov-regiochem','keto-enol-tautomerism'] } },
 
-    'alpha-hydrogens': { n:8, steps:{
-      1:['alpha-acidity'],
-      2:['alpha-acidity','resonance-delocalization'],
-      4:['resonance-delocalization','alpha-acidity'],
-      6:['enolate-formation','alpha-acidity'],
-      7:['alpha-acidity','resonance-delocalization'] } },
+    'alpha-hydrogens': { n:13, steps:{
+      2:['resonance-delocalization','alpha-acidity'],
+      3:['alpha-acidity','resonance-delocalization'],
+      5:['alpha-acidity'],
+      7:['keto-enol-tautomerism','resonance-delocalization'],
+      9:['enolate-formation','alpha-acidity'],
+      11:['keto-enol-tautomerism'],
+      12:['alpha-acidity','resonance-delocalization'] } },
 
     'amine-reactions': { n:8, steps:{
       1:['nucleophile-recognition'],

@@ -165,7 +165,7 @@ FIGURES.push({
     s += right(122, 335, 354) + right(378, 335, 354);
     return s;
   },
-  caption: 'Pentane-2,4-dione and methyl vinyl ketone with ethoxide. In panel 2, the first arrow makes the new C–C bond at the β carbon, and the next two pass the electrons along to the oxygen.',
+  caption: 'Pentane-2,4-dione and methyl vinyl ketone with ethoxide, one panel per move.',
 });
 
 FIGURES.push({
@@ -335,8 +335,8 @@ function rKetol(ox, oy) {
   const OH = A(g.c1.x, g.c1.y - 38, 'OH', 'warn'), H = A(g.c6.x, g.c6.y - 34, 'H', 'warn', 12);
   s += bd(g.c1, OH) + bd(g.c6, H) + carbonyl(g.c5, 30) + draw(OH, H);
   s += g.nums();
-  s += tag(ox + PW / 2, oy + 210, 'E1cb: base takes the H on 6,');
-  s += tag(ox + PW / 2, oy + 226, 'then HO⁻ leaves carbon 1');
+  s += tag(ox + PW / 2, oy + 210, 'the H on 6 and the OH on 1');
+  s += tag(ox + PW / 2, oy + 226, 'leave as water (E1cb)');
   return s;
 }
 
@@ -388,7 +388,7 @@ FIGURES.push({
   build() {
     return (rMichael(10, 6) + down(170, 244, 256) + rAldol(10, 258) + down(170, 496, 508) + rEnone(10, 510)).replace('3 · aldol', '2 · aldol').replace('5 · the product', '3 · the product');
   },
-  caption: 'The numbers follow the atoms of the new ring. The bonds made are 2–3, then 6–1, then the C=C 1=6.',
+  caption: 'The numbers follow the atoms of the new ring, not the IUPAC names.',
 });
 
 /* ===================================== why the new ring has six atoms == */
@@ -498,7 +498,7 @@ FIGURES.push({
     [12, 194, 376, 558].forEach((x, i) => { s += retroPanel(x, 6, i); if (i < 3) s += retro(x + TW + 2, 106, 18); });
     return s;
   },
-  caption: 'Each panel undoes one step of the forward reaction, last step first. The double-lined arrow means “is made from”. The marked bond in each panel is the one the next panel breaks.',
+  caption: 'The double-lined arrow means “is made from”. The highlighted bond in each panel is the one the next panel breaks.',
 });
 
 FIGURES.push({
@@ -509,7 +509,7 @@ FIGURES.push({
   build() {
     return retroPanel(6, 6, 0) + retroPanel(174, 6, 1) + retroPanel(6, 214, 2) + retroPanel(174, 214, 3);
   },
-  caption: 'Read the panels in number order. Each one undoes one step, last step first.',
+  caption: 'Read the panels in number order.',
 });
 
 /* ================================ the Wieland–Miescher ketone ========== */
@@ -599,7 +599,6 @@ FIGURES.push({
     s += sk(v(90), v(30)) + ringDouble(v(30), v(330), c, { inset: 6 }) + sk(v(330), v(270)) + sk(v(270), v(210)) + sk(v(210), v(150)) + sk(v(150), v(90));
     s += carbonyl(v(90), 90, 38);
     s += sk(v(270), polar(v(270), 240, 30)) + sk(v(270), polar(v(270), 300, 30));
-    s += tag(52, 96, 'the target');
     return s;
   },
   caption: 'Number the ring as the backward figure does, with the C=O carbon as 5.',

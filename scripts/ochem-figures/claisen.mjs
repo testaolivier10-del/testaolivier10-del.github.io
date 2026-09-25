@@ -97,7 +97,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-claisen-overall',
   lessons: ['claisen'],
-  viewBox: '0 0 320 336',
+  viewBox: '0 0 320 348',
   alt: 'Two ethyl acetate molecules; with NaOEt then aqueous acid they give ethyl acetoacetate. The CH3 of one bonds to the carbonyl carbon of the other, which loses its OEt.',
   build() {
     let s = '';
@@ -112,9 +112,9 @@ FIGURES.push({
     const p = acetoacetate(84, 250, 50);
     s += p.svg;
     s += tag(62, 234, 'β');
-    s += tag(154, 300, 'α');
-    s += tag(96, 302, 'new C–C bond', { cls: 'fg-tag-good' });
-    s += tag(160, 326, 'ethyl acetoacetate, a β-ketoester');
+    s += tag(156, 302, 'α');
+    s += tag(92, 314, 'new C–C bond', { cls: 'fg-tag-good' });
+    s += tag(160, 338, 'ethyl acetoacetate, a β-ketoester');
     return s;
   },
   caption: 'The highlighted carbons are the two ends of the new bond.',
@@ -178,14 +178,14 @@ function m4(ox, oy) {
   const Me = A(ox + 30, oy + 96, 'CH₃'), Ck = A(ox + 82, oy + 124), Ok = A(ox + 82, oy + 176),
         Cm = A(ox + 136, oy + 96, 'CH', 'hi'), H = A(ox + 136, oy + 48, 'H', 'warn'),
         Ce = A(ox + 190, oy + 124), Oe = A(ox + 190, oy + 176), E = A(ox + 246, oy + 96, 'OEt');
-  const B = A(ox + 230, oy + 46, 'EtO⁻', 'warn');
+  const B = A(ox + 62, oy + 50, 'EtO⁻', 'warn');
   Ck.l = 'C'; Ok.l = 'O'; Ce.l = 'C'; Oe.l = 'O';
   Ck.r = Ok.r = Ce.r = Oe.r = 14;
   let s = frameP(ox, oy, PW, PH, '4 · EtO⁻ takes the H between the C=O groups', [['pKₐ 11: this step does not go back', 'fg-tag-good']]);
   s += bd(Me, Ck) + bd(Ck, Ok, { order: 2 }) + bd(Ck, Cm) + bd(Cm, H) + bd(Cm, Ce) + bd(Ce, Oe, { order: 2 }) + bd(Ce, E);
-  s += lp(B, 180, 4) + lp(B, 90, 3) + lp(B, -90, 3) + lp(Ok, 140, 5) + lp(Ok, 40, 5) + lp(Oe, 140, 5) + lp(Oe, 40, 5);
+  s += lp(B, 0, 4) + lp(B, 90, 3) + lp(B, 180, 3) + lp(Ok, 140, 5) + lp(Ok, 40, 5) + lp(Oe, 140, 5) + lp(Oe, 40, 5);
   s += draw(Me, Ck, Ok, Cm, H, Ce, Oe, E, B);
-  s += curve(off(lpAt(B, 180, 4), -4, 0), off(H, 13, -2), { bow: 10 });
+  s += curve(off(lpAt(B, 0, 4), 4, 0), off(H, -13, -2), { bow: -10 });
   s += curve(mid(H, Cm), mid(Cm, Ck), { bow: 14 });
   s += curve(mid(Ck, Ok), off(Ok, -16, 4), { bow: 10 });
   return s;
@@ -216,7 +216,7 @@ FIGURES.push({
     s += gapArrow(P(170, 240), P(170, 250));
     return s;
   },
-  caption: 'Stages 1 and 2: make the enolate, then attack.',
+  caption: 'Steps 1 and 2: make the enolate, then attack.',
 });
 
 FIGURES.push({
@@ -229,7 +229,7 @@ FIGURES.push({
     s += gapArrow(P(170, 240), P(170, 250));
     return s;
   },
-  caption: 'Stages 3 and 4: collapse, then the last deprotonation.',
+  caption: 'Steps 3 and 4: collapse, then the last deprotonation.',
 });
 
 /* ============================================ the acidic CH2 and its anion */
@@ -247,6 +247,7 @@ function contrib(ox, oy, which) {
   s += bd(Cm, Ce, { order: which === 'Oe' ? 2 : 1 });
   s += bd(Ce, Oe, { order: which === 'Oe' ? 1 : 2 });
   if (which === 'C') s += lp(Cm, 90, 5);
+  for (const o of [Ok, Oe]) if (o.l === 'O⁻') s += lp(o, 180, 5) + lp(o, -90, 5) + lp(o, 0, 5);
   s += draw(Me, Ck, Ok, Cm, Ce, Oe, E);
   const t = { C: 'charge on the carbon', Ok: 'charge on the ketone O', Oe: 'charge on the ester O' }[which];
   s += tag(ox + 118, oy + 146, t, { cls: which === 'C' ? 'fg-tag' : 'fg-tag-good' });
@@ -406,7 +407,7 @@ function dieckB(ox, oy) {
   const C2 = A(g.C2.x, g.C2.y, 'C', 'hi'), C6 = A(g.C6.x, g.C6.y, 'C', 'hi');
   const c1 = at(C2, 170, 56), h2 = at(C2, 100, 46), o6 = at(C6, 40, 50);
   const C1 = A(c1.x, c1.y, 'CO₂Et'), H = A(h2.x, h2.y, 'H', 'hi'), O = A(o6.x, o6.y, 'O');
-  let s = frameP(ox, oy, DW, DH, '2 · the ring closes; EtO⁻ leaves', ['ethyl 2-oxocyclopentane-1-carboxylate'], 'good');
+  let s = frameP(ox, oy, DW, DH, '2 · after ring closure and workup', ['ethyl 2-oxocyclopentane-1-carboxylate'], 'good');
   s += bd(C2, C3) + bd(C3, C4) + bd(C4, C5) + bd(C5, C6) + bd(C2, C6, { cls: 'fg-bond-hi' }) + bd(C2, C1) + bd(C2, H);
   s += bd(C6, O, { order: 2 });
   s += draw(C2, C3, C4, C5, C6, C1, O, H);
@@ -430,7 +431,7 @@ FIGURES.push({
     s += gapArrow(P(334, 160), P(366, 160));
     return s;
   },
-  caption: 'The labels keep the chain numbers from diethyl adipate. The collapse of the tetrahedral intermediate at C6 is the same as panel 3 of the Claisen mechanism and is not redrawn.',
+  caption: 'The labels keep the chain numbers from diethyl adipate. The C2 enolate is drawn with its charge on carbon, the atom that forms the bond; it is the same enolate as in the Claisen mechanism. The collapse at C6, the deprotonation and the workup are the same as there and are not redrawn.',
 });
 
 FIGURES.push({
@@ -443,7 +444,7 @@ FIGURES.push({
     s += gapArrow(P(170, 308), P(170, 320));
     return s;
   },
-  caption: 'Labels keep the chain numbers. C1 stays outside the ring as the ester.',
+  caption: 'Labels keep the chain numbers. The enolate is drawn with its charge on carbon. C1 stays outside the ring as the ester.',
 });
 
 /* ========================================= cyclohexanone + diethyl carbonate */
@@ -491,12 +492,12 @@ FIGURES.push({
     const Ce = A(v2.x + 62, v2.y + 8, 'CO₂Et', 'hi'), H = A(v2.x + 26, v2.y - 36, 'H');
     s += bond(v2, Ce, { rFrom: 0, rTo: Ce.r, cls: 'fg-bond-hi' }) + bond(v2, H, { rFrom: 0, rTo: H.r });
     s += draw(Ce, H);
-    s += tag(b.v[0].x - 12, b.v[0].y + 2, '1', { anchor: 'end' });
-    s += tag(v2.x + 8, v2.y + 22, '2', { anchor: 'start' });
+    s += tag(b.v[0].x - 12, b.v[0].y + 2, '2', { anchor: 'end' });
+    s += tag(v2.x + 8, v2.y + 22, '1', { anchor: 'start' });
     s += tag(590, 206, 'ethyl 2-oxocyclohexane-1-carboxylate');
     return s;
   },
-  caption: 'The numbers follow cyclohexanone, counting from its C=O carbon. Ring carbon 2, the α carbon, attacks, so it ends up carrying the CO₂Et. The product’s name counts the other way, from the carbon that carries the CO₂Et.',
+  caption: 'Cyclohexanone is numbered from its C=O carbon; the product is numbered as its name is, from the carbon carrying the CO₂Et. The same α carbon, cyclohexanone’s C2, becomes the product’s C1.',
 });
 
 export default FIGURES;
