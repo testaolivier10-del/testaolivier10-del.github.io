@@ -178,7 +178,7 @@ function bondArrow(a, b, side, e, bow) {
 /* ------------------------------------------------- the seven step panels ---
    Each draws into a 340 x PH box at (x, y). Each panel shows the species
    before its step, with the arrows for that step. */
-const PW = 340, PH = 272;
+const PW = 340, PH = 304;
 function box(x, y, title, note, kind) {
   let s = panel(x + 4, y + 4, PW - 8, PH - 8, kind ? { kind } : {});
   s += tag(x + PW / 2, y + 28, title);
@@ -190,11 +190,11 @@ function box(x, y, title, note, kind) {
 const STEPS = {
   1(x, y) {
     let s = box(x, y, 'STEP 1 · PROTONATE THE C=O', 'the carbonyl O takes H⁺');
-    const c = P(x + 130, y + 168);
+    const c = P(x + 130, y + 182);
     const k = acetone(c);
     s += k.s;
     const o = k.os[0].o;
-    const h = P(x + 244, y + 92);
+    const h = P(x + 244, y + 106);
     s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + charge(P(h.x + 18, h.y - 14));
     s += fromLp(o, 30, P(h.x - 14, h.y + 2), -20);
     s += lbl(h.x, h.y + 34, 'from the acid');
@@ -202,7 +202,7 @@ const STEPS = {
   },
   2(x, y) {
     let s = box(x, y, 'STEP 2 · CH₃OH ADDS TO C', ['two arrows: O to C,', 'and the π bond onto O⁺']);
-    const c = P(x + 100, y + 160);
+    const c = P(x + 100, y + 178);
     const k = protAcetone(c);
     s += k.s;
     const o = k.os[0].o;
@@ -214,30 +214,30 @@ const STEPS = {
   },
   3(x, y) {
     let s = box(x, y, 'STEP 3 · LOSE H⁺', 'a second CH₃OH takes the H⁺');
-    const c = P(x + 96, y + 152);
+    const c = P(x + 96, y + 188);
     const k = oxonium1(c);
     s += k.s;
     const ob = k.os[1], h = ob.subs.H;
-    const base = P(h.x + 90, h.y - 12);
-    s += methanol(base, { h: 300, me: 0, lps: [185, 110], kind: 'plain' });
+    const base = P(h.x + 100, h.y - 6);
+    s += methanol(base, { h: 60, me: 0, lps: [185, 280], kind: 'plain' });
     s += fromLp(base, 185, P(h.x + 14, h.y - 3), 12);
     s += bondArrow(ob.o, h, 9, at(ob.o, 160, 19), 12);
     return s;
   },
   4(x, y) {
     let s = box(x, y, 'STEP 4 · PROTONATE THE OH', 'the OH, not the OCH₃, takes H⁺');
-    const c = P(x + 176, y + 178);
+    const c = P(x + 176, y + 192);
     const k = hemiacetal(c, ['hi']);
     s += k.s;
     const oa = k.os[0].o;
-    const h = P(x + 60, y + 70);
+    const h = P(x + 60, y + 84);
     s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + charge(P(h.x - 19, h.y - 8));
     s += fromLp(oa, 80, P(h.x + 13, h.y + 6), 18);
     return s;
   },
   5(x, y) {
     let s = box(x, y, 'STEP 5 · WATER LEAVES', ['the C–O bond breaks; an OCH₃', 'lone pair makes the C=O⁺']);
-    const c = P(x + 176, y + 150);
+    const c = P(x + 176, y + 172);
     const k = protHemi(c);
     s += k.s;
     const oa = k.os[0].o, ob = k.os[1].o;
@@ -247,7 +247,7 @@ const STEPS = {
   },
   6(x, y) {
     let s = box(x, y, 'STEP 6 · SECOND CH₃OH ADDS', ['two arrows again: O to C,', 'and the π bond onto O⁺']);
-    const c = P(x + 200, y + 160);
+    const c = P(x + 200, y + 178);
     const k = oxocarb(c);
     s += k.s;
     const o = k.os[0].o;
@@ -259,12 +259,12 @@ const STEPS = {
   },
   7(x, y) {
     let s = box(x, y, 'STEP 7 · LOSE H⁺', 'a CH₃OH takes the last H⁺');
-    const c = P(x + 150, y + 152);
+    const c = P(x + 150, y + 188);
     const k = oxonium2(c);
     s += k.s;
     const oa = k.os[0], h = oa.subs.H;
-    const base = P(h.x + 92, h.y - 12);
-    s += methanol(base, { h: 300, me: 0, lps: [185, 110], kind: 'plain' });
+    const base = P(h.x + 100, h.y - 6);
+    s += methanol(base, { h: 60, me: 0, lps: [185, 280], kind: 'plain' });
     s += fromLp(base, 185, P(h.x + 14, h.y - 3), 12);
     s += bondArrow(oa.o, h, -9, at(oa.o, 20, 19), -12);
     return s;
@@ -274,14 +274,14 @@ const STEPS = {
 /* The result panels that close a part. */
 function resultPanel(x, y, title, draw, note) {
   let s = box(x, y, title, note, 'good');
-  s += draw(P(x + 170, y + 170)).s;
+  s += draw(P(x + 170, y + 190)).s;
   return s;
 }
 const hemiResult = (x, y) => resultPanel(x, y, 'RESULT · THE HEMIACETAL', (c) => hemiacetal(c), 'one OH and one OCH₃');
 const acetalResult = (x, y) => resultPanel(x, y, 'RESULT · THE ACETAL', (c) => acetal(c), 'two OCH₃, no OH, no C=O');
 function oxoResult(x, y) {
   let s = box(x, y, 'RESULT · OXOCARBENIUM ION', 'plus one H₂O', 'good');
-  s += oxocarb(P(x + 160, y + 180)).s;
+  s += oxocarb(P(x + 160, y + 200)).s;
   return s;
 }
 

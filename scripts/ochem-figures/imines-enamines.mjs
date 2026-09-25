@@ -104,13 +104,13 @@ function pProt(ox, oy) {
   const C = A(ox + 118, oy + 130, 'C'), O = A(ox + 118, oy + 76, 'OH', 'hi');
   const M1 = A(ox + 70, oy + 158, 'CH₃'), M2 = A(ox + 118, oy + 182, 'CH₃');
   const N = A(ox + 188, oy + 144, 'NHCH₃');
-  const Ha = A(ox + 54, oy + 70, 'H', 'warn'), Oa = A(ox + 30, oy + 112, 'OH₂⁺');
+  const Ha = A(ox + 50, oy + 60, 'H', 'warn'), Oa = A(ox + 36, oy + 130, 'OH₂⁺');
   let s = frameP(ox, oy, H2, '4 · acid protonates the OH', ['H₃O⁺ gives up a proton']);
   s += bd(C, O) + bd(C, M1) + bd(C, M2) + bd(C, N) + bd(Ha, Oa);
   s += lp(O, -150, 5) + lp(O, -60, 5) + lp(N, -90, 5);
   s += draw(C, O, M1, M2, N, Ha, Oa);
-  s += curve(o(96, 64), o(69, 64), { bow: 10 });
-  s += curve(mid(Ha, Oa, 0.5), off(Oa, 14, -18), { bow: -12 });
+  s += curve(o(96, 62), o(66, 56), { bow: 10 });
+  s += curve(off(mid(Ha, Oa, 0.5), 4, 0), off(Oa, 16, -14), { bow: -12 });
   return s;
 }
 
@@ -239,19 +239,19 @@ function phPlot(ox, oy) {
 function phNotes(ox, oy) {
   let s = '';
   const blk = (x, y, lines, cls) => lines.forEach((t, i) => { s += text(x, y + i * 17, t, { cls: i ? 'fg-tag' : cls }); });
-  blk(ox + 88, oy, ['too acidic', 'CH₃NH₃⁺ has no lone pair,', 'so the addition stalls'], 'fg-tag-warn');
-  blk(ox + 252, oy, ['too basic', 'the OH is not protonated,', 'so water cannot leave'], 'fg-tag-warn');
+  blk(ox + 88, oy, ['too acidic', 'CH₃NH₃⁺: no lone pair,', 'so the addition stalls'], 'fg-tag-warn');
+  blk(ox + 252, oy, ['too basic', 'OH not protonated,', 'so water cannot leave'], 'fg-tag-warn');
   return s;
 }
 
 /* ----------------------------------- enamine and enolate resonance --- */
-const RW = 340, RH = 272;
+const RW = 340, RH = 292;
 function resPanel(ox, oy, kind) {
   const o = (x, y) => P(ox + x, oy + y);
   const enam = kind === 'enamine';
   let s = panel(ox, oy, RW, RH, { kind: enam ? 'hi' : undefined });
   s += tag(ox + RW / 2, oy + 20, enam ? 'an enamine: neutral' : 'an enolate: an anion (preview)');
-  const y1 = oy + 78, y2 = oy + 200;
+  const y1 = oy + 96, y2 = oy + 218;
   /* form 1: CH2=C(CH3)-X */
   const Ca = A(ox + 76, y1, 'CH₂'), C = A(ox + 146, y1, 'C');
   const M = A(ox + 146, y1 - 44, 'CH₃');
@@ -339,7 +339,7 @@ function pStorkAlk(ox, oy) {
   s += es;
   s += bd(Cb, Br, { cls: 'fg-bond-hi' }) + bd(Cb, Cc) + bd(Cc, Cd, { order: 2 });
   s += draw(Cb, Br, Cc, Cd);
-  s += text(v[5].x + 4, v[5].y + 20, 'C2', { cls: 'fg-tag' });
+  s += text(v[5].x + 16, v[5].y + 14, 'C2', { cls: 'fg-tag' });
   const lpP = lpAt(N, 180, 6);
   s += curve(off(lpP, 0, 6), mid(v[0], N, 0.45), { bow: 10 });
   s += curve(mid(v[0], v[5], 0.55), off(Cb, -18, 2), { bow: 16 });
@@ -388,11 +388,11 @@ function pSites(ox, oy) {
   s += text(C2.x - 24, C2.y - 14, '2', { cls: 'fg-tag-warn' });
   s += text(C3.x, C3.y + 32, '3', { cls: 'fg-tag-warn' });
   s += text(C4.x + 10, C4.y - 26, '4', { cls: 'fg-tag-warn' });
-  const Nu1 = A(ox + 60, oy + 196, 'Nu⁻'), Nu2 = A(ox + 290, oy + 196, 'Nu⁻');
+  const Nu1 = A(ox + 40, oy + 96, 'Nu⁻'), Nu2 = A(ox + 290, oy + 196, 'Nu⁻');
   s += draw(Nu1, Nu2);
-  s += curve(o(76, 180), o(138, 140), { bow: -20 });
+  s += curve(o(62, 100), o(132, 118), { bow: -14 });
   s += curve(o(284, 176), o(258, 144), { bow: 14 });
-  s += text(ox + 90, oy + 236, '1,2: at the C=O carbon', { cls: 'fg-tag' });
+  s += text(ox + 84, oy + 236, '1,2: at the C=O carbon', { cls: 'fg-tag' });
   s += text(ox + 256, oy + 236, '1,4: at the far end', { cls: 'fg-tag-good' });
   return s;
 }
@@ -571,7 +571,7 @@ FIGURES.push({
   build() {
     return pImine(12, 6) + pEnam(12, 366);
   },
-  caption: 'Same iminium, different proton: from nitrogen (top) or from the α carbon (bottom).',
+  caption: 'Two iminium ions, two different protons: from nitrogen (top) or from the α carbon (bottom).',
 });
 
 FIGURES.push({
@@ -591,7 +591,7 @@ FIGURES.push({
   id: 'enamine-vs-enolate',
   section: 'imines-enamines',
   anchor: '<h3>The enamine is a nucleophile at carbon</h3>',
-  viewBox: '0 0 760 292',
+  viewBox: '0 0 760 312',
   alt: 'Left: the enamine CH2=C(CH3)–N(CH3)2. The nitrogen lone pair pushes into the C–N bond and the C=C pi electrons move onto the end CH2, giving a second resonance structure with CH2 minus and C=N plus. Right, for comparison: the enolate CH2=C(CH3)–O minus does the same thing with an oxygen lone pair, giving CH2 minus next to a C=O.',
   build() {
     return resPanel(14, 10, 'enamine') + resPanel(406, 10, 'enolate');
@@ -602,7 +602,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-enamine-resonance',
   lessons: ['imines-enamines'],
-  viewBox: '0 0 340 280',
+  viewBox: '0 0 340 300',
   alt: 'The enamine CH2=C(CH3)–N(CH3)2. The nitrogen lone pair pushes into the C–N bond and the C=C pi electrons move onto the end CH2, giving a second resonance structure with CH2 minus and C=N plus.',
   build() {
     return resPanel(0, 4, 'enamine');
@@ -646,7 +646,7 @@ FIGURES.push({
   alt: 'Left: but-3-en-2-one with its oxygen numbered 1, the carbonyl carbon 2, the CH 3 and the end CH2 4. One nucleophile arrow goes to carbon 2 (1,2-addition), another to carbon 4 (1,4-addition). Right: the pyrrolidine enamine of cyclohexanone adds 1,4. The nitrogen lone pair pushes toward the ring, the ring C=C forms a bond to carbon 4, the C3=C4 pi electrons move to C2–C3, and the C=O pi electrons move onto oxygen. Below: after hydrolysis the product is 2-(3-oxobutyl)cyclohexanone.',
   build() {
     let s = pSites(12, 10) + pMichael(368, 10);
-    s += gapArrow(P(380, 266), P(380, 280));
+    s += gapArrow(P(558, 264), P(558, 280));
     s += pMichaelProd(12, 280);
     return s;
   },

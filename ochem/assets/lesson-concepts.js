@@ -393,7 +393,7 @@
     'aldehydes-ketones': { n:8, steps:{
       1:['carbonyl-electrophilicity'],
       2:['carbonyl-electrophilicity','electrophile-recognition'],
-      4:['carbonyl-electrophilicity','steric-hindrance'],
+      5:['carbonyl-electrophilicity','steric-hindrance'],
       6:['carbonyl-electrophilicity','steric-hindrance'],
       7:['carbonyl-electrophilicity','steric-hindrance'] } },
 
