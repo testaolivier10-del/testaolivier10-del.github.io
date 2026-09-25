@@ -17,9 +17,12 @@ import { polyPts, ringDouble } from '../lib/ochem-skeletal.mjs';
 const FIGURES = [];
 
 /* ------------------------------------------------------------ helpers --- */
-const rad = (l) => (l === 'H' ? 11 : l.length <= 2 ? 14 : 4 + l.length * 3.8);
+/* Long condensed groups (six or more characters) are drawn as bare text:
+   a disc big enough to hold them would crowd the drawing. Their radius is
+   still used to stop bonds short of the text. */
+const rad = (l) => (l === 'H' ? 11 : l.length <= 2 ? 14 : l.length <= 5 ? 4 + l.length * 4 : 4 + l.length * 3.9);
 const A = (x, y, l = 'C', k) => ({ x, y, l, k, r: rad(l) });
-const draw = (...as) => as.map((a) => atom(a.x, a.y, a.l, { kind: a.k, r: a.r })).join('');
+const draw = (...as) => as.map((a) => atom(a.x, a.y, a.l, { kind: a.l.length >= 6 && !a.k ? 'point' : a.k, r: a.r })).join('');
 const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r ?? 0, rTo: b.r ?? 0, ...o });
 const mid = (a, b, t = 0.5) => P(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
 const off = (p, dx, dy) => P(p.x + dx, p.y + dy);
@@ -73,10 +76,10 @@ FIGURES.push({
   build() {
     let s = '';
     s += acetate(96, 104, 'hi');
-    s += tag(96, 180, 'gives the enolate (α carbon)');
+    s += tag(96, 180, 'enolate partner');
     s += text(192, 110, '+', { cls: 'fg-lbl', size: 16 });
     s += acetate(290, 104, undefined, 'hi', 'warn');
-    s += tag(290, 180, 'gives the C=O carbon; loses OEt');
+    s += tag(290, 180, 'C=O partner; loses OEt');
     s += arrow(P(386, 104), P(452, 104));
     s += tag(419, 92, 'NaOEt');
     s += tag(419, 126, 'then H₃O⁺');
@@ -125,10 +128,10 @@ const PW = 316, PH = 232;
 function m1(ox, oy) {
   const B = A(ox + 42, oy + 70, 'EtO⁻', 'warn');
   const H = A(ox + 112, oy + 72, 'H', 'warn'), Ca = A(ox + 112, oy + 128, 'CH₂', 'hi'),
-        C = A(ox + 170, oy + 100), O = A(ox + 170, oy + 48), E = A(ox + 228, oy + 128, 'OEt');
+        C = A(ox + 170, oy + 100), O = A(ox + 170, oy + 48, 'O'), E = A(ox + 228, oy + 128, 'OEt');
   let s = frameP(ox, oy, PW, PH, '1 · EtO⁻ removes an α hydrogen', ['ethyl acetate → its enolate']);
   s += bd(H, Ca) + bd(Ca, C) + bd(C, O, { order: 2 }) + bd(C, E);
-  s += lp(O, -160, 5) + lp(O, -20, 5) + lp(B, 0, 4) + lp(B, -90, 3);
+  s += lp(O, -160, 5) + lp(O, -20, 5) + lp(B, 0, 4) + lp(B, -90, 3) + lp(B, 90, 3);
   s += draw(B, H, Ca, C, O, E);
   s += curve(off(lpAt(B, 0, 4), 4, 0), off(H, -12, -4), { bow: -12 });
   s += curve(mid(H, Ca), mid(Ca, C), { bow: -14 });
@@ -139,8 +142,8 @@ function m1(ox, oy) {
 /* 2: the enolate: O– lone pair reforms C=O, C=C pi attacks the second
    ester's carbonyl carbon, that C=O's pi electrons go to its oxygen. */
 function m2(ox, oy) {
-  const Ca = A(ox + 120, oy + 128, 'CH₂', 'hi'), C = A(ox + 70, oy + 100), O = A(ox + 70, oy + 48, 'O⁻', 'warn'),
-        E = A(ox + 28, oy + 132, 'OEt');
+  const Ca = A(ox + 126, oy + 142, 'CH₂', 'hi'), C = A(ox + 72, oy + 108), O = A(ox + 72, oy + 56, 'O⁻', 'warn'),
+        E = A(ox + 30, oy + 144, 'OEt');
   const Cb = A(ox + 222, oy + 116, 'C', 'hi'), Ob = A(ox + 198, oy + 66, 'O'),
         Mb = A(ox + 278, oy + 116, 'CH₃'), Eb = A(ox + 222, oy + 172, 'OEt');
   let s = frameP(ox, oy, PW, PH, '2 · the enolate attacks a second ester', ['a new C–C bond forms']);
@@ -149,7 +152,7 @@ function m2(ox, oy) {
   s += lp(O, 180, 5) + lp(O, -90, 5) + lp(O, 0, 5) + lp(Ob, -150, 5) + lp(Ob, -40, 5);
   s += draw(Ca, C, O, E, Cb, Ob, Mb, Eb);
   s += curve(off(lpAt(O, 0, 5), 2, 6), mid(C, O, 0.45), { bow: -12 });
-  s += curve(mid(Ca, C), off(Cb, -18, 4), { bow: 30 });
+  s += curve(mid(Ca, C), off(Cb, -18, -2), { bow: -30 });
   s += curve(mid(Cb, Ob), off(Ob, 16, 2), { bow: -10 });
   return s;
 }
@@ -180,7 +183,7 @@ function m4(ox, oy) {
   Ck.r = Ok.r = Ce.r = Oe.r = 14;
   let s = frameP(ox, oy, PW, PH, '4 · EtO⁻ takes the H between the C=O groups', [['pKₐ 11: this step does not go back', 'fg-tag-good']]);
   s += bd(Me, Ck) + bd(Ck, Ok, { order: 2 }) + bd(Ck, Cm) + bd(Cm, H) + bd(Cm, Ce) + bd(Ce, Oe, { order: 2 }) + bd(Ce, E);
-  s += lp(B, 180, 4) + lp(B, 90, 3) + lp(Ok, 140, 5) + lp(Ok, 40, 5) + lp(Oe, 140, 5) + lp(Oe, 40, 5);
+  s += lp(B, 180, 4) + lp(B, 90, 3) + lp(B, -90, 3) + lp(Ok, 140, 5) + lp(Ok, 40, 5) + lp(Oe, 140, 5) + lp(Oe, 40, 5);
   s += draw(Me, Ck, Ok, Cm, H, Ce, Oe, E, B);
   s += curve(off(lpAt(B, 180, 4), -4, 0), off(H, 13, -2), { bow: 10 });
   s += curve(mid(H, Cm), mid(Cm, Ck), { bow: 14 });
@@ -297,7 +300,7 @@ FIGURES.push({
 /* A starting ester: CH3–Cα(–R)–C(=O)–OEt. twoH: ethyl propanoate. */
 function startEster(ox, oy, twoH) {
   const Me = A(ox + 30, oy + 100, 'CH₃'), Ca = A(ox + 84, oy + 72, twoH ? 'CH₂' : 'CH', 'hi'),
-        C = A(ox + 140, oy + 100), O = A(ox + 140, oy + 150), E = A(ox + 196, oy + 72, 'OEt');
+        C = A(ox + 140, oy + 100), O = A(ox + 140, oy + 150, 'O'), E = A(ox + 196, oy + 72, 'OEt');
   let s = bd(Me, Ca) + bd(Ca, C) + bd(C, O, { order: 2 }) + bd(C, E);
   const parts = [Me, Ca, C, O, E];
   if (!twoH) { const M2 = A(ox + 84, oy + 24, 'CH₃'); s += bd(Ca, M2); parts.push(M2); }
@@ -352,11 +355,11 @@ FIGURES.push({
   build() {
     let s = '';
     s += tag(150, 14, 'from ethyl propanoate');
-    s += product(-8, 12, true);
+    s += product(-2, 12, true);
     s += tag(150, 196, 'one H left: EtO⁻ removes it', { cls: 'fg-tag-good' });
     s += rule(10, 212, 290, 212);
     s += tag(150, 234, 'from ethyl 2-methylpropanoate');
-    s += product(-8, 232, false);
+    s += product(-2, 232, false);
     s += tag(150, 416, 'no H left: nothing drives it', { cls: 'fg-tag-warn' });
     return s;
   },
@@ -381,19 +384,19 @@ function dieckA(ox, oy) {
   const C3 = A(g.C3.x, g.C3.y, 'CH₂'), C4 = A(g.C4.x, g.C4.y, 'CH₂'), C5 = A(g.C5.x, g.C5.y, 'CH₂');
   const C2 = A(g.C2.x, g.C2.y, 'CH⁻', 'warn'), C6 = A(g.C6.x, g.C6.y, 'C', 'hi');
   const C1 = A(C2.x - 48, C2.y + 52, 'CO₂Et');
-  const O6 = at(C6, 10, 52), E6 = at(C6, 100, 54);
+  const O6 = at(C6, 15, 54), E6 = at(C6, 105, 54);
   const O = A(O6.x, O6.y, 'O'), E = A(E6.x, E6.y, 'OEt');
   let s = frameP(ox, oy, DW, DH, '1 · the C2 enolate attacks C6', ['diethyl adipate after EtO⁻ removes an H from C2']);
   s += bd(C2, C3) + bd(C3, C4) + bd(C4, C5) + bd(C5, C6) + bd(C2, C1);
   s += bd(C6, O, { order: 2 }) + bd(C6, E);
-  s += lp(C2, 0, 4) + lp(O, -60, 5) + lp(O, 60, 5);
+  s += lp(C2, 0, 4) + lp(O, -40, 5) + lp(O, 75, 5);
   s += draw(C2, C3, C4, C5, C6, C1, O, E);
   s += curve(off(lpAt(C2, 0, 4), 5, 0), off(C6, -16, 0), { bow: 10 });
-  s += curve(mid(C6, O), off(O, 4, -16), { bow: 10 });
+  s += curve(mid(C6, O), off(O, -8, -15), { bow: -10 });
   s += numTag(C3, g.c, 'C3') + numTag(C4, g.c, 'C4', 26) + numTag(C5, g.c, 'C5');
   s += tag(C2.x - 44, C2.y - 8, 'C2');
   s += tag(C6.x + 30, C6.y - 22, 'C6');
-  s += tag(C1.x, C1.y + 34, 'C1');
+  s += tag(C1.x - 30, C1.y + 4, 'C1', { anchor: 'end' });
   return s;
 }
 
@@ -411,7 +414,7 @@ function dieckB(ox, oy) {
   s += tag(C2.x + 6, C2.y - 26, 'C2');
   s += tag(C6.x - 8, C6.y - 26, 'C6');
   s += tag(C1.x, C1.y - 26, 'C1');
-  s += tag(ox + 150, oy + 238, 'new C2–C6 bond: a five-membered ring', { cls: 'fg-tag-good' });
+  s += tag(ox + 150, oy + 264, 'new C2–C6 bond: a five-membered ring', { cls: 'fg-tag-good' });
   s += tag(H.x + 16, H.y + 4, 'pKₐ 11', { anchor: 'start', cls: 'fg-tag-good' });
   return s;
 }
@@ -467,7 +470,7 @@ FIGURES.push({
     const Oa = A(90, 128 - 40 - 42, 'O');
     s += bond(a.v[0], Oa, { rFrom: 0, rTo: Oa.r, order: 2 }) + draw(Oa);
     s += `<circle class="fg-atom-hi" cx="${a.v[5].x}" cy="${a.v[5].y}" r="6"></circle>`;
-    s += tag(a.v[0].x - 14, a.v[0].y + 16, '1', { anchor: 'end' });
+    s += tag(a.v[0].x - 12, a.v[0].y + 2, '1', { anchor: 'end' });
     s += tag(a.v[5].x + 12, a.v[5].y + 4, '2 (α)', { anchor: 'start' });
     s += tag(90, 206, 'cyclohexanone');
     s += text(184, 132, '+', { cls: 'fg-lbl', size: 16 });
@@ -488,12 +491,12 @@ FIGURES.push({
     const Ce = A(v2.x + 62, v2.y + 8, 'CO₂Et', 'hi'), H = A(v2.x + 26, v2.y - 36, 'H');
     s += bond(v2, Ce, { rFrom: 0, rTo: Ce.r, cls: 'fg-bond-hi' }) + bond(v2, H, { rFrom: 0, rTo: H.r });
     s += draw(Ce, H);
-    s += tag(b.v[0].x - 14, b.v[0].y + 16, '1', { anchor: 'end' });
-    s += tag(v2.x - 6, v2.y + 20, '2', { anchor: 'end' });
+    s += tag(b.v[0].x - 12, b.v[0].y + 2, '1', { anchor: 'end' });
+    s += tag(v2.x + 8, v2.y + 22, '2', { anchor: 'start' });
     s += tag(590, 206, 'ethyl 2-oxocyclohexane-1-carboxylate');
     return s;
   },
-  caption: 'Ring carbon 2, the α carbon, is the one that attacks, so it is the one that ends up carrying the CO₂Et.',
+  caption: 'The numbers follow cyclohexanone, counting from its C=O carbon. Ring carbon 2, the α carbon, attacks, so it ends up carrying the CO₂Et. The product’s name counts the other way, from the carbon that carries the CO₂Et.',
 });
 
 export default FIGURES;

@@ -18,7 +18,7 @@ const FIGURES = [];
 const PW = 232;                       // panel width
 
 /* ------------------------------------------------------------ helpers --- */
-const rad = (l) => (l === 'H' ? 12 : l.length <= 2 ? 14 : 4 + l.length * 3.8);
+const rad = (l) => (l === 'H' ? 12 : l.length <= 2 ? 14 : 6 + l.length * 3);
 const A = (x, y, l, k) => ({ x, y, l, k, r: rad(l) });
 const draw = (...as) => as.map((a) => atom(a.x, a.y, a.l, { kind: a.k, r: a.r })).join('');
 const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r ?? 0, rTo: b.r ?? 0, ...o });
@@ -112,7 +112,7 @@ function pAlkyl(ox, oy, h) {
 /* 3: the alkylated diester. */
 function pAlkylated(ox, oy, h) {
   const Ca = A(ox + 116, oy + 126, 'C', 'hi');
-  const R = A(ox + 116, oy + 70, 'CH₂CH₃', 'good'), H = A(ox + 116, oy + 178, 'H');
+  const R = A(ox + 116, oy + 70, 'CH₂CH₃'), H = A(ox + 116, oy + 178, 'H');
   const E1 = A(ox + 50, oy + 148, 'CO₂Et'), E2 = A(ox + 182, oy + 148, 'CO₂Et');
   let s = frameP(ox, oy, h, '3 · diethyl ethylmalonate', ['one α H is left, so steps 1–2', 'can add a second group']);
   s += bd(Ca, R, { cls: 'fg-bond-hi' }) + bd(Ca, H) + bd(Ca, E1) + bd(Ca, E2);
@@ -158,8 +158,8 @@ function ringCore(ox, oy, exo) {
   /* All three arrows run the same way round the ring:
      C=O pi to the H (new O-H); O-H bond to C-O (second C=O of CO2);
      Calpha-C bond to C1-Calpha (the enol's C=C). */
-  s += curve(off(mid(Oa, C1), -8, 0), off(mid(Oa, H), -6, -6), { bow: 16 });
-  s += curve(off(mid(Od, H), 6, -6), off(mid(Od, C2), 8, 0), { bow: 16 });
+  s += curve(off(mid(Oa, C1), -12, 0), off(mid(Oa, H), -10, -10), { bow: -22 });
+  s += curve(off(mid(Od, H), 10, -10), off(mid(Od, C2), 12, 0), { bow: -22 });
   s += curve(off(mid(Ca, C2), -2, -8), off(mid(C1, Ca), 2, -8), { bow: 16 });
   return s;
 }
@@ -189,7 +189,7 @@ function pEnolAcid(ox, oy, h) {
 }
 
 const MAL_A = [[pDeprot, 214], [pAlkyl, 214], [pAlkylated, 230]];
-const MAL_B = [[pDiacid, 262], [pRingMalonic, 300], [pEnolAcid, 316]];
+const MAL_B = [[pDiacid, 276], [pRingMalonic, 300], [pEnolAcid, 316]];
 
 FIGURES.push({
   id: 'malonic-sequence',
@@ -232,19 +232,19 @@ function pBromobutyl(ox, oy, h) {
   s += bond(ch[3], Br, { rFrom: 0, rTo: Br.r });
   s += draw(Ca, E1, E2, H, Br);
   ['2', '3', '4', '5'].forEach((n, i) => { s += tag(ch[i].x, ch[i].y + (i % 2 ? -12 : 20), n); });
-  s += tag(Ca.x + 22, Ca.y + 26, '1');
+  s += tag(Ca.x + 12, Ca.y + 34, '1');
   return s;
 }
 
 /* 2: NaOEt again; the carbanion reaches the far end of its own chain. */
 function pCloseRing(ox, oy, h) {
-  const pts = polyPts(ox + 130, oy + 136, 5, 44, 180);
+  const pts = polyPts(ox + 134, oy + 136, 5, 52, 180);
   const Ca = A(pts[0].x, pts[0].y, 'C⁻', 'hi');
   const E1 = A(ox + 40, oy + 92, 'CO₂Et'), E2 = A(ox + 40, oy + 184, 'CO₂Et');
   const C5 = pts[4];
   const dir = { x: (C5.x - Ca.x), y: (C5.y - Ca.y) };
   const L = Math.hypot(dir.x, dir.y);
-  const Br = A(C5.x + (dir.x / L) * 42, C5.y + (dir.y / L) * 42, 'Br');
+  const Br = A(C5.x + (dir.x / L) * 42, C5.y + (dir.y / L) * 50, 'Br');
   let s = frameP(ox, oy, h, '2 · NaOEt again: the chain closes', ['second SN2, inside one molecule']);
   s += bd(Ca, E1) + bd(Ca, E2) + bond(Ca, pts[1], { rFrom: Ca.r, rTo: 0 });
   for (let i = 1; i < 4; i++) s += sk(pts[i], pts[i + 1]);
@@ -252,8 +252,8 @@ function pCloseRing(ox, oy, h) {
   s += lp(Ca, -54, 5);
   s += draw(Ca, E1, E2, Br);
   s += curve(off(lpAt(Ca, -54, 5), 4, 0), off(C5, -6, 8), { bow: -10 });
-  s += curve(mid(C5, Br), off(Br, 14, 6), { bow: -10 });
-  const c = P(ox + 130, oy + 136);
+  s += curve(off(mid(C5, Br), 6, 4), off(Br, 18, 6), { bow: 10 });
+  const c = P(ox + 134, oy + 136);
   ['2', '3', '4', '5'].forEach((n, i) => {
     const p = pts[i + 1], dx = c.x - p.x, dy = c.y - p.y, d = Math.hypot(dx, dy);
     s += tag(p.x + (dx / d) * 14, p.y + (dy / d) * 14 + 4, n);
@@ -272,9 +272,9 @@ function pRingProduct(ox, oy, h) {
   s += bond(Ca, pts[1], { rFrom: Ca.r, rTo: 0 }) + bond(Ca, pts[4], { rFrom: Ca.r, rTo: 0 });
   for (let i = 1; i < 4; i++) s += sk(pts[i], pts[i + 1]);
   s += draw(Ca, E1, E2);
-  ['2', '3', '4', '5'].forEach((n, i) => {
-    const p = pts[i + 1], dx = c.x - p.x, dy = c.y - p.y, d = Math.hypot(dx, dy);
-    s += tag(p.x + (dx / d) * 13, p.y + (dy / d) * 13 + 4, n);
+  ['1', '2', '3', '4', '5'].forEach((n, i) => {
+    const p = pts[i], dx = c.x - p.x, dy = c.y - p.y, d = Math.hypot(dx, dy);
+    s += tag(p.x + (dx / d) * (i ? 13 : 26), p.y + (dy / d) * (i ? 13 : 26) + 4, n);
   });
   s += gapArrow(P(ox + 116, oy + 168), P(ox + 116, oy + 194));
   s += tag(ox + 172, oy + 186, 'H₃O⁺, heat');
@@ -292,55 +292,54 @@ FIGURES.push({
   alt: 'Three panels. 1: after one alkylation by 1,4-dibromobutane, the malonate alpha carbon (atom 1) carries a chain of four carbons (2 to 5) ending in Br. 2: a second ethoxide makes the alpha carbon a carbanion again; its lone pair attacks carbon 5 of its own chain and bromide leaves. 3: diethyl cyclopentane-1,1-dicarboxylate, a five-membered ring numbered 1 to 5, which H3O+ and heat turn into cyclopentanecarboxylic acid.',
   get viewBox() { return `0 0 ${rows(RING, 3).W} ${rows(RING, 3).H}`; },
   build() { return rows(RING, 3).svg; },
-  caption: 'Count the ring: the α carbon (1) plus the four chain carbons (2 to 5) from 1,4-dibromobutane.',
+  caption: 'The numbers 1 to 5 follow the same atoms through all three panels. Atom 1 is the malonate α carbon.',
 });
 const RING = [[pBromobutyl, 280], [pCloseRing, 280], [pRingProduct, 280]];
 
 /* --------------------------------------------- reading it backwards --- */
 
-/* One target: skeletal chain ending in a labelled COOH, with the cut bond
-   marked. `branch` draws the substituents. */
+/* A short dashed cut mark across the bond a–b at point m. */
+function cut(m, a, b) {
+  const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
+  const px = -dy / L, py = dx / L;
+  return `<line class="fg-arrow" x1="${(m.x + px * 13).toFixed(2)}" y1="${(m.y + py * 13).toFixed(2)}" x2="${(m.x - px * 13).toFixed(2)}" y2="${(m.y - py * 13).toFixed(2)}" stroke-dasharray="3 3"></line>`;
+}
+/* A labelled carboxyl on skeletal carbon c: C=O up, OH to the right. */
+function carboxyl(c) {
+  const O = A(c.x, c.y - 40, 'O'), OH = A(c.x + 46, c.y, 'OH');
+  return bond(c, O, { rFrom: 0, rTo: O.r, order: 2 }) + bond(c, OH, { rFrom: 0, rTo: OH.r }) + draw(O, OH);
+}
+
+/* One target, drawn skeletally, with the bond from the alpha carbon to its
+   substituent cut. */
 function pTarget(ox, oy, h, which) {
   const w = 324;
   const good = which === 'good';
   let s = frameP(ox, oy, h, good ? '4-methylpentanoic acid' : '3,3-dimethylbutanoic acid',
     good ? [['halide: (CH₃)₂CHCH₂Br, primary', 'fg-tag-good']] : [['halide: (CH₃)₃CBr, tertiary: no route', 'fg-tag-warn']],
     good ? undefined : 'warn', w);
-  const COOH = A(ox + 270, oy + 76, 'COOH');
+  const y = oy + 84;
   if (good) {
-    const v = [P(ox + 62, oy + 76), P(ox + 102, oy + 96), P(ox + 142, oy + 76), P(ox + 182, oy + 96), P(ox + 222, oy + 76)];
-    // v0 methyl, v1 CH (branch), v2 CH2, v3 CH2 = alpha, then C(OOH)
+    const v = [P(ox + 46, y), P(ox + 86, y + 20), P(ox + 126, y), P(ox + 166, y + 20), P(ox + 206, y)];
+    // v0 CH3, v1 CH (branch down), v2 CH2, v3 alpha CH2, v4 the carboxyl carbon
     s += sk(v[0], v[1]) + sk(v[1], v[2]) + sk(v[2], v[3], true) + sk(v[3], v[4]);
-    s += sk(v[1], P(v[1].x, v[1].y + 40));
-    s += bond(v[4], COOH, { rFrom: 0, rTo: 0 });
-    s = s; // the carboxyl carbon is v[4]; draw C=O and OH on it
-    s += bond(v[4], P(v[4].x, v[4].y - 36), { rFrom: 0, rTo: 14, order: 2 });
-    s += atom(v[4].x, v[4].y - 36, 'O');
-    s += atom(ox + 270, oy + 76, 'OH');
+    s += sk(v[1], P(v[1].x, v[1].y + 38));
+    s += carboxyl(v[4]);
     s += cut(mid(v[2], v[3]), v[2], v[3]);
     s += tag(v[3].x, v[3].y + 22, 'α');
-    s += tag(ox + 112, oy + 164, 'from the halide');
-    s += tag(ox + 236, oy + 164, 'from malonate');
+    s += tag(ox + 92, oy + 162, 'from the halide');
+    s += tag(ox + 220, oy + 162, 'from malonate');
   } else {
-    const q = P(ox + 112, oy + 96), a = P(ox + 162, oy + 76), c = P(ox + 212, oy + 96);
-    s += sk(q, P(q.x - 40, q.y - 20)) + sk(q, P(q.x - 40, q.y + 20)) + sk(q, P(q.x, q.y + 42));
+    const q = P(ox + 106, y + 10), a = P(ox + 156, y - 10), c = P(ox + 206, y + 10);
+    s += sk(q, P(q.x - 44, q.y - 16)) + sk(q, P(q.x - 44, q.y + 22)) + sk(q, P(q.x, q.y + 40));
     s += sk(q, a, true) + sk(a, c);
-    s += bond(c, P(c.x, c.y - 38), { rFrom: 0, rTo: 14, order: 2 });
-    s += atom(c.x, c.y - 38, 'O');
-    s += bond(c, P(ox + 262, oy + 96), { rFrom: 0, rTo: 14 });
-    s += atom(ox + 262, oy + 96, 'OH');
+    s += carboxyl(c);
     s += cut(mid(q, a), q, a);
-    s += tag(a.x, a.y + 26, 'α');
-    s += tag(ox + 70, oy + 164, 'from the halide');
-    s += tag(ox + 222, oy + 164, 'from malonate');
+    s += tag(a.x, a.y + 30, 'α');
+    s += tag(ox + 80, oy + 162, 'from the halide');
+    s += tag(ox + 220, oy + 162, 'from malonate');
   }
   return s;
-}
-/* A short cut mark across the bond a–b at point m. */
-function cut(m, a, b) {
-  const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
-  const px = -dy / L, py = dx / L;
-  return `<line class="fg-arrow" x1="${(m.x + px * 13).toFixed(2)}" y1="${(m.y + py * 13).toFixed(2)}" x2="${(m.x - px * 13).toFixed(2)}" y2="${(m.y - py * 13).toFixed(2)}" stroke-dasharray="3 3"></line>`;
 }
 
 FIGURES.push({
@@ -348,9 +347,9 @@ FIGURES.push({
   section: 'ester-syntheses',
   lessons: ['ester-syntheses'],
   alt: 'Two targets drawn skeletally with the bond from the alpha carbon to its substituent cut. 4-Methylpentanoic acid: the cut leaves CH2–COOH from malonate and an isobutyl group from 1-bromo-2-methylpropane, a primary halide. 3,3-Dimethylbutanoic acid: the cut leaves CH2–COOH and a tert-butyl group, which would need tert-butyl bromide, a tertiary halide, so there is no route.',
-  viewBox: '0 0 340 392',
-  build() { return pTarget(8, 8, 184, 'good') + pTarget(8, 200, 184, 'bad'); },
-  caption: 'Cut the bond from the α carbon to its substituent (dashed mark). The piece that keeps the COOH is what malonate supplies; the other piece names the halide.',
+  viewBox: '0 0 340 424',
+  build() { return pTarget(8, 8, 200, 'good') + pTarget(8, 216, 200, 'bad'); },
+  caption: 'The dashed mark cuts the bond from the α carbon to its substituent. Top: a route. Bottom: the near miss with no route.',
 });
 
 /* ------------------------------------------------ why only beta --- */
@@ -360,31 +359,28 @@ function pKeto(ox, oy, h, which) {
   const good = which === 'beta';
   const titles = { beta: 'β-keto acid: loses CO₂ on warming', alpha: 'α-keto acid: no', gamma: 'γ-keto acid: no' };
   const lines = {
-    beta: [['C=O sits next to the α carbon', 'fg-tag-good']],
-    alpha: [['no C=O on the far side to take', 'fg-tag-warn'], ['the bond’s electrons', 'fg-tag-warn']],
-    gamma: [['the α carbon’s neighbor is CH₂,', 'fg-tag-warn'], ['not C=O', 'fg-tag-warn']],
+    beta: [['a C=O sits beside the α carbon', 'fg-tag-good']],
+    alpha: [['the α carbon is the C=O carbon,', 'fg-tag-warn'], ['with no C=O beside it', 'fg-tag-warn']],
+    gamma: [['the α carbon’s neighbor is CH₂,', 'fg-tag-warn'], ['not a C=O', 'fg-tag-warn']],
   }[which];
   let s = frameP(ox, oy, h, titles[which], lines, good ? 'good' : 'warn', w);
-  const y = oy + 78;
+  const y = oy + 82;
   const M = A(ox + 36, y, 'CH₃');
   const nCH2 = which === 'beta' ? 1 : which === 'gamma' ? 2 : 0;
   const Ck = A(ox + 90, y, 'C');
   const Ok = A(ox + 90, y - 42, 'O');
-  let s2 = bd(M, Ck) + bd(Ck, Ok, { order: 2 });
+  s += bd(M, Ck) + bd(Ck, Ok, { order: 2 });
   let prev = Ck, x = ox + 90;
-  const greek = [];
   const chain = [];
-  for (let i = 0; i < nCH2; i++) { x += 58; const c = A(x, y, 'CH₂'); chain.push(c); s2 += bd(prev, c); prev = c; }
-  x += 64;
+  for (let i = 0; i < nCH2; i++) { x += 58; const c = A(x, y, 'CH₂'); chain.push(c); s += bd(prev, c); prev = c; }
+  x += 66;
   const COOH = A(x, y, 'COOH');
-  s2 += bd(prev, COOH, { cls: 'fg-bond-hi' });
-  s2 += draw(M, Ck, Ok, ...chain, COOH);
-  // Greek letters: alpha is the carbon bonded to COOH
+  s += bd(prev, COOH, { cls: 'fg-bond-hi' });
+  s += draw(M, Ck, Ok, ...chain, COOH);
   const carbons = [Ck, ...chain];
   const names = ['α', 'β', 'γ'];
-  for (let i = carbons.length - 1, j = 0; i >= 0; i--, j++) s2 += tag(carbons[i].x, y + 30, names[j]);
-  s += s2;
-  s += tag(mid(prev, COOH).x, y - 14, 'breaks');
+  for (let i = carbons.length - 1, j = 0; i >= 0; i--, j++) s += tag(carbons[i].x, y + 30, names[j]);
+  s += tag(mid(prev, COOH).x + 4, y - 14, 'breaks');
   return s;
 }
 
@@ -392,10 +388,10 @@ FIGURES.push({
   id: 'decarb-beta-only',
   section: 'ester-syntheses',
   lessons: ['ester-syntheses'],
-  alt: 'Three keto acids with the bond to COOH marked as the one that breaks. In the beta-keto acid CH3COCH2COOH, the ketone C=O sits next to the alpha carbon, and it loses CO2. In the alpha-keto acid CH3COCOOH there is no C=O beyond the breaking bond to take the electrons. In the gamma-keto acid CH3COCH2CH2COOH the alpha carbon is next to a CH2, not to the C=O. Neither of the last two loses CO2 this way.',
-  viewBox: '0 0 340 470',
-  build() { return pKeto(8, 8, 144, 'beta') + pKeto(8, 160, 150, 'alpha') + pKeto(8, 318, 150, 'gamma'); },
-  caption: 'The breaking bond (highlighted) must sit right beside a C=O, so the electrons can flow into it and make the enol. Only a β carbonyl is placed there.',
+  alt: 'Three keto acids with the bond to COOH marked as the one that breaks. In the beta-keto acid CH3COCH2COOH, a ketone C=O sits beside the alpha carbon, and it loses CO2. In the alpha-keto acid CH3COCOOH the alpha carbon is the ketone carbon itself, with no C=O beside it. In the gamma-keto acid CH3COCH2CH2COOH the alpha carbon is next to a CH2, not a C=O. Neither of the last two loses CO2 this way.',
+  viewBox: '0 0 340 508',
+  build() { return pKeto(8, 8, 150, 'beta') + pKeto(8, 174, 162, 'alpha') + pKeto(8, 344, 162, 'gamma'); },
+  caption: 'The highlighted bond is the one that would break. The Greek letters count carbons outward from the COOH.',
 });
 
 /* ------------------------------------------------ acetoacetic ester --- */
@@ -408,7 +404,7 @@ function pAcetoAlkyl(ox, oy, h) {
     const Ca = A(ox + 126, y, alk ? 'CH' : 'CH₂', 'hi'), E = A(ox + 190, y, 'CO₂Et');
     let t = bd(M, Ck) + bd(Ck, O, { order: 2 }) + bd(Ck, Ca) + bd(Ca, E);
     let extra = [];
-    if (alk) { const R = A(ox + 126, y + 50, 'CH₂CH₃', 'good'); t += bd(Ca, R, { cls: 'fg-bond-hi' }); extra.push(R); }
+    if (alk) { const R = A(ox + 126, y + 50, 'CH₂CH₃'); t += bd(Ca, R, { cls: 'fg-bond-hi' }); extra.push(R); }
     return t + draw(M, Ck, O, Ca, E, ...extra);
   };
   s += row(oy + 90, false);
@@ -447,30 +443,30 @@ FIGURES.push({
 /* ------------------------------------------- tertiary halide: E2 --- */
 function pE2(ox, oy, h) {
   const w = 324;
-  let s = frameP(ox, oy, h, 'C⁻ takes an H instead (E2)', [], 'warn', w);
-  const Ca = A(ox + 64, oy + 106, 'C⁻', 'hi');
-  const E1 = A(ox + 34, oy + 56, 'CO₂Et'), E2 = A(ox + 34, oy + 156, 'CO₂Et'), H0 = A(ox + 84, oy + 152, 'H');
-  const Hb = A(ox + 132, oy + 106, 'H', 'warn'), Cb = A(ox + 180, oy + 106, 'CH₂');
-  const Cq = A(ox + 236, oy + 106, 'C'), M1 = A(ox + 236, oy + 56, 'CH₃'), M2 = A(ox + 236, oy + 158, 'CH₃');
-  const Br = A(ox + 292, oy + 106, 'Br');
+  let s = frameP(ox, oy, h, 'the C⁻ takes an H instead (E2)', [], 'warn', w);
+  const Ca = A(ox + 60, oy + 118, 'C⁻', 'hi');
+  const E1 = A(ox + 36, oy + 66, 'CO₂Et'), E2 = A(ox + 36, oy + 172, 'CO₂Et'), H0 = A(ox + 94, oy + 164, 'H');
+  const Hb = A(ox + 144, oy + 74, 'H', 'warn'), Cb = A(ox + 172, oy + 120, 'CH₂');
+  const Cq = A(ox + 230, oy + 120, 'C'), M1 = A(ox + 230, oy + 68, 'CH₃'), M2 = A(ox + 230, oy + 172, 'CH₃');
+  const Br = A(ox + 290, oy + 120, 'Br');
   s += bd(Ca, E1) + bd(Ca, E2) + bd(Ca, H0) + bd(Hb, Cb, { cls: 'fg-bond-hi' }) + bd(Cb, Cq) + bd(Cq, M1) + bd(Cq, M2) + bd(Cq, Br, { cls: 'fg-bond-hi' });
-  s += lp(Ca, 0, 5);
+  s += lp(Ca, -30, 5);
   s += draw(Ca, E1, E2, H0, Hb, Cb, Cq, M1, M2, Br);
-  s += curve(off(lpAt(Ca, 0, 5), 4, -4), off(Hb, -8, -10), { bow: 14 });
-  s += curve(mid(Hb, Cb), mid(Cb, Cq), { bow: -14 });
-  s += curve(mid(Cq, Br), off(Br, 0, 16), { bow: -12 });
+  s += curve(off(lpAt(Ca, -30, 5), 4, -4), off(Hb, -14, 0), { bow: 16 });
+  s += curve(mid(Hb, Cb, 0.55), mid(Cb, Cq), { bow: -18 });
+  s += curve(mid(Cq, Br), off(Br, 0, 18), { bow: 12 });
   return s;
 }
 function pE2Products(ox, oy, h) {
   const w = 324;
   let s = frameP(ox, oy, h, 'what you get back', [['no new C–C bond on the α carbon', 'fg-tag-warn']], 'warn', w);
-  const C1 = A(ox + 60, oy + 72, 'CH₂'), C2 = A(ox + 116, oy + 72, 'C');
-  const M1 = A(ox + 154, oy + 46, 'CH₃'), M2 = A(ox + 154, oy + 98, 'CH₃');
+  const C1 = A(ox + 50, oy + 76, 'CH₂'), C2 = A(ox + 106, oy + 76, 'C');
+  const M1 = A(ox + 146, oy + 48, 'CH₃'), M2 = A(ox + 146, oy + 104, 'CH₃');
   s += bd(C1, C2, { order: 2 }) + bd(C2, M1) + bd(C2, M2);
   s += draw(C1, C2, M1, M2);
-  s += tag(ox + 250, oy + 60, '+ diethyl malonate');
-  s += tag(ox + 250, oy + 80, '+ Br⁻');
-  s += tag(ox + 100, oy + 128, '2-methylpropene');
+  s += tag(ox + 244, oy + 66, '+ diethyl malonate');
+  s += tag(ox + 244, oy + 88, '+ Br⁻');
+  s += tag(ox + 92, oy + 134, '2-methylpropene');
   return s;
 }
 
@@ -479,9 +475,9 @@ FIGURES.push({
   section: 'ester-syntheses',
   lessons: ['ester-syntheses'],
   alt: 'The malonate carbanion meets tert-butyl bromide. Its lone pair takes a hydrogen from one of the methyl groups, that C–H bond becomes a C=C, and bromide leaves: an E2. The products are 2-methylpropene, diethyl malonate back again and bromide, with no new bond to the alpha carbon.',
-  viewBox: '0 0 340 368',
-  build() { return pE2(8, 8, 196) + gapArrow(P(170, 208), P(170, 228)) + pE2Products(8, 232, 128); },
-  caption: 'Three arrows of an E2 on tert-butyl bromide. The carbanion ends up protonated, and the α carbon gains nothing.',
+  viewBox: '0 0 340 424',
+  build() { return pE2(8, 8, 208) + gapArrow(P(170, 220), P(170, 240)) + pE2Products(8, 248, 168); },
+  caption: 'Three curved arrows, one E2. The anion ends up with a hydrogen, not a new carbon group.',
 });
 
 /* ------------------------------------------------ two carbonyls --- */
@@ -494,11 +490,11 @@ function pOneOrTwo(ox, oy, h, which) {
   }[which];
   const titles = { acetate: 'ethyl acetate', malonate: 'diethyl malonate', aceto: 'ethyl acetoacetate' };
   let s = frameP(ox, oy, h, titles[which], lines, undefined, w);
-  const y = oy + 88;
+  const y = oy + 90;
   if (which === 'acetate') {
     const Ca = A(ox + 110, y, 'CH₃', 'hi'), C = A(ox + 166, y, 'C'), O = A(ox + 166, y - 42, 'O'), E = A(ox + 222, y, 'OEt');
     s += bd(Ca, C) + bd(C, O, { order: 2 }) + bd(C, E) + draw(Ca, C, O, E);
-    s += tag(Ca.x, y + 30, 'α');
+    s += tag(Ca.x, y - 24, 'α');
   } else {
     const L = which === 'malonate' ? A(ox + 42, y, 'EtO') : A(ox + 42, y, 'CH₃');
     const C1 = A(ox + 102, y, 'C'), O1 = A(ox + 102, y - 42, 'O');
@@ -506,7 +502,7 @@ function pOneOrTwo(ox, oy, h, which) {
     const C2 = A(ox + 222, y, 'C'), O2 = A(ox + 222, y - 42, 'O'), E = A(ox + 282, y, 'OEt');
     s += bd(L, C1) + bd(C1, O1, { order: 2 }) + bd(C1, Ca) + bd(Ca, C2) + bd(C2, O2, { order: 2 }) + bd(C2, E);
     s += draw(L, C1, O1, Ca, C2, O2, E);
-    s += tag(Ca.x, y + 30, 'α');
+    s += tag(Ca.x, y - 24, 'α');
   }
   return s;
 }
@@ -518,7 +514,7 @@ FIGURES.push({
   alt: 'Three structures. Ethyl acetate, CH3–CO–OEt: the alpha CH3 has one C=O beside it. Diethyl malonate, EtO–CO–CH2–CO–OEt, and ethyl acetoacetate, CH3–CO–CH2–CO–OEt: the alpha CH2 sits between two C=O groups.',
   viewBox: '0 0 340 440',
   build() { return pOneOrTwo(8, 8, 136, 'acetate') + pOneOrTwo(8, 152, 136, 'malonate') + pOneOrTwo(8, 296, 136, 'aceto'); },
-  caption: 'The highlighted α carbon. In ethyl acetate it touches one carbonyl; in the other two it sits between two.',
+  caption: 'The highlighted carbon in each is the α carbon.',
 });
 
 /* Every figure is placed by its empty markers, written by hand in the notes

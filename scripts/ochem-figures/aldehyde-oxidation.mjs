@@ -456,7 +456,7 @@ FIGURES.push({
   id: 'tollens-test',
   section: 'aldehyde-oxidation',
   anchor: '<h3>Tollens&rsquo; reagent and the silver mirror</h3>',
-  alt: 'Two panels. Left: an aldehyde R–CHO becomes the carboxylate R–COO−, giving up two electrons. Right: the linear diamminesilver(I) ion, H3N–Ag–NH3 with a positive charge, is reduced to silver metal, drawn as a grey layer that plates onto the glass.',
+  alt: 'Two panels. Left: an aldehyde R–CHO becomes the carboxylate R–COO−, giving up two electrons. Right: the linear diamminesilver(I) ion, H3N–Ag–NH3 with a positive charge, is reduced to silver metal, drawn as a gray layer that plates onto the glass.',
   viewBox: '0 0 760 220',
   build() { return gridFigure([organicCell, silverCell], 2, 364, 204, 16, 16, 8, 8, [0, 'hi']); },
   caption: 'The left panel is the same for every test in this section; only the metal on the right changes.',
@@ -547,7 +547,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-glucose-opening',
   lessons: ['aldehyde-oxidation'],
-  alt: 'Two stacked panels: the glucose ring, with C1 marked and arrows showing the C1 oxygen forming a C=O as the ring oxygen takes the bond it shared with C1; and the open-chain aldehyde, with C1 and C5 labelled.',
+  alt: 'Two stacked panels: the glucose ring, with C1 marked and arrows showing the C1 oxygen forming a C=O as the ring oxygen takes the bond it shared with C1; and the open-chain aldehyde, with C1 and C5 labeled.',
   viewBox: `0 0 340 ${stackH(2, SH)}`,
   build() { return gridFigure(glucoseCells, 1, 324, SH, 0, 14, 8, 8, [0, 'good'], SW); },
   caption: 'Hydrogens and stereochemistry are left off.',

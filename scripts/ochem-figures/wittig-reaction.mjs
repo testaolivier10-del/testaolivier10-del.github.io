@@ -174,7 +174,9 @@ function pClose(ox, oy) {
   s += lp(Cy, 90) + lp(O, 135) + lp(O, 225);
   s += draw(Pp, Cy, Cc, O, M1, M2);
   s += curve(off(lpAt(Cy, 90), 7, 0), P(Cc.x + 5, Cc.y - Cc.r - 3), { bow: -10 });
-  s += curve(P(ox + 138, oy + 141), P(ox + 90, oy + 108), { bow: 14 });
+  // The O–P bond that is forming: dashed, so the arrow has a visible target.
+  s += `<line class="fg-dash-hi" x1="${ox + 80}" y1="${oy + 132}" x2="${ox + 80}" y2="${oy + 90}"></line>`;
+  s += curve(P(ox + 138, oy + 141), P(ox + 84, oy + 111), { bow: 14 });
   return s;
 }
 
@@ -226,7 +228,7 @@ FIGURES.push({
     s += right(PW + 6, PW + GAP - 6, y2 + 90);
     return s;
   },
-  caption: 'Read the top row, then the bottom row. Follow the two highlighted carbons: they are the ones that end up in the C=C.',
+  caption: 'Read the top row, then the bottom row. In panel 1 the dashed line is the O&ndash;P bond as it forms. Follow the two highlighted carbons: they are the ones that end up in the C=C.',
 });
 
 FIGURES.push({
@@ -235,7 +237,7 @@ FIGURES.push({
   viewBox: `0 0 ${PW} ${H_M * 3 + H_PROD + 3 * 26}`,
   alt: 'The Wittig mechanism for acetone and Ph3P=CH2 in four stacked panels: the ylide carbon attacks the carbonyl carbon while the C=O pi bond swings onto phosphorus; the neutral oxaphosphetane ring; the C–P and C–O bonds break to form C=C and P=O; 2-methylpropene and triphenylphosphine oxide.',
   build() { return stack([[pClose, H_M], [pRing, H_M], [pBreak, H_M], [pProd, H_PROD]]).svg; },
-  caption: 'Two arrows close the ring; two arrows open it the other way. The highlighted carbons become the C=C.',
+  caption: 'Two arrows close the ring (the dashed line is the O&ndash;P bond forming); two arrows open it the other way. The highlighted carbons become the C=C.',
 });
 
 /* ------------------------------------------- elimination vs Wittig ------ */
@@ -428,7 +430,7 @@ function pRouteA(ox, oy) {
 }
 
 function pRouteB(ox, oy) {
-  let s = frameP(ox, oy, H_R, '(b) the C=O on the isopropyl side', ['benzylic halide: fine for SN2', `semi-stabilized ylide: poor ${it('E')}/${it('Z')} ratio`]);
+  let s = frameP(ox, oy, H_R, '(b) the C=O on the CH(CH₃)₂ side', ['benzylic halide: fine for SN2', `semi-stabilized ylide: poor ${it('E')}/${it('Z')} ratio`]);
   s += rowTag(ox, oy + 70, 'C=O') + rowTag(ox, oy + 142, 'ylide') + rowTag(ox, oy + 224, 'halide');
   const M1 = A(ox + 104, oy + 48, 'CH₃'), M2 = A(ox + 104, oy + 92, 'CH₃'), Ci = A(ox + 158, oy + 70, 'CH'),
         Ca = A(ox + 216, oy + 70, 'CH', 'hi'), O = A(ox + 274, oy + 70, 'O');

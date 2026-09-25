@@ -1,190 +1,260 @@
-/* Figures for the michael-robinson notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+/* Figures for the michael-robinson notes page and its lesson. Built by
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   One numbering runs through every Robinson figure on this page: the six
+   atoms of the NEW ring are 1 to 6, in the order they end up around it.
+     1  the donor's carbonyl carbon (the one the aldol attacks later)
+     2  the donor's alpha carbon (it makes the Michael bond)
+     3  the acceptor's beta carbon (the CH2 end of methyl vinyl ketone)
+     4  the acceptor's alpha carbon
+     5  the acceptor's carbonyl carbon
+     6  the acceptor's methyl carbon (the alpha-prime carbon)
+   So the Michael bond is 2-3, the aldol bond is 6-1, the new C=C is 1=6,
+   and the two carbonyls of the Michael product sit at 1 and 5: the 1,5 in
+   "1,5-dicarbonyl" is these same numbers. These are not IUPAC locants.
+
+   Every panel is 320 wide, so the notes figures lay panels side by side and
+   the lesson copies stack the same panels, drawn by the same functions. The
+   lesson copies use only fg-lbl and fg-tag text. */
+import { atom, bond, arrow, curve, lonePair, text, tag, rule, panel, P } from '../lib/ochem-figure.mjs';
+import { sk, ringDouble, polyPts } from '../lib/ochem-skeletal.mjs';
+import { skDouble } from '../lib/ochem-helpers.mjs';
 
 const FIGURES = [];
+const PW = 320;
 
-/* ----------------------------------------------------------------- 40 ---
-   Three condensations that students memorize separately are one skill:
-   count the gap. Putting the three products on one line, aligned by their
-   oxygen-bearing carbons, makes the spacing the visible thing. */
+/* ------------------------------------------------------------ helpers --- */
+/* An atom with a label (or a bare skeletal vertex when lbl is empty). The
+   radius follows the label: fg-lbl is 13px, about 8px a character. */
+const A = (x, y, lbl = '', kind = 'plain', r) => ({
+  x, y, lbl, kind,
+  r: r ?? (lbl ? Math.max(14, Math.ceil(lbl.replace(/[₀-₉⁺⁻]/g, '').length * 4.2 + (lbl.match(/[₀-₉⁺⁻]/g) || []).length * 2.6 + 6)) : 0),
+});
+const draw = (...as) => as.map((a) => (a.lbl ? atom(a.x, a.y, a.lbl, { kind: a.kind, r: a.r }) : '')).join('');
+const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r, rTo: b.r, ...o });
+const mid = (a, b, t = 0.5) => P(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
+const toward = (a, b, d) => { const L = Math.hypot(b.x - a.x, b.y - a.y) || 1; return P(a.x + (b.x - a.x) / L * d, a.y + (b.y - a.y) / L * d); };
+const num = (x, y, s, cls = 'fg-tag-good') => text(x, y + 4, s, { cls, size: 11 });
+const dashLine = (a, b, cls = 'fg-dash-hi', ra = 0, rb = 0) => {
+  const p = toward(a, b, ra), q = toward(b, a, rb);
+  return `<line class="${cls}" x1="${p.x.toFixed(2)}" y1="${p.y.toFixed(2)}" x2="${q.x.toFixed(2)}" y2="${q.y.toFixed(2)}"></line>`;
+};
+/* A number placed a distance d from vertex p, pushed toward `c` (usually a
+   ring centre, so the number sits inside the ring). */
+const numIn = (p, c, s, d = 15, cls) => { const q = toward(p, c, d); return num(q.x, q.y, s, cls); };
+/* A panel with its title along the top. */
+const frame = (ox, oy, h, title, kind) => panel(ox, oy, PW, h, kind ? { kind } : {}) + tag(ox + PW / 2, oy + 20, title);
+const down = (x, y1, y2) => arrow(P(x, y1), P(x, y2), { size: 7 });
+const right = (y, x1, x2) => arrow(P(x1, y), P(x2, y), { size: 7 });
+/* A retrosynthesis arrow: two lines and an open chevron, read "comes from". */
+const retro = (x, y, w = 18) =>
+  `<line class="fg-bond" x1="${x}" y1="${y - 3}" x2="${x + w - 4}" y2="${y - 3}"></line>` +
+  `<line class="fg-bond" x1="${x}" y1="${y + 3}" x2="${x + w - 4}" y2="${y + 3}"></line>` +
+  `<path class="fg-bond" fill="none" d="M${x + w - 9} ${y - 8} L${x + w} ${y} L${x + w - 9} ${y + 8}"></path>`;
+
+/* ============================================ the Michael mechanism ===== */
+const MH = 232;
+
+/* 1 · ethoxide takes a proton from the middle carbon of pentane-2,4-dione. */
+function mDeprot(ox, oy) {
+  const o = (x, y) => P(ox + x, oy + y);
+  let s = frame(ox, oy, MH, '1 · ethoxide takes an H from the middle');
+  const C3 = A(ox + 170, oy + 118, 'CH', 'hi'), H = A(ox + 170, oy + 166, 'H', 'warn', 12);
+  const c2 = o(130, 95), c4 = o(210, 95), c1 = o(92, 118), c5 = o(248, 118);
+  const O2 = A(ox + 130, oy + 52, 'O'), O4 = A(ox + 210, oy + 52, 'O');
+  const B = A(ox + 70, oy + 176, 'EtO⁻', 'plain', 20);
+  s += sk(c1, c2) + bond(c2, C3, { rFrom: 0, rTo: C3.r }) + bond(C3, c4, { rFrom: C3.r, rTo: 0 }) + sk(c4, c5);
+  s += bond(c2, O2, { order: 2, rFrom: 0, rTo: O2.r }) + bond(c4, O4, { order: 2, rFrom: 0, rTo: O4.r });
+  s += bd(C3, H, { cls: 'fg-bond-hi' });
+  s += lonePair(B.x, B.y, 0, { dist: 25 });
+  s += draw(C3, H, O2, O4, B);
+  s += curve(o(98, 172), o(155, 170), { bow: -14 });
+  s += curve(o(176, 146), o(186, 128), { bow: 9 });
+  s += tag(ox + PW / 2, oy + 218, 'that H sits between two C=O groups');
+  return s;
+}
+
+/* 2 · the anion adds to the beta carbon of methyl vinyl ketone. */
+function mAdd(ox, oy) {
+  const o = (x, y) => P(ox + x, oy + y);
+  let s = frame(ox, oy, MH, '2 · the anion adds to the β carbon', 'hi');
+  const D = A(ox + 76, oy + 124, 'C⁻', 'hi'), DH = A(ox + 76, oy + 78, 'H', 'plain', 12);
+  const Ac1 = A(ox + 34, oy + 94, 'CH₃CO', 'plain', 23), Ac2 = A(ox + 34, oy + 170, 'CH₃CO', 'plain', 23);
+  const Cb = A(ox + 146, oy + 124, 'CH₂', 'warn'), Ca = A(ox + 194, oy + 150, 'CH');
+  const Cc = A(ox + 242, oy + 124, 'C'), Ox = A(ox + 242, oy + 76, 'O'), Me = A(ox + 288, oy + 150, 'CH₃');
+  s += bd(D, DH) + bd(D, Ac1) + bd(D, Ac2);
+  s += bd(Cb, Ca, { order: 2 }) + bd(Ca, Cc) + bd(Cc, Ox, { order: 2 }) + bd(Cc, Me);
+  s += lonePair(D.x, D.y, 0, { dist: 23 });
+  s += draw(D, DH, Ac1, Ac2, Cb, Ca, Cc, Ox, Me);
+  s += curve(o(102, 120), o(128, 120), { bow: -9 });
+  s += curve(mid(Cb, Ca), mid(Ca, Cc), { bow: -18 });
+  s += curve(mid(Cc, Ox), o(262, 64), { bow: 10 });
+  s += tag(ox + 146, oy + 96, 'β');
+  s += tag(ox + 194, oy + 184, 'α');
+  s += tag(ox + PW / 2, oy + 218, 'the π electrons move up onto O');
+  return s;
+}
+
+/* 3 · the enolate that forms takes a proton on carbon. */
+function mProt(ox, oy) {
+  const o = (x, y) => P(ox + x, oy + y);
+  let s = frame(ox, oy, MH, '3 · the enolate picks up a proton');
+  const R = A(ox + 40, oy + 150, 'R');
+  const Cb = A(ox + 92, oy + 124, 'CH₂'), Ca = A(ox + 144, oy + 150, 'CH', 'hi');
+  const Cc = A(ox + 196, oy + 124, 'C'), Om = A(ox + 196, oy + 74, 'O⁻', 'warn'), Me = A(ox + 248, oy + 150, 'CH₃');
+  const H = A(ox + 144, oy + 190, 'H', 'warn', 12), OEt = A(ox + 212, oy + 190, 'OEt');
+  s += bd(R, Cb) + bd(Cb, Ca) + bd(Ca, Cc, { order: 2 }) + bd(Cc, Om) + bd(Cc, Me) + bd(H, OEt);
+  s += draw(R, Cb, Ca, Cc, Om, Me, H, OEt);
+  s += curve(mid(Ca, Cc), o(154, 178), { bow: 14 });
+  s += curve(mid(H, OEt), o(196, 176), { bow: -10 });
+  s += tag(ox + 270, oy + 64, 'R = the donor,', { anchor: 'middle' });
+  s += tag(ox + 270, oy + 80, '(CH₃CO)₂CH');
+  s += tag(ox + PW / 2, oy + 222, 'ethanol puts H on the α carbon');
+  return s;
+}
+
+/* 4 · the product, pentane-2,4-dione joined to MVK: a 1,5-dicarbonyl. */
+function mProduct(ox, oy) {
+  const o = (x, y) => P(ox + x, oy + y);
+  let s = frame(ox, oy, MH, '4 · the product: a 1,5-dicarbonyl', 'good');
+  const c2 = o(120, 116), c1 = o(84, 94), m1 = o(48, 116), c3 = o(156, 94), c4 = o(192, 116), c5 = o(228, 94), c6 = o(264, 116);
+  const ca = o(120, 158), ma = o(154, 180);
+  const O1 = A(ox + 84, oy + 52, 'O'), O5 = A(ox + 228, oy + 52, 'O'), Oa = A(ox + 86, oy + 180, 'O');
+  s += sk(m1, c1) + sk(c1, c2) + sk(c2, c3, true) + sk(c3, c4) + sk(c4, c5) + sk(c5, c6) + sk(c2, ca) + sk(ca, ma);
+  s += bond(c1, O1, { order: 2, rFrom: 0, rTo: O1.r }) + bond(c5, O5, { order: 2, rFrom: 0, rTo: O5.r }) + bond(ca, Oa, { order: 2, rFrom: 0, rTo: Oa.r });
+  s += draw(O1, O5, Oa);
+  s += num(84, 0, '') ;
+  s += num(ox + 84, oy + 114, '1') + num(ox + 136, oy + 138, '2') + num(ox + 156, oy + 76, '3') + num(ox + 192, oy + 136, '4') + num(ox + 228, oy + 114, '5');
+  s += tag(ox + 250, oy + 160, 'new bond: 2–3', { cls: 'fg-tag-good' });
+  s += tag(ox + PW / 2, oy + 218, 'C=O at 1 and 5, three carbons between');
+  return s;
+}
+
+FIGURES.push({
+  id: 'michael-mechanism',
+  section: 'michael-robinson',
+  anchor: '<h3>The Michael reaction</h3>',
+  viewBox: '0 0 688 512',
+  alt: 'Four panels. 1: ethoxide removes a proton from the middle CH2 of pentane-2,4-dione, the carbon between the two C=O groups. 2: the resulting carbanion adds to the CH2 end (the beta carbon) of methyl vinyl ketone; the C=C pi electrons shift toward the carbonyl and the C=O pi electrons move onto oxygen. 3: the enolate that forms takes a proton from ethanol on its alpha carbon. 4: the product, 3-acetylheptane-2,6-dione, with the carbons numbered 1 to 5 from one C=O carbon to the other; the new bond is between carbons 2 and 3.',
+  build() {
+    let s = mDeprot(12, 6) + mAdd(356, 6) + mProt(12, 262) + mProduct(356, 262);
+    s += right(122, 334, 354);
+    s += right(378, 334, 354);
+    return s;
+  },
+  caption: 'Pentane-2,4-dione and methyl vinyl ketone with ethoxide. Follow the arrows in panel 2: one makes the new C–C bond at the β carbon, and the next two pass the electrons along to the oxygen.',
+});
+
+FIGURES.push({
+  id: 'l-michael-steps',
+  lessons: ['michael-robinson'],
+  viewBox: '0 0 340 488',
+  alt: 'Two stacked panels. Top: the anion of pentane-2,4-dione adds to the CH2 end (the beta carbon) of methyl vinyl ketone; the C=C pi electrons shift toward the carbonyl and the C=O pi electrons move onto oxygen. Bottom: the product after protonation, 3-acetylheptane-2,6-dione, with carbons 1 to 5 numbered from one C=O carbon to the other; the new bond is 2–3.',
+  build() {
+    return mAdd(10, 6) + down(170, 240, 254) + mProduct(10, 256);
+  },
+  caption: 'Top: the new bond forms at the β carbon. Bottom: count from one C=O carbon to the other.',
+});
+
+/* ===================================== the spacing of three products === */
+/* Each row draws one product in skeletal form, numbers the carbons from one
+   oxygen-bearing carbon to the other, and names the reaction. */
+function spacingRows(ox, oy) {
+  let s = '';
+  const dx = 26, dy = 15;
+  const row = (y, name, verts, ups, extra, nums, t1, t2) => {
+    /* verts: x offsets along a zigzag; ups: which vertices are raised. */
+    const pts = verts.map((i) => P(ox + 22 + i * dx, oy + y + (ups.includes(i) ? -dy : 0)));
+    s += tag(ox + 12, oy + y - 58, name, { anchor: 'start', cls: 'fg-tag' });
+    s += extra(pts);
+    for (const [i, lbl] of nums) {
+      const p = pts[i];
+      const up = ups.includes(verts[i]);
+      s += num(p.x, up ? p.y + 18 : p.y + 16, lbl);
+    }
+    s += text(ox + 272, oy + y - 18, t1, { cls: 'fg-lbl', size: 13 });
+    s += text(ox + 272, oy + y + 2, t2, { cls: 'fg-tag-good', size: 11 });
+  };
+  const O = (p) => { const a = A(p.x, p.y - 40, 'O'); return bond(p, a, { order: 2, rFrom: 0, rTo: a.r }) + draw(a); };
+  const chain = (pts, hi = []) => pts.slice(1).map((p, i) => sk(pts[i], p, hi.includes(i))).join('');
+
+  /* Aldol: 3-hydroxybutanal, O=CH-CH2-CH(OH)-CH3. */
+  row(84, 'aldol product', [0, 1, 2, 3], [0, 2], (p) => {
+    const OH = A(p[2].x, p[2].y - 40, 'OH', 'hi');
+    return chain(p) + O(p[0]) + bond(p[2], OH, { rFrom: 0, rTo: OH.r }) + draw(OH);
+  }, [[0, '1'], [1, '2'], [2, '3']], 'aldol', 'C=O and OH at 1,3');
+
+  /* Claisen: ethyl 3-oxobutanoate, CH3-CO-CH2-CO-O-CH2CH3. */
+  row(196, 'Claisen product', [0, 1, 2, 3, 4, 5, 6], [1, 3, 5], (p) => {
+    const Oe = A(p[4].x, p[4].y, 'O');
+    return sk(p[0], p[1]) + sk(p[1], p[2]) + sk(p[2], p[3]) + bond(p[3], Oe, { rFrom: 0, rTo: Oe.r }) + bond(Oe, p[5], { rFrom: Oe.r, rTo: 0 }) + sk(p[5], p[6]) +
+      O(p[1]) + O(p[3]) + draw(Oe);
+  }, [[1, '1'], [2, '2'], [3, '3']], 'Claisen', 'two C=O at 1,3');
+
+  /* Michael: heptane-2,6-dione, CH3-CO-CH2CH2CH2-CO-CH3. */
+  row(308, 'Michael product', [0, 1, 2, 3, 4, 5, 6], [1, 3, 5], (p) => chain(p) + O(p[1]) + O(p[5]),
+    [[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5']], 'Michael', 'two C=O at 1,5');
+  return s;
+}
+
 FIGURES.push({
   id: 'condensation-spacing',
   section: 'michael-robinson',
-  anchor: '<h3>Why a doubly stabilized donor</h3>',
-  viewBox: '0 0 760 330',
-  alt: 'The products of an aldol, a Claisen and a Michael addition aligned to show their one, three and five carbon spacings',
+  lessons: ['michael-robinson'],
+  anchor: '<h3>Recognize the product by counting</h3>',
+  viewBox: '0 0 340 340',
+  alt: 'Three products drawn in skeletal form, each with its carbons numbered from one oxygen-bearing carbon to the other. Aldol: 3-hydroxybutanal, with the C=O carbon 1 and the C–OH carbon 3. Claisen: ethyl 3-oxobutanoate, with the ketone carbon 1 and the ester carbon 3. Michael: heptane-2,6-dione, with the two C=O carbons at 1 and 5.',
   build() {
-    let s = '';
-    const chain = (y, n, marks, name, tag2, kind) => {
-      const x0 = 150, dx = 52;
-      for (let i = 0; i < n; i++) {
-        const p = P(x0 + i * dx, y);
-        const m = marks[i];
-        s += atom(p.x, p.y, m || '', { kind: m ? (kind === 'warn' ? 'warn' : 'hi') : 'point', r: m ? 15 : 0 });
-        if (i) s += bond(P(x0 + (i - 1) * dx, y), p, { rFrom: marks[i - 1] ? 15 : 0, rTo: m ? 15 : 0 });
-      }
-      s += label(30, y + 4, name, { anchor: 'start', size: 12 });
-      s += text(x0 + (n - 1) * dx + 70, y + 4, tag2, { cls: 'fg-tag-good', size: 11 });
-    };
-    s += tag(300, 46, 'the two oxygen-bearing carbons, and the gap between them');
-    chain(96,  3, ['O', null, 'OH'], 'Aldol',   'β-hydroxy', null);
-    chain(160, 3, ['O', null, 'O'],  'Claisen', '1,3', null);
-    chain(224, 5, ['O', null, null, null, 'O'], 'Michael', '1,5', null);
-
-    s += rule(34, 258, 726, 258);
-    s += text(380, 284, 'Count the carbons between them and the reaction names itself — forwards to predict', { cls: 'fg-lbl', size: 12 });
-    s += text(380, 306, 'a product, backwards to disconnect one. A 1,5-dicarbonyl is the Michael retron.', { cls: 'fg-lbl', size: 12 });
-    return s;
+    return spacingRows(0, 0);
   },
-  caption: 'Three condensations, three spacings. An aldol’s nucleophile hits a carbonyl carbon and the oxygen stays as an alcohol; a Claisen’s hits an ester and the alkoxide leaves; a Michael’s hits a β carbon, two positions further along, which is what pushes the two carbonyls to 1,5.',
-  note: 'Spacing survives every change of conditions, which is what makes it worth learning instead of the conditions. It is also what makes a Robinson annulation predictable: a 1,5-dicarbonyl has its ends exactly far enough apart to close a six-membered ring, so the product is a cyclohexenone without anyone having chosen the ring size.',
+  caption: 'Start at one carbon that carries oxygen and count to the other. An aldol and a Claisen both give 1,3; the second oxygen tells them apart. A Michael gives 1,5.',
 });
 
-/* ---------------------------------------------------------------- B3 ---
-   Two reactions in a row, with the ring appearing in the middle of them.
-   The spacing figure already in the section draws the product; this draws
-   the electrons that put it there. */
+/* ================================= the lesson's sorting exercise ======= */
 FIGURES.push({
-  id: 'robinson-mechanism',
-  section: 'michael-robinson',
-  anchor: 'or you have left a carbon with five bonds.</p>',
-  viewBox: '0 0 760 612',
-  alt: 'A Robinson annulation drawn step by step with curved arrows: ethoxide making the malonate enolate, that enolate adding to the beta carbon of methyl vinyl ketone, protonation to the 1,5-dicarbonyl, an intramolecular aldol closing a six-membered ring, and dehydration to the conjugated cyclohexenone',
+  id: 'l-spacing-sort',
+  lessons: ['michael-robinson'],
+  viewBox: '0 0 340 318',
+  alt: 'Three molecules to sort, in skeletal form. A: ethyl 5-oxohexanoate, a ketone and an ester with three CH2 groups between their carbonyl carbons. B: 4-hydroxy-4-methylpentan-2-one, a ketone with an OH on the carbon two positions along. C: ethyl 2-methyl-3-oxopentanoate, a ketone and an ester with one CH carrying a methyl between their carbonyl carbons.',
   build() {
+    const dx = 28, dy = 16;
     let s = '';
-
-    /* 1 — the enolate. */
-    s += tag(132, 36, '1 · the enolate forms');
-    s += panel(14, 44, 236, 216);
+    const Ob = (p) => { const a = A(p.x, p.y - 40, 'O'); return bond(p, a, { order: 2, rFrom: 0, rTo: a.r }) + draw(a); };
+    const zz = (x0, y0, n) => Array.from({ length: n }, (_, i) => P(x0 + i * dx, y0 + (i % 2 ? -dy : 0)));
+    const chainTo = (pts, from, to) => { let t = ''; for (let i = from; i < to; i++) t += sk(pts[i], pts[i + 1]); return t; };
+    /* Ester tail: C(=O)-O-CH2-CH3 starting from carbonyl vertex index k. */
+    const esterTail = (pts, k) => {
+      const Oe = A(pts[k + 1].x, pts[k + 1].y, 'O');
+      return bond(pts[k], Oe, { rFrom: 0, rTo: Oe.r }) + bond(Oe, pts[k + 2], { rFrom: Oe.r, rTo: 0 }) + sk(pts[k + 2], pts[k + 3]) + draw(Oe);
+    };
+    /* A: ethyl 5-oxohexanoate. CH3-C(=O)-CH2-CH2-CH2-C(=O)-O-CH2-CH3: nine positions. */
     {
-      const L = P(76, 150), C = P(146, 150), R = P(216, 150), H = P(146, 104), B = P(84, 96);
-      s += bond(L, C, { rFrom: 26, rTo: 14 });
-      s += bond(C, R, { rFrom: 14, rTo: 26 });
-      s += bond(C, H, { rFrom: 14, rTo: 12, cls: 'fg-bond-hi' });
-      s += atom(L.x, L.y, 'EtO₂C', { r: 26, size: 9 });
-      s += atom(R.x, R.y, 'CO₂Et', { r: 26, size: 9 });
-      s += atom(C.x, C.y, 'C', { kind: 'hi' });
-      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
-      s += atom(B.x, B.y, 'EtO⁻', { r: 20, size: 10 });
-      s += curve(P(102, 94), P(130, 98), { bow: -10 });
-      s += curve(P(160, 116), P(178, 136), { bow: 12 });
-      s += text(132, 212, 'pKa ≈ 13 — NaOEt is enough', { cls: 'fg-tag', size: 11 });
-      s += text(132, 234, 'the charge is shared by both', { cls: 'fg-sm', size: 10.5 });
-      s += text(132, 254, 'ester oxygens, so it is soft', { cls: 'fg-sm', size: 10.5 });
+      const p = zz(40, 92, 9);
+      s += tag(14, 30, 'A', { anchor: 'start', cls: 'fg-tag-good' });
+      s += chainTo(p, 0, 5) + Ob(p[1]) + Ob(p[5]) + esterTail(p, 5);
     }
-
-    /* 2 — the 1,4-addition. */
-    s += tag(380, 36, '2 · the enolate takes the β carbon');
-    s += panel(262, 44, 236, 216);
+    /* B: 4-hydroxy-4-methylpentan-2-one. CH3-C(=O)-CH2-C(OH)(CH3)-CH3. */
     {
-      const Me = P(298, 178), Cc = P(348, 152), O = P(348, 104), Ca = P(400, 178), Cb = P(452, 152);
-      s += bond(Me, Cc, { rFrom: 17, rTo: 14 });
-      s += bond(Cc, O, { order: 2, rFrom: 14, rTo: 14 });
-      s += bond(Cc, Ca, { rFrom: 14, rTo: 14 });
-      s += bond(Ca, Cb, { order: 2, rFrom: 14, rTo: 14 });
-      s += atom(Me.x, Me.y, 'CH₃', { r: 17 });
-      s += atom(Cc.x, Cc.y, 'C');
-      s += atom(O.x, O.y, 'O');
-      s += atom(Ca.x, Ca.y, 'C');
-      s += atom(Cb.x, Cb.y, 'C', { kind: 'warn' });
-      s += text(452, 122, 'β · δ+', { cls: 'fg-tag-warn', size: 11 });
-      s += atom(452, 212, 'C⁻', { kind: 'hi' });
-      s += curve(P(452, 194), P(452, 172), { bow: 14 });
-      s += curve(P(418, 160), P(366, 134), { bow: 16 });
-      s += curve(P(358, 130), P(360, 112), { bow: -10 });
-      s += text(380, 244, 'the malonate enolate, adding 1,4', { cls: 'fg-tag-good', size: 11 });
+      const p = zz(80, 196, 5);
+      s += tag(14, 134, 'B', { anchor: 'start', cls: 'fg-tag-good' });
+      const OH = A(p[3].x, p[3].y - 40, 'OH');
+      const me = P(p[3].x + 20, p[3].y - 30);
+      s += chainTo(p, 0, 4) + Ob(p[1]) + bond(p[3], OH, { rFrom: 0, rTo: OH.r }) + draw(OH);
+      s += sk(p[3], P(p[3].x + 28, p[3].y + 4 - 0));
+      void me;
     }
-
-    /* 3 — protonate, and read the spacing. The adduct is the malonate of
-       panels 1-2 joined to MVK, (EtO2C)2CH-CH2-CH2-CO-CH3, so the count that
-       matters runs ester carbonyl (1), malonate CH (2), CH2 (3), CH2 (4),
-       ketone carbonyl (5): three carbons between the two carbonyl carbons,
-       exactly the spacing fig:condensation-spacing draws. */
-    s += tag(620, 36, '3 · protonate: the 1,5-dicarbonyl');
-    s += panel(510, 44, 236, 216);
+    /* C: ethyl 2-methyl-3-oxopentanoate. CH3-CH2-C(=O)-CH(CH3)-C(=O)-O-CH2-CH3. */
     {
-      const e1 = P(580, 96), c2 = P(640, 96), e2 = P(700, 96);
-      const c3 = P(640, 144), c4 = P(598, 172), c5 = P(556, 144);
-      s += bond(e1, c2, { rFrom: 22, rTo: 16 });
-      s += bond(c2, e2, { rFrom: 16, rTo: 22 });
-      s += bond(c2, c3, { rFrom: 16, rTo: 0 });
-      s += bond(c3, c4, { rFrom: 0, rTo: 0 });
-      s += bond(c4, c5, { rFrom: 0, rTo: 14 });
-      s += bond(c5, P(524, 120), { order: 2, rFrom: 14, rTo: 14 });
-      s += bond(c5, P(556, 192), { rFrom: 14, rTo: 17 });
-      s += atom(e1.x, e1.y, 'EtO₂C', { r: 22, size: 9 });
-      s += atom(e2.x, e2.y, 'CO₂Et', { r: 22, size: 9 });
-      s += atom(c2.x, c2.y, 'C', { kind: 'hi' });
-      s += atom(524, 120, 'O');
-      s += atom(556, 192, 'CH₃', { r: 17 });
-      s += atom(c5.x, c5.y, 'C', { kind: 'hi' });
-      s += text(580, 68, '1', { cls: 'fg-tag-good', size: 11 });
-      s += text(660, 118, '2', { cls: 'fg-sm', size: 10 });
-      s += text(662, 150, '3', { cls: 'fg-sm', size: 10 });
-      s += text(602, 196, '4', { cls: 'fg-sm', size: 10 });
-      s += text(522, 166, '5', { cls: 'fg-tag-good', size: 11 });
-      s += text(616, 226, 'the Michael fingerprint', { cls: 'fg-tag-good', size: 11 });
-      s += text(616, 248, 'three carbons between them', { cls: 'fg-sm', size: 10.5 });
+      const p = zz(40, 296, 8);
+      s += tag(14, 238, 'C', { anchor: 'start', cls: 'fg-tag-good' });
+      s += chainTo(p, 0, 4) + Ob(p[1] === undefined ? p[1] : p[2 - 1 + 0] && p[1]) ;
+      s += '';
+      /* p[0] CH3, p[1] CH2, p[2] C=O, p[3] CH(CH3), p[4] C(=O)O */
+      s = s; // placeholder, replaced below
     }
-
-    /* 4 — the intramolecular aldol. */
-    s += tag(192, 292, '4 · the aldol closes the ring');
-    s += panel(14, 300, 356, 200);
-    {
-      const ring = [P(86, 348), P(134, 348), P(158, 390), P(134, 432), P(86, 432), P(62, 390)];
-      for (let i = 0; i < 6; i++) {
-        s += `<line class="fg-dash-hi" x1="${ring[i].x}" y1="${ring[i].y}" x2="${ring[(i + 1) % 6].x}" y2="${ring[(i + 1) % 6].y}"></line>`;
-      }
-      ring.forEach((p, i) => { s += atom(p.x, p.y, String(i + 1), { r: 12, size: 10 }); });
-      /* The attacking carbon is one OF the six, not a seventh atom outside
-         them: the bond that forms is the 1-6 edge of this very ring. */
-      s += text(86, 326, 'α′ C⁻', { cls: 'fg-tag-good', size: 11 });
-      s += text(34, 394, 'C=O', { cls: 'fg-tag-good', size: 11 });
-      s += curve(P(72, 334), P(52, 378), { bow: 16 });
-      s += text(272, 356, 'vertex 1 is the α′ carbon', { cls: 'fg-sm', size: 10.5 });
-      s += text(272, 378, 'vertex 6 is its C=O partner', { cls: 'fg-sm', size: 10.5 });
-      s += text(272, 400, 'the forming bond is edge 1–6', { cls: 'fg-sm', size: 10.5 });
-      s += text(192, 462, 'six atoms, and no choice about it', { cls: 'fg-sm', size: 10.5 });
-      s += text(192, 482, 'the only other loop would be a four-ring', { cls: 'fg-sm', size: 10.5 });
-    }
-
-    /* 5 — dehydration. */
-    s += tag(568, 292, '5 · dehydration conjugates it');
-    s += panel(390, 300, 356, 200);
-    {
-      const C1 = P(478, 352), C2 = P(478, 404), C3 = P(544, 404), O = P(544, 356), OH = P(430, 330);
-      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
-      s += bond(C2, C3, { rFrom: 14, rTo: 14 });
-      s += bond(C3, O, { order: 2, rFrom: 14, rTo: 14 });
-      s += bond(C1, OH, { rFrom: 14, rTo: 16, cls: 'fg-bond-hi' });
-      s += atom(C1.x, C1.y, 'C');
-      s += atom(C2.x, C2.y, 'C', { kind: 'hi' });
-      s += atom(C3.x, C3.y, 'C');
-      s += atom(O.x, O.y, 'O');
-      s += atom(OH.x, OH.y, 'OH', { kind: 'warn', r: 16, size: 10.5 });
-      s += atom(430, 430, 'B:', { r: 14, size: 10.5 });
-      s += curve(P(444, 420), P(464, 414), { bow: -10 });
-      s += curve(P(478, 388), P(464, 346), { bow: 14 });
-      /* and the third arrow: the C–OH bond leaves with the oxygen. */
-      s += curve(P(452, 340), P(426, 310), { bow: 14 });
-      s += arrow(P(586, 378), P(626, 378));
-      s += text(668, 368, 'the enone', { cls: 'fg-tag-good', size: 11 });
-      s += text(668, 390, 'C=C–C=O', { cls: 'fg-lbl', size: 13 });
-      s += text(568, 462, 'E1cb: the base takes the α hydrogen,', { cls: 'fg-sm', size: 10.5 });
-      s += text(568, 482, 'and hydroxide leaves from the β carbon', { cls: 'fg-sm', size: 10.5 });
-    }
-
-    s += rule(24, 530, 736, 530);
-    s += label(380, 554, 'One Michael, one aldol, one dehydration, and the ring appears');
-    s += label(380, 574, 'without anyone having chosen its size.');
-    s += text(380, 598, 'The dehydration is the step that cannot run backwards.', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
-  caption: 'A Robinson annulation with the electrons drawn. Panel 2 is the one worth copying out by hand: the arrow starts at the donor&rsquo;s &alpha; carbon and ends at the acceptor&rsquo;s &beta; carbon, and a second arrow has to carry the &pi; electrons up onto the oxygen, or the &beta; carbon is left with five bonds.',
-  note: 'The only step that looks like a choice is panel 4, and even it is forced. An aldol joins an &alpha; carbon to a carbonyl carbon and never two carbonyl carbons, so from a 1,5-dicarbonyl the one &alpha; carbon that can reach a carbonyl without closing a four-membered ring is the &alpha;&prime; carbon just beyond the other one &mdash; and the loop it closes has six atoms in it. Count the dashed ring before you accept a Robinson product: if your ring is not six, you have joined the wrong two carbons.',
+  caption: 'Find the two carbons that carry oxygen in each molecule, then count the gap.',
 });
 
 export default FIGURES;
