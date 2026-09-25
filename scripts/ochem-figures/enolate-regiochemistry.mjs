@@ -3,7 +3,7 @@
 
    Almost every figure is 2-methylcyclohexanone or one of its enolates, drawn
    skeletal, with the heteroatoms, the methyls and the hydrogens that matter
-   drawn as labelled atoms. The ring is a regular hexagon with C1 at the top.
+   drawn as labeled atoms. The ring is a regular hexagon with C1 at the top.
    Without `mirror`, C2 is the upper-right vertex and C6 the upper-left one;
    with `mirror` the drawing is flipped left to right, so C2 is upper left.
    A substituent's `deg` is given for the unmirrored drawing, counterclockwise
@@ -142,7 +142,7 @@ FIGURES.push({
   id: 'two-enolates-drawn',
   section: 'enolate-regiochemistry',
   anchor: 'That conflict is settled by conditions, not by the ketone.</p>',
-  alt: '2-Methylcyclohexanone at the top. An arrow labelled LDA, minus 78 degrees, leads down-left to the kinetic enolate, with its C=C between C1 and C6 and two carbons attached to that C=C, highlighted. An arrow labelled NaOEt in ethanol leads down-right to the thermodynamic enolate, with its C=C between C1 and C2 and three carbons attached, one of them the methyl.',
+  alt: '2-Methylcyclohexanone at the top. An arrow labeled LDA, minus 78 degrees, leads down-left to the kinetic enolate, with its C=C between C1 and C6 and two carbons attached to that C=C, highlighted. An arrow labeled NaOEt in ethanol leads down-right to the thermodynamic enolate, with its C=C between C1 and C2 and three carbons attached, one of them the methyl.',
   viewBox: '0 0 760 380',
   build() {
     return enolatePair(P(380, 110), P(170, 280), P(590, 280), 34, (ket, kin, thd) => {
@@ -595,7 +595,7 @@ FIGURES.push({
   id: 'c-vs-o',
   section: 'enolate-regiochemistry',
   anchor: '<h3>Why the halide goes to carbon</h3>',
-  alt: 'The lithium enolate of cyclohexanone in the middle with CH3I. An arrow to the left, labelled attack through carbon, gives 2-methylcyclohexanone, with the new C–C bond highlighted and the C=O kept. An arrow to the right, labelled attack through oxygen, gives 1-methoxycyclohexene, an enol ether, with the new O–C bond highlighted and a C=C instead of the C=O.',
+  alt: 'The lithium enolate of cyclohexanone in the middle with CH3I. An arrow to the left, labeled attack through carbon, gives 2-methylcyclohexanone, with the new C–C bond highlighted and the C=O kept. An arrow to the right, labeled attack through oxygen, gives 1-methoxycyclohexene, an enol ether, with the new O–C bond highlighted and a C=C instead of the C=O.',
   viewBox: '0 0 760 240',
   build() {
     let s = '';

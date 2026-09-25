@@ -295,7 +295,7 @@ FIGURES.push({
       s += bd(Ph, Cb) + bd(Cb, OH) + bd(Cb, Ca) + bd(Ca, C2) + bd(C2, O, { order: 2 }) + bd(C2, Me);
       s += draw(Ph, Cb, OH, Ca, C2, O, Me);
       const m = mid(Cb, Ca);
-      s += bond(off(m, -14, -22), off(m, 14, 22), { rFrom: 0, rTo: 0, cls: 'fg-dash-hi' });
+      s += bond(off(m, 10, -20), off(m, -10, 20), { rFrom: 0, rTo: 0, cls: 'fg-dash-hi' });
       s += tag(Cb.x - 30, oy + 90, 'β');
       s += tag(Ca.x, oy + 172, 'α');
     }
@@ -417,7 +417,7 @@ FIGURES.push({
       y += 24;
       [k1, k2].forEach((k, c) => {
         const x = c * (cw + gap);
-        s += panel(x, y, cw, ch, k === 'ap' ? { kind: 'good' } : {});
+        s += panel(x, y, cw, ch);
         s += tag(x + cw / 2, y + 16, c === 0 ? '…acetone' : '…propanal');
         s += skel(k, x + cw / 2, y + 66);
       });
@@ -485,7 +485,7 @@ function pAcid4(ox, oy) {
   const Me = A(ox + 50, oy + 140, 'CH₃'), C = A(ox + 106, oy + 110, 'C'), O = A(ox + 106, oy + 60, 'O'),
         Ca = A(ox + 162, oy + 140, 'CH', 'hi'), Cb = A(ox + 218, oy + 110, 'C', 'hi'),
         M1 = A(ox + 218, oy + 60, 'CH₃'), M2 = A(ox + 276, oy + 140, 'CH₃');
-  let s = frameP(ox, oy, H_AC, '4 · H₂O takes the O–H proton', [['4-methylpent-3-en-2-one (mesityl oxide)', 'fg-tag-good'], '+ H₃O⁺; the enone does not come back'], 'good');
+  let s = frameP(ox, oy, H_AC, '4 · H₂O takes the last proton: the enone', [['4-methylpent-3-en-2-one (mesityl oxide)', 'fg-tag-good'], '+ H₃O⁺; the enone is the stable end point'], 'good');
   s += bd(Me, C) + bd(C, O, { order: 2 }) + bd(C, Ca) + bd(Ca, Cb, { order: 2, cls: 'fg-bond-hi' }) + bd(Cb, M1) + bd(Cb, M2);
   s += draw(Me, C, O, Ca, Cb, M1, M2);
   return s;
@@ -504,7 +504,7 @@ FIGURES.push({
     s += arrow(P(PW + GAP / 2 + 60, H_AC + 4), P(PW / 2 + 40, H_AC + GAP - 4), { size: 7 });
     return s;
   },
-  caption: 'Acetone under acid, from enol to enone. No panel has a carbocation: in panels 1 and 3 the enol&rsquo;s own C=C does the pushing.',
+  caption: 'Acetone under acid, from enol to enone. No panel needs a carbocation: in panels 1 and 3 the enol&rsquo;s own C=C does the pushing.',
 });
 
 /* ======================================== intramolecular aldol (ring) === */
@@ -516,7 +516,7 @@ FIGURES.push({
   alt: 'Hexanedial numbered C1 to C6 with the C2 enolate reaching C6, and the five-membered ring product it gives, then its dehydration to cyclopent-1-ene-1-carbaldehyde',
   build() {
     let s = '';
-    s += tag(240, 30, 'HEXANEDIAL — number it first');
+    s += tag(240, 64, 'hexanedial: number it first');
 
     const c1 = P(96, 152), o1 = P(96, 104), c2 = P(152, 180), c3 = P(208, 152),
           c4 = P(264, 180), c5 = P(320, 152), c6 = P(376, 180), o6 = P(376, 132);
@@ -537,7 +537,7 @@ FIGURES.push({
     s += tag(320, 124, 'C5');
     s += tag(412, 184, 'C6', { anchor: 'start' });
     s += tag(118, 236, 'the enolate carbon');
-    s += tag(452, 150, 'the carbonyl it can reach', { anchor: 'start' });
+    s += tag(400, 206, 'the carbonyl it can reach', { anchor: 'start' });
 
     s += curve(P(166, 200), P(362, 200), { bow: 40 });
     s += tag(264, 272, 'C2 attacks C6: the ring is C2, C3, C4, C5, C6, five atoms', { cls: 'fg-tag-good' });
@@ -622,7 +622,8 @@ FIGURES.push({
     s += tag(452, 194, 'the β carbon is', { cls: 'fg-tag-warn' });
     s += tag(452, 210, 'electron-poor', { cls: 'fg-tag-warn' });
 
-    s += tag(190, 212, 'carbonyl carbon: the 1,2 site');
+    s += bond(P(190, 170), P(190, 204), { rFrom: 0, rTo: 0, cls: 'fg-dash' });
+    s += tag(190, 220, 'carbonyl carbon: the 1,2 site');
     s += tag(70, 188, 'β carbon: the 1,4 site');
     return s;
   },
