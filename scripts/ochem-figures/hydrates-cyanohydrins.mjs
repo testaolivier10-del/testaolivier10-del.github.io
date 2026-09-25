@@ -160,8 +160,8 @@ FIGURES.push({
   id: 'l-hydration-base',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'Hydration of acetaldehyde in base, in three stacked panels: hydroxide attacks the carbonyl carbon as the pi electrons move onto oxygen; the alkoxide takes a proton from water, which becomes hydroxide; the product is the gem-diol with hydroxide released.',
-  viewBox: '0 0 340 632',
-  build() { return gridFigure(baseCells.slice(0, 3), 1, 324, 196, 0, 14, 8, 8); },
+  viewBox: '0 0 340 656',
+  build() { return gridFigure(baseCells.slice(0, 3), 1, 324, 204, 0, 14, 8, 8); },
   caption: 'Hydroxide enters in the first panel and leaves in the third.',
 });
 
@@ -256,8 +256,8 @@ FIGURES.push({
   id: 'l-hydration-acid',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'Hydration of acetaldehyde in acid, in four stacked panels: the carbonyl oxygen takes a proton from hydronium; water attacks the carbon as the pi electrons move onto the positive oxygen; a second water removes a proton from the added oxygen; the gem-diol forms and hydronium is released.',
-  viewBox: '0 0 340 842',
-  build() { return gridFigure(acidCells, 1, 324, 196, 0, 14, 8, 8); },
+  viewBox: '0 0 340 874',
+  build() { return gridFigure(acidCells, 1, 324, 204, 0, 14, 8, 8); },
   caption: 'The proton goes on first and comes off last.',
 });
 
@@ -528,8 +528,8 @@ FIGURES.push({
   id: 'l-hydrate-oxidation',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'Four stacked panels: a primary alcohol with one C–H and the O–H highlighted; the aldehyde, where PCC in dry dichloromethane stops; the hydrate that forms in water, with an H and an OH on one carbon; and the carboxylic acid that Jones reagent gives from it.',
-  viewBox: '0 0 340 842',
-  build() { return gridFigure(oxCells, 1, 324, 196, 0, 14, 8, 8, [0, 'warn', 'hi', 0]); },
+  viewBox: '0 0 340 874',
+  build() { return gridFigure(oxCells, 1, 324, 204, 0, 14, 8, 8, [0, 'warn', 'hi', 0]); },
   caption: 'The second oxidation needs the hydrate in the third panel.',
 });
 
@@ -567,7 +567,7 @@ const cyanoCells = [
     return s;
   }],
   ['THE ALKOXIDE TAKES H⁺ FROM HCN', 'HCN gives up H⁺ and becomes CN⁻', (Q) => {
-    const c = Q(64, 132);
+    const c = Q(64, 124);
     const m = centre(c, [
       { deg: 90, len: 54, l: 'O', key: 'O', kind: 'warn' },
       { deg: 150, len: 48, l: 'CH₃' },
@@ -578,8 +578,8 @@ const cyanoCells = [
     s += nt.s;
     const o = m.ends.O;
     s += lonePair(o.x, o.y, 180, { dist: 21 }) + lonePair(o.x, o.y, 270, { dist: 21 }) + lonePair(o.x, o.y, 0, { dist: 21 });
-    s += charge(Q, 46, 62, '−');
-    const h = Q(122, 70), hc = Q(162, 70), hn = Q(204, 70);
+    s += charge(Q, 46, 54, '−');
+    const h = Q(122, 62), hc = Q(162, 62), hn = Q(208, 62);
     s += bond(h, hc, { rFrom: 14, rTo: 14 }) + bond(hc, hn, { rFrom: 14, rTo: 14, order: 3, gap: 3.4 });
     s += A(h, 'H', { r: 14, kind: 'hi' }) + A(hc, 'C', { r: 14 }) + A(hn, 'N', { r: 14 });
     s += curve(P(o.x + 25, o.y), P(h.x - 14, h.y - 4), { bow: -10, size: 7 });
@@ -632,8 +632,8 @@ FIGURES.push({
   id: 'l-cyanohydrin-mechanism',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'Cyanohydrin formation from acetone, in three stacked panels: cyanide attacks the carbonyl carbon as the pi electrons move onto oxygen; the alkoxide takes the proton from HCN, which becomes cyanide; the cyanohydrin forms and cyanide is released.',
-  viewBox: '0 0 340 632',
-  build() { return gridFigure(cyanoCells.slice(0, 3), 1, 324, 196, 0, 14, 8, 8); },
+  viewBox: '0 0 340 656',
+  build() { return gridFigure(cyanoCells.slice(0, 3), 1, 324, 204, 0, 14, 8, 8); },
   caption: 'Cyanide enters in the first panel and is made again in the second.',
 });
 
@@ -641,8 +641,8 @@ FIGURES.push({
   id: 'l-cyanohydrin-reverse',
   lessons: ['hydrates-cyanohydrins'],
   alt: 'The cyanohydrin alkoxide in strong base: the oxygen lone pair re-forms the C=O double bond and the carbon–cyanide bond breaks, pushing cyanide out.',
-  viewBox: '0 0 340 212',
-  build() { return gridFigure(cyanoCells.slice(3), 1, 324, 196, 0, 0, 8, 8, ['warn']); },
+  viewBox: '0 0 340 220',
+  build() { return gridFigure(cyanoCells.slice(3), 1, 324, 204, 0, 0, 8, 8, ['warn']); },
   caption: 'The first panel of the mechanism, run backwards.',
 });
 

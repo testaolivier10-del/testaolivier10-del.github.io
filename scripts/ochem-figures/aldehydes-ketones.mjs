@@ -36,7 +36,7 @@ function atom(x, y, l, o = {}) {
 }
 const rOf = (l) => (l.length >= 5 ? 21 : l.length === 4 ? 20 : l.length >= 3 ? 17 : l === 'H' ? 12 : 15);
 
-/* A plain, wedged or hashed bond from c to a labelled group, plus the group. */
+/* A plain, wedged or hashed bond from c to a labeled group, plus the group. */
 function arm(c, deg, len, l, o = {}) {
   const e = at(c, deg, len);
   const r = o.r ?? rOf(l);
@@ -140,7 +140,7 @@ FIGURES.push({
   id: 'ak-examples',
   section: 'aldehydes-ketones',
   anchor: '<!-- notes:start -->',
-  alt: 'Formaldehyde, acetaldehyde, acetone and butanone drawn with every group on the carbonyl carbon labelled. The two aldehydes carry at least one H on the carbonyl carbon; the two ketones carry two carbon groups.',
+  alt: 'Formaldehyde, acetaldehyde, acetone and butanone drawn with every group on the carbonyl carbon labeled. The two aldehydes carry at least one H on the carbonyl carbon; the two ketones carry two carbon groups.',
   viewBox: '0 0 760 250',
   build() {
     let s = '';
@@ -206,7 +206,7 @@ FIGURES.push({
     s += text(424, 186, 'plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
-  caption: 'Formaldehyde from two directions. Face-on, the three groups on carbon sit about 120° apart in one plane. Edge-on, the π bond is the pair of lobes above and below that plane, and the lobes are fatter at oxygen.',
+  caption: 'Formaldehyde from two directions. Face-on, read the three marked angles. Edge-on, the dashed line is the molecule’s plane and the colored lobes are the π bond.',
 });
 
 /* 3. The two resonance contributors. */
@@ -243,7 +243,7 @@ FIGURES.push({
     s += text(540, 230, 'carbon has only six electrons', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'The curved arrow moves the π pair onto oxygen. The right-hand structure puts a full + on carbon and a full − on oxygen: it is the minor contributor, and it marks carbon as the atom a nucleophile will attack.',
+  caption: 'Follow the curved arrow from the neutral structure to the charge-separated one, and note which atom ends up with which charge.',
 });
 
 /* 4. The two moves every carbonyl reaction is built from. */
@@ -347,10 +347,10 @@ FIGURES.push({
     s += prod(635, 'hash', 'wedge');
     s += text(125, 238, 'Nu toward you', { cls: 'fg-sm', size: 10.5 });
     s += text(635, 238, 'Nu away from you', { cls: 'fg-sm', size: 10.5 });
-    s += text(380, 272, 'mirror images, formed in equal amounts: a racemic mixture', { cls: 'fg-tag', size: 11 });
+    s += text(380, 272, 'mirror images, 50 : 50', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Wedge and hash swap between the two products, and nothing else changes. That makes them mirror images (enantiomers). An achiral nucleophile finds the two faces equally open, so it makes both at the same rate.',
+  caption: 'Wedge and hash swap between the two products, and nothing else changes: they are mirror images (enantiomers).',
 });
 
 /* 6. The Bürgi–Dunitz approach, and the fold-back that follows it. */
@@ -401,7 +401,7 @@ FIGURES.push({
     s += text(614, 306, 'a tetrahedral, sp³ carbon', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Left: the carbonyl edge-on, with its empty π* orbital. The nucleophile (dashed path) arrives about 107° from the C→O direction, not along the gray 90° line. Right: the same carbon once the bond has formed, with the old positions of R and R′ dashed.',
+  caption: 'Left: the empty π* orbital, and the nucleophile’s dashed path against the gray 90° line. Right: the same carbon once the bond has formed, with dashed lines where R and R′ were.',
 });
 
 /* 7. Why an aldehyde is easier to attack than a ketone. */
@@ -466,7 +466,7 @@ FIGURES.push({
     s += text(560, 216, 'R and R′ are pushed closer', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'The same two groups before and after addition. The angle between R and R′ closes from 120° to about 109.5°, so large groups end up pressed together.',
+  caption: 'The same two groups, R and R′, before and after addition. Compare the two marked angles.',
 });
 
 /* 9. Hydration: what a hydrate is. */
@@ -493,7 +493,7 @@ FIGURES.push({
     s += text(640, 94, 'the same carbon', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
-  caption: 'Water adds across the C=O: an H goes to oxygen and an OH to carbon. The product keeps both OH groups (tinted) on the old carbonyl carbon.',
+  caption: 'Acetaldehyde and its hydrate. Both tinted OH groups sit on the old carbonyl carbon.',
 });
 
 /* 10. The four carbonyls of the worked example, in order. */
@@ -501,7 +501,7 @@ FIGURES.push({
   id: 'ak-rank-four',
   section: 'aldehydes-ketones',
   anchor: '<span class="k">Worked example — rank four carbonyls toward a nucleophile</span>',
-  alt: 'Chloral, acetaldehyde, benzaldehyde and acetone in a row from most to least reactive, each labelled with what its groups do to the carbonyl carbon.',
+  alt: 'Chloral, acetaldehyde, benzaldehyde and acetone in a row from most to least reactive, each labeled with what its groups do to the carbonyl carbon.',
   viewBox: '0 0 760 260',
   build() {
     let s = '';
@@ -590,7 +590,7 @@ FIGURES.push({
     s += text(640, 178, 'the carbonyl C', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
-  caption: 'One ring π pair shifts toward the carbonyl carbon as the C=O π pair moves onto oxygen. In the contributor on the right, the positive charge sits on a ring carbon instead of on the carbonyl carbon.',
+  caption: 'Follow the two curved arrows from benzaldehyde to the contributor on the right, then find where the + ended up.',
 });
 
 /* 12. Conjugation puts + on the beta carbon; alpha hydrogens are acidic. */
@@ -598,7 +598,7 @@ FIGURES.push({
   id: 'ak-enone-alpha',
   section: 'aldehydes-ketones',
   anchor: '<h3>Conjugation and the alpha carbon</h3>',
-  alt: 'Top: but-3-en-2-one with its alpha and beta carbons labelled; curved arrows move the C=C pi bond toward the carbonyl and the C=O pi bond onto oxygen, giving a contributor with a plus charge on the beta carbon. Bottom: acetone with an alpha hydrogen marked; removing it leaves an anion whose negative charge is shared between the alpha carbon and the oxygen.',
+  alt: 'Top: but-3-en-2-one with its alpha and beta carbons labeled; curved arrows move the C=C pi bond toward the carbonyl and the C=O pi bond onto oxygen, giving a contributor with a plus charge on the beta carbon. Bottom: acetone with an alpha hydrogen marked; removing it leaves an anion whose negative charge is shared between the alpha carbon and the oxygen.',
   viewBox: '0 0 760 420',
   build() {
     let s = '';
@@ -675,7 +675,7 @@ FIGURES.push({
     s += label(485, 400, 'the anion: − shared by C and O');
     return s;
   },
-  caption: 'Top: the arrows show why the far end of a C=C–C=O is electron-poor. Bottom: an α hydrogen (coral) comes off as H⁺, and the pair it leaves behind spreads onto oxygen.',
+  caption: 'Top: follow the arrows to the + on the β carbon. Bottom: the coral H is an α hydrogen; once it has gone, compare where the − sits in the two structures on the right.',
 });
 
 /* 13. Where carbonyls come from. */
@@ -819,7 +819,7 @@ FIGURES.push({
     s += tag(260, 436, 'shows the + on C');
     return s;
   },
-  caption: 'Top: the sp² carbon holds its three groups flat. Bottom: moving the π pair onto oxygen gives the minor contributor, with + on carbon.',
+  caption: 'Top: formaldehyde face-on, with its three angles marked. Bottom: follow the curved arrow to the charge-separated contributor.',
 });
 
 /* Step 4: aldehyde vs ketone, stacked. */
@@ -839,7 +839,7 @@ FIGURES.push({
     s += tag(170, 456, 'less reactive', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'The nucleophile comes in from above, tilted toward the groups on carbon. Shaded discs show the room each group takes, and the larger δ+ marks the more electron-poor carbon.',
+  caption: 'Each carbonyl edge-on, with the nucleophile’s path dashed. Shaded discs show the room each group takes; the larger δ+ marks the more electron-poor carbon.',
 });
 
 /* Step 5: hydration, stacked. */
@@ -862,14 +862,14 @@ FIGURES.push({
     s += tag(170, 326, 'the hydrate: two OH on one carbon');
     return s;
   },
-  caption: 'Water adds across the C=O, and both OH groups (tinted) end up on the old carbonyl carbon.',
+  caption: 'Acetaldehyde above its hydrate. Both tinted OH groups sit on the old carbonyl carbon.',
 });
 
 /* Step 7: the three carbonyls to rank. */
 FIGURES.push({
   id: 'l-ak-three',
   lessons: ['aldehydes-ketones'],
-  alt: 'Formaldehyde, acetaldehyde and acetone side by side, with the groups on each carbonyl carbon labelled.',
+  alt: 'Formaldehyde, acetaldehyde and acetone side by side, with the groups on each carbonyl carbon labeled.',
   viewBox: '0 0 340 190',
   build() {
     let s = '';

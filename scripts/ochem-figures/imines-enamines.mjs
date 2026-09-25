@@ -19,7 +19,7 @@ const FIGURES = [];
 const PW = 232;                       // panel width
 
 /* ------------------------------------------------------------ helpers --- */
-const rad = (l) => (l === 'H' ? 12 : l.length <= 2 ? 14 : 5 + l.length * 4.2);
+const rad = (l) => (l === 'H' ? 12 : l.length <= 2 ? 14 : 4 + l.length * 3.8);
 /* A labelled atom: {x, y, l, k, r}. */
 const A = (x, y, l, k) => ({ x, y, l, k, r: rad(l) });
 const draw = (...as) => as.map((a) => atom(a.x, a.y, a.l, { kind: a.k, r: a.r })).join('');
@@ -90,7 +90,7 @@ function pCarb(ox, oy) {
   const N = A(ox + 170, oy + 132, 'NHCH₃', 'hi');
   let s = frameP(ox, oy, H1, '3 · the carbinolamine', ['OH and N on the same carbon'], 'good');
   s += bd(C, O) + bd(C, M1) + bd(C, M2) + bd(C, N);
-  s += lp(O, 180, 5) + lp(O, -60, 5) + lp(N, -90, 5);
+  s += lp(O, 180, 5) + lp(O, -60, 5) + lp(N, -125, 5);
   s += draw(C, O, M1, M2, N);
   return s;
 }
@@ -110,7 +110,7 @@ function pProt(ox, oy) {
   s += lp(O, -150, 5) + lp(O, -60, 5) + lp(N, -90, 5);
   s += draw(C, O, M1, M2, N, Ha, Oa);
   s += curve(o(96, 64), o(69, 64), { bow: 10 });
-  s += curve(o(38, 88), o(20, 94), { bow: 8 });
+  s += curve(mid(Ha, Oa, 0.5), off(Oa, 14, -18), { bow: -12 });
   return s;
 }
 
@@ -122,9 +122,9 @@ function pLeave(ox, oy) {
   const N = A(ox + 160, oy + 142, 'N'), Hn = A(ox + 200, oy + 172, 'H'), Me = A(ox + 196, oy + 106, 'CH₃');
   let s = frameP(ox, oy, H2, '5 · N pushes in, water leaves', ['the C–O bond breaks']);
   s += bd(C, O, { cls: 'fg-bond-hi' }) + bd(C, M1) + bd(C, M2) + bd(C, N) + bd(N, Hn) + bd(N, Me);
-  s += lp(N, 110, 6);
+  s += lp(N, 130, 6);
   s += draw(C, O, M1, M2, N, Hn, Me);
-  s += curve(o(150, 166), o(126, 142), { bow: -12 });
+  s += curve(off(lpAt(N, 130, 6), -4, 4), mid(C, N, 0.5), { bow: -16 });
   s += curve(o(106, 104), o(126, 84), { bow: -10 });
   return s;
 }
@@ -142,24 +142,24 @@ function pImin(ox, oy) {
 }
 
 /* ------------------------------------------ the last proton (7 - 9) --- */
-const H3 = 330;
+const H3 = 350;
 
 /* 7: primary amine: water takes the N-H proton, giving the imine. */
 function pImine(ox, oy) {
   const o = (x, y) => P(ox + x, oy + y);
-  const C = A(ox + 76, oy + 102, 'C'), N = A(ox + 140, oy + 102, 'N⁺');
-  const M1 = A(ox + 36, oy + 72, 'CH₃'), M2 = A(ox + 36, oy + 132, 'CH₃');
-  const H = A(ox + 158, oy + 54, 'H', 'warn'), Me = A(ox + 186, oy + 130, 'CH₃');
-  const W = A(ox + 206, oy + 62, 'H₂O');
+  const C = A(ox + 70, oy + 112, 'C'), N = A(ox + 134, oy + 112, 'N⁺');
+  const M1 = A(ox + 32, oy + 82, 'CH₃'), M2 = A(ox + 32, oy + 142, 'CH₃');
+  const H = A(ox + 134, oy + 60, 'H', 'warn'), Me = A(ox + 180, oy + 140, 'CH₃');
+  const W = A(ox + 200, oy + 60, 'H₂O');
   let s = frameP(ox, oy, H3, 'primary amine: an N–H is left', [['the imine, C=N–CH₃', 'fg-tag-good'], 'nitrogen gives up its last H']);
   s += bd(C, N, { order: 2 }) + bd(C, M1) + bd(C, M2) + bd(N, H, { cls: 'fg-bond-hi' }) + bd(N, Me);
   s += lp(W, 180, 5);
   s += draw(C, N, M1, M2, H, Me, W);
-  s += curve(o(180, 58), o(172, 54), { bow: 6, size: 6 });
-  s += curve(o(143, 78), o(128, 90), { bow: 9 });
-  s += gapArrow(o(PW / 2, 158), o(PW / 2, 188));
-  const C2 = A(ox + 76, oy + 230, 'C'), N2 = A(ox + 140, oy + 230, 'N', 'hi');
-  const P1 = A(ox + 36, oy + 200, 'CH₃'), P2 = A(ox + 36, oy + 260, 'CH₃'), Me2 = A(ox + 184, oy + 258, 'CH₃');
+  s += curve(off(lpAt(W, 180, 5), -2, -6), off(H, 14, -4), { bow: 8 });
+  s += curve(mid(H, N, 0.5), off(N, -14, -6), { bow: 12 });
+  s += gapArrow(o(PW / 2, 170), o(PW / 2, 200));
+  const C2 = A(ox + 70, oy + 246, 'C'), N2 = A(ox + 134, oy + 246, 'N', 'hi');
+  const P1 = A(ox + 32, oy + 216, 'CH₃'), P2 = A(ox + 32, oy + 276, 'CH₃'), Me2 = A(ox + 180, oy + 274, 'CH₃');
   s += bd(C2, N2, { order: 2 }) + bd(C2, P1) + bd(C2, P2) + bd(N2, Me2);
   s += lp(N2, -60, 6);
   s += draw(C2, N2, P1, P2, Me2);
@@ -170,24 +170,23 @@ function pImine(ox, oy) {
    carbon and the double bond moves to C=C. */
 function pEnam(ox, oy) {
   const o = (x, y) => P(ox + x, oy + y);
-  const C = A(ox + 112, oy + 104, 'C'), N = A(ox + 170, oy + 104, 'N⁺');
-  const Ca = A(ox + 68, oy + 130, 'CH₂', 'hi'), H = A(ox + 30, oy + 104, 'H', 'warn');
-  const M = A(ox + 112, oy + 54, 'CH₃');
-  const N1 = A(ox + 206, oy + 72, 'CH₃'), N2 = A(ox + 206, oy + 136, 'CH₃');
-  const W = A(ox + 36, oy + 56, 'H₂O');
+  const Ca = A(ox + 56, oy + 118, 'CH₂', 'hi'), C = A(ox + 116, oy + 118, 'C'), N = A(ox + 172, oy + 118, 'N⁺');
+  const H = A(ox + 30, oy + 78, 'H', 'warn'), W = A(ox + 82, oy + 52, 'H₂O');
+  const M = A(ox + 116, oy + 70, 'CH₃');
+  const N1 = A(ox + 206, oy + 86, 'CH₃'), N2 = A(ox + 206, oy + 150, 'CH₃');
   let s = frameP(ox, oy, H3, 'secondary amine: no N–H left', [['the enamine, C=C–N', 'fg-tag-good'], 'the α carbon gives up an H']);
   s += bd(C, N, { order: 2 }) + bd(C, Ca) + bd(C, M) + bd(Ca, H, { cls: 'fg-bond-hi' }) + bd(N, N1) + bd(N, N2);
-  s += lp(W, 90, 5);
+  s += lp(W, 180, 5);
   s += draw(C, N, Ca, H, M, N1, N2, W);
-  s += curve(o(33, 80), o(30, 90), { bow: -5, size: 6 });
-  s += curve(o(50, 124), o(88, 124), { bow: -14 });
-  s += curve(o(140, 97), o(160, 86), { bow: 8 });
-  s += tag(ox + 60, oy + 164, 'α carbon');
-  s += gapArrow(o(PW / 2, 176), o(PW / 2, 200));
-  const Ca2 = A(ox + 56, oy + 236, 'CH₂', 'hi'), C2 = A(ox + 116, oy + 236, 'C'), Nn = A(ox + 172, oy + 236, 'N');
-  const M2 = A(ox + 116, oy + 280, 'CH₃'), Q1 = A(ox + 206, oy + 208, 'CH₃'), Q2 = A(ox + 206, oy + 268, 'CH₃');
+  s += curve(off(lpAt(W, 180, 5), -4, 2), off(H, 8, -12), { bow: 10 });
+  s += curve(mid(H, Ca, 0.5), mid(Ca, C, 0.5), { bow: -18 });
+  s += curve(mid(C, N, 0.5), off(N, 2, 16), { bow: -12 });
+  s += tag(Ca.x, oy + 156, 'α carbon');
+  s += gapArrow(o(PW / 2, 178), o(PW / 2, 204));
+  const Ca2 = A(ox + 56, oy + 246, 'CH₂', 'hi'), C2 = A(ox + 116, oy + 246, 'C'), Nn = A(ox + 172, oy + 246, 'N');
+  const M2 = A(ox + 116, oy + 290, 'CH₃'), Q1 = A(ox + 206, oy + 216, 'CH₃'), Q2 = A(ox + 206, oy + 278, 'CH₃');
   s += bd(Ca2, C2, { order: 2 }) + bd(C2, Nn) + bd(C2, M2) + bd(Nn, Q1) + bd(Nn, Q2);
-  s += lp(Nn, 100, 6);
+  s += lp(Nn, 110, 6);
   s += draw(Ca2, C2, Nn, M2, Q1, Q2);
   return s;
 }
@@ -206,7 +205,7 @@ function pTert(ox, oy) {
   s += bd(C, O) + bd(C, M1) + bd(C, M2) + bd(C, N) + bd(N, Q1) + bd(N, Q2) + bd(N, Q3);
   s += lp(O, 180) + lp(O, -90) + lp(O, 0);
   s += draw(C, O, M1, M2, N, Q1, Q2, Q3);
-  s += tag(ox + PW / 2, oy + 204, 'trimethylamine adds to acetone');
+  s += tag(ox + PW / 2, oy + 214, 'trimethylamine adds to acetone');
   return s;
 }
 
@@ -371,6 +370,131 @@ function pStorkProd(ox, oy) {
   return s;
 }
 
+
+/* ------------------------------------------------ conjugate addition --- */
+/* But-3-en-2-one with its four positions numbered and the two places a
+   nucleophile can land. */
+function pSites(ox, oy) {
+  const o = (x, y) => P(ox + x, oy + y);
+  const W = 340, H = 250;
+  let s = panel(ox, oy, W, H);
+  s += tag(ox + W / 2, oy + 20, 'two electrophilic carbons');
+  const O = A(ox + 150, oy + 70, 'O', 'hi'), C2 = A(ox + 150, oy + 124, 'C', 'hi'), Me = A(ox + 100, oy + 150, 'CH₃');
+  const C3 = A(ox + 200, oy + 150, 'CH'), C4 = A(ox + 250, oy + 124, 'CH₂', 'hi');
+  s += bd(C2, O, { order: 2 }) + bd(C2, Me) + bd(C2, C3) + bd(C3, C4, { order: 2 });
+  s += lp(O, -150, 5) + lp(O, -30, 5);
+  s += draw(O, C2, Me, C3, C4);
+  s += text(O.x + 26, O.y + 5, '1', { cls: 'fg-tag-warn' });
+  s += text(C2.x - 24, C2.y - 14, '2', { cls: 'fg-tag-warn' });
+  s += text(C3.x, C3.y + 32, '3', { cls: 'fg-tag-warn' });
+  s += text(C4.x + 10, C4.y - 26, '4', { cls: 'fg-tag-warn' });
+  const Nu1 = A(ox + 60, oy + 196, 'Nu⁻'), Nu2 = A(ox + 290, oy + 196, 'Nu⁻');
+  s += draw(Nu1, Nu2);
+  s += curve(o(76, 180), o(138, 140), { bow: -20 });
+  s += curve(o(284, 176), o(258, 144), { bow: 14 });
+  s += text(ox + 90, oy + 236, '1,2: at the C=O carbon', { cls: 'fg-tag' });
+  s += text(ox + 256, oy + 236, '1,4: at the far end', { cls: 'fg-tag-good' });
+  return s;
+}
+
+/* The enamine as a Michael donor: four arrows. */
+function pMichael(ox, oy) {
+  const o = (x, y) => P(ox + x, oy + y);
+  const W = 380, H = 250;
+  let s = panel(ox, oy, W, H, { kind: 'hi' });
+  s += tag(ox + W / 2, oy + 20, 'an enamine adds 1,4');
+  const { s: es, v, N } = enamineSk(ox + 70, oy + 170);
+  s += es;
+  const C4 = A(ox + 160, oy + 128, 'CH₂', 'hi'), C3 = A(ox + 214, oy + 152, 'CH'), C2 = A(ox + 268, oy + 128, 'C');
+  const O = A(ox + 268, oy + 74, 'O'), Me = A(ox + 322, oy + 152, 'CH₃');
+  s += bd(C4, C3, { order: 2 }) + bd(C3, C2) + bd(C2, O, { order: 2 }) + bd(C2, Me);
+  s += lp(O, -150, 5) + lp(O, -30, 5);
+  s += draw(C4, C3, C2, O, Me);
+  const lpP = lpAt(N, 180, 6);
+  s += curve(off(lpP, 0, 6), mid(v[0], N, 0.45), { bow: 10 });
+  s += curve(mid(v[0], v[5], 0.55), off(C4, -20, 8), { bow: 14 });
+  s += curve(mid(C4, C3, 0.5), mid(C3, C2, 0.5), { bow: -16 });
+  s += curve(mid(C2, O, 0.5), off(O, 16, 4), { bow: -12 });
+  s += text(ox + 220, oy + 214, 'new C–C bond: ring C2 to carbon 4', { cls: 'fg-tag' });
+  s += text(ox + 220, oy + 234, 'the O ends up negative, then protonated', { cls: 'fg-tag' });
+  return s;
+}
+
+/* The product after hydrolysis: 2-(3-oxobutyl)cyclohexanone. */
+function pMichaelProd(ox, oy) {
+  const W = 736, H = 130;
+  let s = panel(ox, oy, W, H, { kind: 'good' });
+  const { s: rs, v } = hexRing(ox + 250, oy + 80, 28);
+  const O = A(v[0].x, v[0].y - 32, 'O');
+  s += rs + bond(v[0], O, { order: 2, rFrom: 0, rTo: O.r }) + lp(O, -150, 5) + lp(O, -30, 5) + draw(O);
+  const a1 = P(v[5].x + 26, v[5].y - 14), a2 = P(a1.x + 28, a1.y + 14), a3 = P(a2.x + 28, a2.y - 14), a4 = P(a3.x + 28, a3.y + 14);
+  const O2 = A(a3.x, a3.y - 34, 'O');
+  s += bond(v[5], a1, { rFrom: 0, rTo: 0 }) + bond(a1, a2, { rFrom: 0, rTo: 0 }) + bond(a2, a3, { rFrom: 0, rTo: 0 }) + bond(a3, a4, { rFrom: 0, rTo: 0 });
+  s += bond(a3, O2, { order: 2, rFrom: 0, rTo: O2.r }) + lp(O2, -150, 5) + lp(O2, -30, 5) + draw(O2);
+  s += text(ox + 120, oy + 64, 'after hydrolysis', { cls: 'fg-tag' });
+  s += text(ox + 120, oy + 84, 'with H₃O⁺', { cls: 'fg-tag' });
+  s += text(ox + 560, oy + 64, '2-(3-oxobutyl)cyclohexanone', { cls: 'fg-tag-good' });
+  s += text(ox + 560, oy + 84, 'two C=O groups, 1,5 apart', { cls: 'fg-tag' });
+  return s;
+}
+
+/* ------------------------------------------------ imine relatives --- */
+const HR = 262;
+function acetoneC(ox, oy, y, rightLabel, rightKind, opts = {}) {
+  /* (CH3)2C=N-X, drawn left to right at height y. */
+  const C = A(ox + 70, oy + y, 'C'), N = A(ox + 130, oy + y, opts.nLabel || 'N');
+  const M1 = A(ox + 32, oy + y - 28, 'CH₃'), M2 = A(ox + 32, oy + y + 28, 'CH₃');
+  const X = A(ox + 186, oy + y + 22, rightLabel, rightKind);
+  let s = bd(C, N, { order: opts.single ? 1 : 2 }) + bd(C, M1) + bd(C, M2) + bd(N, X);
+  if (opts.cH) { const H = A(ox + 70, oy + y + 42, 'H'); s += bd(C, H) + draw(H); }
+  s += draw(C, N, M1, M2, X);
+  return s;
+}
+function pRedAm(ox, oy) {
+  const o = (x, y) => P(ox + x, oy + y);
+  let s = frameP(ox, oy, HR, 'reductive amination', [['an amine: C–N single bond', 'fg-tag-good']]);
+  s += acetoneC(ox, oy, 70, 'CH₃');
+  s += gapArrow(o(PW / 2, 116), o(PW / 2, 146));
+  s += text(ox + PW / 2 + 10, oy + 136, 'NaBH₃CN', { cls: 'fg-tag', anchor: 'start' });
+  s += acetoneC(ox, oy, 180, 'CH₃', 'hi', { single: true, nLabel: 'NH', cH: true });
+  return s;
+}
+function pOxHyd(ox, oy) {
+  let s = frameP(ox, oy, HR, 'oxime and hydrazone', []);
+  s += acetoneC(ox, oy, 70, 'OH', 'hi');
+  s += text(ox + PW / 2, oy + 124, 'oxime, from H₂N–OH', { cls: 'fg-tag-good' });
+  s += acetoneC(ox, oy, 176, 'NH₂', 'hi');
+  s += text(ox + PW / 2, oy + 236, 'hydrazone, from H₂N–NH₂', { cls: 'fg-tag-good' });
+  return s;
+}
+function pWK(ox, oy) {
+  const o = (x, y) => P(ox + x, oy + y);
+  let s = frameP(ox, oy, HR, 'Wolff–Kishner: C=O to CH₂', [['ethylbenzene', 'fg-tag-good']]);
+  /* acetophenone hydrazone: ring left, C=N-NH2 */
+  const ring = (cx, cy) => {
+    const v = polyPts(cx, cy, 6, 22, 0);
+    let r = '';
+    for (let i = 0; i < 6; i++) {
+      const a = v[i], b = v[(i + 1) % 6];
+      r += i % 2 === 0 ? ringDouble(a, b, P(cx, cy), { inset: 5, gap: 4 }) : bond(a, b, { rFrom: 0, rTo: 0 });
+    }
+    return { r, v };
+  };
+  const t = ring(ox + 44, oy + 76);
+  s += t.r;
+  const C = A(ox + 106, oy + 76, 'C'), N = A(ox + 106, oy + 128, 'N', 'hi'), N2 = A(ox + 156, oy + 128, 'NH₂', 'hi'), Me = A(ox + 156, oy + 56, 'CH₃');
+  s += bond(t.v[0], C, { rFrom: 0, rTo: C.r }) + bd(C, N, { order: 2 }) + bd(N, N2) + bd(C, Me);
+  s += draw(C, N, N2, Me);
+  s += gapArrow(o(PW / 2, 156), o(PW / 2, 184));
+  s += text(ox + PW / 2 + 10, oy + 168, 'KOH, heat', { cls: 'fg-tag', anchor: 'start' });
+  s += text(ox + PW / 2 + 10, oy + 184, '– N₂', { cls: 'fg-tag-warn', anchor: 'start' });
+  const t2 = ring(ox + 60, oy + 214);
+  s += t2.r;
+  const Cb = A(ox + 122, oy + 214, 'CH₂', 'hi'), Mb = A(ox + 176, oy + 214, 'CH₃');
+  s += bond(t2.v[0], Cb, { rFrom: 0, rTo: Cb.r }) + bd(Cb, Mb) + draw(Cb, Mb);
+  return s;
+}
+
 /* ================================================================ figures */
 
 FIGURES.push({
@@ -431,7 +555,7 @@ FIGURES.push({
   id: 'last-proton',
   section: 'imines-enamines',
   anchor: '<h3>Step 3: the last proton decides the product</h3>',
-  viewBox: '0 0 760 350',
+  viewBox: '0 0 760 370',
   alt: 'Three panels. Primary amine: water removes the proton on the nitrogen of the iminium ion, and the N–H electrons become a lone pair, giving the imine (CH3)2C=N–CH3. Secondary amine: the iminium ion has no N–H, so water removes a proton from the alpha carbon; the C–H electrons form a C=C bond and the C=N pi electrons move onto nitrogen, giving the enamine CH2=C(CH3)–N(CH3)2. Tertiary amine: trimethylamine adds to acetone, but its N plus has four bonds and no lone pair, so no iminium can form and the adduct falls apart.',
   build() {
     return pImine(12, 10) + pEnam(264, 10) + pTert(516, 10);
@@ -442,10 +566,10 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-last-proton',
   lessons: ['imines-enamines'],
-  viewBox: '0 0 256 686',
+  viewBox: '0 0 256 722',
   alt: 'Two stacked panels. Primary amine: water removes the N–H proton of the iminium ion, giving the imine (CH3)2C=N–CH3. Secondary amine: water removes a proton from the alpha carbon, the C–H electrons form a C=C bond and the C=N pi electrons move onto nitrogen, giving the enamine CH2=C(CH3)–N(CH3)2.',
   build() {
-    return pImine(12, 6) + pEnam(12, 350);
+    return pImine(12, 6) + pEnam(12, 366) + gapArrow(P(128, 358), P(128, 358));
   },
   caption: 'Same iminium, different proton: from nitrogen (top) or from the α carbon (bottom).',
 });
@@ -511,6 +635,34 @@ FIGURES.push({
     return s;
   },
   caption: 'Alkylate, stop, hydrolyze.',
+});
+
+
+FIGURES.push({
+  id: 'michael-sites',
+  section: 'imines-enamines',
+  anchor: '<h3>Enamines in conjugate addition</h3>',
+  viewBox: '0 0 760 414',
+  alt: 'Left: but-3-en-2-one with its oxygen numbered 1, the carbonyl carbon 2, the CH 3 and the end CH2 4. One nucleophile arrow goes to carbon 2 (1,2-addition), another to carbon 4 (1,4-addition). Right: the pyrrolidine enamine of cyclohexanone adds 1,4. The nitrogen lone pair pushes toward the ring, the ring C=C forms a bond to carbon 4, the C3=C4 pi electrons move to C2–C3, and the C=O pi electrons move onto oxygen. Below: after hydrolysis the product is 2-(3-oxobutyl)cyclohexanone.',
+  build() {
+    let s = pSites(12, 10) + pMichael(368, 10);
+    s += gapArrow(P(380, 266), P(380, 280));
+    s += pMichaelProd(12, 280);
+    return s;
+  },
+  caption: 'Left, the two positions; right, the enamine choosing position 4; below, the product once the iminium is hydrolyzed.',
+});
+
+FIGURES.push({
+  id: 'imine-relatives',
+  section: 'imines-enamines',
+  anchor: '<h3>What carries forward</h3>',
+  viewBox: '0 0 760 282',
+  alt: 'Three panels. Reductive amination: the imine (CH3)2C=N–CH3 is reduced by NaBH3CN to the amine (CH3)2CH–NH–CH3. Oxime and hydrazone: (CH3)2C=N–OH from hydroxylamine and (CH3)2C=N–NH2 from hydrazine. Wolff–Kishner: the hydrazone of acetophenone, heated with KOH, loses N2 and gives ethylbenzene.',
+  build() {
+    return pRedAm(12, 10) + pOxHyd(264, 10) + pWK(516, 10);
+  },
+  caption: 'Each panel is one of the four paragraphs above; the Clemmensen reduction gives the same ethylbenzene straight from the ketone.',
 });
 
 export default FIGURES;
