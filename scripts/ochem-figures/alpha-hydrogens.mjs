@@ -100,7 +100,7 @@ FIGURES.push({
       s += A(ac, 'C', { kind: 'hi' });
     }
     s += A(c, 'C');
-    s += tag(170, 168, 'carbonyl C');
+    s += tag(190, 100, 'carbonyl C', { anchor: 'start' });
     s += tag(l.x, 222, 'α carbon') + tag(r.x, 222, 'α carbon');
     return s;
   },
@@ -116,12 +116,12 @@ const enolateCells = [
     const f = acetoneFrame(c, { aLabel: 'CH₂', aKind: 'hi' });
     let s = f.s + LP(f.o, 150) + LP(f.o, 30);
     // the carbanion pair, below and to the right of the CH2
-    const lp = armEnd(f.a, 300, 24);
-    s += LP(f.a, 300, 24);
-    s += chg(f.a.x + 24, f.a.y - 12, '−');
+    const lp = armEnd(f.a, 60, 24);
+    s += LP(f.a, 60, 24);
+    s += chg(f.a.x + 26, f.a.y + 16, '−');
     // pair -> the C–Cα bond (becomes the C=C); C=O pi -> O
     const bm = mid(c, f.a);
-    s += curve(P(lp.x - 7, lp.y + 5), P(bm.x + 2, bm.y + 9), { bow: -18, size: 7 });
+    s += curve(P(lp.x - 6, lp.y - 5), P(bm.x + 1, bm.y - 7), { bow: 14, size: 7 });
     s += piToO(c, f.o);
     return s;
   }],
@@ -180,28 +180,28 @@ const findCells = [
   ['(a) BUTAN-2-ONE', '5 α hydrogens, in two sets', (Q) => {
     let s = carbonylO(Q, 92, 112) + LP(Q(92, 62), 150) + LP(Q(92, 62), 30);
     s += chain(Q, [[42, 140], [92, 112], [142, 140], [192, 112]], ['CH₃', 'C', 'CH₂', 'CH₃'], [], ['hi', null, 'hi']);
-    s += T(Q, 42, 178, 'α · 3 H', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 142, 178, 'α · 2 H', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 42, 190, 'α · 3 H', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 142, 190, 'α · 2 H', { cls: 'fg-tag', size: 11 });
     s += T(Q, 206, 80, 'not α', { cls: 'fg-tag-mut', size: 11 });
     return s;
   }],
   ['(b) 2,2-DIMETHYLPROPANAL', 'zero α hydrogens', (Q) => {
-    const c = Q(150, 104), o = Q(150, 54), h = armEnd(c, 330, 42), q = armEnd(c, 210, 52);
+    const c = Q(160, 100), o = Q(160, 50), h = armEnd(c, 330, 42), q = armEnd(c, 210, 52);
     let s = B(c, o, 'C', 'O', { order: 2 }) + A(o, 'O') + LP(o, 150) + LP(o, 30);
     s += B(c, h, 'C', 'H') + A(h, 'H');
     s += B(c, q, 'C', 'C');
     const ms = [armEnd(q, 150, 48), armEnd(q, 210, 48), armEnd(q, 270, 44)];
     for (const m of ms) s += B(q, m, 'C', 'CH₃') + A(m, 'CH₃');
     s += A(q, 'C', { kind: 'warn' }) + A(c, 'C');
-    s += Tag(P(q.x + 44, q.y + 30), 'α · 0 H');
-    s += Tag(P(h.x + 6, h.y + 30), 'on the C=O C');
+    s += Tag(P(q.x, q.y + 84), 'α · 0 H');
+    s += Tag(P(h.x, h.y + 32), 'not α', { cls: 'fg-tag-mut' });
     return s;
   }],
   ['(c) ETHYL ACETATE', '3 α hydrogens, pKa about 25', (Q) => {
     let s = carbonylO(Q, 74, 112) + LP(Q(74, 62), 150) + LP(Q(74, 62), 30);
     s += chain(Q, [[26, 140], [74, 112], [122, 140], [170, 112], [218, 140]], ['CH₃', 'C', 'O', 'CH₂', 'CH₃'], [], ['hi']);
-    s += LP(Q(122, 140), 250) + LP(Q(122, 140), 310);
-    s += T(Q, 30, 178, 'α · 3 H', { cls: 'fg-tag', size: 11 });
+    s += LP(Q(122, 140), 230) + LP(Q(122, 140), 310);
+    s += T(Q, 30, 190, 'α · 3 H', { cls: 'fg-tag', size: 11 });
     s += T(Q, 170, 80, 'on O: not α', { cls: 'fg-tag-mut', size: 11 });
     return s;
   }],
@@ -209,9 +209,9 @@ const findCells = [
     let s = carbonylO(Q, 76, 112) + LP(Q(76, 62), 150) + LP(Q(76, 62), 30);
     s += carbonylO(Q, 168, 112) + LP(Q(168, 62), 150) + LP(Q(168, 62), 30);
     s += chain(Q, [[30, 140], [76, 112], [122, 140], [168, 112], [214, 140]], ['CH₃', 'C', 'CH₂', 'C', 'CH₃'], [], ['hi', null, 'warn', null, 'hi']);
-    s += T(Q, 30, 178, 'pKa 20', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 122, 178, 'pKa 9', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 214, 178, 'pKa 20', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 30, 190, 'pKa 20', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 122, 190, 'pKa 9', { cls: 'fg-tag-warn', size: 11 });
+    s += T(Q, 214, 190, 'pKa 20', { cls: 'fg-tag', size: 11 });
     return s;
   }],
 ];
@@ -221,8 +221,8 @@ FIGURES.push({
   section: 'alpha-hydrogens',
   anchor: 'Worked example — find the alpha hydrogens',
   alt: 'Four molecules with their alpha carbons highlighted. (a) Butan-2-one: the CH3 and the CH2 on either side of the carbonyl carbon are alpha, with 3 and 2 hydrogens; the end CH3 is not alpha. (b) 2,2-Dimethylpropanal: the only alpha carbon is a quaternary carbon with no hydrogens, and the aldehyde H sits on the carbonyl carbon itself. (c) Ethyl acetate: only the CH3 on the acyl side is alpha; the OCH2 is bonded to oxygen, not to the carbonyl carbon. (d) Pentane-2,4-dione: both end methyls are alpha, pKa 20, and the central CH2 is alpha to both carbonyls, pKa 9.',
-  viewBox: '0 0 760 440',
-  build() { return gridFigure(findCells, 2, 364, 204, 16, 16, 8, 8); },
+  viewBox: '0 0 760 520',
+  build() { return gridFigure(findCells, 2, 364, 244, 16, 16, 8, 8); },
   caption: 'Highlighted carbons touch a carbonyl carbon; those are the only places to count hydrogens.',
 });
 
@@ -230,8 +230,8 @@ FIGURES.push({
   id: 'l-alpha-find',
   lessons: ['alpha-hydrogens'],
   alt: 'Two molecules with alpha carbons highlighted: butan-2-one, with alpha carbons on both sides of the carbonyl carrying 3 and 2 hydrogens; and 2,2-dimethylpropanal, whose only alpha carbon is quaternary, with no hydrogens.',
-  viewBox: '0 0 340 436',
-  build() { return gridFigure(findCells.slice(0, 2), 1, 324, 204, 0, 12, 8, 8); },
+  viewBox: '0 0 340 516',
+  build() { return gridFigure(findCells.slice(0, 2), 1, 324, 244, 0, 12, 8, 8); },
   caption: 'Count hydrogens only on the highlighted carbons.',
 });
 
@@ -281,8 +281,8 @@ FIGURES.push({
       ['ON THE LEFT OXYGEN', '', (Q) => dione(Q, 'L')],
       ['ON THE RIGHT OXYGEN', '', (Q) => dione(Q, 'R')],
     ];
-    let s = gridFigure(cells, 3, 232, 204, 32, 0, 8, 8);
-    s += resH(242, 270, 110) + resH(506, 534, 110);
+    let s = gridFigure(cells, 3, 228, 204, 32, 0, 8, 8);
+    s += resH(240, 264, 110) + resH(500, 524, 110);
     s += tag(380, 238, 'highlighted: the flat O–C–C–C–O path the charge spreads along');
     return s;
   },
