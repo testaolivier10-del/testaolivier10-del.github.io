@@ -249,7 +249,7 @@ FIGURES.push({
   alt: 'Hydration of acetaldehyde in acid, in four panels. First, a lone pair on the carbonyl oxygen takes a proton from hydronium, and the H–O bond electrons stay on the water. Second, a water molecule attacks the carbonyl carbon of the protonated carbonyl with a lone pair while the pi electrons move onto the positive oxygen. Third, the added oxygen carries two hydrogens and a positive charge, and a second water takes one of those protons. Fourth, the gem-diol product with hydronium released.',
   viewBox: '0 0 760 440',
   build() { return gridFigure(acidCells, 2, 364, 204, 16, 16, 8, 8); },
-  caption: 'Hydration in acid, on the same aldehyde. The proton goes on first and comes off last, so the acid is handed back.',
+  caption: 'The acid mechanism from Nucleophilic addition, run on acetaldehyde with water as the nucleophile. The proton goes on first and comes off last.',
 });
 
 FIGURES.push({
@@ -258,7 +258,7 @@ FIGURES.push({
   alt: 'Hydration of acetaldehyde in acid, in four stacked panels: the carbonyl oxygen takes a proton from hydronium; water attacks the carbon as the pi electrons move onto the positive oxygen; a second water removes a proton from the added oxygen; the gem-diol forms and hydronium is released.',
   viewBox: '0 0 340 874',
   build() { return gridFigure(acidCells, 1, 324, 204, 0, 14, 8, 8); },
-  caption: 'The proton goes on first and comes off last.',
+  caption: 'The acid mechanism from Nucleophilic addition, with water as the nucleophile.',
 });
 
 /* ======================================================================
@@ -299,7 +299,7 @@ FIGURES.push({
     s += text(x0 + W / 2, ya + 48, 'percent of the carbonyl present as its hydrate, in water at equilibrium', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'The table as bars, on a straight 0–100% scale. Acetone’s bar is there; at 0.1% it is too thin to see.',
+  caption: 'The table as bars, on a straight 0–100% scale. Acetone’s bar is drawn wider than 0.1% so that it shows.',
 });
 
 /* ======================================================================
