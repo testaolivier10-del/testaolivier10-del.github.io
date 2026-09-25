@@ -164,17 +164,17 @@ FIGURES.push({
   id: 'l-two-enolates',
   lessons: ['enolate-regiochemistry'],
   alt: '2-Methylcyclohexanone at the top, with arrows down to its two enolates: the kinetic enolate, C1=C6 with two carbons on the C=C, and the thermodynamic enolate, C1=C2 with three carbons on the C=C.',
-  viewBox: '0 0 340 360',
+  viewBox: '0 0 340 392',
   build() {
-    return enolatePair(P(170, 104), P(82, 262), P(250, 262), 28, () => {
+    return enolatePair(P(170, 104), P(82, 294), P(250, 294), 28, () => {
       let s = '';
-      s += arrow(P(132, 150), P(98, 190));
-      s += arrow(P(208, 150), P(236, 190));
-      s += L(70, 330, 'kinetic', { cls: 'fg-tag-good', size: 11 });
-      s += T(70, 348, '2 C on the C=C');
-      s += L(262, 330, 'thermodynamic', { cls: 'fg-tag-warn', size: 11 });
-      s += T(262, 348, '3 C on the C=C');
-      s += T(62, 150, 'from C6') + T(282, 150, 'from C2');
+      s += arrow(P(132, 152), P(102, 200));
+      s += arrow(P(208, 152), P(238, 200));
+      s += L(70, 362, 'kinetic', { cls: 'fg-tag-good', size: 11 });
+      s += T(70, 380, '2 C on the C=C');
+      s += L(262, 362, 'thermodynamic', { cls: 'fg-tag-warn', size: 11 });
+      s += T(262, 380, '3 C on the C=C');
+      s += T(80, 172, 'from C6', { anchor: 'end' }) + T(258, 172, 'from C2', { anchor: 'start' });
       return s;
     });
   },
@@ -229,16 +229,16 @@ function ldaReactants(ox, oy) {
   return s;
 }
 
-function ldaProducts(ox, oy, gap = 170) {
+function ldaProducts(ox, oy, gap = 170, name = 'lithium enolate (C1=C6)') {
   const c = P(ox + 84, oy + 128);
   const f = ring(c, { loc: [1, 2, 6], dbl: 'C1C6', subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
   let s = f.s + enolateO(f.top);
   s += T(f.top.x + 30, f.top.y + 4, 'Li⁺', { anchor: 'start' });
-  s += T(c.x, c.y + 64, 'lithium enolate (C1=C6)', { cls: 'fg-tag-good' });
+  s += T(c.x, c.y + 64, name, { cls: 'fg-tag-good' });
   const n = P(ox + 84 + gap + 34, oy + 120);
   s += text(ox + 84 + gap - 50, oy + 124, '+', { cls: 'fg-lbl', size: 16 });
   s += amide(n, { h: true });
-  s += T(n.x - 12, n.y + 62, '(i-Pr)₂NH, pKa about 36');
+  s += `<text class="fg-tag" x="${n.x - 12}" y="${n.y + 62}" text-anchor="middle" font-size="11">(<tspan font-style="italic">i</tspan>-Pr)₂NH, pKa about 36</text>`;
   return s;
 }
 
@@ -265,7 +265,7 @@ FIGURES.push({
   build() {
     let s = ldaReactants(4, 0);
     s += arrow(P(170, 214), P(170, 250));
-    s += ldaProducts(-26, 222, 150);
+    s += ldaProducts(-8, 222, 150, 'lithium enolate');
     return s;
   },
   caption: 'The nitrogen takes the C6 hydrogen; those C–H electrons become the C=C.',
@@ -344,10 +344,10 @@ function alkylRow(y, kinetic) {
   // enolate, drawn so the nucleophilic carbon faces right
   const e = kinetic
     ? ring(P(110, y), { mirror: true, dbl: 'C1C6', loc: [1, 2, 6], subs: [{ at: 2, deg: 30, label: 'CH₃' }] })
-    : ring(P(110, y), { dbl: 'C1C2', loc: [1, 2, 6], subs: [{ at: 2, deg: 40, label: 'CH₃' }] });
+    : ring(P(110, y), { dbl: 'C1C2', loc: [1, 2, 6], subs: [{ at: 2, deg: -25, label: 'CH₃' }] });
   s += e.s + enolateO(e.top, kinetic ? -1 : 1);
   const nuc = kinetic ? e.pts[5] : e.pts[1];
-  const me = armEnd(nuc, -28, 62), io = armEnd(me, -28, 56);
+  const me = armEnd(nuc, kinetic ? -28 : 38, 62), io = armEnd(me, kinetic ? -28 : 0, 56);
   s += bond(me, io, { rFrom: 17, rTo: 14 }) + A(me, 'CH₃') + A(io, 'I');
   // O lone pair -> C1–O ; C=C pi -> CH3 ; C–I -> I
   const m = kinetic ? -1 : 1;
@@ -360,7 +360,7 @@ function alkylRow(y, kinetic) {
   // product
   const p = kinetic
     ? ring(P(470, y), { mirror: true, loc: [1, 2, 6], subs: [{ at: 2, deg: 30, label: 'CH₃' }, { at: 6, deg: 165, label: 'CH₃', kind: 'hi', bondCls: 'fg-bond-hi' }] })
-    : ring(P(470, y), { loc: [1, 2, 6], subs: [{ at: 2, deg: 65, label: 'CH₃' }, { at: 2, deg: -10, label: 'CH₃', kind: 'hi', bondCls: 'fg-bond-hi' }] });
+    : ring(P(470, y), { loc: [1, 2, 6], subs: [{ at: 2, deg: -15, label: 'CH₃' }, { at: 2, deg: 60, label: 'CH₃', kind: 'hi', bondCls: 'fg-bond-hi' }] });
   s += p.s;
   s += T(590, y + 26, '+ I⁻', { anchor: 'start' });
   s += L(470, y + 70, kinetic ? '2,6-dimethylcyclohexanone' : '2,2-dimethylcyclohexanone', { size: 12.5 });
@@ -391,12 +391,12 @@ function alkylRowSmall(y, kinetic) {
   const r = 26;
   const e = kinetic
     ? ring(P(68, y), { r, mirror: true, dbl: 'C1C6', subs: [{ at: 2, deg: 30, label: 'CH₃' }] })
-    : ring(P(68, y), { r, dbl: 'C1C2', subs: [{ at: 2, deg: 40, label: 'CH₃' }] });
+    : ring(P(68, y), { r, dbl: 'C1C2', subs: [{ at: 2, deg: -50, label: 'CH₃' }] });
   s += e.s + chg(e.top.x + (kinetic ? 19 : -19), e.top.y - 12);
-  s += arrow(P(132, y), P(190, y)) + T(161, y - 10, 'CH₃I');
+  s += arrow(P(138, y - 8), P(192, y - 8)) + T(165, y - 18, 'CH₃I');
   const p = kinetic
     ? ring(P(250, y), { r, mirror: true, subs: [{ at: 2, deg: 30, label: 'CH₃' }, { at: 6, deg: 165, label: 'CH₃', kind: 'hi', bondCls: 'fg-bond-hi' }] })
-    : ring(P(250, y), { r, subs: [{ at: 2, deg: 65, label: 'CH₃' }, { at: 2, deg: -10, label: 'CH₃', kind: 'hi', bondCls: 'fg-bond-hi' }] });
+    : ring(P(250, y), { r, subs: [{ at: 2, deg: -15, label: 'CH₃' }, { at: 2, deg: 60, label: 'CH₃', kind: 'hi', bondCls: 'fg-bond-hi' }] });
   s += p.s;
   s += T(68, y + 56, kinetic ? 'kinetic enolate' : 'thermodynamic', { cls: kinetic ? 'fg-tag-good' : 'fg-tag-warn' });
   s += T(250, y + 56, kinetic ? '2,6-dimethyl-' : '2,2-dimethyl-');
@@ -412,7 +412,7 @@ FIGURES.push({
   build() {
     return alkylRowSmall(90, true) + alkylRowSmall(250, false);
   },
-  caption: 'The new methyl, highlighted, lands where the enolate’s C=C was.',
+  caption: 'The new methyl, highlighted, lands on the α carbon that was part of the C=C.',
 });
 
 /* ======================================================================
