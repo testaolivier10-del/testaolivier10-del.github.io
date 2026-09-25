@@ -148,7 +148,7 @@ FIGURES.push({
   id: 'ak-examples',
   section: 'aldehydes-ketones',
   anchor: '<!-- notes:start -->',
-  alt: 'Formaldehyde, acetaldehyde, acetone and butanone drawn with every group on the carbonyl carbon labeled. The two aldehydes carry at least one H on the carbonyl carbon; the two ketones carry two carbon groups.',
+  alt: 'Formaldehyde, acetaldehyde, acetone and butan-2-one drawn with every group on the carbonyl carbon labeled. The two aldehydes carry at least one H on the carbonyl carbon; the two ketones carry two carbon groups.',
   viewBox: '0 0 760 250',
   build() {
     let s = '';
@@ -156,7 +156,7 @@ FIGURES.push({
       { x: 95, name: 'formaldehyde', a: 'H', b: 'H', kind: 'aldehyde' },
       { x: 285, name: 'acetaldehyde', a: 'CH₃', b: 'H', kind: 'aldehyde' },
       { x: 475, name: 'acetone', a: 'CH₃', b: 'CH₃', kind: 'ketone' },
-      { x: 665, name: 'butanone', a: 'CH₃', b: 'CH₂CH₃', kind: 'ketone' },
+      { x: 665, name: 'butan-2-one', a: 'CH₃', b: 'CH₂CH₃', kind: 'ketone' },
     ];
     for (const k of cols) {
       const c = P(k.x, 124);
@@ -211,7 +211,7 @@ FIGURES.push({
     s += tag(575, 24, 'nearly edge-on: the plane is the shaded strip');
     s += text(575, 62, 'π bond: lobes above and below the plane', { cls: 'fg-sm', size: 10.5 });
     s += text(575, 258, 'lobes bigger on O: the π electrons sit nearer O', { cls: 'fg-sm', size: 10.5 });
-    s += text(440, 186, 'plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(406, 210, 'plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
   caption: 'Formaldehyde from two directions. Face-on, read the three marked angles. Nearly edge-on, the shaded strip is the molecule’s plane and the colored lobes are the π bond.',
@@ -328,13 +328,13 @@ FIGURES.push({
   id: 'ak-faces',
   section: 'aldehydes-ketones',
   anchor: 'gives a racemic mixture',
-  alt: 'Butanone drawn flat in the page. A nucleophile adding from in front of the page gives a product with Nu on a wedge and O minus on a hash; adding from behind gives Nu on a hash and O minus on a wedge. The two products are mirror images.',
+  alt: 'Butan-2-one drawn flat in the page. A nucleophile adding from in front of the page gives a product with Nu on a wedge and O minus on a hash; adding from behind gives Nu on a hash and O minus on a wedge. The two products are mirror images.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
     const c = P(380, 160);
     s += carbonyl(c, { subs: [{ deg: 210, l: 'CH₃' }, { deg: 330, l: 'CH₂CH₃' }], len: 58, cKind: 'hi' }).s;
-    s += tag(380, 24, 'butanone lies flat in the page');
+    s += tag(380, 24, 'butan-2-one lies flat in the page');
     s += arrow(P(318, 124), P(252, 124));
     s += text(285, 96, 'Nu⁻ adds from', { cls: 'fg-sm', size: 10.5 });
     s += text(285, 110, 'in front', { cls: 'fg-sm', size: 10.5 });
@@ -347,7 +347,8 @@ FIGURES.push({
       g += arm(t, 215, 58, 'CH₃').s;
       g += arm(t, 325, 58, 'CH₂CH₃').s;
       g += arm(t, 118, 54, 'Nu', { kind: nuKind, atomKind: 'hi' }).s;
-      g += arm(t, 62, 54, 'O⁻', { kind: oKind }).s;
+      const om = arm(t, 62, 54, 'O⁻', { kind: oKind });
+      g += om.s + lp(om.e, 0) + lp(om.e, 65) + lp(om.e, 130);
       g += atom(t.x, t.y, 'C', { kind: 'hi' });
       return g;
     };
@@ -380,7 +381,7 @@ FIGURES.push({
     s += dline(at(c, 90, 66), at(c, 90, 160));
     s += text(c.x + 10, c.y - 150, '90°', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += nuApproach(c, 107, 172, { stop: 66 }).s;
-    s += arc(c, 50, 0, 107, 'fg-bond-soft');
+    s += arc(c, 50, 9, 107, 'fg-bond-soft');
     s += text(c.x + 44, c.y - 50, '≈107°', { cls: 'fg-lbl', size: 13, anchor: 'start' });
     s += text(330, 152, 'π* (empty):', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(330, 166, 'bigger lobe on C', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
@@ -396,11 +397,11 @@ FIGURES.push({
     const nu = at(t, 107, 62);
     s += bond(t, nu, { rFrom: 16, rTo: 16 });
     s += atom(nu.x, nu.y, 'Nu', { kind: 'hi' });
-    const o2 = at(t, -18, 64);
+    const o2 = at(t, -3, 64);
     s += bond(t, o2, { rFrom: 16, rTo: 16 });
-    s += atom(o2.x, o2.y, 'O⁻', { kind: 'hi' });
-    s += arm(t, 256, 60, 'R′', { kind: 'hash' }).s;
-    s += arm(t, 222, 60, 'R', { kind: 'wedge' }).s;
+    s += atom(o2.x, o2.y, 'O⁻', { kind: 'hi' }) + lp(o2, 57) + lp(o2, -3) + lp(o2, -63);
+    s += arm(t, 260, 60, 'R′', { kind: 'hash' }).s;
+    s += arm(t, 215, 60, 'R', { kind: 'wedge' }).s;
     s += atom(t.x, t.y, 'C', { kind: 'warn' });
     s += text(484, 92, 'dashed: where', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     s += text(484, 106, 'R and R′ were', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
@@ -467,7 +468,8 @@ FIGURES.push({
     s += arc(t, 30, 215, 325);
     s += arm(t, 215, 60, 'R').s + arm(t, 325, 60, 'R′').s;
     s += arm(t, 118, 54, 'Nu', { kind: 'wedge', atomKind: 'hi' }).s;
-    s += arm(t, 62, 54, 'O⁻', { kind: 'hash' }).s;
+    const om = arm(t, 62, 54, 'O⁻', { kind: 'hash' });
+    s += om.s + lp(om.e, 0) + lp(om.e, 65) + lp(om.e, 130);
     s += atom(t.x, t.y, 'C');
     s += text(t.x, t.y + 52, '≈109.5°', { cls: 'fg-lbl', size: 13 });
     s += text(560, 200, 'four groups on carbon', { cls: 'fg-sm', size: 10.5 });
@@ -876,13 +878,13 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-ak-three',
   lessons: ['aldehydes-ketones'],
-  alt: 'Propanal, butanone and 3,3-dimethylbutan-2-one, one per row, with the two groups on each carbonyl carbon labeled: CH2CH3 and H; CH3 and CH2CH3; CH3 and C(CH3)3.',
+  alt: 'Propanal, butan-2-one and 3,3-dimethylbutan-2-one, one per row, with the two groups on each carbonyl carbon labeled: CH2CH3 and H; CH3 and CH2CH3; CH3 and C(CH3)3.',
   viewBox: '0 0 340 386',
   build() {
     let s = '';
     const rows = [
       { y: 80, name: 'propanal', a: 'CH₂CH₃', b: 'H' },
-      { y: 204, name: 'butanone', a: 'CH₃', b: 'CH₂CH₃' },
+      { y: 204, name: 'butan-2-one', a: 'CH₃', b: 'CH₂CH₃' },
       { y: 328, name: '3,3-dimethyl-', name2: 'butan-2-one', a: 'C(CH₃)₃', b: 'CH₃' },
     ];
     for (const k of rows) {

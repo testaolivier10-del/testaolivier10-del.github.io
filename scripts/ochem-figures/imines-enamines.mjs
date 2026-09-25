@@ -348,7 +348,7 @@ function pStorkAlk(ox, oy) {
 /* The iminium salt after one alkylation. */
 function pStorkImin(ox, oy) {
   const { s: es, v } = enamineSk(ox + 76, oy + 132, { iminium: true });
-  let s = frameP(ox, oy, HS, 'iminium salt: the enamine C=C is gone', ['nothing nucleophilic at carbon'], 'good');
+  let s = frameP(ox, oy, HS, 'iminium salt: enamine C=C gone', ['nothing nucleophilic at carbon'], 'good');
   s += es;
   const a1 = P(v[5].x + 26, v[5].y - 12), a2 = P(a1.x + 26, a1.y + 14), a3 = P(a2.x + 26, a2.y - 12);
   s += bond(v[5], a1, { rFrom: 0, rTo: 0 }) + bond(a1, a2, { rFrom: 0, rTo: 0 }) + bond(a2, a3, { order: 2, rFrom: 0, rTo: 0 });
