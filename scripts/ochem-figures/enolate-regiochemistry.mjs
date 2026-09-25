@@ -288,7 +288,7 @@ function shuttleRow(x1, x2, y, r, reactants) {
     s += curve(P(e.top.x + 16, e.top.y + 6), P(e.top.x + 5, e.pts[0].y - 12 * k), { bow: -9, size: 7 });
     // C1=C6 pi -> the H on the ketone's C2
     const pm = mid(e.pts[0], e.pts[5]);
-    s += curve(P(pm.x + 3, pm.y + 6), P(h.x - 7, h.y + 9), { bow: 22 * k, size: 7 });
+    s += curve(P(pm.x + 6, pm.y - 4), P(h.x - 9, h.y - 8), { bow: -14 * k, size: 7 });
     // C2–H bond -> C1–C2 of the ketone
     const bm = mid(q.pts[1], h), rm = mid(q.pts[1], q.pts[0]);
     s += curve(P(bm.x + 2, bm.y - 5), P(rm.x - 5, rm.y - 5), { bow: 10, size: 7 });
@@ -473,20 +473,20 @@ FIGURES.push({
   section: 'enolate-regiochemistry',
   anchor: '<h3>The same switch, one step earlier</h3>',
   alt: 'Two rows. Top row, from the conjugation chapter: the allylic cation from buta-1,3-diene and HBr, drawn as its two contributors, with bromide adding at C2 when cold to give 3-bromobut-1-ene, or at C4 when warm to give 1-bromobut-2-ene. These are the two final products. Bottom row: 2-methylcyclohexanone with LDA at minus 78 degrees giving the kinetic enolate, or with NaOEt at room temperature giving the thermodynamic enolate. These are two intermediates, and the electrophile comes afterwards.',
-  viewBox: '0 0 760 530',
+  viewBox: '0 0 760 536',
   build() {
     let s = '';
-    s += panel(8, 8, 744, 262, {});
+    s += panel(8, 8, 744, 268, {});
     s += tag(24, 30, 'BRANCH POINT: THE CATION (1,2- vs 1,4-addition)', { anchor: 'start' });
-    s += dieneRow(380, 70, 700, ['3-bromobut-1-ene (1,2)', '1-bromobut-2-ene (1,4)']);
-    s += T(380, 246, 'two final products', { cls: 'fg-tag-mut' });
-    s += panel(8, 282, 744, 240, {});
-    s += tag(24, 304, 'BRANCH POINT: THE DEPROTONATION', { anchor: 'start' });
-    s += ketoneRow(380, 350, 230, 26, ['LDA, −78 °C', 'NaOEt, rt']);
-    s += T(150, 506, 'kinetic enolate (C1=C6)', { cls: 'fg-tag-good' });
-    s += T(610, 506, 'thermodynamic enolate (C1=C2)', { cls: 'fg-tag-warn' });
-    s += T(380, 470, 'two intermediates;', { cls: 'fg-tag-mut' });
-    s += T(380, 486, 'the electrophile comes next', { cls: 'fg-tag-mut' });
+    s += dieneRow(380, 80, 700, ['3-bromobut-1-ene (1,2)', '1-bromobut-2-ene (1,4)']);
+    s += T(380, 254, 'two final products', { cls: 'fg-tag-mut' });
+    s += panel(8, 288, 744, 240, {});
+    s += tag(24, 310, 'BRANCH POINT: THE DEPROTONATION', { anchor: 'start' });
+    s += ketoneRow(380, 356, 230, 26, ['LDA, −78 °C', 'NaOEt, rt']);
+    s += T(150, 512, 'kinetic enolate (C1=C6)', { cls: 'fg-tag-good' });
+    s += T(610, 512, 'thermodynamic enolate (C1=C2)', { cls: 'fg-tag-warn' });
+    s += T(380, 476, 'two intermediates;', { cls: 'fg-tag-mut' });
+    s += T(380, 492, 'the electrophile comes next', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Top: the conjugation chapter’s branch point ends in two products. Bottom: this section’s branch point ends in two enolates, and the choice is made before any electrophile is added.',
@@ -499,10 +499,10 @@ FIGURES.push({
   viewBox: '0 0 340 610',
   build() {
     let s = '';
-    s += panel(4, 4, 332, 288, {});
+    s += panel(4, 4, 332, 292, {});
     s += tag(170, 24, 'BRANCH POINT: THE CATION');
-    s += dieneRow(170, 62, 300, ['1,2-product', '1,4-product']);
-    s += T(170, 280, 'two final products', { cls: 'fg-tag-mut' });
+    s += dieneRow(170, 72, 300, ['1,2-product', '1,4-product']);
+    s += T(170, 286, 'two final products', { cls: 'fg-tag-mut' });
     s += panel(4, 302, 332, 302, {});
     s += tag(170, 322, 'BRANCH POINT: THE DEPROTONATION');
     const r = 24;
@@ -510,7 +510,7 @@ FIGURES.push({
     const kin = ring(P(82, 532), { r, dbl: 'C1C6', subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
     const thd = ring(P(252, 532), { r, dbl: 'C1C2', subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
     s += ket.s + kin.s + thd.s;
-    s += chg(kin.top.x - 18, kin.top.y - 12) + chg(thd.top.x - 18, thd.top.y - 12);
+    s += chg(kin.top.x - 18, kin.top.y - 12) + chg(thd.top.x + 18, thd.top.y - 12);
     s += arrow(P(140, 432), P(104, 460)) + arrow(P(200, 432), P(236, 460));
     s += T(76, 428, 'LDA, −78 °C', { cls: 'fg-tag-good' }) + T(270, 428, 'NaOEt', { cls: 'fg-tag-warn' });
     s += T(82, 578, 'kinetic', { cls: 'fg-tag-good' }) + T(252, 578, 'thermodynamic', { cls: 'fg-tag-warn' });
