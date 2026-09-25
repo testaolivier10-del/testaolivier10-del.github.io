@@ -411,12 +411,13 @@
       6:['carbonyl-electrophilicity','steric-hindrance'],
       7:['carbonyl-electrophilicity','steric-hindrance'] } },
 
-    'aldol': { n:8, steps:{
-      1:['enolate-formation'],
-      2:['aldol-connectivity'],
-      4:['aldol-connectivity'],
-      6:['aldol-connectivity','enolate-formation'],
-      7:['aldol-connectivity','enolate-formation'] } },
+    'aldol': { n:13, steps:{
+      2:['enolate-formation'],
+      3:['aldol-connectivity'],
+      6:['aldol-connectivity'],
+      10:['aldol-connectivity','enolate-formation'],
+      11:['aldol-connectivity','enolate-formation'],
+      12:['aldol-connectivity','enolate-formation'] } },
 
     'alkene-structure': { n:8, steps:{
       1:['alkene-pi-nucleophile'],
@@ -433,14 +434,14 @@
       7:['alkyne-acidity','curved-arrow-direction','acetylide-alkylation'],
       8:['markovnikov-regiochem','keto-enol-tautomerism'] } },
 
-    'alpha-hydrogens': { n:13, steps:{
+    'alpha-hydrogens': { n:14, steps:{
       2:['resonance-delocalization','alpha-acidity'],
       3:['alpha-acidity','resonance-delocalization'],
       5:['alpha-acidity'],
       7:['keto-enol-tautomerism','resonance-delocalization'],
-      9:['enolate-formation','alpha-acidity'],
-      11:['keto-enol-tautomerism'],
-      12:['alpha-acidity','resonance-delocalization'] } },
+      10:['enolate-formation','alpha-acidity'],
+      12:['keto-enol-tautomerism'],
+      13:['alpha-acidity','resonance-delocalization'] } },
 
     'amine-reactions': { n:8, steps:{
       1:['nucleophile-recognition'],
