@@ -512,7 +512,7 @@ FIGURES.push({
   id: 'intramolecular-aldol-ring',
   section: 'aldol',
   anchor: '<!-- fig:intramolecular-aldol-ring:start -->',
-  viewBox: '0 0 760 470',
+  viewBox: '0 44 760 426',
   alt: 'Hexanedial numbered C1 to C6 with the C2 enolate reaching C6, and the five-membered ring product it gives, then its dehydration to cyclopent-1-ene-1-carbaldehyde',
   build() {
     let s = '';

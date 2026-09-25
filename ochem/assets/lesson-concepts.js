@@ -70,15 +70,15 @@
       9:['alpha-halogenation-control'],
       10:['alpha-halogenation-control','acyl-reactivity-order'] } },
 
-    /* Step 2 sorts six condition sets including two LDA rows that are not
-       kinetic. 3 is which alpha carbon, 4 why a weak base wins on stability,
-       6 the SN2 limit on the halide, 7 the inverse-addition trap. */
-    'enolate-regiochemistry': { n:8, steps:{
-      2:['enolate-regiocontrol','enolate-formation'],
+    /* 3 is which alpha carbon LDA takes, 5 the proton carriers, 8 sorts
+       condition sets including one LDA row (0.9 equiv) that is not kinetic,
+       10 the SN2 limit on the halide, 11 the final. */
+    'enolate-regiochemistry': { n:12, steps:{
       3:['enolate-regiocontrol','alpha-acidity'],
-      4:['enolate-regiocontrol'],
-      6:['enolate-regiocontrol','mechanism-selection'],
-      7:['enolate-regiocontrol'] } },
+      5:['enolate-regiocontrol'],
+      8:['enolate-regiocontrol','enolate-formation'],
+      10:['enolate-regiocontrol','mechanism-selection'],
+      11:['enolate-regiocontrol'] } },
 
     'acyl-chlorides-anhydrides': { n:8, steps:{
       2:['activation-before-acylation','acyl-reactivity-order'],
