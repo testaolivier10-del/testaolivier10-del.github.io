@@ -1,183 +1,499 @@
 /* Figures for the wittig-reaction notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Every drawing is made of panels 340 wide whose labels are all fg-lbl or
+   fg-tag, so the same panel can sit in a notes figure (two panels to a row)
+   and in a lesson figure (panels stacked in one 340-wide column, id prefix
+   l-). Each panel is a function of its top-left corner.
+
+   The mechanism uses one concrete pair throughout: acetone with the
+   methylene ylide, Ph3P=CH2, every atom labelled, so each curved arrow
+   starts at a named lone pair or bond and ends at a named atom or bond. */
+import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
+import { polyPts, polyRing, ringDouble } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
+const PW = 340;                       // panel width
+const GAP = 40;                       // gap between two panels in a notes row
 
-/* ----------------------------------------------------------------- 38 ---
-   The argument for the Wittig is a comparison, and prose can only assert it:
-   an elimination lets Zaitsev choose where the C=C goes, and a Wittig does
-   not. One substrate, two routes, two different alkenes. */
+/* ------------------------------------------------------------ helpers --- */
+const rad = (l) => (l === 'H' ? 12 : l.length <= 2 ? 14 : 4 + l.length * 3.8);
+/* A labelled atom: {x, y, l, k, r}. */
+const A = (x, y, l, k) => ({ x, y, l, k, r: rad(l) });
+const draw = (...as) => as.map((a) => atom(a.x, a.y, a.l, { kind: a.k, r: a.r })).join('');
+const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r ?? 0, rTo: b.r ?? 0, ...o });
+const wd = (a, b) => wedge(a, b, { rFrom: a.r, rTo: b.r, width: 9 });
+const hs = (a, b) => hash(a, b, { rFrom: a.r, rTo: b.r, width: 10, rungs: 5 });
+const mid = (a, b, t = 0.5) => P(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
+const off = (p, dx, dy) => P(p.x + dx, p.y + dy);
+const lp = (a, deg, extra = 7) => lonePair(a.x, a.y, deg, { dist: a.r + extra });
+const lpAt = (a, deg, extra = 7) => {
+  const r = (deg * Math.PI) / 180, d = a.r + extra;
+  return P(a.x + Math.cos(r) * d, a.y + Math.sin(r) * d);
+};
+const it = (s) => `<tspan font-style="italic">${s}</tspan>`;
+/* Text that may carry an italic tspan (E, Z, cis, trans). */
+const rich = (x, y, html, cls = 'fg-tag') =>
+  `<text class="${cls}" x="${x}" y="${y}" text-anchor="middle" font-size="${cls === 'fg-lbl' ? 12.5 : 11}">${html}</text>`;
+/* Every panel: a box, a title tag at the top and up to two tag lines at
+   the bottom. A line is a string, or [html, cls] for rich text. */
+function frameP(ox, oy, h, title, lines = [], kind) {
+  let s = panel(ox, oy, PW, h, kind ? { kind } : {});
+  s += rich(ox + PW / 2, oy + 20, title);
+  lines.forEach((ln, i) => {
+    const [t, cls] = Array.isArray(ln) ? ln : [ln, 'fg-tag'];
+    s += rich(ox + PW / 2, oy + h - 14 - (lines.length - 1 - i) * 17, t, cls);
+  });
+  return s;
+}
+const down = (x, y1, y2) => arrow(P(x, y1), P(x, y2), { size: 7 });
+const right = (x1, x2, y) => arrow(P(x1, y), P(x2, y), { size: 7 });
+const plus = (x, y) => text(x, y, '+', { cls: 'fg-lbl' });
+
+/* Stack panels for a lesson: each entry is [panelFn, height]; a short
+   arrow joins consecutive panels. Returns { svg, h }. */
+function stack(parts, gap = 26, arrows = true) {
+  let s = '', y = 0;
+  parts.forEach(([fn, h], i) => {
+    s += fn(0, y);
+    if (arrows && i < parts.length - 1) s += down(PW / 2, y + h + 3, y + h + gap - 3);
+    y += h + gap;
+  });
+  return { svg: s, h: y - gap };
+}
+
+/* ------------------------------------------------ making the ylide ------ */
+const H_SN2 = 220, H_BASE = 256;
+
+/* 1: the phosphorus lone pair does an SN2 on methyl iodide. */
+function pSN2(ox, oy) {
+  const Pp = A(ox + 58, oy + 76, 'Ph₃P'), C = A(ox + 176, oy + 76, 'CH₃', 'hi'), I = A(ox + 262, oy + 76, 'I', 'warn');
+  let s = frameP(ox, oy, H_SN2, '1 · Ph₃P does an SN2 on CH₃–I', ['a phosphonium salt']);
+  s += bd(C, I, { cls: 'fg-bond-hi' });
+  s += lp(Pp, 0);
+  s += draw(Pp, C, I);
+  s += curve(off(lpAt(Pp, 0), 4, -6), P(C.x - C.r - 2, C.y - 7), { bow: -16 });
+  s += curve(mid(C, I), off(I, -6, -17), { bow: -12 });
+  s += down(ox + 170, oy + 106, oy + 136);
+  const Pq = A(ox + 110, oy + 166, 'Ph₃P⁺'), Cq = A(ox + 200, oy + 166, 'CH₃', 'hi');
+  s += bd(Pq, Cq) + draw(Pq, Cq);
+  s += text(ox + 266, oy + 170, 'I⁻', { cls: 'fg-lbl' });
+  return s;
+}
+
+/* 2: butyllithium's carbanion takes a proton from the carbon next to P+. */
+function pBase(ox, oy) {
+  const Pp = A(ox + 56, oy + 84, 'Ph₃P⁺'), C = A(ox + 150, oy + 84, 'CH₂', 'hi'),
+        H = A(ox + 206, oy + 124, 'H', 'warn'), B = A(ox + 288, oy + 124, 'Bu⁻');
+  let s = frameP(ox, oy, H_BASE, '2 · a strong base removes an H', [['the ylide: C⁻ right beside P⁺', 'fg-tag-good']], 'good');
+  s += bd(Pp, C) + bd(C, H, { cls: 'fg-bond-hi' });
+  s += lp(B, 180);
+  s += draw(Pp, C, H, B);
+  s += curve(off(lpAt(B, 180), -4, -6), off(H, 14, -6), { bow: 14 });
+  s += curve(mid(C, H, 0.55), P(C.x - 6, C.y + C.r + 8), { bow: -10 });
+  s += tag(B.x, oy + 158, 'from BuLi');
+  s += down(ox + 110, oy + 140, oy + 172);
+  const Pq = A(ox + 96, oy + 204, 'Ph₃P⁺'), Cq = A(ox + 184, oy + 204, 'CH₂⁻', 'hi');
+  s += bd(Pq, Cq) + lp(Cq, 0) + draw(Pq, Cq);
+  s += text(ox + 276, oy + 208, '+  butane', { cls: 'fg-lbl' });
+  return s;
+}
+
 FIGURES.push({
-  id: 'zaitsev-vs-wittig',
+  id: 'ylide-making',
   section: 'wittig-reaction',
-  anchor: '<h3>Geometry, which is the one thing it does not fully control</h3>',
-  viewBox: '0 0 760 320',
-  alt: 'An elimination route giving the more substituted endocyclic alkene against a Wittig giving the exocyclic one from the same ring',
+  anchor: '<!-- fig:ylide-making:start -->',
+  viewBox: `0 0 ${PW * 2 + GAP} ${H_BASE}`,
+  alt: 'Making the methylene ylide. Panel 1: the lone pair on triphenylphosphine attacks the carbon of iodomethane while the C–I bond breaks, giving the phosphonium iodide. Panel 2: the butyl anion from butyllithium takes a proton from the CH3 next to P+, and the C–H electrons stay on carbon as a lone pair, giving Ph3P+–CH2−.',
   build() {
-    let s = '';
-    // A hexagon, drawn small, used as the shared skeleton in both panels.
-    const ring = (cx, cy, r) => {
-      let t = '', pts = [];
-      for (let i = 0; i < 6; i++) {
-        const a = (i * 60 - 90) * Math.PI / 180;
-        pts.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
-      }
-      for (let i = 0; i < 6; i++) t += bond(pts[i], pts[(i + 1) % 6], { rFrom: 0, rTo: 0 });
-      return { svg: t, pts };
-    };
-
-    const col = (ox, title, sub, kind) => {
-      s += panel(ox, 44, 300, 150, { kind });
-      s += tag(ox + 150, 32, title);
-      s += text(ox + 150, 214, sub, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11 });
-    };
-    col(30,  'elimination — Zaitsev picks', 'the more substituted alkene', 'warn');
-    col(430, 'Wittig — you pick', 'the exocyclic alkene', null);
-
-    let g = ring(180, 118, 42); s += g.svg;
-    // Endocyclic double bond: a second line just inside the top-right edge.
-    s += bond(g.pts[0], g.pts[1], { rFrom: 10, rTo: 10, cls: 'fg-bond' });
-    // The methyl is the whole point of the comparison, so it has to be drawn:
-    // without it the left panel is cyclohexene and the label is a different
-    // compound from the structure.
-    s += bond(g.pts[0], P(180, 52), { rFrom: 0, rTo: 13 });
-    s += atom(180, 46, 'CH\u2083', { r: 13 });
-    s += text(180, 124, 'in the ring', { cls: 'fg-sm', size: 9.5 });
-    s += text(180, 176, '1-methylcyclohexene', { cls: 'fg-lbl', size: 11.5 });
-
-    g = ring(580, 118, 42); s += g.svg;
-    s += bond(g.pts[0], P(580, 46), { rFrom: 0, rTo: 6, order: 2 });
-    s += atom(580, 40, 'CH₂', { kind: 'hi', r: 15 });
-    s += text(580, 124, 'outside it', { cls: 'fg-sm', size: 9.5 });
-    s += text(580, 176, 'methylenecyclohexane', { cls: 'fg-lbl', size: 11.5 });
-
-    s += rule(34, 240, 700, 240);
-    s += text(360, 266, 'Both start from the same ring. The elimination route cannot reach the one on the right,', { cls: 'fg-lbl', size: 12 });
-    s += text(360, 288, 'because Zaitsev votes for the alkene inside the ring and wins.', { cls: 'fg-lbl', size: 12 });
+    let s = pSN2(0, 0) + pBase(PW + GAP, 0);
+    s += right(PW + 6, PW + GAP - 6, 110);
     return s;
   },
-  caption: 'The reason a Wittig is worth the phosphine. An elimination forms the C=C between two carbons that were already bonded, so Zaitsev decides which, and on a ring that means the endocyclic alkene. A Wittig puts the double bond where the carbonyl carbon was, which here is pointing out of the ring.',
-  note: 'Note that the Wittig product is the <i>less</i> stable of the two. That is the point: it is not that the reaction prefers the exocyclic alkene, it is that no other position is available to it, so stability never gets a vote. Where regiochemistry is concerned, having only one option is better than having a preference.',
+  caption: 'Panel 1 is an ordinary S<sub>N</sub>2: one arrow from the phosphorus lone pair to carbon, one from the C&ndash;I bond to iodine. In panel 2, follow the second arrow: the C&ndash;H bonding pair stays behind on carbon as its lone pair.',
 });
 
-/* ---------------------------------------------------------------- B1 ---
-   Five mechanisms in this chapter and, until now, not one curved arrow in
-   it. Each of the five figures below draws the electrons: a reaction is a
-   claim about which pair moved where, and prose can only assert that. */
+FIGURES.push({
+  id: 'l-ylide-sn2',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_SN2}`,
+  alt: 'The lone pair on triphenylphosphine attacks the carbon of iodomethane while the C–I bond breaks, giving the phosphonium iodide Ph3P+–CH3 I−.',
+  build() { return pSN2(0, 0); },
+  caption: 'One arrow from the phosphorus lone pair to carbon, one from the C&ndash;I bond to iodine.',
+});
+
+FIGURES.push({
+  id: 'l-ylide-base',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_BASE}`,
+  alt: 'The butyl anion from butyllithium takes a proton from the CH3 next to P+, and the C–H electrons stay on carbon as a lone pair, giving the ylide Ph3P+–CH2− and butane.',
+  build() { return pBase(0, 0); },
+  caption: 'The C&ndash;H bonding pair stays on carbon. That lone pair is the ylide&rsquo;s nucleophilic carbon.',
+});
+
+/* ------------------------------------------ the two drawings of it ------ */
+const H_RES = 176;
+FIGURES.push({
+  id: 'ylide-resonance',
+  section: 'wittig-reaction',
+  anchor: '<!-- fig:ylide-resonance:start -->',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_RES}`,
+  alt: 'The methylene ylide drawn two ways: Ph3P+–CH2− with a lone pair on carbon, a double-headed resonance arrow, and Ph3P=CH2 with a P=C double bond. A curved arrow from the carbon lone pair to the P–C bond converts the first drawing into the second.',
+  build() {
+    let s = frameP(0, 0, H_RES, 'one ylide, drawn two ways', ['both drawings are the same molecule']);
+    const Pp = A(46, 84, 'Ph₃P⁺'), C = A(126, 84, 'CH₂⁻', 'hi');
+    s += bd(Pp, C) + lp(C, -90) + draw(Pp, C);
+    s += curve(off(lpAt(C, -90), -8, -2), off(mid(Pp, C), 2, -8), { bow: 12 });
+    s += arrow(P(164, 84), P(200, 84), { size: 7 }) + arrow(P(200, 84), P(164, 84), { size: 7 });
+    const Pq = A(244, 84, 'Ph₃P'), Cq = A(312, 84, 'CH₂', 'hi');
+    s += bd(Pq, Cq, { order: 2 }) + draw(Pq, Cq);
+    s += tag(86, 130, 'C⁻ beside P⁺');
+    s += tag(278, 130, 'P=C shorthand');
+    return s;
+  },
+  caption: 'The curved arrow turns the carbon lone pair into a second P&ndash;C bond. The double-headed arrow means these are two drawings of one molecule, not two molecules.',
+});
+
+/* ------------------------------------------------------ the mechanism --- */
+const H_M = 224, H_PROD = 190;
+/* The ring positions shared by panels 1 to 3: P top left, the ylide carbon
+   top right, the carbonyl carbon bottom right, O bottom left. */
+function ringAtoms(ox, oy, pl, cl) {
+  return {
+    Pp: A(ox + 80, oy + 66, pl), Cy: A(ox + 190, oy + 66, cl, 'hi'),
+    Cc: A(ox + 190, oy + 146, 'C', 'hi'), O: A(ox + 80, oy + 146, 'O'),
+    M1: A(ox + 250, oy + 116, 'CH₃'), M2: A(ox + 250, oy + 180, 'CH₃'),
+  };
+}
+
+function pClose(ox, oy) {
+  const { Pp, Cy, Cc, O, M1, M2 } = ringAtoms(ox, oy, 'Ph₃P⁺', 'CH₂⁻');
+  let s = frameP(ox, oy, H_M, '1 · the ylide meets acetone', ['new bonds: C to C, and O to P']);
+  s += bd(Pp, Cy) + bd(Cc, O, { order: 2 }) + bd(Cc, M1) + bd(Cc, M2);
+  s += lp(Cy, 90) + lp(O, 135) + lp(O, 225);
+  s += draw(Pp, Cy, Cc, O, M1, M2);
+  s += curve(off(lpAt(Cy, 90), 7, 0), P(Cc.x + 5, Cc.y - Cc.r - 3), { bow: -10 });
+  s += curve(P(ox + 138, oy + 141), P(ox + 90, oy + 108), { bow: 14 });
+  return s;
+}
+
+function pRing(ox, oy) {
+  const { Pp, Cy, Cc, O, M1, M2 } = ringAtoms(ox, oy, 'Ph₃P', 'CH₂');
+  let s = frameP(ox, oy, H_M, '2 · the oxaphosphetane', ['a four-membered ring: P, C, C and O', 'no charges; the ring is strained'], 'hi');
+  s += bd(Pp, Cy) + bd(Cy, Cc) + bd(Cc, O) + bd(O, Pp) + bd(Cc, M1) + bd(Cc, M2);
+  s += lp(O, 135) + lp(O, 225);
+  s += draw(Pp, Cy, Cc, O, M1, M2);
+  return s;
+}
+
+function pBreak(ox, oy) {
+  const { Pp, Cy, Cc, O, M1, M2 } = ringAtoms(ox, oy, 'Ph₃P', 'CH₂');
+  let s = frameP(ox, oy, H_M, '3 · the ring splits the other way', ['C–P and C–O break', 'C=C and P=O form']);
+  s += bd(Pp, Cy, { cls: 'fg-bond-hi' }) + bd(Cy, Cc) + bd(Cc, O, { cls: 'fg-bond-hi' }) + bd(O, Pp);
+  s += bd(Cc, M1) + bd(Cc, M2);
+  s += lp(O, 135) + lp(O, 225);
+  s += draw(Pp, Cy, Cc, O, M1, M2);
+  s += curve(mid(Pp, Cy), off(mid(Cy, Cc), -6, 0), { bow: 12 });
+  s += curve(mid(Cc, O), off(mid(O, Pp), 6, 0), { bow: 12 });
+  return s;
+}
+
+function pProd(ox, oy) {
+  const C1 = A(ox + 84, oy + 82, 'C', 'hi'), M1 = A(ox + 34, oy + 54, 'CH₃'), M2 = A(ox + 34, oy + 110, 'CH₃'),
+        C2 = A(ox + 146, oy + 82, 'CH₂', 'hi');
+  const Pr = A(ox + 232, oy + 82, 'Ph₃P'), Ox = A(ox + 300, oy + 82, 'O');
+  let s = frameP(ox, oy, H_PROD, '4 · the alkene and Ph₃P=O', [['the strong P=O bond pays for the reaction', 'fg-tag-good']], 'good');
+  s += bd(C1, C2, { order: 2, cls: 'fg-bond-hi' }) + bd(C1, M1) + bd(C1, M2);
+  s += bd(Pr, Ox, { order: 2 }) + lp(Ox, -55) + lp(Ox, 55);
+  s += draw(C1, M1, M2, C2, Pr, Ox);
+  s += plus(ox + 190, oy + 87);
+  s += tag(ox + 90, oy + 140, '2-methylpropene');
+  s += tag(ox + 266, oy + 140, 'triphenylphosphine oxide');
+  return s;
+}
+
 FIGURES.push({
   id: 'wittig-mechanism',
   section: 'wittig-reaction',
-  anchor: '<b>R<sub>2</sub>C=O + Ph<sub>3</sub>P=CR&prime;<sub>2</sub> &rarr; R<sub>2</sub>C=CR&prime;<sub>2</sub> + Ph<sub>3</sub>P=O</b></p>',
-  viewBox: '0 0 760 574',
-  alt: 'The four stages of the Wittig reaction drawn with curved arrows: triphenylphosphine displacing iodide and the phosphonium salt being deprotonated, the two resonance forms of the ylide, the [2+2] that closes the oxaphosphetane, and the retro-[2+2] that releases the alkene and triphenylphosphine oxide',
+  anchor: '<!-- fig:wittig-mechanism:start -->',
+  viewBox: `0 0 ${PW * 2 + GAP} ${H_M * 2 + 30}`,
+  alt: 'The Wittig mechanism for acetone and Ph3P=CH2, drawn with curved arrows in four panels. 1: the carbon lone pair of the ylide attacks the carbonyl carbon while the C=O pi bond swings onto phosphorus. 2: the neutral four-membered oxaphosphetane ring, P–C–C–O. 3: the C–P and C–O bonds break, their electrons becoming the new C=C and P=O pi bonds. 4: 2-methylpropene and triphenylphosphine oxide.',
   build() {
-    let s = '';
-
-    /* 1 — the ylide is built by two reactions the student already has. */
-    s += tag(192, 36, '1 · making the ylide');
-    s += panel(14, 44, 356, 216);
-    {
-      const P3 = P(74, 92), C = P(186, 92), I = P(252, 92);
-      s += bond(C, I, { rFrom: 18, rTo: 14 });
-      s += atom(P3.x, P3.y, 'Ph₃P', { r: 24, size: 10 });
-      s += atom(C.x, C.y, 'CH₃', { r: 18, size: 10 });
-      s += atom(I.x, I.y, 'I', { kind: 'warn', r: 14 });
-      s += lonePair(P3.x, P3.y, 0);
-      s += curve(P(106, 86), P(166, 86), { bow: -14 });
-      s += curve(P(220, 92), P(246, 72), { bow: 14 });
-      s += text(192, 132, 'Ph₃P⁺–CH₃   I⁻', { cls: 'fg-tag', size: 11 });
-    }
-    {
-      const Pp = P(72, 186), C = P(158, 186), H = P(206, 212), B = P(272, 194);
-      s += bond(Pp, C, { rFrom: 22, rTo: 17 });
-      s += bond(C, H, { rFrom: 17, rTo: 12, cls: 'fg-bond-hi' });
-      s += atom(Pp.x, Pp.y, 'Ph₃P⁺', { r: 22, size: 10 });
-      s += atom(C.x, C.y, 'CH₂', { kind: 'hi', r: 17 });
-      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
-      s += atom(B.x, B.y, 'n-Bu⁻', { r: 22, size: 9.5 });
-      s += curve(P(250, 204), P(220, 210), { bow: 12 });
-      s += curve(P(186, 202), P(166, 198), { bow: -12 });
-      s += text(192, 248, 'Ph₃P⁺–CH₂⁻   the ylide', { cls: 'fg-tag-good', size: 11 });
-    }
-
-    /* 2 — the two drawings of one molecule. */
-    s += tag(568, 36, '2 · one molecule, two drawings');
-    s += panel(390, 44, 356, 216);
-    {
-      s += bond(P(452, 120), P(528, 120), { rFrom: 22, rTo: 20 });
-      s += atom(452, 120, 'Ph₃P⁺', { r: 22, size: 10 });
-      s += atom(528, 120, 'CH₂⁻', { kind: 'hi', r: 20, size: 10 });
-      s += arrow(P(572, 120), P(616, 120));
-      s += arrow(P(616, 120), P(572, 120));
-      s += bond(P(656, 120), P(720, 120), { order: 2, rFrom: 20, rTo: 17 });
-      s += atom(656, 120, 'Ph₃P', { r: 20, size: 10 });
-      s += atom(720, 120, 'CH₂', { kind: 'hi', r: 17 });
-      s += text(568, 174, 'The carbon is the nucleophile.', { cls: 'fg-sm', size: 10.5 });
-      s += text(568, 196, 'Both charges are real and next to each other,', { cls: 'fg-sm', size: 10.5 });
-      s += text(568, 216, 'and P=CH₂ is shorthand for the same thing.', { cls: 'fg-sm', size: 10.5 });
-    }
-
-    /* 3 — the cycloaddition. */
-    s += tag(192, 292, '3 · [2+2] — the ring closes');
-    s += panel(14, 300, 356, 216);
-    {
-      const Pp = P(74, 356), Cy = P(146, 356), Cc = P(146, 424), O = P(74, 424);
-      s += bond(Pp, Cy, { order: 2, rFrom: 20, rTo: 14 });
-      s += bond(O, Cc, { order: 2, rFrom: 14, rTo: 14 });
-      s += atom(Pp.x, Pp.y, 'Ph₃P', { r: 20, size: 10 });
-      s += atom(Cy.x, Cy.y, 'C', { kind: 'hi' });
-      s += atom(Cc.x, Cc.y, 'C', { kind: 'hi' });
-      s += atom(O.x, O.y, 'O');
-      s += lonePair(O.x, O.y, 180);
-      s += curve(P(160, 372), P(160, 408), { bow: 16 });
-      s += curve(P(56, 408), P(56, 372), { bow: 16 });
-      s += arrow(P(210, 390), P(252, 390));
-      const a = P(292, 356), bq = P(348, 356), c = P(348, 424), d = P(292, 424);
-      s += bond(a, bq, { rFrom: 14, rTo: 14 });
-      s += bond(bq, c, { rFrom: 14, rTo: 14 });
-      s += bond(c, d, { rFrom: 14, rTo: 14 });
-      s += bond(d, a, { rFrom: 14, rTo: 14 });
-      s += atom(a.x, a.y, 'P', { kind: 'warn' });
-      s += atom(bq.x, bq.y, 'C', { kind: 'hi' });
-      s += atom(c.x, c.y, 'C', { kind: 'hi' });
-      s += atom(d.x, d.y, 'O');
-      s += text(192, 472, 'the oxaphosphetane — strained, and neutral', { cls: 'fg-sm', size: 10.5 });
-      s += text(192, 494, 'nothing is charged; nothing has rearranged', { cls: 'fg-sm', size: 10.5 });
-    }
-
-    /* 4 — and the same loop run backwards. */
-    s += tag(568, 292, '4 · retro-[2+2] — the ring breaks');
-    s += panel(390, 300, 356, 216);
-    {
-      const a = P(452, 356), bq = P(508, 356), c = P(508, 424), d = P(452, 424);
-      s += bond(a, bq, { rFrom: 14, rTo: 14 });
-      s += bond(bq, c, { rFrom: 14, rTo: 14 });
-      s += bond(c, d, { rFrom: 14, rTo: 14 });
-      s += bond(d, a, { rFrom: 14, rTo: 14 });
-      s += atom(a.x, a.y, 'P', { kind: 'warn' });
-      s += atom(bq.x, bq.y, 'C', { kind: 'hi' });
-      s += atom(c.x, c.y, 'C', { kind: 'hi' });
-      s += atom(d.x, d.y, 'O');
-      s += curve(P(480, 410), P(508, 384), { bow: 14 });
-      s += curve(P(480, 370), P(452, 396), { bow: 14 });
-      s += arrow(P(552, 390), P(592, 390));
-      s += text(668, 366, 'R₂C=CH₂', { cls: 'fg-lbl', size: 13 });
-      s += text(668, 394, '+   Ph₃P=O', { cls: 'fg-lbl', size: 13 });
-      s += text(668, 420, '≈130–140 kcal/mol', { cls: 'fg-tag-good', size: 11 });
-      s += text(568, 472, 'the strong P=O is the driving force', { cls: 'fg-sm', size: 10.5 });
-      s += text(568, 494, 'and the reason phosphorus is worth throwing away', { cls: 'fg-sm', size: 10.5 });
-    }
-
-    s += rule(24, 528, 736, 528);
-    s += label(380, 552, 'Going in, the loop of arrows makes the two new σ bonds of the ring.');
-    s += label(380, 572, 'Coming out, the same loop reversed makes the C=C and the P=O.');
+    const y2 = H_M + 30;
+    let s = pClose(0, 0) + pRing(PW + GAP, 0) + pBreak(0, y2) + pProd(PW + GAP, y2);
+    s += right(PW + 6, PW + GAP - 6, 106);
+    s += right(PW + 6, PW + GAP - 6, y2 + 90);
     return s;
   },
-  caption: 'The whole reaction is one loop of arrows run forwards and then backwards. The first pair of arrows makes the two new &sigma; bonds of the four-membered ring; the second pair, running the other way round the same loop, breaks the other two and hands back the alkene and Ph<sub>3</sub>P=O.',
-  note: 'Notice which two atoms become the alkene: the carbonyl carbon and the ylide carbon, and nothing else in either molecule moves at all. That is why a Wittig cannot rearrange and cannot put the double bond anywhere but where the C=O was &mdash; there is no carbocation, and no stage at which any other carbon is involved. The older stepwise picture inserts a betaine, Ph<sub>3</sub>P⁺&ndash;C&ndash;C&ndash;O⁻, between panels 2 and 3; it reaches the same ring, so it changes nothing about the product.',
+  caption: 'Read the panels left to right, then the second row. Panel 1 makes two bonds at once and panel 3 breaks the other two sides of the same ring. The two highlighted carbons end up as the C=C.',
+});
+
+FIGURES.push({
+  id: 'l-wittig-mechanism',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_M * 3 + H_PROD + 3 * 26}`,
+  alt: 'The Wittig mechanism for acetone and Ph3P=CH2 in four stacked panels: the ylide carbon attacks the carbonyl carbon while the C=O pi bond swings onto phosphorus; the neutral oxaphosphetane ring; the C–P and C–O bonds break to form C=C and P=O; 2-methylpropene and triphenylphosphine oxide.',
+  build() { return stack([[pClose, H_M], [pRing, H_M], [pBreak, H_M], [pProd, H_PROD]]).svg; },
+  caption: 'Two arrows close the ring; two arrows open it the other way. The highlighted carbons become the C=C.',
+});
+
+/* ------------------------------------------- elimination vs Wittig ------ */
+const H_EW = 326;
+const ringAt = (cx, cy, r = 26) => polyPts(cx, cy, 6, r, 90);
+
+function pElim(ox, oy) {
+  let s = frameP(ox, oy, H_EW, 'elimination: Zaitsev picks', [], 'warn');
+  const c0 = P(ox + 170, oy + 100), g = ringAt(c0.x, c0.y);
+  s += polyRing(g);
+  const OH = A(ox + 142, oy + 46, 'OH'), Me = A(ox + 200, oy + 46, 'CH₃');
+  s += bond(g[0], OH, { rFrom: 0, rTo: OH.r }) + bond(g[0], Me, { rFrom: 0, rTo: Me.r });
+  s += lp(OH, -150, 5) + draw(OH, Me);
+  s += tag(ox + 170, oy + 146, '1-methylcyclohexan-1-ol');
+  s += down(ox + 170, oy + 156, oy + 182);
+  s += tag(ox + 234, oy + 174, 'H₂SO₄, heat');
+  // Major: the C=C inside the ring.
+  const cL = P(ox + 90, oy + 240), gL = ringAt(cL.x, cL.y);
+  s += gL.map((p, i) => i === 0 ? ringDouble(gL[0], gL[1], cL, { inset: 6 }) : bond(p, gL[(i + 1) % 6], { rFrom: 0, rTo: 0 })).join('');
+  const MeL = A(ox + 90, oy + 190, 'CH₃');
+  s += bond(gL[0], MeL, { rFrom: 0, rTo: MeL.r }) + draw(MeL);
+  // Minor: the C=C outside it.
+  const cR = P(ox + 250, oy + 240), gR = ringAt(cR.x, cR.y);
+  s += polyRing(gR);
+  const CH2 = A(ox + 250, oy + 186, 'CH₂');
+  s += bond(gR[0], CH2, { rFrom: 0, rTo: CH2.r, order: 2 }) + draw(CH2);
+  s += tag(ox + 90, oy + 290, '1-methylcyclohexene');
+  s += tag(ox + 90, oy + 308, 'major', { cls: 'fg-tag-warn' });
+  s += tag(ox + 250, oy + 290, 'methylenecyclohexane');
+  s += tag(ox + 250, oy + 308, 'minor', { cls: 'fg-tag-mut' });
+  return s;
+}
+
+function pWit(ox, oy) {
+  let s = frameP(ox, oy, H_EW, 'Wittig: the C=O carbon decides', [], 'good');
+  const c0 = P(ox + 80, oy + 106), g = ringAt(c0.x, c0.y);
+  s += polyRing(g);
+  const O = A(ox + 80, oy + 48, 'O');
+  s += bond(g[0], O, { rFrom: 0, rTo: O.r, order: 2, cls: 'fg-bond-hi' }) + lp(O, -150) + lp(O, -30) + draw(O);
+  s += plus(ox + 140, oy + 110);
+  const Pp = A(ox + 200, oy + 106, 'Ph₃P'), C = A(ox + 280, oy + 106, 'CH₂', 'hi');
+  s += bd(Pp, C, { order: 2 }) + draw(Pp, C);
+  s += tag(ox + 80, oy + 152, 'cyclohexanone');
+  s += down(ox + 170, oy + 156, oy + 182);
+  const cP = P(ox + 110, oy + 240), gP = ringAt(cP.x, cP.y);
+  s += polyRing(gP);
+  const CH2 = A(ox + 110, oy + 186, 'CH₂', 'hi');
+  s += bond(gP[0], CH2, { rFrom: 0, rTo: CH2.r, order: 2, cls: 'fg-bond-hi' }) + draw(CH2);
+  s += text(ox + 244, oy + 244, '+  Ph₃P=O', { cls: 'fg-lbl' });
+  s += tag(ox + 110, oy + 290, 'methylenecyclohexane');
+  s += tag(ox + 110, oy + 308, 'the only alkene formed', { cls: 'fg-tag-good' });
+  return s;
+}
+
+FIGURES.push({
+  id: 'elim-vs-wittig',
+  section: 'wittig-reaction',
+  anchor: '<!-- fig:elim-vs-wittig:start -->',
+  viewBox: `0 0 ${PW * 2 + GAP} ${H_EW}`,
+  alt: 'Two routes to a methylcyclohexane alkene. Left: 1-methylcyclohexan-1-ol with H2SO4 and heat gives mostly 1-methylcyclohexene, with the C=C inside the ring, and a little methylenecyclohexane. Right: cyclohexanone with Ph3P=CH2 gives only methylenecyclohexane, with the C=C outside the ring where the C=O was.',
+  build() { return pElim(0, 0) + pWit(PW + GAP, 0); },
+  caption: 'Compare the highlighted bonds on the right: the new C=C sits exactly where the C=O was. On the left, the ring carbon could bond doubly to three neighbors, and the most substituted choice wins.',
+});
+
+FIGURES.push({
+  id: 'l-elim-route',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_EW}`,
+  alt: '1-methylcyclohexan-1-ol with H2SO4 and heat gives mostly 1-methylcyclohexene, with the C=C inside the ring, and a little methylenecyclohexane, with the C=C outside it.',
+  build() { return pElim(0, 0); },
+  caption: 'The C=C can form toward three neighbors of the ring carbon. The most substituted choice wins.',
+});
+
+FIGURES.push({
+  id: 'l-wittig-route',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_EW}`,
+  alt: 'Cyclohexanone with Ph3P=CH2 gives only methylenecyclohexane: the C=C forms where the C=O was, outside the ring.',
+  build() { return pWit(0, 0); },
+  caption: 'The highlighted C=O becomes the highlighted C=C, pointing out of the ring.',
+});
+
+/* -------------------------------------------- the stabilized ylide ------ */
+const H_STAB = 320;
+FIGURES.push({
+  id: 'stabilized-ylide',
+  section: 'wittig-reaction',
+  anchor: '<!-- fig:stabilized-ylide:start -->',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_STAB}`,
+  alt: 'The stabilized ylide Ph3P+–CH−–CO2Et drawn two ways. Top: the negative charge on the ylide carbon, with curved arrows moving the lone pair into a C=C bond and the C=O pi bond onto oxygen. Bottom: Ph3P+–CH=C(O−)OEt, with the negative charge on oxygen.',
+  build() {
+    let s = frameP(0, 0, H_STAB, 'a stabilized ylide: the charge spreads', ['the lower drawing puts the charge on O']);
+    const Pp = A(46, 78, 'Ph₃P⁺'), C = A(126, 78, 'CH⁻', 'hi'), Cc = A(200, 78, 'C'),
+          O = A(200, 134, 'O'), E = A(274, 78, 'OEt');
+    s += bd(Pp, C) + bd(C, Cc) + bd(Cc, O, { order: 2 }) + bd(Cc, E);
+    s += lp(C, -90) + lp(O, 145) + lp(O, 35);
+    s += draw(Pp, C, Cc, O, E);
+    s += curve(off(lpAt(C, -90), 6, -2), off(mid(C, Cc), 2, -8), { bow: -12 });
+    s += curve(P(Cc.x + 6, (Cc.y + O.y) / 2), P(O.x + 16, O.y - 6), { bow: -8 });
+    s += arrow(P(110, 158), P(110, 184), { size: 7 }) + arrow(P(110, 184), P(110, 158), { size: 7 });
+    const Pq = A(46, 222, 'Ph₃P⁺'), Cq = A(126, 222, 'CH', 'hi'), Cr = A(200, 222, 'C'),
+          Oq = A(200, 276, 'O⁻', 'warn'), Eq = A(274, 222, 'OEt');
+    s += bd(Pq, Cq) + bd(Cq, Cr, { order: 2 }) + bd(Cr, Oq) + bd(Cr, Eq);
+    s += lp(Oq, 150) + lp(Oq, 30) + lp(Oq, 90, 5);
+    s += draw(Pq, Cq, Cr, Oq, Eq);
+    return s;
+  },
+  caption: 'The ester&rsquo;s C=O takes a share of the negative charge. A carbanion that can spread its charge like this is more stable and less reactive.',
+});
+
+/* ----------------------------------------------------- E and Z ---------- */
+const H_EZ = 392;
+function pEZ(ox, oy, stab) {
+  const R = stab ? 'CO₂Et' : 'CH₃';
+  const title = stab ? 'stabilized: Ph₃P=CH–CO₂Et' : 'unstabilized: Ph₃P=CH–CH₃';
+  const last = stab
+    ? [`(${it('E')}) alkene: Ph and CO₂Et on opposite sides`, 'fg-tag-good']
+    : [`(${it('Z')}) alkene: Ph and CH₃ on the same side`, 'fg-tag-good'];
+  let s = frameP(ox, oy, H_EZ, title, [last], stab ? 'good' : 'hi');
+  s += tag(ox + PW / 2, oy + 40, 'each with benzaldehyde, PhCHO', { cls: 'fg-tag-mut' });
+  const Pp = A(ox + 90, oy + 90, 'Ph₃P'), Ca = A(ox + 180, oy + 90, 'C', 'hi'),
+        Cb = A(ox + 180, oy + 170, 'C', 'hi'), O = A(ox + 90, oy + 170, 'O');
+  const Ra = A(ox + 256, oy + 66, R), Ha = A(ox + 248, oy + 112, 'H'),
+        Hb = A(ox + 248, oy + 148, 'H'), Ph = A(ox + 254, oy + 194, 'Ph');
+  s += bd(Pp, Ca) + bd(Ca, Cb) + bd(Cb, O) + bd(O, Pp);
+  s += wd(Ca, Ra) + hs(Ca, Ha);
+  s += stab ? hs(Cb, Ph) + wd(Cb, Hb) : wd(Cb, Ph) + hs(Cb, Hb);
+  s += lp(O, 135) + lp(O, 225);
+  s += draw(Pp, Ca, Cb, O, Ra, Ha, Hb, Ph);
+  s += rich(ox + PW / 2, oy + 222, stab
+    ? `${it('trans')} ring: CO₂Et toward you, Ph away`
+    : `${it('cis')} ring: CH₃ and Ph both toward you`);
+  s += down(ox + PW / 2, oy + 232, oy + 256);
+  // The alkene: C1 came from the aldehyde, C2 from the ylide.
+  const C1 = A(ox + 140, oy + 304, 'C', 'hi'), C2 = A(ox + 204, oy + 304, 'C', 'hi');
+  const P1 = A(ox + 104, oy + 268, 'Ph'), H1 = A(ox + 108, oy + 342, 'H');
+  const up = stab ? A(ox + 238, oy + 270, 'H') : A(ox + 242, oy + 268, 'CH₃');
+  const dn = stab ? A(ox + 248, oy + 342, 'CO₂Et') : A(ox + 236, oy + 340, 'H');
+  s += bd(C1, C2, { order: 2 }) + bd(C1, P1) + bd(C1, H1) + bd(C2, up) + bd(C2, dn);
+  s += draw(C1, C2, P1, H1, up, dn);
+  return s;
+}
+
+FIGURES.push({
+  id: 'ez-oxaphosphetanes',
+  section: 'wittig-reaction',
+  anchor: '<!-- fig:ez-oxaphosphetanes:start -->',
+  viewBox: `0 0 ${PW * 2 + GAP} ${H_EZ}`,
+  alt: 'Left: benzaldehyde with the unstabilized ylide Ph3P=CH–CH3 gives the cis oxaphosphetane, with CH3 and Ph both on wedges, which opens to the Z alkene with Ph and CH3 on the same side. Right: benzaldehyde with the stabilized ylide Ph3P=CH–CO2Et gives the trans oxaphosphetane, CO2Et on a wedge and Ph on a hash, which opens to the E alkene with Ph and CO2Et on opposite sides.',
+  build() { return pEZ(0, 0, false) + pEZ(PW + GAP, 0, true); },
+  caption: 'Wedges point toward you and hashes away. Match each ring to the alkene below it: groups on the same face of the ring end up on the same side of the C=C.',
+});
+
+FIGURES.push({
+  id: 'l-ez-oxaphosphetanes',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_EZ * 2 + 20}`,
+  alt: 'Top: the unstabilized ylide Ph3P=CH–CH3 with benzaldehyde gives the cis oxaphosphetane and then the Z alkene. Bottom: the stabilized ylide Ph3P=CH–CO2Et with benzaldehyde gives the trans oxaphosphetane and then the E alkene.',
+  build() { return stack([[(x, y) => pEZ(x, y, false), H_EZ], [(x, y) => pEZ(x, y, true), H_EZ]], 20, false).svg; },
+  caption: 'Groups on the same face of the ring end up on the same side of the C=C.',
+});
+
+/* ------------------------------------------------ the disconnection ----- */
+const H_T = 150, H_R = 296;
+function rowTag(ox, y, s) { return text(ox + 14, y + 4, s, { cls: 'fg-tag-mut', anchor: 'start', size: 11 }); }
+
+function pTarget(ox, oy) {
+  let s = frameP(ox, oy, H_T, 'the target: cut the C=C', ['either half can become the C=O'], 'hi');
+  const Ph = A(ox + 44, oy + 74, 'Ph'), C1 = A(ox + 106, oy + 74, 'CH', 'hi'), C2 = A(ox + 172, oy + 74, 'CH', 'hi'),
+        C3 = A(ox + 234, oy + 74, 'CH'), M1 = A(ox + 292, oy + 50, 'CH₃'), M2 = A(ox + 292, oy + 98, 'CH₃');
+  s += bd(Ph, C1) + bd(C1, C2, { order: 2 }) + bd(C2, C3) + bd(C3, M1) + bd(C3, M2);
+  s += draw(Ph, C1, C2, C3, M1, M2);
+  s += `<line class="fg-dash-hi" x1="${ox + 139}" y1="${oy + 46}" x2="${ox + 139}" y2="${oy + 104}"></line>`;
+  return s;
+}
+
+function pRouteA(ox, oy) {
+  let s = frameP(ox, oy, H_R, '(a) the C=O on the Ph side', ['primary halide: fine for SN2', 'unstabilized ylide: mostly Z']);
+  s += rowTag(ox, oy + 70, 'C=O') + rowTag(ox, oy + 142, 'ylide') + rowTag(ox, oy + 224, 'halide');
+  const Ph = A(ox + 120, oy + 70, 'Ph'), Ca = A(ox + 180, oy + 70, 'CH', 'hi'), O = A(ox + 240, oy + 70, 'O');
+  s += bd(Ph, Ca) + bd(Ca, O, { order: 2 }) + lp(O, -50) + lp(O, 50) + draw(Ph, Ca, O);
+  const Pp = A(ox + 112, oy + 142, 'Ph₃P'), Cy = A(ox + 180, oy + 142, 'CH', 'hi'), Ci = A(ox + 238, oy + 142, 'CH'),
+        M1 = A(ox + 292, oy + 120, 'CH₃'), M2 = A(ox + 292, oy + 164, 'CH₃');
+  s += bd(Pp, Cy, { order: 2 }) + bd(Cy, Ci) + bd(Ci, M1) + bd(Ci, M2) + draw(Pp, Cy, Ci, M1, M2);
+  const Br = A(ox + 112, oy + 224, 'Br', 'warn'), Ch = A(ox + 176, oy + 224, 'CH₂', 'hi'), Cj = A(ox + 238, oy + 224, 'CH'),
+        M3 = A(ox + 292, oy + 202, 'CH₃'), M4 = A(ox + 292, oy + 246, 'CH₃');
+  s += bd(Br, Ch) + bd(Ch, Cj) + bd(Cj, M3) + bd(Cj, M4) + draw(Br, Ch, Cj, M3, M4);
+  return s;
+}
+
+function pRouteB(ox, oy) {
+  let s = frameP(ox, oy, H_R, '(b) the C=O on the isopropyl side', ['benzylic halide: fine for SN2', 'semi-stabilized ylide: poor E/Z ratio']);
+  s += rowTag(ox, oy + 70, 'C=O') + rowTag(ox, oy + 142, 'ylide') + rowTag(ox, oy + 224, 'halide');
+  const M1 = A(ox + 104, oy + 48, 'CH₃'), M2 = A(ox + 104, oy + 92, 'CH₃'), Ci = A(ox + 158, oy + 70, 'CH'),
+        Ca = A(ox + 216, oy + 70, 'CH', 'hi'), O = A(ox + 274, oy + 70, 'O');
+  s += bd(M1, Ci) + bd(M2, Ci) + bd(Ci, Ca) + bd(Ca, O, { order: 2 }) + lp(O, -50) + lp(O, 50);
+  s += draw(M1, M2, Ci, Ca, O);
+  const Pp = A(ox + 120, oy + 142, 'Ph₃P'), Cy = A(ox + 188, oy + 142, 'CH', 'hi'), Ph = A(ox + 248, oy + 142, 'Ph');
+  s += bd(Pp, Cy, { order: 2 }) + bd(Cy, Ph) + draw(Pp, Cy, Ph);
+  const Br = A(ox + 120, oy + 224, 'Br', 'warn'), Ch = A(ox + 184, oy + 224, 'CH₂', 'hi'), Ph2 = A(ox + 248, oy + 224, 'Ph');
+  s += bd(Br, Ch) + bd(Ch, Ph2) + draw(Br, Ch, Ph2);
+  return s;
+}
+
+FIGURES.push({
+  id: 'wittig-disconnection',
+  section: 'wittig-reaction',
+  anchor: '<!-- fig:wittig-disconnection:start -->',
+  viewBox: `0 0 ${PW * 2 + GAP} ${H_T + 30 + H_R}`,
+  alt: 'Planning a Wittig backwards for Ph–CH=CH–CH(CH3)2. The target with a dashed cut through its C=C. Route (a): benzaldehyde, the ylide Ph3P=CH–CH(CH3)2, and the halide BrCH2–CH(CH3)2, primary. Route (b): 2-methylpropanal, the ylide Ph3P=CH–Ph, and the halide BrCH2–Ph, benzylic.',
+  build() {
+    const tx = (PW * 2 + GAP - PW) / 2, y2 = H_T + 30;
+    let s = pTarget(tx, 0) + pRouteA(0, y2) + pRouteB(PW + GAP, y2);
+    s += arrow(P(tx + 60, H_T + 4), P(PW / 2 + 40, y2 - 4), { size: 7 });
+    s += arrow(P(tx + PW - 60, H_T + 4), P(PW + GAP + PW / 2 - 40, y2 - 4), { size: 7 });
+    return s;
+  },
+  caption: 'Each column is one way to split the target. In each, the ylide row sits above the halide it is made from: the halide&rsquo;s CH<sub>2</sub> becomes the ylide&rsquo;s CH.',
+});
+
+FIGURES.push({
+  id: 'l-disconnection',
+  lessons: ['wittig-reaction'],
+  viewBox: `0 0 ${PW} ${H_T + H_R * 2 + 2 * 26}`,
+  alt: 'Ph–CH=CH–CH(CH3)2 cut through its C=C, then two routes. (a) benzaldehyde with Ph3P=CH–CH(CH3)2, made from the primary halide BrCH2–CH(CH3)2. (b) 2-methylpropanal with Ph3P=CH–Ph, made from benzyl bromide.',
+  build() { return stack([[pTarget, H_T], [pRouteA, H_R], [pRouteB, H_R]]).svg; },
+  caption: 'In each route, the halide&rsquo;s CH<sub>2</sub> becomes the ylide&rsquo;s CH.',
+});
+
+/* -------------------------------------------------------- the HWE ------- */
+const H_HWE = 250;
+FIGURES.push({
+  id: 'hwe-phosphonate',
+  section: 'wittig-reaction',
+  anchor: '<!-- fig:hwe-phosphonate:start -->',
+  viewBox: `0 0 ${PW * 2 + GAP} ${H_HWE}`,
+  alt: 'Left: triethyl phosphonoacetate, a phosphorus with a P=O, two OEt groups and a CH2 joined to an ester, with the CH2 highlighted as the carbon that loses a proton. Right: after the anion reacts with an aldehyde RCHO, the E alkene R–CH=CH–CO2Et forms, with R and CO2Et on opposite sides, plus the diethyl phosphate salt.',
+  build() {
+    let s = frameP(0, 0, H_HWE, 'the phosphonate', ['NaH removes an H from the CH₂', 'the anion adds to an aldehyde']);
+    const Pp = A(110, 118, 'P', 'warn'), Ou = A(110, 62, 'O'), E1 = A(46, 118, 'EtO'), E2 = A(110, 176, 'OEt'),
+          Cm = A(182, 118, 'CH₂', 'hi'), Cc = A(250, 118, 'C'), O2 = A(250, 62, 'O'), E3 = A(308, 150, 'OEt');
+    s += bd(Pp, Ou, { order: 2 }) + bd(Pp, E1) + bd(Pp, E2) + bd(Pp, Cm) + bd(Cm, Cc) + bd(Cc, O2, { order: 2 }) + bd(Cc, E3);
+    s += lp(Ou, -150) + lp(Ou, -30) + lp(O2, -150) + lp(O2, -30);
+    s += draw(Pp, Ou, E1, E2, Cm, Cc, O2, E3);
+
+    const ox = PW + GAP;
+    s += frameP(ox, 0, H_HWE, `the product: an (${it('E')}) alkene`, [['the phosphate salt washes out in water', 'fg-tag-good']], 'good');
+    s += tag(ox + PW / 2, 46, 'the anion + an aldehyde, RCHO', { cls: 'fg-tag-mut' });
+    s += down(ox + PW / 2, 56, 82);
+    const C1 = A(ox + 146, 132, 'CH', 'hi'), C2 = A(ox + 210, 132, 'CH', 'hi'),
+          R = A(ox + 106, 100, 'R'), E = A(ox + 256, 166, 'CO₂Et');
+    s += bd(C1, C2, { order: 2 }) + bd(C1, R) + bd(C2, E) + draw(C1, C2, R, E);
+    s += text(ox + PW / 2, 208, '+  (EtO)₂PO₂⁻ Na⁺', { cls: 'fg-lbl' });
+    s += right(PW + 6, PW + GAP - 6, 118);
+    return s;
+  },
+  caption: 'The ester next to the CH<sub>2</sub> is what makes its hydrogens acidic enough for NaH. The by-product on the right carries a charge, so it dissolves in water.',
 });
 
 export default FIGURES;
