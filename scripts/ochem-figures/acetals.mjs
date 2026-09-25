@@ -131,10 +131,20 @@ function methanol(o, { h, me, lps, kind = 'hi' }) {
   return s;
 }
 
+// water or H3O+, drawn free: O with H atoms at the given angles
+function water(o, { hs, lps, plus }) {
+  let s = '';
+  for (const d of hs) s += arm(o, d, 40, 'H', { rFrom: 15 }).s;
+  for (const d of lps) s += lp(o, d);
+  s += atom(o.x, o.y, 'O');
+  if (plus !== undefined) s += charge(at(o, plus, 26));
+  return s;
+}
+
 // the tetrahedral intermediate before the first deprotonation
 const oxonium1 = (c) => species(c, { oxy: [
   { deg: 135, subs: [{ deg: 180, l: 'H' }], lps: [80, 250] },
-  { deg: 45, kind: 'hi', subs: [{ deg: 90, l: 'H', len: 50 }, { deg: 0, l: 'CH₃' }], lps: [150], charge: 300 },
+  { deg: 45, kind: 'hi', subs: [{ deg: 90, l: 'H', len: 50 }, { deg: 0, l: 'CH₃' }], lps: [290], charge: 188 },
 ] });
 
 // the hemiacetal: OH up-left, OCH3 up-right
@@ -156,7 +166,7 @@ const oxocarb = (c) => species(c, { tet: false, oxy: [
 
 // the tetrahedral intermediate before the last deprotonation
 const oxonium2 = (c) => species(c, { oxy: [
-  { deg: 135, kind: 'hi', subs: [{ deg: 90, l: 'H', len: 50 }, { deg: 180, l: 'CH₃' }], lps: [30], charge: 215 },
+  { deg: 135, kind: 'hi', subs: [{ deg: 90, l: 'H', len: 50 }, { deg: 180, l: 'CH₃' }], lps: [250], charge: 352 },
   { deg: 45, subs: [{ deg: 0, l: 'CH₃' }], lps: [110, 290] },
 ] });
 
@@ -189,15 +199,16 @@ function box(x, y, title, note, kind) {
 
 const STEPS = {
   1(x, y) {
-    let s = box(x, y, 'STEP 1 · PROTONATE THE C=O', 'the carbonyl O takes H⁺');
-    const c = P(x + 130, y + 182);
+    let s = box(x, y, 'STEP 1 · PROTONATE THE C=O', 'the carbonyl O takes H⁺ from H₃O⁺');
+    const c = P(x + 110, y + 182);
     const k = acetone(c);
     s += k.s;
     const o = k.os[0].o;
-    const h = P(x + 244, y + 106);
-    s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + charge(P(h.x + 18, h.y - 14));
-    s += fromLp(o, 30, P(h.x - 14, h.y + 2), -20);
-    s += lbl(h.x, h.y + 34, 'from the acid');
+    const h = P(x + 222, y + 110), w = P(x + 272, y + 110);
+    s += bond(h, w, { rFrom: 12, rTo: 15 }) + atom(h.x, h.y, 'H', { r: 12, kind: 'hi' });
+    s += water(w, { hs: [45, 315], lps: [270], plus: 90 });
+    s += fromLp(o, 30, P(h.x - 14, h.y), -20);
+    s += bondArrow(h, w, 5, at(w, 125, 18), -12);
     return s;
   },
   2(x, y) {
@@ -209,30 +220,32 @@ const STEPS = {
     const m = at(c, 22, 118);
     s += methanol(m, { h: 90, me: 0, lps: [202, 285] });
     s += fromLp(m, 202, at(c, 22, 21), -18);
-    s += bondArrow(c, o, 8, at(o, 205, 19), -14);
+    s += bondArrow(c, o, 4, at(o, 205, 19), -14);
     return s;
   },
   3(x, y) {
-    let s = box(x, y, 'STEP 3 · LOSE H⁺', 'a second CH₃OH takes the H⁺');
+    let s = box(x, y, 'STEP 3 · LOSE H⁺', 'a water molecule takes the H⁺');
     const c = P(x + 96, y + 188);
     const k = oxonium1(c);
     s += k.s;
     const ob = k.os[1], h = ob.subs.H;
     const base = P(h.x + 100, h.y - 6);
-    s += methanol(base, { h: 60, me: 0, lps: [185, 280], kind: 'plain' });
+    s += water(base, { hs: [60, 0], lps: [185, 280] });
     s += fromLp(base, 185, P(h.x + 14, h.y - 3), 12);
-    s += bondArrow(ob.o, h, 9, at(ob.o, 160, 19), 12);
+    s += bondArrow(ob.o, h, 5, at(ob.o, 128, 18), 14);
     return s;
   },
   4(x, y) {
-    let s = box(x, y, 'STEP 4 · PROTONATE THE OH', 'the OH, not the OCH₃, takes H⁺');
+    let s = box(x, y, 'STEP 4 · PROTONATE THE OH', 'the OH, not the OCH₃, takes the H⁺');
     const c = P(x + 176, y + 192);
     const k = hemiacetal(c, ['hi']);
     s += k.s;
     const oa = k.os[0].o;
-    const h = P(x + 60, y + 84);
-    s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' }) + charge(P(h.x - 19, h.y - 8));
-    s += fromLp(oa, 80, P(h.x + 13, h.y + 6), 18);
+    const h = P(x + 64, y + 116), w = P(x + 64, y + 68);
+    s += bond(h, w, { rFrom: 12, rTo: 15 }) + atom(h.x, h.y, 'H', { r: 12, kind: 'hi' });
+    s += water(w, { hs: [150, 30], lps: [90], plus: 210 });
+    s += fromLp(oa, 80, P(h.x + 14, h.y + 4), 18);
+    s += bondArrow(h, w, -5, at(w, 320, 18), -12);
     return s;
   },
   5(x, y) {
@@ -258,15 +271,15 @@ const STEPS = {
     return s;
   },
   7(x, y) {
-    let s = box(x, y, 'STEP 7 · LOSE H⁺', 'a CH₃OH takes the last H⁺');
+    let s = box(x, y, 'STEP 7 · LOSE H⁺', 'a water molecule takes the last H⁺');
     const c = P(x + 150, y + 188);
     const k = oxonium2(c);
     s += k.s;
     const oa = k.os[0], h = oa.subs.H;
     const base = P(h.x + 100, h.y - 6);
-    s += methanol(base, { h: 60, me: 0, lps: [185, 280], kind: 'plain' });
+    s += water(base, { hs: [60, 0], lps: [185, 280] });
     s += fromLp(base, 185, P(h.x + 14, h.y - 3), 12);
-    s += bondArrow(oa.o, h, -9, at(oa.o, 20, 19), -12);
+    s += bondArrow(oa.o, h, -5, at(oa.o, 52, 18), -14);
     return s;
   },
 };
@@ -428,13 +441,6 @@ FIGURES.push({
 });
 
 /* ------------------------------------- the oxocarbenium ion, two views --- */
-function carbocationForm(c) {
-  // C+ with an empty p orbital, and a neutral OCH3 with two lone pairs
-  const k = species(c, { tet: false, cCharge: 250, oxy: [
-    { deg: 90, subs: [{ deg: 30, l: 'CH₃' }], lps: [150, 210 + 0] },
-  ] });
-  return k;
-}
 function resonancePair(x, y) {
   let s = '';
   const c1 = P(x + 70, y + 110);
@@ -457,21 +463,26 @@ function resonancePair(x, y) {
    one, side on, sharing the pair. Drawn edge-on to the C–O bond. */
 function orbitalView(x, y) {
   let s = '';
-  const c = P(x + 110, y + 100), o = P(x + 214, y + 100);
-  const lobe = (p, up, cls) => `<ellipse class="${cls}" cx="${r2(p.x)}" cy="${r2(p.y + (up ? -34 : 34))}" rx="17" ry="30"></ellipse>`;
+  const c = P(x + 140, y + 100), o = P(x + 176, y + 100);
+  const lobe = (p, up, cls) => `<ellipse class="${cls}" cx="${r2(p.x)}" cy="${r2(p.y + (up ? -36 : 36))}" rx="17" ry="30"></ellipse>`;
+  // the region where the two p orbitals overlap side on: the pi bond
+  const mid = (c.x + o.x) / 2;
+  s += `<ellipse class="fg-orb-alt" cx="${r2(mid)}" cy="${r2(c.y - 38)}" rx="40" ry="30"></ellipse>`;
+  s += `<ellipse class="fg-orb-alt" cx="${r2(mid)}" cy="${r2(c.y + 38)}" rx="40" ry="30"></ellipse>`;
   s += lobe(c, true, 'fg-orb-node') + lobe(c, false, 'fg-orb-node');
   s += lobe(o, true, 'fg-orb') + lobe(o, false, 'fg-orb');
   s += bond(c, o, { rFrom: 16, rTo: 15 });
   s += arm(c, 215, 52, 'H₃C').s;
   s += arm(c, 145, 52, 'H₃C').s;
-  s += arm(o, 0, 50, 'CH₃', { rFrom: 15 }).s;
+  // the O–CH3 bond is bent at O, about 120 degrees from the C–O bond
+  s += arm(o, 330, 52, 'CH₃', { rFrom: 15 }).s;
   s += atom(c.x, c.y, 'C', { kind: 'warn' }) + atom(o.x, o.y, 'O', { kind: 'hi' });
   // the lone pair, in the oxygen's p orbital
-  s += `<circle class="fg-lp" cx="${r2(o.x - 4.5)}" cy="${r2(o.y - 44)}" r="2.6"></circle><circle class="fg-lp" cx="${r2(o.x + 4.5)}" cy="${r2(o.y - 44)}" r="2.6"></circle>`;
-  // the sideways overlap
-  s += curve(P(o.x - 16, o.y - 50), P(c.x + 18, c.y - 50), { bow: 16 });
-  s += lbl(c.x - 6, y + 182, 'empty p on C', 'middle');
-  s += lbl(o.x + 20, y + 182, 'filled p on O', 'middle');
+  s += `<circle class="fg-lp" cx="${r2(o.x - 4.5)}" cy="${r2(o.y - 46)}" r="2.6"></circle><circle class="fg-lp" cx="${r2(o.x + 4.5)}" cy="${r2(o.y - 46)}" r="2.6"></circle>`;
+  s += curve(P(o.x - 6, o.y - 56), P(c.x + 2, c.y - 58), { bow: 12 });
+  s += lbl(c.x - 8, y + 186, 'empty p on C', 'end');
+  s += lbl(o.x + 8, y + 186, 'filled p on O', 'start');
+  s += lbl(mid, y + 12, 'overlap = π bond', 'middle');
   return s;
 }
 FIGURES.push({
@@ -489,7 +500,7 @@ FIGURES.push({
     s += orbitalView(410, 26);
     return s;
   },
-  caption: 'Left: the curved arrow moves an oxygen lone pair into the C–O bond. Right: the same move seen as orbitals, the oxygen’s filled p orbital lying parallel to the carbon’s empty one (dashed).',
+  caption: 'Left: the curved arrow moves an oxygen lone pair into the C–O bond. Right: the same move as orbitals. The oxygen’s filled p orbital lies parallel to the carbon’s empty one (dashed), and the shaded region where they overlap side on is the π bond.',
 });
 FIGURES.push({
   id: 'l-acetal-oxocarbenium',
@@ -505,7 +516,7 @@ FIGURES.push({
     s += orbitalView(-8, 268);
     return s;
   },
-  caption: 'The lone pair moves into the C–O bond (top). The same move as orbitals: filled p on O beside empty p on C (bottom).',
+  caption: 'The lone pair moves into the C–O bond (top). The same move as orbitals: the filled p on O overlaps side on with the empty p on C (bottom).',
 });
 
 /* ----------------------------------------- cyclic acetal from a diol --- */
@@ -522,7 +533,7 @@ function cyclohexanone(c) {
   const h = hexBelow(c);
   const o = P(c.x, c.y - 44);
   let s = h.s + bond(c, o, { order: 2, rFrom: 0, rTo: 15 });
-  s += lp(o, 30) + lp(o, 150) + atom(o.x, o.y, 'O', { kind: 'hi' });
+  s += atom(o.x, o.y, 'O', { kind: 'hi' });
   return s;
 }
 function glycol(x, y) {
@@ -707,13 +718,13 @@ function closure(x, y) {
   s += bond(O, h, { rFrom: 15, rTo: 12 }) + atom(h.x, h.y, 'H', { r: 12 });
   // the aldehyde C1: =O out to the right-down, H implied
   const ald = at(C1, 330, 46);
-  s += bond(C1, ald, { order: 2, rFrom: 0, rTo: 15 }) + lp(ald, 20) + lp(ald, 280) + atom(ald.x, ald.y, 'O', { kind: 'hi' });
+  s += bond(C1, ald, { order: 2, rFrom: 0, rTo: 15 }) + lp(ald, 30) + lp(ald, 275) + atom(ald.x, ald.y, 'O', { kind: 'hi' });
   s += lp(O, 150) + lp(O, 0);
   s += atom(O.x, O.y, 'O', { kind: 'hi' });
   // arrows: O lone pair to C1, C=O pi to O
   s += curve(at(O, 350, 26), P(C1.x + 6, C1.y - 6), { bow: -12 });
-  s += fromBond(C1, ald, P(ald.x + 4, ald.y + 16), 14, 6);
-  s += `<circle class="fg-atom-warn" cx="${r2(C1.x)}" cy="${r2(C1.y)}" r="5"></circle>`;
+  s += fromBond(C1, ald, at(ald, 218, 18), 14, 6);
+  s += atom(C1.x, C1.y, '', { kind: 'warn', r: 5 });
   return s;
 }
 function closed(x, y) {
@@ -725,14 +736,14 @@ function closed(x, y) {
   s += atom(O.x, O.y, 'O', { kind: 'hi' });
   const oh = at(C1, 330, 44);
   s += wedge(C1, oh, { rFrom: 0, rTo: 17, width: 9 }) + atom(oh.x, oh.y, 'OH', { r: 17, kind: 'hi' });
-  s += `<circle class="fg-atom-warn" cx="${r2(C1.x)}" cy="${r2(C1.y)}" r="5"></circle>`;
+  s += atom(C1.x, C1.y, '', { kind: 'warn', r: 5 });
   return { s, C1 };
 }
 /* A Haworth ring: ring O back-right, C1 right, C2 front-right, C3 front-left,
    C4 left, C5 back-left. */
 function haworth(x, y, beta) {
   let s = '';
-  const O = P(x + 34, y - 24), C1 = P(x + 70, y), C2 = P(x + 40, y + 26), C3 = P(x - 30, y + 26), C4 = P(x - 64, y), C5 = P(x - 30, y - 24);
+  const O = P(x + 26, y - 38), C1 = P(x + 74, y - 4), C2 = P(x + 36, y + 26), C3 = P(x - 36, y + 26), C4 = P(x - 64, y - 4), C5 = P(x - 28, y - 38);
   s += bond(C5, O, { rFrom: 0, rTo: 15 }) + bond(O, C1, { rFrom: 15, rTo: 0 });
   s += sk(C4, C5) + sk(C1, C2) + sk(C3, C4);
   s += `<line class="fg-bond-hi" x1="${r2(C2.x)}" y1="${r2(C2.y)}" x2="${r2(C3.x)}" y2="${r2(C3.y)}" stroke-width="5"></line>`;
@@ -743,14 +754,14 @@ function haworth(x, y, beta) {
   };
   s += sub(C1, beta, 'OH', 36, 'hi');
   s += sub(C2, false, 'OH');
-  s += sub(C3, true, 'OH');
+  s += sub(C3, true, 'OH', 24);
   s += sub(C4, false, 'OH');
   // C5 carries CH2OH up
-  const c6 = P(C5.x, C5.y - 30);
+  const c6 = P(C5.x, C5.y - 26);
   s += sk(C5, c6);
   const oh6 = P(c6.x - 30, c6.y - 12);
   s += bond(c6, oh6, { rFrom: 0, rTo: 17 }) + atom(oh6.x, oh6.y, 'HO', { r: 17 });
-  s += `<circle class="fg-atom-warn" cx="${r2(C1.x)}" cy="${r2(C1.y)}" r="5"></circle>`;
+  s += atom(C1.x, C1.y, '', { kind: 'warn', r: 5 });
   s += lbl(C1.x + 16, C1.y + 5, 'C1', 'start');
   return s;
 }
@@ -766,6 +777,8 @@ FIGURES.push({
     s += closure(120, 122);
     s += lbl(120, 214, '5-hydroxypentanal');
     s += arrow(P(222, 122), P(272, 122), { size: 8 });
+    s += lbl(247, 92, 'H⁺ moves');
+    s += lbl(247, 110, 'O⁺ to O⁻');
     s += tag(360, 24, 'A CYCLIC HEMIACETAL');
     const k = closed(350, 122);
     s += k.s;
