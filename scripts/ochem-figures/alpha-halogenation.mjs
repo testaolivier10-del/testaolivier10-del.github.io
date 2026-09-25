@@ -171,7 +171,7 @@ FIGURES.push({
   alt: 'Acid-catalyzed bromination in three stacked panels: the enol C=C attacks Br2 as the oxygen lone pair moves into the C–O bond and bromide leaves; water takes the proton off the positive oxygen; alpha-bromoacetophenone forms.',
   viewBox: '0 0 340 656',
   build() { return gridFigure(acidBromCells, 1, 324, 204, 0, 14, 8, 8, [null, null, 'good']); },
-  caption: 'The enol attacks Br₂ with its C=C. The oxygen pair makes up for the lost C=C.',
+  caption: 'The O lone pair moves in to make C=O as the C=C bonds to Br.',
 });
 
 /* ======================================================================
@@ -206,7 +206,7 @@ const baseCells = [
   ['ONE Br ON, AND IT GOES ON', 'the next α H comes off faster', (Q) => {
     const c = Q(88, 124);
     const f = ketFrame(c, { aLabel: 'CH₂Br', aKind: 'hi' });
-    return f.s + LP(f.o, 150) + LP(f.o, 30) + T(Q(208, 70), '+ Br⁻');
+    return f.s + LP(f.o, 150) + LP(f.o, 30) + T(Q(200, 62), '+ H₂O') + T(Q(200, 84), '+ Br⁻');
   }, 'fg-tag-warn'],
 ];
 
@@ -217,7 +217,7 @@ FIGURES.push({
   alt: 'Base-promoted bromination of acetophenone in three panels. First, a lone pair on hydroxide takes an alpha hydrogen; the C–H bond electrons form the C=C and the C=O pi electrons move onto oxygen, giving the enolate. Second, a lone pair on the negative enolate oxygen moves into the C–O bond, the C=C pi electrons attack the near bromine of Br2, and the Br–Br bond electrons leave on the far bromine as bromide. Third, alpha-bromoacetophenone and bromide; its next alpha hydrogen comes off faster.',
   viewBox: '0 0 776 220',
   build() { return gridFigure(baseCells, 3, 244, 204, 12, 0, 8, 8, [null, null, 'warn']); },
-  caption: 'Compare the middle panel with the acid route’s: the same three arrows, but the oxygen starts with a negative charge instead of an H.',
+  caption: 'Right panel: the product still has two α H, now easier to remove.',
 });
 
 FIGURES.push({
@@ -226,7 +226,7 @@ FIGURES.push({
   alt: 'Base-promoted bromination in three stacked panels: hydroxide takes an alpha hydrogen to give the enolate; the enolate attacks Br2 and bromide leaves; alpha-bromoacetophenone forms, and its next alpha hydrogen comes off faster.',
   viewBox: '0 0 340 656',
   build() { return gridFigure(baseCells, 1, 324, 204, 0, 14, 8, 8, [null, null, 'warn']); },
-  caption: 'Hydroxide is used up here: it leaves as water, and nothing hands it back.',
+  caption: 'Same three arrows as in acid; the oxygen starts with a negative charge.',
 });
 
 /* ======================================================================
@@ -270,11 +270,11 @@ FIGURES.push({
     let s = '';
     const k = bromoKetone(P(384, 118));
     s += k.s;
-    s += effectBox(10, 20, 250, null, ACID_LINES);
-    s += effectBox(500, 120, 250, 'warn', BASE_LINES);
+    s += effectBox(10, 30, 250, null, [ACID_LINES[0], ACID_LINES[3]]);
+    s += effectBox(500, 120, 250, 'warn', [BASE_LINES[0], BASE_LINES[3]]);
     s += arrow(P(262, 50), P(k.o.x - 22, k.o.y - 4), { muted: true, size: 7 });
     s += arrow(P(498, 150), P(k.h1.x + 16, k.h1.y + 2), { muted: true, size: 7 });
-    s += tag(250, 236, 'the same Br, the same pull on electrons');
+    s += tag(k.br.x, k.br.y + 34, 'one Br, one pull on electrons');
     return s;
   },
   caption: 'Left box: what the acid route needs, at the oxygen. Right box: what the base route needs, at the two remaining α hydrogens.',
@@ -353,7 +353,7 @@ FIGURES.push({
 /* ======================================================================
    5. The haloform reaction: three brominations, then cleavage.
    ====================================================================== */
-const BUILD = [['CH₃', 'slowest'], ['CH₂Br', 'faster'], ['CHBr₂', 'faster still'], ['CBr₃', '']];
+const BUILD = [['CH₃', 'slow'], ['CH₂Br', 'faster'], ['CHBr₂', 'fastest'], ['CBr₃', '']];
 
 FIGURES.push({
   id: 'haloform-buildup',
@@ -369,12 +369,12 @@ FIGURES.push({
       s += f.s + LP(f.o, 150) + LP(f.o, 30);
       if (i < 3) {
         s += arrow(P(c.x + 90, 108), P(c.x + 138, 108));
-        s += tag(c.x + 114, 132, speed, { cls: i ? 'fg-tag-warn' : 'fg-tag' });
+        s += tag(c.x + 114, 94, speed, { cls: i ? 'fg-tag-warn' : 'fg-tag' });
       }
     });
     return s;
   },
-  caption: 'Only the methyl carbon changes. The Br already there makes each next α H easier to remove.',
+  caption: 'Only the methyl carbon changes; three rounds turn CH₃ into CBr₃.',
 });
 
 FIGURES.push({
@@ -472,19 +472,22 @@ FIGURES.push({
    6. Which compounds pass the iodoform test.
    ====================================================================== */
 /* Butan-2-one with labelled atoms: C1 methyl, C2 carbonyl, C3, C4. */
-function butanone(c, verdict) {
+function butanone(c, neutral) {
   const o = armEnd(c, 90, 50), c1 = armEnd(c, 210, 54), c3 = armEnd(c, 330, 54), c4 = armEnd(c3, 30, 52);
   let s = B(c, o, 'C', 'O', { order: 2 }) + B(c, c1, 'C', 'CH₃') + B(c, c3, 'C', 'CH₂') + B(c3, c4, 'CH₂', 'CH₃');
   s += A(o, 'O') + LP(o, 150) + LP(o, 30);
   s += A(c1, 'CH₃', { kind: 'hi' }) + A(c3, 'CH₂', { kind: 'hi' }) + A(c4, 'CH₃') + A(c, 'C');
-  s += tag(c1.x, c1.y + 34, 'α: a CH₃', { cls: 'fg-tag-good' });
-  s += tag(c3.x + 6, c3.y + 34, 'α: a CH₂');
-  s += tag(c4.x + 4, c4.y - 26, 'β');
-  if (verdict) s += tag(c.x + 20, c.y - 84, verdict, { cls: 'fg-tag-good' });
+  if (neutral) {
+    s += tag(c1.x, c1.y + 34, 'α: C1') + tag(c3.x + 6, c3.y + 34, 'α: C3');
+  } else {
+    s += tag(c1.x, c1.y + 34, 'α: a CH₃', { cls: 'fg-tag-good' });
+    s += tag(c3.x + 6, c3.y + 34, 'α: a CH₂');
+    s += tag(c4.x + 30, c4.y + 4, 'β', { anchor: 'start' });
+  }
   return s;
 }
 /* 2-Methylcyclohexanone with every ring carbon labelled. */
-function methylCycloLabelled(cx, cy, verdict) {
+function methylCycloLabelled(cx, cy, neutral) {
   const ctr = P(cx, cy), R = 58;
   const pts = [90, 30, -30, -90, -150, 150].map((d) => armEnd(ctr, d, R));
   const labs = ['C', 'CH', 'CH₂', 'CH₂', 'CH₂', 'CH₂'];
@@ -493,12 +496,11 @@ function methylCycloLabelled(cx, cy, verdict) {
   const o = armEnd(pts[0], 90, 44);
   s += B(pts[0], o, 'C', 'O', { order: 2 }) + A(o, 'O') + LP(o, 150) + LP(o, 30);
   const me = armEnd(pts[1], 30, 50);
-  s += B(pts[1], me, 'CH', 'CH₃') + A(me, 'CH₃', { kind: 'warn' });
+  s += B(pts[1], me, 'CH', 'CH₃') + A(me, 'CH₃', { kind: neutral ? undefined : 'warn' });
   labs.forEach((l, i) => { s += A(pts[i], l, { kind: i === 1 || i === 5 ? 'hi' : undefined }); });
   s += tag(pts[1].x + 24, pts[1].y + 30, 'α: C2', { anchor: 'start' });
   s += tag(pts[5].x - 24, pts[5].y + 30, 'α: C6', { anchor: 'end' });
-  s += tag(me.x + 30, me.y - 26, 'CH₃ on C2: β', { cls: 'fg-tag-warn', anchor: 'end' });
-  if (verdict) s += tag(cx, cy - 116, verdict, { cls: 'fg-tag-warn' });
+  if (!neutral) s += tag(me.x + 30, me.y - 26, 'CH₃ on C2: β', { cls: 'fg-tag-warn', anchor: 'end' });
   return s;
 }
 
@@ -512,7 +514,7 @@ FIGURES.push({
     let s = '';
     s += panel(8, 8, 232, 264, { kind: 'good' }) + panel(252, 8, 232, 264, { kind: 'good' }) + panel(496, 8, 256, 264, { kind: 'warn' });
     s += tag(124, 30, 'BUTAN-2-ONE: POSITIVE', { cls: 'fg-tag-good' });
-    s += butanone(P(102, 130), null);
+    s += butanone(P(102, 130), false);
     s += tag(368, 30, 'ETHANOL: POSITIVE', { cls: 'fg-tag-good' });
     // ethanol, then acetaldehyde below it
     const e1 = P(310, 72), e2 = armEnd(e1, 330, 50), eo = armEnd(e2, 30, 48);
@@ -523,7 +525,7 @@ FIGURES.push({
     s += A(a1, 'CH₃', { kind: 'hi' }) + A(ao, 'O') + A(ah, 'H') + A(a2, 'C');
     s += tag(368, 262, 'acetaldehyde');
     s += tag(624, 30, '2-METHYLCYCLOHEXANONE: NEGATIVE', { cls: 'fg-tag-warn' });
-    s += methylCycloLabelled(620, 160, null);
+    s += methylCycloLabelled(620, 160, false);
     return s;
   },
   caption: 'Highlighted: the carbons the test cares about. Only a CH₃ bonded straight to the carbonyl carbon can become CI₃.',
@@ -537,9 +539,9 @@ FIGURES.push({
   build() {
     let s = panel(8, 8, 324, 200) + panel(8, 220, 324, 264);
     s += tag(170, 30, 'BUTAN-2-ONE');
-    s += butanone(P(150, 116), null);
+    s += butanone(P(150, 116), true);
     s += tag(170, 242, '2-METHYLCYCLOHEXANONE');
-    s += methylCycloLabelled(160, 384, null);
+    s += methylCycloLabelled(160, 384, true);
     return s;
   },
   caption: 'Highlighted: the α carbons in each ketone.',
@@ -575,7 +577,7 @@ FIGURES.push({
     s += acyl(P(640, 120), { x: 'Br' });
     s += arrow(P(726, 160), P(726, 230)) + arrow(P(738, 230), P(738, 160));
     s += acyl(P(640, 280), { x: 'Br', enol: true, alpha: 'CH', hiAlpha: true });
-    s += tag(466, 284, 'the enol', { anchor: 'end' });
+    s += tag(560, 344, 'the enol');
     s += arrow(P(732, 322), P(732, 382)); s += tag(722, 358, 'Br₂', { anchor: 'end' });
     s += acyl(P(640, 440), { x: 'Br', alpha: 'CHBr', hiAlpha: true });
     s += tag(590, 506, '2-BROMOBUTANOYL BROMIDE');
@@ -584,6 +586,8 @@ FIGURES.push({
     s += tag(362, 476, 'a new acyl bromide forms', { cls: 'fg-tag-mut' });
     s += acyl(P(200, 440), { alpha: 'CHBr', hiAlpha: true });
     s += tag(150, 506, '2-BROMOBUTANOIC ACID', { cls: 'fg-tag-good' });
+    s += curve(P(420, 486), P(478, 164), { bow: -60, muted: true });
+    s += tag(372, 300, 'the new butanoyl', { cls: 'fg-tag-mut' }) + tag(372, 316, 'bromide goes round again', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Go clockwise from top left. The bottom arrow makes the product and a fresh butanoyl bromide at the same time.',
@@ -622,7 +626,7 @@ FIGURES.push({
   id: 'enone-elimination',
   section: 'alpha-halogenation',
   anchor: '<h3>The &alpha;-halo ketone itself</h3>',
-  alt: '2-Bromocyclohexanone, with the bromine on C2 and a hydrogen on C3 highlighted, loses HBr when treated with base. The product is cyclohex-2-en-1-one, with a new C=C between C2 and C3, conjugated with the C=O.',
+  alt: '2-Bromocyclohexanone, with the bromine on C2 and a hydrogen on C3 highlighted, loses HBr when heated with pyridine, a weak base. The product is cyclohex-2-en-1-one, with a new C=C between C2 and C3, conjugated with the C=O.',
   viewBox: '0 0 760 200',
   build() {
     let s = '';
@@ -647,7 +651,7 @@ FIGURES.push({
     s += bond(a.p[2], h, { rFrom: 0, rTo: 13 }) + A(h, 'H', { kind: 'hi' });
     s += tag(150, 190, '2-bromocyclohexanone');
     s += arrow(P(270, 104), P(420, 104));
-    s += tag(345, 92, 'base (E2)') + tag(345, 124, 'loses H and Br', { cls: 'fg-tag-mut' });
+    s += tag(345, 92, 'pyridine, heat (E2)') + tag(345, 124, 'loses H and Br', { cls: 'fg-tag-mut' });
     const b = ring(540, 104, true);
     s += b.g + T(P(660, 108), '+ HBr');
     s += tag(540, 190, 'cyclohex-2-en-1-one', { cls: 'fg-tag-good' });
