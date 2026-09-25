@@ -211,7 +211,7 @@ FIGURES.push({
     s += tag(575, 24, 'nearly edge-on: the plane is the shaded strip');
     s += text(575, 62, 'π bond: lobes above and below the plane', { cls: 'fg-sm', size: 10.5 });
     s += text(575, 258, 'lobes bigger on O: the π electrons sit nearer O', { cls: 'fg-sm', size: 10.5 });
-    s += text(424, 186, 'plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += text(440, 186, 'plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
   caption: 'Formaldehyde from two directions. Face-on, read the three marked angles. Nearly edge-on, the shaded strip is the molecule’s plane and the colored lobes are the π bond.',
@@ -419,7 +419,7 @@ function aldKet(cx, cy, ald, nuLen = 150) {
   const eo = edgeOn(c, { g1: 'CH₃', g2: ald ? 'H' : 'CH₃', len: 52, oLen: 84, plane: [120, 128], halos: true });
   s += eo.s;
   s += nuApproach(c, 107, nuLen, { stop: 24 }).s;
-  s += text(c.x + 24, c.y + 36, 'δ+', { cls: 'fg-warn', size: ald ? 16 : 11 });
+  s += text(c.x + 30, c.y + 46, 'δ+', { cls: 'fg-warn', size: ald ? 16 : 11 });
   return s;
 }
 FIGURES.push({
@@ -877,13 +877,13 @@ FIGURES.push({
   id: 'l-ak-three',
   lessons: ['aldehydes-ketones'],
   alt: 'Propanal, butanone and 3,3-dimethylbutan-2-one, one per row, with the two groups on each carbonyl carbon labeled: CH2CH3 and H; CH3 and CH2CH3; CH3 and C(CH3)3.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 386',
   build() {
     let s = '';
     const rows = [
-      { y: 74, name: 'propanal', a: 'CH₂CH₃', b: 'H' },
-      { y: 180, name: 'butanone', a: 'CH₃', b: 'CH₂CH₃' },
-      { y: 286, name: '3,3-dimethyl-', name2: 'butan-2-one', a: 'C(CH₃)₃', b: 'CH₃' },
+      { y: 80, name: 'propanal', a: 'CH₂CH₃', b: 'H' },
+      { y: 204, name: 'butanone', a: 'CH₃', b: 'CH₂CH₃' },
+      { y: 328, name: '3,3-dimethyl-', name2: 'butan-2-one', a: 'C(CH₃)₃', b: 'CH₃' },
     ];
     for (const k of rows) {
       const c = P(110, k.y);

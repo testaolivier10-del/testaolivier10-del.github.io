@@ -122,7 +122,7 @@ function pLeave(ox, oy) {
   const N = A(ox + 160, oy + 142, 'N'), Hn = A(ox + 200, oy + 172, 'H'), Me = A(ox + 196, oy + 106, 'CH₃');
   let s = frameP(ox, oy, H2, '5 · N pushes in, water leaves', ['the C–O bond breaks']);
   s += bd(C, O, { cls: 'fg-bond-hi' }) + bd(C, M1) + bd(C, M2) + bd(C, N) + bd(N, Hn) + bd(N, Me);
-  s += lp(N, 130, 6);
+  s += lp(N, 130, 6) + lp(O, 180, 5);
   s += draw(C, O, M1, M2, N, Hn, Me);
   s += curve(off(lpAt(N, 130, 6), -4, 4), mid(C, N, 0.5), { bow: -16 });
   s += curve(o(106, 104), o(126, 84), { bow: -10 });
@@ -198,10 +198,8 @@ function pTert(ox, oy) {
   const N = A(ox + 150, oy + 124, 'N⁺', 'warn');
   const Q1 = A(ox + 150, oy + 76, 'CH₃'), Q2 = A(ox + 196, oy + 102, 'CH₃'), Q3 = A(ox + 186, oy + 166, 'CH₃');
   let s = frameP(ox, oy, H3, 'tertiary amine: no N–H at all', [
-    'N⁺ has four bonds and no lone pair,',
-    'so it cannot form C=N⁺. The adduct',
-    'falls apart: back to acetone',
-    ['no stable product', 'fg-tag-warn']], 'warn');
+    'no N–H, no way on:',
+    ['the adduct reverses', 'fg-tag-warn']], 'warn');
   s += bd(C, O) + bd(C, M1) + bd(C, M2) + bd(C, N) + bd(N, Q1) + bd(N, Q2) + bd(N, Q3);
   s += lp(O, 180) + lp(O, -90) + lp(O, 0);
   s += draw(C, O, M1, M2, N, Q1, Q2, Q3);
@@ -240,7 +238,7 @@ function phNotes(ox, oy) {
   let s = '';
   const blk = (x, y, lines, cls) => lines.forEach((t, i) => { s += text(x, y + i * 17, t, { cls: i ? 'fg-tag' : cls }); });
   blk(ox + 88, oy, ['too acidic', 'CH₃NH₃⁺: no lone pair,', 'so the addition stalls'], 'fg-tag-warn');
-  blk(ox + 252, oy, ['too basic', 'OH not protonated,', 'so water cannot leave'], 'fg-tag-warn');
+  blk(ox + 252, oy, ['too basic', 'OH rarely protonated,', 'so water leaves slowly'], 'fg-tag-warn');
   return s;
 }
 
@@ -350,7 +348,7 @@ function pStorkAlk(ox, oy) {
 /* The iminium salt after one alkylation. */
 function pStorkImin(ox, oy) {
   const { s: es, v } = enamineSk(ox + 76, oy + 132, { iminium: true });
-  let s = frameP(ox, oy, HS, 'an iminium salt: no C=C left', ['nothing nucleophilic at carbon'], 'good');
+  let s = frameP(ox, oy, HS, 'iminium salt: the enamine C=C is gone', ['nothing nucleophilic at carbon'], 'good');
   s += es;
   const a1 = P(v[5].x + 26, v[5].y - 12), a2 = P(a1.x + 26, a1.y + 14), a3 = P(a2.x + 26, a2.y - 12);
   s += bond(v[5], a1, { rFrom: 0, rTo: 0 }) + bond(a1, a2, { rFrom: 0, rTo: 0 }) + bond(a2, a3, { order: 2, rFrom: 0, rTo: 0 });
@@ -388,12 +386,13 @@ function pSites(ox, oy) {
   s += text(C2.x - 24, C2.y - 14, '2', { cls: 'fg-tag-warn' });
   s += text(C3.x, C3.y + 32, '3', { cls: 'fg-tag-warn' });
   s += text(C4.x + 10, C4.y - 26, '4', { cls: 'fg-tag-warn' });
-  const Nu1 = A(ox + 40, oy + 96, 'Nu⁻'), Nu2 = A(ox + 290, oy + 196, 'Nu⁻');
+  const Nu1 = A(ox + 40, oy + 96, 'Nu⁻'), Nu2 = A(ox + 290, oy + 176, 'Nu⁻');
   s += draw(Nu1, Nu2);
   s += curve(o(62, 100), o(132, 118), { bow: -14 });
-  s += curve(o(284, 176), o(258, 144), { bow: 14 });
-  s += text(ox + 84, oy + 236, '1,2: at the C=O carbon', { cls: 'fg-tag' });
-  s += text(ox + 256, oy + 236, '1,4: at the far end', { cls: 'fg-tag-good' });
+  s += curve(o(282, 158), o(262, 142), { bow: 10 });
+  s += text(ox + 84, oy + 218, '1,2: at the C=O carbon', { cls: 'fg-tag' });
+  s += text(ox + 256, oy + 218, '1,4: at the far end', { cls: 'fg-tag-good' });
+  s += text(ox + 256, oy + 236, '(electrons then shift to O)', { cls: 'fg-tag' });
   return s;
 }
 
@@ -415,8 +414,10 @@ function pMichael(ox, oy) {
   s += curve(mid(v[0], v[5], 0.55), off(C4, -20, 8), { bow: 14 });
   s += curve(mid(C4, C3, 0.5), mid(C3, C2, 0.5), { bow: -16 });
   s += curve(mid(C2, O, 0.5), off(O, 16, 4), { bow: -12 });
-  s += text(ox + 220, oy + 214, 'new C–C bond: ring C2 to carbon 4', { cls: 'fg-tag' });
-  s += text(ox + 220, oy + 234, 'the O ends up negative, then protonated', { cls: 'fg-tag' });
+  s += text(ox + 220, oy + 196, 'new C–C bond: ring C2 to carbon 4', { cls: 'fg-tag' });
+  s += text(ox + 220, oy + 216, 'carbon 3 picks up a proton, then H₃O⁺'
+  , { cls: 'fg-tag' });
+  s += text(ox + 220, oy + 236, 'hydrolyzes the iminium', { cls: 'fg-tag' });
   return s;
 }
 
@@ -621,7 +622,7 @@ FIGURES.push({
     s += gapArrow(P(246, 113), P(262, 113)) + gapArrow(P(498, 113), P(514, 113));
     return s;
   },
-  caption: 'Three arrows make the new C–C bond at C2. The middle panel is why the reaction stops at one: the product is a cation with no C=C.',
+  caption: 'Three arrows make the new C–C bond at C2; acid then releases the ketone.',
 });
 
 FIGURES.push({
@@ -662,7 +663,7 @@ FIGURES.push({
   build() {
     return pRedAm(12, 10) + pOxHyd(264, 10) + pWK(516, 10);
   },
-  caption: 'Each panel is one of the four paragraphs above; the Clemmensen reduction gives the same ethylbenzene straight from the ketone.',
+  caption: 'The three panels match the first three paragraphs; the Clemmensen reduction gives the same ethylbenzene straight from the ketone.',
 });
 
 export default FIGURES;
