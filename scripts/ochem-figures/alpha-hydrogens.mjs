@@ -104,7 +104,7 @@ FIGURES.push({
     s += tag(l.x, 222, 'α carbon') + tag(r.x, 222, 'α carbon');
     return s;
   },
-  caption: 'The two highlighted carbons each touch the carbonyl carbon, so both are alpha carbons. All six of their hydrogens are alpha hydrogens.',
+  caption: 'Highlighted: the two α carbons and their six α hydrogens.',
 });
 
 /* ======================================================================
@@ -223,7 +223,7 @@ FIGURES.push({
   alt: 'Four molecules with their alpha carbons highlighted. (a) Butan-2-one: the CH3 and the CH2 on either side of the carbonyl carbon are alpha, with 3 and 2 hydrogens; the end CH3 is not alpha. (b) 2,2-Dimethylpropanal: the only alpha carbon is a quaternary carbon with no hydrogens, and the aldehyde H sits on the carbonyl carbon itself. (c) Ethyl acetate: only the CH3 on the acyl side is alpha; the OCH2 is bonded to oxygen, not to the carbonyl carbon. (d) Pentane-2,4-dione: both end methyls are alpha, pKa 20, and the central CH2 is alpha to both carbonyls, pKa 9.',
   viewBox: '0 0 760 520',
   build() { return gridFigure(findCells, 2, 364, 244, 16, 16, 8, 8); },
-  caption: 'Highlighted carbons touch a carbonyl carbon; those are the only places to count hydrogens.',
+  caption: 'Highlighted: the alpha carbons in each molecule, with their hydrogen counts.',
 });
 
 FIGURES.push({
@@ -286,7 +286,7 @@ FIGURES.push({
     s += tag(380, 238, 'highlighted: the flat O–C–C–C–O path the charge spreads along');
     return s;
   },
-  caption: 'Three contributors instead of two, and two of the three put the charge on an oxygen.',
+  caption: 'Compare the three drawings: only the charge and the double bonds along the highlighted path change place.',
 });
 
 /* ======================================================================
@@ -321,7 +321,7 @@ FIGURES.push({
     s += tag(130, 222, 'H on the α carbon, C=O') + tag(510, 222, 'H on the oxygen, C=C');
     return s;
   },
-  caption: 'Follow the highlighted hydrogen: it sits on carbon in the ketone and on oxygen in the enol, and the double bond moves with it.',
+  caption: 'Follow the highlighted hydrogen from carbon to oxygen; the double bond moves with it.',
 });
 
 FIGURES.push({
@@ -392,7 +392,7 @@ FIGURES.push({
   alt: 'Base-catalyzed enol formation from acetone in three panels. First, a lone pair on hydroxide takes an alpha hydrogen; the C–H bond electrons move into the C–C bond, and the C=O pi electrons move onto oxygen, giving the enolate. Second, a lone pair on the enolate oxygen takes a proton from water, and the O–H bond electrons stay on the water oxygen, which becomes hydroxide. Third, the enol with hydroxide released.',
   viewBox: '0 0 760 220',
   build() { return gridFigure(baseCells, 3, 240, 204, 12, 0, 8, 8); },
-  caption: 'In base the proton comes off carbon first and goes onto oxygen second. The middle panel shows the enolate as its charge-on-oxygen contributor.',
+  caption: 'Three curved arrows in the first panel, two in the second. The middle panel shows the enolate as its charge-on-oxygen contributor.',
 });
 
 FIGURES.push({
@@ -401,7 +401,7 @@ FIGURES.push({
   alt: 'Base-catalyzed enol formation from acetone in three stacked panels: hydroxide takes an alpha hydrogen to give the enolate; the enolate oxygen takes a proton from water; the enol forms and hydroxide is released.',
   viewBox: '0 0 340 656',
   build() { return gridFigure(baseCells, 1, 324, 204, 0, 14, 8, 8); },
-  caption: 'Off carbon first, onto oxygen second.',
+  caption: 'Follow the hydroxide: it enters in the first panel and leaves in the third.',
 });
 
 /* ======================================================================
@@ -453,7 +453,7 @@ FIGURES.push({
   alt: 'Acid-catalyzed enol formation from acetone in three panels. First, a lone pair on the carbonyl oxygen takes a proton from hydronium, and the H–O bond electrons stay on the water. Second, in the protonated ketone, a water molecule takes an alpha hydrogen; the C–H bond electrons move into the C–C bond and the C=O pi electrons move onto the positive oxygen. Third, the enol with hydronium released.',
   viewBox: '0 0 760 220',
   build() { return gridFigure(acidCells, 3, 240, 204, 12, 0, 8, 8); },
-  caption: 'In acid the proton goes onto oxygen first and comes off carbon second: the reverse order of the base route.',
+  caption: 'The positive oxygen in the middle panel is what lets a weak base like water pull off the alpha hydrogen.',
 });
 
 FIGURES.push({
@@ -462,7 +462,7 @@ FIGURES.push({
   alt: 'Acid-catalyzed enol formation from acetone in three stacked panels: the carbonyl oxygen takes a proton from hydronium; water takes an alpha hydrogen as the C=C forms and the pi electrons move onto the positive oxygen; the enol forms and hydronium is released.',
   viewBox: '0 0 340 656',
   build() { return gridFigure(acidCells, 1, 324, 204, 0, 14, 8, 8); },
-  caption: 'Onto oxygen first, off carbon second.',
+  caption: 'Follow the H₃O⁺: it gives up a proton in the first panel and is back in the third.',
 });
 
 /* ======================================================================
@@ -510,7 +510,7 @@ FIGURES.push({
   alt: 'Racemization of (R)-3-phenylbutan-2-one in four panels. First, the ketone, whose stereocenter is the alpha carbon, bearing an acetyl group, a phenyl group (C6H5), a methyl on a wedge and a hydrogen on a hash. Second, the enolate after base removes that hydrogen: the former stereocenter is now an sp2 carbon in a C=C, drawn flat, with the charge on oxygen. Third, a proton returns from the back, giving back the (R) ketone, 50%. Fourth, a proton returns from the front, putting the hydrogen on a wedge and the methyl on a hash, giving the (S) ketone, 50%.',
   viewBox: '0 0 760 440',
   build() { return gridFigure(racCells, 2, 364, 204, 16, 16, 8, 8, [null, null, 'good', 'good']); },
-  caption: 'The top row loses the stereocenter; the bottom row shows the two ways the proton can come back. Equal amounts of each give a racemic mixture.',
+  caption: 'Top row: the stereocenter is lost. Bottom row: compare where the H and the CH₃ point in each product.',
 });
 
 export default FIGURES;

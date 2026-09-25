@@ -240,7 +240,7 @@ FIGURES.push({
    3. Pinnick: chlorite adds to the C=O, then a five-atom ring fragments.
    ====================================================================== */
 const pinnickCells = [
-  ['CHLORITE ADDS TO THE C=O', 'the O⁻ then takes H⁺ from the buffer', (Q) => {
+  ['CHLOROUS ACID, HClO₂, ADDS TO C=O', 'then H⁺ moves from O–H to the C–O⁻', (Q) => {
     const c = Q(70, 124);
     const m = centre(c, [
       { deg: 90, len: 52, l: 'O', order: 2, key: 'O' },
@@ -250,14 +250,14 @@ const pinnickCells = [
     let s = m.s;
     const o = m.ends.O;
     s += lonePair(o.x, o.y, 225, { dist: 21 }) + lonePair(o.x, o.y, 315, { dist: 21 });
-    // chlorite drawn with octets: -O-Cl(+)-O-
-    const oa = Q(146, 100), cl = Q(188, 100), ob = Q(228, 100);
-    s += B(oa, cl, 'O', 'Cl') + B(cl, ob, 'Cl', 'O');
-    s += A(oa, 'O', { kind: 'hi' }) + A(cl, 'Cl') + A(ob, 'O');
+    // chlorous acid drawn with octets: -O-Cl(+)-O-H
+    const oa = Q(146, 100), cl = Q(188, 100), ob = Q(228, 100), hb = Q(228, 58);
+    s += B(oa, cl, 'O', 'Cl') + B(cl, ob, 'Cl', 'O') + B(ob, hb, 'O', 'H');
+    s += A(oa, 'O', { kind: 'hi' }) + A(cl, 'Cl') + A(ob, 'O') + A(hb, 'H', { r: 14 });
     s += lonePair(oa.x, oa.y, 180, { dist: 21 }) + lonePair(oa.x, oa.y, 270, { dist: 21 }) + lonePair(oa.x, oa.y, 90, { dist: 21 });
     s += lonePair(cl.x, cl.y, 270, { dist: 21 }) + lonePair(cl.x, cl.y, 90, { dist: 21 });
-    s += lonePair(ob.x, ob.y, 270, { dist: 21 }) + lonePair(ob.x, ob.y, 90, { dist: 21 }) + lonePair(ob.x, ob.y, 0, { dist: 21 });
-    s += charge(Q, 132, 76, '−') + charge(Q, 202, 76, '+') + charge(Q, 242, 76, '−');
+    s += lonePair(ob.x, ob.y, 90, { dist: 21 }) + lonePair(ob.x, ob.y, 0, { dist: 21 });
+    s += charge(Q, 132, 76, '−') + charge(Q, 202, 76, '+');
     s += curve(P(oa.x - 26, oa.y + 4), P(c.x + 17, c.y - 6), { bow: 14, size: 7 });
     s += curve(P(c.x + 8, c.y - 24), P(o.x + 16, o.y + 9), { bow: 12, size: 7 });
     return s;
@@ -318,18 +318,18 @@ FIGURES.push({
   id: 'pinnick-mechanism',
   section: 'aldehyde-oxidation',
   anchor: '<h3>Chlorite adds to the C=O itself</h3>',
-  alt: 'The Pinnick oxidation in four panels. First, a lone pair on an oxygen of chlorite, drawn as O(−)–Cl(+)–O(−), attacks the carbonyl carbon of R–CHO while the C=O pi electrons move onto the carbonyl oxygen. Second, in the adduct R–CH(OH)–O–Cl(+)–O(−), five atoms form a ring: the O(−) lone pair takes the hydrogen on carbon, the C–H electrons become the new C=O bond, and the O–Cl electrons move onto chlorine. Third, the products are the carboxylic acid R–COOH and hypochlorous acid, H–O–Cl. Fourth, 2-methylbut-2-ene adds HOCl across its double bond, giving an OH on the more substituted carbon and a Cl on the other.',
+  alt: 'The Pinnick oxidation in four panels. First, chlorous acid, drawn with octets as O(−)–Cl(+)–O–H, attacks the carbonyl carbon of R–CHO through its O(−) lone pair while the C=O pi electrons move onto the carbonyl oxygen; a proton then moves from the O–H to that oxygen. Second, in the adduct R–CH(OH)–O–Cl(+)–O(−), five atoms form a ring: the O(−) lone pair takes the hydrogen on carbon, the C–H electrons become the new C=O bond, and the O–Cl electrons move onto chlorine. Third, the products are the carboxylic acid R–COOH and hypochlorous acid, H–O–Cl. Fourth, 2-methylbut-2-ene adds HOCl across its double bond, giving an OH on the more substituted carbon and a Cl on the other.',
   viewBox: '0 0 760 440',
   build() { return gridFigure(pinnickCells, 2, 364, 204, 16, 16, 8, 8, [0, 0, 'good', 0]); },
-  caption: 'The second panel is the oxidation. Follow the highlighted H: it leaves carbon and ends up on the chlorite oxygen.',
+  caption: 'The second panel is the oxidation. Follow the highlighted H: it leaves carbon and ends up on the far oxygen of the chlorine group.',
 });
 FIGURES.push({
   id: 'l-pinnick-mechanism',
   lessons: ['aldehyde-oxidation'],
-  alt: 'Four stacked panels: chlorite attacks the carbonyl carbon; in the adduct, the chlorite O(−) takes the hydrogen on carbon as the C=O forms and the O–Cl electrons move onto chlorine; the products are the carboxylic acid and HOCl; 2-methylbut-2-ene uses up the HOCl.',
+  alt: 'Four stacked panels: chlorous acid attacks the carbonyl carbon; in the adduct, the O(−) on chlorine takes the hydrogen on carbon as the C=O forms and the O–Cl electrons move onto chlorine; the products are the carboxylic acid and HOCl; 2-methylbut-2-ene uses up the HOCl.',
   viewBox: `0 0 340 ${stackH(4, 204)}`,
   build() { return gridFigure(pinnickCells, 1, 324, 204, 0, 14, 8, 8, [0, 0, 'good', 0]); },
-  caption: 'Follow the highlighted H from carbon to the chlorite oxygen.',
+  caption: 'Follow the highlighted H from carbon to the far oxygen on chlorine.',
 });
 
 /* ======================================================================
@@ -436,7 +436,10 @@ const silverCell = ['SILVER(I) IS REDUCED', 'Ag⁺ + e⁻ → Ag, twice: the mir
   const n1 = Q(64, 70), ag = Q(122, 70), n2 = Q(180, 70);
   let s = B(n1, ag, 'H₃N', 'Ag') + B(ag, n2, 'Ag', 'NH₃');
   s += A(n1, 'H₃N', { r: 19 }) + A(ag, 'Ag', { kind: 'warn' }) + A(n2, 'NH₃', { r: 19 });
-  s += charge(Q, 214, 56, '+');
+  const bl = Q(38, 48), br = Q(206, 48);
+  const brk = (x, y, d) => `<path class="fg-bond" d="M${x + d} ${y} L${x} ${y} L${x} ${y + 60} L${x + d} ${y + 60}"></path>`;
+  s += brk(bl.x, bl.y, 6) + brk(br.x, br.y, -6);
+  s += charge(Q, 216, 52, '+');
   s += Tg(Q, 122, 106, 'diamminesilver(I), linear');
   s += arrow(Q(122, 112), Q(122, 132), { size: 7 });
   s += bar(Q(40, 138).x, Q(40, 138).y, 164, 10, { kind: 'mut' });
@@ -444,7 +447,7 @@ const silverCell = ['SILVER(I) IS REDUCED', 'Ag⁺ + e⁻ → Ag, twice: the mir
   return s;
 }];
 const copperCell = ['COPPER(II) IS REDUCED', 'each Cu²⁺ gains one electron: Cu(I)', (Q) => {
-  let s = A(Q(122, 66), 'Cu²⁺', { r: 22, kind: 'hi' });
+  let s = A(Q(122, 66), 'Cu', { r: 18, kind: 'hi' }) + charge(Q, 150, 54, '2+');
   s += Tg(Q, 122, 104, 'deep blue, held by tartrate or citrate');
   s += arrow(Q(122, 112), Q(122, 132), { size: 7 });
   s += bar(Q(62, 138).x, Q(62, 138).y, 120, 12, { kind: 'warn' });
@@ -623,8 +626,8 @@ const sugarPairCells = [
     const link = Q(123, 116);
     s += bond(L.v[0], link, { rFrom: 0, rTo: 15 }) + bond(link, f[0], { rFrom: 15, rTo: 0 });
     s += A(link, 'O', { r: 15, kind: 'hi' });
-    const ch = armEnd(f[0], 270, 46);
-    s += bond(f[0], ch, { rFrom: 0, rTo: 23 }) + A(ch, 'CH₂OH', { r: 23 });
+    const ch = armEnd(f[0], 270, 42);
+    s += bond(f[0], ch, { rFrom: 0, rTo: 19 }) + A(ch, 'CH₂OH', { r: 19 });
     s += mark(L.v[0]) + mark(f[0]);
     s += Tg(Q, 62, 62, 'glucose') + Tg(Q, 190, 62, 'fructose');
     s += Tg(Q, 52, 170, 'C1: tied up', { cls: 'fg-tag-warn' }) + Tg(Q, 228, 170, 'C2: tied up', { cls: 'fg-tag-warn' });
