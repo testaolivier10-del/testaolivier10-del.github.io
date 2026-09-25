@@ -79,7 +79,7 @@ function pDeprot(ox, oy) {
   s += tag(ox + 70, oy + 132, 'α');
   s += curve(off(lpAt(B, 180), -3, 4), edge(Ha, 0, 4), { bow: -10 });
   s += curve(mid(Ca, Ha, 0.55), mid(Ca, C1, 0.6), { bow: 16 });
-  s += curve(mid(C1, O, 0.45), edge(O, 290, 4), { bow: -14 });
+  s += curve(mid(C1, O, 0.45), edge(O, 270, 4), { bow: -16 });
   s += tag(ox + 60, oy + 60, 'acetaldehyde');
   return s;
 }
@@ -94,7 +94,7 @@ function pAttack(ox, oy) {
   s += draw(C1, Oe, Ca, Ce, Oel, Me);
   s += curve(off(lpAt(Oe, 0), 3, 5), mid(C1, Oe, 0.5), { bow: 12 });
   s += curve(mid(C1, Ca, 0.5), edge(Ce, 180, 4), { bow: -40 });
-  s += curve(mid(Ce, Oel, 0.5), edge(Oel, 330, 4), { bow: -12 });
+  s += curve(mid(Ce, Oel, 0.5), edge(Oel, 10, 4), { bow: 14 });
   s += tag(ox + 236, oy + 58, 'a second acetaldehyde');
   return s;
 }
@@ -162,7 +162,7 @@ FIGURES.push({
 });
 
 /* The lesson's first picture: which two carbons join, and where the OH ends up. */
-const H_OV = 360;
+const H_OV = 372;
 function pOverview(ox, oy) {
   const C1 = A(ox + 56, oy + 96, 'CH'), Oe = A(ox + 56, oy + 48, 'O⁻', 'warn'), Ca = A(ox + 110, oy + 126, 'CH₂', 'hi'),
         Ce = A(ox + 226, oy + 126, 'CH', 'hi'), Oel = A(ox + 226, oy + 78, 'O'), Me = A(ox + 282, oy + 96, 'CH₃');
@@ -171,8 +171,8 @@ function pOverview(ox, oy) {
   s += bd(C1, Oe) + bd(C1, Ca, { order: 2 }) + bd(Ce, Oel, { order: 2 }) + bd(Ce, Me);
   s += bond(edge(Ca, 0, 2), edge(Ce, 180, 2), { rFrom: 0, rTo: 0, cls: 'fg-dash-hi' });
   s += draw(C1, Oe, Ca, Ce, Oel, Me);
-  s += tag(ox + 168, oy + 150, 'the new C–C bond');
-  s += tag(Ca.x, oy + 158 + 6, 'α carbon');
+  s += tag(ox + 168, oy + 152, 'the new C–C bond');
+  s += tag(ox + 84, oy + 150, 'α');
   s += down(ox + 170, oy + 172, oy + 200);
   s += productNumbered(ox + 6, oy + 268);
   return s;
@@ -188,7 +188,7 @@ FIGURES.push({
 });
 
 /* ================================================ E1cb dehydration ===== */
-const H_E = 270, H_E3 = 200;
+const H_E = 270, H_E3 = 220;
 
 function chainE(ox, oy, enol) {
   const Me = A(ox + 38, oy + 164, 'CH₃'), Cb = A(ox + 92, oy + 134, 'CH'), OH = A(ox + 92, oy + 84, 'OH'),
@@ -208,7 +208,7 @@ function pE1(ox, oy) {
   s += tag(ox + 120, oy + 200, 'α');
   s += curve(off(lpAt(B, 180), -3, 4), edge(Ha, 0, 4), { bow: -10 });
   s += curve(mid(Ca, Ha, 0.55), mid(Ca, C1, 0.62), { bow: 16 });
-  s += curve(mid(C1, O, 0.45), edge(O, 290, 4), { bow: -14 });
+  s += curve(mid(C1, O, 0.45), edge(O, 270, 4), { bow: -16 });
   s += tag(ox + 170, oy + 50, '3-hydroxybutanal');
   return s;
 }
@@ -320,7 +320,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Work right to left through the reaction. The highlighted carbons are the pair the aldol joined. The CH₃ highlighted in acetone is the one that became the CH₂ of the product.',
+  caption: 'Read the panels in order: the target, the water put back, then the two partners. The highlighted carbons are the pair the aldol joined. The CH₃ highlighted in acetone is the one that became the CH₂ of the product.',
 });
 
 /* ==================================================== crossed aldols ==== */
@@ -399,13 +399,13 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'One flask, four products. The highlighted bond in each is the one the aldol made. The green cell is the product a chemist usually wants: the ketone enolate adding to the aldehyde.',
+  caption: 'One flask, four products. The highlighted bond in each is the one the aldol made. The green cell, acetone&rsquo;s enolate adding to propanal, is the one strategy 2 below can make on its own.',
 });
 
 FIGURES.push({
   id: 'l-crossed-grid',
   lessons: ['aldol'],
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 290',
   alt: 'The four aldol products from acetone and propanal with base, in a two-by-two grid: the enolate of acetone attacking acetone or propanal (top row), and the enolate of propanal attacking acetone or propanal (bottom row). The new C–C bond is highlighted in each.',
   build() {
     const cw = 165, gap = 10, ch = 110;
@@ -442,8 +442,8 @@ function pAcid1(ox, oy) {
   s += lp(Op, 0);
   s += draw(Me, C, O, Ca, Ce, Op, M1, M2);
   s += curve(off(lpAt(O, 0), 2, 6), mid(C, O, 0.5), { bow: 10 });
-  s += curve(mid(C, Ca, 0.5), edge(Ce, 200, 4), { bow: 30 });
-  s += curve(mid(Ce, Op, 0.5), edge(Op, 200, 4), { bow: 12 });
+  s += curve(mid(C, Ca, 0.5), edge(Ce, 190, 4), { bow: -34 });
+  s += curve(mid(Ce, Op, 0.5), edge(Op, 180, 4), { bow: -10 });
   s += tag(ox + 90, oy + 44, 'enol');
   s += tag(ox + 238, oy + 64, 'C=O made hungrier by H⁺');
   return s;
@@ -461,7 +461,7 @@ function pAcid2(ox, oy) {
   s += lp(Op, 180) + lp(W, 180);
   s += draw(Me, C, Op, H, W, Ca, Cb, OH, M1, M2);
   s += curve(off(lpAt(W, 180), -3, 4), edge(H, 20, 4), { bow: 10 });
-  s += curve(mid(Op, H, 0.5), edge(Op, 110, 4), { bow: 12 });
+  s += curve(mid(Op, H, 0.5), edge(Op, 270, 4), { bow: 10 });
   return s;
 }
 
@@ -474,8 +474,8 @@ function pAcid3(ox, oy) {
   s += lp(O, 180) + lp(O, 0);
   s += draw(Me, C, O, Ca, Cb, Ow, M1, M2);
   s += curve(off(lpAt(O, 0), 2, 6), mid(C, O, 0.5), { bow: 10 });
-  s += curve(mid(C, Ca, 0.5), mid(Ca, Cb, 0.5), { bow: 18 });
-  s += curve(mid(Cb, Ow, 0.5), edge(Ow, 0, 4), { bow: -12 });
+  s += curve(mid(C, Ca, 0.5), mid(Ca, Cb, 0.5), { bow: -18 });
+  s += curve(mid(Cb, Ow, 0.5), edge(Ow, 35, 4), { bow: -8 });
   s += tag(ox + 146, oy + 184, 'α');
   s += tag(ox + 226, oy + 120, 'β');
   return s;
@@ -485,7 +485,7 @@ function pAcid4(ox, oy) {
   const Me = A(ox + 50, oy + 140, 'CH₃'), C = A(ox + 106, oy + 110, 'C'), O = A(ox + 106, oy + 60, 'O'),
         Ca = A(ox + 162, oy + 140, 'CH', 'hi'), Cb = A(ox + 218, oy + 110, 'C', 'hi'),
         M1 = A(ox + 218, oy + 60, 'CH₃'), M2 = A(ox + 276, oy + 140, 'CH₃');
-  let s = frameP(ox, oy, H_AC, '4 · H₂O takes the O–H proton', [['4-methylpent-3-en-2-one (mesityl oxide)', 'fg-tag-good'], '+ H₃O⁺; the conjugated enone does not come back'], 'good');
+  let s = frameP(ox, oy, H_AC, '4 · H₂O takes the O–H proton', [['4-methylpent-3-en-2-one (mesityl oxide)', 'fg-tag-good'], '+ H₃O⁺; the enone does not come back'], 'good');
   s += bd(Me, C) + bd(C, O, { order: 2 }) + bd(C, Ca) + bd(Ca, Cb, { order: 2, cls: 'fg-bond-hi' }) + bd(Cb, M1) + bd(Cb, M2);
   s += draw(Me, C, O, Ca, Cb, M1, M2);
   return s;
@@ -579,9 +579,10 @@ FIGURES.push({
     s += atom(470, 318, 'CHO', { r: 18 });
     s += tag(470, 452, 'cyclopent-1-ene-1-carbaldehyde');
 
-    s += tag(600, 376, 'a ring with a C=C conjugated', { cls: 'fg-tag-good', anchor: 'start' });
-    s += tag(600, 394, 'to a C=O: the mark of an', { cls: 'fg-tag-good', anchor: 'start' });
-    s += tag(600, 412, 'intramolecular aldol condensation', { cls: 'fg-tag-good', anchor: 'start' });
+    s += tag(652, 368, 'a ring C=C conjugated', { cls: 'fg-tag-good' });
+    s += tag(652, 386, 'with a C=O is the mark', { cls: 'fg-tag-good' });
+    s += tag(652, 404, 'of an intramolecular', { cls: 'fg-tag-good' });
+    s += tag(652, 422, 'aldol condensation', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'Top: the chain, numbered, with the one attack that closes a five-membered ring. Bottom: the ring aldol, then the enone heat makes from it.',
@@ -604,11 +605,11 @@ FIGURES.push({
     s += bond(b3, b4, { rTo: 16 });
     s += atom(b1.x, b1.y, 'CH₂', { kind: 'hi' }); s += atom(b2.x, b2.y, 'CH'); s += atom(b3.x, b3.y, 'C', { kind: 'hi' });
     s += atom(bo.x, bo.y, 'O'); s += atom(b4.x, b4.y, 'CH₃', { r: 16 });
-    s += curve(P(98, 130), P(158, 132), { bow: -22 });
+    s += curve(mid(b1, b2), mid(b2, b3), { bow: -34 });
     s += curve(P(200, 128), P(206, 92), { bow: 14 });
 
-    s += arrow(P(320, 144), P(384, 144), { muted: true });
-    s += arrow(P(384, 160), P(320, 160), { muted: true });
+    s += arrow(P(330, 152), P(390, 152));
+    s += arrow(P(390, 152), P(330, 152));
 
     const r1 = P(452, 152), r2 = P(512, 122), r3 = P(572, 152), ro = P(572, 104), r4 = P(632, 182);
     s += bond(r1, r2); s += bond(r2, r3, { order: 2 }); s += bond(r3, ro);
