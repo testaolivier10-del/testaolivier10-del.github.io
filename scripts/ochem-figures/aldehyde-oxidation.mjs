@@ -584,7 +584,7 @@ FIGURES.push({
   alt: 'Three panels showing only C1 and C2, with R for the rest of the chain. First, fructose: C1 carries two H and an OH, one H highlighted, and C2 is a ketone C=O. Second, the enediol: a C1=C2 double bond with an OH on each carbon, the OH on C2 highlighted. Third, an aldose: C1 is an aldehyde, CH=O, and C2 carries an H, highlighted, and an OH.',
   viewBox: '0 0 760 220',
   build() { return gridFigure(enediolCells, 3, 240, 204, 12, 16, 8, 8, [0, 'hi', 'good']); },
-  caption: 'Read left to right; base runs each step both ways. R is C3 to C6. The highlighted H in each panel shows where a hydrogen has moved.',
+  caption: 'Read left to right; base runs each step both ways. R is C3 to C6. The highlights mark where a hydrogen leaves (first panel) and where one arrives (second and third).',
 });
 FIGURES.push({
   id: 'l-fructose-enediol',
