@@ -104,3 +104,50 @@ confirm it.
     flat".
   - NO's unpaired electron is drawn on N, as usual; in the real molecule it is spread over both
     atoms.
+
+## Carbonyl Chemistry (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### carbonyl-conventions: drawing and naming conventions the pages grade by
+- **Status:** pending review.
+- **Where:** `aldehydes-ketones`, `nucleophilic-addition`, `acetals`, `imines-enamines`, `wittig-reaction`, `aldehyde-oxidation`.
+- **Positions taken:**
+  - Acid steps are drawn with H₃O⁺ adding a proton and water removing it, on every Carbonyl page.
+    Courses also draw a bare H⁺ or H–A/A⁻.
+  - The pages use butan-2-one, the IUPAC 2013 name. "Butanone" still appears on the IR, ¹³C NMR
+    and mass-spectrometry pages; switch those when that chapter is rewritten?
+  - "NaBH₄, CH₃OH" and "1. NaBH₄ 2. H₃O⁺" are accepted as the same reaction. The binding of the
+    alkoxide to boron, and each BH₄⁻ delivering more than one hydride, are not mentioned. The
+    hydride arrow starts on the B–H bond.
+  - Protonated acetone is called an oxocarbenium ion. Acetal formation is described as "running
+    the addition twice", a simplification.
+  - Wittig: the page teaches direct [2+2] ring closure to the oxaphosphetane. The betaine is
+    shown only as the older picture, and the page says to draw it if a course grades it.
+  - Pinnick: chlorous acid (HClO₂) is the oxidant, drawn with full octets (H–O–Cl⁺–O⁻).
+  - No mechanisms are given for Tollens', Fehling's/Benedict's or KMnO₄, because they are not
+    settled at this level.
+
+### carbonyl-contested: explanations and values that are debated or vary by source
+- **Status:** pending review.
+- **Where:** `imines-enamines`, `wittig-reaction`, `aldehyde-oxidation`.
+- **Notes:**
+  - Imines: the pH optimum (about 4–5) moves with the amine's basicity, and the figure is labelled
+    a sketch. Benzophenone is the example of a carbonyl with no α-H; benzaldehyde is a common
+    alternative.
+  - Stork enamine alkylation: methyl halides are no longer listed as working well, because MeI can
+    alkylate nitrogen. Allyl and benzyl halides may react at N first and then move to C by a
+    3-aza-Cope shift; the page does not go into it.
+  - Wittig E/Z selectivity: the page teaches reversibility for stabilized ylides, then notes the
+    kinetic (transition-state) view of Vedejs and Aggarwal/Harvey under lithium-free conditions.
+    Confirm the hedge wording.
+  - The P=O bond energy "about 130–140 kcal/mol" is kept from the old page; literature values vary.
+    "Most of the ylide's negative charge stays on carbon" is stated qualitatively.
+  - The acyl radical's stabilization by its own C=O is kept in softened form; how to explain it is
+    debated.
+  - Open-chain glucose is "well under 0.1%", matching the Hydrates page. Literature values run
+    about 0.002–0.02%.
+  - The copper tests' failure with aromatic aldehydes is stated, not explained.
+  - Outside Carbonyl: the Wittig row in the functional-group-interconversion notes still needs
+    fixing. It is left for the Synthesis chapter.

@@ -25,12 +25,13 @@
    genuinely involved but secondary. */
 (function(){
   var MAP = {
-    'acetals': { n:8, steps:{
+    'acetals': { n:13, steps:{
       1:['acetal-formation'],
-      2:['acetal-formation'],
-      4:['acetal-formation','carbonyl-electrophilicity'],
-      6:['acetal-formation'],
-      7:['acetal-formation','carbonyl-electrophilicity'] } },
+      4:['acetal-formation'],
+      6:['acetal-formation','carbonyl-electrophilicity'],
+      8:['acetal-formation'],
+      11:['acetal-formation'],
+      12:['acetal-formation','carbonyl-electrophilicity'] } },
 
     /* Step 2 is the hydration sorter: sterics and electronics read off five
        structures, which is the equilibrium concept alone. 3 and 4 are the
@@ -96,22 +97,24 @@
       6:['nitrile-as-acyl-level'],
       7:['nitrile-as-acyl-level'] } },
 
-    'hydrates-cyanohydrins': { n:8, steps:{
-      2:['addition-equilibrium'],
-      3:['addition-equilibrium','aldehyde-oxidizability'],
-      4:['addition-equilibrium','aldehyde-oxidizability'],
-      6:['addition-equilibrium','tetrahedral-intermediate'],
-      7:['addition-equilibrium','carbonyl-electrophilicity'] } },
+    'hydrates-cyanohydrins': { n:15, steps:{
+      4:['addition-equilibrium'],
+      6:['addition-equilibrium','aldehyde-oxidizability'],
+      7:['addition-equilibrium','aldehyde-oxidizability'],
+      9:['addition-equilibrium','tetrahedral-intermediate'],
+      12:['addition-equilibrium','tetrahedral-intermediate'],
+      14:['addition-equilibrium','carbonyl-electrophilicity'] } },
 
     /* Step 2 sorts five test results, 3 is why a weak oxidant is the right
        tool for a test, 4 is the hemiacetal opening, 6 the reagent choice
        under two constraints, 7 the IR-against-chemical-test contradiction. */
-    'aldehyde-oxidation': { n:8, steps:{
-      2:['aldehyde-oxidizability'],
-      3:['aldehyde-oxidizability'],
-      4:['aldehyde-oxidizability','addition-equilibrium'],
-      6:['aldehyde-oxidizability','oxidation-level'],
-      7:['aldehyde-oxidizability','addition-equilibrium'] } },
+    'aldehyde-oxidation': { n:15, steps:{
+      2:['aldehyde-oxidizability','addition-equilibrium'],
+      5:['aldehyde-oxidizability','oxidation-level'],
+      7:['aldehyde-oxidizability'],
+      9:['aldehyde-oxidizability','addition-equilibrium'],
+      12:['aldehyde-oxidizability'],
+      14:['aldehyde-oxidizability','addition-equilibrium'] } },
 
     /* Step 2 is the hands-on "find every carbon", which is the skeleton-reading
        concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
@@ -184,13 +187,19 @@
       2:['catalytic-cycle'], 3:['catalytic-cycle'], 4:['catalytic-cycle'],
       6:['catalytic-cycle'], 7:['catalytic-cycle','hard-soft-addition'] } },
 
-    'wittig-reaction': { n:8, steps:{
-      2:['alkene-by-construction'], 3:['alkene-by-construction'], 4:['alkene-by-construction'],
-      6:['alkene-by-construction'], 7:['alkene-by-construction'] } },
+    'wittig-reaction': { n:13, steps:{
+      3:['alkene-by-construction'],
+      5:['alkene-by-construction'],
+      6:['alkene-by-construction'],
+      10:['alkene-by-construction'],
+      12:['alkene-by-construction'] } },
 
-    'imines-enamines': { n:8, steps:{
-      2:['amine-condensation'], 3:['amine-condensation'], 4:['amine-condensation'],
-      6:['enamine-nucleophile'], 7:['enamine-nucleophile','amine-condensation'] } },
+    'imines-enamines': { n:12, steps:{
+      3:['amine-condensation'],
+      5:['amine-condensation'],
+      6:['amine-condensation'],
+      8:['enamine-nucleophile'],
+      11:['enamine-nucleophile','amine-condensation'] } },
 
     'michael-robinson': { n:8, steps:{
       2:['product-spacing'], 3:['product-spacing'], 4:['product-spacing'],
@@ -392,7 +401,7 @@
     'aldehydes-ketones': { n:8, steps:{
       1:['carbonyl-electrophilicity'],
       2:['carbonyl-electrophilicity','electrophile-recognition'],
-      4:['carbonyl-electrophilicity','steric-hindrance'],
+      5:['carbonyl-electrophilicity','steric-hindrance'],
       6:['carbonyl-electrophilicity','steric-hindrance'],
       7:['carbonyl-electrophilicity','steric-hindrance'] } },
 
@@ -719,12 +728,13 @@
       4:['solvent-effects','basicity-vs-nucleophilicity'],
       7:['nucleophile-recognition','electron-rich-poor'] } },
 
-    'nucleophilic-addition': { n:8, steps:{
-      1:['carbonyl-electrophilicity'],
-      2:['tetrahedral-intermediate','carbonyl-electrophilicity'],
-      4:['tetrahedral-intermediate','nucleophile-recognition'],
-      6:['tetrahedral-intermediate'],
-      7:['tetrahedral-intermediate','nucleophile-recognition'] } },
+    'nucleophilic-addition': { n:11, steps:{
+      1:['tetrahedral-intermediate','carbonyl-electrophilicity'],
+      3:['carbonyl-electrophilicity'],
+      5:['tetrahedral-intermediate','carbonyl-electrophilicity'],
+      7:['tetrahedral-intermediate','nucleophile-recognition'],
+      9:['tetrahedral-intermediate'],
+      10:['tetrahedral-intermediate','nucleophile-recognition'] } },
 
     'orbitals': { n:16, steps:{
       11:['valence-electrons'],
