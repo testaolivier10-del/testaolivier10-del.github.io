@@ -31,7 +31,7 @@ const lpAt = (a, deg, extra = 7) => {
   return P(a.x + Math.cos(r) * d, a.y + Math.sin(r) * d);
 };
 /* Point on an atom's circle, `gap` px outside it, in direction deg. */
-const edge = (a, deg, gap = 3) => lpAt(a, deg, gap - 7 + 0);
+const edge = (a, deg, gap = 3) => lpAt(a, deg, gap);
 const it = (s) => `<tspan font-style="italic">${s}</tspan>`;
 /* Text that may carry an italic tspan. */
 const rich = (x, y, html, cls = 'fg-tag') =>
@@ -305,8 +305,6 @@ FIGURES.push({
       const ox = 0, oy = 230 + GAP, w = PW * 2 + GAP;
       s += panel(ox, oy, w, 210, { kind: 'good' });
       s += tag(w / 2, oy + 20, '2 · each side gets a C=O back');
-      const Ma = A(ox + 90, oy + 120, 'CH₃'), Ca = A(ox + 150, oy + 120, 'CH₃', 'hi'), C2 = A(ox + 120, oy + 90, 'C'),
-            O = A(ox + 120, oy + 44 + 4, 'O');
       // acetone drawn as a V: CH3–C(=O)–CH3
       const L = A(ox + 70, oy + 116, 'CH₃', 'hi'), Cc = A(ox + 130, oy + 86, 'C'), Oc = A(ox + 130, oy + 40 + 6, 'O'), R = A(ox + 190, oy + 116, 'CH₃');
       s += bd(L, Cc) + bd(Cc, Oc, { order: 2 }) + bd(Cc, R) + draw(L, Cc, Oc, R);
@@ -319,7 +317,6 @@ FIGURES.push({
       s += tag(ox + 500, oy + 150, 'benzaldehyde: the β side');
       s += tag(ox + 500, oy + 168, 'its C=O carbon was attacked, so it was');
       s += tag(ox + 500, oy + 186, 'the electrophile', { cls: 'fg-tag-good' });
-      void Ma; void Ca; void C2; void O;
     }
     return s;
   },
@@ -461,9 +458,9 @@ function pAcid2(ox, oy) {
   let s = frameP(ox, oy, H_AC, '2 · H₂O takes the proton from oxygen', [['4-hydroxy-4-methylpentan-2-one', 'fg-tag-good'], '+ H₃O⁺: the acid comes back']);
   s += bd(Me, C) + bd(C, Op, { order: 2 }) + bd(Op, H, { cls: 'fg-bond-hi' }) + bd(C, Ca) + bd(Ca, Cb, { cls: 'fg-bond-hi' });
   s += bd(Cb, OH) + bd(Cb, M1) + bd(Cb, M2);
-  s += lp(Op, 180) + lp(W, 90);
+  s += lp(Op, 180) + lp(W, 180);
   s += draw(Me, C, Op, H, W, Ca, Cb, OH, M1, M2);
-  s += curve(off(lpAt(W, 90), -6, 2), edge(H, 70, 4), { bow: -10 });
+  s += curve(off(lpAt(W, 180), -3, 4), edge(H, 20, 4), { bow: 10 });
   s += curve(mid(Op, H, 0.5), edge(Op, 110, 4), { bow: 12 });
   return s;
 }
