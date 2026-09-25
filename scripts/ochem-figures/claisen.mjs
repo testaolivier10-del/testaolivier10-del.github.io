@@ -203,7 +203,7 @@ FIGURES.push({
     s += gapArrow(P(510, 244), P(170, 254));
     return s;
   },
-  caption: 'Read the panels left to right, top row first. Panels 2 and 3 are the addition and the loss of the leaving group from nucleophilic acyl substitution, with an enolate as the nucleophile.',
+  caption: 'Read the panels left to right, top row first. Each curved arrow starts at a lone pair or a bond and ends where those electrons go.',
 });
 
 FIGURES.push({
@@ -280,7 +280,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Top: one anion, three contributors, and two of them put the charge on an oxygen. Bottom: the product sits five pKₐ units below ethanol, so ethoxide takes its proton almost completely.',
+  caption: 'Top: the three contributors of one anion. Bottom: the three acids that matter here, on one pKₐ scale.',
 });
 
 FIGURES.push({

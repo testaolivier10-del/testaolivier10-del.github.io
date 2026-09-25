@@ -108,12 +108,13 @@
     /* Step 2 sorts five test results, 3 is why a weak oxidant is the right
        tool for a test, 4 is the hemiacetal opening, 6 the reagent choice
        under two constraints, 7 the IR-against-chemical-test contradiction. */
-    'aldehyde-oxidation': { n:8, steps:{
-      2:['aldehyde-oxidizability'],
-      3:['aldehyde-oxidizability'],
-      4:['aldehyde-oxidizability','addition-equilibrium'],
-      6:['aldehyde-oxidizability','oxidation-level'],
-      7:['aldehyde-oxidizability','addition-equilibrium'] } },
+    'aldehyde-oxidation': { n:15, steps:{
+      2:['aldehyde-oxidizability','addition-equilibrium'],
+      5:['aldehyde-oxidizability','oxidation-level'],
+      7:['aldehyde-oxidizability'],
+      9:['aldehyde-oxidizability','addition-equilibrium'],
+      12:['aldehyde-oxidizability'],
+      14:['aldehyde-oxidizability','addition-equilibrium'] } },
 
     /* Step 2 is the hands-on "find every carbon", which is the skeleton-reading
        concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
