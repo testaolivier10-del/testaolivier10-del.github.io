@@ -25,12 +25,13 @@
    genuinely involved but secondary. */
 (function(){
   var MAP = {
-    'acetals': { n:8, steps:{
+    'acetals': { n:13, steps:{
       1:['acetal-formation'],
-      2:['acetal-formation'],
-      4:['acetal-formation','carbonyl-electrophilicity'],
-      6:['acetal-formation'],
-      7:['acetal-formation','carbonyl-electrophilicity'] } },
+      4:['acetal-formation'],
+      6:['acetal-formation','carbonyl-electrophilicity'],
+      8:['acetal-formation'],
+      11:['acetal-formation'],
+      12:['acetal-formation','carbonyl-electrophilicity'] } },
 
     /* Step 2 is the hydration sorter: sterics and electronics read off five
        structures, which is the equilibrium concept alone. 3 and 4 are the

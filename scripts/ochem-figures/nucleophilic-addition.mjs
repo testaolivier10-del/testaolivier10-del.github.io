@@ -110,7 +110,7 @@ FIGURES.push({
     s += curve(P(214, 346), P(242, 358), { bow: 10 });
     s += tg(252, 438, 'tetrahedral', 'mut');
     s += tg(252, 456, 'sp³ carbon', 'mut');
-    s += tg(252, 474, 'bond angles 109.5°', 'mut');
+    s += tg(252, 474, 'bond angles ≈109.5°', 'mut');
 
     // ---- panel 3: the product ----
     s += box(548, 264, 'PRODUCT · ACETONE CYANOHYDRIN');
@@ -178,9 +178,9 @@ FIGURES.push({
     const b2 = P(80, 562), I2 = inter(b2);
     s += I2.g;
     const y2 = armEnd(b2, 270, 52);
-    s += bond(b2, y2, { rFrom: 14, rTo: 14 }) + A(y2, 'Y');
+    s += hash(b2, y2, { rFrom: 14, rTo: 14, width: 11, rungs: 4 }) + A(y2, 'Y');
     s += curve(P(I2.o.x + 22, I2.o.y + 2), P(I2.o.x + 8, I2.o.y + 32), { bow: -14 });
-    s += curve(P(b2.x + 6, b2.y + 26), P(y2.x + 18, y2.y - 6), { bow: -10 });
+    s += curve(P(b2.x + 8, b2.y + 26), P(y2.x + 18, y2.y - 6), { bow: -10 });
     s += arrow(P(168, 568), P(212, 568), { muted: true });
     s += tg(276, 552, 'C=O is back,', 'good');
     s += tg(276, 570, 'Y⁻ has left', 'good');
@@ -353,7 +353,7 @@ FIGURES.push({
   section: 'nucleophilic-addition',
   lessons: ['nucleophilic-addition'],
   anchor: '<h3>Grignard reagents: a carbon nucleophile</h3>',
-  alt: 'Three stacked panels. First, propanal with methylmagnesium bromide below it: the arrow starts on the C–Mg bond and ends on the carbonyl carbon, making a new carbon–carbon bond, and a second arrow moves the pi bond onto oxygen. Second, the magnesium alkoxide, with the new CH3 on a wedge; after the reaction, H3O+ is added, and a lone pair on the O minus takes its proton. Third, butan-2-ol, a secondary alcohol.',
+  alt: 'Three stacked panels. First, propanal with methylmagnesium bromide below it: the arrow starts on the C–Mg bond and ends on the carbonyl carbon, making a new carbon–carbon bond, and a second arrow moves the pi bond onto oxygen. Second, the magnesium alkoxide, with the new CH3 highlighted; after the reaction, H3O+ is added, and a lone pair on the O minus takes its proton. Third, butan-2-ol, a secondary alcohol, formed as a racemic mixture.',
   viewBox: '0 0 340 660',
   build() {
     let s = '';
@@ -383,7 +383,7 @@ FIGURES.push({
     s += box(230, 226, 'STEP 2 · LATER, H₃O⁺ IS ADDED');
     const c2 = P(110, 354), p2 = propanal(c2, true);
     s += p2.g;
-    s += arm(c2, 'C', 270, 52, 'CH₃', 'wedge', 'hi').s;
+    s += arm(c2, 'C', 270, 52, 'CH₃', 'plain', 'hi').s;
     s += A(p2.o, 'O', 'hi') + A(c2, 'C', 'warn');
     s += lonePair(p2.o.x, p2.o.y, 270, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 180, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 0, { dist: 21 });
     s += chg(90, 274, '−');
@@ -402,11 +402,12 @@ FIGURES.push({
     s += box(464, 186, 'PRODUCT · BUTAN-2-OL');
     const c3 = P(110, 580), p3 = propanal(c3, true);
     s += p3.g;
-    s += arm(c3, 'C', 270, 50, 'CH₃', 'wedge', 'hi').s;
+    s += arm(c3, 'C', 270, 50, 'CH₃', 'plain', 'hi').s;
     s += A(p3.o, 'OH') + A(c3, 'C', 'warn');
     s += tg(254, 572, 'secondary (2°)', 'good');
     s += tg(254, 590, 'alcohol', 'good');
     s += tg(254, 614, 'new C–C bond', 'mut');
+    s += tg(254, 632, 'racemic', 'mut');
     return s;
   },
   caption: 'Propanal and methylmagnesium bromide. Set it beside the borohydride figure: the arrows match, and only the group that moves to carbon differs.',
@@ -418,13 +419,32 @@ FIGURES.push({
   id: 'ester-grignard',
   section: 'nucleophilic-addition',
   anchor: 'is where that branch is taught in full.</p>',
-  alt: 'Three stacked panels for methyl propanoate with two equivalents of methylmagnesium bromide. First, the tetrahedral intermediate from the first addition: the O minus lone pair moves back down to re-form the C=O, and the C–OCH3 bond breaks so methoxide leaves. Second, the ketone that forms, butan-2-one, is attacked by a second CH3MgBr, with the arrow starting on the C–Mg bond. Third, after H3O+ workup, 2-methylbutan-2-ol, a tertiary alcohol whose two highlighted methyl groups both came from the Grignard reagent.',
-  viewBox: '0 0 340 684',
+  alt: 'Four stacked panels for methyl propanoate with two equivalents of methylmagnesium bromide. First, methyl propanoate and CH3MgBr: the arrow starts on the C–Mg bond and ends on the carbonyl carbon, and a second arrow moves the pi bond onto oxygen. Second, the tetrahedral intermediate: the O minus lone pair moves back down to re-form the C=O, and the C–OCH3 bond breaks so methoxide leaves. Third, the ketone that forms, butan-2-one, is attacked by a second CH3MgBr. Fourth, after H3O+ workup, 2-methylbutan-2-ol, a tertiary alcohol whose two highlighted methyl groups both came from the Grignard reagent.',
+  viewBox: '0 0 340 924',
   build() {
     let s = '';
-    // ---- 1. collapse ----
-    s += box(8, 228, 'FIRST CH₃ IN · THE INTERMEDIATE COLLAPSES');
-    const c1 = P(130, 140), o1 = armEnd(c1, 90, 58);
+    const grig = (y) => {
+      const me = P(130, y), mg = P(196, y), br = P(254, y);
+      return B(me, 'CH₃', mg, 'Mg') + B(mg, 'Mg', br, 'Br') + A(me, 'CH₃', 'hi') + A(mg, 'Mg') + A(br, 'Br');
+    };
+    // ---- 1. the ester meets the first CH3MgBr ----
+    s += box(8, 232, 'THE ESTER MEETS THE FIRST CH₃MgBr');
+    const c0 = P(130, 118), o0 = armEnd(c0, 90, 58);
+    s += B(c0, 'C', o0, 'O', { order: 2 });
+    s += ethyl(c0, 'C', 210, -60).s;
+    const oe = armEnd(c0, 330, 50), me0 = armEnd(oe, 30, 46);
+    s += B(c0, 'C', oe, 'O') + B(oe, 'O', me0, 'CH₃') + A(oe, 'O') + A(me0, 'CH₃');
+    s += lonePair(oe.x, oe.y, 90, { dist: 21 }) + lonePair(oe.x, oe.y, 180, { dist: 21 });
+    s += A(o0, 'O') + A(c0, 'C', 'warn');
+    s += lonePair(o0.x, o0.y, 315, { dist: 21 }) + lonePair(o0.x, o0.y, 225, { dist: 21 });
+    s += curve(P(136, 96), P(144, 64), { bow: 12 });
+    s += grig(200);
+    s += curve(P(164, 194), P(140, 136), { bow: 14 });
+    s += tg(262, 50, 'methyl propanoate', 'mut');
+
+    // ---- 2. collapse ----
+    s += box(248, 228, 'THE INTERMEDIATE COLLAPSES');
+    const c1 = P(130, 380), o1 = armEnd(c1, 90, 58);
     s += B(c1, 'C', o1, 'O');
     s += ethyl(c1, 'C', 210, -60).s;
     s += arm(c1, 'C', 330, 50, 'CH₃', 'wedge', 'hi').s;
@@ -436,34 +456,34 @@ FIGURES.push({
     s += chg(o1.x - 28, o1.y - 26, '−');
     s += curve(P(o1.x + 22, o1.y + 2), P(o1.x + 8, o1.y + 32), { bow: -14 });
     s += curve(P(c1.x + 6, c1.y + 24), P(om.x + 16, om.y - 8), { bow: -10 });
-    s += tg(262, 130, 'tetrahedral', 'mut');
-    s += tg(262, 148, 'intermediate', 'mut');
-    s += tg(262, 200, 'CH₃O⁻ leaves', 'mut');
+    s += tg(262, 370, 'tetrahedral', 'mut');
+    s += tg(262, 388, 'intermediate', 'mut');
+    s += tg(262, 440, 'CH₃O⁻ leaves', 'mut');
 
-    // ---- 2. second addition to the ketone ----
-    s += box(244, 232, 'THE KETONE MEETS A SECOND CH₃MgBr');
-    const c2 = P(130, 350), o2 = armEnd(c2, 90, 58);
+    // ---- 3. second addition to the ketone ----
+    s += box(484, 232, 'THE KETONE MEETS A SECOND CH₃MgBr');
+    const c2 = P(130, 590), o2 = armEnd(c2, 90, 58);
     s += B(c2, 'C', o2, 'O', { order: 2 });
     s += ethyl(c2, 'C', 210, -60).s;
     s += arm(c2, 'C', 330, 50, 'CH₃', 'plain', 'hi').s;
     s += A(o2, 'O') + A(c2, 'C', 'warn');
     s += lonePair(o2.x, o2.y, 315, { dist: 21 }) + lonePair(o2.x, o2.y, 225, { dist: 21 });
-    s += curve(P(136, 328), P(144, 296), { bow: 12 });
-    const me = P(130, 430), mg = P(196, 430), br = P(254, 430);
-    s += B(me, 'CH₃', mg, 'Mg') + B(mg, 'Mg', br, 'Br') + A(me, 'CH₃', 'hi') + A(mg, 'Mg') + A(br, 'Br');
-    s += curve(P(164, 424), P(140, 368), { bow: 14 });
-    s += tg(262, 300, 'butan-2-one', 'mut');
+    s += curve(P(136, 568), P(144, 536), { bow: 12 });
+    s += grig(670);
+    s += curve(P(164, 664), P(140, 608), { bow: 14 });
+    s += tg(262, 540, 'butan-2-one', 'mut');
 
-    // ---- 3. product ----
-    s += box(484, 192, 'AFTER H₃O⁺ WORKUP');
-    const c3 = P(130, 590), o3 = armEnd(c3, 90, 56);
+    // ---- 4. product ----
+    s += box(724, 192, 'AFTER H₃O⁺ WORKUP');
+    const c3 = P(130, 830), o3 = armEnd(c3, 90, 56);
     s += B(c3, 'C', o3, 'OH');
     s += ethyl(c3, 'C', 210, -60).s;
     s += arm(c3, 'C', 330, 50, 'CH₃', 'plain', 'hi').s;
     s += arm(c3, 'C', 270, 48, 'CH₃', 'wedge', 'hi').s;
     s += A(o3, 'OH') + A(c3, 'C', 'warn');
-    s += tg(262, 610, '3° alcohol', 'good');
-    s += tg(262, 628, 'two new CH₃', 'good');
+    s += tg(262, 832, '2-methylbutan-2-ol', 'good');
+    s += tg(262, 850, '3° alcohol,', 'good');
+    s += tg(262, 868, 'two new CH₃', 'good');
     return s;
   },
   caption: 'Methyl propanoate with two CH₃MgBr. Both highlighted CH₃ groups in the product came from the Grignard reagent.',
