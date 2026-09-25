@@ -208,7 +208,7 @@ const jonesCells = [
     s += curve(P(o.x + 22, o.y + 4), P(cr.x - 12, cr.y + 22), { bow: 12, size: 7 });
     return s;
   }],
-  ['THE CARBOXYLIC ACID', 'Cr(IV) goes on to Cr(III): orange → green', (Q) => {
+  ['THE CARBOXYLIC ACID', 'one H traded for one OH', (Q) => {
     const c = Q(96, 112);
     const m = rCarbon(c, [
       { deg: 90, len: 50, l: 'O', order: 2 },
@@ -437,7 +437,7 @@ const silverCell = ['SILVER(I) IS REDUCED', 'Ag⁺ + e⁻ → Ag, twice: the mir
   let s = B(n1, ag, 'H₃N', 'Ag') + B(ag, n2, 'Ag', 'NH₃');
   s += A(n1, 'H₃N', { r: 19 }) + A(ag, 'Ag', { kind: 'warn' }) + A(n2, 'NH₃', { r: 19 });
   const bl = Q(38, 48), br = Q(206, 48);
-  const brk = (x, y, d) => `<path class="fg-bond" d="M${x + d} ${y} L${x} ${y} L${x} ${y + 60} L${x + d} ${y + 60}"></path>`;
+  const brk = (x, y, d) => `<path class="fg-bond" d="M${x + d} ${y} L${x} ${y} L${x} ${y + 44} L${x + d} ${y + 44}"></path>`;
   s += brk(bl.x, bl.y, 6) + brk(br.x, br.y, -6);
   s += charge(Q, 216, 52, '+');
   s += Tg(Q, 122, 106, 'diamminesilver(I), linear');

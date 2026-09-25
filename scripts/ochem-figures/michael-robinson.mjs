@@ -52,6 +52,12 @@ const dash = (a, b, cls = 'fg-dash-hi') => {
 };
 /* C=O drawn from a skeletal vertex p along screen angle deg. */
 const carbonyl = (p, deg, len = 40) => { const q = polar(p, deg, len); const O = A(q.x, q.y, 'O'); return bd(p, O, { order: 2 }) + draw(O); };
+/* A carbanion drawn on a skeletal vertex: a lone pair pointing along screen
+   angle lpDeg (y down, as lonePair takes it) and a minus sign beside it. */
+const anion = (p, lpDeg, chargeDeg) => lonePair(p.x, p.y, lpDeg, { dist: 11, spread: 4 }) +
+  text(polar(p, chargeDeg, 15).x, polar(p, chargeDeg, 15).y + 5, '−', { cls: 'fg-lbl', size: 13 });
+/* The point a curved arrow should start from: just past the lone pair. */
+const lpStart = (p, lpDeg, d = 16) => P(p.x + Math.cos(lpDeg * Math.PI / 180) * d, p.y + Math.sin(lpDeg * Math.PI / 180) * d);
 const frame = (ox, oy, w, h, title, kind) => panel(ox, oy, w, h, kind ? { kind } : {}) + tag(ox + w / 2, oy + 20, title);
 const down = (x, y1, y2) => arrow(P(x, y1), P(x, y2), { size: 7 });
 const right = (y, x1, x2) => arrow(P(x1, y), P(x2, y), { size: 7 });
@@ -124,11 +130,11 @@ function mProt(ox, oy) {
   const R = A(ox + 40, oy + 150, 'R');
   const Cb = A(ox + 92, oy + 124, 'CH₂'), Ca = A(ox + 144, oy + 150, 'CH', 'hi');
   const Cc = A(ox + 196, oy + 124, 'C'), Om = A(ox + 196, oy + 76, 'O⁻', 'warn'), Me = A(ox + 248, oy + 150, 'CH₃');
-  const H = A(ox + 144, oy + 192, 'H', 'warn', 12), OEt = A(ox + 206, oy + 192, 'OEt');
+  const H = A(ox + 164, oy + 194, 'H', 'warn', 12), OEt = A(ox + 226, oy + 194, 'OEt');
   s += bd(R, Cb) + bd(Cb, Ca) + bd(Ca, Cc, { order: 2 }) + bd(Cc, Om) + bd(Cc, Me) + bd(H, OEt);
   s += draw(R, Cb, Ca, Cc, Om, Me, H, OEt);
-  s += curve(mid(Ca, Cc), o(154, 178), { bow: 14 });
-  s += curve(mid(H, OEt), o(197, 178), { bow: -10 });
+  s += curve(mid(Ca, Cc, 0.5), o(164, 180), { bow: -8 });
+  s += curve(mid(H, OEt), o(217, 180), { bow: -10 });
   s += tag(ox + 64, oy + 60, 'R = (CH₃CO)₂CH', { anchor: 'start' });
   s += tag(ox + PW / 2, oy + 222, 'ethanol puts an H on the α carbon');
   return s;
@@ -168,7 +174,7 @@ FIGURES.push({
   viewBox: '0 0 340 494',
   alt: 'Two stacked panels. Top: the anion of pentane-2,4-dione adds to the CH2 end (the beta carbon) of methyl vinyl ketone; the C=C pi electrons shift toward the carbonyl and the C=O pi electrons move onto oxygen. Bottom: the product after protonation, 3-acetylheptane-2,6-dione, with carbons 1 to 5 numbered from one C=O carbon to the other; the new bond is 2–3.',
   build() {
-    return mAdd(10, 6) + down(170, 242, 258) + mProduct(10, 258);
+    return (mAdd(10, 6) + down(170, 242, 258) + mProduct(10, 258)).replace('2 · the anion', '1 · the anion').replace('4 · the product', '2 · the product');
   },
   caption: 'Top: the new bond forms at the β carbon. Bottom: count from one C=O carbon to the other.',
 });
@@ -272,18 +278,18 @@ function rMichael(ox, oy, dione = false) {
     const Me = A(C2.x + 20, C2.y + 36, 'CH₃');
     s += bd(C2, Me) + draw(Me);
   }
-  const C3 = A(ox + 160, oy + 150, 'CH₂', 'warn'), C4 = A(ox + 206, oy + 124, 'CH');
-  const C5 = A(ox + 252, oy + 150, 'C'), O5 = A(ox + 252, oy + 102, 'O'), C6 = A(ox + 294, oy + 124, 'CH₃');
+  const C3 = A(ox + 160, oy + 124, 'CH₂', 'warn'), C4 = A(ox + 206, oy + 150, 'CH');
+  const C5 = A(ox + 252, oy + 124, 'C'), O5 = A(ox + 252, oy + 76, 'O'), C6 = A(ox + 296, oy + 150, 'CH₃');
   s += bd(C3, C4, { order: 2 }) + bd(C4, C5) + bd(C5, O5, { order: 2 }) + bd(C5, C6);
   const ang = Math.atan2(C3.y - C2.y, C3.x - C2.x) * 180 / Math.PI;
   s += lonePair(C2.x, C2.y, ang, { dist: C2.r + 6 });
   s += draw(C2, C3, C4, C5, O5, C6);
   const lp = P(C2.x + Math.cos(ang * Math.PI / 180) * (C2.r + 9), C2.y + Math.sin(ang * Math.PI / 180) * (C2.r + 9));
   s += curve(lp, toward(C3, C2, C3.r + 2), { bow: -8 });
-  s += curve(mid(C3, C4), mid(C4, C5), { bow: 16 });
-  s += curve(mid(C5, O5), o(270, 92), { bow: 10 });
-  s += numIn(C1, c, '1', 15) + numIn(C2, c, '2', 24);
-  s += num(C3.x, C3.y + 28, '3') + num(C4.x, C4.y - 26, '4') + num(C5.x, C5.y + 28, '5') + num(C6.x, C6.y + 28, '6');
+  s += curve(mid(C3, C4), mid(C4, C5), { bow: -16 });
+  s += curve(mid(C5, O5), o(270, 66), { bow: 10 });
+  s += numIn(C1, c, '1', 16) + numIn(C2, c, '2', 31);
+  s += num(C3.x, C3.y - 28, '3') + num(C4.x, C4.y + 28, '4') + num(C5.x, C5.y + 22, '5') + num(C6.x, C6.y + 28, '6');
   s += tag(ox + PW / 2, oy + 224, dione ? '2-methylcyclohexane-1,3-dione + MVK' : 'cyclohexanone anion + methyl vinyl ketone');
   return s;
 }
@@ -295,8 +301,8 @@ function rAdduct(ox, oy) {
   s += g.ringA() + sk(g.c2, g.c3, true) + sk(g.c3, g.c4) + sk(g.c4, g.c5) + sk(g.c5, g.c6);
   s += carbonyl(g.c1, 90, 40) + carbonyl(g.c5, 30);
   s += g.nums();
-  s += tag(ox + 262, oy + 58, 'carbon 6:');
-  s += tag(ox + 262, oy + 74, 'the α′ carbon');
+  s += tag(ox + 54, oy + 48, 'carbon 6 is');
+  s += tag(ox + 54, oy + 64, 'the α′ carbon');
   s += tag(ox + PW / 2, oy + 224, 'C=O at 1 and 5, three carbons between');
   return s;
 }
@@ -306,16 +312,16 @@ function rAldol(ox, oy) {
   const o = (x, y) => P(ox + x, oy + y);
   let s = frame(ox, oy, PW, RH, '3 · aldol: carbon 6 attacks carbon 1', 'hi');
   const g = fused(ox, oy, 128);
-  const C6 = A(g.c6.x, g.c6.y, 'CH₂⁻', 'hi');
-  s += g.ringA() + sk(g.c2, g.c3) + sk(g.c3, g.c4) + sk(g.c4, g.c5) + bd(g.c5, C6);
+  const C6 = g.c6;
+  s += g.ringA() + sk(g.c2, g.c3) + sk(g.c3, g.c4) + sk(g.c4, g.c5) + sk(g.c5, C6);
   const O1 = A(g.c1.x, g.c1.y - 40, 'O');
   s += bd(g.c1, O1, { order: 2 }) + carbonyl(g.c5, 30);
   s += dash(C6, g.c1);
-  s += lonePair(C6.x, C6.y, 180, { dist: C6.r + 5 });
-  s += draw(C6, O1);
-  s += curve(P(C6.x - C6.r - 9, C6.y + 1), toward(g.c1, C6, 4), { bow: -12 });
-  s += curve(mid(g.c1, O1), P(O1.x - 17, O1.y + 4), { bow: 10 });
-  s += g.nums([1, 2, 3, 4, 5]) + numIn(g.c6, g.cB, '6', 28);
+  s += anion(C6, 150, 45);
+  s += draw(O1);
+  s += curve(lpStart(C6, 150), P(g.c1.x + 7, g.c1.y + 6), { bow: -10 });
+  s += curve(mid(g.c1, O1), P(O1.x - 17, O1.y + 6), { bow: 10 });
+  s += g.nums([2, 3, 4, 5, 6]) + numIn(g.c1, g.cB, '1', 27);
   s += tag(ox + PW / 2, oy + 224, 'the dashed bond closes a ring of six');
   void o;
   return s;
@@ -380,7 +386,7 @@ FIGURES.push({
   viewBox: '0 0 340 752',
   alt: 'Three stacked panels, with the atoms of the new ring numbered 1 to 6. Top: the anion of cyclohexanone at ring carbon 2 adds to carbon 3, the CH2 end of methyl vinyl ketone. Middle: in the Michael product, an anion on carbon 6 (the methyl) attacks the ring C=O carbon 1; a dashed line marks the bond that forms, closing a ring of six. Bottom: after dehydration, the cyclohexenone, with a C=C between carbons 1 and 6 conjugated with the C=O at 5.',
   build() {
-    return rMichael(10, 6) + down(170, 244, 256) + rAldol(10, 258) + down(170, 496, 508) + rEnone(10, 510);
+    return (rMichael(10, 6) + down(170, 244, 256) + rAldol(10, 258) + down(170, 496, 508) + rEnone(10, 510)).replace('3 · aldol', '2 · aldol').replace('5 · the product', '3 · the product');
   },
   caption: 'The numbers follow the atoms of the new ring. The bonds made are 2–3, then 6–1, then the C=C 1=6.',
 });
@@ -388,41 +394,35 @@ FIGURES.push({
 /* ===================================== why the new ring has six atoms == */
 function cSix(ox, oy) {
   let s = frame(ox, oy, PW, RH, 'outer α carbon 6 attacks C=O carbon 1', 'good');
-  const c = P(ox + 150, oy + 130);
-  const v = (deg) => polar(c, deg, 46);
-  const p1 = v(150), p2 = v(210), p3 = v(270), p4 = v(330), p5 = v(30);
-  const C6 = A(v(90).x, v(90).y, 'CH₂⁻', 'hi');
-  s += sk(p1, p2) + sk(p2, p3) + sk(p3, p4) + sk(p4, p5) + bd(p5, C6);
-  const O1 = A(p1.x - 40, p1.y, 'O');
-  s += bd(p1, O1, { order: 2 }) + sk(p1, polar(p1, 120, 30)) + carbonyl(p5, 30);
-  s += dash(C6, p1);
-  s += lonePair(C6.x, C6.y, 150, { dist: C6.r + 5 });
-  s += draw(C6, O1);
-  const lp = polar(C6, 210, C6.r + 9);
-  s += curve(P(lp.x, lp.y), toward(p1, C6, 5), { bow: -10 });
-  s += curve(mid(p1, O1), P(O1.x + 4, O1.y + 17), { bow: -10 });
-  [p1, p2, p3, p4, p5].forEach((p, i) => { s += numIn(p, c, String(i + 1), 15); });
-  s += numIn(v(90), c, '6', 28);
+  const c = P(ox + 160, oy + 134);
+  const v = (deg) => polar(c, deg, 50);
+  const p1 = v(150), p2 = v(210), p3 = v(270), p4 = v(330), p5 = v(30), p6 = v(90);
+  s += sk(p1, p2) + sk(p2, p3) + sk(p3, p4) + sk(p4, p5) + sk(p5, p6);
+  const O1 = A(p1.x - 42, p1.y, 'O');
+  s += bd(p1, O1, { order: 2 }) + draw(O1) + sk(p1, polar(p1, 115, 32)) + carbonyl(p5, 30);
+  s += dash(p6, p1);
+  s += anion(p6, 150, 45);
+  s += curve(lpStart(p6, 150), P(p1.x + 7, p1.y + 6), { bow: -10 });
+  s += curve(mid(p1, O1), P(O1.x + 4, O1.y + 17), { bow: -12 });
+  [p1, p2, p3, p4, p5, p6].forEach((p, i) => { s += numIn(p, c, String(i + 1), i === 0 ? 27 : 16); });
   s += tag(ox + PW / 2, oy + 224, 'ring 1-2-3-4-5-6: six atoms', { cls: 'fg-tag-good' });
   return s;
 }
 
 function cFour(ox, oy) {
   let s = frame(ox, oy, PW, RH, 'inner α carbon 2 attacks C=O carbon 5', 'warn');
-  const C2 = A(ox + 130, oy + 104, 'CH⁻', 'warn');
-  const p3 = P(ox + 130, oy + 162), p4 = P(ox + 190, oy + 162), p5 = P(ox + 190, oy + 104);
-  const p1 = P(ox + 94, oy + 76), me1 = P(ox + 58, oy + 96), me6 = P(ox + 232, oy + 124);
-  s += bd(C2, p3) + sk(p3, p4) + sk(p4, p5) + bd(C2, p1) + sk(p1, me1) + sk(p5, me6);
+  const p2 = P(ox + 126, oy + 108), p3 = P(ox + 126, oy + 178), p4 = P(ox + 196, oy + 178), p5 = P(ox + 196, oy + 108);
+  const p1 = P(ox + 90, oy + 82), me1 = P(ox + 52, oy + 100), p6 = P(ox + 240, oy + 128);
+  s += sk(p2, p3) + sk(p3, p4) + sk(p4, p5) + sk(p2, p1) + sk(p1, me1) + sk(p5, p6);
   s += carbonyl(p1, 90, 38);
-  const O5 = A(p5.x + 26, p5.y - 32, 'O');
+  const O5 = A(p5.x + 22, p5.y - 36, 'O');
   s += bd(p5, O5, { order: 2 }) + draw(O5);
-  s += dash(C2, p5, 'fg-dash');
-  s += lonePair(C2.x, C2.y, 0, { dist: C2.r + 5 });
-  s += draw(C2);
-  s += curve(P(C2.x + C2.r + 9, C2.y - 2), toward(p5, C2, 5), { bow: -10 });
-  s += curve(mid(p5, O5), P(O5.x + 17, O5.y + 4), { bow: 8 });
-  const c = P(ox + 160, oy + 133);
-  s += num(p1.x + 16, p1.y + 12, '1') + numIn(C2, c, '2', 26) + numIn(p3, c, '3', 14) + numIn(p4, c, '4', 14) + numIn(p5, c, '5', 14) + num(me6.x + 4, me6.y + 18, '6');
+  s += dash(p2, p5, 'fg-dash');
+  s += anion(p2, 0, 120);
+  s += curve(lpStart(p2, 0), toward(p5, p2, 6), { bow: -12 });
+  s += curve(mid(p5, O5), P(O5.x + 17, O5.y + 6), { bow: 8 });
+  const c = P(ox + 161, oy + 143);
+  s += num(p1.x + 4, p1.y + 22, '1') + numIn(p2, c, '2', 16) + numIn(p3, c, '3', 16) + numIn(p4, c, '4', 16) + numIn(p5, c, '5', 16) + num(p6.x + 2, p6.y + 18, '6');
   s += tag(ox + PW / 2, oy + 224, 'ring 2-3-4-5: four atoms, too strained', { cls: 'fg-tag-warn' });
   return s;
 }
@@ -525,7 +525,6 @@ function wFused(ox, oy) {
   const Me = A(g.c2.x, g.c2.y + 40, 'CH₃');
   s += bd(g.c2, Me) + draw(Me);
   s += dash(g.c6, g.c1);
-  s += curve(P(g.c6.x - 4, g.c6.y - 10), P(g.c1.x + 6, g.c1.y - 12), { bow: 8 });
   s += g.nums();
   s += text(g.a210.x - 14, g.a210.y + 16, 'x', { cls: 'fg-tag-warn', size: 11 });
   s += tag(ox + 250, oy + 214, 'shares one bond,', { cls: 'fg-tag-good' });
@@ -545,14 +544,14 @@ function wBridged(ox, oy) {
   s += sk(B1, L[0]) + sk(L[0], L[1]) + sk(L[1], L[2]) + sk(L[2], B2);
   s += sk(B1, R[0]) + sk(R[0], R[1]) + sk(R[1], R[2]) + sk(R[2], B2, true);
   s += sk(B1, Cm) + sk(Cm, B2);
-  const Om = A(c.x + 32, c.y, 'O');
+  const Om = A(c.x - 32, c.y, 'O');
   s += bd(Cm, Om, { order: 2 }) + draw(Om);
   s += carbonyl(L[0], 135, 36);
   const Me = A(B1.x, B1.y - 34, 'CH₃');
   s += bd(B1, Me) + draw(Me);
   const OH = A(R[2].x + 22, R[2].y + 30, 'OH');
   s += bd(R[2], OH) + draw(OH) + sk(R[2], polar(R[2], 10, 30));
-  s += numIn(L[0], c, '1', 15) + num(B1.x + 14, B1.y + 16, '2') + numIn(R[0], c, '3', 15) + numIn(R[1], c, '4', 15) + numIn(R[2], c, '5', 15);
+  s += numIn(L[0], c, '1', 15) + num(B1.x - 13, B1.y + 17, '2') + numIn(R[0], c, '3', 15) + numIn(R[1], c, '4', 15) + numIn(R[2], c, '5', 15);
   s += text(B2.x - 12, B2.y + 18, 'x', { cls: 'fg-tag-warn', size: 11 });
   s += tag(ox + PW / 2, oy + 230, 'a C=C at bridgehead x cannot form', { cls: 'fg-tag-warn' });
   return s;
@@ -603,7 +602,7 @@ FIGURES.push({
     s += tag(52, 96, 'the target');
     return s;
   },
-  caption: 'Number the ring the way the Robinson figures do, starting from the C=O.',
+  caption: 'Number the ring as the backward figure does, with the C=O carbon as 5.',
 });
 
 export default FIGURES;

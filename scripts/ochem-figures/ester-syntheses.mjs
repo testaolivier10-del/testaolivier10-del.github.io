@@ -140,16 +140,16 @@ function pDiacid(ox, oy, h) {
    exo is what the staying carbonyl carbon carries: 'OH' for the malonic
    acid, 'CH₃' for the beta-keto acid. */
 function ringCore(ox, oy, exo) {
-  const pts = polyPts(ox + 116, oy + 136, 6, 50, 90);
+  const pts = polyPts(ox + 116, oy + 100, 6, 50, 90);
   const H = A(pts[0].x, pts[0].y, 'H', 'warn');
   const Oa = A(pts[1].x, pts[1].y, 'O');
   const C1 = A(pts[2].x, pts[2].y, 'C');
   const Ca = A(pts[3].x, pts[3].y, 'C', 'hi');
   const C2 = A(pts[4].x, pts[4].y, 'C');
   const Od = A(pts[5].x, pts[5].y, 'O');
-  const X = A(ox + 28, oy + 188, exo);
-  const O2 = A(ox + 204, oy + 188, 'O');
-  const R = A(ox + 76, oy + 236, 'CH₂CH₃'), Hc = A(ox + 152, oy + 228, 'H');
+  const X = A(ox + 28, oy + 152, exo);
+  const O2 = A(ox + 204, oy + 152, 'O');
+  const R = A(ox + 76, oy + 200, 'CH₂CH₃'), Hc = A(ox + 152, oy + 192, 'H');
   let s = '';
   s += bd(Oa, C1, { order: 2 }) + bd(C1, Ca) + bd(Ca, C2, { cls: 'fg-bond-hi' }) + bd(C2, Od) + bd(Od, H, { cls: 'fg-bond-hi' });
   s += dotted(H, Oa);
@@ -189,7 +189,7 @@ function pEnolAcid(ox, oy, h) {
 }
 
 const MAL_A = [[pDeprot, 214], [pAlkyl, 214], [pAlkylated, 230]];
-const MAL_B = [[pDiacid, 276], [pRingMalonic, 300], [pEnolAcid, 316]];
+const MAL_B = [[pDiacid, 276], [pRingMalonic, 280], [pEnolAcid, 316]];
 
 FIGURES.push({
   id: 'malonic-sequence',
@@ -232,7 +232,7 @@ function pBromobutyl(ox, oy, h) {
   s += bond(ch[3], Br, { rFrom: 0, rTo: Br.r });
   s += draw(Ca, E1, E2, H, Br);
   ['2', '3', '4', '5'].forEach((n, i) => { s += tag(ch[i].x, ch[i].y + (i % 2 ? -12 : 20), n); });
-  s += tag(Ca.x + 12, Ca.y + 34, '1');
+  s += tag(Ca.x - 26, Ca.y + 4, '1');
   return s;
 }
 
@@ -360,7 +360,7 @@ function pKeto(ox, oy, h, which) {
   const titles = { beta: 'β-keto acid: loses CO₂ on warming', alpha: 'α-keto acid: no', gamma: 'γ-keto acid: no' };
   const lines = {
     beta: [['a C=O sits beside the α carbon', 'fg-tag-good']],
-    alpha: [['the α carbon is the C=O carbon,', 'fg-tag-warn'], ['with no C=O beside it', 'fg-tag-warn']],
+    alpha: [['the α carbon is the C=O carbon,', 'fg-tag-warn'], ['with no other C=O beside it', 'fg-tag-warn']],
     gamma: [['the α carbon’s neighbor is CH₂,', 'fg-tag-warn'], ['not a C=O', 'fg-tag-warn']],
   }[which];
   let s = frameP(ox, oy, h, titles[which], lines, good ? 'good' : 'warn', w);
@@ -420,7 +420,7 @@ function pEnolKetone(ox, oy, h) {
   return frameP(ox, oy, h, '3 · the enol → pentan-2-one',
     [['CH₃CH₂ came from the halide', 'fg-tag-good'], 'the rest came from acetoacetate']) + enolThenProduct(ox, oy, 'CH₃');
 }
-const ACETO = [[pAcetoAlkyl, 322], [pRingAceto, 300], [pEnolKetone, 316]];
+const ACETO = [[pAcetoAlkyl, 322], [pRingAceto, 280], [pEnolKetone, 316]];
 
 FIGURES.push({
   id: 'acetoacetic-sequence',
