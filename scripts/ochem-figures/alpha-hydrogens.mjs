@@ -52,6 +52,9 @@ const mid = (a, b, ox = 0, oy = 0) => P((a.x + b.x) / 2 + ox, (a.y + b.y) / 2 + 
 
 /* Two straight arrows, forward above reverse: an equilibrium. */
 const eqmH = (x1, x2, y) => arrow(P(x1, y - 5), P(x2, y - 5), { size: 7 }) + arrow(P(x2, y + 5), P(x1, y + 5), { size: 7 });
+/* An equilibrium lying far to the left: short forward arrow, long reverse. */
+const eqmHLeft = (x1, x2, y) => arrow(P(x1 + 32, y - 5), P(x2 - 32, y - 5), { size: 7 }) + arrow(P(x2, y + 5), P(x1, y + 5), { size: 7 });
+const eqmVUp = (x, y1, y2) => arrow(P(x - 5, y1 + 16), P(x - 5, y2 - 16), { size: 7 }) + arrow(P(x + 5, y2), P(x + 5, y1), { size: 7 });
 const eqmV = (x, y1, y2) => arrow(P(x - 5, y1), P(x - 5, y2), { size: 7 }) + arrow(P(x + 5, y2), P(x + 5, y1), { size: 7 });
 /* A resonance arrow: one line, a head at each end. */
 const resH = (x1, x2, y) => arrow(P(x1, y), P(x2, y), { size: 7 }) + arrow(P(x2, y), P(x1, y), { size: 7 });
@@ -182,7 +185,7 @@ const findCells = [
     s += chain(Q, [[42, 140], [92, 112], [142, 140], [192, 112]], ['CH₃', 'C', 'CH₂', 'CH₃'], [], ['hi', null, 'hi']);
     s += T(Q, 42, 190, 'α · 3 H', { cls: 'fg-tag', size: 11 });
     s += T(Q, 142, 190, 'α · 2 H', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 206, 80, 'not α', { cls: 'fg-tag-mut', size: 11 });
+    s += T(Q, 206, 80, 'β (not α)', { cls: 'fg-tag-mut', size: 11 });
     return s;
   }],
   ['(b) 2,2-DIMETHYLPROPANAL', 'zero α hydrogens', (Q) => {
@@ -190,10 +193,10 @@ const findCells = [
     let s = B(c, o, 'C', 'O', { order: 2 }) + A(o, 'O') + LP(o, 150) + LP(o, 30);
     s += B(c, h, 'C', 'H') + A(h, 'H');
     s += B(c, q, 'C', 'C');
-    const ms = [armEnd(q, 150, 48), armEnd(q, 210, 48), armEnd(q, 270, 44)];
+    const ms = [armEnd(q, 150, 58), armEnd(q, 210, 58), armEnd(q, 270, 54)];
     for (const m of ms) s += B(q, m, 'C', 'CH₃') + A(m, 'CH₃');
     s += A(q, 'C', { kind: 'warn' }) + A(c, 'C');
-    s += Tag(P(q.x, q.y + 84), 'α · 0 H');
+    s += Tag(P(q.x + 52, q.y + 64), 'α · 0 H');
     s += Tag(P(h.x, h.y + 32), 'not α', { cls: 'fg-tag-mut' });
     return s;
   }],
@@ -315,13 +318,13 @@ FIGURES.push({
     let s = '';
     s += tag(130, 24, 'KETO: acetone') + tag(510, 24, 'ENOL: prop-1-en-2-ol');
     s += ketoDraw(P(120, 124)) + enolDraw(P(500, 124));
-    s += eqmH(262, 382, 118);
+    s += eqmHLeft(262, 382, 118);
     s += tag(322, 96, 'acid or base');
     s += tag(322, 146, 'keto : enol ≈ 10⁸ : 1', { cls: 'fg-tag-warn' });
     s += tag(130, 222, 'H on the α carbon, C=O') + tag(510, 222, 'H on the oxygen, C=C');
     return s;
   },
-  caption: 'Follow the highlighted hydrogen from carbon to oxygen; the double bond moves with it.',
+  caption: 'Follow the highlighted H from carbon to oxygen; the double bond moves with it.',
 });
 
 FIGURES.push({
@@ -333,14 +336,14 @@ FIGURES.push({
     let s = '';
     s += tag(170, 22, 'KETO: acetone');
     s += ketoDraw(P(160, 110));
-    s += eqmV(170, 176, 236);
+    s += eqmVUp(170, 176, 236);
     s += tag(254, 212, 'keto : enol ≈ 10⁸ : 1', { cls: 'fg-tag-warn' });
     s += tag(100, 212, 'acid or base');
     s += tag(170, 266, 'ENOL: prop-1-en-2-ol');
     s += enolDraw(P(160, 366));
     return s;
   },
-  caption: 'The highlighted hydrogen moves from carbon to oxygen, and the double bond moves with it.',
+  caption: 'The highlighted H moves from carbon to oxygen; the double bond moves with it.',
 });
 
 /* ======================================================================
@@ -488,7 +491,7 @@ function chiralKetone(Q, hFront) {
 
 const racCells = [
   ['THE α CARBON IS THE STEREOCENTER', '(R)-3-phenylbutan-2-one', (Q) => chiralKetone(Q, false)],
-  ['BASE TAKES THE α H: A FLAT ENOLATE', 'sp²: no front or back left', (Q) => {
+  ['BASE TAKES THE α H: A FLAT ENOLATE', 'flat sp²: two equal faces', (Q) => {
     const st = Q(136, 118), k = Q(84, 118), o = Q(84, 66), m = armEnd(k, 210, 50);
     const ph = armEnd(st, 60, 54), me = armEnd(st, 300, 50);
     let s = '';
@@ -499,8 +502,8 @@ const racCells = [
     s += A(k, 'C') + A(m, 'CH₃') + A(ph, 'C₆H₅') + A(me, 'CH₃') + A(st, 'C', { kind: 'warn' });
     return s;
   }],
-  ['H⁺ RETURNS FROM THE BACK', '(R), 50%', (Q) => chiralKetone(Q, false)],
-  ['H⁺ RETURNS FROM THE FRONT', '(S), 50%', (Q) => chiralKetone(Q, true)],
+  ['A PROTON RETURNS FROM THE BACK', '(R), 50%', (Q) => chiralKetone(Q, false)],
+  ['A PROTON RETURNS FROM THE FRONT', '(S), 50%', (Q) => chiralKetone(Q, true)],
 ];
 
 FIGURES.push({
