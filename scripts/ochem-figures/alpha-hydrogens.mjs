@@ -317,7 +317,7 @@ FIGURES.push({
     s += ketoDraw(P(120, 124)) + enolDraw(P(500, 124));
     s += eqmH(262, 382, 118);
     s += tag(322, 96, 'acid or base');
-    s += tag(322, 146, 'about 10⁸ : 1', { cls: 'fg-tag-warn' });
+    s += tag(322, 146, 'keto : enol ≈ 10⁸ : 1', { cls: 'fg-tag-warn' });
     s += tag(130, 222, 'H on the α carbon, C=O') + tag(510, 222, 'H on the oxygen, C=C');
     return s;
   },
@@ -328,16 +328,16 @@ FIGURES.push({
   id: 'l-keto-enol-pair',
   lessons: ['alpha-hydrogens'],
   alt: 'Acetone above its enol, joined by equilibrium arrows marked about 10 to the 8 to 1. The highlighted hydrogen sits on the alpha carbon in acetone and on the oxygen in the enol.',
-  viewBox: '0 0 340 420',
+  viewBox: '0 0 340 436',
   build() {
     let s = '';
     s += tag(170, 22, 'KETO: acetone');
     s += ketoDraw(P(160, 110));
     s += eqmV(170, 176, 236);
-    s += tag(240, 202, 'about 10⁸ : 1', { cls: 'fg-tag-warn' });
-    s += tag(104, 202, 'acid or base');
-    s += tag(170, 262, 'ENOL: prop-1-en-2-ol');
-    s += enolDraw(P(160, 350));
+    s += tag(254, 212, 'keto : enol ≈ 10⁸ : 1', { cls: 'fg-tag-warn' });
+    s += tag(100, 212, 'acid or base');
+    s += tag(170, 266, 'ENOL: prop-1-en-2-ol');
+    s += enolDraw(P(160, 366));
     return s;
   },
   caption: 'The highlighted hydrogen moves from carbon to oxygen, and the double bond moves with it.',
@@ -348,19 +348,19 @@ FIGURES.push({
    ====================================================================== */
 const baseCells = [
   ['HO⁻ TAKES AN α HYDROGEN', 'an enolate and water', (Q) => {
-    const c = Q(68, 100);
+    const c = Q(64, 118);
     const f = acetoneFrame(c, { aLabel: 'CH₂' });
-    const h = armEnd(f.a, 330, 40);
+    const h = armEnd(f.a, 0, 40);
     let s = f.s + bond(f.a, h, { rFrom: 19, rTo: 13 }) + A(h, 'H', { kind: 'hi' });
     s += LP(f.o, 150) + LP(f.o, 30);
-    const ho = Q(214, 112);
-    s += A(ho, 'HO', { kind: 'hi' }) + LP(ho, 210) + LP(ho, 90) + LP(ho, 330);
+    const ho = Q(214, 120);
+    s += A(ho, 'HO', { kind: 'hi' }) + LP(ho, 200) + LP(ho, 90) + LP(ho, 320);
     s += chg(ho.x + 22, ho.y - 14, '−');
     // HO⁻ pair -> H; C–H bond -> C–Cα bond; C=O pi -> O
-    const lp = armEnd(ho, 210, 21);
-    s += curve(P(lp.x - 5, lp.y + 5), P(h.x + 12, h.y - 6), { bow: -10, size: 7 });
+    const lp = armEnd(ho, 200, 21);
+    s += curve(P(lp.x - 6, lp.y + 3), P(h.x + 13, h.y - 3), { bow: -10, size: 7 });
     const bh = mid(f.a, h), bc = mid(c, f.a);
-    s += curve(P(bh.x - 5, bh.y + 9), P(bc.x + 1, bc.y + 10), { bow: -14, size: 7 });
+    s += curve(P(bh.x - 5, bh.y + 9), P(bc.x, bc.y + 6), { bow: -14, size: 7 });
     s += piToO(c, f.o);
     return s;
   }],
@@ -422,20 +422,20 @@ const acidCells = [
     return s;
   }],
   ['WATER TAKES AN α HYDROGEN', 'no anion ever forms', (Q) => {
-    const c = Q(68, 104);
+    const c = Q(64, 118);
     const f = acetoneFrame(c, { aLabel: 'CH₂', oKind: 'warn' });
     const ho = armEnd(f.o, 30, 38);
     let s = f.s + bond(f.o, ho, { rFrom: 15, rTo: 13 }) + A(ho, 'H');
     s += LP(f.o, 150);
     s += chg(f.o.x - 22, f.o.y + 14, '+');
-    const h = armEnd(f.a, 330, 40);
+    const h = armEnd(f.a, 0, 40);
     s += bond(f.a, h, { rFrom: 19, rTo: 13 }) + A(h, 'H', { kind: 'hi' });
-    const w = Q(212, 118);
-    s += A(w, 'H₂O', { kind: 'hi' }) + LP(w, 210, 24) + LP(w, 90, 24);
-    const lp = armEnd(w, 210, 24);
-    s += curve(P(lp.x - 5, lp.y + 5), P(h.x + 12, h.y - 6), { bow: -10, size: 7 });
+    const w = Q(212, 124);
+    s += A(w, 'H₂O', { kind: 'hi' }) + LP(w, 200, 24) + LP(w, 90, 24);
+    const lp = armEnd(w, 200, 24);
+    s += curve(P(lp.x - 6, lp.y + 3), P(h.x + 13, h.y - 3), { bow: -10, size: 7 });
     const bh = mid(f.a, h), bc = mid(c, f.a);
-    s += curve(P(bh.x - 5, bh.y + 9), P(bc.x + 1, bc.y + 10), { bow: -14, size: 7 });
+    s += curve(P(bh.x - 5, bh.y + 9), P(bc.x, bc.y + 6), { bow: -14, size: 7 });
     s += piToO(c, f.o);
     return s;
   }],
