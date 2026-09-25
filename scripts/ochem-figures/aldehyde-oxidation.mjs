@@ -336,7 +336,7 @@ FIGURES.push({
    4. Permanganate, and what each reagent spares.
    ====================================================================== */
 const permCells = [
-  ['1. KMnO₄, HO⁻, WARM   2. H₃O⁺', 'purple MnO₄⁻ → brown MnO₂ solid', (Q) => {
+  ['1. KMnO₄, HO⁻, WARM · 2. H₃O⁺', 'purple MnO₄⁻ → brown MnO₂ solid', (Q) => {
     const c1 = Q(58, 116);
     const m1 = centre(c1, [
       { deg: 90, len: 48, l: 'O', order: 2 },
@@ -378,7 +378,7 @@ function hexenal(Q, acid) {
   return s;
 }
 const choiceCells = [
-  ['(E)-HEX-4-ENAL', 'an aldehyde and a C=C', (Q) => hexenal(Q, false)],
+  ['HEX-4-ENAL, TRANS C=C', 'an aldehyde and a C=C', (Q) => hexenal(Q, false)],
   ['PINNICK OR Ag₂O', 'the C=C survives', (Q) => hexenal(Q, true)],
   ['HOT KMnO₄', 'the C=C is cut too', (Q) => {
     // butanedioic acid
@@ -429,7 +429,7 @@ const organicCell = ['THE ALDEHYDE IS OXIDIZED', 'in base it ends as the carboxy
   const om = m2.ends.Om;
   let s = m1.s + m2.s + arrow(Q(100, 104), Q(140, 104), { size: 7 });
   s += text(om.x + 18, om.y - 12, '−', { cls: 'fg-warn', size: 15 });
-  s += Tg(Q, 122, 168, 'gives up two electrons');
+  s += Tg(Q, 122, 160, 'gives up two electrons');
   return s;
 }];
 const silverCell = ['SILVER(I) IS REDUCED', 'Ag⁺ + e⁻ → Ag, twice: the mirror', (Q) => {
@@ -438,17 +438,17 @@ const silverCell = ['SILVER(I) IS REDUCED', 'Ag⁺ + e⁻ → Ag, twice: the mir
   s += A(n1, 'H₃N', { r: 19 }) + A(ag, 'Ag', { kind: 'warn' }) + A(n2, 'NH₃', { r: 19 });
   s += charge(Q, 214, 56, '+');
   s += Tg(Q, 122, 106, 'diamminesilver(I), linear');
-  s += arrow(Q(122, 114), Q(122, 138), { size: 7 });
-  s += bar(Q(40, 146).x, Q(40, 146).y, 164, 10, { kind: 'mut' });
-  s += Tg(Q, 122, 174, 'Ag metal plates onto the glass');
+  s += arrow(Q(122, 112), Q(122, 132), { size: 7 });
+  s += bar(Q(40, 138).x, Q(40, 138).y, 164, 10, { kind: 'mut' });
+  s += Tg(Q, 122, 164, 'Ag metal plates onto the glass');
   return s;
 }];
-const copperCell = ['COPPER(II) IS REDUCED', '2 Cu²⁺ + 2 e⁻ → Cu₂O', (Q) => {
+const copperCell = ['COPPER(II) IS REDUCED', 'each Cu²⁺ gains one electron: Cu(I)', (Q) => {
   let s = A(Q(122, 66), 'Cu²⁺', { r: 22, kind: 'hi' });
   s += Tg(Q, 122, 104, 'deep blue, held by tartrate or citrate');
-  s += arrow(Q(122, 112), Q(122, 136), { size: 7 });
-  s += bar(Q(62, 144).x, Q(62, 144).y, 120, 14, { kind: 'warn' });
-  s += Tg(Q, 122, 176, 'Cu₂O, a brick-red solid: Cu(I)');
+  s += arrow(Q(122, 112), Q(122, 132), { size: 7 });
+  s += bar(Q(62, 138).x, Q(62, 138).y, 120, 12, { kind: 'warn' });
+  s += Tg(Q, 122, 166, 'Cu₂O, a brick-red solid');
   return s;
 }];
 
@@ -498,10 +498,10 @@ function pyranose(Q, cx, cy, r) {
 
 const glucoseCells = [
   ['BASE OPENS THE RING', 'after HO⁻ has taken the H of the C1 OH', (Q) => {
-    const g = pyranose(Q, 104, 112, 30);
+    const g = pyranose(Q, 96, 112, 36);
     const [c1, , c5, c4, c3, c2] = g.v;
     let s = g.s;
-    const o1 = armEnd(c1, 0, 38);
+    const o1 = armEnd(c1, 0, 46);
     s += bond(c1, o1, { rFrom: 0, rTo: 15 }) + A(o1, 'O', { r: 15, kind: 'warn' });
     s += lonePair(o1.x, o1.y, 270, { dist: 20 }) + lonePair(o1.x, o1.y, 0, { dist: 20 }) + lonePair(o1.x, o1.y, 90, { dist: 20 });
     s += text(o1.x + 18, o1.y - 14, '−', { cls: 'fg-warn', size: 15 });

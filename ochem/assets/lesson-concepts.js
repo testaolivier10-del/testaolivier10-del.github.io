@@ -186,9 +186,12 @@
       2:['catalytic-cycle'], 3:['catalytic-cycle'], 4:['catalytic-cycle'],
       6:['catalytic-cycle'], 7:['catalytic-cycle','hard-soft-addition'] } },
 
-    'wittig-reaction': { n:8, steps:{
-      2:['alkene-by-construction'], 3:['alkene-by-construction'], 4:['alkene-by-construction'],
-      6:['alkene-by-construction'], 7:['alkene-by-construction'] } },
+    'wittig-reaction': { n:13, steps:{
+      3:['alkene-by-construction'],
+      5:['alkene-by-construction'],
+      6:['alkene-by-construction'],
+      10:['alkene-by-construction'],
+      12:['alkene-by-construction'] } },
 
     'imines-enamines': { n:12, steps:{
       3:['amine-condensation'],
