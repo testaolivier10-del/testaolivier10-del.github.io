@@ -605,7 +605,7 @@ FIGURES.push({
     s += bond(b3, b4, { rTo: 16 });
     s += atom(b1.x, b1.y, 'CH₂', { kind: 'hi' }); s += atom(b2.x, b2.y, 'CH'); s += atom(b3.x, b3.y, 'C', { kind: 'hi' });
     s += atom(bo.x, bo.y, 'O'); s += atom(b4.x, b4.y, 'CH₃', { r: 16 });
-    s += curve(mid(b1, b2), mid(b2, b3), { bow: -34 });
+    s += curve(mid(b1, b2), mid(b2, b3), { bow: 30 });
     s += curve(P(200, 128), P(206, 92), { bow: 14 });
 
     s += arrow(P(330, 152), P(390, 152));
