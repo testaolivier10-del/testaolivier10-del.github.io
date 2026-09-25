@@ -523,12 +523,13 @@
       3:['chirality-recognition','meso-detection'],
       6:['chirality-recognition','meso-detection'] } },
 
-    'claisen': { n:8, steps:{
-      1:['claisen-connectivity'],
-      2:['claisen-connectivity','tetrahedral-intermediate'],
-      4:['alpha-acidity','claisen-connectivity'],
-      6:['claisen-connectivity','enolate-formation'],
-      7:['claisen-connectivity'] } },
+    'claisen': { n:11, steps:{
+      2:['claisen-connectivity'],
+      3:['claisen-connectivity','tetrahedral-intermediate'],
+      5:['alpha-acidity','claisen-connectivity'],
+      7:['alpha-acidity','claisen-connectivity'],
+      8:['claisen-connectivity','enolate-formation'],
+      10:['claisen-connectivity'] } },
 
     'conformational-analysis': { n:7, steps:{
       1:['chair-axial-equatorial'],
