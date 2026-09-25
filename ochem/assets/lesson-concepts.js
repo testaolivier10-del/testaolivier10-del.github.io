@@ -63,12 +63,12 @@
       6:['hofmann-elimination-rule'],
       7:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
 
-    'alpha-halogenation': { n:8, steps:{
-      2:['alpha-halogenation-control','enolate-formation'],
+    'alpha-halogenation': { n:11, steps:{
       3:['alpha-halogenation-control','alpha-acidity'],
-      4:['alpha-halogenation-control'],
       6:['alpha-halogenation-control'],
-      7:['alpha-halogenation-control','acyl-reactivity-order'] } },
+      8:['alpha-halogenation-control','enolate-formation'],
+      9:['alpha-halogenation-control'],
+      10:['alpha-halogenation-control','acyl-reactivity-order'] } },
 
     /* Step 2 sorts six condition sets including two LDA rows that are not
        kinetic. 3 is which alpha carbon, 4 why a weak base wins on stability,
