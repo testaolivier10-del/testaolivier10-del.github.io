@@ -348,16 +348,17 @@ FIGURES.push({
    ====================================================================== */
 const baseCells = [
   ['HO⁻ TAKES AN α HYDROGEN', 'an enolate and water', (Q) => {
-    const c = Q(78, 112);
+    const c = Q(68, 100);
     const f = acetoneFrame(c, { aLabel: 'CH₂' });
     const h = armEnd(f.a, 330, 40);
     let s = f.s + bond(f.a, h, { rFrom: 19, rTo: 13 }) + A(h, 'H', { kind: 'hi' });
     s += LP(f.o, 150) + LP(f.o, 30);
-    const ho = Q(206, 176);
-    s += A(ho, 'HO', { kind: 'hi' }) + LP(ho, 180) + LP(ho, 90) + LP(ho, 270);
-    s += chg(ho.x + 20, ho.y - 16, '−');
+    const ho = Q(214, 112);
+    s += A(ho, 'HO', { kind: 'hi' }) + LP(ho, 210) + LP(ho, 90) + LP(ho, 330);
+    s += chg(ho.x + 22, ho.y - 14, '−');
     // HO⁻ pair -> H; C–H bond -> C–Cα bond; C=O pi -> O
-    s += curve(P(ho.x - 25, ho.y - 5), P(h.x + 14, h.y + 5), { bow: -10, size: 7 });
+    const lp = armEnd(ho, 210, 21);
+    s += curve(P(lp.x - 5, lp.y + 5), P(h.x + 12, h.y - 6), { bow: -10, size: 7 });
     const bh = mid(f.a, h), bc = mid(c, f.a);
     s += curve(P(bh.x - 5, bh.y + 9), P(bc.x + 1, bc.y + 10), { bow: -14, size: 7 });
     s += piToO(c, f.o);
@@ -421,7 +422,7 @@ const acidCells = [
     return s;
   }],
   ['WATER TAKES AN α HYDROGEN', 'no anion ever forms', (Q) => {
-    const c = Q(72, 116);
+    const c = Q(68, 104);
     const f = acetoneFrame(c, { aLabel: 'CH₂', oKind: 'warn' });
     const ho = armEnd(f.o, 30, 38);
     let s = f.s + bond(f.o, ho, { rFrom: 15, rTo: 13 }) + A(ho, 'H');
@@ -429,9 +430,10 @@ const acidCells = [
     s += chg(f.o.x - 22, f.o.y + 14, '+');
     const h = armEnd(f.a, 330, 40);
     s += bond(f.a, h, { rFrom: 19, rTo: 13 }) + A(h, 'H', { kind: 'hi' });
-    const w = Q(206, 170);
-    s += A(w, 'H₂O', { kind: 'hi' }) + LP(w, 180, 24) + LP(w, 90, 24);
-    s += curve(P(w.x - 27, w.y - 4), P(h.x + 14, h.y + 5), { bow: -10, size: 7 });
+    const w = Q(212, 118);
+    s += A(w, 'H₂O', { kind: 'hi' }) + LP(w, 210, 24) + LP(w, 90, 24);
+    const lp = armEnd(w, 210, 24);
+    s += curve(P(lp.x - 5, lp.y + 5), P(h.x + 12, h.y - 6), { bow: -10, size: 7 });
     const bh = mid(f.a, h), bc = mid(c, f.a);
     s += curve(P(bh.x - 5, bh.y + 9), P(bc.x + 1, bc.y + 10), { bow: -14, size: 7 });
     s += piToO(c, f.o);
