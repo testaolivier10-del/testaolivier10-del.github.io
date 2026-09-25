@@ -446,9 +446,13 @@
       6:['huckel-aromaticity'],
       7:['huckel-aromaticity'] } },
 
-    'atomic-structure': { n:9, steps:{
-      3:['valence-electrons'], 4:['valence-electrons'],
-      5:['valence-electrons'], 8:['valence-electrons'] } },
+    'atomic-structure': { n:15, steps:{
+      3:['valence-electrons'],
+      4:['valence-electrons'],
+      5:['valence-electrons'],
+      7:['valence-electrons'],
+      12:['valence-electrons'],
+      14:['valence-electrons'] } },
 
     'axial-equatorial': { n:7, steps:{
       1:['chair-axial-equatorial'],
@@ -466,18 +470,20 @@
       9:['carbonyl-family-distinction','functional-group-recognition'],
       10:['functional-group-recognition','carbonyl-family-distinction'] } },
 
-    'bond-polarity': { n:9, steps:{
-      1:['bond-polarity-dipoles'],
-      2:['bond-polarity-dipoles','molecular-geometry-vsepr'],
+    'bond-polarity': { n:14, steps:{
+      1:['bond-polarity-dipoles','electronegativity-trend'],
       3:['bond-polarity-dipoles','molecular-geometry-vsepr'],
-      6:['bond-polarity-dipoles'],
-      8:['bond-polarity-dipoles','molecular-geometry-vsepr'] } },
+      6:['bond-polarity-dipoles','molecular-geometry-vsepr'],
+      10:['bond-polarity-dipoles'],
+      12:['bond-polarity-dipoles'],
+      13:['bond-polarity-dipoles','molecular-geometry-vsepr'] } },
 
-    'bonding': { n:7, steps:{
-      1:['sigma-pi-bonding','valence-electrons'],
-      2:['sigma-pi-bonding','lewis-structures-drawing'],
-      3:['sigma-pi-bonding'],
-      6:['sigma-pi-bonding','valence-electrons'] } },
+    'bonding': { n:12, steps:{
+      4:['sigma-pi-bonding'],
+      6:['sigma-pi-bonding','valence-electrons'],
+      7:['sigma-pi-bonding','lewis-structures-drawing'],
+      9:['sigma-pi-bonding'],
+      11:['sigma-pi-bonding','valence-electrons'] } },
 
     'bronsted': { n:8, steps:{
       1:['bronsted-identification'],
@@ -564,12 +570,13 @@
       4:['electron-rich-poor','electrophile-recognition'],
       6:['electron-rich-poor','electrophile-recognition'] } },
 
-    'electronegativity': { n:9, steps:{
+    'electronegativity': { n:14, steps:{
       2:['electronegativity-trend'],
       3:['electronegativity-trend'],
       4:['electronegativity-trend','bond-polarity-dipoles'],
-      6:['electronegativity-trend'],
-      8:['electronegativity-trend','bond-polarity-dipoles'] } },
+      8:['electronegativity-trend','bond-polarity-dipoles'],
+      11:['electronegativity-trend'],
+      13:['electronegativity-trend','bond-polarity-dipoles'] } },
 
     'electrophiles': { n:7, steps:{
       1:['electrophile-recognition'],
@@ -629,11 +636,12 @@
       6:['nmr-splitting-integration'],
       7:['nmr-shift-shielding','huckel-aromaticity'] } },
 
-    'hybridization': { n:9, steps:{
-      3:['hybridization-assignment'],
-      4:['hybridization-assignment'],
+    'hybridization': { n:13, steps:{
       5:['hybridization-assignment'],
-      8:['hybridization-assignment','molecular-geometry-vsepr'] } },
+      6:['hybridization-assignment'],
+      7:['hybridization-assignment'],
+      9:['hybridization-assignment'],
+      12:['hybridization-assignment','molecular-geometry-vsepr'] } },
 
     'ir': { n:8, steps:{
       1:['ir-functional-groups'],
@@ -664,11 +672,13 @@
       1:['lewis-acid-base'], 2:['lewis-acid-base'],
       3:['lewis-acid-base'], 6:['lewis-acid-base'] } },
 
-    'lewis-structures': { n:7, steps:{
-      1:['lewis-structures-drawing'],
-      2:['valence-electrons','lewis-structures-drawing'],
+    'lewis-structures': { n:16, steps:{
+      1:['lewis-structures-drawing','valence-electrons'],
       3:['formal-charge-calc','lewis-structures-drawing'],
-      6:['lewis-structures-drawing'] } },
+      5:['valence-electrons','lewis-structures-drawing'],
+      7:['formal-charge-calc','lewis-structures-drawing'],
+      13:['lewis-structures-drawing'],
+      15:['lewis-structures-drawing'] } },
 
     'markovnikov': { n:8, steps:{
       1:['markovnikov-regiochem'],
@@ -689,12 +699,13 @@
       3:['meso-detection','enantiomer-vs-diastereomer'],
       6:['meso-detection'] } },
 
-    'molecular-geometry': { n:9, steps:{
-      1:['molecular-geometry-vsepr'],
-      2:['molecular-geometry-vsepr','lewis-structures-drawing'],
+    'molecular-geometry': { n:11, steps:{
+      1:['molecular-geometry-vsepr','lewis-structures-drawing'],
       3:['molecular-geometry-vsepr','lewis-structures-drawing'],
-      5:['molecular-geometry-vsepr'],
-      8:['molecular-geometry-vsepr','hybridization-assignment'] } },
+      4:['molecular-geometry-vsepr','lewis-structures-drawing'],
+      6:['molecular-geometry-vsepr','hybridization-assignment'],
+      8:['molecular-geometry-vsepr'],
+      10:['molecular-geometry-vsepr','hybridization-assignment'] } },
 
     'newman': { n:7, steps:{
       1:['newman-reading'],
@@ -715,9 +726,11 @@
       6:['tetrahedral-intermediate'],
       7:['tetrahedral-intermediate','nucleophile-recognition'] } },
 
-    'orbitals': { n:8, steps:{
-      3:['valence-electrons'], 4:['valence-electrons'],
-      5:['valence-electrons'], 7:['valence-electrons','hybridization-assignment'] } },
+    'orbitals': { n:16, steps:{
+      11:['valence-electrons'],
+      12:['valence-electrons'],
+      13:['valence-electrons'],
+      15:['valence-electrons'] } },
 
     'pka': { n:7, steps:{
       1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],
