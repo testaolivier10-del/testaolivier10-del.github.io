@@ -1,153 +1,526 @@
 /* Figures for the ester-syntheses notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   One concrete case runs through each synthesis: diethyl malonate with
+   ethyl bromide, giving butanoic acid, and ethyl acetoacetate with ethyl
+   bromide, giving pentan-2-one. The carbons that matter carry labels, so
+   the reader can follow the alpha carbon (highlighted) from the starting
+   ester to the product.
+
+   Each panel is a function of its top-left corner and height, 232 wide,
+   with only fg-lbl and fg-tag text, so the notes figures can lay panels in
+   rows and the lesson copies (id prefix l-) can stack the same panels in
+   one narrow column. */
+import { atom, bond, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
+import { zig, sk, polyPts } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
+const PW = 232;                       // panel width
 
-/* ----------------------------------------------------------------- 41 ---
-   The whole point of these two syntheses is a pKa difference, and a number
-   line makes twelve orders of magnitude look like twelve orders of
-   magnitude rather than like two numbers. */
+/* ------------------------------------------------------------ helpers --- */
+const rad = (l) => (l === 'H' ? 12 : l.length <= 2 ? 14 : 4 + l.length * 3.8);
+const A = (x, y, l, k) => ({ x, y, l, k, r: rad(l) });
+const draw = (...as) => as.map((a) => atom(a.x, a.y, a.l, { kind: a.k, r: a.r })).join('');
+const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r ?? 0, rTo: b.r ?? 0, ...o });
+const mid = (a, b, t = 0.5) => P(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
+const off = (p, dx, dy) => P(p.x + dx, p.y + dy);
+const lp = (a, deg, extra = 7) => lonePair(a.x, a.y, deg, { dist: a.r + extra });
+const lpAt = (a, deg, extra = 7) => {
+  const r = (deg * Math.PI) / 180, d = a.r + extra;
+  return P(a.x + Math.cos(r) * d, a.y + Math.sin(r) * d);
+};
+const dotted = (a, b) => {
+  const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
+  const ux = dx / L, uy = dy / L;
+  const x1 = a.x + ux * a.r, y1 = a.y + uy * a.r, x2 = b.x - ux * b.r, y2 = b.y - uy * b.r;
+  return `<line class="fg-dash" x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}"></line>`;
+};
+/* A panel: a box, a title tag at the top and up to three tag lines at the
+   bottom. A line can be [text, class]. */
+function frameP(ox, oy, h, title, lines = [], kind, w = PW) {
+  let s = panel(ox, oy, w, h, kind ? { kind } : {});
+  s += tag(ox + w / 2, oy + 20, title);
+  lines.forEach((ln, i) => {
+    const [t, cls] = Array.isArray(ln) ? ln : [ln, 'fg-tag'];
+    s += text(ox + w / 2, oy + h - 14 - (lines.length - 1 - i) * 17, t, { cls, size: 11 });
+  });
+  return s;
+}
+const gapArrow = (a, b) => arrow(a, b, { size: 7 });
+
+/* Lay panels out: in rows (notes) or in one column (lessons). Each item is
+   [fn, h]. Returns { svg, W, H }. */
+function rows(items, perRow) {
+  let s = '', y = 8, i = 0;
+  while (i < items.length) {
+    const row = items.slice(i, i + perRow);
+    const h = Math.max(...row.map((it) => it[1]));
+    row.forEach(([fn], j) => {
+      const x = 8 + j * (PW + 24);
+      s += fn(x, y, h);
+      if (j < row.length - 1) s += gapArrow(P(x + PW + 4, y + h / 2), P(x + PW + 20, y + h / 2));
+    });
+    i += perRow;
+    y += h + 16;
+  }
+  return { svg: s, W: 8 + perRow * PW + (perRow - 1) * 24 + 8, H: y - 8 };
+}
+function column(items) {
+  let s = '', y = 8;
+  items.forEach(([fn, h], i) => {
+    s += fn(12, y, h);
+    y += h;
+    if (i < items.length - 1) { s += gapArrow(P(12 + PW / 2, y + 4), P(12 + PW / 2, y + 24)); y += 28; }
+  });
+  return { svg: s, W: PW + 24, H: y + 8 };
+}
+
+/* ------------------------------------------- malonic ester, 1 to 3 --- */
+
+/* 1: ethoxide takes one alpha H of diethyl malonate. */
+function pDeprot(ox, oy, h) {
+  const o = (x, y) => P(ox + x, oy + y);
+  const Ca = A(ox + 104, oy + 124, 'C', 'hi');
+  const Hu = A(ox + 104, oy + 72, 'H', 'warn'), Hd = A(ox + 104, oy + 176, 'H');
+  const E1 = A(ox + 40, oy + 146, 'CO₂Et'), E2 = A(ox + 168, oy + 146, 'CO₂Et');
+  const B = A(ox + 190, oy + 72, 'EtO⁻');
+  let s = frameP(ox, oy, h, '1 · NaOEt takes an α H', ['diethyl malonate']);
+  s += bd(Ca, Hu, { cls: 'fg-bond-hi' }) + bd(Ca, Hd) + bd(Ca, E1) + bd(Ca, E2);
+  s += lp(B, 180, 5);
+  s += draw(Ca, Hu, Hd, E1, E2, B);
+  s += curve(off(lpAt(B, 180, 5), -4, -4), off(Hu, 12, -8), { bow: 12 });
+  s += curve(mid(Hu, Ca), off(Ca, 16, -10), { bow: -12 });
+  s += tag(ox + 52, oy + 104, 'α carbon');
+  return s;
+}
+
+/* 2: the carbanion attacks ethyl bromide (SN2). */
+function pAlkyl(ox, oy, h) {
+  const Ca = A(ox + 72, oy + 118, 'C⁻', 'hi');
+  const E1 = A(ox + 36, oy + 68, 'CO₂Et'), E2 = A(ox + 36, oy + 170, 'CO₂Et');
+  const H = A(ox + 104, oy + 164, 'H');
+  const C = A(ox + 152, oy + 118, 'CH₂'), M = A(ox + 152, oy + 66, 'CH₃'), Br = A(ox + 206, oy + 118, 'Br');
+  let s = frameP(ox, oy, h, '2 · C⁻ attacks CH₃CH₂–Br', ['SN2: Br⁻ leaves']);
+  s += bd(Ca, E1) + bd(Ca, E2) + bd(Ca, H) + bd(C, M) + bd(C, Br, { cls: 'fg-bond-hi' });
+  s += lp(Ca, 0, 6);
+  s += draw(Ca, E1, E2, H, C, M, Br);
+  s += curve(off(lpAt(Ca, 0, 6), 4, -6), off(C, -18, -6), { bow: 12 });
+  s += curve(mid(C, Br), off(Br, -4, 16), { bow: 10 });
+  return s;
+}
+
+/* 3: the alkylated diester. */
+function pAlkylated(ox, oy, h) {
+  const Ca = A(ox + 116, oy + 126, 'C', 'hi');
+  const R = A(ox + 116, oy + 70, 'CH₂CH₃', 'good'), H = A(ox + 116, oy + 178, 'H');
+  const E1 = A(ox + 50, oy + 148, 'CO₂Et'), E2 = A(ox + 182, oy + 148, 'CO₂Et');
+  let s = frameP(ox, oy, h, '3 · diethyl ethylmalonate', ['one α H is left, so steps 1–2', 'can add a second group']);
+  s += bd(Ca, R, { cls: 'fg-bond-hi' }) + bd(Ca, H) + bd(Ca, E1) + bd(Ca, E2);
+  s += draw(Ca, R, H, E1, E2);
+  s += tag(ox + 170, oy + 100, 'new C–C');
+  return s;
+}
+
+/* ------------------------------------------- malonic ester, 4 to 6 --- */
+
+/* 4: both esters hydrolyzed: ethylmalonic acid. */
+function pDiacid(ox, oy, h) {
+  const Ca = A(ox + 116, oy + 148, 'C', 'hi');
+  const C1 = A(ox + 66, oy + 118, 'C'), O1 = A(ox + 66, oy + 66, 'O'), H1 = A(ox + 22, oy + 144, 'OH');
+  const C2 = A(ox + 166, oy + 118, 'C'), O2 = A(ox + 166, oy + 66, 'O'), H2 = A(ox + 210, oy + 144, 'OH');
+  const R = A(ox + 84, oy + 204, 'CH₂CH₃'), H = A(ox + 150, oy + 196, 'H');
+  let s = frameP(ox, oy, h, '4 · H₃O⁺: both esters → COOH', ['ethylmalonic acid, a 1,3-diacid', '(two EtOH are lost)']);
+  s += bd(C1, O1, { order: 2 }) + bd(C1, H1) + bd(C2, O2, { order: 2 }) + bd(C2, H2);
+  s += bd(Ca, C1) + bd(Ca, C2) + bd(Ca, R) + bd(Ca, H);
+  s += draw(Ca, C1, O1, H1, C2, O2, H2, R, H);
+  return s;
+}
+
+/* 5 (and the acetoacetic copy): the six-membered ring with three arrows.
+   exo is what the staying carbonyl carbon carries: 'OH' for the malonic
+   acid, 'CH₃' for the beta-keto acid. */
+function ringCore(ox, oy, exo) {
+  const pts = polyPts(ox + 116, oy + 136, 6, 50, 90);
+  const H = A(pts[0].x, pts[0].y, 'H', 'warn');
+  const Oa = A(pts[1].x, pts[1].y, 'O');
+  const C1 = A(pts[2].x, pts[2].y, 'C');
+  const Ca = A(pts[3].x, pts[3].y, 'C', 'hi');
+  const C2 = A(pts[4].x, pts[4].y, 'C');
+  const Od = A(pts[5].x, pts[5].y, 'O');
+  const X = A(ox + 28, oy + 188, exo);
+  const O2 = A(ox + 204, oy + 188, 'O');
+  const R = A(ox + 76, oy + 236, 'CH₂CH₃'), Hc = A(ox + 152, oy + 228, 'H');
+  let s = '';
+  s += bd(Oa, C1, { order: 2 }) + bd(C1, Ca) + bd(Ca, C2, { cls: 'fg-bond-hi' }) + bd(C2, Od) + bd(Od, H, { cls: 'fg-bond-hi' });
+  s += dotted(H, Oa);
+  s += bd(C1, X) + bd(C2, O2, { order: 2 }) + bd(Ca, R) + bd(Ca, Hc);
+  s += draw(H, Oa, C1, Ca, C2, Od, X, O2, R, Hc);
+  /* All three arrows run the same way round the ring:
+     C=O pi to the H (new O-H); O-H bond to C-O (second C=O of CO2);
+     Calpha-C bond to C1-Calpha (the enol's C=C). */
+  s += curve(off(mid(Oa, C1), -8, 0), off(mid(Oa, H), -6, -6), { bow: 16 });
+  s += curve(off(mid(Od, H), 6, -6), off(mid(Od, C2), 8, 0), { bow: 16 });
+  s += curve(off(mid(Ca, C2), -2, -8), off(mid(C1, Ca), 2, -8), { bow: 16 });
+  return s;
+}
+function pRingMalonic(ox, oy, h) {
+  return frameP(ox, oy, h, '5 · heat: a six-atom ring', ['the COOH that leaves gives its H', 'to the other C=O']) + ringCore(ox, oy, 'OH');
+}
+
+/* 6 (and the acetoacetic copy): enol plus CO2, then the product.
+   exo: 'OH' (malonic) or 'CH₃' (acetoacetic). */
+function enolThenProduct(ox, oy, exo) {
+  const C1 = A(ox + 140, oy + 90, 'C'), Ca = A(ox + 84, oy + 90, 'C', 'hi');
+  const Oe = A(ox + 186, oy + 62, 'OH'), X = A(ox + 186, oy + 118, exo);
+  const R = A(ox + 40, oy + 58, 'CH₂CH₃'), H = A(ox + 50, oy + 122, 'H');
+  let s = bd(Ca, C1, { order: 2 }) + bd(C1, Oe) + bd(C1, X) + bd(Ca, R) + bd(Ca, H);
+  s += draw(C1, Ca, Oe, X, R, H);
+  s += tag(ox + 116, oy + 150, exo === 'OH' ? 'an enol,  + CO₂' : 'an enol,  + CO₂');
+  s += gapArrow(P(ox + 116, oy + 160), P(ox + 116, oy + 186));
+  const R2 = A(ox + 40, oy + 226, 'CH₂CH₃'), Ca2 = A(ox + 104, oy + 226, 'CH₂', 'hi');
+  const C2 = A(ox + 154, oy + 226, 'C'), O2 = A(ox + 190, oy + 196, 'O'), X2 = A(ox + 196, oy + 254, exo);
+  s += bd(R2, Ca2) + bd(Ca2, C2) + bd(C2, O2, { order: 2 }) + bd(C2, X2);
+  s += draw(R2, Ca2, C2, O2, X2);
+  return s;
+}
+function pEnolAcid(ox, oy, h) {
+  return frameP(ox, oy, h, '6 · the enol → butanoic acid',
+    [['CH₃CH₂ came from the halide', 'fg-tag-good'], 'CH₂–COOH came from malonate']) + enolThenProduct(ox, oy, 'OH');
+}
+
+const MAL_A = [[pDeprot, 214], [pAlkyl, 214], [pAlkylated, 230]];
+const MAL_B = [[pDiacid, 262], [pRingMalonic, 300], [pEnolAcid, 316]];
+
 FIGURES.push({
-  id: 'activating-pka',
+  id: 'malonic-sequence',
   section: 'ester-syntheses',
-  anchor: '<h3>Malonic ester synthesis &rarr; a carboxylic acid</h3>',
-  viewBox: '0 0 760 300',
-  alt: 'A pKa scale from 10 to 26 showing an ester at 25 and malonate and acetoacetate near 11 to 13, with the base each one needs',
-  build() {
-    let s = '';
-    const x = (pka) => 90 + ((26 - pka) / 16) * 580;
-    s += rule(80, 186, 690, 186);
-    for (let p = 10; p <= 26; p += 4) {
-      s += rule(x(p), 186, x(p), 193);
-      s += text(x(p), 208, String(p), { cls: 'fg-sm', size: 10 });
-    }
-    s += text(385, 230, 'α pKₐ', { cls: 'fg-tag', size: 11 });
-
-    const mark = (pka, name, base, kind, up) => {
-      const px = x(pka);
-      s += rule(px, up ? 92 : 132, px, 186);
-      s += panel(px - 84, up ? 56 : 96, 168, 36, { kind });
-      s += text(px, up ? 74 : 114, name, { cls: 'fg-lbl', size: 11.5 });
-      s += text(px, up ? 46 : 86, base, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 10.5 });
-    };
-    mark(25, 'a plain ester',       'needs LDA, and it fights back', 'warn', true);
-    mark(13, 'diethyl malonate',    'NaOEt is enough', null, true);
-    mark(11, 'ethyl acetoacetate',  'NaOEt is enough', null, false);
-
-    s += rule(34, 248, 726, 248);
-    s += text(380, 274, 'Twelve orders of magnitude, bought with one extra carbonyl — which is then thrown away.', { cls: 'fg-lbl', size: 12 });
-    return s;
-  },
-  caption: 'What the second carbonyl is for. An ester’s α hydrogen sits at pKa 25, where an alkoxide is far too weak and you need LDA at low temperature; flanking that carbon with a second carbonyl delocalizes the carbanion onto a second oxygen and drops it to 11 to 13, where the alkoxide matching your solvent does the job.',
-  note: 'The carbonyl that made this possible is gone from the product. It was installed to acidify one hydrogen and is removed by hydrolysis and decarboxylation once the alkylation is done — which is what an activating group is, and the clearest example of one in the course. Note also that the decarboxylation works only because a second carbonyl sits β to the carboxyl — a ketone in the acetoacetic route, the other carboxyl in the malonic one — which is what lets the O–H reach it through a six-membered cyclic transition state.',
+  alt: 'Malonic ester synthesis of butanoic acid in six panels. 1: ethoxide removes one hydrogen from the CH2 between the two CO2Et groups of diethyl malonate. 2: the carbanion attacks the CH2 of ethyl bromide and bromide leaves. 3: diethyl ethylmalonate, with the ethyl on the alpha carbon and one alpha H left. 4: hydrolysis gives ethylmalonic acid, two COOH groups on one carbon. 5: heat; one COOH gives its O–H hydrogen to the other carboxyl C=O through a six-membered ring, with three curved arrows. 6: the enol and CO2, then butanoic acid, whose ethyl came from the halide and whose CH2–COOH came from malonate.',
+  get viewBox() { return `0 0 ${rows([...MAL_A, ...MAL_B], 3).W} ${rows([...MAL_A, ...MAL_B], 3).H}`; },
+  build() { return rows([...MAL_A, ...MAL_B], 3).svg; },
+  caption: 'Diethyl malonate plus ethyl bromide gives butanoic acid. Follow the highlighted α carbon: it takes the ethyl in panel 2, keeps it through the hydrolysis, and loses one of its two carboxyls in panel 5.',
 });
 
-/* ---------------------------------------------------------------- B4 ---
-   The section describes a cyclic transition state three times and draws it
-   nowhere, which is the one thing here a picture can settle: whether the
-   hydrogen can actually reach. */
 FIGURES.push({
-  id: 'decarboxylation-ts',
-  section: 'ester-syntheses',
-  anchor: 'An &alpha;- or &gamma;-keto acid reaches neither, and neither does a plain carboxylic acid.</p>',
-  viewBox: '0 0 760 482',
-  alt: 'The six-membered cyclic transition state of a beta-keto acid decarboxylation drawn with three curved arrows, the enol it gives with carbon dioxide leaving, the tautomerization to the ketone, and two failing cases where the ring would be five- or seven-membered',
-  build() {
-    let s = '';
-
-    /* 1 — the hexagon. */
-    s += tag(132, 36, '1 · the six-membered loop');
-    s += panel(14, 44, 236, 244);
-    {
-      const Ok = P(96, 100), Ck = P(96, 154), Ca = P(150, 186), Cx = P(200, 154), Ox = P(200, 100), H = P(148, 76);
-      const ring = [Ok, Ck, Ca, Cx, Ox, H];
-      for (let i = 0; i < 6; i++) {
-        const a = ring[i], b = ring[(i + 1) % 6];
-        s += `<line class="fg-dash" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"></line>`;
-      }
-      s += bond(Ok, Ck, { order: 2, rFrom: 14, rTo: 14 });
-      s += bond(Ck, Ca, { rFrom: 14, rTo: 14 });
-      s += bond(Ca, Cx, { rFrom: 14, rTo: 14, cls: 'fg-bond-hi' });
-      s += bond(Cx, Ox, { rFrom: 14, rTo: 14 });
-      s += bond(Ox, H, { rFrom: 14, rTo: 12, cls: 'fg-bond-hi' });
-      s += bond(Ck, P(48, 186), { rFrom: 14, rTo: 17 });
-      s += bond(Cx, P(240, 186), { order: 2, rFrom: 14, rTo: 14 });
-      s += atom(48, 186, 'CH₃', { r: 17 });
-      s += atom(240, 186, 'O');
-      s += atom(Ok.x, Ok.y, 'O');
-      s += atom(Ck.x, Ck.y, 'C');
-      s += atom(Ca.x, Ca.y, 'C', { kind: 'hi' });
-      s += atom(Cx.x, Cx.y, 'C');
-      s += atom(Ox.x, Ox.y, 'O');
-      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
-      /* All three run the same way round the loop, clockwise as drawn:
-         (a) the ketone C=O π picks up the carboxyl's H as a new O–H;
-         (b) those O–H electrons become the second π of the departing CO2;
-         (c) the Cα–C(O2H) bond becomes the C=C of the enol. */
-      s += curve(P(84, 130), P(134, 72), { bow: -56 });
-      s += curve(P(174, 88), P(206, 120), { bow: -14 });
-      s += curve(P(176, 176), P(126, 184), { bow: -56 });
-      s += text(132, 240, 'three arrows chasing each other', { cls: 'fg-sm', size: 10.5 });
-      s += text(132, 260, 'round one dashed hexagon', { cls: 'fg-sm', size: 10.5 });
-      s += text(132, 282, 'the O–H is what reaches', { cls: 'fg-tag', size: 11 });
-    }
-
-    /* 2 — CO2 leaves, an enol is left. */
-    s += tag(380, 36, '2 · CO₂ leaves; an enol is left');
-    s += panel(262, 44, 236, 244);
-    {
-      s += atom(380, 96, 'O=C=O', { kind: 'warn', r: 30, size: 10 });
-      s += text(380, 134, 'gone, as a gas', { cls: 'fg-sm', size: 10.5 });
-      const Ck = P(330, 196), Ca = P(392, 224), OH = P(330, 244);
-      s += bond(Ck, Ca, { order: 2, rFrom: 14, rTo: 14 });
-      s += bond(Ck, OH, { rFrom: 14, rTo: 16 });
-      s += bond(Ck, P(288, 168), { rFrom: 14, rTo: 17 });
-      s += bond(Ca, P(446, 224), { rFrom: 14, rTo: 13 });
-      s += atom(288, 168, 'CH₃', { r: 17 });
-      s += atom(446, 224, 'R', { r: 13 });
-      s += atom(Ck.x, Ck.y, 'C');
-      s += atom(Ca.x, Ca.y, 'C', { kind: 'hi' });
-      s += atom(OH.x, OH.y, 'OH', { r: 16, size: 10.5 });
-      s += text(380, 282, 'CH₃–C(OH)=CR₂, an enol', { cls: 'fg-tag', size: 11 });
-    }
-
-    /* 3 — tautomerize. */
-    s += tag(620, 36, '3 · tautomerize to the ketone');
-    s += panel(510, 44, 236, 244);
-    {
-      const Ck = P(578, 168), O = P(578, 116), Ca = P(640, 196);
-      s += bond(Ck, O, { order: 2, rFrom: 14, rTo: 14 });
-      s += bond(Ck, Ca, { rFrom: 14, rTo: 14 });
-      s += bond(Ck, P(534, 200), { rFrom: 14, rTo: 17 });
-      s += bond(Ca, P(694, 196), { rFrom: 14, rTo: 13 });
-      s += bond(Ca, P(640, 244), { rFrom: 14, rTo: 12 });
-      s += atom(534, 200, 'CH₃', { r: 17 });
-      s += atom(694, 196, 'R', { r: 13 });
-      s += atom(640, 244, 'H', { r: 12 });
-      s += atom(O.x, O.y, 'O');
-      s += atom(Ck.x, Ck.y, 'C');
-      s += atom(Ca.x, Ca.y, 'C', { kind: 'hi' });
-      s += text(614, 282, 'the α carbon takes the H', { cls: 'fg-sm', size: 10.5 });
-    }
-
-    /* the two failures. */
-    s += rule(24, 312, 736, 312);
-    s += tag(196, 340, 'an α-keto acid');
-    s += tag(568, 340, 'a γ-keto acid');
-    s += panel(14, 352, 356, 80, { kind: 'warn' });
-    s += panel(390, 352, 356, 80, { kind: 'warn' });
-    s += text(192, 384, 'the loop would have five atoms in it', { cls: 'fg-sm', size: 10.5 });
-    s += text(192, 408, 'the O–H cannot reach — no reaction', { cls: 'fg-tag-warn', size: 11 });
-    s += text(568, 384, 'the loop would have seven atoms in it', { cls: 'fg-sm', size: 10.5 });
-    s += text(568, 408, 'too floppy to close — no reaction', { cls: 'fg-tag-warn', size: 11 });
-    s += label(380, 462, 'Only a carbonyl exactly β to the carboxyl puts the H and the O six atoms apart.');
-    return s;
-  },
-  caption: 'Decarboxylation here is not thermal decomposition, it is a cyclic proton transfer. Three pairs of electrons move the same way round one six-membered loop: the second carbonyl&rsquo;s &pi; electrons collect the carboxyl hydrogen as a new O&ndash;H, those O&ndash;H electrons become the second &pi; bond of the departing CO<sub>2</sub>, and the C&ndash;C bond that breaks becomes the C=C of an enol.',
-  note: 'The second carbonyl can be a ketone &mdash; the acetoacetic route, where the intermediate really is a &beta;-keto acid &mdash; or it can be the other carboxyl, which is the malonic route and a substituted malonic acid. The hexagon does not care which, which is why one mechanism covers both syntheses. It is also why the ester has to be hydrolyzed first: the loop is closed by the carboxyl O&ndash;H, and an ester has no O&ndash;H to close it with.',
+  id: 'l-malonic-alkylation',
+  lessons: ['ester-syntheses'],
+  alt: 'Three stacked panels: ethoxide removes an alpha hydrogen of diethyl malonate; the carbanion attacks the CH2 of ethyl bromide as bromide leaves; diethyl ethylmalonate, with one alpha H left.',
+  get viewBox() { return `0 0 ${column(MAL_A).W} ${column(MAL_A).H}`; },
+  build() { return column(MAL_A).svg; },
+  caption: 'Deprotonate, then alkylate. The highlighted α carbon takes the ethyl group.',
 });
 
+FIGURES.push({
+  id: 'l-malonic-decarb',
+  lessons: ['ester-syntheses'],
+  alt: 'Three stacked panels: ethylmalonic acid; the six-membered ring in which one COOH hands its H to the other carboxyl C=O, with three curved arrows; the enol plus CO2, then butanoic acid.',
+  get viewBox() { return `0 0 ${column(MAL_B).W} ${column(MAL_B).H}`; },
+  build() { return column(MAL_B).svg; },
+  caption: 'Hydrolysis, then loss of CO₂ through a six-atom ring, then the enol turns into the acid.',
+});
+
+/* ------------------------------------------------ the ring closure --- */
+
+/* 1: after the first SN2, a 4-bromobutyl chain on the alpha carbon. */
+function pBromobutyl(ox, oy, h) {
+  const Ca = A(ox + 70, oy + 132, 'C', 'hi');
+  const E1 = A(ox + 30, oy + 86, 'CO₂Et'), E2 = A(ox + 40, oy + 192, 'CO₂Et'), H = A(ox + 70, oy + 72, 'H', 'warn');
+  const ch = [P(ox + 104, oy + 150), P(ox + 132, oy + 132), P(ox + 160, oy + 150), P(ox + 188, oy + 132)];
+  const Br = A(ox + 212, oy + 156, 'Br');
+  let s = frameP(ox, oy, h, '1 · NaOEt, one end of the chain', ['first SN2: a 4-bromobutyl group', 'is on the α carbon']);
+  s += bd(Ca, E1) + bd(Ca, E2) + bd(Ca, H) + bond(Ca, ch[0], { rFrom: Ca.r, rTo: 0 });
+  for (let i = 0; i < 3; i++) s += sk(ch[i], ch[i + 1]);
+  s += bond(ch[3], Br, { rFrom: 0, rTo: Br.r });
+  s += draw(Ca, E1, E2, H, Br);
+  ['2', '3', '4', '5'].forEach((n, i) => { s += tag(ch[i].x, ch[i].y + (i % 2 ? -12 : 20), n); });
+  s += tag(Ca.x + 22, Ca.y + 26, '1');
+  return s;
+}
+
+/* 2: NaOEt again; the carbanion reaches the far end of its own chain. */
+function pCloseRing(ox, oy, h) {
+  const pts = polyPts(ox + 130, oy + 136, 5, 44, 180);
+  const Ca = A(pts[0].x, pts[0].y, 'C⁻', 'hi');
+  const E1 = A(ox + 40, oy + 92, 'CO₂Et'), E2 = A(ox + 40, oy + 184, 'CO₂Et');
+  const C5 = pts[4];
+  const dir = { x: (C5.x - Ca.x), y: (C5.y - Ca.y) };
+  const L = Math.hypot(dir.x, dir.y);
+  const Br = A(C5.x + (dir.x / L) * 42, C5.y + (dir.y / L) * 42, 'Br');
+  let s = frameP(ox, oy, h, '2 · NaOEt again: the chain closes', ['second SN2, inside one molecule']);
+  s += bd(Ca, E1) + bd(Ca, E2) + bond(Ca, pts[1], { rFrom: Ca.r, rTo: 0 });
+  for (let i = 1; i < 4; i++) s += sk(pts[i], pts[i + 1]);
+  s += bond(C5, Br, { rFrom: 0, rTo: Br.r, cls: 'fg-bond-hi' });
+  s += lp(Ca, -54, 5);
+  s += draw(Ca, E1, E2, Br);
+  s += curve(off(lpAt(Ca, -54, 5), 4, 0), off(C5, -6, 8), { bow: -10 });
+  s += curve(mid(C5, Br), off(Br, 14, 6), { bow: -10 });
+  const c = P(ox + 130, oy + 136);
+  ['2', '3', '4', '5'].forEach((n, i) => {
+    const p = pts[i + 1], dx = c.x - p.x, dy = c.y - p.y, d = Math.hypot(dx, dy);
+    s += tag(p.x + (dx / d) * 14, p.y + (dy / d) * 14 + 4, n);
+  });
+  return s;
+}
+
+/* 3: the cyclopentane diester, then the acid. */
+function pRingProduct(ox, oy, h) {
+  const c = P(ox + 116, oy + 118);
+  const pts = polyPts(c.x, c.y, 5, 34, 90);
+  const Ca = A(pts[0].x, pts[0].y, 'C', 'hi');
+  const E1 = A(ox + 62, oy + 64, 'CO₂Et'), E2 = A(ox + 170, oy + 64, 'CO₂Et');
+  let s = frameP(ox, oy, h, '3 · a five-membered ring', [['cyclopentanecarboxylic acid', 'fg-tag-good']]);
+  s += bd(Ca, E1) + bd(Ca, E2);
+  s += bond(Ca, pts[1], { rFrom: Ca.r, rTo: 0 }) + bond(Ca, pts[4], { rFrom: Ca.r, rTo: 0 });
+  for (let i = 1; i < 4; i++) s += sk(pts[i], pts[i + 1]);
+  s += draw(Ca, E1, E2);
+  ['2', '3', '4', '5'].forEach((n, i) => {
+    const p = pts[i + 1], dx = c.x - p.x, dy = c.y - p.y, d = Math.hypot(dx, dy);
+    s += tag(p.x + (dx / d) * 13, p.y + (dy / d) * 13 + 4, n);
+  });
+  s += gapArrow(P(ox + 116, oy + 168), P(ox + 116, oy + 194));
+  s += tag(ox + 172, oy + 186, 'H₃O⁺, heat');
+  const q = polyPts(ox + 90, oy + 232, 5, 24, 0);
+  s += q.map((p, i) => sk(p, q[(i + 1) % 5])).join('');
+  const COOH = A(ox + 162, oy + 232, 'COOH');
+  s += bond(q[0], COOH, { rFrom: 0, rTo: COOH.r });
+  s += draw(COOH);
+  return s;
+}
+
+FIGURES.push({
+  id: 'malonate-ring',
+  section: 'ester-syntheses',
+  alt: 'Three panels. 1: after one alkylation by 1,4-dibromobutane, the malonate alpha carbon (atom 1) carries a chain of four carbons (2 to 5) ending in Br. 2: a second ethoxide makes the alpha carbon a carbanion again; its lone pair attacks carbon 5 of its own chain and bromide leaves. 3: diethyl cyclopentane-1,1-dicarboxylate, a five-membered ring numbered 1 to 5, which H3O+ and heat turn into cyclopentanecarboxylic acid.',
+  get viewBox() { return `0 0 ${rows(RING, 3).W} ${rows(RING, 3).H}`; },
+  build() { return rows(RING, 3).svg; },
+  caption: 'Count the ring: the α carbon (1) plus the four chain carbons (2 to 5) from 1,4-dibromobutane.',
+});
+const RING = [[pBromobutyl, 280], [pCloseRing, 280], [pRingProduct, 280]];
+
+/* --------------------------------------------- reading it backwards --- */
+
+/* One target: skeletal chain ending in a labelled COOH, with the cut bond
+   marked. `branch` draws the substituents. */
+function pTarget(ox, oy, h, which) {
+  const w = 324;
+  const good = which === 'good';
+  let s = frameP(ox, oy, h, good ? '4-methylpentanoic acid' : '3,3-dimethylbutanoic acid',
+    good ? [['halide: (CH₃)₂CHCH₂Br, primary', 'fg-tag-good']] : [['halide: (CH₃)₃CBr, tertiary: no route', 'fg-tag-warn']],
+    good ? undefined : 'warn', w);
+  const COOH = A(ox + 270, oy + 76, 'COOH');
+  if (good) {
+    const v = [P(ox + 62, oy + 76), P(ox + 102, oy + 96), P(ox + 142, oy + 76), P(ox + 182, oy + 96), P(ox + 222, oy + 76)];
+    // v0 methyl, v1 CH (branch), v2 CH2, v3 CH2 = alpha, then C(OOH)
+    s += sk(v[0], v[1]) + sk(v[1], v[2]) + sk(v[2], v[3], true) + sk(v[3], v[4]);
+    s += sk(v[1], P(v[1].x, v[1].y + 40));
+    s += bond(v[4], COOH, { rFrom: 0, rTo: 0 });
+    s = s; // the carboxyl carbon is v[4]; draw C=O and OH on it
+    s += bond(v[4], P(v[4].x, v[4].y - 36), { rFrom: 0, rTo: 14, order: 2 });
+    s += atom(v[4].x, v[4].y - 36, 'O');
+    s += atom(ox + 270, oy + 76, 'OH');
+    s += cut(mid(v[2], v[3]), v[2], v[3]);
+    s += tag(v[3].x, v[3].y + 22, 'α');
+    s += tag(ox + 112, oy + 164, 'from the halide');
+    s += tag(ox + 236, oy + 164, 'from malonate');
+  } else {
+    const q = P(ox + 112, oy + 96), a = P(ox + 162, oy + 76), c = P(ox + 212, oy + 96);
+    s += sk(q, P(q.x - 40, q.y - 20)) + sk(q, P(q.x - 40, q.y + 20)) + sk(q, P(q.x, q.y + 42));
+    s += sk(q, a, true) + sk(a, c);
+    s += bond(c, P(c.x, c.y - 38), { rFrom: 0, rTo: 14, order: 2 });
+    s += atom(c.x, c.y - 38, 'O');
+    s += bond(c, P(ox + 262, oy + 96), { rFrom: 0, rTo: 14 });
+    s += atom(ox + 262, oy + 96, 'OH');
+    s += cut(mid(q, a), q, a);
+    s += tag(a.x, a.y + 26, 'α');
+    s += tag(ox + 70, oy + 164, 'from the halide');
+    s += tag(ox + 222, oy + 164, 'from malonate');
+  }
+  return s;
+}
+/* A short cut mark across the bond a–b at point m. */
+function cut(m, a, b) {
+  const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
+  const px = -dy / L, py = dx / L;
+  return `<line class="fg-arrow" x1="${(m.x + px * 13).toFixed(2)}" y1="${(m.y + py * 13).toFixed(2)}" x2="${(m.x - px * 13).toFixed(2)}" y2="${(m.y - py * 13).toFixed(2)}" stroke-dasharray="3 3"></line>`;
+}
+
+FIGURES.push({
+  id: 'malonic-disconnect',
+  section: 'ester-syntheses',
+  lessons: ['ester-syntheses'],
+  alt: 'Two targets drawn skeletally with the bond from the alpha carbon to its substituent cut. 4-Methylpentanoic acid: the cut leaves CH2–COOH from malonate and an isobutyl group from 1-bromo-2-methylpropane, a primary halide. 3,3-Dimethylbutanoic acid: the cut leaves CH2–COOH and a tert-butyl group, which would need tert-butyl bromide, a tertiary halide, so there is no route.',
+  viewBox: '0 0 340 392',
+  build() { return pTarget(8, 8, 184, 'good') + pTarget(8, 200, 184, 'bad'); },
+  caption: 'Cut the bond from the α carbon to its substituent (dashed mark). The piece that keeps the COOH is what malonate supplies; the other piece names the halide.',
+});
+
+/* ------------------------------------------------ why only beta --- */
+
+function pKeto(ox, oy, h, which) {
+  const w = 324;
+  const good = which === 'beta';
+  const titles = { beta: 'β-keto acid: loses CO₂ on warming', alpha: 'α-keto acid: no', gamma: 'γ-keto acid: no' };
+  const lines = {
+    beta: [['C=O sits next to the α carbon', 'fg-tag-good']],
+    alpha: [['no C=O on the far side to take', 'fg-tag-warn'], ['the bond’s electrons', 'fg-tag-warn']],
+    gamma: [['the α carbon’s neighbor is CH₂,', 'fg-tag-warn'], ['not C=O', 'fg-tag-warn']],
+  }[which];
+  let s = frameP(ox, oy, h, titles[which], lines, good ? 'good' : 'warn', w);
+  const y = oy + 78;
+  const M = A(ox + 36, y, 'CH₃');
+  const nCH2 = which === 'beta' ? 1 : which === 'gamma' ? 2 : 0;
+  const Ck = A(ox + 90, y, 'C');
+  const Ok = A(ox + 90, y - 42, 'O');
+  let s2 = bd(M, Ck) + bd(Ck, Ok, { order: 2 });
+  let prev = Ck, x = ox + 90;
+  const greek = [];
+  const chain = [];
+  for (let i = 0; i < nCH2; i++) { x += 58; const c = A(x, y, 'CH₂'); chain.push(c); s2 += bd(prev, c); prev = c; }
+  x += 64;
+  const COOH = A(x, y, 'COOH');
+  s2 += bd(prev, COOH, { cls: 'fg-bond-hi' });
+  s2 += draw(M, Ck, Ok, ...chain, COOH);
+  // Greek letters: alpha is the carbon bonded to COOH
+  const carbons = [Ck, ...chain];
+  const names = ['α', 'β', 'γ'];
+  for (let i = carbons.length - 1, j = 0; i >= 0; i--, j++) s2 += tag(carbons[i].x, y + 30, names[j]);
+  s += s2;
+  s += tag(mid(prev, COOH).x, y - 14, 'breaks');
+  return s;
+}
+
+FIGURES.push({
+  id: 'decarb-beta-only',
+  section: 'ester-syntheses',
+  lessons: ['ester-syntheses'],
+  alt: 'Three keto acids with the bond to COOH marked as the one that breaks. In the beta-keto acid CH3COCH2COOH, the ketone C=O sits next to the alpha carbon, and it loses CO2. In the alpha-keto acid CH3COCOOH there is no C=O beyond the breaking bond to take the electrons. In the gamma-keto acid CH3COCH2CH2COOH the alpha carbon is next to a CH2, not to the C=O. Neither of the last two loses CO2 this way.',
+  viewBox: '0 0 340 470',
+  build() { return pKeto(8, 8, 144, 'beta') + pKeto(8, 160, 150, 'alpha') + pKeto(8, 318, 150, 'gamma'); },
+  caption: 'The breaking bond (highlighted) must sit right beside a C=O, so the electrons can flow into it and make the enol. Only a β carbonyl is placed there.',
+});
+
+/* ------------------------------------------------ acetoacetic ester --- */
+
+/* 1: ethyl acetoacetate, then the alkylated ester. */
+function pAcetoAlkyl(ox, oy, h) {
+  let s = frameP(ox, oy, h, '1 · NaOEt, then CH₃CH₂Br', ['the α carbon takes the ethyl']);
+  const row = (y, alk) => {
+    const M = A(ox + 26, y, 'CH₃'), Ck = A(ox + 74, y, 'C'), O = A(ox + 74, y - 44, 'O');
+    const Ca = A(ox + 126, y, alk ? 'CH' : 'CH₂', 'hi'), E = A(ox + 190, y, 'CO₂Et');
+    let t = bd(M, Ck) + bd(Ck, O, { order: 2 }) + bd(Ck, Ca) + bd(Ca, E);
+    let extra = [];
+    if (alk) { const R = A(ox + 126, y + 50, 'CH₂CH₃', 'good'); t += bd(Ca, R, { cls: 'fg-bond-hi' }); extra.push(R); }
+    return t + draw(M, Ck, O, Ca, E, ...extra);
+  };
+  s += row(oy + 90, false);
+  s += tag(ox + 116, oy + 126, 'ethyl acetoacetate');
+  s += gapArrow(P(ox + 116, oy + 136), P(ox + 116, oy + 160));
+  s += row(oy + 214, true);
+  return s;
+}
+function pRingAceto(ox, oy, h) {
+  return frameP(ox, oy, h, '2 · H₃O⁺, heat: the β-keto acid', ['the ketone C=O takes the H', 'this time']) + ringCore(ox, oy, 'CH₃');
+}
+function pEnolKetone(ox, oy, h) {
+  return frameP(ox, oy, h, '3 · the enol → pentan-2-one',
+    [['CH₃CH₂ came from the halide', 'fg-tag-good'], 'the rest came from acetoacetate']) + enolThenProduct(ox, oy, 'CH₃');
+}
+const ACETO = [[pAcetoAlkyl, 300], [pRingAceto, 300], [pEnolKetone, 316]];
+
+FIGURES.push({
+  id: 'acetoacetic-sequence',
+  section: 'ester-syntheses',
+  alt: 'Acetoacetic ester synthesis of pentan-2-one in three panels. 1: ethyl acetoacetate, CH3–CO–CH2–CO2Et, is deprotonated and alkylated with ethyl bromide at the CH2 between the two carbonyls. 2: after hydrolysis the beta-keto acid loses CO2 through a six-membered ring; the ketone oxygen takes the carboxyl H, drawn with three curved arrows. 3: the enol, then pentan-2-one, whose ethyl came from the halide and whose other carbons came from acetoacetate.',
+  get viewBox() { return `0 0 ${rows(ACETO, 3).W} ${rows(ACETO, 3).H}`; },
+  build() { return rows(ACETO, 3).svg; },
+  caption: 'Ethyl acetoacetate plus ethyl bromide gives pentan-2-one. The ketone is never touched: only the ester side is hydrolyzed and lost as CO₂.',
+});
+
+FIGURES.push({
+  id: 'l-acetoacetic',
+  lessons: ['ester-syntheses'],
+  alt: 'Three stacked panels: ethyl acetoacetate is alkylated with ethyl bromide at the CH2 between the two carbonyls; the beta-keto acid loses CO2 through a six-membered ring with three curved arrows; the enol, then pentan-2-one.',
+  get viewBox() { return `0 0 ${column(ACETO).W} ${column(ACETO).H}`; },
+  build() { return column(ACETO).svg; },
+  caption: 'Same three stages, but the ketone survives, so the product is a methyl ketone.',
+});
+
+/* ------------------------------------------- tertiary halide: E2 --- */
+function pE2(ox, oy, h) {
+  const w = 324;
+  let s = frameP(ox, oy, h, 'C⁻ takes an H instead (E2)', [], 'warn', w);
+  const Ca = A(ox + 64, oy + 106, 'C⁻', 'hi');
+  const E1 = A(ox + 34, oy + 56, 'CO₂Et'), E2 = A(ox + 34, oy + 156, 'CO₂Et'), H0 = A(ox + 84, oy + 152, 'H');
+  const Hb = A(ox + 132, oy + 106, 'H', 'warn'), Cb = A(ox + 180, oy + 106, 'CH₂');
+  const Cq = A(ox + 236, oy + 106, 'C'), M1 = A(ox + 236, oy + 56, 'CH₃'), M2 = A(ox + 236, oy + 158, 'CH₃');
+  const Br = A(ox + 292, oy + 106, 'Br');
+  s += bd(Ca, E1) + bd(Ca, E2) + bd(Ca, H0) + bd(Hb, Cb, { cls: 'fg-bond-hi' }) + bd(Cb, Cq) + bd(Cq, M1) + bd(Cq, M2) + bd(Cq, Br, { cls: 'fg-bond-hi' });
+  s += lp(Ca, 0, 5);
+  s += draw(Ca, E1, E2, H0, Hb, Cb, Cq, M1, M2, Br);
+  s += curve(off(lpAt(Ca, 0, 5), 4, -4), off(Hb, -8, -10), { bow: 14 });
+  s += curve(mid(Hb, Cb), mid(Cb, Cq), { bow: -14 });
+  s += curve(mid(Cq, Br), off(Br, 0, 16), { bow: -12 });
+  return s;
+}
+function pE2Products(ox, oy, h) {
+  const w = 324;
+  let s = frameP(ox, oy, h, 'what you get back', [['no new C–C bond on the α carbon', 'fg-tag-warn']], 'warn', w);
+  const C1 = A(ox + 60, oy + 72, 'CH₂'), C2 = A(ox + 116, oy + 72, 'C');
+  const M1 = A(ox + 154, oy + 46, 'CH₃'), M2 = A(ox + 154, oy + 98, 'CH₃');
+  s += bd(C1, C2, { order: 2 }) + bd(C2, M1) + bd(C2, M2);
+  s += draw(C1, C2, M1, M2);
+  s += tag(ox + 250, oy + 60, '+ diethyl malonate');
+  s += tag(ox + 250, oy + 80, '+ Br⁻');
+  s += tag(ox + 100, oy + 128, '2-methylpropene');
+  return s;
+}
+
+FIGURES.push({
+  id: 'tertiary-e2',
+  section: 'ester-syntheses',
+  lessons: ['ester-syntheses'],
+  alt: 'The malonate carbanion meets tert-butyl bromide. Its lone pair takes a hydrogen from one of the methyl groups, that C–H bond becomes a C=C, and bromide leaves: an E2. The products are 2-methylpropene, diethyl malonate back again and bromide, with no new bond to the alpha carbon.',
+  viewBox: '0 0 340 368',
+  build() { return pE2(8, 8, 196) + gapArrow(P(170, 208), P(170, 228)) + pE2Products(8, 232, 128); },
+  caption: 'Three arrows of an E2 on tert-butyl bromide. The carbanion ends up protonated, and the α carbon gains nothing.',
+});
+
+/* ------------------------------------------------ two carbonyls --- */
+function pOneOrTwo(ox, oy, h, which) {
+  const w = 324;
+  const lines = {
+    acetate: [['one C=O beside the CH₃', 'fg-tag']],
+    malonate: [['two C=O beside the CH₂', 'fg-tag-good']],
+    aceto: [['two C=O beside the CH₂', 'fg-tag-good']],
+  }[which];
+  const titles = { acetate: 'ethyl acetate', malonate: 'diethyl malonate', aceto: 'ethyl acetoacetate' };
+  let s = frameP(ox, oy, h, titles[which], lines, undefined, w);
+  const y = oy + 88;
+  if (which === 'acetate') {
+    const Ca = A(ox + 110, y, 'CH₃', 'hi'), C = A(ox + 166, y, 'C'), O = A(ox + 166, y - 42, 'O'), E = A(ox + 222, y, 'OEt');
+    s += bd(Ca, C) + bd(C, O, { order: 2 }) + bd(C, E) + draw(Ca, C, O, E);
+    s += tag(Ca.x, y + 30, 'α');
+  } else {
+    const L = which === 'malonate' ? A(ox + 42, y, 'EtO') : A(ox + 42, y, 'CH₃');
+    const C1 = A(ox + 102, y, 'C'), O1 = A(ox + 102, y - 42, 'O');
+    const Ca = A(ox + 162, y, 'CH₂', 'hi');
+    const C2 = A(ox + 222, y, 'C'), O2 = A(ox + 222, y - 42, 'O'), E = A(ox + 282, y, 'OEt');
+    s += bd(L, C1) + bd(C1, O1, { order: 2 }) + bd(C1, Ca) + bd(Ca, C2) + bd(C2, O2, { order: 2 }) + bd(C2, E);
+    s += draw(L, C1, O1, Ca, C2, O2, E);
+    s += tag(Ca.x, y + 30, 'α');
+  }
+  return s;
+}
+
+FIGURES.push({
+  id: 'two-carbonyls',
+  section: 'ester-syntheses',
+  lessons: ['ester-syntheses'],
+  alt: 'Three structures. Ethyl acetate, CH3–CO–OEt: the alpha CH3 has one C=O beside it. Diethyl malonate, EtO–CO–CH2–CO–OEt, and ethyl acetoacetate, CH3–CO–CH2–CO–OEt: the alpha CH2 sits between two C=O groups.',
+  viewBox: '0 0 340 440',
+  build() { return pOneOrTwo(8, 8, 136, 'acetate') + pOneOrTwo(8, 152, 136, 'malonate') + pOneOrTwo(8, 296, 136, 'aceto'); },
+  caption: 'The highlighted α carbon. In ethyl acetate it touches one carbonyl; in the other two it sits between two.',
+});
+
+/* Every figure is placed by its empty markers, written by hand in the notes
+   prose or in a lesson step's string. */
 export default FIGURES;

@@ -292,8 +292,8 @@ const pinnickCells = [
       { deg: 90, len: 50, l: 'O', order: 2 },
       { deg: 0, len: 50, l: 'OH' },
     ]);
-    let s = m.s + T(Q, 158, 116, '+');
-    const h = Q(180, 112), o = Q(214, 112), cl = armEnd(o, 285, 44);
+    let s = m.s + T(Q, 151, 116, '+');
+    const h = Q(174, 112), o = Q(222, 112), cl = armEnd(o, 285, 44);
     s += B(h, o, 'H', 'O') + B(o, cl, 'O', 'Cl');
     s += A(h, 'H', { r: 14 }) + A(o, 'O') + A(cl, 'Cl');
     return s;
@@ -305,7 +305,7 @@ const pinnickCells = [
     s += arrow(Q(104, 118), Q(138, 118), { size: 7 });
     s += Tg(Q, 121, 104, 'HOCl');
     // 3-chloro-2-methylbutan-2-ol
-    const b2 = Q(188, 126), b1 = armEnd(b2, 210, 28), bm = armEnd(b2, 150, 28), b3 = armEnd(b2, 330, 28);
+    const b2 = Q(188, 110), b1 = armEnd(b2, 210, 28), bm = armEnd(b2, 150, 28), b3 = armEnd(b2, 330, 28);
     const b4 = armEnd(b3, 30, 28), oh = armEnd(b2, 90, 30), cl = armEnd(b3, 270, 30);
     s += sk(b2, b1) + sk(b2, bm) + sk(b2, b3) + sk(b3, b4);
     s += bond(b2, oh, { rFrom: 0, rTo: 16 }) + bond(b3, cl, { rFrom: 0, rTo: 16 });
@@ -414,22 +414,22 @@ FIGURES.push({
    5. The metal tests: what the aldehyde gives, and what the metal gets.
    ====================================================================== */
 const organicCell = ['THE ALDEHYDE IS OXIDIZED', 'in base it ends as the carboxylate', (Q) => {
-  const c1 = Q(58, 116);
+  const c1 = Q(58, 100);
   const m1 = centre(c1, [
     { deg: 90, len: 48, l: 'O', order: 2 },
     { deg: 210, len: 40, l: 'R' },
     { deg: 330, len: 40, l: 'H', kind: 'hi' },
   ]);
-  const c2 = Q(184, 116);
+  const c2 = Q(184, 100);
   const m2 = centre(c2, [
     { deg: 90, len: 48, l: 'O', order: 2 },
     { deg: 210, len: 40, l: 'R' },
     { deg: 330, len: 42, l: 'O', kind: 'hi', key: 'Om' },
   ]);
   const om = m2.ends.Om;
-  let s = m1.s + m2.s + arrow(Q(100, 104), Q(140, 104), { size: 7 });
+  let s = m1.s + m2.s + arrow(Q(100, 88), Q(140, 88), { size: 7 });
   s += text(om.x + 18, om.y - 12, '−', { cls: 'fg-warn', size: 15 });
-  s += Tg(Q, 122, 160, 'gives up two electrons');
+  s += Tg(Q, 122, 164, 'gives up two electrons');
   return s;
 }];
 const silverCell = ['SILVER(I) IS REDUCED', 'Ag⁺ + e⁻ → Ag, twice: the mirror', (Q) => {
@@ -459,7 +459,7 @@ FIGURES.push({
   alt: 'Two panels. Left: an aldehyde R–CHO becomes the carboxylate R–COO−, giving up two electrons. Right: the linear diamminesilver(I) ion, H3N–Ag–NH3 with a positive charge, is reduced to silver metal, drawn as a grey layer that plates onto the glass.',
   viewBox: '0 0 760 220',
   build() { return gridFigure([organicCell, silverCell], 2, 364, 204, 16, 16, 8, 8, [0, 'hi']); },
-  caption: 'Two electrons leave the aldehyde, and two silver ions take one each.',
+  caption: 'The left panel is the same for every test in this section; only the metal on the right changes.',
 });
 FIGURES.push({
   id: 'copper-tests',
@@ -623,7 +623,7 @@ const sugarPairCells = [
     const link = Q(123, 116);
     s += bond(L.v[0], link, { rFrom: 0, rTo: 15 }) + bond(link, f[0], { rFrom: 15, rTo: 0 });
     s += A(link, 'O', { r: 15, kind: 'hi' });
-    const ch = armEnd(f[0], 255, 40);
+    const ch = armEnd(f[0], 270, 46);
     s += bond(f[0], ch, { rFrom: 0, rTo: 23 }) + A(ch, 'CH₂OH', { r: 23 });
     s += mark(L.v[0]) + mark(f[0]);
     s += Tg(Q, 62, 62, 'glucose') + Tg(Q, 190, 62, 'fructose');
@@ -652,68 +652,69 @@ FIGURES.push({
 /* ======================================================================
    7. Autoxidation: the radical chain, with fishhook arrows.
    ====================================================================== */
-function acyl(Q, cx, cy, withH) {
-  const c = Q(cx, cy);
-  const groups = [
-    { deg: 90, len: 44, l: 'O', order: 2 },
-    { deg: 210, len: 40, l: 'R' },
-  ];
-  if (withH) groups.push({ deg: 330, len: 58, l: 'H', kind: 'hi' });
-  return { c, ...centre(c, groups) };
-}
 const autoxCells = [
   ['A RADICAL TAKES THE ALDEHYDE H', 'an acyl radical is left: R–C(•)=O', (Q) => {
-    const a = acyl(Q, 60, 116, true);
-    const h = a.ends.H, x = Q(196, h.y - Q(0, 0).y);
-    let s = a.s + A(x, 'X', { r: 14 });
+    const c = Q(54, 110);
+    const m = centre(c, [
+      { deg: 90, len: 44, l: 'O', order: 2 },
+      { deg: 210, len: 40, l: 'R' },
+      { deg: 330, len: 66, l: 'H', kind: 'hi', key: 'H' },
+    ]);
+    const h = m.ends.H, x = P(h.x + 80, h.y);
+    let s = m.s + A(x, 'X', { r: 14 });
     const dx = P(x.x - 20, x.y);
     s += dot(dx);
-    s += Tg(Q, 196, x.y - Q(0, 0).y + 30, 'any radical');
-    const mid = P((h.x + x.x) / 2, h.y);
-    const cb = P((a.c.x + h.x) / 2, (a.c.y + h.y) / 2);
-    s += fishhook(P(cb.x + 4, cb.y - 6), P(mid.x - 4, mid.y - 6), { bow: -16 });
-    s += fishhook(P(dx.x - 4, dx.y - 2), P(mid.x + 4, mid.y - 6), { bow: 8 });
-    s += fishhook(P(cb.x - 2, cb.y + 8), P(a.c.x + 10, a.c.y + 16), { bow: 10 });
+    s += Tg(Q, x.x - Q(0, 0).x, x.y - Q(0, 0).y - 26, 'any radical');
+    const mid = P((h.x + x.x) / 2 + 2, h.y - 6);
+    const cb = P((c.x + h.x) / 2, (c.y + h.y) / 2);
+    s += fishhook(P(cb.x + 3, cb.y - 6), P(mid.x - 3, mid.y), { bow: -16 });
+    s += fishhook(P(dx.x - 1, dx.y - 6), P(mid.x + 4, mid.y - 2), { bow: 8 });
+    s += fishhook(P(cb.x - 1, cb.y + 7), P(c.x + 8, c.y + 16), { bow: -8 });
     return s;
   }],
   ['O₂ ADDS TO THE ACYL RADICAL', 'an acylperoxy radical: R–C(=O)–O–O•', (Q) => {
-    const a = acyl(Q, 60, 120, false);
-    const e = P(a.c.x + 20, a.c.y + 6);
-    let s = a.s + dot(e);
-    const o1 = Q(138, 132), o2 = Q(184, 132);
+    const c = Q(60, 120);
+    const m = centre(c, [
+      { deg: 90, len: 44, l: 'O', order: 2 },
+      { deg: 210, len: 40, l: 'R' },
+    ]);
+    const e = P(c.x + 21, c.y);
+    let s = m.s + dot(e);
+    const o1 = Q(132, 120), o2 = Q(178, 120);
     s += B(o1, o2, 'O', 'O') + A(o1, 'O') + A(o2, 'O');
     const d1 = P(o1.x - 21, o1.y), d2 = P(o2.x + 21, o2.y);
     s += dot(d1) + dot(d2);
-    s += Tg(Q, 161, 168, 'O₂ is a diradical');
-    const mid = P((a.c.x + o1.x) / 2, (a.c.y + o1.y) / 2 - 10);
-    s += fishhook(P(e.x + 2, e.y - 6), P(mid.x - 3, mid.y), { bow: -10 });
-    s += fishhook(P(d1.x - 2, d1.y - 6), P(mid.x + 4, mid.y - 2), { bow: 10 });
+    s += Tg(Q, 155, 156, 'O₂ is a diradical');
+    const mid = P((e.x + d1.x) / 2, e.y - 8);
+    s += fishhook(P(e.x + 1, e.y - 6), P(mid.x - 3, mid.y), { bow: -8 });
+    s += fishhook(P(d1.x - 1, d1.y - 6), P(mid.x + 3, mid.y), { bow: 8 });
     return s;
   }],
   ['IT TAKES THE H OF A SECOND ALDEHYDE', 'a peroxy acid, and a new acyl radical', (Q) => {
-    const c = Q(50, 96);
+    const c = Q(40, 100);
     const m = centre(c, [
       { deg: 90, len: 40, l: 'O', order: 2 },
-      { deg: 210, len: 38, l: 'R' },
+      { deg: 240, len: 38, l: 'R' },
     ]);
-    const o1 = armEnd(c, 330, 44), o2 = armEnd(o1, 30, 42);
+    const o1 = armEnd(c, 330, 42), o2 = armEnd(o1, 30, 40);
     let s = m.s + bond(c, o1, { rFrom: 16, rTo: 14 }) + B(o1, o2, 'O', 'O') + A(o1, 'O', { r: 14 }) + A(o2, 'O', { r: 14 });
-    const d = P(o2.x + 8, o2.y + 17);
+    const d = P(o2.x + 20, o2.y);
     s += dot(d);
-    // the second aldehyde, lower right, its H pointing up-left
-    const c2 = Q(196, 150);
+    // the second aldehyde, to the right, its H pointing left
+    const c2 = Q(226, o2.y - Q(0, 0).y);
     const m2 = centre(c2, [
-      { deg: 135, len: 56, l: 'H', kind: 'hi', key: 'H' },
-      { deg: 45, len: 40, l: 'O', order: 2 },
-      { deg: 300, len: 36, l: 'R' },
+      { deg: 180, len: 56, l: 'H', kind: 'hi', key: 'H' },
+      { deg: 60, len: 40, l: 'O', order: 2 },
+      { deg: 300, len: 38, l: 'R' },
     ]);
     s += m2.s;
     const h = m2.ends.H;
-    const mid = P((d.x + h.x) / 2 + 4, (d.y + h.y) / 2);
-    const cb = P((c2.x + h.x) / 2, (c2.y + h.y) / 2);
-    s += fishhook(P(d.x + 5, d.y + 2), P(mid.x, mid.y - 2), { bow: 8 });
-    s += fishhook(P(cb.x + 6, cb.y - 2), P(mid.x + 6, mid.y + 4), { bow: 12 });
-    s += fishhook(P(cb.x - 4, cb.y + 8), P(c2.x - 14, c2.y + 8), { bow: -10 });
+    const mid = P((d.x + h.x - 14) / 2, d.y - 8);
+    const cb = P((c2.x - 16 + h.x + 14) / 2, h.y);
+    s += fishhook(P(d.x + 1, d.y - 6), P(mid.x - 2, mid.y), { bow: -7 });
+    s += fishhook(P(cb.x, cb.y - 6), P(mid.x + 4, mid.y - 2), { bow: 12 });
+    s += fishhook(P(cb.x, cb.y + 6), P(c2.x - 10, c2.y + 14), { bow: -8 });
+    s += Tg(Q, 200, 160, 'second aldehyde');
     return s;
   }],
   ['THE PEROXY ACID OXIDIZES ONE MORE', 'two acids from each peroxy acid', (Q) => {

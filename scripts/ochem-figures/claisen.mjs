@@ -1,141 +1,499 @@
 /* Figures for the claisen notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Every drawing uses one concrete case: ethyl acetate with itself for the
+   mechanism, ethyl acetoacetate for the acidic CH2, ethyl propanoate against
+   ethyl 2-methylpropanoate for the two-alpha-hydrogen rule, diethyl adipate
+   for the Dieckmann and cyclohexanone with diethyl carbonate for the crossed
+   case. Atoms are labelled, so every curved arrow starts at a named lone
+   pair or bond and lands on a named atom or bond.
+
+   Panels are functions of their top-left corner. The notes figures lay them
+   out in rows; the lesson copies (id prefix l-) stack the same panels in one
+   column no wider than 340, and every label in them is fg-lbl or fg-tag. */
+import { atom, bond, arrow, curve, lonePair, text, tag, panel, rule, P } from '../lib/ochem-figure.mjs';
+import { polyPts, ringDouble } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
 
-/* ----------------------------------------------------------------- 91 ---
-   The tetrahedral intermediate is the entire difference between a Claisen and
-   an aldol, and the section's only figure labeled it in passing. */
+/* ------------------------------------------------------------ helpers --- */
+const rad = (l) => (l === 'H' ? 11 : l.length <= 2 ? 14 : 4 + l.length * 3.8);
+const A = (x, y, l = 'C', k) => ({ x, y, l, k, r: rad(l) });
+const draw = (...as) => as.map((a) => atom(a.x, a.y, a.l, { kind: a.k, r: a.r })).join('');
+const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r ?? 0, rTo: b.r ?? 0, ...o });
+const mid = (a, b, t = 0.5) => P(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
+const off = (p, dx, dy) => P(p.x + dx, p.y + dy);
+const lp = (a, deg, extra = 7) => lonePair(a.x, a.y, deg, { dist: a.r + extra });
+const lpAt = (a, deg, extra = 7) => {
+  const r = (deg * Math.PI) / 180, d = a.r + extra;
+  return P(a.x + Math.cos(r) * d, a.y + Math.sin(r) * d);
+};
+/* Point at distance d from p in screen direction deg (0 = right, 90 = down). */
+const at = (p, deg, d) => P(p.x + Math.cos((deg * Math.PI) / 180) * d, p.y + Math.sin((deg * Math.PI) / 180) * d);
+/* A resonance arrow: one line, a head at each end. */
+const reso = (a, b) => { const m = mid(a, b); return arrow(m, b, { size: 7 }) + arrow(m, a, { size: 7 }); };
+const gapArrow = (a, b) => arrow(a, b, { size: 7 });
+
+/* A panel: box, title tag at the top, up to two tag lines at the bottom. */
+function frameP(ox, oy, w, h, title, lines = [], kind) {
+  let s = panel(ox, oy, w, h, kind ? { kind } : {});
+  s += tag(ox + w / 2, oy + 20, title);
+  lines.forEach((ln, i) => {
+    const [t, cls] = Array.isArray(ln) ? ln : [ln, 'fg-tag'];
+    s += text(ox + w / 2, oy + h - 14 - (lines.length - 1 - i) * 17, t, { cls, size: 11 });
+  });
+  return s;
+}
+
+/* ================================================ the overall reaction === */
+/* Ethyl acetate drawn CH3–C(=O)–OEt with its carbonyl carbon at (x, y). */
+function acetate(x, y, kMe, kC, kOEt) {
+  const Me = A(x - 50, y + 28, 'CH₃', kMe), C = A(x, y, 'C', kC),
+        O = A(x, y - 46, 'O'), E = A(x + 50, y + 28, 'OEt', kOEt);
+  return bd(C, O, { order: 2 }) + bd(C, Me) + bd(C, E) + draw(Me, C, O, E);
+}
+/* Ethyl acetoacetate CH3–C(=O)–CH2–C(=O)–OEt, ketone carbon at (x, y). */
+function acetoacetate(x, y, dx = 50) {
+  const Me = A(x - dx, y + 28, 'CH₃'), Ck = A(x, y, 'C', 'hi'), Ok = A(x, y - 46, 'O'),
+        Cm = A(x + dx, y + 28, 'CH₂', 'hi'), Ce = A(x + 2 * dx, y), Oe = A(x + 2 * dx, y - 46, 'O'),
+        E = A(x + 3 * dx, y + 28, 'OEt');
+  return {
+    svg: bd(Ck, Ok, { order: 2 }) + bd(Me, Ck) + bd(Ck, Cm, { cls: 'fg-bond-hi' }) + bd(Cm, Ce) +
+         bd(Ce, Oe, { order: 2 }) + bd(Ce, E) + draw(Me, Ck, Ok, Cm, Ce, Oe, E),
+    Ck, Cm,
+  };
+}
+
 FIGURES.push({
-  id: 'claisen-tetrahedral',
+  id: 'claisen-overall',
   section: 'claisen',
-  anchor: 'The intermediate collapses, expelling the alkoxide and reforming the carbonyl. The product is a <b>beta-ketoester</b>.</p>',
-  viewBox: '0 0 720 400',
-  alt: 'An ester enolate attacking a second ester, the tetrahedral intermediate drawn in full, and the beta-ketoester it collapses to',
+  anchor: '<h3>Enolate meets ester</h3>',
+  viewBox: '0 0 760 214',
+  alt: 'Two molecules of ethyl acetate react with sodium ethoxide, then aqueous acid, to give ethyl acetoacetate. The CH3 carbon of one ethyl acetate bonds to the carbonyl carbon of the other, and that second molecule loses its OEt group.',
   build() {
     let s = '';
-    s += tag(118, 34, 'ester enolate');
-    s += tag(344, 34, 'a second ester');
-
-    const n1 = P(58, 116), n2 = P(122, 94), no = P(122, 50), noe = P(186, 122);
-    s += bond(n1, n2, { order: 2 }); s += bond(n2, no); s += bond(n2, noe, { rTo: 16 });
-    s += atom(n1.x, n1.y, 'CH₂', { kind: 'hi' }); s += atom(n2.x, n2.y, 'C');
-    s += atom(no.x, no.y, 'O⁻', { kind: 'warn' }); s += atom(noe.x, noe.y, 'OEt', { r: 16 });
-
-    const m1 = P(274, 134), m2 = P(334, 112), mo = P(334, 66), moe = P(396, 134);
-    s += bond(m1, m2); s += bond(m2, mo, { order: 2 }); s += bond(m2, moe, { rTo: 16 });
-    s += atom(m1.x, m1.y, 'CH₃'); s += atom(m2.x, m2.y, 'C', { kind: 'hi' });
-    s += atom(mo.x, mo.y, 'O'); s += atom(moe.x, moe.y, 'OEt', { r: 16 });
-
-    s += curve(P(72, 132), P(330, 134), { bow: 44 });
-    s += text(200, 190, 'the new C–C bond', { cls: 'fg-tag', size: 11 });
-    s += curve(P(352, 92), P(354, 50), { bow: 16 });
-
-    s += arrow(P(438, 112), P(492, 112), { muted: true });
-
-    const c = P(596, 112);
-    s += bond(c, P(596, 58)); s += bond(c, P(542, 144), { rTo: 16 }); s += bond(c, P(652, 144), { rTo: 16 });
-    s += bond(c, P(540, 78), { rTo: 16 });
-    s += atom(596, 58, 'O⁻', { kind: 'warn' });
-    s += atom(542, 144, 'CH₃'); s += atom(652, 144, 'OEt', { r: 16 });
-    s += atom(540, 78, 'CH₂CO₂Et', { r: 16 });
-    s += atom(c.x, c.y, 'C', { kind: 'hi' });
-    s += text(600, 186, 'tetrahedral intermediate', { cls: 'fg-lbl', size: 12.5 });
-    s += text(600, 204, 'this one has an OEt to expel', { cls: 'fg-tag-warn', size: 11 });
-
-    s += rule(20, 224, 700, 224);
-    s += text(24, 252, 'An aldol’s alkoxide has nothing to lose, so it gets protonated. This one collapses.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
-
-    const p1 = P(58, 334), p2 = P(116, 312), po = P(116, 274), p3 = P(174, 334), p4 = P(232, 312), po2 = P(232, 274), p5 = P(294, 334);
-    s += bond(p1, p2); s += bond(p2, po, { order: 2 }); s += bond(p2, p3);
-    s += bond(p3, p4); s += bond(p4, po2, { order: 2 }); s += bond(p4, p5, { rTo: 16 });
-    s += atom(p1.x, p1.y, 'CH₃'); s += atom(p2.x, p2.y, 'C'); s += atom(po.x, po.y, 'O');
-    s += atom(p3.x, p3.y, 'CH₂', { kind: 'hi' }); s += atom(p4.x, p4.y, 'C'); s += atom(po2.x, po2.y, 'O');
-    s += atom(p5.x, p5.y, 'OEt', { r: 16 });
-    s += text(174, 372, 'pKₐ 11 — the most acidic thing in the flask', { cls: 'fg-tag-good', size: 11 });
-
-    s += text(346, 374, 'EtO⁻', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
-    s += curve(P(344, 368), P(186, 348), { bow: 22 });
-    s += text(400, 350, 'takes it, and does not give it back —', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(400, 368, 'which is why you need a full equivalent.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += acetate(96, 104, 'hi');
+    s += tag(96, 180, 'gives the enolate (α carbon)');
+    s += text(192, 110, '+', { cls: 'fg-lbl', size: 16 });
+    s += acetate(290, 104, undefined, 'hi', 'warn');
+    s += tag(290, 180, 'gives the C=O carbon; loses OEt');
+    s += arrow(P(386, 104), P(452, 104));
+    s += tag(419, 92, 'NaOEt');
+    s += tag(419, 126, 'then H₃O⁺');
+    const p = acetoacetate(540, 104, 52);
+    s += p.svg;
+    s += tag(510, 86, 'β', { anchor: 'middle' });
+    s += tag(620, 156, 'α');
+    s += tag(546, 162, 'new C–C bond', { cls: 'fg-tag-good' });
+    s += tag(618, 200, 'ethyl acetoacetate, a β-ketoester');
     return s;
   },
-  caption: 'Follow the middle structure and the aldol comparison makes itself. Both reactions build the same bond with the same nucleophile and arrive at a tetrahedral carbon; only this one is carrying a group worth expelling, so only this one restores a carbonyl.',
-  note: 'The last line of the drawing is the step that makes the reaction go. Everything before it is reversible and roughly thermoneutral; the product, once formed, is deprotonated between its two carbonyls and cannot go back until the acidic workup. That is also the arithmetic behind the stoichiometry — one equivalent of alkoxide is locked up per equivalent of product.',
+  caption: 'Two identical esters, two different jobs. The highlighted carbons are the two ends of the new bond.',
 });
 
-/* ---------------------------------------------------------------- 194 ---
-   The Dieckmann worked example counts a ring in prose, in a chapter whose
-   whole argument is that a reaction is a claim about which bond forms. */
+FIGURES.push({
+  id: 'l-claisen-overall',
+  lessons: ['claisen'],
+  viewBox: '0 0 320 336',
+  alt: 'Two ethyl acetate molecules; with NaOEt then aqueous acid they give ethyl acetoacetate. The CH3 of one bonds to the carbonyl carbon of the other, which loses its OEt.',
+  build() {
+    let s = '';
+    s += acetate(78, 70, 'hi');
+    s += text(160, 78, '+', { cls: 'fg-lbl', size: 16 });
+    s += acetate(242, 70, undefined, 'hi', 'warn');
+    s += tag(78, 134, 'enolate partner');
+    s += tag(242, 134, 'C=O partner');
+    s += arrow(P(150, 148), P(150, 196));
+    s += tag(162, 168, 'NaOEt', { anchor: 'start' });
+    s += tag(162, 186, 'then H₃O⁺', { anchor: 'start' });
+    const p = acetoacetate(84, 250, 50);
+    s += p.svg;
+    s += tag(62, 234, 'β');
+    s += tag(154, 300, 'α');
+    s += tag(96, 302, 'new C–C bond', { cls: 'fg-tag-good' });
+    s += tag(160, 326, 'ethyl acetoacetate, a β-ketoester');
+    return s;
+  },
+  caption: 'The highlighted carbons are the two ends of the new bond.',
+});
+
+/* ===================================================== the mechanism === */
+const PW = 316, PH = 232;
+
+/* 1: ethoxide takes an alpha H; the C–H electrons become the C=C, the C=O
+   electrons move onto oxygen. */
+function m1(ox, oy) {
+  const B = A(ox + 42, oy + 70, 'EtO⁻', 'warn');
+  const H = A(ox + 112, oy + 72, 'H', 'warn'), Ca = A(ox + 112, oy + 128, 'CH₂', 'hi'),
+        C = A(ox + 170, oy + 100), O = A(ox + 170, oy + 48), E = A(ox + 228, oy + 128, 'OEt');
+  let s = frameP(ox, oy, PW, PH, '1 · EtO⁻ removes an α hydrogen', ['ethyl acetate → its enolate']);
+  s += bd(H, Ca) + bd(Ca, C) + bd(C, O, { order: 2 }) + bd(C, E);
+  s += lp(O, -160, 5) + lp(O, -20, 5) + lp(B, 0, 4) + lp(B, -90, 3);
+  s += draw(B, H, Ca, C, O, E);
+  s += curve(off(lpAt(B, 0, 4), 4, 0), off(H, -12, -4), { bow: -12 });
+  s += curve(mid(H, Ca), mid(Ca, C), { bow: -14 });
+  s += curve(mid(C, O), off(O, 16, 4), { bow: -10 });
+  return s;
+}
+
+/* 2: the enolate: O– lone pair reforms C=O, C=C pi attacks the second
+   ester's carbonyl carbon, that C=O's pi electrons go to its oxygen. */
+function m2(ox, oy) {
+  const Ca = A(ox + 120, oy + 128, 'CH₂', 'hi'), C = A(ox + 70, oy + 100), O = A(ox + 70, oy + 48, 'O⁻', 'warn'),
+        E = A(ox + 28, oy + 132, 'OEt');
+  const Cb = A(ox + 222, oy + 116, 'C', 'hi'), Ob = A(ox + 198, oy + 66, 'O'),
+        Mb = A(ox + 278, oy + 116, 'CH₃'), Eb = A(ox + 222, oy + 172, 'OEt');
+  let s = frameP(ox, oy, PW, PH, '2 · the enolate attacks a second ester', ['a new C–C bond forms']);
+  s += bd(Ca, C, { order: 2 }) + bd(C, O) + bd(C, E);
+  s += bd(Cb, Ob, { order: 2 }) + bd(Cb, Mb) + bd(Cb, Eb);
+  s += lp(O, 180, 5) + lp(O, -90, 5) + lp(O, 0, 5) + lp(Ob, -150, 5) + lp(Ob, -40, 5);
+  s += draw(Ca, C, O, E, Cb, Ob, Mb, Eb);
+  s += curve(off(lpAt(O, 0, 5), 2, 6), mid(C, O, 0.45), { bow: -12 });
+  s += curve(mid(Ca, C), off(Cb, -18, 4), { bow: 30 });
+  s += curve(mid(Cb, Ob), off(Ob, 16, 2), { bow: -10 });
+  return s;
+}
+
+/* 3: the tetrahedral intermediate collapses and expels ethoxide. */
+function m3(ox, oy) {
+  const C = A(ox + 150, oy + 112, 'C', 'hi'), O = A(ox + 150, oy + 56, 'O⁻', 'warn'),
+        R = A(ox + 70, oy + 112, 'CH₂CO₂Et'), Me = A(ox + 110, oy + 164, 'CH₃'),
+        E = A(ox + 196, oy + 158, 'OEt', 'warn');
+  let s = frameP(ox, oy, PW, PH, '3 · the intermediate collapses', ['the C–OEt bond breaks; EtO⁻ leaves']);
+  s += bd(C, O) + bd(C, R) + bd(C, Me) + bd(C, E, { cls: 'fg-bond-hi' });
+  s += lp(O, 180, 5) + lp(O, -90, 5) + lp(O, 0, 5);
+  s += draw(C, O, R, Me, E);
+  s += curve(off(lpAt(O, 0, 5), 2, 6), mid(C, O, 0.5), { bow: -12 });
+  s += curve(mid(C, E), off(E, 20, -4), { bow: -14 });
+  s += tag(ox + 250, oy + 92, 'tetrahedral');
+  s += tag(ox + 250, oy + 108, 'intermediate');
+  return s;
+}
+
+/* 4: ethoxide takes the H between the two carbonyls. */
+function m4(ox, oy) {
+  const Me = A(ox + 30, oy + 96, 'CH₃'), Ck = A(ox + 82, oy + 124), Ok = A(ox + 82, oy + 176),
+        Cm = A(ox + 136, oy + 96, 'CH', 'hi'), H = A(ox + 136, oy + 48, 'H', 'warn'),
+        Ce = A(ox + 190, oy + 124), Oe = A(ox + 190, oy + 176), E = A(ox + 246, oy + 96, 'OEt');
+  const B = A(ox + 230, oy + 46, 'EtO⁻', 'warn');
+  Ck.l = 'C'; Ok.l = 'O'; Ce.l = 'C'; Oe.l = 'O';
+  Ck.r = Ok.r = Ce.r = Oe.r = 14;
+  let s = frameP(ox, oy, PW, PH, '4 · EtO⁻ takes the H between the C=O groups', [['pKₐ 11: this step does not go back', 'fg-tag-good']]);
+  s += bd(Me, Ck) + bd(Ck, Ok, { order: 2 }) + bd(Ck, Cm) + bd(Cm, H) + bd(Cm, Ce) + bd(Ce, Oe, { order: 2 }) + bd(Ce, E);
+  s += lp(B, 180, 4) + lp(B, 90, 3) + lp(Ok, 140, 5) + lp(Ok, 40, 5) + lp(Oe, 140, 5) + lp(Oe, 40, 5);
+  s += draw(Me, Ck, Ok, Cm, H, Ce, Oe, E, B);
+  s += curve(off(lpAt(B, 180, 4), -4, 0), off(H, 13, -2), { bow: 10 });
+  s += curve(mid(H, Cm), mid(Cm, Ck), { bow: 14 });
+  s += curve(mid(Ck, Ok), off(Ok, -16, 4), { bow: 10 });
+  return s;
+}
+
+FIGURES.push({
+  id: 'claisen-mechanism',
+  section: 'claisen',
+  anchor: '<h3>Step by step</h3>',
+  viewBox: '0 0 680 492',
+  alt: 'The Claisen condensation of ethyl acetate in four panels. 1: ethoxide removes a hydrogen from the CH3 carbon, giving the enolate. 2: the enolate C=C attacks the carbonyl carbon of a second ethyl acetate while that C=O opens onto oxygen. 3: the tetrahedral intermediate re-forms C=O and expels ethoxide. 4: ethoxide removes a hydrogen from the CH2 between the two carbonyls of ethyl acetoacetate.',
+  build() {
+    let s = m1(12, 10) + m2(352, 10) + m3(12, 256) + m4(352, 256);
+    s += gapArrow(P(330, 126), P(350, 126)) + gapArrow(P(330, 372), P(350, 372));
+    s += gapArrow(P(510, 244), P(170, 254));
+    return s;
+  },
+  caption: 'Read the panels left to right, top row first. Panels 2 and 3 are the addition and the loss of the leaving group from nucleophilic acyl substitution, with an enolate as the nucleophile.',
+});
+
+FIGURES.push({
+  id: 'l-claisen-mech-a',
+  lessons: ['claisen'],
+  viewBox: '0 0 340 488',
+  alt: 'Ethoxide removes a hydrogen from the CH3 of ethyl acetate to give the enolate; the enolate then attacks the carbonyl carbon of a second ethyl acetate.',
+  build() {
+    let s = m1(12, 6) + m2(12, 250);
+    s += gapArrow(P(170, 240), P(170, 250));
+    return s;
+  },
+  caption: 'Stages 1 and 2: make the enolate, then attack.',
+});
+
+FIGURES.push({
+  id: 'l-claisen-mech-b',
+  lessons: ['claisen'],
+  viewBox: '0 0 340 488',
+  alt: 'The tetrahedral intermediate re-forms C=O and expels ethoxide, giving ethyl acetoacetate; ethoxide then removes a hydrogen from its CH2 between the two carbonyls.',
+  build() {
+    let s = m3(12, 6) + m4(12, 250);
+    s += gapArrow(P(170, 240), P(170, 250));
+    return s;
+  },
+  caption: 'Stages 3 and 4: collapse, then the last deprotonation.',
+});
+
+/* ============================================ the acidic CH2 and its anion */
+/* One contributor of the ethyl acetoacetate anion. which: 'C', 'Ok', 'Oe'. */
+function contrib(ox, oy, which) {
+  const Me = A(ox + 26, oy + 100, 'CH₃'), Ck = A(ox + 72, oy + 74, 'C'),
+        Ok = A(ox + 72, oy + 26, which === 'Ok' ? 'O⁻' : 'O', which === 'Ok' ? 'warn' : undefined),
+        Cm = A(ox + 118, oy + 100, which === 'C' ? 'CH⁻' : 'CH', which === 'C' ? 'warn' : 'hi'),
+        Ce = A(ox + 164, oy + 74, 'C'),
+        Oe = A(ox + 164, oy + 26, which === 'Oe' ? 'O⁻' : 'O', which === 'Oe' ? 'warn' : undefined),
+        E = A(ox + 210, oy + 100, 'OEt');
+  let s = bd(Me, Ck) + bd(Ce, E);
+  s += bd(Ck, Ok, { order: which === 'Ok' ? 1 : 2 });
+  s += bd(Ck, Cm, { order: which === 'Ok' ? 2 : 1 });
+  s += bd(Cm, Ce, { order: which === 'Oe' ? 2 : 1 });
+  s += bd(Ce, Oe, { order: which === 'Oe' ? 1 : 2 });
+  if (which === 'C') s += lp(Cm, 90, 5);
+  s += draw(Me, Ck, Ok, Cm, Ce, Oe, E);
+  const t = { C: 'charge on the carbon', Ok: 'charge on the ketone O', Oe: 'charge on the ester O' }[which];
+  s += tag(ox + 118, oy + 146, t, { cls: which === 'C' ? 'fg-tag' : 'fg-tag-good' });
+  return s;
+}
+
+FIGURES.push({
+  id: 'ketoester-anion',
+  section: 'claisen',
+  anchor: '<h3>Why the final deprotonation drives everything</h3>',
+  viewBox: '0 0 760 300',
+  alt: 'The anion of ethyl acetoacetate drawn as three resonance contributors: negative charge on the central carbon, on the ketone oxygen, and on the ester oxygen. Below, a pKa scale: the alpha hydrogen of ethyl acetate at 25, ethanol at 16, and the CH2 of ethyl acetoacetate at 11.',
+  build() {
+    let s = '';
+    s += contrib(12, 10, 'C') + contrib(270, 10, 'Ok') + contrib(528, 10, 'Oe');
+    s += reso(P(240, 88), P(276, 88)) + reso(P(498, 88), P(534, 88));
+    s += rule(20, 178, 740, 178);
+    /* pKa strip: 26 at the left to 10 at the right. */
+    const x = (pka) => 60 + (26 - pka) * 40;
+    s += arrow(P(x(26), 236), P(x(10), 236), { muted: true });
+    s += tag(x(10) - 4, 262, 'more acidic →', { anchor: 'end', cls: 'fg-tag-mut' });
+    const marks = [
+      [25, 'ethyl acetate α-H', 'pKₐ 25', 'fg-tag-mut'],
+      [16, 'ethanol, EtOH', 'pKₐ 16', 'fg-tag'],
+      [11, 'ethyl acetoacetate CH₂', 'pKₐ 11', 'fg-tag-good'],
+    ];
+    for (const [p, name, v, cls] of marks) {
+      s += `<line class="fg-bond" x1="${x(p)}" y1="228" x2="${x(p)}" y2="244"></line>`;
+      s += tag(x(p), 204, name, { cls });
+      s += tag(x(p), 220, v, { cls });
+    }
+    return s;
+  },
+  caption: 'Top: one anion, three contributors, and two of them put the charge on an oxygen. Bottom: the product sits five pKₐ units below ethanol, so ethoxide takes its proton almost completely.',
+});
+
+FIGURES.push({
+  id: 'l-ketoester-anion',
+  lessons: ['claisen'],
+  viewBox: '0 0 250 520',
+  alt: 'The ethyl acetoacetate anion as three stacked resonance contributors: charge on the central carbon, on the ketone oxygen, and on the ester oxygen.',
+  build() {
+    let s = contrib(6, 4, 'C') + contrib(6, 184, 'Ok') + contrib(6, 364, 'Oe');
+    s += reso(P(124, 160), P(124, 190)) + reso(P(124, 340), P(124, 370));
+    return s;
+  },
+  caption: 'The CH₂ between the two C=O groups, after the base removes one of its hydrogens.',
+});
+
+/* ===================================== two alpha hydrogens or only one === */
+/* A starting ester: CH3–Cα(–R)–C(=O)–OEt. twoH: ethyl propanoate. */
+function startEster(ox, oy, twoH) {
+  const Me = A(ox + 30, oy + 100, 'CH₃'), Ca = A(ox + 84, oy + 72, twoH ? 'CH₂' : 'CH', 'hi'),
+        C = A(ox + 140, oy + 100), O = A(ox + 140, oy + 150), E = A(ox + 196, oy + 72, 'OEt');
+  let s = bd(Me, Ca) + bd(Ca, C) + bd(C, O, { order: 2 }) + bd(C, E);
+  const parts = [Me, Ca, C, O, E];
+  if (!twoH) { const M2 = A(ox + 84, oy + 24, 'CH₃'); s += bd(Ca, M2); parts.push(M2); }
+  return s + draw(...parts);
+}
+/* The Claisen product: R–C(=O)–C(sub)(sub)–C(=O)–OEt. */
+function product(ox, oy, twoH) {
+  const R = A(ox + 40, oy + 100, twoH ? 'CH₃CH₂' : '(CH₃)₂CH'), Ck = A(ox + 106, oy + 72),
+        Ok = A(ox + 106, oy + 24, 'O'), Cm = A(ox + 162, oy + 100, 'C', twoH ? 'hi' : 'warn'),
+        S1 = A(ox + 134, oy + 150, 'CH₃'), S2 = A(ox + 190, oy + 150, twoH ? 'H' : 'CH₃', twoH ? 'hi' : 'warn'),
+        Ce = A(ox + 218, oy + 72), Oe = A(ox + 218, oy + 24, 'O'), E = A(ox + 274, oy + 100, 'OEt');
+  Ck.l = 'C'; Ce.l = 'C';
+  let s = bd(R, Ck) + bd(Ck, Ok, { order: 2 }) + bd(Ck, Cm, { cls: 'fg-bond-hi' }) + bd(Cm, Ce) +
+          bd(Ce, Oe, { order: 2 }) + bd(Ce, E) + bd(Cm, S1) + bd(Cm, S2);
+  return s + draw(R, Ck, Ok, Cm, S1, S2, Ce, Oe, E);
+}
+
+FIGURES.push({
+  id: 'two-alpha-h',
+  section: 'claisen',
+  anchor: '<h3>Why the final deprotonation drives everything</h3>',
+  viewBox: '0 0 760 400',
+  alt: 'Top row: ethyl propanoate, whose alpha carbon is a CH2, condenses to a product whose central carbon between the two carbonyls still carries one hydrogen. Bottom row: ethyl 2-methylpropanoate, whose alpha carbon is a CH with two methyls, would give a product whose central carbon carries two methyl groups and no hydrogen.',
+  build() {
+    let s = '';
+    const row = (oy, twoH) => {
+      let r = startEster(0, oy, twoH);
+      r += tag(110, oy + 182, twoH ? 'ethyl propanoate: two α H' : 'ethyl 2-methylpropanoate: one α H');
+      r += arrow(P(232, oy + 88), P(296, oy + 88));
+      r += tag(264, oy + 76, '2 molecules');
+      r += tag(264, oy + 106, 'NaOEt');
+      r += product(300, oy, twoH);
+      const lines = twoH
+        ? [['one H left between', 'fg-tag-good'], ['the C=O groups: EtO⁻', 'fg-tag-good'], ['removes it. Driven.', 'fg-tag-good']]
+        : [['no H left here: nothing', 'fg-tag-warn'], ['pulls it forward.', 'fg-tag-warn'], ['Almost no product.', 'fg-tag-warn']];
+      lines.forEach(([t, c], i) => { r += tag(604, oy + 118 + i * 17, t, { cls: c, anchor: 'start' }); });
+      return r;
+    };
+    s += row(0, true);
+    s += rule(20, 198, 740, 198);
+    s += row(206, false);
+    return s;
+  },
+  caption: 'Compare the highlighted central carbon in the two products. Everything else about the two reactions is the same.',
+});
+
+FIGURES.push({
+  id: 'l-two-alpha-h',
+  lessons: ['claisen'],
+  viewBox: '0 0 300 440',
+  alt: 'Two Claisen products. From ethyl propanoate: the carbon between the two carbonyls carries a CH3 and one H. From ethyl 2-methylpropanoate: that carbon carries two CH3 groups and no H.',
+  build() {
+    let s = '';
+    s += tag(150, 14, 'from ethyl propanoate');
+    s += product(-8, 12, true);
+    s += tag(150, 196, 'one H left: EtO⁻ removes it', { cls: 'fg-tag-good' });
+    s += rule(10, 212, 290, 212);
+    s += tag(150, 234, 'from ethyl 2-methylpropanoate');
+    s += product(-8, 232, false);
+    s += tag(150, 416, 'no H left: nothing drives it', { cls: 'fg-tag-warn' });
+    return s;
+  },
+  caption: 'Look at the highlighted carbon between the two C=O groups.',
+});
+
+/* ========================================================== Dieckmann === */
+const DW = 320, DH = 300;
+/* Five ring positions for C2..C6: C4 at the top, C2 lower left, C6 lower
+   right, so the C2–C6 gap (or new bond) is the bottom edge. */
+function ringPts(ox, oy) {
+  const v = polyPts(ox + 150, oy + 140, 5, 60, 90);
+  return { C4: v[0], C3: v[1], C2: v[2], C6: v[3], C5: v[4], c: P(ox + 150, oy + 140) };
+}
+function numTag(p, c, s, d = 30) {
+  const dx = p.x - c.x, dy = p.y - c.y, l = Math.hypot(dx, dy);
+  return tag(p.x + (dx / l) * d, p.y + (dy / l) * d + 4, s);
+}
+
+function dieckA(ox, oy) {
+  const g = ringPts(ox, oy);
+  const C3 = A(g.C3.x, g.C3.y, 'CH₂'), C4 = A(g.C4.x, g.C4.y, 'CH₂'), C5 = A(g.C5.x, g.C5.y, 'CH₂');
+  const C2 = A(g.C2.x, g.C2.y, 'CH⁻', 'warn'), C6 = A(g.C6.x, g.C6.y, 'C', 'hi');
+  const C1 = A(C2.x - 48, C2.y + 52, 'CO₂Et');
+  const O6 = at(C6, 10, 52), E6 = at(C6, 100, 54);
+  const O = A(O6.x, O6.y, 'O'), E = A(E6.x, E6.y, 'OEt');
+  let s = frameP(ox, oy, DW, DH, '1 · the C2 enolate attacks C6', ['diethyl adipate after EtO⁻ removes an H from C2']);
+  s += bd(C2, C3) + bd(C3, C4) + bd(C4, C5) + bd(C5, C6) + bd(C2, C1);
+  s += bd(C6, O, { order: 2 }) + bd(C6, E);
+  s += lp(C2, 0, 4) + lp(O, -60, 5) + lp(O, 60, 5);
+  s += draw(C2, C3, C4, C5, C6, C1, O, E);
+  s += curve(off(lpAt(C2, 0, 4), 5, 0), off(C6, -16, 0), { bow: 10 });
+  s += curve(mid(C6, O), off(O, 4, -16), { bow: 10 });
+  s += numTag(C3, g.c, 'C3') + numTag(C4, g.c, 'C4', 26) + numTag(C5, g.c, 'C5');
+  s += tag(C2.x - 44, C2.y - 8, 'C2');
+  s += tag(C6.x + 30, C6.y - 22, 'C6');
+  s += tag(C1.x, C1.y + 34, 'C1');
+  return s;
+}
+
+function dieckB(ox, oy) {
+  const g = ringPts(ox, oy);
+  const C3 = A(g.C3.x, g.C3.y, 'CH₂'), C4 = A(g.C4.x, g.C4.y, 'CH₂'), C5 = A(g.C5.x, g.C5.y, 'CH₂');
+  const C2 = A(g.C2.x, g.C2.y, 'C', 'hi'), C6 = A(g.C6.x, g.C6.y, 'C', 'hi');
+  const c1 = at(C2, 170, 56), h2 = at(C2, 100, 46), o6 = at(C6, 40, 50);
+  const C1 = A(c1.x, c1.y, 'CO₂Et'), H = A(h2.x, h2.y, 'H', 'hi'), O = A(o6.x, o6.y, 'O');
+  let s = frameP(ox, oy, DW, DH, '2 · the ring closes; EtO⁻ leaves', ['ethyl 2-oxocyclopentane-1-carboxylate'], 'good');
+  s += bd(C2, C3) + bd(C3, C4) + bd(C4, C5) + bd(C5, C6) + bd(C2, C6, { cls: 'fg-bond-hi' }) + bd(C2, C1) + bd(C2, H);
+  s += bd(C6, O, { order: 2 });
+  s += draw(C2, C3, C4, C5, C6, C1, O, H);
+  s += numTag(C3, g.c, 'C3') + numTag(C4, g.c, 'C4', 26) + numTag(C5, g.c, 'C5');
+  s += tag(C2.x + 6, C2.y - 26, 'C2');
+  s += tag(C6.x - 8, C6.y - 26, 'C6');
+  s += tag(C1.x, C1.y - 26, 'C1');
+  s += tag(ox + 150, oy + 238, 'new C2–C6 bond: a five-membered ring', { cls: 'fg-tag-good' });
+  s += tag(H.x + 16, H.y + 4, 'pKₐ 11', { anchor: 'start', cls: 'fg-tag-good' });
+  return s;
+}
+
 FIGURES.push({
   id: 'dieckmann-ring',
   section: 'claisen',
-  anchor: 'five- and six-membered rings form readily and larger or smaller ones do not, because the transition state has to bring the two ends together without strain.</p>',
-  viewBox: '0 0 760 470',
-  alt: 'Diethyl adipate numbered C1 to C6 with the C2 enolate reaching C6, and the five-membered beta-ketoester it closes to',
+  anchor: '<h3>The Dieckmann condensation: closing a ring</h3>',
+  viewBox: '0 0 700 320',
+  alt: 'Left: diethyl adipate, curled so its chain carbons C2 to C6 form an open ring. C2 carries a negative charge and a lone pair; a curved arrow runs from that lone pair to the ester carbonyl carbon C6, and a second arrow moves the C6=O pi electrons onto oxygen. Right: the product, ethyl 2-oxocyclopentane-1-carboxylate: a five-membered ring C2 C3 C4 C5 C6 with the new C2–C6 bond highlighted, a ketone oxygen on C6, and a CO2Et group and one hydrogen on C2.',
   build() {
-    let s = '';
-    s += tag(240, 44, 'DIETHYL ADIPATE — six carbons, two of them ester carbonyls');
-
-    const oe1 = P(40, 122), c1 = P(96, 152), o1 = P(96, 104), c2 = P(152, 180),
-          c3 = P(208, 152), c4 = P(264, 180), c5 = P(320, 152), c6 = P(376, 180),
-          o6 = P(376, 132), oe6 = P(432, 152);
-    s += bond(oe1, c1, { rFrom: 16, rTo: 15 });
-    s += bond(c1, o1, { order: 2, rTo: 15 }); s += bond(c1, c2, { rTo: 17 });
-    s += bond(c2, c3, { rFrom: 17, rTo: 17 }); s += bond(c3, c4, { rFrom: 17, rTo: 17 });
-    s += bond(c4, c5, { rFrom: 17, rTo: 17 }); s += bond(c5, c6, { rFrom: 17 });
-    s += bond(c6, o6, { order: 2, rTo: 15 }); s += bond(c6, oe6, { rTo: 16 });
-    s += atom(oe1.x, oe1.y, 'EtO', { r: 16 }); s += atom(c1.x, c1.y, 'C');
-    s += atom(o1.x, o1.y, 'O'); s += atom(c2.x, c2.y, 'CH₂', { kind: 'hi', r: 17 });
-    s += atom(c3.x, c3.y, 'CH₂', { r: 17 }); s += atom(c4.x, c4.y, 'CH₂', { r: 17 });
-    s += atom(c5.x, c5.y, 'CH₂', { r: 17 }); s += atom(c6.x, c6.y, 'C', { kind: 'hi' });
-    s += atom(o6.x, o6.y, 'O'); s += atom(oe6.x, oe6.y, 'OEt', { r: 16 });
-
-    s += text(96, 74, 'C1', { cls: 'fg-tag', size: 11 });
-    s += text(118, 202, 'C2', { cls: 'fg-tag', size: 11 });
-    s += text(208, 120, 'C3', { cls: 'fg-tag', size: 11 });
-    s += text(230, 202, 'C4', { cls: 'fg-tag', size: 11 });
-    s += text(320, 120, 'C5', { cls: 'fg-tag', size: 11 });
-    s += text(376, 102, 'C6', { cls: 'fg-tag', size: 11 });
-    s += text(508, 180, 'this OEt is the', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(508, 196, 'one that leaves', { cls: 'fg-sm', size: 10, anchor: 'start' });
-
-    s += curve(P(166, 200), P(362, 200), { bow: 46 });
-    s += text(264, 276, 'C2 attacks C6 — the ring is C2·C3·C4·C5·C6, five atoms, so it goes', { cls: 'fg-tag-good', size: 11 });
-
-    s += rule(24, 300, 736, 300);
-
-    const pent = (cx, cy, r) => {
-      const pts = [];
-      for (let i = 0; i < 5; i++) {
-        const ang = (-90 + i * 72) * Math.PI / 180;
-        pts.push(P(cx + r * Math.cos(ang), cy + r * Math.sin(ang)));
-      }
-      return pts;
-    };
-    const p = pent(150, 378, 46);
-    for (let i = 0; i < 5; i++) s += bond(p[i], p[(i + 1) % 5], { rFrom: 0, rTo: 0 });
-    s += bond(p[0], P(150, 300), { rFrom: 0, rTo: 15, order: 2 });
-    s += atom(150, 300, 'O');
-    s += bond(p[4], P(56, 342), { rFrom: 0, rTo: 20 });
-    s += atom(56, 342, 'CO₂Et', { r: 20 });
-    s += bond(p[4], P(92, 418), { rFrom: 0, rTo: 11 });
-    s += atom(92, 418, 'H', { kind: 'hi', r: 11 });
-    s += text(150, 458, 'ethyl 2-oxocyclopentane-1-carboxylate', { cls: 'fg-sm', size: 10 });
-
-    s += text(272, 332, 'That hydrogen sits between a ring ketone and', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
-    s += text(272, 354, 'an ester — pKa about 11 — and the ethoxide takes it', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 374, 'and keeps it. The closure is driven by the same last', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 394, 'step as any other Claisen.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(272, 426, 'Diethyl glutarate, one carbon shorter, would have to', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
-    s += text(272, 444, 'close a four-membered ring, and does not react at all.', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    let s = dieckA(10, 10) + dieckB(370, 10);
+    s += gapArrow(P(334, 160), P(366, 160));
     return s;
   },
-  caption: 'A Dieckmann is a Claisen with both partners tied into one molecule, so the only new question is the ring. Number the chain, pick the enolate, and count what the new bond encloses.',
-  note: 'Check that the driving step survives the closure, because that is what a Dieckmann question is really testing. The carbon that attacked ends up between the new ring ketone and the ester it kept, so it still carries an acidic hydrogen for the ethoxide to remove. A substrate whose product has no hydrogen in that position has the same trouble as an ester with only one alpha hydrogen: nothing pulls the equilibrium across.',
+  caption: 'The labels keep the chain numbers from diethyl adipate. The collapse of the tetrahedral intermediate at C6 is the same as panel 3 of the Claisen mechanism and is not redrawn.',
+});
+
+FIGURES.push({
+  id: 'l-dieckmann-ring',
+  lessons: ['claisen'],
+  viewBox: '0 0 340 630',
+  alt: 'Diethyl adipate curled into an open ring; the C2 carbanion attacks the C6 ester carbon. Below, the five-membered beta-ketoester product with the new C2–C6 bond, a ketone on C6 and CO2Et plus one H on C2.',
+  build() {
+    let s = dieckA(10, 6) + dieckB(10, 322);
+    s += gapArrow(P(170, 308), P(170, 320));
+    return s;
+  },
+  caption: 'Labels keep the chain numbers. C1 stays outside the ring as the ester.',
+});
+
+/* ========================================= cyclohexanone + diethyl carbonate */
+FIGURES.push({
+  id: 'carbonate-acylation',
+  section: 'claisen',
+  anchor: '<h3>Crossed Claisens: two different partners</h3>',
+  viewBox: '0 0 760 220',
+  alt: 'Cyclohexanone, with ring carbon 1 as the C=O and ring carbon 2 beside it highlighted, plus diethyl carbonate, react with NaOEt then aqueous acid. The product is ethyl 2-oxocyclohexane-1-carboxylate: the same ring with a CO2Et group and one hydrogen on the carbon beside the ketone.',
+  build() {
+    let s = '';
+    const ring = (cx, cy, hiIdx) => {
+      const v = polyPts(cx, cy, 6, 40, 90);
+      let r = '';
+      for (let i = 0; i < 6; i++) {
+        const hi = hiIdx !== undefined && (i === hiIdx || (i + 1) % 6 === hiIdx) && (i === 0 || (i + 1) % 6 === 0);
+        r += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0, cls: hi ? 'fg-bond-hi' : 'fg-bond' });
+      }
+      return { r, v };
+    };
+    /* cyclohexanone */
+    const a = ring(90, 128);
+    s += a.r;
+    const Oa = A(90, 128 - 40 - 42, 'O');
+    s += bond(a.v[0], Oa, { rFrom: 0, rTo: Oa.r, order: 2 }) + draw(Oa);
+    s += `<circle class="fg-atom-hi" cx="${a.v[5].x}" cy="${a.v[5].y}" r="6"></circle>`;
+    s += tag(a.v[0].x - 14, a.v[0].y + 16, '1', { anchor: 'end' });
+    s += tag(a.v[5].x + 12, a.v[5].y + 4, '2 (α)', { anchor: 'start' });
+    s += tag(90, 206, 'cyclohexanone');
+    s += text(184, 132, '+', { cls: 'fg-lbl', size: 16 });
+    /* diethyl carbonate */
+    const C = A(270, 118, 'C', 'hi'), O = A(270, 66, 'O'), E1 = A(222, 146, 'OEt'), E2 = A(318, 146, 'OEt', 'warn');
+    s += bd(C, O, { order: 2 }) + bd(C, E1) + bd(C, E2) + draw(C, O, E1, E2);
+    s += tag(270, 206, 'diethyl carbonate');
+    s += arrow(P(362, 118), P(438, 118));
+    s += tag(400, 106, 'NaOEt');
+    s += tag(400, 140, 'then H₃O⁺');
+    /* product */
+    const cx = 530, cy = 128;
+    const b = ring(cx, cy);
+    s += b.r;
+    const Ob = A(cx, cy - 40 - 42, 'O');
+    s += bond(b.v[0], Ob, { rFrom: 0, rTo: Ob.r, order: 2 }) + draw(Ob);
+    const v2 = b.v[5];
+    const Ce = A(v2.x + 62, v2.y + 8, 'CO₂Et', 'hi'), H = A(v2.x + 26, v2.y - 36, 'H');
+    s += bond(v2, Ce, { rFrom: 0, rTo: Ce.r, cls: 'fg-bond-hi' }) + bond(v2, H, { rFrom: 0, rTo: H.r });
+    s += draw(Ce, H);
+    s += tag(b.v[0].x - 14, b.v[0].y + 16, '1', { anchor: 'end' });
+    s += tag(v2.x - 6, v2.y + 20, '2', { anchor: 'end' });
+    s += tag(590, 206, 'ethyl 2-oxocyclohexane-1-carboxylate');
+    return s;
+  },
+  caption: 'Ring carbon 2, the α carbon, is the one that attacks, so it is the one that ends up carrying the CO₂Et.',
 });
 
 export default FIGURES;
