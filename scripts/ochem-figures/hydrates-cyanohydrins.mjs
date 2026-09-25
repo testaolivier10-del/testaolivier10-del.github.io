@@ -269,13 +269,13 @@ FIGURES.push({
   section: 'hydrates-cyanohydrins',
   anchor: '<h3>Hydrates: addition of water</h3>',
   viewBox: '0 0 760 300',
-  alt: 'Bar chart of percent hydrate at equilibrium in water, on a scale from 0 to 100 percent: acetone 0.1 percent, a bar too thin to see; acetaldehyde about 50 percent; formaldehyde about 99.9 percent; chloral about 100 percent.',
+  alt: 'Bar chart of percent hydrate at equilibrium in water, on a scale from 0 to 100 percent: acetone 0.1 percent, a bar too thin to see; acetaldehyde just over half; formaldehyde about 99.9 percent; chloral about 100 percent.',
   build() {
     let s = '';
     const x0 = 250, W = 420;                    // 0% at x0, 100% at x0 + W
     const rows = [
       { lab: 'acetone, (CH₃)₂C=O', pct: 0.1, txt: '0.1%', why: 'two methyls' },
-      { lab: 'acetaldehyde, CH₃CHO', pct: 50, txt: '~50%', why: 'one methyl' },
+      { lab: 'acetaldehyde, CH₃CHO', pct: 56, txt: 'just over half', why: 'one methyl' },
       { lab: 'formaldehyde, H₂C=O', pct: 99.9, txt: '~99.9%', why: 'no alkyl group' },
       { lab: 'chloral, CCl₃CHO', pct: 100, txt: '~100%', why: 'three Cl pulling' },
     ];
@@ -412,16 +412,17 @@ const disagreeCells = [
     s += T(Q, 74, 194, 'with the ring', { cls: 'fg-tag-warn', size: 11 });
     const a = Q(146, 104), b = Q(176, 104);
     s += eqm(a.x, b.x, a.y);
-    const ph2 = phenyl(Q, 212, 104, 24, 0, false);
+    const ph2 = phenyl(Q, 200, 104, 24, 0, false);
     s += ph2.s;
-    const d = Q(272, 104);
+    const d = Q(260, 104);
     s += bond(ph2.at, d, { rFrom: 0, rTo: 16 });
-    const o1 = armEnd(d, 60, 44), o2 = armEnd(d, 300, 44);
+    const o1 = armEnd(d, 60, 44), o2 = armEnd(d, 300, 44), hh = armEnd(d, 0, 40);
     s += bond(d, o1, { rFrom: 16, rTo: 16 }) + A(o1, 'OH');
     s += bond(d, o2, { rFrom: 16, rTo: 16 }) + A(o2, 'OH');
+    s += bond(d, hh, { rFrom: 16, rTo: 14 }) + A(hh, 'H', { r: 14 });
     s += A(d, 'C', { kind: 'warn' });
-    s += T(Q, 246, 176, 'sp³ carbon:', { cls: 'fg-tag', size: 11 });
-    s += T(Q, 246, 194, 'conjugation broken', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 240, 176, 'sp³ carbon:', { cls: 'fg-tag', size: 11 });
+    s += T(Q, 240, 194, 'conjugation broken', { cls: 'fg-tag', size: 11 });
     return s;
   }],
   ['HEXAFLUOROACETONE: ELECTRONICS WIN', 'essentially all hydrate', (Q) => {
@@ -434,7 +435,7 @@ const disagreeCells = [
     ]);
     s += m.s;
     s += T(Q, 72, 176, 'CF₃ bulkier than CH₃', { cls: 'fg-tag-warn', size: 11 });
-    s += T(Q, 72, 194, 'six F pull from C', { cls: 'fg-tag-good', size: 11 });
+    s += T(Q, 72, 194, 'six F, one C away, pull', { cls: 'fg-tag-good', size: 11 });
     const a = Q(146, 100), b = Q(176, 100);
     s += eqm(a.x, b.x, a.y);
     const d = Q(246, 100);
@@ -452,13 +453,23 @@ const disagreeCells = [
 ];
 
 FIGURES.push({
-  id: 'hydration-disagree',
+  id: 'hydration-electronics',
   section: 'hydrates-cyanohydrins',
   anchor: '<h3>Hydrates: addition of water</h3>',
-  alt: 'Two panels. Left: benzaldehyde, whose C=O is conjugated with the benzene ring, highlighted, in equilibrium with its hydrate, where the sp3 carbon breaks that link; much less hydrate forms than with acetaldehyde. Right: hexafluoroacetone, with two CF3 groups that are bulkier than methyls but pull electron density from the carbonyl carbon through six fluorines, in equilibrium with its hydrate; essentially all of it is hydrate.',
-  viewBox: '0 0 760 248',
-  build() { return gridFigure(disagreeCells, 2, 364, 232, 16, 16, 8, 8, [], WIDE); },
-  caption: 'Two more comparisons with the plain alkyl count. Conjugation holds benzaldehyde back; six fluorines push hexafluoroacetone all the way.',
+  alt: 'Hexafluoroacetone, with two CF3 groups that are bulkier than methyls, in equilibrium with its hydrate. The six fluorines, each one carbon away from the carbonyl carbon, pull electron density from it, and essentially all of it is hydrate.',
+  viewBox: '0 0 380 248',
+  build() { return gridFigure(disagreeCells.slice(1), 1, 364, 232, 0, 0, 8, 8, [], WIDE); },
+  caption: 'Sterics and electronics disagree here, and electronics wins.',
+});
+
+FIGURES.push({
+  id: 'hydration-conjugation',
+  section: 'hydrates-cyanohydrins',
+  anchor: '<h3>Hydrates: addition of water</h3>',
+  alt: 'Benzaldehyde, whose C=O is conjugated with the benzene ring, highlighted, in equilibrium with its hydrate, where the sp3 carbon, carrying the ring, an H and two OH groups, breaks that link. Much less hydrate forms than with acetaldehyde.',
+  viewBox: '0 0 380 248',
+  build() { return gridFigure(disagreeCells.slice(0, 1), 1, 364, 232, 0, 0, 8, 8, [], WIDE); },
+  caption: 'Conjugation stabilizes the aldehyde, so addition costs more.',
 });
 
 FIGURES.push({
@@ -643,7 +654,7 @@ FIGURES.push({
   alt: 'The cyanohydrin alkoxide in strong base: the oxygen lone pair re-forms the C=O double bond and the carbon–cyanide bond breaks, pushing cyanide out.',
   viewBox: '0 0 340 220',
   build() { return gridFigure(cyanoCells.slice(3), 1, 324, 204, 0, 0, 8, 8, ['warn']); },
-  caption: 'The first panel of the mechanism, run backwards.',
+  caption: 'Panels 1 and 2 of the mechanism, run backwards.',
 });
 
 /* ======================================================================
@@ -732,7 +743,7 @@ FIGURES.push({
    9. The bisulfite adduct, and how it pulls a carbonyl into water.
    ====================================================================== */
 const bisulfiteCells = [
-  ['BISULFITE ADDS THROUGH SULFUR', 'a salt: the new bond is C–S', (Q) => {
+  ['BISULFITE ADDS THROUGH SULFUR', 'a salt: the new bond joins C and S', (Q) => {
     let s = T(Q, 50, 80, 'CH₃CHO');
     s += T(Q, 50, 102, '+ Na⁺ HSO₃⁻', { cls: 'fg-tag', size: 11 });
     const a = Q(104, 110), b = Q(136, 110);

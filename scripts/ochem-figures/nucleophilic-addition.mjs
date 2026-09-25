@@ -198,8 +198,8 @@ FIGURES.push({
   section: 'nucleophilic-addition',
   lessons: ['nucleophilic-addition'],
   anchor: '<h3>Under acid: the proton goes on first</h3>',
-  alt: 'Four stacked panels for water adding to acetone with an acid catalyst. Step 1: a lone pair on the carbonyl oxygen takes a proton from H3O+, and the H–O bond electrons stay on the water. Step 2: the resulting cation drawn as two resonance contributors, one with C=O+ and every octet full, the other with the positive charge on carbon, which has only six electrons. Step 3: a water lone pair attacks that carbon. Step 4: a second water takes a proton from the added OH2+ group, giving the neutral hydrate, propane-2,2-diol, and giving H3O+ back.',
-  viewBox: '0 0 340 846',
+  alt: 'Four stacked panels for water adding to acetone with an acid catalyst. Step 1: a lone pair on the carbonyl oxygen takes a proton from H3O+, and the H–O bond electrons stay on the water. Step 2: the resulting cation drawn as two resonance contributors, one with C=O+ and every octet full, the other with the positive charge on carbon, which has only six electrons. Step 3: a water lone pair attacks that carbon. Step 4: a second water takes a proton from the added OH2+ group, giving the neutral hydrate, propane-2,2-diol, drawn in a fifth panel, and giving H3O+ back.',
+  viewBox: '0 0 340 996',
   build() {
     let s = '';
     const acet = (c, opts = {}) => {
@@ -263,10 +263,10 @@ FIGURES.push({
     s += tg(236, 592, 'a neutral water molecule', 'mut');
 
     // ---- 4. a second water takes the extra proton ----
-    s += box(612, 226, 'STEP 4 · A SECOND WATER TAKES A PROTON');
+    s += box(612, 192, 'STEP 4 · A SECOND WATER TAKES A PROTON');
     const c5 = P(86, 724), o5 = armEnd(c5, 90, 58);
     s += B(c5, 'C', o5, 'OH') + A(o5, 'OH');
-    s += arm(c5, 'C', 210, 50, 'CH₃').s + arm(c5, 'C', 270, 50, 'CH₃').s;
+    s += arm(c5, 'C', 210, 50, 'CH₃', 'wedge').s + arm(c5, 'C', 270, 50, 'CH₃', 'hash').s;
     const op = armEnd(c5, 330, 60);
     s += B(c5, 'C', op, 'O');
     const hb = P(op.x + 72, op.y), hc = armEnd(op, 290, 42);
@@ -278,8 +278,17 @@ FIGURES.push({
     s += water(w5, [60, 330], [200, 130], false);
     s += curve(P(262, 708), P(hb.x + 10, hb.y - 12), { bow: -10 });
     s += curve(P(op.x + 40, op.y + 6), P(op.x + 13, op.y + 16), { bow: 12 });
-    s += tg(236, 810, 'product: the hydrate,', 'good');
-    s += tg(236, 828, 'and H₃O⁺ is back', 'good');
+
+    // ---- product ----
+    s += box(812, 176, 'PRODUCT · THE HYDRATE');
+    const c6 = P(100, 908), o6 = armEnd(c6, 90, 56);
+    s += B(c6, 'C', o6, 'OH') + A(o6, 'OH');
+    s += arm(c6, 'C', 210, 50, 'CH₃', 'wedge').s + arm(c6, 'C', 270, 50, 'CH₃', 'hash').s;
+    s += arm(c6, 'C', 330, 56, 'OH', 'plain', 'hi').s;
+    s += A(c6, 'C', 'warn');
+    s += lbl(262, 896, '+  H₃O⁺');
+    s += tg(262, 922, 'the acid is back', 'good');
+    s += tg(262, 952, 'propane-2,2-diol', 'mut');
     return s;
   },
   caption: 'Water adding to acetone in dilute acid, one panel per step. The coral carbon is the one that changes from flat to tetrahedral.',
@@ -434,7 +443,7 @@ FIGURES.push({
     s += ethyl(c0, 'C', 210, -60).s;
     const oe = armEnd(c0, 330, 50), me0 = armEnd(oe, 30, 46);
     s += B(c0, 'C', oe, 'O') + B(oe, 'O', me0, 'CH₃') + A(oe, 'O') + A(me0, 'CH₃');
-    s += lonePair(oe.x, oe.y, 90, { dist: 21 }) + lonePair(oe.x, oe.y, 180, { dist: 21 });
+    s += lonePair(oe.x, oe.y, 90, { dist: 21 }) + lonePair(oe.x, oe.y, 270, { dist: 21 });
     s += A(o0, 'O') + A(c0, 'C', 'warn');
     s += lonePair(o0.x, o0.y, 315, { dist: 21 }) + lonePair(o0.x, o0.y, 225, { dist: 21 });
     s += curve(P(136, 96), P(144, 64), { bow: 12 });
