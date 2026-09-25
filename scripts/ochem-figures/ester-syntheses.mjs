@@ -420,7 +420,7 @@ function pEnolKetone(ox, oy, h) {
   return frameP(ox, oy, h, '3 · the enol → pentan-2-one',
     [['CH₃CH₂ came from the halide', 'fg-tag-good'], 'the rest came from acetoacetate']) + enolThenProduct(ox, oy, 'CH₃');
 }
-const ACETO = [[pAcetoAlkyl, 300], [pRingAceto, 300], [pEnolKetone, 316]];
+const ACETO = [[pAcetoAlkyl, 322], [pRingAceto, 300], [pEnolKetone, 316]];
 
 FIGURES.push({
   id: 'acetoacetic-sequence',
