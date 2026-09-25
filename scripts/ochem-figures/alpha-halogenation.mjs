@@ -586,8 +586,8 @@ FIGURES.push({
     s += tag(362, 476, 'a new acyl bromide forms', { cls: 'fg-tag-mut' });
     s += acyl(P(200, 440), { alpha: 'CHBr', hiAlpha: true });
     s += tag(150, 506, '2-BROMOBUTANOIC ACID', { cls: 'fg-tag-good' });
-    s += curve(P(420, 486), P(478, 164), { bow: -60, muted: true });
-    s += tag(372, 300, 'the new butanoyl', { cls: 'fg-tag-mut' }) + tag(372, 316, 'bromide goes round again', { cls: 'fg-tag-mut' });
+    s += curve(P(474, 468), P(488, 166), { bow: -24, muted: true });
+    s += tag(450, 300, 'the new butanoyl', { cls: 'fg-tag-mut', anchor: 'end' }) + tag(450, 316, 'bromide goes round again', { cls: 'fg-tag-mut', anchor: 'end' });
     return s;
   },
   caption: 'Go clockwise from top left. The bottom arrow makes the product and a fresh butanoyl bromide at the same time.',
