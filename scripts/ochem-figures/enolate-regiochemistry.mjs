@@ -496,18 +496,25 @@ FIGURES.push({
   id: 'l-branch-points',
   lessons: ['enolate-regiochemistry'],
   alt: 'Top: the allylic cation from buta-1,3-diene and HBr gives 3-bromobut-1-ene when cold or 1-bromobut-2-ene when warm, two final products. Bottom: 2-methylcyclohexanone gives the kinetic enolate with LDA at minus 78 degrees or the thermodynamic enolate with NaOEt, two intermediates.',
-  viewBox: '0 0 340 562',
+  viewBox: '0 0 340 610',
   build() {
     let s = '';
-    s += panel(4, 4, 332, 270, {});
+    s += panel(4, 4, 332, 288, {});
     s += tag(170, 24, 'BRANCH POINT: THE CATION');
-    s += dieneRow(170, 62, 330, ['1,2-product', '1,4-product']);
-    s += T(170, 264, 'two final products', { cls: 'fg-tag-mut' });
-    s += panel(4, 284, 332, 272, {});
-    s += tag(170, 304, 'BRANCH POINT: THE DEPROTONATION');
-    s += ketoneRow(170, 360, 88, 24, ['LDA', 'NaOEt']);
-    s += T(82, 530, 'kinetic', { cls: 'fg-tag-good' }) + T(258, 530, 'thermodynamic', { cls: 'fg-tag-warn' });
-    s += T(170, 548, 'two intermediates', { cls: 'fg-tag-mut' });
+    s += dieneRow(170, 62, 300, ['1,2-product', '1,4-product']);
+    s += T(170, 280, 'two final products', { cls: 'fg-tag-mut' });
+    s += panel(4, 302, 332, 302, {});
+    s += tag(170, 322, 'BRANCH POINT: THE DEPROTONATION');
+    const r = 24;
+    const ket = ring(P(170, 402), { r, subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
+    const kin = ring(P(82, 532), { r, dbl: 'C1C6', subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
+    const thd = ring(P(252, 532), { r, dbl: 'C1C2', subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
+    s += ket.s + kin.s + thd.s;
+    s += chg(kin.top.x - 18, kin.top.y - 12) + chg(thd.top.x - 18, thd.top.y - 12);
+    s += arrow(P(140, 432), P(104, 460)) + arrow(P(200, 432), P(236, 460));
+    s += T(76, 428, 'LDA, −78 °C', { cls: 'fg-tag-good' }) + T(270, 428, 'NaOEt', { cls: 'fg-tag-warn' });
+    s += T(82, 578, 'kinetic', { cls: 'fg-tag-good' }) + T(252, 578, 'thermodynamic', { cls: 'fg-tag-warn' });
+    s += T(170, 596, 'two intermediates', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Top: two final products. Bottom: two enolates, chosen before the electrophile is added.',

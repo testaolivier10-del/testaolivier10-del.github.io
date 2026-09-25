@@ -381,16 +381,16 @@ FIGURES.push({
   id: 'l-haloform-buildup',
   lessons: ['alpha-halogenation'],
   alt: 'Acetophenone brominated three times on its methyl carbon, stacked: CH3, then CH2Br, then CHBr2, then CBr3, each round faster than the last.',
-  viewBox: '0 0 340 520',
+  viewBox: '0 0 340 560',
   build() {
     let s = tag(170, 20, 'each arrow: HO⁻, then Br₂');
     BUILD.forEach(([lab, speed], i) => {
-      const c = P(150, 90 + i * 130);
+      const c = P(120, 110 + i * 130);
       const f = ketFrame(c, { aLabel: lab, aKind: i ? 'hi' : undefined });
       s += f.s + LP(f.o, 150) + LP(f.o, 30);
       if (i < 3) {
-        s += arrow(P(270, c.y + 20), P(270, c.y + 80));
-        s += tag(282, c.y + 54, speed, { anchor: 'start', cls: i ? 'fg-tag-warn' : 'fg-tag' });
+        s += arrow(P(232, c.y + 30), P(232, c.y + 90));
+        s += tag(244, c.y + 64, speed, { anchor: 'start', cls: i ? 'fg-tag-warn' : 'fg-tag' });
       }
     });
     return s;
@@ -533,13 +533,13 @@ FIGURES.push({
   id: 'l-methyl-where',
   lessons: ['alpha-halogenation'],
   alt: 'Butan-2-one above 2-methylcyclohexanone, alpha carbons highlighted. In butan-2-one, C1 is an alpha carbon and a CH3; C3 is an alpha CH2. In 2-methylcyclohexanone, the alpha carbons are C2, a CH, and C6, a CH2; the methyl sits on C2, one bond further from the carbonyl.',
-  viewBox: '0 0 340 470',
+  viewBox: '0 0 340 492',
   build() {
-    let s = panel(8, 8, 324, 200) + panel(8, 220, 324, 242);
+    let s = panel(8, 8, 324, 200) + panel(8, 220, 324, 264);
     s += tag(170, 30, 'BUTAN-2-ONE');
     s += butanone(P(150, 116), null);
     s += tag(170, 242, '2-METHYLCYCLOHEXANONE');
-    s += methylCycloLabelled(160, 356, null);
+    s += methylCycloLabelled(160, 384, null);
     return s;
   },
   caption: 'Highlighted: the α carbons in each ketone.',
