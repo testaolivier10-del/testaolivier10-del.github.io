@@ -205,9 +205,12 @@
       2:['product-spacing'], 3:['product-spacing'], 4:['product-spacing'],
       6:['product-spacing'], 7:['product-spacing'] } },
 
-    'ester-syntheses': { n:8, steps:{
-      2:['activating-group'], 3:['activating-group'], 4:['activating-group'],
-      6:['activating-group'], 7:['activating-group'] } },
+    'ester-syntheses': { n:11, steps:{
+      3:['activating-group'],
+      6:['activating-group'],
+      8:['activating-group'],
+      9:['activating-group'],
+      10:['activating-group'] } },
 
     'baeyer-villiger': { n:8, steps:{
       2:['migratory-aptitude'], 3:['migratory-aptitude'], 4:['migratory-aptitude'],
