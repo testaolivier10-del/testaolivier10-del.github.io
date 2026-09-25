@@ -84,7 +84,7 @@ function ring(c, o = {}) {
 
 /* The O–minus of an enolate with three lone pairs, placed around the top
    oxygen of a ring drawn with top: 'O'. */
-const enolateO = (o, m = 1) => LP(o, 90) + LP(o, 90 + m * 70) + LP(o, 90 - m * 70) + chg(o.x - m * 22, o.y - 14);
+const enolateO = (o, m = 1) => LP(o, 90) + LP(o, 90 + m * 70) + LP(o, 90 - m * 70) + chg(o.x - m * 28, o.y - 17);
 const ketoneO = (o) => LP(o, 150) + LP(o, 30);
 
 /* ======================================================================
@@ -353,7 +353,7 @@ function alkylRow(y, kinetic) {
   const m = kinetic ? -1 : 1;
   s += curve(P(e.top.x - m * 16, e.top.y + 6), P(e.top.x - m * 5, e.pts[0].y - 12), { bow: m * 9, size: 7 });
   const pm = mid(e.pts[0], nuc);
-  s += curve(P(pm.x + 2, pm.y + 7), P(me.x - 16, me.y + 6), { bow: 22, size: 7 });
+  s += curve(P(pm.x + 6, pm.y - 5), P(me.x - 8, me.y - 16), { bow: -16, size: 7 });
   const bm = mid(me, io);
   s += curve(P(bm.x + 2, bm.y - 6), P(io.x - 4, io.y - 16), { bow: -12, size: 7 });
   s += arrow(P(318, y), P(378, y));

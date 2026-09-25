@@ -97,7 +97,7 @@ function mDeprot(ox, oy) {
   s += lonePair(B.x, B.y, 0, { dist: B.r + 5 });
   s += draw(C3, H, B);
   s += curve(o(92, 170), o(160, 168), { bow: -14 });
-  s += curve(o(183, 146), o(194, 126), { bow: 9 });
+  s += curve(o(180, 147), o(190, 121), { bow: 9 });
   s += tag(ox + PW / 2, oy + 218, 'that H sits between two C=O groups');
   return s;
 }
@@ -223,7 +223,7 @@ FIGURES.push({
   viewBox: '0 0 340 336',
   alt: 'Three products drawn in skeletal form, each with its carbons numbered from one oxygen-bearing carbon to the other. Aldol: 3-hydroxybutanal, with the C=O carbon 1 and the C–OH carbon 3. Claisen: ethyl 3-oxobutanoate, with the ketone carbon 1 and the ester carbon 3. Michael: heptane-2,6-dione, with the two C=O carbons at 1 and 5.',
   build() { return spacingFig(); },
-  caption: 'Start at one carbon that carries oxygen and count to the other. An aldol and a Claisen both give 1,3, and the second oxygen tells them apart. A Michael gives 1,5.',
+  caption: 'The numbers run from a C=O carbon to the other chain carbon bonded to oxygen. The ester’s O–CH₂CH₃ is not counted.',
 });
 
 /* ================================= the lesson's sorting exercise ======= */
@@ -256,7 +256,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Find the two carbons that carry oxygen in each molecule, then count the gap.',
+  caption: 'Count from a C=O carbon to the other chain carbon bonded to oxygen; skip an ester’s O–CH₂CH₃.',
 });
 
 /* ========================================== the Robinson annulation ==== */
@@ -301,8 +301,7 @@ function rAdduct(ox, oy) {
   s += g.ringA() + sk(g.c2, g.c3, true) + sk(g.c3, g.c4) + sk(g.c4, g.c5) + sk(g.c5, g.c6);
   s += carbonyl(g.c1, 90, 40) + carbonyl(g.c5, 30);
   s += g.nums();
-  s += tag(ox + 54, oy + 48, 'carbon 6 is');
-  s += tag(ox + 54, oy + 64, 'the α′ carbon');
+  s += tag(ox + PW / 2, oy + 206, '6 is α to C=O 5, on the far side from 1');
   s += tag(ox + PW / 2, oy + 224, 'C=O at 1 and 5, three carbons between');
   return s;
 }
@@ -355,14 +354,16 @@ function rEnone(ox, oy) {
 function rLedger(ox, oy) {
   let s = frame(ox, oy, PW, RH, 'every bond, by number');
   const L = (y, t, cls = 'fg-tag') => text(ox + 22, oy + y, t, { cls, size: 11, anchor: 'start' });
-  s += L(56, 'made', 'fg-tag-good');
-  s += L(78, '2–3   C–C, by the Michael');
-  s += L(98, '6–1   C–C, by the aldol');
-  s += L(118, '1=6   the π bond, by the dehydration');
-  s += L(150, 'broken', 'fg-tag-warn');
-  s += L(172, 'one C–H on 2 and two C–H on 6');
-  s += L(192, 'the π bonds 3=4 and 1=O');
-  s += L(212, 'the C–O bond on 1, as water leaves');
+  s += L(48, 'made', 'fg-tag-good');
+  s += L(68, '2–3   C–C, by the Michael');
+  s += L(86, '4–H   C–H, as the Michael enolate', );
+  s += L(102, '         is protonated');
+  s += L(120, '6–1   C–C, by the aldol');
+  s += L(138, '1=6   the π bond, by the dehydration');
+  s += L(164, 'broken', 'fg-tag-warn');
+  s += L(184, 'one C–H on 2 and two C–H on 6');
+  s += L(202, 'the π bonds 3=4 and 1=O');
+  s += L(220, 'the C–O bond on 1, as water leaves');
   return s;
 }
 
@@ -393,7 +394,7 @@ FIGURES.push({
 
 /* ===================================== why the new ring has six atoms == */
 function cSix(ox, oy) {
-  let s = frame(ox, oy, PW, RH, 'outer α carbon 6 attacks C=O carbon 1', 'good');
+  let s = frame(ox, oy, PW, RH, 'α′ carbon 6 attacks C=O carbon 1', 'good');
   const c = P(ox + 160, oy + 134);
   const v = (deg) => polar(c, deg, 50);
   const p1 = v(150), p2 = v(210), p3 = v(270), p4 = v(330), p5 = v(30), p6 = v(90);
@@ -435,7 +436,7 @@ FIGURES.push({
   viewBox: '0 0 688 248',
   alt: 'Heptane-2,6-dione, a 1,5-dicarbonyl, closing two ways. Left: an anion on carbon 6, the methyl beyond carbonyl 5, attacks carbonyl carbon 1; the dashed bond closes a ring of six atoms, 1 to 6. Right: an anion on carbon 2, between the carbonyls, attacks carbonyl carbon 5; the dashed bond would close a ring of four atoms, 2 to 5, which is too strained.',
   build() { return cSix(12, 6) + cFour(356, 6); },
-  caption: 'The same 1,5-dicarbonyl, heptane-2,6-dione, closing two ways. Count the atoms inside each dashed loop.',
+  caption: 'The same 1,5-dicarbonyl, heptane-2,6-dione, closing two ways. Count the ring atoms each dashed bond would close.',
 });
 
 FIGURES.push({
@@ -444,7 +445,7 @@ FIGURES.push({
   viewBox: '0 0 340 496',
   alt: 'Two stacked panels for heptane-2,6-dione. Top: an anion on carbon 6, beyond carbonyl 5, attacks carbonyl carbon 1, closing a ring of six atoms. Bottom: an anion on carbon 2, between the carbonyls, attacks carbonyl carbon 5, which would close a ring of four atoms.',
   build() { return cSix(10, 6) + cFour(10, 254); },
-  caption: 'Top: the outer α carbon closes six. Bottom: an inner α carbon would close four.',
+  caption: 'Top: the α′ carbon closes six. Bottom: an inner α carbon would close four.',
 });
 
 /* ======================================= working backwards (retro) ===== */
@@ -538,13 +539,13 @@ function wFused(ox, oy) {
 function wBridged(ox, oy) {
   let s = frame(ox, oy, PW, WH, '3 · bridged closure: x attacks 5', 'warn');
   const c = P(ox + 150, oy + 128);
-  const B1 = P(c.x, c.y - 48), B2 = P(c.x, c.y + 48), Cm = c;
+  const B1 = P(c.x, c.y - 48), B2 = P(c.x, c.y + 48), Cm = P(c.x - 16, c.y);
   const L = [polar(c, 135, 68), polar(c, 180, 68), polar(c, 225, 68)];
   const R = [polar(c, 45, 68), polar(c, 0, 68), polar(c, 315, 68)];
   s += sk(B1, L[0]) + sk(L[0], L[1]) + sk(L[1], L[2]) + sk(L[2], B2);
   s += sk(B1, R[0]) + sk(R[0], R[1]) + sk(R[1], R[2]) + sk(R[2], B2, true);
   s += sk(B1, Cm) + sk(Cm, B2);
-  const Om = A(c.x - 32, c.y, 'O');
+  const Om = A(Cm.x + 36, c.y, 'O');
   s += bd(Cm, Om, { order: 2 }) + draw(Om);
   s += carbonyl(L[0], 135, 36);
   const Me = A(B1.x, B1.y - 34, 'CH₃');
