@@ -61,7 +61,7 @@ function arm(from, deg, len, l, o = {}) {
 /* One oxygen on the central carbon: the C–O bond (single or double), the
    oxygen, what else it carries, its lone pairs and its charge. */
 function oxygen(c, spec) {
-  const o = at(c, spec.deg, spec.len ?? 54);
+  const o = at(c, spec.deg, spec.len ?? (spec.order === 2 ? 62 : 58));
   let s = bond(c, o, { rFrom: 16, rTo: 15, order: spec.order || 1 });
   const subs = {};
   for (const g of spec.subs || []) {
@@ -134,7 +134,7 @@ function methanol(o, { h, me, lps, kind = 'hi' }) {
 // the tetrahedral intermediate before the first deprotonation
 const oxonium1 = (c) => species(c, { oxy: [
   { deg: 135, subs: [{ deg: 180, l: 'H' }], lps: [80, 250] },
-  { deg: 45, kind: 'hi', subs: [{ deg: 90, l: 'H', len: 46 }, { deg: 0, l: 'CH₃' }], lps: [150], charge: 300 },
+  { deg: 45, kind: 'hi', subs: [{ deg: 90, l: 'H', len: 50 }, { deg: 0, l: 'CH₃' }], lps: [150], charge: 300 },
 ] });
 
 // the hemiacetal: OH up-left, OCH3 up-right
@@ -145,7 +145,7 @@ const hemiacetal = (c, oKinds = []) => species(c, { oxy: [
 
 // the protonated hemiacetal: OH2+ up-left
 const protHemi = (c) => species(c, { oxy: [
-  { deg: 135, kind: 'warn', subs: [{ deg: 180, l: 'H' }, { deg: 90, l: 'H' }], lps: [30], charge: 255 },
+  { deg: 135, kind: 'warn', subs: [{ deg: 180, l: 'H' }, { deg: 90, l: 'H' }], lps: [30], charge: 215 },
   { deg: 45, subs: [{ deg: 0, l: 'CH₃' }], lps: [110, 290] },
 ] });
 
@@ -156,7 +156,7 @@ const oxocarb = (c) => species(c, { tet: false, oxy: [
 
 // the tetrahedral intermediate before the last deprotonation
 const oxonium2 = (c) => species(c, { oxy: [
-  { deg: 135, kind: 'hi', subs: [{ deg: 90, l: 'H', len: 46 }, { deg: 180, l: 'CH₃' }], lps: [30], charge: 255 },
+  { deg: 135, kind: 'hi', subs: [{ deg: 90, l: 'H', len: 50 }, { deg: 180, l: 'CH₃' }], lps: [30], charge: 215 },
   { deg: 45, subs: [{ deg: 0, l: 'CH₃' }], lps: [110, 290] },
 ] });
 
@@ -202,26 +202,26 @@ const STEPS = {
   },
   2(x, y) {
     let s = box(x, y, 'STEP 2 · CH₃OH ADDS TO C', ['two arrows: O to C,', 'and the π bond onto O⁺']);
-    const c = P(x + 100, y + 172);
+    const c = P(x + 100, y + 160);
     const k = protAcetone(c);
     s += k.s;
     const o = k.os[0].o;
     const m = at(c, 22, 118);
     s += methanol(m, { h: 90, me: 0, lps: [202, 285] });
     s += fromLp(m, 202, at(c, 22, 21), -18);
-    s += bondArrow(c, o, 7, at(o, 200, 18), 16);
+    s += bondArrow(c, o, 8, at(o, 205, 19), -14);
     return s;
   },
   3(x, y) {
     let s = box(x, y, 'STEP 3 · LOSE H⁺', 'a second CH₃OH takes the H⁺');
-    const c = P(x + 104, y + 188);
+    const c = P(x + 96, y + 152);
     const k = oxonium1(c);
     s += k.s;
     const ob = k.os[1], h = ob.subs.H;
-    const base = P(h.x + 84, h.y - 4);
-    s += methanol(base, { h: 90, me: 0, lps: [185, 270], kind: 'plain' });
-    s += fromLp(base, 185, P(h.x + 13, h.y - 2), 12);
-    s += bondArrow(ob.o, h, 7, at(ob.o, 150, 18), 16);
+    const base = P(h.x + 90, h.y - 12);
+    s += methanol(base, { h: 300, me: 0, lps: [185, 110], kind: 'plain' });
+    s += fromLp(base, 185, P(h.x + 14, h.y - 3), 12);
+    s += bondArrow(ob.o, h, 9, at(ob.o, 160, 19), 12);
     return s;
   },
   4(x, y) {
@@ -237,36 +237,36 @@ const STEPS = {
   },
   5(x, y) {
     let s = box(x, y, 'STEP 5 · WATER LEAVES', ['the C–O bond breaks; an OCH₃', 'lone pair makes the C=O⁺']);
-    const c = P(x + 176, y + 176);
+    const c = P(x + 176, y + 150);
     const k = protHemi(c);
     s += k.s;
     const oa = k.os[0].o, ob = k.os[1].o;
-    s += bondArrow(c, oa, -8, at(oa, 300, 18), -14);
+    s += bondArrow(c, oa, -9, at(oa, 285, 19), -12);
     s += fromLp(ob, 110, at(c, 45, 30), 22);
     return s;
   },
   6(x, y) {
     let s = box(x, y, 'STEP 6 · SECOND CH₃OH ADDS', ['two arrows again: O to C,', 'and the π bond onto O⁺']);
-    const c = P(x + 200, y + 178);
+    const c = P(x + 200, y + 160);
     const k = oxocarb(c);
     s += k.s;
     const o = k.os[0].o;
     const m = at(c, 152, 112);
     s += methanol(m, { h: 90, me: 180, lps: [332, 250] });
     s += fromLp(m, 332, at(c, 152, 21), 18);
-    s += bondArrow(c, o, -7, at(o, 340, 18), -16);
+    s += bondArrow(c, o, -8, at(o, 335, 19), 14);
     return s;
   },
   7(x, y) {
     let s = box(x, y, 'STEP 7 · LOSE H⁺', 'a CH₃OH takes the last H⁺');
-    const c = P(x + 150, y + 190);
+    const c = P(x + 150, y + 152);
     const k = oxonium2(c);
     s += k.s;
     const oa = k.os[0], h = oa.subs.H;
-    const base = P(h.x + 84, h.y - 4);
-    s += methanol(base, { h: 90, me: 0, lps: [185, 270], kind: 'plain' });
-    s += fromLp(base, 185, P(h.x + 13, h.y - 2), 12);
-    s += bondArrow(oa.o, h, 7, at(oa.o, 150, 18), 16);
+    const base = P(h.x + 92, h.y - 12);
+    s += methanol(base, { h: 300, me: 0, lps: [185, 110], kind: 'plain' });
+    s += fromLp(base, 185, P(h.x + 14, h.y - 3), 12);
+    s += bondArrow(oa.o, h, -9, at(oa.o, 20, 19), -12);
     return s;
   },
 };

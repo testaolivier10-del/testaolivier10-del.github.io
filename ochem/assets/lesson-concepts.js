@@ -720,12 +720,13 @@
       4:['solvent-effects','basicity-vs-nucleophilicity'],
       7:['nucleophile-recognition','electron-rich-poor'] } },
 
-    'nucleophilic-addition': { n:8, steps:{
-      1:['carbonyl-electrophilicity'],
-      2:['tetrahedral-intermediate','carbonyl-electrophilicity'],
-      4:['tetrahedral-intermediate','nucleophile-recognition'],
-      6:['tetrahedral-intermediate'],
-      7:['tetrahedral-intermediate','nucleophile-recognition'] } },
+    'nucleophilic-addition': { n:11, steps:{
+      1:['tetrahedral-intermediate','carbonyl-electrophilicity'],
+      3:['carbonyl-electrophilicity'],
+      5:['tetrahedral-intermediate','carbonyl-electrophilicity'],
+      7:['tetrahedral-intermediate','nucleophile-recognition'],
+      9:['tetrahedral-intermediate'],
+      10:['tetrahedral-intermediate','nucleophile-recognition'] } },
 
     'orbitals': { n:16, steps:{
       11:['valence-electrons'],
