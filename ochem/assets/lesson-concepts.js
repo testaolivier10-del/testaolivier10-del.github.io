@@ -189,9 +189,12 @@
       2:['alkene-by-construction'], 3:['alkene-by-construction'], 4:['alkene-by-construction'],
       6:['alkene-by-construction'], 7:['alkene-by-construction'] } },
 
-    'imines-enamines': { n:8, steps:{
-      2:['amine-condensation'], 3:['amine-condensation'], 4:['amine-condensation'],
-      6:['enamine-nucleophile'], 7:['enamine-nucleophile','amine-condensation'] } },
+    'imines-enamines': { n:12, steps:{
+      3:['amine-condensation'],
+      5:['amine-condensation'],
+      6:['amine-condensation'],
+      8:['enamine-nucleophile'],
+      11:['enamine-nucleophile','amine-condensation'] } },
 
     'michael-robinson': { n:8, steps:{
       2:['product-spacing'], 3:['product-spacing'], 4:['product-spacing'],
