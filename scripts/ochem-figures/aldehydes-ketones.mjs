@@ -6,9 +6,9 @@
    written out with labels in almost every drawing, because they are what the
    page is about. Two views recur:
      - face-on: the carbonyl's plane is the page;
-     - edge-on: the plane is seen from its edge, as a horizontal dashed line,
-       with the two groups on carbon drawn as a wedge (toward the reader) and
-       a hash (away). This is the view that shows where a nucleophile comes
+     - nearly edge-on: the plane is seen from just above its edge, as a
+       thin shaded strip, with the two groups on carbon lying in the strip as
+       a wedge (toward the reader) and a hash (away). This is the view that shows where a nucleophile comes
        from, so the trajectory, the aldehyde/ketone crowding comparison and
        their lesson copies all use it.
    Lesson copies (id prefix l-) are 340 wide or less, stacked, and use only
@@ -34,7 +34,7 @@ function atom(x, y, l, o = {}) {
     ? `<circle class="fg-atom" cx="${r2(x)}" cy="${r2(y)}" r="${r2(o.r ?? 16)}"></circle>` : '';
   return back + atom0(x, y, l, o);
 }
-const rOf = (l) => (l.length >= 5 ? 21 : l.length === 4 ? 20 : l.length >= 3 ? 17 : l === 'H' ? 12 : 15);
+const rOf = (l) => (l.length >= 7 ? 25 : l.length >= 5 ? 21 : l.length === 4 ? 20 : l.length >= 3 ? 17 : l === 'H' ? 12 : 15);
 
 /* A plain, wedged or hashed bond from c to a labeled group, plus the group. */
 function arm(c, deg, len, l, o = {}) {
@@ -69,6 +69,14 @@ function path(a, b, cls = 'fg-dash-hi', headCls = 'fg-head') {
   const ex = b.x - ux * size, ey = b.y - uy * size;
   return `<line class="${cls}" x1="${r2(a.x)}" y1="${r2(a.y)}" x2="${r2(ex)}" y2="${r2(ey)}"></line>` +
     `<path class="${headCls}" d="M${r2(b.x)} ${r2(b.y)} L${r2(ex + px * h)} ${r2(ey + py * h)} L${r2(ex - px * h)} ${r2(ey - py * h)} Z"></path>`;
+}
+/* The molecule's plane seen nearly edge-on: a thin shaded parallelogram
+   through c. Its dashed edges run above and below the atoms, never along a
+   bond, so a C=O inside it still reads as a double bond. */
+function strip(c, left, right, h = 26, skew = 18) {
+  const pts = [P(c.x - left + skew, c.y - h), P(c.x + right + skew, c.y - h), P(c.x + right - skew, c.y + h), P(c.x - left - skew, c.y + h)];
+  const d = 'M' + pts.map((q) => `${r2(q.x)} ${r2(q.y)}`).join(' L') + ' Z';
+  return `<path class="fg-fill-mut" d="${d}" opacity="0.08"></path><path class="fg-dash" d="${d}"></path>`;
 }
 const dline = (a, b, cls = 'fg-dash') => `<line class="${cls}" x1="${r2(a.x)}" y1="${r2(a.y)}" x2="${r2(b.x)}" y2="${r2(b.y)}"></line>`;
 
@@ -105,9 +113,9 @@ const charge = (x, y, s, cls = 'fg-warn') => text(x, y, s, { cls, size: 15 });
 function edgeOn(c, { g1 = 'R', g2 = 'R′', len = 58, oLen = 84, lps = true, plane = [120, 150], halos = false } = {}) {
   let s = '';
   const o = P(c.x + oLen, c.y);
-  s += dline(P(c.x - plane[0], c.y), P(c.x + plane[1], c.y));
-  const back = arm(c, 160, len, g2, { kind: 'hash' });
-  const front = arm(c, 200, len, g1, { kind: 'wedge' });
+  s += strip(c, plane[0], plane[1]);
+  const back = arm(c, 162, len, g2, { kind: 'hash' });
+  const front = arm(c, 198, len, g1, { kind: 'wedge' });
   if (halos) {
     s += halo(back.e, g2 === 'H' ? 15 : 31);
     s += halo(front.e, g1 === 'H' ? 15 : 31);
@@ -172,7 +180,7 @@ FIGURES.push({
   id: 'ak-planar',
   section: 'aldehydes-ketones',
   anchor: '<h3>Structure: a polarized, planar, sp² carbon</h3>',
-  alt: 'Left: formaldehyde drawn face-on, with the angles between its three groups each marked about 120 degrees. Right: the same molecule seen edge-on, its plane a dashed line, with the pi bond drawn as two lobes above and two below the plane, the lobes larger on oxygen.',
+  alt: 'Left: formaldehyde drawn face-on, with the angles between its three groups each marked about 120 degrees. Right: the same molecule seen nearly edge-on, its plane a thin shaded strip holding all four atoms, with the pi bond drawn as two lobes above and two below the plane, the lobes larger on oxygen.',
   viewBox: '0 0 760 290',
   build() {
     let s = '';
@@ -193,20 +201,20 @@ FIGURES.push({
     const e = P(540, 166), o = P(620, 166);
     s += ell(e.x, e.y - 30, 11, 22, 'fg-orb') + ell(e.x, e.y + 30, 11, 22, 'fg-orb-alt');
     s += ell(o.x, o.y - 36, 15, 28, 'fg-orb') + ell(o.x, o.y + 36, 15, 28, 'fg-orb-alt');
-    s += dline(P(420, e.y), P(730, e.y));
-    s += arm(e, 160, 58, 'H', { kind: 'hash' }).s;
-    s += arm(e, 200, 58, 'H', { kind: 'wedge' }).s;
+    s += strip(e, 110, 170);
+    s += arm(e, 162, 58, 'H', { kind: 'hash' }).s;
+    s += arm(e, 198, 58, 'H', { kind: 'wedge' }).s;
     s += bond(e, o, { rFrom: 16, rTo: 15 });
     s += lp(o, 30) + lp(o, -30);
     s += atom(o.x, o.y, 'O');
     s += atom(e.x, e.y, 'C', { kind: 'hi' });
-    s += tag(575, 24, 'edge-on: the plane is the dashed line');
+    s += tag(575, 24, 'nearly edge-on: the plane is the shaded strip');
     s += text(575, 62, 'π bond: lobes above and below the plane', { cls: 'fg-sm', size: 10.5 });
     s += text(575, 258, 'lobes bigger on O: the π electrons sit nearer O', { cls: 'fg-sm', size: 10.5 });
     s += text(424, 186, 'plane', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     return s;
   },
-  caption: 'Formaldehyde from two directions. Face-on, read the three marked angles. Edge-on, the dashed line is the molecule’s plane and the colored lobes are the π bond.',
+  caption: 'Formaldehyde from two directions. Face-on, read the three marked angles. Nearly edge-on, the shaded strip is the molecule’s plane and the colored lobes are the π bond.',
 });
 
 /* 3. The two resonance contributors. */
@@ -214,16 +222,16 @@ FIGURES.push({
   id: 'ak-resonance',
   section: 'aldehydes-ketones',
   anchor: 'it is the one that predicts the reactivity.</p>',
-  alt: 'Two resonance structures of a carbonyl R2C=O. Left, the neutral form, with delta plus on carbon and delta minus on oxygen and a curved arrow moving the pi bond onto oxygen. Right, the charge-separated form: carbon plus, oxygen minus with three lone pairs.',
+  alt: 'Two resonance structures of a carbonyl R2C=O. Left, the neutral form, with a curved arrow moving the pi bond onto oxygen. A note between them says the real molecule is a blend, with delta plus on carbon and delta minus on oxygen. Right, the charge-separated form: carbon plus, oxygen minus with three lone pairs.',
   viewBox: '0 44 760 206',
   build() {
     let s = '';
     const c1 = P(210, 140);
     const a = carbonyl(c1, { subs: [{ deg: 210, l: 'R' }, { deg: 330, l: 'R′' }], len: 58 });
     s += a.s;
-    s += text(c1.x - 32, c1.y + 2, 'δ+', { cls: 'fg-warn', size: 13 });
-    s += text(a.o.x - 34, a.o.y + 16, 'δ−', { cls: 'fg-hi', size: 13 });
     s += piToO(c1, a.o);
+    s += text(370, 150, 'the real molecule is a blend:', { cls: 'fg-sm', size: 10.5 });
+    s += text(370, 166, 'C is δ+, O is δ−', { cls: 'fg-sm', size: 10.5 });
     s += label(210, 212, 'major contributor');
     s += text(210, 230, 'every atom has an octet', { cls: 'fg-sm', size: 10.5 });
 
@@ -358,7 +366,7 @@ FIGURES.push({
   id: 'ak-trajectory',
   section: 'aldehydes-ketones',
   anchor: 'the <b>Bürgi–Dunitz angle</b>',
-  alt: 'Left: a carbonyl seen edge-on, with the empty pi-star orbital drawn as a large lobe pair on carbon and a small opposite-phase pair on oxygen. A nucleophile comes in along a dashed path about 107 degrees from the carbon-to-oxygen direction, tilted away from oxygen; a gray dashed line straight up marks 90 degrees for comparison. Right: after the bond forms, R and R prime have folded down away from the nucleophile and the carbon is tetrahedral.',
+  alt: 'Left: a carbonyl seen nearly edge-on, its plane a thin shaded strip, with the empty pi-star orbital drawn as a large lobe pair on carbon and a small opposite-phase pair on oxygen. A nucleophile comes in along a dashed path about 107 degrees from the carbon-to-oxygen direction, tilted away from oxygen; a gray dashed line straight up marks 90 degrees for comparison. Right: after the bond forms, R and R prime have folded down away from the nucleophile and the carbon is tetrahedral.',
   viewBox: '0 0 760 330',
   build() {
     let s = '';
@@ -384,7 +392,7 @@ FIGURES.push({
 
     // After: the tetrahedral carbon, R and R' folded down.
     const t = P(600, 190);
-    s += dline(t, at(t, 160, 52), 'fg-dash') + dline(t, at(t, 200, 52), 'fg-dash');
+    s += dline(t, at(t, 162, 52), 'fg-dash') + dline(t, at(t, 198, 52), 'fg-dash');
     const nu = at(t, 107, 62);
     s += bond(t, nu, { rFrom: 16, rTo: 16 });
     s += atom(nu.x, nu.y, 'Nu', { kind: 'hi' });
@@ -418,7 +426,7 @@ FIGURES.push({
   id: 'ak-ald-vs-ket',
   section: 'aldehydes-ketones',
   anchor: '<h3>Aldehydes are more reactive than ketones</h3>',
-  alt: 'Acetaldehyde and acetone, each edge-on, with a nucleophile approaching the carbonyl carbon from above along the tilted path. A shaded disc shows the room each group takes: the aldehyde has one CH3 and a small H; the ketone has two CH3 groups, both large. The aldehyde carbon carries a larger delta plus.',
+  alt: 'Acetaldehyde and acetone, each nearly edge-on, with a nucleophile approaching the carbonyl carbon from above along the tilted path. A shaded disc shows the room each group takes: the aldehyde has one CH3 and a small H; the ketone has two CH3 groups, both large. The aldehyde carbon carries a larger delta plus.',
   viewBox: '0 0 760 330',
   build() {
     let s = '';
@@ -435,7 +443,7 @@ FIGURES.push({
     s += text(570, 306, 'less reactive', { cls: 'fg-tag-warn', size: 11 });
     return s;
   },
-  caption: 'Both carbonyls edge-on, with the nucleophile on the tilted path. The shaded discs show how much room each group takes. The size of the δ+ label shows which carbon is more electron-poor.',
+  caption: 'Both carbonyls nearly edge-on (the shaded strip is the plane), with the nucleophile on the tilted path. The shaded discs show how much room each group takes. The size of the δ+ label shows which carbon is more electron-poor.',
 });
 
 /* 8. The angle squeeze on going from sp2 to sp3. */
@@ -785,8 +793,8 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-ak-structure',
   lessons: ['aldehydes-ketones'],
-  alt: 'Top: formaldehyde, flat, with the angles between its groups marked about 120 degrees. Bottom: the neutral carbonyl with delta plus and delta minus, a double-headed resonance arrow, and the charge-separated contributor with plus on carbon and minus on oxygen.',
-  viewBox: '0 0 340 470',
+  alt: 'Top: formaldehyde, flat, with the angles between its groups marked about 120 degrees. Bottom: the neutral carbonyl, a double-headed resonance arrow, and the charge-separated contributor with plus on carbon and minus on oxygen; a note says the real molecule is a blend, delta plus on carbon and delta minus on oxygen.',
+  viewBox: '0 0 340 480',
   build() {
     let s = '';
     s += tag(170, 20, 'flat: all four atoms in one plane');
@@ -801,8 +809,6 @@ FIGURES.push({
     const c1 = P(80, 350);
     const a = carbonyl(c1, { subs: [{ deg: 210, l: 'R' }, { deg: 330, l: 'R′' }], len: 52 });
     s += a.s;
-    s += text(c1.x - 32, c1.y + 2, 'δ+', { cls: 'fg-lbl', size: 13 });
-    s += text(a.o.x - 34, a.o.y + 16, 'δ−', { cls: 'fg-lbl', size: 13 });
     s += piToO(c1, a.o);
     s += resArrow(P(140, 330), P(196, 330));
     const c2 = P(260, 350);
@@ -817,6 +823,7 @@ FIGURES.push({
     s += tag(80, 420, 'major');
     s += tag(260, 420, 'minor, but it');
     s += tag(260, 436, 'shows the + on C');
+    s += tag(170, 466, 'the real molecule, a blend: C δ+, O δ−');
     return s;
   },
   caption: 'Top: formaldehyde face-on, with its three angles marked. Bottom: follow the curved arrow to the charge-separated contributor.',
@@ -826,7 +833,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-ak-ald-vs-ket',
   lessons: ['aldehydes-ketones'],
-  alt: 'Acetaldehyde above acetone, each edge-on with a nucleophile approaching the carbonyl carbon along a tilted path. Shaded discs show the room each group takes: a small H and a CH3 on the aldehyde, two CH3 groups on the ketone.',
+  alt: 'Acetaldehyde above acetone, each nearly edge-on with a nucleophile approaching the carbonyl carbon along a tilted path. Shaded discs show the room each group takes: a small H and a CH3 on the aldehyde, two CH3 groups on the ketone.',
   viewBox: '0 0 340 468',
   build() {
     let s = '';
@@ -839,7 +846,7 @@ FIGURES.push({
     s += tag(170, 456, 'less reactive', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'Each carbonyl edge-on, with the nucleophile’s path dashed. Shaded discs show the room each group takes; the larger δ+ marks the more electron-poor carbon.',
+  caption: 'Each carbonyl nearly edge-on (the shaded strip is the plane), with the nucleophile’s path dashed. Shaded discs show the room each group takes; the larger δ+ marks the more electron-poor carbon.',
 });
 
 /* Step 5: hydration, stacked. */
@@ -865,27 +872,28 @@ FIGURES.push({
   caption: 'Acetaldehyde above its hydrate. Both tinted OH groups sit on the old carbonyl carbon.',
 });
 
-/* Step 7: the three carbonyls to rank. */
+/* Step 6: three carbonyls not yet seen in the lesson, to rank. */
 FIGURES.push({
   id: 'l-ak-three',
   lessons: ['aldehydes-ketones'],
-  alt: 'Formaldehyde, acetaldehyde and acetone side by side, with the groups on each carbonyl carbon labeled.',
-  viewBox: '0 0 340 190',
+  alt: 'Propanal, butanone and 3,3-dimethylbutan-2-one, one per row, with the two groups on each carbonyl carbon labeled: CH2CH3 and H; CH3 and CH2CH3; CH3 and C(CH3)3.',
+  viewBox: '0 0 340 330',
   build() {
     let s = '';
-    const cols = [
-      { x: 56, name: 'formaldehyde', a: 'H', b: 'H' },
-      { x: 170, name: 'acetaldehyde', a: 'CH₃', b: 'H' },
-      { x: 284, name: 'acetone', a: 'CH₃', b: 'CH₃' },
+    const rows = [
+      { y: 74, name: 'propanal', a: 'CH₂CH₃', b: 'H' },
+      { y: 180, name: 'butanone', a: 'CH₃', b: 'CH₂CH₃' },
+      { y: 286, name: '3,3-dimethyl-', name2: 'butan-2-one', a: 'C(CH₃)₃', b: 'CH₃' },
     ];
-    for (const k of cols) {
-      const c = P(k.x, 88);
-      s += carbonyl(c, { subs: [{ deg: 214, l: k.a, len: 44 }, { deg: 326, l: k.b, len: 44 }], len: 46, cKind: 'hi' }).s;
-      s += tag(k.x, 160, k.name);
+    for (const k of rows) {
+      const c = P(110, k.y);
+      s += carbonyl(c, { subs: [{ deg: 212, l: k.a, len: 50 }, { deg: 328, l: k.b, len: 50 }], len: 44, cKind: 'hi' }).s;
+      if (k.name2) { s += tag(262, k.y - 4, k.name); s += tag(262, k.y + 12, k.name2); }
+      else s += tag(262, k.y + 4, k.name);
     }
     return s;
   },
-  caption: 'The same C=O, with zero, one and two CH₃ groups on the carbonyl carbon.',
+  caption: 'Three carbonyl compounds. Read the two groups on each carbonyl carbon.',
 });
 
 /* Final: benzaldehyde against acetone. */
