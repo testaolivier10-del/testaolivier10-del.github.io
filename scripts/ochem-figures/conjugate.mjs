@@ -188,7 +188,7 @@ FIGURES.push({
     s += tg(36, 158, '+H⁺', 'end');
 
     s += mol(water(P(x, 164)));
-    s += lbl(tx, 160, 'water, H₂O', 'start');
+    s += good(tx, 160, 'water, H₂O', 'start');
     s += tg(tx, 178, 'a base going up,', 'start');
     s += tg(tx, 194, 'an acid going down', 'start');
 
@@ -258,7 +258,7 @@ FIGURES.push({
     s += tg(bx, 22, 'conjugate base');
     const rows = [
       ['HCl', 'very strong acid', 'Cl⁻', 'barely basic'],
-      ['CH₃COOH', 'weak acid', 'CH₃COO⁻', 'weak base'],
+      ['CH₃COOH', 'weak acid', 'CH₃COO⁻', 'moderate base'],
       ['H₂O', 'very weak acid', 'HO⁻', 'strong base'],
       ['NH₃', 'extremely weak acid', '⁻NH₂', 'very strong base'],
     ];
@@ -331,7 +331,7 @@ FIGURES.push({
     s += mol(diisopropyl(P(ax, y), 'acid'));
     s += step(146, 190, y, '−H⁺');
     s += mol(diisopropyl(P(bx, y), 'base'));
-    s += lbl(bx + 60, y + 26, 'Li⁺');
+    s += lbl(bx + 72, y + 5, 'Li⁺');
     s += mut(ax, y + 60, 'diisopropylamine');
     s += good(bx, y + 60, 'in LDA');
     s += rule(16, y + 74, 324, y + 74);
@@ -341,7 +341,7 @@ FIGURES.push({
     s += mol(ammonia(P(ax, y - 6), [1]));
     s += step(146, 190, y, '−H⁺');
     s += mol(amide(P(bx, y - 6)));
-    s += lbl(bx + 60, y + 26, 'Na⁺');
+    s += lbl(bx + 72, y - 1, 'Na⁺');
     s += mut(ax, y + 44, 'ammonia');
     s += good(bx, y + 44, 'in NaNH₂');
     s += rule(16, y + 56, 324, y + 56);
@@ -350,8 +350,8 @@ FIGURES.push({
     y = 294;
     s += mol({ atoms: { h1: { ...P(ax - 22, y), l: 'H' }, h2: { ...P(ax + 22, y), l: 'H', k: 'hi' } }, bonds: [['h1', 'h2', 1, 'fg-bond-hi']] });
     s += step(146, 190, y, '−H⁺');
-    s += mol({ atoms: { h: { ...P(bx, y), l: 'H' } }, bonds: [], lp: [['h', 0]], charges: [['h', '−', 290, 24]] });
-    s += lbl(bx + 60, y + 5, 'Na⁺');
+    s += mol({ atoms: { h: { ...P(bx, y), l: 'H' } }, bonds: [], lp: [['h', 180]], charges: [['h', '−', 315, 24]] });
+    s += lbl(bx + 72, y + 5, 'Na⁺');
     s += mut(ax, y + 34, 'hydrogen, H₂');
     s += good(bx, y + 34, 'in NaH');
     s += rule(16, y + 48, 324, y + 48);
@@ -361,7 +361,7 @@ FIGURES.push({
     s += mol(butyl(P(ax + 14, y), 'acid'));
     s += step(146, 190, y, '−H⁺');
     s += mol(butyl(P(bx + 20, y), 'base'));
-    s += lbl(bx + 64, y + 18, 'Li⁺');
+    s += lbl(bx + 72, y + 5, 'Li⁺');
     s += mut(ax, y + 44, 'butane');
     s += good(bx, y + 44, 'in butyllithium');
     return s;
@@ -417,7 +417,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'The highlighted hydrogen on the left arrived on one of the lone pairs of the neutral molecule. Compare the lone pairs and the charge in each drawing with the neutral molecule in the middle.',
+  caption: 'In each conjugate acid, the highlighted hydrogen has bonded to one of the neutral molecule’s lone pairs. Compare the lone pairs and the charge in each drawing with the neutral molecule in the middle.',
 });
 
 /* ====================================================== later-conjugates ===
