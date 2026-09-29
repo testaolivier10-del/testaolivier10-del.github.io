@@ -436,8 +436,8 @@ function flatRing(cx, cy, r, planeLabel) {
     B(ids[i], A('H', P(c.x - 6, c.y), -26));
     claim(ids[i], rs);
   };
-  put(1, 'C1', 'R', { x: -16, y: -10, a: 'middle' }, { x: 2, y: -14 });
-  put(2, 'C2', 'S', { x: -16, y: 18, a: 'middle' }, { x: 2, y: 24 });
+  put(1, 'C1', 'R', { x: -20, y: 14, a: 'middle' }, { x: 2, y: -14 });
+  put(2, 'C2', 'S', { x: -20, y: -2, a: 'middle' }, { x: 2, y: 24 });
   s += dashLine(P(cx - r - 10, cy), P(cx + r + 64, cy));
   s += T(cx - r - 16, cy + 4, planeLabel, 'fg-tag-good', 'end');
   return s;
