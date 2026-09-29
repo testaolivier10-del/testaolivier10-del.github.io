@@ -342,12 +342,9 @@ FIGURES.push({
     const pla = plaRepeat(416, 262, 30);
     s += pla.svg + bracketed(pla, 50);
     s += text(500, 316, 'PLA, poly(lactic acid)', { cls: 'fg-lbl', size: 12.5 });
-    s += text(720, 244, 'coral OH + an H from', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
-    s += text(720, 260, 'the next molecule’s', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
-    s += text(720, 276, 'NH₂ or OH = H₂O', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
     return s;
   },
-  caption: 'The highlighted bond links each repeat unit to the next: an amide in nylon 6, an ester in PLA.',
+  caption: 'In both rows the coral OH leaves with an H from the next molecule’s NH₂ or OH as water. The highlighted bond links each repeat unit to the next: an amide in nylon 6, an ester in PLA.',
 });
 
 FIGURES.push({
@@ -375,60 +372,6 @@ FIGURES.push({
     return s;
   },
   caption: 'One monomer, both groups: it joins to copies of itself and loses one water per join.',
-});
-
-/* --------------------------------------------- caprolactam ring-opening --- */
-FIGURES.push({
-  id: 'caprolactam-ring-opening',
-  section: 'condensation-polymers',
-  viewBox: '0 0 760 270',
-  alt: 'Caprolactam, a seven-membered ring containing an N–H and a C=O next to each other, with its ring C(=O)–N bond colored as the bond that breaks. Plus a chain ending in NH2. Arrow to the longer chain: chain–NH–C(=O)–(CH2)5–NH2, with the new C(=O)–N bond to the old chain end highlighted and the former ring nitrogen now the NH2 at the new chain end.',
-  build() {
-    let s = '';
-    s += tag(40, 30, 'THE RING OPENS ONTO THE CHAIN END, AND NOTHING LEAVES', { anchor: 'start' });
-    /* The seven-membered ring: pts[0] carries the N–H, pts[6] the C=O. */
-    const c = P(120, 132), R = 40;
-    const pts = polyPts(c.x, c.y, 7, R, 90 + 360 / 14);
-    const N = { x: pts[0].x, y: pts[0].y };
-    const C = { x: pts[6].x, y: pts[6].y };
-    /* A coral band behind the ring bond that breaks (the top edge, C to N). */
-    s += bar(N.x - 4, N.y - 7, C.x - N.x + 8, 14, { kind: 'warn', opacity: 0.55, r: 7 });
-    for (let i = 0; i < 7; i++) {
-      const a = pts[i], b = pts[(i + 1) % 7];
-      s += bond(a, b, { rFrom: i === 0 ? 10 : 0, rTo: (i + 1) % 7 === 0 ? 10 : 0 });
-    }
-    const Hp = at(N, Math.atan2(N.y - c.y, N.x - c.x) * 180 / Math.PI, 26);
-    s += bond(N, Hp, { rFrom: 10, rTo: 9 });
-    s += atom(Hp.x, Hp.y, 'H', { r: 9 });
-    const Op = at(C, Math.atan2(C.y - c.y, C.x - c.x) * 180 / Math.PI, 28);
-    s += bond(C, Op, { rFrom: 0, rTo: 10, order: 2, gap: 3.2 });
-    s += atom(Op.x, Op.y, 'O', { r: 10 });
-    s += atom(N.x, N.y, 'N', { r: 10, kind: 'warn' });
-    s += text(120, 206, 'caprolactam', { cls: 'fg-lbl', size: 12.5 });
-    s += text(120, 224, 'coral band: the C(=O)–N bond', { cls: 'fg-tag-warn', size: 11 });
-    s += text(120, 240, 'that breaks; coral N: the ring N', { cls: 'fg-tag-warn', size: 11 });
-    s += text(200, 136, '+', { cls: 'fg-lbl', size: 16 });
-    /* The growing chain's amine end. */
-    s += text(240, 136, 'chain', { cls: 'fg-tag-mut', size: 11 });
-    s += bond(P(262, 132), P(288, 132), { rFrom: 0, rTo: 15 });
-    s += atom(302, 132, 'NH₂', { r: 15 });
-    s += arrow(P(336, 132), P(396, 132), { muted: true });
-    /* The product: chain–NH–C(=O)–(CH2)5–NH2. */
-    s += text(430, 146, 'chain', { cls: 'fg-tag-mut', size: 11 });
-    const p = chain({ x: 452, y: 142, l: '' }, [
-      { d: -30, l: 'N', sub: [{ l: 'H', len: 24 }] },
-      { d: 30, l: '', hi: true, sub: [O2()] },
-      { d: -30, l: '' }, { d: 30, l: '' }, { d: -30, l: '' }, { d: 30, l: '' }, { d: -30, l: '' },
-      { d: 30, l: 'NH₂', k: 'warn' },
-    ], { L: 30 });
-    s += p.svg;
-    s += text(470, 224, 'highlighted: the new C(=O)–N', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
-    s += text(470, 240, 'bond to the old chain end', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
-    s += text(720, 100, 'the ring N is now', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
-    s += text(720, 116, 'the new chain end', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
-    return s;
-  },
-  caption: 'Compare the added unit with the nylon 6 repeat unit in the figure above: it is the same –NH(CH₂)₅CO–, and every atom of the ring is still in it.',
 });
 
 /* ------------------------------------ amide direction and chain registry --- */
@@ -526,14 +469,14 @@ FIGURES.push({
     s += cell(18, 10, 352, 19, NY6, true, 'nylon 6, chains in opposite directions', 'every facing N–H and C=O is paired', false, true);
     s += cell(390, 10, 352, 19, NY6, false, 'nylon 6, chains in the same direction', 'best fit: half the facing groups unpaired', true, true);
     let o = panel(18, 272, 724, 236);
-    o += tag(380, 294, 'nylon 6,6: flip either chain end to end and it is the same chain');
+    o += tag(380, 294, 'nylon 6,6, as in the figure above: flip either chain end to end and it is the same chain');
     const r = twoChains(NY66, 38, false, 32, 366, 76, dx);
     o += r.svg;
     o += text(380, 496, 'every facing N–H and C=O is paired, whichever way round the chains lie', { cls: 'fg-tag-good', size: 11 });
     s += o;
     return s;
   },
-  caption: 'Each panel is the best fit two chains can find. The gray arrows point from each nylon 6 chain’s amine end to its acid end. Dashed lines are hydrogen bonds; a coral group faces the other chain with nothing to bond to. Each amide’s other group points away, toward the next chain in the sheet, which is not drawn.',
+  caption: 'Each panel is the best fit two flat chains can find. The gray arrows point from each nylon 6 chain’s amine end to its acid end. Dashed lines are hydrogen bonds; a coral group faces the other chain with nothing to bond to. Each amide’s other group points away, toward the next chain in the sheet, which is not drawn.',
 });
 
 FIGURES.push({
@@ -550,7 +493,7 @@ FIGURES.push({
     s += tag(165, 200, 'dashed: N–H···O=C between the chains', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'Each amide sends one hydrogen bond to this neighbor, and its other group bonds to the next chain on the far side.',
+  caption: 'Each amide makes one hydrogen bond to this neighbor. Its other group bonds to the next chain on the far side, which is not drawn.',
 });
 
 /* ------------------------------------------------------------ Kevlar --- */
@@ -640,7 +583,7 @@ FIGURES.push({
     let s = '';
     s += tag(165, 22, 'two Kevlar chains, side by side');
     s += kevlarPair(22, 88, 88, { L: 19, rr: 14, units: 2 }).svg;
-    s += tag(165, 236, 'para rings: the chain cannot bend');
+    s += tag(165, 236, 'para rings keep the chain straight');
     s += tag(165, 256, 'dashed: N–H···O=C between the chains', { cls: 'fg-tag-good' });
     return s;
   },
@@ -711,7 +654,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'urethane-addition',
   section: 'condensation-polymers',
-  viewBox: '0 0 760 545',
+  viewBox: '0 0 760 470',
   alt: 'Two steps of the urethane-forming addition: an alcohol oxygen adding to the carbon of an isocyanate while the carbon-nitrogen pi bond moves onto nitrogen, giving a zwitterion, and then the nitrogen taking the proton from the positively charged oxygen to give a neutral carbamate',
   build() {
     let s = '';
@@ -740,7 +683,7 @@ FIGURES.push({
     };
 
     /* 1. The addition itself. */
-    s += '<g transform="translate(0,40)">';
+    s += '<g transform="translate(0,-10)">';
     head2(120, 'STEP 1 — THE ALCOHOL ADDS', 'the O lone pair attacks C; the C=N π bond moves onto N');
     s += atom(96, 120, 'R', { r: 15 });
     s += atom(156, 120, 'N', { r: 15 });
@@ -761,10 +704,10 @@ FIGURES.push({
     s += zwitter(500, 120);
     s += text(612, 180, 'every atom of both molecules, and two charges', { cls: 'fg-sm', size: 10 });
     s += '</g>';
-    s += rule(40, 240, 720, 240);
+    s += rule(40, 190, 720, 190);
 
     /* 2. The proton transfer that neutralises it. */
-    s += '<g transform="translate(0,110)">';
+    s += '<g transform="translate(0,34)">';
     head2(320, 'STEP 2 — THE PROTON MOVES', 'nitrogen takes the proton from the positive oxygen');
     s += zwitter(170, 320);
     s += lonePair(226, 320, 250, { dist: 28 });
@@ -784,8 +727,8 @@ FIGURES.push({
     s += bond(P(618, 320), P(618, 276), { order: 2, rFrom: 15, rTo: 15 });
     s += text(614, 376, 'a carbamate: the linkage O–C(=O)–NH', { cls: 'fg-sm', size: 10 });
     s += '</g>';
-    s += rule(40, 506, 720, 506);
-    s += text(380, 530, 'Nothing is expelled in either step.', { cls: 'fg-lbl', size: 12 });
+    s += rule(40, 430, 720, 430);
+    s += text(380, 454, 'Nothing is expelled in either step.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'Step 1 forms the new C–O bond and leaves nitrogen negative and oxygen positive. Step 2 moves one proton and cancels both charges.',
