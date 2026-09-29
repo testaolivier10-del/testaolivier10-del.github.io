@@ -95,7 +95,7 @@ function carbonyl(c, { len = 56, subs = [], cKind = 'plain', oKind = 'plain', lp
 }
 
 /* An sp² center seen edge-on: two of its three
-   groups lie left and right in that plane (the third points at the reader),
+   groups lie left and right in its plane (the third points at the reader),
    and the empty p orbital stands above and below. */
 function edgeOnEmpty(c, l, gL, gR, { off = 44, ry = 30, len = 62, kind = 'warn', plus = true } = {}) {
   let s = '';

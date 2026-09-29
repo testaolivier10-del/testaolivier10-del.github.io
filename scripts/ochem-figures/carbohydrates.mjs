@@ -410,7 +410,7 @@ FIGURES.push({
    tip (the usual 4C1 drawing of a D-pyranose). */
 const CH_I = { 1: 0, O: 1, 5: 2, 4: 3, 3: 4, 2: 5 };
 function chairGeom(cx, cy, S) {
-  const T = rad(16), h = 0.25;
+  const T = rad(10), h = 0.36;
   const pts = [], up = [];
   for (let i = 0; i < 6; i++) {
     const th = rad(60 * i);
@@ -418,17 +418,17 @@ function chairGeom(cx, cy, S) {
     pts.push(P(cx + x * S, cy + (-z * Math.cos(T) - y * Math.sin(T)) * S));
     up.push(z > 0);
   }
-  // Equatorial: outward along the radius, tipped slightly against the axial.
+  // Equatorial: parallel to the ring bonds one carbon further round, and
+  // pointing outward. That is the rule a hand-drawn chair is checked by.
   const eqDir = (i) => {
-    const th = rad(60 * i), zt = up[i] ? -0.3 : 0.3;
-    const dx = Math.cos(th), dy = -zt * Math.cos(T) - Math.sin(th) * Math.sin(T);
-    const L = Math.hypot(dx, dy);
+    const a = pts[(i + 1) % 6], b = pts[(i + 2) % 6];
+    const dx = a.x - b.x, dy = a.y - b.y, L = Math.hypot(dx, dy);
     return P(dx / L, dy / L);
   };
   return { pts, up, eqDir };
 }
 function chairGlc(cx, cy, k, anomer) {
-  const g = chairGeom(cx, cy, 104 * k);
+  const g = chairGeom(cx, cy, 112 * k);
   const v = g.pts;
   let s = '';
   for (let i = 0; i < 6; i++) {
@@ -440,10 +440,10 @@ function chairGlc(cx, cy, k, anomer) {
     const i = CH_I[key], p = v[i], r = rOf(l);
     let e;
     if (kind === 'ax') {
-      const L = (l === 'H' ? 16 : 22) * k + r;
+      const L = (l === 'H' ? 12 : 22) * k + r;
       e = P(p.x, p.y + (g.up[i] ? -L : L));
     } else {
-      const d = g.eqDir(i), L = 22 * k + r;
+      const d = g.eqDir(i), L = (l.length > 3 ? 34 : 22) * k + r;
       e = P(p.x + d.x * L, p.y + d.y * L);
     }
     s += bond(p, e, { rFrom: 0, rTo: r, cls: l === 'H' ? 'fg-bond-soft' : 'fg-bond' });
