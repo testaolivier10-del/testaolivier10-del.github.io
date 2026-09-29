@@ -611,7 +611,7 @@ function vinyl(v1) {
   s += bond(v1, v2, { order: 2, gap: 5 });
   s += bond(v2, vr, { rTo: 18 });
   s += atom(vr.x, vr.y, 'CH₃', { r: 18 });
-  s += arm(v1, 150, 46, 'H').s + arm(v1, 210, 46, 'H').s;
+  s += arm(v1, 150, 46, 'H', { bond: 'wedge' }).s + arm(v1, 210, 46, 'H', { bond: 'hash' }).s;
   s += atom(v1.x, v1.y, 'C');
   s += `<circle class="fg-orb" cx="${v2.x}" cy="${v2.y}" r="27" fill-opacity="0.18"></circle>`;
   s += atom(v2.x, v2.y, 'C', { kind: 'warn' });
@@ -635,7 +635,7 @@ FIGURES.push({
   id: 'vinyl-aryl-orthogonal',
   section: 'carbocations',
   anchor: 'Again the empty orbital and the &pi; electrons are at right angles, and they never meet.</p>',
-  alt: 'Left: a vinyl cation, CH2=C plus CH3, drawn linear at the positive carbon. The pi cloud of the double bond lies above and below the C=C, while the empty p orbital on the positive carbon is drawn end-on as a circle, pointing at the reader, at right angles to that pi cloud. Right: a benzene ring seen edge-on as a line, its pi cloud above and below the ring plane; the empty sp2 orbital of the positive ring carbon points sideways, inside the plane.',
+  alt: 'Left: a vinyl cation, CH2=C plus CH3, drawn linear at the positive carbon, with its two CH2 hydrogens pointing toward and away from the reader. The pi cloud of the double bond lies above and below the C=C, while the empty p orbital on the positive carbon is drawn end-on as a circle, pointing at the reader, at right angles to that pi cloud. Right: a benzene ring seen edge-on as a line, its pi cloud above and below the ring plane; the empty sp2 orbital of the positive ring carbon points sideways, inside the plane.',
   viewBox: '0 0 760 318',
   build() {
     let s = '';
@@ -664,7 +664,7 @@ FIGURES.push({
   id: 'l-vinyl-aryl',
   lessons: ['carbocations'],
   anchor: '',
-  alt: 'Top: a vinyl cation; the pi cloud of the C=C lies above and below the double bond, while the empty p orbital on the linear positive carbon points at the reader, at right angles to it. Bottom: a benzene ring seen edge-on; its pi cloud lies above and below the ring plane, while the empty sp2 orbital of the positive ring carbon points sideways in the plane.',
+  alt: 'Top: a vinyl cation, its CH2 hydrogens pointing toward and away from the reader; the pi cloud of the C=C lies above and below the double bond, while the empty p orbital on the linear positive carbon points at the reader, at right angles to it. Bottom: a benzene ring seen edge-on; its pi cloud lies above and below the ring plane, while the empty sp2 orbital of the positive ring carbon points sideways in the plane.',
   viewBox: '0 0 340 414',
   build() {
     let s = '';
@@ -754,15 +754,15 @@ FIGURES.push({
       return g;
     };
     s += row(126, HYD, '1,2-HYDRIDE SHIFT', '3-methylbutan-2-yl, 2°', '2-methylbutan-2-yl, 3°',
-      ['the tail sits on the C–H bond', 'the H lands on the C⁺', 'and the + moves back one carbon']);
+      ['the tail sits on the C–H bond', 'the H lands on the C⁺', 'and the + ends up on the carbon it left']);
     s += rule(36, 214, 724, 214);
     s += row(326, NEO, '1,2-METHYL SHIFT', 'neopentyl, 1°', '2-methylbutan-2-yl, 3°',
-      ['the tail sits on the C–CH₃ bond', 'the CH₃ lands on the C⁺', 'and the + moves back one carbon']);
+      ['the tail sits on the C–CH₃ bond', 'the CH₃ lands on the C⁺', 'and the + ends up on the carbon it left']);
     return s;
   },
   caption: 'Look at where each arrow&rsquo;s tail sits, and which carbon carries the + before and after. Both shifts end at the same tertiary cation.',
-  note: 'A free primary cation such as neopentyl barely exists: the methyl starts to move while the leaving group is still leaving. Drawing the two steps apart is bookkeeping, and the product is the same either way.',
-  note: 'A free primary cation such as neopentyl barely exists: the methyl starts to move while the leaving group is still leaving. Drawing the two steps apart is bookkeeping, and the product is the same either way.',
+  note: 'A free neopentyl cation barely forms; Worked example 3 explains why the drawing splits the steps anyway.',
+  note: 'A free neopentyl cation barely forms; Worked example 3 explains why the drawing splits the steps anyway.',
 });
 
 FIGURES.push({
@@ -787,7 +787,7 @@ FIGURES.push({
   id: 'l-neopentyl-cation',
   lessons: ['carbocations'],
   anchor: '',
-  alt: 'The neopentyl cation drawn skeletally: a positive CH2 carbon bonded to a quaternary carbon that carries three methyl groups, one of them written out as CH3 pointing up. The quaternary carbon has no hydrogen.',
+  alt: 'The neopentyl cation drawn skeletally: a positive CH2 carbon bonded to a quaternary carbon that carries three methyl groups, drawn as lines. The quaternary carbon has no hydrogen.',
   viewBox: '0 0 340 170',
   build() {
     let s = '';
@@ -795,9 +795,8 @@ FIGURES.push({
     s += skb(v0, v1) + skb(v1, v2);
     const down = at(v1, 270, 44), up = at(v1, 90, 52);
     s += skb(v1, down);
-    s += bond(v1, up, { rFrom: 0, rTo: 18 });
-    s += atom(up.x, up.y, 'CH₃', { r: 18 });
-    for (const p of [v0, v1, v2, down]) s += dot(p);
+    s += skb(v1, up);
+    for (const p of [v0, v1, v2, down, up]) s += dot(p);
     s += chg(P(v0.x - 14, v0.y - 18));
     s += tg(v0.x - 22, v0.y + 20, 'the CH₂⁺', 'end', 'fg-tag-warn');
     s += tg(v1.x + 24, v1.y + 26, 'no H here', 'start');
@@ -831,12 +830,12 @@ FIGURES.push({
 function chain(x0, y0) {
   return [P(x0, y0), P(x0 + DX, y0 - DY), P(x0 + 2 * DX, y0), P(x0 + 3 * DX, y0 - DY)];
 }
-function numbers(v) {
+function numbers(v, L = ['1', '2', '3', '4']) {
   let s = '';
-  s += text(v[0].x - 4, v[0].y + 18, '1', { cls: 'fg-tag-mut', size: 11 });
-  s += text(v[1].x, v[1].y + 24, '2', { cls: 'fg-tag-mut', size: 11 });
-  s += text(v[2].x + 16, v[2].y + 14, '3', { cls: 'fg-tag-mut', size: 11 });
-  s += text(v[3].x + 4, v[3].y + 18, '4', { cls: 'fg-tag-mut', size: 11 });
+  s += text(v[0].x - 4, v[0].y + 18, L[0], { cls: 'fg-tag-mut', size: 11 });
+  s += text(v[1].x, v[1].y + 24, L[1], { cls: 'fg-tag-mut', size: 11 });
+  s += text(v[2].x + 16, v[2].y + 14, L[2], { cls: 'fg-tag-mut', size: 11 });
+  s += text(v[3].x + 4, v[3].y + 18, L[3], { cls: 'fg-tag-mut', size: 11 });
   return s;
 }
 /* The skeleton; opts.upOn2: a group label on C2 (up), opts.upOn3: on C3 (up). */
@@ -847,7 +846,7 @@ function skeleton(x0, y0, o = {}) {
   const down = at(v[2], 270, 42);
   s += skb(v[2], down);
   for (const p of [...v, down]) s += dot(p);
-  s += numbers(v);
+  s += numbers(v, o.labels);
   return { s, v };
 }
 const PW = 370, PH = 214;
@@ -859,7 +858,7 @@ FIGURES.push({
   id: 'methyl-shift-example',
   section: 'carbocations',
   anchor: 'the product is <b>2-bromo-2,3-dimethylbutane</b>.</p>',
-  alt: 'Six panels. 1: 3,3-dimethylbutan-2-ol, carbons numbered 1 to 4; a lone pair on the OH oxygen takes the H of H-Br, and the H-Br pair moves onto bromine. 2: the protonated OH2 plus group leaves, a curved arrow carrying the C2-O pair onto oxygen. 3: the secondary cation at C2; a curved arrow starts on the bond from C3 to its upper methyl group and ends at C2. 4: the tertiary cation at C3; bromide ion attacks it with a curved arrow. 5: the product, 2-bromo-2,3-dimethylbutane. 6: 2-bromo-3,3-dimethylbutane, the product without a shift, which does not form.',
+  alt: 'Six panels. 1: 3,3-dimethylbutan-2-ol, carbons numbered 1 to 4; a lone pair on the OH oxygen takes the H of H-Br, and the H-Br pair moves onto bromine. 2: the protonated OH2 plus group leaves, a curved arrow carrying the C2-O pair onto oxygen. 3: the secondary cation at C2; a curved arrow starts on the bond from C3 to its upper methyl group and ends at C2. 4: the tertiary cation at C3; bromide ion attacks it with a curved arrow. 5: the product, 2-bromo-2,3-dimethylbutane, renumbered from the end nearer the bromine so the bromine carbon is C2. 6: 2-bromo-3,3-dimethylbutane, the product without a shift, which does not form.',
   viewBox: '0 0 760 666',
   build() {
     let s = '';
@@ -936,8 +935,8 @@ FIGURES.push({
     /* 5. the product */
     {
       const x = X[0], y = Y[2];
-      s += wpanel(x, y, '5 · THE PRODUCT');
-      const k = skeleton(x + 60, y + 150); s += k.s;
+      s += wpanel(x, y, '5 · THE PRODUCT, NUMBERED AS NAMED');
+      const k = skeleton(x + 60, y + 150, { labels: ['4', '3', '2', '1'] }); s += k.s;
       const c2 = k.v[1], c3 = k.v[2];
       const up2 = at(c2, 90, 44); s += skb(c2, up2) + dot(up2);
       const br = at(c3, 90, 54);
@@ -959,7 +958,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Every curved arrow starts on a pair of electrons: a lone pair on O (panel 1), a bond (panels 1, 2 and 3), or a lone pair on bromide (panel 4). The highlighted CH₃ is the group that moves. Panel 6 is the answer a student gives when they look only for a hydrogen to shift.',
+  caption: 'Every curved arrow starts on a pair of electrons: a lone pair on O (panel 1), a bond (panels 1, 2 and 3), or a lone pair on bromide (panel 4). The highlighted CH₃ is the group that moves. Panel 6 is the product without a shift, which does not form.',
 });
 
 /* ======================================================================
