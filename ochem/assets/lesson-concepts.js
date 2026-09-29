@@ -300,12 +300,14 @@
       10:['alkene-stability-ranking'],
       11:['reductant-scope'] } },
 
-    'alkene-oxidation': { n:8, steps:{
-      2:['redox-stereochemistry','alkene-cleavage-scope'],
-      3:['alkene-cleavage-scope'],
-      4:['alkene-cleavage-scope'],
-      6:['alkene-cleavage-scope'],
-      7:['redox-stereochemistry'] } },
+    'alkene-oxidation': { n:13, steps:{
+      2:['redox-stereochemistry'],
+      5:['redox-stereochemistry'],
+      7:['alkene-cleavage-scope','redox-stereochemistry'],
+      8:['alkene-cleavage-scope'],
+      9:['alkene-cleavage-scope'],
+      11:['alkene-cleavage-scope'],
+      12:['redox-stereochemistry','alkene-cleavage-scope'] } },
 
     /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
     'conjugated-systems': { n:8, steps:{
