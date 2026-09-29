@@ -242,7 +242,7 @@ FIGURES.push({
     s += curve(P(114, 558), P(106, 526), { bow: -12 });
     s += hydride(P(120, 656), 'AlH₃', 1).s;
     s += curve(P(152, 650), P(124, 598), { bow: 14 });
-    s += tg(262, 522, 'propanal', 'warn');
+    s += tg(262, 522, 'propanal');
     s += tg(262, 580, 'more electrophilic', 'mut');
     s += tg(262, 598, 'than the ester', 'mut');
 
@@ -428,7 +428,7 @@ FIGURES.push({
     s += lonePair(n.x, n.y, 0, { dist: 21 });
     s += tg(170, 156, 'C–C≡N is a straight line: an sp carbon', 'mut');
     s += arrow(P(170, 186), P(170, 224));
-    s += tg(250, 210, '1. LiAlH₄  2. H₂O');
+    s += tg(250, 210, '1. LiAlH₄  2. H₃O⁺');
 
     s += box(234, 146, 'PROPAN-1-AMINE');
     const m2 = P(54, 314), v2 = P(94, 291), c2 = P(134, 314), n2 = armEnd(c2, 30, 48);
@@ -511,8 +511,8 @@ FIGURES.push({
     s += box(8, 196, 'ETHYL 4-OXOPENTANOATE');
     const k = ketoester(106, false);
     s += k.g;
-    s += tg(k.ko.x + 46, k.ko.y + 4, 'ketone', 'warn');
-    s += tg(k.eo.x + 52, k.eo.y + 4, 'ester', 'warn');
+    s += tg(k.ko.x + 46, k.ko.y + 4, 'ketone');
+    s += tg(k.eo.x + 52, k.eo.y + 4, 'ester');
 
     s += box(212, 190, 'NaBH₄, CH₃OH, then workup');
     const k2 = ketoester(310, true);
@@ -530,10 +530,10 @@ FIGURES.push({
     s += tg(170, 566, 'pentane-1,4-diol: both reduced', 'good');
 
     s += box(588, 64, 'H₂, Pd/C, 1 atm');
-    s += tg(170, 638, 'no change: both C=O groups survive', 'warn');
+    s += tg(170, 638, 'no change: both C=O groups survive', 'mut');
     return s;
   },
-  caption: 'The coral OH groups mark each carbonyl that was reduced. Compare the NaBH₄ and LiAlH₄ products at the right-hand end.',
+  caption: 'The highlighted OH groups mark each carbonyl that was reduced. Compare the NaBH₄ and LiAlH₄ products at the right-hand end.',
 });
 
 /* ------------------------------------------------------------------ 10 ---
@@ -575,7 +575,7 @@ FIGURES.push({
     s += tg(262, 414, 'C=O → CH₂', 'good');
     return s;
   },
-  caption: 'One ketone, one product, two sets of conditions. Pick the route whose conditions the rest of the molecule can survive.',
+  caption: 'One ketone, one product, two sets of conditions: strong acid on the left, strong base on the right.',
 });
 
 /* ------------------------------------------------------------------ 11 ---
@@ -597,7 +597,7 @@ FIGURES.push({
       const c = P(80, 110), n1 = armEnd(c, 30, 54), n2 = armEnd(n1, 330, 54);
       const ha = armEnd(n2, 30, 50), hb = armEnd(n2, 270, 40);
       s += Rs(c) + B(c, 'C', n1, 'N', { order: 2 }) + B(n1, 'N', n2, 'N') + B(n2, 'N', ha, 'H') + B(n2, 'N', hb, 'H');
-      s += A(c, 'C', 'warn') + A(n1, 'N') + A(n2, 'N') + A(ha, 'H', 'hi') + A(hb, 'H');
+      s += A(c, 'C', 'warn') + A(n1, 'N') + A(n2, 'N') + A(ha, 'H') + A(hb, 'H');
       s += lonePair(n1.x, n1.y, 270, { dist: 21 }) + lonePair(n2.x, n2.y, 270, { dist: 21 });
       const ox = P(282, ha.y);
       s += hydroxide(ox);
