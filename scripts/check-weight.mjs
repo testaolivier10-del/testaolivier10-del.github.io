@@ -149,7 +149,17 @@ const SHELL_BUDGETS = [
      on; a student was asked to eject a leaving group from a molecule that
      had no bond to it. The records live in the shared library because the
      mechanism pages look molecules up there. Measured 104.5 KB. */
-  ['ochem', 105],
+  /* 105 -> 106 for the readability pass, which is the one thing here that
+     grows by chapter. Every rewritten lesson gains steps (8 became 10 to 14,
+     because a term is now taught in its own step before a question uses it),
+     and lesson-concepts.js maps each graded step to its concepts, so the map
+     grows with the lessons. Stale comments were already cut from that file
+     once to stay under 105; it measured 105.0 KB with ¹H NMR mapped and two
+     Spectroscopy lessons still to come. Five chapters remain after this one,
+     at roughly 0.1 KB each. If it needs to move again before the pass ends,
+     take the saving noted above (lesson-concepts.js out of ochem/index.html)
+     or move the map to a fetched file, rather than raising again. */
+  ['ochem', 106],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
      37.3 KB at the Phase 1 pilot. */
