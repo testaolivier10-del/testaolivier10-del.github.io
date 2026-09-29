@@ -79,7 +79,9 @@ function chain(x0, y, groups, orders, o = {}) {
       s += g.up === 'Br' ? withPairs(u, 'Br', [180, -90, 0], g.upKind || 'warn') : A(u, g.up, g.upKind);
     }
     if (g.down) {
-      const d = P(q.x, y + 50);
+      /* On a numbered chain the branch leans down to the right, so the
+         carbon's own number can stay directly under the carbon. */
+      const d = g.num ? P(q.x + 28, y + 44) : P(q.x, y + 50);
       s += B(q, g.l, d, g.down);
       if (g.down === 'Br') s += withPairs(d, 'Br', [180, 90, 0], g.downKind || 'warn');
       else if (g.down === 'OH') s += atom(d.x, d.y, 'OH', { kind: 'warn' });
@@ -89,9 +91,7 @@ function chain(x0, y, groups, orders, o = {}) {
     if (g.chg) s += chg(q.x + 17, q.y - 20);
     if (g.dplus) s += lbl(q.x + (g.up ? 22 : 0), q.y - 24, 'δ+');
     if (g.num) {
-      if (g.down) s += tg(q.x + 22, q.y + 30, g.num, 'fg-tag', 'start');
-      else if (g.numLeft) s += tg(q.x - 25, q.y + 30, g.num);
-      else s += tg(q.x, q.y + 32, g.num);
+      s += tg(q.x, q.y + 32, g.num);
     }
   });
   return { s, p };
