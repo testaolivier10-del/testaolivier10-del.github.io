@@ -20147,7 +20147,7 @@
    "options": [
     "They are sterically protected from attack",
     "They carry no charge",
-    "They are aromatic",
+    "They are sp³ hybridized",
     "Their charge is delocalized by conjugation"
    ],
    "correct": 3,
@@ -20263,7 +20263,7 @@
    "q": "Why is cyclopentadiene unusually reactive as a diene?",
    "options": [
     "It has three double bonds",
-    "It is aromatic",
+    "Its π bonds are unusually weak",
     "Its ring locks it s-cis",
     "It is electron-poor"
    ],
@@ -20875,41 +20875,41 @@
    "type": "mcq"
   },
   {
-   "q": "A bulky base at −78 °C pulls a proton from a ketone that has two different carbons next to its C=O. Which product?",
+   "q": "From one intermediate, route 1 has a 50 kJ/mol barrier and gives P, which sits 10 kJ/mol below the intermediate. Route 2 has a 65 kJ/mol barrier and gives Q, 30 kJ/mol below it. Which product dominates at −78 °C, and which after warming until the mixture equilibrates?",
    "options": [
-    "The one from the more accessible proton, frozen in by the cold",
-    "The more substituted one, the more stable of the two",
-    "Both in roughly equal amounts, since the base is blunt",
-    "Neither one, because the cold shuts the reaction down"
+    "P cold, Q warm",
+    "Q cold, P warm",
+    "P under both conditions",
+    "Q under both conditions"
    ],
    "correct": 0,
-   "why": "A bulky base reaches the least hindered proton fastest, so that product forms first; at −78 °C nothing has the energy to shuffle the proton around afterwards, so the first-formed ratio is the final one. In Enolate Chemistry this product has a name — the kinetic enolate — but the reasoning is the one from this section.",
+   "why": "Cold, nothing can reverse, so the lower barrier wins: P, at 50 kJ/mol against 65. Warm enough to reverse, the mixture drains into the deeper well: Q, 30 kJ/mol down against 10. Choosing Q cold mixes up the deeper well with the lower hill.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "The same ketone is treated with a small base under warm, equilibrating conditions. Which product now dominates?",
+   "q": "Product A forms faster than B but is less stable. When the mixture is warmed, why does A go back to the intermediate more easily than B?",
    "options": [
-    "An even mixture of the two",
-    "Neither, because warmth destroys both",
-    "The more substituted, more stable one",
-    "The one from the more accessible proton"
+    "Its well is shallower, so its climb back is smaller",
+    "It is the more stable of the two products",
+    "Its forward barrier was the higher of the two routes",
+    "Heat breaks down whichever product formed first"
    ],
-   "correct": 2,
-   "why": "Equilibrating conditions mean the proton can come off and go back on repeatedly, so the mixture is free to re-sort itself and drains into whichever product is lower in energy — here the more substituted one. Nothing about which formed faster survives that process.",
+   "correct": 0,
+   "why": "The climb back out is the forward barrier plus the depth of the well. A has the lower forward barrier and the shallower well, so its way back is the easier one. That is why warming empties A first and the mixture drains into B.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "An –SO₃H group can be put on a benzene ring to block a position and taken off later. What makes that possible?",
+   "q": "In a reaction, the faster-forming product is also the more stable one. Which product do you get cold, and which warm?",
    "options": [
-    "The sulfonation step is reversible",
-    "The reaction runs through a radical chain",
-    "The bond from sulfur to the ring is very weak",
-    "The group never fully attaches to the ring"
+    "The same product both times",
+    "The faster one cold, the other one warm",
+    "A 50:50 mixture both times",
+    "No product cold, the stable one warm"
    ],
    "correct": 0,
-   "why": "Hot dilute acid drives the sulfonation backwards and the group leaves, which is a rare privilege among substitutions on a ring. That reversibility is exactly the condition for thermodynamic control, and it is what makes –SO₃H usable as a temporary blocking group in synthesis.",
+   "why": "When the lower hill leads to the deeper valley, rate and stability agree, so the conditions have nothing to choose between. This is the common case; the words kinetic and thermodynamic only matter when the two disagree.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -21018,15 +21018,15 @@
    "type": "mcq"
   },
   {
-   "q": "The more crowded endo Diels-Alder adduct forms faster than the less crowded exo one. What does that show about the word 'kinetic'?",
+   "q": "A reaction run cold gives mostly A. When pure A is warmed with a trace of catalyst, it turns into a 20:80 mixture of A and B. What does this show?",
    "options": [
-    "It means the more stable of the available options",
-    "It means the step in question is reversible",
-    "It means faster, and says nothing about crowding",
-    "It means the less hindered of the available options"
+    "A forms faster; B is more stable",
+    "A is more stable; B forms faster",
+    "A is both faster and more stable",
+    "Neither product can revert"
    ],
-   "correct": 2,
-   "why": "Kinetic is a statement about a barrier and only about a barrier. Sterics are usually what makes one barrier lower, which is why 'kinetic' and 'less hindered' so often travel together — but here a favorable orbital interaction outweighs the crowding, and the more congested arrangement is still the quicker one.",
+   "correct": 0,
+   "why": "Cold, the product with the lower barrier wins, so A forms faster. Warming lets A go back to the intermediate, and the mixture drifts toward B, so B is lower in energy. That drift also proves the step can reverse, which is what thermodynamic control needs.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -21098,10 +21098,10 @@
   {
    "q": "Which is NOT a case of kinetic versus thermodynamic control?",
    "options": [
-    "1,2 versus 1,4 addition",
-    "Kinetic versus thermodynamic enolates",
+    "HBr adding 1,2 or 1,4 to a diene",
+    "Br₂ adding 1,2 or 1,4 to a diene",
     "SN2 inversion of configuration",
-    "Endo versus exo Diels-Alder adducts"
+    "Two products whose ratio flips on warming"
    ],
    "correct": 2,
    "why": "Each of the others is a genuine branch point where one route is faster and another gives the more stable product, and where conditions pick between them. SN2 stereochemistry is not a competition at all: backside attack is the only geometry the reaction has, so inversion is forced by the mechanism rather than selected by the conditions.",
@@ -21231,7 +21231,7 @@
    "q": "Why is cyclopentadiene exceptionally reactive?",
    "options": [
     "It is strained",
-    "It is aromatic",
+    "Its π bonds are unusually weak",
     "Its ring locks it s-cis",
     "It is strongly electron-poor"
    ],
@@ -21418,7 +21418,7 @@
     "It makes rings larger"
    ],
    "correct": 0,
-   "why": "Mentally cutting a six-membered ring at that disconnection is one of the most productive moves in retrosynthesis.",
+   "why": "Cutting a cyclohexene ring at its retro-Diels–Alder disconnection hands you the diene and dienophile that would build it. That is one of the most productive moves when you work a synthesis backwards. The reaction removes no stereocenters and is not always spontaneous.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -21524,6 +21524,19 @@
    "correct": 0,
    "why": "It can never reach the conformation where both ends point the same way.",
    "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "The more crowded endo Diels-Alder adduct forms faster than the less crowded exo one. What does that show about the word 'kinetic'?",
+   "options": [
+    "It means the more stable of the available options",
+    "It means the step in question is reversible",
+    "It means faster, and says nothing about crowding",
+    "It means the less hindered of the available options"
+   ],
+   "correct": 2,
+   "why": "Kinetic is a statement about a barrier and only about a barrier. Sterics are usually what makes one barrier lower, which is why 'kinetic' and 'less hindered' so often travel together — but here a favorable orbital interaction outweighs the crowding, and the more congested arrangement is still the quicker one.",
+   "difficulty": "hard",
    "type": "mcq"
   }
  ],
@@ -21794,7 +21807,7 @@
     "It does not absorb at all",
     "It absorbs below the accessible range",
     "It absorbs too weakly",
-    "It absorbs only in the infrared region"
+    "It absorbs only visible light"
    ],
    "correct": 1,
    "why": "A single C=C absorbs below about 200 nm, which ordinary instruments do not reach comfortably.",
@@ -21815,28 +21828,28 @@
    "type": "mcq"
   },
   {
-   "q": "Which technique best reports the extent of conjugation?",
+   "q": "Which feature of a UV-Vis band best reports how far the conjugation extends?",
    "options": [
-    "Mass spectrometry",
-    "Carbon NMR",
-    "IR",
-    "UV-Vis"
+    "Its height, ε",
+    "Its width",
+    "Its position, λₘₐₓ",
+    "The cell length used"
    ],
-   "correct": 3,
-   "why": "Each technique answers a different question, and this is the one UV-Vis answers sharply.",
+   "correct": 2,
+   "why": "Each added conjugated C=C narrows the HOMO–LUMO gap and moves the band to longer wavelength, so position is the reading. Height (ε) says how strongly the compound absorbs, the width comes from vibrational levels, and the cell length only scales the absorbance.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which technique names functional groups?",
+   "q": "A solution of a conjugated diene gives A = 0.80. It is diluted to half its concentration and measured in the same cell. What is the new absorbance?",
    "options": [
-    "Polarimetry",
-    "UV-Vis",
-    "IR",
-    "Mass spectrometry"
+    "0.20",
+    "0.40",
+    "0.80",
+    "1.60"
    ],
-   "correct": 2,
-   "why": "IR reports on bond vibrations, which are characteristic of particular groups.",
+   "correct": 1,
+   "why": "A = εcl, so absorbance is directly proportional to concentration. Halving c halves A, from 0.80 to 0.40. ε belongs to the compound and l to the cell, and neither changed. 1.60 would be the answer if the sample had been concentrated instead.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23152,15 +23165,15 @@
    "type": "tf"
   },
   {
-   "q": "Tollens' test (silver mirror test) is used to distinguish aldehydes from ketones because:",
+   "q": "Chloral, Cl₃CCHO, adds water so completely that the product is a stable solid, while acetaldehyde, CH₃CHO, is only about half converted. Why?",
    "options": [
-    "Ketones reduce Ag+ to metallic silver but aldehydes do not",
-    "Aldehydes are oxidized by Ag(NH3)2+, ketones are not",
-    "Both aldehydes and ketones give a positive result",
-    "The test detects the presence of an alpha hydrogen"
+    "CCl₃ is smaller than CH₃",
+    "CCl₃ pulls electrons from the carbonyl carbon",
+    "Its chlorines hydrogen-bond strongly to water",
+    "CCl₃ pushes electrons onto the carbonyl carbon"
    ],
    "correct": 1,
-   "why": "Aldehydes have a C-H bond on the carbonyl carbon that allows them to be oxidized to a carboxylic acid, reducing the diamine silver complex to metallic Ag(0). Ketones lack that hydrogen and resist oxidation.",
+   "why": "Chlorine is strongly electronegative, so CCl₃ withdraws electron density through the σ bonds where CH₃ donates a little. The carbonyl carbon becomes more electron-poor and takes on water more readily. CCl₃ is larger than CH₃, not smaller, so sterics would point the other way.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23215,15 +23228,15 @@
    "type": "mcq"
   },
   {
-   "q": "You have butan-1-ol and you want butanal, not butanoic acid. Which condition stops the oxidation one rung short?",
+   "q": "2-Methylbut-2-ene is treated with O₃ and then with (CH₃)₂S. Which products form?",
    "options": [
-    "Anhydrous conditions, so no hydrate can form",
-    "Aqueous conditions, so the hydrate forms freely",
-    "Strongly basic conditions, which block the second step",
-    "A large excess of the oxidant and a long reaction time"
+    "Acetone and acetaldehyde",
+    "Acetone and acetic acid",
+    "Two molecules of acetone",
+    "Butan-2-one and formaldehyde"
    ],
    "correct": 0,
-   "why": "The second oxidation does not attack the aldehyde itself: it attacks the aldehyde’s hydrate, which is the only form carrying an O-H and a C-H on the same carbon. Take the water out of the flask and no hydrate forms, so the sequence has nothing left to grip and halts at the aldehyde. Adding water does the opposite, and neither base nor more reagent changes which species is available to be attacked.",
+   "why": "Ozone cuts the C=C and turns each end into a C=O. The carbon with two methyls becomes acetone, and the CH with one methyl becomes acetaldehyde. Dimethyl sulfide is the mild workup that keeps that aldehyde from being oxidized on to acetic acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23270,7 +23283,7 @@
     "Formaldehyde is small and highly electrophilic",
     "Formaldehyde cannot form a carbonyl at all in water",
     "Water is too weak a nucleophile to react with any aldehyde",
-    "The geminal diol is aromatic and therefore highly stable"
+    "The geminal diol is stabilized by resonance"
    ],
    "correct": 0,
    "why": "Formaldehyde's minimal steric hindrance and strongly electrophilic carbonyl carbon allow water to add efficiently, shifting the hydration equilibrium far toward the diol, unlike bulkier or less electrophilic carbonyls where the free carbonyl dominates.",
@@ -23380,15 +23393,15 @@
    "type": "mcq"
   },
   {
-   "q": "A chemist needs a quick bench test that gives a visible result with an aldehyde and no result with a ketone. Which reagent does that?",
+   "q": "Which of these compounds is a ketone?",
    "options": [
-    "Sodium borohydride, which reduces both",
-    "Bromine in dichloromethane",
-    "Tollens’ reagent, Ag(NH3)2+",
-    "Dilute aqueous acid"
+    "CH₃CH₂CHO",
+    "CH₃COCH₂CH₃",
+    "CH₃COOCH₃",
+    "HCHO"
    ],
-   "correct": 2,
-   "why": "The test has to exploit the one structural difference: an aldehyde carries a hydrogen on its carbonyl carbon and a ketone does not. Tollens’ oxidizes exactly that C-H, and the silver(I) it consumes plates out as a mirror, so the readout is visible. Borohydride reduces both carbonyls with nothing to see, dilute acid does nothing to either, and bromine tests for unsaturation rather than for a carbonyl.",
+   "correct": 1,
+   "why": "A ketone’s carbonyl carbon carries two carbon groups. In butan-2-one, CH₃COCH₂CH₃, they are a methyl and an ethyl. CH₃CH₂CHO and HCHO have an H on the carbonyl carbon, so they are aldehydes. In CH₃COOCH₃ the second group is OCH₃, which makes it an ester.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23523,7 +23536,7 @@
   {
    "q": "When cyanide ion (CN-) adds to an aldehyde, the product formed (before any workup) is called a:",
    "options": [
-    "Hemiacetal",
+    "Hydrate",
     "Cyanohydrin",
     "Imine",
     "Enamine"
@@ -23669,7 +23682,7 @@
     "Hydride (H-)"
    ],
    "correct": 1,
-   "why": "One equivalent of alcohol adds to the carbonyl carbon and the oxygen that was the C=O becomes an OH, so the product carbon holds one OH and one OR: a hemiacetal. Older texts call the ketone-derived case a hemiketal, but current usage says hemiacetal either way. Hydride and a Grignard give an alcohol with no second oxygen, and an amine leads toward an imine or enamine.",
+   "why": "The alcohol oxygen bonds to the carbonyl carbon, and the old C=O oxygen picks up a proton. So the carbon ends up with one OH and one OR. Hydride and a Grignard reagent add H or carbon, which leaves no second oxygen, and an amine puts nitrogen on that carbon, not an OR.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23700,11 +23713,11 @@
    "type": "mcq"
   },
   {
-   "q": "Nucleophilic ADDITION to an aldehyde/ketone and nucleophilic ACYL SUBSTITUTION at a carboxylic acid derivative (like an ester) both proceed through a tetrahedral intermediate, but they differ because:",
+   "q": "Nucleophilic addition to an aldehyde or ketone and substitution at an acid derivative such as an ester both pass through a tetrahedral intermediate. How do they differ?",
    "options": [
-    "Only acyl substitution expels a leaving group",
+    "Only the substitution expels a leaving group",
     "Addition has no tetrahedral intermediate at all",
-    "Acyl substitution never involves a nucleophile",
+    "Substitution never involves a nucleophile",
     "Aldehydes and ketones always have a leaving group attached"
    ],
    "correct": 0,
@@ -23763,7 +23776,7 @@
    "type": "mcq"
   },
   {
-   "q": "You need the alcohol shown. Which carbonyl and organometallic pair would you use?",
+   "q": "You need 2-phenylbutan-2-ol, CH₃CH₂C(OH)(CH₃)Ph. Which carbonyl compound and Grignard reagent would you use?",
    "molecule": "q-2-phenylbutan-2-ol",
    "options": [
     "Benzaldehyde with propylmagnesium bromide",
@@ -23772,7 +23785,7 @@
     "Acetophenone with methylmagnesium bromide"
    ],
    "correct": 2,
-   "why": "Find the carbinol carbon and count its carbon substituents: phenyl, methyl and ethyl, so three, which means a tertiary alcohol and therefore a ketone plus one organometallic. Break any one of those three bonds and read off the fragments. Breaking C-phenyl leaves butan-2-one and needs PhMgBr, which is the pair offered here. The two aldehyde options would only ever give a secondary alcohol, and acetophenone plus CH3MgBr gives 2-phenylpropan-2-ol, one carbon short.",
+   "why": "Find the carbon holding the OH and count its carbon groups: phenyl, methyl and ethyl. Three means a tertiary alcohol, so a ketone plus one Grignard. Break the C–phenyl bond and you get butan-2-one and PhMgBr. The aldehyde pairs give only secondary alcohols, and acetophenone plus CH₃MgBr gives 2-phenylpropan-2-ol, one carbon short.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -23816,7 +23829,7 @@
   {
    "q": "If two different carbonyl compounds are placed in a flask along with a limited amount of a moderately strong nucleophile, which one would you expect to react fastest: an unhindered aliphatic aldehyde, or a sterically hindered diaryl ketone?",
    "options": [
-    "The diaryl ketone, because aromatic stabilization speeds up addition",
+    "The diaryl ketone, because its rings pull electrons away",
     "They would react at identical rates",
     "The aldehyde, less hindered and more electrophilic",
     "Neither would react under any circumstances"
@@ -23947,9 +23960,9 @@
    "q": "When a carbonyl compound reacts with a diol such as ethylene glycol under acid catalysis, the two hydroxyl groups can both attack the same carbonyl carbon, typically forming a:",
    "options": [
     "Five-membered cyclic acetal (1,3-dioxolane)",
-    "Six-membered ring lactone",
+    "Six-membered cyclic acetal (1,3-dioxane)",
     "Open-chain diacetal with no ring",
-    "A polymer with no defined ring size"
+    "A three-membered ring, like an epoxide"
    ],
    "correct": 0,
    "why": "Ethylene glycol's two OH groups are positioned to both add intramolecularly to the same carbonyl carbon, closing a five-membered ring containing two oxygens (a 1,3-dioxolane), a very common cyclic acetal protecting group.",
@@ -24000,7 +24013,7 @@
     "The cyclic form has no OH group left to lose"
    ],
    "correct": 1,
-   "why": "The equilibrium constant is what changes, and the reason is entropic as much as anything. Making an open-chain hemiacetal means bringing two separate molecules together, which costs entropy; when the alcohol and the carbonyl are in the same molecule and can reach each other across a five- or six-membered ring, no second molecule has to be caught and the ring closes readily. The carbon still carries an OH and an OR, so it is genuinely a hemiacetal, and the ring can still open, which is why sugars reduce Tollens’ reagent.",
+   "why": "The reason is largely entropy. An open-chain hemiacetal needs two separate molecules to meet, which costs entropy. When the OH and the carbonyl are in one molecule and can close a five- or six-membered ring, no second molecule is needed. The carbon still carries an OH and an OR, so it is a hemiacetal, and the ring can still open.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -24026,7 +24039,7 @@
     "Add excess water to deactivate the Grignard reagent near the ketone only"
    ],
    "correct": 0,
-   "why": "Because Grignard reagents react readily with ketones but an acetal is essentially inert to strongly basic/nucleophilic organometallic reagents, temporarily converting the ketone into an acetal shields it during the Grignard step; mild aqueous acid afterward cleanly unmasks the ketone again.",
+   "why": "Grignard reagents attack ketones readily, but an acetal is inert to strong bases and nucleophiles, Grignard reagents included. Turning the ketone into a cyclic acetal shields it during the Grignard step. Mild aqueous acid afterward gives the ketone back.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -24146,15 +24159,15 @@
    "type": "mcq"
   },
   {
-   "q": "In sugar chemistry, when a cyclic hemiacetal (like glucose's ring form) further reacts with a second alcohol under acid catalysis to 'lock in' a specific anomer, the product formed is called a:",
+   "q": "A sugar’s cyclic hemiacetal, such as the ring form of glucose, reacts with a second alcohol under acid catalysis, which locks its anomeric carbon in one configuration. What is the product called?",
    "options": [
-    "Another hemiacetal, chemically identical to the starting material",
+    "Another hemiacetal, like the starting material",
     "An ester of the sugar",
-    "A reducing sugar with enhanced reactivity",
-    "Glycoside (a full acetal of the sugar)"
+    "The open-chain aldehyde form",
+    "A glycoside (a full acetal of the sugar)"
    ],
    "correct": 3,
-   "why": "Converting the anomeric hemiacetal hydroxyl into an -OR group by reaction with a second alcohol produces a glycoside, which is structurally a full acetal; glycosides are locked in one anomeric configuration and, unlike free sugars, no longer show mutarotation or act as reducing sugars.",
+   "why": "The anomeric OH becomes an OR, so that carbon now carries two OR groups: a full acetal, which in sugar chemistry is called a glycoside. With no OH left on the anomeric carbon, the ring cannot open, so the anomer stays fixed. No ester or free aldehyde forms.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -24178,7 +24191,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Many carbohydrates exist predominantly as cyclic structures because an internal hydroxyl group on the same molecule is well positioned to add to the carbonyl carbon, forming a ring; with one more external alcohol this can further extend to a full (intramolecular/intermolecular combined) acetal, as in a glycoside.",
+   "why": "Sugars show this. An OH on the same chain is well placed to add to the carbonyl carbon and close a five- or six-membered ring, giving a cyclic hemiacetal. With one more alcohol, that becomes a full acetal, as in a glycoside.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -24202,7 +24215,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Esters have a carbonyl carbon that remains electrophilic and can undergo nucleophilic acyl substitution even under basic or strongly nucleophilic conditions. Acetals have no carbonyl at all (the carbon is fully sp3 and surrounded by two ether-like oxygens), so they are essentially unreactive toward bases and nucleophiles, which is precisely why they make good protecting groups used alongside such reagents.",
+   "why": "An ester still has a C=O, so hydroxide or a Grignard reagent can attack its carbon, and the OR group can then leave. An acetal has no C=O at all: its carbon is sp³ and carries two ether-like oxygens, so bases and nucleophiles leave it alone. That is why acetals work as protecting groups.",
    "difficulty": "medium",
    "type": "tf"
   }
@@ -26219,7 +26232,7 @@
     "An equilibrium mixture of the acid and its methyl ester"
    ],
    "correct": 1,
-   "why": "Step 1: SOCl2 replaces the OH with Cl, giving 3-phenylpropanoyl chloride plus SO2 and HCl, both of which leave as gases. Step 2: methanol attacks that acyl chloride, the tetrahedral intermediate collapses by expelling chloride, and a proton is lost, giving the methyl ester. Because chloride leaves and never comes back, this route is irreversible - unlike Fischer esterification of the acid itself, which would leave the acid and its ester in equilibrium instead.",
+   "why": "Step 1: SOCl₂ replaces the OH with Cl, giving 3-phenylpropanoyl chloride plus SO₂ and HCl, which leave as gases. Step 2: methanol attacks the acid chloride, the tetrahedral intermediate expels chloride, and a proton is lost, giving the methyl ester. Chloride does not come back, so the route runs to completion.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -26313,7 +26326,7 @@
    "options": [
     "Hydrogen-bonded cyclic dimers",
     "Separate monomers with no intermolecular attraction",
-    "Covalently bonded polymers",
+    "Covalently joined chains",
     "Ionic aggregates"
    ],
    "correct": 0,
@@ -26372,10 +26385,10 @@
   {
    "q": "Heating a beta-keto carboxylic acid (RCOCH2COOH, the ketone on the carbon beta to the carboxyl) typically causes:",
    "options": [
-    "Esterification with itself",
+    "Loss of water to give an alkene",
     "No reaction under any conditions",
     "Reduction to a primary alcohol",
-    "Decarboxylation, releasing CO2"
+    "Loss of CO₂, giving a ketone"
    ],
    "correct": 3,
    "why": "The carboxyl O-H can reach the ketone oxygen through a six-membered cyclic transition state. As that proton transfers, the C-C bond to the carboxyl breaks and CO2 leaves, giving an enol that tautomerizes to the ketone. Nothing else in the molecule has to move, which is why gentle warming is enough - and why the carbonyl has to be exactly at the beta position for the ring to be the right size.",
@@ -26673,7 +26686,7 @@
     "Basic hydrolysis of an ester"
    ],
    "correct": 3,
-   "why": "Saponification is the hydroxide-mediated hydrolysis of esters, classically triglycerides, yielding glycerol and fatty acid carboxylate salts, which are soaps; this reaction is effectively irreversible.",
+   "why": "Saponification is hydrolysis of an ester by hydroxide. It gives an alcohol and a carboxylate salt, and it goes to completion because the carboxylate is not attacked again. Run on a long-chain ester, it makes soap, which is where the name comes from.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -26776,28 +26789,28 @@
    "type": "mcq"
   },
   {
-   "q": "A polyester such as PET (used in plastic bottles) is built from repeating units connected by:",
+   "q": "Which conditions turn ethyl acetate completely into acetic acid and ethanol?",
    "options": [
-    "Amide linkages between a diacid and a diamine",
-    "Ester linkages formed between a diacid and a diol",
-    "Ether linkages only",
-    "Carbon-carbon double bonds"
+    "Dilute aqueous acid, heated",
+    "NaOH in water, then acid workup",
+    "Excess ethanol and a drop of acid",
+    "NaBH₄ in methanol"
    ],
    "correct": 1,
-   "why": "Polyesters are condensation polymers in which a dicarboxylic acid (or its derivative) repeatedly reacts with a diol, forming many ester linkages along the polymer backbone.",
+   "why": "Hydroxide attacks and ethoxide leaves; the acid and base then trade a proton, and the carboxylate is not attacked again, so this runs to completion. Acid workup gives acetic acid. Acid hydrolysis is an equilibrium, excess ethanol only swaps one ester for another, and NaBH₄ does not reduce esters.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Nylon is a classic example of which type of polymer?",
+   "q": "Which order runs from most to least reactive toward a nucleophile?",
    "options": [
-    "A polyester",
-    "A polyether",
-    "A polyamide",
-    "A simple hydrocarbon polymer"
+    "Acid chloride > ester > anhydride > amide",
+    "Acid chloride > anhydride > ester > amide",
+    "Amide > ester > anhydride > acid chloride",
+    "Ester > acid chloride > amide > anhydride"
    ],
-   "correct": 2,
-   "why": "Nylon is made by repeatedly forming amide bonds between a dicarboxylic acid (or its derivative) and a diamine, making it a polyamide.",
+   "correct": 1,
+   "why": "Reactivity follows how little the attached group donates into the C=O and how easily it leaves. Chloride donates least and leaves best. An amide nitrogen donates most and would leave as a very strong base. The anhydride sits above the ester because a carboxylate leaves more easily than an alkoxide.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -26878,7 +26891,7 @@
    "type": "mcq"
   },
   {
-   "q": "What is the common name for the base-promoted hydrolysis reaction used to convert fats/esters into carboxylate soaps?",
+   "q": "What is the name for the hydrolysis of an ester by hydroxide, which turns long-chain esters into soap?",
    "options": [
     "Saponification",
     "Esterification",
@@ -26886,7 +26899,7 @@
     "Hydrogenation"
    ],
    "correct": 0,
-   "why": "Saponification specifically refers to the hydroxide-driven hydrolysis of esters (classically fats and oils) into glycerol and carboxylate salts (soap).",
+   "why": "Saponification is ester hydrolysis driven by hydroxide, giving an alcohol and a carboxylate salt. With a long-chain ester, that salt is a soap. Esterification makes an ester rather than breaking one, and hydrogenation adds H₂.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -26971,9 +26984,9 @@
    "q": "The overall mechanism by which nucleophiles replace the leaving group on a carboxylic acid derivative's carbonyl carbon is called:",
    "options": [
     "Simple SN1 substitution",
-    "Electrophilic aromatic substitution",
+    "Electrophilic addition to the C=O",
     "Radical substitution",
-    "Nucleophilic acyl substitution (addition-elimination)"
+    "Nucleophilic acyl substitution"
    ],
    "correct": 3,
    "why": "Nucleophilic acyl substitution proceeds by the nucleophile first adding to the carbonyl carbon, then a leaving group being eliminated to restore the carbonyl, an addition-elimination sequence distinct from simple substitution at sp3 carbon.",
@@ -36493,7 +36506,7 @@
    "options": [
     "The alkyne adds to the metal",
     "The alkyne is reduced",
-    "The alkyne polymerizes",
+    "The alkyne is hydrated",
     "The alkyne C-H is deprotonated"
    ],
    "correct": 3,
@@ -36532,11 +36545,11 @@
    "options": [
     "It was enolized by the reagent",
     "It was reduced by the reagent",
-    "It polymerized in the ether",
+    "It was oxidized by the reagent",
     "It was too hindered to deprotonate"
    ],
    "correct": 0,
-   "why": "When the carbonyl carbon is too crowded to reach, the Grignard acts as a base instead and takes an alpha hydrogen, which sits on the outside of the molecule and stays easy to reach. The enolate just picks the proton back up on workup, which is why the ketone comes back. Reduction would leave a secondary alcohol, and a ketone that had polymerized would not be recovered as ketone.",
+   "why": "When the carbonyl carbon is too crowded to reach, the Grignard acts as a base and takes an alpha hydrogen, which sits on the outside of the molecule. The enolate picks the proton back up on workup, so the ketone comes back. Reduction would leave an alcohol, and a Grignard is not an oxidant.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -36768,7 +36781,7 @@
    "options": [
     "The carbanion sits in an sp orbital",
     "The triple bond withdraws inductively",
-    "The alkyne is aromatic",
+    "The anion is held by resonance",
     "It has fewer hydrogens"
    ],
    "correct": 0,
@@ -37865,7 +37878,7 @@
    "q": "Why can bromobenzene not be used to make an ylide?",
    "options": [
     "PPh3 attacks the ring instead",
-    "The ylide would be aromatic",
+    "Bromide is too poor a leaving group",
     "An aryl halide will not do SN2",
     "Aryl halides are too stable to handle"
    ],
@@ -38181,10 +38194,10 @@
     "An imine",
     "An enamine",
     "An amide",
-    "An amine oxide"
+    "A carbinolamine"
    ],
    "correct": 0,
-   "why": "One hydrogen is left on nitrogen after the addition, so the C=N+ cation loses it.",
+   "why": "The amine adds to give a carbinolamine, which loses water. One H is still on nitrogen, so the C=N⁺ cation loses it and a neutral imine forms. The carbinolamine is only the intermediate, and an enamine needs a secondary amine.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38205,7 +38218,7 @@
    "q": "What does a tertiary amine plus a ketone give?",
    "options": [
     "An enamine",
-    "An ammonium ylide",
+    "An iminium salt",
     "No stable product",
     "An imine"
    ],
@@ -38296,7 +38309,7 @@
    "q": "Why does strong acid stop the reaction?",
    "options": [
     "The imine hydrolyzes instantly",
-    "The carbonyl polymerizes",
+    "The ketone is reduced",
     "The solvent freezes",
     "The amine is protonated"
    ],
@@ -38529,13 +38542,13 @@
   {
    "q": "Which reaction makes a secondary amine cleanly?",
    "options": [
-    "Hofmann elimination",
+    "A tertiary amine plus a ketone",
     "Reductive amination",
     "SN2 on ammonia",
-    "Nitration then reduction"
+    "A primary amine plus a ketone, no reductant"
    ],
    "correct": 1,
-   "why": "It stops where you want it to, because the imine forms once.",
+   "why": "Reductive amination stops where you want it, because the imine forms once and is then reduced. SN2 on ammonia keeps alkylating and gives a mixture. A primary amine and a ketone alone stop at the imine, and a tertiary amine gives no stable product.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -39716,7 +39729,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which retrosynthetic clue suggests a Baeyer-Villiger?",
+   "q": "Working backwards from a target ester, which clue suggests making it by a Baeyer-Villiger?",
    "options": [
     "A hindered alkyl on O",
     "An ester with a methyl on oxygen",
@@ -43672,7 +43685,7 @@
     "A gem-diol",
     "An epoxide",
     "An enol ether",
-    "A hemiacetal"
+    "A cyanohydrin"
    ],
    "correct": 0,
    "why": "Two OH groups end up on the one former carbonyl carbon.",
@@ -43684,7 +43697,7 @@
    "options": [
     "Cyanohydrin",
     "Bisulfite adduct",
-    "Acetal",
+    "Epoxide",
     "Hydrate"
    ],
    "correct": 3,
@@ -43814,7 +43827,7 @@
    "options": [
     "Bond length and pH",
     "Sterics and electronics",
-    "Resonance and aromaticity",
+    "Ring strain and hydrogen bonding",
     "Solvent and temperature"
    ],
    "correct": 1,
@@ -44360,10 +44373,10 @@
   {
    "q": "Why is sucrose not a reducing sugar?",
    "options": [
-    "Its rings are aromatic",
+    "It has no OH groups",
     "Neither ring can open",
     "It contains no rings",
-    "It is a monosaccharide"
+    "It is a single sugar unit"
    ],
    "correct": 1,
    "why": "The glycosidic bond ties up both anomeric carbons, and a free one is what a positive test needs.",
@@ -44436,15 +44449,28 @@
    "type": "mcq"
   },
   {
-   "q": "The Baeyer-Villiger converts a ketone to:",
+   "q": "(E)-Hex-4-enal must become (E)-hex-4-enoic acid with its C=C untouched. Which reagent does it?",
    "options": [
-    "An aldehyde",
-    "An alcohol",
-    "A carboxylate",
-    "An ester"
+    "Hot, concentrated aqueous KMnO₄",
+    "NaClO₂ in a mild acid buffer",
+    "Ozone, then dimethyl sulfide",
+    "NaBH₄ in methanol"
    ],
-   "correct": 3,
-   "why": "An oxygen is inserted into one of the C-C bonds.",
+   "correct": 1,
+   "why": "Sodium chlorite oxidizes the aldehyde to the acid and leaves the C=C alone, which is the point of the Pinnick oxidation. Hot permanganate would also cleave the alkene, ozone cuts it outright, and NaBH₄ reduces the aldehyde to an alcohol instead.",
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A chemist needs a quick bench test that gives a visible result with an aldehyde and no result with a ketone. Which reagent does that?",
+   "options": [
+    "Sodium borohydride, which reduces both",
+    "Bromine in dichloromethane",
+    "Tollens’ reagent, Ag(NH3)2+",
+    "Dilute aqueous acid"
+   ],
+   "correct": 2,
+   "why": "The test has to exploit the one structural difference: an aldehyde carries a hydrogen on its carbonyl carbon and a ketone does not. Tollens’ oxidizes exactly that C-H, and the silver(I) it consumes plates out as a mirror, so the readout is visible. Borohydride reduces both carbonyls with nothing to see, dilute acid does nothing to either, and bromine tests for unsaturation rather than for a carbonyl.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -44498,7 +44524,7 @@
     "An anhydride"
    ],
    "correct": 0,
-   "why": "Acyl substitution swaps the leaving group and keeps the carbonyl: an alcohol gives the ester, an amine the amide, a carboxylate the anhydride. A secondary alcohol would need the carbonyl reduced AND one new carbon substituent added, which is not a substitution at all - it needs a hydride and an organometallic, and it is a different kind of step.",
+   "why": "Acyl substitution swaps the leaving group and keeps the carbonyl: an alcohol gives the ester, an amine the amide, a carboxylate the anhydride. A secondary alcohol needs the carbonyl reduced and a new carbon group added. That takes a hydride and a Grignard reagent, not a substitution.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -44999,28 +45025,28 @@
    "type": "mcq"
   },
   {
-   "q": "The Sandmeyer route to an aryl nitrile starts from:",
+   "q": "How is the carbon of a C≡N group hybridized?",
    "options": [
-    "A diazonium salt",
-    "A Grignard reagent",
-    "An acid chloride",
-    "An aryl halide"
+    "sp³",
+    "sp²",
+    "sp",
+    "Unhybridized"
    ],
-   "correct": 0,
-   "why": "CuCN replaces the nitrogen that leaves as N2.",
+   "correct": 2,
+   "why": "The nitrile carbon makes two σ bonds, one to R and one to N, plus two π bonds to N, just like an alkyne carbon. Two σ bonds means sp, so R–C≡N is linear at 180°. sp² would fit a C=N, as in an imine.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why can't EAS put a CN group on a benzene ring?",
+   "q": "Acetonitrile, CH₃CN (41 g/mol), boils at 82 °C, while propyne (40 g/mol) boils at −23 °C. Why the big difference?",
    "options": [
-    "There is no electrophilic cyanide reagent",
-    "Benzene is too unreactive",
-    "The CN group is too large",
-    "Cyanide is a poor nucleophile"
+    "Its molecules hydrogen-bond to each other",
+    "Its C≡N bond gives it a large dipole",
+    "It is one mass unit heavier",
+    "Its carbon is sp hybridized"
    ],
-   "correct": 0,
-   "why": "So aryl nitriles come from a diazonium salt, or from dehydrating an aryl amide.",
+   "correct": 1,
+   "why": "The triple bond is strongly polarized toward nitrogen, so acetonitrile molecules attract each other by strong dipole–dipole forces. It has no O–H or N–H, so it cannot hydrogen-bond to itself. Propyne’s carbons are sp too, and one mass unit is far too small to matter.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45181,15 +45207,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why is that nitrile stretch diagnostic?",
+   "q": "Why is the C≡N stretch near 2250 cm⁻¹ easy to pick out in an IR spectrum?",
    "options": [
     "No group absorbs above 3000",
     "It is the strongest peak",
-    "It appears as a doublet",
+    "It is broader than any other band",
     "The window is nearly empty"
    ],
    "correct": 3,
-   "why": "Between 2500 and 2000 there is little else to confuse it with.",
+   "why": "The 2500–2000 cm⁻¹ window is otherwise nearly empty, so a sharp band there has little to be confused with. The nitrile band is only medium in strength and sharp, not broad, so neither of those is what makes it stand out.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45228,7 +45254,7 @@
     "N-H bonds"
    ],
    "correct": 3,
-   "why": "Any acidic proton quenches the organometallic reagent.",
+   "why": "Any acidic proton, such as an N–H, an O–H or a terminal alkyne C–H, destroys the Grignard reagent before it can add to CO₂. C–C bonds, primary carbons and long chains cause no trouble.",
    "difficulty": "medium",
    "type": "mcq"
   }

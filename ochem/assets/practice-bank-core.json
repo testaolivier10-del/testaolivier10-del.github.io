@@ -18573,7 +18573,7 @@
    "options": [
     "They are sterically protected from attack",
     "They carry no charge",
-    "They are aromatic",
+    "They are sp³ hybridized",
     "Their charge is delocalized by conjugation"
    ],
    "correct": 3,
@@ -18680,7 +18680,7 @@
    "q": "Why is cyclopentadiene unusually reactive as a diene?",
    "options": [
     "It has three double bonds",
-    "It is aromatic",
+    "Its π bonds are unusually weak",
     "Its ring locks it s-cis",
     "It is electron-poor"
    ],
@@ -19245,36 +19245,36 @@
    "type": "mcq"
   },
   {
-   "q": "A bulky base at −78 °C pulls a proton from a ketone that has two different carbons next to its C=O. Which product?",
+   "q": "From one intermediate, route 1 has a 50 kJ/mol barrier and gives P, which sits 10 kJ/mol below the intermediate. Route 2 has a 65 kJ/mol barrier and gives Q, 30 kJ/mol below it. Which product dominates at −78 °C, and which after warming until the mixture equilibrates?",
    "options": [
-    "The one from the more accessible proton, frozen in by the cold",
-    "The more substituted one, the more stable of the two",
-    "Both in roughly equal amounts, since the base is blunt",
-    "Neither one, because the cold shuts the reaction down"
+    "P cold, Q warm",
+    "Q cold, P warm",
+    "P under both conditions",
+    "Q under both conditions"
    ],
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "The same ketone is treated with a small base under warm, equilibrating conditions. Which product now dominates?",
+   "q": "Product A forms faster than B but is less stable. When the mixture is warmed, why does A go back to the intermediate more easily than B?",
    "options": [
-    "An even mixture of the two",
-    "Neither, because warmth destroys both",
-    "The more substituted, more stable one",
-    "The one from the more accessible proton"
+    "Its well is shallower, so its climb back is smaller",
+    "It is the more stable of the two products",
+    "Its forward barrier was the higher of the two routes",
+    "Heat breaks down whichever product formed first"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "An –SO₃H group can be put on a benzene ring to block a position and taken off later. What makes that possible?",
+   "q": "In a reaction, the faster-forming product is also the more stable one. Which product do you get cold, and which warm?",
    "options": [
-    "The sulfonation step is reversible",
-    "The reaction runs through a radical chain",
-    "The bond from sulfur to the ring is very weak",
-    "The group never fully attaches to the ring"
+    "The same product both times",
+    "The faster one cold, the other one warm",
+    "A 50:50 mixture both times",
+    "No product cold, the stable one warm"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -19377,14 +19377,14 @@
    "type": "mcq"
   },
   {
-   "q": "The more crowded endo Diels-Alder adduct forms faster than the less crowded exo one. What does that show about the word 'kinetic'?",
+   "q": "A reaction run cold gives mostly A. When pure A is warmed with a trace of catalyst, it turns into a 20:80 mixture of A and B. What does this show?",
    "options": [
-    "It means the more stable of the available options",
-    "It means the step in question is reversible",
-    "It means faster, and says nothing about crowding",
-    "It means the less hindered of the available options"
+    "A forms faster; B is more stable",
+    "A is more stable; B forms faster",
+    "A is both faster and more stable",
+    "Neither product can revert"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -19451,10 +19451,10 @@
   {
    "q": "Which is NOT a case of kinetic versus thermodynamic control?",
    "options": [
-    "1,2 versus 1,4 addition",
-    "Kinetic versus thermodynamic enolates",
+    "HBr adding 1,2 or 1,4 to a diene",
+    "Br₂ adding 1,2 or 1,4 to a diene",
     "SN2 inversion of configuration",
-    "Endo versus exo Diels-Alder adducts"
+    "Two products whose ratio flips on warming"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -19574,7 +19574,7 @@
    "q": "Why is cyclopentadiene exceptionally reactive?",
    "options": [
     "It is strained",
-    "It is aromatic",
+    "Its π bonds are unusually weak",
     "Its ring locks it s-cis",
     "It is strongly electron-poor"
    ],
@@ -19845,6 +19845,18 @@
    "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
+  },
+  {
+   "q": "The more crowded endo Diels-Alder adduct forms faster than the less crowded exo one. What does that show about the word 'kinetic'?",
+   "options": [
+    "It means the more stable of the available options",
+    "It means the step in question is reversible",
+    "It means faster, and says nothing about crowding",
+    "It means the less hindered of the available options"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
   }
  ],
  "uv-vis": [
@@ -20094,7 +20106,7 @@
     "It does not absorb at all",
     "It absorbs below the accessible range",
     "It absorbs too weakly",
-    "It absorbs only in the infrared region"
+    "It absorbs only visible light"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -20113,26 +20125,26 @@
    "type": "mcq"
   },
   {
-   "q": "Which technique best reports the extent of conjugation?",
+   "q": "Which feature of a UV-Vis band best reports how far the conjugation extends?",
    "options": [
-    "Mass spectrometry",
-    "Carbon NMR",
-    "IR",
-    "UV-Vis"
+    "Its height, ε",
+    "Its width",
+    "Its position, λₘₐₓ",
+    "The cell length used"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which technique names functional groups?",
+   "q": "A solution of a conjugated diene gives A = 0.80. It is diluted to half its concentration and measured in the same cell. What is the new absorbance?",
    "options": [
-    "Polarimetry",
-    "UV-Vis",
-    "IR",
-    "Mass spectrometry"
+    "0.20",
+    "0.40",
+    "0.80",
+    "1.60"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -21345,12 +21357,12 @@
    "type": "tf"
   },
   {
-   "q": "Tollens' test (silver mirror test) is used to distinguish aldehydes from ketones because:",
+   "q": "Chloral, Cl₃CCHO, adds water so completely that the product is a stable solid, while acetaldehyde, CH₃CHO, is only about half converted. Why?",
    "options": [
-    "Ketones reduce Ag+ to metallic silver but aldehydes do not",
-    "Aldehydes are oxidized by Ag(NH3)2+, ketones are not",
-    "Both aldehydes and ketones give a positive result",
-    "The test detects the presence of an alpha hydrogen"
+    "CCl₃ is smaller than CH₃",
+    "CCl₃ pulls electrons from the carbonyl carbon",
+    "Its chlorines hydrogen-bond strongly to water",
+    "CCl₃ pushes electrons onto the carbonyl carbon"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -21403,12 +21415,12 @@
    "type": "mcq"
   },
   {
-   "q": "You have butan-1-ol and you want butanal, not butanoic acid. Which condition stops the oxidation one rung short?",
+   "q": "2-Methylbut-2-ene is treated with O₃ and then with (CH₃)₂S. Which products form?",
    "options": [
-    "Anhydrous conditions, so no hydrate can form",
-    "Aqueous conditions, so the hydrate forms freely",
-    "Strongly basic conditions, which block the second step",
-    "A large excess of the oxidant and a long reaction time"
+    "Acetone and acetaldehyde",
+    "Acetone and acetic acid",
+    "Two molecules of acetone",
+    "Butan-2-one and formaldehyde"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -21454,7 +21466,7 @@
     "Formaldehyde is small and highly electrophilic",
     "Formaldehyde cannot form a carbonyl at all in water",
     "Water is too weak a nucleophile to react with any aldehyde",
-    "The geminal diol is aromatic and therefore highly stable"
+    "The geminal diol is stabilized by resonance"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -21555,14 +21567,14 @@
    "type": "mcq"
   },
   {
-   "q": "A chemist needs a quick bench test that gives a visible result with an aldehyde and no result with a ketone. Which reagent does that?",
+   "q": "Which of these compounds is a ketone?",
    "options": [
-    "Sodium borohydride, which reduces both",
-    "Bromine in dichloromethane",
-    "Tollens’ reagent, Ag(NH3)2+",
-    "Dilute aqueous acid"
+    "CH₃CH₂CHO",
+    "CH₃COCH₂CH₃",
+    "CH₃COOCH₃",
+    "HCHO"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -21687,7 +21699,7 @@
   {
    "q": "When cyanide ion (CN-) adds to an aldehyde, the product formed (before any workup) is called a:",
    "options": [
-    "Hemiacetal",
+    "Hydrate",
     "Cyanohydrin",
     "Imine",
     "Enamine"
@@ -21850,11 +21862,11 @@
    "type": "mcq"
   },
   {
-   "q": "Nucleophilic ADDITION to an aldehyde/ketone and nucleophilic ACYL SUBSTITUTION at a carboxylic acid derivative (like an ester) both proceed through a tetrahedral intermediate, but they differ because:",
+   "q": "Nucleophilic addition to an aldehyde or ketone and substitution at an acid derivative such as an ester both pass through a tetrahedral intermediate. How do they differ?",
    "options": [
-    "Only acyl substitution expels a leaving group",
+    "Only the substitution expels a leaving group",
     "Addition has no tetrahedral intermediate at all",
-    "Acyl substitution never involves a nucleophile",
+    "Substitution never involves a nucleophile",
     "Aldehydes and ketones always have a leaving group attached"
    ],
    "correct": 0,
@@ -21908,7 +21920,7 @@
    "type": "mcq"
   },
   {
-   "q": "You need the alcohol shown. Which carbonyl and organometallic pair would you use?",
+   "q": "You need 2-phenylbutan-2-ol, CH₃CH₂C(OH)(CH₃)Ph. Which carbonyl compound and Grignard reagent would you use?",
    "molecule": "q-2-phenylbutan-2-ol",
    "options": [
     "Benzaldehyde with propylmagnesium bromide",
@@ -21957,7 +21969,7 @@
   {
    "q": "If two different carbonyl compounds are placed in a flask along with a limited amount of a moderately strong nucleophile, which one would you expect to react fastest: an unhindered aliphatic aldehyde, or a sterically hindered diaryl ketone?",
    "options": [
-    "The diaryl ketone, because aromatic stabilization speeds up addition",
+    "The diaryl ketone, because its rings pull electrons away",
     "They would react at identical rates",
     "The aldehyde, less hindered and more electrophilic",
     "Neither would react under any circumstances"
@@ -22078,9 +22090,9 @@
    "q": "When a carbonyl compound reacts with a diol such as ethylene glycol under acid catalysis, the two hydroxyl groups can both attack the same carbonyl carbon, typically forming a:",
    "options": [
     "Five-membered cyclic acetal (1,3-dioxolane)",
-    "Six-membered ring lactone",
+    "Six-membered cyclic acetal (1,3-dioxane)",
     "Open-chain diacetal with no ring",
-    "A polymer with no defined ring size"
+    "A three-membered ring, like an epoxide"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -22261,12 +22273,12 @@
    "type": "mcq"
   },
   {
-   "q": "In sugar chemistry, when a cyclic hemiacetal (like glucose's ring form) further reacts with a second alcohol under acid catalysis to 'lock in' a specific anomer, the product formed is called a:",
+   "q": "A sugar’s cyclic hemiacetal, such as the ring form of glucose, reacts with a second alcohol under acid catalysis, which locks its anomeric carbon in one configuration. What is the product called?",
    "options": [
-    "Another hemiacetal, chemically identical to the starting material",
+    "Another hemiacetal, like the starting material",
     "An ester of the sugar",
-    "A reducing sugar with enhanced reactivity",
-    "Glycoside (a full acetal of the sugar)"
+    "The open-chain aldehyde form",
+    "A glycoside (a full acetal of the sugar)"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -24262,7 +24274,7 @@
    "options": [
     "Hydrogen-bonded cyclic dimers",
     "Separate monomers with no intermolecular attraction",
-    "Covalently bonded polymers",
+    "Covalently joined chains",
     "Ionic aggregates"
    ],
    "correct": 0,
@@ -24316,10 +24328,10 @@
   {
    "q": "Heating a beta-keto carboxylic acid (RCOCH2COOH, the ketone on the carbon beta to the carboxyl) typically causes:",
    "options": [
-    "Esterification with itself",
+    "Loss of water to give an alkene",
     "No reaction under any conditions",
     "Reduction to a primary alcohol",
-    "Decarboxylation, releasing CO2"
+    "Loss of CO₂, giving a ketone"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -24688,26 +24700,26 @@
    "type": "mcq"
   },
   {
-   "q": "A polyester such as PET (used in plastic bottles) is built from repeating units connected by:",
+   "q": "Which conditions turn ethyl acetate completely into acetic acid and ethanol?",
    "options": [
-    "Amide linkages between a diacid and a diamine",
-    "Ester linkages formed between a diacid and a diol",
-    "Ether linkages only",
-    "Carbon-carbon double bonds"
+    "Dilute aqueous acid, heated",
+    "NaOH in water, then acid workup",
+    "Excess ethanol and a drop of acid",
+    "NaBH₄ in methanol"
    ],
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Nylon is a classic example of which type of polymer?",
+   "q": "Which order runs from most to least reactive toward a nucleophile?",
    "options": [
-    "A polyester",
-    "A polyether",
-    "A polyamide",
-    "A simple hydrocarbon polymer"
+    "Acid chloride > ester > anhydride > amide",
+    "Acid chloride > anhydride > ester > amide",
+    "Amide > ester > anhydride > acid chloride",
+    "Ester > acid chloride > amide > anhydride"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24782,7 +24794,7 @@
    "type": "mcq"
   },
   {
-   "q": "What is the common name for the base-promoted hydrolysis reaction used to convert fats/esters into carboxylate soaps?",
+   "q": "What is the name for the hydrolysis of an ester by hydroxide, which turns long-chain esters into soap?",
    "options": [
     "Saponification",
     "Esterification",
@@ -24868,9 +24880,9 @@
    "q": "The overall mechanism by which nucleophiles replace the leaving group on a carboxylic acid derivative's carbonyl carbon is called:",
    "options": [
     "Simple SN1 substitution",
-    "Electrophilic aromatic substitution",
+    "Electrophilic addition to the C=O",
     "Radical substitution",
-    "Nucleophilic acyl substitution (addition-elimination)"
+    "Nucleophilic acyl substitution"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -33651,7 +33663,7 @@
    "options": [
     "The alkyne adds to the metal",
     "The alkyne is reduced",
-    "The alkyne polymerizes",
+    "The alkyne is hydrated",
     "The alkyne C-H is deprotonated"
    ],
    "correct": 3,
@@ -33687,7 +33699,7 @@
    "options": [
     "It was enolized by the reagent",
     "It was reduced by the reagent",
-    "It polymerized in the ether",
+    "It was oxidized by the reagent",
     "It was too hindered to deprotonate"
    ],
    "correct": 0,
@@ -33905,7 +33917,7 @@
    "options": [
     "The carbanion sits in an sp orbital",
     "The triple bond withdraws inductively",
-    "The alkyne is aromatic",
+    "The anion is held by resonance",
     "It has fewer hydrogens"
    ],
    "correct": 0,
@@ -34918,7 +34930,7 @@
    "q": "Why can bromobenzene not be used to make an ylide?",
    "options": [
     "PPh3 attacks the ring instead",
-    "The ylide would be aromatic",
+    "Bromide is too poor a leaving group",
     "An aryl halide will not do SN2",
     "Aryl halides are too stable to handle"
    ],
@@ -35210,7 +35222,7 @@
     "An imine",
     "An enamine",
     "An amide",
-    "An amine oxide"
+    "A carbinolamine"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -35232,7 +35244,7 @@
    "q": "What does a tertiary amine plus a ketone give?",
    "options": [
     "An enamine",
-    "An ammonium ylide",
+    "An iminium salt",
     "No stable product",
     "An imine"
    ],
@@ -35316,7 +35328,7 @@
    "q": "Why does strong acid stop the reaction?",
    "options": [
     "The imine hydrolyzes instantly",
-    "The carbonyl polymerizes",
+    "The ketone is reduced",
     "The solvent freezes",
     "The amine is protonated"
    ],
@@ -35531,10 +35543,10 @@
   {
    "q": "Which reaction makes a secondary amine cleanly?",
    "options": [
-    "Hofmann elimination",
+    "A tertiary amine plus a ketone",
     "Reductive amination",
     "SN2 on ammonia",
-    "Nitration then reduction"
+    "A primary amine plus a ketone, no reductant"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -36627,7 +36639,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which retrosynthetic clue suggests a Baeyer-Villiger?",
+   "q": "Working backwards from a target ester, which clue suggests making it by a Baeyer-Villiger?",
    "options": [
     "A hindered alkyl on O",
     "An ester with a methyl on oxygen",
@@ -40281,7 +40293,7 @@
     "A gem-diol",
     "An epoxide",
     "An enol ether",
-    "A hemiacetal"
+    "A cyanohydrin"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -40292,7 +40304,7 @@
    "options": [
     "Cyanohydrin",
     "Bisulfite adduct",
-    "Acetal",
+    "Epoxide",
     "Hydrate"
    ],
    "correct": 3,
@@ -40412,7 +40424,7 @@
    "options": [
     "Bond length and pH",
     "Sterics and electronics",
-    "Resonance and aromaticity",
+    "Ring strain and hydrogen bonding",
     "Solvent and temperature"
    ],
    "correct": 1,
@@ -40916,10 +40928,10 @@
   {
    "q": "Why is sucrose not a reducing sugar?",
    "options": [
-    "Its rings are aromatic",
+    "It has no OH groups",
     "Neither ring can open",
     "It contains no rings",
-    "It is a monosaccharide"
+    "It is a single sugar unit"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -40986,14 +40998,26 @@
    "type": "mcq"
   },
   {
-   "q": "The Baeyer-Villiger converts a ketone to:",
+   "q": "(E)-Hex-4-enal must become (E)-hex-4-enoic acid with its C=C untouched. Which reagent does it?",
    "options": [
-    "An aldehyde",
-    "An alcohol",
-    "A carboxylate",
-    "An ester"
+    "Hot, concentrated aqueous KMnO₄",
+    "NaClO₂ in a mild acid buffer",
+    "Ozone, then dimethyl sulfide",
+    "NaBH₄ in methanol"
    ],
-   "correct": 3,
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A chemist needs a quick bench test that gives a visible result with an aldehyde and no result with a ketone. Which reagent does that?",
+   "options": [
+    "Sodium borohydride, which reduces both",
+    "Bromine in dichloromethane",
+    "Tollens’ reagent, Ag(NH3)2+",
+    "Dilute aqueous acid"
+   ],
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -41506,26 +41530,26 @@
    "type": "mcq"
   },
   {
-   "q": "The Sandmeyer route to an aryl nitrile starts from:",
+   "q": "How is the carbon of a C≡N group hybridized?",
    "options": [
-    "A diazonium salt",
-    "A Grignard reagent",
-    "An acid chloride",
-    "An aryl halide"
+    "sp³",
+    "sp²",
+    "sp",
+    "Unhybridized"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why can't EAS put a CN group on a benzene ring?",
+   "q": "Acetonitrile, CH₃CN (41 g/mol), boils at 82 °C, while propyne (40 g/mol) boils at −23 °C. Why the big difference?",
    "options": [
-    "There is no electrophilic cyanide reagent",
-    "Benzene is too unreactive",
-    "The CN group is too large",
-    "Cyanide is a poor nucleophile"
+    "Its molecules hydrogen-bond to each other",
+    "Its C≡N bond gives it a large dipole",
+    "It is one mass unit heavier",
+    "Its carbon is sp hybridized"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41674,11 +41698,11 @@
    "type": "mcq"
   },
   {
-   "q": "Why is that nitrile stretch diagnostic?",
+   "q": "Why is the C≡N stretch near 2250 cm⁻¹ easy to pick out in an IR spectrum?",
    "options": [
     "No group absorbs above 3000",
     "It is the strongest peak",
-    "It appears as a doublet",
+    "It is broader than any other band",
     "The window is nearly empty"
    ],
    "correct": 3,
