@@ -431,7 +431,7 @@ FIGURES.push({
     s += gapArrow(P(334, 160), P(366, 160));
     return s;
   },
-  caption: 'The labels keep the chain numbers from diethyl adipate. The C2 enolate is drawn with its charge on carbon, the atom that forms the bond; it is the same enolate as in the Claisen mechanism. The collapse at C6, the deprotonation and the workup are the same as there and are not redrawn.',
+  caption: 'The labels keep the chain numbers from diethyl adipate. The C2 enolate is drawn with its charge on carbon, the atom that forms the bond; it is the same enolate as in the Claisen mechanism. The collapse at C6, the deprotonation and the workup also match that mechanism, so they are not redrawn.',
 });
 
 FIGURES.push({
