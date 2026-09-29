@@ -21,7 +21,7 @@ const minus = (x, y, cls = 'fg-hi') => text(x, y, '−', { cls, size: 15 });
 const resArrow = (a, b) => arrow(a, b, { muted: true }) + arrow(b, a, { muted: true });
 /* Lone pairs at screen angles (degrees, y down). */
 const pairs = (o, angs, dist = 23) => angs.map((a) => lonePair(o.x, o.y, a, { dist })).join('');
-/* A skeletal bond between two unlabelled vertices. */
+/* A skeletal bond between two unlabeled vertices. */
 const sk = (a, b, o = {}) => bond(a, b, { rFrom: 0, rTo: 0, ...o });
 const ellipse = (cx, cy, rx, ry, deg, cls = 'fg-orb') =>
   `<ellipse class="${cls}" cx="${r2(cx)}" cy="${r2(cy)}" rx="${rx}" ry="${ry}" transform="rotate(${r2(-deg)} ${r2(cx)} ${r2(cy)})"></ellipse>`;
@@ -87,7 +87,7 @@ FIGURES.push({
     s += text(570, 230, 'even though electronegativity falls', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'Left: four anions of about the same size, ranked by how strongly the atom pulls on electrons. Right: the four halide ions drawn to scale.',
+  caption: 'Left: the discs are one size, and only the atom changes. Right: the four halide ions drawn to scale.',
 });
 
 FIGURES.push({
@@ -294,7 +294,7 @@ FIGURES.push({
   id: 'cyclopentadienyl',
   section: 'acidity-factors',
   anchor: 'expect its acid to be far stronger than the formula suggests.</p>',
-  alt: 'Preview. Left: cyclopentadiene, a five-carbon ring with two C=C bonds and a CH2 at the top whose two hydrogens are drawn; pKa 16. An arrow labelled minus H+ leads to the five equivalent resonance structures of the cyclopentadienyl anion, the charge and lone pair on a different ring carbon in each.',
+  alt: 'Preview. Left: cyclopentadiene, a five-carbon ring with two C=C bonds and a CH2 at the top whose two hydrogens are drawn; pKa 16. An arrow labeled minus H+ leads to the five equivalent resonance structures of the cyclopentadienyl anion, the charge and lone pair on a different ring carbon in each.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
@@ -553,7 +553,7 @@ FIGURES.push({
     s += wedge(c, h1, { rFrom: 14, rTo: 10, width: 9 }) + atom(h1.x, h1.y, 'H', { r: 10, size: 11 });
     s += hash(c, h2, { rFrom: 14, rTo: 10, width: 10, rungs: 4 }) + atom(h2.x, h2.y, 'H', { r: 10, size: 11 });
     s += lobe(c, 40, 40);
-    s += atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
+    s += atom(c.x, c.y, '', { r: 16 }) + atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
     s += tag(250, rows[0].y - 6, rows[0].h);
     s += tag(250, rows[0].y + 12, rows[0].src);
     s += tag(250, rows[0].y + 30, 'pair held far out', { cls: 'fg-tag-mut' });
@@ -565,7 +565,7 @@ FIGURES.push({
     h1 = at(c, 300, 42);
     s += bond(c, h1, { rFrom: 15, rTo: 10 }) + atom(h1.x, h1.y, 'H', { r: 10, size: 11 });
     s += lobe(c, 60, 32);
-    s += atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
+    s += atom(c.x, c.y, '', { r: 16 }) + atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
     s += tag(250, rows[1].y - 6, rows[1].h);
     s += tag(250, rows[1].y + 12, rows[1].src);
     s += rule(10, 250, 330, 250);
@@ -576,14 +576,14 @@ FIGURES.push({
     s += bond(c2, h, { rFrom: 15, rTo: 10 });
     s += atom(c2.x, c2.y, 'C', { size: 12 }) + atom(h.x, h.y, 'H', { r: 10, size: 11 });
     s += lobe(c, 0, 24);
-    s += atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
+    s += atom(c.x, c.y, '', { r: 16 }) + atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
     s += tag(250, rows[2].y - 6, rows[2].h);
     s += tag(250, rows[2].y + 12, rows[2].src);
     s += tag(250, rows[2].y + 30, 'pair held closest', { cls: 'fg-tag-good' });
     s += tag(120, rows[2].y + 50, 'the pair points along the C≡C axis', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'The lone pair each C–H leaves behind, drawn in its hybrid orbital. The more s-character, the closer to the carbon it sits.',
+  caption: 'The lone pair each C–H leaves behind, drawn in its hybrid orbital. Compare the lobes: shortest for sp, longest for sp³.',
 });
 
 FIGURES.push({
@@ -621,12 +621,12 @@ FIGURES.push({
     s += wedge(n, h1, { rFrom: 14, rTo: 10, width: 9 }) + atom(h1.x, h1.y, 'H', { r: 10, size: 11 });
     s += hash(n, h2, { rFrom: 14, rTo: 10, width: 10, rungs: 4 }) + atom(h2.x, h2.y, 'H', { r: 10, size: 11 });
     s += lobe(n, 40, 40);
-    s += atom(n.x, n.y, 'N', { kind: 'hi', size: 12 });
+    s += atom(n.x, n.y, '', { r: 16 }) + atom(n.x, n.y, 'N', { kind: 'hi', size: 12 });
     s += text(450, 212 - 20, 'lone pair in an sp³ orbital (25% s)', { cls: 'fg-sm', size: 10.5 });
     s += text(450, 212, 'pKaH 10.6: the stronger base', { cls: 'fg-tag-warn', size: 11 });
     return s;
   },
-  caption: 'Both lone pairs sit on nitrogen. Pyridine’s sp² pair is held closer to the nucleus, so it takes a proton less readily.',
+  caption: 'Both lone pairs sit on nitrogen. Compare the orbital each one occupies, and the pKaH under it.',
 });
 
 /* ================================================ WORKED EXAMPLE ======= */
@@ -646,7 +646,7 @@ FIGURES.push({
   id: 'hydroxybutanone-sites',
   section: 'acidity-factors',
   anchor: 'There are four kinds of hydrogen on it.</p>',
-  alt: '4-Hydroxybutan-2-one drawn skeletally with C1 to C4 numbered and each kind of hydrogen labelled with its pKa: C1 hydrogens about 20, C3 hydrogens about 20, C4 hydrogens near 50, and the O–H about 16, marked as the most acidic.',
+  alt: '4-Hydroxybutan-2-one drawn skeletally with C1 to C4 numbered and each kind of hydrogen labeled with its pKa: C1 hydrogens about 20, C3 hydrogens about 20, C4 hydrogens near 50, and the O–H about 16, marked as the most acidic.',
   viewBox: '0 0 600 214',
   build() {
     let s = '';
@@ -665,7 +665,7 @@ FIGURES.push({
     s += text(m.o.x + 10, m.o.y + 58, 'the most acidic', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
-  caption: 'Four kinds of hydrogen, labelled with the pKa each would have. The two alpha positions tie, and the O–H beats them both.',
+  caption: 'Four kinds of hydrogen, labeled with the pKa each would have. The two alpha positions tie, and the O–H beats them both.',
 });
 
 FIGURES.push({
