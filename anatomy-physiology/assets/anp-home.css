@@ -1,0 +1,99 @@
+/* A&P course home (redesign), loaded by anatomy-physiology/index.html only.
+   Laid out like ochem's home. anp-home.js fills the level card, the three
+   "now" cards and the path from the runtime; the markup stands without it. */
+.anp-home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,52px);align-items:center;}
+.anp-home-hero h1{max-width:17ch;}
+.anp-level-card,.anp-now-card,.anp-qcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);}
+.anp-level-card{border-radius:22px;padding:26px 26px 22px;}
+.anp-level-top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.anp-level-chip{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+.anp-level-chip .t b{display:block;font-weight:900;font-size:16px;}
+.anp-level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
+.anp-level-card .level-ring{border-color:var(--cink);color:var(--cink);background:var(--ctint);}
+.anp-part-bars{margin-top:14px;}
+.anp-part-bars .mini-domain-row span:first-child{min-width:92px;}
+.anp-now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
+.anp-now-card{padding:22px 24px;}
+.anp-now-card.due{box-shadow:var(--lift-lg),inset 0 0 0 2px var(--amber);}
+.anp-now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.anp-now-card h2{margin:0 0 6px;font-size:19px;}
+.anp-now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
+.anp-now-card .xp-track{height:10px;margin:0 0 14px;}
+
+/* The path: a real ordered list of chapter links, placed as a snake (left to
+   right, then right to left) by the --r/--c pairs the generator writes for 5,
+   4 and 3 columns, so it needs no script to lay out. One column on a phone.
+   anp-home.js only draws the line through the rings. */
+.anp-path-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 26px;}
+.anp-path-legend span{display:inline-flex;align-items:center;gap:8px;font:800 12.5px var(--font-ui);color:var(--muted);background:var(--white);padding:6px 12px;border-radius:999px;box-shadow:var(--lift-sm);}
+.anp-path-legend i{width:10px;height:10px;border-radius:50%;background:var(--c);}
+.anp-path{position:relative;max-width:1000px;margin:0 auto;container-type:inline-size;}
+.anp-path .path-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
+.anp-path .path-track,.anp-path .path-fill{fill:none;stroke:var(--line);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;}
+.anp-path .path-fill{stroke:var(--cink);}
+.anp-path-list{list-style:none;margin:0;padding:14px 0 6px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:40px 10px;}
+.anp-path .node{position:relative;z-index:1;grid-row:var(--r5);grid-column:var(--c5);display:flex;justify-content:center;}
+.anp-path .node > *{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;text-decoration:none;color:inherit;border-radius:12px;}
+.anp-path .ring{position:relative;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;background:conic-gradient(var(--cink) calc(var(--p,0) * 1%),var(--line) 0);transition:transform .18s ease;}
+.anp-path .ring::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:var(--pc);opacity:.18;z-index:-1;}
+.anp-path .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--white);box-shadow:var(--lift-sm);font:900 15px var(--font-mono);color:var(--muted);}
+.anp-path a:hover .ring,.anp-path a:focus-visible .ring{transform:translateY(-3px);}
+.anp-path .label{display:flex;flex-direction:column;gap:2px;max-width:170px;padding:2px 6px;border-radius:8px;background:var(--paper);}
+.anp-path .label b{font-size:13.5px;font-weight:900;line-height:1.25;text-wrap:balance;}
+.anp-path .label small{font:700 12px var(--font-ui);color:var(--muted);}
+.anp-path .part{align-self:center;margin-bottom:4px;font:900 10px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--pcd);padding:2px 8px;border-radius:999px;}
+.anp-path .current .ring{width:68px;height:68px;box-shadow:0 0 0 6px var(--ctint);}
+.anp-path .current .ring::before{inset:-14px;background:var(--ctint);opacity:.9;}
+.anp-path .current .n{width:54px;height:54px;color:var(--cink);font-size:17px;}
+.anp-path .current .label b,.anp-path .current .label small{color:var(--cink);}
+@container (max-width:899px){.anp-path-list{grid-template-columns:repeat(4,minmax(0,1fr));} .anp-path .node{grid-row:var(--r4);grid-column:var(--c4);}}
+@container (max-width:759px){.anp-path-list{grid-template-columns:repeat(3,minmax(0,1fr));} .anp-path .node{grid-row:var(--r3);grid-column:var(--c3);}}
+@container (max-width:479px){
+  .anp-path-list{grid-template-columns:1fr;gap:18px;}
+  .anp-path .node{grid-row:auto;grid-column:1;justify-content:flex-start;}
+  .anp-path .node > *{flex-direction:row;text-align:left;gap:16px;}
+  .anp-path .ring,.anp-path .current .ring{width:60px;height:60px;}
+  .anp-path .current .n{width:48px;height:48px;}
+  .anp-path .label{max-width:none;}
+  .anp-path .part{align-self:flex-start;}
+}
+@media (prefers-reduced-motion:reduce){.anp-path .ring{transition:none;}}
+
+/* Dark tools panel, sample question, about, trust. */
+.anp-feature{background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;}
+.anp-feature h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
+.anp-feature p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:42ch;}
+.anp-feature .icon-circle{width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;margin:0 auto;}
+.anp-feature .icon-circle svg{width:170px;height:170px;}
+.anp-tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+.anp-tool-chips a{font:800 12px var(--font-ui);color:#fff;text-decoration:none;background:rgba(255,255,255,.14);border-radius:var(--radius-pill);padding:6px 12px;}
+.anp-tool-chips a:hover{background:rgba(255,255,255,.26);color:#fff;}
+.anp-sample-row,.anp-home-about{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
+.anp-sample-row h2{margin-top:0;}
+.anp-sample-row .section-lede{margin:0 0 24px;text-align:left;}
+.anp-sample-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.anp-sample-list li{display:flex;align-items:center;gap:12px;font-weight:800;font-size:14.5px;padding:12px 16px;background:var(--white);border:var(--bw) solid var(--line);border-radius:14px;}
+.anp-sample-list .n{width:26px;height:26px;border-radius:8px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);flex-shrink:0;}
+.anp-qcard{padding:26px;}
+.anp-qcard .qtext{font-weight:800;font-size:16px;margin:14px 0 18px;line-height:1.5;}
+.anp-qcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);}
+.anp-qcard .why{margin:4px 0 0;padding:12px 14px;border-radius:12px;background:var(--ctint);font:600 13.5px/1.55 var(--font-ui);}
+.anp-qcard .why:empty{display:none;}
+.anp-qcard .why b{color:var(--cink);}
+.anp-sample-key summary{cursor:pointer;font-weight:800;color:var(--cink);}
+.anp-sample-key p{font:600 13.5px/1.55 var(--font-ui);}
+.js .anp-sample-key{display:none;}
+.anp-sample-more{margin:14px 0 0;}
+.anp-home-about{align-items:start;}
+.anp-home-about h2{font-size:22px;margin:0 0 12px;}
+.anp-home-about p{font-weight:600;line-height:1.7;}
+.anp-how li{align-items:flex-start;font-weight:600;line-height:1.5;}
+.anp-home-legal{max-width:none;text-align:center;margin:18px auto 0;}
+@media (max-width:1000px){.anp-now-row{grid-template-columns:1fr;}}
+@media (max-width:900px){
+  .anp-home-hero,.anp-feature,.anp-sample-row,.anp-home-about{grid-template-columns:1fr;}
+  .anp-feature{text-align:center;}
+  .anp-feature p{margin-left:auto;margin-right:auto;}
+  .anp-tool-chips{justify-content:center;}
+}
+@media (max-width:560px){.anp-feature .icon-circle,.anp-feature .icon-circle svg{width:120px;height:120px;}}
