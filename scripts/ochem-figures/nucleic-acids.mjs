@@ -320,10 +320,10 @@ function nucleotide() {
   s += tg(o5.x + 22, o5.y + 4, 'ester', 'fg-tag-warn', 'start');
   // C1' -> N9 of adenine, base up (beta)
   const n9 = P(pos[1].x, pos[1].y - 58);
-  const base = drawBase('A', { c: P(0, 0), b: 30, rot: -18, sugar: null, compact: true, kinds: { N9: 'hi' } });
-  // move the base so its N9 lands on n9
-  const dx = n9.x - base.p.N9.x, dy = n9.y - base.p.N9.y;
-  s += `<g transform="translate(${r2(dx)} ${r2(dy)})">${base.s}</g>`;
+  const bopt = { b: 30, rot: -18, sugar: null, compact: true, kinds: { N9: 'hi' } };
+  const probe = drawBase('A', { ...bopt, c: P(0, 0) });
+  // place the base so its N9 lands on n9
+  s += drawBase('A', { ...bopt, c: P(n9.x - probe.p.N9.x, n9.y - probe.p.N9.y) }).s;
   s += bond(pos[1], n9, { rFrom: 0, rTo: rOf('N'), cls: 'fg-bond-hi' });
   s += tg(pos[1].x + 10, pos[1].y - 30, 'N-glycosidic', 'fg-tag-good', 'start');
   s += tg(pos[1].x + 10, pos[1].y - 16, 'bond', 'fg-tag-good', 'start');

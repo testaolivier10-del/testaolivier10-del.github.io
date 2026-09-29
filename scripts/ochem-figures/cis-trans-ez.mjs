@@ -248,10 +248,11 @@ FIGURES.push({
    equatorial swap on the flip; up and down do not. Notes only (760 wide). */
 const CIS12 = [[0, 'up', 'C1'], [5, 'up', 'C2']];
 const TRANS12 = [[0, 'down', 'C1'], [5, 'up', 'C2']];
-const TAGS = { C1: { x: 10, y: 20, a: 'start' }, C2: { x: -8, y: 20, a: 'end' } };
-function chairRow(cxA, cxB, cy, k, subs, dy = 58, arrowGap = 110) {
+const TAGS = { C1: { x: -20, y: -6, a: 'end' }, C2: { x: -10, y: 18, a: 'end' } };
+const TAGS_F = { C1: { x: -22, y: 18, a: 'end' }, C2: { x: -8, y: 20, a: 'end' } };
+function chairRow(cxA, cxB, cy, k, subs, dy = 80, arrowGap = 84) {
   const A = methylChair(cxA, cy, k, false, subs, TAGS);
-  const B = methylChair(cxB, cy, k, true, subs, TAGS);
+  const B = methylChair(cxB, cy, k, true, subs, TAGS_F);
   let s = A.s + B.s;
   const line = (cx, read, y) => read.forEach(([n, pos, face], j) => {
     s += text(cx, y + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' });
@@ -268,15 +269,15 @@ FIGURES.push({
   id: 'ring-flip-keeps-face',
   section: 'cis-trans-ez',
   anchor: 'The compound is still cis.</p>',
-  viewBox: '0 0 760 440',
+  viewBox: '0 0 760 470',
   alt: 'Two rows of cyclohexane chairs, each row showing one compound in its two chairs with ring-flip arrows between them. Top row, cis-1,2-dimethylcyclohexane: in the left chair the C1 methyl is axial and points up and the C2 methyl is equatorial and points up; in the flipped chair on the right the C1 methyl is equatorial and up and the C2 methyl is axial and up. Bottom row, trans-1,2-dimethylcyclohexane: in the left chair both methyls are equatorial, C1 pointing down and C2 pointing up; in the flipped chair both are axial, C1 down and C2 up.',
   build() {
     let s = '';
     s += itext(20, 22, 'cis', '-1,2-dimethylcyclohexane', 'fg-tag-good', 'start');
-    s += chairRow(190, 570, 110, 0.78, CIS12);
-    s += rule(20, 222, 740, 222);
-    s += itext(20, 246, 'trans', '-1,2-dimethylcyclohexane', 'fg-tag-warn', 'start');
-    s += chairRow(190, 570, 330, 0.78, TRANS12);
+    s += chairRow(180, 590, 110, 0.78, CIS12);
+    s += rule(20, 232, 740, 232);
+    s += itext(20, 256, 'trans', '-1,2-dimethylcyclohexane', 'fg-tag-warn', 'start');
+    s += chairRow(180, 590, 350, 0.78, TRANS12);
     return s;
   },
   caption: 'Read the tags under each chair. From one chair to the other, axial and equatorial swap, while up and down stay the same.',
@@ -297,7 +298,7 @@ FIGURES.push({
     s += arrow(P(150, 196), P(150, 238));
     s += arrow(P(190, 238), P(190, 196), { muted: true });
     s += text(206, 222, 'ring flip', { cls: 'fg-tag', anchor: 'start' });
-    const B = methylChair(170, 318, 0.78, true, CIS12, TAGS);
+    const B = methylChair(170, 318, 0.78, true, CIS12, TAGS_F);
     s += B.s;
     B.read.forEach(([n, pos, face], j) => { s += text(170, 408 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
     return s;
