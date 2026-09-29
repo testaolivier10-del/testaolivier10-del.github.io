@@ -677,7 +677,7 @@
     'eas': { n:18, steps:{
       2:['eas-mechanism'],
       4:['eas-mechanism','huckel-aromaticity'],
-      7:['eas-mechanism','energy-diagram-reading'],
+      9:['eas-mechanism'],
       11:['lewis-acid-base','eas-mechanism'],
       15:['eas-mechanism','carbocation-rearrangement'],
       17:['eas-mechanism','carbocation-rearrangement'] } },
