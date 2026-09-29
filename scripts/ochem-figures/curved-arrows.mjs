@@ -66,6 +66,8 @@ const tg = (x, y, s, anchor = 'middle') => text(x, y, s, { cls: 'fg-tag', size: 
 const good = (x, y, s, anchor = 'middle') => text(x, y, s, { cls: 'fg-tag-good', size: 11, anchor });
 const warn = (x, y, s, anchor = 'middle') => text(x, y, s, { cls: 'fg-tag-warn', size: 11, anchor });
 const plusSign = (x, y) => text(x, y + 5, '+', { cls: 'fg-lbl', size: 13 });
+/* A formal charge + on a skeletal vertex (a carbocation carbon). */
+const cplus = (x, y) => text(x, y + 5, '+', { cls: 'fg-tag-warn', size: 15 });
 const num = (x, y, s) => text(x, y + 4, s, { cls: 'fg-tag', size: 11 });
 
 /* A resonance arrow: one line, a head at each end. */
@@ -209,37 +211,38 @@ FIGURES.push({
   caption: 'One arrow: the tail sits on the pair that moves, and the head sits on the atom it ends up bonded to.',
 });
 
-/* Where a head can land: three outcomes, one row each. */
+/* Where a head can land: three outcomes, one row each. `narrow` is the
+   340-wide lesson copy, which turns the first product upright to fit. */
 function headRows(narrow) {
-  /* x positions of reactant centre, reaction arrow, product centre, tag */
-  const L = narrow
-    ? { r: 80, a1: 176, a2: 214, p: 272, top: 0, rowH: 150, tagX: 170 }
-    : { r: 130, a1: 262, a2: 320, p: 420, top: 0, rowH: 128, tagX: 530 };
+  const L = narrow ? { r: 90, a1: 182, a2: 216, p: 280 } : { r: 200, a1: 330, a2: 400, p: 520 };
   const rows = [];
 
-  /* Row 1: hydroxide + methyl cation -> methanol. Head on another atom. */
+  /* Row 1: hydroxide + a carbocation -> an alcohol. Head on another atom. */
   rows.push({
     title: 'head on another atom: a new bond',
     draw(y) {
       let s = '';
-      const oh = P(L.r - (narrow ? 38 : 50), y);
+      const oh = P(L.r - (narrow ? 34 : 70), y);
       s += mol(hydroxide(oh, 180, 'o1'));
-      const c = P(L.r + (narrow ? 44 : 58), y);
-      const m = addH({ atoms: { c: { ...c, l: 'C' } }, bonds: [], charges: [['c', '+', 0, 26]] }, 'c', [270, 145, 215], 34);
-      s += mol(m);
-      s += curve(P(oh.x + 21, oh.y - 6), P(c.x - 16, c.y + 2), { bow: narrow ? -10 : -14 });
+      const c = P(L.r + (narrow ? 42 : 50), y);
+      s += mol(tbutyl(c, 180, 'h1t'));
+      s += cplus(c.x - 12, c.y - 14);
+      s += curve(P(oh.x + 21, oh.y), P(c.x - 5, c.y + 3), { bow: 12 });
       s += arrow(P(L.a1, y), P(L.a2, y));
-      /* product: methanol, C–O bond highlighted */
-      const pc = P(L.p + (narrow ? 22 : 18), y), po = at(pc, 180, 50);
-      const pm = { atoms: { c: { ...pc, l: 'C' }, o: { ...po, l: 'O', k: 'hi' } }, bonds: [['c', 'o', 1, 'fg-bond-hi']], lp: [['o', 90], ['o', 270]] };
-      addH(pm, 'c', [300, 60, 0], 34);
-      pm.atoms.oh = { ...at(po, 180, 34), l: 'H' }; pm.bonds.push(['o', 'oh']);
-      s += mol(pm);
+      if (narrow) {
+        const pc = P(L.p, y + 2), po = at(pc, 270, 44);
+        s += mol(join(tbutyl(pc, 270, 'h1p'), { atoms: { po: { ...po, l: 'O' }, ph: { ...at(po, 330, 34), l: 'H' } },
+          bonds: [['h1p', 'po', 1, 'fg-bond-hi'], ['po', 'ph']], lp: [['po', 200], ['po', 260]] }));
+      } else {
+        const pc = P(L.p + 20, y), po = at(pc, 180, 44);
+        s += mol(join(tbutyl(pc, 180, 'h1p'), { atoms: { po: { ...po, l: 'O' }, ph: { ...at(po, 180, 34), l: 'H' } },
+          bonds: [['h1p', 'po', 1, 'fg-bond-hi'], ['po', 'ph']], lp: [['po', 90], ['po', 270]] }));
+      }
       return s;
     },
   });
 
-  /* Row 2: acetone C=O pi bond onto its own oxygen. Head on an atom of the same bond. */
+  /* Row 2: acetone's C=O pi bond onto its own oxygen. Head on an atom of the same bond. */
   rows.push({
     title: 'head on an atom of the same bond: a new lone pair',
     draw(y) {
@@ -270,28 +273,26 @@ function headRows(narrow) {
       return s;
     },
   });
-  return { rows, L };
+  return rows;
 }
 
 FIGURES.push({
   id: 'ca-heads',
   section: 'curved-arrows',
   anchor: '<h3>One arrow, one pair of electrons</h3>',
-  viewBox: '0 0 760 420',
-  alt: 'Three rows. Row 1: a lone pair on hydroxide moves to a methyl cation carbon, giving methanol with a new C–O bond. Row 2: in acetone, the pi bond of C=O moves onto the oxygen, leaving carbon with a plus charge and oxygen with three lone pairs and a minus charge. Row 3: the reverse: a lone pair on that negative oxygen moves into the C–O bond, making the C=O double bond again.',
+  viewBox: '0 0 760 490',
+  alt: 'Three rows. Row 1: a lone pair on hydroxide moves to the positive carbon of a carbocation that carries three methyl groups, giving an alcohol with a new C–O bond. Row 2: in acetone, the pi bond of C=O moves onto the oxygen, leaving carbon with a plus charge and oxygen with three lone pairs and a minus charge. Row 3: the reverse: a lone pair on that negative oxygen moves into the C–O bond, making the C=O double bond again.',
   build() {
-    const { rows } = headRows(false);
     let s = '';
-    rows.forEach((r, i) => {
-      const y0 = 10 + i * 136;
-      s += panel(14, y0, 732, 126);
-      s += lbl(530, y0 + 58, r.title.split(': ')[0] + ':');
-      s += lbl(530, y0 + 78, r.title.split(': ')[1]);
-      s += r.draw(y0 + 64);
+    headRows(false).forEach((r, i) => {
+      const y0 = 10 + i * 160;
+      s += panel(14, y0, 732, 150);
+      s += lbl(30, y0 + 24, r.title, 'start');
+      s += r.draw(y0 + 92);
     });
     return s;
   },
-  caption: 'Where the head lands tells you what forms. Rows 2 and 3 are the same arrow run in opposite directions.',
+  caption: 'Rows 2 and 3 are the same arrow run in opposite directions.',
 });
 
 /* NH3 + H–Cl: two arrows at once. */
@@ -305,8 +306,9 @@ function nh3hcl(x0, y) {
   const cl = m.atoms.x;
   s += curve(P(n.x + 2, n.y - 27), P(h.x - 13, h.y + 2), { bow: -20 });
   s += num(x0 + 88, y - 58, '1');
-  s += curve(mid(h, cl), P(cl.x + 4, cl.y - 16), { bow: -18 });
-  s += num(x0 + 190, y - 82, '2');
+  const hm = mid(h, cl);
+  s += curve(P(hm.x, hm.y + 3), P(cl.x - 11, cl.y + 13), { bow: 20 });
+  s += num(hm.x + 6, hm.y + 34, '2');
   return { s, n, h, cl };
 }
 
@@ -324,7 +326,7 @@ FIGURES.push({
     s += plusSign(580, 110);
     s += mol(halide(P(650, 110), 'Cl'));
     s += rule(24, 178, 736, 178);
-    s += tg(170, 200, 'arrow 1 makes N–H; arrow 2 breaks H–Cl');
+    s += tg(170, 200, 'charge in: 0 + 0 = 0');
     s += tg(570, 200, 'charge out: +1 on N, −1 on Cl; sum 0');
     return s;
   },
@@ -347,12 +349,12 @@ FIGURES.push({
     const h = P(150, y - 30), o = P(206, y - 30);
     const c1 = at(o, 30, 44), c2 = at(c1, 330, 38);
     const et = { atoms: { eh: { ...h, l: 'H' }, eo: { ...o, l: 'O' }, c1: { ...c1, l: '' }, c2: { ...c2, l: '' } },
-      bonds: [['eh', 'eo'], ['eo', 'c1'], ['c1', 'c2']], lp: [['eo', 270], ['eo', 120]] };
+      bonds: [['eh', 'eo'], ['eo', 'c1'], ['c1', 'c2']], lp: [['eo', 292], ['eo', 105]] };
     s += mol(et);
     s += curve(P(oh.x + 21, oh.y - 6), P(h.x - 11, h.y + 7), { bow: 10 });
     s += num(100, y - 52, '1');
-    s += curve(mid(h, o), P(o.x - 3, o.y - 18), { bow: -16 });
-    s += num(172, y - 72, '2');
+    s += curve(P(mid(h, o).x, mid(h, o).y - 3), P(o.x - 10, o.y - 12), { bow: -12 });
+    s += num(192, y - 64, '2');
     s += arrow(P(330, y - 10), P(400, y - 10));
     s += mol(water(P(470, y - 4)));
     s += plusSign(530, y - 10);
@@ -377,7 +379,7 @@ function sn2Row(ox, y, both) {
   s += mol(m);
   const br = m.atoms.sbBr;
   s += curve(P(oh.x + 21, oh.y - 6), P(c.x - 16, c.y - 4), { bow: -14 });
-  if (both) s += curve(mid(c, br), P(br.x + 2, br.y - 18), { bow: -16 });
+  if (both) s += curve(P(mid(c, br).x, mid(c, br).y + 3), P(br.x - 12, br.y + 13), { bow: 20 });
   return s;
 }
 
@@ -408,7 +410,7 @@ FIGURES.push({
     s += good(30, 192, 'two arrows at once', 'start');
     s += sn2Row(24, 262, true);
     s += num(118, 222, '1');
-    s += num(206, 222, '2');
+    s += num(200, 304, '2');
     s += arrow(P(300, 262), P(360, 262));
     const pc = P(490, 262), po = at(pc, 180, 52);
     const pm = { atoms: { c: { ...pc, l: 'C' }, o: { ...po, l: 'O' } }, bonds: [['c', 'o', 1, 'fg-bond-hi']], lp: [['o', 90], ['o', 270]] };
@@ -429,16 +431,16 @@ function patternRows() {
       title: '1 · a lone pair makes a new bond to an electron-poor atom',
       draw(y) {
         let s = '';
-        const oh = P(90, y);
-        s += mol(hydroxide(oh, 180, 'p1'));
+        const w = P(100, y);
+        s += mol(water(w, 'p1w', -90));
         const c = P(210, y);
-        const t = tbutyl(c, 180, 'p1t');
-        s += mol(t);
-        s += plusSign(c.x + 2, c.y - 16);
-        s += curve(P(oh.x + 21, oh.y - 6), P(c.x - 6, c.y - 3), { bow: -14 });
+        s += mol(tbutyl(c, 180, 'p1t'));
+        s += cplus(c.x - 12, c.y - 14);
+        s += curve(P(w.x + 19, w.y + 10), P(c.x - 5, c.y + 3), { bow: 10 });
         s += arrow(P(310, y), P(370, y));
-        const pc = P(520, y), po = at(pc, 180, 44);
-        const pm = join(tbutyl(pc, 180, 'q1t'), { atoms: { po: { ...po, l: 'O' }, ph: { ...at(po, 180, 34), l: 'H' } }, bonds: [['q1t', 'po', 1, 'fg-bond-hi'], ['po', 'ph']], lp: [['po', 90], ['po', 270]] });
+        const pc = P(530, y), po = at(pc, 180, 44);
+        const pm = join(tbutyl(pc, 180, 'q1t'), { atoms: { po: { ...po, l: 'O' }, ph1: { ...at(po, 235, 36), l: 'H' }, ph2: { ...at(po, 125, 36), l: 'H' } },
+          bonds: [['q1t', 'po', 1, 'fg-bond-hi'], ['po', 'ph1'], ['po', 'ph2']], lp: [['po', 180]], charges: [['po', '+', 290, 27]] });
         s += mol(pm);
         return s;
       },
@@ -454,13 +456,13 @@ function patternRows() {
         t.bonds.push(['p2t', 'br']);
         t.lp = [['br', 270], ['br', 0], ['br', 90]];
         s += mol(t);
-        s += curve(mid(c, t.atoms.br), P(t.atoms.br.x - 4, t.atoms.br.y - 18), { bow: -16 });
+        s += curve(P(mid(c, t.atoms.br).x, y + 3), P(t.atoms.br.x - 12, t.atoms.br.y + 13), { bow: 20 });
         s += arrow(P(310, y), P(370, y));
-        const pc = P(460, y);
+        const pc = P(450, y);
         s += mol(tbutyl(pc, 0, 'q2t'));
-        s += plusSign(pc.x + 16, pc.y);
-        s += plusSign(530, y);
-        s += mol(halide(P(590, y), 'Br', 'q2b'));
+        s += cplus(pc.x + 16, pc.y);
+        s += plusSign(512, y);
+        s += mol(halide(P(566, y), 'Br', 'q2b'));
         return s;
       },
       note: 'one arrow: no new bond forms',
@@ -475,11 +477,11 @@ function patternRows() {
         const m = hx(h, 'Cl', 56, 'p3x');
         s += mol(m);
         s += curve(P(oh.x + 21, oh.y - 6), P(h.x - 12, h.y + 3), { bow: -10 });
-        s += curve(mid(h, m.atoms.p3x), P(m.atoms.p3x.x + 2, m.atoms.p3x.y - 18), { bow: -16 });
+        s += curve(P(mid(h, m.atoms.p3x).x, h.y + 3), P(m.atoms.p3x.x - 12, m.atoms.p3x.y + 13), { bow: 20 });
         s += arrow(P(310, y), P(370, y));
-        s += mol(water(P(440, y + 4), 'p3w'));
-        s += plusSign(510, y);
-        s += mol(halide(P(580, y), 'Cl', 'p3c'));
+        s += mol(water(P(436, y + 4), 'p3w'));
+        s += plusSign(494, y);
+        s += mol(halide(P(548, y), 'Cl', 'p3c'));
         return s;
       },
       note: 'two arrows: H can hold one bond',
@@ -488,24 +490,25 @@ function patternRows() {
       title: '4 · a neighboring C–H bond shifts (a 1,2-hydride shift)',
       draw(y) {
         let s = '';
-        /* 3-methylbutan-2-yl cation: C1-C2(+)-C3(H)(CH3)-C4 */
-        const c1 = P(50, y + 14), c2 = P(88, y - 8), c3 = P(126, y + 14), c4 = P(164, y - 8), me = P(126, y + 58);
-        const hh = at(c3, 270, 0);
-        const m = { atoms: { c1: { ...c1, l: '' }, c2: { ...c2, l: '' }, c3: { ...c3, l: '' }, c4: { ...c4, l: '' }, me: { ...me, l: '' },
-          h: { ...P(c3.x + 30, c3.y + 20), l: 'H', k: 'hi' } },
+        /* 3-methylbutan-2-yl cation: C1-C2(+)-C3(H)(CH3)-C4. C2 and C4 are
+           lower vertices; C3 is an upper vertex carrying the H (up-left)
+           and the methyl (up-right). */
+        const c1 = P(60, y - 10), c2 = P(98, y + 12), c3 = P(136, y - 10), c4 = P(174, y + 12);
+        const m = { atoms: { c1: { ...c1, l: '' }, c2: { ...c2, l: '' }, c3: { ...c3, l: '' }, c4: { ...c4, l: '' },
+          me: { ...at(c3, 300, 38), l: '' }, h: { ...at(c3, 240, 36), l: 'H', k: 'hi' } },
           bonds: [['c1', 'c2'], ['c2', 'c3'], ['c3', 'c4'], ['c3', 'me'], ['c3', 'h', 1, 'fg-bond-hi']] };
         s += mol(m);
-        s += plusSign(c2.x, c2.y - 16);
-        void hh;
-        s += curve(mid(c3, m.atoms.h), P(c2.x + 6, c2.y + 8), { bow: 26 });
+        s += cplus(c2.x, c2.y + 16);
+        const hm = mid(c3, m.atoms.h);
+        s += curve(P(hm.x - 3, hm.y), P(c2.x - 3, c2.y - 7), { bow: 10 });
         s += arrow(P(310, y), P(370, y));
-        /* 2-methylbutan-2-yl cation: H now on C2, + on C3 */
-        const d1 = P(430, y + 14), d2 = P(468, y - 8), d3 = P(506, y + 14), d4 = P(544, y - 8), dm = P(506, y + 58);
-        const p = { atoms: { d1: { ...d1, l: '' }, d2: { ...d2, l: '' }, d3: { ...d3, l: '' }, d4: { ...d4, l: '' }, dm: { ...dm, l: '' },
-          h: { ...P(d2.x - 2, d2.y - 38), l: 'H', k: 'hi' } },
+        /* 2-methylbutan-2-yl cation: the H now on C2 (drawn down-left), the + on C3 */
+        const d1 = P(440, y - 10), d2 = P(478, y + 12), d3 = P(516, y - 10), d4 = P(554, y + 12);
+        const p = { atoms: { d1: { ...d1, l: '' }, d2: { ...d2, l: '' }, d3: { ...d3, l: '' }, d4: { ...d4, l: '' },
+          dm: { ...at(d3, 300, 38), l: '' }, h: { ...at(d2, 110, 34), l: 'H', k: 'hi' } },
           bonds: [['d1', 'd2'], ['d2', 'd3'], ['d3', 'd4'], ['d3', 'dm'], ['d2', 'h', 1, 'fg-bond-hi']] };
         s += mol(p);
-        s += plusSign(d3.x + 16, d3.y + 2);
+        s += cplus(d3.x - 12, d3.y - 16);
         return s;
       },
       note: 'one arrow: H moves with its pair',
@@ -518,16 +521,16 @@ FIGURES.push({
   section: 'curved-arrows',
   anchor: '<h3>Four patterns</h3>',
   alt: 'Four reactions, one per row. 1: hydroxide gives a lone pair to a carbocation carbon bonded to three methyl groups, giving an alcohol. 2: the C–Br bond of the matching bromide breaks with both electrons going to bromine, giving that carbocation and bromide. 3: hydroxide takes the proton from H–Cl with two arrows, giving water and chloride. 4: in a five-carbon cation, the C–H bond on the carbon next to the positive carbon moves over with its pair, so the hydrogen ends up on the carbon that was positive and the positive charge moves to the carbon that lost the hydrogen.',
-  viewBox: '0 0 760 560',
+  viewBox: '0 0 760 650',
   build() {
     let s = '';
     patternRows().forEach((r, i) => {
-      const y0 = 10 + i * 138;
-      s += panel(14, y0, 732, 128);
+      const y0 = 10 + i * 160;
+      s += panel(14, y0, 732, 150);
       s += lbl(30, y0 + 24, r.title, 'start');
-      s += r.draw(y0 + 76);
-      s += tg(690, y0 + 80, r.note.split(': ')[0] + ':', 'middle');
-      s += tg(690, y0 + 96, r.note.split(': ')[1], 'middle');
+      s += r.draw(y0 + 90);
+      s += tg(668, y0 + 86, r.note.split(': ')[0] + ':', 'middle');
+      s += tg(668, y0 + 102, r.note.split(': ')[1], 'middle');
     });
     return s;
   },
@@ -543,10 +546,10 @@ function badRows() {
         let s = '';
         const c = P(120, y);
         s += mol(tbutyl(c, 0, 'v1t'));
-        s += plusSign(c.x + 14, c.y - 12);
+        s += cplus(c.x + 14, c.y - 12);
         const oh = P(260, y);
         s += mol(hydroxide(oh, 0, 'v1'));
-        s += curve(P(c.x + 20, c.y - 16), P(oh.x - 18, oh.y - 8), { bow: -18 });
+        s += curve(P(c.x + 20, c.y - 16), P(oh.x - 13, oh.y + 9), { bow: 26 });
         return s;
       },
       why: ['C⁺ has no pair to give;', 'it can only receive one'],
@@ -555,7 +558,7 @@ function badRows() {
       title: 'an atom with too many bonds',
       draw(y) {
         let s = '';
-        const n = P(90, y + 10);
+        const n = P(90, y);
         s += mol(ammonia(n));
         const h = P(190, y - 30);
         const m = hx(h, 'Cl', 56, 'v2x');
@@ -573,7 +576,10 @@ function badRows() {
         const oh = P(60, y);
         s += mol(hydroxide(oh, 180, 'v3'));
         const h = P(130, y - 18);
-        s += mol(hx(h, 'Cl', 52, 'v3x'));
+        const hm3 = hx(h, 'Cl', 52, 'v3x');
+        s += mol(hm3);
+        s += curve(P(oh.x + 21, oh.y), P(h.x - 12, h.y + 4), { bow: 8 });
+        s += curve(P(mid(h, hm3.atoms.v3x).x, h.y + 3), P(hm3.atoms.v3x.x - 12, hm3.atoms.v3x.y + 12), { bow: 12 });
         s += arrow(P(236, y), P(280, y));
         s += mol(water(P(330, y + 4), 'v3w'));
         s += plusSign(378, y);
@@ -590,8 +596,8 @@ function badRows() {
         const m = acetone(c, 'neutral', 'v4');
         s += mol(m);
         s += tg(c.x - 22, c.y - 12, 'δ+');
-        s += tg(m.atoms.v4O.x - 32, m.atoms.v4O.y + 4, 'δ−');
-        s += curve(P(c.x + 5, c.y - 22), P(c.x + 8, c.y + 4), { bow: -18 });
+        s += tg(m.atoms.v4O.x - 44, m.atoms.v4O.y + 10, 'δ−');
+        s += curve(P(c.x + 5, c.y - 22), P(c.x + 6, c.y - 4), { bow: -16 });
         return s;
       },
       why: ['the π pair goes onto the δ+ C,', 'away from the δ− O: backwards'],
@@ -603,17 +609,17 @@ FIGURES.push({
   id: 'ca-invalid',
   section: 'curved-arrows',
   anchor: '<h3>Spotting invalid arrows</h3>',
-  viewBox: '0 0 760 560',
+  viewBox: '0 0 760 650',
   alt: 'Four wrong arrows, one per row, each with the reason. 1: an arrow starts on a carbocation plus charge and points at hydroxide. 2: an arrow from ammonia to the hydrogen of H–Cl with no second arrow, which would give hydrogen two bonds. 3: hydroxide and H–Cl give water and a chlorine with no charge, so the charge goes from minus one to zero. 4: in acetone an arrow moves the C=O pi pair onto the partially positive carbon instead of the partially negative oxygen.',
   build() {
     let s = '';
     badRows().forEach((r, i) => {
-      const y0 = 10 + i * 138;
-      s += panel(14, y0, 732, 128, { kind: 'warn' });
+      const y0 = 10 + i * 160;
+      s += panel(14, y0, 732, 150, { kind: 'warn' });
       s += warn(30, y0 + 24, `${i + 1} · ${r.title}`, 'start');
-      s += r.draw(y0 + 76);
-      s += tg(620, y0 + 66, r.why[0]);
-      s += tg(620, y0 + 84, r.why[1]);
+      s += r.draw(y0 + 92);
+      s += tg(620, y0 + 84, r.why[0]);
+      s += tg(620, y0 + 102, r.why[1]);
     });
     return s;
   },
@@ -631,12 +637,12 @@ FIGURES.push({
     let s = '';
     s += panel(14, 10, 732, 140);
     s += lbl(30, 34, 'resonance: one molecule, two drawings', 'start');
-    const c = P(260, 100);
+    const c = P(260, 116);
     const m = acetone(c, 'neutral', 'ra');
     s += mol(m);
     s += curve(P(c.x + 5, c.y - 22), P(m.atoms.raO.x + 16, m.atoms.raO.y + 4), { bow: 12 });
-    s += dbl(P(340, 90), P(410, 90));
-    s += mol(acetone(P(490, 100), 'split', 'rb'));
+    s += dbl(P(340, 100), P(410, 100));
+    s += mol(acetone(P(490, 116), 'split', 'rb'));
     s += tg(650, 80, '↔: no atom moves,');
     s += tg(650, 96, 'nothing new bonds');
 
@@ -681,14 +687,14 @@ function fishRows(narrow) {
         t.bonds.push(['f1t', 'br']);
         t.lp = [['br', 270], ['br', 0], ['br', 90]];
         s += mol(t);
-        s += curve(mid(c, t.atoms.br), P(t.atoms.br.x - 4, t.atoms.br.y - 18), { bow: -16 });
+        s += curve(P(mid(c, t.atoms.br).x, y + 3), P(t.atoms.br.x - 12, t.atoms.br.y + 13), { bow: 20 });
         return s;
       },
       product(y, x0) {
         let s = '';
         const pc = P(x0, y);
         s += mol(tbutyl(pc, 0, 'g1t'));
-        s += plusSign(pc.x + 16, pc.y);
+        s += cplus(pc.x + 16, pc.y);
         s += mol(halide(P(pc.x + 74, y), 'Br', 'g1b'));
         return s;
       },
@@ -697,12 +703,13 @@ function fishRows(narrow) {
       title: 'one barb: one electron each way',
       draw(y, x0) {
         let s = '';
-        const a = P(x0 + x(70), y), b = P(x0 + x(70) + 58, y);
-        const m = { atoms: { a: { ...a, l: 'Cl' }, b: { ...b, l: 'Cl' } }, bonds: [['a', 'b']], lp: [['a', 180], ['a', 90], ['b', 0], ['b', 90]] };
+        const a = P(x0 + x(70), y), b = P(x0 + x(70) + 76, y);
+        const m = { atoms: { a: { ...a, l: 'Cl' }, b: { ...b, l: 'Cl' } }, bonds: [['a', 'b']],
+          lp: [['a', 180], ['a', 245], ['a', 115], ['b', 0], ['b', 295], ['b', 65]] };
         s += mol(m);
         const md = mid(a, b);
-        s += fishhook(P(md.x - 3, md.y - 3), P(a.x + 2, a.y - 18), { bow: 12, side: -1 });
-        s += fishhook(P(md.x + 3, md.y - 3), P(b.x - 2, b.y - 18), { bow: -12, side: 1 });
+        s += fishhook(P(md.x - 3, md.y - 3), P(a.x + 12, a.y - 12), { bow: 10, side: -1 });
+        s += fishhook(P(md.x + 3, md.y - 3), P(b.x - 12, b.y - 12), { bow: -10, side: 1 });
         return s;
       },
       product(y, x0) {
@@ -770,10 +777,10 @@ FIGURES.push({
     s += panel(8, 8, 324, 134, { kind: 'warn' });
     const c = P(90, 90);
     s += mol(tbutyl(c, 0, 'bt'));
-    s += plusSign(c.x + 14, c.y - 12);
+    s += cplus(c.x + 14, c.y - 12);
     const oh = P(240, 90);
     s += mol(hydroxide(oh, 0, 'bo'));
-    s += curve(P(c.x + 20, c.y - 16), P(oh.x - 18, oh.y - 8), { bow: -18 });
+    s += curve(P(c.x + 20, c.y - 16), P(oh.x - 13, oh.y + 9), { bow: 26 });
     s += warn(170, 30, 'the arrow drawn');
     return s;
   },
@@ -786,9 +793,8 @@ FIGURES.push({
   viewBox: '0 0 340 500',
   alt: 'Three rows. Row 1: a lone pair on hydroxide moves to a methyl cation carbon, giving methanol with a new C–O bond. Row 2: in acetone, the C=O pi pair moves onto oxygen, giving C plus and O minus with three lone pairs. Row 3: the reverse: an O minus lone pair moves into the C–O bond and remakes C=O.',
   build() {
-    const { rows } = headRows(true);
     let s = '';
-    rows.forEach((r, i) => {
+    headRows(true).forEach((r, i) => {
       const y0 = 8 + i * 164;
       s += panel(4, y0, 332, 154);
       s += lbl(170, y0 + 22, r.title.split(': ')[0] + ':');
@@ -820,17 +826,17 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-ca-fishhook',
   lessons: ['curved-arrows'],
-  viewBox: '0 0 340 420',
+  viewBox: '0 0 340 428',
   alt: 'Two panels. Top: a full two-barbed arrow moves the C–Br pair onto bromine, giving a carbocation and bromide. Bottom: two single-barbed fishhooks split Cl–Cl, one electron to each chlorine, giving two chlorine atoms with one unpaired electron each.',
   build() {
     let s = '';
     fishRows(true).forEach((r, i) => {
-      const y0 = 8 + i * 206;
-      s += panel(4, y0, 332, 196);
+      const y0 = 8 + i * 210;
+      s += panel(4, y0, 332, 200);
       s += lbl(170, y0 + 24, r.title);
       s += r.draw(y0 + 74, 60);
-      s += arrow(P(170, y0 + 104), P(170, y0 + 134));
-      s += r.product(y0 + 164, i === 0 ? 120 : 128);
+      s += arrow(P(170, y0 + 104), P(170, y0 + 132));
+      s += r.product(y0 + 160, i === 0 ? 120 : 128);
     });
     return s;
   },

@@ -430,12 +430,14 @@
       12:['radical-chain','allylic-capture'],
       13:['radical-chain','radical-stability'] } },
 
-    'skeletal-structures': { n:8, steps:{
+    'skeletal-structures': { n:15, steps:{
       2:['skeletal-notation'],
-      3:['implicit-hydrogens','skeletal-notation'],
-      4:['skeletal-notation'],
+      4:['implicit-hydrogens','skeletal-notation'],
       6:['implicit-hydrogens','skeletal-notation'],
-      7:['implicit-hydrogens','skeletal-notation'] } },
+      8:['implicit-hydrogens','skeletal-notation'],
+      11:['implicit-hydrogens','formal-charge-calc'],
+      13:['implicit-hydrogens','skeletal-notation'],
+      14:['implicit-hydrogens','skeletal-notation'] } },
 
     'acidity-factors': { n:11, steps:{
       4:['acidity-factors'],
