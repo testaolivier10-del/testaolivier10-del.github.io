@@ -296,19 +296,22 @@
       6:['reductant-scope'],
       7:['reductant-scope','oxidation-level'] } },
 
-    'hydrogenation': { n:8, steps:{
-      2:['reductant-scope'],
-      3:['redox-stereochemistry'],
-      4:['redox-stereochemistry','reductant-scope'],
-      6:['reductant-scope'],
-      7:['reductant-scope'] } },
+    'hydrogenation': { n:12, steps:{
+      2:['redox-stereochemistry'],
+      3:['reductant-scope','energy-diagram-reading'],
+      5:['reductant-scope'],
+      8:['redox-stereochemistry','reductant-scope'],
+      10:['alkene-stability-ranking'],
+      11:['reductant-scope'] } },
 
-    'alkene-oxidation': { n:8, steps:{
-      2:['redox-stereochemistry','alkene-cleavage-scope'],
-      3:['alkene-cleavage-scope'],
-      4:['alkene-cleavage-scope'],
-      6:['alkene-cleavage-scope'],
-      7:['redox-stereochemistry'] } },
+    'alkene-oxidation': { n:13, steps:{
+      2:['redox-stereochemistry'],
+      5:['redox-stereochemistry'],
+      7:['alkene-cleavage-scope','redox-stereochemistry'],
+      8:['alkene-cleavage-scope'],
+      9:['alkene-cleavage-scope'],
+      11:['alkene-cleavage-scope'],
+      12:['redox-stereochemistry','alkene-cleavage-scope'] } },
 
     /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
     'conjugated-systems': { n:8, steps:{
@@ -407,11 +410,13 @@
       6:['leaving-group-ability','acyl-reactivity-order'],
       7:['acyl-reactivity-order','leaving-group-ability'] } },
 
-    'addition-reactions': { n:8, steps:{
+    'addition-reactions': { n:10, steps:{
       1:['alkene-pi-nucleophile'],
       2:['alkene-pi-nucleophile','electrophile-recognition'],
       4:['addition-stereochem','stereochemical-outcome'],
-      7:['addition-stereochem','stereochemical-outcome'] } },
+      6:['alkene-pi-nucleophile','nucleophile-recognition'],
+      7:['carbocation-rearrangement','carbocation-stability'],
+      9:['addition-stereochem','stereochemical-outcome'] } },
 
     'alcohol-reactions': { n:8, steps:{
       1:['alcohol-activation'],
@@ -435,20 +440,22 @@
       11:['aldol-connectivity','enolate-formation'],
       12:['aldol-connectivity','enolate-formation'] } },
 
-    'alkene-structure': { n:8, steps:{
-      1:['alkene-pi-nucleophile'],
+    'alkene-structure': { n:13, steps:{
       2:['hybridization-assignment','alkene-pi-nucleophile'],
-      3:['degrees-of-unsaturation'],
-      5:['alkene-stability-ranking'],
-      7:['alkene-stability-ranking'] } },
+      4:['degrees-of-unsaturation'],
+      5:['degrees-of-unsaturation'],
+      8:['alkene-stability-ranking'],
+      10:['alkene-stability-ranking'],
+      12:['alkene-stability-ranking'] } },
 
-    'alkynes': { n:9, steps:{
-      1:['alkyne-acidity'],
-      2:['alkyne-acidity','hybridization-assignment'],
+    'alkynes': { n:12, steps:{
+      1:['hybridization-assignment','molecular-geometry-vsepr'],
       3:['alkyne-acidity','acidity-factors'],
-      6:['addition-stereochem'],
-      7:['alkyne-acidity','curved-arrow-direction','acetylide-alkylation'],
-      8:['markovnikov-regiochem','keto-enol-tautomerism'] } },
+      4:['alkyne-acidity','pka-scale'],
+      5:['alkyne-acidity','curved-arrow-direction'],
+      7:['acetylide-alkylation','substrate-class'],
+      9:['partial-reduction','addition-stereochem'],
+      11:['markovnikov-regiochem','keto-enol-tautomerism'] } },
 
     'alpha-hydrogens': { n:14, steps:{
       2:['resonance-delocalization','alpha-acidity'],
@@ -724,11 +731,12 @@
       13:['lewis-structures-drawing'],
       15:['lewis-structures-drawing'] } },
 
-    'markovnikov': { n:8, steps:{
-      1:['markovnikov-regiochem'],
+    'markovnikov': { n:9, steps:{
+      1:['markovnikov-regiochem','carbocation-stability'],
       2:['markovnikov-regiochem','carbocation-stability'],
       4:['carbocation-rearrangement','markovnikov-regiochem'],
-      7:['markovnikov-regiochem'] } },
+      6:['markovnikov-regiochem','radical-chain'],
+      8:['markovnikov-regiochem','radical-stability'] } },
 
     'mass-spec': { n:8, steps:{
       1:['ms-fragmentation'],
