@@ -212,16 +212,18 @@ FIGURES.push({
   lessons: ['carbon-carbon-bonds'],
   anchor: '<!-- fig:same-count-skeletons:start -->',
   alt: 'Left: butan-1-ol, an unbranched chain of four carbons with OH on the end carbon. Right: 2-methylpropan-2-ol, a central carbon carrying OH and three methyl groups. Both are labeled four carbons.',
-  viewBox: '0 0 340 170',
+  viewBox: '0 0 340 178',
   build() {
     let s = '';
     const c = chain(24, 98, 4, 28, -16);
     s += path(c) + grp(c[3], -30, 26, 'OH', { r: 13 });
-    s += tag(78, 150, 'butan-1-ol: a chain');
+    s += tag(78, 146, 'butan-1-ol');
+    s += tag(78, 164, 'unbranched chain', { cls: 'fg-tag-good' });
     const m = P(252, 96);
     s += methyl(m, 180, 28) + methyl(m, 0, 28) + methyl(m, 90, 28);
     s += grp(m, -90, 26, 'OH', { r: 13 });
-    s += tag(252, 150, '2-methylpropan-2-ol: branched');
+    s += tag(252, 146, '2-methylpropan-2-ol');
+    s += tag(252, 164, 'branched', { cls: 'fg-tag-good' });
     s += tag(170, 22, 'four carbons each, joined differently', { cls: 'fg-tag-mut' });
     return s;
   },
