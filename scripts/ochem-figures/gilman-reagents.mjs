@@ -94,15 +94,15 @@ function sixRing(c, o = {}) {
     s += bd(v[0], O, { order: charged ? 1 : 2 }) + draw(O);
   }
   if (form === 'enolate' || form === 'ketone') {
-    const Me = A(v[4].x - 34, v[4].y + 10, 'CH₃', 'hi');
+    const Me = A(v[4].x - 34, v[4].y + 6, 'CH₃', 'hi');
     s += bd(v[4], Me, { cls: 'fg-bond-hi' }) + draw(Me);
   }
-  if (form === 'plus') s += plusSign(v[4].x - 4, v[4].y + 20);
+  if (form === 'plus') s += plusSign(v[4].x + 11, v[4].y + 3);
   if (o.nums) {
     if (O) s += good(O.x + 22, O.y + 4, '1');
     s += good(v[0].x + 13, v[0].y - 6, '2');
-    s += good(v[5].x - 12, v[5].y + 4, '3') + tag(v[5].x - 25, v[5].y + 4, 'α');
-    s += good(v[4].x - 12, v[4].y + 4, '4') + tag(v[4].x - 25, v[4].y + 4, 'β');
+    s += good(v[5].x - 21, v[5].y + 4, '3') + tag(v[5].x - 34, v[5].y + 4, 'α');
+    s += good(v[4].x - 21, v[4].y + 4, '4') + tag(v[4].x - 34, v[4].y + 4, 'β');
   }
   return { s, v, O };
 }
@@ -111,7 +111,7 @@ function sixRing(c, o = {}) {
    to the alpha-C2 bond (bowed outside the ring), the C=O pair onto O (on the
    left of the C=O, clear of the "1" and "2" labels). */
 const piArrows = (v, O) =>
-  curve(mid(v[4], v[5]), mid(v[5], v[0]), { bow: -13, size: 7 }) +
+  curve(mid(v[4], v[5]), mid(v[5], v[0]), { bow: -10, size: 7 }) +
   curve(P(v[0].x - 6, (v[0].y + O.y) / 2 + 3), P(O.x - 14, O.y + 1), { bow: -9, size: 7 });
 
 /* ======================================== the cuprate and its bond ===== */
@@ -179,7 +179,7 @@ function lumoPanel(ox, oy) {
   const xs = [ox + 70, ox + 136, ox + 202, ox + 268], y0 = oy + 100;
   const coef = [-0.43, 0.58, 0.23, -0.66];
   const names = ['O', 'C', 'C', 'C'];
-  const at = xs.map((x, i) => A(x, y0, names[i], i === 3 ? 'hi' : 'plain', 11));
+  const at = xs.map((x, i) => A(x, y0, names[i], 'plain', 11));
   for (let i = 0; i < 3; i++) s += bd(at[i], at[i + 1]);
   xs.forEach((x, i) => { s += pLobe(x, y0, coef[i]); });
   s += draw(...at);
@@ -248,7 +248,7 @@ FIGURES.push({
     s += arrow(P(498, 120), P(574, 206), { size: 8 });
     s += tag(528, 112, '(CH₃)₂CuLi', { anchor: 'start' }) + mut(528, 128, 'then H₃O⁺', { anchor: 'start' });
     s += panel(450, 214, 290, 180) + good(595, 236, '1,4: adds at atom 4');
-    s += productKetone(605, 310);
+    s += productKetone(605, 324);
     s += tag(595, 382, '3-methylcyclohexan-1-one');
     return s;
   },
@@ -292,7 +292,7 @@ function stageAdd(ox, oy) {
   const r = sixRing(c, { form: 'enone' });
   s += r.s + piArrows(r.v, r.O);
   const v = r.v;
-  s += tag(v[5].x - 14, v[5].y + 4, 'α') + tag(v[4].x - 14, v[4].y + 4, 'β');
+  s += tag(v[5].x - 22, v[5].y + 4, 'α') + tag(v[4].x - 22, v[4].y + 4, 'β');
   const Me = A(ox + 48, oy + 200, 'H₃C'), Cu = A(ox + 112, oy + 200, 'Cu⁻', 'plain', 16), Me2 = A(ox + 176, oy + 200, 'CH₃');
   s += bd(Me, Cu) + bd(Cu, Me2) + draw(Me, Cu, Me2);
   s += tag(ox + 210, oy + 204, 'Li⁺');
@@ -365,9 +365,9 @@ function acylRow(ox, oy, which) {
   for (let i = 0; i < 3; i++) s += bond(p[i], p[i + 1], { rFrom: 0, rTo: 0 });
   const O = A(p[3].x, p[3].y - 30, 'O', 'plain', 11), Cl = A(p[3].x + 26, p[3].y + 15, 'Cl', 'plain', 12);
   s += bd(p[3], O, { order: 2 }) + bd(p[3], Cl) + draw(O, Cl);
-  s += right(oy + 66, ox + 124, ox + 186);
-  s += tag(ox + 155, oy + 56, which === 'cu' ? '(CH₃)₂CuLi' : 'CH₃MgBr');
-  s += mut(ox + 155, oy + 84, which === 'cu' ? '−78 °C' : 'excess; H₃O⁺');
+  s += right(oy + 66, ox + 130, ox + 190);
+  s += tag(ox + 160, oy + 56, which === 'cu' ? '(CH₃)₂CuLi' : 'CH₃MgBr');
+  s += mut(ox + 160, oy + 86, which === 'cu' ? '−78 °C' : 'excess; H₃O⁺');
   const q = [o(198, 76), o(220, 63), o(242, 76), o(264, 63)];
   for (let i = 0; i < 3; i++) s += bond(q[i], q[i + 1], { rFrom: 0, rTo: 0 });
   if (which === 'cu') {
@@ -415,13 +415,13 @@ FIGURES.push({
     s += bd(M1, Cu) + bd(Cu, M2) + draw(M1, Cu, M2);
     s += curve(P(mid(M1, Cu).x, M1.y - 5), P(Cu2.x + 1, Cu2.y + 7), { bow: -22, size: 7 });
     s += curve(mid(Cu2, Ox), P(Ox.x + 13, Ox.y - 2), { bow: 12, size: 7 });
-    s += right(84, 206, 240) + tag(223, 72, 'H₃O⁺');
+    s += right(84, 212, 244) + tag(228, 72, 'H₃O⁺');
     // butan-2-ol: C1-C2(OH)-C3-C4; the new bond C3-C4 is colored
-    const b1 = P(252, 96), b2 = P(274, 82), b3 = P(296, 96), b4 = P(318, 82);
-    const OH = A(274, 52, 'OH', 'plain', 13);
+    const b1 = P(258, 96), b2 = P(280, 82), b3 = P(302, 96), b4 = P(324, 82);
+    const OH = A(280, 52, 'OH', 'plain', 13);
     s += bond(b1, b2, { rFrom: 0, rTo: 0 }) + bond(b2, b3, { rFrom: 0, rTo: 0 }) + bond(b3, b4, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
     s += bd(b2, OH) + draw(OH);
-    s += tag(285, 124, 'butan-2-ol');
+    s += tag(291, 124, 'butan-2-ol');
     return s;
   },
   caption: '2-Methyloxirane with lithium dimethylcuprate. The colored bond is the new C–C bond.',

@@ -189,9 +189,13 @@
       7:['organometallic-quench'],
       9:['polarity-reversal','organometallic-quench'] } },
 
-    'grignard-reagents': { n:8, steps:{
-      2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
-      6:['grignard-scope'], 7:['organometallic-quench','grignard-scope'] } },
+    'grignard-reagents': { n:10, steps:{
+      3:['grignard-scope'],
+      4:['grignard-scope'],
+      5:['grignard-scope'],
+      6:['grignard-scope'],
+      8:['organometallic-quench','grignard-scope'],
+      9:['organometallic-quench','grignard-scope'] } },
 
     'organolithium-reagents': { n:8, steps:{
       2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
