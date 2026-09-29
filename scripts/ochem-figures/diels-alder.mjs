@@ -428,12 +428,12 @@ FIGURES.push({
     s += sub(R.d1, -60, 'CHO', { len: 30, r: 15 });
     s += tag(96, 18, 'seen from above');
     s += tag(96, 166, 'CH₃ outward, CHO endo', { cls: 'fg-tag-mut' });
-    s += right(88, 180, 214);
-    const Q = hexFlat(290, 88, 34);
+    s += right(88, 172, 204);
+    const Q = hexFlat(300, 88, 34);
     s += productRing(Q);
     s += sub(Q.c1, OUT.c1, 'CH₃', { len: 28, r: 14, kind: 'wedge' });
     s += sub(Q.d1, OUT.d1, 'CHO', { len: 28, r: 15, kind: 'wedge' });
-    s += tag(290, 166, 'cis', { cls: 'fg-tag-good' });
+    s += tag(300, 166, 'cis', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'The dienophile lies under the diene. Its CHO points in under the diene (endo), and it comes out cis to the outward methyl.',
@@ -462,18 +462,18 @@ function regioRow(ox, oy, donorAt) {
   s += text(plusC.x + sx * 8, plusC.y + 20, 'δ+', { cls: 'fg-lbl', anchor: an });
   s += tag(ox + 86, oy + 184, donorAt === 1 ? 'OMe on C1' : 'OMe on C2');
 
-  s += right(oy + 92, ox + 160, ox + 188);
+  s += right(oy + 92, ox + 156, ox + 184);
 
-  const Q = hexFlat(ox + 262, oy + 92, 32);
+  const Q = hexFlat(ox + 270, oy + 92, 32);
   s += productRing(Q);
   if (donorAt === 1) {
     s += sub(Q.c1, OUT.c1, 'OMe', { len: 26, r: 15 });
     s += sub(Q.d1, OUT.d1, 'CHO', { len: 26, r: 15 });
-    s += tag(ox + 262, oy + 184, '1,2: "ortho"', { cls: 'fg-tag-good' });
+    s += tag(ox + 270, oy + 184, '1,2: "ortho"', { cls: 'fg-tag-good' });
   } else {
     s += sub(Q.c2, OUT.c2, 'OMe', { len: 26, r: 15 });
     s += sub(Q.d2, OUT.d2, 'CHO', { len: 26, r: 15 });
-    s += tag(ox + 262, oy + 184, '1,4: "para"', { cls: 'fg-tag-good' });
+    s += tag(ox + 270, oy + 184, '1,4: "para"', { cls: 'fg-tag-good' });
   }
   return s;
 }
@@ -531,7 +531,7 @@ function dienophileStereo(ox, oy, cis, stacked) {
   s += productRing(Q);
   s += sub(Q.d1, OUT.d1, 'CO₂Me', { len: 38, r: 23, kind: 'wedge' });
   s += sub(Q.d2, OUT.d2, 'CO₂Me', { len: 38, r: 23, kind: cis ? 'wedge' : 'hash' });
-  const ly = stacked ? oy + 320 : oy + 150;
+  const ly = stacked ? oy + 334 : oy + 150;
   s += tag(stacked ? ox + 86 : ox + 282, ly, cis ? 'cis on the ring' : 'trans on the ring', { cls: 'fg-tag-good' });
   return s;
 }
@@ -555,7 +555,7 @@ FIGURES.push({
   id: 'l-da-dienophile-stereo',
   lessons: ['diels-alder'],
   alt: 'Left column: dimethyl maleate, esters cis across the C=C, reacts with butadiene to give a cyclohexene with both CO2Me groups on wedges, cis on the ring. Right column: dimethyl fumarate, esters trans, gives the ring with one CO2Me on a wedge and one hashed, trans on the ring.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 344',
   build() {
     return dienophileStereo(-6, 0, true, true) + dienophileStereo(164, 0, false, true);
   },
@@ -583,7 +583,7 @@ function dieneStereo(ox, oy, EZ) {
   s += tag(ox + 76, oy + 146, EZ ? 'one out, one in' : 'both CH₃ outward', { cls: 'fg-tag-mut' });
 
   s += right(oy + 70, ox + 158, ox + 188);
-  s += tag(ox + 173, oy + 92, '+ ethene', { cls: 'fg-tag-mut' });
+  s += tag(ox + 173, oy + 104, '+ ethene', { cls: 'fg-tag-mut' });
 
   const Q = hexFlat(ox + 264, oy + 70, 32);
   s += productRing(Q, { plainNew: true });
@@ -735,8 +735,8 @@ function retroRow(ox, oy) {
   const R = hexFlat(ox + 256, oy + 70, 38, 28);
   s += diene(R);
   s += sub(R.c3, OUT.c3, 'CH₃', { len: 28, r: 14 });
-  s += bond(R.d1, R.d2, { order: 2, rFrom: 0, rTo: 0 });
-  s += sub(R.d1, OUT.d1, 'CHO', { len: 28, r: 15 });
+  s += ringDouble(R.d1, R.d2, R.ctr);
+  s += sub(R.d1, OUT.d1, 'CHO', { len: 30, r: 15 });
   s += tag(ox + 256, oy + 176, 'isoprene + propenal', { cls: 'fg-tag-good' });
   return s;
 }
