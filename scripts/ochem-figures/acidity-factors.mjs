@@ -485,12 +485,12 @@ FIGURES.push({
   id: 'l-induction-distance',
   lessons: ['acidity-factors'],
   alt: '2-, 3- and 4-chlorobutanoic acid stacked, the chlorine one carbon further from the COOH group each time, with pKa 2.86, 4.06 and 4.52. Butanoic acid itself is 4.82.',
-  viewBox: '0 0 340 450',
+  viewBox: '0 0 340 536',
   build() {
     let s = '';
     s += tag(170, 20, 'butanoic acid itself: pKa 4.82');
     BUTANOIC.forEach((b, i) => {
-      const y = 106 + i * 136;
+      const y = 110 + i * 166;
       const a = acidChain(P(66, y), 3, b.pos);
       s += a.svg;
       s += tag(292, y - 16, 'Cl on C' + (b.pos + 1));
@@ -631,14 +631,14 @@ FIGURES.push({
 
 /* ================================================ WORKED EXAMPLE ======= */
 /* 4-Hydroxybutan-2-one, skeletal, C1–C4 numbered. */
-function hydroxybutanone(x0, y0, dx = 60, dy = 34) {
+function hydroxybutanone(x0, y0, dx = 60, dy = 34, hiOH = true) {
   const c1 = P(x0, y0), c2 = P(x0 + dx, y0 - dy), c3 = P(x0 + 2 * dx, y0), c4 = P(x0 + 3 * dx, y0 - dy), o = P(x0 + 4 * dx, y0);
   const ok = P(c2.x, c2.y - 56);
   let g = '';
   g += sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + bond(c4, o, { rFrom: 0, rTo: 19 });
   g += bond(c2, ok, { rFrom: 0, rTo: 15, order: 2 });
   g += atom(ok.x, ok.y, 'O', { size: 11 }) + pairs(ok, [-140, -40]);
-  g += atom(o.x, o.y, 'OH', { kind: 'hi', r: 19, size: 10.5 });
+  g += atom(o.x, o.y, 'OH', { kind: hiOH ? 'hi' : 'plain', r: 19, size: 10.5 });
   return { svg: g, c1, c2, c3, c4, o, ok };
 }
 
@@ -675,7 +675,7 @@ FIGURES.push({
   viewBox: '0 0 340 190',
   build() {
     let s = '';
-    const m = hydroxybutanone(40, 130, 60, 34);
+    const m = hydroxybutanone(40, 130, 60, 34, false);
     s += m.svg;
     s += tag(m.c1.x, m.c1.y + 24, 'C1');
     s += tag(m.c2.x + 20, m.c2.y + 4, 'C2', { anchor: 'start' });
