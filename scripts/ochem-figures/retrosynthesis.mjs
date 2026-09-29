@@ -32,10 +32,10 @@ const draw = (...as) => as.map((a) => atom(a.x, a.y, a.lbl, { kind: a.kind, r: a
 const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r || 0, rTo: b.r || 0, ...o });
 /* A labelled substituent on vertex p, along screen angle deg, with a bond of
    about `len` showing between the vertex and the disc. */
-const sub = (p, deg, lbl, len = 18, kind) => {
-  const probe = A(0, 0, lbl, kind);
+const sub = (p, deg, lbl, len = 18, kind, r) => {
+  const probe = A(0, 0, lbl, kind, r);
   const q = polar(p, deg, len + probe.r);
-  const a = A(q.x, q.y, lbl, kind);
+  const a = A(q.x, q.y, lbl, kind, r);
   return bd(p, a) + draw(a);
 };
 /* C=O on vertex p along screen angle deg. */
@@ -97,7 +97,7 @@ function butanol(x0, y0, cut) {
   s += tag(v[1].x, y0 + 26, 'carbinol carbon');
   if (cut) {
     s += squiggle(v[1], v[2]);
-    s += tag(v[3].x + 4, v[3].y - 18, 'cut');
+    s += tag(v[2].x + 14, v[2].y - 26, 'cut');
   }
   return s;
 }
@@ -105,7 +105,7 @@ function butanol(x0, y0, cut) {
    was) and ethanal with its carbonyl carbon marked delta-plus. */
 function ethylAnion(x0, y0) {
   const a = P(x0, y0), b = P(x0 + DX, y0 - DY);
-  return sk(a, b) + anion(a, 200, 115);
+  return sk(a, b) + anion(a, 165, 135);
 }
 function ethanal(x0, y0) {
   const a = P(x0, y0), b = P(x0 + DX, y0 - DY);
@@ -116,20 +116,20 @@ FIGURES.push({
   id: 'butanol-disconnection',
   section: 'retrosynthesis',
   anchor: 'which two pieces, joined by a reaction you know, would give this bond.</p>',
-  viewBox: '0 0 440 236',
+  viewBox: '0 0 480 206',
   alt: 'Butan-2-ol drawn skeletally, with its carbinol carbon labelled and a squiggle across the bond from the carbinol carbon to the ethyl group. A double-lined arrow reading "could be made from" leads to two pieces: an ethyl anion with a lone pair and a minus sign, labelled "attacks", and ethanal with a delta-plus on its carbonyl carbon, labelled "is attacked". Below them: bought as ethylmagnesium bromide and ethanal.',
   build() {
-    let s = butanol(40, 150, true);
-    s += retroH(146, 140, 50);
-    s += tag(171, 124, 'could be made from');
-    s += ethylAnion(236, 150) + tag(250, 180, 'attacks');
-    s += text(306, 146, '+', { cls: 'fg-lbl' });
-    s += ethanal(334, 150) + tag(352, 180, 'is attacked');
-    s += rule(20, 198, 420, 198);
-    s += tag(160, 222, 'bought as:', { cls: 'fg-tag-mut' });
-    s += tag(250, 222, 'CH₃CH₂MgBr', { cls: 'fg-tag-good' });
-    s += text(306, 222, '+', { cls: 'fg-lbl' });
-    s += tag(356, 222, 'ethanal', { cls: 'fg-tag-good' });
+    let s = butanol(40, 110, true);
+    s += retroH(158, 100, 70);
+    s += tag(193, 128, 'could be made from');
+    s += ethylAnion(290, 110) + tag(302, 140, 'attacks');
+    s += text(358, 106, '+', { cls: 'fg-lbl' });
+    s += ethanal(386, 110) + tag(404, 140, 'is attacked');
+    s += rule(20, 162, 460, 162);
+    s += tag(206, 188, 'bought as:', { cls: 'fg-tag-mut' });
+    s += tag(302, 188, 'CH₃CH₂MgBr', { cls: 'fg-tag-good' });
+    s += text(358, 188, '+', { cls: 'fg-lbl' });
+    s += tag(404, 188, 'ethanal', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'The squiggle marks the one bond you cut. The minus sign and the δ+ say which piece attacks and which is attacked.',
@@ -191,8 +191,6 @@ FIGURES.push({
     s += atom(95, 108, 'O') + atom(165, 108, 'OH');
     s += squiggle(v3, v4, 18);
     s += tag(147, 216, 'cut here');
-    s += tag(95, 244, 'C=O carbon', { cls: 'fg-tag-mut' });
-    s += tag(186, 244, 'C–OH carbon', { cls: 'fg-tag-mut' });
 
     s += retroH(236, 152, 58);
     s += tag(265, 130, 'aldol');
@@ -204,8 +202,8 @@ FIGURES.push({
     s += panel(318, 76, 180, 150);
     s += tag(408, 98, 'enolate: attacks');
     s += acetone(370, 170);
-    s += lonePair(430, 192, 20, { dist: 10, spread: 4 });
-    s += text(448, 186, '−', { cls: 'fg-lbl' });
+    s += lonePair(430, 192, 0, { dist: 10, spread: 4 });
+    s += text(446, 180, '−', { cls: 'fg-lbl' });
     s += text(408, 214, 'α carbon, nucleophilic', { cls: 'fg-sm' });
 
     s += panel(508, 76, 180, 150);
@@ -229,7 +227,7 @@ const RETRONS = [
     draw(c) {
       const v = chain(c.x - 2 * DX, c.y + 8, 5, false);
       let s = path(v) + sub(v[2], 90, 'OH');
-      s += num(v[2], 270, '1') + num(v[1], 270, '2') + num(v[3], 270, '2');
+      s += num(v[2], 150, '1', 16) + num(v[1], 270, '2') + num(v[3], 270, '2');
       return s + squiggle(v[2], v[3]);
     },
   },
@@ -239,7 +237,7 @@ const RETRONS = [
     draw(c) {
       const v = chain(c.x - 1.5 * DX, c.y + 8, 4, false);
       let s = path(v) + carbonyl(v[0], 210) + sub(v[2], 90, 'OH');
-      s += num(v[0], 90, '1', 14) + num(v[1], 270, '2') + num(v[2], 270, '3') + num(v[3], 270, '4');
+      s += num(v[0], 90, '1', 14) + num(v[1], 270, '2') + num(v[2], 30, '3', 15) + num(v[3], 270, '4');
       return s + squiggle(v[1], v[2]);
     },
   },
@@ -258,11 +256,11 @@ const RETRONS = [
     name: 'Claisen', pattern: '1,3-dicarbonyl', cut: 'cut 2–3',
     /* ethyl 3-oxobutanoate, drawn CH3 (4) on the left to the ester (1) */
     draw(c) {
-      const v = chain(c.x - 62, c.y + 8, 4, false);
-      let s = path(v) + carbonyl(v[2], 90) + carbonyl(v[0], 90);
-      s += sub(v[2], 330, 'OEt', 14);
-      s += num(v[3], 270, '4') + num(v[2], 270, '1') + num(v[1], 270, '2') + num(v[0], 270, '3');
-      return s + squiggle(v[0], v[1]);
+      const v = chain(c.x - 58, c.y + 12, 4, true);
+      let s = path(v) + carbonyl(v[1], 90) + carbonyl(v[3], 90);
+      s += sub(v[3], 330, 'OEt', 12);
+      s += num(v[0], 270, '4') + num(v[1], 150, '3', 15) + num(v[2], 270, '2') + num(v[3], 270, '1');
+      return s + squiggle(v[1], v[2]);
     },
   },
   {
@@ -291,7 +289,7 @@ const RETRONS = [
       /* the screen angle pointing from the ring centre out through p */
       const out = (p) => (Math.atan2(-(p.y - o.y), p.x - o.x) * 180) / Math.PI;
       s += num(v[1], out(v[1]), '1', 13) + num(v[2], out(v[2]), '2', 13) + num(v[3], 270, '3', 14);
-      s += num(v[4], out(v[4]), '4', 14) + num(v[5], 100, '5', 14) + num(v[0], 90, '6', 13);
+      s += num(v[4], out(v[4]), '4', 14) + num(v[5], 330, '5', 14) + num(v[0], 90, '6', 13);
       return s + squiggle(v[3], v[4], 10) + squiggle(v[5], v[0], 10);
     },
   },
@@ -347,7 +345,7 @@ const SORT = [
     const v = polyPts(o.x, o.y, 6, 26, 90);
     let s = '';
     for (let i = 0; i < 6; i++) s += i === 1 ? ringDouble(v[1], v[2], o, { inset: 5, gap: 4.4 }) : sk(v[i], v[(i + 1) % 6]);
-    return s + sub(v[5], 30, 'CO₂CH₃', 10);
+    return s + sub(v[5], 30, 'CO₂CH₃', 10, 'plain', 24);
   } },
   { k: 'C', draw(c) {
     /* 3-methylhexan-3-ol: quaternary carbinol carbon at vertex 2 */
@@ -356,11 +354,11 @@ const SORT = [
   } },
   { k: 'D', draw(c) {
     /* ethyl 3-oxo-3-phenylpropanoate */
-    const k = P(c.x - 22, c.y);
+    const k = P(c.x - 14, c.y + 2);
     const ch2 = polar(k, 330, L), e = polar(ch2, 30, L);
     let s = sk(k, ch2) + sk(ch2, e) + carbonyl(k, 90) + carbonyl(e, 90) + sub(e, 330, 'OEt', 12);
-    const rc = polar(k, 210, L + 15);
-    const ring = benzene(rc.x, rc.y, 15, { rot: 30 });
+    const rc = polar(k, 210, L + 19);
+    const ring = benzene(rc.x, rc.y, 19, { rot: 30 });
     return s + ring.svg + sk(k, ring.pts[0]);
   } },
 ];
@@ -388,13 +386,13 @@ FIGURES.push({
    lists which bonds get a squiggle: a (to Ph), b (to CH3), c (to CH2CH3). */
 function ppb(cx, cy, cuts) {
   const c = A(cx, cy, 'C', 'hi');
-  const oh = A(cx, cy - 52, 'OH'), ph = A(cx - 82, cy, 'Ph'), et = A(cx + 92, cy, 'CH₂CH₃'), me = A(cx, cy + 56, 'CH₃');
+  const oh = A(cx, cy - 52, 'OH'), ph = A(cx - 82, cy, 'Ph'), et = A(cx + 88, cy, 'CH₂CH₃', 'plain', 26), me = A(cx, cy + 56, 'CH₃');
   let s = bd(c, oh) + bd(c, ph) + bd(c, et) + bd(c, me) + draw(oh, ph, et, me, c);
-  s += tag(cx - 50, cy - 30, 'carbinol C', { cls: 'fg-tag-mut' });
+  s += tag(cx - 44, cy - 40, 'carbinol C', { cls: 'fg-tag-mut', anchor: 'end' });
   const marks = {
-    a: () => squiggle(P(ph.x + ph.r, cy), P(cx - c.r, cy), 13) + tag(cx - 42, cy + 28, 'a'),
-    b: () => squiggle(P(cx, cy + c.r), P(cx, me.y - me.r), 13) + tag(cx - 22, cy + 34, 'b'),
-    c: () => squiggle(P(cx + c.r, cy), P(et.x - et.r, cy), 13) + tag(cx + 42, cy + 28, 'c'),
+    a: () => squiggle(P(ph.x + ph.r, cy), P(cx - c.r, cy), 13) + tag(cx - 42, cy - 18, 'a'),
+    b: () => squiggle(P(cx, cy + c.r), P(cx, me.y - me.r), 13) + tag(cx + 24, cy + 36, 'b'),
+    c: () => squiggle(P(cx + c.r, cy), P(et.x - et.r, cy), 13) + tag(cx + 40, cy - 18, 'c'),
   };
   for (const k of cuts) s += marks[k]();
   return s;
@@ -410,7 +408,7 @@ FIGURES.push({
   section: 'retrosynthesis',
   anchor: 'is telling you so.</p>\n</div>',
   alt: '2-Phenylbutan-2-ol with its carbinol carbon highlighted and squiggles across its three carbon–carbon bonds: a to phenyl, b to methyl, c to ethyl. Below, one panel per cut. Cut a: phenyl anion plus butan-2-one, bought as PhMgBr and butan-2-one. Cut b: methyl anion plus propiophenone, bought as CH3MgBr and propiophenone. Cut c: ethyl anion plus acetophenone, bought as CH3CH2MgBr and acetophenone.',
-  viewBox: '0 0 760 360',
+  viewBox: '0 0 760 326',
   build() {
     let s = ppb(380, 92, ['a', 'b', 'c']);
     s += rule(30, 178, 730, 178);
@@ -424,10 +422,9 @@ FIGURES.push({
       s += tag(cx, 308, equivs, { cls: 'fg-tag-good' });
     };
     col(8, CUTS[0]); col(262, CUTS[1]); col(516, CUTS[2]);
-    s += label(380, 346, 'Each cut is a Grignard disconnection. Only the starting materials change.');
     return s;
   },
-  caption: 'Every carbon–carbon bond to the carbinol carbon can be cut, so this target has three one-step routes.',
+  caption: 'Cuts a, b and c. Each panel gives the synthons for one cut and, in green, what you buy.',
 });
 
 FIGURES.push({
@@ -436,9 +433,9 @@ FIGURES.push({
   viewBox: '0 0 340 170',
   alt: '2-Phenylbutan-2-ol with its carbinol carbon highlighted: OH up, phenyl to the left, methyl down and ethyl to the right. A squiggle crosses the bond to the ethyl group.',
   build() {
-    return ppb(150, 72, ['c']);
+    return ppb(160, 72, ['c']);
   },
-  caption: '2-Phenylbutan-2-ol, cut at the bond to the ethyl group.',
+  caption: 'The squiggle marks cut c.',
 });
 
 FIGURES.push({
@@ -447,7 +444,7 @@ FIGURES.push({
   viewBox: '0 0 340 440',
   alt: '2-Phenylbutan-2-ol with squiggles across its three carbon–carbon bonds, a to phenyl, b to methyl and c to ethyl. Below, one row per cut. Cut a: PhMgBr and butan-2-one. Cut b: CH3MgBr and propiophenone. Cut c: CH3CH2MgBr and acetophenone.',
   build() {
-    let s = ppb(150, 70, ['a', 'b', 'c']);
+    let s = ppb(160, 70, ['a', 'b', 'c']);
     CUTS.forEach(([cut, synthons, equivs], i) => {
       const y = 158 + i * 94;
       s += panel(4, y, 332, 86);
@@ -473,9 +470,9 @@ function hexStage(ox, oy, w, h, stage) {
   s += tag(ox + w / 2, oy + 20, titles[stage]);
   const cx = ox + w / 2, cy = oy + 84;
   if (stage === 0) {
-    const v = chain(cx - 2.5 * DX, cy + 8, 6, true);
-    s += path(v) + carbonyl(v[2], 270);
-    ['1', '2', '3', '4', '5', '6'].forEach((t, i) => { s += num(v[i], i === 2 ? 90 : (i % 2 ? 90 : 270), t, 14); });
+    const v = chain(cx - 2.5 * DX, cy + 2, 6, false);
+    s += path(v) + carbonyl(v[2], 90);
+    ['1', '2', '3', '4', '5', '6'].forEach((t, i) => { s += num(v[i], i === 2 || i % 2 ? 270 : 90, t, 14); });
   } else if (stage === 1) {
     const c2 = P(cx - 1.5 * L + 2, cy), c3 = P(c2.x + L, cy), c4 = P(c3.x + L, cy), c5 = P(c4.x + L, cy);
     const c1 = polar(c2, 210, L), c6 = polar(c5, 30, L);
@@ -486,7 +483,7 @@ function hexStage(ox, oy, w, h, stage) {
     const c2 = P(cx - L - 4, cy - 8), c3 = P(c2.x + L, c2.y), c4 = P(c3.x + L, c2.y);
     const c1 = polar(c2, 210, L), h = A(c4.x + L + 2, c2.y, 'H');
     s += sk(c1, c2) + sk(c2, c3) + bond(c3, c4, TRI) + bd(c4, h) + draw(h);
-    s += num(c1, 270, '1', 14) + num(c2, 90, '2', 14) + num(c3, 270, '3', 16) + num(c4, 270, '4', 16);
+    s += num(c1, 270, '1', 14) + num(c2, 125, '2', 15) + num(c3, 270, '3', 16) + num(c4, 270, '4', 16);
     s += squiggle(c2, c3, 12);
     s += label(cx, cy + 40, '+ CH₃CH₂Br');
   } else {

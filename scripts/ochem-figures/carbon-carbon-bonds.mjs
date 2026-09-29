@@ -75,7 +75,7 @@ function tenPanels() {
       draw(cx, cy) {
         const c = chain(cx - 42, cy + 8, 4, 28, -16);
         let s = path(c, [1]);
-        s += grp(c[1], -90, 24, 'OH', { r: 13 });
+        s += grp(c[1], -90, 22, 'OH', { r: 13 });
         s += grp(c[3], 30, 24, 'O', { order: 2 });
         return s;
       } },
@@ -90,11 +90,11 @@ function tenPanels() {
       } },
     { t: 'Michael (conjugate) addition', r: 'malonate enolate + but-3-en-2-one', n: 'a 1,5-keto ester',
       draw(cx, cy) {
-        const c = chain(cx - 22, cy - 6, 5, 26, 16);
+        const c = chain(cx - 30, cy + 2, 5, 26, -16);
         let s = path(c, [0]);
-        s += grp(c[0], 200, 34, 'CO₂Et', { r: 20 });
-        s += grp(c[0], -110, 30, 'CO₂Et', { r: 20 });
-        s += grp(c[3], 90, 22, 'O', { order: 2 });
+        s += grp(c[0], -140, 36, 'CO₂Et', { r: 19 });
+        s += grp(c[0], 140, 36, 'CO₂Et', { r: 19 });
+        s += grp(c[3], -90, 22, 'O', { order: 2 });
         return s;
       } },
     { t: 'Diels–Alder', r: 'butadiene + ethene, the simplest case', n: 'cyclohexene, two bonds at once',
@@ -104,7 +104,7 @@ function tenPanels() {
         const at = (deg) => off(P(cx, cy + 2), deg, 27);
         const c1 = at(180), c2 = at(240), c3 = at(300), c4 = at(0), d2 = at(60), d1 = at(120);
         const ctr = P(cx, cy + 2);
-        return sk(c1, c2) + ringDouble(c2, c3, ctr) + sk(c3, c4) + sk(c4, d2, 'fg-bond-hi') + sk(d2, d1) + sk(d1, c1, 'fg-bond-hi');
+        return sk(c1, c2) + ringDouble(c2, c3, ctr, { inset: 6 }) + sk(c3, c4) + sk(c4, d2, 'fg-bond-hi') + sk(d2, d1) + sk(d1, c1, 'fg-bond-hi');
       } },
     { t: 'Friedel–Crafts acylation', r: 'benzene + CH₃COCl, AlCl₃', n: 'acetophenone',
       draw(cx, cy) {
@@ -131,22 +131,22 @@ FIGURES.push({
   section: 'carbon-carbon-bonds',
   anchor: '<!-- fig:the-ten-drawn-once:start -->',
   alt: 'Ten panels, one per reaction, each showing the product in skeletal form with the new carbon-carbon bond in color: 1-methylcyclohexan-1-ol, propanoic acid, but-1-yne, propanenitrile, 3-hydroxybutanal, ethyl acetoacetate, the malonate Michael adduct, cyclohexene with its two new bonds, acetophenone and methylenecyclohexane.',
-  viewBox: '0 0 700 752',
+  viewBox: '0 0 700 856',
   build() {
     let s = '';
-    const PW = 334, PH = 140;
+    const PW = 334, PH = 156;
     const cols = [10, 356];
-    const rows = [10, 158, 306, 454, 602];
+    const rows = [10, 174, 338, 502, 666];
     tenPanels().forEach((pn, i) => {
       const x = cols[i % 2], y = rows[Math.floor(i / 2)];
       const cx = x + PW / 2;
       s += panel(x, y, PW, PH);
       s += tag(cx, y + 20, pn.t);
       s += text(cx, y + 38, pn.r, { cls: 'fg-sm' });
-      s += pn.draw(cx, y + 80);
-      s += text(cx, y + 130, pn.n, { cls: 'fg-tag-good' });
+      s += pn.draw(cx, y + 90);
+      s += text(cx, y + 146, pn.n, { cls: 'fg-tag-good' });
     });
-    s += tag(350, 746, 'in color: the bond the reaction made', { cls: 'fg-tag-mut' });
+    s += tag(350, 846, 'in color: the bond the reaction made', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'One example of each reaction, drawn as its product. Find the colored bond first, then the functional group next to it.',
@@ -176,7 +176,8 @@ FIGURES.push({
     s += tag(mid(c1, c2).x + 4, mid(c1, c2).y + 24, 'b', { cls: 'fg-tag-warn' });
     s += tag(92, 170, '6 C from benzene');
     s += tag(220, 170, '3 C in the chain');
-    s += tag(170, 200, 'a: joins ring to chain    b: inside the chain', { cls: 'fg-tag-mut' });
+    s += tag(92, 196, 'a: joins ring to chain', { cls: 'fg-tag-mut' });
+    s += tag(250, 196, 'b: inside the chain', { cls: 'fg-tag-mut' });
     s += tag(170, 22, '1-phenylpropan-1-ol, 9 carbons');
     return s;
   },
@@ -234,36 +235,37 @@ FIGURES.push({
   section: 'carbon-carbon-bonds',
   anchor: '<!-- fig:one-carbon-extensions:start -->',
   alt: '1-Bromobutane at the left, with three arrows. NaCN gives pentanenitrile, which H3O+ and heat turn into pentanoic acid and LiAlH4 then water turns into pentan-1-amine. Mg then CO2 then H3O+ gives pentanoic acid. Mg then formaldehyde then H3O+ gives pentan-1-ol. In every product the fifth carbon and its bond to the chain are in color.',
-  viewBox: '0 0 720 360',
+  viewBox: '0 0 720 356',
   build() {
     let s = '';
-    s += bromobutane(24, 196);
-    s += tag(70, 232, '1-bromobutane, 4 C');
-    // three arrows fanning out from the start
-    s += arrow(P(150, 176), P(230, 80), { size: 8 });
-    s += arrow(P(150, 188), P(230, 188), { size: 8 });
-    s += arrow(P(150, 200), P(230, 296), { size: 8 });
-    s += tag(172, 112, 'NaCN', { anchor: 'end' });
-    s += tag(190, 176, 'Mg, then CO₂,');
-    s += tag(190, 210, 'then H₃O⁺');
-    s += tag(172, 268, 'Mg, then HCHO,', { anchor: 'end' });
-    s += tag(172, 284, 'then H₃O⁺', { anchor: 'end' });
+    s += bromobutane(20, 206);
+    s += tag(66, 242, '1-bromobutane, 4 C');
+    // a rail from the start, then one arrow per route
+    s += `<line class="fg-arrow" x1="142" y1="190" x2="164" y2="190"></line>`;
+    s += `<line class="fg-arrow" x1="164" y1="84" x2="164" y2="300"></line>`;
+    s += right(84, 164, 270) + right(190, 164, 270) + right(300, 164, 270);
+    s += tag(218, 74, 'NaCN');
+    s += tag(218, 180, 'Mg, then CO₂,');
+    s += tag(218, 208, 'then H₃O⁺');
+    s += tag(218, 290, 'Mg, then HCHO,');
+    s += tag(218, 318, 'then H₃O⁺');
     // middle column
-    s += fiveChain(252, 92, 'CN');
-    s += tag(318, 124, 'pentanenitrile');
-    s += fiveChain(252, 200, 'CO2H');
-    s += tag(318, 252, 'pentanoic acid', { cls: 'fg-tag-good' });
-    s += fiveChain(252, 306, 'OH');
-    s += tag(318, 340, 'pentan-1-ol', { cls: 'fg-tag-good' });
+    s += fiveChain(290, 92, 'CN');
+    s += tag(352, 126, 'pentanenitrile');
+    s += fiveChain(290, 198, 'CO2H');
+    s += tag(352, 250, 'pentanoic acid', { cls: 'fg-tag-good' });
+    s += fiveChain(290, 308, 'OH');
+    s += tag(352, 342, 'pentan-1-ol', { cls: 'fg-tag-good' });
     // the nitrile goes on
-    s += arrow(P(420, 70), P(500, 40), { size: 8 });
-    s += arrow(P(420, 96), P(500, 126), { size: 8 });
-    s += tag(452, 38, 'H₃O⁺, heat', { anchor: 'end' });
-    s += tag(470, 136, 'LiAlH₄, then H₂O', { anchor: 'end' });
-    s += fiveChain(522, 44, 'CO2H');
-    s += tag(588, 96, 'pentanoic acid', { cls: 'fg-tag-good' });
-    s += fiveChain(522, 150, 'NH2');
-    s += tag(588, 184, 'pentan-1-amine', { cls: 'fg-tag-good' });
+    s += arrow(P(446, 70), P(520, 46), { size: 8 });
+    s += arrow(P(446, 96), P(520, 132), { size: 8 });
+    s += tag(468, 44, 'H₃O⁺, heat', { anchor: 'end' });
+    s += tag(486, 140, 'LiAlH₄,', { anchor: 'end' });
+    s += tag(486, 156, 'then H₂O', { anchor: 'end' });
+    s += fiveChain(544, 50, 'CO2H');
+    s += tag(606, 102, 'pentanoic acid', { cls: 'fg-tag-good' });
+    s += fiveChain(544, 156, 'NH2');
+    s += tag(606, 190, 'pentan-1-amine', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'Each arrow adds one carbon to 1-bromobutane. The new carbon is always the one carrying the functional group, and the reagent decides which group that is.',
@@ -273,12 +275,12 @@ FIGURES.push({
   id: 'l-one-carbon',
   lessons: ['carbon-carbon-bonds'],
   alt: '1-Bromobutane at the top. Below it, four rows, each with the reagents on the left and the five-carbon product on the right, new bond in color: NaCN then H3O+ and heat gives pentanoic acid; NaCN then LiAlH4 gives pentan-1-amine; Mg then CO2 then H3O+ gives pentanoic acid; Mg then formaldehyde then H3O+ gives pentan-1-ol.',
-  viewBox: '0 0 340 380',
+  viewBox: '0 0 340 410',
   build() {
     let s = '';
-    s += bromobutane(118, 50);
-    s += tag(170, 20, 'start: 1-bromobutane, 4 C');
-    s += rule(10, 84, 330, 84);
+    s += bromobutane(126, 58);
+    s += tag(170, 96, 'start: 1-bromobutane, 4 C');
+    s += rule(10, 110, 330, 110);
     const rows = [
       ['NaCN, then', 'H₃O⁺, heat', 'CO2H', 'pentanoic acid'],
       ['NaCN, then', 'LiAlH₄, then H₂O', 'NH2', 'pentan-1-amine'],
@@ -286,11 +288,11 @@ FIGURES.push({
       ['Mg, then HCHO,', 'then H₃O⁺', 'OH', 'pentan-1-ol'],
     ];
     rows.forEach(([l1, l2, fg, nm], i) => {
-      const y = 132 + i * 72;
-      s += tag(12, y - 10, l1, { anchor: 'start' });
-      s += tag(12, y + 6, l2, { anchor: 'start' });
-      s += fiveChain(190, y, fg, 24, 14);
-      s += tag(238, y + 34, nm, { cls: 'fg-tag-good' });
+      const y = 150 + i * 78;
+      s += tag(12, y - 14, l1, { anchor: 'start' });
+      s += tag(12, y + 2, l2, { anchor: 'start' });
+      s += tag(12, y + 22, nm, { anchor: 'start', cls: 'fg-tag-good' });
+      s += fiveChain(196, y, fg, 24, 14);
     });
     return s;
   },
@@ -301,7 +303,7 @@ FIGURES.push({
    Pentan-3-one, and the same methyl group landing on the carbonyl carbon,
    the alpha carbon, and (in the enone) the beta carbon. The chain is
    C1 (beta) C2 (alpha) C3 (C=O) C4 C5, drawn with C1, C3, C5 on the top line. */
-const siteChain = (x0, y0) => chain(x0, y0, 5, 28, 16);
+const siteChain = (x0, y0, dx = 28) => chain(x0, y0, 5, dx, 16);
 
 function siteReact(o, kind) {
   const c = siteChain(o.x, o.y);
@@ -311,13 +313,12 @@ function siteReact(o, kind) {
   else s += path(c);
   s += bond(c[2], O, { order: 2, rFrom: 0, rTo: 12, gap: 3.4 }) + atom(O.x, O.y, 'O', { r: 11 });
   // the C=O pi electrons move onto O (not for the enolate, whose C=O stays put)
-  if (kind !== 'alpha') s += curve(off(mid(c[2], O), 0, 4), off(O, 0, 12), { bow: -9, size: 7 });
+  if (kind !== 'alpha') s += curve(off(mid(c[2], O), 0, 5), off(O, -20, 13), { bow: 10, size: 7 });
 
   if (kind === 'carbonyl') {
     const me = P(c[2].x, c[2].y + 66), mg = P(c[2].x + 58, c[2].y + 66);
     s += bond(me, mg, { rFrom: 16, rTo: 19 }) + atom(me.x, me.y, 'H₃C', { r: 16 }) + atom(mg.x, mg.y, 'MgBr', { r: 19 });
     s += curve(P(mid(me, mg).x, me.y - 4), P(c[2].x + 2, c[2].y + 7), { bow: 16 });
-    s += tag(c[2].x, c[2].y - 46, 'C=O carbon', { cls: 'fg-tag-good' });
   } else if (kind === 'alpha') {
     // the enolate, drawn with its charge on the alpha carbon
     s += lonePair(c[1].x, c[1].y, 90, { dist: 10 });
@@ -339,8 +340,8 @@ function siteReact(o, kind) {
   return s;
 }
 
-function siteProduct(o, kind) {
-  const c = siteChain(o.x, o.y);
+function siteProduct(o, kind, dx = 28) {
+  const c = siteChain(o.x, o.y, dx);
   let s = path(c);
   if (kind === 'carbonyl') {
     s += grp(c[2], -90, 26, 'OH', { r: 13 });
@@ -398,10 +399,10 @@ FIGURES.push({
       s += tag(170, y + 18, S.title);
       s += siteReact(P(k === 'beta' ? 46 : 16, y + 70), k);
       s += tag(k === 'beta' ? 108 : 78, y + 176, S.start, { cls: 'fg-tag-mut' });
-      s += right(y + 90, 190, 218);
-      if (S.step) s += tag(204, y + 116, S.step, { cls: 'fg-tag-mut' });
-      s += siteProduct(P(222, y + 90), k);
-      s += tag(278, y + 150, S.prod, { cls: 'fg-tag-good' });
+      s += right(y + 90, 180, 208);
+      if (S.step) s += tag(204, y + 74, S.step, { cls: 'fg-tag-mut' });
+      s += siteProduct(P(238, y + 90), k, 22);
+      s += tag(334, y + 150, S.prod, { anchor: 'end', cls: 'fg-tag-good' });
     });
     return s;
   },
@@ -420,13 +421,13 @@ const CLOSE = {
   d17: { n: 6, aldol: false, title: '1,7-diester → six-membered ring', start: 'diethyl heptanedioate', prod: 'cyclic β-keto ester', count: 'ring: atoms 2 to 7 = 6 atoms' },
 };
 function ringK(c, n) {
-  if (n === 5) { const v = polyPts(c.x, c.y, 5, 32, 90); return [v[2], v[1], v[0], v[4], v[3]]; }
-  const v = polyPts(c.x, c.y, 6, 32, 0);
+  if (n === 5) { const v = polyPts(c.x, c.y, 5, 36, 90); return [v[2], v[1], v[0], v[4], v[3]]; }
+  const v = polyPts(c.x, c.y, 6, 36, 0);
   return [v[4], v[3], v[2], v[1], v[0], v[5]];
 }
 const outD = (p, c) => dirOf(c, p);
 /* A number just inside the ring at vertex p. */
-const inNum = (p, c, t, cls = 'fg-tag-mut') => { const q = off(p, dirOf(p, c), 14); return tag(q.x, q.y + 4, t, { cls }); };
+const inNum = (p, c, t, cls = 'fg-tag-mut', d = 15) => { const q = off(p, dirOf(p, c), d); return tag(q.x, q.y + 4, t, { cls }); };
 
 function closePanel(ox, oy, key) {
   const K = CLOSE[key], n = K.n;
@@ -441,24 +442,24 @@ function closePanel(ox, oy, key) {
     s += grp(A[1], outD(A[1], c1), 24, 'O', { order: 2 });
     s += grp(last, od - 38, 24, 'O', { order: 2 });
     s += methyl(last, od + 38, 24);
-    s += inNum(A[0], c1, 'α', 'fg-tag-good');
-    for (let i = 1; i < n; i++) s += inNum(A[i], c1, String(i));
+    s += inNum(A[0], c1, 'α', 'fg-tag-good', 20);
+    for (let i = 1; i < n; i++) s += inNum(A[i], c1, String(i), 'fg-tag-mut', i === n - 1 ? 20 : 15);
   } else {
-    s += grp(A[0], outD(A[0], c1), 36, 'CO₂Et', { r: 20 });
+    s += grp(A[0], outD(A[0], c1), 32, 'CO₂Et', { r: 20 });
     s += grp(last, od - 40, 24, 'O', { order: 2 });
     s += grp(last, od + 40, 28, 'OEt', { r: 15 });
-    for (let i = 0; i < n; i++) s += inNum(A[i], c1, String(i + 2), i === 0 ? 'fg-tag-good' : 'fg-tag-mut');
-    const e = off(A[0], outD(A[0], c1), 36);
+    for (let i = 0; i < n; i++) s += inNum(A[i], c1, String(i + 2), i === 0 ? 'fg-tag-good' : 'fg-tag-mut', i === 0 || i === n - 1 ? 20 : 15);
+    const e = off(A[0], outD(A[0], c1), 32);
     s += tag(e.x - 26, e.y - 14, '1', { cls: 'fg-tag-mut' });
   }
   // the arrow
-  s += right(oy + 92, ox + 144, ox + 196);
+  s += right(oy + 92, ox + 142, ox + 186);
   if (K.aldol) {
-    s += tag(ox + 170, oy + 82, 'NaOH', { cls: 'fg-tag-mut' });
-    s += tag(ox + 170, oy + 112, 'heat', { cls: 'fg-tag-mut' });
+    s += tag(ox + 164, oy + 82, 'NaOH', { cls: 'fg-tag-mut' });
+    s += tag(ox + 164, oy + 112, 'heat', { cls: 'fg-tag-mut' });
   } else {
-    s += tag(ox + 170, oy + 82, 'NaOEt', { cls: 'fg-tag-mut' });
-    s += tag(ox + 170, oy + 112, 'then H₃O⁺', { cls: 'fg-tag-mut' });
+    s += tag(ox + 164, oy + 82, 'NaOEt', { cls: 'fg-tag-mut' });
+    s += tag(ox + 164, oy + 112, 'then H₃O⁺', { cls: 'fg-tag-mut' });
   }
   // the ring
   const c2 = P(ox + 262, oy + 92), B = ringK(c2, n), bl = B[n - 1], bd = outD(bl, c2);
@@ -467,17 +468,17 @@ function closePanel(ox, oy, key) {
     s += ringDouble(B[0], bl, c2, { cls: 'fg-bond-hi' });
     s += grp(B[1], outD(B[1], c2), 24, 'O', { order: 2 });
     s += methyl(bl, bd, 24);
-    s += inNum(B[0], c2, 'α', 'fg-tag-good');
-    for (let i = 1; i < n; i++) s += inNum(B[i], c2, String(i));
+    s += inNum(B[0], c2, 'α', 'fg-tag-good', 20);
+    for (let i = 1; i < n; i++) s += inNum(B[i], c2, String(i), 'fg-tag-mut', i === n - 1 ? 20 : 15);
   } else {
     s += sk(B[0], bl, 'fg-bond-hi');
-    s += grp(B[0], outD(B[0], c2), 36, 'CO₂Et', { r: 20 });
+    s += grp(B[0], outD(B[0], c2), 32, 'CO₂Et', { r: 20 });
     s += grp(bl, bd, 24, 'O', { order: 2 });
-    for (let i = 0; i < n; i++) s += inNum(B[i], c2, String(i + 2), i === 0 ? 'fg-tag-good' : 'fg-tag-mut');
+    for (let i = 0; i < n; i++) s += inNum(B[i], c2, String(i + 2), i === 0 ? 'fg-tag-good' : 'fg-tag-mut', i === 0 || i === n - 1 ? 20 : 15);
   }
-  s += tag(ox + 78, oy + 180, K.start);
-  s += tag(ox + 262, oy + 180, K.prod);
-  s += tag(ox + 170, oy + 202, K.count, { cls: 'fg-tag-good' });
+  s += tag(ox + 78, oy + 186, K.start);
+  s += tag(ox + 262, oy + 186, K.prod);
+  s += tag(ox + 170, oy + 206, K.count, { cls: 'fg-tag-good' });
   return s;
 }
 
@@ -554,7 +555,7 @@ function daRow(ox, oy, cis, stacked) {
     s += tag(ox + 189, oy + 70, '+ diene', { cls: 'fg-tag-mut' });
   }
   const Q = stacked ? hexFlat(ox + 86, oy + 232, 34) : hexFlat(ox + 282, oy + 60, 34);
-  s += sk(Q.c1, Q.c2) + ringDouble(Q.c2, Q.c3, Q.ctr) + sk(Q.c3, Q.c4);
+  s += sk(Q.c1, Q.c2) + ringDouble(Q.c2, Q.c3, Q.ctr, { inset: 7 }) + sk(Q.c3, Q.c4);
   s += sk(Q.c4, Q.d2, 'fg-bond-hi') + sk(Q.d2, Q.d1) + sk(Q.d1, Q.c1, 'fg-bond-hi');
   s += sub(Q.d1, OUT.d1, 'CO₂Me', { len: 38, r: 23, kind: 'wedge' });
   s += sub(Q.d2, OUT.d2, 'CO₂Me', { len: 38, r: 23, kind: cis ? 'wedge' : 'hash' });

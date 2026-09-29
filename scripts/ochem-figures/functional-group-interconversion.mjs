@@ -127,7 +127,7 @@ function methylbutane(c, sub, d = 28) {
   if (sub === 'OH' || sub === 'Br') {
     s += sk(c1, c) + sk(c, c3);
     s += sk(c, at(c, 240, d));
-    s += het(c, at(c, 300, d + 4), sub, 'hi');
+    s += het(c, at(c, 300, d + 8), sub, 'hi');
   } else if (sub === 'ene2') {
     s += sk(c1, c) + bond(c, c3, { rFrom: 0, rTo: 0, order: 2, gap: 3.2 });
     s += sk(c, at(c, 270, d));
@@ -137,7 +137,7 @@ function methylbutane(c, sub, d = 28) {
   } else if (sub === 'OH1') {
     s += sk(c1, c) + sk(c, c3);
     const m = at(c, 270, d);
-    s += sk(c, m) + het(m, at(m, 210, d + 4), 'OH', 'hi');
+    s += sk(c, m) + het(m, at(m, -30, d + 4), 'OH', 'hi');
   }
   return s;
 }
@@ -174,37 +174,37 @@ FIGURES.push({
       s += label(74, r.y, r.name, { anchor: 'start', size: 13 });
       s += text(74, r.y + 18, r.n, { cls: 'fg-sm', anchor: 'start' });
     }
-    s += rule(214, 40, 214, 440);
+    s += rule(244, 40, 244, 440);
     for (const y of [150, 256, 360]) s += rule(74, y, 740, y);
 
     // Carboxylic acid rung.
-    s += text(228, 76, 'acid · ester · amide · acyl chloride · anhydride · nitrile', { cls: 'fg-tag', anchor: 'start' });
-    s += label(228, 126, 'RCO₂H', { anchor: 'start' });
-    s += rxn(P(278, 122), P(322, 122), 'SOCl₂', null, 'fg-sm');
-    s += label(328, 126, 'RCOCl', { anchor: 'start' });
-    s += rxn(P(376, 122), P(420, 122), 'R′OH', null, 'fg-sm');
-    s += label(426, 126, 'RCO₂R′', { anchor: 'start' });
-    s += rxn(P(482, 122), P(526, 122), 'R₂NH', null, 'fg-sm');
-    s += label(532, 126, 'RCONR₂', { anchor: 'start' });
+    s += text(258, 76, 'acid · ester · amide · acyl chloride · anhydride · nitrile', { cls: 'fg-tag', anchor: 'start' });
+    s += label(258, 126, 'RCO₂H', { anchor: 'start' });
+    s += rxn(P(308, 122), P(352, 122), 'SOCl₂', null, 'fg-sm');
+    s += label(358, 126, 'RCOCl', { anchor: 'start' });
+    s += rxn(P(406, 122), P(450, 122), 'R′OH', null, 'fg-sm');
+    s += label(456, 126, 'RCO₂R′', { anchor: 'start' });
+    s += rxn(P(512, 122), P(556, 122), 'R₂NH', null, 'fg-sm');
+    s += label(562, 126, 'RCONR₂', { anchor: 'start' });
     s += label(690, 126, 'RC≡N');
 
     // Aldehyde / ketone rung.
-    s += text(228, 182, 'aldehyde · ketone · acetal · imine · alkyne', { cls: 'fg-tag', anchor: 'start' });
-    s += label(228, 226, 'R₂C=O', { anchor: 'start' });
-    s += arrow(P(280, 216), P(372, 216));
-    s += text(326, 207, 'HOCH₂CH₂OH, H⁺', { cls: 'fg-sm' });
-    s += arrow(P(372, 230), P(280, 230), { muted: true });
-    s += text(326, 246, 'H₃O⁺', { cls: 'fg-sm' });
-    s += label(380, 226, 'cyclic acetal', { anchor: 'start' });
+    s += text(258, 182, 'aldehyde · ketone · acetal · imine · alkyne', { cls: 'fg-tag', anchor: 'start' });
+    s += label(258, 226, 'R₂C=O', { anchor: 'start' });
+    s += arrow(P(310, 216), P(402, 216));
+    s += text(356, 207, 'HOCH₂CH₂OH, H⁺', { cls: 'fg-sm' });
+    s += arrow(P(402, 230), P(310, 230), { muted: true });
+    s += text(356, 246, 'H₃O⁺', { cls: 'fg-sm' });
+    s += label(410, 226, 'cyclic acetal', { anchor: 'start' });
 
     // Alcohol rung.
-    s += text(228, 288, 'alcohol · alkyl halide · ether · amine · alkene', { cls: 'fg-tag', anchor: 'start' });
-    s += label(228, 324, 'R–OH', { anchor: 'start' });
-    s += rxn(P(270, 320), P(342, 320), 'PBr₃ or SOCl₂', null, 'fg-sm');
-    s += label(348, 324, 'R–X', { anchor: 'start' });
-    s += rxn(P(380, 320), P(468, 320), 'bulky base (E2)', null, 'fg-sm');
-    s += label(474, 324, 'alkene', { anchor: 'start' });
-    s += text(228, 346, 'and from the alkene back to R–OH: H₃O⁺, or BH₃ then H₂O₂/HO⁻', { cls: 'fg-sm', anchor: 'start' });
+    s += text(258, 288, 'alcohol · alkyl halide · ether · amine · alkene', { cls: 'fg-tag', anchor: 'start' });
+    s += label(258, 324, 'R–OH', { anchor: 'start' });
+    s += rxn(P(300, 320), P(372, 320), 'PBr₃ or SOCl₂', null, 'fg-sm');
+    s += label(378, 324, 'R–X', { anchor: 'start' });
+    s += rxn(P(410, 320), P(498, 320), 'bulky base (E2)', null, 'fg-sm');
+    s += label(504, 324, 'alkene', { anchor: 'start' });
+    s += text(258, 346, 'and from the alkene back to R–OH: H₃O⁺, or BH₃ then H₂O₂/HO⁻', { cls: 'fg-sm', anchor: 'start' });
     s += label(690, 324, 'RCH₂NH₂');
 
     // The two-rung drop on the right.
@@ -213,12 +213,12 @@ FIGURES.push({
     s += text(682, 230, 'two rungs down', { cls: 'fg-tag', anchor: 'end' });
 
     // Alkane rung.
-    s += text(228, 404, 'nothing sideways from here: the only way out is up', { cls: 'fg-sm', anchor: 'start' });
+    s += text(258, 404, 'nothing sideways from here: the only way out is up', { cls: 'fg-sm', anchor: 'start' });
 
-    s += text(400, 460, 'up: PCC, DMP, Jones     •     down: NaBH₄, LiAlH₄, H₂ with Pd', { cls: 'fg-sm' });
+    s += text(430, 460, 'up: PCC, DMP, Jones     •     down: NaBH₄, LiAlH₄, H₂ with Pd', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Height is the oxidation level, and changing it needs an oxidant or a reductant. Moving sideways along a rung swaps one bond to O, N or halogen for another and needs neither.',
+  caption: 'Read each row as one rung. The top line of a row lists its members, and the arrows under it show a sideways move. The long arrow on the right is the one move drawn here that changes rung.',
 });
 
 /* The same ladder for the lesson: four rungs, members only. */
@@ -346,7 +346,7 @@ FIGURES.push({
   section: T,
   anchor: 'the less substituted alkene, 2-methylbut-1-ene.</p>',
   alt: '2-Methylbutan-2-ol, two routes. Upper route: concentrated sulfuric acid and heat give 2-methylbut-2-ene, the more substituted alkene. Lower route: HBr gives 2-bromo-2-methylbutane, and tert-butoxide, a bulky base, then gives mostly 2-methylbut-1-ene, the less substituted alkene.',
-  viewBox: '0 0 760 300',
+  viewBox: '0 40 760 280',
   build() {
     let s = '';
     const st = P(90, 160);
@@ -355,12 +355,11 @@ FIGURES.push({
 
     // Upper route: acid.
     s += arrow(P(170, 138), P(300, 84));
-    s += tag(222, 92, 'conc. H₂SO₄, heat', { anchor: 'middle' });
+    s += tag(196, 90, 'conc. H₂SO₄, heat');
     const z = P(360, 86);
     s += methylbutane(z, 'ene2');
     s += tag(370, 140, '2-methylbut-2-ene');
-    s += tag(560, 76, 'more substituted C=C', { cls: 'fg-tag-warn', anchor: 'start' });
-    s += tag(560, 94, 'the carbocation route picks it', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += tag(370, 158, 'more substituted C=C (Zaitsev)', { cls: 'fg-tag-warn' });
 
     // Lower route: bromide, then a bulky base.
     s += arrow(P(170, 186), P(300, 232));
@@ -373,9 +372,7 @@ FIGURES.push({
     const h = P(604, 222);
     s += methylbutane(h, 'ene1');
     s += tag(614, 288, '2-methylbut-1-ene (mostly)');
-    s += tag(700, 206, 'less', { cls: 'fg-tag-good', anchor: 'start' });
-    s += tag(700, 222, 'substituted', { cls: 'fg-tag-good', anchor: 'start' });
-    s += tag(700, 238, 'C=C', { cls: 'fg-tag-good', anchor: 'start' });
+    s += tag(614, 306, 'less substituted C=C', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'One alcohol, two alkenes. Acid gives whichever alkene the carbocation prefers; going through the bromide lets the base decide.',
@@ -397,7 +394,8 @@ FIGURES.push({
     s += tag(173, 50, 'heat');
     const z = P(244, 64);
     s += methylbutane(z, 'ene2');
-    s += tag(256, 118, 'more substituted', { cls: 'fg-tag-warn' });
+    s += tag(256, 112, '2-methylbut-2-ene');
+    s += tag(256, 128, 'more substituted', { cls: 'fg-tag-warn' });
 
     s += arrow(P(70, 140), P(70, 188));
     s += tag(82, 168, 'HBr', { anchor: 'start' });
@@ -409,8 +407,9 @@ FIGURES.push({
     s += itext(173, 212, 't', '-BuO⁻', 'fg-tag', 'middle');
     const h = P(244, 226);
     s += methylbutane(h, 'ene1');
-    s += tag(256, 290, 'less substituted', { cls: 'fg-tag-good' });
-    s += tag(256, 305, '(mostly)', { cls: 'fg-tag-good' });
+    s += tag(256, 284, '2-methylbut-1-ene');
+    s += tag(256, 300, 'less substituted', { cls: 'fg-tag-good' });
+    s += tag(256, 315, '(mostly)', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'Acid lets the carbocation choose the alkene. The bulky base, acting on the bromide, chooses the other one.',
@@ -467,8 +466,6 @@ FIGURES.push({
     s += tag(232, 72, '−78 °C');
     s += butyl(P(330, 74), 'CHO');
     s += tag(384, 112, 'butanal');
-    s += tag(470, 60, 'one step: needs the', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += tag(470, 76, 'special reagent', { cls: 'fg-tag-mut', anchor: 'start' });
 
     s += arrow(P(186, 150), P(300, 190));
     s += tag(256, 160, 'LiAlH₄');
@@ -490,7 +487,7 @@ FIGURES.push({
   section: T,
   anchor: 'would put the OH straight back on C2.</p>',
   alt: 'Propan-2-ol dehydrated to propene with concentrated sulfuric acid and heat, then hydrated two ways: hydroboration gives propan-1-ol, and aqueous acid gives propan-2-ol back',
-  viewBox: '0 0 660 330',
+  viewBox: '0 76 660 252',
   build() {
     let s = '';
     s += propan2ol(P(79, 178));
@@ -524,30 +521,29 @@ FIGURES.push({
   lessons: [T],
   anchor: '',
   alt: 'Propan-2-ol dehydrated to propene with concentrated sulfuric acid and heat. Propene is then hydrated two ways: BH3 then H2O2 and hydroxide give propan-1-ol, with the OH on C1; aqueous acid gives propan-2-ol back, with the OH on C2.',
-  viewBox: '0 0 340 380',
+  viewBox: '0 0 340 312',
   build() {
     let s = '';
-    s += propan2ol(P(60, 70));
+    s += propan2ol(P(60, 74));
     s += tag(60, 106, 'propan-2-ol');
-    s += arrow(P(118, 62), P(214, 62));
-    s += tag(166, 38, 'conc. H₂SO₄,');
-    s += tag(166, 52, 'heat');
-    s += propene(P(262, 70));
+    s += arrow(P(118, 70), P(210, 70));
+    s += tag(164, 46, 'conc. H₂SO₄,');
+    s += tag(164, 60, 'heat');
+    s += propene(P(262, 78));
     s += tag(262, 106, 'propene');
 
-    s += arrow(P(262, 118), P(170, 170));
-    s += tag(244, 158, '1. BH₃', { anchor: 'start' });
-    s += tag(244, 174, '2. H₂O₂, HO⁻', { anchor: 'start' });
-    s += propyl(P(40, 204), 'OH');
-    s += tag(88, 236, 'propan-1-ol');
-    s += tag(88, 254, 'OH on C1: it moved', { cls: 'fg-tag-good' });
+    s += arrow(P(236, 120), P(128, 190));
+    s += tag(114, 150, '1. BH₃', { anchor: 'end' });
+    s += tag(114, 166, '2. H₂O₂, HO⁻', { anchor: 'end' });
+    s += propyl(P(36, 250), 'OH');
+    s += tag(88, 282, 'propan-1-ol');
+    s += tag(88, 300, 'OH on C1: it moved', { cls: 'fg-tag-good' });
 
-    s += rule(10, 270, 330, 270);
-    s += arrow(P(290, 118), P(290, 300), { muted: true });
-    s += tag(282, 290, 'H₃O⁺', { anchor: 'end' });
-    s += propan2ol(P(200, 326), 'warn');
-    s += tag(210, 362, 'propan-2-ol', { anchor: 'end' });
-    s += tag(222, 362, 'OH back on C2', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += arrow(P(284, 120), P(284, 192), { muted: true });
+    s += tag(294, 160, 'H₃O⁺', { anchor: 'start' });
+    s += propan2ol(P(262, 252), 'warn');
+    s += tag(262, 282, 'propan-2-ol');
+    s += tag(262, 300, 'OH back on C2', { cls: 'fg-tag-warn' });
     return s;
   },
   caption: 'The first step is the same either way. The second reagent decides the carbon.',
@@ -560,15 +556,15 @@ FIGURES.push({
   lessons: [T],
   anchor: '',
   alt: '2-Methylbutan-2-ol, with its OH on the branch carbon, and the target 2-methylbutan-1-ol, with the OH on the end of the methyl branch. A question mark sits on the arrow between them.',
-  viewBox: '0 0 340 150',
+  viewBox: '0 0 340 156',
   build() {
     let s = '';
     s += methylbutane(P(56, 58), 'OH');
-    s += tag(62, 126, '2-methylbutan-2-ol');
+    s += tag(62, 146, '2-methylbutan-2-ol');
     s += arrow(P(134, 64), P(196, 64));
     s += label(165, 54, '?', { size: 14 });
     s += methylbutane(P(244, 58), 'OH1');
-    s += tag(262, 126, '2-methylbutan-1-ol');
+    s += tag(262, 146, '2-methylbutan-1-ol');
     return s;
   },
   caption: 'Start on the left, target on the right. The OH has to move from the branch carbon to the carbon beside it.',

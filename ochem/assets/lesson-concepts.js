@@ -112,9 +112,13 @@
       2:['cc-bond-toolkit'], 3:['cc-bond-toolkit'], 4:['cc-bond-toolkit','disconnection'],
       6:['cc-bond-toolkit'], 7:['cc-bond-toolkit'] } },
 
-    'functional-group-interconversion': { n:8, steps:{
-      2:['fgi-map'], 3:['fgi-map'], 4:['fgi-map','route-order'],
-      6:['fgi-map'], 7:['fgi-map'] } },
+    'functional-group-interconversion': { n:11, steps:{
+      1:['fgi-map'],
+      2:['fgi-map'],
+      4:['fgi-map'],
+      6:['fgi-map','route-order'],
+      8:['fgi-map','route-order'],
+      10:['fgi-map','route-order'] } },
 
     'protecting-groups': { n:8, steps:{
       2:['protection'], 3:['protection'], 4:['protection'],

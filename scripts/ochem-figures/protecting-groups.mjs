@@ -145,7 +145,7 @@ function silylEther(o) {
 FIGURES.push({
   id: 'silyl-ether-mask',
   section: 'protecting-groups',
-  anchor: '<!-- anchor:silyl-ether-mask -->',
+  anchor: '<h3>Protecting an alcohol: a silyl ether</h3>',
   alt: 'An alcohol R–O–H, with the acidic hydrogen highlighted, is converted by TBSCl and imidazole into the silyl ether R–O–Si, where the silicon carries two CH3 groups and a C(CH3)3 group. A return arrow labeled TBAF, fluoride, converts the silyl ether back into the alcohol.',
   viewBox: '0 0 760 220',
   build() {
@@ -159,8 +159,8 @@ FIGURES.push({
     s += lbl(300, 146, 'TBAF (F⁻)');
     const e = silylEther(P(480, 104));
     s += e.s;
-    s += tg(700, 60, 'TBS group:', null);
-    s += tg(700, 76, 'Si(CH₃)₂C(CH₃)₃', null);
+    s += tg(700, 104, 'TBS group =', null);
+    s += tg(700, 120, 'Si(CH₃)₂C(CH₃)₃', null);
     s += tg(540, 202, 'no acidic proton left', 'good');
     return s;
   },
@@ -176,7 +176,7 @@ function ketone(c) {
   return s;
 }
 /* A 1,3-dioxolane hanging below the acetal carbon c; R groups up-left and up-right. */
-function dioxolane(c, rr = 26) {
+function dioxolane(c, rr = 30) {
   const pv = polyPts(c.x, c.y + rr, 5, rr, 90);
   let s = '';
   s += bond(pv[0], pv[1], { rFrom: 0, rTo: 14 }) + bond(pv[1], pv[2], { rFrom: 14, rTo: 0 });
@@ -196,7 +196,7 @@ function acetal(c) {
 FIGURES.push({
   id: 'acetal-mask',
   section: 'protecting-groups',
-  anchor: '<!-- anchor:acetal-mask -->',
+  anchor: '<h3>Protecting a ketone or aldehyde: an acetal</h3>',
   alt: 'A ketone R2C=O is converted by ethylene glycol and acid, with water removed, into a cyclic acetal: the former carbonyl carbon now sits in a five-membered ring with two oxygens and has only single bonds. A return arrow labeled aqueous acid converts the acetal back to the ketone.',
   viewBox: '0 0 760 230',
   build() {
@@ -221,7 +221,7 @@ FIGURES.push({
   id: 'l-two-masks',
   lessons: ['protecting-groups'],
   alt: 'Two conversions stacked. Top: an alcohol R–O–H becomes the TBS silyl ether R–O–Si(CH3)2C(CH3)3 with TBSCl and imidazole, and comes back with TBAF. Bottom: a ketone R2C=O becomes a five-membered cyclic acetal with ethylene glycol and acid, and comes back with aqueous acid.',
-  viewBox: '0 0 340 600',
+  viewBox: '0 0 340 630',
   build() {
     let s = '';
     s += tg(170, 20, 'ALCOHOL → SILYL ETHER');
@@ -233,15 +233,15 @@ FIGURES.push({
     s += lbl(200, 142, 'TBAF', 'start');
     const e = silylEther(P(90, 226));
     s += e.s;
-    s += rule(20, 300, 320, 300);
-    s += tg(170, 324, 'KETONE → CYCLIC ACETAL');
-    s += ketone(P(170, 388));
-    s += arrow(P(150, 424), P(150, 480), { size: 8 });
-    s += lbl(140, 446, 'diol, H⁺,', 'end');
-    s += lbl(140, 464, '−H₂O', 'end');
-    s += arrow(P(190, 480), P(190, 424), { size: 8, muted: true });
-    s += lbl(200, 456, 'H₃O⁺', 'start');
-    s += acetal(P(170, 530));
+    s += rule(20, 316, 320, 316);
+    s += tg(170, 344, 'KETONE → CYCLIC ACETAL');
+    s += ketone(P(170, 414));
+    s += arrow(P(150, 450), P(150, 506), { size: 8 });
+    s += lbl(140, 472, 'diol, H⁺,', 'end');
+    s += lbl(140, 490, '−H₂O', 'end');
+    s += arrow(P(190, 506), P(190, 450), { size: 8, muted: true });
+    s += lbl(200, 482, 'H₃O⁺', 'start');
+    s += acetal(P(170, 558));
     return s;
   },
   caption: 'Top: the O–H proton is replaced by silicon. Bottom: the C=O becomes two C–O single bonds in a ring.',
@@ -290,7 +290,7 @@ function carbamate(p, o = {}) {
   if (res) {
     s += charge(P(N.x + 19, N.y - 22), '+');
     s += lp(Od, 200) + lp(Od, 340) + lp(Od, 270, 21);
-    s += charge(P(Od.x + 24, Od.y + 6), '−');
+    s += charge(P(Od.x + 20, Od.y - 20), '−');
   } else if (o.lpO) {
     s += lp(Od, 225) + lp(Od, 315);
   }
@@ -304,7 +304,7 @@ function carbamate(p, o = {}) {
 FIGURES.push({
   id: 'carbamate-mask',
   section: 'protecting-groups',
-  anchor: '<!-- anchor:carbamate-mask -->',
+  anchor: '<h3>Protecting an amine: a carbamate</h3>',
   alt: 'Top: the two standard carbamates. Boc: R–NH–C(=O)–O–C(CH3)3. Cbz: R–NH–C(=O)–O–CH2–phenyl. Bottom: resonance in a carbamate. A curved arrow moves the nitrogen lone pair into the N–C bond and another moves the C=O pi bond onto oxygen, giving a contributor with N plus double-bonded to carbon and O minus.',
   viewBox: '0 0 760 400',
   build() {
@@ -355,7 +355,7 @@ function amineNH2(p) {
 FIGURES.push({
   id: 'carbamate-removal',
   section: 'protecting-groups',
-  anchor: '<!-- anchor:carbamate-removal -->',
+  anchor: 'is called <b>hydrogenolysis</b>',
   alt: 'Top row: a Boc carbamate with its O–C(CH3)3 bond highlighted. TFA breaks that bond, giving the carbamic acid R–NH–C(=O)–OH, which loses CO2 to give the amine R–NH2. Bottom row: a Cbz carbamate with its O–CH2 bond highlighted. H2 over Pd/C breaks that bond, giving the same carbamic acid plus toluene; loss of CO2 gives the amine.',
   viewBox: '0 0 760 330',
   build() {
@@ -363,26 +363,28 @@ FIGURES.push({
     // Boc row
     const b = carbamate(P(30, 96), { tail: 'tBu', breakTail: true });
     s += b.s;
-    s += tg(b.Os.x + 26, 30, 'this bond breaks', 'warn');
+    s += tg(b.Os.x + 34, b.Os.y - 26, 'this bond breaks', 'warn');
     s += arrow(P(290, 96), P(352, 96), { size: 8 });
     s += lbl(321, 82, 'TFA');
+    s += tg(321, 118, '(CH₃)₃C⁺');
+    s += tg(321, 132, 'leaves');
     const c1 = carbamate(P(380, 96), { tail: 'OH' });
     s += c1.s;
     s += tg(460, 176, 'carbamic acid');
     s += arrow(P(560, 96), P(622, 96), { size: 8 });
     s += lbl(591, 82, '−CO₂');
     s += amineNH2(P(652, 106));
-    s += tg(150, 176, '(CH₃)₃C⁺ leaves');
     s += rule(26, 196, 734, 196);
     // Cbz row
     const z = carbamate(P(30, 262), { tail: 'Bn', breakTail: true, dx: 40, ringR: 20 });
     s += z.s;
-    s += tg(z.Os.x + 18, 212, 'this bond breaks', 'warn');
+    s += tg(z.Os.x + 40, z.Os.y + 56, 'this bond breaks', 'warn');
     s += arrow(P(290, 262), P(352, 262), { size: 8 });
     s += lbl(321, 248, 'H₂, Pd/C');
     const c2 = carbamate(P(380, 262), { tail: 'OH' });
     s += c2.s;
-    s += tg(460, 322, '+ toluene');
+    s += tg(321, 284, 'toluene');
+    s += tg(321, 298, 'forms');
     s += arrow(P(560, 262), P(622, 262), { size: 8 });
     s += lbl(591, 248, '−CO₂');
     s += amineNH2(P(652, 272));
@@ -426,19 +428,17 @@ const TBS_ACETAL = {
 FIGURES.push({
   id: 'orthogonal-grid',
   section: 'protecting-groups',
-  anchor: '<!-- anchor:orthogonal-grid -->',
+  anchor: '<h3>Orthogonality</h3>',
   alt: 'Two grids. Left: Boc and Cbz tested against TFA and against H2 over Pd/C. TFA removes Boc and leaves Cbz on; H2 over Pd/C removes Cbz and leaves Boc on. Right: a TBS ether and an acetal tested against TBAF and against aqueous acid. TBAF removes the TBS ether and leaves the acetal on; aqueous acid removes the acetal but can also remove the TBS ether.',
-  viewBox: '0 0 760 250',
+  viewBox: '0 0 760 240',
   build() {
     let s = '';
     s += tg(190, 24, 'ORTHOGONAL BOTH WAYS');
     s += grid(20, 40, 340, BOC_CBZ.cols, BOC_CBZ.rows, BOC_CBZ.cells);
     s += tg(570, 24, 'CLEAN IN ONE DIRECTION ONLY');
     s += grid(400, 40, 340, TBS_ACETAL.cols, TBS_ACETAL.rows, TBS_ACETAL.cells);
-    s += lbl(190, 196, 'Either mask can go first.');
-    s += lbl(570, 196, 'Take the TBS ether off first.');
-    s += tg(570, 220, 'acid strong enough for the acetal', 'warn');
-    s += tg(570, 236, 'can strip the TBS ether too', 'warn');
+    s += lbl(190, 222, 'Either mask can go first.');
+    s += lbl(570, 222, 'Take the TBS ether off first.');
     return s;
   },
   caption: 'Read each row as one reagent applied to a molecule carrying both masks. On the left each reagent removes exactly one mask. On the right only the fluoride row is that clean.',
@@ -455,7 +455,7 @@ FIGURES.push({
     s += grid(10, 36, 320, BOC_CBZ.cols, BOC_CBZ.rows, BOC_CBZ.cells, { labelW: 92 });
     s += tg(170, 226, 'CLEAN IN ONE DIRECTION ONLY');
     s += grid(10, 240, 320, TBS_ACETAL.cols, TBS_ACETAL.rows, TBS_ACETAL.cells, { labelW: 92 });
-    s += lbl(170, 410, 'Take the TBS ether off first.');
+    s += lbl(170, 422, 'Take the TBS ether off first.');
     return s;
   },
   caption: 'Each row is one reagent applied to a molecule carrying both masks.',
@@ -485,9 +485,9 @@ function hbk(p, st) {
 FIGURES.push({
   id: 'route-short',
   section: 'protecting-groups',
-  anchor: '<!-- anchor:route-short -->',
+  anchor: '<span class="k">Worked example — the full three steps</span>',
   alt: 'Four skeletal structures. 4-hydroxybutan-2-one, with its OH highlighted, becomes the TBS ether with TBSCl and imidazole. CH3MgBr then a water workup adds a methyl group to the ketone carbon, giving a tertiary alcohol while the TBS ether is unchanged. TBAF then removes the TBS group, giving 3-methylbutane-1,3-diol.',
-  viewBox: '0 0 760 330',
+  viewBox: '0 0 760 356',
   build() {
     let s = '';
     s += hbk(P(60, 110), 0);
@@ -496,14 +496,14 @@ FIGURES.push({
     s += lbl(360, 86, '1 protect: TBSCl, imidazole');
     s += hbk(P(530, 110), 1);
     s += lbl(592, 150, 'TBS ether');
-    s += arrow(P(560, 176), P(260, 236), { size: 8 });
-    s += lbl(430, 244, '2 react: CH₃MgBr,', 'start');
-    s += lbl(430, 262, 'then H₂O workup', 'start');
-    s += hbk(P(60, 280), 2);
-    s += arrow(P(250, 280), P(470, 280), { size: 8 });
-    s += lbl(360, 300, '3 deprotect: TBAF');
-    s += hbk(P(530, 280), 3);
-    s += lbl(592, 318, '3-methylbutane-1,3-diol');
+    s += arrow(P(560, 180), P(260, 250), { size: 8 });
+    s += lbl(250, 196, '2 react: CH₃MgBr,', 'start');
+    s += lbl(250, 214, 'then H₂O workup', 'start');
+    s += hbk(P(60, 300), 2);
+    s += arrow(P(250, 300), P(470, 300), { size: 8 });
+    s += lbl(360, 320, '3 deprotect: TBAF');
+    s += hbk(P(530, 300), 3);
+    s += lbl(592, 340, '3-methylbutane-1,3-diol');
     return s;
   },
   caption: 'Read left to right, then along the diagonal to the second row. The new C–C bond is highlighted; the TBS group (shaded) rides through step 2 unchanged.',
@@ -516,11 +516,11 @@ FIGURES.push({
   viewBox: '0 0 340 290',
   build() {
     let s = '';
-    s += tg(170, 20, 'START');
+    s += tg(20, 56, 'START', null, 'start');
     s += hbk(P(98, 90), 0);
     s += arrow(P(170, 124), P(170, 184), { size: 8 });
     s += lbl(186, 160, '?', 'start');
-    s += tg(170, 206, 'TARGET');
+    s += tg(20, 236, 'TARGET', null, 'start');
     s += hbk(P(98, 270), 3);
     return s;
   },
@@ -550,7 +550,7 @@ function bromoChain(p, st) {
   }
   s += sk(c5, c4) + sk(c4, c3) + sk(c3, c2) + sk(c2, c1);
   if (st === 1 || st === 2) {
-    s += dioxolane(c2, 22).s;
+    s += dioxolane(c2, 30).s;
   } else {
     const od = P(c2.x, c2.y + 40);
     s += bond(c2, od, { rFrom: 0, rTo: 15, order: 2 }) + A(od, 'O', { r: 15, kind: st === 0 ? 'warn' : undefined });
@@ -560,9 +560,9 @@ function bromoChain(p, st) {
 FIGURES.push({
   id: 'route-long',
   section: 'protecting-groups',
-  anchor: '<!-- anchor:route-long -->',
+  anchor: '<span class="k">Worked example — a protecting group inside a longer route</span>',
   alt: 'Four skeletal structures. 5-bromopentan-2-one, with its ketone oxygen highlighted, is converted with ethylene glycol and TsOH into the cyclic acetal, where the ketone carbon now sits in a five-membered ring with two oxygens. Magnesium in dry ether turns the C–Br into C–MgBr. Benzaldehyde, then aqueous acid, gives 6-hydroxy-6-phenylhexan-2-one: a new C–C bond joins the old CH2Br carbon to a CH(OH) carrying a phenyl ring, and the ketone is back.',
-  viewBox: '0 0 760 360',
+  viewBox: '0 0 760 390',
   build() {
     let s = '';
     s += bromoChain(P(60, 90), 0);
@@ -571,14 +571,14 @@ FIGURES.push({
     s += lbl(365, 50, '1 protect: HOCH₂CH₂OH,');
     s += lbl(365, 68, 'TsOH, remove H₂O');
     s += bromoChain(P(520, 90), 1);
-    s += arrow(P(560, 190), P(290, 236), { size: 8 });
-    s += lbl(450, 240, '2 Mg, dry ether', 'start');
-    s += bromoChain(P(80, 262), 2);
-    s += arrow(P(290, 262), P(460, 262), { size: 8 });
-    s += lbl(375, 248, '3 PhCHO', 'middle');
-    s += lbl(375, 284, '4 H₃O⁺', 'middle');
-    s += bromoChain(P(560, 262), 3);
-    s += lbl(620, 350, '6-hydroxy-6-phenylhexan-2-one');
+    s += arrow(P(560, 196), P(270, 250), { size: 8 });
+    s += lbl(290, 206, '2 Mg, dry ether', 'start');
+    s += bromoChain(P(60, 290), 2);
+    s += arrow(P(290, 290), P(470, 290), { size: 8 });
+    s += lbl(380, 276, '3 PhCHO', 'middle');
+    s += lbl(380, 312, '4 H₃O⁺', 'middle');
+    s += bromoChain(P(570, 290), 3);
+    s += lbl(620, 376, '6-hydroxy-6-phenylhexan-2-one');
     return s;
   },
   caption: 'Follow the ketone (right end of each chain): masked in step 1, carried through steps 2 and 3, and unmasked in step 4. The new C–C bond is highlighted.',
