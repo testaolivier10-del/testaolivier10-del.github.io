@@ -283,7 +283,7 @@ FIGURES.push({
   id: 'ethene-pi-donor',
   section: 'lewis-acids',
   lessons: ['lewis-acids'],
-  anchor: 'drew the same tail on a π bond.</p>',
+  anchor: 'The acceptor is the H⁺ that HBr hands over.</p>',
   alt: 'Top: ethene lying flat in a plane, its pi pair drawn as two clouds above and below the C–C line, and H–Br above the left carbon. One curved arrow runs from the upper pi cloud to the H; a second runs from the H–Br bond onto bromine. Bottom: the product, a CH3 carbon joined to a CH2 carbon. The new C–H bond on the left carbon is highlighted. The right carbon has three bonds, a positive charge and an empty p orbital drawn as dashed lobes. Bromide, Br−, is the other product.',
   viewBox: '0 0 340 440',
   build() {
@@ -347,7 +347,7 @@ function water(o, lpAngles, k = 'hi') {
 FIGURES.push({
   id: 'carbocation-lewis-acid',
   section: 'lewis-acids',
-  anchor: 'That is normal, not a curiosity.</p>',
+  anchor: 'one per step, and that is common.</p>',
   alt: 'Two rows. Top row: the tert-butyl cation, a positive carbon with three methyl groups and an empty p orbital, meets water; one curved arrow runs from a lone pair on the water oxygen to the positive carbon, giving an oxonium ion in which carbon is neutral and the oxygen, now with three bonds and one lone pair, is plus one. Bottom row: a second water molecule removes a proton from that oxonium ion; one arrow runs from the water lone pair to the hydrogen and a second from the O–H bond onto the oxonium oxygen, giving tert-butyl alcohol and hydronium, H3O+.',
   viewBox: '0 0 760 540',
   build() {
