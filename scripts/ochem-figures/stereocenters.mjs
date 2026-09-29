@@ -196,7 +196,7 @@ FIGURES.push({
   id: 'scan-hexenol',
   section: 'stereocenters',
   lessons: ['stereocenters'],
-  anchor: 'C5 fails, because two of its groups are methyl groups.</p>',
+  anchor: 'and two methyl groups, so it fails.</p>',
   alt: 'Three copies of the skeletal structure of 5-methylhex-1-en-3-ol, one above the other. First pass: C1 and C2 are marked sp2, C4 is marked CH2, and C6 and the methyl on C5 are marked CH3, so only C3 and C5 are left. Second copy: C3 carries OH, H, a CH=CH2 group and a CH2CH(CH3)2 group, four different groups, so C3 is a stereocenter. Third copy: C5 carries H, a CH3 group, a second CH3 group and a CH2CH(OH)CH=CH2 group, so two groups are the same and C5 is not a stereocenter.',
   viewBox: '0 0 340 452',
   build() {
@@ -318,7 +318,7 @@ function flatRing(cx, cy, down) {
 FIGURES.push({
   id: 'other-units',
   section: 'stereocenters',
-  anchor: 'and one with the OH and CH₃ on opposite faces.</p>',
+  anchor: 'so the two never interconvert.</p>',
   alt: 'Top: two skeletal structures of but-2-ene. In cis-but-2-ene both CH3 groups are on the upper side of the double bond; in trans-but-2-ene one is above and one below. Bottom: two flat hexagon drawings of 4-methylcyclohexan-1-ol with OH on a wedge at the top carbon. In the cis isomer the CH3 at the bottom carbon is also on a wedge, on the same face as the OH; in the trans isomer it is on a hash, on the opposite face.',
   viewBox: '0 0 340 390',
   build() {

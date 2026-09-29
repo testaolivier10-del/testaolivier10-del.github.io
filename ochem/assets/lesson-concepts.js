@@ -613,11 +613,12 @@
       6:['electrophile-recognition','electronegativity-trend'],
       8:['lewis-acid-base','electrophile-recognition'] } },
 
-    'enantiomers': { n:7, steps:{
+    'enantiomers': { n:12, steps:{
       1:['enantiomer-vs-diastereomer'],
-      2:['enantiomer-vs-diastereomer'],
-      3:['enantiomer-vs-diastereomer','rs-assignment'],
-      6:['enantiomer-vs-diastereomer'] } },
+      3:['enantiomer-vs-diastereomer'],
+      4:['enantiomer-vs-diastereomer','rs-assignment'],
+      8:['enantiomer-vs-diastereomer'],
+      11:['enantiomer-vs-diastereomer'] } },
 
     'epoxides': { n:9, steps:{
       1:['epoxide-opening-regiochem'],

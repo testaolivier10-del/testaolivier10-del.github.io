@@ -229,7 +229,7 @@ FIGURES.push({
     s += arrow(P(292, 128), P(430, 128));
     s += T(361, 110, 'turn C2 half a turn', 'fg-tag');
     s += T(361, 150, 'about the C2–C3 bond', 'fg-tag');
-    s += T(592, 24, 'lined up: the mirror plane shows', 'fg-tag-good');
+    s += T(592, 24, 'lined up: the plane shows', 'fg-tag-good');
     s += tart(592, 140, 'meso', { plane: 'good' });
     s += T(380, 268, 'the same molecule, (2R,3S), in two conformations', 'fg-tag');
     return s;
@@ -247,7 +247,7 @@ FIGURES.push({
     s += zigzagMeso(83, 126).s;
     s += arrow(P(170, 212), P(170, 254));
     s += T(182, 238, 'turn C2 half a turn', 'fg-tag', 'start');
-    s += T(170, 282, 'lined up: the mirror plane shows', 'fg-tag-good');
+    s += T(170, 278, 'lined up', 'fg-tag-good');
     s += tart(170, 380, 'meso', { plane: 'good' });
     return s;
   },
@@ -486,8 +486,8 @@ FIGURES.push({
     s += rule(10, 240, 330, 240);
     s += T(170, 262, 'the two chairs, both methyls up', 'fg-tag');
     const mx = 170;
-    const a = cisChair(88, 346, 0.44, 28, false, mx, false);
-    const b = cisChair(88, 346, 0.44, 28, true, mx, false);
+    const a = cisChair(82, 346, 0.5, 32, false, mx, false);
+    const b = cisChair(82, 346, 0.5, 32, true, mx, false);
     s += a.s + b.s;
     s += dashLine(P(mx, 280), P(mx, 400));
     s += T(85, 414, 'C1 axial', 'fg-tag');
@@ -496,7 +496,7 @@ FIGURES.push({
     s += T(255, 430, 'C2 axial', 'fg-tag');
     s += arrow(P(130, 448), P(210, 448));
     s += arrow(P(210, 460), P(130, 460), { muted: true });
-    s += T(170, 442, 'ring flip', 'fg-tag');
+    s += T(170, 436, 'ring flip', 'fg-tag');
     return s;
   },
   caption: 'Compare the two chairs across the dashed line, then read the tags under each.',
