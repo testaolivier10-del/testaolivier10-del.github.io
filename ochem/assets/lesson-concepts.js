@@ -812,12 +812,13 @@
       6:['markovnikov-regiochem','radical-chain'],
       8:['markovnikov-regiochem','radical-stability'] } },
 
-    'mass-spec': { n:8, steps:{
-      1:['ms-fragmentation'],
-      2:['ms-fragmentation','carbocation-stability'],
-      4:['ms-fragmentation'],
-      6:['ms-fragmentation','carbocation-stability'],
-      7:['ms-fragmentation'] } },
+    'mass-spec': { n:11, steps:{
+      2:['structure-elucidation'],
+      4:['ms-fragmentation','carbocation-stability'],
+      5:['ms-fragmentation'],
+      7:['structure-elucidation'],
+      9:['ms-fragmentation','carbocation-stability'],
+      10:['structure-elucidation','ms-fragmentation'] } },
 
     'meso': { n:10, steps:{
       1:['meso-detection'],

@@ -83,7 +83,7 @@ const RANGES = [
   ['aldehyde C–H', 9, 10, 1],
   ['aromatic C–H', 6.5, 8.5, 1],
   ['vinyl C–H', 4.5, 6.5, 1],
-  ['C–H next to O or halogen', 3.3, 4.5, 0],
+  ['C–H next to a halogen or O', 2.2, 4.5, 0],
   ['C–H next to N', 2.3, 3.0, 0],
   ['C–H alpha to a carbonyl', 2.0, 2.5, 0],
   ['≡C–H (terminal alkyne)', 1.8, 3.0, 1],
@@ -132,7 +132,7 @@ FIGURES.push({
    The central run points DOWN (against B0); the outer runs point UP. If
    `gapAxis` is given, the central run is drawn only above and below it,
    because a molecule sits on the axis there. */
-function fieldLoops(cx, yTop, yBot, reach, gapAxis) {
+function fieldLoops(cx, yTop, yBot, reach, gapAxis, headMid = false) {
   const k = reach / 0.75;
   const ym = (yTop + yBot) / 2;
   let s = '';
@@ -146,7 +146,8 @@ function fieldLoops(cx, yTop, yBot, reach, gapAxis) {
         dx: sgn * k * 3 * (1 - 2 * u), dy: 6 * u * v * (yTop - yBot) };
     };
     let u = 0.5;
-    for (let i = 0; i < 40; i++) { const q = bz(u); u += (q.y - (ym + 60)) / (yBot - yTop) * 0.5; }
+    const target = headMid ? ym : ym + 60;
+    for (let i = 0; i < 40; i++) { const q = bz(u); u += (q.y - target) / (yBot - yTop) * 0.5; }
     const q = bz(u);
     s += head(q.x, q.y, q.dx, q.dy, 'fg-head-mut', 9);
   }
@@ -175,7 +176,9 @@ function circulation(cx, cy, rx, ry) {
 function benzenePanel(cx, cy, reach) {
   const rx = 52, ry = 14;
   const v = [0, 60, 120, 180, 240, 300].map((a) => P(cx + rx * Math.cos((a * Math.PI) / 180), cy + ry * Math.sin((a * Math.PI) / 180)));
-  let s = fieldLoops(cx, cy - 118, cy + 118, reach);
+  /* the return loops pass just outside each H, with their upward
+     arrowhead level with it */
+  let s = fieldLoops(cx, cy - 104, cy + 104, rx + 30 + 11 + 9, null, true);
   for (let i = 0; i < 6; i++) s += sk(v[i], v[(i + 1) % 6]);
   s += circulation(cx, cy, rx - 16, ry - 5);
   for (const sgn of [1, -1]) {
@@ -188,19 +191,22 @@ function benzenePanel(cx, cy, reach) {
 }
 
 /* An alkene seen edge-on: C=C across the page, H out to both sides. */
-function alkenePanel(cx, cy, reach) {
+/* Edge-on, the plane of the alkene is a horizontal line: each carbon's two
+   H (one in front of the page, one behind) project onto that line, drawn as
+   one H disc labeled "2 H". */
+function alkenePanel(cx, cy) {
   const a = P(cx - 20, cy), b = P(cx + 20, cy);
-  let s = fieldLoops(cx, cy - 118, cy + 118, reach);
-  s += bond(a, b, { order: 2, rFrom: 0, rTo: 0 });
-  for (const [c, sgn] of [[a, -1], [b, 1]]) {
-    for (const dy of [-1, 1]) {
-      const h = P(c.x + sgn * 30, c.y + dy * 22);
-      s += bond(c, h, { rFrom: 0, rTo: 11 });
-      s += atom(h.x, h.y, 'H', { r: 11, kind: 'warn' });
-    }
-  }
+  let s = fieldLoops(cx, cy - 104, cy + 104, 20 + 32 + 13 + 9, null, true);
   s += `<ellipse class="fg-orb" cx="${n2(cx)}" cy="${n2(cy - 20)}" rx="14" ry="11"></ellipse>`;
   s += `<ellipse class="fg-orb" cx="${n2(cx)}" cy="${n2(cy + 20)}" rx="14" ry="11"></ellipse>`;
+  s += bond(a, b, { order: 2, rFrom: 0, rTo: 0, gap: 3 });
+  for (const [c, sgn] of [[a, -1], [b, 1]]) {
+    const h = P(c.x + sgn * 32, c.y);
+    s += bond(c, h, { rFrom: 0, rTo: 13 });
+    s += atom(h.x, h.y, 'H', { r: 13, kind: 'warn' });
+    s += text(h.x, h.y + 30, '2 H', { cls: 'fg-tag-warn' });
+  }
+  s += circulation(cx, cy, 30, 6);
   return s;
 }
 
@@ -229,8 +235,8 @@ FIGURES.push({
     const cy = 150;
     const cols = [[160, 'benzene, ring seen edge-on', benzenePanel,
       [['ring H stick out, where', 'fg-tag'], ['the loops point up (with B₀)', 'fg-tag'], ['deshielded: δ 6.5–8.5', 'fg-tag-warn']]],
-    [400, 'an alkene, seen edge-on', alkenePanel,
-      [['vinyl H sit out to the sides,', 'fg-tag'], ['where the loops point up', 'fg-tag'], ['deshielded: δ 4.5–6.5', 'fg-tag-warn']]],
+    [400, 'an alkene, plane seen edge-on', alkenePanel,
+      [['vinyl H lie in the plane, where', 'fg-tag'], ['the loops point up (with B₀)', 'fg-tag'], ['deshielded: δ 4.5–6.5', 'fg-tag-warn']]],
     [630, 'a terminal alkyne, along B₀', alkynePanel,
       [['≡C–H sits on the axis, where', 'fg-tag'], ['the field points down (against B₀)', 'fg-tag'], ['shielded: δ 1.8–3.0', 'fg-tag-good']]]];
     for (const [cx, title, fn, rows] of cols) {
@@ -514,7 +520,7 @@ FIGURES.push({
     const out = (p, len) => { const dx = p.x - cx, dy = p.y - cy, l = Math.hypot(dx, dy); return P(p.x + (dx / l) * len, p.y + (dy / l) * len); };
     const x = out(pts[0], 30);
     s += bond(pts[0], x, { rFrom: 0, rTo: 12 }) + atom(x.x, x.y, 'X', { r: 12 });
-    const spec = [[1, 'Ha', 'warn'], [2, 'H', 'hi'], [3, 'H', 'hi'], [4, 'H', 'plain'], [5, 'H', 'plain']];
+    const spec = [[1, 'Ha', 'warn'], [2, 'H', 'hi'], [3, 'H', 'hi'], [4, 'H', 'plain'], [5, 'H', 'hi']];
     for (const [i, lab, kind] of spec) {
       const h = out(pts[i], 26);
       s += bond(pts[i], h, { rFrom: 0, rTo: 12 }) + atom(h.x, h.y, lab, { r: 12, kind, size: lab.length > 1 ? 10.5 : 12 });
@@ -523,11 +529,13 @@ FIGURES.push({
     const ho = out(pts[2], 26), hm = out(pts[3], 26);
     s += text(ho.x - 16, ho.y + 4, 'ortho', { cls: 'fg-tag-good', anchor: 'end' });
     s += text(hm.x - 16, hm.y + 4, 'meta', { cls: 'fg-tag-good', anchor: 'end' });
+    const hm2 = out(pts[5], 26);
+    s += text(hm2.x + 16, hm2.y + 4, 'meta', { cls: 'fg-tag-good', anchor: 'start' });
     s += text(cx + 30, 208, 'ortho: J = 7–10 Hz', { cls: 'fg-tag-warn', anchor: 'middle' });
     s += text(cx + 30, 226, 'meta: J = 2–3 Hz', { cls: 'fg-tag-warn', anchor: 'middle' });
     return s;
   },
-  caption: 'In each alkene the coral hydrogens are the coupled pair. On the ring, the teal hydrogens are the ortho and meta partners of Ha.',
+  caption: 'In each alkene the coral hydrogens are the coupled pair. On the ring, the teal hydrogens are Ha&rsquo;s ortho partner and its two meta partners.',
 });
 
 /* ---------------------------------------------------------------- ethanol ---

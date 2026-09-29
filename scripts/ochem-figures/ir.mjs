@@ -281,7 +281,7 @@ FIGURES.push({
     });
     s += dash(X(3000), 20, X(3000), 418, 'fg-dash-hi');
     s += rule(X(3700), 418, X(2400), 418);
-    for (const w of [3700, 3600, 3400, 3200, 3000, 2800, 2600, 2400]) {
+    for (const w of [3600, 3400, 3200, 3000, 2800, 2600, 2400]) {
       s += rule(X(w), 418, X(w), 424);
       s += sm(X(w), 438, String(w));
     }
@@ -347,9 +347,9 @@ FIGURES.push({
     s += text(X(3000) + 5, 84, '3000', { cls: 'fg-tag-mut', size: 10, anchor: 'start' });
 
     s += irTrace([
-      { c: 3000, s: 255, d: 58 },   // the acid O–H, 3300 down to 2500
-      { c: 2960, s: 13, d: 20 },    // sp3 C–H, riding inside it
-      { c: 2875, s: 13, d: 16 },
+      { c: 2950, s: 185, d: 66 },   // the acid O–H, 3300 down to 2500
+      { c: 2960, s: 13, d: 14 },    // sp3 C–H, riding inside it
+      { c: 2875, s: 13, d: 11 },
       { c: 1710, s: 11, d: 90 },    // the acid C=O
       { c: 1415, s: 16, d: 26 },
       { c: 1285, s: 13, d: 52 },    // C–O
@@ -366,7 +366,7 @@ FIGURES.push({
     s += text(340, 176, 'sp³ C–H at 2960', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(340, 192, 'and 2875, half', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(340, 208, 'hidden in the O–H', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += `<line class="fg-dash-hi" x1="335" y1="194" x2="${n2(X(2920) + 4)}" y2="230"></line>`;
+    s += `<line class="fg-dash-hi" x1="335" y1="194" x2="${n2(X(2875) + 6)}" y2="${n2(Y(40))}"></line>`;
     s += text(474, 244, 'C=O, 1710', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
     s += text(474, 260, 'the carboxylic acid carbonyl', { cls: 'fg-sm', size: 10, anchor: 'end' });
     s += `<line class="fg-dash-hi" x1="478" y1="252" x2="${n2(X(1710) - 5)}" y2="276"></line>`;
@@ -439,7 +439,7 @@ FIGURES.push({
     s += enone(P(22, 290), 1);
     s += resArrow(P(138, 276), P(180, 276));
     s += enone(P(200, 290), 2);
-    s += tg(170, 330, 'C=O partly single: about 30 lower', 'middle', 'fg-tag-warn');
+    s += tg(170, 330, 'C=O partly single: about 30 below 1715', 'middle', 'fg-tag-warn');
     return s;
   },
   caption: 'In each pair, follow the curved arrows from left to right, then compare the highlighted C&ndash;O bond in the two contributors.',
