@@ -338,12 +338,13 @@
       6:['cycloaddition-geometry'],
       7:['cycloaddition-geometry'] } },
 
-    'uv-vis': { n:8, steps:{
+    'uv-vis': { n:11, steps:{
       2:['conjugation-recognition'],
       3:['conjugation-recognition'],
-      4:['conjugation-recognition'],
-      6:['conjugation-recognition'],
-      7:['conjugation-recognition'] } },
+      5:['conjugation-recognition'],
+      7:['conjugation-recognition'],
+      9:['conjugation-recognition'],
+      10:['conjugation-recognition'] } },
 
     'naming-parent-chain': { n:11, steps:{
       2:['parent-chain'],

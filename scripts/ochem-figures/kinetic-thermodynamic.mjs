@@ -1,140 +1,316 @@
 /* Figures for the kinetic-thermodynamic notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
 
-/* One hill: a plateau, a rise to a peak at `peakX`, a fall to a second
-   plateau. Returned as a path so the caller can pick the stroke class. */
-function hill(xA, yA, xP, yP, xB, yB, cls = 'fg-bond-hi') {
-  const lead = (xP - xA) * 0.55, tail = (xB - xP) * 0.55;
-  return `<path class="${cls}" fill="none" d="M${xA} ${yA} C${xA + lead} ${yA} ${xP - lead * 0.45} ${yP} ${xP} ${yP} ` +
-         `C${xP + tail * 0.45} ${yP} ${xB - tail} ${yB} ${xB} ${yB}"></path>`;
-}
+   The page calls a barrier a "hill" and the free energy of a product a
+   "valley", and every label here uses the same two words. Notes figures are
+   up to 760 wide. Lesson copies (id prefix l-) are 340 wide or less and use
+   fg-lbl / fg-tag text only. */
+import { atom, bond, arrow, lonePair, text, tag, rule, P } from '../lib/ochem-figure.mjs';
+import { zig, sk, ringDouble, polyPts } from '../lib/ochem-skeletal.mjs';
+import { armEnd } from '../lib/ochem-helpers.mjs';
 
-/* A vertical double-headed arrow with its own short guide lines: the way a
-   textbook marks a height on one of these diagrams. */
-function measure(x, yTop, yBottom, opts = {}) {
-  const c = opts.cls || 'fg-arrow';
-  const h = opts.head || 'fg-head';
-  let g = `<line class="${c}" x1="${x}" y1="${yBottom - 6}" x2="${x}" y2="${yTop + 7}"></line>`;
-  g += `<path class="${h}" d="M${x} ${yTop} L${x + 3.6} ${yTop + 7} L${x - 3.6} ${yTop + 7} Z"></path>`;
-  g += `<line class="${c}" x1="${x}" y1="${yTop + 6}" x2="${x}" y2="${yBottom - 7}"></line>`;
-  g += `<path class="${h}" d="M${x} ${yBottom} L${x - 3.6} ${yBottom - 7} L${x + 3.6} ${yBottom - 7} Z"></path>`;
-  return g;
-}
+/* ------------------------------------------------------------ helpers --- */
 
 /* An energy profile through a list of nodes, each a minimum or a maximum,
-   with a horizontal tangent at every node — which is what makes a well look
-   like a well rather than a corner. */
-function profile(nodes, cls = 'fg-bond-hi') {
+   with a horizontal tangent at every node, so a valley looks like a valley
+   rather than a corner. A node with `flat` runs level to that x after it. */
+function profile(nodes, cls = 'fg-bond') {
   let d = `M${nodes[0].x} ${nodes[0].y}`;
   for (let i = 1; i < nodes.length; i++) {
-    const a = nodes[i - 1], b = nodes[i], h = (b.x - a.x) * 0.5;
-    d += ` C${a.x + h} ${a.y} ${b.x - h} ${b.y} ${b.x} ${b.y}`;
+    const a = nodes[i - 1], b = nodes[i];
+    if (a.flat !== undefined) d += ` L${a.flat} ${a.y}`;
+    const ax = a.flat ?? a.x, h = (b.x - ax) * 0.5;
+    d += ` C${ax + h} ${a.y} ${b.x - h} ${b.y} ${b.x} ${b.y}`;
   }
-  return `<path class="${cls}" d="${d}"></path>`;
+  const last = nodes[nodes.length - 1];
+  if (last.flat !== undefined) d += ` L${last.flat} ${last.y}`;
+  return `<path class="${cls}" fill="none" d="${d}"></path>`;
+}
+
+/* A vertical double-headed arrow: the height of a climb. */
+function measure(x, yTop, yBottom) {
+  return arrow(P(x, yBottom), P(x, yTop), { size: 7 }) + arrow(P(x, yTop), P(x, yBottom), { size: 7 });
+}
+
+const T = (x, y, s, o = {}) => text(x, y, s, { cls: 'fg-tag', size: 11, ...o });
+const L = (x, y, s, o = {}) => text(x, y, s, { cls: 'fg-lbl', size: 13, ...o });
+
+/* 3-bromobut-1-ene (the 1,2-product): C1=C2–C3(Br)–C4, skeletal. */
+function bromobutene12(x0, y0) {
+  const c = zig(x0, y0, 4, 30, 18);
+  let s = bond(c[0], c[1], { order: 2, rFrom: 0, rTo: 0 });
+  s += sk(c[1], c[2]) + sk(c[2], c[3]);
+  const br = P(c[2].x, c[2].y + 32);
+  s += bond(c[2], br, { rFrom: 0, rTo: 15 }) + atom(br.x, br.y, 'Br', { r: 15 });
+  return s;
+}
+
+/* 1-bromobut-2-ene (the 1,4-product): Br–C1–C2=C3–C4, skeletal. */
+function bromobutene14(x0, y0) {
+  const c = zig(x0, y0, 4, 30, 18);
+  const br = P(c[0].x - 30, c[0].y - 18);
+  let s = bond(c[0], br, { rFrom: 0, rTo: 15 }) + atom(br.x, br.y, 'Br', { r: 15 });
+  s += sk(c[0], c[1]) + ringDouble(c[1], c[2], P(c[1].x, c[2].y), { inset: 5 }) + sk(c[2], c[3]);
+  return s;
 }
 
 const FIGURES = [];
 
-/* ----------------------------------------------------------------- B3 ---
-   The prose says "put the allylic cation at the top of an energy diagram
-   with two routes down from it" and then does not draw one. The whole
-   distinction is a claim about two heights and two depths that do not agree,
-   which is the single clearest case in the book for a picture. */
+/* ================================================================ 1 ===
+   The diene case: one allylic cation, two routes down. The lower hill leads
+   to the 1,2-product; the deeper valley holds the 1,4-product. */
 FIGURES.push({
   id: 'kinetic-thermodynamic-wells',
   section: 'kinetic-thermodynamic',
-  anchor: '<h3>Where else this appears</h3>',
-  alt: 'Energy profile with one intermediate and two routes: a low barrier to a shallow well on the left and a higher barrier to a deeper well on the right',
-  viewBox: '0 0 760 340',
+  anchor: 'but it ends in a deeper valley.</p>',
+  alt: 'Energy diagram for HBr and buta-1,3-diene after protonation. The allylic cation sits in the middle. The route to the left climbs a lower hill and ends at the 1,2-product, 3-bromobut-1-ene, drawn skeletally. The route to the right climbs a higher hill and ends in a deeper valley at the 1,4-product, 1-bromobut-2-ene.',
+  viewBox: '0 0 760 372',
   build() {
     let s = '';
-    // Energy axis.
-    s += arrow(P(52, 284), P(52, 46));
-    s += text(62, 40, 'free energy', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += arrow(P(52, 350), P(52, 46));
+    s += T(62, 40, 'free energy', { anchor: 'start' });
 
-    // The shared starting point, and the level it sits at.
     s += rule(220, 110, 550, 110);
-    s += `<path class="fg-bond" fill="none" d="M330 110 C300 110 280 88 250 88 C218 88 202 196 150 196 L100 196"></path>`;
-    s += `<path class="fg-bond" fill="none" d="M430 110 C460 110 490 62 520 62 C554 62 580 244 626 244 L678 244"></path>`;
-    s += tag(380, 98, 'the allylic cation');
+    s += profile([{ x: 430, y: 110, flat: 330 }, { x: 250, y: 88 }, { x: 150, y: 196, flat: 90 }]);
+    s += profile([{ x: 430, y: 110 }, { x: 520, y: 62 }, { x: 626, y: 244, flat: 690 }]);
+    s += T(380, 98, 'the allylic cation');
+    s += T(250, 72, 'lower hill: forms faster', { cls: 'fg-tag-good' });
+    s += T(520, 46, 'higher hill', { cls: 'fg-tag-warn' });
 
-    // Barriers.
-    s += text(250, 72, 'lower barrier', { cls: 'fg-tag-good', size: 11 });
-    s += text(520, 46, 'higher barrier', { cls: 'fg-tag-warn', size: 11 });
+    // The depth comparison.
+    s += rule(150, 196, 640, 196);
+    s += rule(640, 196, 640, 244);
+    s += T(566, 220, 'deeper valley:', { cls: 'fg-tag-good', anchor: 'end' });
+    s += T(566, 235, 'more stable', { cls: 'fg-tag-good', anchor: 'end' });
 
-    // Wells, and the comparison between their depths.
-    s += rule(150, 196, 630, 196);
-    s += rule(630, 196, 630, 244);
-    s += text(566, 224, 'deeper', { cls: 'fg-tag-good', size: 10.5, anchor: 'end' });
-    s += text(128, 218, '1,2-product', { cls: 'fg-lbl', size: 12 });
-    s += text(128, 234, 'terminal alkene', { cls: 'fg-sm', size: 10 });
-    s += text(678, 266, '1,4-product', { cls: 'fg-lbl', size: 12, anchor: 'end' });
-    s += text(678, 282, 'internal, more substituted', { cls: 'fg-sm', size: 10, anchor: 'end' });
-    s += tag(380, 272, 'reaction coordinate');
+    // The two products, named and drawn.
+    s += L(125, 222, '1,2-product');
+    s += bromobutene12(80, 270);
+    s += text(125, 334, '3-bromobut-1-ene', { cls: 'fg-sm', size: 10.5 });
+    s += L(655, 268, '1,4-product');
+    s += bromobutene14(630, 316);
+    s += text(660, 358, '1-bromobut-2-ene', { cls: 'fg-sm', size: 10.5 });
 
-    s += rule(34, 296, 686, 296);
-    s += text(186, 318, '\u221280 \u00b0C: no way back out \u2014 the barriers decide', { cls: 'fg-sm', size: 11 });
-    s += text(508, 318, '40 \u00b0C: both wells empty back out \u2014 the depths decide', { cls: 'fg-sm', size: 11 });
+    s += T(380, 300, 'reaction coordinate');
     return s;
   },
-  caption: 'Two routes down from one intermediate, and they disagree. The left route has the lower hill because bromide attacks the carbon carrying more positive charge; the right route ends in the deeper valley because its alkene is more substituted. Neither fact has anything to say about the other.',
-  note: 'Temperature does not move a single line on this diagram. It decides only whether the system is allowed to climb back out of the shallow well on the left \u2014 and that is the entire content of "kinetic versus thermodynamic control." Read it as a test you can apply anywhere: if the first step cannot reverse, compare the hills; if it can, compare the valleys and ignore the hills completely.',
+  caption: 'Follow each route down from the cation. The lower hill and the deeper valley belong to different products.',
 });
 
-/* ----------------------------------------------------------------- B3a ---
-   The section's existing figure is the diene case with real compounds in the
-   wells, which is right for that argument and wrong for carrying the idea to
-   enolates and sulfonation. This is the stripped version - two hills, two
-   valleys, no chemistry - and it adds the thing no diagram in the chapter
-   showed: the barriers back OUT, which are what temperature is actually
-   deciding about. */
+/* The same diagram, stacked narrow for the lesson. */
+FIGURES.push({
+  id: 'l-diene-wells',
+  lessons: ['kinetic-thermodynamic'],
+  alt: 'Energy diagram for HBr and buta-1,3-diene. The allylic cation sits in the middle. The route to the left climbs a lower hill to the 1,2-product, which forms faster. The route to the right climbs a higher hill to a deeper valley, the 1,4-product, which is more stable.',
+  viewBox: '0 0 340 290',
+  build() {
+    let s = '';
+    s += arrow(P(10, 262), P(10, 24));
+    s += T(18, 20, 'free energy', { anchor: 'start' });
+    s += rule(120, 104, 220, 104);
+    s += profile([{ x: 190, y: 104, flat: 150 }, { x: 110, y: 70 }, { x: 70, y: 176, flat: 30 }]);
+    s += profile([{ x: 190, y: 104 }, { x: 234, y: 44 }, { x: 280, y: 214, flat: 322 }]);
+    s += T(170, 124, 'allylic cation');
+    s += T(110, 56, 'lower hill', { cls: 'fg-tag-good' });
+    s += T(234, 30, 'higher hill', { cls: 'fg-tag-warn' });
+    s += rule(70, 176, 330, 176);
+    s += L(64, 198, '1,2-product');
+    s += T(64, 214, 'forms faster', { cls: 'fg-tag-good' });
+    s += L(282, 236, '1,4-product');
+    s += T(282, 252, 'more stable', { cls: 'fg-tag-good' });
+    s += T(170, 282, 'reaction coordinate');
+    return s;
+  },
+  caption: 'The lower hill and the deeper valley belong to different products.',
+});
+
+/* ================================================================ 2 ===
+   The general picture, with the climbs back OUT of each valley marked:
+   those are what temperature acts on. */
 FIGURES.push({
   id: 'kinetic-thermodynamic-generic',
   section: 'kinetic-thermodynamic',
-  anchor: 'It is changing <b>whether the system is allowed to find out</b>.</p>',
-  alt: 'A generic energy profile: one intermediate in the middle, a low barrier on the left leading to a shallow well and a higher barrier on the right leading to a deeper well. Double-headed arrows mark the barrier back out of each well, small on the left and large on the right.',
-  viewBox: '0 0 760 430',
+  anchor: 'what reaches the deep valley tends to stay there.</p>',
+  alt: 'A general energy diagram: one intermediate in the middle, a lower hill on the left leading to a shallow valley, the kinetic product, and a higher hill on the right leading to a deeper valley, the thermodynamic product. Double-headed arrows mark the climb from each product back up to its hill: short on the left, long on the right.',
+  viewBox: '0 0 760 380',
   build() {
     let s = '';
-    s += arrow(P(44, 330), P(44, 60));
-    s += text(54, 54, 'free energy', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += arrow(P(44, 350), P(44, 60));
+    s += T(54, 54, 'free energy', { anchor: 'start' });
 
     s += rule(300, 150, 460, 150);
-    s += tag(380, 140, 'the intermediate');
-    s += `<path class="fg-bond" fill="none" d="M300 150 C270 150 252 116 222 116 C190 116 172 240 120 240 L80 240"></path>`;
-    s += `<path class="fg-bond" fill="none" d="M460 150 C486 150 506 86 534 86 C566 86 584 310 624 310 L662 310"></path>`;
-    s += text(222, 104, 'lower ΔG‡', { cls: 'fg-tag-good', size: 11 });
-    s += text(534, 74, 'higher ΔG‡', { cls: 'fg-tag-warn', size: 11 });
+    s += T(380, 140, 'the intermediate');
+    s += profile([{ x: 460, y: 150, flat: 300 }, { x: 222, y: 116 }, { x: 140, y: 240, flat: 80 }]);
+    s += profile([{ x: 460, y: 150 }, { x: 534, y: 86 }, { x: 624, y: 310, flat: 680 }]);
+    s += T(222, 104, 'lower hill (smaller ΔG‡)', { cls: 'fg-tag-good' });
+    s += T(534, 74, 'higher hill (larger ΔG‡)', { cls: 'fg-tag-warn' });
 
-    // the depth comparison
-    s += rule(120, 240, 624, 240);
-    s += rule(624, 240, 624, 310);
-    s += text(548, 262, 'deeper well', { cls: 'fg-tag-good', size: 10.5 });
+    // The climbs back out.
+    s += rule(98, 116, 222, 116);
+    s += measure(106, 116, 240);
 
-    // the barriers back OUT - the measure temperature is deciding about
-    s += rule(100, 116, 222, 116);
-    s += arrow(P(100, 232), P(100, 122), { size: 7 });
-    s += arrow(P(100, 122), P(100, 232), { size: 7 });
-    s += text(118, 108, 'small barrier out', { cls: 'fg-tag-good', size: 10.5 });
-    s += rule(534, 86, 644, 86);
-    s += arrow(P(644, 302), P(644, 92), { size: 7 });
-    s += arrow(P(644, 92), P(644, 302), { size: 7 });
-    s += text(606, 332, 'large barrier out', { cls: 'fg-tag-warn', size: 10.5 });
+    s += rule(534, 86, 712, 86);
+    s += measure(704, 86, 310);
 
-    s += text(160, 268, 'shallow well — forms faster', { cls: 'fg-lbl', size: 11.5 });
-    s += text(606, 352, 'deep well — more stable', { cls: 'fg-lbl', size: 11.5 });
-    s += tag(380, 350, 'reaction coordinate');
 
-    s += rule(30, 378, 730, 378);
-    s += text(375, 400, 'Kinetics compares the two hills. Thermodynamics compares the two valleys.', { cls: 'fg-lbl', size: 12 });
-    s += text(375, 418, 'Warming empties the shallow well first, because that is the one with a small barrier out.', { cls: 'fg-sm', size: 10.5 });
+    s += L(110, 266, 'kinetic product');
+    s += T(110, 283, 'short climb back out', { cls: 'fg-tag-good' });
+    s += L(640, 336, 'thermodynamic product');
+    s += T(640, 353, 'long climb back out', { cls: 'fg-tag-warn' });
+    s += T(380, 300, 'reaction coordinate');
     return s;
   },
-  caption: 'The same picture with the chemistry taken out, so it can be carried anywhere. One branch point, two routes, and the two comparisons that disagree: the left hill is lower, the right valley is deeper. Nothing about either fact predicts the other.',
-  note: 'The two vertical double arrows are the part usually left out, and they are what temperature acts on. Getting <i>into</i> a well is the forward barrier; getting back <i>out</i> of it is the forward barrier plus the well depth. The shallow well on the left has a small barrier out, so it is the first to start emptying as the flask warms — and everything that leaves it is re-sorted through the branch point until it finds the deep well on the right and stays there.',
+  caption: 'The double arrows measure the climb from each product back up to its hill.',
+});
+
+FIGURES.push({
+  id: 'l-barriers-out',
+  lessons: ['kinetic-thermodynamic'],
+  alt: 'The general energy diagram. A lower hill on the left leads to a shallow valley, the kinetic product, with a short climb back out. A higher hill on the right leads to a deep valley, the thermodynamic product, with a long climb back out.',
+  viewBox: '0 0 340 300',
+  build() {
+    let s = '';
+    s += rule(120, 104, 220, 104);
+    s += T(170, 124, 'intermediate');
+    s += profile([{ x: 190, y: 104, flat: 150 }, { x: 110, y: 70 }, { x: 70, y: 176, flat: 34 }]);
+    s += profile([{ x: 190, y: 104 }, { x: 234, y: 44 }, { x: 280, y: 214, flat: 314 }]);
+    s += T(110, 56, 'lower hill', { cls: 'fg-tag-good' });
+    s += T(234, 30, 'higher hill', { cls: 'fg-tag-warn' });
+
+    s += rule(16, 70, 110, 70);
+    s += measure(22, 70, 176);
+    s += rule(234, 44, 336, 44);
+    s += measure(328, 44, 214);
+
+    s += L(64, 200, 'kinetic');
+    s += T(64, 216, 'short climb out', { cls: 'fg-tag-good' });
+    s += L(262, 238, 'thermodynamic');
+    s += T(262, 254, 'long climb out', { cls: 'fg-tag-warn' });
+    s += T(170, 290, 'reaction coordinate');
+    return s;
+  },
+  caption: 'Each double arrow is the climb from a product back up to its hill.',
+});
+
+/* ================================================================ 3 ===
+   Preview: the two enolates of 2-methylcyclohexanone. The ring helper is a
+   copy of the one in enolate-regiochemistry.mjs (C1 at the top; C2 upper
+   right, C6 upper left). */
+const rOf = (l) => (l === 'H' ? 11 : l.length >= 3 ? 17 : l.length === 2 ? 15 : 14);
+const A = (p, l, o = {}) => atom(p.x, p.y, l, { r: rOf(l), ...o });
+const chg = (x, y, s = '−') => text(x, y, s, { cls: 'fg-warn', size: 15 });
+const LP = (p, deg, d = 20) => lonePair(p.x, p.y, -deg, { dist: d });
+
+function ring(c, o = {}) {
+  const r = o.r ?? 34;
+  const pts = Array.from({ length: 6 }, (_, i) => {
+    const a = ((-90 + 60 * i) * Math.PI) / 180;
+    return P(c.x + r * Math.cos(a), c.y + r * Math.sin(a));
+  });
+  const dbl = o.dbl || 'CO';
+  const hi = o.hi || [];
+  let s = '';
+  for (let i = 0; i < 6; i++) {
+    const a = pts[i], b = pts[(i + 1) % 6];
+    const isD = (dbl === 'C1C2' && i === 0) || (dbl === 'C1C6' && i === 5);
+    const cls = hi.includes(i) ? 'fg-bond-hi' : undefined;
+    s += isD ? ringDouble(a, b, c, { cls, inset: 9 }) : bond(a, b, { rFrom: 0, rTo: 0, cls });
+  }
+  const top = P(pts[0].x, pts[0].y - 44);
+  s += bond(pts[0], top, { rFrom: 0, rTo: rOf('O'), order: dbl === 'CO' ? 2 : 1 });
+  s += A(top, 'O');
+  for (const q of o.subs || []) {
+    const from = pts[q.at - 1];
+    const end = armEnd(from, q.deg, 44);
+    s += bond(from, end, { rFrom: 0, rTo: rOf(q.label), cls: q.bondCls });
+    s += A(end, q.label, { kind: q.kind });
+  }
+  for (const k of o.loc || []) {
+    const p = pts[k - 1];
+    s += text(p.x + (c.x - p.x) * 0.42, p.y + (c.y - p.y) * 0.42 + 4, String(k), { cls: 'fg-tag-mut', size: 11 });
+  }
+  return { s, top };
+}
+const enolateO = (o) => LP(o, 90) + LP(o, 160) + LP(o, 20) + chg(o.x - 28, o.y - 17);
+const ketoneO = (o) => LP(o, 150) + LP(o, 30);
+
+FIGURES.push({
+  id: 'kinetic-thermodynamic-enolates',
+  section: 'kinetic-thermodynamic',
+  anchor: 'This is the thermodynamic enolate.</p>',
+  alt: 'Preview. 2-Methylcyclohexanone at the top. An arrow labeled take H from C6 leads down-left to the kinetic enolate, whose C=C joins C1 and C6 and carries two carbons. An arrow labeled take H from C2 leads down-right to the thermodynamic enolate, whose C=C joins C1 and C2 and carries three carbons, one of them the methyl.',
+  viewBox: '0 0 760 380',
+  build() {
+    let s = '';
+    const ket = ring(P(380, 110), { loc: [1, 2, 6], subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
+    s += ket.s + ketoneO(ket.top);
+    const kin = ring(P(170, 280), { dbl: 'C1C6', loc: [1, 2, 6], hi: [0, 4], subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
+    s += kin.s + enolateO(kin.top);
+    const thd = ring(P(590, 280), { dbl: 'C1C2', loc: [1, 2, 6], hi: [5, 1], subs: [{ at: 2, deg: 30, label: 'CH₃', bondCls: 'fg-bond-hi', kind: 'hi' }] });
+    s += thd.s + enolateO(thd.top);
+    s += arrow(P(318, 150), P(236, 206)) + T(262, 164, 'take H from C6', { anchor: 'end' });
+    s += arrow(P(442, 150), P(524, 206)) + T(498, 164, 'take H from C2', { anchor: 'start' });
+    s += T(380, 180, '2-methylcyclohexanone');
+    s += T(170, 348, 'kinetic enolate: C1=C6', { cls: 'fg-tag-good' });
+    s += T(170, 366, 'two carbons on the C=C');
+    s += T(590, 348, 'thermodynamic enolate: C1=C2', { cls: 'fg-tag-warn' });
+    s += T(590, 366, 'three carbons on the C=C');
+    return s;
+  },
+  caption: 'Preview only. The highlighted bonds join each C=C to the carbons it carries: two for the enolate from C6, three for the enolate from C2.',
+});
+
+/* ================================================================ 4 ===
+   Preview: sulfonation of naphthalene. C1 and C8 point the same way, so a
+   group on C1 crowds the hydrogen on C8; a group on C2 does not. */
+function naphthalene(cx, cy, r, sub) {
+  const w = r * Math.cos(Math.PI / 6);
+  const R = polyPts(cx + w, cy, 6, r, 90);   // 0 top, 1 upper-left, 2 lower-left, 3 bottom, 4 lower-right, 5 upper-right
+  const Lr = polyPts(cx - w, cy, 6, r, 90);
+  const cR = P(cx + w, cy), cL = P(cx - w, cy);
+  const C = { 1: R[0], 2: R[5], 3: R[4], 4: R[3], '4a': R[2], '8a': R[1], 5: Lr[3], 6: Lr[2], 7: Lr[1], 8: Lr[0] };
+  const plain = (a, b) => bond(a, b, { rFrom: 0, rTo: 0 });
+  let s = '';
+  s += ringDouble(C[1], C[2], cR, { inset: 7 }) + plain(C[2], C[3]) + ringDouble(C[3], C[4], cR, { inset: 7 });
+  s += plain(C[4], C['4a']) + ringDouble(C['4a'], C['8a'], cR, { inset: 7 }) + plain(C['8a'], C[1]);
+  s += plain(C['4a'], C[5]) + ringDouble(C[5], C[6], cL, { inset: 7 }) + plain(C[6], C[7]);
+  s += ringDouble(C[7], C[8], cL, { inset: 7 }) + plain(C[8], C['8a']);
+  const num = (k, c) => text(C[k].x + (c.x - C[k].x) * 0.4, C[k].y + (c.y - C[k].y) * 0.4 + 4, String(k), { cls: 'fg-tag-mut', size: 11 });
+  s += num(1, cR) + num(2, cR) + num(8, cL);
+  if (sub === 1) {
+    const g = P(C[1].x, C[1].y - 42);
+    s += bond(C[1], g, { rFrom: 0, rTo: 19 }) + atom(g.x, g.y, 'SO₃H', { r: 19, kind: 'hi' });
+    const h = P(C[8].x, C[8].y - 30);
+    s += bond(C[8], h, { rFrom: 0, rTo: 11 }) + atom(h.x, h.y, 'H', { r: 11, kind: 'warn' });
+    s += `<line class="fg-dash-hi" x1="${h.x + 13}" y1="${h.y - 2}" x2="${g.x - 21}" y2="${g.y + 4}"></line>`;
+  } else {
+    const g = armEnd(C[2], 30, 44);
+    s += bond(C[2], g, { rFrom: 0, rTo: 19 }) + atom(g.x, g.y, 'SO₃H', { r: 19, kind: 'hi' });
+  }
+  return s;
+}
+
+FIGURES.push({
+  id: 'kinetic-thermodynamic-naphthalene',
+  section: 'kinetic-thermodynamic',
+  anchor: 'where it does not crowd the hydrogen on C8: the thermodynamic product.</p>',
+  alt: 'Preview. Left: naphthalene-1-sulfonic acid, formed at about 80 degrees Celsius, the kinetic product. Its SO3H group on C1 points the same way as the hydrogen on C8, and a dashed line marks the crowding between them. An arrow labeled 160 degrees, comes off and goes back on, leads right to naphthalene-2-sulfonic acid, the thermodynamic product, with SO3H on C2, pointing away from the other ring.',
+  viewBox: '0 0 760 250',
+  build() {
+    let s = '';
+    s += naphthalene(190, 140, 34, 1);
+    s += T(190, 22, '80 °C: kinetic product', { cls: 'fg-tag-good' });
+    s += text(190, 212, 'naphthalene-1-sulfonic acid', { cls: 'fg-sm', size: 10.5 });
+    s += T(126, 76, 'crowded', { cls: 'fg-tag-warn', anchor: 'end' });
+    s += arrow(P(318, 140), P(442, 140));
+    s += T(380, 128, 'heat to 160 °C');
+    s += T(380, 162, 'comes off, goes back on', { cls: 'fg-tag-mut' });
+    s += naphthalene(560, 140, 34, 2);
+    s += T(560, 22, '160 °C: thermodynamic product', { cls: 'fg-tag-warn' });
+    s += text(560, 212, 'naphthalene-2-sulfonic acid', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Preview only. C1 and C8 point the same way, so a group on C1 sits close to the hydrogen on C8. A group on C2 has no such neighbor.',
 });
 
 export default FIGURES;

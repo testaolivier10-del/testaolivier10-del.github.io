@@ -105,7 +105,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -136,23 +136,21 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
-  /* Four cases; for each the student says which product wins. They are
-     ordered so the reversibility question has to be asked separately from the
-     stability question — a student who only ever answers "the stable one"
-     gets two of the four wrong. */
+  /* Four cases; for each the student says which product wins. A student who
+     always answers "the more stable one" gets two of the four wrong. */
   var CASES = [
-    { id:'k1', text:'Two products. <b>A forms faster</b>; <b>B is more stable</b>. Run at &minus;78&nbsp;°C, irreversibly.',
+    { id:'k1', text:'Two products: <b>A forms faster</b> and <b>B is more stable</b>. Run at &minus;78&nbsp;°C, where neither can reverse.',
       opts:['A','B'], right:'A',
-      why:'Irreversible and cold: nothing can climb back out, so the barriers decide and the faster-forming product is what you isolate. B\'s extra stability is irrelevant because nothing will ever visit it.' },
-    { id:'k2', text:'Same two products, same reaction, run <b>warm and reversibly</b>.',
+      why:'Cold with no way back: the products stay where they form, so the hills decide and you isolate the faster product. B\'s extra stability plays no part.' },
+    { id:'k2', text:'Same two products, run <b>warm, where both steps can reverse</b>.',
       opts:['A','B'], right:'B',
-      why:'Reversible and warm: both products keep forming and going back, so the system explores its options and accumulates in the deeper well. Now the stabilities decide.' },
-    { id:'k3', text:'B is more stable, but the step forming it <b>cannot reverse</b> at any temperature.',
+      why:'Warm with a way back: both products keep forming and returning, so the mixture collects in the deeper valley. Now the stabilities decide.' },
+    { id:'k3', text:'Same two products, run hot, but <b>neither</b> product-forming step can reverse at any temperature.',
       opts:['A','B'], right:'A',
-      why:'Thermodynamic control requires reversibility. Without a way back, heating for longer does not help — you simply get more of the faster product, faster.' },
-    { id:'k4', text:'HBr + buta-1,3-diene at &minus;80&nbsp;°C. Which dominates?',
+      why:'Thermodynamic control needs a way back. With none, heating for longer does not help: you just get the faster product sooner.' },
+    { id:'k4', text:'HBr and buta-1,3-diene at &minus;80&nbsp;°C. Which product dominates?',
       opts:['1,2-product','1,4-product'], right:'1,2-product',
-      why:'Cold and effectively irreversible, so the rates decide. Bromide attacks C2 faster because the secondary resonance form puts more charge there — about 80:20 in favor of 1,2.' }
+      why:'Cold, so the C–Br bond does not break again and the rates decide. Bromide bonds to C2 faster because C2 carries more of the positive charge, giving about 80:20 in favor of the 1,2-product.' }
   ];
 
   window.OchemLessonEngine.start({
@@ -164,28 +162,36 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Two different questions, two different answers.',
-        bodyHtml: '<p class="step-body">When two products can form from a common intermediate, there are two entirely separate things you might mean by "which one forms":</p>' +
-          '<ul class="step-body">' +
-          '<li>The <b>kinetic product</b> is the one that forms <b>faster</b> — lower transition state, smaller activation energy ΔG‡.</li>' +
-          '<li>The <b>thermodynamic product</b> is the one that is <b>more stable</b> — lower in energy once formed, more negative ΔG.</li>' +
-          '</ul>' +
-          '<div class="explain-box">The distinction is between a <b>barrier</b> and a <b>well</b>. Kinetics is how high the hill is on the way out; thermodynamics is how deep the valley is when you land. Nothing requires the lower hill to lead to the deeper valley — and when it does not, the conditions decide which one you end up in.</div>'
+        title: 'One cation, two products, two temperatures.',
+        bodyHtml: '<p class="step-body">Add HBr to buta-1,3-diene, as in <a class="chapter-ref" href="/ochem/notes/diene-addition.html">1,2- vs 1,4-addition</a>. Protonation gives one allylic cation, and bromide can bond at either end of it. At &minus;80&nbsp;°C the 1,2-product wins, by about 80 to 20. At 40&nbsp;°C the 1,4-product wins, by about 85 to 15.</p>' +
+          '<p class="step-body">The 1,2-product forms faster, because C2 of the cation carries more of the positive charge. The product that forms faster is the <b>kinetic product</b>. The 1,4-product is more stable, because its C=C carries two carbons instead of one. The product that is more stable, lower in free energy, is the <b>thermodynamic product</b>.</p>',
+        diagramHtml: '<!-- fig:l-diene-wells:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 290" role="img" aria-label="Energy diagram for HBr and buta-1,3-diene. The allylic cation sits in the middle. The route to the left climbs a lower hill to the 1,2-product, which forms faster. The route to the right climbs a higher hill to a deeper valley, the 1,4-product, which is more stable."><line class="fg-arrow" x1="10" y1="262" x2="10" y2="32"></line><path class="fg-head" d="M10 24 L14.16 32 L5.84 32 Z"></path><text class="fg-tag" x="18" y="20" text-anchor="start" font-size="11">free energy</text><line class="fg-rule" x1="120" y1="104" x2="220" y2="104"></line><path class="fg-bond" fill="none" d="M190 104 L150 104 C130 104 130 70 110 70 C90 70 90 176 70 176 L30 176"></path><path class="fg-bond" fill="none" d="M190 104 C212 104 212 44 234 44 C257 44 257 214 280 214 L322 214"></path><text class="fg-tag" x="170" y="124" text-anchor="middle" font-size="11">allylic cation</text><text class="fg-tag-good" x="110" y="56" text-anchor="middle" font-size="11">lower hill</text><text class="fg-tag-warn" x="234" y="30" text-anchor="middle" font-size="11">higher hill</text><line class="fg-rule" x1="70" y1="176" x2="330" y2="176"></line><text class="fg-lbl" x="64" y="198" text-anchor="middle" font-size="13">1,2-product</text><text class="fg-tag-good" x="64" y="214" text-anchor="middle" font-size="11">forms faster</text><text class="fg-lbl" x="282" y="236" text-anchor="middle" font-size="13">1,4-product</text><text class="fg-tag-good" x="282" y="252" text-anchor="middle" font-size="11">more stable</text><text class="fg-tag" x="170" y="282" text-anchor="middle" font-size="11">reaction coordinate</text></svg><figcaption>The lower hill and the deeper valley belong to different products.</figcaption></figure><!-- fig:l-diene-wells:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A hill sets the rate. A valley sets the equilibrium.',
+        bodyHtml: '<p class="step-body">The height of a hill, from the starting point up to the transition state, is the activation energy, ΔG‡. The lower the hill, the faster the route. The depth of a valley, measured from where the route started, is ΔG°. The deeper the valley, the more of that product is present at equilibrium.</p>' +
+          '<p class="step-body">Neither number predicts the other. In the diene case, the lower hill leads to the shallower valley, so the kinetic and thermodynamic products are different compounds.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Small gaps matter. At room temperature, every 6&nbsp;kJ/mol or so is a factor of about ten in rate or in the equilibrium ratio, so each way of winning usually gives one main product.</p>' +
+          '<div class="explain-box">Kinetics compares the hills. Thermodynamics compares the valleys.</div>'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Reversibility is the switch.',
-        bodyHtml: '<p class="step-body"><b>If the first step cannot reverse</b>, the reaction is under <b>kinetic control</b>. Whatever forms first is trapped and the ratio simply reflects relative rates. Low temperature enforces this: there is not enough energy to climb back out of either product well.</p>' +
-          '<p class="step-body"><b>If the first step can reverse</b>, the reaction is under <b>thermodynamic control</b>. Both products form and both go back, repeatedly, until the system settles in the lowest well available. The ratio then reflects relative stabilities and has nothing to do with rates.</p>' +
-          '<p class="step-body" style="margin-bottom:0;">So temperature is not changing which product is more stable, and it is not changing which forms faster. It is changing <b>whether the system is allowed to find out</b>.</p>'
+        bodyHtml: '<p class="step-body">When the step that forms the products cannot reverse, the reaction is under <b>kinetic control</b>. Each product stays where it formed, so the ratio matches the ratio of rates. For the diene at &minus;80&nbsp;°C, the new C–Br bond almost never breaks again.</p>' +
+          '<p class="step-body">When that step can reverse, and the mixture has time to reach equilibrium, the reaction is under <b>thermodynamic control</b>. At 40&nbsp;°C bromide leaves again, the cation forms again, and the material collects in the deeper valley.</p>' +
+          '<p class="step-body">Cold favors kinetic control, and warmth favors thermodynamic control. Temperature does not change which product forms faster or which is more stable. It changes whether the products can climb back out. So a strikingly low temperature in a question, such as &minus;78&nbsp;°C, usually signals the kinetic product.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The kinetic product is the first to return, because its climb back, the forward hill plus the valley depth, is the shorter one.</p>',
+        diagramHtml: '<!-- fig:l-barriers-out:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 300" role="img" aria-label="The general energy diagram. A lower hill on the left leads to a shallow valley, the kinetic product, with a short climb back out. A higher hill on the right leads to a deep valley, the thermodynamic product, with a long climb back out."><line class="fg-rule" x1="120" y1="104" x2="220" y2="104"></line><text class="fg-tag" x="170" y="124" text-anchor="middle" font-size="11">intermediate</text><path class="fg-bond" fill="none" d="M190 104 L150 104 C130 104 130 70 110 70 C90 70 90 176 70 176 L34 176"></path><path class="fg-bond" fill="none" d="M190 104 C212 104 212 44 234 44 C257 44 257 214 280 214 L314 214"></path><text class="fg-tag-good" x="110" y="56" text-anchor="middle" font-size="11">lower hill</text><text class="fg-tag-warn" x="234" y="30" text-anchor="middle" font-size="11">higher hill</text><line class="fg-rule" x1="16" y1="70" x2="110" y2="70"></line><line class="fg-arrow" x1="22" y1="176" x2="22" y2="77"></line><path class="fg-head" d="M22 70 L25.64 77 L18.36 77 Z"></path><line class="fg-arrow" x1="22" y1="70" x2="22" y2="169"></line><path class="fg-head" d="M22 176 L18.36 169 L25.64 169 Z"></path><line class="fg-rule" x1="234" y1="44" x2="336" y2="44"></line><line class="fg-arrow" x1="328" y1="214" x2="328" y2="51"></line><path class="fg-head" d="M328 44 L331.64 51 L324.36 51 Z"></path><line class="fg-arrow" x1="328" y1="44" x2="328" y2="207"></line><path class="fg-head" d="M328 214 L324.36 207 L331.64 207 Z"></path><text class="fg-lbl" x="64" y="200" text-anchor="middle" font-size="13">kinetic</text><text class="fg-tag-good" x="64" y="216" text-anchor="middle" font-size="11">short climb out</text><text class="fg-lbl" x="262" y="238" text-anchor="middle" font-size="13">thermodynamic</text><text class="fg-tag-warn" x="262" y="254" text-anchor="middle" font-size="11">long climb out</text><text class="fg-tag" x="170" y="290" text-anchor="middle" font-size="11">reaction coordinate</text></svg><figcaption>Each double arrow is the climb from a product back up to its hill.</figcaption></figure><!-- fig:l-barriers-out:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Which product wins?</h2>' +
-            '<p class="step-body">For each set of conditions, decide which product dominates. Ask the reversibility question before the stability question.</p>' +
+            '<p class="step-body">For each set of conditions, decide which product dominates. Ask whether the reaction can reverse before you ask which product is more stable.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -207,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-opt') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Not that one. Ask the reversibility question first: can the reaction get back out of a product well? If it cannot, stability does not get a vote.');
+                api.showFeedback(fb, false, 'Not that one. First ask whether the products can climb back out of their valleys. If they cannot, stability plays no part.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -215,8 +221,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. The habit to build: reversible or not, THEN rates or stabilities.'
-                  : 'All four, first time — including the third, where being more stable buys B nothing because the reaction can never get back to try again.');
+                  ? 'All four. The habit to build: first decide whether the reaction can reverse, then compare rates or stabilities.'
+                  : 'All four, first time, including the third, where B gains nothing from being more stable because the products can never go back.');
                 api.record(!missed);
                 next.disabled = false;
               }
@@ -227,64 +233,66 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
+        eyebrow: 'Guided practice',
         title: 'What must be true for a reaction to be under thermodynamic control?',
-        options: ['It must be exothermic','It must be reversible','It must be run below 0 °C','It must have one product'],
+        options: [
+          'The more stable product must also form faster',
+          'The product-forming step must be able to reverse',
+          'The reaction must be run below 0 °C',
+          'The reaction must give off heat overall'
+        ],
         correctIndex: 1,
-        correctFeedback: 'Correct. The system can only settle into the most stable product if it is able to leave the others. If a question tells you the product forms irreversibly, thermodynamic control is off the table no matter how long you heat it.',
-        wrongFeedback: 'Ask what physically has to happen for a mixture to rearrange itself toward the more stable member after both products have already formed.'
+        correctFeedback: 'Correct. The mixture can collect in the more stable product only if the other product can leave its valley. If the product-forming step cannot reverse, heating for longer never gives thermodynamic control.',
+        wrongFeedback: 'Think about what has to happen after both products have formed for the mixture to shift toward the more stable one.'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'A question specifies a bulky base at −78 °C. What is that temperature signaling?',
+        eyebrow: 'Independent practice',
+        title: 'Why does warming the buta-1,3-diene and HBr mixture reverse the product ratio?',
         options: [
-          'That the reagent decomposes when warm',
-          'That kinetic control is intended — the faster-formed product',
-          'That the solvent would freeze otherwise',
-          'That the reaction is extremely slow'
+          'Warming moves more of the positive charge onto C4',
+          'Bromide can leave again, so the products equilibrate',
+          'A different mechanism, with no cation, takes over',
+          'The 1,4-route gets the lower hill when warm'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. A bulky base at −78 °C removes the most accessible proton fastest and the result is frozen in place. When you meet this in enolate chemistry it has a name — the kinetic enolate. Warmer, equilibrating conditions give the more substituted, more stable thermodynamic enolate instead. A strikingly low stated temperature is almost always this signal.',
-        wrongFeedback: 'Stated conditions in a question are usually there to tell you which regime you are in. What does an unusually low temperature prevent a reaction from doing?'
+        correctFeedback: 'Correct. The mechanism stays the same. Warming lets the C–Br bond break again, which re-forms the allylic cation, so both products keep returning and the mixture collects in the deeper valley: the 1,4-product, with its more substituted C=C.',
+        wrongFeedback: 'Temperature moves nothing on the energy diagram. What changes is what the products can do after they form.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent practice',
+        title: 'A procedure runs a reaction at −78 °C and works it up while still cold. Two products are possible. Why so cold?',
+        options: [
+          'To stop the kinetic product from returning to the intermediate',
+          'To make the thermodynamic product form faster than the other',
+          'To change which of the two products is the more stable one',
+          'To shift the equilibrium further toward the more stable product'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. At −78 °C the products cannot climb back out of their valleys, so the one that forms faster stays. That is kinetic control, and a strikingly low temperature in a question usually signals it.',
+        wrongFeedback: 'Cooling moves nothing on the energy diagram. It only affects whether a product, once formed, can go back.'
       },
       {
         type: 'explain',
-        eyebrow: 'Where else this appears',
-        title: 'The same switch, in three other places.',
-        bodyHtml: '<ul class="step-body">' +
-          '<li><b>Enolates</b> (a preview of <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-enolate-chemistry\">Enolate Chemistry</a>). Pulling a proton off the carbon next to a C=O gives an <b>enolate</b>, and a ketone with two such carbons has two of them available. A bulky base at −78&nbsp;°C takes the more accessible proton fastest — the kinetic enolate. Warm, equilibrating conditions give the more substituted, more stable one instead. Same molecule, same two options, same switch.</li>' +
-          '<li><b>Aromatic sulfonation.</b> It is reversible, which is exactly why a sulfonic acid group can be installed to block a ring position and then removed later. Most electrophilic aromatic substitutions cannot be undone this way.</li>' +
-          '<li><b>Elimination \u2014 with a caution.</b> It is tempting to file Zaitsev as thermodynamic and Hofmann as kinetic, and it is not quite right: an E2 cannot reverse, so the two alkenes never compete for the same molecules, and under ordinary conditions the Zaitsev alkene is both the faster-formed and the more stable one. A bulky base changes which transition state is lower, not which alkene is more stable. Read Hofmann selectivity as sterics acting on a barrier.</li>' +
-          '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">The Diels–Alder in the next lesson adds a case worth watching for: its <b>endo</b> product is the <i>kinetic</i> one despite being the more crowded arrangement. "Kinetic" does not mean "less hindered" — it only ever means "gets there faster".</p>'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
-        title: 'Why does warming the buta-1,3-diene/HBr mixture invert the product ratio?',
-        options: [
-          'Heat changes which carbon carries more positive charge',
-          'Bromide can leave again, so the system re-equilibrates into the more stable product',
-          'The 1,2-product decomposes above 0 °C',
-          'A different mechanism operates when warm'
-        ],
-        correctIndex: 1,
-        correctFeedback: 'Correct, and the mechanism is unchanged throughout. Warming simply supplies enough energy for the C–Br bond to ionize again, regenerating the allylic cation, so both products keep being resampled and the mixture drains into the deeper well — the 1,4-product with its more substituted alkene.',
-        wrongFeedback: 'Nothing about the intermediate or the mechanism changes with temperature. What does change is what the products are able to do once they have formed.'
+        eyebrow: 'Where the idea stops',
+        title: 'Not every product choice is kinetic versus thermodynamic control.',
+        bodyHtml: '<p class="step-body"><b>Elimination.</b> It is tempting to call the Zaitsev alkene from an E2 thermodynamic and the Hofmann alkene kinetic. That is not quite right, because an E2 cannot reverse, so the alkenes never exchange material. With an ordinary base, the Zaitsev alkene both forms faster and is more stable. A bulky base changes which transition state is lower, not which alkene is more stable, so read Hofmann selectivity as crowding that raises one hill.</p>' +
+          '<p class="step-body"><b>Crowding.</b> &ldquo;Kinetic&rdquo; does not mean &ldquo;less crowded.&rdquo; The Diels–Alder reaction in the next lesson has a kinetic product that is the more crowded of its two possible arrangements. The word only ever means &ldquo;forms faster.&rdquo;</p>' +
+          '<p class="step-body" style="margin-bottom:0;"><b>A preview.</b> Later chapters meet the same switch in <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a> and in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a>. The written section shows both cases, and nothing in this lesson depends on them.</p>'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Product A forms four times faster; product B is 12 kJ/mol more stable. You run the reaction cold and irreversibly, then repeat it hot and reversibly. What do you see?',
+        title: 'Product A forms four times as fast as product B; B is 12 kJ/mol more stable. You run the reaction cold with no way back, then hot with a way back. What do you see?',
         options: [
-          'Mostly A both times — it always forms first',
-          'Mostly B both times — it is the more stable product',
+          'Mostly A both times, since A forms first',
+          'Mostly B both times, since B is more stable',
           'Mostly A cold, mostly B hot',
-          'An even mixture in both cases'
+          'An even mixture of A and B both times'
         ],
         correctIndex: 2,
-        correctFeedback: 'Correct, and notice that A still forms first in the hot run — it is simply not able to stay. That is the whole content of the idea: "B is more stable, so B is the product" is only true when the reaction can reverse. The trap is treating stability as decisive by default, when it only gets a vote once the system has a way back.'
+        correctFeedback: 'Correct. A still forms first in the hot run, but it does not stay. "B is more stable, so B is the product" holds only when the reaction can reverse; without a way back, stability plays no part.'
       }
     ]
   });
