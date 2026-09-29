@@ -151,3 +151,65 @@ confirm it.
   - The copper tests' failure with aromatic aldehydes is stated, not explained.
   - Outside Carbonyl: the Wittig row in the functional-group-interconversion notes still needs
     fixing. It is left for the Synthesis chapter.
+
+## Enolate Chemistry (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### enolate-grading: a sort row that courses may grade differently
+- **Status:** open.
+- **Where:** `enolate-regiochemistry`, lesson sort step.
+- **The row:** "LDA in slight excess, then warmed before the halide" is graded kinetic. With no
+  proton carrier in the flask (House's equilibration work), a lithium enolate keeps its
+  regiochemistry on warming. Many courses grade any "warmed" condition as thermodynamic. Keep the
+  row, reword it, or drop it?
+
+### enolate-conventions: explanations the pages grade by
+- **Status:** pending review.
+- **Where:** `alpha-hydrogens`, `aldol`, `michael-robinson`, `enolate-regiochemistry`, `claisen`.
+- **Positions taken:**
+  - 1,2- against 1,4-addition is taught with hard/soft (HSAB) and LUMO coefficients, as on the
+    Gilman page. HSAB alone is debated. Amines add 1,4 largely because their 1,2-addition is
+    reversible, and simple lithium enolates often add 1,2.
+  - C- against O-alkylation of an enolate is hedged with "usually", with the soft/hard account.
+  - Enolates are drawn with the charge on O in most mechanisms and as the C carbanion in some
+    figures (Dieckmann, ring-closing aldol). Both are common.
+  - Acid-catalyzed aldol dehydration is taught through the enol; the carbocation route is
+    mentioned as an alternative. Which one is graded?
+  - Acid α-halogenation: the more substituted enol is more stable and also forms faster. (The old
+    "enols equilibrate" reason contradicted the page's own slow step.) "Base tends to halogenate
+    the less substituted carbon" is hedged.
+  - A(1,3) strain is given as the reason a ketone's enamine forms toward the less substituted side.
+  - The Claisen's two-α-H rule is stated for alkoxide conditions. Very strong bases can condense
+    esters with only one α-H; the page does not mention it.
+  - The bridgehead C=C of the bridged Wieland–Miescher closure is "too strained to form". Such
+    alkenes are known but very strained. Confirm the wording.
+  - "Acetone + NaOH + heat → mesityl oxide" is kept as the graded answer. In practice it is slow
+    and equilibrium-limited, and mesityl oxide is usually made with acid.
+
+### enolate-numbers: values that vary by source or are unverified
+- **Status:** pending review.
+- **Where:** `alpha-hydrogens`, `ester-syntheses`, `aldol`, `enolate-regiochemistry`.
+- **Notes:**
+  - Acetone's keto : enol ratio is about 10⁸ (pK_E ≈ 8.3), up from the old page's 10⁶. "A few
+    parts per billion" enol is a value in water, not neat acetone; the Alkynes notes use the same
+    wording.
+  - Pentane-2,4-dione "about 80% enol" depends on solvent (neat about 76–81%).
+  - The pKa values (malonate about 13, acetoacetate about 11, ester about 25) are water-scale
+    teaching values. DMSO values differ (malonate about 16).
+  - The ~90:10 thermodynamic enolate ratio depends on metal and solvent.
+  - "A few percent diacetone alcohol at equilibrium" is kept from the old page, unverified.
+  - Pentan-3-one polybromination (C2 twice, then C4) is the expected pattern, not measured ratios.
+
+### enolate-scope: things the pages leave out on purpose
+- **Status:** pending review.
+- **Notes:**
+  - Favorskii rearrangement is not taught. The α-halo ketone E2 uses pyridine and heat, and says
+    hydroxide is avoided.
+  - Krapcho decarboxylation, and α-keto acids losing CO₂ by other routes (enzymes, oxidation).
+  - With tert-butyl bromide the page draws E2 by the malonate anion, an idealization. Secondary
+    halides do alkylate malonate in useful yield.
+  - Lithium enolate + Br₂ can still give some dibromination.
+  - The asymmetric proline (Hajos–Parrish) version of the Wieland–Miescher synthesis.
+  - A pyrrolidine enamine with CH₃I gives significant N-methylation; no example uses it.
