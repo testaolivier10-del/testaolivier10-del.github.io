@@ -217,7 +217,7 @@
       7:['catalytic-cycle'],
       8:['catalytic-cycle'],
       10:['catalytic-cycle'],
-      11:['catalytic-cycle','hard-soft-addition'] } },
+      11:['catalytic-cycle'] } },
 
     'wittig-reaction': { n:13, steps:{
       3:['alkene-by-construction'],
