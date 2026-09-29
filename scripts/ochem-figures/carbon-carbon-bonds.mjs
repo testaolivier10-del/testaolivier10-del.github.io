@@ -1,204 +1,619 @@
-/* Figures for the carbon-carbon-bonds notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+/* Figures for the carbon-carbon-bonds notes page and its lesson. Built by
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   This is a chapter-21 page, so every structure is skeletal: an unlabeled
+   vertex is a carbon. The bond each reaction makes is drawn in the highlight
+   color (fg-bond-hi); a bond that is about to form is dashed (fg-dash-hi).
+
+   Most drawings are built as 340-wide blocks. A notes figure sets two or
+   three of them side by side; the lesson copy (id prefix l-) stacks them.
+   Lesson figures use only fg-lbl and fg-tag text. */
+import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
+import { ringDouble, polyPts, locant, benzene } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
+const RAD = Math.PI / 180;
+const r1 = (v) => Math.round(v * 10) / 10;
+const mid = (a, b) => P(r1((a.x + b.x) / 2), r1((a.y + b.y) / 2));
+/* A point `len` from p in screen degrees: 0 is east, 90 is straight down. */
+const off = (p, deg, len) => P(r1(p.x + Math.cos(deg * RAD) * len), r1(p.y + Math.sin(deg * RAD) * len));
+const dirOf = (a, b) => Math.atan2(b.y - a.y, b.x - a.x) / RAD;
+const sk = (a, b, cls) => bond(a, b, { rFrom: 0, rTo: 0, cls: cls || 'fg-bond' });
+/* A labeled group on a skeletal vertex: bond from the vertex, then the atom. */
+function grp(p, deg, len, lbl, o = {}) {
+  const q = off(p, deg, len);
+  const r = o.r ?? 11;
+  return bond(p, q, { rFrom: 0, rTo: r + 1, order: o.order || 1, cls: o.cls, gap: o.gap ?? 3.4 }) +
+    atom(q.x, q.y, lbl, { r, kind: o.kind });
+}
+/* A bare skeletal methyl (a line end), optionally highlighted. */
+const methyl = (p, deg, len = 24, cls) => sk(p, off(p, deg, len), cls);
+/* A skeletal zigzag chain. Even indices on y0, odd ones shifted by dy. */
+const chain = (x0, y0, n, dx = 28, dy = 16) =>
+  Array.from({ length: n }, (_, i) => P(x0 + i * dx, y0 + (i % 2 ? dy : 0)));
+const path = (pts, hi = []) => pts.slice(1).map((p, i) => sk(pts[i], p, hi.includes(i) ? 'fg-bond-hi' : '')).join('');
+const down = (x, y1, y2) => arrow(P(x, y1), P(x, y2), { size: 8 });
+const right = (y, x1, x2) => arrow(P(x1, y), P(x2, y), { size: 8 });
 
-/* ------------------------------------------------------------------ D2 ---
-   The three attachment points around a carbonyl. The prose lists them as
-   three bullets and calls keeping them straight "worth doing explicitly",
-   which is exactly the admission that a list is the wrong form: the claim
-   is geometric -- at, next to, two along -- and the reader needs to see the
-   same skeleton with the bond arriving in three different places. */
-FIGURES.push({
-  id: 'carbonyl-three-sites',
-  section: 'carbon-carbon-bonds',
-  anchor: '<h3>Where the new bond can go relative to a carbonyl</h3>',
-  alt: 'The same carbonyl skeleton with a new carbon-carbon bond forming at the carbonyl carbon, at the alpha carbon and at the beta carbon',
-  viewBox: '0 0 760 344',
-  build() {
-    let s = '';
-    /* One skeleton per panel: beta, alpha, carbonyl carbon, R. Panels 1 and 2
-       are the same saturated ketone on purpose -- the difference between them
-       is entirely the reagent, which is the point. */
-    const skeleton = (cx, enone, hi) => {
-      const b = P(cx - 66, 150), a = P(cx - 16, 178), k = P(cx + 34, 150);
-      let g = '';
-      g += bond(b, a, { order: enone ? 2 : 1 });
-      g += bond(a, k);
-      g += bond(k, P(cx + 34, 100), { order: 2 });
-      g += bond(k, P(cx + 82, 178));
-      g += atom(cx + 34, 100, 'O');
-      g += atom(cx + 82, 178, 'R');
-      /* The highlighted atom is the one the panel is about, not always the
-         carbonyl carbon: a panel titled "at the alpha carbon" that rings the
-         carbonyl carbon fights its own title. */
-      g += atom(b.x, b.y, 'C', hi === 'b' ? { kind: 'hi' } : {});
-      g += atom(a.x, a.y, 'C', hi === 'a' ? { kind: 'hi' } : {});
-      g += atom(k.x, k.y, 'C', hi === 'k' ? { kind: 'hi' } : {});
-      g += text(cx - 66, 124, '\u03B2', { cls: 'fg-lbl', size: 12 });
-      g += text(cx - 44, 196, '\u03B1', { cls: 'fg-lbl', size: 12 });
-      return g;
-    };
+/* ================================================================ the ten ===
+   Each reaction once, drawn as its product with the bond it made in color. */
+function tenPanels() {
+  return [
+    { t: 'Grignard or RLi + carbonyl', r: 'cyclohexanone + CH₃MgBr, then H₃O⁺', n: '1-methylcyclohexan-1-ol',
+      draw(cx, cy) {
+        const v = polyPts(cx - 24, cy, 6, 21, 0);
+        let s = v.map((p, i) => sk(p, v[(i + 1) % 6])).join('');
+        s += grp(v[0], -40, 26, 'OH', { r: 13 });
+        s += methyl(v[0], 40, 28, 'fg-bond-hi');
+        return s;
+      } },
+    { t: 'Grignard + CO₂', r: 'CH₃CH₂MgBr + CO₂, then H₃O⁺', n: 'propanoic acid',
+      draw(cx, cy) {
+        const c = chain(cx - 40, cy + 8, 3, 28, -16);
+        let s = path(c, [1]);
+        s += grp(c[2], -90, 24, 'O', { order: 2 });
+        s += grp(c[2], 30, 26, 'OH', { r: 13 });
+        return s;
+      } },
+    { t: 'acetylide + alkyl halide', r: 'HC≡C⁻ Na⁺ + CH₃CH₂Br', n: 'but-1-yne',
+      draw(cx, cy) {
+        const h = P(cx - 66, cy), a = P(cx - 44, cy), b = P(cx - 14, cy), c = P(cx + 14, cy), d = P(cx + 38, cy - 14);
+        let s = atom(h.x, h.y, 'H', { r: 9 });
+        s += bond(h, a, { rFrom: 10, rTo: 0 });
+        s += bond(a, b, { order: 3, rFrom: 0, rTo: 0, gap: 3 });
+        s += sk(b, c, 'fg-bond-hi') + sk(c, d);
+        return s;
+      } },
+    { t: 'cyanide + alkyl halide', r: 'CH₃CH₂Br + NaCN', n: 'propanenitrile',
+      draw(cx, cy) {
+        const a = P(cx - 50, cy + 8), b = P(cx - 26, cy - 6), c = P(cx + 4, cy - 6), nn = P(cx + 34, cy - 6);
+        let s = sk(a, b) + sk(b, c, 'fg-bond-hi');
+        s += bond(c, nn, { order: 3, rFrom: 0, rTo: 11, gap: 3 }) + atom(nn.x, nn.y, 'N', { r: 11 });
+        return s;
+      } },
+    { t: 'aldol', r: '2 × acetaldehyde, NaOH', n: '3-hydroxybutanal',
+      draw(cx, cy) {
+        const c = chain(cx - 42, cy + 8, 4, 28, -16);
+        let s = path(c, [1]);
+        s += grp(c[1], -90, 24, 'OH', { r: 13 });
+        s += grp(c[3], 30, 24, 'O', { order: 2 });
+        return s;
+      } },
+    { t: 'Claisen', r: '2 × ethyl acetate, NaOEt', n: 'ethyl acetoacetate',
+      draw(cx, cy) {
+        const c = chain(cx - 58, cy + 10, 4, 28, -16);
+        let s = path(c, [1]);
+        s += grp(c[1], -90, 24, 'O', { order: 2 });
+        s += grp(c[3], -90, 24, 'O', { order: 2 });
+        s += grp(c[3], 30, 30, 'OEt', { r: 15 });
+        return s;
+      } },
+    { t: 'Michael (conjugate) addition', r: 'malonate enolate + but-3-en-2-one', n: 'a 1,5-keto ester',
+      draw(cx, cy) {
+        const c = chain(cx - 22, cy - 6, 5, 26, 16);
+        let s = path(c, [0]);
+        s += grp(c[0], 200, 34, 'CO₂Et', { r: 20 });
+        s += grp(c[0], -110, 30, 'CO₂Et', { r: 20 });
+        s += grp(c[3], 90, 22, 'O', { order: 2 });
+        return s;
+      } },
+    { t: 'Diels–Alder', r: 'butadiene + ethene, the simplest case', n: 'cyclohexene, two bonds at once',
+      draw(cx, cy) {
+        /* Top four corners came from the diene, the bottom edge from ethene.
+           The two new sigma bonds join them; the new pi bond is on top. */
+        const at = (deg) => off(P(cx, cy + 2), deg, 27);
+        const c1 = at(180), c2 = at(240), c3 = at(300), c4 = at(0), d2 = at(60), d1 = at(120);
+        const ctr = P(cx, cy + 2);
+        return sk(c1, c2) + ringDouble(c2, c3, ctr) + sk(c3, c4) + sk(c4, d2, 'fg-bond-hi') + sk(d2, d1) + sk(d1, c1, 'fg-bond-hi');
+      } },
+    { t: 'Friedel–Crafts acylation', r: 'benzene + CH₃COCl, AlCl₃', n: 'acetophenone',
+      draw(cx, cy) {
+        const { svg, pts } = benzene(cx - 30, cy + 4, 21, { rot: 0 });
+        const k = off(pts[0], -30, 26);
+        let s = svg + sk(pts[0], k, 'fg-bond-hi');
+        s += grp(k, -90, 22, 'O', { order: 2 });
+        s += methyl(k, 30, 26);
+        return s;
+      } },
+    { t: 'Wittig', r: 'cyclohexanone + Ph₃P=CH₂', n: 'methylenecyclohexane',
+      draw(cx, cy) {
+        const v = polyPts(cx - 22, cy, 6, 21, 0);
+        let s = v.map((p, i) => sk(p, v[(i + 1) % 6])).join('');
+        const e = off(v[0], 0, 28);
+        s += bond(v[0], e, { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 3.4 });
+        return s;
+      } },
+  ];
+}
 
-    /* The three panels are pulled inside the left 90% of the canvas: at 512
-       the third one's border, its R and the reagent line under it were all
-       behind the reading column's horizontal scroll. */
-    const col = (x, title, enone, reagents, product, hi) => {
-      const cx = x + 108;
-      s += panel(x, 52, 216, 244);
-      s += tag(cx, 40, title);
-      s += skeleton(cx, enone, hi);
-      s += text(cx, 268, reagents, { cls: 'fg-sm', size: 10 });
-      s += text(cx, 288, product, { cls: 'fg-tag-good', size: 10.5 });
-      return cx;
-    };
-
-    // At the carbonyl carbon: the nucleophile comes in from outside.
-    let cx = col(16, 'at the carbonyl carbon', false, 'RMgBr, RLi, \u207BCN, acetylide', 'an alcohol', 'k');
-    s += curve(P(cx + 34, 232), P(cx + 34, 172), { bow: 14 });
-    s += label(cx + 34, 248, 'Nu\u207B', { size: 12 });
-
-    // At the alpha carbon: the molecule itself is the nucleophile.
-    cx = col(240, 'at the \u03B1 carbon', false, 'base first, then RX or a carbonyl', 'alkylation, aldol, Claisen', 'a');
-    s += curve(P(cx - 16, 196), P(cx - 16, 230), { bow: 12 });
-    s += label(cx - 16, 250, 'E\u207A', { size: 12 });
-    s += text(cx, 74, 'base takes an \u03B1 H first', { cls: 'fg-sm', size: 9 });
-
-    // At the beta carbon: only an enone offers this one.
-    cx = col(464, 'at the \u03B2 carbon', true, 'enolate + an enone (Michael)', '1,5-dicarbonyl', 'b');
-    s += curve(P(cx - 66, 232), P(cx - 66, 172), { bow: 14 });
-    s += label(cx - 66, 248, 'Nu\u207B', { size: 12 });
-
-    s += text(350, 326, 'One carbonyl, three carbons to attach to. The reagent chooses which.', { cls: 'fg-lbl', size: 12 });
-    return s;
-  },
-  caption: 'The same four atoms three times, with the new C\u2013C bond arriving in a different place each time. A nucleophile lands <b>on</b> the carbonyl carbon; an enolate makes the molecule itself the nucleophile and the bond forms <b>next to</b> it; conjugate addition to an enone lands <b>two carbons out</b>.',
-  note: 'The middle panel is the one that reverses direction, and that is why it is easy to lose: in the other two the arrow points into the carbonyl compound, and in the aldol, Claisen and alkylation it points out of it. Note also that only the third panel is drawn with a C=C \u2014 conjugate addition is not an option a plain ketone offers, it is something the conjugation creates.',
-});
-
-/* ------------------------------------------------------------------ D7 ---
-   The ten, as structures. The section's claim is that the list is short
-   enough to learn as a list, and then it never draws a single member of it.
-   A table of "joins" and "gives" says what a reaction does; it does not say
-   what an acetylide alkylation LOOKS like, which is what a reader has to
-   recognize in a target. */
 FIGURES.push({
   id: 'the-ten-drawn-once',
   section: 'carbon-carbon-bonds',
-  anchor: 'acylation does neither, which is why it is almost always the one to plan with.</div>',
-  alt: 'Ten panels, one for each carbon-carbon bond-forming reaction, each showing the product with the newly formed bond picked out',
-  viewBox: '0 0 700 760',
+  anchor: '<!-- fig:the-ten-drawn-once:start -->',
+  alt: 'Ten panels, one per reaction, each showing the product in skeletal form with the new carbon-carbon bond in color: 1-methylcyclohexan-1-ol, propanoic acid, but-1-yne, propanenitrile, 3-hydroxybutanal, ethyl acetoacetate, the malonate Michael adduct, cyclohexene with its two new bonds, acetophenone and methylenecyclohexane.',
+  viewBox: '0 0 700 752',
   build() {
     let s = '';
-    s += tag(350, 26, 'each reaction once, with the bond it just made drawn in color');
-
     const PW = 334, PH = 140;
     const cols = [10, 356];
-    const rows = [44, 186, 328, 470, 612];
-
-    /* Half-width of a condensed formula. Every atom label renders at the
-       stylesheet's 13px monospace regardless of what the drawing kit is
-       asked for, so the disc has to be sized from the character count or the
-       label hangs out of it -- which is exactly what the first draft did. */
-    const hw = (t) => t.length * 4 + 6;
-    const frag = (x, cy, t) => (t.length <= 5
-      ? atom(x, cy, t, { r: Math.max(15, hw(t)) })
-      : label(x, cy + 4.5, t));
-
-    /* Two fragments and the bond that has just joined them: the shape of six
-       of the ten. Centred on cx so the panel does not look lopsided. */
-    const joinRow = (cx, cy, left, right) => {
-      const lw = Math.max(15, hw(left)), rw = Math.max(15, hw(right));
-      const total = lw * 2 + 44 + rw * 2;
-      const lx = cx - total / 2 + lw, rx = cx + total / 2 - rw;
-      return bond(P(lx, cy), P(rx, cy), { rFrom: lw + 3, rTo: rw + 3, cls: 'fg-bond-hi' })
-        + frag(lx, cy, left) + frag(rx, cy, right);
-    };
-
-    const ring = (cx, cy, r, opts = {}) => {
-      const v = [];
-      for (let i = 0; i < 6; i++) {
-        const a = ((opts.start ?? -90) + i * 60) * Math.PI / 180;
-        v.push(P(cx + Math.cos(a) * r, cy + Math.sin(a) * r));
-      }
-      let g = '';
-      for (let i = 0; i < 6; i++) {
-        const cls = (opts.hiEdges || []).includes(i) ? 'fg-bond-hi' : 'fg-bond';
-        const order = (opts.dblEdges || []).includes(i) ? 2 : 1;
-        g += bond(v[i], v[(i + 1) % 6], { rFrom: 0, rTo: 0, cls, order, gap: 3.5 });
-      }
-      if (opts.aromatic) g += `<circle class="fg-bond" cx="${cx}" cy="${cy}" r="${Math.round(r * 0.58)}" fill="none"></circle>`;
-      return { g, v };
-    };
-
-    const panels = [
-      { t: 'Grignard or RLi + carbonyl', r: 'cyclohexanone + CH₃MgBr', n: '1-methylcyclohexan-1-ol',
-        draw(cx, cy) {
-          /* Both new groups hang off ONE ring carbon (v[0], placed at the
-             east point of the ring), because the product is a tertiary
-             alcohol: the carbon that was the C=O now carries the OH and the
-             methyl. The first draft put them on adjacent carbons, which is
-             2-methylcyclohexan-1-ol and a different reaction entirely. */
-          const { g, v } = ring(cx - 38, cy, 19, { start: 0 });
-          return g
-            + bond(v[0], P(cx + 8, cy - 24), { rFrom: 0, rTo: 15 })
-            + bond(v[0], P(cx + 8, cy + 24), { rFrom: 0, rTo: 17, cls: 'fg-bond-hi' })
-            + atom(cx + 8, cy - 24, 'OH')
-            + atom(cx + 8, cy + 24, 'CH₃', { kind: 'hi', r: 17 });
-        } },
-      { t: 'Grignard + CO₂', r: 'CH₃CH₂MgBr + CO₂, then H₃O⁺', n: 'propanoic acid',
-        draw: (cx, cy) => joinRow(cx, cy, 'CH₃CH₂', 'CO₂H') },
-      { t: 'acetylide + alkyl halide', r: 'HC≡C⁻ Na⁺ + CH₃CH₂Br', n: 'but-1-yne',
-        draw: (cx, cy) => joinRow(cx, cy, 'HC≡C', 'CH₂CH₃') },
-      { t: 'cyanide + alkyl halide', r: 'CH₃CH₂Br + NaCN', n: 'propanenitrile',
-        draw: (cx, cy) => joinRow(cx, cy, 'CH₃CH₂', 'C≡N') },
-      { t: 'aldol', r: '2 × acetaldehyde, NaOH', n: '3-hydroxybutanal',
-        draw: (cx, cy) => joinRow(cx, cy, 'CH₃CH(OH)', 'CH₂CHO') },
-      { t: 'Claisen', r: '2 × ethyl acetate, NaOEt', n: 'ethyl acetoacetate',
-        draw: (cx, cy) => joinRow(cx, cy, 'CH₃CO', 'CH₂CO₂Et') },
-      { t: 'Michael (conjugate) addition', r: 'malonate enolate + but-3-en-2-one', n: 'a 1,5-keto-ester',
-        draw: (cx, cy) => joinRow(cx, cy, '(EtO₂C)₂CH', 'CH₂CH₂COCH₃') },
-      { t: 'Diels–Alder', r: 'butadiene + ethene, the simplest case', n: 'cyclohexene, two bonds at once',
-        draw(cx, cy) {
-          /* Ring carbons, clockwise from the top: the diene supplied the four
-             at the top and left, the dienophile the two on the lower right,
-             so the new sigma bonds are the two edges where they meet and the
-             new pi bond is the middle of what was the diene. */
-          const { g } = ring(cx, cy, 25, { dblEdges: [5], hiEdges: [1, 3] });
-          return g;
-        } },
-      { t: 'Friedel–Crafts acylation', r: 'benzene + CH₃COCl / AlCl₃', n: 'acetophenone',
-        draw(cx, cy) {
-          const { g, v } = ring(cx - 45, cy, 20, { aromatic: true });
-          return g
-            + bond(v[1], P(cx + 8, cy - 16), { rFrom: 0, rTo: 26, cls: 'fg-bond-hi' })
-            + atom(cx + 8, cy - 16, 'COCH₃', { kind: 'hi', r: 26 });
-        } },
-      { t: 'Wittig', r: 'cyclohexanone + Ph₃P=CH₂', n: 'methylenecyclohexane',
-        draw(cx, cy) {
-          const { g, v } = ring(cx - 40, cy, 20);
-          return g
-            + bond(v[1], P(cx + 8, cy - 16), { rFrom: 0, rTo: 17, cls: 'fg-bond-hi', order: 2, gap: 3.5 })
-            + atom(cx + 8, cy - 16, 'CH₂', { kind: 'hi', r: 17 });
-        } },
-    ];
-
-    panels.forEach((pn, i) => {
+    const rows = [10, 158, 306, 454, 602];
+    tenPanels().forEach((pn, i) => {
       const x = cols[i % 2], y = rows[Math.floor(i / 2)];
       const cx = x + PW / 2;
       s += panel(x, y, PW, PH);
       s += tag(cx, y + 20, pn.t);
       s += text(cx, y + 38, pn.r, { cls: 'fg-sm' });
-      s += pn.draw(cx, y + 84);
+      s += pn.draw(cx, y + 80);
       s += text(cx, y + 130, pn.n, { cls: 'fg-tag-good' });
+    });
+    s += tag(350, 746, 'in color: the bond the reaction made', { cls: 'fg-tag-mut' });
+    return s;
+  },
+  caption: 'One example of each reaction, drawn as its product. Find the colored bond first, then the functional group next to it.',
+  note: 'The Wittig panel colors the whole C=C, because the reaction makes both of its bonds. The Diels&ndash;Alder panel has two colored bonds, because it makes two.',
+});
+
+/* ======================================================= counting a target ===
+   1-phenylpropan-1-ol: six carbons from benzene, three in the chain, and the
+   two bonds a count points at. Used in the notes and the lesson. */
+FIGURES.push({
+  id: 'count-phenylpropanol',
+  section: 'carbon-carbon-bonds',
+  lessons: ['carbon-carbon-bonds'],
+  anchor: '<!-- fig:count-phenylpropanol:start -->',
+  alt: '1-Phenylpropan-1-ol in skeletal form: a benzene ring bonded to a three-carbon chain whose first carbon carries OH. The ring is labeled six carbons from benzene and the chain three carbons. Bond a, between the ring and the first chain carbon, is highlighted. Bond b, between the first and second chain carbons, is dashed.',
+  viewBox: '0 0 340 214',
+  build() {
+    let s = '';
+    const { svg, pts } = benzene(92, 110, 30, { rot: 0 });
+    s += svg;
+    const c1 = off(pts[0], -30, 30), c2 = off(c1, 30, 30), c3 = off(c2, -30, 30);
+    s += sk(pts[0], c1, 'fg-bond-hi');
+    s += sk(c1, c2, 'fg-dash-hi');
+    s += sk(c2, c3);
+    s += grp(c1, -90, 26, 'OH', { r: 13 });
+    s += tag(mid(pts[0], c1).x - 4, mid(pts[0], c1).y + 22, 'a', { cls: 'fg-tag-good' });
+    s += tag(mid(c1, c2).x + 4, mid(c1, c2).y + 24, 'b', { cls: 'fg-tag-warn' });
+    s += tag(92, 170, '6 C from benzene');
+    s += tag(220, 170, '3 C in the chain');
+    s += tag(170, 200, 'a: joins ring to chain    b: inside the chain', { cls: 'fg-tag-mut' });
+    s += tag(170, 22, '1-phenylpropan-1-ol, 9 carbons');
+    return s;
+  },
+  caption: 'Bond a joins the two pieces the count asks for. Cutting bond b instead leaves a benzene ring that already carries a carbon.',
+});
+
+/* The lesson's counting question: diphenylmethanol, three pieces. */
+FIGURES.push({
+  id: 'l-diphenylmethanol',
+  lessons: ['carbon-carbon-bonds'],
+  alt: 'Diphenylmethanol in skeletal form: two benzene rings, each bonded to one central carbon that also carries OH and H.',
+  viewBox: '0 0 340 170',
+  build() {
+    let s = '';
+    const c = P(170, 104);
+    const L = benzene(92, 122, 28, { rot: 0 });
+    const R = benzene(248, 122, 28, { rot: 0 });
+    s += L.svg + R.svg;
+    s += sk(L.pts[0], c) + sk(c, R.pts[3]);
+    s += grp(c, -90, 28, 'OH', { r: 13 });
+    s += tag(170, 22, 'diphenylmethanol');
+    return s;
+  },
+  caption: 'Count the carbons in each ring and the one between them.',
+});
+
+/* ==================================================== one-carbon extensions ===
+   From 1-bromobutane: the new carbon, and the bond to it, in color. */
+/* A five-carbon product drawn left to right, C5 ... C1, with C1 the new
+   carbon. `fg` draws the group on C1. Returns the ink. */
+function fiveChain(x0, y0, fg, dx = 26, dy = 15) {
+  const c = chain(x0, y0, 5, dx, -dy); // c[4] is C1
+  let s = path(c, [3]);
+  const C1 = c[4], C2 = c[3];
+  if (fg === 'CN') {
+    const nn = off(C1, dirOf(C2, C1), 26);
+    s += bond(C1, nn, { order: 3, rFrom: 0, rTo: 11, gap: 3 }) + atom(nn.x, nn.y, 'N', { r: 11 });
+  } else if (fg === 'CO2H') {
+    s += grp(C1, 90, 22, 'O', { order: 2 });
+    s += grp(C1, -30, 24, 'OH', { r: 13 });
+  } else if (fg === 'NH2') {
+    s += grp(C1, -30, 24, 'NH₂', { r: 14 });
+  } else if (fg === 'OH') {
+    s += grp(C1, -30, 24, 'OH', { r: 13 });
+  }
+  return s;
+}
+function bromobutane(x0, y0) {
+  const c = chain(x0, y0, 4, 26, -15);
+  return path(c) + grp(c[3], -30, 24, 'Br', { r: 12 });
+}
+
+FIGURES.push({
+  id: 'one-carbon-extensions',
+  section: 'carbon-carbon-bonds',
+  anchor: '<!-- fig:one-carbon-extensions:start -->',
+  alt: '1-Bromobutane at the left, with three arrows. NaCN gives pentanenitrile, which H3O+ and heat turn into pentanoic acid and LiAlH4 then water turns into pentan-1-amine. Mg then CO2 then H3O+ gives pentanoic acid. Mg then formaldehyde then H3O+ gives pentan-1-ol. In every product the fifth carbon and its bond to the chain are in color.',
+  viewBox: '0 0 720 360',
+  build() {
+    let s = '';
+    s += bromobutane(24, 196);
+    s += tag(70, 232, '1-bromobutane, 4 C');
+    // three arrows fanning out from the start
+    s += arrow(P(150, 176), P(230, 80), { size: 8 });
+    s += arrow(P(150, 188), P(230, 188), { size: 8 });
+    s += arrow(P(150, 200), P(230, 296), { size: 8 });
+    s += tag(172, 112, 'NaCN', { anchor: 'end' });
+    s += tag(190, 176, 'Mg, then CO₂,');
+    s += tag(190, 210, 'then H₃O⁺');
+    s += tag(172, 268, 'Mg, then HCHO,', { anchor: 'end' });
+    s += tag(172, 284, 'then H₃O⁺', { anchor: 'end' });
+    // middle column
+    s += fiveChain(252, 92, 'CN');
+    s += tag(318, 124, 'pentanenitrile');
+    s += fiveChain(252, 200, 'CO2H');
+    s += tag(318, 252, 'pentanoic acid', { cls: 'fg-tag-good' });
+    s += fiveChain(252, 306, 'OH');
+    s += tag(318, 340, 'pentan-1-ol', { cls: 'fg-tag-good' });
+    // the nitrile goes on
+    s += arrow(P(420, 70), P(500, 40), { size: 8 });
+    s += arrow(P(420, 96), P(500, 126), { size: 8 });
+    s += tag(452, 38, 'H₃O⁺, heat', { anchor: 'end' });
+    s += tag(470, 136, 'LiAlH₄, then H₂O', { anchor: 'end' });
+    s += fiveChain(522, 44, 'CO2H');
+    s += tag(588, 96, 'pentanoic acid', { cls: 'fg-tag-good' });
+    s += fiveChain(522, 150, 'NH2');
+    s += tag(588, 184, 'pentan-1-amine', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'Each arrow adds one carbon to 1-bromobutane. The new carbon is always the one carrying the functional group, and the reagent decides which group that is.',
+});
+
+FIGURES.push({
+  id: 'l-one-carbon',
+  lessons: ['carbon-carbon-bonds'],
+  alt: '1-Bromobutane at the top. Below it, four rows, each with the reagents on the left and the five-carbon product on the right, new bond in color: NaCN then H3O+ and heat gives pentanoic acid; NaCN then LiAlH4 gives pentan-1-amine; Mg then CO2 then H3O+ gives pentanoic acid; Mg then formaldehyde then H3O+ gives pentan-1-ol.',
+  viewBox: '0 0 340 380',
+  build() {
+    let s = '';
+    s += bromobutane(118, 50);
+    s += tag(170, 20, 'start: 1-bromobutane, 4 C');
+    s += rule(10, 84, 330, 84);
+    const rows = [
+      ['NaCN, then', 'H₃O⁺, heat', 'CO2H', 'pentanoic acid'],
+      ['NaCN, then', 'LiAlH₄, then H₂O', 'NH2', 'pentan-1-amine'],
+      ['Mg, then CO₂,', 'then H₃O⁺', 'CO2H', 'pentanoic acid'],
+      ['Mg, then HCHO,', 'then H₃O⁺', 'OH', 'pentan-1-ol'],
+    ];
+    rows.forEach(([l1, l2, fg, nm], i) => {
+      const y = 132 + i * 72;
+      s += tag(12, y - 10, l1, { anchor: 'start' });
+      s += tag(12, y + 6, l2, { anchor: 'start' });
+      s += fiveChain(190, y, fg, 24, 14);
+      s += tag(238, y + 34, nm, { cls: 'fg-tag-good' });
     });
     return s;
   },
-  caption: 'Each of the ten, once, with the bond it makes picked out. The table says what joins to what; this says what it looks like when it has.',
-  note: 'Reading down the colored marks is the fastest way to internalize the list. Four attach the new carbon straight <b>onto</b> a carbonyl carbon, or onto the carbon that was one &mdash; the Grignard onto a ketone, the Grignard onto CO&#8322;, Friedel&ndash;Crafts acylation and the Wittig. Two run from an &alpha; carbon onto a carbonyl carbon at the other end, the aldol and the Claisen, and the Michael is the enolate that does not: it lands on the &beta; carbon, two carbons out from the enone&rsquo;s C=O. The remaining three &mdash; Diels&ndash;Alder, acetylide alkylation and cyanide alkylation &mdash; build a skeleton with no carbonyl in sight, the nitrile only becoming one if you hydrolyse it afterwards. The Diels&ndash;Alder panel is the only one with two colored bonds, which is the whole reason it is the highest-value move in the list.',
+  caption: 'The colored carbon is the one that was added. The reagent decides what it becomes.',
+});
+
+/* ================================================ three sites on a carbonyl ===
+   Pentan-3-one, and the same methyl group landing on the carbonyl carbon,
+   the alpha carbon, and (in the enone) the beta carbon. The chain is
+   C1 (beta) C2 (alpha) C3 (C=O) C4 C5, drawn with C1, C3, C5 on the top line. */
+const siteChain = (x0, y0) => chain(x0, y0, 5, 28, 16);
+
+function siteReact(o, kind) {
+  const c = siteChain(o.x, o.y);
+  let s = '';
+  const O = off(c[2], -90, 28);
+  if (kind === 'beta') s += bond(c[0], c[1], { order: 2, rFrom: 0, rTo: 0, gap: 3.4 }) + path(c.slice(1));
+  else s += path(c);
+  s += bond(c[2], O, { order: 2, rFrom: 0, rTo: 12, gap: 3.4 }) + atom(O.x, O.y, 'O', { r: 11 });
+  // the C=O pi electrons move onto O (not for the enolate, whose C=O stays put)
+  if (kind !== 'alpha') s += curve(off(mid(c[2], O), 0, 4), off(O, 0, 12), { bow: -9, size: 7 });
+
+  if (kind === 'carbonyl') {
+    const me = P(c[2].x, c[2].y + 66), mg = P(c[2].x + 58, c[2].y + 66);
+    s += bond(me, mg, { rFrom: 16, rTo: 19 }) + atom(me.x, me.y, 'H₃C', { r: 16 }) + atom(mg.x, mg.y, 'MgBr', { r: 19 });
+    s += curve(P(mid(me, mg).x, me.y - 4), P(c[2].x + 2, c[2].y + 7), { bow: 16 });
+    s += tag(c[2].x, c[2].y - 46, 'C=O carbon', { cls: 'fg-tag-good' });
+  } else if (kind === 'alpha') {
+    // the enolate, drawn with its charge on the alpha carbon
+    s += lonePair(c[1].x, c[1].y, 90, { dist: 10 });
+    s += tag(c[1].x - 14, c[1].y + 8, '−', { cls: 'fg-tag-warn' });
+    const me = P(c[1].x, c[1].y + 54), io = P(c[1].x + 54, c[1].y + 54);
+    s += bond(me, io, { rFrom: 16, rTo: 11 }) + atom(me.x, me.y, 'H₃C', { r: 16 }) + atom(io.x, io.y, 'I', { r: 11 });
+    s += curve(P(c[1].x + 3, c[1].y + 14), P(me.x + 3, me.y - 17), { bow: -6, size: 7 });
+    s += curve(P(mid(me, io).x, me.y + 4), P(io.x - 4, io.y + 12), { bow: 10, size: 7 });
+    s += tag(c[1].x - 16, c[1].y - 14, 'α', { cls: 'fg-tag-good' });
+  } else {
+    const me = P(c[0].x - 22, c[0].y + 70), cu = P(c[0].x + 30, c[0].y + 70), me2 = P(c[0].x + 82, c[0].y + 70);
+    s += bond(me, cu, { rFrom: 16, rTo: 15 }) + bond(cu, me2, { rFrom: 15, rTo: 16 });
+    s += atom(me.x, me.y, 'H₃C', { r: 16 }) + atom(cu.x, cu.y, 'Cu⁻', { r: 15 }) + atom(me2.x, me2.y, 'CH₃', { r: 16 });
+    s += tag(me2.x + 22, me2.y + 4, 'Li⁺', { anchor: 'start' });
+    s += curve(P(mid(me, cu).x, me.y - 4), P(c[0].x - 2, c[0].y + 7), { bow: 14 });
+    s += curve(off(mid(c[0], c[1]), -120, 5), off(mid(c[1], c[2]), -60, 5), { bow: -14, size: 7 });
+    s += tag(c[0].x - 14, c[0].y - 8, 'β', { cls: 'fg-tag-good' });
+  }
+  return s;
+}
+
+function siteProduct(o, kind) {
+  const c = siteChain(o.x, o.y);
+  let s = path(c);
+  if (kind === 'carbonyl') {
+    s += grp(c[2], -90, 26, 'OH', { r: 13 });
+    s += methyl(c[2], 90, 30, 'fg-bond-hi');
+  } else if (kind === 'alpha') {
+    s += grp(c[2], -90, 28, 'O', { order: 2 });
+    s += methyl(c[1], 90, 28, 'fg-bond-hi');
+  } else {
+    s += grp(c[2], -90, 28, 'O', { order: 2 });
+    s += methyl(c[0], 150, 28, 'fg-bond-hi');
+  }
+  return s;
+}
+
+const SITES = {
+  carbonyl: { title: 'at the C=O carbon', start: 'pentan-3-one + CH₃MgBr', step: 'then H₃O⁺', prod: '3-methylpentan-3-ol' },
+  alpha: { title: 'at the α carbon', start: 'its enolate (LDA) + CH₃I', step: '', prod: '2-methylpentan-3-one' },
+  beta: { title: 'at the β carbon', start: 'pent-1-en-3-one + (CH₃)₂CuLi', step: 'then H₃O⁺', prod: 'hexan-3-one' },
+};
+
+FIGURES.push({
+  id: 'carbonyl-three-sites',
+  section: 'carbon-carbon-bonds',
+  anchor: '<!-- fig:carbonyl-three-sites:start -->',
+  alt: 'Three columns, each adding a methyl to a five-carbon ketone. Left: CH3MgBr adds to the carbonyl carbon of pentan-3-one; after H3O+ the product is 3-methylpentan-3-ol. Middle: the enolate of pentan-3-one, with its lone pair on the alpha carbon, attacks CH3I; the product is 2-methylpentan-3-one. Right: lithium dimethylcuprate adds to the beta carbon of pent-1-en-3-one, with arrows pushing the C=C and C=O electrons toward oxygen; after H3O+ the product is hexan-3-one. The new methyl bond is in color in each product.',
+  viewBox: '0 0 750 330',
+  build() {
+    let s = '';
+    ['carbonyl', 'alpha', 'beta'].forEach((k, i) => {
+      const x = 8 + i * 248, S = SITES[k];
+      s += panel(x, 6, 238, 318);
+      s += tag(x + 119, 28, S.title);
+      s += siteReact(P(x + 64, 84), k);
+      s += tag(x + 119, 186, S.start, { cls: 'fg-tag-mut' });
+      s += down(x + 119, 196, 222);
+      if (S.step) s += tag(x + 130, 214, S.step, { anchor: 'start', cls: 'fg-tag-mut' });
+      s += siteProduct(P(x + 64, 262), k);
+      s += tag(x + 119, 314, S.prod, { cls: 'fg-tag-good' });
+    });
+    return s;
+  },
+  caption: 'The same methyl group, three places. The reagent picks the carbon; the new bond is in color in each product.',
+});
+
+FIGURES.push({
+  id: 'l-carbonyl-three-sites',
+  lessons: ['carbon-carbon-bonds'],
+  alt: 'Three rows. Top: CH3MgBr adds to the carbonyl carbon of pentan-3-one, giving 3-methylpentan-3-ol. Middle: the enolate of pentan-3-one attacks CH3I from its alpha carbon, giving 2-methylpentan-3-one. Bottom: lithium dimethylcuprate adds to the beta carbon of pent-1-en-3-one, giving hexan-3-one. The new methyl bond is in color in each product.',
+  viewBox: '0 0 340 560',
+  build() {
+    let s = '';
+    ['carbonyl', 'alpha', 'beta'].forEach((k, i) => {
+      const y = i * 186, S = SITES[k];
+      if (i) s += rule(10, y - 4, 330, y - 4);
+      s += tag(170, y + 18, S.title);
+      s += siteReact(P(k === 'beta' ? 46 : 16, y + 70), k);
+      s += tag(k === 'beta' ? 108 : 78, y + 176, S.start, { cls: 'fg-tag-mut' });
+      s += right(y + 90, 190, 218);
+      if (S.step) s += tag(204, y + 116, S.step, { cls: 'fg-tag-mut' });
+      s += siteProduct(P(222, y + 90), k);
+      s += tag(278, y + 150, S.prod, { cls: 'fg-tag-good' });
+    });
+    return s;
+  },
+  caption: 'Same methyl, three carbons. The new bond is in color.',
+});
+
+/* ============================================================ ring closures ===
+   A chain drawn curled, so the bond that will close the ring is the dashed
+   bottom edge, then the ring it makes. Positions k = 0..n-1 run from the
+   attacking alpha carbon (lower left), up over the top, to the attacked
+   carbonyl carbon (lower right). */
+const CLOSE = {
+  a14: { n: 5, aldol: true, title: '1,4-diketone → five-membered ring', start: 'hexane-2,5-dione', prod: 'cyclopentenone', count: 'ring: α + atoms 1 to 4 = 5 atoms' },
+  a15: { n: 6, aldol: true, title: '1,5-diketone → six-membered ring', start: 'heptane-2,6-dione', prod: 'cyclohexenone', count: 'ring: α + atoms 1 to 5 = 6 atoms' },
+  d16: { n: 5, aldol: false, title: '1,6-diester → five-membered ring', start: 'diethyl hexanedioate', prod: 'cyclic β-keto ester', count: 'ring: atoms 2 to 6 = 5 atoms' },
+  d17: { n: 6, aldol: false, title: '1,7-diester → six-membered ring', start: 'diethyl heptanedioate', prod: 'cyclic β-keto ester', count: 'ring: atoms 2 to 7 = 6 atoms' },
+};
+function ringK(c, n) {
+  if (n === 5) { const v = polyPts(c.x, c.y, 5, 32, 90); return [v[2], v[1], v[0], v[4], v[3]]; }
+  const v = polyPts(c.x, c.y, 6, 32, 0);
+  return [v[4], v[3], v[2], v[1], v[0], v[5]];
+}
+const outD = (p, c) => dirOf(c, p);
+/* A number just inside the ring at vertex p. */
+const inNum = (p, c, t, cls = 'fg-tag-mut') => { const q = off(p, dirOf(p, c), 14); return tag(q.x, q.y + 4, t, { cls }); };
+
+function closePanel(ox, oy, key) {
+  const K = CLOSE[key], n = K.n;
+  let s = '';
+  s += tag(ox + 170, oy + 18, K.title);
+  // the curled chain
+  const c1 = P(ox + 78, oy + 92), A = ringK(c1, n);
+  for (let i = 0; i < n - 1; i++) s += sk(A[i], A[i + 1]);
+  s += sk(A[0], A[n - 1], 'fg-dash-hi');
+  const last = A[n - 1], od = outD(last, c1);
+  if (K.aldol) {
+    s += grp(A[1], outD(A[1], c1), 24, 'O', { order: 2 });
+    s += grp(last, od - 38, 24, 'O', { order: 2 });
+    s += methyl(last, od + 38, 24);
+    s += inNum(A[0], c1, 'α', 'fg-tag-good');
+    for (let i = 1; i < n; i++) s += inNum(A[i], c1, String(i));
+  } else {
+    s += grp(A[0], outD(A[0], c1), 36, 'CO₂Et', { r: 20 });
+    s += grp(last, od - 40, 24, 'O', { order: 2 });
+    s += grp(last, od + 40, 28, 'OEt', { r: 15 });
+    for (let i = 0; i < n; i++) s += inNum(A[i], c1, String(i + 2), i === 0 ? 'fg-tag-good' : 'fg-tag-mut');
+    const e = off(A[0], outD(A[0], c1), 36);
+    s += tag(e.x - 26, e.y - 14, '1', { cls: 'fg-tag-mut' });
+  }
+  // the arrow
+  s += right(oy + 92, ox + 144, ox + 196);
+  if (K.aldol) {
+    s += tag(ox + 170, oy + 82, 'NaOH', { cls: 'fg-tag-mut' });
+    s += tag(ox + 170, oy + 112, 'heat', { cls: 'fg-tag-mut' });
+  } else {
+    s += tag(ox + 170, oy + 82, 'NaOEt', { cls: 'fg-tag-mut' });
+    s += tag(ox + 170, oy + 112, 'then H₃O⁺', { cls: 'fg-tag-mut' });
+  }
+  // the ring
+  const c2 = P(ox + 262, oy + 92), B = ringK(c2, n), bl = B[n - 1], bd = outD(bl, c2);
+  for (let i = 0; i < n - 1; i++) s += sk(B[i], B[i + 1]);
+  if (K.aldol) {
+    s += ringDouble(B[0], bl, c2, { cls: 'fg-bond-hi' });
+    s += grp(B[1], outD(B[1], c2), 24, 'O', { order: 2 });
+    s += methyl(bl, bd, 24);
+    s += inNum(B[0], c2, 'α', 'fg-tag-good');
+    for (let i = 1; i < n; i++) s += inNum(B[i], c2, String(i));
+  } else {
+    s += sk(B[0], bl, 'fg-bond-hi');
+    s += grp(B[0], outD(B[0], c2), 36, 'CO₂Et', { r: 20 });
+    s += grp(bl, bd, 24, 'O', { order: 2 });
+    for (let i = 0; i < n; i++) s += inNum(B[i], c2, String(i + 2), i === 0 ? 'fg-tag-good' : 'fg-tag-mut');
+  }
+  s += tag(ox + 78, oy + 180, K.start);
+  s += tag(ox + 262, oy + 180, K.prod);
+  s += tag(ox + 170, oy + 202, K.count, { cls: 'fg-tag-good' });
+  return s;
+}
+
+FIGURES.push({
+  id: 'ring-closures',
+  section: 'carbon-carbon-bonds',
+  anchor: '<!-- fig:ring-closures:start -->',
+  alt: 'Four chains drawn curled, each closing to a ring through a dashed bond. Top left: hexane-2,5-dione, carbonyl carbons numbered 1 and 4; its end alpha carbon attacks carbonyl 4 and, with NaOH and heat, it gives 3-methylcyclopent-2-en-1-one, a five-membered ring of the alpha carbon plus atoms 1 to 4. Top right: heptane-2,6-dione, carbonyls 1 and 5, gives 3-methylcyclohex-2-en-1-one, a six-membered ring. Bottom left: diethyl hexanedioate, ester carbons 1 and 6; the alpha carbon 2 attacks ester carbon 6 and, with NaOEt then acid, it gives ethyl 2-oxocyclopentane-1-carboxylate, a five-membered ring of atoms 2 to 6. Bottom right: diethyl heptanedioate, ester carbons 1 and 7, gives the six-membered ring of atoms 2 to 7.',
+  viewBox: '0 0 700 440',
+  build() {
+    let s = '';
+    s += panel(4, 4, 342, 214) + closePanel(5, 6, 'a14');
+    s += panel(354, 4, 342, 214) + closePanel(355, 6, 'a15');
+    s += panel(4, 224, 342, 214) + closePanel(5, 226, 'd16');
+    s += panel(354, 224, 342, 214) + closePanel(355, 226, 'd17');
+    return s;
+  },
+  caption: 'The numbers count from one C=O carbon to the other; they are not the IUPAC locants of the ring. The dashed bond is the one that closes the ring. Top row: intramolecular aldol, then loss of water. Bottom row: Dieckmann.',
+});
+
+FIGURES.push({
+  id: 'l-aldol-rings',
+  lessons: ['carbon-carbon-bonds'],
+  alt: 'Top: hexane-2,5-dione drawn curled, carbonyl carbons numbered 1 and 4, closes through its end alpha carbon to 3-methylcyclopent-2-en-1-one, a five-membered ring. Bottom: heptane-2,6-dione, carbonyls 1 and 5, closes to 3-methylcyclohex-2-en-1-one, a six-membered ring.',
+  viewBox: '0 0 340 424',
+  build() {
+    return closePanel(0, 0, 'a14') + rule(10, 212, 330, 212) + closePanel(0, 214, 'a15');
+  },
+  caption: 'The dashed bond closes the ring. The numbers are not IUPAC locants.',
+});
+
+FIGURES.push({
+  id: 'l-dieckmann-rings',
+  lessons: ['carbon-carbon-bonds'],
+  alt: 'Top: diethyl hexanedioate drawn curled, ester carbons numbered 1 and 6; alpha carbon 2 attacks ester carbon 6 and closes a five-membered ring of atoms 2 to 6, a cyclic beta-keto ester. Bottom: diethyl heptanedioate, ester carbons 1 and 7, closes a six-membered ring of atoms 2 to 7.',
+  viewBox: '0 0 340 424',
+  build() {
+    return closePanel(0, 0, 'd16') + rule(10, 212, 330, 212) + closePanel(0, 214, 'd17');
+  },
+  caption: 'The dashed bond closes the ring. Atom 1 stays outside it, as the ester.',
+});
+
+/* ================================================= Diels-Alder stereochemistry ===
+   Adapted from the Diels-Alder page's drawings: the diene is the top four
+   corners of a flat-topped hexagon, the dienophile the bottom edge. */
+function hexFlat(cx, cy, r = 40) {
+  const at = (deg) => P(r1(cx + Math.cos(deg * RAD) * r), r1(cy + Math.sin(deg * RAD) * r));
+  return { c1: at(180), c2: at(240), c3: at(300), c4: at(0), d2: at(60), d1: at(120), ctr: P(cx, cy) };
+}
+const OUT = { d2: 60, d1: 120 };
+function sub(p, deg, lbl, o = {}) {
+  const len = o.len ?? 40, r = o.r ?? 16;
+  const at = off(p, deg, len);
+  const b = o.kind === 'wedge' ? wedge(p, at, { rFrom: 0, rTo: r, width: 8 })
+    : o.kind === 'hash' ? hash(p, at, { rFrom: 0, rTo: r, width: 9, rungs: 5 })
+    : bond(p, at, { rFrom: 0, rTo: r });
+  return b + atom(at.x, at.y, lbl, { r });
+}
+function daRow(ox, oy, cis, stacked) {
+  let s = '';
+  const a = P(ox + 64, oy + 60), b = P(ox + 108, oy + 60);
+  s += bond(a, b, { order: 2, rFrom: 0, rTo: 0 });
+  s += sub(a, 120, 'CO₂Me', { len: 36, r: 23 });
+  s += sub(b, cis ? 60 : -60, 'CO₂Me', { len: 36, r: 23 });
+  s += sub(a, -120, 'H', { len: 26, r: 9 });
+  s += sub(b, cis ? -60 : 60, 'H', { len: 26, r: 9 });
+  s += tag(ox + 86, oy + 136, cis ? 'dimethyl maleate' : 'dimethyl fumarate');
+  s += tag(ox + 86, oy + 154, cis ? 'esters cis' : 'esters trans', { cls: 'fg-tag-mut' });
+  if (stacked) {
+    s += down(ox + 86, oy + 166, oy + 196);
+    s += tag(ox + 100, oy + 186, '+ butadiene', { anchor: 'start', cls: 'fg-tag-mut' });
+  } else {
+    s += right(oy + 80, ox + 172, ox + 206);
+    s += tag(ox + 189, oy + 70, '+ diene', { cls: 'fg-tag-mut' });
+  }
+  const Q = stacked ? hexFlat(ox + 86, oy + 232, 34) : hexFlat(ox + 282, oy + 60, 34);
+  s += sk(Q.c1, Q.c2) + ringDouble(Q.c2, Q.c3, Q.ctr) + sk(Q.c3, Q.c4);
+  s += sk(Q.c4, Q.d2, 'fg-bond-hi') + sk(Q.d2, Q.d1) + sk(Q.d1, Q.c1, 'fg-bond-hi');
+  s += sub(Q.d1, OUT.d1, 'CO₂Me', { len: 38, r: 23, kind: 'wedge' });
+  s += sub(Q.d2, OUT.d2, 'CO₂Me', { len: 38, r: 23, kind: cis ? 'wedge' : 'hash' });
+  s += tag(stacked ? ox + 86 : ox + 282, stacked ? oy + 334 : oy + 150, cis ? 'cis on the ring' : 'trans on the ring', { cls: 'fg-tag-good' });
+  return s;
+}
+/* The endo adduct of cyclopentadiene and maleic anhydride, drawn as the
+   bicyclic cage, from the Diels-Alder page. */
+function endoAdduct(o, k) {
+  const q = (dx, dy) => P(r1(o.x + dx * k), r1(o.y + dy * k));
+  const n = { n1: q(-50, 0), n2: q(-22, 30), n3: q(22, 30), n4: q(50, 0), n5: q(22, -12), n6: q(-22, -12), n7: q(0, -46) };
+  const bold = (x) => x.replace(/<line /g, '<line style="stroke-width:4.5" ');
+  let s = '';
+  s += bold(sk(n.n1, n.n2, 'fg-bond-hi') + sk(n.n2, n.n3) + sk(n.n3, n.n4, 'fg-bond-hi'));
+  s += sk(n.n4, n.n5) + ringDouble(n.n5, n.n6, P(o.x, o.y + 10 * k)) + sk(n.n6, n.n1);
+  s += sk(n.n1, n.n7) + sk(n.n7, n.n4);
+  s += tag(n.n7.x, n.n7.y - 12, 'CH₂ bridge', { cls: 'fg-tag-mut' });
+  s += sub(n.n2, 185, 'H', { len: 26, r: 9 }) + sub(n.n3, -5, 'H', { len: 26, r: 9 });
+  const ca = P(n.n2.x + 4, n.n2.y + 40), cb = P(n.n3.x - 4, n.n3.y + 40), ob = P(o.x, n.n2.y + 70);
+  s += sk(n.n2, ca) + sk(n.n3, cb);
+  s += bond(ca, ob, { rFrom: 0, rTo: 12 }) + bond(cb, ob, { rFrom: 0, rTo: 12 }) + atom(ob.x, ob.y, 'O', { r: 12 });
+  const oa = off(ca, 200, 28), oc = off(cb, -20, 28);
+  s += bond(ca, oa, { order: 2, rFrom: 0, rTo: 12 }) + atom(oa.x, oa.y, 'O', { r: 12 });
+  s += bond(cb, oc, { order: 2, rFrom: 0, rTo: 12 }) + atom(oc.x, oc.y, 'O', { r: 12 });
+  return s;
+}
+
+FIGURES.push({
+  id: 'da-stereo',
+  section: 'carbon-carbon-bonds',
+  anchor: '<!-- fig:da-stereo:start -->',
+  alt: 'Top left: dimethyl maleate, with its two CO2Me groups on the same side of the C=C, reacts with a diene to give a cyclohexene whose two CO2Me groups are both on wedges, cis on the ring. Top right: dimethyl fumarate, CO2Me groups on opposite sides, gives the ring with one CO2Me wedged and one hashed, trans on the ring. Bottom: the endo adduct of cyclopentadiene and maleic anhydride, a bicyclic cage with a CH2 bridge on top; the anhydride ring hangs down, on the side away from the CH2 bridge, and the two new bonds are in color.',
+  viewBox: '0 0 760 420',
+  build() {
+    let s = '';
+    s += daRow(0, 4, true, false);
+    s += rule(376, 16, 376, 160);
+    s += daRow(380, 4, false, false);
+    s += rule(20, 180, 740, 180);
+    s += endoAdduct(P(250, 280), 1.6);
+    s += tag(470, 250, 'cyclopentadiene + maleic anhydride', { anchor: 'start' });
+    s += tag(470, 274, 'endo adduct, the major product', { anchor: 'start', cls: 'fg-tag-good' });
+    s += tag(470, 298, 'the anhydride points away', { anchor: 'start', cls: 'fg-tag-good' });
+    s += tag(470, 316, 'from the CH₂ bridge', { anchor: 'start', cls: 'fg-tag-good' });
+    s += tag(470, 348, 'bold bonds are at the front', { anchor: 'start', cls: 'fg-tag-mut' });
+    return s;
+  },
+  caption: 'Top: follow the two CO₂Me groups from the C=C into the ring. Bottom: find the CH₂ bridge, then see which way the anhydride ring points. The new bonds are in color.',
+});
+
+FIGURES.push({
+  id: 'l-da-stereo',
+  lessons: ['carbon-carbon-bonds'],
+  alt: 'Left column: dimethyl maleate, esters cis across the C=C, reacts with butadiene to give a cyclohexene with both CO2Me groups on wedges, cis on the ring. Right column: dimethyl fumarate, esters trans, gives the ring with one CO2Me on a wedge and one hashed, trans on the ring.',
+  viewBox: '0 0 340 344',
+  build() {
+    return daRow(-6, 0, true, true) + daRow(164, 0, false, true);
+  },
+  caption: 'Follow the two CO₂Me groups from the C=C into the ring. The new bonds are in color.',
 });
 
 export default FIGURES;
