@@ -264,7 +264,7 @@ const CIS12 = [[0, 'up', 'C1'], [5, 'up', 'C2']];
 const TRANS12 = [[0, 'down', 'C1'], [5, 'up', 'C2']];
 const TAGS = { C1: { x: -20, y: -6, a: 'end' }, C2: { x: -10, y: 18, a: 'end' } };
 const TAGS_F = { C1: { x: -22, y: 18, a: 'end' }, C2: { x: -8, y: 20, a: 'end' } };
-function chairRow(cxA, cxB, cy, k, subs, dy = 80, arrowGap = 84) {
+function chairRow(cxA, cxB, cy, k, subs, dy = 80, arrowGap = 60) {
   const A = methylChair(cxA, cy, k, false, subs, TAGS);
   const B = methylChair(cxB, cy, k, true, subs, TAGS_F);
   let s = A.s + B.s;
@@ -288,10 +288,10 @@ FIGURES.push({
   build() {
     let s = '';
     s += itext(20, 22, 'cis', '-1,2-dimethylcyclohexane', 'fg-tag-good', 'start');
-    s += chairRow(180, 590, 110, 0.78, CIS12);
+    s += chairRow(170, 610, 110, 0.78, CIS12);
     s += rule(20, 232, 740, 232);
     s += itext(20, 256, 'trans', '-1,2-dimethylcyclohexane', 'fg-tag-warn', 'start');
-    s += chairRow(180, 590, 350, 0.78, TRANS12);
+    s += chairRow(170, 610, 350, 0.78, TRANS12);
     return s;
   },
   caption: 'Read the tags under each chair. From one chair to the other, axial and equatorial swap, while up and down stay the same.',
@@ -329,7 +329,7 @@ FIGURES.push({
   build() {
     let s = '';
     const T = { C1: { x: 8, y: 22, a: 'start' }, C4: { x: -2, y: 24, a: 'middle' } };
-    const A = methylChair(170, 120, 0.9, false, [[0, 'up', 'C1'], [3, 'up', 'C4']], T);
+    const A = methylChair(180, 120, 0.82, false, [[0, 'up', 'C1'], [3, 'up', 'C4']], T);
     s += A.s;
     s += text(170, 196, 'C1: axial, up', { cls: 'fg-tag' });
     s += text(170, 214, 'C4: equatorial, up', { cls: 'fg-tag' });
