@@ -450,7 +450,7 @@ function dieneRow(cx, y, w, names, conds = ['Br⁻ adds at cation C2 (cold)', 'B
   s += bond(b[3], br2, { rFrom: 0, rTo: 15, cls: 'fg-bond-hi' }) + A(br2, 'Br', { kind: 'hi' });
   const ly = py + 68;
   s += T(lx + 45, ly, names[0]) + T(lx + 45, ly + 16, conds[0], { cls: 'fg-tag-good' });
-  s += T(rx + 50, ly, names[1]) + T(rx + 50, ly + 16, conds[1], { cls: 'fg-tag-warn' });
+  s += T(rx + 40, ly, names[1]) + T(rx + 40, ly + 16, conds[1], { cls: 'fg-tag-warn' });
   return s;
 }
 
@@ -473,20 +473,20 @@ FIGURES.push({
   section: 'enolate-regiochemistry',
   anchor: '<h3>The same switch, one step earlier</h3>',
   alt: 'Two rows. Top row, from the conjugation chapter: the allylic cation from buta-1,3-diene and HBr, drawn as its two contributors, with bromide adding at cation C2 when cold to give 3-bromobut-1-ene, or at cation C4 when warm to give 1-bromobut-2-ene. These are the two final products. Bottom row: 2-methylcyclohexanone with LDA at minus 78 degrees giving the kinetic enolate, or with NaOEt at room temperature giving the thermodynamic enolate. These are two intermediates, and the electrophile comes afterwards.',
-  viewBox: '0 0 760 536',
+  viewBox: '0 0 760 552',
   build() {
     let s = '';
-    s += panel(8, 8, 744, 268, {});
+    s += panel(8, 8, 744, 276, {});
     s += tag(24, 30, 'BRANCH POINT: THE CATION (1,2- vs 1,4-addition)', { anchor: 'start' });
     s += dieneRow(380, 80, 700, ['3-bromobut-1-ene (1,2)', '1-bromobut-2-ene (1,4)']);
     s += T(380, 254, 'two final products', { cls: 'fg-tag-mut' });
-    s += panel(8, 288, 744, 240, {});
-    s += tag(24, 310, 'BRANCH POINT: THE DEPROTONATION', { anchor: 'start' });
-    s += ketoneRow(380, 356, 230, 26, ['LDA, −78 °C', 'NaOEt, rt']);
-    s += T(150, 512, 'kinetic enolate (C1=C6)', { cls: 'fg-tag-good' });
-    s += T(610, 512, 'thermodynamic enolate (C1=C2)', { cls: 'fg-tag-warn' });
-    s += T(380, 476, 'two intermediates;', { cls: 'fg-tag-mut' });
-    s += T(380, 492, 'the electrophile comes next', { cls: 'fg-tag-mut' });
+    s += panel(8, 294, 744, 250, {});
+    s += tag(24, 316, 'BRANCH POINT: THE DEPROTONATION', { anchor: 'start' });
+    s += ketoneRow(380, 372, 230, 26, ['LDA, −78 °C', 'NaOEt, rt']);
+    s += T(150, 528, 'kinetic enolate (C1=C6)', { cls: 'fg-tag-good' });
+    s += T(610, 528, 'thermodynamic enolate (C1=C2)', { cls: 'fg-tag-warn' });
+    s += T(380, 492, 'two intermediates;', { cls: 'fg-tag-mut' });
+    s += T(380, 508, 'the electrophile comes next', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Top: the conjugation chapter’s branch point ends in two products. Bottom: this section’s branch point ends in two enolates.',
