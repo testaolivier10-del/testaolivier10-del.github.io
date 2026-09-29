@@ -48,7 +48,7 @@ FIGURES.push({
   build() {
     let s = '';
     const row = (y0, title, left, cloud, opp, words) => {
-      let o = panel(6, y0, 328, 132);
+      let o = panel(6, y0, 328, 136);
       o += text(170, y0 + 20, title, { cls: 'fg-lbl' });
       o += bField(30, y0 + 118, y0 + 52);
       const yc = y0 + 80;
@@ -64,15 +64,15 @@ FIGURES.push({
       o += lines(248, yc - 10, 16, words);
       return o;
     };
-    s += row(6, 'C–H of ethane: dense electron cloud', { lab: 'CH₃', r: 17 }, 36, 52,
+    s += row(6, 'Ethane: a dense electron cloud', { lab: 'CH₃', r: 17 }, 36, 52,
       ['large', 'opposing', 'field']);
-    s += text(170, 124, 'H is shielded: δ 0.9', { cls: 'fg-tag-good' });
-    s += row(154, 'C–H of fluoromethane: F pulls density away', { lab: 'F', kind: 'warn' }, 20, 22,
+    s += text(178, 131, 'H is shielded: δ 0.9', { cls: 'fg-tag-good' });
+    s += row(154, 'Fluoromethane: F pulls density away', { lab: 'F', kind: 'warn' }, 20, 22,
       ['small', 'opposing', 'field']);
-    s += text(170, 272, 'H is deshielded: δ 4.3', { cls: 'fg-tag-warn' });
+    s += text(178, 279, 'H is deshielded: δ 4.3', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'B₀ is the spectrometer&rsquo;s field. The short arrow beside each hydrogen is the field its own electrons set up, pointing the other way. The bigger that arrow, the less of B₀ the nucleus feels.',
+  caption: 'The downward arrow beside each hydrogen is the opposing field from its own electrons. Compare its length in the two rows.',
 });
 
 /* ----------------------------------------------------------- shift scale ---
@@ -113,14 +113,13 @@ FIGURES.push({
     }
     s += text(X(0), base - 8, 'TMS', { cls: 'fg-tag-mut' });
     s += text(X(6.5), base + 40, 'chemical shift δ (ppm)', { cls: 'fg-sm' });
-    s += arrow(P(X(9.2), base + 58), P(X(12.8), base + 58), { size: 8 });
-    s += text(X(9.0), base + 62, 'downfield: deshielded, higher δ', { cls: 'fg-tag', anchor: 'start' });
-    s += arrow(P(X(3.8), base + 58), P(X(0.2), base + 58), { size: 8 });
-    s += text(X(4.0), base + 62, 'upfield: shielded, lower δ', { cls: 'fg-tag', anchor: 'end' });
-    s += bar(470, 8, 12, 10, { kind: 'warn', r: 3 });
+    s += arrow(P(X(8.5), base + 68), P(X(12.8), base + 68), { size: 8 });
+    s += text(X(12.8), base + 58, 'downfield: deshielded, higher δ', { cls: 'fg-tag', anchor: 'start' });
+    s += arrow(P(X(4.5), base + 68), P(X(0.2), base + 68), { size: 8 });
+    s += text(X(0.2), base + 58, 'upfield: shielded, lower δ', { cls: 'fg-tag', anchor: 'end' });
     return s;
   },
-  caption: 'The table as a picture, printed the way every spectrum is: δ rises to the left. Teal bars follow the electronegativity pattern. Coral bars belong to hydrogens on or next to a π bond, which the next heading explains.',
+  caption: 'The table as a picture, printed the way every spectrum is, with δ rising to the left. Coral bars are hydrogens on a carbon that is itself part of a π bond; the next heading explains them.',
 });
 
 /* ------------------------------------------------------------- anisotropy ---
@@ -140,7 +139,16 @@ function fieldLoops(cx, yTop, yBot, reach, gapAxis) {
   for (const sgn of [1, -1]) {
     const cxk = cx + sgn * k;
     s += `<path class="fg-arrow-mut" d="M${n2(cx)} ${n2(yBot)} C${n2(cxk)} ${n2(yBot)} ${n2(cxk)} ${n2(yTop)} ${n2(cx)} ${n2(yTop)}"></path>`;
-    s += head(cx + sgn * reach, ym - 6, 0, -1, 'fg-head-mut', 9);
+    /* put the arrowhead on the curve itself, a little below the middle */
+    const bz = (u) => {
+      const v = 1 - u;
+      return { x: cx + sgn * k * 3 * u * v, y: yBot * (v * v * v + 3 * v * v * u) + yTop * (3 * v * u * u + u * u * u),
+        dx: sgn * k * 3 * (1 - 2 * u), dy: 6 * u * v * (yTop - yBot) };
+    };
+    let u = 0.5;
+    for (let i = 0; i < 40; i++) { const q = bz(u); u += (q.y - (ym + 60)) / (yBot - yTop) * 0.5; }
+    const q = bz(u);
+    s += head(q.x, q.y, q.dx, q.dy, 'fg-head-mut', 9);
   }
   if (gapAxis) {
     const [g1, g2] = gapAxis;
@@ -160,7 +168,7 @@ function fieldLoops(cx, yTop, yBot, reach, gapAxis) {
    arrowhead on its front edge. */
 function circulation(cx, cy, rx, ry) {
   return `<ellipse class="fg-dash-hi" cx="${n2(cx)}" cy="${n2(cy)}" rx="${n2(rx)}" ry="${n2(ry)}"></ellipse>` +
-    head(cx + 6, cy + ry, 1, 0, 'fg-head', 8);
+    head(cx + rx * 0.62, cy + ry * 0.78, -rx * 0.78, ry * 0.62, 'fg-head', 8);
 }
 
 /* Benzene seen edge-on, ring in a plane at right angles to B0. */
@@ -227,14 +235,14 @@ FIGURES.push({
       [['≡C–H sits on the axis, where', 'fg-tag'], ['the field points down (against B₀)', 'fg-tag'], ['shielded: δ 1.8–3.0', 'fg-tag-good']]]];
     for (const [cx, title, fn, rows] of cols) {
       s += text(cx, 18, title, { cls: 'fg-lbl' });
-      s += fn(cx, cy, 96);
+      s += fn(cx, cy, 108);
       s += lines(cx, 302, 18, rows, 'middle');
     }
     s += `<line class="fg-dash" x1="280" y1="30" x2="280" y2="350"></line>`;
     s += `<line class="fg-dash" x1="516" y1="30" x2="516" y2="350"></line>`;
     return s;
   },
-  caption: 'The gray loops are the field the circulating π electrons (dashed ring) create. Follow the arrowheads: down the middle the induced field opposes B₀, and around the outside it adds to it. The coral hydrogens sit in an &ldquo;adds&rdquo; region; the teal alkyne hydrogen sits in an &ldquo;opposes&rdquo; one.',
+  caption: 'Gray loops: the induced field. Dashed ellipses: the circulating π electrons. The coral hydrogens sit where the loops point up; the teal alkyne hydrogen sits where they point down.',
 });
 
 /* The lesson copy: benzene alone, 340 wide. */
@@ -247,7 +255,7 @@ FIGURES.push({
     let s = '';
     s += bField(24, 270, 60);
     s += text(180, 18, 'benzene, ring seen edge-on', { cls: 'fg-lbl' });
-    s += benzenePanel(180, 150, 96);
+    s += benzenePanel(180, 150, 108);
     s += lines(180, 302, 18, [['middle: induced field points down', 'fg-tag'], ['outside: it points up, with B₀', 'fg-tag'], ['ring H sit outside: δ 6.5–8.5', 'fg-tag-warn']], 'middle');
     return s;
   },
@@ -279,13 +287,13 @@ FIGURES.push({
       s += bond(pts[i], h, { rFrom: 0, rTo: 11 });
       s += atom(h.x, h.y, 'H', { r: 11, kind: 'warn' });
     }
-    s += text(200, 24, 'p-xylene, C₈H₁₀', { cls: 'fg-lbl', anchor: 'start' });
-    s += lines(200, 88, 18, [['coral: 4 ring H', 'fg-tag-warn'], 'one signal, δ 7.0']);
-    s += lines(200, 150, 18, [['teal: 6 methyl H', 'fg-tag-good'], 'one signal, δ 2.3']);
-    s += text(200, 210, '10 H, only 2 signals', { cls: 'fg-lbl', anchor: 'start' });
+    s += '<text class="fg-lbl" x="196" y="24" text-anchor="start"><tspan font-style="italic">p</tspan>-xylene, C₈H₁₀</text>';
+    s += lines(196, 88, 18, [['coral: 4 ring H', 'fg-tag-warn'], 'one signal, δ 7.0']);
+    s += lines(196, 150, 18, [['teal: 6 methyl H', 'fg-tag-good'], 'one signal, δ 2.3']);
+    s += text(196, 210, '10 H, 2 signals', { cls: 'fg-lbl', anchor: 'start' });
     return s;
   },
-  caption: 'A half turn of the ring, or a flip top to bottom, carries each coral hydrogen onto another coral one and each methyl onto the other.',
+  caption: 'Coral and teal mark the two sets of equivalent hydrogens.',
 });
 
 /* --------------------------------------------------- the substitution test ---
@@ -308,6 +316,7 @@ function bromobutane(x, y, left, right, o = {}) {
   }
   return s;
 }
+const cfg = (x, y, c3) => `<text class="fg-tag-good" x="${x}" y="${y}" text-anchor="end">(2<tspan font-style="italic">R</tspan>,3<tspan font-style="italic">${c3}</tspan>)</text>`;
 FIGURES.push({
   id: 'h-nmr-topicity',
   section: 'h-nmr',
@@ -315,7 +324,7 @@ FIGURES.push({
   alt: 'The substitution test on the two hydrogens of C3 in (R)-2-bromobutane. On the left, the molecule is drawn as a zigzag with Br on a wedge at C2, and at C3 one hydrogen, Ha, on a wedge and the other, Hb, on a hash. An arrow labeled "replace Ha with D" leads to the (2R,3R) product, and an arrow labeled "replace Hb with D" leads to the (2R,3S) product. The two products are diastereomers, so Ha and Hb are diastereotopic and can give two separate signals.',
   build() {
     let s = '';
-    s += text(110, 26, '(R)-2-bromobutane', { cls: 'fg-lbl' });
+    s += '<text class="fg-lbl" x="110" y="26" text-anchor="middle">(<tspan font-style="italic">R</tspan>)-2-bromobutane</text>';
     s += bromobutane(50, 128, { lab: 'Ha', size: 10.5 }, { lab: 'Hb', size: 10.5 }, { labels: true });
     s += arrow(P(210, 132), P(318, 84), { size: 9 });
     s += text(244, 88, 'replace Ha with D', { cls: 'fg-tag', anchor: 'middle' });
@@ -324,10 +333,10 @@ FIGURES.push({
 
     s += panel(330, 8, 190, 124);
     s += bromobutane(362, 58, { lab: 'D', kind: 'warn' }, { lab: 'H' });
-    s += text(425, 128, '(2R,3R)', { cls: 'fg-tag-good' });
+    s += cfg(512, 32, 'R');
     s += panel(330, 144, 190, 124);
     s += bromobutane(362, 194, { lab: 'H' }, { lab: 'D', kind: 'warn' });
-    s += text(425, 264, '(2R,3S)', { cls: 'fg-tag-good' });
+    s += cfg(512, 168, 'S');
 
     s += lines(540, 104, 22, [
       ['C2 matches, C3 is opposite:', 'fg-tag'],
@@ -338,7 +347,7 @@ FIGURES.push({
     ]);
     return s;
   },
-  caption: 'Each substitution makes C3 a new stereocenter. The two products share C2&rsquo;s R label and differ at C3, so they are diastereomers rather than one compound or a mirror-image pair.',
+  caption: 'D (coral) marks the replaced hydrogen in each product. The label beside each product gives its configuration at C2 and C3.',
 });
 
 /* ------------------------------------------------------- neighbor spins ---
@@ -350,7 +359,7 @@ FIGURES.push({
   id: 'h-nmr-neighbor-spins',
   section: 'h-nmr',
   lessons: ['h-nmr'],
-  viewBox: '0 0 340 470',
+  viewBox: '0 0 340 444',
   alt: 'Three rows. One neighboring hydrogen can point with the field or against it, so the signal splits into two equal lines, a doublet, 1 to 1. Two neighbors have four arrangements: both with, one of each in two ways, or both against, giving three lines in the ratio 1 to 2 to 1, a triplet. Three neighbors have eight arrangements, grouped as one, three, three and one, giving four lines in the ratio 1 to 3 to 3 to 1, a quartet.',
   build() {
     let s = '';
@@ -359,15 +368,15 @@ FIGURES.push({
     const row = (y0, title, cols, name) => {
       let o = rule(8, y0, 332, y0);
       o += text(10, y0 + 24, title, { cls: 'fg-lbl', anchor: 'start' });
-      const n = cols.length, gap = 52, x0 = 212 - ((n - 1) * gap) / 2;
+      const n = cols.length, gap = 50, x0 = 236 - ((n - 1) * gap) / 2;
       const maxRows = Math.max(...cols.map((c) => c.length));
-      const base = y0 + 40 + maxRows * 16 + 44;
+      const base = y0 + 40 + maxRows * 16 + 42;
       cols.forEach((combos, i) => {
         const x = x0 + i * gap;
         combos.forEach((c, j) => { o += text(x, y0 + 40 + j * 16, c, { cls: 'fg-tag' }); });
         o += stick(x, base, combos.length * 14, 'fg-bond', 3);
       });
-      o += rule(x0 - 30, base, x0 + (n - 1) * gap + 30, base);
+      o += rule(x0 - 22, base, x0 + (n - 1) * gap + 22, base);
       o += text(10, base - 4, name, { cls: 'fg-tag-good', anchor: 'start' });
       return { o, next: base + 14 };
     };
@@ -434,7 +443,7 @@ FIGURES.push({
       s += stick(c1 + k * g, base1, heights[i] * 7.2, 'fg-bond', 3);
     });
     s += text(c1, 392, 'what you see: a sextet', { cls: 'fg-lbl', size: 12 });
-    s += text(c1, 408, '1 : 5 : 10 : 10 : 5 : 1, because equal J stacks the lines', { cls: 'fg-sm', size: 10 });
+    s += text(c1, 408, '1 : 5 : 10 : 10 : 5 : 1', { cls: 'fg-sm', size: 10 });
 
     /* ---- panel 2: unequal J, nothing collapses ---- */
     s += `<line class="fg-dash" x1="380" y1="30" x2="380" y2="412"></line>`;
@@ -447,22 +456,22 @@ FIGURES.push({
     const gA = 52, gB = 22;
     const d1 = [-0.5, 0.5].map((k) => c2 + k * gA);
     s += tier(150, d1, c2);
-    s += text(c2, 186, 'split by the trans H: J = 17.6 Hz', { cls: 'fg-tag', size: 11 });
+    s += `<text class="fg-tag" x="${c2}" y="186" text-anchor="middle">split by the <tspan font-style="italic">trans</tspan> H: J = 17.6 Hz</text>`;
     for (const p of d1) for (const k of [-0.5, 0.5]) {
       s += `<line class="fg-bond-soft" x1="${n2(p)}" y1="198" x2="${n2(p + k * gB)}" y2="226"></line>`;
       s += stick(p + k * gB, 246, 16, 'fg-bond', 2.4);
     }
-    s += text(c2, 266, 'split again by the cis H: J = 10.9 Hz', { cls: 'fg-tag', size: 11 });
+    s += `<text class="fg-tag" x="${c2}" y="266" text-anchor="middle">split again by the <tspan font-style="italic">cis</tspan> H: J = 10.9 Hz</text>`;
     s += text(c2, 282, 'four lines, and all four stay separate', { cls: 'fg-sm', size: 9.5 });
 
     s += rule(430, base1, 702, base1);
     for (const p of d1) for (const k of [-0.5, 0.5]) s += stick(p + k * gB, base1, 72, 'fg-bond', 3);
     s += text(c2, 392, 'what you see: a doublet of doublets', { cls: 'fg-lbl', size: 12 });
-    s += text(c2, 408, '1 : 1 : 1 : 1, because unequal J keeps every line apart', { cls: 'fg-sm', size: 10 });
+    s += text(c2, 408, '1 : 1 : 1 : 1', { cls: 'fg-sm', size: 10 });
     s += text(380, 432, 'Same procedure both times. Only the two J values decide what comes out.', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Read each tree from the top down. On the left, the two coupling constants are equal, so the twelve lines land on six positions. On the right, they differ, so nothing merges.',
+  caption: 'Read each tree from the top down. The bottom row is what the spectrum shows.',
   note: 'The left panel makes one simplification. C2 of 2-bromobutane is a stereocenter, so the two CH₂ hydrogens are diastereotopic rather than equivalent (see the heading on equivalent hydrogens), and a real spectrum is a little messier than the clean sextet drawn. The tree treats them as equivalent because its point is what two different J values do.',
 });
 
@@ -471,7 +480,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'h-nmr-j-geometry',
   section: 'h-nmr',
-  viewBox: '0 0 760 230',
+  viewBox: '0 0 760 240',
   alt: 'Three panels. Left: a trans alkene, R–CH=CH–R with the two hydrogens on opposite sides of the double bond, J 12 to 18 hertz. Middle: the cis alkene, with both hydrogens on the same side, J 6 to 12 hertz. Right: a benzene ring carrying a group X, with one ring hydrogen, Ha, highlighted; the hydrogen on the next carbon is labeled ortho, J 7 to 10 hertz, and the hydrogen one carbon further round is labeled meta, J 2 to 3 hertz.',
   build() {
     let s = '';
@@ -498,7 +507,7 @@ FIGURES.push({
     s += `<line class="fg-dash" x1="500" y1="20" x2="500" y2="210"></line>`;
 
     /* the ring: X on top, Ha upper left, ortho lower left, meta at the bottom */
-    const cx = 590, cy = 112;
+    const cx = 610, cy = 104;
     const ring = benzene(cx, cy, 34, { rot: 90 });
     s += ring.svg;
     const pts = ring.pts;
@@ -514,8 +523,8 @@ FIGURES.push({
     const ho = out(pts[2], 26), hm = out(pts[3], 26);
     s += text(ho.x - 16, ho.y + 4, 'ortho', { cls: 'fg-tag-good', anchor: 'end' });
     s += text(hm.x - 16, hm.y + 4, 'meta', { cls: 'fg-tag-good', anchor: 'end' });
-    s += text(700, 100, 'ortho: J = 7–10 Hz', { cls: 'fg-tag-warn', anchor: 'middle' });
-    s += text(700, 124, 'meta: J = 2–3 Hz', { cls: 'fg-tag-warn', anchor: 'middle' });
+    s += text(cx + 30, 208, 'ortho: J = 7–10 Hz', { cls: 'fg-tag-warn', anchor: 'middle' });
+    s += text(cx + 30, 226, 'meta: J = 2–3 Hz', { cls: 'fg-tag-warn', anchor: 'middle' });
     return s;
   },
   caption: 'The coral hydrogens in each alkene are the coupled pair. On the ring, Ha couples strongly to the hydrogen on the next carbon (ortho) and weakly to the one a carbon further round (meta).',
@@ -547,8 +556,8 @@ FIGURES.push({
       hs.forEach((h, i) => { o += stick(x0 + i * gap, base, h, 'fg-bond', 2.6); });
       return o;
     };
-    s += mult(3.6, [22, 66, 66, 22]);
-    s += mult(1.2, [42, 84, 42]);
+    s += mult(3.6, [20, 60, 60, 20]);
+    s += mult(1.2, [36, 72, 36]);
     const xo = X(2.4);
     s += `<path class="fg-bond" fill="none" d="M${n2(xo - 16)} ${base} Q${n2(xo - 6)} ${base} ${n2(xo)} ${base - 40} Q${n2(xo + 6)} ${base} ${n2(xo + 16)} ${base}"></path>`;
     s += rule(X(5.2), base, X(-0.1), base);
@@ -556,7 +565,7 @@ FIGURES.push({
       s += rule(X(d), base, X(d), base + 5);
       s += text(X(d), base + 18, String(d), { cls: 'fg-tag' });
     }
-    s += text(170, 144, 'δ (ppm) rises to the left', { cls: 'fg-tag-mut' });
+    s += text(170, 140, 'δ (ppm) rises to the left', { cls: 'fg-tag-mut' });
     const lab = (d, a, b, c, cls) => lines(X(d), 272, 17, [[a, cls], b, c], 'middle');
     s += lab(3.6, 'CH₂', 'q · 2H', 'δ 3.6', 'fg-tag-good');
     s += lab(2.4, 'OH', 's · 1H', 'δ varies', 'fg-tag');
@@ -620,7 +629,7 @@ FIGURES.push({
     s += assign(2.0, 'CH₃–C=O', 'δ 2.0 · s · 3H', -14);
     s += assign(1.3, '–CH₃', 'δ 1.3 · t · 3H', 16);
     s += text(716, 374, 'TMS', { cls: 'fg-tag-mut', size: 11, anchor: 'end' });
-    s += text(716, 390, 'δ 0 by definition', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
+    s += text(716, 390, 'δ 0', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
 
     s += text(X(2.7), 412, 'matching J ≈ 7 Hz: these two are coupled to each other', { cls: 'fg-tag', size: 11 });
     s += `<line class="fg-arrow" x1="${n2(X(4.1))}" y1="426" x2="${n2(X(1.3))}" y2="426"></line>`;

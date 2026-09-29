@@ -597,11 +597,12 @@
       8:['pka-scale','bronsted-identification'],
       9:['bronsted-identification','conjugate-pairs'] } },
 
-    'c-nmr': { n:7, steps:{
-      1:['nmr-shift-shielding'],
-      2:['nmr-shift-shielding'],
-      4:['nmr-shift-shielding','nmr-splitting-integration'],
-      6:['nmr-splitting-integration','nmr-shift-shielding'] } },
+    'c-nmr': { n:10, steps:{
+      1:['nmr-splitting-integration'],
+      4:['nmr-shift-shielding'],
+      5:['nmr-shift-shielding'],
+      7:['carbon-count-symmetry'],
+      9:['carbon-count-symmetry','structure-elucidation'] } },
 
     'carboxylic-acids': { n:8, steps:{
       1:['resonance-delocalization','acidity-factors'],

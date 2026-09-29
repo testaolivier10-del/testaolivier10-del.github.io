@@ -170,7 +170,7 @@ FIGURES.push({
   alt: ETHANOL_ALT,
   viewBox: '0 0 760 384',
   build() { return ethanolDecoupling(760); },
-  caption: 'Ethanol&rsquo;s two carbons, recorded twice. On top, each carbon is split by its own hydrogens. Underneath, decoupling collapses each group of lines into one line at the same shift.',
+  caption: 'The top trace shows ethanol&rsquo;s two carbons split by their own hydrogens. In the bottom trace, decoupling has collapsed each group of lines into one line at the same shift.',
 });
 
 FIGURES.push({
@@ -179,7 +179,7 @@ FIGURES.push({
   alt: ETHANOL_ALT,
   viewBox: '0 0 340 384',
   build() { return ethanolDecoupling(340); },
-  caption: 'Top: each carbon split by its own hydrogens. Bottom: decoupled, one line per carbon.',
+  caption: 'On top, each carbon is split by its own hydrogens. Below, decoupling leaves one line per carbon.',
 });
 
 /* The alkyne exception. The triple bond's pi electrons form a cylinder; with
@@ -198,15 +198,18 @@ FIGURES.push({
     s += tag(320, 22, 'applied field B₀');
     const y = 138;
     /* pi cylinder, behind the atoms */
-    s += `<rect class="fg-orb" x="222" y="${y - 40}" width="196" height="80" rx="40"></rect>`;
+    s += `<rect class="fg-orb" x="206" y="${y - 40}" width="244" height="80" rx="40"></rect>`;
     const h1 = P(130, y), c1 = P(250, y), c2 = P(390, y), h2 = P(510, y);
     s += bond(h1, c1, { rFrom: 15, rTo: 15 }) + bond(c2, h2, { rFrom: 15, rTo: 15 });
     s += bond(c1, c2, { order: 3, rFrom: 15, rTo: 15, gap: 4 });
     s += atom(h1.x, h1.y, 'H') + atom(c1.x, c1.y, 'C', { kind: 'hi' }) + atom(c2.x, c2.y, 'C', { kind: 'hi' }) + atom(h2.x, h2.y, 'H');
     /* circulation: a loop around the axis, seen obliquely */
-    s += `<path class="fg-arrow" d="M 320 ${y - 52} C 342 ${y - 52} 342 ${y + 52} 320 ${y + 52} C 304 ${y + 52} 300 ${y + 20} 301 ${y - 6}"></path>`;
-    s += `<path class="fg-head" d="M 301 ${y - 14} L 305.5 ${y - 4} L 296.5 ${y - 4} Z"></path>`;
-    s += tag(348, y - 60, 'pi electrons circulate around the axis', { anchor: 'start' });
+    /* the loop sits between the right carbon and the end of the cylinder,
+       so it crosses only the axis, never a label or the induced-field arrow */
+    s += `<path class="fg-arrow" d="M 424 ${y - 54} C 444 ${y - 54} 444 ${y + 54} 428 ${y + 54} C 412 ${y + 54} 410 ${y - 54} 420 ${y - 54}"></path>`;
+    s += `<path class="fg-head" d="M 416 ${y - 54} L 425 ${y - 58.5} L 425 ${y - 49.5} Z"></path>`;
+    s += tag(446, y - 62, 'pi electrons circulate', { anchor: 'start' });
+    s += tag(446, y - 46, 'around the axis', { anchor: 'start' });
     /* induced field, inside the cylinder, pointing against B0 */
     s += arrow(P(372, y + 26), P(268, y + 26));
     s += tag(320, y + 70, 'induced field inside the cylinder points against B₀');
@@ -225,7 +228,7 @@ FIGURES.push({
     s += tag(320, yb + 42, 'carbon chemical shift (ppm)', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'The triple bond lined up with the applied field. The arrow inside the cylinder is the induced field, and it points against B₀ right where the two carbons sit. The strip below shows the result: sp carbons land between sp³ and sp² carbons, not beyond the sp² ones.',
+  caption: 'Here the triple bond lies along the applied field, B₀. The arrow inside the cylinder is the induced field. The strip below places the three kinds of carbon on one shift scale.',
 });
 
 FIGURES.push({
@@ -251,7 +254,7 @@ FIGURES.push({
     s += rule(255, 40, 255, 300) + rule(505, 40, 505, 300);
     return s;
   },
-  caption: 'Each dashed line is a mirror plane seen edge-on. Carbons that a mirror swaps are equivalent and share a line. Under each ring are the sets of equivalent ring carbons; the two methyls always form one more set.',
+  caption: 'Under each ring are its sets of equivalent ring carbons and the number of lines they give. The two methyls always add one more set.',
 });
 
 FIGURES.push({
@@ -270,21 +273,21 @@ FIGURES.push({
     s += tag(170, 350, '3 signals from 8 carbons', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'Mirror 1 swaps C2 with C6 and C3 with C5. Mirror 2 swaps C1 with C4 and C2 with C3.',
+  caption: 'Follow each dashed mirror and check which numbered carbons it swaps.',
 });
 
 FIGURES.push({
   id: 'l-c-nmr-o-xylene',
   lessons: ['c-nmr'],
   alt: 'o-Xylene with the ring numbered C1 to C6 and methyls on C1 and C2. No mirror planes are drawn.',
-  viewBox: '0 0 340 250',
+  viewBox: '0 0 340 222',
   build() {
     let s = '';
     s += `<text class="fg-tag" x="170" y="22" text-anchor="middle" font-size="11"><tspan font-style="italic">o</tspan>-xylene (1,2-dimethylbenzene)</text>`;
     s += ring(170, 140, 50, { ...ORTHO, mirrors: [] });
     return s;
   },
-  caption: 'Methyls on C1 and C2. Look for the mirror plane before you count.',
+  caption: 'The methyls sit on C1 and C2. Look for the mirror plane before you count.',
 });
 
 /* Carbon shift ranges for the lesson, one bar per row with its label above,
@@ -311,7 +314,7 @@ FIGURES.push({
     rows.forEach(([lbl, lo, hi, cls], i) => {
       const y = 24 + i * 42;
       const mid = (X(lo) + X(hi)) / 2;
-      const w = lbl.length * 6.2;
+      const w = `${lbl}: ${lo}–${hi}`.length * 6.6;
       const tx = Math.min(Math.max(mid, 14 + w / 2), 326 - w / 2);
       s += tag(tx, y, `${lbl}: ${lo}–${hi}`);
       s += `<rect class="${cls}" x="${n2(X(hi))}" y="${y + 8}" width="${n2(X(lo) - X(hi))}" height="14" rx="5"></rect>`;
@@ -359,7 +362,7 @@ FIGURES.push({
     s += butanone(170, 562, 340);
     return s;
   },
-  caption: 'Up: CH₃ or CH. Down: CH₂. Missing: no H. DEPT-90 then keeps only CH.',
+  caption: 'Lines point up for CH₃ or CH and down for CH₂. A carbon with no H is missing, and DEPT-90 keeps only CH.',
 });
 
 /* The worked example's answer, with each carbon's shift beside it. */
@@ -368,7 +371,7 @@ FIGURES.push({
   section: 'c-nmr',
   anchor: 'That is 3,3-dimethylbutan-2-one.</p>',
   alt: '3,3-Dimethylbutan-2-one, CH3–C(=O)–C(CH3)3, with each carbon labeled by its shift: the lone CH3 at 25 ppm, the C=O carbon at 214, the central carbon with no hydrogens at 44, and the three equivalent methyls of the tert-butyl group at 26, drawn highlighted.',
-  viewBox: '0 0 560 270',
+  viewBox: '0 0 640 270',
   build() {
     let s = '';
     const me = P(120, 170), co = P(220, 130), o = P(220, 66), q = P(330, 170);
@@ -382,10 +385,10 @@ FIGURES.push({
     s += tag(q.x - 26, q.y + 26, '44 ppm', { anchor: 'end' });
     s += tag(470, 172, 'all three: 26 ppm', { anchor: 'start' });
     s += tag(470, 190, 'one line', { anchor: 'start', cls: 'fg-tag-mut' });
-    s += `<text class="fg-tag" x="120" y="24" text-anchor="start" font-size="11">the <tspan font-style="italic">tert</tspan>-butyl group: three equivalent CH₃</text>`;
+    s += tag(320, 24, '3,3-dimethylbutan-2-one');
     return s;
   },
-  caption: 'Six carbons, four lines. The three highlighted methyls are equivalent, so they share the line at 26.',
+  caption: 'The molecule has six carbons but gives four lines, because the three highlighted methyls are equivalent and share the line at 26.',
 });
 
 export default FIGURES;
