@@ -443,7 +443,7 @@ FIGURES.push({
     s += tag(554, 30, 'CH₂=CH–CH₂–OH', { cls: 'fg-tag-warn' });
     const b = sideRow(404, 132, 76, ALLYLOH_ROW);
     s += b.svg;
-    s += tag(b.pts[2].x, 88, 'sp³: no p orbital', { cls: 'fg-tag-warn' });
+    s += tag(b.pts[2].x, 76, 'sp³: no p orbital', { cls: 'fg-tag-warn' });
     s += tag(554, 214, 'the row stops at the CH₂', { cls: 'fg-tag-warn' });
     s += tag(554, 230, 'the O pairs are cut off from the π bond', { cls: 'fg-tag-warn' });
     return s;
@@ -468,7 +468,7 @@ FIGURES.push({
     s += tag(170, 234, 'CH₂=CH–CH₂–OH', { cls: 'fg-tag-warn' });
     const b = sideRow(42, 322, 62, ALLYLOH_ROW);
     s += b.svg;
-    s += tag(b.pts[2].x, 276, 'sp³: no p', { cls: 'fg-tag-warn' });
+    s += tag(b.pts[2].x, 264, 'sp³: no p', { cls: 'fg-tag-warn' });
     s += tag(170, 402, 'the row stops at the CH₂', { cls: 'fg-tag-warn' });
     return s;
   },

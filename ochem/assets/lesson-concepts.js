@@ -620,11 +620,11 @@
 
     'curved-arrows': { n:11, steps:{
       1:['curved-arrow-direction'],
-      2:['curved-arrow-direction','resonance-validity'],
+      2:['curved-arrow-direction'],
       3:['curved-arrow-direction','formal-charge-calc'],
       6:['curved-arrow-direction','carbonyl-electrophilicity'],
       7:['curved-arrow-direction'],
-      10:['curved-arrow-direction','resonance-validity'] } },
+      10:['curved-arrow-direction'] } },
 
     'cyclohexanes': { n:9, steps:{
       1:['torsional-strain'],
