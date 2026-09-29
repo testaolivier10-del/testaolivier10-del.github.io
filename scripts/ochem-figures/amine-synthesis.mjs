@@ -700,7 +700,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Highlighted: the carbon that ends up bonded to the nitrogen, and where it came from. Orange: an extra carbon you did not want.',
+  caption: 'Highlighted: the carbon on nitrogen that the target needs, and where it came from. Orange: an extra carbon you did not want.',
 });
 
 export default FIGURES;
