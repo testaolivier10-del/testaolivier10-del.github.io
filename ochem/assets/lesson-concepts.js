@@ -64,9 +64,9 @@
       9:['alpha-halogenation-control'],
       10:['alpha-halogenation-control','acyl-reactivity-order'] } },
 
-    /* Step 2 sorts six condition sets including two LDA rows that are not
-       kinetic. 3 is which alpha carbon, 4 why a weak base wins on stability,
-       6 the SN2 limit on the halide, 7 the inverse-addition trap. */
+    /* 3 is which alpha carbon LDA takes, 5 the proton carriers, 8 sorts
+       condition sets including one LDA row (0.9 equiv) that is not kinetic,
+       10 the SN2 limit on the halide, 11 the final. */
     'enolate-regiochemistry': { n:12, steps:{
       3:['enolate-regiocontrol','alpha-acidity'],
       5:['enolate-regiocontrol'],
@@ -113,10 +113,6 @@
        concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
        4 is the C–H versus O–H asymmetry, which is a notation rule rather than
        a counting one. 7 is the five-bond slip, where both are involved. */
-    /* Step 2 is the sorter (chain mechanism alone). 3 is radical stability, 4
-       is the bromine-versus-chlorine selectivity that follows from it. 6 is
-       NBS, which is a competition/concentration argument resting on the chain.
-       7 is anti-Markovnikov HBr — the chain logic applied somewhere new. */
     /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
        (0, 1 and 5 are explain steps and record nothing). */
     /* The synthesis chapter. Graded steps are 2, 3, 4, 6, 7. */
