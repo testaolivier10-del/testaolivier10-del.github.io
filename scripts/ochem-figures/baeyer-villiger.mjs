@@ -10,7 +10,7 @@
    labeled, so each curved arrow starts at a named lone pair or bond and
    ends at a named atom or bond. Rings and chains elsewhere are skeletal:
    this chapter comes long after skeletal structures are taught. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
+import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, panel, P } from '../lib/ochem-figure.mjs';
 import { polyPts, ringDouble } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
@@ -140,7 +140,7 @@ FIGURES.push({
 /* ======================================================================
    2. The reagent: mCPBA, with its two working parts marked.
    ====================================================================== */
-const H_MC = 214;
+const H_MC = 224;
 FIGURES.push({
   id: 'mcpba',
   section: 'baeyer-villiger',
@@ -162,8 +162,9 @@ FIGURES.push({
           Ot = A(C.x + 66, C.y, 'O', 'hi'), H = A(C.x + 98, C.y + 18, 'H');
     s += sk(b.pts[0], C) + dbl(C, Od) + bd(C, Ob) + bd(Ob, Ot, { cls: 'fg-bond-hi' }) + bd(Ot, H);
     s += draw(Od, Ob, Ot, H);
-    s += tag(78, 162, 'Ar');
-    s += tag(Ot.x + 44, Ot.y - 26, 'O–O–H end');
+    s += `<path class="fg-dash" fill="none" d="M50 150 Q50 158 58 158 L98 158 Q106 158 106 150"></path>`;
+    s += tag(78, 176, 'Ar');
+    s += tag(Ot.x + 6, Ot.y - 26, 'O–O–H end');
     return s;
   },
   caption: 'Ar stands for the ring and its chlorine. The <i>m</i>, for <i>meta</i>, says where the chlorine sits: on the ring carbon two positions away from the carbon that carries the acid group.',
@@ -218,7 +219,7 @@ function tet(ox, oy, o1Label, o1Kind) {
   return {
     C: A(ox + 118, oy + 140, 'C', 'hi'),
     Et: A(ox + 56, oy + 100, 'CH₂CH₃', 'hi'),
-    OH: A(ox + 86, oy + 192, 'OH'),
+    OH: A(ox + 76, oy + 204, 'OH'),
     Me: A(ox + 158, oy + 196, 'CH₃'),
     O1: A(ox + 176, oy + 112, o1Label, o1Kind),
     O2: A(ox + 222, oy + 140, 'O'),
@@ -240,9 +241,11 @@ function pDeprot(ox, oy) {
     'A⁻ takes the proton',
   ]);
   const t = tet(ox, oy, 'O⁺', 'hi');
-  const H = A(t.O1.x, t.O1.y - 48, 'H', 'warn');
+  const H = A(t.O1.x, t.O1.y - 48, 'H', 'warn'), B = A(ox + 226, oy + 50, 'A⁻');
   s += tetBonds(t) + bd(t.O1, H, { cls: 'fg-bond-hi' });
-  s += draw(...Object.values(t), H);
+  s += lp(B, 180);
+  s += draw(...Object.values(t), H, B);
+  s += curve(off(lpAt(B, 180), -2, -5), P(H.x + H.r + 2, H.y - 4), { bow: 10 });
   s += curve(off(mid(t.O1, H), -2, 0), P(t.O1.x - t.O1.r - 2, t.O1.y - 6), { bow: 12 });
   return s;
 }
@@ -269,7 +272,7 @@ function pCollapse(ox, oy) {
   s += lp(t.OH, 200);
   s += draw(...Object.values(t));
   // the OH lone pair makes the new C=O
-  s += curve(off(lpAt(t.OH, 200), -4, -6), off(mid(t.C, t.OH), -9, -3), { bow: 16 });
+  s += curve(off(lpAt(t.OH, 200), -2, -6), off(mid(t.C, t.OH), -9, -2), { bow: 18 });
   // the C–ethyl bond swings over onto the near oxygen
   s += curve(off(mid(t.C, t.Et), 0, -8), P(t.O1.x - 6, t.O1.y - t.O1.r - 2), { bow: -26 });
   // the O–O bond breaks onto the far oxygen
@@ -280,7 +283,7 @@ function pCollapse(ox, oy) {
 /* 6: the protonated ester hands its proton to the carboxylate. */
 function pEster(ox, oy) {
   let s = frameP(ox, oy, H_M, '6 · a proton transfer ends it', [
-    ['products: ethyl acetate + ArCO₂H', 'fg-tag-good'],
+    ['gives ethyl acetate + ArCO₂H', 'fg-tag-good'],
   ], 'good');
   const C = A(ox + 110, oy + 126, 'C', 'hi'), Oq = A(ox + 110, oy + 76, 'O⁺'),
         H = A(ox + 150, oy + 50, 'H', 'warn'),
@@ -310,7 +313,7 @@ FIGURES.push({
     s += right(PW + 6, PW + GAP - 6, H_M + 30 + 130);
     return s;
   },
-  caption: 'Read the top row, then the bottom row. Follow the highlighted carbon: it starts as the C=O carbon of butanone and ends with four single bonds.',
+  caption: 'Read the top row, then the bottom row. Follow the highlighted C: it starts as the C=O carbon of butanone and ends with four single bonds. From panel 3 on, the ethyl that will move is highlighted too.',
 });
 
 FIGURES.push({
@@ -321,7 +324,7 @@ FIGURES.push({
   build() {
     return stack([[pProton, H_M], [pAdd, H_M], [pDeprot, H_M], [pCriegee, H_M]]).svg;
   },
-  caption: 'Follow the highlighted carbon from panel to panel. It starts as the C=O carbon and ends with four single bonds.',
+  caption: 'Follow the highlighted C from panel to panel: it starts as the C=O carbon and ends with four single bonds. From panel 3 on, the ethyl that will move is highlighted too.',
 });
 
 FIGURES.push({
@@ -439,54 +442,63 @@ FIGURES.push({
     s += pOutcome(0, H_K + 44, true) + pOutcome(PW + GAP, H_K + 44, false);
     return s;
   },
-  caption: 'In each ester, look at the highlighted O and at the group on its far side, away from the C=O. That group is the one that moved.',
+  caption: 'The highlighted O is the new one.',
 });
 FIGURES.push({
   id: 'l-which-migrates',
   lessons: ['baeyer-villiger'],
-  viewBox: `0 0 ${PW} ${H_K + H_OUT * 2 + 26 * 2}`,
-  alt: 'Acetophenone, a benzene ring and a methyl on a C=O. Below it, phenyl acetate, with the new O between the ring and the C=O, which forms. Below that, methyl benzoate, with the new O between the C=O and the methyl, which does not form.',
+  viewBox: `0 0 ${PW} ${H_K + H_OUT * 2 + 26 + 36}`,
+  alt: 'Acetophenone, a benzene ring and a methyl on a C=O, with an arrow down to phenyl acetate, which forms: the new O sits between the ring and the C=O. Below, set apart as the other ester it could have given, methyl benzoate, with the new O between the C=O and the methyl, which does not form.',
   build() {
-    return stack([[pAcetophenone, H_K], [(x, y) => pOutcome(x, y, true), H_OUT], [(x, y) => pOutcome(x, y, false), H_OUT]], 26, true).svg;
+    let s = pAcetophenone(0, 0);
+    s += down(PW / 2, H_K + 3, H_K + 23);
+    s += pOutcome(0, H_K + 26, true);
+    s += tag(PW / 2, H_K + 26 + H_OUT + 24, 'the other ester it could have given:');
+    s += pOutcome(0, H_K + 26 + H_OUT + 36, false);
+    return s;
   },
-  caption: 'Look at the highlighted O in each ester and at the group on its far side, away from the C=O. That group moved.',
+  caption: 'The highlighted O is the new one. The group on its far side, away from the C=O, is the one that moved.',
 });
 
 /* ======================================================================
    6. Why an aryl group migrates well: the bridged transition state.
    ====================================================================== */
-const H_BR = 300;
+const H_BR = 310;
 FIGURES.push({
   id: 'aryl-bridge',
   section: 'baeyer-villiger',
   anchor: '<!-- fig:aryl-bridge:start -->',
   viewBox: `0 0 ${PW} ${H_BR}`,
-  alt: 'The transition state for a phenyl group moving from carbon to oxygen. The ring carbon that was bonded to the carbonyl carbon, the ipso carbon, sits between the carbonyl carbon and the oxygen with a dashed partial bond to each. The O–O bond is also dashed, breaking. The ring is drawn with a dashed arc over its other five carbons and a delta-plus in the middle, because the positive charge spreads over them.',
+  alt: 'The transition state for a phenyl group moving from carbon to oxygen. The ring carbon that was bonded to the carbonyl carbon, the ipso carbon, sits between the carbonyl carbon and the oxygen with a dashed partial bond to each. The O–O bond is also dashed, breaking. A dashed arc runs over the five ring carbons other than ipso, and delta-plus marks sit on three of them: the two next to the ipso carbon and the one across the ring.',
   build() {
     let s = frameP(0, 0, H_BR, 'phenyl halfway from C to O', [
-      'dashed: bonds half made or half broken',
-      'the ring shares the positive charge',
+      'δ+ on the two carbons beside ipso',
+      'and on the one across the ring',
     ]);
-    const cx = 150, cy = 86, r = 30;
+    const cx = 150, cy = 94, r = 34;
     const pts = polyPts(cx, cy, 6, r, 90).map((p) => V(p.x, p.y));
     for (let i = 0; i < 6; i++) s += sk(pts[i], pts[(i + 1) % 6]);
     // the delocalized cation over the five carbons other than ipso (vertex 3)
-    const ir = r * 0.62, inner = polyPts(cx, cy, 6, ir, 90);
+    const ir = r * 0.6, inner = polyPts(cx, cy, 6, ir, 90);
     const f = (p) => `${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
     s += `<path class="fg-dash" fill="none" d="M${f(inner[4])} A${ir.toFixed(1)} ${ir.toFixed(1)} 0 1 0 ${f(inner[2])}"></path>`;
-    s += text(cx, cy + 4, 'δ+', { cls: 'fg-lbl' });
+    for (const i of [0, 2, 4]) {
+      const q = outward(P(cx, cy), pts[i], 16);
+      s += text(q.x, q.y + 4, 'δ+', { cls: 'fg-lbl' });
+    }
     const ipso = pts[3];
     const C = A(ipso.x - 44, ipso.y + 58, 'C', 'hi'), O1 = A(ipso.x + 44, ipso.y + 58, 'O', 'hi');
     const OH = A(C.x - 52, C.y - 20, 'OH'), Me = A(C.x - 40, C.y + 46, 'CH₃');
-    const O2 = A(O1.x + 46, O1.y + 22, 'O'), Rest = A(O2.x + 58, O2.y, 'C(=O)Ar');
+    const O2 = A(O1.x + 46, O1.y + 22, 'O');
     s += dash(ipso, C) + dash(ipso, O1) + bd(C, O1);
     s += bd(C, OH) + bd(C, Me);
-    s += dash(O1, O2, 'fg-dash') + bd(O2, Rest);
-    s += draw(C, O1, OH, Me, O2, Rest);
-    s += tag(ipso.x + 64, ipso.y - 2, 'ipso carbon');
+    s += dash(O1, O2, 'fg-dash') + bond(O2, P(O2.x + 30, O2.y), { rFrom: O2.r, rTo: 0 });
+    s += label(O2.x + 62, O2.y + 4, 'C(=O)Ar');
+    s += draw(C, O1, OH, Me, O2);
+    s += tag(ipso.x + 60, ipso.y + 14, 'ipso carbon');
     return s;
   },
-  caption: 'The ring carbon that was bonded to the carbonyl carbon is called the <i>ipso</i> carbon. Here it is partly bonded to the carbon it is leaving and to the oxygen it is joining.',
+  caption: 'Dashed lines: bonds half made or half broken.',
 });
 
 /* ======================================================================
@@ -546,7 +558,7 @@ FIGURES.push({
   viewBox: `0 0 ${PW} ${H_ALD}`,
   alt: 'Butanal, a three-carbon chain on a CHO group, gives butanoic acid with mCPBA. The new O is highlighted: it sits between the carbonyl carbon and the H, so the H is what migrated.',
   build() {
-    let s = frameP(0, 0, H_ALD, 'butanal + mCPBA', [
+    let s = frameP(0, 0, H_ALD, 'butanal', [
       ['butanoic acid: the H moved onto the new O', 'fg-tag-good'],
     ]);
     const y0 = 76;
@@ -623,16 +635,17 @@ function pMCH(ox, oy, hints, h = H_MCH) {
     hints ? ['C2 carries two carbons: C3 and the CH₃', 'C6 carries one: C5'] : []);
   const c = P(ox + 180, oy + 132);
   const k = ring(c.x, c.y, 6, 46, 90, {}, hints ? [[0, 1]] : []);
-  const [c1, c2, c3, , c5, c6] = k.pts;
+  const [c1, c2, c3, c4, c5, c6] = k.pts;
   const O = A(c1.x, c1.y - 38, 'O');
   s += k.s + dbl(c1, O) + draw(O);
   const me = A(c2.x - 46, c2.y, 'CH₃');
   s += wedge(c2, me, { rFrom: 0, rTo: me.r, width: 9 }) + draw(me);
-  s += inLbl(c, c1, 'C1') + inLbl(c, c2, 'C2') + inLbl(c, c3, 'C3') + inLbl(c, c5, 'C5') + inLbl(c, c6, 'C6');
+  s += inLbl(c, c1, 'C1') + inLbl(c, c2, 'C2') + inLbl(c, c3, 'C3') + inLbl(c, c4, 'C4') + inLbl(c, c5, 'C5') + inLbl(c, c6, 'C6');
   if (hints) {
     const m12 = mid(c1, c2), m16 = mid(c1, c6);
-    s += tag(m12.x - 58, m12.y - 22, 'O goes in here', { cls: 'fg-tag-good' });
-    s += tag(m16.x + 44, m16.y - 22, 'not here', { cls: 'fg-tag-mut' });
+    s += tag(m12.x - 46, m12.y - 16, 'O goes in here', { cls: 'fg-tag-good' });
+    s += text(m16.x + 7, m16.y - 3, '×', { cls: 'fg-warn', size: 15 });
+    s += tag(m16.x + 46, m16.y - 16, 'not here', { cls: 'fg-tag-warn' });
   }
   return s;
 }
@@ -644,12 +657,12 @@ function pLactone(ox, oy) {
   const c = P(ox + 182, oy + 134);
   // seven vertices: 0 = C1 (top), 1 = the new O, 2 = C2, then C3..C6
   const l = ring(c.x, c.y, 7, 50, 90, { 1: ['O', 'hi'] }, [[0, 1], [1, 2]]);
-  const [c1, on, c2, c3, , c5, c6] = l.pts;
+  const [c1, on, c2, c3, c4, c5, c6] = l.pts;
   const O = A(c1.x, c1.y - 38, 'O');
   s += l.s + dbl(c1, O) + draw(O, on);
   const me = A(c2.x - 46, c2.y + 4, 'CH₃');
   s += wedge(c2, me, { rFrom: 0, rTo: me.r, width: 9 }) + draw(me);
-  s += inLbl(c, c1, 'C1') + inLbl(c, c2, 'C2') + inLbl(c, c3, 'C3') + inLbl(c, c5, 'C5') + inLbl(c, c6, 'C6');
+  s += inLbl(c, c1, 'C1') + inLbl(c, c2, 'C2') + inLbl(c, c3, 'C3') + inLbl(c, c4, 'C4') + inLbl(c, c5, 'C5') + inLbl(c, c6, 'C6');
   return s;
 }
 FIGURES.push({
@@ -707,7 +720,7 @@ FIGURES.push({
     };
     s += chain(84, false);
     s += tag(48, 50, 'ketone');
-    s += tag(290, 70, 'C=C');
+    s += tag(206, 70, 'C=C', { cls: 'fg-tag-good' });
     s += down(170, 124, 158);
     s += tag(236, 146, '1 equiv. mCPBA');
     s += chain(194, true);

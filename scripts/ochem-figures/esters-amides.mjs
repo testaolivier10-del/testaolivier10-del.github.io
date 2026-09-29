@@ -174,7 +174,7 @@ FIGURES.push({
   build() {
     let s = '';
     s += tg(24, 24, 'four derivatives of acetic acid', 'start');
-    s += tg(290, 24, 'what leaves, and its pKa', 'start');
+    s += tg(290, 24, 'what leaves; its conjugate acid’s pKa', 'start');
     s += tg(740, 24, 'reactivity toward a nucleophile', 'end');
     ['cl', 'anh', 'est', 'amide'].forEach((k, i) => {
       const y0 = 36 + i * 125;
@@ -231,7 +231,7 @@ FIGURES.push({
     s += pPair(c1, 24, 34) + pPair(o1, 23, 33);
     s += bd(c1, o1, 15, 15) + atom(c1.x, c1.y, 'C') + atom(o1.x, o1.y, 'O', { kind: 'hi' });
     s += sm(192, 234, 'same size, side by side: good overlap');
-    s += sm(192, 252, 'O and N donate their lone pairs well');
+    s += sm(192, 252, 'O donates its lone pairs well (N does too)');
     const c2 = P(516, 140), cl = P(590, 140);
     s += pPair(c2, 24, 34);
     s += pPair(cl, 34, 40);
@@ -241,43 +241,6 @@ FIGURES.push({
     return s;
   },
   caption: 'On carbon, the upright lobes are the p orbital it uses in the C=O &pi; bond; on O and Cl, they hold a lone pair. Compare how well each pair of lobes matches in size.',
-});
-
-/* --------------------------------------------- 4. the ladder in the IR --- */
-FIGURES.push({
-  id: 'ir-carbonyl-scale',
-  section: 'esters-amides',
-  anchor: '',
-  viewBox: '0 0 760 250',
-  alt: 'A horizontal scale of C=O stretching frequency, from 1850 cm⁻¹ on the left to 1600 on the right. Acid chloride sits at 1800, ester at 1735 and amide at 1650. Above them, an arrow runs from a carboxylic acid’s lone-molecule band at 1760 to its hydrogen-bonded dimer band at 1710. Below the scale, a bracket joins the anhydride’s two bands at 1820 and 1760.',
-  build() {
-    let s = '';
-    const X = (v) => 60 + (1850 - v) * 2.56, Y = 150;
-    s += `<line class="fg-bond" x1="${X(1850)}" y1="${Y}" x2="${X(1600)}" y2="${Y}"></line>`;
-    for (const v of [1850, 1800, 1750, 1700, 1650, 1600]) {
-      s += `<line class="fg-bond-soft" x1="${n2(X(v))}" y1="${Y}" x2="${n2(X(v))}" y2="${Y + 6}"></line>`;
-      s += sm(X(v), Y + 20, String(v));
-    }
-    const tick = (v, top, cls = 'fg-bond-hi') => `<line class="${cls}" x1="${n2(X(v))}" y1="${Y}" x2="${n2(X(v))}" y2="${top}"></line>`;
-    // the three rungs
-    for (const [v, name] of [[1800, 'acid chloride 1800'], [1735, 'ester 1735'], [1650, 'amide 1650']]) {
-      s += tick(v, 108);
-      s += tg(X(v), 100, name);
-    }
-    // carboxylic acid: lone molecule and dimer, above the rungs
-    s += `<line class="fg-dash" x1="${n2(X(1760))}" y1="${Y}" x2="${n2(X(1760))}" y2="62"></line>`;
-    s += tick(1710, 62);
-    s += arrow(P(X(1760) + 4, 66), P(X(1710) - 4, 66), { muted: true });
-    s += tg((X(1760) + X(1710)) / 2, 50, 'carboxylic acid: 1760 alone, 1710 as a dimer', 'middle', 'fg-tag-mut');
-    // anhydride: two coupled bands, below the scale
-    s += `<line class="fg-bond-hi" x1="${n2(X(1820))}" y1="${Y}" x2="${n2(X(1820))}" y2="${Y + 42}"></line>`;
-    s += `<line class="fg-bond-hi" x1="${n2(X(1760))}" y1="${Y}" x2="${n2(X(1760))}" y2="${Y + 42}"></line>`;
-    s += `<line class="fg-dash-hi" x1="${n2(X(1820))}" y1="${Y + 42}" x2="${n2(X(1760))}" y2="${Y + 42}"></line>`;
-    s += tg((X(1820) + X(1760)) / 2, Y + 60, 'anhydride: 1820 and 1760, two bands');
-    s += sm(560, 236, 'C=O stretch, cm⁻¹: stiffer C=O, higher number');
-    return s;
-  },
-  caption: 'The acid chloride, ester and amide read left to right in ladder order. The acid arrow sits above the scale and the anhydride bracket below it.',
 });
 
 /* --------------------------------------------- 5. amide resonance (DMF) ---
@@ -425,7 +388,7 @@ function sapB(o) {
   s += wedge(c, oh, { rFrom: 16, rTo: 18, width: 9 }) + hash(c, oe, { rFrom: 16, rTo: 15, width: 11, rungs: 4 });
   s += bd(oe, et, 15, ET.r);
   s += lp(ox, 30) + lp(ox, 90) + lp(ox, 150) + atom(ox.x, ox.y, 'O', { kind: 'hi' }) + charge(P(ox.x + 26, ox.y + 12), '−', 'fg-hi');
-  s += atom(ph.x, ph.y, 'C₆H₅', { r: PH.r }) + atom(oh.x, oh.y, 'OH', { r: 18 });
+  s += lp(oh, 215, { dist: 25 }) + lp(oh, 325, { dist: 25 }) + atom(ph.x, ph.y, 'C₆H₅', { r: PH.r }) + atom(oh.x, oh.y, 'OH', { r: 18 });
   s += lp(oe, 95) + lp(oe, 280);
   s += atom(oe.x, oe.y, 'O', { kind: 'hi' }) + atom(et.x, et.y, 'C₂H₅', { r: ET.r });
   s += atom(c.x, c.y, 'C', { kind: 'warn' });
@@ -470,7 +433,7 @@ FIGURES.push({
   section: 'esters-amides',
   anchor: '',
   viewBox: '0 0 760 430',
-  alt: 'Four stages, read clockwise from top left. 1: hydroxide attacks the carbonyl carbon of ethyl benzoate, C6H5–C(=O)–O–C2H5, with curved arrows from its lone pair to the carbon and from the C=O bond onto oxygen. 2: the tetrahedral intermediate, with O minus, C6H5, OH and OC2H5 on one carbon; arrows show the C=O re-forming and the C–OC2H5 bond breaking. 3: benzoic acid and ethoxide; an arrow runs from an ethoxide lone pair to the acid’s O–H hydrogen and another from the O–H bond onto the acid oxygen. 4: benzoate anion and ethanol.',
+  alt: 'Three stages and the products, read clockwise from top left. 1: hydroxide attacks the carbonyl carbon of ethyl benzoate, C6H5–C(=O)–O–C2H5, with curved arrows from its lone pair to the carbon and from the C=O bond onto oxygen. 2: the tetrahedral intermediate, with O minus, C6H5, OH and OC2H5 on one carbon; arrows show the C=O re-forming and the C–OC2H5 bond breaking. 3: benzoic acid and ethoxide; an arrow runs from an ethoxide lone pair to the acid’s O–H hydrogen and another from the O–H bond onto the acid oxygen. Products: benzoate anion and ethanol.',
   build() {
     let s = '';
     s += panel(8, 8, 360, 196) + panel(392, 8, 360, 196);
@@ -485,7 +448,7 @@ FIGURES.push({
     s += tg(188, 194, '1. hydroxide adds to the C=O');
     s += tg(572, 194, '2. the C=O re-forms; ethoxide leaves');
     s += tg(572, 412, '3. ethoxide takes the acid’s proton');
-    s += tg(188, 412, '4. carboxylate + ethanol: no way back', 'middle', 'fg-tag-good');
+    s += tg(188, 412, 'products: carboxylate + ethanol, no way back', 'middle', 'fg-tag-good');
     return s;
   },
   caption: 'Stages 1 and 2 are the two-step pattern from the top of the page. Stage 3 is the new one: follow its arrows from the ethoxide to the acid’s H.',
@@ -494,7 +457,7 @@ FIGURES.push({
   id: 'l-saponification',
   lessons: ['esters-amides'],
   viewBox: '0 0 340 820',
-  alt: 'Four stages stacked. 1: hydroxide attacks the carbonyl carbon of ethyl benzoate. 2: the tetrahedral intermediate re-forms its C=O and ethoxide leaves. 3: ethoxide takes the proton from benzoic acid, with curved arrows from its lone pair to the H and from the O–H bond onto oxygen. 4: benzoate anion and ethanol.',
+  alt: 'Three stages and the products, stacked. 1: hydroxide attacks the carbonyl carbon of ethyl benzoate. 2: the tetrahedral intermediate re-forms its C=O and ethoxide leaves. 3: ethoxide takes the proton from benzoic acid, with curved arrows from its lone pair to the H and from the O–H bond onto oxygen. Products: benzoate anion and ethanol.',
   build() {
     let s = '';
     s += sapA(P(0, 0));
@@ -507,7 +470,7 @@ FIGURES.push({
     s += tg(170, 592, '3. ethoxide takes the acid’s proton');
     s += arrow(P(170, 600), P(170, 620));
     s += sapD(P(0, 620));
-    s += tg(170, 806, '4. carboxylate + ethanol: no way back', 'middle', 'fg-tag-good');
+    s += tg(170, 806, 'products: carboxylate + ethanol, no way back', 'middle', 'fg-tag-good');
     return s;
   },
   caption: 'Stages 1 and 2 are the two-step pattern. Stage 3 is the one that makes the reaction one-way.',
@@ -671,9 +634,9 @@ FIGURES.push({
       s += atom(h.x, h.y, 'H', { r: 10 });
       s += atom(rr.x, rr.y, 'R′', { r: 15 });
       s += atom(nA.x, nA.y, 'N', { kind: 'hi' });
-      s += lonePair(nA.x, nA.y, 140);
+      s += lonePair(nA.x, nA.y, 110, { dist: 23 });
       s += atom(c.x, c.y, 'C', { kind: 'hi' });
-      s += curve(P(126, 182), P(118, 148), { bow: 14 });
+      s += curve(P(135, 190), P(116, 149), { bow: 14 });
       s += curve(P(102, 108), P(108, 86), { bow: -10 });
       s += text(124, 254, 'flat: the N lone pair is shared', { cls: 'fg-sm', size: 10 });
     }
