@@ -39,6 +39,11 @@ const mut = (x, y, s, o = {}) => tag(x, y, s, { cls: 'fg-tag-mut', ...o });
 const down = (x, y1, y2) => arrow(P(x, y1), P(x, y2), { size: 7 });
 const right = (y, x1, x2) => arrow(P(x1, y), P(x2, y), { size: 7 });
 const plusSign = (x, y) => text(x, y, '+', { cls: 'fg-lbl', size: 13 });
+/* A tag whose (E), (Z) are italic and whose SN2 has a subscript N. */
+const rich = (x, y, s, o = {}) => text(x, y, s, { cls: 'fg-tag', size: 11, ...o })
+  .replace(/\(([EZ])\)/g, '(<tspan font-style="italic">$1</tspan>)')
+  .replace(/\bSN([12])\b/g, 'S<tspan baseline-shift="sub" font-size="8">N</tspan>$1')
+  .replace(/\b([EZ]) stays ([EZ])\b/g, '<tspan font-style="italic">$1</tspan> stays <tspan font-style="italic">$2</tspan>');
 /* The resonance double-headed arrow. */
 const resArrow = (x1, x2, y) => {
   const h = 7;
@@ -89,19 +94,25 @@ function sixRing(c, o = {}) {
     s += bd(v[0], O, { order: charged ? 1 : 2 }) + draw(O);
   }
   if (form === 'enolate' || form === 'ketone') {
-    const Me = A(v[4].x - 30, v[4].y + 18, 'CH₃', 'hi');
+    const Me = A(v[4].x - 34, v[4].y + 10, 'CH₃', 'hi');
     s += bd(v[4], Me, { cls: 'fg-bond-hi' }) + draw(Me);
   }
-  if (form === 'plus') s += plusSign(v[4].x - 12, v[4].y + 16);
+  if (form === 'plus') s += plusSign(v[4].x - 4, v[4].y + 20);
   if (o.nums) {
     if (O) s += good(O.x + 22, O.y + 4, '1');
     s += good(v[0].x + 13, v[0].y - 6, '2');
-    s += good(v[5].x - 11, v[5].y - 8, '3') + tag(v[5].x - 24, v[5].y - 8, 'α');
-    if (form !== 'plus') s += good(v[4].x - 11, v[4].y + 16, '4') + tag(v[4].x - 24, v[4].y + 16, 'β');
-    else s += good(v[4].x - 26, v[4].y + 16, '4') + tag(v[4].x - 38, v[4].y + 16, 'β');
+    s += good(v[5].x - 12, v[5].y + 4, '3') + tag(v[5].x - 25, v[5].y + 4, 'α');
+    s += good(v[4].x - 12, v[4].y + 4, '4') + tag(v[4].x - 25, v[4].y + 4, 'β');
   }
   return { s, v, O };
 }
+
+/* The two arrows that shift the enone's pi pairs toward oxygen: the C=C pair
+   to the alpha-C2 bond (bowed outside the ring), the C=O pair onto O (on the
+   left of the C=O, clear of the "1" and "2" labels). */
+const piArrows = (v, O) =>
+  curve(mid(v[4], v[5]), mid(v[5], v[0]), { bow: -13, size: 7 }) +
+  curve(P(v[0].x - 6, (v[0].y + O.y) / 2 + 3), P(O.x - 14, O.y + 1), { bow: -9, size: 7 });
 
 /* ======================================== the cuprate and its bond ===== */
 /* Two rows: the C-Li bond of methyllithium and the dimethylcuprate ion, each
@@ -146,14 +157,10 @@ FIGURES.push({
    largest and the carbonyl-carbon lobe next. */
 function resonancePanel(ox, oy) {
   let s = '';
-  const c1 = P(ox + 82, oy + 104), c2 = P(ox + 250, oy + 104);
+  const c1 = P(ox + 90, oy + 104), c2 = P(ox + 256, oy + 104);
   const a = sixRing(c1, { form: 'enone', nums: true });
-  s += a.s;
-  const v = a.v;
-  // C=C pair moves over to the alpha-C2 bond; C=O pair goes onto oxygen
-  s += curve(mid(v[4], v[5]), mid(v[5], v[0]), { bow: 12, size: 7 });
-  s += curve(P(v[0].x + 3, v[0].y - 16), P(a.O.x + 12, a.O.y + 9), { bow: -9, size: 7 });
-  s += resArrow(ox + 150, ox + 184, oy + 104);
+  s += a.s + piArrows(a.v, a.O);
+  s += resArrow(ox + 150, ox + 190, oy + 104);
   s += sixRing(c2, { form: 'plus', nums: true }).s;
   s += tag(ox + 166, oy + 186, 'the right-hand form puts + on the β carbon (4)');
   s += tag(ox + 166, oy + 204, 'and the C=O pulls electrons from carbon 2 as well');
@@ -181,11 +188,10 @@ function lumoPanel(ox, oy) {
     const x = (xs[i] + xs[i + 1]) / 2;
     s += `<line class="fg-orb-node" x1="${x}" y1="${y0 - 44}" x2="${x}" y2="${y0 + 44}"></line>`;
   }
-  ['1', '2', '3', '4'].forEach((n, i) => { s += good(xs[i], y0 + 66, n); });
-  s += tag(xs[2], y0 + 82, 'α') + tag(xs[3], y0 + 82, 'β');
+  ['1', '2', '3', '4'].forEach((n, i) => { s += good(xs[i], y0 + 64, n); });
+  s += tag(xs[2] + 12, y0 + 64, 'α', { anchor: 'start' }) + tag(xs[3] + 12, y0 + 64, 'β', { anchor: 'start' });
   s += tag(ox + 170, oy + 20, 'the LUMO, the empty orbital a nucleophile fills');
-  s += good(xs[3], oy + 186, 'largest lobe: β (4)');
-  s += tag(xs[1], oy + 186, 'next: carbon 2');
+  s += good(ox + 170, oy + 186, 'largest lobe on 4, next largest on 2');
   s += tag(ox + 170, oy + 204, 'dashed lines mark where the phase flips');
   return s;
 }
@@ -226,24 +232,24 @@ FIGURES.push({
   id: 'twelve-fourteen',
   section: 'gilman-reagents',
   anchor: '<!-- fig:twelve-fourteen:start -->',
-  viewBox: '0 0 760 330',
+  viewBox: '0 0 760 400',
   alt: 'Cyclohex-2-en-1-one at the top, numbered 1 (oxygen) to 4 (beta carbon). Left branch: CH3MgBr, then H3O+, adds at atom 2 (1,2-addition) and gives 1-methylcyclohex-2-en-1-ol, with OH and CH3 on the same ring carbon and the C=C still in the ring. Right branch: (CH3)2CuLi, then H3O+, adds at atom 4 (1,4-addition) and gives 3-methylcyclohexan-1-one, with the C=O intact and the CH3 on the former beta carbon. The new carbon-carbon bond is colored in each product.',
   build() {
     let s = '';
-    s += panel(270, 6, 220, 150, { kind: 'hi' }) + enoneTop(380, 96);
-    s += tag(380, 26, 'cyclohex-2-en-1-one');
+    s += panel(270, 6, 220, 180, { kind: 'hi' }) + enoneTop(390, 120);
+    s += tag(380, 24, 'cyclohex-2-en-1-one');
     // left branch
-    s += arrow(P(262, 110), P(170, 172), { size: 8 });
-    s += tag(196, 118, 'CH₃MgBr', { anchor: 'end' }) + mut(196, 134, 'then H₃O⁺', { anchor: 'end' });
-    s += good(250, 162, '1,2: adds at atom 2', { anchor: 'end' });
-    s += panel(20, 180, 260, 144) + productAlcohol(150, 262);
-    s += tag(150, 312, '1-methylcyclohex-2-en-1-ol');
+    s += arrow(P(262, 120), P(186, 206), { size: 8 });
+    s += tag(232, 112, 'CH₃MgBr', { anchor: 'end' }) + mut(232, 128, 'then H₃O⁺', { anchor: 'end' });
+    s += panel(20, 214, 290, 180) + good(165, 236, '1,2: adds at atom 2');
+    s += productAlcohol(165, 320);
+    s += tag(165, 382, '1-methylcyclohex-2-en-1-ol');
     // right branch
-    s += arrow(P(498, 110), P(590, 172), { size: 8 });
-    s += tag(564, 118, '(CH₃)₂CuLi', { anchor: 'start' }) + mut(564, 134, 'then H₃O⁺', { anchor: 'start' });
-    s += good(510, 162, '1,4: adds at atom 4', { anchor: 'start' });
-    s += panel(480, 180, 260, 144) + productKetone(610, 262);
-    s += tag(610, 312, '3-methylcyclohexan-1-one');
+    s += arrow(P(498, 120), P(574, 206), { size: 8 });
+    s += tag(528, 112, '(CH₃)₂CuLi', { anchor: 'start' }) + mut(528, 128, 'then H₃O⁺', { anchor: 'start' });
+    s += panel(450, 214, 290, 180) + good(595, 236, '1,4: adds at atom 4');
+    s += productKetone(605, 310);
+    s += tag(595, 382, '3-methylcyclohexan-1-one');
     return s;
   },
   caption: 'The same enone and the same methyl group, with only the metal changed. The colored bond is the new C–C bond in each product.',
@@ -252,76 +258,71 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-twelve-fourteen',
   lessons: ['gilman-reagents'],
-  viewBox: '0 0 340 470',
+  viewBox: '0 0 340 560',
   alt: 'Cyclohex-2-en-1-one at the top, numbered 1 (oxygen) to 4 (beta carbon). Below, two rows. CH3MgBr then H3O+ adds at atom 2 and gives 1-methylcyclohex-2-en-1-ol. (CH3)2CuLi then H3O+ adds at atom 4 and gives 3-methylcyclohexan-1-one. The new carbon-carbon bond is colored.',
   build() {
     let s = '';
-    s += panel(70, 4, 200, 146, { kind: 'hi' }) + enoneTop(174, 94);
+    s += panel(60, 4, 220, 180, { kind: 'hi' }) + enoneTop(180, 118);
     s += tag(170, 22, 'cyclohex-2-en-1-one');
     // row 1: Grignard
-    s += panel(4, 160, 332, 150);
-    s += tag(16, 190, 'CH₃MgBr', { anchor: 'start' }) + mut(16, 206, 'then H₃O⁺', { anchor: 'start' });
-    s += right(226, 16, 120);
-    s += good(16, 250, '1,2: adds at atom 2', { anchor: 'start' });
-    s += productAlcohol(236, 238);
-    s += tag(236, 298, '1-methylcyclohex-2-en-1-ol');
+    s += panel(4, 194, 332, 176);
+    s += tag(14, 222, 'CH₃MgBr', { anchor: 'start' }) + mut(14, 238, 'then H₃O⁺', { anchor: 'start' });
+    s += right(262, 14, 112);
+    s += good(14, 290, '1,2: adds', { anchor: 'start' }) + good(14, 306, 'at atom 2', { anchor: 'start' });
+    s += productAlcohol(236, 296);
+    s += tag(236, 358, '1-methylcyclohex-2-en-1-ol');
     // row 2: cuprate
-    s += panel(4, 316, 332, 150);
-    s += tag(16, 346, '(CH₃)₂CuLi', { anchor: 'start' }) + mut(16, 362, 'then H₃O⁺', { anchor: 'start' });
-    s += right(382, 16, 120);
-    s += good(16, 406, '1,4: adds at atom 4', { anchor: 'start' });
-    s += productKetone(236, 390);
-    s += tag(236, 452, '3-methylcyclohexan-1-one');
+    s += panel(4, 380, 332, 176);
+    s += tag(14, 408, '(CH₃)₂CuLi', { anchor: 'start' }) + mut(14, 424, 'then H₃O⁺', { anchor: 'start' });
+    s += right(448, 14, 112);
+    s += good(14, 476, '1,4: adds', { anchor: 'start' }) + good(14, 492, 'at atom 4', { anchor: 'start' });
+    s += productKetone(246, 470);
+    s += tag(236, 544, '3-methylcyclohexan-1-one');
     return s;
   },
   caption: 'Same enone, same methyl. The colored bond is the new one.',
 });
 
 /* ========================== the 1,4-addition, one frame per stage ===== */
-const PW = 230, PH = 232;
+const PW = 230, PH = 256;
 /* 1 - the cuprate's C-Cu bond pair goes to the beta carbon. */
 function stageAdd(ox, oy) {
   let s = panel(ox, oy, PW, PH, { kind: 'hi' }) + tag(ox + PW / 2, oy + 20, '1 · a methyl moves to β');
-  const c = P(ox + 122, oy + 96);
+  const c = P(ox + 132, oy + 118);
   const r = sixRing(c, { form: 'enone' });
-  s += r.s;
+  s += r.s + piArrows(r.v, r.O);
   const v = r.v;
-  s += tag(v[5].x - 14, v[5].y - 6, 'α') + tag(v[4].x - 16, v[4].y + 4, 'β');
-  const Me = A(ox + 50, oy + 176, 'H₃C'), Cu = A(ox + 114, oy + 176, 'Cu⁻', 'plain', 16), Me2 = A(ox + 178, oy + 176, 'CH₃');
+  s += tag(v[5].x - 14, v[5].y + 4, 'α') + tag(v[4].x - 14, v[4].y + 4, 'β');
+  const Me = A(ox + 48, oy + 200, 'H₃C'), Cu = A(ox + 112, oy + 200, 'Cu⁻', 'plain', 16), Me2 = A(ox + 176, oy + 200, 'CH₃');
   s += bd(Me, Cu) + bd(Cu, Me2) + draw(Me, Cu, Me2);
-  s += tag(ox + 212, oy + 180, 'Li⁺');
+  s += tag(ox + 210, oy + 204, 'Li⁺');
   // the C-Cu bond pair to the beta carbon
-  s += curve(P(mid(Me, Cu).x, Me.y - 5), P(v[4].x - 2, v[4].y + 6), { bow: -14, size: 7 });
-  // the C=C pair moves to the alpha-C2 bond
-  s += curve(mid(v[4], v[5]), mid(v[5], v[0]), { bow: 12, size: 7 });
-  // the C=O pair onto oxygen
-  s += curve(P(v[0].x + 3, v[0].y - 16), P(r.O.x + 12, r.O.y + 9), { bow: -9, size: 7 });
-  s += tag(ox + PW / 2, oy + 218, 'three pairs move at once');
+  s += curve(P(mid(Me, Cu).x, Me.y - 5), P(v[4].x - 3, v[4].y + 7), { bow: -16, size: 7 });
+  s += tag(ox + PW / 2, oy + 242, 'three pairs move at once');
   return s;
 }
 /* 2 - the enolate, with the spent CH3Cu. */
 function stageEnolate(ox, oy) {
   let s = panel(ox, oy, PW, PH, { kind: 'warn' }) + tag(ox + PW / 2, oy + 20, '2 · the flask holds an enolate');
-  const c = P(ox + 130, oy + 96);
+  const c = P(ox + 138, oy + 118);
   const r = sixRing(c, { form: 'enolate' });
   s += r.s;
-  s += tag(r.v[5].x - 14, r.v[5].y - 6, 'α');
-  s += warn(r.O.x + 34, r.O.y + 4, 'Li⁺', { anchor: 'start' });
-  s += tag(ox + PW / 2, oy + 180, '+ CH₃Cu (left over)');
-  s += tag(ox + PW / 2, oy + 218, 'C=C now between α and C2');
+  s += tag(r.v[5].x - 14, r.v[5].y + 4, 'α');
+  s += warn(r.O.x + 22, r.O.y + 4, 'Li⁺', { anchor: 'start' });
+  s += tag(ox + PW / 2, oy + 204, '+ CH₃Cu, left over');
+  s += tag(ox + PW / 2, oy + 242, 'C=C now between α and C2');
   return s;
 }
 /* 3 - workup puts a proton on the alpha carbon. */
 function stageKetone(ox, oy) {
   let s = panel(ox, oy, PW, PH, { kind: 'good' }) + tag(ox + PW / 2, oy + 20, '3 · workup gives the ketone');
-  const c = P(ox + 130, oy + 96);
+  const c = P(ox + 138, oy + 118);
   const r = sixRing(c, { form: 'ketone' });
   s += r.s;
-  const H = A(r.v[5].x - 24, r.v[5].y - 14, 'H', 'warn', 11);
+  const H = A(r.v[5].x - 26, r.v[5].y - 12, 'H', 'warn', 11);
   s += bd(r.v[5], H) + draw(H);
-  s += tag(H.x - 4, H.y - 18, 'new H on α');
-  s += tag(ox + PW / 2, oy + 180, '3-methylcyclohexan-1-one');
-  s += tag(ox + PW / 2, oy + 218, 'the C=O is back');
+  s += tag(ox + PW / 2, oy + 204, '3-methylcyclohexan-1-one');
+  s += tag(ox + PW / 2, oy + 242, 'C=O back, new H on α');
   return s;
 }
 
@@ -329,13 +330,13 @@ FIGURES.push({
   id: 'conjugate-addition-enolate',
   section: 'gilman-reagents',
   anchor: '<!-- fig:conjugate-addition-enolate:start -->',
-  viewBox: '0 0 760 244',
+  viewBox: '0 0 760 268',
   alt: 'Three frames. 1: cyclohex-2-en-1-one above the dimethylcuprate ion, H3C–Cu(minus)–CH3 with Li+. One curved arrow takes the electrons of a C–Cu bond to the beta carbon, a second moves the C=C electrons to the bond between the alpha carbon and the carbonyl carbon, and a third moves the C=O electrons onto oxygen. 2: the enolate, with O minus (Li+ beside it), a C=C between the alpha carbon and the former carbonyl carbon, and the new CH3 on the beta carbon; CH3Cu is left over. 3: after H3O+ workup, 3-methylcyclohexan-1-one, with the C=O back and a new H on the alpha carbon.',
   build() {
     let s = stageAdd(6, 6) + stageEnolate(265, 6) + stageKetone(524, 6);
-    s += right(122, 240, 259);
-    s += right(122, 499, 518);
-    s += tag(509, 110, 'H₃O⁺');
+    s += right(134, 240, 259);
+    s += right(134, 499, 518);
+    s += tag(509, 122, 'H₃O⁺');
     return s;
   },
   caption: 'Frame 1: follow each arrow from a bond to where its electrons end up. Frame 2 is what sits in the flask before workup.',
@@ -344,41 +345,38 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-conjugate-addition',
   lessons: ['gilman-reagents'],
-  viewBox: '0 0 340 752',
+  viewBox: '0 0 340 824',
   alt: 'Three stacked frames. 1: the dimethylcuprate ion gives a methyl to the beta carbon of cyclohex-2-en-1-one; arrows move the C=C electrons to the alpha–C2 bond and the C=O electrons onto oxygen. 2: the enolate, O minus with a C=C between the alpha carbon and the former carbonyl carbon, CH3 on beta, and CH3Cu left over. 3: after H3O+, 3-methylcyclohexan-1-one, with a new H on the alpha carbon.',
   build() {
-    let s = stageAdd(55, 4) + down(170, 240, 258) + stageEnolate(55, 262) + down(170, 498, 516) + stageKetone(55, 520);
-    s += tag(180, 511, 'H₃O⁺', { anchor: 'start' });
+    let s = stageAdd(55, 4) + down(170, 264, 282) + stageEnolate(55, 286) + down(170, 546, 564) + stageKetone(55, 568);
+    s += tag(180, 559, 'H₃O⁺', { anchor: 'start' });
     return s;
   },
   caption: 'Follow each arrow in frame 1. Frame 2 is what the flask holds before workup.',
 });
 
 /* ============================ acyl chloride: one addition, then stop === */
-/* Butanoyl chloride, drawn skeletal: C4-C3-C2 chain with C1 carrying =O and Cl. */
+/* Butanoyl chloride, drawn skeletal: a three-carbon chain on the C=O carbon,
+   which carries =O and Cl. The product's new C-C bonds are colored. */
 function acylRow(ox, oy, which) {
   let s = '';
   const o = (x, y) => P(ox + x, oy + y);
-  // substrate
-  const p = [o(14, 70), o(40, 55), o(66, 70), o(92, 55)];
+  const p = [o(8, 76), o(30, 63), o(52, 76), o(74, 63)];
   for (let i = 0; i < 3; i++) s += bond(p[i], p[i + 1], { rFrom: 0, rTo: 0 });
-  const O = A(p[3].x, p[3].y - 30, 'O', 'plain', 11), Cl = A(p[3].x + 28, p[3].y + 16, 'Cl', 'plain', 12);
+  const O = A(p[3].x, p[3].y - 30, 'O', 'plain', 11), Cl = A(p[3].x + 26, p[3].y + 15, 'Cl', 'plain', 12);
   s += bd(p[3], O, { order: 2 }) + bd(p[3], Cl) + draw(O, Cl);
-  // reagent + arrow
-  s += right(62, 132, 196);
-  s += tag(164, 48, which === 'cu' ? '(CH₃)₂CuLi' : 'CH₃MgBr');
-  s += mut(164, 82, which === 'cu' ? '−78 °C' : 'excess, then H₃O⁺');
-  // product
-  const q = [o(206, 70), o(232, 55), o(258, 70), o(284, 55)];
+  s += right(oy + 66, ox + 124, ox + 186);
+  s += tag(ox + 155, oy + 56, which === 'cu' ? '(CH₃)₂CuLi' : 'CH₃MgBr');
+  s += mut(ox + 155, oy + 84, which === 'cu' ? '−78 °C' : 'excess; H₃O⁺');
+  const q = [o(198, 76), o(220, 63), o(242, 76), o(264, 63)];
   for (let i = 0; i < 3; i++) s += bond(q[i], q[i + 1], { rFrom: 0, rTo: 0 });
   if (which === 'cu') {
     const O2 = A(q[3].x, q[3].y - 30, 'O', 'plain', 11);
-    const Me = P(q[3].x + 26, q[3].y + 15);
-    s += bd(q[3], O2, { order: 2 }) + draw(O2) + bond(q[3], Me, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bd(q[3], O2, { order: 2 }) + draw(O2) + bond(q[3], o(286, 76), { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
   } else {
     const OH = A(q[3].x, q[3].y - 30, 'OH', 'plain', 13);
-    const Me1 = P(q[3].x + 26, q[3].y + 15), Me2 = P(q[3].x + 30, q[3].y - 8);
-    s += bd(q[3], OH) + draw(OH) + bond(q[3], Me1, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' }) + bond(q[3], Me2, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += bd(q[3], OH) + draw(OH);
+    s += bond(q[3], o(286, 76), { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' }) + bond(q[3], o(290, 50), { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
   }
   return s;
 }
@@ -392,9 +390,9 @@ FIGURES.push({
   alt: 'Two rows, both starting from butanoyl chloride, a four-carbon chain whose end carbon carries a C=O and a Cl. Top: with (CH3)2CuLi at minus 78 degrees the Cl is replaced by one methyl, giving pentan-2-one, a ketone; one new bond is colored. Bottom: with excess CH3MgBr, then H3O+, two methyls add to that carbon and an OH replaces the oxygen, giving 2-methylpentan-2-ol; two new bonds are colored.',
   build() {
     let s = panel(2, 2, 336, 138, { kind: 'good' }) + tag(170, 22, 'cuprate: one methyl, and it stops');
-    s += acylRow(12, 20, 'cu') + good(262, 124, 'pentan-2-one');
+    s += acylRow(16, 20, 'cu') + mut(66, 124, 'butanoyl chloride') + good(256, 124, 'pentan-2-one');
     s += panel(2, 150, 336, 138) + tag(170, 170, 'Grignard: two methyls');
-    s += acylRow(12, 168, 'mg') + tag(262, 272, '2-methylpentan-2-ol');
+    s += acylRow(16, 168, 'mg') + mut(66, 272, 'butanoyl chloride') + tag(256, 272, '2-methylpentan-2-ol');
     return s;
   },
   caption: 'Butanoyl chloride with each reagent. Count the colored bonds in each product.',
@@ -406,25 +404,24 @@ FIGURES.push({
   section: 'gilman-reagents',
   anchor: '<!-- fig:cuprate-epoxide:start -->',
   viewBox: '0 0 340 176',
-  alt: 'Left: 2-methyloxirane, a three-membered ring of two carbons and an oxygen, with a CH3 on one ring carbon. Below it, the dimethylcuprate ion. One arrow takes the electrons of a C–Cu bond to the unsubstituted CH2 carbon of the ring; a second moves the electrons of that carbon’s C–O bond onto oxygen. Right: after H3O+, butan-2-ol, with the new C–C bond colored and the OH on the carbon that carried the methyl.',
+  alt: 'Left: 2-methyloxirane, a three-membered ring of two carbons and an oxygen, with a CH3 on one ring carbon. Below it, the dimethylcuprate ion. One arrow takes the electrons of a C–Cu bond to the unsubstituted CH2 carbon of the ring, the less hindered end; a second moves the electrons of that carbon’s C–O bond onto oxygen. Right: after H3O+, butan-2-ol, with the new C–C bond colored and the OH on the carbon that carried the methyl.',
   build() {
     let s = panel(2, 2, 336, 172);
-    const Ox = A(92, 36, 'O', 'plain', 11);
-    const Cs = P(62, 78), Cu2 = P(122, 78), Me = P(36, 64);   // Cs: substituted carbon; Cu2: the CH2
+    const Ox = A(78, 32, 'O', 'plain', 11);
+    const Cs = P(56, 72), Cu2 = P(100, 72), Me = P(30, 58);   // Cs: substituted carbon; Cu2: the CH2
     s += bond(Cs, Cu2, { rFrom: 0, rTo: 0 }) + bd(Cs, Ox) + bd(Cu2, Ox) + bond(Cs, Me, { rFrom: 0, rTo: 0 }) + draw(Ox);
-    s += tag(136, 94, 'CH₂', { anchor: 'start' });
-    const M1 = A(40, 146, 'H₃C'), Cu = A(104, 146, 'Cu⁻', 'plain', 16), M2 = A(168, 146, 'CH₃');
+    s += tag(112, 70, 'less hindered', { anchor: 'start' }) + tag(112, 84, 'CH₂ end', { anchor: 'start' });
+    const M1 = A(36, 142, 'H₃C'), Cu = A(100, 142, 'Cu⁻', 'plain', 16), M2 = A(164, 142, 'CH₃');
     s += bd(M1, Cu) + bd(Cu, M2) + draw(M1, Cu, M2);
-    s += curve(P(mid(M1, Cu).x, M1.y - 5), P(Cu2.x + 2, Cu2.y + 7), { bow: -24, size: 7 });
-    s += curve(mid(Cu2, Ox), P(Ox.x + 13, Ox.y + 2), { bow: 9, size: 7 });
-    s += tag(96, 118, 'less hindered carbon');
-    s += right(80, 196, 232) + tag(214, 68, 'H₃O⁺');
-    // butan-2-ol: C1-C2(OH)-C3-C4, drawn so the new bond C3-C4 is colored
-    const b1 = P(246, 90), b2 = P(270, 76), b3 = P(294, 90), b4 = P(318, 76);
-    const OH = A(270, 46, 'OH', 'plain', 13);
+    s += curve(P(mid(M1, Cu).x, M1.y - 5), P(Cu2.x + 1, Cu2.y + 7), { bow: -22, size: 7 });
+    s += curve(mid(Cu2, Ox), P(Ox.x + 13, Ox.y - 2), { bow: 12, size: 7 });
+    s += right(84, 206, 240) + tag(223, 72, 'H₃O⁺');
+    // butan-2-ol: C1-C2(OH)-C3-C4; the new bond C3-C4 is colored
+    const b1 = P(252, 96), b2 = P(274, 82), b3 = P(296, 96), b4 = P(318, 82);
+    const OH = A(274, 52, 'OH', 'plain', 13);
     s += bond(b1, b2, { rFrom: 0, rTo: 0 }) + bond(b2, b3, { rFrom: 0, rTo: 0 }) + bond(b3, b4, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
     s += bd(b2, OH) + draw(OH);
-    s += tag(282, 120, 'butan-2-ol');
+    s += tag(285, 124, 'butan-2-ol');
     return s;
   },
   caption: '2-Methyloxirane with lithium dimethylcuprate. The colored bond is the new C–C bond.',
@@ -432,10 +429,9 @@ FIGURES.push({
 
 /* ============================ coupling at an sp2 carbon ================ */
 function sn2Blocked(ox, oy) {
-  let s = panel(ox, oy, 336, 150, { kind: 'warn' }) + tag(ox + 168, oy + 20, 'S', { anchor: 'end' });
-  s = panel(ox, oy, 336, 150, { kind: 'warn' }) + tag(ox + 168, oy + 20, 'SN2 needs a path from behind the C–Br bond');
+  let s = panel(ox, oy, 336, 150, { kind: 'warn' }) + rich(ox + 168, oy + 20, 'SN2 needs a path from behind the C–Br bond');
   // bromobenzene with the ring on the left and Br on the right
-  const c = P(ox + 110, oy + 84), R = 30;
+  const c = P(ox + 110, oy + 80), R = 30;
   const v = [0, 1, 2, 3, 4, 5].map((i) => polar(c, i * 60, R)); // v0 at the right
   for (let i = 0; i < 6; i++) {
     const a = v[i], b = v[(i + 1) % 6];
@@ -446,27 +442,27 @@ function sn2Blocked(ox, oy) {
   // the backside path: from far left, straight through the ring centre, toward v0
   s += `<line class="fg-dash-hi" x1="${ox + 22}" y1="${c.y}" x2="${v[0].x - 8}" y2="${c.y}"></line>`;
   s += `<path class="fg-head" d="M${v[0].x - 4} ${c.y} L${v[0].x - 12} ${c.y - 4} L${v[0].x - 12} ${c.y + 4} Z"></path>`;
-  s += warn(ox + 110, oy + 136, 'the path runs through the ring');
-  s += tag(ox + 268, oy + 110, 'no backside', { anchor: 'middle' });
-  s += tag(ox + 268, oy + 126, 'to reach', { anchor: 'middle' });
+  s += warn(ox + 110, oy + 134, 'that path runs through the ring');
+  s += tag(ox + 272, oy + 74, 'no open');
+  s += tag(ox + 272, oy + 90, 'backside');
   return s;
 }
 function vinylCouple(ox, oy) {
-  let s = panel(ox, oy, 336, 170, { kind: 'good' }) + tag(ox + 168, oy + 20, 'a cuprate couples, and E stays E');
-  // (E)-1-bromoprop-1-ene: CH3-CH=CH-Br, trans
+  let s = panel(ox, oy, 336, 170, { kind: 'good' }) + rich(ox + 168, oy + 20, 'a cuprate couples, and E stays E');
+  // (E)-1-bromoprop-1-ene: CH3-CH=CH-Br, trans (zigzag)
   const a1 = P(ox + 20, oy + 70), a2 = P(ox + 44, oy + 84), a3 = P(ox + 68, oy + 70);
   const Br = A(ox + 92, oy + 84, 'Br', 'plain', 13);
-  s += bond(a1, a2, { rFrom: 0, rTo: 0 }) + bond(a2, a3, { rFrom: 0, rTo: 0, order: 2, gap: 2.4 }) + bd(a3, Br) + draw(Br);
-  s += tag(ox + 56, oy + 118, '(E)-1-bromo-');
+  s += bond(a1, a2, { rFrom: 0, rTo: 0 }) + ringDouble(a2, a3, P(ox + 44, oy + 60), { inset: 4, gap: 4.4 }) + bd(a3, Br) + draw(Br);
+  s += rich(ox + 56, oy + 118, '(E)-1-bromo-');
   s += tag(ox + 56, oy + 132, 'prop-1-ene');
   s += right(oy + 78, ox + 116, ox + 176);
   s += tag(ox + 146, oy + 66, '(C₄H₉)₂CuLi');
-  // (E)-hept-2-ene: CH3-CH=CH-CH2CH2CH2CH3, trans
+  // (E)-hept-2-ene: CH3-CH=CH-CH2CH2CH2CH3, trans (zigzag)
   const b = [P(ox + 188, oy + 70), P(ox + 210, oy + 84), P(ox + 232, oy + 70), P(ox + 254, oy + 84), P(ox + 276, oy + 70), P(ox + 298, oy + 84), P(ox + 320, oy + 70)];
-  s += bond(b[0], b[1], { rFrom: 0, rTo: 0 }) + bond(b[1], b[2], { rFrom: 0, rTo: 0, order: 2, gap: 2.4 });
+  s += bond(b[0], b[1], { rFrom: 0, rTo: 0 }) + ringDouble(b[1], b[2], P(ox + 210, oy + 60), { inset: 4, gap: 4.4 });
   s += bond(b[2], b[3], { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
   for (let i = 3; i < 6; i++) s += bond(b[i], b[i + 1], { rFrom: 0, rTo: 0 });
-  s += tag(ox + 254, oy + 118, '(E)-hept-2-ene');
+  s += rich(ox + 254, oy + 118, '(E)-hept-2-ene');
   s += good(ox + 168, oy + 156, 'the new bond sits where Br was');
   return s;
 }
@@ -477,11 +473,11 @@ FIGURES.push({
   lessons: ['gilman-reagents'],
   anchor: '<!-- fig:vinyl-coupling:start -->',
   viewBox: '0 0 340 332',
-  alt: 'Top: bromobenzene. A dashed arrow shows where an SN2 nucleophile would have to come from, directly opposite the C–Br bond: that path runs through the middle of the ring, so there is no backside to reach. Bottom: (E)-1-bromoprop-1-ene with lithium dibutylcuprate gives (E)-hept-2-ene. The new C–C bond, colored, sits where the C–Br bond was, and the two chain ends stay on opposite sides of the C=C.',
+  alt: 'Top: bromobenzene. A dashed arrow shows where an SN2 nucleophile would have to come from, directly opposite the C–Br bond: that path runs through the middle of the ring, so there is no open backside. Bottom: (E)-1-bromoprop-1-ene with lithium dibutylcuprate gives (E)-hept-2-ene. The new C–C bond, colored, sits where the C–Br bond was, and the two chain ends stay on opposite sides of the C=C.',
   build() {
     return sn2Blocked(2, 2) + vinylCouple(2, 160);
   },
-  caption: 'Top: the dashed line is the backside path an S<sub>N</sub>2 would need. Bottom: compare the C=C geometry before and after.',
+  caption: 'Top: the dashed line is the path an S<sub>N</sub>2 nucleophile would need. Bottom: compare the C=C geometry before and after.',
 });
 
 export default FIGURES;

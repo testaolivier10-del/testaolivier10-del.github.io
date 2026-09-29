@@ -107,7 +107,7 @@ function pQuench(ox, oy) {
   s += bd(O, H) + bd(O, Me) + draw(O, H, Me);
   s += lp(O, -135) + lp(O, -45);
   /* C–Mg bond electrons to the H; O–H bond electrons onto the O. */
-  s += curve(P(ox + 79, oy + 106), P(ox + 193, oy + 104), { bow: 22, size: 7 });
+  s += curve(P(ox + 79, oy + 106), P(ox + 193, oy + 104), { bow: 34, size: 7 });
   s += curve(P(ox + 224, oy + 91), P(ox + 250, oy + 86), { bow: 12, size: 7 });
   s += label(ox + PW / 2, oy + 148, 'CH₄  +  CH₃O⁻ ⁺MgBr');
   return s;
@@ -179,7 +179,7 @@ FIGURES.push({
   build() {
     return pHydroxyBromide(0, 0) + pKetoBromide(PW + GAP_HAL, 0);
   },
-  caption: 'Each halide carries a second group, highlighted, that the reagent reacts with. The first molecules of reagent to form are destroyed by that group in a neighboring molecule.',
+  caption: 'In each halide, the highlighted group is the one the new reagent would react with.',
 });
 
 /* ======================================================================
@@ -189,6 +189,7 @@ FIGURES.push({
 /* The four-carbon skeleton HO–CH2–CH2–C(=O)–CH3. `oxy` is the label of
    the chain-end oxygen; `c2` chooses what carbon 2 carries. */
 function hkSkeleton(ox, yb, { oxy = 'HO', oxyKind = 'warn', c2 = 'ketone' } = {}) {
+  if (oxyKind === 'plain') oxyKind = undefined;
   let s = '';
   const O1 = A(ox + 64, yb, oxy, oxyKind), c4 = V(ox + 104, yb - 22), c3 = V(ox + 142, yb),
         c2p = V(ox + 180, yb - 22), c1 = V(ox + 218, yb);
@@ -205,14 +206,12 @@ function hkSkeleton(ox, yb, { oxy = 'HO', oxyKind = 'warn', c2 = 'ketone' } = {}
   s += draw(O1);
   return s;
 }
-const H_HK1 = 176, H_HK2 = 176, H_HK3 = 176, GAP_HK = 34;
+const H_HK1 = 168, H_HK2 = 206, H_HK3 = 176, GAP_HK = 34;
 function pHK1(ox, oy) {
-  let s = frameP(ox, oy, H_HK1, '4-hydroxybutan-2-one: two reactive sites', [
-    'the O–H (pKa about 16) and the ketone C=O',
-  ]);
+  let s = frameP(ox, oy, H_HK1, '4-hydroxybutan-2-one: two reactive sites');
   s += hkSkeleton(ox, oy + 116);
-  s += tag(ox + 64, oy + 142, 'acidic O–H');
-  s += tag(ox + 206, oy + 52, 'ketone', { anchor: 'start' });
+  s += tag(ox + 72, oy + 146, 'O–H, pKa about 16');
+  s += tag(ox + 206, oy + 56, 'ketone C=O', { anchor: 'start' });
   return s;
 }
 function pHK2(ox, oy) {
@@ -220,15 +219,15 @@ function pHK2(ox, oy) {
     'CH₄ leaves as a gas; the ketone is untouched',
     ['workup puts the H back: starting material', 'fg-tag-warn'],
   ], 'warn');
-  s += hkSkeleton(ox, oy + 100, { oxy: 'O⁻', oxyKind: 'warn' });
-  s += tag(ox + 64, oy + 128, '⁺MgBr');
+  s += hkSkeleton(ox, oy + 124, { oxy: 'O⁻', oxyKind: 'warn' });
+  s += tag(ox + 64, oy + 152, '⁺MgBr');
   return s;
 }
 function pHK3(ox, oy) {
   let s = frameP(ox, oy, H_HK3, 'after 2.0 equiv, then workup', [
     ['3-methylbutane-1,3-diol', 'fg-tag-good'],
   ], 'good');
-  s += hkSkeleton(ox, oy + 120, { oxy: 'HO', oxyKind: undefined, c2: 'diol' });
+  s += hkSkeleton(ox, oy + 120, { oxy: 'HO', oxyKind: 'plain', c2: 'diol' });
   return s;
 }
 FIGURES.push({
@@ -244,7 +243,7 @@ FIGURES.push({
     const y2 = H_HK1 + GAP_HK;
     s += pHK2(0, y2);
     s += down(PW / 2, y2 + H_HK2 + 4, y2 + H_HK2 + GAP_HK - 4);
-    s += tag(PW / 2 + 12, y2 + H_HK2 + GAP_HK / 2 + 4, 'a second equiv, then H₃O⁺', { anchor: 'start' });
+    s += tag(PW / 2 + 12, y2 + H_HK2 + GAP_HK / 2 + 4, '1.0 more equiv', { anchor: 'start' });
     s += pHK3(0, y2 + H_HK2 + GAP_HK);
     return s;
   },
@@ -259,31 +258,31 @@ FIGURES.push({
   alt: '4-hydroxybutan-2-one in skeletal form: an HO on the left end of a four-carbon chain, and a C=O on carbon 2.',
   build() {
     let s = frameP(0, 0, H_LHK, '4-hydroxybutan-2-one');
-    s += hkSkeleton(0, 110, { oxyKind: undefined });
+    s += hkSkeleton(0, 110, { oxyKind: 'plain' });
     return s;
   },
-  caption: '4-hydroxybutan-2-one.',
+  caption: 'Two groups to find: an OH on carbon 4 and a C=O on carbon 2.',
 });
 
 /* ======================================================================
    5. A Grignard reagent and an alkyl halide: the SN2 you might hope for,
       and the E2 that competes with it.
    ====================================================================== */
-const H_MX1 = 170, H_MX2 = 230, GAP_MX = 16;
+const H_MX1 = 150, H_MX2 = 230, GAP_MX = 16;
 function pHoped(ox, oy) {
   let s = frameP(ox, oy, H_MX1, 'the hoped-for SN2 at C1 of 1-bromobutane', [
     ['pentane, but it forms only slowly', 'fg-tag-mut'],
   ]);
   const acc = { v: '' };
-  reagent(ox - 8, oy + 118, acc);
+  reagent(ox - 8, oy + 100, acc);
   s += acc.v;
-  const yb = oy + 118;
+  const yb = oy + 100;
   const c4 = V(ox + 166, yb), c3 = V(ox + 200, yb - 22), c2 = V(ox + 234, yb), c1 = V(ox + 268, yb - 22),
         Br = A(ox + 306, yb, 'Br');
   s += bd(c4, c3) + bd(c3, c2) + bd(c2, c1) + bd(c1, Br) + draw(Br);
-  s += text(ox + 268, yb - 32, 'C1', { cls: 'fg-tag' });
-  s += curve(P(ox + 71, oy + 110), P(ox + 262, yb - 30), { bow: -46, size: 7, muted: true });
-  s += curve(P(ox + 284, yb - 8), P(ox + 300, yb + 16), { bow: -12, size: 7, muted: true });
+  s += text(ox + 282, yb - 32, 'C1', { cls: 'fg-tag', anchor: 'start' });
+  s += curve(P(ox + 71, yb - 8), P(ox + 266, yb - 28), { bow: -40, size: 7, muted: true });
+  s += curve(P(ox + 290, yb - 17), P(ox + 317, yb - 8), { bow: -10, size: 7, muted: true });
   return s;
 }
 function pE2(ox, oy) {
@@ -302,7 +301,7 @@ function pE2(ox, oy) {
   /* C–Mg electrons to the H; C2–H electrons into the new π bond; C1–Br
      electrons onto Br. */
   s += curve(P(ox + 86, yb + 82), P(ox + 199, yb + 50), { bow: -26, size: 7 });
-  s += curve(P(ox + 202, yb + 22), P(ox + 224, yb - 6), { bow: -12, size: 7 });
+  s += curve(P(ox + 205, yb + 28), P(ox + 222, yb - 6), { bow: -18, size: 7 });
   s += curve(P(ox + 262, yb - 18), P(ox + 290, yb - 16), { bow: -12, size: 7 });
   return s;
 }
@@ -316,7 +315,7 @@ FIGURES.push({
   build() {
     return pHoped(0, 0) + pE2(0, H_MX1 + GAP_MX);
   },
-  caption: 'Top, the substitution you might plan (gray arrows, because it is slow). Bottom, one of the side reactions that compete with it: the reagent pulls off a hydrogen from C2 instead.',
+  caption: 'Top: the slow substitution you might plan, with its arrows in gray. Bottom: the E2 that competes with it.',
 });
 
 export default FIGURES;

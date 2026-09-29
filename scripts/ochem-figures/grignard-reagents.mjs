@@ -84,7 +84,7 @@ FIGURES.push({
   id: 'ether-mg',
   section: 'grignard-reagents',
   lessons: ['grignard-reagents'],
-  anchor: '<h3>Why the solvent has to be ether</h3>',
+  anchor: 'stable enough to use.</p>',
   alt: 'Ethylmagnesium bromide with two diethyl ether molecules. The magnesium sits in the middle, bonded to the ethyl group on the left and to bromine on the right. One ether oxygen sits above it and one below; a dashed line joins each oxygen to the magnesium, standing for one shared lone pair. Each oxygen keeps its second lone pair, pointing away from the metal.',
   viewBox: '0 0 340 300',
   build() {
@@ -107,7 +107,7 @@ FIGURES.push({
     s += tg(170, 290, 'diethyl ether');
     return s;
   },
-  caption: 'Each ether oxygen shares <b>one</b> of its two lone pairs with the magnesium (dashed lines) and keeps the other. Two ether molecules give the magnesium two more electron pairs. Et is short for ethyl, CH₂CH₃.',
+  caption: 'The dashed lines are the shared lone pairs. Each oxygen keeps its other lone pair. Et is short for ethyl, CH₂CH₃.',
 });
 
 /* =========================================== which class of alcohol forms */
@@ -132,7 +132,7 @@ function carbinol(c, g1, g2) {
 FIGURES.push({
   id: 'alcohol-classes',
   section: 'grignard-reagents',
-  anchor: '</tbody>\n</table>\n</div>',
+  anchor: 'and that number is the class of the alcohol.</p>',
   alt: 'Three rows. Formaldehyde, whose carbonyl carbon carries two hydrogens, gives ethanol, a primary alcohol. Acetaldehyde, with one hydrogen and one methyl, gives propan-2-ol, a secondary alcohol. Acetone, with two methyls, gives 2-methylpropan-2-ol, a tertiary alcohol. In each product the carbinol carbon and the new methyl from CH3MgBr are highlighted.',
   viewBox: '0 0 700 420',
   build() {
@@ -156,7 +156,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Each product keeps the two groups its carbonyl carbon already had and gains the highlighted CH₃. The alcohol class is the number of carbon groups on the carbinol carbon.',
+  caption: 'Each product keeps the two groups its carbonyl carbon already had and gains the highlighted CH₃.',
 });
 
 /* ======================================================= ester, twice */
@@ -166,76 +166,74 @@ FIGURES.push({
   lessons: ['grignard-reagents'],
   anchor: 'the ketone is consumed faster than it forms.</p>',
   alt: 'Four stacked panels. 1: CH3MgBr adds to ethyl propanoate; one curved arrow runs from the C–Mg bond to the carbonyl carbon and a second from the C=O double bond onto oxygen. 2: the tetrahedral intermediate, with O minus, the new CH3, an ethyl and an ethoxy group on one carbon; an arrow from an oxygen lone pair re-forms the C=O and a second arrow sends the C–OEt bond electrons onto the ethoxy oxygen, which leaves as ethoxide. 3: the ketone butan-2-one meets a second CH3MgBr, with the same two arrows. 4: after H3O+ workup, 2-methylbutan-2-ol, with both CH3 groups from the reagent highlighted.',
-  viewBox: '0 0 340 640',
+  viewBox: '0 0 340 696',
   build() {
     let s = '';
     const X = 16, W = 308;
+    /* A carbonyl carbon under attack from H3C–MgBr, with its two arrows. */
+    const attack = (T, g1, g2, o = {}) => {
+      let t = '';
+      const c = P(222, T + 112), O = P(222, T + 68), a = at(c, 215, 46), b = at(c, 325, 46);
+      t += dbl(c, O, 16, 15) + B(c, a, 16, o.r1 ?? 15) + (o.hi2 ? hiB(c, b, 16, 17) : B(c, b, 16, 17));
+      t += A(O, 'O') + A(a, g1, { r: o.r1 ?? 15 }) + A(b, g2, { r: 17, kind: o.hi2 ? 'hi' : undefined });
+      t += A(c, 'C', { kind: o.kc ?? 'hi' });
+      t += lp(O, 150) + lp(O, 30);
+      const g = reagent(P(118, T + 76), 180, { len: 58 });
+      t += g.s;
+      t += curve(P(g.bondMid.x, g.bondMid.y + 9), P(c.x - 18, c.y - 3), { bow: 24 });
+      t += curve(P(c.x + 8, c.y - 24), P(O.x + 17, O.y + 7), { bow: 9, size: 7 });
+      return t;
+    };
 
     /* 1: the first addition. */
-    s += panel(X, 8, W, 146);
-    {
-      const c = P(214, 96), O = P(214, 52), et = at(c, 215, 46), oe = at(c, 325, 46);
-      s += dbl(c, O, 16, 15) + B(c, et, 16, 15) + B(c, oe, 16, 17);
-      s += A(O, 'O') + A(et, 'Et') + A(oe, 'OEt', { r: 17 }) + A(c, 'C', { kind: 'hi' });
-      s += lp(O, 150) + lp(O, 30);
-      const g = reagent(P(108, 64), 180, { len: 58 });
-      s += g.s;
-      s += curve(P(g.bondMid.x, g.bondMid.y + 8), P(c.x - 18, c.y - 2), { bow: 26 });
-      s += curve(P(c.x + 7, c.y - 24), P(O.x + 16, O.y + 8), { bow: -12, size: 7 });
-      s += tg(X + 12, 144, '1 · the first CH₃ adds', null, 'start');
-    }
+    s += panel(X, 8, W, 160);
+    s += tg(X + 12, 28, '1 · the first CH₃ adds to the ester', null, 'start');
+    s += attack(8, 'Et', 'OEt');
 
     /* 2: collapse, and ethoxide leaves. */
-    s += panel(X, 166, W, 150);
+    s += panel(X, 178, W, 176);
+    s += tg(X + 12, 198, '2 · ethoxide leaves: now a ketone', null, 'start');
     {
-      const c = P(170, 250), O = P(170, 206), me = P(122, 250), et = P(170, 294), oe = P(222, 250);
+      const T = 178;
+      const c = P(170, T + 110), O = P(170, T + 64), me = P(122, T + 110), et = P(170, T + 154), oe = P(222, T + 110);
       s += B(c, O, 16, 16) + hiB(c, me, 16, 17) + B(c, et, 16, 15) + B(c, oe, 16, 17);
       s += A(O, 'O', { r: 16 }) + A(me, 'CH₃', { r: 17, kind: 'hi' }) + A(et, 'Et') + A(oe, 'OEt', { r: 17, kind: 'warn' });
       s += A(c, 'C', { kind: 'hi' });
-      s += lp(O, 135) + lp(O, 45) + lp(O, 180, 23);
-      s += charge(P(O.x + 20, O.y - 16), '−');
-      s += tg(O.x + 34, O.y + 4, '⁺MgBr', null, 'start');
-      s += curve(P(O.x - 26, O.y + 6), P(c.x - 7, c.y - 20), { bow: 14, size: 7 });
-      s += curve(P(mid(c, oe).x, mid(c, oe).y + 7), P(oe.x - 2, oe.y + 20), { bow: 14, size: 7 });
-      s += tg(oe.x + 24, oe.y + 36, 'EtO⁻ leaves', 'warn');
-      s += tg(X + 12, 306, '2 · the ester becomes a ketone', null, 'start');
+      s += lp(O, 90) + lp(O, 180) + lp(O, 0);
+      s += charge(at(O, 45, 28), '−');
+      s += tg(O.x + 42, O.y + 4, '⁺MgBr', null, 'start');
+      s += curve(P(O.x - 25, O.y + 7), P(c.x - 7, c.y - 22), { bow: 12, size: 7 });
+      s += curve(P(mid(c, oe).x, mid(c, oe).y + 7), P(oe.x - 4, oe.y + 20), { bow: 12, size: 7 });
+      s += tg(oe.x + 10, oe.y + 44, 'EtO⁻ leaves', 'warn');
     }
 
     /* 3: the ketone meets a second equivalent. */
-    s += panel(X, 328, W, 146);
-    {
-      const c = P(214, 416), O = P(214, 372), et = at(c, 215, 46), me = at(c, 325, 46);
-      s += dbl(c, O, 16, 15) + B(c, et, 16, 15) + hiB(c, me, 16, 17);
-      s += A(O, 'O') + A(et, 'Et') + A(me, 'CH₃', { r: 17, kind: 'hi' }) + A(c, 'C', { kind: 'warn' });
-      s += lp(O, 150) + lp(O, 30);
-      const g = reagent(P(108, 384), 180, { len: 58 });
-      s += g.s;
-      s += curve(P(g.bondMid.x, g.bondMid.y + 8), P(c.x - 18, c.y - 2), { bow: 26 });
-      s += curve(P(c.x + 7, c.y - 24), P(O.x + 16, O.y + 8), { bow: -12, size: 7 });
-      s += tg(X + 12, 464, '3 · a second CH₃ adds to the ketone', null, 'start');
-    }
+    s += panel(X, 364, W, 160);
+    s += tg(X + 12, 384, '3 · a second CH₃ adds to the ketone', null, 'start');
+    s += attack(364, 'Et', 'CH₃', { hi2: true, kc: 'warn' });
 
     /* 4: the product, after workup. */
-    s += panel(X, 486, W, 146);
+    s += panel(X, 534, W, 154);
+    s += tg(X + 12, 554, '4 · then H₃O⁺', null, 'start');
     {
-      const c = P(170, 566), oh = P(170, 522), me1 = P(122, 566), et = P(170, 610), me2 = P(218, 566);
+      const T = 534;
+      const c = P(204, T + 90), oh = P(204, T + 46), me1 = P(156, T + 90), et = P(204, T + 134), me2 = P(252, T + 90);
       s += B(c, oh, 16, 16) + hiB(c, me1, 16, 17) + B(c, et, 16, 15) + hiB(c, me2, 16, 17);
       s += A(oh, 'OH', { r: 16 }) + A(me1, 'CH₃', { r: 17, kind: 'hi' }) + A(et, 'Et') + A(me2, 'CH₃', { r: 17, kind: 'hi' });
       s += A(c, 'C');
-      s += tg(X + 12, 506, '4 · then H₃O⁺', null, 'start');
-      s += tg(244, 610, 'two CH₃ groups', null, 'start');
-      s += tg(244, 624, 'from the reagent', null, 'start');
+      s += tg(X + 12, T + 122, 'both CH₃ groups', null, 'start');
+      s += tg(X + 12, T + 136, 'came from the reagent', null, 'start');
     }
     return s;
   },
-  caption: 'Ethyl propanoate and two CH₃MgBr give 2-methylbutan-2-ol. The ketone in panel 3 forms while reagent is still in the flask, so the second CH₃ adds before the first addition is finished everywhere.',
+  caption: 'Ethyl propanoate and two CH₃MgBr give 2-methylbutan-2-ol. Panel 2 shows the C–OEt bond that breaks. Follow the two highlighted CH₃ groups into the product.',
 });
 
 /* ===================================================== the Weinreb chelate */
 FIGURES.push({
   id: 'weinreb-chelate',
   section: 'grignard-reagents',
-  anchor: 'no second addition is possible.</p>',
+  anchor: 'is <b>chelated</b>.</p>',
   alt: 'Left: the Weinreb amide of propanoic acid, an ethyl group on a C=O carbon whose other bond goes to a nitrogen carrying a methyl and a methoxy group, meeting CH3MgBr. Middle: the chelate. The old carbonyl carbon now carries ethyl, the new methyl, an oxygen bonded to magnesium, and the nitrogen. The methoxy oxygen shares a lone pair with the same magnesium (dashed line). The five ring atoms, carbon, oxygen, magnesium, oxygen and nitrogen, are numbered 1 to 5. Right: after H3O+ the ring opens and butan-2-one is released.',
   viewBox: '0 0 700 300',
   build() {
@@ -263,7 +261,7 @@ FIGURES.push({
       const [mg, oA, c, n, oM] = pts;
       s += B(mg, oA, 18, 15) + B(oA, c, 15, 16) + B(c, n, 16, 15) + B(n, oM, 15, 15);
       s += dative(oM, mg, 15, 18);
-      const br = at(mg, 90, 50), et = at(c, 200, 50), me = at(c, 250, 50);
+      const br = at(mg, 90, 50), et = at(c, 196, 50), me = at(c, 266, 50);
       const nMe = at(n, 300, 48), oMeC = at(oM, 10, 48);
       s += B(mg, br, 18, 16) + B(c, et, 16, 15) + hiB(c, me, 16, 17) + B(n, nMe, 15, 17) + B(oM, oMeC, 15, 17);
       s += A(br, 'Br') + A(et, 'Et') + A(me, 'CH₃', { r: 17, kind: 'hi' }) + A(nMe, 'CH₃', { r: 17 }) + A(oMeC, 'CH₃', { r: 17 });
@@ -271,7 +269,7 @@ FIGURES.push({
       /* Ring numbers, inside the ring. */
       const ctr = P(cx, cy);
       [c, oA, mg, oM, n].forEach((p, i) => {
-        const q = mid(p, ctr, 0.42);
+        const q = mid(p, ctr, 0.5);
         s += tg(q.x, q.y + 4, String(i + 1), 'good');
       });
       s += tg(cx, 38, 'five-membered chelate');
@@ -289,7 +287,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'The Weinreb amide of propanoic acid with CH₃MgBr. In the chelate (shaded) the magnesium is held by two oxygens of the same molecule, so nothing can leave until workup. Only then does the ketone form, and by then no reagent is left.',
+  caption: 'The Weinreb amide of propanoic acid with CH₃MgBr. The numbers trace the chelate ring (shaded), and the dashed line is the methoxy oxygen&rsquo;s lone pair on the magnesium.',
 });
 
 /* ================================================= opening an epoxide */
@@ -304,7 +302,7 @@ FIGURES.push({
   id: 'epoxide-two-carbons',
   section: 'grignard-reagents',
   lessons: ['grignard-reagents'],
-  anchor: 'there is no reagent left to do anything with.</p>\n</div>',
+  anchor: 'slowly and cold.</p>\n</div>',
   alt: 'Two stacked panels. Top: R–MgBr attacks a CH2 carbon of ethylene oxide from the side opposite the ring oxygen; one curved arrow runs from the C–Mg bond to that carbon and a second from the C–O bond onto oxygen. After H3O+ the product is R–CH2–CH2–OH, with the new C–C bond highlighted and the OH two carbons from it. Bottom: 2-methyloxirane, where the reagent attacks the CH2 end, labeled less hindered, and not the CH that carries the methyl. The product is R–CH2–CH(OH)–CH3.',
   viewBox: '0 0 340 552',
   build() {
@@ -319,7 +317,7 @@ FIGURES.push({
       const r = at(c1, 240, 62), mg = at(r, 180, 56);
       s += B(r, mg, 15, 22) + A(mg, 'MgBr', { r: 22 }) + A(r, 'R', { kind: 'hi' });
       s += curve(mid(r, mg, 0.4), P(c1.x - 12, c1.y + 12), { bow: -22, size: 7 });
-      s += curve(mid(c1, o, 0.5), P(o.x - 16, o.y + 4), { bow: 12, size: 7 });
+      s += curve(mid(c1, o, 0.5), P(o.x - 18, o.y + 2), { bow: -12, size: 7 });
       s += tg(236, 150, 'attack opposite', null, 'start');
       s += tg(236, 164, 'the C–O bond', null, 'start');
       s += arrow(P(170, 170), P(170, 196), { size: 7 });
@@ -338,7 +336,7 @@ FIGURES.push({
       const r = at(c1, 240, 62), mg = at(r, 180, 56);
       s += B(r, mg, 15, 22) + A(mg, 'MgBr', { r: 22 }) + A(r, 'R', { kind: 'hi' });
       s += curve(mid(r, mg, 0.4), P(c1.x - 12, c1.y + 12), { bow: -22, size: 7 });
-      s += curve(mid(c1, o, 0.5), P(o.x - 16, o.y + 4), { bow: 12, size: 7 });
+      s += curve(mid(c1, o, 0.5), P(o.x - 18, o.y + 2), { bow: -12, size: 7 });
       s += tg(40, 302, 'less hindered:', 'good', 'start');
       s += tg(40, 316, 'attacked', 'good', 'start');
       s += tg(300, 310, 'more hindered', 'warn', 'end');
@@ -351,7 +349,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'The reagent attacks a ring carbon from the side opposite the C–O bond that breaks, and it picks the less hindered carbon. For R = propyl the two products are pentan-1-ol and hexan-2-ol.',
+  caption: 'Top: ethylene oxide. Bottom: 2-methyloxirane. In both, the reagent approaches the ring carbon from the side opposite the C–O bond that breaks. For R = propyl the products are pentan-1-ol and hexan-2-ol.',
 });
 
 
@@ -360,7 +358,7 @@ FIGURES.push({
   id: 'acidic-h-first',
   section: 'grignard-reagents',
   lessons: ['grignard-reagents'],
-  anchor: '<h3>Grignards as bases, which is usually the problem</h3>',
+  anchor: 'explained why the proton wins.</p>',
   alt: '4-hydroxybutan-2-one drawn atom by atom: H–O–CH2–CH2–C(=O)–CH3. The O–H hydrogen is highlighted and labeled "CH3MgBr takes this H first". The ketone C=O is labeled "never reached". Below, the result: methane, CH4, and the magnesium alkoxide, with the ketone unchanged.',
   viewBox: '0 0 340 250',
   build() {
@@ -374,14 +372,14 @@ FIGURES.push({
     s += lp(O, 150) + lp(O, 30);
     s += tg(14, 60, 'CH₃MgBr takes', 'warn', 'start');
     s += tg(14, 74, 'this H first', 'warn', 'start');
-    s += tg(334, 60, 'never reached', null, 'end');
+    s += tg(290, 80, 'never reached');
     s += arrow(P(170, 146), P(170, 176), { size: 7 });
     s += tg(180, 166, 'CH₃MgBr', null, 'start');
     s += lbl(170, 206, 'CH₄  +  ⁻O–CH₂CH₂–CO–CH₃  ⁺MgBr');
     s += tg(170, 236, 'the ketone is untouched');
     return s;
   },
-  caption: '4-Hydroxybutan-2-one with one equivalent of CH₃MgBr. The reagent is spent on the O–H proton and leaves as methane.',
+  caption: '4-Hydroxybutan-2-one with one equivalent of CH₃MgBr. Workup would simply return the starting material.',
 });
 
 /* ======================================== lesson: the four electrophiles */
@@ -389,21 +387,21 @@ FIGURES.push({
   id: 'l-sort-substrates',
   lessons: ['grignard-reagents'],
   alt: 'Four carbonyl compounds in a two-by-two grid, each with its carbonyl carbon highlighted: formaldehyde (two hydrogens), propanal (a hydrogen and an ethyl), propanone (two methyls) and ethyl propanoate (an ethyl and an ethoxy group).',
-  viewBox: '0 0 340 290',
+  viewBox: '0 0 340 314',
   build() {
     let s = '';
     const cells = [
-      { c: P(85, 70), g: ['H', 'H'], n: 'formaldehyde' },
-      { c: P(255, 70), g: ['H', 'Et'], n: 'propanal' },
-      { c: P(85, 200), g: ['CH₃', 'CH₃'], n: 'propanone' },
-      { c: P(255, 200), g: ['Et', 'OEt'], n: 'ethyl propanoate' },
+      { c: P(85, 66), g: ['H', 'H'], n: 'formaldehyde' },
+      { c: P(255, 66), g: ['H', 'Et'], n: 'propanal' },
+      { c: P(85, 212), g: ['CH₃', 'CH₃'], n: 'propanone' },
+      { c: P(255, 212), g: ['Et', 'OEt'], n: 'ethyl propanoate' },
     ];
     for (const k of cells) {
       const rr = (g) => (g.length > 2 ? 17 : g.length > 1 ? 15 : 13);
       s += carbonyl(k.c, k.g[0], k.g[1], { r1: rr(k.g[0]), r2: rr(k.g[1]) });
       s += tg(k.c.x, k.c.y + 66, k.n);
     }
-    s += tg(170, 284, 'Et = CH₂CH₃');
+    s += tg(170, 304, 'Et = CH₂CH₃');
     return s;
   },
   caption: 'The four electrophiles in the sort. The highlighted carbon is the one the Grignard attacks.',

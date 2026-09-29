@@ -182,9 +182,12 @@
       9:['nucleotide-assembly','sugar-ring'],
       11:['nucleotide-assembly'] } },
 
-    'organometallic-bonding': { n:8, steps:{
-      2:['polarity-reversal'], 3:['polarity-reversal'], 4:['polarity-reversal'],
-      6:['organometallic-quench'], 7:['polarity-reversal','organometallic-quench'] } },
+    'organometallic-bonding': { n:10, steps:{
+      2:['polarity-reversal'],
+      3:['polarity-reversal'],
+      5:['polarity-reversal'],
+      7:['organometallic-quench'],
+      9:['polarity-reversal','organometallic-quench'] } },
 
     'grignard-reagents': { n:8, steps:{
       2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
