@@ -561,7 +561,7 @@ function tubDraw(cx, cy, scale, o = {}) {
     const len = Math.hypot(dx, dy) || 1;
     const ang = (Math.atan2(dy, dx) * 180) / Math.PI;
     const lob = (sign, cls) => {
-      const c = P(base.x + (dx / len) * (o.lobe ?? 17) * sign, base.y + (dy / len) * (o.lobe ?? 17) * sign);
+      const c = P(base.x + (dx / len) * (o.lobe ?? 17) * sign * 1.08, base.y + (dy / len) * (o.lobe ?? 17) * sign * 1.08);
       return `<ellipse class="${cls}" cx="${r2(c.x)}" cy="${r2(c.y)}" rx="${o.lobe ?? 17}" ry="7" fill-opacity="0.18" transform="rotate(${r2(ang)} ${r2(c.x)} ${r2(c.y)})"></ellipse>`;
     };
     lobes.push({ depth: base.depth, s: lob(1, 'fg-orb') + lob(-1, 'fg-orb-alt') });
@@ -572,9 +572,12 @@ function tubDraw(cx, cy, scale, o = {}) {
   const edges = [];
   for (let i = 0; i < 8; i++) edges.push({ i, j: (i + 1) % 8, dbl: i % 2 === 0, depth: (pts[i].depth + pts[(i + 1) % 8].depth) / 2 });
   edges.sort((p, q) => q.depth - p.depth);
+  /* Depth cue: the far half of the ring is drawn soft, the near half bold. */
+  const dmid = edges.reduce((t, e) => t + e.depth, 0) / edges.length;
   for (const e of edges) {
     const A = pts[e.i], B = pts[e.j];
-    s += e.dbl ? bond(A, B, { rFrom: 0, rTo: 0, order: 2, gap: 2.6 }) : skb(A, B);
+    const cls = e.depth > dmid ? 'fg-bond-soft' : 'fg-bond';
+    s += e.dbl ? bond(A, B, { rFrom: 0, rTo: 0, order: 2, gap: 2.6, cls }) : skb(A, B, cls);
   }
   for (const p of pts) s += `<circle class="fg-lp" cx="${r2(p.x)}" cy="${r2(p.y)}" r="2.6"></circle>`;
   return s;

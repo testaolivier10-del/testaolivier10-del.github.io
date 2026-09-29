@@ -418,19 +418,19 @@ FIGURES.push({
   id: 'l-arenium-three',
   lessons: ['eas'],
   alt: 'Three resonance structures of the arenium ion stacked top to bottom, each numbered 1 to 6 with C1 carrying E on a wedge and H on a hash. The positive charge is on C2, then C4, then C6, joined by double-headed arrows; curved arrows move the neighboring double bond toward the positive carbon.',
-  viewBox: '0 0 340 600',
+  viewBox: '0 0 340 616',
   build() {
     let s = '';
     const R = 40, x = 130;
-    s += areniumThree({ R, cs: [P(x, 108), P(x, 300), P(x, 492)], hy: null });
+    s += areniumThree({ R, cs: [P(x, 100), P(x, 300), P(x, 516)], hy: null });
     const dbl = (y1, y2) => arrow(P(x, y1), P(x, y2), { muted: true }) + arrow(P(x, y2), P(x, y1), { muted: true });
-    s += dbl(170, 222);
-    s += dbl(362, 414);
-    s += tg(196, 112, '+ on C2 (ortho)', 'start');
+    s += dbl(162, 214);
+    s += dbl(376, 428);
+    s += tg(196, 104, '+ on C2 (ortho)', 'start');
     s += tg(196, 304, '+ on C4 (para)', 'start');
-    s += tg(196, 496, '+ on C6 (ortho)', 'start');
-    s += tg(196, 570, 'C3 and C5 (meta):', 'start');
-    s += tg(196, 586, 'never charged', 'start');
+    s += tg(196, 520, '+ on C6 (ortho)', 'start');
+    s += tg(196, 586, 'C3 and C5 (meta):', 'start');
+    s += tg(196, 602, 'never charged', 'start');
     return s;
   },
   caption: 'Follow the + down the page: C2, C4, C6.',
@@ -591,7 +591,7 @@ FIGURES.push({
     s += tg(380, 404, 'then FeBr₄⁻ takes the H⁺: HBr forms, and FeBr₃ is free to work again');
     return s;
   },
-  caption: 'Top: one arrow, and an Fe–Br bond forms. Bottom: two arrows. The ring bonds to the outer bromine as the Br–Br bond breaks. Lone pairs are drawn in the top row only, and the bromines on iron are drawn without theirs.',
+  caption: 'Top: one arrow, and an Fe–Br bond forms. Bottom: two arrows, one from the ring to the outer bromine and one from the Br–Br bond onto the inner bromine. Lone pairs are drawn in the top row only, and the bromines on iron are drawn without theirs.',
 });
 
 FIGURES.push({
@@ -1071,7 +1071,7 @@ FIGURES.push({
     s += tg(520, y + 80, 'O +1, Al −1: one AlCl₃ held per ketone');
     return s;
   },
-  caption: 'Top: as the ring bonds to carbon, one C≡O π bond moves onto oxygen. Bottom: the ketone oxygen, a Lewis base, holds on to AlCl₃. Water at the end breaks the O–Al bond.',
+  caption: 'Top: follow the two arrows from the ring to carbon and from the C≡O bond to oxygen. Bottom: the ketone oxygen, a Lewis base, holds on to AlCl₃. Water at the end breaks the O–Al bond.',
 });
 
 /* ====================================================== hydride shift === */
@@ -1307,7 +1307,7 @@ FIGURES.push({
       if (i === 3) {
         /* The second alkylation, drawn faint: this is the whole problem. */
         s += bond(v[2], P(248 - 34, y + 42), { rFrom: 0, rTo: 13, cls: 'fg-bond-soft' });
-        s += text(248 - 34, y + 46, 'Et', { cls: 'fg-mut', size: 11 });
+        s += text(248 - 40, y + 46, 'CH₂CH₃', { cls: 'fg-mut', size: 11 });
       }
       s += label(356, y - 4, row.name, { size: 12.5, anchor: 'start' });
       s += text(356, y + 16, row.note, { cls: 'fg-sm', size: 10.5, anchor: 'start' });
