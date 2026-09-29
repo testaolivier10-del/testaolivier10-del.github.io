@@ -544,12 +544,13 @@
       9:['amine-basicity'],
       10:['amine-basicity','pka-scale'] } },
 
-    'aromaticity': { n:8, steps:{
-      1:['huckel-aromaticity'],
-      2:['huckel-aromaticity'],
-      4:['huckel-aromaticity','resonance-delocalization'],
-      6:['huckel-aromaticity'],
-      7:['huckel-aromaticity'] } },
+    'aromaticity': { n:12, steps:{
+      1:['resonance-delocalization','huckel-aromaticity'],
+      5:['huckel-aromaticity'],
+      7:['huckel-aromaticity','hybridization-assignment'],
+      8:['huckel-aromaticity'],
+      10:['huckel-aromaticity'],
+      11:['huckel-aromaticity'] } },
 
     'atomic-structure': { n:15, steps:{
       3:['valence-electrons'],
