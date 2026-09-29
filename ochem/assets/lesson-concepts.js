@@ -614,7 +614,7 @@
       8:['lewis-acid-base','electrophile-recognition'] } },
 
     'enantiomers': { n:12, steps:{
-      1:['enantiomer-vs-diastereomer'],
+      2:['enantiomer-vs-diastereomer'],
       3:['enantiomer-vs-diastereomer'],
       4:['enantiomer-vs-diastereomer','rs-assignment'],
       8:['enantiomer-vs-diastereomer'],

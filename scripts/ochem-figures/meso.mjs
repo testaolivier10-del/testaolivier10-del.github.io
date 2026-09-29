@@ -176,7 +176,7 @@ FIGURES.push({
   alt: 'Four drawings of tartaric acid in the same layout, in a two-by-two grid. Top left (2R,3R): the OH on C3 is on a hash and the OH on C2 on a wedge. Top right (2S,3S): the OH on C3 is on a wedge and the OH on C2 on a hash. Bottom left (2R,3S): both OH groups on wedges. Bottom right (2S,3R): both OH groups on hashes.',
   build() {
     let s = '';
-    const d = { half: 26 };
+    const d = { half: 30 };
     s += T(85, 22, '(2R,3R)', 'fg-lbl') + tart(85, 124, 'RR', d);
     s += T(255, 22, '(2S,3S)', 'fg-lbl') + tart(255, 124, 'SS', d);
     s += rule(10, 236, 330, 236);
@@ -356,8 +356,9 @@ FIGURES.push({
     let s = '';
     s += T(120, 22, 'in 3D', 'fg-tag');
     s += bowtie(120, 150, [true, true], ['R', 'S']);
-    s += T(120, 268, 'horizontal: toward you', 'fg-tag');
-    s += T(120, 286, 'vertical: away from you', 'fg-tag');
+    s += T(120, 274, 'at each carbon:', 'fg-tag');
+    s += T(120, 291, 'left, right: toward you', 'fg-tag');
+    s += T(120, 308, 'up, down: away from you', 'fg-tag');
     s += arrow(P(196, 150), P(262, 150));
     s += T(229, 136, 'flatten', 'fg-tag');
     s += rich(372, 22, ['*meso', ' as a Fischer projection'], 'fg-tag');
@@ -414,7 +415,7 @@ function cisChair(cx, cy, k, L, mirror, mx, showFace = true) {
   s += up(e1, pts[0]) + up(e2, pts[5]);
   const n0 = mirror ? 'C2' : 'C1', n5 = mirror ? 'C1' : 'C2';
   const lab = (p, name, dx, dy, a) => T(p.x + (mirror ? -dx : dx), p.y + dy, name, 'fg-tag', mirror ? (a === 'end' ? 'start' : a === 'start' ? 'end' : a) : a);
-  s += lab(pts[0], n0, -20, 16, 'end');
+  s += showFace ? lab(pts[0], n0, 4, 20, 'start') : lab(pts[0], n0, 8, 4, 'start');
   s += lab(pts[5], n5, -10, 18, 'end');
   return { s, pts };
 }
@@ -579,10 +580,10 @@ FIGURES.push({
     s += brRow(116, true);
     s += rich(598, 210, ['one achiral product, ', '*meso'], 'fg-tag-good');
     s += rule(20, 228, 740, 228);
-    s += rich(20, 254, ['*cis', ' alkene'], 'fg-tag-warn', 'start');
+    s += rich(20, 254, ['*cis', ' alkene'], 'fg-tag', 'start');
     s += brRow(346, false);
-    s += T(598, 418, '(2S,3S), and (2R,3R) in equal amount:', 'fg-tag-warn');
-    s += T(598, 436, 'a racemic mixture', 'fg-tag-warn');
+    s += T(598, 418, '(2S,3S), and (2R,3R) in equal amount:', 'fg-tag');
+    s += T(598, 436, 'a racemic mixture', 'fg-tag');
     return s;
   },
   caption: 'Read each row from left to right: the alkene, the product as it forms, and the same product after the half turn.',

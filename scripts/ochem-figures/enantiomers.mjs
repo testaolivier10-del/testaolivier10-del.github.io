@@ -80,7 +80,7 @@ FIGURES.push({
     s += tg(170, 218, 'mirror', 'middle', 'fg-tag-mut');
     return s;
   },
-  caption: 'Each drawing is the reflection of the other in the dashed mirror. Only the wedge and the hash trade sides, and that alone turns (S) into (R).',
+  caption: 'Each drawing is the reflection of the other in the dashed mirror. Only NH₂ (on the wedge) and H (on the hash) swap sides; COOH and CH₃ stay put. That alone turns (S) into (R).',
 });
 
 /* ------------------------------------------------------------------------

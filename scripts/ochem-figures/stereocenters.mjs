@@ -456,7 +456,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-methylpentane',
   lessons: ['stereocenters'],
-  alt: 'Skeletal structure of 3-methylpentane with C3 marked. C3 carries an H, a CH3 group and a two-carbon branch on each side; the branches are not labelled.',
+  alt: 'Skeletal structure of 3-methylpentane with C3 marked. C3 carries an H, a CH3 group and a two-carbon branch on each side; the branches are not labeled.',
   viewBox: '0 0 340 130',
   build() {
     let s = '';

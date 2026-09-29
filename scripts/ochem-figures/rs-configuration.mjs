@@ -45,6 +45,11 @@ function cutOf(l, deg) {
   return Math.min(tx, ty);
 }
 
+/* Arm length that leaves at least MINB px of visible bond between a
+   16-17px center disc and the pill, whatever the label's width. */
+const MINB = 20;
+const armLen = (l, deg, want, rFrom = 17) => Math.max(want, cutOf(l, deg) + 3 + rFrom + MINB);
+
 /* The configuration a drawing actually shows. Plain bonds lie in the page,
    wedges come out (+z), hashes go back (−z). R when 1 → 2 → 3 turns
    clockwise seen from the side opposite priority 4. */
@@ -98,7 +103,7 @@ function tetra(c, gs, o = {}) {
   const L = o.L ?? 56;
   let s = '', reach = 0;
   for (const g of gs) {
-    const len = g.len ?? L;
+    const len = armLen(g.lab, g.deg, g.len ?? L);
     const end = armEnd(c, g.deg, len - cutOf(g.lab, g.deg) - 3);
     const opts = { rFrom: 17, rTo: 0 };
     s += g.kind === 'wedge' ? wedge(c, end, { ...opts, width: 10 })
@@ -106,7 +111,7 @@ function tetra(c, gs, o = {}) {
       : bond(c, end, opts);
   }
   for (const g of gs) {
-    const len = g.len ?? L;
+    const len = armLen(g.lab, g.deg, g.len ?? L);
     const p = armEnd(c, g.deg, len);
     s += pill(p, g.lab, g.hi);
     const r = (g.deg * Math.PI) / 180;
@@ -261,8 +266,9 @@ function firstAtom(o, subs, set, win, name, hiIdx = 0) {
   s += atom(st.x, st.y, '', { r: 5, kind: 'plain' });
   const degs = [55, 0, 305];
   subs.forEach((l, i) => {
-    const p = armEnd(c, degs[i], 50);
-    s += bond(c, armEnd(c, degs[i], 50 - cutOf(l, degs[i]) - 3), { rFrom: 16, rTo: 0 });
+    const len = armLen(l, degs[i], 50, 16);
+    const p = armEnd(c, degs[i], len);
+    s += bond(c, armEnd(c, degs[i], len - cutOf(l, degs[i]) - 3), { rFrom: 16, rTo: 0 });
     s += pill(p, l, i === hiIdx && win ? 'hi' : undefined);
   });
   s += atom(c.x, c.y, 'C', { kind: 'hi' });
@@ -273,8 +279,8 @@ function firstAtom(o, subs, set, win, name, hiIdx = 0) {
 function diffCell(ox, oy, w, h, top, bot, v1, v2, head) {
   let s = panel(ox, oy, w, h);
   s += Tag(P(ox + w / 2, oy + 22), head);
-  s += firstAtom(P(ox + 66, oy + 96), top.subs, top.set, true, top.name, top.hi);
-  s += firstAtom(P(ox + 66, oy + 212), bot.subs, bot.set, false, bot.name);
+  s += firstAtom(P(ox + 66, oy + 92), top.subs, top.set, true, top.name, top.hi);
+  s += firstAtom(P(ox + 66, oy + 222), bot.subs, bot.set, false, bot.name);
   s += Good(P(ox + w / 2, oy + h - 36), v1);
   s += Tag(P(ox + w / 2, oy + h - 18), v2);
   return s;
@@ -296,9 +302,9 @@ FIGURES.push({
   section: 'rs-configuration',
   anchor: 'Rule 2: on a tie',
   alt: 'Three comparisons, each showing the first carbon of two groups with its three other neighbors. Ethyl (C, H, H) beats methyl (H, H, H) in position 1. CH2OH (O, H, H) beats tert-butyl (C, C, C) in position 1, because O beats C. Isopropyl (C, C, H) beats CH2CH2OH (C, H, H) in position 2, so the oxygen further out never counts.',
-  viewBox: '0 0 760 340',
+  viewBox: '0 0 760 356',
   build() {
-    return DIFF.map((d, i) => diffCell(4 + i * 254, 4, 244, 332, d[0], d[1], d[2], d[3], d[4])).join('');
+    return DIFF.map((d, i) => diffCell(4 + i * 254, 4, 244, 348, d[0], d[1], d[2], d[3], d[4])).join('');
   },
   caption: 'Each carbon is the group’s first atom; the small dot is the stereocenter. The winner of each pair is on top, with its deciding atom highlighted.',
 });
@@ -307,9 +313,9 @@ FIGURES.push({
   id: 'l-first-difference',
   lessons: ['rs-configuration'],
   alt: 'Two comparisons stacked. Ethyl (C, H, H) beats methyl (H, H, H) in position 1. CH2OH (O, H, H) beats tert-butyl (C, C, C) in position 1, because O beats C.',
-  viewBox: '0 0 340 672',
+  viewBox: '0 0 340 704',
   build() {
-    return [0, 1].map((i) => diffCell(4, 4 + i * 336, 332, 330, DIFF[i][0], DIFF[i][1], DIFF[i][2], DIFF[i][3], DIFF[i][4])).join('');
+    return [0, 1].map((i) => diffCell(4, 4 + i * 352, 332, 346, DIFF[i][0], DIFF[i][1], DIFF[i][2], DIFF[i][3], DIFF[i][4])).join('');
   },
   caption: 'Write each set highest first, then compare position by position. The first difference decides.',
 });
@@ -344,6 +350,7 @@ function dupColumn(ox, oy, w, h, kind) {
     return bond(st, c, { rFrom: 6, rTo: 16 }) + atom(st.x, st.y, '', { r: 5 });
   };
   const arm = (c, deg, l, len, o = {}) => {
+    len = armLen(l, deg, len, 16);
     const p = armEnd(c, deg, len);
     return bond(c, armEnd(c, deg, len - cutOf(l, deg) - 3), { rFrom: 16, rTo: 0, ...o }) + pill(p, l, o.hi);
   };
@@ -415,8 +422,9 @@ function phenylVinylCell(ox, oy, w, h, which) {
   const c = P(ox + w - 108, oy + 130);
   s += bond(P(c.x - 50, c.y), c, { rFrom: 6, rTo: 16 }) + atom(c.x - 50, c.y, '', { r: 5 });
   const arm = (deg, l, hi) => {
-    const p = armEnd(c, deg, 52);
-    return bond(c, armEnd(c, deg, 52 - cutOf(l, deg) - 3), { rFrom: 16, rTo: 0 }) + pill(p, l, hi);
+    const len = armLen(l, deg, 52, 16);
+    const p = armEnd(c, deg, len);
+    return bond(c, armEnd(c, deg, len - cutOf(l, deg) - 3), { rFrom: 16, rTo: 0 }) + pill(p, l, hi);
   };
   if (which === 'ph') s += arm(55, 'C') + arm(0, '[C]', 'warn') + arm(305, 'C', 'hi');
   else s += arm(55, 'C') + arm(0, '[C]', 'warn') + arm(305, 'H', 'hi');
@@ -501,10 +509,10 @@ function sameTraceCell(ox, oy, w, h, which) {
   const gl = which === 'gly';
   let s = panel(ox, oy, w, h, gl ? { kind: 'warn' } : { kind: 'hi' });
   s += Tag(P(ox + w / 2, oy + 22), gl ? 'glyceraldehyde · H on a wedge' : 'butan-2-ol · H on a hash');
-  const c = P(ox + w / 2, oy + 152);
+  const c = P(ox + w / 2, oy + 166);
   s += assign(c, gl ? GLYCER : BUTANOL, gl ? 'R' : 'S', 'same-trace-opposite-answer');
-  s += Tag(P(ox + w / 2, oy + h - 36), gl ? 'counterclockwise as drawn, then flip' : 'counterclockwise, no flip');
-  s += (gl ? Warn : Good)(P(ox + w / 2, oy + h - 16), gl ? 'R' : 'S');
+  s += Tag(P(ox + w / 2, oy + h - 28), gl ? 'counterclockwise as drawn, then flip' : 'counterclockwise, no flip');
+  s += (gl ? Warn : Good)(P(ox + w / 2, oy + h - 10), gl ? 'R' : 'S');
   return s;
 }
 
@@ -513,9 +521,9 @@ FIGURES.push({
   section: 'rs-configuration',
   anchor: 'The only difference is which bond the hydrogen sits on.',
   alt: 'Butan-2-ol and glyceraldehyde drawn in the same pose: OH at the top is priority 1, the lower-left group is 2 and the lower-right group is 3. In both, the arrow from 1 to 2 to 3 turns counterclockwise. Butan-2-ol has H on a hash, pointing away, so it is S. Glyceraldehyde has H on a wedge, pointing toward you, so the answer flips and it is R.',
-  viewBox: '0 0 760 340',
+  viewBox: '0 0 760 360',
   build() {
-    return sameTraceCell(4, 4, 372, 332, 'but') + sameTraceCell(384, 4, 372, 332, 'gly');
+    return sameTraceCell(4, 4, 372, 352, 'but') + sameTraceCell(384, 4, 372, 352, 'gly');
   },
   caption: 'Butan-2-ol on the left, glyceraldehyde on the right. Compare the bond to H, priority 4.',
 });
@@ -570,19 +578,19 @@ FIGURES.push({
 
 function swapCell(ox, oy, w, h, stage, gsDrawn, gsSwapped, wantDrawn, where, names) {
   let s = panel(ox, oy, w, h, stage === 2 ? { kind: 'hi' } : {});
-  const c = P(ox + w / 2, oy + 150);
+  const c = P(ox + w / 2, oy + 164);
   if (stage === 1) {
     s += Tag(P(ox + w / 2, oy + 22), 'as drawn: H, priority 4, lies in the page');
     expect(gsDrawn, wantDrawn, where);
     s += tetra(c, gsDrawn).s;
-    s += Tag(P(ox + w / 2, oy + h - 36), `swap H with ${names.swap},`);
-    s += Tag(P(ox + w / 2, oy + h - 16), 'the group on the hash');
+    s += Tag(P(ox + w / 2, oy + h - 28), `swap H with ${names.swap},`);
+    s += Tag(P(ox + w / 2, oy + h - 10), 'the group on the hash');
   } else {
     const other = wantDrawn === 'R' ? 'S' : 'R';
     s += Tag(P(ox + w / 2, oy + 22), 'after the swap: H on the hash');
     s += assign(c, gsSwapped, other, where + ' (swapped)');
-    s += Tag(P(ox + w / 2, oy + h - 36), `1 → 2 → 3 ${cwAsDrawn(gsSwapped) ? 'clockwise' : 'counterclockwise'}: ${other}`);
-    s += Good(P(ox + w / 2, oy + h - 16), `so the original is ${wantDrawn}`);
+    s += Tag(P(ox + w / 2, oy + h - 28), `1 → 2 → 3 ${cwAsDrawn(gsSwapped) ? 'clockwise' : 'counterclockwise'}: ${other}`);
+    s += Good(P(ox + w / 2, oy + h - 10), `so the original is ${wantDrawn}`);
   }
   return s;
 }
@@ -592,10 +600,10 @@ FIGURES.push({
   section: 'rs-configuration',
   anchor: 'Swap priority 4 with the group that points away',
   alt: '2-Bromobutane drawn with H on a plain bond at the top, priority 4 in the plane of the page. Br on a wedge is 1, ethyl at lower left is 2, CH3 on a hash is 3. Swapping H and CH3 puts H on the hash and CH3 at the top. Then Br to ethyl to CH3 runs clockwise, which is R for the swapped drawing, so the original drawing is S.',
-  viewBox: '0 0 760 320',
+  viewBox: '0 0 760 350',
   build() {
-    return swapCell(4, 4, 372, 312, 1, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'swap-in-plane', { swap: 'CH₃' }) +
-      swapCell(384, 4, 372, 312, 2, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'swap-in-plane');
+    return swapCell(4, 4, 372, 342, 1, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'swap-in-plane', { swap: 'CH₃' }) +
+      swapCell(384, 4, 372, 342, 2, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'swap-in-plane');
   },
   caption: 'Left: (S)-2-bromobutane as given. Right: the same drawing after H and CH₃, highlighted, change places.',
 });
@@ -604,10 +612,10 @@ FIGURES.push({
   id: 'l-swap-in-plane',
   lessons: ['rs-configuration'],
   alt: '2-Bromobutane with H in the plane of the page, stacked above the same drawing after H and the hashed CH3 are swapped. In the swapped drawing Br to ethyl to CH3 runs clockwise, which is R, so the original is S.',
-  viewBox: '0 0 340 632',
+  viewBox: '0 0 340 692',
   build() {
-    return swapCell(4, 4, 332, 312, 1, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'l-swap-in-plane', { swap: 'CH₃' }) +
-      swapCell(4, 320, 332, 308, 2, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'l-swap-in-plane');
+    return swapCell(4, 4, 332, 342, 1, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'l-swap-in-plane', { swap: 'CH₃' }) +
+      swapCell(4, 350, 332, 338, 2, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'l-swap-in-plane');
   },
   caption: 'One swap gives the mirror image, so reverse the swapped drawing’s label to get the original’s.',
 });
@@ -632,9 +640,9 @@ FIGURES.push({
   section: 'rs-configuration',
   anchor: '<h3>Naming whole molecules</h3>',
   alt: '3-Bromobutan-2-ol as a zigzag, with OH on a wedge and H on a hash at C2, and Br on a hash and H on a wedge at C3. Beside it, each stereocenter is redrawn with the same bond angles. At C2: OH 1, the C3 side 2, CH3 3, H 4 on the hash; 1 to 2 to 3 runs clockwise, so C2 is R. At C3: Br 1, the C2 side 2, CH3 3, H 4 on the wedge; 1 to 2 to 3 runs clockwise as drawn, and H points toward the viewer, so the answer flips and C3 is S.',
-  viewBox: '0 0 760 350',
+  viewBox: '0 0 760 372',
   build() {
-    let s = panel(4, 4, 196, 342);
+    let s = panel(4, 4, 196, 364);
     s += Tag(P(102, 26), 'the molecule');
     const c1 = P(34, 190), c2 = P(80, 164), c3 = P(126, 190), c4 = P(172, 164);
     s += sk(c1, c2) + sk(c2, c3) + sk(c3, c4);
@@ -646,16 +654,16 @@ FIGURES.push({
     s += sub(c2, 60, 58, 'OH', 'wedge') + sub(c2, 120, 50, 'H', 'hash');
     s += sub(c3, 300, 58, 'Br', 'hash') + sub(c3, 240, 50, 'H', 'wedge');
     s += Tag(P(c2.x, c2.y + 24), 'C2') + Tag(P(c3.x, c3.y - 14), 'C3');
-    s += Good(P(102, 312), '(2R,3S)');
-    s += Tag(P(102, 330), '3-bromobutan-2-ol');
+    s += Good(P(102, 334), '(2R,3S)');
+    s += Tag(P(102, 352), '3-bromobutan-2-ol');
     const cell = (ox, gs, want, name) => {
-      let t = panel(ox, 4, 274, 342, { kind: 'hi' });
+      let t = panel(ox, 4, 274, 364, { kind: 'hi' });
       t += Tag(P(ox + 137, 26), 'stereocenter ' + name);
-      t += assign(P(ox + 137, 170), gs, want, 'two-stereocenters ' + name, { L: 54 });
+      t += assign(P(ox + 137, 178), gs, want, 'two-stereocenters ' + name, { L: 54 });
       const cw = cwAsDrawn(gs);
       const toward = gs.find((g) => g.pri === 4).kind === 'wedge';
-      t += Tag(P(ox + 137, 314), (cw ? 'clockwise' : 'counterclockwise') + (toward ? ' as drawn, H toward you' : ', H away'));
-      t += Good(P(ox + 137, 332), toward ? 'flip: ' + name + ' is ' + want : name + ' is ' + want);
+      t += Tag(P(ox + 137, 336), (cw ? 'clockwise' : 'counterclockwise') + (toward ? ' as drawn, H toward you' : ', H away'));
+      t += Good(P(ox + 137, 354), toward ? 'flip: ' + name + ' is ' + want : name + ' is ' + want);
       return t;
     };
     s += cell(206, C2, 'R', 'C2') + cell(482, C3, 'S', 'C3');
