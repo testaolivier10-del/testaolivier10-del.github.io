@@ -544,12 +544,13 @@
       9:['amine-basicity'],
       10:['amine-basicity','pka-scale'] } },
 
-    'aromaticity': { n:8, steps:{
-      1:['huckel-aromaticity'],
-      2:['huckel-aromaticity'],
-      4:['huckel-aromaticity','resonance-delocalization'],
-      6:['huckel-aromaticity'],
-      7:['huckel-aromaticity'] } },
+    'aromaticity': { n:12, steps:{
+      1:['resonance-delocalization','huckel-aromaticity'],
+      5:['huckel-aromaticity'],
+      7:['huckel-aromaticity','hybridization-assignment'],
+      8:['huckel-aromaticity'],
+      10:['huckel-aromaticity'],
+      11:['huckel-aromaticity'] } },
 
     'atomic-structure': { n:15, steps:{
       3:['valence-electrons'],
@@ -665,19 +666,21 @@
       8:['enantiomer-vs-diastereomer'],
       10:['enantiomer-vs-diastereomer'] } },
 
-    'directing-effects': { n:8, steps:{
-      1:['directing-effects'],
+    'directing-effects': { n:12, steps:{
       2:['directing-effects','resonance-delocalization'],
-      4:['directing-effects','electron-rich-poor'],
-      6:['directing-effects','resonance-delocalization'],
-      7:['directing-effects'] } },
+      4:['directing-effects','resonance-delocalization'],
+      6:['directing-effects','electron-rich-poor'],
+      7:['directing-effects'],
+      9:['directing-effects'],
+      11:['directing-effects','route-order'] } },
 
-    'eas': { n:8, steps:{
-      1:['eas-mechanism'],
-      2:['eas-mechanism','huckel-aromaticity'],
-      4:['lewis-acid-base','eas-mechanism'],
-      6:['eas-mechanism','carbocation-stability'],
-      7:['eas-mechanism','carbocation-stability'] } },
+    'eas': { n:18, steps:{
+      2:['eas-mechanism'],
+      4:['eas-mechanism','huckel-aromaticity'],
+      9:['eas-mechanism'],
+      11:['lewis-acid-base','eas-mechanism'],
+      15:['eas-mechanism','carbocation-rearrangement'],
+      17:['eas-mechanism','carbocation-rearrangement'] } },
 
     'electron-rich-poor': { n:11, steps:{
       2:['electron-rich-poor'],
