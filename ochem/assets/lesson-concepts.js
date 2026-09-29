@@ -634,12 +634,12 @@
       7:['epoxide-opening-regiochem','curved-arrow-direction'],
       8:['epoxide-opening-regiochem','backside-attack'] } },
 
-    'esters-amides': { n:8, steps:{
-      1:['acyl-reactivity-order'],
-      2:['acyl-reactivity-order','leaving-group-ability','amide-resonance'],
-      4:['acyl-reactivity-order','tetrahedral-intermediate'],
-      6:['acyl-reactivity-order','leaving-group-ability'],
-      7:['acyl-reactivity-order'] } },
+    'esters-amides': { n:10, steps:{
+      1:['acyl-reactivity-order','leaving-group-ability'],
+      3:['acyl-reactivity-order','amide-resonance','leaving-group-ability'],
+      5:['acyl-reactivity-order','tetrahedral-intermediate'],
+      7:['leaving-group-ability','reductant-scope'],
+      9:['activation-before-acylation','acyl-reactivity-order'] } },
 
     'ether-chemistry': { n:7, steps:{
       1:['alcohol-activation'],
