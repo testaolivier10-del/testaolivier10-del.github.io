@@ -250,11 +250,11 @@ FIGURES.push({
 /* 3. The two resonance structures of one peptide unit. */
 function peptideUnit(c, ionic, { arrows = false } = {}) {
   let s = '';
-  const o = at(c, 90, 54);
-  const caL = at(c, 210, 56);
-  const n = at(c, 330, 56);
-  const h = at(n, 270, 44);
-  const caR = at(n, 30, 56);
+  const o = at(c, 90, 62);
+  const caL = at(c, 210, 64);
+  const n = at(c, 330, 66);
+  const h = at(n, 270, 50);
+  const caR = at(n, 30, 64);
   s += bond(c, caL, { rFrom: 16, rTo: 15 }) + atom(caL.x, caL.y, 'Cα');
   s += bond(c, o, { order: ionic ? 1 : 2, rFrom: 16, rTo: 15 });
   s += bond(c, n, { order: ionic ? 2 : 1, rFrom: 16, rTo: 16, cls: 'fg-bond' });
@@ -272,8 +272,8 @@ function peptideUnit(c, ionic, { arrows = false } = {}) {
     s += lp(n, 90);
     s += atom(n.x, n.y, 'N', { kind: 'hi' });
     if (arrows) {
-      s += curve(lpTip(n, 90, 26), onBond(c, n, 0.5, 7), { bow: 12, size: 7 });
-      s += curve(onBond(c, o, 0.5, -7), P(o.x + 17, o.y + 3), { bow: -12, size: 7 });
+      s += curve(lpTip(n, 90, 27), onBond(c, n, 0.45, 8), { bow: 16, size: 7 });
+      s += curve(onBond(c, o, 0.5, -8), P(o.x + 18, o.y + 5), { bow: -16, size: 7 });
     }
   }
   s += atom(c.x, c.y, 'C');
@@ -287,11 +287,11 @@ FIGURES.push({
   alt: 'Left: a peptide unit, Cα–C(=O)–N(H)–Cα, with a lone pair on nitrogen and two on oxygen. One curved arrow runs from the nitrogen lone pair into the C–N bond, a second from the C=O double bond onto the oxygen. A double-headed resonance arrow leads to the right-hand structure: C–O single with three lone pairs and a minus charge on oxygen, C=N double with a plus charge on nitrogen.',
   build() {
     let s = '';
-    s += peptideUnit(P(200, 120), false, { arrows: true });
-    s += resArrow(P(330, 124), P(420, 124));
-    s += peptideUnit(P(530, 120), true);
-    s += tg(200, 232, 'lone pair on N, C=O double');
-    s += tg(530, 232, 'C=N double, + on N, − on O');
+    s += peptideUnit(P(200, 116), false, { arrows: true });
+    s += resArrow(P(338, 124), P(428, 124));
+    s += peptideUnit(P(540, 116), true);
+    s += tg(210, 238, 'lone pair on N, C=O double');
+    s += tg(550, 238, 'C=N double, + on N, − on O');
     return s;
   },
   caption: 'Follow the two arrows: the nitrogen lone pair becomes the second C–N bond, and the C=O π pair moves onto oxygen.',
@@ -299,15 +299,15 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-amide-resonance',
   lessons: ['peptides-proteins'],
-  viewBox: '0 0 340 480',
+  viewBox: '0 0 340 490',
   alt: 'Top: a peptide unit, Cα–C(=O)–N(H)–Cα, with curved arrows from the nitrogen lone pair into the C–N bond and from the C=O bond onto oxygen. A vertical double-headed resonance arrow leads down to the second structure, with C=N double, a plus charge on nitrogen and a minus charge on oxygen.',
   build() {
     let s = '';
-    s += peptideUnit(P(140, 100), false, { arrows: true });
-    s += tg(140, 212, 'lone pair on N, C=O double');
-    s += resArrow(P(140, 226), P(140, 270));
-    s += peptideUnit(P(140, 350), true);
-    s += tg(140, 462, 'C=N double, + on N, − on O');
+    s += peptideUnit(P(136, 96), false, { arrows: true });
+    s += tg(170, 218, 'lone pair on N, C=O double');
+    s += resArrow(P(170, 230), P(170, 272));
+    s += peptideUnit(P(136, 352), true);
+    s += tg(170, 474, 'C=N double, + on N, − on O');
     return s;
   },
   caption: 'The nitrogen lone pair becomes the second C–N bond, and the C=O π pair moves onto oxygen.',
@@ -335,9 +335,9 @@ FIGURES.push({
     s += atom(o.x, o.y, 'O');
     s += text(o.x + 28, o.y + 5, 'δ−', { cls: 'fg-hi', size: 13 });
     s += atom(n.x, n.y, 'N');
-    s += text(n.x + 4, n.y - 24, 'δ+', { cls: 'fg-warn', size: 13 });
+    s += text(n.x + 24, n.y + 24, 'δ+', { cls: 'fg-warn', size: 13 });
     s += atom(c.x, c.y, 'C');
-    s += tg(c.x + 64, c.y + 70, '1.33 Å', 'start');
+    s += tg(c.x + 4, c.y + 48, '1.33 Å');
     s += tg(170, 258, 'shaded: one flat plane, six atoms');
     s += tg(170, 280, 'a plain C–N single bond is 1.47 Å');
     return s;
@@ -361,8 +361,8 @@ FIGURES.push({
     const p = xs.map((x, i) => P(x, ys[i]));
     const [ca1, c1, n1, ca2, c2, n2, ca3] = p;
     const o1 = at(c1, 90, 50), h1 = at(n1, 270, 44), o2 = at(c2, 270, 50), h2 = at(n2, 90, 44);
-    s += plane(grow([ca1, o1, ca2, h1], 20));
-    s += plane(grow([ca2, h2, ca3, o2], 20));
+    s += plane(grow([ca1, o1, ca2, h1], 14));
+    s += plane(grow([ca2, h2, ca3, o2], 14), 'fg-fill-good');
     // chain continues off both ends
     s += bond(ca1, at(ca1, 150, 34), { rFrom: 15, rTo: 0 });
     s += bond(ca3, at(ca3, 30, 34), { rFrom: 15, rTo: 0 });
@@ -382,7 +382,7 @@ FIGURES.push({
       const m = P((a.x + b.x) / 2, (a.y + b.y) / 2);
       const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
       const px = -dy / L, py = dx / L;
-      s += curve(P(m.x + px * 11, m.y + py * 11), P(m.x - px * 11, m.y - py * 11), { bow: 10, size: 6 });
+      s += curve(P(m.x + px * 14, m.y + py * 14), P(m.x - px * 14, m.y - py * 14), { bow: 12, size: 7 });
     }
     s += tg(170, 24, 'rotation only at each Cα', 'middle', 'fg-tag-warn');
     s += tg(170, 250, 'shaded: rigid, flat amide plates');
@@ -397,11 +397,11 @@ FIGURES.push({
   section: 'peptides-proteins',
   lessons: ['peptides-proteins'],
   anchor: '',
-  viewBox: '0 0 340 420',
+  viewBox: '0 0 340 446',
   alt: 'An alpha helix drawn as a coil running down the page, with eleven residues marked as numbered discs, 1 at the top (the N-terminal end). Dashed lines join residue 1 to 5, 2 to 6, 3 to 7 and so on, each running roughly parallel to the helix axis. Short sticks labeled R point outward from the coil.',
   build() {
     let s = '';
-    const cx = 150, amp = 64, lift = 16, y0 = 50, rise = 28;
+    const cx = 160, amp = 72, lift = 7, y0 = 62, rise = 31;
     const pos = (k) => {
       const t = rad(k * 100);
       return { p: P(cx + amp * Math.sin(t), y0 + k * rise - lift * Math.cos(t)), front: Math.cos(t) < 0, sin: Math.sin(t) };
@@ -430,14 +430,19 @@ FIGURES.push({
         s += text(e.x + dir * 2, e.y + 4.5, 'R', { cls: 'fg-lbl', size: 13 });
       }
     });
-    for (let k = 0; k + 4 < 11; k++) s += hbond(P(res[k].p.x, res[k].p.y + 11), P(res[k + 4].p.x, res[k + 4].p.y - 11));
+    for (let k = 0; k + 4 < 11; k++) {
+      const a = res[k].p, b = res[k + 4].p;
+      const L = Math.hypot(b.x - a.x, b.y - a.y), ux = (b.x - a.x) / L, uy = (b.y - a.y) / L;
+      const line = `x1="${r2(a.x + ux * 12)}" y1="${r2(a.y + uy * 12)}" x2="${r2(b.x - ux * 12)}" y2="${r2(b.y - uy * 12)}"`;
+      s += k === 0 ? `<line class="fg-dash-hi" ${line}></line>` : `<line class="fg-dash" ${line}></line>`;
+    }
     res.forEach((r, k) => {
       s += `<circle class="${k === 0 || k === 4 ? 'fg-atom-hi' : 'fg-atom'}" cx="${r2(r.p.x)}" cy="${r2(r.p.y)}" r="11"${r.front ? '' : ' opacity="0.75"'}></circle>`;
       s += text(r.p.x, r.p.y + 4.5, String(k + 1), { cls: 'fg-lbl', size: 13 });
     });
-    s += tg(cx, 22, 'N-terminal end');
-    s += tg(170, 380, 'C=O of residue 1 ··· H–N of residue 5');
-    s += tg(170, 402, '3.6 residues per turn');
+    s += tg(cx, 26, 'residue 1: N-terminal end');
+    s += tg(170, 412, 'C=O of residue 1 ··· H–N of residue 5');
+    s += tg(170, 432, '3.6 residues per turn');
     return s;
   },
   caption: 'Each dashed line is a hydrogen bond from the C=O of one residue to the N–H of the residue four places further along (1 to 5 is highlighted).',
@@ -521,7 +526,7 @@ FIGURES.push({
   id: 'disulfide',
   section: 'peptides-proteins',
   anchor: '',
-  viewBox: '0 0 760 370',
+  viewBox: '0 0 760 416',
   alt: 'Left: two stretches of backbone, one above the other, each with a cysteine side chain, CH2–SH, pointing toward the other. Right: the same two stretches joined by an S–S bond between the two sulfurs. A forward arrow between them is labeled oxidation, loses 2 H; a reverse arrow is labeled reduction, adds 2 H.',
   build() {
     let s = '';
@@ -531,8 +536,8 @@ FIGURES.push({
     s += tg(380, 158, 'oxidation (−2 H)');
     s += arrow(P(450, 210), P(310, 210), { muted: true });
     s += tg(380, 232, 'reduction (+2 H)');
-    s += tg(180, 360, 'two cysteine thiols, S–H');
-    s += tg(580, 360, 'one disulfide bond, S–S');
+    s += tg(180, 404, 'two cysteine thiols, S–H');
+    s += tg(580, 404, 'one disulfide bond, S–S');
     return s;
   },
   caption: 'The two sulfurs each lose their H and bond to each other. The S–S bond (highlighted) is covalent, so it holds two distant parts of the chain together.',
@@ -544,7 +549,7 @@ FIGURES.push({
   section: 'peptides-proteins',
   lessons: ['peptides-proteins'],
   anchor: '',
-  viewBox: '0 0 340 320',
+  viewBox: '0 0 340 332',
   alt: 'A folded protein drawn as an oval. Inside it, the nonpolar side chains Leu, Val, Phe and Ile are packed together. Around its edge, the polar and charged side chains Asp minus, Lys plus, Ser, Glu minus, Arg plus and Thr point outward, and H2O molecules sit outside next to them.',
   build() {
     let s = '';
@@ -560,8 +565,8 @@ FIGURES.push({
       const w = P(c.x + (rx + 34) * Math.cos(rad(deg)), c.y - (ry + 30) * Math.sin(rad(deg)));
       s += text(w.x, w.y + 4, 'H₂O', { cls: 'fg-tag-mut', size: 11 });
     }
-    s += tg(170, 284, 'inside: nonpolar side chains');
-    s += tg(170, 304, 'surface: polar and charged, facing water');
+    s += tg(170, 300, 'inside: nonpolar side chains');
+    s += tg(170, 320, 'surface: polar and charged, facing water');
     return s;
   },
   caption: 'The nonpolar side chains (plain discs, coral patch) pack together inside. The polar and charged ones (teal) sit on the surface, next to the water.',
@@ -595,7 +600,8 @@ FIGURES.push({
     s += bond(p[3], k1, { rFrom: 20, rTo: 22 }) + atom(k1.x, k1.y, 'NH₃⁺', { r: 22, kind: 'warn' });
     s += hbond(P(a1.x + 23, a1.y), P(k1.x - 23, k1.y));
     s += tg(170, a1.y - 28, 'salt bridge');
-    names.forEach((n, i) => { s += atom(p[i].x, p[i].y, n, { r: 20, kind: i === 1 || i === 4 ? 'warn' : undefined }); });
+    s += `<ellipse class="fg-fill-mut" opacity="0.5" cx="${c.x}" cy="${c.y}" rx="${R + 26}" ry="30"></ellipse>`;
+    names.forEach((n, i) => { s += atom(p[i].x, p[i].y, n, { r: 20 }); });
     s += tg(170, c.y - 4, 'Leu and Val:');
     s += tg(170, c.y + 12, 'nonpolar');
     return s;
@@ -629,7 +635,7 @@ FIGURES.push({
 
     const y2 = 180;
     s += arrow(P(620, y1 + 24), P(620, y2 - 24));
-    s += tg(632, 124, 'TFA (acid) removes Boc', 'start');
+    s += tg(606, 124, 'TFA (acid) removes Boc', 'end');
     s += lbl(556, y2 + 4.5, 'H₂N–', 'end');
     s += block(558, y2, 54, 'Gly', 'hi') + block(616, y2, 54, 'Ala', 'hi') + block(674, y2, 64, 'OCH₃', 'warn');
     s += tg(24, y2 - 8, 'For a longer chain: couple the next Boc amino acid', 'start', 'fg-tag-mut');
@@ -637,12 +643,12 @@ FIGURES.push({
 
     const y3 = 300;
     s += arrow(P(620, y2 + 24), P(620, y3 - 24));
-    s += tg(632, 244, 'aqueous base, then acid,', 'start');
-    s += tg(632, 260, 'removes the ester', 'start');
+    s += tg(606, 236, 'aqueous base, then acid,', 'end');
+    s += tg(606, 252, 'removes the ester', 'end');
     s += lbl(556, y3 + 4.5, 'H₂N–', 'end');
     s += block(558, y3, 54, 'Gly', 'hi') + block(616, y3, 54, 'Ala', 'hi');
     s += lbl(674, y3 + 4.5, '–COOH', 'start');
-    s += tg(420, y3 + 5, 'Gly-Ala', 'middle', 'fg-tag-good');
+    s += tg(480, y3 + 5, 'the dipeptide Gly-Ala', 'end', 'fg-tag-good');
     return s;
   },
   caption: 'Coral blocks are the protecting groups. Each coupling joins the one free COOH to the one free NH₂, so only one product can form.',
@@ -651,239 +657,226 @@ FIGURES.push({
 /* 12. How DCC couples an acid to an amine. The carbodiimide half is drawn in
    full once; after that the leaving group is written as a condensed group. */
 const LG = 'C(=NCy)NHCy';
-function acylLG(c, { oLps = true } = {}) {
-  // R–C(=O)–O–[LG], carbonyl straight up
+/* The tetrahedral intermediate of panels 2 and 3: C with O⁻ up, R′NH₂⁺ at
+   upper left, R at lower left and the O–LG leaving group at lower right. */
+function tetrahedral(c, { arrows = false } = {}) {
   let s = '';
-  const o = at(c, 90, 54), r = at(c, 210, 54), og = at(c, 330, 54);
-  s += bond(c, o, { order: 2, rFrom: 16, rTo: 15 });
+  const o = at(c, 90, 56), n = at(c, 150, 58), r = at(c, 210, 56), og = at(c, 330, 56);
+  s += bond(c, o, { rFrom: 16, rTo: 16 }) + lp(o, 150) + lp(o, 90) + lp(o, 30);
+  s += atom(o.x, o.y, 'O', { kind: 'hi' }) + charge(o.x + 26, o.y + 14, '−', 'fg-hi');
   s += bond(c, r, { rFrom: 16, rTo: 15 }) + atom(r.x, r.y, 'R');
-  s += bond(c, og, { rFrom: 16, rTo: 15 });
-  s += bond(og, P(og.x + 44, og.y), { rFrom: 15, rTo: 0 });
-  s += lbl(og.x + 47, og.y + 4.5, LG, 'start');
-  if (oLps) s += lp(o, 150) + lp(o, 30);
-  return { s, o, r, og };
+  s += bond(c, n, { rFrom: 16, rTo: 16 });
+  s += arm(n, 90, 42, 'H', { r: 12, rFrom: 16 }).s + arm(n, 170, 46, 'R′', { rFrom: 16 }).s + arm(n, 230, 42, 'H', { r: 12, rFrom: 16 }).s;
+  s += atom(n.x, n.y, 'N') + charge(at(n, 300, 25).x, at(n, 300, 25).y + 5, '+');
+  s += bond(c, og, { rFrom: 16, rTo: 16 }) + atom(og.x, og.y, 'O', { kind: arrows ? 'warn' : undefined });
+  s += bond(og, P(og.x + 40, og.y), { rFrom: 16, rTo: 0 }) + lbl(og.x + 43, og.y + 4.5, LG, 'start');
+  s += atom(c.x, c.y, 'C');
+  if (arrows) {
+    s += curve(lpTip(o, 150, 27), onBond(c, o, 0.45, 8), { bow: 14, size: 7 });
+    s += fromBond(c, og, P(og.x - 6, og.y + 19), 12, -6);
+  }
+  return s;
 }
 FIGURES.push({
   id: 'dcc-coupling',
   section: 'peptides-proteins',
   anchor: '',
-  viewBox: '0 0 760 770',
-  alt: 'Three panels. Panel 1, DCC activates the acid: a carboxylate oxygen lone pair attacks the central carbon of protonated DCC, Cy–N=C=N+(H)–Cy, while the C=N double bond moves onto the positive nitrogen, giving an O-acylisourea, R–C(=O)–O–C(=NCy)NHCy. Panel 2, the amine adds: the nitrogen lone pair of R′–NH2 attacks the carbonyl carbon while the C=O pi bond moves onto oxygen, giving a tetrahedral carbon carrying O minus, N+H2R′, R and the O–C(=NCy)NHCy group. Panel 3, the carbonyl reforms: an oxygen lone pair moves back to make C=O, and the C–O bond to the leaving group breaks. The products are the amide R–C(=O)–NH–R′ and dicyclohexylurea.',
+  viewBox: '0 0 760 800',
+  alt: 'Three panels. Panel 1, DCC activates the acid: a carboxylate oxygen lone pair attacks the central carbon of protonated DCC, Cy–N=C=N+(H)–Cy, while one C=N double bond moves onto the positive nitrogen, giving an O-acylisourea, R–C(=O)–O–C(=NCy)NHCy. Panel 2, the amine adds: the nitrogen lone pair of R′–NH2 attacks the carbonyl carbon while the C=O pi bond moves onto oxygen, giving a tetrahedral carbon carrying O minus, N+H2R′, R and the O–C(=NCy)NHCy group. Panel 3, the carbonyl reforms: an oxygen lone pair moves back to make C=O, and the C–O bond to the leaving group breaks. The products are the amide R–C(=O)–NH–R′ and dicyclohexylurea.',
   build() {
     let s = '';
     /* Panel 1 */
-    s += panel(16, 12, 728, 236);
+    s += panel(16, 12, 728, 256);
     s += tg(380, 34, '1 · DCC ACTIVATES THE ACID');
-    const c1 = P(100, 132);
-    const o1 = at(c1, 90, 54), r1 = at(c1, 210, 54), om = at(c1, 330, 54);
+    const c1 = P(100, 136);
+    const o1 = at(c1, 90, 56), r1 = at(c1, 210, 56), om = at(c1, 330, 56);
     s += bond(c1, o1, { order: 2, rFrom: 16, rTo: 15 }) + lp(o1, 150) + lp(o1, 30) + atom(o1.x, o1.y, 'O');
     s += bond(c1, r1, { rFrom: 16, rTo: 15 }) + atom(r1.x, r1.y, 'R');
-    s += bond(c1, om, { rFrom: 16, rTo: 16 }) + lp(om, 20) + lp(om, 270) + lp(om, 330);
-    s += atom(om.x, om.y, 'O', { kind: 'hi' }) + charge(om.x - 4, om.y + 32, '−', 'fg-hi');
+    s += bond(c1, om, { rFrom: 16, rTo: 16 }) + lp(om, 40) + lp(om, 280) + lp(om, 340);
+    s += atom(om.x, om.y, 'O', { kind: 'hi' }) + charge(om.x - 20, om.y + 26, '−', 'fg-hi');
     s += atom(c1.x, c1.y, 'C');
-    // protonated DCC, drawn upright: Cy–N=C=N⁺(H)–Cy
-    const cd = P(262, 132), na = P(262, 80), nb = P(262, 184);
+    // protonated DCC, drawn upright: Cy–N=C=N⁺(H)–Cy (the central carbon is sp, so N=C=N is straight)
+    const cd = P(270, 136), na = P(270, 82), nb = P(270, 190);
     s += bond(cd, na, { order: 2, rFrom: 16, rTo: 15 }) + bond(cd, nb, { order: 2, rFrom: 16, rTo: 16 });
     s += arm(na, 30, 46, 'Cy').s + lp(na, 150);
     s += arm(nb, 330, 46, 'Cy', { rFrom: 16 }).s + arm(nb, 210, 44, 'H', { r: 12, rFrom: 16 }).s;
-    s += atom(na.x, na.y, 'N') + atom(nb.x, nb.y, 'N', { kind: 'warn' }) + charge(nb.x, nb.y + 32, '+');
+    s += atom(na.x, na.y, 'N') + atom(nb.x, nb.y, 'N', { kind: 'warn' }) + charge(nb.x + 22, nb.y - 16, '+');
     s += atom(cd.x, cd.y, 'C', { kind: 'warn' });
-    s += curve(lpTip(om, 20, 27), P(cd.x - 18, cd.y + 4), { bow: 18, size: 7 });
-    s += fromBond(cd, nb, P(nb.x + 17, nb.y - 8), -12, -6);
-    s += tg(100, 230, 'carboxylate');
-    s += tg(262, 230, 'protonated DCC');
-    s += arrow(P(344, 132), P(410, 132));
+    s += curve(lpTip(om, 40, 27), P(cd.x - 19, cd.y + 3), { bow: 16, size: 7 });
+    s += fromBond(cd, nb, P(nb.x - 18, nb.y - 7), 12, 7);
+    s += tg(100, 250, 'carboxylate');
+    s += tg(270, 250, 'protonated DCC');
+    s += arrow(P(350, 136), P(412, 136));
     // O-acylisourea
-    const c2 = P(470, 132);
-    const o2 = at(c2, 90, 54), r2p = at(c2, 210, 54), og2 = at(c2, 330, 54);
+    const c2 = P(470, 136);
+    const o2 = at(c2, 90, 56), r2p = at(c2, 210, 56), og2 = at(c2, 330, 56);
     s += bond(c2, o2, { order: 2, rFrom: 16, rTo: 15 }) + atom(o2.x, o2.y, 'O');
     s += bond(c2, r2p, { rFrom: 16, rTo: 15 }) + atom(r2p.x, r2p.y, 'R');
-    s += bond(c2, og2, { rFrom: 16, rTo: 15 });
-    const ci = at(og2, 30, 54);
-    s += bond(og2, ci, { rFrom: 15, rTo: 16 });
-    const ni = at(ci, 90, 50), nj = at(ci, 330, 54);
+    s += bond(c2, og2, { rFrom: 16, rTo: 16 });
+    const ci = at(og2, 30, 56);
+    s += bond(og2, ci, { rFrom: 16, rTo: 16, cls: 'fg-bond-hi' });
+    const ni = at(ci, 90, 52), nj = at(ci, 330, 56);
     s += bond(ci, ni, { order: 2, rFrom: 16, rTo: 15 }) + arm(ni, 30, 46, 'Cy').s + atom(ni.x, ni.y, 'N');
     s += bond(ci, nj, { rFrom: 16, rTo: 15 }) + arm(nj, 30, 46, 'Cy').s + arm(nj, 270, 42, 'H', { r: 12 }).s + atom(nj.x, nj.y, 'N');
-    s += atom(og2.x, og2.y, 'O', { kind: 'warn' }) + atom(ci.x, ci.y, 'C') + atom(c2.x, c2.y, 'C');
-    s += tg(560, 230, 'O-acylisourea: a good leaving group on the acyl C');
+    s += atom(og2.x, og2.y, 'O', { kind: 'warn' }) + atom(ci.x, ci.y, 'C', { kind: 'warn' }) + atom(c2.x, c2.y, 'C');
+    s += tg(572, 250, 'O-acylisourea: a good leaving group');
 
     /* Panel 2 */
-    s += panel(16, 262, 728, 236);
-    s += tg(380, 284, '2 · THE AMINE ADDS TO THE C=O');
-    const c3 = P(190, 392);
-    const k3 = acylLG(c3);
-    s += atom(k3.o.x, k3.o.y, 'O') + atom(k3.og.x, k3.og.y, 'O', { kind: 'warn' });
-    const nA = P(78, 350);
+    s += panel(16, 282, 728, 246);
+    s += tg(380, 304, '2 · THE AMINE ADDS TO THE C=O');
+    const c3 = P(200, 420);
+    const o3 = at(c3, 90, 56), r3 = at(c3, 210, 56), og3 = at(c3, 330, 56);
+    s += bond(c3, o3, { order: 2, rFrom: 16, rTo: 15 }) + lp(o3, 150) + lp(o3, 30) + atom(o3.x, o3.y, 'O');
+    s += bond(c3, r3, { rFrom: 16, rTo: 15 }) + atom(r3.x, r3.y, 'R');
+    s += bond(c3, og3, { rFrom: 16, rTo: 16 }) + atom(og3.x, og3.y, 'O', { kind: 'warn' });
+    s += bond(og3, P(og3.x + 40, og3.y), { rFrom: 16, rTo: 0 }) + lbl(og3.x + 43, og3.y + 4.5, LG, 'start');
+    const nA = P(86, 370);
     s += arm(nA, 90, 42, 'H', { r: 12 }).s + arm(nA, 210, 42, 'H', { r: 12 }).s + arm(nA, 150, 46, 'R′').s;
-    s += lp(nA, 330) + atom(nA.x, nA.y, 'N', { kind: 'hi' });
+    s += lp(nA, 340) + atom(nA.x, nA.y, 'N', { kind: 'hi' });
     s += atom(c3.x, c3.y, 'C', { kind: 'warn' });
-    s += curve(lpTip(nA, 330, 27), P(c3.x - 18, c3.y - 7), { bow: -10, size: 7 });
-    s += curve(onBond(c3, k3.o, 0.5, -7), P(k3.o.x + 17, k3.o.y + 3), { bow: -12, size: 7 });
-    s += arrow(P(378, 392), P(440, 392));
-    // tetrahedral intermediate
-    const c4 = P(540, 400);
-    const o4 = at(c4, 90, 54), n4 = at(c4, 150, 56), r4 = at(c4, 210, 54), og4 = at(c4, 330, 54);
-    s += bond(c4, o4, { rFrom: 16, rTo: 16 }) + lp(o4, 150) + lp(o4, 90) + lp(o4, 30);
-    s += atom(o4.x, o4.y, 'O', { kind: 'hi' }) + charge(o4.x + 25, o4.y + 13, '−', 'fg-hi');
-    s += bond(c4, r4, { rFrom: 16, rTo: 15 }) + atom(r4.x, r4.y, 'R');
-    s += bond(c4, n4, { rFrom: 16, rTo: 16 });
-    s += arm(n4, 90, 42, 'H', { r: 12, rFrom: 16 }).s + arm(n4, 170, 46, 'R′', { rFrom: 16 }).s + arm(n4, 230, 42, 'H', { r: 12, rFrom: 16 }).s;
-    s += atom(n4.x, n4.y, 'N', { kind: 'warn' }) + charge(n4.x + 20, n4.y - 20, '+');
-    s += bond(c4, og4, { rFrom: 16, rTo: 15 }) + atom(og4.x, og4.y, 'O');
-    s += bond(og4, P(og4.x + 44, og4.y), { rFrom: 15, rTo: 0 }) + lbl(og4.x + 47, og4.y + 4.5, LG, 'start');
-    s += atom(c4.x, c4.y, 'C');
-    s += tg(560, 484, 'tetrahedral intermediate');
+    s += curve(lpTip(nA, 340, 27), P(c3.x - 19, c3.y - 6), { bow: 10, size: 7 });
+    s += curve(onBond(c3, o3, 0.5, -8), P(o3.x + 18, o3.y + 5), { bow: -16, size: 7 });
+    s += arrow(P(412, 420), P(470, 420));
+    s += tetrahedral(P(560, 428));
+    s += tg(572, 514, 'tetrahedral intermediate');
 
     /* Panel 3 */
-    s += panel(16, 512, 728, 244);
-    s += tg(380, 534, '3 · THE C=O REFORMS AND THE LEAVING GROUP GOES');
-    const c5 = P(180, 650);
-    const o5 = at(c5, 90, 54), n5 = at(c5, 150, 56), r5 = at(c5, 210, 54), og5 = at(c5, 330, 54);
-    s += bond(c5, o5, { rFrom: 16, rTo: 16 }) + lp(o5, 150) + lp(o5, 90) + lp(o5, 30);
-    s += atom(o5.x, o5.y, 'O', { kind: 'hi' }) + charge(o5.x - 25, o5.y + 13, '−', 'fg-hi');
-    s += bond(c5, r5, { rFrom: 16, rTo: 15 }) + atom(r5.x, r5.y, 'R');
-    s += bond(c5, n5, { rFrom: 16, rTo: 16 });
-    s += arm(n5, 90, 42, 'H', { r: 12, rFrom: 16 }).s + arm(n5, 170, 46, 'R′', { rFrom: 16 }).s + arm(n5, 230, 42, 'H', { r: 12, rFrom: 16 }).s;
-    s += atom(n5.x, n5.y, 'N') + charge(n5.x + 20, n5.y - 20, '+');
-    s += bond(c5, og5, { rFrom: 16, rTo: 16 }) + atom(og5.x, og5.y, 'O', { kind: 'warn' });
-    s += bond(og5, P(og5.x + 44, og5.y), { rFrom: 16, rTo: 0 }) + lbl(og5.x + 47, og5.y + 4.5, LG, 'start');
-    s += atom(c5.x, c5.y, 'C');
-    s += curve(lpTip(o5, 30, 27), onBond(c5, o5, 0.45, -8), { bow: -14, size: 7 });
-    s += fromBond(c5, og5, P(og5.x - 4, og5.y + 19), 12, -6);
-    s += arrow(P(372, 650), P(430, 650));
-    // products: amide + DCU
-    const c6 = P(500, 650);
-    const o6 = at(c6, 90, 54), r6 = at(c6, 210, 54), n6 = at(c6, 330, 56);
+    s += panel(16, 542, 728, 246);
+    s += tg(380, 564, '3 · THE C=O REFORMS AND THE LEAVING GROUP GOES');
+    s += tetrahedral(P(150, 688), { arrows: true });
+    s += arrow(P(372, 688), P(420, 688));
+    const c6 = P(480, 680);
+    const o6 = at(c6, 90, 56), r6 = at(c6, 210, 56), n6 = at(c6, 330, 58);
     s += bond(c6, o6, { order: 2, rFrom: 16, rTo: 15 }) + atom(o6.x, o6.y, 'O');
     s += bond(c6, r6, { rFrom: 16, rTo: 15 }) + atom(r6.x, r6.y, 'R');
     s += bond(c6, n6, { rFrom: 16, rTo: 15, cls: 'fg-bond-hi' });
-    s += arm(n6, 30, 46, 'R′').s + arm(n6, 270, 42, 'H', { r: 12 }).s + atom(n6.x, n6.y, 'N');
+    s += arm(n6, 30, 46, 'R′').s + arm(n6, 270, 40, 'H', { r: 12 }).s + atom(n6.x, n6.y, 'N');
     s += atom(c6.x, c6.y, 'C');
-    s += tg(520, 736, 'the amide (after N loses H⁺)');
-    s += lbl(640, 610, '+ CyNH–C(=O)–NHCy', 'start');
-    s += tg(662, 632, 'dicyclohexylurea', 'start');
+    s += tg(500, 774, 'the amide (after N loses H⁺)');
+    s += lbl(596, 654, '+ CyNH–C(=O)–NHCy', 'start');
+    s += tg(612, 676, 'dicyclohexylurea (after', 'start');
+    s += tg(612, 692, 'the leaving group gains H⁺)', 'start');
     return s;
   },
-  caption: 'Cy is cyclohexyl, C₆H₁₁. Follow the coral atoms: DCC’s central carbon becomes attached to the acid’s oxygen, and that oxygen later leaves, carrying DCC with it as dicyclohexylurea. Proton transfers are not drawn.',
+  caption: 'Cy is cyclohexyl, C₆H₁₁. Follow the coral atoms: the acid’s oxygen bonds to DCC’s central carbon (highlighted bond), and in panel 3 that oxygen leaves, taking the DCC part with it as dicyclohexylurea. Proton transfers are not drawn.',
 });
 
 /* 13. Edman degradation, step by step. */
 function ring5(c, R, rot = 90) {
-  // vertices counterclockwise from angle rot: 0 top, then around
+  // vertices counterclockwise from angle rot
   return [0, 1, 2, 3, 4].map((i) => at(c, rot + i * 72, R));
 }
 FIGURES.push({
   id: 'edman',
   section: 'peptides-proteins',
   anchor: '',
-  viewBox: '0 0 760 800',
+  viewBox: '0 0 760 830',
   alt: 'Three panels. Panel 1, coupling: the lone pair of the N-terminal NH2 of a peptide attacks the central carbon of phenyl isothiocyanate, S=C=N–Ph, while the C=N double bond moves onto nitrogen; after a proton moves, the product is a phenylthiourea, Ph–NH–C(=S)–NH–CH(R1)–C(=O)–NH–peptide. Panel 2, in acid: the thiourea sulfur attacks the carbonyl carbon of the first peptide bond, closing a five-membered ring, while the C=O pi bond moves onto oxygen; then the oxygen lone pair reforms C=O and the C–N bond to the rest of the chain breaks. Panel 3: the ring leaves as an anilinothiazolinone, ATZ, and the peptide, one residue shorter, has a new free NH2. In aqueous acid the ATZ rearranges to the phenylthiohydantoin, PTH, which is identified.',
   build() {
     let s = '';
     /* Panel 1: coupling */
     s += panel(16, 12, 728, 250);
     s += tg(380, 34, '1 · COUPLING (MILDLY BASIC): THE AMINE ADDS TO PhN=C=S');
-    const s1 = P(40, 96), ct = P(96, 96), nt = P(152, 96);
+    const s1 = P(40, 96), ct = P(98, 96), nt = P(156, 96);
     s += bond(s1, ct, { order: 2, rFrom: 15, rTo: 16 }) + bond(ct, nt, { order: 2, rFrom: 16, rTo: 15 });
-    s += arm(nt, 30, 46, 'Ph').s + lp(nt, 150, 20);
+    s += arm(nt, 30, 46, 'Ph').s + lp(nt, 285, 21);
+    s += lp(s1, 90) + lp(s1, 270);
     s += atom(s1.x, s1.y, 'S') + atom(nt.x, nt.y, 'N') + atom(ct.x, ct.y, 'C', { kind: 'warn' });
-    const pep = chain(96, 180, 56, [
+    const pep = chain(98, 182, 58, [
       { l: 'H₂N', kind: 'hi' },
       { l: 'CH', dy: 26, subs: [{ deg: 270, l: 'R₁', len: 44 }] },
       { l: 'C', subs: [{ deg: 90, l: 'O', len: 50, order: 2 }] },
       { l: 'N', dy: 26, subs: [{ deg: 270, l: 'H', len: 40, r: 12 }] },
     ]);
     s += pep.s;
-    s += bond(pep.pts[3], P(pep.pts[3].x + 46, 180), { rFrom: 15, rTo: 0 });
-    s += lbl(pep.pts[3].x + 50, 184.5, 'peptide', 'start');
+    s += bond(pep.pts[3], P(pep.pts[3].x + 46, 182), { rFrom: 15, rTo: 0 });
+    s += lbl(pep.pts[3].x + 50, 186.5, 'peptide', 'start');
     s += lp(pep.pts[0], 90, 25);
     s += curve(lpTip(pep.pts[0], 90, 31), P(ct.x, ct.y + 19), { bow: -10, size: 7 });
-    s += fromBond(ct, nt, P(nt.x - 6, nt.y - 18), 14, 6);
-    s += arrow(P(372, 150), P(430, 150));
-    s += lbl(450, 146, 'Ph–NH–C(=S)–NH–CH(R₁)–C(=O)–NH–peptide', 'start');
-    s += tg(450, 172, 'a phenylthiourea (after one proton moves)', 'start');
+    s += fromBond(ct, nt, P(nt.x - 4, nt.y - 18), -14, 7);
+    s += arrow(P(380, 150), P(430, 150));
+    s += lbl(446, 146, 'Ph–NH–C(=S)–NH–CH(R₁)–C(=O)–NH–peptide', 'start');
+    s += tg(446, 172, 'a phenylthiourea (after one proton moves)', 'start');
 
     /* Panel 2: cyclization and cleavage */
-    s += panel(16, 276, 728, 270);
+    s += panel(16, 276, 728, 290);
     s += tg(380, 298, '2 · IN ACID: SULFUR ATTACKS THE FIRST C=O, THEN THE CHAIN LEAVES');
     const drawRing = (c, stage) => {
-      // stage 0: thiourea folded (no S–C5 bond); 1: tetrahedral intermediate
+      // stage 0: thiourea folded (no S–C bond yet); 1: tetrahedral intermediate
       let t = '';
       const [S1, C2, N3, C4, C5] = ring5(c, 50, 90);
-      // ring bonds
-      t += bond(S1, C2, { order: 2, rFrom: 15, rTo: 16 });
-      t += bond(C2, N3, { rFrom: 16, rTo: 15 }) + bond(N3, C4, { rFrom: 15, rTo: 17 }) + bond(C4, C5, { rFrom: 17, rTo: 16 });
-      if (stage === 1) t += bond(S1, C5, { rFrom: 15, rTo: 16, cls: 'fg-bond-hi' });
-      // exocyclic groups
-      const nx = at(C2, 162, 50);
-      t += bond(C2, nx, { rFrom: 16, rTo: 15 }) + arm(nx, 90, 40, 'H', { r: 12 }).s + arm(nx, 210, 44, 'Ph').s + atom(nx.x, nx.y, 'N');
+      t += bond(S1, C2, { order: 2, rFrom: 16, rTo: 16 });
+      t += bond(C2, N3, { rFrom: 16, rTo: 15 }) + bond(N3, C4, { rFrom: 15, rTo: 15 }) + bond(C4, C5, { rFrom: 15, rTo: 16 });
+      if (stage === 1) t += bond(S1, C5, { rFrom: 16, rTo: 16, cls: 'fg-bond-hi' });
+      t += arm(C2, 162, 58, 'PhNH', { rFrom: 16, r: 21 }).s;
       t += arm(N3, 234, 40, 'H', { r: 12 }).s;
       t += arm(C4, 306, 44, 'R₁').s;
-      const o = at(C5, stage === 0 ? 60 : 50, 50);
-      const np = at(C5, -20, 54);
-      t += bond(C5, o, { order: stage === 0 ? 2 : 1, rFrom: 16, rTo: stage === 0 ? 15 : 16 });
+      const o = at(C5, 60, 52);
+      const np = at(C5, -24, 54);
+      t += bond(C5, o, { order: stage === 0 ? 2 : 1, rFrom: 16, rTo: 16 });
       t += bond(C5, np, { rFrom: 16, rTo: 15 });
-      t += arm(np, 270, 40, 'H', { r: 12 }).s;
-      t += bond(np, P(np.x + 40, np.y), { rFrom: 15, rTo: 0 }) + lbl(np.x + 43, np.y + 4.5, 'peptide', 'start');
+      t += arm(np, 30, 40, 'H', { r: 12 }).s;
+      t += bond(np, at(np, 290, 40), { rFrom: 15, rTo: 0 });
+      t += lbl(at(np, 290, 40).x + 4, at(np, 290, 40).y + 16, 'peptide', 'start');
       if (stage === 0) {
-        t += lp(S1, 20, 20) + lp(S1, 160, 20) + lp(o, 150) + lp(o, 30);
+        t += lp(S1, 30, 21) + lp(S1, 150, 21) + lp(o, 150) + lp(o, 0);
         t += atom(o.x, o.y, 'O');
         t += atom(S1.x, S1.y, 'S', { kind: 'hi' });
-        t += curve(lpTip(S1, 20, 26), P(C5.x + 2, C5.y - 18), { bow: -12, size: 7 });
-        t += curve(onBond(C5, o, 0.5, 7), P(o.x + 3, o.y + 17), { bow: 12, size: 7 });
+        t += curve(lpTip(S1, 30, 27), P(C5.x - 6, C5.y - 18), { bow: -12, size: 7 });
+        t += curve(onBond(C5, o, 0.5, -8), P(o.x + 18, o.y + 6), { bow: -12, size: 7 });
       } else {
-        t += lp(S1, 90, 20) + lp(o, 130) + lp(o, 50) + lp(o, 330);
-        t += atom(o.x, o.y, 'O', { kind: 'hi' }) + charge(o.x - 22, o.y - 12, '−', 'fg-hi');
-        t += atom(S1.x, S1.y, 'S', { kind: 'warn' }) + charge(S1.x - 24, S1.y - 6, '+');
-        t += curve(lpTip(o, 330, 26), onBond(C5, o, 0.5, 7), { bow: -10, size: 7 });
-        t += fromBond(C5, np, P(np.x - 4, np.y - 18), 12, 6);
+        t += lp(S1, 90, 21) + lp(o, 150) + lp(o, 60) + lp(o, 330);
+        t += atom(o.x, o.y, 'O', { kind: 'hi' }) + charge(o.x + 24, o.y + 22, '−', 'fg-hi');
+        t += atom(S1.x, S1.y, 'S', { kind: 'warn' }) + charge(S1.x - 26, S1.y - 4, '+');
+        t += curve(lpTip(o, 150, 27), onBond(C5, o, 0.5, 8), { bow: 12, size: 7 });
+        t += fromBond(C5, np, P(np.x - 6, np.y + 18), -12, -6);
       }
+      t += atom(np.x, np.y, 'N', { kind: stage === 1 ? 'warn' : undefined });
       t += atom(N3.x, N3.y, 'N') + atom(C4.x, C4.y, 'CH') + atom(C2.x, C2.y, 'C') + atom(C5.x, C5.y, 'C', { kind: 'warn' });
       return t;
     };
-    s += drawRing(P(190, 412), 0);
-    s += arrow(P(360, 412), P(410, 412));
-    s += drawRing(P(530, 412), 1);
-    s += tg(190, 530, 'the thiourea, folded');
-    s += tg(530, 530, 'ring closed; C=O about to reform');
+    s += drawRing(P(190, 420), 0);
+    s += arrow(P(352, 420), P(398, 420));
+    s += drawRing(P(556, 420), 1);
+    s += tg(190, 550, 'the thiourea, folded');
+    s += tg(556, 550, 'ring closed; now the C=O reforms');
 
     /* Panel 3: products and the conversion to PTH */
-    s += panel(16, 560, 728, 226);
-    s += tg(380, 582, '3 · THE FIRST RESIDUE LEAVES AS AN ATZ, WHICH BECOMES THE PTH');
+    s += panel(16, 580, 728, 238);
+    s += tg(380, 602, '3 · THE FIRST RESIDUE LEAVES AS AN ATZ, WHICH BECOMES THE PTH');
     {
-      const [S1, C2, N3, C4, C5] = ring5(P(150, 672), 46, 90);
+      const [S1, C2, N3, C4, C5] = ring5(P(170, 700), 46, 90);
       let t = '';
-      t += bond(S1, C2, { rFrom: 15, rTo: 16 }) + bond(C2, N3, { order: 2, rFrom: 16, rTo: 15 }) + bond(N3, C4, { rFrom: 15, rTo: 17 });
-      t += bond(C4, C5, { rFrom: 17, rTo: 16 }) + bond(C5, S1, { rFrom: 16, rTo: 15 });
-      const nx = at(C2, 162, 48);
-      t += bond(C2, nx, { rFrom: 16, rTo: 15 }) + arm(nx, 90, 40, 'H', { r: 12 }).s + arm(nx, 210, 44, 'Ph').s + atom(nx.x, nx.y, 'N');
+      t += bond(S1, C2, { rFrom: 16, rTo: 16 }) + bond(C2, N3, { order: 2, rFrom: 16, rTo: 15 }) + bond(N3, C4, { rFrom: 15, rTo: 15 });
+      t += bond(C4, C5, { rFrom: 15, rTo: 16 }) + bond(C5, S1, { rFrom: 16, rTo: 16 });
+      t += arm(C2, 162, 58, 'PhNH', { rFrom: 16, r: 21 }).s;
       t += arm(C4, 306, 42, 'R₁').s;
       t += arm(C5, 18, 44, 'O', { order: 2, rFrom: 16 }).s;
       t += atom(S1.x, S1.y, 'S') + atom(N3.x, N3.y, 'N') + atom(C4.x, C4.y, 'CH') + atom(C2.x, C2.y, 'C') + atom(C5.x, C5.y, 'C');
       s += t;
-      s += tg(150, 764, 'ATZ (anilinothiazolinone)');
+      s += tg(170, 802, 'ATZ (anilinothiazolinone)');
     }
-    s += lbl(286, 648, '+ H₂N–peptide', 'start');
-    s += tg(286, 670, 'one residue shorter', 'start');
-    s += arrow(P(430, 690), P(490, 690));
-    s += tg(460, 712, 'aqueous acid');
+    s += lbl(300, 660, '+ H₂N–peptide', 'start');
+    s += tg(300, 682, 'one residue shorter', 'start');
+    s += arrow(P(456, 716), P(516, 716));
+    s += tg(486, 738, 'aqueous acid');
     {
-      const [C4, C5, N1, C2, N3] = ring5(P(610, 682), 46, 90);
+      const [C4, C5, N1, C2, N3] = ring5(P(630, 706), 44, 90);
       let t = '';
-      t += bond(C4, C5, { rFrom: 16, rTo: 17 }) + bond(C5, N1, { rFrom: 17, rTo: 15 }) + bond(N1, C2, { rFrom: 15, rTo: 16 });
+      t += bond(C4, C5, { rFrom: 16, rTo: 15 }) + bond(C5, N1, { rFrom: 15, rTo: 15 }) + bond(N1, C2, { rFrom: 15, rTo: 16 });
       t += bond(C2, N3, { rFrom: 16, rTo: 15 }) + bond(N3, C4, { rFrom: 15, rTo: 16 });
-      t += arm(C4, 90, 44, 'O', { order: 2, rFrom: 16 }).s;
+      t += arm(C4, 90, 42, 'O', { order: 2, rFrom: 16 }).s;
       t += arm(C5, 162, 42, 'R₁').s;
       t += arm(N1, 234, 38, 'H', { r: 12 }).s;
-      t += arm(C2, 306, 44, 'S', { order: 2, rFrom: 16 }).s;
+      t += arm(C2, 306, 42, 'S', { order: 2, rFrom: 16 }).s;
       t += arm(N3, 18, 44, 'Ph').s;
       t += atom(C4.x, C4.y, 'C') + atom(C5.x, C5.y, 'CH') + atom(N1.x, N1.y, 'N') + atom(C2.x, C2.y, 'C') + atom(N3.x, N3.y, 'N');
       s += t;
-      s += tg(610, 772, 'PTH (phenylthiohydantoin)', 'middle', 'fg-tag-good');
+      s += tg(620, 802, 'PTH (phenylthiohydantoin)', 'middle', 'fg-tag-good');
     }
     return s;
   },
-  caption: 'Ph is phenyl, C₆H₅. Follow the coral carbon: in panel 1 it is the carbon of PhN=C=S, and in panel 2 it is the carbonyl carbon that sulfur attacks. Proton transfers are not drawn.',
+  caption: 'Ph is phenyl, C₆H₅. Follow the coral carbon in each panel: first the carbon of PhN=C=S, then the carbonyl carbon that sulfur attacks. Proton transfers are not drawn.',
 });
 
 /* 14. Trypsin and chymotrypsin fragments, and how they overlap. */
@@ -917,7 +910,7 @@ FIGURES.push({
     s += lbl(200, 204.5, 'chymotrypsin', 'end');
     s += tg(200, 222, 'cuts after Phe, Tyr, Trp', 'end', 'fg-tag-mut');
     s += row(200, [3], (i) => (i >= 2 && i <= 4 ? 'good' : undefined));
-    s += tg(640, 250, 'Ala-Phe-Arg spans the chymotrypsin cut', 'middle', 'fg-tag-good');
+    s += tg(420, 250, 'Ala-Phe-Arg spans the chymotrypsin cut', 'start', 'fg-tag-good');
     return s;
   },
   caption: 'Each dashed line is a cut. The green trypsin fragment, Ala-Phe-Arg, crosses the chymotrypsin cut, so it shows how the two chymotrypsin fragments join.',

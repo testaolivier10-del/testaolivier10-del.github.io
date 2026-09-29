@@ -166,7 +166,7 @@ FIGURES.push({
     s += tg(84, 276, 'negative charge', 'mut') + tg(84, 290, 'hydroxide ion');
     const c = P(250, 222);
     s += edgeOnEmpty(c, 'C', 'CH₃', { len: 50 });
-    s += plus(236, 196);
+    s += plus(224, 198);
     s += tg(256, 276, '+ and an empty p orbital', 'mut') + `<text class="fg-tag-warn" x="256" y="290" text-anchor="middle" font-size="11"><tspan font-style="italic">tert</tspan>-butyl cation</text>`;
 
     // ---- row 3 ----
@@ -299,7 +299,7 @@ function curledChain(cx, cy, closed) {
   const v = polyPts(cx, cy, 5, 64, 90);
   const c2 = v[0], n = v[1], c5 = v[2], c4 = v[3], c3 = v[4];
   s += B(n, 'N', c5, '') + sk(c5, c4) + sk(c4, c3) + B(c3, '', c2, 'C');
-  const o = at(c2, 125, 50), me = at(c2, 55, 50);
+  const o = at(c2, 125, closed ? 50 : 60), me = at(c2, 55, 50);
   s += B(c2, 'C', me, 'CH₃') + A(me, 'CH₃');
   s += arm(n, 'N', 200, 40, 'H') + arm(n, 'N', 250, 40, 'H');
   if (closed) {
@@ -329,14 +329,14 @@ FIGURES.push({
   build() {
     let s = '';
     s += tg(170, 20, '5-AMINOPENTAN-2-ONE');
-    const a = curledChain(170, 160, false);
+    const a = curledChain(170, 170, false);
     s += a.s;
     s += curve(P(a.n.x + 24, a.n.y - 20), P(a.c2.x - 16, a.c2.y + 8), { bow: 12, size: 7 });
-    s += fromBond(a.c2, a.o, P(a.o.x + 17, a.o.y - 6), -12, -13);
+    s += fromBond(a.c2, a.o, P(a.o.x + 19, a.o.y + 4), -10, -12);
     s += dP(a.c2.x + 30, a.c2.y - 4);
-    s += tg(50, 84, 'rich:') + tg(50, 98, 'lone pair');
-    s += tg(290, 76, 'poor: δ+', 'warn') + tg(290, 90, 'C=O carbon', 'warn');
-    s += rule(16, 250, 324, 250);
+    s += tg(50, 94, 'rich:') + tg(50, 108, 'lone pair');
+    s += tg(290, 86, 'poor: δ+', 'warn') + tg(290, 100, 'C=O carbon', 'warn');
+    s += rule(16, 256, 324, 256);
 
     s += tg(170, 274, 'THE NEW N–C BOND CLOSES A RING');
     const b = curledChain(170, 426, true);
@@ -460,14 +460,14 @@ FIGURES.push({
     s += fromBond(a.v[0], a.v[1], P(a.v[1].x - 7, a.v[1].y - 9), 12, 7);
     s += arrow(P(a.n.x - 12, a.n.y + 40), P(a.n.x - 12, a.n.y + 20), { muted: true, size: 6 });
     s += tg(a.n.x - 22, a.n.y + 36, 'σ pull', 'mut', 'end');
-    s += tg(130, 256, 'aniline');
+    s += tg(130, 272, 'aniline');
     s += resArrowH(222, 286, cy);
     // ---- ortho structure ----
     const b = anilineRing(380, cy, 'ortho');
     s += b.s + anionAt(b.v[1], P(380, cy), 150);
-    s += curve(P(b.v[1].x - 10, b.v[1].y + 12), P((b.v[1].x + b.v[2].x) / 2 - 7, (b.v[1].y + b.v[2].y) / 2), { bow: 10, size: 7 });
+    s += curve(P(at(b.v[1], 150, 16).x - 6, at(b.v[1], 150, 16).y + 4), P((b.v[1].x + b.v[2].x) / 2 - 7, (b.v[1].y + b.v[2].y) / 2 + 4), { bow: 16, size: 7 });
     s += fromBond(b.v[2], b.v[3], P(b.v[3].x - 6, b.v[3].y + 12), 12, 7);
-    s += `<text class="fg-tag" x="380" y="256" text-anchor="middle" font-size="11">− on an <tspan font-style="italic">ortho</tspan> carbon</text>`;
+    s += `<text class="fg-tag" x="380" y="272" text-anchor="middle" font-size="11">− on an <tspan font-style="italic">ortho</tspan> carbon</text>`;
     s += resArrowH(472, 536, cy);
     // ---- para structure ----
     const c = anilineRing(630, cy, 'para');
