@@ -257,7 +257,7 @@ FIGURES.push({
     s += tg(ax, 22, 'acid');
     s += tg(bx, 22, 'conjugate base');
     const rows = [
-      ['HCl', 'very strong acid', 'Cl⁻', 'barely basic'],
+      ['HCl', 'very strong acid', 'Cl⁻', 'very weak base'],
       ['CH₃COOH', 'weak acid', 'CH₃COO⁻', 'moderate base'],
       ['H₂O', 'very weak acid', 'HO⁻', 'strong base'],
       ['NH₃', 'extremely weak acid', '⁻NH₂', 'very strong base'],

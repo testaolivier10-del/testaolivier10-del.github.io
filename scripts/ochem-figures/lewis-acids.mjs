@@ -126,7 +126,7 @@ FIGURES.push({
     let s = '';
     const b = P(200, 212);
     s += bf3nh3(b);
-    s += tg(312, 70, 'NH₃: a lone pair', 'start');
+    s += tg(312, 70, 'NH₃: has a lone pair', 'start');
     s += tg(312, 86, 'the Lewis base', 'start');
     s += tg(182, 160, 'empty p orbital', 'end');
     s += tg(200, 306, 'BF₃: flat, 120° between bonds', 'middle');
@@ -213,15 +213,16 @@ FIGURES.push({
     const p = { atoms: { Ti: { ...ti2, l: 'Ti', k: 'warn', r: 17 } }, bonds: [], charges: [['Ti', '−', 315, 30]] };
     arms(p, 'Ti', [[270, 'Cl'], [90, 'Cl'], [150, 'Cl', 'w'], [210, 'Cl', 'h']], 54);
     // the fifth bond, to oxygen, straight out to the right
-    const o2 = P(ti2.x + 70, ti2.y);
-    const c2 = P(o2.x + 58, o2.y);
+    // Ti–O–C is bent at oxygen (three electron domains)
+    const o2 = P(ti2.x + 68, ti2.y);
+    const c2 = at(o2, 330, 58);
     p.atoms.O = { ...o2, l: 'O', k: 'hi', r: 15 };
     p.atoms.C = { ...c2, l: 'C', r: 14 };
-    p.atoms.M1 = { ...at(c2, 300, 48), l: 'CH₃' };
-    p.atoms.M2 = { ...at(c2, 60, 48), l: 'CH₃' };
+    p.atoms.M1 = { ...at(c2, 270, 48), l: 'CH₃' };
+    p.atoms.M2 = { ...at(c2, 30, 48), l: 'CH₃' };
     p.bonds.push(['Ti', 'O', 1, 'fg-bond-hi'], ['O', 'C', 2], ['C', 'M1'], ['C', 'M2']);
-    p.lp = [['O', 270]];
-    p.charges.push(['O', '+', 60, 26]);
+    p.lp = [['O', 80]];
+    p.charges.push(['O', '+', 250, 27]);
     s += mol(p);
     s += tg(600, 256, 'five bonds to Ti');
     s += warn(600, 274, 'O +1, Ti −1');
@@ -232,7 +233,7 @@ FIGURES.push({
 
 /* ---------------------------------------------- ethene donates its pi pair ---
    Ethene side on, the pi pair drawn as two clouds above and below the C–C
-   line. `withH` adds H+ above the left carbon and the arrow to it. */
+   line. `withH` adds H–Br above the left carbon and the two arrows. */
 function etheneTop(y, withH) {
   let s = '';
   const A = P(128, y), B = P(212, y);
@@ -249,10 +250,16 @@ function etheneTop(y, withH) {
   });
   s += mol(m);
   if (withH) {
-    const h = P(112, y - 104);
+    // H–Br above the left carbon: arrow 1 from the pi pair to H,
+    // arrow 2 from the H–Br bond onto Br
+    const h = P(112, y - 96), br = P(176, y - 118);
+    s += bond(h, br, { rFrom: 12, rTo: 15 });
     s += atom(h.x, h.y, 'H', { kind: 'warn', r: 12 });
-    s += charge(P(h.x + 20, h.y - 12), '+');
+    s += atom(br.x, br.y, 'Br', { r: 15, size: 11.5 });
+    for (const a of [300, 30, 80]) s += lonePair(br.x, br.y, a, { dist: 23 });
     s += curve(P(150, y - 50), P(h.x + 8, h.y + 14), { bow: 14 });
+    const mHB = P((h.x + br.x) / 2, (h.y + br.y) / 2);
+    s += curve(P(mHB.x - 2, mHB.y - 6), at(br, 215, 19), { bow: -14 });
   }
   return s;
 }
@@ -265,11 +272,11 @@ FIGURES.push({
   build() {
     let s = '';
     s += etheneTop(104, false);
-    s += tg(170, 40, 'π bond: one pair of electrons');
+    s += tg(170, 40, 'π bond');
     s += tg(170, 172, 'above and below the C–C line');
     return s;
   },
-  caption: 'Ethene seen from the side. The σ bond runs along the C–C line; the π pair does not.',
+  caption: 'Ethene seen from the side. The σ bond runs along the C–C line; the π bond lies above and below it.',
 });
 
 FIGURES.push({
@@ -277,14 +284,14 @@ FIGURES.push({
   section: 'lewis-acids',
   lessons: ['lewis-acids'],
   anchor: 'drew the same tail on a π bond.</p>',
-  alt: 'Top: ethene lying flat in a plane, its pi pair drawn as two clouds above and below the C–C line, and H+ above the left carbon. A curved arrow runs from the upper pi cloud to H+. Bottom: the product, a CH3 carbon joined to a CH2 carbon. The new C–H bond on the left carbon is highlighted. The right carbon has three bonds, a positive charge and an empty p orbital drawn as dashed lobes.',
+  alt: 'Top: ethene lying flat in a plane, its pi pair drawn as two clouds above and below the C–C line, and H–Br above the left carbon. One curved arrow runs from the upper pi cloud to the H; a second runs from the H–Br bond onto bromine. Bottom: the product, a CH3 carbon joined to a CH2 carbon. The new C–H bond on the left carbon is highlighted. The right carbon has three bonds, a positive charge and an empty p orbital drawn as dashed lobes. Bromide, Br−, is the other product.',
   viewBox: '0 0 340 440',
   build() {
     let s = '';
     s += panel(6, 6, 328, 222);
     s += etheneTop(150, true);
-    s += tg(140, 50, 'H⁺: empty 1s orbital', 'start');
-    s += tg(170, 216, 'the π pair is donated');
+    s += tg(204, 30, 'H–Br supplies the H⁺', 'start');
+    s += tg(66, 100, 'π pair', 'middle');
     s += arrow(P(170, 232), P(170, 258));
     s += panel(6, 264, 328, 170);
     const A = P(124, 346), B = P(214, 346);
@@ -294,7 +301,7 @@ FIGURES.push({
       bonds: [['A', 'B']],
       charges: [['B', '+', 225, 30]],
     };
-    arms(m, 'A', [[270, 'H', 1, 'fg-bond-hi'], [160, 'H'], [215, 'H', 'w'], [110, 'H', 'h']], 40);
+    arms(m, 'A', [[270, 'H', 1, 'fg-bond-hi'], [200, 'H', 'w'], [130, 'H', 'h']], 40);
     // B is flat: its two H lie in a plane seen from slightly above
     m.atoms.Hb1 = { ...P(B.x + 48, B.y - 20), l: 'H' };
     m.atoms.Hb2 = { ...P(B.x + 48, B.y + 20), l: 'H' };
@@ -303,9 +310,11 @@ FIGURES.push({
     s += tg(144, 300, 'new C–H', 'start');
     s += tg(232, 296, 'empty p', 'start');
     s += warn(170, 422, 'a carbocation');
+    s += text(282, 404, 'Br⁻', { cls: 'fg-lbl', size: 13, anchor: 'start' });
+    s += text(268, 404, '+', { cls: 'fg-lbl', size: 13 });
     return s;
   },
-  caption: 'Follow the arrow from the upper π cloud to H⁺. In the product, find the highlighted C–H bond and the empty p orbital.',
+  caption: 'Arrow 1 runs from the π pair to the H of H–Br; arrow 2 moves the H–Br bonding pair onto bromine. In the product, find the highlighted C–H bond and the empty p orbital.',
 });
 
 /* ------------------------------------------- a carbocation meets water ---
@@ -313,7 +322,11 @@ FIGURES.push({
    follows (two arrows). Methyl groups are skeletal ends. */
 function tBuCation(c) {
   const m = { atoms: { C: { ...c, l: 'C', k: 'warn', r: 16 } }, bonds: [] };
-  arms(m, 'C', [[210, ''], [330, ''], [90, '']], 48);
+  // three methyls in a flat plane seen from slightly above
+  [0, 125, 235].forEach((phi, i) => {
+    m.atoms['C_' + i] = { ...P(c.x + Math.cos(phi * Math.PI / 180) * 52, c.y - Math.sin(phi * Math.PI / 180) * 52 * 0.42), l: '' };
+    m.bonds.push(['C', 'C_' + i]);
+  });
   return m;
 }
 /* (CH3)3C–O with the oxygen straight out to the right of the central carbon;
@@ -342,8 +355,10 @@ FIGURES.push({
     s += tg(380, 22, 'THE LEWIS STEP: ONE ARROW, NO PROTON');
     // ---- row 1 ----
     const c = P(120, 140);
+    s += pUp(c, 50, 9, true);
     s += mol(tBuCation(c));
-    s += charge(at(c, 150, 30), '+');
+    s += charge(P(c.x - 26, c.y - 30), '+');
+    s += mut(c.x + 14, c.y - 62, 'empty p', 'start');
     s += itTag(120, 226, 'tert', '-butyl cation');
     s += mut(120, 244, 'six electrons, empty p');
     const o = P(310, 110);
@@ -437,7 +452,7 @@ FIGURES.push({
   id: 'alcl3-acylium',
   section: 'lewis-acids',
   anchor: 'So the Lewis acid does not supply the electrophile; it manufactures one.</p>',
-  alt: 'A preview in two rows. Top row: acetyl chloride, CH3COCl, and AlCl3; a curved arrow runs from a lone pair on the acetyl chloride chlorine to aluminum, giving a complex in which that chlorine is bonded to both carbon and aluminum, chlorine plus one and aluminum minus one. Bottom row: in the complex, a curved arrow runs from the C–Cl bond onto the chlorine; the bond breaks, leaving the acylium ion, CH3–C≡O+, drawn straight with a triple bond and a lone pair on the positive oxygen, and AlCl4−.',
+  alt: 'A preview in two rows. Top row: acetyl chloride, CH3COCl, and AlCl3; a curved arrow runs from a lone pair on the acetyl chloride chlorine to aluminum, giving a complex in which that chlorine is bonded to both carbon and aluminum, chlorine plus one and aluminum minus one. Bottom row: in the complex, a curved arrow runs from the C–Cl bond onto the chlorine; the bond breaks, leaving the acylium ion, CH3–C≡O+, drawn straight with a triple bond and a lone pair on the positive oxygen, and AlCl4−; a second curved arrow runs from an oxygen lone pair into the C–O bond, making it a triple bond.',
   viewBox: '0 0 760 470',
   build() {
     let s = '';
@@ -466,7 +481,10 @@ FIGURES.push({
     const clB = cx.atoms.Cl;
     const midB = P((c3.x + clB.x) / 2, (c3.y + clB.y) / 2);
     s += curve(P(midB.x - 3, midB.y - 7), at(clB, 245, 18), { bow: -16 });
-    s += tg(170, 454, 'the C–Cl bond breaks');
+    // arrow 2: an O lone pair moves in to make a third C–O bond
+    const oB = cx.atoms.O;
+    s += curve(P(oB.x + 20, oB.y - 18), P(oB.x + 6, oB.y + 30), { bow: -22 });
+    s += tg(170, 454, 'C–Cl breaks; C≡O forms');
     s += arrow(P(320, 370), P(372, 370));
     // acylium ion: CH3–C≡O+, straight
     const k = P(480, 370);
@@ -488,7 +506,7 @@ FIGURES.push({
     s += charge(P(715, 364), '−');
     return s;
   },
-  caption: 'A preview only. In the top row a bond forms; in the bottom row one breaks. The chlorines on aluminum are drawn without their lone pairs.',
+  caption: 'A preview only. Top row: one arrow, and a Cl–Al bond forms. Bottom row: two arrows. The C–Cl bond breaks, and an oxygen lone pair makes the third C–O bond. The chlorines on aluminum are drawn without their lone pairs.',
 });
 
 export default FIGURES;
