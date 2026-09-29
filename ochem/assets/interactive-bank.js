@@ -410,7 +410,7 @@
     why:'s orbitals sit closer to the nucleus than p orbitals. An sp orbital is half s character, so the lone pair is held much more tightly than in an sp3 orbital (25% s) — that stabilization is worth 25 pKa units.',
     diag:{
       0:{ concept:'alkene-pi-nucleophile', msg:'A triple bond is electron-RICH — it is a nucleophile. Its acidity comes from hybridization, not from electron deficiency.' },
-      2:{ concept:'resonance-delocalization', msg:'The acetylide lone pair sits in an sp orbital along the C–H axis, at right angles to both pi bonds, so it cannot overlap with them. No resonance spreads it out. Its stability comes from s character.' },
+      2:{ concept:'resonance-delocalization', msg:'The acetylide lone pair sits in an sp orbital along the line of the old C–H bond, at right angles to both pi bonds, so it cannot overlap with them. No resonance spreads it out. Its stability comes from s character.' },
       3:{ concept:'alkyne-acidity', msg:'The sp C–H bond is actually shorter and stronger. Bond strength is not what decides acidity — anion stability is.' }
     } },
 
@@ -955,7 +955,7 @@
       molecule:'acetate-ion',
       drawHint:'Only electrons move — never atoms. Two arrows: one makes a bond, one breaks one.',
       answer:{ arrows:[ {from:'o2', to:'bond:c-o2'}, {from:'bond:c-o1', to:'o1'} ] },
-      why:'The negatively charged oxygen pushes a lone pair in to make a second bond to carbon. To keep carbon at four bonds, the existing C=O pi bond moves onto the other oxygen. You end with the same ion drawn the other way round, the charge now on the other oxygen. The next topic is about pairs of drawings like these.',
+      why:'The negatively charged oxygen pushes a lone pair in to make a second bond to carbon. To keep carbon at four bonds, the existing C=O pi bond moves onto the other oxygen. You end with the same ion drawn the other way around, the charge now on the other oxygen. The next topic is about pairs of drawings like these.',
       diag:{
         'o2>c':{ concept:'curved-arrow-direction', msg:'The lone pair forms a pi BOND to carbon, so point the arrow at the C–O bond, not at the carbon itself. An arrowhead on carbon would mean a fifth sigma bond.' },
         'bond:c-o1>c':{ concept:'curved-arrow-direction', msg:'Backwards. The pi electrons move away from carbon and onto the electronegative oxygen, which can hold the charge.' },
@@ -1016,9 +1016,9 @@
       prompt:'Click the proton a Brønsted base would remove first.',
       molecule:'acetic-acid',
       answer:{ role:'acidic-h' },
-      why:'The O–H proton, pKa around 4.76. It leaves easily because what stays behind — a carboxylate — spreads its negative charge over two equivalent oxygens. The alpha C–H is around pKa 25 and does not compete.',
+      why:'The O–H proton, pKa around 4.76. It leaves easily because what stays behind — a carboxylate — spreads its negative charge over two equivalent oxygens. The C–H bonds on the CH₃ group are around pKa 25 and do not compete.',
       diag:{
-        ha:{ concept:'conjugate-pairs', msg:'That is an alpha C–H, roughly pKa 25 here — twenty orders of magnitude less acidic than the O–H. Acidity is about how stable the conjugate base is, and a carbanion is far less stable than a carboxylate.' }
+        ha:{ concept:'conjugate-pairs', msg:'That is a C–H on the CH₃ group, roughly pKa 25 here — twenty orders of magnitude less acidic than the O–H. Acidity is about how stable the conjugate base is, and a carbanion is far less stable than a carboxylate.' }
       } },
 
     { id:'bronsted-conjugate-acid', kind:'click-atom', tier:1, topic:'conjugate',
