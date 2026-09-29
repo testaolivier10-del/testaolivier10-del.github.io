@@ -405,37 +405,28 @@ FIGURES.push({
   id: 'birch-methylanisole',
   section: 'birch-reduction',
   anchor: '<!-- fig:birch-methylanisole:start -->',
-  alt: '4-Methylanisole, with OCH3 on C1 and CH3 on C4, is reduced by Na in NH3 with EtOH to 1-methoxy-4-methylcyclohexa-1,4-diene, numbered 1 to 6 clockwise: double bonds C1=C2 and C4=C5, new CH2 groups at C3 and C6. Dilute aqueous acid then gives 4-methylcyclohex-3-en-1-one, numbered from the C=O: the C=O at C1 and the C=C between C3 and C4, which carries the methyl.',
+  alt: '4-Methylanisole, with OCH3 on C1 and CH3 on C4, is reduced by Na in NH3 with EtOH to 1-methoxy-4-methylcyclohexa-1,4-diene, numbered 1 to 6 clockwise: double bonds C1=C2 and C4=C5, new CH2 groups at C3 and C6.',
   viewBox: '0 0 760 300',
   build() {
     const R = 40, K = hexKit(R);
     let s = '';
-    const step = (x1, x2, y, top, bottom) =>
-      arrow(P(x1, y), P(x2, y)) + text((x1 + x2) / 2, y - 12, top, { cls: 'fg-lbl', size: 12 }) +
-      text((x1 + x2) / 2, y + 22, bottom, { cls: 'fg-sm' });
     const Y = 136;
     /* every locant inside the ring, far enough in to clear a CH2 disc */
     const nums = (cx, order) => order.map((v, k) => K.num(cx, Y, v, String(k + 1), { d: 26 })).join('');
 
-    s += K.ring(110, Y, [0, 2, 4]) + K.sub(110, Y, 0, 'OCH₃', { d: 34, r: 19 }) + K.sub(110, Y, 3, 'CH₃', { d: 32, r: 17 });
-    s += nums(110, [0, 1, 2, 3, 4, 5]);
-    s += text(110, 256, '4-methylanisole', { cls: 'fg-tag' });
-    s += step(170, 300, Y, 'Na, NH₃', 'EtOH');
+    s += K.ring(200, Y, [0, 2, 4]) + K.sub(200, Y, 0, 'OCH₃', { d: 34, r: 19 }) + K.sub(200, Y, 3, 'CH₃', { d: 32, r: 17 });
+    s += nums(200, [0, 1, 2, 3, 4, 5]);
+    s += text(200, 256, '4-methylanisole', { cls: 'fg-tag' });
+    s += arrow(P(290, Y), P(450, Y)) + text(370, Y - 12, 'Na, NH₃', { cls: 'fg-lbl', size: 12 }) +
+      text(370, Y + 22, 'EtOH', { cls: 'fg-sm' });
 
-    s += K.ringCH2(380, Y, [0, 3], [2, 5], [2, 5]) + K.sub(380, Y, 0, 'OCH₃', { d: 34, r: 19 }) + K.sub(380, Y, 3, 'CH₃', { d: 32, r: 17 });
-    s += nums(380, [0, 1, 2, 3, 4, 5]);
-    s += text(380, 256, '1-methoxy-4-methylcyclohexa-1,4-diene', { cls: 'fg-tag-good' });
-    s += text(380, 274, 'sp³ at C3 and C6', { cls: 'fg-sm' });
-    s += step(460, 590, Y, 'H₃O⁺', 'dilute, mild');
-
-    s += K.ring(650, Y, [3]) + K.ketone(650, Y, 0, 30) + K.sub(650, Y, 3, 'CH₃', { d: 32, r: 17 });
-    /* numbered from the C=O, counter-clockwise, so the C=C gets locant 3 */
-    s += nums(650, [0, 5, 4, 3, 2, 1]);
-    s += text(650, 256, '4-methylcyclohex-3-en-1-one', { cls: 'fg-tag-good' });
-    s += text(650, 274, 'C=C not conjugated with C=O', { cls: 'fg-sm' });
+    s += K.ringCH2(560, Y, [0, 3], [2, 5], [2, 5]) + K.sub(560, Y, 0, 'OCH₃', { d: 34, r: 19 }) + K.sub(560, Y, 3, 'CH₃', { d: 32, r: 17 });
+    s += nums(560, [0, 1, 2, 3, 4, 5]);
+    s += text(560, 256, '1-methoxy-4-methylcyclohexa-1,4-diene', { cls: 'fg-tag-good' });
+    s += text(560, 274, 'sp³ at C3 and C6', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Follow the two substituted carbons: both are still on double bonds after the Birch step.',
+  caption: 'Follow the two substituted carbons: both are still on double bonds after the reduction.',
 });
 
 /* ------------------------------------------------------------------ 5 ---
@@ -521,7 +512,7 @@ FIGURES.push({
   id: 'birch-naphthalene',
   section: 'birch-reduction',
   anchor: '<!-- fig:birch-naphthalene:start -->',
-  alt: 'Naphthalene, two fused benzene rings, is reduced by Na in NH3 with EtOH to 1,4-dihydronaphthalene: one ring now has CH2 groups at C1 and C4 and a C=C between C2 and C3, and the other ring is still a benzene ring. More metal under forcing conditions reduces that ring too, giving 1,4,5,8-tetrahydronaphthalene, with CH2 groups at C1, C4, C5 and C8 and a C=C between the two shared carbons.',
+  alt: 'Naphthalene, two fused benzene rings, is reduced by Na in NH3 with EtOH to 1,4-dihydronaphthalene: one ring now has CH2 groups at C1 and C4 and a C=C between C2 and C3, and the other ring is still a benzene ring. More metal and alcohol reduce that ring too, giving 1,4,5,8-tetrahydronaphthalene, with CH2 groups at C1, C4, C5 and C8 and a C=C between the two shared carbons.',
   viewBox: '0 0 760 250',
   build() {
     const R = 30, K = hexKit(R);
@@ -540,17 +531,17 @@ FIGURES.push({
 
     s += pair(110, [1, 3, 5], [0, 2]);
     s += text(110, 196, 'naphthalene', { cls: 'fg-tag' });
-    s += step(196, 300, 'Na, NH₃', 'EtOH');
+    s += step(196, 300, 'Na, NH₃, EtOH', 'just enough Na');
     s += pair(380, [1, 3, 5], [1], [], [0, 3]);
     s += text(380, 196, '1,4-dihydronaphthalene', { cls: 'fg-tag-good' });
     s += text(380, 214, 'left ring: still a benzene ring', { cls: 'fg-sm' });
-    s += step(466, 570, 'more metal', 'forcing');
+    s += step(466, 570, 'more Na', 'and EtOH');
     s += pair(650, [1, 4], [1], [0, 3], [0, 3]);
     s += text(650, 196, '1,4,5,8-tetrahydronaphthalene', { cls: 'fg-tag' });
-    s += text(650, 214, 'second ring: much slower', { cls: 'fg-sm' });
+    s += text(650, 214, 'second ring: slower', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Highlighted CH₂ groups took the new hydrogens. The first ring is reduced under ordinary Birch conditions; the second needs forcing.',
+  caption: 'Highlighted CH₂ groups took the new hydrogens. The first ring is reduced with just enough metal; more metal reduces the second as well.',
 });
 
 export default FIGURES;

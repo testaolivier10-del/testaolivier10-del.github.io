@@ -119,7 +119,7 @@ function snarComplex(c, R, o = {}) {
   const cDeg = { 1: 0, 3: 30, 5: -118 }[k];
   s += anion(v[k], lpDeg, cDeg);
   const lpAt = at(v[k], lpDeg, 11);
-  if (o.nums) s += nums(c, R);
+  if (o.nums) s += nums(c, R, o.nums === true ? {} : o.nums);
   if (o.arrows === 'elim') {
     s += curve(lpAt, mid(v[0], v[1], 0.55), { bow: 16, size: 7 });
     const cl = at(v[0], -62, d);
@@ -321,7 +321,7 @@ FIGURES.push({
     s += snarSubstrate(P(200, 92), R);
     s += down(200, 178, 214);
     s += tag(214, 200, 'addition (slow)', { anchor: 'start' });
-    s += snarComplex(P(200, 300), R, { at: 1, arrows: 'elim', nums: true });
+    s += snarComplex(P(200, 300), R, { at: 1, arrows: 'elim', nums: { only: [1, 2, 4] } });
     s += tag(24, 300, 'Meisenheimer', { anchor: 'start' });
     s += tag(24, 316, 'complex', { anchor: 'start' });
     s += down(200, 386, 422);
