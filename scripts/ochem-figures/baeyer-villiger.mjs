@@ -494,7 +494,8 @@ FIGURES.push({
     s += dash(O1, O2, 'fg-dash') + bond(O2, P(O2.x + 30, O2.y), { rFrom: O2.r, rTo: 0 });
     s += label(O2.x + 62, O2.y + 4, 'C(=O)Ar');
     s += draw(C, O1, OH, Me, O2);
-    s += tag(ipso.x + 60, ipso.y + 14, 'ipso carbon');
+    s += tag(ipso.x - 80, ipso.y + 26, 'ipso carbon');
+    s += `<line class="fg-rule" x1="${ipso.x - 44}" y1="${ipso.y + 16}" x2="${ipso.x - 8}" y2="${ipso.y + 3}"></line>`;
     return s;
   },
   caption: 'Dashed lines: bonds half made or half broken.',
@@ -643,7 +644,7 @@ function pMCH(ox, oy, hints, h = H_MCH) {
   if (hints) {
     const m12 = mid(c1, c2), m16 = mid(c1, c6);
     s += tag(m12.x - 46, m12.y - 16, 'O goes in here', { cls: 'fg-tag-good' });
-    s += text(m16.x + 7, m16.y - 3, '×', { cls: 'fg-warn', size: 15 });
+    s += text(m16.x, m16.y + 5, '×', { cls: 'fg-warn', size: 15 });
     s += tag(m16.x + 46, m16.y - 16, 'not here', { cls: 'fg-tag-warn' });
   }
   return s;
@@ -669,7 +670,7 @@ FIGURES.push({
   section: 'baeyer-villiger',
   anchor: '<!-- fig:methylcyclohexanone:start -->',
   viewBox: `0 0 ${W2} ${H_MCH}`,
-  alt: 'Left: 2-methylcyclohexanone, with the ring carbons C1 (the C=O carbon), C2 (carrying a CH3 on a wedge), C3, C5 and C6 labeled. The C1–C2 bond is highlighted as the bond the oxygen goes into, and the C1–C6 bond is marked "not here". Right: the product, 7-methyloxepan-2-one, a seven-membered ring in which the new O sits between C1 and C2 and the CH3 on C2 is still on a wedge.',
+  alt: 'Left: 2-methylcyclohexanone, with the ring carbons C1 (the C=O carbon), C2 (carrying a CH3 on a wedge), C3, C4, C5 and C6 labeled. The C1–C2 bond is highlighted as the bond the oxygen goes into, and the C1–C6 bond is marked "not here". Right: the product, 7-methyloxepan-2-one, a seven-membered ring in which the new O sits between C1 and C2 and the CH3 on C2 is still on a wedge.',
   build() {
     let s = pMCH(0, 0, true) + pLactone(PW + GAP, 0);
     s += right(PW + 6, PW + GAP - 6, 128);
@@ -681,7 +682,7 @@ FIGURES.push({
   id: 'l-mch-ketone',
   lessons: ['baeyer-villiger'],
   viewBox: `0 0 ${PW} 200`,
-  alt: '2-methylcyclohexanone as a single enantiomer: a six-membered ring with the C=O carbon labeled C1, the next carbon C2 carrying a CH3 on a wedge, and the carbon on the other side of C1 labeled C6. C3 and C5 are labeled too.',
+  alt: '2-methylcyclohexanone as a single enantiomer: a six-membered ring with the C=O carbon labeled C1, the next carbon C2 carrying a CH3 on a wedge, and the carbon on the other side of C1 labeled C6. C3, C4 and C5 are labeled too.',
   build() { return pMCH(0, 0, false, 200); },
   caption: 'A single enantiomer: the CH<sub>3</sub> on C2 points toward you.',
 });
