@@ -706,13 +706,13 @@
       8:['enantiomer-vs-diastereomer'],
       11:['enantiomer-vs-diastereomer'] } },
 
-    'epoxides': { n:9, steps:{
-      1:['epoxide-opening-regiochem'],
+    'epoxides': { n:11, steps:{
       2:['epoxide-opening-regiochem','backside-attack'],
-      4:['epoxide-opening-regiochem'],
-      5:['epoxide-opening-regiochem'],
-      7:['epoxide-opening-regiochem','curved-arrow-direction'],
-      8:['epoxide-opening-regiochem','backside-attack'] } },
+      3:['epoxide-opening-regiochem','curved-arrow-direction'],
+      4:['epoxide-opening-regiochem','backside-attack'],
+      6:['epoxide-opening-regiochem'],
+      7:['epoxide-opening-regiochem'],
+      10:['epoxide-opening-regiochem','stereochemical-outcome'] } },
 
     'esters-amides': { n:10, steps:{
       1:['acyl-reactivity-order','leaving-group-ability'],
