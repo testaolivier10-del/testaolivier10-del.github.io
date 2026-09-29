@@ -191,7 +191,7 @@ FIGURES.push({
     s += sm(390, y + 52, 'the β-hydrogen moves to the first chain; the two leftover electrons form the new π bond');
     return s;
   },
-  caption: 'Each stage drawn with fishhooks. Read the left-hand column: initiation makes radicals, the two addition steps keep one, and both kinds of termination remove two.',
+  caption: 'Each stage drawn with fishhooks. Read the left-hand column: initiation makes radicals, the two addition steps keep one, and both kinds of termination remove two. Nothing carries a charge at any point: if a step you have drawn produces a cation or an anion, it was not a radical step.',
 });
 
 /* ======================================================================
@@ -225,7 +225,7 @@ FIGURES.push({
     y = 206;
     s += head2(y, 'RESTART', 'radicals: 1 → 1');
     s += addRow(y, ['RS'], 170);
-    s += sm(390, y + 44, 'the thiyl radical adds to a monomer, and a new chain starts');
+    s += sm(390, y + 44, 'the RS• radical adds to a monomer, and a new chain starts');
     return s;
   },
   caption: 'Chain transfer to a thiol. Follow the hydrogen from sulfur to carbon.',
@@ -430,14 +430,14 @@ FIGURES.push({
     s += fishhook(P(168, y - 8), P(mid + 4, y - 9), { bow: 14 });
     s += fishhook(P(178, y - 8), P(197, y - 14), { bow: -7 });
     s += arrow(P(400, y), P(450, y), { muted: true });
-    const r1b = isoRow(546, y, 62, ['CH₂', 'C', 'CH', 'CH₂'], [1, 2], { lead: 'R' });
+    const r1b = isoRow(546, y, 62, ['CH₂', 'C', 'CH', 'CH₂'], [1, 1, 2], { lead: 'R' });
     s += r1b.s;
     s += dot(r1b.pts[1].x - 4, y - 19);
     s += rule(40, 150, 720, 150);
 
     y = 222;
     s += tg(40, 178, '2. the radical is allylic: C2 and C4 share it', 'fg-tag', 'start');
-    const fa = isoRow(116, y, 60, ['CH₂', 'C', 'CH', 'CH₂'], [1, 2], { lead: 'R' });
+    const fa = isoRow(116, y, 60, ['CH₂', 'C', 'CH', 'CH₂'], [1, 1, 2], { lead: 'R' });
     s += fa.s + dot(fa.pts[1].x - 4, y - 19);
     s += arrow(P(376, y), P(400, y), { size: 7 }) + arrow(P(376, y), P(352, y), { size: 7 });
     const fb = isoRow(496, y, 60, ['CH₂', 'C', 'CH', 'CH₂'], [1, 2, 1], { lead: 'R' });
@@ -578,7 +578,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Three polypropylenes, drawn with wedges and dashes. Only the side each methyl points to changes.',
-  note: 'A drawing habit: lay the backbone down flat as a zig-zag first, then decide carbon by carbon whether each methyl comes forward (wedge) or goes back (dash).',
+  note: 'A drawing habit: lay the backbone down flat as a zig-zag first, then decide carbon by carbon whether each methyl comes forward (wedge) or goes back (dash). Drawn any other way, the three look identical, and no formula, molecular weight or spectrum of the monomer tells them apart.',
 });
 
 /* The same three chains, stacked for the lesson. */
@@ -612,7 +612,7 @@ FIGURES.push({
   section: 'addition-polymers',
   lessons: ['addition-polymers'],
   anchor: '',
-  viewBox: '0 0 340 490',
+  viewBox: '0 0 340 504',
   alt: 'Three panels at a titanium atom. First: titanium bonded to the CH2 at the end of the chain, with an empty site beside it. Second: a propylene molecule sits in the empty site, its CH2 end toward titanium and its CH end toward the chain. Third: the chain has moved onto the alkene. A new C–C bond joins the old chain end to the CH carbon, titanium is now bonded to the alkene CH2, and the empty site is where the chain used to be.',
   build() {
     let s = '';
@@ -635,6 +635,7 @@ FIGURES.push({
     s += bond(ti, P((a1.x + a2.x) / 2, 293), { rFrom: 16, rTo: 0, cls: 'fg-dash' });
     s += B(a1, 'H₂C', a2, 'CH', { order: 2 }) + B(a2, 'CH', me, 'CH₃');
     s += G(a1, 'H₂C') + G(a2, 'CH') + G(me, 'CH₃');
+    s += tg(108, 322, 'a', 'fg-tag-good') + tg(222, 322, 'b', 'fg-tag-good');
     s += rule(20, 330, 320, 330);
 
     /* Panel 3: after insertion. */
@@ -647,9 +648,10 @@ FIGURES.push({
     s += G(ti, 'Ti', 'hi') + G(n1, 'CH₂') + G(n2, 'CH') + G(old, 'CH₂') + G(me3, 'CH₃');
     s += site(128, 394) + tg(112, 388, 'empty', 'fg-tag-mut', 'end') + tg(112, 404, 'again', 'fg-tag-mut', 'end');
     s += tg(214, 436, 'new C–C', 'fg-tag-good', 'start');
+    s += tg(140, 494, 'a', 'fg-tag-good') + tg(206, 494, 'b', 'fg-tag-good');
     return s;
   },
-  caption: 'Other groups on the titanium are left out. The highlighted bond is the one the insertion makes.',
+  caption: 'Other groups on the titanium are left out. Ti ends up on the CH₂ (a); the chain ends up on the CH (b), through the highlighted bond.',
 });
 
 /* ======================================================================
@@ -677,7 +679,7 @@ FIGURES.push({
     s += dot(c1.x + 4, c1.y - 20);
     s += fishhook(P(c1.x, c1.y - 23), P(mid.x + 4, mid.y - 8), { bow: 10 });
     const bm = P((H.x + c5.x) / 2, (H.y + c5.y) / 2);
-    s += fishhook(P(bm.x + 4, bm.y + 6), P(mid.x - 2, mid.y + 6), { bow: 8 });
+    s += fishhook(P(bm.x + 4, bm.y + 6), P(mid.x - 4, mid.y + 3), { bow: 8 });
     s += fishhook(P(bm.x - 4, bm.y - 6), P(c5.x + 2, c5.y - 19), { bow: -9 });
     s += tg(c1.x + 24, c1.y + 4, 'C1', 'fg-tag-mut', 'start');
     s += tg(c2.x + 24, c2.y + 4, 'C2', 'fg-tag-mut', 'start');
@@ -767,7 +769,7 @@ FIGURES.push({
   id: 'packing-architecture',
   section: 'addition-polymers',
   anchor: '',
-  viewBox: '0 0 760 320',
+  viewBox: '0 0 760 256',
   alt: 'Linear chains lying flat against each other beside branched chains held apart, labeled HDPE and LDPE',
   build() {
     let s = '';
@@ -778,8 +780,8 @@ FIGURES.push({
         const nx = px + 16, ny = up ? y - 6 : y + 6;
         t += `<line class="fg-bond" x1="${px}" y1="${py}" x2="${nx}" y2="${ny}"></line>`;
         if (branchAt && i === branchAt) {
-          t += `<line class="fg-bond" x1="${nx}" y1="${ny}" x2="${nx + 6}" y2="${ny - 14}"></line>`;
-          t += `<line class="fg-bond" x1="${nx + 6}" y1="${ny - 14}" x2="${nx + 18}" y2="${ny - 18}"></line>`;
+          const br = [[nx, ny], [nx + 4, ny - 8], [nx + 12, ny - 11], [nx + 16, ny - 18], [nx + 25, ny - 20]];
+          for (let k = 0; k < 4; k++) t += `<line class="fg-bond" x1="${br[k][0]}" y1="${br[k][1]}" x2="${br[k + 1][0]}" y2="${br[k + 1][1]}"></line>`;
         }
         px = nx; py = ny; up = !up;
       }
@@ -789,7 +791,7 @@ FIGURES.push({
       s += panel(ox, 46, 330, 152, { kind });
       s += tg(ox + 165, 34, title);
       for (let r = 0; r < 4; r++) {
-        s += chain(ox + 24, branched ? 76 + r * 34 : 80 + r * 30, 16, branched ? (r % 2 ? 4 : 9) : 0);
+        s += chain(ox + 24, branched ? 74 + r * 38 : 80 + r * 30, 16, branched ? (r % 2 ? 4 : 9) : 0);
       }
       s += lbl(ox + 165, 220, label2);
       s += tg(ox + 165, 242, use, kind === 'warn' ? 'fg-tag' : 'fg-tag-good');
@@ -799,13 +801,10 @@ FIGURES.push({
     col(406, 'branched: chains held apart', true,
         'LDPE: less dense, flexible', 'plastic bags', 'warn');
 
-    s += rule(24, 268, 700, 268);
-    s += lbl(360, 294, 'Same monomer. Same repeat unit. Same molecular formula.');
-    s += lbl(360, 316, 'Only the architecture differs.');
     return s;
   },
   caption: 'The two polyethylenes, drawn schematically.',
-  note: 'This is the fatty-acid argument from the biomolecules chapter, applied to a different molecule. Straight chains lie against their neighbors along their full length, and the London forces add up. A branch breaks that contact.',
+  note: 'This is the fatty-acid argument from <a class="chapter-ref" href="/ochem/notes/lipids.html">Lipids</a>, applied to a different molecule. Straight chains lie against their neighbors along their full length, and the London forces add up. A branch breaks that contact, and the melting point falls. Tacticity does the same job by a different route: atactic polypropylene cannot pack either.',
 });
 
 export default FIGURES;
