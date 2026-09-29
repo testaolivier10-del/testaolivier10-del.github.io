@@ -899,7 +899,7 @@
     atoms: {
       o:  { x:150, y:36, r:16, label:'O', lp:2, role:'leaving-group', note:'The epoxide oxygen becomes an alkoxide (or alcohol) as the ring opens.' },
       c1: { x:110, y:100,r:16, label:'C', role:'less-hindered', note:'The CH₂ carbon — less hindered, so this is where a strong nucleophile attacks under basic conditions.' },
-      c2: { x:190, y:100,r:16, label:'C', role:'more-substituted', note:'The more substituted carbon — it holds more positive character when protonated, so acid conditions send the nucleophile here.' },
+      c2: { x:190, y:100,r:16, label:'C', role:'more-substituted', note:'The more substituted carbon. It carries the methyl, which crowds a nucleophile coming in from the back.' },
       cm: { x:252, y:138,r:15, label:'C' },
       h1: { x:58,  y:74, r:10, label:'H' }, h2:{ x:74, y:144, r:10, label:'H' },
       h3: { x:190, y:150,r:10, label:'H' }

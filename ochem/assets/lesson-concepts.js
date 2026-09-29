@@ -480,12 +480,14 @@
       7:['carbocation-rearrangement','carbocation-stability'],
       9:['addition-stereochem','stereochemical-outcome'] } },
 
-    'alcohol-reactions': { n:8, steps:{
-      1:['alcohol-activation'],
+    'alcohol-reactions': { n:13, steps:{
+      1:['alcohol-activation','leaving-group-ability'],
       2:['alcohol-activation','leaving-group-ability'],
-      4:['alcohol-activation','leaving-group-ability'],
-      6:['alcohol-activation'],
-      7:['alcohol-activation'] } },
+      5:['stereochemical-outcome','alcohol-activation'],
+      8:['stereochemical-outcome','alcohol-activation'],
+      9:['alcohol-activation','curved-arrow-direction'],
+      11:['zaitsev-hofmann','carbocation-stability'],
+      12:['carbocation-rearrangement','alcohol-activation'] } },
 
     'aldehydes-ketones': { n:8, steps:{
       1:['carbonyl-electrophilicity'],
@@ -706,13 +708,13 @@
       8:['enantiomer-vs-diastereomer'],
       11:['enantiomer-vs-diastereomer'] } },
 
-    'epoxides': { n:9, steps:{
-      1:['epoxide-opening-regiochem'],
+    'epoxides': { n:11, steps:{
       2:['epoxide-opening-regiochem','backside-attack'],
-      4:['epoxide-opening-regiochem'],
-      5:['epoxide-opening-regiochem'],
-      7:['epoxide-opening-regiochem','curved-arrow-direction'],
-      8:['epoxide-opening-regiochem','backside-attack'] } },
+      3:['epoxide-opening-regiochem','curved-arrow-direction'],
+      4:['epoxide-opening-regiochem','backside-attack'],
+      6:['epoxide-opening-regiochem'],
+      7:['epoxide-opening-regiochem'],
+      10:['epoxide-opening-regiochem','stereochemical-outcome'] } },
 
     'esters-amides': { n:10, steps:{
       1:['acyl-reactivity-order','leaving-group-ability'],
@@ -721,11 +723,12 @@
       7:['leaving-group-ability','reductant-scope'],
       9:['activation-before-acylation','acyl-reactivity-order'] } },
 
-    'ether-chemistry': { n:7, steps:{
+    'ether-chemistry': { n:10, steps:{
       1:['alcohol-activation'],
-      2:['backside-attack','alcohol-activation'],
-      3:['backside-attack'],
-      6:['backside-attack'] } },
+      4:['substrate-class','backside-attack'],
+      5:['backside-attack','substrate-class'],
+      8:['carbocation-stability','alcohol-activation'],
+      9:['backside-attack','alcohol-activation'] } },
 
     /* Step 5 is the R/S-from-a-Fischer-projection drill, which grades
        three times — reading the projection is a different skill from
