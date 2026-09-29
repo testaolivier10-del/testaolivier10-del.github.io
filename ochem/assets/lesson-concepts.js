@@ -720,11 +720,12 @@
       13:['lewis-structures-drawing'],
       15:['lewis-structures-drawing'] } },
 
-    'markovnikov': { n:8, steps:{
-      1:['markovnikov-regiochem'],
+    'markovnikov': { n:9, steps:{
+      1:['markovnikov-regiochem','carbocation-stability'],
       2:['markovnikov-regiochem','carbocation-stability'],
       4:['carbocation-rearrangement','markovnikov-regiochem'],
-      7:['markovnikov-regiochem'] } },
+      6:['markovnikov-regiochem','radical-chain'],
+      8:['markovnikov-regiochem','radical-stability'] } },
 
     'mass-spec': { n:8, steps:{
       1:['ms-fragmentation'],

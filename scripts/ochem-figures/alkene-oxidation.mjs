@@ -1,436 +1,634 @@
 /* Figures for the alkene-oxidation notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   The page sits in Alkenes & Alkynes, after skeletal structures, so carbon
+   chains and rings are drawn skeletally. Oxygen that a reagent brings in is
+   highlighted (fg-atom-hi) in every drawing, so where each oxygen went can
+   be read straight off the figure.
+
+   Most figures are 340 wide, stacked in cells, with only fg-lbl and fg-tag
+   text, so the same drawing serves the notes page and a lesson step. Three
+   are notes only: the peroxyacid comparison, the four butane-2,3-diol cases
+   (760 wide) and the ozonolysis mechanism (760 wide). */
+import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
+import { sk, polyPts, ringDouble } from '../lib/ochem-skeletal.mjs';
+import { armEnd, skDouble } from '../lib/ochem-helpers.mjs';
 
 const FIGURES = [];
+const r2 = (v) => Math.round(v * 100) / 100;
 
-/* ------------------------------------------------------------------ C5 ---
-   The most examinable pair in the section is a claim about faces, and a face
-   is the one thing a sentence cannot draw. Two routes from one alkene, with
-   the stereochemistry shown as wedges and hashes rather than only named. */
+/* ------------------------------------------------------------ helpers --- */
+
+/* A labelled atom, with a disc sized to its label, and a bond that stops at
+   the edge of each disc. An empty label is an unlabelled skeletal vertex. */
+const rOf = (l) => (l === '' ? 0 : l.length >= 3 ? 18 : l.length === 2 ? 15 : 13);
+const A = (p, l, o = {}) => atom(p.x, p.y, l, { r: rOf(l), ...o });
+const B = (a, b, la, lb, o = {}) => bond(a, b, { rFrom: rOf(la), rTo: rOf(lb), ...o });
+const mid = (a, b, t = 0.5) => P(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t);
+const charge = (x, y, s) => text(x, y, s, { cls: 'fg-warn', size: 15 });
+
+/* Text with an italic prefix (cis, trans). The kit's text() escapes its
+   string, so the tspan is written here. */
+const itag = (x, y, ital, rest, o = {}) =>
+  `<text class="${o.cls || 'fg-tag'}" x="${r2(x)}" y="${r2(y)}" text-anchor="${o.anchor || 'middle'}" font-size="11">` +
+  `<tspan font-style="italic">${ital}</tspan>${rest}</text>`;
+
+/* A dashed line: a mirror plane, or where a bond is cut. */
+const dashLine = (a, b, cls = 'fg-dash-hi') =>
+  `<line class="${cls}" x1="${r2(a.x)}" y1="${r2(a.y)}" x2="${r2(b.x)}" y2="${r2(b.y)}"></line>`;
+
+/* A cell: a panel with a title tag at the top. `draw(Q)` gets a point maker
+   already shifted to the cell's corner. */
+function cell(ox, oy, w, h, title, draw, opts = {}) {
+  const Q = (x, y) => P(ox + x, oy + y);
+  let s = panel(ox, oy, w, h, opts.kind ? { kind: opts.kind } : {});
+  if (title) s += tag(ox + w / 2, oy + 22, title);
+  s += draw(Q);
+  return s;
+}
+
+/* A cyclohexane ring, point at the top. Vertex 5 is upper right and vertex
+   4 lower right, so the right-hand edge is the bond that reacts, and its
+   two carbons point their new groups out at 30 and -30 degrees. */
+const hexagon = (c, r = 30) => polyPts(c.x, c.y, 6, r, 90);
+const ringInk = (v, skip = []) => v.map((p, i) => {
+  const j = (i + 1) % 6;
+  return skip.some(([a, b]) => (a === i && b === j) || (a === j && b === i)) ? '' : sk(p, v[j]);
+}).join('');
+
+/* =====================================================================
+   1. What a peroxyacid is: a carboxylic acid with one more oxygen, and
+   mCPBA as the one the course uses. Notes only. */
 FIGURES.push({
-  id: 'syn-anti-diol',
+  id: 'peroxyacid',
   section: 'alkene-oxidation',
-  anchor: 'and why that work won a Nobel Prize.</div>',
-  alt: 'One alkene giving a syn diol with osmium tetroxide and an anti diol by way of the epoxide, drawn with wedges and hashes',
-  viewBox: '0 0 760 372',
+  anchor: '<h3>Epoxidation: one oxygen, ring intact</h3>',
+  alt: 'Three stacked panels. A carboxylic acid, R–C(=O)–O–H. A peroxyacid, R–C(=O)–O–O–H, with the outer oxygen highlighted and the O–O bond marked as weak. mCPBA drawn skeletally: a benzene ring carrying a C(=O)OOH group, with a chlorine on the ring one carbon further round.',
+  viewBox: '0 0 340 424',
   build() {
     let s = '';
-    // The shared starting alkene.
-    s += tag(380, 36, 'one alkene');
-    const c1 = P(350, 78), c2 = P(410, 78);
-    s += bond(c1, c2, { order: 2, rFrom: 0, rTo: 0 });
-    s += bond(c1, P(312, 52), { rFrom: 0, rTo: 14 });
-    s += bond(c1, P(312, 104), { rFrom: 0, rTo: 13 });
-    s += bond(c2, P(448, 52), { rFrom: 0, rTo: 14 });
-    s += bond(c2, P(448, 104), { rFrom: 0, rTo: 13 });
-    s += atom(312, 52, 'R', { r: 14 });
-    s += atom(312, 104, 'H', { r: 13, size: 11 });
-    s += atom(448, 52, 'R', { r: 14 });
-    s += atom(448, 104, 'H', { r: 13, size: 11 });
-
-    s += arrow(P(320, 128), P(232, 190));
-    s += arrow(P(440, 128), P(528, 190));
-    s += text(150, 140, 'OsO\u2084, then NaHSO\u2083', { cls: 'fg-lbl', size: 11.5 });
-    s += text(150, 158, 'one cyclic osmate ester, so both', { cls: 'fg-sm', size: 10 });
-    s += text(150, 174, 'oxygens are delivered at once', { cls: 'fg-sm', size: 10 });
-    s += text(612, 140, 'mCPBA, then H\u2083O\u207A', { cls: 'fg-lbl', size: 11.5 });
-    s += text(612, 158, 'the epoxide is opened by attack', { cls: 'fg-sm', size: 10 });
-    s += text(612, 174, 'from the opposite face', { cls: 'fg-sm', size: 10 });
-
-    /* The products. Each carbon keeps its R group; the OH and the H go on
-       wedges and hashes, which is the only part of the drawing carrying the
-       claim. `anti` flips the right-hand carbon and nothing else. */
-    const diol = (cx, cy, anti) => {
-      const a = P(cx - 32, cy), b = P(cx + 32, cy);
+    s += cell(0, 8, 340, 112, 'A CARBOXYLIC ACID', (Q) => {
+      const r = Q(56, 92), c = Q(94, 72), o = Q(94, 40), oh = Q(134, 92), h = Q(172, 72);
+      return bond(r, c, { rFrom: 13, rTo: 0 }) + B(c, o, '', 'O', { order: 2 }) +
+        bond(c, oh, { rFrom: 0, rTo: 13 }) + B(oh, h, 'O', 'H') +
+        A(r, 'R') + A(o, 'O') + A(oh, 'O') + A(h, 'H') +
+        tag(Q(262, 78).x, Q(262, 78).y, 'R–CO₂H');
+    });
+    s += cell(0, 128, 340, 136, 'A PEROXYACID: ONE MORE O', (Q) => {
+      const r = Q(46, 92), c = Q(84, 72), o = Q(84, 40), oi = Q(124, 92), ot = Q(164, 72), h = Q(202, 92);
+      return bond(r, c, { rFrom: 13, rTo: 0 }) + B(c, o, '', 'O', { order: 2 }) +
+        bond(c, oi, { rFrom: 0, rTo: 13 }) + B(oi, ot, 'O', 'O', { cls: 'fg-bond-hi' }) + B(ot, h, 'O', 'H') +
+        A(r, 'R') + A(o, 'O') + A(oi, 'O') + A(ot, 'O', { kind: 'hi' }) + A(h, 'H') +
+        tag(Q(144, 124).x, Q(144, 124).y, 'weak O–O bond', { cls: 'fg-tag-warn' }) +
+        tag(Q(226, 56).x, Q(226, 56).y, 'outer O', { anchor: 'start' }) +
+        tag(Q(262, 96).x, Q(262, 96).y, 'R–CO₃H');
+    });
+    s += cell(0, 272, 340, 144, 'mCPBA', (Q) => {
+      const v = hexagon(Q(96, 92), 28);
       let g = '';
-      g += bond(a, b, { rFrom: 0, rTo: 0 });
-      g += wedge(a, P(cx - 32, cy - 46), { rFrom: 0, rTo: 16 });
-      g += hash(a, P(cx - 32, cy + 46), { rFrom: 0, rTo: 13 });
-      // Anti flips nothing but the wedges on the right-hand carbon: the OH
-      // stays drawn at the top, and it is toward the reader or away from it
-      // that carries the stereochemistry.
-      if (anti) {
-        g += hash(b, P(cx + 32, cy - 46), { rFrom: 0, rTo: 16 });
-        g += wedge(b, P(cx + 32, cy + 46), { rFrom: 0, rTo: 13 });
-      } else {
-        g += wedge(b, P(cx + 32, cy - 46), { rFrom: 0, rTo: 16 });
-        g += hash(b, P(cx + 32, cy + 46), { rFrom: 0, rTo: 13 });
+      for (let i = 0; i < 6; i++) {
+        g += (i % 2 === 0) ? ringDouble(v[i], v[(i + 1) % 6], Q(96, 92), { inset: 7 }) : sk(v[i], v[(i + 1) % 6]);
       }
-      g += bond(a, P(cx - 80, cy + 26), { rFrom: 0, rTo: 14 });
-      g += bond(b, P(cx + 80, cy + 26), { rFrom: 0, rTo: 14 });
-      g += atom(cx - 80, cy + 26, 'R', { r: 14 });
-      g += atom(cx + 80, cy + 26, 'R', { r: 14 });
-      g += atom(cx - 32, cy - 46, 'OH', { kind: 'hi', r: 16, size: 10.5 });
-      g += atom(cx + 32, cy - 46, 'OH', { kind: 'hi', r: 16, size: 10.5 });
-      g += atom(cx - 32, cy + 46, 'H', { r: 13, size: 11 });
-      g += atom(cx + 32, cy + 46, 'H', { r: 13, size: 11 });
+      const cl = armEnd(v[1], 150, 30);
+      const c = armEnd(v[5], 30, 30), o = armEnd(c, 90, 30), oi = armEnd(c, -30, 32), ot = armEnd(oi, 30, 32), h = armEnd(ot, -30, 28);
+      g += bond(v[1], cl, { rFrom: 0, rTo: 15 }) + A(cl, 'Cl');
+      g += sk(v[5], c) + B(c, o, '', 'O', { order: 2 }) + bond(c, oi, { rFrom: 0, rTo: 13 }) +
+        B(oi, ot, 'O', 'O', { cls: 'fg-bond-hi' }) + B(ot, h, 'O', 'H');
+      g += A(o, 'O') + A(oi, 'O') + A(ot, 'O', { kind: 'hi' }) + A(h, 'H');
+      g += itag(Q(170, 132).x, Q(170, 132).y, 'meta', '-chloroperoxybenzoic acid');
       return g;
-    };
-
-    s += diol(190, 252, false);
-    s += diol(570, 252, true);
-    s += text(190, 322, 'syn (cis) diol', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(570, 322, 'anti (trans) diol', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(190, 342, 'both OH toward the reader \u2014 same face', { cls: 'fg-sm', size: 10 });
-    s += text(570, 342, 'one wedge, one hash \u2014 opposite faces', { cls: 'fg-sm', size: 10 });
-    s += rule(30, 356, 730, 356);
+    });
     return s;
   },
-  caption: 'One alkene, two diols, and the same molecular formula in both products. The only difference is which face each hydroxyl arrived on &mdash; osmium delivers both oxygens together from one face, while the epoxide route delivers the second one from the other side.',
-  note: 'Read it off the wedges rather than off the names. Osmium tetroxide forms a five-membered osmate ester spanning both carbons, so the two oxygens are tied to the same face before the ring is ever cut off; there is no step at which they could end up anywhere else. Epoxidation then hydrolysis has an extra step, and that step is what flips the answer: water attacks the protonated epoxide from the side opposite the C&ndash;O bond that is breaking, which is the same backside attack an S<sub>N</sub>2 makes.',
+  caption: 'Put the two acids one above the other and the difference is a single oxygen, inserted between the carbonyl group and the H. In mCPBA the R group is a benzene ring that carries a chlorine.',
 });
 
-/* ------------------------------------------------------------------ R6 ---
-   The two cyclic intermediates the syn/anti rule is actually about. The
-   section states the rule and draws the products; what was missing is the
-   reason, which lives entirely in the shape of the intermediate. */
+/* =====================================================================
+   2. The epoxidation step with its four curved arrows, on cis-but-2-ene.
+   Ar stands for the chlorophenyl ring of mCPBA. */
 FIGURES.push({
-  id: 'diol-intermediates',
+  id: 'epoxidation-arrows',
   section: 'alkene-oxidation',
-  anchor: 'so the two oxygens end up on <b>opposite faces</b>: an <b><i>anti</i> (trans) diol</b>.</li>\n</ul>',
-  alt: 'The syn route through a five-membered cyclic osmate ester giving a cis diol, against the anti route through an epoxide opened by backside attack of water giving a trans diol',
-  viewBox: '0 0 760 420',
+  anchor: 'the byproduct is the ordinary carboxylic acid.</p>',
+  lessons: ['alkene-oxidation'],
+  alt: 'Two stacked panels. Top: mCPBA sits above cis-but-2-ene, its outer O directly over the C=C. Four curved arrows run round a ring: the C=C pi bond to the outer O; the O–O bond to the O–C bond of the acid; the C=O pi bond of the acid to the H; the O–H bond to the second alkene carbon. Bottom: the products, the epoxide with its O bridging both carbons, and the carboxylic acid Ar–CO2H.',
+  viewBox: '0 0 340 390',
   build() {
     let s = '';
-    const alkene = (x, y) => {
-      const C1 = P(x, y), C2 = P(x + 50, y);
-      return bond(C1, C2, { order: 2, gap: 5, rFrom: 14, rTo: 14 }) +
-        bond(C1, P(x - 24, y - 34), { rFrom: 14, rTo: 13 }) +
-        bond(C2, P(x + 74, y - 34), { rFrom: 14, rTo: 13 }) +
-        atom(C1.x, C1.y, 'C', { r: 14 }) + atom(C2.x, C2.y, 'C', { r: 14 }) +
-        atom(x - 24, y - 34, 'R', { r: 13 }) + atom(x + 74, y - 34, 'R', { r: 13 });
-    };
-
-    // ================= SYN =================
-    s += text(92, 28, 'SYN — the osmate ester', { cls: 'fg-tag', size: 11 });
-    s += panel(14, 40, 732, 150);
-    s += alkene(70, 118);
-    s += atom(120, 66, 'OsO₄', { kind: 'warn', r: 22, size: 9.5 });
-    s += curve(P(104, 84), P(78, 100), { bow: 10 });
-    s += curve(P(138, 84), P(114, 100), { bow: -10 });
-    s += arrow(P(210, 112), P(286, 112));
-    {
-      // the five-membered ring: C-C-O-Os-O
-      const C1 = P(336, 132), C2 = P(386, 132), O1 = P(322, 86), O2 = P(400, 86), Os = P(361, 58);
-      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
-      s += bond(C1, O1, { rFrom: 14, rTo: 14 });
-      s += bond(C2, O2, { rFrom: 14, rTo: 14 });
-      s += bond(O1, Os, { rFrom: 14, rTo: 18 });
-      s += bond(O2, Os, { rFrom: 14, rTo: 18 });
-      s += bond(C1, P(312, 166), { rFrom: 14, rTo: 13 });
-      s += bond(C2, P(410, 166), { rFrom: 14, rTo: 13 });
-      s += atom(C1.x, C1.y, 'C', { r: 14 });
-      s += atom(C2.x, C2.y, 'C', { r: 14 });
-      s += atom(O1.x, O1.y, 'O', { kind: 'hi', r: 14 });
-      s += atom(O2.x, O2.y, 'O', { kind: 'hi', r: 14 });
-      s += atom(Os.x, Os.y, 'Os', { kind: 'warn', r: 18, size: 11 });
-      s += atom(312, 166, 'R', { r: 13 });
-      s += atom(410, 166, 'R', { r: 13 });
-      s += text(361, 182, 'both C–O bonds made at once, on one face', { cls: 'fg-sm', size: 10 });
-    }
-    s += arrow(P(440, 112), P(516, 112));
-    s += text(478, 98, 'NaHSO₃', { cls: 'fg-sm', size: 10 });
-    {
-      const C1 = P(580, 122), C2 = P(630, 122);
-      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
-      s += hash(C1, P(556, 88), { rFrom: 14, rTo: 13 });
-      s += hash(C2, P(654, 88), { rFrom: 14, rTo: 13 });
-      s += wedge(C1, P(556, 156), { rFrom: 14, rTo: 17 });
-      s += wedge(C2, P(654, 156), { rFrom: 14, rTo: 17 });
-      s += atom(C1.x, C1.y, 'C', { r: 14 });
-      s += atom(C2.x, C2.y, 'C', { r: 14 });
-      s += atom(556, 88, 'R', { r: 13 });
-      s += atom(654, 88, 'R', { r: 13 });
-      s += atom(556, 156, 'OH', { kind: 'hi', r: 17, size: 10 });
-      s += atom(654, 156, 'OH', { kind: 'hi', r: 17, size: 10 });
-      s += text(692, 122, 'syn diol', { cls: 'fg-tag-good', size: 11 });
-    }
-
-    // ================= ANTI =================
-    s += text(156, 226, 'ANTI — the epoxide, then backside attack', { cls: 'fg-tag', size: 11 });
-    s += panel(14, 238, 732, 150);
-    s += alkene(70, 316);
-    s += atom(150, 262, 'mCPBA', { kind: 'warn', r: 26, size: 9 });
-    s += curve(P(134, 284), P(100, 302), { bow: 14 });
-    s += text(166, 356, 'one concerted step — the alkene geometry survives', { cls: 'fg-sm', size: 9.5 });
-    s += arrow(P(200, 316), P(268, 316));
-    {
-      // the protonated epoxide, with water arriving from the far side
-      const C1 = P(320, 332), C2 = P(370, 332), O = P(345, 292);
-      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
-      s += bond(C1, O, { rFrom: 14, rTo: 15 });
-      s += bond(C2, O, { rFrom: 14, rTo: 15 });
-      s += atom(C1.x, C1.y, 'C', { r: 14 });
-      s += atom(C2.x, C2.y, 'C', { r: 14 });
-      s += atom(O.x, O.y, 'O⁺H', { kind: 'warn', r: 15, size: 9.5 });
-      s += atom(392, 380, 'H₂O', { kind: 'hi', r: 17, size: 10 });
-      s += curve(P(384, 363), P(374, 348), { bow: 8, size: 7 });
-      s += text(345, 258, 'attack comes from the face away from the oxygen', { cls: 'fg-sm', size: 10 });
-      s += text(345, 274, 'the Sₙ₂2 geometry, on a strained ring', { cls: 'fg-sm', size: 9.5 });
-    }
-    s += arrow(P(438, 316), P(514, 316));
-    s += text(476, 302, 'H₃O⁺', { cls: 'fg-sm', size: 10 });
-    {
-      const C1 = P(580, 320), C2 = P(630, 320);
-      s += bond(C1, C2, { rFrom: 14, rTo: 14 });
-      s += hash(C1, P(556, 286), { rFrom: 14, rTo: 13 });
-      s += wedge(C2, P(654, 286), { rFrom: 14, rTo: 17 });
-      s += wedge(C1, P(556, 354), { rFrom: 14, rTo: 17 });
-      s += hash(C2, P(654, 354), { rFrom: 14, rTo: 13 });
-      s += atom(C1.x, C1.y, 'C', { r: 14 });
-      s += atom(C2.x, C2.y, 'C', { r: 14 });
-      s += atom(556, 286, 'R', { r: 13 });
-      s += atom(654, 286, 'OH', { kind: 'hi', r: 17, size: 10 });
-      s += atom(556, 354, 'OH', { kind: 'hi', r: 17, size: 10 });
-      s += atom(654, 354, 'R', { r: 13 });
-      s += text(694, 320, 'anti diol', { cls: 'fg-tag-good', size: 11 });
-    }
-
-    s += rule(30, 396, 730, 396);
-    s += text(380, 414, 'Both routes make two C–O bonds — the difference is when, and from which side.', { cls: 'fg-lbl', size: 12 });
+    s += cell(0, 8, 340, 244, 'ONE STEP, FOUR ARROWS', (Q) => {
+      const ca = Q(136, 200), cb = Q(186, 200);
+      const ot = Q(161, 138), oi = Q(214, 118), cc = Q(226, 70), oc = Q(172, 56), h = Q(126, 96), ar = Q(272, 50);
+      let g = '';
+      g += bond(ca, cb, { order: 2, rFrom: 0, rTo: 0 });
+      g += sk(ca, armEnd(ca, 215, 34)) + sk(cb, armEnd(cb, 325, 34));
+      g += B(ot, oi, 'O', 'O') + bond(oi, cc, { rFrom: 13, rTo: 0 }) + B(cc, oc, '', 'O', { order: 2 }) +
+        B(ot, h, 'O', 'H') + bond(cc, ar, { rFrom: 0, rTo: 15 });
+      g += A(ot, 'O', { kind: 'hi' }) + A(oi, 'O') + A(oc, 'O') + A(h, 'H') + A(ar, 'Ar');
+      // 1: the pi bond to the outer O
+      g += curve(Q(170, 194), Q(166, 154), { bow: -12, size: 7 });
+      // 2: the O–O bond becomes the new C=O of the acid
+      g += curve(mid(ot, oi), mid(oi, cc, 0.55), { bow: 12, size: 7 });
+      // 3: the old C=O pi bond picks up the H
+      g += curve(mid(cc, oc), mid(oc, h, 0.45), { bow: 14, size: 7 });
+      // 4: the O–H bond becomes the second C–O bond
+      g += curve(mid(ot, h), Q(146, 176), { bow: 22, size: 7 });
+      g += tag(Q(66, 142).x, Q(66, 142).y, 'outer O');
+      g += tag(Q(270, 150).x, Q(270, 150).y, 'Ar = the');
+      g += tag(Q(270, 166).x, Q(270, 166).y, 'chlorophenyl');
+      g += tag(Q(270, 182).x, Q(270, 182).y, 'ring of mCPBA');
+      g += itag(Q(160, 234).x, Q(160, 234).y, 'cis', '-but-2-ene');
+      return g;
+    });
+    s += cell(0, 260, 340, 122, 'AFTER THE STEP', (Q) => {
+      const a = Q(62, 82), b = Q(112, 82), o = Q(87, 44);
+      let g = sk(a, b) + bond(a, o, { rFrom: 0, rTo: 13 }) + bond(b, o, { rFrom: 0, rTo: 13 }) + A(o, 'O', { kind: 'hi' });
+      g += sk(a, armEnd(a, 215, 32)) + sk(b, armEnd(b, 325, 32));
+      g += text(Q(164, 74).x, Q(164, 74).y, '+', { cls: 'fg-lbl', size: 15 });
+      const c = Q(246, 70), oc = Q(246, 38), ar = Q(206, 88), oh = Q(284, 88);
+      g += B(c, oc, '', 'O', { order: 2 }) + bond(c, ar, { rFrom: 0, rTo: 15 }) + bond(c, oh, { rFrom: 0, rTo: 15 }) +
+        A(oc, 'O') + A(ar, 'Ar') + A(oh, 'OH');
+      g += tag(Q(87, 112).x, Q(87, 112).y, 'the epoxide') + tag(Q(246, 112).x, Q(246, 112).y, 'the carboxylic acid');
+      return g;
+    });
     return s;
   },
-  caption: 'The two intermediates the syn/anti rule is really about. Osmium ties both oxygens to one face before anything is released; the epoxide route makes the first C&ndash;O bond on one face and is then forced to make the second on the other.',
-  note: 'The osmate ester is why syn dihydroxylation is stereospecific and not merely stereoselective: at no point in the sequence do the two oxygens have the freedom to be anywhere else, because they are joined to each other through osmium until the ring is cut. In the anti route, look at where the nucleophile has to come from — an epoxide carbon can only be attacked from the side away from its own oxygen, which is the S<sub>N</sub>2 geometry from <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> applied to a strained ring.',
+  caption: 'Follow the arrows round in order, 1 to 4. The oxygen that ends up in the epoxide is the outer O, and it forms both of its C–O bonds in this one step.',
 });
 
-/* ------------------------------------------------------------------ R7 ---
-   Ozonolysis had no figure at all: the section describes a two-stage
-   mechanism and a branching workup entirely in prose, and "the workup, not
-   the ozone, decides the product" is a claim about an intermediate nobody
-   had been shown. Three panels for the mechanism, two for the branch. */
+/* =====================================================================
+   3. cis and trans but-2-ene: the alkene geometry carried into the
+   epoxide. The ring is drawn face on, O at the top; a wedged methyl points
+   toward the reader and a hashed one away. */
+function butene(a, cis, len = 40) {
+  const b = P(a.x + 44, a.y);
+  let g = skDouble(a, b, P(a.x + 22, a.y + (cis ? 10 : -10)));
+  g += sk(a, armEnd(a, 210, len)) + sk(b, armEnd(b, cis ? 330 : 30, len));
+  return g;
+}
+function epoxide(a, left, right, hiO = true) {
+  const b = P(a.x + 50, a.y), o = P(a.x + 25, a.y - 40);
+  let g = sk(a, b) + bond(a, o, { rFrom: 0, rTo: 13 }) + bond(b, o, { rFrom: 0, rTo: 13 });
+  g += (left === 'w' ? wedge : hash)(a, armEnd(a, 235, 36), { rFrom: 0, rTo: 0, width: 8 });
+  g += (right === 'w' ? wedge : hash)(b, armEnd(b, 305, 36), { rFrom: 0, rTo: 0, width: 8 });
+  g += A(o, 'O', hiO ? { kind: 'hi' } : {});
+  return g;
+}
+FIGURES.push({
+  id: 'epoxide-cis-trans',
+  section: 'alkene-oxidation',
+  anchor: 'are called <b>stereospecific</b>.</p>',
+  lessons: ['alkene-oxidation'],
+  alt: 'Two stacked panels. Top: cis-but-2-ene with mCPBA gives the cis epoxide, both methyls on wedges, with a dashed mirror plane through the O and the middle of the C–C bond; it is meso and achiral. Bottom: trans-but-2-ene with mCPBA gives the trans epoxide as two mirror images, one with the left methyl wedged and the right hashed (2R,3R), the other the reverse (2S,3S), in equal amounts.',
+  viewBox: '0 0 340 390',
+  build() {
+    let s = '';
+    s += cell(0, 8, 340, 156, '', (Q) => {
+      let g = itag(Q(170, 22).x, Q(170, 22).y, 'cis', '-BUT-2-ENE');
+      g += butene(Q(50, 84), true);
+      g += arrow(Q(134, 80), Q(186, 80)) + tag(Q(160, 68).x, Q(160, 68).y, 'mCPBA');
+      g += epoxide(Q(222, 96), 'w', 'w');
+      g += dashLine(Q(247, 44), Q(247, 140));
+      g += tag(Q(302, 64).x, Q(302, 64).y, 'mirror') + tag(Q(302, 80).x, Q(302, 80).y, 'plane');
+      g += tag(Q(170, 146).x, Q(170, 146).y, 'meso: achiral, one compound', { cls: 'fg-tag-good' });
+      return g;
+    });
+    s += cell(0, 172, 340, 210, '', (Q) => {
+      let g = itag(Q(170, 22).x, Q(170, 22).y, 'trans', '-BUT-2-ENE');
+      g += butene(Q(96, 66), false, 34);
+      g += arrow(Q(174, 64), Q(226, 64)) + tag(Q(200, 52).x, Q(200, 52).y, 'mCPBA');
+      g += epoxide(Q(50, 146), 'w', 'h');
+      g += epoxide(Q(240, 146), 'h', 'w');
+      g += tag(Q(75, 196).x, Q(75, 196).y, '(2R,3R)');
+      g += tag(Q(265, 196).x, Q(265, 196).y, '(2S,3S)');
+      g += tag(Q(170, 132).x, Q(170, 132).y, 'mirror');
+      g += tag(Q(170, 148).x, Q(170, 148).y, 'images');
+      g += tag(Q(170, 178).x, Q(170, 178).y, '50 : 50', { cls: 'fg-tag-good' });
+      return g;
+    });
+    return s;
+  },
+  caption: 'Both methyls start on the same side in the cis alkene, and they stay on the same face of the ring. The trans alkene keeps them apart, so they end up on opposite faces.',
+});
+
+/* =====================================================================
+   4. The syn route: OsO4 adds to cyclohexene in one step (three arrows),
+   the osmate ester holds both oxygens on the front face, and NaHSO3 frees
+   the cis diol. */
+function osmium(Q, os, oa, ob, oc, od, cOa, cOb) {
+  let g = '';
+  g += B(oa, os, 'O', 'Os', cOa) + B(ob, os, 'O', 'Os', cOb) +
+    B(os, oc, 'Os', 'O', { order: 2 }) + B(os, od, 'Os', 'O', { order: 2 });
+  g += A(os, 'Os') + A(oc, 'O') + A(od, 'O');
+  return g;
+}
+FIGURES.push({
+  id: 'syn-osmate',
+  section: 'alkene-oxidation',
+  anchor: 'The result is a <b><i>syn</i> diol</b>.',
+  lessons: ['alkene-oxidation'],
+  alt: 'Three stacked panels. 1: cyclohexene with OsO4 beside its double bond; three curved arrows: the C=C pi bond to one Os=O oxygen, that Os=O pi bond onto osmium, and a second Os=O pi bond to the other alkene carbon. 2: the osmate ester, a five-membered ring of two carbons, two oxygens and osmium, with both C–O bonds drawn as wedges. 3: after NaHSO3 in water, cis-cyclohexane-1,2-diol with both OH groups on wedges.',
+  viewBox: '0 0 340 470',
+  build() {
+    let s = '';
+    s += cell(0, 8, 340, 168, '1   OsO₄ ADDS IN ONE STEP', (Q) => {
+      const c = Q(76, 92), v = hexagon(c, 30);
+      let g = ringInk(v, [[4, 5]]) + ringDouble(v[4], v[5], c, { inset: 6 });
+      const oa = Q(160, 62), ob = Q(160, 122), os = Q(214, 92), oc = Q(260, 62), od = Q(260, 122);
+      g += bond(oa, os, { order: 2, rFrom: 13, rTo: 15 }) + bond(ob, os, { order: 2, rFrom: 13, rTo: 15 }) +
+        B(os, oc, 'Os', 'O', { order: 2 }) + B(os, od, 'Os', 'O', { order: 2 });
+      g += A(oa, 'O', { kind: 'hi' }) + A(ob, 'O', { kind: 'hi' }) + A(os, 'Os') + A(oc, 'O') + A(od, 'O');
+      // 1: the C=C pi bond to the upper oxygen
+      g += curve(Q(112, 86), Q(147, 68), { bow: -14, size: 7 });
+      // 2: the upper Os=O pi bond onto osmium
+      g += curve(mid(oa, os, 0.4), Q(206, 78), { bow: -12, size: 7 });
+      // 3: the lower Os=O pi bond to the lower alkene carbon
+      g += curve(mid(ob, os, 0.55), Q(114, 112), { bow: -22, size: 7 });
+      g += tag(Q(170, 156).x, Q(170, 156).y, 'OsO₄ comes at the face toward you');
+      return g;
+    });
+    s += cell(0, 184, 340, 146, '2   THE OSMATE ESTER', (Q) => {
+      const c = Q(76, 84), v = hexagon(c, 30);
+      let g = ringInk(v);
+      const oa = Q(138, 58), ob = Q(138, 110), os = Q(188, 84), oc = Q(236, 58), od = Q(236, 110);
+      g += wedge(v[5], oa, { rFrom: 0, rTo: 13, width: 8 }) + wedge(v[4], ob, { rFrom: 0, rTo: 13, width: 8 });
+      g += B(oa, os, 'O', 'Os') + B(ob, os, 'O', 'Os') + B(os, oc, 'Os', 'O', { order: 2 }) + B(os, od, 'Os', 'O', { order: 2 });
+      g += A(oa, 'O', { kind: 'hi' }) + A(ob, 'O', { kind: 'hi' }) + A(os, 'Os') + A(oc, 'O') + A(od, 'O');
+      g += tag(Q(170, 136).x, Q(170, 136).y, 'both C–O bonds on the front face');
+      return g;
+    });
+    s += cell(0, 338, 340, 124, '3   NaHSO₃ IN WATER CUTS OFF THE OSMIUM', (Q) => {
+      const c = Q(80, 76), v = hexagon(c, 30);
+      let g = ringInk(v);
+      const o1 = armEnd(v[5], 30, 34), o2 = armEnd(v[4], -30, 34);
+      g += wedge(v[5], o1, { rFrom: 0, rTo: 15, width: 8 }) + wedge(v[4], o2, { rFrom: 0, rTo: 15, width: 8 });
+      g += A(o1, 'OH', { kind: 'hi' }) + A(o2, 'OH', { kind: 'hi' });
+      g += itag(Q(238, 66).x, Q(238, 66).y, 'cis', '-cyclohexane-');
+      g += tag(Q(238, 82).x, Q(238, 82).y, '1,2-diol', { cls: 'fg-tag' });
+      g += tag(Q(238, 104).x, Q(238, 104).y, 'both OH toward you', { cls: 'fg-tag-good' });
+      return g;
+    });
+    return s;
+  },
+  caption: 'Both oxygens come from the same OsO₄ molecule, so they join the ring on the same face and stay there until the osmium is removed.',
+});
+
+/* =====================================================================
+   5. The anti route: epoxide on one face, protonated, opened by water from
+   the other face, giving the trans diol. */
+FIGURES.push({
+  id: 'anti-opening',
+  section: 'alkene-oxidation',
+  anchor: 'an <b><i>anti</i> diol</b>.',
+  lessons: ['alkene-oxidation'],
+  alt: 'Three stacked panels. 1: the epoxide of cyclohexene, its O bridging the two carbons on wedges, toward the reader. 2: the O is protonated; a water molecule below the lower carbon attacks it from the back face, with one curved arrow from the water lone pair to that carbon and one from the breaking C–O bond to the positive oxygen. 3: trans-cyclohexane-1,2-diol, one OH on a wedge and the other on a hash.',
+  viewBox: '0 0 340 502',
+  build() {
+    let s = '';
+    s += cell(0, 8, 340, 138, '1   mCPBA PUTS ONE O ON THE FRONT FACE', (Q) => {
+      const c = Q(96, 82), v = hexagon(c, 30);
+      let g = ringInk(v);
+      const o = Q(158, 82);
+      g += wedge(v[5], o, { rFrom: 0, rTo: 13, width: 8 }) + wedge(v[4], o, { rFrom: 0, rTo: 13, width: 8 });
+      g += A(o, 'O', { kind: 'hi' });
+      g += tag(Q(250, 76).x, Q(250, 76).y, 'the epoxide O') + tag(Q(250, 92).x, Q(250, 92).y, 'points toward you');
+      return g;
+    });
+    s += cell(0, 154, 340, 200, '2   H⁺ ON THE O, THEN WATER FROM THE BACK', (Q) => {
+      const c = Q(80, 88), v = hexagon(c, 30);
+      let g = ringInk(v);
+      const o = Q(142, 88), h = Q(182, 88), w = Q(150, 150);
+      g += wedge(v[5], o, { rFrom: 0, rTo: 13, width: 8 }) + wedge(v[4], o, { rFrom: 0, rTo: 13, width: 8 });
+      g += B(o, h, 'O', 'H') + A(o, 'O', { kind: 'hi' }) + A(h, 'H') + charge(Q(150, 70).x, Q(150, 70).y, '+');
+      g += A(w, 'H₂O');
+      g += lonePair(w.x, w.y, 215, { dist: 23 });
+      // water's lone pair to the lower ring carbon; the C–O bond onto O+
+      g += curve(Q(126, 140), Q(111, 112), { bow: -12, size: 7 });
+      g += curve(mid(v[4], o, 0.45), Q(136, 101), { bow: 10, size: 7 });
+      g += tag(Q(258, 134).x, Q(258, 134).y, 'water attacks from');
+      g += tag(Q(258, 150).x, Q(258, 150).y, 'the back, opposite');
+      g += tag(Q(258, 166).x, Q(258, 166).y, 'the C–O that breaks');
+      return g;
+    });
+    s += cell(0, 362, 340, 132, '3   LOSS OF H⁺ GIVES THE DIOL', (Q) => {
+      const c = Q(80, 78), v = hexagon(c, 30);
+      let g = ringInk(v);
+      const o1 = armEnd(v[5], 30, 34), o2 = armEnd(v[4], -30, 34);
+      g += wedge(v[5], o1, { rFrom: 0, rTo: 15, width: 8 }) + hash(v[4], o2, { rFrom: 0, rTo: 15, width: 9 });
+      g += A(o1, 'OH', { kind: 'hi' }) + A(o2, 'OH', { kind: 'hi' });
+      g += itag(Q(238, 66).x, Q(238, 66).y, 'trans', '-cyclohexane-');
+      g += tag(Q(238, 82).x, Q(238, 82).y, '1,2-diol');
+      g += tag(Q(238, 104).x, Q(238, 104).y, 'one OH toward you,', { cls: 'fg-tag-good' });
+      g += tag(Q(238, 120).x, Q(238, 120).y, 'one away', { cls: 'fg-tag-good' });
+      return g;
+    });
+    return s;
+  },
+  caption: 'The first oxygen stays on the face where mCPBA put it. Water can only reach the carbon from the other face, so the second OH ends up there.',
+});
+
+/* =====================================================================
+   6. The four but-2-ene cases, drawn in the frame of the alkene: each
+   carbon keeps its CH3 and H where the alkene had them, and the new OH
+   points toward the reader (wedge) or away (hash). Notes only. */
+function frameAlkene(a, cis) {
+  const b = P(a.x + 44, a.y);
+  const m1 = armEnd(a, 120, 34), h1 = armEnd(a, 240, 30);
+  const m2 = armEnd(b, cis ? 60 : 300, 34), h2 = armEnd(b, cis ? 300 : 60, 30);
+  return bond(a, b, { order: 2, rFrom: 0, rTo: 0 }) +
+    bond(a, m1, { rFrom: 0, rTo: 18 }) + bond(a, h1, { rFrom: 0, rTo: 11 }) +
+    bond(b, m2, { rFrom: 0, rTo: 18 }) + bond(b, h2, { rFrom: 0, rTo: 11 }) +
+    A(m1, 'CH₃') + A(h1, 'H', { r: 11 }) + A(m2, 'CH₃') + A(h2, 'H', { r: 11 });
+}
+function frameDiol(a, cis, oh2, oh3) {
+  const b = P(a.x + 44, a.y);
+  const m1 = armEnd(a, 110, 34), h1 = armEnd(a, 250, 30), o1 = armEnd(a, 180, 34);
+  const m2 = armEnd(b, cis ? 70 : 290, 34), h2 = armEnd(b, cis ? 290 : 70, 30), o2 = armEnd(b, 0, 34);
+  const st = (k, p, q) => (k === 'w' ? wedge : hash)(p, q, { rFrom: 0, rTo: 15, width: k === 'w' ? 8 : 9 });
+  return sk(a, b) +
+    bond(a, m1, { rFrom: 0, rTo: 18 }) + bond(a, h1, { rFrom: 0, rTo: 11 }) + st(oh2, a, o1) +
+    bond(b, m2, { rFrom: 0, rTo: 18 }) + bond(b, h2, { rFrom: 0, rTo: 11 }) + st(oh3, b, o2) +
+    A(m1, 'CH₃') + A(h1, 'H', { r: 11 }) + A(o1, 'OH', { kind: 'hi' }) +
+    A(m2, 'CH₃') + A(h2, 'H', { r: 11 }) + A(o2, 'OH', { kind: 'hi' });
+}
+FIGURES.push({
+  id: 'butanediol-four-cases',
+  section: 'alkene-oxidation',
+  anchor: '</tbody>\n</table>\n</div>',
+  alt: 'A two-by-two grid. Rows: cis-but-2-ene and trans-but-2-ene, each drawn with its two CH3 groups and two H atoms. Columns: OsO4 (syn) and mCPBA then H3O+ (anti). Each product keeps the alkene frame and adds one OH to each carbon, on a wedge or a hash. cis with syn: both OH on wedges, a mirror plane between the carbons, meso. cis with anti: one wedge and one hash, drawn with its mirror image, (2R,3R) and (2S,3S), racemic. trans with syn: both wedges, and its mirror image with both hashes, (2S,3S) and (2R,3R), racemic. trans with anti: one wedge and one hash, meso.',
+  viewBox: '0 0 760 452',
+  build() {
+    let s = '';
+    const cols = [[6, 146], [158, 296], [460, 296]];
+    s += tag(76, 22, 'ALKENE');
+    s += tag(158 + 148, 22, 'OsO₄, NMO   (syn)');
+    s += tag(460 + 148, 22, 'mCPBA, then H₃O⁺   (anti)');
+    const rows = [[34, true], [244, false]];
+    for (const [y, cis] of rows) {
+      for (const [x, w] of cols) s += panel(x, y, w, 202);
+      s += itag(76, y + 26, cis ? 'cis' : 'trans', '-but-2-ene');
+      s += frameAlkene(P(54, y + 106), cis);
+      // the syn column
+      if (cis) {
+        s += frameDiol(P(284, y + 100), true, 'w', 'w');
+        s += dashLine(P(306, y + 44), P(306, y + 150));
+        s += tag(372, y + 58, 'mirror plane', { anchor: 'start' });
+        s += text(306, y + 172, 'meso (2R,3S): achiral, one compound', { cls: 'fg-tag-good', size: 11 });
+        s += text(306, y + 190, 'both faces of attack give this same molecule', { cls: 'fg-sm' });
+      } else {
+        s += frameDiol(P(212, y + 100), false, 'w', 'w');
+        s += frameDiol(P(360, y + 100), false, 'h', 'h');
+        s += tag(234, y + 162, '(2S,3S)') + tag(382, y + 162, '(2R,3R)');
+        s += text(306, y + 188, 'racemic (±): mirror images, 50 : 50', { cls: 'fg-tag-good', size: 11 });
+      }
+      // the anti column
+      if (cis) {
+        s += frameDiol(P(514, y + 100), true, 'w', 'h');
+        s += frameDiol(P(662, y + 100), true, 'h', 'w');
+        s += tag(536, y + 162, '(2S,3S)') + tag(684, y + 162, '(2R,3R)');
+        s += text(608, y + 188, 'racemic (±): mirror images, 50 : 50', { cls: 'fg-tag-good', size: 11 });
+      } else {
+        s += frameDiol(P(586, y + 100), false, 'w', 'h');
+        s += text(608, y + 172, 'meso (2R,3S): achiral, one compound', { cls: 'fg-tag-good', size: 11 });
+        s += text(608, y + 190, 'both faces of attack give this same molecule', { cls: 'fg-sm' });
+      }
+    }
+    return s;
+  },
+  caption: 'Each product keeps the alkene’s CH₃ and H groups where they were, and adds one OH to each carbon, toward you (wedge) or away from you (hash). Compare the two rows: they are swapped.',
+});
+
+/* =====================================================================
+   7. The ozonolysis mechanism, in four panels. Notes only. The pentagon is
+   the same five positions in panels 2 to 4: v0 top, then clockwise. */
+const pent = (cx, cy, r = 46) => [-90, -18, 54, 126, 198].map((d) => {
+  const a = (d * Math.PI) / 180;
+  return P(cx + r * Math.cos(a), cy + r * Math.sin(a));
+});
+const shift = (p, dx) => P(p.x + dx, p.y);
 FIGURES.push({
   id: 'ozonolysis-mechanism',
   section: 'alkene-oxidation',
   anchor: 'and <i>that</i> is why the workup, not the ozone, decides the answer.</p>',
-  alt: 'Ozonolysis in five drawings: ozone adding across a double bond to give the five-membered molozonide, its rearrangement into the ozonide, and then the two workups — dimethyl sulfide capping the fragments as a ketone and an aldehyde, hydrogen peroxide taking the aldehyde on to a carboxylic acid',
-  viewBox: '0 0 760 486',
+  alt: 'Ozonolysis in four panels, with curved arrows. 1: ozone, drawn O-minus, O-plus, O, sits over an alkene R2C=CR2; three arrows: the O-minus lone pair to the left carbon, the C=C pi bond to the right-hand oxygen, and the O=O pi bond onto the central O-plus. 2: the molozonide, a five-membered ring C–C–O–O–O; three arrows: an oxygen lone pair forms a C=O+ bond, the C–C bond becomes a C=O bond, and an O–O bond breaks onto the middle oxygen. 3: the two pieces, a carbonyl compound and a carbonyl oxide, rejoin the other way round with three arrows. 4: the ozonide, a five-membered ring C–O–C–O–O in which the two former alkene carbons are no longer bonded to each other.',
+  viewBox: '0 0 760 476',
   build() {
     let s = '';
-
-    // ---- Panel 1: ozone meets the alkene ----
-    s += tag(132, 34, 'STEP 1 — ozone adds across the C=C');
-    s += panel(14, 44, 236, 180);
+    // ---- 1 ----
+    s += panel(6, 34, 360, 206) + tag(186, 24, '1   OZONE ADDS ACROSS THE C=C IN ONE STEP');
     {
-      const C1 = P(100, 128), C2 = P(164, 128);
-      const Oa = P(96, 80), Ob = P(132, 60), Oc = P(168, 80);
-      s += bond(C1, C2, { order: 2, gap: 5, rFrom: 15, rTo: 15 });
-      s += bond(C1, P(64, 100), { rFrom: 15, rTo: 13 });
-      s += bond(C1, P(64, 156), { rFrom: 15, rTo: 13 });
-      s += bond(C2, P(200, 100), { rFrom: 15, rTo: 13 });
-      s += bond(C2, P(200, 156), { rFrom: 15, rTo: 13 });
-      s += bond(Oa, Ob, { rFrom: 14, rTo: 14 });
-      s += bond(Ob, Oc, { order: 2, gap: 4, rFrom: 14, rTo: 14 });
-      s += atom(C1.x, C1.y, 'C', { kind: 'hi' });
-      s += atom(C2.x, C2.y, 'C', { kind: 'hi' });
-      s += atom(64, 100, 'R', { r: 13 });
-      s += atom(64, 156, 'R', { r: 13 });
-      s += atom(200, 100, 'R', { r: 13 });
-      s += atom(200, 156, 'R', { r: 13 });
-      s += atom(Oa.x, Oa.y, 'O⁻', { kind: 'warn', r: 14, size: 10.5 });
-      s += atom(Ob.x, Ob.y, 'O⁺', { kind: 'warn', r: 14, size: 10.5 });
-      s += atom(Oc.x, Oc.y, 'O', { kind: 'warn', r: 14 });
-      s += lonePair(Oa.x, Oa.y, 180);
-      s += curve(P(80, 92), P(94, 114), { bow: 10 });
-      s += curve(P(140, 120), P(160, 96), { bow: -12 });
-      s += text(132, 194, 'a concerted 1,3-dipolar addition', { cls: 'fg-tag', size: 10.5 });
-      s += text(132, 210, 'both new C–O bonds form at once', { cls: 'fg-sm', size: 9.5 });
+      const c1 = P(132, 188), c2 = P(234, 188);
+      const o1 = P(132, 116), o2 = P(183, 80), o3 = P(234, 116);
+      s += bond(c1, c2, { order: 2, rFrom: 18, rTo: 18 });
+      s += B(o1, o2, 'O⁻', 'O⁺') + B(o2, o3, 'O⁺', 'O', { order: 2 });
+      s += A(c1, 'R₂C') + A(c2, 'CR₂') + A(o1, 'O⁻', { kind: 'hi' }) + A(o2, 'O⁺', { kind: 'hi' }) + A(o3, 'O', { kind: 'hi' });
+      s += lonePair(o1.x, o1.y, 90, { dist: 22 });
+      s += curve(P(132, 144), P(132, 168), { bow: -12, size: 7 });
+      s += curve(P(190, 184), P(226, 134), { bow: 14, size: 7 });
+      s += curve(mid(o2, o3, 0.5), P(196, 88), { bow: -12, size: 7 });
+      s += text(186, 228, 'both new C–O bonds form at once', { cls: 'fg-sm' });
     }
-
-    /* The two rings are the same pentagon twice, so the vertices are computed
-       once: radius 46 puts ~23px of visible bond between neighboring atoms,
-       which is what stops a five-membered ring reading as a blob. */
-    const ring = (cx, cy, r = 46) => [-90, -18, 54, 126, 198].map((d) => {
-      const a = (d * Math.PI) / 180;
-      return P(cx + r * Math.cos(a), cy + r * Math.sin(a));
-    });
-
-    // ---- Panel 2: the molozonide, C–C–O–O–O ----
-    s += tag(380, 34, 'STEP 2 — the molozonide falls apart');
-    s += panel(258, 44, 244, 180);
+    s += arrow(P(370, 136), P(390, 136));
+    // ---- 2 ----
+    s += panel(394, 34, 360, 206) + tag(574, 24, '2   THE MOLOZONIDE SPLITS IN TWO');
     {
-      const [v0, v1, v2, v3, v4] = ring(380, 118);
-      // v3 and v2 are the two former alkene carbons; v4, v0, v1 the ozone.
-      s += bond(v3, v2, { rFrom: 17, rTo: 17, cls: 'fg-bond-hi' });
-      s += bond(v2, v1, { rFrom: 17, rTo: 14 });
-      s += bond(v1, v0, { rFrom: 14, rTo: 14, cls: 'fg-bond-hi' });
-      s += bond(v0, v4, { rFrom: 14, rTo: 14 });
-      s += bond(v4, v3, { rFrom: 14, rTo: 17 });
-      s += atom(v3.x, v3.y, 'CR₂', { r: 17, size: 9.5 });
-      s += atom(v2.x, v2.y, 'CR₂', { r: 17, size: 9.5 });
-      s += atom(v1.x, v1.y, 'O', { kind: 'warn', r: 14 });
-      s += atom(v0.x, v0.y, 'O', { kind: 'warn', r: 14 });
-      s += atom(v4.x, v4.y, 'O', { kind: 'warn', r: 14 });
-      s += text(380, 188, 'molozonide (1,2,3-trioxolane)', { cls: 'fg-tag' });
-      s += text(380, 204, 'the bolder two bonds break,', { cls: 'fg-sm' });
-      s += text(380, 218, 'and the pieces re-close', { cls: 'fg-sm' });
+      const [v0, v1, v2, v3, v4] = pent(574, 136, 50);
+      // C1 = v3, C2 = v2, O1 = v4, O2 = v0, O3 = v1
+      s += B(v3, v2, 'R₂C', 'CR₂') + B(v2, v1, 'CR₂', 'O') + B(v1, v0, 'O', 'O') + B(v0, v4, 'O', 'O') + B(v4, v3, 'O', 'R₂C');
+      s += A(v3, 'R₂C') + A(v2, 'CR₂') + A(v4, 'O', { kind: 'hi' }) + A(v0, 'O', { kind: 'hi' }) + A(v1, 'O', { kind: 'hi' });
+      s += lonePair(v1.x, v1.y, 0, { dist: 21 });
+      s += curve(P(v1.x + 24, v1.y + 8), mid(v1, v2), { bow: -12, size: 7 });
+      s += curve(mid(v3, v2), mid(v3, v4), { bow: 18, size: 7 });
+      s += curve(mid(v4, v0), P(v0.x - 14, v0.y - 6), { bow: 12, size: 7 });
+      s += text(574, 222, 'molozonide (a 1,2,3-trioxolane)', { cls: 'fg-tag' });
     }
-
-    // ---- Panel 3: the ozonide, C–O–O–C–O ----
-    s += tag(628, 34, 'STEP 3 — and re-forms as the ozonide');
-    s += panel(510, 44, 236, 180);
+    // ---- 3 ----
+    s += panel(6, 262, 360, 206) + tag(186, 252, '3   THE PIECES REJOIN THE OTHER WAY ROUND');
     {
-      const [v0, v1, v2, v3, v4] = ring(628, 118);
-      // v3 and v1 are the carbons now; v4, v0 an O–O pair and v2 the bridge.
-      s += bond(v3, v4, { rFrom: 17, rTo: 14 });
-      s += bond(v4, v0, { rFrom: 14, rTo: 14 });
-      s += bond(v0, v1, { rFrom: 14, rTo: 17 });
-      s += bond(v1, v2, { rFrom: 17, rTo: 14 });
-      s += bond(v2, v3, { rFrom: 14, rTo: 17 });
-      s += atom(v3.x, v3.y, 'CR₂', { r: 17, size: 9.5 });
-      s += atom(v1.x, v1.y, 'CR₂', { r: 17, size: 9.5 });
-      s += atom(v4.x, v4.y, 'O', { kind: 'warn', r: 14 });
-      s += atom(v0.x, v0.y, 'O', { kind: 'warn', r: 14 });
-      s += atom(v2.x, v2.y, 'O', { kind: 'warn', r: 14 });
-      s += text(628, 188, 'ozonide (1,2,4-trioxolane)', { cls: 'fg-tag' });
-      s += text(628, 204, 'this is what is in the flask —', { cls: 'fg-sm' });
-      s += text(628, 218, 'and not a C=O yet', { cls: 'fg-sm' });
+      const [v0, v1, v2, v3, v4] = pent(186, 360, 50);
+      // ozonide positions: O1 = v0, C2 = v1, O3 = v2, O2 = v3, C1 = v4
+      const o1 = shift(v0, -30), c1 = shift(v4, -30);
+      const c2 = shift(v1, 30), o3 = shift(v2, 30), o2 = shift(v3, 30);
+      s += B(c1, o1, 'R₂C', 'O', { order: 2 });
+      s += B(c2, o3, 'CR₂', 'O⁺', { order: 2 }) + B(o3, o2, 'O⁺', 'O⁻');
+      s += A(c1, 'R₂C') + A(o1, 'O', { kind: 'hi' }) + A(c2, 'CR₂') + A(o3, 'O⁺', { kind: 'hi' }) + A(o2, 'O⁻', { kind: 'hi' });
+      s += lonePair(o2.x, o2.y, 200, { dist: 22 });
+      s += curve(P(o2.x - 26, o2.y - 2), P(c1.x + 10, c1.y + 16), { bow: -12, size: 7 });
+      s += curve(mid(c1, o1), mid(o1, c2), { bow: 18, size: 7 });
+      s += curve(mid(c2, o3), P(o3.x + 14, o3.y - 8), { bow: -12, size: 7 });
+      s += text(92, 446, 'a carbonyl compound', { cls: 'fg-sm' });
+      s += text(270, 446, 'a carbonyl oxide', { cls: 'fg-sm' });
     }
-
-    s += rule(30, 240, 730, 240);
-    s += text(380, 262, 'Now take (CH₃)₂C=CH–CH₃ through both workups — same cut, different caps.', { cls: 'fg-lbl', size: 12 });
-
-    // ---- Panel 4: reductive workup ----
-    s += panel(14, 276, 360, 150);
-    s += tag(194, 298, 'REDUCTIVE WORKUP — Me₂S or Zn/AcOH');
-    s += text(194, 320, 'each fragment stops at the carbonyl', { cls: 'fg-sm', size: 10 });
-    s += label(120, 352, '(CH₃)₂C=O', { size: 13 });
-    s += label(194, 352, '+', { size: 13 });
-    s += label(268, 352, 'CH₃CHO', { size: 13 });
-    s += text(120, 372, 'propanone', { cls: 'fg-tag-good', size: 10.5 });
-    s += text(268, 372, 'ethanal', { cls: 'fg-tag-good', size: 10.5 });
-    s += text(194, 398, 'the carbon with no hydrogen can only be a ketone;', { cls: 'fg-sm' });
-    s += text(194, 414, 'the one that had a hydrogen becomes an aldehyde', { cls: 'fg-sm' });
-
-    // ---- Panel 5: oxidative workup ----
-    s += panel(386, 276, 360, 150);
-    s += tag(566, 298, 'OXIDATIVE WORKUP — H₂O₂');
-    s += text(566, 320, 'anything that would be an aldehyde climbs one more rung', { cls: 'fg-sm', size: 9.5 });
-    s += label(492, 352, '(CH₃)₂C=O', { size: 13 });
-    s += label(566, 352, '+', { size: 13 });
-    s += label(640, 352, 'CH₃CO₂H', { size: 13 });
-    s += text(492, 372, 'propanone, unchanged', { cls: 'fg-tag-good', size: 10.5 });
-    s += text(640, 372, 'ethanoic acid', { cls: 'fg-tag-good', size: 10.5 });
-    s += text(566, 398, 'a ketone has no hydrogen there for peroxide to take;', { cls: 'fg-sm' });
-    s += text(566, 414, 'a =CH₂ end ends up as CO₂ and leaves the flask', { cls: 'fg-sm' });
-
-    s += rule(30, 442, 730, 442);
-    s += text(380, 462, 'Ozone builds the ring; the workup decides the caps.', { cls: 'fg-lbl', size: 12 });
-    s += text(380, 480, 'Rejoin the two carbonyl carbons and the alkene comes back — ozonolysis read backwards.', { cls: 'fg-sm' });
+    s += arrow(P(370, 364), P(390, 364));
+    // ---- 4 ----
+    s += panel(394, 262, 360, 206) + tag(574, 252, '4   THE OZONIDE: IN THE FLASK UNTIL THE WORKUP');
+    {
+      const [v0, v1, v2, v3, v4] = pent(574, 360, 50);
+      s += B(v4, v0, 'R₂C', 'O') + B(v0, v1, 'O', 'CR₂') + B(v1, v2, 'CR₂', 'O') + B(v2, v3, 'O', 'O') + B(v3, v4, 'O', 'R₂C');
+      s += A(v4, 'R₂C', { kind: 'warn' }) + A(v1, 'CR₂', { kind: 'warn' }) +
+        A(v0, 'O', { kind: 'hi' }) + A(v2, 'O', { kind: 'hi' }) + A(v3, 'O', { kind: 'hi' });
+      s += text(574, 438, 'ozonide (a 1,2,4-trioxolane)', { cls: 'fg-tag' });
+      s += text(574, 456, 'the two old alkene carbons no longer share a bond', { cls: 'fg-sm' });
+    }
     return s;
   },
-  caption: 'Why ozonolysis is always written with two reagents over the arrow. Ozone alone does not make the carbonyls &mdash; it makes a ring, and the ring is what is in the flask when the ozone is switched off. The second reagent opens it, and that is where the two answers separate.',
-  note: 'The two ring names are worth holding apart because the numbers say where the oxygens are: the <b>molozonide</b> is a 1,2,3-trioxolane, three oxygens in a row with the old C&ndash;C bond still intact, and it is too strained to last. It comes apart and the pieces re-close as the <b>ozonide</b>, a 1,2,4-trioxolane, in which the two carbons no longer touch each other at all &mdash; that is the moment the double bond is genuinely gone. After that the workup is a separate decision: Me₂S takes the extra oxygen away and leaves carbonyls, while H₂O₂ leaves an oxidant in the flask, so any fragment still carrying a hydrogen on its new carbonyl carbon keeps climbing. A terminal =CH₂ carries two, which is why it disappears as CO₂ rather than appearing in the product list.',
+  caption: 'Three arrows in each of the first three panels. After step 1 the C–C bond is still there; after step 2 it is gone; step 3 closes the ring that the workup then opens.',
+  note: 'The numbers in the ring names say where the oxygens are. The <b>molozonide</b> is a 1,2,3-trioxolane: three oxygens in a row, with the old C&ndash;C bond still intact, and it is too strained to last. The <b>ozonide</b> is a 1,2,4-trioxolane: the two carbons are joined only through oxygen, one O on one side and an O&ndash;O pair on the other.',
 });
 
-/* ------------------------------------------------------------- 10.4 ---
-   The butterfly transition state and what "syn, stereospecific" buys you.
-   Both epoxide figures in the section are about OPENING the ring; the one
-   3D claim the section makes about forming it — one oxygen, one face, at
-   once — was prose only, and it is examined three times in the bank. */
+/* =====================================================================
+   8. The two workups on 2-methylbut-2-ene. */
+function methylbutene(Q, x, y) {
+  const c2 = Q(x, y), c3 = Q(x + 44, y);
+  const h = armEnd(c3, 60, 30);
+  return {
+    ink: bond(c2, c3, { order: 2, rFrom: 0, rTo: 0 }) + sk(c2, armEnd(c2, 150, 34)) + sk(c2, armEnd(c2, 210, 34)) +
+      sk(c3, armEnd(c3, 300, 34)) + bond(c3, h, { rFrom: 0, rTo: 11 }) + A(h, 'H', { r: 11, kind: 'hi' }),
+    c2, c3,
+  };
+}
+const propanone = (c) => sk(c, armEnd(c, 210, 34)) + sk(c, armEnd(c, 330, 34)) +
+  bond(c, P(c.x, c.y - 32), { order: 2, rFrom: 0, rTo: 13 }) + A(P(c.x, c.y - 32), 'O', { kind: 'hi' });
+const ethanal = (c) => sk(c, armEnd(c, 210, 34)) + bond(c, armEnd(c, 330, 30), { rFrom: 0, rTo: 11 }) + A(armEnd(c, 330, 30), 'H', { r: 11 }) +
+  bond(c, P(c.x, c.y - 32), { order: 2, rFrom: 0, rTo: 13 }) + A(P(c.x, c.y - 32), 'O', { kind: 'hi' });
+const ethanoic = (c) => sk(c, armEnd(c, 210, 34)) + bond(c, armEnd(c, 330, 34), { rFrom: 0, rTo: 15 }) + A(armEnd(c, 330, 34), 'OH', { kind: 'hi' }) +
+  bond(c, P(c.x, c.y - 32), { order: 2, rFrom: 0, rTo: 13 }) + A(P(c.x, c.y - 32), 'O', { kind: 'hi' });
 FIGURES.push({
-  id: 'mcpba-butterfly-syn',
+  id: 'ozonolysis-workups',
   section: 'alkene-oxidation',
-  anchor: 'Reactions that convert stereochemistry into stereochemistry this predictably are called <b>stereospecific</b>.',
-  alt: 'Top: the butterfly transition state, with mCPBA above an alkene, two dashed partial bonds running from the same peroxyacid oxygen down to both alkene carbons and the oxygen-oxygen bond drawn as breaking. Bottom left: cis-2-butene giving the cis epoxide, with both methyl groups on wedges and a mirror plane through the ring, labeled meso and achiral. Bottom right: trans-2-butene giving the trans epoxide, drawn as the two enantiomers 2R,3R and 2S,3S in equal amounts.',
-  viewBox: '0 0 760 500',
+  anchor: 'Ketones, having no hydrogen to lose, are unaffected.</li>\n</ul>',
+  lessons: ['alkene-oxidation'],
+  alt: 'Three stacked panels. 1: 2-methylbut-2-ene drawn skeletally, with a dashed cut through the double bond; the left alkene carbon carries two methyls and no H, the right one carries one methyl and one H. 2: O3 then Me2S gives propanone and ethanal. 3: O3 then H2O2 gives propanone and ethanoic acid.',
+  viewBox: '0 0 340 416',
   build() {
     let s = '';
-
-    // ---------------- the transition state ----------------
-    s += panel(8, 16, 744, 236);
-    s += tag(380, 42, 'THE BUTTERFLY TRANSITION STATE — ONE OXYGEN, ONE FACE, ALL AT ONCE');
-
-    const cL = P(300, 176), cR = P(380, 176);
-    s += bond(cL, cR, { order: 2, rFrom: 15, rTo: 15 });
-    s += bond(cL, armEnd(cL, 215, 42), { rTo: 13 }) + atom(armEnd(cL, 215, 42).x, armEnd(cL, 215, 42).y, 'R', { r: 13 });
-    s += bond(cL, armEnd(cL, 145, 42), { rTo: 13 }) + atom(armEnd(cL, 145, 42).x, armEnd(cL, 145, 42).y, 'R', { r: 13 });
-    s += bond(cR, armEnd(cR, 325, 42), { rTo: 13 }) + atom(armEnd(cR, 325, 42).x, armEnd(cR, 325, 42).y, 'R', { r: 13 });
-    s += bond(cR, armEnd(cR, 35, 42), { rTo: 13 }) + atom(armEnd(cR, 35, 42).x, armEnd(cR, 35, 42).y, 'R', { r: 13 });
-    s += atom(cL.x, cL.y, 'C', { kind: 'warn' });
-    s += atom(cR.x, cR.y, 'C', { kind: 'warn' });
-
-    const ot = P(340, 118), oi = P(408, 98), ca = P(468, 116), oc = P(468, 70);
-    // the two bonds being made, drawn as partial bonds
-    s += bond(ot, cL, { rFrom: 15, rTo: 16, cls: 'fg-dash-hi' });
-    s += bond(ot, cR, { rFrom: 15, rTo: 16, cls: 'fg-dash-hi' });
-    // the bond being broken
-    s += bond(ot, oi, { rFrom: 15, rTo: 15, cls: 'fg-dash' });
-    s += bond(oi, ca, { rTo: 15 });
-    s += bond(ca, oc, { order: 2, rTo: 15 });
-    s += bond(ca, armEnd(ca, 340, 46), { rTo: 13 }) + atom(armEnd(ca, 340, 46).x, armEnd(ca, 340, 46).y, 'R', { r: 13 });
-    s += atom(oc.x, oc.y, 'O');
-    s += atom(ca.x, ca.y, 'C');
-    s += atom(oi.x, oi.y, 'O');
-    s += atom(ot.x, ot.y, 'O', { kind: 'hi' });
-    s += text(298, 100, 'this oxygen is', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
-    s += text(298, 114, 'the one delivered', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
-    s += text(556, 100, 'the weak O–O bond breaks', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-    s += text(556, 114, 'in the same step, and the', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-    s += text(556, 128, 'proton goes back to the acid', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-    s += text(340, 222, 'Both C–O bonds form at once, from whichever face the peroxyacid sits on —', { cls: 'fg-sm', size: 9.5 });
-    s += text(340, 238, 'and there is no intermediate for anything to rotate in.', { cls: 'fg-sm', size: 9.5 });
-
-    // ---------------- the two stereochemical outcomes ----------------
-    /* An epoxide drawn face-on: two carbons side by side, the oxygen bridging
-       above them, and the two methyls on wedges or hashes to say which face
-       they are on. */
-    const epox = (x, y, leftUp, rightUp) => {
-      const a = P(x, y), b = P(x + 60, y), o = P(x + 30, y - 46);
-      let g = bond(a, b, { rFrom: 0, rTo: 0 });
-      g += bond(a, o, { rFrom: 0, rTo: 15 }) + bond(b, o, { rFrom: 0, rTo: 15 });
-      const mL = armEnd(a, 235, 44), mR = armEnd(b, 305, 44);
-      g += (leftUp ? wedge : hash)(a, mL, { rFrom: 0, rTo: 18 });
-      g += (rightUp ? wedge : hash)(b, mR, { rFrom: 0, rTo: 18 });
-      g += atom(mL.x, mL.y, 'CH₃', { r: 18, size: 10 });
-      g += atom(mR.x, mR.y, 'CH₃', { r: 18, size: 10 });
-      g += atom(o.x, o.y, 'O');
-      g += atom(a.x, a.y, '', { kind: 'point' });
-      g += atom(b.x, b.y, '', { kind: 'point' });
+    s += cell(0, 8, 340, 136, '2-METHYLBUT-2-ENE', (Q) => {
+      const m = methylbutene(Q, 148, 86);
+      let g = m.ink;
+      g += dashLine(Q(170, 44), Q(170, 122), 'fg-dash');
+      g += tag(Q(100, 118).x, Q(100, 118).y, 'no H here');
+      g += tag(Q(250, 60).x, Q(250, 60).y, 'one H here', { anchor: 'start' });
+      g += tag(Q(214, 122).x, Q(214, 122).y, 'O₃ cuts here', { anchor: 'start' });
       return g;
-    };
-    /* The alkene, drawn with both methyls on the same side (cis) or on
-       opposite sides (trans). */
-    const butene = (x, y, cis) => {
-      const a = P(x, y), b = P(x + 60, y);
-      let g = bond(a, b, { order: 2, rFrom: 0, rTo: 0 });
-      const mL = armEnd(a, 215, 44), mR = cis ? armEnd(b, 325, 44) : armEnd(b, 35, 44);
-      const hL = armEnd(a, 145, 40), hR = cis ? armEnd(b, 35, 40) : armEnd(b, 325, 40);
-      g += bond(a, mL, { rFrom: 0, rTo: 18 }) + atom(mL.x, mL.y, 'CH₃', { r: 18, size: 10 });
-      g += bond(b, mR, { rFrom: 0, rTo: 18 }) + atom(mR.x, mR.y, 'CH₃', { r: 18, size: 10 });
-      g += bond(a, hL, { rFrom: 0, rTo: 12 }) + atom(hL.x, hL.y, 'H', { r: 12, size: 11 });
-      g += bond(b, hR, { rFrom: 0, rTo: 12 }) + atom(hR.x, hR.y, 'H', { r: 12, size: 11 });
-      g += atom(a.x, a.y, '', { kind: 'point' });
-      g += atom(b.x, b.y, '', { kind: 'point' });
+    });
+    s += cell(0, 152, 340, 124, 'THEN Me₂S: REDUCTIVE WORKUP', (Q) => {
+      let g = propanone(Q(90, 80)) + text(Q(170, 76).x, Q(170, 76).y, '+', { cls: 'fg-lbl', size: 15 }) + ethanal(Q(240, 80));
+      g += tag(Q(90, 112).x, Q(90, 112).y, 'propanone') + tag(Q(240, 112).x, Q(240, 112).y, 'ethanal');
       return g;
-    };
-
-    s += panel(8, 268, 368, 206);
-    s += tag(192, 294, 'cis-2-BUTENE');
-    s += butene(52, 362, true);
-    s += arrow(P(178, 356), P(218, 356), { muted: true });
-    s += text(198, 342, 'mCPBA', { cls: 'fg-sm', size: 9.5 });
-    s += epox(252, 370, true, true);
-    s += text(192, 436, 'both methyls delivered to the same face:', { cls: 'fg-sm', size: 9.5 });
-    s += text(192, 452, 'a MESO epoxide — achiral, one compound', { cls: 'fg-tag-good', size: 10.5 });
-
-    s += panel(392, 268, 360, 206);
-    s += tag(572, 294, 'trans-2-BUTENE');
-    s += butene(428, 362, false);
-    s += arrow(P(554, 356), P(594, 356), { muted: true });
-    s += text(574, 342, 'mCPBA', { cls: 'fg-sm', size: 9.5 });
-    s += epox(624, 370, true, false);
-    s += text(572, 436, 'chiral — and the peroxyacid can sit on either face,', { cls: 'fg-sm', size: 9.5 });
-    s += text(572, 452, 'so (2R,3R) and (2S,3S) come out 50:50: a RACEMATE', { cls: 'fg-tag-good', size: 10.5 });
-
-    s += text(380, 492, 'Stereospecific: the alkene geometry sets the answer, not the reagent.', { cls: 'fg-lbl', size: 11 });
+    });
+    s += cell(0, 284, 340, 124, 'THEN H₂O₂: OXIDATIVE WORKUP', (Q) => {
+      let g = propanone(Q(90, 80)) + text(Q(170, 76).x, Q(170, 76).y, '+', { cls: 'fg-lbl', size: 15 }) + ethanoic(Q(240, 80));
+      g += tag(Q(90, 112).x, Q(90, 112).y, 'propanone, again') + tag(Q(240, 112).x, Q(240, 112).y, 'ethanoic acid');
+      return g;
+    });
     return s;
   },
-  caption: 'Why epoxidation is the cleanest stereochemistry in the chapter. One oxygen is handed to one face of the alkene in a single step, so the two new C–O bonds are <b>syn</b> and nothing in between exists long enough to rotate — which means the alkene’s geometry walks straight through into the product.',
-  note: 'Work the two cases rather than memorizing them. <i>cis</i>-2-Butene puts both methyls on the same face of the ring, and that epoxide has an internal mirror plane, so the two faces of attack give the same achiral <b>meso</b> compound. <i>trans</i>-2-Butene puts them on opposite faces, and that epoxide is chiral — but a flat alkene offers mCPBA both faces equally, so you get equal amounts of the two enantiomers. Stereospecific does not mean enantioselective.',
+  caption: 'Each alkene carbon becomes a C=O. The carbon with no H can only become a ketone. The carbon with an H becomes an aldehyde, and peroxide takes that aldehyde on to the acid.',
+});
+
+/* =====================================================================
+   9. A ring alkene opens instead of splitting: cyclohexene to hexanedial.
+   Notes only. */
+FIGURES.push({
+  id: 'cyclohexene-ozonolysis',
+  section: 'alkene-oxidation',
+  anchor: 'the signature of a symmetric acyclic one.</p>',
+  alt: 'Cyclohexene, with its C=C highlighted, goes with O3 then Me2S to hexanedial, drawn as the same ring of carbons opened at the old double bond: the two former alkene carbons have moved apart and each now carries a C=O and an H.',
+  viewBox: '0 0 340 184',
+  build() {
+    let s = '';
+    s += cell(0, 8, 340, 168, '', (Q) => {
+      const c = Q(62, 80), v = hexagon(c, 30);
+      let g = ringInk(v, [[4, 5]]) + ringDouble(v[4], v[5], c, { inset: 6, cls: 'fg-bond-hi' });
+      g += arrow(Q(112, 80), Q(160, 80)) + tag(Q(136, 66).x, Q(136, 66).y, 'O₃, then') + tag(Q(136, 104).x, Q(136, 104).y, 'Me₂S');
+      const c2 = Q(222, 80), w = hexagon(c2, 30);
+      const top = P(w[5].x + 8, w[5].y - 12), bot = P(w[4].x + 8, w[4].y + 12);
+      g += sk(w[0], w[1]) + sk(w[1], w[2]) + sk(w[2], w[3]) + sk(w[0], top) + sk(w[3], bot);
+      const o1 = armEnd(top, 20, 30), h1 = armEnd(top, 110, 24);
+      const o2 = armEnd(bot, -20, 30), h2 = armEnd(bot, 250, 24);
+      g += bond(top, o1, { order: 2, rFrom: 0, rTo: 13 }) + bond(top, h1, { rFrom: 0, rTo: 11 }) +
+        bond(bot, o2, { order: 2, rFrom: 0, rTo: 13 }) + bond(bot, h2, { rFrom: 0, rTo: 11 });
+      g += A(o1, 'O', { kind: 'hi' }) + A(o2, 'O', { kind: 'hi' }) + A(h1, 'H', { r: 11 }) + A(h2, 'H', { r: 11 });
+      g += tag(Q(62, 148).x, Q(62, 148).y, 'cyclohexene');
+      g += tag(Q(236, 148).x, Q(236, 148).y, 'hexanedial: one molecule');
+      return g;
+    });
+    return s;
+  },
+  caption: 'The cut goes through the highlighted double bond. The other four ring carbons still hold the two ends together, so one molecule comes out, with a CHO group at each end.',
+});
+
+/* =====================================================================
+   10. Reading a cleavage backwards: propanal and propanone rejoined. */
+FIGURES.push({
+  id: 'ozonolysis-backwards',
+  section: 'alkene-oxidation',
+  anchor: 'one carbon bore a hydrogen, the other did not.</p>',
+  lessons: ['alkene-oxidation'],
+  alt: 'Two stacked panels. 1: propanal and propanone drawn with their C=O groups facing each other, both oxygens highlighted to be removed. 2: the two carbonyl carbons joined by a C=C, giving 2-methylpent-2-ene, C6H12.',
+  viewBox: '0 0 340 300',
+  build() {
+    let s = '';
+    s += cell(0, 8, 340, 138, 'THE FRAGMENTS', (Q) => {
+      const a = Q(40, 88), b = Q(70, 70), c = Q(100, 88);
+      const o = Q(136, 88), h = armEnd(c, 270, 28);
+      let g = sk(a, b) + sk(b, c) + bond(c, o, { order: 2, rFrom: 0, rTo: 13 }) + bond(c, h, { rFrom: 0, rTo: 11 });
+      g += A(o, 'O', { kind: 'warn' }) + A(h, 'H', { r: 11 });
+      const k = Q(240, 88), ok = Q(204, 88);
+      g += bond(k, ok, { order: 2, rFrom: 0, rTo: 13 }) + sk(k, armEnd(k, 60, 34)) + sk(k, armEnd(k, 300, 34));
+      g += A(ok, 'O', { kind: 'warn' });
+      g += tag(Q(84, 40).x, Q(84, 40).y, 'propanal') + tag(Q(250, 40).x, Q(250, 40).y, 'propanone');
+      g += tag(Q(170, 128).x, Q(170, 128).y, 'remove both O', { cls: 'fg-tag-warn' });
+      return g;
+    });
+    s += cell(0, 154, 340, 138, 'JOIN THE TWO CARBONS WITH A C=C', (Q) => {
+      const a = Q(76, 88), b = Q(106, 70), c = Q(136, 88), h = armEnd(c, 270, 28);
+      const k = Q(186, 88);
+      let g = sk(a, b) + sk(b, c) + bond(c, k, { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi' }) + bond(c, h, { rFrom: 0, rTo: 11 }) +
+        A(h, 'H', { r: 11 }) + sk(k, armEnd(k, 60, 34)) + sk(k, armEnd(k, 300, 34));
+      g += tag(Q(170, 128).x, Q(170, 128).y, '2-methylpent-2-ene, C₆H₁₂', { cls: 'fg-tag-good' });
+      return g;
+    });
+    return s;
+  },
+  caption: 'Turn the two carbonyl groups to face each other, take out both oxygens, and join the two carbons with a double bond.',
+});
+
+/* =====================================================================
+   11. The worked example's substrate taken through the two additions.
+   Notes only. */
+FIGURES.push({
+  id: 'methylbutene-additions',
+  section: 'alkene-oxidation',
+  anchor: 'if you want to see syn and anti differ.</p>',
+  alt: 'Three stacked panels. 1: 2-methylbut-2-ene, the left alkene carbon with two methyls, the right with one methyl and one H. 2: with mCPBA, 2,2,3-trimethyloxirane, the O bridging the two old alkene carbons. 3: with OsO4, or with mCPBA then H3O+, 2-methylbutane-2,3-diol, with C3 starred as its only stereocenter.',
+  viewBox: '0 0 340 368',
+  build() {
+    let s = '';
+    s += cell(0, 8, 340, 112, 'THE SUBSTRATE', (Q) => {
+      const m = methylbutene(Q, 148, 74);
+      return m.ink + tag(Q(84, 104).x, Q(84, 104).y, 'two CH₃, no H') + tag(Q(250, 58).x, Q(250, 58).y, 'one CH₃, one H', { anchor: 'start' });
+    });
+    s += cell(0, 128, 340, 112, '(a)   mCPBA', (Q) => {
+      const a = Q(126, 82), b = Q(176, 82), o = Q(151, 44);
+      let g = sk(a, b) + bond(a, o, { rFrom: 0, rTo: 13 }) + bond(b, o, { rFrom: 0, rTo: 13 }) + A(o, 'O', { kind: 'hi' });
+      g += sk(a, armEnd(a, 160, 34)) + sk(a, armEnd(a, 230, 34)) + sk(b, armEnd(b, 310, 34));
+      g += tag(Q(262, 78).x, Q(262, 78).y, '2,2,3-trimethyl-') + tag(Q(262, 94).x, Q(262, 94).y, 'oxirane');
+      return g;
+    });
+    s += cell(0, 248, 340, 112, '(b) AND (c)   OsO₄, OR mCPBA THEN H₃O⁺', (Q) => {
+      const c1 = Q(70, 88), c2 = Q(100, 70), c3 = Q(130, 88), c4 = Q(160, 70);
+      let g = sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + sk(c2, armEnd(c2, 150, 30));
+      const o2 = armEnd(c2, 60, 30), o3 = armEnd(c3, 270, 26);
+      g += bond(c2, o2, { rFrom: 0, rTo: 15 }) + bond(c3, o3, { rFrom: 0, rTo: 15 });
+      g += A(o2, 'OH', { kind: 'hi' }) + A(o3, 'OH', { kind: 'hi' });
+      g += text(c3.x + 10, c3.y - 6, '*', { cls: 'fg-warn', size: 16 });
+      g += tag(Q(254, 72).x, Q(254, 72).y, '2-methylbutane-') + tag(Q(254, 88).x, Q(254, 88).y, '2,3-diol');
+      g += tag(Q(254, 104).x, Q(254, 104).y, '* the one stereocenter', { cls: 'fg-tag-warn' });
+      return g;
+    });
+    return s;
+  },
+  caption: 'C2 carries two methyl groups, so it cannot be a stereocenter. Only C3 is one, and a single stereocenter gives no syn or anti to see.',
 });
 
 export default FIGURES;
