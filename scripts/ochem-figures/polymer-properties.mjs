@@ -121,7 +121,7 @@ function zzPts(x, y, n, deg, turns = []) {
   return pts;
 }
 FIGURES.push({
-  id: 'chain-packing',
+  id: 'polymer-chain-packing',
   section: 'polymer-properties',
   anchor: '<h3>What lets chains pack</h3>',
   lessons: ['polymer-properties'],

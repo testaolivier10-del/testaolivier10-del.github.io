@@ -284,9 +284,12 @@
       10:['chain-growth'],
       11:['chain-growth','packing-and-properties'] } },
 
-    'condensation-polymers': { n:8, steps:{
-      2:['step-growth'], 3:['step-growth'], 4:['step-growth'],
-      6:['step-growth'], 7:['step-growth'] } },
+    'condensation-polymers': { n:13, steps:{
+      4:['step-growth'],
+      7:['step-growth'],
+      9:['step-growth'],
+      11:['step-growth'],
+      12:['step-growth'] } },
 
     'polymer-properties': { n:12, steps:{
       3:['packing-and-properties'],

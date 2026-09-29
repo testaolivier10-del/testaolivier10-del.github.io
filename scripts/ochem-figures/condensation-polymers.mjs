@@ -379,7 +379,7 @@ FIGURES.push({
 
 /* --------------------------------------------- caprolactam ring-opening --- */
 FIGURES.push({
-  id: 'caprolactam-opening',
+  id: 'caprolactam-ring-opening',
   section: 'condensation-polymers',
   viewBox: '0 0 760 270',
   alt: 'Caprolactam, a seven-membered ring containing an N–H and a C=O next to each other, with its ring C(=O)–N bond colored as the bond that breaks. Plus a chain ending in NH2. Arrow to the longer chain: chain–NH–C(=O)–(CH2)5–NH2, with the new C(=O)–N bond to the old chain end highlighted and the former ring nitrogen now the NH2 at the new chain end.',

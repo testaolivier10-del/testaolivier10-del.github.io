@@ -484,19 +484,19 @@ FIGURES.push({
     s += text(380, y2 + 94, 'In every row the new active end is the same kind of species as the old one.', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'One propagation step for each kind of chain end. ~CH₂ stands for the rest of the chain, and the shaded atom is the active end. A fishhook arrow (one barb) moves one electron; a full arrowhead moves a pair.',
+  caption: 'One propagation step for each kind of active end. ~CH₂ stands for the rest of the chain, and the shaded atom is the active end. A fishhook arrow (one barb) moves one electron; a full arrowhead moves a pair.',
 });
 
 /* ------------------------------------------------------------------------
    Head-to-tail: a growing PVC radical meets vinyl chloride. Adding to the
-   CH2 (tail) end leaves a secondary radical on the CHCl carbon; adding the
-   other way round would leave a primary radical. */
+   CH2 (tail) end leaves the radical on the CHCl carbon, beside the chlorine's
+   lone pairs; adding the other way round would leave it on a bare CH2. */
 FIGURES.push({
   id: 'head-to-tail',
   section: 'polymer-basics',
   anchor: 'This is <b>head-to-tail</b> linking.</p>',
   viewBox: '0 0 760 470',
-  alt: 'A growing chain ending in a CHCl radical meets vinyl chloride, CH2=CHCl, whose CH2 end is labeled tail and CHCl end head. Adding to the tail puts the new radical on a CHCl carbon, a secondary radical; adding to the head would put it on a CH2, a primary radical. Below, the resulting chain has a chlorine on every other carbon',
+  alt: 'A growing chain ending in a CHCl radical meets vinyl chloride, CH2=CHCl, whose CH2 end is labeled tail and CHCl end head. Adding to the tail puts the new radical on a CHCl carbon, beside the chlorine, which is more stable; adding to the head would put it on a bare CH2 end. Below, the resulting chain has a chlorine on every other carbon',
   build() {
     let s = '';
     const cl = (x, y) => atom(x, y + 46, 'Cl', { r: 14 }) + bond(P(x, y), P(x, y + 46), { rFrom: 15, rTo: 14 });
@@ -530,8 +530,8 @@ FIGURES.push({
     s += bond(P(530, ya), P(592, ya), { rFrom: 16, rTo: 15 });
     s += cl(468, ya) + cl(592, ya);
     s += dot(592, ya - 26);
-    s += text(636, ya + 4, 'secondary radical', { cls: 'fg-tag-good', anchor: 'start' });
-    s += text(636, ya + 22, 'formed', { cls: 'fg-tag-good', anchor: 'start' });
+    s += text(620, ya + 4, 'more stable radical', { cls: 'fg-tag-good', anchor: 'start' });
+    s += text(620, ya + 22, 'formed', { cls: 'fg-tag-good', anchor: 'start' });
 
     /* adds to the head: the radical would land on a CH2 */
     const yb = 222;
@@ -544,8 +544,8 @@ FIGURES.push({
     s += bond(P(530, yb), P(592, yb), { rFrom: 15, rTo: 16 });
     s += cl(468, yb) + cl(530, yb);
     s += dot(592, yb - 26);
-    s += text(636, yb + 4, 'primary radical', { cls: 'fg-tag-warn', anchor: 'start' });
-    s += text(636, yb + 22, 'not formed', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += text(620, yb + 4, 'less stable radical', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += text(620, yb + 22, 'not formed', { cls: 'fg-tag-warn', anchor: 'start' });
     s += rule(24, 318, 736, 318);
 
     /* the chain that results */
