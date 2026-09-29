@@ -71,7 +71,7 @@ FIGURES.push({
   section: 'leaving-groups',
   lessons: ['leaving-groups'],
   anchor: '<h3>Why spreading charge out matters</h3>',
-  alt: 'Two stacked panels. Top: hydroxide ion uses a lone pair on oxygen to bond to the carbon of bromomethane, and the C–Br bonding pair moves onto bromine; the products are methanol and bromide ion, which now carries four lone pairs. Bottom: the reverse, bromide with methanol, is drawn with grey arrows and crossed out, because hydroxide would have to leave the carbon.',
+  alt: 'Two stacked panels. Top: hydroxide ion uses a lone pair on oxygen to bond to the carbon of bromomethane, and the C–Br bonding pair moves onto bromine; the products are methanol and bromide ion, which now carries four lone pairs. Bottom: the reverse, bromide with methanol, is drawn with gray arrows and crossed out, because hydroxide would have to leave the carbon.',
   viewBox: '0 0 340 446',
   build() {
     let s = '';

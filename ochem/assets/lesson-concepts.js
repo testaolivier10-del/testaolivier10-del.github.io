@@ -585,11 +585,12 @@
       11:['electronegativity-trend'],
       13:['electronegativity-trend','bond-polarity-dipoles'] } },
 
-    'electrophiles': { n:7, steps:{
+    'electrophiles': { n:9, steps:{
       1:['electrophile-recognition'],
       2:['electrophile-recognition','electronegativity-trend'],
       3:['electrophile-recognition','electronegativity-trend'],
-      6:['lewis-acid-base','electrophile-recognition'] } },
+      6:['electrophile-recognition','electronegativity-trend'],
+      8:['lewis-acid-base','electrophile-recognition'] } },
 
     'enantiomers': { n:7, steps:{
       1:['enantiomer-vs-diastereomer'],
