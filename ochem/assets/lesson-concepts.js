@@ -354,12 +354,13 @@
       17:['locant-rules'],
       18:['parent-chain','group-priority'] } },
 
-    'radical-halogenation': { n:8, steps:{
-      2:['radical-chain'],
-      3:['radical-stability'],
-      4:['radical-stability','radical-chain'],
-      6:['radical-chain','radical-stability'],
-      7:['radical-chain','radical-stability'] } },
+    'radical-halogenation': { n:14, steps:{
+      3:['radical-chain'],
+      5:['radical-stability'],
+      7:['radical-stability','hammond-postulate'],
+      9:['radical-stability'],
+      12:['radical-chain','allylic-capture'],
+      13:['radical-chain','radical-stability'] } },
 
     'skeletal-structures': { n:8, steps:{
       2:['skeletal-notation'],
@@ -574,11 +575,12 @@
       6:['eas-mechanism','carbocation-stability'],
       7:['eas-mechanism','carbocation-stability'] } },
 
-    'electron-rich-poor': { n:7, steps:{
-      1:['electron-rich-poor'],
-      2:['electron-rich-poor','nucleophile-recognition'],
-      4:['electron-rich-poor','electrophile-recognition'],
-      6:['electron-rich-poor','electrophile-recognition'] } },
+    'electron-rich-poor': { n:11, steps:{
+      2:['electron-rich-poor'],
+      3:['electron-rich-poor','nucleophile-recognition'],
+      5:['electron-rich-poor','electrophile-recognition','leaving-group-ability'],
+      8:['electron-rich-poor','electrophile-recognition','resonance-delocalization'],
+      10:['electron-rich-poor','electrophile-recognition'] } },
 
     'electronegativity': { n:14, steps:{
       2:['electronegativity-trend'],
@@ -588,11 +590,12 @@
       11:['electronegativity-trend'],
       13:['electronegativity-trend','bond-polarity-dipoles'] } },
 
-    'electrophiles': { n:7, steps:{
+    'electrophiles': { n:9, steps:{
       1:['electrophile-recognition'],
       2:['electrophile-recognition','electronegativity-trend'],
       3:['electrophile-recognition','electronegativity-trend'],
-      6:['lewis-acid-base','electrophile-recognition'] } },
+      6:['electrophile-recognition','electronegativity-trend'],
+      8:['lewis-acid-base','electrophile-recognition'] } },
 
     'enantiomers': { n:7, steps:{
       1:['enantiomer-vs-diastereomer'],
@@ -660,23 +663,26 @@
       6:['ir-functional-groups'],
       7:['ir-functional-groups'] } },
 
-    'energy-diagrams': { n:10, steps:{
+    'energy-diagrams': { n:14, steps:{
       2:['energy-diagram-reading'],
       4:['energy-diagram-reading'],
-      5:['energy-diagram-reading'],
-      7:['energy-diagram-reading'],
-      9:['hammond-postulate','energy-diagram-reading'] } },
-    'carbocations': { n:9, steps:{
-      2:['carbocation-stability','formal-charge-calc'],
-      4:['carbocation-stability'],
-      6:['carbocation-stability','resonance-delocalization'],
-      8:['carbocation-rearrangement','carbocation-stability'] } },
+      6:['energy-diagram-reading'],
+      8:['energy-diagram-reading'],
+      11:['hammond-postulate'],
+      13:['hammond-postulate','energy-diagram-reading'] } },
+    'carbocations': { n:14, steps:{
+      3:['carbocation-stability','formal-charge-calc'],
+      5:['carbocation-stability'],
+      9:['carbocation-stability','resonance-delocalization'],
+      11:['carbocation-rearrangement'],
+      13:['carbocation-rearrangement','carbocation-stability'] } },
 
-    'leaving-groups': { n:9, steps:{
-      3:['leaving-group-ability'],
-      4:['leaving-group-ability','pka-scale'],
+    'leaving-groups': { n:15, steps:{
+      4:['leaving-group-ability'],
       5:['leaving-group-ability','pka-scale'],
-      8:['leaving-group-ability'] } },
+      6:['leaving-group-ability','pka-scale'],
+      11:['alcohol-activation','leaving-group-ability'],
+      14:['leaving-group-ability'] } },
 
     'lewis-acids': { n:7, steps:{
       1:['lewis-acid-base'], 2:['lewis-acid-base'],
@@ -723,11 +729,12 @@
       3:['torsional-strain','newman-reading'],
       6:['newman-reading','torsional-strain'] } },
 
-    'nucleophiles': { n:8, steps:{
-      1:['nucleophile-recognition'],
-      2:['nucleophile-recognition','electron-rich-poor'],
-      4:['solvent-effects','basicity-vs-nucleophilicity'],
-      7:['nucleophile-recognition','electron-rich-poor'] } },
+    'nucleophiles': { n:11, steps:{
+      2:['nucleophile-recognition'],
+      4:['nucleophile-recognition','electron-rich-poor'],
+      7:['solvent-effects','basicity-vs-nucleophilicity'],
+      9:['basicity-vs-nucleophilicity','steric-hindrance'],
+      10:['nucleophile-recognition','solvent-effects'] } },
 
     'nucleophilic-addition': { n:11, steps:{
       1:['tetrahedral-intermediate','carbonyl-electrophilicity'],
