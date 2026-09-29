@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Home v1: Ochem twin | A&P preview</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+  /* Shared bits for this mockup. */
+  .pv-label{position:fixed;left:12px;bottom:12px;z-index:200;background:var(--ink);color:var(--paper);font:800 12px var(--font-ui);padding:7px 12px;border-radius:999px;box-shadow:var(--lift);opacity:.92;pointer-events:none;}
+  .home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,52px);align-items:center;}
+  .progress-card{background:var(--white);border:var(--bw) solid var(--line);border-radius:22px;padding:26px 26px 22px;box-shadow:var(--lift-lg);}
+  .progress-card__top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+  .level-chip{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+  .level-chip .t b{display:block;font-weight:900;font-size:16px;}
+  .level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
+  .hero .level-ring{border-color:var(--cink);color:var(--cink);}
+  .feature-card{background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;}
+  .feature-card h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
+  .feature-card p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:42ch;}
+  .feature-card .icon-circle{width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;margin:0 auto;}
+  .tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+  .tool-chips a{font:800 12px var(--font-ui);color:#fff;text-decoration:none;background:rgba(255,255,255,.14);border-radius:var(--radius-pill);padding:6px 12px;}
+  .tool-chips a:hover{background:rgba(255,255,255,.26);color:#fff;}
+  .sample-row{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
+  .sample-list{display:flex;flex-direction:column;gap:14px;}
+  .sample-list .row{display:flex;align-items:center;gap:12px;font-weight:800;font-size:14.5px;padding:12px 16px;background:var(--white);border:var(--bw) solid var(--line);border-radius:14px;}
+  .sample-list .row .n{width:26px;height:26px;border-radius:8px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);flex-shrink:0;}
+  .qcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--lift-lg);}
+  .qcard .qsetup{font-weight:600;font-size:14.5px;color:var(--muted);margin:14px 0 0;line-height:1.55;}
+  .qcard .qtext{font-weight:800;font-size:16px;margin:12px 0 18px;line-height:1.5;}
+  .qcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);}
+  .qcard .why{margin:14px 0 0;padding:12px 14px;border-radius:12px;background:var(--ctint);font:600 13.5px/1.55 var(--font-ui);}
+  .qcard .why b{color:var(--cink);}
+  .anp-legal{max-width:none;text-align:center;margin:18px auto 0;}
+  .anp-foot .anp-beta-note,.anp-foot .privacy-link{max-width:none;text-align:center;}
+  .part-bars{margin-top:14px;border-top:1px solid var(--line-soft);padding-top:6px;}
+  .part-bars .mini-domain-row span:first-child{min-width:92px;}
+  @media(max-width:900px){.home-hero,.feature-card,.sample-row{grid-template-columns:1fr;} .feature-card{text-align:center;} .feature-card p{margin-left:auto;margin-right:auto;} .tool-chips{justify-content:center;}}
+
+  .now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
+  .now-card{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);padding:22px 24px;box-shadow:var(--lift-lg);}
+  .now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .now-card h3{margin:0 0 6px;font-size:19px;}
+  .now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
+  .now-card p:last-child{margin-bottom:0;}
+  .now-card .xp-track{height:10px;margin:0 0 14px;}
+
+  .path-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 26px;}
+  .path-legend span{display:inline-flex;align-items:center;gap:8px;font:800 12.5px var(--font-ui);color:var(--muted);background:var(--white);padding:6px 12px;border-radius:999px;box-shadow:var(--lift-sm);}
+  .path-legend i{width:10px;height:10px;border-radius:50%;background:var(--c);}
+  .ch-path{position:relative;display:grid;grid-template-columns:repeat(var(--cols,5),minmax(0,1fr));gap:40px 10px;padding:14px 0 6px;max-width:1000px;margin:0 auto;}
+  .ch-path .path-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
+  .ch-path .path-track{fill:none;stroke:var(--line);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;}
+  .ch-path .node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;text-decoration:none;color:inherit;}
+  .ch-path .ring{position:relative;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--cink) 0%, var(--line) 0);transition:transform .18s ease;}
+  .ch-path .ring::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:var(--pc);opacity:.16;z-index:-1;}
+  .ch-path .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--white);box-shadow:var(--lift-sm);font:900 15px var(--font-mono);color:var(--muted);}
+  .ch-path .node:hover .ring{transform:translateY(-3px);}
+  .ch-path .label{display:flex;flex-direction:column;gap:2px;max-width:170px;padding:2px 6px;border-radius:8px;background:var(--paper);}
+  .ch-path .label b{font-size:13.5px;font-weight:900;line-height:1.25;text-wrap:balance;}
+  .ch-path .label small{font:700 12px var(--font-ui);color:var(--muted);}
+  .ch-path .part-start .label::before{content:attr(data-part);display:block;margin:0 auto 4px;font:900 10px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--pcd);padding:2px 8px;border-radius:999px;}
+  .ch-path .node.current .ring{width:68px;height:68px;box-shadow:0 0 0 6px var(--ctint);}
+  .ch-path .node.current .ring::before{inset:-14px;background:var(--ctint);opacity:.9;}
+  .ch-path .node.current .n{width:54px;height:54px;color:var(--cink);font-size:17px;}
+  .ch-path .node.current .label b,.ch-path .node.current .label small{color:var(--cink);}
+  .feature-card .fig{width:170px;height:170px;}
+  @media(max-width:1000px){.now-row{grid-template-columns:1fr;}}
+
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="course-nav"></div>
+
+<main class="xshell" id="main">
+  <div class="hero">
+    <div class="home-hero">
+      <div>
+        <div class="eyebrow">Anatomy &amp; Physiology <span class="anp-beta">Beta</span></div>
+        <h1>Anatomy &amp; physiology that builds in order.</h1>
+        <p class="lede">Twenty-seven chapters and 162 topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time.</p>
+        <div class="hero-ctas">
+          <a href="../lessons/body-organization.html" class="btn-press">Start here</a>
+          <a href="../learn.html" class="link-quiet">All chapters &rarr;</a>
+          <a href="../tools/predict.html" class="link-quiet">Predict the change &rarr;</a>
+        </div>
+      </div>
+      
+      <div class="progress-card">
+        <div class="progress-card__top">
+          <div class="level-chip">
+            <div class="level-ring">L1</div>
+            <div class="t"><b>Cell Scout</b><span>Level 1 &middot; 0 XP</span></div>
+          </div>
+          <div class="streak-chip" hidden><span>0</span></div>
+        </div>
+        <div class="xp-track"><div class="xp-fill" style="width:0%"></div></div>
+        <div class="xp-label">0 / 100 XP to Level 2</div>
+        <div class="part-bars"><div class="mini-domain-row"><span>Foundations</span><span class="bar"><i style="width:0%;--dc:#2C9C8B"></i></span><span class="pct">0%</span></div><div class="mini-domain-row"><span>A&amp;P I</span><span class="bar"><i style="width:0%;--dc:#E8776A"></i></span><span class="pct">0%</span></div><div class="mini-domain-row"><span>A&amp;P II</span><span class="bar"><i style="width:0%;--dc:#C9973A"></i></span><span class="pct">0%</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="now-row">
+      <div class="now-card">
+        <div class="k">Start here</div>
+        <h3>Levels of organization and organ systems</h3>
+        <p>Foundations &middot; Orientation to the body. The vocabulary every system chapter builds on.</p>
+        <a href="../lessons/body-organization.html" class="btn-press">Start the first lesson</a>
+      </div>
+      <div class="now-card">
+        <div class="k">Review queue</div>
+        <h3>Nothing due yet</h3>
+        <p>Anything you miss comes back when you are about to forget it, not on a fixed date.</p>
+      </div>
+      <div class="now-card">
+        <div class="k">Daily Rounds</div>
+        <h3>0 of 5</h3>
+        <p>A short daily set drawn from what you are closest to forgetting.</p>
+        <div class="xp-track"><div class="xp-fill" style="width:0%"></div></div>
+        <a href="../practice.html" class="link-quiet">Practice now &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="section-head">
+      <h2>The path through the course</h2>
+      <p class="section-lede">Foundations first, then A&amp;P I and A&amp;P II. Each chapter leans on the last. Tap one to open it.</p>
+    </div>
+    <div class="path-legend">
+      <span style="--c:#2C9C8B"><i></i>Foundations &middot; 5 chapters</span>
+      <span style="--c:#E8776A"><i></i>A&amp;P I &middot; 11 chapters</span>
+      <span style="--c:#C9973A"><i></i>A&amp;P II &middot; 11 chapters</span>
+    </div>
+    <div class="ch-path" id="chPath">
+      <svg class="path-line" aria-hidden="true"><path class="path-track" d=""/></svg>
+      <a class="node current part-start" href="../chapters/orientation.html" style="--pc:#2C9C8B;--pcd:#1F7A6C">
+        <span class="ring" aria-hidden="true"><span class="n">1</span></span>
+        <span class="label" data-part="Foundations"><b>Orientation to the body</b><small>You are here &middot; 6 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/chem-physics.html" style="--pc:#2C9C8B;--pcd:#1F7A6C">
+        <span class="ring" aria-hidden="true"><span class="n">2</span></span>
+        <span class="label" data-part="Foundations"><b>Chemistry and physics for physiology</b><small>8 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/cells.html" style="--pc:#2C9C8B;--pcd:#1F7A6C">
+        <span class="ring" aria-hidden="true"><span class="n">3</span></span>
+        <span class="label" data-part="Foundations"><b>Cells</b><small>9 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/tissues.html" style="--pc:#2C9C8B;--pcd:#1F7A6C">
+        <span class="ring" aria-hidden="true"><span class="n">4</span></span>
+        <span class="label" data-part="Foundations"><b>Tissues</b><small>4 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/cell-communication.html" style="--pc:#2C9C8B;--pcd:#1F7A6C">
+        <span class="ring" aria-hidden="true"><span class="n">5</span></span>
+        <span class="label" data-part="Foundations"><b>Signals, repair and control</b><small>6 topics</small></span>
+      </a>
+      <a class="node part-start" href="../chapters/integumentary.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">6</span></span>
+        <span class="label" data-part="A&P I"><b>Integumentary system</b><small>4 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/bone-tissue.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">7</span></span>
+        <span class="label" data-part="A&P I"><b>Bone tissue</b><small>5 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/skeleton.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">8</span></span>
+        <span class="label" data-part="A&P I"><b>The skeleton</b><small>5 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/joints.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">9</span></span>
+        <span class="label" data-part="A&P I"><b>Joints</b><small>3 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/muscle-tissue.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">10</span></span>
+        <span class="label" data-part="A&P I"><b>Muscle tissue</b><small>8 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/muscular-system.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">11</span></span>
+        <span class="label" data-part="A&P I"><b>The muscular system</b><small>5 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/nervous-tissue.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">12</span></span>
+        <span class="label" data-part="A&P I"><b>Nervous tissue and neural signaling</b><small>4 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/cns.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">13</span></span>
+        <span class="label" data-part="A&P I"><b>The brain and spinal cord</b><small>4 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/pns.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">14</span></span>
+        <span class="label" data-part="A&P I"><b>Nerves, reflexes and pathways</b><small>6 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/special-senses.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">15</span></span>
+        <span class="label" data-part="A&P I"><b>Special senses</b><small>3 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/autonomic.html" style="--pc:#E8776A;--pcd:#C15A4E">
+        <span class="ring" aria-hidden="true"><span class="n">16</span></span>
+        <span class="label" data-part="A&P I"><b>The autonomic nervous system</b><small>3 topics</small></span>
+      </a>
+      <a class="node part-start" href="../chapters/endocrine.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">17</span></span>
+        <span class="label" data-part="A&P II"><b>The endocrine system</b><small>6 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/blood.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">18</span></span>
+        <span class="label" data-part="A&P II"><b>Blood</b><small>5 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/cardiovascular.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">19</span></span>
+        <span class="label" data-part="A&P II"><b>The cardiovascular system</b><small>16 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/lymph-immune.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">20</span></span>
+        <span class="label" data-part="A&P II"><b>Lymphatic and immune systems</b><small>6 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/respiratory.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">21</span></span>
+        <span class="label" data-part="A&P II"><b>The respiratory system</b><small>9 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/digestive.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">22</span></span>
+        <span class="label" data-part="A&P II"><b>The digestive system</b><small>7 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/metabolism.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">23</span></span>
+        <span class="label" data-part="A&P II"><b>Metabolism and nutrition</b><small>5 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/urinary.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">24</span></span>
+        <span class="label" data-part="A&P II"><b>The urinary system</b><small>6 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/fluid-acid-base.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">25</span></span>
+        <span class="label" data-part="A&P II"><b>Fluid, electrolyte and acid–base balance</b><small>4 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/reproductive.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">26</span></span>
+        <span class="label" data-part="A&P II"><b>The reproductive system</b><small>6 topics</small></span>
+      </a>
+      <a class="node" href="../chapters/development.html" style="--pc:#C9973A;--pcd:#A67A28">
+        <span class="ring" aria-hidden="true"><span class="n">27</span></span>
+        <span class="label" data-part="A&P II"><b>Development and inheritance</b><small>9 topics</small></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="feature-card">
+      <div class="icon-circle">
+        <svg class="fig" viewBox="0 0 170 170" fill="none" aria-hidden="true">
+          <path d="M85 128s-40-24-40-54a22 22 0 0 1 40-13 22 22 0 0 1 40 13c0 30-40 54-40 54z" stroke="#fff" stroke-opacity=".9" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M58 80h14l7-14 10 28 7-14h16" stroke="#fff" stroke-opacity=".9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="132" cy="44" r="6" fill="#F2B9A9"/><path d="M127.5 48.5L112 64" stroke="#F2B9A9" stroke-width="3" stroke-linecap="round"/>
+          <path d="M38 138l10-10M38 128l10 10" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <h2>Seven tools that make you do the physiology.</h2>
+        <p>Predict what rises and falls, close a feedback loop, trace a drop of blood, and name structures on real figures before the practical does.</p>
+        <div class="tool-chips">
+          <a href="../tools/lab-practical.html">Lab practical</a>
+          <a href="../tools/predict.html">Predict the change</a>
+          <a href="../tools/feedback-loops.html">Feedback loops</a>
+          <a href="../tools/pathways.html">Pathways</a>
+          <a href="../tools/graphs.html">Graphs</a>
+          <a href="../tools/calculators.html">Calculators</a>
+          <a href="../tools/word-roots.html">Word roots</a>
+        </div>
+        <a href="../tools/predict.html" class="btn-press alt">Open predict the change</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection" id="sample">
+    <div class="sample-row">
+      <div>
+        <h2 style="margin-top:0">Try a step.</h2>
+        <p class="section-lede" style="margin:0 0 24px;text-align:left">Physiology is graded as a chain of causes, not a list of facts.</p>
+        <div class="sample-list">
+          <div class="row"><span class="n">1</span> Read what changed in the body</div>
+          <div class="row"><span class="n">2</span> Predict up, down or no change</div>
+          <div class="row"><span class="n">3</span> See the causal chain behind it</div>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <span class="tag domain">Predict the change</span> <span class="tag diff">Level 1 &middot; Gradients</span>
+        <p class="qsetup">Water flows through a rubber tube from a tank. The pressures at the two ends are held constant. You squeeze the tube until its radius is half what it was.</p>
+        <div class="qtext">What happens to the flow through the tube?</div>
+        <div class="qopt"><span class="letter">&uarr;</span> It goes up</div>
+        <div class="qopt correct"><span class="letter">&darr;</span> It goes down, to about one sixteenth</div>
+        <div class="qopt" style="margin-bottom:0"><span class="letter">=</span> It stays the same</div>
+        <p class="why"><b>Radius halves &rarr; resistance rises about 16-fold &rarr; flow falls to about 1/16.</b> Resistance depends on the fourth power of the radius, so the flow falls far more than half.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <div class="trust-row">
+      <div class="trust-pill">Core course free, permanently</div>
+      <div class="trust-pill">Progress saved on your device</div>
+      <div class="trust-pill">No account required</div>
+    </div>
+    <p class="anp-disclaimer anp-legal">LevlPrep is not affiliated with, endorsed by, or connected to Assessment Technologies Institute (ATI). TEAS and ATI TEAS are trademarks of ATI, used here only to say what the material is for. OpenStax is credited as a source of figures and coverage; OpenStax does not endorse LevlPrep.</p>
+  </div>
+</main>
+<footer class="anp-foot xshell">
+  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a &ldquo;Report a problem&rdquo; link.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+</footer>
+<div class="pv-label">Home — Version 1: Ochem twin</div>
+<script>window.ANP_SECTION = 'home'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+<script>
+(function(){
+  var box=document.getElementById('chPath'); if(!box) return;
+  var nodes=[].slice.call(box.querySelectorAll('.node'));
+  function layout(){
+    var w=box.clientWidth, cols=w<480?2:w<760?3:w<900?4:5;
+    box.style.setProperty('--cols',cols);
+    nodes.forEach(function(n,i){var r=Math.floor(i/cols),c=i%cols; if(r%2) c=cols-1-c; n.style.gridRow=r+1; n.style.gridColumn=c+1;});
+    var b=box.getBoundingClientRect(), pts=nodes.map(function(n){var q=n.querySelector('.ring').getBoundingClientRect();return [q.left+q.width/2-b.left,q.top+q.height/2-b.top];});
+    var d='M'+pts[0][0]+' '+pts[0][1];
+    for(var i=1;i<pts.length;i++){var p=pts[i-1],q=pts[i]; if(Math.abs(p[1]-q[1])<2){d+=' L'+q[0]+' '+q[1];}else{d+=' L'+p[0]+' '+q[1]+' L'+q[0]+' '+q[1];}}
+    box.querySelector('.path-track').setAttribute('d',d);
+  }
+  layout(); window.addEventListener('resize',layout); if(document.fonts) document.fonts.ready.then(layout);
+})();</script>
+</body>
+</html>

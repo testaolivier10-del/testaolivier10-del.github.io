@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart anatomy — Notes, Version 3</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+.mock-label{position:fixed;left:14px;bottom:14px;z-index:999;background:#1B2A26;color:#fff;font:800 12px var(--font-ui);padding:7px 12px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none;}
+.mock-trunc{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;color:var(--muted);font:700 13px/1.5 var(--font-ui) !important;margin:28px 0 0;}
+
+/* Version 3 — "Reading + TOC rail": centred column, sticky right contents. */
+.v3{max-width:1060px;margin:0 auto;padding:0 clamp(18px,3.5vw,48px) 50px;display:grid;grid-template-columns:minmax(0,680px) 220px;justify-content:center;column-gap:clamp(28px,5vw,64px);row-gap:0;align-items:start;}
+.v3-crumb{grid-column:1 / -1;font:700 12.5px var(--font-ui);color:var(--muted);margin:22px 0 0;display:flex;flex-wrap:wrap;gap:6px;}
+.v3-crumb a{color:var(--muted);text-decoration:none;}
+.v3-head{padding:6px 0 22px;border-bottom:var(--bw) solid var(--line);margin-bottom:24px;}
+.v3-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+.v3-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font:800 12px var(--font-ui);text-decoration:none;background:var(--white);color:var(--ink);border:1px solid var(--line);}
+.v3-chip.c{background:var(--ctint);color:var(--cink);border-color:transparent;}
+.v3-chip.t{color:var(--muted);}
+.v3-chip svg{width:13px;height:13px;}
+.v3-head h1{font:900 clamp(26px,4.4vw,36px)/1.14 var(--font-ui);letter-spacing:-.025em;margin:0 0 14px;}
+.v3-actions{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;}
+.v3-cta{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:2px solid var(--cink);color:var(--cink);border-radius:999px;padding:7px 15px;font:900 13px var(--font-ui);}
+.v3-cta:hover{background:var(--ctint);}
+.v3-where{font:700 12.5px var(--font-ui);color:var(--muted);}
+.v3-body{font-size:16px;line-height:1.72;}
+.v3-body p,.v3-body li{font-weight:600;}
+.v3-body p{margin:0 0 15px;}
+.v3-body ul{margin:0 0 15px;padding-left:22px;}
+.v3-body>p.lead{font-size:18px;line-height:1.6;font-weight:700;color:var(--ink);}
+.v3-body h2{font:900 23px/1.25 var(--font-ui);margin:40px 0 12px;scroll-margin-top:130px;}
+.v3-body h3{font:900 17px var(--font-ui);margin:26px 0 8px;}
+.v3-body a.figref{color:var(--cink);font-weight:800;}
+.v3-body .anp-figure{margin:10px 0 26px;background:var(--white);border-radius:18px;box-shadow:var(--lift-sm);overflow:hidden;}
+.v3-body .anp-figimg{display:block;background:#fff;padding:14px;}
+.v3-body .anp-figimg img{width:100%;border-radius:0;}
+.v3-body .anp-figure figcaption{margin:0;padding:12px 18px 14px;border-top:1px solid var(--line);font:600 13.5px/1.5 var(--font-ui);color:var(--muted);}
+.v3-body .anp-figure figcaption b{display:inline-block;margin-right:4px;padding:1px 8px;border-radius:999px;background:var(--ctint);color:var(--cink);font:900 11.5px var(--font-ui);}
+.v3-body table.compare{width:100%;border-collapse:collapse;margin:6px 0 22px;font:600 14px/1.5 var(--font-ui);}
+.v3-body table.compare th,.v3-body table.compare td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);}
+.v3-body table.compare thead th{border-bottom:2px solid var(--cink);font-weight:900;color:var(--ink);}
+.v3-body table.compare tbody th{font-weight:900;color:var(--cink);}
+.v3-body table.compare tbody tr:nth-child(odd){background:color-mix(in srgb,var(--white) 60%,transparent);}
+.v3-body .fact,.v3-body .pitfall{position:relative;padding:12px 16px 12px 46px;border-radius:14px;font-weight:700;}
+.v3-body .fact{background:var(--tint-good);color:var(--good-press);}
+:root[data-theme="dark"] .v3-body .fact{color:#8FE0AE;}
+.v3-body .pitfall{background:var(--tint-amber);color:var(--amber-text);}
+.v3-body .fact::before,.v3-body .pitfall::before{position:absolute;left:14px;top:12px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:900 12px var(--font-ui);color:#fff;}
+.v3-body .fact::before{content:'\2713';background:var(--good,#2F9E5B);}
+.v3-body .pitfall::before{content:'!';background:var(--amber,#C98A1A);}
+.v3-body .going-further{background:none;border:var(--bw) dashed var(--line);border-radius:14px;padding:12px 16px;margin:4px 0 18px;}
+.v3-body .for-your-exam{background:var(--ctint);border-radius:14px;padding:12px 16px;margin:4px 0 18px;}
+.v3-body .for-your-exam::before{content:'For your exam';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
+.v3-body .going-further p,.v3-body .for-your-exam p{margin:0;font-size:14.5px;}
+.v3-terms{margin:34px 0 0;background:var(--white);border-radius:20px;box-shadow:var(--lift-sm);padding:20px 22px;}
+.v3-terms h2{margin:0 0 4px !important;font-size:19px !important;display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+.v3-terms h2 a{font:800 12.5px var(--font-ui);color:var(--cink);}
+.v3-terms dl{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin:6px 0 0;}
+.v3-terms div{padding:10px 0;border-bottom:1px solid var(--line);}
+.v3-terms dt{font:900 14px var(--font-ui);color:var(--cink);}
+.v3-terms dd{margin:2px 0 0;font:600 13.5px/1.5 var(--font-ui);color:var(--ink);}
+.v3-onward{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0 0;}
+.v3-pn{display:block;padding:12px 16px;border-radius:14px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);font:800 14px/1.35 var(--font-ui);}
+.v3-pn span{display:block;font:900 10.5px var(--font-ui);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.v3-pn.next{text-align:right;}
+.v3-foot{margin-top:26px;}
+/* right rail */
+.v3-rail{position:sticky;top:calc(var(--site-header-h,112px) + 24px);padding-top:8px;}
+.v3-rail p{margin:0 0 10px;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.v3-toc{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);}
+.v3-toc a{display:block;margin-left:-2px;padding:6px 0 6px 14px;border-left:2px solid transparent;font:700 13px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;transition:color .15s,border-color .15s;}
+.v3-toc a:hover{color:var(--ink);}
+.v3-toc a.on{color:var(--cink);border-left-color:var(--cink);font-weight:900;}
+.v3-rail .v3-mini{margin-top:18px;padding:14px;border-radius:14px;background:var(--ctint);}
+.v3-mini b{display:block;font:900 13px var(--font-ui);color:var(--cink);margin-bottom:4px;}
+.v3-mini span{display:block;font:600 12.5px/1.45 var(--font-ui);color:var(--ink);margin-bottom:10px;}
+.v3-mini a{display:inline-block;padding:7px 12px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 12px var(--font-ui);text-decoration:none;}
+.v3-mtoc{display:none;}
+@media (max-width:900px){
+  .v3{grid-template-columns:minmax(0,1fr);}
+  .v3-rail{display:none;}
+  .v3-mtoc{display:block;margin:0 0 22px;background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:4px 16px;}
+  .v3-mtoc summary{cursor:pointer;padding:10px 0;font:900 13px var(--font-ui);color:var(--cink);}
+  .v3-mtoc ol{margin:0 0 10px;padding-left:20px;font:700 13.5px/1.7 var(--font-ui);}
+  .v3-mtoc a{color:var(--ink);}
+}
+@media (max-width:560px){ .v3-terms dl{grid-template-columns:1fr;} .v3-onward{grid-template-columns:1fr;} .v3-body>p.lead{font-size:17px;} }
+</style>
+</head>
+<body data-topic="heart-anatomy">
+<div id="site-header"></div>
+<div class="course-nav"></div>
+<div class="v3">
+  <nav class="v3-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cardiovascular.html">The cardiovascular system</a></nav>
+  <main id="main">
+    <header class="v3-head">
+      <div class="v3-chips"><span class="v3-chip c">A&amp;P II</span><a class="v3-chip" href="../concepts/structure-function.html">Core concept &middot; Structure and function</a><span class="v3-chip t"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.6V8l2.3 1.6" stroke-linecap="round"/></svg>14 min read</span></div>
+      <h1>Heart location, coverings, chambers and great vessels</h1>
+      <div class="v3-actions"><a class="v3-cta" href="../lessons/heart-anatomy.html">&#9654; Practice this lesson</a><span class="v3-where">Chapter 19 &middot; Topic 95 of 162</span></div>
+    </header>
+    <details class="v3-mtoc"><summary>On this page</summary><ol><li><a href="#where">Where your heart sits</a></li><li><a href="#pericardium">The pericardium: a sac with two parts</a></li><li><a href="#wall">The three layers of the heart wall</a></li><li><a href="#chambers">Four chambers: two receiving, two pumping</a></li><li><a href="#key-terms">Key terms</a></li></ol></details>
+    <article class="v3-body">
+<p class="lead">Heart <a class="gl" href="../notes/body-organization.html" data-c="anatomy">anatomy</a> starts with four questions: where your heart sits in the chest, what wraps around it, what its wall is made of, and how it is divided inside. This page covers the heart's location, the layers of the <a class="gl" href="../notes/body-organization.html" data-c="major-organs">pericardium</a>, the three <span class="gl" tabindex="0" data-c="heart-wall">layers of the heart wall</span>, the four chambers and the <span class="gl" tabindex="0" data-c="great-vessels">great vessels</span> that attach to them. It ends with <span class="gl" tabindex="0" data-c="cardiac-tamponade">cardiac tamponade</span>, an emergency that only makes sense once you know those layers.</p>
+<h2 id="where">Where your heart sits</h2>
+<p>Press your fingers into the space between your <a class="gl" href="../notes/thoracic-cage.html" data-c="ribs">ribs</a> just below your left nipple, and you may feel a tap with each beat. That tap is the tip of your heart hitting the inside of your chest wall. It tells you two things right away: your heart is closer to the front of your chest than the back, and it points to the left.</p>
+<p>Your heart is a hollow muscular <a class="gl" href="../notes/body-organization.html" data-c="organ">organ</a> about the size of your closed fist. In an adult it weighs roughly 250 to 350 grams. It sits in the <strong><a class="gl" href="../notes/body-cavities.html" data-c="mediastinum">mediastinum</a></strong>, the central compartment of the <a class="gl" href="../notes/body-cavities.html" data-c="thoracic-cavity">thoracic cavity</a> between the two pleural cavities (<a class="figref" href="#fig-heart-location">Figure 1</a>). That puts it:</p>
+<ul>
+  <li>between your two lungs, on either side;</li>
+  <li><a class="gl" href="../notes/anatomical-position.html" data-c="anterior-posterior">posterior</a> to your <a class="gl" href="../notes/thoracic-cage.html" data-c="sternum">sternum</a>, in front;</li>
+  <li>anterior to your esophagus and <a class="gl" href="../notes/vertebral-column.html" data-c="vertebral-regions">vertebral column</a>, behind;</li>
+  <li>on the dome of your <a class="gl" href="../notes/body-cavities.html" data-c="diaphragm">diaphragm</a>, below.</li>
+</ul>
+<p>The heart does not sit straight. It is tilted so that about two thirds of its mass lies to the left of the body's midline. It is also turned slightly, so its right side faces more toward the front.</p>
+
+<figure id="fig-heart-location"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-2"><img src="../figures/os-19-2.jpg" alt="Front view of an opened chest with the ribs cut away. The heart sits in the middle of the chest between the two lungs, resting on the dome of the diaphragm, with its pointed tip angled down and to the left. A dashed line marks the cut edge of the sac around the heart. A small side view shows the heart behind the sternum and in front of the esophagus and vertebral column." width="1100" height="997" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:92.73%;top:24.77%;width:7.27%;height:4.11%"></span><span class="anp-cover" aria-hidden="true" style="left:22.00%;top:95.29%;width:13.09%;height:4.51%"></span></div><figcaption><b>Figure 1.</b> Your heart in the mediastinum, between the lungs and on the diaphragm. Its apex points down, forward and to the left. The front view also shows three of the four chambers, the two auricles and the great vessels at the base. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.2, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+
+<h3>Apex and base</h3>
+<p>Your heart is shaped roughly like a blunt cone lying on its side. Its two ends have names that trip up many students, because they run opposite to what you might expect.</p>
+<ul>
+  <li>The <strong><span class="gl" tabindex="0" data-c="heart-location">apex of the heart</span></strong> (apex = tip) is the pointed lower end. It points inferiorly, anteriorly and to the left. In most adults it lies at the fifth intercostal space (inter- = between, cost/o = rib), in line with the middle of the left <a class="gl" href="../notes/upper-limb.html" data-c="pectoral-girdle">clavicle</a>. That is where you feel the tap.</li>
+  <li>The <strong>base of the heart</strong> is the broad upper and back end. It faces superiorly, posteriorly and to the right, toward your right shoulder. The large blood vessels that carry blood into and out of the heart attach here.</li>
+</ul>
+<p class="fact">So the base is at the top and the apex is at the bottom. Think of an ice cream cone held the usual way: the wide opening at the top is the base, and the point at the bottom is the apex.</p>
+
+<aside class="going-further"><p>During chest compressions in CPR, you press on the lower half of the sternum. The heart lies directly behind it, trapped between the sternum and the vertebral column. Each compression squeezes the heart between those two bony surfaces and also raises the pressure throughout the chest. Both effects push blood out of the heart; how much each one contributes is still debated.</p></aside>
+
+<h2 id="pericardium">The pericardium: a sac with two parts</h2>
+<p>Imagine pushing your fist into a partly inflated balloon. The balloon folds around your fist in two layers: one pressed against your skin, one facing outward, with a thin film of air between them. Now put that balloon inside a stiff paper bag. That is the plan of the pericardium.</p>
+<p>The <strong>pericardium</strong> (peri- = around, cardi/o = heart) is the covering that surrounds your heart. It has two parts that are built very differently.</p>
+
+<h3>Fibrous pericardium</h3>
+<p>The <strong><span class="gl" tabindex="0" data-c="pericardium">fibrous pericardium</span></strong> is the tough outer bag, the paper bag in the picture. It is made of <a class="gl" href="../notes/connective-tissue.html" data-c="dense-ct">dense connective tissue</a>, mostly thick <a class="gl" href="../notes/connective-tissue.html" data-c="ct-fibers">collagen fibers</a> running in many directions. It is anchored below to the diaphragm and above to the connective tissue around the large vessels at the base of the heart. Collagen resists being pulled, so this layer does two things. It holds your heart in place in the mediastinum. And it resists stretching, which limits how far the heart can expand. That last point matters for cardiac tamponade, later on this page.</p>
+
+<h3>Serous pericardium</h3>
+<p>The <strong>serous pericardium</strong> (ser/o = watery fluid) is the thin inner part, the balloon in the picture. It is a <a class="gl" href="../notes/body-cavities.html" data-c="serous-membrane">serous membrane</a>: a single layer of <a class="gl" href="../notes/epithelium.html" data-c="simple-squamous">simple squamous epithelium</a>, called mesothelium, on a thin layer of <a class="gl" href="../notes/connective-tissue.html" data-c="connective-tissue">connective tissue</a>. Like the balloon, it forms two layers that are continuous with each other where the large vessels enter and leave at the base.</p>
+<ul>
+  <li>The <strong>parietal pericardium</strong> (pariet- = wall) is the outer layer. It lines the inside of the fibrous pericardium and is fused to it.</li>
+  <li>The <strong>visceral pericardium</strong> (viscer- = internal organ) is the inner layer. It sticks tightly to the surface of the heart itself.</li>
+</ul>
+
+<h3>The pericardial cavity</h3>
+<p>Between the parietal and visceral layers lies the <strong><a class="gl" href="../notes/body-cavities.html" data-c="pericardial-cavity">pericardial cavity</a></strong>. It is not an open space. It holds only a thin film of serous fluid, usually about 15 to 50 mL. The mesothelium secretes this fluid. It lets the two layers slide over each other with little friction as your heart beats about 100,000 times a day.</p>
+<p>The <strong>pericardial sac</strong> is the name for the fibrous pericardium together with the parietal layer fused to its inside. It is the part you would cut through to reach the heart in surgery. <a class="figref" href="#fig-heart-wall">Figure 2</a> shows every layer in order.</p>
+
+<div class="table-wrap"><table class="compare">
+  <thead><tr><th></th><th>Fibrous pericardium</th><th>Serous pericardium</th></tr></thead>
+  <tbody>
+    <tr><th>Position</th><td>Outermost; the tough bag</td><td>Inside the fibrous layer; folded into two layers</td></tr>
+    <tr><th>Tissue</th><td>Dense connective <a class="gl" href="../notes/body-organization.html" data-c="tissue">tissue</a> (collagen)</td><td>Mesothelium (simple <a class="gl" href="../notes/epithelium.html" data-c="epithelium-classification">squamous</a> <a class="gl" href="../notes/epithelium.html" data-c="epithelium">epithelium</a>) on thin connective tissue</td></tr>
+    <tr><th>Layers</th><td>One</td><td>Two: parietal (outer) and visceral (inner)</td></tr>
+    <tr><th>Stretch</th><td>Resists stretch, especially sudden stretch</td><td>Thin and flexible</td></tr>
+    <tr><th>Main job</th><td>Anchors the heart and limits how far it can expand</td><td>Secretes serous fluid, so the layers slide with little friction</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="wall">The three layers of the heart wall</h2>
+<p>Now move inward, into the wall of the heart itself. It has three layers. From outside to inside they are the epicardium, the myocardium and the endocardium.</p>
+
+<figure id="fig-heart-wall"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-5"><img src="../figures/os-19-5.jpg" alt="A small drawing of the heart with a box on its outer wall, enlarged into a slice showing the layers from inside to outside: a thin inner lining, a thick band of muscle, a thin outer covering, a narrow fluid-filled space, a thin membrane, and a tough outer fibrous layer." width="1100" height="753" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> A slice through the heart wall and its coverings, from the endocardium on the inside to the fibrous pericardium on the outside. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.5, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+
+<h3>Epicardium</h3>
+<p>The <strong>epicardium</strong> (epi- = upon) is the outermost layer of the heart wall. It is the visceral pericardium under another name. The same sheet of tissue gets two names because it belongs to two structures: it is the inner layer of the serous pericardium, and it is the outer layer of the heart wall. Beneath its mesothelium lies connective tissue with fat. The heart's own surface blood vessels and <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="nerve">nerves</a> run through this fat.</p>
+
+<h3>Myocardium</h3>
+<p>The <strong>myocardium</strong> (my/o = muscle) is the middle layer and by far the thickest. It is <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="cardiac-muscle-tissue">cardiac muscle tissue</a>: <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="striation">striated</a>, branching <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="muscle-fiber-basic">muscle fibers</a> joined end to end by <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="intercalated-disc">intercalated discs</a>. A network of collagen and elastic fibers holds the muscle together and carries its blood vessels. The muscle fibers wrap around the heart in spiral and figure-eight bundles. When they shorten, they squeeze and twist the heart, a bit like wringing out a towel. The myocardium is the layer that does the pumping.</p>
+
+<h3>Endocardium</h3>
+<p>The <strong>endocardium</strong> (endo- = within) is the innermost layer. It lines every space inside the heart and covers the flaps that control flow through it. It is endothelium, a simple squamous epithelium, on a thin layer of connective tissue. It is continuous with the endothelium lining your blood vessels, so blood touches one smooth, unbroken lining all the way around your body.</p>
+
+<div class="table-wrap"><table class="compare">
+  <thead><tr><th></th><th>Epicardium</th><th>Myocardium</th><th>Endocardium</th></tr></thead>
+  <tbody>
+    <tr><th>Position</th><td>Outer layer of the wall</td><td>Middle layer</td><td>Inner layer</td></tr>
+    <tr><th>Main tissue</th><td>Mesothelium on connective tissue and fat</td><td>Cardiac <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="muscle-tissue">muscle tissue</a></td><td>Endothelium on thin connective tissue</td></tr>
+    <tr><th>Thickness</th><td>Thin</td><td>Thickest by far</td><td>Thin</td></tr>
+    <tr><th>Also called</th><td>Visceral pericardium</td><td>None</td><td>None</td></tr>
+    <tr><th>What it does</th><td>Covers the heart; carries surface vessels and nerves</td><td>Contracts and pumps blood</td><td>Gives blood a smooth lining to flow over</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="chambers">Four chambers: two receiving, two pumping</h2>
+<p>Picture a house with two floors and a solid wall down the middle. Each side has an entry hall upstairs and a big room downstairs. Blood always comes in upstairs and leaves from downstairs. That is the layout of the four <strong><span class="gl" tabindex="0" data-c="chambers">chambers of the heart</span></strong>, the hollow spaces inside it.</p>
+<ul>
+  <li>An <strong>atrium</strong> (atri- = entrance hall; plural <strong>atria</strong>) is an upper, receiving chamber. <a class="gl" href="../notes/body-organization.html" data-c="blood-vessel-basics">Veins</a> bring blood into it, and it passes that blood down to the ventricle below.</li>
+  <li>A <strong>ventricle</strong> (ventricul- = little belly) is a lower, pumping chamber. It receives blood from the atrium above and pushes it out into a large artery.</li>
+</ul>
+<p>So you have a <strong>right atrium</strong> above a <strong>right ventricle</strong>, and a <strong>left atrium</strong> above a <strong>left ventricle</strong>. "Right" and "left" are always the patient's right and left. When you look at a front-view drawing, the patient's right side is on your left.</p>
+<p class="fact">In a healthy adult heart, blood on the right side never mixes with blood on the left side. Each side is a separate pump, and each works as a pair: atrium receives, ventricle pumps.</p>
+<div class="table-wrap"><table class="compare">
+  <thead><tr><th>Chamber</th><th>Receives blood from</th><th>Sends blood to</th></tr></thead>
+  <tbody>
+    <tr><td>Right atrium</td><td>The body, through the <a class="gl" href="../notes/anatomical-position.html" data-c="superior-inferior">superior and inferior</a> venae cavae</td><td>The right ventricle, just below it</td></tr>
+    <tr><td>Right ventricle</td><td>The right atrium</td><td>The lungs, through the pulmonary trunk</td></tr>
+    <tr><td>Left atrium</td><td>The lungs, through the pulmonary veins</td><td>The left ventricle, just below it</td></tr>
+    <tr><td>Left ventricle</td><td>The left atrium</td><td>The rest of the body, through the aorta</td></tr>
+  </tbody>
+</table></div>
+
+<h3>The chambers from outside</h3>
+<p>Look again at the heart in <a class="figref" href="#fig-heart-location">Figure 1</a>. Because the heart is turned, the chambers you see from the front are not the ones you might expect.</p>
+<ul>
+  <li>Most of the front surface is the <strong>right ventricle</strong>.</li>
+  <li>The <strong>left ventricle</strong> forms the left edge of the heart and the apex.</li>
+  <li>The <strong>right atrium</strong> forms the right edge.</li>
+  <li>The <strong>left atrium</strong> lies at the back of the base, so a front view shows only its small pouch.</li>
+</ul>
+<aside class="for-your-exam"><p>Exams like to ask which chamber forms most of the heart's front surface. It is the <strong>right ventricle</strong>, not the left. The left ventricle forms the apex and the left border; the right atrium forms the right border.</p></aside>
+<p>Each atrium has a wrinkled, ear-shaped pouch on its front called an <strong>auricle</strong> (auricul- = little ear). The <strong>right auricle</strong> sits beside the <a class="gl" href="../notes/word-parts.html" data-c="word-root">root</a> of the aorta; the <strong>left auricle</strong> peeks out beside the pulmonary trunk. An auricle adds a little extra room to its atrium.</p>
+<p class="pitfall"><b>Don't mix these up.</b> An auricle is only a pouch of an atrium, not a chamber of its own.</p>
+<p>Grooves on the surface show where the chambers meet inside. Each groove is filled with fat and carries the heart's own surface blood vessels.</p>
+<ul>
+  <li>The <strong>coronary <a class="gl" href="../notes/brain-regions.html" data-c="cerebrum">sulcus</a></strong> (coron- = crown; sulcus = groove) runs all the way around the heart like a crown. It marks the boundary between the atria above and the ventricles below.</li>
+  <li>The <strong>anterior interventricular sulcus</strong> runs down the front of the heart toward the apex. It marks where the wall between the two ventricles meets the surface.</li>
+  <li>The <strong>posterior interventricular sulcus</strong> does the same on the back of the heart.</li>
+</ul>
+<p class="mock-trunc">Mockup shows the first four sections. The real page continues with <i>The chambers from inside</i>, <i>The great vessels</i>, <i>Cardiac tamponade: when the sac fills</i> and <i>Summary</i>.</p>
+      <section class="v3-terms" id="key-terms-box"><h2 id="key-terms">Key terms <a href="../glossary.html">Full glossary &rarr;</a></h2><dl><div><dt>Mediastinum</dt><dd>The central compartment of the thoracic cavity, between the two pleural cavities, where the heart sits.</dd></div><div><dt>Apex</dt><dd>The pointed lower tip of the heart; points down, forward and left, at the fifth intercostal space.</dd></div><div><dt>Base</dt><dd>The broad upper, back end of the heart, where the great vessels attach.</dd></div><div><dt>Fibrous pericardium</dt><dd>The tough outer bag of dense collagen that anchors the heart and limits how far it can expand.</dd></div><div><dt>Serous pericardium</dt><dd>The thin inner membrane, folded into a parietal (outer) and a visceral (inner) layer.</dd></div><div><dt>Pericardial cavity</dt><dd>The film of 15 to 50 mL of serous fluid between the parietal and visceral layers.</dd></div><div><dt>Epicardium</dt><dd>Outer layer of the heart wall; the visceral pericardium under another name.</dd></div><div><dt>Myocardium</dt><dd>Middle, thickest layer of the heart wall: cardiac muscle, the layer that pumps.</dd></div><div><dt>Endocardium</dt><dd>Inner endothelial lining of every chamber, continuous with the lining of the vessels.</dd></div><div><dt>Atrium / ventricle</dt><dd>Upper receiving chamber / lower pumping chamber. Each side of the heart has one of each.</dd></div><div><dt>Auricle</dt><dd>A wrinkled, ear-shaped pouch on the front of each atrium. Not a chamber of its own.</dd></div></dl></section>
+    </article>
+    <nav class="v3-onward" aria-label="Topic navigation"><a class="v3-pn" href="#"><span>&larr; Previous</span>Blood types and transfusion</a><a class="v3-pn next" href="#"><span>Next &rarr;</span>Heart valves, septa and internal structure</a></nav>
+    <footer class="v3-foot">
+  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a &ldquo;Report a problem&rdquo; link.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+</footer>
+  </main>
+  <aside class="v3-rail" aria-label="On this page">
+    <p>On this page</p>
+    <ol class="v3-toc"><li><a href="#where">Where your heart sits</a></li><li><a href="#pericardium">The pericardium: a sac with two parts</a></li><li><a href="#wall">The three layers of the heart wall</a></li><li><a href="#chambers">Four chambers: two receiving, two pumping</a></li><li><a href="#key-terms">Key terms</a></li></ol>
+    <div class="v3-mini"><b>Ready to check yourself?</b><span>23 questions on this topic, with instant feedback.</span><a href="../lessons/heart-anatomy.html">Start the lesson</a></div>
+  </aside>
+</div>
+<div class="mock-label">Notes &mdash; Version 3: Reading + TOC rail</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.v3-toc a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var heads=Object.keys(map).map(function(id){return document.getElementById(id);}).filter(Boolean);
+  function set(id){links.forEach(function(a){a.classList.toggle('on',a===map[id]);});}
+  set(heads[0].id);
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(){
+    var cur=heads[0].id, line=window.innerHeight*0.3;
+    heads.forEach(function(h){if(h.getBoundingClientRect().top<line)cur=h.id;});
+    set(cur);
+  },{rootMargin:'0px 0px -60% 0px',threshold:[0,1]});
+  heads.forEach(function(h){io.observe(h);});
+  window.addEventListener('scroll',function(){var cur=heads[0].id,line=window.innerHeight*0.3;heads.forEach(function(h){if(h.getBoundingClientRect().top<line)cur=h.id;});set(cur);},{passive:true});
+})();
+</script>
+<script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-glossary.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+</body>
+</html>

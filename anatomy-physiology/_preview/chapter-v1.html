@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>The cardiovascular system | Anatomy &amp; Physiology</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+/* Preview label */
+.pv-label{position:fixed;left:12px;bottom:12px;z-index:9999;font:800 11.5px var(--font-ui);
+  background:var(--ink);color:var(--paper);padding:6px 11px;border-radius:999px;opacity:.88;pointer-events:none;}
+@media (max-width:700px){.pv-label{bottom:auto;top:8px;left:50%;transform:translateX(-50%);font-size:10px;padding:4px 9px;}}
+/* A&P accent: coral ink/tint from theme.css body[data-course="anp"] */
+body{--anp-acc:var(--cink,#A33B26);--anp-tint:var(--ctint,#FBE9E4);}
+.chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  font:800 11.5px var(--font-ui);padding:4px 10px;border-radius:999px;background:var(--surface2);color:var(--muted);}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55;}
+.chip.mastered{background:var(--tint-good);color:var(--good-text);}
+.chip.mastered::before{opacity:1;}
+.chip.learning{background:var(--tint-amber);color:var(--amber-text);}
+.chip.learning::before{opacity:1;}
+.chip.started{background:var(--anp-tint);color:var(--anp-acc);}
+.chip.started::before{opacity:1;}
+.btn-sm{display:inline-flex;align-items:center;gap:6px;font:900 13px var(--font-ui);text-decoration:none;
+  padding:8px 14px;border-radius:11px;white-space:nowrap;transition:transform .12s ease,filter .15s ease;}
+.btn-sm:hover{transform:translateY(-1px);}
+.btn-sm.solid{background:var(--navy);color:var(--on-accent);box-shadow:0 4px 12px rgba(31,74,66,.2);}
+.btn-sm.solid:hover{color:var(--on-accent);filter:brightness(1.08);}
+.btn-sm.ghost{background:var(--surface2);color:var(--ink);}
+.btn-sm.ghost:hover{background:var(--hover-tint);color:var(--ink);}
+
+.tb-toc-num{background:var(--anp-tint);color:var(--anp-acc);}
+.tb-toc-topic.current{color:var(--anp-acc);background:var(--anp-tint);}
+.tb-progress-fill{background:var(--anp-acc);}
+.tb-filter:focus{border-color:var(--anp-acc);}
+.tb-toc-topic{align-items:flex-start;line-height:1.35;}
+.tb-toc-tick{margin-top:2px;}
+.v1-group{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 6px 4px;}
+.v1-group:first-child{margin-top:2px;}
+.tb-main{max-width:none;}
+.tb-chapter-eyebrow{color:var(--anp-acc);}
+.v1-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;}
+.v1-head-acts{display:flex;gap:8px;}
+.v1-list{list-style:none;margin:10px 0 0;padding:0;}
+.v1-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto auto;gap:16px;align-items:center;
+  padding:16px 4px;border-bottom:1px solid var(--line-soft);}
+.v1-n{width:30px;height:30px;border-radius:9px;background:var(--anp-tint);color:var(--anp-acc);
+  display:flex;align-items:center;justify-content:center;font:900 13px var(--font-mono);}
+.v1-title{font:900 16.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.v1-title:hover{color:var(--anp-acc);}
+.v1-sum{margin:3px 0 0;font:600 13.5px/1.45 var(--font-ui);color:var(--muted);}
+.v1-acts{display:flex;gap:6px;}
+.v1-section-h{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:34px 0 10px;}
+.v1-practice{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.v1-pcard{background:var(--white);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--lift);text-decoration:none;color:var(--ink);display:block;}
+.v1-pcard:hover{box-shadow:var(--lift-lg);color:var(--ink);}
+.v1-pcard b{display:block;font:900 15.5px var(--font-ui);margin-bottom:4px;}
+.v1-pcard span{font:700 13px var(--font-ui);color:var(--muted);}
+.v1-tools{display:flex;flex-wrap:wrap;gap:8px;}
+.v1-tools a{font:800 13px var(--font-ui);text-decoration:none;color:var(--ink);background:var(--white);box-shadow:var(--lift-sm);
+  border-radius:999px;padding:7px 14px;display:inline-flex;gap:6px;align-items:center;}
+.v1-tools a small{font:800 11px var(--font-mono);color:var(--muted);}
+.v1-tools a:hover{color:var(--anp-acc);}
+.tb-chapter-link:hover{border-color:var(--anp-acc);}
+@media (max-width:900px){ body.tb-toc-open .tb-rail{display:flex;} }
+@media (max-width:700px){
+  .v1-row{grid-template-columns:30px minmax(0,1fr);gap:8px 12px;}
+  .v1-row .chip,.v1-acts{grid-column:2;justify-self:start;}
+  .v1-row .chip{grid-row:2;}
+  .v1-n{grid-row:1 / span 3;align-self:start;}
+  .v1-acts{grid-row:3;}
+  .v1-practice{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body data-chapter="cardiovascular">
+<div id="site-header"></div>
+<div class="course-nav"></div>
+<div class="pv-label">Chapter — Version 1: Ochem textbook</div>
+
+<div class="tb-shell">
+  <button type="button" class="tb-toc-btn" onclick="document.body.classList.toggle('tb-toc-open')">&#9776; Contents</button>
+  <aside class="tb-rail">
+    <p class="tb-rail-title">Contents</p>
+    <div><div class="tb-progress-row"><span>0 of 162 topics</span><span>0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <input type="search" class="tb-filter" placeholder="Search A&amp;P&hellip;" aria-label="Search A&amp;P">
+    <p class="tb-filter-hint">Searches lessons, notes and the glossary.</p>
+    <nav class="tb-contents" aria-label="Course contents"><p class="v1-group">Foundations</p><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">1</span><span class="tb-toc-modtitle">Orientation to the body</span><span class="tb-toc-count">0/6</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">2</span><span class="tb-toc-modtitle">Chemistry and physics for physiology</span><span class="tb-toc-count">0/8</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">3</span><span class="tb-toc-modtitle">Cells</span><span class="tb-toc-count">0/9</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">4</span><span class="tb-toc-modtitle">Tissues</span><span class="tb-toc-count">0/4</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">5</span><span class="tb-toc-modtitle">Signals, repair and control</span><span class="tb-toc-count">0/6</span></button></div><p class="v1-group">A&amp;P I</p><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">6</span><span class="tb-toc-modtitle">Integumentary system</span><span class="tb-toc-count">0/4</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">7</span><span class="tb-toc-modtitle">Bone tissue</span><span class="tb-toc-count">0/5</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">8</span><span class="tb-toc-modtitle">The skeleton</span><span class="tb-toc-count">0/5</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">9</span><span class="tb-toc-modtitle">Joints</span><span class="tb-toc-count">0/3</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">10</span><span class="tb-toc-modtitle">Muscle tissue</span><span class="tb-toc-count">0/8</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">11</span><span class="tb-toc-modtitle">The muscular system</span><span class="tb-toc-count">0/5</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">12</span><span class="tb-toc-modtitle">Nervous tissue and neural signaling</span><span class="tb-toc-count">0/4</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">13</span><span class="tb-toc-modtitle">The brain and spinal cord</span><span class="tb-toc-count">0/4</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">14</span><span class="tb-toc-modtitle">Nerves, reflexes and pathways</span><span class="tb-toc-count">0/6</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">15</span><span class="tb-toc-modtitle">Special senses</span><span class="tb-toc-count">0/3</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">16</span><span class="tb-toc-modtitle">The autonomic nervous system</span><span class="tb-toc-count">0/3</span></button></div><p class="v1-group">A&amp;P II</p><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">17</span><span class="tb-toc-modtitle">The endocrine system</span><span class="tb-toc-count">0/6</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">18</span><span class="tb-toc-modtitle">Blood</span><span class="tb-toc-count">0/5</span></button></div><div class="tb-toc-mod open"><button type="button" class="tb-toc-modhead" aria-expanded="true"><span class="tb-toc-num">19</span><span class="tb-toc-modtitle">The cardiovascular system</span><span class="tb-toc-count">0/16</span></button><div class="tb-toc-topics"><a class="tb-toc-topic current" href="#"><span class="tb-toc-tick"></span>Heart location, coverings, chambers and great vessels</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Heart valves, septa and internal structure</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Blood flow through the heart and the two circuits</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Cardiac muscle cells and their action potential</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>The conduction system and pacemaker cells</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>The electrocardiogram</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>The cardiac cycle</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Structure of blood vessels</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>The major systemic arteries</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>The major systemic veins</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Blood pressure, flow and resistance</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Cardiac output and its control</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Capillary exchange</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Short-term blood pressure regulation</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Long-term blood pressure regulation</a><a class="tb-toc-topic" href="#"><span class="tb-toc-tick"></span>Hypertension, heart failure and shock</a></div></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">20</span><span class="tb-toc-modtitle">Lymphatic and immune systems</span><span class="tb-toc-count">0/6</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">21</span><span class="tb-toc-modtitle">The respiratory system</span><span class="tb-toc-count">0/9</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">22</span><span class="tb-toc-modtitle">The digestive system</span><span class="tb-toc-count">0/7</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">23</span><span class="tb-toc-modtitle">Metabolism and nutrition</span><span class="tb-toc-count">0/5</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">24</span><span class="tb-toc-modtitle">The urinary system</span><span class="tb-toc-count">0/6</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">25</span><span class="tb-toc-modtitle">Fluid, electrolyte and acid–base balance</span><span class="tb-toc-count">0/4</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">26</span><span class="tb-toc-modtitle">The reproductive system</span><span class="tb-toc-count">0/6</span></button></div><div class="tb-toc-mod"><button type="button" class="tb-toc-modhead"><span class="tb-toc-num">27</span><span class="tb-toc-modtitle">Development and inheritance</span><span class="tb-toc-count">0/9</span></button></div></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <div class="tb-chapter-head">
+      <div class="v1-head">
+        <div>
+          <p class="tb-chapter-eyebrow">Chapter 19 of 27 · A&amp;P II</p>
+          <h1 class="tb-chapter-title">The cardiovascular system</h1>
+          <p class="tb-chapter-meta">16 topics · 0 mastered · not practiced yet</p>
+        </div>
+        <div class="v1-head-acts"><a class="btn-sm solid" href="#">Chapter quiz</a><a class="btn-sm ghost" href="#">System exam</a></div>
+      </div>
+    </div>
+    <ol class="v1-list">
+      <li class="v1-row">
+        <span class="v1-n">1</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Heart location, coverings, chambers and great vessels</a>
+          <p class="v1-sum">Where the heart sits in the mediastinum, its pericardium, four chambers and great vessels.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">2</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Heart valves, septa and internal structure</a>
+          <p class="v1-sum">Three septa, the fossa ovalis, and the AV and semilunar valves that keep flow one-way.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">3</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Blood flow through the heart and the two circuits</a>
+          <p class="v1-sum">The right heart feeds the low-pressure pulmonary circuit; the left drives the systemic one.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">4</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Cardiac muscle cells and their action potential</a>
+          <p class="v1-sum">Branched, striated cells joined by intercalated discs, and the plateau phase.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">5</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">The conduction system and pacemaker cells</a>
+          <p class="v1-sum">Autorhythmic cells, the funny current, and the route from SA node to Purkinje fibers.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">6</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">The electrocardiogram</a>
+          <p class="v1-sum">What the P wave, QRS complex and T wave record, and how each lead views the heart.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">7</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">The cardiac cycle</a>
+          <p class="v1-sum">Filling, contraction, ejection and relaxation, all driven by pressure differences across valves.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">8</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Structure of blood vessels</a>
+          <p class="v1-sum">The three tunics, and how arteries, capillaries and veins differ.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">9</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">The major systemic arteries</a>
+          <p class="v1-sum">Every systemic artery branches from the aorta: ascending, arch and descending.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">10</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">The major systemic veins</a>
+          <p class="v1-sum">How veins join as they approach the heart, from the jugulars to the venae cavae.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">11</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Blood pressure, flow and resistance</a>
+          <p class="v1-sum">Systolic, diastolic and mean arterial pressure, and how flow depends on pressure and resistance.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">12</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Cardiac output and its control</a>
+          <p class="v1-sum">CO = HR × SV, about 5 L/min at rest, and what raises or lowers each term.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">13</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Capillary exchange</a>
+          <p class="v1-sum">Diffusion and bulk flow across capillary walls, and the pressures that drive filtration.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">14</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Short-term blood pressure regulation</a>
+          <p class="v1-sum">MAP = CO × TPR, so every fast correction works on heart rate, stroke volume or arterioles.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">15</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Long-term blood pressure regulation</a>
+          <p class="v1-sum">Over the long run, blood pressure follows blood volume, which the kidneys control.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+      <li class="v1-row">
+        <span class="v1-n">16</span>
+        <div class="v1-body">
+          <a class="v1-title" href="#">Hypertension, heart failure and shock</a>
+          <p class="v1-sum">Pressure that stays high, a pump that falls behind, and circulation that fails.</p>
+        </div>
+        <span class="chip">Not practiced</span>
+        <div class="v1-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </li>
+    </ol>
+    <p class="v1-section-h">Practice this chapter</p>
+    <div class="v1-practice">
+      <a class="v1-pcard" href="#"><b>Chapter quiz</b><span>Questions from all 16 topics, weakest first.</span></a>
+      <a class="v1-pcard" href="#"><b>System exam</b><span>A timed exam on the whole cardiovascular system.</span></a>
+      <a class="v1-pcard" href="#"><b>Lab practical</b><span>9 image sets: label the heart, vessels and pulse points.</span></a>
+    </div>
+    <p class="v1-section-h">Tools for this chapter</p>
+    <div class="v1-tools"><a href="#">Lab practical image sets <small>9</small></a><a href="#">Prediction scenarios <small>10</small></a><a href="#">Pathways <small>4</small></a><a href="#">Feedback loops <small>2</small></a><a href="#">Graphs <small>9</small></a><a href="#">Calculators <small>5</small></a><a href="#">Comparison tables <small>8</small></a></div>
+    <nav class="tb-chapter-nav">
+      <a class="tb-chapter-link prev" href="#"><span>&larr; Chapter 18</span><b>Blood</b></a>
+      <a class="tb-chapter-link next" href="#"><span>Chapter 20 &rarr;</span><b>Lymphatic and immune systems</b></a>
+    </nav>
+  </main>
+</div>
+<script>(function(){var c=document.querySelector('.tb-contents'),o=c&&c.querySelector('.tb-toc-mod.open');if(o)c.scrollTop=o.offsetTop-c.offsetTop-90;})();</script>
+<footer class="anp-foot xshell">
+  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a “Report a problem” link.</p>
+  <p class="privacy-link"><a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Sources</a> &middot; <a href="#">Figure credits</a></p>
+</footer>
+<script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+</body>
+</html>

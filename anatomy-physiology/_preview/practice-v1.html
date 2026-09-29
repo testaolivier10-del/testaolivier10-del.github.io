@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Practice (preview v1) | Anatomy &amp; Physiology</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+/* ---- Version 1: Ochem twin. Same layout as ochem/practice.html, A&P coral tint. ---- */
+.pv-hero{padding:clamp(22px,3.5vw,34px) clamp(22px,4vw,44px) clamp(20px,3vw,26px);}
+.pv-hero .eyebrow{margin-bottom:10px;}
+.pv-hero h1{margin-bottom:4px;}
+.pv-hero .lede{margin:0;max-width:none;}
+
+.pv-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:36px;align-items:start;padding-top:24px;}
+@media (max-width:900px){.pv-grid{grid-template-columns:1fr;gap:10px;}}
+
+.pv-k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;}
+
+.rec-card{
+  background:var(--white);border-radius:var(--radius-lg);padding:clamp(20px,4vw,26px);
+  box-shadow:var(--lift-lg);margin-bottom:16px;
+}
+.rec-card .k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin-bottom:8px;}
+.rec-card h2{font:900 clamp(18px,3vw,22px) var(--font-ui);margin:0 0 8px;line-height:1.25;}
+.rec-card p{margin:0 0 16px;font-size:14.5px;font-weight:600;line-height:1.6;color:var(--ink);max-width:62ch;}
+.rec-card .meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;}
+.rec-card .meta span{font:800 11.5px var(--font-ui);color:var(--cink);background:var(--ctint);padding:4px 10px;border-radius:var(--radius-pill);}
+.rec-card .actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.rec-card .actions a.sub{font:800 13.5px var(--font-ui);color:var(--muted);}
+
+.rec-alt{display:flex;align-items:center;gap:12px;background:var(--white);border-radius:var(--radius);
+  padding:13px 16px;box-shadow:var(--lift-sm);text-decoration:none;color:inherit;margin-bottom:26px;}
+.rec-alt:hover{box-shadow:var(--lift);}
+.rec-alt .t{font:800 14px var(--font-ui);flex:1;min-width:0;}
+.rec-alt .d{display:block;font:600 12.5px var(--font-ui);color:var(--muted);margin-top:2px;line-height:1.45;}
+.rec-alt .go{font:900 18px var(--font-mono);color:var(--cink);flex-shrink:0;}
+
+.mode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:12px;}
+@media (max-width:700px){.mode-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:420px){.mode-grid{grid-template-columns:1fr;}}
+.mode-card{position:relative;display:block;text-decoration:none;color:inherit;background:var(--white);
+  border-radius:var(--radius);padding:16px 18px;box-shadow:var(--lift-sm);
+  outline:2px solid transparent;outline-offset:-2px;transition:outline-color .1s ease,transform .06s ease;}
+.mode-card:hover{outline-color:var(--cink);}
+.mode-card:active{transform:scale(.985);}
+.mode-card .t{font:900 14.5px var(--font-ui);display:block;margin-bottom:4px;}
+.mode-card .pill + .t{padding-right:66px;}
+.mode-card .d{font:600 12.5px var(--font-ui);color:var(--muted);line-height:1.5;display:block;}
+.mode-card .pill{position:absolute;top:12px;right:12px;font:900 9.5px var(--font-ui);letter-spacing:.05em;
+  text-transform:uppercase;color:var(--cink);background:var(--ctint);padding:3px 8px;border-radius:var(--radius-pill);}
+.mode-card.off{opacity:.55;box-shadow:none;background:transparent;outline:1.5px dashed var(--line);}
+.mode-card.off:hover{outline-color:var(--line);}
+.mode-card .why{display:block;margin-top:8px;font:800 11.5px var(--font-ui);color:var(--muted);}
+.pv-foot{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
+.pv-foot a{color:var(--muted);}
+
+/* right rail */
+.snapshot{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:var(--lift-sm);margin-bottom:18px;}
+.snapshot .cell{background:var(--white);padding:14px 16px;}
+.snapshot .k{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.snapshot .v{font:900 22px var(--font-mono);color:var(--ink);margin-top:2px;line-height:1.1;}
+.snapshot .s{font:700 11.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+.rail-link{display:block;background:var(--white);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--lift-sm);
+  text-decoration:none;color:inherit;}
+.rail-link .t{font:900 14px var(--font-ui);display:flex;justify-content:space-between;gap:10px;}
+.rail-link .t span{color:var(--cink);font-family:var(--font-mono);}
+.rail-link .d{display:block;font:600 12.5px var(--font-ui);color:var(--muted);margin-top:3px;line-height:1.45;}
+
+.pv-label{position:fixed;left:12px;bottom:12px;z-index:9999;background:var(--ink);color:var(--paper);
+  font:800 12px var(--font-ui);padding:6px 11px;border-radius:999px;opacity:.9;pointer-events:none;}
+@media (max-width:700px){.pv-label{bottom:84px;}}
+</style>
+</head>
+<body data-app="practice">
+<div id="site-header"></div>
+<div class="course-nav"></div>
+<main id="main" class="xshell anp-app">
+  <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Practice</span></nav>
+  <header class="hero pv-hero">
+    <div class="eyebrow">Anatomy &amp; Physiology</div>
+    <h1>Practice.</h1>
+    <p class="lede">Drill one topic, a whole body system, or the questions you missed.</p>
+  </header>
+
+  <div class="pv-grid">
+    <div class="pv-main">
+      <section class="rec-card" aria-labelledby="rec-h">
+        <div class="k">Recommended for you</div>
+        <h2 id="rec-h">Start with a short mixed set</h2>
+        <p>Ten questions from Chapter 1, Orientation to the body: levels of organization, directional terms, planes and cavities. Once you have a few answers in, this card points you at your weakest topic instead.</p>
+        <div class="meta"><span>10 questions</span><span>Chapter 1</span><span>About 8 min</span></div>
+        <div class="actions">
+          <a class="btn-press" href="#">Start 10 questions</a>
+          <a class="sub" href="#">Or pick 5</a>
+        </div>
+      </section>
+
+      <a class="rec-alt" href="#">
+        <span class="t">Next in your path: Levels of organization and organ systems
+          <span class="d">Finish the lesson first; its 18 questions are waiting.</span></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <h2 class="pv-k">Other ways to practice</h2>
+      <div class="mode-grid">
+        <a class="mode-card" href="#"><span class="pill">Default</span><span class="t">One topic</span><span class="d">Drill a single topic.</span></a>
+        <a class="mode-card" href="#"><span class="t">One chapter</span><span class="d">Every built topic in one body system.</span></a>
+        <a class="mode-card" href="#"><span class="pill">8 ideas</span><span class="t">A core concept</span><span class="d">One big idea, like homeostasis or flow down gradients, across every system.</span></a>
+        <div class="mode-card off" aria-disabled="true"><span class="t">Everything I have studied</span><span class="d">Mixed, from each topic you have started.</span><span class="why">Complete a lesson or answer a question first.</span></div>
+        <div class="mode-card off" aria-disabled="true"><span class="t">My weak spots</span><span class="d">Your lowest-mastery topics and concepts.</span><span class="why">Answer some questions first.</span></div>
+        <div class="mode-card off" aria-disabled="true"><span class="t">Questions I missed</span><span class="d">Retried until you get each one right.</span><span class="why">Nothing missed. Nice.</span></div>
+      </div>
+      <p class="pv-foot">162 built topics across 27 chapters. Timed tests live on <a href="../exams.html">Exams</a>.</p>
+    </div>
+
+    <aside class="pv-side" aria-label="Your numbers">
+      <h2 class="pv-k">Your numbers</h2>
+      <div class="snapshot">
+        <div class="cell"><div class="k">Answered</div><div class="v">0</div><div class="s">nothing yet</div></div>
+        <div class="cell"><div class="k">Studied</div><div class="v">0</div><div class="s">of 162 built topics</div></div>
+        <div class="cell"><div class="k">Due for review</div><div class="v">0</div><div class="s">nothing due now</div></div>
+        <div class="cell"><div class="k">To fix</div><div class="v">0</div><div class="s">no open misses</div></div>
+      </div>
+      <a class="rail-link" href="../exams.html"><span class="t">Timed exams <span aria-hidden="true">&rarr;</span></span>
+        <span class="d">Unit quizzes, system exams, A&amp;P I and II finals.</span></a>
+    </aside>
+  </div>
+</main>
+<footer class="anp-foot xshell">
+  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a &ldquo;Report a problem&rdquo; link.</p>
+  <p class="privacy-link"><a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Sources</a> &middot; <a href="#">Figure credits</a></p>
+</footer>
+<div class="pv-label">Practice &mdash; Version 1: Ochem twin</div>
+<script>window.ANP_SECTION = 'practice'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+</body>
+</html>

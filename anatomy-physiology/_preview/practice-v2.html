@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Practice (preview v2) | Anatomy &amp; Physiology</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+/* ---- Version 2: Builder + rail. The custom-set builder as one card, stats in a sticky rail. ---- */
+.pv-hero{padding:clamp(22px,3.5vw,32px) clamp(22px,4vw,44px);display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+.pv-hero .eyebrow{margin-bottom:10px;}
+.pv-hero h1{margin:0 0 4px;}
+.pv-hero .lede{margin:0;max-width:none;}
+
+.pv-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start;padding:24px 0 8px;}
+@media (max-width:920px){.pv-grid{grid-template-columns:1fr;gap:18px;}}
+
+.builder{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);padding:clamp(18px,3.5vw,28px);}
+.step{padding:0 0 22px;margin:0 0 22px;border-bottom:1px solid var(--line-soft);}
+.step:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:16px;}
+.step-h{display:flex;align-items:center;gap:10px;margin:0 0 12px;font:900 15.5px var(--font-ui);}
+.step-h .n{flex:0 0 24px;height:24px;border-radius:50%;background:var(--ctint);color:var(--cink);
+  font:900 12px var(--font-mono);display:flex;align-items:center;justify-content:center;}
+
+.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+@media (max-width:640px){.modes{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:380px){.modes{grid-template-columns:1fr;}}
+.mode{position:relative;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;text-align:left;cursor:pointer;background:var(--paper);border:0;border-radius:var(--radius);
+  padding:13px 14px 13px 40px;font:inherit;color:inherit;outline:2px solid transparent;outline-offset:-2px;
+  transition:outline-color .1s ease,background .1s ease;}
+.mode::before{content:"";position:absolute;left:14px;top:15px;width:14px;height:14px;border-radius:50%;
+  box-shadow:inset 0 0 0 2px var(--muted);background:var(--white);}
+.mode:hover{outline-color:var(--line);}
+.mode[aria-pressed="true"]{background:var(--ctint);outline-color:var(--cink);}
+.mode[aria-pressed="true"]::before{box-shadow:inset 0 0 0 2px var(--cink),inset 0 0 0 5px var(--white);background:var(--cink);}
+.mode .t{display:block;font:900 14px var(--font-ui);margin-bottom:2px;}
+.mode .d{display:block;font:600 12px var(--font-ui);color:var(--muted);line-height:1.45;}
+.mode:disabled{cursor:default;opacity:.5;}
+.mode:disabled:hover{outline-color:transparent;}
+
+.field label{display:block;font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.field select{width:100%;padding:12px 14px;border:0;border-radius:var(--radius);background:var(--paper);
+  box-shadow:inset 0 0 0 1.5px var(--line);font:800 14.5px var(--font-ui);color:var(--ink);}
+.field .hint{font:700 12.5px var(--font-ui);color:var(--muted);margin:8px 0 0;}
+
+.counts{display:flex;gap:8px;flex-wrap:wrap;}
+.count{min-width:58px;padding:10px 16px;border:0;border-radius:var(--radius-pill);background:var(--paper);cursor:pointer;
+  font:900 14px var(--font-mono);color:var(--ink);outline:2px solid transparent;outline-offset:-2px;}
+.count[aria-pressed="true"]{background:var(--ctint);color:var(--cink);outline-color:var(--cink);}
+
+.go-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  background:var(--paper);border-radius:var(--radius);padding:14px 16px;}
+.go-row .sum{font:800 13.5px var(--font-ui);color:var(--ink);line-height:1.45;}
+.go-row .sum small{display:block;font:700 12px var(--font-ui);color:var(--muted);}
+
+/* rail */
+.rail{position:sticky;top:calc(var(--site-header-h, 112px) + 14px);display:flex;flex-direction:column;gap:14px;}
+@media (max-width:920px){.rail{position:static;}}
+.rail-k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 -4px;}
+.snapshot{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--lift-sm);}
+.snapshot .cell{background:var(--white);padding:13px 15px;}
+.snapshot .k{font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.snapshot .v{font:900 22px var(--font-mono);color:var(--ink);margin-top:2px;line-height:1.1;}
+.snapshot .s{font:700 11.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+.rcard{background:var(--white);border-radius:var(--radius);box-shadow:var(--lift-sm);padding:16px 18px;}
+.rcard .k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.rcard h3{font:900 16px var(--font-ui);margin:0 0 4px;}
+.rcard p{font:600 13px/1.5 var(--font-ui);color:var(--muted);margin:0 0 12px;}
+.rcard .empty{display:flex;align-items:center;gap:10px;background:var(--paper);border-radius:var(--radius-sm);padding:10px 12px;
+  font:800 12.5px var(--font-ui);color:var(--muted);margin-bottom:12px;}
+.rcard .empty svg{flex:0 0 18px;color:var(--good);}
+.rcard a.more{font:900 13px var(--font-ui);color:var(--cink);text-decoration:none;}
+.rcard a.more:hover{text-decoration:underline;}
+.exam-link{display:flex;align-items:center;gap:12px;background:var(--navy);color:var(--on-accent);border-radius:var(--radius);
+  padding:15px 18px;text-decoration:none;box-shadow:var(--btn-shadow);}
+.exam-link .t{flex:1;font:900 14.5px var(--font-ui);}
+.exam-link .t small{display:block;font:700 12px var(--font-ui);color:var(--muted-on-dark);margin-top:2px;}
+.exam-link .go{font:900 18px var(--font-mono);}
+
+.pv-label{position:fixed;left:12px;bottom:12px;z-index:9999;background:var(--ink);color:var(--paper);
+  font:800 12px var(--font-ui);padding:6px 11px;border-radius:999px;opacity:.9;pointer-events:none;}
+@media (max-width:700px){.pv-label{bottom:84px;}}
+</style>
+</head>
+<body data-app="practice">
+<div id="site-header"></div>
+<div class="course-nav"></div>
+<main id="main" class="xshell anp-app">
+  <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Practice</span></nav>
+  <header class="hero pv-hero">
+    <div>
+      <div class="eyebrow">Anatomy &amp; Physiology</div>
+      <h1>Practice</h1>
+      <p class="lede">Build a set: pick what to drill, how many, and go.</p>
+    </div>
+  </header>
+
+  <div class="pv-grid">
+    <form class="builder" onsubmit="return false" aria-label="Build a practice set">
+      <div class="step">
+        <h2 class="step-h"><span class="n">1</span>What do you want to practice?</h2>
+        <div class="modes" id="modes">
+          <button type="button" class="mode" data-m="topic" aria-pressed="true"><span class="t">One topic</span><span class="d">Drill a single topic.</span></button>
+          <button type="button" class="mode" data-m="chapter" aria-pressed="false"><span class="t">One chapter</span><span class="d">Every built topic in one body system.</span></button>
+          <button type="button" class="mode" data-m="core" aria-pressed="false"><span class="t">A core concept</span><span class="d">One big idea, across every system.</span></button>
+          <button type="button" class="mode" disabled><span class="t">Everything I have studied</span><span class="d">Complete a lesson or answer a question first.</span></button>
+          <button type="button" class="mode" disabled><span class="t">My weak spots</span><span class="d">Answer some questions first.</span></button>
+          <button type="button" class="mode" disabled><span class="t">Questions I missed</span><span class="d">Nothing missed. Nice.</span></button>
+        </div>
+      </div>
+
+      <div class="step">
+        <h2 class="step-h"><span class="n">2</span><span id="pickH">Which topic?</span></h2>
+        <div class="field">
+          <label for="pick" id="pickL">Topic</label>
+          <select id="pick">
+            <option>1. Levels of organization and organ systems</option>
+            <option>2. Medical word parts</option>
+            <option>3. Anatomical position and directional terms</option>
+            <option>4. Body planes and sections</option>
+            <option>5. Body cavities and serous membranes</option>
+            <option>6. Body regions and abdominal quadrants</option>
+            <option>7. Atoms, ions and chemical bonds</option>
+            <option>8. Water, solutions and concentration</option>
+          </select>
+          <p class="hint" id="avail">18 questions available, 18 you have not tried.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <h2 class="step-h"><span class="n">3</span>How many questions?</h2>
+        <div class="counts" id="counts">
+          <button type="button" class="count" aria-pressed="false">5</button>
+          <button type="button" class="count" aria-pressed="true">10</button>
+          <button type="button" class="count" aria-pressed="false">20</button>
+          <button type="button" class="count" aria-pressed="false">All</button>
+        </div>
+      </div>
+
+      <div class="go-row">
+        <div class="sum"><span id="sum">10 questions &middot; Levels of organization and organ systems</span><small>Feedback after every answer. Misses go to your review queue.</small></div>
+        <button type="submit" class="btn-press">Start practice</button>
+      </div>
+    </form>
+
+    <aside class="rail" aria-label="Your numbers">
+      <h2 class="rail-k">Your numbers</h2>
+      <div class="snapshot">
+        <div class="cell"><div class="k">Answered</div><div class="v">0</div><div class="s">nothing yet</div></div>
+        <div class="cell"><div class="k">Studied</div><div class="v">0</div><div class="s">of 162 built topics</div></div>
+        <div class="cell"><div class="k">Due for review</div><div class="v">0</div><div class="s">nothing due now</div></div>
+        <div class="cell"><div class="k">To fix</div><div class="v">0</div><div class="s">no open misses</div></div>
+      </div>
+      <div class="rcard">
+        <div class="k">Due for review</div>
+        <h3>Your queue is clear</h3>
+        <p>Questions you miss come back here on a spacing schedule, so they stick.</p>
+        <div class="empty"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Nothing due now</div>
+        <a class="more" href="../review.html">Open Review &rarr;</a>
+      </div>
+      <a class="exam-link" href="../exams.html"><span class="t">Ready for a timed test?<small>Unit quizzes, system exams, A&amp;P I and II finals.</small></span><span class="go" aria-hidden="true">&rarr;</span></a>
+    </aside>
+  </div>
+</main>
+<footer class="anp-foot xshell">
+  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a &ldquo;Report a problem&rdquo; link.</p>
+  <p class="privacy-link"><a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Sources</a> &middot; <a href="#">Figure credits</a></p>
+</footer>
+<div class="pv-label">Practice &mdash; Version 2: Builder + rail</div>
+<script>
+(function(){
+  var opts = {
+    topic: { h:'Which topic?', l:'Topic', a:'18 questions available, 18 you have not tried.', o:['1. Levels of organization and organ systems','2. Medical word parts','3. Anatomical position and directional terms','4. Body planes and sections','5. Body cavities and serous membranes','6. Body regions and abdominal quadrants','7. Atoms, ions and chemical bonds','8. Water, solutions and concentration'] },
+    chapter: { h:'Which chapter?', l:'Chapter', a:'104 questions across 6 built topics.', o:['1. Orientation to the body','2. Chemistry and physics for physiology','3. Cells','4. Tissues','5. Signals, repair and control','6. Integumentary system','7. Bone tissue','8. The skeleton','9. Joints','10. Muscle tissue'] },
+    core: { h:'Which core concept?', l:'Core concept', a:'Questions tagged with this idea, from every system.', o:['Homeostasis','Flow down gradients','Cell-to-cell communication','Structure and function','Mass balance','Energy and ATP','Membranes and compartments','Interdependence of systems'] }
+  };
+  var pick = document.getElementById('pick'), count = '10';
+  function strip(s){ return s.replace(/^\d+\.\s*/, ''); }
+  function sum(){ document.getElementById('sum').textContent = (count === 'All' ? 'All questions' : count + ' questions') + ' · ' + strip(pick.value); }
+  document.getElementById('modes').addEventListener('click', function(e){
+    var b = e.target.closest('.mode'); if(!b || b.disabled) return;
+    [].forEach.call(this.querySelectorAll('.mode'), function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    var c = opts[b.dataset.m];
+    document.getElementById('pickH').textContent = c.h; document.getElementById('pickL').textContent = c.l;
+    document.getElementById('avail').textContent = c.a;
+    pick.innerHTML = c.o.map(function(t){ return '<option>' + t + '</option>'; }).join(''); sum();
+  });
+  document.getElementById('counts').addEventListener('click', function(e){
+    var b = e.target.closest('.count'); if(!b) return;
+    [].forEach.call(this.querySelectorAll('.count'), function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    count = b.textContent; sum();
+  });
+  pick.addEventListener('change', sum);
+})();
+</script>
+<script>window.ANP_SECTION = 'practice'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+</body>
+</html>

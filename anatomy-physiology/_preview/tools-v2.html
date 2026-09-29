@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools — Version 2: Featured + grid (preview)</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+/* Version 2: one featured tool on a dark banner, the other six below. */
+.v-label{position:fixed;left:12px;bottom:12px;z-index:9999;background:var(--ink);color:var(--paper);font:900 11px var(--font-ui);letter-spacing:.04em;padding:7px 11px;border-radius:999px;box-shadow:var(--lift);opacity:.92;pointer-events:none;}
+
+.hero .lede a{color:inherit;}
+
+/* ---- Featured banner --------------------------------------------------- */
+.feat{
+  margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(22px,3.5vw,44px);align-items:center;
+  background:var(--navy);color:var(--on-accent);border-radius:28px;padding:clamp(22px,3.8vw,44px);
+  box-shadow:var(--lift-lg);position:relative;overflow:hidden;
+}
+.feat::before{content:"";position:absolute;right:-120px;top:-140px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(242,185,169,.22),rgba(242,185,169,0) 70%);pointer-events:none;}
+.feat__kick{display:inline-flex;align-items:center;gap:8px;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:#F2B9A9;margin-bottom:14px;}
+.feat__kick .dot{width:7px;height:7px;border-radius:50%;background:#F2B9A9;box-shadow:0 0 0 4px rgba(242,185,169,.18);}
+.feat h2{font:900 clamp(28px,3.6vw,40px)/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 10px;color:#fff;}
+.feat__tag{font:800 17px/1.45 var(--font-ui);color:#fff;margin:0 0 10px;max-width:34ch;}
+.feat__blurb{font:700 14px/1.6 var(--font-ui);color:var(--muted-on-dark);margin:0 0 20px;max-width:44ch;}
+.modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 22px;padding:0;list-style:none;}
+.modes li{background:rgba(255,255,255,.07);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);}
+.modes li.on{background:rgba(242,185,169,.16);box-shadow:inset 0 0 0 1.5px #F2B9A9;}
+.modes b{font:900 13px var(--font-ui);color:#fff;display:flex;align-items:center;gap:7px;}
+.modes b svg{width:15px;height:15px;fill:none;stroke:#F2B9A9;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.modes span{font:700 11.5px/1.4 var(--font-ui);color:var(--muted-on-dark);}
+.feat__row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.feat__cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#16332E;font:900 14.5px var(--font-ui);padding:13px 22px;border-radius:999px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.22);}
+.feat__cta:hover{transform:translateY(-1px);}
+.feat__stats{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted-on-dark);}
+.feat__stats b{color:#fff;}
+
+/* The figure: masked labels, like the real Study and Quiz modes. */
+.fig{position:relative;background:#fff;border-radius:20px;padding:12px;box-shadow:0 18px 40px rgba(0,0,0,.28);transform:rotate(.6deg);}
+.fig__img{position:relative;border-radius:12px;overflow:hidden;}
+.fig__img img{display:block;width:100%;height:auto;}
+.lp-mask{position:absolute;background:#FFF7E6;border:1.5px solid #D9C9A6;border-radius:4px;display:flex;align-items:center;justify-content:center;font:900 9px var(--font-ui);color:#8A7550;line-height:1;}
+.lp-mask.is-on{background:#fff;border:2.5px solid #A33B26;color:#A33B26;box-shadow:0 0 0 4px rgba(163,59,38,.18);font-size:10px;}
+.fig__q{position:absolute;left:18px;right:18px;bottom:-18px;background:var(--white);color:var(--ink);border-radius:14px;padding:10px 14px;box-shadow:var(--lift-lg);display:flex;align-items:center;gap:10px;font:800 13px var(--font-ui);}
+.fig__q .n{flex:none;width:24px;height:24px;border-radius:7px;background:var(--ctint);color:var(--cink);display:grid;place-items:center;font:900 12px var(--font-ui);}
+.fig__q .inp{flex:1;min-width:0;border-radius:9px;background:var(--paper);padding:6px 10px;color:var(--muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.fig__cap{margin:28px 4px 0;font:800 11px var(--font-ui);color:var(--muted-on-dark);text-align:center;letter-spacing:.02em;}
+
+/* ---- The other six ------------------------------------------------------ */
+.more-h{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin:clamp(36px,5vw,52px) 0 16px;flex-wrap:wrap;}
+.more-h h2{margin:0;font:900 22px var(--font-ui);}
+.more-h p{margin:0;font:700 13.5px var(--font-ui);color:var(--muted);}
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+a.t{display:flex;flex-direction:column;gap:9px;background:var(--white);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--lift-sm);text-decoration:none;color:inherit;transition:transform .08s ease,box-shadow .12s ease;}
+a.t:hover{transform:translateY(-3px);box-shadow:var(--lift-lg);}
+a.t:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.t__top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:2px;}
+.t__mark{width:42px;height:42px;border-radius:12px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;flex:none;}
+.t__mark svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.t__skill{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right;}
+.t__name{font:900 16.5px var(--font-ui);}
+.t__tag{font:800 13.5px var(--font-ui);color:var(--ink);opacity:.85;}
+.t__blurb{font-size:12.8px;line-height:1.55;color:var(--muted);font-weight:700;}
+.t__foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line-soft);font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.t__go{color:var(--cink);white-space:nowrap;}
+.note{margin:22px 0 0;font:700 14px/1.6 var(--font-ui);color:var(--muted);max-width:80ch;}
+.note a{color:var(--cink);font-weight:900;}
+
+@media (max-width:900px){
+  .feat{grid-template-columns:1fr;}
+  .feat__art{order:-1;}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:600px){
+  .grid6{grid-template-columns:1fr;}
+  .modes{grid-template-columns:1fr 1fr;}
+  .fig{transform:none;}
+  .fig__cap{display:none;}
+}
+</style>
+</head>
+<body data-app="tools" data-course="anp">
+<div id="site-header"></div>
+<div class="course-nav"></div>
+
+<main id="main" class="xshell anp-app">
+  <nav class="anp-crumb" aria-label="Breadcrumb"><a href="#">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="#">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Tools</span></nav>
+  <div class="hero anp-hero">
+    <div class="eyebrow">Anatomy &amp; Physiology</div>
+    <h1 style="margin-bottom:4px;max-width:22ch;">Seven tools. Start at the lab bench.</h1>
+    <p class="lede" style="margin-top:0;max-width:66ch;">Name structures on real figures, then work the physiology: predict, build, trace, read and calculate. Every tool explains its answers, and what you miss goes into your <a href="#">review queue</a>.</p>
+  </div>
+
+  <section class="feat" aria-labelledby="feat-h">
+    <div class="feat__text">
+      <div class="feat__kick"><span class="dot" aria-hidden="true"></span>Featured tool &middot; Anatomy</div>
+      <h2 id="feat-h">Virtual lab practical</h2>
+      <p class="feat__tag">Real figures with the labels masked. Name what the pin points to, before the bell.</p>
+      <p class="feat__blurb">Identify structures on real figures: explore, study, quiz, or a timed practical. Every structure tells you what it does and which lesson teaches it.</p>
+      <ul class="modes" aria-label="Modes">
+        <li><b><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>Explore</b><span>Labels shown. Tap any structure.</span></li>
+        <li><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M8 10h8M8 14h5"/></svg>Study</b><span>Labels hidden. Reveal at your pace.</span></li>
+        <li class="on"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9a3 3 0 1 1 4 2.8c-.7.3-1 .9-1 1.7V15"/><path d="M12 18.5v.01"/></svg>Quiz</b><span>Name it, or point to it. Scored.</span></li>
+        <li><b><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2M10 3h4"/></svg>Timed</b><span>Bell-ringer stations, 30 s to 2 min each.</span></li>
+      </ul>
+      <div class="feat__row">
+        <a class="feat__cta" href="#">Start the lab practical &rarr;</a>
+        <span class="feat__stats"><b>201</b> figures &middot; <b>83</b> sets &middot; bones to histology</span>
+      </div>
+    </div>
+    <div class="feat__art" aria-hidden="true">
+      <div class="fig">
+        <div class="fig__img">
+          <img src="../figures/os-19-9.jpg" width="1100" height="770" alt="">
+          <span class="lp-mask" style="left:0.00%;top:74.29%;width:16.91%;height:3.25%"></span><span class="lp-mask" style="left:25.45%;top:4.16%;width:6.55%;height:3.12%">1</span><span class="lp-mask" style="left:0.00%;top:11.43%;width:20.64%;height:3.77%">2</span><span class="lp-mask" style="left:76.09%;top:11.43%;width:22.45%;height:3.77%">3</span><span class="lp-mask" style="left:0.00%;top:17.27%;width:24.00%;height:3.90%">4</span><span class="lp-mask" style="left:76.09%;top:19.22%;width:11.64%;height:3.25%">5</span><span class="lp-mask" style="left:0.00%;top:24.42%;width:17.55%;height:3.77%">6</span><span class="lp-mask" style="left:76.09%;top:25.97%;width:21.91%;height:3.90%">7</span><span class="lp-mask" style="left:0.00%;top:30.13%;width:17.55%;height:6.88%">8</span><span class="lp-mask" style="left:76.09%;top:35.06%;width:22.91%;height:3.77%">9</span><span class="lp-mask" style="left:0.00%;top:40.13%;width:13.18%;height:3.77%">10</span><span class="lp-mask" style="left:76.00%;top:43.12%;width:12.82%;height:3.12%">11</span><span class="lp-mask" style="left:0.00%;top:45.97%;width:13.64%;height:3.25%">12</span><span class="lp-mask" style="left:76.09%;top:48.70%;width:17.73%;height:3.77%">13</span><span class="lp-mask" style="left:0.00%;top:50.13%;width:16.09%;height:3.90%">14</span><span class="lp-mask is-on" style="left:76.09%;top:54.68%;width:13.82%;height:3.25%">15</span><span class="lp-mask" style="left:0.00%;top:56.10%;width:15.36%;height:3.77%">16</span><span class="lp-mask" style="left:76.09%;top:60.39%;width:17.55%;height:3.90%">17</span><span class="lp-mask" style="left:0.00%;top:61.69%;width:20.36%;height:3.12%">18</span><span class="lp-mask" style="left:76.18%;top:65.71%;width:23.82%;height:3.77%">19</span><span class="lp-mask" style="left:0.00%;top:67.53%;width:21.18%;height:3.25%">20</span><span class="lp-mask" style="left:76.09%;top:70.78%;width:12.27%;height:3.77%">21</span><span class="lp-mask" style="left:76.09%;top:75.84%;width:13.27%;height:3.77%">22</span><span class="lp-mask" style="left:0.00%;top:80.52%;width:18.91%;height:3.25%">23</span><span class="lp-mask" style="left:76.09%;top:80.78%;width:14.27%;height:3.25%">24</span>
+        </div>
+        <div class="fig__q"><span class="n">15</span><span class="inp">Name the highlighted structure&hellip;</span></div>
+      </div>
+      <p class="fig__cap">Heart internal: frontal section &middot; station 3 of 12</p>
+    </div>
+  </section>
+
+  <div class="more-h">
+    <h2>Six more ways to practise</h2>
+    <p>Physiology, numbers and words.</p>
+  </div>
+  <div class="grid6">
+    <a class="t" href="#"><span class="t__top"><span class="t__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17V7M7 7l-3 3M7 7l3 3M17 7v10M17 17l-3-3M17 17l3-3"/></svg></span><span class="t__skill">Physiology: predict</span></span><span class="t__name">Predict the change</span><span class="t__tag">Up, down or no change. Then the chain that explains it.</span><span class="t__blurb">Something changes in the body: predict what goes up, down or stays the same, then see the chain.</span><span class="t__foot"><span>377 scenarios</span><span class="t__go">Open &rarr;</span></span></a>
+    <a class="t" href="#"><span class="t__top"><span class="t__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4.5h-4.5"/></svg></span><span class="t__skill">Physiology: homeostasis</span></span><span class="t__name">Feedback loop builder</span><span class="t__tag">Stimulus to response, one slot at a time.</span><span class="t__blurb">Build each homeostatic loop from stimulus to response.</span><span class="t__foot"><span>49 loops</span><span class="t__go">Open &rarr;</span></span></a>
+    <a class="t" href="#"><span class="t__top"><span class="t__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="18" r="2"/><path d="M6.5 7.5l4 3M13.5 13.5l4 3"/></svg></span><span class="t__skill">Sequences</span></span><span class="t__name">Pathway tracer</span><span class="t__tag">Put the steps in order. Then find the one that&rsquo;s wrong.</span><span class="t__blurb">Put the steps of a pathway in order, find the missing step, or spot the error.</span><span class="t__foot"><span>208 pathways</span><span class="t__go">Open &rarr;</span></span></a>
+    <a class="t" href="#"><span class="t__top"><span class="t__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v16h16"/><path d="M6.5 15c3-7 6-9 12-9"/></svg></span><span class="t__skill">Physiology: graphs</span></span><span class="t__name">Graph reader</span><span class="t__tag">Read the curve. Name the phase. Shift it.</span><span class="t__blurb">Read values off physiology graphs, name the phases, and predict how curves shift.</span><span class="t__foot"><span>76 graphs</span><span class="t__go">Open &rarr;</span></span></a>
+    <a class="t" href="#"><span class="t__top"><span class="t__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7M8.5 12h2M13.5 12h2M8.5 16h2M13.5 16h2"/></svg></span><span class="t__skill">Quantitative</span></span><span class="t__name">Worked-example calculators</span><span class="t__tag">Every number, every step, every unit.</span><span class="t__blurb">Cardiac output, MAP, flow and resistance, and capillary filtration, every step shown.</span><span class="t__foot"><span>89 calculators</span><span class="t__go">Open &rarr;</span></span></a>
+    <a class="t" href="#"><span class="t__top"><span class="t__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9M4 12h6M4 17h9"/><path d="M15 10l5 2-5 2"/></svg></span><span class="t__skill">Terminology</span></span><span class="t__name">Word root builder</span><span class="t__tag">Split any term into parts you already know.</span><span class="t__blurb">Decode medical terms from their parts, or build a term from its meaning.</span><span class="t__foot"><span>957 terms</span><span class="t__go">Open &rarr;</span></span></a>
+  </div>
+  <p class="note">Every tool records what you answer: missed items go into your <a href="#">review queue</a>, and your accuracy shows on the <a href="#">dashboard</a>. Want cards instead? Try the <a href="#">flashcards</a>.</p>
+</main>
+
+<footer class="anp-foot xshell">
+  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a &ldquo;Report a problem&rdquo; link.</p>
+  <p class="privacy-link"><a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Sources</a> &middot; <a href="#">Figure credits</a></p>
+</footer>
+
+<div class="v-label">Tools &mdash; Version 2: Featured + grid</div>
+
+<script>window.ANP_SECTION = 'tools'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+</body>
+</html>

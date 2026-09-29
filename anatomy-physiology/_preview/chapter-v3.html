@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>The cardiovascular system | Anatomy &amp; Physiology</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+/* Preview label */
+.pv-label{position:fixed;left:12px;bottom:12px;z-index:9999;font:800 11.5px var(--font-ui);
+  background:var(--ink);color:var(--paper);padding:6px 11px;border-radius:999px;opacity:.88;pointer-events:none;}
+@media (max-width:700px){.pv-label{bottom:auto;top:8px;left:50%;transform:translateX(-50%);font-size:10px;padding:4px 9px;}}
+/* A&P accent: coral ink/tint from theme.css body[data-course="anp"] */
+body{--anp-acc:var(--cink,#A33B26);--anp-tint:var(--ctint,#FBE9E4);}
+.chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  font:800 11.5px var(--font-ui);padding:4px 10px;border-radius:999px;background:var(--surface2);color:var(--muted);}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55;}
+.chip.mastered{background:var(--tint-good);color:var(--good-text);}
+.chip.mastered::before{opacity:1;}
+.chip.learning{background:var(--tint-amber);color:var(--amber-text);}
+.chip.learning::before{opacity:1;}
+.chip.started{background:var(--anp-tint);color:var(--anp-acc);}
+.chip.started::before{opacity:1;}
+.btn-sm{display:inline-flex;align-items:center;gap:6px;font:900 13px var(--font-ui);text-decoration:none;
+  padding:8px 14px;border-radius:11px;white-space:nowrap;transition:transform .12s ease,filter .15s ease;}
+.btn-sm:hover{transform:translateY(-1px);}
+.btn-sm.solid{background:var(--navy);color:var(--on-accent);box-shadow:0 4px 12px rgba(31,74,66,.2);}
+.btn-sm.solid:hover{color:var(--on-accent);filter:brightness(1.08);}
+.btn-sm.ghost{background:var(--surface2);color:var(--ink);}
+.btn-sm.ghost:hover{background:var(--hover-tint);color:var(--ink);}
+
+.v3-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;}
+.v3-hero .eyebrow{color:var(--anp-acc);}
+.v3-hero h1{max-width:none;}
+.v3-hero .lede{max-width:60ch;margin-bottom:22px;}
+.v3-hero-acts{display:flex;gap:10px;flex-wrap:wrap;}
+.v3-heart{width:150px;height:150px;border-radius:50%;background:var(--white);color:var(--anp-acc);display:flex;align-items:center;justify-content:center;box-shadow:var(--lift);}
+.v3-heart svg{width:70px;height:70px;}
+.v3-meta{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px;}
+.v3-meta span{font:800 12.5px var(--font-ui);background:var(--white);border-radius:999px;padding:6px 12px;color:var(--ink);}
+.v3-sechead{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
+.v3-sechead h2{margin:0;font-size:24px;}
+.v3-sechead p{margin:0;font:700 13.5px var(--font-ui);color:var(--muted);}
+.v3-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.v3-card{background:var(--white);border-radius:var(--radius-lg);padding:20px 22px;box-shadow:var(--lift);display:flex;flex-direction:column;
+  transition:transform .15s ease,box-shadow .15s ease;}
+.v3-card:hover{transform:translateY(-2px);box-shadow:var(--lift-lg);}
+.v3-cardtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.v3-num{font:900 12px var(--font-mono);color:var(--anp-acc);background:var(--anp-tint);padding:4px 9px;border-radius:8px;}
+.v3-ring{position:relative;width:44px;height:44px;color:var(--anp-acc);}
+.v3-card.mastered .v3-ring{color:var(--good);}
+.v3-card.learning .v3-ring{color:var(--amber);}
+.v3-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:900 10.5px var(--font-ui);color:var(--ink);}
+.v3-card h3{margin:0 0 6px;font-size:17px;line-height:1.3;}
+.v3-card h3 a{color:var(--ink);text-decoration:none;}
+.v3-card h3 a:hover{color:var(--anp-acc);}
+.v3-card p{margin:0 0 16px;font:600 13.5px/1.45 var(--font-ui);color:var(--muted);flex:1;}
+.v3-acts{display:flex;gap:6px;}
+.v3-endcard{grid-column:span 2;border-radius:var(--radius-lg);padding:22px 26px;text-decoration:none;color:var(--ink);
+  border:2px dashed color-mix(in srgb,var(--anp-acc) 45%,transparent);background:var(--anp-tint);display:flex;flex-direction:column;justify-content:center;gap:4px;}
+.v3-endcard:hover{color:var(--ink);border-style:solid;}
+.v3-endcard .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--anp-acc);}
+.v3-endcard b{font:900 20px var(--font-ui);}
+.v3-endcard span{font:600 13.5px var(--font-ui);color:var(--muted);}
+.v3-endcard .go{margin-top:8px;font:900 14px var(--font-ui);color:var(--anp-acc);}
+.v3-band{background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);color:#fff;
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;}
+.v3-band .icon-circle{width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;color:#fff;}
+.v3-band .icon-circle svg{width:60px;height:60px;}
+.v3-band h2{color:#fff;margin:0 0 10px;font-size:clamp(22px,2.8vw,28px);}
+.v3-band p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 22px;max-width:56ch;}
+.v3-band-acts{display:flex;gap:10px;flex-wrap:wrap;}
+.v3-band .btn-w{font:900 14px var(--font-ui);text-decoration:none;padding:12px 20px;border-radius:13px;background:rgba(255,255,255,.14);color:#fff;}
+.v3-band .btn-w:hover{background:rgba(255,255,255,.24);color:#fff;}
+.v3-band .btn-w.primary{background:var(--coral);color:#1B2A26;}
+.v3-band .btn-w.primary:hover{filter:brightness(1.05);background:var(--coral);color:#1B2A26;}
+.v3-band small{display:block;margin-top:14px;font:700 12.5px var(--font-ui);color:var(--muted-on-dark);}
+.v3-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+.v3-tool{background:var(--white);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);display:block;}
+.v3-tool:hover{box-shadow:var(--lift);color:var(--ink);}
+.v3-tool .ic{width:36px;height:36px;border-radius:11px;background:var(--anp-tint);color:var(--anp-acc);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.v3-tool b{display:block;font:900 14.5px var(--font-ui);}
+.v3-tool b small{font:800 11px var(--font-mono);color:var(--muted);margin-left:4px;}
+.v3-tool span{display:block;margin-top:3px;font:600 12.5px/1.4 var(--font-ui);color:var(--muted);}
+@media (max-width:1000px){ .v3-grid{grid-template-columns:repeat(2,minmax(0,1fr));} .v3-tools{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (max-width:1000px){ .v3-endcard{grid-column:span 2;} }
+@media (max-width:640px){
+  .v3-endcard{grid-column:auto;}
+  .v3-grid,.v3-tools{grid-template-columns:minmax(0,1fr);}
+  .v3-hero{grid-template-columns:minmax(0,1fr);}
+  .v3-heart{display:none;}
+  .v3-band{grid-template-columns:minmax(0,1fr);}
+  .v3-band .icon-circle{display:none;}
+}
+</style>
+</head>
+<body data-chapter="cardiovascular">
+<div id="site-header"></div>
+<div class="course-nav"></div>
+<div class="pv-label">Chapter — Version 3: Card grid</div>
+
+<main id="main" class="xshell">
+  <nav class="anp-crumb" aria-label="Breadcrumb"><a href="#">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="#">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The cardiovascular system</span></nav>
+  <div class="xsection xsection-tight">
+    <header class="hero anp-hero v3-hero">
+      <div>
+        <div class="eyebrow">Chapter 19 of 27 · A&amp;P II</div>
+        <h1>The cardiovascular system</h1>
+        <p class="lede">The heart as a pump, the vessels as its plumbing, and the reflexes and hormones that hold blood pressure steady.</p>
+        <div class="v3-meta"><span>16 topics</span><span>2 mastered</span><span>7 questions due</span><span>9 lab image sets</span></div>
+        <div class="v3-hero-acts"><a class="btn-press sm" href="#">Continue: Blood flow through the heart</a><a class="btn-outline" href="#">All chapters</a></div>
+      </div>
+      <div class="v3-heart" aria-hidden="true"><svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0112 6a5.3 5.3 0 019.3 6C19 16.6 12 21 12 21z"/></svg></div>
+    </header>
+  </div>
+  <section class="xsection" aria-labelledby="h-topics">
+    <div class="v3-sechead"><h2 id="h-topics">Topics</h2><p>Each card fills as you answer its questions.</p></div>
+    <div class="v3-grid">
+      <article class="v3-card mastered">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.1</span>
+          <span class="v3-ring" title="Mastered"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="10.05" transform="rotate(-90 22 22)"/></svg><b>92%</b></span>
+        </div>
+        <h3><a href="#">Heart location, coverings, chambers and great vessels</a></h3>
+        <p>Where the heart sits in the mediastinum, its pericardium, four chambers and great vessels.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card mastered">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.2</span>
+          <span class="v3-ring" title="Mastered"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="18.85" transform="rotate(-90 22 22)"/></svg><b>85%</b></span>
+        </div>
+        <h3><a href="#">Heart valves, septa and internal structure</a></h3>
+        <p>Three septa, the fossa ovalis, and the AV and semilunar valves that keep flow one-way.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card learning">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.3</span>
+          <span class="v3-ring" title="Learning"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="50.27" transform="rotate(-90 22 22)"/></svg><b>60%</b></span>
+        </div>
+        <h3><a href="#">Blood flow through the heart and the two circuits</a></h3>
+        <p>The right heart feeds the low-pressure pulmonary circuit; the left drives the systemic one.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card started">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.4</span>
+          <span class="v3-ring" title="Started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/><circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.66" stroke-dashoffset="94.25" transform="rotate(-90 22 22)"/></svg><b>25%</b></span>
+        </div>
+        <h3><a href="#">Cardiac muscle cells and their action potential</a></h3>
+        <p>Branched, striated cells joined by intercalated discs, and the plateau phase.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.5</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">The conduction system and pacemaker cells</a></h3>
+        <p>Autorhythmic cells, the funny current, and the route from SA node to Purkinje fibers.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.6</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">The electrocardiogram</a></h3>
+        <p>What the P wave, QRS complex and T wave record, and how each lead views the heart.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.7</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">The cardiac cycle</a></h3>
+        <p>Filling, contraction, ejection and relaxation, all driven by pressure differences across valves.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.8</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">Structure of blood vessels</a></h3>
+        <p>The three tunics, and how arteries, capillaries and veins differ.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.9</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">The major systemic arteries</a></h3>
+        <p>Every systemic artery branches from the aorta: ascending, arch and descending.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.10</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">The major systemic veins</a></h3>
+        <p>How veins join as they approach the heart, from the jugulars to the venae cavae.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.11</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">Blood pressure, flow and resistance</a></h3>
+        <p>Systolic, diastolic and mean arterial pressure, and how flow depends on pressure and resistance.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.12</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">Cardiac output and its control</a></h3>
+        <p>CO = HR × SV, about 5 L/min at rest, and what raises or lowers each term.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.13</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">Capillary exchange</a></h3>
+        <p>Diffusion and bulk flow across capillary walls, and the pressures that drive filtration.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.14</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">Short-term blood pressure regulation</a></h3>
+        <p>MAP = CO × TPR, so every fast correction works on heart rate, stroke volume or arterioles.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.15</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">Long-term blood pressure regulation</a></h3>
+        <p>Over the long run, blood pressure follows blood volume, which the kidneys control.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <article class="v3-card new">
+        <div class="v3-cardtop">
+          <span class="v3-num">19.16</span>
+          <span class="v3-ring" title="Not started"><svg class="ring" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--track)" stroke-width="4"/></svg><b>—</b></span>
+        </div>
+        <h3><a href="#">Hypertension, heart failure and shock</a></h3>
+        <p>Pressure that stays high, a pump that falls behind, and circulation that fails.</p>
+        <div class="v3-acts"><a class="btn-sm solid" href="#">Lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+      </article>
+      <a class="v3-endcard" href="#"><span class="k">Finished the topics?</span><b>Test the whole chapter</b><span>A mixed quiz from all 16 topics, weakest first.</span><span class="go">Chapter quiz &rarr;</span></a>
+    </div>
+  </section>
+  <section class="xsection">
+    <div class="v3-band">
+      <div class="icon-circle" aria-hidden="true"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0112 6a5.3 5.3 0 019.3 6C19 16.6 12 21 12 21z"/></svg></div>
+      <div>
+        <h2>Practice the cardiovascular system</h2>
+        <p>Mix questions from all 16 topics, sit a timed system exam, or label hearts, vessels and pulse points the way a lab practical asks.</p>
+        <div class="v3-band-acts"><a class="btn-w primary" href="#">Chapter quiz</a><a class="btn-w" href="#">System exam</a><a class="btn-w" href="#">Lab practical</a></div>
+        <small>7 questions from this chapter are due for review.</small>
+      </div>
+    </div>
+  </section>
+  <section class="xsection" aria-labelledby="h-tools">
+    <div class="v3-sechead"><h2 id="h-tools">Tools for this chapter</h2><p>Hands-on ways to see the heart and vessels work.</p></div>
+    <div class="v3-tools"><a class="v3-tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></span><b>Lab practical image sets<small>9</small></b><span>Heart external and internal, valves, coronary vessels, pulse points</span></a><a class="v3-tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><b>Prediction scenarios<small>10</small></b><span>Beta blockers, hemorrhage, exercise, dehydration, heart failure</span></a><a class="v3-tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h8a4 4 0 010 8H9a4 4 0 000 8h8"/></svg></span><b>Pathways<small>4</small></b><span>Blood through the heart, conduction, cardiac cycle, baroreceptor reflex</span></a><a class="v3-tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0114-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 01-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg></span><b>Feedback loops<small>2</small></b><span>Baroreceptor reflex; renin–angiotensin–aldosterone</span></a><a class="v3-tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span><b>Graphs<small>9</small></b><span>Action potentials, ECG, Wiggers diagram, pressure–volume loop, Frank–Starling</span></a><a class="v3-tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8"/></svg></span><b>Calculators<small>5</small></b><span>Cardiac output, ejection fraction, MAP, flow and resistance, NFP</span></a><a class="v3-tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18M9 4v16"/></svg></span><b>Comparison tables<small>8</small></b><span>Arteries vs veins, AV vs semilunar valves, types of shock</span></a>
+      <a class="v3-tool" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0112 6a5.3 5.3 0 019.3 6C19 16.6 12 21 12 21z"/></svg></span><b>Flashcards</b><span>Key terms and structures from this chapter.</span></a>
+    </div>
+  </section>
+</main>
+<footer class="anp-foot xshell">
+  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a “Report a problem” link.</p>
+  <p class="privacy-link"><a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Sources</a> &middot; <a href="#">Figure credits</a></p>
+</footer>
+<script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+</body>
+</html>

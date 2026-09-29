@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>The cardiovascular system | Anatomy &amp; Physiology</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/anp.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+/* Preview label */
+.pv-label{position:fixed;left:12px;bottom:12px;z-index:9999;font:800 11.5px var(--font-ui);
+  background:var(--ink);color:var(--paper);padding:6px 11px;border-radius:999px;opacity:.88;pointer-events:none;}
+@media (max-width:700px){.pv-label{bottom:auto;top:8px;left:50%;transform:translateX(-50%);font-size:10px;padding:4px 9px;}}
+/* A&P accent: coral ink/tint from theme.css body[data-course="anp"] */
+body{--anp-acc:var(--cink,#A33B26);--anp-tint:var(--ctint,#FBE9E4);}
+.chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  font:800 11.5px var(--font-ui);padding:4px 10px;border-radius:999px;background:var(--surface2);color:var(--muted);}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55;}
+.chip.mastered{background:var(--tint-good);color:var(--good-text);}
+.chip.mastered::before{opacity:1;}
+.chip.learning{background:var(--tint-amber);color:var(--amber-text);}
+.chip.learning::before{opacity:1;}
+.chip.started{background:var(--anp-tint);color:var(--anp-acc);}
+.chip.started::before{opacity:1;}
+.btn-sm{display:inline-flex;align-items:center;gap:6px;font:900 13px var(--font-ui);text-decoration:none;
+  padding:8px 14px;border-radius:11px;white-space:nowrap;transition:transform .12s ease,filter .15s ease;}
+.btn-sm:hover{transform:translateY(-1px);}
+.btn-sm.solid{background:var(--navy);color:var(--on-accent);box-shadow:0 4px 12px rgba(31,74,66,.2);}
+.btn-sm.solid:hover{color:var(--on-accent);filter:brightness(1.08);}
+.btn-sm.ghost{background:var(--surface2);color:var(--ink);}
+.btn-sm.ghost:hover{background:var(--hover-tint);color:var(--ink);}
+
+.v2-wrap{padding-top:6px;}
+.v2-hero{background:var(--anp-tint);border-radius:var(--radius-lg);padding:28px clamp(22px,4vw,40px);
+  display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:center;}
+.v2-hero .eyebrow{color:var(--anp-acc);margin-bottom:10px;}
+.v2-hero h1{margin:0 0 10px;font-size:clamp(28px,4vw,40px);}
+.v2-hero .lede{margin:0 0 18px;max-width:52ch;font-weight:600;color:var(--muted);}
+.v2-hero-acts{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.v2-link{font:900 14px var(--font-ui);color:var(--ink);text-decoration:none;}
+.v2-link:hover{color:var(--anp-acc);}
+.v2-stats{background:var(--white);border-radius:var(--radius-lg);padding:20px 22px;box-shadow:var(--lift-lg);}
+.v2-stats .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;}
+.v2-statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;}
+.v2-stat b{display:block;font:900 26px var(--font-ui);color:var(--ink);line-height:1.1;}
+.v2-stat span{font:800 11.5px var(--font-ui);color:var(--muted);}
+.v2-stat + .v2-stat{border-left:1px solid var(--line-soft);}
+.v2-bar{margin-top:16px;}
+.v2-bar .tb-progress-row{margin-bottom:6px;}
+.v2-bar .fill{height:100%;background:var(--anp-acc);border-radius:99px;}
+.v2-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(24px,3.5vw,44px);align-items:start;margin-top:30px;}
+.v2-h{font:900 20px var(--font-ui);margin:0 0 4px;}
+.v2-sub{margin:0 0 20px;font:700 13.5px var(--font-ui);color:var(--muted);}
+.v2-path{list-style:none;margin:0;padding:0;position:relative;}
+.v2-step{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding-bottom:14px;}
+.v2-step::before{content:"";position:absolute;left:19px;top:40px;bottom:-2px;width:3px;border-radius:3px;background:var(--line);}
+.v2-step:last-child::before{display:none;}
+.v2-step.mastered::before,.v2-step.learning::before{background:var(--anp-acc);opacity:.55;}
+.v2-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font:900 14px var(--font-mono);background:var(--white);color:var(--muted);box-shadow:var(--lift-sm),inset 0 0 0 3px var(--line);position:relative;z-index:1;}
+.v2-step.mastered .v2-dot{background:var(--anp-acc);color:var(--white);box-shadow:none;}
+.v2-step.learning .v2-dot,.v2-step.started .v2-dot{color:var(--anp-acc);box-shadow:var(--lift-sm),inset 0 0 0 3px var(--anp-acc);}
+.v2-card{background:var(--white);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--lift-sm);}
+.v2-card.next{box-shadow:var(--lift-lg),inset 0 0 0 2px var(--anp-acc);}
+.v2-up{margin:0 0 4px;font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--anp-acc);}
+.v2-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;}
+.v2-title{font:900 16px var(--font-ui);color:var(--ink);text-decoration:none;}
+.v2-title:hover{color:var(--anp-acc);}
+.v2-sum{margin:4px 0 10px;font:600 13.5px/1.45 var(--font-ui);color:var(--muted);}
+.v2-acts{display:flex;gap:6px;flex-wrap:wrap;}
+.v2-rail{position:sticky;top:calc(var(--site-header-h,112px) + 16px);display:flex;flex-direction:column;gap:16px;}
+.v2-box{background:var(--white);border-radius:var(--radius-lg);padding:20px 22px;box-shadow:var(--lift);}
+.v2-box .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;}
+.v2-box .btn-press{display:block;text-align:center;margin-bottom:8px;}
+.v2-box .btn-outline{display:block;width:100%;box-sizing:border-box;padding:10px 16px;font-size:13.5px;}
+.v2-box .note{margin:10px 0 0;font:700 12.5px var(--font-ui);color:var(--muted);}
+.v2-tools{list-style:none;margin:0;padding:0;}
+.v2-tools li + li{border-top:1px solid var(--line-soft);}
+.v2-tools a{display:flex;align-items:center;gap:10px;padding:9px 0;text-decoration:none;color:var(--ink);font:800 13.5px var(--font-ui);}
+.v2-tools a:hover{color:var(--anp-acc);}
+.v2-tools .ic{width:30px;height:30px;border-radius:9px;background:var(--anp-tint);color:var(--anp-acc);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.v2-tools .ic svg{width:16px;height:16px;}
+.v2-tools small{margin-left:auto;font:800 11px var(--font-mono);color:var(--muted);}
+.v2-concepts{display:flex;flex-direction:column;gap:10px;}
+.v2-concepts a{display:block;text-decoration:none;padding:10px 12px;border-radius:12px;background:var(--surface2);}
+.v2-concepts a:hover{background:var(--hover-tint);}
+.v2-concepts b{display:block;font:900 13.5px var(--font-ui);color:var(--ink);}
+.v2-concepts span{font:600 12.5px/1.4 var(--font-ui);color:var(--muted);}
+@media (max-width:960px){
+  .v2-hero,.v2-grid{grid-template-columns:minmax(0,1fr);}
+  .v2-rail{position:static;}
+}
+@media (max-width:520px){
+  .v2-top{flex-direction:column;gap:6px;}
+  .v2-step{grid-template-columns:32px minmax(0,1fr);gap:10px;}
+  .v2-dot{width:32px;height:32px;font-size:12px;}
+  .v2-step::before{left:15px;top:32px;}
+}
+</style>
+</head>
+<body data-chapter="cardiovascular">
+<div id="site-header"></div>
+<div class="course-nav"></div>
+<div class="pv-label">Chapter — Version 2: Path + rail</div>
+
+<main id="main" class="xshell v2-wrap">
+  <nav class="anp-crumb" aria-label="Breadcrumb"><a href="#">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="#">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The cardiovascular system</span></nav>
+  <header class="v2-hero">
+    <div>
+      <div class="eyebrow">Chapter 19 of 27 · A&amp;P II</div>
+      <h1>The cardiovascular system</h1>
+      <p class="lede">From where the heart sits in the chest to hypertension, heart failure and shock. Work down the path, or start anywhere: nothing is locked.</p>
+      <div class="v2-hero-acts"><a class="btn-press sm" href="#">Continue: Blood flow through the heart</a><a class="v2-link" href="#">Chapter quiz &rarr;</a></div>
+    </div>
+    <aside class="v2-stats" aria-label="Chapter progress">
+      <p class="k">Your chapter</p>
+      <div class="v2-statrow">
+        <div class="v2-stat"><b>16</b><span>topics</span></div>
+        <div class="v2-stat"><b>2</b><span>mastered</span></div>
+        <div class="v2-stat"><b>7</b><span>due today</span></div>
+      </div>
+      <div class="v2-bar">
+        <div class="tb-progress-row"><span>Chapter mastery</span><span>17%</span></div>
+        <div class="tb-progress-track"><div class="fill" style="width:17%"></div></div>
+      </div>
+    </aside>
+  </header>
+  <div class="v2-grid">
+    <section aria-labelledby="h-path">
+      <h2 class="v2-h" id="h-path">The path through this chapter</h2>
+      <p class="v2-sub">Each topic leans on the one before. Mastery fills in as you answer questions.</p>
+      <ol class="v2-path">
+      <li class="v2-step mastered">
+        <span class="v2-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Heart location, coverings, chambers and great vessels</a>
+            <span class="chip mastered">Mastered · 92%</span>
+          </div>
+          <p class="v2-sum">Where the heart sits in the mediastinum, its pericardium, four chambers and great vessels.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Review lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step mastered">
+        <span class="v2-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Heart valves, septa and internal structure</a>
+            <span class="chip mastered">Mastered · 85%</span>
+          </div>
+          <p class="v2-sum">Three septa, the fossa ovalis, and the AV and semilunar valves that keep flow one-way.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Review lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step learning">
+        <span class="v2-dot">3</span>
+        <div class="v2-card next">
+          <p class="v2-up">Up next</p>
+          <div class="v2-top">
+            <a class="v2-title" href="#">Blood flow through the heart and the two circuits</a>
+            <span class="chip learning">Learning · 60%</span>
+          </div>
+          <p class="v2-sum">The right heart feeds the low-pressure pulmonary circuit; the left drives the systemic one.</p>
+          <div class="v2-acts"><a class="btn-sm solid" href="#">Continue lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step started">
+        <span class="v2-dot">4</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Cardiac muscle cells and their action potential</a>
+            <span class="chip started">Started · 25%</span>
+          </div>
+          <p class="v2-sum">Branched, striated cells joined by intercalated discs, and the plateau phase.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Continue lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">5</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">The conduction system and pacemaker cells</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">Autorhythmic cells, the funny current, and the route from SA node to Purkinje fibers.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">6</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">The electrocardiogram</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">What the P wave, QRS complex and T wave record, and how each lead views the heart.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">7</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">The cardiac cycle</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">Filling, contraction, ejection and relaxation, all driven by pressure differences across valves.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">8</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Structure of blood vessels</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">The three tunics, and how arteries, capillaries and veins differ.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">9</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">The major systemic arteries</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">Every systemic artery branches from the aorta: ascending, arch and descending.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">10</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">The major systemic veins</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">How veins join as they approach the heart, from the jugulars to the venae cavae.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">11</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Blood pressure, flow and resistance</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">Systolic, diastolic and mean arterial pressure, and how flow depends on pressure and resistance.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">12</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Cardiac output and its control</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">CO = HR × SV, about 5 L/min at rest, and what raises or lowers each term.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">13</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Capillary exchange</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">Diffusion and bulk flow across capillary walls, and the pressures that drive filtration.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">14</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Short-term blood pressure regulation</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">MAP = CO × TPR, so every fast correction works on heart rate, stroke volume or arterioles.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">15</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Long-term blood pressure regulation</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">Over the long run, blood pressure follows blood volume, which the kidneys control.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      <li class="v2-step new">
+        <span class="v2-dot">16</span>
+        <div class="v2-card">
+          
+          <div class="v2-top">
+            <a class="v2-title" href="#">Hypertension, heart failure and shock</a>
+            <span class="chip new">Not started</span>
+          </div>
+          <p class="v2-sum">Pressure that stays high, a pump that falls behind, and circulation that fails.</p>
+          <div class="v2-acts"><a class="btn-sm ghost" href="#">Start lesson</a><a class="btn-sm ghost" href="#">Notes</a></div>
+        </div>
+      </li>
+      </ol>
+    </section>
+    <aside class="v2-rail">
+      <div class="v2-box">
+        <p class="k">Practice this chapter</p>
+        <a class="btn-press sm" href="#">Chapter quiz</a>
+        <a class="btn-outline" href="#">System exam</a>
+        <p class="note">7 questions from this chapter are due for review.</p>
+      </div>
+      <div class="v2-box">
+        <p class="k">Tools for this chapter</p>
+        <ul class="v2-tools"><li><a href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></span>Lab practical image sets<small>9</small></a></li><li><a href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>Prediction scenarios<small>10</small></a></li><li><a href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h8a4 4 0 010 8H9a4 4 0 000 8h8"/></svg></span>Pathways<small>4</small></a></li><li><a href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0114-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 01-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg></span>Feedback loops<small>2</small></a></li><li><a href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span>Graphs<small>9</small></a></li><li><a href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8"/></svg></span>Calculators<small>5</small></a></li><li><a href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18M9 4v16"/></svg></span>Comparison tables<small>8</small></a></li></ul>
+      </div>
+      <div class="v2-box">
+        <p class="k">Core concepts here</p>
+        <div class="v2-concepts"><a href="#"><b>Flow down gradients</b><span>Blood moves from high to low pressure, at a rate set by resistance.</span></a><a href="#"><b>Homeostasis</b><span>The baroreceptor reflex holds mean arterial pressure near its set point.</span></a><a href="#"><b>Structure and function</b><span>Thick ventricle walls, one-way valves, elastic arteries.</span></a><a href="#"><b>Interdependence</b><span>Kidneys, nerves and hormones all adjust blood pressure.</span></a></div>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer class="anp-foot xshell">
+  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a “Report a problem” link.</p>
+  <p class="privacy-link"><a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Sources</a> &middot; <a href="#">Figure credits</a></p>
+</footer>
+<script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
+<script src="../assets/anp-curriculum.js" defer></script>
+<script src="../assets/anp-core.js" defer></script>
+<script src="../assets/anp-nav.js" defer></script>
+</body>
+</html>
