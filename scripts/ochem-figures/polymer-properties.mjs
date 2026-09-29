@@ -108,7 +108,7 @@ FIGURES.push({
   id: 'tg-and-tm',
   section: 'polymer-properties',
   anchor: '<h3>Two transition temperatures, not one</h3>',
-  viewBox: '0 0 760 386',
+  viewBox: '0 0 760 352',
   alt: TG_ALT,
   build() {
     let s = '';
@@ -127,22 +127,22 @@ FIGURES.push({
 
     /* Amorphous: one cliff, at Tg, and then it flows. */
     s += `<path class="fg-bond-hi" fill="none" d="M110 96 L256 100 C276 102 272 212 300 216 L392 232 C424 238 432 290 460 294"></path>`;
-    s += text(118, 84, 'amorphous — polystyrene', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += text(118, 84, 'amorphous — polystyrene', { cls: 'fg-tag', anchor: 'start' });
     s += text(262, 212, 'stiffness falls about', { cls: 'fg-sm', anchor: 'end' });
     s += text(262, 226, 'a thousandfold at once', { cls: 'fg-sm', anchor: 'end' });
 
     /* Semicrystalline: a step at Tg, a long plateau, a cliff at Tm. */
     s += `<path class="fg-bond" fill="none" d="M110 130 L258 134 C278 136 276 168 300 172 L556 184 C580 188 584 290 606 294"></path>`;
-    s += text(310, 140, 'semicrystalline — HDPE', { cls: 'fg-sm', anchor: 'start' });
+    s += text(310, 140, 'semicrystalline — HDPE', { cls: 'fg-lbl', anchor: 'start' });
     s += text(310, 156, 'its crystalline regions still hold it', { cls: 'fg-sm', anchor: 'start' });
 
     s += text(180, Y1 + 24, 'glassy', { cls: 'fg-tag' });
     s += text(430, Y1 + 20, 'rubbery if amorphous,', { cls: 'fg-tag' });
     s += text(430, Y1 + 36, 'tough if semicrystalline', { cls: 'fg-tag' });
-    s += text(648, Y1 + 24, 'flows or melts', { cls: 'fg-tag' });
+    s += text(470, Y1 + 56, '', { cls: 'fg-tag' }).replace(/<text[^>]*><\/text>/, '');
+    s += text(606, Y1 + 24, 'melts', { cls: 'fg-tag' });
+    s += text(470, Y1 - 10, 'flows', { cls: 'fg-tag' });
 
-    s += rule(24, 354, 736, 354);
-    s += text(380, 376, 'How much each transition matters depends on how crystalline the sample is.', { cls: 'fg-lbl' });
     return s;
   },
   caption: 'The amorphous polymer softens all at once at T<sub>g</sub>. The semicrystalline one barely notices T<sub>g</sub> and gives way at T<sub>m</sub>. The axis is schematic: the two curves share one T<sub>g</sub> line so their shapes can be compared, but the real glass transitions of polystyrene and HDPE are about 220&nbsp;&deg;C apart.',
@@ -309,8 +309,8 @@ FIGURES.push({
     s += text(224, (S1.y + S2.y) / 2 + 4, 'S–S bridge', { cls: 'fg-tag', anchor: 'start' });
 
     // The kept double bonds.
-    s += text(214, 60, 'C=C kept from', { cls: 'fg-tag-good', anchor: 'start' });
-    s += text(214, 74, '1,4-addition', { cls: 'fg-tag-good', anchor: 'start' });
+    s += text(214, 60, 'a C=C in every', { cls: 'fg-tag-good', anchor: 'start' });
+    s += text(214, 74, 'repeat unit', { cls: 'fg-tag-good', anchor: 'start' });
     s += `<line class="fg-dash" x1="210" y1="68" x2="${(top.C2.x + top.C3.x) / 2 + 4}" y2="${top.C3.y - 8}"></line>`;
     // The allylic carbons that carry the bridge.
     s += text(176, 172, 'allylic carbon:', { cls: 'fg-tag', anchor: 'end' });
@@ -342,7 +342,7 @@ FIGURES.push({
   id: 'crosslink-dial',
   section: 'polymer-properties',
   anchor: '<h3>Cross-linking as a dial</h3>',
-  viewBox: '0 0 760 340',
+  viewBox: '0 0 760 262',
   alt: DIAL_ALT,
   build() {
     let s = '';
@@ -368,12 +368,9 @@ FIGURES.push({
        [52, 1, 2], [98, 1, 2], [144, 1, 2],
        [40, 2, 3], [86, 2, 3], [132, 2, 3], [178, 2, 3]],
       'hard and brittle', 'nothing can move: ebonite');
-    s += text(380, 284, 'Each highlighted bridge is a short run of sulfur atoms, –S–S–, tying one chain to the next.', { cls: 'fg-lbl' });
-    s += rule(24, 302, 736, 302);
-    s += text(380, 326, 'One variable, how much sulfur, and three materials come out of it.', { cls: 'fg-lbl' });
     return s;
   },
-  caption: 'The chains and the chemistry are the same in all three panels. Only the number of bridges changes.',
+  caption: 'Each highlighted bar is a sulfur bridge. The chains are the same in all three panels; only the number of bridges changes.',
 });
 
 FIGURES.push({
