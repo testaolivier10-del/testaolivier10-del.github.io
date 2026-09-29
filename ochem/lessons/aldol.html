@@ -177,10 +177,14 @@ document.addEventListener('DOMContentLoaded', function(){
             { key: 'attack', label: 'The enolate\'s carbon attacks a second carbonyl, giving a tetrahedral alkoxide' },
             { key: 'proton', label: 'Water protonates the alkoxide, giving the beta-hydroxy carbonyl and hydroxide back' }
           ];
+          var shown = (window.OchemShuffle && window.OchemShuffle.apply)
+            ? (function(){ var sh = window.OchemShuffle.apply(stages.map(function(x){ return x.key; }), 'aldol:step2');
+                           return sh.options.map(function(k){ return stages.filter(function(x){ return x.key === k; })[0]; }); })()
+            : stages;
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the three steps of the aldol reaction in order.</h2>' +
-            '<div class="choice-row" style="flex-direction:column;">' + stages.map(function(s){
+            '<div class="choice-row" style="flex-direction:column;">' + shown.map(function(s){
               return '<button class="choice-btn" data-v="' + s.key + '">' + s.label + '</button>';
             }).join('') + '</div>' +
             '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Correct clicks: 0 / 3</div>' +
@@ -235,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Conjugation pays for the dehydration.',
-        bodyHtml: '<p class="step-body">The product is an <b>enone</b>, also called an &alpha;,&beta;-unsaturated carbonyl: its C=C joins the alpha and beta carbons, right beside the C=O.</p><p class="step-body">The C=C and C=O pi systems are conjugated, so the enone is more stable than the beta-hydroxy carbonyl it came from. That stability is what drives the dehydration forward, and heat gets it there.</p><p class="step-body">Addition followed by dehydration is the <b>aldol condensation</b>. A condensation joins two molecules and expels a small one, here water. To stop at the beta-hydroxy carbonyl instead, keep the reaction cold and brief.</p><p class="step-body" style="margin-bottom:0;">For a ketone, the addition step alone is uphill. So ketone aldols are usually heated all the way to the enone. The dehydration is strongly downhill, so it pulls the addition along.</p>'
+        bodyHtml: '<p class="step-body">The product is an <b>enone</b>, also called an &alpha;,&beta;-unsaturated carbonyl: its C=C joins the alpha and beta carbons, right beside the C=O.</p><p class="step-body">The C=C and C=O pi systems are conjugated, so the enone is more stable than the beta-hydroxy carbonyl it came from. That stability drives the dehydration. Heat supplies the energy to get over the barrier.</p><p class="step-body">Addition followed by dehydration is the <b>aldol condensation</b>. A condensation joins two molecules and expels a small one, here water. To stop at the beta-hydroxy carbonyl instead, keep the reaction cold and brief.</p><p class="step-body" style="margin-bottom:0;">For a ketone, the addition alone is uphill. Heating it on to the enone fixes that: the dehydration is strongly downhill and pulls the addition along.</p>'
       },
       {
         type: 'mcq',
