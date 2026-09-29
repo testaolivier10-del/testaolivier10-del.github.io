@@ -287,7 +287,7 @@ function methoxy1(ox, oy, form) {
     s += sk(c1, c2) + ringDouble(c2, c3, inward(c2, c3)) + sk(c3, c4);
     s += lpAt(o, -90) + chg(o, -15, -12, '+');
     s += lpAt(c4, -40, 14) + chg(c4, 16, 14, '−');
-    s += tag(c4.x, c4.y - 34, 'δ− at C4', { cls: 'fg-tag-good' });
+    s += tag(c4.x + 2, c4.y + 48, 'δ− at C4', { cls: 'fg-tag-good' });
   }
   return s;
 }
@@ -312,7 +312,7 @@ function methoxy2(ox, oy, form) {
     s += sk(c1, c2) + sk(c2, c3) + ringDouble(c3, c4, inward(c3, c4));
     s += lpAt(o, 180) + chg(o, -14, -14, '+');
     s += lpAt(c1, 200, 14) + chg(c1, -6, 22, '−');
-    s += tag(c1.x - 26, c1.y - 12, 'δ− at C1', { cls: 'fg-tag-good', anchor: 'end' });
+    s += tag(c1.x - 4, c1.y + 44, 'δ− at C1', { cls: 'fg-tag-good' });
   }
   return s;
 }
@@ -333,29 +333,32 @@ function propenal(ox, oy, form) {
     s += sk(a, b) + ringDouble(b, c, P((b.x + c.x) / 2, oy + 30)) + bond(c, o, { rFrom: 0, rTo: 12 });
     s += lpAt(o, -100) + lpAt(o, 10) + lpAt(o, 80);
     s += chg(o, 16, -14, '−');
-    s += chg(a, -4, -12, '+');
+    s += chg(a, -10, 0, '+');
     s += tag(a.x - 14, a.y + 22, 'δ+ at the CH₂', { cls: 'fg-tag-good', anchor: 'start' });
   }
   return s;
 }
-const reso = (x, y) => text(x, y, '⟷', { cls: 'fg-lbl' });
+/* A resonance arrow: one line, a head at each end. */
+const reso = (x, y) => `<line class="fg-arrow" x1="${x - 16}" y1="${y}" x2="${x + 16}" y2="${y}"></line>` +
+  `<path class="fg-head" d="M${x - 24} ${y} L${x - 15} ${y - 5} L${x - 15} ${y + 5} Z"></path>` +
+  `<path class="fg-head" d="M${x + 24} ${y} L${x + 15} ${y - 5} L${x + 15} ${y + 5} Z"></path>`;
 
 FIGURES.push({
   id: 'da-polarize',
   section: 'diels-alder',
   anchor: 'the two atoms with the biggest appetite for each other make one of the new bonds.</p>',
   alt: 'Three molecules, each shown as two resonance forms. Top: 1-methoxybuta-1,3-diene. Curved arrows move an oxygen lone pair into the O–C1 bond, the C1=C2 pi bond into C2–C3, and the C3=C4 pi bond onto C4. The second form has O plus doubly bonded to C1 and a negative charge with a lone pair on C4, labeled delta minus at C4. Middle: propenal. Curved arrows move the C=C pi bond toward the carbonyl carbon and the C=O pi bond onto oxygen. The second form has a positive charge on the CH2 carbon and O minus, labeled delta plus at the CH2. Bottom: 2-methoxybuta-1,3-diene. Curved arrows move an oxygen lone pair into the O–C2 bond and the C1=C2 pi bond onto C1. The second form has O plus doubly bonded to C2 and a negative charge on C1, labeled delta minus at C1.',
-  viewBox: '0 0 760 420',
+  viewBox: '0 0 760 470',
   build() {
     let s = '';
     s += tag(20, 22, '1-methoxybuta-1,3-diene', { anchor: 'start' });
-    s += methoxy1(56, 100, 0) + reso(378, 94) + methoxy1(440, 100, 1);
-    s += rule(20, 140, 740, 140);
-    s += tag(20, 164, 'propenal', { anchor: 'start' });
-    s += propenal(120, 236, 0) + reso(378, 230) + propenal(470, 236, 1);
-    s += rule(20, 278, 740, 278);
-    s += tag(20, 302, '2-methoxybuta-1,3-diene', { anchor: 'start' });
-    s += methoxy2(120, 360, 0) + reso(378, 360) + methoxy2(500, 360, 1);
+    s += methoxy1(56, 90, 0) + reso(378, 80) + methoxy1(440, 90, 1);
+    s += rule(20, 150, 740, 150);
+    s += tag(20, 174, 'propenal', { anchor: 'start' });
+    s += propenal(120, 236, 0) + reso(378, 226) + propenal(470, 236, 1);
+    s += rule(20, 286, 740, 286);
+    s += tag(20, 310, '2-methoxybuta-1,3-diene', { anchor: 'start' });
+    s += methoxy2(150, 390, 0) + reso(378, 396) + methoxy2(530, 390, 1);
     return s;
   },
   caption: 'Each right-hand form is a minor contributor. It is drawn only to show which atom carries a little extra charge in the real molecule.',
@@ -609,53 +612,32 @@ FIGURES.push({
   id: 'da-endo-adduct',
   section: 'diels-alder',
   anchor: '<!-- endo-adduct-figure -->',
-  alt: 'Left: cyclopentadiene above maleic anhydride, the anhydride ring pointing up under the diene, which is the endo arrangement. Right: the product drawn in 3D as a bicyclic cage. A CH2 bridge arches over the top. The two-carbon bridge at the back carries the new C=C. The two carbons at the front carry hydrogens pointing outward and the anhydride ring hanging down, away from the CH2 bridge and on the same side as the C=C bridge. The two bonds made in the reaction, from each bridgehead to the front carbons, are highlighted.',
-  viewBox: '0 0 760 290',
+  alt: 'The endo adduct of cyclopentadiene and maleic anhydride drawn in 3D as a bicyclic cage. A CH2 bridge arches over the top. The two-carbon bridge at the back carries the new C=C. The two carbons at the front each carry a hydrogen pointing outward and share the anhydride ring, which hangs down, away from the CH2 bridge. The two bonds made in the reaction, from each bridgehead to the front carbons, are highlighted.',
+  viewBox: '0 0 460 300',
   build() {
     let s = '';
-    // ---- the partners, endo: anhydride ring pointing up under the diene
-    const { s: cp } = cyclopentadiene(150, 78, 34);
-    s += cp + tag(150, 32, 'CH₂', { cls: 'fg-tag-mut' });
-    s += tag(40, 86, 'cyclopentadiene', { anchor: 'start', cls: 'fg-tag-mut' });
-    // maleic anhydride, C=C at the bottom, ring pointing up
-    const ma = [0, 1, 2, 3, 4].map((i) => off(P(150, 196), -90 + i * 72, 32));
-    const mac = P(150, 196);
-    // ma[0] top = O; ma[1], ma[4] carbonyl carbons; ma[2]-ma[3] the C=C
-    s += bond(ma[0], ma[1], { rFrom: 12, rTo: 0 }) + bond(ma[4], ma[0], { rFrom: 0, rTo: 12 });
-    s += sk(ma[1], ma[2]) + ringDouble(ma[2], ma[3], mac) + sk(ma[3], ma[4]);
-    s += atom(ma[0].x, ma[0].y, 'O', { r: 12 });
-    for (const [c, deg] of [[ma[1], 20], [ma[4], 160]]) {
-      const o = off(c, deg, 30);
-      s += bond(c, o, { order: 2, rFrom: 0, rTo: 12 }) + atom(o.x, o.y, 'O', { r: 12 });
-    }
-    s += tag(150, 258, 'maleic anhydride', { cls: 'fg-tag-mut' });
-    s += tag(150, 276, 'ring points up, under the diene', { cls: 'fg-tag-good' });
-
-    s += right(150, 300, 360);
-    s += tag(330, 138, 'endo', { cls: 'fg-tag' });
-
-    // ---- the adduct
-    const n = norb(P(560, 120), 1.9);
+    const n = norb(P(210, 124), 1.9);
     s += sk(n.n1, n.n2, 'fg-bond-hi') + sk(n.n2, n.n3) + sk(n.n3, n.n4, 'fg-bond-hi');
-    s += sk(n.n4, n.n5) + ringDouble(n.n5, n.n6, P(560, 140)) + sk(n.n6, n.n1);
+    s += sk(n.n4, n.n5) + ringDouble(n.n5, n.n6, P(210, 144)) + sk(n.n6, n.n1);
     s += sk(n.n1, n.n7) + sk(n.n7, n.n4);
     s += tag(n.n7.x, n.n7.y - 12, 'CH₂ bridge', { cls: 'fg-tag-mut' });
-    s += tag(560, n.n5.y - 12, 'C=C bridge', { cls: 'fg-tag-mut' });
+    s += tag(n.n4.x + 12, n.n5.y - 4, 'C=C bridge', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += `<line class="fg-rule" x1="${n.n4.x + 10}" y1="${n.n5.y - 8}" x2="${n.n5.x + 22}" y2="${n.n5.y + 2}"></line>`;
     // exo hydrogens, pointing outward
     s += sub(n.n2, 185, 'H', { len: 28, r: 9 }) + sub(n.n3, -5, 'H', { len: 28, r: 9 });
     // the anhydride, hanging down (endo)
-    const ca = P(n.n2.x + 4, n.n2.y + 46), cb = P(n.n3.x - 4, n.n3.y + 46), ob = P(560, n.n2.y + 80);
+    const ca = P(n.n2.x + 4, n.n2.y + 46), cb = P(n.n3.x - 4, n.n3.y + 46), ob = P(210, n.n2.y + 80);
     s += sk(n.n2, ca) + sk(n.n3, cb);
     s += bond(ca, ob, { rFrom: 0, rTo: 12 }) + bond(cb, ob, { rFrom: 0, rTo: 12 }) + atom(ob.x, ob.y, 'O', { r: 12 });
     const oa = off(ca, 200, 30), oc = off(cb, -20, 30);
     s += bond(ca, oa, { order: 2, rFrom: 0, rTo: 12 }) + atom(oa.x, oa.y, 'O', { r: 12 });
     s += bond(cb, oc, { order: 2, rFrom: 0, rTo: 12 }) + atom(oc.x, oc.y, 'O', { r: 12 });
-    s += tag(690, n.n2.y + 58, 'anhydride down:', { cls: 'fg-tag-good', anchor: 'start' });
-    s += tag(690, n.n2.y + 76, 'away from CH₂', { cls: 'fg-tag-good', anchor: 'start' });
-    s += tag(560, 282, 'highlighted: the two new σ bonds', { cls: 'fg-tag-mut' });
+    s += tag(300, n.n2.y + 60, 'anhydride points down,', { cls: 'fg-tag-good', anchor: 'start' });
+    s += tag(300, n.n2.y + 78, 'away from the CH₂ bridge', { cls: 'fg-tag-good', anchor: 'start' });
+    s += tag(210, 290, 'highlighted: the two bonds the reaction made', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Left: the endo arrangement, with the anhydride ring under the diene. Right: the same atoms in the product. The anhydride ends up on the far side from the CH₂ bridge, which is what endo means in a bicyclic product.',
+  caption: 'The endo adduct of cyclopentadiene and maleic anhydride. The anhydride sits on the far side from the CH₂ bridge, which is what endo means in a bicyclic product.',
 });
 
 /* =====================================================================
@@ -664,26 +646,24 @@ FIGURES.push({
 function retroRow(ox, oy) {
   let s = '';
   // the target, numbered as named
-  const T = hexFlat(ox + 70, oy + 80, 38);
+  const T = hexFlat(ox + 72, oy + 84, 38);
   s += sk(T.c1, T.c2) + ringDouble(T.c2, T.c3, T.ctr, { cls: 'fg-bond-hi' }) + sk(T.c3, T.c4) + sk(T.d2, T.d1);
   s += sk(T.c4, T.d2, 'fg-dash-hi') + sk(T.d1, T.c1, 'fg-dash-hi');
-  s += sub(T.c3, OUT.c3, 'CH₃', { len: 32, r: 16 });
-  s += sub(T.d1, OUT.d1, 'CHO', { len: 32, r: 17 });
-  s += numLbl(T.d1, 30, '1', 14) + numLbl(T.c1, 180, '2', 13) + numLbl(T.c2, 210, '3', 14);
-  s += numLbl(T.c3, 250, '4', 16) + numLbl(T.c4, 0, '5', 13) + numLbl(T.d2, 60, '6', 14);
-  s += tag(ox + 70, oy + 10, 'target');
-  s += tag(ox + 70, oy + 156, 'cut the dashed bonds', { cls: 'fg-tag-warn' });
+  s += sub(T.c3, OUT.c3, 'CH₃', { len: 28, r: 14 });
+  s += sub(T.d1, OUT.d1, 'CHO', { len: 28, r: 15 });
+  s += numLbl(T.d1, 20, '1', 14) + numLbl(T.c1, 180, '2', 13) + numLbl(T.c2, 220, '3', 14);
+  s += numLbl(T.c3, 200, '4', 16) + numLbl(T.c4, 0, '5', 13) + numLbl(T.d2, 60, '6', 14);
+  s += tag(ox + 72, oy + 176, 'cut the dashed bonds', { cls: 'fg-tag-warn' });
 
-  s += retro(ox + 140, oy + 80, 34);
+  s += retro(ox + 140, oy + 84, 34);
 
-  // the pieces: isoprene above propenal, same positions
-  const R = hexFlat(ox + 262, oy + 62, 38, 38);
+  // the pieces: isoprene above propenal, in the same positions
+  const R = hexFlat(ox + 256, oy + 70, 38, 28);
   s += diene(R);
-  s += sub(R.c3, OUT.c3, 'CH₃', { len: 32, r: 16 });
+  s += sub(R.c3, OUT.c3, 'CH₃', { len: 28, r: 14 });
   s += bond(R.d1, R.d2, { order: 2, rFrom: 0, rTo: 0 });
-  s += sub(R.d1, OUT.d1, 'CHO', { len: 30, r: 17 });
-  s += tag(ox + 262, oy + 10, 'isoprene');
-  s += tag(ox + 262, oy + 156, 'propenal');
+  s += sub(R.d1, OUT.d1, 'CHO', { len: 28, r: 15 });
+  s += tag(ox + 256, oy + 176, 'isoprene + propenal', { cls: 'fg-tag-good' });
   return s;
 }
 
@@ -693,7 +673,7 @@ FIGURES.push({
   lessons: ['diels-alder'],
   anchor: '<!-- retro-figure -->',
   alt: 'Left: the target, 4-methylcyclohex-3-ene-1-carbaldehyde, drawn as a cyclohexene numbered 1 to 6, with CHO on C1, the double bond between C3 and C4 highlighted, and a methyl on C4. The bonds C1–C2 and C5–C6 are dashed and marked for cutting. A retrosynthesis arrow leads to the two pieces in the same positions: isoprene, CH2=C(CH3)–CH=CH2, drawn s-cis above propenal, CH2=CH–CHO.',
-  viewBox: '0 0 340 170',
+  viewBox: '0 0 340 190',
   build() {
     return retroRow(0, 0);
   },
