@@ -161,7 +161,7 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   lessons: ['carbonyl-reduction'],
   anchor: '<h3>Reducing a ketone usually makes a racemic mixture</h3>',
-  alt: 'Butan-2-one drawn flat in the plane of the page. An arrow on the left leads to the product formed when hydride arrives from the front face: butan-2-ol with its new H on a solid wedge, labeled S. An arrow on the right leads to the product from the back face: the same alcohol with the H on a hashed bond, labeled R. The two form 50 to 50, a racemic mixture.',
+  alt: 'Butan-2-one drawn flat in the plane of the page, with one hydride ion approaching the carbonyl carbon from in front of the page (solid arrow) and one from behind (dashed arrow). An arrow on the left leads to the product formed when hydride arrives from the front face: butan-2-ol with its new H on a solid wedge, labeled S. An arrow on the right leads to the product from the back face: the same alcohol with the H on a hashed bond, labeled R. The two form 50 to 50, a racemic mixture.',
   viewBox: '0 0 340 512',
   build() {
     let s = '';
@@ -173,8 +173,12 @@ FIGURES.push({
     s += A(o, 'O') + A(c, 'C', 'warn');
     s += lonePair(o.x, o.y, 315, { dist: 21 }) + lonePair(o.x, o.y, 225, { dist: 21 });
     const hf = armEnd(c, 150, 62), hb = armEnd(c, 30, 62);
-    s += wedge(c, hf, { rFrom: 16, rTo: 16, width: 9 }) + A(hf, 'H⁻', 'hi');
-    s += hash(c, hb, { rFrom: 16, rTo: 16, width: 11, rungs: 4 }) + A(hb, 'H⁻', 'hi');
+    /* Approach arrows, not bonds: solid for the front face, dashed for the back. */
+    const toward = (from, frac) => P(from.x + (c.x - from.x) * frac, from.y + (c.y - from.y) * frac);
+    s += A(hf, 'H⁻', 'hi') + arrow(toward(hf, 0.3), toward(hf, 0.72));
+    const b0 = toward(hb, 0.3), b1 = toward(hb, 0.6);
+    s += `<line class="fg-dash-hi" x1="${b0.x.toFixed(2)}" y1="${b0.y.toFixed(2)}" x2="${b1.x.toFixed(2)}" y2="${b1.y.toFixed(2)}"></line>`;
+    s += arrow(b1, toward(hb, 0.72)) + A(hb, 'H⁻', 'hi');
     s += tg(hf.x - 4, hf.y - 26, 'in front');
     s += tg(hb.x + 4, hb.y - 26, 'behind');
     s += tg(170, 200, 'the C=O and its two neighbors lie in the page');
@@ -197,7 +201,7 @@ FIGURES.push({
     s += tg(170, 500, '50 : 50 — a racemic mixture, (±)-butan-2-ol', 'good');
     return s;
   },
-  caption: 'The page is the plane of the C=O. A wedge points toward you and a hash points away, so each product shows which face the hydride came from.',
+  caption: 'The page is the plane of the C=O. The solid arrow is a hydride approaching from in front of the page, the dashed one from behind. In the products, a wedge bond points toward you and a hash bond points away.',
 });
 
 /* ------------------------------------------------------------------ 3 ---
