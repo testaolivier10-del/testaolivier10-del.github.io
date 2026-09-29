@@ -40,6 +40,10 @@ const charge = (p, s = '+') => text(p.x, p.y + 5, s, { cls: 'fg-warn', size: 15 
 const hiBond = (a, b, rFrom, rTo, order = 1) => bond(a, b, { rFrom, rTo, order, cls: 'fg-bond-hi' });
 /* Both heads of a resonance arrow. */
 const resArrow = (a, b) => arrow(a, b, { size: 8 }) + arrow(b, a, { size: 8 });
+/* A skeletal tert-butyl group: a quaternary carbon at q, reached along math
+   angle `dir`, with its three methyls drawn as line ends ahead and to either side. */
+const tBu = (q, dir, len = 26) =>
+  sk(q, at(q, dir, len)) + sk(q, at(q, dir + 90, len)) + sk(q, at(q, dir - 90, len));
 
 /* ================================================ the Grignard and the O–H */
 /* CH3MgBr takes the proton of R–O–H. Reactants are drawn with the two curved
@@ -135,11 +139,12 @@ function alcohol(o, kindH = 'warn') {
 }
 function silylEther(o) {
   const r = at(o, 210, 46), si = at(o, 330, 48);
-  const m1 = P(si.x, si.y - 44), m2 = P(si.x, si.y + 44), tb = P(si.x + 68, si.y);
+  const m1 = P(si.x, si.y - 44), m2 = P(si.x, si.y + 44), tb = P(si.x + 50, si.y);
   let s = bond(r, o, { rFrom: 14, rTo: 15 }) + bond(o, si, { rFrom: 15, rTo: 16 });
-  s += bond(si, m1, { rFrom: 16, rTo: 16 }) + bond(si, m2, { rFrom: 16, rTo: 16 }) + bond(si, tb, { rFrom: 16, rTo: 30 });
+  s += bond(si, m1, { rFrom: 16, rTo: 16 }) + bond(si, m2, { rFrom: 16, rTo: 16 }) + bond(si, tb, { rFrom: 16, rTo: 0 });
+  s += tBu(tb, 0);
   s += A(r, 'R', { r: 14 }) + A(o, 'O', { r: 15 }) + A(si, 'Si', { kind: 'hi' });
-  s += A(m1, 'CH₃', { r: 16 }) + A(m2, 'CH₃', { r: 16 }) + A(tb, 'C(CH₃)₃', { r: 30 });
+  s += A(m1, 'CH₃', { r: 16 }) + A(m2, 'CH₃', { r: 16 });
   return { s, si, tb };
 }
 FIGURES.push({
@@ -267,9 +272,9 @@ function carbamate(p, o = {}) {
   } else {
     s += bond(C, Os, { rFrom: 0, rTo: 15 });
     if (tail === 'tBu') {
-      T = P(Os.x + 58, p.y);
-      s += (o.breakTail ? hiBond : (a, b, f, t) => bond(a, b, { rFrom: f, rTo: t }))(Os, T, 15, 30);
-      s += A(T, 'C(CH₃)₃', { r: 30 });
+      T = P(Os.x + dx, p.y);
+      s += o.breakTail ? hiBond(Os, T, 15, 0) : bond(Os, T, { rFrom: 15, rTo: 0 });
+      s += tBu(T, -26.57);
     } else if (tail === 'Bn') {
       T = P(Os.x + dx, p.y);
       s += o.breakTail ? hiBond(Os, T, 15, 0) : bond(Os, T, { rFrom: 15, rTo: 0 });
@@ -309,14 +314,14 @@ FIGURES.push({
   viewBox: '0 0 760 400',
   build() {
     let s = '';
-    s += tg(150, 26, 'BOC: FROM Boc₂O');
+    s += lbl(150, 26, 'Boc group, from Boc₂O');
     const b = carbamate(P(40, 110), { tail: 'tBu' });
     s += b.s;
-    s += tg(540, 26, 'CBZ: FROM BENZYL CHLOROFORMATE');
+    s += lbl(540, 26, 'Cbz group, from benzyl chloroformate');
     const z = carbamate(P(420, 110), { tail: 'Bn' });
     s += z.s;
     s += rule(26, 196, 734, 196);
-    s += tg(380, 222, 'WHY THE NITROGEN STOPS REACTING');
+    s += tg(380, 222, 'WHY THE NITROGEN IS A POOR NUCLEOPHILE');
     const f1 = carbamate(P(60, 300), { tail: 'R', lp: true, lpO: true, arrows: true });
     s += f1.s;
     s += resArrow(P(290, 300), P(340, 300));
@@ -326,21 +331,21 @@ FIGURES.push({
     s += tg(680, 306, 'is shared with C=O', 'good');
     return s;
   },
-  caption: 'Top: Boc and Cbz differ only in the group on the single-bonded oxygen. Bottom: the second resonance contributor puts a positive charge on nitrogen, so its lone pair is no longer free to attack.',
+  caption: 'Top: Boc and Cbz differ only in the group on the single-bonded oxygen. Bottom: the second resonance contributor puts a positive charge on nitrogen, so its lone pair is much less free to attack.',
 });
 
 FIGURES.push({
   id: 'l-carbamate',
   lessons: ['protecting-groups'],
   alt: 'A carbamate R–NH–C(=O)–OR′ with a curved arrow moving the nitrogen lone pair into the N–C bond and another moving the C=O pi bond onto oxygen. Below it, the resonance contributor with N plus double-bonded to carbon and O minus.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 350',
   build() {
     let s = '';
     s += tg(170, 20, 'A CARBAMATE: R–NH–C(=O)–OR′');
     const f1 = carbamate(P(80, 104), { tail: 'R', lp: true, lpO: true, arrows: true });
     s += f1.s;
     s += resArrow(P(170, 172), P(170, 206));
-    const f2 = carbamate(P(80, 268), { tail: 'R', form: 'res', nKind: 'hi' });
+    const f2 = carbamate(P(80, 262), { tail: 'R', form: 'res', nKind: 'hi' });
     s += f2.s;
     return s;
   },
@@ -366,8 +371,8 @@ FIGURES.push({
     s += tg(b.Os.x + 34, b.Os.y - 26, 'this bond breaks', 'warn');
     s += arrow(P(290, 96), P(352, 96), { size: 8 });
     s += lbl(321, 82, 'TFA');
-    s += tg(321, 118, '(CH₃)₃C⁺');
-    s += tg(321, 132, 'leaves');
+    s += tg(321, 118, 'H⁺ adds to C=O,');
+    s += tg(321, 132, '(CH₃)₃C⁺ leaves');
     const c1 = carbamate(P(380, 96), { tail: 'OH' });
     s += c1.s;
     s += tg(460, 176, 'carbamic acid');
@@ -497,8 +502,8 @@ FIGURES.push({
     s += hbk(P(530, 110), 1);
     s += lbl(592, 150, 'TBS ether');
     s += arrow(P(560, 180), P(260, 250), { size: 8 });
-    s += lbl(250, 196, '2 react: CH₃MgBr,', 'start');
-    s += lbl(250, 214, 'then H₂O workup', 'start');
+    s += lbl(170, 192, '2 react: CH₃MgBr,', 'start');
+    s += lbl(170, 210, 'then mild aqueous workup', 'start');
     s += hbk(P(60, 300), 2);
     s += arrow(P(250, 300), P(470, 300), { size: 8 });
     s += lbl(360, 320, '3 deprotect: TBAF');
