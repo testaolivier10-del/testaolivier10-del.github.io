@@ -308,3 +308,51 @@ confirm it.
 - **Notes:**
   - Histidine's side chain (pKa about 6) is a few percent protonated at pH 7.4; pI about 7.6.
   - Edman degradation is kept at "roughly thirty residues"; many sources give 30–50.
+
+## Stereochemistry (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### stereo-terms: what "stereocenter" and related words mean here
+- **Status:** pending review.
+- **Where:** `stereocenters`, `cis-trans-ez`, `prochirality`, `diastereomers`, `rs-configuration`.
+- **Positions taken:**
+  - "Stereocenter" means a single tetrahedral atom with four different groups (a chirality
+    center). C1 and C4 of 4-methylcyclohexan-1-ol are called stereogenic in the wider IUPAC sense
+    (swapping two groups gives a stereoisomer) but not stereocenters. The cis-trans-ez page says a
+    stereogenic double bond is not a stereocenter, on the same definition. An IUPAC aside on
+    stereogenic centers could be added.
+  - cis-trans-ez: the distractor "cis-3-methylpent-2-ene" is marked wrong, but it is defensible
+    under the convention that reads cis/trans along the main chain.
+  - Prochirality: "prochiral" is taught in the center sense. The pitfall mentions the
+    whole-molecule usage; the flat-carbon (Re/Si face) sense is taught without the word.
+  - Diastereomers: erythro/threo use the classic Fischer definition (erythro → anti in the
+    zigzag). Heathcock's aldol usage runs the other way and is not mentioned. Anomers are drawn as
+    flat wedge/hash rings, not Haworth projections, which come later in Biomolecules.
+  - R/S: Rules 1, 2 and 3 are numbered as most courses do, not as IUPAC 2013 does. The
+    "nothing attached" wording leaves out phantom atoms. The walk explores the highest-ranked
+    branch first (the hierarchical digraph); some courses compare a whole sphere at once. Both
+    give the same answers on every example here. "SN1 gives a racemic mixture" is an
+    idealization, and the Enantiomers page gives the real range.
+  - Wedge drawings: the stereo drill draws three plain bonds and one wedge or hash, while the
+    other pages draw two plain bonds, a wedge and a hash (the only style molecular-geometry
+    shows). Should molecular-geometry mention the first?
+  - Nitrogen inversion: ordinary amines are called non-separable. Amines with the nitrogen locked
+    at a ring bridgehead (Tröger's base) are named as the exception.
+
+### stereo-numbers: values and examples that need a source
+- **Status:** pending review.
+- **Notes:**
+  - Enantiomers: (S)-alanine is +14.5° in 6 M HCl (some sources say 5–6 M) and only about
+    +2 to +3° in water. Which diastereomeric salt is less soluble in the ibuprofen resolution is
+    not named (believed to be (S,S), unverified). The three-site receptor is a simplified
+    teaching model. Chiral chromatography is called the more common route "in the lab" only.
+  - Meso: the meso-tartaric acid melting point is not given, because references disagree
+    (about 140, 146–148 or 165 °C, depending on hydrate). The page says the chiral pair melts
+    at about 170 °C and the meso form melts lower.
+  - Chirality: the naproxen (R) toxicity claim was removed as weakly sourced; restore it if a
+    source is found. Limonene odors vary by source. Plain 1,1′-binaphthyl racemizing at room
+    temperature was kept and needs a source.
+  - Prochirality: alcohol dehydrogenase removing ethanol's pro-R hydrogen was kept from the old
+    page (a standard example, not re-verified here).

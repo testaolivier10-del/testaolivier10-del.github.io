@@ -582,7 +582,7 @@ FIGURES.push({
     s += rule(20, 228, 740, 228);
     s += rich(20, 254, ['*cis', ' alkene'], 'fg-tag', 'start');
     s += brRow(346, false);
-    s += T(598, 418, '(2S,3S), and (2R,3R) in equal amount:', 'fg-tag');
+    s += T(598, 418, '(2S,3S) plus (2R,3R) in equal amounts:', 'fg-tag');
     s += T(598, 436, 'a racemic mixture', 'fg-tag');
     return s;
   },
