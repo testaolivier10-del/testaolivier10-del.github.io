@@ -116,7 +116,7 @@ function firstPair(stacked) {
   s += chain(107, 104, { ...ISO.RR, k3: 'hi' }).s;
   s += T(170, 188, 'C2 the same: R in both', 'fg-tag');
   s += T(170, 208, 'C3 opposite: R here, S below', 'fg-tag-warn');
-  s += chain(107, 308, { ...ISO.RS, k3: 'hi' }).s;
+  s += chain(107, 330, { ...ISO.RS, k3: 'hi' }).s;
   return s;
 }
 FIGURES.push({
@@ -131,7 +131,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-first-pair',
   lessons: ['diastereomers'],
-  viewBox: '0 0 340 372',
+  viewBox: '0 0 340 396',
   alt: 'Two stereoisomers of 3-bromobutan-2-ol, stacked. In (2R,3R) the OH and Br are both on wedges; in (2R,3S) the OH is on a wedge and the Br on a hash. C2 is R in both; C3 differs.',
   build: () => firstPair(true),
   caption: 'Same skeleton, same OH wedge. Only the Br bond changes, from a wedge to a hash.',
@@ -169,12 +169,12 @@ function grid(lesson) {
   const d = { dx: 32, dy: 20, L: 34 };
   s += chain(22, 88, { ...ISO.RR, ...d }).s;
   s += chain(192, 88, { ...ISO.SS, ...d }).s;
-  s += chain(22, 268, { ...ISO.RS, ...d }).s;
-  s += chain(192, 268, { ...ISO.SR, ...d }).s;
+  s += chain(22, 300, { ...ISO.RS, ...d }).s;
+  s += chain(192, 300, { ...ISO.SR, ...d }).s;
   s += `<line class="fg-dash-hi" x1="150" y1="80" x2="190" y2="80"></line>`;
-  s += `<line class="fg-dash-hi" x1="150" y1="260" x2="190" y2="260"></line>`;
-  s += T(170, 164, 'across a row: enantiomers', 'fg-tag-good');
-  s += T(170, 184, 'down or diagonal: diastereomers', 'fg-tag-warn');
+  s += `<line class="fg-dash-hi" x1="150" y1="292" x2="190" y2="292"></line>`;
+  s += T(170, 170, 'across a row: enantiomers', 'fg-tag-good');
+  s += T(170, 190, 'down or diagonal: diastereomers', 'fg-tag-warn');
   return s;
 }
 FIGURES.push({
@@ -189,7 +189,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-four-stereoisomers',
   lessons: ['diastereomers'],
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 362',
   alt: 'The four stereoisomers of 3-bromobutan-2-ol in a two-by-two grid: (2R,3R) and (2S,3S) on top, (2R,3S) and (2S,3R) below. Each row is an enantiomeric pair; every vertical or diagonal pairing is a pair of diastereomers.',
   build: () => grid(true),
   caption: 'Across a row, both bonds change. Down a column or along a diagonal, only one does.',
@@ -308,7 +308,7 @@ function buteneFig(stacked) {
     s += rich(cx, top + 22, [trans ? '*trans' : '*cis', '-but-2-ene'], 'fg-tag');
     s += butene(cx, top + 84, trans);
     s += T(cx, top + 136, 'no stereocenter', 'fg-tag-mut');
-    s += dipoles(P(cx, top + (lesson ? 176 : 172)), trans);
+    s += dipoles(P(cx, top + (lesson ? 166 : 172)), trans);
     if (lesson) {
       s += T(cx, top + 206, trans ? 'dipoles cancel: μ = 0' : 'dipoles add: μ = 0.33 D', 'fg-tag-good');
       return;
@@ -572,7 +572,7 @@ FIGURES.push({
   viewBox: '0 0 720 264',
   alt: 'alpha- and beta-D-glucopyranose drawn as flat six-membered rings seen from above, ring oxygen at the top right and C1 at the right. C2 to C5 are the same in both: C2 R with OH on a hash, C3 S with OH on a wedge, C4 S with OH on a hash, C5 R with CH2OH on a wedge. At C1 the OH is on a hash in alpha (S) and on a wedge in beta (R).',
   build: () => anomerFig(false),
-  caption: 'Four of the five ring stereocenters match. Only C1, the carbon bonded to two oxygens, differs.',
+  caption: 'Four of the five ring stereocenters match. Only C1 differs: the right-hand ring carbon, bonded to two oxygens.',
 });
 
 /* ================================================================ 9 ===
@@ -626,7 +626,6 @@ function synAntiFig() {
     s += T(fromL.x - 4, fromL.y - 6, 'OH', 'fg-lbl');
     s += T(fromR.x + 4, fromR.y + (syn ? -6 : 16), 'OH', 'fg-lbl');
     s += rich(120, y - 76, syn ? ['*syn', ': both from the top face'] : ['*anti', ': one from each face'], 'fg-tag');
-    s += T(120, y + 94, 'cyclohexene, C=C at the front', 'fg-sm');
     s += arrow(P(236, y), P(296, y));
     if (syn) {
       s += diolFlat(380, y - 10, 'w', 'w', 'R', 'S', 'cis');
@@ -652,7 +651,7 @@ FIGURES.push({
   viewBox: '0 0 720 448',
   alt: 'Cyclohexene drawn as a tilted ring so its top and bottom faces show, with the C=C at the front edge. Top row, syn addition: both OH groups arrive from the top face, giving cis-cyclohexane-1,2-diol with both OH on wedges, (1R,2S), a single compound. Bottom row, anti addition: one OH arrives from the top and one from the bottom, giving trans-cyclohexane-1,2-diol with one OH on a wedge and one on a hash, formed as an equal mixture of (1R,2R) and (1S,2S).',
   build: synAntiFig,
-  caption: 'In the flat drawings the top face of the tilted ring is the face toward you, so an OH that arrived from the top sits on a wedge.',
+  caption: 'Cyclohexene is drawn tilted, with its C=C along the front edge. In the flat drawings its top face is the face toward you, so an OH that arrived from the top sits on a wedge.',
 });
 
 /* =============================================================== 10 ===
