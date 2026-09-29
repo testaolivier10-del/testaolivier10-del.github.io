@@ -183,8 +183,8 @@ FIGURES.push({
     s += `<line class="fg-dash-hi" x1="510" y1="${beam - 46}" x2="510" y2="${beam + 46}"></line>`;
     s += `<line class="fg-bond-hi" x1="${r2(510 - Math.cos(Math.PI / 3) * 46)}" y1="${r2(beam - Math.sin(Math.PI / 3) * 46)}" x2="${r2(510 + Math.cos(Math.PI / 3) * 46)}" y2="${r2(beam + Math.sin(Math.PI / 3) * 46)}"></line>`;
     s += text(532, beam - 4, 'α', { cls: 'fg-tag-good', size: 14, anchor: 'start' });
-    s += text(508, 92, 'same plane,', { cls: 'fg-tag-good', size: 10 });
-    s += text(508, 106, 'turned by α', { cls: 'fg-tag-good', size: 10 });
+    s += text(508, 76, 'same plane,', { cls: 'fg-tag-good', size: 10 });
+    s += text(508, 90, 'turned by α', { cls: 'fg-tag-good', size: 10 });
 
     s += bar(556, beam - 44, 14, 88, { kind: 'mut', r: 4 });
     s += sm(563, 212, 'analyzer');
@@ -280,8 +280,8 @@ FIGURES.push({
     };
     const b1 = P(c.x, 44), b2 = P(c.x, 306);
     s += bromide(b1) + bromide(b2);
-    s += curve(P(b1.x, b1.y + 26), P(c.x, c.y - 72), { bow: 12 });
-    s += curve(P(b2.x, b2.y - 26), P(c.x, c.y + 72), { bow: -12 });
+    s += curve(P(b1.x, b1.y + 26), P(c.x, c.y - 24), { bow: 12 });
+    s += curve(P(b2.x, b2.y - 26), P(c.x, c.y + 24), { bow: -12 });
     s += sm(c.x + 36, 64, 'from above', 'start');
     s += sm(c.x + 36, 294, 'from below', 'start');
     s += tg(36, 28, 'FLAT CATION:', 'start');
