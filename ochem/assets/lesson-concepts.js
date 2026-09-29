@@ -588,12 +588,13 @@
       9:['sigma-pi-bonding'],
       11:['sigma-pi-bonding','valence-electrons'] } },
 
-    'bronsted': { n:8, steps:{
+    'bronsted': { n:10, steps:{
       1:['bronsted-identification'],
       2:['bronsted-identification'],
-      3:['conjugate-pairs'],
+      4:['conjugate-pairs'],
       6:['bronsted-identification','curved-arrow-direction'],
-      7:['bronsted-identification','conjugate-pairs'] } },
+      8:['pka-scale','bronsted-identification'],
+      9:['bronsted-identification','conjugate-pairs'] } },
 
     'c-nmr': { n:7, steps:{
       1:['nmr-shift-shielding'],
@@ -854,9 +855,12 @@
       13:['valence-electrons'],
       15:['valence-electrons'] } },
 
-    'pka': { n:7, steps:{
-      1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],
-      6:['pka-scale','conjugate-pairs'] } },
+    'pka': { n:10, steps:{
+      2:['pka-scale'],
+      3:['pka-scale'],
+      5:['pka-scale','conjugate-pairs'],
+      7:['pka-scale','conjugate-pairs'],
+      9:['pka-scale','conjugate-pairs'] } },
 
     'resonance': { n:11, steps:{
       1:['resonance-delocalization'],

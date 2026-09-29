@@ -7,7 +7,7 @@
    always visible. Lesson copies (id prefix l-) are 340 wide or less, stacked,
    and use only fg-lbl and fg-tag text. */
 import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
-import { ringDouble, polyPts, locant } from '../lib/ochem-skeletal.mjs';
+import { ringDouble } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
 
@@ -295,27 +295,29 @@ FIGURES.push({
   section: 'acidity-factors',
   anchor: 'expect its acid to be far stronger than the formula suggests.</p>',
   alt: 'Preview. Left: cyclopentadiene, a five-carbon ring with two C=C bonds and a CH2 at the top whose two hydrogens are drawn; pKa 16. An arrow labelled minus H+ leads to the five equivalent resonance structures of the cyclopentadienyl anion, the charge and lone pair on a different ring carbon in each.',
-  viewBox: '0 0 760 230',
+  viewBox: '0 0 760 300',
   build() {
     let s = '';
     s += tag(380, 26, 'A PREVIEW: CHARGE SHARED BY ALL FIVE CARBONS');
-    const c0 = P(62, 126), r = 30;
+    const c0 = P(250, 96), r = 30;
     const v = pentagon(c0.x, c0.y, r);
     s += sk(v[0], v[1]) + ringDouble(v[1], v[2], c0, { gap: 4, inset: 7 }) + sk(v[2], v[3]) +
          ringDouble(v[3], v[4], c0, { gap: 4, inset: 7 }) + sk(v[4], v[0]);
-    const hL = at(v[0], 125, 32), hR = at(v[0], 55, 32);
+    const hL = at(v[0], 150, 32), hR = at(v[0], 30, 32);
     s += bond(v[0], hL, { rFrom: 0, rTo: 10 }) + bond(v[0], hR, { rFrom: 0, rTo: 10 });
     s += atom(hL.x, hL.y, 'H', { r: 10, size: 11 });
     s += atom(hR.x, hR.y, 'H', { kind: 'warn', r: 10, size: 11 });
-    s += text(62, 190, 'cyclopentadiene', { cls: 'fg-tag', size: 11 });
-    s += text(62, 208, 'pKa 16', { cls: 'fg-tag-warn', size: 11 });
-    s += arrow(P(108, 126), P(152, 126));
-    s += text(130, 114, '− H⁺', { cls: 'fg-sm', size: 10.5 });
-    const xs = [212, 326, 440, 554, 668];
-    xs.forEach((x, k) => { s += cpAnion(x, 126, 26, [0, 1, 2, 3, 4][k]); });
-    for (let i = 0; i < 4; i++) s += resArrow(P(xs[i] + 48, 126), P(xs[i + 1] - 48, 126));
-    s += text(440, 190, 'five equivalent structures: each ring carbon holds one fifth of the charge', { cls: 'fg-tag-good', size: 11 });
-    s += text(440, 208, 'the flat ring with six π electrons is aromatic (Aromatic Chemistry)', { cls: 'fg-sm', size: 10.5 });
+    s += text(160, 92, 'cyclopentadiene', { cls: 'fg-tag', size: 11 });
+    s += text(160, 110, 'pKa 16', { cls: 'fg-tag-warn', size: 11 });
+    s += arrow(P(310, 96), P(380, 96));
+    s += text(345, 84, '− H⁺', { cls: 'fg-sm', size: 10.5 });
+    s += text(530, 92, 'the cyclopentadienyl anion:', { cls: 'fg-tag', size: 11 });
+    s += text(530, 110, 'five equivalent structures, below', { cls: 'fg-sm', size: 10.5 });
+    const xs = [84, 232, 380, 528, 676];
+    xs.forEach((x, k) => { s += cpAnion(x, 196, 28, k); });
+    for (let i = 0; i < 4; i++) s += resArrow(P(xs[i] + 62, 196), P(xs[i + 1] - 62, 196));
+    s += text(380, 262, 'each ring carbon holds one fifth of the charge', { cls: 'fg-tag-good', size: 11 });
+    s += text(380, 282, 'a flat ring with six π electrons: aromatic, as Aromatic Chemistry explains', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
   caption: 'Removing one CH₂ hydrogen from cyclopentadiene leaves an anion whose charge visits every ring carbon.',
@@ -428,21 +430,23 @@ FIGURES.push({
   build() {
     let s = '';
     s += tag(150, 28, 'ACETATE');
-    let a = acidChain(P(150, 130), 1, 0, { anion: true });
+    let a = acidChain(P(140, 120), 1, 0, { anion: true });
     s += a.svg;
-    s += text(150, 214, 'from acetic acid, pKa 4.76', { cls: 'fg-sm', size: 10.5 });
+    s += text(150, 212, 'from acetic acid, pKa 4.76', { cls: 'fg-sm', size: 10.5 });
     s += rule(300, 20, 300, 230);
     s += tag(450, 28, 'CHLOROACETATE');
-    a = acidChain(P(430, 130), 1, 1, { anion: true, clUp: true });
+    a = acidChain(P(420, 120), 1, 0, { anion: true });
     s += a.svg;
-    const ca = a.chain[0], cl = P(ca.x, ca.y - 44);
-    /* the pull: small arrows beside the C1–C2 and C2–Cl bonds, pointing at Cl */
-    s += arrow(P(438, 150), P(466, 166), { size: 7 });
-    s += arrow(P(488, 150), P(488, 124), { size: 7 });
-    s += text(cl.x + 26, cl.y - 4, 'δ−', { cls: 'fg-warn', size: 13 });
-    s += text(ca.x + 22, ca.y + 12, 'δ+', { cls: 'fg-hi', size: 13 });
-    s += text(450, 214, 'from chloroacetic acid, pKa 2.86', { cls: 'fg-sm', size: 10.5 });
-    s += text(450, 232, 'Cl pulls electron density away from the charged end', { cls: 'fg-tag-good', size: 11 });
+    const ca = a.chain[0], cl = at(ca, 30, 50);
+    s += bond(ca, cl, { rFrom: 0, rTo: 16 });
+    s += atom(cl.x, cl.y, 'Cl', { kind: 'warn', size: 11 });
+    /* the pull: small arrows alongside the C1–C2 and C2–Cl bonds, pointing toward Cl */
+    s += arrow(P(428, 146), P(452, 160), { size: 7 });
+    s += arrow(P(478, 164), P(500, 151), { size: 7 });
+    s += text(cl.x + 4, cl.y - 22, 'δ−', { cls: 'fg-warn', size: 13 });
+    s += text(ca.x - 4, ca.y + 28, 'δ+', { cls: 'fg-hi', size: 13 });
+    s += text(450, 212, 'from chloroacetic acid, pKa 2.86', { cls: 'fg-sm', size: 10.5 });
+    s += text(450, 232, 'Cl pulls density away from the charge', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
   caption: 'Where the chlorine sits: on the carbon right next to the carboxylate carbon. The two small arrows show the pull through the σ bonds.',
@@ -594,16 +598,16 @@ FIGURES.push({
     const cx = 120, cy = 118, r = 38;
     const v = [];
     for (let i = 0; i < 6; i++) v.push(at(P(cx, cy), -i * 60, r));
+    const ctr = P(cx, cy);
     for (let i = 0; i < 6; i++) {
       const a = v[i], b = v[(i + 1) % 6];
-      const o = { rFrom: i === 0 ? 13 : 0, rTo: (i + 1) % 6 === 0 ? 13 : 0 };
-      if (i % 2 === 0) {
-        s += bond(a, b, o);
-        /* inner line of the double bond, trimmed clear of N and the corners */
-        const inA = at(P(cx, cy), -i * 60, r - 6), inB = at(P(cx, cy), -(i + 1) * 60, r - 6);
-        s += bond(inA, inB, { rFrom: i === 0 ? 12 : 7, rTo: 7 });
-      } else s += bond(a, b, o);
+      if (i === 2 || i === 4) { s += ringDouble(a, b, ctr, { gap: 5, inset: 8 }); continue; }
+      s += bond(a, b, { rFrom: i === 0 ? 13 : 0, rTo: (i + 1) % 6 === 0 ? 13 : 0 });
     }
+    /* the N=C double bond: an inner line, trimmed clear of the N disc */
+    const inA = at(ctr, 0, r - 7), inB = at(ctr, -60, r - 7);
+    s += bond(inA, inB, { rFrom: 13, rTo: 6 });
+    s += atom(v[0].x, v[0].y, '', { r: 13 });
     s += lobe(v[0], 0, 26);
     s += atom(v[0].x, v[0].y, 'N', { kind: 'hi', r: 13, size: 12 });
     s += text(150, 192, 'lone pair in an sp² orbital (33% s)', { cls: 'fg-sm', size: 10.5 });
@@ -643,22 +647,22 @@ FIGURES.push({
   section: 'acidity-factors',
   anchor: 'There are four kinds of hydrogen on it.</p>',
   alt: '4-Hydroxybutan-2-one drawn skeletally with C1 to C4 numbered and each kind of hydrogen labelled with its pKa: C1 hydrogens about 20, C3 hydrogens about 20, C4 hydrogens near 50, and the O–H about 16, marked as the most acidic.',
-  viewBox: '0 0 600 250',
+  viewBox: '0 0 600 214',
   build() {
     let s = '';
-    const m = hydroxybutanone(130, 140, 70, 38);
+    const m = hydroxybutanone(130, 130, 70, 38);
     s += m.svg;
-    s += locant(m.c1, P(m.c1.x + 10, m.c1.y - 30), 'C1', { cls: 'fg-tag', size: 11, d: 20 });
+    s += text(m.c1.x - 22, m.c1.y + 4, 'C1', { cls: 'fg-tag', size: 11 });
     s += text(m.c2.x + 22, m.c2.y + 4, 'C2', { cls: 'fg-tag', size: 11 });
-    s += text(m.c3.x, m.c3.y - 14, 'C3', { cls: 'fg-tag', size: 11 });
+    s += text(m.c3.x, m.c3.y - 16, 'C3', { cls: 'fg-tag', size: 11 });
     s += text(m.c4.x, m.c4.y + 26, 'C4', { cls: 'fg-tag', size: 11 });
-    s += text(m.c1.x - 10, m.c1.y + 34, 'C1–H: pKa ≈ 20', { cls: 'fg-tag-warn', size: 11 });
+    s += text(m.c1.x, m.c1.y + 34, 'C1–H: pKa ≈ 20', { cls: 'fg-tag-warn', size: 11 });
+    s += text(m.c1.x, m.c1.y + 52, 'alpha to C=O', { cls: 'fg-sm', size: 10.5 });
     s += text(m.c3.x, m.c3.y + 34, 'C3–H: pKa ≈ 20', { cls: 'fg-tag-warn', size: 11 });
-    s += text(m.c4.x, m.c4.y - 30, 'C4–H: near 50', { cls: 'fg-tag-mut', size: 11 });
+    s += text(m.c3.x, m.c3.y + 52, 'alpha to C=O', { cls: 'fg-sm', size: 10.5 });
+    s += text(m.c4.x, m.c4.y - 20, 'C4–H: near 50', { cls: 'fg-tag-mut', size: 11 });
     s += text(m.o.x + 10, m.o.y + 40, 'O–H: pKa ≈ 16', { cls: 'fg-tag-good', size: 11 });
     s += text(m.o.x + 10, m.o.y + 58, 'the most acidic', { cls: 'fg-tag-good', size: 11 });
-    s += text(m.c1.x - 10, m.c1.y + 52, 'alpha to C=O', { cls: 'fg-sm', size: 10.5 });
-    s += text(m.c3.x, m.c3.y + 52, 'alpha to C=O', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
   caption: 'Four kinds of hydrogen, labelled with the pKa each would have. The two alpha positions tie, and the O–H beats them both.',
