@@ -138,7 +138,7 @@ function acetateHybrid(c, o = {}) {
 FIGURES.push({
   id: 'res-acetate',
   section: 'resonance',
-  alt: 'Acetate drawn two ways. In drawing A the left oxygen carries the minus charge and three lone pairs and the right oxygen is double-bonded; two curved arrows run from a lone pair on the left oxygen into the left C–O bond and from the C=O double bond onto the right oxygen. Drawing B is the mirror image, and a double-headed arrow links A and B. On the right, the hybrid: both C–O bonds drawn as one solid and one dashed line, each oxygen labeled minus one half, both bonds 126 picometers.',
+  alt: 'Acetate drawn two ways. In drawing A the left oxygen carries the minus charge and three lone pairs and the right oxygen is double-bonded; two curved arrows run from a lone pair on the left oxygen into the left C–O bond and from the C=O double bond onto the right oxygen. Drawing B is the same drawing with the two oxygens swapped, and a double-headed arrow links A and B. On the right, the hybrid: both C–O bonds drawn as one solid and one dashed line, each oxygen labeled minus one half, both bonds 126 picometers.',
   viewBox: '0 0 760 250',
   build() {
     let s = '';
@@ -587,14 +587,14 @@ function naphthalene(cx, cy, r, form) {
 FIGURES.push({
   id: 'res-count',
   section: 'resonance',
-  alt: 'Top row, benzene: the two Kekulé structures, with the three double bonds in alternate positions, joined by a double-headed arrow, then the three Dewar structures, each with a long bond straight across the ring and only two double bonds, drawn faintly. Bottom row, naphthalene, two hexagons sharing one edge: its three structures, joined by double-headed arrows, each with five double bonds in a different arrangement.',
+  alt: 'Top row, benzene: the two Kekulé structures, with the three double bonds in alternate positions, joined by a double-headed arrow, then the three Dewar structures, each with a long bond straight across the ring and only two double bonds, drawn faintly. Bottom row, naphthalene, two hexagons sharing one edge: its three Kekulé structures, joined by double-headed arrows, each with five double bonds in a different arrangement.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
     s += tag(160, 24, 'benzene: two Kekulé structures');
     s += kekule(90, 84, 34, 0) + resArrow(P(134, 84), P(186, 84)) + kekule(230, 84, 34, 1);
     s += rule(300, 40, 300, 130);
-    s += tag(530, 24, 'three Dewar structures: a pairing across', { cls: 'fg-tag-mut' });
+    s += tag(530, 24, 'three Dewar structures: one long bond across', { cls: 'fg-tag-mut' });
     [0, 1, 2].forEach((k, i) => { s += dewar(400 + i * 130, 84, 34, k, 'fg-bond-soft'); });
     s += tag(160, 146, 'these two matter');
     s += tag(530, 146, 'minor, usually ignored', { cls: 'fg-tag-mut' });
