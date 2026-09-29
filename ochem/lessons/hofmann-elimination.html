@@ -105,7 +105,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 11</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -138,14 +138,14 @@ document.addEventListener('DOMContentLoaded', function(){
 (function(){
 
   var CASES = [
-    { id:'h1', t:'<b>2-Aminobutane</b>, CH<sub>3</sub>CH(NH<sub>2</sub>)CH<sub>2</sub>CH<sub>3</sub>', right:'three',
-      why:'Three equivalents. Each one is an S<sub>N</sub>2 in which the lone pair attacks the methyl carbon &mdash; CH<sub>3</sub>I never substitutes at a hydrogen. After each alkylation a base (K<sub>2</sub>CO<sub>3</sub>) removes the remaining N&ndash;H proton and hands back a neutral, more substituted amine, which goes again. The count is the number of N&ndash;H hydrogens plus one, so a primary amine takes three.' },
+    { id:'h1', t:'<b>Butan-2-amine</b>, CH<sub>3</sub>CH(NH<sub>2</sub>)CH<sub>2</sub>CH<sub>3</sub>', right:'three',
+      why:'Three. It has two N&ndash;H hydrogens, and each one costs a CH<sub>3</sub>I: the methyl goes onto nitrogen, and K<sub>2</sub>CO<sub>3</sub> removes the hydrogen as a proton. One more CH<sub>3</sub>I makes the quaternary salt.' },
     { id:'h2', t:'<b>Diethylamine</b>, (CH<sub>3</sub>CH<sub>2</sub>)<sub>2</sub>NH', right:'two',
-      why:'Two. One N&ndash;H, so one alkylation-then-deprotonation round, then the equivalent that quaternizes. Counting the equivalents consumed is how the class of an unknown amine was read off before spectroscopy.' },
+      why:'Two. One N&ndash;H costs one CH<sub>3</sub>I, and the second makes the quaternary salt.' },
     { id:'h3', t:'<b>Triethylamine</b>, (CH<sub>3</sub>CH<sub>2</sub>)<sub>3</sub>N', right:'one',
-      why:'One. Nothing to replace, so the single methylation quaternizes it directly.' },
-    { id:'h4', t:'<b>Piperidine</b>, a six-membered ring with NH', right:'two',
-      why:'Two to quaternize it, by the N&ndash;H count &mdash; but the informative part comes later. Two C&ndash;N bonds hold this nitrogen in the ring, so the first elimination only <i>opens</i> the ring and leaves the nitrogen attached. Freeing it takes a second full round, which means re-methylating the ring-opened amine first &mdash; so the whole degradation consumes three equivalents even though the first methylation took two. Needing two rounds was itself the evidence that the nitrogen had been in a ring.' }
+      why:'One. There is no N&ndash;H, so a single methylation makes the quaternary salt.' },
+    { id:'h4', t:'<b>Piperidine</b>, a six-membered ring whose one nitrogen carries an H', right:'two',
+      why:'Two. Piperidine has one N&ndash;H, so it counts like any secondary amine. Being in a ring does not change the count.' }
   ];
   var OPTS = [ { k:'two', l:'Two equivalents' }, { k:'one', l:'One equivalent' }, { k:'three', l:'Three equivalents' } ];
 
@@ -159,24 +159,26 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'An amine cannot eliminate until you change the nitrogen.',
-        bodyHtml: '<p class="step-body">E2 needs the group on the &alpha; carbon to leave with the electron pair. For an amine that would be R<sub>2</sub>N<sup>&minus;</sup> &mdash; one of the strongest bases in the course, and therefore one of the worst leaving groups there is. Nothing happens.</p>' +
-          '<p class="step-body"><b>Exhaustive methylation</b> fixes it. Excess CH<sub>3</sub>I converts the nitrogen to a <b>quaternary ammonium</b> salt, and what leaves now is a <b>neutral trialkylamine</b>: the nitrogen was positively charged before and uncharged after, so it carries no negative charge away.</p>' +
-          '<div class="explain-box">Then <b>Ag<sub>2</sub>O in water, with heat</b>. The two together supply hydroxide and precipitate the iodide as AgI, which removes the competing nucleophile from the flask. Heat drives an ordinary E2 &mdash; one step, anti-periplanar, nothing new. Note what has happened here: the runaway alkylation the previous section spent its length avoiding is being used on purpose.</div>'
+        bodyHtml: '<p class="step-body">In an E2, the leaving group takes the electron pair of its bond to carbon with it. For butan-2-amine, that group would be H<sub>2</sub>N<sup>&minus;</sup>, the <b>amide ion</b>: the conjugate base of ammonia, not a carbonyl amide. Ammonia&rsquo;s N&ndash;H has a pK<sub>a</sub> near 38, so the amide ion is one of the strongest bases in the course. A strong base is a poor leaving group, and heating an amine with base gives no alkene.</p>' +
+          '<p class="step-body"><b>Exhaustive methylation</b> fixes this. Excess CH<sub>3</sub>I adds methyl groups to the nitrogen, one S<sub>N</sub>2 step at a time, until it carries four carbon groups and a positive charge. The product is a <b>quaternary ammonium</b> salt.</p>' +
+          '<p class="step-body">What leaves now is trimethylamine, N(CH<sub>3</sub>)<sub>3</sub>. The nitrogen is positive before it leaves and neutral afterward, so it carries no negative charge away. Trimethylamine is a far weaker base than the amide ion, and that makes it a workable leaving group.</p>' +
+          '<div class="explain-box">Count the CH<sub>3</sub>I as the number of N&ndash;H hydrogens plus one. After each methylation a base, usually K<sub>2</sub>CO<sub>3</sub>, removes one N&ndash;H hydrogen as a proton so the amine can react again. The last CH<sub>3</sub>I makes the quaternary salt. Butan-2-amine has two N&ndash;H hydrogens, so it takes three.</div>'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'The product is the LESS substituted alkene.',
-        bodyHtml: '<p class="step-body">This is the opposite of Zaitsev, and the reason is not a new principle.</p>' +
-          '<p class="step-body">The N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub> group is <b>enormous</b>. Hydroxide finds the crowded, more-substituted &beta; carbon shielded by it, and takes a hydrogen from the open one instead. That is exactly the steric argument the E2 chapter makes for <i>tert</i>-butoxide giving the anti-Zaitsev product where ethoxide gives Zaitsev.</p>' +
-          '<div class="explain-box">A second effect points the same way. The positive nitrogen makes the &beta; hydrogens unusually acidic, so the C&ndash;H bond breaks well ahead of the C&ndash;N bond and partial negative charge builds on the &beta; carbon &mdash; E1cb character. Alkyl groups destabilize a carbanion, so the &beta; carbon with fewest of them carries that charge best. Sterics and charge agree, which is why the outcome is so reliable.</div>'
+        title: 'Then silver oxide, heat and an ordinary E2.',
+        bodyHtml: '<p class="step-body">Silver oxide, Ag<sub>2</sub>O, in water swaps the iodide for hydroxide. Silver iodide falls out as a solid, which also removes iodide from the mixture.</p>' +
+          '<p class="step-body">Heat then drives an E2. Hydroxide takes a hydrogen from a &beta; carbon, one bonded to the carbon that carries the nitrogen. The C&ndash;H bonding pair becomes the new &pi; bond, and the C&ndash;N bond breaks, all in one step.</p>' +
+          '<div class="explain-box">The three methyl groups have no &beta; carbon, so they have no &beta; hydrogens. The only C&ndash;N bond that can break is the one to the original chain.</div>',
+        diagramHtml: '<!-- fig:hofmann-mechanism:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 470" role="img" aria-label="The E2 step of a Hofmann elimination. Hydroxide uses a lone pair to take a hydrogen from C1 of the sec-butyltrimethylammonium ion, the C–H bonding pair becomes the C1=C2 pi bond, and the C2–N bond breaks with its pair going to nitrogen. The products are but-1-ene, water and neutral trimethylamine."><rect class="fg-panel" x="0" y="0" width="340" height="300" rx="10"></rect><text class="fg-tag" x="170" y="22" text-anchor="middle" font-size="11">1 · one step, three curved arrows</text><line class="fg-bond" x1="104" y1="186" x2="166" y2="152"></line><line class="fg-bond" x1="166" y1="152" x2="228" y2="186"></line><line class="fg-bond" x1="228" y1="186" x2="290" y2="152"></line><line class="fg-bond" x1="166" y1="152" x2="166" y2="108"></line><line class="fg-bond" x1="152.58" y1="85.29" x2="130" y2="74"></line><line class="fg-bond" x1="179.42" y1="85.29" x2="202" y2="74"></line><line class="fg-bond" x1="166" y1="77" x2="166" y2="54"></line><circle class="fg-atom-warn" cx="166" cy="92" r="16"></circle><text class="fg-lbl" x="166" y="96.44" text-anchor="middle" font-size="12">N</text><text class="fg-lbl" x="146" y="120" text-anchor="middle" font-size="13">+</text><line class="fg-bond" x1="104" y1="186" x2="83.24" y2="224.33"></line><circle class="fg-atom" cx="78" cy="234" r="11"></circle><text class="fg-lbl" x="78" y="238.44" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="90" y="170" text-anchor="middle" font-size="11">β</text><text class="fg-tag" x="166" y="180" text-anchor="middle" font-size="11">α</text><text class="fg-lbl" x="40" y="296" text-anchor="middle" font-size="13">HO⁻</text><circle class="fg-lp" cx="44.5" cy="274" r="2.3"></circle><circle class="fg-lp" cx="35.5" cy="274" r="2.3"></circle><path class="fg-arrow" d="M46 270 Q66.16 264.75 67.29 251.97"></path><path class="fg-head" d="M68 244 L71.44 252.34 L63.15 251.6 Z"></path><path class="fg-arrow" d="M91 210 Q128 205.6 133.5 176.86"></path><path class="fg-head" d="M135 169 L137.58 177.64 L129.41 176.08 Z"></path><path class="fg-arrow" d="M172 140 Q185.7 126.43 182.36 115.64"></path><path class="fg-head" d="M180 108 L186.34 114.41 L178.39 116.87 Z"></path><text class="fg-tag-warn" x="262" y="222" text-anchor="middle" font-size="11">all three arrows</text><text class="fg-tag-warn" x="262" y="238" text-anchor="middle" font-size="11">move at once</text><line class="fg-arrow" x1="170" y1="304" x2="170" y2="330"></line><path class="fg-head" d="M170 338 L165.84 330 L174.16 330 Z"></path><rect class="fg-panel-good" x="0" y="342" width="340" height="128" rx="10"></rect><text class="fg-tag" x="170" y="364" text-anchor="middle" font-size="11">2 · the products</text><line class="fg-bond" x1="32" y1="416.54" x2="70" y2="394.54"></line><line class="fg-bond" x1="36" y1="423.46" x2="74" y2="401.46"></line><line class="fg-bond" x1="72" y1="398" x2="110" y2="420"></line><line class="fg-bond" x1="110" y1="420" x2="148" y2="398"></line><text class="fg-tag-good" x="91" y="452" text-anchor="middle" font-size="11">but-1-ene</text><text class="fg-lbl" x="208" y="414" text-anchor="middle" font-size="13">+ H₂O</text><text class="fg-lbl" x="284" y="414" text-anchor="middle" font-size="13">+ N(CH₃)₃</text><text class="fg-tag-good" x="288" y="436" text-anchor="middle" font-size="11">neutral</text></svg><figcaption>Hydroxide pulls the hydrogen off C1, and the nitrogen leaves C2 as a neutral molecule.</figcaption></figure><!-- fig:hofmann-mechanism:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
-            '<h2 class="step-title">How many equivalents of CH<sub>3</sub>I in the FIRST methylation?</h2>' +
-            '<p class="step-body">Count the hydrogens on nitrogen, then add one to quaternize. Before spectroscopy this number <i>was</i> the analysis: it reports the class of the amine directly.</p>' +
+            '<h2 class="step-title">How many equivalents of CH<sub>3</sub>I does each amine take?</h2>' +
+            '<p class="step-body">Count the hydrogens on nitrogen, then add one for the step that makes the quaternary salt.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -196,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Count the N–H hydrogens, then add one more for quaternization. A ring does not change that count — it changes what happens afterward.');
+                api.showFeedback(fb, false, 'Count the hydrogens on nitrogen, then add one for the step that makes the quaternary salt.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -204,8 +206,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. The count is N–H hydrogens plus one, and the cyclic case is the one that carries extra information.'
-                  : 'All four, first time — including piperidine, where the equivalents match a secondary amine but the ring shows up in how many rounds it takes to free the nitrogen.');
+                  ? 'All four. A primary amine takes three, a secondary amine two and a tertiary amine one.'
+                  : 'All four, first time. A primary amine takes three, a secondary amine two and a tertiary amine one.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -215,71 +217,104 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
+        eyebrow: 'Guided Practice',
         title: 'Why must the amine be methylated before it will eliminate?',
         options: [
-          'R<sub>2</sub>N<sup>&minus;</sup> is far too basic to leave',
-          'The amine is not nucleophilic enough',
-          'Methylation makes the &beta; hydrogens acidic',
-          'The nitrogen must become planar first'
+          'The group that would leave, H<sub>2</sub>N<sup>&minus;</sup>, is too strong a base to go',
+          'The methyl groups supply the &beta; hydrogens that the base removes',
+          'The nitrogen has to become flat before an E2 can start',
+          'An amine is too weak a nucleophile to react with hydroxide'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and it is the leaving-group logic from the substitution chapter applied unchanged: a good leaving group is the conjugate base of a strong acid, and an amide anion is the conjugate base of an amine, which is barely acidic at all. Quaternizing the nitrogen changes what departs from an anion to a <i>neutral</i> trialkylamine, and that is a workable leaving group. Methylation does also acidify the &beta; hydrogens, which matters later — but it is not why the reaction becomes possible.',
-        wrongFeedback: 'Ask what would have to leave with the electron pair if the amine eliminated as it stands, and how basic that species is.'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'Exhaustive methylation of 2-aminobutane, then Ag<sub>2</sub>O and heat. Major product?',
-        options: [
-          'But-1-ene',
-          'But-2-ene',
-          '2-Methylpropene',
-          'Butan-2-ol'
-        ],
-        correctIndex: 0,
-        correctFeedback: 'Correct. The nitrogen sits on C2, so the &beta; carbons are C1 — a CH<sub>3</sub> with three hydrogens and nothing crowding it — and C3, a CH<sub>2</sub> carrying a further methyl. Taking a hydrogen from C1 gives but-1-ene, monosubstituted; from C3 it would give but-2-ene, disubstituted and more stable. Hofmann conditions give the <i>less</i> substituted alkene, so but-1-ene is major. Four carbons either way, with trimethylamine released alongside.',
-        wrongFeedback: 'Identify the two &beta; carbons, work out what alkene each would give, and then remember which of the two this reaction prefers.'
+        correctFeedback: 'Correct. A good leaving group is a weak base, and the amide ion is one of the strongest bases there is. After methylation, what leaves is neutral trimethylamine, a far weaker base. The methyl groups have no &beta; hydrogens at all, and the E2 needs a base, not a nucleophile.',
+        wrongFeedback: 'Ask what would have to leave, with the electron pair, if the amine eliminated as it is. How strong a base is that?'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Structure determination, before there was any other way.',
-        bodyHtml: '<p class="step-body">This sequence was analysis long before it was synthesis. How much CH<sub>3</sub>I an unknown amine consumed reported its class outright:</p>' +
+        title: 'The product is the less substituted alkene.',
+        bodyHtml: '<p class="step-body">In the salt from butan-2-amine, the nitrogen sits on C2, so the &beta; carbons are C1 and C3. A hydrogen from C1 gives but-1-ene. A hydrogen from C3 gives but-2-ene, which is disubstituted and more stable.</p>' +
+          '<p class="step-body">Zaitsev&rsquo;s rule would predict but-2-ene. The Hofmann elimination gives mainly but-1-ene.</p>' +
+          '<div class="explain-box">This is the <b>Hofmann rule</b>: a Hofmann elimination gives mainly the less substituted alkene. An E2 cannot run backward, so the alkene that forms faster is the one you get. But-1-ene is the kinetic product, as in <a href="../lessons/kinetic-thermodynamic.html">Kinetic vs thermodynamic control</a>.</div>',
+        diagramHtml: '<!-- fig:hofmann-picks-the-open-side:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 392" role="img" aria-label="The sec-butyltrimethylammonium ion with its two beta carbons labeled: C1, a CH3 with three hydrogens, and C3, a CH2 with two. Losing a hydrogen from C1 gives but-1-ene, the major product. Losing one from C3 gives but-2-ene, the minor product, although it is the more stable alkene."><rect class="fg-panel" x="0" y="0" width="340" height="196" rx="10"></rect><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">the salt from butan-2-amine</text><line class="fg-bond" x1="80" y1="146" x2="140" y2="116"></line><line class="fg-bond" x1="140" y1="116" x2="200" y2="146"></line><line class="fg-bond" x1="200" y1="146" x2="260" y2="116"></line><line class="fg-bond" x1="140" y1="116" x2="140" y2="82"></line><line class="fg-bond" x1="126.43" y1="59.61" x2="106" y2="50"></line><line class="fg-bond" x1="153.57" y1="59.61" x2="174" y2="50"></line><circle class="fg-atom-warn" cx="140" cy="66" r="16"></circle><text class="fg-lbl" x="140" y="70.44" text-anchor="middle" font-size="12">N</text><text class="fg-lbl" x="158" y="90" text-anchor="middle" font-size="13">+</text><line class="fg-bond" x1="140" y1="50" x2="140" y2="34"></line><text class="fg-tag-good" x="80" y="172" text-anchor="middle" font-size="11">β · C1 · 3 H</text><text class="fg-tag" x="200" y="172" text-anchor="middle" font-size="11">β · C3 · 2 H</text><text class="fg-tag" x="272" y="102" text-anchor="middle" font-size="11">C4</text><text class="fg-tag" x="114" y="104" text-anchor="middle" font-size="11">C2</text><line class="fg-arrow" x1="120" y1="200" x2="97.66" y2="222.34"></line><path class="fg-head" d="M92 228 L94.72 219.4 L100.6 225.28 Z"></path><line class="fg-arrow" x1="220" y1="200" x2="242.34" y2="222.34"></line><path class="fg-head" d="M248 228 L239.4 225.28 L245.28 219.4 Z"></path><text class="fg-tag" x="56" y="214" text-anchor="middle" font-size="11">H from C1</text><text class="fg-tag" x="290" y="214" text-anchor="middle" font-size="11">H from C3</text><rect class="fg-panel-good" x="0" y="234" width="164" height="158" rx="10"></rect><line class="fg-bond" x1="23.91" y1="312.59" x2="59.91" y2="290.59"></line><line class="fg-bond" x1="28.09" y1="319.41" x2="64.09" y2="297.41"></line><line class="fg-bond" x1="62" y1="294" x2="98" y2="316"></line><line class="fg-bond" x1="98" y1="316" x2="134" y2="294"></line><text class="fg-tag-good" x="82" y="348" text-anchor="middle" font-size="11">but-1-ene</text><text class="fg-tag-good" x="82" y="366" text-anchor="middle" font-size="11">major</text><rect class="fg-panel" x="176" y="234" width="164" height="158" rx="10"></rect><line class="fg-bond" x1="200" y1="316" x2="236" y2="294"></line><line class="fg-bond" x1="236" y1="294" x2="272" y2="316"></line><line class="fg-bond" x1="239.57" y1="301.58" x2="263.63" y2="316.27"></line><line class="fg-bond" x1="272" y1="316" x2="308" y2="294"></line><text class="fg-tag" x="258" y="348" text-anchor="middle" font-size="11">but-2-ene</text><text class="fg-tag" x="258" y="366" text-anchor="middle" font-size="11">minor, more stable</text></svg><figcaption>C1 and C3 both sit next to C2, the carbon that carries the nitrogen.</figcaption></figure><!-- fig:hofmann-picks-the-open-side:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Why: the big leaving group gets in the way.',
+        bodyHtml: '<p class="step-body">The C&ndash;H and C&ndash;N bonds that break must be anti-periplanar, 180&deg; apart. To use a C3 hydrogen, the molecule has to turn so that hydrogen is anti to the nitrogen. That puts C4, a methyl group, gauche to N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub>, only 60&deg; away. C1 carries only hydrogens, so nothing gets squeezed. Hydroxide also reaches the exposed C1 hydrogens more easily.</p>' +
+          '<div class="explain-box">A second effect agrees. The positive nitrogen makes the &beta; hydrogens more acidic, so the C&ndash;H bond breaks ahead of the C&ndash;N bond and the &beta; carbon picks up some negative charge. Chemists call this transition state <b>E1cb-like</b>, after the two-step elimination in which the proton leaves first. Alkyl groups make that charge less stable, so C1, with no alkyl group besides C2, carries it best.</div>',
+        diagramHtml: '<!-- fig:hofmann-two-newmans:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 500" role="img" aria-label="Two Newman projections of the sec-butyltrimethylammonium ion, each with a beta hydrogen anti-periplanar to the nitrogen. Looking down C1 to C2, the front carbon carries only hydrogens, so nothing crowds the trimethylammonium group. Looking down C3 to C2, the front carbon carries a methyl group, C4, which has to sit gauche, 60 degrees, from the trimethylammonium group."><rect class="fg-panel-good" x="0" y="0" width="340" height="244" rx="10"></rect><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">1 · down the C1–C2 bond (C1 in front)</text><line class="fg-bond-hi" x1="150" y1="164" x2="150" y2="184"></line><text class="fg-lbl" x="150" y="202.5" text-anchor="middle" font-size="13">N⁺(CH₃)₃</text><line class="fg-bond" x1="186.37" y1="101" x2="203.69" y2="91"></line><text class="fg-lbl" x="215.82" y="88.5" text-anchor="middle" font-size="13">CH₂CH₃</text><line class="fg-bond" x1="113.63" y1="101" x2="96.31" y2="91"></line><text class="fg-lbl" x="84.18" y="88.5" text-anchor="middle" font-size="13">H</text><circle class="fg-atom" cx="150" cy="122" r="42"></circle><line class="fg-bond-hi" x1="150" y1="122" x2="150" y2="82"></line><text class="fg-lbl" x="150" y="69.5" text-anchor="middle" font-size="13">H</text><line class="fg-bond" x1="150" y1="122" x2="184.64" y2="142"></line><text class="fg-lbl" x="199.36" y="155" text-anchor="middle" font-size="13">H</text><line class="fg-bond" x1="150" y1="122" x2="115.36" y2="142"></line><text class="fg-lbl" x="100.64" y="155" text-anchor="middle" font-size="13">H</text><circle class="fg-lp-mut" cx="150" cy="122" r="3.5"></circle><text class="fg-tag-good" x="290" y="150" text-anchor="middle" font-size="11">H and N</text><text class="fg-tag-good" x="290" y="166" text-anchor="middle" font-size="11">anti, 180°</text><text class="fg-tag-good" x="170" y="232" text-anchor="middle" font-size="11">C1 holds only H: nothing is squeezed</text><rect class="fg-panel-warn" x="0" y="256" width="340" height="244" rx="10"></rect><text class="fg-tag" x="170" y="276" text-anchor="middle" font-size="11">2 · down the C3–C2 bond (C3 in front)</text><line class="fg-bond-hi" x1="150" y1="420" x2="150" y2="440"></line><text class="fg-lbl" x="150" y="458.5" text-anchor="middle" font-size="13">N⁺(CH₃)₃</text><line class="fg-bond" x1="186.37" y1="357" x2="203.69" y2="347"></line><text class="fg-lbl" x="215.82" y="344.5" text-anchor="middle" font-size="13">H</text><line class="fg-bond" x1="113.63" y1="357" x2="96.31" y2="347"></line><text class="fg-lbl" x="84.18" y="344.5" text-anchor="middle" font-size="13">CH₃</text><circle class="fg-atom" cx="150" cy="378" r="42"></circle><line class="fg-bond-hi" x1="150" y1="378" x2="150" y2="338"></line><text class="fg-lbl" x="150" y="325.5" text-anchor="middle" font-size="13">H</text><line class="fg-bond" x1="150" y1="378" x2="184.64" y2="398"></line><text class="fg-lbl" x="199.36" y="411" text-anchor="middle" font-size="13">CH₃</text><line class="fg-bond" x1="150" y1="378" x2="115.36" y2="398"></line><text class="fg-lbl" x="100.64" y="411" text-anchor="middle" font-size="13">H</text><circle class="fg-lp-mut" cx="150" cy="378" r="3.5"></circle><text class="fg-tag-warn" x="274" y="420" text-anchor="middle" font-size="11">CH₃ gauche</text><text class="fg-tag-warn" x="274" y="436" text-anchor="middle" font-size="11">to N, 60°</text><text class="fg-tag-warn" x="170" y="488" text-anchor="middle" font-size="11">the front CH₃ (C4) is squeezed</text></svg><figcaption>In both views the hydrogen that leaves (top, front carbon) points opposite the nitrogen (bottom, back carbon).</figcaption></figure><!-- fig:hofmann-two-newmans:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Guided Practice',
+        title: 'After the Hofmann elimination of the salt from butan-2-amine, the mixture is heated for much longer. What happens to the but-1-ene?',
+        options: [
+          'It stays but-1-ene; the E2 cannot run backward',
+          'It slowly turns into but-2-ene, the more stable alkene',
+          'It adds trimethylamine back to re-form the salt',
+          'It adds water across the C=C to give butan-2-ol'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The product ratio is set by which alkene forms faster, and nothing in the flask turns one alkene into the other. More heat does not make this reaction favor the more stable but-2-ene.',
+        wrongFeedback: 'Can an E2 run backward? If it cannot, what decides which alkene you end up with?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'Exhaustive methylation of 3-methylbutan-2-amine, then Ag<sub>2</sub>O, water and heat. What is the major alkene?',
+        diagramHtml: '<!-- fig:l-hofmann-quiz-amine:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 200" role="img" aria-label="3-Methylbutan-2-amine: a four-carbon chain numbered C1 to C4, with NH2 on C2 and a methyl group on C3."><line class="fg-bond" x1="70" y1="122" x2="130" y2="92"></line><line class="fg-bond" x1="130" y1="92" x2="190" y2="122"></line><line class="fg-bond" x1="190" y1="122" x2="250" y2="92"></line><line class="fg-bond" x1="190" y1="122" x2="190" y2="170"></line><line class="fg-bond" x1="130" y1="92" x2="130" y2="58"></line><circle class="fg-atom-hi" cx="130" cy="42" r="17"></circle><text class="fg-lbl" x="130" y="45.52" text-anchor="middle" font-size="9.5">NH₂</text><text class="fg-tag" x="70" y="146" text-anchor="middle" font-size="11">C1</text><text class="fg-tag" x="106" y="80" text-anchor="middle" font-size="11">C2</text><text class="fg-tag" x="190" y="100" text-anchor="middle" font-size="11">C3</text><text class="fg-tag" x="250" y="76" text-anchor="middle" font-size="11">C4</text><text class="fg-tag" x="170" y="194" text-anchor="middle" font-size="11">3-methylbutan-2-amine</text></svg><figcaption>The CH₃ drawn below C3 is a branch, not part of the numbered chain.</figcaption></figure><!-- fig:l-hofmann-quiz-amine:end -->',
+        options: [
+          '3-Methylbut-1-ene',
+          '2-Methylbut-2-ene',
+          '2-Methylbut-1-ene',
+          '3-Methylbutan-2-ol'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. The nitrogen ends up on C2, so the &beta; carbons are C1 and C3. C1 is a CH<sub>3</sub> with three open hydrogens. C3 has one hydrogen and carries two methyl groups. A hydrogen from C1 gives 3-methylbut-1-ene, monosubstituted. A hydrogen from C3 would give 2-methylbut-2-ene, trisubstituted and more stable. The Hofmann rule picks 3-methylbut-1-ene.',
+        wrongFeedback: 'Find the two &beta; carbons next to C2. Work out the alkene each one gives, then pick the one with fewer carbon groups on its C=C.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Working out structures, before spectroscopy.',
+        bodyHtml: '<p class="step-body">Before spectroscopy, chemists used this sequence to work out the structure of an unknown amine. The CH<sub>3</sub>I it used up gave its class:</p>' +
           '<ul class="step-body">' +
           '<li><b>Three</b> equivalents &rarr; primary, RNH<sub>2</sub></li>' +
           '<li><b>Two</b> &rarr; secondary, R<sub>2</sub>NH</li>' +
           '<li><b>One</b> &rarr; tertiary, R<sub>3</sub>N</li>' +
           '</ul>' +
-          '<p class="step-body">Identifying the alkenes released then showed what the skeleton around the nitrogen looked like. A <b>cyclic</b> amine is the informative case: two C&ndash;N bonds hold the nitrogen, so the first elimination only opens the ring and the nitrogen is still attached. Freeing it takes a second round &mdash; so a compound needing two rounds had its nitrogen in a ring.</p>' +
-          '<div class="explain-box">It is worth seeing what this cost. The method consumed the sample, took weeks, and was only ever as reliable as the identification of the fragments &mdash; and alkaloid structures were argued this way for decades. NMR now answers the same question in minutes, on a milligram, without destroying anything.</div>'
+          '<p class="step-body">A <b>cyclic</b> amine gave extra information. Two C&ndash;N bonds hold the nitrogen of piperidine in its ring. The first elimination breaks one of them, so the ring opens but the nitrogen stays attached. A second round frees it. An amine that needed two rounds had its nitrogen in a ring.</p>' +
+          '<div class="explain-box">The method used up the sample and was only as reliable as the identification of each fragment. Even so, chemists worked out many alkaloid structures (the nitrogen compounds of plants) this way. NMR spectroscopy now answers the same questions in minutes, on a few milligrams, without destroying anything.</div>',
+        diagramHtml: '<!-- fig:cyclic-amine-degradation:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 540" role="img" aria-label="Piperidine, a six-membered ring containing an NH, takes two CH3I to become the N,N-dimethylpiperidinium ion. In round 1, Ag2O, water and heat break one ring C–N bond, giving N,N-dimethylpent-4-en-1-amine: the ring is open but the nitrogen is still attached. In round 2, one more CH3I, then Ag2O and heat, break the second C–N bond, giving penta-1,4-diene and trimethylamine."><rect class="fg-panel" x="0" y="0" width="340" height="176" rx="10"></rect><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">methylate: two CH₃I, K₂CO₃</text><line class="fg-bond" x1="48.14" y1="82" x2="32.56" y2="91"></line><line class="fg-bond" x1="32.56" y1="91" x2="32.56" y2="125"></line><line class="fg-bond" x1="32.56" y1="125" x2="62" y2="142"></line><line class="fg-bond" x1="62" y1="142" x2="91.44" y2="125"></line><line class="fg-bond" x1="91.44" y1="125" x2="91.44" y2="91"></line><line class="fg-bond" x1="91.44" y1="91" x2="75.86" y2="82"></line><circle class="fg-atom-hi" cx="62" cy="74" r="16"></circle><text class="fg-lbl" x="62" y="77.89" text-anchor="middle" font-size="10.5">NH</text><text class="fg-tag" x="62" y="166" text-anchor="middle" font-size="11">piperidine</text><line class="fg-arrow" x1="106" y1="108" x2="152" y2="108"></line><path class="fg-head" d="M160 108 L152 112.16 L152 103.84 Z"></path><line class="fg-bond" x1="222.14" y1="94" x2="208.29" y2="102"></line><line class="fg-bond" x1="208.29" y1="102" x2="208.29" y2="134"></line><line class="fg-bond" x1="208.29" y1="134" x2="236" y2="150"></line><line class="fg-bond" x1="236" y1="150" x2="263.71" y2="134"></line><line class="fg-bond" x1="263.71" y1="134" x2="263.71" y2="102"></line><line class="fg-bond-hi" x1="263.71" y1="102" x2="249.86" y2="94"></line><line class="fg-bond" x1="226.89" y1="74.08" x2="210" y2="52"></line><line class="fg-bond" x1="245.11" y1="74.08" x2="262" y2="52"></line><circle class="fg-atom-warn" cx="236" cy="86" r="16"></circle><text class="fg-lbl" x="236" y="90.44" text-anchor="middle" font-size="12">N</text><text class="fg-lbl" x="260" y="78" text-anchor="middle" font-size="13">+</text><text class="fg-tag-warn" x="302" y="132" text-anchor="middle" font-size="11">this C–N</text><text class="fg-tag-warn" x="302" y="148" text-anchor="middle" font-size="11">breaks</text><text class="fg-tag" x="236" y="170" text-anchor="middle" font-size="11">the quaternary salt</text><line class="fg-arrow" x1="170" y1="182" x2="170" y2="214"></line><path class="fg-head" d="M170 222 L165.84 214 L174.16 214 Z"></path><text class="fg-tag-warn" x="182" y="206" text-anchor="start" font-size="11">round 1: Ag₂O, H₂O, heat</text><rect class="fg-panel-warn" x="0" y="228" width="340" height="132" rx="10"></rect><text class="fg-tag" x="170" y="248" text-anchor="middle" font-size="11">the ring is open; N is still attached</text><line class="fg-bond" x1="32" y1="310.54" x2="70" y2="288.54"></line><line class="fg-bond" x1="36" y1="317.46" x2="74" y2="295.46"></line><line class="fg-bond" x1="72" y1="292" x2="110" y2="314"></line><line class="fg-bond" x1="110" y1="314" x2="148" y2="292"></line><line class="fg-bond" x1="148" y1="292" x2="186" y2="314"></line><line class="fg-bond" x1="186" y1="314" x2="211.98" y2="299.71"></line><line class="fg-bond" x1="238.8" y1="299.82" x2="262" y2="314"></line><line class="fg-bond" x1="238.8" y1="284.18" x2="262" y2="270"></line><circle class="fg-atom-hi" cx="226" cy="292" r="16"></circle><text class="fg-lbl" x="226" y="296.44" text-anchor="middle" font-size="12">N</text><text class="fg-tag" x="170" y="348" text-anchor="middle" font-size="11">N,N-dimethylpent-4-en-1-amine</text><line class="fg-arrow" x1="170" y1="366" x2="170" y2="398"></line><path class="fg-head" d="M170 406 L165.84 398 L174.16 398 Z"></path><text class="fg-tag-warn" x="250" y="382" text-anchor="middle" font-size="11">round 2: CH₃I,</text><text class="fg-tag-warn" x="250" y="398" text-anchor="middle" font-size="11">then Ag₂O, H₂O, heat</text><rect class="fg-panel-good" x="0" y="412" width="340" height="128" rx="10"></rect><text class="fg-tag" x="170" y="432" text-anchor="middle" font-size="11">the nitrogen is free</text><line class="fg-bond" x1="23.91" y1="490.59" x2="59.91" y2="468.59"></line><line class="fg-bond" x1="28.09" y1="497.41" x2="64.09" y2="475.41"></line><line class="fg-bond" x1="62" y1="472" x2="98" y2="494"></line><line class="fg-bond" x1="98" y1="494" x2="134" y2="472"></line><line class="fg-bond" x1="136.09" y1="468.59" x2="172.09" y2="490.59"></line><line class="fg-bond" x1="131.91" y1="475.41" x2="167.91" y2="497.41"></line><text class="fg-tag-good" x="98" y="526" text-anchor="middle" font-size="11">penta-1,4-diene</text><text class="fg-lbl" x="262" y="488" text-anchor="middle" font-size="13">+ N(CH₃)₃</text></svg><figcaption>The first round breaks the highlighted C–N bond and opens the ring. The second round breaks the other one.</figcaption></figure><!-- fig:cyclic-amine-degradation:end -->'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
-        title: 'An unknown amine takes two equivalents of CH<sub>3</sub>I in the first methylation, and needs two full rounds of elimination to release its nitrogen. What does that tell you?',
+        eyebrow: 'Independent Practice',
+        title: 'An unknown amine takes two equivalents of CH<sub>3</sub>I in the first methylation, and needs two rounds of elimination to lose its nitrogen. What does that tell you?',
         options: [
-          'It is a secondary amine, and cyclic',
-          'It is a primary amine in a ring',
-          'It is a tertiary amine, and cyclic',
-          'It is a secondary amine, not cyclic'
+          'A secondary amine with its nitrogen in a ring',
+          'A primary amine with its nitrogen in a ring',
+          'A tertiary amine whose nitrogen sits in a ring',
+          'A secondary amine with no ring'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and the two observations answer different questions. The equivalent count reads the N&ndash;H hydrogens: two equivalents means one N&ndash;H plus quaternization, so the amine is secondary. The number of rounds reads the connectivity: a nitrogen held by two C&ndash;N bonds to the same chain is still attached after the first elimination opens the ring, so it takes a second round to leave. Neither measurement on its own would have settled it — which is what doing structure determination this way was actually like.',
-        wrongFeedback: 'Two separate facts here. One of them counts hydrogens on nitrogen; the other counts carbon&ndash;nitrogen bonds. Work out what each is telling you before combining them.'
+        correctFeedback: 'Correct. Two equivalents means one N&ndash;H plus the methylation that makes the salt, so the amine is secondary. Two rounds means two C&ndash;N bonds held the nitrogen to the carbon chain, so the first elimination only opened a ring. Neither observation would settle the structure alone.',
+        wrongFeedback: 'The two facts answer different questions. The CH<sub>3</sub>I count tells you about hydrogens on nitrogen. The number of rounds tells you about C&ndash;N bonds. Work out each one first.'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'The E2 chapter said Zaitsev is a tendency rather than a law. What does this reaction add to that?',
+        title: 'E2 showed that Zaitsev&rsquo;s rule can be overridden. What does the Hofmann elimination add?',
         options: [
-          'Bulk on the leaving group can flip it, not just bulk on the base',
-          'Zaitsev never applies to nitrogen compounds',
-          'Heat always favors the less substituted alkene',
-          'Hydroxide is too weak a base to follow Zaitsev'
+          'Bulk on the leaving group can override it too',
+          'Zaitsev&rsquo;s rule does not apply to nitrogen compounds',
+          'Heat favors the less substituted alkene in any E2',
+          'Hydroxide is too weak a base to follow Zaitsev&rsquo;s rule'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and it is worth seeing as the third distinct way the rule breaks. The E2 chapter broke it with <b>geometry</b>: an anti-periplanar hydrogen has to be available, and in a locked ring the only one available may not be the one Zaitsev wants. It broke it again with a <b>bulky base</b>, tert-butoxide reaching the accessible proton instead of the one that gives the better alkene. This reaction breaks it a third way, with bulk on the <b>leaving group</b> — and the leaving group is part of the substrate, so it is not something you choose when you pick your reagents. The habit to take away is to size up both partners before reaching for the more substituted alkene. Zaitsev describes what happens when nothing is in the way; it was never a statement about which product is more stable winning by right.'
+        correctFeedback: 'Correct. E2 showed two ways past Zaitsev: geometry, when only one &beta; hydrogen can be anti-periplanar, and a bulky base such as <i>tert</i>-butoxide. The Hofmann elimination adds a third, bulk on the leaving group. The leaving group is part of the substrate, so you do not choose it the way you choose a base. Before you predict the more substituted alkene, check the size of both.'
       }
     ]
   });

@@ -50,12 +50,13 @@
     /* Step 2 counts equivalents, which is the historical assay. 3 is the
        leaving-group argument, 4 the worked alkene, 6 the two-observation
        deduction, 7 the third way Zaitsev breaks. */
-    'hofmann-elimination': { n:8, steps:{
+    'hofmann-elimination': { n:11, steps:{
       2:['hofmann-elimination-rule'],
       3:['hofmann-elimination-rule','leaving-group-ability'],
-      4:['hofmann-elimination-rule','anti-periplanar-geometry'],
       6:['hofmann-elimination-rule'],
-      7:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
+      7:['hofmann-elimination-rule','anti-periplanar-geometry'],
+      9:['hofmann-elimination-rule'],
+      10:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
 
     'alpha-halogenation': { n:11, steps:{
       3:['alpha-halogenation-control','alpha-acidity'],
