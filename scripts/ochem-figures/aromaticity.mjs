@@ -547,27 +547,6 @@ function tubDraw(cx, cy, scale, o = {}) {
   const cross = (u, v) => [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]];
   const pts = TUB.map(proj);
   let s = '';
-  /* p orbitals: two lobes along the projected normal. */
-  const lobes = [];
-  TUB.forEach((p, i) => {
-    const prev = TUB[(i + 7) % 8], next = TUB[(i + 1) % 8];
-    let nrm = cross(sub(prev, p), sub(next, p));
-    const L = Math.hypot(...nrm); nrm = nrm.map((c) => c / L);
-    /* Point the normal away from the ring's center axis (up-ish). */
-    if (nrm[2] < 0) nrm = nrm.map((c) => -c);
-    const tip = proj([p[0] + nrm[0], p[1] + nrm[1], p[2] + nrm[2]]);
-    const base = pts[i];
-    const dx = tip.x - base.x, dy = tip.y - base.y;
-    const len = Math.hypot(dx, dy) || 1;
-    const ang = (Math.atan2(dy, dx) * 180) / Math.PI;
-    const lob = (sign, cls) => {
-      const c = P(base.x + (dx / len) * (o.lobe ?? 11) * sign * 1.08, base.y + (dy / len) * (o.lobe ?? 11) * sign * 1.08);
-      return `<ellipse class="${cls}" cx="${r2(c.x)}" cy="${r2(c.y)}" rx="${o.lobe ?? 11}" ry="6" fill-opacity="0.18" transform="rotate(${r2(ang)} ${r2(c.x)} ${r2(c.y)})"></ellipse>`;
-    };
-    lobes.push({ depth: base.depth, s: lob(1, 'fg-orb') + lob(-1, 'fg-orb-alt') });
-  });
-  lobes.sort((p, q) => q.depth - p.depth);
-  if (!o.noLobes) for (const l of lobes) s += l.s;
   /* Bonds, far ones first. C1=C2, C3=C4, C5=C6, C7=C8 are double. */
   const edges = [];
   for (let i = 0; i < 8; i++) edges.push({ i, j: (i + 1) % 8, dbl: i % 2 === 0, depth: (pts[i].depth + pts[(i + 1) % 8].depth) / 2 });
@@ -580,6 +559,30 @@ function tubDraw(cx, cy, scale, o = {}) {
     s += e.dbl ? bond(A, B, { rFrom: 0, rTo: 0, order: 2, gap: 2.6, cls }) : skb(A, B, cls);
   }
   for (const p of pts) s += `<circle class="fg-lp" cx="${r2(p.x)}" cy="${r2(p.y)}" r="2.6"></circle>`;
+  return s;
+}
+/* One single bond of the tub, close up and schematic: a C=C lying flat on
+   the left with upright p orbitals, joined through the highlighted single
+   bond to a C=C tilted up at 55 degrees, whose p orbitals stand
+   perpendicular to it. */
+function closeUp(cx, cy) {
+  let s = '';
+  const L1 = P(cx - 58, cy + 18), L2 = P(cx - 14, cy + 18);
+  const R1 = P(cx + 18, cy - 2), u = P(Math.cos(rad(55)), -Math.sin(rad(55)));
+  const R2 = P(R1.x + u.x * 36, R1.y + u.y * 36);
+  const nx = -u.y, ny = u.x; /* perpendicular to the tilted C=C */
+  for (const q of [L1, L2]) s += pUp(q.x, q.y, { rx: 7, ry: 14 });
+  const ang = (Math.atan2(ny, nx) * 180) / Math.PI;
+  for (const q of [R1, R2]) {
+    for (const [sg, cls] of [[-1, 'fg-orb'], [1, 'fg-orb-alt']]) {
+      const c = P(q.x + nx * 16 * sg, q.y + ny * 16 * sg);
+      s += `<ellipse class="${cls}" cx="${r2(c.x)}" cy="${r2(c.y)}" rx="14" ry="7" fill-opacity="0.18" transform="rotate(${r2(ang)} ${r2(c.x)} ${r2(c.y)})"></ellipse>`;
+    }
+  }
+  s += bond(L1, L2, { rFrom: 0, rTo: 0, order: 2, gap: 2.6 });
+  s += bond(R1, R2, { rFrom: 0, rTo: 0, order: 2, gap: 2.6 });
+  s += skb(L2, R1, 'fg-bond-hi');
+  for (const q of [L1, L2, R1, R2]) s += `<circle class="fg-lp" cx="${r2(q.x)}" cy="${r2(q.y)}" r="2.6"></circle>`;
   return s;
 }
 function flatRow(cx, y, step) {
@@ -595,8 +598,8 @@ FIGURES.push({
   id: 'cot-tub',
   section: 'aromaticity',
   anchor: '',
-  alt: 'Left: cyclooctatetraene as it would be if flat, seen edge-on: eight carbons in a line with eight parallel p orbitals, 8 π electrons in one loop, a 4n count, antiaromatic; the flat octagon would also need 135 degree angles. Right: real cyclooctatetraene, a tub. Two C=C bonds form the raised rims and two form the floor. The p orbitals drawn on each carbon point in different directions on either side of each single bond, so they barely overlap there.',
-  viewBox: '0 0 760 316',
+  alt: 'Left: cyclooctatetraene as it would be if flat, seen edge-on: eight carbons in a line with eight parallel p orbitals, 8 π electrons in one loop, a 4n count, antiaromatic; the flat octagon would also need 135 degree angles. Right: real cyclooctatetraene, a tub, with the far bonds drawn faint and the near bonds bold; two C=C bonds form the raised rims and two form the floor. Below it, one single bond of the tub close up: a C=C lying flat with upright p orbitals joins, through the highlighted single bond, a C=C tilted up steeply, whose p orbitals stand perpendicular to it. The two sets point in different directions and barely overlap.',
+  viewBox: '0 0 760 396',
   build() {
     let s = '';
     s += tg(190, 32, 'IF COT WERE FLAT (IT IS NOT)');
@@ -606,25 +609,27 @@ FIGURES.push({
     s += sm(190, 242, '8 π electrons: 4n (n = 2)');
     s += tg(190, 266, 'WOULD BE ANTIAROMATIC', 'fg-tag-warn');
     s += sm(190, 288, 'and each angle would be 135°, far from sp²’s 120°');
-    s += rule(380, 44, 380, 296);
+    s += rule(380, 44, 380, 384);
     s += tg(570, 32, 'REAL COT: A TUB');
-    s += tubDraw(570, 112, 58);
-    s += tg(570, 82, 'back', 'fg-tag-mut');
-    s += tg(570, 212, 'front');
-    s += lbl(570, 244, 'neighboring C=C bonds tilt apart');
-    s += sm(570, 264, 'across each single bond the p orbitals barely overlap');
-    s += tg(570, 288, 'NONAROMATIC: FOUR SEPARATE C=C', 'fg-tag-mut');
+    s += tubDraw(570, 100, 50);
+    s += tg(570, 74, 'back', 'fg-tag-mut');
+    s += tg(570, 178, 'front');
+    s += tg(570, 208, 'ONE SINGLE BOND, CLOSE UP');
+    s += closeUp(570, 272);
+    s += lbl(570, 338, 'p orbitals point different ways');
+    s += sm(570, 358, 'across each single bond, so they barely overlap');
+    s += tg(570, 380, 'NONAROMATIC: FOUR SEPARATE C=C', 'fg-tag-mut');
     return s;
   },
-  caption: 'Left: the flat ring that cyclooctatetraene avoids. Right: the tub it adopts, with a p orbital drawn on each carbon. Compare the directions of the p orbitals on either side of each single bond.',
+  caption: 'Left: the flat ring that cyclooctatetraene avoids. Right: the tub it adopts, and one of its single bonds close up (a schematic). Compare the p orbitals on either side of the highlighted bond.',
 });
 
 FIGURES.push({
   id: 'l-cot',
   lessons: ['aromaticity'],
   anchor: '',
-  alt: 'Top: cyclooctatetraene drawn as if flat, edge-on, with eight parallel p orbitals: 8 π electrons, a 4n count, which would be antiaromatic. Bottom: real cyclooctatetraene, a tub; the p orbitals on either side of each single bond point in different directions and barely overlap.',
-  viewBox: '0 0 340 488',
+  alt: 'Top: cyclooctatetraene drawn as if flat, edge-on, with eight parallel p orbitals: 8 π electrons, a 4n count, which would be antiaromatic. Bottom: real cyclooctatetraene, a tub, far bonds faint and near bonds bold; below it, one single bond close up, where the p orbitals on the flat C=C stand upright and those on the tilted C=C stand perpendicular to it, so the two sets point in different directions and barely overlap.',
+  viewBox: '0 0 340 586',
   build() {
     let s = '';
     s += tg(170, 22, 'IF COT WERE FLAT (IT IS NOT)');
@@ -633,11 +638,13 @@ FIGURES.push({
     s += tg(170, 200, 'WOULD BE ANTIAROMATIC', 'fg-tag-warn');
     s += rule(20, 218, 320, 218);
     s += tg(170, 244, 'REAL COT: A TUB');
-    s += tubDraw(170, 322, 54);
-    s += tg(170, 290, 'back', 'fg-tag-mut');
-    s += tg(170, 420, 'front');
-    s += lbl(170, 448, 'p orbitals tilt apart at single bonds');
-    s += tg(170, 470, 'NONAROMATIC: FOUR SEPARATE C=C', 'fg-tag-mut');
+    s += tubDraw(170, 308, 50);
+    s += tg(170, 282, 'back', 'fg-tag-mut');
+    s += tg(170, 386, 'front');
+    s += tg(170, 416, 'ONE SINGLE BOND, CLOSE UP');
+    s += closeUp(170, 478);
+    s += lbl(170, 548, 'p orbitals point different ways');
+    s += tg(170, 570, 'NONAROMATIC: FOUR SEPARATE C=C', 'fg-tag-mut');
     return s;
   },
   caption: 'Flat, the eight p orbitals would form one loop. In the tub they do not.',
