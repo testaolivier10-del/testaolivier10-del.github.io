@@ -94,14 +94,13 @@ function carbonyl(c, { len = 56, subs = [], cKind = 'plain', oKind = 'plain', lp
   return { s, o, ends };
 }
 
-/* An sp² center seen edge-on: its plane is the dashed line, two of its three
+/* An sp² center seen edge-on: two of its three
    groups lie left and right in that plane (the third points at the reader),
    and the empty p orbital stands above and below. */
 function edgeOnEmpty(c, l, gL, gR, { off = 44, ry = 30, len = 62, kind = 'warn', plus = true } = {}) {
   let s = '';
   s += lobeE(c.x, c.y - off, 19, ry);
   s += lobeE(c.x, c.y + off, 19, ry);
-  s += `<line class="fg-dash" x1="${r2(c.x - len - 30)}" y1="${r2(c.y)}" x2="${r2(c.x + len + 30)}" y2="${r2(c.y)}"></line>`;
   s += arm(c, 180, len, gL).s + arm(c, 0, len, gR).s;
   s += atom(c.x, c.y, l, { kind });
   if (plus) s += charge(at(c, 28, 34).x, at(c, 28, 34).y + 5, '+');
@@ -146,7 +145,7 @@ FIGURES.push({
   id: 'carbon-electrophiles',
   section: 'electrophiles',
   anchor: '',
-  alt: 'Left: bromomethane, a carbon with three hydrogens and a bromine. The carbon is marked delta plus and the bromine delta minus; the bromine is labeled as the leaving group. Right: the tert-butyl cation seen edge-on. Its carbon carries a plus charge, two methyl groups lie left and right in a flat plane drawn as a dashed line, and an empty p orbital stands above and below the plane.',
+  alt: 'Left: bromomethane, a carbon with three hydrogens and a bromine. The carbon is marked delta plus and the bromine delta minus; the bromine is labeled as the leaving group. Right: the tert-butyl cation seen edge-on. Its carbon carries a plus charge, two methyl groups lie left and right in the flat plane, and an empty p orbital stands above and below the plane.',
   viewBox: '0 0 760 262',
   build() {
     let s = '';
@@ -446,7 +445,7 @@ FIGURES.push({
     s += arm(n3, 30, 44, 'H', { rFrom: 15, r: 12 }).s + arm(n3, 270, 44, 'H', { rFrom: 15, r: 12 }).s;
     s += lp(n3, 210);
     s += atom(n3.x, n3.y, 'N');
-    s += curve(lpTip(n3, 210), P((c3.x + n3.x) / 2 - 4, (c3.y + n3.y) / 2 + 9), { bow: -10, size: 7 });
+    s += curve(at(n3, 210, 24), P((c3.x + n3.x) / 2 - 2, (c3.y + n3.y) / 2 + 3), { bow: -10, size: 7 });
     s += piToO(c3, k3.o);
     s += lbl(130, 496, 'acetamide');
 
@@ -663,7 +662,7 @@ FIGURES.push({
   id: 'l-elec-reagents',
   lessons: ['electrophiles'],
   anchor: '',
-  alt: 'Top: H–Br with the hydrogen marked delta plus and the bromine delta minus. Middle: Br2 on its own, no partial charges. Bottom: Br2 held end-on above an ethene molecule seen edge-on; an arrow shows the Br–Br pair shifting to the far bromine, which is delta minus, leaving the near bromine delta plus.',
+  alt: 'Top: H–Br with the hydrogen marked delta plus and the bromine delta minus. Middle: Br2 on its own, no partial charges. Bottom: Br2 held end-on above an ethene molecule seen edge-on, whose filled pi orbital is drawn as two lilac lobes above and below the C–C bond; an arrow shows the Br–Br pair shifting to the far bromine, which is delta minus, leaving the near bromine delta plus.',
   viewBox: '0 0 340 516',
   build() {
     let s = '';

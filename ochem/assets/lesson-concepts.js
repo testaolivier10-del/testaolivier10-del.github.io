@@ -571,11 +571,12 @@
       6:['eas-mechanism','carbocation-stability'],
       7:['eas-mechanism','carbocation-stability'] } },
 
-    'electron-rich-poor': { n:7, steps:{
-      1:['electron-rich-poor'],
-      2:['electron-rich-poor','nucleophile-recognition'],
-      4:['electron-rich-poor','electrophile-recognition'],
-      6:['electron-rich-poor','electrophile-recognition'] } },
+    'electron-rich-poor': { n:11, steps:{
+      2:['electron-rich-poor'],
+      3:['electron-rich-poor','nucleophile-recognition'],
+      5:['electron-rich-poor','electrophile-recognition','leaving-group-ability'],
+      8:['electron-rich-poor','electrophile-recognition','resonance-delocalization'],
+      10:['electron-rich-poor','electrophile-recognition'] } },
 
     'electronegativity': { n:14, steps:{
       2:['electronegativity-trend'],
