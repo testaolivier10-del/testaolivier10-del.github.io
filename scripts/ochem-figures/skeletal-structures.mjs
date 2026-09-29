@@ -106,7 +106,7 @@ function butanolSkeletal(cx, cy) {
 FIGURES.push({
   id: 'skeletal-notation',
   section: TOPIC,
-  anchor: '<h3>Four rules, and the third is the one people get wrong</h3>',
+  anchor: '<h3>Four rules for reading the drawing</h3>',
   viewBox: '0 0 760 232',
   alt: 'CH3CH2CH2CH2OH drawn three ways. Left, the full Lewis structure: four carbons in a row, each with its hydrogens drawn, then an oxygen with its H and two lone pairs. Middle, the condensed formula. Right, the skeletal structure: a zigzag of three lines ending in a fourth line to OH, with CH3 and CH2 written in small letters at the unlabeled end and corners.',
   build() {
@@ -164,12 +164,12 @@ FIGURES.push({
     s += chain(v);
     v.forEach((p, i) => {
       const end = i === 0 || i === 5;
-      s += `<circle class="${end ? 'fg-atom-warn' : 'fg-atom-hi'}" cx="${f2(p.x)}" cy="${f2(p.y)}" r="5"></circle>`;
+      s += `<circle class="fg-atom-hi" cx="${f2(p.x)}" cy="${f2(p.y)}" r="${end ? 7 : 5}"></circle>`;
       const q = at(p, i % 2 ? 270 : 90, i % 2 ? 16 : 24);
       s += text(q.x, q.y + 4, String(i + 1), { cls: 'fg-lbl', size: 13 });
     });
-    s += warn(60, 136, 'end');
-    s += warn(280, 136, 'end');
+    s += good(60, 136, 'end');
+    s += good(280, 136, 'end');
     s += plain(170, 136, '5 lines, 6 carbons');
     return s;
   },
@@ -250,7 +250,7 @@ const MULTI = [
 FIGURES.push({
   id: 'skeletal-multiple-bonds',
   section: TOPIC,
-  anchor: '<h3>Four rules, and the third is the one people get wrong</h3>',
+  anchor: '<h3>Four rules for reading the drawing</h3>',
   viewBox: '0 0 760 222',
   alt: 'Three skeletal drawings with the hydrogen count written at each carbon. CH3–CH=CH2: CH3, CH, CH2. CH3–C≡C–CH3, drawn as one straight line: CH3, C, C, CH3. CH3–CH2–C≡CH, a zigzag that turns into a straight line at the triple bond: CH3, CH2, C, CH.',
   build() {
@@ -304,13 +304,16 @@ function carbanion(cx, cy, filled) {
   [270, 150, 30].forEach((ang, i) => { A['e' + i] = { ...at(A.c, ang, 36), l: '' }; B.push(['c', 'e' + i]); });
   return mol({ atoms: A, bonds: B, lp: filled ? [['c', 90]] : [], charges: [['c', '−', 330, filled ? 26 : 16]] });
 }
-function alkoxide(cx, cy, filled) {
-  const A = {
+function alkoxide(cx, cy, filled, chain2 = false) {
+  const A = chain2 ? {
     a: { x: cx - 44, y: cy + 11, l: '' },
     b: { x: cx - 6, y: cy - 11, l: '' },
     o: { x: cx + 32, y: cy + 11, l: 'O', k: filled ? 'hi' : undefined },
+  } : {
+    b: { x: cx - 24, y: cy - 11, l: '' },
+    o: { x: cx + 14, y: cy + 11, l: 'O', k: filled ? 'hi' : undefined },
   };
-  const m = { atoms: A, bonds: [['a', 'b'], ['b', 'o']] };
+  const m = { atoms: A, bonds: chain2 ? [['a', 'b'], ['b', 'o']] : [['b', 'o']] };
   if (filled) { m.lp = [['o', 300], ['o', 30], ['o', 120]]; m.charges = [['o', '−', 345, 33]]; }
   else m.charges = [['o', '−', 315, 22]];
   return mol(m);
@@ -324,7 +327,7 @@ function ammonium(cx, cy, filled) {
 const CHARGED = [
   { t: 'carbocation', draw: cation, tags: ['3 bonds, no H', 'no lone pair'] },
   { t: 'carbanion', draw: carbanion, tags: ['3 bonds, no H', 'one lone pair'] },
-  { t: 'O⁻ with one line', draw: alkoxide, tags: ['1 bond, no H', 'three lone pairs'] },
+  { t: 'O⁻ with one line', draw: (x, y, f) => alkoxide(x, y, f), tags: ['1 bond, no H', 'three lone pairs'] },
   { t: 'N⁺ with four lines', draw: ammonium, tags: ['4 bonds, no H', 'no lone pair'] },
 ];
 
@@ -333,7 +336,7 @@ FIGURES.push({
   section: TOPIC,
   anchor: '<h3>Charged atoms: what a + or a &minus; does to the hidden half</h3>',
   viewBox: '0 0 760 300',
-  alt: 'Four charged atoms, each drawn skeletally on top and filled in below. Carbocation: a carbon with three lines and a plus; filled in, no H and no lone pair. Carbanion: a carbon with three lines and a minus; filled in, one lone pair and no H. An oxygen with one line and a minus; filled in, three lone pairs. A nitrogen with four lines and a plus; filled in, no H and no lone pair.',
+  alt: 'Four charged atoms, each drawn skeletally on top and filled in below. Carbocation: a carbon with three lines and a plus; filled in, no H and no lone pair. Carbanion: a carbon with three lines and a minus; filled in, one lone pair and no H. Methoxide, a single line ending in an oxygen with a minus; filled in, three lone pairs. A nitrogen with four lines and a plus; filled in, no H and no lone pair.',
   build() {
     let s = '';
     CHARGED.forEach((c, i) => {
@@ -577,7 +580,7 @@ FIGURES.push({
   section: TOPIC,
   anchor: 'get their own notation.</p>',
   viewBox: '0 0 760 220',
-  alt: 'Left: three carbons of a zigzag, with the angle at the middle corner marked 120 degrees, as drawn on paper. Right: the same three carbons with the two hydrogens on the middle carbon drawn, one on a solid wedge toward the viewer and one on a hashed wedge away, and the real C–C–C angle given as about 109.5 degrees.',
+  alt: 'Left: three carbons of a zigzag, with the angle at the middle corner marked 120 degrees, as drawn on paper. Right: the same three carbons with the two hydrogens on the middle carbon drawn, one on a solid wedge toward the viewer and one on a dashed bond away, and the C–C–C angle drawn and marked at about 109.5 degrees.',
   build() {
     let s = '';
     s += tag(190, 28, 'ON PAPER');
@@ -589,16 +592,19 @@ FIGURES.push({
     s += small(190, 184, 'drawn at 120° to spread the chain evenly');
     s += rule(380, 20, 380, 206);
     s += tag(570, 28, 'IN THE MOLECULE');
-    const m2 = P(570, 116), l2 = P(510, 151), r2 = P(630, 151);
+    const m2 = P(570, 108), l2 = at(m2, 144.75, 70), r2 = at(m2, 35.25, 70);
     s += sk(l2, m2) + sk(m2, r2);
-    const h1 = at(m2, 240, 40), h2 = at(m2, 300, 40);
+    const q1 = at(m2, 35.25, 22), q2 = at(m2, 144.75, 22);
+    s += `<path class="fg-bond-soft" fill="none" d="M${f2(q1.x)} ${f2(q1.y)} A22 22 0 0 1 ${f2(q2.x)} ${f2(q2.y)}"></path>`;
+    s += label(570, 154, '109.5°');
+    const h1 = at(m2, 230, 40), h2 = at(m2, 310, 40);
     s += wedge(m2, h1, { rFrom: 0, rTo: 11, width: 8 }) + atom(h1.x, h1.y, 'H', { r: 11 });
     s += hash(m2, h2, { rFrom: 0, rTo: 11, width: 9, rungs: 4 }) + atom(h2.x, h2.y, 'H', { r: 11 });
     s += small(570, 184, 'real C–C–C angle: about 109.5°');
-    s += small(570, 202, 'wedge: toward you · hashes: away from you');
+    s += small(570, 202, 'wedge: toward you · dash: away from you');
     return s;
   },
-  caption: 'The zigzag is a flat picture of a chain whose carbons are tetrahedral.',
+  caption: 'Left, the angle as chemists draw it; right, the angle the carbon actually holds.',
 });
 
 /* ============================== condensed formula to skeletal drawing === */
@@ -717,14 +723,14 @@ FIGURES.push({
   id: 'l-hetero',
   lessons: [TOPIC],
   viewBox: '0 0 340 170',
-  alt: 'CH3CH2CH2OH drawn skeletally: a zigzag ending at an O, with a line from the O to a written H. The two lone pairs on the O are shown faintly, labeled not drawn but there.',
+  alt: 'CH3CH2CH2OH drawn skeletally: a zigzag ending in an OH label. The two lone pairs on the O are shown faintly, labeled not drawn but there.',
   build() {
     let s = '';
     const v = zz(60, 108, 4, 50, 28);
-    const A = { v0: { ...v[0], l: '' }, v1: { ...v[1], l: '' }, v2: { ...v[2], l: '' }, o: { ...v[3], l: 'O', k: 'hi' }, h: { x: v[3].x + 50, y: 108, l: 'H' } };
-    s += mol({ atoms: A, bonds: [['v0', 'v1'], ['v1', 'v2'], ['v2', 'o'], ['o', 'h']], lp: [['o', 250, true], ['o', 330, true]] });
+    const A = { v0: { ...v[0], l: '' }, v1: { ...v[1], l: '' }, v2: { ...v[2], l: '' }, o: { ...v[3], l: 'OH', k: 'hi' } };
+    s += mol({ atoms: A, bonds: [['v0', 'v1'], ['v1', 'v2'], ['v2', 'o']], lp: [['o', 250, true], ['o', 330, true]] });
     s += plain(190, 34, 'lone pairs: left off, but there');
-    s += good(v[3].x + 50, 142, 'H on O: written');
+    s += good(v[3].x + 10, 150, 'H on O: written');
     s += plain(110, 150, 'H on C: left off');
     return s;
   },
@@ -752,7 +758,7 @@ FIGURES.push({
   viewBox: '0 0 340 120',
   alt: 'A skeletal drawing: a two-carbon zigzag ending at an O with a minus charge.',
   build() {
-    return alkoxide(170, 64, false);
+    return alkoxide(170, 64, false, true);
   },
   caption: 'How many H and how many lone pairs does the oxygen carry?',
 });
@@ -771,17 +777,17 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-q-slip',
   lessons: [TOPIC],
-  viewBox: '0 0 340 170',
-  alt: 'A student’s redraw of a branched chain: a four-carbon zigzag with a line up from the second carbon, where the student has written CH2 at the branch point.',
+  viewBox: '0 0 340 192',
+  alt: 'A student’s redraw of a chain: a four-carbon zigzag whose second carbon has a line up to a branch and a line down to OH. The student has written CH at that carbon.',
   build() {
     const A = {
-      v0: { x: 90, y: 122, l: '' }, v1: { x: 140, y: 94, l: 'CH₂', k: 'warn' }, v2: { x: 190, y: 122, l: '' },
-      v3: { x: 240, y: 94, l: '' }, t: { x: 140, y: 38, l: '' },
+      v0: { x: 90, y: 104, l: '' }, v1: { x: 140, y: 76, l: 'CH', k: 'warn' }, v2: { x: 190, y: 104, l: '' },
+      v3: { x: 240, y: 76, l: '' }, t: { x: 140, y: 24, l: '' }, o: { x: 140, y: 140, l: 'OH' },
     };
-    return mol({ atoms: A, bonds: [['v0', 'v1'], ['v1', 'v2'], ['v2', 'v3'], ['v1', 't']] }) +
-      plain(170, 158, 'the student’s redraw');
+    return mol({ atoms: A, bonds: [['v0', 'v1'], ['v1', 'v2'], ['v2', 'v3'], ['v1', 't'], ['v1', 'o']] }) +
+      plain(170, 180, 'the student’s redraw');
   },
-  caption: 'What is wrong with the label at the branch point?',
+  caption: 'What is wrong with the label on the carbon that carries the OH?',
 });
 
 export default FIGURES;

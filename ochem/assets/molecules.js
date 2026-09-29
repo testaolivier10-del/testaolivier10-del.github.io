@@ -555,7 +555,7 @@
   /* ---- Substitution / elimination substrates ------------------------- */
 
   M['sn2-bromoethane'] = {
-    name: '1-bromoethane + hydroxide', formula: 'CH₃CH₂Br + HO⁻',
+    name: 'bromoethane + hydroxide', formula: 'CH₃CH₂Br + HO⁻',
     atoms: {
       nucO: { x:34,  y:88, r:16, label:'O', charge:'⁻', lp:3, role:'nucleophile', note:'Hydroxide — negative charge and three lone pairs, the electron source.' },
       nucH: { x:34,  y:44, r:10, label:'H' },
@@ -568,7 +568,7 @@
     },
     bonds: [{a:'nucO',b:'nucH'},{a:'c1',b:'c2'},{a:'c1',b:'h1'},{a:'c1',b:'h2'},{a:'c1',b:'br'},
             {a:'c2',b:'m1'},{a:'c2',b:'m2'},{a:'c2',b:'m3'}],
-    caption: 'A primary alkyl halide and a strong nucleophile.'
+    caption: 'Bromoethane and hydroxide ion.'
   };
 
   M['sn2-tertiary'] = {
