@@ -40,22 +40,23 @@
        any amine synthesis. 3 is why direct alkylation runs away, 4 why Gabriel
        can only go once, 6 the route for a secondary amine, 7 a synthesis that
        is flawless step by step and still arrives one carbon short. */
-    'amine-synthesis': { n:8, steps:{
-      2:['amine-synthesis-routes','oxidation-level'],
-      3:['amine-synthesis-routes','nucleophile-recognition'],
-      4:['amine-synthesis-routes'],
-      6:['amine-synthesis-routes'],
-      7:['amine-synthesis-routes'] } },
+    'amine-synthesis': { n:9, steps:{
+      1:['amine-synthesis-routes','nucleophile-recognition'],
+      3:['amine-synthesis-routes'],
+      5:['amine-synthesis-routes'],
+      7:['amine-synthesis-routes','oxidation-level'],
+      8:['amine-synthesis-routes'] } },
 
     /* Step 2 counts equivalents, which is the historical assay. 3 is the
        leaving-group argument, 4 the worked alkene, 6 the two-observation
        deduction, 7 the third way Zaitsev breaks. */
-    'hofmann-elimination': { n:8, steps:{
+    'hofmann-elimination': { n:11, steps:{
       2:['hofmann-elimination-rule'],
       3:['hofmann-elimination-rule','leaving-group-ability'],
-      4:['hofmann-elimination-rule','anti-periplanar-geometry'],
       6:['hofmann-elimination-rule'],
-      7:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
+      7:['hofmann-elimination-rule','anti-periplanar-geometry'],
+      9:['hofmann-elimination-rule'],
+      10:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
 
     'alpha-halogenation': { n:11, steps:{
       3:['alpha-halogenation-control','alpha-acidity'],
@@ -509,19 +510,19 @@
       12:['keto-enol-tautomerism'],
       13:['alpha-acidity','resonance-delocalization'] } },
 
-    'amine-reactions': { n:8, steps:{
-      1:['nucleophile-recognition'],
-      2:['amine-basicity','acylation-self-termination'],
-      4:['acylation-self-termination','nucleophile-recognition'],
-      6:['nucleophile-recognition'],
-      7:['acylation-self-termination','nucleophile-recognition'] } },
+    'amine-reactions': { n:9, steps:{
+      1:['nucleophile-recognition','amine-synthesis-routes'],
+      3:['acylation-self-termination','amine-basicity'],
+      5:['amine-synthesis-routes','reductant-scope'],
+      7:['diazonium-hub'],
+      8:['amine-synthesis-routes','acylation-self-termination'] } },
 
-    'amine-structure': { n:8, steps:{
-      1:['amine-basicity'],
-      2:['amine-basicity'],
-      4:['amine-basicity'],
-      6:['amine-basicity'],
-      7:['amine-basicity','pka-scale'] } },
+    'amine-structure': { n:11, steps:{
+      3:['amine-basicity'],
+      5:['amine-basicity'],
+      7:['amine-basicity'],
+      9:['amine-basicity'],
+      10:['amine-basicity','pka-scale'] } },
 
     'aromaticity': { n:8, steps:{
       1:['huckel-aromaticity'],
