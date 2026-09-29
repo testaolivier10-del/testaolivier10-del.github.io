@@ -225,13 +225,12 @@ FIGURES.push({
       const x1 = x(z.a), x2 = x(z.b);
       s += `<rect class="${z.kind}" x="${x1.toFixed(2)}" y="120" width="${(x2 - x1).toFixed(2)}" height="56" rx="7" opacity="0.32"></rect>`;
     }
-    s += text(x(1.17), 144, 'mostly', { cls: 'fg-lbl', size: 13 });
-    s += text(x(1.17), 162, 'cation', { cls: 'fg-lbl', size: 13 });
+    s += text(x(1.17), 144, 'cation', { cls: 'fg-lbl', size: 13 });
+    s += Tag(P(x(1.17), 164), 'net +1');
     s += text(x(6.02), 144, 'mostly zwitterion', { cls: 'fg-lbl', size: 13 });
     s += Tag(P(x(6.02) + 0, 164), 'net charge near 0');
     s += text(x(11.85), 144, 'mostly anion', { cls: 'fg-lbl', size: 13 });
     s += Tag(P(x(11.85), 164), 'net charge −1');
-    s += Tag(P(x(1.17), 110), 'net +1');
 
     for (const [pH, name] of [[2.34, 'pKa₁ 2.34'], [9.69, 'pKa₂ 9.69']]) {
       s += rule(x(pH), 94, x(pH), 190);
@@ -441,7 +440,7 @@ FIGURES.push({
     s += Tag(P(112, 136), 'to N', { anchor: 'end' });
     s += Tag(P(242, 142), 'α carbon', { anchor: 'start' });
     s += Tag(P(130, 234), 'N bonded to two carbons:');
-    s += Tag(P(130, 250), 'a secondary amine');
+    s += Tag(P(130, 250), 'a secondary amine (protonated here)');
     return s;
   },
   caption: 'Proline. The highlighted bond is where the side chain joins the nitrogen and completes the ring.',
@@ -515,8 +514,8 @@ FIGURES.push({
     s += Tag(P(253, 24), 'D-alanine');
     s += Tag(P(87, 226), 'NH₂ on the left');
     s += Tag(P(253, 226), 'NH₂ on the right');
-    s += Tag(P(87, 242), 'in proteins');
-    s += Tag(P(253, 242), 'the mirror image');
+    s += Tag(P(87, 242), 'found in proteins');
+    s += Tag(P(253, 242), 'not in proteins');
     return s;
   },
   caption: 'Alanine in Fischer projection, carboxyl at the top and side chain at the bottom. Only the side the amino group sits on differs.',
@@ -635,7 +634,7 @@ FIGURES.push({
   id: 'synth-hvz',
   section: 'amino-acids',
   anchor: 'Hell–Volhard–Zelinsky',
-  alt: 'Propanoic acid, CH3–CH2–COOH, reacts with Br2 and PBr3 then water to give 2-bromopropanoic acid, with Br on the alpha carbon. Excess NH3 then displaces the bromide to give alanine, with NH3 plus on the alpha carbon.',
+  alt: 'Propanoic acid, CH3–CH2–COOH, reacts with Br2 and PBr3 then water to give 2-bromopropanoic acid, with Br on the alpha carbon. Excess NH3 then displaces the bromide, and bringing the solution to pH 6 gives alanine as the zwitterion, with NH3 plus on the alpha carbon.',
   viewBox: '0 0 760 150',
   build() {
     let s = '';
@@ -644,7 +643,7 @@ FIGURES.push({
     s += step(170, 290, 56, 'Br₂, PBr₃', 'then H₂O');
     s += trio(P(376, 56), 'CH₃', 'CH', 'COOH', 'Br', ['below']);
     s += Tag(P(376, 136), 'α-bromo acid');
-    s += step(462, 578, 56, 'NH₃ (excess)', 'Sₙ2');
+    s += step(462, 578, 56, 'NH₃ (excess)', 'then pH 6');
     s += ALA(P(664, 56));
     s += Good(P(664, 136), 'alanine (racemic)');
     return s;
@@ -656,7 +655,7 @@ FIGURES.push({
   id: 'synth-gabriel-malonic',
   section: 'amino-acids',
   anchor: 'Gabriel–malonic',
-  alt: 'Diethyl phthalimidomalonate: a central CH carrying a phthalimide nitrogen, written PhthN, and two CO2Et groups. Treatment with NaOEt then CH3I puts a methyl on the central carbon. Hot aqueous acid then hydrolyzes the esters and the phthalimide and removes one carboxyl as CO2, giving alanine.',
+  alt: 'Diethyl phthalimidomalonate: a central CH carrying a phthalimide nitrogen, written PhthN, and two CO2Et groups. Treatment with NaOEt then CH3I puts a methyl on the central carbon. Hot aqueous acid then hydrolyzes the esters and the phthalimide and removes one carboxyl as CO2; bringing the solution to pH 6 gives alanine.',
   viewBox: '0 0 760 178',
   build() {
     let s = '';
@@ -667,7 +666,7 @@ FIGURES.push({
     s += trio(P(378, y), 'PhthN', 'C', 'CO₂Et', 'CO₂Et');
     s += A(P(378, y - 52), 'CH₃', { kind: 'hi' }) + B(P(378, y), P(378, y - 52), 'C', 'CH₃');
     s += Tag(P(378, 164), 'methyl added');
-    s += step(464, 578, y, 'H₃O⁺, heat', '− CO₂');
+    s += step(464, 578, y, 'H₃O⁺, heat', '− CO₂; then pH 6');
     s += ALA(P(664, y));
     s += Good(P(664, 164), 'alanine (racemic)');
     return s;
@@ -679,7 +678,7 @@ FIGURES.push({
   id: 'synth-strecker',
   section: 'amino-acids',
   anchor: 'Strecker',
-  alt: 'Acetaldehyde, CH3–CHO, with NH3 forms an imine, CH3–CH=NH. Cyanide adds to the imine carbon to give an alpha-amino nitrile, CH3–CH(NH2)–C≡N. Hot aqueous acid hydrolyzes the nitrile to the carboxylic acid, giving alanine.',
+  alt: 'Acetaldehyde, CH3–CHO, with NH3 forms an imine, CH3–CH=NH. Cyanide adds to the imine carbon to give an alpha-amino nitrile, CH3–CH(NH2)–C≡N. Hot aqueous acid hydrolyzes the nitrile to the carboxylic acid; bringing the solution to pH 6 gives alanine.',
   viewBox: '0 0 760 172',
   build() {
     let s = '';
@@ -704,7 +703,7 @@ FIGURES.push({
     s += bond(P(468, y), P(514, y), { rFrom: 15, rTo: 15, order: 3 }) + A(P(514, y), 'N', { kind: 'hi' });
     s += A(nc, 'CH');
     s += Tag(P(440, 160), 'α-amino nitrile');
-    s += step(540, 598, y, 'H₃O⁺', 'heat');
+    s += step(540, 598, y, 'H₃O⁺, heat', 'then pH 6');
     s += ALA(P(674, y));
     s += Good(P(674, 160), 'alanine (racemic)');
     return s;

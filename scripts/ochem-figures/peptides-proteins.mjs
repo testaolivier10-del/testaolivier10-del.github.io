@@ -417,9 +417,9 @@ FIGURES.push({
       }
       return d.trim();
     };
-    for (let k = -0.3; k < 10.3; k += 0.1) {
+    for (let k = -0.1; k < 10.1; k += 0.1) {
       const mid = pos(k + 0.05);
-      s += `<path class="${mid.front ? 'fg-bond' : 'fg-bond-soft'}" d="${seg(k, Math.min(k + 0.1, 10.3))}"></path>`;
+      s += `<path class="${mid.front ? 'fg-bond' : 'fg-bond-soft'}" d="${seg(k, Math.min(k + 0.1, 10.1))}"></path>`;
     }
     const res = Array.from({ length: 11 }, (_, k) => pos(k));
     // side chains: short sticks from the residues at the edges of the coil
@@ -687,7 +687,7 @@ FIGURES.push({
   build() {
     let s = '';
     /* Panel 1 */
-    s += panel(16, 12, 728, 256);
+    s += panel(16, 12, 728, 262);
     s += tg(380, 34, '1 · DCC ACTIVATES THE ACID');
     const c1 = P(100, 136);
     const o1 = at(c1, 90, 56), r1 = at(c1, 210, 56), om = at(c1, 330, 56);
@@ -705,8 +705,8 @@ FIGURES.push({
     s += atom(cd.x, cd.y, 'C', { kind: 'warn' });
     s += curve(lpTip(om, 40, 27), P(cd.x - 19, cd.y + 3), { bow: 16, size: 7 });
     s += fromBond(cd, nb, P(nb.x - 18, nb.y - 7), 12, 7);
-    s += tg(100, 250, 'carboxylate');
-    s += tg(270, 250, 'protonated DCC');
+    s += tg(100, 244, 'carboxylate');
+    s += tg(270, 244, 'protonated DCC');
     s += arrow(P(350, 136), P(412, 136));
     // O-acylisourea
     const c2 = P(470, 136);
@@ -720,8 +720,8 @@ FIGURES.push({
     s += bond(ci, ni, { order: 2, rFrom: 16, rTo: 15 }) + arm(ni, 30, 46, 'Cy').s + atom(ni.x, ni.y, 'N');
     s += bond(ci, nj, { rFrom: 16, rTo: 15 }) + arm(nj, 30, 46, 'Cy').s + arm(nj, 270, 42, 'H', { r: 12 }).s + atom(nj.x, nj.y, 'N');
     s += atom(og2.x, og2.y, 'O', { kind: 'warn' }) + atom(ci.x, ci.y, 'C', { kind: 'warn' }) + atom(c2.x, c2.y, 'C');
-    s += tg(572, 250, 'O-acylisourea: the activated acid');
-    s += tg(185, 234, 'after the acid’s H⁺ moves to DCC', 'middle', 'fg-tag-mut');
+    s += tg(572, 244, 'O-acylisourea: the activated acid');
+    s += tg(185, 262, 'after the acid’s H⁺ moves to DCC', 'middle', 'fg-tag-mut');
 
     /* Panel 2 */
     s += panel(16, 282, 728, 246);
@@ -887,7 +887,7 @@ FIGURES.push({
   section: 'peptides-proteins',
   anchor: '',
   viewBox: '0 0 760 260',
-  alt: 'The hexapeptide Gly-Lys-Ala-Phe-Arg-Ser as six boxes. Trypsin row: cuts after Lys and after Arg give Gly-Lys, Ala-Phe-Arg and Ser. Chymotrypsin row: a cut after Phe gives Gly-Lys-Ala-Phe and Arg-Ser. The fragment Ala-Phe-Arg overlaps both chymotrypsin fragments, which fixes the order.',
+  alt: 'Trypsin row: cuts after Lys and after Arg give Gly-Lys, Ala-Phe-Arg and Ser. Chymotrypsin row: a cut after Phe gives Gly-Lys-Ala-Phe and Arg-Ser. The fragment Ala-Phe-Arg spans the chymotrypsin cut. Bottom row, the deduced sequence: Gly-Lys-Ala-Phe-Arg-Ser.',
   build() {
     let s = '';
     const names = ['Gly', 'Lys', 'Ala', 'Phe', 'Arg', 'Ser'];
@@ -904,18 +904,19 @@ FIGURES.push({
       });
       return t;
     };
-    s += lbl(200, 54.5, 'the peptide', 'end');
-    s += row(50, [], () => 'hi');
-    s += lbl(200, 124.5, 'trypsin', 'end');
-    s += tg(200, 142, 'cuts after Lys, Arg', 'end', 'fg-tag-mut');
-    s += row(120, [1, 4], (i) => (i >= 2 && i <= 4 ? 'good' : undefined));
-    s += lbl(200, 204.5, 'chymotrypsin', 'end');
-    s += tg(200, 222, 'cuts after Phe, Tyr, Trp', 'end', 'fg-tag-mut');
-    s += row(200, [3], (i) => (i >= 2 && i <= 4 ? 'good' : undefined));
-    s += tg(420, 250, 'Ala-Phe-Arg spans the chymotrypsin cut', 'start', 'fg-tag-good');
+    s += lbl(200, 54.5, 'trypsin', 'end');
+    s += tg(200, 72, 'cuts after Lys, Arg', 'end', 'fg-tag-mut');
+    s += row(50, [1, 4], (i) => (i >= 2 && i <= 4 ? 'good' : undefined));
+    s += lbl(200, 134.5, 'chymotrypsin', 'end');
+    s += tg(200, 152, 'cuts after Phe, Tyr, Trp', 'end', 'fg-tag-mut');
+    s += row(130, [3], (i) => (i >= 2 && i <= 4 ? 'good' : undefined));
+    s += tg(420, 176, 'Ala-Phe-Arg spans the chymotrypsin cut', 'start', 'fg-tag-good');
+    s += rule(24, 194, 736, 194);
+    s += lbl(200, 234.5, 'the sequence', 'end');
+    s += row(230, [], () => 'hi');
     return s;
   },
-  caption: 'Each dashed line is a cut. The green residues are the trypsin fragment Ala-Phe-Arg, marked in both rows.',
+  caption: 'Each dashed line is a cut. The green residues are the trypsin fragment Ala-Phe-Arg, marked in both enzyme rows.',
 });
 
 export default FIGURES;
