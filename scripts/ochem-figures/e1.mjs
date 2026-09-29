@@ -356,7 +356,7 @@ FIGURES.push({
     s += skChain(q);
     s += sk(q[1], armEnd(q[1], 90, 44));
     s += plusAt(q[1].x + 16, q[1].y - 12);
-    s += text(560, 240, 'the same 3° cation 2-bromo-2-methylbutane gave', { cls: 'fg-sm' });
+    s += text(560, 240, 'the same 3° cation that 2-bromo-2-methylbutane gave', { cls: 'fg-sm' });
     return s;
   },
   caption: 'Only these two steps are new. The step after them is step 2 of the first figure, with water as the base.',
