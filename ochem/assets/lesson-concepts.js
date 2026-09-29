@@ -533,11 +533,12 @@
       5:['acyl-reactivity-order'],
       7:['acidity-factors'] } },
 
-    'chirality': { n:7, steps:{
+    'chirality': { n:11, steps:{
       1:['chirality-recognition'],
       2:['chirality-recognition'],
-      3:['chirality-recognition','meso-detection'],
-      6:['chirality-recognition','meso-detection'] } },
+      4:['chirality-recognition','meso-detection'],
+      7:['chirality-recognition'],
+      10:['chirality-recognition','meso-detection'] } },
 
     'claisen': { n:11, steps:{
       2:['claisen-connectivity'],
@@ -573,11 +574,12 @@
       3:['chair-axial-equatorial','torsional-strain'],
       6:['torsional-strain','chair-axial-equatorial'] } },
 
-    'diastereomers': { n:7, steps:{
-      1:['enantiomer-vs-diastereomer','stereocenter-identification'],
+    'diastereomers': { n:11, steps:{
       2:['enantiomer-vs-diastereomer','stereocenter-identification'],
-      3:['enantiomer-vs-diastereomer'],
-      6:['enantiomer-vs-diastereomer'] } },
+      3:['enantiomer-vs-diastereomer','stereocenter-identification'],
+      5:['enantiomer-vs-diastereomer'],
+      8:['enantiomer-vs-diastereomer'],
+      10:['enantiomer-vs-diastereomer'] } },
 
     'directing-effects': { n:8, steps:{
       1:['directing-effects'],
@@ -615,11 +617,12 @@
       6:['electrophile-recognition','electronegativity-trend'],
       8:['lewis-acid-base','electrophile-recognition'] } },
 
-    'enantiomers': { n:7, steps:{
-      1:['enantiomer-vs-diastereomer'],
+    'enantiomers': { n:12, steps:{
       2:['enantiomer-vs-diastereomer'],
-      3:['enantiomer-vs-diastereomer','rs-assignment'],
-      6:['enantiomer-vs-diastereomer'] } },
+      3:['enantiomer-vs-diastereomer'],
+      4:['enantiomer-vs-diastereomer','rs-assignment'],
+      8:['enantiomer-vs-diastereomer'],
+      11:['enantiomer-vs-diastereomer'] } },
 
     'epoxides': { n:9, steps:{
       1:['epoxide-opening-regiochem'],
@@ -646,19 +649,20 @@
        three times — reading the projection is a different skill from
        assigning a configuration from one, and only the first was
        practised here before. */
-    'fischer': { n:8, steps:{
+    'fischer': { n:15, steps:{
       1:['fischer-reading'],
       2:['fischer-reading'],
-      3:['fischer-reading','enantiomer-vs-diastereomer'],
       5:['fischer-reading','rs-assignment','cip-priority'],
-      7:['fischer-reading','enantiomer-vs-diastereomer'] } },
+      9:['fischer-reading','enantiomer-vs-diastereomer'],
+      12:['fischer-reading'],
+      14:['fischer-reading','enantiomer-vs-diastereomer'] } },
 
-    'prochirality': { n:9, steps:{
+    'prochirality': { n:12, steps:{
       2:['topicity-test'],
-      3:['topicity-test','enantiomer-vs-diastereomer'],
-      4:['topicity-test'],
+      5:['topicity-test','enantiomer-vs-diastereomer'],
       6:['topicity-test'],
-      8:['topicity-test','prochiral-faces'] } },
+      8:['topicity-test'],
+      11:['topicity-test','prochiral-faces'] } },
 
     'h-nmr': { n:8, steps:{
       1:['nmr-splitting-integration'],
@@ -727,11 +731,12 @@
       6:['ms-fragmentation','carbocation-stability'],
       7:['ms-fragmentation'] } },
 
-    'meso': { n:7, steps:{
+    'meso': { n:10, steps:{
       1:['meso-detection'],
-      2:['meso-detection','chirality-recognition'],
-      3:['meso-detection','enantiomer-vs-diastereomer'],
-      6:['meso-detection'] } },
+      2:['meso-detection','enantiomer-vs-diastereomer'],
+      5:['meso-detection','chirality-recognition'],
+      7:['meso-detection','chirality-recognition'],
+      9:['meso-detection'] } },
 
     'molecular-geometry': { n:11, steps:{
       1:['molecular-geometry-vsepr','lewis-structures-drawing'],
@@ -790,24 +795,26 @@
        topic now records far more evidence per run than the four
        questions it used to, and all of it against the two concepts the
        topic is actually about. */
-    'rs-configuration': { n:10, steps:{
+    'rs-configuration': { n:12, steps:{
       2:['cip-priority'],
       3:['cip-priority'],
-      4:['cip-priority'],
-      6:['rs-assignment','cip-priority'],
+      5:['cip-priority'],
       7:['rs-assignment','cip-priority'],
-      9:['rs-assignment','cip-priority'] } },
+      8:['rs-assignment','cip-priority'],
+      11:['rs-assignment','cip-priority'] } },
 
-    'cis-trans-ez': { n:10, steps:{
-      2:['ring-cis-trans'],
-      4:['ez-assignment'],
-      6:['ez-assignment','cip-priority'],
+    'cis-trans-ez': { n:15, steps:{
+      3:['ring-cis-trans'],
+      5:['ez-assignment'],
       7:['ez-assignment','cip-priority'],
-      9:['ez-assignment','cip-priority'] } },
+      9:['ez-assignment','cip-priority'],
+      14:['ez-assignment','cip-priority'] } },
 
-    'stereocenters': { n:7, steps:{
-      1:['stereocenter-identification'], 2:['stereocenter-identification'],
-      3:['stereocenter-identification'], 6:['stereocenter-identification'] } },
+    'stereocenters': { n:10, steps:{
+      2:['stereocenter-identification'],
+      4:['stereocenter-identification'],
+      7:['stereocenter-identification'],
+      9:['stereocenter-identification'] } },
 
     'substrate-effects': { n:10, steps:{
       2:['mechanism-selection'],

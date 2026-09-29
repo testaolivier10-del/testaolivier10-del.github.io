@@ -122,7 +122,7 @@
     // follow-up — the teaching is the same, and it does not lengthen the
     // queue, which stays at whatever it was.
     checkFor: function(d, q, S){
-      return E.checkQuestion(d.conceptId, q.tier || 2, S.askedIds, q.kind);
+      return E.checkQuestion(d.conceptId, q.tier || 2, S.askedIds, q.kind, q.topic);
     },
     nextLabel: function(S){
       return S.isCheck ? 'Continue' : (queue.length ? 'Next' : 'Finish');

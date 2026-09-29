@@ -1,18 +1,103 @@
 /* Figures for the cis-trans-ez notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Every figure here is 340 wide or less, stacked, and labelled only with
+   fg-lbl and fg-tag text, so the same drawing can sit in the notes and in a
+   lesson step. The one exception is ring-flip-keeps-face (760 wide, notes
+   only); its lesson copy is l-ring-flip.
+
+   Every E/Z drawing puts the C=C horizontal with its four groups at 120
+   degrees, so "same side" means "both above the double bond" or "both below
+   it". Where a figure assigns E or Z, each alkene carbon's two groups are
+   tagged higher and lower. The question figures (l-ez-practice, l-ez-read)
+   leave the tags off, because the tags are the answer. */
+import { atom, bond, wedge, hash, arrow, text, tag, rule, P } from '../lib/ochem-figure.mjs';
+import { sk } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
 
-/* The chair, taken from the one already drawn in axial-equatorial (the
-   twelve-position figure), so a new drawing cannot disagree with the book's
-   own reference. Offsets are relative to the ring center; axial is vertical
-   and alternates, and each equatorial unit vector is the one that figure
-   uses, which is parallel to the ring bond two carbons round and tilted
-   OPPOSITE to that carbon's axial. Getting that tilt backwards is the
-   classic bad chair, so it is measured here rather than re-derived. */
+/* ------------------------------------------------------------ helpers --- */
+const r2 = (v) => Math.round(v * 100) / 100;
+const rad = (d) => (d * Math.PI) / 180;
+/* A point `len` from c at a math angle: 0 is east, 90 is up. */
+const at = (c, deg, len) => P(c.x + Math.cos(rad(deg)) * len, c.y - Math.sin(rad(deg)) * len);
+/* A text line with an italic prefix, e.g. <i>cis</i>-but-2-ene. */
+const itext = (x, y, it, rest, cls = 'fg-tag', anchor = 'middle') =>
+  `<text class="${cls}" x="${r2(x)}" y="${r2(y)}" text-anchor="${anchor}" font-size="11"><tspan font-style="italic">${it}</tspan>${rest}</text>`;
+/* Disc radius that fits a group label. */
+const gr = (t) => Math.max(12, Math.round(3.3 * [...t].length + 7));
+const Cr = 13;
+/* A group label too long for a disc, in a rounded box. */
+const pillW = (t) => Math.round(6.2 * [...t].length + 14);
+const pill = (x, y, t, hi) => {
+  const w = pillW(t);
+  return `<rect class="${hi ? 'fg-atom-hi' : 'fg-atom'}" x="${r2(x - w / 2)}" y="${r2(y - 13)}" width="${w}" height="26" rx="13"></rect>` +
+    atom(x, y, t, { kind: 'point' });
+};
+
+/* An alkene with the C=C horizontal. `g` has up to four groups: lu and ld
+   on the left carbon (up-left, down-left), ru and rd on the right carbon.
+   Each group is { t: label, pri: 'hi' | 'lo' (optional) }. `names` labels
+   the two carbons, e.g. ['C2', 'C3']. */
+function alkene(cx, cy, g, o = {}) {
+  const half = o.half ?? 30;
+  const L = P(cx - half, cy), R = P(cx + half, cy);
+  let s = bond(L, R, { order: 2, rFrom: Cr, rTo: Cr });
+  const spots = { lu: [L, 120, 'end'], ld: [L, 240, 'end'], ru: [R, 60, 'start'], rd: [R, 300, 'start'] };
+  for (const k of Object.keys(spots)) {
+    const grp = g[k];
+    if (!grp) continue;
+    const [c, deg, anchor] = spots[k];
+    const long = [...grp.t].length > 3;
+    const r = long ? 15 : gr(grp.t);
+    const len = grp.len ?? (Cr + r + (o.gap ?? 20));
+    const p = at(c, deg, len);
+    s += bond(c, p, { rFrom: Cr, rTo: r, cls: grp.pri === 'hi' ? 'fg-bond-hi' : 'fg-bond' });
+    let half = r;
+    if (long) {
+      half = pillW(grp.t) / 2;
+      s += pill(p.x, p.y, grp.t, grp.pri === 'hi');
+    } else s += atom(p.x, p.y, grp.t, { r, kind: grp.pri === 'hi' ? 'hi' : 'plain' });
+    if (grp.pri) {
+      const dx = anchor === 'end' ? -(half + 5) : half + 5;
+      s += text(p.x + dx, p.y + 4, grp.pri === 'hi' ? 'higher' : 'lower', { cls: grp.pri === 'hi' ? 'fg-tag-good' : 'fg-tag-mut', anchor });
+    }
+  }
+  s += atom(L.x, L.y, 'C', { r: Cr }) + atom(R.x, R.y, 'C', { r: Cr });
+  if (o.names) {
+    s += text(L.x - Cr - 4, L.y + 4, o.names[0], { cls: 'fg-tag-mut', anchor: 'end' });
+    s += text(R.x + Cr + 4, R.y + 4, o.names[1], { cls: 'fg-tag-mut', anchor: 'start' });
+  }
+  return s;
+}
+
+/* p orbitals, as the Bonding page draws them: two lobes in the two phase
+   colours for a p orbital lying in the page, a disc for one pointing out. */
+function ell(cx, cy, rx, ry, deg, cls) {
+  return `<ellipse class="${cls}" cx="${r2(cx)}" cy="${r2(cy)}" rx="${r2(rx)}" ry="${r2(ry)}" transform="rotate(${r2(-deg)} ${r2(cx)} ${r2(cy)})"></ellipse>`;
+}
+function pOrb(c, deg, len = 44, w = 13) {
+  const a = at(c, deg, len * 0.52), b = at(c, deg + 180, len * 0.52);
+  return ell(a.x, a.y, len * 0.5, w, deg, 'fg-orb') + ell(b.x, b.y, len * 0.5, w, deg, 'fg-orb-alt');
+}
+const disc = (c) => `<circle class="fg-orb" cx="${r2(c.x)}" cy="${r2(c.y)}" r="23"></circle>`;
+const cloud = (x1, y1, x2, y2) =>
+  `<rect class="fg-dash-hi" x="${r2(x1)}" y="${r2(y1)}" width="${r2(x2 - x1)}" height="${r2(y2 - y1)}" rx="24" fill="none"></rect>`;
+
+/* A flat hexagon, first vertex at the top, going clockwise. */
+function hexVerts(cx, cy, r) {
+  const v = [];
+  for (let i = 0; i < 6; i++) v.push(at(P(cx, cy), 90 - i * 60, r));
+  return v;
+}
+const hexRing = (v) => v.map((p, i) => sk(p, v[(i + 1) % 6])).join('');
+
+/* The chair, taken from build-ochem-figures.mjs (the axial-equatorial
+   twelve-position figure), so it cannot disagree with the chair the
+   Alkanes & Conformations chapter draws. Axial is vertical and alternates:
+   up on the even carbons, down on the odd ones. The flipped chair negates
+   every height, which turns every axial direction over, exactly as
+   ring-flip-invariant does in that chapter. */
 const CHAIR_V = [
   P(113.15, -18.21), P(56.57, -15.31), P(-56.57, -51.72),
   P(-113.15, 18.21), P(-56.58, 15.31), P(56.57, 51.72),
@@ -21,374 +106,565 @@ const CHAIR_EQ = [
   P(0.944, 0.329), P(0.613, -0.790), P(-0.994, 0.104),
   P(-0.944, -0.329), P(-0.613, 0.790), P(0.994, -0.104),
 ];
-function chair(cx, cy, k = 1) {
-  return CHAIR_V.map((v) => P(cx + v.x * k, cy + v.y * k));
+const chair = (cx, cy, k, flip) => CHAIR_V.map((v) => P(cx + v.x * k, cy + (flip ? -v.y : v.y) * k));
+const chairRing = (pts) => pts.map((p, i) => bond(p, pts[(i + 1) % 6], { rFrom: 0, rTo: 0 })).join('');
+/* Which way carbon i's axial bond points: -1 is up the page. */
+const axSign = (i, flip) => ((i % 2 === 0) !== !!flip ? -1 : 1);
+const axialEnd = (pts, i, flip, L = 34) => P(pts[i].x, pts[i].y + axSign(i, flip) * L);
+const equatorialEnd = (pts, i, flip, L = 32) =>
+  P(pts[i].x + CHAIR_EQ[i].x * L, pts[i].y + (flip ? -CHAIR_EQ[i].y : CHAIR_EQ[i].y) * L);
+/* Put a methyl on carbon i on the given face ('up' or 'down'). Returns the
+   ink and whether that methyl came out axial. */
+function chairMethyl(pts, i, face, flip) {
+  const axialUp = axSign(i, flip) === -1;
+  const axial = (face === 'up') === axialUp;
+  const end = axial ? axialEnd(pts, i, flip, 36) : equatorialEnd(pts, i, flip, 36);
+  let s = bond(pts[i], end, { rFrom: 0, rTo: 17, cls: 'fg-bond-hi' });
+  s += atom(end.x, end.y, 'CH₃', { r: 17, kind: 'hi' });
+  const right = end.x >= pts[i].x;
+  s += text(end.x + (right ? 21 : -21), end.y + 4, face, { cls: face === 'up' ? 'fg-tag-good' : 'fg-tag-warn', anchor: right ? 'start' : 'end' });
+  return { s, axial };
 }
-const chairRing = (pts, cls) => pts.map((p, i) => bond(p, pts[(i + 1) % 6], { rFrom: 0, rTo: 0, cls })).join('');
-/* Axial: straight up on the even carbons, straight down on the odd ones. */
-const axialEnd = (pts, i, L = 34) => P(pts[i].x, pts[i].y + (i % 2 === 0 ? -L : L));
-/* Equatorial: outward, and tilted the other way from that carbon's axial. */
-const equatorialEnd = (pts, i, L = 32) => P(pts[i].x + CHAIR_EQ[i].x * L, pts[i].y + CHAIR_EQ[i].y * L);
+/* One chair carrying methyls. `subs` is a list of [carbon index, face,
+   name]. The name tag sits beside the ring carbon, on the side away from
+   the methyl. Returns the ink and the axial/equatorial reading per methyl. */
+function methylChair(cx, cy, k, flip, subs, tagAt) {
+  const pts = chair(cx, cy, k, flip);
+  let s = chairRing(pts);
+  const read = [];
+  for (const [i, face, name] of subs) {
+    const m = chairMethyl(pts, i, face, flip);
+    s += m.s;
+    const off = tagAt[name];
+    s += text(pts[i].x + off.x, pts[i].y + off.y, name, { cls: 'fg-tag', anchor: off.a || 'middle' });
+    read.push([name, m.axial ? 'axial' : 'equatorial', face]);
+  }
+  return { s, read };
+}
 
-
-/* ---------------------------------------------------------------- 8.2 ---
-   E/Z was defined and never performed. This is the assignment done on the
-   compound the pitfall is about, with the two rankings kept visibly
-   separate, because comparing across the double bond is the actual error. */
+/* ------------------------------------------------------------ pi-twist ---
+   Why the two but-2-enes do not interconvert. The molecule lies flat in
+   the page, so each p orbital points straight out at the reader (a disc).
+   A quarter turn of the right carbon stands its p orbital up in the page,
+   at right angles to the left one, and its groups go onto a wedge and a
+   hash. A second quarter turn would give the trans isomer. */
+function butenePage(cy, state) {
+  const C1 = P(120, cy), C2 = P(206, cy);
+  let s = disc(C1);
+  const me1 = at(C1, 145, 58), h1 = at(C1, 215, 50);
+  if (state === 'twist') {
+    s += pOrb(C2, 90, 46, 13);
+    s += bond(C1, C2, { rFrom: Cr, rTo: Cr });
+    const me = P(262, cy + 26), h = P(258, cy - 26);
+    s += wedge(C2, me, { rFrom: Cr, rTo: 17, width: 9 }) + atom(me.x, me.y, 'CH₃', { r: 17, kind: 'hi' });
+    s += hash(C2, h, { rFrom: Cr, rTo: 11, width: 10, rungs: 4 }) + atom(h.x, h.y, 'H', { r: 11 });
+  } else {
+    s += disc(C2);
+    s += cloud(90, cy - 29, 236, cy + 29);
+    s += bond(C1, C2, { order: 2, rFrom: Cr, rTo: Cr });
+    const up = state === 'cis';
+    const me = at(C2, up ? 35 : 325, 58), h = at(C2, up ? 325 : 35, 50);
+    s += bond(C2, me, { rFrom: Cr, rTo: 17 }) + atom(me.x, me.y, 'CH₃', { r: 17, kind: 'hi' });
+    s += bond(C2, h, { rFrom: Cr, rTo: 11 }) + atom(h.x, h.y, 'H', { r: 11 });
+  }
+  s += bond(C1, me1, { rFrom: Cr, rTo: 17 }) + atom(me1.x, me1.y, 'CH₃', { r: 17, kind: 'hi' });
+  s += bond(C1, h1, { rFrom: Cr, rTo: 11 }) + atom(h1.x, h1.y, 'H', { r: 11 });
+  s += atom(C1.x, C1.y, 'C', { r: Cr }) + atom(C2.x, C2.y, 'C', { r: Cr });
+  return s;
+}
 FIGURES.push({
-  id: 'ez-worked',
+  id: 'pi-twist',
   section: 'cis-trans-ez',
-  anchor: 'outranks its methyl.</p>\n</div>',
-  alt: '2-bromo-2-butene drawn skeletally with its two methyl groups on opposite sides of the double bond, which looks trans. The bromine on C2 outranks the methyl on C2, and the methyl on C3 outranks the hydrogen on C3. The two winners, bromine and the C4 methyl, are both above the double bond, so the compound is Z.',
-  viewBox: '0 0 760 330',
+  lessons: ['cis-trans-ez'],
+  anchor: 'shows these orbitals in detail.</p>',
+  viewBox: '0 0 340 462',
+  alt: 'But-2-ene drawn three times, flat in the page, with every atom labeled. Top: cis-but-2-ene. Both methyl groups are on the upper side of the double bond, each carbon carries a disc for its p orbital pointing out of the page, and a dashed outline around both discs marks the pi bond. Middle: the right carbon has turned a quarter turn. Its methyl is on a wedge and its hydrogen on a hash, its p orbital now lies up and down in the page at right angles to the left one, and the carbons are joined by a single line: no pi bond. Bottom: after another quarter turn the right methyl is on the lower side, which is trans-but-2-ene, with the pi bond back.',
   build() {
     let s = '';
-    s += tag(196, 38, 'drawn the way anyone would call "trans"');
-    const p0 = P(112, 214), p1 = P(176, 172), p2 = P(240, 214), p3 = P(304, 172);
-    s += sk(p0, p1);
-    s += skDouble(p1, p2, P(208, 240));
-    s += sk(p2, p3);
-    const br = P(176, 104), h = P(240, 278);
-    s += bond(p1, br, { rFrom: 0, rTo: 16 });
-    s += bond(p2, h, { rFrom: 0, rTo: 13 });
-    s += atom(br.x, br.y, 'Br', { kind: 'hi', r: 16 });
-    s += atom(h.x, h.y, 'H', { r: 13 });
-    s += text(96, 236, 'C1', { cls: 'fg-sm', size: 9.5 });
-    s += text(176, 156, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
-    s += text(248, 232, 'C3', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-    s += text(320, 156, 'C4', { cls: 'fg-sm', size: 9.5 });
-    s += text(196, 306, 'the two methyls, C1 and C4, are on opposite sides', { cls: 'fg-sm', size: 9.5 });
-
-    s += rule(370, 60, 370, 290);
-
-    s += tag(566, 38, 'but rank each carbon separately');
-    const row = (y, head, win, lose, verdict) => {
-      let g = text(408, y, head, { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
-      g += text(408, y + 20, win, { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
-      g += text(408, y + 38, lose, { cls: 'fg-sm', size: 10, anchor: 'start' });
-      g += text(736, y + 20, verdict, { cls: 'fg-sm', size: 10, anchor: 'end' });
-      return g;
-    };
-    s += row(96, 'On C2:  Br  against  CH₃', 'Br wins — atomic number 35 beats 6', 'nothing else is compared', 'points UP');
-    s += row(176, 'On C3:  CH₃  against  H', 'CH₃ wins — carbon beats hydrogen', 'nothing else is compared', 'points UP');
-    s += text(408, 234, 'Both winners on the same side:', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(566, 262, '(Z)-2-bromo-2-butene', { cls: 'fg-tag-good', size: 12.5 });
-
-    s += rule(30, 290, 730, 290);
-    s += text(380, 326, 'Same molecule, two labels: "trans" was reporting the methyls, E/Z reports the priorities.', { cls: 'fg-sm', size: 10.5 });
+    s += itext(10, 18, 'cis', '-but-2-ene: p orbitals parallel', 'fg-tag', 'start');
+    s += butenePage(84, 'cis');
+    s += text(163, 138, 'π bond (dashed)', { cls: 'fg-tag' });
+    s += rule(10, 152, 330, 152);
+    s += text(10, 174, 'turn the right carbon a quarter turn', { cls: 'fg-tag', anchor: 'start' });
+    s += butenePage(236, 'twist');
+    s += text(170, 298, 'p orbitals at 90°: no overlap, no π bond', { cls: 'fg-tag-warn' });
+    s += rule(10, 312, 330, 312);
+    s += text(10, 334, 'another quarter turn', { cls: 'fg-tag', anchor: 'start' });
+    s += butenePage(392, 'trans');
+    s += itext(170, 452, 'trans', '-but-2-ene: π bond back', 'fg-tag');
     return s;
   },
-  caption: 'One assignment, done in full. Each alkene carbon is ranked on its own two groups and nothing else — the bromine on C2 is never weighed against the methyl on C3. Here both winners finish above the double bond, so the alkene is Z even though the carbon skeleton is drawn trans.',
-  note: 'The error this drawing is built to prevent: comparing a group on one alkene carbon with a group on the other. That question has no meaning. E/Z asks two independent questions and then compares only the two answers.',
+  caption: 'Follow the right-hand methyl. Getting it from the upper side to the lower side means passing through the middle drawing, where the π bond is broken.',
 });
 
-/* ------------------------------------------------------------- 30.1 ---
-   Cis and trans on a ring, read straight off wedges and hashes. */
+/* ------------------------------------------------ ring-cis-trans-faces ---
+   cis- and trans-1,2-dimethylcyclohexane as flat hexagons. */
+function ringPair(cy, a, b, faceA, faceB) {
+  const v = hexVerts(170, cy, 46);
+  let s = hexRing(v);
+  const put = (i, face, name, nameOff) => {
+    const c = v[i];
+    const out = at(c, 90 - i * 60, 46);
+    let g = (face === 'up' ? wedge : hash)(c, out, { rFrom: 0, rTo: 17, width: 9 });
+    g += atom(out.x, out.y, 'CH₃', { r: 17, kind: 'hi' });
+    g += text(c.x + nameOff.x, c.y + nameOff.y, name, { cls: 'fg-tag', anchor: nameOff.a || 'middle' });
+    return g;
+  };
+  s += put(a[0], faceA, a[1], a[2]) + put(b[0], faceB, b[1], b[2]);
+  return s;
+}
 FIGURES.push({
   id: 'ring-cis-trans-faces',
   section: 'cis-trans-ez',
-  anchor: 'and the locants say the rest.</p>',
-  alt: 'Two flat hexagon drawings of 1,2-dimethylcyclohexane. On the left both methyl groups sit on bold wedges, so both are above the ring, which is the cis isomer. On the right one methyl is on a wedge and the other on a hashed bond, so one is above the ring and one below, which is the trans isomer.',
-  viewBox: '0 0 760 330',
-  build() {
-    const verts = (cx, cy, r) => {
-      const v = [];
-      for (let i = 0; i < 6; i++) {
-        const a = ((-90 + i * 60) * Math.PI) / 180;
-        v.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
-      }
-      return v;
-    };
-    const draw = (cx, cis) => {
-      const v = verts(cx, 140, 58);
-      let out = '';
-      for (let i = 0; i < 6; i++) out += sk(v[i], v[(i + 1) % 6]);
-      const c1 = v[2], c2 = v[3];
-      const m1 = P(c1.x + 52, c1.y + 30), m2 = P(c2.x, c2.y + 58);
-      out += wedge(c1, m1, { rFrom: 0, rTo: 18 });
-      out += (cis ? wedge : hash)(c2, m2, { rFrom: 0, rTo: 18 });
-      out += atom(m1.x, m1.y, 'CH₃', { r: 18 });
-      out += atom(m2.x, m2.y, 'CH₃', { r: 18 });
-      out += text(c1.x + 16, c1.y - 8, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-      out += text(c2.x - 18, c2.y + 2, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
-      return out;
-    };
-    let s = '';
-    s += panel(20, 36, 340, 242, { kind: 'hi' });
-    s += tag(190, 26, 'both on a wedge — same face');
-    s += draw(190, true);
-    s += text(190, 300, 'cis-1,2-dimethylcyclohexane', { cls: 'fg-tag-good', size: 12 });
-    s += panel(400, 36, 340, 242, { kind: 'warn' });
-    s += tag(570, 26, 'one wedge, one hash — opposite faces');
-    s += draw(570, false);
-    s += text(570, 300, 'trans-1,2-dimethylcyclohexane', { cls: 'fg-tag-warn', size: 12 });
-    s += text(380, 324, 'Wedge is above the ring, hash is below. Same face is cis, opposite faces trans.', { cls: 'fg-sm', size: 10.5 });
-    return s;
-  },
-  caption: 'Cis and trans on a ring, with nothing to compute. A wedge puts the group above the plane of the ring and a hash puts it below, so the question is only whether the two substituents are drawn on the same kind of bond. That reading is identical for a 1,2-, a 1,3- or a 1,4-disubstituted ring — the locants say how far apart the groups are, and the wedges say which face each one is on.',
-  note: 'A chair flip does not touch this. Flipping exchanges axial for equatorial at every carbon, which changes the energy of the conformer; the group that was above the ring is still above the ring when the flip is finished. Configuration survives a ring flip, position does not.',
-});
-
-/* ------------------------------------------------------------- 30.2 ---
-   Where the two words stop working, in one row of three. */
-FIGURES.push({
-  id: 'cis-trans-runs-out',
-  section: 'cis-trans-ez',
-  anchor: 'it has run out of definition, and the compound still has two distinct geometric isomers that need naming.</p>',
-  alt: 'Three alkenes side by side. Cis-but-2-ene has its two methyl groups on the same side of the double bond and one hydrogen on each alkene carbon. Trans-but-2-ene has them on opposite sides. 3-methylpent-2-ene has a methyl and an ethyl group on the right-hand alkene carbon and no hydrogen there, so neither cis nor trans can be assigned to it.',
-  viewBox: '0 0 760 316',
+  lessons: ['cis-trans-ez'],
+  anchor: 'Two hashes would also be cis, with both groups on the bottom face.</p>',
+  viewBox: '0 0 340 384',
+  alt: 'Two flat hexagon drawings of 1,2-dimethylcyclohexane, stacked. Top: both methyl groups sit on bold wedges on neighboring carbons C1 and C2, so both are above the ring; this is cis-1,2-dimethylcyclohexane. Bottom: the methyl on C1 is on a wedge and the methyl on C2 is on a hashed bond, so one is above the ring and one below; this is trans-1,2-dimethylcyclohexane.',
   build() {
     let s = '';
-    const me = (x, y) => atom(x, y, 'CH₃', { r: 17 });
-
-    s += panel(14, 36, 236, 200, { kind: 'hi' });
-    s += bond(P(72, 182), P(114, 150), { rFrom: 17, rTo: 0 });
-    s += skDouble(P(114, 150), P(158, 150), P(136, 192));
-    s += bond(P(158, 150), P(200, 182), { rFrom: 0, rTo: 17 });
-    s += bond(P(114, 150), P(114, 104), { rFrom: 0, rTo: 12 });
-    s += bond(P(158, 150), P(158, 104), { rFrom: 0, rTo: 12 });
-    s += me(72, 182); s += me(200, 182);
-    s += atom(114, 104, 'H', { r: 12 }); s += atom(158, 104, 'H', { r: 12 });
-
-    s += panel(262, 36, 236, 200, { kind: 'hi' });
-    s += bond(P(320, 182), P(362, 150), { rFrom: 17, rTo: 0 });
-    s += skDouble(P(362, 150), P(406, 150), P(384, 192));
-    s += bond(P(406, 150), P(448, 118), { rFrom: 0, rTo: 17 });
-    s += bond(P(362, 150), P(362, 104), { rFrom: 0, rTo: 12 });
-    s += bond(P(406, 150), P(406, 196), { rFrom: 0, rTo: 12 });
-    s += me(320, 182); s += me(448, 118);
-    s += atom(362, 104, 'H', { r: 12 }); s += atom(406, 196, 'H', { r: 12 });
-
-    s += panel(494, 36, 236, 200, { kind: 'warn' });
-    s += bond(P(538, 182), P(580, 150), { rFrom: 17, rTo: 0 });
-    s += skDouble(P(580, 150), P(620, 150), P(600, 192));
-    s += bond(P(580, 150), P(580, 104), { rFrom: 0, rTo: 12 });
-    s += bond(P(620, 150), P(662, 104), { rFrom: 0, rTo: 17 });
-    s += bond(P(620, 150), P(678, 186), { rFrom: 0, rTo: 27 });
-    s += me(538, 182); s += me(662, 104);
-    s += atom(580, 104, 'H', { r: 12 });
-    s += atom(678, 186, 'CH₂CH₃', { r: 27 });
-
-    s += text(132, 256, 'cis-but-2-ene', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(380, 256, 'trans-but-2-ene', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(612, 256, '3-methylpent-2-ene', { cls: 'fg-tag-warn', size: 11.5 });
-    s += text(132, 278, 'one H, one CH₃ per carbon', { cls: 'fg-sm', size: 10 });
-    s += text(380, 278, 'same test, other answer', { cls: 'fg-sm', size: 10 });
-    s += text(612, 278, 'no H on the right carbon', { cls: 'fg-sm', size: 10 });
-    s += rule(24, 292, 720, 292);
-    s += text(380, 312, 'Cis/trans needs one hydrogen and one other group on EACH carbon of the C=C.', { cls: 'fg-sm', size: 10.5 });
+    s += text(170, 18, 'two wedges: both above the ring', { cls: 'fg-tag' });
+    s += ringPair(100, [1, 'C1', { x: -8, y: 14, a: 'end' }], [2, 'C2', { x: -8, y: -4, a: 'end' }], 'up', 'up');
+    s += itext(170, 180, 'cis', '-1,2-dimethylcyclohexane', 'fg-tag-good');
+    s += rule(10, 196, 330, 196);
+    s += text(170, 218, 'one wedge, one hash: one above, one below', { cls: 'fg-tag' });
+    s += ringPair(292, [1, 'C1', { x: -8, y: 14, a: 'end' }], [2, 'C2', { x: -8, y: -4, a: 'end' }], 'up', 'down');
+    s += itext(170, 374, 'trans', '-1,2-dimethylcyclohexane', 'fg-tag-warn');
     return s;
   },
-  caption: 'The condition on cis and trans, and the case that violates it. In the first two panels each alkene carbon carries one hydrogen and one methyl, so “the substituent” means something and the two words divide the cases cleanly. In the third the right-hand carbon carries a methyl <i>and</i> an ethyl: one of them is cis to the left-hand methyl and the other is trans, so the question has no answer.',
-  note: 'The third compound is not an edge case without isomers — it has two, and they are different substances. What it lacks is a name for them in this vocabulary, which is exactly the gap E/Z was invented to fill.',
+  caption: 'Compare the two bonds to the methyl groups: the same kind of bond in the top drawing, different kinds in the bottom one.',
 });
 
-/* ------------------------------------------------------------- 30.3 ---
-   A tie broken one sphere out, and the size instinct that gets it wrong. */
-FIGURES.push({
-  id: 'ez-tie-one-sphere',
-  section: 'cis-trans-ez',
-  anchor: 'never a head count and never a size estimate.</p>\n</div>',
-  alt: 'An alkene whose right-hand carbon carries a chloromethyl group and an isopropyl group. Both branches begin with carbon, so the comparison moves one sphere out: the chloromethyl carbon holds chlorine, hydrogen and hydrogen, while the isopropyl carbon holds carbon, carbon and hydrogen. Chlorine beats carbon at the first term, so the smaller chloromethyl group is the higher priority.',
-  viewBox: '0 0 760 300',
-  build() {
-    let s = '';
-    s += tag(190, 30, 'both branches start with carbon');
-    s += bond(P(104, 116), P(150, 150), { rFrom: 17, rTo: 0 });
-    s += skDouble(P(150, 150), P(200, 150), P(175, 190));
-    s += bond(P(150, 150), P(150, 204), { rFrom: 0, rTo: 12 });
-    s += bond(P(200, 150), P(250, 110), { rFrom: 0, rTo: 22 });
-    s += bond(P(200, 150), P(252, 202), { rFrom: 0, rTo: 35 });
-    s += atom(104, 116, 'CH₃', { r: 17 });
-    s += atom(150, 204, 'H', { r: 12 });
-    s += atom(250, 110, 'CH₂Cl', { kind: 'hi', r: 22 });
-    s += atom(252, 202, 'CH(CH₃)₂', { r: 35 });
-    s += text(138, 132, 'C2', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
-    s += text(212, 132, 'C3', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-    s += text(190, 266, '3-(chloromethyl)-4-methylpent-2-ene', { cls: 'fg-sm', size: 10.5 });
-
-    s += rule(350, 40, 350, 262);
-
-    s += tag(556, 34, 'so move one sphere out and compare');
-    s += text(390, 92, '–CH₂Cl  →  (Cl, H, H)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
-    s += text(390, 120, '–CH(CH₃)₂  →  (C, C, H)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
-    s += text(390, 154, 'Highest against highest: Cl (17) beats C (6).', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(390, 176, 'First point of difference — stop there.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(556, 208, '–CH₂Cl is the higher priority', { cls: 'fg-tag-good', size: 12 });
-    s += text(556, 228, 'although isopropyl is the bigger group', { cls: 'fg-sm', size: 10.5 });
-    s += text(556, 252, 'drawn as here, both winners are up: (Z)', { cls: 'fg-tag-good', size: 11.5 });
-    s += text(380, 290, 'Size does not decide a CIP comparison. The first point of difference does.', { cls: 'fg-sm', size: 10.5 });
-    return s;
-  },
-  caption: 'A tie at the first atom, broken one sphere out. Both groups on C3 attach through carbon, so the first sphere says nothing and you list what each of those carbons holds. Chlorine appears at the head of one set and carbon at the head of the other, so the comparison is over at the first term &mdash; and the branch with three carbons in it loses to the branch with one. As drawn, the C2 methyl and the C3 chloromethyl are both up, so this particular isomer is <b>(Z)-3-(chloromethyl)-4-methylpent-2-ene</b>.',
-  note: 'This is the comparison students most often decide by eye. Bulk, mass and the number of atoms in a branch are all irrelevant to CIP; the sets are ordered high to low and read position by position, and the moment they differ the ranking is fixed.',
-});
-
-/* ------------------------------------------------------------- 30.4 ---
-   Duplicated atoms: the device that makes a double bond comparable with a
-   branch, and the sphere where it actually settles something. */
-FIGURES.push({
-  id: 'ez-duplicate-vinyl',
-  section: 'cis-trans-ez',
-  anchor: 'Their whole job is to be counted once in the sphere where they appear.</p>\n</div>',
-  alt: 'A vinyl group beside an isopropyl group. The vinyl group’s double bond is redrawn with a phantom duplicate carbon on each end, so its attachment carbon counts as carbon, carbon, hydrogen — exactly what the isopropyl attachment carbon holds. One sphere further out the tie breaks: the vinyl terminal carbon counts as carbon, hydrogen, hydrogen while each isopropyl methyl is only hydrogen, hydrogen, hydrogen.',
-  viewBox: '0 0 760 300',
-  build() {
-    let s = '';
-    s += panel(24, 40, 340, 200, { kind: 'hi' });
-    s += tag(194, 30, 'vinyl  –CH=CH₂');
-    s += bond(P(150, 110), P(214, 110), { order: 2, rFrom: 15, rTo: 18 });
-    s += bond(P(150, 110), P(150, 64), { rFrom: 15, rTo: 17 });
-    s += bond(P(214, 110), P(214, 64), { rFrom: 18, rTo: 17 });
-    s += bond(P(150, 110), P(104, 140), { rFrom: 15, rTo: 12 });
-    s += atom(104, 140, 'H', { r: 12 });
-    s += atom(150, 110, 'C');
-    s += atom(214, 110, 'CH₂', { r: 18 });
-    s += atom(150, 64, '(C)', { kind: 'warn', r: 17 });
-    s += atom(214, 64, '(C)', { kind: 'warn', r: 17 });
-    s += text(194, 168, 'first sphere:  (C, C, H)', { cls: 'fg-lbl', size: 12 });
-    s += text(194, 192, 'that CH₂ then holds (C, H, H)', { cls: 'fg-sm', size: 10.5 });
-    s += text(194, 218, 'so vinyl wins one sphere later', { cls: 'fg-tag-good', size: 11 });
-
-    s += panel(396, 40, 340, 200);
-    s += tag(566, 30, 'isopropyl  –CH(CH₃)₂');
-    s += bond(P(540, 110), P(600, 74), { rFrom: 15, rTo: 17 });
-    s += bond(P(540, 110), P(600, 146), { rFrom: 15, rTo: 17 });
-    s += bond(P(540, 110), P(494, 110), { rFrom: 15, rTo: 12 });
-    s += atom(540, 110, 'C');
-    s += atom(600, 74, 'CH₃', { r: 17 });
-    s += atom(600, 146, 'CH₃', { r: 17 });
-    s += atom(494, 110, 'H', { r: 12 });
-    s += text(566, 192, 'first sphere:  (C, C, H)', { cls: 'fg-lbl', size: 12 });
-    s += text(566, 218, 'each CH₃ holds only (H, H, H)', { cls: 'fg-sm', size: 10.5 });
-
-    s += rule(24, 254, 736, 254);
-    s += text(380, 278, 'Duplication creates the tie; the next sphere out breaks it. Vinyl beats isopropyl.', { cls: 'fg-lbl', size: 12 });
-    return s;
-  },
-  caption: 'What a duplicated atom is for. The vinyl carbon really carries one carbon and one hydrogen, but its partner is doubly bonded, so CIP writes that partner in twice — once real, once as the parenthesized phantom — and the set becomes (C, C, H). That is the same set the isopropyl carbon genuinely holds, so the first sphere is an exact tie and the comparison has to go out one more.',
-  note: 'A phantom has no substituents of its own, so when the search reaches one it is a dead end and loses. Duplication is a bookkeeping device that makes a multiple bond comparable with a branch; it is not a way of scoring extra points.',
-});
-
-/* ------------------------------------------------------------- 30.5 ---
-   Two double bonds, two descriptors, and where the locants go. */
-FIGURES.push({
-  id: 'ez-diene-locants',
-  section: 'cis-trans-ez',
-  anchor: 'one label per stereogenic unit, each carrying its locant.</p>\n</div>',
-  alt: 'Hexa-2,4-diene drawn as a skeleton with its six carbons numbered. The C2 to C3 double bond has the C1 methyl below it and the C4 chain above it, on opposite sides, which makes it E. The C4 to C5 double bond has the C3 chain and the C6 methyl both below it, on the same side, which makes it Z. As numbered here the name is 2E,4Z-hexa-2,4-diene; because the chain reads the same from either end, IUPAC numbers it from the other end so that Z gets the lower locant, and the preferred name is 2Z,4E-hexa-2,4-diene.',
-  viewBox: '0 0 760 300',
-  build() {
-    const c1 = P(96, 208), c2 = P(142, 182), c3 = P(188, 182),
-          c4 = P(234, 156), c5 = P(280, 156), c6 = P(326, 182);
-    let s = '';
-    s += sk(c1, c2);
-    s += skDouble(c2, c3, P(165, 220));
-    s += sk(c3, c4);
-    s += skDouble(c4, c5, P(257, 118));
-    s += sk(c5, c6);
-    s += text(96, 230, '1', { cls: 'fg-sm', size: 10 });
-    s += text(134, 172, '2', { cls: 'fg-sm', size: 10, anchor: 'end' });
-    s += text(196, 172, '3', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(226, 142, '4', { cls: 'fg-sm', size: 10, anchor: 'end' });
-    s += text(288, 142, '5', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(326, 204, '6', { cls: 'fg-sm', size: 10 });
-    s += text(211, 262, 'CH₃–CH=CH–CH=CH–CH₃', { cls: 'fg-sm', size: 10.5 });
-
-    s += rule(360, 40, 360, 268);
-
-    s += tag(548, 34, 'one descriptor per double bond');
-    s += text(396, 92, 'C2=C3:  CH₃ and the C4 chain', { cls: 'fg-lbl', size: 12, anchor: 'start' });
-    s += text(396, 114, 'sit on opposite sides', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(688, 104, 'E', { cls: 'fg-tag-good', size: 16 });
-    s += text(396, 160, 'C4=C5:  the C3 chain and CH₃', { cls: 'fg-lbl', size: 12, anchor: 'start' });
-    s += text(396, 182, 'sit on the same side', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-    s += text(688, 172, 'Z', { cls: 'fg-tag-good', size: 16 });
-    s += text(548, 226, '(2E,4Z) as numbered here', { cls: 'fg-tag-good', size: 13 });
-    s += text(548, 250, 'preferred: (2Z,4E), since Z takes the lower locant', { cls: 'fg-sm', size: 10.5 });
-    s += text(380, 292, 'Two stereogenic double bonds, two letters, and both of them go in the name.', { cls: 'fg-sm', size: 10.5 });
-    return s;
-  },
-  caption: 'A diene needs a descriptor for every stereogenic double bond it has, and each one carries the locant of the lower-numbered carbon it spans. Both bonds here have one hydrogen and one carbon chain on each of their carbons, so the chain is the higher priority every time and E/Z agrees with trans/cis — which is the ordinary case, not a rule.',
-  note: 'The descriptors go inside one set of parentheses at the front of the name, in locant order, exactly as (2R,3S) does for two stereocenters. A name that omits one of them is incomplete, not merely informal.',
-});
-
-/* ------------------------------------------------------------- 30.6 ---
-   The reading is the same for 1,3 and 1,4 as it is for 1,2 — which is easy
-   to assert and easy to doubt, so it gets drawn — and the translation into
-   axial/equatorial, which flips over on an odd spacing. */
+/* ---------------------------------------------- ring-cis-trans-locants ---
+   The same reading on 1,3 and 1,4 rings. */
 FIGURES.push({
   id: 'ring-cis-trans-locants',
   section: 'cis-trans-ez',
-  anchor: 'For naming, the only question asked here is same face or opposite face.</p>',
-  alt: 'Two more flat ring drawings. On the left, 1,3-dimethylcyclohexane with both methyl groups on bold wedges, which is the cis isomer. On the right, 1,4-dimethylcyclohexane with one methyl on a wedge and one on a hashed bond, which is the trans isomer. Below them a three-row table giving, for 1,2-, 1,3- and 1,4-disubstituted rings, which of cis and trans puts the two groups one axial and one equatorial and which allows both axial or both equatorial.',
-  viewBox: '0 0 760 470',
+  lessons: ['cis-trans-ez'],
+  anchor: 'the wedges and hashes say which face each group is on.</p>',
+  viewBox: '0 0 340 436',
+  alt: 'Two more flat hexagon drawings, stacked. Top: 1,3-dimethylcyclohexane with both methyl groups on bold wedges, on carbons C1 and C3 with one carbon between them; this is the cis isomer. Bottom: 1,4-dimethylcyclohexane with the methyl on C1 on a wedge and the methyl on C4, across the ring, on a hashed bond; this is the trans isomer.',
   build() {
-    const verts = (cx, cy, r) => {
-      const v = [];
-      for (let i = 0; i < 6; i++) {
-        const a = ((-90 + i * 60) * Math.PI) / 180;
-        v.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
-      }
-      return v;
-    };
     let s = '';
-
-    /* ---- left: cis-1,3, two wedges on carbons one apart ---- */
-    s += panel(20, 36, 340, 250, { kind: 'hi' });
-    s += tag(190, 26, 'both on a wedge — same face');
-    {
-      const v = verts(190, 158, 52);
-      for (let i = 0; i < 6; i++) s += sk(v[i], v[(i + 1) % 6]);
-      const c1 = v[0], c3 = v[2];
-      const m1 = P(c1.x, c1.y - 46), m3 = P(c3.x + 40, c3.y + 24);
-      s += wedge(c1, m1, { rFrom: 0, rTo: 18 });
-      s += wedge(c3, m3, { rFrom: 0, rTo: 18 });
-      s += atom(m1.x, m1.y, 'CH₃', { r: 18 });
-      s += atom(m3.x, m3.y, 'CH₃', { r: 18 });
-      s += text(c1.x - 26, c1.y - 2, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
-      s += text(c3.x + 8, c3.y + 34, 'C3', { cls: 'fg-sm', size: 9.5, anchor: 'start' });
-    }
-    s += text(190, 306, 'cis-1,3-dimethylcyclohexane', { cls: 'fg-tag-good', size: 12 });
-
-    /* ---- right: trans-1,4, a wedge and a hash across the ring ---- */
-    s += panel(400, 36, 340, 250, { kind: 'warn' });
-    s += tag(570, 26, 'one wedge, one hash — opposite faces');
-    {
-      const v = verts(570, 158, 52);
-      for (let i = 0; i < 6; i++) s += sk(v[i], v[(i + 1) % 6]);
-      const c1 = v[0], c4 = v[3];
-      const m1 = P(c1.x, c1.y - 46), m4 = P(c4.x, c4.y + 46);
-      s += wedge(c1, m1, { rFrom: 0, rTo: 18 });
-      s += hash(c4, m4, { rFrom: 0, rTo: 18 });
-      s += atom(m1.x, m1.y, 'CH₃', { r: 18 });
-      s += atom(m4.x, m4.y, 'CH₃', { r: 18 });
-      s += text(c1.x - 26, c1.y - 2, 'C1', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
-      s += text(c4.x - 26, c4.y + 6, 'C4', { cls: 'fg-sm', size: 9.5, anchor: 'end' });
-    }
-    s += text(570, 306, 'trans-1,4-dimethylcyclohexane', { cls: 'fg-tag-warn', size: 12 });
-
-    /* ---- the chair translation, which is the part that flips over ---- */
-    s += rule(40, 330, 720, 330);
-    s += text(40, 354, 'in a chair', { cls: 'fg-tag', size: 10.5, anchor: 'start' });
-    s += text(250, 354, 'cis', { cls: 'fg-tag-good', size: 10.5, anchor: 'start' });
-    s += text(500, 354, 'trans', { cls: 'fg-tag-warn', size: 10.5, anchor: 'start' });
-    const ROWS = [
-      ['1,2-', 'one axial, one equatorial', 'both equatorial (or both axial)'],
-      ['1,3-', 'both equatorial (or both axial)', 'one axial, one equatorial'],
-      ['1,4-', 'one axial, one equatorial', 'both equatorial (or both axial)'],
-    ];
-    ROWS.forEach(([lab, a, b], i) => {
-      const y = 382 + i * 26;
-      s += text(40, y, lab, { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
-      s += text(250, y, a, { cls: 'fg-sm', size: 11, anchor: 'start' });
-      s += text(500, y, b, { cls: 'fg-sm', size: 11, anchor: 'start' });
-    });
-    s += text(380, 462, 'The 1,3- row is the one that trades places. Naming never uses this table — conformational analysis does.', { cls: 'fg-sm', size: 10.5 });
+    s += text(170, 18, 'two wedges, one carbon apart', { cls: 'fg-tag' });
+    s += ringPair(96, [1, 'C1', { x: -10, y: 14, a: 'end' }], [3, 'C3', { x: 0, y: -12 }], 'up', 'up');
+    s += itext(170, 226, 'cis', '-1,3-dimethylcyclohexane', 'fg-tag-good');
+    s += rule(10, 240, 330, 240);
+    s += text(170, 262, 'a wedge and a hash, across the ring', { cls: 'fg-tag' });
+    s += ringPair(336, [1, 'C1', { x: -10, y: 14, a: 'end' }], [4, 'C4', { x: 10, y: -2, a: 'start' }], 'up', 'down');
+    s += itext(170, 428, 'trans', '-1,4-dimethylcyclohexane', 'fg-tag-warn');
     return s;
   },
-  caption: 'The same wedge-and-hash reading on the two spacings the 1,2- figure did not draw. Two wedges are two groups on the same face, so the 1,3 compound on the left is <b>cis</b> however far apart its methyls are; a wedge and a hash are opposite faces, so the 1,4 compound on the right is <b>trans</b>. The locants change nothing about the test.',
-  note: 'The table underneath is a different question, and the row that catches people is the middle one. Axial directions alternate around the ring, so on carbons an <i>even</i> number apart (1,3-) the two axial positions point the same way and cis can be diequatorial, while on carbons an <i>odd</i> number apart (1,2- and 1,4-) they point opposite ways and cis is forced into axial/equatorial. None of that changes cis or trans &mdash; it only decides which conformer is cheap.',
+  caption: 'The spacing changes, and the reading does not: same kind of bond is cis, a wedge and a hash is trans.',
+});
+
+/* ------------------------------------------------ ring-flip-keeps-face ---
+   Both 1,2-dimethylcyclohexanes, each in its two chairs. Axial and
+   equatorial swap on the flip; up and down do not. Notes only (760 wide). */
+const CIS12 = [[0, 'up', 'C1'], [5, 'up', 'C2']];
+const TRANS12 = [[0, 'down', 'C1'], [5, 'up', 'C2']];
+const TAGS = { C1: { x: -20, y: -6, a: 'end' }, C2: { x: -10, y: 18, a: 'end' } };
+const TAGS_F = { C1: { x: -22, y: 18, a: 'end' }, C2: { x: -8, y: 20, a: 'end' } };
+function chairRow(cxA, cxB, cy, k, subs, dy = 80, arrowGap = 60) {
+  const A = methylChair(cxA, cy, k, false, subs, TAGS);
+  const B = methylChair(cxB, cy, k, true, subs, TAGS_F);
+  let s = A.s + B.s;
+  const line = (cx, read, y) => read.forEach(([n, pos, face], j) => {
+    s += text(cx, y + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' });
+  });
+  line(cxA, A.read, cy + dy);
+  line(cxB, B.read, cy + dy);
+  const mid = (cxA + cxB) / 2;
+  s += arrow(P(mid - arrowGap / 2, cy - 8), P(mid + arrowGap / 2, cy - 8));
+  s += arrow(P(mid + arrowGap / 2, cy + 8), P(mid - arrowGap / 2, cy + 8), { muted: true });
+  s += text(mid, cy - 20, 'ring flip', { cls: 'fg-tag' });
+  return s;
+}
+FIGURES.push({
+  id: 'ring-flip-keeps-face',
+  section: 'cis-trans-ez',
+  anchor: 'The compound is still cis.</p>',
+  viewBox: '0 0 760 470',
+  alt: 'Two rows of cyclohexane chairs, each row showing one compound in its two chairs with ring-flip arrows between them. Top row, cis-1,2-dimethylcyclohexane: in the left chair the C1 methyl is axial and points up and the C2 methyl is equatorial and points up; in the flipped chair on the right the C1 methyl is equatorial and up and the C2 methyl is axial and up. Bottom row, trans-1,2-dimethylcyclohexane: in the left chair both methyls are equatorial, C1 pointing down and C2 pointing up; in the flipped chair both are axial, C1 down and C2 up.',
+  build() {
+    let s = '';
+    s += itext(20, 22, 'cis', '-1,2-dimethylcyclohexane', 'fg-tag-good', 'start');
+    s += chairRow(170, 590, 110, 0.78, CIS12);
+    s += rule(20, 232, 740, 232);
+    s += itext(20, 256, 'trans', '-1,2-dimethylcyclohexane', 'fg-tag-warn', 'start');
+    s += chairRow(170, 590, 350, 0.78, TRANS12);
+    return s;
+  },
+  caption: 'Read the tags under each chair. From one chair to the other, axial and equatorial swap, while up and down stay the same.',
+});
+
+/* Lesson copy: the cis compound only, the two chairs stacked. */
+FIGURES.push({
+  id: 'l-ring-flip',
+  lessons: ['cis-trans-ez'],
+  viewBox: '0 0 340 464',
+  alt: 'cis-1,2-dimethylcyclohexane in two chairs, one above the other, with ring-flip arrows between them. In the upper chair the C1 methyl is axial and points up and the C2 methyl is equatorial and points up. In the lower, flipped chair the C1 methyl is equatorial and up and the C2 methyl is axial and up.',
+  build() {
+    let s = '';
+    s += itext(170, 18, 'cis', '-1,2-dimethylcyclohexane', 'fg-tag-good');
+    const A = methylChair(170, 96, 0.78, false, CIS12, TAGS);
+    s += A.s;
+    A.read.forEach(([n, pos, face], j) => { s += text(170, 178 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
+    s += arrow(P(150, 222), P(150, 262));
+    s += arrow(P(190, 262), P(190, 222), { muted: true });
+    s += text(206, 246, 'ring flip', { cls: 'fg-tag', anchor: 'start' });
+    const B = methylChair(170, 360, 0.78, true, CIS12, TAGS_F);
+    s += B.s;
+    B.read.forEach(([n, pos, face], j) => { s += text(170, 424 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
+    return s;
+  },
+  caption: 'Axial and equatorial swap on the flip. Both methyls point up in both chairs.',
+});
+
+/* Lesson question: cis-1,4-dimethylcyclohexane in one chair. */
+FIGURES.push({
+  id: 'l-cis14-chair',
+  lessons: ['cis-trans-ez'],
+  viewBox: '0 0 340 224',
+  alt: 'cis-1,4-dimethylcyclohexane in one chair. The methyl on C1, at the right end of the chair, is axial and points up. The methyl on C4, at the left end, is equatorial and angles up.',
+  build() {
+    let s = '';
+    const T = { C1: { x: 8, y: 22, a: 'start' }, C4: { x: -2, y: 24, a: 'middle' } };
+    const A = methylChair(180, 120, 0.82, false, [[0, 'up', 'C1'], [3, 'up', 'C4']], T);
+    s += A.s;
+    s += text(170, 196, 'C1: axial, up', { cls: 'fg-tag' });
+    s += text(170, 214, 'C4: equatorial, up', { cls: 'fg-tag' });
+    return s;
+  },
+  caption: 'One chair of the cis compound, before the flip.',
+});
+
+/* --------------------------------------------------- cis-trans-runs-out ---
+   The condition on cis and trans, and the alkene that breaks it. */
+FIGURES.push({
+  id: 'cis-trans-runs-out',
+  section: 'cis-trans-ez',
+  lessons: ['cis-trans-ez'],
+  anchor: 'So &ldquo;cis or trans?&rdquo; has no answer.</p>',
+  viewBox: '0 0 340 482',
+  alt: 'Three alkenes stacked, each with the double bond horizontal. First, cis-but-2-ene: each alkene carbon carries one hydrogen and one methyl, and the two methyls are both above the double bond. Second, trans-but-2-ene: the left methyl is above and the right methyl below. Third, 3-methylpent-2-ene: the left carbon carries a methyl and a hydrogen, but the right carbon carries a methyl and an ethyl group and no hydrogen, so neither cis nor trans can be assigned.',
+  build() {
+    let s = '';
+    s += alkene(170, 66, { lu: { t: 'CH₃' }, ld: { t: 'H' }, ru: { t: 'CH₃' }, rd: { t: 'H' } });
+    s += itext(170, 130, 'cis', '-but-2-ene: methyls on the same side', 'fg-tag-good');
+    s += rule(10, 144, 330, 144);
+    s += alkene(170, 212, { lu: { t: 'CH₃' }, ld: { t: 'H' }, ru: { t: 'H' }, rd: { t: 'CH₃' } });
+    s += itext(170, 286, 'trans', '-but-2-ene: methyls on opposite sides', 'fg-tag-good');
+    s += rule(10, 300, 330, 300);
+    s += alkene(170, 374, { lu: { t: 'CH₃' }, ld: { t: 'H' }, ru: { t: 'CH₃' }, rd: { t: 'CH₂CH₃' } });
+    s += text(170, 456, '3-methylpent-2-ene: no H on the right carbon', { cls: 'fg-tag-warn' });
+    s += text(170, 474, 'so neither cis nor trans fits', { cls: 'fg-tag-warn' });
+    return s;
+  },
+  caption: 'Count the hydrogens on each alkene carbon. The first two drawings have one per carbon. The third has none on the right-hand carbon.',
+});
+
+/* --------------------------------------------------------- ez-worked ---
+   2-bromobut-2-ene: drawn "trans", named Z. */
+FIGURES.push({
+  id: 'ez-worked',
+  section: 'cis-trans-ez',
+  lessons: ['cis-trans-ez'],
+  anchor: 'so the compound is <b>(Z)-2-bromobut-2-ene</b>.</p>\n</div>',
+  viewBox: '0 0 340 270',
+  alt: '2-bromobut-2-ene with the double bond horizontal. The left carbon, C2, carries bromine up-left, tagged higher, and a methyl down-left, tagged lower. The right carbon, C3, carries a methyl up-right, tagged higher, and a hydrogen down-right, tagged lower. The two methyl groups are on opposite sides, but the two higher-priority groups, bromine and the C3 methyl, are both above the double bond, so the compound is Z.',
+  build() {
+    let s = '';
+    s += text(170, 18, 'the two methyls are on opposite sides', { cls: 'fg-tag' });
+    s += alkene(170, 102, { lu: { t: 'Br', pri: 'hi' }, ld: { t: 'CH₃', pri: 'lo' }, ru: { t: 'CH₃', pri: 'hi' }, rd: { t: 'H', pri: 'lo' } }, { names: ['C2', 'C3'] });
+    s += rule(10, 174, 330, 174);
+    s += text(170, 196, 'On C2: Br beats CH₃ (35 against 6)', { cls: 'fg-tag' });
+    s += text(170, 216, 'On C3: CH₃ beats H (6 against 1)', { cls: 'fg-tag' });
+    s += text(170, 236, 'Both higher groups are above the C=C', { cls: 'fg-tag' });
+    s += text(170, 260, '(Z)-2-bromobut-2-ene', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'Look only at the two groups tagged higher. They are on the same side, whatever the methyls do.',
+});
+
+/* Lesson question: 2-chlorobut-2-ene, methyls on the same side. No tags. */
+FIGURES.push({
+  id: 'l-ez-practice',
+  lessons: ['cis-trans-ez'],
+  viewBox: '0 0 340 190',
+  alt: '2-chlorobut-2-ene with the double bond horizontal. The left carbon, C2, carries a methyl up-left and a chlorine down-left. The right carbon, C3, carries a methyl up-right and a hydrogen down-right. The two methyl groups are both above the double bond.',
+  build() {
+    let s = '';
+    s += alkene(170, 90, { lu: { t: 'CH₃' }, ld: { t: 'Cl' }, ru: { t: 'CH₃' }, rd: { t: 'H' } }, { names: ['C2', 'C3'] });
+    s += text(170, 176, '2-chlorobut-2-ene', { cls: 'fg-tag' });
+    return s;
+  },
+  caption: 'Both methyls are drawn above the double bond.',
+});
+
+/* ------------------------------------------------- ez-tie-one-sphere ---
+   A tie at the first atom, broken one atom further out. */
+FIGURES.push({
+  id: 'ez-tie-one-sphere',
+  section: 'cis-trans-ez',
+  lessons: ['cis-trans-ez'],
+  anchor: '<b>(Z)-3-(chloromethyl)-4-methylpent-2-ene</b>.</p>\n</div>',
+  viewBox: '0 0 340 282',
+  alt: '3-(chloromethyl)-4-methylpent-2-ene with the double bond horizontal. The left carbon, C2, carries a methyl up-left, tagged higher, and a hydrogen down-left, tagged lower. The right carbon, C3, carries a chloromethyl group up-right, tagged higher, and an isopropyl group down-right, tagged lower. Below, the tie on C3 is broken: the chloromethyl carbon holds chlorine, hydrogen and hydrogen, the isopropyl carbon holds carbon, carbon and hydrogen, and chlorine beats carbon at the first term. Both higher groups are above the double bond, so the isomer is Z.',
+  build() {
+    let s = '';
+    s += alkene(150, 60, { lu: { t: 'CH₃', pri: 'hi' }, ld: { t: 'H', pri: 'lo' }, ru: { t: 'CH₂Cl', pri: 'hi' }, rd: { t: 'CH(CH₃)₂', pri: 'lo' } }, { names: ['C2', 'C3'], gap: 14 });
+    s += rule(10, 150, 330, 150);
+    s += text(170, 172, 'On C3 both groups start with C: a tie.', { cls: 'fg-tag' });
+    s += text(170, 192, 'CH₂Cl carbon holds (Cl, H, H)', { cls: 'fg-tag' });
+    s += text(170, 210, 'CH(CH₃)₂ carbon holds (C, C, H)', { cls: 'fg-tag' });
+    s += text(170, 230, 'Cl beats C at the first term', { cls: 'fg-tag' });
+    s += text(170, 254, 'both higher groups above the C=C: Z', { cls: 'fg-tag-good' });
+    s += text(170, 274, '(Z)-3-(chloromethyl)-4-methylpent-2-ene', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'The smaller group wins on C3. Chlorine settles it at the first term of the two sets.',
+});
+
+/* Lesson question: 3-methylpent-2-ene, no tags. */
+const PENTENE = { lu: { t: 'CH₃' }, ld: { t: 'H' }, ru: { t: 'CH₂CH₃' }, rd: { t: 'CH₃' } };
+FIGURES.push({
+  id: 'l-ez-read',
+  lessons: ['cis-trans-ez'],
+  viewBox: '0 0 340 196',
+  alt: '3-methylpent-2-ene with the double bond horizontal. The left carbon, C2, carries a methyl up-left and a hydrogen down-left. The right carbon, C3, carries an ethyl group up-right and a methyl down-right.',
+  build() {
+    let s = '';
+    s += alkene(160, 92, PENTENE, { names: ['C2', 'C3'], gap: 16 });
+    s += text(170, 184, '3-methylpent-2-ene', { cls: 'fg-tag' });
+    return s;
+  },
+  caption: 'C2 carries CH₃ and H. C3 carries CH₂CH₃ and CH₃.',
+});
+
+/* Explanation after that question: the same drawing, tagged. */
+FIGURES.push({
+  id: 'l-ez-read-marked',
+  lessons: ['cis-trans-ez'],
+  viewBox: '0 0 340 296',
+  alt: 'The same 3-methylpent-2-ene with priorities tagged. On C2 the methyl, up-left, is higher and the hydrogen is lower. On C3 the ethyl group, up-right, is higher and the methyl, down-right, is lower. Below: on C3 the ethyl carbon holds carbon, hydrogen, hydrogen against the methyl carbon\'s hydrogen, hydrogen, hydrogen. Both higher groups are above the double bond, so the compound is Z.',
+  build() {
+    let s = '';
+    s += alkene(160, 92, {
+      lu: { t: 'CH₃', pri: 'hi' }, ld: { t: 'H', pri: 'lo' },
+      ru: { t: 'CH₂CH₃', pri: 'hi' }, rd: { t: 'CH₃', pri: 'lo' },
+    }, { names: ['C2', 'C3'], gap: 16 });
+    s += rule(10, 176, 330, 176);
+    s += text(170, 198, 'On C2: CH₃ beats H', { cls: 'fg-tag' });
+    s += text(170, 218, 'On C3: both start with C, a tie', { cls: 'fg-tag' });
+    s += text(170, 238, 'one atom out: (C, H, H) beats (H, H, H)', { cls: 'fg-tag' });
+    s += text(170, 262, 'both higher groups above the C=C', { cls: 'fg-tag' });
+    s += text(170, 286, '(Z)-3-methylpent-2-ene', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'The ethyl group wins on C3, one atom out from the double bond.',
+});
+
+/* ------------------------------------------------- ez-duplicate-vinyl ---
+   A duplicate atom creates the tie; the next atom out breaks it. */
+function vinylGroup(y, x0) {
+  // x0: where the bond to the rest of the molecule starts
+  const A = P(x0 + 56, y), B = P(x0 + 136, y);
+  let s = bond(P(x0, y), A, { rFrom: 0, rTo: Cr });
+  s += text(x0 - 4, y + 4, 'to C=C', { cls: 'fg-tag-mut', anchor: 'end' });
+  s += bond(A, B, { order: 2, rFrom: Cr, rTo: 17 });
+  const hA = at(A, 270, 44), dA = at(A, 90, 44);
+  s += bond(A, hA, { rFrom: Cr, rTo: 11 }) + atom(hA.x, hA.y, 'H', { r: 11 });
+  s += bond(A, dA, { rFrom: Cr, rTo: 16, cls: 'fg-bond-soft' }) + atom(dA.x, dA.y, '(C)', { r: 16, kind: 'warn' });
+  const dB = at(B, 90, 44);
+  s += bond(B, dB, { rFrom: 17, rTo: 16, cls: 'fg-bond-soft' }) + atom(dB.x, dB.y, '(C)', { r: 16, kind: 'warn' });
+  s += atom(A.x, A.y, 'C', { r: Cr }) + atom(B.x, B.y, 'CH₂', { r: 17 });
+  return { s, A, B };
+}
+FIGURES.push({
+  id: 'ez-duplicate-vinyl',
+  section: 'cis-trans-ez',
+  anchor: 'They count once, in the set where they appear, and nowhere else.</p>\n</div>',
+  viewBox: '0 0 340 420',
+  alt: 'Top: a vinyl group, CH=CH2, with its double bond partners each given a duplicate carbon in brackets. Its attachment carbon then holds carbon, carbon and hydrogen, and its CH2 holds carbon, hydrogen and hydrogen. Middle: an isopropyl group. Its attachment carbon holds carbon, carbon and hydrogen, and each methyl holds hydrogen, hydrogen and hydrogen. Bottom: the first atom out ties, and the next atom out goes to vinyl.',
+  build() {
+    let s = '';
+    s += text(170, 18, 'vinyl, –CH=CH₂', { cls: 'fg-tag' });
+    const v = vinylGroup(92, 90);
+    s += v.s;
+    s += text(v.A.x, 164, '(C, C, H)', { cls: 'fg-tag' });
+    s += text(v.B.x + 8, 164, '(C, H, H)', { cls: 'fg-tag-good' });
+    s += text(252, 52, 'duplicates', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += rule(10, 180, 330, 180);
+    s += text(170, 202, 'isopropyl, –CH(CH₃)₂', { cls: 'fg-tag' });
+    const A = P(146, 270);
+    s += bond(P(90, 270), A, { rFrom: 0, rTo: Cr });
+    s += text(86, 274, 'to C=C', { cls: 'fg-tag-mut', anchor: 'end' });
+    const m1 = at(A, 35, 64), m2 = at(A, 325, 64), h = at(A, 90, 42);
+    s += bond(A, m1, { rFrom: Cr, rTo: 17 }) + atom(m1.x, m1.y, 'CH₃', { r: 17 });
+    s += bond(A, m2, { rFrom: Cr, rTo: 17 }) + atom(m2.x, m2.y, 'CH₃', { r: 17 });
+    s += bond(A, h, { rFrom: Cr, rTo: 11 }) + atom(h.x, h.y, 'H', { r: 11 });
+    s += atom(A.x, A.y, 'C', { r: Cr });
+    s += text(A.x, 322, '(C, C, H)', { cls: 'fg-tag' });
+    s += text(m1.x + 22, m1.y + 4, '(H, H, H)', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += text(m2.x + 22, m2.y + 4, '(H, H, H)', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += rule(10, 340, 330, 340);
+    s += text(170, 362, 'first atom out: (C, C, H) against (C, C, H), a tie', { cls: 'fg-tag' });
+    s += text(170, 382, 'next atom out: (C, H, H) beats (H, H, H)', { cls: 'fg-tag' });
+    s += text(170, 406, 'vinyl outranks isopropyl', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'The bracketed carbons are the duplicates. They make the first sets tie, and the CH₂ of the vinyl group then wins at the next atom out.',
+});
+
+/* Lesson: vinyl against ethyl, settled at the first atom out. */
+FIGURES.push({
+  id: 'l-duplicate',
+  lessons: ['cis-trans-ez'],
+  viewBox: '0 0 340 326',
+  alt: 'Top: a vinyl group with its double bond partners each given a duplicate carbon in brackets, so its attachment carbon holds carbon, carbon and hydrogen. Middle: an ethyl group, whose attachment carbon holds carbon, hydrogen and hydrogen. Bottom: carbon, carbon, hydrogen beats carbon, hydrogen, hydrogen at the second term, so vinyl outranks ethyl.',
+  build() {
+    let s = '';
+    s += text(170, 18, 'vinyl, –CH=CH₂', { cls: 'fg-tag' });
+    const v = vinylGroup(92, 90);
+    s += v.s;
+    s += text(v.A.x, 164, '(C, C, H)', { cls: 'fg-tag-good' });
+    s += text(252, 52, 'duplicates', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += rule(10, 180, 330, 180);
+    s += text(170, 202, 'ethyl, –CH₂CH₃', { cls: 'fg-tag' });
+    const A = P(146, 240), B = P(226, 240);
+    s += bond(P(90, 240), A, { rFrom: 0, rTo: Cr });
+    s += text(86, 244, 'to C=C', { cls: 'fg-tag-mut', anchor: 'end' });
+    s += bond(A, B, { rFrom: 17, rTo: 17 }) + atom(B.x, B.y, 'CH₃', { r: 17 });
+    s += atom(A.x, A.y, 'CH₂', { r: 17 });
+    s += text(A.x, 278, '(C, H, H)', { cls: 'fg-tag' });
+    s += rule(10, 292, 330, 292);
+    s += text(170, 314, 'C beats H at the second term: vinyl wins', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'The duplicate gives the vinyl carbon a second C in its set.',
+});
+
+/* -------------------------------------------------- ez-diene-locants ---
+   Hexa-2,4-diene, one descriptor per double bond. */
+FIGURES.push({
+  id: 'ez-diene-locants',
+  section: 'cis-trans-ez',
+  anchor: 'so the preferred name is <b>(2Z,4E)-hexa-2,4-diene</b>.</p>\n</div>',
+  viewBox: '0 0 340 330',
+  alt: 'Hexa-2,4-diene with every carbon and the four alkene hydrogens drawn, and the carbons numbered 1 to 6. The higher-priority group on each alkene carbon is highlighted: C1 and C4 across the C2=C3 bond, and C3 and C6 across the C4=C5 bond. C1 is below the C2=C3 bond and C4 above it, so that bond is E. C3 and C6 are both below the C4=C5 bond, so that bond is Z. As numbered the name is (2E,4Z); numbering from the other end gives the preferred (2Z,4E)-hexa-2,4-diene.',
+  build() {
+    const c1 = P(42, 150), c2 = P(88, 124), c3 = P(140, 124), c4 = P(186, 98), c5 = P(238, 98), c6 = P(284, 124);
+    let s = '';
+    s += text(170, 18, 'highlighted: the higher group (or bond) on each C', { cls: 'fg-tag' });
+    s += bond(c1, c2, { rFrom: 17, rTo: Cr, cls: 'fg-bond-hi' });
+    s += bond(c2, c3, { order: 2, rFrom: Cr, rTo: Cr });
+    s += bond(c3, c4, { rFrom: Cr, rTo: Cr, cls: 'fg-bond-hi' });
+    s += bond(c4, c5, { order: 2, rFrom: Cr, rTo: Cr });
+    s += bond(c5, c6, { rFrom: Cr, rTo: 17, cls: 'fg-bond-hi' });
+    const hs = [[c2, 104.5], [c3, 284.5], [c4, 104.5], [c5, 75.5]];
+    for (const [c, d] of hs) {
+      const h = at(c, d, 40);
+      s += bond(c, h, { rFrom: Cr, rTo: 11 }) + atom(h.x, h.y, 'H', { r: 11 });
+    }
+    s += atom(c1.x, c1.y, 'CH₃', { r: 17, kind: 'hi' }) + atom(c6.x, c6.y, 'CH₃', { r: 17, kind: 'hi' });
+    for (const c of [c2, c3, c4, c5]) s += atom(c.x, c.y, 'C', { r: Cr });
+    const num = (c, dx, dy, n) => text(c.x + dx, c.y + dy, n, { cls: 'fg-tag-mut' });
+    s += num(c1, 0, 32, '1') + num(c2, 0, 30, '2') + num(c3, -4, -18, '3');
+    s += num(c4, 0, 30, '4') + num(c5, 0, 30, '5') + num(c6, 0, 32, '6');
+    s += rule(10, 200, 330, 200);
+    s += text(170, 222, 'C2=C3: C1 below, C4 above, so E', { cls: 'fg-tag' });
+    s += text(170, 242, 'C4=C5: C3 and C6 both below, so Z', { cls: 'fg-tag' });
+    s += text(170, 266, 'as numbered: (2E,4Z)', { cls: 'fg-tag' });
+    s += text(170, 286, 'numbered from the other end, Z gets 2', { cls: 'fg-tag' });
+    s += text(170, 312, '(2Z,4E)-hexa-2,4-diene', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'Check each double bond on its own: the two highlighted groups across C2=C3, then the two across C4=C5.',
+});
+
+/* ---------------------------------------------------- geometry-costs ---
+   Crowding, dipoles and chain shape, one row each. */
+/* A bond-dipole arrow beside the C–Cl bond leaving c at `deg`, pointing
+   toward Cl, set off on the side away from the molecule's center x. */
+function bondDipole(c, deg, cx) {
+  const d = at(P(0, 0), deg, 1);
+  let px = -d.y, py = d.x;
+  const mid = P(c.x + d.x * 22, c.y + d.y * 22);
+  if ((mid.x + px - cx) * px + (mid.y + py - c.y) * py < 0) { px = -px; py = -py; }
+  const a = P(c.x + d.x * 12 + px * 10, c.y + d.y * 12 + py * 10);
+  const b = P(c.x + d.x * 32 + px * 10, c.y + d.y * 32 + py * 10);
+  return arrow(a, b, { size: 6, muted: true });
+}
+function miniAlkene(cx, cy, lu, ld, ru, rd, hiKind) {
+  return alkene(cx, cy, {
+    lu: { t: lu, len: 44 }, ld: { t: ld, len: 40 }, ru: { t: ru, len: 44 }, rd: { t: rd, len: 40 },
+  }, { half: 24 });
+}
+/* A skeletal chain of n bonds with one C=C at bond index `db`. Bond angles
+   are 120 degrees; at a trans C=C the zigzag carries straight on, and at a
+   cis C=C the turn repeats, which bends the chain. */
+function chainPts(x0, y0, n, db, cis, L = 24) {
+  const pts = [P(x0, y0)];
+  let head = 30, turn = 60;
+  for (let i = 0; i < n; i++) {
+    const p = pts[pts.length - 1];
+    pts.push(at(p, head, L));
+    if (!(cis && i === db)) turn = -turn;
+    head += turn;
+  }
+  return pts;
+}
+function drawChain(pts, db) {
+  let s = '';
+  for (let i = 0; i < pts.length - 1; i++) {
+    if (i === db) {
+      const a = pts[i], b = pts[i + 1];
+      s += bond(a, b, { rFrom: 0, rTo: 0, order: 2, gap: 2.6, cls: 'fg-bond-hi' });
+    } else s += sk(pts[i], pts[i + 1]);
+  }
+  return s;
+}
+FIGURES.push({
+  id: 'geometry-costs',
+  section: 'cis-trans-ez',
+  lessons: ['cis-trans-ez'],
+  anchor: 'so trans has no net dipole.</p>',
+  viewBox: '0 0 340 580',
+  alt: 'Three rows. Row one: cis-but-2-ene with its two methyl groups close together above the double bond, tagged crowded, beside trans-but-2-ene with its methyls on opposite sides, tagged apart; trans is lower in energy by about 1 kcal/mol. Row two: cis-1,2-dichloroethene with both chlorines above the double bond and an arrow for the net dipole pointing up between them, beside trans-1,2-dichloroethene, whose two C–Cl dipoles cancel. Row three: a long carbon chain with a trans double bond in the middle runs nearly straight, while the same chain with a cis double bond bends at the double bond.',
+  build() {
+    let s = '';
+    s += text(170, 18, 'stability: bulky groups apart', { cls: 'fg-tag' });
+    s += miniAlkene(88, 98, 'CH₃', 'H', 'CH₃', 'H');
+    s += text(88, 42, 'crowded', { cls: 'fg-tag-warn' });
+    s += itext(88, 150, 'cis', '', 'fg-tag');
+    s += miniAlkene(252, 98, 'CH₃', 'H', 'H', 'CH₃');
+    s += text(252, 42, 'apart', { cls: 'fg-tag-good' });
+    s += itext(252, 150, 'trans', '', 'fg-tag');
+    s += text(170, 172, 'trans is lower in energy, by about 1 kcal/mol', { cls: 'fg-tag' });
+    s += rule(10, 186, 330, 186);
+
+    s += text(170, 208, 'polarity: C–Cl dipoles add or cancel', { cls: 'fg-tag' });
+    s += miniAlkene(88, 276, 'Cl', 'H', 'Cl', 'H');
+    s += bondDipole(P(64, 276), 120, 88) + bondDipole(P(112, 276), 60, 88);
+    s += arrow(P(88, 268), P(88, 228), { size: 7 });
+    s += text(96, 232, 'net', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += miniAlkene(252, 276, 'Cl', 'H', 'H', 'Cl');
+    s += bondDipole(P(228, 276), 120, 252) + bondDipole(P(276, 276), 300, 252);
+    s += itext(88, 344, 'cis', '', 'fg-tag') + itext(252, 344, 'trans', '', 'fg-tag');
+    s += text(88, 362, 'net dipole', { cls: 'fg-tag-warn' });
+    s += text(252, 362, 'no net dipole', { cls: 'fg-tag-good' });
+    s += rule(10, 376, 330, 376);
+
+    s += text(170, 398, 'shape: a cis C=C bends a long chain', { cls: 'fg-tag' });
+    const t = chainPts(60, 440, 10, 4, false, 22);
+    s += drawChain(t, 4);
+    s += text(t[t.length - 1].x + 12, 438, 'trans', { cls: 'fg-tag', anchor: 'start' });
+    const c = chainPts(60, 560, 10, 4, true, 22);
+    s += drawChain(c, 4);
+    s += text(c[5].x + 20, 566, 'cis', { cls: 'fg-tag', anchor: 'start' });
+    return s;
+  },
+  caption: 'Row by row: where the two methyls sit, how the two small C–Cl dipole arrows add or cancel, and how straight each chain runs.',
 });
 
 export default FIGURES;

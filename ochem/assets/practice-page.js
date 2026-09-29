@@ -83,7 +83,7 @@
   function snapshotHtml(){
     var overall = M.overall();
     var counts = M.counts();
-    var dueCount = M.due().length;
+    var dueCount = E.reviewQueue().dueTotal;   // only concepts with a question in a reached topic
     var streak = M.streakDays();
     var cells = [];
 
@@ -147,8 +147,9 @@
       desc:'One topic, at a difficulty you choose.' },
     { mode:'quick', title:'Quick 5',
       desc:'Five adaptive questions.', count:5 },
-    { mode:'mixed', title:'Mixed practice',
-      desc:'An even spread, adaptivity turned down.', count:10 }
+    // The one mode that mixes topics on purpose, and only finished ones.
+    { mode:'cumulative', title:'Cumulative review',
+      desc:'Mixes questions from every topic you\'ve completed.', count:10 }
   ];
 
   function modeGridHtml(){
@@ -354,7 +355,7 @@
       };
     },
     checkFor: function(d, q, S){
-      return E.checkQuestion(d.conceptId, q.tier || 2, S.askedIds, q.kind);
+      return E.checkQuestion(d.conceptId, q.tier || 2, S.askedIds, q.kind, q.topic);
     },
     nextLabel: function(S){
       return S.isCheck ? 'Continue' : (S.index >= S.meta.count ? 'Finish session' : 'Next question');
@@ -510,7 +511,7 @@
       var fq = flaggedQuestions();
       return fq.length ? E.makePlan('flagged', { count: count }) : null;
     }
-    if(params.mode && ['adaptive','mistakes','quick','mixed'].indexOf(params.mode) !== -1){
+    if(params.mode && ['adaptive','mistakes','quick','cumulative','mixed'].indexOf(params.mode) !== -1){
       return E.makePlan(params.mode, { count: count });
     }
     return null;

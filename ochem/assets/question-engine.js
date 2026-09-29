@@ -303,6 +303,7 @@
       pool = pool.filter(function(q){ return plan.tiers.indexOf(q.tier || 2) !== -1; });
     }
     if(plan.interactiveOnly) pool = pool.filter(isInteractive);
+    if(plan.maxTopicIndex !== undefined) pool = pool.filter(function(q){ return topicIndex(q.topic) <= plan.maxTopicIndex; });
     return pool;
   }
 
@@ -313,10 +314,12 @@
     var pool = poolFor(plan).filter(function(q){ return session.askedIds.indexOf(q.id) === -1; });
     if(!pool.length) return null;
 
-    // 'mixed' deliberately turns the adaptivity down: it's the "just give me
-    // a spread across everything" mode, and it should feel different from
-    // adaptive rather than being a relabelled copy of it.
-    if(plan.mode === 'mixed'){
+    // 'cumulative' deliberately turns the adaptivity down: it's the "give me
+    // a spread across everything I've finished" mode, and it should feel
+    // different from adaptive rather than being a relabelled copy of it. It
+    // is the only mode that mixes topics on purpose; makePlan bounds it to
+    // the last completed topic.
+    if(plan.mode === 'cumulative'){
       var byTopic = {};
       pool.forEach(function(q){ (byTopic[q.topic] = byTopic[q.topic] || []).push(q); });
       var topics = Object.keys(byTopic).filter(function(t){ return t !== session.recentTopics[0]; });
@@ -324,7 +327,7 @@
       var t = topics[Math.floor(Math.random() * topics.length)];
       var bucket = byTopic[t];
 
-      /* Topic choice stays random — that spread is what "mixed" means. But
+      /* Topic choice stays random — that spread is what the mode means. But
          the pick WITHIN a topic is weighted, because the pool is about 96%
          legacy multiple choice: drawing uniformly served 40 questions in a
          row without a single one you could click, which is the exact
@@ -357,11 +360,18 @@
   /* After a miss has been explained, serve a *different* question on the same
      concept at the same tier or one below — "now show me you can apply the
      correction". Prefers a different question format so it tests the idea
-     rather than the memory of the last card. */
-  function checkQuestion(conceptId, tier, excludeIds, lastKind){
+     rather than the memory of the last card.
+
+     `maxTopic` is the missed question's own topic, and nothing past it is
+     eligible: a concept's questions span the whole course, so without it a
+     miss in curved arrows could be "checked" with a carboxylic-acid question.
+     No candidate means no check, which the runner already handles. */
+  function checkQuestion(conceptId, tier, excludeIds, lastKind, maxTopic){
     build();
+    var max = maxTopic ? topicIndex(maxTopic) : Infinity;
     var candidates = (BY_CONCEPT[conceptId] || []).filter(function(q){
-      return excludeIds.indexOf(q.id) === -1 && (q.tier || 2) <= Math.max(1, tier);
+      return excludeIds.indexOf(q.id) === -1 && (q.tier || 2) <= Math.max(1, tier) &&
+        topicIndex(q.topic) <= max;
     });
     if(!candidates.length) return null;
     var seen = readSeen();
@@ -394,10 +404,11 @@
   function reviewQueue(){
     build();
     var leechIds = M().leeches().map(function(p){ return p.id; });
+    var reach = frontierIndex();
     // Due, already-met concepts, most overdue first. Weakness is deliberately
     // NOT part of this ordering — that is practice's question.
     var due = M().due().filter(function(p){
-      return leechIds.indexOf(p.id) === -1 && (BY_CONCEPT[p.id] || []).length > 0;
+      return leechIds.indexOf(p.id) === -1 && reachable(p.id, reach);
     });
     var budget = M().reviewsRemainingToday();
     return {
@@ -425,7 +436,10 @@
     build();
     var seen = readSeen();
     var avoid = avoidTopics || [];
-    var candidates = (BY_CONCEPT[conceptId] || []).filter(function(q){
+    // "Somewhere else" still means somewhere the student has already been.
+    var reach = frontierIndex();
+    var own = (BY_CONCEPT[conceptId] || []).filter(function(q){ return topicIndex(q.topic) <= reach; });
+    var candidates = own.filter(function(q){
       return excludeIds.indexOf(q.id) === -1 && (q.tier || 2) <= tier;
     });
     if(!candidates.length){
@@ -434,7 +448,7 @@
          tier that exists and only that tier: taking "the easiest few" would
          quietly let a challenge question into a review session, which is
          exactly the promotion Review is supposed not to do. */
-      var rest = (BY_CONCEPT[conceptId] || []).filter(function(q){
+      var rest = own.filter(function(q){
         return excludeIds.indexOf(q.id) === -1;
       });
       if(!rest.length) return null;
@@ -471,7 +485,7 @@
       case 'flagged':  return 'Flagged questions';
       case 'topic':    return 'Topic drill';
       case 'quick':    return 'Quick session';
-      case 'mixed':    return 'Mixed practice';
+      case 'cumulative': return 'Cumulative review';
       case 'path':     return 'Continue your path';
       default:         return 'Practice';
     }
@@ -496,6 +510,7 @@
 
   function makePlan(mode, opts){
     opts = opts || {};
+    if(mode === 'mixed') mode = 'cumulative';   // its old name; ?mode=mixed links still work
     var plan = { mode: mode, count: opts.count || 10 };
     switch(mode){
       case 'weak':
@@ -529,6 +544,12 @@
         plan.concepts = opts.concepts;
         break;
     }
+    /* Nothing is served from a topic the student has not reached. Topic and
+       path are one topic already, and mistakes and flagged replay questions
+       already seen, so they need no bound. Cumulative review stops at the
+       last topic completed rather than the one in progress. */
+    if(mode === 'cumulative') plan.maxTopicIndex = completedIndex();
+    else if(mode === 'adaptive' || mode === 'quick' || mode === 'weak') plan.maxTopicIndex = frontierIndex();
     if(opts.tiers) plan.tiers = opts.tiers;
     plan.label = planLabel(plan);
     return plan;
@@ -554,6 +575,44 @@
     return null;
   }
 
+  /* ---- how far the student has got ------------------------------------
+
+     Positions in curriculum order. A topic the curriculum does not list is
+     never counted as reached. */
+  var TOPIC_INDEX = null;
+  function topicIndex(id){
+    if(!TOPIC_INDEX){
+      TOPIC_INDEX = {};
+      var i = 0;
+      CU().MODULES.forEach(function(m){ m.topics.forEach(function(t){ TOPIC_INDEX[t.id] = i++; }); });
+    }
+    return Object.prototype.hasOwnProperty.call(TOPIC_INDEX, id) ? TOPIC_INDEX[id] : Infinity;
+  }
+  // Highest-placed topic with a completed lesson run, or -1.
+  function lastCompletedIndex(){
+    var best = -1;
+    CU().MODULES.forEach(function(m){ m.topics.forEach(function(t){
+      if(CU().topicMastery(t.id) !== null) best = Math.max(best, topicIndex(t.id));
+    }); });
+    return best;
+  }
+  /* The frontier: everything up to and including the next unfinished lesson,
+     which the student may practise while they are on it. A lesson finished
+     out of order counts as reached too, so the bound never falls below it. */
+  function frontierIndex(){
+    var p = nextPathTopic();
+    return Math.max(p ? topicIndex(p.topic.id) : Infinity, lastCompletedIndex());
+  }
+  // Cumulative review's bound: the last completed topic, or the frontier
+  // while nothing is completed, so a new student still gets questions.
+  function completedIndex(){
+    var c = lastCompletedIndex();
+    return c >= 0 ? c : frontierIndex();
+  }
+  function reachable(conceptId, reach){
+    return (BY_CONCEPT[conceptId] || []).some(function(q){ return topicIndex(q.topic) <= reach; });
+  }
+
   /* The "Recommended for you" block. Returns an ordered list of concrete,
      startable recommendations, each with a plan attached — never generic
      advice. The first entry is the default the page leads with.
@@ -568,7 +627,8 @@
     var out = [];
     var overall = M().overall();
     var weak = M().weakest(4);
-    var dueList = M().due(50);
+    var reachDue = frontierIndex();
+    var dueList = M().due(50).filter(function(p){ return reachable(p.id, reachDue); });
     var missed = M().mistakes({ limit: 50 });
 
     if(!overall || overall.touched < 4){
@@ -602,8 +662,10 @@
       });
     }
 
-    // Weakest concept that is still worth drilling (leeches excluded above).
-    weak = weak.filter(function(p){ return !M().isLeech(p); });
+    // Weakest concept that is still worth drilling (leeches excluded above)
+    // and that has questions in a topic the student has reached.
+    var reach = frontierIndex();
+    weak = weak.filter(function(p){ return !M().isLeech(p) && reachable(p.id, reach); });
     if(weak.length){
       var w = weak[0];
       var prereqs = M().weakPrerequisites(w.id);
@@ -617,8 +679,9 @@
       // "...with IR functional groups in IR" reads like a bug, so the topic
       // is only named when it adds something the concept title doesn't.
       var where = '';
-      if(w.concept.topics && w.concept.topics.length){
-        var tt = topicTitle(w.concept.topics[0]);
+      var home = (w.concept.topics || []).filter(function(t){ return topicIndex(t) <= reach; })[0];
+      if(home){
+        var tt = topicTitle(home);
         if(w.concept.title.toLowerCase().indexOf(tt.toLowerCase()) === -1 &&
            tt.toLowerCase().indexOf(w.concept.title.toLowerCase()) === -1){
           where = ' in ' + tt;
