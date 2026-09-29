@@ -364,8 +364,9 @@ function ringPair(cx, cy, o) {
   };
   put(1, 30, o.k1, o.sub);
   put(2, 330, o.k2, o.sub);
-  s += rs(at(P(cx, cy), 30, r * 0.42), o.l1);
-  s += rs(at(P(cx, cy), 330, r * 0.42 ).x ? P(at(P(cx, cy), 330, r * 0.42).x, at(P(cx, cy), 330, r * 0.42).y + 8) : null, o.l2);
+  const t1 = at(P(cx, cy), 30, r * 0.42), t2 = at(P(cx, cy), 330, r * 0.42);
+  s += rs(P(t1.x, t1.y + 4), o.l1);
+  s += rs(P(t2.x, t2.y + 8), o.l2);
   claim(ids[1], o.l1); claim(ids[2], o.l2);
   return s;
 }
@@ -452,11 +453,15 @@ function fischer(x, y0, rows, o = {}) {
   const dy = o.dy ?? 44, arm = o.arm ?? 44;
   const ys = rows.map((_, i) => y0 + i * dy);
   let s = '';
+  /* A Fischer projection has no single 3D shape (every crossing has its
+     own verticals going back), so it is recorded flat and flagged; the
+     checker sets the z of each stereocenter's four neighbours in turn. */
   molStart(`fischer ${o.name}`);
+  CUR.fischer = true;
   const ids = [];
   rows.forEach((it, i) => {
     const p = P(x, ys[i]);
-    if (it.c) ids.push(G(it.c, p, i === 0 || i === rows.length - 1 ? -30 : 0, P(0, i === 0 ? -1 : 1)));
+    if (it.c) ids.push(G(it.c, p, 0, P(0, i === 0 ? -1 : 1)));
     else ids.push(A('C', p, 0));
   });
   for (let i = 0; i < rows.length - 1; i++) {
@@ -464,8 +469,6 @@ function fischer(x, y0, rows, o = {}) {
     s += bond(P(x, ys[i]), P(x, ys[i + 1]), { rFrom: a.c ? rOf(a.c) : 0, rTo: b.c ? rOf(b.c) : 0 });
     B(ids[i], ids[i + 1]);
   }
-  /* The vertical neighbours of each crossing point away from the reader. */
-  CUR.atoms.forEach((at0, i) => { if (ids.includes(i) && rows[ids.indexOf(i)].c) at0.z = -30; });
   rows.forEach((it, i) => {
     const y = ys[i];
     if (it.c) { s += atom(x, y, it.c, { r: rOf(it.c) }); return; }
@@ -473,8 +476,8 @@ function fischer(x, y0, rows, o = {}) {
     s += bond(P(x, y), lp, { rFrom: 0, rTo: rOf(it.l) }) + bond(P(x, y), rp, { rFrom: 0, rTo: rOf(it.r) });
     s += atom(lp.x, lp.y, it.l, { r: rOf(it.l), kind: it.hi && it.l !== 'H' ? 'hi' : undefined });
     s += atom(rp.x, rp.y, it.r, { r: rOf(it.r), kind: it.hi && it.r !== 'H' ? 'hi' : undefined });
-    B(ids[i], G(it.l, lp, 30, P(-1, 0)));
-    B(ids[i], G(it.r, rp, 30, P(1, 0)));
+    B(ids[i], G(it.l, lp, 0, P(-1, 0)));
+    B(ids[i], G(it.r, rp, 0, P(1, 0)));
     s += rs(P(x + arm + 28, y + 4), it.rs);
     if (o.nums) s += T(x - arm - 26, y + 4, 'C' + (i + 1), 'fg-tag-mut');
     claim(ids[i], it.rs);
