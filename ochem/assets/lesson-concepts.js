@@ -120,9 +120,13 @@
       8:['fgi-map','route-order'],
       10:['fgi-map','route-order'] } },
 
-    'protecting-groups': { n:8, steps:{
-      2:['protection'], 3:['protection'], 4:['protection'],
-      6:['protection','route-order'], 7:['protection','fgi-map'] } },
+    'protecting-groups': { n:11, steps:{
+      2:['protection'],
+      3:['protection'],
+      6:['protection','route-order'],
+      7:['protection','route-order'],
+      9:['protection'],
+      10:['protection','fgi-map','organometallic-quench'] } },
 
     'multistep-synthesis': { n:8, steps:{
       2:['route-order','protection'], 3:['route-order'], 4:['route-order'],

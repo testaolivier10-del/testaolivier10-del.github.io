@@ -82,7 +82,7 @@ FIGURES.push({
   section: 'multistep-synthesis',
   anchor: '<!-- fig:order-sets-pattern:start -->',
   alt: 'Two routes from benzene. Route A: nitric and sulfuric acid give nitrobenzene, then bromine and iron tribromide give 1-bromo-3-nitrobenzene, with the bromine meta to the nitro group. Route B: bromine and iron tribromide give bromobenzene, then nitric and sulfuric acid give 1-bromo-4-nitrobenzene, with the nitro group para to the bromine.',
-  viewBox: '0 0 700 430',
+  viewBox: '0 0 700 436',
   build() {
     let s = '';
     s += T(20, 24, 'A · nitrate first', 'fg-lbl', 'start');
@@ -90,7 +90,7 @@ FIGURES.push({
     s += rule(20, 200, 680, 200);
     s += T(20, 226, 'B · brominate first', 'fg-lbl', 'start');
     s += orderRow([90, 330, 580], 300, 'Br₂, FeBr₃', 'HNO₃, H₂SO₄', ROUTE_B.mid, ROUTE_B.product, ROUTE_B.verdict, 'fg-tag-good', 92);
-    s += T(580, 422, 'plus some of the ortho isomer, separated off', 'fg-tag-mut');
+    s += rich(580, 424, ['plus some of the ', '*ortho', ' isomer, separated off'], 'fg-tag-mut');
     return s;
   },
   caption: 'Same two reactions in opposite orders. Look at where the second group lands in each product.',
@@ -108,7 +108,7 @@ FIGURES.push({
     s += rule(10, 190, 330, 190);
     s += T(10, 214, 'B · brominate benzene first', 'fg-lbl', 'start');
     s += orderRow([null, 80, 250], 290, '', 'HNO₃, H₂SO₄', ROUTE_B.mid, ROUTE_B.product, ROUTE_B.verdict, 'fg-tag-good', 90);
-    s += T(250, 412, 'plus some ortho isomer', 'fg-tag-mut');
+    s += rich(250, 412, ['plus some ', '*ortho', ' isomer'], 'fg-tag-mut');
     return s;
   },
   caption: 'Look at where the second group lands in each product.',
@@ -157,7 +157,7 @@ FIGURES.push({
   section: 'multistep-synthesis',
   anchor: '<!-- fig:propyl-routes:start -->',
   alt: 'Row A: benzene with 1-bromopropane and aluminum chloride gives isopropylbenzene. Below it, the reason: the primary propyl cation, CH3–CH2–CH2 plus, moves a hydrogen with its bonding pair from the middle carbon to the end carbon, giving the secondary cation CH3–CH plus–CH3. Row B: benzene with propanoyl chloride and aluminum chloride gives propiophenone, whose new ring-to-carbon bond is highlighted; zinc amalgam and HCl reduce it to propylbenzene; bromine and iron tribromide give 1-bromo-4-propylbenzene.',
-  viewBox: '0 0 740 560',
+  viewBox: '0 0 740 600',
   build() {
     let s = '';
     s += T(20, 24, 'A · alkylate: the chain rearranges', 'fg-lbl', 'start');
@@ -173,7 +173,7 @@ FIGURES.push({
     s += hydrideShift(250, 272, 58, 80, true);
     s += rule(20, 360, 720, 360);
     s += T(20, 386, 'B · acylate, reduce, then brominate', 'fg-lbl', 'start');
-    const yb = 470;
+    const yb = 500;
     s += ring(60, yb, 22).svg + T(60, yb + 44, 'benzene');
     s += arrow(P(94, yb), P(196, yb));
     s += T(145, yb - 26, 'CH₃CH₂COCl,') + T(145, yb - 12, 'AlCl₃');
@@ -187,8 +187,8 @@ FIGURES.push({
     s += T(535, yb - 12, 'Br₂, FeBr₃');
     const bp = ring(640, yb, 22, [{ v: 3, ...BROMO, len: 26 }]);
     s += bp.svg + propyl(bp.pts[0], 24, false);
-    s += T(640, 548, '1-bromo-4-propylbenzene', 'fg-lbl');
-    s += T(245, 386, 'new ring–carbon bond highlighted', 'fg-tag-good', 'start');
+    s += T(640, 578, '1-bromo-4-propylbenzene', 'fg-lbl');
+    s += T(245, yb + 62, 'new ring–carbon bond highlighted', 'fg-tag-good');
     return s;
   },
   caption: 'Row A ends with the wrong chain; row B keeps the straight one. The middle row shows where A goes wrong.',
@@ -269,10 +269,10 @@ FIGURES.push({
   section: 'multistep-synthesis',
   anchor: '<!-- fig:four-step-route:start -->',
   alt: 'Six skeletal structures in two rows. Row 1: butan-1-ol, 4 carbons; phosphorus tribromide gives 1-bromobutane, 4 carbons; sodium cyanide gives pentanenitrile, 5 carbons, with the new carbon–carbon bond highlighted. An elbow arrow labeled aqueous acid and heat leads down to row 2: pentanoic acid, 5 carbons; thionyl chloride gives pentanoyl chloride, 5 carbons; two equivalents of methylmagnesium bromide, then aqueous acid, give 2-methylhexan-2-ol, 7 carbons, with its two new methyl bonds highlighted.',
-  viewBox: '0 0 700 330',
+  viewBox: '0 0 700 290',
   build() {
     let s = '';
-    const y1 = 100, y2 = 262;
+    const y1 = 70, y2 = 232;
     const step = (x1, x2, y, lines, kind, good) => {
       s += arrow(P(x1, y - 6), P(x2, y - 6));
       lines.forEach((l, i) => { s += T((x1 + x2) / 2, y - 18 - (lines.length - 1 - i) * 14, l); });
@@ -284,9 +284,9 @@ FIGURES.push({
     step(372, 452, y1, ['NaCN, DMSO'], 'new C–C', true);
     s += MOLS.nitrile(468, y1) + T(520, y1 + 44, 'pentanenitrile · 5 C');
     // Elbow from the end of row 1 down to the start of row 2.
-    s += `<path class="fg-arrow" d="M602 94 L640 94 L640 186 L70 186 L70 218" fill="none"></path>`;
-    s += `<path class="fg-head" d="M70 226 L65.84 218 L74.16 218 Z"></path>`;
-    s += T(355, 178, 'H₃O⁺, heat') + T(355, 204, 'no new C–C', 'fg-tag-mut');
+    s += `<path class="fg-arrow" d="M602 64 L640 64 L640 156 L70 156 L70 188" fill="none"></path>`;
+    s += `<path class="fg-head" d="M70 196 L65.84 188 L74.16 188 Z"></path>`;
+    s += T(355, 148, 'H₃O⁺, heat') + T(355, 174, 'no new C–C', 'fg-tag-mut');
     s += MOLS.acyl(40, y2, 'OH') + T(95, y2 + 44, 'pentanoic acid · 5 C');
     step(178, 244, y2, ['SOCl₂'], 'no new C–C', false);
     s += MOLS.acyl(262, y2, 'Cl') + T(320, y2 + 44, 'pentanoyl chloride · 5 C');
@@ -365,50 +365,56 @@ const RING_CASES = {
     name: ['*cis', '-1,2-dimethylcyclohexane'], verdict: 'one compound (meso)',
   },
 };
-/* Draw one product ring. spec: [c1 group, c2 group, extra c1 group, H2 case]. */
+/* Draw one product ring. spec: [c1 group, c2 group, extra c1 group, H2 case].
+   r is the ring radius and L the substituent bond length. */
 function ringProduct(cx, cy, r, L, spec) {
   const ring0 = hexRing(cx, cy, r, false);
   let s = ring0.s;
   const [g1, g2, g3, hyd] = spec;
   if (hyd) {
-    s += subst(ring0.c1, 80, L + 4, g1[0], g1[1], 16) + subst(ring0.c2, 100, L + 4, g2[0], g2[1], 16);
-    s += subst(ring0.c1, 10, L - 4, 'H', 'h', 10, true) + subst(ring0.c2, 170, L - 4, 'H', 'h', 10, true);
+    s += subst(ring0.c1, 60, L, g1[0], g1[1], 16) + subst(ring0.c2, 120, L, g2[0], g2[1], 16);
+    s += subst(ring0.c1, 0, L - 6, 'H', 'h', 10, true) + subst(ring0.c2, 180, L - 6, 'H', 'h', 10, true);
   } else if (g3) {
-    s += subst(ring0.c1, 30, L, g1[0], g1[1], 15, true) + subst(ring0.c2, 120, L, g2[0], g2[1], 15, true);
-    s += subst(ring0.c1, 90, L, g3[0], g3[1], 16);
+    s += subst(ring0.c1, 90, L, g1[0], g1[1], 15, true) + subst(ring0.c2, 150, L, g2[0], g2[1], 15, true);
+    s += subst(ring0.c1, 20, L, g3[0], g3[1], 16);
   } else {
     s += subst(ring0.c1, 60, L, g1[0], g1[1], 14, true) + subst(ring0.c2, 120, L, g2[0], g2[1], 14, true);
   }
+  return s;
+}
+/* One row: the alkene, the arrow and the product(s), with the product
+   name and verdict under the products. */
+function stereoRow(k, top, W, o) {
+  const c = RING_CASES[k];
+  let s = panel(o.pad, top, W - 2 * o.pad, o.h);
+  s += T(o.pad + 12, top + 22, c.title[0], 'fg-lbl', 'start');
+  const cy = top + o.cy;
+  const sm = hexRing(o.smX, cy, o.r, true);
+  s += sm.s + c.smSubs(sm.c1, o.L, sm.c2);
+  if (o.smName) s += T(o.smX, cy + o.r + 22, c.sm);
+  s += arrow(P(o.a1, cy), P(o.a2, cy));
+  s += T((o.a1 + o.a2) / 2, cy - 10, o.short ? c.reagent.split(',')[0] : c.reagent);
+  if (c.prods.length === 2) {
+    s += ringProduct(o.p1, cy, o.r, o.L, c.prods[0]) + ringProduct(o.p2, cy, o.r, o.L, c.prods[1]);
+    if (o.and) s += T((o.p1 + o.p2) / 2, cy + 4, 'and', 'fg-tag-mut');
+  } else {
+    s += ringProduct((o.p1 + o.p2) / 2, cy, o.r, o.L, c.prods[0]);
+  }
+  s += rich(o.nameX, top + o.h - 30, c.name, o.nameCls);
+  s += T(o.nameX, top + o.h - 12, c.verdict, 'fg-tag-good');
   return s;
 }
 FIGURES.push({
   id: 'stereo-faces',
   section: 'multistep-synthesis',
   anchor: '<!-- fig:stereo-faces:start -->',
-  alt: 'Three columns, each an alkene ring above its product. Left: cyclohexene with Br2 gives trans-1,2-dibromocyclohexane, drawn as a pair of mirror images, one Br on a wedge and one on a hash in each, formed 50 to 50. Middle: 1-methylcyclohexene with OsO4 and NMO gives cis-1-methylcyclohexane-1,2-diol, drawn as a pair of mirror images, both OH groups on wedges in one and both on hashes in the other, formed 50 to 50. Right: 1,2-dimethylcyclohexene with H2 over platinum gives cis-1,2-dimethylcyclohexane, both methyls on wedges and both new hydrogens on hashes; it is meso, a single compound.',
-  viewBox: '0 0 760 350',
+  alt: 'Three rows, each an alkene ring, an arrow and the product. Row 1: cyclohexene with Br2 gives trans-1,2-dibromocyclohexane, drawn as a pair of mirror images, one Br on a wedge and one on a hash in each, formed 50 to 50. Row 2: 1-methylcyclohexene with OsO4 and NMO gives cis-1-methylcyclohexane-1,2-diol, drawn as a pair of mirror images, both OH groups on wedges in one and both on hashes in the other, formed 50 to 50. Row 3: 1,2-dimethylcyclohexene with H2 over platinum gives cis-1,2-dimethylcyclohexane, both methyls on wedges and both new hydrogens on hashes; it is meso, a single compound.',
+  viewBox: '0 0 760 516',
   build() {
     let s = '';
-    const cols = [['br2', 130], ['os', 380], ['h2', 630]];
-    for (const [k, cx] of cols) {
-      const c = RING_CASES[k];
-      s += panel(cx - 120, 8, 240, 334);
-      s += T(cx, 30, c.title[0], 'fg-lbl');
-      const sm = hexRing(cx, 100, 24, true);
-      s += sm.s + c.smSubs(sm.c1, 28, sm.c2);
-      s += T(cx, 146, c.sm);
-      s += arrow(P(cx, 158), P(cx, 196));
-      s += T(cx + 12, 182, c.reagent, 'fg-tag', 'start');
-      const py = 262;
-      if (c.prods.length === 2) {
-        s += ringProduct(cx - 56, py, 22, 26, c.prods[0]) + ringProduct(cx + 56, py, 22, 26, c.prods[1]);
-        s += T(cx, py + 4, 'and', 'fg-tag-mut');
-      } else {
-        s += ringProduct(cx, py, 22, 26, c.prods[0]);
-      }
-      s += rich(cx, 310, c.name, 'fg-lbl');
-      s += T(cx, 330, c.verdict, 'fg-tag-good');
-    }
+    const o = { pad: 8, h: 164, cy: 92, r: 26, L: 34, smX: 110, smName: true, a1: 180, a2: 290,
+      p1: 390, p2: 560, and: true, nameX: 475, nameCls: 'fg-lbl' };
+    ['br2', 'os', 'h2'].forEach((k, i) => { s += stereoRow(k, 6 + i * 170, 760, o); });
     return s;
   },
   caption: 'Wedges point toward you, hashes away. In each product, compare the faces the two new groups sit on.',
@@ -417,27 +423,12 @@ FIGURES.push({
   id: 'l-stereo-faces',
   lessons: ['multistep-synthesis'],
   alt: 'Three rows. Cyclohexene with Br2 gives trans-1,2-dibromocyclohexane as a 50 to 50 pair of mirror images, one Br wedged and one hashed. 1-Methylcyclohexene with OsO4 gives cis-1-methylcyclohexane-1,2-diol as a 50 to 50 pair, both OH wedged in one and both hashed in the other. 1,2-Dimethylcyclohexene with H2 over platinum gives cis-1,2-dimethylcyclohexane, both methyls wedged and both new hydrogens hashed, a single meso compound.',
-  viewBox: '0 0 340 480',
+  viewBox: '0 0 340 516',
   build() {
     let s = '';
-    ['br2', 'os', 'h2'].forEach((k, i) => {
-      const c = RING_CASES[k];
-      const top = 6 + i * 158;
-      s += panel(4, top, 332, 150);
-      s += T(14, top + 20, c.title[0], 'fg-lbl', 'start');
-      const cy = top + 76;
-      const sm = hexRing(48, cy, 18, true);
-      s += sm.s + c.smSubs(sm.c1, 22, sm.c2);
-      s += arrow(P(80, cy), P(122, cy));
-      s += T(101, cy + 18, c.reagent.split(',')[0]);
-      if (c.prods.length === 2) {
-        s += ringProduct(170, cy + 6, 18, 22, c.prods[0]) + ringProduct(272, cy + 6, 18, 22, c.prods[1]);
-      } else {
-        s += ringProduct(210, cy + 6, 18, 22, c.prods[0]);
-      }
-      s += rich(170, top + 124, c.name, 'fg-tag');
-      s += T(170, top + 141, c.verdict, 'fg-tag-good');
-    });
+    const o = { pad: 4, h: 164, cy: 86, r: 18, L: 28, smX: 40, smName: false, a1: 66, a2: 108, short: true,
+      p1: 164, p2: 272, and: false, nameX: 170, nameCls: 'fg-tag' };
+    ['br2', 'os', 'h2'].forEach((k, i) => { s += stereoRow(k, 6 + i * 170, 340, o); });
     return s;
   },
   caption: 'Wedges point toward you, hashes away.',
@@ -468,10 +459,10 @@ FIGURES.push({
   section: 'multistep-synthesis',
   anchor: '<!-- fig:hexyne-route:start -->',
   alt: 'Ethyne, H–C≡C–H, 2 carbons. Sodium amide then bromoethane give but-1-yne, 4 carbons, with the new carbon–carbon bond highlighted. Sodium amide then bromoethane again give hex-3-yne, 6 carbons, with both bonds that the two alkylations made highlighted. The triple-bond carbons and their neighbors are drawn in a straight line.',
-  viewBox: '0 0 720 170',
+  viewBox: '0 0 720 140',
   build() {
     let s = '';
-    const y = 96;
+    const y = 66;
     s += acetylene(20, y) + T(77, y + 46, 'ethyne (acetylene) · 2 C');
     s += arrow(P(158, y), P(276, y));
     s += T(217, y - 30, '1. NaNH₂') + T(217, y - 14, '2. CH₃CH₂Br') + T(217, y + 20, 'new C–C', 'fg-tag-good');
@@ -527,8 +518,8 @@ function persp(cx, cy, g, o = {}) {
     put(c3, 215, g[0], 'w'); put(c3, 160, g[1], 'h'); put(c4, 325, g[2], 'w'); put(c4, 20, g[3], 'h');
     const br = P(cx, cy - 50);
     s += bond(c3, br, { rFrom: 11, rTo: 15 }) + bond(c4, br, { rFrom: 11, rTo: 15 });
-    s += atom(br.x, br.y, 'Br', { r: 15, kind: 'hi' }) + charge(br.x + 24, br.y - 8, '+');
-    s += lonePair(br.x, br.y, 235, { dist: 20 }) + lonePair(br.x, br.y, 305, { dist: 20 });
+    s += atom(br.x, br.y, 'Br', { r: 15, kind: 'hi' }) + charge(br.x, br.y - 24, '+');
+    s += lonePair(br.x, br.y, 190, { dist: 20 }) + lonePair(br.x, br.y, 350, { dist: 20 });
     const bm = P(c4.x + 12, cy + 64);
     s += atom(bm.x, bm.y, 'Br', { r: 15 }) + charge(bm.x + 24, bm.y - 12, '−');
     for (const a of [270, 180, 90]) s += lonePair(bm.x, bm.y, a, { dist: 20 });

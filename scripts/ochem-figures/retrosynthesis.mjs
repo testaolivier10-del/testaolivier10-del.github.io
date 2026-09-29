@@ -30,7 +30,7 @@ const A = (x, y, lbl, kind = 'plain', r) => {
 const draw = (...as) => as.map((a) => atom(a.x, a.y, a.lbl, { kind: a.kind, r: a.r, size: 13 })).join('');
 /* A bond between atoms or skeletal vertices; a bare point has nothing to trim. */
 const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r || 0, rTo: b.r || 0, ...o });
-/* A labelled substituent on vertex p, along screen angle deg, with a bond of
+/* A labeled substituent on vertex p, along screen angle deg, with a bond of
    about `len` showing between the vertex and the disc. */
 const sub = (p, deg, lbl, len = 18, kind, r) => {
   const probe = A(0, 0, lbl, kind, r);
@@ -54,7 +54,7 @@ const chain = (x0, y0, n, oddUp = true) =>
 const sk = (a, b, cls) => bond(a, b, { rFrom: 0, rTo: 0, cls: cls || 'fg-bond' });
 const path = (pts) => pts.slice(1).map((p, i) => sk(pts[i], p)).join('');
 
-/* The disconnection squiggle: a short wave across the bond a-b, centred on
+/* The disconnection squiggle: a short wave across the bond a-b, centered on
    its midpoint. */
 function squiggle(a, b, half = 11) {
   const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
@@ -117,7 +117,7 @@ FIGURES.push({
   section: 'retrosynthesis',
   anchor: 'which two pieces, joined by a reaction you know, would give this bond.</p>',
   viewBox: '0 0 480 206',
-  alt: 'Butan-2-ol drawn skeletally, with its carbinol carbon labelled and a squiggle across the bond from the carbinol carbon to the ethyl group. A double-lined arrow reading "could be made from" leads to two pieces: an ethyl anion with a lone pair and a minus sign, labelled "attacks", and ethanal with a delta-plus on its carbonyl carbon, labelled "is attacked". Below them: bought as ethylmagnesium bromide and ethanal.',
+  alt: 'Butan-2-ol drawn skeletally, with its carbinol carbon labeled and a squiggle across the bond from the carbinol carbon to the ethyl group. A double-lined arrow reading "could be made from" leads to two pieces: an ethyl anion with a lone pair and a minus sign, labeled "attacks", and ethanal with a delta-plus on its carbonyl carbon, labeled "is attacked". Below them: bought as ethylmagnesium bromide and ethanal.',
   build() {
     let s = butanol(40, 110, true);
     s += retroH(158, 100, 70);
@@ -132,14 +132,14 @@ FIGURES.push({
     s += tag(404, 188, 'ethanal', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'The squiggle marks the one bond you cut. The minus sign and the δ+ say which piece attacks and which is attacked.',
+  caption: 'The target on the left, the two pieces on the right, and below them what you would buy.',
 });
 
 FIGURES.push({
   id: 'l-butanol-cut',
   lessons: ['retrosynthesis'],
   viewBox: '0 0 340 250',
-  alt: 'Butan-2-ol drawn skeletally, with its carbinol carbon labelled and a squiggle across the bond from the carbinol carbon to the ethyl group. A double-lined arrow points down, reading "could be made from", to an ethyl anion labelled "attacks" and ethanal, with delta-plus on its carbonyl carbon, labelled "is attacked".',
+  alt: 'Butan-2-ol drawn skeletally, with its carbinol carbon labeled and a squiggle across the bond from the carbinol carbon to the ethyl group. A double-lined arrow points down, reading "could be made from", to an ethyl anion labeled "attacks" and ethanal, with delta-plus on its carbonyl carbon, labeled "is attacked".',
   build() {
     let s = butanol(134, 82, true);
     s += retroV(170, 124, 42);
@@ -149,7 +149,7 @@ FIGURES.push({
     s += ethanal(222, 212) + tag(240, 240, 'is attacked');
     return s;
   },
-  caption: 'The squiggle marks the bond you cut.',
+  caption: 'Top: the target. Bottom: the two pieces.',
 });
 
 FIGURES.push({
@@ -169,7 +169,7 @@ FIGURES.push({
     s += tag(255, 184, 'ethanal itself', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'The synthon is the idea. The synthetic equivalent is the bottle.',
+  caption: 'Each synthon, and the reagent you buy to play its part.',
 });
 
 /* ================================= an aldol disconnection, written out ==== */
@@ -179,7 +179,7 @@ FIGURES.push({
   section: 'retrosynthesis',
   anchor: 'A structural pattern that signals a particular disconnection is called a <b>retron</b>.',
   viewBox: '0 0 700 290',
-  alt: '4-Hydroxy-4-methylpentan-2-one drawn skeletally, with a squiggle across the bond between the alpha carbon and the carbon that carries the OH. A double-lined arrow labelled aldol leads to two acetone molecules: one drawn as the enolate, with a minus charge on its alpha carbon, and one with delta-plus on its carbonyl carbon. Beneath: synthetic equivalents, acetone plus NaOH and acetone.',
+  alt: '4-Hydroxy-4-methylpentan-2-one drawn skeletally, with a squiggle across the bond between the alpha carbon and the carbon that carries the OH. A double-lined arrow labeled aldol leads to two acetone molecules: one drawn as the enolate, with a minus charge on its alpha carbon, and one with delta-plus on its carbonyl carbon. Beneath: synthetic equivalents, acetone plus NaOH and acetone.',
   build() {
     let s = '';
     s += tag(350, 26, 'an aldol disconnection, written out');
@@ -286,7 +286,7 @@ const RETRONS = [
         s += i === 1 ? ringDouble(a, b, o, { inset: 5, gap: 4.4 }) : sk(a, b);
       }
       s += sub(v[5], 30, 'CHO', 14);
-      /* the screen angle pointing from the ring centre out through p */
+      /* the screen angle pointing from the ring center out through p */
       const out = (p) => (Math.atan2(-(p.y - o.y), p.x - o.x) * 180) / Math.PI;
       s += num(v[1], out(v[1]), '1', 13) + num(v[2], out(v[2]), '2', 13) + num(v[3], 270, '3', 14);
       s += num(v[4], out(v[4]), '4', 14) + num(v[5], 330, '5', 14) + num(v[0], 90, '6', 13);
@@ -316,7 +316,7 @@ FIGURES.push({
     for (let i = 0; i < 6; i++) s += retronPanel(6 + (i % 3) * 252, 4 + Math.floor(i / 3) * 176, 244, 170, i);
     return s;
   },
-  caption: 'Green numbers count from the carbon that carries the group (1): the C=O carbon or the carbinol carbon. In the ring they start at the C=C. They are not IUPAC locants.',
+  caption: 'One example of each retron, with the bond to cut marked.',
 });
 
 FIGURES.push({
@@ -329,7 +329,7 @@ FIGURES.push({
     for (let i = 0; i < 6; i++) s += retronPanel(2 + (i % 2) * 170, 2 + Math.floor(i / 2) * 174, 166, 170, i);
     return s;
   },
-  caption: 'Carbon 1 carries the group: the C=O carbon or the carbinol carbon. In the ring, 1 and 2 are the C=C.',
+  caption: 'One example of each retron, with the bond to cut marked.',
 });
 
 /* The four molecules the lesson's sort asks about. No cut is marked. */
@@ -367,7 +367,7 @@ FIGURES.push({
   id: 'l-retron-sort',
   lessons: ['retrosynthesis'],
   viewBox: '0 0 340 316',
-  alt: 'Four molecules to sort, labelled A to D. A: 3-hydroxy-2-methylpentanal. B: methyl cyclohex-3-ene-1-carboxylate. C: 3-methylhexan-3-ol. D: ethyl 3-oxo-3-phenylpropanoate.',
+  alt: 'Four molecules to sort, labeled A to D. A: 3-hydroxy-2-methylpentanal. B: methyl cyclohex-3-ene-1-carboxylate. C: 3-methylhexan-3-ol. D: ethyl 3-oxo-3-phenylpropanoate.',
   build() {
     let s = '';
     SORT.forEach((m, i) => {
@@ -382,7 +382,7 @@ FIGURES.push({
 });
 
 /* ========================== 2-phenylbutan-2-ol, three cuts ============= */
-/* The target drawn with labelled groups round the carbinol carbon. `cuts`
+/* The target drawn with labeled groups round the carbinol carbon. `cuts`
    lists which bonds get a squiggle: a (to Ph), b (to CH3), c (to CH2CH3). */
 function ppb(cx, cy, cuts) {
   const c = A(cx, cy, 'C', 'hi');
