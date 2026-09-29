@@ -706,7 +706,7 @@ FIGURES.push({
   alt: 'The double helix untwisted into a ladder. Two vertical rails of alternating sugars and phosphates are the backbones. Four rungs between them read A-T, G-C, C-G and T-A; each rung is a wide purine block and a narrow pyrimidine block, so all four rungs are the same width. An arrow beside the left rail points down from 5 prime to 3 prime; an arrow beside the right rail points up from 5 prime to 3 prime.',
   viewBox: '0 0 340 520',
   build: ladder,
-  caption: 'The double helix untwisted into a ladder. The left strand runs 5′→3′ down the page and the right strand runs 5′→3′ up it. Pentagons are sugars and P marks each phosphate.',
+  caption: 'The double helix untwisted into a ladder. The left strand runs 5′→3′ down the page and the right strand runs 5′→3′ up it. Pentagons are sugars and P marks each phosphate; each strand ends at its 3′ end with a sugar, whose 3′ OH is free.',
 });
 
 /* =============================================== 8. the base pairs ====== */
