@@ -187,9 +187,9 @@ FIGURES.push({
     s += charge(170, 184, '+', 'fg-lbl', 16);
     s += chain(40, 250, 58, serine()).s;
     s += tg(98, 342, 'serine');
-    s += tg(248, 342, 'coral atoms leave', 'middle', 'fg-tag-warn');
-    s += arrow(P(170, 360), P(170, 400));
-    s += tg(188, 386, '− H₂O', 'start');
+    s += tg(236, 338, 'coral atoms leave', 'middle', 'fg-tag-warn');
+    s += arrow(P(262, 356), P(262, 400));
+    s += tg(276, 384, '− H₂O', 'start');
     s += bar(98, 408, 96, 136, { kind: 'hi', opacity: 0.2 });
     s += chain(26, 480, 48, alaSer()).s;
     s += tg(146, 400, 'peptide bond');
@@ -294,7 +294,7 @@ FIGURES.push({
     s += tg(550, 238, 'C=N double, + on N, − on O');
     return s;
   },
-  caption: 'Follow the two arrows: the nitrogen lone pair becomes the second C–N bond, and the C=O π pair moves onto oxygen.',
+  caption: 'Follow the two curved arrows from the left structure to the right one, then compare the charges.',
 });
 FIGURES.push({
   id: 'l-amide-resonance',
@@ -310,7 +310,7 @@ FIGURES.push({
     s += tg(170, 474, 'C=N double, + on N, − on O');
     return s;
   },
-  caption: 'The nitrogen lone pair becomes the second C–N bond, and the C=O π pair moves onto oxygen.',
+  caption: 'Follow the two curved arrows from the top structure to the bottom one, then compare the charges.',
 });
 
 /* 4. The hybrid: what the peptide unit really looks like. */
@@ -337,12 +337,12 @@ FIGURES.push({
     s += atom(n.x, n.y, 'N');
     s += text(n.x + 24, n.y + 24, 'δ+', { cls: 'fg-warn', size: 13 });
     s += atom(c.x, c.y, 'C');
-    s += tg(c.x + 4, c.y + 48, '1.33 Å');
+    s += tg(c.x + 4, c.y + 48, 'C–N: 1.33 Å');
     s += tg(170, 258, 'shaded: one flat plane, six atoms');
     s += tg(170, 280, 'a plain C–N single bond is 1.47 Å');
     return s;
   },
-  caption: 'The real peptide unit sits between the two structures: each dashed line is half a bond.',
+  caption: 'Each solid-plus-dashed pair is a partial double bond. The shaded plane holds all six atoms.',
 });
 
 /* 5. The backbone as a chain of flat plates hinged at the α carbons. */
@@ -388,7 +388,7 @@ FIGURES.push({
     s += tg(170, 250, 'shaded: rigid, flat amide plates');
     return s;
   },
-  caption: 'Each shaded plate is one amide unit, from one α carbon to the next. The curved arrows at the middle α carbon mark the only two bonds that turn.',
+  caption: 'Each shaded plate is one amide unit. The curved arrows sit on the two bonds at the middle α carbon.',
 });
 
 /* 6. The alpha helix: residue i to residue i+4. */
@@ -445,7 +445,7 @@ FIGURES.push({
     s += tg(170, 432, '3.6 residues per turn');
     return s;
   },
-  caption: 'Each dashed line is a hydrogen bond from the C=O of one residue to the N–H of the residue four places further along (1 to 5 is highlighted).',
+  caption: 'Numbered discs are residues and each dashed line is one hydrogen bond. The highlighted one joins residue 1 to residue 5.',
 });
 
 /* 7. An antiparallel beta sheet, atom by atom. */
@@ -494,7 +494,7 @@ FIGURES.push({
     s += tg(98, 318, 'N → C', 'start');
     return s;
   },
-  caption: 'The two strands run in opposite directions. Each dashed line is a hydrogen bond from an N–H on one strand to a C=O on the other. CHR is an α carbon with its H and side chain.',
+  caption: 'The arrows give each strand’s N-to-C direction, and the dashed lines are hydrogen bonds. CHR is an α carbon with its H and side chain.',
 });
 
 /* 8. The disulfide: two thiols oxidized to one S–S bond. */
@@ -540,7 +540,7 @@ FIGURES.push({
     s += tg(580, 404, 'one disulfide bond, S–S');
     return s;
   },
-  caption: 'The two sulfurs each lose their H and bond to each other. The S–S bond (highlighted) is covalent, so it holds two distant parts of the chain together.',
+  caption: 'Compare the sulfurs: two S–H groups on the left, one S–S bond (highlighted) on the right. The two cysteines can be far apart in the sequence.',
 });
 
 /* 9. Nonpolar core, polar surface. */
@@ -569,7 +569,7 @@ FIGURES.push({
     s += tg(170, 320, 'surface: polar and charged, facing water');
     return s;
   },
-  caption: 'The nonpolar side chains (plain discs, coral patch) pack together inside. The polar and charged ones (teal) sit on the surface, next to the water.',
+  caption: 'Plain discs on the coral patch are nonpolar side chains. Teal discs are polar or charged ones.',
 });
 
 /* 10. Reading Cys-Leu-Asp-Lys-Val-Cys. */
@@ -600,7 +600,7 @@ FIGURES.push({
     s += bond(p[3], k1, { rFrom: 20, rTo: 22 }) + atom(k1.x, k1.y, 'NH₃⁺', { r: 22, kind: 'warn' });
     s += hbond(P(a1.x + 23, a1.y), P(k1.x - 23, k1.y));
     s += tg(170, a1.y - 28, 'salt bridge');
-    s += `<ellipse class="fg-fill-mut" opacity="0.5" cx="${c.x}" cy="${c.y}" rx="${R + 26}" ry="30"></ellipse>`;
+    s += `<ellipse class="fg-fill-warn" opacity="0.25" cx="${c.x}" cy="${c.y}" rx="${R + 30}" ry="32"></ellipse>`;
     names.forEach((n, i) => { s += atom(p[i].x, p[i].y, n, { r: 20 }); });
     s += tg(170, c.y - 4, 'Leu and Val:');
     s += tg(170, c.y + 12, 'nonpolar');
@@ -758,7 +758,7 @@ FIGURES.push({
     s += tg(576, 694, '(after it gains H⁺)', 'start');
     return s;
   },
-  caption: 'Cy is cyclohexyl, C₆H₁₁. Follow the coral atoms: the acid’s oxygen bonds to DCC’s central carbon (highlighted bond), and in panel 3 that oxygen leaves, taking the DCC part with it as dicyclohexylurea. Proton transfers are not drawn.',
+  caption: 'Cy is cyclohexyl, C₆H₁₁. Follow the coral atoms from panel to panel. The highlighted bond in panel 1 is the new bond from the acid’s oxygen to DCC. Proton transfers are not drawn.',
 });
 
 /* 13. Edman degradation, step by step. */
@@ -913,7 +913,7 @@ FIGURES.push({
     s += tg(420, 250, 'Ala-Phe-Arg spans the chymotrypsin cut', 'start', 'fg-tag-good');
     return s;
   },
-  caption: 'Each dashed line is a cut. The green trypsin fragment, Ala-Phe-Arg, crosses the chymotrypsin cut, so it shows how the two chymotrypsin fragments join.',
+  caption: 'Each dashed line is a cut. The green residues are the trypsin fragment Ala-Phe-Arg, marked in both rows.',
 });
 
 export default FIGURES;

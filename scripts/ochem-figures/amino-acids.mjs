@@ -22,7 +22,7 @@ const FIGURES = [];
 
 /* ------------------------------------------------------------ helpers --- */
 
-const rOf = (l) => (l.length >= 5 ? 22 : l.length >= 3 ? 19 : l.length === 2 ? 16 : l === 'H' ? 13 : 15);
+const rOf = (l) => (l.length >= 6 ? 26 : l.length >= 5 ? 22 : l.length >= 3 ? 19 : l.length === 2 ? 16 : l === 'H' ? 13 : 15);
 const A = (p, l, o = {}) => atom(p.x, p.y, l, { r: o.r ?? rOf(l), ...o });
 const B = (a, b, la, lb, o = {}) => bond(a, b, { rFrom: rOf(la), rTo: rOf(lb), ...o });
 const Tag = (p, s, o = {}) => text(p.x, p.y, s, { cls: 'fg-tag', size: 11, ...o });
@@ -98,7 +98,7 @@ FIGURES.push({
     const c = P(140, 118);
     let s = '';
     s += Tag(P(170, 22), 'alanine: an α-amino acid');
-    s += aminoAcid(c, { acid: 'COOH', amine: 'NH2', alpha: 'C', showH: true, hi: ['side'] });
+    s += aminoAcid(c, { acid: 'COOH', amine: 'NH2', alpha: 'C', showH: true });
     s += atom(c.x, c.y, 'C', { kind: 'hi' });
     s += Tag(P(84, 70), 'α carbon');
     s += `<line class="fg-rule" x1="100" y1="78" x2="127" y2="106"></line>`;
@@ -124,7 +124,7 @@ FIGURES.push({
   build() {
     let s = '';
     s += panel(8, 8, 324, 170);
-    s += Tag(P(170, 28), 'no charges drawn: a tiny fraction');
+    s += Tag(P(170, 28), 'uncharged form: a tiny fraction');
     s += aminoAcid(P(140, 104), { acid: 'COOH', amine: 'NH2', hi: ['acid'] });
     s += eqmVDown(150, 188, 244);
     s += Tag(P(168, 220), 'H⁺ moves from O to N', { anchor: 'start' });
@@ -294,7 +294,7 @@ FIGURES.push({
     ], ['1.88', '3.65', '9.60'], 1, 'pI = ½(1.88 + 3.65) = 2.77');
     return s;
   },
-  caption: 'Each arrow removes one proton, at the pKa written above it. The green box is the species with no net charge, and the pI averages the two pKa values on either side of it.',
+  caption: 'Each arrow removes one proton, at the pKa written above it. The green box is the form with no net charge, and the pI averages the two pKa values on either side of it.',
 });
 
 /* ======================================================================
@@ -420,10 +420,10 @@ FIGURES.push({
   anchor: '<p class="step-body"><b>Proline</b>',
   lessons: ['amino-acids'],
   alt: 'Proline as a zwitterion. A five-membered ring: the nitrogen, drawn as H2N plus, the alpha carbon CH, and three CH2 groups of the side chain, the last of which bonds back to the nitrogen. A carboxylate hangs off the alpha carbon. The nitrogen is bonded to two carbons, so it is a secondary amine.',
-  viewBox: '0 0 340 250',
+  viewBox: '0 0 340 262',
   build() {
     let s = '';
-    const pts = polyPts(150, 118, 5, 50, 90);
+    const pts = polyPts(190, 110, 5, 48, 90);
     // pts: 0 top, 1 upper left, 2 lower left, 3 lower right, 4 upper right
     const lab = ['CH₂', 'CH₂', 'H₂N⁺', 'CH', 'CH₂'];
     const kinds = ['hi', 'hi', 'warn', undefined, 'hi'];
@@ -435,13 +435,13 @@ FIGURES.push({
     s += B(ca, coo, 'CH', 'COO⁻');
     for (let i = 0; i < 5; i++) s += A(pts[i], lab[i], { kind: kinds[i] });
     s += A(coo, 'COO⁻');
-    s += Tag(P(150, 22), 'proline');
-    s += Tag(P(64, 106), 'side chain', { anchor: 'end' });
-    s += Tag(P(64, 122), 'bonds back', { anchor: 'end' });
-    s += Tag(P(64, 138), 'to N', { anchor: 'end' });
-    s += Tag(P(214, 118), 'α carbon', { anchor: 'start' });
-    s += Tag(P(170, 218), 'N bonded to two carbons:');
-    s += Tag(P(170, 236), 'a secondary amine');
+    s += Tag(P(190, 24), 'proline');
+    s += Tag(P(112, 104), 'side chain', { anchor: 'end' });
+    s += Tag(P(112, 120), 'bonds back', { anchor: 'end' });
+    s += Tag(P(112, 136), 'to N', { anchor: 'end' });
+    s += Tag(P(242, 142), 'α carbon', { anchor: 'start' });
+    s += Tag(P(130, 234), 'N bonded to two carbons:');
+    s += Tag(P(130, 250), 'a secondary amine');
     return s;
   },
   caption: 'Proline. Its three side-chain CH₂ groups (highlighted) close a five-membered ring through the nitrogen.',
@@ -550,7 +550,7 @@ function tetra(c, pose, sideLab, marks) {
 }
 
 function cornCell(ox, oy, w, h, pose) {
-  const c = P(ox + w / 2, oy + 132);
+  const c = P(ox + w / 2, oy + 150);
   let s = panel(ox, oy, w, h, pose === 'toward' ? { kind: 'hi' } : {});
   s += Tag(P(ox + w / 2, oy + 22), pose === 'toward' ? 'H toward you (wedge)' : 'H away from you (hash)');
   const t = tetra(c, pose, 'CH₃', { co: 'CO', r: 'R', n: 'N' });
@@ -567,9 +567,9 @@ FIGURES.push({
   section: 'amino-acids',
   anchor: 'CORN',
   alt: 'L-alanine drawn twice in wedge and dash. Left, with the H on a wedge pointing toward the viewer: COOH at the top, CH3 lower right on a hash, H2N lower left; a clockwise arrow runs from CO to R to N. Right, the same molecule turned so the H is on a hash pointing away: now CO to R to N runs counterclockwise.',
-  viewBox: '0 0 680 316',
+  viewBox: '0 0 680 340',
   build() {
-    return cornCell(8, 8, 324, 300, 'toward') + cornCell(348, 8, 324, 300, 'away');
+    return cornCell(8, 8, 324, 324, 'toward') + cornCell(348, 8, 324, 324, 'away');
   },
   caption: 'The CORN reading for L-alanine. The direction flips when you view the same molecule from the other side.',
 });
@@ -578,15 +578,15 @@ FIGURES.push({
    12. L-alanine is S; L-cysteine is R.
    ====================================================================== */
 function rsCell(ox, oy, w, h, which) {
-  const c = P(ox + w / 2, oy + 134);
+  const c = P(ox + w / 2, oy + 150);
   const ala = which === 'ala';
   let s = panel(ox, oy, w, h, ala ? {} : { kind: 'hi' });
   s += Tag(P(ox + w / 2, oy + 22), ala ? 'L-alanine' : 'L-cysteine');
   const t = tetra(c, 'away', ala ? 'CH₃' : 'CH₂SH', ala ? { n: '1', co: '2', r: '3' } : { n: '1', r: '2', co: '3' });
   s += t.s;
   // 1 → 2 → 3, with H (4) on the hash pointing away
-  if (ala) s += arcArrow(c, 106, 320, 105, false);
-  else s += arcArrow(c, 106, 320, 225, true);
+  if (ala) s += arcArrow(c, 106, 322, 198, false);
+  else s += arcArrow(c, 106, 322, 104, true);
   s += Good(P(ox + w / 2, oy + h - 30), ala ? '1 → 2 → 3 counterclockwise: S' : '1 → 2 → 3 clockwise: R');
   s += Tag(P(ox + w / 2, oy + h - 12), ala ? 'COOH (O, O, O) beats CH₃' : 'CH₂SH (S, H, H) beats COOH');
   return s;
@@ -597,9 +597,9 @@ FIGURES.push({
   section: 'amino-acids',
   anchor: 'cysteine',
   alt: 'L-alanine and L-cysteine drawn in the same pose, with the H on a hash pointing away. In alanine the priorities are NH2 1, COOH 2, CH3 3, and 1 to 2 to 3 runs counterclockwise, so it is S. In cysteine the CH2SH group outranks COOH because sulfur beats oxygen, so the priorities are NH2 1, CH2SH 2, COOH 3, and 1 to 2 to 3 runs clockwise, so it is R.',
-  viewBox: '0 0 680 316',
+  viewBox: '0 0 680 340',
   build() {
-    return rsCell(8, 8, 324, 300, 'ala') + rsCell(348, 8, 324, 300, 'cys');
+    return rsCell(8, 8, 324, 324, 'ala') + rsCell(348, 8, 324, 324, 'cys');
   },
   caption: 'The same shape, two different R/S labels. The green numbers are CIP priorities; H is priority 4 and points away.',
 });
@@ -608,9 +608,9 @@ FIGURES.push({
   id: 'l-alanine-cysteine-rs',
   lessons: ['amino-acids'],
   alt: 'L-alanine above and L-cysteine below, in the same pose with the H pointing away. Alanine: NH2 1, COOH 2, CH3 3, counterclockwise, S. Cysteine: NH2 1, CH2SH 2, COOH 3, clockwise, R.',
-  viewBox: '0 0 340 624',
+  viewBox: '0 0 340 672',
   build() {
-    return rsCell(8, 8, 324, 300, 'ala') + rsCell(8, 316, 324, 300, 'cys');
+    return rsCell(8, 8, 324, 324, 'ala') + rsCell(8, 340, 324, 324, 'cys');
   },
   caption: 'The same shape, two different R/S labels. The green numbers are CIP priorities; H is priority 4 and points away.',
 });
@@ -640,7 +640,7 @@ FIGURES.push({
   build() {
     let s = '';
     s += trio(P(86, 56), 'CH₃', 'CH₂', 'COOH');
-    s += Tag(P(86, 120), 'propanoic acid');
+    s += Tag(P(86, 136), 'propanoic acid');
     s += step(170, 290, 56, 'Br₂, PBr₃', 'then H₂O');
     s += trio(P(376, 56), 'CH₃', 'CH', 'COOH', 'Br', ['below']);
     s += Tag(P(376, 136), 'α-bromo acid');
@@ -657,18 +657,19 @@ FIGURES.push({
   section: 'amino-acids',
   anchor: 'Gabriel–malonic',
   alt: 'Diethyl phthalimidomalonate: a central CH carrying a phthalimide nitrogen, written PhthN, and two CO2Et groups. Treatment with NaOEt then CH3I puts a methyl on the central carbon. Hot aqueous acid then hydrolyzes the esters and the phthalimide and removes one carboxyl as CO2, giving alanine.',
-  viewBox: '0 0 760 170',
+  viewBox: '0 0 760 178',
   build() {
     let s = '';
-    s += trio(P(90, 56), 'PhthN', 'CH', 'CO₂Et', 'CO₂Et');
-    s += Tag(P(90, 140), 'phthalimidomalonate');
-    s += step(176, 290, 56, '1. NaOEt', '2. CH₃I');
-    s += trio(P(378, 56), 'PhthN', 'C', 'CO₂Et', 'CO₂Et');
-    s += A(P(378, 14), 'CH₃', { kind: 'hi' }) + B(P(378, 56), P(378, 14), 'C', 'CH₃');
-    s += step(464, 578, 56, 'H₃O⁺, heat', '− CO₂');
-    s += ALA(P(664, 56));
-    s += Good(P(664, 140), 'alanine (racemic)');
-    s += Tag(P(378, 140), 'methyl added');
+    const y = 80;
+    s += trio(P(90, y), 'PhthN', 'CH', 'CO₂Et', 'CO₂Et');
+    s += Tag(P(90, 164), 'phthalimidomalonate');
+    s += step(176, 290, y, '1. NaOEt', '2. CH₃I');
+    s += trio(P(378, y), 'PhthN', 'C', 'CO₂Et', 'CO₂Et');
+    s += A(P(378, y - 52), 'CH₃', { kind: 'hi' }) + B(P(378, y), P(378, y - 52), 'C', 'CH₃');
+    s += Tag(P(378, 164), 'methyl added');
+    s += step(464, 578, y, 'H₃O⁺, heat', '− CO₂');
+    s += ALA(P(664, y));
+    s += Good(P(664, 164), 'alanine (racemic)');
     return s;
   },
   caption: 'Route 2: the side chain arrives as an alkyl halide, and hot acid then strips off everything that is not alanine.',
@@ -679,32 +680,33 @@ FIGURES.push({
   section: 'amino-acids',
   anchor: 'Strecker',
   alt: 'Acetaldehyde, CH3–CHO, with NH3 forms an imine, CH3–CH=NH. Cyanide adds to the imine carbon to give an alpha-amino nitrile, CH3–CH(NH2)–C≡N. Hot aqueous acid hydrolyzes the nitrile to the carboxylic acid, giving alanine.',
-  viewBox: '0 0 760 160',
+  viewBox: '0 0 760 172',
   build() {
     let s = '';
     // acetaldehyde: CH3–C(=O)H drawn with the O above
-    const a = P(64, 76);
-    s += B(P(22, 76), a, 'CH₃', 'CH') + A(P(22, 76), 'CH₃');
-    s += bond(a, P(a.x, 30), { rFrom: 16, rTo: 15, order: 2 }) + A(P(a.x, 30), 'O');
+    const y = 80;
+    const a = P(76, y);
+    s += B(P(24, y), a, 'CH₃', 'CH') + A(P(24, y), 'CH₃');
+    s += bond(a, P(a.x, y - 48), { rFrom: 16, rTo: 15, order: 2 }) + A(P(a.x, y - 48), 'O');
     s += A(a, 'CH', { kind: 'hi' });
-    s += Tag(P(46, 136), 'acetaldehyde');
-    s += step(96, 170, 76, 'NH₃');
-    const im = P(234, 76);
-    s += B(P(192, 76), im, 'CH₃', 'CH') + A(P(192, 76), 'CH₃');
-    s += bond(im, P(im.x, 30), { rFrom: 16, rTo: 16, order: 2 }) + A(P(im.x, 30), 'NH', { kind: 'hi' });
+    s += Tag(P(50, 140), 'acetaldehyde');
+    s += step(104, 168, y, 'NH₃');
+    const im = P(248, y);
+    s += B(P(196, y), im, 'CH₃', 'CH') + A(P(196, y), 'CH₃');
+    s += bond(im, P(im.x, y - 48), { rFrom: 16, rTo: 16, order: 2 }) + A(P(im.x, y - 48), 'NH', { kind: 'hi' });
     s += A(im, 'CH', { kind: 'hi' });
-    s += Tag(P(216, 136), 'imine');
-    s += step(270, 364, 76, 'HCN');
-    const nc = P(436, 60);
-    s += B(P(386, 60), nc, 'CH₃', 'CH') + A(P(386, 60), 'CH₃');
-    s += B(nc, P(nc.x, 108), 'CH', 'NH₂') + A(P(nc.x, 108), 'NH₂');
-    s += bond(nc, P(nc.x + 50, 60), { rFrom: 16, rTo: 15 }) + A(P(nc.x + 50, 60), 'C', { kind: 'hi' });
-    s += bond(P(nc.x + 50, 60), P(nc.x + 94, 60), { rFrom: 15, rTo: 15, order: 3 }) + A(P(nc.x + 94, 60), 'N', { kind: 'hi' });
+    s += Tag(P(222, 140), 'imine');
+    s += step(276, 340, y, 'HCN');
+    const nc = P(418, y);
+    s += B(P(366, y), nc, 'CH₃', 'CH') + A(P(366, y), 'CH₃');
+    s += B(nc, P(nc.x, y + 50), 'CH', 'NH₂') + A(P(nc.x, y + 50), 'NH₂');
+    s += bond(nc, P(468, y), { rFrom: 16, rTo: 15 }) + A(P(468, y), 'C', { kind: 'hi' });
+    s += bond(P(468, y), P(514, y), { rFrom: 15, rTo: 15, order: 3 }) + A(P(514, y), 'N', { kind: 'hi' });
     s += A(nc, 'CH');
-    s += Tag(P(452, 146), 'α-amino nitrile');
-    s += step(548, 612, 60, 'H₃O⁺', 'heat');
-    s += ALA(P(686, 60));
-    s += Good(P(686, 146), 'alanine (racemic)');
+    s += Tag(P(440, 160), 'α-amino nitrile');
+    s += step(540, 598, y, 'H₃O⁺', 'heat');
+    s += ALA(P(674, y));
+    s += Good(P(674, 160), 'alanine (racemic)');
     return s;
   },
   caption: 'Route 3: the aldehyde and ammonia form an imine, cyanide adds to it, and hydrolysis turns the C≡N into the carboxyl.',

@@ -357,7 +357,7 @@ FIGURES.push({
     s += tg(380, 318, 'D-glucose in water at equilibrium', 'fg-tag-mut');
     return s;
   },
-  caption: 'The coral dot is C1, the anomeric carbon. The proton on the C5 oxygen ends up on the new C1 OH, so both anomers are neutral. Hydrogens on the ring carbons are left off.',
+  caption: 'The coral dot is C1, the anomeric carbon. The proton on the C5 oxygen ends up on the new C1 OH, so both anomers are neutral.',
 });
 FIGURES.push({
   id: 'l-carb-anomers',
@@ -523,7 +523,7 @@ FIGURES.push({
   viewBox: '0 0 760 280',
   alt: 'Left: beta-D-glucopyranose, whose anomeric carbon C1 carries the ring oxygen and an OH, a hemiacetal; its ring can open to the aldehyde, so it tests positive. Right: methyl beta-D-glucopyranoside, whose C1 carries the ring oxygen and an OCH3, an acetal; its ring stays shut, so it tests negative.',
   build: () => testPair({ x: 10, y: 8, w: 366, h: 264 }, { x: 384, y: 8, w: 366, h: 264 }, 0.9),
-  caption: 'The coral dot marks C1, the anomeric carbon. The two molecules differ only in what caps its oxygen: H on the left, CH₃ on the right.',
+  caption: 'The two molecules differ only in what caps the oxygen on C1 (dotted): H on the left, CH₃ on the right.',
 });
 FIGURES.push({
   id: 'l-anomeric-test',

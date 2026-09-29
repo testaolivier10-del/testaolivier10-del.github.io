@@ -134,9 +134,13 @@
       2:['route-order','protection'], 3:['route-order'], 4:['route-order'],
       6:['route-order'], 7:['route-order','cc-bond-toolkit'] } },
 
-    'carbohydrates': { n:8, steps:{
-      2:['sugar-ring'], 3:['sugar-ring'], 4:['sugar-ring'],
-      6:['sugar-ring'], 7:['sugar-ring'] } },
+    'carbohydrates': { n:12, steps:{
+      1:['sugar-ring'],
+      4:['sugar-ring'],
+      5:['sugar-ring'],
+      8:['sugar-ring'],
+      10:['sugar-ring'],
+      11:['sugar-ring'] } },
 
     'amino-acids': { n:8, steps:{
       2:['zwitterion'], 3:['zwitterion'], 4:['zwitterion'],

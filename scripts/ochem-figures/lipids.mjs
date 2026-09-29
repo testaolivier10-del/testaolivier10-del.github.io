@@ -96,7 +96,7 @@ FIGURES.push({
   id: 'fatty-acid-numbering',
   section: 'lipids',
   anchor: 'so α-linolenic acid is an ω-3 fatty acid.</p>',
-  viewBox: '0 0 700 300',
+  viewBox: '0 0 700 312',
   alt: 'Skeletal structure of alpha-linolenic acid: a COOH group at the lower left, a zigzag chain running right, and three cis double bonds that curl the chain up and back to the left, so the CH3 end sits above the start of the chain. Every carbon is numbered from C1, the carboxyl carbon, to C18, the CH3 carbon. The double bonds start at C9, C12 and C15. Counted from the CH3 end instead, C18 is omega-1, C17 omega-2 and C16 omega-3, so the last double bond starts at omega-3.',
   build() {
     let s = '';
@@ -115,15 +115,16 @@ FIGURES.push({
       const key = [1, 9, 12, 15, 18].includes(i);
       s += text(q.x, q.y + 4, String(i), { cls: key ? 'fg-tag' : 'fg-sm', size: key ? 11 : 10 });
     }
-    for (const [i, w] of [[18, 'ω1'], [17, 'ω2'], [16, 'ω3']]) {
+    for (const [i, w] of [[17, 'ω2'], [16, 'ω3']]) {
       const q = side(i, 22, -1);
       s += text(q.x, q.y + 4, w, { cls: 'fg-tag-warn', size: 11 });
     }
+    s += text(pts[17].x + 2, pts[17].y + 26, 'ω1', { cls: 'fg-tag-warn', size: 11 });
     const end = pts[17];
     s += text(end.x - 22, end.y - 30, 'ω numbers count from here:', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
     s += text(end.x - 22, end.y - 14, 'the CH₃ carbon is ω1', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
-    s += tag(40, 284, 'Δ numbers count from here: C1 is the carboxyl carbon', { anchor: 'start' });
-    s += gapArrow(P(96, 262), P(170, 262));
+    s += tag(40, 300, 'Δ numbers count from here: C1 is the carboxyl carbon', { anchor: 'start' });
+    s += gapArrow(P(106, 280), P(184, 280));
     s += tag(430, 150, 'double bonds start at', { anchor: 'start' });
     s += tag(430, 166, 'C9, C12 and C15, all cis', { anchor: 'start' });
     return s;
@@ -144,22 +145,22 @@ FIGURES.push({
   build() {
     let s = '';
     const L = 17;
-    const col = (ox, title, mp, kind, draw) => {
-      s += panel(ox, 40, 236, 300, kind ? { kind } : {});
-      s += tag(ox + 118, 28, title);
-      s += tag(ox + 118, 58, 'carboxyl ends at the top', { cls: 'fg-tag-mut' });
-      draw(ox);
-      s += text(ox + 118, 362, mp, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 11 });
+    const col = (ox, w, title, mp, kind, draw) => {
+      s += panel(ox, 40, w, 300, kind ? { kind } : {});
+      s += tag(ox + w / 2, 28, title);
+      s += tag(ox + w / 2, 58, 'carboxyl ends at the top', { cls: 'fg-tag-mut' });
+      draw(ox + w / 2);
+      s += text(ox + w / 2, 362, mp, { cls: kind === 'warn' ? 'fg-tag-warn' : 'fg-tag-good', size: 11 });
     };
-    col(8, 'stearic acid, 18:0', 'mp 69 °C: solid', null, (ox) => {
-      for (let j = 0; j < 5; j++) s += chainInk(chainPts(ox + 58 + j * 30, 74, 17, L, 90));
+    col(8, 210, 'stearic acid, 18:0', 'mp 69 °C: solid', null, (m) => {
+      for (let j = 0; j < 5; j++) s += chainInk(chainPts(m - 64 + j * 30, 74, 17, L, 90));
     });
-    col(262, 'oleic acid, 18:1 cis-Δ9', 'mp 13 °C: liquid', 'warn', (ox) => {
-      s += chainInk(chainPts(ox + 104, 74, 17, L, 90, { cis: [9], s: 1 }), { dbl: [9], hi: [9], center: true });
-      s += chainInk(chainPts(ox + 134, 74, 17, L, 90, { cis: [9], s: -1 }), { dbl: [9], hi: [9], center: true });
+    col(234, 292, 'oleic acid, 18:1 cis-Δ9', 'mp 13 °C: liquid', 'warn', (m) => {
+      s += chainInk(chainPts(m - 16, 74, 17, L, 90, { cis: [9], s: 1 }), { dbl: [9], hi: [9], center: true });
+      s += chainInk(chainPts(m + 14, 74, 17, L, 90, { cis: [9], s: -1 }), { dbl: [9], hi: [9], center: true });
     });
-    col(516, 'elaidic acid, 18:1 trans-Δ9', 'mp 44 °C: solid', null, (ox) => {
-      for (let j = 0; j < 5; j++) s += chainInk(chainPts(ox + 58 + j * 30, 74, 17, L, 90), { dbl: [9], hi: [9], center: true });
+    col(542, 210, 'elaidic acid, 18:1 trans-Δ9', 'mp 44 °C: solid', null, (m) => {
+      for (let j = 0; j < 5; j++) s += chainInk(chainPts(m - 64 + j * 30, 74, 17, L, 90), { dbl: [9], hi: [9], center: true });
     });
     s += rule(20, 376, 740, 376);
     s += label(380, 396, 'Same eighteen carbons in every panel; only the shape of the chain changes.');
@@ -299,7 +300,7 @@ FIGURES.push({
   id: 'triglyceride-formation',
   section: 'lipids',
   anchor: 'Each ester forms with loss of one water, so three waters leave in all.</p>',
-  viewBox: '0 0 760 484',
+  viewBox: '0 0 760 524',
   alt: 'Top: glycerol, a vertical CH2, CH, CH2 chain with an OH on each carbon, plus three molecules of stearic acid, drawn as a carboxylic acid on an eighteen-carbon zigzag chain. Arrow: minus three water. Bottom: tristearin, the same glycerol with each oxygen now bonded to the carbonyl carbon of a stearic acid, giving three ester groups, highlighted, with a seventeen-carbon zigzag tail on each.',
   build() {
     let s = '';
@@ -322,20 +323,20 @@ FIGURES.push({
     s += tag(392, 232, '− 3 H₂O', { anchor: 'start' });
 
     // product
-    const G = [A(70, 300, 'CH₂'), A(70, 368, 'CH'), A(70, 436, 'CH₂')];
+    const G = [A(70, 300, 'CH₂'), A(70, 388, 'CH'), A(70, 476, 'CH₂')];
     s += bd(G[0], G[1]) + bd(G[1], G[2]);
     for (const c of G) {
       const O = A(c.x + 46, c.y, 'O');
       const C = at(O, -30, 40);
       const Od = A(C.x, C.y - 30, 'O');
-      s += bar(O.x - 18, Od.y - 16, C.x - O.x + 34, c.y - Od.y + 34, { kind: 'hi', opacity: 0.16 });
+      s += bar(O.x - 18, Od.y - 14, C.x - O.x + 34, c.y - Od.y + 30, { kind: 'hi', opacity: 0.16 });
       s += bd(c, O) + bond(O, C, { rFrom: O.r, rTo: 0, cls: 'fg-bond-hi' }) + bd({ ...C, r: 0 }, Od, { order: 2 });
       s += draw(O, Od);
       s += chainInk(chainPts(C.x, C.y, 17, 22, 0, { s: 1 }));
     }
     s += draw(...G);
-    s += tag(150, 470, 'three ester groups', { cls: 'fg-tag' });
-    s += tag(500, 470, 'tristearin: each tail is C2–C18 of a stearic acid');
+    s += tag(150, 512, 'three ester groups', { cls: 'fg-tag' });
+    s += tag(500, 512, 'tristearin: each tail is C2–C18 of a stearic acid');
     return s;
   },
   caption: 'Each glycerol OH ends up as the single-bonded oxygen of an ester. The highlighted C–O bonds are the new ones.',
@@ -386,7 +387,7 @@ function s1(ox, oy) {
   s += bd(C, O, { order: 2 }) + bd(C, R) + bd(C, Oe) + bd(Oe, G);
   s += lp(O, -160, 5) + lp(O, -20, 5) + lp(B, 0, 4) + lp(B, -90, 3) + lp(B, 90, 3) + lp(Oe, 70, 5) + lp(Oe, 130, 5);
   s += draw(B, C, O, R, Oe, G);
-  s += tag(ox + 252, oy + 130, 'to glycerol');
+  s += tag(ox + 252, oy + 142, 'to glycerol');
   s += curve(off(lpAt(B, 0, 4), 4, 0), off(C, -16, -6), { bow: 16 });
   s += curve(mid(C, O), off(O, 17, 4), { bow: -10 });
   return s;
@@ -397,7 +398,7 @@ function s2(ox, oy) {
         Oe = A(ox + 196, oy + 142, 'O'), G = A(ox + 258, oy + 142, 'CH₂');
   let s = frameP(ox, oy, PW, PH, '2 · the intermediate collapses', ['the C–O bond to glycerol breaks']);
   s += bd(C, O) + bd(C, OH) + bd(C, R) + bd(C, Oe, { cls: 'fg-bond-hi' }) + bd(Oe, G);
-  s += lp(O, 180, 5) + lp(O, -90, 5) + lp(O, 0, 5) + lp(Oe, -60, 5) + lp(Oe, -120, 5);
+  s += lp(O, 180, 5) + lp(O, -90, 5) + lp(O, 0, 5) + lp(Oe, -35, 5) + lp(Oe, -95, 5);
   s += draw(C, O, OH, R, Oe, G);
   s += curve(off(lpAt(O, 0, 5), 2, 6), mid(C, O, 0.5), { bow: -12 });
   s += curve(mid(C, Oe), off(Oe, 0, 20), { bow: 16 });
@@ -415,7 +416,7 @@ function s3(ox, oy) {
   s += lp(Ox, 0, 5) + lp(Ox, 90, 5) + lp(Ox, 200, 5);
   s += draw(C, O, R, Oa, H, Ox, G);
   s += curve(lpAt(Ox, 200, 5), off(H, 10, 12), { bow: -14 });
-  s += curve(mid(Oa, H), off(Oa, 2, -19), { bow: 10 });
+  s += curve(mid(Oa, H), off(Oa, 19, 6), { bow: -14 });
   return s;
 }
 function s4(ox, oy) {
@@ -571,13 +572,13 @@ FIGURES.push({
   alt: 'Left: a phosphatidylcholine. A glycerol backbone runs across the top: CH2, CH, CH2. From the right-hand CH2, an oxygen links to a phosphorus that carries a double-bonded O and an O-minus, and a second oxygen links the phosphorus to CH2CH2N-plus(CH3)3, the choline. From the other two glycerol carbons, ester groups hang down, each carrying a long zigzag tail: one bent at a cis double bond (oleic acid) and one straight (palmitic acid). The phosphate and choline are labeled the charged head and the chains the two nonpolar tails. Right: a bilayer, two rows of such molecules drawn as a head with two tails, tails meeting in the middle, heads facing water above and below.',
   build() {
     let s = '';
-    const G1 = A(150, 120, 'CH₂'), G2 = A(240, 120, 'CH'), G3 = A(330, 120, 'CH₂');
-    const Op = A(330, 72, 'O'), Pp = A(380, 72, 'P', 'warn'), Pd = A(380, 28, 'O'), Pm = A(380, 116, 'O⁻', 'warn'),
-          Oc = A(430, 72, 'O');
-    s += bar(306, 8, 262, 130, { kind: 'warn', opacity: 0.1 });
+    const G1 = A(110, 120, 'CH₂'), G2 = A(200, 120, 'CH'), G3 = A(290, 120, 'CH₂');
+    const Op = A(290, 72, 'O'), Pp = A(340, 72, 'P', 'warn'), Pd = A(340, 28, 'O'), Pm = A(340, 116, 'O⁻', 'warn'),
+          Oc = A(390, 72, 'O');
+    s += bar(266, 8, 300, 172, { kind: 'warn', opacity: 0.1 });
     s += bd(G1, G2) + bd(G2, G3) + bd(G3, Op) + bd(Op, Pp) + bd(Pp, Pd, { order: 2 }) + bd(Pp, Pm) + bd(Pp, Oc);
-    s += bond(Oc, P(446, 72), { rFrom: Oc.r, rTo: 0 });
-    s += text(450, 76, 'CH₂CH₂N⁺(CH₃)₃', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
+    s += bond(Oc, P(424, 72), { rFrom: Oc.r, rTo: 0 });
+    s += text(428, 76, 'CH₂CH₂N⁺(CH₃)₃', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
     // the two esters, hanging down: O, then the carbonyl carbon at 60 degrees
     // (C=O to the right), then the chain
     for (const [g, n, cis] of [[G1, 17, [9]], [G2, 15, []]]) {
@@ -589,12 +590,12 @@ FIGURES.push({
       s += chainInk(chainPts(C.x, C.y, n, 16, 90, { cis, s: 1 }), { dbl: cis, hi: cis });
     }
     s += draw(G1, G2, G3, Op, Pp, Pd, Pm, Oc);
-    s += tag(440, 128, 'charged head:', { cls: 'fg-tag-warn', anchor: 'start' });
-    s += tag(440, 144, 'phosphate (−), choline (+)', { cls: 'fg-tag-warn', anchor: 'start' });
-    s += tag(40, 250, 'oleic acid', { anchor: 'start' });
-    s += tag(40, 266, '(cis kink)', { anchor: 'start' });
-    s += tag(290, 330, 'palmitic acid', { anchor: 'start' });
-    s += tag(190, 430, 'two nonpolar tails');
+    s += tag(380, 136, 'charged head:', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += tag(380, 152, 'phosphate (−), choline (+)', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += tag(20, 250, 'oleic acid', { anchor: 'start' });
+    s += tag(20, 266, '(cis kink)', { anchor: 'start' });
+    s += tag(250, 330, 'palmitic acid', { anchor: 'start' });
+    s += tag(150, 430, 'two nonpolar tails');
     // bilayer
     s += tag(665, 36, 'bilayer: two sheets,');
     s += tag(665, 52, 'tail to tail');
@@ -687,10 +688,10 @@ function steroidInk(core, { dbl = [], hi = [] } = {}) {
 function sub(core, p, deg, len, lab, kind = 'plain', o = {}) {
   const v = core.v[p];
   const end = at(v, deg, len);
-  const r = lab ? rad(lab) : 0;
+  const r = o.r ?? (lab ? rad(lab) : 0);
   let s = '';
   if (kind === 'wedge') s += wedge(v, end, { rFrom: 0, rTo: r, width: 8 });
-  else if (kind === 'hash') s += hash(v, end, { rFrom: 0, rTo: r, width: 9, rungs: 5 });
+  else if (kind === 'hash') s += hash(v, end, { rFrom: 0, rTo: r, width: 9, rungs: o.rungs ?? 5 });
   else s += bond(v, end, { rFrom: 0, rTo: r, cls: o.cls, order: o.order });
   if (lab) s += atom(end.x, end.y, lab, { kind: o.kind, r });
   return { svg: s, end };
@@ -699,7 +700,7 @@ const RING_OF_NUM = { 1: 'A', 2: 'A', 3: 'A', 4: 'A', 5: 'A', 10: 'A', 6: 'B', 7
 /* Where each locant sits, as a screen angle from its carbon. Carbons on the
    outside edge take the direction away from their ring's centre; the ring
    junctions and the carbons that carry a group get a fixed free direction. */
-const LOC_ANG = { 3: 90, 5: 90, 8: 30, 9: 210, 10: -120, 13: -120, 14: 210 };
+const LOC_ANG = { 3: 90, 5: 90, 8: 30, 9: 210, 10: 150 };
 const outward = (core, i) => {
   const cent = { A: core.cA, B: core.cB, C: core.cC, D: core.cD }[RING_OF_NUM[i]];
   return dirOf(cent, core.v[i]);
@@ -708,24 +709,27 @@ function locants(core, cls = 'fg-sm', size = 10, only) {
   let s = '';
   for (let i = 1; i <= 17; i++) {
     if (only && !only.includes(i)) continue;
-    const ang = i === 17 ? outward(core, 17) - 62 : (LOC_ANG[i] ?? outward(core, i));
-    const q = at(core.v[i], ang, i === 14 ? 14 : 13);
+    const ang = i === 17 ? outward(core, 17) - 62
+      : (i === 13 || i === 14) ? dirOf(core.v[i], core.cD)
+      : (LOC_ANG[i] ?? outward(core, i));
+    const q = at(core.v[i], ang, 13);
     s += text(q.x, q.y + 4, String(i), { cls, size });
   }
   return s;
 }
 function ringLetters(core, cls = 'fg-tag-warn') {
   const r = core.r;
-  return [['A', core.cA, 0], ['B', core.cB, 0.34 * r], ['C', core.cC, -0.32 * r], ['D', core.cD, 0]]
-    .map(([l, c, dy]) => text(c.x, c.y + dy + 5, l, { cls, size: 13 })).join('');
+  return [['A', core.cA, 0, 0], ['B', core.cB, 0, 0.34 * r], ['C', core.cC, 0, -0.32 * r], ['D', core.cD, 0.2 * r, 0]]
+    .map(([l, c, dx, dy]) => text(c.x + dx, c.y + dy + 5, l, { cls, size: 13 })).join('');
 }
 /* The three ring-junction hydrogens every natural steroid here shares:
    8β (toward you), 9α and 14α (away). */
 function junctionH(core) {
   const r = core.r;
-  return sub(core, 8, -90, r * 0.52, 'H', 'wedge').svg +
-         sub(core, 9, 90, r * 0.52, 'H', 'hash').svg +
-         sub(core, 14, 84, r * 0.55, 'H', 'hash').svg;
+  const o = { r: 8, rungs: 4 };
+  return sub(core, 8, -90, r * 0.62, 'H', 'wedge', o).svg +
+         sub(core, 9, 90, r * 0.62, 'H', 'hash', o).svg +
+         sub(core, 14, 84, r * 0.66, 'H', 'hash', o).svg;
 }
 
 /* Cholesterol on a core; returns ink. */
@@ -868,7 +872,7 @@ FIGURES.push({
   id: 'prostaglandin-e2',
   section: 'lipids',
   anchor: 'the same kind of reaction as saponification with a different nucleophile.</div>',
-  viewBox: '0 0 700 330',
+  viewBox: '0 0 700 350',
   alt: 'Prostaglandin E2. A five-membered ring carries a ketone at C9 and a hashed OH at C11. From C8 a hashed bond leads to the upper chain, seven carbons with a cis double bond between C5 and C6, which rises to a COOH group at C1. From C12 a wedged bond leads to the lower chain, eight carbons with a trans double bond between C13 and C14, a hashed OH on C15, and a CH3 end at C20.',
   build() {
     let s = '';
@@ -899,21 +903,22 @@ FIGURES.push({
     s += hash(lo[3], o15, { rFrom: 0, rTo: 14, width: 9, rungs: 4 }) + atom(o15.x, o15.y, 'OH', { r: 14 });
     // locants
     const nt = (q, n, key) => text(q.x, q.y + 4, String(n), { cls: key ? 'fg-tag' : 'fg-sm', size: key ? 11 : 10 });
-    s += nt(at(C10, 180, 13), 10) + nt(at(C9, 20, 14), 9) + nt(at(C11, 0, 14), 11);
-    s += nt(at(C8, 200, 14), 8) + nt(at(C12, 160, 14), 12);
+    s += nt(at(C10, 180, 13), 10) + nt(at(C9, -45, 14), 9) + nt(at(C11, -72, 14), 11);
+    s += nt(at(C8, 144, 14), 8) + nt(at(C12, 216, 14), 12);
     const chainNum = (pts, i, n, key) => {
       const p = pts[i], prev = pts[i - 1], next = pts[i + 1] ?? at(p, dirOf(prev, p), 30);
       const aw = mid(prev, next), d = Math.hypot(p.x - aw.x, p.y - aw.y) || 1;
       return nt(P(p.x + ((p.x - aw.x) / d) * 14, p.y + ((p.y - aw.y) / d) * 14), n, key);
     };
     [7, 6, 5, 4, 3, 2].forEach((n, k) => { s += chainNum(up, k + 1, n); });
-    s += nt(at(up[7], dirOf(up[6], up[7]), 16), 1, true);
-    [13, 14, 16, 17, 18, 19].forEach((n) => { s += chainNum(lo, n - 12, n); });
+    s += nt(at(up[7], 240, 15), 1, true);
+    [13, 16, 17, 18, 19].forEach((n) => { s += chainNum(lo, n - 12, n); });
+    s += nt(at(lo[2], 90, 20), 14);
     s += nt(at(lo[3], 20, 16), 15);
     s += nt(at(lo[8], dirOf(lo[7], lo[8]), 16), 20, true);
-    s += tag(cx, 290, 'five-membered ring');
+    s += tag(cx - 10, 338, 'five-membered ring');
     s += tag(420, 40, 'upper chain: cis C5=C6, COOH at C1', { anchor: 'start' });
-    s += tag(420, 310, 'lower chain: trans C13=C14, CH₃ at C20');
+    s += tag(460, 338, 'lower chain: trans C13=C14, CH₃ at C20');
     s += tag(40, 40, 'PGE₂', { anchor: 'start' });
     return s;
   },
