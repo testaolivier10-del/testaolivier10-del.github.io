@@ -296,7 +296,7 @@ FIGURES.push({
   },
   caption: 'Left: butane. Middle and right: two ways to be two hydrogens short of it.',
 });
-function label(x, y, s) { return text(x, y, s, { cls: 'fg-lbl' }); }
+function label(x, y, s) { return `<text class="fg-lbl" x="${x}" y="${y}" text-anchor="middle" style="font-family:var(--font-ui)">${s}</text>`; }
 
 /* ------------------------------------------------- hydrogenation-ladder ---
    The three butenes, each hydrogenated to the same butane. Tops are to scale
@@ -413,8 +413,8 @@ FIGURES.push({
   section: 'alkene-structure',
   anchor: 'so more groups mean more stabilization.</p>',
   lessons: ['alkene-structure'],
-  alt: 'Propene drawn in perspective, every atom labeled. The two alkene carbons and the methyl carbon lie in one dashed plane, with p orbitals standing upright on the two alkene carbons and a dashed outline around their upper and lower lobes, the pi bond. One C–H bond of the methyl group points straight up, parallel to the p orbitals, and is highlighted with a shaded cloud. Its two other hydrogens point down below the plane. A label says this C–H bond lines up with the p orbitals and shares a little electron density with the pi bond.',
-  viewBox: '0 0 340 276',
+  alt: 'Propene drawn in perspective, every atom labeled. The two alkene carbons and the methyl carbon lie in one dashed plane, with p orbitals standing upright on the two alkene carbons and a dashed outline around their upper and lower lobes, the pi bond. One C–H bond of the methyl group points straight up, parallel to the p orbitals, and is highlighted with a shaded cloud. Its two other hydrogens point down below the plane. A label says this C–H bond lines up with the p orbitals and its electron density spreads slightly over the double bond.',
+  viewBox: '0 0 340 252',
   build() {
     const y0 = 150;
     const C1 = pv(-52, 0, y0), C2 = pv(22, 0, y0);
@@ -436,10 +436,9 @@ FIGURES.push({
     hA.forEach((h) => { s += H(h); });
     s += H(h2) + H(hUp, 'hi') + H(hD1) + H(hD2);
     s += C(C1) + C(C2) + C(C3);
-    s += tag(84, 72, 'π bond');
+    s += tag(155, 80, 'π bond');
     s += tag(170, 36, 'this C–H is lined up with the p orbitals');
-    s += rule(10, 236, 330, 236);
-    s += tag(170, 260, 'it shares a little electron density with the π bond');
+    s += tag(170, 240, 'its electron density spreads slightly over the C=C');
     return s;
   },
   caption: 'Propene. The shaded C–H bond on the methyl carbon runs parallel to the two p orbitals, close enough to overlap them slightly.',
@@ -501,74 +500,94 @@ FIGURES.push({
 });
 
 /* ------------------------------------------------------------- bredt-rule ---
-   Top: bicyclo[2.2.1]heptane drawn flat (for counting) and in perspective
-   (for shape), bridgeheads marked. Bottom: the two bridgehead alkenes, drawn
-   flat and numbered, with the largest ring through the C=C highlighted.
-   Notes only. */
-function bicycleFlat(cx, cy, top, bot, mid, opts = {}) {
-  const w = opts.w ?? 110, hgt = opts.h ?? 34;
-  const L = P(cx - w / 2, cy), R = P(cx + w / 2, cy);
-  const row = (n, yy) => Array.from({ length: n }, (_, i) => P(L.x + ((i + 1) * w) / (n + 1), yy));
-  const T = row(top, cy - hgt), Bm = row(bot, cy + hgt), M = row(mid, cy);
-  const topPath = [L, ...T, R], botPath = [L, ...Bm, R], midPath = [L, ...M, R];
-  return { L, R, T, Bm, M, topPath, botPath, midPath };
+   Row 1: norbornane drawn flat (for counting the bridges) and in its usual
+   3D drawing, bridgeheads marked. Row 2: the 3D drawing with a would-be
+   C1=C2 double bond: C2's p orbital stands up, but the bridgehead C1 has
+   all three bonds pulled to one side (a pyramid), so the orbital it has
+   left points out sideways and cannot line up. Row 3: the two bridgehead
+   alkenes drawn flat and numbered, every carbon at a visible vertex, with
+   the largest ring through the C=C highlighted. Notes only. */
+/* Flat bicyclic drawings. Every bridge carbon sits at a bend so it can be
+   counted: the one-carbon bridge is a low peak, and a three-carbon bridge
+   is a zigzag. */
+function bicycleFlat(cx, cy, big) {
+  const w = big ? 58 : 50;
+  const L = P(cx - w, cy), R = P(cx + w, cy);
+  const T = big ? [P(cx - 34, cy - 28), P(cx, cy - 44), P(cx + 34, cy - 28)] : [P(cx - 22, cy - 34), P(cx + 22, cy - 34)];
+  const Bm = T.map((p) => P(p.x, 2 * cy - p.y));
+  const M = [P(cx, cy - 13)];
+  return { L, R, T, Bm, M };
+}
+function norbornane3D(o, k) {
+  const q = (dx, dy) => P(o.x + dx * k, o.y + dy * k);
+  return { n1: q(-50, 0), n2: q(-22, 30), n3: q(22, 30), n4: q(50, 0), n5: q(22, -12), n6: q(-22, -12), n7: q(0, -46) };
 }
 FIGURES.push({
   id: 'bredt-rule',
   section: 'alkene-structure',
-  anchor: 'cannot be done in a small system.</p>',
-  alt: 'Top left: bicyclo[2.2.1]heptane drawn flat, two marked bridgehead carbons joined by three bridges of two, two and one carbons, each bridge labeled with its count. Top right: the same molecule in its usual perspective drawing, a six-membered ring folded like a boat with a one-carbon bridge arching over it, the two bridgeheads marked. Bottom left: bicyclo[2.2.1]hept-1-ene drawn flat and numbered, with a double bond from bridgehead C1 to C2; the largest ring that contains the double bond, six atoms, is highlighted, and the label says it cannot be isolated. Bottom right: bicyclo[3.3.1]non-1-ene drawn flat and numbered, with a double bond from bridgehead C1 to C2; the largest ring containing it has eight atoms and is highlighted, and the label says it can be isolated.',
-  viewBox: '0 0 340 354',
+  anchor: 'cannot have a double bond at a bridgehead.</p>',
+  alt: 'Top left: norbornane, bicyclo[2.2.1]heptane, drawn flat: two marked bridgehead carbons joined by three bridges, of two, two and one carbons, each carbon at a visible bend and each bridge labeled with its count. Top right: the same molecule in its usual 3D drawing, a six-membered ring folded like a boat with a one-carbon bridge arching over it, bridgeheads marked. Middle: the 3D drawing again with a would-be double bond from bridgehead C1 to C2. C2 carries an upright p orbital. C1 has all three of its bonds pulled to one side, like a pyramid, so the orbital it has left points out sideways. The two orbitals are at right angles and cannot overlap. Bottom left: bicyclo[2.2.1]hept-1-ene drawn flat and numbered 1 to 7, with the double bond from C1 to C2; the largest ring containing it, six atoms, is highlighted, and the label says it cannot be isolated. Bottom right: bicyclo[3.3.1]non-1-ene drawn flat and numbered 1 to 9, with the double bond from C1 to C2; the largest ring containing it, eight atoms, is highlighted, and the label says it can be isolated.',
+  viewBox: '0 0 340 530',
   build() {
     let s = '';
     const path = (pts, hi) => pts.slice(1).map((p, i) => sk(pts[i], p, hi)).join('');
-    // ---- top left: flat [2.2.1] with bridge counts
-    s += text(10, 18, 'bicyclo[2.2.1]heptane', { cls: 'fg-tag-mut', anchor: 'start' });
-    let g = bicycleFlat(85, 80, 2, 2, 1, { w: 100, h: 34 });
-    s += path(g.topPath) + path(g.botPath) + path(g.midPath);
+    // ---- row 1
+    s += text(6, 18, 'norbornane = bicyclo[2.2.1]heptane', { cls: 'fg-tag-mut', anchor: 'start' });
+    let g = bicycleFlat(85, 88, false);
+    s += path([g.L, ...g.T, g.R]) + path([g.L, ...g.Bm, g.R]) + path([g.L, ...g.M, g.R]);
     s += dot(g.L) + dot(g.R);
-    s += tag(85, 38, '2') + tag(85, 132, '2') + tag(85, 74, '1');
-    s += tag(85, 158, 'bridgeheads: the dots');
-    // ---- top right: perspective norbornane
-    const o = P(255, 88);
-    const q = (dx, dy) => P(o.x + dx, o.y + dy);
-    const n1 = q(-50, 0), n2 = q(-22, 30), n3 = q(22, 30), n4 = q(50, 0), n5 = q(22, -12), n6 = q(-22, -12), n7 = q(0, -46);
-    s += sk(n1, n2) + sk(n2, n3) + sk(n3, n4) + sk(n4, n5) + sk(n5, n6) + sk(n6, n1) + sk(n1, n7) + sk(n7, n4);
-    s += dot(n1) + dot(n4);
-    s += tag(255, 158, 'the same molecule in 3D');
-    s += rule(10, 176, 330, 176);
-    // ---- bottom: the two bridgehead alkenes, flat and numbered
-    const numbered = (cx, cy, top, bot, mid, w) => {
-      const b = bicycleFlat(cx, cy, top, bot, mid, { w, h: 32 });
+    s += tag(85, 44, '2') + tag(85, 140, '2') + tag(85, 98, '1');
+    s += tag(85, 164, 'bridgeheads: the dots');
+    let n = norbornane3D(P(255, 96), 1);
+    s += sk(n.n1, n.n2) + sk(n.n2, n.n3) + sk(n.n3, n.n4) + sk(n.n4, n.n5) + sk(n.n5, n.n6) + sk(n.n6, n.n1) + sk(n.n1, n.n7) + sk(n.n7, n.n4);
+    s += dot(n.n1) + dot(n.n4);
+    s += tag(255, 164, 'the same molecule in 3D');
+    s += rule(10, 180, 330, 180);
+    // ---- row 2: why the bridgehead cannot join a pi bond
+    s += text(6, 200, 'a C=C from bridgehead C1 to C2?', { cls: 'fg-tag-mut', anchor: 'start' });
+    n = norbornane3D(P(186, 262), 1.25);
+    s += sk(n.n2, n.n3) + sk(n.n3, n.n4) + sk(n.n4, n.n5) + sk(n.n5, n.n6) + sk(n.n6, n.n1) + sk(n.n1, n.n7) + sk(n.n7, n.n4);
+    s += `<line class="fg-dash-hi" x1="${r2(n.n1.x)}" y1="${r2(n.n1.y)}" x2="${r2(n.n2.x)}" y2="${r2(n.n2.y)}"></line>`;
+    s += pOrb(n.n2, 90, 50, 11);
+    // C1's leftover orbital points away from its three bonds: out to the left
+    s += pOrb(n.n1, 172, 50, 11);
+    s += dot(n.n1) + dot(n.n2, 'fg-fill-mut', 3.5);
+    s += text(n.n1.x + 4, n.n1.y + 26, 'C1', { cls: 'fg-tag' });
+    s += text(n.n2.x + 18, n.n2.y + 18, 'C2', { cls: 'fg-tag' });
+    s += tag(62, 232, 'C1: bonds pulled');
+    s += tag(62, 248, 'to one side');
+    s += tag(170, 334, 'orbitals at right angles: no π bond', { cls: 'fg-tag-warn' });
+    s += rule(10, 350, 330, 350);
+    // ---- row 3: the two bridgehead alkenes, flat and numbered
+    const numbered = (cx, cy, big) => {
+      const b = bicycleFlat(cx, cy, big);
       let t = '';
-      // C1 = L, top bridge C2.., R, bottom bridge back from R to L, then mid
-      const ringPts = [b.L, ...b.T, b.R, ...b.Bm.slice().reverse()];
       t += skDouble(b.L, b.T[0], P(cx, cy));
       t += path([b.T[0], ...b.T.slice(1), b.R], true) + path([b.L, ...b.Bm, b.R], true);
-      t += path(b.midPath);
-      const labels = [];
-      labels.push([b.L, '1', -14, 4]);
+      t += path([b.L, ...b.M, b.R]);
+      const top = b.T.length;
+      const labels = [[b.L, '1', -12, 4]];
       b.T.forEach((p, i) => labels.push([p, String(2 + i), 0, -8]));
-      labels.push([b.R, String(2 + top), 14, 4]);
+      labels.push([b.R, String(2 + top), 12, 4]);
       b.Bm.slice().reverse().forEach((p, i) => labels.push([p, String(3 + top + i), 0, 17]));
-      b.M.forEach((p, i) => labels.push([p, String(3 + top + bot + i), 0, -7]));
+      labels.push([b.M[0], String(3 + 2 * top), 0, 16]);
       labels.forEach(([p, v, dx, dy]) => { t += text(p.x + dx, p.y + dy, v, { cls: 'fg-tag-mut' }); });
-      return { t, ringSize: ringPts.length };
+      return { t, ringSize: 2 + 2 * top };
     };
-    s += text(6, 198, 'bicyclo[2.2.1]hept-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
-    let r = numbered(85, 256, 2, 2, 1, 96);
+    s += text(6, 370, 'bicyclo[2.2.1]hept-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
+    let r = numbered(85, 430, false);
     s += r.t;
-    s += tag(85, 322, `largest ring: ${r.ringSize} atoms`);
-    s += tag(85, 342, 'cannot be isolated', { cls: 'fg-tag-warn' });
-    s += `<line class="fg-rule" x1="172" y1="210" x2="172" y2="346"></line>`;
-    s += text(180, 198, 'bicyclo[3.3.1]non-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
-    r = numbered(256, 256, 3, 3, 1, 112);
+    s += tag(85, 498, `largest ring: ${r.ringSize} atoms`);
+    s += tag(85, 518, 'cannot be isolated', { cls: 'fg-tag-warn' });
+    s += `<line class="fg-rule" x1="172" y1="380" x2="172" y2="522"></line>`;
+    s += text(180, 370, 'bicyclo[3.3.1]non-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
+    r = numbered(256, 430, true);
     s += r.t;
-    s += tag(256, 322, `largest ring: ${r.ringSize} atoms`);
-    s += tag(256, 342, 'can be isolated', { cls: 'fg-tag-good' });
+    s += tag(256, 498, `largest ring: ${r.ringSize} atoms`);
+    s += tag(256, 518, 'can be isolated', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'Top: the flat drawing is for counting, the 3D drawing shows the shape. Bottom: the highlighted ring is the largest ring that contains the double bond.',
+  caption: 'Top: the flat drawing is for counting, the 3D drawing shows the shape. Middle: compare the direction of the two orbitals. Bottom: count the atoms of the highlighted ring, the largest ring that contains the double bond.',
 });
 
 /* ------------------------------------------------------ l-tap-substituents ---
