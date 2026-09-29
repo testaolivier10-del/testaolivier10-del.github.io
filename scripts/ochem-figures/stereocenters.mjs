@@ -283,13 +283,16 @@ const WALK_PANELS = [
 ];
 function walkFigure(n) {
   let s = '';
+  let Y = 0;
   for (let k = 0; k < n; k++) {
-    const Y = 232 * k;
     const [title, [meAt, walks, mark], verdict, good] = WALK_PANELS[k];
+    /* a CH3 at the bottom of the ring (C4) needs more room below it */
+    const vy = meAt === 3 ? 212 : 178;
     if (k) s += rule(20, Y - 8, 320, Y - 8);
     s += tg(12, Y + 18, title, 'fg-tag', 'start');
     s += ringPanel(Y, meAt, walks, mark);
-    s += tg(170, Y + 212, verdict, good ? 'fg-tag-good' : 'fg-tag-warn');
+    s += tg(170, Y + vy, verdict, good ? 'fg-tag-good' : 'fg-tag-warn');
+    Y += vy + 20;
   }
   return s;
 }
@@ -298,7 +301,7 @@ FIGURES.push({
   section: 'stereocenters',
   anchor: 'C4 fails for the same reason as C1.</p>',
   alt: 'Three skeletal cyclohexane rings, one above the other, with the ring carbons numbered 1 to 6 and C1 at the top carrying OH and H. Top: 3-methylcyclohexan-1-ol, walking from C1. Going one way, the methyl-bearing carbon is the 2nd carbon reached; going the other way, it is the 4th. The walks differ, so C1 is a stereocenter. Middle: 4-methylcyclohexan-1-ol, walking from C1. The methyl-bearing carbon is the 3rd carbon reached either way, so C1 is not a stereocenter. Bottom: 3-methylcyclohexan-1-ol again, walking from C3. Going one way, C1 is the 2nd carbon reached; going the other way, it is the 4th, so C3 is a stereocenter too.',
-  viewBox: '0 0 340 690',
+  viewBox: '0 0 340 614',
   build() { return walkFigure(3); },
   caption: 'Start at the marked carbon and follow each dashed path until it reaches the other ring carbon that carries a group.',
 });
@@ -306,7 +309,7 @@ FIGURES.push({
   id: 'l-walk-both-ways',
   lessons: ['stereocenters'],
   alt: 'Two skeletal cyclohexane rings, one above the other, with the ring carbons numbered 1 to 6 and C1 at the top carrying OH and H. Top: 3-methylcyclohexan-1-ol. Walking one way from C1, the methyl-bearing carbon is the 2nd carbon reached; walking the other way, it is the 4th. The walks differ, so C1 is a stereocenter. Bottom: 4-methylcyclohexan-1-ol. The methyl-bearing carbon is the 3rd carbon reached either way, so C1 is not a stereocenter.',
-  viewBox: '0 0 340 458',
+  viewBox: '0 0 340 424',
   build() { return walkFigure(2); },
   caption: 'Start at C1 and follow each dashed path until it reaches the carbon that carries the CH₃ group.',
 });
@@ -517,7 +520,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Walk both ways from each ring carbon that carries a group.',
+  caption: 'Walk both ways around the ring.',
 });
 
 export default FIGURES;
