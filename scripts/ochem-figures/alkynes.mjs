@@ -385,7 +385,7 @@ FIGURES.push({
   section: 'alkynes',
   anchor: 'a primary cation on C1 with no such help.</p>',
   viewBox: '0 0 760 400',
-  alt: 'Top row: but-1-yne adds one HBr to give 2-bromobut-1-ene, then a second HBr to give 2,2-dibromobutane, with both bromines on C2. Bottom left: the cation formed when H+ adds to C1 of the vinyl bromide, with the positive charge on C2 beside the bromine; a curved arrow from a bromine lone pair forms a C=Br pi bond, and a second resonance form shows the positive charge on bromine. Bottom right: the alternative cation from adding H+ to C2, a primary cation on C1 with no neighboring lone pair.',
+  alt: 'Top row: but-1-yne adds one HBr to give 2-bromobut-1-ene, then a second HBr to give 2,2-dibromobutane, with both bromines on C2. Bottom left: the cation formed when H+ adds to C1 of the vinyl bromide, with the positive charge on C2, the carbon that carries the bromine; a curved arrow from a bromine lone pair forms a C=Br pi bond, and a second resonance form shows the positive charge on bromine. Bottom right: the alternative cation from adding H+ to C2, a primary cation on C1 with no neighboring lone pair.',
   build() {
     let s = '';
     const num = (p, v, dy = -14) => tg(p.x, p.y + dy, v, { cls: 'fg-tag-mut' });
@@ -459,7 +459,7 @@ FIGURES.push({
   id: 'alkyne-br2',
   section: 'alkynes',
   anchor: 'the tetrahalide, 2,2,3,3-tetrabromobutane.</p>',
-  viewBox: '0 0 760 360',
+  viewBox: '0 0 760 376',
   alt: 'Top row: but-2-yne reacts with Br2 to give a bridged ion, a bromine with a positive charge bonded to both carbons of a C=C above the axis. Bromide approaches from below and attacks one carbon, and a curved arrow moves the bridge bond onto the upper bromine. The product, (E)-2,3-dibromobut-2-ene, has one bromine above the double bond and one below: trans. Bottom row: that dibromoalkene adds a second Br2 to give 2,2,3,3-tetrabromobutane.',
   build() {
     let s = '';
