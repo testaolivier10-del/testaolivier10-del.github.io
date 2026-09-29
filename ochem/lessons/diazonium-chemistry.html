@@ -44,7 +44,7 @@
       "@id": "https://levlprep.com/ochem/lessons/diazonium-chemistry.html#lesson",
       "name": "Diazonium salts and Sandmeyer",
       "url": "https://levlprep.com/ochem/lessons/diazonium-chemistry.html",
-      "description": "Learn how to reach an aryl diazonium salt, why N2+ is the best leaving group on a ring, which reagent installs OH, CN, F or I, and how deleting an amine is a protecting-group move.",
+      "description": "Learn how to reach an aryl diazonium salt, why N2+ is the best leaving group on a ring, which reagent installs OH, CN, F or I, and how an amine can steer a substitution and then be deleted.",
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
@@ -101,11 +101,11 @@
   <div class="hero">
     <div class="eyebrow" data-chapter="aromatic-breadth">Aromatic Follow-Through</div>
     <h1 style="margin-bottom:4px;">Diazonium salts and Sandmeyer.</h1>
-    <p class="lede" style="margin-top:0;">A leaving group that departs as nitrogen gas — and the only route to the substituents a ring otherwise cannot carry.</p>
+    <p class="lede" style="margin-top:0;">A leaving group that departs as nitrogen gas, and the usual route to the groups a ring otherwise cannot carry.</p>
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 11</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -140,13 +140,13 @@ document.addEventListener('DOMContentLoaded', function(){
      one that deletes the substituent entirely. */
   var CASES = [
     { id:'d1', t:'Ar–N₂⁺ + <b>CuCN</b>', right:'cn',
-      why:'Gives Ar–CN, a Sandmeyer reaction. Electrophilic substitution cannot put a nitrile on a ring at all, so this is the only route to an aryl nitrile — and from there to an aryl carboxylic acid or amine.' },
-    { id:'d2', t:'Ar–N₂⁺ + <b>warm H₂O</b>', right:'oh',
-      why:'Gives Ar–OH, a phenol. Also unreachable by electrophilic substitution, and the standard way phenols are made, since nothing substitutes at an aryl C–O bond.' },
+      why:'Gives Ar–CN, a Sandmeyer reaction. Electrophilic substitution cannot put a nitrile on a ring, so this is the usual route to an aryl nitrile, and from there to an aryl carboxylic acid, ArCOOH, or a benzylamine, ArCH₂NH₂.' },
+    { id:'d2', t:'Ar–N₂⁺ + <b>warm H₂O, H⁺</b>', right:'oh',
+      why:'Gives Ar–OH, a phenol. Electrophilic substitution cannot install an OH either, and this is the standard laboratory route to a phenol.' },
     { id:'d3', t:'Ar–N₂⁺ + <b>H₃PO₂</b>', right:'h',
-      why:'Gives Ar–H — the substituent is DELETED. That sounds pointless until you remember the amine was directing the previous substitution while it was there.' },
+      why:'Gives Ar–H: the substituent is removed. Two steps on, you will see why that is useful.' },
     { id:'d4', t:'Ar–N₂⁺ + <b>HBF₄, then heat</b>', right:'f',
-      why:'Gives Ar–F, the Schiemann reaction. Fluorine cannot be put on a ring by electrophilic substitution either — F₂ is far too violent — so this is effectively the only way.' }
+      why:'Gives Ar–F, the Schiemann reaction. F₂ is far too violent for electrophilic substitution, so this is the usual way to put a fluorine on a ring.' }
   ];
   var OPTS = [ { k:'cn', l:'–CN' }, { k:'oh', l:'–OH' }, { k:'f', l:'–F' }, { k:'h', l:'–H' } ];
 
@@ -159,30 +159,74 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'There are groups electrophilic substitution simply cannot deliver.',
-        bodyHtml: '<p class="step-body">Electrophilic aromatic substitution puts a short list of things on a ring: a halogen, a nitro group, a sulfonic acid, an alkyl or acyl group. That list does not include <b>OH</b>, <b>CN</b> or <b>F</b>; it reaches <b>I</b> only with an added oxidant and awkwardly; and it offers no way to <i>remove</i> a group once it is on.</p>' +
-          '<p class="step-body">Diazonium chemistry does all of those, through one intermediate. Getting there is three steps, and you already have all three.</p>' +
+        title: 'Some groups cannot go on a ring by electrophilic substitution.',
+        bodyHtml: '<p class="step-body">Benzonitrile, phenol and fluorobenzene each need a group, <b>CN</b>, <b>OH</b> or <b>F</b>, that electrophilic aromatic substitution cannot deliver. Iodine goes on only when an oxidant is added with the I₂, and no substitution can take a group off a ring once it is there.</p>' +
+          '<p class="step-body">An <b>aryl diazonium salt</b>, Ar&ndash;N₂⁺, gets around all of these limits. Ar stands for a benzene ring bonded through one of its carbons. Benzene reaches the salt in three steps you already know:</p>' +
           '<ul class="step-body">' +
-          '<li><b>Nitrate</b> the ring &mdash; HNO₃/H₂SO₄, ordinary electrophilic substitution.</li>' +
-          '<li><b>Reduce</b> the nitro group to an amine &mdash; <b>Fe or Sn with HCl</b>, then base, or <b>H₂ with Pd/C</b>, from <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-amines\">Amines</a>.</li>' +
-          '<li><b>Diazotize</b> the primary aromatic amine &mdash; NaNO₂ with HCl, at <b>0&ndash;5 &deg;C</b>, by the nitrosonium mechanism you ran in the same chapter.</li>' +
+          '<li><b>Nitrate</b> the ring with HNO₃ and H₂SO₄.</li>' +
+          '<li><b>Reduce</b> the nitro group to an amine with Fe and HCl, then NaOH (<a class="chapter-ref" href="/ochem/notes/amine-synthesis.html">Making amines</a>).</li>' +
+          '<li><b>Diazotize</b> the amine with NaNO₂ and HCl at <b>0&ndash;5 &deg;C</b> (<a class="chapter-ref" href="/ochem/notes/amine-reactions.html">Amine reactions</a>).</li>' +
           '</ul>' +
-          '<div class="explain-box">Worth restating, because it is the step everything here rests on: the cold is not a detail. Diazonium salts decompose above about 5 &deg;C, releasing nitrogen gas, so a warm diazotization loses the reaction and is a hazard at the same time. Everything new in this lesson happens <i>after</i> the salt exists.</div>'
+          '<!-- fig:l-diazonium-route:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 402" role="img" aria-label="Benzene to nitrobenzene with nitric and sulfuric acid, nitrobenzene to aniline with iron and hydrochloric acid then base, and aniline to benzenediazonium chloride with sodium nitrite and hydrochloric acid at zero to five degrees. The diazonium group is drawn with carbon, nitrogen and nitrogen in a straight line and the positive charge on the inner nitrogen."><line class="fg-bond" x1="62" y1="80" x2="82.78" y2="92"></line><line class="fg-bond" x1="66.06" y1="86.96" x2="74.72" y2="91.96"></line><line class="fg-bond" x1="82.78" y1="92" x2="82.78" y2="116"></line><line class="fg-bond" x1="82.78" y1="116" x2="62" y2="128"></line><line class="fg-bond" x1="74.72" y1="116.04" x2="66.06" y2="121.04"></line><line class="fg-bond" x1="62" y1="128" x2="41.22" y2="116"></line><line class="fg-bond" x1="41.22" y1="116" x2="41.22" y2="92"></line><line class="fg-bond" x1="45.22" y1="109" x2="45.22" y2="99"></line><line class="fg-bond" x1="41.22" y1="92" x2="62" y2="80"></line><line class="fg-bond" x1="268" y1="80" x2="288.78" y2="92"></line><line class="fg-bond" x1="288.78" y1="92" x2="288.78" y2="116"></line><line class="fg-bond" x1="284.78" y1="99" x2="284.78" y2="109"></line><line class="fg-bond" x1="288.78" y1="116" x2="268" y2="128"></line><line class="fg-bond" x1="268" y1="128" x2="247.22" y2="116"></line><line class="fg-bond" x1="263.94" y1="121.04" x2="255.28" y2="116.04"></line><line class="fg-bond" x1="247.22" y1="116" x2="247.22" y2="92"></line><line class="fg-bond" x1="247.22" y1="92" x2="268" y2="80"></line><line class="fg-bond" x1="255.28" y1="91.96" x2="263.94" y2="86.96"></line><line class="fg-bond" x1="268" y1="80" x2="268" y2="71"></line><circle class="fg-atom" cx="268" cy="54" r="17"></circle><text class="fg-lbl" x="268" y="57.89" text-anchor="middle" font-size="10.5">NO₂</text><line class="fg-arrow" x1="98" y1="104" x2="224" y2="104"></line><path class="fg-head" d="M232 104 L224 108.16 L224 99.84 Z"></path><text class="fg-tag" x="165" y="94" text-anchor="middle" font-size="11">HNO₃, H₂SO₄</text><text class="fg-lbl" x="165" y="124" text-anchor="middle" font-size="13">nitrate</text><text class="fg-tag" x="62" y="154" text-anchor="middle" font-size="11">benzene</text><text class="fg-tag" x="268" y="154" text-anchor="middle" font-size="11">nitrobenzene</text><line class="fg-arrow" x1="248" y1="166" x2="99.19" y2="238.5"></line><path class="fg-head" d="M92 242 L97.37 234.76 L101.01 242.24 Z"></path><text class="fg-tag" x="190" y="206" text-anchor="start" font-size="11">reduce: Fe, HCl;</text><text class="fg-tag" x="190" y="222" text-anchor="start" font-size="11">then NaOH</text><line class="fg-bond" x1="62" y1="306" x2="82.78" y2="318"></line><line class="fg-bond" x1="82.78" y1="318" x2="82.78" y2="342"></line><line class="fg-bond" x1="78.78" y1="325" x2="78.78" y2="335"></line><line class="fg-bond" x1="82.78" y1="342" x2="62" y2="354"></line><line class="fg-bond" x1="62" y1="354" x2="41.22" y2="342"></line><line class="fg-bond" x1="57.94" y1="347.04" x2="49.28" y2="342.04"></line><line class="fg-bond" x1="41.22" y1="342" x2="41.22" y2="318"></line><line class="fg-bond" x1="41.22" y1="318" x2="62" y2="306"></line><line class="fg-bond" x1="49.28" y1="317.96" x2="57.94" y2="312.96"></line><line class="fg-bond" x1="62" y1="306" x2="62" y2="297"></line><circle class="fg-atom-hi" cx="62" cy="280" r="17"></circle><text class="fg-lbl" x="62" y="283.89" text-anchor="middle" font-size="10.5">NH₂</text><line class="fg-bond" x1="268" y1="306" x2="288.78" y2="318"></line><line class="fg-bond" x1="288.78" y1="318" x2="288.78" y2="342"></line><line class="fg-bond" x1="284.78" y1="325" x2="284.78" y2="335"></line><line class="fg-bond" x1="288.78" y1="342" x2="268" y2="354"></line><line class="fg-bond" x1="268" y1="354" x2="247.22" y2="342"></line><line class="fg-bond" x1="263.94" y1="347.04" x2="255.28" y2="342.04"></line><line class="fg-bond" x1="247.22" y1="342" x2="247.22" y2="318"></line><line class="fg-bond" x1="247.22" y1="318" x2="268" y2="306"></line><line class="fg-bond" x1="255.28" y1="317.96" x2="263.94" y2="312.96"></line><line class="fg-bond" x1="268" y1="306" x2="268" y2="294"></line><line class="fg-bond" x1="263.2" y1="270" x2="263.2" y2="260"></line><line class="fg-bond" x1="268" y1="270" x2="268" y2="260"></line><line class="fg-bond" x1="272.8" y1="270" x2="272.8" y2="260"></line><circle class="fg-atom-hi" cx="268" cy="282" r="12"></circle><text class="fg-lbl" x="268" y="286.07" text-anchor="middle" font-size="11">N</text><circle class="fg-atom" cx="268" cy="248" r="12"></circle><text class="fg-lbl" x="268" y="252.07" text-anchor="middle" font-size="11">N</text><text class="fg-warn" x="281" y="269" text-anchor="middle" font-size="14">+</text><text class="fg-lbl" x="312" y="242" text-anchor="middle" font-size="13">Cl⁻</text><line class="fg-arrow" x1="98" y1="330" x2="224" y2="330"></line><path class="fg-head" d="M232 330 L224 334.16 L224 325.84 Z"></path><text class="fg-tag" x="165" y="304" text-anchor="middle" font-size="11">NaNO₂, HCl</text><text class="fg-tag" x="165" y="320" text-anchor="middle" font-size="11">0–5 °C</text><text class="fg-lbl" x="165" y="350" text-anchor="middle" font-size="13">diazotize</text><text class="fg-tag" x="62" y="380" text-anchor="middle" font-size="11">aniline</text><text class="fg-tag-good" x="268" y="380" text-anchor="middle" font-size="11">the diazonium salt</text></svg><figcaption>Each arrow carries its reagents and the name of the step.</figcaption></figure><!-- fig:l-diazonium-route:end -->' +
+          '<div class="explain-box">The salt decomposes above about 5 &deg;C, giving off nitrogen gas, so it is made cold and used straight away. Its N₂⁺ group sits on the carbon where nitration put the nitrogen.</div>'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Why N₂⁺ beats every leaving group you know.',
-        bodyHtml: '<p class="step-body">Because it leaves as <b>nitrogen gas</b>. N₂ is one of the most stable molecules there is, and it bubbles out of the solution and never comes back.</p>' +
-          '<p class="step-body">Measure that against the problem it solves. An aryl halide will not ionize, because an aryl cation is badly unstable &mdash; a positive charge in an sp&sup2; orbital lying in the ring plane. A diazonium salt goes anyway. The leaving group is good enough to make even that worthwhile.</p>' +
-          '<div class="explain-box">So one ring position becomes a socket that almost anything can be plugged into. That is the whole reason this chemistry exists, and it is why a synthesis that looks impossible by directing effects alone is usually asking you to come through here.</div>'
+        title: 'Why N₂⁺ leaves so easily.',
+        bodyHtml: '<p class="step-body">Warm the salt in water and it fizzes. The gas is <b>nitrogen</b>, N₂, one of the most stable molecules there is. As a gas it bubbles out of the solution, so it never comes back.</p>' +
+          '<p class="step-body">When N₂ leaves on its own, it takes both electrons of the C&ndash;N bond. The ring carbon left behind is an <b>aryl cation</b>. Its empty sp&sup2; orbital points out from the ring in the ring plane, at 90&deg; to the &pi; electrons, so the ring cannot share the charge.</p>' +
+          '<!-- fig:aryl-cation:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 452" role="img" aria-label="Top: benzenediazonium ion with a curved arrow showing the pair of electrons in the carbon–nitrogen bond moving onto nitrogen. Middle: the products, a phenyl cation and a molecule of nitrogen gas. Bottom: the phenyl cation drawn in perspective, with the p orbitals of the ring standing above and below the ring plane and the empty sp2 orbital of the charged carbon lying in the ring plane, at right angles to them."><line class="fg-bond" x1="94" y1="62" x2="82" y2="82.78"></line><line class="fg-bond" x1="82" y1="82.78" x2="58" y2="82.78"></line><line class="fg-bond" x1="75" y1="78.78" x2="65" y2="78.78"></line><line class="fg-bond" x1="58" y1="82.78" x2="46" y2="62"></line><line class="fg-bond" x1="46" y1="62" x2="58" y2="41.22"></line><line class="fg-bond" x1="52.96" y1="57.94" x2="57.96" y2="49.28"></line><line class="fg-bond" x1="58" y1="41.22" x2="82" y2="41.22"></line><line class="fg-bond" x1="82" y1="41.22" x2="94" y2="62"></line><line class="fg-bond" x1="82.04" y1="49.28" x2="87.04" y2="57.94"></line><line class="fg-bond" x1="94" y1="62" x2="111" y2="62"></line><line class="fg-bond" x1="137" y1="57.2" x2="149" y2="57.2"></line><line class="fg-bond" x1="137" y1="62" x2="149" y2="62"></line><line class="fg-bond" x1="137" y1="66.8" x2="149" y2="66.8"></line><circle class="fg-atom-hi" cx="124" cy="62" r="13"></circle><text class="fg-lbl" x="124" y="66.07" text-anchor="middle" font-size="11">N</text><circle class="fg-atom" cx="162" cy="62" r="13"></circle><text class="fg-lbl" x="162" y="66.07" text-anchor="middle" font-size="11">N</text><text class="fg-warn" x="124" y="94" text-anchor="middle" font-size="14">+</text><path class="fg-arrow" d="M100 59 Q106.71 36.83 120.87 44.62"></path><path class="fg-head" d="M127 48 L119.11 47.81 L122.62 41.44 Z"></path><circle class="fg-lp" cx="181" cy="66.5" r="2.3"></circle><circle class="fg-lp" cx="181" cy="57.5" r="2.3"></circle><text class="fg-tag" x="235" y="67" text-anchor="start" font-size="11">the C–N bond</text><text class="fg-tag" x="235" y="83" text-anchor="start" font-size="11">breaks; N takes</text><text class="fg-tag" x="235" y="99" text-anchor="start" font-size="11">both electrons</text><line class="fg-arrow" x1="70" y1="102" x2="70" y2="138"></line><path class="fg-head" d="M70 146 L65.84 138 L74.16 138 Z"></path><text class="fg-tag" x="84" y="129" text-anchor="start" font-size="11">warm</text><line class="fg-bond" x1="94" y1="186" x2="82" y2="206.78"></line><line class="fg-bond" x1="82" y1="206.78" x2="58" y2="206.78"></line><line class="fg-bond" x1="75" y1="202.78" x2="65" y2="202.78"></line><line class="fg-bond" x1="58" y1="206.78" x2="46" y2="186"></line><line class="fg-bond" x1="46" y1="186" x2="58" y2="165.22"></line><line class="fg-bond" x1="52.96" y1="181.94" x2="57.96" y2="173.28"></line><line class="fg-bond" x1="58" y1="165.22" x2="82" y2="165.22"></line><line class="fg-bond" x1="82" y1="165.22" x2="94" y2="186"></line><line class="fg-bond" x1="82.04" y1="173.28" x2="87.04" y2="181.94"></line><text class="fg-warn" x="105" y="191" text-anchor="middle" font-size="16">+</text><text class="fg-tag-warn" x="70" y="230" text-anchor="middle" font-size="11">phenyl cation</text><text class="fg-lbl" x="150" y="191" text-anchor="middle" font-size="16">+</text><line class="fg-bond" x1="209" y1="181.2" x2="223" y2="181.2"></line><line class="fg-bond" x1="209" y1="186" x2="223" y2="186"></line><line class="fg-bond" x1="209" y1="190.8" x2="223" y2="190.8"></line><circle class="fg-atom" cx="196" cy="186" r="13"></circle><text class="fg-lbl" x="196" y="190.07" text-anchor="middle" font-size="11">N</text><circle class="fg-atom" cx="236" cy="186" r="13"></circle><text class="fg-lbl" x="236" y="190.07" text-anchor="middle" font-size="11">N</text><circle class="fg-lp" cx="177" cy="181.5" r="2.3"></circle><circle class="fg-lp" cx="177" cy="190.5" r="2.3"></circle><circle class="fg-lp" cx="255" cy="190.5" r="2.3"></circle><circle class="fg-lp" cx="255" cy="181.5" r="2.3"></circle><text class="fg-tag-good" x="216" y="230" text-anchor="middle" font-size="11">N₂ gas escapes</text><line class="fg-rule" x1="16" y1="256" x2="324" y2="256"></line><ellipse class="fg-orb" cx="71.00" cy="322.02" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="137.00" cy="322.02" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="38.00" cy="348.00" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="170.00" cy="348.00" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="71.00" cy="373.98" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="137.00" cy="373.98" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><line class="fg-bond" x1="170" y1="362" x2="137" y2="387.98"></line><line class="fg-bond" x1="137" y1="387.98" x2="71" y2="387.98"></line><line class="fg-bond" x1="71" y1="387.98" x2="38" y2="362"></line><line class="fg-bond" x1="38" y1="362" x2="71" y2="336.02"></line><line class="fg-bond" x1="71" y1="336.02" x2="137" y2="336.02"></line><line class="fg-bond" x1="137" y1="336.02" x2="170" y2="362"></line><ellipse class="fg-orb" cx="71.00" cy="350.02" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="137.00" cy="350.02" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="38.00" cy="376.00" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="170.00" cy="376.00" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="71.00" cy="401.98" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="137.00" cy="401.98" rx="5.5" ry="13" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-node" cx="200.00" cy="362.00" rx="26" ry="9"></ellipse><text class="fg-warn" x="200" y="367" text-anchor="middle" font-size="15">+</text><text class="fg-tag" x="170" y="284" text-anchor="middle" font-size="11">the π cloud: p orbitals above</text><text class="fg-tag" x="170" y="300" text-anchor="middle" font-size="11">and below the ring plane</text><text class="fg-tag-warn" x="206" y="396" text-anchor="start" font-size="11">empty sp² orbital,</text><text class="fg-tag-warn" x="206" y="412" text-anchor="start" font-size="11">in the ring plane</text><text class="fg-tag" x="170" y="442" text-anchor="middle" font-size="11">at 90° to the π cloud: the ring cannot help</text></svg><figcaption>Top: which bond breaks and where its electrons go. Bottom: which way the empty orbital points, compared with the p orbitals.</figcaption></figure><!-- fig:aryl-cation:end -->' +
+          '<div class="explain-box">An aryl halide never ionizes, because a halide does not leave well enough to form that cation. N₂ does. That is what lets a new group bond to that ring carbon, as the next steps show.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Guided Practice',
+        title: 'Why is N₂⁺ such an exceptionally good leaving group?',
+        options: [
+          'It leaves as N₂, a very stable gas that escapes the solution',
+          'Its positive charge repels the ring carbon and pushes the group off',
+          'The C–N bond to a ring carbon is unusually long and weak',
+          'Nitrogen is more electronegative than carbon, so it pulls the bond apart'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Right, and both halves matter. N₂ is about as stable as a small molecule gets, and it is a gas, so it leaves the solution and the reaction cannot run backwards. That is enough to form an aryl cation, which no halide leaving group can do.',
+        wrongFeedback: 'Ask what molecule actually leaves, and what happens to it afterwards.'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'Why must diazotization be run at 0–5 °C?',
+        options: [
+          'The salt would lose N₂ before a reagent could replace it',
+          'NaNO₂ would oxidize the benzene ring at room temperature',
+          'A warm acid removes the lone pair the amine needs to react',
+          'The salt only forms as a solid below 5 °C'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Right. The property that makes N₂⁺ such a good leaving group also makes the salt unstable. It loses nitrogen whether or not a reagent is there to replace it, so warming destroys the intermediate before you can use it. Diazonium salts can also decompose violently, especially when dry, which is another reason to keep them cold and in solution.',
+        wrongFeedback: 'The leaving group is very good indeed. Will the salt wait for your next reagent if the flask warms up?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Each reagent swaps the N₂⁺ for a different group.',
+        bodyHtml: '<p class="step-body">Add a cold solution of benzenediazonium chloride to copper(I) cyanide, CuCN, and warm it gently. Nitrogen bubbles off, and benzonitrile is left: the CN has taken the place of the N₂⁺. Each reagent below supplies the group that lands on the ring.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>CuCl, CuBr, CuCN</b> give &ndash;Cl, &ndash;Br and &ndash;CN. These are the <b>Sandmeyer reactions</b>: the copper hands the ion one electron, N₂ leaves, and the ring takes the group from the copper.</li>' +
+          '<li><b>KI</b> gives &ndash;I, with no copper needed.</li>' +
+          '<li><b>HBF₄, then heat</b> gives &ndash;F, the Schiemann reaction.</li>' +
+          '<li><b>Warm H₂O with H₂SO₄</b> gives &ndash;OH, a phenol.</li>' +
+          '<li><b>H₃PO₂</b> gives &ndash;H: the group is removed.</li>' +
+          '</ul>' +
+          '<div class="explain-box">CN, OH and F are groups electrophilic substitution cannot install. The nitrile also opens the <a class="chapter-ref" href="/ochem/notes/nitriles.html">Nitriles</a> chapter to a ring: hot aqueous acid turns Ar&ndash;CN into Ar&ndash;COOH, and LiAlH₄ turns it into Ar&ndash;CH₂NH₂.</div>'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">What does each reagent put in place of the N₂⁺?</h2>' +
-            '<p class="step-body">Three of these four reach groups that electrophilic substitution cannot install at all. The fourth does something stranger and more useful.</p>' +
+            '<p class="step-body">Match each reagent to the group it leaves on the ring.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -202,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Read the reagent literally — whatever it can hand over is what lands on the ring. Copper salts deliver their own anion; water delivers OH; hypophosphorous acid delivers a hydrogen.');
+                api.showFeedback(fb, false, 'Read the reagent literally: whatever it can hand over is what lands on the ring. A copper salt delivers its own anion, water delivers OH, and hypophosphorous acid delivers a hydrogen.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -210,8 +254,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. Three groups no other reaction can install, and one that takes a substituent away.'
-                  : 'All four, first time, including the H₃PO₂ row — the one whose usefulness is not obvious until you see it used.');
+                  ? 'All four. Three groups electrophilic substitution cannot install, and one reagent that takes a substituent away.'
+                  : 'All four, first time, including the H₃PO₂ row, whose use only becomes clear once you see it in a synthesis.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -221,71 +265,64 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
-        title: 'Why is N₂⁺ such an exceptionally good leaving group?',
+        eyebrow: 'Guided Practice',
+        title: 'Which sequence turns aniline into benzoic acid?',
         options: [
-          'It departs as N₂ gas, which is extremely stable and escapes the solution',
-          'It carries a positive charge, so it is pushed off the ring',
-          'The C–N bond is unusually weak',
-          'Nitrogen is more electronegative than carbon'
+          '1. NaNO₂, HCl, 0–5 °C &nbsp;2. CuCN &nbsp;3. H₃O⁺, heat',
+          '1. NaNO₂, HCl, 0–5 °C &nbsp;2. warm H₂O, H⁺ &nbsp;3. H₃O⁺, heat',
+          '1. CuCN &nbsp;2. H₃O⁺, heat',
+          '1. NaNO₂, HCl, 0–5 °C &nbsp;2. CuCN &nbsp;3. LiAlH₄, then H₂O'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct, and both halves matter. N₂ is about as thermodynamically stable as a small molecule gets, and it is a gas — so it leaves the solution entirely and the reaction cannot run backwards. That is enough to make even an aryl position, where no cation should be accessible, substitutable.',
-        wrongFeedback: 'Ask what molecule actually leaves, and what happens to it afterwards.'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'Why must diazotization be run at 0–5 °C?',
-        options: [
-          'The diazonium salt decomposes above about 5 °C',
-          'The nitrous acid freezes below that',
-          'The amine is not nucleophilic when warm',
-          'Higher temperatures favor azo coupling'
-        ],
-        correctIndex: 0,
-        correctFeedback: 'Correct. The same property that makes N₂⁺ a superb leaving group makes the salt unstable: it will lose nitrogen whether or not you have supplied a nucleophile, so warming it destroys the intermediate before you can use it — and evolving nitrogen from a warming solution is a hazard as well as a lost reaction.',
-        wrongFeedback: 'The leaving group is very good indeed. What does that imply about whether the salt waits patiently for your reagent?'
+        correctFeedback: 'Right. Diazotize, swap the N₂⁺ for CN with CuCN, then hydrolyze the nitrile to the acid. The COOH carbon is the one the cyanide brought in. LiAlH₄ would have given benzylamine, PhCH₂NH₂, instead.',
+        wrongFeedback: 'Find the step that brings in the new carbon. Only one reagent here supplies a carbon, and it has to act on the diazonium salt, not on the amine.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Deleting a group is the most useful row on the menu.',
-        bodyHtml: '<p class="step-body">Replacing N₂⁺ with <b>H</b> removes the substituent completely. That looks like undoing your own work, until you remember what an amino group was doing while it sat there: NH₂ is a <b>powerful ortho/para director</b>.</p>' +
-          '<p class="step-body">So you can install it purely to <i>steer</i> the next substitution, and then take it away:</p>' +
-          '<ul class="step-body">' +
-          '<li>Install the group you actually want, using the amine to direct it where directing effects would otherwise forbid.</li>' +
-          '<li>Diazotize the amine.</li>' +
-          '<li>Remove it with <b>H₃PO₂</b>, leaving a hydrogen behind.</li>' +
-          '</ul>' +
-          '<div class="explain-box">This is a <b>removable directing group</b> (a blocking group, in the usual term) &mdash; a substituent installed to control a step and then deliberately deleted, exactly like the second carbonyl of a malonic ester synthesis. Sulfonic acid groups are used the same way, because sulfonation is reversible, and both are worth recognizing as the same idea.</div>'
+        title: 'An amine can steer, then be deleted.',
+        bodyHtml: '<p class="step-body">Suppose you need <b>1,3,5-tribromobenzene</b>. Brominating benzene three times cannot give it. Bromine directs ortho and para, so each bromine sends the next one ortho or para to itself, and the route ends at 1,2,4-tribromobenzene.</p>' +
+          '<p class="step-body">Go through aniline instead. Its NH₂ group is a far stronger ortho/para director, and bromine water puts three bromines on its two ortho carbons and its para carbon at once, with no catalyst. Those are carbons 2, 4 and 6, and each is meta to the other two. Diazotize, add H₃PO₂, and the NH₂ is replaced by a hydrogen.</p>' +
+          '<!-- fig:l-tribromo-route:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 368" role="img" aria-label="Aniline with bromine water gives 2,4,6-tribromoaniline, with the ring carbons numbered 1 at the NH2 and 2, 4 and 6 at the bromines. Diazotization and then hypophosphorous acid replace the NH2 with H, and the same ring renumbered is 1,3,5-tribromobenzene."><line class="fg-bond" x1="64" y1="60" x2="84.78" y2="72"></line><line class="fg-bond" x1="84.78" y1="72" x2="84.78" y2="96"></line><line class="fg-bond" x1="80.78" y1="79" x2="80.78" y2="89"></line><line class="fg-bond" x1="84.78" y1="96" x2="64" y2="108"></line><line class="fg-bond" x1="64" y1="108" x2="43.22" y2="96"></line><line class="fg-bond" x1="59.94" y1="101.04" x2="51.28" y2="96.04"></line><line class="fg-bond" x1="43.22" y1="96" x2="43.22" y2="72"></line><line class="fg-bond" x1="43.22" y1="72" x2="64" y2="60"></line><line class="fg-bond" x1="51.28" y1="71.96" x2="59.94" y2="66.96"></line><line class="fg-bond" x1="64" y1="60" x2="64" y2="54"></line><circle class="fg-atom-hi" cx="64" cy="38" r="16"></circle><text class="fg-lbl" x="64" y="41.89" text-anchor="middle" font-size="10.5">NH₂</text><text class="fg-tag" x="64" y="134" text-anchor="middle" font-size="11">aniline</text><line class="fg-arrow" x1="102" y1="84" x2="176" y2="84"></line><path class="fg-head" d="M184 84 L176 88.16 L176 79.84 Z"></path><text class="fg-tag" x="146" y="74" text-anchor="middle" font-size="11">Br₂, H₂O</text><line class="fg-bond" x1="250" y1="54" x2="275.98" y2="69"></line><line class="fg-bond" x1="275.98" y1="69" x2="275.98" y2="99"></line><line class="fg-bond" x1="271.98" y1="76" x2="271.98" y2="92"></line><line class="fg-bond" x1="275.98" y1="99" x2="250" y2="114"></line><line class="fg-bond" x1="250" y1="114" x2="224.02" y2="99"></line><line class="fg-bond" x1="245.94" y1="107.04" x2="232.08" y2="99.04"></line><line class="fg-bond" x1="224.02" y1="99" x2="224.02" y2="69"></line><line class="fg-bond" x1="224.02" y1="69" x2="250" y2="54"></line><line class="fg-bond" x1="232.08" y1="68.96" x2="245.94" y2="60.96"></line><line class="fg-bond" x1="250" y1="54" x2="250" y2="50"></line><circle class="fg-atom-hi" cx="250" cy="34" r="16"></circle><text class="fg-lbl" x="250" y="37.89" text-anchor="middle" font-size="10.5">NH₂</text><line class="fg-bond" x1="275.98" y1="69" x2="280.31" y2="66.5"></line><circle class="fg-atom" cx="291.57" cy="60" r="13"></circle><text class="fg-lbl" x="291.57" y="64.07" text-anchor="middle" font-size="11">Br</text><line class="fg-bond" x1="250" y1="114" x2="250" y2="119"></line><circle class="fg-atom" cx="250" cy="132" r="13"></circle><text class="fg-lbl" x="250" y="136.07" text-anchor="middle" font-size="11">Br</text><line class="fg-bond" x1="224.02" y1="69" x2="219.69" y2="66.5"></line><circle class="fg-atom" cx="208.43" cy="60" r="13"></circle><text class="fg-lbl" x="208.43" y="64.07" text-anchor="middle" font-size="11">Br</text><text class="fg-tag" x="250" y="75" text-anchor="middle" font-size="11">1</text><text class="fg-tag" x="261.26" y="81.5" text-anchor="middle" font-size="11">2</text><text class="fg-tag" x="250" y="101" text-anchor="middle" font-size="11">4</text><text class="fg-tag" x="238.74" y="81.5" text-anchor="middle" font-size="11">6</text><text class="fg-tag" x="250" y="162" text-anchor="middle" font-size="11">2,4,6-tribromoaniline</text><line class="fg-arrow" x1="250" y1="172" x2="250" y2="192"></line><path class="fg-head" d="M250 200 L245.84 192 L254.16 192 Z"></path><text class="fg-tag" x="236" y="188" text-anchor="end" font-size="11">1. NaNO₂, HCl, 0–5 °C</text><text class="fg-tag" x="236" y="204" text-anchor="end" font-size="11">2. H₃PO₂</text><line class="fg-bond" x1="250" y1="242" x2="275.98" y2="257"></line><line class="fg-bond" x1="275.98" y1="257" x2="275.98" y2="287"></line><line class="fg-bond" x1="271.98" y1="264" x2="271.98" y2="280"></line><line class="fg-bond" x1="275.98" y1="287" x2="250" y2="302"></line><line class="fg-bond" x1="250" y1="302" x2="224.02" y2="287"></line><line class="fg-bond" x1="245.94" y1="295.04" x2="232.08" y2="287.04"></line><line class="fg-bond" x1="224.02" y1="287" x2="224.02" y2="257"></line><line class="fg-bond" x1="224.02" y1="257" x2="250" y2="242"></line><line class="fg-bond" x1="232.08" y1="256.96" x2="245.94" y2="248.96"></line><line class="fg-bond" x1="275.98" y1="257" x2="280.31" y2="254.5"></line><circle class="fg-atom" cx="291.57" cy="248" r="13"></circle><text class="fg-lbl" x="291.57" y="252.07" text-anchor="middle" font-size="11">Br</text><line class="fg-bond" x1="250" y1="302" x2="250" y2="307"></line><circle class="fg-atom" cx="250" cy="320" r="13"></circle><text class="fg-lbl" x="250" y="324.07" text-anchor="middle" font-size="11">Br</text><line class="fg-bond" x1="224.02" y1="257" x2="219.69" y2="254.5"></line><circle class="fg-atom" cx="208.43" cy="248" r="13"></circle><text class="fg-lbl" x="208.43" y="252.07" text-anchor="middle" font-size="11">Br</text><text class="fg-tag" x="261.26" y="269.5" text-anchor="middle" font-size="11">1</text><text class="fg-tag" x="250" y="289" text-anchor="middle" font-size="11">3</text><text class="fg-tag" x="238.74" y="269.5" text-anchor="middle" font-size="11">5</text><text class="fg-tag-good" x="250" y="350" text-anchor="middle" font-size="11">1,3,5-tribromobenzene</text></svg><figcaption>The same three carbons, numbered first from the NH<sub>2</sub> and then from a bromine.</figcaption></figure><!-- fig:l-tribromo-route:end -->' +
+          '<div class="explain-box">The NH₂ went on to steer the bromines and came off once they were in place. That makes it a <b>removable directing group</b>. It is not a blocker. A blocker such as SO₃H only holds a position. An NH₂ directs too strongly to do that.</div>'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A diazonium ion can also be the electrophile.',
+        bodyHtml: '<p class="step-body">Add cold benzenediazonium chloride to phenol in dilute NaOH, and an orange solid forms. It is 4-(phenylazo)phenol, two rings joined through an N=N unit. No N₂ is lost this time.</p>' +
+          '<p class="step-body">The diazonium ion is a weak electrophile. It cannot attack benzene, but it reacts with a strongly activated ring such as a phenoxide ion or an aromatic amine. This is <b>azo coupling</b>, and it follows the steps of any electrophilic aromatic substitution.</p>' +
+          '<!-- fig:l-azo-coupling:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 464" role="img" aria-label="Phenoxide drawn with the negative charge and lone pair on the para carbon; a curved arrow runs from that lone pair to the terminal nitrogen of benzenediazonium, and a second arrow moves one N≡N pi bond onto the charged nitrogen. After a base removes the hydrogen from the attacked carbon, the product is the phenoxide of 4-(phenylazo)phenol, two rings joined by a bent N=N bridge; acid workup gives the phenol."><line class="fg-bond" x1="90" y1="50" x2="112.52" y2="63"></line><line class="fg-bond" x1="112.52" y1="63" x2="112.52" y2="89"></line><line class="fg-bond" x1="108.52" y1="70" x2="108.52" y2="82"></line><line class="fg-bond" x1="112.52" y1="89" x2="90" y2="102"></line><line class="fg-bond" x1="90" y1="102" x2="67.48" y2="89"></line><line class="fg-bond" x1="67.48" y1="89" x2="67.48" y2="63"></line><line class="fg-bond" x1="71.48" y1="82" x2="71.48" y2="70"></line><line class="fg-bond" x1="67.48" y1="63" x2="90" y2="50"></line><line class="fg-bond" x1="86.6" y1="50" x2="86.6" y2="40"></line><line class="fg-bond" x1="93.4" y1="50" x2="93.4" y2="40"></line><circle class="fg-atom" cx="90" cy="26" r="14"></circle><text class="fg-lbl" x="90" y="30.44" text-anchor="middle" font-size="12">O</text><circle class="fg-lp" cx="74.93" cy="12.1" r="2.3"></circle><circle class="fg-lp" cx="70.43" cy="19.9" r="2.3"></circle><circle class="fg-lp" cx="109.57" cy="19.9" r="2.3"></circle><circle class="fg-lp" cx="105.07" cy="12.1" r="2.3"></circle><circle class="fg-lp" cx="85.5" cy="111" r="2.3"></circle><circle class="fg-lp" cx="94.5" cy="111" r="2.3"></circle><text class="fg-warn" x="76" y="116" text-anchor="middle" font-size="15">−</text><line class="fg-bond" x1="153" y1="171.2" x2="167" y2="171.2"></line><line class="fg-bond" x1="153" y1="176" x2="167" y2="176"></line><line class="fg-bond" x1="153" y1="180.8" x2="167" y2="180.8"></line><circle class="fg-atom-hi" cx="140" cy="176" r="13"></circle><text class="fg-lbl" x="140" y="180.07" text-anchor="middle" font-size="11">N</text><circle class="fg-atom" cx="180" cy="176" r="13"></circle><text class="fg-lbl" x="180" y="180.07" text-anchor="middle" font-size="11">N</text><text class="fg-warn" x="182" y="159" text-anchor="middle" font-size="14">+</text><line class="fg-bond" x1="245" y1="176" x2="235" y2="193.32"></line><line class="fg-bond" x1="238.04" y1="180.06" x2="235.04" y2="185.26"></line><line class="fg-bond" x1="235" y1="193.32" x2="215" y2="193.32"></line><line class="fg-bond" x1="215" y1="193.32" x2="205" y2="176"></line><line class="fg-bond" x1="214.96" y1="185.26" x2="211.96" y2="180.06"></line><line class="fg-bond" x1="205" y1="176" x2="215" y2="158.68"></line><line class="fg-bond" x1="215" y1="158.68" x2="235" y2="158.68"></line><line class="fg-bond" x1="222" y1="162.68" x2="228" y2="162.68"></line><line class="fg-bond" x1="235" y1="158.68" x2="245" y2="176"></line><line class="fg-bond" x1="193" y1="176" x2="205" y2="176"></line><path class="fg-arrow" d="M95 116 Q96.14 152.39 121 166.13"></path><path class="fg-head" d="M128 170 L118.99 169.77 L123.01 162.49 Z"></path><path class="fg-arrow" d="M160 181 Q163.17 196.49 171.44 193.43"></path><path class="fg-head" d="M178 191 L172.7 196.84 L170.17 190.02 Z"></path><text class="fg-tag" x="250" y="60" text-anchor="middle" font-size="11">phenoxide,</text><text class="fg-tag" x="250" y="76" text-anchor="middle" font-size="11">charge on</text><text class="fg-tag" x="250" y="92" text-anchor="middle" font-size="11">the para C</text><line class="fg-arrow" x1="170" y1="222" x2="170" y2="282"></line><path class="fg-head" d="M170 290 L165.84 282 L174.16 282 Z"></path><text class="fg-tag" x="184" y="246" text-anchor="start" font-size="11">C–N bond forms, then</text><text class="fg-tag" x="184" y="262" text-anchor="start" font-size="11">a base takes the H⁺</text><text class="fg-tag" x="184" y="278" text-anchor="start" font-size="11">from that carbon</text><line class="fg-bond" x1="92" y1="342" x2="81" y2="361.05"></line><line class="fg-bond" x1="81" y1="361.05" x2="59" y2="361.05"></line><line class="fg-bond" x1="74" y1="357.05" x2="66" y2="357.05"></line><line class="fg-bond" x1="59" y1="361.05" x2="48" y2="342"></line><line class="fg-bond" x1="48" y1="342" x2="59" y2="322.95"></line><line class="fg-bond" x1="54.96" y1="337.94" x2="58.96" y2="331.01"></line><line class="fg-bond" x1="59" y1="322.95" x2="81" y2="322.95"></line><line class="fg-bond" x1="81" y1="322.95" x2="92" y2="342"></line><line class="fg-bond" x1="81.04" y1="331.01" x2="85.04" y2="337.94"></line><line class="fg-bond" x1="48" y1="342" x2="43" y2="342"></line><circle class="fg-atom-hi" cx="28" cy="342" r="15"></circle><text class="fg-lbl" x="28" y="346.44" text-anchor="middle" font-size="12">O</text><text class="fg-warn" x="24" y="326" text-anchor="middle" font-size="15">−</text><line class="fg-bond" x1="92" y1="342" x2="106.21" y2="331.94"></line><line class="fg-bond" x1="128" y1="327.98" x2="138.81" y2="333.72"></line><line class="fg-bond" x1="125.19" y1="333.28" x2="136" y2="339.02"></line><circle class="fg-atom" cx="116" cy="325" r="12"></circle><text class="fg-lbl" x="116" y="329.07" text-anchor="middle" font-size="11">N</text><circle class="fg-atom" cx="148" cy="342" r="12"></circle><text class="fg-lbl" x="148" y="346.07" text-anchor="middle" font-size="11">N</text><line class="fg-bond" x1="216" y1="355" x2="205" y2="374.05"></line><line class="fg-bond" x1="209.04" y1="359.06" x2="205.04" y2="365.99"></line><line class="fg-bond" x1="205" y1="374.05" x2="183" y2="374.05"></line><line class="fg-bond" x1="183" y1="374.05" x2="172" y2="355"></line><line class="fg-bond" x1="182.96" y1="365.99" x2="178.96" y2="359.06"></line><line class="fg-bond" x1="172" y1="355" x2="183" y2="335.95"></line><line class="fg-bond" x1="183" y1="335.95" x2="205" y2="335.95"></line><line class="fg-bond" x1="190" y1="339.95" x2="198" y2="339.95"></line><line class="fg-bond" x1="205" y1="335.95" x2="216" y2="355"></line><line class="fg-bond" x1="158.55" y1="347.72" x2="172" y2="355"></line><text class="fg-tag-good" x="170" y="408" text-anchor="middle" font-size="11">phenoxide of 4-(phenylazo)phenol;</text><text class="fg-tag-good" x="170" y="424" text-anchor="middle" font-size="11">acid workup gives the orange phenol</text><text class="fg-tag" x="170" y="446" text-anchor="middle" font-size="11">one long conjugated π system</text></svg><figcaption>Two arrows: the ring&rsquo;s lone pair to the end nitrogen, and one N&equiv;N bond onto the charged nitrogen.</figcaption></figure><!-- fig:l-azo-coupling:end -->' +
+          '<div class="explain-box">Coupling goes para to the OH, or ortho if the para carbon is taken. A phenol is coupled at pH 8&ndash;10, where it is present as the phenoxide. The long conjugated &pi; system absorbs visible light, which is why azo compounds are dyes.</div>'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
-        title: 'A diazonium salt is treated with phenol. What happens?',
+        eyebrow: 'Independent Practice',
+        title: 'Benzenediazonium chloride is added to 4-methylphenol at pH 9. What forms?',
         options: [
-          'Azo coupling at the para position, giving a colored compound',
-          'Nothing; a diazonium salt is not electrophilic',
-          'The phenol displaces N₂ to give a diaryl ether',
-          'The phenol is oxidized to a quinone'
+          'An azo compound, with the N=N on a carbon ortho to the oxygen',
+          'An azo compound, with the N=N on the carbon para to the oxygen',
+          'A diaryl ether, with the phenoxide oxygen in place of the N₂',
+          'Nothing, because the para carbon is already taken'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct. A diazonium salt is a weak electrophile — not strong enough for benzene, but strongly activated rings will react with it. The product has two rings joined by a conjugated N=N bridge, so its π system is long, its HOMO–LUMO gap is small, and it absorbs visible light. Azo compounds are intensely colored and were the foundation of the synthetic dye industry.',
-        wrongFeedback: 'A diazonium salt has two roles in this chapter. You have seen it as a substrate; this question is about the other one, and phenol is a strongly activated ring.'
+        correctFeedback: 'Right. At pH 9 the phenol is a phenoxide, and it attacks the terminal nitrogen of the diazonium ion. Its para carbon already carries the methyl, so the coupling goes to a carbon ortho to the oxygen.',
+        wrongFeedback: 'Here the diazonium ion keeps its nitrogens and acts as the electrophile. Which carbons does a phenoxide offer, and which of them is already taken?'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'You need 1,3,5-tribromobenzene from benzene. Direct bromination cannot do it. Why, and what is the route?',
+        title: 'You need 3,5-dibromotoluene from toluene. Which route makes it?',
+        diagramHtml: '<!-- fig:l-dibromotoluene-target:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 168" role="img" aria-label="Toluene on the left, an arrow with a question mark, and 3,5-dibromotoluene on the right, with both bromines meta to the methyl group."><line class="fg-bond" x1="70" y1="60" x2="90.78" y2="72"></line><line class="fg-bond" x1="90.78" y1="72" x2="90.78" y2="96"></line><line class="fg-bond" x1="86.78" y1="79" x2="86.78" y2="89"></line><line class="fg-bond" x1="90.78" y1="96" x2="70" y2="108"></line><line class="fg-bond" x1="70" y1="108" x2="49.22" y2="96"></line><line class="fg-bond" x1="65.94" y1="101.04" x2="57.28" y2="96.04"></line><line class="fg-bond" x1="49.22" y1="96" x2="49.22" y2="72"></line><line class="fg-bond" x1="49.22" y1="72" x2="70" y2="60"></line><line class="fg-bond" x1="57.28" y1="71.96" x2="65.94" y2="66.96"></line><line class="fg-bond" x1="70" y1="60" x2="70" y2="54"></line><circle class="fg-atom" cx="70" cy="38" r="16"></circle><text class="fg-lbl" x="70" y="41.89" text-anchor="middle" font-size="10.5">CH₃</text><text class="fg-tag" x="70" y="134" text-anchor="middle" font-size="11">toluene</text><line class="fg-arrow" x1="114" y1="84" x2="184" y2="84"></line><path class="fg-head" d="M192 84 L184 88.16 L184 79.84 Z"></path><text class="fg-lbl" x="146" y="74" text-anchor="middle" font-size="13">?</text><line class="fg-bond" x1="250" y1="60" x2="270.78" y2="72"></line><line class="fg-bond" x1="270.78" y1="72" x2="270.78" y2="96"></line><line class="fg-bond" x1="266.78" y1="79" x2="266.78" y2="89"></line><line class="fg-bond" x1="270.78" y1="96" x2="250" y2="108"></line><line class="fg-bond" x1="250" y1="108" x2="229.22" y2="96"></line><line class="fg-bond" x1="245.94" y1="101.04" x2="237.28" y2="96.04"></line><line class="fg-bond" x1="229.22" y1="96" x2="229.22" y2="72"></line><line class="fg-bond" x1="229.22" y1="72" x2="250" y2="60"></line><line class="fg-bond" x1="237.28" y1="71.96" x2="245.94" y2="66.96"></line><line class="fg-bond" x1="250" y1="60" x2="250" y2="54"></line><circle class="fg-atom" cx="250" cy="38" r="16"></circle><text class="fg-lbl" x="250" y="41.89" text-anchor="middle" font-size="10.5">CH₃</text><line class="fg-bond" x1="270.78" y1="96" x2="276.85" y2="99.5"></line><circle class="fg-atom" cx="288.11" cy="106" r="13"></circle><text class="fg-lbl" x="288.11" y="110.07" text-anchor="middle" font-size="11">Br</text><line class="fg-bond" x1="229.22" y1="96" x2="223.15" y2="99.5"></line><circle class="fg-atom" cx="211.89" cy="106" r="13"></circle><text class="fg-lbl" x="211.89" y="110.07" text-anchor="middle" font-size="11">Br</text><text class="fg-tag-good" x="250" y="162" text-anchor="middle" font-size="11">3,5-dibromotoluene</text></svg><figcaption>The target: both bromines meta to the methyl group.</figcaption></figure><!-- fig:l-dibromotoluene-target:end -->',
         options: [
-          'Bromine is an ortho/para director, so nitrate first and brominate meta',
-          'Nitrate, reduce to the amine so it directs all three bromines, then diazotize and remove it with H₃PO₂',
-          'Use excess Br₂ with a strong Lewis acid and heat',
-          'Brominate, then isomerize the product with acid'
+          'Nitrate, reduce, brominate in water, diazotize, then add H₃PO₂',
+          'Brominate twice with Br₂ and FeBr₃, since the methyl sends both bromines meta',
+          'Nitrate, brominate twice meta to the nitro group, then remove the nitro group with H₃PO₂',
+          'Nitrate, reduce, diazotize and add H₃PO₂, then brominate twice'
         ],
-        correctIndex: 1,
-        correctFeedback: 'Correct, and this is the sequence the chapter exists for. Direct bromination fails because bromine is an <i>ortho/para</i> director: the second bromine goes ortho or para to the first, the third follows suit, and you can never reach a 1,3,5 pattern that way. So you bring in a director that can. Nitrate benzene and reduce to aniline; the NH₂ group is a very strong ortho/para director, so bromine water alone gives 2,4,6-tribromoaniline immediately — all three positions, no catalyst needed. Now the amine has done its job and is in the way, so diazotize it at 0–5 °C and replace it with hydrogen using H₃PO₂. The result is 1,3,5-tribromobenzene. The amine was never part of the target; it was scaffolding, installed to control where the bromines went and removed once they were there.'
+        correctIndex: 0,
+        correctFeedback: 'Right. The methyl group directs ortho and para, so it can never place a bromine meta to itself. Nitrate toluene and reduce the para isomer to 4-methylaniline (the ortho isomer happens to lead to the same product). Its NH₂ is the stronger director and its para carbon already holds the methyl, so bromine water puts both bromines ortho to the NH₂. Those carbons are meta to the methyl. Diazotize at 0–5 °C and replace the N₂⁺ with H using H₃PO₂.',
+        wrongFeedback: 'The methyl group directs ortho and para, so something stronger has to place the bromines and then come off. H₃PO₂ acts only on a diazonium salt, and the director must still be on the ring while the bromines go on.'
       }
     ]
   });

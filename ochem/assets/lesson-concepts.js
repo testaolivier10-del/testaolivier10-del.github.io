@@ -230,25 +230,43 @@
       10:['migratory-aptitude','stereochemical-outcome'],
       12:['migratory-aptitude','stereochemical-outcome'] } },
 
-    'nucleophilic-aromatic': { n:8, steps:{
-      2:['aromatic-nucleophilic'], 3:['aromatic-nucleophilic'], 4:['aromatic-nucleophilic'],
-      6:['aromatic-nucleophilic'], 7:['aromatic-nucleophilic'] } },
+    'nucleophilic-aromatic': { n:14, steps:{
+      3:['aromatic-nucleophilic'],
+      5:['aromatic-nucleophilic'],
+      10:['aromatic-nucleophilic'],
+      11:['aromatic-nucleophilic'],
+      13:['aromatic-nucleophilic'] } },
 
-    'benzylic-reactivity': { n:8, steps:{
-      2:['benzylic-stabilization'], 3:['benzylic-stabilization'], 4:['benzylic-stabilization'],
-      6:['benzylic-stabilization'], 7:['benzylic-stabilization'] } },
+    'benzylic-reactivity': { n:14, steps:{
+      2:['benzylic-stabilization'],
+      5:['benzylic-stabilization'],
+      7:['benzylic-stabilization'],
+      10:['benzylic-stabilization'],
+      11:['benzylic-stabilization'],
+      13:['benzylic-stabilization'] } },
 
-    'phenols': { n:8, steps:{
-      2:['phenol-acidity'], 3:['phenol-acidity'], 4:['phenol-acidity'],
-      6:['phenol-acidity'], 7:['phenol-acidity'] } },
+    'phenols': { n:10, steps:{
+      2:['phenol-acidity'],
+      3:['phenol-acidity'],
+      5:['phenol-acidity'],
+      8:['aromatic-nucleophilic'],
+      9:['phenol-acidity'] } },
 
-    'birch-reduction': { n:8, steps:{
-      2:['partial-reduction'], 3:['partial-reduction'], 4:['partial-reduction'],
-      6:['partial-reduction'], 7:['partial-reduction'] } },
+    'birch-reduction': { n:11, steps:{
+      3:['partial-reduction'],
+      4:['partial-reduction'],
+      5:['partial-reduction'],
+      7:['partial-reduction'],
+      9:['partial-reduction'],
+      10:['partial-reduction'] } },
 
-    'diazonium-chemistry': { n:8, steps:{
-      2:['diazonium-hub'], 3:['diazonium-hub'], 4:['diazonium-hub'],
-      6:['diazonium-hub'], 7:['diazonium-hub','aromatic-nucleophilic'] } },
+    'diazonium-chemistry': { n:11, steps:{
+      2:['diazonium-hub'],
+      3:['diazonium-hub'],
+      5:['diazonium-hub'],
+      6:['diazonium-hub','nitrile-as-acyl-level'],
+      9:['diazonium-hub'],
+      10:['diazonium-hub','directing-effects'] } },
 
     'polymer-basics': { n:8, steps:{
       2:['two-reactive-sites'], 3:['two-reactive-sites'], 4:['two-reactive-sites'],
