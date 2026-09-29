@@ -446,7 +446,7 @@ FIGURES.push({
     s += tg(170, 432, '3.6 residues per turn');
     return s;
   },
-  caption: 'Numbered discs are residues and each dashed line is one hydrogen bond. The highlighted one joins residue 1 to residue 5.',
+  caption: 'Numbered discs are residues and each dashed line is one hydrogen bond. The highlighted one joins residue 1 to residue 5. Side chains on the front and back of the coil are not drawn.',
 });
 
 /* 7. An antiparallel beta sheet, atom by atom. */
@@ -738,7 +738,7 @@ FIGURES.push({
     s += atom(c3.x, c3.y, 'C', { kind: 'warn' });
     s += curve(lpTip(nA, 340, 27), P(c3.x - 19, c3.y - 6), { bow: 10, size: 7 });
     s += curve(onBond(c3, o3, 0.5, -8), P(o3.x + 18, o3.y + 5), { bow: -16, size: 7 });
-    s += arrow(P(412, 420), P(470, 420));
+    s += arrow(P(404, 420), P(452, 420));
     s += tetrahedral(P(560, 428));
     s += tg(572, 514, 'tetrahedral intermediate');
 
