@@ -478,7 +478,7 @@ FIGURES.push({
     s += fishhook(P(dt.x + 3, dt.y - 5), P(meet.x - 3, meet.y - 3), { bow: -12, size: 8 });
     s += fishhook(P((br1.x + cu.x) / 2, Y2 - 5), P(meet.x + 5, meet.y - 3), { bow: 14, size: 8, side: -1 });
     /* The other electron of the Br–Cu bond goes back to copper: Cu(II) → Cu(I). */
-    s += fishhook(P((br1.x + cu.x) / 2 + 2, Y2 + 5), P(cu.x - 4, cu.y + 15), { bow: 10, size: 8 });
+    s += fishhook(P((br1.x + cu.x) / 2, Y2 + 4), P(cu.x + 3, cu.y + 16), { bow: 12, size: 8 });
     s += arrow(P(304, Y2), P(372, Y2));
     s += K.ring(410, Y2, [1, 3, 5]);
     s += K.sub(410, Y2, 0, 'Br', { kind: 'hi', r: 14, size: 11, d: 22 });
@@ -719,7 +719,7 @@ FIGURES.push({
   id: 'sulfonic-blocker',
   section: 'diazonium-chemistry',
   anchor: '<h3>Removing a group is a synthetic tool</h3>',
-  viewBox: '0 0 340 250',
+  viewBox: '0 0 340 236',
   alt: 'Toluene carrying an SO3H group on its para carbon and a nitro group on a carbon ortho to the methyl group. The SO3H fills the para position during the nitration, and hot dilute acid removes it afterwards to give 2-nitrotoluene.',
   build() {
     let s = '';
@@ -732,8 +732,8 @@ FIGURES.push({
     s += K.sub(cx, Y, 1, 'NO₂', { kind: 'hi', r: 16, size: 10.5, d: 20, bondCls: 'fg-bond-hi' });
     s += text(196, 94, 'NO₂ goes ortho', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
     s += text(196, 110, 'to the CH₃', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
-    s += text(162, 196, 'para position filled', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
-    s += text(170, 238, 'then hot dilute acid removes the SO₃H', { cls: 'fg-tag', size: 11 });
+    s += text(150, 180, 'para position filled', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    s += text(170, 224, 'then hot dilute acid removes the SO₃H', { cls: 'fg-tag', size: 11 });
     return s;
   },
   caption: 'Toluene after sulfonation and nitration, just before the SO<sub>3</sub>H comes off.',
@@ -887,7 +887,7 @@ FIGURES.push({
   id: 'azo-where',
   section: 'diazonium-chemistry',
   anchor: '<h3>Azo coupling, and why dyes are colored</h3>',
-  viewBox: '0 0 760 244',
+  viewBox: '0 0 760 262',
   alt: 'Three phenols, each with its OH at the top. Phenol couples at the para carbon. 4-Methylphenol, whose para carbon carries a methyl, couples at a carbon ortho to the OH. 2,4,6-Trimethylphenol has both ortho carbons and the para carbon taken and does not couple.',
   build() {
     let s = '';
@@ -913,12 +913,12 @@ FIGURES.push({
     s += K.ring(xs[0], Y, [1, 3, 5]) + oh(xs[0]) + azo(xs[0], 3);
     s += K.ring(xs[1], Y, [1, 3, 5]) + oh(xs[1]) + me(xs[1], 3) + azo(xs[1], 5);
     s += K.ring(xs[2], Y, [1, 3, 5]) + oh(xs[2]) + me(xs[2], 1) + me(xs[2], 3) + me(xs[2], 5);
-    s += text(xs[0], 206, 'from phenol: para', { cls: 'fg-lbl', size: 13 });
-    s += text(xs[1], 206, 'from 4-methylphenol: ortho', { cls: 'fg-lbl', size: 13 });
-    s += text(xs[2], 206, '2,4,6-trimethylphenol', { cls: 'fg-lbl', size: 13 });
-    s += text(xs[2], 224, 'no ortho or para carbon free', { cls: 'fg-tag-warn', size: 11 });
-    s += text(xs[1], 224, 'para is taken', { cls: 'fg-tag', size: 11 });
-    s += text(xs[0], 224, 'the first choice', { cls: 'fg-tag', size: 11 });
+    s += text(xs[0], 230, 'from phenol: para', { cls: 'fg-lbl', size: 13 });
+    s += text(xs[1], 230, 'from 4-methylphenol: ortho', { cls: 'fg-lbl', size: 13 });
+    s += text(xs[2], 230, '2,4,6-trimethylphenol', { cls: 'fg-lbl', size: 13 });
+    s += text(xs[2], 248, 'no ortho or para carbon free', { cls: 'fg-tag-warn', size: 11 });
+    s += text(xs[1], 248, 'para is taken', { cls: 'fg-tag', size: 11 });
+    s += text(xs[0], 248, 'the first choice', { cls: 'fg-tag', size: 11 });
     return s;
   },
   caption: 'In each ring, look for a free carbon ortho or para to the OH.',
