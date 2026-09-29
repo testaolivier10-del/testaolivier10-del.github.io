@@ -595,7 +595,7 @@ FIGURES.push({
   id: 'c-vs-o',
   section: 'enolate-regiochemistry',
   anchor: '<h3>Why the halide goes to carbon</h3>',
-  alt: 'The lithium enolate of cyclohexanone in the middle with CH3I. An arrow to the left, labeled attack through carbon, gives 2-methylcyclohexanone, with the new C–C bond highlighted and the C=O kept. An arrow to the right, labeled attack through oxygen, gives 1-methoxycyclohexene, an enol ether, with the new O–C bond highlighted and a C=C instead of the C=O.',
+  alt: 'The lithium enolate of cyclohexanone in the middle with CH3I. An arrow to the left, labeled attack through carbon, gives 2-methylcyclohexanone, with the new C–C bond highlighted; it ends with a C=O. An arrow to the right, labeled attack through oxygen, gives 1-methoxycyclohexene, an enol ether, with the new O–C bond highlighted; it ends with a C=C and no C=O.',
   viewBox: '0 0 760 240',
   build() {
     let s = '';
@@ -608,16 +608,16 @@ FIGURES.push({
     const c = ring(P(150, 130), { subs: [{ at: 2, deg: 30, label: 'CH₃', kind: 'hi', bondCls: 'fg-bond-hi' }] });
     s += c.s;
     s += L(150, 204, '2-methylcyclohexanone', { size: 12.5 });
-    s += T(150, 222, 'C=O kept (the usual product)', { cls: 'fg-tag-good' });
+    s += T(150, 222, 'ends with C=O (the usual product)', { cls: 'fg-tag-good' });
     const o = ring(P(610, 130), { dbl: 'C1C2' });
     const me = P(o.top.x + 40, o.top.y - 20);
     s += o.s + bond(o.top, me, { rFrom: 14, rTo: 17, cls: 'fg-bond-hi' }) + A(me, 'CH₃', { kind: 'hi' });
     s += LP(o.top, 140) + LP(o.top, 215);
     s += L(610, 204, '1-methoxycyclohexene', { size: 12.5 });
-    s += T(610, 222, 'enol ether: C=C instead of C=O', { cls: 'fg-tag-warn' });
+    s += T(610, 222, 'enol ether: ends with C=C, no C=O', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'The highlighted bond is the one each path makes. Only the carbon path keeps the C=O.',
+  caption: 'The highlighted bond is the one each path makes. Only the carbon path ends with a C=O.',
 });
 
 export default FIGURES;

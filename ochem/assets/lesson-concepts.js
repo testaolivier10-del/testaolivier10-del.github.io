@@ -363,12 +363,13 @@
       17:['locant-rules'],
       18:['parent-chain','group-priority'] } },
 
-    'radical-halogenation': { n:8, steps:{
-      2:['radical-chain'],
-      3:['radical-stability'],
-      4:['radical-stability','radical-chain'],
-      6:['radical-chain','radical-stability'],
-      7:['radical-chain','radical-stability'] } },
+    'radical-halogenation': { n:14, steps:{
+      3:['radical-chain'],
+      5:['radical-stability'],
+      7:['radical-stability','hammond-postulate'],
+      9:['radical-stability','radical-chain'],
+      12:['radical-chain','allylic-capture'],
+      13:['radical-chain','radical-stability'] } },
 
     'skeletal-structures': { n:8, steps:{
       2:['skeletal-notation'],

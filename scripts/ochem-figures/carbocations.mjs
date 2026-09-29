@@ -769,7 +769,7 @@ FIGURES.push({
   lessons: ['carbocations'],
   anchor: '',
   alt: 'The 3-methylbutan-2-yl cation, a secondary cation. A curved arrow starts on the C-H bond of the next carbon and ends at the positive carbon. Below, after the shift: the hydrogen sits on the old cation carbon, and the positive charge is on the carbon the hydrogen left, now tertiary.',
-  viewBox: '0 0 340 366',
+  viewBox: '0 0 340 392',
   build() {
     let s = '';
     s += tg(170, 22, 'BEFORE: 2°');
@@ -810,7 +810,7 @@ FIGURES.push({
   lessons: ['carbocations'],
   anchor: '',
   alt: 'The neopentyl cation with a curved arrow from the bond to one methyl group on the quaternary carbon to the positive CH2 carbon. Below, after the shift: that methyl sits on the old CH2, and the positive charge is on the former quaternary carbon, now tertiary.',
-  viewBox: '0 0 340 366',
+  viewBox: '0 0 340 392',
   build() {
     let s = '';
     s += tg(170, 22, 'BEFORE: 1°', 'middle', 'fg-tag-warn');
