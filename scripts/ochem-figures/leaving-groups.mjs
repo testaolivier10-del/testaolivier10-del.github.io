@@ -169,7 +169,7 @@ FIGURES.push({
   lessons: ['leaving-groups'],
   anchor: '<h3>Why spreading charge out matters</h3>',
   alt: 'Top: methyl tosylate drawn in full, CH3–O–S(=O)2– attached to a benzene ring that carries a CH3 on the opposite carbon; a bracket under the sulfur, ring and far CH3 is labeled Ts, the p-toluenesulfonyl group. Bottom: the tosylate ion drawn three times, with the ring abbreviated Ar. In each form a different one of the three sulfur oxygens has the single bond, three lone pairs and the negative charge, and double-headed resonance arrows join the three forms.',
-  viewBox: '0 0 340 800',
+  viewBox: '0 0 340 818',
   build() {
     let s = '';
     s += box(8, 256, 'THE TOSYL GROUP, Ts');
@@ -189,14 +189,14 @@ FIGURES.push({
     s += `<text class="fg-tag" x="218" y="222" text-anchor="middle" font-size="11">Ts, the <tspan font-style="italic">p</tspan>-toluenesulfonyl group</text>`;
     s += tg(170, 250, 'methyl tosylate, CH₃–OTs', 'mut');
     // resonance forms
-    s += box(276, 516, 'THE TOSYLATE ION: THREE RESONANCE FORMS');
-    const ys = [362, 518, 674];
+    s += box(276, 534, 'THE TOSYLATE ION: THREE RESONANCE FORMS');
+    const ys = [386, 542, 698];
     ['left', 'up', 'down'].forEach((k, i) => { s += sulfonate(ys[i], k); });
-    for (const ym of [440, 596]) {
+    for (const ym of [464, 620]) {
       s += arrow(P(270, ym), P(270, ym - 22)) + arrow(P(270, ym), P(270, ym + 22));
     }
-    s += tg(170, 752, 'each oxygen carries the charge in one form', 'good');
-    s += tg(170, 772, 'Ar is the CH₃–C₆H₄– ring drawn above', 'mut');
+    s += tg(170, 780, 'each oxygen carries the charge in one form', 'good');
+    s += tg(170, 800, 'Ar is the CH₃–C₆H₄– ring drawn above', 'mut');
     return s;
   },
   caption: 'Top: the tosyl group drawn out in full. Bottom: the tosylate ion that leaves. The single negative charge moves from oxygen to oxygen across the three resonance forms.',

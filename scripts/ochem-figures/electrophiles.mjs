@@ -138,7 +138,7 @@ FIGURES.push({
     s += sm(272, 212, 'formal charges: C 0, O 0', 'start');
     return s;
   },
-  caption: 'Acetone. The coral δ+ carbon is the electrophilic atom; the teal δ− oxygen is the electron-rich one.',
+  caption: 'Acetone, with the δ+ and δ− ends of its C=O marked and both formal charges given.',
 });
 
 /* 2. The two electrophilic carbons besides the carbonyl. */
@@ -172,7 +172,7 @@ FIGURES.push({
     s += sm(570, 236, 'the third CH₃ points toward you');
     return s;
   },
-  caption: 'Left: the carbon is δ+ because bromine pulls the shared pair toward itself. Right: the carbon has a full + and an empty p orbital, drawn as the two pale lobes.',
+  caption: 'Left: the δ+ and δ− ends of the C–Br bond. Right: the + on carbon, and its empty p orbital as two pale lobes.',
 });
 
 /* 3. Electrophiles that are not carbon. */
@@ -218,7 +218,7 @@ FIGURES.push({
     s += sm(633, 240, 'the third F points toward you');
     return s;
   },
-  caption: 'Left and right, an empty orbital (the pale shape) is the place an electron pair can go. In the middle, H–Br has no empty orbital; its H is δ+ because bromine holds the bonding pair.',
+  caption: 'Left and right, the pale shapes are empty orbitals. In the middle, H–Br has none; look at the δ+ on its H instead.',
 });
 
 /* 4. Br2 becoming polarized as it meets an alkene. */
@@ -408,7 +408,7 @@ FIGURES.push({
     s += sm(470, 278, 'now carrying a group that leaves easily');
     return s;
   },
-  caption: 'The carbon marked δ+ is the same in both. What changes is the group on the oxygen: the bracket shows everything that “Ts” stands for.',
+  caption: 'Ethanol and ethyl tosylate. The bracket marks everything the letters Ts stand for.',
 });
 
 /* 7. A neighbor that pulls, and a neighbor that pushes. */
@@ -564,7 +564,7 @@ FIGURES.push({
     s += sm(570, 216, 'the O–H pair stays on oxygen');
     return s;
   },
-  caption: 'The same water molecule, in two reactions. Left, its oxygen gives electrons; right, its hydrogen receives them.',
+  caption: 'Follow the curved arrows in each panel to see which atom of water takes part.',
 });
 
 /* 10. An enone: alpha and beta carbons, and the + on beta. */
@@ -632,7 +632,7 @@ FIGURES.push({
     s += tg(170, 192, 'the δ+ carbon is the electrophile');
     return s;
   },
-  caption: 'Chlorine pulls the shared pair toward itself, so the carbon is left δ+.',
+  caption: 'Read the δ+ and δ− labels on the two ends of the C–Cl bond.',
 });
 
 FIGURES.push({
@@ -657,7 +657,7 @@ FIGURES.push({
     s += tg(170, 382, 'empty 1s orbital, no electrons');
     return s;
   },
-  caption: 'Both have a full + and an empty orbital, drawn as the pale shapes.',
+  caption: 'The pale shapes are the empty orbitals.',
 });
 
 FIGURES.push({
@@ -689,7 +689,7 @@ FIGURES.push({
     s += tg(170, 488, 'ethene, seen edge-on');
     return s;
   },
-  caption: 'H–Br is always polar. Br₂ becomes polar only when an alkene’s π electrons push its shared pair away.',
+  caption: 'Compare the δ labels in the three panels.',
 });
 
 export default FIGURES;
