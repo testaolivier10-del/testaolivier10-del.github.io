@@ -151,7 +151,7 @@ FIGURES.push({
     s += benzylAlcohol(452, 140, 26);
     s += phenol(658, 140, 26);
     s += tg(484, 206, 'benzylic alcohol');
-    s += tg(484, 222, 'OH on the benzylic carbon', 'middle', 'fg-tag-mut');
+    s += tg(484, 222, 'OH on the benzylic C', 'middle', 'fg-tag-mut');
     s += tg(672, 206, 'phenol');
     s += tg(672, 222, 'OH on a ring carbon', 'middle', 'fg-tag-mut');
     s += dash(P(568, 56), P(568, 224));
@@ -492,7 +492,7 @@ function ethylbenzene(cx, cy, R, withBr) {
   const b = at(h.v[1], 30, 34);
   const me = at(b, -30, 40);
   let s = h.s + bond(h.v[1], b, { rFrom: 0, rTo: 16 }) + bond(b, me, { rFrom: 16, rTo: 18 });
-  s += atom(b.x, b.y, withBr ? 'CH' : 'CH₂', { kind: 'hi', r: 16 }) + atom(me.x, me.y, 'CH₃', { r: 18 });
+  s += atom(b.x, b.y, 'CH', { kind: 'hi', r: 16 }) + atom(me.x, me.y, 'CH₃', { r: 18 });
   return { s, b, me };
 }
 
@@ -501,7 +501,7 @@ FIGURES.push({
   section: 'benzylic-reactivity',
   lessons: ['benzylic-reactivity'],
   anchor: 'with light or a radical initiator.</p>',
-  alt: 'Top: ethylbenzene, with one hydrogen on the benzylic CH2 highlighted and labeled 90 kcal/mol, and the CH3 carbon labeled 101 kcal/mol for its C-H bonds. An arrow labeled NBS, light points down to (1-bromoethyl)benzene, with the bromine on the benzylic carbon.',
+  alt: 'Top: ethylbenzene, with the benzylic carbon drawn as CH plus one highlighted hydrogen, that C-H labeled 87 kcal/mol, and the CH3 carbon labeled 101 kcal/mol for its C-H bonds. An arrow labeled NBS, light points down to (1-bromoethyl)benzene, with the bromine on the benzylic carbon.',
   viewBox: '0 0 340 360',
   build() {
     let s = '';
@@ -510,7 +510,7 @@ FIGURES.push({
     s += top.s;
     const H = at(top.b, 90, 42);
     s += bond(top.b, H, { rFrom: 16, rTo: 12, cls: 'fg-bond-hi' }) + atom(H.x, H.y, 'H', { kind: 'hi', r: 12 });
-    s += tg(H.x + 18, H.y + 4, 'benzylic C–H: 90', 'start', 'fg-tag-good');
+    s += tg(H.x + 18, H.y + 4, 'benzylic C–H: 87', 'start', 'fg-tag-good');
     s += tg(top.me.x + 4, top.me.y + 34, 'C–H here: 101');
     s += lbl(274, 124, 'ethylbenzene');
 
@@ -522,7 +522,7 @@ FIGURES.push({
     const Br = at(bot.b, 90, 44);
     s += bond(bot.b, Br, { rFrom: 16, rTo: 16, cls: 'fg-bond-hi' }) + atom(Br.x, Br.y, 'Br', { kind: 'warn', r: 16 });
     s += tg(Br.x + 22, Br.y + 4, 'new C–Br bond', 'start');
-    s += lbl(274, 302, '(1-bromoethyl)-');
+    s += lbl(274, 302, '(1-bromoethyl)');
     s += lbl(274, 320, 'benzene');
     return s;
   },
@@ -746,7 +746,7 @@ FIGURES.push({
     s += lbl(190, 458, 'acid', 'start');
     return s;
   },
-  caption: 'The carboxyl goes on first, so it directs the nitro group meta.',
+  caption: 'Oxidize first, and the carboxyl directs the nitro group meta.',
 });
 
 export default FIGURES;
