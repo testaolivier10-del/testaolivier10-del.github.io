@@ -112,7 +112,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 15</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -164,16 +164,16 @@ document.addEventListener('DOMContentLoaded', function(){
      lesson describes in prose and never made the student make. */
   var FISCHER_DRILL = {
     layout: 'fischer',
-    alt: 'Glyceraldehyde as a Fischer projection: CHO at the top, CH2OH at the bottom, H on the left, OH on the right',
-    intro: 'The same projection from the start of the lesson. Now assign it.',
-    caption: 'A Fischer projection. Nothing is drawn as a wedge — the notation carries depth by convention instead.',
-    priorityWhy: 'OH first, since O beats C. The two carbons then tie, and CHO wins one bond out: duplicating its double bond gives it (O,O,H) against CH₂OH\'s (O,H,H). H is last.',
-    closing: 'This is why the notes warn about horizontal positions: the vertical chain is already oriented the way the rule wants, but a lowest-priority group on a horizontal arm is pointing straight at you.',
+    alt: 'Lactic acid as a Fischer projection: COOH at the top, CH3 at the bottom, OH on the left, H on the right',
+    intro: 'A new molecule: lactic acid. Assign its stereocenter.',
+    caption: 'A Fischer projection. Nothing is drawn as a wedge; the notation carries depth by convention instead.',
+    priorityWhy: 'OH first, since O beats C. The two carbons tie on the first atom, and COOH wins on the next: its carbon counts as (O,O,O) against CH₃\'s (H,H,H). H is last.',
+    closing: 'The H sat on a horizontal arm, pointing straight at you, so the turn you traced had to be flipped.',
     subs: [
-      { label: 'OH', priority: 1, angle: 0 },
-      { label: 'CHO', priority: 2, angle: 90 },
-      { label: 'CH₂OH', priority: 3, angle: 270 },
-      { label: 'H', priority: 4, angle: 180 }
+      { label: 'OH', priority: 1, angle: 180 },
+      { label: 'COOH', priority: 2, angle: 90 },
+      { label: 'CH₃', priority: 3, angle: 270 },
+      { label: 'H', priority: 4, angle: 0 }
     ]
   };
 
@@ -187,14 +187,15 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Horizontal means toward you; vertical means away.',
-        bodyHtml: '<p class="step-body">A <b>Fischer projection</b> draws a stereocenter as a simple cross — a vertical line and a horizontal line intersecting where the carbon sits (the carbon symbol itself is usually omitted). The convention that gives this flat cross real 3D meaning: <b>horizontal</b> bonds point <b>toward the viewer</b> (like a wedge, coming out of the page), and <b>vertical</b> bonds point <b>away from the viewer</b> (like a dash, going into the page).</p><p class="step-body" style="margin-bottom:0;">This isn\'t an arbitrary rule — it comes from the specific curved backbone orientation the original structure is drawn in before flattening it into the cross shape. You don\'t need to derive it each time; just remember horizontal = toward you, vertical = away.</p>'
+        bodyHtml: '<p class="step-body">A <b>Fischer projection</b> draws a stereocenter as a plain cross. The carbon sits where the lines cross and is not written. Here it is for glyceraldehyde: CHO at the top, CH₂OH at the bottom, and H and OH on the sides.</p><p class="step-body" style="margin-bottom:0;">The cross makes a fixed claim about shape. <b>Horizontal</b> lines point <b>toward you</b>, like wedges. <b>Vertical</b> lines point <b>away from you</b>, like hashes. Every Fischer projection means this, so the rule has to be memorized.</p>',
+        diagramHtml: '<!-- fig:l-fischer-convention:start --><!-- fig:l-fischer-convention:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the two groups on this Fischer projection that point toward you.</h2>' +
-            '<p class="step-body">This is glyceraldehyde: CHO on top, CH₂OH on bottom, H and OH on the sides.</p>' +
+            '<p class="step-body">This is glyceraldehyde again: CHO on top, CH₂OH on the bottom, H and OH on the sides.</p>' +
             fischerSvg() +
             '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Found: 0 / 2</div>' +
             api.feedbackHtml('fb') +
@@ -213,11 +214,11 @@ document.addEventListener('DOMContentLoaded', function(){
                 hint.textContent = 'Found: ' + found + ' / 2';
               } else {
                 mistake = true;
-                api.showFeedback(fb, false, 'That one is on the vertical line, which points away from you, not toward you. Keep looking at the horizontal (left/right) positions.');
+                api.showFeedback(fb, false, 'That one is on the vertical line, which points away from you. Look at the horizontal positions, left and right.');
               }
               if(found === 2){
                 api.record(!mistake);
-                if(!mistake) api.showFeedback(fb, true, 'Right — H and OH sit on the horizontal line, so both point toward you. CHO and CH₂OH sit on the vertical line, pointing away.');
+                if(!mistake) api.showFeedback(fb, true, 'Right. H and OH sit on the horizontal line, so both point toward you. CHO and CH₂OH sit on the vertical line and point away.');
                 next.disabled = false;
               }
             });
@@ -227,50 +228,104 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 2 · Guided Practice',
+        eyebrow: 'Guided practice',
         title: 'In a Fischer projection, which bonds point away from the viewer?',
-        options: ['Horizontal bonds', 'Neither — all bonds are in the plane of the page', 'Vertical bonds'],
+        options: ['Horizontal bonds', 'Neither: all bonds lie in the plane of the page', 'Vertical bonds'],
         correctIndex: 2,
-        correctFeedback: 'Correct — vertical lines represent bonds going into the page, away from you; horizontal lines come toward you.',
-        wrongFeedback: 'It\'s the opposite — horizontal bonds point toward the viewer; vertical bonds point away.'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 3 · Independent Practice',
-        title: 'Which manipulation of a Fischer projection secretly converts it into its enantiomer?',
-        options: ['Swapping any two groups a single time', 'Rotating the whole projection 180° in the plane of the page', 'Holding one group fixed and rotating the other three'],
-        correctIndex: 0,
-        correctFeedback: 'Correct — a single swap of two groups inverts the actual stereochemistry, silently turning the molecule into its enantiomer. A 180° in-plane rotation, or rotating three groups around a fixed one, both preserve the original molecule.',
-        wrongFeedback: 'A single swap is the dangerous operation — it inverts stereochemistry. In-plane 180° rotation and rotating three groups around a fixed one are both safe and preserve the molecule.'
+        correctFeedback: 'Correct. Vertical lines stand for bonds going into the page, away from you; horizontal lines come toward you.',
+        wrongFeedback: 'It is the other way round. Horizontal bonds point toward the viewer, and vertical bonds point away.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'An even number of swaps always gets you back to the original.',
-        bodyHtml: '<p class="step-body">Since one swap of two groups inverts a Fischer projection\'s stereochemistry, it follows that <b>two</b> swaps restore it — the second swap undoes the inversion from the first. More generally, at <b>one</b> stereocenter: an <b>odd</b> number of single swaps inverts that center, and an <b>even</b> number returns it to where it started, no matter which specific groups you swapped each time.</p><p class="step-body" style="margin-bottom:0;">This is a genuinely useful trick when you\'re handed an unfamiliar-looking Fischer projection and need to check whether it matches a known structure — count the swaps at each stereocenter separately, and the parity (odd/even) at each one tells you whether that center is inverted. Invert every center and you have the enantiomer; invert some but not all and you have a diastereomer, which is why the count has to be kept per center rather than pooled.</p>'
+        title: 'Where the cross comes from.',
+        bodyHtml: '<p class="step-body">Take erythrose, a four-carbon sugar with stereocenters at C2 and C3. Hold a model of it so that the chain arches toward you and both ends curl back into the page.</p><p class="step-body">In that pose, every chain bond at C2 and C3 runs back, away from you, and each H and OH sticks out toward you. Flatten the front view onto the page and you get the Fischer projection.</p><p class="step-body" style="margin-bottom:0;">In this pose, each carbon&rsquo;s groups sit directly in front of the next carbon&rsquo;s groups: the bonds are <b>eclipsed</b>. A Fischer projection always shows that conformation. It does no harm, because turning about a single bond never changes a stereocenter.</p>',
+        diagramHtml: '<!-- fig:l-fischer-origin:start --><!-- fig:l-fischer-origin:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Reading R or S from the cross.',
+        bodyHtml: '<p class="step-body">Rank glyceraldehyde&rsquo;s groups by CIP priority. OH is 1. CHO is 2, because its C=O counts as (O,O,H). CH₂OH is 3, with (O,H,H). H is 4.</p><p class="step-body">Trace 1 &rarr; 2 &rarr; 3 on the cross: from OH on the right, up to CHO, then round to CH₂OH at the bottom. That runs counterclockwise, which reads as S. But H is on the horizontal line, pointing at you, so the answer flips. This is <b>(R)</b>-glyceraldehyde.</p><p class="step-body" style="margin-bottom:0;">If priority 4 sits on the vertical line instead, it already points away, and you read the turn with no flip.</p>',
+        diagramHtml: '<!-- fig:fischer-rs:start --><!-- fig:fischer-rs:end -->'
       },
       {
         /* Reading a Fischer projection and assigning R/S from one are
-           different skills, and only the first was practiced here. The
-           second is the one that appears on exams, and the "horizontal
-           toward you" convention it depends on is exactly what makes
-           students get it backwards. Same drill as the R/S lesson, in
-           Fischer notation. */
+           different skills. The second is the one that appears on exams, and
+           the "horizontal toward you" convention it depends on is exactly
+           what makes students get it backwards. Same drill as the R/S
+           lesson, in Fischer notation, on a molecule the lesson has not
+           already worked. */
         render: function(api){ window.OchemStereoDrill.mount(api, FISCHER_DRILL); }
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'D and L compare one stereocenter with glyceraldehyde.',
+        bodyHtml: '<p class="step-body">Draw glyceraldehyde with CHO at the top. With its OH on the <b>right</b> it is <b>D-glyceraldehyde</b>, which is (R)-glyceraldehyde. With its OH on the left it is L-glyceraldehyde.</p><p class="step-body">A sugar is labeled at the stereocenter <b>furthest from the carbonyl</b>. With the carbonyl at the top, that is the lowest stereocenter, C5 in glucose. OH on the right means D.</p><p class="step-body">An amino acid is labeled at its <b>α carbon</b>, the carbon that carries NH₂, COOH, H and the side chain. With the <b>COOH at the top and the side chain at the bottom</b>, NH₂ on the left means L.</p><p class="step-body" style="margin-bottom:0;">D and L do not tell you R or S, or the direction of optical rotation. L-alanine is (S), but L-cysteine is (R), because its CH₂SH outranks COOH under the CIP rules.</p>',
+        diagramHtml: '<!-- fig:l-fischer-dl:start --><!-- fig:l-fischer-dl:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two moves keep the molecule.',
+        bodyHtml: '<p class="step-body"><b>Turning the drawing 180°</b> in the page keeps vertical groups vertical and horizontal groups horizontal, so nothing changes depth. You have spun the same molecule round like a wheel.</p><p class="step-body" style="margin-bottom:0;"><b>Holding one group in place and cycling the other three</b> one place round the cross is also safe. In 3D, it turns the molecule a third of a turn about the bond to the group you held.</p>',
+        diagramHtml: '<!-- fig:l-fischer-moves-safe:start --><!-- fig:l-fischer-moves-safe:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two moves give the enantiomer.',
+        bodyHtml: '<p class="step-body"><b>Turning the drawing 90°</b> moves the vertical groups onto the horizontal line, where the drawing now says they point at you. The horizontal groups move onto the vertical line and now point away. Every group swaps depth, as if reflected in the page, so you get the mirror image.</p><p class="step-body" style="margin-bottom:0;"><b>Swapping any two groups once</b> also inverts the center. It is the quick way to draw an enantiomer on purpose, and a common way to draw one by accident.</p>',
+        diagramHtml: '<!-- fig:l-fischer-moves-unsafe:start --><!-- fig:l-fischer-moves-unsafe:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent practice',
+        title: 'Which manipulation of a Fischer projection turns it into its enantiomer?',
+        options: ['Swapping two groups a single time', 'Turning the whole projection 180° in the page', 'Holding one group fixed and cycling the other three'],
+        correctIndex: 0,
+        correctFeedback: 'Correct. A single swap inverts the center and gives the enantiomer. A 180° turn, or cycling three groups round a fixed one, leaves the molecule unchanged.',
+        wrongFeedback: 'That move is safe; it gives back the same molecule. The one that inverts the center is a single swap of two groups.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Count swaps at each stereocenter.',
+        bodyHtml: '<p class="step-body">A second swap at the same center undoes the first. So an <b>even</b> number of swaps returns the molecule you started with, and an <b>odd</b> number gives its enantiomer. The safe cycle of three groups is two swaps in disguise.</p><p class="step-body" style="margin-bottom:0;">With more than one stereocenter, count at each center separately. Start from D-erythrose. One swap at C2 inverts C2 and leaves C3 alone, which gives D-threose, a diastereomer. One swap at each center inverts both, which gives the enantiomer, L-erythrose.</p>',
+        diagramHtml: '<!-- fig:fischer-swap-centers:start --><!-- fig:fischer-swap-centers:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'From wedges and hashes to a Fischer projection.',
+        bodyHtml: '<p class="step-body">From a Fischer projection to wedges and hashes is direct: horizontal bonds become wedges and vertical bonds become hashes. The other way goes through R and S.</p><p class="step-body" style="margin-bottom:0;">Take (S)-butan-2-ol. Put the chain vertical, with CH₃ (C1) at the top and CH₂CH₃ at the bottom, and place OH and H on the horizontal line either way round. With OH on the left, the cross reads (R), which is wrong, so swap OH and H. Now it reads (S) and matches.</p>',
+        diagramHtml: '<!-- fig:l-fischer-convert:start --><!-- fig:l-fischer-convert:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent practice',
+        title: 'An amino acid is drawn upside down as a Fischer projection: COOH at the bottom, the side chain at the top, and NH₂ on the right. Is it D or L?',
+        options: ['L', 'D', 'You cannot tell without redrawing it with wedges and hashes'],
+        correctIndex: 0,
+        correctFeedback: 'Right. Turn the drawing 180° in the page, which keeps the molecule. COOH goes to the top and NH₂ moves to the left, so it is L.',
+        wrongFeedback: 'The left/right rule only works with COOH at the top. Turn the drawing 180°, a safe move: COOH goes to the top and NH₂ ends up on the left, so it is L.'
       },
       {
         type: 'explain',
         eyebrow: 'Why it matters',
         title: 'This is the format sugars are almost always drawn in.',
-        bodyHtml: '<div class="explain-box">Glucose has four stereocenters in a single chain. Drawing all four as full 3D wedge-dash structures is cumbersome and hard to compare at a glance — stacking them as a single vertical Fischer projection, with each stereocenter\'s horizontal groups showing left/right at each level, is dramatically easier to read and compare. This is exactly why Fischer projections, despite being a flattened 2D shorthand, remain the standard notation for carbohydrate stereochemistry in biochemistry.</div>'
+        bodyHtml: '<p class="step-body">Glucose has four stereocenters in one chain. As wedges and hashes they are slow to read and hard to compare. As a Fischer projection, its four OH groups make a pattern, right, left, right, right, that you can match against another sugar at a glance.</p><p class="step-body" style="margin-bottom:0;">Mannose differs from glucose only at C2, and galactose only at C4. Sugars that differ at exactly one stereocenter are called <b>epimers</b>.</p>',
+        diagramHtml: '<!-- fig:l-sugar-patterns:start --><!-- fig:l-sugar-patterns:end -->'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'You need to compare two Fischer projections and determine if they represent the same molecule or enantiomers. You find it takes exactly 3 single-group swaps, all of them at the same stereocenter (the molecule has only this one stereocenter), to convert one into the other. What\'s the relationship?',
-        options: ['The same molecule — any number of swaps eventually returns the original', 'Enantiomers — an odd number of swaps inverts the stereochemistry', 'Diastereomers — 3 swaps always means partial inversion'],
+        title: 'You compare two Fischer projections of a molecule with only one stereocenter. Turning one into the other takes exactly three swaps, all at that center. How are the two related?',
+        options: ['The same molecule: any number of swaps eventually returns the original', 'Enantiomers: three is odd, so the one center ends up inverted', 'Diastereomers: three swaps leave the molecule partly inverted'],
         correctIndex: 1,
-        correctFeedback: 'Correct — 3 is odd, and each swap at that center inverts it, so the center ends up inverted, and since it is the only stereocenter, the molecule is the enantiomer. Note how much the stem is doing: in a molecule with two stereocenters, one swap at C2 and two at C3 is also three swaps, and it inverts only C2, which gives a diastereomer.'
+        correctFeedback: 'Correct. Each swap inverts the center, and three is odd, so it ends up inverted. With only one stereocenter, that makes the two enantiomers. The stem matters: in a molecule with two stereocenters, one swap at C2 and two at C3 is also three swaps, but it inverts only C2 and gives a diastereomer.',
+        wrongFeedback: 'Count the swaps. Each one inverts the center, so an odd number leaves it inverted. With only one stereocenter, an inverted center means the enantiomer.'
       }
     ]
   });
