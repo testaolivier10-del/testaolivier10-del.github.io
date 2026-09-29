@@ -525,21 +525,22 @@ FIGURES.push({
     s += bond(c4, c5, { rFrom: 17, rTo: 17 }); s += bond(c5, c6, { rFrom: 17, rTo: 16 });
     s += bond(c6, o6, { order: 2, rFrom: 16, rTo: 15 });
     s += atom(c1.x, c1.y, 'CH', { r: 16 }); s += atom(o1.x, o1.y, 'O');
-    s += atom(c2.x, c2.y, 'CH₂', { kind: 'hi', r: 17 });
+    s += atom(c2.x, c2.y, 'CH⁻', { kind: 'hi', r: 17 });
+    s += lonePair(c2.x, c2.y, 90, { dist: 23 });
     s += atom(c3.x, c3.y, 'CH₂', { r: 17 }); s += atom(c4.x, c4.y, 'CH₂', { r: 17 });
     s += atom(c5.x, c5.y, 'CH₂', { r: 17 });
     s += atom(c6.x, c6.y, 'CH', { kind: 'hi', r: 16 }); s += atom(o6.x, o6.y, 'O');
 
     s += tag(64, 156, 'C1');
-    s += tag(152, 214, 'C2');
+    s += tag(122, 204, 'C2');
     s += tag(208, 124, 'C3');
     s += tag(264, 214, 'C4');
     s += tag(320, 124, 'C5');
     s += tag(412, 184, 'C6', { anchor: 'start' });
-    s += tag(118, 236, 'the enolate carbon');
+    s += tag(110, 236, 'the enolate carbon');
     s += tag(400, 206, 'the carbonyl it can reach', { anchor: 'start' });
 
-    s += curve(P(166, 200), P(362, 200), { bow: 40 });
+    s += curve(P(160, 208), P(362, 200), { bow: 40 });
     s += tag(264, 272, 'C2 attacks C6: the ring is C2, C3, C4, C5, C6, five atoms', { cls: 'fg-tag-good' });
 
     s += rule(24, 296, 736, 296);

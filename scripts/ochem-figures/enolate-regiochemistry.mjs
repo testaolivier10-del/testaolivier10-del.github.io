@@ -129,10 +129,10 @@ function enolatePair(ketC, kinC, thdC, r, arrows) {
   const ket = ring(ketC, { r, loc: [1, 2, 6], subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
   s += ket.s;
   // kinetic: C1=C6. Carbons on the C=C: C2 (on C1) and C5 (on C6).
-  const kin = ring(kinC, { r, dbl: 'C1C6', topCharge: false, hi: [0, 4], subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
+  const kin = ring(kinC, { r, dbl: 'C1C6', loc: [1, 2, 6], hi: [0, 4], subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
   s += kin.s + enolateO(kin.top);
   // thermodynamic: C1=C2. Carbons on it: C6 (on C1), C3 and CH3 (on C2).
-  const thd = ring(thdC, { r, dbl: 'C1C2', hi: [5, 1], subs: [{ at: 2, deg: 30, label: 'CH₃', bondCls: 'fg-bond-hi', kind: 'hi' }] });
+  const thd = ring(thdC, { r, dbl: 'C1C2', loc: [1, 2, 6], hi: [5, 1], subs: [{ at: 2, deg: 30, label: 'CH₃', bondCls: 'fg-bond-hi', kind: 'hi' }] });
   s += thd.s + enolateO(thd.top);
   s += arrows(ket, kin, thd, k);
   return s;
@@ -142,7 +142,7 @@ FIGURES.push({
   id: 'two-enolates-drawn',
   section: 'enolate-regiochemistry',
   anchor: 'That conflict is settled by conditions, not by the ketone.</p>',
-  alt: '2-Methylcyclohexanone at the top. An arrow labeled LDA, minus 78 degrees, leads down-left to the kinetic enolate, with its C=C between C1 and C6 and two carbons attached to that C=C, highlighted. An arrow labeled NaOEt in ethanol leads down-right to the thermodynamic enolate, with its C=C between C1 and C2 and three carbons attached, one of them the methyl.',
+  alt: '2-Methylcyclohexanone at the top. An arrow labeled take H from C6 leads down-left to the kinetic enolate, with its C=C between C1 and C6 and two carbons attached to that C=C, highlighted. An arrow labeled take H from C2 leads down-right to the thermodynamic enolate, with its C=C between C1 and C2 and three carbons attached, one of them the methyl.',
   viewBox: '0 0 760 380',
   build() {
     return enolatePair(P(380, 110), P(170, 280), P(590, 280), 34, (ket, kin, thd) => {
@@ -238,7 +238,7 @@ function ldaProducts(ox, oy, gap = 170, name = 'lithium enolate (C1=C6)') {
   const n = P(ox + 84 + gap + 34, oy + 120);
   s += text(ox + 84 + gap - 50, oy + 124, '+', { cls: 'fg-lbl', size: 16 });
   s += amide(n, { h: true });
-  s += `<text class="fg-tag" x="${n.x - 12}" y="${n.y + 62}" text-anchor="middle" font-size="11">(<tspan font-style="italic">i</tspan>-Pr)₂NH, pKa about 36</text>`;
+  s += `<text class="fg-tag" x="${n.x - 12}" y="${n.y + 62}" text-anchor="middle" font-size="11">(<tspan font-style="italic">i</tspan>-Pr)₂NH, pK<tspan baseline-shift="sub" font-size="8">a</tspan> ≈ 36</text>`;
   return s;
 }
 
@@ -279,9 +279,9 @@ function shuttleRow(x1, x2, y, r, reactants) {
   const k = r / 34;
   if (reactants) {
     // kinetic enolate, mirrored so C6 faces right
-    const e = ring(P(x1, y), { r, mirror: true, dbl: 'C1C6', subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
+    const e = ring(P(x1, y), { r, mirror: true, dbl: 'C1C6', loc: [1, 2, 6], subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
     // free ketone, mirrored so C2 faces left
-    const q = ring(P(x2, y), { r, mirror: true, subs: [{ at: 2, deg: 50, label: 'CH₃' }, { at: 2, deg: -20, label: 'H', kind: 'hi' }] });
+    const q = ring(P(x2, y), { r, mirror: true, loc: [1, 2, 6], subs: [{ at: 2, deg: 50, label: 'CH₃' }, { at: 2, deg: -20, label: 'H', kind: 'hi' }] });
     s += e.s + enolateO(e.top, -1) + q.s + ketoneO(q.top);
     const h = q.sub[1];
     // O lone pair back down into C1–O
@@ -295,8 +295,8 @@ function shuttleRow(x1, x2, y, r, reactants) {
     // ketone C=O pi -> O
     s += curve(P(q.pts[0].x + 8, q.pts[0].y - 18 * k), P(q.top.x + 14, q.top.y + 9), { bow: 9, size: 7 });
   } else {
-    const q = ring(P(x1, y), { r, mirror: true, subs: [{ at: 2, deg: 30, label: 'CH₃' }, { at: 6, deg: 170, label: 'H', kind: 'hi' }] });
-    const e = ring(P(x2, y), { r, mirror: true, dbl: 'C1C2', subs: [{ at: 2, deg: 50, label: 'CH₃' }] });
+    const q = ring(P(x1, y), { r, mirror: true, loc: [1, 2, 6], subs: [{ at: 2, deg: 30, label: 'CH₃' }, { at: 6, deg: 170, label: 'H', kind: 'hi' }] });
+    const e = ring(P(x2, y), { r, mirror: true, dbl: 'C1C2', loc: [1, 2, 6], subs: [{ at: 2, deg: 50, label: 'CH₃' }] });
     s += q.s + ketoneO(q.top) + e.s + enolateO(e.top, -1);
   }
   return s;
@@ -418,7 +418,7 @@ FIGURES.push({
 /* ======================================================================
    6. Two branch points: the allylic cation, and the deprotonation.
    ====================================================================== */
-function dieneRow(cx, y, w, names) {
+function dieneRow(cx, y, w, names, conds = ['Br⁻ adds at cation C2 (cold)', 'Br⁻ adds at cation C4 (warm)']) {
   let s = '';
   // allylic cation, two contributors: C1 (the CH3 end) at left, C4 at right
   const cat = (x0, plusAt) => {
@@ -449,8 +449,8 @@ function dieneRow(cx, y, w, names) {
   const br2 = P(b[3].x + 32, b[3].y + 18);
   s += bond(b[3], br2, { rFrom: 0, rTo: 15, cls: 'fg-bond-hi' }) + A(br2, 'Br', { kind: 'hi' });
   const ly = py + 68;
-  s += T(lx + 45, ly, names[0]) + T(lx + 45, ly + 16, 'Br⁻ at C2, cold', { cls: 'fg-tag-good' });
-  s += T(rx + 50, ly, names[1]) + T(rx + 50, ly + 16, 'Br⁻ at C4, warm', { cls: 'fg-tag-warn' });
+  s += T(lx + 45, ly, names[0]) + T(lx + 45, ly + 16, conds[0], { cls: 'fg-tag-good' });
+  s += T(rx + 50, ly, names[1]) + T(rx + 50, ly + 16, conds[1], { cls: 'fg-tag-warn' });
   return s;
 }
 
@@ -472,7 +472,7 @@ FIGURES.push({
   id: 'branch-points',
   section: 'enolate-regiochemistry',
   anchor: '<h3>The same switch, one step earlier</h3>',
-  alt: 'Two rows. Top row, from the conjugation chapter: the allylic cation from buta-1,3-diene and HBr, drawn as its two contributors, with bromide adding at C2 when cold to give 3-bromobut-1-ene, or at C4 when warm to give 1-bromobut-2-ene. These are the two final products. Bottom row: 2-methylcyclohexanone with LDA at minus 78 degrees giving the kinetic enolate, or with NaOEt at room temperature giving the thermodynamic enolate. These are two intermediates, and the electrophile comes afterwards.',
+  alt: 'Two rows. Top row, from the conjugation chapter: the allylic cation from buta-1,3-diene and HBr, drawn as its two contributors, with bromide adding at cation C2 when cold to give 3-bromobut-1-ene, or at cation C4 when warm to give 1-bromobut-2-ene. These are the two final products. Bottom row: 2-methylcyclohexanone with LDA at minus 78 degrees giving the kinetic enolate, or with NaOEt at room temperature giving the thermodynamic enolate. These are two intermediates, and the electrophile comes afterwards.',
   viewBox: '0 0 760 536',
   build() {
     let s = '';
@@ -489,7 +489,7 @@ FIGURES.push({
     s += T(380, 492, 'the electrophile comes next', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Top: the conjugation chapter’s branch point ends in two products. Bottom: this section’s branch point ends in two enolates, and the choice is made before any electrophile is added.',
+  caption: 'Top: the conjugation chapter’s branch point ends in two products. Bottom: this section’s branch point ends in two enolates.',
 });
 
 FIGURES.push({
@@ -501,7 +501,7 @@ FIGURES.push({
     let s = '';
     s += panel(4, 4, 332, 292, {});
     s += tag(170, 24, 'BRANCH POINT: THE CATION');
-    s += dieneRow(170, 72, 300, ['1,2-product', '1,4-product']);
+    s += dieneRow(170, 72, 300, ['1,2-product', '1,4-product'], ['cation C2, cold', 'cation C4, warm']);
     s += T(170, 286, 'two final products', { cls: 'fg-tag-mut' });
     s += panel(4, 302, 332, 302, {});
     s += tag(170, 322, 'BRANCH POINT: THE DEPROTONATION');
@@ -517,7 +517,7 @@ FIGURES.push({
     s += T(170, 596, 'two intermediates', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Top: two final products. Bottom: two enolates, chosen before the electrophile is added.',
+  caption: 'Top: two final products. Bottom: two enolates.',
 });
 
 /* ======================================================================
