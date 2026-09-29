@@ -156,6 +156,14 @@ export function checkTopic(id, glossary, figures) {
       } else if (topic.kind !== 'physiology') warn('lesson: no anatomy panel on an anatomy or mixed topic');
       if (!Array.isArray(L.chain) || L.chain.length < 3) err('lesson: chain needs at least 3 cause-and-effect steps');
       for (const s of L.chain || []) { if (!s.cause || !s.effect) err('lesson: every chain step needs cause and effect'); texts.push(`${strip(s.cause)}\n${strip(s.effect)}`); }
+      if (L.ideas !== undefined) {
+        if (!Array.isArray(L.ideas) || L.ideas.some(x => typeof x !== 'string' || !x.trim())) err('lesson: ideas must be a list of short HTML strings');
+        else for (const [i, x] of L.ideas.entries()) {
+          const words = strip(x).replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+          if (words > 70) err(`lesson: key idea ${i + 1} is ${words} words; keep each to a few sentences (70 words at most)`);
+          texts.push(strip(x));
+        }
+      }
       if (!L.misconception || !L.misconception.wrong || !L.misconception.right) err('lesson: misconception needs wrong and right');
       else texts.push(`${L.misconception.wrong}\n${L.misconception.right}`);
       if (!Array.isArray(L.check) || L.check.length < 5 || L.check.length > 8) err('lesson: check needs 5 to 8 question ids');

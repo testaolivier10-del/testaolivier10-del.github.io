@@ -134,15 +134,18 @@ function lessonPage(id) {
   const nxBuilt = nx && C.built.has(nx.id);
   const fig = L.anatomy && L.anatomy.figure ? C.figures[L.anatomy.figure] : null;
   const earlier = buildsOn(id);
-  // The lesson's parts in the spec's order (section 4). Anatomy is left out
-  // when the topic has no figure and Connections when it has none, so a
-  // lesson has 9 to 11 parts. Each part is a step in the stepped view.
+  // The lesson's parts in the spec's order (section 4). A part with nothing
+  // in it is left out: Anatomy when the topic has no figure, Key ideas when
+  // the chain names everything the lesson uses, Connections when there are
+  // none, What this builds on when the topic depends on no earlier one, and
+  // the Prerequisite check on the first topic (decision 68). Each part is a step in
+  // the stepped view.
   const parts = [
     { id: 'hook', kind: 'Clinical hook', nav: 'Why this matters', h: 'Why this matters', cls: 'anp-hook', html: g(L.hook) },
-    { id: 'builds-on', kind: 'Foundations', nav: 'What this builds on', h: 'What this builds on',
-      html: earlier.length ? `<nav class="anp-nav-ref" aria-label="Earlier topics"><ul class="anp-links">${earlier.map(x => `<li>${topicRef(x, depth)}</li>`).join('')}</ul></nav>` : '<p>This is where the course starts. Nothing comes before it.</p>' },
-    { id: 'prereq', kind: 'Prerequisite check', nav: 'Quick check', h: 'Quick check before you start',
-      html: (L.prereq || []).length ? `<div class="anp-qs" data-set="prereq">${pageData.prereq.map((p, i) => questionHtml(p, i + 1)).join('')}</div>` : '<p>No prerequisites: this topic starts from zero.</p>' },
+    earlier.length && { id: 'builds-on', kind: 'Foundations', nav: 'What this builds on', h: 'What this builds on',
+      html: `<nav class="anp-nav-ref" aria-label="Earlier topics"><ul class="anp-links">${earlier.map(x => `<li>${topicRef(x, depth)}</li>`).join('')}</ul></nav>` },
+    (L.prereq || []).length && { id: 'prereq', kind: 'Prerequisite check', nav: 'Quick check', h: 'Quick check before you start',
+      html: `<div class="anp-qs" data-set="prereq">${pageData.prereq.map((p, i) => questionHtml(p, i + 1)).join('')}</div>` },
     fig && { id: 'anatomy', kind: 'Anatomy panel', nav: 'Anatomy', h: 'Anatomy', html: `<figure class="anp-figure anp-anatomy">
         ${figureImg(C, L.anatomy.figure, depth, { topic: id })}
         <figcaption>${g(L.anatomy.caption || '')} ${credit(fig)}</figcaption>
@@ -150,6 +153,8 @@ function lessonPage(id) {
       ${(fig.labels || []).some(l => l.box) ? '<button type="button" class="btn-outline anp-toggle-labels" aria-pressed="false">Hide labels</button><p class="anp-hint">With labels hidden, select a box to reveal its label.</p>' : ''}` },
     { id: 'chain', kind: 'Causal chain', nav: 'How it works', h: 'How it works, step by step',
       html: `<ol class="anp-chain">${L.chain.map(s => `<li><span class="anp-cause">${g(s.cause)}</span><span class="anp-arrow" aria-hidden="true">→</span><span class="anp-effect">${g(s.effect)}</span></li>`).join('')}</ol>` },
+    (L.ideas || []).length && { id: 'ideas', kind: 'Key ideas', nav: 'Key ideas', h: 'Key ideas',
+      html: `<ul class="anp-ideas">${L.ideas.map(x => `<li>${g(x)}</li>`).join('')}</ul>` },
     { id: 'core', kind: 'Core concept', nav: 'Core concepts', h: 'Core concepts',
       html: `<p class="anp-core-tags anp-nav-ref">${t.coreConcepts.map(c => `<a class="anp-core" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}</p>` },
     { id: 'misconception', kind: 'Misconception', nav: 'A common mistake', h: 'A common mistake', cls: 'anp-misconception',

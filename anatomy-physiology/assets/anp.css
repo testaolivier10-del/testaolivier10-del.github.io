@@ -104,6 +104,7 @@ a.anp-tag:hover{text-decoration:underline;}
 .anp-chain li::before{content:counter(step);grid-row:1 / span 3;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
 .anp-chain .anp-arrow{color:var(--cink);font-weight:900;}
 .anp-chain .anp-cause{font-weight:700;}
+.anp-ideas{margin:0;padding-left:20px;}.anp-ideas li{margin:0 0 10px;}
 .anp-core-tags{display:flex;flex-wrap:wrap;gap:8px;}
 .anp-core{display:inline-block;padding:6px 13px;border-radius:12px;background:var(--white);box-shadow:var(--lift-sm);font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
 .anp-misconception{border-left:4px solid var(--warn, #C98A1A);padding-left:16px;}

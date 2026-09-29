@@ -90,6 +90,12 @@ The generator builds the page in this fixed order. You supply the parts marked "
    the "hide labels" toggle.
 5. Causal chain (you): at least 3 numbered steps. Each step has a `cause` and an `effect`, and each
    effect leads into the next step's cause.
+5a. Key ideas (you, when needed): `"ideas"`, a list of short HTML strings, one or two sentences
+   each (70 words at most), placed after the chain. Give one for every concept this topic owns
+   that the chain does not name but the misconception box, the check questions or the summary
+   use, defined the way the notes page defines it, with word roots at first use. Run
+   `node scripts/check-anp-lesson-gaps.mjs --topic <id>`; it must report no gaps. Leave the
+   field out when the chain already names everything.
 6. Core concept tags (generated).
 7. Misconception box (you): name the wrong idea directly, then explain why it is wrong.
 8. Retrieval check (you): 5 to 8 question ids from this topic's bank, mixing levels.

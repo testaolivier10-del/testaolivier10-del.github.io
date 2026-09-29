@@ -11,6 +11,12 @@
     { "cause": "Several organs work on a shared job.", "effect": "An organ system forms, such as the digestive system." },
     { "cause": "All eleven organ systems work together and depend on each other.", "effect": "A whole organism, you, stays alive." }
   ],
+  "ideas": [
+    "<b>Anatomy</b> (ana- = apart, -tomy = cutting) is the study of your body's structures: their shape, size, parts and position. <b>Physiology</b> (physi/o = nature, -logy = study of) is the study of how those structures work, such as how fast your heart's chambers fill.",
+    "A rock and a cell are both made of atoms, but only the cell is alive. Living things share a set of characteristics: organization, <b>metabolism</b> (meta- = change, bol = throw), which is the sum of all the chemical changes in your body, responsiveness, movement, growth, development and reproduction. Growth is an increase in size, from more cells, bigger cells or more material between them.",
+    "Your body keeps many internal conditions within a <b>normal range</b>, the band of values found in healthy people. On a cold walk your skin cools, but shivering makes heat and your body temperature stays close to 37 °C (98.6 °F).",
+    "Blood vessels are named by the direction blood flows relative to the heart. An <b>artery</b> carries blood away from the heart, and a <b>vein</b> carries it back. A <b>capillary</b> (Latin capillaris = hairlike) is the smallest vessel, with a wall one cell thick; it links arteries to veins and lets oxygen, nutrients and wastes pass between your blood and your cells."
+  ],
   "misconception": {
     "wrong": "Arteries carry blood high in oxygen and veins carry blood low in oxygen.",
     "right": "Arteries and veins are named by the direction blood flows relative to the heart. Arteries carry blood away from the heart and veins carry it back. Most arteries do carry blood high in oxygen, but the arteries from your heart to your lungs carry blood low in oxygen, and the veins from your lungs back to your heart carry blood high in oxygen."
