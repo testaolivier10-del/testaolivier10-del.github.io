@@ -406,11 +406,13 @@
       6:['leaving-group-ability','acyl-reactivity-order'],
       7:['acyl-reactivity-order','leaving-group-ability'] } },
 
-    'addition-reactions': { n:8, steps:{
+    'addition-reactions': { n:10, steps:{
       1:['alkene-pi-nucleophile'],
       2:['alkene-pi-nucleophile','electrophile-recognition'],
       4:['addition-stereochem','stereochemical-outcome'],
-      7:['addition-stereochem','stereochemical-outcome'] } },
+      6:['alkene-pi-nucleophile','nucleophile-recognition'],
+      7:['carbocation-rearrangement','carbocation-stability'],
+      9:['addition-stereochem','stereochemical-outcome'] } },
 
     'alcohol-reactions': { n:8, steps:{
       1:['alcohol-activation'],
