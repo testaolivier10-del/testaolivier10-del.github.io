@@ -745,17 +745,17 @@ FIGURES.push({
     s += tg(380, 564, '3 · THE C=O REFORMS AND THE LEAVING GROUP GOES');
     s += tetrahedral(P(150, 688), { arrows: true });
     s += arrow(P(372, 688), P(420, 688));
-    const c6 = P(480, 680);
+    const c6 = P(440, 680);
     const o6 = at(c6, 90, 56), r6 = at(c6, 210, 56), n6 = at(c6, 330, 58);
     s += bond(c6, o6, { order: 2, rFrom: 16, rTo: 15 }) + atom(o6.x, o6.y, 'O');
     s += bond(c6, r6, { rFrom: 16, rTo: 15 }) + atom(r6.x, r6.y, 'R');
     s += bond(c6, n6, { rFrom: 16, rTo: 15, cls: 'fg-bond-hi' });
     s += arm(n6, 30, 46, 'R′').s + arm(n6, 270, 40, 'H', { r: 12 }).s + atom(n6.x, n6.y, 'N');
     s += atom(c6.x, c6.y, 'C');
-    s += tg(500, 774, 'the amide (after N loses H⁺)');
-    s += lbl(596, 654, '+ CyNH–C(=O)–NHCy', 'start');
-    s += tg(612, 676, 'dicyclohexylurea (after', 'start');
-    s += tg(612, 692, 'the leaving group gains H⁺)', 'start');
+    s += tg(460, 774, 'the amide (after N loses H⁺)');
+    s += lbl(560, 654, '+ CyNH–C(=O)–NHCy', 'start');
+    s += tg(576, 676, 'dicyclohexylurea', 'start');
+    s += tg(576, 694, '(after it gains H⁺)', 'start');
     return s;
   },
   caption: 'Cy is cyclohexyl, C₆H₁₁. Follow the coral atoms: the acid’s oxygen bonds to DCC’s central carbon (highlighted bond), and in panel 3 that oxygen leaves, taking the DCC part with it as dicyclohexylurea. Proton transfers are not drawn.',
@@ -825,11 +825,11 @@ FIGURES.push({
         t += curve(lpTip(S1, 30, 27), P(C5.x - 6, C5.y - 18), { bow: -12, size: 7 });
         t += curve(onBond(C5, o, 0.5, -8), P(o.x + 18, o.y + 6), { bow: -12, size: 7 });
       } else {
-        t += lp(S1, 90, 21) + lp(o, 150) + lp(o, 60) + lp(o, 330);
-        t += atom(o.x, o.y, 'O', { kind: 'hi' }) + charge(o.x + 24, o.y + 22, '−', 'fg-hi');
+        t += lp(S1, 90, 21) + lp(o, 160) + lp(o, 80) + lp(o, 0);
+        t += atom(o.x, o.y, 'O', { kind: 'hi' }) + charge(at(o, 215, 28).x, at(o, 215, 28).y + 5, '−', 'fg-hi');
         t += atom(S1.x, S1.y, 'S', { kind: 'warn' }) + charge(S1.x - 26, S1.y - 4, '+');
-        t += curve(lpTip(o, 150, 27), onBond(C5, o, 0.5, 8), { bow: 12, size: 7 });
-        t += fromBond(C5, np, P(np.x - 6, np.y + 18), -12, -6);
+        t += curve(lpTip(o, 0, 27), onBond(C5, o, 0.5, -8), { bow: -14, size: 7 });
+        t += fromBond(C5, np, P(np.x - 12, np.y + 16), 14, -7);
       }
       t += atom(np.x, np.y, 'N', { kind: stage === 1 ? 'warn' : undefined });
       t += atom(N3.x, N3.y, 'N') + atom(C4.x, C4.y, 'CH') + atom(C2.x, C2.y, 'C') + atom(C5.x, C5.y, 'C', { kind: 'warn' });

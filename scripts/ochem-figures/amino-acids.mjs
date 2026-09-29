@@ -100,7 +100,8 @@ FIGURES.push({
     s += Tag(P(170, 22), 'alanine: an α-amino acid');
     s += aminoAcid(c, { acid: 'COOH', amine: 'NH2', alpha: 'C', showH: true, hi: ['side'] });
     s += atom(c.x, c.y, 'C', { kind: 'hi' });
-    s += Tag(P(116, 84), 'α carbon', { anchor: 'end' });
+    s += Tag(P(84, 70), 'α carbon');
+    s += `<line class="fg-rule" x1="100" y1="78" x2="127" y2="106"></line>`;
     s += Tag(P(72, 158), 'amino group');
     s += Tag(P(262, 214), 'carboxyl group');
     s += Tag(P(140, 214), 'side chain R');
@@ -119,18 +120,17 @@ FIGURES.push({
   anchor: '<h3>In water, an amino acid carries two charges</h3>',
   lessons: ['amino-acids'],
   alt: 'Two drawings of alanine joined by an equilibrium that lies far toward the lower one. Above, the form with no charges: COOH and NH2, with the O–H highlighted. Below, the zwitterion: the carboxylate O minus and the ammonium H3N plus, both highlighted. A label says the proton moves from the oxygen to the nitrogen.',
-  viewBox: '0 0 340 388',
+  viewBox: '0 0 340 432',
   build() {
     let s = '';
-    s += panel(8, 8, 324, 150);
-    s += Tag(P(170, 30), 'no charges drawn: a tiny fraction');
-    s += aminoAcid(P(140, 84), { acid: 'COOH', amine: 'NH2', hi: ['acid'] });
-    s += eqmVDown(92, 170, 222);
-    s += Tag(P(108, 192), 'H⁺ moves from O to N', { anchor: 'start' });
-    s += Tag(P(108, 210), 'the pKa 2 acid protonates the amine', { anchor: 'start' });
-    s += panel(8, 230, 324, 150, { kind: 'hi' });
-    s += Tag(P(170, 252), 'zwitterion: net charge 0');
-    s += aminoAcid(P(140, 306), { acid: 'COO-', amine: 'NH3+', hi: ['acid', 'amine'] });
+    s += panel(8, 8, 324, 170);
+    s += Tag(P(170, 28), 'no charges drawn: a tiny fraction');
+    s += aminoAcid(P(140, 104), { acid: 'COOH', amine: 'NH2', hi: ['acid'] });
+    s += eqmVDown(150, 188, 244);
+    s += Tag(P(168, 220), 'H⁺ moves from O to N', { anchor: 'start' });
+    s += panel(8, 254, 324, 170, { kind: 'hi' });
+    s += Tag(P(170, 274), 'zwitterion: net charge 0');
+    s += aminoAcid(P(140, 350), { acid: 'COO-', amine: 'NH3+', hi: ['acid', 'amine'] });
     return s;
   },
   caption: 'The form you might draw first (top) and the form actually present in water and in the crystal (bottom).',

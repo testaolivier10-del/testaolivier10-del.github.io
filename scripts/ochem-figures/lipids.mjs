@@ -858,62 +858,66 @@ FIGURES.push({
 });
 
 /* ================================================= prostaglandin E2 ===== */
+/* The ring in the usual orientation: C10 at the left, C11 lower left, C12
+   lower right, C8 upper right, C9 upper left. With the ring drawn this way a
+   hashed group is alpha (below the ring) and a wedged one beta, so: the
+   upper chain on C8 hashed, the lower chain on C12 wedged, the C11 OH hashed.
+   C15 sits at a lower vertex of the lower chain with C14 to its left, and a
+   hashed OH there is the S configuration. */
 FIGURES.push({
   id: 'prostaglandin-e2',
   section: 'lipids',
   anchor: 'the same kind of reaction as saponification with a different nucleophile.</div>',
-  viewBox: '0 0 760 250',
-  alt: 'Prostaglandin E2. A five-membered ring carries a ketone at C9 and a hashed OH at C11. From C8 a hashed bond leads to the upper chain, seven carbons with a cis double bond between C5 and C6, ending in COOH at C1. From C12 a wedged bond leads to the lower chain, eight carbons with a trans double bond between C13 and C14, a hashed OH on C15, and a CH3 end at C20.',
+  viewBox: '0 0 700 330',
+  alt: 'Prostaglandin E2. A five-membered ring carries a ketone at C9 and a hashed OH at C11. From C8 a hashed bond leads to the upper chain, seven carbons with a cis double bond between C5 and C6, which rises to a COOH group at C1. From C12 a wedged bond leads to the lower chain, eight carbons with a trans double bond between C13 and C14, a hashed OH on C15, and a CH3 end at C20.',
   build() {
     let s = '';
-    // ring: C10 at the left, then C11, C12, C8, C9 going round
-    const cx = 150, cy = 124, rr = 36;
-    const ang = [180, 252, 324, 36, 108].map((d) => P(cx + rr * Math.cos((d * Math.PI) / 180), cy - rr * Math.sin((d * Math.PI) / 180)));
-    const [C10, C11, C12, C8, C9] = ang;
+    const cx = 130, cy = 196, rr = 36;
+    const V = (d) => P(cx + rr * Math.cos((d * Math.PI) / 180), cy - rr * Math.sin((d * Math.PI) / 180));
+    const C10 = V(180), C11 = V(252), C12 = V(324), C8 = V(36), C9 = V(108);
     const ring = [C10, C11, C12, C8, C9];
     for (let i = 0; i < 5; i++) s += bond(ring[i], ring[(i + 1) % 5], { rFrom: 0, rTo: 0 });
-    // C9 ketone
-    const O9 = A(at(C9, 150, 40).x, at(C9, 150, 40).y, 'O');
+    const ctr = P(cx, cy);
+    // C9 ketone, pointing out of the ring
+    const o9 = at(C9, dirOf(ctr, C9), 38);
+    const O9 = A(o9.x, o9.y, 'O');
     s += bd({ ...C9, r: 0 }, O9, { order: 2 }) + draw(O9);
-    // C11 OH, hashed
-    const O11 = at(C11, 216, 40);
-    s += hash(C11, O11, { rFrom: 0, rTo: 14, width: 9, rungs: 5 }) + atom(O11.x, O11.y, 'HO', { r: 14 });
-    // upper chain: C8 -> C7 ... C1; hashed first bond, cis C6=C5 (bond 3)
+    // C11 OH, hashed, pointing out of the ring
+    const o11 = at(C11, dirOf(ctr, C11), 38);
+    s += hash(C11, o11, { rFrom: 0, rTo: 14, width: 9, rungs: 4 }) + atom(o11.x, o11.y, 'HO', { r: 14 });
+    // upper chain: C8 -> C7 ... C1, first bond hashed, cis C6=C5
     const up = chainPts(C8.x, C8.y, 7, 34, 0, { cis: [3], s: -1 });
-    s += hash(up[0], up[1], { rFrom: 0, rTo: 0, width: 9, rungs: 5 });
+    s += hash(up[0], up[1], { rFrom: 0, rTo: 0, width: 9, rungs: 4 });
     s += chainInk(up.slice(1), { dbl: [2] });
-    const cO = carboxyl(up[7], dirOf(up[6], up[7]) + 180, { L: 28 });
-    // carboxyl expects the chain bond direction from C1: that is toward C2
+    const cO = carboxyl(up[7], dirOf(up[7], up[6]), { L: 28 });
     s += cO.svg;
-    // lower chain: C12 -> C13 ... C20; wedged first bond, trans C13=C14 (bond 2)
+    // lower chain: C12 -> C13 ... C20, first bond wedged, trans C13=C14
     const lo = chainPts(C12.x, C12.y, 9, 34, 0, { s: 1 });
     s += wedge(lo[0], lo[1], { rFrom: 0, rTo: 0, width: 8 });
     s += chainInk(lo.slice(1), { dbl: [1] });
-    // C15 is lo[3]; OH hashed straight down
-    const O15 = at(lo[3], 90, 40);
-    s += hash(lo[3], O15, { rFrom: 0, rTo: 14, width: 9, rungs: 5 }) + atom(O15.x, O15.y, 'OH', { r: 14 });
-    // numbers
-    const num = (p, n, dx, dy, cls = 'fg-sm') => text(p.x + dx, p.y + dy, String(n), { cls, size: cls === 'fg-sm' ? 10 : 11 });
-    s += num(C8, 8, 4, 22) + num(C9, 9, 8, 16) + num(C10, 10, 14, 4) + num(C11, 11, 12, -6) + num(C12, 12, -14, -4);
-    [7, 6, 5, 4, 3, 2, 1].forEach((n, i) => {
-      const p = up[i + 1], prev = up[i], next = up[i + 2] ?? cO.Od;
+    const o15 = at(lo[3], 90, 38);
+    s += hash(lo[3], o15, { rFrom: 0, rTo: 14, width: 9, rungs: 4 }) + atom(o15.x, o15.y, 'OH', { r: 14 });
+    // locants
+    const nt = (q, n, key) => text(q.x, q.y + 4, String(n), { cls: key ? 'fg-tag' : 'fg-sm', size: key ? 11 : 10 });
+    s += nt(at(C10, 180, 13), 10) + nt(at(C9, 20, 14), 9) + nt(at(C11, 0, 14), 11);
+    s += nt(at(C8, 200, 14), 8) + nt(at(C12, 160, 14), 12);
+    const chainNum = (pts, i, n, key) => {
+      const p = pts[i], prev = pts[i - 1], next = pts[i + 1] ?? at(p, dirOf(prev, p), 30);
       const aw = mid(prev, next), d = Math.hypot(p.x - aw.x, p.y - aw.y) || 1;
-      s += text(p.x + ((p.x - aw.x) / d) * 14, p.y + ((p.y - aw.y) / d) * 14 + 4, String(n), { cls: n === 1 ? 'fg-tag' : 'fg-sm', size: n === 1 ? 11 : 10 });
-    });
-    [13, 14, 15, 16, 17, 18, 19, 20].forEach((n, i) => {
-      const p = lo[i + 1], prev = lo[i], next = lo[i + 2] ?? at(p, dirOf(lo[i], p), 30);
-      const aw = mid(prev, next), d = Math.hypot(p.x - aw.x, p.y - aw.y) || 1;
-      if (n === 15) return;
-      s += text(p.x + ((p.x - aw.x) / d) * 14, p.y + ((p.y - aw.y) / d) * 14 + 4, String(n), { cls: n === 20 ? 'fg-tag' : 'fg-sm', size: n === 20 ? 11 : 10 });
-    });
-    s += text(lo[3].x + 14, lo[3].y + 2, '15', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += tag(cx, 214, 'five-membered ring');
-    s += tag(470, 26, 'upper chain: cis C5=C6, COOH at C1');
-    s += tag(470, 236, 'lower chain: trans C13=C14, CH₃ at C20');
-    s += tag(40, 30, 'PGE₂', { anchor: 'start' });
+      return nt(P(p.x + ((p.x - aw.x) / d) * 14, p.y + ((p.y - aw.y) / d) * 14), n, key);
+    };
+    [7, 6, 5, 4, 3, 2].forEach((n, k) => { s += chainNum(up, k + 1, n); });
+    s += nt(at(up[7], dirOf(up[6], up[7]), 16), 1, true);
+    [13, 14, 16, 17, 18, 19].forEach((n) => { s += chainNum(lo, n - 12, n); });
+    s += nt(at(lo[3], 20, 16), 15);
+    s += nt(at(lo[8], dirOf(lo[7], lo[8]), 16), 20, true);
+    s += tag(cx, 290, 'five-membered ring');
+    s += tag(420, 40, 'upper chain: cis C5=C6, COOH at C1', { anchor: 'start' });
+    s += tag(420, 310, 'lower chain: trans C13=C14, CH₃ at C20');
+    s += tag(40, 40, 'PGE₂', { anchor: 'start' });
     return s;
   },
-  caption: 'Prostaglandin E<sub>2</sub>, one of the prostaglandins made from arachidonic acid. All twenty carbons of the acid are still there; C8 and C12 are now joined in a ring.',
+  caption: 'Prostaglandin E<sub>2</sub>, one of the prostaglandins made from arachidonic acid. All twenty carbons of the acid are still there, and C8 and C12 are now joined in a ring.',
   note: 'Hashed bonds point away from you and the wedge toward you. The two chains leave the ring on opposite faces.',
 });
 
@@ -922,18 +926,21 @@ FIGURES.push({
   id: 'wax-ester',
   section: 'lipids',
   anchor: 'one long-chain acid joined to one long-chain alcohol by a single ester.</p>',
-  viewBox: '0 0 560 150',
+  viewBox: '0 0 560 170',
   alt: 'A beeswax ester: C15H31, the chain of palmitic acid, bonded to a carbonyl carbon with a double-bonded O, which is bonded through a single O to C30H61, the chain of a thirty-carbon alcohol. The C15H31 side is labeled from the C16 acid and the O-C30H61 side from the C30 alcohol.',
   build() {
     let s = '';
-    const R = A(110, 90, 'C₁₅H₃₁'), C = A(210, 90, 'C', 'hi'), O = A(210, 44, 'O'), Os = A(270, 90, 'O'),
-          R2 = A(376, 90, 'C₃₀H₆₁');
-    s += bar(170, 24, 130, 88, { kind: 'hi', opacity: 0.16 });
+    const C = A(220, 84, 'C', 'hi');
+    const O = A(220, 38, 'O');
+    const Rp = at(C, 150, 62), R = A(Rp.x - 16, Rp.y, 'C₁₅H₃₁');
+    const Osp = at(C, 30, 46), Os = A(Osp.x, Osp.y, 'O');
+    const R2p = at(Os, -30, 62), R2 = A(R2p.x + 18, R2p.y, 'C₃₀H₆₁');
+    s += bar(184, 20, 118, 108, { kind: 'hi', opacity: 0.16 });
     s += bd(R, C) + bd(C, O, { order: 2 }) + bd(C, Os) + bd(Os, R2);
     s += draw(R, C, O, Os, R2);
-    s += tag(140, 136, 'from the C16 acid (palmitic)');
-    s += tag(400, 136, 'from the C30 alcohol');
-    s += tag(236, 16, 'one ester group', { cls: 'fg-tag' });
+    s += tag(130, 158, 'from the C16 acid (palmitic)');
+    s += tag(400, 158, 'from the C30 alcohol');
+    s += tag(243, 12, 'one ester group', { cls: 'fg-tag' });
     return s;
   },
   caption: 'One ester and two long saturated chains. The acid part counts sixteen carbons, including the carbonyl carbon.',
@@ -944,23 +951,23 @@ FIGURES.push({
   id: 'limonene-isoprene',
   section: 'lipids',
   anchor: 'and it is the usual one. The second bond closes the ring.</p>',
-  viewBox: '0 0 700 260',
-  alt: 'Left: isoprene, CH2=C(CH3)-CH=CH2, drawn skeletally as a four-carbon chain with a methyl branch on C2, with its branch point, the end next to the branch and the far end labeled. Right: limonene, a six-membered ring with a C1=C2 double bond, a methyl on C1 and an isopropenyl group on C4. One isoprene unit, the methyl, C1, C2, C3 and C6, is drawn in the accent color; the other, C4, C5 and the isopropenyl carbons, in black. The C5-C6 bond, joining the far end of one unit to the carbon next to the branch in the other, is labeled head-to-tail link; the C3-C4 bond is labeled ring-closing bond.',
+  viewBox: '0 0 720 290',
+  alt: 'Left: isoprene, CH2=C(CH3)-CH=CH2, drawn skeletally as a four-carbon chain with a methyl branch on C2; its branch point, the end next to the branch and the far end are labeled. Right: limonene, a six-membered ring with a C1=C2 double bond, a methyl (C7) on C1 and an isopropenyl group (C8, C9, C10) on C4. One isoprene unit, C7, C1, C2, C3 and C6, is drawn in the accent color; the other, C4, C5, C8, C9 and C10, in black. The dashed C5-C6 bond, joining the far end of one unit to the carbon next to the branch in the other, is labeled head-to-tail link; the dashed C3-C4 bond is labeled ring-closing bond.',
   build() {
     let s = '';
     // isoprene: C1=C2(C5)–C3=C4
-    const i1 = P(60, 150), i2 = at(i1, -30, 36), i3 = at(i2, 30, 36), i4 = at(i3, -30, 36), i5 = at(i2, -90, 36);
+    const i1 = P(56, 170), i2 = at(i1, -30, 36), i3 = at(i2, 30, 36), i4 = at(i3, -30, 36), i5 = at(i2, -90, 36);
     s += ringDouble(i1, i2, i3, { inset: 5, gap: 4.4 }) + bond(i2, i3, { rFrom: 0, rTo: 0 }) + ringDouble(i3, i4, i2, { inset: 5, gap: 4.4 });
     s += bond(i2, i5, { rFrom: 0, rTo: 0 });
-    s += tag(i2.x + 44, i2.y - 44, 'branch point', { anchor: 'start' });
-    s += bond(P(i2.x + 40, i2.y - 48), P(i2.x + 6, i2.y - 6), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
-    s += tag(i1.x, i1.y + 22, 'end next to', { anchor: 'middle' });
-    s += tag(i1.x, i1.y + 36, 'the branch', { anchor: 'middle' });
-    s += tag(i4.x + 10, i4.y + 22, 'far end', { anchor: 'middle' });
-    s += tag(110, 236, 'isoprene, C₅H₈');
+    s += tag(i2.x + 36, i2.y - 50, 'branch point', { anchor: 'start' });
+    s += bond(P(i2.x + 34, i2.y - 46), P(i2.x + 6, i2.y - 8), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+    s += tag(i1.x, i1.y + 24, 'end next to');
+    s += tag(i1.x, i1.y + 38, 'the branch');
+    s += tag(i4.x + 6, i4.y - 14, 'far end');
+    s += tag(112, 270, 'isoprene, C₅H₈');
 
     // limonene
-    const cx = 480, cy = 128, r = 40;
+    const cx = 470, cy = 132, r = 40;
     const hx = (d) => at(P(cx, cy), d, r);
     const L1 = hx(-90), L2 = hx(-30), L3 = hx(30), L4 = hx(90), L5 = hx(150), L6 = hx(210);
     const L7 = at(L1, -90, 40), L8 = at(L4, 90, 40), L9 = at(L8, 150, 40), L10 = at(L8, 30, 40);
@@ -973,18 +980,19 @@ FIGURES.push({
     s += bond(L4, L8, { rFrom: 0, rTo: 0 });
     s += ringDouble(L8, L9, L10, { inset: 5, gap: 4.4 });
     s += bond(L8, L10, { rFrom: 0, rTo: 0 });
-    // the two joining bonds, dashed
     s += `<line class="fg-dash-hi" x1="${L5.x}" y1="${L5.y}" x2="${L6.x}" y2="${L6.y}"></line>`;
     s += `<line class="fg-dash-hi" x1="${L3.x}" y1="${L3.y}" x2="${L4.x}" y2="${L4.y}"></line>`;
     const num = (p, n, deg) => { const q = at(p, deg, 14); return text(q.x, q.y + 4, String(n), { cls: 'fg-sm', size: 10 }); };
-    s += num(L1, 1, -150) + num(L2, 2, -30) + num(L3, 3, 30) + num(L4, 4, 160) + num(L5, 5, 150) + num(L6, 6, 210) + num(L7, 7, 0);
-    s += tag(640, 100, 'unit 1 (accent)', { anchor: 'middle' });
-    s += tag(640, 116, 'C1, C2, C3, C6, C7', { anchor: 'middle', cls: 'fg-tag-mut' });
-    s += tag(640, 214, 'unit 2 (black)', { anchor: 'middle' });
-    s += tag(640, 230, 'C4, C5 and the side group', { anchor: 'middle', cls: 'fg-tag-mut' });
-    s += tag(344, 196, 'C5–C6: head-to-tail link', { anchor: 'start', cls: 'fg-tag-good' });
-    s += tag(344, 60, 'C3–C4: ring-closing bond', { anchor: 'start', cls: 'fg-tag-good' });
-    s += tag(480, 252, 'limonene, C₁₀H₁₆');
+    s += num(L1, 1, -150) + num(L2, 2, -30) + num(L3, 3, 20) + num(L4, 4, 20) + num(L5, 5, 160) + num(L6, 6, 200) + num(L7, 7, 0);
+    s += num(L8, 8, 180) + num(L9, 9, 180) + num(L10, 10, 0);
+    s += tag(L5.x - 26, (L5.y + L6.y) / 2 - 4, 'head-to-tail link', { anchor: 'end', cls: 'fg-tag-good' });
+    s += tag(L5.x - 26, (L5.y + L6.y) / 2 + 12, '(C5–C6)', { anchor: 'end', cls: 'fg-tag-good' });
+    s += tag(L3.x + 24, (L3.y + L4.y) / 2 + 4, 'ring-closing bond (C3–C4)', { anchor: 'start', cls: 'fg-tag-good' });
+    s += tag(610, 70, 'unit 1, in color:', { anchor: 'start' });
+    s += tag(610, 86, 'C1, C2, C3, C6, C7', { anchor: 'start', cls: 'fg-tag-mut' });
+    s += tag(560, 236, 'unit 2, in black:', { anchor: 'start' });
+    s += tag(560, 252, 'C4, C5, C8, C9, C10', { anchor: 'start', cls: 'fg-tag-mut' });
+    s += tag(470, 284, 'limonene, C₁₀H₁₆');
     return s;
   },
   caption: 'Two five-carbon units, each with the branched skeleton of isoprene. The dashed bonds join them.',
