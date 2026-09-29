@@ -503,7 +503,7 @@ FIGURES.push({
     s += tag(cols[2], 312, 'formaldehyde, H₂C=O');
     return s;
   },
-  caption: 'Top row: the arrows. Bottom row: the structure they give. Check the charges in each bottom structure against its formal-charge count.',
+  caption: 'Top row: the arrows for each move. Bottom row: the structure they give, with its new formal charges.',
 });
 
 /* --------------------------------------------- 6 tautomer or resonance --- */
@@ -605,7 +605,7 @@ FIGURES.push({
     s += resArrow(P(218, 244), P(302, 244)) + resArrow(P(458, 244), P(542, 244));
     return s;
   },
-  caption: 'Every drawing has the same atoms; only the double bonds move. Count the carbons each double bond visits across a row.',
+  caption: 'Within each row the atoms never move. Only the double bonds change places.',
 });
 
 /* ----------------------------------------------- 8 ranking, enolate --- */
