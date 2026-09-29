@@ -101,8 +101,10 @@ FIGURES.push({
       s += A(o, 'O', { r: 15 });
     }
     s += A(et, 'Et', { r: 17, kind: 'hi' }) + A(mg, 'Mg', { r: 18 }) + A(br, 'Br', { r: 16 });
-    s += tg(182, 114, 'one lone pair', null, 'start');
-    s += tg(182, 196, 'one lone pair', null, 'start');
+    s += tg(158, 114, 'one lone pair', null, 'end');
+    s += tg(158, 196, 'one lone pair', null, 'end');
+    s += tg(334, 196, '4 + 2 + 2 = 8', null, 'end');
+    s += tg(334, 210, 'electrons on Mg', null, 'end');
     s += tg(170, 20, 'diethyl ether');
     s += tg(170, 290, 'diethyl ether');
     return s;
@@ -164,7 +166,7 @@ FIGURES.push({
   id: 'ester-adds-twice',
   section: 'grignard-reagents',
   lessons: ['grignard-reagents'],
-  anchor: 'the ketone is consumed faster than it forms.</p>',
+  anchor: 'how you spot this case in a question.</p>',
   alt: 'Four stacked panels. 1: CH3MgBr adds to ethyl propanoate; one curved arrow runs from the C–Mg bond to the carbonyl carbon and a second from the C=O double bond onto oxygen. 2: the tetrahedral intermediate, with O minus, the new CH3, an ethyl and an ethoxy group on one carbon; an arrow from an oxygen lone pair re-forms the C=O and a second arrow sends the C–OEt bond electrons onto the ethoxy oxygen, which leaves as ethoxide. 3: the ketone butan-2-one meets a second CH3MgBr, with the same two arrows. 4: after H3O+ workup, 2-methylbutan-2-ol, with both CH3 groups from the reagent highlighted.',
   viewBox: '0 0 340 696',
   build() {
@@ -210,7 +212,7 @@ FIGURES.push({
     /* 3: the ketone meets a second equivalent. */
     s += panel(X, 364, W, 160);
     s += tg(X + 12, 384, '3 · a second CH₃ adds to the ketone', null, 'start');
-    s += attack(364, 'Et', 'CH₃', { hi2: true, kc: 'warn' });
+    s += attack(364, 'Et', 'CH₃', { hi2: true });
 
     /* 4: the product, after workup. */
     s += panel(X, 534, W, 154);
@@ -269,7 +271,7 @@ FIGURES.push({
       /* Ring numbers, inside the ring. */
       const ctr = P(cx, cy);
       [c, oA, mg, oM, n].forEach((p, i) => {
-        const q = mid(p, ctr, 0.5);
+        const q = i === 0 ? P(p.x + 4, p.y - 26) : i === 4 ? P(p.x - 4, p.y - 26) : mid(p, ctr, 0.5);
         s += tg(q.x, q.y + 4, String(i + 1), 'good');
       });
       s += tg(cx, 38, 'five-membered chelate');
@@ -318,8 +320,8 @@ FIGURES.push({
       s += B(r, mg, 15, 22) + A(mg, 'MgBr', { r: 22 }) + A(r, 'R', { kind: 'hi' });
       s += curve(mid(r, mg, 0.4), P(c1.x - 12, c1.y + 12), { bow: -22, size: 7 });
       s += curve(mid(c1, o, 0.5), P(o.x - 18, o.y + 2), { bow: -12, size: 7 });
-      s += tg(236, 150, 'attack opposite', null, 'start');
-      s += tg(236, 164, 'the C–O bond', null, 'start');
+      s += tg(24, 78, 'attack opposite', null, 'start');
+      s += tg(24, 92, 'the C–O bond', null, 'start');
       s += arrow(P(170, 170), P(170, 196), { size: 7 });
       s += tg(180, 188, 'then H₃O⁺', null, 'start');
       const y = 222, p1 = P(56, y), p2 = P(116, y), p3 = P(176, y), p4 = P(236, y);
@@ -376,7 +378,6 @@ FIGURES.push({
     s += arrow(P(170, 146), P(170, 176), { size: 7 });
     s += tg(180, 166, 'CH₃MgBr', null, 'start');
     s += lbl(170, 206, 'CH₄  +  ⁻O–CH₂CH₂–CO–CH₃  ⁺MgBr');
-    s += tg(170, 236, 'the ketone is untouched');
     return s;
   },
   caption: '4-Hydroxybutan-2-one with one equivalent of CH₃MgBr. Workup would simply return the starting material.',
