@@ -12,9 +12,19 @@
 
    Notes figures run up to 760 wide. The lesson copies (ids that start with
    l-) stack their panels at 340 wide and use only fg-lbl and fg-tag text. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, rule, panel, P } from '../lib/ochem-figure.mjs';
+import { atom as atom0, bond, wedge, hash, arrow, curve, lonePair, text, rule, panel, P } from '../lib/ochem-figure.mjs';
 
 const FIGURES = [];
+
+/* An atom disc that stays opaque in both themes: the tinted discs are
+   translucent in the dark theme, so a plain opaque disc goes under them and
+   orbital lobes drawn behind an atom do not show through its label. */
+function atom(x, y, l, o = {}) {
+  const kind = o.kind || 'plain';
+  const back = kind === 'hi' || kind === 'warn'
+    ? `<circle class="fg-atom" cx="${Math.round(x * 100) / 100}" cy="${Math.round(y * 100) / 100}" r="${Math.round((o.r ?? 16) * 100) / 100}"></circle>` : '';
+  return back + atom0(x, y, l, o);
+}
 
 /* ------------------------------------------------------------ helpers ---
    `at` walks from a point at a screen angle (0 east, 90 down). A molecule is
@@ -259,7 +269,7 @@ function etheneTop(y, withH) {
     for (const a of [300, 30, 80]) s += lonePair(br.x, br.y, a, { dist: 23 });
     s += curve(P(150, y - 50), P(h.x + 8, h.y + 14), { bow: 14 });
     const mHB = P((h.x + br.x) / 2, (h.y + br.y) / 2);
-    s += curve(P(mHB.x - 2, mHB.y - 6), at(br, 215, 19), { bow: -14 });
+    s += curve(mHB, at(br, 215, 19), { bow: -14 });
   }
   return s;
 }
@@ -276,7 +286,7 @@ FIGURES.push({
     s += tg(170, 172, 'above and below the C–C line');
     return s;
   },
-  caption: 'Ethene seen from the side. The σ bond runs along the C–C line; the π bond lies above and below it.',
+  caption: 'Ethene, its plane seen from slightly above. The σ bond runs along the C–C line; the π bond lies above and below it.',
 });
 
 FIGURES.push({
@@ -290,8 +300,8 @@ FIGURES.push({
     let s = '';
     s += panel(6, 6, 328, 222);
     s += etheneTop(150, true);
-    s += tg(206, 86, 'H⁺ from HBr', 'start');
-    s += tg(66, 100, 'π pair', 'middle');
+    s += tg(94, 66, 'H⁺ from HBr', 'end');
+    s += tg(100, 106, 'π pair', 'end');
     s += arrow(P(170, 232), P(170, 258));
     s += panel(6, 264, 328, 170);
     const A = P(124, 346), B = P(214, 346);
@@ -357,7 +367,7 @@ FIGURES.push({
     const c = P(120, 140);
     s += pUp(c, 50, 9, true);
     s += mol(tBuCation(c));
-    s += charge(P(c.x - 26, c.y - 30), '+');
+    s += charge(P(c.x - 17, c.y - 17), '+');
     s += mut(c.x + 14, c.y - 62, 'empty p', 'start');
     s += itTag(120, 226, 'tert', '-butyl cation');
     s += mut(120, 244, 'six electrons, empty p');

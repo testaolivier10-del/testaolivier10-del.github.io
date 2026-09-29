@@ -585,8 +585,8 @@ FIGURES.push({
     s += tag(250, rows[2].y - 6, rows[2].h);
     s += tag(250, rows[2].y + 12, rows[2].src);
     s += tag(250, rows[2].y + 30, 'pair held closest', { cls: 'fg-tag-good' });
-    s += tag(120, rows[2].y + 52, 'π bonds: above and below (and front and', { cls: 'fg-tag-mut' });
-    s += tag(120, rows[2].y + 68, 'back); the pair points along the axis', { cls: 'fg-tag-mut' });
+    s += tag(170, rows[2].y + 52, 'π bonds: above/below and front/back', { cls: 'fg-tag-mut' });
+    s += tag(170, rows[2].y + 68, 'the pair points along the C≡C axis', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'The lone pair each C–H leaves behind, drawn in its hybrid orbital. Compare the lobes: shortest for sp, longest for sp³.',
