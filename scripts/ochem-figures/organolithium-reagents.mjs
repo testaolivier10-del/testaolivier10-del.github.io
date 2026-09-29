@@ -96,7 +96,7 @@ function reductionPanel(ox, oy) {
   s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
   s += tag(ox + 250, oy + 178, 'β', { anchor: 'start' });
   s += curve(p(212, 176), p(136, 152), { bow: -66 });
-  s += curve(p(242, 82), p(258, 140), { bow: -30 });
+  s += curve(p(229, 97), p(244, 133), { bow: 10 });
   s += curve(p(114, 115), p(104, 92), { bow: -10 });
   s += tag(ox + 250, oy + 214, 'propene leaves;', { cls: 'fg-tag-warn' });
   s += tag(ox + 250, oy + 232, 'workup gives a 2° alcohol', { cls: 'fg-tag-warn' });
@@ -398,7 +398,7 @@ FIGURES.push({
   build() {
     return ldaReactants(0, 0) + arrow(P(170, 214), P(170, 254)) + ldaProduct(0, 262);
   },
-  caption: 'Two isopropyl groups crowd the nitrogen of LDA, so it can take a proton but cannot reach a carbonyl carbon.',
+  caption: 'LDA: the nitrogen keeps two lone pairs and the negative charge, flanked by two isopropyl groups.',
 });
 
 /* ======================================================================
