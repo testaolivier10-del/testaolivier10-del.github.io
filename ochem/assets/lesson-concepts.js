@@ -630,11 +630,12 @@
       8:['chair-axial-equatorial','torsional-strain'],
       10:['chair-axial-equatorial','ring-flip-mechanics'] } },
 
-    'conjugate': { n:7, steps:{
-      1:['conjugate-pairs'],
-      2:['conjugate-pairs','pka-scale'],
-      3:['conjugate-pairs','pka-scale'],
-      6:['conjugate-pairs','pka-scale'] } },
+    'conjugate': { n:11, steps:{
+      2:['conjugate-pairs'],
+      4:['conjugate-pairs','bronsted-identification'],
+      6:['conjugate-pairs'],
+      7:['conjugate-pairs'],
+      10:['conjugate-pairs'] } },
 
     'curved-arrows': { n:11, steps:{
       1:['curved-arrow-direction'],

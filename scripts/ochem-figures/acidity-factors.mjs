@@ -1,195 +1,685 @@
 /* Figures for the acidity-factors notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Acids & Bases comes after Drawing Molecules, so carbon skeletons are drawn
+   skeletally. Every charged atom shows its lone pairs and its charge; a lone
+   pair on a carbanion carbon is drawn too, so the pair the text talks about is
+   always visible. Lesson copies (id prefix l-) are 340 wide or less, stacked,
+   and use only fg-lbl and fg-tag text. */
+import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
+import { ringDouble, polyPts, locant } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
 
-/* ---------------------------------------------------------------- 113 ---
-   "Phenoxide delocalizes its charge into the aromatic ring" was a sentence
-   with no picture, in a section whose own pitfall box says to draw both
-   conjugate bases before reasoning. */
+/* ------------------------------------------------------------ helpers --- */
+const rad = (d) => (d * Math.PI) / 180;
+/* A point `len` from c in math-angle direction deg (0 east, 90 up). */
+const at = (c, deg, len) => P(c.x + Math.cos(rad(deg)) * len, c.y - Math.sin(rad(deg)) * len);
+const r2 = (v) => Math.round(v * 100) / 100;
+const minus = (x, y, cls = 'fg-hi') => text(x, y, '−', { cls, size: 15 });
+/* A double-headed resonance arrow. */
+const resArrow = (a, b) => arrow(a, b, { muted: true }) + arrow(b, a, { muted: true });
+/* Lone pairs at screen angles (degrees, y down). */
+const pairs = (o, angs, dist = 23) => angs.map((a) => lonePair(o.x, o.y, a, { dist })).join('');
+/* A skeletal bond between two unlabelled vertices. */
+const sk = (a, b, o = {}) => bond(a, b, { rFrom: 0, rTo: 0, ...o });
+const ellipse = (cx, cy, rx, ry, deg, cls = 'fg-orb') =>
+  `<ellipse class="${cls}" cx="${r2(cx)}" cy="${r2(cy)}" rx="${rx}" ry="${ry}" transform="rotate(${r2(-deg)} ${r2(cx)} ${r2(cy)})"></ellipse>`;
+const dot = (x, y) => `<circle class="fg-lp" cx="${r2(x)}" cy="${r2(y)}" r="2.6"></circle>`;
+
+/* A carbanion carbon in a skeleton: its lone pair and charge, placed along
+   `out` (a unit direction away from the bonds). */
+function carbanion(v, out, { pd = 12, cd = 25, side = 1 } = {}) {
+  const ang = Math.atan2(out.y, out.x) * 180 / Math.PI;
+  const px = -out.y * side, py = out.x * side;
+  return lonePair(v.x, v.y, ang, { dist: pd }) +
+    minus(v.x + out.x * cd + px * 10, v.y + out.y * cd + py * 10 + 5);
+}
+const unit = (from, to) => { const dx = to.x - from.x, dy = to.y - from.y, l = Math.hypot(dx, dy) || 1; return { x: dx / l, y: dy / l }; };
+
+/* ============================================================ ATOM ====== */
+/* Anions as discs. Across a row the discs are one size; down the halogen
+   column they are scaled to ionic radius (F⁻ 133, Cl⁻ 181, Br⁻ 196, I⁻ 220 pm). */
+const ACROSS = [
+  { ion: 'CH₃⁻', acid: 'CH₄', pka: '50' },
+  { ion: 'NH₂⁻', acid: 'NH₃', pka: '38' },
+  { ion: 'HO⁻', acid: 'H₂O', pka: '15.7' },
+  { ion: 'F⁻', acid: 'HF', pka: '3.2' },
+];
+const DOWN = [
+  { ion: 'F⁻', acid: 'HF', pka: '3.2', pm: 133 },
+  { ion: 'Cl⁻', acid: 'HCl', pka: '−7', pm: 181 },
+  { ion: 'Br⁻', acid: 'HBr', pka: '−9', pm: 196 },
+  { ion: 'I⁻', acid: 'HI', pka: '−10', pm: 220 },
+];
+
+FIGURES.push({
+  id: 'atom-trends',
+  section: 'acidity-factors',
+  anchor: 'Both arguments describe the same trend.</p>',
+  alt: 'Left panel, across a row: the anions CH3−, NH2−, HO− and F− drawn as discs of about the same size, with the pKa of each parent acid, 50, 38, 15.7 and 3.2, and an arrow saying electronegativity and acidity both rise to the right. Right panel, down a group: F−, Cl−, Br− and I− drawn to scale, growing from left to right, with pKa 3.2, −7, −9 and −10, and arrows saying size and acidity rise while electronegativity falls.',
+  viewBox: '0 0 760 250',
+  build() {
+    let s = '';
+    s += panel(10, 12, 360, 226);
+    s += panel(390, 12, 360, 226);
+    s += tag(190, 36, 'ACROSS A ROW: ELECTRONEGATIVITY DECIDES');
+    s += tag(570, 36, 'DOWN A GROUP: SIZE DECIDES');
+    ACROSS.forEach((a, i) => {
+      const x = 55 + i * 90;
+      s += atom(x, 104, a.ion, { kind: 'hi', r: 26, size: 12 });
+      s += text(x, 152, 'from ' + a.acid, { cls: 'fg-sm', size: 10.5 });
+      s += text(x, 170, 'pKa ' + a.pka, { cls: 'fg-tag', size: 11 });
+    });
+    s += arrow(P(40, 196), P(340, 196));
+    s += text(190, 222, 'electronegativity rises → acidity rises', { cls: 'fg-tag-good', size: 11 });
+    let x = 404;
+    DOWN.forEach((d) => {
+      const r = d.pm * 0.16;
+      x += r;
+      s += atom(x, 104, d.ion, { kind: 'hi', r, size: 12 });
+      s += text(x, 152, 'from ' + d.acid, { cls: 'fg-sm', size: 10.5 });
+      s += text(x, 170, 'pKa ' + d.pka, { cls: 'fg-tag', size: 11 });
+      x += r + 26;
+    });
+    s += arrow(P(420, 196), P(720, 196));
+    s += text(570, 214, 'size rises → acidity rises', { cls: 'fg-tag-good', size: 11 });
+    s += text(570, 230, 'even though electronegativity falls', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Left: four anions of about the same size, ranked by how strongly the atom pulls on electrons. Right: the four halide ions drawn to scale.',
+});
+
+FIGURES.push({
+  id: 'l-atom-trends',
+  lessons: ['acidity-factors'],
+  alt: 'Top: CH3−, NH2−, HO− and F− as discs of the same size, parent-acid pKa 50, 38, 15.7 and 3.2; electronegativity rises to the right. Bottom: F−, Cl−, Br− and I− drawn to scale, getting bigger, parent-acid pKa 3.2, −7, −9 and −10; size rises to the right.',
+  viewBox: '0 0 340 330',
+  build() {
+    let s = '';
+    s += tag(170, 20, 'ACROSS A ROW');
+    ACROSS.forEach((a, i) => {
+      const x = 46 + i * 82;
+      s += atom(x, 64, a.ion, { kind: 'hi', r: 22, size: 11 });
+      s += tag(x, 108, a.acid + ' ' + a.pka);
+    });
+    s += arrow(P(30, 128), P(310, 128));
+    s += tag(170, 148, 'more electronegative: stronger acid', { cls: 'fg-tag-good' });
+    s += rule(10, 164, 330, 164);
+    s += tag(170, 186, 'DOWN A GROUP (to scale)');
+    let x = 14;
+    DOWN.forEach((d) => {
+      const r = d.pm * 0.135;
+      x += r;
+      s += atom(x, 236, d.ion, { kind: 'hi', r, size: 11 });
+      s += tag(x, 286, d.acid + ' ' + d.pka);
+      x += r + 22;
+    });
+    s += tag(170, 318, 'bigger ion: stronger acid', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'Across a row the ions are about the same size. Down a group they grow.',
+});
+
+/* ======================================================= RESONANCE ====== */
+/* Acetate contributor. `neg` is 'up' or 'down': which oxygen carries the
+   charge. c is the carboxyl carbon; the methyl goes down-left. */
+function acetate(c, neg, { arrows = false, lesson = false } = {}) {
+  let g = '';
+  const m = P(c.x - 46, c.y + 26);
+  const oU = P(c.x, c.y - 52);
+  const oD = P(c.x + 45, c.y + 26);
+  g += sk(m, c);
+  g += bond(c, oU, { rFrom: 0, rTo: 15, order: neg === 'up' ? 1 : 2 });
+  g += bond(c, oD, { rFrom: 0, rTo: 15, order: neg === 'down' ? 1 : 2 });
+  g += atom(oU.x, oU.y, 'O', { kind: neg === 'up' ? 'hi' : 'plain', size: 11 });
+  g += atom(oD.x, oD.y, 'O', { kind: neg === 'down' ? 'hi' : 'plain', size: 11 });
+  if (neg === 'up') { g += pairs(oU, [-150, -90, -30]); g += minus(oU.x + 36, oU.y + 14); }
+  else g += pairs(oU, [-140, -40]);
+  if (neg === 'down') { g += pairs(oD, [-60, 30, 120]); g += minus(oD.x + 31, oD.y - 7); }
+  else g += pairs(oD, [-30, 90]);
+  if (arrows && neg === 'down') {
+    /* lone pair on the lower O into the C–O bond; the C=O pi pair onto the upper O */
+    g += curve(P(oD.x - 14, oD.y + 26), P(c.x + 18, c.y + 18), { bow: -22 });
+    g += curve(P(c.x - 7, c.y - 22), P(oU.x - 16, oU.y + 8), { bow: -14 });
+  }
+  return g;
+}
+
+function ethoxide(o) {
+  let g = '';
+  const c2 = P(o.x - 45, o.y - 26), c1 = P(o.x - 90, o.y);
+  g += sk(c1, c2) + bond(c2, o, { rFrom: 0, rTo: 15 });
+  g += atom(o.x, o.y, 'O', { kind: 'hi', size: 11 });
+  g += pairs(o, [-60, 30, 120]);
+  g += minus(o.x + 31, o.y - 7);
+  return g;
+}
+
+FIGURES.push({
+  id: 'ethoxide-acetate',
+  section: 'acidity-factors',
+  anchor: 'so the real ion carries half the charge on each oxygen.</p>',
+  alt: 'Left: ethoxide, CH3CH2O−, with the whole negative charge and three lone pairs on its one oxygen; from ethanol, pKa 16. Right: the two resonance structures of acetate joined by a double-headed arrow. In the first the lower oxygen carries the charge, and curved arrows move one of its lone pairs into the C–O bond and the C=O pi bond onto the upper oxygen; in the second the upper oxygen carries the charge. From acetic acid, pKa 4.76.',
+  viewBox: '0 0 760 250',
+  build() {
+    let s = '';
+    s += tag(130, 30, 'ETHOXIDE: ONE OXYGEN');
+    s += ethoxide(P(170, 128));
+    s += text(130, 196, 'the whole charge on one oxygen', { cls: 'fg-tag-warn', size: 11 });
+    s += text(130, 216, 'from ethanol, pKa 16', { cls: 'fg-sm', size: 10.5 });
+    s += rule(262, 24, 262, 226);
+    s += tag(510, 30, 'ACETATE: TWO OXYGENS SHARE IT');
+    s += acetate(P(420, 118), 'down', { arrows: true });
+    s += resArrow(P(506, 118), P(546, 118));
+    s += acetate(P(620, 118), 'up');
+    s += text(510, 196, 'half the charge on each oxygen', { cls: 'fg-tag-good', size: 11 });
+    s += text(510, 216, 'from acetic acid, pKa 4.76', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'The same O–H proton is lost in both. Follow the two curved arrows: they turn the first acetate structure into the second.',
+});
+
+FIGURES.push({
+  id: 'l-ethoxide-acetate',
+  lessons: ['acidity-factors'],
+  alt: 'Top: ethoxide, with the whole negative charge on its one oxygen, from ethanol, pKa 16. Bottom: the two equivalent resonance structures of acetate, the charge on one oxygen and then on the other, from acetic acid, pKa 4.76.',
+  viewBox: '0 0 340 362',
+  build() {
+    let s = '';
+    s += tag(170, 20, 'ETHOXIDE (ethanol, pKa 16)');
+    s += ethoxide(P(210, 90));
+    s += tag(170, 146, 'whole charge on one oxygen', { cls: 'fg-tag-warn' });
+    s += rule(10, 162, 330, 162);
+    s += tag(170, 184, 'ACETATE (acetic acid, pKa 4.76)');
+    s += acetate(P(80, 282), 'down');
+    s += resArrow(P(134, 252), P(180, 252));
+    s += acetate(P(240, 282), 'up');
+    s += tag(170, 350, 'half the charge on each oxygen', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'Same O–H proton lost; different anion left behind.',
+});
+
+/* Phenoxide: ring vertex 0 at the top (bearing the oxygen), then clockwise:
+   1 and 5 are ortho, 2 and 4 are meta, 3 is para. When the charge moves off
+   oxygen onto a ring carbon, the C–O bond becomes C=O. */
+function phenoxideRing(cx, cy, r, chargeAt, doubles) {
+  let g = '';
+  const onO = chargeAt === 'o';
+  const v = [];
+  for (let i = 0; i < 6; i++) v.push(at(P(cx, cy), 90 - i * 60, r));
+  const mid = P(cx, cy);
+  for (let i = 0; i < 6; i++) {
+    const a = v[i], b = v[(i + 1) % 6];
+    if (doubles.includes(i)) g += ringDouble(a, b, mid, { gap: 4.4, inset: 9 });
+    else g += sk(a, b);
+  }
+  const o = P(cx, cy - r - 40);
+  g += bond(v[0], o, { rFrom: 0, rTo: 15, order: onO ? 1 : 2 });
+  g += atom(o.x, o.y, 'O', { kind: onO ? 'hi' : 'plain', size: 11 });
+  if (onO) { g += pairs(o, [-150, -90, -30]); g += minus(o.x + 36, o.y + 14); }
+  else g += pairs(o, [-140, -40]);
+  if (typeof chargeAt === 'number') g += carbanion(v[chargeAt], unit(mid, v[chargeAt]), { side: chargeAt === 3 ? 1 : (chargeAt === 1 ? 1 : -1) });
+  return g;
+}
+const PHEN = [['o', [0, 2, 4]], [1, [2, 4]], [3, [1, 4]], [5, [1, 3]]];
+
 FIGURES.push({
   id: 'phenoxide-resonance',
   section: 'acidity-factors',
-  anchor: 'Six units more acidic than an alcohol, five units less acidic than a carboxylic acid.</p>',
-  alt: 'The four resonance structures of phenoxide: the charge on oxygen, then on the ortho, para and other ortho carbons of the ring',
-  viewBox: '0 0 760 300',
-  build() {
-    let s = '';
-    s += tag(380, 34, 'WHERE PHENOXIDE’S CHARGE ACTUALLY GOES');
-
-    /* Ring vertices, index 0 at the top (bearing the oxygen), then clockwise:
-       1 and 5 are ortho, 2 and 4 are meta, 3 is para. When the charge moves
-       off oxygen and onto a ring carbon, the C\u2013O bond becomes a C=O double
-       bond \u2014 that is the bond the electrons came out of, and leaving it
-       single is the commonest way this picture is drawn wrongly. */
-    const drawRing = (cx, cy, r, chargeAt, doubles) => {
-      let g = '';
-      const onO = chargeAt === 'o';
-      const v = [];
-      for (let i = 0; i < 6; i++) {
-        const a = (-90 + i * 60) * Math.PI / 180;
-        v.push(P(cx + r * Math.cos(a), cy + r * Math.sin(a)));
-      }
-      const mid = P(cx, cy);
-      for (let i = 0; i < 6; i++) {
-        const a = v[i], b = v[(i + 1) % 6];
-        if (doubles.includes(i)) g += ringDouble(a, b, mid, { gap: 4.4, inset: 9 });
-        else g += bond(a, b, { rFrom: 0, rTo: 0 });
-      }
-      const o = P(cx, cy - r - 40);
-      g += bond(v[0], o, { rFrom: 0, rTo: 15, order: onO ? 1 : 2 });
-      g += atom(o.x, o.y, 'O', { kind: onO ? 'hi' : 'plain', size: 11 });
-      for (const ang of onO ? [-40, -90, -140] : [-40, -140]) g += lonePair(o.x, o.y, ang, { dist: 23 });
-      if (onO) g += text(o.x + 26, o.y - 4, '\u2212', { cls: 'fg-hi', size: 15 });
-      for (let i = 0; i < 6; i++) {
-        g += atom(v[i].x, v[i].y, '', { kind: 'point' });
-        if (chargeAt === i) {
-          const dx = v[i].x - cx, dy = v[i].y - cy;
-          const len = Math.hypot(dx, dy) || 1;
-          g += text(v[i].x + (dx / len) * 20, v[i].y + (dy / len) * 20 + 4, '\u2212', { cls: 'fg-hi', size: 15 });
-        }
-      }
-      return g;
-    };
-
-    const cy = 170, r = 36;
-    s += drawRing(96, cy, r, 'o', [0, 2, 4]);
-    s += drawRing(288, cy, r, 1, [2, 4]);
-    s += drawRing(480, cy, r, 3, [1, 4]);
-    s += drawRing(672, cy, r, 5, [1, 3]);
-
-    for (const x of [192, 384, 576]) {
-      s += arrow(P(x - 20, cy), P(x + 20, cy), { muted: true });
-      s += arrow(P(x + 20, cy + 12), P(x - 20, cy + 12), { muted: true });
-    }
-
-    s += text(96, 254, 'charge on oxygen', { cls: 'fg-tag-good', size: 10.5 });
-    s += text(96, 272, 'the major contributor', { cls: 'fg-sm', size: 10 });
-    s += text(288, 254, 'ortho carbon', { cls: 'fg-tag-warn', size: 10.5 });
-    s += text(480, 254, 'para carbon', { cls: 'fg-tag-warn', size: 10.5 });
-    s += text(672, 254, 'the other ortho', { cls: 'fg-tag-warn', size: 10.5 });
-    s += text(480, 272, 'three carbon contributors — real, but each worth less than the oxygen one', { cls: 'fg-sm', size: 10 });
-    return s;
-  },
-  caption: 'Four contributors, and the reason phenol lands at pKa 10 rather than at an alcohol’s 16. The charge is genuinely shared with three ring carbons, which is worth six pKa units — and it is still not worth as much as acetate’s deal, where the other place to put the charge is a second oxygen.',
-  note: 'Count which positions get the charge: ortho, para, ortho. The meta carbons never receive it, and that pattern is not a detail of this molecule &mdash; it is the same ortho/para bias that decides where substituents end up on a benzene ring later in the course. The arrows that delocalize a phenoxide and the arrows that direct an aromatic substitution are the same arrows.',
-});
-
-/* ---------------------------------------------------------------- 114 ---
-   The 1,3-dicarbonyl worked example said "the anion now delocalizes onto two
-   oxygens rather than one" and drew nothing, which is the one claim in the
-   section a picture settles instantly. */
-FIGURES.push({
-  id: 'diketone-enolate',
-  section: 'acidity-factors',
-  anchor: '<p>That is roughly as acidic as phenol, and more acidic than ammonium — from a hydrogen on carbon. This is why 1,3-dicarbonyls are the workhorse nucleophiles of',
-  alt: 'The three resonance structures of the pentane-2,4-dione anion, with the negative charge on the central carbon and then on each of the two oxygens',
+  anchor: 'and five units less acidic than acetic acid.</p>',
+  alt: 'The four resonance structures of phenoxide: the charge on oxygen, then on the ortho carbon, the para carbon and the other ortho carbon of the ring, each carbon charge drawn with its lone pair.',
   viewBox: '0 0 760 290',
   build() {
     let s = '';
-    s += tag(380, 34, 'ONE CHARGE, THREE PLACES TO PUT IT');
-
-    /* Left carbonyl, central carbon, right carbonyl. `on` says where the
-       charge sits: 'c', 'left' or 'right'. */
-    const unit = (ox, on) => {
-      let g = '';
-      const mL = P(ox, 168), cL = P(ox + 44, 138), oL = P(ox + 44, 84);
-      const cc = P(ox + 88, 168);
-      const cR = P(ox + 132, 138), oR = P(ox + 132, 84), mR = P(ox + 176, 168);
-      g += bond(mL, cL, { rFrom: 0, rTo: 0 });
-      g += bond(cL, oL, { rFrom: 0, rTo: 15, order: on === 'left' ? 1 : 2 });
-      g += bond(cL, cc, { rFrom: 0, rTo: 0, order: on === 'left' ? 2 : 1 });
-      g += bond(cc, cR, { rFrom: 0, rTo: 0, order: on === 'right' ? 2 : 1 });
-      g += bond(cR, oR, { rFrom: 0, rTo: 15, order: on === 'right' ? 1 : 2 });
-      g += bond(cR, mR, { rFrom: 0, rTo: 0 });
-      for (const pt of [mL, cL, cc, cR, mR]) g += atom(pt.x, pt.y, '', { kind: 'point' });
-      g += atom(oL.x, oL.y, 'O', { kind: on === 'left' ? 'hi' : 'plain', size: 11 });
-      g += atom(oR.x, oR.y, 'O', { kind: on === 'right' ? 'hi' : 'plain', size: 11 });
-      const pairs = (o, charged) => { let t = ''; for (const ang of charged ? [-40, -90, -140] : [-40, -140]) t += lonePair(o.x, o.y, ang, { dist: 23 }); return t; };
-      g += pairs(oL, on === 'left');
-      g += pairs(oR, on === 'right');
-      if (on === 'left') g += text(oL.x - 26, oL.y - 4, '−', { cls: 'fg-hi', size: 15 });
-      if (on === 'right') g += text(oR.x + 26, oR.y - 4, '−', { cls: 'fg-hi', size: 15 });
-      if (on === 'c') g += text(cc.x, cc.y + 30, '−', { cls: 'fg-hi', size: 15 });
-      return g;
-    };
-
-    s += unit(36, 'left');
-    s += unit(292, 'c');
-    s += unit(548, 'right');
-    s += arrow(P(240, 150), P(276, 150), { muted: true });
-    s += arrow(P(276, 162), P(240, 162), { muted: true });
-    s += arrow(P(496, 150), P(532, 150), { muted: true });
-    s += arrow(P(532, 162), P(496, 162), { muted: true });
-
-    s += text(124, 218, 'charge on the left oxygen', { cls: 'fg-tag-good', size: 10.5 });
-    s += text(380, 218, 'charge on carbon', { cls: 'fg-tag-warn', size: 10.5 });
-    s += text(636, 218, 'charge on the right oxygen', { cls: 'fg-tag-good', size: 10.5 });
-    s += text(380, 248, 'pentane-2,4-dione, pKa 9 — as acidic as phenol, from a hydrogen on carbon', { cls: 'fg-sm', size: 10 });
-    s += text(380, 270, 'a ketone with one carbonyl manages pKa 20; the second one is worth eleven more units', { cls: 'fg-sm', size: 10 });
+    s += tag(380, 30, 'WHERE PHENOXIDE’S CHARGE GOES');
+    const cy = 170, r = 36;
+    [96, 288, 480, 672].forEach((x, i) => { s += phenoxideRing(x, cy, r, PHEN[i][0], PHEN[i][1]); });
+    for (const x of [192, 384, 576]) s += resArrow(P(x - 20, cy), P(x + 20, cy));
+    s += text(96, 254, 'charge on oxygen', { cls: 'fg-tag-good', size: 11 });
+    s += text(288, 254, 'ortho carbon', { cls: 'fg-tag-warn', size: 11 });
+    s += text(480, 254, 'para carbon', { cls: 'fg-tag-warn', size: 11 });
+    s += text(672, 254, 'the other ortho carbon', { cls: 'fg-tag-warn', size: 11 });
+    s += text(96, 274, 'the major contributor', { cls: 'fg-sm', size: 10.5 });
+    s += text(480, 274, 'three carbon contributors: real, but each worth less than the oxygen one', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'The anion an ordinary base can make out of a C–H. The charge spends most of its time on the two oxygens and only a minority of it on the carbon between them — which is why a carbon acid ends up as acidic as a phenol.',
-  note: 'The carbon-centered structure is the minor contributor and it is still the one that does the chemistry: it is the carbon, not the oxygen, that attacks an electrophile. A minor contributor is not a rare event &mdash; there is one real anion, and the carbon form is a permanent fraction of it.',
+  caption: 'Count the ring positions that take the charge: ortho, para, ortho. The meta carbons never do.',
+  note: 'A preview: the same ortho and para positions decide where new groups attach to a benzene ring in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a>.',
 });
 
-/* ---------------------------------------------------------------- 115 ---
-   The induction figure showed one trichloroacetate with a text label. The
-   claim the table and the prose both turn on is the DISTANCE fall-off, which
-   nothing in the section drew. */
+FIGURES.push({
+  id: 'l-phenoxide',
+  lessons: ['acidity-factors'],
+  alt: 'The four resonance structures of phenoxide in two rows: the charge on oxygen, then on an ortho carbon; below, on the para carbon, then on the other ortho carbon. Each carbon charge is drawn with its lone pair.',
+  viewBox: '0 0 340 400',
+  build() {
+    let s = '';
+    const r = 30;
+    const spots = [[80, 110], [256, 110], [256, 320], [80, 320]];
+    const tags = [['on oxygen', 'fg-tag-good'], ['ortho carbon', 'fg-tag-warn'], ['para carbon', 'fg-tag-warn'], ['other ortho', 'fg-tag-warn']];
+    spots.forEach(([x, y], i) => {
+      s += phenoxideRing(x, y, r, PHEN[i][0], PHEN[i][1]);
+      s += tag(x, y + (i === 2 ? 70 : 52), tags[i][0], { cls: tags[i][1] });
+    });
+    s += resArrow(P(150, 110), P(186, 110));
+    s += resArrow(P(256, 172), P(256, 212));
+    s += resArrow(P(150, 320), P(186, 320));
+    return s;
+  },
+  caption: 'Read the four structures in order: the charge moves from oxygen to three ring carbons.',
+});
+
+/* Cyclopentadiene and its anion (a preview). Pentagon vertex 0 at the top,
+   then clockwise. */
+function pentagon(cx, cy, r) {
+  const v = [];
+  for (let i = 0; i < 5; i++) v.push(at(P(cx, cy), 90 - i * 72, r));
+  return v;
+}
+function cpAnion(cx, cy, r, k) {
+  let g = '';
+  const v = pentagon(cx, cy, r), mid = P(cx, cy);
+  const dbl = [(k + 1) % 5, (k + 3) % 5];
+  for (let i = 0; i < 5; i++) {
+    if (dbl.includes(i)) g += ringDouble(v[i], v[(i + 1) % 5], mid, { gap: 4, inset: 7 });
+    else g += sk(v[i], v[(i + 1) % 5]);
+  }
+  g += carbanion(v[k], unit(mid, v[k]), { pd: 10, cd: 21, side: k >= 3 ? -1 : 1 });
+  return g;
+}
+
+FIGURES.push({
+  id: 'cyclopentadienyl',
+  section: 'acidity-factors',
+  anchor: 'expect its acid to be far stronger than the formula suggests.</p>',
+  alt: 'Preview. Left: cyclopentadiene, a five-carbon ring with two C=C bonds and a CH2 at the top whose two hydrogens are drawn; pKa 16. An arrow labelled minus H+ leads to the five equivalent resonance structures of the cyclopentadienyl anion, the charge and lone pair on a different ring carbon in each.',
+  viewBox: '0 0 760 230',
+  build() {
+    let s = '';
+    s += tag(380, 26, 'A PREVIEW: CHARGE SHARED BY ALL FIVE CARBONS');
+    const c0 = P(62, 126), r = 30;
+    const v = pentagon(c0.x, c0.y, r);
+    s += sk(v[0], v[1]) + ringDouble(v[1], v[2], c0, { gap: 4, inset: 7 }) + sk(v[2], v[3]) +
+         ringDouble(v[3], v[4], c0, { gap: 4, inset: 7 }) + sk(v[4], v[0]);
+    const hL = at(v[0], 125, 32), hR = at(v[0], 55, 32);
+    s += bond(v[0], hL, { rFrom: 0, rTo: 10 }) + bond(v[0], hR, { rFrom: 0, rTo: 10 });
+    s += atom(hL.x, hL.y, 'H', { r: 10, size: 11 });
+    s += atom(hR.x, hR.y, 'H', { kind: 'warn', r: 10, size: 11 });
+    s += text(62, 190, 'cyclopentadiene', { cls: 'fg-tag', size: 11 });
+    s += text(62, 208, 'pKa 16', { cls: 'fg-tag-warn', size: 11 });
+    s += arrow(P(108, 126), P(152, 126));
+    s += text(130, 114, '− H⁺', { cls: 'fg-sm', size: 10.5 });
+    const xs = [212, 326, 440, 554, 668];
+    xs.forEach((x, k) => { s += cpAnion(x, 126, 26, [0, 1, 2, 3, 4][k]); });
+    for (let i = 0; i < 4; i++) s += resArrow(P(xs[i] + 48, 126), P(xs[i + 1] - 48, 126));
+    s += text(440, 190, 'five equivalent structures: each ring carbon holds one fifth of the charge', { cls: 'fg-tag-good', size: 11 });
+    s += text(440, 208, 'the flat ring with six π electrons is aromatic (Aromatic Chemistry)', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Removing one CH₂ hydrogen from cyclopentadiene leaves an anion whose charge visits every ring carbon.',
+});
+
+/* 1,3-diketone enolate. `on` says where the charge sits: 'c', 'left', 'right'.
+   ox, oy: the left methyl end; the unit is 176 wide. */
+function diketone(ox, oy, on) {
+  let g = '';
+  const mL = P(ox, oy), cL = P(ox + 44, oy - 30), oL = P(ox + 44, oy - 84);
+  const cc = P(ox + 88, oy);
+  const cR = P(ox + 132, oy - 30), oR = P(ox + 132, oy - 84), mR = P(ox + 176, oy);
+  g += sk(mL, cL);
+  g += bond(cL, oL, { rFrom: 0, rTo: 15, order: on === 'left' ? 1 : 2 });
+  g += on === 'left' ? ringDouble(cL, cc, P(ox + 88, oy - 60), { gap: 4.4, inset: 6 }) : sk(cL, cc);
+  g += on === 'right' ? ringDouble(cc, cR, P(ox + 88, oy - 60), { gap: 4.4, inset: 6 }) : sk(cc, cR);
+  g += bond(cR, oR, { rFrom: 0, rTo: 15, order: on === 'right' ? 1 : 2 });
+  g += sk(cR, mR);
+  g += atom(oL.x, oL.y, 'O', { kind: on === 'left' ? 'hi' : 'plain', size: 11 });
+  g += atom(oR.x, oR.y, 'O', { kind: on === 'right' ? 'hi' : 'plain', size: 11 });
+  g += on === 'left' ? pairs(oL, [-150, -90, -30]) + minus(oL.x - 36, oL.y + 14) : pairs(oL, [-140, -40]);
+  g += on === 'right' ? pairs(oR, [-150, -90, -30]) + minus(oR.x + 36, oR.y + 14) : pairs(oR, [-140, -40]);
+  if (on === 'c') g += carbanion(cc, { x: 0, y: 1 }, { pd: 12, cd: 22, side: 1 });
+  return g;
+}
+
+FIGURES.push({
+  id: 'diketone-enolate',
+  section: 'acidity-factors',
+  anchor: 'Its conjugate base shares the charge with <i>two</i> oxygens instead of one.</p>',
+  alt: 'The three resonance structures of the pentane-2,4-dione anion: the negative charge on the left oxygen, then on the central carbon with its lone pair, then on the right oxygen.',
+  viewBox: '0 0 760 280',
+  build() {
+    let s = '';
+    s += tag(380, 30, 'ONE CHARGE, THREE PLACES TO PUT IT');
+    s += diketone(36, 168, 'left');
+    s += diketone(292, 168, 'c');
+    s += diketone(548, 168, 'right');
+    s += resArrow(P(236, 150), P(276, 150));
+    s += resArrow(P(492, 150), P(532, 150));
+    s += text(124, 226, 'charge on the left oxygen', { cls: 'fg-tag-good', size: 11 });
+    s += text(380, 226, 'charge on the central carbon', { cls: 'fg-tag-warn', size: 11 });
+    s += text(636, 226, 'charge on the right oxygen', { cls: 'fg-tag-good', size: 11 });
+    s += text(380, 256, 'pentane-2,4-dione, pKa 9; a ketone with one C=O is pKa 20, so the second C=O is worth eleven units', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Most of the charge sits on the two oxygens, and a smaller share on the carbon between them.',
+  note: 'The carbon form is the minor contributor, yet it is the carbon, not the oxygen, that later forms new bonds (a preview of <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>). There is one real anion, and the carbon form is always part of it.',
+});
+
+FIGURES.push({
+  id: 'l-diketone',
+  lessons: ['acidity-factors'],
+  alt: 'The three resonance structures of the pentane-2,4-dione anion, stacked: the charge on the left oxygen, on the central carbon, and on the right oxygen.',
+  viewBox: '0 0 340 470',
+  build() {
+    let s = '';
+    const rows = [['left', 'left oxygen', 'fg-tag-good'], ['c', 'central carbon', 'fg-tag-warn'], ['right', 'right oxygen', 'fg-tag-good']];
+    rows.forEach(([on, t, cls], i) => {
+      const y = 116 + i * 156;
+      s += diketone(10, y, on);
+      s += tag(272, y - 30, 'charge on', { cls });
+      s += tag(272, y - 14, t, { cls });
+    });
+    s += resArrow(P(206, 128), P(206, 178));
+    s += resArrow(P(206, 284), P(206, 334));
+    return s;
+  },
+  caption: 'Pentane-2,4-dione, pKa 9: one charge shared by two oxygens and a carbon.',
+});
+
+/* ======================================================= INDUCTION ===== */
+/* A carboxylate or carboxylic acid on a skeletal chain. c1 is the carboxyl
+   carbon; the chain runs right. `cl` is the chain carbon (1 = the one next to
+   C1) that carries a chlorine, or 0. `n` chain carbons after C1. */
+function acidChain(c1, n, cl, { anion = false, clUp = false } = {}) {
+  let g = '';
+  const o1 = P(c1.x, c1.y - 54), o2 = P(c1.x - 46, c1.y + 30);
+  const chain = [];
+  for (let i = 1; i <= n; i++) chain.push(P(c1.x + 46 * i, c1.y + (i % 2 ? 30 : 0)));
+  g += bond(c1, o1, { rFrom: 0, rTo: 15, order: 2 });
+  g += bond(c1, o2, { rFrom: 0, rTo: anion ? 15 : 19 });
+  let prev = c1;
+  for (const p of chain) { g += sk(prev, p); prev = p; }
+  g += atom(o1.x, o1.y, 'O', { size: 11 });
+  g += pairs(o1, [-140, -40]);
+  if (anion) {
+    g += atom(o2.x, o2.y, 'O', { kind: 'hi', size: 11 });
+    g += pairs(o2, [-150, 90, 150]);
+    g += minus(o2.x - 8, o2.y - 24);
+  } else {
+    g += atom(o2.x, o2.y, 'OH', { r: 19, size: 10.5 });
+  }
+  if (cl) {
+    const host = chain[cl - 1];
+    const down = cl % 2 === 1;
+    const x = P(host.x, host.y + (down ? 44 : -44) * (clUp ? -1 : 1));
+    g += bond(host, x, { rFrom: 0, rTo: 16 });
+    g += atom(x.x, x.y, 'Cl', { kind: 'warn', size: 11 });
+  }
+  return { svg: g, chain, o2 };
+}
+
+FIGURES.push({
+  id: 'chloroacetate-pull',
+  section: 'acidity-factors',
+  anchor: 'and the pKa falls from 4.76 to 2.86.</p>',
+  alt: 'Left: acetate, the carboxylate anion with the negative charge on oxygen and a plain CH3 next to the carboxyl carbon; from acetic acid, pKa 4.76. Right: chloroacetate, the same anion with a chlorine on the carbon next to the carboxyl carbon. Arrows along the Cl–C and C–C bonds point toward the chlorine, marked delta minus, showing it pulling electron density away from the charged end; from chloroacetic acid, pKa 2.86.',
+  viewBox: '0 0 600 250',
+  build() {
+    let s = '';
+    s += tag(150, 28, 'ACETATE');
+    let a = acidChain(P(150, 130), 1, 0, { anion: true });
+    s += a.svg;
+    s += text(150, 214, 'from acetic acid, pKa 4.76', { cls: 'fg-sm', size: 10.5 });
+    s += rule(300, 20, 300, 230);
+    s += tag(450, 28, 'CHLOROACETATE');
+    a = acidChain(P(430, 130), 1, 1, { anion: true, clUp: true });
+    s += a.svg;
+    const ca = a.chain[0], cl = P(ca.x, ca.y - 44);
+    /* the pull: small arrows beside the C1–C2 and C2–Cl bonds, pointing at Cl */
+    s += arrow(P(438, 150), P(466, 166), { size: 7 });
+    s += arrow(P(488, 150), P(488, 124), { size: 7 });
+    s += text(cl.x + 26, cl.y - 4, 'δ−', { cls: 'fg-warn', size: 13 });
+    s += text(ca.x + 22, ca.y + 12, 'δ+', { cls: 'fg-hi', size: 13 });
+    s += text(450, 214, 'from chloroacetic acid, pKa 2.86', { cls: 'fg-sm', size: 10.5 });
+    s += text(450, 232, 'Cl pulls electron density away from the charged end', { cls: 'fg-tag-good', size: 11 });
+    return s;
+  },
+  caption: 'Where the chlorine sits: on the carbon right next to the carboxylate carbon. The two small arrows show the pull through the σ bonds.',
+});
+
+const BUTANOIC = [
+  { pos: 1, name: '2-chlorobutanoic acid', pka: '2.86', how: 'nearly two units' },
+  { pos: 2, name: '3-chlorobutanoic acid', pka: '4.06', how: 'three quarters of a unit' },
+  { pos: 3, name: '4-chlorobutanoic acid', pka: '4.52', how: 'only 0.3 of a unit' },
+];
+
 FIGURES.push({
   id: 'induction-distance',
   section: 'acidity-factors',
-  anchor: 'Move the chlorine three carbons from the acid group and almost nothing is left of the effect.',
-  alt: 'Three butanoic acids with the chlorine moved one, two and three carbons from the carboxyl group, with the pKa under each showing the effect fading with distance',
-  viewBox: '0 0 760 292',
+  anchor: 'two carbons further out by only 0.3.</p>',
+  alt: 'Three butanoic acids with the chlorine on C2, C3 and C4, named 2-, 3- and 4-chlorobutanoic acid, with pKa 2.86, 4.06 and 4.52 under them. Butanoic acid itself is pKa 4.82, so the effect fades from nearly two units to 0.3 as the chlorine moves away from the COOH group.',
+  viewBox: '0 0 760 316',
   build() {
     let s = '';
-    s += tag(380, 34, 'INDUCTION FADES BOND BY BOND');
-
-    /* Butanoic acid drawn skeletally, with the chlorine hung off carbon
-       `pos` counted from the carboxyl carbon (1 = alpha). */
-    const acid = (ox, pos) => {
-      let g = '';
-      const c1 = P(ox, 150), o1 = P(ox, 96), o2 = P(ox - 46, 180);
-      const c2 = P(ox + 46, 180), c3 = P(ox + 92, 150), c4 = P(ox + 138, 180);
-      g += bond(c1, o1, { rFrom: 0, rTo: 15, order: 2 });
-      g += bond(c1, o2, { rFrom: 0, rTo: 19 });
-      g += bond(c1, c2, { rFrom: 0, rTo: 0 });
-      g += bond(c2, c3, { rFrom: 0, rTo: 0 });
-      g += bond(c3, c4, { rFrom: 0, rTo: 0 });
-      g += atom(o1.x, o1.y, 'O', { size: 11 });
-      g += atom(o2.x, o2.y, 'OH', { r: 19, size: 10.5 });
-      for (const pt of [c1, c2, c3, c4]) g += atom(pt.x, pt.y, '', { kind: 'point' });
-      for (const ang of [-40, -140]) g += lonePair(o1.x, o1.y, ang, { dist: 23 });
-      const host = [c2, c3, c4][pos - 1];
-      const cl = P(host.x, host.y + 44);
-      g += bond(host, cl, { rFrom: 0, rTo: 16 });
-      g += atom(cl.x, cl.y, 'Cl', { kind: 'warn', size: 11 });
-      return g;
-    };
-
-    s += acid(108, 1);
-    s += acid(348, 2);
-    s += acid(588, 3);
-
-    const rows = [
-      [108, 'on the alpha carbon', 'pKa 2.86 \u00b7 the full effect'],
-      [348, 'one carbon further out', 'pKa 4.06 \u00b7 most of it gone'],
-      [588, 'three carbons from the acid', 'pKa 4.52 \u00b7 all but gone'],
-    ];
-    for (const [x, where, pka] of rows) {
-      s += text(x + 46, 254, pka, { cls: 'fg-tag-warn', size: 11 });
-      s += text(x + 46, 274, where, { cls: 'fg-sm', size: 10 });
-    }
-    s += text(380, 66, 'butanoic acid itself is pKa 4.82 — read each number against that', { cls: 'fg-sm', size: 10 });
+    s += tag(380, 26, 'INDUCTION FADES BOND BY BOND');
+    s += text(380, 48, 'butanoic acid itself is pKa 4.82: read each number against that', { cls: 'fg-sm', size: 10.5 });
+    BUTANOIC.forEach((b, i) => {
+      const x = 104 + i * 240;
+      const a = acidChain(P(x, 146), 3, b.pos);
+      s += a.svg;
+      s += text(x + 46, 262, b.name, { cls: 'fg-sm', size: 10.5 });
+      s += text(x + 46, 282, 'pKa ' + b.pka, { cls: 'fg-tag-warn', size: 11 });
+      s += text(x + 46, 302, 'lowered by ' + b.how, { cls: 'fg-sm', size: 10.5 });
+    });
     return s;
   },
-  caption: 'The same chlorine on the same acid, moved one bond at a time. Almost two pKa units on the alpha carbon, about three quarters of a unit one bond further out, and essentially nothing by the third.',
-  note: 'That fall-off is what tells induction apart from resonance in an exam question. Resonance runs the length of a conjugated system losing very little &mdash; a nitro group four bonds away across a benzene ring still moves a phenol’s pK<sub>a</sub> by three units. Induction is gone in two.',
+  caption: 'The same chlorine on the same acid, moved one carbon at a time away from the COOH group.',
+});
+
+FIGURES.push({
+  id: 'l-induction-distance',
+  lessons: ['acidity-factors'],
+  alt: '2-, 3- and 4-chlorobutanoic acid stacked, the chlorine one carbon further from the COOH group each time, with pKa 2.86, 4.06 and 4.52. Butanoic acid itself is 4.82.',
+  viewBox: '0 0 340 450',
+  build() {
+    let s = '';
+    s += tag(170, 20, 'butanoic acid itself: pKa 4.82');
+    BUTANOIC.forEach((b, i) => {
+      const y = 106 + i * 136;
+      const a = acidChain(P(66, y), 3, b.pos);
+      s += a.svg;
+      s += tag(292, y - 16, 'Cl on C' + (b.pos + 1));
+      s += tag(292, y + 2, 'pKa ' + b.pka, { cls: 'fg-tag-warn' });
+    });
+    return s;
+  },
+  caption: 'The further the chlorine from the COOH group, the smaller its effect.',
+});
+
+FIGURES.push({
+  id: 'l-chloropropanoic',
+  lessons: ['acidity-factors'],
+  alt: 'Two acids. A: 3-chloropropanoic acid, the chlorine on the carbon furthest from the COOH group. B: 2-chloropropanoic acid, the chlorine on the carbon next to the COOH group.',
+  viewBox: '0 0 340 350',
+  build() {
+    let s = '';
+    [['A', '3-chloropropanoic acid', 2], ['B', '2-chloropropanoic acid', 1]].forEach(([k, name, pos], i) => {
+      const y = 104 + i * 150;
+      s += label(20, y - 50, k, { anchor: 'start', size: 16 });
+      const a = acidChain(P(110, y), 2, pos);
+      s += a.svg;
+      s += tag(pos === 1 ? 260 : 170, pos === 1 ? y + 40 : y + 60, name);
+    });
+    return s;
+  },
+  caption: 'Same atoms, same chlorine. Only its position differs.',
+});
+
+/* ========================================================= ORBITAL ===== */
+/* A carbanion carbon with its lone pair in a hybrid lobe. The lobe is drawn
+   longer for more p-character, shorter for more s-character. */
+function lobe(c, deg, len) {
+  const mid = at(c, deg, 13 + len / 2);
+  const d1 = at(c, deg, 13 + len * 0.62);
+  const perp = deg + 90;
+  return ellipse(mid.x, mid.y, len / 2 + 2, 9, deg, 'fg-orb') +
+    dot(at(d1, perp, 3.6).x, at(d1, perp, 3.6).y) + dot(at(d1, perp, -3.6).x, at(d1, perp, -3.6).y);
+}
+
+FIGURES.push({
+  id: 'orbital-anions',
+  section: 'acidity-factors',
+  lessons: ['acidity-factors'],
+  anchor: 'in the same hybrid orbital that the C–H bond used.</p>',
+  alt: 'Three carbanions, each with its lone pair drawn inside a hybrid orbital lobe. Top: the ethyl anion from ethane, an sp3 carbon with three bonds and the lone pair in a long lobe; 25% s; pKa of ethane about 50. Middle: the vinyl anion from ethene, an sp2 carbon at 120 degrees with a shorter lobe; 33% s; pKa about 44. Bottom: the acetylide from ethyne, H–C≡C with the lone pair in a short lobe straight along the axis; 50% s; pKa about 25.',
+  viewBox: '0 0 340 380',
+  build() {
+    let s = '';
+    const rows = [
+      { y: 70, h: 'sp³ · 25% s', src: 'ethane, pKa ≈ 50' },
+      { y: 190, h: 'sp² · 33% s', src: 'ethene, pKa ≈ 44' },
+      { y: 310, h: 'sp · 50% s', src: 'ethyne, pKa ≈ 25' },
+    ];
+    /* sp3: CH3 left, H wedge down-right, H hash down-left, lobe up-right */
+    let c = P(96, rows[0].y + 10);
+    let m = at(c, 200, 50);
+    s += bond(c, m, { rFrom: 15, rTo: 17 }) + atom(m.x, m.y, 'CH₃', { r: 17, size: 10.5 });
+    let h1 = at(c, 290, 42), h2 = at(c, 250, 42);
+    s += wedge(c, h1, { rFrom: 14, rTo: 10, width: 9 }) + atom(h1.x, h1.y, 'H', { r: 10, size: 11 });
+    s += hash(c, h2, { rFrom: 14, rTo: 10, width: 10, rungs: 4 }) + atom(h2.x, h2.y, 'H', { r: 10, size: 11 });
+    s += lobe(c, 40, 40);
+    s += atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
+    s += tag(250, rows[0].y - 6, rows[0].h);
+    s += tag(250, rows[0].y + 12, rows[0].src);
+    s += tag(250, rows[0].y + 30, 'pair held far out', { cls: 'fg-tag-mut' });
+    s += rule(10, 136, 330, 136);
+    /* sp2: =CH2 left, H down-right at 300, lobe up-right at 60 */
+    c = P(110, rows[1].y);
+    m = at(c, 180, 56);
+    s += bond(c, m, { rFrom: 15, rTo: 18, order: 2 }) + atom(m.x, m.y, 'CH₂', { r: 18, size: 10.5 });
+    h1 = at(c, 300, 42);
+    s += bond(c, h1, { rFrom: 15, rTo: 10 }) + atom(h1.x, h1.y, 'H', { r: 10, size: 11 });
+    s += lobe(c, 60, 32);
+    s += atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
+    s += tag(250, rows[1].y - 6, rows[1].h);
+    s += tag(250, rows[1].y + 12, rows[1].src);
+    s += rule(10, 250, 330, 250);
+    /* sp: H–C≡C, lobe straight right */
+    c = P(120, rows[2].y);
+    const c2 = at(c, 180, 50), h = at(c2, 180, 38);
+    s += bond(c, c2, { rFrom: 15, rTo: 15, order: 3, gap: 3.4 });
+    s += bond(c2, h, { rFrom: 15, rTo: 10 });
+    s += atom(c2.x, c2.y, 'C', { size: 12 }) + atom(h.x, h.y, 'H', { r: 10, size: 11 });
+    s += lobe(c, 0, 24);
+    s += atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
+    s += tag(250, rows[2].y - 6, rows[2].h);
+    s += tag(250, rows[2].y + 12, rows[2].src);
+    s += tag(250, rows[2].y + 30, 'pair held closest', { cls: 'fg-tag-good' });
+    s += tag(120, rows[2].y + 50, 'the pair points along the C≡C axis', { cls: 'fg-tag-mut' });
+    return s;
+  },
+  caption: 'The lone pair each C–H leaves behind, drawn in its hybrid orbital. The more s-character, the closer to the carbon it sits.',
+});
+
+FIGURES.push({
+  id: 'pyridine-methylamine',
+  section: 'acidity-factors',
+  anchor: 'methylammonium ion has pKa 10.6.</p>',
+  alt: 'Left: pyridine, a six-membered ring with one nitrogen, its lone pair in an sp2 lobe pointing outward in the plane of the ring; 33% s; pKaH 5.2. Right: methylamine, CH3NH2, a pyramidal nitrogen with its lone pair in a longer sp3 lobe; 25% s; pKaH 10.6.',
+  viewBox: '0 0 600 250',
+  build() {
+    let s = '';
+    s += tag(150, 28, 'PYRIDINE');
+    const cx = 120, cy = 118, r = 38;
+    const v = [];
+    for (let i = 0; i < 6; i++) v.push(at(P(cx, cy), -i * 60, r));
+    for (let i = 0; i < 6; i++) {
+      const a = v[i], b = v[(i + 1) % 6];
+      const o = { rFrom: i === 0 ? 13 : 0, rTo: (i + 1) % 6 === 0 ? 13 : 0 };
+      if (i % 2 === 0) {
+        s += bond(a, b, o);
+        /* inner line of the double bond, trimmed clear of N and the corners */
+        const inA = at(P(cx, cy), -i * 60, r - 6), inB = at(P(cx, cy), -(i + 1) * 60, r - 6);
+        s += bond(inA, inB, { rFrom: i === 0 ? 12 : 7, rTo: 7 });
+      } else s += bond(a, b, o);
+    }
+    s += lobe(v[0], 0, 26);
+    s += atom(v[0].x, v[0].y, 'N', { kind: 'hi', r: 13, size: 12 });
+    s += text(150, 192, 'lone pair in an sp² orbital (33% s)', { cls: 'fg-sm', size: 10.5 });
+    s += text(150, 212, 'pKaH 5.2: the weaker base', { cls: 'fg-tag-good', size: 11 });
+    s += rule(300, 20, 300, 230);
+    s += tag(450, 28, 'METHYLAMINE');
+    const n = P(430, 124);
+    const m = at(n, 200, 52);
+    s += bond(n, m, { rFrom: 15, rTo: 17 }) + atom(m.x, m.y, 'CH₃', { r: 17, size: 10.5 });
+    const h1 = at(n, 290, 42), h2 = at(n, 250, 42);
+    s += wedge(n, h1, { rFrom: 14, rTo: 10, width: 9 }) + atom(h1.x, h1.y, 'H', { r: 10, size: 11 });
+    s += hash(n, h2, { rFrom: 14, rTo: 10, width: 10, rungs: 4 }) + atom(h2.x, h2.y, 'H', { r: 10, size: 11 });
+    s += lobe(n, 40, 40);
+    s += atom(n.x, n.y, 'N', { kind: 'hi', size: 12 });
+    s += text(450, 212 - 20, 'lone pair in an sp³ orbital (25% s)', { cls: 'fg-sm', size: 10.5 });
+    s += text(450, 212, 'pKaH 10.6: the stronger base', { cls: 'fg-tag-warn', size: 11 });
+    return s;
+  },
+  caption: 'Both lone pairs sit on nitrogen. Pyridine’s sp² pair is held closer to the nucleus, so it takes a proton less readily.',
+});
+
+/* ================================================ WORKED EXAMPLE ======= */
+/* 4-Hydroxybutan-2-one, skeletal, C1–C4 numbered. */
+function hydroxybutanone(x0, y0, dx = 60, dy = 34) {
+  const c1 = P(x0, y0), c2 = P(x0 + dx, y0 - dy), c3 = P(x0 + 2 * dx, y0), c4 = P(x0 + 3 * dx, y0 - dy), o = P(x0 + 4 * dx, y0);
+  const ok = P(c2.x, c2.y - 56);
+  let g = '';
+  g += sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + bond(c4, o, { rFrom: 0, rTo: 19 });
+  g += bond(c2, ok, { rFrom: 0, rTo: 15, order: 2 });
+  g += atom(ok.x, ok.y, 'O', { size: 11 }) + pairs(ok, [-140, -40]);
+  g += atom(o.x, o.y, 'OH', { kind: 'hi', r: 19, size: 10.5 });
+  return { svg: g, c1, c2, c3, c4, o, ok };
+}
+
+FIGURES.push({
+  id: 'hydroxybutanone-sites',
+  section: 'acidity-factors',
+  anchor: 'There are four kinds of hydrogen on it.</p>',
+  alt: '4-Hydroxybutan-2-one drawn skeletally with C1 to C4 numbered and each kind of hydrogen labelled with its pKa: C1 hydrogens about 20, C3 hydrogens about 20, C4 hydrogens near 50, and the O–H about 16, marked as the most acidic.',
+  viewBox: '0 0 600 250',
+  build() {
+    let s = '';
+    const m = hydroxybutanone(130, 140, 70, 38);
+    s += m.svg;
+    s += locant(m.c1, P(m.c1.x + 10, m.c1.y - 30), 'C1', { cls: 'fg-tag', size: 11, d: 20 });
+    s += text(m.c2.x + 22, m.c2.y + 4, 'C2', { cls: 'fg-tag', size: 11 });
+    s += text(m.c3.x, m.c3.y - 14, 'C3', { cls: 'fg-tag', size: 11 });
+    s += text(m.c4.x, m.c4.y + 26, 'C4', { cls: 'fg-tag', size: 11 });
+    s += text(m.c1.x - 10, m.c1.y + 34, 'C1–H: pKa ≈ 20', { cls: 'fg-tag-warn', size: 11 });
+    s += text(m.c3.x, m.c3.y + 34, 'C3–H: pKa ≈ 20', { cls: 'fg-tag-warn', size: 11 });
+    s += text(m.c4.x, m.c4.y - 30, 'C4–H: near 50', { cls: 'fg-tag-mut', size: 11 });
+    s += text(m.o.x + 10, m.o.y + 40, 'O–H: pKa ≈ 16', { cls: 'fg-tag-good', size: 11 });
+    s += text(m.o.x + 10, m.o.y + 58, 'the most acidic', { cls: 'fg-tag-good', size: 11 });
+    s += text(m.c1.x - 10, m.c1.y + 52, 'alpha to C=O', { cls: 'fg-sm', size: 10.5 });
+    s += text(m.c3.x, m.c3.y + 52, 'alpha to C=O', { cls: 'fg-sm', size: 10.5 });
+    return s;
+  },
+  caption: 'Four kinds of hydrogen, labelled with the pKa each would have. The two alpha positions tie, and the O–H beats them both.',
+});
+
+FIGURES.push({
+  id: 'l-hydroxybutanone',
+  lessons: ['acidity-factors'],
+  alt: '4-Hydroxybutan-2-one drawn skeletally with its carbons numbered C1 to C4: C1 is the methyl, C2 carries the C=O, C3 and C4 are CH2 groups, and C4 carries the OH.',
+  viewBox: '0 0 340 190',
+  build() {
+    let s = '';
+    const m = hydroxybutanone(40, 130, 60, 34);
+    s += m.svg;
+    s += tag(m.c1.x, m.c1.y + 24, 'C1');
+    s += tag(m.c2.x + 20, m.c2.y + 4, 'C2', { anchor: 'start' });
+    s += tag(m.c3.x, m.c3.y + 24, 'C3');
+    s += tag(m.c4.x, m.c4.y - 14, 'C4');
+    return s;
+  },
+  caption: '4-Hydroxybutan-2-one. Every carbon but C2 carries hydrogens, and so does the oxygen.',
 });
 
 export default FIGURES;
