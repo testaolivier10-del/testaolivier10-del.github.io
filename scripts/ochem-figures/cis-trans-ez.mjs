@@ -555,7 +555,7 @@ FIGURES.push({
   build() {
     const c1 = P(42, 150), c2 = P(88, 124), c3 = P(140, 124), c4 = P(186, 98), c5 = P(238, 98), c6 = P(284, 124);
     let s = '';
-    s += text(170, 18, 'highlighted: the higher group on each alkene C', { cls: 'fg-tag' });
+    s += text(170, 18, 'highlighted: the higher group (or bond) on each C', { cls: 'fg-tag' });
     s += bond(c1, c2, { rFrom: 17, rTo: Cr, cls: 'fg-bond-hi' });
     s += bond(c2, c3, { order: 2, rFrom: Cr, rTo: Cr });
     s += bond(c3, c4, { rFrom: Cr, rTo: Cr, cls: 'fg-bond-hi' });

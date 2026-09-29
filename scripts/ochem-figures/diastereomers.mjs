@@ -324,7 +324,7 @@ function buteneFig(stacked) {
 FIGURES.push({
   id: 'cis-trans-are-diastereomers',
   section: 'diastereomers',
-  anchor: '<h3>Diastereomers with no stereocenter</h3>',
+  anchor: '<h3>Diastereomers from double bonds and rings</h3>',
   viewBox: '0 0 720 270',
   alt: 'cis-but-2-ene with both methyls below the double bond, and trans-but-2-ene with one methyl above and one below. Neither has a stereocenter. Below each, the two carbon-methyl bond dipoles are drawn from one point: in the cis isomer they share an upward component and add to 0.33 debye; in the trans isomer they point exactly opposite ways and cancel to zero. Boiling points 3.7 and 0.9 degrees Celsius.',
   build: () => buteneFig(false),
@@ -391,7 +391,7 @@ function dmcFig(stacked) {
 FIGURES.push({
   id: 'ring-diastereomers',
   section: 'diastereomers',
-  anchor: '<h3>Diastereomers with no stereocenter</h3>',
+  anchor: '<h3>Diastereomers from double bonds and rings</h3>',
   viewBox: '0 0 720 210',
   alt: 'cis-1,2-dimethylcyclohexane, drawn as a flat hexagon with both methyls on wedges, is (1R,2S). trans-1,2-dimethylcyclohexane, with one methyl on a wedge and one on a hash, is (1R,2R); its mirror image is (1S,2S).',
   build: () => dmcFig(false),

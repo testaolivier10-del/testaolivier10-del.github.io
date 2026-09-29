@@ -123,7 +123,7 @@ function propaneCenter(c, top, bottom) {
 FIGURES.push({
   id: 'propane-homotopic',
   section: 'prochirality',
-  viewBox: '0 0 340 424',
+  viewBox: '0 0 340 446',
   alt: 'The substitution test on C2 of propane. Top: C2 with a methyl group on each side, Ha on a wedge and Hb on a hash. Replacing Ha with D gives C2 with two methyls, D on the wedge and H on the hash. Replacing Hb with D gives two methyls, H on the wedge and D on the hash. The two methyl groups tie, so C2 is not a stereocenter; turning the second product over gives the first. Both are the same compound, so Ha and Hb are homotopic.',
   build() {
     let s = '';
@@ -138,11 +138,11 @@ FIGURES.push({
     s += text(20, 276, 'Hb → D', { cls: 'fg-lbl', anchor: 'start' });
     s += propaneCenter(P(170, 328), { lab: 'H' }, { lab: 'D', kind: 'warn' });
 
-    s += lines(170, 382, 20, [
+    s += lines(170, 384, 22, [
       ['CH₃ and CH₃ tie, so C2 is not a stereocenter.', 'fg-tag'],
       ['Turn the second product over: it is the first.', 'fg-tag-good'],
     ], 'middle');
-    s += text(170, 418, 'same compound: homotopic', { cls: 'fg-lbl' });
+    s += text(170, 436, 'same compound: homotopic', { cls: 'fg-lbl' });
     return s;
   },
   caption: 'Turning the second product over (a half turn about a vertical line in the page) swaps its wedge and hash and leaves the two methyl groups where they were. It becomes the first product exactly.',
@@ -233,7 +233,7 @@ function bromobutane(x, y, left, right, o = {}) {
   if (o.pri) {
     const [pl, pr] = o.pri;
     s += sweep(c3, 22, 160, pr === 3 ? 305 : 255, true);
-    s += pri(c2.x - 4, c2.y + 24, 1);
+    s += pri(c2.x + 15, c2.y - 6, 1);
     s += pri(c4.x + 10, c4.y + 22, 2);
     s += pri(a.x - 20, a.y + 4, pl);
     s += pri(b.x + 20, b.y + 4, pr);
@@ -253,18 +253,18 @@ FIGURES.push({
 
     s += panel(8, 180, 324, 146);
     s += bromobutane(28, 240, { lab: 'D', kind: 'warn' }, { lab: 'H' }, { pri: [3, 4] });
-    s += lines(196, 204, 22, [
+    s += lines(180, 204, 22, [
       ['Ha → D', 'fg-lbl'],
-      'At C3: 1 = C2 (has Br),',
-      '2 = C4, 3 = D, 4 = H.',
-      'H points away;',
+      'At C3: 1 = C2, 2 = C4,',
+      '3 = D, 4 = H.',
+      'H points away:',
       'clockwise, so C3 is R.',
       ['(2R,3R)', 'fg-tag-good'],
     ]);
 
     s += panel(8, 336, 324, 146);
     s += bromobutane(28, 396, { lab: 'H' }, { lab: 'D', kind: 'warn' }, { pri: [4, 3] });
-    s += lines(196, 360, 22, [
+    s += lines(180, 360, 22, [
       ['Hb → D', 'fg-lbl'],
       'Same ranking, but H',
       'points at you:',
@@ -289,7 +289,7 @@ function mchx(cx, cy, a, b) {
   let s = '';
   for (let i = 0; i < 6; i++) s += sk(v[i], v[(i + 1) % 6]);
   const c1 = v[3], c2 = v[2];                  // bottom vertex, lower-right vertex
-  const me = P(c1.x, c1.y + 40);
+  const me = P(c1.x, c1.y + 32);
   s += wedge(c1, me, { rFrom: 0, rTo: 17, width: 10 });
   s += atom(me.x, me.y, 'CH₃', { r: 17, kind: 'hi', size: 9.5 });
   const pa = armEnd(c2, 5, 40), pb = armEnd(c2, 300, 40);
@@ -303,7 +303,7 @@ FIGURES.push({
   id: 'ring-diastereotopic',
   section: 'prochirality',
   lessons: ['prochirality'],
-  viewBox: '0 0 340 470',
+  viewBox: '0 0 340 494',
   alt: 'Methylcyclohexane as a flat hexagon with the methyl group on a wedge at C1. The next carbon, C2, carries Ha on a wedge and Hb on a hash. Replacing Ha with D puts D and the methyl both on wedges, the same face of the ring: the cis product. Replacing Hb with D puts D on a hash and the methyl on a wedge, opposite faces: the trans product. Cis and trans isomers are diastereomers, so Ha and Hb are diastereotopic.',
   build() {
     let s = '';
@@ -313,21 +313,21 @@ FIGURES.push({
     s += text(top.c1.x - 12, top.c1.y + 2, 'C1', { cls: 'fg-tag', anchor: 'end' });
     s += text(top.c2.x - 8, top.c2.y - 8, 'C2', { cls: 'fg-tag', anchor: 'end' });
 
-    s += panel(8, 146, 324, 130);
-    s += mchx(80, 196, { lab: 'D', kind: 'warn' }, { lab: 'H' }).s;
-    s += lines(178, 174, 22, [['Ha → D', 'fg-lbl'], 'D and CH₃ are both', 'on wedges: the same', 'face of the ring']);
-    s += itext(178, 262, [{ i: 'cis' }, ' product'], 'fg-tag-good', 'start');
+    s += panel(8, 154, 324, 136);
+    s += mchx(80, 200, { lab: 'D', kind: 'warn' }, { lab: 'H' }).s;
+    s += lines(178, 180, 22, [['Ha → D', 'fg-lbl'], 'D and CH₃ are both', 'on wedges: the same', 'face of the ring']);
+    s += itext(178, 268, [{ i: 'cis' }, ' product'], 'fg-tag-good', 'start');
 
-    s += panel(8, 286, 324, 130);
-    s += mchx(80, 336, { lab: 'H' }, { lab: 'D', kind: 'warn' }).s;
-    s += lines(178, 314, 22, [['Hb → D', 'fg-lbl'], 'D on a hash, CH₃ on', 'a wedge: opposite', 'faces of the ring']);
-    s += itext(178, 402, [{ i: 'trans' }, ' product'], 'fg-tag-warn', 'start');
+    s += panel(8, 300, 324, 136);
+    s += mchx(80, 346, { lab: 'H' }, { lab: 'D', kind: 'warn' }).s;
+    s += lines(178, 326, 22, [['Hb → D', 'fg-lbl'], 'D on a hash, CH₃ on', 'a wedge: opposite', 'faces of the ring']);
+    s += itext(178, 414, [{ i: 'trans' }, ' product'], 'fg-tag-warn', 'start');
 
-    s += itext(170, 442, [{ i: 'cis' }, ' and ', { i: 'trans' }, ' are diastereomers,'], 'fg-lbl');
-    s += text(170, 462, 'so Ha and Hb are diastereotopic', { cls: 'fg-lbl' });
+    s += itext(170, 464, [{ i: 'cis' }, ' and ', { i: 'trans' }, ' are diastereomers,'], 'fg-lbl');
+    s += text(170, 486, 'so Ha and Hb are diastereotopic', { cls: 'fg-lbl' });
     return s;
   },
-  caption: 'Wedges point toward you, hashes away, so a wedge and a wedge are on the same face of the flat ring. Each product has two new stereocenters, C1 and C2.',
+  caption: 'Wedges point toward you and hashes away, so two wedged groups sit on the same face of the flat ring. Each product has two new stereocenters, C1 and C2.',
 });
 
 /* ------------------------------------------------------------------ propene
@@ -345,7 +345,7 @@ function propene(x, y, up, down, o = {}) {
   s += atom(c1.x, c1.y, 'C') + atom(c2.x, c2.y, 'C');
   if (o.hi) {
     const hp = o.hi === 'up' ? u : d;
-    s += text(hp.x - 16, hp.y + 4, 'higher', { cls: 'fg-tag-good', anchor: 'end' });
+    s += text(hp.x, o.hi === 'up' ? hp.y - 18 : hp.y + 28, 'higher', { cls: 'fg-tag-good' });
     s += text(me.x + 20, me.y + 4, 'higher', { cls: 'fg-tag-good', anchor: 'start' });
   }
   return s;
@@ -354,25 +354,23 @@ FIGURES.push({
   id: 'propene-ez',
   section: 'prochirality',
   lessons: ['prochirality'],
-  viewBox: '0 0 340 452',
+  viewBox: '0 0 340 474',
   alt: 'Propene with every atom labeled: the left carbon of the double bond carries Ha on the upper side and Hb on the lower side; the right carbon carries CH3 on the upper side and H on the lower side. Replacing Ha with D puts D and CH3, the higher-priority group on each carbon, on the same side: Z. Replacing Hb with D puts them on opposite sides: E. E and Z isomers are diastereomers, so Ha and Hb are diastereotopic.',
   build() {
     let s = '';
     s += text(170, 16, 'propene: no stereocenter', { cls: 'fg-tag' });
     s += propene(144, 82, { lab: 'Ha', size: 10.5 }, { lab: 'Hb', size: 10.5 });
 
-    s += panel(8, 136, 324, 126);
-    s += propene(92, 200, { lab: 'D', kind: 'warn' }, { lab: 'H' }, { hi: 'up' });
-    s += lines(220, 176, 22, [['Ha → D', 'fg-lbl'], 'higher groups on', 'the same side:']);
-    s += text(220, 246, 'Z', { cls: 'fg-tag-good', anchor: 'start' });
+    s += panel(8, 136, 324, 136);
+    s += propene(64, 206, { lab: 'D', kind: 'warn' }, { lab: 'H' }, { hi: 'up' });
+    s += lines(212, 180, 22, [['Ha → D', 'fg-lbl'], 'higher groups on', 'the same side:', ['Z', 'fg-tag-good']]);
 
-    s += panel(8, 272, 324, 126);
-    s += propene(92, 336, { lab: 'H' }, { lab: 'D', kind: 'warn' }, { hi: 'down' });
-    s += lines(220, 312, 22, [['Hb → D', 'fg-lbl'], 'higher groups on', 'opposite sides:']);
-    s += text(220, 382, 'E', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += panel(8, 282, 324, 136);
+    s += propene(64, 346, { lab: 'H' }, { lab: 'D', kind: 'warn' }, { hi: 'down' });
+    s += lines(212, 320, 22, [['Hb → D', 'fg-lbl'], 'higher groups on', 'opposite sides:', ['E', 'fg-tag-warn']]);
 
-    s += text(170, 424, 'E and Z are diastereomers,', { cls: 'fg-lbl' });
-    s += text(170, 444, 'so Ha and Hb are diastereotopic', { cls: 'fg-lbl' });
+    s += text(170, 446, 'E and Z are diastereomers,', { cls: 'fg-lbl' });
+    s += text(170, 466, 'so Ha and Hb are diastereotopic', { cls: 'fg-lbl' });
     return s;
   },
   caption: 'On each carbon of the double bond the higher-priority group is tagged: D outranks H on the left carbon, and CH₃ outranks H on the right one.',
