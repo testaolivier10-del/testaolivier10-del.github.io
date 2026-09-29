@@ -185,7 +185,7 @@ FIGURES.push({
   section: 'ether-chemistry',
   lessons: ['ether-chemistry'],
   anchor: 'completes the ether.</p>',
-  viewBox: '0 0 340 452',
+  viewBox: '0 0 340 466',
   alt: 'Two stacked steps. Step 1: hydride from sodium hydride uses its lone pair to take the O–H hydrogen of ethanol, and the O–H bonding pair moves onto oxygen; the products are ethoxide ion, with three lone pairs and a negative charge on oxygen, and hydrogen gas. Step 2: an ethoxide lone pair attacks the CH3 carbon of iodomethane from the side opposite the iodine, and the C–I bonding pair leaves with iodine; the products are methoxyethane and iodide ion.',
   build() {
     let s = '';
@@ -211,7 +211,7 @@ FIGURES.push({
       t += tag(Q(224, 0).x, Q(0, 206).y, 'H₂ gas bubbles off', { cls: 'fg-tag-good' });
       return t;
     });
-    s += cell(8, 230, 324, 214, 'STEP 2 · SN2 AT THE CH₃ OF CH₃–I', (Q) => {
+    s += cell(8, 230, 324, 228, 'STEP 2 · SN2 AT THE CH₃ OF CH₃–I', (Q) => {
       let t = '';
       const c1 = Q(18, 84), c2 = Q(46, 68), o = Q(78, 84);
       t += sk(c1, c2) + B(c2, o, '', 'O') + A(o, 'O', { kind: 'hi' });
@@ -225,9 +225,9 @@ FIGURES.push({
       t += tag(c.x, c.y + 38, 'attacked from the back');
       t += arrow(Q(162, 128), Q(162, 150));
       const e1 = Q(40, 180), e2 = Q(68, 164), oe = Q(100, 180), m = Q(130, 164);
-      t += sk(e1, e2) + B(e2, oe, '', 'O') + B(oe, m, 'O', '', { cls: 'fg-bond-hi' }) + A(oe, 'O', { kind: 'hi' }) + lps(oe, [270, 90]);
+      t += sk(e1, e2) + B(e2, oe, '', 'O') + B(oe, m, 'O', '', { cls: 'fg-bond-hi' }) + A(oe, 'O', { kind: 'hi' }) + lps(oe, [270, 140]);
       t += text(Q(160, 0).x, oe.y + 5, '+  I⁻  +  Na⁺', { cls: 'fg-lbl', anchor: 'start' });
-      t += tag(Q(84, 0).x, Q(0, 206).y, 'methoxyethane', { cls: 'fg-tag-good' });
+      t += tag(Q(84, 0).x, Q(0, 222).y, 'methoxyethane', { cls: 'fg-tag-good' });
       return t;
     });
     return s;
@@ -525,7 +525,7 @@ FIGURES.push({
   section: 'ether-chemistry',
   anchor: 'the alcohol is (<i>R</i>)-butan-2-ol.</p>',
   viewBox: '0 0 760 220',
-  alt: '(R)-2-methoxybutane, drawn as a zigzag with the OCH3 group on a wedge at C2, reacts with one mole of HI. The bond from oxygen to the CH3 group is highlighted as the bond that breaks; the bond from C2 to oxygen is marked as untouched. The products are (R)-butan-2-ol, with its OH on a wedge in the same position, and iodomethane.',
+  alt: '(R)-2-methoxybutane, drawn as a zigzag with the OCH3 group on a wedge at C2, reacts with one equivalent of HI. The bond from oxygen to the CH3 group is highlighted as the bond that breaks; the bond from C2 to oxygen is marked as untouched. The products are (R)-butan-2-ol, with its OH on a wedge in the same position, and iodomethane.',
   build() {
     let s = '';
     const skel = (x0) => {
@@ -544,7 +544,7 @@ FIGURES.push({
       s += text(158, 196, 'one CH₃ and one secondary carbon on O', { cls: 'fg-sm' });
     }
     s += arrow(P(318, 110), P(420, 110));
-    s += text(369, 98, 'HI (one mole)', { cls: 'fg-tag' });
+    s += text(369, 98, 'HI (one equiv.)', { cls: 'fg-tag' });
     s += text(369, 130, 'SN2 at the CH₃', { cls: 'fg-sm' });
     s += panel(430, 8, 322, 204, { kind: 'good' });
     s += rich(591, 30, `(${it('R')})-butan-2-ol  +  CH₃–I`, 'fg-tag-good');
@@ -710,8 +710,8 @@ FIGURES.push({
     s += text(572, 306, 'KF does not dissolve in benzene.', { cls: 'fg-lbl', size: 11.5 });
     s += text(572, 330, 'With 18-crown-6 around the K⁺,', { cls: 'fg-sm', size: 10 });
     s += text(572, 348, 'the whole ion pair dissolves, and the F⁻', { cls: 'fg-sm', size: 10 });
-    s += text(572, 366, 'is neither solvated nor held by K⁺.', { cls: 'fg-sm', size: 10 });
-    s += text(572, 392, 'a NAKED anion: a far better nucleophile', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(572, 366, 'is neither solvated nor held tightly by K⁺.', { cls: 'fg-sm', size: 10 });
+    s += text(572, 392, 'a naked anion: a far better nucleophile', { cls: 'fg-tag-good', size: 10.5 });
     return s;
   },
   caption: 'Left: the ring holds K⁺ the way a shell of solvent molecules would. Top right: compare the three circles by size.',
@@ -722,7 +722,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'epoxide-angle',
   section: 'ether-chemistry',
-  anchor: 'the next section, is devoted to it.</p>',
+  anchor: 'covers them.</p>',
   viewBox: '0 0 340 190',
   alt: 'Left: diethyl ether, an open-chain ether, with a C–O–C angle of about 110 degrees. Right: oxirane, the simplest epoxide, a three-membered ring of two CH2 carbons and one oxygen, whose ring angles are about 60 degrees, far from the preferred angle, so the ring is strained.',
   build() {
