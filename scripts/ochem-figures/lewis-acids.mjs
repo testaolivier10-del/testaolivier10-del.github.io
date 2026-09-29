@@ -191,7 +191,7 @@ FIGURES.push({
   section: 'lewis-acids',
   anchor: 'oxygen ends up +1 and titanium −1.</p>',
   alt: 'Left: TiCl4, titanium with four chlorines at the corners of a tetrahedron, and acetone, (CH3)2C=O, whose oxygen carries two lone pairs; a curved arrow runs from one oxygen lone pair to titanium. Right: the product, titanium now bonded to five atoms, four chlorines and the acetone oxygen. Oxygen keeps one lone pair and is plus one; titanium is minus one.',
-  viewBox: '0 50 760 240',
+  viewBox: '0 24 760 266',
   build() {
     let s = '';
     // TiCl4
@@ -252,7 +252,7 @@ function etheneTop(y, withH) {
   if (withH) {
     // H–Br above the left carbon: arrow 1 from the pi pair to H,
     // arrow 2 from the H–Br bond onto Br
-    const h = P(112, y - 96), br = P(176, y - 118);
+    const h = P(112, y - 88), br = P(174, y - 106);
     s += bond(h, br, { rFrom: 12, rTo: 15 });
     s += atom(h.x, h.y, 'H', { kind: 'warn', r: 12 });
     s += atom(br.x, br.y, 'Br', { r: 15, size: 11.5 });
@@ -290,7 +290,7 @@ FIGURES.push({
     let s = '';
     s += panel(6, 6, 328, 222);
     s += etheneTop(150, true);
-    s += tg(204, 30, 'H–Br supplies the H⁺', 'start');
+    s += tg(206, 86, 'H⁺ from HBr', 'start');
     s += tg(66, 100, 'π pair', 'middle');
     s += arrow(P(170, 232), P(170, 258));
     s += panel(6, 264, 328, 170);
@@ -366,7 +366,7 @@ FIGURES.push({
     arms(w, 'O', [[330, 'H'], [40, 'H']], 42);
     s += mol(w);
     s += tg(330, 190, 'water, the Lewis base');
-    s += curve(P(o.x - 25, o.y + 12), P(c.x + 20, c.y - 4), { bow: -30 });
+    s += curve(P(o.x - 26, o.y - 4), P(c.x + 12, c.y - 13), { bow: 26 });
     s += arrow(P(420, 140), P(470, 140));
     // product: oxonium ion
     const p = tBuO(P(540, 140), [[315, 'H'], [45, 'H']], 'warn');
