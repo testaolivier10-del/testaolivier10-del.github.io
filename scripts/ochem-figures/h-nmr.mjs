@@ -206,7 +206,7 @@ function alkenePanel(cx, cy) {
     s += atom(h.x, h.y, 'H', { r: 13, kind: 'warn' });
     s += text(h.x, h.y + 30, '2 H', { cls: 'fg-tag-warn' });
   }
-  s += circulation(cx, cy, 30, 6);
+  s += circulation(cx, cy, 34, 11);
   return s;
 }
 
@@ -235,7 +235,7 @@ FIGURES.push({
     const cy = 150;
     const cols = [[160, 'benzene, ring seen edge-on', benzenePanel,
       [['ring H stick out, where', 'fg-tag'], ['the loops point up (with B₀)', 'fg-tag'], ['deshielded: δ 6.5–8.5', 'fg-tag-warn']]],
-    [400, 'an alkene, plane seen edge-on', alkenePanel,
+    [400, 'alkene, plane edge-on', alkenePanel,
       [['vinyl H lie in the plane, where', 'fg-tag'], ['the loops point up (with B₀)', 'fg-tag'], ['deshielded: δ 4.5–6.5', 'fg-tag-warn']]],
     [630, 'a terminal alkyne, along B₀', alkynePanel,
       [['≡C–H sits on the axis, where', 'fg-tag'], ['the field points down (against B₀)', 'fg-tag'], ['shielded: δ 1.8–3.0', 'fg-tag-good']]]];
