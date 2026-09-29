@@ -745,12 +745,13 @@
       8:['topicity-test'],
       11:['topicity-test','prochiral-faces'] } },
 
-    'h-nmr': { n:8, steps:{
-      1:['nmr-splitting-integration'],
-      2:['nmr-splitting-integration'],
+    'h-nmr': { n:11, steps:{
+      2:['nmr-shift-shielding','huckel-aromaticity'],
       4:['nmr-splitting-integration'],
-      6:['nmr-splitting-integration'],
-      7:['nmr-shift-shielding','huckel-aromaticity'] } },
+      5:['nmr-splitting-integration'],
+      7:['nmr-splitting-integration'],
+      9:['nmr-splitting-integration'],
+      10:['nmr-splitting-integration','structure-elucidation'] } },
 
     'hybridization': { n:13, steps:{
       5:['hybridization-assignment'],

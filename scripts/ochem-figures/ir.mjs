@@ -179,7 +179,7 @@ FIGURES.push({
     s += tg(170, 280, 'H: the lightest atom', 'middle', 'fg-tag-mut');
     return s;
   },
-  caption: 'Read the top three bars as one, two and three bonds between the same two carbons. The C–H bar compares a single bond with a much lighter atom on one end.',
+  caption: 'Read the top three bars as one, two and three bonds between the same two carbons. The C–H bar is a single bond with a much lighter atom at one end.',
 });
 
 /* ------------------------------------------------- 4. the region map --- */

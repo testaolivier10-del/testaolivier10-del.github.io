@@ -119,7 +119,7 @@ FIGURES.push({
     s += text(X(0.2), base + 58, 'upfield: shielded, lower δ', { cls: 'fg-tag', anchor: 'end' });
     return s;
   },
-  caption: 'The table as a picture, printed the way every spectrum is, with δ rising to the left. Coral bars are hydrogens on a carbon that is itself part of a π bond; the next heading explains them.',
+  caption: 'The table as a picture. Coral bars are hydrogens on a carbon that is itself part of a π bond; the next heading explains them.',
 });
 
 /* ------------------------------------------------------------- anisotropy ---
@@ -527,7 +527,7 @@ FIGURES.push({
     s += text(cx + 30, 226, 'meta: J = 2–3 Hz', { cls: 'fg-tag-warn', anchor: 'middle' });
     return s;
   },
-  caption: 'The coral hydrogens in each alkene are the coupled pair. On the ring, Ha couples strongly to the hydrogen on the next carbon (ortho) and weakly to the one a carbon further round (meta).',
+  caption: 'In each alkene the coral hydrogens are the coupled pair. On the ring, the teal hydrogens are the ortho and meta partners of Ha.',
 });
 
 /* ---------------------------------------------------------------- ethanol ---
@@ -572,7 +572,7 @@ FIGURES.push({
     s += lab(1.2, 'CH₃', 't · 3H', 'δ 1.2', 'fg-tag-warn');
     return s;
   },
-  caption: 'Three kinds of hydrogen, three signals. The letters under each signal are its splitting: q quartet, s singlet, t triplet.',
+  caption: 'Three kinds of hydrogen, three signals. Under each signal: its group, its splitting and integration, and its shift.',
 });
 
 /* ------------------------------------------------------------- 1H NMR ---
