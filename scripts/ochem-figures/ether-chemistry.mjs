@@ -600,11 +600,11 @@ FIGURES.push({
   id: 'bf3-etherate',
   section: 'ether-chemistry',
   anchor: 'yet it hands the BF₃ over to a stronger donor when one is present.</p>',
-  viewBox: '0 0 340 270',
+  viewBox: '0 0 340 290',
   alt: 'Top: diethyl ether uses one oxygen lone pair to bond to the boron of BF3, which has an empty p orbital and only six electrons. Bottom: the product, BF3 etherate, in which the oxygen carries a positive formal charge and the boron a negative one.',
   build() {
     let s = '';
-    s += panel(8, 8, 324, 254);
+    s += panel(8, 8, 324, 274);
     s += text(170, 30, 'Lewis base  +  Lewis acid', { cls: 'fg-tag' });
     const o = P(96, 116);
     s += sk(P(40, 116), P(68, 132)) + B(P(68, 132), o, '', 'O') + B(o, P(124, 132), 'O', '') + sk(P(124, 132), P(152, 116));
@@ -614,19 +614,17 @@ FIGURES.push({
     s += B(b, f1, 'B', 'F') + B(b, f2, 'B', 'F') + B(b, f3, 'B', 'F');
     s += A(b, 'B', { kind: 'warn' }) + A(f1, 'F') + A(f2, 'F') + A(f3, 'F');
     s += curve(P(o.x + 14, o.y - 24), P(b.x - 10, b.y - 14), { bow: -34 });
-    s += text(262, 156, 'empty p orbital', { cls: 'fg-tag-warn' });
-    s += arrow(P(170, 162), P(170, 182));
-    const o2 = P(130, 214), b2 = P(196, 214);
-    s += sk(P(74, 214), P(102, 198)) + B(P(102, 198), o2, '', 'O');
-    s += B(o2, P(112, 242), 'O', '') + sk(P(112, 242), P(84, 256));
+    s += arrow(P(170, 156), P(170, 180));
+    const o2 = P(120, 222), b2 = P(190, 222);
+    s += sk(P(64, 222), P(92, 206)) + B(P(92, 206), o2, '', 'O');
+    s += B(o2, P(104, 250), 'O', '') + sk(P(104, 250), P(76, 266));
     s += B(o2, b2, 'O', 'B', { cls: 'fg-bond-hi' });
-    const g1 = P(232, 190), g2 = P(238, 226), g3 = P(196, 254);
-    s += B(b2, g1, 'B', 'F') + B(b2, g2, 'B', 'F');
-    s += A(o2, 'O', { kind: 'hi' }) + A(b2, 'B', { kind: 'warn' }) + A(g1, 'F') + A(g2, 'F');
-    s += B(b2, P(180, 176), 'B', 'F') + A(P(180, 176), 'F');
-    s += charge(o2.x + 16, o2.y + 24, '+') + charge(b2.x + 4, b2.y + 28, '−');
+    const g1 = P(222, 192), g2 = P(232, 236), g3 = P(170, 258);
+    s += B(b2, g1, 'B', 'F') + B(b2, g2, 'B', 'F') + B(b2, g3, 'B', 'F');
+    s += A(o2, 'O', { kind: 'hi' }) + A(b2, 'B', { kind: 'warn' }) + A(g1, 'F') + A(g2, 'F') + A(g3, 'F');
+    s += charge(o2.x + 20, o2.y + 26, '+') + charge(b2.x - 14, b2.y - 20, '−');
     s += lonePair(o2.x, o2.y, 270, { dist: 21 });
-    s += text(294, 252, 'BF₃·OEt₂', { cls: 'fg-lbl' });
+    s += text(288, 272, 'BF₃·OEt₂', { cls: 'fg-lbl' });
     return s;
   },
   caption: 'The new O–B bond, highlighted, is made from an oxygen lone pair.',
