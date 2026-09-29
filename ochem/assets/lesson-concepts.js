@@ -332,26 +332,28 @@
       11:['crosslink-and-end-of-life'] } },
 
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
-    'oxidation-states': { n:8, steps:{
+    'oxidation-states': { n:11, steps:{
       2:['oxidation-level'],
-      3:['oxidation-level'],
-      4:['oxidation-level','oxidant-choice'],
+      4:['oxidation-level'],
       6:['oxidation-level'],
-      7:['oxidation-level'] } },
+      8:['oxidation-level','oxidant-choice'],
+      10:['oxidation-level'] } },
 
-    'alcohol-oxidation': { n:8, steps:{
-      2:['oxidant-choice'],
-      3:['oxidant-choice','oxidation-level'],
-      4:['oxidant-choice'],
-      6:['oxidant-choice'],
-      7:['oxidant-choice','oxidation-level'] } },
+    'alcohol-oxidation': { n:11, steps:{
+      2:['oxidant-choice','oxidation-level'],
+      5:['oxidant-choice'],
+      6:['oxidant-choice','oxidation-level'],
+      7:['oxidant-choice'],
+      8:['oxidant-choice'],
+      10:['oxidant-choice','oxidation-level'] } },
 
-    'carbonyl-reduction': { n:8, steps:{
-      2:['reductant-scope'],
+    'carbonyl-reduction': { n:12, steps:{
       3:['reductant-scope'],
       4:['reductant-scope'],
-      6:['reductant-scope'],
-      7:['reductant-scope','oxidation-level'] } },
+      6:['reductant-scope','tetrahedral-intermediate'],
+      8:['stereochemical-outcome'],
+      10:['reductant-scope'],
+      11:['reductant-scope','oxidation-level'] } },
 
     'hydrogenation': { n:12, steps:{
       2:['redox-stereochemistry'],

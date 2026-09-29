@@ -105,7 +105,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 11</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -136,19 +136,21 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
-  /* Four transformations to classify. Two are the obvious cases and two are
-     the ones people get wrong: hydrogenation (a reduction whose name does not
-     say so) and HBr addition (redox-neutral, because the gain in C-H and the
-     gain in C-Br cancel). */
+  /* Five transformations to classify. Three are the ones people get wrong:
+     hydrogenation (a reduction whose name does not say so), HBr addition
+     (neither, because the new C-H and the new C-Br cancel) and bromohydrin
+     formation (an oxidation that looks like the one-of-each pattern). */
   var CASES = [
     { id:'t1', text:'An alcohol becomes a ketone', right:'ox',
-      why:'A C–H on the carbinol carbon is replaced by a second bond to oxygen. Bonds to O up, bonds to H down — oxidation twice over.' },
+      why:'The carbon that carries the OH swaps a C–H bond for a second bond to oxygen. Losing a bond to H and gaining a bond to O point the same way, so this is one oxidation.' },
     { id:'t2', text:'An alkene plus H₂ becomes an alkane', right:'red',
-      why:'Two new C–H bonds and nothing gained to oxygen. This is a reduction, which is worth saying out loud because the word "hydrogenation" does not contain it.' },
+      why:'Each alkene carbon gains a C–H bond, and neither gains a bond to oxygen. This is a reduction, even though the name &quot;hydrogenation&quot; does not say so.' },
     { id:'t3', text:'An alkene plus HBr becomes an alkyl bromide', right:'neither',
-      why:'One new C–H (down) and one new C–Br (up). They cancel exactly, so this is redox-neutral — and so are hydration, oxymercuration and hydroboration–oxidation, which also deliver one hydrogen and one heteroatom. Bromination and halohydrin formation are different: a heteroatom at both ends, a hydrogen at neither, so both are oxidations.' },
-    { id:'t4', text:'An ester becomes a carboxylic acid by hydrolysis', right:'neither',
-      why:'Both sit at +3 on the ladder. Exchanging OR for OH changes neither the hydrogen count nor the count of bonds to electronegative atoms, which is why acyl derivatives interconvert by substitution rather than by redox.' }
+      why:'One carbon gains a C–H bond (toward reduction) and the other gains a C–Br bond (toward oxidation). Counted over both carbons, the two cancel.' },
+    { id:'t4', text:'An alkene plus Br₂ in water becomes a bromohydrin, with OH on one carbon and Br on the other', right:'ox',
+      why:'OH and Br are both electronegative, and neither is a hydrogen. Both carbons gain a bond to an electronegative atom, so this is an oxidation.' },
+    { id:'t5', text:'An ester reacts with water to give a carboxylic acid and an alcohol', right:'neither',
+      why:'The carbonyl carbon has three bonds to oxygen in the ester (two in the C=O, one to the OR) and three in the acid (two in the C=O, one to the OH). Its bonds to H do not change either, so this is neither.' }
   ];
   var KINDS = [{k:'ox',l:'Oxidation'},{k:'red',l:'Reduction'},{k:'neither',l:'Neither'}];
 
@@ -161,25 +163,30 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'A working test that beats counting electrons.',
-        bodyHtml: '<p class="step-body">The general-chemistry definition — oxidation is loss of electrons — is correct and almost unusable here, because organic reactions rarely move a whole electron between identifiable ions. They change what a carbon is bonded to. So organic chemists use a test that gives the same answers with far less arithmetic:</p>' +
-          '<div class="explain-box"><b>Oxidation</b> = gaining bonds to oxygen (or another electronegative atom), <b>or</b> losing bonds to hydrogen.<br><b>Reduction</b> = the reverse.</div>' +
-          '<p class="step-body" style="margin-bottom:0;">A reaction that changes neither count is <b>neither</b>. Adding HBr across an alkene gains a C–H <i>and</i> a C–Br, and those cancel — as they do in hydration, oxymercuration and hydroboration–oxidation. Do not stretch that into &quot;additions are neutral&quot;, though: bromination, halohydrin formation, epoxidation and dihydroxylation put a heteroatom on <i>both</i> carbons and a hydrogen on neither, so all four are oxidations, and hydrogenation puts a hydrogen on both and is a reduction. Running the two counts is a fast way to check you have not mislabeled something.</p>'
+        title: 'Oxidation is a trade of bonds.',
+        bodyHtml: '<p class="step-body">Oxidize propan-2-ol and you get propanone (acetone). Watch the middle carbon. It loses its C–H bond, and a second bond to oxygen takes its place, making the C=O.</p>' +
+          '<!-- fig:l-bond-trade:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 496" role="img" aria-label="Propan-2-ol above, propanone below. An arrow down is labeled oxidation and an arrow up is labeled reduction."><rect class="fg-panel" x="8" y="8" width="324" height="204" rx="10"></rect><text class="fg-tag" x="170" y="30" text-anchor="middle" font-size="11">PROPAN-2-OL</text><text class="fg-tag-good" x="170" y="198" text-anchor="middle" font-size="11">on that C: 1 bond to O, 1 bond to H</text><line class="fg-bond" x1="170" y1="92" x2="170" y2="78"></line><circle class="fg-atom" cx="170" cy="62" r="16"></circle><text class="fg-lbl" x="170" y="65.89" text-anchor="middle" font-size="10.5">OH</text><line class="fg-bond" x1="170" y1="124" x2="170" y2="140"></line><circle class="fg-atom-hi" cx="170" cy="154" r="14"></circle><text class="fg-lbl" x="170" y="158.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="154" y1="108" x2="133" y2="108"></line><circle class="fg-atom" cx="114" cy="108" r="19"></circle><text class="fg-lbl" x="114" y="111.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="186" y1="108" x2="207" y2="108"></line><circle class="fg-atom" cx="226" cy="108" r="19"></circle><text class="fg-lbl" x="226" y="111.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom-warn" cx="170" cy="108" r="14"></circle><text class="fg-lbl" x="170" y="112.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag-good" x="188" y="158" text-anchor="start" font-size="11">this H goes</text><rect class="fg-panel" x="8" y="284" width="324" height="204" rx="10"></rect><text class="fg-tag" x="170" y="306" text-anchor="middle" font-size="11">PROPANONE</text><text class="fg-tag-good" x="170" y="474" text-anchor="middle" font-size="11">on that C: 2 bonds to O, no H</text><line class="fg-bond" x1="166" y1="380" x2="166" y2="360"></line><line class="fg-bond" x1="174" y1="380" x2="174" y2="360"></line><circle class="fg-atom" cx="170" cy="346" r="14"></circle><text class="fg-lbl" x="170" y="350.44" text-anchor="middle" font-size="12">O</text><line class="fg-bond" x1="156.14" y1="404" x2="139.69" y2="413.5"></line><circle class="fg-atom" cx="123.23" cy="423" r="19"></circle><text class="fg-lbl" x="123.23" y="426.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="183.86" y1="404" x2="200.31" y2="413.5"></line><circle class="fg-atom" cx="216.77" cy="423" r="19"></circle><text class="fg-lbl" x="216.77" y="426.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom-warn" cx="170" cy="396" r="14"></circle><text class="fg-lbl" x="170" y="400.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag-good" x="184" y="378" text-anchor="start" font-size="11">second bond to O</text><line class="fg-arrow" x1="152" y1="220" x2="152" y2="268"></line><path class="fg-head" d="M152 276 L147.84 268 L156.16 268 Z"></path><line class="fg-arrow" x1="188" y1="276" x2="188" y2="228"></line><path class="fg-head" d="M188 220 L192.16 228 L183.84 228 Z"></path><text class="fg-tag" x="142" y="252" text-anchor="end" font-size="11">oxidation</text><text class="fg-tag" x="198" y="252" text-anchor="start" font-size="11">reduction</text></svg><figcaption>Oxidation trades the middle carbon&rsquo;s C&ndash;H for a second bond to oxygen.</figcaption></figure><!-- fig:l-bond-trade:end -->' +
+          '<p class="step-body">Run the change backward and the carbon gains a C–H bond and loses a bond to oxygen. That is a reduction.</p>' +
+          '<p class="step-body">An <b>electronegative atom</b> here means oxygen, nitrogen or a halogen: each pulls bonding electrons more strongly than carbon does. The two directions give the working test:</p>' +
+          '<div class="explain-box"><b>Oxidation</b> = gaining bonds to oxygen (or to another electronegative atom), <b>or</b> losing bonds to hydrogen.<br><b>Reduction</b> = the reverse.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">General chemistry defines oxidation as a loss of electrons. That is correct, but hard to apply when you cannot see an electron leave, so organic chemists count bonds instead.</p>'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'The ladder, and why it organizes the rest of the chapter.',
-        bodyHtml: '<p class="step-body">If you want the actual number: each bond to a more electronegative atom counts <b>+1</b>, each bond to hydrogen counts <b>−1</b>, and each bond to another carbon counts <b>0</b> — which is why you can usually ignore the rest of the molecule.</p>' +
-          '<p class="step-body" style="text-align:center;font-family:var(--font-mono);font-weight:700;">CH₄ (−4) &rarr; CH₃OH (−2) &rarr; CH₂O (0) &rarr; HCO₂H (+2) &rarr; CO₂ (+4)</p>' +
-          '<p class="step-body" style="margin-bottom:0;">Each step is a two-electron oxidation. Reading it as a ladder makes several later facts obvious rather than memorized. An alcohol and an alkyl halide sit on the <b>same rung</b>, so converting one to the other is not redox at all. A carboxylic acid, an ester, an amide and a nitrile all sit together on <b>one rung</b> — which is exactly why interconverting them is substitution, the same point the nomenclature chapter made about the top of the priority list. One caution on the numbers: the ladder above is the one-carbon series, and formic acid is +2 because its carbon still has an H. Swap that H for an alkyl group and the acid carbon is +3. The rung is what matters; the number moves with the substituent.</p>'
+        title: 'Adding to an alkene: count both carbons.',
+        bodyHtml: '<p class="step-body">Add HBr to propene and you get 2-bromopropane. One alkene carbon gains a C–H bond, which counts toward reduction. The other gains a C–Br bond, which counts toward oxidation. Counted over both carbons, the two changes cancel, so the reaction is neither.</p>' +
+          '<p class="step-body">Br<sub>2</sub> puts a bromine on each carbon and a hydrogen on neither, so it is an oxidation. H<sub>2</sub> puts a hydrogen on each carbon, so hydrogenation is a reduction, even though its name does not say so.</p>' +
+          '<!-- fig:l-addition-tallies:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 734" role="img" aria-label="Three stacked panels: propene plus HBr scores minus 1 plus 1, neither; propene plus Br2 scores plus 1 plus 1, oxidation; propene plus H2 scores minus 1 minus 1, reduction."><rect class="fg-panel" x="8" y="8" width="324" height="230" rx="10"></rect><text class="fg-tag" x="170" y="30" text-anchor="middle" font-size="11">PROPENE + HBr</text><text class="fg-tag-mut" x="170" y="224" text-anchor="middle" font-size="11">−1 + 1 = 0: neither</text><line class="fg-bond" x1="148" y1="118" x2="192" y2="118"></line><line class="fg-bond" x1="116" y1="118" x2="102" y2="118"></line><circle class="fg-atom" cx="88" cy="118" r="14"></circle><text class="fg-lbl" x="88" y="122.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="132" y1="102" x2="132" y2="88"></line><circle class="fg-atom" cx="132" cy="74" r="14"></circle><text class="fg-lbl" x="132" y="78.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="132" y1="134" x2="132" y2="150"></line><circle class="fg-atom-hi" cx="132" cy="164" r="14"></circle><text class="fg-lbl" x="132" y="168.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom-warn" cx="132" cy="118" r="14"></circle><text class="fg-lbl" x="132" y="122.44" text-anchor="middle" font-size="12">C</text><line class="fg-bond" x1="208" y1="102" x2="208" y2="88"></line><circle class="fg-atom" cx="208" cy="74" r="14"></circle><text class="fg-lbl" x="208" y="78.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="224" y1="118" x2="243" y2="118"></line><circle class="fg-atom" cx="262" cy="118" r="19"></circle><text class="fg-lbl" x="262" y="121.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="208" y1="134" x2="208" y2="148"></line><circle class="fg-atom-hi" cx="208" cy="164" r="16"></circle><text class="fg-lbl" x="208" y="167.89" text-anchor="middle" font-size="10.5">Br</text><circle class="fg-atom-warn" cx="208" cy="118" r="14"></circle><text class="fg-lbl" x="208" y="122.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag-warn" x="132" y="204" text-anchor="middle" font-size="11">−1</text><text class="fg-tag-warn" x="208" y="204" text-anchor="middle" font-size="11">+1</text><rect class="fg-panel" x="8" y="252" width="324" height="230" rx="10"></rect><text class="fg-tag" x="170" y="274" text-anchor="middle" font-size="11">PROPENE + Br₂</text><text class="fg-tag-good" x="170" y="468" text-anchor="middle" font-size="11">+1 + 1 = +2: oxidation</text><line class="fg-bond" x1="148" y1="362" x2="192" y2="362"></line><line class="fg-bond" x1="116" y1="362" x2="102" y2="362"></line><circle class="fg-atom" cx="88" cy="362" r="14"></circle><text class="fg-lbl" x="88" y="366.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="132" y1="346" x2="132" y2="332"></line><circle class="fg-atom" cx="132" cy="318" r="14"></circle><text class="fg-lbl" x="132" y="322.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="132" y1="378" x2="132" y2="392"></line><circle class="fg-atom-hi" cx="132" cy="408" r="16"></circle><text class="fg-lbl" x="132" y="411.89" text-anchor="middle" font-size="10.5">Br</text><circle class="fg-atom-warn" cx="132" cy="362" r="14"></circle><text class="fg-lbl" x="132" y="366.44" text-anchor="middle" font-size="12">C</text><line class="fg-bond" x1="208" y1="346" x2="208" y2="332"></line><circle class="fg-atom" cx="208" cy="318" r="14"></circle><text class="fg-lbl" x="208" y="322.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="224" y1="362" x2="243" y2="362"></line><circle class="fg-atom" cx="262" cy="362" r="19"></circle><text class="fg-lbl" x="262" y="365.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="208" y1="378" x2="208" y2="392"></line><circle class="fg-atom-hi" cx="208" cy="408" r="16"></circle><text class="fg-lbl" x="208" y="411.89" text-anchor="middle" font-size="10.5">Br</text><circle class="fg-atom-warn" cx="208" cy="362" r="14"></circle><text class="fg-lbl" x="208" y="366.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag-warn" x="132" y="448" text-anchor="middle" font-size="11">+1</text><text class="fg-tag-warn" x="208" y="448" text-anchor="middle" font-size="11">+1</text><rect class="fg-panel" x="8" y="496" width="324" height="230" rx="10"></rect><text class="fg-tag" x="170" y="518" text-anchor="middle" font-size="11">PROPENE + H₂</text><text class="fg-tag-good" x="170" y="712" text-anchor="middle" font-size="11">−1 − 1 = −2: reduction</text><line class="fg-bond" x1="148" y1="606" x2="192" y2="606"></line><line class="fg-bond" x1="116" y1="606" x2="102" y2="606"></line><circle class="fg-atom" cx="88" cy="606" r="14"></circle><text class="fg-lbl" x="88" y="610.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="132" y1="590" x2="132" y2="576"></line><circle class="fg-atom" cx="132" cy="562" r="14"></circle><text class="fg-lbl" x="132" y="566.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="132" y1="622" x2="132" y2="638"></line><circle class="fg-atom-hi" cx="132" cy="652" r="14"></circle><text class="fg-lbl" x="132" y="656.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom-warn" cx="132" cy="606" r="14"></circle><text class="fg-lbl" x="132" y="610.44" text-anchor="middle" font-size="12">C</text><line class="fg-bond" x1="208" y1="590" x2="208" y2="576"></line><circle class="fg-atom" cx="208" cy="562" r="14"></circle><text class="fg-lbl" x="208" y="566.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="224" y1="606" x2="243" y2="606"></line><circle class="fg-atom" cx="262" cy="606" r="19"></circle><text class="fg-lbl" x="262" y="609.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="208" y1="622" x2="208" y2="638"></line><circle class="fg-atom-hi" cx="208" cy="652" r="14"></circle><text class="fg-lbl" x="208" y="656.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom-warn" cx="208" cy="606" r="14"></circle><text class="fg-lbl" x="208" y="610.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag-warn" x="132" y="692" text-anchor="middle" font-size="11">−1</text><text class="fg-tag-warn" x="208" y="692" text-anchor="middle" font-size="11">−1</text></svg><figcaption>Add the scores of the two highlighted atoms.</figcaption></figure><!-- fig:l-addition-tallies:end -->' +
+          '<p class="step-body">The same count sorts the other alkene additions. Hydration, oxymercuration and hydroboration–oxidation each deliver one H and one OH, so they are neither. Halohydrin formation, epoxidation and dihydroxylation put an electronegative atom on both carbons, so they are oxidations.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Halohydrin formation is the one people put in the wrong group. It adds OH and Br, which looks like hydration&#39;s one-of-each pattern, but neither of them is a hydrogen.</p>'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Oxidation, reduction, or neither?</h2>' +
-            '<p class="step-body">Count bonds to oxygen and bonds to hydrogen on the carbon that changes. Two of these four are not what their names suggest.</p>' +
+            '<p class="step-body">On the carbons that change, count bonds to O, N or a halogen, and bonds to H. Some of these are easy to misjudge.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -199,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-k') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Not that one. Count both things separately: bonds to oxygen (or N, or halogen), and bonds to hydrogen. If both go up, they cancel.');
+                api.showFeedback(fb, false, 'Not that one. On the carbons that change, count bonds to O, N or a halogen and bonds to H separately, then see which way each change points.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -207,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. The two to remember are hydrogenation, which is a reduction despite its name, and HBr addition, which is neither.'
-                  : 'All four, first time — including both of the ones whose names mislead.');
+                  ? 'All five. The three to remember: hydrogenation is a reduction despite its name, HBr addition is neither, and bromohydrin formation is an oxidation.'
+                  : 'All five, first time, including the three whose names mislead.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -217,62 +224,92 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       },
       {
-        type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
-        title: 'What is the oxidation state of carbon in CH₃OH?',
-        options: ['−4','−2','0','+2'],
-        correctIndex: 1,
-        correctFeedback: 'Correct. Three bonds to H at −1 each is −3, one bond to O at +1 is +1, total −2. It sits one rung above methane and one below formaldehyde.',
-        wrongFeedback: 'Count each bond separately: three to hydrogen and one to oxygen. Bonds to hydrogen count −1 and bonds to oxygen +1.'
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Putting a number on a carbon.',
+        bodyHtml: '<p class="step-body">Oxidizing ethanol gives acetaldehyde. To put a number on the carbon that changes, score each of its four bonds. A bond to an electronegative atom counts <b>+1</b>, a bond to hydrogen counts <b>−1</b>, and a bond to another carbon counts <b>0</b>. A double bond is two bonds, so a C=O scores +2.</p>' +
+          '<p class="step-body">The scores come from electronegativity. Hand each bond&#39;s two electrons to the more electronegative atom. Oxygen takes both electrons of a C–O bond, leaving carbon one short: +1. Carbon is slightly more electronegative than hydrogen, so it takes both electrons of a C–H bond: −1. Two carbons share evenly: 0.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Here is that carbon in each compound, scored:</p>',
+        diagramHtml: '<!-- fig:l-count-carbon:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 450" role="img" aria-label="Two stacked panels: the ethanol carbon scores 0, minus 1, minus 1 and plus 1, total minus 1; the acetaldehyde carbon scores 0, minus 1 and plus 2, total plus 1."><rect class="fg-panel" x="8" y="8" width="324" height="210" rx="10"></rect><text class="fg-tag" x="170" y="30" text-anchor="middle" font-size="11">ETHANOL</text><text class="fg-tag-good" x="170" y="204" text-anchor="middle" font-size="11">0 − 1 − 1 + 1 = −1</text><line class="fg-bond" x1="154" y1="118" x2="131" y2="118"></line><circle class="fg-atom" cx="112" cy="118" r="19"></circle><text class="fg-lbl" x="112" y="121.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="170" y1="102" x2="170" y2="86"></line><circle class="fg-atom" cx="170" cy="72" r="14"></circle><text class="fg-lbl" x="170" y="76.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="170" y1="134" x2="170" y2="150"></line><circle class="fg-atom" cx="170" cy="164" r="14"></circle><text class="fg-lbl" x="170" y="168.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="186" y1="118" x2="210" y2="118"></line><circle class="fg-atom" cx="226" cy="118" r="16"></circle><text class="fg-lbl" x="226" y="121.89" text-anchor="middle" font-size="10.5">OH</text><circle class="fg-atom-warn" cx="170" cy="118" r="14"></circle><text class="fg-lbl" x="170" y="122.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag-warn" x="80" y="122" text-anchor="middle" font-size="11">0</text><text class="fg-tag-warn" x="200" y="76" text-anchor="middle" font-size="11">−1</text><text class="fg-tag-warn" x="200" y="168" text-anchor="middle" font-size="11">−1</text><text class="fg-tag-warn" x="260" y="122" text-anchor="middle" font-size="11">+1</text><rect class="fg-panel" x="8" y="232" width="324" height="210" rx="10"></rect><text class="fg-tag" x="170" y="254" text-anchor="middle" font-size="11">ACETALDEHYDE</text><text class="fg-tag-good" x="170" y="428" text-anchor="middle" font-size="11">0 − 1 + 2 = +1</text><line class="fg-bond" x1="166" y1="338" x2="166" y2="318"></line><line class="fg-bond" x1="174" y1="338" x2="174" y2="318"></line><circle class="fg-atom" cx="170" cy="304" r="14"></circle><text class="fg-lbl" x="170" y="308.44" text-anchor="middle" font-size="12">O</text><line class="fg-bond" x1="156.14" y1="362" x2="137.96" y2="372.5"></line><circle class="fg-atom" cx="121.5" cy="382" r="19"></circle><text class="fg-lbl" x="121.5" y="385.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="183.86" y1="362" x2="202.91" y2="373"></line><circle class="fg-atom" cx="215.03" cy="380" r="14"></circle><text class="fg-lbl" x="215.03" y="384.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom-warn" cx="170" cy="354" r="14"></circle><text class="fg-lbl" x="170" y="358.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag-warn" x="76" y="386" text-anchor="middle" font-size="11">0</text><text class="fg-tag-warn" x="246" y="386" text-anchor="middle" font-size="11">−1</text><text class="fg-tag-warn" x="184" y="334" text-anchor="start" font-size="11">+2 (two bonds)</text></svg><figcaption>Score each bond on the circled carbon, then add.</figcaption></figure><!-- fig:l-count-carbon:end -->' +
+          '<p class="step-body" style="margin-bottom:0;">The number rises from −1 to +1, by two, so this is a two-electron oxidation.</p>'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'Why can a tertiary alcohol not be oxidized under ordinary conditions?',
+        eyebrow: 'Guided Practice',
+        title: 'What is the oxidation state of carbon in methanol, CH₃OH?',
+        options: ['−4','−2','0','+2'],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Three bonds to H at −1 each give −3, and one bond to O gives +1, so the total is −2.',
+        wrongFeedback: 'Score each bond separately: three to hydrogen and one to oxygen. A bond to hydrogen counts −1 and a bond to oxygen +1.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The ladder, and what shares a rung.',
+        bodyHtml: '<p class="step-body">Score the one-carbon compounds and they fall on five levels, called <b>rungs</b>, or oxidation levels: CH<sub>4</sub> (−4), CH<sub>3</sub>OH (−2), CH<sub>2</sub>O (0), HCO<sub>2</sub>H (+2) and CO<sub>2</sub> (+4). Each rung up replaces a C–H bond with one more bond to oxygen, so each move up is a two-electron oxidation.</p>' +
+          '<!-- fig:l-oxidation-ladder:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 372" role="img" aria-label="The carbon oxidation ladder, top to bottom: CO2 plus 4, HCO2H plus 2, CH2O 0, CH3OH minus 2, CH4 minus 4, each with its count of bonds to O, N or halogen and the families that share the rung."><text class="fg-tag" x="170" y="22" text-anchor="middle" font-size="11">up a rung = a two-electron oxidation</text><text class="fg-lbl" x="40" y="58" text-anchor="start" font-size="12.5">CO₂</text><text class="fg-lbl" x="140" y="58" text-anchor="middle" font-size="12.5">+4</text><text class="fg-tag" x="326" y="58" text-anchor="end" font-size="11">4 bonds to O, N, X</text><text class="fg-tag-mut" x="40" y="78" text-anchor="start" font-size="11">CO₂ · CCl₄</text><line class="fg-rule" x1="30" y1="92" x2="334" y2="92"></line><text class="fg-lbl" x="40" y="114" text-anchor="start" font-size="12.5">HCO₂H</text><text class="fg-lbl" x="140" y="114" text-anchor="middle" font-size="12.5">+2</text><text class="fg-tag" x="326" y="114" text-anchor="end" font-size="11">3 bonds to O, N, X</text><text class="fg-tag-mut" x="40" y="134" text-anchor="start" font-size="11">carboxylic acid · ester · amide</text><text class="fg-tag-mut" x="40" y="152" text-anchor="start" font-size="11">acid chloride · nitrile</text><line class="fg-rule" x1="30" y1="166" x2="334" y2="166"></line><text class="fg-lbl" x="40" y="188" text-anchor="start" font-size="12.5">CH₂O</text><text class="fg-lbl" x="140" y="188" text-anchor="middle" font-size="12.5">0</text><text class="fg-tag" x="326" y="188" text-anchor="end" font-size="11">2 bonds to O, N, X</text><text class="fg-tag-mut" x="40" y="208" text-anchor="start" font-size="11">aldehyde · ketone · acetal · imine</text><line class="fg-rule" x1="30" y1="222" x2="334" y2="222"></line><rect class="fg-panel-hi" x="30" y="224" width="304" height="52" rx="10"></rect><text class="fg-lbl" x="40" y="244" text-anchor="start" font-size="12.5">CH₃OH</text><text class="fg-lbl" x="140" y="244" text-anchor="middle" font-size="12.5">−2</text><text class="fg-tag" x="326" y="244" text-anchor="end" font-size="11">1 bond to O, N, X</text><text class="fg-tag-mut" x="40" y="264" text-anchor="start" font-size="11">alcohol · ether · alkyl halide · amine</text><line class="fg-rule" x1="30" y1="278" x2="334" y2="278"></line><text class="fg-lbl" x="40" y="300" text-anchor="start" font-size="12.5">CH₄</text><text class="fg-lbl" x="140" y="300" text-anchor="middle" font-size="12.5">−4</text><text class="fg-tag" x="326" y="300" text-anchor="end" font-size="11">0 bonds to O, N, X</text><text class="fg-tag-mut" x="40" y="320" text-anchor="start" font-size="11">alkane</text><line class="fg-arrow" x1="14" y1="326" x2="14" y2="52"></line><path class="fg-head" d="M14 44 L18.16 52 L9.84 52 Z"></path><line class="fg-rule" x1="30" y1="334" x2="334" y2="334"></line><text class="fg-tag-mut" x="40" y="358" text-anchor="start" font-size="11">In RCO₂H the acid carbon is +3, not +2.</text></svg><figcaption>Every family on a rung has the same number of bonds to O, N or a halogen (X).</figcaption></figure><!-- fig:l-oxidation-ladder:end -->' +
+          '<p class="step-body">A rung is set by how many bonds the carbon has to electronegative atoms. An alcohol and an alkyl halide each have one, so they share a rung, and turning one into the other is a substitution, not a redox reaction.</p>' +
+          '<p class="step-body">A carboxylic acid, an ester, an amide, an acid chloride and a nitrile each have three, so they share a rung too. Turning one into another needs no oxidant and no reductant.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The number on a rung depends on what else the carbon holds. Formic acid reads +2 because its carbon still carries an H. In acetic acid a carbon takes that place, and a C–C bond scores 0 instead of −1, so the acid carbon reads +3. The rung stays the same.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'Which of these changes needs an oxidizing agent?',
         options: [
-          'Its OH is too hindered to react',
-          'There is no C–H on the carbinol carbon to remove',
-          'Tertiary carbons are already fully oxidized',
-          'The reagent cannot reach the oxygen'
+          'An alcohol becomes an alkyl bromide',
+          'An aldehyde becomes a carboxylic acid',
+          'An ester becomes a carboxylic acid',
+          'An alkene plus HBr becomes an alkyl bromide'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Oxidation removes the hydrogen from the carbon bearing the OH and puts a second bond to oxygen in its place. With no hydrogen there, the reaction has nothing to take. Counting hydrogens on the carbinol carbon also tells you how many times the reaction can run: two for a primary alcohol, one for a secondary.',
-        wrongFeedback: 'Look at what the oxidation actually removes, and then at whether a tertiary carbinol carbon has one of those to give.'
+        correctFeedback: 'Correct. The aldehyde carbon trades its C–H for a third bond to oxygen and climbs a rung. The alcohol and the alkyl bromide share a rung, the ester and the acid share a rung, and HBr&#39;s new C–H and C–Br cancel.',
+        wrongFeedback: 'Count the changing carbon&#39;s bonds to O, N or a halogen, and its bonds to H, before and after. Only one change moves it up a rung.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'How far an alcohol can climb.',
+        bodyHtml: '<p class="step-body">Oxidize propan-1-ol and it climbs two rungs, to propanal and then to propanoic acid. Propan-2-ol climbs one rung, to propanone. 2-Methylpropan-2-ol is not oxidized.</p>' +
+          '<p class="step-body">The reason is the carbon that carries the OH, the <b>carbinol carbon</b>. Each oxidation removes one hydrogen from it and puts a bond to oxygen in its place. So the number of hydrogens on that carbon is the number of rungs the alcohol can climb.</p>' +
+          '<!-- fig:l-carbinol-climb:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 632" role="img" aria-label="Three stacked panels: propan-1-ol with two H on the carbinol carbon, propan-2-ol with one, and 2-methylpropan-2-ol with none."><rect class="fg-panel" x="8" y="8" width="324" height="196" rx="10"></rect><text class="fg-tag" x="170" y="30" text-anchor="middle" font-size="11">PROPAN-1-OL (PRIMARY)</text><text class="fg-tag-good" x="170" y="190" text-anchor="middle" font-size="11">two H: aldehyde, then acid</text><line class="fg-bond" x1="196" y1="104" x2="214" y2="104"></line><circle class="fg-atom" cx="230" cy="104" r="16"></circle><text class="fg-lbl" x="230" y="107.89" text-anchor="middle" font-size="10.5">OH</text><line class="fg-bond" x1="180" y1="88" x2="180" y2="74"></line><circle class="fg-atom-hi" cx="180" cy="60" r="14"></circle><text class="fg-lbl" x="180" y="64.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="180" y1="120" x2="180" y2="134"></line><circle class="fg-atom-hi" cx="180" cy="148" r="14"></circle><text class="fg-lbl" x="180" y="152.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="164" y1="104" x2="134" y2="104"></line><circle class="fg-atom-warn" cx="180" cy="104" r="14"></circle><text class="fg-lbl" x="180" y="108.44" text-anchor="middle" font-size="12">C</text><line class="fg-bond" x1="134" y1="104" x2="99.36" y2="124"></line><rect class="fg-panel" x="8" y="218" width="324" height="196" rx="10"></rect><text class="fg-tag" x="170" y="240" text-anchor="middle" font-size="11">PROPAN-2-OL (SECONDARY)</text><text class="fg-tag-good" x="170" y="400" text-anchor="middle" font-size="11">one H: ketone</text><line class="fg-bond" x1="170" y1="298" x2="170" y2="284"></line><circle class="fg-atom" cx="170" cy="268" r="16"></circle><text class="fg-lbl" x="170" y="271.89" text-anchor="middle" font-size="10.5">OH</text><line class="fg-bond" x1="170" y1="330" x2="170" y2="344"></line><circle class="fg-atom-hi" cx="170" cy="358" r="14"></circle><text class="fg-lbl" x="170" y="362.44" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="154" y1="314" x2="124" y2="314"></line><line class="fg-bond" x1="186" y1="314" x2="216" y2="314"></line><circle class="fg-atom-warn" cx="170" cy="314" r="14"></circle><text class="fg-lbl" x="170" y="318.44" text-anchor="middle" font-size="12">C</text><rect class="fg-panel" x="8" y="428" width="324" height="196" rx="10"></rect><text class="fg-tag" x="170" y="450" text-anchor="middle" font-size="11">2-METHYLPROPAN-2-OL (TERTIARY)</text><text class="fg-tag-warn" x="170" y="610" text-anchor="middle" font-size="11">no H: no oxidation</text><line class="fg-bond" x1="170" y1="508" x2="170" y2="494"></line><circle class="fg-atom" cx="170" cy="478" r="16"></circle><text class="fg-lbl" x="170" y="481.89" text-anchor="middle" font-size="10.5">OH</text><line class="fg-bond" x1="170" y1="540" x2="170" y2="570"></line><line class="fg-bond" x1="154" y1="524" x2="124" y2="524"></line><line class="fg-bond" x1="186" y1="524" x2="216" y2="524"></line><circle class="fg-atom-warn" cx="170" cy="524" r="14"></circle><text class="fg-lbl" x="170" y="528.44" text-anchor="middle" font-size="12">C</text></svg><figcaption>Count the highlighted H on each circled carbinol carbon.</figcaption></figure><!-- fig:l-carbinol-climb:end -->' +
+          '<p class="step-body" style="margin-bottom:0;">In a <b>primary</b> alcohol the carbinol carbon is bonded to one other carbon and carries two hydrogens. In a <b>secondary</b> alcohol it is bonded to two carbons and carries one. In a <b>tertiary</b> alcohol it is bonded to three and has none.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'Why does an ordinary oxidant leave a tertiary alcohol unchanged?',
+        options: [
+          'Its carbinol carbon has no hydrogen to give up',
+          'Its OH group is too crowded for the reagent to reach',
+          'Its carbinol carbon is already fully oxidized, at +4',
+          'Its O–H bond is too strong for the oxidant to break'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. Oxidation removes a hydrogen from the carbinol carbon and puts a second bond to oxygen in its place. A tertiary carbinol carbon has no hydrogen, so there is nothing to remove. Its oxidation state is +1, well short of +4.',
+        wrongFeedback: 'Look at what an oxidation removes from the carbinol carbon, and then check whether a tertiary carbinol carbon has one.'
       },
       {
         type: 'explain',
         eyebrow: 'Why it matters',
-        title: 'Selectivity is the whole subject.',
-        bodyHtml: '<p class="step-body">Almost nothing in the rest of this chapter is about whether a transformation is <i>possible</i>. It is about stopping it in the right place and leaving the rest of the molecule alone.</p>' +
-          '<p class="step-body">Oxidizing a primary alcohol is the clearest case: the same substrate gives an aldehyde with one reagent and a carboxylic acid with another, and the difference is not how much you add or how long you wait. Reducing a carbonyl is the mirror image — two common hydride reagents differ enormously in what they will touch, and deliberately choosing the weaker one is how you reduce a ketone in a molecule that also contains an ester.</p>' +
-          '<p class="step-body" style="margin-bottom:0;">So carry two questions into every reagent you meet from here: <b>where does this stop</b>, and <b>what else does it attack</b>. Those two answers are what a synthesis question is really asking for.</p>'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
-        title: 'Converting an alcohol to an alkyl bromide with PBr₃ — is that a redox reaction?',
-        options: [
-          'Yes, an oxidation: bromine is electronegative',
-          'No — both sit on the same rung, since C–O is exchanged for C–Br',
-          'Yes, a reduction: oxygen is lost',
-          'It depends on whether the alcohol is primary'
-        ],
-        correctIndex: 1,
-        correctFeedback: 'Correct. One bond to an electronegative atom is traded for another, and the hydrogen count does not move, so the oxidation level is unchanged. This is why the ladder is worth holding: it tells you immediately which transformations need a redox reagent and which are substitutions.',
-        wrongFeedback: 'Count before and after. How many bonds to electronegative atoms does that carbon have in each case, and how many to hydrogen?'
+        title: 'Reading a reagent, and where it stops.',
+        bodyHtml: '<p class="step-body">Stir propan-2-ol with Jones reagent (CrO<sub>3</sub> in aqueous sulfuric acid) and you get propanone. The carbon rises by two, and the orange chromium(VI) becomes green chromium(III). Every oxidation is paired with a reduction like this: when the carbon goes up, something in the reagent comes down.</p>' +
+          '<p class="step-body">Most oxidants are a metal in a high oxidation state, or a reagent with an oxygen atom to hand over: Cr(VI) in Jones reagent and in PCC (a chromium reagent used without water), Mn(VII) in KMnO<sub>4</sub>, Os(VIII) in OsO<sub>4</sub>, and O<sub>3</sub> or mCPBA. The reductants are the mirror image: a source of H<sup>−</sup> (NaBH<sub>4</sub>, LiAlH<sub>4</sub>), H<sub>2</sub> on a metal surface, or a metal that gives up electrons (Na in liquid NH<sub>3</sub>).</p>' +
+          '<p class="step-body">The ladder tells you which way a change goes; the reagent decides where it stops. Propan-1-ol gives propanal with PCC but propanoic acid with Jones reagent. NaBH<sub>4</sub> reduces a ketone and leaves an ester alone, while LiAlH<sub>4</sub> reduces both.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">So for every reagent in the rest of this chapter, ask two questions: <b>where does it stop</b>, and <b>what else in the molecule does it attack</b>?</p>'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A carboxylic acid, an ester, an amide and a nitrile all have their key carbon at +3. What does that explain?',
+        title: 'A carboxylic acid, an ester, an amide and a nitrile all sit on one rung. What does that tell you?',
         options: [
-          'That they are all equally reactive',
-          'That converting between them is substitution, not oxidation or reduction',
-          'That none of them can be reduced',
-          'That they all have the same molecular formula'
+          'Turning one into another needs no oxidant or reductant',
+          'They react with nucleophiles at the same rate as one another',
+          'None of them can be reduced to an aldehyde or an alcohol',
+          'They all share one molecular formula once R is fixed'
         ],
-        correctIndex: 1,
-        correctFeedback: 'Correct, and it ties three chapters together. Sitting on one rung is why acyl derivatives interconvert by nucleophilic acyl substitution — swapping one leaving group for another without changing the oxidation level — and why getting <i>off</i> that rung, down to an aldehyde or an alcohol, needs a reducing agent rather than another nucleophile. It is also why the nomenclature priority order groups those four together at the top. You have not met the mechanism yet — nucleophilic acyl substitution opens <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-carboxylic-acids\">Carboxylic Acids &amp; Derivatives</a>. What the ladder gives you now is the reason it exists: those four are on one rung, so a reaction that swaps one for another needs no oxidant and no reductant at all.'
+        correctIndex: 0,
+        correctFeedback: 'Correct. Each has three bonds from that carbon to electronegative atoms, so swapping one for another keeps the carbon on its rung. Getting <i>off</i> the rung, down to an aldehyde or an alcohol, does need a reducing agent. The reactions that swap them open <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-carboxylic-acids\">Carboxylic Acids &amp; Derivatives</a>.'
       }
     ]
   });
