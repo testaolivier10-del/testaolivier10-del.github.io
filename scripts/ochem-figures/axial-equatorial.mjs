@@ -300,16 +300,16 @@ FIGURES.push({
   id: 'cis-trans-on-rings',
   section: 'axial-equatorial',
   anchor: 'Two wedges, or two hashes, is cis',
-  alt: 'Left: flat hexagons of trans-1,2-dimethylcyclohexane, with one wedge and one hash, and cis-1,2-dimethylcyclohexane, with two wedges. Right: a chair with C1 and C2 marked. On C1 the bond that points up is axial; on C2 the bond that points up is equatorial.',
+  alt: 'Left: flat hexagons of trans-1,2-dimethylcyclohexane, with one solid and one dashed wedge, and cis-1,2-dimethylcyclohexane, with two solid wedges. Right: a chair with C1 and C2 marked. On C1 the bond that points up is axial; on C2 the bond that points up is equatorial.',
   viewBox: '0 0 760 320',
   build() {
     let s = '';
     s += tag(224, 26, 'THE FLAT DRAWING SHOWS THE FACE');
     s += flatDimethyl(118, 150, 'trans');
-    s += itx(118, 240, 'trans', ': one wedge, one hash', 'fg-tag-warn', 'middle');
+    s += itx(118, 240, 'trans', ': one solid, one dashed wedge', 'fg-tag-warn', 'middle');
     s += text(118, 258, 'one up, one down');
     s += flatDimethyl(330, 150, 'cis');
-    s += itx(330, 240, 'cis', ': two wedges', 'fg-tag-good', 'middle');
+    s += itx(330, 240, 'cis', ': two solid wedges', 'fg-tag-good', 'middle');
     s += text(330, 258, 'both up');
     s += text(224, 296, 'Moving a group to the other face means breaking a bond.');
     s += rule(456, 44, 456, 300);

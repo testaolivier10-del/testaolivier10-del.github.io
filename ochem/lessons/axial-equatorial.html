@@ -245,22 +245,22 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'mcq',
         eyebrow: 'Independent Practice',
         title: 'The A-value of isopropyl is 2.2 kcal/mol, and the A-value of chlorine is 0.5 kcal/mol. What do these numbers tell you?',
-        options: ['Isopropyl prefers equatorial more strongly than chlorine', 'Chlorine prefers equatorial more strongly than isopropyl does', 'Both groups prefer the axial position'],
+        options: ['Isopropyl prefers equatorial more strongly than chlorine', 'Chlorine prefers equatorial more strongly than isopropyl', 'Both groups prefer the axial position'],
         correctIndex: 0,
         correctFeedback: 'Right. Both A-values are positive, so both groups prefer equatorial. A larger A-value means a larger energy gap between the two chairs, so the isopropyl group\'s preference is the stronger one.',
         wrongFeedback: 'An A-value is how much lower in energy the chair with the group equatorial is. Any positive value means equatorial is preferred, and a larger value means a stronger preference: 2.2 for isopropyl beats 0.5 for chlorine.'
       },
       {
         type: 'explain',
-        eyebrow: 'Explanation',
+        eyebrow: 'Explain',
         title: 'Placing two groups on one chair.',
-        bodyHtml: '<p class="step-body">Two groups on a ring are <b>cis</b> when they sit on the same face and <b>trans</b> when they sit on opposite faces. Whether two groups share a face is fixed for the compound, because moving one group to the other face would mean breaking a bond.</p><p class="step-body">To place a group on a chair, pick its face, then use the bond on that carbon that points to that face. Take a chair where C1\'s axial bond points up. A group on C1\'s top face sits on the axial bond. C2\'s axial bond points down, so a group on C2\'s top face sits on the equatorial bond, and a group on C2\'s bottom face sits on the axial bond.</p><p class="step-body">So up is not the same as axial. In the drawing, both methyls point up, which makes the pair cis, yet one is axial and the other equatorial.</p><p class="step-body" style="margin-bottom:0;"><b>Looking ahead:</b> the position matters for reactions too. On a ring, the E2 elimination met later in the course works only when the leaving group and a hydrogen on the next carbon are both axial, on opposite faces.</p>',
+        bodyHtml: '<p class="step-body">Two groups on a ring are <b>cis</b> when they sit on the same face and <b>trans</b> when they sit on opposite faces. Whether two groups share a face is fixed for the compound, because moving one group to the other face would mean breaking a bond.</p><p class="step-body">To place a group on a chair, pick its face, then use whichever of that carbon\'s two bonds points to that face. Take a chair where C1\'s axial bond points up. A group on C1\'s top face sits on the axial bond. C2\'s axial bond points down, so a group on C2\'s top face sits on the equatorial bond, and a group on C2\'s bottom face sits on the axial bond.</p><p class="step-body" style="margin-bottom:0;">So up is not the same as axial. In the drawing, both methyls point up, which makes the pair <i>cis</i>, yet one is axial and the other equatorial.</p>',
         diagramHtml: '<!-- fig:l-up-not-axial:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 250" role="img" aria-label="A chair of cis-1,2-dimethylcyclohexane. Both methyls point up. The methyl on C1 is axial; the methyl on C2 is equatorial."><line class="fg-bond" x1="253.15" y1="131.79" x2="196.57" y2="134.69"></line><line class="fg-bond" x1="196.57" y1="134.69" x2="83.43" y2="98.28"></line><line class="fg-bond" x1="83.43" y1="98.28" x2="26.85" y2="168.21"></line><line class="fg-bond" x1="26.85" y1="168.21" x2="83.42" y2="165.31"></line><line class="fg-bond" x1="83.42" y1="165.31" x2="196.57" y2="201.72"></line><line class="fg-bond" x1="196.57" y1="201.72" x2="253.15" y2="131.79"></line><line class="fg-bond" x1="253.15" y1="131.79" x2="253.15" y2="85.79"></line><circle class="fg-atom" cx="253.15" cy="69.79" r="16"></circle><text class="fg-lbl" x="253.15" y="73.3" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="196.57" y1="134.69" x2="213.73" y2="112.57"></line><circle class="fg-atom" cx="223.54" cy="99.93" r="16"></circle><text class="fg-lbl" x="223.54" y="103.45" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag" x="257.15" y="157.79" text-anchor="middle" font-size="11">C1</text><text class="fg-tag" x="182.57" y="156.69" text-anchor="middle" font-size="11">C2</text><text class="fg-tag" x="275.15" y="73.79" text-anchor="start" font-size="11">up, axial</text><text class="fg-tag" x="201.54" y="103.93" text-anchor="end" font-size="11">up, equatorial</text><text class="fg-tag-good" x="170" y="244" text-anchor="middle">both up, so <tspan font-style="italic">cis</tspan></text></svg><figcaption><i>cis</i>-1,2-Dimethylcyclohexane drawn on one chair.</figcaption></figure><!-- fig:l-up-not-axial:end -->'
       },
       {
         type: 'mcq',
         eyebrow: 'Independent Practice',
-        title: 'On a chair where C1\'s axial bond points up, one methyl goes on C1\'s top face and another on C2\'s bottom face. Where are they?',
+        title: 'On a chair where C1\'s axial bond points up, one methyl goes on C1\'s top face and another on C2\'s bottom face. Which bonds are they on, and are they cis or trans?',
         options: ['Both axial, and trans', 'Both axial, and cis', 'One axial and one equatorial, and trans', 'Both equatorial, and trans'],
         correctIndex: 0,
         correctFeedback: 'Right. C1\'s up bond is its axial bond. C2\'s axial bond points down, so its bottom-face bond is axial too. One group is up and the other down, so the pair is trans.',
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Why does a bulky group such as tert-butyl strongly prefer the equatorial position?',
+        title: 'Why does a bulky group such as <i>tert</i>-butyl strongly prefer the equatorial position?',
         options: ['Equatorial bonds are stronger than axial bonds', 'An axial group crowds the axial hydrogens on its face', 'A large group cannot occupy an axial position at all, so it sits equatorial'],
         correctIndex: 1,
         correctFeedback: 'Right. An axial group has 1,3-diaxial interactions with the axial hydrogens on the same face, and the bigger the group, the worse the clash. An equatorial group points away from the ring. For tert-butyl the gap is 4.9 kcal/mol.',
