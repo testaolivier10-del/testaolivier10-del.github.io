@@ -71,13 +71,13 @@ const ethyl = (from, deg) => { const v = armEnd(from, deg, 40); return sk(from, 
    ====================================================================== */
 const tradeCells = [
   ['PROPAN-2-OL', 'on that C: 1 bond to O, 1 bond to H', (Q) => {
-    const m = centre(Q(120, 104), [
+    const m = centre(Q(120, 100), [
       { deg: 90, len: 46, l: 'OH' },
       { deg: 270, len: 46, l: 'H', kind: 'hi' },
       { deg: 180, len: 56, l: 'CH₃' },
       { deg: 0, len: 56, l: 'CH₃' },
     ]);
-    return m.s + Tg(Q, 172, 154, 'this H goes', { cls: 'fg-tag-good' });
+    return m.s + Tg(Q, 138, 150, 'this H goes', { cls: 'fg-tag-good', anchor: 'start' });
   }],
   ['PROPANONE', 'on that C: 2 bonds to O, no H', (Q) => {
     const m = centre(Q(120, 112), [
@@ -85,7 +85,7 @@ const tradeCells = [
       { deg: 210, len: 54, l: 'CH₃' },
       { deg: 330, len: 54, l: 'CH₃' },
     ]);
-    return m.s + Tg(Q, 176, 90, 'second bond to O', { cls: 'fg-tag-good' });
+    return m.s + Tg(Q, 134, 94, 'second bond to O', { cls: 'fg-tag-good', anchor: 'start' });
   }],
 ];
 
@@ -94,30 +94,30 @@ FIGURES.push({
   section: 'oxidation-states',
   anchor: '',
   alt: 'Propan-2-ol, whose middle carbon carries one OH, one H and two methyl groups, is oxidized to propanone, whose middle carbon carries a C=O and two methyl groups. The reverse arrow is a reduction.',
-  viewBox: '0 0 760 206',
+  viewBox: '0 0 760 220',
   build() {
-    let s = cell(8, 8, 290, 190, ...tradeCells[0].slice(0, 3), 240);
-    s += cell(462, 8, 290, 190, ...tradeCells[1].slice(0, 3), 240);
-    s += arrow(P(318, 96), P(442, 96));
-    s += arrow(P(442, 118), P(318, 118));
-    s += tag(380, 84, 'oxidation');
-    s += tag(380, 140, 'reduction');
+    let s = cell(8, 8, 290, 204, ...tradeCells[0].slice(0, 3), 240);
+    s += cell(462, 8, 290, 204, ...tradeCells[1].slice(0, 3), 240);
+    s += arrow(P(318, 100), P(442, 100));
+    s += arrow(P(442, 122), P(318, 122));
+    s += tag(380, 88, 'oxidation');
+    s += tag(380, 144, 'reduction');
     return s;
   },
-  caption: 'Follow the middle carbon. Oxidation takes away its C&ndash;H and gives it a second bond to oxygen; reduction runs the same change backward.',
+  caption: 'Compare the circled carbon&rsquo;s bonds to O and to H before and after. The highlighted H is the one that goes.',
 });
 FIGURES.push({
   id: 'l-bond-trade',
   lessons: ['oxidation-states'],
-  alt: 'Propan-2-ol above, propanone below. An arrow down is labelled oxidation and an arrow up is labelled reduction.',
-  viewBox: '0 0 340 468',
+  alt: 'Propan-2-ol above, propanone below. An arrow down is labeled oxidation and an arrow up is labeled reduction.',
+  viewBox: '0 0 340 496',
   build() {
-    let s = cell(8, 8, 324, 190, ...tradeCells[0].slice(0, 3), 240);
-    s += cell(8, 270, 324, 190, ...tradeCells[1].slice(0, 3), 240);
-    s += arrow(P(152, 206), P(152, 262));
-    s += arrow(P(188, 262), P(188, 206));
-    s += tag(142, 238, 'oxidation', { anchor: 'end' });
-    s += tag(198, 238, 'reduction', { anchor: 'start' });
+    let s = cell(8, 8, 324, 204, ...tradeCells[0].slice(0, 3), 240);
+    s += cell(8, 284, 324, 204, ...tradeCells[1].slice(0, 3), 240);
+    s += arrow(P(152, 220), P(152, 276));
+    s += arrow(P(188, 276), P(188, 220));
+    s += tag(142, 252, 'oxidation', { anchor: 'end' });
+    s += tag(198, 252, 'reduction', { anchor: 'start' });
     return s;
   },
   caption: 'Oxidation trades the middle carbon&rsquo;s C&ndash;H for a second bond to oxygen.',
@@ -197,7 +197,7 @@ const countCells = [
     let s = m.s;
     s += Tg(Q, 26, 154, '0', { cls: 'fg-tag-warn' });
     s += Tg(Q, 196, 154, '−1', { cls: 'fg-tag-warn' });
-    s += Tg(Q, 176, 76, '+2 (two bonds)', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 134, 102, '+2 (two bonds)', { cls: 'fg-tag-warn', anchor: 'start' });
     return s;
   }],
 ];
@@ -207,16 +207,16 @@ FIGURES.push({
   section: 'oxidation-states',
   anchor: '',
   alt: 'The CH2 carbon of ethanol with its four bonds scored: 0 for the bond to CH3, minus 1 for each of two bonds to H, plus 1 for the bond to OH, total minus 1. The CHO carbon of acetaldehyde: 0 for CH3, minus 1 for H, plus 2 for the double bond to O, total plus 1.',
-  viewBox: '0 0 760 206',
-  build() { return grid(countCells, 2, 366, 190, 240); },
-  caption: 'Each bond on the circled carbon carries its score. The double bond to oxygen is two bonds, so it scores +2.',
+  viewBox: '0 0 760 226',
+  build() { return grid(countCells, 2, 366, 210, 240); },
+  caption: 'Each bond on the circled carbon carries its score, and the sum is under each drawing.',
 });
 FIGURES.push({
   id: 'l-count-carbon',
   lessons: ['oxidation-states'],
   alt: 'Two stacked panels: the ethanol carbon scores 0, minus 1, minus 1 and plus 1, total minus 1; the acetaldehyde carbon scores 0, minus 1 and plus 2, total plus 1.',
-  viewBox: `0 0 340 ${stackH(2, 190)}`,
-  build() { return grid(countCells, 1, 324, 190, 240, 0, 14); },
+  viewBox: `0 0 340 ${stackH(2, 210)}`,
+  build() { return grid(countCells, 1, 324, 210, 240, 0, 14); },
   caption: 'Score each bond on the circled carbon, then add.',
 });
 
@@ -239,22 +239,22 @@ FIGURES.push({
   viewBox: '0 0 760 384',
   build() {
     let s = '';
-    s += tag(130, 40, 'bonds to O, N, X');
-    s += tag(230, 40, 'one-carbon case');
-    s += tag(318, 40, 'its state');
-    s += tag(380, 40, 'everything that shares the rung', { anchor: 'start' });
+    s += tag(124, 40, 'bonds to O, N, X');
+    s += tag(250, 40, 'one-carbon case');
+    s += tag(346, 40, 'its state');
+    s += tag(404, 40, 'everything that shares the rung', { anchor: 'start' });
     s += rule(70, 52, 740, 52);
     RUNGS.forEach((r, i) => {
       const y = 84 + i * 56;
       if (r.hi) s += panel(80, y - 24, 660, 48, { kind: 'hi' });
-      s += label(130, y + 4, r.n);
-      s += label(230, y + 4, r.ex);
-      s += label(318, y + 4, r.ox);
+      s += label(124, y + 4, r.n);
+      s += label(250, y + 4, r.ex);
+      s += label(346, y + 4, r.ox);
       r.fam.forEach((f, j) => {
         const fy = r.fam.length === 1 ? y + 4 : y - 5 + j * 18;
-        s += text(380, fy, f, { cls: 'fg-lbl', size: 13, anchor: 'start' });
+        s += text(404, fy, f, { cls: 'fg-lbl', size: 13, anchor: 'start' });
       });
-      if (r.n === '3') s += tag(318, y + 20, 'RCO₂H: +3', { cls: 'fg-tag-mut' });
+      if (r.n === '3') s += tag(346, y + 20, 'RCO₂H: +3', { cls: 'fg-tag-mut' });
       if (i < RUNGS.length - 1) s += rule(70, y + 28, 740, y + 28);
     });
     s += arrow(P(40, 310), P(40, 70));
@@ -264,19 +264,19 @@ FIGURES.push({
     s += text(405, 372, 'Along a rung: no oxidant or reductant.   Up one rung: a two-electron oxidation.', { cls: 'fg-lbl', size: 13 });
     return s;
   },
-  caption: 'Each row is one rung. The first column counts the carbon&rsquo;s bonds to oxygen, nitrogen or a halogen (X), and every family in the last column has that same count.',
+  caption: 'Each row is one rung, and X stands for a halogen. The highlighted rung holds both the alcohol and the alkyl halide.',
 });
 FIGURES.push({
   id: 'l-oxidation-ladder',
   lessons: ['oxidation-states'],
   alt: 'The carbon oxidation ladder, top to bottom: CO2 plus 4, HCO2H plus 2, CH2O 0, CH3OH minus 2, CH4 minus 4, each with its count of bonds to O, N or halogen and the families that share the rung.',
-  viewBox: '0 0 340 454',
+  viewBox: '0 0 340 372',
   build() {
     let s = '';
     s += tag(170, 22, 'up a rung = a two-electron oxidation');
     let y = 36;
     RUNGS.forEach((r, i) => {
-      const hgt = 26 + r.fam.length * 18;
+      const hgt = 38 + r.fam.length * 18;
       if (r.hi) s += panel(30, y + 2, 304, hgt - 4, { kind: 'hi' });
       s += label(40, y + 22, r.ex, { anchor: 'start' });
       s += label(128, y + 22, r.ox);
@@ -287,7 +287,7 @@ FIGURES.push({
     });
     s += arrow(P(14, y - 8), P(14, 44));
     s += rule(30, y, 334, y);
-    s += tag(40, y + 22, 'RCO₂H, with a C in place of the H: +3', { anchor: 'start', cls: 'fg-tag-mut' });
+    s += tag(40, y + 24, 'In RCO₂H the acid carbon is +3, not +2.', { anchor: 'start', cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Every family on a rung has the same number of bonds to O, N or a halogen (X).',
@@ -346,7 +346,7 @@ FIGURES.push({
   section: 'oxidation-states',
   anchor: '',
   alt: 'Three rows. Propan-1-ol, with two H on the carbinol carbon, is oxidized to propanal and then to propanoic acid. Propan-2-ol, with one H, is oxidized to propanone. 2-Methylpropan-2-ol, with no H on the carbinol carbon, does not react.',
-  viewBox: '0 0 760 548',
+  viewBox: '0 0 760 640',
   build() {
     let s = '';
     const rows = [
@@ -356,13 +356,13 @@ FIGURES.push({
     ];
     const xs = [130, 390, 630];
     rows.forEach((r, i) => {
-      const oy = 8 + i * 180;
-      s += panel(8, oy, 744, 168);
+      const oy = 8 + i * 212;
+      s += panel(8, oy, 744, 200);
       s += tag(380, oy + 22, r.t);
-      const cy = oy + 92;
+      const cy = oy + 112;
       r.mols.forEach(([k, name], j) => {
         s += MOL[k](P(xs[j], cy));
-        s += tag(xs[j], oy + 156, name, { cls: 'fg-tag-mut' });
+        s += tag(xs[j], oy + 188, name, { cls: 'fg-tag-mut' });
         if (j > 0) {
           s += arrow(P(xs[j - 1] + 84, cy), P(xs[j] - 96, cy));
           s += tag((xs[j - 1] + xs[j]) / 2 - 6, cy - 12, 'oxidize');
@@ -376,7 +376,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Count the highlighted hydrogens on each circled carbon. Each oxidation removes one of them, so the count is the number of rungs the alcohol can climb.',
+  caption: 'Count the highlighted hydrogens on each circled carbinol carbon, then follow the arrows.',
 });
 
 const climbCells = [
@@ -388,8 +388,8 @@ FIGURES.push({
   id: 'l-carbinol-climb',
   lessons: ['oxidation-states'],
   alt: 'Three stacked panels: propan-1-ol with two H on the carbinol carbon, propan-2-ol with one, and 2-methylpropan-2-ol with none.',
-  viewBox: `0 0 340 ${stackH(3, 180)}`,
-  build() { return grid(climbCells, 1, 324, 180, 240, 0, 14); },
+  viewBox: `0 0 340 ${stackH(3, 196)}`,
+  build() { return grid(climbCells, 1, 324, 196, 240, 0, 14); },
   caption: 'Count the highlighted H on each circled carbinol carbon.',
 });
 

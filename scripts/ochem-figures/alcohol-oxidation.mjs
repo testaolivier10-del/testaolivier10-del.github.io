@@ -43,7 +43,7 @@ const A = (p, l, o = {}) => atom(p.x, p.y, l, o);
 const rOf = (l) => (l.length >= 5 ? 23 : l.length >= 3 ? 19 : l.length === 2 ? 16 : 14);
 const B = (a, b, la, lb, o = {}) => bond(a, b, { rFrom: la ? rOf(la) : 0, rTo: lb ? rOf(lb) : 0, ...o });
 
-/* A labelled carbon with groups at screen angles (counterclockwise from
+/* A labeled carbon with groups at screen angles (counterclockwise from
    east). A group with no label is a bare skeletal vertex. The carbon is drawn
    last so bonds stop at its edge. */
 function centre(c, groups, ckind = 'warn') {
@@ -112,7 +112,7 @@ FIGURES.push({
   id: 'alcohol-classes',
   section: 'alcohol-oxidation',
   anchor: '<h3>What each class of alcohol can become</h3>',
-  alt: 'Three alcohols with the carbinol carbon drawn as a labelled C. Butan-1-ol, a primary alcohol: the carbinol carbon holds an OH, two highlighted hydrogens and a propyl chain. Butan-2-ol, a secondary alcohol: the carbinol carbon holds an OH, one highlighted hydrogen, a methyl and an ethyl. 2-Methylpropan-2-ol, a tertiary alcohol: the carbinol carbon holds an OH and three methyl groups, and no hydrogen.',
+  alt: 'Three alcohols with the carbinol carbon drawn as a labeled C. Butan-1-ol, a primary alcohol: the carbinol carbon holds an OH, two highlighted hydrogens and a propyl chain. Butan-2-ol, a secondary alcohol: the carbinol carbon holds an OH, one highlighted hydrogen, a methyl and an ethyl. 2-Methylpropan-2-ol, a tertiary alcohol: the carbinol carbon holds an OH and three methyl groups, and no hydrogen.',
   viewBox: '0 0 760 220',
   build() { return gridFigure(classCells, 3, 240, 204, 12, 16, 8, 8, [0, 0, 'warn']); },
   caption: 'Count the highlighted hydrogens on each carbinol carbon.',
@@ -184,17 +184,17 @@ const esterCells = [
     return m.s + lonePair(o.x, o.y, 225, { dist: 21 }) + lonePair(o.x, o.y, 315, { dist: 21 });
   }],
   ['A TERTIARY ESTER STOPS HERE', 'no H on C: water has nothing to take', (Q) => {
-    const c = Q(84, 118);
+    const c = Q(84, 110);
     const m = centre(c, [
-      { deg: 90, len: 50, l: 'CH₃' },
-      { deg: 170, len: 50, l: 'CH₃' },
-      { deg: 250, len: 48, l: 'CH₃' },
+      { deg: 90, len: 46, l: 'CH₃' },
+      { deg: 170, len: 48, l: 'CH₃' },
+      { deg: 250, len: 42, l: 'CH₃' },
     ]);
     let s = m.s;
-    const o = Q(130, 118), cr = Q(194, 118);
+    const o = Q(130, 110), cr = Q(194, 110);
     s += bond(c, o, { rFrom: 16, rTo: 14 }) + bond(o, cr, { rFrom: 14, rTo: 28 });
     s += A(o, 'O', { r: 14 }) + A(cr, 'CrO₂OH', { r: 28, kind: 'warn' });
-    s += Tg(Q, 190, 70, 'no C–H to break', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 190, 64, 'no C–H to break', { cls: 'fg-tag-warn' });
     return s;
   }, 'fg-tag-warn'],
 ];
@@ -206,7 +206,7 @@ FIGURES.push({
   alt: 'The chromium(VI) oxidation of a primary alcohol in four panels. First, a lone pair on the alcohol oxygen of R–CH2–OH attacks the chromium of chromic acid, H2CrO4, while a Cr=O pi bond moves onto its oxygen; a proton then moves and water leaves the chromium. Second, in the chromate ester R–CH2–O–CrO2OH, a water molecule takes one hydrogen from the carbon, the C–H electrons become the new C=O bond, and the O–Cr electrons leave with chromium. Third, the product is the aldehyde R–CHO, with H3O+ and a chromium(IV) species. Fourth, the chromate ester of a tertiary alcohol, (CH3)3C–O–CrO2OH, has no hydrogen on the carbon, so the second step cannot happen.',
   viewBox: '0 0 760 440',
   build() { return gridFigure(esterCells, 2, 364, 204, 16, 16, 8, 8, ['hi', 0, 'good', 'warn']); },
-  caption: 'Follow the highlighted hydrogen in the second panel. The fourth panel is a tertiary alcohol&rsquo;s ester, which has no such hydrogen.',
+  caption: 'Follow the highlighted hydrogen in the second panel, then look for one in the fourth.',
 });
 FIGURES.push({
   id: 'l-chromate-ester',
@@ -306,9 +306,9 @@ function cyclohexyl(Q, cx, ketone) {
 }
 const substrateCells = [
   ['(a) 2-METHYLBUTAN-1-OL + PCC', '2-methylbutanal', (Q) =>
-    methylbutyl(Q, 0, 'OH') + arrow(Q(144, 112), Q(186, 112), { size: 7 }) + methylbutyl(Q, 200, 'CHO')],
+    methylbutyl(Q, 14, 'OH') + arrow(Q(152, 112), Q(194, 112), { size: 7 }) + methylbutyl(Q, 210, 'CHO')],
   ['(b) THE SAME ALCOHOL + CrO₃, H₂SO₄, H₂O', '2-methylbutanoic acid', (Q) =>
-    methylbutyl(Q, 0, 'OH') + arrow(Q(144, 112), Q(186, 112), { size: 7 }) + methylbutyl(Q, 200, 'COOH')],
+    methylbutyl(Q, 14, 'OH') + arrow(Q(152, 112), Q(194, 112), { size: 7 }) + methylbutyl(Q, 210, 'COOH')],
   ['(c) CYCLOHEXANOL + JONES', 'cyclohexanone', (Q) =>
     cyclohexyl(Q, 90, false) + arrow(Q(146, 124), Q(196, 124), { size: 7 }) + cyclohexyl(Q, 252, true)],
   ['(d) 2-METHYLBUTAN-2-OL + JONES, EXCESS', 'no reaction', (Q) => {
@@ -356,8 +356,8 @@ function diol(Q, oxidized) {
       { deg: 270, len: 36, l: 'H', kind: 'hi' },
     ]);
     s += m.s;
-    s += Tg(Q, 56, 178, '1°: two H', { cls: 'fg-tag-warn' });
-    s += Tg(Q, 222, 168, '2°: one H', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 60, 184, '1°: two H', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 230, 172, '2°: one H', { cls: 'fg-tag-warn' });
   } else {
     const o = armEnd(right, 0, 40);
     s += bond(right, o, { rFrom: 0, rTo: 14, order: 2 }) + A(o, 'O', { r: 14, kind: 'hi' });
@@ -366,8 +366,8 @@ function diol(Q, oxidized) {
       { deg: 240, len: 38, l: 'H' },
     ]);
     s += m.s;
-    s += Tg(Q, 60, 178, 'aldehyde', { cls: 'fg-tag-warn' });
-    s += Tg(Q, 236, 160, 'ketone', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 60, 184, 'aldehyde', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 236, 164, 'ketone', { cls: 'fg-tag-warn' });
   }
   return s;
 }
@@ -378,18 +378,18 @@ const diolCells = [
 FIGURES.push({
   id: 'diol-choice',
   section: 'alcohol-oxidation',
-  anchor: '<span class="k">Worked example — when no reagent on the list is selective</span>',
+  anchor: '<span class="k">Worked example — a primary and a secondary alcohol in one molecule</span>',
   alt: 'Two panels. First, 4-(hydroxymethyl)cyclohexan-1-ol: a cyclohexane ring with an OH and one highlighted hydrogen on the right-hand ring carbon, the secondary carbinol carbon, and a CH2OH group on the left-hand ring carbon, whose carbon holds two highlighted hydrogens, the primary carbinol carbon. Second, after PCC: the ring carbon is now a ketone C=O and the CH2OH has become an aldehyde, CHO.',
-  viewBox: '0 0 760 220',
-  build() { return gridFigure(diolCells, 2, 364, 204, 16, 16, 8, 8, [0, 'warn'], CW5); },
+  viewBox: '0 0 760 246',
+  build() { return gridFigure(diolCells, 2, 364, 230, 16, 16, 8, 8, [0, 'warn'], CW5); },
   caption: 'Each carbinol carbon has at least one hydrogen, so PCC oxidizes both.',
 });
 FIGURES.push({
   id: 'l-diol-choice',
   lessons: ['alcohol-oxidation'],
   alt: 'Two stacked panels: 4-(hydroxymethyl)cyclohexan-1-ol, with a primary carbinol carbon holding two hydrogens and a secondary one holding one; and the product of PCC, in which both have been oxidized, to an aldehyde and a ketone.',
-  viewBox: `0 0 340 ${stackH(2, 204)}`,
-  build() { return gridFigure(diolCells, 1, 324, 204, 0, 14, 8, 8, [0, 'warn'], CW5); },
+  viewBox: `0 0 340 ${stackH(2, 230)}`,
+  build() { return gridFigure(diolCells, 1, 324, 230, 0, 14, 8, 8, [0, 'warn'], CW5); },
   caption: 'PCC oxidizes both carbinol carbons.',
 });
 

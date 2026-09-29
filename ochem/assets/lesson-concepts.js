@@ -339,12 +339,13 @@
       6:['oxidation-level'],
       7:['oxidation-level'] } },
 
-    'alcohol-oxidation': { n:8, steps:{
-      2:['oxidant-choice'],
-      3:['oxidant-choice','oxidation-level'],
-      4:['oxidant-choice'],
-      6:['oxidant-choice'],
-      7:['oxidant-choice','oxidation-level'] } },
+    'alcohol-oxidation': { n:11, steps:{
+      2:['oxidant-choice','oxidation-level'],
+      5:['oxidant-choice'],
+      6:['oxidant-choice','oxidation-level'],
+      7:['oxidant-choice'],
+      8:['oxidant-choice'],
+      10:['oxidant-choice','oxidation-level'] } },
 
     'carbonyl-reduction': { n:8, steps:{
       2:['reductant-scope'],
