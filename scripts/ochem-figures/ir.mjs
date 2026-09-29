@@ -439,7 +439,7 @@ FIGURES.push({
     s += enone(P(22, 290), 1);
     s += resArrow(P(138, 276), P(180, 276));
     s += enone(P(200, 290), 2);
-    s += tg(170, 330, 'C=O partly single: about 30 below 1715', 'middle', 'fg-tag-warn');
+    s += tg(170, 330, 'C=O partly single: about 30 cm⁻¹ below 1715', 'middle', 'fg-tag-warn');
     return s;
   },
   caption: 'In each pair, follow the curved arrows from left to right, then compare the highlighted C&ndash;O bond in the two contributors.',
