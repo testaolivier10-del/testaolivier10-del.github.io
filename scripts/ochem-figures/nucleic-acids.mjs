@@ -87,7 +87,7 @@ function furanose(c, o = {}) {
   if (o.nums !== false) {
     for (const key of ['1', '2', '3', '4']) {
       const [ox, oy] = NUM[key];
-      s += tg(pos[key].x + ox, pos[key].y + oy, key + '′');
+      s += tg(pos[key].x + ox, pos[key].y + oy, key + (o.prime === false ? '' : '′'));
     }
   }
   if (o.dot) s += dot(pos[1]);
@@ -225,12 +225,17 @@ function drawBase(kind, o) {
     s += A(p[k], l, { kind: kind2 });
   }
   if (o.sugar) s += tg(p.S.x, p.S.y + 15, o.sugar);
-  return { s, p, lab: L };
+  /* a ring locant: inside the ring (toward its centre) or at an offset */
+  const loc = (k, n, ring, f = 0.55, off) => {
+    const q = off ? P(p[k].x + off[0], p[k].y + off[1]) : mid(p[k], rc[ring], f);
+    return tg(q.x, q.y + 4, n, 'fg-tag-mut');
+  };
+  return { s, p, lab: L, loc };
 }
 
 /* ================================================= 1. the two sugars === */
 function sugarPair(c, deoxy, k = 1) {
-  const F = furanose(c, { k, dot: true });
+  const F = furanose(c, { k, dot: true, prime: false });
   const { pos } = F;
   let s = F.s;
   const up1 = stick(pos[1], -1, 20, 'OH');
@@ -238,7 +243,7 @@ function sugarPair(c, deoxy, k = 1) {
   const dn3 = stick(pos[3], 1, 20, 'OH');
   const up4 = stick(pos[4], -1, 20, 'CH₂OH');
   s += up1.s + dn2.s + dn3.s + up4.s;
-  s += tg(up4.e.x - 34, up4.e.y + 4, '5′', 'fg-tag', 'end');
+  s += tg(up4.e.x - 34, up4.e.y + 4, '5', 'fg-tag', 'end');
   return { s, pos, ends: { up1: up1.e, dn2: dn2.e, dn3: dn3.e, up4: up4.e } };
 }
 
@@ -246,7 +251,7 @@ FIGURES.push({
   id: 'sugars-ribose-deoxy',
   section: 'nucleic-acids',
   anchor: '<h3>Three pieces, two names</h3>',
-  alt: 'Two Haworth rings side by side. Left, ribose, the sugar of RNA: ring oxygen at the back, C1 prime at the right with an OH up, C2 prime with an OH down, C3 prime with an OH down, and C4 prime carrying the CH2OH (C5 prime) up. Right, 2-deoxyribose, the sugar of DNA: identical except that C2 prime carries H instead of OH.',
+  alt: 'Two Haworth rings side by side. Left, ribose, the sugar of RNA: ring oxygen at the back, C1 at the right with an OH up (the beta anomer), C2 with an OH down, C3 with an OH down, and C4 carrying the CH2OH (C5) up. Right, 2-deoxyribose, the sugar of DNA: identical except that C2 carries H instead of OH.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
@@ -257,21 +262,21 @@ FIGURES.push({
     const L = sugarPair(P(190, 160), false);
     const R = sugarPair(P(560, 160), true);
     s += L.s + R.s;
-    s += tg(L.ends.dn2.x + 28, L.ends.dn2.y + 4, 'OH at C2′', 'fg-tag-warn', 'start');
-    s += tg(R.ends.dn2.x + 24, R.ends.dn2.y + 4, 'H at C2′', 'fg-tag-warn', 'start');
+    s += tg(L.ends.dn2.x + 28, L.ends.dn2.y + 4, 'OH at C2', 'fg-tag-warn', 'start');
+    s += tg(R.ends.dn2.x + 24, R.ends.dn2.y + 4, 'H at C2', 'fg-tag-warn', 'start');
     for (const F of [L, R]) {
       s += tg(F.pos[1].x + 18, F.pos[1].y - 22, 'anomeric', 'fg-tag', 'start');
       s += tg(F.pos[1].x + 18, F.pos[1].y - 8, 'carbon', 'fg-tag', 'start');
     }
     return s;
   },
-  caption: 'Ribose and 2-deoxyribose drawn as Haworth projections, the flat ring drawing from the carbohydrates section. The only change is at C2′ (coral). The coral dot marks C1′, the anomeric carbon. Hydrogens on the ring carbons are left off, except the one at C2′ that makes the difference.',
+  caption: 'Ribose and 2-deoxyribose drawn as Haworth projections, the flat ring drawing from the carbohydrates section, with the β anomer shown. The only change is at C2 (coral). The coral dot marks C1, the anomeric carbon. Hydrogens on the ring carbons are left off, except the one at C2 that makes the difference.',
 });
 
 FIGURES.push({
   id: 'l-sugars-ribose-deoxy',
   lessons: ['nucleic-acids'],
-  alt: 'Ribose (top) and 2-deoxyribose (bottom) as Haworth rings, numbered 1 prime to 5 prime. They differ only at C2 prime: OH in ribose, H in 2-deoxyribose.',
+  alt: 'Ribose (top) and 2-deoxyribose (bottom) as Haworth rings, numbered 1 to 5. They differ only at C2: OH in ribose, H in 2-deoxyribose.',
   viewBox: '0 0 340 520',
   build() {
     let s = '';
@@ -280,12 +285,12 @@ FIGURES.push({
     const T = sugarPair(P(160, 140), false);
     const B = sugarPair(P(160, 400), true);
     s += T.s + B.s;
-    s += tg(T.ends.dn2.x + 26, T.ends.dn2.y + 4, 'OH at C2′', 'fg-tag-warn', 'start');
-    s += tg(B.ends.dn2.x + 22, B.ends.dn2.y + 4, 'H at C2′', 'fg-tag-warn', 'start');
+    s += tg(T.ends.dn2.x + 26, T.ends.dn2.y + 4, 'OH at C2', 'fg-tag-warn', 'start');
+    s += tg(B.ends.dn2.x + 22, B.ends.dn2.y + 4, 'H at C2', 'fg-tag-warn', 'start');
     s += rule(20, 262, 320, 262);
     return s;
   },
-  caption: 'The two sugars differ only at C2′ (coral). The coral dot marks C1′, the anomeric carbon.',
+  caption: 'The two sugars differ only at C2 (coral). The coral dot marks C1, the anomeric carbon.',
 });
 
 /* ======================================== 2. one nucleotide, dAMP ====== */
@@ -361,13 +366,13 @@ FIGURES.push({
     const pur = [['A', 'adenine (A)', 230], ['G', 'guanine (G)', 500]];
     for (const [k, name, x] of pur) {
       const B = drawBase(k, { c: P(x, 118), b: 30, sugar: 'sugar', compact: true, kinds: { N9: 'hi' } });
-      s += B.s;
+      s += B.s + B.loc('N9', '9', null, 0, [-20, 16]);
       s += lbl(x + 20, 212, name);
     }
     const pyr = [['C', 'cytosine (C)', 170], ['T', 'thymine (T)', 390], ['U', 'uracil (U)', 610]];
     for (const [k, name, x] of pyr) {
       const B = drawBase(k, { c: P(x, 340), b: 30, sugar: 'sugar', compact: true, hiMe: true, kinds: { N1: 'hi' } });
-      s += B.s;
+      s += B.s + B.loc('N1', '1', null, 0, [-20, 14]) + B.loc('C5', '5', 'six', 0.42);
       s += lbl(x, 440, name);
     }
     return s;
@@ -459,7 +464,7 @@ FIGURES.push({
   id: 'polymerase-step',
   section: 'nucleic-acids',
   anchor: 'which is why chains grow 5′ to 3′.</p>',
-  alt: 'Top: the last sugar of a growing DNA chain, whose C3 prime OH points down toward the first phosphorus of an incoming deoxynucleoside triphosphate. A curved arrow runs from a lone pair on the 3 prime oxygen to that phosphorus, and a second curved arrow takes the electrons of the bond from that phosphorus to the next oxygen along the phosphate chain. Bottom: the product, a new 3 prime O, P, O 5 prime link joining the chain to the new nucleotide, and the diphosphate ion that left.',
+  alt: 'Top: the last sugar of a growing DNA chain, whose C3 prime OH sits to the right of the first phosphorus of an incoming deoxynucleoside triphosphate. A curved arrow runs from a lone pair on the 3 prime oxygen to that phosphorus, and a second curved arrow takes the electrons of the bond from that phosphorus to the next oxygen along the phosphate chain. Bottom: the product, a new 3 prime O, P, O 5 prime link joining the chain to the new nucleotide, and the diphosphate ion that left.',
   viewBox: '0 0 760 680',
   build() {
     let s = '';
@@ -515,6 +520,7 @@ FIGURES.push({
     const o5 = PA.out.o5;
     const c5 = P(o5.x, o5.y + 46);
     s += bd(o5, 'O', c5, 'CH₂') + A(c5, 'CH₂');
+    s += tg(c5.x - 26, c5.y + 4, '5′', 'fg-tag', 'end');
     const F2 = furanose(P(c5.x + 66, c5.y + 52), { dot: true, nums: false });
     s += F2.s;
     s += bond(c5, F2.pos[4], { rFrom: rOf('CH₂'), rTo: 0 });
@@ -653,8 +659,8 @@ function ladder() {
   const pairs = [['A', 'T'], ['G', 'C'], ['C', 'G'], ['T', 'A']];
   const pur = (b) => b === 'A' || b === 'G';
   // rails
-  s += bond(P(xl, 84), P(xl, 386), { rFrom: 0, rTo: 0 });
-  s += bond(P(xr, 84), P(xr, 386), { rFrom: 0, rTo: 0 });
+  s += bond(P(xl, 95), P(xl, 340), { rFrom: 0, rTo: 0 });
+  s += bond(P(xr, 130), P(xr, 375), { rFrom: 0, rTo: 0 });
   for (const x of [xl, xr]) {
     for (const y of ys) {
       const pts = [0, 1, 2, 3, 4].map((i) => {
@@ -663,7 +669,8 @@ function ladder() {
       }).join(' ');
       s += `<polygon class="fg-panel" points="${pts}"></polygon>`;
     }
-    for (const y of [95, 165, 235, 305, 375]) s += A(P(x, y), 'P', { kind: 'warn', r: 11 });
+    // each strand's 5' end carries a phosphate; its 3' end stops at a sugar
+    for (const y of (x === xl ? [95, 165, 235, 305] : [165, 235, 305, 375])) s += A(P(x, y), 'P', { kind: 'warn', r: 11 });
   }
   // rungs
   const inner = xr - xl - 30, wPu = inner * 0.58, wPy = inner - wPu;
@@ -762,7 +769,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Every hydrogen bond is a dashed line from an H to the N or O that accepts it. In both pairs the bonds to the sugars point down, toward the backbones, and end the same distance apart.',
-  note: 'Try pairing A with C on paper: A’s N–H faces C’s N–H, and A’s ring N faces C’s ring N, so donor meets donor and acceptor meets acceptor. Two purines, such as A with G, are too wide to fit between the backbones.',
+  note: 'Try pairing A with C on paper: A’s N–H faces C’s N–H, and A’s ring N faces C’s ring N, so donor meets donor and acceptor meets acceptor.',
 });
 FIGURES.push({
   id: 'l-base-pairs',
@@ -797,6 +804,7 @@ FIGURES.push({
     const L = drawBase('T', { c: P(120, 164), b: 32, rot: -30, sugar: 'sugar', kinds: { H3: 'warn' } });
     const R = drawBase('T', { c: P(552, 164), b: 32, rot: -30, sugar: 'sugar', form: 'lactim', kinds: { H4: 'warn' } });
     s += L.s + R.s;
+    for (const B of [L, R]) s += B.loc('N3', '3', 'six', 0.6) + B.loc('C4', '4', 'six', 0.42);
     // edge tags
     const tagAt = (p, t, cls) => tg(p.x + 22, p.y + 4, t, cls, 'start');
     s += tagAt(L.p.X4, 'acceptor', 'fg-tag');
@@ -813,7 +821,7 @@ FIGURES.push({
     s += tg(380, 204, 'lactam');
     return s;
   },
-  caption: 'Thymine’s pairing edge in its two forms. Moving the coral H from N3 to the oxygen on C4 swaps a donor and an acceptor, so the edge that matched adenine now matches guanine.',
+  caption: 'Thymine’s pairing edge in its two forms. The coral H moves from N3 to O4.',
 });
 
 export default FIGURES;

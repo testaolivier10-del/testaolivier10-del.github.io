@@ -869,7 +869,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'prostaglandin-e2',
   section: 'lipids',
-  anchor: 'the same kind of reaction as saponification with a different nucleophile.</div>',
+  anchor: 'the thromboxanes, trigger blood clotting.</p>',
   viewBox: '0 0 700 320',
   alt: 'Prostaglandin E2. A five-membered ring carries a ketone at C9 and a hashed OH at C11. From C8 a hashed bond leads to the upper chain, seven carbons with a cis double bond between C5 and C6, which rises to a COOH group at C1. From C12 a wedged bond leads to the lower chain, eight carbons with a trans double bond between C13 and C14, a hashed OH on C15, and a CH3 end at C20.',
   build() {
