@@ -276,9 +276,13 @@
       10:['packing-and-properties'],
       11:['two-reactive-sites'] } },
 
-    'addition-polymers': { n:8, steps:{
-      2:['chain-growth'], 3:['chain-growth'], 4:['chain-growth'],
-      6:['chain-growth'], 7:['chain-growth','packing-and-properties'] } },
+    'addition-polymers': { n:12, steps:{
+      2:['chain-growth'],
+      3:['chain-growth'],
+      5:['chain-growth'],
+      7:['chain-growth'],
+      10:['chain-growth'],
+      11:['chain-growth','packing-and-properties'] } },
 
     'condensation-polymers': { n:8, steps:{
       2:['step-growth'], 3:['step-growth'], 4:['step-growth'],

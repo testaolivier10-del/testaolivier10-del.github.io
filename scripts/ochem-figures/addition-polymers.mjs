@@ -228,7 +228,7 @@ FIGURES.push({
     s += sm(390, y + 44, 'the thiyl radical adds to a monomer, and a new chain starts');
     return s;
   },
-  caption: 'Chain transfer to a thiol. The hydrogen moves, not the chain: one chain stops and RS• starts the next.',
+  caption: 'Chain transfer to a thiol. Follow the hydrogen from sulfur to carbon.',
 });
 
 /* ======================================================================
@@ -321,7 +321,7 @@ FIGURES.push({
     s += tg(170, 374, 'tail-to-tail: no Cl on 4 or 5', 'fg-tag-warn');
     return s;
   },
-  caption: 'To find a defect, look for two chlorines on neighboring carbons. The highlighted bonds are the two wrong-way joins.',
+  caption: 'The carbons are numbered from the left. The highlighted bonds are the two wrong-way joins.',
 });
 
 /* ======================================================================
@@ -391,7 +391,7 @@ FIGURES.push({
     s += sm(394, 522, 'its drawings are in the next section', 'start');
     return s;
   },
-  caption: 'Each monomer, and the repeat unit it gives. The C=C becomes a single bond, the bracket crosses a bond at each side, and the groups on the carbons do not change.',
+  caption: 'Each monomer beside its repeat unit. Check that every substituent carries over unchanged.',
 });
 
 /* ======================================================================
@@ -531,11 +531,9 @@ FIGURES.push({
       s += chainOf(186 + off, 194 + r * 32, 'AAAAAAABBBBBBB', 26);
     }
     s += tg(257, 324, 'A domain', 'fg-tag') + tg(471, 324, 'B domain', 'fg-tag-warn');
-    s += sm(596, 230, 'A blocks gather', 'start') + sm(596, 246, 'with A blocks,', 'start');
-    s += sm(596, 262, 'B with B', 'start');
     return s;
   },
-  caption: 'Two ways to put two monomers in one chain. In the block copolymer, like blocks gather with like, so each domain behaves like its own homopolymer.',
+  caption: 'Two ways to order two monomers along a chain, and how block chains sit in a solid.',
 });
 
 /* ======================================================================
@@ -701,7 +699,7 @@ FIGURES.push({
     s += tg(q2.x, y + 66, 'C2', 'fg-tag-mut') + tg(q1.x - 2, y - 44, 'C1', 'fg-tag-mut');
     return s;
   },
-  caption: 'The hydrogen moves from C5 to C1. C1 to C4 are left behind as a butyl branch, and the chain carries on from C5.',
+  caption: 'Follow the numbered carbons from the ring into the branch.',
 });
 
 /* ======================================================================
@@ -780,8 +778,8 @@ FIGURES.push({
         const nx = px + 16, ny = up ? y - 6 : y + 6;
         t += `<line class="fg-bond" x1="${px}" y1="${py}" x2="${nx}" y2="${ny}"></line>`;
         if (branchAt && i === branchAt) {
-          t += `<line class="fg-bond" x1="${nx}" y1="${ny}" x2="${nx + 8}" y2="${ny - 26}"></line>`;
-          t += `<line class="fg-bond" x1="${nx + 8}" y1="${ny - 26}" x2="${nx + 22}" y2="${ny - 20}"></line>`;
+          t += `<line class="fg-bond" x1="${nx}" y1="${ny}" x2="${nx + 6}" y2="${ny - 14}"></line>`;
+          t += `<line class="fg-bond" x1="${nx + 6}" y1="${ny - 14}" x2="${nx + 18}" y2="${ny - 18}"></line>`;
         }
         px = nx; py = ny; up = !up;
       }
@@ -791,7 +789,7 @@ FIGURES.push({
       s += panel(ox, 46, 330, 152, { kind });
       s += tg(ox + 165, 34, title);
       for (let r = 0; r < 4; r++) {
-        s += chain(ox + 24, 78 + r * 30, 16, branched ? (r % 2 ? 4 : 9) : 0);
+        s += chain(ox + 24, branched ? 76 + r * 34 : 80 + r * 30, 16, branched ? (r % 2 ? 4 : 9) : 0);
       }
       s += lbl(ox + 165, 220, label2);
       s += tg(ox + 165, 242, use, kind === 'warn' ? 'fg-tag' : 'fg-tag-good');
@@ -806,7 +804,7 @@ FIGURES.push({
     s += lbl(360, 316, 'Only the architecture differs.');
     return s;
   },
-  caption: 'The two polyethylenes. Branches keep the chains from lying against each other.',
+  caption: 'The two polyethylenes, drawn schematically.',
   note: 'This is the fatty-acid argument from the biomolecules chapter, applied to a different molecule. Straight chains lie against their neighbors along their full length, and the London forces add up. A branch breaks that contact.',
 });
 
