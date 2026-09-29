@@ -109,43 +109,45 @@ FIGURES.push({
 
 /* ------------------------------------------------------------------ propane
    The homotopic case: the labeled carbon is left with two identical methyl
-   groups, so both substitutions give one compound. */
-function propaneCenter(c, top, bottom) {
-  // top = the group on the wedge (60°), bottom = the group on the hash (120°)
+   groups, so both substitutions give one compound. Drawn as a real
+   tetrahedral carbon: two methyls in the page, the two out-of-plane groups
+   placed symmetrically about the line that bisects the methyls. */
+function propaneCenter(c, w, h, o = {}) {
+  // w = the group on the wedge (355°), h = the group on the hash (305°)
   let s = '';
-  s += arm(c, 180, 56, 'CH₃');
-  s += arm(c, 0, 56, 'CH₃');
-  s += arm(c, 60, 46, top.lab, { type: 'wedge', kind: top.kind, size: top.size });
-  s += arm(c, 120, 46, bottom.lab, { type: 'hash', kind: bottom.kind, size: bottom.size });
+  if (o.axis) {
+    const a = armEnd(c, 150, 70), b = armEnd(c, 330, 78);
+    s += `<line class="fg-dash" x1="${n2(a.x)}" y1="${n2(a.y)}" x2="${n2(b.x)}" y2="${n2(b.y)}"></line>`;
+  }
+  s += arm(c, 90, 48, 'CH₃');
+  s += arm(c, 210, 48, 'CH₃');
+  s += arm(c, 355, 48, w.lab, { type: 'wedge', kind: w.kind, size: w.size, r: 12 });
+  s += arm(c, 305, 46, h.lab, { type: 'hash', kind: h.kind, size: h.size, r: 12 });
   s += atom(c.x, c.y, 'C', { kind: 'hi' });
   return s;
 }
 FIGURES.push({
   id: 'propane-homotopic',
   section: 'prochirality',
-  viewBox: '0 0 340 446',
-  alt: 'The substitution test on C2 of propane. Top: C2 with a methyl group on each side, Ha on a wedge and Hb on a hash. Replacing Ha with D gives C2 with two methyls, D on the wedge and H on the hash. Replacing Hb with D gives two methyls, H on the wedge and D on the hash. The two methyl groups tie, so C2 is not a stereocenter; turning the second product over gives the first. Both are the same compound, so Ha and Hb are homotopic.',
+  viewBox: '0 0 340 470',
+  alt: 'The substitution test on C2 of propane. Top: C2 with one methyl up and one to the lower left in the page, Ha on a wedge to the right and Hb on a hash to the lower right. Replacing Ha with D gives D on the wedge and H on the hash; replacing Hb with D gives H on the wedge and D on the hash. The two methyl groups tie, so C2 is not a stereocenter. A half turn of the second product about the dashed line that bisects the two methyls swaps the methyls and swaps wedge and hash, giving the first product. Both are the same compound, so Ha and Hb are homotopic.',
   build() {
     let s = '';
     s += text(170, 16, 'propane, C2: two CH₃ and two H', { cls: 'fg-tag' });
-    s += propaneCenter(P(170, 96), { lab: 'Ha', size: 10.5 }, { lab: 'Hb', size: 10.5 });
+    s += propaneCenter(P(170, 86), { lab: 'Ha', size: 10.5 }, { lab: 'Hb', size: 10.5 });
 
-    s += panel(8, 140, 324, 104);
-    s += text(20, 162, 'Ha → D', { cls: 'fg-lbl', anchor: 'start' });
-    s += propaneCenter(P(170, 214), { lab: 'D', kind: 'warn' }, { lab: 'H' });
+    s += panel(8, 150, 324, 132);
+    s += propaneCenter(P(92, 222), { lab: 'D', kind: 'warn' }, { lab: 'H' });
+    s += lines(178, 176, 22, [['Ha → D', 'fg-lbl'], 'CH₃ and CH₃ tie,', 'so C2 is not a', 'stereocenter']);
 
-    s += panel(8, 254, 324, 104);
-    s += text(20, 276, 'Hb → D', { cls: 'fg-lbl', anchor: 'start' });
-    s += propaneCenter(P(170, 328), { lab: 'H' }, { lab: 'D', kind: 'warn' });
+    s += panel(8, 292, 324, 132);
+    s += propaneCenter(P(92, 364), { lab: 'H' }, { lab: 'D', kind: 'warn' }, { axis: true });
+    s += lines(178, 318, 22, [['Hb → D', 'fg-lbl'], 'A half turn about', 'the dashed line', 'gives the product', 'above']);
 
-    s += lines(170, 384, 22, [
-      ['CH₃ and CH₃ tie, so C2 is not a stereocenter.', 'fg-tag'],
-      ['Turn the second product over: it is the first.', 'fg-tag-good'],
-    ], 'middle');
-    s += text(170, 436, 'same compound: homotopic', { cls: 'fg-lbl' });
+    s += text(170, 456, 'same compound: homotopic', { cls: 'fg-lbl' });
     return s;
   },
-  caption: 'Turning the second product over (a half turn about a vertical line in the page) swaps its wedge and hash and leaves the two methyl groups where they were. It becomes the first product exactly.',
+  caption: 'The half turn swaps the two identical methyl groups and swaps the wedge and the hash, so the second product becomes the first exactly.',
 });
 
 /* ------------------------------------------------------------------ ethanol
@@ -200,7 +202,7 @@ FIGURES.push({
       'pointing at you.',
       'Counterclockwise,',
       'so flip it:',
-      ['this is R', 'fg-tag-warn'],
+      ['this is R', 'fg-tag-good'],
     ]);
 
     s += text(170, 462, 'S and R are enantiomers,', { cls: 'fg-lbl' });
@@ -232,8 +234,8 @@ function bromobutane(x, y, left, right, o = {}) {
   }
   if (o.pri) {
     const [pl, pr] = o.pri;
-    s += sweep(c3, 22, 160, pr === 3 ? 305 : 255, true);
-    s += pri(c2.x + 15, c2.y - 6, 1);
+    s += sweep(c3, 24, 136, pr === 3 ? 305 : 251, true);
+    s += pri(c2.x + 10, c2.y + 20, 1);
     s += pri(c4.x + 10, c4.y + 22, 2);
     s += pri(a.x - 20, a.y + 4, pl);
     s += pri(b.x + 20, b.y + 4, pr);
@@ -270,7 +272,7 @@ FIGURES.push({
       'points at you:',
       'clockwise, flipped,',
       'so C3 is S.',
-      ['(2R,3S)', 'fg-tag-warn'],
+      ['(2R,3S)', 'fg-tag-good'],
     ]);
 
     s += text(170, 508, 'C2 matches, C3 is opposite: diastereomers,', { cls: 'fg-lbl' });
@@ -321,13 +323,13 @@ FIGURES.push({
     s += panel(8, 300, 324, 136);
     s += mchx(80, 346, { lab: 'H' }, { lab: 'D', kind: 'warn' }).s;
     s += lines(178, 326, 22, [['Hb → D', 'fg-lbl'], 'D on a hash, CH₃ on', 'a wedge: opposite', 'faces of the ring']);
-    s += itext(178, 414, [{ i: 'trans' }, ' product'], 'fg-tag-warn', 'start');
+    s += itext(178, 414, [{ i: 'trans' }, ' product'], 'fg-tag-good', 'start');
 
     s += itext(170, 464, [{ i: 'cis' }, ' and ', { i: 'trans' }, ' are diastereomers,'], 'fg-lbl');
     s += text(170, 486, 'so Ha and Hb are diastereotopic', { cls: 'fg-lbl' });
     return s;
   },
-  caption: 'Wedges point toward you and hashes away, so two wedged groups sit on the same face of the flat ring. Each product has two new stereocenters, C1 and C2.',
+  caption: 'Wedges point toward you and hashes away, so two wedged groups sit on the same face of the flat ring.',
 });
 
 /* ------------------------------------------------------------------ propene
@@ -367,7 +369,7 @@ FIGURES.push({
 
     s += panel(8, 282, 324, 136);
     s += propene(64, 346, { lab: 'H' }, { lab: 'D', kind: 'warn' }, { hi: 'down' });
-    s += lines(212, 320, 22, [['Hb → D', 'fg-lbl'], 'higher groups on', 'opposite sides:', ['E', 'fg-tag-warn']]);
+    s += lines(212, 320, 22, [['Hb → D', 'fg-lbl'], 'higher groups on', 'opposite sides:', ['E', 'fg-tag-good']]);
 
     s += text(170, 446, 'E and Z are diastereomers,', { cls: 'fg-lbl' });
     s += text(170, 466, 'so Ha and Hb are diastereotopic', { cls: 'fg-lbl' });
@@ -386,7 +388,7 @@ FIGURES.push({
   alt: 'Ethanol C1 drawn twice in the same orientation, OH up, CH3 lower left, one H on a wedge and one on a hash at the lower right. First drawing: promote the hashed H, so the priorities are OH 1, CH3 2, hashed H 3, wedged H 4. Priority 4 points at you, and 1 to 2 to 3 runs counterclockwise, so the reading flips to R: the hashed H is pro-R. Second drawing: promote the wedged H instead, so the hashed H is 4 and points away; the trace is counterclockwise, S: the wedged H is pro-S.',
   build() {
     let s = '';
-    s += panel(8, 8, 324, 150, { kind: 'warn' });
+    s += panel(8, 8, 324, 150);
     s += ethanolCenter(P(92, 84), { lab: 'H' }, { lab: 'H', kind: 'warn' }, { sweepTo: 292, pri: [4, 3] });
     s += lines(178, 32, 20, [
       ['name the hashed H', 'fg-lbl'],
@@ -395,11 +397,11 @@ FIGURES.push({
       '4 points at you:',
       'counterclockwise',
       'flips to R,',
-      ['so it is pro-R', 'fg-tag-warn'],
+      ['so it is pro-R', 'fg-tag-good'],
     ]);
 
-    s += panel(8, 168, 324, 150, { kind: 'good' });
-    s += ethanolCenter(P(92, 244), { lab: 'H', kind: 'hi' }, { lab: 'H' }, { sweepTo: 330, pri: [3, 4] });
+    s += panel(8, 168, 324, 150);
+    s += ethanolCenter(P(92, 244), { lab: 'H', kind: 'warn' }, { lab: 'H' }, { sweepTo: 330, pri: [3, 4] });
     s += lines(178, 192, 20, [
       ['name the wedged H', 'fg-lbl'],
       'Promote it: it is 3,',
@@ -412,7 +414,7 @@ FIGURES.push({
     s += text(170, 342, 'The hashed H is pro-R; the wedged H is pro-S.', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'The highlighted hydrogen in each drawing is the one being named. Promoting the other hydrogen swaps priorities 3 and 4, and that always reverses the answer.',
+  caption: 'The highlighted hydrogen in each drawing is the one being named. Both drawings show the same molecule in the same orientation.',
 });
 
 /* ------------------------------------------------------------- Re and Si
@@ -430,7 +432,7 @@ function acetaldehyde(c, meDeg, hDeg, o = {}) {
   s += atom(c.x, c.y, 'C', { kind: 'hi' });
   if (o.pri) {
     const me = armEnd(c, meDeg, 50), h = armEnd(c, hDeg, 42);
-    s += pri(oa.x + 30, oa.y - 6, 1);
+    s += pri(oa.x + 38, oa.y - 4, 1);
     s += pri(me.x + (me.x > c.x ? 6 : -6), me.y + 32, 2);
     s += pri(h.x + (h.x > c.x ? 6 : -6), h.y + 26, 3);
   }
@@ -440,11 +442,11 @@ FIGURES.push({
   id: 're-si-faces',
   section: 'prochirality',
   lessons: ['prochirality'],
-  viewBox: '0 0 340 338',
+  viewBox: '0 0 340 326',
   alt: 'Acetaldehyde drawn flat, with priorities O 1, CH3 2, H 3. Seen from the front, with O up, CH3 lower right and H lower left, 1 to 2 to 3 runs clockwise: the Re face. Seen from behind, the same molecule shows CH3 lower left and H lower right, and 1 to 2 to 3 runs counterclockwise: the Si face.',
   build() {
     let s = '';
-    s += panel(8, 8, 324, 150, { kind: 'good' });
+    s += panel(8, 8, 324, 150);
     s += acetaldehyde(P(96, 86), 330, 210, { sweep: { to: 214, cw: true }, pri: true });
     s += lines(186, 38, 22, [
       ['from the front', 'fg-lbl'],
@@ -453,16 +455,15 @@ FIGURES.push({
       ['the Re face', 'fg-tag-good'],
     ]);
 
-    s += panel(8, 168, 324, 150, { kind: 'warn' });
+    s += panel(8, 168, 324, 150);
     s += acetaldehyde(P(96, 246), 210, 330, { sweep: { to: 326, cw: false }, pri: true });
     s += lines(186, 198, 22, [
       ['from behind', 'fg-lbl'],
       'the same molecule,',
       'turned over:',
       'counterclockwise:',
-      ['the Si face', 'fg-tag-warn'],
+      ['the Si face', 'fg-tag-good'],
     ]);
-    s += text(170, 334, 'One face of the plane is Re, the other Si.', { cls: 'fg-tag' });
     return s;
   },
   caption: 'Turning the molecule over to look at the back face moves CH₃ and H to opposite sides of the drawing, so the same three priorities trace the other way.',
@@ -472,11 +473,16 @@ FIGURES.push({
    A nucleophile adding to either face of acetaldehyde gives the two
    enantiomers of the product. */
 function adduct(c, nuType) {
+  // As on the Aldehydes & ketones page: H and CH3 stay in the page, Nu and O-
+  // point out of it on opposite sides (one wedge, one hash).
+  const oType = nuType === 'wedge' ? 'hash' : 'wedge';
   let s = '';
-  s += arm(c, 90, 42, 'O⁻', { kind: 'hi', size: 10.5 });
-  s += arm(c, 335, 50, 'CH₃');
-  s += arm(c, 205, 42, 'H', { r: 12 });
-  s += arm(c, 270, 54, 'Nu', { type: nuType, kind: 'warn', size: 10.5 });
+  s += arm(c, 215, 44, 'H', { r: 12 });
+  s += arm(c, 325, 48, 'CH₃');
+  s += arm(c, 118, 46, 'Nu', { type: nuType, kind: 'warn', size: 10.5 });
+  const o = armEnd(c, 62, 46);
+  s += arm(c, 62, 46, 'O⁻', { type: oType, kind: 'hi', size: 10.5 });
+  s += lonePair(o.x, o.y, -120, { dist: 21 }) + lonePair(o.x, o.y, -45, { dist: 21 }) + lonePair(o.x, o.y, 25, { dist: 21 });
   s += atom(c.x, c.y, 'C', { kind: 'hi' });
   return s;
 }
@@ -485,7 +491,7 @@ FIGURES.push({
   section: 'prochirality',
   lessons: ['prochirality'],
   viewBox: '0 0 340 404',
-  alt: 'Acetaldehyde flat in the page, O up, CH3 lower right, H lower left, with the Re face toward you. A nucleophile adding from the front, the Re face, gives a product with Nu on a wedge. A nucleophile adding from behind, the Si face, gives the product with Nu on a hash. The three original groups keep their places in both, so the two products are mirror images, and with an achiral nucleophile they form 50 to 50.',
+  alt: 'Acetaldehyde flat in the page, O up, CH3 lower right, H lower left, with the Re face toward you. A nucleophile adding from the front, the Re face, gives a product with Nu on a wedge and O minus on a hash. A nucleophile adding from behind, the Si face, gives Nu on a hash and O minus on a wedge. H and CH3 stay in the page in both, so the two products are mirror images, and with an achiral nucleophile they form 50 to 50.',
   build() {
     let s = '';
     s += text(170, 16, 'acetaldehyde, Re face toward you', { cls: 'fg-tag' });
@@ -497,18 +503,18 @@ FIGURES.push({
     s += text(256, 152, 'Nu⁻ from', { cls: 'fg-tag', anchor: 'start' });
     s += text(256, 170, 'behind', { cls: 'fg-tag', anchor: 'start' });
 
-    s += panel(8, 196, 158, 156, { kind: 'good' });
-    s += adduct(P(87, 252), 'wedge');
+    s += panel(8, 196, 158, 156);
+    s += adduct(P(87, 272), 'wedge');
     s += text(87, 340, 'Nu toward you', { cls: 'fg-tag-good' });
-    s += panel(174, 196, 158, 156, { kind: 'warn' });
-    s += adduct(P(253, 252), 'hash');
-    s += text(253, 340, 'Nu away from you', { cls: 'fg-tag-warn' });
+    s += panel(174, 196, 158, 156);
+    s += adduct(P(253, 272), 'hash');
+    s += text(253, 340, 'Nu away from you', { cls: 'fg-tag-good' });
 
     s += text(170, 376, 'mirror images, formed 50 : 50', { cls: 'fg-lbl' });
     s += text(170, 396, 'when nothing chiral is present', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'Nu stands for the group the nucleophile brings; if it is anything other than H or CH₃, the carbon ends up with four different groups. Only the bond to Nu changes between the two products.',
+  caption: 'Nu stands for the group the nucleophile brings.',
 });
 
 /* ---------------------------------------------------------------- NMR sketch

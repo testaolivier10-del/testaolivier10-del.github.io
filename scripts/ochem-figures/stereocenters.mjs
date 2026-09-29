@@ -34,13 +34,18 @@ function group(p, t, kind = 'plain') {
   return `<rect class="${cls}" x="${r2(p.x - w / 2)}" y="${r2(p.y - 13)}" width="${w}" height="26" rx="13"></rect>` +
     text(p.x, p.y + 4.6, t, { cls: 'fg-lbl', size: 13 });
 }
-/* How far a group's label reaches along the bond, for trimming. */
-const reach = (t) => ([...t].length <= 3 ? gr(t) : 13);
+/* How far a group's label reaches along a bond arriving at `deg`, for
+   trimming: a disc's radius, or the distance to the edge of a pill. */
+const reach = (t, deg = 90) => {
+  if ([...t].length <= 3) return gr(t);
+  const c = Math.abs(Math.cos(rad(deg))), s = Math.abs(Math.sin(rad(deg)));
+  return Math.min(c > 0.01 ? (pillW(t) / 2) / c : 1e9, s > 0.01 ? 13 / s : 1e9);
+};
 /* A labelled group hung off an unlabelled skeletal vertex. */
 function hang(v, deg, t, o = {}) {
-  const len = o.len ?? (reach(t) + 22);
+  const len = o.len ?? (reach(t, deg) + 22);
   const p = at(v, deg, len);
-  return bond(v, p, { rFrom: 0, rTo: reach(t) }) + group(p, t, o.kind);
+  return bond(v, p, { rFrom: 0, rTo: reach(t, deg) }) + group(p, t, o.kind);
 }
 /* A skeletal methyl: a bare line, as a skeletal drawing shows it. */
 const stub = (v, deg, len = 36) => { const e = at(v, deg, len); return { s: sk(v, e), e }; };
@@ -68,18 +73,18 @@ FIGURES.push({
     s += bonds(b);
     s += hang(b[1], 60, 'OH') + hang(b[1], 120, 'H');
     s += dot(b[1]) + tg(b[1].x, b[1].y + 22, 'C2', 'fg-tag-mut');
-    s += tg(b[0].x - 8, b[0].y + 22, 'CH₃', 'fg-tag', 'middle');
-    s += tg(b[3].x - 8, b[3].y + 26, 'CH₂CH₃', 'fg-tag', 'middle');
-    s += tg(170, 138, 'four different groups: C2 is a stereocenter', 'fg-tag-good');
-    s += rule(20, 154, 320, 154);
+    s += tg(b[0].x - 8, b[0].y + 4, 'CH₃', 'fg-tag', 'end');
+    s += tg(b[3].x - 14, b[3].y + 34, 'CH₂CH₃', 'fg-tag', 'middle');
+    s += tg(170, 142, 'four different groups: C2 is a stereocenter', 'fg-tag-good');
+    s += rule(20, 156, 320, 156);
     /* propan-2-ol */
     s += tg(170, 178, 'propan-2-ol');
     const p = chain([135, 170, 205], 252, 10, false);
     s += bonds(p);
     s += hang(p[1], 60, 'OH') + hang(p[1], 120, 'H');
     s += dot(p[1]) + tg(p[1].x, p[1].y + 22, 'C2', 'fg-tag-mut');
-    s += tg(p[0].x - 6, p[0].y + 22, 'CH₃', 'fg-tag-warn');
-    s += tg(p[2].x + 6, p[2].y + 22, 'CH₃', 'fg-tag-warn');
+    s += tg(p[0].x - 8, p[0].y + 4, 'CH₃', 'fg-tag-warn', 'end');
+    s += tg(p[2].x + 8, p[2].y + 4, 'CH₃', 'fg-tag-warn', 'start');
     s += tg(170, 292, 'two CH₃ groups: C2 is not a stereocenter', 'fg-tag-warn');
     return s;
   },
@@ -96,13 +101,13 @@ function tetra(c, g) {
   // g: { top, left, wedge, hash }
   let s = '';
   const arms = [
-    ['top', 90, 'plain'], ['left', 210, 'plain'], ['wedge', 330, 'wedge'], ['hash', 270, 'hash'],
+    ['top', 90, 'plain'], ['left', 200, 'plain'], ['wedge', 340, 'wedge'], ['hash', 270, 'hash'],
   ];
   for (const [k, deg, kind] of arms) {
     const t = g[k];
-    const len = 13 + 9 + reach(t);
+    const len = 13 + 20 + reach(t, deg);
     const p = at(c, deg, len);
-    const o = { rFrom: 13, rTo: reach(t) };
+    const o = { rFrom: 13, rTo: reach(t, deg) };
     s += kind === 'wedge' ? wedge(c, p, { ...o, width: 9 }) : kind === 'hash' ? hash(c, p, { ...o, width: 10, rungs: 4 }) : bond(c, p, o);
     s += group(p, t);
   }
@@ -114,26 +119,26 @@ FIGURES.push({
   section: 'stereocenters',
   anchor: 'because the two methyl groups can stand in for each other.</p>',
   alt: 'Two rows of three three-dimensional drawings. Top row, the C2 of butan-2-ol: the start, with OH at the top, H at the left, CH3 on a wedge and CH2CH3 on a hash; the same carbon after swapping OH and H; and the start turned half a turn, which puts H at the top and OH at the left but moves CH2CH3 onto the wedge and CH3 onto the hash. The last two differ, so the swap made a new stereoisomer. Bottom row, the C2 of propan-2-ol, drawn the same way with two CH3 groups: after the swap and after the half turn the drawings match, so the swap gave back the same molecule.',
-  viewBox: '0 0 340 360',
+  viewBox: '0 0 520 400',
   build() {
     let s = '';
-    const cols = [56, 166, 276];
+    const cols = [90, 260, 430];
     const block = (Y, name, start, verdict, good) => {
       let g = tg(12, Y + 14, name, 'fg-tag', 'start');
       const heads = ['start', 'swap OH and H', 'start, turned'];
       const swapped = { ...start, top: start.left, left: start.top };
       const turned = { top: start.left, left: start.top, wedge: start.hash, hash: start.wedge };
       [start, swapped, turned].forEach((m, i) => {
-        g += tg(cols[i], Y + 36, heads[i], 'fg-tag-mut');
-        g += tetra(P(cols[i], Y + 92), m);
+        g += tg(cols[i], Y + 38, heads[i], 'fg-tag-mut');
+        g += tetra(P(cols[i], Y + 106), m);
       });
-      g += tg(170, Y + 164, verdict, good ? 'fg-tag-good' : 'fg-tag-warn');
+      g += tg(260, Y + 186, verdict, good ? 'fg-tag-good' : 'fg-tag-warn');
       return g;
     };
     s += block(0, 'butan-2-ol, C2', { top: 'OH', left: 'H', wedge: 'CH₃', hash: 'CH₂CH₃' },
       'last two differ: a new stereoisomer', true);
-    s += rule(20, 178, 320, 178);
-    s += block(182, 'propan-2-ol, C2', { top: 'OH', left: 'H', wedge: 'CH₃', hash: 'CH₃' },
+    s += rule(20, 200, 500, 200);
+    s += block(204, 'propan-2-ol, C2', { top: 'OH', left: 'H', wedge: 'CH₃', hash: 'CH₃' },
       'last two match: the same molecule', false);
     return s;
   },
@@ -159,16 +164,16 @@ FIGURES.push({
     s += hang(c[2], 300, 'H', { len: 34 });
     s += dot(c[2]) + tg(c[2].x, c[2].y - 16, 'C3', 'fg-tag-mut');
     /* steps outward, numbered */
-    s += tg(c[1].x, c[1].y - 16, '1') + tg(c[0].x, c[0].y + 22, '2');
-    s += tg(c[3].x, c[3].y + 24, '1') + tg(c[4].x, c[4].y - 16, '2') + tg(c[5].x, c[5].y + 24, '3');
-    s += tg(92, 52, 'ethyl', 'fg-tag-good') + tg(232, 52, 'propyl', 'fg-tag-good');
+    s += tg(c[1].x, c[1].y + 24, '1') + tg(c[0].x, c[0].y - 14, '2');
+    s += tg(c[3].x, c[3].y + 24, '1') + tg(c[4].x, c[4].y - 14, '2') + tg(c[5].x, c[5].y + 24, '3');
+    s += tg(92, 56, 'ethyl', 'fg-tag-good') + tg(232, 56, 'propyl', 'fg-tag-good');
     /* the comparison */
-    s += tg(24, 170, 'carbon 1 out:', 'fg-tag-mut', 'start');
-    s += tg(150, 170, 'CH₂ and CH₂', 'fg-tag', 'start');
-    s += tg(316, 170, 'tie', 'fg-tag-mut', 'end');
-    s += tg(24, 194, 'carbon 2 out:', 'fg-tag-mut', 'start');
-    s += tg(150, 194, 'CH₃ and CH₂', 'fg-tag', 'start');
-    s += tg(316, 194, 'different', 'fg-tag-good', 'end');
+    s += tg(40, 176, 'carbon 1 out:', 'fg-tag-mut', 'start');
+    s += tg(140, 176, 'CH₂ and CH₂', 'fg-tag', 'start');
+    s += tg(236, 176, 'tie', 'fg-tag-mut', 'start');
+    s += tg(40, 200, 'carbon 2 out:', 'fg-tag-mut', 'start');
+    s += tg(140, 200, 'CH₃ and CH₂', 'fg-tag', 'start');
+    s += tg(236, 200, 'different', 'fg-tag-good', 'start');
     s += tg(170, 234, 'C3 is a stereocenter', 'fg-tag-good');
     return s;
   },
@@ -193,7 +198,7 @@ FIGURES.push({
   lessons: ['stereocenters'],
   anchor: 'C5 fails, because two of its groups are methyl groups.</p>',
   alt: 'Three copies of the skeletal structure of 5-methylhex-1-en-3-ol, one above the other. First pass: C1 and C2 are marked sp2, C4 is marked CH2, and C6 and the methyl on C5 are marked CH3, so only C3 and C5 are left. Second copy: C3 carries OH, H, a CH=CH2 group and a CH2CH(CH3)2 group, four different groups, so C3 is a stereocenter. Third copy: C5 carries H, a CH3 group, a second CH3 group and a CH2CH(OH)CH=CH2 group, so two groups are the same and C5 is not a stereocenter.',
-  viewBox: '0 0 340 440',
+  viewBox: '0 0 340 452',
   build() {
     let s = '';
     /* first pass */
@@ -214,7 +219,7 @@ FIGURES.push({
     s += m.s + dot(m.c[2]) + tg(m.c[2].x, m.c[2].y - 16, 'C3', 'fg-tag-mut');
     s += tg(m.c[0].x + 10, m.c[1].y - 16, 'CH=CH₂', 'fg-tag');
     s += tg(m.c[4].x, m.c[3].y - 16, 'CH₂CH(CH₃)₂', 'fg-tag');
-    s += tg(170, 280, 'four different groups: a stereocenter', 'fg-tag-good');
+    s += tg(170, 282, 'four different groups: a stereocenter', 'fg-tag-good');
     s += rule(20, 294, 320, 294);
 
     /* C5 */
@@ -224,7 +229,7 @@ FIGURES.push({
     s += tg(m.c[1].x + 10, m.c[1].y - 16, 'CH₂CH(OH)CH=CH₂', 'fg-tag');
     s += tg(m.c[5].x + 10, m.c[5].y - 16, 'CH₃', 'fg-tag-warn');
     s += tg(m.me.x + 6, m.me.y + 16, 'CH₃', 'fg-tag-warn');
-    s += tg(170, 434, 'two CH₃ groups: not a stereocenter', 'fg-tag-warn');
+    s += tg(170, 444, 'two CH₃ groups: not a stereocenter', 'fg-tag-warn');
     return s;
   },
   caption: 'Top: every carbon with a reason beside it is out. Below: the two marked carbons, each with its four groups named.',
@@ -268,7 +273,7 @@ FIGURES.push({
   lessons: ['stereocenters'],
   anchor: 'so C1 is not a stereocenter.</p>',
   alt: 'Two skeletal cyclohexane rings, one above the other, with the ring carbons numbered 1 to 6 and C1 at the top carrying OH and H. Top: 3-methylcyclohexan-1-ol. A dashed path runs from C1 clockwise and reaches the methyl-bearing carbon after two carbons; a second dashed path runs the other way and reaches it after four. The paths differ, so C1 is a stereocenter. Bottom: 4-methylcyclohexan-1-ol. Both dashed paths reach the methyl-bearing carbon after three carbons, so the paths match and C1 is not a stereocenter.',
-  viewBox: '0 0 340 440',
+  viewBox: '0 0 340 434',
   build() {
     let s = '';
     s += tg(12, 18, '3-methylcyclohexan-1-ol', 'fg-tag', 'start');
@@ -276,14 +281,14 @@ FIGURES.push({
       { from: 72, to: -15, label: '2 carbons', labelAt: 30, cls: 'fg-tag-good', anchor: 'start' },
       { from: 108, to: 315, label: '4 carbons', labelAt: 190, cls: 'fg-tag-warn', anchor: 'end' },
     ]);
-    s += tg(170, 206, 'the walks differ: C1 is a stereocenter', 'fg-tag-good');
-    s += rule(20, 220, 320, 220);
-    s += tg(12, 240, '4-methylcyclohexan-1-ol', 'fg-tag', 'start');
-    s += ringPanel(222, 3, [
+    s += tg(170, 196, 'the walks differ: C1 is a stereocenter', 'fg-tag-good');
+    s += rule(20, 210, 320, 210);
+    s += tg(12, 232, '4-methylcyclohexan-1-ol', 'fg-tag', 'start');
+    s += ringPanel(214, 3, [
       { from: 72, to: -72, label: '3 carbons', labelAt: 10, cls: 'fg-tag-mut', anchor: 'start' },
       { from: 108, to: 252, label: '3 carbons', labelAt: 170, cls: 'fg-tag-mut', anchor: 'end' },
     ]);
-    s += tg(170, 432, 'the walks match: C1 is not a stereocenter', 'fg-tag-warn');
+    s += tg(170, 424, 'the walks match: C1 is not a stereocenter', 'fg-tag-warn');
     return s;
   },
   caption: 'Start at C1 and follow each dashed path until it reaches the carbon that carries the CH₃ group.',
@@ -349,21 +354,21 @@ FIGURES.push({
   lessons: ['stereocenters'],
   anchor: 'That makes 2 × 2 = 4 stereoisomers.</p>',
   alt: 'Four skeletal structures of 3-chlorobutan-2-ol in a two-by-two grid, with the stereocenters C2 and C3 marked. Top row: OH wedge with Cl wedge, and OH hash with Cl hash; these two are mirror images. Bottom row: OH wedge with Cl hash, and OH hash with Cl wedge; these two are also mirror images. A drawing in the top row and a drawing in the bottom row are not mirror images.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 374',
   build() {
     let s = '';
     s += tg(170, 18, '3-chlorobutan-2-ol');
-    const rows = [[78, 'w', 'w', 'h', 'h'], [206, 'w', 'h', 'h', 'w']];
+    const rows = [[100, 'w', 'w', 'h', 'h'], [258, 'w', 'h', 'h', 'w']];
     for (const [cy, a, b, c, d] of rows) {
       s += chlorobutanol(88, cy, a, b) + chlorobutanol(252, cy, c, d);
       s += tg(170, cy + 5, '⟷', 'fg-tag-mut');
-      s += tg(170, cy + 66, 'mirror images', 'fg-tag-good');
+      s += tg(170, cy + 76, 'mirror images', 'fg-tag-good');
     }
-    s += rule(20, 150, 320, 150);
-    s += tg(170, 316, 'top row and bottom row: not mirror images', 'fg-tag-warn');
+    s += rule(20, 190, 320, 190);
+    s += tg(170, 362, 'top row and bottom row: not mirror images', 'fg-tag-warn');
     return s;
   },
-  caption: 'Each marked carbon has its group on either a wedge or a hash, which gives four combinations. Reflecting a drawing through the page turns every wedge into a hash.',
+  caption: 'Read the wedge or hash on each marked carbon. Each row is one pair of mirror images.',
 });
 
 /* ------------------------------------------------ nitrogen-inversion ---
@@ -410,7 +415,7 @@ FIGURES.push({
     s += wedge(n, c, { rFrom: 16, rTo: 15, width: 9 });
     s += atom(a.x, a.y, 'R¹', { r: 15, size: 13 }) + atom(b.x, b.y, 'R²', { r: 15, size: 13 }) + atom(c.x, c.y, 'R³', { r: 15, size: 13 });
     s += atom(n.x, n.y, 'N', { kind: 'warn', size: 13 });
-    s += tg(450, Y - 58, 'lone pair in', 'fg-tag-mut', 'start') + tg(450, Y - 42, 'a p orbital', 'fg-tag-mut', 'start');
+    s += tg(362, Y - 54, 'lone pair in', 'fg-tag-mut', 'end') + tg(362, Y - 38, 'a p orbital', 'fg-tag-mut', 'end');
     s += tg(380, 240, 'flat transition state', 'fg-tag-warn');
     s += tg(380, 258, 'all three groups level with N', 'fg-tag-mut');
 
@@ -435,18 +440,17 @@ FIGURES.push({
   id: 'l-methylpentane',
   lessons: ['stereocenters'],
   alt: 'Skeletal structure of 3-methylpentane with C3 marked. C3 carries an H, a CH3 group, a CH2CH3 branch to the left and a CH2CH3 branch to the right.',
-  viewBox: '0 0 340 170',
+  viewBox: '0 0 340 130',
   build() {
     let s = '';
     s += tg(170, 18, '3-methylpentane');
-    const c = chain([90, 130, 170, 210, 250], 80, 12, true); // C1 high, C3 high
+    const c = chain([90, 130, 170, 210, 250], 86, 12, true); // C1 high, C3 high
     s += bonds(c);
     const me = stub(c[2], 60, 34);
     s += me.s + tg(me.e.x + 8, me.e.y - 6, 'CH₃', 'fg-tag', 'start');
     s += hang(c[2], 120, 'H', { len: 32 });
     s += dot(c[2]) + tg(c[2].x, c[2].y + 24, 'C3', 'fg-tag-mut');
-    s += tg(110, 130, 'CH₂CH₃', 'fg-tag') + tg(230, 130, 'CH₂CH₃', 'fg-tag');
-    s += tg(170, 158, 'the four groups on C3', 'fg-tag-mut');
+    s += tg(110, 116, 'CH₂CH₃', 'fg-tag') + tg(230, 116, 'CH₂CH₃', 'fg-tag');
     return s;
   },
   caption: 'The marked carbon and its four groups.',
@@ -467,21 +471,21 @@ FIGURES.push({
   id: 'l-scan-quiz',
   lessons: ['stereocenters'],
   alt: 'Two copies of the skeletal structure of 4-methylhexan-2-ol. Top copy: C2 is marked; it carries OH, H, a CH3 group and a CH2CH(CH3)CH2CH3 group. Bottom copy: C4 is marked; it carries H, a CH3 group, a CH2CH3 group and a CH2CH(OH)CH3 group.',
-  viewBox: '0 0 340 290',
+  viewBox: '0 0 340 312',
   build() {
     let s = '';
     s += tg(170, 18, '4-methylhexan-2-ol');
     s += tg(12, 40, 'C2: its four groups', 'fg-tag', 'start');
-    let m = methylhexanol(96);
+    let m = methylhexanol(112);
     s += m.s + dot(m.c[1]) + tg(m.c[1].x, m.c[1].y + 24, 'C2', 'fg-tag-mut');
-    s += tg(m.c[0].x, m.c[0].y + 22, 'CH₃');
-    s += tg(206, 136, 'CH₂CH(CH₃)CH₂CH₃');
-    s += rule(20, 150, 320, 150);
-    s += tg(12, 172, 'C4: its four groups', 'fg-tag', 'start');
-    m = methylhexanol(236);
+    s += tg(m.c[0].x - 8, m.c[0].y + 4, 'CH₃', 'fg-tag', 'end');
+    s += tg(206, 152, 'CH₂CH(CH₃)CH₂CH₃');
+    s += rule(20, 166, 320, 166);
+    s += tg(12, 188, 'C4: its four groups', 'fg-tag', 'start');
+    m = methylhexanol(258);
     s += m.s + dot(m.c[3]) + tg(m.c[3].x, m.c[3].y + 24, 'C4', 'fg-tag-mut');
     s += tg(m.me.x + 8, m.me.y - 4, 'CH₃', 'fg-tag', 'start');
-    s += tg(80, 276, 'CH₂CH(OH)CH₃') + tg(246, 276, 'CH₂CH₃');
+    s += tg(88, 298, 'CH₂CH(OH)CH₃') + tg(246, 298, 'CH₂CH₃');
     return s;
   },
   caption: 'Compare the four groups on each marked carbon.',
@@ -493,7 +497,7 @@ FIGURES.push({
   id: 'l-final-ring',
   lessons: ['stereocenters'],
   alt: 'Skeletal structure of 3-methylcyclohexan-1-ol with the ring carbons numbered 1 to 6. C1 at the top carries OH and H. C3 at the lower right carries a CH3 group and an H. Both C1 and C3 are marked.',
-  viewBox: '0 0 340 230',
+  viewBox: '0 0 340 196',
   build() {
     let s = '';
     s += tg(170, 18, '3-methylcyclohexan-1-ol');

@@ -644,12 +644,13 @@
        three times — reading the projection is a different skill from
        assigning a configuration from one, and only the first was
        practised here before. */
-    'fischer': { n:8, steps:{
+    'fischer': { n:15, steps:{
       1:['fischer-reading'],
       2:['fischer-reading'],
-      3:['fischer-reading','enantiomer-vs-diastereomer'],
       5:['fischer-reading','rs-assignment','cip-priority'],
-      7:['fischer-reading','enantiomer-vs-diastereomer'] } },
+      9:['fischer-reading','enantiomer-vs-diastereomer'],
+      12:['fischer-reading'],
+      14:['fischer-reading','enantiomer-vs-diastereomer'] } },
 
     'prochirality': { n:12, steps:{
       2:['topicity-test'],

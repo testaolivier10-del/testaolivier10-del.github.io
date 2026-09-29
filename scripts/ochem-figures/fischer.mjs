@@ -265,7 +265,7 @@ FIGURES.push({
     s += chain(630, 70, 60, ERY.top, ERY.rows, ERY.bottom);
     return s;
   },
-  caption: 'Erythrose, a four-carbon sugar. H sits behind each OH in the side view. Squash the front view flat and it becomes the Fischer projection.',
+  caption: 'Erythrose, a four-carbon sugar. In the side view, each H is hidden directly behind its OH.',
 });
 
 FIGURES.push({
@@ -284,7 +284,7 @@ FIGURES.push({
     s += chain(255, 372, 60, ERY.top, ERY.rows, ERY.bottom);
     return s;
   },
-  caption: 'Erythrose. H sits behind each OH in the side view. Flatten the front view and you get the Fischer projection.',
+  caption: 'Erythrose. In the side view, each H is hidden directly behind its OH.',
 });
 
 /* --------------------------------------------- 3. R or S from the cross --- */

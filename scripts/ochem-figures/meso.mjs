@@ -192,19 +192,21 @@ FIGURES.push({
    mirror plane but there is a center of symmetry, and after a half turn
    about C2-C3, where the plane shows. */
 function zigzagMeso(x0, y0) {
-  const c1 = P(x0, y0), c2 = P(x0 + 46, y0 - 27), c3 = P(x0 + 92, y0), c4 = P(x0 + 138, y0 - 27);
+  const c1 = P(x0, y0), c2 = P(x0 + 58, y0 - 32), c3 = P(x0 + 116, y0), c4 = P(x0 + 174, y0 - 32);
   let s = plain(c2, c1, 21) + atom(c1.x, c1.y, 'COOH', { r: 21 });
   s += sk(c2, c3);
   s += plain(c3, c4, 21) + atom(c4.x, c4.y, 'COOH', { r: 21 });
   const oh2 = P(c2.x, c2.y - 44), oh3 = P(c3.x, c3.y + 44);
   s += stereo('w', c2, oh2, 15) + atom(oh2.x, oh2.y, 'OH', { r: 15, kind: 'hi' });
   s += stereo('h', c3, oh3, 15) + atom(oh3.x, oh3.y, 'OH', { r: 15, kind: 'hi' });
-  s += T(c2.x + 14, c2.y + 22, 'S', 'fg-tag-good');
-  s += T(c3.x - 14, c3.y - 12, 'R', 'fg-tag-good');
-  s += T(c2.x - 16, c2.y - 6, 'C3', 'fg-tag', 'end');
-  s += T(c3.x + 16, c3.y + 16, 'C2', 'fg-tag', 'start');
+  s += T(c2.x, c2.y + 24, 'S', 'fg-tag-good');
+  s += T(c3.x, c3.y - 14, 'R', 'fg-tag-good');
+  s += T(c2.x - 14, c2.y - 12, 'C3', 'fg-tag', 'end');
+  s += T(c3.x + 16, c3.y + 18, 'C2', 'fg-tag', 'start');
   const mid = P((c2.x + c3.x) / 2, (c2.y + c3.y) / 2);
   s += dot(mid);
+  s += dashLine(P(mid.x - 1, mid.y + 6), P(mid.x - 14, mid.y + 72), 'fg-dash');
+  s += T(mid.x - 34, mid.y + 88, 'center of symmetry', 'fg-tag');
   molStart('meso-tartaric zigzag');
   const i2 = A('C', c2), i3 = A('C', c3);
   B(i2, i3);
@@ -223,10 +225,7 @@ FIGURES.push({
   build() {
     let s = '';
     s += T(150, 24, 'zigzag: no mirror plane in view', 'fg-tag-warn');
-    const z = zigzagMeso(80, 150);
-    s += z.s;
-    s += T(z.mid.x + 8, z.mid.y + 56, 'center of symmetry', 'fg-tag');
-    s += dashLine(P(z.mid.x + 2, z.mid.y + 5), P(z.mid.x + 6, z.mid.y + 44), 'fg-dash');
+    s += zigzagMeso(62, 150).s;
     s += arrow(P(292, 128), P(430, 128));
     s += T(361, 110, 'turn C2 half a turn', 'fg-tag');
     s += T(361, 150, 'about the C2–C3 bond', 'fg-tag');
@@ -235,7 +234,7 @@ FIGURES.push({
     s += T(380, 268, 'the same molecule, (2R,3S), in two conformations', 'fg-tag');
     return s;
   },
-  caption: 'Follow the OH on C2: on a hash below the chain at the left, on a wedge above it at the right. Nothing else about C2 has changed.',
+  caption: 'Follow the OH on C2: on a hash below the chain at the left, on a wedge above it at the right. C2 is R in both drawings, because turning about a single bond never changes a configuration.',
 });
 FIGURES.push({
   id: 'l-meso-conformations',
@@ -245,11 +244,9 @@ FIGURES.push({
   build() {
     let s = '';
     s += T(170, 20, 'zigzag: no mirror plane in view', 'fg-tag-warn');
-    const z = zigzagMeso(101, 110);
-    s += z.s;
-    s += T(170, 190, 'the dot is a center of symmetry', 'fg-tag');
-    s += arrow(P(170, 204), P(170, 250));
-    s += T(182, 226, 'turn C2 half a turn', 'fg-tag', 'start');
+    s += zigzagMeso(83, 126).s;
+    s += arrow(P(170, 212), P(170, 254));
+    s += T(182, 238, 'turn C2 half a turn', 'fg-tag', 'start');
     s += T(170, 282, 'lined up: the mirror plane shows', 'fg-tag-good');
     s += tart(170, 380, 'meso', { plane: 'good' });
     return s;
@@ -566,8 +563,8 @@ function brRow(y, trans) {
   s += T(464, y - 12, 'turn C3', 'fg-tag');
   s += T(464, y + 22, 'half a turn', 'fg-tag');
   const turned = trans
-    ? { m3: 30, br3: 'w', br3deg: 255, rs: ['R', 'S'], plane: true, check: 'Br2 trans turned' }
-    : { m3: 330, br3: 'w', br3deg: 255, rs: ['R', 'R'], check: 'Br2 cis turned' };
+    ? { m3: 30, br3: 'w', br3deg: 255, rs: ['S', 'R'], plane: true, check: 'Br2 trans turned' }
+    : { m3: 330, br3: 'w', br3deg: 255, rs: ['S', 'S'], check: 'Br2 cis turned' };
   s += dibromide(592, y, turned);
   return s;
 }
@@ -576,7 +573,7 @@ FIGURES.push({
   section: 'meso',
   anchor: 'on but-2-ene that one fact decides the product.</p>',
   viewBox: '0 0 760 470',
-  alt: 'Two rows. Top row: trans-but-2-ene, flat in the page, adds Br2 anti. As the product forms, the Br on C2 is on a wedge (front face) and the Br on C3 on a hash (back face), with every other group where the alkene had it. Turning C3 half a turn about the C2–C3 bond brings its Br to a wedge and its methyl up beside the C2 methyl; a dashed mirror plane then cuts the C2–C3 bond in half, and the carbons are labeled R and S: meso-2,3-dibromobutane. Bottom row: cis-but-2-ene gives the same kind of product, but after the same turn the C3 methyl points down while the C2 methyl points up, both carbons are R, and there is no mirror plane: (2R,3R), formed together with an equal amount of its enantiomer (2S,3S).',
+  alt: 'Two rows. Top row: trans-but-2-ene, flat in the page, adds Br2 anti. As the product forms, the Br on C2 is on a wedge (front face) and the Br on C3 on a hash (back face), with every other group where the alkene had it. Turning C3 half a turn about the C2–C3 bond brings its Br to a wedge and its methyl up beside the C2 methyl; a dashed mirror plane then cuts the C2–C3 bond in half, and the carbons are labeled S and R: meso-2,3-dibromobutane. Bottom row: cis-but-2-ene gives the same kind of product, but after the same turn the C3 methyl points down while the C2 methyl points up, both carbons are S, and there is no mirror plane: (2S,3S), formed together with an equal amount of its enantiomer (2R,3R).',
   build() {
     let s = '';
     s += rich(20, 24, ['*trans', ' alkene'], 'fg-tag-good', 'start');
@@ -585,7 +582,7 @@ FIGURES.push({
     s += rule(20, 228, 740, 228);
     s += rich(20, 254, ['*cis', ' alkene'], 'fg-tag-warn', 'start');
     s += brRow(346, false);
-    s += T(592, 418, '(2R,3R), and (2S,3S) in equal amount:', 'fg-tag-warn');
+    s += T(592, 418, '(2S,3S), and (2R,3R) in equal amount:', 'fg-tag-warn');
     s += T(592, 436, 'a racemic mixture', 'fg-tag-warn');
     return s;
   },

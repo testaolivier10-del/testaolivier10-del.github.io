@@ -224,7 +224,6 @@ FIGURES.push({
     const row = (y, name, verdict, good, g, lines) => {
       s += panel(40, y + 22, 260, 124, { kind: good ? 'good' : 'warn' });
       s += tagT(170, y + 12, name + ': ' + verdict, good ? 'fg-tag-good' : 'fg-tag-warn');
-      s += tagT(292, y + 140, 'the page', 'fg-tag-mut', 'end');
       s += tet(P(170, y + 72), [
         { deg: 145, t: 'Cl', hi: 'warn' }, { deg: 35, t: 'H' },
         { deg: 240, t: g[0], kind: 'wedge', hi: 'hi', len: 52 },
@@ -233,9 +232,9 @@ FIGURES.push({
       lines.forEach((l, i) => { s += tagT(170, y + 166 + i * 16, l); });
     };
     row(8, '2-chloropropane', 'achiral', true, ['CH₃', 'CH₃'],
-      ['the page: a plane of symmetry']);
+      ['the page is a plane of symmetry']);
     row(196, '2-chlorobutane', 'chiral', false, ['CH₃', 'CH₂CH₃'],
-      ['the page: not a plane of symmetry']);
+      ['the page is not a plane of symmetry']);
     return s;
   },
   caption: 'In each drawing, find the group that sits on the dashed wedge and compare it with the group on the solid wedge.',
@@ -268,7 +267,7 @@ FIGURES.push({
     s += tagT(170, 400, 'carries one gauche drawing into the other.');
     return s;
   },
-  caption: 'Top: follow the dashed line through both methyls. Bottom: the two gauche drawings are mirror images, and neither has a plane.',
+  caption: 'Top: follow the dashed line through both methyls. Bottom: find the back-carbon methyl in each drawing.',
 });
 
 /* ----------------------------------------------- center-of-symmetry --- */
@@ -316,22 +315,29 @@ FIGURES.push({
   id: 'allene-pair',
   section: 'chirality',
   lessons: ['chirality'],
-  alt: 'Penta-2,3-diene, CH3–CH=C=CH–CH3, with its three chain carbons in a straight line. Top: the left carbon carries CH3 and H in the plane of the page; the right carbon carries CH3 on a solid wedge and H on a dashed wedge, in a plane at right angles to the page. Middle: the mirror image, the same drawing with the wedge and the dashed wedge swapped on the right carbon. Bottom: the orbitals behind the twist. The first pi bond is made from p orbitals pointing out of the page on the left and middle carbons; the second is made from p orbitals lying in the page, pointing up and down, on the middle and right carbons.',
-  viewBox: '0 0 340 440',
+  alt: 'Penta-2,3-diene, CH3–CH=C=CH–CH3, with its three chain carbons in a straight line. Top: the left carbon carries CH3 and H in the plane of the page; the right carbon carries CH3 on a solid wedge and H on a dashed wedge, in a plane at right angles to the page. Second: the mirror image, the same drawing with the wedge and the dashed wedge swapped on the right carbon. Third: the mirror image turned half a turn about the C=C=C axis; its right end now matches the first drawing, but its left end has H up and CH3 down, the reverse of the first. Bottom: the orbitals behind the twist. The first pi bond is made from p orbitals pointing out of the page on the left and middle carbons; the second is made from p orbitals lying in the page, pointing up and down, on the middle and right carbons.',
+  viewBox: '0 0 340 614',
   build() {
     let s = '';
     s += tagT(170, 20, 'penta-2,3-diene: one form');
     s += allene(170, 76, ['CH₃', 'H'], ['CH₃', 'H', 'wedge', 'hash']);
     s += tagT(170, 146, 'its mirror image: wedge and dash swapped');
     s += allene(170, 200, ['CH₃', 'H'], ['CH₃', 'H', 'hash', 'wedge']);
-    s += `<line class="fg-rule" x1="20" y1="252" x2="320" y2="252"></line>`;
-    s += tagT(170, 274, 'why the two ends are twisted');
-    s += allene(170, 340, ['CH₃', 'H'], ['CH₃', 'H', 'wedge', 'hash'], { orbitals: true });
-    s += tagT(170, 408, 'left π bond: p orbitals point out of the page');
-    s += tagT(170, 424, 'right π bond: p orbitals lie in the page');
+    s += tagT(170, 270, 'the mirror image, turned half a turn');
+    s += tagT(170, 286, 'about the C=C=C axis');
+    s += allene(170, 336, ['H', 'CH₃'], ['CH₃', 'H', 'wedge', 'hash']);
+    s += tagT(170, 398, 'Right end lines up. Left end: CH₃ and H swapped.', 'fg-tag-warn');
+    s += `<line class="fg-rule" x1="20" y1="418" x2="320" y2="418"></line>`;
+    s += tagT(170, 440, 'why the two ends are twisted');
+    s += allene(170, 516, ['CH₃', 'H'], ['CH₃', 'H', 'wedge', 'hash'], { orbitals: true });
+    s += `<line class="fg-arrow-mut" x1="114" y1="498" x2="104" y2="480"></line>`;
+    s += tagT(20, 458, 'p orbital pointing', 'fg-tag-mut', 'start');
+    s += tagT(20, 473, 'at you (seen end-on)', 'fg-tag-mut', 'start');
+    s += tagT(170, 584, 'left π bond: p orbitals point out of the page');
+    s += tagT(170, 600, 'right π bond: p orbitals lie in the page');
     return s;
   },
-  caption: 'Top two: compare the right-hand ends. Bottom: the middle carbon uses two p orbitals at right angles, one for each π bond.',
+  caption: 'Top: compare the third drawing with the first, end by end. Bottom: the middle carbon uses two p orbitals at right angles, one for each π bond.',
 });
 
 /* --------------------------------------------------- allene-achiral --- */
@@ -390,7 +396,7 @@ FIGURES.push({
   id: 'biaryl-pair',
   section: 'chirality',
   lessons: ['chirality'],
-  alt: 'The biaryl 6,6′-dinitrobiphenyl-2,2′-dicarboxylic acid drawn twice, stacked. Two benzene rings are joined by a single bond. The left ring lies in the page, with NO2 and CO2H on the two carbons next to the joint. The right ring is drawn in perspective, at right angles to the page; its two groups next to the joint point one toward you on a solid wedge and one away on a dashed wedge. Top: CO2H on the wedge and NO2 on the dashed wedge. Bottom, the mirror image: NO2 on the wedge and CO2H on the dashed wedge.',
+  alt: 'The biaryl 6,6′-dinitro[1,1′-biphenyl]-2,2′-dicarboxylic acid drawn twice, stacked. Two benzene rings are joined by a single bond. The left ring lies in the page, with NO2 and CO2H on the two carbons next to the joint. The right ring is drawn in perspective, at right angles to the page; its two groups next to the joint point one toward you on a solid wedge and one away on a dashed wedge. Top: CO2H on the wedge and NO2 on the dashed wedge. Bottom, the mirror image: NO2 on the wedge and CO2H on the dashed wedge.',
   viewBox: '0 0 340 386',
   build() {
     let s = '';
