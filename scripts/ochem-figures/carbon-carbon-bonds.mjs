@@ -227,7 +227,7 @@ FIGURES.push({
     s += tag(170, 22, 'four carbons each, joined differently', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Same count, different skeleton: turning one into the other means changing a C–C bond.',
+  caption: 'Count the carbons in each, then compare how they are joined.',
 });
 
 /* ==================================================== one-carbon extensions ===
