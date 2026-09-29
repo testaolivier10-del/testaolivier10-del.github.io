@@ -164,9 +164,13 @@
       9:['lipid-ester'],
       13:['lipid-ester'] } },
 
-    'nucleic-acids': { n:8, steps:{
-      2:['nucleotide-assembly'], 3:['nucleotide-assembly'], 4:['nucleotide-assembly'],
-      6:['nucleotide-assembly','sugar-ring'], 7:['nucleotide-assembly'] } },
+    'nucleic-acids': { n:12, steps:{
+      3:['nucleotide-assembly'],
+      4:['nucleotide-assembly'],
+      5:['nucleotide-assembly'],
+      8:['nucleotide-assembly'],
+      9:['nucleotide-assembly','sugar-ring'],
+      11:['nucleotide-assembly'] } },
 
     'organometallic-bonding': { n:8, steps:{
       2:['polarity-reversal'], 3:['polarity-reversal'], 4:['polarity-reversal'],

@@ -27,6 +27,13 @@ const itext = (x, y, it, rest, cls = 'fg-tag', anchor = 'middle') =>
 /* Disc radius that fits a group label. */
 const gr = (t) => Math.max(12, Math.round(3.3 * [...t].length + 7));
 const Cr = 13;
+/* A group label too long for a disc, in a rounded box. */
+const pillW = (t) => Math.round(6.2 * [...t].length + 14);
+const pill = (x, y, t, hi) => {
+  const w = pillW(t);
+  return `<rect class="${hi ? 'fg-atom-hi' : 'fg-atom'}" x="${r2(x - w / 2)}" y="${r2(y - 13)}" width="${w}" height="26" rx="13"></rect>` +
+    atom(x, y, t, { kind: 'point' });
+};
 
 /* An alkene with the C=C horizontal. `g` has up to four groups: lu and ld
    on the left carbon (up-left, down-left), ru and rd on the right carbon.
@@ -41,13 +48,18 @@ function alkene(cx, cy, g, o = {}) {
     const grp = g[k];
     if (!grp) continue;
     const [c, deg, anchor] = spots[k];
-    const r = gr(grp.t);
+    const long = [...grp.t].length > 3;
+    const r = long ? 15 : gr(grp.t);
     const len = grp.len ?? (Cr + r + (o.gap ?? 20));
     const p = at(c, deg, len);
     s += bond(c, p, { rFrom: Cr, rTo: r, cls: grp.pri === 'hi' ? 'fg-bond-hi' : 'fg-bond' });
-    s += atom(p.x, p.y, grp.t, { r, kind: grp.pri === 'hi' ? 'hi' : 'plain' });
+    let half = r;
+    if (long) {
+      half = pillW(grp.t) / 2;
+      s += pill(p.x, p.y, grp.t, grp.pri === 'hi');
+    } else s += atom(p.x, p.y, grp.t, { r, kind: grp.pri === 'hi' ? 'hi' : 'plain' });
     if (grp.pri) {
-      const dx = anchor === 'end' ? -(r + 5) : r + 5;
+      const dx = anchor === 'end' ? -(half + 5) : half + 5;
       s += text(p.x + dx, p.y + 4, grp.pri === 'hi' ? 'higher' : 'lower', { cls: grp.pri === 'hi' ? 'fg-tag-good' : 'fg-tag-mut', anchor });
     }
   }
@@ -287,20 +299,20 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-ring-flip',
   lessons: ['cis-trans-ez'],
-  viewBox: '0 0 340 452',
+  viewBox: '0 0 340 500',
   alt: 'cis-1,2-dimethylcyclohexane in two chairs, one above the other, with ring-flip arrows between them. In the upper chair the C1 methyl is axial and points up and the C2 methyl is equatorial and points up. In the lower, flipped chair the C1 methyl is equatorial and up and the C2 methyl is axial and up.',
   build() {
     let s = '';
     s += itext(170, 18, 'cis', '-1,2-dimethylcyclohexane', 'fg-tag-good');
     const A = methylChair(170, 96, 0.78, false, CIS12, TAGS);
     s += A.s;
-    A.read.forEach(([n, pos, face], j) => { s += text(170, 158 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
-    s += arrow(P(150, 196), P(150, 238));
-    s += arrow(P(190, 238), P(190, 196), { muted: true });
-    s += text(206, 222, 'ring flip', { cls: 'fg-tag', anchor: 'start' });
-    const B = methylChair(170, 318, 0.78, true, CIS12, TAGS_F);
+    A.read.forEach(([n, pos, face], j) => { s += text(170, 178 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
+    s += arrow(P(150, 222), P(150, 262));
+    s += arrow(P(190, 262), P(190, 222), { muted: true });
+    s += text(206, 246, 'ring flip', { cls: 'fg-tag', anchor: 'start' });
+    const B = methylChair(170, 360, 0.78, true, CIS12, TAGS_F);
     s += B.s;
-    B.read.forEach(([n, pos, face], j) => { s += text(170, 408 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
+    B.read.forEach(([n, pos, face], j) => { s += text(170, 462 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
     return s;
   },
   caption: 'Axial and equatorial swap on the flip. Both methyls point up in both chairs.',
@@ -310,14 +322,15 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-cis14-chair',
   lessons: ['cis-trans-ez'],
-  viewBox: '0 0 340 220',
+  viewBox: '0 0 340 224',
   alt: 'cis-1,4-dimethylcyclohexane in one chair. The methyl on C1, at the right end of the chair, is axial and points up. The methyl on C4, at the left end, is equatorial and angles up.',
   build() {
     let s = '';
     const T = { C1: { x: 8, y: 22, a: 'start' }, C4: { x: -2, y: 24, a: 'middle' } };
     const A = methylChair(170, 120, 0.9, false, [[0, 'up', 'C1'], [3, 'up', 'C4']], T);
     s += A.s;
-    s += text(170, 206, 'C1: axial, up    C4: equatorial, up', { cls: 'fg-tag' });
+    s += text(170, 196, 'C1: axial, up', { cls: 'fg-tag' });
+    s += text(170, 214, 'C4: equatorial, up', { cls: 'fg-tag' });
     return s;
   },
   caption: 'One chair of the cis compound, before the flip.',
@@ -330,7 +343,7 @@ FIGURES.push({
   section: 'cis-trans-ez',
   lessons: ['cis-trans-ez'],
   anchor: 'So &ldquo;cis or trans?&rdquo; has no answer.</p>',
-  viewBox: '0 0 340 450',
+  viewBox: '0 0 340 482',
   alt: 'Three alkenes stacked, each with the double bond horizontal. First, cis-but-2-ene: each alkene carbon carries one hydrogen and one methyl, and the two methyls are both above the double bond. Second, trans-but-2-ene: the left methyl is above and the right methyl below. Third, 3-methylpent-2-ene: the left carbon carries a methyl and a hydrogen, but the right carbon carries a methyl and an ethyl group and no hydrogen, so neither cis nor trans can be assigned.',
   build() {
     let s = '';
@@ -338,11 +351,11 @@ FIGURES.push({
     s += itext(170, 130, 'cis', '-but-2-ene: methyls on the same side', 'fg-tag-good');
     s += rule(10, 144, 330, 144);
     s += alkene(170, 212, { lu: { t: 'CH₃' }, ld: { t: 'H' }, ru: { t: 'H' }, rd: { t: 'CH₃' } });
-    s += itext(170, 276, 'trans', '-but-2-ene: methyls on opposite sides', 'fg-tag-good');
-    s += rule(10, 290, 330, 290);
-    s += alkene(170, 360, { lu: { t: 'CH₃' }, ld: { t: 'H' }, ru: { t: 'CH₃' }, rd: { t: 'CH₂CH₃' } });
-    s += text(170, 424, '3-methylpent-2-ene: no H on the right carbon', { cls: 'fg-tag-warn' });
-    s += text(170, 442, 'so neither cis nor trans fits', { cls: 'fg-tag-warn' });
+    s += itext(170, 286, 'trans', '-but-2-ene: methyls on opposite sides', 'fg-tag-good');
+    s += rule(10, 300, 330, 300);
+    s += alkene(170, 374, { lu: { t: 'CH₃' }, ld: { t: 'H' }, ru: { t: 'CH₃' }, rd: { t: 'CH₂CH₃' } });
+    s += text(170, 456, '3-methylpent-2-ene: no H on the right carbon', { cls: 'fg-tag-warn' });
+    s += text(170, 474, 'so neither cis nor trans fits', { cls: 'fg-tag-warn' });
     return s;
   },
   caption: 'Count the hydrogens on each alkene carbon. The first two drawings have one per carbon. The third has none on the right-hand carbon.',
@@ -478,7 +491,7 @@ FIGURES.push({
     s += v.s;
     s += text(v.A.x, 164, '(C, C, H)', { cls: 'fg-tag' });
     s += text(v.B.x + 8, 164, '(C, H, H)', { cls: 'fg-tag-good' });
-    s += text(300, 64, 'duplicates', { cls: 'fg-tag-warn', anchor: 'middle' });
+    s += text(252, 52, 'duplicates', { cls: 'fg-tag-warn', anchor: 'start' });
     s += rule(10, 180, 330, 180);
     s += text(170, 202, 'isopropyl, –CH(CH₃)₂', { cls: 'fg-tag' });
     const A = P(146, 270);
@@ -513,7 +526,7 @@ FIGURES.push({
     const v = vinylGroup(92, 90);
     s += v.s;
     s += text(v.A.x, 164, '(C, C, H)', { cls: 'fg-tag-good' });
-    s += text(300, 64, 'duplicates', { cls: 'fg-tag-warn', anchor: 'middle' });
+    s += text(252, 52, 'duplicates', { cls: 'fg-tag-warn', anchor: 'start' });
     s += rule(10, 180, 330, 180);
     s += text(170, 202, 'ethyl, –CH₂CH₃', { cls: 'fg-tag' });
     const A = P(146, 240), B = P(226, 240);
@@ -579,7 +592,7 @@ function miniAlkene(cx, cy, lu, ld, ru, rd, hiKind) {
    cis C=C the turn repeats, which bends the chain. */
 function chainPts(x0, y0, n, db, cis, L = 24) {
   const pts = [P(x0, y0)];
-  let head = 30, turn = -60;
+  let head = 30, turn = 60;
   for (let i = 0; i < n; i++) {
     const p = pts[pts.length - 1];
     pts.push(at(p, head, L));
@@ -603,7 +616,7 @@ FIGURES.push({
   section: 'cis-trans-ez',
   lessons: ['cis-trans-ez'],
   anchor: 'so trans has no net dipole.</p>',
-  viewBox: '0 0 340 520',
+  viewBox: '0 0 340 580',
   alt: 'Three rows. Row one: cis-but-2-ene with its two methyl groups close together above the double bond, tagged crowded, beside trans-but-2-ene with its methyls on opposite sides, tagged apart; trans is lower in energy by about 1 kcal/mol. Row two: cis-1,2-dichloroethene with both chlorines above the double bond and an arrow for the net dipole pointing up between them, beside trans-1,2-dichloroethene, whose two C–Cl dipoles cancel. Row three: a long carbon chain with a trans double bond in the middle runs nearly straight, while the same chain with a cis double bond bends at the double bond.',
   build() {
     let s = '';
@@ -618,21 +631,21 @@ FIGURES.push({
     s += rule(10, 186, 330, 186);
 
     s += text(170, 208, 'polarity: C–Cl dipoles add or cancel', { cls: 'fg-tag' });
-    s += miniAlkene(88, 282, 'Cl', 'H', 'Cl', 'H');
-    s += arrow(P(88, 274), P(88, 232), { size: 7 });
-    s += text(88, 334, 'net dipole', { cls: 'fg-tag-warn' });
-    s += miniAlkene(252, 282, 'Cl', 'H', 'H', 'Cl');
-    s += text(252, 334, 'no net dipole', { cls: 'fg-tag-good' });
-    s += itext(88, 352, 'cis', '', 'fg-tag') + itext(252, 352, 'trans', '', 'fg-tag');
-    s += rule(10, 366, 330, 366);
+    s += miniAlkene(88, 276, 'Cl', 'H', 'Cl', 'H');
+    s += arrow(P(88, 268), P(88, 228), { size: 7 });
+    s += miniAlkene(252, 276, 'Cl', 'H', 'H', 'Cl');
+    s += itext(88, 344, 'cis', '', 'fg-tag') + itext(252, 344, 'trans', '', 'fg-tag');
+    s += text(88, 362, 'net dipole', { cls: 'fg-tag-warn' });
+    s += text(252, 362, 'no net dipole', { cls: 'fg-tag-good' });
+    s += rule(10, 376, 330, 376);
 
-    s += text(170, 388, 'shape: a cis C=C bends a long chain', { cls: 'fg-tag' });
-    const t = chainPts(40, 426, 10, 4, false);
+    s += text(170, 398, 'shape: a cis C=C bends a long chain', { cls: 'fg-tag' });
+    const t = chainPts(60, 440, 10, 4, false, 22);
     s += drawChain(t, 4);
-    s += text(300, 420, 'trans', { cls: 'fg-tag', anchor: 'start' });
-    const c = chainPts(40, 480, 10, 4, true);
+    s += text(t[t.length - 1].x + 12, 438, 'trans', { cls: 'fg-tag', anchor: 'start' });
+    const c = chainPts(60, 560, 10, 4, true, 22);
     s += drawChain(c, 4);
-    s += text(40, 512, 'cis', { cls: 'fg-tag', anchor: 'start' });
+    s += text(c[5].x + 20, 566, 'cis', { cls: 'fg-tag', anchor: 'start' });
     return s;
   },
   caption: 'Row by row: where the two methyls sit, which way the two C–Cl bonds point, and how straight each chain runs.',

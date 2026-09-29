@@ -142,13 +142,13 @@ document.addEventListener('DOMContentLoaded', function(){
      is to find a difference in every row. */
   var CASES = [
     { id:'n1', t:'The sugar carries an <b>OH at C2&prime;</b>', right:'rna',
-      why:'RNA only. That missing 2&prime; OH is what deoxy in deoxyribose means, and it is the single structural difference between the two sugars.' },
+      why:'RNA only. Deoxyribose is the sugar without this oxygen, and the 2&prime; OH is the only difference between the two sugars.' },
     { id:'n2', t:'<b>Thymine</b> is one of the four bases', right:'dna',
       why:'DNA only. RNA uses uracil, which is thymine without the methyl group. The other three bases — adenine, guanine, cytosine — are common to both.' },
     { id:'n3', t:'The backbone is a chain of <b>phosphodiesters</b>', right:'both',
-      why:'Both. One phosphate esterified to two different sugars, the 3&prime; OH of one and the 5&prime; OH of the next, is a phosphodiester — and it is the same linkage in either polymer.' },
+      why:'Both. In either polymer, one phosphate forms esters with two sugars, the 3&prime; OH of one and the 5&prime; OH of the next. That is a phosphodiester.' },
     { id:'n4', t:'The base is attached at the <b>anomeric carbon</b>', right:'both',
-      why:'Both. In each case the base&rsquo;s nitrogen has displaced the anomeric OH to give an N-glycoside, which is an acetal made with nitrogen instead of a second oxygen.' }
+      why:'Both. In each polymer a nitrogen of the base takes the place of the anomeric OH, giving an N-glycosidic bond: a glycosidic bond made with nitrogen instead of a second oxygen.' }
   ];
   var OPTS = [ { k:'dna', l:'DNA only' }, { k:'rna', l:'RNA only' }, { k:'both', l:'Both' } ];
 
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'G and C also hydrogen bond to the phosphates of the backbone'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Melting separates the strands, so it measures what holds them together. A G&ndash;C pair has three hydrogen bonds to A&ndash;T&rsquo;s two, and stacks containing G&ndash;C pairs are also more stable. Note the trap in the first option: C is a pyrimidine, and every rung is purine plus pyrimidine.',
+        correctFeedback: 'Correct. Melting separates the strands, so it measures what holds them together. A G&ndash;C pair has three hydrogen bonds to A&ndash;T&rsquo;s two, and stacks containing G&ndash;C pairs are also more stable. Note the trap in the option calling G and C both purines: C is a pyrimidine, and every rung is purine plus pyrimidine.',
         wrongFeedback: 'Separating the strands breaks only what holds them together: the hydrogen bonds across each pair and the stacking between pairs. Compare G&ndash;C with A&ndash;T on both counts.'
       },
       {

@@ -153,7 +153,7 @@ function glcSubs(anomer, extra = {}) {
     4: { down: 'OH' },
     5: { up: 'CH₂OH', upLen: 16 },
   };
-  if (anomer === 'b') s[1] = { up: 'OH' };
+  if (anomer === 'b') s[1] = { up: 'OH', upDx: 10 };
   if (anomer === 'a') s[1] = { down: 'OH' };
   for (const [k, v] of Object.entries(extra)) s[k] = { ...(s[k] || {}), ...v };
   return s;
@@ -232,7 +232,7 @@ FIGURES.push({
   viewBox: '0 0 340 346',
   alt: 'Fischer projections of D-glucose and D-fructose side by side, with carbons numbered 1 to 6 down a shared middle column. Glucose has CHO at C1; fructose has CH2OH at C1 and a C=O at C2. From C3 down the two chains are the same: OH left at C3, right at C4, right at C5. The C5 row is shaded, with its OH on the right in both.',
   build: fischerPair,
-  caption: 'Glucose keeps its C=O at the end of the chain and fructose keeps it at C2. Below C2 the two are identical, and the shaded row is the one that sets D.',
+  caption: 'Glucose has its C=O at the end of the chain; fructose has it at C2. Below C2 the two are identical, and the shaded row is the one that sets D.',
 });
 
 /* ============================================================ fig 2 ===
@@ -273,7 +273,7 @@ function haworthSteps(layout) {
 FIGURES.push({
   id: 'fischer-haworth',
   section: 'carbohydrates',
-  anchor: 'wedges and dashes back in <a class="chapter-ref" href="/ochem/learn.html#m-stereochemistry">Stereochemistry</a>.</p>',
+  anchor: 'replaced wedges and dashes in <a class="chapter-ref" href="/ochem/learn.html#m-stereochemistry">Stereochemistry</a>.</p>',
   viewBox: '0 0 760 590',
   alt: 'Four panels. 1: the Fischer projection of D-glucose, carbons numbered 1 to 6, with OH right at C2, left at C3, right at C4 and right at C5. 2: the same chain tipped onto its side and curled into the shape of a ring, with CHO at C1 on the right; the OH groups on C2 and C4 point down, the C3 OH points up, and C5 has H up and OH down, with C6 (CH2OH) sitting where the ring oxygen will go. 3: C5 turned, so its OH sits in the ring-oxygen position facing C1 and its CH2OH points up. 4: the closed ring, beta-D-glucopyranose, with the ring oxygen at the back right, the C1 OH up, C2 OH down, C3 OH up, C4 OH down and CH2OH up.',
   build: () => haworthSteps({
@@ -283,7 +283,7 @@ FIGURES.push({
       { x: 10, y: 300, w: 364, h: 284 }, { x: 386, y: 300, w: 364, h: 284 },
     ],
   }),
-  caption: 'The same molecule at every stage. Follow the teal OH on C5: it points down after the tip, and turning C5 swings it into the ring and sends the CH₂OH up. Hydrogens on the ring carbons are left off except at C5.',
+  caption: 'The same molecule at every stage. Follow the teal OH on C5: it points down after the tip, and turning C5 swings it into the ring and sends the CH₂OH up. The H drawn at C5 is the only ring hydrogen shown.',
 });
 FIGURES.push({
   id: 'l-fischer-haworth',
@@ -336,7 +336,7 @@ function anomer(cx, cy, k, which, o = {}) {
 FIGURES.push({
   id: 'carb-anomers',
   section: 'carbohydrates',
-  anchor: 'into the chair drawing, where up and down on the page stop being reliable.</p>',
+  anchor: 'where up and down on the page are less reliable.</p>',
   viewBox: '0 0 760 330',
   alt: 'Alpha-D-glucopyranose on the left, the open-chain form in the middle, and beta-D-glucopyranose on the right, joined by equilibrium arrows. In the middle, the chain is curled into the shape of the ring: a curved arrow runs from a lone pair on the C5 oxygen to the aldehyde carbon C1, and a second moves the C=O pi bond onto the aldehyde oxygen. In alpha the C1 OH points down, opposite the CH2OH; in beta it points up, on the same side as the CH2OH. Glucose in water is about 36 percent alpha, 64 percent beta and well under 0.1 percent open chain.',
   build() {
@@ -387,7 +387,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'carb-galactose',
   section: 'carbohydrates',
-  anchor: '<p>The order matters more than it looks.',
+  anchor: 'You only need to remember that β matches the CH<sub>2</sub>OH.</p>\n</div>',
   viewBox: '0 0 340 264',
   alt: 'Beta-D-galactopyranose as a Haworth projection: ring oxygen at the back right, C1 OH up, C2 OH down, C3 OH up, C4 OH up (highlighted), and CH2OH up on C5.',
   build() {
@@ -464,7 +464,7 @@ function chairGlc(cx, cy, k, anomer) {
 FIGURES.push({
   id: 'carb-chair',
   section: 'carbohydrates',
-  anchor: 'a conformational argument from <a class="chapter-ref" href="/ochem/learn.html#m-alkanes-conformations">Alkanes &amp; Conformations</a> rather than a new one.</p>',
+  anchor: 'so β is the major anomer.</p>',
   viewBox: '0 0 760 300',
   alt: 'Two chairs of D-glucopyranose with the ring oxygen at the back right and C1 at the right-hand tip. Left, beta: the four OH groups and the CH2OH all point outward, equatorial, and every axial position carries H. Right, alpha: the same except that the C1 OH is axial, pointing straight down, and C1 has H equatorial.',
   build() {
@@ -479,7 +479,7 @@ FIGURES.push({
     s += tg(567, 280, 'one OH axial, beside two axial H', 'fg-tag-mut');
     return s;
   },
-  caption: 'The coral dot is C1. Axial bonds point straight up or down; the gray sticks carry the hydrogens.',
+  caption: 'The coral dot is C1. Axial bonds point straight up or down; the hydrogens sit on the gray sticks.',
 });
 FIGURES.push({
   id: 'l-carb-chair',
@@ -519,7 +519,7 @@ function testPair(pl, pr, k) {
 FIGURES.push({
   id: 'anomeric-test',
   section: 'carbohydrates',
-  anchor: 'the sugar is <b>non-reducing</b>.</li>\n</ul>',
+  anchor: 'so the ring stays shut.</li>\n</ul>',
   viewBox: '0 0 760 280',
   alt: 'Left: beta-D-glucopyranose, whose anomeric carbon C1 carries the ring oxygen and an OH, a hemiacetal; its ring can open to the aldehyde, so it tests positive. Right: methyl beta-D-glucopyranoside, whose C1 carries the ring oxygen and an OCH3, an acetal; its ring stays shut, so it tests negative.',
   build: () => testPair({ x: 10, y: 8, w: 366, h: 264 }, { x: 384, y: 8, w: 366, h: 264 }, 0.9),
@@ -578,7 +578,7 @@ FIGURES.push({
   section: 'carbohydrates',
   anchor: '<p>The reasoning never mentions sweetness, size or source.',
   viewBox: '0 0 760 300',
-  alt: 'Left: maltose. Two glucose rings; C1 of the left ring points down to a bridging oxygen, which bonds up to C4 of the right ring. The right ring keeps a free OH on its C1. Right: sucrose. C1 of a glucose ring points down to a bridging oxygen, which bonds up to C2 of a five-membered fructose ring drawn turned end for end, with its ring oxygen at the back, a CH2OH up on C2 and a CH2OH down on C5. Neither anomeric carbon has a free OH.',
+  alt: 'Left: maltose. Two glucose rings; C1 of the left ring points down to a bridging oxygen, which bonds up to C4 of the right ring. The right ring keeps a free OH on its C1. Right: sucrose. C1 of a glucose ring points down to a bridging oxygen, which bonds up to C2 of a five-membered fructose ring drawn turned over, with its ring oxygen at the back, a CH2OH up on C2 and a CH2OH down on C5. Neither anomeric carbon has a free OH.',
   build() {
     let s = '';
     s += panel(8, 8, 368, 284, { kind: 'good' });
@@ -598,7 +598,7 @@ FIGURES.push({
     s += tg(568, 280, 'non-reducing', 'fg-tag-warn');
     return s;
   },
-  caption: 'Coral dots mark the anomeric carbons and coral fills the bridging oxygen. In sucrose the fructose ring is drawn turned end for end, so its C2 can reach the bridge; that turn also sends its two CH₂OH groups the opposite way from an unturned drawing.',
+  caption: 'Coral dots mark the anomeric carbons and coral fills the bridging oxygen. In sucrose the fructose ring is turned over, left to right, so its C2 can reach the bridge. Turning it over sends every group, OH and CH₂OH alike, to the opposite face from the usual fructose drawing.',
 });
 
 /* The four cases of the lesson's sort, stacked, with no verdicts on them:
@@ -627,7 +627,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'carb-redox',
   section: 'carbohydrates',
-  anchor: 'hydrolyzed straight back by warm aqueous acid.</li>\n</ul>',
+  anchor: 'Warm aqueous acid hydrolyzes it back to the sugar.</li>\n</ul>',
   viewBox: '0 0 760 360',
   alt: 'Four Fischer projections in a row. D-glucitol, with CH2OH at both ends, made from D-glucose by NaBH4. D-glucose, with CHO at the top. D-gluconic acid, with COOH at the top, made from glucose by bromine water. D-glucaric acid, with COOH at both ends, made by warm nitric acid. The four middle carbons are the same in all four.',
   build() {
@@ -645,7 +645,7 @@ FIGURES.push({
     s += tg(380, 348, 'C2 to C5 never change', 'fg-tag-mut');
     return s;
   },
-  caption: 'Teal marks the ends that changed. Warm nitric acid also oxidizes glucose straight to glucaric acid, through gluconic acid on the way.',
+  caption: 'Teal marks the ends that changed. Warm nitric acid can also start from glucose itself, passing through gluconic acid on the way to glucaric acid.',
 });
 
 /* ============================================================ fig 9 ===
@@ -736,7 +736,7 @@ function enediolPanels(pn) {
 FIGURES.push({
   id: 'carb-enediol',
   section: 'carbohydrates',
-  anchor: 'a capped anomeric carbon is what makes a sugar safe.</div>',
+  anchor: 'only a capped anomeric carbon keeps a sugar from reacting.</div>',
   viewBox: '0 0 760 520',
   alt: 'Four panels showing C1 and C2 of fructose becoming an aldose in base; R stands for C3 to C6. 1: hydroxide takes a hydrogen from C1; the C–H bond electrons move to make a C1=C2 bond and the C=O pi electrons move onto oxygen. 2: after that oxygen takes a proton from water, the enediol: C1=C2 with an OH on each carbon. 3: base has taken the proton from the C1 OH; a lone pair on the C1 O minus moves in to make C=O, the C=C electrons take a proton from water at C2, and the water O–H electrons stay on its oxygen. 4: the aldose, with C=O at C1 and a new H on C2.',
   build: () => enediolPanels([
@@ -786,7 +786,7 @@ function cellobiose(x0, cy, k) {
   // Turned over: every up/down of glucose swaps, and C1 stays beta.
   const B = pyranose(bx, cy, {
     k, turned: true, dot: '1',
-    subs: { 1: { down: 'OH' }, 2: { up: 'OH' }, 3: { down: 'OH', downLen: 10 }, 5: { down: 'CH₂OH', downLen: 10 } },
+    subs: { 1: { down: 'OH', downDx: 14 }, 2: { up: 'OH' }, 3: { down: 'OH', downLen: 10 }, 5: { down: 'CH₂OH', downLen: 10 } },
   });
   s += bond(C1A, Ol, { rFrom: 0, rTo: 15 }) + bond(Ol, C4B, { rFrom: 15, rTo: 0 });
   s += A.s + B.s + atom(Ol.x, Ol.y, 'O', { kind: 'warn' });
@@ -795,7 +795,7 @@ function cellobiose(x0, cy, k) {
 FIGURES.push({
   id: 'carb-polysaccharides',
   section: 'carbohydrates',
-  anchor: '<li><b>Starch</b> (amylose) — glucose joined α-1,4. The α linkage makes a helical chain, and we digest it easily.</li>\n</ul>',
+  anchor: 'we digest it easily.</li>\n</ul>',
   viewBox: '0 0 760 470',
   alt: 'Top row: two glucose units of amylose, joined by an alpha 1,4 link whose oxygen hangs below the rings, and beside them a chain coiled into a helix. Bottom row: two glucose units of cellulose, joined by a beta 1,4 link whose oxygen sits above the rings, with the second glucose drawn turned over so its ring oxygen is at the front; beside them, three straight chains lying side by side with dashed hydrogen bonds between them.',
   build() {
@@ -803,7 +803,7 @@ FIGURES.push({
     s += panel(8, 8, 744, 222, { kind: 'good' });
     s += panel(8, 240, 744, 222);
     s += tg(190, 28, 'amylose (starch): α-1,4') + tg(190, 44, 'each C1 link opposite the CH₂OH (α)', 'fg-tag-mut');
-    const m = maltose(24, 138, 0.72);
+    const m = maltose(24, 138, 0.72, { plain: true });
     s += m.s + tg(m.Ol.x, m.Ol.y + 32, 'α');
     s += tg(590, 44, 'the chain coils into a helix', 'fg-tag-good');
     s += helix(450, 128, 280, 40, 4);
@@ -828,7 +828,7 @@ FIGURES.push({
     s += panel(4, 4, 332, 300, { kind: 'good' });
     s += panel(4, 314, 332, 332);
     s += tg(170, 24, 'amylose: α-1,4');
-    s += maltose(22, 126, 0.6).s;
+    s += maltose(22, 126, 0.6, { plain: true }).s;
     s += tg(170, 228, 'the chain coils into a helix', 'fg-tag-good');
     s += helix(40, 268, 260, 22, 4);
     s += tg(170, 334, 'cellulose: β-1,4');
