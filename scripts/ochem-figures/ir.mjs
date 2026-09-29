@@ -363,10 +363,10 @@ FIGURES.push({
     s += text(88, 38, 'O–H of the acid: very broad,', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(88, 54, 'from 3300 down to 2500', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += `<line class="fg-dash-hi" x1="196" y1="60" x2="${n2(X(3150))}" y2="178"></line>`;
-    s += text(340, 198, 'sp³ C–H at 2960', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += text(340, 214, 'and 2875, half', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += text(340, 230, 'hidden in the O–H', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += `<line class="fg-dash-hi" x1="335" y1="214" x2="${n2(X(2920) + 4)}" y2="230"></line>`;
+    s += text(340, 176, 'sp³ C–H at 2960', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(340, 192, 'and 2875, half', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(340, 208, 'hidden in the O–H', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += `<line class="fg-dash-hi" x1="335" y1="194" x2="${n2(X(2920) + 4)}" y2="230"></line>`;
     s += text(474, 244, 'C=O, 1710', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
     s += text(474, 260, 'the carboxylic acid carbonyl', { cls: 'fg-sm', size: 10, anchor: 'end' });
     s += `<line class="fg-dash-hi" x1="478" y1="252" x2="${n2(X(1710) - 5)}" y2="276"></line>`;
