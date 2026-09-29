@@ -76,7 +76,7 @@ function resArrowV(x, y1, y2) {
 }
 /* An sp² center seen edge-on: two groups left and right in the plane, and
    the empty p orbital standing above and below. */
-function edgeOnEmpty(c, l, gl, gr, { off = 30, ry = 20, rx = 13, len = 52, kind = 'warn' } = {}) {
+function edgeOnEmpty(c, l, gl, gr, { off = 26, ry = 14, rx = 11, len = 52, kind = 'warn' } = {}) {
   let s = '';
   s += lobeE(c.x, c.y - off, rx, ry);
   s += lobeE(c.x, c.y + off, rx, ry);
@@ -94,7 +94,7 @@ FIGURES.push({
   lessons: ['electron-rich-poor'],
   anchor: '',
   alt: 'Two stacked panels. Top: ammonia, a nitrogen with three hydrogens and one lone pair, beside chloromethane, a carbon with three hydrogens and a chlorine. The nitrogen is on a teal disc and labeled rich, lone pair. The carbon is on a coral disc, marked delta plus and labeled poor; the chlorine is marked delta minus. A curved arrow runs from the nitrogen lone pair to the carbon, and a second curved arrow moves the C–Cl bond pair onto chlorine. Bottom: the products, the methylammonium ion, CH3–NH3 with a plus charge on nitrogen, and chloride ion with four lone pairs and a minus charge.',
-  viewBox: '0 0 340 356',
+  viewBox: '0 0 340 366',
   build() {
     let s = '';
     s += tg(170, 20, 'AMMONIA MEETS CHLOROMETHANE');
@@ -103,8 +103,8 @@ FIGURES.push({
     s += A(n, 'N', 'hi') + lp(n, 0);
     s += arm(c, 'C', 90, 44, 'H') + arm(c, 'C', 235, 44, 'H', { kind: 'wedge' }) + arm(c, 'C', 305, 44, 'H', { kind: 'hash' });
     s += B(c, 'C', cl, 'Cl') + A(cl, 'Cl', 'hi') + A(c, 'C', 'warn');
-    s += lp(cl, 0) + lp(cl, 270) + lp(cl, 60);
-    s += dP(220, 88) + dM(cl.x - 4, 84);
+    s += lp(cl, 0) + lp(cl, 270) + lp(cl, 90);
+    s += dP(220, 88) + dM(cl.x + 28, 84);
     s += curve(P(100, 106), P(177, 104), { bow: -18, size: 7 });
     s += fromBond(c, cl, P(252, 96), -10, 5);
     s += tg(66, 176, 'rich: lone pair');
@@ -115,12 +115,12 @@ FIGURES.push({
     s += tg(170, 232, 'PRODUCTS');
     const m = P(46, 290), n2 = P(114, 290);
     s += B(m, 'CH₃', n2, 'N') + A(m, 'CH₃');
-    s += arm(n2, 'N', 90, 40, 'H') + arm(n2, 'N', 0, 42, 'H') + arm(n2, 'N', 270, 40, 'H');
+    s += arm(n2, 'N', 90, 38, 'H') + arm(n2, 'N', 0, 42, 'H') + arm(n2, 'N', 270, 38, 'H');
     s += A(n2, 'N', 'hi') + plus(138, 272);
     s += lbl(196, 295, '+');
     const cl2 = P(262, 290);
     s += A(cl2, 'Cl', 'hi') + lp(cl2, 0) + lp(cl2, 90) + lp(cl2, 180) + lp(cl2, 270) + minus(290, 266);
-    s += tg(96, 346, 'methylammonium ion') + tg(262, 346, 'chloride ion');
+    s += tg(96, 354, 'methylammonium ion') + tg(262, 354, 'chloride ion');
     return s;
   },
   caption: 'Follow the first arrow from nitrogen’s lone pair to the δ+ carbon. That arrow is the whole prediction.',
@@ -171,7 +171,7 @@ FIGURES.push({
     s += tg(84, 412, 'π bond', 'mut') + tg(84, 426, 'ethene');
     const b = P(256, 358);
     s += edgeOnEmpty(b, 'B', 'F', 'F', { len: 50 });
-    s += tg(256, 412, 'empty p orbital, no charge', 'mut') + tg(256, 426, 'BF₃', 'warn');
+    s += tg(256, 412, 'empty p orbital', 'mut') + tg(256, 426, 'BF₃, no charge', 'warn');
     return s;
   },
   caption: 'Left, the three signs of an electron-rich site; right, the three signs of an electron-poor one. The pale lobes are empty p orbitals.',
@@ -216,8 +216,8 @@ FIGURES.push({
     s += B(c, 'C', o, 'O', { order: 2 });
     s += A(m, 'CH₃') + A(hh, 'H') + A(o, 'O', 'hi') + A(c, 'C', 'warn');
     s += lp(o, 140) + lp(o, 40);
-    s += dP(150, 396) + dM(202, 322);
-    s += fromBond(c, o, P(190, 330), -10, -8);
+    s += dP(150, 396) + dM(o.x - 36, o.y + 12);
+    s += fromBond(c, o, P(o.x + 18, o.y + 4), -14, -8);
     s += tg(282, 338, 'a site: the π', 'good') + tg(282, 352, 'pair can shift', 'good') + tg(282, 366, 'onto O', 'good');
     return s;
   },
@@ -288,28 +288,27 @@ function curledChain(cx, cy, closed) {
   let s = '';
   // Pentagon: v0 top = C2, v1 upper-left = N, v2 lower-left = C5,
   // v3 lower-right = C4, v4 upper-right = C3.
-  const v = polyPts(cx, cy, 5, 50, 90);
+  const v = polyPts(cx, cy, 5, 64, 90);
   const c2 = v[0], n = v[1], c5 = v[2], c4 = v[3], c3 = v[4];
   s += B(n, 'N', c5, '') + sk(c5, c4) + sk(c4, c3) + B(c3, '', c2, 'C');
   const o = at(c2, 125, 50), me = at(c2, 55, 50);
   s += B(c2, 'C', me, 'CH₃') + A(me, 'CH₃');
+  s += arm(n, 'N', 200, 40, 'H') + arm(n, 'N', 250, 40, 'H');
   if (closed) {
     s += B(n, 'N', c2, 'C', { cls: 'fg-bond-hi' });
     s += B(c2, 'C', o, 'O') + A(o, 'O', 'hi');
-    s += lp(o, 125) + lp(o, 215) + lp(o, 35) + minus(o.x - 26, o.y - 20);
-    s += arm(n, 'N', 200, 40, 'H') + arm(n, 'N', 250, 40, 'H');
-    s += A(n, 'N', 'hi') + plus(n.x - 30, n.y - 16);
+    s += lp(o, 35) + lp(o, 125) + lp(o, 215) + minus(o.x + 4, o.y - 28);
+    s += A(n, 'N', 'hi') + plus(n.x - 22, n.y - 18);
     s += A(c2, 'C');
   } else {
     s += B(c2, 'C', o, 'O', { order: 2 }) + A(o, 'O', 'hi');
     s += lp(o, 170) + lp(o, 80);
-    s += arm(n, 'N', 200, 40, 'H') + arm(n, 'N', 250, 40, 'H');
-    s += A(n, 'N', 'hi') + lp(n, 35);
+    s += A(n, 'N', 'hi') + lp(n, 36);
     s += A(c2, 'C', 'warn');
   }
-  const loc = (p, s2) => tg(p.x + (p.x - cx) * 0.34, p.y + (p.y - cy) * 0.34 + 4, s2, 'mut');
+  const loc = (p, t) => tg(p.x + (p.x - cx) * 0.3, p.y + (p.y - cy) * 0.3 + 4, t, 'mut');
   s += loc(c3, '3') + loc(c4, '4') + loc(c5, '5');
-  s += tg(c2.x + 20, c2.y + 30, '2', 'mut');
+  s += tg(c2.x + 4, c2.y + 34, '2', 'mut');
   return { s, c2, n, o, me };
 }
 FIGURES.push({
@@ -318,23 +317,23 @@ FIGURES.push({
   lessons: ['electron-rich-poor'],
   anchor: '',
   alt: 'Two stacked panels. Top: 5-aminopentan-2-one drawn with its chain curled round, so that the nitrogen at C5 sits near the carbonyl carbon, C2. The nitrogen carries two hydrogens and a lone pair and is on a teal disc labeled rich. The carbonyl carbon is on a coral disc, marked delta plus and labeled poor, with a C=O double bond to an oxygen carrying two lone pairs. One curved arrow runs from the nitrogen lone pair to the carbonyl carbon; a second moves the C=O pi pair onto oxygen. Bottom: the result, a five-membered ring of N, C5, C4, C3 and C2. The new N–C2 bond is highlighted, the nitrogen carries a plus charge and two hydrogens, and the oxygen, now single-bonded, carries three lone pairs and a minus charge.',
-  viewBox: '0 0 340 424',
+  viewBox: '0 0 340 500',
   build() {
     let s = '';
     s += tg(170, 20, '5-AMINOPENTAN-2-ONE');
-    const a = curledChain(150, 124, false);
+    const a = curledChain(170, 160, false);
     s += a.s;
-    s += curve(P(a.n.x + 24, a.n.y - 22), P(a.c2.x - 16, a.c2.y + 6), { bow: 10, size: 7 });
-    s += fromBond(a.c2, a.o, P(a.o.x + 16, a.o.y + 8), -10, -6);
-    s += dP(a.c2.x + 22, a.c2.y - 8);
-    s += tg(56, 150, 'rich:', '', 'middle') + tg(56, 164, 'lone pair', '', 'middle');
-    s += tg(282, 150, 'poor: δ+', 'warn') + tg(282, 164, 'C=O carbon', 'warn');
-    s += rule(16, 206, 324, 206);
+    s += curve(P(a.n.x + 24, a.n.y - 20), P(a.c2.x - 16, a.c2.y + 8), { bow: 12, size: 7 });
+    s += fromBond(a.c2, a.o, P(a.o.x + 17, a.o.y + 6), -10, -6);
+    s += dP(a.c2.x, a.c2.y - 30);
+    s += tg(50, 84, 'rich:') + tg(50, 98, 'lone pair');
+    s += tg(290, 120, 'poor: δ+', 'warn') + tg(290, 134, 'C=O carbon', 'warn');
+    s += rule(16, 250, 324, 250);
 
-    s += tg(170, 230, 'THE NEW N–C BOND CLOSES A RING');
-    const b = curledChain(150, 334, true);
+    s += tg(170, 274, 'THE NEW N–C BOND CLOSES A RING');
+    const b = curledChain(170, 406, true);
     s += b.s;
-    s += tg(290, 350, 'five atoms:', 'mut') + tg(290, 366, 'N, C5, C4,', 'mut') + tg(290, 382, 'C3, C2', 'mut');
+    s += tg(292, 380, 'five atoms:', 'mut') + tg(292, 396, 'N, C5, C4,', 'mut') + tg(292, 412, 'C3, C2', 'mut');
     return s;
   },
   caption: 'The chain curls round so that nitrogen’s lone pair reaches the δ+ carbonyl carbon. The highlighted bond is the one that forms.',
@@ -418,7 +417,7 @@ function anilineRing(cx, cy, contributor) {
   const v = polyPts(cx, cy, 6, 38, 90);   // v0 top (ipso), v1 upper-left (ortho) ...
   const n = P(cx, cy - 38 - 50);
   if (!contributor) {
-    s += benzene(cx, cy, 38, { shift: 0 });
+    s += benzene(cx, cy, 38, { shift: 0 }).svg;
     s += B(v[0], '', n, 'N');
   } else {
     s += bond(v[0], v[1], { rFrom: 0, rTo: 0 });
@@ -436,10 +435,9 @@ function anilineRing(cx, cy, contributor) {
 FIGURES.push({
   id: 'rp-aniline',
   section: 'electron-rich-poor',
-  lessons: ['electron-rich-poor'],
   anchor: '',
   alt: 'Two stacked panels. Top: aniline, a benzene ring with an NH2 group on the top carbon. The nitrogen has a lone pair. One curved arrow moves the lone pair into the bond between nitrogen and the ring; a second moves the pi pair of the ring double bond onto the neighboring ring carbon, the ortho carbon. Bottom: the resulting resonance structure, with a C=N double bond, a plus charge on nitrogen, and a lone pair and a minus charge on the ortho ring carbon, which is on a teal dot and labeled electron-rich.',
-  viewBox: '0 0 340 400',
+  viewBox: '0 0 340 424',
   build() {
     let s = '';
     s += tg(170, 20, 'ANILINE');
@@ -449,13 +447,13 @@ FIGURES.push({
     s += fromBond(a.v[0], a.v[1], P(a.v[1].x - 12, a.v[1].y + 4), 14, 7);
     s += tg(270, 70, 'lone pair', '', 'middle') + tg(270, 84, 'pushes in', '', 'middle');
     s += tg(270, 150, 'N pulls a little', 'mut') + tg(270, 164, 'through σ', 'mut');
-    s += resArrowV(150, 200, 236);
+    s += resArrowV(150, 194, 228);
 
-    const b = anilineRing(150, 340, true);
-    s += b.s + plus(b.n.x + 22, b.n.y - 14);
+    const b = anilineRing(150, 370, true);
+    s += b.s + plus(b.n.x, b.n.y - 24);
     s += `<circle class="fg-atom-hi" cx="${r2(b.v[1].x)}" cy="${r2(b.v[1].y)}" r="7"></circle>`;
     s += lp(b.v[1], 150, 16) + minus(b.v[1].x - 24, b.v[1].y + 20);
-    s += tg(270, 330, 'ortho carbon:', '') + tg(270, 344, 'electron-rich', '');
+    s += tg(270, 360, 'ortho carbon:', '') + tg(270, 374, 'electron-rich', '');
     return s;
   },
   caption: 'The lower structure puts a − on a ring carbon next to the one carrying nitrogen. That is the ring gaining density.',

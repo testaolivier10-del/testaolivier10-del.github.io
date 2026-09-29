@@ -226,7 +226,7 @@ function br2Scene(o) {
   // o: center of the C=C, Br2 stacked above it.
   let s = '';
   const c1 = P(o.x - 44, o.y), c2 = P(o.x + 44, o.y);
-  s += `<ellipse class="fg-orb" cx="${o.x}" cy="${o.y - 24}" rx="60" ry="15" fill-opacity="0.18"></ellipse>`;
+  s += `<ellipse class="fg-orb-alt" cx="${o.x}" cy="${o.y - 24}" rx="60" ry="15"></ellipse>`;
   s += `<ellipse class="fg-orb-alt" cx="${o.x}" cy="${o.y + 24}" rx="60" ry="15"></ellipse>`;
   s += arm(c1, 150, 46, 'H', { kind: 'hash' }).s + arm(c1, 210, 46, 'H', { kind: 'wedge' }).s;
   s += arm(c2, 30, 46, 'H', { kind: 'hash' }).s + arm(c2, 330, 46, 'H', { kind: 'wedge' }).s;
@@ -246,7 +246,7 @@ FIGURES.push({
   id: 'bromine-induced',
   section: 'electrophiles',
   anchor: '',
-  alt: 'Left: Br2 on its own, two identical bromine atoms with no partial charges. Right: Br2 held end-on above an ethene molecule that is seen edge-on, with its pi electron cloud drawn above and below the C–C bond. An arrow beside the Br–Br bond points away from the alkene: the bonding pair has shifted to the far bromine, which is marked delta minus, and the near bromine is marked delta plus.',
+  alt: 'Left: Br2 on its own, two identical bromine atoms with no partial charges. Right: Br2 held end-on above an ethene molecule that is seen edge-on, with its filled pi orbital drawn above and below the C–C bond. An arrow beside the Br–Br bond points away from the alkene: the bonding pair has shifted to the far bromine, which is marked delta minus, and the near bromine is marked delta plus.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
@@ -266,8 +266,8 @@ FIGURES.push({
     s += sm(560, 90, 'from the π cloud', 'start');
     s += sm(560, 150, 'the near Br is left δ+:', 'start');
     s += sm(560, 166, 'the alkene attacks it', 'start');
-    s += sm(560, 216, 'π electrons above and', 'start');
-    s += sm(560, 232, 'below the C–C bond', 'start');
+    s += sm(560, 216, 'filled π orbital: electrons', 'start');
+    s += sm(560, 232, 'above and below the C–C bond', 'start');
     s += sm(440, 288, 'ethene, seen edge-on');
     return s;
   },
@@ -379,8 +379,8 @@ FIGURES.push({
     s += sm(96, 214, 'ethanol: δ+ carbon,');
     s += sm(96, 230, 'but HO⁻ does not leave');
     s += arrow(P(196, 146), P(260, 146), { muted: true });
-    s += sm(228, 130, 'make the');
-    s += sm(228, 170, 'tosylate');
+    s += sm(228, 114, 'make the');
+    s += sm(228, 130, 'tosylate');
 
     // Ethyl tosylate.
     const a2 = P(290, 176), b2 = P(340, 148), o2 = P(390, 176), S = P(448, 176);
@@ -402,8 +402,8 @@ FIGURES.push({
     s += dPlus(b2.x, b2.y - 16);
     // The Ts bracket.
     const yb = 88;
-    s += `<path class="fg-bond-soft" d="M428 ${yb + 8} L428 ${yb} L${r2(me.x + 18)} ${yb} L${r2(me.x + 18)} ${yb + 8}"></path>`;
-    s += tg((428 + me.x + 18) / 2 + 30, yb - 10, 'Ts, the tosyl group');
+    s += `<path class="fg-bond-soft" d="M433 ${yb + 8} L433 ${yb} L${r2(me.x + 18)} ${yb} L${r2(me.x + 18)} ${yb + 8}"></path>`;
+    s += tg((433 + me.x + 18) / 2, yb - 10, 'Ts, the tosyl group');
     s += sm(470, 262, 'ethyl tosylate, CH₃CH₂–OTs: the same δ+ carbon,');
     s += sm(470, 278, 'now carrying a group that leaves easily');
     return s;
@@ -479,7 +479,7 @@ FIGURES.push({
   id: 'electrophile-scan',
   section: 'electrophiles',
   anchor: '',
-  alt: 'A skeletal drawing of 4-chlorobutan-2-one with its four carbons numbered. Carbons 1 and 3 are marked delta plus. A list beside it gives the verdict on each carbon: carbon 1 is a target because it is delta plus and chloride can leave; carbon 2 is not; carbon 3, the carbonyl carbon, is a target because its pi bond can break; carbon 4 is not.',
+  alt: 'A skeletal drawing of 4-chlorobutan-2-one with its four carbons numbered. Carbons 2 and 4 are marked delta plus. A list beside it gives the verdict on each carbon: carbon 1, the CH3, is not a target; carbon 2, the carbonyl carbon, is a target because its pi bond can break; carbon 3 is not; carbon 4, the CH2Cl, is a target because it is delta plus and chloride can leave.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
@@ -492,10 +492,10 @@ FIGURES.push({
     s += lp(o, 150) + lp(o, 30);
     s += atom(o.x, o.y, 'O', { kind: 'hi' });
     for (const pt of [c1, c2, c3, c4]) s += atom(pt.x, pt.y, '', { kind: 'point' });
-    s += text(154, 124, '1', { cls: 'fg-tag-good', size: 12 });
-    s += text(212, 202, '2', { cls: 'fg-tag-mut', size: 12 });
-    s += text(296, 150, '3', { cls: 'fg-tag-good', size: 12 });
-    s += text(328, 202, '4', { cls: 'fg-tag-mut', size: 12 });
+    s += text(154, 124, '4', { cls: 'fg-tag-good', size: 12 });
+    s += text(212, 202, '3', { cls: 'fg-tag-mut', size: 12 });
+    s += text(254, 164, '2', { cls: 'fg-tag-good', size: 12 });
+    s += text(328, 202, '1', { cls: 'fg-tag-mut', size: 12 });
     s += dPlus(176, 132);
     s += dPlus(246, 124);
     s += lbl(210, 244, 'ClCH₂–CH₂–CO–CH₃');
@@ -504,19 +504,18 @@ FIGURES.push({
     s += rule(376, 34, 376, 288);
 
     const lines = [
-      ['1', 'CH₂Cl carbon: δ+, and chloride can leave', 'a target', true],
-      ['2', 'middle CH₂: barely polarized,', 'nothing on it can leave', false],
-      ['3', 'carbonyl carbon: strongly δ+, and', 'its π bond can break', true],
-      ['4', 'CH₃: nothing pulls on it,', 'nothing on it can leave', false],
+      ['1', 'CH₃: nothing pulls on it,', 'nothing on it can leave', false],
+      ['2', 'carbonyl carbon: strongly δ+,', 'and its π bond can break: a target', true],
+      ['3', 'middle CH₂: barely polarized,', 'nothing on it can leave', false],
+      ['4', 'CH₂Cl carbon: δ+, and chloride', 'can leave: a target', true],
     ];
-    let y = 66;
+    let y = 84;
     for (const [num, a, b, good] of lines) {
       s += text(404, y, num, { cls: good ? 'fg-tag-good' : 'fg-tag-mut', size: 12, anchor: 'start' });
       s += sm(424, y, a, 'start');
       if (b) s += sm(424, y + 16, b, 'start');
       y += 52;
     }
-    s += tg(404, 280, 'Two sites is normal; the question is which wins.', 'start', 'fg-tag-good');
     return s;
   },
   caption: 'The numbers in green mark the two electrophilic sites, and the list gives the verdict on every carbon.',
@@ -665,7 +664,7 @@ FIGURES.push({
   lessons: ['electrophiles'],
   anchor: '',
   alt: 'Top: H–Br with the hydrogen marked delta plus and the bromine delta minus. Middle: Br2 on its own, no partial charges. Bottom: Br2 held end-on above an ethene molecule seen edge-on; an arrow shows the Br–Br pair shifting to the far bromine, which is delta minus, leaving the near bromine delta plus.',
-  viewBox: '0 0 340 500',
+  viewBox: '0 0 340 516',
   build() {
     let s = '';
     s += tg(170, 20, 'H–Br: POLAR ALL THE TIME');
@@ -687,6 +686,7 @@ FIGURES.push({
     s += tg(sc.far.x + 44, sc.far.y + 26, 'pair shifts', 'start');
     s += tg(sc.far.x + 44, sc.far.y + 42, 'away', 'start');
     s += tg(170, 488, 'ethene, seen edge-on');
+    s += tg(170, 506, 'lilac lobes: its filled π orbital');
     return s;
   },
   caption: 'Compare the δ labels in the three panels.',
