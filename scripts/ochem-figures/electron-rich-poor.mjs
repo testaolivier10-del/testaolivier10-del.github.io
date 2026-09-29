@@ -174,7 +174,7 @@ FIGURES.push({
     s += tg(256, 412, 'empty p orbital', 'mut') + tg(256, 426, 'BF₃, no charge', 'warn');
     return s;
   },
-  caption: 'Left, the three signs of an electron-rich site; right, the three signs of an electron-poor one. The pale lobes are empty p orbitals.',
+  caption: 'Each drawing shows one sign. The pale lobes are empty p orbitals.',
   note: 'In the edge-on drawings, the third group on the carbon or boron points toward you, and all three lie in one flat plane with the empty orbital at right angles to it.',
 });
 
@@ -262,7 +262,7 @@ FIGURES.push({
     s += tg(20, 290, '→ the site of attack', 'warn', 'start');
     return s;
   },
-  caption: 'Three carbons are δ+. The coral one is the only δ+ carbon holding a group that can leave.',
+  caption: 'The coral disc marks the carbon that passes both tests. The list gives the verdict on every part of the chain.',
 });
 
 /* The same chain, unmarked, for the lesson's final question. */
@@ -336,8 +336,8 @@ FIGURES.push({
     s += tg(296, 450, 'five atoms:', 'mut') + tg(296, 466, 'N, C5, C4,', 'mut') + tg(296, 482, 'C3, C2', 'mut');
     return s;
   },
-  caption: 'The chain curls round so that nitrogen’s lone pair reaches the δ+ carbonyl carbon. The highlighted bond is the one that forms.',
-  note: 'The ring shown is only the first step. What the ring goes on to become is a question for Carbonyl Chemistry.',
+  caption: 'Top, the two arrows. Bottom, the ring they make, with the new bond highlighted.',
+  note: 'The lower drawing shows only the first bond to form. What happens next belongs to Carbonyl Chemistry.',
 });
 
 /* ================================================================ 6 ===
@@ -407,7 +407,7 @@ FIGURES.push({
     s += tg(290, 216, '+ lands on', 'warn') + tg(290, 230, 'the β carbon', 'warn');
     return s;
   },
-  caption: 'The + in the lower structure sits on the β carbon, three bonds from the oxygen.',
+  caption: 'Follow the two arrows from the upper structure to the lower one, then find the +.',
 });
 
 /* ================================================================ 8 ===
@@ -456,7 +456,7 @@ FIGURES.push({
     s += `<text class="fg-tag" x="270" y="360" text-anchor="middle" font-size="11"><tspan font-style="italic">ortho</tspan> carbon:</text>` + tg(270, 374, 'electron-rich', '');
     return s;
   },
-  caption: 'The lower structure puts a − on a ring carbon next to the one carrying nitrogen. That is the ring gaining density.',
+  caption: 'Follow the two arrows, then find the − in the lower structure.',
 });
 
 /* ================================================================ 9 ===
