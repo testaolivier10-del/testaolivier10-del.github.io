@@ -805,9 +805,11 @@
       9:['ez-assignment','cip-priority'],
       14:['ez-assignment','cip-priority'] } },
 
-    'stereocenters': { n:7, steps:{
-      1:['stereocenter-identification'], 2:['stereocenter-identification'],
-      3:['stereocenter-identification'], 6:['stereocenter-identification'] } },
+    'stereocenters': { n:10, steps:{
+      2:['stereocenter-identification'],
+      4:['stereocenter-identification'],
+      7:['stereocenter-identification'],
+      9:['stereocenter-identification'] } },
 
     'substrate-effects': { n:10, steps:{
       2:['mechanism-selection'],

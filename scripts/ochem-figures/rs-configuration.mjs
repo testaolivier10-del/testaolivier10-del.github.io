@@ -125,7 +125,8 @@ function trace(c, gs, reach, pad = 8) {
   const a = (p) => gs.find((g) => g.pri === p).deg;
   const cw = cwAsDrawn(gs);
   const off = 14;
-  return arcArrow(c, reach + pad, cw ? a(1) - off : a(1) + off, cw ? a(3) + off : a(3) - off, cw);
+  const off0 = 4;
+  return arcArrow(c, reach + pad, cw ? a(1) - off0 : a(1) + off0, cw ? a(3) + off : a(3) - off, cw);
 }
 /* One whole assignment: drawing, priorities, arrow, checked answer. */
 function assign(c, gs, want, where, o = {}) {
@@ -160,7 +161,7 @@ const GLYCER = [
 /* (S)-3,4-dimethylpentan-1-ol at C3. */
 const DIMETHYL = [
   { deg: 90, lab: 'CH(CH₃)₂', kind: 'plain', pri: 1 },
-  { deg: 210, lab: 'CH₂CH₂OH', kind: 'plain', pri: 2 },
+  { deg: 210, lab: 'CH₂CH₂OH', kind: 'plain', pri: 2, len: 70 },
   { deg: 340, lab: 'CH₃', kind: 'wedge', pri: 3 },
   { deg: 290, lab: 'H', kind: 'hash', pri: 4, hi: 'warn' },
 ];
@@ -211,11 +212,11 @@ const C3 = [
 
 /* ------------------------------------------------ 1. the method ------- */
 
-function methodCell(ox, oy, w, h, stage) {
+function methodCell(ox, oy, w, h, stage, single = false) {
   const c = P(ox + w / 2, oy + 140);
   let s = panel(ox, oy, w, h, stage === 3 ? { kind: 'hi' } : {});
   const titles = ['1 · Rank the groups', '2 · Priority 4 points away', '3 · Trace, 4 · read'];
-  s += Tag(P(ox + w / 2, oy + 22), titles[stage - 1]);
+  s += Tag(P(ox + w / 2, oy + 22), single ? 'Trace and read' : titles[stage - 1]);
   const gs = CHFCLBR.map((g) => ({ ...g, hi: stage >= 2 && g.pri === 4 ? 'warn' : undefined }));
   s += assign(c, gs, 'R', 'rs-method', { arc: stage === 3, badges: true });
   const lines = stage === 1 ? ['Br > Cl > F > H', 'by atomic number']
@@ -244,7 +245,7 @@ FIGURES.push({
   alt: 'Bromochlorofluoromethane with Br at the top (priority 1), Cl on a wedge at lower right (2), F at lower left (3) and H on a hash (4). An arrow from Br to Cl to F turns clockwise, so the carbon is R.',
   viewBox: '0 0 340 300',
   build() {
-    return methodCell(4, 4, 332, 292, 3);
+    return methodCell(4, 4, 332, 292, 3, true);
   },
   caption: 'H, priority 4, is on the hash, so it points away. Br → Cl → F turns clockwise: R.',
 });
@@ -320,12 +321,12 @@ FIGURES.push({
   section: 'rs-configuration',
   anchor: 'Worked example — 3,4-dimethylpentan-1-ol',
   alt: 'C3 of 3,4-dimethylpentan-1-ol. CH(CH3)2 at the top is priority 1, CH2CH2OH at lower left is 2, CH3 on a wedge at lower right is 3 and H on a hash is 4. The arrow from 1 to 2 to 3 turns counterclockwise, so the center is S.',
-  viewBox: '0 0 340 316',
+  viewBox: '0 0 340 334',
   build() {
-    const c = P(170, 146);
+    const c = P(170, 150);
     let s = assign(c, DIMETHYL, 'S', 'rs-dimethylpentanol');
-    s += Good(P(170, 286), '1 → 2 → 3 counterclockwise: S');
-    s += Tag(P(170, 306), 'H on the hash, so no flip');
+    s += Good(P(170, 304), '1 → 2 → 3 counterclockwise: S');
+    s += Tag(P(170, 324), 'H on the hash, so no flip');
     return s;
   },
   caption: 'C3 of (S)-3,4-dimethylpentan-1-ol.',
@@ -386,7 +387,7 @@ FIGURES.push({
   build() {
     return dupColumn(4, 4, 332, 312, 'cho') + dupColumn(4, 320, 332, 308, 'cn');
   },
-  caption: 'The bracketed atoms are duplicates. Each one stands for an extra bond, not an extra atom.',
+  caption: 'The bracketed atoms are duplicates: copies counted for the extra bond, with nothing attached.',
 });
 
 /* ------------------------------------------ 5. phenyl against vinyl ---- */
@@ -466,9 +467,9 @@ FIGURES.push({
   viewBox: '0 0 760 320',
   build() {
     let s = '';
-    s += Tag(P(292, 24), 'atom 1 out');
-    s += Tag(P(410, 24), 'atom 2 out');
-    s += Tag(P(528, 24), 'atom 3 out');
+    s += Tag(P(292, 24), 'attachment carbon');
+    s += Tag(P(410, 24), 'next atom out');
+    s += Tag(P(528, 24), 'one atom further');
     // Cyclopropyl row.
     s += panel(4, 36, 752, 136, { kind: 'hi' });
     const r1 = P(70, 104);
@@ -546,10 +547,9 @@ FIGURES.push({
   alt: 'One stereocenter seen from two sides. From the front, group 4 is on a hash pointing away, and 1 at the top, 2 at lower right and 3 at lower left run clockwise. From behind, left and right swap: 2 is at lower left and 3 at lower right, group 4 is on a wedge pointing toward the viewer, and 1 to 2 to 3 runs counterclockwise.',
   viewBox: '0 0 760 290',
   build() {
-    let s = viewCell(4, 4, 330, 282, 'front') + viewCell(426, 4, 330, 282, 'back');
-    s += arrow(P(346, 138), P(414, 138), { size: 8 });
-    s += Tag(P(380, 120), 'walk round');
-    s += Tag(P(380, 162), 'the page');
+    let s = viewCell(4, 4, 306, 282, 'front') + viewCell(450, 4, 306, 282, 'back');
+    s += arrow(P(330, 138), P(430, 138), { size: 8 });
+    s += Tag(P(380, 124), 'view from behind');
     return s;
   },
   caption: 'Compare where 2 and 3 sit in the two views.',
@@ -609,7 +609,7 @@ FIGURES.push({
     return swapCell(4, 4, 332, 312, 1, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'l-swap-in-plane', { swap: 'CH₃' }) +
       swapCell(4, 320, 332, 308, 2, BROMO_AS_DRAWN, BROMO_SWAPPED, 'S', 'l-swap-in-plane');
   },
-  caption: 'One swap gives the mirror image, so the swapped drawing’s label is reversed.',
+  caption: 'One swap gives the mirror image, so reverse the swapped drawing’s label to get the original’s.',
 });
 
 /* The challenge question's drawing: no answer on it. */
