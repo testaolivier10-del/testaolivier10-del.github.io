@@ -121,6 +121,8 @@ function chairMethyl(pts, i, face, flip) {
   const end = axial ? axialEnd(pts, i, flip, 36) : equatorialEnd(pts, i, flip, 36);
   let s = bond(pts[i], end, { rFrom: 0, rTo: 17, cls: 'fg-bond-hi' });
   s += atom(end.x, end.y, 'CH₃', { r: 17, kind: 'hi' });
+  const right = end.x >= pts[i].x;
+  s += text(end.x + (right ? 21 : -21), end.y + 4, face, { cls: face === 'up' ? 'fg-tag-good' : 'fg-tag-warn', anchor: right ? 'start' : 'end' });
   return { s, axial };
 }
 /* One chair carrying methyls. `subs` is a list of [carbon index, face,
@@ -174,7 +176,7 @@ FIGURES.push({
   id: 'pi-twist',
   section: 'cis-trans-ez',
   lessons: ['cis-trans-ez'],
-  anchor: 'Bonding shows the orbitals in detail.</p>',
+  anchor: 'shows these orbitals in detail.</p>',
   viewBox: '0 0 340 462',
   alt: 'But-2-ene drawn three times, flat in the page, with every atom labeled. Top: cis-but-2-ene. Both methyl groups are on the upper side of the double bond, each carbon carries a disc for its p orbital pointing out of the page, and a dashed outline around both discs marks the pi bond. Middle: the right carbon has turned a quarter turn. Its methyl is on a wedge and its hydrogen on a hash, its p orbital now lies up and down in the page at right angles to the left one, and the carbons are joined by a single line: no pi bond. Bottom: after another quarter turn the right methyl is on the lower side, which is trans-but-2-ene, with the pi bond back.',
   build() {
@@ -299,7 +301,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-ring-flip',
   lessons: ['cis-trans-ez'],
-  viewBox: '0 0 340 500',
+  viewBox: '0 0 340 464',
   alt: 'cis-1,2-dimethylcyclohexane in two chairs, one above the other, with ring-flip arrows between them. In the upper chair the C1 methyl is axial and points up and the C2 methyl is equatorial and points up. In the lower, flipped chair the C1 methyl is equatorial and up and the C2 methyl is axial and up.',
   build() {
     let s = '';
@@ -312,7 +314,7 @@ FIGURES.push({
     s += text(206, 246, 'ring flip', { cls: 'fg-tag', anchor: 'start' });
     const B = methylChair(170, 360, 0.78, true, CIS12, TAGS_F);
     s += B.s;
-    B.read.forEach(([n, pos, face], j) => { s += text(170, 462 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
+    B.read.forEach(([n, pos, face], j) => { s += text(170, 424 + j * 18, `${n}: ${pos}, ${face}`, { cls: 'fg-tag' }); });
     return s;
   },
   caption: 'Axial and equatorial swap on the flip. Both methyls point up in both chairs.',
@@ -406,10 +408,10 @@ FIGURES.push({
   section: 'cis-trans-ez',
   lessons: ['cis-trans-ez'],
   anchor: '<b>(Z)-3-(chloromethyl)-4-methylpent-2-ene</b>.</p>\n</div>',
-  viewBox: '0 0 340 318',
+  viewBox: '0 0 340 282',
   alt: '3-(chloromethyl)-4-methylpent-2-ene with the double bond horizontal. The left carbon, C2, carries a methyl up-left, tagged higher, and a hydrogen down-left, tagged lower. The right carbon, C3, carries a chloromethyl group up-right, tagged higher, and an isopropyl group down-right, tagged lower. Below, the tie on C3 is broken: the chloromethyl carbon holds chlorine, hydrogen and hydrogen, the isopropyl carbon holds carbon, carbon and hydrogen, and chlorine beats carbon at the first term. Both higher groups are above the double bond, so the isomer is Z.',
   build() {
-    let s = '';
+    let s = '<g transform="translate(0,-36)">';
     s += alkene(150, 96, { lu: { t: 'CH₃', pri: 'hi' }, ld: { t: 'H', pri: 'lo' }, ru: { t: 'CH₂Cl', pri: 'hi' }, rd: { t: 'CH(CH₃)₂', pri: 'lo' } }, { names: ['C2', 'C3'], gap: 14 });
     s += rule(10, 186, 330, 186);
     s += text(170, 208, 'On C3 both groups start with C: a tie.', { cls: 'fg-tag' });
@@ -418,7 +420,7 @@ FIGURES.push({
     s += text(170, 266, 'Cl beats C at the first term', { cls: 'fg-tag' });
     s += text(170, 290, 'both higher groups above the C=C: Z', { cls: 'fg-tag-good' });
     s += text(170, 310, '(Z)-3-(chloromethyl)-4-methylpent-2-ene', { cls: 'fg-tag-good' });
-    return s;
+    return s + '</g>';
   },
   caption: 'The smaller group wins on C3. Chlorine settles it at the first term of the two sets.',
 });
@@ -582,6 +584,17 @@ FIGURES.push({
 
 /* ---------------------------------------------------- geometry-costs ---
    Crowding, dipoles and chain shape, one row each. */
+/* A bond-dipole arrow beside the C–Cl bond leaving c at `deg`, pointing
+   toward Cl, set off on the side away from the molecule's center x. */
+function bondDipole(c, deg, cx) {
+  const d = at(P(0, 0), deg, 1);
+  let px = -d.y, py = d.x;
+  const mid = P(c.x + d.x * 22, c.y + d.y * 22);
+  if ((mid.x + px - cx) * px + (mid.y + py - c.y) * py < 0) { px = -px; py = -py; }
+  const a = P(c.x + d.x * 12 + px * 10, c.y + d.y * 12 + py * 10);
+  const b = P(c.x + d.x * 32 + px * 10, c.y + d.y * 32 + py * 10);
+  return arrow(a, b, { size: 6, muted: true });
+}
 function miniAlkene(cx, cy, lu, ld, ru, rd, hiKind) {
   return alkene(cx, cy, {
     lu: { t: lu, len: 44 }, ld: { t: ld, len: 40 }, ru: { t: ru, len: 44 }, rd: { t: rd, len: 40 },
@@ -632,8 +645,11 @@ FIGURES.push({
 
     s += text(170, 208, 'polarity: C–Cl dipoles add or cancel', { cls: 'fg-tag' });
     s += miniAlkene(88, 276, 'Cl', 'H', 'Cl', 'H');
+    s += bondDipole(P(64, 276), 120, 88) + bondDipole(P(112, 276), 60, 88);
     s += arrow(P(88, 268), P(88, 228), { size: 7 });
+    s += text(96, 232, 'net', { cls: 'fg-tag-warn', anchor: 'start' });
     s += miniAlkene(252, 276, 'Cl', 'H', 'H', 'Cl');
+    s += bondDipole(P(228, 276), 120, 252) + bondDipole(P(276, 276), 300, 252);
     s += itext(88, 344, 'cis', '', 'fg-tag') + itext(252, 344, 'trans', '', 'fg-tag');
     s += text(88, 362, 'net dipole', { cls: 'fg-tag-warn' });
     s += text(252, 362, 'no net dipole', { cls: 'fg-tag-good' });
@@ -648,7 +664,7 @@ FIGURES.push({
     s += text(c[5].x + 20, 566, 'cis', { cls: 'fg-tag', anchor: 'start' });
     return s;
   },
-  caption: 'Row by row: where the two methyls sit, which way the two C–Cl bonds point, and how straight each chain runs.',
+  caption: 'Row by row: where the two methyls sit, how the two small C–Cl dipole arrows add or cancel, and how straight each chain runs.',
 });
 
 export default FIGURES;
