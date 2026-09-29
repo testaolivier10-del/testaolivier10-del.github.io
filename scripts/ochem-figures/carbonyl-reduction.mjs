@@ -88,6 +88,7 @@ function ethoxy(c) {
   const m = armEnd(v, 330, 46);
   let s = B(c, 'C', o, 'O') + bond(o, v, { rFrom: 14, rTo: 0 }) + bond(v, m, { rFrom: 0, rTo: 18 });
   s += A(o, 'O') + A(m, 'CH₃');
+  s += lonePair(o.x, o.y, 90, { dist: 21 }) + lonePair(o.x, o.y, 270, { dist: 20 });
   return { s, o };
 }
 
@@ -267,7 +268,7 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   anchor: '<h3>Stopping at the aldehyde: DIBAL-H</h3>',
   alt: 'Three stacked panels. Ethyl propanoate with DIBAL-H at minus 78 degrees gives a tetrahedral intermediate whose oxygen is bonded to aluminum and which keeps its ethoxy group while cold. Aqueous workup then releases propanal and ethanol.',
-  viewBox: '0 0 340 650',
+  viewBox: '0 0 340 680',
   build() {
     let s = '';
     s += box(8, 180, 'ETHYL PROPANOATE');
@@ -277,27 +278,27 @@ FIGURES.push({
     s += arrow(P(170, 192), P(170, 226));
     s += tg(250, 214, 'DIBAL-H, −78 °C');
 
-    s += box(230, 212, 'HELD TOGETHER WHILE COLD');
-    const c2 = P(120, 340), p2 = propanoyl(c2, 'O', true);
+    s += box(230, 226, 'HELD TOGETHER WHILE COLD');
+    const c2 = P(120, 358), p2 = propanoyl(c2, 'O', true);
     s += p2.s + ethoxy(c2).s;
-    const al = P(188, 280);
+    const al = P(188, p2.o.y);
     s += B(p2.o, 'O', al, 'AlR₂') + A(al, 'AlR₂');
     s += lonePair(p2.o.x, p2.o.y, 180, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 270, { dist: 21 });
     s += arm(c2, 'C', 270, 48, 'H', 'plain', 'hi').s;
     s += A(c2, 'C', 'warn');
-    s += tg(276, 312, 'R = isobutyl', 'mut');
-    s += tg(170, 428, 'the ethoxy group stays on at −78 °C', 'good');
-    s += arrow(P(170, 446), P(170, 480));
-    s += tg(250, 468, 'H₃O⁺ workup');
+    s += tg(276, 330, 'R = isobutyl', 'mut');
+    s += tg(170, 444, 'the ethoxy group stays on at −78 °C', 'good');
+    s += arrow(P(170, 462), P(170, 496));
+    s += tg(250, 484, 'H₃O⁺ workup');
 
-    s += box(486, 156, 'AFTER WORKUP · PROPANAL');
-    const c3 = P(110, 590), p3 = propanoyl(c3, 'O', false);
+    s += box(502, 170, 'AFTER WORKUP · PROPANAL');
+    const c3 = P(110, 622), p3 = propanoyl(c3, 'O', false);
     s += p3.s;
     s += arm(c3, 'C', 330, 46, 'H', 'plain', 'hi').s;
     s += A(c3, 'C', 'warn');
     s += lonePair(p3.o.x, p3.o.y, 315, { dist: 21 }) + lonePair(p3.o.x, p3.o.y, 225, { dist: 21 });
-    s += lbl(254, 582, '+  CH₃CH₂OH');
-    s += tg(254, 618, 'one hydride only', 'good');
+    s += lbl(254, 612, '+  CH₃CH₂OH');
+    s += tg(254, 648, 'one hydride only', 'good');
     return s;
   },
   caption: 'The aldehyde appears only in the workup, after the DIBAL-H has been destroyed, so there is no hydride left to reduce it.',
