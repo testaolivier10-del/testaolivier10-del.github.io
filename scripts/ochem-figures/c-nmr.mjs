@@ -198,7 +198,7 @@ FIGURES.push({
     s += tag(320, 22, 'applied field B₀');
     const y = 138;
     /* pi cylinder, behind the atoms */
-    s += `<rect class="fg-orb" x="206" y="${y - 40}" width="244" height="80" rx="40"></rect>`;
+    s += `<rect class="fg-orb" x="214" y="${y - 40}" width="212" height="80" rx="40"></rect>`;
     const h1 = P(130, y), c1 = P(250, y), c2 = P(390, y), h2 = P(510, y);
     s += bond(h1, c1, { rFrom: 15, rTo: 15 }) + bond(c2, h2, { rFrom: 15, rTo: 15 });
     s += bond(c1, c2, { order: 3, rFrom: 15, rTo: 15, gap: 4 });
@@ -206,10 +206,9 @@ FIGURES.push({
     /* circulation: a loop around the axis, seen obliquely */
     /* the loop sits between the right carbon and the end of the cylinder,
        so it crosses only the axis, never a label or the induced-field arrow */
-    s += `<path class="fg-arrow" d="M 424 ${y - 54} C 444 ${y - 54} 444 ${y + 54} 428 ${y + 54} C 412 ${y + 54} 410 ${y - 54} 420 ${y - 54}"></path>`;
-    s += `<path class="fg-head" d="M 416 ${y - 54} L 425 ${y - 58.5} L 425 ${y - 49.5} Z"></path>`;
-    s += tag(446, y - 62, 'pi electrons circulate', { anchor: 'start' });
-    s += tag(446, y - 46, 'around the axis', { anchor: 'start' });
+    s += `<path class="fg-arrow" d="M 324 ${y - 56} C 344 ${y - 56} 344 ${y + 56} 320 ${y + 56} C 298 ${y + 56} 298 ${y - 56} 316 ${y - 56}"></path>`;
+    s += `<path class="fg-head" d="M 312 ${y - 56} L 321 ${y - 60.5} L 321 ${y - 51.5} Z"></path>`;
+    s += tag(350, y - 60, 'pi electrons circulate around the axis', { anchor: 'start' });
     /* induced field, inside the cylinder, pointing against B0 */
     s += arrow(P(372, y + 26), P(268, y + 26));
     s += tag(320, y + 70, 'induced field inside the cylinder points against B₀');
@@ -235,15 +234,15 @@ FIGURES.push({
   id: 'c-nmr-xylenes',
   section: 'c-nmr',
   anchor: '¹³C separates all three by peak count alone.</p>',
-  alt: 'o-, m- and p-xylene side by side, each ring numbered C1 to C6 with its mirror planes drawn edge-on as dashed lines. o-Xylene: methyls on C1 and C2, one mirror between them; 4 signals. m-Xylene: methyls on C1 and C3, one mirror through C2 and C5; 5 signals. p-Xylene: methyls on C1 and C4, one mirror through C1 and C4 and a second at right angles to it; 3 signals.',
+  alt: 'o-, m- and p-xylene side by side, each ring numbered C1 to C6 with its mirror planes drawn edge-on as dashed lines. o-Xylene: methyls on C1 and C2, one mirror between them; 4 lines. m-Xylene: methyls on C1 and C3, one mirror through C2 and C5; 5 lines. p-Xylene: methyls on C1 and C4, one mirror through C1 and C4 and a second at right angles to it; 3 lines.',
   viewBox: '0 0 760 330',
   build() {
     let s = '';
     const cy = 150, r = 44;
     const cols = [
-      { cx: 130, name: 'o-xylene', spec: ORTHO, sets: 'C1=C2 · C3=C6 · C4=C5', n: '3 ring + 1 CH₃ = 4 signals' },
-      { cx: 380, name: 'm-xylene', spec: META, sets: 'C1=C3 · C2 · C4=C6 · C5', n: '4 ring + 1 CH₃ = 5 signals' },
-      { cx: 630, name: 'p-xylene', spec: PARA, sets: 'C1=C4 · C2=C3=C5=C6', n: '2 ring + 1 CH₃ = 3 signals' },
+      { cx: 130, name: 'o-xylene', spec: ORTHO, sets: 'C1/C2 · C3/C6 · C4/C5', n: '3 ring + 1 CH₃ = 4 lines' },
+      { cx: 380, name: 'm-xylene', spec: META, sets: 'C1/C3 · C2 · C4/C6 · C5', n: '4 ring + 1 CH₃ = 5 lines' },
+      { cx: 630, name: 'p-xylene', spec: PARA, sets: 'C1/C4 · C2/C3/C5/C6', n: '2 ring + 1 CH₃ = 3 lines' },
     ];
     for (const col of cols) {
       s += `<text class="fg-tag" x="${col.cx}" y="24" text-anchor="middle" font-size="11"><tspan font-style="italic">${col.name[0]}</tspan>${col.name.slice(1)}</text>`;
@@ -260,17 +259,17 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-c-nmr-p-xylene',
   lessons: ['c-nmr'],
-  alt: 'p-Xylene with the ring numbered C1 to C6 and methyls on C1 and C4. Mirror 1 runs vertically through C1 and C4; mirror 2 runs horizontally, at right angles to it. Below: the two methyls give 1 signal, C1 and C4 give 1 signal, and C2, C3, C5 and C6 give 1 signal, so 3 signals from 8 carbons.',
+  alt: 'p-Xylene with the ring numbered C1 to C6 and methyls on C1 and C4. Mirror 1 runs vertically through C1 and C4; mirror 2 runs horizontally, at right angles to it. Below: the two methyls give 1 line, C1 and C4 give 1 line, and C2, C3, C5 and C6 give 1 line, so 3 lines from 8 carbons.',
   viewBox: '0 0 340 360',
   build() {
     let s = '';
     s += ring(170, 150, 50, { ...PARA, mirrors: [{ deg: 90, len: 120 }, { deg: 0, len: 110 }] });
     s += tag(196, 36, 'mirror 1', { anchor: 'start' });
     s += tag(22, 142, 'mirror 2', { anchor: 'start' });
-    s += tag(170, 284, 'both CH₃ carbons: 1 signal');
-    s += tag(170, 304, 'C1 and C4: 1 signal');
-    s += tag(170, 324, 'C2, C3, C5 and C6: 1 signal');
-    s += tag(170, 350, '3 signals from 8 carbons', { cls: 'fg-tag-warn' });
+    s += tag(170, 284, 'both CH₃ carbons: 1 line');
+    s += tag(170, 304, 'C1 and C4: 1 line');
+    s += tag(170, 324, 'C2, C3, C5 and C6: 1 line');
+    s += tag(170, 350, '3 lines from 8 carbons', { cls: 'fg-tag-warn' });
     return s;
   },
   caption: 'Follow each dashed mirror and check which numbered carbons it swaps.',
@@ -329,7 +328,7 @@ FIGURES.push({
   id: 'c-nmr-dept-butanone',
   section: 'c-nmr',
   anchor: 'Between the two, every carbon gets its hydrogen count.</p>',
-  alt: 'Three spectra of butan-2-one on one shift axis from 220 to 0 ppm, with the molecule underneath. Routine carbon-13: four lines, at 209, 37, 29 and 8 ppm, plus a small gray three-line solvent signal at 77. DEPT-135: lines pointing up at 29 and 8 labeled CH3, a line pointing down at 37 labeled CH2, and a dashed gap at 209 labeled missing, C=O has no H. DEPT-90: no lines. The molecule CH3–C(=O)–CH2–CH3 has its carbons labeled 29, 209, 37 and 8 ppm.',
+  alt: 'Three spectra of butan-2-one on one shift axis from 220 to 0 ppm, with the molecule underneath. Routine carbon-13: four lines, at 209, 37, 29 and 8 ppm, plus a small gray three-line solvent group at 77. DEPT-135: lines pointing up at 29 and 8 labeled CH3, a line pointing down at 37 labeled CH2, and a dashed gap at 209 labeled missing, C=O has no H. DEPT-90: no lines. The molecule CH3–C(=O)–CH2–CH3 has its carbons labeled 29, 209, 37 and 8 ppm.',
   viewBox: '0 0 760 616',
   build() {
     const X = (d) => 80 + ((220 - d) / 220) * 620;
@@ -339,7 +338,7 @@ FIGURES.push({
     s += butanone(394, 562, 760);
     return s;
   },
-  caption: 'Read each carbon down the column. The routine spectrum finds four carbons. DEPT-135 sorts them by direction. DEPT-90 is empty, so both upward lines are CH₃, and the line missing from both DEPT spectra is the C=O carbon.',
+  caption: 'Read each carbon down the column. The routine spectrum finds four lines for four carbons, so no two carbons are equivalent. DEPT-135 sorts them by direction. DEPT-90 is empty, so both upward lines are CH₃, and the line missing from both DEPT spectra is the C=O carbon.',
 });
 
 FIGURES.push({
