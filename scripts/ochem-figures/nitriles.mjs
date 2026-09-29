@@ -277,7 +277,7 @@ FIGURES.push({
   anchor: 'hydrolyzes it to the aldehyde.</p>',
   lessons: ['nitriles'],
   viewBox: '0 0 340 628',
-  alt: 'Three panels. Panel 1: R–C≡N with an H–Al unit below the carbon; one curved arrow runs from the H–Al bond to the nitrile carbon, a second moves one pi bond of the C≡N onto nitrogen. Panel 2: the imine anion, with R and H on the old nitrile carbon, a C=N double bond, one lone pair on nitrogen, and aluminum bonded to the nitrogen. Panel 3, two columns. Left, DIBAL-H: it adds one hydride and stops; H3O+ then gives the aldehyde, R–CH=O. Right, LiAlH4: a second hydride adds, and water then gives the primary amine, R–CH2–NH2.',
+  alt: 'Three panels. Panel 1: R–C≡N with an H–Al unit below the carbon; one curved arrow runs from the H–Al bond to the nitrile carbon, a second moves one pi bond of the C≡N onto nitrogen. Panel 2: the aluminum-bound imine, with R and H on the old nitrile carbon, a C=N double bond, one lone pair on nitrogen, and aluminum bonded to the nitrogen. Panel 3, two columns. Left, DIBAL-H: it adds one hydride and stops; H3O+ then gives the aldehyde, R–CH=O. Right, LiAlH4: a second hydride adds, and water then gives the primary amine, R–CH2–NH2.',
   build() {
     let s = '';
     s += cell(8, 8, 324, 184, 'ONE HYDRIDE ADDS TO THE NITRILE CARBON', (Q) => {
@@ -285,7 +285,7 @@ FIGURES.push({
       t += tag(Q(162, 0).x, Q(0, 174).y, 'H–Al: the hydride from LiAlH₄ or DIBAL-H');
       return t;
     });
-    s += cell(8, 200, 324, 184, 'AN IMINE ANION, HELD BY ALUMINUM', (Q) => {
+    s += cell(8, 200, 324, 184, 'AN IMINE WITH ALUMINUM ON N', (Q) => {
       let t = imineAnionAl(Q);
       t += tag(Q(162, 0).x, Q(0, 174).y, 'metal on N: now a poor electrophile');
       return t;
@@ -312,7 +312,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Both reagents make the same imine anion. What happens next depends on the reagent.',
+  caption: 'Both reagents make the same kind of aluminum-bound imine. What happens next depends on the reagent.',
 });
 
 /* ===================================================================== 5
@@ -323,7 +323,7 @@ FIGURES.push({
   anchor: 'the imine hydrolyzes to a <b>ketone</b>.</p>',
   lessons: ['nitriles'],
   viewBox: '0 0 340 572',
-  alt: 'Three panels. Panel 1: R–C≡N with CH3–Mg–Br below the carbon; one curved arrow runs from the C–Mg bond to the nitrile carbon, a second moves one pi bond of the C≡N onto nitrogen. Panel 2: the imine anion, with R and CH3 on the old nitrile carbon, a C=N double bond, two lone pairs and a negative charge on nitrogen, and MgBr+ beside it; no second CH3MgBr can attack it. Panel 3: after H3O+ workup, the imine with C=NH, which hydrolyzes to the ketone with C=O.',
+  alt: 'Three panels. Panel 1: R–C≡N with CH3–Mg–Br below the carbon; one curved arrow runs from the C–Mg bond to the nitrile carbon, a second moves one pi bond of the C≡N onto nitrogen. Panel 2: the imine anion, with R and CH3 on the old nitrile carbon, a C=N double bond, two lone pairs and a negative charge on nitrogen, and MgBr+ beside it; it is too poor an electrophile for a second CH3MgBr to attack. Panel 3: after H3O+ workup, the imine with C=NH, which hydrolyzes to the ketone with C=O.',
   build() {
     let s = '';
     s += cell(8, 8, 324, 184, 'CH₃MgBr ADDS TO THE NITRILE CARBON', (Q) => {
@@ -339,7 +339,7 @@ FIGURES.push({
       t += tag(Q(162, 0).x, Q(0, 178).y, 'the CH₃ carbon bonds to the nitrile carbon');
       return t;
     });
-    s += cell(8, 200, 324, 184, 'AN IMINE ANION: NOTHING LEFT TO ATTACK', (Q) => {
+    s += cell(8, 200, 324, 184, 'AN IMINE ANION: A SECOND GRIGNARD CANNOT ADD', (Q) => {
       const c = Q(134, 86), n = Q(228, 86);
       const r = armEnd(c, 120, 52), me = armEnd(c, 240, 52);
       let t = B(c, r, 'C', 'R') + B(c, me, 'C', 'CH₃') + B(c, n, 'C', 'N', { order: 2 });
@@ -395,10 +395,10 @@ FIGURES.push({
   alt: 'Propanenitrile, drawn skeletally with its nitrile carbon highlighted, at the left, with four arrows. H3O+ or HO− with heat gives propanoic acid. LiAlH4, then water, gives propan-1-amine, where the nitrile carbon is now the CH2. DIBAL-H, one equivalent at −78 °C, then H3O+, gives propanal. CH3MgBr, then H3O+, gives butan-2-one, with the new CH3 in a second color. The highlighted carbon is present in all five structures.',
   build() {
     let s = panel(20, 128, 196, 110, { kind: 'warn' });
-    const v = [P(52, 196), P(82, 178), P(112, 196)];
-    const c = P(v[2].x + UP.x * 34, v[2].y + UP.y * 34);
+    const v = [P(72, 178), P(102, 196)];
+    const c = P(v[1].x + UP.x * 34, v[1].y + UP.y * 34);
     const n = P(c.x + UP.x * 40, c.y + UP.y * 40);
-    s += chainInk(v) + bond(v[2], c, { rFrom: 0, rTo: 14 }) + B(c, n, 'C', 'N', { order: 3 }) + A(n, 'N') + A(c, 'C', { kind: 'hi' });
+    s += chainInk(v) + bond(v[1], c, { rFrom: 0, rTo: 14 }) + B(c, n, 'C', 'N', { order: 3 }) + A(n, 'N') + A(c, 'C', { kind: 'hi' });
     s += tag(118, 226, 'propanenitrile');
     const rows = [
       { ry: 52, rg: 'H₃O⁺ or HO⁻, heat', kind: 'acid', name: 'propanoic acid' },

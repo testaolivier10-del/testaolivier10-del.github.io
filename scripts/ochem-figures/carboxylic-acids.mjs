@@ -86,8 +86,8 @@ function carboxyl(Q, x, y, o = {}) {
     // lower O lone pair -> C–O bond; C=O pi -> upper O.
     const lp = at(oR, o.H ? 130 : 120, 26);
     s += curve(lp, mid(c, oR), { bow: 20 });
-    const piStart = at(mid(c, oT), 180, 6);
-    s += curve(piStart, at(oT, 180, 17), { bow: 16 });
+    const piStart = at(mid(c, oT), 180, 7);
+    s += curve(piStart, at(oT, 200, 21), { bow: 14 });
   }
   return { s, c, oT, oR, me, h };
 }
@@ -99,7 +99,9 @@ const structureCells = [
   ['ACETIC ACID', ['sp² carbon: three groups, flat, 120° apart'], (Q, w) => {
     const m = carboxyl(Q, w / 2 - 20, 108, { H: true, arrows: true });
     let s = m.s;
-    s += text(m.c.x + 30, m.c.y - 10, '120°', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    const a1 = at(m.c, 150, 27), a2 = at(m.c, 30, 27);
+    s += `<path class="fg-bond-soft" d="M${r2(a1.x)} ${r2(a1.y)} A27 27 0 0 0 ${r2(a2.x)} ${r2(a2.y)}"></path>`;
+    s += text(m.c.x, m.c.y + 44, '120°', { cls: 'fg-tag', size: 11 });
     return s;
   }],
   ['MINOR CONTRIBUTOR', ['charges separated, so it counts for less', 'but the C–OH bond gains double-bond character'], (Q, w) => {
@@ -181,8 +183,7 @@ FIGURES.push({
     s += tag(380, 36, 'hydrogen bond');
     s += tag(380, 232, 'hydrogen bond');
 
-    s += text(40, 266, 'acetic acid · 60 g/mol · boils at 118 °C', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
-    s += text(720, 266, 'acetone · 58 g/mol · boils at 56 °C', { cls: 'fg-tag', size: 11, anchor: 'end' });
+    s += text(380, 266, 'acetic acid: 60 g/mol, bp 118 °C  ·  compare acetone (no O–H): 58 g/mol, bp 56 °C', { cls: 'fg-tag', size: 11 });
     return s;
   },
   caption: 'Each dashed line runs from one molecule’s O–H hydrogen to the other molecule’s C=O oxygen. Count the ring they close: eight atoms.',
@@ -228,11 +229,13 @@ FIGURES.push({
    ====================================================================== */
 /* A COOH on skeletal carbon p, whose chain neighbour is nb. The =O goes on
    the side given by `oSide` (+1 or −1, turning from the neighbour bond). */
-function cooh(p, nb, oSide) {
+function cooh(p, nb, oSide, labeled = false) {
   const base = (Math.atan2(-(nb.y - p.y), nb.x - p.x) * 180) / Math.PI;
-  const oD = armEnd(p, base + 120 * oSide, 40), oH = armEnd(p, base - 120 * oSide, 40);
-  let s = bond(p, oD, { rFrom: 0, rTo: 15, order: 2 }) + bond(p, oH, { rFrom: 0, rTo: 16 });
+  const L = labeled ? 46 : 40, rc = labeled ? 15 : 0;
+  const oD = armEnd(p, base + 120 * oSide, L), oH = armEnd(p, base - 120 * oSide, L);
+  let s = bond(p, oD, { rFrom: rc, rTo: 15, order: 2 }) + bond(p, oH, { rFrom: rc, rTo: 16 });
   s += A(oD, 'O') + A(oH, 'OH', { r: 16 });
+  if (labeled) s += A(p, 'C', { kind: 'hi' });
   return s;
 }
 const diacidCells = [
@@ -250,12 +253,13 @@ FIGURES.push({
     let s = '';
     diacidCells.forEach(([title, n, between, pk, gap], i) => {
       s += cell(8 + i * 252, 8, 240, 242, title, [between, pk, gap], (Q, w) => {
-        const span = (n - 1) * 36;
-        const pts = zig(0, 0, n, 36, 20).map((p) => Q(w / 2 - span / 2 + p.x, 108 + p.y));
+        const dx = n === 2 ? 52 : 42;
+        const span = (n - 1) * dx;
+        const pts = zig(0, 0, n, dx, 22).map((p) => Q(w / 2 - span / 2 + p.x, 110 + p.y));
         let t = '';
-        for (let k = 0; k < n - 1; k++) t += sk(pts[k], pts[k + 1]);
-        t += cooh(pts[0], pts[1], 1);
-        t += cooh(pts[n - 1], pts[n - 2], n % 2 === 0 ? 1 : -1);
+        for (let k = 0; k < n - 1; k++) t += bond(pts[k], pts[k + 1], { rFrom: k === 0 ? 15 : 0, rTo: k + 1 === n - 1 ? 15 : 0 });
+        t += cooh(pts[0], pts[1], 1, true);
+        t += cooh(pts[n - 1], pts[n - 2], n % 2 === 0 ? 1 : -1, true);
         for (let k = 1; k < n - 1; k++) t += mark(pts[k]);
         return t;
       }, { footCls: 'fg-tag' });
@@ -271,7 +275,7 @@ FIGURES.push({
 const benzoicCells = [
   ['BENZOIC ACID', null, 'H at the para position', 'pKa 4.20', 'fg-tag'],
   ['p-NITROBENZOIC ACID', 'NO₂', 'pulls electrons out of the ring', 'pKa 3.44: stronger', 'fg-tag-good'],
-  ['p-METHOXYBENZOIC ACID', 'OCH₃', 'O lone pair pushes electrons in', 'pKa 4.47: weaker', 'fg-tag-warn'],
+  ['p-METHOXYBENZOIC ACID', 'OCH₃', 'pushes electrons into the ring', 'pKa 4.47: weaker', 'fg-tag-warn'],
 ];
 FIGURES.push({
   id: 'benzoic-acids',
@@ -297,7 +301,7 @@ FIGURES.push({
         } else {
           t += mark(bot);
         }
-        t += text(bot.x + 44, bot.y + 4, 'para', { cls: 'fg-tag', size: 11, anchor: 'start' });
+        t += group ? text(bot.x + 8, bot.y + 20, 'para', { cls: 'fg-tag', size: 11, anchor: 'start' }) : text(bot.x + 10, bot.y + 16, 'para', { cls: 'fg-tag', size: 11, anchor: 'start' });
         return t;
       }, { footCls: cls });
     });
@@ -326,14 +330,6 @@ const routeCells = [
     t += bond(v[3], h, { rFrom: 0, rTo: 11 }) + A(h, 'H', { r: 11 });
     return t + mark(v[3]);
   }],
-  ['BUTANENITRILE', ['H₃O⁺, heat'], (Q) => {
-    const v = zig(0, 0, 3, ZX, ZY).map((p) => Q(52 + p.x, 104 + p.y));
-    let t = sk(v[0], v[1]) + sk(v[1], v[2]);
-    const c = armEnd(v[2], 30, 32), nAt = armEnd(c, 30, 36);
-    t += sk(v[2], c);
-    t += bond(c, nAt, { rFrom: 0, rTo: 15, order: 3, gap: 3.2 }) + A(nAt, 'N');
-    return t + mark(c);
-  }],
   ['1-BROMOPROPANE', ['1. Mg  2. CO₂  3. H₃O⁺', 'the new carbon comes from CO₂'], (Q) => {
     const v = zig(0, 0, 3, ZX, ZY).map((p) => Q(76 + p.x, 78 + p.y));
     let t = sk(v[0], v[1]) + sk(v[1], v[2]);
@@ -351,7 +347,7 @@ const routeCells = [
     for (let k = 0; k < 7; k++) t += k === 3 ? ringDouble(v[3], v[4], P(v[3].x, v[3].y + 40), { inset: 5, gap: 4.4 }) : sk(v[k], v[k + 1]);
     return t + mark(v[3]) + mark(v[4]);
   }],
-  ['ALL FIVE GIVE BUTANOIC ACID', ['marked: the COOH carbon'], (Q) => {
+  ['ALL FOUR GIVE BUTANOIC ACID', ['marked: the COOH carbon'], (Q) => {
     const v = zig(0, 0, 4, ZX, ZY).map((p) => Q(62 + p.x, 100 + p.y));
     let t = sk(v[0], v[1]) + sk(v[1], v[2]) + sk(v[2], v[3]);
     const o = armEnd(v[3], 90, 34), oh = armEnd(v[3], 330, 34);
@@ -364,13 +360,13 @@ FIGURES.push({
   id: 'routes-to-acid',
   section: 'carboxylic-acids',
   anchor: '<h3>Getting to and from carboxylic acids</h3>',
-  alt: 'Six skeletal structures. Butan-1-ol, butanal, butanenitrile, 1-bromopropane plus carbon dioxide, and oct-4-ene, each with the reagent that turns it into a carboxylic acid and the carbon that becomes the COOH carbon marked. The sixth panel is butanoic acid, the product of all five.',
+  alt: 'Five skeletal structures. Butan-1-ol, butanal, 1-bromopropane plus carbon dioxide, and oct-4-ene, each with the reagent that turns it into a carboxylic acid and the carbon that becomes the COOH carbon marked. The fifth panel is butanoic acid, the product of all four.',
   viewBox: '0 0 760 404',
   build() {
     let s = '';
     routeCells.forEach(([title, foot, draw], i) => {
-      const col = i % 3, row = Math.floor(i / 3);
-      s += cell(8 + col * 252, 8 + row * 200, 240, 188, title, foot, draw, { kind: i === 5 ? 'good' : null, footCls: i === 5 ? 'fg-tag-good' : 'fg-tag' });
+      const row = i < 3 ? 0 : 1, x = row === 0 ? 8 + i * 252 : 134 + (i - 3) * 252;
+      s += cell(x, 8 + row * 200, 240, 188, title, foot, draw, { kind: i === 4 ? 'good' : null, footCls: i === 4 ? 'fg-tag-good' : 'fg-tag' });
     });
     return s;
   },
@@ -382,9 +378,8 @@ FIGURES.push({
    ====================================================================== */
 const donationCells = [
   ['ACETIC ACID', ['the OH lone pair feeds the carbon', 'smaller δ+: the weaker electrophile'], (Q, w) => {
-    const m = carboxyl(Q, w / 2 - 20, 104, { H: true, cKind: 'hi' });
+    const m = carboxyl(Q, w / 2 - 20, 104, { H: true, cKind: 'hi', arrows: true });
     let t = m.s;
-    t += curve(at(m.oR, 130, 26), mid(m.c, m.oR), { bow: 20 });
     t += text(m.c.x - 26, m.c.y - 14, 'δ+', { cls: 'fg-tag', size: 11, anchor: 'end' });
     return t;
   }],
@@ -403,7 +398,7 @@ FIGURES.push({
   section: 'carboxylic-acids',
   anchor: 'A carboxylic acid is therefore noticeably <i>less</i> reactive toward nucleophilic attack than a ketone.</p>',
   viewBox: '0 0 760 252',
-  alt: 'Left: acetic acid, with a curved arrow from a lone pair on the OH oxygen into the bond to the carbonyl carbon, and a small delta-plus on that carbon. Right: acetone, whose carbonyl carbon carries only two CH3 groups and a larger delta-plus.',
+  alt: 'Left: acetic acid, with curved arrows from a lone pair on the OH oxygen into the bond to the carbonyl carbon and from the C=O pi bond onto the top oxygen, and a small delta-plus on the carbonyl carbon. Right: acetone, whose carbonyl carbon carries only two CH3 groups and a larger delta-plus.',
   build() {
     let s = '';
     s += cell(8, 8, 364, 236, ...donationCells[0]);
@@ -415,7 +410,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-acid-donation-vs-ketone',
   lessons: ['carboxylic-acids'],
-  alt: 'Two stacked panels. Top: acetic acid, with a curved arrow from a lone pair on the OH oxygen into the bond to the carbonyl carbon, and a small delta-plus on that carbon. Bottom: acetone, whose carbonyl carbon carries only two CH3 groups and a larger delta-plus.',
+  alt: 'Two stacked panels. Top: acetic acid, with curved arrows from a lone pair on the OH oxygen into the bond to the carbonyl carbon and from the C=O pi bond onto the top oxygen, and a small delta-plus on the carbonyl carbon. Bottom: acetone, whose carbonyl carbon carries only two CH3 groups and a larger delta-plus.',
   viewBox: '0 0 340 504',
   build() {
     let s = '';
@@ -474,9 +469,10 @@ FIGURES.push({
     // Panel 2: the enol and CO2.
     s += cell(360, 8, 214, 284, 'ENOL + CO₂', ['the first product is an enol'], (Q) => {
       const c = Q(100, 116);
-      const oh = armEnd(c, 90, 50), me = armEnd(c, 210, 50), ch2 = armEnd(c, 330, 52);
-      let t = bond(c, oh, { rFrom: 15, rTo: 16 }) + bond(c, me, { rFrom: 15, rTo: 19 }) + bond(c, ch2, { rFrom: 15, rTo: 19, order: 2 });
-      t += A(oh, 'OH', { r: 16 }) + A(me, 'CH₃', { r: 19 }) + A(ch2, 'CH₂', { r: 19, kind: 'warn' }) + A(c, 'C', { kind: 'hi' });
+      const oe = armEnd(c, 90, 50), he = armEnd(oe, 30, 36), me = armEnd(c, 210, 50), ch2 = armEnd(c, 330, 52);
+      let t = bond(c, oe, { rFrom: 15, rTo: 15 }) + bond(oe, he, { rFrom: 15, rTo: 11 }) + bond(c, me, { rFrom: 15, rTo: 19 }) + bond(c, ch2, { rFrom: 15, rTo: 19, order: 2 });
+      t += A(oe, 'O') + A(he, 'H', { r: 11 }) + A(me, 'CH₃', { r: 19 }) + A(ch2, 'CH₂', { r: 19, kind: 'warn' }) + A(c, 'C', { kind: 'hi' });
+      t += lonePair(oe.x, oe.y, 180, { dist: 22 }) + lonePair(oe.x, oe.y, 250, { dist: 22 });
       const o1 = Q(62, 212), cc = Q(107, 212), o2 = Q(152, 212);
       t += bond(o1, cc, { order: 2 }) + bond(cc, o2, { order: 2 });
       t += A(o1, 'O') + A(o2, 'O') + A(cc, 'C', { kind: 'hi' });

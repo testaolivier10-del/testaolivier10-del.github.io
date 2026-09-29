@@ -175,7 +175,7 @@ FIGURES.push({
     s += tg(170, 308, 'fastest at the top, slowest at the bottom', 'mut');
     return s;
   },
-  caption: 'Read across each row: the lower the pKa of the conjugate acid, the weaker the base that leaves. The arrow shows the direction conversions run.',
+  caption: 'Read across each row: the lower the pKa of the conjugate acid, the weaker the base that leaves.',
 });
 
 /* ------------------------------------------------------------------ 3 ---
@@ -221,7 +221,7 @@ function esterToAmide(x0, y0) {
   s += collapse(t4.o) + breakRight(c4, t4.r);
   s += tg(x0 + 262, y0 + 590, 'CH₃O⁻ leaves', 'good');
   s += tg(x0 + 262, y0 + 608, '(CH₃OH, pKa 16)', 'good');
-  s += tg(x0 + 262, y0 + 706, 'CH₃NH⁻ stays', 'warn');
+  s += tg(x0 + 262, y0 + 706, 'CH₃NH⁻ does not leave', 'warn');
   s += tg(x0 + 262, y0 + 724, '(CH₃NH₂, pKa ≈ 38)', 'warn');
   // ---- product ----
   s += box(x0, y0 + 758, 176, 'PRODUCT · THE AMIDE');
@@ -265,7 +265,7 @@ FIGURES.push({
     s += tg(262, 142, 'this bond breaks', 'good');
     s += tg(262, 212, 'leaves as CH₃O⁻', 'good');
     s += tg(262, 230, '(CH₃OH, pKa 16)', 'good');
-    s += tg(76, 212, 'CH₃NH⁻ would', 'warn');
+    s += tg(76, 212, 'would leave as CH₃NH⁻', 'warn');
     s += tg(76, 230, '(CH₃NH₂, pKa ≈ 38)', 'warn');
     s += rule(24, 246, 316, 246);
     s += tg(170, 266, 'ester + CH₃NH₂ → amide');
