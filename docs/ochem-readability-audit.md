@@ -2,7 +2,7 @@
 
 Date: 2026-09-24. Status: Phase 0 approved. **Phase 1 done** (functional groups and all four nomenclature
 topics rewritten and audited; see `docs/ochem-phase1-report.md`) and approved. **Phase 2 in progress**, worst chapter
-first. Published so far: Foundations (all ten topics, including functional groups from Phase 1), Carbonyl Chemistry, Enolate Chemistry and Reactivity (all seven topics each), Biomolecules (all five topics), Stereochemistry (all nine topics), Carboxylic Acids & Derivatives and Alkenes & Alkynes (all six topics each), Conjugation, Aromatic Follow-Through, Polymers and Alkanes & Conformations (all five topics each).
+first. Published so far: Foundations (all ten topics, including functional groups from Phase 1), Carbonyl Chemistry, Enolate Chemistry and Reactivity (all seven topics each), Biomolecules (all five topics), Stereochemistry (all nine topics), Carboxylic Acids & Derivatives and Alkenes & Alkynes (all six topics each), Conjugation, Aromatic Follow-Through, Polymers, Alkanes & Conformations and Synthesis & Retrosynthesis (all five topics each).
 
 ## What this is
 
