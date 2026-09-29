@@ -375,7 +375,7 @@ function ringProduct(cx, cy, r, L, spec) {
     s += subst(ring0.c1, 0, L - 6, 'H', 'h', 10, true) + subst(ring0.c2, 180, L - 6, 'H', 'h', 10, true);
   } else if (g3) {
     s += subst(ring0.c1, 90, L, g1[0], g1[1], 15, true) + subst(ring0.c2, 150, L, g2[0], g2[1], 15, true);
-    s += subst(ring0.c1, 20, L, g3[0], g3[1], 16);
+    s += subst(ring0.c1, 10, L, g3[0], g3[1], 16);
   } else {
     s += subst(ring0.c1, 60, L, g1[0], g1[1], 14, true) + subst(ring0.c2, 120, L, g2[0], g2[1], 14, true);
   }
@@ -426,7 +426,7 @@ FIGURES.push({
   build() {
     let s = '';
     const o = { pad: 4, h: 164, cy: 76, r: 18, L: 28, smL: 24, smX: 50, smName: false, a1: 76, a2: 128, below: true,
-      p1: 170, p2: 284, and: false, nameX: 170, nameCls: 'fg-tag' };
+      p1: 170, p2: 276, and: false, nameX: 170, nameCls: 'fg-tag' };
     ['br2', 'os', 'h2'].forEach((k, i) => { s += stereoRow(k, 6 + i * 170, 340, o); });
     return s;
   },
