@@ -112,7 +112,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 7</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -175,15 +175,16 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Axial points up and down; equatorial points outward.',
-        bodyHtml: '<p class="step-body">Every carbon on a cyclohexane chair carries two substituent positions. <b>Axial</b> substituents point straight up or straight down, roughly parallel to an imaginary axis running through the center of the ring. <b>Equatorial</b> substituents point outward, roughly in the plane of the ring itself (like the equator of a globe).</p><p class="step-body" style="margin-bottom:0;">Going around the ring, axial positions alternate: up on carbon 1, down on carbon 2, up on carbon 3, and so on. Every single carbon has exactly one axial and one equatorial position, never two of the same kind.</p>'
+        title: 'Every ring carbon has an axial and an equatorial position.',
+        bodyHtml: '<p class="step-body">In a cyclohexane chair, each carbon bonds to two ring carbons and has two more positions for hydrogens or other groups. An <b>axial</b> position points straight up or straight down, parallel to the axis through the middle of the ring. An <b>equatorial</b> position points outward around the rim, the ring\'s "equator."</p><p class="step-body">The axial positions alternate: up on C1, down on C2, up on C3, and so on round the ring. So C1, C3 and C5 have their axial positions on the top face.</p><p class="step-body" style="margin-bottom:0;">Each carbon\'s equatorial bond tilts slightly the opposite way from its own axial bond.</p>',
+        diagramHtml: '<!-- fig:l-chair-positions:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 250" role="img" aria-label="A cyclohexane chair numbered C1 to C6. Bold vertical axial bonds point up on C1, C3 and C5 and down on C2, C4 and C6. Thin equatorial bonds point outward."><line class="fg-bond" x1="285.15" y1="109.79" x2="228.57" y2="112.69"></line><line class="fg-bond" x1="228.57" y1="112.69" x2="115.43" y2="76.28"></line><line class="fg-bond" x1="115.43" y1="76.28" x2="58.85" y2="146.21"></line><line class="fg-bond" x1="58.85" y1="146.21" x2="115.42" y2="143.31"></line><line class="fg-bond" x1="115.42" y1="143.31" x2="228.57" y2="179.72"></line><line class="fg-bond" x1="228.57" y1="179.72" x2="285.15" y2="109.79"></line><line class="fg-bond-hi" x1="285.15" y1="109.79" x2="285.15" y2="73.79"></line><line class="fg-bond-soft" x1="285.15" y1="109.79" x2="317.25" y2="120.98"></line><text class="fg-tag" x="285.15" y="67.79" text-anchor="middle" font-size="11">up</text><text class="fg-tag" x="301.71" y="109.97" text-anchor="middle" font-size="11">C1</text><line class="fg-bond-hi" x1="228.57" y1="112.69" x2="228.57" y2="148.69"></line><line class="fg-bond-soft" x1="228.57" y1="112.69" x2="249.41" y2="85.83"></line><text class="fg-tag" x="228.57" y="163.69" text-anchor="middle" font-size="11">down</text><text class="fg-tag" x="211.98" y="120.4" text-anchor="middle" font-size="11">C2</text><line class="fg-bond-hi" x1="115.43" y1="76.28" x2="115.43" y2="40.28"></line><line class="fg-bond-soft" x1="115.43" y1="76.28" x2="81.63" y2="79.82"></line><text class="fg-tag" x="115.43" y="34.28" text-anchor="middle" font-size="11">up</text><text class="fg-tag" x="131.8" y="75.7" text-anchor="middle" font-size="11">C3</text><line class="fg-bond-hi" x1="58.85" y1="146.21" x2="58.85" y2="182.21"></line><line class="fg-bond-soft" x1="58.85" y1="146.21" x2="26.75" y2="135.02"></line><text class="fg-tag" x="58.85" y="197.21" text-anchor="middle" font-size="11">down</text><text class="fg-tag" x="42.29" y="154.03" text-anchor="middle" font-size="11">C4</text><line class="fg-bond-hi" x1="115.42" y1="143.31" x2="115.42" y2="107.31"></line><line class="fg-bond-soft" x1="115.42" y1="143.31" x2="94.58" y2="170.17"></line><text class="fg-tag" x="115.42" y="101.31" text-anchor="middle" font-size="11">up</text><text class="fg-tag" x="132.01" y="143.6" text-anchor="middle" font-size="11">C5</text><line class="fg-bond-hi" x1="228.57" y1="179.72" x2="228.57" y2="215.72"></line><line class="fg-bond-soft" x1="228.57" y1="179.72" x2="262.37" y2="176.18"></line><text class="fg-tag" x="228.57" y="230.72" text-anchor="middle" font-size="11">down</text><text class="fg-tag" x="212.2" y="188.3" text-anchor="middle" font-size="11">C6</text><text class="fg-tag-mut" x="170" y="240" text-anchor="middle" font-size="10">bold = axial   thin = equatorial</text></svg><figcaption>Axial bonds are vertical and alternate up, down, up. Equatorial bonds point outward.</figcaption></figure><!-- fig:l-chair-positions:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the two equatorial positions on this chair.</h2>' +
-            '<p class="step-body">Four of the twelve positions are drawn, and none of them is labeled. Two are axial and two are equatorial — decide which is which from the direction each bond points, then click the two equatorial ones.</p>' +
+            '<p class="step-body">Four of the twelve positions are drawn, and none of them is labeled. Two are axial and two are equatorial. Decide which is which from the direction each bond points, then click the two equatorial ones.</p>' +
             chairSvg() +
             '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Equatorial found: 0 / 2</div>' +
             api.feedbackHtml('fb') +
@@ -203,11 +204,11 @@ document.addEventListener('DOMContentLoaded', function(){
                 hint.textContent = 'Equatorial found: ' + found + ' / 2';
               } else {
                 mistake = true;
-                api.showFeedback(fb, false, 'That bond runs straight up or straight down the page, so it is axial. An equatorial bond angles outward from the ring instead — look for the two that point away from the ring rather than along its axis.');
+                api.showFeedback(fb, false, 'That bond runs straight up or straight down the page, so it is axial. An equatorial bond angles outward from the ring instead. Look for the two bonds that point away from the ring rather than along its axis.');
               }
               if(found === 2 && !mistake){
                 api.record(true);
-                api.showFeedback(fb, true, 'Right. The two you clicked angle outward from the ring — each one is parallel to the ring bond two carbons away, which is the rule for drawing them. The other two run straight up and down the page, which is what axial looks like. On a full chair there are six of each.');
+                api.showFeedback(fb, true, 'Right. Those two angle outward from the ring, which is what equatorial bonds do. The other two run straight up and down the page, so they are axial. A full chair has six of each.');
                 next.disabled = false;
               } else if(found === 2 && mistake){
                 api.record(false);
@@ -219,42 +220,60 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       },
       {
-        type: 'mcq',
-        eyebrow: 'Step 2 · Guided Practice',
-        title: 'A 1,3-diaxial interaction is...',
-        options: ['A bond that forms between carbons 1 and 3', 'An attraction between two equatorial substituents', 'Steric clash between two axial substituents on the same face, at positions 1 and 3'],
-        correctIndex: 2,
-        correctFeedback: 'Correct — axial substituents at 1 and 3 (or equivalently 1 and 5) point toward each other on the same face and can bump into each other sterically.',
-        wrongFeedback: 'No new bond forms — this is a through-space steric clash between two axial groups pointing toward each other, not a bonding interaction.'
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'An axial group crowds the axial hydrogens two carbons away.',
+        bodyHtml: '<p class="step-body">Put a methyl group on C1 in the axial position, pointing up. The axial bonds on C3 and C5 point up too, and each carries a hydrogen. All three axial groups crowd the same face of the ring.</p><p class="step-body">This crowding is a <b>1,3-diaxial interaction</b>: steric strain between two axial groups on the same face, two carbons apart. An axial methyl has two of them, one with the axial hydrogen on C3 and one with the axial hydrogen on C5. Each costs about 0.9 kcal/mol, the same as a gauche interaction in butane.</p><p class="step-body" style="margin-bottom:0;">An equatorial methyl points out, away from the ring, and has no 1,3-diaxial interactions.</p>',
+        diagramHtml: '<!-- fig:l-diaxial-clash:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 470" role="img" aria-label="Two chairs of methylcyclohexane, stacked. Top: the methyl on C1 is axial, next to the axial hydrogens on C3 and C5, with dashed lines marking the two contacts. Bottom: the methyl on C1 is equatorial and points outward."><rect class="fg-panel-warn" x="6" y="6" width="328" height="222" rx="10"></rect><rect class="fg-panel-good" x="6" y="240" width="328" height="222" rx="10"></rect><text class="fg-tag-warn" x="170" y="30" text-anchor="middle" font-size="11">METHYL AXIAL: 2 CONTACTS</text><line class="fg-bond" x1="283.15" y1="117.79" x2="226.57" y2="120.69"></line><line class="fg-bond" x1="226.57" y1="120.69" x2="113.43" y2="84.28"></line><line class="fg-bond" x1="113.43" y1="84.28" x2="56.85" y2="154.21"></line><line class="fg-bond" x1="56.85" y1="154.21" x2="113.42" y2="151.31"></line><line class="fg-bond" x1="113.42" y1="151.31" x2="226.57" y2="187.72"></line><line class="fg-bond" x1="226.57" y1="187.72" x2="283.15" y2="117.79"></line><line class="fg-bond" x1="113.43" y1="84.28" x2="113.43" y2="62.28"></line><circle class="fg-atom" cx="113.43" cy="52.28" r="10"></circle><text class="fg-lbl" x="113.43" y="56.72" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="113.42" y1="151.31" x2="113.42" y2="131.31"></line><circle class="fg-atom" cx="113.42" cy="121.31" r="10"></circle><text class="fg-lbl" x="113.42" y="125.75" text-anchor="middle" font-size="12">H</text><line class="fg-dash-hi" x1="268.34" y1="77.39" x2="123.30" y2="53.88"></line><line class="fg-dash-hi" x1="268.58" y1="83.35" x2="123.13" y2="118.93"></line><line class="fg-bond" x1="283.15" y1="117.79" x2="283.15" y2="95.79"></line><circle class="fg-atom-warn" cx="283.15" cy="79.79" r="16"></circle><text class="fg-lbl" x="283.15" y="83.31" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="283.15" y1="117.79" x2="309.58" y2="127"></line><circle class="fg-atom" cx="319.02" cy="130.29" r="10"></circle><text class="fg-lbl" x="319.02" y="134.73" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="300.69" y="117.74" text-anchor="middle" font-size="11">C1</text><text class="fg-tag" x="130.77" y="83.43" text-anchor="middle" font-size="11">C3</text><text class="fg-tag" x="130.99" y="151.38" text-anchor="middle" font-size="11">C5</text><text class="fg-tag-good" x="170" y="264" text-anchor="middle" font-size="11">METHYL EQUATORIAL: NONE</text><line class="fg-bond" x1="283.15" y1="351.79" x2="226.57" y2="354.69"></line><line class="fg-bond" x1="226.57" y1="354.69" x2="113.43" y2="318.28"></line><line class="fg-bond" x1="113.43" y1="318.28" x2="56.85" y2="388.21"></line><line class="fg-bond" x1="56.85" y1="388.21" x2="113.42" y2="385.31"></line><line class="fg-bond" x1="113.42" y1="385.31" x2="226.57" y2="421.72"></line><line class="fg-bond" x1="226.57" y1="421.72" x2="283.15" y2="351.79"></line><line class="fg-bond" x1="113.43" y1="318.28" x2="113.43" y2="296.28"></line><circle class="fg-atom" cx="113.43" cy="286.28" r="10"></circle><text class="fg-lbl" x="113.43" y="290.72" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="113.42" y1="385.31" x2="113.42" y2="365.31"></line><circle class="fg-atom" cx="113.42" cy="355.31" r="10"></circle><text class="fg-lbl" x="113.42" y="359.75" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="283.15" y1="351.79" x2="283.15" y2="323.79"></line><circle class="fg-atom" cx="283.15" cy="313.79" r="10"></circle><text class="fg-lbl" x="283.15" y="318.23" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="283.15" y1="351.79" x2="303.91" y2="359.03"></line><circle class="fg-atom-hi" cx="319.02" cy="364.29" r="16"></circle><text class="fg-lbl" x="319.02" y="367.81" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag" x="300.69" y="351.74" text-anchor="middle" font-size="11">C1</text><text class="fg-tag" x="130.77" y="317.43" text-anchor="middle" font-size="11">C3</text><text class="fg-tag" x="130.99" y="385.38" text-anchor="middle" font-size="11">C5</text></svg><figcaption>Top: the axial methyl on C1 shares the top face with the axial H on C3 and on C5 (dashed). Bottom: the equatorial methyl points away.</figcaption></figure><!-- fig:l-diaxial-clash:end -->'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 3 · Independent Practice',
-        title: 'A large A-value (like tert-butyl\'s 4.9 kcal/mol) means a substituent...',
-        options: ['Strongly prefers the equatorial position, avoiding 1,3-diaxial clashes', 'Strongly prefers the axial position', 'Has no positional preference at all'],
+        eyebrow: 'Guided Practice',
+        title: 'A methyl group sits axial on C1, pointing up. Which hydrogens does it have 1,3-diaxial interactions with?',
+        options: ['The axial hydrogens on C3 and C5', 'The axial hydrogens on C2 and C6', 'The equatorial hydrogens on C3 and C5'],
         correctIndex: 0,
-        correctFeedback: 'Correct. A-value is defined as the equatorial preference in kcal/mol — a bigger substituent has more to lose from 1,3-diaxial clashes, so it prefers equatorial even more strongly.',
-        wrongFeedback: 'A-value specifically measures how much a group prefers equatorial over axial — a larger number means a stronger equatorial preference, not axial.'
+        correctFeedback: 'Right. C3 and C5 are each two carbons from C1, and their axial bonds point up like C1\'s. All three axial groups share the top face.',
+        wrongFeedback: 'Axial directions alternate, so the axial bonds on C2 and C6 point down, to the other face. Equatorial bonds point out, away from the ring. Only the axial hydrogens on C3 and C5 share the top face with the methyl.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Real numbers: methyl vs. tert-butyl.',
-        bodyHtml: '<p class="step-body">Methylcyclohexane has an A-value of about 1.7 kcal/mol for the methyl group. An energy preference translates into an actual population split — the bigger the gap, the more lopsided the mixture — and for 1.7 kcal/mol at room temperature the split works out to roughly 95:5, equatorial-methyl to axial-methyl. (The equation behind that conversion is ΔG = −RT ln K; you will not need to run it in this course, only to know that a couple of kcal/mol is already enough to make one conformation dominate.) Methylcyclohexane is mostly, but not exclusively, in the equatorial form.</p><p class="step-body" style="margin-bottom:0;">tert-Butylcyclohexane has an A-value of 4.9 kcal/mol — so much larger that the axial form is present in under three parts in ten thousand. In practice, chemists treat a tert-butyl group as permanently locking the ring into whichever chair puts it equatorial, which is a genuinely useful trick for controlling the outcome of reactions elsewhere on the ring.</p>'
+        title: 'The A-value measures how strongly a group prefers equatorial.',
+        bodyHtml: '<p class="step-body">Methylcyclohexane can take a chair with the methyl axial or a chair with the methyl equatorial. They are the same compound in two shapes, so they are two conformations, like the anti and gauche forms of butane. Both are present at once, and the lower-energy one is the more common.</p><p class="step-body">The <b>A-value</b> of a group is the energy gap between those two chairs: how much lower in energy, in kcal/mol, the chair with the group equatorial is. For a methyl group it is 1.7 kcal/mol, which puts about 95% of methylcyclohexane in the equatorial chair at room temperature.</p><p class="step-body">For <i>tert</i>-butyl the A-value is 4.9 kcal/mol, and fewer than three molecules in ten thousand have it axial. A <i>tert</i>-butyl group therefore holds a ring in the chair that puts it equatorial.</p><p class="step-body" style="margin-bottom:0;">The equation that turns an energy gap into a ratio is ΔG = −RT ln K. The written section works through it.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'The A-value of isopropyl is 2.2 kcal/mol, and the A-value of chlorine is 0.5 kcal/mol. What do these numbers tell you?',
+        options: ['Isopropyl prefers equatorial more strongly than chlorine', 'Chlorine prefers equatorial more strongly than isopropyl does', 'Both groups prefer the axial position'],
+        correctIndex: 0,
+        correctFeedback: 'Right. Both A-values are positive, so both groups prefer equatorial. A larger A-value means a larger energy gap between the two chairs, so the isopropyl group\'s preference is the stronger one.',
+        wrongFeedback: 'An A-value is how much lower in energy the chair with the group equatorial is. Any positive value means equatorial is preferred, and a larger value means a stronger preference: 2.2 for isopropyl beats 0.5 for chlorine.'
       },
       {
         type: 'explain',
-        eyebrow: 'Why it matters',
-        title: 'Axial vs. equatorial identity isn\'t fixed — it depends which chair you\'re in.',
-        bodyHtml: '<div class="explain-box">A substituent that\'s axial in one chair conformation becomes equatorial in the other — you\'ll see exactly how in the next lesson on ring flips. A-values only tell you which chair the molecule prefers overall; they don\'t mean a given atom is permanently "the axial one." Keeping this straight is essential for predicting reactivity, since some reactions (like E2 elimination) specifically require a leaving group to be axial.</div>'
+        eyebrow: 'Explanation',
+        title: 'Up is not the same as axial.',
+        bodyHtml: '<p class="step-body">Two groups on a ring are <b>cis</b> when they sit on the same face and <b>trans</b> when they sit on opposite faces. That is fixed for the compound, because moving a group to the other face would mean breaking a bond.</p><p class="step-body">Axial or equatorial is a different question. Axial directions alternate, so neighboring carbons never have up bonds of the same kind: where C1\'s up bond is axial, C2\'s up bond is equatorial.</p><p class="step-body" style="margin-bottom:0;">In <i>cis</i>-1,2-dimethylcyclohexane both methyls point up. So in any chair, one methyl is axial and the other is equatorial.</p>',
+        diagramHtml: '<!-- fig:l-up-not-axial:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 250" role="img" aria-label="A chair of cis-1,2-dimethylcyclohexane. Both methyls point up. The methyl on C1 is axial; the methyl on C2 is equatorial."><line class="fg-bond" x1="273.15" y1="121.79" x2="216.57" y2="124.69"></line><line class="fg-bond" x1="216.57" y1="124.69" x2="103.43" y2="88.28"></line><line class="fg-bond" x1="103.43" y1="88.28" x2="46.85" y2="158.21"></line><line class="fg-bond" x1="46.85" y1="158.21" x2="103.42" y2="155.31"></line><line class="fg-bond" x1="103.42" y1="155.31" x2="216.57" y2="191.72"></line><line class="fg-bond" x1="216.57" y1="191.72" x2="273.15" y2="121.79"></line><line class="fg-bond" x1="273.15" y1="121.79" x2="273.15" y2="93.79"></line><circle class="fg-atom" cx="273.15" cy="77.79" r="16"></circle><text class="fg-lbl" x="273.15" y="81.3" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="216.57" y1="124.69" x2="234.96" y2="100.99"></line><circle class="fg-atom" cx="244.77" cy="88.35" r="16"></circle><text class="fg-lbl" x="244.77" y="91.87" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag" x="277.15" y="147.79" text-anchor="start" font-size="11">C1</text><text class="fg-tag" x="214.57" y="148.69" text-anchor="middle" font-size="11">C2</text><text class="fg-tag" x="293.15" y="81.79" text-anchor="start" font-size="11">up, axial</text><text class="fg-tag" x="224.77" y="78.35" text-anchor="end" font-size="11">up, equatorial</text><text class="fg-tag-good" x="170" y="240" text-anchor="middle" font-size="10">both up, so cis</text></svg><figcaption>Both methyls are up, so the compound is cis. One is axial and one is equatorial.</figcaption></figure><!-- fig:l-up-not-axial:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'In trans-1,2-dimethylcyclohexane, one methyl points up and the other points down. Which placements can a chair give the two methyls?',
+        options: ['Both equatorial, or both axial', 'One axial and one equatorial, in any chair', 'Both equatorial, and never both axial'],
+        correctIndex: 0,
+        correctFeedback: 'Right. The axial bonds on C1 and C2 point opposite ways, so C1\'s up bond and C2\'s down bond are the same kind. The two methyls land both equatorial in one chair and both axial in the other.',
+        wrongFeedback: 'One axial and one equatorial is the cis pattern, where both methyls point up. Here one points down. Because the axial bonds on C1 and C2 point opposite ways, C1\'s up bond and C2\'s down bond are the same kind, so a chair can hold both methyls equatorial or both axial.'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Why do bulky substituents like tert-butyl strongly prefer the equatorial position?',
-        options: ['Equatorial bonds are chemically stronger than axial bonds', 'Equatorial substituents point outward and avoid 1,3-diaxial steric clashes that axial substituents experience', 'Axial positions don\'t exist for large substituents'],
+        title: 'Why does a bulky group such as tert-butyl strongly prefer the equatorial position?',
+        options: ['Equatorial bonds are stronger than axial bonds', 'An axial group crowds the axial hydrogens on its face', 'A large group cannot occupy an axial position at all, so it sits equatorial'],
         correctIndex: 1,
-        correctFeedback: 'Correct — the equatorial position keeps a bulky group pointing away from the ring, avoiding the steric clashes with other axial substituents that would occur at the axial position.'
+        correctFeedback: 'Right. An axial group has 1,3-diaxial interactions with the axial hydrogens on the same face, and the bigger the group, the worse the clash. An equatorial group points away from the ring. For tert-butyl the gap is 4.9 kcal/mol.',
+        wrongFeedback: 'Both kinds of bond are ordinary C–C or C–H bonds, and a tert-butyl group can sit axial; it is just rare. The cost of axial is crowding: an axial group has 1,3-diaxial interactions with the axial hydrogens on the same face.'
       }
     ]
   });
