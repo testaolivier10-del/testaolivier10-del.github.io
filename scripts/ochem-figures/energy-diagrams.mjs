@@ -291,7 +291,7 @@ FIGURES.push({
   build() {
     return rdsPanel(-10, 0, true, RDS_A) + rule(20, 346, 320, 346) + rdsPanel(-10, 358, true, RDS_B);
   },
-  caption: 'Find the biggest climb from a valley up to a later peak. Top: 0 to 22. Bottom: −10 to 8.',
+  caption: 'Find the biggest climb from the reactants or a valley up to a later peak. Top: 0 to 22. Bottom: −10 to 8.',
 });
 
 /* ------------------------------------------------------------------ */

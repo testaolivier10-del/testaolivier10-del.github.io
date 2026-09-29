@@ -212,8 +212,8 @@ FIGURES.push({
   viewBox: '0 0 340 380',
   build() {
     let s = '';
-    s += tg(100, 26, 'C–X bond in CH₃X') + tg(232, 26, 'pKaH') + tg(232, 42, 'of HX', 'mut');
-    s += tg(302, 26, 'bond') + tg(302, 42, 'kcal/mol', 'mut');
+    s += tg(100, 26, 'C–X bond in CH₃X') + tg(246, 26, 'pKaH') + tg(246, 42, 'of HX', 'mut');
+    s += tg(306, 26, 'bond') + tg(306, 42, 'kcal/mol', 'mut');
     s += rule(8, 54, 332, 54);
     const rows = [
       { x: 'F', pm: 138, r: 14, pka: '3.2', bde: '110', kind: 'warn' },
@@ -229,7 +229,7 @@ FIGURES.push({
       s += bond(c, xx, { rFrom: 18, rTo: w.r, cls: i === 0 ? 'fg-bond' : 'fg-bond' });
       s += A(c, 'H₃C') + atom(xx.x, xx.y, w.x, { kind: w.kind, r: w.r, size: 13 });
       s += tg((52 + 52 + L) / 2, y + 22, `${w.pm} pm`, 'mut');
-      s += lbl(232, y + 5, w.pka) + lbl(302, y + 5, w.bde);
+      s += lbl(246, y + 5, w.pka) + lbl(306, y + 5, w.bde);
     });
     s += rule(8, 334, 332, 334);
     s += tg(170, 354, 'down the column: weaker base, weaker C–X bond,', 'good');
@@ -246,12 +246,12 @@ FIGURES.push({
   section: 'leaving-groups',
   anchor: '<h3>Leaving as a neutral molecule</h3>',
   alt: 'Two stacked panels. Top: a nucleophile, Nu minus, bonds to the carbon of CH3–OH2 plus while the C–O bond pair moves onto the positively charged oxygen, so neutral water leaves. Bottom: the same attack on CH3–N plus (CH3)3, a quaternary ammonium ion; the C–N bond pair moves onto nitrogen, so neutral trimethylamine leaves.',
-  viewBox: '0 0 340 360',
+  viewBox: '0 0 340 384',
   build() {
     let s = '';
     const row = (y0, title, X, lX, subs, prod) => {
-      let g = box(y0, 168, title);
-      const y = y0 + 78;
+      let g = box(y0, 180, title);
+      const y = y0 + 92;
       const nu = P(34, y), c = P(124, y), x = P(200, y);
       g += B(c, 'H₃C', x, lX);
       for (const [p, l] of subs(x, y)) g += B(x, lX, p, l) + A(p, l);
@@ -260,14 +260,14 @@ FIGURES.push({
       g += X(x);
       g += curve(P(58, y - 5), P(104, y - 8), { bow: -14 });
       g += curve(P(160, y - 4), P(194, y - 20), { bow: -9 });
-      g += tg(170, y0 + 154, prod, 'good');
+      g += tg(170, y0 + 166, prod, 'good');
       return g;
     };
-    s += row(8, 'PROTONATED ALCOHOL: WATER LEAVES', (x) => lps(x, [0], 21) + chg(x.x - 18, x.y - 26, '+'),
+    s += row(8, 'PROTONATED ALCOHOL: WATER LEAVES', (x) => lps(x, [0], 21) + chg(x.x - 14, x.y + 30, '+'),
       'O', (x) => [[P(x.x + 34, x.y - 38), 'H'], [P(x.x + 34, x.y + 38), 'H']],
       'products: Nu–CH₃ + H₂O, a neutral molecule');
-    s += row(184, 'QUATERNARY AMMONIUM: AN AMINE LEAVES', (x) => chg(x.x - 20, x.y - 26, '+'),
-      'N', (x) => [[P(x.x + 30, x.y - 46), 'CH₃'], [P(x.x + 66, x.y), 'CH₃'], [P(x.x + 30, x.y + 46), 'CH₃']],
+    s += row(196, 'QUATERNARY AMMONIUM: AN AMINE LEAVES', (x) => chg(x.x - 14, x.y + 30, '+'),
+      'N', (x) => [[P(x.x + 32, x.y - 44), 'CH₃'], [P(x.x + 70, x.y), 'CH₃'], [P(x.x + 32, x.y + 44), 'CH₃']],
       'products: Nu–CH₃ + N(CH₃)₃, a neutral amine');
     return s;
   },
@@ -282,7 +282,7 @@ FIGURES.push({
   lessons: ['leaving-groups'],
   anchor: '<h3>An alcohol has to be activated before it can leave</h3>',
   alt: 'Three stacked panels. Step 1: the oxygen of 1-butanol uses a lone pair to take the proton from H–Br, and the H–Br bonding pair moves onto bromine. Step 2: the protonated alcohol, with two H on a positive oxygen; bromide attacks the first carbon from the side opposite the oxygen while the C–O bond pair moves onto the oxygen, in one step. Products: 1-bromobutane and water.',
-  viewBox: '0 0 340 594',
+  viewBox: '0 0 340 616',
   build() {
     let s = '';
     s += box(8, 214, 'STEP 1 · THE OXYGEN TAKES A PROTON');
@@ -297,28 +297,28 @@ FIGURES.push({
     s += tg(170, 180, 'the O–H bond forms as the H–Br bond breaks,');
     s += tg(170, 200, 'giving the protonated alcohol and Br⁻');
     // step 2
-    s += box(230, 240, 'STEP 2 · BROMIDE IN, WATER OUT, AT ONCE');
-    const y2 = 330;
-    const o2 = P(152, y2), h2a = P(152, y2 - 50), h2b = P(106, y2 - 22);
-    const ch2 = [P(190, y2 + 22), P(226, y2 + 2), P(262, y2 + 22), P(298, y2 + 2)];
+    s += box(230, 262, 'STEP 2 · BROMIDE IN, WATER OUT, AT ONCE');
+    const y2 = 318;
+    const o2 = P(150, y2), h2a = P(112, y2 - 30), h2b = P(188, y2 - 30);
+    const ch2 = [P(150, y2 + 54), P(186, y2 + 74), P(222, y2 + 54), P(258, y2 + 74)];
     s += B(o2, 'O', h2a, 'H') + B(o2, 'O', h2b, 'H') + chain(o2, 'O', ch2);
     s += A(o2, 'O', 'hi') + A(h2a, 'H') + A(h2b, 'H');
-    s += lps(o2, [215], 21) + chg(176, y2 - 22, '+');
-    const nu = P(246, y2 + 76);
-    s += A(nu, 'Br', 'warn') + lps(nu, [225, 315, 45, 135], 23) + chg(276, y2 + 80, '−');
-    s += curve(P(228, y2 + 58), P(196, y2 + 34), { bow: -10 });
-    s += curve(P(174, y2 + 16), P(150, y2 + 18), { bow: 10 });
-    s += tg(126, y2 + 96, 'Br⁻ arrives opposite', 'mut', 'middle');
-    s += tg(126, y2 + 114, 'the oxygen', 'mut', 'middle');
+    s += lps(o2, [180], 21) + chg(176, y2 + 8, '+');
+    const nu = P(150, y2 + 128);
+    s += A(nu, 'Br', 'warn') + lps(nu, [270, 0, 90, 180], 23) + chg(176, y2 + 104, '−');
+    s += curve(P(144, y2 + 104), P(144, y2 + 62), { bow: -10 });
+    s += curve(P(156, y2 + 30), P(166, y2 + 10), { bow: -8 });
+    s += tg(262, y2 + 124, 'Br⁻ arrives on the', 'mut', 'middle');
+    s += tg(262, y2 + 142, 'side opposite the O', 'mut', 'middle');
     // products
-    s += box(478, 108, 'PRODUCTS');
-    const y3 = 540;
+    s += box(500, 108, 'PRODUCTS');
+    const y3 = 562;
     const br3 = P(40, y3);
     const ch3 = [P(76, y3 + 18), P(112, y3), P(148, y3 + 18), P(184, y3)];
     s += chain(br3, 'Br', ch3) + A(br3, 'Br', 'warn');
     s += lbl(214, y3 + 12, '+');
     s += A(P(262, y3 + 8), 'H₂O');
-    s += tg(100, y3 + 44, '1-bromobutane', 'good') + tg(262, y3 + 44, 'water', 'good');
+    s += tg(100, y3 + 38, '1-bromobutane', 'good') + tg(262, y3 + 38, 'water', 'good');
     return s;
   },
   caption: '1-Butanol and HBr. In step 1 the oxygen takes a proton. In step 2 bromide bonds to the carbon on the side away from the oxygen while the C–O bond breaks, both in the same step.',
@@ -365,7 +365,7 @@ FIGURES.push({
     s += ring6(py, 1, 0) + A(n, 'N');
     s += lps(n, [205], 21);
     s += curve(P(180, n.y - 12), P(128, h2.y + 6), { bow: 12 });
-    s += curve(P(118, y2 + 22), P(132, y2 + 12), { bow: -8 });
+    s += curve(P(120, y2 + 30), P(134, y2 + 10), { bow: -12 });
     s += tg(290, y2 + 140, 'pyridine', 'mut');
     // product
     s += box(504, 118, 'PRODUCT · ETHYL TOSYLATE');
@@ -488,7 +488,7 @@ FIGURES.push({
   lessons: ['leaving-groups'],
   anchor: '<h3>Reading the names SN1, SN2, E1, E2</h3>',
   alt: 'Two stacked panels. Substitution: hydroxide bonds to the CH2 carbon of bromoethane and the C–Br bonding pair leaves with bromide, giving ethanol. Elimination: hydroxide takes an H from the CH3 carbon next door, the C–H bonding pair moves in between the two carbons to make a C=C double bond, and the C–Br bonding pair leaves with bromide, giving ethene, water and bromide.',
-  viewBox: '0 0 340 572',
+  viewBox: '0 0 340 596',
   build() {
     let s = '';
     s += box(8, 252, 'SUBSTITUTION · HO⁻ REPLACES Br');
@@ -505,8 +505,8 @@ FIGURES.push({
     s += lbl(170, y + 124, '→  H₃C–CH₂–OH  +  Br⁻');
     s += tg(170, y + 144, 'ethanol: the new group sits where Br was', 'good');
     // elimination
-    s += box(276, 288, 'ELIMINATION · HO⁻ TAKES AN H, C=C FORMS');
-    const y2 = 372;
+    s += box(276, 312, 'ELIMINATION · HO⁻ TAKES AN H, C=C FORMS');
+    const y2 = 390;
     const cb2 = P(110, y2), ca2 = P(196, y2), hb = P(110, y2 + 54), br2 = P(196, y2 - 54);
     s += B(cb2, 'H₂C', ca2, 'CH₂') + B(cb2, 'H₂C', hb, 'H') + B(ca2, 'CH₂', br2, 'Br');
     s += A(cb2, 'H₂C') + A(ca2, 'CH₂', 'warn') + A(hb, 'H') + A(br2, 'Br');
