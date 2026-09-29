@@ -85,7 +85,7 @@ function partial(a, b, rA, rB, side = 1, gap = 3.5) {
 
 /* ---------------------------------------------------------- acetate ---
    C at c, CH₃ straight up, O1 lower left, O2 lower right. `form` 'A' puts
-   the minus on O1 and the double bond to O2; 'B' is the mirror image.
+   the minus on O1 and the double bond to O2; 'B' swaps the two oxygens.
    `arrows` draws the two arrows that turn A into B. `bare` leaves the lone
    pairs off. */
 function acetate(c, form, o = {}) {
