@@ -127,7 +127,7 @@ const esterCells = [
     const o = m.ends.O;
     return m.s + lonePair(o.x, o.y, 225, { dist: 21 }) + lonePair(o.x, o.y, 315, { dist: 21 });
   }],
-  ['A TERTIARY ESTER STOPS HERE', 'no H on C: water has nothing to take', (Q) => {
+  ['TERTIARY: THE ESTER STOPS HERE', 'no H on C: water has nothing to take', (Q) => {
     const c = Q(84, 110);
     const m = centre(c, [
       { deg: 90, len: 46, l: 'CH₃' },
@@ -157,7 +157,7 @@ FIGURES.push({
   alt: 'Four stacked panels: the alcohol oxygen attacks the chromium of H2CrO4; in the chromate ester, water takes the hydrogen on carbon as chromium leaves with the O–Cr electrons; the aldehyde results; a tertiary chromate ester has no hydrogen on carbon and stops.',
   viewBox: `0 0 340 ${stackH(4, 204)}`,
   build() { return gridFigure(esterCells, 1, 324, 204, 0, 14, 8, 8, ['hi', 0, 'good', 'warn']); },
-  caption: 'Water takes the highlighted hydrogen. A tertiary ester has none.',
+  caption: 'Water takes the highlighted hydrogen. The tertiary alcohol&rsquo;s ester has none.',
 });
 
 /* ======================================================================
@@ -284,7 +284,12 @@ const CW5 = 300;
 function diol(Q, oxidized) {
   const cc = Q(160, 112);
   const pts = polyPts(cc.x, cc.y, 6, 30, 0);   // vertex 0 at the right, 3 at the left
-  let s = pts.map((p, i) => sk(p, pts[(i + 1) % 6])).join('');
+  let s = pts.map((p, i) => {
+    const q = pts[(i + 1) % 6];
+    if (!oxidized && i === 0) return bond(p, q, { rFrom: 16, rTo: 0 });
+    if (!oxidized && i === 5) return bond(p, q, { rFrom: 0, rTo: 16 });
+    return sk(p, q);
+  }).join('');
   const right = pts[0], left = pts[3];
   const cL = armEnd(left, 180, 42);           // the CH2OH (or CHO) carbon
   s += bond(left, cL, { rFrom: 0, rTo: 16 });
