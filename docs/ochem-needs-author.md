@@ -356,3 +356,71 @@ confirm it.
     temperature was kept and needs a source.
   - Prochirality: alcohol dehydrogenase removing ethanol's pro-R hydrogen was kept from the old
     page (a standard example, not re-verified here).
+
+## Carboxylic Acids & Derivatives (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### carboxylic-conventions: drawings and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `carboxylic-acids`, `esters-amides`, `acyl-substitution`, `acyl-chlorides-anhydrides`,
+  `nitriles`, `baeyer-villiger`.
+- **Positions taken:**
+  - Split between two pages: Esters & amides defines the families, gives a first look at
+    add-then-expel, and owns the reactivity ladder, amide resonance and the saponification
+    drawing. Nucleophilic acyl substitution covers the mechanism in depth (which group leaves,
+    Fischer, acid hydrolysis, ¹⁸O) and links back for the rest.
+  - Acid catalysis: mechanisms draw the working acid as CH₃OH₂⁺, with H₂SO₄ named as the
+    reagent. Please confirm the form the course grades (H⁺, H₃O⁺ or ROH₂⁺). HSO₄⁻ is present, so
+    the warning says only that no strong base forms, not that no anion exists. "Not SN1" is
+    qualified to the reactions of this chapter, since acylium pathways exist. The ¹⁸O hydrolysis
+    panel ignores exchange between the acid's two oxygens. The ~90 kcal/mol π-bond argument for
+    why the C=O re-forms is a teaching heuristic.
+  - Direct acid-catalyzed conversion of an amide to an ester is not mentioned; the dependable
+    route goes through the acid.
+  - SOCl₂: the OH oxygen is drawn attacking sulfur (some courses draw the carbonyl oxygen; both
+    reach the same intermediate).
+  - Pyridine is described as used in excess, often as the solvent. A one-equivalent claim was
+    removed, since the amine is the stronger base.
+  - Acidity of acids against alcohols: lesson step 2 credits resonance. The inductive and
+    electrostatic view (Siggel/Thomas, Wiberg) is given beside it in the notes.
+  - Amide resonance: the classic picture with about 40% C–N double-bond character is taught; the
+    Wiberg critique is not shown. "Chlorine donates weakly" leads with 3p–2p overlap; "Cl more
+    electronegative than N" holds on the Pauling scale only, and the sentence was removed.
+  - LiAlH₄ with an amide: the oxygen leaves bound to aluminum, via an iminium ion. The
+    carbonyl-reduction notes still use the shorter "the oxygen leaves" and should be aligned.
+  - Nitriles: the hydride intermediates are called "aluminum-bound imines", and the Grignard
+    intermediate an "imine anion" (drawn N⁻ with MgBr⁺). Please confirm the naming split.
+  - Baeyer–Villiger: taught as protonation, then addition, then deprotonation, with the
+    uncatalyzed one-step drawing in a pitfall box (the mechanism in aprotic solvent is debated).
+    Migratory-aptitude order differs slightly between texts. "Protect the alkene" has no general
+    method at this level.
+  - Decarboxylation: the proton-transfer arrow starts from the C=O π bond, not from an oxygen
+    lone pair with a fourth arrow.
+  - Names: "isopropyl butanoate" is kept beside the IUPAC "propan-2-yl butanoate".
+
+### carboxylic-numbers: values that need a source
+- **Status:** pending review.
+- **Notes:**
+  - Acetic acid: vapor molecular weight near the boiling point (the page says "well above 60").
+    The C–OH bond length (the page says only "shorter than an alcohol's 143 pm"). Water's pKa is
+    15.7 across the course (some sources use 14.0). TFA and DCA pKa values vary by source.
+  - Amine N–H pKa kept at 38 to match the course (methylamine is nearer 40). CH₃CN α-C–H pKa
+    "about 25" (31.3 in DMSO).
+  - Amides: "N-protonation about seven pKa units worse" and "reactivity spans about 10¹³" are
+    kept from the old page and unverified. "DMAP speeds acylation by thousands of times"
+    (usually quoted as about 10⁴). The neutral acid is ranked "just above an ester" (texts
+    differ).
+  - Tertiary halide with cyanide, by solvent, is kept from the old page and unverified. A
+    DIBAL-H temperature claim was removed; restore it only with a source.
+
+### carboxylic-moved: facts cut under the taught-before rule, for later pages
+- **Status:** to place.
+- **Notes:** Electrophilic cyanation of electron-rich arenes (BrCN/AlCl₃, NCTS), aryl amide
+  dehydration, SNAr with cyanide and Pd-catalyzed cyanation belong on the aromatic and
+  cross-coupling pages. For the IR page: the nitrile 2250 cm⁻¹ band, the anhydride's two C=O
+  bands, the acid dimer at 1710 against the free acid at 1760, and the dilution effect. For the
+  ¹H NMR page: DMF's two methyl signals merging on warming (restricted C–N rotation). The
+  Dakin-type formate exception for aromatic aldehydes was cut from Baeyer–Villiger; restore it
+  as a marked preview if wanted.

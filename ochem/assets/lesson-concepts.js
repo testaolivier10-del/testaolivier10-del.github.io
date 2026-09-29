@@ -74,22 +74,24 @@
       10:['enolate-regiocontrol','mechanism-selection'],
       11:['enolate-regiocontrol'] } },
 
-    'acyl-chlorides-anhydrides': { n:8, steps:{
-      2:['activation-before-acylation','acyl-reactivity-order'],
-      3:['activation-before-acylation'],
-      4:['acyl-reactivity-order','leaving-group-ability'],
+    'acyl-chlorides-anhydrides': { n:12, steps:{
+      3:['activation-before-acylation','acyl-reactivity-order'],
+      4:['activation-before-acylation'],
       6:['activation-before-acylation'],
-      7:['activation-before-acylation','acyl-reactivity-order'] } },
+      8:['acyl-reactivity-order','leaving-group-ability'],
+      9:['activation-before-acylation'],
+      11:['activation-before-acylation','acyl-reactivity-order'] } },
 
     /* Step 2 is the product sorter and carries the carbon counting with it.
        3 is why a Grignard adds once, 4 is a pure carbon count, 6 the route
        chosen on the substrate rather than the target, 7 the DIBAL trap. */
-    'nitriles': { n:8, steps:{
-      2:['nitrile-as-acyl-level'],
-      3:['nitrile-as-acyl-level','tetrahedral-intermediate'],
-      4:['nitrile-as-acyl-level','oxidation-level'],
-      6:['nitrile-as-acyl-level'],
-      7:['nitrile-as-acyl-level'] } },
+    'nitriles': { n:11, steps:{
+      2:['substrate-class','nitrile-as-acyl-level'],
+      5:['nitrile-as-acyl-level','reductant-scope','oxidation-level'],
+      6:['nitrile-as-acyl-level','grignard-scope'],
+      7:['nitrile-as-acyl-level','oxidation-level'],
+      9:['nitrile-as-acyl-level','organometallic-quench'],
+      10:['nitrile-as-acyl-level','reductant-scope'] } },
 
     'hydrates-cyanohydrins': { n:15, steps:{
       4:['addition-equilibrium'],
@@ -224,9 +226,13 @@
       9:['activating-group'],
       10:['activating-group'] } },
 
-    'baeyer-villiger': { n:8, steps:{
-      2:['migratory-aptitude'], 3:['migratory-aptitude'], 4:['migratory-aptitude'],
-      6:['migratory-aptitude'], 7:['migratory-aptitude'] } },
+    'baeyer-villiger': { n:13, steps:{
+      3:['curved-arrow-direction','migratory-aptitude'],
+      5:['migratory-aptitude','carbocation-stability'],
+      6:['migratory-aptitude','carbocation-stability'],
+      8:['migratory-aptitude'],
+      10:['migratory-aptitude','stereochemical-outcome'],
+      12:['migratory-aptitude','stereochemical-outcome'] } },
 
     'nucleophilic-aromatic': { n:8, steps:{
       2:['aromatic-nucleophilic'], 3:['aromatic-nucleophilic'], 4:['aromatic-nucleophilic'],
@@ -527,7 +533,7 @@
       6:['nmr-splitting-integration','nmr-shift-shielding'] } },
 
     'carboxylic-acids': { n:8, steps:{
-      1:['acidity-factors'],
+      1:['resonance-delocalization','acidity-factors'],
       2:['resonance-delocalization','acidity-factors'],
       3:['acidity-factors'],
       5:['acyl-reactivity-order'],
@@ -632,12 +638,12 @@
       7:['epoxide-opening-regiochem','curved-arrow-direction'],
       8:['epoxide-opening-regiochem','backside-attack'] } },
 
-    'esters-amides': { n:8, steps:{
-      1:['acyl-reactivity-order'],
-      2:['acyl-reactivity-order','leaving-group-ability','amide-resonance'],
-      4:['acyl-reactivity-order','tetrahedral-intermediate'],
-      6:['acyl-reactivity-order','leaving-group-ability'],
-      7:['acyl-reactivity-order'] } },
+    'esters-amides': { n:10, steps:{
+      1:['acyl-reactivity-order','leaving-group-ability'],
+      3:['acyl-reactivity-order','amide-resonance','leaving-group-ability'],
+      5:['acyl-reactivity-order','tetrahedral-intermediate'],
+      7:['leaving-group-ability','reductant-scope'],
+      9:['activation-before-acylation','acyl-reactivity-order'] } },
 
     'ether-chemistry': { n:7, steps:{
       1:['alcohol-activation'],
