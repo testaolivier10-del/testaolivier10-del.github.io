@@ -840,10 +840,13 @@
       6:['resonance-delocalization','resonance-validity'],
       8:['resonance-validity','resonance-delocalization'] } },
 
-    'ring-flips': { n:7, steps:{
-      1:['ring-flip-mechanics'], 2:['ring-flip-mechanics'],
-      3:['ring-flip-mechanics'],
-      6:['ring-flip-mechanics','chair-axial-equatorial'] } },
+    'ring-flips': { n:13, steps:{
+      1:['ring-flip-mechanics'],
+      2:['ring-flip-mechanics'],
+      4:['ring-flip-mechanics','chair-axial-equatorial'],
+      6:['ring-flip-mechanics','chair-axial-equatorial'],
+      9:['ring-flip-mechanics'],
+      12:['ring-flip-mechanics','chair-axial-equatorial'] } },
 
     /* Steps 6 and 7 are the two wedge-dash assignment drills, each of
        which grades three times (rank, toward/away, R or S) — so this
