@@ -660,7 +660,7 @@ FIGURES.push({
     s += tag(416, 156, 'minor: C has only six', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'The shaded atom holds the positive charge in each structure. Count the electrons around carbon on the right.',
+  caption: 'Count the electrons around carbon on each side: eight on the left, six on the right.',
 });
 
 FIGURES.push({
