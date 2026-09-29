@@ -288,10 +288,10 @@ FIGURES.push({
   build() {
     let s = '';
     s += itext(20, 22, 'cis', '-1,2-dimethylcyclohexane', 'fg-tag-good', 'start');
-    s += chairRow(170, 610, 110, 0.78, CIS12);
+    s += chairRow(170, 590, 110, 0.78, CIS12);
     s += rule(20, 232, 740, 232);
     s += itext(20, 256, 'trans', '-1,2-dimethylcyclohexane', 'fg-tag-warn', 'start');
-    s += chairRow(170, 610, 350, 0.78, TRANS12);
+    s += chairRow(170, 590, 350, 0.78, TRANS12);
     return s;
   },
   caption: 'Read the tags under each chair. From one chair to the other, axial and equatorial swap, while up and down stay the same.',
