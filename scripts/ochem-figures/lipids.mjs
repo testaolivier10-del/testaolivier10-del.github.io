@@ -123,7 +123,7 @@ FIGURES.push({
     const end = pts[17];
     s += text(end.x - 44, end.y - 12, 'ω numbers count from here:', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
     s += text(end.x - 44, end.y + 4, 'the CH₃ carbon is ω1', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
-    s += tag(20, 22, 'α-linolenic acid, 18:3 cis,cis,cis-Δ9,12,15 (an ω-3 acid)', { anchor: 'start' });
+    s += `<text class="fg-tag" x="20" y="22" text-anchor="start" font-size="11">α-linolenic acid, 18:3 ${it('cis')},${it('cis')},${it('cis')}-Δ9,12,15 (an ω-3 acid)</text>`;
     s += tag(40, 300, 'Δ numbers count from here: C1 is the carboxyl carbon', { anchor: 'start' });
     s += gapArrow(P(106, 280), P(184, 280));
     s += tag(430, 150, 'double bonds start at', { anchor: 'start' });
@@ -235,12 +235,6 @@ function eqArrows(x1, x2, y) {
 }
 function eqArrowsV(x, y1, y2) {
   return arrow(P(x - 5, y1), P(x - 5, y2), { size: 7 }) + arrow(P(x + 5, y2), P(x + 5, y1), { size: 7 });
-}
-
-/* A rotation mark over the C–C bond of the half-hydrogenated state. */
-function rotMark(ox, oy) {
-  const m = P(ox + 100, oy + 80);
-  return curve(P(m.x - 16, m.y - 16), P(m.x + 16, m.y - 16), { bow: -12, muted: true, size: 6 });
 }
 
 FIGURES.push({
