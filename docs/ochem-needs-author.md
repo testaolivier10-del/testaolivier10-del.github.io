@@ -512,3 +512,52 @@ confirm it.
   about 235 nm (against a 234 nm prediction). Butadiene's delocalization energy is kept at
   15 kJ/mol to match the hydrogenation page (gas-phase data give about 17). Allene's heat of
   hydrogenation is given as 298 kJ/mol (NIST about 295).
+
+## Aromatic Follow-Through (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### aromatic-ft-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `nucleophilic-aromatic`, `benzylic-reactivity`, `phenols`, `birch-reduction`,
+  `diazonium-chemistry`.
+- **Positions taken:**
+  - Nucleophilic aromatic substitution: benzyne formation is drawn in two steps (some courses
+    draw it as one concerted step). 3-Methoxybenzyne's selectivity is explained by inductive
+    carbanion stability, with one sentence on aryne distortion. The SNAr halide order
+    F > Cl > Br > I is "usually given"; Cl, Br and I are often close. In the methylamine example
+    the Meisenheimer complex may lose H⁺ before F⁻ leaves; both orders give the same product,
+    and the page shows F⁻ leaving first. Fluorobenzene is said to barely react with NaNH₂ and
+    to need a stronger base such as an organolithium (Roberts, JACS 1956; not checked against
+    the paper here).
+  - Benzylic reactivity: the hydrogenolysis rationale ("the fragment is stabilized by the ring")
+    simplifies the Pd surface mechanism. "A primary benzylic cation is about as stable as a
+    tertiary one" depends on the measure used. Toluene nitration gives more ortho than para
+    (about 58 : 38); the worked example says both form and the para isomer is separated.
+  - Phenols: the Kolbe–Schmitt mechanism is debated, so the page states only the C–C bond that
+    forms. Benzoquinone's color is described with HOMO–LUMO wording (strictly an n→π*
+    band). Phenol to benzoquinone with dichromate is low-yielding; Fremy's salt is named. The
+    Dow process (NaOH, 350 °C) is said to run "at least partly through benzyne"; ¹⁴C labeling
+    shows part benzyne, part direct displacement.
+  - Birch reduction: protonation at the central carbon is taught as the observed rate
+    preference (simple Hückel theory gives equal charge at C2 and C4; many texts credit C4 with
+    slightly more). The first protonation site of a donor ring (ortho or meta for anisole) is
+    debated and not stated. Methyl benzoate is the ester example, with t-BuOH at −78 °C, since
+    excess Na and EtOH can reduce the ester itself (Bouveault–Blanc).
+  - Diazonium chemistry: the KI reaction is described as "iodide starts the radical steps
+    itself" (sources vary). Primary and secondary aryl amines often couple on nitrogen to give
+    triazenes, so the page couples only N,N-dimethylaniline. Ipso coupling that displaces COOH
+    or SO₃H is not mentioned. The aryl-cation sentence is limited to "of the reactions in this
+    course"; aryl cations also form by photolysis of aryl halides and in other rare ways.
+  - Names kept as accepted rather than 2013 IUPAC preferred: cumene/isopropylbenzene,
+    1,4-dihydroxybenzene, p-benzoquinone, 4-(phenylazo)phenol, 3,5-dibromotoluene,
+    2- and 4-chlorotoluene, 3-bromoanisole, 4-nitrotoluene.
+
+### aromatic-ft-numbers: values that need a source
+- **Status:** pending review.
+- **Notes:** benzylic C–H bond dissociation energies of about 90 kcal/mol (toluene) and 87
+  (ethylbenzene), against 101 (primary) and 96 (tertiary); literature for ethylbenzene is about
+  85–87. Carbonic acid pKa is given as 6.4 (the apparent value; the true value is about 3.6).
+  Water's pKa follows the course convention of 15.7. Diazo-coupling pH windows (phenols 8–10,
+  amines 4–7) and "decomposes above about 5 °C" are kept.

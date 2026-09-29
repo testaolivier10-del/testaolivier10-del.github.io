@@ -249,8 +249,9 @@ FIGURES.push({
     s.push(tag(190, 26, 'NO SN2: THE BACKSIDE IS INSIDE THE RING'));
     s.push(tag(570, 26, 'NO SN1: THE EMPTY ORBITAL IS IN THE PLANE'));
     noSn(s, P(190, 128), P(570, 138), 38);
-    s.push(tag(250, 128, 'the Nu⁻ would have to', { anchor: 'start' }));
-    s.push(tag(250, 144, 'pass through the ring', { anchor: 'start' }));
+    s.push(tag(250, 120, 'the Nu⁻ would', { anchor: 'start' }));
+    s.push(tag(250, 136, 'have to pass', { anchor: 'start' }));
+    s.push(tag(250, 152, 'through the ring', { anchor: 'start' }));
     s.push(tag(610, 80, 'empty sp² orbital,', { anchor: 'start', cls: 'fg-tag-warn' }));
     s.push(tag(610, 96, 'in the ring plane', { anchor: 'start', cls: 'fg-tag-warn' }));
     s.push(tag(570, 216, 'circles: p orbitals, seen end-on, standing', {}));
@@ -883,7 +884,7 @@ FIGURES.push({
     s += rule(172, 20, 172, 320) + rule(20, 172, 320, 172);
     return s;
   },
-  caption: 'A: 1-chloro-2,4-dinitrobenzene. B: chlorobenzene. C: 1-chloro-3-nitrobenzene. D: 2-chloro-1,3,5-trimethylbenzene.',
+  caption: 'A: 1&#8209;chloro&#8209;2,4&#8209;dinitrobenzene. B: chlorobenzene. C: 1&#8209;chloro&#8209;3&#8209;nitrobenzene. D: 2&#8209;chloro&#8209;1,3,5&#8209;trimethylbenzene.',
 });
 
 export default FIGURES;
