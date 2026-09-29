@@ -226,7 +226,16 @@ const BUDGETS = [
 
   // One lesson and one mechanism, standing in for the 68 pages built on the
   // same engine. If these grow, they all did.
-  ['ochem/lessons/pka.html', 6],
+  //
+  // Raised from 6 to 10 when the readability pass rewrote Acids & Bases. They
+  // all did grow: the pass puts each lesson's diagrams inline as generated SVG
+  // (a lesson that asks about a shape now draws it), and the median lesson went
+  // from about 5 KB to 12 KB gzipped as each chapter was rewritten. pka.html,
+  // rewritten last of the early chapters, went from 5.2 to 9.0 KB for the same
+  // reason: three new figures and three new steps. The ceiling leaves it 1 KB,
+  // the headroom it had before. If it moves again without new figures or
+  // steps, find out why first.
+  ['ochem/lessons/pka.html', 10],
   // e2.html sat at 10232 bytes and the ceiling is 10240, so the empty
   // <div class="course-nav"></div> every course page now ships — 30 bytes
   // raw, 8 gzipped — landed exactly on it. That div is the second chrome row
