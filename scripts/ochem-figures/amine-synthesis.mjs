@@ -381,7 +381,7 @@ FIGURES.push({
 });
 
 /* ===================================================================== 7
-   The Hofmann rearrangement, butanamide to propylamine. The carbonyl carbon
+   The Hofmann rearrangement, butanamide to propan-1-amine. The carbonyl carbon
    (the one that leaves as CO2) carries an orange dot throughout. `k` scales
    a drawing, so the lesson copy can draw the key step larger. */
 const PROPYL = (c, k = 1) => [P(c.x - 90 * k, c.y + 18 * k), P(c.x - 60 * k, c.y), P(c.x - 30 * k, c.y + 18 * k)];
@@ -430,7 +430,7 @@ function waterAdds(m) {
   t += curve(P(m.c.x - 18, m.c.y + 6), P(m.n.x + 6, m.n.y + 15), { bow: 8, size: 7 });
   return t;
 }
-function propylamine(p0) {
+function propan-1-amine(p0) {
   const v = zz(p0, 3, 30, 18);
   const n = P(v[2].x + 32, v[2].y - 18);
   return { svg: chainInk(v) + bond(v[2], n, { rFrom: 0, rTo: 19 }) + A(n, 'NH₂', { kind: 'hi' }), n };
@@ -446,7 +446,7 @@ FIGURES.push({
   section: 'amine-synthesis',
   anchor: 'The same carbonyl carbon is lost.</p>',
   viewBox: '0 0 760 620',
-  alt: 'The Hofmann rearrangement of butanamide in six panels, plus a Curtius strip. An orange dot marks the carbonyl carbon throughout. Panel 1: the amide anion, N minus with one H, attacks Br2; arrows run from the nitrogen lone pair to bromine and from the Br–Br bond to the far bromine. Panel 2: the N-bromoamide; hydroxide takes the remaining N–H. Panel 3: the N-bromoamide anion rearranges in one step: the C–C bond to the propyl group shifts to nitrogen, the nitrogen lone pair forms a C=N bond, and bromide leaves. Panel 4: the isocyanate, propyl–N=C=O, with N=C=O in a straight line; water adds to its carbon. Panel 5: the carbamic acid, propyl–NH–C(=O)–OH, which keeps its N–H and loses CO2 on its own. Panel 6: propylamine, three carbons, and CO2 carrying the old carbonyl carbon. Bottom strip, the Curtius route: butanoyl chloride with NaN3 gives an acyl azide, which on heating loses N2 and gives the same isocyanate.',
+  alt: 'The Hofmann rearrangement of butanamide in six panels, plus a Curtius strip. An orange dot marks the carbonyl carbon throughout. Panel 1: the amide anion, N minus with one H, attacks Br2; arrows run from the nitrogen lone pair to bromine and from the Br–Br bond to the far bromine. Panel 2: the N-bromoamide; hydroxide takes the remaining N–H. Panel 3: the N-bromoamide anion rearranges in one step: the C–C bond to the propyl group shifts to nitrogen, the nitrogen lone pair forms a C=N bond, and bromide leaves. Panel 4: the isocyanate, propyl–N=C=O, with N=C=O in a straight line; water adds to its carbon. Panel 5: the carbamic acid, propyl–NH–C(=O)–OH, which keeps its N–H and loses CO2 on its own. Panel 6: propan-1-amine, three carbons, and CO2 carrying the old carbonyl carbon. Bottom strip, the Curtius route: butanoyl chloride with NaN3 gives an acyl azide, which on heating loses N2 and gives the same isocyanate.',
   build() {
     let s = '';
     const W = 240, H = 196;
@@ -502,8 +502,8 @@ FIGURES.push({
       t += tag(Q(W / 2, 0).x, Q(0, 182).y, 'CO₂ on its own');
       return t;
     });
-    s += cell(512, 212, W, H, '6 · PROPYLAMINE + CO₂', (Q) => {
-      const m = propylamine(Q(22, 100));
+    s += cell(512, 212, W, H, '6 · PROPAN-1-AMINE + CO₂', (Q) => {
+      const m = propan-1-amine(Q(22, 100));
       let t = m.svg + co2(Q(186, 90));
       t += tag(Q(66, 0).x, Q(0, 140).y, 'three carbons', { cls: 'fg-tag-good' });
       t += tag(Q(186, 0).x, Q(0, 124).y, 'the old C=O', { cls: 'fg-tag-warn' });
@@ -546,7 +546,7 @@ FIGURES.push({
   id: 'l-hofmann-rearrangement',
   lessons: ['amine-synthesis'],
   viewBox: '0 0 340 520',
-  alt: 'Three stacked panels from the Hofmann rearrangement of butanamide, with an orange dot on the carbonyl carbon. Panel 1: the N-bromoamide anion; the C–C bond to the propyl group shifts to nitrogen, the nitrogen lone pair forms a C=N bond, and bromide leaves. Panel 2: the isocyanate, propyl–N=C=O, with N=C=O in a straight line; water adds to its carbon. Panel 3: propylamine, three carbons, plus CO2 carrying the old carbonyl carbon.',
+  alt: 'Three stacked panels from the Hofmann rearrangement of butanamide, with an orange dot on the carbonyl carbon. Panel 1: the N-bromoamide anion; the C–C bond to the propyl group shifts to nitrogen, the nitrogen lone pair forms a C=N bond, and bromide leaves. Panel 2: the isocyanate, propyl–N=C=O, with N=C=O in a straight line; water adds to its carbon. Panel 3: propan-1-amine, three carbons, plus CO2 carrying the old carbonyl carbon.',
   build() {
     let s = '';
     s += cell(8, 8, 324, 196, 'THE PROPYL GROUP MOVES TO N', (Q) => {
@@ -560,8 +560,8 @@ FIGURES.push({
       t += tag(Q(162, 0).x, Q(0, 156).y, 'then the carbamic acid loses CO₂');
       return t;
     });
-    s += cell(8, 390, 324, 122, 'PROPYLAMINE + CO₂', (Q) => {
-      const m = propylamine(Q(30, 76));
+    s += cell(8, 390, 324, 122, 'PROPAN-1-AMINE + CO₂', (Q) => {
+      const m = propan-1-amine(Q(30, 76));
       let t = m.svg + co2(Q(250, 66));
       t += tag(Q(76, 0).x, Q(0, 106).y, 'three carbons', { cls: 'fg-tag-good' });
       t += tag(Q(250, 0).x, Q(0, 100).y, 'the old C=O carbon', { cls: 'fg-tag-warn' });
