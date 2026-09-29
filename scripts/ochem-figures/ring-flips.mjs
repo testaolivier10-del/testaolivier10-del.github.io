@@ -132,12 +132,12 @@ FIGURES.push({
 /* ------------------------------------------------------ ring-flip-invariant ---
    One methyl group, followed through a flip. Kept from the first version of
    this page; the chairs now come from ring(). */
-function methylPanel(cx, cy, k, flipped) {
+function methylPanel(cx, cy, k, flipped, { axialStub = true } = {}) {
   const r = ring(cx, cy, k, flipped);
   let s = outline(r.pts) + dots(r.pts);
   const g = group(r, 0, 'up', 'CH₃', { L: 36 });
   s += g.s;
-  if (flipped) {
+  if (flipped && axialStub) {
     s += bond(r.pts[0], r.ax(0, 26), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
   }
   return { s, r };
@@ -463,7 +463,7 @@ FIGURES.push({
     s += rule(170, 20, 170, 290) + rule(10, 156, 330, 156);
     return s;
   },
-  caption: 'The half-chair is the top of the climb. The twist-boat is a shallow resting point.',
+  caption: 'The ring passes through each shape in turn, from the chair to the boat.',
 });
 
 /* ---------------------------------------------------- flip-energy-profile ---
@@ -543,7 +543,8 @@ FIGURES.push({
   build() {
     let s = '';
     const A = methylPanel(200, 128, 0.85, false);
-    const B = methylPanel(562, 128, 0.85, true);
+    /* no bare axial stub here: unlabeled, it could read as a second methyl */
+    const B = methylPanel(562, 128, 0.85, true, { axialStub: false });
     s += A.s + B.s;
     s += text(200, 220, 'methyl axial: about 5%', { cls: 'fg-tag-warn' });
     s += text(562, 220, 'methyl equatorial: about 95%', { cls: 'fg-tag-good' });
