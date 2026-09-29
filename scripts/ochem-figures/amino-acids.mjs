@@ -204,7 +204,7 @@ FIGURES.push({
   id: 'zwitterion-ladder',
   section: 'amino-acids',
   anchor: '<h3>The isoelectric point</h3>',
-  alt: 'A pH line from 0 to 14 for alanine. Below pKa 2.34 the molecule is mostly the cation, net plus one. Between 2.34 and 9.69 it is mostly the zwitterion, net zero. Above 9.69 it is mostly the anion, net minus one. The isoelectric point, 6.02, sits halfway between the two pKa values.',
+  alt: 'A pH line from 0 to 14 for alanine. Below pKa 2.34 the main form is the cation, net plus one. Between 2.34 and 9.69 it is mostly the zwitterion, net zero. Above 9.69 it is mostly the anion, net minus one. The isoelectric point, 6.02, sits halfway between the two pKa values.',
   viewBox: '0 0 760 250',
   build() {
     let s = '';
@@ -227,10 +227,10 @@ FIGURES.push({
     }
     s += text(x(1.17), 144, 'cation', { cls: 'fg-lbl', size: 13 });
     s += Tag(P(x(1.17), 164), 'net +1');
-    s += text(x(6.02), 144, 'mostly zwitterion', { cls: 'fg-lbl', size: 13 });
-    s += Tag(P(x(6.02) + 0, 164), 'net charge near 0');
-    s += text(x(11.85), 144, 'mostly anion', { cls: 'fg-lbl', size: 13 });
-    s += Tag(P(x(11.85), 164), 'net charge −1');
+    s += text(x(6.02), 144, 'zwitterion', { cls: 'fg-lbl', size: 13 });
+    s += Tag(P(x(6.02), 164), 'net ≈ 0');
+    s += text(x(11.85), 144, 'anion', { cls: 'fg-lbl', size: 13 });
+    s += Tag(P(x(11.85), 164), 'net −1');
 
     for (const [pH, name] of [[2.34, 'pKa₁ 2.34'], [9.69, 'pKa₂ 9.69']]) {
       s += rule(x(pH), 94, x(pH), 190);
@@ -557,7 +557,7 @@ function cornCell(ox, oy, w, h, pose) {
   if (pose === 'toward') s += arcArrow(c, 104, 80, 222, true);
   else s += arcArrow(c, 104, 100, 330, false);
   s += Good(P(ox + w / 2, oy + h - 30), pose === 'toward' ? 'CO → R → N clockwise' : 'CO → R → N counterclockwise');
-  s += Tag(P(ox + w / 2, oy + h - 12), 'L-alanine both times');
+  s += Tag(P(ox + w / 2, oy + h - 12), pose === 'toward' ? 'L-alanine' : 'still L-alanine');
   return s;
 }
 
