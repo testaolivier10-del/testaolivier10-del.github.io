@@ -426,16 +426,16 @@ function halohydrin() {
   s += T(c1.x, c1.y - 22, 'C1', 'fg-tag') + T(c2.x + 8, c2.y - 24, 'C2', 'fg-tag');
   s += T(118, 96, 'short, strong', 'fg-tag') + T(118, 110, 'C1–Br', 'fg-tag');
   s += T(318, 80, 'long, weak', 'fg-tag-warn') + T(318, 94, 'C2–Br', 'fg-tag-warn');
-  const o = P(262, 226);
+  const o = P(262, 216);
   s += atom(o.x, o.y, 'O', { r: 14, kind: 'hi' });
   s += bond(o, at(o, 180, 34), { rFrom: 14, rTo: 11 }) + atom(o.x - 34, o.y, 'H', { r: 11 });
   s += bond(o, at(o, 0, 34), { rFrom: 14, rTo: 11 }) + atom(o.x + 34, o.y, 'H', { r: 11 });
   s += lonePair(o.x, o.y, 270, { dist: 20 }) + lonePair(o.x, o.y, 90, { dist: 20 });
   s += curve(P(o.x - 4, o.y - 21), P(c2.x - 4, c2.y + 13), { bow: -8 });
-  s += T(225, 252, 'water attacks C2 from below');
+  s += T(225, 254, 'water attacks C2 from below');
 
   s += arrow(P(448, 150), P(492, 150));
-  s += T(470, 132, '−H⁺');
+  s += T(470, 132, 'ring opens') + T(470, 172, '−H⁺');
   s += panel(500, 8, 250, 254);
   s += T(625, 32, 'the halohydrin', 'fg-tag-good');
   const d1 = P(588, 138), d2 = P(668, 138);
@@ -478,10 +478,12 @@ function ringHalohydrin() {
   const br = at(mid, 60, 40);
   s += wedge(r.c1, br, { rFrom: 0, rTo: 15, width: 8 }) + wedge(r.c2, br, { rFrom: 0, rTo: 15, width: 8 });
   s += atom(br.x, br.y, 'Br', { r: 15, kind: 'hi' }) + charge(br.x + 20, br.y - 10);
-  const me = at(r.c1, -10, 40);
-  s += sk(r.c1, me);
-  s += T(me.x + 16, me.y + 4, 'CH₃', 'fg-tag', 'start');
-  s += T(r.c1.x + 4, r.c1.y + 26, 'C1 δ+', 'fg-tag-warn');
+  const me = at(r.c1, 10, 40);
+  s += bond(r.c1, me, { rFrom: 0, rTo: 17 }) + atom(me.x, me.y, 'CH₃', { r: 17 });
+  s += T(r.c1.x - 22, r.c1.y + 22, 'C1', 'fg-tag') + T(r.c1.x + 10, r.c1.y - 22, 'δ+', 'fg-tag-warn');
+  const w = P(r.c1.x + 52, r.c1.y + 62);
+  s += waterAt(w, [-30, 210], [60, 120]);
+  s += curve(P(w.x - 10, w.y - 18), P(r.c1.x + 7, r.c1.y + 12), { bow: -10 });
   s += T(r.c2.x - 16, r.c2.y - 8, 'C2', 'fg-tag', 'end');
   s += T(130, 234, 'H₂O attacks C1', 'fg-tag');
   s += T(130, 250, 'from the back face', 'fg-tag');
@@ -494,7 +496,7 @@ function ringHalohydrin() {
     const brp = at(q.c2, 90, 44), ohp = at(q.c1, -10, 44), mep = at(q.c1, 50, 40);
     g += stereo(front ? 'w' : 'h', q.c2, brp, 15) + atom(brp.x, brp.y, 'Br', { r: 15, kind: 'hi' });
     g += stereo(front ? 'h' : 'w', q.c1, ohp, 15) + atom(ohp.x, ohp.y, 'OH', { r: 15, kind: 'hi' });
-    g += sk(q.c1, mep) + T(mep.x + 8, mep.y - 2, 'CH₃', 'fg-tag', 'start');
+    g += bond(q.c1, mep, { rFrom: 0, rTo: 17 }) + atom(mep.x, mep.y, 'CH₃', { r: 17 });
     return g;
   };
   s += panel(290, 8, 220, 254);
@@ -536,10 +538,10 @@ function hyd1(ox, oy) {
   s += skDouble(c1, c2, P(ox + 80, oy + 170)) + sk(c2, c3);
   const h = P(ox + 92, oy + 72), o = P(ox + 146, oy + 66);
   s += bond(h, o, { rFrom: 11, rTo: 14 }) + atom(h.x, h.y, 'H', { r: 11, kind: 'hi' });
-  s += waterAt(o, [30, -40], [110]);
-  s += charge(o.x - 2, o.y - 26);
+  s += waterAt(o, [30, -40], [90]);
+  s += charge(o.x - 20, o.y - 14);
   s += curve(P(ox + 76, oy + 132), P(ox + 88, oy + 86), { bow: -12 });
-  s += curve(P(ox + 118, oy + 66), P(o.x - 10, o.y - 16), { bow: -12 });
+  s += curve(P(ox + 119, oy + 70), P(o.x - 8, o.y + 13), { bow: 12 });
   s += T(c1.x - 8, c1.y + 20, 'C1') + T(c2.x, c2.y + 30, 'C2');
   return s;
 }
@@ -560,15 +562,15 @@ function hyd3(ox, oy) {
   s += sk(c1, c2) + sk(c2, c3);
   const o = P(c2.x, c2.y - 50);
   s += bond(c2, o, { rFrom: 0, rTo: 14 });
-  s += atom(o.x, o.y, 'O', { r: 14, kind: 'hi' }) + charge(o.x - 18, o.y - 14);
-  const hl = at(o, 150, 32), hr = at(o, 30, 32);
+  s += atom(o.x, o.y, 'O', { r: 14, kind: 'hi' }) + charge(o.x - 21, o.y + 16);
+  const hl = at(o, 150, 32), hr = at(o, 30, 40);
   s += bond(o, hl, { rFrom: 14, rTo: 11 }) + atom(hl.x, hl.y, 'H', { r: 11 });
   s += bond(o, hr, { rFrom: 14, rTo: 11 }) + atom(hr.x, hr.y, 'H', { r: 11, kind: 'hi' });
   s += lonePair(o.x, o.y, 270, { dist: 20 });
   const w = P(ox + 196, oy + 56);
   s += waterAt(w, [0, -60], [150, 90]);
   s += curve(P(w.x - 20, w.y - 8), P(hr.x + 10, hr.y - 4), { bow: 10 });
-  s += curve(P((o.x + hr.x) / 2 + 2, (o.y + hr.y) / 2 + 6), P(o.x + 12, o.y + 10), { bow: -10 });
+  s += curve(P((o.x + hr.x) / 2 + 3, (o.y + hr.y) / 2 + 3), P(o.x + 15, o.y + 6), { bow: -14 });
   return s;
 }
 const HYD_TITLES = ['1 · the π bond takes a proton', '2 · water attacks the cation', '3 · water takes a proton back'];
@@ -627,10 +629,10 @@ function dmb(x, y, o = {}) {
 function twoHydrations() {
   let s = '';
   // the alkene, once, at the left
-  const a = dmb(24, 200, { alkene: true });
+  const a = dmb(30, 200, { alkene: true });
   s += a.s;
-  s += T(66, 262, '3,3-dimethylbut-1-ene');
-  s += T(a.c1.x - 6, a.c1.y + 20, 'C1') + T(a.c2.x, a.c2.y - 12, 'C2') + T(a.c3.x - 18, a.c3.y + 4, 'C3', 'fg-tag', 'end');
+  s += T(84, 262, '3,3-dimethyl-') + T(84, 276, 'but-1-ene');
+  s += T(a.c1.x - 6, a.c1.y + 20, 'C1') + T(a.c2.x, a.c2.y - 12, 'C2') + T(a.c3.x, a.c3.y - 12, 'C3');
   s += arrow(P(140, 172), P(186, 104));
   s += arrow(P(140, 226), P(186, 294));
   s += T(146, 124, 'H₃O⁺', 'fg-tag', 'end');

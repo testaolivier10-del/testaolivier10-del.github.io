@@ -532,6 +532,7 @@ FIGURES.push({
   id: 'cyclohexene-ozonolysis',
   section: 'alkene-oxidation',
   anchor: 'the signature of a symmetric acyclic one.</p>',
+  lessons: ['alkene-oxidation'],
   alt: 'Cyclohexene, with its C=C highlighted, goes with O3 then Me2S to hexanedial, drawn as the same ring of carbons opened at the old double bond: the two former alkene carbons have moved apart and each now carries a C=O and an H.',
   viewBox: '0 0 340 184',
   build() {
