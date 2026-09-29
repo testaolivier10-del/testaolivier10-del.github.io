@@ -33,15 +33,9 @@
       11:['acetal-formation'],
       12:['acetal-formation','carbonyl-electrophilicity'] } },
 
-    /* Step 2 is the hydration sorter: sterics and electronics read off five
-       structures, which is the equilibrium concept alone. 3 and 4 are the
-       Jones/PCC payoff, so oxidizability joins it. 6 is the one-carbon
-       extension, and 7 is the case where the two causes disagree. */
     /* Step 2 sorts six nucleophiles against one acid chloride, 3 is the
        two-equivalent trap, 4 the leaving-group ranking, 6 the activate-then-
        acylate order, 7 the deprotonation that turns nothing into a reaction. */
-    /* Step 2 sorts six condition sets, 3 is why acid stops, 4 the iodoform
-       scope, 6 the monohalogenation choice, 7 the methyl-versus-alpha trap. */
     /* Step 2 is the carbon-count sorter, which is the first question to ask of
        any amine synthesis. 3 is why direct alkylation runs away, 4 why Gabriel
        can only go once, 6 the route for a secondary amine, 7 a synthesis that
@@ -105,9 +99,6 @@
       12:['addition-equilibrium','tetrahedral-intermediate'],
       14:['addition-equilibrium','carbonyl-electrophilicity'] } },
 
-    /* Step 2 sorts five test results, 3 is why a weak oxidant is the right
-       tool for a test, 4 is the hemiacetal opening, 6 the reagent choice
-       under two constraints, 7 the IR-against-chemical-test contradiction. */
     'aldehyde-oxidation': { n:15, steps:{
       2:['aldehyde-oxidizability','addition-equilibrium'],
       5:['aldehyde-oxidizability','oxidation-level'],
@@ -120,10 +111,6 @@
        concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
        4 is the C–H versus O–H asymmetry, which is a notation rule rather than
        a counting one. 7 is the five-bond slip, where both are involved. */
-    /* Step 2 is the sorter (chain mechanism alone). 3 is radical stability, 4
-       is the bromine-versus-chlorine selectivity that follows from it. 6 is
-       NBS, which is a competition/concentration argument resting on the chain.
-       7 is anti-Markovnikov HBr — the chain logic applied somewhere new. */
     /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
        (0, 1 and 5 are explain steps and record nothing). */
     /* The synthesis chapter. Graded steps are 2, 3, 4, 6, 7. */
