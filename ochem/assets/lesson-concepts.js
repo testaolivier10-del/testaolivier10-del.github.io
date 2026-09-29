@@ -157,9 +157,12 @@
       8:['peptide-bond'],
       11:['peptide-bond'] } },
 
-    'lipids': { n:8, steps:{
-      2:['lipid-ester'], 3:['lipid-ester'], 4:['lipid-ester'],
-      6:['lipid-ester'], 7:['lipid-ester'] } },
+    'lipids': { n:14, steps:{
+      3:['lipid-ester'],
+      4:['lipid-ester'],
+      6:['lipid-ester'],
+      9:['lipid-ester'],
+      13:['lipid-ester'] } },
 
     'nucleic-acids': { n:8, steps:{
       2:['nucleotide-assembly'], 3:['nucleotide-assembly'], 4:['nucleotide-assembly'],
