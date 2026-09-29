@@ -25274,7 +25274,7 @@
    "options": [
     "Benzaldehyde has no carbonyl group",
     "Aromatic rings are always more acidic than alkyl groups",
-    "The alpha carbon is an aromatic carbon with no H",
+    "The alpha carbon is a ring carbon with no H",
     "Benzaldehyde's carbonyl oxygen is not electronegative"
    ],
    "correct": 2,
@@ -25321,7 +25321,7 @@
    "q": "Diethyl malonate's alpha CH2 (flanked by two ester carbonyls) has a pKa of about 13, which is noticeably higher (less acidic) than a 1,3-diketone's central CH2 (pKa about 9-11) despite both having two flanking carbonyls. Why?",
    "options": [
     "Malonate esters have three acidic protons instead of two",
-    "Esters are aromatic and therefore less acidic",
+    "Ester groups are bulkier and block the base",
     "The ester oxygen donates into the carbonyl, weakening stabilization",
     "Malonate's carbonyls are further away from the CH2 than a diketone's carbonyls"
    ],
@@ -25374,7 +25374,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is a nitro group (-NO2) an especially strong activator of an adjacent alpha C-H's acidity, making a C-H nearly as acidic as one flanked by two ketone carbonyls?",
+   "q": "Why does a nitro group (–NO₂) make the C–H next to it so acidic, nearly as acidic as a C–H flanked by two ketone carbonyls?",
    "options": [
     "Nitro groups have no effect on adjacent C-H acidity",
     "Nitro groups only work through induction, never through resonance",
@@ -25579,7 +25579,7 @@
     "Beta-hydroxy aldehyde or ketone",
     "Alpha-hydroxy aldehyde or ketone",
     "Gamma-hydroxy ester",
-    "Beta-keto ester"
+    "Alpha,beta-unsaturated aldehyde or ketone"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -25718,7 +25718,7 @@
    "options": [
     "Only strongly acidic, anhydrous, low-temperature conditions",
     "Dilute base and heat, cleaving the C-C bond to two carbonyls",
-    "Conditions identical to those used for a Claisen condensation, with no overlap to aldol chemistry",
+    "Concentrated acid with a drying agent to remove water",
     "Only when the aldol product has already been reduced to a diol"
    ],
    "correct": 1,
@@ -25770,14 +25770,14 @@
    "type": "mcq"
   },
   {
-   "q": "A student proposes that the aldol reaction and the Claisen condensation are mechanistically identical in every step, including the final fate of the tetrahedral intermediate. Is this correct?",
+   "q": "In an aldol addition, the enolate adds to an aldehyde and gives a tetrahedral alkoxide. In acyl substitution, a similar alkoxide collapses and expels a group. Why does the aldol alkoxide pick up a proton instead?",
    "options": [
-    "No, because the Claisen intermediate expels an alkoxide",
-    "Yes, both reactions always end by eliminating water in an identical final step",
-    "Yes, both reactions never involve enolate nucleophiles",
-    "No, because the aldol reaction does not involve a carbonyl electrophile at all"
+    "An alkoxide cannot form a C=O bond again",
+    "The new C–C bond can never break once formed",
+    "It has no good leaving group",
+    "Aldehydes react only through their enol form"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -27337,15 +27337,14 @@
    "type": "mcq"
   },
   {
-   "q": "Benzene was treated with (CH₃)₃CCl and AlCl₃ to give the compound shown, which is then treated with CH₃COCl and AlCl₃. What is the major product of that second step?",
-   "molecule": "q-tert-butylbenzene",
+   "q": "Excess benzene is heated with 2-methylpropan-2-ol, (CH₃)₃COH, and H₂SO₄. What is the main product?",
    "options": [
-    "1-tert-butyl-3-acetylbenzene (acetyl meta to the tert-butyl group)",
-    "No reaction — the tert-butyl group deactivates the ring toward acylation",
-    "1-tert-butyl-4-acetylbenzene (acetyl para to the tert-butyl group)",
-    "A mixture of ortho and meta products in roughly equal amounts"
+    "tert-Butylbenzene, PhC(CH₃)₃",
+    "No reaction, since only alkyl halides can alkylate a ring",
+    "tert-Butyl phenyl ether, PhOC(CH₃)₃",
+    "Isobutylbenzene, PhCH₂CH(CH₃)₂, after a shift"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -27980,6 +27979,19 @@
    "correct": 0,
    "difficulty": "hard",
    "type": "tf"
+  },
+  {
+   "q": "Benzene was treated with (CH₃)₃CCl and AlCl₃ to give the compound shown, which is then treated with CH₃COCl and AlCl₃. What is the major product of that second step?",
+   "molecule": "q-tert-butylbenzene",
+   "options": [
+    "1-tert-butyl-3-acetylbenzene (acetyl meta to the tert-butyl group)",
+    "No reaction — the tert-butyl group deactivates the ring toward acylation",
+    "1-tert-butyl-4-acetylbenzene (acetyl para to the tert-butyl group)",
+    "A mixture of ortho and meta products in roughly equal amounts"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
   }
  ],
  "ir": [
@@ -29981,7 +29993,7 @@
   {
    "q": "A target has six more carbons and contains a benzene ring. What does that suggest?",
    "options": [
-    "A polymerization",
+    "A Diels–Alder reaction",
     "An ozonolysis",
     "Six separate C-C bonds must form",
     "The ring arrived intact"
@@ -30599,7 +30611,7 @@
    "options": [
     "Aqueous acid is exactly what removes it",
     "Acetals need base",
-    "It would polymerize the substrate",
+    "Acid locks it on permanently",
     "Acid oxidizes it"
    ],
    "correct": 0,
@@ -31214,9 +31226,9 @@
    "q": "What is a carbohydrate, in functional-group terms?",
    "options": [
     "A polyhydroxy carbonyl",
-    "A polyester of glycerol",
-    "A polymer of amino acids",
-    "A chain of phosphodiesters"
+    "A long-chain carboxylic acid",
+    "A polyamine",
+    "A cyclic ether with no carbonyl"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -31662,7 +31674,7 @@
     "They are covalent networks",
     "They are internal salts",
     "They hydrogen bond unusually strongly",
-    "They are polymeric"
+    "They are very large molecules"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -35872,7 +35884,7 @@
     "Its ring strain",
     "Its boiling point",
     "For a 1,5-dicarbonyl",
-    "Whether it is aromatic"
+    "Whether it is chiral"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -38636,7 +38648,7 @@
   {
    "q": "What does branching do to packing?",
    "options": [
-    "Only matters above Tg",
+    "Only matters in condensation polymers",
     "Prevents it",
     "Improves it",
     "Has no effect"
@@ -39035,7 +39047,7 @@
    "q": "What is atactic polypropylene like?",
    "options": [
     "Transparent and rigid",
-    "A thermoset",
+    "Hard and brittle like glass",
     "A sticky goo",
     "Rope-strong"
    ],
@@ -39514,12 +39526,12 @@
    "type": "mcq"
   },
   {
-   "q": "Is Kevlar a thermoset?",
+   "q": "Is Kevlar a cross-linked network?",
    "options": [
     "No, its chains are separate",
-    "Yes",
-    "Only when heated",
-    "It is neither"
+    "Yes, its amides tie the chains together covalently",
+    "Only once it has been heated",
+    "Yes, because its rings are rigid"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -42247,7 +42259,7 @@
    "options": [
     "Alkene substitution",
     "Markovnikov's rule",
-    "Huckel's rule",
+    "CIP priority rules",
     "The Hammond postulate"
    ],
    "correct": 0,

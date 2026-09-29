@@ -27412,11 +27412,11 @@
    "options": [
     "Benzaldehyde has no carbonyl group",
     "Aromatic rings are always more acidic than alkyl groups",
-    "The alpha carbon is an aromatic carbon with no H",
+    "The alpha carbon is a ring carbon with no H",
     "Benzaldehyde's carbonyl oxygen is not electronegative"
    ],
    "correct": 2,
-   "why": "The 'alpha carbon' on the aryl side of PhCHO is part of the aromatic ring; removing a ring C-H there would destroy aromaticity and is not the kind of alpha-deprotonation relevant to enolate chemistry, so PhCHO's only true alpha hydrogens would have to come from an alkyl substituent, which it lacks.",
+   "why": "The only carbon next to the C=O is the ring carbon the CHO is attached to. Its bonds go to two ring carbons and the CHO, so it carries no hydrogen, and with no alpha H there is no enolate. The aldehyde H sits on the carbonyl carbon itself, not on an alpha carbon.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -27463,7 +27463,7 @@
    "q": "Diethyl malonate's alpha CH2 (flanked by two ester carbonyls) has a pKa of about 13, which is noticeably higher (less acidic) than a 1,3-diketone's central CH2 (pKa about 9-11) despite both having two flanking carbonyls. Why?",
    "options": [
     "Malonate esters have three acidic protons instead of two",
-    "Esters are aromatic and therefore less acidic",
+    "Ester groups are bulkier and block the base",
     "The ester oxygen donates into the carbonyl, weakening stabilization",
     "Malonate's carbonyls are further away from the CH2 than a diketone's carbonyls"
    ],
@@ -27521,7 +27521,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is a nitro group (-NO2) an especially strong activator of an adjacent alpha C-H's acidity, making a C-H nearly as acidic as one flanked by two ketone carbonyls?",
+   "q": "Why does a nitro group (–NO₂) make the C–H next to it so acidic, nearly as acidic as a C–H flanked by two ketone carbonyls?",
    "options": [
     "Nitro groups have no effect on adjacent C-H acidity",
     "Nitro groups only work through induction, never through resonance",
@@ -27601,7 +27601,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Only the sp3 CH3 carbon attached to the carbonyl is the true alpha carbon capable of forming a resonance-stabilized enolate; the ring carbon on the other side of the carbonyl is aromatic and its hydrogens are not involved in this kind of carbonyl-stabilized deprotonation.",
+   "why": "The alpha carbon is the one bonded directly to the C=O. On the methyl side that is the CH₃, whose H can leave to give an enolate. On the ring side it is the ring carbon attached to the C=O, which has no H; the ring C–H bonds are one carbon farther away and cannot form an enolate.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -27743,10 +27743,10 @@
     "Beta-hydroxy aldehyde or ketone",
     "Alpha-hydroxy aldehyde or ketone",
     "Gamma-hydroxy ester",
-    "Beta-keto ester"
+    "Alpha,beta-unsaturated aldehyde or ketone"
    ],
    "correct": 0,
-   "why": "The new C-C bond forms between the alpha carbon of one molecule and the carbonyl carbon of the other; after protonation, that carbonyl carbon now bears an -OH group that is beta (two carbons away) to the remaining carbonyl group, giving a beta-hydroxy carbonyl compound.",
+   "why": "The enolate carbon bonds to the other carbonyl carbon, which becomes a C–OH two carbons from the remaining C=O, so the product is a beta-hydroxy carbonyl. The alpha,beta-unsaturated compound only forms if that product then loses water, which the question rules out.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -27894,7 +27894,7 @@
    "options": [
     "Only strongly acidic, anhydrous, low-temperature conditions",
     "Dilute base and heat, cleaving the C-C bond to two carbonyls",
-    "Conditions identical to those used for a Claisen condensation, with no overlap to aldol chemistry",
+    "Concentrated acid with a drying agent to remove water",
     "Only when the aldol product has already been reduced to a diol"
    ],
    "correct": 1,
@@ -27951,15 +27951,15 @@
    "type": "mcq"
   },
   {
-   "q": "A student proposes that the aldol reaction and the Claisen condensation are mechanistically identical in every step, including the final fate of the tetrahedral intermediate. Is this correct?",
+   "q": "In an aldol addition, the enolate adds to an aldehyde and gives a tetrahedral alkoxide. In acyl substitution, a similar alkoxide collapses and expels a group. Why does the aldol alkoxide pick up a proton instead?",
    "options": [
-    "No, because the Claisen intermediate expels an alkoxide",
-    "Yes, both reactions always end by eliminating water in an identical final step",
-    "Yes, both reactions never involve enolate nucleophiles",
-    "No, because the aldol reaction does not involve a carbonyl electrophile at all"
+    "An alkoxide cannot form a C=O bond again",
+    "The new C–C bond can never break once formed",
+    "It has no good leaving group",
+    "Aldehydes react only through their enol form"
    ],
-   "correct": 0,
-   "why": "Both reactions begin the same way, with an enolate attacking a carbonyl to give a tetrahedral alkoxide intermediate, but what happens next differs: an aldehyde or ketone electrophile has no good leaving group so the intermediate is simply protonated (giving a hydroxyl), while an ester electrophile has an alkoxide leaving group that is expelled to regenerate a carbonyl, which is the defining difference between aldol addition and Claisen condensation.",
+   "correct": 2,
+   "why": "The alkoxide carbon holds H, an alkyl group and the new C–C bond. None of these leaves easily, so the alkoxide is protonated and gives the beta-hydroxy carbonyl. An ester carbon also holds OR, which can leave as an alkoxide. The C–C bond can break (the retro-aldol), so \"never\" is wrong.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -29651,16 +29651,15 @@
    "type": "mcq"
   },
   {
-   "q": "Benzene was treated with (CH₃)₃CCl and AlCl₃ to give the compound shown, which is then treated with CH₃COCl and AlCl₃. What is the major product of that second step?",
-   "molecule": "q-tert-butylbenzene",
+   "q": "Excess benzene is heated with 2-methylpropan-2-ol, (CH₃)₃COH, and H₂SO₄. What is the main product?",
    "options": [
-    "1-tert-butyl-3-acetylbenzene (acetyl meta to the tert-butyl group)",
-    "No reaction — the tert-butyl group deactivates the ring toward acylation",
-    "1-tert-butyl-4-acetylbenzene (acetyl para to the tert-butyl group)",
-    "A mixture of ortho and meta products in roughly equal amounts"
+    "tert-Butylbenzene, PhC(CH₃)₃",
+    "No reaction, since only alkyl halides can alkylate a ring",
+    "tert-Butyl phenyl ether, PhOC(CH₃)₃",
+    "Isobutylbenzene, PhCH₂CH(CH₃)₂, after a shift"
    ],
-   "correct": 2,
-   "why": "Two decisions, in order. First step: tert-butyl chloride ionizes to a tertiary cation, which is already the most stable arrangement of those carbons, so nothing rearranges and tert-butylbenzene forms cleanly. Second step: an alkyl group is a weak activator and an ortho/para director, so the acylium ion goes ortho or para. tert-Butyl is very bulky, so ortho attack is almost entirely suppressed and the product is essentially all para. The trap is answering meta by reflex because the incoming group is an acyl group — the incoming group never directs; the group already on the ring does.",
+   "correct": 0,
+   "why": "Acid protonates the OH, water leaves, and the tertiary cation forms, the same electrophile AlCl₃ makes from (CH₃)₃CCl. The ring attacks it and loses H⁺. A tertiary cation has no more stable isomer to shift to, and the ring carbon, not an oxygen, bonds to it. Alkyl halides are not the only way in.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -30350,6 +30349,20 @@
    "why": "In an amide, the nitrogen lone pair is partially pulled away into conjugation with the carbonyl group, leaving less electron density available to donate into the aromatic ring than a free amine has, so acetanilide activates the ring less strongly than aniline while still directing ortho/para.",
    "difficulty": "hard",
    "type": "tf"
+  },
+  {
+   "q": "Benzene was treated with (CH₃)₃CCl and AlCl₃ to give the compound shown, which is then treated with CH₃COCl and AlCl₃. What is the major product of that second step?",
+   "molecule": "q-tert-butylbenzene",
+   "options": [
+    "1-tert-butyl-3-acetylbenzene (acetyl meta to the tert-butyl group)",
+    "No reaction — the tert-butyl group deactivates the ring toward acylation",
+    "1-tert-butyl-4-acetylbenzene (acetyl para to the tert-butyl group)",
+    "A mixture of ortho and meta products in roughly equal amounts"
+   ],
+   "correct": 2,
+   "why": "Two decisions, in order. First step: tert-butyl chloride ionizes to a tertiary cation, which is already the most stable arrangement of those carbons, so nothing rearranges and tert-butylbenzene forms cleanly. Second step: an alkyl group is a weak activator and an ortho/para director, so the acylium ion goes ortho or para. tert-Butyl is very bulky, so ortho attack is almost entirely suppressed and the product is essentially all para. The trap is answering meta by reflex because the incoming group is an acyl group — the incoming group never directs; the group already on the ring does.",
+   "difficulty": "hard",
+   "type": "mcq"
   }
  ],
  "ir": [
@@ -32519,13 +32532,13 @@
   {
    "q": "A target has six more carbons and contains a benzene ring. What does that suggest?",
    "options": [
-    "A polymerization",
+    "A Diels–Alder reaction",
     "An ozonolysis",
     "Six separate C-C bonds must form",
     "The ring arrived intact"
    ],
    "correct": 3,
-   "why": "Counting tells you the ring came in whole rather than being built.",
+   "why": "Six extra carbons that include a whole benzene ring suggest the ring came in as one piece, such as a phenyl Grignard or a coupling partner. A Diels–Alder does build six-membered rings, but not aromatic ones, and six separate C–C bonds would be a very long route.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -33188,11 +33201,11 @@
    "options": [
     "Aqueous acid is exactly what removes it",
     "Acetals need base",
-    "It would polymerize the substrate",
+    "Acid locks it on permanently",
     "Acid oxidizes it"
    ],
    "correct": 0,
-   "why": "Choosing a protecting group means checking it against every remaining step.",
+   "why": "An acetal survives base, nucleophiles and hydride reagents, but aqueous acid hydrolyzes it back to the carbonyl, so it would fall off during that step. Acid does not lock it on; acid is how you take it off. Choose a protecting group by checking it against every remaining step.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -33854,12 +33867,12 @@
    "q": "What is a carbohydrate, in functional-group terms?",
    "options": [
     "A polyhydroxy carbonyl",
-    "A polyester of glycerol",
-    "A polymer of amino acids",
-    "A chain of phosphodiesters"
+    "A long-chain carboxylic acid",
+    "A polyamine",
+    "A cyclic ether with no carbonyl"
    ],
    "correct": 0,
-   "why": "Every property of a sugar follows from a carbonyl surrounded by alcohols on the same chain.",
+   "why": "A sugar is a carbon chain with one C=O and an OH on most other carbons. Glucose, for example, is an aldehyde with five OH groups. The ring form it adopts is a hemiacetal made from that same carbonyl, not a plain ether.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -34339,10 +34352,10 @@
     "They are covalent networks",
     "They are internal salts",
     "They hydrogen bond unusually strongly",
-    "They are polymeric"
+    "They are very large molecules"
    ],
    "correct": 1,
-   "why": "A zwitterion is ionic, and ionic solids behave like this.",
+   "why": "An amino acid exists as a zwitterion, with a + and a − charge on the same molecule, so its solid is held together like a salt. That gives a high melting point and no solubility in nonpolar ether. Hydrogen bonding alone is not strong enough to explain this.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -38898,10 +38911,10 @@
     "Its ring strain",
     "Its boiling point",
     "For a 1,5-dicarbonyl",
-    "Whether it is aromatic"
+    "Whether it is chiral"
    ],
    "correct": 2,
-   "why": "A cyclohexenone, especially one fused to another ring, is the fingerprint of a Robinson annulation. Mentally add water across the C=C and undo the aldol: if that gives a 1,5-diketone, the Michael disconnection splits it into a ketone and MVK. Ring strain, boiling point and aromaticity say nothing about how the ring was made.",
+   "why": "A cyclohexenone, especially one fused to another ring, is the fingerprint of a Robinson annulation. Mentally add water across the C=C and undo the aldol: if that gives a 1,5-diketone, the Michael disconnection splits it into a ketone and MVK. Ring strain, boiling point and chirality say nothing about how the ring was made.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41741,7 +41754,7 @@
     "A shorter chain"
    ],
    "correct": 1,
-   "why": "Which is what makes a thermoset, and why it cannot be melted.",
+   "why": "Each monomer can bond to three different chains, so the chains become tied to each other in every direction and the whole sample becomes one covalent molecule, as with glycerol and adipic acid. Two sites per monomer would only extend a chain.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -41891,13 +41904,13 @@
   {
    "q": "What does branching do to packing?",
    "options": [
-    "Only matters above Tg",
+    "Only matters in condensation polymers",
     "Prevents it",
     "Improves it",
     "Has no effect"
    ],
    "correct": 1,
-   "why": "Which is the whole difference between LDPE and HDPE.",
+   "why": "Side branches stick out from the chain and stop neighboring chains from lying close together, just as the kinks in unsaturated fatty acids do in lipids. That is why a branched chain gives a softer, less dense plastic than a linear one.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -41910,7 +41923,7 @@
     "Lower the molecular weight"
    ],
    "correct": 0,
-   "why": "A few make rubber elastic; many make a rigid thermoset.",
+   "why": "A cross-link is a covalent bond between two chains, so they can no longer slide apart. A few cross-links give a stretchy material that springs back; many turn the whole sample into one rigid network. Branching and chain length are separate features.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -42250,7 +42263,7 @@
     "Switch to a Ziegler-Natta catalyst, to get isotactic chains"
    ],
    "correct": 3,
-   "why": "A peroxide gives a free radical chain end, which is planar and has no facial preference, so the methyls land at random and the product is atactic - a goo, whatever its molecular weight. Only a catalyst that holds the chain at a defined metal site forces every monomer to arrive the same way round, and only the isotactic chains that result can pack into crystalline regions. Pressure and transfer agent change the chain length, which is not what is wrong here, and cross-linking would give a thermoset that cannot be molded at all.",
+   "why": "A peroxide gives a planar radical chain end with no facial preference, so the methyls land at random and the chains are atactic, a goo at any length. A catalyst that holds the chain at a metal site gives isotactic chains, which pack into crystalline regions. Pressure and transfer agents only change chain length, and cross-linking would tie everything into one network that cannot be molded.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -42323,12 +42336,12 @@
    "q": "What is atactic polypropylene like?",
    "options": [
     "Transparent and rigid",
-    "A thermoset",
+    "Hard and brittle like glass",
     "A sticky goo",
     "Rope-strong"
    ],
    "correct": 2,
-   "why": "Nothing packs, so there is no strength.",
+   "why": "In atactic polypropylene the methyl groups point at random, so the chains cannot line up and pack. With no crystalline regions to give strength, it is a soft, sticky material.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -42842,15 +42855,15 @@
    "type": "mcq"
   },
   {
-   "q": "Is Kevlar a thermoset?",
+   "q": "Is Kevlar a cross-linked network?",
    "options": [
     "No, its chains are separate",
-    "Yes",
-    "Only when heated",
-    "It is neither"
+    "Yes, its amides tie the chains together covalently",
+    "Only once it has been heated",
+    "Yes, because its rings are rigid"
    ],
    "correct": 0,
-   "why": "No cross-links, so not a network. It has no melt either, decomposing near 500 C and spun from solution.",
+   "why": "Both Kevlar monomers carry two reactive groups, so each join extends a straight chain. Neighboring chains are held side by side by hydrogen bonds between amides, not by covalent cross-links. Rigid rings make the chain straight, not linked.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45581,7 +45594,7 @@
     "On the carbonyl carbon"
    ],
    "correct": 2,
-   "why": "Under acid the reaction runs through the enol, and the two enols are free to equilibrate, so the more stable of them - the more substituted one - is the one that reacts and it decides where the halogen lands. That is C2. It is the same more-substituted-is-more-stable logic used for thermodynamic enolates, arriving one section early.",
+   "why": "Under acid the reaction runs through the enol, and the two enols are free to equilibrate, so the more stable one, the more substituted one, reacts and decides where the halogen lands. That is C2. It is the same more-substituted-is-more-stable ranking that Zaitsev's rule uses for alkenes.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -45801,11 +45814,11 @@
    "options": [
     "Alkene substitution",
     "Markovnikov's rule",
-    "Huckel's rule",
+    "CIP priority rules",
     "The Hammond postulate"
    ],
    "correct": 0,
-   "why": "An enolate C=C is ranked like any alkene: more alkyl groups on it means more hyperconjugation and more stability, the same ranking that makes Zaitsev products favored. Markovnikov's rule is about where H adds across an alkene, Huckel's rule about aromaticity, and the Hammond postulate about what a transition state resembles; none of them ranks two alkenes against each other.",
+   "why": "An enolate C=C is ranked like any alkene: more alkyl groups on it means more hyperconjugation and more stability, the same ranking that makes Zaitsev products favored. Markovnikov's rule is about where H adds, CIP rules rank groups for naming, and the Hammond postulate is about what a transition state resembles.",
    "difficulty": "easy",
    "type": "mcq"
   },
