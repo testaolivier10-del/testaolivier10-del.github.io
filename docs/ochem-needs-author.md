@@ -777,3 +777,38 @@ confirm it.
     faster) with many ligands; the audit suggested I > Br ≈ OTf. The Suzuki base is taught by the
     borate route, with the Pd–OH route shown in a fact box. Turnover is given as about 50 at
     2 mol %.
+
+## Acids & Bases (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### acids-bases-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `bronsted`, `conjugate`, `pka`, `acidity-factors`, `lewis-acids`, plus one line on
+  `nucleophiles` and the shared `molecules.js` and `interactive-bank.js`.
+- **Positions taken:**
+  - Water is pKa 15.7 and hydronium −1.7 (the course convention), with a note on every page that
+    many sources give 14.0 and 0 because of how the solvent water is counted. The pka page's
+    "ethanol + hydroxide, neither side clearly favored (K about 0.5)" depends on this: with 14 the
+    left side is clearly favored.
+  - Values that vary by source are kept as the course has them: HCl about −7, NH₃ 38 (sources
+    35–41), diisopropylamine 36, the HI/HF gap about 13 units.
+  - Brønsted acids/bases teaches pKa far enough (building on Resonance) to grade which side an
+    equilibrium favors; the pKa page then covers Ka, the scale, how far and which base to choose.
+    Acetic acid + NH₃ is "about 3 × 10⁴ to one" on every page.
+  - Conjugate acids/bases defines "weak base" by chloride, so acetate is called a "moderate
+    base". General chemistry usually calls acetate a weak base.
+  - Factors affecting acidity grades resonance as the reason carboxylic acids beat alcohols (the
+    inductive view is shown beside it), and atom size/polarizability as the main reason HX
+    acidity rises down a group (bond strength second).
+  - In 4-hydroxybutan-2-one the hydroxyl oxygen is taught as more basic than the C=O oxygen
+    (conjugate acids about −2 against −7). The interactive item that keyed the C=O oxygen as the
+    site protonated by strong acid was removed, and the molecule's hover notes were changed to
+    match; gas-phase data and the acid-catalysis convention point the other way, so the author
+    should pick one answer for the whole site.
+  - Lewis acids/bases gives both conventions on whether HCl counts as a Lewis acid (nothing graded
+    depends on it), draws the TiCl₄–acetone adduct as a simple 1:1 five-coordinate complex (real
+    ones are often 1:2 or dimeric), and separates "acid/base" from "nucleophile/electrophile" as
+    how far versus how fast, a simplification. The Nucleophiles page now says the line between
+    "base" and "nucleophile" is not strict (an alkene taking the H of HBr is called a nucleophile).
