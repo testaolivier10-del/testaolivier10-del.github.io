@@ -28,7 +28,7 @@ const lbl = (p, lab, cls = 'fg-lbl') => text(p.x, p.y + 4.6, lab, { cls, size: 1
 function newman(cx, cy, r, front, back, opts = {}) {
   const len = opts.backLen ?? 26;
   const skew = opts.skew ?? 0;
-  const nudge = skew ? -(opts.nudge ?? 12) : 0;
+  const nudge = skew ? -(opts.nudge ?? 14) : 0;
   let s = '';
   for (const [a0, lab] of back) {
     const a = a0 + skew;
@@ -91,8 +91,8 @@ const BUT_FRONT = [[0, 'CH₃'], [120, 'H'], [240, 'H']];
 const BUTANE = [
   { name: 'anti', deg: '180°', kind: 'staggered', e: '0', cls: 'fg-tag-good', back: [[60, 'H'], [180, 'CH₃'], [300, 'H']], skew: 0 },
   { name: 'gauche', deg: '60°', kind: 'staggered', e: '+0.9', cls: 'fg-tag-good', back: [[60, 'CH₃'], [180, 'H'], [300, 'H']], skew: 0 },
-  { name: 'eclipsed', deg: '120°', kind: 'eclipsed', e: '+3.6', cls: 'fg-tag-warn', back: [[0, 'H'], [120, 'CH₃'], [240, 'H']], skew: 14 },
-  { name: 'syn', deg: '0°', kind: 'eclipsed', e: '+4.5 to 6', cls: 'fg-tag-warn', back: [[0, 'CH₃'], [120, 'H'], [240, 'H']], skew: 14 },
+  { name: 'eclipsed', deg: '120°', kind: 'eclipsed', e: '+3.6', cls: 'fg-tag-warn', back: [[0, 'H'], [120, 'CH₃'], [240, 'H']], skew: 8 },
+  { name: 'syn', deg: '0°', kind: 'eclipsed', e: '+4.5 to 6', cls: 'fg-tag-warn', back: [[0, 'CH₃'], [120, 'H'], [240, 'H']], skew: 8 },
 ];
 
 /* 2-Methylbutane down C2–C3, C2 in front: CH3 at the top, CH3 lower right,
@@ -204,7 +204,7 @@ function ethanePair(stacked) {
   s += arcMark(A.x, A.y, 36, 0, 60);
   s += text(A.x + 14, A.y - 11, '60°', { cls: 'fg-tag' });
   s += tag(B.x, tB, 'ECLIPSED: 0°', { cls: 'fg-tag-warn' });
-  s += newman(B.x, B.y, 44, ETHANE_FRONT, ETHANE_ECL, { skew: 14 });
+  s += newman(B.x, B.y, 44, ETHANE_FRONT, ETHANE_ECL, { skew: 8 });
   const cap = stacked ? 18 : 0;
   if (!stacked) s += rule(380, 56, 380, 270);
   s += text(A.x, A.y + 104 - cap, 'each back bond sits mid-gap', { cls: stacked ? 'fg-tag' : 'fg-sm' });
@@ -220,7 +220,7 @@ FIGURES.push({
   alt: 'Two Newman projections of ethane. Staggered: each back H sits halfway between two front H, 60 degrees from each, lowest energy. Eclipsed: each back H sits just behind a front H, drawn turned a few degrees so both show, 2.9 kcal/mol higher',
   viewBox: '0 0 760 290',
   build: () => ethanePair(false),
-  caption: 'The dashed arc marks the dihedral angle between the top front H and the nearest back H. In the eclipsed drawing the back bonds are turned a few degrees only so you can see them; the angle they show is 0°.',
+  caption: 'The dashed arc marks the dihedral angle between the top front H and the nearest back H.',
 });
 
 /* The same two drawings, unnamed, for the lesson's "pick the staggered one"
@@ -236,7 +236,7 @@ FIGURES.push({
     s += newman(170, 110, 44, ETHANE_FRONT, ETHANE_STAG);
     s += rule(20, 212, 320, 212);
     s += tag(170, 244, 'B');
-    s += newman(170, 330, 44, ETHANE_FRONT, ETHANE_ECL, { skew: 14 });
+    s += newman(170, 330, 44, ETHANE_FRONT, ETHANE_ECL, { skew: 8 });
     s += text(170, 430, 'front H meet at the dot; back H start at the rim', { cls: 'fg-tag' });
     return s;
   },
@@ -252,7 +252,7 @@ function hyperPanel(cx, cy, staggered) {
   s += bond(c1, c2, { rFrom: 16, rTo: 16 });
   // left carbon: in-plane H up (the donor bond), two more H lower left
   const hU = P(c1.x, c1.y - 62);
-  s += `<ellipse class="fg-orb-alt" cx="${c1.x}" cy="${c1.y - 31}" rx="12" ry="36"></ellipse>`;
+  s += `<rect class="fg-panel-warn" x="${c1.x - 11}" y="${c1.y - 70}" width="22" height="62" rx="11"></rect>`;
   s += bond(c1, hU, { rFrom: 16, rTo: 13, cls: 'fg-bond-hi' });
   const w1 = P(c1.x - 56, c1.y + 20), h1 = P(c1.x - 34, c1.y + 50);
   s += wedge(c1, w1, { rFrom: 16, rTo: 13, width: 9 });
@@ -262,10 +262,10 @@ function hyperPanel(cx, cy, staggered) {
   // Its sigma* has its big lobe on carbon, pointing away from that H.
   const dir = staggered ? 1 : -1;               // +1: H points down
   const hA = P(c2.x, c2.y + dir * 62);
-  s += `<ellipse class="fg-orb" cx="${c2.x}" cy="${c2.y - dir * 34}" rx="15" ry="30"></ellipse>`;
+  s += `<ellipse class="fg-orb" cx="${c2.x}" cy="${c2.y - dir * 34}" rx="12" ry="30"></ellipse>`;
   s += `<ellipse class="fg-orb-alt" cx="${c2.x}" cy="${c2.y + dir * 84}" rx="8" ry="9"></ellipse>`;
   s += bond(c2, hA, { rFrom: 16, rTo: 13 });
-  const o1 = P(c2.x + 56, c2.y - dir * 20), o2 = P(c2.x + 34, c2.y - dir * 50);
+  const o1 = P(c2.x + 60, c2.y - dir * 14), o2 = P(c2.x + 56, c2.y - dir * 52);
   s += wedge(c2, o1, { rFrom: 16, rTo: 13, width: 9 });
   s += hash(c2, o2, { rFrom: 16, rTo: 13, width: 10, rungs: 4 });
   for (const p of [hA, o1, o2]) s += atom(p.x, p.y, 'H', { r: 13 });
@@ -292,7 +292,7 @@ function hyperBody(stacked) {
   else s += rule(20, 318, 320, 318);
   return s;
 }
-const HYPER_ALT = 'Ethane side-on, twice. Staggered: the upper C–H bond on the left carbon, shaded as a filled orbital, sits parallel to the large lobe of the empty sigma-star orbital of the lower C–H bond on the right carbon. Eclipsed: the right carbon\'s matching C–H bond points up, so its sigma-star lobe points down, away from the filled bond';
+const HYPER_ALT = 'Ethane side-on, twice. Staggered: the upper C–H bond on the left carbon, shaded as a filled bond, sits parallel to the carbon-side lobe of the empty sigma-star orbital of the lower C–H bond on the right carbon. Eclipsed: the right carbon\'s matching C–H bond points up, so its sigma-star lobe points down, away from the filled bond';
 FIGURES.push({
   id: 'hyperconjugation',
   section: 'newman',
@@ -300,7 +300,7 @@ FIGURES.push({
   alt: HYPER_ALT,
   viewBox: '0 0 760 310',
   build: () => hyperBody(false),
-  caption: 'Only one pair of bonds is shaded; in staggered ethane every C–H bond has such a partner. The σ* orbital has its large lobe on carbon, on the side facing away from its own H, and a small lobe of opposite phase beyond the H.',
+  caption: 'Only one pair of bonds is shaded; in staggered ethane every C–H bond has such a partner. The σ* orbital has a lobe on carbon, on the side facing away from its own H, and a lobe of opposite phase beyond the H.',
 });
 FIGURES.push({
   id: 'l-hyperconjugation',
@@ -308,7 +308,7 @@ FIGURES.push({
   alt: HYPER_ALT,
   viewBox: '0 0 340 626',
   build: () => hyperBody(true),
-  caption: 'The shaded bond on the left carbon is filled. The lobes on the right carbon are the empty σ* of the C–H bond drawn there.',
+  caption: 'The shaded bond on the left carbon is filled. The lobes on the right carbon are the empty σ* of its in-plane C–H bond, which points down in the top panel and up in the bottom one.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -370,10 +370,11 @@ FIGURES.push({
     s += rule(280, 50, 280, 240);
     s += tag(420, 28, 'GAUCHE: Br 60° FROM Br', { cls: 'fg-tag' });
     s += newman(420, 140, 40, F, [[60, 'Br'], [180, 'H'], [300, 'H']]);
-    s += arcMark(420, 140, 26, 0, 60);
+    s += arcMark(420, 140, 30, 0, 60);
+    s += text(432, 131, '60°', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'The same names as butane, with Br in place of CH₃. The gauche form has a twin with the back Br at 300°.',
+  caption: 'The same names as butane, with Br in place of CH₃. The gauche form has a twin with the back Br at the upper left instead.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -410,7 +411,7 @@ FIGURES.push({
     s += mbPanel(110, y2, 60);
     s += arrow(P(210, y2), P(262, y2), { muted: true });
     s += text(236, y2 - 12, '60°', { cls: 'fg-sm' });
-    s += mbPanel(380, y2, 120, { skew: 14 });
+    s += mbPanel(380, y2, 120, { skew: 8 });
     s += arrow(P(498, y2), P(550, y2), { muted: true });
     s += text(524, y2 - 12, '60°', { cls: 'fg-sm' });
     s += mbPanel(650, y2, 180);
@@ -473,7 +474,7 @@ FIGURES.push({
       s += rule(x0 - 5, Y(e), x0, Y(e));
       s += text(x0 - 10, Y(e) + 4, String(e), { cls: 'fg-sm', anchor: 'end' });
     }
-    s += `<text class="fg-sm" x="58" y="${Y(3)}" text-anchor="middle" transform="rotate(-90 58 ${Y(3)})">kcal/mol</text>`;
+    s += `<text class="fg-sm" x="58" y="${Y(3)}" text-anchor="middle" transform="rotate(-90 58 ${Y(3)})">energy (kcal/mol)</text>`;
     const pts = [[0, 5], [60, 0.9], [120, 3.6], [180, 0], [240, 3.6], [300, 0.9], [360, 5]];
     let d = `M${X(0)} ${f2(Y(5))}`;
     for (let i = 1; i < pts.length; i++) {

@@ -249,8 +249,8 @@ function facePattern(layout) {
     const cy = top + 104;
     s += rich(cx, top + 24, `${c.name}: both groups equatorial`, 'fg-tag');
     const ch = drawChair(cx, cy, k, false,
-      [{ i: 0, face: face(0), lab: Me, L: 34 }, { i: c.j, face: face(c.j), lab: Me, L: 34 }],
-      { stubs: true, locants: [[0, 'C1', 16, -14], c.j === 1 ? [1, 'C2', -16, -12] : c.j === 3 ? [3, 'C4', -16, 18] : [c.j, c.jl]] });
+      [{ i: 0, face: face(0), lab: Me, L: 34 }, { i: c.j, face: face(c.j), lab: Me, L: c.j === 1 ? 42 : 34 }],
+      { stubs: true, locants: [[0, 'C1', 16, -14], c.j === 1 ? [1, 'C2', -16, 20] : c.j === 3 ? [3, 'C4', -16, 18] : [c.j, c.jl]] });
     s += ch.s;
     for (const { e, g } of ch.ends) {
       const above = g.i !== 0;
@@ -316,7 +316,7 @@ FIGURES.push(...both({
     lines: [['BOTH EQUATORIAL (ee)', 'fg-tag-good'], ['gauche contact: 0.9 kcal/mol']],
   },
   B: {
-    flipped: true, groups: [{ i: 0, face: 'down', lab: Me }, { i: 5, face: 'up', lab: Me }],
+    flipped: true, groups: [{ i: 0, face: 'down', lab: Me }, { i: 5, face: 'up', lab: Me, L: 24 }],
     locants: [[0, 'C1'], [5, 'C2']],
     lines: [['BOTH AXIAL (aa)', 'fg-tag-warn'], ['1.7 + 1.7 = 3.4 kcal/mol']],
   },
@@ -328,7 +328,7 @@ FIGURES.push({
   id: 'ca-trans-12-newman',
   section: 'conformational-analysis',
   anchor: '<h3>When the two groups touch each other</h3>',
-  alt: 'Two Newman projections looking down the C1 to C2 bond of trans-1,2-dimethylcyclohexane. Left, the diequatorial chair: the front methyl and the back methyl are 60 degrees apart, gauche. Right, the diaxial chair: the two methyls are 180 degrees apart, anti. In both, the ring bonds to C6 and C3 are 60 degrees apart.',
+  alt: 'Two Newman projections looking down the C1 to C2 bond of trans-1,2-dimethylcyclohexane, with the front carbon drawn the same in both. Left, the diequatorial chair: the front methyl and the back methyl are 60 degrees apart, gauche. Right, the diaxial chair: the back carbon has turned, and the two methyls are 180 degrees apart, anti. In both, the ring bonds to C6 and C3 are 60 degrees apart.',
   viewBox: '0 0 760 280',
   build() {
     let s = '';
@@ -340,13 +340,13 @@ FIGURES.push({
     s += text(190, 262, 'methyls 60° apart: gauche', { cls: 'fg-lbl', size: 13 });
     s += rule(380, 48, 380, 268);
     s += newman(570, 128, 36,
-      [[0, Me], [120, 'H'], [240, 'C6']],
-      [[180, Me], [60, 'H'], [300, 'C3']]);
+      [[0, 'H'], [120, Me], [240, 'C6']],
+      [[180, 'C3'], [60, 'H'], [300, Me]]);
     s += text(570, 240, 'aa CHAIR', { cls: 'fg-tag-warn', size: 11 });
     s += text(570, 262, 'methyls 180° apart: anti', { cls: 'fg-lbl', size: 13 });
     return s;
   },
-  caption: 'C6 and C3 are the ring carbons next to C1 and C2. Only the methyls and hydrogens trade places between the two chairs.',
+  caption: 'The front carbon is unchanged. The flip turns the back carbon, which moves the methyls from 60° apart to 180° apart; the ring carbons C6 and C3 stay 60° apart in both chairs.',
 });
 
 /* ---- cis-1,3-dimethyl: aa with a methyl/methyl contact, or ee ---------- */
@@ -354,7 +354,7 @@ FIGURES.push(...both({
   id: 'ca-cis-13',
   section: 'conformational-analysis',
   anchor: '<h3>When the two groups touch each other</h3>',
-  alt: 'cis-1,3-dimethylcyclohexane in its two chairs. Left: both methyls axial and pointing up on the same face, with the axial hydrogen on C5 pointing up beside them; a dashed line joins the two methyls, marking a 3.7 kcal/mol contact; total about 5.4 kcal/mol. Right: both methyls equatorial, no axial group and no contact.',
+  alt: 'cis-1,3-dimethylcyclohexane in its two chairs. Left: both methyls axial and pointing up on the same face, with the axial hydrogen on C5 pointing up beside them; a dashed line joins the two methyls, marking a 3.7 kcal/mol contact; total about 5.5 kcal/mol. Right: both methyls equatorial, no axial group and no contact.',
   caption: 'The dashed line marks the methyl/methyl contact in the aa chair.',
   lessonCaption: 'Dashed line: the methyl/methyl contact.',
 }, {
@@ -363,14 +363,14 @@ FIGURES.push(...both({
     flipped: false, groups: [{ i: 0, face: 'up', lab: Me }, { i: 2, face: 'up', lab: Me }], hs: [{ i: 4, L: 22 }],
     locants: [[0, 'C1'], [2, 'C3'], [4, 'C5']],
     extra: (ends) => contact(ends[1].e, ends[0].e, '3.7', (ends[0].e.x + ends[1].e.x) / 2, (ends[0].e.y + ends[1].e.y) / 2 - 12, 'fg-tag-warn', 18, 18),
-    lines: [['BOTH AXIAL (aa)', 'fg-tag-warn'], ['3.7 + 0.85 + 0.85 ≈ 5.4 kcal/mol']],
+    lines: [['BOTH AXIAL (aa)', 'fg-tag-warn'], ['3.7 + 0.9 + 0.9 ≈ 5.5 kcal/mol']],
   },
   B: {
     flipped: true, groups: [{ i: 0, face: 'up', lab: Me }, { i: 2, face: 'up', lab: Me }],
     locants: [[0, 'C1'], [2, 'C3']],
     lines: [['BOTH EQUATORIAL (ee)', 'fg-tag-good'], ['no axial group: 0']],
   },
-  verdict: [['ee wins by about 5.4 kcal/mol']],
+  verdict: [['ee wins by about 5.5 kcal/mol']],
 }));
 
 /* ---- cis-1,2-dimethyl: a tie ------------------------------------------- */
@@ -389,7 +389,7 @@ FIGURES.push({
       lines: [['C1 AXIAL, C2 EQUATORIAL', 'fg-tag'], ['1.7 + 0.9 gauche = 2.6 kcal/mol']],
     },
     B: {
-      flipped: true, groups: [{ i: 0, face: 'up', lab: Me }, { i: 5, face: 'up', lab: Me }],
+      flipped: true, groups: [{ i: 0, face: 'up', lab: Me }, { i: 5, face: 'up', lab: Me, L: 24 }],
       locants: [[0, 'C1'], [5, 'C2']],
       lines: [['C1 EQUATORIAL, C2 AXIAL', 'fg-tag'], ['1.7 + 0.9 gauche = 2.6 kcal/mol']],
     },
