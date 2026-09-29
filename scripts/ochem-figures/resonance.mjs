@@ -534,7 +534,7 @@ FIGURES.push({
     s += tag(569, 176, 'one compound, drawn with ↔', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'Follow the highlighted H on the left: it changes atoms. On the right, every atom stays where it was.',
+  caption: 'Left: acetaldehyde and its enol. Follow the highlighted H as it changes atoms. Right: the enol’s two resonance structures, where every atom stays put.',
 });
 
 /* ------------------------------------------ 7 counting contributors --- */
