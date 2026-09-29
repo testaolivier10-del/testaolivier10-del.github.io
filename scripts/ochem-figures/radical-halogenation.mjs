@@ -193,7 +193,8 @@ function mechRows(L) {
   // Propagation 1
   Y = L[1];
   s += head(Y, 'PROPAGATION 1', 'radicals 1 → 1');
-  s += note(Y, 'the C–H bond splits: one electron stays on carbon, one pairs with chlorine’s');
+  s += note(Y, 'the C–H bond splits: one electron stays on carbon,');
+  s += text(740, Y - 34, 'the other pairs with chlorine’s unpaired electron', { cls: 'fg-sm', size: 10, anchor: 'end' });
   s += bond(P(200, Y), P(268, Y), { rFrom: 18, rTo: 13 });
   s += me(200, Y);
   s += hAtom(268, Y);
@@ -309,7 +310,7 @@ FIGURES.push({
     s += fishhook(P(83, b.Y1 - 4), P(111, b.Y1 - 10), { bow: -8 });
     s += fishhook(P(198, b.Y1 + 5), P(117, b.Y1 + 8), { bow: -46 });
     s += fishhook(P(204, b.Y1 - 5), P(224, b.Y1 - 15), { bow: -8 });
-    s += down(b.oy, null, 300);
+    s += arrow(P(200, b.oy + 106), P(200, b.oy + 132), { muted: true });
     s += bond(P(70, b.Y2), P(138, b.Y2), { rFrom: 18, rTo: 16 });
     s += me(70, b.Y2);
     s += hal(138, b.Y2, 'Cl', [-90, 90, 0]);
@@ -483,9 +484,9 @@ function bromobutane(c, up) {
   const sg = up ? 1 : -1;
   const at = (deg, len) => P(c.x + Math.cos((deg * Math.PI) / 180) * len, c.y - Math.sin((deg * Math.PI) / 180) * len);
   const br = at(90 * sg, 48);
-  const hPos = up ? at(200, 44) : at(160, 44);
-  const meP = up ? at(-45, 46) : at(52, 46);
-  const etP = up ? at(18, 56) : at(-22, 58);
+  const hPos = up ? at(200, 44) : at(165, 44);
+  const meP = up ? at(-45, 46) : at(-20, 48);
+  const etP = up ? at(18, 56) : at(40, 58);
   let s = '';
   s += bond(c, br, { rFrom: 0, rTo: 16 });
   s += bond(c, hPos, { rFrom: 0, rTo: 13 });
@@ -517,10 +518,10 @@ FIGURES.push({
     s += hAtom(hP.x, hP.y);
     s += atom(meP.x, meP.y, 'CH₃', { r: 18 });
     s += atom(etP.x, etP.y, 'CH₂CH₃', { r: 26 });
-    s += `<circle class="fg-fill-mut" cx="${c.x}" cy="${c.y}" r="3.5"></circle>`;
-    s += dot(170, 112);
-    s += label(150, 84, 'p orbital,', { anchor: 'end', size: 13 });
-    s += label(150, 102, 'one electron', { anchor: 'end', size: 13 });
+    s += dot(c.x, c.y);
+    s += label(150, 78, 'p orbital:', { anchor: 'end', size: 13 });
+    s += label(150, 96, 'one electron,', { anchor: 'end', size: 13 });
+    s += label(150, 114, 'both lobes', { anchor: 'end', size: 13 });
     s += label(230, 52, 'Br₂', { anchor: 'start', size: 13 });
     s += label(230, 70, 'top face', { anchor: 'start', size: 13 });
     s += arrow(P(224, 60), P(188, 88));

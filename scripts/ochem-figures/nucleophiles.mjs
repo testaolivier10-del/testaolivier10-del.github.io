@@ -78,7 +78,7 @@ FIGURES.push({
   id: 'nuc-first-attack',
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
-  anchor: '<!-- nuc-first-attack -->',
+  anchor: '<h3>What it is</h3>',
   alt: 'Two stacked panels. Top: hydroxide ion, H–O with three lone pairs and a negative charge, sits to the left of bromomethane. A curved arrow runs from an oxygen lone pair to the carbon, which is marked delta plus, and a second curved arrow moves the C–Br bond electrons onto bromine. Hydroxide is labeled nucleophile and bromine leaving group. Bottom: the products, methanol, H–O–CH3 with two lone pairs on oxygen, and bromide ion with four lone pairs and a negative charge.',
   viewBox: '0 0 340 332',
   build() {
@@ -113,7 +113,7 @@ FIGURES.push({
   id: 'nuc-three-families',
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
-  anchor: '<!-- nuc-three-families -->',
+  anchor: '<h3>What it is</h3>',
   alt: 'Three stacked panels. An anion: methoxide, CH3–O with three lone pairs and a full negative charge; the family includes hydroxide, alkoxides, cyanide, thiolates, halides and carbanions, and is the strongest. A neutral molecule with a lone pair: ammonia, N with three H and one lone pair; the family includes water, alcohols, amines and phosphines, with no charge and middling strength. A pi bond: ethene, with the second line of its C=C highlighted as the pi bond; the family includes alkenes, alkynes and aromatic rings, with no charge and no lone pair, and is the weakest.',
   viewBox: '0 0 340 420',
   build() {
@@ -163,7 +163,7 @@ FIGURES.push({
   id: 'nuc-charge',
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
-  anchor: '<!-- nuc-charge -->',
+  anchor: '<h3>What makes one stronger</h3>',
   alt: 'Two stacked panels, each with bromomethane on the right and the same two curved arrows: an oxygen lone pair attacks the carbon and the C–Br bond electrons move onto bromine. Top: methoxide, CH3–O with three lone pairs and a negative charge, labeled full negative charge, fast. Bottom: methanol, CH3–O–H with two lone pairs and no charge, labeled neutral, much slower.',
   viewBox: '0 0 340 372',
   build() {
@@ -195,7 +195,7 @@ FIGURES.push({
   id: 'nuc-row',
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
-  anchor: '<!-- nuc-row -->',
+  anchor: '<h3>What makes one stronger</h3>',
   alt: 'Four anions from one row of the periodic table, each with one negative charge, drawn with their lone pairs: H3C minus with one lone pair (carbon, electronegativity 2.55), H2N minus with two (nitrogen, 3.04), HO minus with three (oxygen, 3.44) and F minus with four (fluorine, 3.98). Below them, the order of nucleophilicity: H3C minus, then H2N minus, then HO minus, then F minus.',
   viewBox: '0 0 340 330',
   build() {
@@ -233,7 +233,7 @@ FIGURES.push({
   id: 'nuc-polarizable',
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
-  anchor: '<!-- nuc-polarizable -->',
+  anchor: '<h3>What makes one stronger</h3>',
   alt: 'Two stacked panels, each with bromomethane on the right and its carbon marked delta plus. Top: fluoride ion, a small round electron cloud that stays round. Bottom: iodide ion, a large cloud; a dashed circle shows its resting shape, and the shaded cloud is stretched toward the delta plus carbon.',
   viewBox: '0 0 340 316',
   build() {
@@ -265,7 +265,7 @@ FIGURES.push({
   id: 'nuc-solvent',
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
-  anchor: '<!-- nuc-solvent -->',
+  anchor: '<h3>Solvent matters too, and it can reverse the order</h3>',
   alt: 'Three stacked panels. Fluoride in methanol: four methanol molecules surround F minus, each pointing its O–H hydrogen at the ion through a short dashed hydrogen bond, forming a tight cage. Iodide in methanol: a larger I minus with only two methanols, on long dashed hydrogen bonds, a loose hold. Fluoride in DMSO: the DMSO oxygens surround the sodium ion, and the fluoride ion sits alone with its four lone pairs and nothing hydrogen-bonded to it.',
   viewBox: '0 0 340 520',
   build() {
@@ -314,7 +314,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'nuc-delocalized',
   section: 'nucleophiles',
-  anchor: '<!-- nuc-delocalized -->',
+  anchor: '<h3>What makes one stronger</h3>',
   alt: 'Two stacked panels. Top: acetate ion drawn as two resonance forms joined by a double-headed arrow. In the left form the lower oxygen carries the negative charge and three lone pairs; one curved arrow takes a lone pair down into the C–O bond, and another moves the C=O pi bond onto the upper oxygen. The right form has the charge on the upper oxygen. Each oxygen carries the charge in one form. Bottom: methoxide ion, CH3–O minus, with the whole charge on its one oxygen.',
   viewBox: '0 0 340 318',
   build() {
@@ -359,7 +359,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'nuc-hybrid-n',
   section: 'nucleophiles',
-  anchor: '<!-- nuc-hybrid-n -->',
+  anchor: '<h3>What makes one stronger</h3>',
   alt: 'Three stacked panels, each a nitrogen with one lone pair. Trimethylamine: an sp3 nitrogen with three CH3 groups, lone pair 25 percent s character, the best nucleophile of the three. Pyridine: a six-membered aromatic ring with one ring nitrogen whose lone pair points out of the ring in the ring plane, sp2, 33 percent s. Acetonitrile: H3C–C≡N, a linear sp nitrogen with its lone pair pointing straight out along the axis, 50 percent s, the weakest.',
   viewBox: '0 0 340 416',
   build() {
@@ -416,7 +416,7 @@ FIGURES.push({
   id: 'nuc-sterics',
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
-  anchor: '<!-- nuc-sterics -->',
+  anchor: '<h3>Nucleophilicity is not basicity</h3>',
   alt: 'Three stacked panels. First, tert-butoxide acting as a base: a lone pair on its O minus takes a proton from water, and the O–H bond electrons stay on the water oxygen. Second, tert-butoxide trying to act as a nucleophile on 2-bromopropane: the carbon bearing bromine is flanked by two CH3 groups, and a grey approach arrow from the bulky tert-butoxide stops short with a cross. Third, hydroxide, which is small, attacks the same carbon with a curved arrow while the C–Br bond electrons move onto bromine.',
   viewBox: '0 0 340 540',
   build() {
@@ -462,7 +462,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'nuc-ambident',
   section: 'nucleophiles',
-  anchor: '<!-- nuc-ambident -->',
+  anchor: '<h3>When a nucleophile has two ends: ambident nucleophiles</h3>',
   alt: 'Two stacked panels. Top: cyanide ion, with a lone pair on carbon, a lone pair on nitrogen and the negative charge on carbon. A curved arrow runs from the carbon lone pair to the carbon of bromomethane, and the C–Br bond electrons move onto bromine; the product is H3C–C≡N, a nitrile with a new C–C bond, plus bromide. Bottom: the enolate of acetone drawn as two resonance forms. In the major form the negative charge is on oxygen, with a C=C double bond; curved arrows move an oxygen lone pair into the C–O bond and the C=C pi bond onto the CH2 carbon. The minor form has C=O and the negative charge and a lone pair on the CH2 carbon, which is the end that usually reacts.',
   viewBox: '0 0 340 430',
   build() {
