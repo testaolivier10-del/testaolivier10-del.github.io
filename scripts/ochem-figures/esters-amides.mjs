@@ -289,7 +289,6 @@ FIGURES.push({
     return s;
   },
   caption: 'Follow the two curved arrows from the left structure to the right one. Then find methyls a and b: to swap places they would have to turn about the C–N bond.',
-  note: 'The barrier near 20 kcal/mol was measured with this molecule. Warm a DMF sample and its two ¹H NMR methyl signals merge into one once the bond turns fast enough; the temperature at which they merge gives the barrier.',
 });
 FIGURES.push({
   id: 'l-amide-resonance',
