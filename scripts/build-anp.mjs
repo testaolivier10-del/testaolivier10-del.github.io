@@ -706,19 +706,19 @@ function homePage() {
     <div class="anp-now-row">
       <div class="anp-now-card" id="anpStart">
         <div class="k">Start here</div>
-        ${first ? `<h3>${esc(first.title)}</h3>
+        ${first ? `<h2>${esc(first.title)}</h2>
         <p>Foundations &middot; ${esc(firstCh.title)}. Foundations is recommended, not required: nothing is locked.</p>
-        <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h3>Pick any chapter</h3><p>Nothing is locked.</p>`}
+        <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any chapter</h2><p>Nothing is locked.</p>`}
       </div>
       <div class="anp-now-card" id="anpReview">
         <div class="k">Review queue</div>
-        <h3>Missed questions come back</h3>
+        <h2>Missed questions come back</h2>
         <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
         <a class="link-quiet" href="review.html">Open review &rarr;</a>
       </div>
       <div class="anp-now-card" id="anpGoal">
         <div class="k">Today&rsquo;s goal</div>
-        <h3>A little every day</h3>
+        <h2>A little every day</h2>
         <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.</p>
         <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
       </div>

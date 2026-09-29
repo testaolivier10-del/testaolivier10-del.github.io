@@ -70,7 +70,7 @@
     var t = resumed.topic, ch = chapterOf(t.chapter);
     el('anpStart').innerHTML =
       '<div class="k">' + (resumed.fresh ? 'Up next' : 'Pick up where you left off') + '</div>' +
-      '<h3>' + esc(t.title) + '</h3>' +
+      '<h2>' + esc(t.title) + '</h2>' +
       '<p>Chapter ' + ch.n + ' · ' + esc(ch.title) + '.' + (resumed.fresh ? ' The next lesson you have not finished.' : '') + '</p>' +
       '<a class="btn-press" href="' + base + 'lessons/' + t.id + '.html">' + (resumed.fresh ? 'Start the lesson' : resumed.done ? 'Go back to the lesson' : 'Continue the lesson') + '</a>';
   }
@@ -79,7 +79,7 @@
     if(!A) return;
     var n = A.reviewCount(), card = el('anpReview');
     card.classList.toggle('due', n > 0);
-    card.querySelector('h3').textContent = n ? plural(n, 'question') + ' due now' : 'Nothing due yet';
+    card.querySelector('h2').textContent = n ? plural(n, 'question') + ' due now' : 'Nothing due yet';
     card.querySelector('p').textContent = n
       ? 'Each right answer pushes that question further out.'
       : 'Anything you miss comes back when you are about to forget it, not on a fixed date.';
@@ -91,7 +91,7 @@
     var s = HP.streak(), done = Math.min(s.todayCount, s.goal);
     el('anpGoal').innerHTML =
       '<div class="k">Today’s goal</div>' +
-      '<h3>' + done + ' of ' + s.goal + '</h3>' +
+      '<h2>' + done + ' of ' + s.goal + '</h2>' +
       '<p>' + (s.metToday ? 'Goal met for today. Your streak is safe.' : 'Questions, cards and tool steps from any LevlPrep subject count.') + '</p>' +
       '<div class="xp-track" aria-hidden="true"><div class="xp-fill" style="width:' + Math.round(done / Math.max(1, s.goal) * 100) + '%"></div></div>' +
       '<a class="link-quiet" href="' + base + 'practice.html">Practice now →</a>';

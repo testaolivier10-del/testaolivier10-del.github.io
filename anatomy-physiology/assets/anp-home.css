@@ -16,7 +16,7 @@
 .anp-now-card{padding:22px 24px;}
 .anp-now-card.due{box-shadow:var(--lift-lg),inset 0 0 0 2px var(--amber);}
 .anp-now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-.anp-now-card h3{margin:0 0 6px;font-size:19px;}
+.anp-now-card h2{margin:0 0 6px;font-size:19px;}
 .anp-now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
 .anp-now-card .xp-track{height:10px;margin:0 0 14px;}
 
