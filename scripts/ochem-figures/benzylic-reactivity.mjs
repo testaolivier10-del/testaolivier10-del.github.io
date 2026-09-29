@@ -718,8 +718,8 @@ FIGURES.push({
     }
     const names = ['benzene', 'toluene', '4-nitrotoluene', '4-nitrobenzoic acid'];
     names.forEach((n, i) => { s += tg(xs[i], 218, n); });
-    s += tg(xs[2], 34, 'para to CH₃;', 'middle', 'fg-tag-mut');
-    s += tg(xs[2], 48, 'ortho isomer separated off', 'middle', 'fg-tag-mut');
+    s += tg(xs[2], 34, 'para isomer, separated', 'middle', 'fg-tag-mut');
+    s += tg(xs[2], 48, 'from the ortho isomer', 'middle', 'fg-tag-mut');
     return s;
   },
   caption: 'The route in the order it is run. The methyl goes on first and becomes the carboxyl last.',
