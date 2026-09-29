@@ -231,53 +231,6 @@ FIGURES.push({
   caption: 'Chain transfer to a thiol. Follow the hydrogen from sulfur to carbon.',
 });
 
-/* ======================================================================
-   3. Which end the radical adds to (notes and lesson, 340 wide).
-   ====================================================================== */
-FIGURES.push({
-  id: 'head-to-tail-choice',
-  section: 'addition-polymers',
-  lessons: ['addition-polymers'],
-  anchor: '',
-  viewBox: '0 0 340 400',
-  alt: 'Top: a growing chain radical R meets vinyl chloride, H2C=CHCl. Middle: if R adds to the CH2 end, the new radical sits on the substituted carbon, right beside the chlorine; this radical is more stable, and this is the path taken. Bottom: if R adds to the CHCl end, the new radical sits on a bare CH2 carbon, which is less stable, and R had to attack the more crowded carbon.',
-  build() {
-    let s = '';
-    s += tg(170, 20, 'a chain radical R• meets vinyl chloride');
-    const R = P(70, 62), c1 = P(170, 62), c2 = P(240, 62), cl = P(240, 106);
-    s += G(R, 'R') + dot(R.x + 11, R.y - 12);
-    s += row([c1, c2], ['H₂C', 'CH'], [2]);
-    s += B(c2, 'CH', cl, 'Cl') + G(cl, 'Cl');
-    s += tg(170, 100, 'end 1', 'fg-tag-mut') + tg(290, 66, 'end 2', 'fg-tag-mut');
-    s += rule(20, 128, 320, 128);
-
-    /* Path 1: add to CH₂. */
-    s += tg(170, 152, 'R adds to the CH₂ end', 'fg-tag-good');
-    let y = 190;
-    const p = [P(40, y), P(105, y), P(172, y)];
-    s += row(p, ['R', 'CH₂', 'CH']);
-    s += dot(p[2].x + 11, y - 13);
-    s += B(p[2], 'CH', P(172, y + 44), 'Cl') + G(P(172, y + 44), 'Cl');
-    s += tg(262, y - 4, 'radical beside Cl,', 'fg-tag-good');
-    s += tg(262, y + 12, 'on the substituted C:', 'fg-tag-good');
-    s += tg(262, y + 28, 'more stable', 'fg-tag-good');
-    s += rule(20, 256, 320, 256);
-
-    /* Path 2: add to CHCl. */
-    s += tg(170, 280, 'R adds to the CHCl end', 'fg-tag-warn');
-    y = 318;
-    const q = [P(40, y), P(105, y), P(172, y)];
-    s += row(q, ['R', 'CH', 'CH₂']);
-    s += dot(q[2].x + 13, y - 15);
-    s += B(q[1], 'CH', P(105, y + 44), 'Cl') + G(P(105, y + 44), 'Cl');
-    s += tg(262, y - 4, 'radical on a bare', 'fg-tag-warn');
-    s += tg(262, y + 12, 'CH₂: less stable,', 'fg-tag-warn');
-    s += tg(262, y + 28, 'and R hit the', 'fg-tag-warn');
-    s += tg(262, y + 44, 'crowded carbon', 'fg-tag-warn');
-    return s;
-  },
-  caption: 'Both paths start the same way. Compare where each one leaves the radical.',
-});
 
 /* ======================================================================
    4. Head-to-tail PVC beside a chain with a head-to-head defect (notes and
@@ -635,7 +588,7 @@ FIGURES.push({
     s += bond(ti, P((a1.x + a2.x) / 2, 293), { rFrom: 16, rTo: 0, cls: 'fg-dash' });
     s += B(a1, 'H₂C', a2, 'CH', { order: 2 }) + B(a2, 'CH', me, 'CH₃');
     s += G(a1, 'H₂C') + G(a2, 'CH') + G(me, 'CH₃');
-    s += tg(108, 322, 'a', 'fg-tag-good') + tg(222, 322, 'b', 'fg-tag-good');
+    s += tg(132, 324, 'a', 'fg-tag-good') + tg(202, 324, 'b', 'fg-tag-good');
     s += rule(20, 330, 320, 330);
 
     /* Panel 3: after insertion. */
@@ -762,49 +715,5 @@ FIGURES.push({
   caption: 'Every arrow has one barb, because it moves one electron. X is the group on the monomer, as in CH₂=CHX.',
 });
 
-/* ======================================================================
-   13. Linear against branched polyethylene (notes).
-   ====================================================================== */
-FIGURES.push({
-  id: 'packing-architecture',
-  section: 'addition-polymers',
-  anchor: '',
-  viewBox: '0 0 760 256',
-  alt: 'Linear chains lying flat against each other beside branched chains held apart, labeled HDPE and LDPE',
-  build() {
-    let s = '';
-    // A run of chain as a shallow zigzag, optionally with a short branch.
-    const chain = (x0, y, n, branchAt) => {
-      let t = '', px = x0, py = y, up = true;
-      for (let i = 0; i < n; i++) {
-        const nx = px + 16, ny = up ? y - 6 : y + 6;
-        t += `<line class="fg-bond" x1="${px}" y1="${py}" x2="${nx}" y2="${ny}"></line>`;
-        if (branchAt && i === branchAt) {
-          const br = [[nx, ny], [nx + 4, ny - 8], [nx + 12, ny - 11], [nx + 16, ny - 18], [nx + 25, ny - 20]];
-          for (let k = 0; k < 4; k++) t += `<line class="fg-bond" x1="${br[k][0]}" y1="${br[k][1]}" x2="${br[k + 1][0]}" y2="${br[k + 1][1]}"></line>`;
-        }
-        px = nx; py = ny; up = !up;
-      }
-      return t;
-    };
-    const col = (ox, title, branched, label2, use, kind) => {
-      s += panel(ox, 46, 330, 152, { kind });
-      s += tg(ox + 165, 34, title);
-      for (let r = 0; r < 4; r++) {
-        s += chain(ox + 24, branched ? 74 + r * 38 : 80 + r * 30, 16, branched ? (r % 2 ? 4 : 9) : 0);
-      }
-      s += lbl(ox + 165, 220, label2);
-      s += tg(ox + 165, 242, use, kind === 'warn' ? 'fg-tag' : 'fg-tag-good');
-    };
-    col(24, 'linear: chains touch along their length', false,
-        'HDPE: dense, rigid', 'milk bottles and pipe', null);
-    col(406, 'branched: chains held apart', true,
-        'LDPE: less dense, flexible', 'plastic bags', 'warn');
-
-    return s;
-  },
-  caption: 'The two polyethylenes, drawn schematically.',
-  note: 'This is the fatty-acid argument from <a class="chapter-ref" href="/ochem/notes/lipids.html">Lipids</a>, applied to a different molecule. Straight chains lie against their neighbors along their full length, and the London forces add up. A branch breaks that contact, and the melting point falls. Tacticity does the same job by a different route: atactic polypropylene cannot pack either.',
-});
 
 export default FIGURES;
