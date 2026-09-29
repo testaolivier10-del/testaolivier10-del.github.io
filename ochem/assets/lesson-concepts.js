@@ -201,9 +201,12 @@
       2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
       6:['grignard-scope'], 7:['grignard-scope'] } },
 
-    'gilman-reagents': { n:8, steps:{
-      2:['hard-soft-addition'], 3:['hard-soft-addition'], 4:['hard-soft-addition'],
-      6:['hard-soft-addition'], 7:['hard-soft-addition'] } },
+    'gilman-reagents': { n:11, steps:{
+      4:['hard-soft-addition'],
+      5:['hard-soft-addition'],
+      7:['hard-soft-addition'],
+      9:['hard-soft-addition'],
+      10:['hard-soft-addition'] } },
 
     'cross-coupling': { n:8, steps:{
       2:['catalytic-cycle'], 3:['catalytic-cycle'], 4:['catalytic-cycle'],

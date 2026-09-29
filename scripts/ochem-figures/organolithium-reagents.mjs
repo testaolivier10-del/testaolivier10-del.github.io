@@ -370,7 +370,7 @@ function ldaProduct(ox, oy) {
   s += lonePair(N.x, N.y, 325);
   s += mark(N.x, N.y - 30, '−');
   s += grp(ox + 110, oy + 150, 'Li⁺');
-  s += tag(ox + 110, oy + 190, 'two isopropyl groups crowd the N', { cls: 'fg-tag-good' });
+  s += tag(ox + 150, oy + 190, 'two isopropyl groups crowd the N', { cls: 'fg-tag-good' });
   s += label(ox + 214, oy + 101, '+');
   const bu = [p(234, 110), p(260, 90), p(286, 110), p(312, 90)];
   for (let i = 0; i < 3; i++) s += sk(bu[i], bu[i + 1]);
@@ -409,7 +409,7 @@ FIGURES.push({
   section: TOPIC,
   lessons: [TOPIC],
   anchor: '<h3>Acetylides, the cheapest carbon nucleophile</h3>',
-  viewBox: '0 0 340 300',
+  viewBox: '0 0 340 266',
   alt: 'Three carbanions, each with its lone pair in a lobe drawn from the carbon. The ethyl anion (sp3, 25 percent s, from ethane at pKa 50) has the longest lobe; the vinyl anion (sp2, 33 percent s, from ethene at pKa 44) a shorter one; the acetylide (sp, 50 percent s, from ethyne at pKa 25) the shortest, held closest to the nucleus.',
   build() {
     let s = '';
@@ -428,10 +428,9 @@ FIGURES.push({
       s += tag(272, r.y - 3, r.hyb, { cls: r.hi ? 'fg-tag-good' : 'fg-tag' });
       s += tag(272, r.y + 15, r.pka, { cls: 'fg-tag-mut' });
     }
-    s += tag(170, 284, 'more s character: pair held closer, anion more stable');
     return s;
   },
-  caption: 'Read down the column. The shorter the lobe, the closer the lone pair sits to the carbon nucleus, and the lower the pKa of the C–H bond it came from.',
+  caption: 'Read down the column: as the s character rises, the lobe shortens and the pKa falls with it.',
 });
 
 /* ======================================================================
@@ -557,7 +556,7 @@ FIGURES.push({
   section: TOPIC,
   anchor: '<b>Step 5 &mdash; set the geometry.</b>',
   viewBox: '0 0 760 270',
-  alt: 'Pent-2-yne in the middle left. An arrow up, labelled H2 and Lindlar catalyst, gives cis-pent-2-ene, with both alkene hydrogens on the same side. An arrow down, labelled Na in liquid NH3, gives trans-pent-2-ene, with the two hydrogens on opposite sides.',
+  alt: 'Pent-2-yne in the middle left. An arrow up, labeled H2 and Lindlar catalyst, gives cis-pent-2-ene, with both alkene hydrogens on the same side. An arrow down, labeled Na in liquid NH3, gives trans-pent-2-ene, with the two hydrogens on opposite sides.',
   build() {
     let s = '';
     s += pentyne(40, 138);

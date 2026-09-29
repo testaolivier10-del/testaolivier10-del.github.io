@@ -252,7 +252,7 @@ FIGURES.push({
     s += tag(595, 382, '3-methylcyclohexan-1-one');
     return s;
   },
-  caption: 'The same enone and the same methyl group, with only the metal changed. The colored bond is the new C–C bond in each product.',
+  caption: 'Follow each branch from the reagent to the product. The colored bond is the new C–C bond.',
 });
 
 FIGURES.push({

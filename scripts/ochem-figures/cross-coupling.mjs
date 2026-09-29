@@ -48,7 +48,7 @@ FIGURES.push({
     s += atom(208, 126, 'H', { r: 11 });
     s += label(58, 91, 'Nu⁻');
     s += arrow(P(80, 86), P(178, 86));
-    s += tag(110, 112, 'backside attack');
+    s += tag(96, 76, 'backside attack');
 
     s += panel(6, 154, 328, 140);
     s += tag(170, 174, 'bromobenzene: behind the carbon is the ring');
@@ -59,7 +59,7 @@ FIGURES.push({
     s += label(46, 239, 'Nu⁻');
     s += arrow(P(66, 234), P(128, 234), { muted: true });
     s += dash(P(140, 234), P(192, 234), 'fg-dash');
-    s += text(170, 227, '✕', { cls: 'fg-warn', size: 14 });
+    s += text(170, 229, '✕', { cls: 'fg-lbl' });
     s += tag(170, 284, 'no path through the ring to the back');
     return s;
   },
@@ -153,7 +153,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-pd-cycle',
   lessons: ['cross-coupling'],
-  viewBox: '0 0 340 560',
+  viewBox: '0 0 340 530',
   alt: 'Bromobenzene and phenylboronic acid give biphenyl. Below, the cycle as a column: Pd(0); oxidative addition gives Ph–Pd–Br, Pd(II); transmetalation gives Ph–Pd–Ph, still Pd(II); reductive elimination releases biphenyl and returns Pd(0).',
   build() {
     let s = '';
@@ -199,8 +199,8 @@ FIGURES.push({
   build() {
     let s = '';
     const B = P(130, 100);
-    s += lobeE(B.x, B.y - 30, 7, 17, 'fg-orb');
-    s += lobeE(B.x, B.y + 30, 7, 17, 'fg-orb');
+    s += lobeE(B.x, B.y - 30, 5.5, 13, 'fg-orb');
+    s += lobeE(B.x, B.y + 30, 5.5, 13, 'fg-orb');
     s += bond(B, P(70, 100), { rFrom: 15, rTo: 16 });
     s += bond(B, P(162, 46), { rFrom: 15, rTo: 17 });
     s += bond(B, P(162, 154), { rFrom: 15, rTo: 17 });
@@ -267,8 +267,8 @@ FIGURES.push({
     s += atom(161, 50, 'Cu', { kind: 'warn', r: 17 });
     s += atom(213, 50, 'I');
     s += dash(P(161, 68), P(161, 106));
-    s += tag(88, 56, 'bound side-on', { anchor: 'end' });
-    s += tag(88, 72, 'to the π bonds', { anchor: 'end' });
+    s += tag(240, 40, 'bound side-on', { anchor: 'start' });
+    s += tag(240, 56, 'to the π bonds', { anchor: 'start' });
     // Triethylamine below the H.
     const N = P(300, 196);
     s += bond(N, P(250, 214), { rFrom: 15, rTo: 13 });
@@ -281,7 +281,7 @@ FIGURES.push({
     s += lonePair(N.x, N.y, -110);
     s += curve(P(290, 172), P(262, 132), { bow: -14 });
     s += curve(P(226, 122), P(184, 72), { bow: 18 });
-    s += tag(380, 170, 'Et₃N takes the H', { anchor: 'start' });
+    s += tag(330, 178, 'Et₃N takes the H', { anchor: 'start' });
 
     s += arrow(P(420, y), P(476, y));
 
@@ -324,7 +324,7 @@ FIGURES.push({
     // CuI returns up the left side.
     s += `<path class="fg-arrow" d="M135 276 L60 276 L60 64 L137 64"></path>`;
     s += arrow(P(120, 64), P(145, 64));
-    s += tag(52, 170, 'CuI returns', { anchor: 'end' });
+    s += tag(70, 226, 'CuI returns', { anchor: 'start' });
     // Palladium column.
     s += box(560, 64, 110, 'Pd(0)', null);
     s += arrow(P(560, 84), P(560, 146));
@@ -336,8 +336,8 @@ FIGURES.push({
     // Reductive elimination up the right side.
     s += `<path class="fg-arrow" d="M635 276 L706 276 L706 64 L623 64"></path>`;
     s += arrow(P(640, 64), P(615, 64));
-    s += tag(714, 150, 'reductive', { anchor: 'start' });
-    s += tag(714, 166, 'elimination', { anchor: 'start' });
+    s += tag(698, 210, 'reductive', { anchor: 'end' });
+    s += tag(698, 226, 'elimination', { anchor: 'end' });
     // The link: transmetalation.
     s += arrow(P(266, 276), P(482, 276));
     s += tag(374, 262, 'transmetalation');
@@ -383,10 +383,10 @@ const heckCells = [
     s += atom(ox + 110, oy + 40, 'Pd', { kind: 'warn' });
     s += atom(ox + 164, oy + 40, 'I');
     s += bond(P(ox + 80, oy + 118), P(ox + 140, oy + 118), { order: 2, rFrom: 17, rTo: 15 });
-    s += bond(P(ox + 140, oy + 118), P(ox + 176, oy + 142), { rFrom: 15, rTo: 22 });
+    s += bond(P(ox + 140, oy + 118), P(ox + 196, oy + 150), { rFrom: 15, rTo: 30 });
     s += atom(ox + 80, oy + 118, 'CH₂', { r: 17 });
     s += atom(ox + 140, oy + 118, 'CH');
-    s += grp(ox + 200, oy + 150, E);
+    s += grp(ox + 196, oy + 150, E);
     s += dash(P(ox + 110, oy + 58), P(ox + 110, oy + 108));
     s += tag(ox + 125, oy + 174, '2 · the alkene binds side-on');
     return s;
@@ -400,10 +400,10 @@ const heckCells = [
     s += atom(ox + 140, oy + 40, 'Pd', { kind: 'warn' });
     s += atom(ox + 196, oy + 40, 'I');
     s += bond(P(ox + 70, oy + 118), P(ox + 140, oy + 118), { order: 2, rFrom: 17, rTo: 15 });
-    s += bond(P(ox + 140, oy + 118), P(ox + 184, oy + 138), { rFrom: 15, rTo: 22 });
+    s += bond(P(ox + 140, oy + 118), P(ox + 202, oy + 150), { rFrom: 15, rTo: 30 });
     s += atom(ox + 70, oy + 118, 'CH₂', { r: 17 });
     s += atom(ox + 140, oy + 118, 'CH');
-    s += grp(ox + 210, oy + 146, E);
+    s += grp(ox + 202, oy + 150, E);
     s += curve(P(ox + 104, oy + 46), P(ox + 72, oy + 96), { bow: 16 });
     s += curve(P(ox + 106, oy + 112), P(ox + 138, oy + 62), { bow: 16 });
     s += tag(ox + 125, oy + 174, '3 · Ph and Pd add on the same side');
@@ -415,20 +415,20 @@ const heckCells = [
     let s = '';
     const a = P(ox + 92, oy + 84), b = P(ox + 156, oy + 84);
     s += bond(a, b, { rFrom: 15, rTo: 15 });
-    s += bond(a, P(ox + 40, oy + 84), { rFrom: 15, rTo: 16 });
-    s += bond(a, P(ox + 92, oy + 34), { rFrom: 15, rTo: 12 });
+    s += bond(a, P(ox + 42, oy + 84), { rFrom: 15, rTo: 12 });
+    s += bond(a, P(ox + 92, oy + 32), { rFrom: 15, rTo: 16 });
     s += bond(a, P(ox + 92, oy + 136), { rFrom: 15, rTo: 12 });
     s += bond(b, P(ox + 156, oy + 34), { rFrom: 15, rTo: 12 });
-    s += bond(b, P(ox + 204, oy + 84), { rFrom: 15, rTo: 24 });
+    s += bond(b, P(ox + 210, oy + 84), { rFrom: 15, rTo: 28 });
     s += bond(b, P(ox + 156, oy + 136), { rFrom: 15, rTo: 16 });
     s += bond(P(ox + 156, oy + 136), P(ox + 204, oy + 136), { rFrom: 16, rTo: 12 });
     s += atom(a.x, a.y, 'C');
     s += atom(b.x, b.y, 'C');
-    s += atom(ox + 40, oy + 84, 'Ph', { kind: 'hi', r: 16 });
-    s += atom(ox + 92, oy + 34, 'H', { r: 12 });
+    s += atom(ox + 92, oy + 32, 'Ph', { kind: 'hi', r: 16 });
+    s += atom(ox + 42, oy + 84, 'H', { r: 12 });
     s += atom(ox + 92, oy + 136, 'H', { kind: 'warn', r: 12 });
     s += atom(ox + 156, oy + 34, 'H', { r: 12 });
-    s += grp(ox + 214, oy + 84, E);
+    s += grp(ox + 210, oy + 84, E);
     s += atom(ox + 156, oy + 136, 'Pd', { kind: 'warn' });
     s += atom(ox + 204, oy + 136, 'I', { r: 12 });
     s += curve(P(ox + 96, oy + 112), P(ox + 140, oy + 140), { bow: 14 });
@@ -444,13 +444,13 @@ const heckCells = [
     s += bond(a, P(ox + 72, oy + 26), { rFrom: 15, rTo: 16 });
     s += bond(a, P(ox + 76, oy + 110), { rFrom: 15, rTo: 12 });
     s += bond(b, P(ox + 176, oy + 30), { rFrom: 15, rTo: 12 });
-    s += bond(b, P(ox + 176, oy + 108), { rFrom: 15, rTo: 12 });
+    s += bond(b, P(ox + 192, oy + 116), { rFrom: 15, rTo: 28 });
     s += atom(a.x, a.y, 'C');
     s += atom(b.x, b.y, 'C');
     s += atom(ox + 72, oy + 26, 'Ph', { kind: 'hi', r: 16 });
     s += atom(ox + 76, oy + 110, 'H', { r: 12 });
     s += atom(ox + 176, oy + 30, 'H', { r: 12 });
-    s += grp(ox + 200, oy + 118, E);
+    s += grp(ox + 192, oy + 116, E);
     s += text(ox + 36, oy + 145, '+', { cls: 'fg-lbl' });
     s += bond(P(ox + 70, oy + 140), P(ox + 112, oy + 140), { rFrom: 12, rTo: 16 });
     s += bond(P(ox + 112, oy + 140), P(ox + 154, oy + 140), { rFrom: 16, rTo: 12 });
@@ -491,7 +491,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Read the frames in order. Frames 3 and 4 are the two steps a coupling with a metal partner does not have. In frame 4, the H and the Pd that leave are on the same side, and the phenyl and the ester are on opposite sides.',
+  caption: 'Read the frames in order. Frames 2 to 4 take the place of transmetalation. In frame 4, the H and the Pd that leave are on the same side, and the phenyl and the ester are on opposite sides.',
 });
 
 const heckColumn = (cells) => {
@@ -540,7 +540,7 @@ FIGURES.push({
     s += bond(a, P(262, 112), { rFrom: 15, rTo: 12 });
     s += bond(a, P(214, 162), { rFrom: 15, rTo: 16 });
     s += bond(P(214, 162), P(262, 186), { rFrom: 16, rTo: 16 });
-    s += grp(68, 112, 'CH₃CH₂');
+    s += grp(76, 112, 'CH₃CH₂');
     s += atom(b.x, b.y, 'C');
     s += atom(a.x, a.y, 'C');
     s += atom(150, 62, 'H', { r: 12 });
@@ -588,7 +588,7 @@ FIGURES.push({
 const acetyl = (c, dirUp = true) => {
   // A C(=O)CH3 group whose carbonyl carbon sits at c: C=O up, CH3 down-right.
   let s = '';
-  const O = P(c.x, c.y - 40 * (dirUp ? 1 : -1)), Me = P(c.x + 36, c.y + 24);
+  const O = P(c.x + 22, c.y - 38 * (dirUp ? 1 : -1)), Me = P(c.x + 24, c.y + 40);
   s += bond(c, O, { order: 2, rFrom: 15, rTo: 15 });
   s += bond(c, Me, { rFrom: 15, rTo: 17 });
   s += atom(c.x, c.y, 'C');
@@ -646,7 +646,7 @@ const acetylBiphenyl = (lettered) => {
   if (lettered) {
     s += text(118, 84, 'a', { cls: 'fg-tag-warn' });
     s += text(204, 116, 'b', { cls: 'fg-tag-warn' });
-    s += text(236, 132, 'c', { cls: 'fg-tag-warn' });
+    s += text(222, 134, 'c', { cls: 'fg-tag-warn' });
   }
   return { s, a, b };
 };
@@ -673,7 +673,7 @@ FIGURES.push({
     s += bond(t.a.pts[3], P(22, 96), { rFrom: 0, rTo: 16 });
     s += atom(22, 96, 'HO', { kind: 'warn', r: 16 });
     s += tag(40, 150, 'phenol O–H');
-    s += tag(250, 150, 'ketone');
+    s += tag(292, 62, 'ketone');
     return s;
   },
   caption: 'The target: a phenol on one ring, a ketone on the other, and a bond between the rings.',
