@@ -40,12 +40,12 @@
        any amine synthesis. 3 is why direct alkylation runs away, 4 why Gabriel
        can only go once, 6 the route for a secondary amine, 7 a synthesis that
        is flawless step by step and still arrives one carbon short. */
-    'amine-synthesis': { n:8, steps:{
-      2:['amine-synthesis-routes','oxidation-level'],
-      3:['amine-synthesis-routes','nucleophile-recognition'],
-      4:['amine-synthesis-routes'],
-      6:['amine-synthesis-routes'],
-      7:['amine-synthesis-routes'] } },
+    'amine-synthesis': { n:9, steps:{
+      1:['amine-synthesis-routes','nucleophile-recognition'],
+      3:['amine-synthesis-routes'],
+      5:['amine-synthesis-routes'],
+      7:['amine-synthesis-routes','oxidation-level'],
+      8:['amine-synthesis-routes'] } },
 
     /* Step 2 counts equivalents, which is the historical assay. 3 is the
        leaving-group argument, 4 the worked alkene, 6 the two-observation

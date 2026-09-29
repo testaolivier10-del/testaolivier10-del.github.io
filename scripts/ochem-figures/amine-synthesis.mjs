@@ -227,7 +227,7 @@ FIGURES.push({
   lessons: ['amine-synthesis'],
   anchor: 'into a C&ndash;N single bond.</p>',
   viewBox: '0 0 340 520',
-  alt: 'Reductive amination in three stacked panels. Panel 1: cyclohexanone plus methylamine, H2N–CH3. An arrow labeled pH 4 to 5, minus water, then plus H+, leads to panel 2: the iminium ion, the ring carbon double-bonded to N+, which carries H and CH3. A curved arrow brings hydride from NaBH3CN to the ring carbon, and a second arrow moves the C=N pi electrons onto nitrogen. Panel 3: N-methylcyclohexylamine, with the nitrogen on the old carbonyl carbon, which gained one hydrogen from the hydride.',
+  alt: 'Reductive amination in three stacked panels. Panel 1: cyclohexanone plus methylamine, H2N–CH3. An arrow labeled mild acid, minus water, then plus H+, leads to panel 2: the iminium ion, the ring carbon double-bonded to N+, which carries H and CH3. A curved arrow brings hydride from NaBH3CN to the ring carbon, and a second arrow moves the C=N pi electrons onto nitrogen. Panel 3: N-methylcyclohexylamine, with the nitrogen on the old carbonyl carbon, which gained one hydrogen from the hydride.',
   build() {
     let s = '';
     s += cell(8, 8, 324, 128, '1 · CYCLOHEXANONE + METHYLAMINE', (Q) => {
@@ -241,7 +241,7 @@ FIGURES.push({
       return t;
     });
     s += arrow(P(40, 140), P(40, 170));
-    s += tag(54, 159, 'pH 4–5: − H₂O, then + H⁺', { anchor: 'start' });
+    s += tag(54, 159, 'mild acid: − H₂O, then + H⁺', { anchor: 'start' });
     s += cell(8, 174, 324, 170, '2 · THE IMINIUM ION TAKES H⁻', (Q) => {
       const ring = ringUp(Q(80, 0).x, Q(0, 142).y);
       const n = P(ring.att.x, ring.att.y - 40);
