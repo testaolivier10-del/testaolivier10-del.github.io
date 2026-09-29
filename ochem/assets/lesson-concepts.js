@@ -531,11 +531,12 @@
       12:['valence-electrons'],
       14:['valence-electrons'] } },
 
-    'axial-equatorial': { n:7, steps:{
+    'axial-equatorial': { n:9, steps:{
       1:['chair-axial-equatorial'],
-      2:['chair-axial-equatorial','steric-hindrance'],
       3:['chair-axial-equatorial','steric-hindrance'],
-      6:['chair-axial-equatorial','steric-hindrance'] } },
+      5:['chair-axial-equatorial','steric-hindrance'],
+      7:['chair-axial-equatorial'],
+      8:['chair-axial-equatorial','steric-hindrance'] } },
 
     /* Step 3 sorts six condensed formulas into ester/ether/amide/ketone, 5 is
        the tert-butylamine degree trap, 6 is "which one contains an amide", 9
@@ -597,11 +598,12 @@
       8:['claisen-connectivity','enolate-formation'],
       10:['claisen-connectivity'] } },
 
-    'conformational-analysis': { n:7, steps:{
+    'conformational-analysis': { n:11, steps:{
       1:['chair-axial-equatorial'],
-      2:['chair-axial-equatorial'],
       3:['chair-axial-equatorial','ring-flip-mechanics'],
-      6:['chair-axial-equatorial','ring-flip-mechanics'] } },
+      5:['chair-axial-equatorial','ring-flip-mechanics'],
+      8:['chair-axial-equatorial','torsional-strain'],
+      10:['chair-axial-equatorial','ring-flip-mechanics'] } },
 
     'conjugate': { n:7, steps:{
       1:['conjugate-pairs'],

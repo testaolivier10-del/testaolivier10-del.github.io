@@ -64,7 +64,8 @@ function positionsChair(cx, cy, k, numCls, tagCls) {
     const a = axialEnd(pts, i, 36 * k);
     s += bond(pts[i], a, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
     s += bond(pts[i], equatorialEnd(pts, i, 34 * k), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
-    s += text(a.x, axialUp(i) ? a.y - 6 : a.y + 15, axialUp(i) ? 'up' : 'down', { cls: tagCls });
+    s += axialUp(i) ? text(a.x, a.y - 6, 'up', { cls: tagCls })
+      : text(a.x - 6, a.y + 2, 'down', { cls: tagCls, anchor: 'end' });
     s += cNum(pts, i, i + 1, numCls, 17);
   }
   return s;
@@ -88,10 +89,15 @@ function methylChair(cx, cy, k, where, numCls) {
     s += sub(pts[0], ax1, 'H');
     s += sub(pts[0], eq1, 'CH₃', { kind: 'hi', r: 16 });
   }
-  s += cNum(pts, 0, 1, numCls, 18);
+  s += text(pts[0].x - 36 * k, pts[0].y + 24 * k, 'C1', { cls: numCls });
   s += cNum(pts, 2, 3, numCls, 18);
   s += cNum(pts, 4, 5, numCls, 18);
   return s;
+}
+
+/* A line of text whose first word is an italic prefix such as cis or trans. */
+function itx(x, y, word, rest, cls = 'fg-tag', anchor = 'start') {
+  return `<text class="${cls}" x="${x}" y="${y}" text-anchor="${anchor}"><tspan font-style="italic">${word}</tspan>${rest}</text>`;
 }
 
 const FIGURES = [];
@@ -103,12 +109,12 @@ FIGURES.push({
   section: 'axial-equatorial',
   anchor: 'and C2, C4 and C6 have theirs on the bottom face.</p>',
   alt: 'A cyclohexane chair with carbons numbered C1 to C6. Each carbon has one vertical axial bond and one outward equatorial bond. The axial bonds point up on C1, C3 and C5 and down on C2, C4 and C6.',
-  viewBox: '0 0 760 290',
+  viewBox: '0 0 760 310',
   build() {
     let s = '';
-    s += tag(210, 24, 'EVERY CARBON CARRIES ONE OF EACH');
-    s += positionsChair(210, 150, 1.25, 'fg-sm', 'fg-tag');
-    s += rule(420, 50, 420, 260);
+    s += tag(210, 20, 'EVERY CARBON CARRIES ONE OF EACH');
+    s += positionsChair(210, 168, 1.25, 'fg-sm', 'fg-tag');
+    s += rule(420, 50, 420, 280);
     s += text(450, 110, 'AXIAL: the bold vertical bonds', { cls: 'fg-tag', anchor: 'start' });
     s += text(450, 130, 'up on C1, C3, C5; down on C2, C4, C6', { anchor: 'start' });
     s += text(450, 180, 'EQUATORIAL: the thin angled bonds', { cls: 'fg-tag-mut', anchor: 'start' });
@@ -125,11 +131,11 @@ FIGURES.push({
   viewBox: '0 0 340 250',
   build() {
     let s = '';
-    s += positionsChair(172, 128, 1.0, 'fg-tag', 'fg-tag');
-    s += text(170, 240, 'bold = axial   thin = equatorial', { cls: 'fg-tag-mut' });
+    s += positionsChair(172, 124, 1.0, 'fg-tag', 'fg-tag');
+    s += text(170, 244, 'bold: axial. thin: equatorial.', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Axial bonds are vertical and alternate up, down, up. Equatorial bonds point outward.',
+  caption: 'One chair, with the carbons numbered C1 to C6.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -145,11 +151,11 @@ FIGURES.push({
     s += panel(16, 14, 356, 272, { kind: 'warn' });
     s += panel(388, 14, 356, 272, { kind: 'good' });
     s += tag(194, 40, 'METHYL AXIAL', { cls: 'fg-tag-warn' });
-    s += methylChair(194, 166, 1.2, 'axial', 'fg-sm');
+    s += methylChair(190, 160, 1.0, 'axial', 'fg-sm');
     s += text(194, 256, 'two 1,3-diaxial contacts (dashed),', { cls: 'fg-sm' });
     s += text(194, 272, 'with the axial H on C3 and on C5', { cls: 'fg-sm' });
     s += tag(566, 40, 'METHYL EQUATORIAL', { cls: 'fg-tag-good' });
-    s += methylChair(566, 166, 1.2, 'equatorial', 'fg-sm');
+    s += methylChair(558, 160, 1.0, 'equatorial', 'fg-sm');
     s += text(566, 256, 'the methyl points out, away from the ring;', { cls: 'fg-sm' });
     s += text(566, 272, 'only a small H sits axial on C1', { cls: 'fg-sm' });
     return s;
@@ -172,7 +178,7 @@ FIGURES.push({
     s += methylChair(170, 370, 1.0, 'equatorial', 'fg-tag');
     return s;
   },
-  caption: 'Top: the axial methyl on C1 shares the top face with the axial H on C3 and on C5 (dashed). Bottom: the equatorial methyl points away.',
+  caption: 'Methylcyclohexane in two chair shapes. Dashed lines mark the 1,3-diaxial contacts.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -214,7 +220,7 @@ FIGURES.push({
     s += a.s;
     s += `<path class="fg-dash-hi" d="M ${a.at(0, 86).x} ${a.at(0, 86).y} A 86 86 0 0 1 ${a.at(60, 86).x.toFixed(2)} ${a.at(60, 86).y.toFixed(2)}" fill="none"></path>`;
     s += text(a.at(30, 100).x + 12, a.at(30, 100).y, '60°', { cls: 'fg-tag-warn' });
-    s += text(190, 262, 'front: C1   back: C2', { cls: 'fg-sm' });
+    s += text(190, 262, 'front carbon C1, back carbon C2', { cls: 'fg-sm' });
 
     s += rule(380, 44, 380, 260);
 
@@ -223,9 +229,11 @@ FIGURES.push({
       [[0, 'H'], [120, 'C6'], [240, 'CH₃']],
       [[60, 'C3'], [180, 'H'], [300, 'H']], 'CH₃', 'C3');
     s += b.s.replace('fg-atom-warn', 'fg-atom-hi');
-    s += text(680, 150, '180°', { cls: 'fg-tag-good' });
-    s += text(680, 166, 'CH₃ to C3', { cls: 'fg-sm' });
-    s += text(570, 262, 'front: C1   back: C2', { cls: 'fg-sm' });
+    const e1 = b.at(60, 88), e2 = b.at(239.5, 88);
+    s += `<path class="fg-dash-hi" d="M ${e1.x.toFixed(2)} ${e1.y.toFixed(2)} A 88 88 0 0 1 ${e2.x.toFixed(2)} ${e2.y.toFixed(2)}" fill="none"></path>`;
+    const lb = b.at(150, 102);
+    s += text(lb.x + 14, lb.y + 4, '180°', { cls: 'fg-tag-good', anchor: 'start' });
+    s += text(570, 262, 'front carbon C1, back carbon C2', { cls: 'fg-sm' });
     return s;
   },
   caption: 'Both chairs of methylcyclohexane viewed down the C1–C2 bond, with C1 in front. Compare where the methyl sits relative to C3.',
@@ -283,8 +291,8 @@ function flatDimethyl(cx, cy, kind) {
   g += (kind === 'cis' ? wedge : hash)(v[1], t2, { rFrom: 0, rTo: 16 });
   g += atom(t1.x, t1.y, 'CH₃', { r: 16 });
   g += atom(t2.x, t2.y, 'CH₃', { r: 16 });
-  g += text(v[0].x - 16, v[0].y + 14, 'C1');
-  g += text(v[1].x - 16, v[1].y + 12, 'C2');
+  g += text(v[0].x, v[0].y + 20, 'C1');
+  g += text(v[1].x - 18, v[1].y + 8, 'C2');
   return g;
 }
 
@@ -298,16 +306,16 @@ FIGURES.push({
     let s = '';
     s += tag(224, 26, 'THE FLAT DRAWING SHOWS THE FACE');
     s += flatDimethyl(118, 150, 'trans');
-    s += text(118, 240, 'trans: one wedge, one hash', { cls: 'fg-tag-warn' });
+    s += itx(118, 240, 'trans', ': one wedge, one hash', 'fg-tag-warn', 'middle');
     s += text(118, 258, 'one up, one down');
     s += flatDimethyl(330, 150, 'cis');
-    s += text(330, 240, 'cis: two wedges', { cls: 'fg-tag-good' });
+    s += itx(330, 240, 'cis', ': two wedges', 'fg-tag-good', 'middle');
     s += text(330, 258, 'both up');
     s += text(224, 296, 'Moving a group to the other face means breaking a bond.');
     s += rule(456, 44, 456, 300);
 
-    s += tag(608, 26, 'THE CHAIR SHOWS AXIAL OR EQUATORIAL');
-    const pts = chair(608, 168, 0.95);
+    s += tag(600, 26, 'THE CHAIR SHOWS AXIAL OR EQUATORIAL');
+    const pts = chair(590, 170, 0.9);
     s += chairRing(pts);
     // C1 = vertex 0 (axial up), C2 = vertex 1 (axial down, so its up bond is equatorial).
     const up1 = axialEnd(pts, 0, 40), up2 = equatorialEnd(pts, 1, 40);
@@ -316,12 +324,12 @@ FIGURES.push({
     s += bond(pts[1], dn2, { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
     s += bond(pts[0], up1, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
     s += bond(pts[1], up2, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
-    s += text(up1.x + 6, up1.y - 8, 'up, axial', { cls: 'fg-tag', anchor: 'start' });
-    s += text(up2.x - 6, up2.y - 8, 'up, equatorial', { cls: 'fg-tag', anchor: 'end' });
-    s += text(pts[0].x + 4, pts[0].y + 26, 'C1', { anchor: 'start' });
-    s += text(pts[1].x - 4, pts[1].y + 24, 'C2', { anchor: 'middle' });
-    s += text(608, 266, 'The up bond on C1 is axial;');
-    s += text(608, 282, 'the up bond on C2 is equatorial.');
+    s += text(up1.x + 6, up1.y + 4, 'up, axial', { cls: 'fg-tag', anchor: 'start' });
+    s += text(up2.x - 8, up2.y - 6, 'up, equatorial', { cls: 'fg-tag', anchor: 'end' });
+    s += text(pts[0].x + 10, pts[0].y + 22, 'C1', { anchor: 'start' });
+    s += text(pts[1].x - 14, pts[1].y + 20, 'C2');
+    s += text(600, 266, 'The up bond on C1 is axial;');
+    s += text(600, 282, 'the up bond on C2 is equatorial.');
     return s;
   },
   caption: 'Left: the flat drawings of the two isomers. Right: one chair, with the bond that points up on C1 and on C2 drawn bold.',
@@ -334,19 +342,20 @@ FIGURES.push({
   viewBox: '0 0 340 250',
   build() {
     let s = '';
-    const pts = chair(160, 140, 1.0);
+    const pts = chair(130, 136, 1.0);
     s += chairRing(pts);
-    const m1 = axialEnd(pts, 0, 44), m2 = equatorialEnd(pts, 1, 46);
+    // C1 = vertex 0 (axial up); C2 = vertex 5 (axial down, so its up bond is equatorial).
+    const m1 = axialEnd(pts, 0, 46), m2 = equatorialEnd(pts, 5, 44);
     s += sub(pts[0], m1, 'CH₃', { r: 16 });
-    s += sub(pts[1], m2, 'CH₃', { r: 16 });
-    s += text(pts[0].x + 4, pts[0].y + 26, 'C1', { cls: 'fg-tag', anchor: 'start' });
-    s += text(pts[1].x - 2, pts[1].y + 24, 'C2', { cls: 'fg-tag' });
-    s += text(m1.x + 20, m1.y + 4, 'up, axial', { cls: 'fg-tag', anchor: 'start' });
-    s += text(m2.x - 20, m2.y - 10, 'up, equatorial', { cls: 'fg-tag', anchor: 'end' });
-    s += text(170, 240, 'both up, so cis', { cls: 'fg-tag-good' });
+    s += sub(pts[5], m2, 'CH₃', { r: 16 });
+    s += cNum(pts, 0, 1, 'fg-tag', 18);
+    s += cNum(pts, 5, 2, 'fg-tag', 18);
+    s += text(m1.x + 22, m1.y + 4, 'up, axial', { cls: 'fg-tag', anchor: 'start' });
+    s += text(m2.x, m2.y + 34, 'up, equatorial', { cls: 'fg-tag' });
+    s += '<text class="fg-tag-good" x="170" y="244" text-anchor="middle">both up, so <tspan font-style="italic">cis</tspan></text>';
     return s;
   },
-  caption: 'Both methyls are up, so the compound is cis. One is axial and one is equatorial.',
+  caption: '<i>cis</i>-1,2-Dimethylcyclohexane drawn on one chair.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -368,20 +377,20 @@ FIGURES.push({
   section: 'axial-equatorial',
   anchor: 'cannot put both groups equatorial.</p>',
   alt: 'Four chairs. Top row, trans-1,2-dimethylcyclohexane: one chair with both methyls equatorial, one with both axial. Bottom row, cis-1,2-dimethylcyclohexane: one chair with the C1 methyl equatorial and the C2 methyl axial, and one with the C1 methyl axial and the C2 methyl equatorial.',
-  viewBox: '0 0 760 430',
+  viewBox: '0 0 760 500',
   build() {
     let s = '';
-    s += text(20, 34, 'trans-1,2-dimethylcyclohexane: one methyl up, one down', { cls: 'fg-tag', anchor: 'start' });
-    s += pair(200, 116, 1.0, [[1, 'eq', 1], [2, 'eq', 2]]);
-    s += text(200, 194, 'both equatorial', { cls: 'fg-tag-good' });
-    s += pair(560, 116, 1.0, [[0, 'ax', 1], [1, 'ax', 2]]);
-    s += text(560, 194, 'both axial', { cls: 'fg-tag-warn' });
-    s += rule(20, 218, 740, 218);
-    s += text(20, 246, 'cis-1,2-dimethylcyclohexane: both methyls up', { cls: 'fg-tag', anchor: 'start' });
-    s += pair(200, 328, 1.0, [[1, 'eq', 1], [2, 'ax', 2]]);
-    s += text(200, 410, 'C1 equatorial, C2 axial', { cls: 'fg-tag' });
-    s += pair(560, 328, 1.0, [[0, 'ax', 1], [1, 'eq', 2]]);
-    s += text(560, 410, 'C1 axial, C2 equatorial', { cls: 'fg-tag' });
+    s += itx(20, 26, 'trans', '-1,2-dimethylcyclohexane: one methyl on each face');
+    s += pair(200, 100, 1.0, [[0, 'eq', 1], [5, 'eq', 2]]);
+    s += text(200, 232, 'both equatorial', { cls: 'fg-tag-good' });
+    s += pair(560, 100, 1.0, [[0, 'ax', 1], [5, 'ax', 2]]);
+    s += text(560, 232, 'both axial', { cls: 'fg-tag-warn' });
+    s += rule(20, 252, 740, 252);
+    s += itx(20, 280, 'cis', '-1,2-dimethylcyclohexane: both methyls on the same face');
+    s += pair(200, 354, 1.0, [[0, 'eq', 1], [5, 'ax', 2]]);
+    s += text(200, 486, 'C1 equatorial, C2 axial', { cls: 'fg-tag' });
+    s += pair(560, 354, 1.0, [[0, 'ax', 1], [5, 'eq', 2]]);
+    s += text(560, 486, 'C1 axial, C2 equatorial', { cls: 'fg-tag' });
     return s;
   },
   caption: 'The two chairs of each isomer, with the position of each methyl written underneath.',

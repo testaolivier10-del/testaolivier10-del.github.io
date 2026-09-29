@@ -78,7 +78,26 @@ function drawChair(cx, cy, k, flipped, groups, opts = {}) {
     ends.push({ e, pos, g });
     s += group(pts[g.i], e, g.lab, g.kind || (pos === 'ax' ? 'warn' : 'hi'), 'fg-bond-hi');
   }
-  for (const [i, t, dx, dy] of opts.locants || []) s += text(pts[i].x + dx, pts[i].y + dy, t, { cls: 'fg-tag', size: 11 });
+  /* Ring-carbon numbers go in the emptiest direction at that carbon: away
+     from the sum of every bond drawn there. */
+  const used = (i) => {
+    const v = [pts[(i + 1) % 6], pts[(i + 5) % 6]];
+    for (const h of opts.hs || []) if (h.i === i) v.push(axEnd(pts, i, flipped, 20));
+    for (const { e, g } of ends) if (g.i === i) v.push(e);
+    if (opts.stubs) v.push(axEnd(pts, i, flipped, 16));
+    return v;
+  };
+  for (const [i, t, dx, dy] of opts.locants || []) {
+    if (dy !== undefined) { s += text(pts[i].x + dx, pts[i].y + dy, t, { cls: 'fg-tag', size: 11 }); continue; }
+    const R = 20;
+    let sx = 0, sy = 0;
+    for (const q of used(i)) {
+      const dx = q.x - pts[i].x, dy = q.y - pts[i].y, l = Math.hypot(dx, dy) || 1;
+      sx += dx / l; sy += dy / l;
+    }
+    const l = Math.hypot(sx, sy) || 1;
+    s += text(pts[i].x - (sx / l) * R, pts[i].y - (sy / l) * R + 4, t, { cls: 'fg-tag', size: 11 });
+  }
   return { s, pts, ends };
 }
 
@@ -104,7 +123,8 @@ function pairFigure(layout, { title, A, B, verdict }) {
     const c = drawChair(cx, cy, k, side.flipped, side.groups, side);
     let out = c.s;
     if (side.extra) out += side.extra(c.ends, c.pts);
-    let ly = cy + (wide ? 104 : 100);
+    const low = Math.max(...c.pts.map((q) => q.y), ...c.ends.map(({ e }) => e.y + 17));
+    let ly = Math.max(low + 30, cy + 70);
     for (const [t, cls] of side.lines) { out += rich(cx, ly, t, cls || 'fg-lbl'); ly += 19; }
     return { out, bottom: ly - 19 };
   };
@@ -119,15 +139,23 @@ function pairFigure(layout, { title, A, B, verdict }) {
     for (const [t, cls] of verdict || []) { s += rule(200, vy - 22, 560, vy - 22); s += rich(380, vy, t, cls || 'fg-lbl'); vy += 19; }
     return { s, viewBox: `0 0 ${W} ${Math.round((verdict && verdict.length ? vy - 19 : Math.max(a.bottom, b.bottom)) + 16)}` };
   }
-  const cyA = y + 92;
-  const a = draw(A, 170, cyA);
+  /* Measure each chair first so the stack sits tight around what it holds. */
+  const extent = (side) => {
+    const c = drawChair(0, 0, k, side.flipped, side.groups, side);
+    const ys = [...c.pts.map((q) => q.y), ...c.ends.map(({ e }) => e.y - 17), ...c.ends.map(({ e }) => e.y + 17)];
+    for (const h of side.hs || []) ys.push(axEnd(c.pts, h.i, side.flipped, h.L || 26).y - 11);
+    return { top: Math.min(...ys), bottom: Math.max(...ys) };
+  };
+  const eA = extent(A), eB = extent(B);
+  const cyA = y + 8 - eA.top;
+  const a = draw(A, 165, cyA);
   const ay = a.bottom + 14;
   s += a.out;
   s += arrow(P(158, ay), P(158, ay + 34));
   s += arrow(P(182, ay + 34), P(182, ay));
   s += text(196, ay + 21, 'ring flip', { cls: 'fg-tag', size: 11, anchor: 'start' });
-  const cyB = ay + 34 + 92;
-  const b = draw(B, 170, cyB);
+  const cyB = ay + 34 + 14 - eB.top;
+  const b = draw(B, 165, cyB);
   s += b.out;
   let vy = b.bottom + 30;
   for (const [t, cls] of verdict || []) { s += rich(170, vy, t, cls || 'fg-lbl'); vy += 19; }
@@ -180,23 +208,23 @@ FIGURES.push(...both({
   title: 'methylcyclohexane',
   A: {
     flipped: true, groups: [{ i: 0, face: 'up', lab: Me }],
-    locants: [[0, 'C1', -8, -20]],
+    locants: [[0, 'C1']],
     lines: [['CH₃ EQUATORIAL', 'fg-tag-good'], ['about 95% of molecules']],
   },
   B: {
     flipped: false, groups: [{ i: 0, face: 'up', lab: Me }], hs: [{ i: 2 }, { i: 4, L: 22 }],
-    locants: [[0, 'C1', -4, 20], [2, 'C3', -24, 8], [4, 'C5', -22, 18]],
+    locants: [[0, 'C1'], [2, 'C3'], [4, 'C5']],
     lines: [['CH₃ AXIAL', 'fg-tag-warn'], ['about 5% of molecules'], ['next to axial H on C3 and C5', 'fg-tag']],
   },
-  verdict: [['gap between the chairs = A-value of CH₃ = 1.7 kcal/mol']],
+  verdict: [['A-value of CH₃: 1.7 kcal/mol']],
 }));
 
 /* ---- which pairs can both be equatorial --------------------------------- */
 function facePattern(layout) {
   const wide = layout === 'wide';
-  const k = wide ? 0.7 : 0.72;
+  const k = wide ? 0.62 : 0.72;
   const cases = [
-    { name: '1,2 pair', j: 5, jl: 'C2', verdict: 'opposite faces: *trans*', cls: 'fg-tag-warn' },
+    { name: '1,2 pair', j: 1, jl: 'C2', verdict: 'opposite faces: *trans*', cls: 'fg-tag-warn' },
     { name: '1,3 pair', j: 2, jl: 'C3', verdict: 'same face: *cis*', cls: 'fg-tag-good' },
     { name: '1,4 pair', j: 3, jl: 'C4', verdict: 'opposite faces: *trans*', cls: 'fg-tag-warn' },
   ];
@@ -204,24 +232,19 @@ function facePattern(layout) {
   let s = '';
   const H = 214;
   cases.forEach((c, n) => {
-    const cx = wide ? 128 + n * 252 : 158, top = wide ? 0 : n * H;
-    const cy = top + 100;
-    s += rich(wide ? cx + 8 : 170, top + 24, `${c.name}: both groups equatorial`, 'fg-tag');
+    const cx = wide ? 127 + n * 253 : 170, top = wide ? 0 : n * H;
+    const cy = top + 104;
+    s += rich(cx, top + 24, `${c.name}: both groups equatorial`, 'fg-tag');
     const ch = drawChair(cx, cy, k, false,
       [{ i: 0, face: face(0), lab: Me, L: 34 }, { i: c.j, face: face(c.j), lab: Me, L: 34 }],
-      { stubs: true });
+      { stubs: true, locants: [[0, 'C1', 16, -14], c.j === 1 ? [1, 'C2', -16, -12] : c.j === 3 ? [3, 'C4', -16, 18] : [c.j, c.jl]] });
     s += ch.s;
     for (const { e, g } of ch.ends) {
-      const below = g.i === 0 || g.i === 5;
-      s += text(e.x + (g.i === 0 ? 30 : g.i === 5 ? 30 : 0), e.y + (below ? 4 : g.i === 2 ? 30 : -24),
-        g.face, { cls: g.face === 'up' ? 'fg-tag-good' : 'fg-tag-warn', size: 11, anchor: g.i === 0 || g.i === 5 ? 'start' : 'middle' });
+      const above = g.i !== 0;
+      s += text(e.x, e.y + (above ? -24 : 32), g.face, { cls: g.face === 'up' ? 'fg-tag-good' : 'fg-tag-warn', size: 11 });
     }
-    s += text(ch.pts[0].x - 8, ch.pts[0].y - 16, 'C1', { cls: 'fg-tag', size: 11 });
-    const lp = ch.pts[c.j];
-    const off = { 5: [-16, -8], 2: [8, 22], 3: [18, 22] }[c.j];
-    s += text(lp.x + off[0], lp.y + off[1], c.jl, { cls: 'fg-tag', size: 11 });
-    s += rich(wide ? cx + 8 : 170, cy + 92, c.verdict, c.cls);
-    if (n < 2) s += wide ? rule(cx + 134, 40, cx + 134, 200) : rule(30, top + H - 8, 310, top + H - 8);
+    s += rich(cx, cy + 92, c.verdict, c.cls);
+    if (n < 2) s += wide ? rule(cx + 126, 40, cx + 126, 200) : rule(30, top + H - 8, 310, top + H - 8);
   });
   return { s, viewBox: wide ? '0 0 760 212' : `0 0 340 ${3 * H - 14}` };
 }
@@ -252,15 +275,15 @@ FIGURES.push(...both({
   title: '*cis*-1-*tert*-butyl-4-methylcyclohexane',
   A: {
     flipped: false, groups: [{ i: 0, face: 'up', lab: tBu }, { i: 3, face: 'up', lab: Me }],
-    locants: [[0, 'C1', -4, 20], [3, 'C4', 18, 14]],
+    locants: [[0, 'C1'], [3, 'C4']],
     lines: [['*tert*-BUTYL AXIAL', 'fg-tag-warn'], ['penalty 4.9 kcal/mol']],
   },
   B: {
     flipped: true, groups: [{ i: 0, face: 'up', lab: tBu, L: 44 }, { i: 3, face: 'up', lab: Me }],
-    locants: [[0, 'C1', -12, -8], [3, 'C4', 22, -2]],
+    locants: [[0, 'C1'], [3, 'C4']],
     lines: [['METHYL AXIAL', 'fg-tag-good'], ['penalty 1.7 kcal/mol']],
   },
-  verdict: [['right-hand chair wins by 4.9 − 1.7 = 3.2 kcal/mol']],
+  verdict: [['methyl-axial chair wins by 3.2 kcal/mol']],
 }));
 
 /* ---- trans-1,2-dimethyl: ee with one gauche contact, or aa ------------- */
@@ -269,19 +292,19 @@ FIGURES.push(...both({
   section: 'conformational-analysis',
   anchor: '<h3>When the two groups touch each other</h3>',
   alt: 'trans-1,2-dimethylcyclohexane in its two chairs. Left: both methyls equatorial, the C1 methyl tilting down and the C2 methyl tilting up; a dashed line between them marks their gauche contact, 0.9 kcal/mol. Right: both methyls axial, C1 pointing straight down and C2 straight up, axial penalty 1.7 plus 1.7, 3.4 kcal/mol.',
-  caption: 'The two equatorial methyls on neighboring carbons are close enough to touch (dashed line). The two axial ones point in opposite directions and never meet.',
+  caption: 'The dashed line marks the gauche contact between the two equatorial methyls.',
   lessonCaption: 'Dashed line: the gauche contact.',
 }, {
   title: '*trans*-1,2-dimethylcyclohexane',
   A: {
     flipped: false, groups: [{ i: 0, face: 'down', lab: Me }, { i: 5, face: 'up', lab: Me }],
-    locants: [[0, 'C1', -4, -14], [5, 'C2', -26, 6]],
+    locants: [[0, 'C1'], [5, 'C2']],
     extra: (ends) => contact(ends[0].e, ends[1].e, 'gauche', ends[0].e.x + 12, (ends[0].e.y + ends[1].e.y) / 2 + 24, 'fg-tag-warn', 18, 18),
     lines: [['BOTH EQUATORIAL (ee)', 'fg-tag-good'], ['gauche contact: 0.9 kcal/mol']],
   },
   B: {
     flipped: true, groups: [{ i: 0, face: 'down', lab: Me }, { i: 5, face: 'up', lab: Me }],
-    locants: [[0, 'C1', 22, -8], [5, 'C2', 24, 8]],
+    locants: [[0, 'C1'], [5, 'C2']],
     lines: [['BOTH AXIAL (aa)', 'fg-tag-warn'], ['1.7 + 1.7 = 3.4 kcal/mol']],
   },
   verdict: [['ee wins by 3.4 − 0.9 = 2.5 kcal/mol']],
@@ -293,24 +316,24 @@ FIGURES.push({
   section: 'conformational-analysis',
   anchor: '<h3>When the two groups touch each other</h3>',
   alt: 'Two Newman projections looking down the C1 to C2 bond of trans-1,2-dimethylcyclohexane. Left, the diequatorial chair: the front methyl and the back methyl are 60 degrees apart, gauche. Right, the diaxial chair: the two methyls are 180 degrees apart, anti. In both, the ring bonds to C6 and C3 are 60 degrees apart.',
-  viewBox: '0 0 760 262',
+  viewBox: '0 0 760 280',
   build() {
     let s = '';
     s += tag(380, 24, 'LOOKING DOWN THE C1–C2 BOND (C1 IN FRONT)');
     s += newman(190, 128, 36,
       [[0, 'H'], [120, Me, 'fg-lbl'], [240, 'C6']],
       [[180, 'H'], [60, Me, 'fg-lbl'], [300, 'C3']]);
-    s += text(190, 222, 'ee CHAIR', { cls: 'fg-tag-good', size: 11 });
-    s += text(190, 242, 'methyls 60° apart: gauche', { cls: 'fg-lbl', size: 13 });
-    s += rule(380, 48, 380, 250);
+    s += text(190, 240, 'ee CHAIR', { cls: 'fg-tag-good', size: 11 });
+    s += text(190, 262, 'methyls 60° apart: gauche', { cls: 'fg-lbl', size: 13 });
+    s += rule(380, 48, 380, 268);
     s += newman(570, 128, 36,
       [[0, Me], [120, 'H'], [240, 'C6']],
       [[180, Me], [60, 'H'], [300, 'C3']]);
-    s += text(570, 222, 'aa CHAIR', { cls: 'fg-tag-warn', size: 11 });
-    s += text(570, 242, 'methyls 180° apart: anti', { cls: 'fg-lbl', size: 13 });
+    s += text(570, 240, 'aa CHAIR', { cls: 'fg-tag-warn', size: 11 });
+    s += text(570, 262, 'methyls 180° apart: anti', { cls: 'fg-lbl', size: 13 });
     return s;
   },
-  caption: 'C6 and C3 are the ring carbons that continue the ring from C1 and C2. The ring bonds stay 60° apart in both chairs; the methyls change from gauche to anti.',
+  caption: 'C6 and C3 are the ring carbons next to C1 and C2. Only the methyls and hydrogens trade places between the two chairs.',
 });
 
 /* ---- cis-1,3-dimethyl: aa with a methyl/methyl contact, or ee ---------- */
@@ -319,19 +342,19 @@ FIGURES.push(...both({
   section: 'conformational-analysis',
   anchor: '<h3>When the two groups touch each other</h3>',
   alt: 'cis-1,3-dimethylcyclohexane in its two chairs. Left: both methyls axial and pointing up on the same face, with the axial hydrogen on C5 pointing up beside them; a dashed line joins the two methyls, marking a 3.7 kcal/mol contact; total about 5.4 kcal/mol. Right: both methyls equatorial, no axial group and no contact.',
-  caption: 'In the diaxial chair C1, C3 and C5 all point their axial bonds up, so the two methyls and one hydrogen share the upper face. The dashed line is the methyl/methyl contact.',
+  caption: 'The dashed line marks the methyl/methyl contact in the aa chair.',
   lessonCaption: 'Dashed line: the methyl/methyl contact.',
 }, {
   title: '*cis*-1,3-dimethylcyclohexane',
   A: {
     flipped: false, groups: [{ i: 0, face: 'up', lab: Me }, { i: 2, face: 'up', lab: Me }], hs: [{ i: 4, L: 22 }],
-    locants: [[0, 'C1', -4, 20], [2, 'C3', -24, 8], [4, 'C5', -22, 18]],
+    locants: [[0, 'C1'], [2, 'C3'], [4, 'C5']],
     extra: (ends) => contact(ends[1].e, ends[0].e, '3.7', (ends[0].e.x + ends[1].e.x) / 2, (ends[0].e.y + ends[1].e.y) / 2 - 12, 'fg-tag-warn', 18, 18),
     lines: [['BOTH AXIAL (aa)', 'fg-tag-warn'], ['3.7 + 0.85 + 0.85 ≈ 5.4 kcal/mol']],
   },
   B: {
     flipped: true, groups: [{ i: 0, face: 'up', lab: Me }, { i: 2, face: 'up', lab: Me }],
-    locants: [[0, 'C1', -12, -8], [2, 'C3', 6, 22]],
+    locants: [[0, 'C1'], [2, 'C3']],
     lines: [['BOTH EQUATORIAL (ee)', 'fg-tag-good'], ['no axial group: 0']],
   },
   verdict: [['ee wins by about 5.4 kcal/mol']],
@@ -349,12 +372,12 @@ FIGURES.push({
     title: '*cis*-1,2-dimethylcyclohexane',
     A: {
       flipped: false, groups: [{ i: 0, face: 'up', lab: Me }, { i: 5, face: 'up', lab: Me }],
-      locants: [[0, 'C1', -4, 20], [5, 'C2', -26, 6]],
+      locants: [[0, 'C1'], [5, 'C2']],
       lines: [['C1 AXIAL, C2 EQUATORIAL', 'fg-tag'], ['1.7 + 0.9 gauche = 2.6 kcal/mol']],
     },
     B: {
       flipped: true, groups: [{ i: 0, face: 'up', lab: Me }, { i: 5, face: 'up', lab: Me }],
-      locants: [[0, 'C1', 20, 12], [5, 'C2', 24, 8]],
+      locants: [[0, 'C1'], [5, 'C2']],
       lines: [['C1 EQUATORIAL, C2 AXIAL', 'fg-tag'], ['1.7 + 0.9 gauche = 2.6 kcal/mol']],
     },
     verdict: [['a tie: the two chairs are equally populated']],
@@ -366,13 +389,13 @@ FIGURES.push({
   const st = pairFigure('stack', {
     title: '*cis*-1-isopropyl-3-methylcyclohexane',
     A: {
-      flipped: false, groups: [{ i: 0, face: 'up', lab: 'CH(CH₃)₂', L: 40 }, { i: 2, face: 'up', lab: Me }], hs: [{ i: 4, L: 22 }],
-      locants: [[0, 'C1', -4, 20], [2, 'C3', -24, 8], [4, 'C5', -22, 18]],
+      flipped: false, groups: [{ i: 2, face: 'up', lab: 'CH(CH₃)₂', L: 40 }, { i: 0, face: 'up', lab: Me }], hs: [{ i: 4, L: 22 }],
+      locants: [[2, 'C1'], [0, 'C3'], [4, 'C5']],
       lines: [['BOTH AXIAL', 'fg-tag-warn']],
     },
     B: {
-      flipped: true, groups: [{ i: 0, face: 'up', lab: 'CH(CH₃)₂', L: 30 }, { i: 2, face: 'up', lab: Me }],
-      locants: [[0, 'C1', -12, -8], [2, 'C3', 6, 22]],
+      flipped: true, groups: [{ i: 2, face: 'up', lab: 'CH(CH₃)₂', L: 56 }, { i: 0, face: 'up', lab: Me }],
+      locants: [[2, 'C1'], [0, 'C3']],
       lines: [['BOTH EQUATORIAL', 'fg-tag-good']],
     },
   });
@@ -411,14 +434,14 @@ FIGURES.push({
     const subs = [[3, 'OH', 'C1'], [4, 'OH', 'C2'], [5, 'OH', 'C3'], [0, 'OH', 'C4'], [1, 'CH₂OH', 'C5']];
     for (const [i, lab] of subs) {
       s += bond(pts[i], axEnd(pts, i, false, i === 1 || i === 4 ? 16 : 20), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
-      s += group(pts[i], eqEnd(pts, i, false, lab.length > 3 ? 44 : 34, true), lab, 'good', 'fg-bond-hi');
+      s += group(pts[i], eqEnd(pts, i, false, lab.length > 3 ? 44 : 34, true), lab, 'hi', 'fg-bond-hi');
     }
-    const loc = { 3: [0, 22], 4: [16, 20], 5: [-2, 22], 0: [0, -14], 1: [14, 18] };
+    const loc = { 3: [16, 18], 4: [-15, -12], 5: [15, 18], 0: [-15, -12], 1: [16, 14] };
     for (const [i, , c] of subs) s += text(pts[i].x + loc[i][0], pts[i].y + loc[i][1], c, { cls: 'fg-tag', size: 11 });
     s += text(170, 250, 'faint stubs: axial bonds, all to H', { cls: 'fg-tag-mut', size: 11 });
     return s;
   },
-  caption: 'The highlighted groups all sit on equatorial bonds. The faint axial bonds each carry a hydrogen.',
+  caption: 'The four OH groups and the CH₂OH group all sit on equatorial bonds.',
 });
 
 export default FIGURES;

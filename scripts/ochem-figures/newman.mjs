@@ -139,7 +139,7 @@ const EYE_ALT = 'Ethane drawn side-on with an eye on the left looking along the 
 FIGURES.push({
   id: 'eye-on-axis',
   section: 'newman',
-  anchor: '<!-- anchor:eye-on-axis -->',
+  anchor: 'so they are drawn 120° apart.</p>',
   alt: EYE_ALT,
   viewBox: '0 0 760 290',
   build: () => eyeBody(false),
@@ -159,7 +159,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'structure-to-newman',
   section: 'newman',
-  anchor: '<!-- anchor:structure-to-newman -->',
+  anchor: 'they come from putting a group on the wrong carbon.</p>',
   alt: 'A skeletal drawing of butane with the C2 to C3 bond highlighted and C2 labeled front and C3 labeled back, and beside it the anti Newman projection obtained by sighting down that bond',
   viewBox: '0 0 760 300',
   build() {
@@ -201,8 +201,8 @@ function ethanePair(stacked) {
   const tA = stacked ? 24 : 34, tB = stacked ? 264 : 34;
   s += tag(A.x, tA, 'STAGGERED: 60°', { cls: 'fg-tag-good' });
   s += newman(A.x, A.y, 44, ETHANE_FRONT, ETHANE_STAG);
-  s += arcMark(A.x, A.y, 30, 0, 60);
-  s += text(A.x + 30, A.y - 12, '60°', { cls: 'fg-tag' });
+  s += arcMark(A.x, A.y, 36, 0, 60);
+  s += text(A.x + 14, A.y - 11, '60°', { cls: 'fg-tag' });
   s += tag(B.x, tB, 'ECLIPSED: 0°', { cls: 'fg-tag-warn' });
   s += newman(B.x, B.y, 44, ETHANE_FRONT, ETHANE_ECL, { skew: 14 });
   const cap = stacked ? 18 : 0;
@@ -216,7 +216,7 @@ function ethanePair(stacked) {
 FIGURES.push({
   id: 'ethane-stagger-eclipse',
   section: 'newman',
-  anchor: '<!-- anchor:ethane-stagger-eclipse -->',
+  anchor: 'A staggered drawing puts each back bond squarely in the middle of a gap.</p>',
   alt: 'Two Newman projections of ethane. Staggered: each back H sits halfway between two front H, 60 degrees from each, lowest energy. Eclipsed: each back H sits just behind a front H, drawn turned a few degrees so both show, 2.9 kcal/mol higher',
   viewBox: '0 0 760 290',
   build: () => ethanePair(false),
@@ -254,17 +254,18 @@ function hyperPanel(cx, cy, staggered) {
   const hU = P(c1.x, c1.y - 62);
   s += `<ellipse class="fg-orb-alt" cx="${c1.x}" cy="${c1.y - 31}" rx="12" ry="36"></ellipse>`;
   s += bond(c1, hU, { rFrom: 16, rTo: 13, cls: 'fg-bond-hi' });
-  s += wedge(c1, P(c1.x - 44, c1.y + 36), { rFrom: 16, rTo: 13, width: 9 });
-  s += hash(c1, P(c1.x - 12, c1.y + 56), { rFrom: 16, rTo: 13, width: 10, rungs: 4 });
-  for (const p of [hU, P(c1.x - 44, c1.y + 36), P(c1.x - 12, c1.y + 56)]) s += atom(p.x, p.y, 'H', { r: 13 });
+  const w1 = P(c1.x - 56, c1.y + 20), h1 = P(c1.x - 34, c1.y + 50);
+  s += wedge(c1, w1, { rFrom: 16, rTo: 13, width: 9 });
+  s += hash(c1, h1, { rFrom: 16, rTo: 13, width: 10, rungs: 4 });
+  for (const p of [hU, w1, h1]) s += atom(p.x, p.y, 'H', { r: 13 });
   // right carbon: the acceptor C–H is down (anti) when staggered, up (syn) when eclipsed.
   // Its sigma* has its big lobe on carbon, pointing away from that H.
   const dir = staggered ? 1 : -1;               // +1: H points down
   const hA = P(c2.x, c2.y + dir * 62);
   s += `<ellipse class="fg-orb" cx="${c2.x}" cy="${c2.y - dir * 34}" rx="15" ry="30"></ellipse>`;
-  s += `<ellipse class="fg-orb-alt" cx="${c2.x}" cy="${c2.y + dir * 70}" rx="8" ry="11"></ellipse>`;
+  s += `<ellipse class="fg-orb-alt" cx="${c2.x}" cy="${c2.y + dir * 84}" rx="8" ry="9"></ellipse>`;
   s += bond(c2, hA, { rFrom: 16, rTo: 13 });
-  const o1 = P(c2.x + 44, c2.y - dir * 36), o2 = P(c2.x + 12, c2.y - dir * 56);
+  const o1 = P(c2.x + 56, c2.y - dir * 20), o2 = P(c2.x + 34, c2.y - dir * 50);
   s += wedge(c2, o1, { rFrom: 16, rTo: 13, width: 9 });
   s += hash(c2, o2, { rFrom: 16, rTo: 13, width: 10, rungs: 4 });
   for (const p of [hA, o1, o2]) s += atom(p.x, p.y, 'H', { r: 13 });
@@ -274,29 +275,28 @@ function hyperPanel(cx, cy, staggered) {
 }
 function hyperBody(stacked) {
   let s = '';
-  const P1 = stacked ? { x: 170, y: 140, t: 24 } : { x: 190, y: 160, t: 30 };
-  const P2 = stacked ? { x: 170, y: 440, t: 324 } : { x: 570, y: 160, t: 30 };
+  const P1 = stacked ? { x: 170, y: 160, t: 24 } : { x: 190, y: 160, t: 30 };
+  const P2 = stacked ? { x: 170, y: 476, t: 340 } : { x: 570, y: 160, t: 30 };
   s += tag(P1.x, P1.t, 'STAGGERED: LINED UP', { cls: 'fg-tag-good' });
   s += hyperPanel(P1.x, P1.y, true);
   s += text(P1.x - 55, P1.y - 108, 'filled C–H bond', { cls: 'fg-tag' });
-  s += text(P1.x + 55, P1.y - 84, 'empty σ*', { cls: 'fg-tag' });
-  s += text(P1.x, P1.y + 112, 'parallel and side by side:', { cls: stacked ? 'fg-tag' : 'fg-sm' });
-  s += text(P1.x, P1.y + 128, 'electrons spread into σ*', { cls: 'fg-tag-good' });
+  s += text(P1.x + 55, P1.y - 108, 'empty σ*', { cls: 'fg-tag' });
+  s += text(P1.x, P1.y + 118, 'parallel, side by side:', { cls: stacked ? 'fg-tag' : 'fg-sm' });
+  s += text(P1.x, P1.y + 134, 'electrons spread into σ*', { cls: 'fg-tag-good' });
   s += tag(P2.x, P2.t, 'ECLIPSED: OUT OF LINE', { cls: 'fg-tag-warn' });
   s += hyperPanel(P2.x, P2.y, false);
   s += text(P2.x - 55, P2.y - 108, 'filled C–H bond', { cls: 'fg-tag' });
-  s += text(P2.x + 55, P2.y + 84, 'empty σ*', { cls: 'fg-tag' });
-  s += text(P2.x, P2.y + 112, 'σ* now points away:', { cls: stacked ? 'fg-tag' : 'fg-sm' });
-  s += text(P2.x, P2.y + 128, 'little overlap', { cls: 'fg-tag-warn' });
+  s += text(P2.x + 55, P2.y + 92, 'empty σ*', { cls: 'fg-tag' });
+  s += text(P2.x, P2.y + 134, 'no C–H bond opposite: weaker overlap', { cls: 'fg-tag-warn' });
   if (!stacked) s += rule(380, 50, 380, 290);
-  else s += rule(20, 296, 320, 296);
+  else s += rule(20, 318, 320, 318);
   return s;
 }
 const HYPER_ALT = 'Ethane side-on, twice. Staggered: the upper C–H bond on the left carbon, shaded as a filled orbital, sits parallel to the large lobe of the empty sigma-star orbital of the lower C–H bond on the right carbon. Eclipsed: the right carbon\'s matching C–H bond points up, so its sigma-star lobe points down, away from the filled bond';
 FIGURES.push({
   id: 'hyperconjugation',
   section: 'newman',
-  anchor: '<!-- anchor:hyperconjugation -->',
+  anchor: 'Eclipsing turns the bonds out of line and loses most of that stabilization.</p>',
   alt: HYPER_ALT,
   viewBox: '0 0 760 310',
   build: () => hyperBody(false),
@@ -306,9 +306,9 @@ FIGURES.push({
   id: 'l-hyperconjugation',
   lessons: ['newman'],
   alt: HYPER_ALT,
-  viewBox: '0 0 340 590',
+  viewBox: '0 0 340 626',
   build: () => hyperBody(true),
-  caption: 'One filled C–H bond (lilac) and the empty σ* of the opposite C–H bond (teal).',
+  caption: 'The shaded bond on the left carbon is filled. The lobes on the right carbon are the empty σ* of the C–H bond drawn there.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -316,7 +316,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'butane-four-conformers',
   section: 'newman',
-  anchor: '<!-- anchor:butane-four-conformers -->',
+  anchor: 'and most of the rest in the two gauche forms.</p>',
   alt: 'The four named conformations of butane drawn as Newman projections in order of energy: anti, gauche, methyl-hydrogen eclipsed and syn',
   viewBox: '0 0 760 330',
   build() {
@@ -332,7 +332,7 @@ FIGURES.push({
     for (const x of [190, 380, 570]) s += rule(x, 62, x, 300);
     return s;
   },
-  caption: 'Energies are measured from anti. The two staggered forms are low points; the two eclipsed forms are high points.',
+  caption: 'The panels are ordered by energy, not by the order in which a turn reaches them.',
 });
 FIGURES.push({
   id: 'l-butane-four',
@@ -351,7 +351,7 @@ FIGURES.push({
     s += rule(20, 216, 320, 216);
     return s;
   },
-  caption: 'Top row: staggered. Bottom row: eclipsed. Energies are measured from anti.',
+  caption: 'Top row: staggered. Bottom row: eclipsed.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -359,7 +359,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'dibromoethane',
   section: 'newman',
-  anchor: '<!-- anchor:dibromoethane -->',
+  anchor: 'once you say which pair you are tracking.</p>',
   alt: 'Two Newman projections of 1,2-dibromoethane down the C–C bond: anti, with the back Br 180 degrees from the front Br, and gauche, with the back Br 60 degrees from it',
   viewBox: '0 0 560 260',
   build() {
@@ -384,9 +384,9 @@ function mbPanel(x, y, m, opts = {}) {
 FIGURES.push({
   id: 'methylbutane-conformers',
   section: 'newman',
-  anchor: '<!-- anchor:methylbutane-conformers -->',
+  anchor: 'it has no conformer that escapes gauche strain entirely.</p>',
   alt: '2-Methylbutane with C2 marked front and C3 marked back. Below, Newman projections down C2–C3: conformer A, with the back CH3 between the two front CH3 groups; the eclipsed conformer 60 degrees on, with the back CH3 behind a front CH3; conformer B, with the back CH3 between the lower front CH3 and the front H; and conformer C, with the back CH3 between the top front CH3 and the front H',
-  viewBox: '0 0 760 560',
+  viewBox: '0 0 760 636',
   build() {
     let s = '';
     // Row 1: the skeleton.
@@ -419,24 +419,23 @@ FIGURES.push({
     s += text(380, y2 + 106, 'CH₃/CH₃ + CH₃/H + H/H ≈ 5', { cls: 'fg-sm' });
     s += text(650, y2 + 88, 'B: staggered', { cls: 'fg-tag' });
     s += rule(20, 412, 740, 412);
-    // Row 3: the count.
+    // Row 3: C, and the count.
     s += tag(380, 436, 'STEP 5: COUNT GAUCHE CH₃/CH₃ PAIRS IN EACH STAGGERED FORM');
-    s += text(110, 470, 'A: 2 pairs', { cls: 'fg-lbl' });
-    s += text(110, 490, '2 × 0.9 = 1.8', { cls: 'fg-tag-warn' });
-    s += text(380, 470, 'B: 1 pair', { cls: 'fg-lbl' });
-    s += text(380, 490, '0.9, lowest', { cls: 'fg-tag-good' });
-    s += text(650, 470, 'C (back CH₃ at upper left): 1 pair', { cls: 'fg-lbl' });
-    s += text(650, 490, '0.9, lowest', { cls: 'fg-tag-good' });
-    s += text(380, 532, 'kcal/mol, from the gauche cost in the table', { cls: 'fg-sm' });
+    s += mbPanel(110, 530, 300);
+    s += text(110, 618, 'C: staggered', { cls: 'fg-tag' });
+    s += text(250, 490, 'A: back CH₃ 60° from both front CH₃', { cls: 'fg-lbl', anchor: 'start' });
+    s += text(250, 510, '2 pairs × 0.9 = 1.8 kcal/mol', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += text(250, 544, 'B and C: back CH₃ 60° from one front CH₃', { cls: 'fg-lbl', anchor: 'start' });
+    s += text(250, 564, '1 pair = 0.9 kcal/mol each: the best', { cls: 'fg-tag-good', anchor: 'start' });
     return s;
   },
-  caption: 'Front groups stay put while the back carbon turns. B and C tie as the best conformers; C is B turned a further 120°, and is not drawn.',
+  caption: 'The front groups stay put while the back carbon turns. Turning B a further 120° gives C.',
 });
 FIGURES.push({
   id: 'l-methylbutane',
   lessons: ['newman'],
   alt: 'The three staggered Newman projections of 2-methylbutane down C2–C3. A: back CH3 between the two front CH3 groups, two gauche pairs. B: back CH3 at the bottom, between the lower-right front CH3 and the front H, one gauche pair. C: back CH3 at the upper left, between the top front CH3 and the front H, one gauche pair',
-  viewBox: '0 0 340 600',
+  viewBox: '0 0 340 580',
   build() {
     let s = '';
     const rows = [
@@ -445,7 +444,7 @@ FIGURES.push({
       { m: 300, name: 'C', n: '1 gauche pair: 0.9', cls: 'fg-tag-good' },
     ];
     rows.forEach((r, i) => {
-      const y = 100 + i * 196;
+      const y = 88 + i * 196;
       s += mbPanel(120, y, r.m, { r: 32, backLen: 20 });
       s += text(262, y - 8, r.name, { cls: 'fg-lbl' });
       s += text(262, y + 14, r.n, { cls: r.cls });
@@ -461,7 +460,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'butane-energy-curve',
   section: 'newman',
-  anchor: '<!-- anchor:butane-energy-curve -->',
+  anchor: 'and large enough that anti is clearly preferred.</p>',
   alt: 'Butane energy in kcal/mol against the dihedral angle between the two methyl groups from 0 to 360 degrees: maxima at 0 degrees (syn, about 5), 120 and 240 degrees (methyl-hydrogen eclipsed, 3.6), minima at 60 and 300 degrees (gauche, 0.9) and 180 degrees (anti, 0)',
   viewBox: '0 0 760 300',
   build() {
@@ -504,6 +503,24 @@ FIGURES.push({
     return s;
   },
   caption: 'Staggered conformations sit at the dips and eclipsed ones at the peaks. The syn peak is drawn at about 5; measured values run from 4.5 to 6.',
+});
+
+/* ---------------------------------------------------------------------------
+   A scaffold for the lesson's challenge: the front carbon filled in, the
+   back positions left open. */
+FIGURES.push({
+  id: 'l-dimethylbutane',
+  lessons: ['newman'],
+  alt: 'A Newman projection of 2,3-dimethylbutane down C2–C3 with the front carbon filled in, CH3 at the top, CH3 at the lower right and H at the lower left, and the three back positions marked with question marks',
+  viewBox: '0 0 340 264',
+  build() {
+    let s = '';
+    s += newman(170, 110, 44, MB_FRONT, [[60, '?'], [180, '?'], [300, '?']]);
+    s += text(170, 228, 'front carbon: CH₃, CH₃, H', { cls: 'fg-tag' });
+    s += text(170, 248, 'back carbon: CH₃, CH₃, H (place them)', { cls: 'fg-tag' });
+    return s;
+  },
+  caption: '2,3-Dimethylbutane down C2–C3, staggered. Fill in the back carbon three ways.',
 });
 
 export default FIGURES;
