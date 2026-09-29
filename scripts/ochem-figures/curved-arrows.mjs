@@ -252,7 +252,7 @@ function headRows(narrow) {
       s += mol(m);
       const o = m.atoms.kO;
       s += curve(P(c.x + 5, c.y - 22), P(o.x + 16, o.y + 4), { bow: 12 });
-      s += arrow(P(L.a1, y), P(L.a2, y));
+      s += dbl(P(L.a1, y), P(L.a2, y));
       s += mol(acetone(P(L.p, y + 14), 'split', 'q'));
       return s;
     },
@@ -268,7 +268,7 @@ function headRows(narrow) {
       s += mol(m);
       const o = m.atoms.rO;
       s += curve(P(o.x - 23, o.y - 5), P(c.x - 5, c.y - 22), { bow: 14 });
-      s += arrow(P(L.a1, y), P(L.a2, y));
+      s += dbl(P(L.a1, y), P(L.a2, y));
       s += mol(acetone(P(L.p, y + 14), 'neutral', 's'));
       return s;
     },
@@ -281,7 +281,7 @@ FIGURES.push({
   section: 'curved-arrows',
   anchor: '<h3>One arrow, one pair of electrons</h3>',
   viewBox: '0 0 760 490',
-  alt: 'Three rows. Row 1: a lone pair on hydroxide moves to the positive carbon of a carbocation that carries three methyl groups, giving an alcohol with a new C–O bond. Row 2: in acetone, the pi bond of C=O moves onto the oxygen, leaving carbon with a plus charge and oxygen with three lone pairs and a minus charge. Row 3: the reverse: a lone pair on that negative oxygen moves into the C–O bond, making the C=O double bond again.',
+  alt: 'Three rows. Row 1: a lone pair on hydroxide moves to the positive carbon of a carbocation that carries three methyl groups, giving an alcohol with a new C–O bond. Row 2: in acetone, the pi bond of C=O moves onto the oxygen, giving a second drawing, joined by a double-headed resonance arrow, with carbon plus and oxygen minus with three lone pairs. Row 3: the reverse: a lone pair on that negative oxygen moves into the C–O bond, giving back the C=O drawing, again joined by a double-headed arrow.',
   build() {
     let s = '';
     headRows(false).forEach((r, i) => {
@@ -289,10 +289,11 @@ FIGURES.push({
       s += panel(14, y0, 732, 150);
       s += lbl(30, y0 + 24, r.title, 'start');
       s += r.draw(y0 + 92);
+      if (i > 0) s += tg(365, y0 + 116, '↔ same molecule, two drawings');
     });
     return s;
   },
-  caption: 'Rows 2 and 3 are the same arrow run in opposite directions.',
+  caption: 'Rows 2 and 3 are the same arrow run in opposite directions, between two drawings of one molecule, so ↔ joins them.',
 });
 
 /* NH3 + H–Cl: two arrows at once. */
@@ -421,7 +422,7 @@ FIGURES.push({
     s += mol(halide(P(650, 262), 'Br'));
     return s;
   },
-  caption: 'Arrow 1 fills the carbon with a fifth bond; arrow 2 empties it again by sending the C–Br pair onto bromine.',
+  caption: 'Arrow 1 alone would give carbon a fifth bond. Arrow 2, in the same step, sends the C–Br pair onto bromine, so carbon never has more than four.',
 });
 
 /* The four patterns, each as a reaction. */
@@ -695,7 +696,8 @@ function fishRows(narrow) {
         const pc = P(x0, y);
         s += mol(tbutyl(pc, 0, 'g1t'));
         s += cplus(pc.x + 16, pc.y);
-        s += mol(halide(P(pc.x + 74, y), 'Br', 'g1b'));
+        s += plusSign(pc.x + 38, y);
+        s += mol(halide(P(pc.x + 78, y), 'Br', 'g1b'));
         return s;
       },
     },
@@ -717,6 +719,7 @@ function fishRows(narrow) {
         const a = P(x0, y), b = P(x0 + 84, y);
         s += mol({ atoms: { a: { ...a, l: 'Cl' }, b: { ...b, l: 'Cl' } }, bonds: [], lp: [['a', 180], ['a', 90], ['a', 270], ['b', 0], ['b', 90], ['b', 270]] });
         s += dot(a.x + 21, a.y) + dot(b.x - 21, b.y);
+        s += plusSign(a.x + 42, y);
         return s;
       },
     },
@@ -791,7 +794,7 @@ FIGURES.push({
   id: 'l-ca-heads',
   lessons: ['curved-arrows'],
   viewBox: '0 0 340 500',
-  alt: 'Three rows. Row 1: a lone pair on hydroxide moves to a methyl cation carbon, giving methanol with a new C–O bond. Row 2: in acetone, the C=O pi pair moves onto oxygen, giving C plus and O minus with three lone pairs. Row 3: the reverse: an O minus lone pair moves into the C–O bond and remakes C=O.',
+  alt: 'Three rows. Row 1: a lone pair on hydroxide moves to the positive carbon of a carbocation carrying three methyl groups, giving an alcohol with a new C–O bond. Row 2: in acetone, the C=O pi pair moves onto oxygen, giving a second drawing with C plus and O minus, joined by a double-headed resonance arrow. Row 3: the reverse: an O minus lone pair moves into the C–O bond and gives back the C=O drawing, again joined by a double-headed arrow.',
   build() {
     let s = '';
     headRows(true).forEach((r, i) => {
@@ -803,7 +806,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Rows 2 and 3 run the same arrow in opposite directions.',
+  caption: 'Rows 2 and 3: two drawings of one molecule, joined by ↔.',
 });
 
 FIGURES.push({
@@ -856,7 +859,7 @@ FIGURES.push({
     s += tg(80, 30, 'CH₃⁻');
     const k = P(240, 110);
     s += mol(acetone(k, 'neutral', 'ck'));
-    s += tg(k.x + 24, k.y + 4, 'δ+', 'start');
+    s += tg(k.x, k.y + 24, 'δ+');
     return s;
   },
   caption: 'The carbanion carries a lone pair. The C=O carbon is δ+.',
