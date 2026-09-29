@@ -798,11 +798,13 @@
       8:['molecular-geometry-vsepr'],
       10:['molecular-geometry-vsepr','hybridization-assignment'] } },
 
-    'newman': { n:7, steps:{
-      1:['newman-reading'],
-      2:['torsional-strain','newman-reading'],
-      3:['torsional-strain','newman-reading'],
-      6:['newman-reading','torsional-strain'] } },
+    'newman': { n:14, steps:{
+      2:['newman-reading'],
+      4:['torsional-strain','newman-reading'],
+      5:['torsional-strain','newman-reading'],
+      8:['torsional-strain','newman-reading'],
+      11:['torsional-strain','newman-reading'],
+      13:['newman-reading','torsional-strain'] } },
 
     'nucleophiles': { n:11, steps:{
       2:['nucleophile-recognition'],

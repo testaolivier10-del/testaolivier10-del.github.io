@@ -167,7 +167,7 @@ FIGURES.push({
     s += flipArrows(330, 430, 131, 'ring flip', 19);
     return s;
   },
-  caption: 'Axial and equatorial swapped. Up stayed up.',
+  caption: 'Compare the bond that carries the methyl in the two chairs: vertical on the left, outward on the right, and pointing up in both.',
 });
 
 /* Lesson copies for the interactive flip: one chair each, 340 wide. */
@@ -535,7 +535,7 @@ FIGURES.push({
   section: 'ring-flips',
   anchor: 'about 95% of the molecules are in the chair that has the methyl equatorial.</p>',
   alt: 'Methylcyclohexane in its two chairs, joined by equilibrium arrows. The left chair, with the methyl axial, is labeled about 5 percent of molecules. The right chair, with the methyl equatorial, is labeled about 95 percent. The arrow pointing toward the equatorial chair is longer.',
-  viewBox: '0 0 760 250',
+  viewBox: '0 0 760 232',
   build() {
     let s = '';
     const A = methylPanel(200, 128, 0.85, false);
@@ -546,7 +546,6 @@ FIGURES.push({
     s += arrow(P(318, 116), P(446, 116));
     s += arrow(P(410, 136), P(354, 136), { muted: true });
     s += text(382, 100, 'A-value 1.7 kcal/mol', { cls: 'fg-tag' });
-    s += text(380, 244, 'Any one molecule visits both chairs; at any instant about 19 in 20 are in the right-hand one.', { cls: 'fg-sm' });
     return s;
   },
   caption: 'The longer arrow points to the chair the molecules spend most of their time in.',
