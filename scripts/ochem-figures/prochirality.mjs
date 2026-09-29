@@ -164,7 +164,7 @@ function ethanolCenter(c, wedgeLab, hashLab, o = {}) {
   if (o.pri) {
     const [pw, ph] = o.pri;                 // priorities of the wedge and hash groups
     s += pri(c.x + 24, c.y - 50, 1);
-    s += pri(c.x - 43, c.y + 50, 2);
+    s += pri(c.x - 43, c.y + 56, 2);
     s += pri(c.x + 65, c.y + 26, pw);
     s += pri(c.x + 29, c.y + 60, ph);
   }
@@ -230,7 +230,7 @@ function bromobutane(x, y, left, right, o = {}) {
   }
   if (o.pri) {
     const [pl, pr] = o.pri;
-    s += sweep(c3, 22, 160, pr === 3 ? 285 : 255, true);
+    s += sweep(c3, 22, 160, pr === 3 ? 305 : 255, true);
     s += pri(c2.x - 4, c2.y + 24, 1);
     s += pri(c4.x + 10, c4.y + 22, 2);
     s += pri(a.x - 20, a.y + 4, pl);
@@ -514,7 +514,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'nmr-diastereotopic',
   section: 'prochirality',
-  viewBox: '0 0 340 290',
+  viewBox: '0 0 340 298',
   alt: 'Two sketched proton NMR traces. Top: if the two hydrogens of a CH2 were equivalent, they would give one signal. Bottom: diastereotopic hydrogens Ha and Hb can give two signals at different positions, and each is split into two lines because the two hydrogens split each other.',
   build() {
     let s = '';

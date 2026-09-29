@@ -308,7 +308,7 @@ function buteneFig(stacked) {
     s += rich(cx, top + 22, [trans ? '*trans' : '*cis', '-but-2-ene'], 'fg-tag');
     s += butene(cx, top + 84, trans);
     s += T(cx, top + 136, 'no stereocenter', 'fg-tag-mut');
-    s += dipoles(P(cx, top + 182), trans);
+    s += dipoles(P(cx, top + (lesson ? 176 : 172)), trans);
     if (lesson) {
       s += T(cx, top + 206, trans ? 'dipoles cancel: μ = 0' : 'dipoles add: μ = 0.33 D', 'fg-tag-good');
       return;
@@ -413,7 +413,7 @@ FIGURES.push({
   id: 'trisubstituted-alkene',
   section: 'diastereomers',
   anchor: 'Two warnings about the words',
-  viewBox: '0 0 720 200',
+  viewBox: '0 0 720 204',
   alt: 'The two stereoisomers of 3-methylpent-2-ene. C2 carries a methyl and a hydrogen; C3 carries a methyl and an ethyl group and no hydrogen. In the Z isomer the C2 methyl and the ethyl are on the same side; in the E isomer they are on opposite sides. Either methyl could be called cis or trans to the other groups, so the words give no single answer.',
   build() {
     let s = '';
@@ -421,7 +421,7 @@ FIGURES.push({
       const cy = 100;
       const c2 = P(cx - 26, cy), c3 = P(cx + 26, cy);
       const m2 = P(cx - 70, cy + 26), h2 = P(cx - 70, cy - 26);
-      const et = P(cx + 78, z ? cy + 28 : cy - 28), m3 = P(cx + 70, z ? cy - 26 : cy + 26);
+      const et = P(cx + 86, z ? cy + 32 : cy - 32), m3 = P(cx + 70, z ? cy - 26 : cy + 26);
       s += bond(c2, c3, { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi', gap: 4 });
       s += bond(c2, m2, { rFrom: 0, rTo: 17 }) + bond(c2, h2, { rFrom: 0, rTo: 12 });
       s += bond(c3, et, { rFrom: 0, rTo: 25 }) + bond(c3, m3, { rFrom: 0, rTo: 17 });
@@ -432,11 +432,9 @@ FIGURES.push({
       s += T(cx, 30, z ? '(Z)-3-methylpent-2-ene' : '(E)-3-methylpent-2-ene', 'fg-tag');
     };
     one(170, true);
-    one(550, false);
-    s += T(360, 86, 'C3 has no H.', 'fg-tag-warn');
-    s += T(360, 106, 'Its two groups are CH₃ and CH₂CH₃,', 'fg-sm');
-    s += T(360, 122, 'so “cis” has nothing to point to.', 'fg-sm');
-    s += T(360, 180, 'Two diastereomers, named with E and Z instead', 'fg-tag');
+    one(530, false);
+    s += T(360, 172, 'C3 carries CH₃ and CH₂CH₃ but no H, so “cis” has nothing to point to.', 'fg-tag-warn');
+    s += T(360, 192, 'Still two diastereomers: E and Z name them.', 'fg-tag');
     return s;
   },
   caption: 'Both molecules have a methyl on each alkene carbon, so each one is “cis” by one pairing of groups and “trans” by another.',
