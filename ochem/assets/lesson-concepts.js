@@ -135,9 +135,13 @@
       9:['protection'],
       10:['protection','fgi-map','organometallic-quench'] } },
 
-    'multistep-synthesis': { n:8, steps:{
-      2:['route-order','protection'], 3:['route-order'], 4:['route-order'],
-      6:['route-order'], 7:['route-order','cc-bond-toolkit'] } },
+    'multistep-synthesis': { n:15, steps:{
+      6:['route-order','protection'],
+      7:['route-order'],
+      8:['route-order'],
+      12:['route-order'],
+      13:['route-order'],
+      14:['route-order','cc-bond-toolkit'] } },
 
     'carbohydrates': { n:12, steps:{
       1:['sugar-ring'],
