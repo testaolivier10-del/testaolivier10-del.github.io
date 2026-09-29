@@ -272,6 +272,7 @@ FIGURES.push({
     s += arm(c, 30, 50, 'H', { bond: 'hash' });
     s += atom(c.x, c.y, 'C', { kind: 'warn' });
     s += text(c.x - 34, c.y + 30, '+', { cls: 'fg-warn', size: 16 });
+    s += sm(c.x - 28, c.y - 56, 'empty p orbital', 'end');
     const bromide = (p, pairDeg) => {
       let g = atom(p.x, p.y, 'Br');
       for (const d of [0, 90, 180, 270]) g += lonePair(p.x, p.y, d, { dist: 22, spread: 4.5, r: 2.3 });
@@ -341,9 +342,9 @@ FIGURES.push({
     s += `<line class="fg-rule" x1="310" y1="40" x2="310" y2="230"></line>`;
     s += tg(465, 28, 'CONGLOMERATE');
     s += panel(350, 60, 116, 110, { kind: 'good' });
-    s += grid(373, 90, 4, 3, () => 'R');
+    s += grid(363, 90, 4, 3, () => 'R');
     s += panel(484, 60, 116, 110, { kind: 'warn' });
-    s += grid(507, 90, 4, 3, () => 'S');
+    s += grid(497, 90, 4, 3, () => 'S');
     s += sm(465, 204, 'two kinds of crystal,');
     s += sm(465, 220, 'each holding only R or only S');
     return s;
@@ -400,7 +401,7 @@ FIGURES.push({
     const site = { NH: 90, CO: 330, CH: 210 };
     const pane = (cx, groups, ok) => {
       const c = P(cx, 118);
-      let g = panel(cx - 78, 38, 156, 170, { kind: 'hi' });
+      let g = panel(cx - 78, 38, 156, 170);
       for (const [k, deg] of Object.entries(site)) {
         const p = at(c, deg, 52);
         const good = groups[k] === k;
@@ -459,7 +460,7 @@ FIGURES.push({
     s += rule(24, 252, 736, 252);
     s += panel(24, 270, 236, 44, { kind: 'good' });
     s += lbl(142, 297, 'less soluble salt: crystals');
-    s += panel(24, 326, 236, 44, { kind: 'mut' });
+    s += panel(24, 326, 236, 44, {});
     s += lbl(142, 353, 'more soluble salt: solution');
     s += arrow(P(270, 292), P(380, 292));
     s += arrow(P(270, 348), P(380, 348));
@@ -467,7 +468,7 @@ FIGURES.push({
     s += tg(325, 338, '+ HCl(aq)');
     s += panel(392, 270, 344, 44, { kind: 'good' });
     s += lbl(564, 297, 'one enantiomer of ibuprofen, pure');
-    s += panel(392, 326, 344, 44, { kind: 'mut' });
+    s += panel(392, 326, 344, 44, {});
     s += lbl(564, 353, 'ibuprofen rich in the other enantiomer');
     s += sm(380, 386, 'Ar = the 4-(2-methylpropyl)phenyl ring;  (S)-amine = (S)-1-phenylethylamine');
     return s;
@@ -502,7 +503,7 @@ FIGURES.push({
     s += panel(12, 270, 152, 60, { kind: 'good' });
     s += lbl(88, 295, 'crystals give');
     s += lbl(88, 315, 'one pure form');
-    s += panel(176, 270, 152, 60, { kind: 'mut' });
+    s += panel(176, 270, 152, 60, {});
     s += lbl(252, 295, 'solution gives');
     s += lbl(252, 315, 'the other, enriched');
     s += tg(170, 356, 'the amine is recovered and reused', 'middle', 'fg-tag-mut');

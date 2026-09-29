@@ -131,7 +131,7 @@ const tart = (cx, cy, key, extra = {}) => lined(cx, cy, { end: 'COOH', ...TART[k
 FIGURES.push({
   id: 'tartaric-three',
   section: 'meso',
-  anchor: 'Only three exist.</p>',
+  anchor: 'on wedges or hashes.</p>',
   viewBox: '0 0 760 300',
   alt: 'The three stereoisomers of tartaric acid, each drawn with the C2–C3 bond across the page, both COOH groups in the page below, and the two OH groups above on wedges or hashes. Left, (2R,3R): one OH on a hash and one on a wedge. Middle, (2S,3S): the same with every wedge and hash swapped; the two are mirror images, enantiomers, with specific rotations of +12 and −12 degrees. Right, meso-tartaric acid, (2R,3S): both OH groups on wedges, and a dashed vertical mirror plane through the middle of the C2–C3 bond reflects one half onto the other. Its specific rotation is zero.',
   build() {
@@ -556,7 +556,7 @@ function brRow(y, trans) {
   let s = '';
   const m3 = trans ? 330 : 30;
   s += alkene(92, y, trans);
-  s += rich(92, y + 62, trans ? ['*trans', '-2-butene'] : ['*cis', '-2-butene'], 'fg-tag');
+  s += rich(92, y + 62, trans ? ['*trans', '-but-2-ene'] : ['*cis', '-but-2-ene'], 'fg-tag');
   s += arrow(P(178, y), P(252, y));
   s += T(215, y - 12, 'Br₂', 'fg-tag');
   s += T(215, y + 22, 'anti', 'fg-tag');
@@ -574,9 +574,9 @@ function brRow(y, trans) {
 FIGURES.push({
   id: 'bromine-cis-trans-outcomes',
   section: 'meso',
-  anchor: 'and on 2-butene that one fact decides the product.</p>',
+  anchor: 'on but-2-ene that one fact decides the product.</p>',
   viewBox: '0 0 760 470',
-  alt: 'Two rows. Top row: trans-2-butene, flat in the page, adds Br2 anti. As the product forms, the Br on C2 is on a wedge (front face) and the Br on C3 on a hash (back face), with every other group where the alkene had it. Turning C3 half a turn about the C2–C3 bond brings its Br to a wedge and its methyl up beside the C2 methyl; a dashed mirror plane then cuts the C2–C3 bond in half, and the carbons are labeled R and S: meso-2,3-dibromobutane. Bottom row: cis-2-butene gives the same kind of product, but after the same turn the C3 methyl points down while the C2 methyl points up, both carbons are R, and there is no mirror plane: (2R,3R), formed together with an equal amount of its enantiomer (2S,3S).',
+  alt: 'Two rows. Top row: trans-but-2-ene, flat in the page, adds Br2 anti. As the product forms, the Br on C2 is on a wedge (front face) and the Br on C3 on a hash (back face), with every other group where the alkene had it. Turning C3 half a turn about the C2–C3 bond brings its Br to a wedge and its methyl up beside the C2 methyl; a dashed mirror plane then cuts the C2–C3 bond in half, and the carbons are labeled R and S: meso-2,3-dibromobutane. Bottom row: cis-but-2-ene gives the same kind of product, but after the same turn the C3 methyl points down while the C2 methyl points up, both carbons are R, and there is no mirror plane: (2R,3R), formed together with an equal amount of its enantiomer (2S,3S).',
   build() {
     let s = '';
     s += rich(20, 24, ['*trans', ' alkene'], 'fg-tag-good', 'start');
