@@ -223,7 +223,7 @@
       10:['activating-group'] } },
 
     'baeyer-villiger': { n:13, steps:{
-      3:['migratory-aptitude','curved-arrow-direction'],
+      3:['curved-arrow-direction','migratory-aptitude'],
       5:['migratory-aptitude','carbocation-stability'],
       6:['migratory-aptitude','carbocation-stability'],
       8:['migratory-aptitude'],

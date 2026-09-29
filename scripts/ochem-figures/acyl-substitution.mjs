@@ -6,7 +6,7 @@
    its top-left corner, so the same panel can sit in a two-column notes figure
    or in a stacked 340-wide lesson copy. Lesson figures use fg-lbl and fg-tag
    labels only. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, panel, bar, rule, P } from '../lib/ochem-figure.mjs';
+import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, panel, rule, P } from '../lib/ochem-figure.mjs';
 import { polyPts, ringDouble } from '../lib/ochem-skeletal.mjs';
 import { armEnd } from '../lib/ochem-helpers.mjs';
 
@@ -141,41 +141,6 @@ FIGURES.push({
   viewBox: '0 0 340 672',
   build() { return addElim(0, 0); },
   caption: 'Acetyl chloride and methoxide ion. Watch the carbon: flat in the top panel, tetrahedral in the middle one, flat again at the bottom.',
-});
-
-/* ------------------------------------------------------------------ 2 ---
-   The ladder, with the leaving group and the pKa of its conjugate acid. */
-FIGURES.push({
-  id: 'acyl-ladder',
-  section: 'acyl-substitution',
-  anchor: '<h3>Which group leaves?</h3>',
-  alt: 'The four acid derivatives ranked from most to least reactive: acid chloride, which loses Cl minus, whose conjugate acid HCl has pKa minus 7; anhydride, which loses a carboxylate, conjugate acid pKa about 4.8; ester, which loses an alkoxide, conjugate acid pKa about 16; amide, which would lose R2N minus, conjugate acid pKa about 38. An arrow down the side shows that each derivative can be turned into the ones below it.',
-  viewBox: '0 0 340 322',
-  build() {
-    const rows = [
-      { y: 74,  name: 'Acid chloride', lg: 'Cl⁻',   acid: 'HCl',    pka: '−7' },
-      { y: 132, name: 'Anhydride',     lg: 'RCO₂⁻', acid: 'RCO₂H',  pka: '4.8' },
-      { y: 190, name: 'Ester',         lg: 'RO⁻',   acid: 'ROH',    pka: '16' },
-      { y: 248, name: 'Amide',         lg: 'R₂N⁻',  acid: 'R₂NH',   pka: '38' },
-    ];
-    let s = '';
-    s += tg(12, 30, 'derivative', '', 'start');
-    s += tg(158, 30, 'leaves as');
-    s += tg(242, 22, 'its conjugate');
-    s += tg(242, 38, 'acid, pKa');
-    s += rule(8, 48, 290, 48);
-    rows.forEach((r, i) => {
-      s += bar(8, r.y - 22, 282, 44, { kind: i === 3 ? 'warn' : 'hi', opacity: 0.08 + (3 - i) * 0.06 });
-      s += lbl(16, r.y + 4, r.name, 'start');
-      s += lbl(158, r.y + 4, r.lg);
-      s += lbl(242, r.y + 4, `${r.acid}, ${r.pka}`);
-    });
-    s += arrow(P(314, 60), P(314, 262));
-    s += tg(170, 290, 'arrow: each converts downward only', 'good');
-    s += tg(170, 308, 'fastest at the top, slowest at the bottom', 'mut');
-    return s;
-  },
-  caption: 'Read across each row: the lower the pKa of the conjugate acid, the weaker the base that leaves.',
 });
 
 /* ------------------------------------------------------------------ 3 ---
@@ -326,7 +291,7 @@ const fisch = {
     s += t.s;
     const op = armEnd(c, 270, 58);
     s += hash(c, op, { rFrom: 14, rTo: 14, width: 11, rungs: 4 });
-    s += oxy(op, [{ deg: 0, label: 'H', len: 40 }, { deg: 225, label: 'CH₃', len: 46 }], [60], [-19, -15, '+'], 'hi');
+    s += oxy(op, [{ deg: 0, label: 'H', len: 40 }, { deg: 225, label: 'CH₃', len: 46 }], [205], [16, -21, '+'], 'hi');
     s += meohLeft(Q(214, 162));
     const h = armEnd(op, 0, 40);
     s += curve(Q(192, 154), P(h.x + 14, h.y - 8), { bow: 12 });
@@ -420,7 +385,7 @@ FIGURES.push({
   viewBox: '0 0 340 696',
   build() {
     return fisch.p1(0, 8, 'FIRST · THE C=O TAKES A PROTON')
-      + fisch.p4(0, 240, 'LATER · AN OH TAKES A PROTON', '(methanol has added in between)')
+      + fisch.p4(0, 240, 'LATER · AN OH TAKES A PROTON')
       + fisch.p5(0, 472, 'THEN · WATER LEAVES');
   },
   caption: 'The two protons of Fischer esterification. Between the first and second panels, methanol adds to the carbon. The first proton makes the carbon a better target; the second turns OH into water, which can leave.',
@@ -527,69 +492,6 @@ FIGURES.push({
     return s;
   },
   caption: 'The last steps of N-methylacetamide hydrolysis in hot aqueous acid. Look at what leaves in the middle panel: a neutral molecule, not CH₃NH⁻.',
-});
-
-/* ------------------------------------------------------------------ 8 ---
-   Saponification of methyl acetate, with the final proton transfer drawn. */
-FIGURES.push({
-  id: 'saponification',
-  section: 'acyl-substitution',
-  anchor: '<h3>Ester hydrolysis in base: saponification</h3>',
-  alt: 'Four stacked panels. First, hydroxide ion attacks the carbonyl carbon of methyl acetate, and the pi bond moves onto oxygen. Second, the tetrahedral intermediate: the O minus lone pair re-forms the C=O and the C–OCH3 bond breaks, releasing methoxide. Third, methoxide uses a lone pair to take the O–H proton of the acetic acid just formed; the O–H bond electrons stay on the acid oxygen. Fourth, acetate ion and methanol.',
-  viewBox: '0 0 340 944',
-  build() {
-    let s = '';
-    // ---- 1 ----
-    s += box(0, 8, 236, 'STEP 1 · HYDROXIDE ADDS TO THE C=O');
-    const c1 = P(120, 124), f1 = flat(c1, 'CH₃', 'OCH₃');
-    s += f1.s;
-    s += curve(P(126, 102), P(136, 66), { bow: 12 });
-    const oh = P(120, 196), hh = armEnd(oh, 0, 40);
-    s += B(oh, 'O', hh, 'H') + A(hh, 'H');
-    s += A(oh, 'O', 'hi') + lps(oh, [270, 180, 90]);
-    s += chg(96, 172, '−');
-    s += curve(P(126, 172), P(126, 144), { bow: -10 });
-    s += tg(262, 92, 'methyl acetate', 'mut');
-    s += tg(262, 204, 'hydroxide ion', 'mut');
-    // ---- 2 ----
-    s += box(0, 252, 262, 'STEP 2 · THE O⁻ PUSHES BACK, CH₃O⁻ LEAVES');
-    const c2 = P(110, 386), t2 = tet(c2, null, 'CH₃', 'OCH₃', 'OH', { bottomKind: 'hi', lenR: 56 });
-    s += B(c2, 'C', t2.o, 'O') + t2.s + topAlkoxide(t2.o);
-    s += collapse(t2.o) + breakRight(c2, t2.r);
-    s += tg(262, 336, 'tetrahedral', 'mut');
-    s += tg(262, 354, 'intermediate', 'mut');
-    // ---- 3 ----
-    s += box(0, 522, 236, 'STEP 3 · CH₃O⁻ TAKES THE ACID’S PROTON');
-    const c3 = P(76, 630), o3 = armEnd(c3, 90, 58);
-    s += B(c3, 'C', o3, 'O', { order: 2 }) + A(o3, 'O') + lps(o3, [225, 315]);
-    s += arm(c3, 'C', 210, 50, 'CH₃').s;
-    const oa = armEnd(c3, 330, 54);
-    s += B(c3, 'C', oa, 'O');
-    const ha = armEnd(oa, 0, 40);
-    s += B(oa, 'O', ha, 'H') + A(ha, 'H', 'hi');
-    s += A(oa, 'O') + lps(oa, [120, 280]);
-    s += A(c3, 'C', 'warn');
-    const om = P(ha.x + 66, oa.y), mm = armEnd(om, 0, 50);
-    s += B(om, 'O', mm, 'CH₃') + A(mm, 'CH₃');
-    s += A(om, 'O', 'hi') + lps(om, [180, 270, 90]);
-    s += chg(om.x - 20, om.y - 28, '−');
-    s += curve(P(om.x - 22, om.y - 6), P(ha.x + 14, ha.y - 8), { bow: 12 });
-    s += pullLeft(ha, oa);
-    s += tg(170, 730, 'acetic acid, pKa 4.8 · methanol, pKa 16', 'mut');
-    s += tg(170, 748, 'so this step runs one way', 'warn');
-    // ---- product ----
-    s += box(0, 766, 170, 'PRODUCT · ACETATE ION + METHANOL');
-    const c4 = P(96, 880), o4 = armEnd(c4, 90, 58);
-    s += B(c4, 'C', o4, 'O', { order: 2 }) + A(o4, 'O') + lps(o4, [225, 315]);
-    s += arm(c4, 'C', 210, 50, 'CH₃').s;
-    const oc = armEnd(c4, 330, 54);
-    s += B(c4, 'C', oc, 'O') + A(oc, 'O', 'hi') + lps(oc, [270, 30, 110]);
-    s += chg(oc.x - 26, oc.y + 22, '−');
-    s += A(c4, 'C', 'warn');
-    s += lbl(262, 872, '+  CH₃OH');
-    return s;
-  },
-  caption: 'Methyl acetate and sodium hydroxide. The proton transfer in step 3 is drawn with its arrows.',
 });
 
 export default FIGURES;

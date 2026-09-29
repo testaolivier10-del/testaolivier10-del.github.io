@@ -403,12 +403,13 @@ FIGURES.push({
     const rows = [
       { ry: 52, rg: 'H₃O⁺ or HO⁻, heat', kind: 'acid', name: 'propanoic acid' },
       { ry: 136, rg: 'LiAlH₄, then H₂O', kind: 'amine', name: 'propan-1-amine' },
-      { ry: 220, rg: 'DIBAL-H, 1 equiv, −78 °C', kind: 'ald', name: 'propanal' },
+      { ry: 220, rg: 'DIBAL-H, 1 equiv, −78 °C', rg2: 'then H₃O⁺', kind: 'ald', name: 'propanal' },
       { ry: 304, rg: 'CH₃MgBr, then H₃O⁺', kind: 'ket', name: 'butan-2-one' },
     ];
     for (const r of rows) {
       s += arrow(P(226, 183), P(330, r.ry + 2));
       s += tag(340, r.ry + 6, r.rg, { anchor: 'start' });
+      if (r.rg2) s += tag(340, r.ry + 22, r.rg2, { anchor: 'start' });
       s += fourProduct(520, r.ry + 10, r.kind);
       s += tag(658, r.ry + 6, r.name, { anchor: 'start', cls: 'fg-tag-good' });
     }
