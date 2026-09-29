@@ -324,12 +324,12 @@
       6:['kinetic-vs-thermodynamic'],
       7:['allylic-capture','kinetic-vs-thermodynamic'] } },
 
-    'kinetic-thermodynamic': { n:8, steps:{
-      2:['kinetic-vs-thermodynamic'],
+    'kinetic-thermodynamic': { n:9, steps:{
       3:['kinetic-vs-thermodynamic'],
       4:['kinetic-vs-thermodynamic'],
-      6:['kinetic-vs-thermodynamic','allylic-capture'],
-      7:['kinetic-vs-thermodynamic'] } },
+      5:['kinetic-vs-thermodynamic','allylic-capture'],
+      6:['kinetic-vs-thermodynamic'],
+      8:['kinetic-vs-thermodynamic'] } },
 
     'diels-alder': { n:8, steps:{
       2:['cycloaddition-geometry','conjugation-recognition'],

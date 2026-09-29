@@ -366,35 +366,36 @@ FIGURES.push({
    One 340-wide row per diene. */
 function regioRow(ox, oy, donorAt) {
   let s = '';
-  const g = 34;
-  const R = hexFlat(ox + 88, oy + 62, 38, g);
+  const g = 30;
+  const R = hexFlat(ox + 86, oy + 72, 36, g);
   s += diene(R);
   s += bond(R.d1, R.d2, { order: 2, rFrom: 0, rTo: 0 });
   const donor = donorAt === 1 ? R.c1 : R.c2;
-  s += sub(donor, donorAt === 1 ? OUT.c1 : OUT.c2, 'OMe', { len: 34, r: 17 });
+  s += sub(donor, donorAt === 1 ? OUT.c1 : OUT.c2, 'OMe', { len: 28, r: 15 });
   // delta-minus end of the diene, delta-plus end of the dienophile
   const minus = donorAt === 1 ? R.c4 : R.c1;
   const plusC = donorAt === 1 ? R.d2 : R.d1;
   const choC = donorAt === 1 ? R.d1 : R.d2;
-  s += sub(choC, donorAt === 1 ? 180 : 0, 'CHO', { len: 34, r: 17 });
+  s += sub(choC, donorAt === 1 ? 180 : 0, 'CHO', { len: 30, r: 15 });
   s += sk(R.c1, R.d1, 'fg-dash') + sk(R.c4, R.d2, 'fg-dash');
   s += sk(minus, plusC, 'fg-dash-hi');
-  s += text(minus.x + (donorAt === 1 ? 12 : -12), minus.y - 8, 'δ−', { cls: 'fg-lbl', anchor: donorAt === 1 ? 'start' : 'end' });
-  s += text(plusC.x + (donorAt === 1 ? 10 : -10), plusC.y + 20, 'δ+', { cls: 'fg-lbl', anchor: donorAt === 1 ? 'start' : 'end' });
-  s += tag(ox + 88, oy + 8, donorAt === 1 ? 'donor on C1' : 'donor on C2');
+  const sx = donorAt === 1 ? 1 : -1, an = donorAt === 1 ? 'start' : 'end';
+  s += text(minus.x + sx * 10, minus.y - 8, 'δ−', { cls: 'fg-lbl', anchor: an });
+  s += text(plusC.x + sx * 8, plusC.y + 20, 'δ+', { cls: 'fg-lbl', anchor: an });
+  s += tag(ox + 86, oy + 184, donorAt === 1 ? 'OMe on C1' : 'OMe on C2');
 
-  s += right(oy + 80, ox + 168, ox + 198);
+  s += right(oy + 92, ox + 160, ox + 188);
 
-  const Q = hexFlat(ox + 264, oy + 80, 36);
+  const Q = hexFlat(ox + 262, oy + 92, 32);
   s += productRing(Q);
   if (donorAt === 1) {
-    s += sub(Q.c1, OUT.c1, 'OMe', { len: 32, r: 17 });
-    s += sub(Q.d1, OUT.d1, 'CHO', { len: 32, r: 17 });
-    s += tag(ox + 264, oy + 22, '1,2 ("ortho")', { cls: 'fg-tag-good' });
+    s += sub(Q.c1, OUT.c1, 'OMe', { len: 26, r: 15 });
+    s += sub(Q.d1, OUT.d1, 'CHO', { len: 26, r: 15 });
+    s += tag(ox + 262, oy + 184, '1,2: "ortho"', { cls: 'fg-tag-good' });
   } else {
-    s += sub(Q.c2, OUT.c2, 'OMe', { len: 32, r: 17 });
-    s += sub(Q.d2, OUT.d2, 'CHO', { len: 32, r: 17 });
-    s += tag(ox + 264, oy + 22, '1,4 ("para")', { cls: 'fg-tag-good' });
+    s += sub(Q.c2, OUT.c2, 'OMe', { len: 26, r: 15 });
+    s += sub(Q.d2, OUT.d2, 'CHO', { len: 26, r: 15 });
+    s += tag(ox + 262, oy + 184, '1,4: "para"', { cls: 'fg-tag-good' });
   }
   return s;
 }
@@ -404,11 +405,11 @@ FIGURES.push({
   section: 'diels-alder',
   anchor: '<!-- regio-figure -->',
   alt: 'Left: 1-methoxybuta-1,3-diene drawn s-cis above propenal. C4 of the diene is marked delta minus and the CH2 carbon of propenal delta plus, and a highlighted dashed line joins them. The product is a cyclohexene with the methoxy and aldehyde groups on neighboring carbons, labeled 1,2, ortho. Right: 2-methoxybuta-1,3-diene above propenal, turned the other way round. C1 of the diene is marked delta minus and joins the CH2 carbon of propenal. The product has the methoxy and aldehyde groups across the ring from each other, labeled 1,4, para.',
-  viewBox: '0 0 760 180',
+  viewBox: '0 0 760 200',
   build() {
-    let s = regioRow(20, 10, 1);
-    s += `<line class="fg-rule" x1="380" y1="20" x2="380" y2="170"></line>`;
-    s += regioRow(400, 10, 2);
+    let s = regioRow(20, 4, 1);
+    s += `<line class="fg-rule" x1="380" y1="20" x2="380" y2="186"></line>`;
+    s += regioRow(400, 4, 2);
     return s;
   },
   caption: 'The highlighted dashed line pairs the diene’s δ− end with the dienophile’s δ+ carbon. The other dashed line is the second bond, which has only one place to go. Only positions are shown; stereochemistry comes later on the page.',
@@ -418,11 +419,11 @@ FIGURES.push({
   id: 'l-da-regio',
   lessons: ['diels-alder'],
   alt: 'Top: 1-methoxybuta-1,3-diene above propenal, with the diene C4 marked delta minus and the propenal CH2 marked delta plus, joined by a highlighted dashed line; the product has methoxy and aldehyde on neighboring ring carbons, labeled 1,2, ortho. Bottom: 2-methoxybuta-1,3-diene above propenal, with the diene C1 marked delta minus joined to the propenal CH2; the product has methoxy and aldehyde across the ring, labeled 1,4, para.',
-  viewBox: '0 0 340 360',
+  viewBox: '0 0 340 400',
   build() {
-    let s = regioRow(0, 4, 1);
-    s += rule(10, 180, 330, 180);
-    s += regioRow(0, 186, 2);
+    let s = regioRow(0, 0, 1);
+    s += rule(10, 198, 330, 198);
+    s += regioRow(0, 204, 2);
     return s;
   },
   caption: 'Join δ− to δ+. The second new bond has only one place to go.',
@@ -487,30 +488,30 @@ FIGURES.push({
    6. Stereochemistry from the diene: outward groups come out cis. */
 function dieneStereo(ox, oy, EZ) {
   let s = '';
-  const R = hexFlat(ox + 82, oy + 66, 36);
+  const R = hexFlat(ox + 76, oy + 70, 32);
   s += diene(R);
   // C1 end: methyl outward, H inward (E)
-  s += sub(R.c1, OUT.c1, 'CH₃', { len: 34, r: 16 });
-  s += sub(R.c1, INWARD.c1, 'H', { len: 26, r: 9 });
+  s += sub(R.c1, OUT.c1, 'CH₃', { len: 28, r: 14 });
+  s += sub(R.c1, INWARD.c1, 'H', { len: 24, r: 9 });
   if (EZ) {
     // C4 end: methyl inward, H outward (Z)
-    s += sub(R.c4, INWARD.c4, 'CH₃', { len: 32, r: 16 });
-    s += sub(R.c4, OUT.c4, 'H', { len: 26, r: 9 });
+    s += sub(R.c4, INWARD.c4, 'CH₃', { len: 30, r: 14 });
+    s += sub(R.c4, OUT.c4, 'H', { len: 24, r: 9 });
   } else {
-    s += sub(R.c4, OUT.c4, 'CH₃', { len: 34, r: 16 });
-    s += sub(R.c4, INWARD.c4, 'H', { len: 26, r: 9 });
+    s += sub(R.c4, OUT.c4, 'CH₃', { len: 28, r: 14 });
+    s += sub(R.c4, INWARD.c4, 'H', { len: 24, r: 9 });
   }
-  s += tag(ox + 82, oy + 12, EZ ? '(2E,4Z)-hexa-2,4-diene' : '(2E,4E)-hexa-2,4-diene');
-  s += tag(ox + 82, oy + 142, EZ ? 'one out, one in' : 'both CH₃ outward', { cls: 'fg-tag-mut' });
+  s += tag(ox + 76, oy + 16, EZ ? '(2E,4Z)-hexa-2,4-diene' : '(2E,4E)-hexa-2,4-diene');
+  s += tag(ox + 76, oy + 146, EZ ? 'one out, one in' : 'both CH₃ outward', { cls: 'fg-tag-mut' });
 
-  s += right(oy + 70, ox + 170, ox + 200);
-  s += tag(ox + 185, oy + 58, '+ ethene', { cls: 'fg-tag-mut' });
+  s += right(oy + 70, ox + 158, ox + 188);
+  s += tag(ox + 173, oy + 92, '+ ethene', { cls: 'fg-tag-mut' });
 
-  const Q = hexFlat(ox + 266, oy + 70, 34);
+  const Q = hexFlat(ox + 264, oy + 70, 32);
   s += productRing(Q, { plainNew: true });
-  s += sub(Q.c1, OUT.c1, 'CH₃', { len: 34, r: 16, kind: 'wedge' });
-  s += sub(Q.c4, OUT.c4, 'CH₃', { len: 34, r: 16, kind: EZ ? 'hash' : 'wedge' });
-  s += tag(ox + 266, oy + 142, EZ ? 'trans on the ring' : 'cis on the ring', { cls: 'fg-tag-good' });
+  s += sub(Q.c1, OUT.c1, 'CH₃', { len: 26, r: 14, kind: 'wedge' });
+  s += sub(Q.c4, OUT.c4, 'CH₃', { len: 26, r: 14, kind: EZ ? 'hash' : 'wedge' });
+  s += tag(ox + 264, oy + 146, EZ ? 'trans on the ring' : 'cis on the ring', { cls: 'fg-tag-good' });
   return s;
 }
 
@@ -521,9 +522,9 @@ FIGURES.push({
   alt: 'Left: (2E,4E)-hexa-2,4-diene drawn s-cis. At each end the methyl points outward, away from the other end, and a hydrogen points inward. With ethene it gives 3,6-dimethylcyclohexene with both methyls on wedges, cis on the ring. Right: (2E,4Z)-hexa-2,4-diene drawn s-cis, with one methyl outward and the other inward. It gives the ring with one methyl on a wedge and one hashed, trans on the ring.',
   viewBox: '0 0 760 160',
   build() {
-    let s = dieneStereo(10, 4, false);
+    let s = dieneStereo(4, 4, false);
     s += `<line class="fg-rule" x1="378" y1="16" x2="378" y2="150"></line>`;
-    s += dieneStereo(394, 4, true);
+    s += dieneStereo(400, 4, true);
     return s;
   },
   caption: 'Look at where each methyl points in the s-cis diene, then at the ring. Two outward methyls come out cis; one outward and one inward come out trans.',
@@ -535,9 +536,9 @@ FIGURES.push({
   alt: 'Top: (2E,4E)-hexa-2,4-diene drawn s-cis with both methyls pointing outward and both inner positions carrying hydrogen; with ethene it gives the ring with both methyls on wedges, cis. Bottom: (2E,4Z)-hexa-2,4-diene with one methyl outward and one inward gives the ring with one methyl wedged and one hashed, trans.',
   viewBox: '0 0 340 320',
   build() {
-    let s = dieneStereo(-6, 0, false);
+    let s = dieneStereo(0, 0, false);
     s += rule(10, 160, 330, 160);
-    s += dieneStereo(-6, 164, true);
+    s += dieneStereo(0, 164, true);
     return s;
   },
   caption: 'Both outward: cis. One outward, one inward: trans.',
