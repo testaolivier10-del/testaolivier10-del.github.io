@@ -353,7 +353,7 @@ FIGURES.push({
     s += tag(630, 284, 'charge on C6 (ortho)', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'Each set of arrows moves the lone pair two carbons further round the ring. The ring numbers match the name 1-chloro-2,4-dinitrobenzene.',
+  caption: 'Each set of arrows moves the lone pair two carbons farther around the ring. The ring numbers match the name 1-chloro-2,4-dinitrobenzene.',
 });
 
 /* Para versus meta: the nitro group has to sit on a charged carbon. */
@@ -719,8 +719,8 @@ FIGURES.push({
   alt: '4-chlorotoluene, a benzene ring with CH3 on C1 at the bottom and Cl on C4 at the top, with every ring carbon numbered 1 to 6.',
   build() {
     const R = 34;
-    let s = arene(P(170, 100), R, { 3: 'CH₃', 0: 'Cl' }, { nums: { from: 3 } });
-    s += tag(250, 104, '4-chlorotoluene', { anchor: 'start' });
+    let s = arene(P(130, 100), R, { 3: 'CH₃', 0: 'Cl' }, { nums: { from: 3 } });
+    s += tag(196, 104, '4-chlorotoluene', { anchor: 'start' });
     return s;
   },
   caption: '<i>para</i>-Chlorotoluene, numbered from the CH₃ carbon.',

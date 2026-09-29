@@ -257,9 +257,13 @@
       9:['partial-reduction'],
       10:['partial-reduction'] } },
 
-    'diazonium-chemistry': { n:8, steps:{
-      2:['diazonium-hub'], 3:['diazonium-hub'], 4:['diazonium-hub'],
-      6:['diazonium-hub'], 7:['diazonium-hub','aromatic-nucleophilic'] } },
+    'diazonium-chemistry': { n:11, steps:{
+      2:['diazonium-hub'],
+      3:['diazonium-hub'],
+      5:['diazonium-hub'],
+      6:['diazonium-hub','nitrile-as-acyl-level'],
+      9:['diazonium-hub'],
+      10:['diazonium-hub','directing-effects'] } },
 
     'polymer-basics': { n:8, steps:{
       2:['two-reactive-sites'], 3:['two-reactive-sites'], 4:['two-reactive-sites'],
