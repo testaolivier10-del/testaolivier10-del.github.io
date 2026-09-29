@@ -576,10 +576,10 @@ FIGURES.push({
     s += hc.s;
     const up = hc.pts[0], dn = hc.pts[1];
     const lead = (a, b) => `<line class="fg-bond-soft" x1="${a.x.toFixed(2)}" y1="${a.y.toFixed(2)}" x2="${b.x.toFixed(2)}" y2="${b.y.toFixed(2)}"></line>`;
-    s += lead(P(up.x + 3, up.y - 3), P(up.x + 24, up.y - 20));
-    s += text(up.x + 27, up.y - 18, 'above the plane', { cls: 'fg-sm', anchor: 'start' });
-    s += lead(P(dn.x + 2, dn.y - 3), P(dn.x + 14, dn.y - 36));
-    s += text(dn.x + 17, dn.y - 38, 'below the plane', { cls: 'fg-sm', anchor: 'start' });
+    s += lead(P(up.x + 4, up.y), P(up.x + 16, up.y));
+    s += text(up.x + 19, up.y + 4, 'above the plane', { cls: 'fg-sm', anchor: 'start' });
+    s += lead(P(dn.x, dn.y - 4), P(dn.x, dn.y - 22));
+    s += text(dn.x, dn.y - 27, 'below the plane', { cls: 'fg-sm' });
     s += text(X.half, Y(10.8) - 120, 'half-chair · 10.8 (peak)', { cls: 'fg-tag-warn' });
     s += text(X.half - 70, Y(10.8) - 64, '4 C in', { cls: 'fg-tag', anchor: 'end' });
     s += text(X.half - 70, Y(10.8) - 48, 'one plane', { cls: 'fg-tag', anchor: 'end' });
