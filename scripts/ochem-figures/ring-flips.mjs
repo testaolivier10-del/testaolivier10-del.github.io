@@ -299,7 +299,7 @@ FIGURES.push({
   viewBox: '0 0 340 204',
   build() {
     let s = '';
-    const r = ring(146, 124, 1.0, false);
+    const r = ring(160, 124, 0.9, false);
     s += outline(r.pts) + dots(r.pts);
     const put = (j, kind, L, lblOff) => {
       const end = kind === 'ax' ? r.ax(j, L) : r.eq(j, L);
@@ -310,7 +310,7 @@ FIGURES.push({
     };
     put(2, 'ax', 40, [0, -8]);
     put(2, 'eq', 40, [-4, 4, 'end']);
-    put(1, 'ax', 34, [-6, 4, 'end']);
+    put(1, 'ax', 26, [-6, 0, 'end']);
     put(1, 'eq', 40, [0, -8]);
     put(0, 'ax', 40, [0, -8]);
     put(0, 'eq', 24, [4, 4, 'start']);
@@ -319,7 +319,7 @@ FIGURES.push({
     s += text(r.pts[0].x - 2, r.pts[0].y + 24, 'C3', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'Axial (highlighted) runs up, down, up from C1 to C3. On each carbon the equatorial bond (eq) angles the opposite way from the axial one.',
+  caption: 'Read the tags from C1 to C3. Highlighted bonds are axial; eq marks the equatorial ones.',
 });
 
 /* ------------------------------------------------------------ cis13-flip ---

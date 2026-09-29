@@ -619,11 +619,12 @@
       7:['curved-arrow-direction'],
       8:['curved-arrow-direction','resonance-validity'] } },
 
-    'cyclohexanes': { n:7, steps:{
-      1:['chair-axial-equatorial'],
+    'cyclohexanes': { n:9, steps:{
+      1:['torsional-strain'],
       2:['torsional-strain'],
-      3:['chair-axial-equatorial','torsional-strain'],
-      6:['torsional-strain','chair-axial-equatorial'] } },
+      4:['chair-axial-equatorial','torsional-strain'],
+      6:['chair-axial-equatorial','torsional-strain'],
+      8:['torsional-strain','chair-axial-equatorial'] } },
 
     'diastereomers': { n:11, steps:{
       2:['enantiomer-vs-diastereomer','stereocenter-identification'],
