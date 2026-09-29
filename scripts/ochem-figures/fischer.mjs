@@ -168,7 +168,7 @@ FIGURES.push({
     s += sideOne(P(652, 136));
     return s;
   },
-  caption: 'Three drawings of one molecule, D-glyceraldehyde. The side view looks along the page from its right-hand edge, so H sits directly behind OH.',
+  caption: 'Three drawings of one molecule, (R)-glyceraldehyde. The side view looks along the page from its right-hand edge, so H sits directly behind OH.',
 });
 
 FIGURES.push({
@@ -189,7 +189,7 @@ FIGURES.push({
     s += sideOne(P(216, 352), { eyeGap: 150 });
     return s;
   },
-  caption: 'One molecule, D-glyceraldehyde, drawn three ways. In the side view, H sits directly behind OH.',
+  caption: 'One molecule, (R)-glyceraldehyde, drawn three ways. In the side view, H sits directly behind OH.',
 });
 
 /* ------------------------------------------------ 2. where it comes from --- */
@@ -259,7 +259,7 @@ FIGURES.push({
     s += chain(630, 70, 60, ERY.top, ERY.rows, ERY.bottom);
     return s;
   },
-  caption: 'D-erythrose, a four-carbon sugar. H sits behind each OH in the side view. Squash the front view flat and it becomes the Fischer projection.',
+  caption: 'Erythrose, a four-carbon sugar. H sits behind each OH in the side view. Squash the front view flat and it becomes the Fischer projection.',
 });
 
 FIGURES.push({
@@ -278,7 +278,7 @@ FIGURES.push({
     s += chain(255, 372, 60, ERY.top, ERY.rows, ERY.bottom);
     return s;
   },
-  caption: 'D-erythrose. H sits behind each OH in the side view. Flatten the front view and you get the Fischer projection.',
+  caption: 'Erythrose. H sits behind each OH in the side view. Flatten the front view and you get the Fischer projection.',
 });
 
 /* --------------------------------------------- 3. R or S from the cross --- */
@@ -310,7 +310,7 @@ FIGURES.push({
     s += text(170, 252, 'H points at you, so flip: (R).', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'D-glyceraldehyde, priorities in green. The arrow runs from 1 to 3 the short way round, past 2.',
+  caption: '(R)-glyceraldehyde, with CIP priorities in green. The arrow runs from 1 to 3 the short way round, past 2.',
 });
 
 /* ------------------------------------------------ 4. moves on the cross --- */

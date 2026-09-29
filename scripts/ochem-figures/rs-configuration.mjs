@@ -95,7 +95,7 @@ function arcArrow(c, r, a0, a1, cw) {
    number at the outer corner of each pill. Returns the ink and the radius
    an arc must clear. */
 function tetra(c, gs, o = {}) {
-  const L = o.L ?? 62;
+  const L = o.L ?? 56;
   let s = '', reach = 0;
   for (const g of gs) {
     const len = g.len ?? L;
@@ -112,7 +112,7 @@ function tetra(c, gs, o = {}) {
     const r = (g.deg * Math.PI) / 180;
     const sx = Math.cos(r) < -0.2 ? -1 : 1, sy = Math.sin(r) > 0.2 ? -1 : 1;
     const cx = p.x + sx * (wOf(g.lab) / 2 + 7), cy = p.y + sy * (PH / 2 + 4);
-    reach = Math.max(reach, Math.hypot(cx - c.x, cy - c.y) + 8);
+    reach = Math.max(reach, Math.hypot(cx - c.x, cy - c.y) + 6);
     if (o.badges !== false && g.pri) {
       s += text(cx, cy + 4, String(g.pri), { cls: g.pri === 4 ? 'fg-tag-warn' : 'fg-tag-good', size: 11 });
     }
@@ -121,7 +121,7 @@ function tetra(c, gs, o = {}) {
   return { s, reach };
 }
 /* The 1 → 2 → 3 arrow around a drawn center, outside every label. */
-function trace(c, gs, reach, pad = 12) {
+function trace(c, gs, reach, pad = 8) {
   const a = (p) => gs.find((g) => g.pri === p).deg;
   const cw = cwAsDrawn(gs);
   const off = 14;
@@ -212,7 +212,7 @@ const C3 = [
 /* ------------------------------------------------ 1. the method ------- */
 
 function methodCell(ox, oy, w, h, stage) {
-  const c = P(ox + w / 2, oy + 150);
+  const c = P(ox + w / 2, oy + 140);
   let s = panel(ox, oy, w, h, stage === 3 ? { kind: 'hi' } : {});
   const titles = ['1 · Rank the groups', '2 · Priority 4 points away', '3 · Trace, 4 · read'];
   s += Tag(P(ox + w / 2, oy + 22), titles[stage - 1]);
@@ -253,7 +253,7 @@ FIGURES.push({
 
 /* One group's first carbon: a stub from the stereocenter on the left, the
    carbon, and its three other neighbours, with the set written beside it. */
-function firstAtom(o, subs, set, win) {
+function firstAtom(o, subs, set, win, name, hiIdx = 0) {
   const c = P(o.x, o.y);
   const st = P(c.x - 50, c.y);
   let s = bond(st, c, { rFrom: 11, rTo: 16 });
@@ -262,19 +262,18 @@ function firstAtom(o, subs, set, win) {
   subs.forEach((l, i) => {
     const p = armEnd(c, degs[i], 50);
     s += bond(c, armEnd(c, degs[i], 50 - cutOf(l, degs[i]) - 3), { rFrom: 16, rTo: 0 });
-    s += pill(p, l, i === 0 && win ? 'hi' : undefined);
+    s += pill(p, l, i === hiIdx && win ? 'hi' : undefined);
   });
   s += atom(c.x, c.y, 'C', { kind: 'hi' });
-  s += (win ? Good : Tag)(P(o.x + 132, o.y + 5), set, { anchor: 'middle' });
+  s += (win ? Good : Tag)(P(o.x + 132, o.y - 4), set, { anchor: 'middle' });
+  s += TagRaw(P(o.x + 132, o.y + 16), name);
   return s;
 }
 function diffCell(ox, oy, w, h, top, bot, v1, v2, head) {
   let s = panel(ox, oy, w, h);
   s += Tag(P(ox + w / 2, oy + 22), head);
-  s += firstAtom(P(ox + 66, oy + 88), top.subs, top.set, true);
-  s += TagRaw(P(ox + 66, oy + 150), top.name);
-  s += firstAtom(P(ox + 66, oy + 204), bot.subs, bot.set, false);
-  s += TagRaw(P(ox + 66, oy + 266), bot.name);
+  s += firstAtom(P(ox + 66, oy + 96), top.subs, top.set, true, top.name, top.hi);
+  s += firstAtom(P(ox + 66, oy + 212), bot.subs, bot.set, false, bot.name);
   s += Good(P(ox + w / 2, oy + h - 36), v1);
   s += Tag(P(ox + w / 2, oy + h - 18), v2);
   return s;
@@ -286,7 +285,7 @@ const DIFF = [
   [{ name: 'CH₂OH', subs: ['OH', 'H', 'H'], set: '(O, H, H)' },
    { name: '<tspan font-style="italic">tert</tspan>-butyl', subs: ['CH₃', 'CH₃', 'CH₃'], set: '(C, C, C)' },
    'O beats C in position 1', 'no adding up', 'one O against three C'],
-  [{ name: 'isopropyl', subs: ['CH₃', 'CH₃', 'H'], set: '(C, C, H)' },
+  [{ name: 'isopropyl', subs: ['CH₃', 'CH₃', 'H'], set: '(C, C, H)', hi: 1 },
    { name: 'CH₂CH₂OH', subs: ['CH₂OH', 'H', 'H'], set: '(C, H, H)' },
    'C beats H in position 2', 'the O is never reached', 'the O that comes too late'],
 ];
@@ -321,12 +320,12 @@ FIGURES.push({
   section: 'rs-configuration',
   anchor: 'Worked example — 3,4-dimethylpentan-1-ol',
   alt: 'C3 of 3,4-dimethylpentan-1-ol. CH(CH3)2 at the top is priority 1, CH2CH2OH at lower left is 2, CH3 on a wedge at lower right is 3 and H on a hash is 4. The arrow from 1 to 2 to 3 turns counterclockwise, so the center is S.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 316',
   build() {
-    const c = P(170, 160);
+    const c = P(170, 146);
     let s = assign(c, DIMETHYL, 'S', 'rs-dimethylpentanol');
-    s += Good(P(170, 300), '1 → 2 → 3 counterclockwise: S');
-    s += Tag(P(170, 320), 'H on the hash, so no flip');
+    s += Good(P(170, 286), '1 → 2 → 3 counterclockwise: S');
+    s += Tag(P(170, 306), 'H on the hash, so no flip');
     return s;
   },
   caption: 'C3 of (S)-3,4-dimethylpentan-1-ol.',
@@ -338,7 +337,7 @@ function dupColumn(ox, oy, w, h, kind) {
   let s = panel(ox, oy, w, h);
   const heads = { cho: 'aldehyde, CHO', cooh: 'carboxylic acid, COOH', cn: 'nitrile, C≡N' };
   s += Tag(P(ox + w / 2, oy + 22), heads[kind]);
-  const top = P(ox + w / 2 - 6, oy + 88), bot = P(ox + w / 2 - 6, oy + 222);
+  const top = P(ox + w / 2 - 6, oy + 80), bot = P(ox + w / 2 - 6, oy + 224);
   const stub = (c) => {
     const st = P(c.x - 56, c.y);
     return bond(st, c, { rFrom: 6, rTo: 16 }) + atom(st.x, st.y, '', { r: 5 });
@@ -353,8 +352,9 @@ function dupColumn(ox, oy, w, h, kind) {
   if (kind === 'cooh') s += arm(top, 50, 'O', 52, { order: 2 }) + arm(top, 310, 'OH', 52);
   if (kind === 'cn') s += arm(top, 0, 'N', 58, { order: 3, gap: 3.6 });
   s += atom(top.x, top.y, 'C', { kind: 'hi' });
-  s += Tag(P(ox + w / 2, oy + 150), 'as drawn');
-  s += arrow(P(ox + w / 2, oy + 160), P(ox + w / 2, oy + 180), { size: 7 });
+  s += Tag(P(ox + 14, oy + 46), 'as drawn', { anchor: 'start' });
+  s += arrow(P(ox + 30, oy + 120), P(ox + 30, oy + 172), { size: 7 });
+  s += Tag(P(ox + 14, oy + 190), 'as counted', { anchor: 'start' });
   // As counted.
   s += stub(bot);
   if (kind === 'cho') s += arm(bot, 50, 'O', 52) + arm(bot, 0, '[O]', 62, { hi: 'warn' }) + arm(bot, 310, 'H', 52);
@@ -405,11 +405,9 @@ function phenylVinylCell(ox, oy, w, h, which) {
     }
     s += Tag(P(a.x + 36, a.y + 62), 'C1 has one double bond');
   } else {
-    const b = armEnd(a, 30, 44);
-    s += bond(a, b, { rFrom: 0, rTo: 0, order: 2, gap: 3 });
+    const b = armEnd(a, 30, 58);
+    s += bond(a, armEnd(a, 30, 58 - cutOf('CH₂', 30) - 3), { rFrom: 0, rTo: 0, order: 2, gap: 3 }) + pill(b, 'CH₂');
     s += bond(a, armEnd(a, 300, 30), { rFrom: 0, rTo: 13 }) + pill(armEnd(a, 300, 42), 'H');
-    s += pill(armEnd(b, 0, 26), 'H₂', undefined);
-    s += Tag(P(a.x + 30, a.y + 62), 'CH=CH₂');
   }
   s += Tag(P(a.x - 2, a.y - 16), 'C1');
   // As counted.
@@ -422,7 +420,8 @@ function phenylVinylCell(ox, oy, w, h, which) {
   if (which === 'ph') s += arm(55, 'C') + arm(0, '[C]', 'warn') + arm(305, 'C', 'hi');
   else s += arm(55, 'C') + arm(0, '[C]', 'warn') + arm(305, 'H', 'hi');
   s += atom(c.x, c.y, 'C1', { kind: 'hi' });
-  s += arrow(P(ox + w / 2 - 6, oy + 70), P(ox + w / 2 + 22, oy + 70), { size: 7 });
+  s += Tag(P(ox + 90, oy + 56), 'as drawn');
+  s += Tag(P(c.x, oy + 56), 'as counted');
   s += (which === 'ph' ? Good : Tag)(P(ox + w / 2, oy + h - 18), which === 'ph' ? 'counts as (C, C, C)' : 'counts as (C, C, H)');
   return s;
 }
@@ -501,7 +500,7 @@ function sameTraceCell(ox, oy, w, h, which) {
   const gl = which === 'gly';
   let s = panel(ox, oy, w, h, gl ? { kind: 'warn' } : { kind: 'hi' });
   s += Tag(P(ox + w / 2, oy + 22), gl ? 'glyceraldehyde · H on a wedge' : 'butan-2-ol · H on a hash');
-  const c = P(ox + w / 2, oy + 160);
+  const c = P(ox + w / 2, oy + 152);
   s += assign(c, gl ? GLYCER : BUTANOL, gl ? 'R' : 'S', 'same-trace-opposite-answer');
   s += Tag(P(ox + w / 2, oy + h - 36), gl ? 'counterclockwise as drawn, then flip' : 'counterclockwise, no flip');
   s += (gl ? Warn : Good)(P(ox + w / 2, oy + h - 16), gl ? 'R' : 'S');
@@ -532,9 +531,9 @@ function viewCell(ox, oy, w, h, side) {
     : [{ deg: 90, lab: '1', kind: 'plain', pri: 1 }, { deg: 210, lab: '2', kind: 'plain', pri: 2 },
        { deg: 330, lab: '3', kind: 'plain', pri: 3 }, { deg: 270, lab: '4', kind: 'wedge', pri: 4, hi: 'warn', len: 54 }];
   expect(gs, 'R', 'flip-view');
-  const c = P(ox + w / 2, oy + 128);
-  const t = tetra(c, gs, { badges: false, L: 58 });
-  s += t.s + trace(c, gs, t.reach, 6);
+  const c = P(ox + w / 2, oy + 134);
+  const t = tetra(c, gs, { badges: false, L: 56 });
+  s += t.s + trace(c, gs, t.reach, 4);
   s += Tag(P(ox + w / 2, oy + h - 36), front ? '4 points away from you' : '4 points toward you');
   s += (front ? Good : Warn)(P(ox + w / 2, oy + h - 16), front ? '1 → 2 → 3 clockwise' : '1 → 2 → 3 counterclockwise');
   return s;
@@ -545,12 +544,12 @@ FIGURES.push({
   section: 'rs-configuration',
   anchor: 'viewing it from the other side',
   alt: 'One stereocenter seen from two sides. From the front, group 4 is on a hash pointing away, and 1 at the top, 2 at lower right and 3 at lower left run clockwise. From behind, left and right swap: 2 is at lower left and 3 at lower right, group 4 is on a wedge pointing toward the viewer, and 1 to 2 to 3 runs counterclockwise.',
-  viewBox: '0 0 760 270',
+  viewBox: '0 0 760 290',
   build() {
-    let s = viewCell(4, 4, 330, 262, 'front') + viewCell(426, 4, 330, 262, 'back');
-    s += arrow(P(346, 128), P(414, 128), { size: 8 });
-    s += Tag(P(380, 110), 'walk round');
-    s += Tag(P(380, 152), 'the page');
+    let s = viewCell(4, 4, 330, 282, 'front') + viewCell(426, 4, 330, 282, 'back');
+    s += arrow(P(346, 138), P(414, 138), { size: 8 });
+    s += Tag(P(380, 120), 'walk round');
+    s += Tag(P(380, 162), 'the page');
     return s;
   },
   caption: 'Compare where 2 and 3 sit in the two views.',
@@ -560,9 +559,9 @@ FIGURES.push({
   id: 'l-flip-view',
   lessons: ['rs-configuration'],
   alt: 'One stereocenter seen from two sides, stacked. From the front, group 4 points away and 1 to 2 to 3 runs clockwise. From behind, group 4 points toward the viewer, left and right swap, and 1 to 2 to 3 runs counterclockwise.',
-  viewBox: '0 0 340 532',
+  viewBox: '0 0 340 572',
   build() {
-    return viewCell(4, 4, 332, 262, 'front') + viewCell(4, 268, 332, 262, 'back');
+    return viewCell(4, 4, 332, 282, 'front') + viewCell(4, 288, 332, 280, 'back');
   },
   caption: 'The same center from both sides of the page. The path turns the other way from behind.',
 });
@@ -633,9 +632,9 @@ FIGURES.push({
   section: 'rs-configuration',
   anchor: '<h3>Naming whole molecules</h3>',
   alt: '3-Bromobutan-2-ol as a zigzag, with OH on a wedge and H on a hash at C2, and Br on a hash and H on a wedge at C3. Beside it, each stereocenter is redrawn with the same bond angles. At C2: OH 1, the C3 side 2, CH3 3, H 4 on the hash; 1 to 2 to 3 runs clockwise, so C2 is R. At C3: Br 1, the C2 side 2, CH3 3, H 4 on the wedge; 1 to 2 to 3 runs clockwise as drawn, and H points toward the viewer, so the answer flips and C3 is S.',
-  viewBox: '0 0 760 340',
+  viewBox: '0 0 760 350',
   build() {
-    let s = panel(4, 4, 196, 332);
+    let s = panel(4, 4, 196, 342);
     s += Tag(P(102, 26), 'the molecule');
     const c1 = P(34, 190), c2 = P(80, 164), c3 = P(126, 190), c4 = P(172, 164);
     s += sk(c1, c2) + sk(c2, c3) + sk(c3, c4);
@@ -647,16 +646,16 @@ FIGURES.push({
     s += sub(c2, 60, 58, 'OH', 'wedge') + sub(c2, 120, 50, 'H', 'hash');
     s += sub(c3, 300, 58, 'Br', 'hash') + sub(c3, 240, 50, 'H', 'wedge');
     s += Tag(P(c2.x, c2.y + 24), 'C2') + Tag(P(c3.x, c3.y - 14), 'C3');
-    s += Good(P(102, 300), '(2R,3S)');
-    s += Tag(P(102, 318), '3-bromobutan-2-ol');
+    s += Good(P(102, 312), '(2R,3S)');
+    s += Tag(P(102, 330), '3-bromobutan-2-ol');
     const cell = (ox, gs, want, name) => {
-      let t = panel(ox, 4, 274, 332, { kind: 'hi' });
+      let t = panel(ox, 4, 274, 342, { kind: 'hi' });
       t += Tag(P(ox + 137, 26), 'stereocenter ' + name);
-      t += assign(P(ox + 137, 168), gs, want, 'two-stereocenters ' + name, { L: 58, pad: 8 });
+      t += assign(P(ox + 137, 170), gs, want, 'two-stereocenters ' + name, { L: 54 });
       const cw = cwAsDrawn(gs);
       const toward = gs.find((g) => g.pri === 4).kind === 'wedge';
-      t += Tag(P(ox + 137, 300), (cw ? 'clockwise' : 'counterclockwise') + (toward ? ' as drawn, H toward you' : ', H away'));
-      t += Good(P(ox + 137, 318), toward ? 'flip: ' + name + ' is ' + want : name + ' is ' + want);
+      t += Tag(P(ox + 137, 314), (cw ? 'clockwise' : 'counterclockwise') + (toward ? ' as drawn, H toward you' : ', H away'));
+      t += Good(P(ox + 137, 332), toward ? 'flip: ' + name + ' is ' + want : name + ' is ' + want);
       return t;
     };
     s += cell(206, C2, 'R', 'C2') + cell(482, C3, 'S', 'C3');
@@ -665,4 +664,5 @@ FIGURES.push({
   caption: 'Left: the molecule. Middle and right: C2 and C3 redrawn with the bond angles they have in the molecule.',
 });
 
+export const _debugReach = (gs, L) => tetra(P(0, 0), gs, { L }).reach;
 export default FIGURES;
