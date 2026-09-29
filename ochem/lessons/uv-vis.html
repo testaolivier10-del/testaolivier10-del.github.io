@@ -156,16 +156,16 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'What UV-Vis measures.',
-        bodyHtml: '<p class="step-body">Ethene absorbs ultraviolet light most strongly at 171 nm. Buta-1,3-diene, with two double bonds in conjugation, absorbs at 217 nm. A nanometer (nm) is a billionth of a meter; visible light runs from about 400 to 700 nm, and ultraviolet light is shorter. <b>UV-Vis spectroscopy</b> shines ultraviolet and visible light through a sample and records which wavelengths it absorbs.</p>' +
+        bodyHtml: '<p class="step-body">Ethene absorbs ultraviolet light most strongly at 171 nm. (A nanometer, nm, is a billionth of a meter.) Buta-1,3-diene, with two double bonds in conjugation, absorbs at 217 nm. Visible light runs from about 400 to 700 nm, and ultraviolet light has shorter wavelengths. <b>UV-Vis spectroscopy</b> shines ultraviolet and visible light through a sample and records which wavelengths it absorbs.</p>' +
           '<p class="step-body">Light arrives in packets of energy called <b>photons</b>, and the shorter the wavelength, the more energy each one carries. A photon is absorbed when its energy lifts an electron from the <b>HOMO</b>, the highest filled orbital, to the <b>LUMO</b>, the lowest empty one. In ethene and in every polyene (a chain of alternating double and single bonds), the LUMO is an antibonding π orbital, written <b>π*</b>, so the jump is written <b>π &rarr; π*</b>.</p>' +
-          '<div class="explain-box"><b>Bigger HOMO–LUMO gap &rarr; higher-energy photon needed &rarr; shorter wavelength absorbed.</b><br>Smaller gap &rarr; lower energy &rarr; <b>longer</b> wavelength absorbed.<br><br>The wavelength at the top of the absorption band is called <b>λ<sub>max</sub></b>.</div>'
+          '<div class="explain-box"><b>Bigger HOMO–LUMO gap &rarr; higher-energy photon needed &rarr; shorter wavelength absorbed.</b><br>Smaller gap &rarr; lower energy &rarr; <b>longer</b> wavelength absorbed.<br><br>An absorption covers a range of wavelengths, called a <b>band</b>. The wavelength at its top is <b>λ<sub>max</sub></b>.</div>'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
         title: 'More conjugation, smaller gap, longer wavelength.',
-        bodyHtml: '<p class="step-body">Each double bond added to the conjugation adds two p orbitals, and so two more π orbitals. The ladder grows only a little taller, so its rungs crowd together. The HOMO climbs, the LUMO drops, and the gap <b>narrows</b>.</p>' +
-          '<p class="step-body" style="margin-bottom:0;">The part of a molecule that absorbs the light is its <b>chromophore</b>, here the conjugated π system. An isolated C=C absorbs below about 200 nm, further into the ultraviolet than ordinary instruments reach, so a simple alkene shows no band at all. Conjugate two double bonds and the band moves into range. That is why UV-Vis works as a detector of conjugation rather than as a general-purpose method.</p>',
+        bodyHtml: '<p class="step-body">Picture the π orbitals as rungs on an energy ladder, as in the figure below: filled ones low, empty ones high. Each extra double bond in the conjugation brings two more p orbitals, and so two more π orbitals. The ladder does grow taller, but much more slowly than it gains rungs, so the rungs crowd together. The HOMO climbs, the LUMO drops, and the gap <b>narrows</b>.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The part of a molecule that absorbs the light is its <b>chromophore</b>, here the conjugated π system. An isolated C=C absorbs below about 200 nm, further into the ultraviolet than ordinary instruments reach, so on an ordinary instrument a simple alkene shows no band at all. Conjugate two double bonds and the band moves into range. That is why UV-Vis works as a detector of conjugation rather than as a general-purpose method.</p>',
         diagramHtml: '<!-- fig:uv-gap-ladder:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 312" role="img" aria-label="Pi-orbital energy levels for ethene, buta-1,3-diene and hexa-1,3,5-triene side by side. The lower half of each ladder is filled with electron pairs. The HOMO and LUMO are highlighted with a double-headed arrow between them, and the arrow gets shorter from ethene to the triene, while the wavelength absorbed rises from 171 to 217 to 258 nanometers."><line class="fg-arrow" x1="14" y1="236" x2="14" y2="66"></line><path class="fg-head" d="M14 58 L18.16 66 L9.84 66 Z"></path><text class="fg-tag" x="22" y="58" text-anchor="start" font-size="11">energy</text><line class="fg-bond-hi" x1="34" y1="192" x2="94" y2="192"></line><circle class="fg-lp" cx="52" cy="192" r="3.2"></circle><circle class="fg-lp" cx="76" cy="192" r="3.2"></circle><line class="fg-bond-hi" x1="34" y1="108" x2="94" y2="108"></line><line class="fg-arrow" x1="64" y1="187" x2="64" y2="119"></line><path class="fg-head" d="M64 113 L67.12 119 L60.88 119 Z"></path><line class="fg-arrow" x1="64" y1="113" x2="64" y2="181"></line><path class="fg-head" d="M64 187 L60.88 181 L67.12 181 Z"></path><text class="fg-tag" x="64" y="254" text-anchor="middle" font-size="11">Ethene</text><text class="fg-tag-good" x="64" y="272" text-anchor="middle" font-size="11">171 nm</text><line class="fg-bond-soft" x1="136" y1="217.96" x2="196" y2="217.96"></line><circle class="fg-lp" cx="154" cy="217.95600000000002" r="3.2"></circle><circle class="fg-lp" cx="178" cy="217.95600000000002" r="3.2"></circle><line class="fg-bond-hi" x1="136" y1="175.96" x2="196" y2="175.96"></line><circle class="fg-lp" cx="154" cy="175.956" r="3.2"></circle><circle class="fg-lp" cx="178" cy="175.956" r="3.2"></circle><line class="fg-bond-hi" x1="136" y1="124.04" x2="196" y2="124.04"></line><line class="fg-bond-soft" x1="136" y1="82.04" x2="196" y2="82.04"></line><line class="fg-arrow" x1="166" y1="170.96" x2="166" y2="135.04"></line><path class="fg-head" d="M166 129.04 L169.12 135.04 L162.88 135.04 Z"></path><line class="fg-arrow" x1="166" y1="129.04" x2="166" y2="164.96"></line><path class="fg-head" d="M166 170.96 L162.88 164.96 L169.12 164.96 Z"></path><text class="fg-tag" x="166" y="254" text-anchor="middle" font-size="11">Buta-1,3-diene</text><text class="fg-tag-good" x="166" y="272" text-anchor="middle" font-size="11">217 nm</text><line class="fg-bond-soft" x1="244" y1="225.68" x2="304" y2="225.68"></line><circle class="fg-lp" cx="262" cy="225.684" r="3.2"></circle><circle class="fg-lp" cx="286" cy="225.684" r="3.2"></circle><line class="fg-bond-soft" x1="244" y1="202.37" x2="304" y2="202.37"></line><circle class="fg-lp" cx="262" cy="202.374" r="3.2"></circle><circle class="fg-lp" cx="286" cy="202.374" r="3.2"></circle><line class="fg-bond-hi" x1="244" y1="168.69" x2="304" y2="168.69"></line><circle class="fg-lp" cx="262" cy="168.69" r="3.2"></circle><circle class="fg-lp" cx="286" cy="168.69" r="3.2"></circle><line class="fg-bond-hi" x1="244" y1="131.31" x2="304" y2="131.31"></line><line class="fg-bond-soft" x1="244" y1="97.63" x2="304" y2="97.63"></line><line class="fg-bond-soft" x1="244" y1="74.32" x2="304" y2="74.32"></line><line class="fg-arrow" x1="274" y1="163.69" x2="274" y2="142.31"></line><path class="fg-head" d="M274 136.31 L277.12 142.31 L270.88 142.31 Z"></path><line class="fg-arrow" x1="274" y1="136.31" x2="274" y2="157.69"></line><path class="fg-head" d="M274 163.69 L270.88 157.69 L277.12 157.69 Z"></path><text class="fg-tag" x="274" y="254" text-anchor="middle" font-size="11">Hexa-1,3,5-triene</text><text class="fg-tag-good" x="274" y="272" text-anchor="middle" font-size="11">258 nm</text><text class="fg-tag" x="64" y="98" text-anchor="middle" font-size="11">LUMO</text><text class="fg-tag" x="64" y="210" text-anchor="middle" font-size="11">HOMO</text><text class="fg-tag" x="70" y="154" text-anchor="start" font-size="11">gap</text><text class="fg-lbl" x="170" y="300" text-anchor="middle" font-size="13">Smaller gap, longer λₘₐₓ</text></svg><figcaption>Only the highlighted rungs matter to UV-Vis: the HOMO and the LUMO. The arrow between them is the gap a photon must match, and it gets shorter with each double bond added.</figcaption></figure><!-- fig:uv-gap-ladder:end -->'
       },
       {
@@ -174,11 +174,11 @@ document.addEventListener('DOMContentLoaded', function(){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Put these in order of increasing λ<sub>max</sub>.</h2>' +
-            '<p class="step-body">Click them from the <b>shortest</b> wavelength absorbed to the <b>longest</b>. All you need is the number of double bonds in conjugation.</p>' +
+            '<p class="step-body">Click them from the <b>shortest</b> wavelength absorbed to the <b>longest</b>. All you need is the number of C=C bonds in each π system.</p>' +
             '<div class="radical-sort" id="pool">' +
             shuffled.map(function(s){
               return '<button type="button" class="choice-btn uv-pick" data-id="' + s.id + '" data-n="' + s.n + '">' +
-                s.name + ' <span style="color:var(--muted);font-weight:700;">— ' + s.n + ' conjugated C=C</span></button>';
+                s.name + ' <span style="color:var(--muted);font-weight:700;">— ' + s.n + ' C=C in the π system</span></button>';
             }).join('') +
             '</div>' +
             '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin:14px 0 16px;">Placed: 0 / 4</div>' +
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'Two isomeric dienes have the formula C₆H₁₀. One absorbs at 227 nm, and the other shows nothing above 200 nm. Which is conjugated?',
         options: ['The one with nothing above 200 nm','The one at 227 nm','Both, to the same extent','Neither of them'],
         correctIndex: 1,
-        correctFeedback: 'Correct. The conjugated diene has the smaller HOMO–LUMO gap, so it absorbs lower-energy, longer-wavelength light. In the other isomer the double bonds are isolated, so it behaves as two separate alkenes, each absorbing below 200 nm like any simple C=C.',
+        correctFeedback: 'Correct. The conjugated diene has the smaller HOMO–LUMO gap, so it absorbs lower-energy, longer-wavelength light. In the other isomer the double bonds are isolated, so it behaves as two separate alkenes, each absorbing below 200 nm like any simple C=C. Notice what the spectrum does not say: where the double bonds sit, only whether they are conjugated.',
         wrongFeedback: 'Conjugation narrows the HOMO–LUMO gap. A narrower gap needs a lower-energy photon, and lower energy means a longer wavelength.'
       },
       {
@@ -235,11 +235,11 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Independent Practice',
-        title: 'A dye absorbs strongly near 450 nm, in the blue, and nowhere else in the visible. What color does its solution look?',
+        title: 'Like β-carotene, a dye has one broad band spanning about 420–490 nm, the blue part of the visible, and absorbs nowhere else in the visible. What color does its solution look?',
         options: [
           'Blue, the color it absorbs',
           'Orange, what remains once blue is removed',
-          'Colorless, since it absorbs visible light',
+          'Black, since it removes light',
           'Violet, the color just past blue in the spectrum'
         ],
         correctIndex: 1,
@@ -255,9 +255,9 @@ document.addEventListener('DOMContentLoaded', function(){
           '<ul class="step-body">' +
           '<li><b>A</b> is the absorbance, a unitless number the instrument reports.</li>' +
           '<li><b>ε</b> is the molar absorptivity, a constant for one compound at one wavelength that measures how strongly it absorbs. Conjugated systems have large ε, often 10,000 or more. A is unitless and c and l are not, so ε carries <b>L·mol⁻¹·cm⁻¹</b>.</li>' +
-          '<li><b>c</b> is the concentration, and <b>l</b> is the path length through the sample, usually 1 cm.</li>' +
+          '<li><b>c</b> is the concentration in mol L⁻¹ (written M), and <b>l</b> is the path length through the sample, usually 1 cm.</li>' +
           '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">Rearrange before you substitute: c = A / εl. An absorbance of 0.63 with ε = 21,000 in a 1.00 cm cell gives c = 0.63 / 21,000 = 3.0 × 10⁻⁵ M, a few milligrams in a liter. Because absorbance is proportional to concentration, UV-Vis is the standard way to follow a conjugated compound\'s concentration while a reaction runs.</p>'
+          '<p class="step-body" style="margin-bottom:0;">Rearrange before you substitute: c = A / (εl). An absorbance of 0.63 with ε = 21,000 in a 1.00 cm cell gives c = 0.63 / 21,000 = 3.0 × 10⁻⁵ M, a few milligrams in a liter. Because absorbance is proportional to concentration, UV-Vis is the standard way to follow a conjugated compound\'s concentration while a reaction runs.</p>'
       },
       {
         type: 'mcq',

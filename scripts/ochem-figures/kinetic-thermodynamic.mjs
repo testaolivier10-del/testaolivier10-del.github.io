@@ -64,24 +64,26 @@ FIGURES.push({
   section: 'kinetic-thermodynamic',
   anchor: 'but it ends in a deeper valley.</p>',
   alt: 'Energy diagram for HBr and buta-1,3-diene after protonation. The allylic cation sits in the middle. The route to the left climbs a lower hill and ends at the 1,2-product, 3-bromobut-1-ene, drawn skeletally. The route to the right climbs a higher hill and ends in a deeper valley at the 1,4-product, 1-bromobut-2-ene.',
-  viewBox: '0 0 760 372',
+  viewBox: '0 0 760 404',
   build() {
     let s = '';
-    s += arrow(P(52, 350), P(52, 46));
+    s += arrow(P(52, 372), P(52, 46));
+    s += arrow(P(52, 372), P(744, 372));
+    s += T(398, 394, 'reaction coordinate');
     s += T(62, 40, 'free energy', { anchor: 'start' });
 
     s += rule(220, 110, 550, 110);
     s += profile([{ x: 430, y: 110, flat: 330 }, { x: 250, y: 88 }, { x: 150, y: 196, flat: 90 }]);
-    s += profile([{ x: 430, y: 110 }, { x: 520, y: 62 }, { x: 626, y: 244, flat: 690 }]);
+    s += profile([{ x: 430, y: 110 }, { x: 520, y: 62 }, { x: 604, y: 244, flat: 700 }]);
     s += T(380, 98, 'the allylic cation');
     s += T(250, 72, 'lower hill: forms faster', { cls: 'fg-tag-good' });
     s += T(520, 46, 'higher hill', { cls: 'fg-tag-warn' });
 
     // The depth comparison.
-    s += rule(150, 196, 640, 196);
-    s += rule(640, 196, 640, 244);
-    s += T(566, 220, 'deeper valley:', { cls: 'fg-tag-good', anchor: 'end' });
-    s += T(566, 235, 'more stable', { cls: 'fg-tag-good', anchor: 'end' });
+    s += rule(150, 196, 724, 196);
+    s += measure(716, 196, 244);
+    s += T(706, 216, 'deeper valley:', { cls: 'fg-tag-good', anchor: 'end' });
+    s += T(706, 232, 'more stable', { cls: 'fg-tag-good', anchor: 'end' });
 
     // The two products, named and drawn.
     s += L(125, 222, '1,2-product');
@@ -89,9 +91,7 @@ FIGURES.push({
     s += text(125, 334, '3-bromobut-1-ene', { cls: 'fg-sm', size: 10.5 });
     s += L(655, 268, '1,4-product');
     s += bromobutene14(630, 316);
-    s += text(660, 358, '1-bromobut-2-ene', { cls: 'fg-sm', size: 10.5 });
-
-    s += T(380, 300, 'reaction coordinate');
+    s += text(660, 356, '1-bromobut-2-ene', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
   caption: 'Follow each route down from the cation. The lower hill and the deeper valley belong to different products.',
@@ -105,7 +105,8 @@ FIGURES.push({
   viewBox: '0 0 340 290',
   build() {
     let s = '';
-    s += arrow(P(10, 262), P(10, 24));
+    s += arrow(P(10, 266), P(10, 24));
+    s += arrow(P(10, 266), P(334, 266));
     s += T(18, 20, 'free energy', { anchor: 'start' });
     s += rule(120, 104, 220, 104);
     s += profile([{ x: 190, y: 104, flat: 150 }, { x: 110, y: 70 }, { x: 70, y: 176, flat: 30 }]);
@@ -118,7 +119,7 @@ FIGURES.push({
     s += T(64, 214, 'forms faster', { cls: 'fg-tag-good' });
     s += L(282, 236, '1,4-product');
     s += T(282, 252, 'more stable', { cls: 'fg-tag-good' });
-    s += T(170, 282, 'reaction coordinate');
+    s += T(172, 284, 'reaction coordinate');
     return s;
   },
   caption: 'The lower hill and the deeper valley belong to different products.',
@@ -132,10 +133,12 @@ FIGURES.push({
   section: 'kinetic-thermodynamic',
   anchor: 'what reaches the deep valley tends to stay there.</p>',
   alt: 'A general energy diagram: one intermediate in the middle, a lower hill on the left leading to a shallow valley, the kinetic product, and a higher hill on the right leading to a deeper valley, the thermodynamic product. Double-headed arrows mark the climb from each product back up to its hill: short on the left, long on the right.',
-  viewBox: '0 0 760 380',
+  viewBox: '0 0 760 404',
   build() {
     let s = '';
-    s += arrow(P(44, 350), P(44, 60));
+    s += arrow(P(44, 372), P(44, 60));
+    s += arrow(P(44, 372), P(744, 372));
+    s += T(394, 394, 'reaction coordinate');
     s += T(54, 54, 'free energy', { anchor: 'start' });
 
     s += rule(300, 150, 460, 150);
@@ -157,7 +160,6 @@ FIGURES.push({
     s += T(110, 283, 'short climb back out', { cls: 'fg-tag-good' });
     s += L(640, 336, 'thermodynamic product');
     s += T(640, 353, 'long climb back out', { cls: 'fg-tag-warn' });
-    s += T(380, 300, 'reaction coordinate');
     return s;
   },
   caption: 'The double arrows measure the climb from each product back up to its hill.',
@@ -170,6 +172,9 @@ FIGURES.push({
   viewBox: '0 0 340 300',
   build() {
     let s = '';
+    s += arrow(P(8, 274), P(8, 24));
+    s += arrow(P(8, 274), P(336, 274));
+    s += T(16, 20, 'free energy', { anchor: 'start' });
     s += rule(120, 104, 220, 104);
     s += T(170, 124, 'intermediate');
     s += profile([{ x: 190, y: 104, flat: 150 }, { x: 110, y: 70 }, { x: 70, y: 176, flat: 34 }]);
@@ -177,8 +182,8 @@ FIGURES.push({
     s += T(110, 56, 'lower hill', { cls: 'fg-tag-good' });
     s += T(234, 30, 'higher hill', { cls: 'fg-tag-warn' });
 
-    s += rule(16, 70, 110, 70);
-    s += measure(22, 70, 176);
+    s += rule(36, 70, 110, 70);
+    s += measure(44, 70, 176);
     s += rule(234, 44, 336, 44);
     s += measure(328, 44, 214);
 
@@ -186,7 +191,7 @@ FIGURES.push({
     s += T(64, 216, 'short climb out', { cls: 'fg-tag-good' });
     s += L(262, 238, 'thermodynamic');
     s += T(262, 254, 'long climb out', { cls: 'fg-tag-warn' });
-    s += T(170, 290, 'reaction coordinate');
+    s += T(172, 292, 'reaction coordinate');
     return s;
   },
   caption: 'Each double arrow is the climb from a product back up to its hill.',
@@ -231,7 +236,7 @@ function ring(c, o = {}) {
   }
   return { s, top };
 }
-const enolateO = (o) => LP(o, 90) + LP(o, 160) + LP(o, 20) + chg(o.x - 28, o.y - 17);
+const enolateO = (o) => LP(o, 90) + LP(o, 160) + LP(o, 20) + chg(o.x + 25, o.y - 19);
 const ketoneO = (o) => LP(o, 150) + LP(o, 30);
 
 FIGURES.push({
@@ -253,7 +258,7 @@ FIGURES.push({
     s += T(380, 180, '2-methylcyclohexanone');
     s += T(170, 348, 'kinetic enolate: C1=C6', { cls: 'fg-tag-good' });
     s += T(170, 366, 'two carbons on the C=C');
-    s += T(590, 348, 'thermodynamic enolate: C1=C2', { cls: 'fg-tag-warn' });
+    s += T(590, 348, 'thermodynamic enolate: C1=C2');
     s += T(590, 366, 'three carbons on the C=C');
     return s;
   },
@@ -306,7 +311,7 @@ FIGURES.push({
     s += T(380, 128, 'heat to 160 °C');
     s += T(380, 162, 'comes off, goes back on', { cls: 'fg-tag-mut' });
     s += naphthalene(560, 140, 34, 2);
-    s += T(560, 22, '160 °C: thermodynamic product', { cls: 'fg-tag-warn' });
+    s += T(560, 22, '160 °C: thermodynamic product');
     s += text(560, 212, 'naphthalene-2-sulfonic acid', { cls: 'fg-sm', size: 10.5 });
     return s;
   },

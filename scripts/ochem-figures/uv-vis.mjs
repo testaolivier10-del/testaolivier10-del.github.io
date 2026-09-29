@@ -50,7 +50,7 @@ FIGURES.push({
     s += text(64, 98, 'LUMO', { cls: 'fg-tag', size: 11 });
     s += text(64, 210, 'HOMO', { cls: 'fg-tag', size: 11 });
     s += text(70, 154, 'gap', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += text(170, 300, 'Smaller gap, longer λₘₐₓ', { cls: 'fg-lbl', size: 13 });
+    s += text(170, 300, 'Smaller gap, longer λmax', { cls: 'fg-lbl', size: 13 });
     return s;
   },
   caption: 'Only the highlighted rungs matter to UV-Vis: the HOMO and the LUMO. The arrow between them is the gap a photon must match, and it gets shorter with each double bond added.',
@@ -83,8 +83,11 @@ FIGURES.push({
     s += lobeE(O.x, 199, 12, 23, 'fg-orb');
     // n: the lone pairs, along the plane
     s += `<ellipse class="fg-atom-warn" cx="232" cy="160" rx="34" ry="12" fill-opacity="0.5"></ellipse>`;
-    s += `<circle class="fg-lp" cx="236" cy="160" r="3.2"></circle>`;
-    s += `<circle class="fg-lp" cx="248" cy="160" r="3.2"></circle>`;
+    // Both in-plane lone pairs project onto the plane line in this view.
+    s += `<circle class="fg-lp" cx="220" cy="160" r="3.2"></circle>`;
+    s += `<circle class="fg-lp" cx="230" cy="160" r="3.2"></circle>`;
+    s += `<circle class="fg-lp" cx="244" cy="160" r="3.2"></circle>`;
+    s += `<circle class="fg-lp" cx="254" cy="160" r="3.2"></circle>`;
     s += bond(P(60, 160), C, { rFrom: 0 });
     s += bond(C, O, { order: 2 });
     s += atom(C.x, C.y, 'C');
@@ -164,7 +167,9 @@ FIGURES.push({
     s += dbl(R[2], R[3], rc);
     s += sk(R[3], R[4]) + sk(R[4], R[5]) + sk(R[5], R[0]) + sk(R[0], R[1]);
     s += dot(L[1]) + dot(L[5]) + dot(R[4]);
-    s += text((L[4].x + R[3].x) / 2 + 6, 196, 'exocyclic C=C', { cls: 'fg-tag-warn', size: 11 });
+    const exo = P((L[4].x + R[3].x) / 2, (L[4].y + R[3].y) / 2);
+    s += `<line class="fg-dash-hi" x1="${n2(exo.x + 3)}" y1="${n2(exo.y + 8)}" x2="${n2(exo.x + 10)}" y2="184"></line>`;
+    s += text(exo.x + 12, 198, 'exocyclic C=C', { cls: 'fg-tag-warn', size: 11 });
     s += rows(628, [
       [230, '214 base', 'fg-lbl'],
       [252, '+ 3 ring residues × 5 = +15', 'fg-sm'],
@@ -212,10 +217,10 @@ FIGURES.push({
     // from the label down to the axis otherwise runs straight through its own
     // caption, which reads as a struck-out word.
     const marks = [
-      { nm: 171, y: 100, name: 'Ethene',            n: '1 conjugated C=C' },
-      { nm: 217, y: 146, name: 'Buta-1,3-diene',    n: '2' },
-      { nm: 258, y: 100, name: 'Hexa-1,3,5-triene', n: '3' },
-      { nm: 450, y: 100, name: '\u03b2-Carotene',   n: '11' },
+      { nm: 171, y: 100, name: 'Ethene',            n: '1 C=C' },
+      { nm: 217, y: 146, name: 'Buta-1,3-diene',    n: '2 C=C' },
+      { nm: 258, y: 100, name: 'Hexa-1,3,5-triene', n: '3 C=C' },
+      { nm: 450, y: 100, name: '\u03b2-Carotene',   n: '11 C=C' },
     ];
     for (const m of marks) {
       s += rule(x(m.nm), m.y + 20, x(m.nm), 200);
@@ -226,12 +231,12 @@ FIGURES.push({
 
     // The two band labels sit inside their bands, clear of the stems.
     s += text(x(175), 214, 'out of range', { cls: 'fg-tag-warn', size: 10 });
-    s += text(x(455), 214, 'visible region', { cls: 'fg-tag-good', size: 10.5 });
+    s += text(x(455), 214, 'visible (400\u2013700 nm) \u2192', { cls: 'fg-tag-good', size: 10.5 });
     s += text(x(175), 268, 'a lone C=C absorbs here', { cls: 'fg-sm', size: 10 });
     s += text(x(450), 268, 'here the compound has a color', { cls: 'fg-sm', size: 10 });
 
     s += rule(20, 286, 670, 286);
-    s += text(345, 308, 'Each double bond added to the conjugation narrows the gap, so \u03bb\u2098\u2090\u2093 moves right.', { cls: 'fg-lbl', size: 12 });
+    s += text(345, 308, 'Each double bond added to the conjugation narrows the gap, so \u03bbmax moves right.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'The four compounds from the table, placed on a wavelength axis. Look at the two shaded bands: the left one is out of an ordinary instrument\u2019s reach, and the right one is visible light.',
@@ -247,7 +252,7 @@ FIGURES.push({
   id: 'uv-spectrum-trace',
   section: 'uv-vis',
   anchor: 'a lone pair, almost always a carbonyl.</li>\n</ul>',
-  alt: 'An absorbance-versus-wavelength plot from 180 to 400 nanometres. A tall broad band peaks at 217 nanometres for buta-1,3-diene, a second taller band peaks further right at 258 nanometres for hexa-1,3,5-triene, and a very small bump near 280 nanometers marks the weak n to pi-star transition of a ketone.',
+  alt: 'An absorbance-versus-wavelength plot from 180 to 400 nanometres. A tall broad band peaks at 217 nanometres for buta-1,3-diene, a second taller band peaks further right at 258 nanometres for hexa-1,3,5-triene, and a very small bump near 280 nanometers, drawn magnified, marks the weak n to pi-star transition of a ketone.',
   viewBox: '0 0 760 364',
   build() {
     let s = '';
@@ -281,24 +286,24 @@ FIGURES.push({
     /* Centred over its own peak: anchored at the left it ran back across the
        absorbance axis and the arrowhead sat inside the word. */
     s += text(X(217), 92, 'buta-1,3-diene, 217 nm', { cls: 'fg-lbl', size: 11.5 });
-    s += text(X(258) + 10, 72, 'hexa-1,3,5-triene, 258 nm', { cls: 'fg-tag-good', size: 11.5, anchor: 'start' });
+    s += text(X(258) + 10, 72, 'hexa-1,3,5-triene, 258 nm', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
     /* The weak band is the ketone n → π* one, so it belongs at 280 nm, where
        the prose puts acetone. A leader runs from the label down to it, because
        at ε ≈ 20 the bump itself is a few pixels tall. */
     s += `<line class="fg-dash" x1="${X(280).toFixed(1)}" y1="216" x2="${X(280).toFixed(1)}" y2="248"></line>`;
-    s += text(X(280) + 16, 192, 'n → π* of a ketone, 280 nm', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(X(280) + 16, 208, 'ε ≈ 20, so barely a ripple', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(X(280) + 16, 192, 'n → π* of a ketone, 280 nm, ε ≈ 20', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(X(280) + 16, 208, 'drawn magnified: true size would not show', { cls: 'fg-sm', size: 10, anchor: 'start' });
 
-    s += text(566, 112, 'position is λₘₐₓ; height follows ε', { cls: 'fg-tag', size: 11 });
-    s += text(566, 130, '(each compound at the same concentration)', { cls: 'fg-sm', size: 10 });
+    s += text(566, 112, 'position is λmax; height follows ε', { cls: 'fg-tag', size: 11 });
+    s += text(566, 130, '(at equal concentration)', { cls: 'fg-sm', size: 10 });
 
     s += rule(30, 316, 706, 316);
     s += text(368, 338, 'Position says how long the conjugation is; height says how strongly it absorbs.', { cls: 'fg-lbl', size: 11.5 });
     s += text(368, 356, 'A band is broad because bond vibrations spread one jump over a range of energies.', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
-  caption: 'What the instrument prints. Each band is one jump of an electron, and λ<sub>max</sub> is read off its top. One more conjugated double bond moves the whole band 41 nm to the right and, here, makes it taller too.',
-  note: 'Now find the ketone\u2019s n → π* band near 280 nm. It lies to the right of both π → π* bands, yet it barely rises off the baseline.',
+  caption: 'What the instrument prints. Each band is one jump of an electron, and λ<sub>max</sub> is read off its top. One more conjugated double bond moves the whole band 41 nm to the right, and in this example also makes it taller.',
+  note: 'Now find the ketone\u2019s n → π* band near 280 nm. It lies to the right of both π → π* bands, and even drawn magnified it barely rises off the baseline.',
 });
 
 export default FIGURES;
