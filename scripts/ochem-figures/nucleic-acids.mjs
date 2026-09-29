@@ -372,7 +372,7 @@ FIGURES.push({
     const pyr = [['C', 'cytosine (C)', 170], ['T', 'thymine (T)', 390], ['U', 'uracil (U)', 610]];
     for (const [k, name, x] of pyr) {
       const B = drawBase(k, { c: P(x, 340), b: 30, sugar: 'sugar', compact: true, hiMe: true, kinds: { N1: 'hi' } });
-      s += B.s + B.loc('N1', '1', null, 0, [-20, 14]) + B.loc('C5', '5', 'six', 0.42);
+      s += B.s + B.loc('N1', '1', null, 0, [-20, 14]) + B.loc('C5', '5', 'six', 0.52);
       s += lbl(x, 440, name);
     }
     return s;
@@ -804,7 +804,7 @@ FIGURES.push({
     const L = drawBase('T', { c: P(120, 164), b: 32, rot: -30, sugar: 'sugar', kinds: { H3: 'warn' } });
     const R = drawBase('T', { c: P(552, 164), b: 32, rot: -30, sugar: 'sugar', form: 'lactim', kinds: { H4: 'warn' } });
     s += L.s + R.s;
-    for (const B of [L, R]) s += B.loc('N3', '3', 'six', 0.6) + B.loc('C4', '4', 'six', 0.42);
+    for (const B of [L, R]) s += B.loc('N3', '3', null, 0, [16, -20]) + B.loc('C4', '4', null, 0, [-12, -14]);
     // edge tags
     const tagAt = (p, t, cls) => tg(p.x + 22, p.y + 4, t, cls, 'start');
     s += tagAt(L.p.X4, 'acceptor', 'fg-tag');
