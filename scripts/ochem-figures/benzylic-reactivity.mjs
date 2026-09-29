@@ -32,7 +32,9 @@ function atom(x, y, l, o = {}) {
 }
 const rOf = (l) => (l.length >= 3 ? 18 : l === 'H' ? 12 : l.length === 2 ? 16 : 15);
 const lbl = (x, y, s, anchor = 'middle') => text(x, y, s, { cls: 'fg-lbl', size: 13, anchor });
-const tg = (x, y, s, anchor = 'middle', cls = 'fg-tag') => text(x, y, s, { cls, size: 11, anchor });
+/* Tag text; S_N1 / S_N2 get the subscript N the prose uses. */
+const tg = (x, y, s, anchor = 'middle', cls = 'fg-tag') =>
+  text(x, y, s, { cls, size: 11, anchor }).replace(/\bSN([12])\b/g, 'S<tspan baseline-shift="sub" font-size="8">N</tspan>$1');
 const chg = (p, s = '+') => text(p.x, p.y + 5, s, { cls: 'fg-warn', size: 16 });
 /* The single dot that makes a species a radical. */
 const dot = (p) => `<circle class="fg-lp" cx="${r2(p.x)}" cy="${r2(p.y)}" r="3.4"></circle>`;
@@ -273,7 +275,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'The benzyl cation, C₆H₅CH₂⁺. Follow the curved arrows from left to right: each one moves the plus to the next carbon.',
+  caption: 'The benzyl cation, C₆H₅CH₂⁺. Follow the curved arrows from left to right: each one moves the plus two carbons along the ring.',
   note: 'In structures 2&ndash;4 the ring no longer has its three alternating double bonds, so those structures have lost the ring&rsquo;s aromatic stability. They cost energy and count for less in the hybrid than the first structure does.',
 });
 
@@ -294,7 +296,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'The benzyl cation, C₆H₅CH₂⁺. Follow the curved arrows from top to bottom: each one moves the plus to the next carbon.',
+  caption: 'The benzyl cation, C₆H₅CH₂⁺. Follow the curved arrows from top to bottom: each one moves the plus two carbons along the ring.',
 });
 
 /* ======================================================================
@@ -389,7 +391,7 @@ FIGURES.push({
 /* ======================================================================
    5. One substrate, two stereochemical outcomes.
    ====================================================================== */
-/* (R)-1-phenylethyl bromide: Br > C6H5 > CH3 > H, with H on the hash,
+/* (R)-(1-bromoethyl)benzene: Br > C6H5 > CH3 > H, with H on the hash,
    Br(0°) -> C6H5(240°) -> CH3(120°) runs clockwise, so R. */
 const RBROMIDE = [[0, 50, 'Br', { kind: 'warn', r: 16 }], [120, 50, 'CH₃'], [240, 54, 'C₆H₅', { bond: 'wedge', r: 20 }], [300, 42, 'H', { bond: 'hash' }]];
 /* The flat cation, seen with its p orbital vertical. */
@@ -413,13 +415,13 @@ FIGURES.push({
   id: 'benzylic-stereo',
   section: 'benzylic-reactivity',
   anchor: 'which is possible only because it runs both mechanisms.</p>',
-  alt: 'Left: (R)-1-phenylethyl bromide with the bromine on the right. Upper route, in water by SN1: the bromide leaves to give a flat cation with an empty p orbital above and below; water attacks from above to give (S)-1-phenylethanol and from below to give (R)-1-phenylethanol, mirror images in equal amounts. Lower route, with a strong nucleophile in acetone by SN2: the nucleophile attacks from the side opposite the bromine, and the product is inverted, with the nucleophile on the left and the other three groups folded over.',
+  alt: 'Left: (R)-(1-bromoethyl)benzene with the bromine on the right. Upper route, in water by SN1: the bromide leaves to give a flat cation with an empty p orbital above and below; water attacks from above to give (S)-1-phenylethanol and from below to give (R)-1-phenylethanol, mirror images in equal amounts. Lower route, with a strong nucleophile in acetone by SN2: the nucleophile attacks from the side opposite the bromine, and the product is inverted, with the nucleophile on the left and the other three groups folded over.',
   viewBox: '0 0 760 420',
   build() {
     let s = '';
     const sm = P(96, 214);
     s += centre(sm, RBROMIDE);
-    s += tg(96, 300, '(R)-1-phenylethyl bromide');
+    s += tg(96, 300, '(R)-(1-bromoethyl)benzene');
 
     /* upper route: SN1 in water */
     s += arrow(P(160, 180), P(238, 136));
@@ -429,8 +431,8 @@ FIGURES.push({
     s += flatCation(cat);
     s += tg(300, 22, 'flat cation:');
     s += tg(300, 36, 'both faces open');
-    s += arrow(P(396, 120), P(446, 90), { muted: true });
-    s += arrow(P(396, 144), P(446, 160), { muted: true });
+    s += arrow(P(396, 120), P(446, 96), { muted: true });
+    s += arrow(P(396, 144), P(628, 140), { muted: true });
     const top = P(520, 106), bot = P(662, 106);
     s += centre(top, FROM_TOP);
     s += centre(bot, FROM_BOTTOM);
@@ -455,12 +457,12 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-benzylic-stereo',
   lessons: ['benzylic-reactivity'],
-  alt: 'Top: (R)-1-phenylethyl bromide. Middle, in water by SN1: the flat cation with an empty p orbital above and below, then the two products, (S)-1-phenylethanol from attack above and (R)-1-phenylethanol from attack below, in equal amounts. Bottom, with a strong nucleophile in acetone by SN2: the inverted product, with the nucleophile opposite where the bromine was.',
-  viewBox: '0 0 340 760',
+  alt: 'Top: (R)-(1-bromoethyl)benzene. Middle, in water by SN1: the flat cation with an empty p orbital above and below, then the two products, (S)-1-phenylethanol from attack above and (R)-1-phenylethanol from attack below, in equal amounts. Bottom, with a strong nucleophile in acetone by SN2: the inverted product, with the nucleophile opposite where the bromine was.',
+  viewBox: '0 0 340 776',
   build() {
     let s = '';
     s += centre(P(150, 76), RBROMIDE);
-    s += tg(170, 160, '(R)-1-phenylethyl bromide');
+    s += tg(170, 160, '(R)-(1-bromoethyl)benzene');
     s += rule(12, 178, 328, 178);
     s += tg(170, 200, 'IN WATER: SN1');
     s += flatCation(P(120, 300));
@@ -476,7 +478,7 @@ FIGURES.push({
     s += rule(12, 592, 328, 592);
     s += tg(170, 614, 'Nu⁻ IN ACETONE: SN2');
     s += centre(P(170, 680), INVERTED);
-    s += tg(170, 752, 'inverted');
+    s += tg(170, 766, 'inverted');
     return s;
   },
   caption: 'The same bromide down two routes. Compare where the new group ends up in each product.',
