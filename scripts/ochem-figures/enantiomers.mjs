@@ -566,7 +566,7 @@ FIGURES.push({
     s += tg(170, 396, '50 : 50, a racemic mixture');
     return s;
   },
-  caption: 'Bromide can bond to either face of the flat cation, so the two mirror-image products form in equal amounts.',
+  caption: 'Follow each bromide to the product it gives. The dashed line is the mirror between them.',
 });
 
 export default FIGURES;
