@@ -123,7 +123,7 @@ FIGURES.push({
     s += tag(380, 24, 'BENZENE TO A DIAZONIUM SALT IN THREE STEPS');
     return s;
   },
-  caption: 'Three reactions, all from earlier chapters. The nitrogen goes onto the ring in the first step and stays on the same carbon to the end.',
+  caption: 'Reagents sit above each arrow and the name of the step below it.',
 });
 
 /* The same route stacked for a phone-width lesson card. */
@@ -163,7 +163,7 @@ FIGURES.push({
     s += text(xr, Y2 + 50, 'the diazonium salt', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
-  caption: 'Nitrate, reduce, diazotize. The nitrogen stays on the carbon where nitration put it.',
+  caption: 'Reagents sit above each arrow and the name of the step below it.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -364,7 +364,7 @@ FIGURES.push({
     s += text(170, 442, 'at 90° to the π cloud: the ring cannot help', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Two things to see: the C&ndash;N bond pair leaves with the nitrogen, and the empty orbital left on carbon points out sideways, in the ring plane, where the ring&rsquo;s &pi; electrons cannot reach it.',
+  caption: 'Top: which bond breaks and where its electrons go. Bottom: which way the empty orbital points, compared with the p orbitals.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -485,7 +485,7 @@ FIGURES.push({
     s += text(560, Y2 + 42, 'back to the start', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Follow the copper: Cu(I) in step 1, Cu(II) after it gives up an electron, Cu(I) again once it hands over a bromine atom. A single-barbed arrow moves one electron.',
+  caption: 'Read the oxidation state on the copper in each row. A single-barbed arrow moves one electron.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -546,7 +546,7 @@ FIGURES.push({
     s += text(nx + 52, Y2 + 48, '4-methylbenzylamine', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'The CN carbon is the one CuCN brings in. Once the nitrile is on the ring, the Nitriles chapter takes over.',
+  caption: 'Top row: the Sandmeyer step. Bottom row: two reactions from the Nitriles chapter.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -647,7 +647,7 @@ FIGURES.push({
     s += text(84, Y2 + 8, 'carbons, renumbered', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'The bromines sit on carbons 2, 4 and 6 of the aniline. With the NH<sub>2</sub> gone, the same carbons are numbered 1, 3 and 5.',
+  caption: 'The same three carbons, numbered first from the NH<sub>2</sub> and then from a bromine.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -685,7 +685,7 @@ FIGURES.push({
     s += text(96, Y2 + 8, 'to the CH₃', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'The NH<sub>2</sub> decides where both bromines go, then leaves. The methyl alone would have sent them ortho and para to itself.',
+  caption: 'Check where each bromine sits relative to the NH<sub>2</sub> in the brominated aniline, and relative to the CH<sub>3</sub> in the product.',
 });
 
 /* The target of the lesson's last step, drawn so the question is about a
@@ -743,7 +743,7 @@ FIGURES.push({
     s += tag(380, 22, 'A BLOCKER SITS ON A POSITION; IT DOES NOT STEER');
     return s;
   },
-  caption: 'The SO<sub>3</sub>H group holds the para carbon while the nitration happens, then comes off. What is left is the methyl group and the nitro group ortho to it.',
+  caption: 'Follow the para carbon: free, then holding SO<sub>3</sub>H, then free again once the nitro group is in place.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -881,7 +881,7 @@ FIGURES.push({
     s += text(170, 430, 'one long conjugated π system', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Ordinary electrophilic aromatic substitution, with the diazonium ion as the electrophile and the phenoxide as the ring.',
+  caption: 'Two arrows: the ring&rsquo;s lone pair to the end nitrogen, and one N&equiv;N bond onto the charged nitrogen.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -914,7 +914,7 @@ FIGURES.push({
     s += text(xs[0], 224, 'the first choice', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'The new N=N bond goes para to the OH when it can, ortho when para is taken, and nowhere when both are.',
+  caption: 'In each ring, look for a free carbon ortho or para to the OH.',
 });
 
 export default FIGURES;

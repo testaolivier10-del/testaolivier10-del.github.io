@@ -258,7 +258,7 @@ FIGURES.push({
     s.push(rule(380, 44, 380, 244));
     return s.join('');
   },
-  caption: 'Why an aryl halide resists both familiar substitutions. Left: the only backside route to C1 runs through the ring. Right: the ring&rsquo;s π electrons sit in orbitals at right angles to the cation&rsquo;s empty orbital, so they cannot spread into it.',
+  caption: 'Left: the dashed line is the backside approach to C1. Right: the dashed outline is the empty orbital, and the circles are the p orbitals.',
 });
 
 FIGURES.push({
@@ -280,7 +280,7 @@ FIGURES.push({
     s.push(tag(186, 392, 'at 90° to it', { anchor: 'start' }));
     return s.join('');
   },
-  caption: 'Top: the backside route to C1 runs through the ring. Bottom: the π electrons sit at right angles to the empty orbital and cannot reach it.',
+  caption: 'Top: the dashed line is the backside approach to C1. Bottom: the dashed outline is the empty orbital, and the circles are the p orbitals.',
 });
 
 /* The SNAr mechanism: one row in the notes. */
@@ -307,7 +307,7 @@ FIGURES.push({
     s += tag(640, 290, '1-methoxy-2,4-dinitrobenzene');
     return s;
   },
-  caption: 'S<sub>N</sub>Ar in two steps. Methoxide adds to C1, and C1 becomes sp&sup3;. Then the lone pair on C2 comes back into the ring and chloride leaves.',
+  caption: 'Follow the arrows: the first pair makes the C1&ndash;O bond, and the second pair breaks the C1&ndash;Cl bond.',
 });
 
 FIGURES.push({
@@ -330,7 +330,7 @@ FIGURES.push({
     s += text(252, 574, '+ Cl⁻', { cls: 'fg-lbl', anchor: 'start' });
     return s;
   },
-  caption: 'Add, then eliminate. C1 is sp&sup3; in the middle structure, so the ring is not aromatic there.',
+  caption: 'The arrows on each structure lead to the next one.',
 });
 
 /* Where the charge goes: three resonance forms of the complex. */
@@ -353,7 +353,7 @@ FIGURES.push({
     s += tag(630, 284, 'charge on C6 (ortho)', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'The negative charge visits C2, C4 and C6, the carbons ortho and para to C1. It never sits on C3 or C5. Here both nitro groups are on charged carbons.',
+  caption: 'Each set of arrows moves the lone pair two carbons further round the ring. The ring numbers match the name 1-chloro-2,4-dinitrobenzene.',
 });
 
 /* Para versus meta: the nitro group has to sit on a charged carbon. */
@@ -411,7 +411,7 @@ FIGURES.push({
     s += tag(48, 532, 'charge visits. NO₂ is on C3.', { anchor: 'start' });
     return s;
   },
-  caption: 'Top: a para nitro group sits on a carbon that carries the charge, so it can take the charge onto its own oxygen. Bottom: a meta nitro group sits on C3, which the charge never visits.',
+  caption: 'Top: follow the arrows from C4 onto a nitro oxygen. Bottom: the dots mark every carbon the charge can visit.',
 });
 
 
@@ -438,7 +438,7 @@ FIGURES.push({
     s += '<text class="fg-tag" x="560" y="290" text-anchor="middle" font-size="11"><tspan font-style="italic">N</tspan>-methyl-2,4-dinitroaniline</text>';
     return s;
   },
-  caption: 'Steps 3 to 6 of the worked example. The nitrogen that adds still carries two H, and loses one as H⁺ at the end.',
+  caption: 'Steps 3 to 6 of the worked example, drawn.',
 });
 
 /* ------------------------------------------------ benzyne figures --- */
@@ -503,7 +503,7 @@ FIGURES.push({
     s += tag(600, 456, 'aniline');
     return s;
   },
-  caption: 'Benzyne forms and reacts. Top: the base takes the H next to Cl, and the lone pair left behind pushes chloride out. Bottom: amide adds to one end of the new bond, and the anion takes H⁺ from ammonia.',
+  caption: 'Each row is one half of the mechanism. The arrows on each structure lead to the next one.',
 });
 
 FIGURES.push({
@@ -526,7 +526,7 @@ FIGURES.push({
     s += text(146, 416, '+ Cl⁻', { cls: 'fg-lbl', anchor: 'start' });
     return s;
   },
-  caption: 'Elimination first: the H next to chlorine goes, then chloride. The C1–C2 bond of benzyne is drawn with three lines.',
+  caption: 'The arrows on each structure lead to the next one.',
 });
 
 FIGURES.push({
@@ -547,7 +547,7 @@ FIGURES.push({
     s += text(160, 476, '+ NH₂⁻', { cls: 'fg-lbl', anchor: 'start' });
     return s;
   },
-  caption: 'Addition second: amide adds to one end of the extra bond, and the anion left on the other end takes H⁺ from ammonia.',
+  caption: 'The arrows on each structure lead to the next one.',
 });
 
 /* The extra bond: top view and edge-on view. */
@@ -601,7 +601,7 @@ FIGURES.push({
     s.push(tag(585, 256, 'to the p orbitals', { cls: 'fg-tag-warn' }));
     return s.join('');
   },
-  caption: 'Where the extra bond of benzyne lives. The lilac sp&sup2; lobes lie in the ring plane and point away from each other, so they overlap poorly. The six p orbitals of the aromatic ring play no part in it.',
+  caption: 'Lilac: the two sp&sup2; lobes that make the extra bond. Green: the six p orbitals of the aromatic ring.',
 });
 
 FIGURES.push({
@@ -626,7 +626,7 @@ FIGURES.push({
     s.push(tag(170, 462, 'at 90° to the p orbitals', { cls: 'fg-tag-warn' }));
     return s.join('');
   },
-  caption: 'The lilac lobes make the extra bond. They lie in the ring plane and point apart, so they overlap poorly.',
+  caption: 'Lilac: the two sp&sup2; lobes of the extra bond. Green: the p orbitals of the ring.',
 });
 
 /* The labeling experiment. */
@@ -655,7 +655,7 @@ FIGURES.push({
     s += dot(P(40, 270)) + tag(54, 274, '= ¹⁴C', { anchor: 'start' });
     return s;
   },
-  caption: 'Roberts&rsquo; experiment. The coral dot marks the labeled carbon. Half the aniline carries NH₂ on that carbon, and half carries it on the carbon next door.',
+  caption: 'The coral dot follows the <sup>14</sup>C through each step.',
 });
 
 FIGURES.push({
@@ -679,7 +679,7 @@ FIGURES.push({
     s += dot(P(22, 150)) + tag(34, 154, '= ¹⁴C', { anchor: 'start' });
     return s;
   },
-  caption: 'The coral dot marks the ¹⁴C. Half the product has NH₂ on it, and half has NH₂ next door.',
+  caption: 'The coral dot follows the ¹⁴C through each step.',
 });
 
 /* A worked benzyne: 2-chlorotoluene. CH3 on vertex 5 is C1, Cl on vertex 0
@@ -709,7 +709,7 @@ FIGURES.push({
     s += tag(262, 402, '3-methylaniline');
     return s;
   },
-  caption: 'Only C3 has a hydrogen next to the chlorine, so the benzyne forms between C2 and C3. Amide can add at either end.',
+  caption: 'The carbons are numbered from the CH₃ carbon. The H drawn on C3 is the one the base removes.',
 });
 
 FIGURES.push({
@@ -788,7 +788,7 @@ FIGURES.push({
     s += tag(660, y + 60, '3-methoxyaniline');
     return s;
   },
-  caption: 'Top: a methyl group hardly favors either end of the benzyne, so both anilines form. Bottom: attack at C3 leaves the charge on C2, next to the carbon that carries the oxygen, and that is the product that forms.',
+  caption: 'Top: NH₂ ends up at both ends of the benzyne. Bottom: the third structure shows where the charge sits.',
 });
 
 /* Benzyne as a dienophile, with furan. */
@@ -832,7 +832,7 @@ FIGURES.push({
     s += tag(560, 206, 'the bicyclic adduct');
     return s;
   },
-  caption: 'Benzyne as a dienophile. The in-plane bond of benzyne takes the place of the alkene C=C, and the furan oxygen ends up as a one-atom bridge.',
+  caption: 'The dashed lines are the two new σ bonds. The three curved arrows are the same as in any Diels&ndash;Alder reaction.',
 });
 
 /* Deciding which route a substrate can take. */
@@ -863,7 +863,7 @@ FIGURES.push({
     s += text(170, 244, 'no: no reaction', { cls: 'fg-tag-mut', anchor: 'start' });
     return s;
   },
-  caption: 'Two questions, asked in this order, sort any aryl halide.',
+  caption: 'Start at the top left.',
 });
 
 /* The sorter substrates, drawn. */

@@ -234,9 +234,13 @@
       2:['aromatic-nucleophilic'], 3:['aromatic-nucleophilic'], 4:['aromatic-nucleophilic'],
       6:['aromatic-nucleophilic'], 7:['aromatic-nucleophilic'] } },
 
-    'benzylic-reactivity': { n:8, steps:{
-      2:['benzylic-stabilization'], 3:['benzylic-stabilization'], 4:['benzylic-stabilization'],
-      6:['benzylic-stabilization'], 7:['benzylic-stabilization'] } },
+    'benzylic-reactivity': { n:14, steps:{
+      2:['benzylic-stabilization'],
+      5:['benzylic-stabilization'],
+      7:['benzylic-stabilization'],
+      10:['benzylic-stabilization'],
+      11:['benzylic-stabilization'],
+      13:['benzylic-stabilization'] } },
 
     'phenols': { n:10, steps:{
       2:['phenol-acidity'],
