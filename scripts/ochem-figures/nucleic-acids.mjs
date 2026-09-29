@@ -389,7 +389,7 @@ function dinucleotide() {
   const ho = P(c5a.x - 50, c5a.y);
   s += bd(c5a, 'CH₂', ho, 'HO') + A(ho, 'HO');
   s += tg(c5a.x + 26, c5a.y + 4, '5′', 'fg-tag', 'start');
-  s += tg(ho.x, ho.y - 24, '5′ END', 'fg-tag-good');
+  s += tg(ho.x + 6, ho.y - 24, '5′ END', 'fg-tag-good');
   const b1 = P(p1[1].x, p1[1].y - 46);
   s += bond(p1[1], b1, { rFrom: 0, rTo: 20 }) + A(b1, 'base', { r: 22 });
   s += stick(p1[2], 1, 16, 'H').s;
@@ -424,8 +424,8 @@ function dinucleotide() {
   s += tg(oh.e.x, oh.e.y + 34, '3′ END', 'fg-tag-good');
   // direction arrow down the left side
   s += arrow(P(22, 70), P(22, 560), { size: 8 });
-  s += tg(34, 66, '5′', 'fg-tag', 'start');
-  s += tg(34, 566, '3′', 'fg-tag', 'start');
+  s += tg(22, 60, '5′');
+  s += tg(22, 578, '3′');
   return s;
 }
 FIGURES.push({
@@ -460,11 +460,11 @@ FIGURES.push({
   section: 'nucleic-acids',
   anchor: 'which is why chains grow 5′ to 3′.</p>',
   alt: 'Top: the last sugar of a growing DNA chain, whose C3 prime OH points down toward the first phosphorus of an incoming deoxynucleoside triphosphate. A curved arrow runs from a lone pair on the 3 prime oxygen to that phosphorus, and a second curved arrow takes the electrons of the bond from that phosphorus to the next oxygen along the phosphate chain. Bottom: the product, a new 3 prime O, P, O 5 prime link joining the chain to the new nucleotide, and the diphosphate ion that left.',
-  viewBox: '0 0 760 560',
+  viewBox: '0 0 760 680',
   build() {
     let s = '';
-    s += panel(14, 14, 732, 336);
-    s += panel(14, 364, 732, 182);
+    s += panel(14, 14, 732, 444);
+    s += panel(14, 472, 732, 194);
     s += tg(30, 36, 'THE ATTACK', 'fg-tag', 'start');
     // chain-end sugar, top right
     const F = furanose(P(560, 110), { dot: true });
@@ -482,7 +482,7 @@ FIGURES.push({
     s += bd(o3, 'O', h3, 'H') + A(h3, 'H');
     s += lonePair(o3.x, o3.y, 180, { dist: 20 });
     s += lonePair(o3.x, o3.y, 250, { dist: 20 });
-    s += tg(o3.x + 26, o3.y - 20, 'the chain’s 3′ OH', 'fg-tag', 'start');
+    s += tg(o3.x + 60, o3.y + 46, 'the chain’s 3′ OH', 'fg-tag');
     // incoming dNTP: P-alpha directly left of O3', the triphosphate running left
     const Pa = P(o3.x - 118, o3.y);
     const PA = phos(Pa, [
@@ -518,20 +518,20 @@ FIGURES.push({
     const F2 = furanose(P(c5.x + 66, c5.y + 52), { dot: true, nums: false });
     s += F2.s;
     s += bond(c5, F2.pos[4], { rFrom: rOf('CH₂'), rTo: 0 });
-    const b2 = P(F2.pos[1].x + 40, F2.pos[1].y);
+    const b2 = P(F2.pos[1].x, F2.pos[1].y - 40);
     s += bond(F2.pos[1], b2, { rFrom: 0, rTo: 22 }) + A(b2, 'base', { r: 22 });
-    s += tg(F2.pos[2].x + 20, F2.pos[2].y + 24, 'incoming dNTP', 'fg-tag', 'start');
+    s += stick(F2.pos[2], 1, 16, 'H').s + stick(F2.pos[3], 1, 18, 'OH').s;
+    s += tg(F2.pos[1].x + 30, F2.pos[1].y + 24, 'incoming dNTP', 'fg-tag', 'start');
     // the arrows
     const lp = P(o3.x - 22, o3.y);
     s += curve(P(lp.x - 2, lp.y - 6), P(Pa.x + 18, Pa.y - 10), { bow: 26 });
     const mAB = mid(Pa, PA.out.ab);
     s += curve(P(mAB.x, mAB.y + 4), P(PA.out.ab.x + 4, PA.out.ab.y + 16), { bow: -18 });
-    s += tg(mAB.x, Pa.y - 54, 'breaks', 'fg-tag-warn');
-    s += tg((Pb.x + Pg.x) / 2, Pa.y + 70, 'leaves as diphosphate', 'fg-tag');
+    s += tg((Pb.x + Pg.x) / 2, Pa.y + 88, 'leaves as diphosphate', 'fg-tag');
 
     // ---- product row
-    s += tg(30, 386, 'THE PRODUCTS', 'fg-tag', 'start');
-    const y = 462;
+    s += tg(30, 494, 'THE PRODUCTS', 'fg-tag', 'start');
+    const y = 566;
     const q3 = P(160, y), qP = P(240, y), q5 = P(320, y);
     s += tg(q3.x - 24, y + 4, 'chain 3′', 'fg-tag', 'end');
     s += A(q3, 'O');
@@ -548,7 +548,7 @@ FIGURES.push({
     s += tg(qc.x + 26, y + 4, 'new unit', 'fg-tag', 'start');
     s += tg((q3.x + qP.x) / 2, y + 30, 'new bond', 'fg-tag-good');
     // diphosphate
-    const d1 = P(530, y), d2 = P(630, y);
+    const d1 = P(560, y), d2 = P(660, y);
     const D1 = phos(d1, [
       { key: 'l', deg: 180, l: 'O⁻' },
       { key: 'up', deg: 90, l: 'O', order: 2 },
@@ -562,8 +562,8 @@ FIGURES.push({
       { key: 'r', deg: 0, l: 'O⁻', len: 46 },
     ]);
     s += D1.s + D2.s;
-    s += tg(460, y + 4, '+', 'fg-tag');
-    s += tg(580, y + 64, 'diphosphate', 'fg-tag');
+    s += tg(484, y + 4, '+', 'fg-tag');
+    s += tg(610, y + 84, 'diphosphate', 'fg-tag');
     return s;
   },
   caption: 'One step of chain growth. The chain’s 3′ oxygen attacks Pα, the phosphorus bonded to the incoming sugar, and the Pα–O bond to Pβ breaks. A base in the enzyme takes the proton from the 3′ OH.',
@@ -592,18 +592,16 @@ function cleavePanel(ox, oy, stage) {
   s += bd(Pp, 'P', oDb, 'O', { order: 2 }) + bd(Pp, 'P', oMn, 'O⁻');
   let o5 = P(Pp.x - 30, Pp.y + 50);
   if (!ring) s += bd(Pp, 'P', o5, 'O');
-  else o5 = P(Pp.x - 64, Pp.y + 78);
+  else o5 = P(Pp.x + 100, Pp.y + 36);
   s += A(o3, 'O') + A(Pp, 'P', { kind: 'warn' }) + A(oDb, 'O') + A(oMn, 'O⁻');
   s += A(o2, ring ? 'O' : 'O⁻', { kind: ring ? undefined : 'hi', r: ring ? 14 : 18 });
   s += A(o5, ring ? 'O⁻' : 'O', { kind: ring ? 'hi' : undefined });
   const c5 = P(o5.x, o5.y + 46);
   s += bd(o5, ring ? 'O⁻' : 'O', c5, 'CH₂') + A(c5, 'CH₂');
-  s += tg(c5.x + 26, c5.y + 4, 'next nucleotide', 'fg-tag', 'start');
-  s += tg(o2.x + 22, o2.y + 4, '2′', 'fg-tag', 'start');
-  s += tg(o3.x - 22, o3.y + 4, '3′', 'fg-tag', 'end');
+  s += ring ? tg(c5.x - 26, c5.y + 4, 'next nucleotide', 'fg-tag', 'end') : tg(c5.x + 26, c5.y + 4, 'next nucleotide', 'fg-tag', 'start');
   if (!ring) {
-    s += lonePair(o2.x, o2.y, 300, { dist: 22 });
-    s += curve(P(o2.x + 6, o2.y + 22), P(Pp.x + 14, Pp.y - 8), { bow: -18 });
+    s += lonePair(o2.x, o2.y, 125, { dist: 23 });
+    s += curve(P(o2.x - 16, o2.y + 24), P(Pp.x + 13, Pp.y - 9), { bow: -10 });
     const m = mid(Pp, o5);
     s += curve(P(m.x + 3, m.y + 3), P(o5.x + 16, o5.y - 4), { bow: 14 });
   } else {
