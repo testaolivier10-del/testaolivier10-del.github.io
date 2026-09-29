@@ -1078,7 +1078,7 @@
       c3:  { x:156, y:112,r:15, label:'C', role:'alpha-carbon' },
       h31: { x:140, y:152,r:10, label:'H', role:'alpha-h', note:'An alpha C\u2013H, pKa about 20. Remarkably acidic for carbon, because the enolate delocalizes onto oxygen \u2014 and still four units above the O\u2013H.' },
       h32: { x:188, y:146,r:10, label:'H', role:'alpha-h' },
-      c4:  { x:212, y:80, r:15, label:'C', note:'An ordinary CH\u2082 next to the oxygen. Its hydrogens have nothing stabilizing their anion \u2014 around pKa 50.' },
+      c4:  { x:212, y:80, r:15, label:'C', note:'An ordinary CH\u2082 next to the oxygen. Its anion has no resonance, and the oxygen\'s induction helps only a little \u2014 still near pKa 50.' },
       o2:  { x:264, y:112,r:16, label:'O', lp:2 },
       ho:  { x:300, y:80, r:11, label:'H', role:'acidic-h', note:'The O\u2013H, pKa about 16 \u2014 the most acidic proton here, by roughly four units over the alpha positions.' }
     },

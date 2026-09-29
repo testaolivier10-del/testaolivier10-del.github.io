@@ -159,7 +159,7 @@ function ethoxide(o) {
 FIGURES.push({
   id: 'ethoxide-acetate',
   section: 'acidity-factors',
-  anchor: 'so the real ion carries half the charge on each oxygen.</p>',
+  anchor: 'and both C–O bonds have the same length.</p>',
   alt: 'Left: ethoxide, CH3CH2O−, with the whole negative charge and three lone pairs on its one oxygen; from ethanol, pKa 16. Right: the two resonance structures of acetate joined by a double-headed arrow. In the first the lower oxygen carries the charge, and curved arrows move one of its lone pairs into the C–O bond and the C=O pi bond onto the upper oxygen; in the second the upper oxygen carries the charge. From acetic acid, pKa 4.76.',
   viewBox: '0 0 760 250',
   build() {
@@ -365,7 +365,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Most of the charge sits on the two oxygens, and a smaller share on the carbon between them.',
-  note: 'The carbon form is the minor contributor, yet it is the carbon, not the oxygen, that later forms new bonds (a preview of <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>). There is one real anion, and the carbon form is always part of it.',
+  note: 'The carbon form is the minor contributor, yet it is usually the carbon, not the oxygen, that later forms new bonds (a preview of <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>). There is one real anion, and the carbon form is always part of it.',
 });
 
 FIGURES.push({
@@ -443,7 +443,8 @@ FIGURES.push({
     /* the pull: small arrows alongside the C1–C2 and C2–Cl bonds, pointing toward Cl */
     s += arrow(P(428, 146), P(452, 160), { size: 7 });
     s += arrow(P(478, 164), P(500, 151), { size: 7 });
-    s += text(cl.x + 4, cl.y - 22, 'δ−', { cls: 'fg-warn', size: 13 });
+    s += pairs(cl, [-120, -30, 60], 22);
+    s += text(cl.x + 38, cl.y + 2, 'δ−', { cls: 'fg-warn', size: 13 });
     s += text(ca.x - 4, ca.y + 28, 'δ+', { cls: 'fg-hi', size: 13 });
     s += text(450, 212, 'from chloroacetic acid, pKa 2.86', { cls: 'fg-sm', size: 10.5 });
     s += text(450, 232, 'Cl pulls density away from the charge', { cls: 'fg-tag-good', size: 11 });
@@ -505,7 +506,7 @@ FIGURES.push({
   id: 'l-chloropropanoic',
   lessons: ['acidity-factors'],
   alt: 'Two acids. A: 3-chloropropanoic acid, the chlorine on the carbon furthest from the COOH group. B: 2-chloropropanoic acid, the chlorine on the carbon next to the COOH group.',
-  viewBox: '0 0 340 350',
+  viewBox: '0 0 340 372',
   build() {
     let s = '';
     [['A', '3-chloropropanoic acid', 2], ['B', '2-chloropropanoic acid', 1]].forEach(([k, name, pos], i) => {
@@ -513,7 +514,7 @@ FIGURES.push({
       s += label(20, y - 50, k, { anchor: 'start', size: 16 });
       const a = acidChain(P(110, y), 2, pos);
       s += a.svg;
-      s += tag(pos === 1 ? 260 : 170, pos === 1 ? y + 40 : y + 60, name);
+      s += tag(150, pos === 1 ? y + 110 : y + 60, name);
     });
     return s;
   },
@@ -537,7 +538,7 @@ FIGURES.push({
   lessons: ['acidity-factors'],
   anchor: 'in the same hybrid orbital that the C–H bond used.</p>',
   alt: 'Three carbanions, each with its lone pair drawn inside a hybrid orbital lobe. Top: the ethyl anion from ethane, an sp3 carbon with three bonds and the lone pair in a long lobe; 25% s; pKa of ethane about 50. Middle: the vinyl anion from ethene, an sp2 carbon at 120 degrees with a shorter lobe; 33% s; pKa about 44. Bottom: the acetylide from ethyne, H–C≡C with the lone pair in a short lobe straight along the axis; 50% s; pKa about 25.',
-  viewBox: '0 0 340 380',
+  viewBox: '0 0 340 404',
   build() {
     let s = '';
     const rows = [
@@ -575,12 +576,17 @@ FIGURES.push({
     s += bond(c, c2, { rFrom: 15, rTo: 15, order: 3, gap: 3.4 });
     s += bond(c2, h, { rFrom: 15, rTo: 10 });
     s += atom(c2.x, c2.y, 'C', { size: 12 }) + atom(h.x, h.y, 'H', { r: 10, size: 11 });
+    /* the two pi bonds: p lobes above and below the C≡C (one pi bond), and a
+       ring for the lobes in front and behind (the other) */
+    const mx = (c.x + c2.x) / 2;
+    s += ellipse(mx, rows[2].y - 20, 16, 8, 0, 'fg-orb-alt') + ellipse(mx, rows[2].y + 20, 16, 8, 0, 'fg-orb-alt');
     s += lobe(c, 0, 24);
     s += atom(c.x, c.y, '', { r: 16 }) + atom(c.x, c.y, 'C', { kind: 'hi', size: 12 });
     s += tag(250, rows[2].y - 6, rows[2].h);
     s += tag(250, rows[2].y + 12, rows[2].src);
     s += tag(250, rows[2].y + 30, 'pair held closest', { cls: 'fg-tag-good' });
-    s += tag(120, rows[2].y + 50, 'the pair points along the C≡C axis', { cls: 'fg-tag-mut' });
+    s += tag(120, rows[2].y + 52, 'π bonds: above and below (and front and', { cls: 'fg-tag-mut' });
+    s += tag(120, rows[2].y + 68, 'back); the pair points along the axis', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'The lone pair each C–H leaves behind, drawn in its hybrid orbital. Compare the lobes: shortest for sp, longest for sp³.',
