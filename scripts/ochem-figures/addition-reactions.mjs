@@ -95,7 +95,7 @@ FIGURES.push({
   viewBox: '0 0 340 260',
   alt: 'Ethene seen edge-on. The two carbons and four hydrogens lie in one plane, drawn as a horizontal row. The pi electrons form one cloud above that plane and one below it. An H–Br molecule sits above the upper cloud: a curved arrow runs from the upper pi cloud to the H, and a second curved arrow runs from the H–Br bond to the Br.',
   build: piExposed,
-  caption: 'The π electrons sit above and below the plane of the atoms, where an incoming H&ndash;Br can reach them.',
+  caption: 'Ethene seen along the edge of its plane. The two shaded clouds are the two halves of one π bond.',
 });
 
 /* ================================================ HBr + but-1-ene ===
@@ -240,7 +240,7 @@ FIGURES.push({
   viewBox: '0 0 760 270',
   alt: '3-Methylbut-1-ene plus HCl in four stages. First, curved arrows run from the C1=C2 double bond to the H of H–Cl and from the H–Cl bond to the Cl. Second, the secondary cation on C2; a curved arrow starts on the C3–H bond and ends at C2, moving that hydrogen with its bonding pair. Third, the H now sits on C2 and the positive charge on C3, a tertiary cation; a curved arrow runs from a lone pair of chloride ion to C3. Fourth, the product, 2-chloro-2-methylbutane.',
   build: hydrideShift,
-  caption: 'In stage 2 the curved arrow starts on the C&ndash;H bond, not on the H: the hydrogen moves with both of its bonding electrons.',
+  caption: 'In stage 2, note where the curved arrow starts: on the C&ndash;H bond, not on the H.',
 });
 
 /* ============================================ bromination, perspective ===
@@ -594,7 +594,7 @@ FIGURES.push({
     s += T(380, 288, 'Products: propan-2-ol and H₃O⁺. The acid used in step 1 comes back in step 3.', 'fg-lbl');
     return s;
   },
-  caption: 'Every nucleophile here is a neutral water molecule. There is no hydroxide ion anywhere in the mechanism.',
+  caption: 'Every water molecule in this mechanism is neutral. There is no hydroxide ion anywhere in it.',
 });
 FIGURES.push({
   id: 'l-hydration-three-steps',

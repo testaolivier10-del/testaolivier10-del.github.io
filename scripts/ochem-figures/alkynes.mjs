@@ -142,7 +142,7 @@ FIGURES.push({
     s += tg(170, 216, 'the ring pulls both ends down: strain', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'The dashed lines show where a linear sp carbon wants its next bond. The ring bends it away.',
+  caption: 'Compare each ring bond at the triple bond with the dashed line beside it.',
 });
 
 /* --------------------------------------------------------- c4h6-isomers ---
@@ -184,7 +184,7 @@ FIGURES.push({
   id: 'acetylide-formation',
   section: 'alkynes',
   anchor: 'Sodium hydride, NaH, works too.</p>',
-  viewBox: '0 0 760 200',
+  viewBox: '0 0 760 170',
   alt: 'Propyne plus the amide ion. One curved arrow runs from a lone pair on the amide nitrogen to the terminal hydrogen of propyne; a second runs from the C–H bond onto the sp carbon. Equilibrium arrows lead to the propynide anion, whose end carbon now carries a lone pair and a negative charge, plus ammonia. Propyne is labeled pKa 25 and ammonia pKa 38.',
   build() {
     let s = '';
@@ -217,7 +217,6 @@ FIGURES.push({
     s += tg(588, 30, 'propynide anion');
     s += lbl(726, y + 5, '+ NH₃');
     s += tg(734, 150, 'pKa 38', { cls: 'fg-tag-good' });
-    s += tg(380, 188, 'the weaker acid, NH₃, is on the right, so the right side is favored', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Two arrows, as in every proton transfer: the amide lone pair forms the new N–H bond, and the old C–H pair stays behind on the sp carbon.',
@@ -262,7 +261,7 @@ FIGURES.push({
     s += lbl(712, y + 5, '+ NaBr');
     return s;
   },
-  caption: 'The acetylide carbon attacks from the side opposite the bromine, as in any SN2, and bromide leaves.',
+  caption: 'Follow the two arrows: the lone pair goes to carbon, and the C–Br bond goes to bromine. The highlighted bond in the product is the one the reaction made.',
 });
 
 /* --------------------------------------------------------- acetylide-e2 ---
@@ -304,7 +303,7 @@ FIGURES.push({
     s += lbl(650, 115, '+ HC≡CH');
     s += tg(660, 164, 'the alkyne, back');
     s += lbl(736, 115, '+ Br⁻');
-    s += tg(380, 238, 'no new C–C bond: the acetylide acted as a base', { cls: 'fg-tag-warn' });
+    s += tg(380, 238, 'no new C–C bond', { cls: 'fg-tag-warn' });
     return s;
   },
   caption: 'A tertiary carbon is too crowded to attack from behind, so the acetylide takes the easier target, a hydrogen on the next carbon.',
@@ -450,7 +449,7 @@ FIGURES.push({
     s += tg(619, 262, 'primary cation on C1, no help', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Top: the two additions. Bottom: the two cations the second H⁺ could make. Only the left one, with bromine beside the charge, forms.',
+  caption: 'Top: the two additions. Bottom: the two cations the second H⁺ could make.',
 });
 
 /* -------------------------------------------------------- alkyne-br2 ---
@@ -510,7 +509,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'The bridge covers the top face, so bromide can only arrive from below. The two bromines end up on opposite sides.',
+  caption: 'Top row: follow the bromide in from below the bridge. Bottom row: the second equivalent.',
 });
 
 /* ------------------------------------------------ alkyne-reduction-fork ---
@@ -549,7 +548,7 @@ FIGURES.push({
     s += outcome(280, 'H₂, Pd/C', 'no poison', 'alkane', '', 'butane', 'both pi bonds gone', false);
     return s;
   },
-  caption: 'The same 2-butyne becomes the <i>cis</i> alkene, the <i>trans</i> alkene or the alkane, depending only on what goes into the flask.',
+  caption: 'Each row is one set of conditions applied to the same 2-butyne.',
 });
 
 /* Lesson copy of the fork: stacked, 340 wide. */
@@ -713,7 +712,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Step 1: the C=C pi bond takes a proton onto C1, helped by the oxygen lone pair. Step 2: water takes the proton off oxygen. A hydrogen has moved from O to C.',
+  caption: 'Step 1: the C=C pi bond takes a proton onto C1, helped by the oxygen lone pair. Step 2: water takes the proton off oxygen.',
 });
 
 /* ------------------------------------------------ hydration-two-ways ---

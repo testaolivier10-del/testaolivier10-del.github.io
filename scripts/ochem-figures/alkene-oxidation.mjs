@@ -80,7 +80,7 @@ FIGURES.push({
         bond(c, oi, { rFrom: 0, rTo: 13 }) + B(oi, ot, 'O', 'O', { cls: 'fg-bond-hi' }) + B(ot, h, 'O', 'H') +
         A(r, 'R') + A(o, 'O') + A(oi, 'O') + A(ot, 'O', { kind: 'hi' }) + A(h, 'H') +
         tag(Q(144, 124).x, Q(144, 124).y, 'weak O–O bond', { cls: 'fg-tag-warn' }) +
-        tag(Q(190, 40).x, Q(190, 40).y, 'outer O', { anchor: 'start' }) +
+        tag(Q(172, 46).x, Q(172, 46).y, 'outer O') +
         tag(Q(262, 96).x, Q(262, 96).y, 'R–CO₃H');
     });
     s += cell(0, 272, 340, 144, '', (Q) => {
@@ -248,7 +248,7 @@ FIGURES.push({
       // 2: the upper Os=O pi bond onto osmium
       g += curve(mid(oa, os, 0.4), Q(206, 78), { bow: -12, size: 7 });
       // 3: the lower Os=O pi bond to the lower alkene carbon
-      g += curve(mid(ob, os, 0.55), mid(v[4], ob, 0.35), { bow: -40, size: 7 });
+      g += curve(mid(ob, os, 0.45), mid(v[4], ob, 0.4), { bow: 16, size: 7 });
       g += tag(Q(170, 156).x, Q(170, 156).y, 'OsO₄ comes at the face toward you');
       return g;
     });
@@ -400,7 +400,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Each product keeps the alkene’s CH₃ and H groups where they were, and adds one OH to each carbon, toward you (wedge) or away from you (hash). Compare the two rows: they are swapped.',
+  caption: 'Each product keeps the alkene’s CH₃ and H groups where they were, and adds one OH to each carbon, toward you (wedge) or away from you (hash).',
 });
 
 /* =====================================================================
@@ -510,20 +510,20 @@ FIGURES.push({
     s += cell(0, 8, 340, 136, '2-METHYLBUT-2-ENE', (Q) => {
       const m = methylbutene(Q, 148, 86);
       let g = m.ink;
-      g += dashLine(Q(170, 44), Q(170, 122), 'fg-dash');
-      g += tag(Q(100, 118).x, Q(100, 118).y, 'no H here');
-      g += tag(Q(250, 60).x, Q(250, 60).y, 'one H here', { anchor: 'start' });
-      g += tag(Q(214, 122).x, Q(214, 122).y, 'O₃ cuts here', { anchor: 'start' });
+      g += dashLine(Q(170, 50), Q(170, 124), 'fg-dash');
+      g += tag(Q(92, 122).x, Q(92, 122).y, 'no H here');
+      g += tag(Q(226, 58).x, Q(226, 58).y, 'one H here', { anchor: 'start' });
+      g += tag(Q(170, 42).x, Q(170, 42).y, 'O₃ cuts here');
       return g;
     });
     s += cell(0, 152, 340, 124, 'THEN Me₂S: REDUCTIVE WORKUP', (Q) => {
-      let g = propanone(Q(90, 80)) + text(Q(170, 76).x, Q(170, 76).y, '+', { cls: 'fg-lbl', size: 15 }) + ethanal(Q(240, 80));
-      g += tag(Q(90, 112).x, Q(90, 112).y, 'propanone') + tag(Q(240, 112).x, Q(240, 112).y, 'ethanal');
+      let g = propanone(Q(90, 74)) + text(Q(170, 72).x, Q(170, 72).y, '+', { cls: 'fg-lbl', size: 15 }) + ethanal(Q(236, 74));
+      g += tag(Q(90, 114).x, Q(90, 114).y, 'propanone') + tag(Q(236, 114).x, Q(236, 114).y, 'ethanal');
       return g;
     });
     s += cell(0, 284, 340, 124, 'THEN H₂O₂: OXIDATIVE WORKUP', (Q) => {
-      let g = propanone(Q(90, 80)) + text(Q(170, 76).x, Q(170, 76).y, '+', { cls: 'fg-lbl', size: 15 }) + ethanoic(Q(240, 80));
-      g += tag(Q(90, 112).x, Q(90, 112).y, 'propanone, again') + tag(Q(240, 112).x, Q(240, 112).y, 'ethanoic acid');
+      let g = propanone(Q(90, 72)) + text(Q(170, 70).x, Q(170, 70).y, '+', { cls: 'fg-lbl', size: 15 }) + ethanoic(Q(236, 72));
+      g += tag(Q(90, 116).x, Q(90, 116).y, 'propanone, again') + tag(Q(236, 116).x, Q(236, 116).y, 'ethanoic acid');
       return g;
     });
     return s;
@@ -588,11 +588,11 @@ FIGURES.push({
       return g;
     });
     s += cell(0, 154, 340, 138, 'JOIN THE TWO CARBONS WITH A C=C', (Q) => {
-      const a = Q(76, 88), b = Q(106, 70), c = Q(136, 88), h = armEnd(c, 270, 28);
-      const k = Q(186, 88);
+      const a = Q(76, 76), b = Q(106, 58), c = Q(136, 76), h = armEnd(c, 270, 26);
+      const k = Q(186, 76);
       let g = sk(a, b) + sk(b, c) + bond(c, k, { order: 2, rFrom: 0, rTo: 0, cls: 'fg-bond-hi' }) + bond(c, h, { rFrom: 0, rTo: 11 }) +
         A(h, 'H', { r: 11 }) + sk(k, armEnd(k, 60, 34)) + sk(k, armEnd(k, 300, 34));
-      g += tag(Q(170, 128).x, Q(170, 128).y, '2-methylpent-2-ene, C₆H₁₂', { cls: 'fg-tag-good' });
+      g += tag(Q(170, 130).x, Q(170, 130).y, '2-methylpent-2-ene, C₆H₁₂', { cls: 'fg-tag-good' });
       return g;
     });
     return s;
@@ -608,12 +608,12 @@ FIGURES.push({
   section: 'alkene-oxidation',
   anchor: 'if you want to see syn and anti differ.</p>',
   alt: 'Three stacked panels. 1: 2-methylbut-2-ene, the left alkene carbon with two methyls, the right with one methyl and one H. 2: with mCPBA, 2,2,3-trimethyloxirane, the O bridging the two old alkene carbons. 3: with OsO4, or with mCPBA then H3O+, 2-methylbutane-2,3-diol, with C3 starred as its only stereocenter.',
-  viewBox: '0 0 340 368',
+  viewBox: '0 0 340 396',
   build() {
     let s = '';
     s += cell(0, 8, 340, 112, 'THE SUBSTRATE', (Q) => {
       const m = methylbutene(Q, 148, 74);
-      return m.ink + tag(Q(84, 104).x, Q(84, 104).y, 'two CH₃, no H') + tag(Q(250, 58).x, Q(250, 58).y, 'one CH₃, one H', { anchor: 'start' });
+      return m.ink + tag(Q(84, 104).x, Q(84, 104).y, 'two CH₃, no H') + tag(Q(222, 56).x, Q(222, 56).y, 'one CH₃, one H', { anchor: 'start' });
     });
     s += cell(0, 128, 340, 112, '(a)   mCPBA', (Q) => {
       const a = Q(126, 82), b = Q(176, 82), o = Q(151, 44);
@@ -622,20 +622,20 @@ FIGURES.push({
       g += tag(Q(262, 78).x, Q(262, 78).y, '2,2,3-trimethyl-') + tag(Q(262, 94).x, Q(262, 94).y, 'oxirane');
       return g;
     });
-    s += cell(0, 248, 340, 112, '(b) AND (c)   OsO₄, OR mCPBA THEN H₃O⁺', (Q) => {
-      const c1 = Q(70, 88), c2 = Q(100, 70), c3 = Q(130, 88), c4 = Q(160, 70);
+    s += cell(0, 248, 340, 140, '(b) AND (c)   OsO₄, OR mCPBA THEN H₃O⁺', (Q) => {
+      const c1 = Q(60, 90), c2 = Q(92, 72), c3 = Q(124, 90), c4 = Q(156, 72);
       let g = sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + sk(c2, armEnd(c2, 150, 30));
-      const o2 = armEnd(c2, 60, 30), o3 = armEnd(c3, 270, 26);
+      const o2 = armEnd(c2, 60, 30), o3 = armEnd(c3, 270, 28);
       g += bond(c2, o2, { rFrom: 0, rTo: 15 }) + bond(c3, o3, { rFrom: 0, rTo: 15 });
       g += A(o2, 'OH', { kind: 'hi' }) + A(o3, 'OH', { kind: 'hi' });
-      g += text(c3.x + 10, c3.y - 6, '*', { cls: 'fg-warn', size: 16 });
-      g += tag(Q(254, 72).x, Q(254, 72).y, '2-methylbutane-') + tag(Q(254, 88).x, Q(254, 88).y, '2,3-diol');
-      g += tag(Q(254, 104).x, Q(254, 104).y, '* the one stereocenter', { cls: 'fg-tag-warn' });
+      g += text(c3.x + 12, c3.y - 4, '*', { cls: 'fg-warn', size: 16 });
+      g += tag(Q(254, 76).x, Q(254, 76).y, '2-methylbutane-') + tag(Q(254, 92).x, Q(254, 92).y, '2,3-diol');
+      g += tag(Q(254, 112).x, Q(254, 112).y, '* the one stereocenter', { cls: 'fg-tag-warn' });
       return g;
     });
     return s;
   },
-  caption: 'C2 carries two methyl groups, so it cannot be a stereocenter. Only C3 is one, and a single stereocenter gives no syn or anti to see.',
+  caption: 'The star marks C3, the only stereocenter the diol has.',
 });
 
 export default FIGURES;
