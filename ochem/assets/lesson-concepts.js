@@ -138,25 +138,43 @@
       2:['route-order','protection'], 3:['route-order'], 4:['route-order'],
       6:['route-order'], 7:['route-order','cc-bond-toolkit'] } },
 
-    'carbohydrates': { n:8, steps:{
-      2:['sugar-ring'], 3:['sugar-ring'], 4:['sugar-ring'],
-      6:['sugar-ring'], 7:['sugar-ring'] } },
+    'carbohydrates': { n:12, steps:{
+      1:['sugar-ring'],
+      4:['sugar-ring'],
+      5:['sugar-ring'],
+      8:['sugar-ring'],
+      10:['sugar-ring'],
+      11:['sugar-ring'] } },
 
-    'amino-acids': { n:8, steps:{
-      2:['zwitterion'], 3:['zwitterion'], 4:['zwitterion'],
-      6:['zwitterion'], 7:['zwitterion'] } },
+    'amino-acids': { n:13, steps:{
+      2:['zwitterion'],
+      4:['zwitterion'],
+      5:['zwitterion'],
+      7:['zwitterion'],
+      11:['cip-priority'],
+      12:['zwitterion'] } },
 
-    'peptides-proteins': { n:8, steps:{
-      2:['peptide-bond'], 3:['peptide-bond'], 4:['peptide-bond'],
-      6:['peptide-bond'], 7:['peptide-bond'] } },
+    'peptides-proteins': { n:12, steps:{
+      3:['peptide-bond'],
+      4:['peptide-bond'],
+      5:['peptide-bond'],
+      8:['peptide-bond'],
+      11:['peptide-bond'] } },
 
-    'lipids': { n:8, steps:{
-      2:['lipid-ester'], 3:['lipid-ester'], 4:['lipid-ester'],
-      6:['lipid-ester'], 7:['lipid-ester'] } },
+    'lipids': { n:14, steps:{
+      3:['lipid-ester'],
+      4:['lipid-ester'],
+      6:['lipid-ester'],
+      9:['lipid-ester'],
+      13:['lipid-ester'] } },
 
-    'nucleic-acids': { n:8, steps:{
-      2:['nucleotide-assembly'], 3:['nucleotide-assembly'], 4:['nucleotide-assembly'],
-      6:['nucleotide-assembly','sugar-ring'], 7:['nucleotide-assembly'] } },
+    'nucleic-acids': { n:12, steps:{
+      3:['nucleotide-assembly'],
+      4:['nucleotide-assembly'],
+      5:['nucleotide-assembly'],
+      8:['nucleotide-assembly'],
+      9:['nucleotide-assembly','sugar-ring'],
+      11:['nucleotide-assembly'] } },
 
     'organometallic-bonding': { n:8, steps:{
       2:['polarity-reversal'], 3:['polarity-reversal'], 4:['polarity-reversal'],
