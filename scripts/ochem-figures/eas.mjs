@@ -440,7 +440,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'eas-energy-profile',
   section: 'eas',
-  anchor: 'and for nearly every EAS reaction it is step 1.</p>',
+  anchor: 'For nearly every EAS reaction, it is step 1.</p>',
   alt: 'A reaction-energy diagram for electrophilic aromatic substitution. From benzene plus an electrophile the curve rises steeply over a tall first transition state, drops into a shallow well labeled arenium ion, well above the starting level, rises over a much smaller second transition state, and falls to a product plateau below the start. A gray dashed branch leaves the arenium well, rises over a barrier and ends on a plateau above the starting level, labeled addition product.',
   viewBox: '0 0 760 380',
   build() {
