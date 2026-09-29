@@ -561,7 +561,7 @@ function bilayer(x0, y0, n, dx, { rows = [[0, 1], [150, -1]], tail = 52 } = {}) 
 FIGURES.push({
   id: 'phospholipid-bilayer',
   section: 'lipids',
-  anchor: 'That bilayer is the basic structure of every cell membrane.</p>',
+  anchor: 'That bilayer is the basic structure of nearly every cell membrane.</p>',
   viewBox: '0 0 760 440',
   alt: 'Left: a phosphatidylcholine. A glycerol backbone runs across the top: CH2, CH, CH2. From the right-hand CH2, an oxygen links to a phosphorus that carries a double-bonded O and an O-minus, and a second oxygen links the phosphorus to CH2CH2N-plus(CH3)3, the choline. From the other two glycerol carbons, ester groups hang down, each carrying a long zigzag tail: one bent at a cis double bond (oleic acid) and one straight (palmitic acid). The phosphate and choline are labeled the charged head and the chains the two nonpolar tails. Right: a bilayer, two rows of such molecules drawn as a head with two tails, tails meeting in the middle, heads facing water above and below.',
   build() {
@@ -869,7 +869,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'prostaglandin-e2',
   section: 'lipids',
-  anchor: 'the thromboxanes, trigger blood clotting.</p>',
+  anchor: 'the thromboxanes, make platelets clump when blood clots.</p>',
   viewBox: '0 0 700 320',
   alt: 'Prostaglandin E2. A five-membered ring carries a ketone at C9 and a hashed OH at C11. From C8 a hashed bond leads to the upper chain, seven carbons with a cis double bond between C5 and C6, which rises to a COOH group at C1. From C12 a wedged bond leads to the lower chain, eight carbons with a trans double bond between C13 and C14, a hashed OH on C15, and a CH3 end at C20.',
   build() {

@@ -123,7 +123,7 @@ FIGURES.push({
   id: 'diast-first-pair',
   section: 'diastereomers',
   anchor: '<h3>The definition</h3>',
-  viewBox: '0 0 700 220',
+  viewBox: '20 40 640 180',
   alt: 'Two stereoisomers of 3-bromobutan-2-ol drawn as the same zigzag. In (2R,3R) the OH on C2 and the Br on C3 are both on wedges. In (2R,3S) the OH is on a wedge and the Br is on a hash. C2 is R in both; C3 is R in the first and S in the second.',
   build: () => firstPair(false),
   caption: 'The skeleton and the OH wedge are identical. Only the Br bond differs: a wedge on the left, a hash on the right.',
@@ -142,30 +142,27 @@ FIGURES.push({
 function grid(lesson) {
   let s = '';
   if (!lesson) {
-    const xs = [60, 450], ys = [120, 330];
+    const xs = [60, 450], ys = [110, 370];
     s += chain(xs[0], ys[0], ISO.RR).s;
     s += chain(xs[1], ys[0], ISO.SS).s;
     s += chain(xs[0], ys[1], ISO.RS).s;
     s += chain(xs[1], ys[1], ISO.SR).s;
-    const mx = 380;
-    for (const y of [ys[0] - 20, ys[1] - 20]) {
-      s += `<line class="fg-dash-hi" x1="250" y1="${y}" x2="${mx + 130 - 20}" y2="${y}"></line>`;
+    for (const y of ys) {
+      s += `<line class="fg-dash-hi" x1="200" y1="${y - 14}" x2="436" y2="${y - 14}"></line>`;
+      s += T(318, y - 24, 'ENANTIOMERS', 'fg-tag-good');
+      s += T(318, y + 4, 'both centers inverted', 'fg-sm');
     }
-    s += T(mx - 10, ys[0] - 30, 'ENANTIOMERS', 'fg-tag-good');
-    s += T(mx - 10, ys[0] - 2, 'both centers inverted', 'fg-sm');
-    s += T(mx - 10, ys[1] - 30, 'ENANTIOMERS', 'fg-tag-good');
-    s += T(mx - 10, ys[1] - 2, 'both centers inverted', 'fg-sm');
     /* columns and diagonals */
-    s += `<line class="fg-dash" x1="123" y1="178" x2="123" y2="232"></line>`;
-    s += `<line class="fg-dash" x1="513" y1="178" x2="513" y2="232"></line>`;
-    s += `<line class="fg-dash" x1="200" y1="176" x2="440" y2="236"></line>`;
-    s += `<line class="fg-dash" x1="200" y1="236" x2="440" y2="176"></line>`;
-    s += panel(250, 188, 140, 36, { kind: 'warn' });
-    s += T(320, 211, 'DIASTEREOMERS', 'fg-tag-warn');
-    s += T(116, 210, 'one center', 'fg-sm', 'end');
-    s += T(116, 223, 'inverted', 'fg-sm', 'end');
-    s += T(522, 210, 'one center', 'fg-sm', 'start');
-    s += T(522, 223, 'inverted', 'fg-sm', 'start');
+    s += `<line class="fg-dash" x1="123" y1="186" x2="123" y2="262"></line>`;
+    s += `<line class="fg-dash" x1="513" y1="186" x2="513" y2="262"></line>`;
+    s += `<line class="fg-dash" x1="196" y1="186" x2="440" y2="262"></line>`;
+    s += `<line class="fg-dash" x1="196" y1="262" x2="440" y2="186"></line>`;
+    s += panel(248, 206, 140, 36, { kind: 'warn' });
+    s += T(318, 229, 'DIASTEREOMERS', 'fg-tag-warn');
+    s += T(114, 222, 'one center', 'fg-sm', 'end');
+    s += T(114, 236, 'inverted', 'fg-sm', 'end');
+    s += T(522, 222, 'one center', 'fg-sm', 'start');
+    s += T(522, 236, 'inverted', 'fg-sm', 'start');
     return s;
   }
   /* lesson: two columns of 170, the same four molecules, tighter */
@@ -184,7 +181,7 @@ FIGURES.push({
   id: 'four-stereoisomers',
   section: 'diastereomers',
   anchor: '<h3>Two stereocenters, four stereoisomers</h3>',
-  viewBox: '0 0 700 400',
+  viewBox: '0 0 640 440',
   alt: 'The four stereoisomers of 3-bromobutan-2-ol in a two-by-two grid, all drawn on the same zigzag. Top row: (2R,3R) with OH and Br on wedges, and (2S,3S) with both on hashes; they are enantiomers. Bottom row: (2R,3S) with OH on a wedge and Br on a hash, and (2S,3R) with OH on a hash and Br on a wedge; they are enantiomers. Every vertical and diagonal pairing inverts one center only and is a pair of diastereomers.',
   build: () => grid(false),
   caption: 'Across each row every wedge has become a hash, so both centers are inverted. Down a column or along a diagonal, only one bond has changed.',
@@ -389,7 +386,6 @@ function dmcFig(stacked) {
     return s;
   }
   one(170, 92, 'cis'); one(170, 292, 'trans');
-  s += T(170, 392, 'its mirror image is (1S,2S)', 'fg-tag-mut');
   return s;
 }
 FIGURES.push({
@@ -404,8 +400,8 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-ring-diastereomers',
   lessons: ['diastereomers'],
-  viewBox: '0 0 340 404',
-  alt: 'cis-1,2-dimethylcyclohexane with both methyls on wedges, (1R,2S), stacked above trans-1,2-dimethylcyclohexane with one wedge and one hash, (1R,2R). The mirror image of the trans isomer is (1S,2S).',
+  viewBox: '0 0 340 384',
+  alt: 'cis-1,2-dimethylcyclohexane with both methyls on wedges, (1R,2S), stacked above trans-1,2-dimethylcyclohexane with one wedge and one hash, (1R,2R).',
   build: () => dmcFig(true),
   caption: 'C1 is R in both. C2 is S in the cis isomer and R in the trans isomer.',
 });

@@ -572,7 +572,7 @@ FIGURES.push({
     s += tg(610, y + 84, 'diphosphate', 'fg-tag');
     return s;
   },
-  caption: 'One step of chain growth. The chain’s 3′ oxygen attacks Pα, the phosphorus bonded to the incoming sugar, and the Pα–O bond to Pβ breaks. A base in the enzyme takes the proton from the 3′ OH.',
+  caption: 'One step of chain growth. The chain’s 3′ oxygen attacks Pα, the phosphorus bonded to the incoming sugar’s 5′ oxygen, and the Pα–O bond to Pβ breaks. A base in the enzyme takes the proton from the 3′ OH.',
 });
 
 /* ========================================= 6. RNA cut by its own 2' O ==== */
