@@ -216,7 +216,7 @@ FIGURES.push({
   build() {
     let s = '';
     const c = chain(24, 98, 4, 28, -16);
-    s += path(c) + grp(c[3], -30, 26, 'OH', { r: 13 });
+    s += path(c) + grp(c[3], 30, 26, 'OH', { r: 13 });
     s += tag(78, 146, 'butan-1-ol');
     s += tag(78, 164, 'unbranched chain', { cls: 'fg-tag-good' });
     const m = P(252, 96);
