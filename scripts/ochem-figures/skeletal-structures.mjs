@@ -191,7 +191,7 @@ FIGURES.push({
     s += plain(170, 162, 'corner: 2 lines, so 2 H');
     return s;
   },
-  caption: 'Four minus the lines at each carbon gives its hydrogens.',
+  caption: 'Four minus the bonds at each carbon gives its hydrogens.',
 });
 
 /* The five-bond slip: the corner IS the carbon. Shared with the lesson. */
