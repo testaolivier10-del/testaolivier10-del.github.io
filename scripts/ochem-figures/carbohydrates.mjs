@@ -300,4 +300,217 @@ FIGURES.push({
   caption: 'The same molecule at every stage. Follow the teal OH on C5: turning C5 swings it into the ring and sends the CH₂OH up.',
 });
 
+
+/* ============================================================ fig 3 ===
+   The two anomers and the open chain between them. The middle drawing
+   carries the ring-closing arrows, so the figure shows both where the new
+   stereocenter comes from and why there are two of it. */
+function openArrows(cx, cy, k, o = {}) {
+  // Turned open chain with the aldehyde drawn out, and the two arrows.
+  let s = '';
+  const r = pyranose(cx, cy, { k, open: '1', subs: glcSubs(null, { 5: { up: 'CH₂OH', upLen: 16 } }), oKind: 'hi' });
+  s += r.s;
+  const O5 = r.pos.O, C1 = r.pos['1'];
+  // O5 carries its H straight up.
+  const H5 = P(O5.x, O5.y - 38);
+  s += bond(O5, H5, { rFrom: 15, rTo: 12 }) + atom(H5.x, H5.y, 'H', { r: 12 });
+  // C1: the aldehyde. C=O out to the lower right, H to the upper right.
+  const O1 = at(C1, -35, 50), H1 = at(C1, 55, 38);
+  s += bond(C1, O1, { order: 2, rFrom: 0, rTo: 15 }) + atom(O1.x, O1.y, 'O');
+  s += bond(C1, H1, { rFrom: 0, rTo: 12 }) + atom(H1.x, H1.y, 'H', { r: 12 });
+  // Lone pairs: two on each oxygen, at clearly different angles.
+  s += lonePair(O5.x, O5.y, 40, { dist: 21 }) + lonePair(O5.x, O5.y, -20, { dist: 21 });
+  s += lonePair(O1.x, O1.y, 90, { dist: 21 }) + lonePair(O1.x, O1.y, -10, { dist: 21 });
+  // O5 lone pair to C1; the C=O pi bond onto O1.
+  const lpA = P(O5.x + Math.cos(rad(40)) * 24, O5.y + Math.sin(rad(40)) * 24);
+  s += curve(lpA, P(C1.x - 5, C1.y - 7), { bow: -14, size: 7 });
+  const m = mid(C1, O1);
+  s += curve(P(m.x - 2, m.y - 4), P(O1.x + 6, O1.y - 15), { bow: -18, size: 7 });
+  if (o.dot !== false) s += dot(C1);
+  return { s, pos: r.pos };
+}
+function anomer(cx, cy, k, which, o = {}) {
+  const subs = glcSubs(which === 'a' ? 'a' : 'b', { 1: { [which === 'a' ? 'downKind' : 'upKind']: 'hi' }, 5: { up: 'CH₂OH', upLen: 16 } });
+  return pyranose(cx, cy, { k, subs, dot: '1', nums: o.nums });
+}
+FIGURES.push({
+  id: 'carb-anomers',
+  section: 'carbohydrates',
+  anchor: 'into the chair drawing, where up and down on the page stop being reliable.</p>',
+  viewBox: '0 0 760 330',
+  alt: 'Alpha-D-glucopyranose on the left, the open-chain form in the middle, and beta-D-glucopyranose on the right, joined by equilibrium arrows. In the middle, the chain is curled into the shape of the ring: a curved arrow runs from a lone pair on the C5 oxygen to the aldehyde carbon C1, and a second moves the C=O pi bond onto the aldehyde oxygen. In alpha the C1 OH points down, opposite the CH2OH; in beta it points up, on the same side as the CH2OH. Glucose in water is about 36 percent alpha, 64 percent beta and well under 0.1 percent open chain.',
+  build() {
+    let s = '';
+    s += tg(122, 22, 'α-D-glucopyranose') + tg(122, 38, 'C1 OH down, opposite CH₂OH', 'fg-tag-mut');
+    s += tg(380, 22, 'open chain') + tg(380, 38, 'O5 adds to either face of C=O', 'fg-tag-mut');
+    s += tg(638, 22, 'β-D-glucopyranose') + tg(638, 38, 'C1 OH up, same side as CH₂OH', 'fg-tag-mut');
+    const k = 0.72, cy = 172;
+    s += anomer(122, cy, k, 'a').s;
+    s += openArrows(362, cy, k).s;
+    s += anomer(638, cy, k, 'b').s;
+    s += eq(P(218, cy + 4), P(268, cy + 4));
+    s += eq(P(506, cy + 4), P(544, cy + 4));
+    s += rule(20, 272, 740, 272);
+    s += tg(122, 298, 'about 36%');
+    s += tg(380, 298, 'well under 0.1%');
+    s += tg(638, 298, 'about 64%');
+    s += tg(380, 318, 'D-glucose in water at equilibrium', 'fg-tag-mut');
+    return s;
+  },
+  caption: 'The coral dot is C1, the anomeric carbon. The proton on the C5 oxygen ends up on the new C1 OH, so both anomers are neutral. Hydrogens on the ring carbons are left off.',
+});
+FIGURES.push({
+  id: 'l-carb-anomers',
+  lessons: ['carbohydrates'],
+  viewBox: '0 0 340 560',
+  alt: 'Top: open-chain D-glucose curled into the shape of the ring, with a curved arrow from a lone pair on the C5 oxygen to the aldehyde carbon C1 and a second moving the C=O pi bond onto the aldehyde oxygen. Arrows lead down to alpha-D-glucopyranose on the left, C1 OH down, and beta-D-glucopyranose on the right, C1 OH up. About 36 percent alpha, 64 percent beta, well under 0.1 percent open chain.',
+  build() {
+    let s = '';
+    s += tg(170, 20, 'open chain: well under 0.1%');
+    s += openArrows(158, 150, 0.8).s;
+    s += eq(P(120, 262), P(90, 316));
+    s += eq(P(220, 262), P(250, 316));
+    s += tg(88, 350, 'α: about 36%') + tg(88, 366, 'C1 OH down', 'fg-tag-mut');
+    s += tg(256, 350, 'β: about 64%') + tg(256, 366, 'C1 OH up', 'fg-tag-mut');
+    s += anomer(88, 460, 0.52, 'a').s;
+    s += anomer(256, 460, 0.52, 'b').s;
+    return s;
+  },
+  caption: 'The coral dot is C1, the anomeric carbon. The C5 oxygen can add to either face of the flat C=O, so closing the ring gives two products.',
+});
+
+/* ============================================================ fig 4 ===
+   The worked example's answer: galactose differs from glucose in one
+   stick, and that stick is highlighted. */
+FIGURES.push({
+  id: 'carb-galactose',
+  section: 'carbohydrates',
+  anchor: '<p>The order matters more than it looks.',
+  viewBox: '0 0 340 250',
+  alt: 'Beta-D-galactopyranose as a Haworth projection: ring oxygen at the back right, C1 OH up, C2 OH down, C3 OH up, C4 OH up (highlighted), and CH2OH up on C5.',
+  build() {
+    let s = '';
+    s += tg(170, 20, 'β-D-galactopyranose');
+    s += pyranose(170, 146, {
+      k: 1, nums: true, dot: '1',
+      subs: glcSubs('b', { 4: { down: null, up: 'OH', upKind: 'hi' }, 5: { up: 'CH₂OH', upLen: 18 } }),
+    }).s;
+    s += tg(170, 240, 'C4 OH up; in glucose it points down', 'fg-tag-mut');
+    return s;
+  },
+  caption: 'Galactose drawn from its Fischer projection. Only the teal OH on C4 differs from β-D-glucose.',
+});
+
+/* ============================================================ fig 5 ===
+   The chair. Mirrored from the book's reference chair so the ring oxygen
+   sits at the back right and C1 at the right-hand tip, the usual 4C1
+   drawing. Axial is vertical and alternates; equatorial is the book's
+   measured vector, mirrored. */
+const CH_V = [P(-113.15, -18.21), P(-56.57, -15.31), P(56.57, -51.72), P(113.15, 18.21), P(56.58, 15.31), P(-56.57, 51.72)];
+const CH_EQ = [P(-0.944, 0.329), P(-0.613, -0.790), P(0.994, 0.104), P(0.944, -0.329), P(0.613, 0.790), P(-0.994, -0.104)];
+/* Which vertex each ring atom takes. */
+const CH_AT = { 4: 0, 5: 1, O: 2, 1: 3, 2: 4, 3: 5 };
+function chairGlc(cx, cy, k, anomer) {
+  const v = CH_V.map((p) => P(cx + p.x * k, cy + p.y * k));
+  let s = '';
+  for (let i = 0; i < 6; i++) {
+    const a = v[i], b = v[(i + 1) % 6];
+    s += bond(a, b, { rFrom: i === 2 ? 15 : 0, rTo: (i + 1) % 6 === 2 ? 15 : 0 });
+  }
+  let atoms = '';
+  const put = (key, kind, l, lk) => {
+    const i = CH_AT[key], p = v[i];
+    let e, r = rOf(l);
+    if (kind === 'ax') {
+      const L = 22 * k + r;
+      e = P(p.x, p.y + (i % 2 === 0 ? -L : L));
+    } else {
+      const L = 24 * k + r;
+      e = P(p.x + CH_EQ[i].x * L, p.y + CH_EQ[i].y * L);
+    }
+    s += bond(p, e, { rFrom: 0, rTo: r, cls: l === 'H' ? 'fg-bond-soft' : 'fg-bond' });
+    atoms += atom(e.x, e.y, l, { r, kind: lk });
+  };
+  for (const key of ['2', '3', '4']) { put(key, 'eq', 'OH'); put(key, 'ax', 'H'); }
+  put('5', 'eq', 'CH₂OH'); put('5', 'ax', 'H');
+  if (anomer === 'b') { put('1', 'eq', 'OH', 'hi'); put('1', 'ax', 'H'); }
+  else { put('1', 'ax', 'OH', 'warn'); put('1', 'eq', 'H'); }
+  s += atoms;
+  s += atom(v[2].x, v[2].y, 'O');
+  s += dot(v[3]);
+  return { s, v };
+}
+FIGURES.push({
+  id: 'carb-chair',
+  section: 'carbohydrates',
+  anchor: 'a conformational argument from <a class="chapter-ref" href="/ochem/learn.html#m-alkanes-conformations">Alkanes &amp; Conformations</a> rather than a new one.</p>',
+  viewBox: '0 0 760 300',
+  alt: 'Two chairs of D-glucopyranose with the ring oxygen at the back right and C1 at the right-hand tip. Left, beta: the four OH groups and the CH2OH all point outward, equatorial, and every axial position carries H. Right, alpha: the same except that the C1 OH is axial, pointing straight down, and C1 has H equatorial.',
+  build() {
+    let s = '';
+    s += panel(10, 8, 366, 284, { kind: 'good' });
+    s += panel(384, 8, 366, 284);
+    s += tg(193, 30, 'β-D-glucopyranose') + tg(193, 46, 'every OH and the CH₂OH equatorial', 'fg-tag-good');
+    s += tg(567, 30, 'α-D-glucopyranose') + tg(567, 46, 'the C1 OH is axial', 'fg-tag-warn');
+    s += chairGlc(190, 168, 1, 'b').s;
+    s += chairGlc(564, 160, 1, 'a').s;
+    s += tg(193, 280, 'axial positions: H only', 'fg-tag-mut');
+    s += tg(567, 280, 'one OH axial, beside two axial H', 'fg-tag-mut');
+    return s;
+  },
+  caption: 'The coral dot is C1. Axial bonds point straight up or down; the gray sticks carry the hydrogens.',
+});
+FIGURES.push({
+  id: 'l-carb-chair',
+  lessons: ['carbohydrates'],
+  viewBox: '0 0 340 500',
+  alt: 'Two chairs of D-glucopyranose, stacked. Top, beta: every OH and the CH2OH equatorial, every axial position H. Bottom, alpha: the C1 OH axial, pointing straight down.',
+  build() {
+    let s = '';
+    s += panel(4, 4, 332, 240, { kind: 'good' });
+    s += panel(4, 254, 332, 240);
+    s += tg(170, 24, 'β: every OH and CH₂OH equatorial', 'fg-tag-good');
+    s += tg(170, 274, 'α: the C1 OH is axial', 'fg-tag-warn');
+    s += chairGlc(170, 140, 0.86, 'b').s;
+    s += chairGlc(170, 384, 0.86, 'a').s;
+    return s;
+  },
+  caption: 'The coral dot is C1. The gray sticks are axial hydrogens.',
+});
+
+/* ============================================================ fig 6 ===
+   Reducing or not, drawn on real molecules: glucose (hemiacetal) and its
+   methyl glycoside (acetal). */
+function testPair(pl, pr, k) {
+  let s = '';
+  s += panel(pl.x, pl.y, pl.w, pl.h, { kind: 'good' });
+  s += panel(pr.x, pr.y, pr.w, pr.h, { kind: 'warn' });
+  s += tg(pl.x + pl.w / 2, pl.y + 20, 'β-D-glucopyranose');
+  s += tg(pl.x + pl.w / 2, pl.y + 36, 'hemiacetal: ring O and OH on C1', 'fg-tag-good');
+  s += pyranose(pl.x + pl.w / 2 - 6, pl.y + pl.h * 0.56, { k, dot: '1', oKind: 'hi', subs: glcSubs('b', { 1: { upKind: 'hi' }, 5: { up: 'CH₂OH', upLen: 16 } }) }).s;
+  s += tg(pl.x + pl.w / 2, pl.y + pl.h - 14, 'ring can open to CHO: test positive', 'fg-tag-good');
+  s += tg(pr.x + pr.w / 2, pr.y + 20, 'methyl β-D-glucopyranoside');
+  s += tg(pr.x + pr.w / 2, pr.y + 36, 'acetal: ring O and OCH₃ on C1', 'fg-tag-warn');
+  s += pyranose(pr.x + pr.w / 2 - 6, pr.y + pr.h * 0.56, { k, dot: '1', oKind: 'warn', subs: glcSubs(null, { 1: { up: 'OCH₃', upKind: 'warn' }, 5: { up: 'CH₂OH', upLen: 16 } }) }).s;
+  s += tg(pr.x + pr.w / 2, pr.y + pr.h - 14, 'ring stays shut: test negative', 'fg-tag-warn');
+  return s;
+}
+FIGURES.push({
+  id: 'anomeric-test',
+  section: 'carbohydrates',
+  anchor: 'the sugar is <b>non-reducing</b>.</li>\n</ul>',
+  viewBox: '0 0 760 280',
+  alt: 'Left: beta-D-glucopyranose, whose anomeric carbon C1 carries the ring oxygen and an OH, a hemiacetal; its ring can open to the aldehyde, so it tests positive. Right: methyl beta-D-glucopyranoside, whose C1 carries the ring oxygen and an OCH3, an acetal; its ring stays shut, so it tests negative.',
+  build: () => testPair({ x: 10, y: 8, w: 366, h: 264 }, { x: 384, y: 8, w: 366, h: 264 }, 0.9),
+  caption: 'The coral dot marks C1, the anomeric carbon. The two molecules differ only in what caps its oxygen: H on the left, CH₃ on the right.',
+});
+FIGURES.push({
+  id: 'l-anomeric-test',
+  lessons: ['carbohydrates'],
+  viewBox: '0 0 340 520',
+  alt: 'Top: beta-D-glucopyranose, C1 bearing the ring oxygen and an OH, a hemiacetal that can open: test positive. Bottom: methyl beta-D-glucopyranoside, C1 bearing the ring oxygen and an OCH3, an acetal that stays shut: test negative.',
+  build: () => testPair({ x: 4, y: 4, w: 332, h: 250 }, { x: 4, y: 264, w: 332, h: 250 }, 0.86),
+  caption: 'The coral dot marks C1, the anomeric carbon. Only what caps its oxygen differs: H on top, CH₃ below.',
+});
+
 export default FIGURES;

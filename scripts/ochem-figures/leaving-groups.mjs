@@ -388,7 +388,7 @@ FIGURES.push({
   lessons: ['leaving-groups'],
   anchor: '<h3>An alcohol has to be activated before it can leave</h3>',
   alt: 'Three stacked panels. Step 1: the oxygen of ethanol uses a lone pair to bond to the phosphorus of PBr3, and one P–Br bonding pair leaves as bromide. Step 2: the oxygen is now positive and bonded to C, H and PBr2; bromide attacks the carbon from the side opposite the oxygen while the C–O bonding pair moves onto the oxygen. Products: bromoethane and HO–PBr2, which leaves as a neutral molecule.',
-  viewBox: '0 0 340 574',
+  viewBox: '0 0 340 590',
   build() {
     let s = '';
     s += box(8, 214, 'STEP 1 · O BONDS TO P, BROMIDE LEAVES');
@@ -417,12 +417,12 @@ FIGURES.push({
     s += curve(P(134, y2 - 18), P(152, y2 - 18), { bow: -10 });
     s += tg(170, y2 + 82, 'H–O–PBr₂ leaves as a neutral molecule', 'good');
     // products
-    s += box(474, 92, 'PRODUCTS');
+    s += box(474, 108, 'PRODUCTS');
     const y3 = 530;
     const b3 = P(128, y3), c13 = P(88, y3 - 16), c23 = P(50, y3 + 4);
     s += B(b3, 'Br', c13, '') + B(c13, '', c23, '') + A(b3, 'Br', 'warn') + lps(b3, [270, 0, 90], 23);
     s += lbl(178, y3 + 5, '+') + lbl(248, y3 + 5, 'HO–PBr₂');
-    s += tg(88, y3 + 30, 'bromoethane', 'good');
+    s += tg(88, y3 + 46, 'bromoethane', 'good');
     return s;
   },
   caption: 'Ethanol and PBr<sub>3</sub>. Watch the C–O bond: it is still there after step 1.',
@@ -435,7 +435,7 @@ FIGURES.push({
   section: 'leaving-groups',
   anchor: '<h3>An alcohol has to be activated before it can leave</h3>',
   alt: 'Three stacked panels. Step 1: the oxygen of ethanol bonds to the sulfur of SOCl2 and one S–Cl bonding pair leaves as chloride; pyridine then removes the H from the oxygen. Step 2: chloride attacks the carbon from the side opposite the oxygen; the C–O bonding pair moves in between O and S to make a new S=O, and the remaining S–Cl bonding pair leaves as chloride. Products: chloroethane, sulfur dioxide and chloride.',
-  viewBox: '0 0 340 620',
+  viewBox: '0 0 340 632',
   build() {
     let s = '';
     s += box(8, 232, 'STEP 1 · O BONDS TO S, CHLORIDE LEAVES');
@@ -469,12 +469,12 @@ FIGURES.push({
     s += tg(170, y2 + 72, 'the C–O pair becomes a new S=O bond,', 'mut');
     s += tg(170, y2 + 90, 'so the group falls apart into SO₂ and Cl⁻', 'mut');
     // products
-    s += box(502, 110, 'PRODUCTS');
+    s += box(502, 122, 'PRODUCTS');
     const y3 = 560;
     const cl3 = P(128, y3), c13 = P(88, y3 - 16), c23 = P(50, y3 + 4);
     s += B(cl3, 'Cl', c13, '') + B(c13, '', c23, '') + A(cl3, 'Cl', 'warn') + lps(cl3, [270, 0, 90], 23);
     s += lbl(170, y3 + 5, '+') + lbl(208, y3 + 5, 'SO₂') + lbl(246, y3 + 5, '+') + lbl(284, y3 + 5, 'Cl⁻');
-    s += tg(88, y3 + 32, 'chloroethane', 'good') + tg(208, y3 + 32, 'a gas', 'mut');
+    s += tg(88, y3 + 46, 'chloroethane', 'good') + tg(208, y3 + 32, 'a gas', 'mut');
     return s;
   },
   caption: 'Ethanol and SOCl<sub>2</sub>. The three arrows in step 2 all move at once.',
