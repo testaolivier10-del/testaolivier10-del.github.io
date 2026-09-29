@@ -760,7 +760,8 @@ FIGURES.push({
       ['the tail sits on the C–CH₃ bond', 'the CH₃ lands on the C⁺', 'and the + moves back one carbon']);
     return s;
   },
-  caption: 'The same move with two different groups. In each, the curved arrow starts on the bond that migrates and ends at the positive carbon. Both products are the same tertiary cation.',
+  caption: 'Look at where each arrow&rsquo;s tail sits, and which carbon carries the + before and after. Both shifts end at the same tertiary cation.',
+  note: 'A free primary cation such as neopentyl barely exists: the methyl starts to move while the leaving group is still leaving. Drawing the two steps apart is bookkeeping, and the product is the same either way.',
   note: 'A free primary cation such as neopentyl barely exists: the methyl starts to move while the leaving group is still leaving. Drawing the two steps apart is bookkeeping, and the product is the same either way.',
 });
 
