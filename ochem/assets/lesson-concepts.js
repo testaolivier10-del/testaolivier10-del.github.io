@@ -84,12 +84,13 @@
     /* Step 2 is the product sorter and carries the carbon counting with it.
        3 is why a Grignard adds once, 4 is a pure carbon count, 6 the route
        chosen on the substrate rather than the target, 7 the DIBAL trap. */
-    'nitriles': { n:8, steps:{
-      2:['nitrile-as-acyl-level'],
-      3:['nitrile-as-acyl-level','tetrahedral-intermediate'],
-      4:['nitrile-as-acyl-level','oxidation-level'],
-      6:['nitrile-as-acyl-level'],
-      7:['nitrile-as-acyl-level'] } },
+    'nitriles': { n:11, steps:{
+      2:['substrate-class','nitrile-as-acyl-level'],
+      5:['nitrile-as-acyl-level','reductant-scope','oxidation-level'],
+      6:['nitrile-as-acyl-level','grignard-scope','tetrahedral-intermediate'],
+      7:['nitrile-as-acyl-level','oxidation-level'],
+      9:['nitrile-as-acyl-level','organometallic-quench'],
+      10:['nitrile-as-acyl-level','reductant-scope'] } },
 
     'hydrates-cyanohydrins': { n:15, steps:{
       4:['addition-equilibrium'],

@@ -313,7 +313,7 @@ FIGURES.push({
   section: 'esters-amides',
   anchor: '',
   viewBox: '0 0 760 280',
-  alt: 'Dimethylformamide, HC(=O)N(CH3)2, with its two methyls labelled a (on the oxygen side of the C–N bond) and b (on the hydrogen side). A curved arrow runs from the nitrogen lone pair into the C–N bond and a second from the C=O double bond onto oxygen. A double-headed resonance arrow leads to the contributor with a C=N double bond, a positive charge on nitrogen, and a negative oxygen with three lone pairs.',
+  alt: 'Dimethylformamide, HC(=O)N(CH3)2, with its two methyls labeled a (on the oxygen side of the C–N bond) and b (on the hydrogen side). A curved arrow runs from the nitrogen lone pair into the C–N bond and a second from the C=O double bond onto oxygen. A double-headed resonance arrow leads to the contributor with a C=N double bond, a positive charge on nitrogen, and a negative oxygen with three lone pairs.',
   build() {
     let s = '';
     s += tg(190, 26, 'dimethylformamide (DMF)');
@@ -569,7 +569,7 @@ FIGURES.push({
   section: 'esters-amides',
   anchor: '',
   viewBox: '0 0 760 440',
-  alt: 'Top row: 4-hydroxybutanoic acid, drawn as a zigzag chain with the carboxylic acid at the right end and an OH at the left; the three chain carbons are labelled alpha, beta and gamma counting from the carbonyl. An arrow labelled trace acid, minus water, leads to gamma-butyrolactone, a five-membered ring of four carbons and one oxygen, with the new O–C bond highlighted and the carbons labelled alpha, beta, gamma. Bottom row: 5-hydroxypentanoic acid, with carbons alpha to delta, closing in the same way to delta-valerolactone, a six-membered ring.',
+  alt: 'Top row: 4-hydroxybutanoic acid, drawn as a zigzag chain with the carboxylic acid at the right end and an OH at the left; the three chain carbons are labeled alpha, beta and gamma counting from the carbonyl. An arrow labeled trace acid, minus water, leads to gamma-butyrolactone, a five-membered ring of four carbons and one oxygen, with the new O–C bond highlighted and the carbons labeled alpha, beta, gamma. Bottom row: 5-hydroxypentanoic acid, with carbons alpha to delta, closing in the same way to delta-valerolactone, a six-membered ring.',
   build() {
     let s = '';
     const a1 = hydroxyAcid(46, 110, ['α', 'β', 'γ']);

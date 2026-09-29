@@ -618,8 +618,8 @@ const H_MCH = 260;
 const inLbl = (c, p, t, f = 0.42) => text(p.x + (c.x - p.x) * f, p.y + (c.y - p.y) * f + 4, t, { cls: 'fg-lbl' });
 
 /* The ketone. With `hints`, the two candidate bonds are marked. */
-function pMCH(ox, oy, hints) {
-  let s = frameP(ox, oy, H_MCH, '2-methylcyclohexanone',
+function pMCH(ox, oy, hints, h = H_MCH) {
+  let s = frameP(ox, oy, h, '2-methylcyclohexanone',
     hints ? ['C2 carries two carbons: C3 and the CH₃', 'C6 carries one: C5'] : []);
   const c = P(ox + 180, oy + 132);
   const k = ring(c.x, c.y, 6, 46, 90, {}, hints ? [[0, 1]] : []);
@@ -668,9 +668,9 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-mch-ketone',
   lessons: ['baeyer-villiger'],
-  viewBox: `0 0 ${PW} ${H_MCH - 40}`,
+  viewBox: `0 0 ${PW} 200`,
   alt: '2-methylcyclohexanone as a single enantiomer: a six-membered ring with the C=O carbon labelled C1, the next carbon C2 carrying a CH3 on a wedge, and the carbon on the other side of C1 labelled C6. C3 and C5 are labelled too.',
-  build() { return pMCH(0, -20, false).replace(/<rect[^>]*>/, panel(0, 0, PW, H_MCH - 40)); },
+  build() { return pMCH(0, 0, false, 200); },
   caption: 'A single enantiomer: the CH<sub>3</sub> on C2 points toward you.',
 });
 

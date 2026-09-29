@@ -42,17 +42,31 @@ function frameP(ox, oy, w, h, title, lines = [], kind) {
   return s;
 }
 
+/* A ring bond from a to b whose ends may sit under a labelled atom (radius
+   ra, rb). A double bond gets its second line inset toward the ring centre c
+   and kept clear of any label. */
+function ringBond(a, b, c, dbl, ra = 0, rb = 0) {
+  let s = bond(a, b, { rFrom: ra, rTo: rb });
+  if (!dbl) return s;
+  const dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len, uy = dy / len;
+  let px = -uy, py = ux;
+  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+  if ((c.x - mx) * px + (c.y - my) * py < 0) { px = -px; py = -py; }
+  const ia = Math.max(7, ra + 3), ib = Math.max(7, rb + 3), g = 4.6;
+  return s + bond(P(a.x + ux * ia + px * g, a.y + uy * ia + py * g), P(b.x - ux * ib + px * g, b.y - uy * ib + py * g), { rFrom: 0, rTo: 0 });
+}
+
 /* A six-membered ring with a labelled nitrogen. `rot` places vertex 0 (the N)
    by angle, counterclockwise from the right; `doubles` lists the i for which
    the bond from vertex i to vertex i+1 is double. */
 function ring6(cx, cy, r, rot, doubles, nLabel, nKind) {
   const pts = polyPts(cx, cy, 6, r, rot), c = P(cx, cy);
+  const N = A(pts[0].x, pts[0].y, nLabel, nKind);
   let s = '';
   for (let i = 0; i < 6; i++) {
-    const a = pts[i], b = pts[(i + 1) % 6];
-    s += doubles.includes(i) ? ringDouble(a, b, c, { inset: 7 }) : bond(a, b, { rFrom: 0, rTo: 0 });
+    s += ringBond(pts[i], pts[(i + 1) % 6], c, doubles.includes(i), i === 0 ? N.r : 0, i === 5 ? N.r : 0);
   }
-  const N = A(pts[0].x, pts[0].y, nLabel, nKind);
   return { svg: s, N, pts, drawN: draw(N) };
 }
 
@@ -298,12 +312,11 @@ function r4(X, Y) {
     const cx = X + 130, r = 36;
     const pts = polyPts(cx, yc, 6, r, 0), c = P(cx, yc);
     const doubles = b ? [1, 4] : [0, 2, 4];     // bond i joins vertex i and i+1
+    const N = A(pts[0].x, pts[0].y, b ? 'N' : 'N⁺', b ? undefined : 'hi');
     let g = '';
     for (let i = 0; i < 6; i++) {
-      const a = pts[i], q = pts[(i + 1) % 6];
-      g += doubles.includes(i) ? ringDouble(a, q, c, { inset: 7 }) : bond(a, q, { rFrom: 0, rTo: 0 });
+      g += ringBond(pts[i], pts[(i + 1) % 6], c, doubles.includes(i), i === 0 ? N.r : 0, i === 5 ? N.r : 0);
     }
-    const N = A(pts[0].x, pts[0].y, b ? 'N' : 'N⁺', b ? undefined : 'hi');
     const Nm = { x: pts[3].x - 50, y: yc, r: 14 };
     const Ac = { x: pts[0].x + 58, y: yc, r: 24 };
     g += bond(N, Ac, { rFrom: N.r, rTo: Ac.r });
