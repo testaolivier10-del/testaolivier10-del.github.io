@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'The ladder, and what shares a rung.',
-        bodyHtml: '<p class="step-body">Score the one-carbon compounds and they fall into five steps, called <b>rungs</b>, or oxidation levels: CH<sub>4</sub> (−4), CH<sub>3</sub>OH (−2), CH<sub>2</sub>O (0), HCO<sub>2</sub>H (+2) and CO<sub>2</sub> (+4). Each rung up replaces a C–H bond with one more bond to oxygen, so each step is a two-electron oxidation.</p>' +
+        bodyHtml: '<p class="step-body">Score the one-carbon compounds and they fall on five levels, called <b>rungs</b>, or oxidation levels: CH<sub>4</sub> (−4), CH<sub>3</sub>OH (−2), CH<sub>2</sub>O (0), HCO<sub>2</sub>H (+2) and CO<sub>2</sub> (+4). Each rung up replaces a C–H bond with one more bond to oxygen, so each step is a two-electron oxidation.</p>' +
           '<!-- fig:l-oxidation-ladder:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 372" role="img" aria-label="The carbon oxidation ladder, top to bottom: CO2 plus 4, HCO2H plus 2, CH2O 0, CH3OH minus 2, CH4 minus 4, each with its count of bonds to O, N or halogen and the families that share the rung."><text class="fg-tag" x="170" y="22" text-anchor="middle" font-size="11">up a rung = a two-electron oxidation</text><text class="fg-lbl" x="40" y="58" text-anchor="start" font-size="12.5">CO₂</text><text class="fg-lbl" x="140" y="58" text-anchor="middle" font-size="12.5">+4</text><text class="fg-tag" x="326" y="58" text-anchor="end" font-size="11">4 bonds to O, N, X</text><text class="fg-tag-mut" x="40" y="78" text-anchor="start" font-size="11">CO₂ · CCl₄</text><line class="fg-rule" x1="30" y1="92" x2="334" y2="92"></line><text class="fg-lbl" x="40" y="114" text-anchor="start" font-size="12.5">HCO₂H</text><text class="fg-lbl" x="140" y="114" text-anchor="middle" font-size="12.5">+2</text><text class="fg-tag" x="326" y="114" text-anchor="end" font-size="11">3 bonds to O, N, X</text><text class="fg-tag-mut" x="40" y="134" text-anchor="start" font-size="11">carboxylic acid · ester · amide</text><text class="fg-tag-mut" x="40" y="152" text-anchor="start" font-size="11">acid chloride · nitrile</text><line class="fg-rule" x1="30" y1="166" x2="334" y2="166"></line><text class="fg-lbl" x="40" y="188" text-anchor="start" font-size="12.5">CH₂O</text><text class="fg-lbl" x="140" y="188" text-anchor="middle" font-size="12.5">0</text><text class="fg-tag" x="326" y="188" text-anchor="end" font-size="11">2 bonds to O, N, X</text><text class="fg-tag-mut" x="40" y="208" text-anchor="start" font-size="11">aldehyde · ketone · acetal · imine</text><line class="fg-rule" x1="30" y1="222" x2="334" y2="222"></line><rect class="fg-panel-hi" x="30" y="224" width="304" height="52" rx="10"></rect><text class="fg-lbl" x="40" y="244" text-anchor="start" font-size="12.5">CH₃OH</text><text class="fg-lbl" x="140" y="244" text-anchor="middle" font-size="12.5">−2</text><text class="fg-tag" x="326" y="244" text-anchor="end" font-size="11">1 bond to O, N, X</text><text class="fg-tag-mut" x="40" y="264" text-anchor="start" font-size="11">alcohol · ether · alkyl halide · amine</text><line class="fg-rule" x1="30" y1="278" x2="334" y2="278"></line><text class="fg-lbl" x="40" y="300" text-anchor="start" font-size="12.5">CH₄</text><text class="fg-lbl" x="140" y="300" text-anchor="middle" font-size="12.5">−4</text><text class="fg-tag" x="326" y="300" text-anchor="end" font-size="11">0 bonds to O, N, X</text><text class="fg-tag-mut" x="40" y="320" text-anchor="start" font-size="11">alkane</text><line class="fg-arrow" x1="14" y1="326" x2="14" y2="52"></line><path class="fg-head" d="M14 44 L18.16 52 L9.84 52 Z"></path><line class="fg-rule" x1="30" y1="334" x2="334" y2="334"></line><text class="fg-tag-mut" x="40" y="358" text-anchor="start" font-size="11">In RCO₂H the acid carbon is +3, not +2.</text></svg><figcaption>Every family on a rung has the same number of bonds to O, N or a halogen (X).</figcaption></figure><!-- fig:l-oxidation-ladder:end -->' +
           '<p class="step-body">A rung is set by how many bonds the carbon has to electronegative atoms. An alcohol and an alkyl halide each have one, so they share a rung, and turning one into the other is a substitution, not a redox reaction.</p>' +
           '<p class="step-body">A carboxylic acid, an ester, an amide, an acid chloride and a nitrile each have three, so they share a rung too. Turning one into another needs no oxidant and no reductant.</p>' +
@@ -255,16 +255,16 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'mcq',
         eyebrow: 'Independent Practice',
-        title: 'PBr₃ turns an alcohol into an alkyl bromide. Is that a redox reaction?',
+        title: 'Which of these changes needs an oxidizing agent?',
         options: [
-          'Yes, an oxidation, because bromine is electronegative',
-          'No, it trades one electronegative atom for another',
-          'Yes, a reduction, because the carbon loses its oxygen',
-          'Only when the alcohol is primary, not secondary'
+          'An alcohol becomes an alkyl bromide',
+          'An aldehyde becomes a carboxylic acid',
+          'An ester becomes a carboxylic acid',
+          'An alkene plus HBr becomes an alkyl bromide'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. The C–O bond is traded for a C–Br bond, and the bonds to hydrogen do not change, so the carbon stays on its rung. The ladder tells you at once which changes need a redox reagent and which are substitutions.',
-        wrongFeedback: 'Count before and after. How many bonds does that carbon have to electronegative atoms in each case, and how many to hydrogen?'
+        correctFeedback: 'Correct. The aldehyde carbon trades its C–H for a third bond to oxygen and climbs a rung. The alcohol and the alkyl bromide share a rung, the ester and the acid share a rung, and HBr&#39;s new C–H and C–Br cancel.',
+        wrongFeedback: 'Count the changing carbon&#39;s bonds to O, N or a halogen, and its bonds to H, before and after. Only one change moves it up a rung.'
       },
       {
         type: 'explain',
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Challenge',
         title: 'A carboxylic acid, an ester, an amide and a nitrile all sit on one rung. What does that tell you?',
         options: [
-          'Swapping one for another is not a redox reaction',
+          'Turning one into another needs no oxidant or reductant',
           'They react with nucleophiles at the same rate as one another',
           'None of them can be reduced to an aldehyde or an alcohol',
           'They all share one molecular formula once R is fixed'

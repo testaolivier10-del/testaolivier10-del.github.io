@@ -251,7 +251,7 @@ FIGURES.push({
       s += label(352, y + 4, r.ox);
       r.fam.forEach((f, j) => {
         const fy = r.fam.length === 1 ? y + 4 : y - 5 + j * 18;
-        s += text(420, fy, f, { cls: 'fg-lbl', size: 13, anchor: 'start' });
+        s += text(420, fy, f, { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
       });
       if (r.n === '3') s += tag(352, y + 20, 'RCO₂H: +3', { cls: 'fg-tag-mut' });
       if (i < RUNGS.length - 1) s += rule(70, y + 28, 740, y + 28);
@@ -260,7 +260,7 @@ FIGURES.push({
     s += tag(40, 334, 'up =', { cls: 'fg-tag' });
     s += tag(40, 348, 'oxidation', { cls: 'fg-tag' });
     s += rule(70, 346, 740, 346);
-    s += text(405, 372, 'Along a rung: no oxidant or reductant.   Up one rung: a two-electron oxidation.', { cls: 'fg-lbl', size: 13 });
+    s += text(405, 372, 'Along a rung: no oxidant or reductant.   Up one rung: a two-electron oxidation.', { cls: 'fg-tag', size: 11 });
     return s;
   },
   caption: 'Each row is one rung, and X stands for a halogen. The highlighted rung holds both the alcohol and the alkyl halide.',
@@ -370,7 +370,7 @@ FIGURES.push({
       if (r.mols.length === 1) {
         s += arrow(P(xs[0] + 84, cy), P(xs[1] - 96, cy), { muted: true });
         s += tag((xs[0] + xs[1]) / 2 - 6, cy - 12, 'oxidize', { cls: 'fg-tag-mut' });
-        s += tag(xs[1] + 10, cy + 4, 'no reaction: no H to remove', { cls: 'fg-tag-warn', anchor: 'start' });
+        s += tag(xs[1] + 10, cy + 4, 'not oxidized: no H to remove', { cls: 'fg-tag-warn', anchor: 'start' });
       }
     });
     return s;
