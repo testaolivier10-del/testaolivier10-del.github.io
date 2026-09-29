@@ -202,7 +202,7 @@ FIGURES.push({
     s += label(258, 324, 'R–OH', { anchor: 'start' });
     s += rxn(P(300, 320), P(372, 320), 'PBr₃ or SOCl₂', null, 'fg-sm');
     s += label(378, 324, 'R–X', { anchor: 'start' });
-    s += rxn(P(410, 320), P(498, 320), 'bulky base (E2)', null, 'fg-sm');
+    s += rxn(P(410, 320), P(498, 320), 'strong base (E2)', null, 'fg-sm');
     s += label(504, 324, 'alkene', { anchor: 'start' });
     s += text(258, 346, 'and from the alkene back to R–OH: H₃O⁺, or BH₃ then H₂O₂/HO⁻', { cls: 'fg-sm', anchor: 'start' });
     s += label(690, 324, 'RCH₂NH₂');
@@ -218,7 +218,7 @@ FIGURES.push({
     s += text(430, 460, 'up: PCC, DMP, Jones     •     down: NaBH₄, LiAlH₄, H₂ with Pd', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Read each row as one rung. The top line of a row lists its members, and the arrows under it show a sideways move. The long arrow on the right is the one move drawn here that changes rung.',
+  caption: 'Read each row as one rung. The top line of a row lists its members, and the arrows under it show a sideways move. The vertical arrow on the right, nitrile to amine, is the one reaction drawn here that changes rung.',
 });
 
 /* The same ladder for the lesson: four rungs, members only. */
@@ -307,7 +307,7 @@ function pairPanel(kind, cx, y0) {
 FIGURES.push({
   id: 'fgi-pairs',
   section: T,
-  anchor: 'because only you can make those choices.</div>',
+  anchor: 'decides which product you get.</div>',
   alt: 'Three reagent pairs. Left: but-2-yne with H2 and Lindlar catalyst gives cis-but-2-ene, and with sodium in liquid ammonia gives trans-but-2-ene. Middle: cyclohexene with OsO4 and NMO gives the cis-1,2-diol with both OH groups on wedges, and with mCPBA then aqueous acid gives the trans-1,2-diol with one OH on a wedge and one on a dash. Right: propan-1-ol with PCC gives propanal, and with Jones reagent gives propanoic acid.',
   viewBox: '0 0 760 300',
   build() {
@@ -567,7 +567,7 @@ FIGURES.push({
     s += tag(262, 146, '2-methylbutan-1-ol');
     return s;
   },
-  caption: 'Start on the left, target on the right. The OH has to move from the branch carbon to the carbon beside it.',
+  caption: 'Start on the left, target on the right. The OH has to move from the branch carbon onto one of its two CH₃ groups.',
 });
 
 export default FIGURES;
