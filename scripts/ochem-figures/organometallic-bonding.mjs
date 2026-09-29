@@ -1,107 +1,322 @@
 /* Figures for the organometallic-bonding notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Every drawing is made of panels 340 wide whose labels are all fg-lbl or
+   fg-tag, so the same figure can sit in the notes and in a lesson step
+   (panels stacked in one 340-wide column). The one exception is
+   halide-no-grignard, which is notes-only and sets its two panels side by
+   side. Small reagents are drawn with every atom labeled; chains and
+   ketones are skeletal, since this chapter comes long after skeletal
+   structures are taught. */
+import { atom, bond, arrow, curve, lonePair, text, tag, label, panel, P } from '../lib/ochem-figure.mjs';
 
 const FIGURES = [];
+const PW = 340;                       // panel width
 
-/* ----------------------------------------------------------------- 33 ---
-   The chapter's premise in one picture. The prose says the polarity flips
-   and a reader nods; put the two bonds side by side with their Pauling
-   numbers and the claim becomes arithmetic. */
+/* ------------------------------------------------------------ helpers --- */
+const rad = (l) => (!l ? 0 : l === 'H' ? 11 : l.length <= 2 ? 14 : 4 + l.length * 3.8);
+/* A labeled atom {x, y, l, k, r}; V is an unlabeled skeletal vertex. */
+const A = (x, y, l, k) => ({ x, y, l, k, r: rad(l) });
+const V = (x, y) => ({ x, y, l: '', r: 0 });
+const draw = (...as) => as.filter((a) => a.l).map((a) => atom(a.x, a.y, a.l, { kind: a.k, r: a.r })).join('');
+const bd = (a, b, o = {}) => bond(a, b, { rFrom: a.r ?? 0, rTo: b.r ?? 0, ...o });
+const dbl = (a, b, cls) => bd(a, b, { order: 2, ...(cls ? { cls } : {}) });
+const lp = (a, deg, extra = 7) => lonePair(a.x, a.y, deg, { dist: a.r + extra });
+const rich = (x, y, html, cls = 'fg-tag', anchor = 'middle') =>
+  `<text class="${cls}" x="${x}" y="${y}" text-anchor="${anchor}" font-size="${cls === 'fg-lbl' ? 12.5 : 11}">${html}</text>`;
+/* Every panel: a box, a title tag at the top and up to three tag lines at
+   the bottom. A line is a string, or [html, cls]. */
+function frameP(ox, oy, h, title, lines = [], kind, w = PW) {
+  let s = panel(ox, oy, w, h, kind ? { kind } : {});
+  if (title) s += rich(ox + w / 2, oy + 20, title);
+  lines.forEach((ln, i) => {
+    const [t, cls] = Array.isArray(ln) ? ln : [ln, 'fg-tag'];
+    s += rich(ox + w / 2, oy + h - 14 - (lines.length - 1 - i) * 17, t, cls);
+  });
+  return s;
+}
+const down = (x, y1, y2) => arrow(P(x, y1), P(x, y2), { size: 7 });
+
+/* ======================================================================
+   1. The polarity flip: the same carbon in CH3Br and in CH3MgBr.
+   ====================================================================== */
+const H_FLIP = 180;
+function pBromide(ox, oy) {
+  let s = frameP(ox, oy, H_FLIP, 'bromomethane, CH₃Br', [
+    'C 2.55, Br 2.96: the electrons go to bromine',
+    ['carbon is δ+, so nucleophiles attack it', 'fg-tag-warn'],
+  ], 'warn');
+  const C = A(ox + 130, oy + 80, 'C', 'warn'), Br = A(ox + 216, oy + 80, 'Br');
+  const H1 = A(ox + 88, oy + 80, 'H'), H2 = A(ox + 130, oy + 42, 'H'), H3 = A(ox + 130, oy + 118, 'H');
+  s += bd(C, Br) + bd(C, H1) + bd(C, H2) + bd(C, H3);
+  s += draw(C, Br, H1, H2, H3);
+  s += label(ox + 154, oy + 62, 'δ+');
+  s += label(ox + 216, oy + 56, 'δ−');
+  return s;
+}
+function pGrignard(ox, oy) {
+  let s = frameP(ox, oy, H_FLIP, 'methylmagnesium bromide, CH₃MgBr', [
+    'C 2.55, Mg 1.31: the electrons go to carbon',
+    ['carbon is δ−, so it attacks electrophiles', 'fg-tag-good'],
+  ], 'good');
+  const C = A(ox + 100, oy + 80, 'C', 'hi'), Mg = A(ox + 186, oy + 80, 'Mg'), Br = A(ox + 262, oy + 80, 'Br');
+  const H1 = A(ox + 58, oy + 80, 'H'), H2 = A(ox + 100, oy + 42, 'H'), H3 = A(ox + 100, oy + 118, 'H');
+  s += bd(C, Mg, { cls: 'fg-bond-hi' }) + bd(Mg, Br) + bd(C, H1) + bd(C, H2) + bd(C, H3);
+  s += draw(C, Mg, Br, H1, H2, H3);
+  s += label(ox + 124, oy + 62, 'δ−');
+  s += label(ox + 186, oy + 56, 'δ+');
+  return s;
+}
+const GAP_FLIP = 44;
 FIGURES.push({
   id: 'polarity-flip',
   section: 'organometallic-bonding',
-  anchor: '<h3>The family, in order of reactivity</h3>',
-  viewBox: '0 0 760 320',
-  alt: 'The same carbon drawn bonded to chlorine and to magnesium, with the partial charges on carbon reversed between the two',
+  anchor: '<!-- fig:polarity-flip:start -->',
+  lessons: ['organometallic-bonding'],
+  viewBox: `0 0 ${PW} ${H_FLIP * 2 + GAP_FLIP}`,
+  alt: 'Top: bromomethane, a carbon with three hydrogens bonded to bromine. Carbon (2.55) is marked δ+ and bromine (2.96) δ−, so nucleophiles attack the carbon. An arrow labeled "Mg, dry ether" leads down to methylmagnesium bromide, the same carbon now bonded to magnesium, which is bonded to bromine. Carbon (2.55) is marked δ− and magnesium (1.31) δ+, so the carbon attacks electrophiles.',
   build() {
-    let s = '';
-    const pair = (ox, partner, pe, dc, kind, role, note) => {
-      s += panel(ox, 48, 330, 148, { kind });
-      const c = P(ox + 110, 122), x = P(ox + 220, 122);
-      s += atom(c.x, c.y, 'C', { kind: kind === 'warn' ? 'warn' : 'hi' });
-      s += atom(x.x, x.y, partner, { });
-      s += bond(c, x);
-      s += text(c.x, c.y - 30, dc, { cls: 'fg-lbl', size: 14 });
-      s += text(x.x, x.y - 30, dc === 'δ+' ? 'δ−' : 'δ+', { cls: 'fg-lbl', size: 14 });
-      s += text(c.x, c.y + 40, '2.55', { cls: 'fg-sm', size: 10 });
-      s += text(x.x, x.y + 40, pe, { cls: 'fg-sm', size: 10 });
-      s += text(ox + 165, 176, role, { cls: kind === 'warn' ? 'fg-tag' : 'fg-tag-good', size: 11.5 });
-      s += text(ox + 165, 222, note, { cls: 'fg-sm', size: 10.5 });
-    };
-    pair(24,  'Cl', '3.16', 'δ+', 'warn', 'carbon is the electrophile', 'gets attacked — every SN1, SN2 and E2');
-    pair(406, 'Mg', '1.31', 'δ−', null,   'carbon is the nucleophile', 'does the attacking — builds the skeleton');
-    s += arrow(P(356, 122), P(400, 122));
-    s += text(378, 108, '+ Mg', { cls: 'fg-tag', size: 10.5 });
-
-    s += rule(34, 248, 726, 248);
-    s += text(380, 274, 'The same carbon, in the halide and in the reagent made from it.', { cls: 'fg-lbl', size: 12 });
-    s += text(380, 296, 'Nothing was added and nothing left — only the partner’s electronegativity changed.', { cls: 'fg-lbl', size: 12 });
+    let s = pBromide(0, 0);
+    s += down(PW / 2, H_FLIP + 4, H_FLIP + GAP_FLIP - 4);
+    s += tag(PW / 2 + 12, H_FLIP + GAP_FLIP / 2 + 4, 'Mg, dry ether', { anchor: 'start' });
+    s += pGrignard(0, H_FLIP + GAP_FLIP);
     return s;
   },
-  caption: 'Why a metal makes carbon nucleophilic. Chlorine at 3.16 outranks carbon, so the electrons go to chlorine and the carbon is attacked; magnesium at 1.31 does not, so the electrons stay on carbon and that carbon now attacks. The deliberate reversal is called umpolung.',
-  note: 'Note which quantity is doing the work here. What changed between the two bonds is not how many electrons carbon has in total but which side of one bond the shared pair sits on \u2014 and that is set by a single number for each partner. Everything else about the molecule is untouched, which is why the reversal costs exactly one step.',
+  caption: 'Follow the highlighted carbon from top to bottom, and compare the pair of electronegativity values in each panel.',
 });
 
-/* ---------------------------------------------------------------- C1 ---
-   The chapter's most-tested failure, drawn. The section calls the acid–base
-   quench "the single most common way a synthesis on paper fails" and then
-   never shows it: both fates start at the SAME bond, which is the whole
-   reason one crowds the other out. */
+/* ======================================================================
+   2. One C–Mg bond, two fates: proton transfer from methanol (fast) and
+      addition to acetone (only when no O–H is present).
+   ====================================================================== */
+/* The reagent, CH3–MgBr, with its C–Mg bond; returns the atoms. */
+function reagent(ox, y, s) {
+  const M = A(ox + 42, y, 'H₃C', 'hi'), G = A(ox + 116, y, 'MgBr');
+  s.v += bd(M, G, { cls: 'fg-bond-hi' }) + draw(M, G);
+  return { M, G };
+}
+const H_QA = 190, H_QB = 214;
+function pQuench(ox, oy) {
+  let s = frameP(ox, oy, H_QA, 'with methanol: the reagent takes a proton', [
+    ['fast, and the reagent is used up', 'fg-tag-warn'],
+  ], 'warn');
+  const acc = { v: '' };
+  reagent(ox, oy + 98, acc);
+  s += acc.v;
+  const O = A(ox + 252, oy + 70, 'O'), H = A(ox + 204, oy + 98, 'H', 'warn'), Me = A(ox + 300, oy + 98, 'CH₃');
+  s += bd(O, H) + bd(O, Me) + draw(O, H, Me);
+  s += lp(O, -135) + lp(O, -45);
+  /* C–Mg bond electrons to the H; O–H bond electrons onto the O. */
+  s += curve(P(ox + 79, oy + 106), P(ox + 193, oy + 104), { bow: 22, size: 7 });
+  s += curve(P(ox + 224, oy + 91), P(ox + 250, oy + 86), { bow: 12, size: 7 });
+  s += label(ox + PW / 2, oy + 148, 'CH₄  +  CH₃O⁻ ⁺MgBr');
+  return s;
+}
+function pAdd(ox, oy) {
+  let s = frameP(ox, oy, H_QB, 'with acetone: the reagent adds to C=O', [
+    ['only when no O–H is present', 'fg-tag-good'],
+  ], 'good');
+  const acc = { v: '' };
+  reagent(ox, oy + 116, acc);
+  s += acc.v;
+  const C = A(ox + 240, oy + 112, 'C'), O = A(ox + 240, oy + 62, 'O');
+  const M1 = A(ox + 196, oy + 140, 'CH₃'), M2 = A(ox + 284, oy + 140, 'CH₃');
+  s += dbl(C, O) + bd(C, M1) + bd(C, M2) + draw(C, O, M1, M2);
+  s += lp(O, -145) + lp(O, -35);
+  /* C–Mg bond electrons to the carbonyl C; the π electrons onto O. */
+  s += curve(P(ox + 79, oy + 108), P(ox + 225, oy + 106), { bow: -34, size: 7 });
+  s += curve(P(ox + 248, oy + 92), P(ox + 256, oy + 68), { bow: 12, size: 7 });
+  s += label(ox + PW / 2, oy + 178, '(CH₃)₃C–O⁻ ⁺MgBr');
+  return s;
+}
+const GAP_Q = 16;
 FIGURES.push({
   id: 'quench-or-add',
   section: 'organometallic-bonding',
-  anchor: '&ldquo;Make the Grignard from this&rdquo; is only a legal instruction when the halide is otherwise inert.</p>',
-  viewBox: '0 0 700 372',
-  alt: 'One Grignard reagent with curved arrows leaving the same carbon-magnesium bond in two directions: left to the hydrogen of an alcohol, giving R-H and a magnesium alkoxide, and right to the carbonyl carbon of a ketone, giving the magnesium alkoxide of the addition product',
+  anchor: '<!-- fig:quench-or-add:start -->',
+  lessons: ['organometallic-bonding'],
+  viewBox: `0 0 ${PW} ${H_QA + GAP_Q + H_QB}`,
+  alt: 'Two panels, each starting from CH3–MgBr with its C–Mg bond highlighted. Top, with methanol: a curved arrow runs from the C–Mg bond to the H of the O–H, and a second from the O–H bond onto the oxygen, giving CH4 plus CH3O− +MgBr. This is fast and uses up the reagent. Bottom, with acetone: a curved arrow runs from the C–Mg bond to the carbonyl carbon, and a second from the C=O bond onto the oxygen, giving (CH3)3C–O− +MgBr. This happens only when no O–H is present.',
   build() {
-    let s = '';
-    /* The reagent, once, in the middle. Everything below branches off the
-       one bond, which is the claim. */
-    s += bond(P(318, 84), P(380, 84), { rFrom: 16, rTo: 22 });
-    s += atom(318, 84, 'R', { kind: 'hi' });
-    s += atom(380, 84, 'MgBr', { r: 22 });
-    s += tag(349, 50, 'one C–Mg bond, two fates');
+    return pQuench(0, 0) + pAdd(0, H_QA + GAP_Q);
+  },
+  caption: 'In both panels the first curved arrow starts at the same highlighted C–Mg bond. Only its target changes: a proton on top, a carbonyl carbon below.',
+});
 
-    /* Left: the proton transfer. */
-    s += bond(P(84, 214), P(140, 214), { rFrom: 15, rTo: 15 });
-    s += bond(P(140, 214), P(192, 214), { rFrom: 15, rTo: 15 });
-    s += atom(84, 214, 'R′');
-    s += atom(140, 214, 'O');
-    s += atom(192, 214, 'H', { kind: 'warn' });
-    s += lonePair(140, 214, 228);
-    s += lonePair(140, 214, 312);
-    s += curve(P(342, 94), P(206, 200), { bow: 44 });
-    s += curve(P(166, 228), P(146, 234), { bow: 16 });
-    s += label(140, 278, 'R–H  +  R′O⁻ ⁺MgBr');
-    s += text(140, 302, 'one equivalent, spent', { cls: 'fg-tag-warn', size: 11 });
-    s += text(236, 132, 'faster', { cls: 'fg-tag-warn', size: 11 });
+/* ======================================================================
+   3. Two halides that cannot be made into a Grignard reagent (notes only,
+      two panels side by side).
+   ====================================================================== */
+const H_HAL = 158, GAP_HAL = 40;
+function pHydroxyBromide(ox, oy) {
+  let s = frameP(ox, oy, H_HAL, '4-bromobutan-1-ol', [
+    ['its O–H would destroy the reagent as it forms', 'fg-tag-warn'],
+  ]);
+  const yb = oy + 100;
+  const OH = A(ox + 58, yb, 'HO', 'warn'), c1 = V(ox + 98, yb - 22), c2 = V(ox + 136, yb),
+        c3 = V(ox + 174, yb - 22), c4 = V(ox + 212, yb), Br = A(ox + 254, yb - 22, 'Br');
+  s += bd(OH, c1) + bd(c1, c2) + bd(c2, c3) + bd(c3, c4) + bd(c4, Br);
+  s += draw(OH, Br);
+  return s;
+}
+function pKetoBromide(ox, oy) {
+  let s = frameP(ox, oy, H_HAL, '5-bromopentan-2-one', [
+    ['its C=O would be attacked by the reagent', 'fg-tag-warn'],
+  ]);
+  const yb = oy + 112;
+  const c1 = V(ox + 60, yb), c2 = V(ox + 98, yb - 22), O = A(ox + 98, yb - 64, 'O', 'warn'),
+        c3 = V(ox + 136, yb), c4 = V(ox + 174, yb - 22), c5 = V(ox + 212, yb), Br = A(ox + 254, yb - 22, 'Br');
+  s += bd(c1, c2) + dbl(c2, O, 'fg-bond-hi') + bd(c2, c3) + bd(c3, c4) + bd(c4, c5) + bd(c5, Br);
+  s += draw(O, Br);
+  return s;
+}
+FIGURES.push({
+  id: 'halide-no-grignard',
+  section: 'organometallic-bonding',
+  anchor: '<!-- fig:halide-no-grignard:start -->',
+  viewBox: `0 0 ${PW * 2 + GAP_HAL} ${H_HAL}`,
+  alt: 'Two skeletal structures. Left: 4-bromobutan-1-ol, a four-carbon chain with HO on one end and Br on the other; the HO is highlighted, because its O–H would destroy the reagent as it forms. Right: 5-bromopentan-2-one, a five-carbon chain with a C=O at carbon 2 and Br on carbon 5; the C=O is highlighted, because the reagent would attack it.',
+  build() {
+    return pHydroxyBromide(0, 0) + pKetoBromide(PW + GAP_HAL, 0);
+  },
+  caption: 'Each halide carries a second group, highlighted, that the reagent reacts with. The first molecules of reagent to form are destroyed by that group in a neighboring molecule.',
+});
 
-    /* Right: the addition you actually wanted. */
-    s += bond(P(556, 214), P(556, 170), { order: 2, rFrom: 16, rTo: 15 });
-    s += bond(P(556, 214), P(520, 250), { rFrom: 16, rTo: 15 });
-    s += bond(P(556, 214), P(592, 250), { rFrom: 16, rTo: 15 });
-    s += atom(556, 170, 'O');
-    s += atom(520, 250, 'R′');
-    s += atom(592, 250, 'R′');
-    s += atom(556, 214, 'C', { kind: 'hi' });
-    s += lonePair(556, 170, 200);
-    s += lonePair(556, 170, 340);
-    s += curve(P(354, 94), P(534, 202), { bow: -44 });
-    s += curve(P(572, 196), P(574, 176), { bow: 16 });
-    s += label(556, 278, 'the magnesium alkoxide');
-    s += text(556, 302, 'what you wanted', { cls: 'fg-tag-good', size: 11 });
-    s += text(452, 132, 'only if no acidic H is there', { cls: 'fg-tag', size: 11 });
-
-    s += rule(20, 322, 680, 322);
-    s += label(350, 346, 'Both arrows start in the same place: the C–Mg bond.');
-    s += label(350, 366, 'The left one is faster, which is why it happens first.');
+/* ======================================================================
+   4. The worked example: 4-hydroxybutan-2-one with 1.0 and 2.0 equiv
+      CH3MgBr. The lesson copy shows the bare molecule only.
+   ====================================================================== */
+/* The four-carbon skeleton HO–CH2–CH2–C(=O)–CH3. `oxy` is the label of
+   the chain-end oxygen; `c2` chooses what carbon 2 carries. */
+function hkSkeleton(ox, yb, { oxy = 'HO', oxyKind = 'warn', c2 = 'ketone' } = {}) {
+  let s = '';
+  const O1 = A(ox + 64, yb, oxy, oxyKind), c4 = V(ox + 104, yb - 22), c3 = V(ox + 142, yb),
+        c2p = V(ox + 180, yb - 22), c1 = V(ox + 218, yb);
+  s += bd(O1, c4) + bd(c4, c3) + bd(c3, c2p) + bd(c2p, c1);
+  if (c2 === 'ketone') {
+    const O = A(ox + 180, yb - 64, 'O');
+    s += dbl(c2p, O) + draw(O);
+  } else {
+    /* The tertiary alcohol: OH up-left, the new CH3 up-right. */
+    const OH = A(ox + 160, yb - 60, 'OH'), me = V(ox + 214, yb - 56);
+    s += bd(c2p, OH) + bd(c2p, me, { cls: 'fg-bond-hi' }) + draw(OH);
+    s += tag(ox + 222, yb - 60, 'new CH₃', { anchor: 'start' });
+  }
+  s += draw(O1);
+  return s;
+}
+const H_HK1 = 176, H_HK2 = 176, H_HK3 = 176, GAP_HK = 34;
+function pHK1(ox, oy) {
+  let s = frameP(ox, oy, H_HK1, '4-hydroxybutan-2-one: two reactive sites', [
+    'the O–H (pKa about 16) and the ketone C=O',
+  ]);
+  s += hkSkeleton(ox, oy + 116);
+  s += tag(ox + 64, oy + 142, 'acidic O–H');
+  s += tag(ox + 206, oy + 52, 'ketone', { anchor: 'start' });
+  return s;
+}
+function pHK2(ox, oy) {
+  let s = frameP(ox, oy, H_HK2, 'after 1.0 equiv CH₃MgBr: the O–H is gone', [
+    'CH₄ leaves as a gas; the ketone is untouched',
+    ['workup puts the H back: starting material', 'fg-tag-warn'],
+  ], 'warn');
+  s += hkSkeleton(ox, oy + 100, { oxy: 'O⁻', oxyKind: 'warn' });
+  s += tag(ox + 64, oy + 128, '⁺MgBr');
+  return s;
+}
+function pHK3(ox, oy) {
+  let s = frameP(ox, oy, H_HK3, 'after 2.0 equiv, then workup', [
+    ['3-methylbutane-1,3-diol', 'fg-tag-good'],
+  ], 'good');
+  s += hkSkeleton(ox, oy + 120, { oxy: 'HO', oxyKind: undefined, c2: 'diol' });
+  return s;
+}
+FIGURES.push({
+  id: 'hydroxyketone-equiv',
+  section: 'organometallic-bonding',
+  anchor: '<!-- fig:hydroxyketone-equiv:start -->',
+  viewBox: `0 0 ${PW} ${H_HK1 + H_HK2 + H_HK3 + GAP_HK * 2}`,
+  alt: 'Three panels. First: 4-hydroxybutan-2-one in skeletal form, HO on the left end of a four-carbon chain and a C=O on carbon 2, with the acidic O–H and the ketone labeled. Second, after 1.0 equivalent of CH3MgBr: the oxygen on the left end is now O− with +MgBr, CH4 has left as a gas, and the ketone is untouched; workup returns the starting material. Third, after 2.0 equivalents and workup: 3-methylbutane-1,3-diol, with an OH and a new CH3 on carbon 2.',
+  build() {
+    let s = pHK1(0, 0);
+    s += down(PW / 2, H_HK1 + 4, H_HK1 + GAP_HK - 4);
+    s += tag(PW / 2 + 12, H_HK1 + GAP_HK / 2 + 4, '1.0 equiv CH₃MgBr', { anchor: 'start' });
+    const y2 = H_HK1 + GAP_HK;
+    s += pHK2(0, y2);
+    s += down(PW / 2, y2 + H_HK2 + 4, y2 + H_HK2 + GAP_HK - 4);
+    s += tag(PW / 2 + 12, y2 + H_HK2 + GAP_HK / 2 + 4, 'a second equiv, then H₃O⁺', { anchor: 'start' });
+    s += pHK3(0, y2 + H_HK2 + GAP_HK);
     return s;
   },
-  caption: 'The same reagent, the same bond, two things it can do. On the left the carbanion takes a proton and leaves as R&ndash;H; on the right it adds to a carbonyl. Nothing about the right-hand reaction is difficult &mdash; it simply never gets a turn while an acidic hydrogen is in the flask.',
-  note: 'This is why &ldquo;how many equivalents?&rdquo; is a real question rather than bookkeeping. Every acidic proton in the substrate consumes one equivalent before any addition happens, so a molecule with one O&ndash;H needs two equivalents to give a product at all &mdash; and a student who writes one gets their starting material back, which is a legitimate exam answer.',
+  caption: 'Follow the left-hand oxygen and carbon 2 down the three panels. The first equivalent changes only the oxygen; the second adds the new CH₃ to carbon 2.',
+});
+
+const H_LHK = 130;
+FIGURES.push({
+  id: 'l-hydroxyketone',
+  lessons: ['organometallic-bonding'],
+  viewBox: `0 0 ${PW} ${H_LHK}`,
+  alt: '4-hydroxybutan-2-one in skeletal form: an HO on the left end of a four-carbon chain, and a C=O on carbon 2.',
+  build() {
+    let s = frameP(0, 0, H_LHK, '4-hydroxybutan-2-one');
+    s += hkSkeleton(0, 110, { oxyKind: undefined });
+    return s;
+  },
+  caption: '4-hydroxybutan-2-one.',
+});
+
+/* ======================================================================
+   5. A Grignard reagent and an alkyl halide: the SN2 you might hope for,
+      and the E2 that competes with it.
+   ====================================================================== */
+const H_MX1 = 170, H_MX2 = 230, GAP_MX = 16;
+function pHoped(ox, oy) {
+  let s = frameP(ox, oy, H_MX1, 'the hoped-for SN2 at C1 of 1-bromobutane', [
+    ['pentane, but it forms only slowly', 'fg-tag-mut'],
+  ]);
+  const acc = { v: '' };
+  reagent(ox - 8, oy + 118, acc);
+  s += acc.v;
+  const yb = oy + 118;
+  const c4 = V(ox + 166, yb), c3 = V(ox + 200, yb - 22), c2 = V(ox + 234, yb), c1 = V(ox + 268, yb - 22),
+        Br = A(ox + 306, yb, 'Br');
+  s += bd(c4, c3) + bd(c3, c2) + bd(c2, c1) + bd(c1, Br) + draw(Br);
+  s += text(ox + 268, yb - 32, 'C1', { cls: 'fg-tag' });
+  s += curve(P(ox + 71, oy + 110), P(ox + 262, yb - 30), { bow: -46, size: 7, muted: true });
+  s += curve(P(ox + 284, yb - 8), P(ox + 300, yb + 16), { bow: -12, size: 7, muted: true });
+  return s;
+}
+function pE2(ox, oy) {
+  let s = frameP(ox, oy, H_MX2, 'what competes: E2, with the reagent as the base', [
+    'CH₄  +  but-1-ene  +  MgBr₂',
+  ], 'warn');
+  const yb = oy + 88;
+  const c4 = V(ox + 138, yb), c3 = V(ox + 174, yb - 22), c2 = V(ox + 210, yb), c1 = V(ox + 246, yb - 22),
+        Br = A(ox + 286, yb, 'Br'), H = A(ox + 210, yb + 44, 'H', 'warn');
+  s += bd(c4, c3) + bd(c3, c2) + bd(c2, c1, { cls: 'fg-bond-hi' }) + bd(c1, Br) + bd(c2, H);
+  s += draw(Br, H);
+  s += text(ox + 246, yb - 32, 'C1', { cls: 'fg-tag' });
+  s += text(ox + 222, yb + 14, 'C2', { cls: 'fg-tag', anchor: 'start' });
+  const G = A(ox + 46, yb + 92, 'BrMg'), M = A(ox + 122, yb + 92, 'CH₃', 'hi');
+  s += bd(G, M, { cls: 'fg-bond-hi' }) + draw(G, M);
+  /* C–Mg electrons to the H; C2–H electrons into the new π bond; C1–Br
+     electrons onto Br. */
+  s += curve(P(ox + 86, yb + 82), P(ox + 199, yb + 50), { bow: -26, size: 7 });
+  s += curve(P(ox + 202, yb + 22), P(ox + 224, yb - 6), { bow: -12, size: 7 });
+  s += curve(P(ox + 262, yb - 18), P(ox + 290, yb - 16), { bow: -12, size: 7 });
+  return s;
+}
+FIGURES.push({
+  id: 'alkyl-halide-mix',
+  section: 'organometallic-bonding',
+  anchor: '<!-- fig:alkyl-halide-mix:start -->',
+  lessons: ['organometallic-bonding'],
+  viewBox: `0 0 ${PW} ${H_MX1 + GAP_MX + H_MX2}`,
+  alt: 'Two panels with CH3MgBr and 1-bromobutane. Top: muted curved arrows show the hoped-for SN2, the C–Mg bond attacking C1 and bromide leaving, which would give pentane but forms only slowly. Bottom: E2. A curved arrow runs from the C–Mg bond to a hydrogen on C2, a second from the C2–H bond into the C1–C2 bond to make a double bond, and a third from the C1–Br bond onto bromine. The products are CH4, but-1-ene and MgBr2.',
+  build() {
+    return pHoped(0, 0) + pE2(0, H_MX1 + GAP_MX);
+  },
+  caption: 'Top, the substitution you might plan (gray arrows, because it is slow). Bottom, one of the side reactions that compete with it: the reagent pulls off a hydrogen from C2 instead.',
 });
 
 export default FIGURES;
