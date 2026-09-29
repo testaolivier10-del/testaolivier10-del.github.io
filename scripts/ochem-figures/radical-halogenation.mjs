@@ -88,8 +88,8 @@ function homoPanel(ox, oy) {
   s += hal(ox + 115, Y, 'Br', [0, 65, -65]);
   s += fishhook(P(ox + 76, Y - 5), P(ox + 55, Y - 16), { bow: 8 });
   s += fishhook(P(ox + 84, Y - 5), P(ox + 105, Y - 16), { bow: -8 });
-  s += arrow(P(ox + 150, Y), P(ox + 196, Y), { muted: true });
-  s += label(ox + 173, Y - 10, 'light', { size: 13 });
+  s += arrow(P(ox + 146, Y), P(ox + 188, Y), { muted: true });
+  s += label(ox + 167, Y - 10, 'light', { size: 13 });
   s += hal(ox + 222, Y, 'Br', [180, 90, -90], -40);
   s += plusSign(ox + 258, Y);
   s += hal(ox + 300, Y, 'Br', [0, 90, -90], -140);
@@ -199,8 +199,8 @@ function mechRows(L) {
   s += hAtom(268, Y);
   s += hal(370, Y, 'Cl', [-90, 90, 0], 180);
   s += fishhook(P(236, Y + 5), P(213, Y + 15), { bow: -8 });
-  s += fishhook(P(240, Y - 5), P(312, Y - 12), { bow: -22 });
-  s += fishhook(P(345, Y - 5), P(323, Y - 12), { bow: 8 });
+  s += fishhook(P(240, Y - 5), P(308, Y - 10), { bow: -22 });
+  s += fishhook(P(345, Y - 5), P(318, Y - 10), { bow: 8 });
   s += arrow(P(410, Y), P(470, Y), { muted: true });
   s += me(510, Y, true);
   s += plusSign(565, Y);
@@ -258,7 +258,7 @@ FIGURES.push({
   id: 'l-radical-mechanism',
   lessons: ['radical-halogenation'],
   alt: 'The chlorination of methane in four stacked panels, drawn with single-barbed fishhook arrows. Initiation: Cl–Cl splits into two chlorine radicals, 0 to 2 radicals. Propagation 1: a chlorine radical takes a hydrogen from methane, giving the methyl radical and H–Cl, 1 to 1. Propagation 2: the methyl radical takes a chlorine from Cl2, giving CH3Cl and a new chlorine radical, 1 to 1. Termination: a methyl radical and a chlorine radical pair up to give CH3Cl, 2 to 0.',
-  viewBox: '0 0 340 740',
+  viewBox: '0 0 340 748',
   build() {
     let s = '';
     const H = 182;
@@ -266,8 +266,8 @@ FIGURES.push({
       const oy = i * (H + 4);
       return { oy, Y1: oy + 72, Y2: oy + 152, g: panel(2, oy + 2, 336, H) + tag(170, oy + 24, title) };
     };
-    const down = (oy, lbl) => arrow(P(170, oy + 100), P(170, oy + 128), { muted: true }) +
-      (lbl ? label(182, oy + 119, lbl, { anchor: 'start', size: 13 }) : '');
+    const down = (oy, lbl, x = 170) => arrow(P(x, oy + 100), P(x, oy + 128), { muted: true }) +
+      (lbl ? label(x + 12, oy + 119, lbl, { anchor: 'start', size: 13 }) : '');
 
     // Initiation
     let b = box(0, 'INITIATION · RADICALS 0 → 2');
@@ -290,8 +290,8 @@ FIGURES.push({
     s += hAtom(148, b.Y1);
     s += hal(250, b.Y1, 'Cl', [-90, 90, 0], 180);
     s += fishhook(P(116, b.Y1 + 5), P(93, b.Y1 + 15), { bow: -8 });
-    s += fishhook(P(120, b.Y1 - 5), P(192, b.Y1 - 12), { bow: -22 });
-    s += fishhook(P(225, b.Y1 - 5), P(203, b.Y1 - 12), { bow: 8 });
+    s += fishhook(P(120, b.Y1 - 5), P(188, b.Y1 - 10), { bow: -22 });
+    s += fishhook(P(225, b.Y1 - 5), P(198, b.Y1 - 10), { bow: 8 });
     s += down(b.oy);
     s += me(90, b.Y2, true);
     s += plusSign(150, b.Y2);
@@ -309,7 +309,7 @@ FIGURES.push({
     s += fishhook(P(83, b.Y1 - 4), P(111, b.Y1 - 10), { bow: -8 });
     s += fishhook(P(198, b.Y1 + 5), P(117, b.Y1 + 8), { bow: -46 });
     s += fishhook(P(204, b.Y1 - 5), P(224, b.Y1 - 15), { bow: -8 });
-    s += down(b.oy);
+    s += down(b.oy, null, 300);
     s += bond(P(70, b.Y2), P(138, b.Y2), { rFrom: 18, rTo: 16 });
     s += me(70, b.Y2);
     s += hal(138, b.Y2, 'Cl', [-90, 90, 0]);
@@ -357,7 +357,7 @@ FIGURES.push({
     // Propane
     s += tag(170, 22, 'PROPANE');
     s += hSetMolecule([A(80, 66, 'CH₃', 'a', 'hi'), A(170, 66, 'CH₂', 'b', 'warn'), A(260, 66, 'CH₃', 'a', 'hi')], [[0, 1], [1, 2]]);
-    s += label(170, 132, 'a: 6 primary H   b: 2 secondary H', { size: 13 });
+    s += label(170, 132, 'a: 6 primary H · b: 2 secondary H', { size: 13 });
     s += label(170, 152, 'two sets, so two monochlorides', { size: 13 });
     s += rule(20, 172, 320, 172);
     // 2-Methylpropane
@@ -367,13 +367,13 @@ FIGURES.push({
       A(80, 290, 'CH₃', 'a', 'hi'), A(260, 290, 'CH₃', 'a', 'hi'),
       A(170, 226, 'CH₃', 'a', 'hi', { lx: 200, ly: 230 }),
     ], [[0, 1], [0, 2], [0, 3]]);
-    s += label(170, 356, 'a: 9 primary H   b: 1 tertiary H', { size: 13 });
+    s += label(170, 356, 'a: 9 primary H · b: 1 tertiary H', { size: 13 });
     s += label(170, 376, 'two sets, so two monochlorides', { size: 13 });
     s += rule(20, 396, 320, 396);
     // Butane
     s += tag(170, 420, 'BUTANE');
     s += hSetMolecule([A(44, 464, 'CH₃', 'a', 'hi'), A(128, 464, 'CH₂', 'b', 'warn'), A(212, 464, 'CH₂', 'b', 'warn'), A(296, 464, 'CH₃', 'a', 'hi')], [[0, 1], [1, 2], [2, 3]]);
-    s += label(170, 530, 'a: 6 primary H   b: 4 secondary H', { size: 13 });
+    s += label(170, 530, 'a: 6 primary H · b: 4 secondary H', { size: 13 });
     s += label(170, 550, 'two sets, so two monochlorides', { size: 13 });
     return s;
   },
@@ -393,8 +393,8 @@ FIGURES.push({
       A(212, 110, 'CH₂', 'c', 'warn'), A(296, 110, 'CH₃', 'd', 'hi'),
       A(128, 48, 'CH₃', 'a', 'hi', { lx: 158, ly: 52 }),
     ], [[0, 1], [1, 2], [2, 3], [1, 4]]);
-    s += label(170, 172, 'a: 6 H, 1°   b: 1 H, 3°', { size: 13 });
-    s += label(170, 192, 'c: 2 H, 2°   d: 3 H, 1°', { size: 13 });
+    s += label(170, 172, 'a: 6 H, 1° · b: 1 H, 3°', { size: 13 });
+    s += label(170, 192, 'c: 2 H, 2° · d: 3 H, 1°', { size: 13 });
     return s;
   },
   caption: 'Four sets of hydrogens, so four possible monobromides.',
@@ -421,19 +421,19 @@ function tsPanel(ox, oy, k) {
   const p3 = cl ? oy + 186 : oy + 142;
   const px = x0 + (x1 - x0) * (cl ? 0.3 : 0.72);
   const pk1 = cl ? oy + 88 : oy + 74;
-  const pk3 = cl ? oy + 84 : oy + 94;
+  const pk3 = cl ? oy + 92 : oy + 94;
   s += hill(x0, y0, px, pk1, x1, p1, 'fg-bond');
   s += hill(x0, y0, px, pk3, x1, p3, 'fg-bond-hi');
   s += label(x0 + 2, y0 + 20, cl ? 'R–H + Cl•' : 'R–H + Br•', { anchor: 'start', size: 13 });
   s += label(x1 + 6, p1 + 5, '1°', { anchor: 'start', size: 13 });
   s += label(x1 + 6, p3 + 5, '3°', { anchor: 'start', size: 13 });
   if (cl) {
-    s += label(px + 16, pk3 - 8, 'peaks almost level', { anchor: 'start', size: 13 });
+    s += label(px + 16, pk1 - 10, 'peaks almost level', { anchor: 'start', size: 13 });
     s += label(x1, p3 + 24, 'R• + H–Cl', { anchor: 'end', size: 13 });
   } else {
     s += `<line class="fg-dash" x1="${f2(px + 10)}" y1="${pk1}" x2="${f2(px + 10)}" y2="${pk3}"></line>`;
-    s += label(px - 14, pk1 + 2, '3° peak', { anchor: 'end', size: 13 });
-    s += label(px - 14, pk1 + 20, 'far lower', { anchor: 'end', size: 13 });
+    s += label(px - 22, pk1 - 22, '3° peak', { anchor: 'end', size: 13 });
+    s += label(px - 22, pk1 - 4, 'far lower', { anchor: 'end', size: 13 });
     s += label(x1, p3 + 24, 'R• + H–Br', { anchor: 'end', size: 13 });
   }
   s += text(x1 + 10, yb + 16, 'reaction progress →', { cls: 'fg-tag-mut', size: 11, anchor: 'end' });
@@ -450,7 +450,7 @@ FIGURES.push({
   viewBox: '0 0 760 330',
   build() {
     return tsPanel(20, 0, 'cl') + rule(380, 12, 380, 300) + tsPanel(400, 0, 'br') +
-      label(380, 322, 'dark curve: toward the 1° radical    teal curve: toward the 3° radical', { size: 13 });
+      label(380, 322, 'dark curve: toward the 1° radical · teal curve: toward the 3° radical', { size: 13 });
   },
   caption: 'Compare the two peaks in each panel, not the two ends.',
 });
@@ -484,8 +484,8 @@ function bromobutane(c, up) {
   const at = (deg, len) => P(c.x + Math.cos((deg * Math.PI) / 180) * len, c.y - Math.sin((deg * Math.PI) / 180) * len);
   const br = at(90 * sg, 48);
   const hPos = up ? at(200, 44) : at(160, 44);
-  const meP = up ? at(-40, 46) : at(40, 46);
-  const etP = up ? at(18, 54) : at(-18, 54);
+  const meP = up ? at(-45, 46) : at(52, 46);
+  const etP = up ? at(18, 56) : at(-22, 58);
   let s = '';
   s += bond(c, br, { rFrom: 0, rTo: 16 });
   s += bond(c, hPos, { rFrom: 0, rTo: 13 });
@@ -524,9 +524,9 @@ FIGURES.push({
     s += label(230, 52, 'Br₂', { anchor: 'start', size: 13 });
     s += label(230, 70, 'top face', { anchor: 'start', size: 13 });
     s += arrow(P(224, 60), P(188, 88));
-    s += label(262, 236, 'Br₂', { anchor: 'start', size: 13 });
-    s += label(262, 254, 'bottom face', { anchor: 'start', size: 13 });
-    s += arrow(P(256, 240), P(190, 212));
+    s += label(240, 242, 'Br₂', { anchor: 'start', size: 13 });
+    s += label(240, 260, 'bottom face', { anchor: 'start', size: 13 });
+    s += arrow(P(236, 236), P(190, 212));
     s += arrow(P(140, 250), P(100, 286), { muted: true });
     s += arrow(P(200, 250), P(240, 286), { muted: true });
     s += bromobutane(P(85, 370), true);

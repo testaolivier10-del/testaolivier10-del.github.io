@@ -185,7 +185,7 @@ FIGURES.push({
    3. Two ways a carbocation forms.
    ====================================================================== */
 /* tert-butyl bromide with Br to the right; returns ink and Br position */
-function tBuBr(c, brLen = 72) {
+function tBuBr(c, brLen = 84) {
   let s = '';
   s += arm(c, 90, 52, 'CH₃').s + arm(c, 180, 58, 'H₃C').s + arm(c, 270, 52, 'CH₃').s;
   const br = at(c, 0, brLen);
@@ -193,7 +193,7 @@ function tBuBr(c, brLen = 72) {
   for (const d of [90, 0, 270]) s += lp(br, d, 24);
   s += atom(br.x, br.y, 'Br', { kind: 'hi', r: 16 });
   s += atom(c.x, c.y, 'C');
-  s += fromBond(c, br, at(br, 228, 20), 18, -6);
+  s += fromBond(c, br, at(br, 235, 19), 22, -6);
   return s;
 }
 function bromide(p) {
@@ -220,17 +220,17 @@ function alkeneH3O(c1) {
   s += arm(c2, 30, 54, 'CH₃').s + arm(c2, 330, 54, 'CH₃').s;
   s += atom(c1.x, c1.y, 'C');
   s += atom(c2.x, c2.y, 'C');
-  const h = P(c1.x + 14, c1.y - 72);
-  const o = at(h, 0, 56);
+  const h = P(c1.x + 22, c1.y - 84);
+  const o = at(h, 0, 66);
   s += bond(h, o, { rFrom: 12, rTo: 15 });
-  s += arm(o, 70, 42, 'H', { rFrom: 15 }).s + arm(o, 0, 44, 'H', { rFrom: 15 }).s;
-  s += lp(o, 300);
+  s += arm(o, 60, 42, 'H', { rFrom: 15 }).s + arm(o, 330, 42, 'H', { rFrom: 15 }).s;
+  s += lp(o, 250);
   s += atom(h.x, h.y, 'H', { r: 12, kind: 'hi' });
   s += atom(o.x, o.y, 'O');
-  s += chg(at(o, 132, 27));
+  s += chg(at(o, 15, 32));
   const mid = P((c1.x + c2.x) / 2, (c1.y + c2.y) / 2);
   s += curve(P(mid.x - 4, mid.y - 9), at(h, 250, 14), { bow: -14, size: 7 });
-  s += fromBond(h, o, at(o, 210, 18), -12, -5);
+  s += fromBond(h, o, at(o, 125, 18), 22, 5);
   return { s, c2 };
 }
 
@@ -239,7 +239,7 @@ FIGURES.push({
   section: 'carbocations',
   anchor: 'which carbon takes the proton.</p>',
   alt: 'Two reactions that make the same tert-butyl cation. Top: in tert-butyl bromide the carbon-bromine bond breaks, a curved arrow carrying its pair onto bromine, giving the cation and bromide ion. Bottom: the pi bond of 2-methylpropene attacks a hydrogen of H3O+, and the H-O bond pair moves onto oxygen. The hydrogen adds to the CH2 end, the other alkene carbon becomes the cation, and water is released.',
-  viewBox: '0 0 760 468',
+  viewBox: '0 0 760 510',
   build() {
     let s = '';
     s += tag(36, 28, 'ROUTE 1 · A LEAVING GROUP DEPARTS', { anchor: 'start' });
@@ -257,18 +257,18 @@ FIGURES.push({
     s += rule(36, 228, 724, 228);
 
     s += tag(36, 254, 'ROUTE 2 · A C=C TAKES A PROTON', { anchor: 'start' });
-    const c1 = P(88, 380);
+    const c1 = P(88, 400);
     const k = alkeneH3O(c1);
     s += k.s;
-    s += tg(c1.x, 450, 'H adds here');
-    s += tg(k.c2.x + 10, 450, 'C⁺ forms here', 'middle', 'fg-tag-warn');
-    s += arrow(P(262, 376), P(318, 376), { muted: true });
-    s += tBuCation(P(400, 380), true);
-    s += lbl(482, 384, '+  H₂O', 'start');
-    s += tg(400, 450, 'tert-butyl cation', 'middle', 'fg-tag-good');
-    s += sm(740, 346, 'H on the other carbon', 'end');
-    s += sm(740, 364, 'would leave a 1° cation,', 'end');
-    s += sm(740, 382, 'which is far worse', 'end');
+    s += tg(c1.x, 470, 'H adds here');
+    s += tg(k.c2.x + 10, 490, 'C⁺ forms here', 'middle', 'fg-tag-warn');
+    s += arrow(P(262, 396), P(318, 396), { muted: true });
+    s += tBuCation(P(400, 400), true);
+    s += lbl(482, 404, '+  H₂O', 'start');
+    s += tg(400, 490, 'tert-butyl cation', 'middle', 'fg-tag-good');
+    s += sm(740, 366, 'H on the other carbon', 'end');
+    s += sm(740, 384, 'would leave a 1° cation,', 'end');
+    s += sm(740, 402, 'which is far worse', 'end');
     return s;
   },
   caption: 'Both routes give the same cation. Each curved arrow starts on a pair of electrons: the C&ndash;Br bond in route 1, the &pi; bond and then the H&ndash;O bond in route 2. The highlighted CH₃ in route 2 is the old CH₂ plus the new H.',
@@ -279,25 +279,25 @@ FIGURES.push({
   lessons: ['carbocations'],
   anchor: '',
   alt: 'Top: tert-butyl bromide loses bromide ion, a curved arrow carrying the C-Br pair onto bromine, giving the tert-butyl cation. Bottom: the pi bond of 2-methylpropene takes a proton from H3O+; the hydrogen goes to the CH2 end and the other carbon becomes the tert-butyl cation, with water released.',
-  viewBox: '0 0 340 680',
+  viewBox: '0 0 340 700',
   build() {
     let s = '';
     s += tg(170, 22, 'A LEAVING GROUP DEPARTS');
-    s += tBuBr(P(112, 96), 70);
+    s += tBuBr(P(100, 96), 80);
     s += arrow(P(284, 146), P(284, 184), { muted: true });
     s += tBuCation(P(110, 238));
     s += lbl(196, 242, '+');
     s += bromide(P(244, 238));
     s += rule(20, 300, 320, 300);
     s += tg(170, 324, 'A C=C TAKES A PROTON');
-    const c1 = P(72, 448);
+    const c1 = P(72, 472);
     const k = alkeneH3O(c1);
     s += k.s;
-    s += tg(52, 500, 'H adds here');
-    s += tg(k.c2.x + 6, 520, 'C⁺ forms here', 'middle', 'fg-tag-warn');
-    s += arrow(P(284, 486), P(284, 540), { muted: true });
-    s += tBuCation(P(116, 606), true);
-    s += lbl(196, 610, '+  H₂O', 'start');
+    s += tg(52, 524, 'H adds here');
+    s += tg(k.c2.x + 6, 544, 'C⁺ forms here', 'middle', 'fg-tag-warn');
+    s += arrow(P(284, 510), P(284, 564), { muted: true });
+    s += tBuCation(P(116, 630), true);
+    s += lbl(196, 634, '+  H₂O', 'start');
     return s;
   },
   caption: 'Two starting points, one cation. In the lower route the hydrogen goes to the CH₂ end.',
@@ -375,10 +375,10 @@ function overlap(cn, o = {}) {
   s += arm(cp, 340, 46, 'H', { bond: 'wedge' }).s;
   s += atom(cn.x, cn.y, 'C');
   s += atom(cp.x, cp.y, 'C', { kind: 'warn' });
-  s += chg(P(cp.x + 58, cp.y - 44));
+  s += chg(P(cp.x + 32, cp.y - 44));
   s += curve(P(cn.x + 16, cn.y - 44), P(cp.x - 20, cp.y - 48), { bow: -16, muted: true, size: 7 });
   const T = o.tagCls || 'fg-tag';
-  s += text(cn.x - 6, cn.y - 104, 'filled C–H bond', { cls: T, size: 11, anchor: 'middle' });
+  s += text(cn.x - 6, cn.y - 90, 'filled C–H bond', { cls: T, size: 11, anchor: 'middle' });
   s += text(cp.x + 8, cp.y - 90, 'empty p', { cls: T, size: 11, anchor: 'middle' });
   return { s, cp };
 }
@@ -708,7 +708,7 @@ function shiftBefore(x0, y0, spec) {
   s += atom(up.x, up.y, spec.mig, { kind: 'hi', r });
   for (const p of [...v, down]) s += dot(p);
   s += chg(P(catV.x - 14, catV.y - 18));
-  s += fromBond(migV, up, P(catV.x + 6, catV.y - 12), 14, 5);
+  s += fromBond(migV, up, P(catV.x + 4, catV.y - 7), 14, 5);
   return { s, v, catV, migV };
 }
 function shiftAfter(x0, y0, spec) {
@@ -833,7 +833,7 @@ function chain(x0, y0) {
 function numbers(v) {
   let s = '';
   s += text(v[0].x - 4, v[0].y + 18, '1', { cls: 'fg-tag-mut', size: 11 });
-  s += text(v[1].x + 14, v[1].y + 10, '2', { cls: 'fg-tag-mut', size: 11 });
+  s += text(v[1].x + 18, v[1].y - 10, '2', { cls: 'fg-tag-mut', size: 11 });
   s += text(v[2].x + 16, v[2].y + 14, '3', { cls: 'fg-tag-mut', size: 11 });
   s += text(v[3].x + 4, v[3].y + 18, '4', { cls: 'fg-tag-mut', size: 11 });
   return s;
@@ -894,15 +894,15 @@ FIGURES.push({
       s += wpanel(x, y, '2 · WATER LEAVES');
       const k = skeleton(x + 60, y + 150); s += k.s;
       const c2 = k.v[1];
-      const o = at(c2, 90, 56);
-      s += bond(c2, o, { rFrom: 0, rTo: 15 });
-      s += arm(o, 30, 40, 'H', { rFrom: 15 }).s + arm(o, 150, 40, 'H', { rFrom: 15 }).s;
+      const o = at(c2, 90, 64);
+      s += bond(c2, o, { rFrom: 0, rTo: 16 });
+      s += arm(o, 30, 40, 'H', { rFrom: 16 }).s + arm(o, 150, 40, 'H', { rFrom: 16 }).s;
       s += lp(o, 90);
       s += atom(o.x, o.y, 'O', { kind: 'warn' });
-      s += chg(at(o, 60, 30));
-      s += fromBond(c2, o, at(o, 300, 17), 14, -5);
+      s += chg(at(o, 345, 30));
+      s += fromBond(c2, o, at(o, 300, 18), 18, -6);
       const up3 = at(k.v[2], 90, 44); s += skb(k.v[2], up3) + dot(up3);
-      s += lbl(x + 300, y + 110, '→ H₂O', 'middle');
+      s += tg(x + 185, y + 204, 'the C–O pair leaves with the water', 'middle');
     }
     /* 3. the methyl shift */
     {
@@ -914,23 +914,23 @@ FIGURES.push({
       s += bond(c3, up, { rFrom: 0, rTo: 18, cls: 'fg-bond-hi' });
       s += atom(up.x, up.y, 'CH₃', { kind: 'hi', r: 18 });
       s += chg(P(c2.x - 14, c2.y - 18));
-      s += fromBond(c3, up, P(c2.x + 6, c2.y - 12), 14, 5);
-      s += tg(x + 300, y + 100, '2°', 'middle', 'fg-tag-warn');
+      s += fromBond(c3, up, P(c2.x + 4, c2.y - 7), 14, 5);
+      s += tg(x + 185, y + 204, 'a secondary cation at C2', 'middle', 'fg-tag-warn');
     }
     /* 4. bromide attacks the tertiary cation */
     {
       const x = X[1], y = Y[1];
       s += wpanel(x, y, '4 · BROMIDE ATTACKS C3');
-      const k = skeleton(x + 40, y + 160); s += k.s;
+      const k = skeleton(x + 60, y + 160); s += k.s;
       const c2 = k.v[1], c3 = k.v[2];
       const up = at(c2, 90, 50);
       s += bond(c2, up, { rFrom: 0, rTo: 18, cls: 'fg-bond-hi' });
       s += atom(up.x, up.y, 'CH₃', { kind: 'hi', r: 18 });
-      s += chg(P(c3.x - 16, c3.y - 14));
+      s += chg(P(c3.x - 16, c3.y + 20));
       const br = P(c3.x + 70, c3.y - 92);
       s += bromide(br);
       s += fromLp(br, 180, P(c3.x + 6, c3.y - 14), 18);
-      s += tg(x + 316, y + 186, '3°', 'middle', 'fg-tag-good');
+      s += tg(x + 185, y + 204, 'a tertiary cation at C3', 'middle', 'fg-tag-good');
     }
     /* 5. the product */
     {
@@ -986,6 +986,7 @@ FIGURES.push({
     s += atom(cl.x, cl.y, 'Cl', { kind: 'hi' });
     s += fromBond(e1, cl, at(cl, 228, 19), 16, -5);
     s += mark(q1[3], 'a', 12, 12);
+    s += mark(e1, 'b', -4, -12);
     s += sm(130, 262, '(chloromethyl)cyclobutane');
     s += arrow(P(236, 180), P(284, 180), { muted: true });
 
@@ -999,7 +1000,8 @@ FIGURES.push({
     s += skb(q2[0], e2) + dot(e2);
     s += chg(P(e2.x + 14, e2.y - 12));
     s += tg(e2.x + 36, e2.y + 6, '1°', 'middle', 'fg-tag-warn');
-    s += fromBond(q2[3], q2[0], P(e2.x + 4, e2.y + 12), -22, -6);
+    s += fromBond(q2[3], q2[0], P(e2.x - 1, e2.y + 7), -22, -6);
+    s += mark(e2, 'b', -12, -6);
     s += mark(q2[3], 'a', 12, 12);
     s += sm(390, 262, 'the highlighted bond carries a');
     s += sm(390, 280, 'over to the CH₂⁺ carbon');
@@ -1012,13 +1014,14 @@ FIGURES.push({
     for (const p of pg) s += dot(p);
     s += chg(P(pg[0].x, pg[0].y - 18));
     s += mark(pg[3], 'a', 12, 14);
+    s += mark(pg[4], 'b', 14, 0);
     s += tg(644, 262, 'cyclopentyl cation', 'middle', 'fg-tag-good');
     s += sm(644, 280, 'secondary, and nearly strain-free');
     s += rule(36, 296, 724, 296);
     s += sm(380, 318, 'Two things improve at once: 1° becomes 2°, and a strained four-membered ring becomes a five.');
     return s;
   },
-  caption: 'Ring expansion is a 1,2-alkyl shift whose moving group is part of the ring. Follow carbon <b>a</b>: it leaves the ring carbon next to the charge and bonds to the CH₂ instead, so the ring gains a member and the charge stays on the carbon <b>a</b> left.',
+  caption: 'Ring expansion is a 1,2-alkyl shift whose moving group is part of the ring. Follow carbon <b>a</b>: it leaves the ring carbon next to the charge and bonds to the CH₂ carbon, <b>b</b>, instead, so the ring gains a member and the charge stays on the carbon <b>a</b> left.',
 });
 
 export default FIGURES;

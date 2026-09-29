@@ -82,18 +82,18 @@ function oneStepNotes() {
 function oneStepLesson() {
   let s = axes(24, 226, 26, 330);
   const yR = 140, yT = 70, yP = 180;
-  s += dash(60, yT, 185, yT);
-  s += dash(60, yR, 80, yR);
-  s += dash(120, yR, 312, yR);
+  s += dash(60, yT, 192, yT);
+  s += dash(60, yR, 92, yR);
+  s += dash(132, yR, 312, yR);
   s += dash(290, yP, 312, yP);
-  s += profile([N(80, yR), N(120, yR), N(185, yT), N(250, yP), N(290, yP)]);
+  s += profile([N(92, yR), N(132, yR), N(192, yT), N(252, yP), N(290, yP)]);
   s += measure(68, yT, yR);
   s += text(61, 110, 'ΔG‡', { cls: 'fg-tag-warn', anchor: 'end' });
   s += measure(312, yR, yP);
   s += text(317, 165, 'ΔG°', { cls: 'fg-tag-good', anchor: 'start' });
-  s += tag(100, 128, 'reactants');
-  s += label(100, 162, 'HO⁻ + CH₃Br');
-  s += tag(185, 58, 'transition state ‡');
+  s += tag(114, 128, 'reactants');
+  s += label(110, 162, 'HO⁻ + CH₃Br');
+  s += tag(192, 58, 'transition state ‡');
   s += tag(268, 170, 'products');
   s += label(268, 204, 'CH₃OH + Br⁻');
   return s;
@@ -138,7 +138,7 @@ FIGURES.push({
       g += measure(xB + 16, Math.min(yR, yPr), Math.max(yR, yPr));
       g += text(xB + 22, (yR + yPr) / 2 + 4, dgLabel, { cls: dgCls, anchor: 'start' });
       g += text(xA - 26, yR + 20, 'reactants', { cls: 'fg-sm', anchor: 'start' });
-      g += text(xB + 16, yPr + (yPr > yR ? 20 : -12), 'products', { cls: 'fg-sm', anchor: 'end' });
+      g += text(xB + 8, yPr + 20, 'products', { cls: 'fg-sm', anchor: 'end' });
       g += label((xA + xB) / 2, 340, title);
       g += text((xA + xB) / 2, 362, sum1, { cls: 'fg-sm' });
       g += text((xA + xB) / 2, 380, sum2, { cls: 'fg-sm' });
@@ -313,7 +313,7 @@ FIGURES.push({
     s += measure(186, yHi, yR);
     s += text(178, 120, 'big ΔG‡', { cls: 'fg-tag-warn', anchor: 'end' });
     s += measure(214, yLo, yR);
-    s += text(222, 180, 'small ΔG‡', { cls: 'fg-tag-good', anchor: 'start' });
+    s += text(214, 216, 'small ΔG‡', { cls: 'fg-tag-good' });
     s += dash(150, yR, 646, yR) + dash(596, yPr, 646, yPr);
     s += measure(646, yR, yPr);
     s += text(656, (yR + yPr) / 2 + 4, 'ΔG° unchanged', { cls: 'fg-tag-good', anchor: 'start' });
@@ -339,9 +339,9 @@ FIGURES.push({
     s += text(180, yLo - 8, '‡', { cls: 'fg-lbl' });
     s += dash(96, yR, 314, yR) + dash(292, yPr, 314, yPr);
     s += measure(314, yR, yPr);
-    s += text(308, yPr + 22, 'ΔG° same', { cls: 'fg-tag-good', anchor: 'end' });
+    s += text(320, yPr + 22, 'ΔG° same', { cls: 'fg-tag-good', anchor: 'end' });
     s += tag(78, yR + 20, 'reactants');
-    s += tag(250, yPr + 22, 'products', { anchor: 'end' });
+    s += tag(238, yPr + 22, 'products', { anchor: 'end' });
     s += text(24, 256, 'faint curve: uncatalyzed, tall peak', { cls: 'fg-tag-mut', anchor: 'start' });
     s += text(24, 276, 'bold curve: catalyzed, lower peak', { cls: 'fg-tag', anchor: 'start' });
     return s;
@@ -359,9 +359,9 @@ function tailCurves(x0, yBase, W, H, Ea, L) {
   const pts = (T, a = 0) => { const p = []; for (let i = 0; i <= 140; i++) { const E = a + (Emax - a) * i / 140; p.push(`${X(E).toFixed(1)} ${Y(f(E, T)).toFixed(1)}`); } return p; };
   let g = '';
   const tail = (T, cls, op) => `<path class="${cls}" opacity="${op}" d="M${X(Ea).toFixed(1)} ${yBase} L${pts(T, Ea).join(' L')} L${X(Emax).toFixed(1)} ${yBase} Z"></path>`;
-  g += tail(1.7, 'fg-fill-warn', 0.35) + tail(1, 'fg-fill-hi', 0.55);
+  g += tail(1.8, 'fg-fill-warn', 0.35) + tail(1, 'fg-fill-hi', 0.55);
   g += `<path class="fg-bond-soft" fill="none" d="M${pts(1).join(' L')}"></path>`;
-  g += `<path class="fg-bond-hi" fill="none" d="M${pts(1.7).join(' L')}"></path>`;
+  g += `<path class="fg-bond-hi" fill="none" d="M${pts(1.8).join(' L')}"></path>`;
   g += dash(X(Ea), yBase, X(Ea), yBase - H - 8);
   return { g, X, Y, f };
 }
@@ -372,14 +372,14 @@ FIGURES.push({
   alt: 'Graph of number of molecules against the energy one molecule carries, for a cool and a warm sample. The cool curve is tall and narrow near low energy; the warm curve is lower and spread further to the right. A dashed vertical line marks the energy needed to reach the transition state. The area under each curve beyond that line is shaded, and the shaded tail of the warm curve is much larger.',
   viewBox: '0 0 760 300',
   build() {
-    const x0 = 70, yB = 240, W = 620, H = 180, Ea = 4.2;
+    const x0 = 70, yB = 240, W = 620, H = 180, Ea = 3.4;
     let s = frame(x0, yB, 40, x0 + W + 10);
     s += text(x0 + 9, 45, 'number of molecules', { cls: 'fg-tag', anchor: 'start' });
     s += text(x0 + W + 10, yB + 17, 'energy of one molecule →', { cls: 'fg-tag', anchor: 'end' });
     const c = tailCurves(x0, yB, W, H, Ea, false);
     s += c.g;
-    s += text(c.X(0.5) + 16, c.Y(c.f(0.5, 1)) + 4, 'cool', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += text(c.X(1.4), c.Y(c.f(1.4, 1.7)) - 10, 'warm', { cls: 'fg-tag', anchor: 'start' });
+    s += text(c.X(1.05) + 6, c.Y(c.f(1.05, 1)), 'cool', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += text(c.X(1.4), c.Y(c.f(1.4, 1.8)) - 10, 'warm', { cls: 'fg-tag', anchor: 'start' });
     s += text(c.X(Ea) + 8, 58, 'energy needed to reach the transition state', { cls: 'fg-tag-warn', anchor: 'start' });
     s += text(c.X(Ea) + 8, 74, '(set by ΔG‡)', { cls: 'fg-sm', anchor: 'start' });
     s += text(c.X(5.2), 204, 'shaded: molecules that can cross', { cls: 'fg-sm', anchor: 'start' });
@@ -394,14 +394,14 @@ FIGURES.push({
   alt: 'Number of molecules against the energy of one molecule, for a cool and a warm sample. The warm curve is flatter and spreads further right. A dashed line marks the energy needed to reach the transition state; the shaded area beyond it is much larger for the warm sample.',
   viewBox: '0 0 340 270',
   build() {
-    const x0 = 24, yB = 196, W = 296, H = 150, Ea = 4.2;
+    const x0 = 24, yB = 196, W = 296, H = 150, Ea = 3.4;
     let s = frame(x0, yB, 18, x0 + W + 8);
     s += text(x0 + 9, 23, 'number of molecules', { cls: 'fg-tag', anchor: 'start' });
     s += text(x0 + W + 8, yB + 17, 'energy of one molecule →', { cls: 'fg-tag', anchor: 'end' });
     const c = tailCurves(x0, yB, W, H, Ea, true);
     s += c.g;
-    s += text(c.X(0.5) + 12, c.Y(c.f(0.5, 1)) + 4, 'cool', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += text(c.X(1.5), c.Y(c.f(1.5, 1.7)) - 8, 'warm', { cls: 'fg-tag', anchor: 'start' });
+    s += text(c.X(1.05) + 5, c.Y(c.f(1.05, 1)), 'cool', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += text(c.X(1.5), c.Y(c.f(1.5, 1.8)) - 8, 'warm', { cls: 'fg-tag', anchor: 'start' });
     s += text(c.X(Ea) + 6, 64, 'needed to', { cls: 'fg-tag-warn', anchor: 'start' });
     s += text(c.X(Ea) + 6, 78, 'cross ΔG‡', { cls: 'fg-tag-warn', anchor: 'start' });
     s += text(24, 240, 'shaded: molecules with enough energy', { cls: 'fg-tag', anchor: 'start' });
@@ -474,10 +474,9 @@ function selPanel(ox, oy, L, c) {
   g += dash(xA - 22, y1, xP, y1) + dash(xA - 22, y3, xP, y3);
   g += measure(xA - 16, y1, y3);
   g += text(xA - 8, y1 - 10, c.drop, { cls: 'fg-tag-warn', anchor: 'start' });
-  g += text(xA - 11, yR + 20, c.left, { cls: 'fg-tag', anchor: 'middle' });
-  const up = p1 < yR;
-  g += text(xB + 24, p1 + (up ? -10 : -8), '1° radical', { cls: 'fg-tag', anchor: 'end' });
-  g += text(xB + 24, p3 + 18, '3° radical', { cls: 'fg-tag-mut', anchor: 'end' });
+  g += text(ox + 36, yR + 20, c.left, { cls: 'fg-tag', anchor: 'start' });
+  g += text(xB + 28, p1 + 4, '1°', { cls: 'fg-tag', anchor: 'start' });
+  g += text(xB + 28, p3 + 4, '3°', { cls: 'fg-tag-mut', anchor: 'start' });
   g += label(ox + 185, oy + 288, c.title);
   g += text(ox + 185, oy + 308, c.n1, { cls: sm });
   g += text(ox + 185, oy + 326, c.n2, { cls: sm });
@@ -496,7 +495,7 @@ FIGURES.push({
   build() {
     return selPanel(0, 0, false, SEL_CL) + rule(380, 20, 380, 330) + selPanel(385, 0, false, SEL_BR);
   },
-  caption: 'Bold curve: the route to the 1° radical. Faint curve: the route to the more stable 3° radical. Compare how far the faint peak sits below the bold one in each panel.',
+  caption: 'The bold curve, labeled 1&deg;, leads to the 1&deg; radical; the faint curve, labeled 3&deg;, leads to the more stable 3&deg; radical. Compare how far the faint peak sits below the bold one in each panel.',
 });
 FIGURES.push({
   id: 'l-hammond-selectivity',
@@ -524,7 +523,8 @@ FIGURES.push({
     s += profile([N(110, yR), N(180, yR), N(330, 104), N(520, 184), N(580, 184)]);
     s += tag(145, yR + 20, 'reactant');
     s += text(380, 48, '‡ higher peak', { cls: 'fg-tag-mut' });
-    s += text(588, 188, 'A: kinetic product (lower peak)', { cls: 'fg-tag', anchor: 'start' });
+    s += text(588, 188, 'A: kinetic product', { cls: 'fg-tag', anchor: 'start' });
+    s += text(588, 204, '(lower peak)', { cls: 'fg-sm', anchor: 'start' });
     s += text(588, 240, 'B: thermodynamic product', { cls: 'fg-tag-mut', anchor: 'start' });
     s += text(588, 256, '(deeper well)', { cls: 'fg-sm', anchor: 'start' });
     s += text(380, 304, 'Bold curve: the route to A. Faint curve: the route to B.', { cls: 'fg-sm' });

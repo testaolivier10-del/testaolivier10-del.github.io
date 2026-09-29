@@ -226,7 +226,7 @@ FIGURES.push({
   alt: 'Base-promoted bromination in three stacked panels: hydroxide takes an alpha hydrogen to give the enolate; the enolate attacks Br2 and bromide leaves; alpha-bromoacetophenone forms, and its next alpha hydrogen comes off faster.',
   viewBox: '0 0 340 656',
   build() { return gridFigure(baseCells, 1, 324, 204, 0, 14, 8, 8, [null, null, 'warn']); },
-  caption: 'Same three arrows as in acid; the oxygen starts with a negative charge.',
+  caption: 'Only panel 1 is new; panels 2 and 3 are the acid route with O⁻ in place of OH.',
 });
 
 /* ======================================================================
@@ -264,7 +264,7 @@ FIGURES.push({
   id: 'one-effect-two-ways',
   section: 'alpha-halogenation',
   anchor: '<h3>Base: through the enolate, and it runs away</h3>',
-  alt: 'Alpha-bromoacetophenone drawn with its alpha carbon carrying a bromine and two hydrogens. A box on the left points to the carbonyl oxygen: acid needs the oxygen to take a proton, the bromine pulls electrons away from it, so it is a weaker base and the second enol forms more slowly, so acid stops. A box on the right points to the two remaining alpha hydrogens: base needs to take one, the bromine helps hold the negative charge, so they are more acidic and the second enolate forms faster, so base goes on.',
+  alt: 'Alpha-bromoacetophenone drawn with its alpha carbon carrying a bromine and two hydrogens. A box on the left points to the carbonyl oxygen: acid needs the oxygen to take a proton, and the second enol forms more slowly, so acid stops. A box on the right points to the two remaining alpha hydrogens: base needs to take one, and the second enolate forms faster, so base goes on.',
   viewBox: '0 0 760 250',
   build() {
     let s = '';
@@ -283,17 +283,17 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-one-effect-two-ways',
   lessons: ['alpha-halogenation'],
-  alt: 'Alpha-bromoacetophenone with its bromine and two remaining alpha hydrogens, above two boxes. Acid box: acid needs the oxygen to take a proton; bromine pulls electrons from it; it is a weaker base; the second enol forms more slowly; stops. Base box: base needs to take an alpha hydrogen; bromine helps hold the negative charge; the hydrogen is more acidic; the second enolate forms faster; goes on.',
-  viewBox: '0 0 340 470',
+  alt: 'Alpha-bromoacetophenone with its bromine and two remaining alpha hydrogens, above two boxes. Acid box: acid needs the oxygen to take a proton; the second enol forms more slowly; stops. Base box: base needs to take an alpha hydrogen; the second enolate forms faster; goes on.',
+  viewBox: '0 0 340 370',
   build() {
     let s = '';
     const k = bromoKetone(P(150, 96));
     s += k.s;
-    s += effectBox(20, 200, 300, null, ACID_LINES);
-    s += effectBox(20, 332, 300, 'warn', BASE_LINES);
+    s += effectBox(20, 200, 300, null, [ACID_LINES[0], ACID_LINES[3]]);
+    s += effectBox(20, 290, 300, 'warn', [BASE_LINES[0], BASE_LINES[3]]);
     return s;
   },
-  caption: 'Same bromine in both boxes. The acid box is about the O; the base box is about the two α H.',
+  caption: 'The bullets above, drawn: the acid box is about the O; the base box is about the two α H.',
 });
 
 /* ======================================================================
@@ -395,7 +395,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Only the methyl carbon changes, and each round is faster than the last.',
+  caption: 'Only the methyl carbon changes; three rounds turn CH₃ into CBr₃.',
 });
 
 const cleaveCells = [
@@ -581,13 +581,13 @@ FIGURES.push({
     s += arrow(P(732, 322), P(732, 382)); s += tag(722, 358, 'Br₂', { anchor: 'end' });
     s += acyl(P(640, 440), { x: 'Br', alpha: 'CHBr', hiAlpha: true });
     s += tag(590, 506, '2-BROMOBUTANOYL BROMIDE');
-    s += arrow(P(462, 440), P(262, 440)); s += tag(362, 428, '+ butanoic acid');
-    s += tag(362, 460, 'swaps Br for OH, and', { cls: 'fg-tag-mut' });
-    s += tag(362, 476, 'a new acyl bromide forms', { cls: 'fg-tag-mut' });
+    s += arrow(P(462, 440), P(262, 440));
+    s += tag(362, 460, '+ butanoic acid') + tag(362, 478, 'Br and OH swap;', { cls: 'fg-tag-mut' });
+    s += tag(362, 494, 'a new acyl bromide forms', { cls: 'fg-tag-mut' });
     s += acyl(P(200, 440), { alpha: 'CHBr', hiAlpha: true });
     s += tag(150, 506, '2-BROMOBUTANOIC ACID', { cls: 'fg-tag-good' });
-    s += curve(P(474, 468), P(488, 166), { bow: -24, muted: true });
-    s += tag(450, 300, 'the new butanoyl', { cls: 'fg-tag-mut', anchor: 'end' }) + tag(450, 316, 'bromide goes round again', { cls: 'fg-tag-mut', anchor: 'end' });
+    s += curve(P(362, 434), P(488, 166), { bow: -40, muted: true });
+    s += tag(360, 300, 'the new butanoyl', { cls: 'fg-tag-mut', anchor: 'end' }) + tag(360, 316, 'bromide goes round again', { cls: 'fg-tag-mut', anchor: 'end' });
     return s;
   },
   caption: 'Go clockwise from top left. The bottom arrow makes the product and a fresh butanoyl bromide at the same time.',
