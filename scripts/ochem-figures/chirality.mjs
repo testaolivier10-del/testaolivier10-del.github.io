@@ -122,7 +122,7 @@ FIGURES.push({
     s += tagT(170, 408, 'H and F line up. Br and Cl come out swapped.', 'fg-tag-warn');
     return s;
   },
-  caption: 'Look at the wedge and the dashed wedge in the bottom row. Br and Cl have traded places, while H and F match.',
+  caption: 'Compare the bottom row group by group, starting with the solid wedge.',
 });
 
 /* --------------------------------------------------- ch2brcl-mirror --- */
