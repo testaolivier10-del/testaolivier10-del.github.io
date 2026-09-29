@@ -362,18 +362,20 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-carb-anomers',
   lessons: ['carbohydrates'],
-  viewBox: '0 0 340 560',
-  alt: 'Top: open-chain D-glucose curled into the shape of the ring, with a curved arrow from a lone pair on the C5 oxygen to the aldehyde carbon C1 and a second moving the C=O pi bond onto the aldehyde oxygen. Arrows lead down to alpha-D-glucopyranose on the left, C1 OH down, and beta-D-glucopyranose on the right, C1 OH up. About 36 percent alpha, 64 percent beta, well under 0.1 percent open chain.',
+  viewBox: '0 0 340 760',
+  alt: 'Three structures stacked, joined by equilibrium arrows. Top: alpha-D-glucopyranose, C1 OH down, about 36 percent. Middle: open-chain D-glucose curled into the shape of the ring, with a curved arrow from a lone pair on the C5 oxygen to the aldehyde carbon C1 and a second moving the C=O pi bond onto the aldehyde oxygen, well under 0.1 percent. Bottom: beta-D-glucopyranose, C1 OH up, about 64 percent.',
   build() {
     let s = '';
-    s += tg(170, 20, 'open chain: well under 0.1%');
-    s += openArrows(158, 150, 0.8).s;
-    s += eq(P(120, 262), P(90, 316));
-    s += eq(P(220, 262), P(250, 316));
-    s += tg(88, 350, 'α: about 36%') + tg(88, 366, 'C1 OH down', 'fg-tag-mut');
-    s += tg(256, 350, 'β: about 64%') + tg(256, 366, 'C1 OH up', 'fg-tag-mut');
-    s += anomer(88, 460, 0.52, 'a').s;
-    s += anomer(256, 460, 0.52, 'b').s;
+    s += tg(170, 18, 'α-D-glucopyranose: about 36%');
+    s += tg(170, 34, 'C1 OH down, opposite CH₂OH', 'fg-tag-mut');
+    s += anomer(164, 130, 0.8, 'a').s;
+    s += eq(P(170, 216), P(170, 256));
+    s += tg(170, 280, 'open chain: well under 0.1%');
+    s += openArrows(150, 390, 0.8).s;
+    s += eq(P(170, 486), P(170, 526));
+    s += tg(170, 550, 'β-D-glucopyranose: about 64%');
+    s += tg(170, 566, 'C1 OH up, same side as CH₂OH', 'fg-tag-mut');
+    s += anomer(164, 670, 0.8, 'b').s;
     return s;
   },
   caption: 'The coral dot is C1, the anomeric carbon. The C5 oxygen can add to either face of the flat C=O, so closing the ring gives two products.',
@@ -530,6 +532,322 @@ FIGURES.push({
   alt: 'Top: beta-D-glucopyranose, C1 bearing the ring oxygen and an OH, a hemiacetal that can open: test positive. Bottom: methyl beta-D-glucopyranoside, C1 bearing the ring oxygen and an OCH3, an acetal that stays shut: test negative.',
   build: () => testPair({ x: 4, y: 4, w: 332, h: 250 }, { x: 4, y: 264, w: 332, h: 250 }, 0.86),
   caption: 'The coral dot marks C1, the anomeric carbon. Only what caps its oxygen differs: H on top, CH₃ below.',
+});
+
+/* ============================================================ fig 7 ===
+   Maltose and sucrose as Haworth drawings. The glycosidic oxygen hangs
+   below both rings, so each link is drawn as the usual V: down from one
+   anomeric carbon, up to the carbon it joins. */
+function maltose(x0, cy, k, o = {}) {
+  // x0: the left edge of the drawing.
+  let s = '';
+  const ax = x0 + 66 * k + 16;
+  const A = pyranose(ax, cy, { k, dot: '1', subs: glcSubs(null, { 5: { up: 'CH₂OH', upLen: 16 } }) });
+  const C1A = A.pos['1'];
+  const Ol = P(C1A.x + 24 * k + 6, C1A.y + 42 * k + 8);
+  const C4B = P(Ol.x + 24 * k + 6, C1A.y);
+  const bx = C4B.x + 92 * k;
+  const bSubs = glcSubs(o.freeDown ? 'a' : 'b', { 4: { down: null }, 5: { up: 'CH₂OH', upLen: 16 } });
+  bSubs[1][o.freeDown ? 'downKind' : 'upKind'] = 'hi';
+  const B = pyranose(bx, cy, { k, dot: '1', subs: bSubs });
+  s += bond(C1A, Ol, { rFrom: 0, rTo: 15 }) + bond(Ol, C4B, { rFrom: 15, rTo: 0 });
+  s += A.s + B.s;
+  s += atom(Ol.x, Ol.y, 'O', { kind: 'warn' });
+  return { s, A, B, Ol, right: bx + 66 * k + 16 };
+}
+function sucrose(x0, cy, k) {
+  let s = '';
+  const ax = x0 + 66 * k + 16;
+  const A = pyranose(ax, cy, { k, dot: '1', subs: glcSubs(null, { 5: { up: 'CH₂OH', upLen: 16 } }) });
+  const C1A = A.pos['1'];
+  const Ol = P(C1A.x + 24 * k + 6, C1A.y + 42 * k + 8);
+  const C2F = P(Ol.x + 24 * k + 6, C1A.y);
+  const fk = k * 1.25;
+  const fx = C2F.x + 66 * fk, fy = C2F.y + 8 * fk;
+  const F = furanose(fx, fy, {
+    k: fk, dot: '2', L: 18,
+    subs: { 2: { up: 'CH₂OH', upLen: 14 }, 3: { down: 'OH' }, 4: { up: 'OH', upLen: 4 }, 5: { down: 'CH₂OH', downLen: 34 } },
+  });
+  s += bond(C1A, Ol, { rFrom: 0, rTo: 15 }) + bond(Ol, C2F, { rFrom: 15, rTo: 0 });
+  s += A.s + F.s;
+  s += atom(Ol.x, Ol.y, 'O', { kind: 'warn' });
+  return { s, A, F, Ol, right: fx + 66 * fk + 21 };
+}
+FIGURES.push({
+  id: 'carb-disaccharides',
+  section: 'carbohydrates',
+  anchor: '<p>The reasoning never mentions sweetness, size or source.',
+  viewBox: '0 0 760 300',
+  alt: 'Left: maltose. Two glucose rings; C1 of the left ring points down to a bridging oxygen, which bonds up to C4 of the right ring. The right ring keeps a free OH on its C1. Right: sucrose. C1 of a glucose ring points down to a bridging oxygen, which bonds up to C2 of a five-membered fructose ring drawn turned end for end, with its ring oxygen at the back, a CH2OH up on C2 and a CH2OH down on C5. Neither anomeric carbon has a free OH.',
+  build() {
+    let s = '';
+    s += panel(8, 8, 368, 284, { kind: 'good' });
+    s += panel(384, 8, 368, 284, { kind: 'warn' });
+    s += tg(192, 28, 'maltose: glucose α(1→4) glucose');
+    s += tg(192, 44, 'one anomeric C still has its OH', 'fg-tag-good');
+    const m = maltose(22, 168, 0.72);
+    s += m.s;
+    s += tg(m.Ol.x, m.Ol.y + 34, 'α link');
+    s += tg(m.B.ends['1up'].x - 4, m.B.ends['1up'].y - 24, 'free OH', 'fg-tag-good');
+    s += tg(192, 280, 'reducing', 'fg-tag-good');
+    s += tg(568, 28, 'sucrose: glucose α(1→2)β fructose');
+    s += tg(568, 44, 'both anomeric C are tied up', 'fg-tag-warn');
+    const c = sucrose(398, 168, 0.72);
+    s += c.s;
+    s += tg(c.Ol.x - 12, c.Ol.y + 34, 'C1 to C2');
+    s += tg(568, 280, 'non-reducing', 'fg-tag-warn');
+    return s;
+  },
+  caption: 'Coral dots mark the anomeric carbons and coral fills the bridging oxygen. In sucrose the fructose ring is drawn turned end for end, so its C2 can reach the bridge; that turn also sends its two CH₂OH groups the opposite way from an unturned drawing.',
+});
+
+/* The four cases of the lesson's sort, stacked, with no verdicts on them:
+   the student reads the anomeric carbons. */
+FIGURES.push({
+  id: 'l-carb-sort',
+  lessons: ['carbohydrates'],
+  viewBox: '0 0 340 720',
+  alt: 'Three structures stacked, each with its anomeric carbons marked by dots. Maltose: two glucose rings, the left C1 joined through an oxygen to C4 of the right ring, whose C1 carries an OH. Sucrose: glucose C1 joined through an oxygen to fructose C2. Methyl alpha-D-glucopyranoside: a glucose ring whose C1 carries OCH3 pointing down.',
+  build() {
+    let s = '';
+    s += tg(170, 18, 'maltose');
+    s += maltose(4, 126, 0.6).s;
+    s += tg(170, 256, 'sucrose');
+    s += sucrose(8, 364, 0.6).s;
+    s += tg(170, 494, 'methyl α-D-glucopyranoside');
+    s += pyranose(164, 600, { k: 0.8, dot: '1', subs: glcSubs(null, { 1: { down: 'OCH₃' }, 5: { up: 'CH₂OH', upLen: 16 } }) }).s;
+    return s;
+  },
+  caption: 'Dots mark the anomeric carbons. For each one, count its oxygens: is one of them an OH?',
+});
+
+/* ============================================================ fig 8 ===
+   The redox reactions change only the ends of the chain, so they are
+   drawn as Fischer projections with the changed ends highlighted. */
+FIGURES.push({
+  id: 'carb-redox',
+  section: 'carbohydrates',
+  anchor: 'hydrolyzed straight back by warm aqueous acid.</li>\n</ul>',
+  viewBox: '0 0 760 360',
+  alt: 'Four Fischer projections in a row. D-glucitol, with CH2OH at both ends, made from D-glucose by NaBH4. D-glucose, with CHO at the top. D-gluconic acid, with COOH at the top, made from glucose by bromine water. D-glucaric acid, with COOH at both ends, made by warm nitric acid. The four middle carbons are the same in all four.',
+  build() {
+    let s = '';
+    const xs = [72, 282, 492, 690], y0 = 88;
+    const names = [['D-glucitol', 'an alditol'], ['D-glucose', 'an aldose'], ['D-gluconic acid', 'an aldonic acid'], ['D-glucaric acid', 'an aldaric acid']];
+    const ends = [['CH₂OH', 'CH₂OH', 'hi', null], ['CHO', 'CH₂OH', null, null], ['COOH', 'CH₂OH', 'hi', null], ['COOH', 'COOH', 'hi', 'hi']];
+    xs.forEach((x, i) => {
+      s += tg(x, 24, names[i][0]) + tg(x, 40, names[i][1], 'fg-tag-mut');
+      s += fischer(x, y0, GLC_FISCHER(ends[i][0], ends[i][1], { top: ends[i][2], bottom: ends[i][3] }), { dy: 40, arm: 38 }).s;
+    });
+    s += arrow(P(222, y0), P(140, y0), { size: 7 }) + tg(181, y0 - 14, 'NaBH₄');
+    s += arrow(P(342, y0), P(424, y0), { size: 7 }) + tg(383, y0 - 30, 'Br₂, H₂O') + tg(383, y0 - 14, 'or Tollens’', 'fg-tag-mut');
+    s += arrow(P(552, y0), P(628, y0), { size: 7 }) + tg(590, y0 - 14, 'warm HNO₃');
+    s += tg(380, 348, 'C2 to C5 never change', 'fg-tag-mut');
+    return s;
+  },
+  caption: 'Teal marks the ends that changed. Warm nitric acid also oxidizes glucose straight to glucaric acid, through gluconic acid on the way.',
+});
+
+/* ============================================================ fig 9 ===
+   Fructose to an aldose in base, with every arrow. Only C1 and C2 change,
+   so only they are drawn; R is C3 to C6. */
+function hydroxide(c, lpDeg) {
+  // An HO- ion: O with its H to the left, three lone pairs, and a charge.
+  const H = P(c.x - 36, c.y);
+  let s = bond(c, H, { rFrom: 15, rTo: 12 }) + atom(H.x, H.y, 'H', { r: 12 }) + atom(c.x, c.y, 'O');
+  for (const d of [lpDeg, lpDeg + 115, lpDeg - 115]) s += lonePair(c.x, c.y, -d, { dist: 21 });
+  s += minus(P(c.x - 20, c.y - 20));
+  return s;
+}
+function enediolPanels(pn) {
+  let s = '';
+  const head = (p, t1, t2) => tg(p.x + p.w / 2, p.y + 20, t1) + tg(p.x + p.w / 2, p.y + 36, t2, 'fg-tag-mut');
+  for (const p of pn) s += panel(p.x, p.y, p.w, p.h);
+  const lbl2 = (c, deg, len, l, o = {}) => {
+    const e = at(c, deg, len);
+    return { s: bond(c, e, { rFrom: 16, rTo: rOf(l), order: o.order || 1, cls: o.cls }) + atom(e.x, e.y, l, { r: rOf(l), kind: o.kind }), e };
+  };
+  /* 1: fructose, base removes the C1 hydrogen. */
+  {
+    const p = pn[0];
+    s += head(p, '1 · base takes H⁺ from C1', 'fructose, C1 and C2');
+    const C1 = P(p.x + p.w / 2 - 10, p.y + 140), C2 = P(C1.x + 80, C1.y);
+    const Ht = lbl2(C1, 90, 48, 'H', { kind: 'hi' });
+    const OH = lbl2(C1, 200, 52, 'OH'), Hb = lbl2(C1, 270, 46, 'H');
+    const O2 = lbl2(C2, 80, 62, 'O', { order: 2 }), R = lbl2(C2, -40, 50, 'R');
+    s += bond(C1, C2, { rFrom: 16, rTo: 16 });
+    s += Ht.s + OH.s + Hb.s + O2.s + R.s;
+    s += atom(C1.x, C1.y, 'C', { kind: 'warn' }) + atom(C2.x, C2.y, 'C', { kind: 'warn' });
+    s += lonePair(O2.e.x, O2.e.y, -150, { dist: 21 }) + lonePair(O2.e.x, O2.e.y, -60, { dist: 21 });
+    const B = P(C1.x - 92, C1.y - 70);
+    s += hydroxide(B, 0);
+    s += curve(P(B.x + 24, B.y), P(Ht.e.x - 14, Ht.e.y - 2), { bow: -14, size: 7 });
+    s += curve(mid(C1, Ht.e, 0.55), mid(C1, C2), { bow: -18, size: 7 });
+    s += curve(P((C2.x + O2.e.x) / 2 + 6, (C2.y + O2.e.y) / 2), P(O2.e.x + 17, O2.e.y + 6), { bow: 16, size: 7 });
+    s += tg(p.x + p.w / 2, p.y + p.h - 12, 'the O⁻ that forms then takes H⁺ from water', 'fg-tag-mut');
+  }
+  /* 2: the enediol. */
+  {
+    const p = pn[1];
+    s += head(p, '2 · the enediol', 'a C=C with an OH on each carbon');
+    const C1 = P(p.x + p.w / 2 - 40, p.y + 140), C2 = P(C1.x + 80, C1.y);
+    s += bond(C1, C2, { rFrom: 16, rTo: 16, order: 2 });
+    s += lbl2(C1, 130, 52, 'OH').s + lbl2(C1, 230, 46, 'H').s;
+    s += lbl2(C2, 50, 52, 'OH', { kind: 'hi' }).s + lbl2(C2, -50, 50, 'R').s;
+    s += atom(C1.x, C1.y, 'C', { kind: 'warn' }) + atom(C2.x, C2.y, 'C', { kind: 'warn' });
+  }
+  /* 3: base removes the C1 OH proton; the O- pushes, C2 takes H+ from water. */
+  {
+    const p = pn[2];
+    s += head(p, '3 · base takes H⁺ from the C1 OH', 'then the C=C takes H⁺ at C2');
+    const C1 = P(p.x + p.w / 2 - 50, p.y + 118), C2 = P(C1.x + 80, C1.y);
+    const dbl = bond(C1, C2, { rFrom: 16, rTo: 16, order: 2 });
+    s += dbl;
+    const O1 = lbl2(C1, 130, 54, 'O');
+    s += O1.s + lbl2(C1, 230, 46, 'H').s;
+    s += lbl2(C2, 50, 52, 'OH').s + lbl2(C2, -10, 50, 'R').s;
+    s += atom(C1.x, C1.y, 'C', { kind: 'warn' }) + atom(C2.x, C2.y, 'C', { kind: 'warn' });
+    for (const d of [0, 110, 220]) s += lonePair(O1.e.x, O1.e.y, -d, { dist: 21 });
+    s += minus(P(O1.e.x + 20, O1.e.y - 20));
+    // water below C2
+    const Hw = P(C2.x - 8, C2.y + 66), Ow = P(Hw.x + 40, Hw.y + 26), Hw2 = P(Ow.x + 38, Ow.y);
+    s += bond(Hw, Ow, { rFrom: 12, rTo: 15 }) + bond(Ow, Hw2, { rFrom: 15, rTo: 12 });
+    s += atom(Hw.x, Hw.y, 'H', { r: 12, kind: 'hi' }) + atom(Ow.x, Ow.y, 'O') + atom(Hw2.x, Hw2.y, 'H', { r: 12 });
+    s += lonePair(Ow.x, Ow.y, 90, { dist: 21 }) + lonePair(Ow.x, Ow.y, -75, { dist: 21 });
+    s += curve(P(O1.e.x + 24, O1.e.y - 2), P(mid(C1, O1.e).x + 8, mid(C1, O1.e).y + 2), { bow: -16, size: 7 });
+    // the pi bond: start from the lower line of the double bond
+    const piStart = P((C1.x + C2.x) / 2, C1.y + 5);
+    s += curve(piStart, P(Hw.x - 10, Hw.y - 10), { bow: 16, size: 7 });
+    s += curve(mid(Hw, Ow), P(Ow.x - 16, Ow.y + 7), { bow: 16, size: 7 });
+  }
+  /* 4: the aldose. */
+  {
+    const p = pn[3];
+    s += head(p, '4 · an aldose: C=O at C1', 'H can reach C2 from either face');
+    const C1 = P(p.x + p.w / 2 - 40, p.y + 140), C2 = P(C1.x + 80, C1.y);
+    s += bond(C1, C2, { rFrom: 16, rTo: 16 });
+    s += lbl2(C1, 120, 54, 'O', { order: 2 }).s + lbl2(C1, 240, 46, 'H').s;
+    s += lbl2(C2, 90, 48, 'OH').s + lbl2(C2, 0, 52, 'R').s + lbl2(C2, 270, 46, 'H', { kind: 'hi' }).s;
+    s += atom(C1.x, C1.y, 'C', { kind: 'warn' }) + atom(C2.x, C2.y, 'C', { kind: 'warn' });
+    s += tg(p.x + p.w / 2, p.y + p.h - 12, 'glucose or mannose, the C2 epimers', 'fg-tag-mut');
+  }
+  return s;
+}
+FIGURES.push({
+  id: 'carb-enediol',
+  section: 'carbohydrates',
+  anchor: 'a capped anomeric carbon is what makes a sugar safe.</div>',
+  viewBox: '0 0 760 520',
+  alt: 'Four panels showing C1 and C2 of fructose becoming an aldose in base; R stands for C3 to C6. 1: hydroxide takes a hydrogen from C1; the C–H bond electrons move to make a C1=C2 bond and the C=O pi electrons move onto oxygen. 2: after that oxygen takes a proton from water, the enediol: C1=C2 with an OH on each carbon. 3: base has taken the proton from the C1 OH; a lone pair on the C1 O minus moves in to make C=O, the C=C electrons take a proton from water at C2, and the water O–H electrons stay on its oxygen. 4: the aldose, with C=O at C1 and a new H on C2.',
+  build: () => enediolPanels([
+    { x: 8, y: 8, w: 368, h: 250 }, { x: 384, y: 8, w: 368, h: 250 },
+    { x: 8, y: 266, w: 368, h: 250 }, { x: 384, y: 266, w: 368, h: 250 },
+  ]),
+  caption: 'Base runs every step both ways, which is why fructose, glucose and mannose interconvert in base. Coral marks C1 and C2; teal marks the hydrogens that move.',
+});
+
+/* =========================================================== fig 10 ===
+   Starch against cellulose: two units of each chain, and what the chain
+   does. In the beta chain the second glucose is drawn turned over, which
+   is also how it sits in cellulose. */
+function helix(x, y, w, amp, turns) {
+  // A coil seen from the side: back halves dashed, front halves solid.
+  let s = '';
+  const N = turns * 40;
+  let pts = [];
+  let lastFront = null;
+  const flush = (front) => {
+    if (pts.length > 1) s += `<path class="${front ? 'fg-bond-hi' : 'fg-dash'}" d="M${pts.map((p) => `${r2(p.x)} ${r2(p.y)}`).join(' L')}"></path>`;
+  };
+  for (let i = 0; i <= N; i++) {
+    // A coil along the x axis, seen slightly from the side, so each turn
+    // shows as a loop: the front half solid, the back half dashed.
+    const t = (i / N) * turns * 2 * Math.PI;
+    const c = w / (turns * 2 * Math.PI + 2);
+    const p = P(x + c * (t + 1) - 1.6 * c * Math.sin(t), y - Math.cos(t) * amp);
+    const front = Math.sin(t) < 0;
+    if (lastFront !== null && front !== lastFront) { pts.push(p); flush(lastFront); pts = [p]; }
+    else pts.push(p);
+    lastFront = front;
+  }
+  flush(lastFront);
+  return s;
+}
+function strands(x, y, w, gap) {
+  let s = '';
+  for (let j = 0; j < 3; j++) {
+    const yy = y + j * gap;
+    s += `<line class="fg-bond-hi" x1="${x}" y1="${yy}" x2="${x + w}" y2="${yy}"></line>`;
+    if (j < 2) for (let i = 1; i < 7; i++) {
+      const xx = x + (i * w) / 7;
+      s += `<line class="fg-dash" x1="${r2(xx)}" y1="${yy + 5}" x2="${r2(xx)}" y2="${yy + gap - 5}"></line>`;
+    }
+  }
+  return s;
+}
+function cellobiose(x0, cy, k) {
+  let s = '';
+  const ax = x0 + 66 * k + 16;
+  const A = pyranose(ax, cy, { k, dot: '1', subs: glcSubs(null, { 5: { up: 'CH₂OH', upLen: 16 } }) });
+  const C1A = A.pos['1'];
+  const Ol = P(C1A.x + 24 * k + 6, C1A.y - 42 * k - 8);
+  const C4B = P(Ol.x + 24 * k + 6, C1A.y);
+  const bx = C4B.x + 92 * k;
+  // Turned over: every up/down of glucose swaps, and C1 stays beta.
+  const B = pyranose(bx, cy, {
+    k, turned: true, dot: '1',
+    subs: { 1: { down: 'OH' }, 2: { up: 'OH' }, 3: { down: 'OH', downLen: 10 }, 5: { down: 'CH₂OH', downLen: 10 } },
+  });
+  s += bond(C1A, Ol, { rFrom: 0, rTo: 15 }) + bond(Ol, C4B, { rFrom: 15, rTo: 0 });
+  s += A.s + B.s + atom(Ol.x, Ol.y, 'O', { kind: 'warn' });
+  return { s, Ol };
+}
+FIGURES.push({
+  id: 'carb-polysaccharides',
+  section: 'carbohydrates',
+  anchor: '<li><b>Starch</b> (amylose) — glucose joined α-1,4. The α linkage makes a helical chain, and we digest it easily.</li>\n</ul>',
+  viewBox: '0 0 760 470',
+  alt: 'Top row: two glucose units of amylose, joined by an alpha 1,4 link whose oxygen hangs below the rings, and beside them a chain coiled into a helix. Bottom row: two glucose units of cellulose, joined by a beta 1,4 link whose oxygen sits above the rings, with the second glucose drawn turned over so its ring oxygen is at the front; beside them, three straight chains lying side by side with dashed hydrogen bonds between them.',
+  build() {
+    let s = '';
+    s += panel(8, 8, 744, 222, { kind: 'good' });
+    s += panel(8, 240, 744, 222);
+    s += tg(190, 28, 'amylose (starch): α-1,4') + tg(190, 44, 'each C1 link opposite the CH₂OH (α)', 'fg-tag-mut');
+    const m = maltose(24, 138, 0.72);
+    s += m.s + tg(m.Ol.x, m.Ol.y + 32, 'α');
+    s += tg(590, 44, 'the chain coils into a helix', 'fg-tag-good');
+    s += helix(450, 128, 280, 42, 3.5);
+    s += tg(590, 210, 'amylase can cut it: we digest starch', 'fg-tag-mut');
+    s += tg(190, 260, 'cellulose: β-1,4') + tg(190, 276, 'every second glucose is turned over', 'fg-tag-mut');
+    const c = cellobiose(24, 380, 0.72);
+    s += c.s + tg(c.Ol.x - 22, c.Ol.y - 6, 'β', 'fg-tag', 'end');
+    s += tg(590, 276, 'straight chains stack and hydrogen-bond', 'fg-tag-good');
+    s += strands(450, 318, 280, 44);
+    s += tg(590, 448, 'dashes: hydrogen bonds between chains', 'fg-tag-mut');
+    return s;
+  },
+  caption: 'Two units of each chain; the coral oxygen is the glycosidic link. In the lower drawing the second ring is turned over, so its ring oxygen sits at the front and its groups point the opposite way. It is still β-D-glucose.',
+});
+FIGURES.push({
+  id: 'l-carb-polysaccharides',
+  lessons: ['carbohydrates'],
+  viewBox: '0 0 340 620',
+  alt: 'Top: two glucose units joined alpha 1,4, the link oxygen below the rings, and under them a chain coiled into a helix. Bottom: two glucose units joined beta 1,4, the link oxygen above the rings and the second ring turned over, and under them three straight chains side by side with dashed hydrogen bonds.',
+  build() {
+    let s = '';
+    s += panel(4, 4, 332, 300, { kind: 'good' });
+    s += panel(4, 314, 332, 302);
+    s += tg(170, 24, 'amylose: α-1,4');
+    s += maltose(10, 126, 0.6).s;
+    s += tg(170, 228, 'the chain coils into a helix', 'fg-tag-good');
+    s += helix(40, 268, 260, 22, 3.5);
+    s += tg(170, 334, 'cellulose: β-1,4');
+    s += cellobiose(10, 450, 0.6).s;
+    s += tg(170, 530, 'straight chains stack and H-bond', 'fg-tag-good');
+    s += strands(40, 552, 260, 24);
+    return s;
+  },
+  caption: 'The coral oxygen is the glycosidic link. In cellulose every second glucose is turned over, and the chain stays straight.',
 });
 
 export default FIGURES;
