@@ -332,12 +332,12 @@
       11:['crosslink-and-end-of-life'] } },
 
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
-    'oxidation-states': { n:8, steps:{
+    'oxidation-states': { n:11, steps:{
       2:['oxidation-level'],
-      3:['oxidation-level'],
-      4:['oxidation-level','oxidant-choice'],
+      4:['oxidation-level'],
       6:['oxidation-level'],
-      7:['oxidation-level'] } },
+      8:['oxidation-level','oxidant-choice'],
+      10:['oxidation-level'] } },
 
     'alcohol-oxidation': { n:11, steps:{
       2:['oxidant-choice','oxidation-level'],

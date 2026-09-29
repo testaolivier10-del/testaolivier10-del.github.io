@@ -161,7 +161,7 @@ FIGURES.push({
   lessons: ['carbonyl-reduction'],
   anchor: '<h3>Reducing a ketone usually makes a racemic mixture</h3>',
   alt: 'Butan-2-one drawn flat in the plane of the page. An arrow on the left leads to the product formed when hydride arrives from the front face: butan-2-ol with its new H on a solid wedge, labelled S. An arrow on the right leads to the product from the back face: the same alcohol with the H on a hashed bond, labelled R. The two form 50 to 50, a racemic mixture.',
-  viewBox: '0 0 340 486',
+  viewBox: '0 0 340 512',
   build() {
     let s = '';
     s += box(8, 212, 'BUTAN-2-ONE · FLAT AT THE C=O');
@@ -176,19 +176,19 @@ FIGURES.push({
     s += arrow(P(216, 226), P(248, 264));
 
     const product = (x0, face) => {
-      let g = panel(x0, 270, 162, 180) + tag(x0 + 81, 292, face === 'wedge' ? 'H⁻ FROM THE FRONT' : 'H⁻ FROM THE BACK');
+      let g = panel(x0, 270, 162, 204) + tag(x0 + 81, 292, face === 'wedge' ? 'H⁻ FROM THE FRONT' : 'H⁻ FROM THE BACK');
       const pc = P(x0 + 58, 364);
       g += arm(pc, 'C', 90, 50, 'OH').s;
       g += arm(pc, 'C', 210, 44, 'CH₃').s;
       g += ethyl(pc, 'C', 330, 60, 46).s;
-      g += arm(pc, 'C', 270, 42, 'H', face, 'hi').s;
+      g += arm(pc, 'C', 270, 60, 'H', face, 'hi').s;
       g += A(pc, 'C', 'warn');
-      g += ital(x0 + 81, 440, '(', face === 'wedge' ? 'S' : 'R', ')-butan-2-ol');
+      g += ital(x0 + 81, 462, '(', face === 'wedge' ? 'S' : 'R', ')-butan-2-ol');
       return g;
     };
     s += product(4, 'wedge');
     s += product(174, 'hash');
-    s += tg(170, 476, '50 : 50 — a racemic mixture, (±)-butan-2-ol', 'good');
+    s += tg(170, 500, '50 : 50 — a racemic mixture, (±)-butan-2-ol', 'good');
     return s;
   },
   caption: 'The page is the plane of the C=O. A wedge points toward you and a hash points away, so each product shows which face the hydride came from.',
@@ -228,7 +228,7 @@ FIGURES.push({
     s += lonePair(p2.o.x, p2.o.y, 180, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 270, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 0, { dist: 21 });
     s += chg(140, 272, '−');
     s += curve(P(100, 300), P(115, 322), { bow: 10 });
-    s += curve(P(146, 364), P(168, 392), { bow: -12 });
+    s += curve(P(140, 360), P(171, 367), { bow: -14 });
     s += tg(262, 436, 'ethoxide leaves', 'mut');
 
     // ---- 3. second hydride ----
