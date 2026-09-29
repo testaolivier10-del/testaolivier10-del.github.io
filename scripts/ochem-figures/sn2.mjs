@@ -108,7 +108,7 @@ FIGURES.push({
   id: 'sn2-arrows',
   section: 'sn2',
   anchor: '<h3>One step, two arrows</h3>',
-  alt: 'Left: hydroxide ion, an oxygen with three lone pairs, a negative charge and a hydrogen, sits to the left of bromomethane. Bromomethane has its carbon in the middle, bromine to the right, and three hydrogens leaning to the left: one up, one on a wedge and one on a hash. Curved arrow 1 runs from the oxygen lone pair that faces the carbon to the carbon. Curved arrow 2 runs from the C–Br bond onto the bromine. A reaction arrow leads to the right side: methanol, with the oxygen now bonded to the carbon, the three hydrogens leaning to the right, and a separate bromide ion with four lone pairs and a negative charge.',
+  alt: 'Left: hydroxide ion, an oxygen with three lone pairs, a negative charge and a hydrogen, sits to the left of bromomethane. Bromomethane has its carbon in the middle, bromine to the right, and three hydrogens leaning to the left: one up, one on a wedge and one on a hash. Curved arrow 1 runs from the oxygen lone pair that faces the carbon to the carbon. Curved arrow 2 runs from the C–Br bond onto the bromine. A reaction arrow leads to the right side: methanol, with the oxygen now bonded to the carbon and to a hydrogen at a bent angle, the three hydrogens leaning to the right, and a separate bromide ion with four lone pairs and a negative charge.',
   viewBox: '0 0 760 230',
   build() {
     let s = '';
@@ -127,9 +127,9 @@ FIGURES.push({
     s += arrow(P(360, y), P(420, y));
     s += tag(390, y - 12, 'one step');
     // ---- after ----
-    const h1 = P(454, y), o1 = P(506, y), c1 = P(574, y), br1 = P(706, y);
+    const o1 = P(506, y), c1 = P(574, y), br1 = P(706, y), h1 = armEnd(o1, 108, 46);
     s += bond(h1, o1, { rFrom: 14, rTo: 16 }) + A(h1, 'H') + A(o1, 'O', 'hi');
-    s += lp(o1, 270) + lp(o1, 90);
+    s += lp(o1, 180) + lp(o1, 110);
     s += bond(o1, c1, { rFrom: 16, rTo: 16, cls: 'fg-bond-hi' });
     s += grp(c1, 70, 46, 'H') + grp(c1, 332, 54, 'H', 'wedge') + grp(c1, 278, 50, 'H', 'hash');
     s += A(c1, 'C', 'warn') + bromide(br1);
@@ -146,7 +146,7 @@ FIGURES.push({
   id: 'sn2-ts',
   section: 'sn2',
   anchor: '<h3>The transition state: one hill, no valley</h3>',
-  alt: 'Left: the SN2 transition state for hydroxide and bromomethane, in square brackets with a double dagger. HO, the carbon and Br lie on one horizontal line; dotted partial bonds join the carbon to O and to Br, and each end carries delta minus. A p orbital drawn along that line passes through the carbon. The three hydrogens are fully bonded and lie flat in one plane at right angles to the line: one straight up, one on a wedge and one on a hash. Labels: half-formed bond, half-broken bond, 180 degrees, three H flat, 120 degrees apart. Right: an energy diagram with a single peak between the reactants HO minus plus CH3Br and the lower products CH3OH plus Br minus. The peak is labeled with the double dagger and the note that this structure sits at the top; the curve has no valley.',
+  alt: 'Left: the SN2 transition state for hydroxide and bromomethane, in square brackets with a double dagger. HO, the carbon and Br lie on one horizontal line; dashed partial bonds join the carbon to O and to Br, and each end carries delta minus. A p orbital drawn along that line passes through the carbon. The three hydrogens are fully bonded and lie flat in one plane at right angles to the line: one straight up, one on a wedge and one on a hash. Labels: half-formed bond, half-broken bond, 180 degrees, three H flat, 120 degrees apart. Right: an energy diagram with a single peak between the reactants HO minus plus CH3Br and the lower products CH3OH plus Br minus. The peak is labeled with the double dagger and the note that this structure sits at the top; the curve has no valley.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
@@ -183,7 +183,7 @@ FIGURES.push({
     s += text(585, 284, 'one peak, no valley: no intermediate', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'Left, the structure at the top of the hill: dotted bonds, δ− at both ends, brackets and ‡. Right, the SN2 energy diagram, with a single peak.',
+  caption: 'Left, the structure at the top of the hill: dashed partial bonds, δ− at both ends, brackets and ‡. Right, the SN2 energy diagram, with a single peak.',
 });
 
 /* ------------------------------------------------------------------ 3 ---
@@ -372,8 +372,9 @@ function ladderRow(y, groups, opts = {}) {
     s += A(q, 'C', 'warn', 14);
   }
   s += bond(c, br, { rFrom: 16, rTo: 16 }) + A(c, 'C') + A(br, 'Br');
-  const stop = opts.block ?? c.x - 20;
-  s += arrow(P(20, y), P(stop, y));
+  const stop = opts.block ?? opts.slow ?? c.x - 20;
+  s += arrow(P(20, y), P(stop, y), opts.slow ? { muted: true } : {});
+  if (opts.slow) s += text(20, y + 22, 'very slow', { cls: 'fg-tag-mut', anchor: 'start' });
   if (opts.block) {
     const bx = opts.block + 8;
     s += `<line class="fg-arrow" x1="${bx - 9}" y1="${y - 9}" x2="${bx + 9}" y2="${y + 9}"></line><line class="fg-arrow" x1="${bx - 9}" y1="${y + 9}" x2="${bx + 9}" y2="${y - 9}"></line>`;
@@ -384,7 +385,7 @@ FIGURES.push({
   id: 'sn2-sterics',
   section: 'sn2',
   anchor: '<h3>Steric effects: which carbons can react</h3>',
-  alt: 'Five alkyl bromides stacked, each with its carbon in the middle, bromine to the right and an attack arrow coming in from the left along the C–Br line. Bromomethane has three hydrogens around the carbon and the arrow reaches it; relative rate about 30. Bromoethane has one methyl and two hydrogens; rate 1. 2-Bromopropane has two methyls and one hydrogen; rate 0.03. Neopentyl bromide has two hydrogens and a quaternary carbon whose methyl groups hang over the path; the arrow is stopped with a cross; rate about 0.00001. tert-Butyl bromide has three methyls; the arrow is stopped with a cross; no reaction. Bars on a log scale to the right shrink down the list.',
+  alt: 'Five alkyl bromides stacked, each with its carbon in the middle, bromine to the right and an attack arrow coming in from the left along the C–Br line. Bromomethane has three hydrogens around the carbon and the arrow reaches it; relative rate about 30. Bromoethane has one methyl and two hydrogens; rate 1. 2-Bromopropane has two methyls and one hydrogen; rate 0.03. Neopentyl bromide has two hydrogens and a quaternary carbon whose methyl groups hang over the path; the arrow is drawn faint and labeled very slow; rate about 0.00001. tert-Butyl bromide has three methyls; the arrow is stopped with a cross; no reaction. Bars on a log scale to the right shrink down the list.',
   viewBox: '0 0 760 740',
   build() {
     let s = '';
@@ -394,12 +395,12 @@ FIGURES.push({
       { y: 96, g: [[115, 'plain', 'H'], [208, 'wedge', 'H'], [250, 'hash', 'H']], f: 'CH₃Br', k: 'methyl', rate: 30, v: '≈30' },
       { y: 231, g: [[115, 'plain', 'CH₃'], [208, 'wedge', 'H'], [250, 'hash', 'H']], f: 'CH₃CH₂Br', k: 'primary (1°)', rate: 1, v: '1' },
       { y: 366, g: [[115, 'plain', 'CH₃'], [208, 'wedge', 'CH₃'], [250, 'hash', 'H']], f: '(CH₃)₂CHBr', k: 'secondary (2°)', rate: 0.03, v: '0.03' },
-      { y: 526, g: [[115, 'plain', 'Q'], [208, 'wedge', 'H'], [250, 'hash', 'H']], f: '(CH₃)₃CCH₂Br', k: 'neopentyl (1°)', rate: 1e-5, v: '≈0.00001', neo: true, block: 118 },
+      { y: 526, g: [[115, 'plain', 'Q'], [208, 'wedge', 'H'], [250, 'hash', 'H']], f: '(CH₃)₃CCH₂Br', k: 'neopentyl (1°)', rate: 1e-5, v: '≈0.00001', neo: true, slow: 112 },
       { y: 666, g: [[115, 'plain', 'CH₃'], [208, 'wedge', 'CH₃'], [250, 'hash', 'CH₃']], f: '(CH₃)₃CBr', k: 'tertiary (3°)', rate: 0, v: 'no SN2', block: 104 },
     ];
     const x0 = 450, per = 34;
     for (const r of rows) {
-      s += ladderRow(r.y, r.g, { neo: r.neo, block: r.block });
+      s += ladderRow(r.y, r.g, { neo: r.neo, block: r.block, slow: r.slow });
       s += text(310, r.y - 4, r.f, { cls: 'fg-lbl', anchor: 'start' });
       s += text(310, r.y + 14, r.k, { cls: 'fg-tag-mut', anchor: 'start' });
       if (r.rate > 0) {
@@ -458,7 +459,7 @@ FIGURES.push({
   id: 'sn2-allylic',
   section: 'sn2',
   anchor: 'Allylic',
-  alt: 'The SN2 transition state for an allylic bromide, in brackets with a double dagger. Three carbons in a row, drawn skeletally: C3 double-bonded to C2 on the left, and C2 single-bonded to C1, the carbon under attack, on the right. Each carbon has a p orbital standing straight up and down. At C1 the nucleophile sits above and the bromine below, each joined by a dotted partial bond along the axis of C1’s p orbital and each marked delta minus. Labels: the C=C p orbitals; the p orbital at C1 holding the two half bonds; side-by-side overlap spreads the charge.',
+  alt: 'The SN2 transition state for an allylic bromide, in brackets with a double dagger. Three carbons in a row, drawn skeletally: C3 double-bonded to C2 on the left, and C2 single-bonded to C1, the carbon under attack, on the right. Each carbon has a p orbital standing straight up and down. At C1 the nucleophile sits above and the bromine below, each joined by a dashed partial bond along the axis of C1’s p orbital and each marked delta minus. Labels: the C=C p orbitals; the p orbital at C1 holding the two half bonds; side-by-side overlap spreads the charge.',
   viewBox: '0 0 640 300',
   build() {
     let s = '';
@@ -484,7 +485,7 @@ FIGURES.push({
     s += text(412, 246, 'the π bond: a lower hill', { cls: 'fg-tag-good', anchor: 'start' });
     return s;
   },
-  caption: 'The three carbons are seen edge-on, so the plane they lie in shows as a line, and hydrogens are left off as in a skeletal drawing. Compare the three upright orbitals: the one at C1 carries the two dotted bonds and sits side by side with the pair at C2 and C3.',
+  caption: 'The three carbons are seen edge-on, so the plane they lie in shows as a line, and hydrogens are left off as in a skeletal drawing. Compare the three upright orbitals: the one at C1 carries the two dashed partial bonds and sits side by side with the pair at C2 and C3.',
 });
 
 /* ------------------------------------------------------------------ 10 ---
@@ -493,7 +494,7 @@ FIGURES.push({
   id: 'sn2-sp2',
   section: 'sn2',
   anchor: 'An sp² carbon is as closed to SN2',
-  alt: 'Left: chlorobenzene, a benzene ring with chlorine on the right-hand ring carbon. The backside of that carbon points left, straight into the middle of the ring. An attack arrow from inside the ring is stopped with a cross. Right: chloroethene, H2C=CHCl, drawn flat with every bond at 120 degrees and all atoms labeled. Chlorine points up and to the right from its carbon; the backside approach runs in the plane of the molecule, in the plane of the molecule, between the double bond and the hydrogen, and is stopped with a cross.',
+  alt: 'Left: chlorobenzene, a benzene ring with chlorine on the right-hand ring carbon. The backside of that carbon points left, straight into the middle of the ring. An attack arrow from inside the ring is stopped with a cross. Right: chloroethene, H2C=CHCl, drawn flat with every bond at 120 degrees and all atoms labeled. Chlorine points up and to the right from its carbon; the backside approach runs in the plane of the molecule, between the other carbon and the hydrogen, and is stopped with a cross.',
   viewBox: '0 0 700 250',
   build() {
     let s = '';
@@ -520,7 +521,7 @@ FIGURES.push({
     s += text(560, 238, 'carbon lies in the flat molecule', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'In both molecules the carbon holding chlorine is sp², flat, and has no open back side.',
+  caption: 'In both molecules the carbon holding chlorine is sp², and the way to its back side runs into the rest of the flat molecule.',
 });
 
 export default FIGURES;

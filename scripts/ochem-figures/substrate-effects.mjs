@@ -376,7 +376,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-se-neopentyl',
   lessons: ['substrate-effects'],
-  alt: 'Neopentyl bromide, (CH3)3C–CH2–Br, with every group labeled. The CH2 that carries Br is marked alpha and the carbon next to it is marked beta; that beta carbon carries three CH3 groups. Ethoxide, coming in from the side opposite the bromine, is stopped by a methyl on the beta carbon, shown by a gray arrow ending at a cross.',
+  alt: 'Neopentyl bromide, (CH3)3C–CH2–Br, with every group labeled. The CH2 that carries Br is marked alpha and the carbon next to it is marked beta; that beta carbon carries three CH3 groups. A gray arrow shows ethoxide approaching from the side opposite the bromine, where a methyl on the beta carbon is in the way.',
   viewBox: '0 0 340 184',
   build() { return panel(4, 4, 332, 176) + neoBody(-4, false); },
   caption: 'Neopentyl bromide, with the α and β carbons marked.',
