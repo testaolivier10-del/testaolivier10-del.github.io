@@ -68,12 +68,13 @@ function chainPts(x, y, n, L, axis, { cis = [], s = -1 } = {}) {
 /* Ink for a chain: `dbl` lists double bonds, `hi` bonds drawn in the accent
    colour. The second line of a double bond sits on the side of the bond
    before it, which for a cis bond is the inside of the U. */
-function chainInk(pts, { dbl = [], hi = [], cls = 'fg-bond', inset = 5 } = {}) {
+function chainInk(pts, { dbl = [], hi = [], cls = 'fg-bond', inset = 5, center = false } = {}) {
   let s = '';
   for (let j = 1; j < pts.length; j++) {
     const a = pts[j - 1], b = pts[j];
     const c = hi.includes(j) ? 'fg-bond-hi' : cls;
-    if (dbl.includes(j)) {
+    if (dbl.includes(j) && center) s += bond(a, b, { rFrom: 0, rTo: 0, order: 2, gap: 2.8, cls: c });
+    else if (dbl.includes(j)) {
       const ref = pts[j - 2] ?? pts[j + 1];
       s += ringDouble(a, b, ref, { inset, gap: 4.4, cls: c });
     } else s += bond(a, b, { rFrom: 0, rTo: 0, cls: c });

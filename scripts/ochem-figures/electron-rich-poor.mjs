@@ -74,13 +74,21 @@ function resArrowV(x, y1, y2) {
   const m = P(x, (y1 + y2) / 2);
   return arrow(m, P(x, y2), { size: 8 }) + arrow(m, P(x, y1), { size: 8 });
 }
-/* An sp² center seen edge-on: two groups left and right in the plane, and
-   the empty p orbital standing above and below. */
-function edgeOnEmpty(c, l, gl, gr, { off = 26, ry = 14, rx = 11, len = 52, kind = 'warn' } = {}) {
+function resArrowH(x1, x2, y) {
+  const m = P((x1 + x2) / 2, y);
+  return arrow(m, P(x2, y), { size: 8 }) + arrow(m, P(x1, y), { size: 8 });
+}
+/* A trigonal planar center drawn in perspective: one group to the left in
+   the page, one on a wedge (toward the reader, lower right), one on a hash
+   (away, upper right). All three lie in one plane, and the empty p orbital
+   stands above and below it. */
+function edgeOnEmpty(c, l, g, { off = 27, ry = 14, rx = 10, len = 50, kind = 'warn' } = {}) {
   let s = '';
   s += lobeE(c.x, c.y - off, rx, ry);
   s += lobeE(c.x, c.y + off, rx, ry);
-  s += arm(c, l, 180, len, gl) + arm(c, l, 0, len, gr);
+  s += arm(c, l, 180, len, g);
+  s += arm(c, l, 330, len, g, { kind: 'wedge' });
+  s += arm(c, l, 30, len, g, { kind: 'hash' });
   s += A(c, l, kind);
   return s;
 }
@@ -133,7 +141,7 @@ FIGURES.push({
   section: 'electron-rich-poor',
   lessons: ['electron-rich-poor'],
   anchor: '',
-  alt: 'A grid of six small drawings in two columns. Left column, electron-rich: water, whose oxygen carries two lone pairs; hydroxide ion, H–O with three lone pairs and a minus charge; ethene, with its pi bond highlighted. Right column, electron-poor: chloromethane written H3C–Cl, with the carbon marked delta plus and the chlorine delta minus; the tert-butyl cation seen edge-on, a carbon with a plus charge, a methyl group left and right and an empty p orbital drawn as pale lobes above and below; boron trifluoride seen edge-on, a boron with a fluorine left and right and an empty p orbital above and below, with no charge.',
+  alt: 'A grid of six small drawings in two columns. Left column, electron-rich: water, whose oxygen carries two lone pairs; hydroxide ion, H–O with three lone pairs and a minus charge; ethene, with its pi bond highlighted. Right column, electron-poor: chloromethane written H3C–Cl, with the carbon marked delta plus and the chlorine delta minus; the tert-butyl cation drawn in perspective, a carbon with a plus charge and three methyl groups (one in the page, one on a wedge, one on a hash) in a flat plane, with an empty p orbital drawn as pale lobes above and below; boron trifluoride drawn the same way with three fluorines and an empty p orbital, with no charge.',
   viewBox: '0 0 340 440',
   build() {
     let s = '';
@@ -156,9 +164,9 @@ FIGURES.push({
     s += B(h, 'H', o2, 'O') + A(h, 'H') + A(o2, 'O', 'hi');
     s += lp(o2, 90) + lp(o2, 0) + lp(o2, 270) + minus(134, 208);
     s += tg(84, 276, 'negative charge', 'mut') + tg(84, 290, 'hydroxide ion');
-    const c = P(256, 222);
-    s += edgeOnEmpty(c, 'C', 'H₃C', 'CH₃', { len: 52 });
-    s += plus(280, 206);
+    const c = P(250, 222);
+    s += edgeOnEmpty(c, 'C', 'CH₃', { len: 50 });
+    s += plus(236, 196);
     s += tg(256, 276, '+ and an empty p orbital', 'mut') + `<text class="fg-tag-warn" x="256" y="290" text-anchor="middle" font-size="11"><tspan font-style="italic">tert</tspan>-butyl cation</text>`;
 
     // ---- row 3 ----
@@ -169,13 +177,13 @@ FIGURES.push({
     s += A(c1, 'C') + A(c2, 'C');
     s += tg(85, 336, 'π', 'good');
     s += tg(84, 412, 'π bond', 'mut') + tg(84, 426, 'ethene');
-    const b = P(256, 358);
-    s += edgeOnEmpty(b, 'B', 'F', 'F', { len: 50 });
+    const b = P(250, 358);
+    s += edgeOnEmpty(b, 'B', 'F', { len: 48 });
     s += tg(256, 412, 'empty p orbital', 'mut') + tg(256, 426, 'BF₃, no charge', 'warn');
     return s;
   },
-  caption: 'Each drawing shows one sign. The pale lobes are empty p orbitals.',
-  note: 'In the edge-on drawings, the third group on the carbon or boron points toward you, and all three lie in one flat plane with the empty orbital at right angles to it.',
+  caption: 'Each drawing shows a sign; the <i>tert</i>-butyl cation shows two. The pale lobes are empty p orbitals.',
+  note: 'In the cation and in BF₃, the wedge comes toward you and the hashed bond goes away. All three groups lie in one flat plane, and the empty p orbital stands at right angles to it.',
 });
 
 /* ================================================================ 3 ===
@@ -257,7 +265,7 @@ FIGURES.push({
     s += rule(16, 190, 324, 190);
     s += tg(20, 212, 'CH₃: bonded to C and H only', 'mut', 'start');
     s += tg(20, 232, 'O: lone pairs, so electron-rich', '', 'start');
-    s += tg(20, 252, 'CH₂ next to O (both): δ+, no exit', 'mut', 'start');
+    s += tg(20, 252, 'CH₂ next to O (both): δ+, but RO⁻ cannot leave', 'mut', 'start');
     s += tg(20, 272, 'CH₂ next to Cl: δ+, and Cl⁻ can leave', 'warn', 'start');
     s += tg(20, 290, '→ the site of attack', 'warn', 'start');
     return s;
@@ -324,7 +332,7 @@ FIGURES.push({
     const a = curledChain(170, 160, false);
     s += a.s;
     s += curve(P(a.n.x + 24, a.n.y - 20), P(a.c2.x - 16, a.c2.y + 8), { bow: 12, size: 7 });
-    s += fromBond(a.c2, a.o, P(a.o.x + 17, a.o.y + 6), -10, -6);
+    s += fromBond(a.c2, a.o, P(a.o.x + 17, a.o.y - 6), -12, -13);
     s += dP(a.c2.x + 30, a.c2.y - 4);
     s += tg(50, 84, 'rich:') + tg(50, 98, 'lone pair');
     s += tg(290, 76, 'poor: δ+', 'warn') + tg(290, 90, 'C=O carbon', 'warn');
@@ -336,8 +344,8 @@ FIGURES.push({
     s += tg(296, 450, 'five atoms:', 'mut') + tg(296, 466, 'N, C5, C4,', 'mut') + tg(296, 482, 'C3, C2', 'mut');
     return s;
   },
-  caption: 'Top, the two arrows. Bottom, the ring they make, with the new bond highlighted.',
-  note: 'The lower drawing shows only the first bond to form. What happens next belongs to Carbonyl Chemistry.',
+  caption: 'The top drawing shows the two arrows. The bottom one shows the ring they make, with the new bond highlighted.',
+  note: 'The lower drawing shows only the first bond to form. Proton transfers follow, and what happens after that belongs to Carbonyl Chemistry.',
 });
 
 /* ================================================================ 6 ===
@@ -387,7 +395,7 @@ function enal(y, contributor) {
     s += fromBond(c1, o, P(o.x + 4, o.y + 20), 10, -7);
   }
   s += lbl(b.x, b.y + 24, 'β') + lbl(a.x, a.y - 14, 'α');
-  s += tg(c1.x + 6, c1.y + 22, 'C1', 'mut');
+  s += tg(c1.x + 6, c1.y + 22, 'C=O carbon', 'mut');
   return s;
 }
 FIGURES.push({
@@ -412,51 +420,62 @@ FIGURES.push({
 
 /* ================================================================ 8 ===
    Aniline: induction pulls out a little, resonance pushes in a lot. */
-function anilineRing(cx, cy, contributor) {
+function anilineRing(cx, cy, kind) {
+  // v0 top (ipso), v1 upper-left (ortho), v2 lower-left (meta), v3 bottom
+  // (para), v4 lower-right (meta), v5 upper-right (ortho).
   let s = '';
-  const v = polyPts(cx, cy, 6, 38, 90);   // v0 top (ipso), v1 upper-left (ortho) ...
+  const v = polyPts(cx, cy, 6, 38, 90);
+  const c = P(cx, cy);
   const n = P(cx, cy - 38 - 50);
-  if (!contributor) {
-    s += benzene(cx, cy, 38, { shift: 0 }).svg;
-    s += B(v[0], '', n, 'N');
-  } else {
-    s += bond(v[0], v[1], { rFrom: 0, rTo: 0 });
-    s += bond(v[1], v[2], { rFrom: 0, rTo: 0 });
-    s += ringDouble(v[2], v[3], P(cx, cy), { inset: 7 });
-    s += bond(v[3], v[4], { rFrom: 0, rTo: 0 });
-    s += ringDouble(v[4], v[5], P(cx, cy), { inset: 7 });
-    s += bond(v[5], v[0], { rFrom: 0, rTo: 0 });
-    s += B(v[0], '', n, 'N', { order: 2 });
+  const dbl = kind === 'neutral' ? [0, 2, 4] : kind === 'ortho' ? [2, 4] : [1, 4];
+  for (let i = 0; i < 6; i++) {
+    const a = v[i], b = v[(i + 1) % 6];
+    s += dbl.includes(i) ? ringDouble(a, b, c, { inset: 7 }) : bond(a, b, { rFrom: 0, rTo: 0 });
   }
+  s += B(v[0], '', n, 'N', { order: kind === 'neutral' ? 1 : 2 });
   s += arm(n, 'N', 150, 40, 'H') + arm(n, 'N', 30, 40, 'H');
   s += A(n, 'N', 'hi');
+  if (kind !== 'neutral') s += plus(n.x, n.y - 24);
   return { s, v, n };
+}
+/* A carbanion vertex: teal dot, lone pair pointing out, and a minus. */
+function anionAt(p, c, deg) {
+  return `<circle class="fg-atom-hi" cx="${r2(p.x)}" cy="${r2(p.y)}" r="7"></circle>` +
+    lp(p, deg, 16) + minus(at(p, deg, 34).x, at(p, deg, 34).y + 5);
 }
 FIGURES.push({
   id: 'rp-aniline',
   section: 'electron-rich-poor',
   anchor: '',
-  alt: 'Two stacked panels. Top: aniline, a benzene ring with an NH2 group on the top carbon. The nitrogen has a lone pair. One curved arrow moves the lone pair into the bond between nitrogen and the ring; a second moves the pi pair of the ring double bond onto the neighboring ring carbon, the ortho carbon. Bottom: the resulting resonance structure, with a C=N double bond, a plus charge on nitrogen, and a lone pair and a minus charge on the ortho ring carbon, which is on a teal dot and labeled electron-rich.',
-  viewBox: '0 0 340 424',
+  alt: 'Three structures in a row joined by resonance arrows. Left: aniline, a benzene ring with an NH2 group on the top carbon. The nitrogen has a lone pair; a short arrow along the C–N bond points toward nitrogen, labeled sigma pull. One curved arrow moves the lone pair into the C–N bond; a second moves the pi pair of the ring double bond onto the upper-left ring carbon, an ortho carbon. Middle: a resonance structure with a C=N double bond, a plus charge on nitrogen, and a lone pair and a minus charge on that ortho carbon; two more arrows move that lone pair into the ring and the next ring pi pair onto the bottom carbon. Right: a resonance structure with the plus on nitrogen and the lone pair and minus charge on the bottom carbon, para to the NH2 group.',
+  viewBox: '0 0 760 290',
   build() {
     let s = '';
-    s += tg(170, 20, 'ANILINE');
-    const a = anilineRing(150, 150, false);
+    s += tg(380, 20, 'ANILINE: THE NITROGEN LONE PAIR PUSHES INTO THE RING');
+    const cy = 170;
+    // ---- aniline ----
+    const a = anilineRing(130, cy, 'neutral');
     s += a.s + lp(a.n, 0);
     s += curve(P(a.n.x + 26, a.n.y + 6), P(a.n.x + 6, a.n.y + 30), { bow: -12, size: 7 });
     s += fromBond(a.v[0], a.v[1], P(a.v[1].x - 7, a.v[1].y - 9), 12, 7);
-    s += tg(270, 70, 'lone pair', '', 'middle') + tg(270, 84, 'pushes in', '', 'middle');
-    s += tg(262, 132, 'N also pulls a', 'mut') + tg(262, 146, 'little through σ', 'mut');
-    s += resArrowV(150, 194, 228);
-
-    const b = anilineRing(150, 370, true);
-    s += b.s + plus(b.n.x, b.n.y - 24);
-    s += `<circle class="fg-atom-hi" cx="${r2(b.v[1].x)}" cy="${r2(b.v[1].y)}" r="7"></circle>`;
-    s += lp(b.v[1], 150, 16) + minus(b.v[1].x - 24, b.v[1].y + 20);
-    s += `<text class="fg-tag" x="270" y="360" text-anchor="middle" font-size="11"><tspan font-style="italic">ortho</tspan> carbon:</text>` + tg(270, 374, 'electron-rich', '');
+    s += arrow(P(a.n.x - 12, a.n.y + 40), P(a.n.x - 12, a.n.y + 20), { muted: true, size: 6 });
+    s += tg(a.n.x - 22, a.n.y + 36, 'σ pull', 'mut', 'end');
+    s += tg(130, 256, 'aniline');
+    s += resArrowH(222, 286, cy);
+    // ---- ortho structure ----
+    const b = anilineRing(380, cy, 'ortho');
+    s += b.s + anionAt(b.v[1], P(380, cy), 150);
+    s += curve(P(b.v[1].x - 10, b.v[1].y + 12), P((b.v[1].x + b.v[2].x) / 2 - 7, (b.v[1].y + b.v[2].y) / 2), { bow: 10, size: 7 });
+    s += fromBond(b.v[2], b.v[3], P(b.v[3].x - 6, b.v[3].y + 12), 12, 7);
+    s += `<text class="fg-tag" x="380" y="256" text-anchor="middle" font-size="11">− on an <tspan font-style="italic">ortho</tspan> carbon</text>`;
+    s += resArrowH(472, 536, cy);
+    // ---- para structure ----
+    const c = anilineRing(630, cy, 'para');
+    s += c.s + anionAt(c.v[3], P(630, cy), 270);
+    s += `<text class="fg-tag" x="630" y="272" text-anchor="middle" font-size="11">− on the <tspan font-style="italic">para</tspan> carbon</text>`;
     return s;
   },
-  caption: 'Follow the two arrows, then find the − in the lower structure.',
+  caption: 'Follow the arrows from left to right. The − visits an <i>ortho</i> carbon and then the <i>para</i> carbon; pushing the other way round the ring puts it on the second <i>ortho</i> carbon.',
 });
 
 /* ================================================================ 9 ===
