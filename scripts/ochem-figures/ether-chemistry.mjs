@@ -9,7 +9,7 @@
    cleavage-sn1) are stacked in cells and use only fg-lbl and fg-tag text, so
    the same drawing serves the notes page and a lesson step. The others are
    notes-only. */
-import { atom, bond, wedge, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
+import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
 import { sk, polyPts, polyRing } from '../lib/ochem-skeletal.mjs';
 import { lobeE } from '../lib/ochem-helpers.mjs';
 
@@ -50,6 +50,12 @@ function b2a(a, b, rb, side = 1) {
   const ex = -ux * c60 + nx * s60, ey = -uy * c60 + ny * s60;
   const end = P(b.x + ex * (rb + 3), b.y + ey * (rb + 3));
   return curve(start, end, { bow: 10 * side });
+}
+
+/* Three lone pairs on a fluorine f bonded to atom b, pointing away from b. */
+function fLps(f, b) {
+  const a = (Math.atan2(b.y - f.y, b.x - f.x) * 180) / Math.PI;
+  return lps(f, [a + 180, a + 90, a - 90], 19);
 }
 
 /* A cell: a panel with a title at the top. `title` is trusted markup. */
@@ -219,7 +225,7 @@ FIGURES.push({
       t += tag(c.x, c.y + 38, 'attacked from the back');
       t += arrow(Q(162, 128), Q(162, 150));
       const e1 = Q(40, 180), e2 = Q(68, 164), oe = Q(100, 180), m = Q(130, 164);
-      t += sk(e1, e2) + B(e2, oe, '', 'O') + B(oe, m, 'O', '', { cls: 'fg-bond-hi' }) + A(oe, 'O', { kind: 'hi' });
+      t += sk(e1, e2) + B(e2, oe, '', 'O') + B(oe, m, 'O', '', { cls: 'fg-bond-hi' }) + A(oe, 'O', { kind: 'hi' }) + lps(oe, [270, 90]);
       t += text(Q(160, 0).x, oe.y + 5, '+  I⁻  +  Na⁺', { cls: 'fg-lbl', anchor: 'start' });
       t += tag(Q(84, 0).x, Q(0, 206).y, 'methoxyethane', { cls: 'fg-tag-good' });
       return t;
@@ -254,7 +260,7 @@ FIGURES.push({
       t += arrow(Q(162, 126), Q(162, 146));
       const c2 = Q(92, 170), o2 = Q(128, 170), mm = Q(156, 154);
       t += sk(c2, Q(92, 142)) + sk(c2, Q(62, 170)) + sk(c2, Q(92, 198));
-      t += B(c2, o2, '', 'O') + B(o2, mm, 'O', '', { cls: 'fg-bond-hi' }) + A(o2, 'O', { kind: 'hi' });
+      t += B(c2, o2, '', 'O') + B(o2, mm, 'O', '', { cls: 'fg-bond-hi' }) + A(o2, 'O', { kind: 'hi' }) + lps(o2, [90, 250]);
       t += tag(Q(238, 0).x, Q(0, 166).y, 'clean SN2', { cls: 'fg-tag-good' });
       t += tag(Q(238, 0).x, Q(0, 184).y, 'CH₃ has no β-H', { cls: 'fg-tag-good' });
       return t;
@@ -302,7 +308,7 @@ FIGURES.push({
     s += tag(24, 30, 'ROUTE A · the ring is the alkoxide', { anchor: 'start', cls: 'fg-tag-good' });
     {
       const r = ring(70, 72), o = P(r.att.x + 32, 72);
-      s += r.ink + B(r.att, o, '', 'O') + A(o, 'O', { kind: 'hi' }) + charge(o.x + 16, o.y - 14, '−');
+      s += r.ink + B(r.att, o, '', 'O') + A(o, 'O', { kind: 'hi' }) + lps(o, [300, 30, 110]) + charge(o.x - 6, o.y - 26, '−');
       s += text(170, 77, '+', { cls: 'fg-lbl' });
       const b1 = P(196, 80), b2 = P(222, 64), br = P(256, 80);
       s += sk(b1, b2) + B(b2, br, '', 'Br') + A(br, 'Br', { kind: 'warn' });
@@ -310,7 +316,7 @@ FIGURES.push({
       s += arrow(P(300, 72), P(380, 72));
       s += tag(340, 62, 'SN2');
       const r2x = ring(430, 72), o2 = P(r2x.att.x + 32, 72), e1 = P(o2.x + 28, 56), e2 = P(o2.x + 56, 72);
-      s += r2x.ink + B(r2x.att, o2, '', 'O') + B(o2, e1, 'O', '') + sk(e1, e2) + A(o2, 'O', { kind: 'hi' });
+      s += r2x.ink + B(r2x.att, o2, '', 'O') + B(o2, e1, 'O', '') + sk(e1, e2) + A(o2, 'O', { kind: 'hi' }) + lps(o2, [90, 250]);
       s += text(560, 72, 'ethoxycyclohexane', { cls: 'fg-lbl', anchor: 'start' });
       s += tag(560, 92, 'the target ✓', { anchor: 'start', cls: 'fg-tag-good' });
     }
@@ -319,7 +325,7 @@ FIGURES.push({
     s += tag(24, 152, 'ROUTE B · the ring carries the halide', { anchor: 'start', cls: 'fg-tag-warn' });
     {
       const e1 = P(36, 202), e2 = P(62, 186), o = P(94, 202);
-      s += sk(e1, e2) + B(e2, o, '', 'O') + A(o, 'O', { kind: 'hi' }) + charge(o.x + 16, o.y - 14, '−');
+      s += sk(e1, e2) + B(e2, o, '', 'O') + A(o, 'O', { kind: 'hi' }) + lps(o, [300, 30, 110]) + charge(o.x - 6, o.y - 26, '−');
       s += text(134, 207, '+', { cls: 'fg-lbl' });
       const r = ring(182, 196), br = P(r.att.x + 34, 196);
       s += r.ink + B(r.att, br, '', 'Br') + A(br, 'Br', { kind: 'warn' });
@@ -350,57 +356,64 @@ FIGURES.push({
   section: 'ether-chemistry',
   anchor: 'so the overall reaction is not stereospecific.</p>',
   viewBox: '0 0 760 300',
-  alt: 'Three stages for 2-methylpropene with mercuric acetate in methanol, then sodium borohydride. First, the mercurinium ion: mercury, carrying an acetate, bridges C1 and C2 from the top face, with a short bond to C1 and a long dashed bond to C2, which carries a partial positive charge. Methanol, below the plane, uses an oxygen lone pair to attack C2 from the bottom face. Second, after loss of a proton, the HgOAc group sits on C1 on the top face and the OCH3 group sits on C2 on the bottom face: an anti addition. Third, sodium borohydride replaces the mercury with hydrogen, giving tert-butyl methyl ether.',
+  alt: 'Three stages for 2-methylpropene with mercuric acetate in methanol, then sodium borohydride, drawn with the C1–C2 bond in the page and each carbon\'s other two groups on a wedge and a hash, so the alkene plane is edge-on. First, the mercurinium ion: mercury, carrying an acetate, bridges C1 and C2 from the top face, with a short bond to C1 and a long dashed bond to C2, which carries a partial positive charge. Methanol, below the plane, uses an oxygen lone pair to attack C2 from the bottom face. Second, after loss of a proton, the HgOAc group sits on C1 on the top face and the OCH3 group sits on C2 on the bottom face: an anti addition. Third, sodium borohydride replaces the mercury with hydrogen, giving tert-butyl methyl ether.',
   build() {
     let s = '';
-    // ---- stage 1 ----
+    const W = (a, b, lb) => wedge(a, b, { rFrom: rOf(a.l || 'C'), rTo: rOf(lb), width: 9 });
+    const H = (a, b, lb) => hash(a, b, { rFrom: rOf(a.l || 'C'), rTo: rOf(lb), width: 11, rungs: 4 });
+    // ---- stage 1: the mercurinium ion, alkene plane edge-on ----
     s += panel(8, 8, 300, 284);
     s += tag(158, 30, 'THE MERCURINIUM ION');
-    const c1 = P(92, 160), c2 = P(170, 160), hg = P(131, 98), ac = P(76, 72);
-    s += B(c1, c2, 'CH₂', 'C');
-    s += B(hg, c1, 'Hg', 'CH₂', { cls: 'fg-bond-hi' });
-    s += dash(P(hg.x + 11, hg.y + 12), P(c2.x - 9, c2.y - 11), 'fg-dash-hi');
+    const c1 = P(100, 160), c2 = P(190, 160), hg = P(145, 98), ac = P(88, 72);
+    c1.l = 'C'; c2.l = 'C';
+    s += B(c1, c2, 'C', 'C');
+    s += B(hg, c1, 'Hg', 'C', { cls: 'fg-bond-hi' });
+    s += dash(P(hg.x + 10, hg.y + 13), P(c2.x - 10, c2.y - 11), 'fg-dash-hi');
     s += B(hg, ac, 'Hg', 'OAc');
-    const m1 = P(222, 132), m2 = P(222, 188);
-    s += B(c2, m1, 'C', 'CH₃') + B(c2, m2, 'C', 'CH₃');
-    s += A(c1, 'CH₂') + A(c2, 'C') + A(hg, 'Hg', { kind: 'hi' }) + A(ac, 'OAc') + A(m1, 'CH₃') + A(m2, 'CH₃');
-    s += charge(hg.x + 22, hg.y - 6, '+');
-    s += text(c2.x + 2, c2.y + 30, 'δ+', { cls: 'fg-tag-warn' });
-    const om = P(150, 238), mh = P(104, 254), hh = P(196, 254);
+    const h1 = P(60, 182), h2 = P(60, 140), m1 = P(240, 184), m2 = P(240, 136);
+    s += W(c1, h1, 'H') + H(c1, h2, 'H') + W(c2, m1, 'CH₃') + H(c2, m2, 'CH₃');
+    s += A(c1, 'C') + A(c2, 'C') + A(hg, 'Hg', { kind: 'hi' }) + A(ac, 'OAc') + A(h1, 'H') + A(h2, 'H') + A(m1, 'CH₃') + A(m2, 'CH₃');
+    s += charge(hg.x + 22, hg.y - 8, '+');
+    s += text(c1.x, c1.y + 34, 'C1', { cls: 'fg-sm' });
+    s += text(c2.x - 32, c2.y + 34, 'C2', { cls: 'fg-sm' });
+    s += text(c2.x + 14, c2.y + 34, 'δ+', { cls: 'fg-tag-warn' });
+    const om = P(160, 244), mh = P(114, 260), hh = P(206, 260);
     s += B(om, mh, 'O', 'CH₃') + B(om, hh, 'O', 'H') + A(om, 'O', { kind: 'hi' }) + A(mh, 'CH₃') + A(hh, 'H');
-    s += lonePair(om.x, om.y, 300, { dist: 21 }) + lonePair(om.x, om.y, 230, { dist: 21 });
-    s += curve(P(om.x + 13, om.y - 22), P(c2.x - 6, c2.y + 14), { bow: -10 });
-    s += text(166, 76, 'top face', { cls: 'fg-sm', anchor: 'start' });
-    s += text(40, 282, 'CH₃OH attacks C2 from the bottom face', { cls: 'fg-sm', anchor: 'start' });
-    s += text(c1.x, c1.y + 30, 'C1', { cls: 'fg-sm' });
-    s += text(c2.x - 26, c2.y + 30, 'C2', { cls: 'fg-sm' });
+    s += lonePair(om.x, om.y, 300, { dist: 21 }) + lonePair(om.x, om.y, 235, { dist: 21 });
+    s += curve(P(om.x + 11, om.y - 22), P(c2.x - 8, c2.y + 14), { bow: -10 });
+    s += text(176, 72, 'top face', { cls: 'fg-sm', anchor: 'start' });
+    s += text(158, 282, 'CH₃OH attacks C2 from the bottom face', { cls: 'fg-sm' });
     // arrow 1
-    s += arrow(P(314, 150), P(352, 150));
-    s += text(333, 140, '−H⁺', { cls: 'fg-sm' });
-    // ---- stage 2 ----
-    s += panel(358, 8, 204, 284);
-    s += tag(460, 30, 'ANTI ADDITION');
-    const d1 = P(420, 150), d2 = P(494, 150);
-    const hgo = P(420, 92), od = P(494, 208), mo = P(538, 236);
-    s += B(d1, d2, 'CH₂', 'C') + B(d1, hgo, 'CH₂', 'HgOAc') + B(d2, od, 'C', 'O', { cls: 'fg-bond-hi' }) + B(od, mo, 'O', 'CH₃');
-    const u1 = P(538, 124), u2 = P(494, 94);
-    s += B(d2, u1, 'C', 'CH₃') + B(d2, u2, 'C', 'CH₃');
-    s += A(d1, 'CH₂') + A(d2, 'C') + atom(hgo.x, hgo.y, 'HgOAc', { r: 26 }) + A(od, 'O', { kind: 'hi' }) + A(mo, 'CH₃') + A(u1, 'CH₃') + A(u2, 'CH₃');
-    s += text(460, 262, 'HgOAc on top, OCH₃ below', { cls: 'fg-sm' });
+    s += arrow(P(314, 150), P(350, 150));
+    s += text(332, 140, '−H⁺', { cls: 'fg-sm' });
+    // ---- stage 2: anti adduct, same view ----
+    s += panel(356, 8, 214, 284);
+    s += tag(463, 30, 'ANTI ADDITION');
+    const d1 = P(410, 160), d2 = P(488, 160);
+    d1.l = 'C'; d2.l = 'C';
+    const hgo = P(410, 96), od = P(488, 222), mo = P(530, 248);
+    s += B(d1, d2, 'C', 'C') + bond(d1, hgo, { rFrom: 14, rTo: 26 }) + B(d2, od, 'C', 'O', { cls: 'fg-bond-hi' }) + B(od, mo, 'O', 'CH₃');
+    const e1 = P(372, 182), e2 = P(372, 140), u1 = P(530, 184), u2 = P(530, 136);
+    s += W(d1, e1, 'H') + H(d1, e2, 'H') + W(d2, u1, 'CH₃') + H(d2, u2, 'CH₃');
+    s += A(d1, 'C') + A(d2, 'C') + atom(hgo.x, hgo.y, 'HgOAc', { r: 26 }) + A(od, 'O', { kind: 'hi' }) + A(mo, 'CH₃');
+    s += A(e1, 'H') + A(e2, 'H') + A(u1, 'CH₃') + A(u2, 'CH₃');
+    s += lps(od, [180, 100]);
+    s += text(463, 272, 'HgOAc top face, OCH₃ bottom face', { cls: 'fg-sm' });
     // arrow 2
-    s += arrow(P(568, 150), P(606, 150));
-    s += text(587, 140, 'NaBH₄', { cls: 'fg-sm' });
+    s += arrow(P(574, 150), P(606, 150));
+    s += text(590, 140, 'NaBH₄', { cls: 'fg-sm' });
     // ---- stage 3 ----
     s += panel(612, 8, 140, 284, { kind: 'good' });
     s += tag(682, 30, 'THE ETHER', { cls: 'fg-tag-good' });
     const cc = P(668, 150), oo = P(704, 150), me = P(732, 134);
     s += sk(cc, P(668, 120)) + sk(cc, P(640, 150)) + sk(cc, P(668, 180)) + B(cc, oo, '', 'O') + B(oo, me, 'O', '') + A(oo, 'O', { kind: 'hi' });
+    s += lps(oo, [90, 250]);
     s += rich(682, 224, `${it('tert')}-butyl`, 'fg-lbl');
     s += text(682, 242, 'methyl ether', { cls: 'fg-lbl' });
     s += text(682, 270, 'Hg replaced by H', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Follow C2: it carries the δ+ in the bridge, takes the OCH₃ from below, and ends up as the tertiary carbon of the ether.',
+  caption: 'Wedges point toward you and hashes away, so the alkene plane stands edge-on and the top and bottom faces are the two π faces. This product has no stereocenter, so the anti relationship cannot be seen in it.',
 });
 
 /* ===================================================================== 7
@@ -497,7 +510,7 @@ FIGURES.push({
       t += arrow(Q(196, 86), Q(226, 86));
       t += text(Q(236, 0).x, Q(0, 91).y, '(CH₃)₃C–I', { cls: 'fg-lbl', anchor: 'start' });
       t += tag(Q(162, 0).x, Q(0, 152).y, '2-iodo-2-methylpropane + methanol', { cls: 'fg-tag-good' });
-      t += tag(Q(162, 0).x, Q(0, 174).y, 'iodide ends on the MORE crowded carbon');
+      t += tag(Q(162, 0).x, Q(0, 174).y, 'iodide ends up on the more crowded carbon');
       return t;
     });
     return s;
@@ -576,18 +589,18 @@ FIGURES.push({
 
     s += panel(380, 8, 372, 284);
     s += tag(566, 30, 'THE CHAIN THAT MAKES PEROXIDES');
-    s += text(400, 56, 'R–H = the ether; R· = its α radical', { cls: 'fg-sm', anchor: 'start' });
+    s += text(400, 56, 'E–H = the ether; E· = its α radical', { cls: 'fg-sm', anchor: 'start' });
     s += tag(400, 108, 'STEP 1', { anchor: 'start' });
-    s += text(460, 108, 'R·  +  O₂  →  R–O–O·', { cls: 'fg-lbl', anchor: 'start' });
+    s += text(460, 108, 'E·  +  O₂  →  E–O–O·', { cls: 'fg-lbl', anchor: 'start' });
     s += text(460, 128, 'O₂ bonds to the carbon radical', { cls: 'fg-sm', anchor: 'start' });
     s += tag(400, 178, 'STEP 2', { anchor: 'start' });
-    s += text(460, 178, 'R–O–O·  +  H–R  →  R–O–O–H  +  R·', { cls: 'fg-lbl', anchor: 'start' });
+    s += text(460, 178, 'E–O–O·  +  H–E  →  E–O–O–H  +  E·', { cls: 'fg-lbl', anchor: 'start' });
     s += text(460, 198, 'takes an α H from another ether', { cls: 'fg-sm', anchor: 'start' });
     s += text(460, 216, 'molecule: a hydroperoxide forms', { cls: 'fg-sm', anchor: 'start' });
     // the new R· loops back to the start of step 1
     s += '<path class="fg-arrow" fill="none" d="M726 166 C 746 160, 744 80, 712 80 L 478 80"></path>';
     s += '<path class="fg-head" d="M468 80 L478 75.8 L478 84.2 Z"></path>';
-    s += text(566, 256, 'the new R· starts step 1 again,', { cls: 'fg-tag-warn' });
+    s += text(566, 256, 'the new E· starts step 1 again,', { cls: 'fg-tag-warn' });
     s += text(566, 274, 'so peroxide builds up while air is present', { cls: 'fg-tag-warn' });
     return s;
   },
@@ -613,17 +626,19 @@ FIGURES.push({
     const f1 = P(b.x + 22, b.y - 38), f2 = P(b.x - 44, b.y), f3 = P(b.x + 22, b.y + 38);
     s += B(b, f1, 'B', 'F') + B(b, f2, 'B', 'F') + B(b, f3, 'B', 'F');
     s += A(b, 'B', { kind: 'warn' }) + A(f1, 'F') + A(f2, 'F') + A(f3, 'F');
+    s += fLps(f1, b) + fLps(f2, b) + fLps(f3, b);
     s += curve(P(o.x + 14, o.y - 24), P(b.x - 10, b.y - 14), { bow: -34 });
     s += arrow(P(170, 156), P(170, 180));
     const o2 = P(120, 222), b2 = P(190, 222);
     s += sk(P(64, 222), P(92, 206)) + B(P(92, 206), o2, '', 'O');
     s += B(o2, P(104, 250), 'O', '') + sk(P(104, 250), P(76, 266));
     s += B(o2, b2, 'O', 'B', { cls: 'fg-bond-hi' });
-    const g1 = P(222, 192), g2 = P(232, 236), g3 = P(170, 258);
+    const g1 = P(190, 178), g2 = P(234, 236), g3 = P(166, 262);
     s += B(b2, g1, 'B', 'F') + B(b2, g2, 'B', 'F') + B(b2, g3, 'B', 'F');
     s += A(o2, 'O', { kind: 'hi' }) + A(b2, 'B', { kind: 'warn' }) + A(g1, 'F') + A(g2, 'F') + A(g3, 'F');
-    s += charge(o2.x + 20, o2.y + 26, '+') + charge(b2.x - 14, b2.y - 20, '−');
-    s += lonePair(o2.x, o2.y, 270, { dist: 21 });
+    s += fLps(g1, b2) + fLps(g2, b2) + fLps(g3, b2);
+    s += charge(o2.x + 16, o2.y - 22, '+') + charge(b2.x + 20, b2.y - 20, '−');
+    s += lonePair(o2.x, o2.y, 250, { dist: 21 });
     s += text(288, 272, 'BF₃·OEt₂', { cls: 'fg-lbl' });
     return s;
   },
@@ -663,8 +678,7 @@ FIGURES.push({
       s += lonePair(o.p.x, o.p.y, o.deg + 180, { dist: 22 }) + lonePair(o.p.x, o.p.y, o.deg, { dist: 22, muted: true });
       s += atom(o.p.x, o.p.y, 'O', { r: 14, kind: 'hi' });
     }
-    s += atom(CX, CY, 'K', { r: 22, kind: 'warn', size: 13 });
-    s += text(CX + 26, CY - 16, '+', { cls: 'fg-warn', size: 15 });
+    s += atom(CX, CY, 'K⁺', { r: 54, kind: 'warn', size: 13 });
     s += text(192, 362, 'each corner between two O atoms is a CH₂', { cls: 'fg-sm' });
     s += text(192, 380, 'one lone pair on each O points at K⁺', { cls: 'fg-sm' });
     s += text(192, 402, '18 ring atoms, 6 of them oxygen', { cls: 'fg-tag' });
