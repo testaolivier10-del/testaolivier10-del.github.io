@@ -9,7 +9,7 @@
 
    Notes figures run up to 760 wide. Lesson copies (ids that start with l-)
    stack their panels at 340 wide and use only fg-lbl and fg-tag text. */
-import { atom as atom0, bond, wedge, hash, arrow, curve, lonePair, text, rule, P } from '../lib/ochem-figure.mjs';
+import { atom as atom0, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, P } from '../lib/ochem-figure.mjs';
 import { ringDouble } from '../lib/ochem-skeletal.mjs';
 
 /* An energy profile through a list of nodes, each a minimum or a maximum,
