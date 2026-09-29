@@ -481,7 +481,7 @@ FIGURES.push({
     s += fishhook(P(dt.x + 3, dt.y - 5), P(meet.x - 3, meet.y - 3), { bow: -12, size: 8 });
     s += fishhook(P((br1.x + cu.x) / 2, Y2 - 5), P(meet.x + 5, meet.y - 3), { bow: 14, size: 8, side: -1 });
     /* The other electron of the Br–Cu bond goes back to copper: Cu(II) → Cu(I). */
-    s += fishhook(P((br1.x + cu.x) / 2 - 4, Y2 + 4), P(cu.x - 10, cu.y + 11), { bow: 10, size: 8 });
+    s += fishhook(P(br1.x + 22, Y2 + 4), P(cu.x - 6, cu.y + 13), { bow: 12, size: 8 });
     s += arrow(P(304, Y2), P(372, Y2));
     s += K.ring(410, Y2, [1, 3, 5]);
     s += K.sub(410, Y2, 0, 'Br', { kind: 'hi', r: 14, size: 11, d: 22 });
