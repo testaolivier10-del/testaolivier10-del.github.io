@@ -116,6 +116,11 @@ function panelAngle(cx, cy) {
    eclipsed (drawn a few degrees apart so the back ones show). */
 function panelTorsion(cx, cy) {
   let s = '';
+  // tint the four eclipsed hydrogens: front ones at r+13, back ones at r+34
+  for (const [a, R] of [[-62, 37], [62, 37], [-40, 58], [84, 58]]) {
+    const q = nmAt(cx, cy, a, R);
+    s += `<circle class="fg-atom-warn" cx="${q.x.toFixed(2)}" cy="${q.y.toFixed(2)}" r="9"></circle>`;
+  }
   s += newman(cx, cy, 24, [[-62, 'H'], [62, 'H']], [[-40, 'H'], [84, 'H']]);
   const c3 = P(cx, cy + 50);
   s += `<line class="fg-bond" x1="${cx}" y1="${cy}" x2="${cx}" y2="${(c3.y - 14).toFixed(2)}"></line>`;
@@ -168,7 +173,7 @@ function panelCyclobutane(cx, cy, k = 1) {
 }
 
 /* Cyclopentane as an envelope: four carbons in a plane, the fifth lifted. */
-function panelEnvelope(cx, cy, k = 1) {
+function panelEnvelope(cx, cy, k = 1, flapKind = 'warn') {
   const R = 1.276;
   const C = [0, 1, 2, 3, 4].map((j) => ({
     x: R * Math.cos((2 * Math.PI * j) / 5),
@@ -178,7 +183,7 @@ function panelEnvelope(cx, cy, k = 1) {
   const pts = C.map(view(cx, cy, k));
   let s = skRing(pts, [[1, 2], [2, 3], [3, 4]]);
   s += `<line class="fg-dash-hi" x1="${pts[1].x.toFixed(2)}" y1="${pts[1].y.toFixed(2)}" x2="${pts[4].x.toFixed(2)}" y2="${pts[4].y.toFixed(2)}"></line>`;
-  for (const [i, p] of pts.entries()) s += atom(p.x, p.y, 'C', { r: 12, kind: i === 0 ? 'warn' : 'plain' });
+  for (const [i, p] of pts.entries()) s += atom(p.x, p.y, 'C', { r: 12, kind: i === 0 ? flapKind : 'plain' });
   return s;
 }
 
@@ -348,7 +353,7 @@ FIGURES.push({
     s += tag(255, 24, 'cyclobutane') + text(255, 146, 'folded, about 88°', { cls: 'fg-tag-mut' });
     s += rule(20, 166, 320, 166) + rule(170, 14, 170, 316);
     // cyclopentane
-    s += panelEnvelope(80, 244, 0.7);
+    s += panelEnvelope(80, 244, 0.7, 'hi');
     s += tag(85, 190, 'cyclopentane') + text(85, 312, 'envelope, about 104°', { cls: 'fg-tag-mut' });
     // cyclohexane
     const ch = chair(255, 248, 0.58);
@@ -566,22 +571,23 @@ FIGURES.push({
     s += text(X.chair, base + 24, 'chair · 0', { cls: 'fg-tag-good' });
     s += text(X.chair, base + 40, 'the deepest dip', { cls: 'fg-sm' });
     // half-chair above the peak: the four coplanar carbons in bold accent,
-    // and ticks showing which way the other two leave that plane
+    // and tags naming which way the other two leave that plane
     const hc = shapeWithH(HALF3(), X.half, Y(10.8) - 64, k, { hi: [[2, 3], [3, 4], [4, 5]] });
     s += hc.s;
     const up = hc.pts[0], dn = hc.pts[1];
-    s += arrow(P(up.x, up.y - 3), P(up.x, up.y - 22), { size: 6 });
-    s += text(up.x + 5, up.y - 16, 'up', { cls: 'fg-sm', anchor: 'start' });
-    s += arrow(P(dn.x, dn.y + 3), P(dn.x, dn.y + 22), { size: 6 });
-    s += text(dn.x - 5, dn.y + 20, 'down', { cls: 'fg-sm', anchor: 'end' });
+    const lead = (a, b) => `<line class="fg-bond-soft" x1="${a.x.toFixed(2)}" y1="${a.y.toFixed(2)}" x2="${b.x.toFixed(2)}" y2="${b.y.toFixed(2)}"></line>`;
+    s += lead(P(up.x + 3, up.y - 3), P(up.x + 24, up.y - 20));
+    s += text(up.x + 27, up.y - 18, 'above the plane', { cls: 'fg-sm', anchor: 'start' });
+    s += lead(P(dn.x + 2, dn.y - 3), P(dn.x + 14, dn.y - 36));
+    s += text(dn.x + 17, dn.y - 38, 'below the plane', { cls: 'fg-sm', anchor: 'start' });
     s += text(X.half, Y(10.8) - 120, 'half-chair · 10.8 (peak)', { cls: 'fg-tag-warn' });
     s += text(X.half - 70, Y(10.8) - 64, '4 C in', { cls: 'fg-tag', anchor: 'end' });
     s += text(X.half - 70, Y(10.8) - 48, 'one plane', { cls: 'fg-tag', anchor: 'end' });
     // twist-boats below their dips
     for (const [x, phi] of [[X.tb1, 30], [X.tb2, -30]]) {
       s += shapeWithH(TWIST3(phi), x, Y(5.5) + 60, k).s;
-      s += text(x, Y(5.5) + 104, 'twist-boat · 5.5 (dip)', { cls: 'fg-tag' });
-      s += text(x, Y(5.5) + 120, 'a boat twisted a little', { cls: 'fg-sm' });
+      s += text(x, 404, 'twist-boat · 5.5 (dip)', { cls: 'fg-tag' });
+      s += text(x, 420, 'a boat twisted a little', { cls: 'fg-sm' });
     }
     // boat above its small peak
     s += shapeWithH(BOAT3(), X.boat, Y(6.5) - 56, k, { hi: [[1, 2], [4, 5]] }).s;
@@ -589,7 +595,7 @@ FIGURES.push({
     s += text(X.boat, Y(6.5) - 88, 'both ends up', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Energies in kcal/mol above the chair. Follow the curve from the left: up over the half-chair, down into a twist-boat, then over the boat into a second twist-boat. In the half-chair, the four carbons joined by bold teal bonds lie in one plane; the arrows show which way the other two carbons leave it.',
+  caption: 'Energies in kcal/mol above the chair. Follow the curve from the left: up over the half-chair, down into a twist-boat, then over the boat into a second twist-boat. In the half-chair, the four carbons joined by bold teal bonds lie in one plane; the tags show which way the other two carbons leave it.',
 });
 
 export default FIGURES;
