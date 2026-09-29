@@ -122,9 +122,10 @@ const ringPlus = (c, p, d = 15) => charge(away(c, p, d), '+');
    (up-left) and H on a hash (up-right); the positive charge is on vertex
    `plus` and the two remaining pi bonds are the `doubles`. */
 function arenium(c, R, o = {}) {
-  const { s: rs, v } = ring(c, R, o.doubles ?? [2, 4]);
+  const rot = o.rot ?? -90;
+  const { s: rs, v } = ring(c, R, o.doubles ?? [2, 4], { rot });
   let s = rs;
-  const E = at(v[0], 238, o.eLen ?? 40), H = at(v[0], 302, 36);
+  const E = at(v[0], rot - 32, o.eLen ?? 40), H = at(v[0], rot + 32, 36);
   const eR = o.tBu ? 0 : (o.eR ?? rad({ l: o.E ?? 'E' }));
   s += wedge(v[0], E, { rFrom: 0, rTo: eR, width: 9 });
   if (o.tBu) {
@@ -275,7 +276,7 @@ FIGURES.push({
     s += tg(20, 160, 'benzene + E⁺', 'start');
     s += rxn(P(x, 150), P(x, 196), 'step 1 (slow)');
     s += mechArenium(P(x, 290), R).s;
-    s += tg(20, 350, 'arenium ion: C1 is sp³, not aromatic', 'start');
+    s += tg(20, 350, 'arenium ion: one C is sp³, not aromatic', 'start');
     s += rxn(P(x, 362), P(x, 400), 'step 2 (fast)');
     s += mechProduct(P(x, 506), R);
     s += lbl(180, 511, '+ H–B', 'start');
@@ -326,7 +327,7 @@ FIGURES.push({
     s += tg(500, 120, 'the 36 kcal/mol never comes back', 'start');
     s += good(500, 250, 'SUBSTITUTION ✓', 'start');
     s += tg(500, 268, 'aromatic again: the 36 kcal/mol returns', 'start');
-    s += tg(110, 244, 'the arenium ion');
+    s += tg(110, 290, 'the arenium ion');
     return s;
   },
   caption: 'Two ways out of the same cation. Count the sp³ carbons in each product.',
@@ -451,7 +452,7 @@ FIGURES.push({
     s += text(380, 344, 'reaction progress →', { cls: 'fg-tag', size: 11 });
 
     const start = P(70, 252), ts1 = P(196, 92), well = P(300, 198), ts2 = P(392, 158), prod = P(580, 288);
-    s += profile([well, P(430, 120), P(664, 226)], 'fg-dash');
+    s += profile([well, P(490, 96), P(664, 226)], 'fg-dash');
     s += profile([start, ts1, well, ts2, prod]);
 
     s += text(72, 274, 'benzene + E⁺', { cls: 'fg-tag', size: 11, anchor: 'start' });
@@ -464,7 +465,7 @@ FIGURES.push({
     s += text(380, 370, 'step 1 has the taller barrier, so step 1 sets the rate', { cls: 'fg-lbl', size: 13 });
     return s;
   },
-  caption: 'Compare the two barriers: the climb to TS1 is much taller than the climb from the arenium ion to TS2. The dashed branch is the addition the ring does not take; it ends above the starting materials.',
+  caption: 'Compare the two barriers: the climb to TS1 is much taller than the climb from the arenium ion to TS2. The dashed branch is the addition the ring does not take; it ends above the starting materials, while for an alkene the same branch runs downhill, and the alkene adds.',
 });
 
 FIGURES.push({
@@ -585,9 +586,9 @@ FIGURES.push({
     y = 300;
     s += bromRow2(P(80, y), 36, P(186, y));
     s += rxn(P(378, y), P(436, y), 'step 1');
-    const a = arenium(P(520, y + 8), 36, { E: 'Br', eR: 15 });
+    const a = arenium(P(500, y + 8), 36, { E: 'Br', eR: 15, rot: -30 });
     s += a.s;
-    s += lbl(592, y + 13, '+ FeBr₄⁻', 'start');
+    s += lbl(608, y + 40, '+ FeBr₄⁻', 'start');
     s += tg(380, 404, 'then FeBr₄⁻ takes the H⁺: HBr forms, and FeBr₃ is free to work again');
     return s;
   },
@@ -608,8 +609,8 @@ FIGURES.push({
     s += rule(16, 276, 324, 276);
     s += bromRow2(P(50, 360), 30, P(130, 360));
     s += rxn(P(150, 420), P(150, 460), 'step 1');
-    s += arenium(P(110, 540), 32, { E: 'Br', eR: 15 }).s;
-    s += lbl(170, 545, '+ FeBr₄⁻', 'start');
+    s += arenium(P(100, 530), 32, { E: 'Br', eR: 15, rot: -30 }).s;
+    s += lbl(190, 560, '+ FeBr₄⁻', 'start');
     return s;
   },
   caption: 'The ring bonds to the outer bromine as the Br–Br bond breaks.',
@@ -718,11 +719,11 @@ FIGURES.push({
     const y3 = 462;
     s += nitroAttack(P(84, y3), 36, P(196, y3));
     s += rxn(P(290, y3), P(350, y3), 'step 1');
-    s += arenium(P(440, y3 + 10), 36, { E: 'NO₂', eR: 18 }).s;
-    s += tg(520, y3 + 14, 'then step 2 gives nitrobenzene', 'start');
+    s += arenium(P(430, y3 + 10), 36, { E: 'NO₂', eR: 18, rot: -30 }).s;
+    s += tg(540, y3 + 44, 'then step 2 gives nitrobenzene', 'start');
     return s;
   },
-  caption: 'Top: sulfuric acid gives its proton to the OH oxygen. Middle: water leaves, and an oxygen lone pair makes the second N=O. Bottom: as the ring bonds to nitrogen, one N=O π bond moves onto oxygen. Only the lone pairs that move are drawn.',
+  caption: 'Top: sulfuric acid gives its proton to the OH oxygen. Middle: water leaves, and an oxygen lone pair makes the second N=O. Bottom: as the ring bonds to nitrogen, one N=O π bond moves onto oxygen. Lone pairs are drawn only on the atoms whose electrons move.',
 });
 
 FIGURES.push({
@@ -740,7 +741,7 @@ FIGURES.push({
     s += rule(16, 252, 324, 252);
     s += nitroAttack(P(56, 334), 32, P(156, 334));
     s += rxn(P(240, 350), P(240, 400), 'step 1', null);
-    s += arenium(P(120, 480), 30, { E: 'NO₂', eR: 18 }).s;
+    s += arenium(P(110, 480), 30, { E: 'NO₂', eR: 18, rot: -30 }).s;
     return s;
   },
   caption: 'Water leaves to make NO₂⁺; the ring then bonds to its nitrogen.',
@@ -774,8 +775,8 @@ FIGURES.push({
     s += curve(P(S.x + 7, S.y - 24), at(top, 10, 16), { bow: -12 });
     s += tg(206, 190, 'SO₃: S is strongly δ+');
     s += rxn(P(272, y), P(328, y), 'step 1');
-    s += arenium(P(410, y + 10), 34, { E: 'SO₃⁻', eR: 21 }).s;
-    s += rxn(P(484, y), P(560, y), '−H⁺, +H⁺');
+    s += arenium(P(396, y + 16), 34, { E: 'SO₃⁻', eR: 21, rot: -30 }).s;
+    s += rxn(P(496, y + 16), P(566, y + 16), '−H⁺, +H⁺');
     {
       const c2 = P(630, y + 16);
       const { s: r2s, v: v2 } = ring(c2, R, [0, 2, 4]);
@@ -794,7 +795,8 @@ FIGURES.push({
       s += atom(h.x, h.y, 'H', { kind: 'hi', r: 12 });
       s += charge(P(h.x - 16, h.y - 12), '+');
       s += curve(away(c3, edge(v3, 5), 5), at(h, 0, 13), { bow: 12 });
-      s += tg(90, 432, 'benzenesulfonate + H⁺');
+      s += tg(110, 424, 'benzenesulfonate + H⁺');
+      s += mut(110, 440, '(the acid is ionized in water)');
     }
     s += rxn(P(168, y), P(222, y), 'H⁺ adds');
     {
@@ -877,9 +879,9 @@ FIGURES.push({
       s += itTag(200, 402, 'tert', '-butyl cation + AlCl₄⁻');
     }
     s += rxn(P(300, y), P(356, y), 'step 1');
-    s += arenium(P(446, y + 12), 36, { tBu: true }).s;
-    s += tg(526, y + 4, 'step 2: AlCl₄⁻ takes the H⁺,', 'start');
-    s += itTag(526, y + 22, 'tert', '-butylbenzene + HCl + AlCl₃', 'fg-tag', 'start');
+    s += arenium(P(420, y + 20), 36, { E: 'C(CH₃)₃', eR: 31, rot: -30 }).s;
+    s += tg(530, y + 50, 'step 2: AlCl₄⁻ takes the H⁺,', 'start');
+    s += itTag(530, y + 68, 'tert', '-butylbenzene + HCl + AlCl₃', 'fg-tag', 'start');
     return s;
   },
   caption: 'Top: one arrow makes the Cl–Al bond, and a second breaks the C–Cl bond. Bottom: the ring attacks the carbocation. Lone pairs are drawn only where an arrow starts, and the chlorines on aluminum are drawn without theirs.',
@@ -1183,7 +1185,7 @@ FIGURES.push({
     s += tg(600, y + 2, 'the ring deactivates it', 'start');
     return s;
   },
-  caption: 'Top: a strongly deactivated ring. Bottom: the NH₂ lone pair binds AlCl₃ before any electrophile can form, and the positive nitrogen then deactivates the ring.',
+  caption: 'Top: a strongly deactivated ring. Bottom: the NH₂ lone pair ties up the AlCl₃, and the positive nitrogen then deactivates the ring.',
 });
 
 /* ============================================ making propylbenzene === */
@@ -1314,7 +1316,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Rows 4 and 5 make a carbon&ndash;carbon bond. Look for the reverse arrow in row 3 and the faint second ethyl group in row 4.',
+  caption: 'Rows 4 and 5 make a carbon&ndash;carbon bond. Look for the reverse arrow in row 3 and the faint second ethyl group in row 4 (the product reacts again; see the limits below).',
 });
 
 export default FIGURES;
