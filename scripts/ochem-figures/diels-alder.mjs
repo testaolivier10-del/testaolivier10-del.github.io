@@ -96,11 +96,11 @@ function mechRow(ox, oy, alkyne) {
   s += right(oy + 88, ox + 158, ox + 196);
 
   const Q = hexFlat(ox + 268, oy + 88, 40);
-  s += productRing(Q, alkyne ? { bottomDouble: true, bottomCls: 'fg-bond-hi', plainNew: false } : {});
+  s += productRing(Q, alkyne ? { bottomDouble: true } : {});
+  if (alkyne) s += tag(ox + 268, Q.d1.y + 16, 'kept π bond', { cls: 'fg-tag-mut' });
   s += numLbl(Q.c1, 200, 'C1', 18) + numLbl(Q.c2, 240, 'C2', 16) + numLbl(Q.c3, 300, 'C3', 16) + numLbl(Q.c4, 340, 'C4', 18);
   s += tag(ox + 268, oy + 30, alkyne ? 'cyclohexa-1,4-diene' : 'cyclohexene');
-  if (alkyne) s += tag(ox + 268, oy + 150, 'second π bond kept', { cls: 'fg-tag-good' });
-  else s += tag(ox + 268, oy + 150, 'new σ bonds in color', { cls: 'fg-tag-good' });
+  s += tag(ox + 268, oy + (alkyne ? 158 : 150), 'new σ bonds in color', { cls: 'fg-tag-good' });
   return s;
 }
 
@@ -116,7 +116,7 @@ FIGURES.push({
     s += mechRow(400, 10, true);
     return s;
   },
-  caption: 'Left: follow the three curved arrows round the ring. Right: the colored double bond is the alkyne’s leftover π bond. Dashed lines are bonds that are forming.',
+  caption: 'Left: follow the three curved arrows round the ring. Right: the double bond labeled “kept” is the alkyne’s leftover π bond. Dashed lines are bonds that are forming.',
 });
 
 FIGURES.push({
@@ -130,7 +130,7 @@ FIGURES.push({
     s += mechRow(0, 196, true);
     return s;
   },
-  caption: 'Top: follow the three arrows. Bottom: the colored double bond is the alkyne’s leftover π bond.',
+  caption: 'Top: follow the three arrows. Bottom: the double bond labeled “kept” is the alkyne’s leftover π bond.',
 });
 
 /* =====================================================================
@@ -416,8 +416,8 @@ FIGURES.push({
   id: 'da-combined',
   section: 'diels-alder',
   anchor: 'cis-2-methylcyclohex-3-ene-1-carbaldehyde</b>.</p>\n</div>',
-  alt: 'Left: (E)-penta-1,3-diene seen from above, drawn s-cis with its methyl pointing outward from C1. Propenal lies underneath it, and its CHO group points in under the diene, which is the endo orientation. Dashed lines show the two bonds forming, C1 to the CHO-bearing carbon and C4 to the CH2 carbon. Right: the product ring with the methyl and the CHO on neighboring carbons, both on wedges, cis.',
-  viewBox: '0 0 380 190',
+  alt: 'Left: (E)-penta-1,3-diene seen from above, drawn s-cis with its methyl pointing outward from C1. Propenal lies underneath it, and its CHO group points in under the diene, which is the endo orientation. Dashed lines show the two bonds forming, C1 to the CHO-bearing carbon and C4 to the CH2 carbon. Right: the product ring with the methyl and the CHO on neighboring carbons, both on wedges, cis. Below: the same moment seen end-on along the C1 to C4 axis. The diene is a horizontal line above the dienophile; the CHO points right, in under the diene, the inward H on C1 points left, the other way, and the outward methyl points toward the viewer. So the CHO ends up trans to the inward H and cis to the outward methyl.',
+  viewBox: '0 0 380 424',
   build() {
     let s = '';
     const R = hexFlat(96, 70, 38, 30);
@@ -434,9 +434,28 @@ FIGURES.push({
     s += sub(Q.c1, OUT.c1, 'CH₃', { len: 28, r: 14, kind: 'wedge' });
     s += sub(Q.d1, OUT.d1, 'CHO', { len: 28, r: 15, kind: 'wedge' });
     s += tag(300, 166, 'cis', { cls: 'fg-tag-good' });
+
+    // ---- side view, looking along the C1-C4 axis: C4 hides behind C1,
+    // C3 behind C2, and D2 behind D1.
+    s += rule(20, 186, 360, 186);
+    s += tag(190, 208, 'the same moment, seen end-on');
+    const A = P(150, 270), B = P(250, 270), D = P(150, 346);
+    s += bond(A, B, { order: 2, rFrom: 0, rTo: 0 });
+    s += tag(250, 292, 'C2 (C3 behind)', { cls: 'fg-tag-mut' });
+    s += tag(A.x + 12, A.y + 22, 'C1', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += sk(A, D, 'fg-dash-hi');
+    s += tag(D.x - 12, D.y + 18, 'D1 (D2 behind)', { cls: 'fg-tag-mut', anchor: 'end' });
+    s += sub(D, 0, 'CHO', { len: 46, r: 15 });
+    s += tag(D.x + 46, D.y + 30, 'endo: under the diene', { cls: 'fg-tag' });
+    s += sub(A, 180, 'H', { len: 40, r: 9 });
+    s += tag(A.x - 48, A.y + 24, 'inward H', { cls: 'fg-tag' });
+    s += sub(A, -100, 'CH₃', { len: 34, r: 14, kind: 'wedge' });
+    s += tag(A.x + 22, A.y - 40, 'outward CH₃ (toward you)', { cls: 'fg-tag', anchor: 'start' });
+    s += tag(190, 392, 'CHO and inward H point opposite ways:', { cls: 'fg-tag-good' });
+    s += tag(190, 410, 'CHO trans to that H, so cis to the CH₃', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'Seen from above, with propenal lying under the diene. The CHO is drawn pointing in under the diene.',
+  caption: 'Top: seen from above, with propenal lying under the diene. Bottom: the same moment seen end-on. Compare where the CHO and the inward H point.',
 });
 
 /* =====================================================================
@@ -466,13 +485,16 @@ function regioRow(ox, oy, donorAt) {
 
   const Q = hexFlat(ox + 270, oy + 92, 32);
   s += productRing(Q);
+  const inside = (v, t) => { const q = P(r1(v.x + (Q.ctr.x - v.x) * 0.36), r1(v.y + (Q.ctr.y - v.y) * 0.36)); return tag(q.x, q.y + 4, t, { cls: 'fg-tag-mut' }); };
   if (donorAt === 1) {
     s += sub(Q.c1, OUT.c1, 'OMe', { len: 26, r: 15 });
     s += sub(Q.d1, OUT.d1, 'CHO', { len: 26, r: 15 });
+    s += inside(Q.d1, '1') + inside(Q.c1, '2');
     s += tag(ox + 270, oy + 184, '1,2: "ortho"', { cls: 'fg-tag-good' });
   } else {
     s += sub(Q.c2, OUT.c2, 'OMe', { len: 26, r: 15 });
     s += sub(Q.d2, OUT.d2, 'CHO', { len: 26, r: 15 });
+    s += inside(Q.d2, '1') + inside(Q.c2, '4');
     s += tag(ox + 270, oy + 184, '1,4: "para"', { cls: 'fg-tag-good' });
   }
   return s;
@@ -629,11 +651,13 @@ function stackPanel(x0, y0, endo) {
   let t = '';
   t += panel(x0, y0, 330, 196, endo ? { kind: 'good' } : {});
   t += tag(x0 + 165, y0 + 24, endo ? 'endo' : 'exo', { cls: endo ? 'fg-tag-good' : 'fg-tag' });
-  const dL = P(x0 + 70, y0 + 74), dR = P(x0 + 260, y0 + 74);
+  const dL = P(x0 + 70, y0 + 80), dR = P(x0 + 260, y0 + 80);
+  const d2 = P(x0 + 128, y0 + 62), d3 = P(x0 + 202, y0 + 62);
   const pL = P(x0 + 100, y0 + 140), pR = P(x0 + 230, y0 + 140);
-  t += sk(dL, dR);
-  t += `<path class="fg-bond" fill="none" d="M${dL.x} ${dL.y} Q${x0 + 165} ${y0 + 44} ${dR.x} ${dR.y}"></path>`;
-  t += tag(x0 + 165, y0 + 50, 'diene, edge-on', { cls: 'fg-tag-mut' });
+  const dm = P(x0 + 165, y0 + 90);
+  t += ringDouble(dL, d2, dm) + sk(d2, d3) + ringDouble(d3, dR, dm);
+  t += tag(dL.x - 16, dL.y + 4, 'C1', { cls: 'fg-tag-mut', anchor: 'end' }) + tag(dR.x + 16, dR.y + 4, 'C4', { cls: 'fg-tag-mut', anchor: 'start' });
+  t += tag(x0 + 165, y0 + 48, 'diene, seen from the side', { cls: 'fg-tag-mut' });
   t += sk(pL, pR);
   t += sk(dL, pL, 'fg-dash-hi') + sk(dR, pR, 'fg-dash-hi');
   t += tag(pR.x + 12, pR.y + 18, 'dienophile', { anchor: 'start', cls: 'fg-tag-mut' });
@@ -641,7 +665,7 @@ function stackPanel(x0, y0, endo) {
     const c = P(x0 + 150, y0 + 116);
     t += bond(pL, c, { rFrom: 0, rTo: 16 });
     t += atom(c.x, c.y, 'C=O', { r: 20 });
-    t += `<line class="fg-dash" x1="${c.x + 6}" y1="${c.y - 20}" x2="${c.x + 12}" y2="${y0 + 78}"></line>`;
+    t += `<line class="fg-dash" x1="${c.x + 6}" y1="${c.y - 20}" x2="${c.x + 12}" y2="${y0 + 68}"></line>`;
     t += tag(x0 + 165, y0 + 182, 'C=O under the diene', { cls: 'fg-tag' });
   } else {
     const c = P(x0 + 70, y0 + 166);
@@ -661,7 +685,7 @@ FIGURES.push({
   build() {
     return stackPanel(10, 6, true) + stackPanel(360, 6, false);
   },
-  caption: 'The thin dotted line in the endo panel marks the extra contact between the C=O and the diene’s π system.',
+  caption: 'Schematic, seen from the side: any diene over a dienophile carrying a C=O. The thin dotted line in the endo panel marks the extra contact between the C=O and the diene’s π system.',
 });
 
 FIGURES.push({
@@ -672,7 +696,7 @@ FIGURES.push({
   build() {
     return stackPanel(5, 4, true) + stackPanel(5, 208, false);
   },
-  caption: 'The dotted line in the endo panel marks the extra contact with the diene.',
+  caption: 'Schematic, seen from the side: any diene over a dienophile carrying a C=O. The dotted line marks the extra contact.',
 });
 
 /* =====================================================================
@@ -692,13 +716,16 @@ FIGURES.push({
   build() {
     let s = '';
     const n = norb(P(210, 124), 1.9);
-    s += sk(n.n1, n.n2, 'fg-bond-hi') + sk(n.n2, n.n3) + sk(n.n3, n.n4, 'fg-bond-hi');
+    const bold = (x) => x.replace(/<line /g, '<line style="stroke-width:4.5" ');
+    s += bold(sk(n.n1, n.n2, 'fg-bond-hi') + sk(n.n2, n.n3) + sk(n.n3, n.n4, 'fg-bond-hi'));
     s += sk(n.n4, n.n5) + ringDouble(n.n5, n.n6, P(210, 144)) + sk(n.n6, n.n1);
     s += sk(n.n1, n.n7) + sk(n.n7, n.n4);
     s += tag(n.n7.x, n.n7.y - 12, 'CH₂ bridge', { cls: 'fg-tag-mut' });
     s += tag(210, n.n5.y - 12, 'C=C bridge', { cls: 'fg-tag-mut' });
     // exo hydrogens, pointing outward
     s += sub(n.n2, 185, 'H', { len: 28, r: 9 }) + sub(n.n3, -5, 'H', { len: 28, r: 9 });
+    s += tag(n.n2.x - 28, n.n2.y - 14, 'exo H', { cls: 'fg-tag-mut' }) + tag(n.n3.x + 28, n.n3.y - 14, 'exo H', { cls: 'fg-tag-mut' });
+    s += tag(n.n3.x + 40, n.n3.y + 6, 'front (bold)', { cls: 'fg-tag-mut', anchor: 'start' });
     // the anhydride, hanging down (endo)
     const ca = P(n.n2.x + 4, n.n2.y + 46), cb = P(n.n3.x - 4, n.n3.y + 46), ob = P(210, n.n2.y + 80);
     s += sk(n.n2, ca) + sk(n.n3, cb);
@@ -706,12 +733,12 @@ FIGURES.push({
     const oa = off(ca, 200, 30), oc = off(cb, -20, 30);
     s += bond(ca, oa, { order: 2, rFrom: 0, rTo: 12 }) + atom(oa.x, oa.y, 'O', { r: 12 });
     s += bond(cb, oc, { order: 2, rFrom: 0, rTo: 12 }) + atom(oc.x, oc.y, 'O', { r: 12 });
-    s += tag(300, n.n2.y + 60, 'anhydride points down,', { cls: 'fg-tag-good', anchor: 'start' });
-    s += tag(300, n.n2.y + 78, 'away from the CH₂ bridge', { cls: 'fg-tag-good', anchor: 'start' });
+    s += tag(292, n.n2.y + 60, 'anhydride: endo, on the face', { cls: 'fg-tag-good', anchor: 'start' });
+    s += tag(292, n.n2.y + 78, 'away from the CH₂ bridge', { cls: 'fg-tag-good', anchor: 'start' });
     s += tag(210, 290, 'highlighted: the two bonds the reaction made', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'The endo adduct in 3D. Find the CH₂ bridge at the top, then see which way the anhydride ring points.',
+  caption: 'The endo adduct in 3D. The bold bonds are at the front. Find the CH₂ bridge at the top, then see which way the anhydride ring points.',
 });
 
 /* =====================================================================
