@@ -443,7 +443,10 @@ FIGURES.push({
     s += tag(28, 26, '1  COPPER(I) HANDS OVER ONE ELECTRON', { anchor: 'start' });
     const Y1 = 84;
     s += K.ring(52, Y1, [1, 3, 5]);
-    s += diazo(K, 52, Y1, 0, { d1: 26, step: 34, r: 12, chargeAt: P(52 + R + 26, Y1 - 18) }).s;
+    {
+      const dz = diazo(K, 52, Y1, 0, { d1: 26, step: 34, r: 12, chargeAt: P(52 + R + 26, Y1 - 18) });
+      s += dz.s + lonePair(dz.n2.x, dz.n2.y, 0, { dist: 18 });
+    }
     s += text(186, Y1 + 5, '+', { cls: 'fg-lbl', size: 16 });
     s += text(236, Y1 + 5, 'Cu(I)Br', { cls: 'fg-lbl', size: 13 });
     s += arrow(P(284, Y1), P(360, Y1));
@@ -478,7 +481,7 @@ FIGURES.push({
     s += fishhook(P(dt.x + 3, dt.y - 5), P(meet.x - 3, meet.y - 3), { bow: -12, size: 8 });
     s += fishhook(P((br1.x + cu.x) / 2, Y2 - 5), P(meet.x + 5, meet.y - 3), { bow: 14, size: 8, side: -1 });
     /* The other electron of the Br–Cu bond goes back to copper: Cu(II) → Cu(I). */
-    s += fishhook(P((br1.x + cu.x) / 2 - 2, Y2 + 4), P(cu.x - 3, cu.y + 16), { bow: 8, size: 8 });
+    s += fishhook(P((br1.x + cu.x) / 2 - 4, Y2 + 4), P(cu.x - 10, cu.y + 11), { bow: 10, size: 8 });
     s += arrow(P(304, Y2), P(372, Y2));
     s += K.ring(410, Y2, [1, 3, 5]);
     s += K.sub(410, Y2, 0, 'Br', { kind: 'hi', r: 14, size: 11, d: 22 });
@@ -887,7 +890,7 @@ FIGURES.push({
   id: 'azo-where',
   section: 'diazonium-chemistry',
   anchor: '<h3>Azo coupling, and why dyes are colored</h3>',
-  viewBox: '0 0 760 262',
+  viewBox: '0 0 760 284',
   alt: 'Three phenols, each with its OH at the top. Phenol couples at the para carbon. 4-Methylphenol, whose para carbon carries a methyl, couples at a carbon ortho to the OH. 2,4,6-Trimethylphenol has both ortho carbons and the para carbon taken and does not couple.',
   build() {
     let s = '';
@@ -900,9 +903,9 @@ FIGURES.push({
       const v = K.V(cx, Y)[i];
       const ux = (v.x - cx) / R, uy = (v.y - Y) / R;
       const px = -uy, py = ux;
-      const n1 = P(v.x + ux * 22, v.y + uy * 22);
-      const n2 = P(n1.x + ux * 18 + px * 16, n1.y + uy * 18 + py * 16);
-      const ar = P(n2.x + ux * 18 - px * 16, n2.y + uy * 18 - py * 16);
+      const n1 = P(v.x + ux * 28, v.y + uy * 28);
+      const n2 = P(n1.x + ux * 20 + px * 30, n1.y + uy * 20 + py * 30);
+      const ar = P(n2.x + ux * 34, n2.y + uy * 34);
       return bond(v, n1, { rFrom: 0, rTo: 10, cls: 'fg-bond-hi' }) +
         bond(n1, n2, { rFrom: 10, rTo: 10, order: 2, gap: 2.6, cls: 'fg-bond-hi' }) +
         bond(n2, ar, { rFrom: 10, rTo: 12, cls: 'fg-bond-hi' }) +
@@ -913,12 +916,12 @@ FIGURES.push({
     s += K.ring(xs[0], Y, [1, 3, 5]) + oh(xs[0]) + azo(xs[0], 3);
     s += K.ring(xs[1], Y, [1, 3, 5]) + oh(xs[1]) + me(xs[1], 3) + azo(xs[1], 5);
     s += K.ring(xs[2], Y, [1, 3, 5]) + oh(xs[2]) + me(xs[2], 1) + me(xs[2], 3) + me(xs[2], 5);
-    s += text(xs[0], 230, 'from phenol: para', { cls: 'fg-lbl', size: 13 });
-    s += text(xs[1], 230, 'from 4-methylphenol: ortho', { cls: 'fg-lbl', size: 13 });
-    s += text(xs[2], 230, '2,4,6-trimethylphenol', { cls: 'fg-lbl', size: 13 });
-    s += text(xs[2], 248, 'no ortho or para carbon free', { cls: 'fg-tag-warn', size: 11 });
-    s += text(xs[1], 248, 'para is taken', { cls: 'fg-tag', size: 11 });
-    s += text(xs[0], 248, 'the first choice', { cls: 'fg-tag', size: 11 });
+    s += text(xs[0], 252, 'from phenol: para', { cls: 'fg-lbl', size: 13 });
+    s += text(xs[1], 252, 'from 4-methylphenol: ortho', { cls: 'fg-lbl', size: 13 });
+    s += text(xs[2], 252, '2,4,6-trimethylphenol', { cls: 'fg-lbl', size: 13 });
+    s += text(xs[2], 270, 'no ortho or para carbon free', { cls: 'fg-tag-warn', size: 11 });
+    s += text(xs[1], 270, 'para is taken', { cls: 'fg-tag', size: 11 });
+    s += text(xs[0], 270, 'the first choice', { cls: 'fg-tag', size: 11 });
     return s;
   },
   caption: 'In each ring, look for a free carbon ortho or para to the OH.',
