@@ -34,7 +34,7 @@ function hexKit(R) {
   const outer = (c, i, cls = 'fg-bond') => {
     const v = V(c), a = v[i], b = v[(i + 1) % 6];
     const m = mid(a, b), dx = m.x - c.x, dy = m.y - c.y, L = Math.hypot(dx, dy);
-    const nx = (dx / L) * 4.4, ny = (dy / L) * 4.4;
+    const nx = (dx / L) * 6, ny = (dy / L) * 6;
     const A = mid(a, b, 0.2), B = mid(a, b, 0.8);
     return bond(P(A.x + nx, A.y + ny), P(B.x + nx, B.y + ny), { rFrom: 0, rTo: 0, cls });
   };
@@ -67,7 +67,7 @@ const nums = (c, R, o = {}) => {
   for (let n = 1; n <= 6; n++) {
     if (only && !only.includes(n)) continue;
     const i = ((o.ccw ? from - (n - 1) : from + (n - 1)) % 6 + 6) % 6;
-    const p = at(c, vAng(i), R * 0.52);
+    const p = at(c, vAng(i), R * 0.44);
     g += text(p.x, p.y + 4, String(n), { cls: 'fg-tag-mut', size: 11 });
   }
   return g;
@@ -246,8 +246,8 @@ FIGURES.push({
   alt: 'Left: chlorobenzene with a nucleophile below the ring. A dashed line from the nucleophile to the carbon bearing chlorine passes through the middle of the ring, marked with a cross. Right: the phenyl cation, a benzene ring with a plus charge on the top carbon, an empty orbital drawn as an outline pointing out from that carbon in the plane of the ring, and a small circle on every ring carbon for the p orbitals, which stand up out of the page.',
   build() {
     const s = [];
-    s.push(tag(190, 26, 'NO Sₙ2: THE BACKSIDE IS INSIDE THE RING'));
-    s.push(tag(570, 26, 'NO Sₙ1: THE EMPTY ORBITAL IS IN THE PLANE'));
+    s.push(tag(190, 26, 'NO SN2: THE BACKSIDE IS INSIDE THE RING'));
+    s.push(tag(570, 26, 'NO SN1: THE EMPTY ORBITAL IS IN THE PLANE'));
     noSn(s, P(190, 128), P(570, 138), 38);
     s.push(tag(250, 128, 'the Nu⁻ would have to', { anchor: 'start' }));
     s.push(tag(250, 144, 'pass through the ring', { anchor: 'start' }));
@@ -268,12 +268,12 @@ FIGURES.push({
   alt: 'Top: chlorobenzene with a nucleophile below the ring; a dashed line from it to the carbon bearing chlorine crosses the middle of the ring, marked with a cross. Bottom: the phenyl cation, with a plus charge on the top carbon, an empty orbital drawn as an outline in the plane of the ring, and a small circle on each ring carbon for the p orbitals standing out of the page.',
   build() {
     const s = [];
-    s.push(tag(170, 18, 'NO Sₙ2: THE BACKSIDE IS INSIDE THE RING'));
+    s.push(tag(170, 18, 'NO SN2: THE BACKSIDE IS INSIDE THE RING'));
     noSn(s, P(110, 124), P(110, 366), 34);
     s.push(tag(186, 142, 'path to C1 runs', { anchor: 'start' }));
     s.push(tag(186, 158, 'through the ring', { anchor: 'start' }));
     s.push(rule(20, 238, 320, 238));
-    s.push(tag(170, 262, 'NO Sₙ1: THE EMPTY ORBITAL IS IN THE PLANE'));
+    s.push(tag(170, 262, 'NO SN1: THE EMPTY ORBITAL IS IN THE PLANE'));
     s.push(tag(150, 300, 'empty sp² orbital', { anchor: 'start', cls: 'fg-tag-warn' }));
     s.push(tag(186, 360, 'circles: p orbitals,', { anchor: 'start' }));
     s.push(tag(186, 376, 'out of the page,', { anchor: 'start' }));
@@ -321,7 +321,7 @@ FIGURES.push({
     s += snarSubstrate(P(200, 92), R);
     s += down(200, 178, 214);
     s += tag(214, 200, 'addition (slow)', { anchor: 'start' });
-    s += snarComplex(P(200, 300), R, { at: 1, arrows: 'elim' });
+    s += snarComplex(P(200, 300), R, { at: 1, arrows: 'elim', nums: true });
     s += tag(24, 300, 'Meisenheimer', { anchor: 'start' });
     s += tag(24, 316, 'complex', { anchor: 'start' });
     s += down(200, 386, 422);
@@ -438,7 +438,7 @@ FIGURES.push({
     s += '<text class="fg-tag" x="560" y="290" text-anchor="middle" font-size="11"><tspan font-style="italic">N</tspan>-methyl-2,4-dinitroaniline</text>';
     return s;
   },
-  caption: 'Steps 3 to 6 of the worked example, drawn.',
+  caption: 'The complex from Steps 3 and 4, with the Step 5 arrows, and the product after Step 6.',
 });
 
 /* ------------------------------------------------ benzyne figures --- */
@@ -594,7 +594,7 @@ FIGURES.push({
     s.push(tag(190, 238, 'circles: p orbitals, standing out of the page'));
     s.push(tag(190, 256, 'lobes point apart: only weak side overlap'));
     s.push(rule(400, 40, 400, 262));
-    s.push(tag(585, 24, 'SEEN FROM THE SIDE'));
+    s.push(tag(585, 24, 'SEEN AT A SLANT'));
     bzOrbEdge(s, P(585, 146), 92);
     s.push(tag(585, 64, 'π system above and below: unchanged', { cls: 'fg-tag-mut' }));
     s.push(tag(585, 238, 'extra bond: in the ring plane, at 90°', { cls: 'fg-tag-warn' }));
@@ -619,7 +619,7 @@ FIGURES.push({
     s.push(tag(196, 166, 'p orbitals, out', { anchor: 'start' }));
     s.push(tag(196, 182, 'of the page', { anchor: 'start' }));
     s.push(rule(20, 222, 320, 222));
-    s.push(tag(170, 244, 'SEEN FROM THE SIDE'));
+    s.push(tag(170, 244, 'SEEN AT A SLANT'));
     s.push(tag(170, 272, 'π system above and below', { cls: 'fg-tag-mut' }));
     bzOrbEdge(s, P(170, 350), 82);
     s.push(tag(170, 446, 'extra bond: in the ring plane', { cls: 'fg-tag-warn' }));
@@ -641,7 +641,7 @@ FIGURES.push({
     let s = '';
     s += arene(P(90, 160), R, { 0: 'Cl' }, { stars: [0] });
     s += right(158, 238, 160);
-    s += tag(198, 148, 'NaNH₂');
+    s += tag(198, 148, 'KNH₂');
     s += tag(198, 180, 'NH₃ (l)', { cls: 'fg-tag-mut' });
     s += benzyne(P(310, 160), R, { hi: true }) + dot(hexKit(R).V(P(310, 160))[0]);
     s += arrow(P(362, 140), P(452, 96));
@@ -668,7 +668,7 @@ FIGURES.push({
     let s = '';
     s += arene(P(70, 90), R, { 0: 'Cl' }, { stars: [0] });
     s += right(118, 206, 90);
-    s += tag(162, 78, 'NaNH₂');
+    s += tag(162, 78, 'KNH₂, NH₃ (l)');
     s += benzyne(P(262, 90), R, { hi: true }) + dot(hexKit(R).V(P(262, 90))[0]);
     s += arrow(P(240, 136), P(110, 196));
     s += arrow(P(262, 136), P(262, 196));
@@ -692,21 +692,21 @@ FIGURES.push({
   viewBox: '0 0 340 420',
   alt: 'Top left: 2-chlorotoluene, numbered with CH3 on C1 and Cl on C2; C3 carries the only hydrogen next to the chlorine, drawn explicitly. An arrow labeled NaNH2 leads to the benzyne, with the triple bond between C2 and C3 and the CH3 still on C1. Two arrows lead down to two products: 2-methylaniline, with NH2 on C2, and 3-methylaniline, with NH2 on C3.',
   build() {
-    const R = 28;
+    const R = 32, d = R * 0.9 + 6;
     let s = '';
-    s += arene(P(80, 110), R, { 5: 'CH₃', 0: 'Cl', 1: 'H' }, { nums: { from: 5, only: [1, 2, 3] } });
-    s += right(146, 198, 126);
-    s += tag(172, 150, 'NaNH₂');
-    s += arene(P(262, 110), R, { 5: 'CH₃' }, { triple: 0, nums: { from: 5, only: [1, 2, 3] } });
+    s += arene(P(84, 110), R, { 5: 'CH₃', 0: 'Cl', 1: 'H' }, { d, nums: { from: 5, only: [1, 2, 3] } });
+    s += right(150, 196, 136);
+    s += tag(173, 160, 'NaNH₂');
+    s += arene(P(262, 110), R, { 5: 'CH₃' }, { d, triple: 0, nums: { from: 5, only: [1, 2, 3] } });
     s += tag(262, 176, 'benzyne: C2–C3');
     s += arrow(P(236, 188), P(130, 236));
-    s += arrow(P(270, 188), P(270, 236));
-    s += arene(P(88, 318), R, { 5: 'CH₃', 0: 'NH₂' });
-    s += arene(P(262, 318), R, { 5: 'CH₃', 1: 'NH₂' });
+    s += arrow(P(256, 188), P(256, 236));
+    s += arene(P(88, 318), R, { 5: 'CH₃', 0: 'NH₂' }, { d });
+    s += arene(P(250, 318), R, { 5: 'CH₃', 1: 'NH₂' }, { d });
     s += tag(88, 386, 'NH₂ on C2:');
     s += tag(88, 402, '2-methylaniline');
-    s += tag(262, 386, 'NH₂ on C3:');
-    s += tag(262, 402, '3-methylaniline');
+    s += tag(250, 386, 'NH₂ on C3:');
+    s += tag(250, 402, '3-methylaniline');
     return s;
   },
   caption: 'The carbons are numbered from the CH₃ carbon. The H drawn on C3 is the one the base removes.',
@@ -723,7 +723,7 @@ FIGURES.push({
     s += tag(196, 104, '4-chlorotoluene', { anchor: 'start' });
     return s;
   },
-  caption: '<i>para</i>-Chlorotoluene, numbered from the CH₃ carbon.',
+  caption: '4-Chlorotoluene, numbered from the CH₃ carbon.',
 });
 
 FIGURES.push({
@@ -747,7 +747,7 @@ FIGURES.push({
   viewBox: '0 0 760 440',
   alt: 'Two rows. Top row: 4-chlorotoluene gives a benzyne between C3 and C4, which gives both 4-methylaniline and 3-methylaniline, labeled a mixture of both. Bottom row: 3-bromoanisole, with the hydrogen between the OCH3 and Br groups drawn, gives a benzyne between C2 and C3. Amide adds to C3, the end further from the OCH3, leaving a lone pair and minus charge on C2, the carbon next to the one carrying oxygen; that anion takes a proton to give 3-methoxyaniline.',
   build() {
-    const R = 26, d = R * 0.95 + 9;
+    const R = 30, d = R * 0.95 + 6;
     let s = '';
     s += tag(24, 24, '4-CHLOROTOLUENE: A METHYL BARELY CHOOSES', { anchor: 'start' });
     const y1 = 122;
@@ -824,7 +824,7 @@ FIGURES.push({
     const p1 = P(510, 118);
     s += K.ring(p1, [1, 3, 5]);
     const p2 = P(p1.x + h, p1.y), w = K.V(p2);
-    s += bond(w[0], w[1], { rFrom: 0, rTo: 0 }) + ringDouble(w[1], w[2], p2, { inset: 6, gap: 4.4 }) + bond(w[2], w[3], { rFrom: 0, rTo: 0 });
+    s += bond(w[5], w[0], { rFrom: 0, rTo: 0 }) + bond(w[0], w[1], { rFrom: 0, rTo: 0 }) + ringDouble(w[1], w[2], p2, { inset: 6, gap: 4.4 }) + bond(w[2], w[3], { rFrom: 0, rTo: 0 }) + bond(w[3], w[4], { rFrom: 0, rTo: 0 });
     s += bond(w[0], p2, { rFrom: 0, rTo: 12 }) + bond(p2, w[3], { rFrom: 12, rTo: 0 });
     s += lab(p2, 'O', { r: 12, kind: 'hi' });
     s += tag(p2.x + 46, p1.y - 4, 'O bridge, tilted', { anchor: 'start' });
@@ -849,7 +849,7 @@ FIGURES.push({
       lines.forEach((t, i) => { g += text(x + w / 2, y + 22 + i * 17, t, { cls: 'fg-tag' }); });
       return g;
     };
-    s += box(24, 30, 250, 62, ['A strong withdrawing group', 'ortho or para to the halide?'], null);
+    s += box(24, 30, 250, 62, ['A strong withdrawing group ortho', 'or para to the halogen (X)?'], null);
     s += box(24, 158, 250, 62, ['A very strong base (NaNH₂) and', 'an H on a carbon next to X?'], null);
     s += arrow(P(149, 92), P(149, 156));
     s += tag(160, 128, 'no', { anchor: 'start', cls: 'fg-tag-mut' });

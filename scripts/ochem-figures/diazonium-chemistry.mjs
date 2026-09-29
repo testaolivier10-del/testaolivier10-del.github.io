@@ -468,7 +468,7 @@ FIGURES.push({
     const c1 = K.V(52, Y2)[0];
     const dt = P(c1.x + 9, Y2);
     s += dot(dt.x, dt.y);
-    const br1 = P(c1.x + 66, Y2), cu = P(br1.x + 44, Y2), br2 = P(cu.x + 44, Y2);
+    const br1 = P(c1.x + 66, Y2), cu = P(br1.x + 58, Y2), br2 = P(cu.x + 48, Y2);
     s += bond(br1, cu, { rFrom: 14, rTo: 14 });
     s += bond(cu, br2, { rFrom: 14, rTo: 14 });
     s += atom(br1.x, br1.y, 'Br', { kind: 'hi', r: 14, size: 11 });
@@ -478,7 +478,7 @@ FIGURES.push({
     s += fishhook(P(dt.x + 3, dt.y - 5), P(meet.x - 3, meet.y - 3), { bow: -12, size: 8 });
     s += fishhook(P((br1.x + cu.x) / 2, Y2 - 5), P(meet.x + 5, meet.y - 3), { bow: 14, size: 8, side: -1 });
     /* The other electron of the Br–Cu bond goes back to copper: Cu(II) → Cu(I). */
-    s += fishhook(P((br1.x + cu.x) / 2, Y2 + 4), P(cu.x + 3, cu.y + 16), { bow: 12, size: 8 });
+    s += fishhook(P((br1.x + cu.x) / 2 - 2, Y2 + 4), P(cu.x - 3, cu.y + 16), { bow: 8, size: 8 });
     s += arrow(P(304, Y2), P(372, Y2));
     s += K.ring(410, Y2, [1, 3, 5]);
     s += K.sub(410, Y2, 0, 'Br', { kind: 'hi', r: 14, size: 11, d: 22 });
