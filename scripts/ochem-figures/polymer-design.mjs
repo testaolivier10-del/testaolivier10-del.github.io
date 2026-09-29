@@ -153,7 +153,7 @@ FIGURES.push({
     s += text(ax, my + 42, 'terephthalic acid, a diacid', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
-  caption: 'The squiggles mark the three cuts, each through the bond from a carbonyl carbon to the next oxygen. Between two cuts lie one whole diol and one whole diacid, and each piece ends in two reactive groups. The dashed mark is the tempting wrong cut.',
+  caption: 'The squiggles mark the three cuts, each through the bond from a carbonyl carbon to the next oxygen. Between the first two cuts lies one whole diol, and between the second and third one whole diacid; each ends in two reactive groups. The dashed mark is the tempting wrong cut.',
 });
 
 /* ---------------------------------------------------------------------
@@ -269,11 +269,11 @@ function paraMeta(stacked) {
   const c2 = stacked ? P(165, 264) : P(560, 96);
   s += tag(c1.x, stacked ? 22 : 26, 'PARA (1,4)', {});
   s += ringArms(c1.x, c1.y, 3, 0, ['chain', 'chain']);
-  s += text(c1.x, c1.y + 60, stacked ? 'opposite ways: 180°' : 'the two chain bonds point opposite ways (180°)', { cls: 'fg-lbl', size: 13 });
+  s += text(c1.x, c1.y + 60, 'opposite ways: 180°', { cls: 'fg-lbl', size: 13 });
   s += tag(c2.x, stacked ? 184 : 26, 'META (1,3)', {});
   // meta: vertex 3 (left) and vertex 1 (upper right, 60°)
   s += ringArms(c2.x, c2.y + (stacked ? 10 : 10), 3, 1, ['chain', 'chain']);
-  s += text(c2.x, c2.y + 70, stacked ? 'at an angle: 120°' : 'the two chain bonds meet at 120°', { cls: 'fg-lbl', size: 13 });
+  s += text(c2.x, c2.y + 70, 'at an angle: 120°', { cls: 'fg-lbl', size: 13 });
   if (!stacked) s += rule(380, 44, 380, 170);
   else s += rule(20, 164, W - 20, 164);
   return s;
@@ -334,9 +334,11 @@ function backboneDecides(stacked) {
   const L = stacked ? P(10, 30) : P(24, 40);
   const R = stacked ? P(10, 250) : P(396, 40);
   const draw = (org, title, units, kind, lines, note, noteCls) => {
-    s += panel(org.x, org.y, panelW, 180, { kind });
-    s += tag(org.x + panelW / 2, org.y - 10, title);
-    const run = centred(units, org.x + panelW / 2, org.y + 92, { gap: g, stubs: true, hiBonds: kind ? [] : [1] });
+    const top = stacked && kind ? 30 : 0;   // the C–C chain has no C=O above it, so its stacked panel starts lower
+    s += panel(org.x, org.y + top, panelW, 180 - top, { kind });
+    s += tag(org.x + panelW / 2, org.y + top - 10, title);
+    const units2 = kind ? units : units.map((u, i) => (i === 1 ? { co: true, kind: 'hi' } : u));
+    const run = centred(units2, org.x + panelW / 2, org.y + 92, { gap: g, stubs: true, hiBonds: kind ? [] : [1] });
     s += run.svg;
     if (!kind) {
       const m = mid(run.ends(1));
@@ -347,9 +349,9 @@ function backboneDecides(stacked) {
     lines.forEach((l, i) => s += text(org.x + panelW / 2, org.y + 152 + i * 17, l, { cls: i ? 'fg-tag' : 'fg-lbl', size: i ? 11 : 13 }));
   };
   draw(L, 'an ester (or amide) in the backbone', esterUnits, null,
-    ['PET, nylon, PLA', 'melt and remold, or take back to monomers'], 'water can pick out this bond', 'fg-tag-good');
+    ['PET, nylon, PLA', 'melt and remold, or take back to monomers'], 'water attacks this C=O carbon', 'fg-tag-good');
   draw(R, 'a C–C backbone', ccUnits, 'warn',
-    ['polyethylene, polypropylene', 'melt and remold only'], 'every bond is like every other', 'fg-tag-warn');
+    ['polyethylene', 'melt and remold only'], 'no polar bond to attack', 'fg-tag-warn');
   return s;
 }
 FIGURES.push({
@@ -357,17 +359,17 @@ FIGURES.push({
   section: 'polymer-design',
   anchor: '<h3>Biodegradable by design</h3>',
   viewBox: '0 0 760 240',
-  alt: 'Left: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water can pick out this bond; below, PET, nylon and PLA, which can be melted and remolded or taken back to monomers. Right: a polyethylene chain of five CH2 groups, labeled every bond is like every other; below, polyethylene and polypropylene, melt and remold only.',
+  alt: 'Left: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water attacks this C=O carbon; below, PET, nylon and PLA, which can be melted and remolded or taken back to monomers. Right: a polyethylene chain of five CH2 groups, labeled no polar bond to attack; below, polyethylene, melt and remold only.',
   build() { return backboneDecides(false); },
-  caption: 'Left: the highlighted bond, from the carbonyl carbon to the oxygen, is the one hydrolysis breaks. Right: a run of identical C–C bonds, none marked out from the others.',
+  caption: 'Left: water attacks the electron-poor carbonyl carbon (shaded), and the highlighted C–O bond to the alkoxy oxygen is the one that breaks. Right: only nonpolar C–C and C–H bonds, with no electrophilic carbon and no leaving group.',
 });
 FIGURES.push({
   id: 'l-backbone-decides',
   lessons: ['polymer-design'],
   viewBox: '0 0 330 440',
-  alt: 'Top: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water can pick out this bond; PET, nylon and PLA can be melted and remolded or taken back to monomers. Bottom: a polyethylene chain of five CH2 groups, labeled every bond is like every other; polyethylene and polypropylene can only be melted and remolded.',
+  alt: 'Top: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water attacks this C=O carbon; PET, nylon and PLA can be melted and remolded or taken back to monomers. Bottom: a polyethylene chain of five CH2 groups, labeled no polar bond to attack; polyethylene can only be melted and remolded.',
   build() { return backboneDecides(true); },
-  caption: 'Top: one bond differs from all its neighbors, and hydrolysis breaks it. Bottom: nothing marks any bond out from the rest.',
+  caption: 'Top: water attacks the shaded carbonyl carbon, and the highlighted C–O bond breaks. Bottom: only nonpolar bonds, so nothing for water to attack.',
 });
 
 /* ---------------------------------------------------------------------
@@ -421,14 +423,14 @@ FIGURES.push({
   section: 'polymer-design',
   anchor: '<h3>What carries forward</h3>',
   viewBox: '0 0 760 270',
-  alt: 'Lactic acid, HO–CH(CH3)–CO2H, is condensed and the short chains are cracked to lactide, a six-membered ring of two lactic acid units joined by two ester bonds, with one ring ester C–O bond highlighted. Ring-opening then gives PLA, whose repeat unit O–CH(CH3)–C(=O) is shown in brackets.',
+  alt: 'Lactic acid, HO–CH(CH3)–CO2H, is condensed and the short chains are closed into lactide, a six-membered ring of two lactic acid units joined by two ester bonds, with one ring ester C–O bond highlighted. Ring-opening then gives PLA, whose repeat unit O–CH(CH3)–C(=O) is shown in brackets.',
   build() {
     let s = '';
     s += tag(110, 26, 'LACTIC ACID');
     s += lacticAcid(110, 130);
     s += arrow(P(208, 130), P(282, 130));
-    s += text(245, 116, 'condense,', { cls: 'fg-sm', size: 10.5 });
-    s += text(245, 156, 'then crack', { cls: 'fg-sm', size: 10.5 });
+    s += text(245, 116, 'condense, then', { cls: 'fg-sm', size: 10.5 });
+    s += text(245, 156, 'close the ring', { cls: 'fg-sm', size: 10.5 });
     s += tag(250, 232, 'LACTIDE', { anchor: 'start' });
     const lt = lactide(380, 138);
     s += lt.svg;
@@ -521,7 +523,7 @@ FIGURES.push({
     s += run.svg;
     ['a', 'b', 'c'].forEach((l, i) => {
       const m = mid(run.ends(i));
-      s += text(x + 22, m.y + 5, l, { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+      s += text(x + 22, m.y + 5, l, { cls: 'fg-lbl', size: 13, anchor: 'start' });
     });
     return s;
   },
@@ -554,13 +556,13 @@ FIGURES.push({
   id: 'l-lactide-route',
   lessons: ['polymer-design'],
   viewBox: '0 0 330 610',
-  alt: 'Top: lactic acid. An arrow labeled condense, then crack leads down to lactide, a six-membered ring of two lactic acid units joined by two ester bonds, with one ring ester C–O bond highlighted. An arrow labeled ring-opening leads down to PLA, whose repeat unit O–CH(CH3)–C(=O) is shown in brackets.',
+  alt: 'Top: lactic acid. An arrow labeled condense, then close the ring leads down to lactide, a six-membered ring of two lactic acid units joined by two ester bonds, with one ring ester C–O bond highlighted. An arrow labeled ring-opening leads down to PLA, whose repeat unit O–CH(CH3)–C(=O) is shown in brackets.',
   build() {
     let s = '';
     s += tag(165, 22, 'LACTIC ACID');
     s += lacticAcid(165, 82);
     s += arrow(P(165, 160), P(165, 204));
-    s += text(180, 186, 'condense, then crack', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(180, 186, 'condense, then close the ring', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += tag(40, 236, 'LACTIDE', { anchor: 'start' });
     const lt = lactide(165, 318);
     s += lt.svg;

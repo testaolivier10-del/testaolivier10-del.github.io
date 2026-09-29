@@ -100,6 +100,57 @@ FIGURES.push({
 });
 
 /* ------------------------------------------------------------------------
+   What lets chains pack: straight chains lie against each other along their
+   whole length; a kink or a branch holds neighbors apart. Narrow, so the
+   notes and the lesson share it. */
+function zzLine(pts, cls = 'fg-bond') {
+  return `<polyline class="${cls}" fill="none" points="${pts.map((p) => p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ')}"></polyline>`;
+}
+// A zigzag of n bonds from (x, y) heading at angle deg (screen, degrees),
+// optionally turning by `turn` degrees after bond k. Returns the points.
+function zzPts(x, y, n, deg, turns = []) {
+  const pts = [P(x, y)];
+  let a = deg, cx = x, cy = y;
+  for (let i = 0; i < n; i++) {
+    for (const [k, t] of turns) if (i === k) a += t;
+    const r = (a * Math.PI) / 180, px = -Math.sin(r), py = Math.cos(r);
+    cx += Math.cos(r) * 13; cy += Math.sin(r) * 13;
+    const o = i % 2 ? 4.5 : -4.5;
+    pts.push(P(cx + px * o, cy + py * o));
+  }
+  return pts;
+}
+FIGURES.push({
+  id: 'chain-packing',
+  section: 'polymer-properties',
+  anchor: '<h3>What lets chains pack</h3>',
+  lessons: ['polymer-properties'],
+  viewBox: '0 0 340 394',
+  alt: 'Top: four straight zigzag chains lying close together and parallel, labeled chains touch along their whole length, London forces add up. Bottom: three chains, two with bends and one with short branches, lying with wide gaps between them, labeled a kink or branch holds the chains apart.',
+  build() {
+    let s = '';
+    s += tag(20, 20, 'STRAIGHT CHAINS', { anchor: 'start' });
+    s += panel(10, 30, 320, 110, { kind: 'good' });
+    for (let r = 0; r < 4; r++) s += zzLine(zzPts(34, 52 + r * 20, 21, 0));
+    s += text(170, 162, 'touch along their whole length:', { cls: 'fg-lbl' });
+    s += text(170, 180, 'London forces add up', { cls: 'fg-tag-good' });
+    s += tag(20, 210, 'KINKED OR BRANCHED CHAINS', { anchor: 'start' });
+    s += panel(10, 220, 320, 142, { kind: 'warn' });
+    // Kinked chains: a bend of a few bonds part way along.
+    s += zzLine(zzPts(28, 256, 21, 0, [[6, -35], [9, 35], [13, 35], [16, -35]]));
+    s += zzLine(zzPts(34, 334, 21, 0, [[9, 30], [11, -30], [14, -30], [16, 30]]));
+    // A branched chain between them, its side chain standing up into the gap.
+    const b1 = zzPts(24, 293, 22, 0);
+    s += zzLine(b1);
+    s += zzLine(zzPts(b1[5].x, b1[5].y, 2, -60));
+    s += zzLine(zzPts(b1[15].x, b1[15].y, 2, -60));
+    s += text(170, 384, 'a kink or branch holds chains apart', { cls: 'fg-tag-warn' });
+    return s;
+  },
+  caption: 'The same test for a fatty acid and for a polymer chain: can it lie flat against its neighbor?',
+});
+
+/* ------------------------------------------------------------------------
    What the two transitions do to stiffness. Schematic: both curves share one
    Tg line so their shapes can be compared. */
 const TG_ALT = 'Stiffness plotted on a log scale against temperature for two polymers. The amorphous one, polystyrene, loses about a thousandfold in stiffness at the glass transition and then flows. The semicrystalline one, HDPE, steps down only a little at the glass transition, stays stiff along a long plateau, and collapses at the melting temperature.';
@@ -117,7 +168,7 @@ FIGURES.push({
     s += rule(X0, Y1, X1, Y1);
     s += rule(X0, Y1, X0, Y0);
     s += text(X0 + 6, Y0 - 10, 'stiffness, log scale', { cls: 'fg-sm', anchor: 'start' });
-    s += text(736, 344, 'temperature →', { cls: 'fg-tag', anchor: 'end' });
+    s += text(736, 344, 'temperature →', { cls: 'fg-tag-mut', anchor: 'end' });
 
     const TG = 286, TM = 580;
     s += `<line class="fg-dash" x1="${TG}" y1="${Y0 + 6}" x2="${TG}" y2="${Y1}"></line>`;
@@ -137,11 +188,10 @@ FIGURES.push({
     s += text(310, 156, 'its crystalline regions still hold it', { cls: 'fg-sm', anchor: 'start' });
 
     s += text(180, Y1 + 24, 'glassy', { cls: 'fg-tag' });
-    s += text(430, Y1 + 20, 'rubbery if amorphous,', { cls: 'fg-tag' });
-    s += text(430, Y1 + 36, 'tough if semicrystalline', { cls: 'fg-tag' });
-    s += text(470, Y1 + 56, '', { cls: 'fg-tag' }).replace(/<text[^>]*><\/text>/, '');
+    s += text(384, Y1 + 20, 'rubbery if amorphous,', { cls: 'fg-tag' });
+    s += text(384, Y1 + 36, 'tough if semicrystalline', { cls: 'fg-tag' });
     s += text(606, Y1 + 24, 'melts', { cls: 'fg-tag' });
-    s += text(470, Y1 - 10, 'flows', { cls: 'fg-tag' });
+    s += text(500, Y1 + 24, 'flows', { cls: 'fg-tag' });
 
     return s;
   },
@@ -157,7 +207,7 @@ FIGURES.push({
   alt: TG_ALT,
   build() {
     let s = '';
-    const plot = (oy, title, cls, curve, zones) => {
+    const plot = (oy, title, cls, curve, zones, hasTm) => {
       const X0 = 50, X1 = 326, Y0 = oy + 34, Y1 = oy + 150;
       let g = text(20, oy + 14, title, { cls, anchor: 'start' });
       g += rule(X0, Y1, X1, Y1);
@@ -165,19 +215,23 @@ FIGURES.push({
       g += text(44, Y0 + 6, 'stiff', { cls: 'fg-tag-mut', anchor: 'end' });
       g += text(44, Y1, 'soft', { cls: 'fg-tag-mut', anchor: 'end' });
       g += `<line class="fg-dash" x1="120" y1="${Y0 - 4}" x2="120" y2="${Y1}"></line>`;
-      g += `<line class="fg-dash" x1="250" y1="${Y0 - 4}" x2="250" y2="${Y1}"></line>`;
       g += Tsub(120, Y0 - 10, 'g', 'fg-tag-good');
-      g += Tsub(250, Y0 - 10, 'm', 'fg-tag-good');
+      if (hasTm) {
+        g += `<line class="fg-dash" x1="250" y1="${Y0 - 4}" x2="250" y2="${Y1}"></line>`;
+        g += Tsub(250, Y0 - 10, 'm', 'fg-tag-good');
+      } else {
+        g += text(250, Y0 - 10, 'no Tm: nothing to melt', { cls: 'fg-tag-mut' }).replace('no Tm', 'no T<tspan dy="3" font-size="80%">m</tspan><tspan dy="-3"></tspan>');
+      }
       g += `<path class="fg-bond-hi" fill="none" d="${curve(Y0, Y1)}"></path>`;
       for (const [x, t] of zones) g += text(x, Y1 + 18, t, { cls: 'fg-tag' });
       return g;
     };
-    s += plot(0, 'AMORPHOUS — polystyrene', 'fg-tag-warn',
+    s += plot(0, 'AMORPHOUS — polystyrene', 'fg-tag',
       (Y0, Y1) => `M56 ${Y0 + 10} L108 ${Y0 + 12} C122 ${Y0 + 14} 118 ${Y1 - 42} 134 ${Y1 - 40} L170 ${Y1 - 34} C186 ${Y1 - 30} 190 ${Y1 - 4} 204 ${Y1 - 2}`,
-      [[84, 'glassy'], [168, 'rubbery'], [236, 'flows']]);
+      [[84, 'glassy'], [160, 'rubbery'], [214, 'flows']], false);
     s += plot(196, 'SEMICRYSTALLINE — HDPE', 'fg-tag',
       (Y0, Y1) => `M56 ${Y0 + 10} L108 ${Y0 + 12} C122 ${Y0 + 14} 118 ${Y0 + 28} 134 ${Y0 + 30} L236 ${Y0 + 36} C252 ${Y0 + 40} 254 ${Y1 - 4} 270 ${Y1 - 2}`,
-      [[84, 'glassy'], [185, 'tough'], [292, 'melts']]);
+      [[84, 'glassy'], [185, 'tough'], [292, 'melts']], true);
     s += text(314, 392, 'temperature →', { cls: 'fg-tag', anchor: 'end' });
     return s;
   },

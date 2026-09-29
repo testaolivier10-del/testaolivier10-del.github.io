@@ -266,7 +266,7 @@ FIGURES.push({
     s += text(380, 368, 'the nylon 6,6 repeat unit; highlighted: the two new C–N amide bonds', { cls: 'fg-lbl', size: 12.5 });
     return s;
   },
-  caption: 'Count the carbons in each monomer, including the two carboxyl carbons of the acid. The diamine gives the first 6 of the name and the diacid the second.',
+  caption: 'The small numbers count each monomer’s carbons. Coral atoms leave as water, and the highlighted bonds in the repeat unit are the two new amides.',
 });
 
 FIGURES.push({
@@ -347,7 +347,7 @@ FIGURES.push({
     s += text(720, 276, 'NH₂ or OH = H₂O', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
     return s;
   },
-  caption: 'A monomer that carries both partners joins head to tail with copies of itself. The highlighted bond is the new amide or ester that links each repeat unit to the next.',
+  caption: 'The highlighted bond links each repeat unit to the next: an amide in nylon 6, an ester in PLA.',
 });
 
 FIGURES.push({
@@ -428,7 +428,7 @@ FIGURES.push({
     s += text(720, 116, 'the new chain end', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
     return s;
   },
-  caption: 'One ring bond breaks and one new bond forms, so every atom of the ring stays in the chain. The unit it adds is the same –NH(CH₂)₅CO– unit that 6-aminohexanoic acid gives.',
+  caption: 'Compare the added unit with the nylon 6 repeat unit in the figure above: it is the same –NH(CH₂)₅CO–, and every atom of the ring is still in it.',
 });
 
 /* ------------------------------------ amide direction and chain registry --- */
@@ -628,7 +628,7 @@ FIGURES.push({
     s += text(380, 282, 'dashed: an N–H···O=C hydrogen bond at every amide along the chain', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
-  caption: 'Two Kevlar chains side by side. Every ring leaves by the corner opposite the one it came in by, so neither chain can bend, and each amide on one chain meets the opposite group on the other.',
+  caption: 'Follow either chain from left to right: it never turns. Then follow the dashed lines, one at every amide.',
 });
 
 FIGURES.push({
@@ -661,8 +661,8 @@ function bpa(x, y, L, rr) {
 function pcRepeat(x, y, L, rr) {
   /* stub–O–C(=O)–O–[ring]–C(CH3)2–[ring]–stub */
   return chain({ x, y, l: '' }, [
-    { d: -30, l: 'O', hi: true, len: L * 1.5 },
-    { d: 30, l: '', sub: [O2()] },
+    { d: -30, l: 'O', len: L * 1.5 },
+    { d: 30, l: '', hi: true, sub: [O2()] },
     { d: -30, l: 'O', hi: true },
     { d: 30, l: '', ring: true, sub: METHYLS(L) },
     { d: -30, l: '', ring: true, len: L * 1.5 },
@@ -702,7 +702,7 @@ FIGURES.push({
     s += text(380, 404, 'Rigid rings make it stiff; the bend keeps the chains from packing in order.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'The repeat unit has one carbonate group, a carbonyl carbon between two oxygens, and one bisphenol A unit. The two rings leave the central carbon at an angle, so the chain cannot run straight.',
+  caption: 'The highlighted bonds mark the carbonate, O–C(=O)–O. Follow the chain through the central carbon to see where it turns.',
 });
 
 /* ------------------------------------------------------ polyurethane --- */
@@ -788,7 +788,7 @@ FIGURES.push({
     s += text(380, 530, 'Nothing is expelled in either step.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'The addition that builds each link of a polyurethane, drawn arrow by arrow. The isocyanate carbon is attacked, the C=N π bond becomes a lone pair on nitrogen, and a proton then moves from oxygen to nitrogen.',
+  caption: 'Step 1 forms the new C–O bond and leaves nitrogen negative and oxygen positive. Step 2 moves one proton and cancels both charges.',
 });
 
 FIGURES.push({
@@ -869,7 +869,7 @@ FIGURES.push({
     s += text(380, 288, 'Ninety-nine percent conversion sounds finished and gives a chain of only a hundred units.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'Any two pieces can join, so the mixture stays short fragments until almost every group has reacted. The long chains appear only in the last fraction of a percent.',
+  caption: 'The bars are drawn to scale. The first two barely register, and the last is ten times the one above it.',
 });
 
 FIGURES.push({
