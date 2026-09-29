@@ -139,42 +139,12 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
-  /* The step asks the student to reason about who donates the proton, so the
-     picture has to show the two things that decide it: the polarity of the
-     H-Cl bond and the lone pair on nitrogen. It used to be the equation as
-     plain text, which asked for reasoning and then drew none of the evidence. */
+  /* The click step. The same reaction as the step-0 figure, drawn with the
+     figure classes (so it reads in both themes), with both curved arrows.
+     Each starting material is one click target; its transparent disc is the
+     hit area. Generated with the bronsted figure helpers and pasted in. */
   function protonTransferSvg(){
-    return '<div class="scene"><svg viewBox="0 0 340 172" role="group" aria-label="HCl and ammonia, with both curved arrows of the proton transfer drawn">' +
-      // ---- the acid, clickable as one unit ----
-      '<g class="atom" data-key="acid">' +
-        '<text x="18" y="103" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="15" fill="var(--ink)">H</text>' +
-        '<line x1="29" y1="97" x2="51" y2="97" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<circle cx="70" cy="97" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
-        '<text x="70" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">Cl</text>' +
-      '</g>' +
-      '<text x="16" y="128" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--warn, #b45309)">δ+</text>' +
-      '<text x="99" y="103" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--accent)">δ−</text>' +
-      // ---- the base, clickable as one unit ----
-      '<g class="atom" data-key="base">' +
-        '<circle cx="160" cy="97" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
-        '<text x="160" y="94" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text>' +
-        '<text x="160" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">H₃</text>' +
-      '</g>' +
-      '<circle cx="154" cy="72" r="2.4" fill="var(--ink)"/><circle cx="166" cy="72" r="2.4" fill="var(--ink)"/>' +
-      // ---- arrow 1: the lone pair takes the proton ----
-      '<path d="M158 66 Q100 34 30 80" fill="none" stroke="var(--accent)" stroke-width="2"/>' +
-      '<polygon points="30,80 34.5,72.3 38.9,78.9" fill="var(--accent)"/>' +
-      '<text x="130" y="24" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="11" fill="var(--muted)">1 · the lone pair takes the proton</text>' +
-      // ---- arrow 2: chloride leaves with the bonding pair ----
-      '<path d="M40 106 Q46 134 64 122" fill="none" stroke="var(--accent)" stroke-width="2"/>' +
-      '<polygon points="64,122 59.5,129.7 55.1,123.1" fill="var(--accent)"/>' +
-      '<text x="112" y="160" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="11" fill="var(--muted)">2 · chloride leaves with the pair</text>' +
-      // ---- products ----
-      '<text x="202" y="104" font-family="Nunito" font-weight="900" font-size="18" fill="var(--accent)">&#8594;</text>' +
-      '<text x="252" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" fill="var(--ink)">NH₄⁺</text>' +
-      '<text x="288" y="103" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="15" fill="var(--muted)">+</text>' +
-      '<text x="316" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" fill="var(--ink)">Cl⁻</text>' +
-    '</svg></div>';
+    return '<div class="scene"><svg viewBox="0 0 340 252" role="group" aria-label="Hydrogen chloride and ammonia, with both curved arrows of the proton transfer drawn, and the products ammonium and chloride below. Each starting material can be clicked."><g class="atom hit" data-key="acid"><circle cx="72" cy="112" r="56" fill="transparent" stroke="none"></circle><line class="fg-bond" x1="45" y1="112" x2="90" y2="112"></line><circle class="fg-lp" cx="108.5" cy="89" r="2.3"></circle><circle class="fg-lp" cx="99.5" cy="89" r="2.3"></circle><circle class="fg-lp" cx="127" cy="116.5" r="2.3"></circle><circle class="fg-lp" cx="127" cy="107.5" r="2.3"></circle><circle class="fg-lp" cx="99.5" cy="135" r="2.3"></circle><circle class="fg-lp" cx="108.5" cy="135" r="2.3"></circle><circle class="fg-atom" cx="34" cy="112" r="11"></circle><text class="fg-lbl" x="34" y="116.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="104" cy="112" r="14"></circle><text class="fg-lbl" x="104" y="116.07" text-anchor="middle" font-size="11">Cl</text></g><g class="atom hit" data-key="base"><circle cx="226" cy="126" r="50" fill="transparent" stroke="none"></circle><line class="fg-bond" x1="212" y1="120" x2="201" y2="120"></line><line class="fg-bond" x1="240" y1="120" x2="251" y2="120"></line><line class="fg-bond" x1="226" y1="134" x2="226" y2="145"></line><circle class="fg-lp" cx="230.5" cy="99" r="2.3"></circle><circle class="fg-lp" cx="221.5" cy="99" r="2.3"></circle><circle class="fg-atom" cx="226" cy="120" r="14"></circle><text class="fg-lbl" x="226" y="124.63" text-anchor="middle" font-size="12.5">N</text><circle class="fg-atom" cx="190" cy="120" r="11"></circle><text class="fg-lbl" x="190" y="124.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="262" cy="120" r="11"></circle><text class="fg-lbl" x="262" y="124.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="226" cy="156" r="11"></circle><text class="fg-lbl" x="226" y="160.63" text-anchor="middle" font-size="12.5">H</text></g><text class="fg-tag-warn" x="34" y="144" text-anchor="middle" font-size="11">δ+</text><text class="fg-lbl" x="160" y="124" text-anchor="middle" font-size="13">+</text><path class="fg-arrow" d="M224 94 Q131.62 55.02 49.15 96.41"></path><path class="fg-head" d="M42 100 L47.28 92.69 L51.02 100.13 Z"></path><text class="fg-tag" x="150" y="48" text-anchor="middle" font-size="11">1 · the lone pair takes the proton</text><path class="fg-arrow" d="M62 116 Q73.73 139.04 87.73 127.96"></path><path class="fg-head" d="M94 123 L90.31 131.23 L85.14 124.7 Z"></path><text class="fg-tag" x="100" y="168" text-anchor="middle" font-size="11">2 · Cl leaves with the pair</text><line class="fg-arrow" x1="170" y1="184" x2="170" y2="204"></line><path class="fg-head" d="M170 212 L165.84 204 L174.16 204 Z"></path><text class="fg-lbl" x="120" y="240" text-anchor="middle" font-size="13">NH₄⁺</text><text class="fg-lbl" x="170" y="240" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="220" y="240" text-anchor="middle" font-size="13">Cl⁻</text></svg></div>';
   }
 
   window.OchemLessonEngine.start({
@@ -201,20 +171,26 @@ document.addEventListener('DOMContentLoaded', function(){
           var fb = api.card.querySelector('#fb');
           var next = api.card.querySelector('#nextBtn');
           var got = { acid: false, base: false };
-          function checkDone(){
-            if(got.acid && got.base){
-              api.showFeedback(fb, true, 'Right. HCl is the acid: it gives its proton to nitrogen\'s lone pair. NH₃ is the base: it accepts that proton.');
-              next.disabled = false;
-            }
-          }
+          var recorded = false;
           api.card.querySelectorAll('.atom').forEach(function(g){
             g.addEventListener('click', function(){
               var key = g.getAttribute('data-key');
               if(got[key]) return;
+              if(key === 'base' && !got.acid){
+                if(!recorded){ api.record(false); recorded = true; }
+                api.showFeedback(fb, false, 'Not yet. Ammonia takes the proton, so it is the base. Which species gives the proton up? Click that one first.');
+                return;
+              }
               got[key] = true;
               g.classList.add('chosen');
-              if(key === 'acid'){ api.record(true); }
-              checkDone();
+              if(key === 'acid'){
+                if(!recorded){ api.record(true); recorded = true; }
+                api.showFeedback(fb, true, 'Right. HCl is the acid: it gives up its proton. Now click the base.');
+              }
+              if(got.acid && got.base){
+                api.showFeedback(fb, true, 'Right. HCl is the acid: it gives its proton to nitrogen\'s lone pair. NH₃ is the base: it accepts that proton.');
+                next.disabled = false;
+              }
             });
           });
           next.addEventListener('click', api.advance);
@@ -233,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Each product has a name.',
-        bodyHtml: '<p class="step-body">Go back to HCl + NH₃ → NH₄⁺ + Cl⁻. What is left of the acid after it loses the proton is its <b>conjugate base</b>, so chloride is the conjugate base of HCl. What the base becomes after it gains the proton is its <b>conjugate acid</b>, so ammonium is the conjugate acid of ammonia.</p><p class="step-body" style="margin-bottom:0;">Every proton transfer therefore has four species: an acid and a base going in, and a conjugate base and a conjugate acid coming out. The <a class="chapter-ref" href="/ochem/lessons/conjugate.html">Conjugate acids/bases</a> lesson works out what the pairing is good for.</p>'
+        bodyHtml: '<p class="step-body">Go back to HCl + NH₃ → NH₄⁺ + Cl⁻. What is left of the acid after it loses the proton is its <b>conjugate base</b>, so chloride is the conjugate base of HCl. What the base becomes after it gains the proton is its <b>conjugate acid</b>, so ammonium is the conjugate acid of ammonia.</p><p class="step-body" style="margin-bottom:0;">So every proton transfer has four species: an acid and a base going in, and a conjugate base and a conjugate acid coming out. The <a class="chapter-ref" href="/ochem/lessons/conjugate.html">Conjugate acids/bases</a> lesson works out what the pairing is good for.</p>'
       },
       {
         type: 'mcq',
@@ -248,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Draw a proton transfer with two arrows.',
-        bodyHtml: '<p class="step-body">You drew these arrows in the Curved arrows lesson. <b>Arrow 1</b> runs from the base\'s lone pair to the hydrogen and makes the new bond. <b>Arrow 2</b> runs from the bond that held the hydrogen onto the atom the proton leaves, which keeps that pair. Without arrow 2, the hydrogen would end up with two bonds.</p><p class="step-body">Start arrow 1 on the base\'s lone pair, not on the hydrogen. A proton has no electrons to give.</p><div class="explain-box"><b>Preview.</b> Proton transfers also sit inside longer mechanisms in later chapters. An alcohol\'s oxygen is protonated before it leaves as water in an S<sub>N</sub>1 reaction, and a proton comes off the carbon next to a C=O before an aldol reaction (<a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>). Once you see that a step is just an acid–base reaction, you know which two arrows to draw. Nothing in this lesson depends on those reactions.</div>'
+        bodyHtml: '<p class="step-body">You drew these arrows in the Curved arrows lesson. <b>Arrow 1</b> runs from the base\'s lone pair to the hydrogen and makes the new bond. <b>Arrow 2</b> runs from the bond that held the hydrogen onto the atom the proton leaves. That atom keeps the pair. Without arrow 2, the hydrogen would end up with two bonds.</p><p class="step-body">Start arrow 1 on the base\'s lone pair, not on the hydrogen. A proton has no electrons to give.</p><div class="explain-box"><b>Preview.</b> Proton transfers also sit inside longer mechanisms in later chapters. An alcohol\'s oxygen is protonated before it leaves as water in an S<sub>N</sub>1 reaction, and a proton comes off the carbon next to a C=O before an aldol reaction (<a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>). Once you see that a step is just an acid–base reaction, you know which two arrows to draw. Nothing in this lesson depends on those reactions.</div>'
       },
       {
         /* Deprotonation, drawn rather than described. The thing students
@@ -278,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'The equilibrium lies on the side of the weaker acid.',
-        bodyHtml: '<p class="step-body">The reaction you just drew can also run backward, with acetate taking a proton from water. Every proton transfer is an <b>equilibrium</b>, written with ⇌, even when it looks complete. To see which side the mixture ends up on, chemists compare each acid\'s <b>pKa</b>. The lower the pKa, the stronger the acid, which means the more readily it gives up its proton.</p><!-- fig:l-br-equilibrium:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 262" role="img" aria-label="Acetic acid plus hydroxide on top, acetate plus water below, joined by a long downward arrow and a short upward one to show the lower side is favored. Acetic acid is labeled pKa 4.76, the stronger acid; water is labeled pKa 15.7, the weaker acid."><text class="fg-lbl" x="96" y="40" text-anchor="middle" font-size="13">CH₃CO₂H</text><text class="fg-lbl" x="176" y="40" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="246" y="40" text-anchor="middle" font-size="13">HO⁻</text><text class="fg-tag-warn" x="96" y="64" text-anchor="middle" font-size="11">pKa 4.76</text><text class="fg-tag" x="96" y="80" text-anchor="middle" font-size="11">stronger acid</text><line class="fg-arrow" x1="172" y1="96" x2="172" y2="154"></line><path class="fg-head" d="M172 162 L167.84 154 L176.16 154 Z"></path><line class="fg-arrow-mut" x1="180" y1="148" x2="180" y2="118"></line><path class="fg-head-mut" d="M180 110 L184.16 118 L175.84 118 Z"></path><text class="fg-tag-good" x="196" y="134" text-anchor="start" font-size="11">favored</text><text class="fg-lbl" x="96" y="196" text-anchor="middle" font-size="13">CH₃CO₂⁻</text><text class="fg-lbl" x="176" y="196" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="246" y="196" text-anchor="middle" font-size="13">H₂O</text><text class="fg-tag-good" x="246" y="220" text-anchor="middle" font-size="11">pKa 15.7</text><text class="fg-tag" x="246" y="236" text-anchor="middle" font-size="11">weaker acid</text></svg><figcaption>The long arrow points to the side with the weaker acid.</figcaption></figure><!-- fig:l-br-equilibrium:end --><p class="step-body" style="margin-bottom:0;">Acetic acid, pKa 4.76, is a far stronger acid than water, pKa 15.7. So the equilibrium lies on the side of the <b>weaker acid and the weaker base</b>: water and acetate. That is the more stable, lower-energy side, where the proton is held most tightly. The <a class="chapter-ref" href="/ochem/lessons/pka.html">pKa</a> lesson turns the gap between the two numbers into a ratio.</p>'
+        bodyHtml: '<p class="step-body">The reaction you just drew can also run backward, with acetate taking a proton from water. Every proton transfer is an <b>equilibrium</b>, written with ⇌, even when it looks complete. A plain → is common shorthand when one side wins overwhelmingly. To see which side the mixture ends up on, compare each acid\'s <b>pKa</b> (you met pKa in the Resonance lesson). The lower the pKa, the stronger the acid, which means the more readily it gives up its proton.</p><!-- fig:l-br-equilibrium:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 262" role="img" aria-label="Acetic acid plus hydroxide on top, acetate plus water below, joined by a long downward arrow and a short upward one to show the lower side is favored. Acetic acid is labeled pKa 4.76, the stronger acid; water is labeled pKa 15.7, the weaker acid."><text class="fg-lbl" x="96" y="40" text-anchor="middle" font-size="13">CH₃CO₂H</text><text class="fg-lbl" x="176" y="40" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="246" y="40" text-anchor="middle" font-size="13">HO⁻</text><text class="fg-tag-warn" x="96" y="64" text-anchor="middle" font-size="11">pKa 4.76</text><text class="fg-tag" x="96" y="80" text-anchor="middle" font-size="11">stronger acid</text><line class="fg-arrow" x1="172" y1="96" x2="172" y2="154"></line><path class="fg-head" d="M172 162 L167.84 154 L176.16 154 Z"></path><line class="fg-arrow-mut" x1="180" y1="148" x2="180" y2="118"></line><path class="fg-head-mut" d="M180 110 L184.16 118 L175.84 118 Z"></path><text class="fg-tag-good" x="196" y="134" text-anchor="start" font-size="11">favored</text><text class="fg-lbl" x="96" y="196" text-anchor="middle" font-size="13">CH₃CO₂⁻</text><text class="fg-lbl" x="176" y="196" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="246" y="196" text-anchor="middle" font-size="13">H₂O</text><text class="fg-tag-good" x="246" y="220" text-anchor="middle" font-size="11">pKa 15.7</text><text class="fg-tag" x="246" y="236" text-anchor="middle" font-size="11">weaker acid</text></svg><figcaption>The long arrow points to the side with the weaker acid.</figcaption></figure><!-- fig:l-br-equilibrium:end --><p class="step-body" style="margin-bottom:0;">Acetic acid, pKa 4.76, is a far stronger acid than water, pKa 15.7. So the equilibrium lies on the side of the <b>weaker acid and the weaker base</b>: water and acetate. That is the more stable, lower-energy side, where the proton is held most tightly. The <a class="chapter-ref" href="/ochem/lessons/pka.html">pKa</a> lesson turns the gap between the two numbers into a ratio.</p>'
       },
       {
         type: 'mcq',
