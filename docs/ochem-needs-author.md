@@ -684,3 +684,32 @@ confirm it.
     addition of Br₂ is limited to simple alkenes. Wolff–Kishner is written H₂NNH₂, KOH, heat; Pt is
     kept as the catalyst in the dimethylcyclohexene figure. Acetone's self-aldol equilibrium
     favors acetone.
+
+## Drawing Molecules & Moving Electrons (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### drawing-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `skeletal-structures`, `curved-arrows`, `resonance`.
+- **Positions taken:**
+  - Skeletal structures uses condensed formulas instead of IUPAC names, since naming comes later,
+    but it still names pentane, cyclohexane and benzene as plain words. Confirm that is allowed.
+    The zigzag is "drawn at 120°, about 109.5° in the molecule" (a real alkane C–C–C angle is
+    nearer 112°). A hydrogen on O or N is always drawn "because it matters to how the molecule
+    behaves"; the page no longer calls it acidic, since acidity comes later. "A C–H on a chain
+    rarely does either" is true only in comparison with O–H and N–H. Benzene's circle is justified
+    by the measured fact that its six C–C bonds are identical, with the reason left to Resonance.
+  - Curved arrows: a + marks a missing electron, not a missing pair; only a carbocation (or H⁺ or
+    BF₃) is short of electrons, while NH₄⁺ and H₃O⁺ have full octets. An electron-poor site is
+    either an atom short of electrons or the δ+ end of a polar bond. Formal charge
+    (`formal-charge`) still describes electron-poor more narrowly ("a + together with fewer than
+    eight electrons") and should be brought in line in the Foundations wording pass.
+  - Resonance: the allyl cation is described only as more stable than a similar cation that
+    cannot spread its charge (about 15 kcal/mol in the gas phase, recalled, not checked); courses
+    differ on ranking it with secondary or tertiary cations, and the page makes no such
+    comparison. Resonance is called part of aromatic stability, not its definition. Benzene is
+    counted as two Kekulé plus three Dewar structures, naphthalene as three Kekulé structures.
+    The amide rotation barrier is given as about 18 kcal/mol (real amides range about 15–21).
+    The edge-on enol figure draws only oxygen's p-orbital lone pair.

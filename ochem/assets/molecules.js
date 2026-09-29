@@ -555,7 +555,7 @@
   /* ---- Substitution / elimination substrates ------------------------- */
 
   M['sn2-bromoethane'] = {
-    name: '1-bromoethane + hydroxide', formula: 'CH₃CH₂Br + HO⁻',
+    name: 'bromoethane + hydroxide', formula: 'CH₃CH₂Br + HO⁻',
     atoms: {
       nucO: { x:34,  y:88, r:16, label:'O', charge:'⁻', lp:3, role:'nucleophile', note:'Hydroxide — negative charge and three lone pairs, the electron source.' },
       nucH: { x:34,  y:44, r:10, label:'H' },
@@ -563,12 +563,12 @@
       c2:   { x:196, y:52, r:16, label:'C', note:'This carbon has no leaving group on it — nothing makes it electron-poor.' },
       h1:   { x:140, y:44, r:10, label:'H' },
       h2:   { x:112, y:126,r:10, label:'H' },
-      br:   { x:196, y:126,r:17, label:'Br', lp:3, role:'leaving-group', note:'Bromide is a weak base (HBr pKa ≈ −9), so it is happy to leave with the bonding electrons.' },
+      br:   { x:196, y:126,r:17, label:'Br', lp:3, role:'leaving-group', note:'Bromine takes both bonding electrons with it when the C–Br bond breaks, leaving as bromide ion.' },
       m1:   { x:252, y:30, r:10, label:'H' }, m2:{ x:236, y:80, r:10, label:'H' }, m3:{ x:176, y:14, r:10, label:'H' }
     },
     bonds: [{a:'nucO',b:'nucH'},{a:'c1',b:'c2'},{a:'c1',b:'h1'},{a:'c1',b:'h2'},{a:'c1',b:'br'},
             {a:'c2',b:'m1'},{a:'c2',b:'m2'},{a:'c2',b:'m3'}],
-    caption: 'A primary alkyl halide and a strong nucleophile.'
+    caption: 'Bromoethane and hydroxide ion.'
   };
 
   M['sn2-tertiary'] = {
@@ -674,9 +674,9 @@
     atoms: {
       o:   { x:160, y:30, r:16, label:'O', lp:2, role:'carbonyl-o', note:'The carbonyl oxygen is electron-RICH (δ−). Nucleophiles are not attracted here.' },
       c:   { x:160, y:88, r:17, label:'C', role:'electrophile', note:'The carbonyl carbon is δ+ — oxygen pulls the pi electrons toward itself.' },
-      ca:  { x:98,  y:120,r:15, label:'C', role:'alpha-carbon', note:'Alpha carbon — the one next to the carbonyl.' },
+      ca:  { x:98,  y:120,r:15, label:'C', role:'alpha-carbon', note:'The carbon next to the carbonyl carbon.' },
       cb:  { x:222, y:120,r:15, label:'C', role:'alpha-carbon' },
-      ha:  { x:62,  y:88, r:11, label:'H', role:'alpha-h', note:'An alpha hydrogen, pKa ≈ 20 — acidic because the resulting enolate is resonance stabilized.' },
+      ha:  { x:62,  y:88, r:11, label:'H', role:'alpha-h', note:'A hydrogen on the carbon next to the C=O.' },
       ha2: { x:74,  y:154,r:11, label:'H', role:'alpha-h' },
       hb:  { x:258, y:88, r:11, label:'H', role:'alpha-h' },
       hb2: { x:246, y:154,r:11, label:'H', role:'alpha-h' },

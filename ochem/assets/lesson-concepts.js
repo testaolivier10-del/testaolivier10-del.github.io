@@ -430,12 +430,14 @@
       12:['radical-chain','allylic-capture'],
       13:['radical-chain','radical-stability'] } },
 
-    'skeletal-structures': { n:8, steps:{
+    'skeletal-structures': { n:15, steps:{
       2:['skeletal-notation'],
-      3:['implicit-hydrogens','skeletal-notation'],
-      4:['skeletal-notation'],
+      4:['implicit-hydrogens','skeletal-notation'],
       6:['implicit-hydrogens','skeletal-notation'],
-      7:['implicit-hydrogens','skeletal-notation'] } },
+      8:['implicit-hydrogens','skeletal-notation'],
+      11:['implicit-hydrogens','formal-charge-calc'],
+      13:['implicit-hydrogens','skeletal-notation'],
+      14:['implicit-hydrogens','skeletal-notation'] } },
 
     'acidity-factors': { n:11, steps:{
       4:['acidity-factors'],
@@ -616,13 +618,13 @@
       3:['conjugate-pairs','pka-scale'],
       6:['conjugate-pairs','pka-scale'] } },
 
-    'curved-arrows': { n:9, steps:{
+    'curved-arrows': { n:11, steps:{
       1:['curved-arrow-direction'],
-      2:['curved-arrow-direction','resonance-validity'],
+      2:['curved-arrow-direction'],
       3:['curved-arrow-direction','formal-charge-calc'],
       6:['curved-arrow-direction','carbonyl-electrophilicity'],
       7:['curved-arrow-direction'],
-      8:['curved-arrow-direction','resonance-validity'] } },
+      10:['curved-arrow-direction'] } },
 
     'cyclohexanes': { n:9, steps:{
       1:['torsional-strain'],
@@ -837,13 +839,13 @@
       1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],
       6:['pka-scale','conjugate-pairs'] } },
 
-    'resonance': { n:9, steps:{
-      2:['resonance-delocalization','resonance-validity'],
+    'resonance': { n:11, steps:{
+      1:['resonance-delocalization'],
       3:['resonance-validity'],
-      4:['resonance-delocalization'],
-      5:['resonance-validity'],
-      6:['resonance-delocalization','resonance-validity'],
-      8:['resonance-validity','resonance-delocalization'] } },
+      5:['resonance-delocalization'],
+      7:['resonance-validity','resonance-delocalization'],
+      8:['resonance-delocalization','formal-charge-calc'],
+      10:['resonance-validity','resonance-delocalization'] } },
 
     'ring-flips': { n:13, steps:{
       1:['ring-flip-mechanics'],
