@@ -212,7 +212,7 @@
     why:'Taking the hydrogen from the interior carbon gives 2-butene — disubstituted, and therefore the more stable Zaitsev product. A small base like ethoxide can reach it easily.',
     diag:{
       hc:{ concept:'zaitsev-hofmann', msg:'That gives 1-butene, the less substituted alkene. That is the Hofmann product, which you would get with a BULKY base like t-BuOK. Ethoxide is small, so it takes the interior hydrogen and gives the more substituted alkene.' },
-      ha:{ concept:'anti-periplanar-geometry', msg:'That hydrogen is on the same carbon as the bromine. Removing an alpha hydrogen forms nothing — E2 always takes a BETA hydrogen, from the neighboring carbon.' },
+      ha:{ concept:'anti-periplanar-geometry', msg:'That hydrogen is on the alpha carbon, the one carrying the bromine. Removing it forms nothing — E2 always takes a BETA hydrogen, from the neighboring carbon.' },
       br:{ concept:'anti-periplanar-geometry', msg:'That is the leaving group itself. You are looking for the hydrogen being removed from an adjacent carbon.' }
     } },
 
@@ -405,12 +405,12 @@
 
   { id:'alkyne-acidity-q', kind:'mcq', tier:3, topic:'alkynes', concepts:['alkyne-acidity','hybridization-assignment'],
     prompt:'A terminal alkyne C–H (pKa 25) is far more acidic than an alkane C–H (pKa ~50). Why?',
-    options:['The triple bond is electron-poor','The acetylide anion sits in an sp orbital with 50% s character, holding the electrons close to the nucleus','Alkynes are aromatic','The C–H bond is longer in an alkyne'],
+    options:['The triple bond is electron-poor','The acetylide lone pair sits in an sp orbital (50% s), held close to the nucleus','The acetylide lone pair is spread over both carbons by resonance with the triple bond','The C–H bond is longer in an alkyne'],
     answer:1,
     why:'s orbitals sit closer to the nucleus than p orbitals. An sp orbital is half s character, so the lone pair is held much more tightly than in an sp3 orbital (25% s) — that stabilization is worth 25 pKa units.',
     diag:{
       0:{ concept:'alkene-pi-nucleophile', msg:'A triple bond is electron-RICH — it is a nucleophile. Its acidity comes from hybridization, not from electron deficiency.' },
-      2:{ concept:'huckel-aromaticity', msg:'Aromaticity needs a cyclic, planar, conjugated ring with 4n+2 electrons. A linear alkyne is none of those.' },
+      2:{ concept:'resonance-delocalization', msg:'The acetylide lone pair sits in an sp orbital along the C–H axis, at right angles to both pi bonds, so it cannot overlap with them. No resonance spreads it out. Its stability comes from s character.' },
       3:{ concept:'alkyne-acidity', msg:'The sp C–H bond is actually shorter and stronger. Bond strength is not what decides acidity — anion stability is.' }
     } },
 
@@ -520,7 +520,7 @@
     answer:1,
     why:'Bromine forms a bridged bromonium ion across one face, so bromide has to attack from the opposite face. Anti addition gives the trans product exclusively.',
     diag:{
-      0:{ concept:'addition-stereochem', msg:'Cis would require both bromines delivered to the same face — that is SYN addition, which is what hydrogenation and dihydroxylation do. Br₂ goes through a bridged intermediate, forcing anti.' },
+      0:{ concept:'addition-stereochem', msg:'Cis would need both bromines added to the same face, which is SYN. Br₂ goes through a bridged bromonium ion, so bromide must attack from the opposite face. That forces anti.' },
       3:{ concept:'addition-stereochem', msg:'The bromonium bridge makes this genuinely stereospecific, not random. One face is physically blocked by the bridge.' }
     } },
 
@@ -744,20 +744,20 @@
     prompt:'An oxygen atom with three bonds and one lone pair has what formal charge?',
     options:['−1','0','+1','+2'],
     answer:2,
-    why:'Formal charge = 6 (oxygen\'s valence electrons) − 2 (lone-pair electrons) − 3 (bonds) = +1. That is the oxygen in a protonated alcohol or an oxocarbenium ion.',
+    why:'Formal charge = 6 (oxygen\'s valence electrons) − 2 (lone-pair electrons) − 3 (bonds) = +1. That is the oxygen in hydronium, H₃O⁺.',
     diag:{
       0:{ concept:'formal-charge-calc', msg:'Check the direction: −1 oxygen has ONE bond and three lone pairs (like hydroxide). Extra bonds push formal charge positive, not negative.' },
       1:{ concept:'formal-charge-calc', msg:'Neutral oxygen has two bonds and two lone pairs. Count carefully: 6 − 2 − 3 does not come to zero.' }
     } },
 
   { id:'hybrid-carbonyl', kind:'mcq', tier:2, topic:'hybridization', concepts:['hybridization-assignment'],
-    prompt:'What is the hybridization of the carbonyl carbon in acetone?',
+    prompt:'What is the hybridization of the carbon in formaldehyde, H₂C=O?',
     options:['sp','sp²','sp³','sp³d'],
     answer:1,
-    why:'Count groups, not bonds: two methyls plus one oxygen is three groups, so sp² and trigonal planar. The second bond of the C=O is a pi bond from an unhybridized p orbital and does not add a group.',
+    why:'Count groups, not bonds: two hydrogens plus one oxygen is three groups, so sp² and trigonal planar. The second bond of the C=O is a pi bond from an unhybridized p orbital and does not add a group.',
     diag:{
-      2:{ concept:'hybridization-assignment', msg:'You counted the double bond as two groups. Count ATTACHED ATOMS plus lone pairs — the carbonyl carbon is bonded to three atoms, so it is sp².' },
-      0:{ concept:'hybridization-assignment', msg:'sp means two groups, which is what you get in an alkyne or a nitrile carbon. This carbon has three.' }
+      2:{ concept:'hybridization-assignment', msg:'You counted the double bond as two groups. Count ATTACHED ATOMS plus lone pairs — this carbon is bonded to three atoms, so it is sp².' },
+      0:{ concept:'hybridization-assignment', msg:'sp means two groups, as in the carbon of O=C=O or a carbon in a triple bond. This carbon has three.' }
     } },
 
   { id:'polarity-ccl4', kind:'mcq', tier:2, topic:'bond-polarity', concepts:['bond-polarity-dipoles','molecular-geometry-vsepr'],
@@ -777,7 +777,7 @@
     why:'Electronegativity increases up and to the right on the periodic table, which puts fluorine at the top: F > O > N > C.',
     diag:{
       2:{ concept:'electronegativity-trend', msg:'Oxygen is a close second, but fluorine is further right in the same period and beats it.' },
-      0:{ concept:'electronegativity-trend', msg:'Carbon is the least electronegative of these four — which is why C–O and C–F bonds are polarized away from carbon, leaving it δ+ and electrophilic.' }
+      0:{ concept:'electronegativity-trend', msg:'Carbon is the least electronegative of these four — which is why C–O and C–F bonds are polarized away from carbon, leaving it δ+ (electron-poor).' }
     } },
 
   { id:'lp-nucleophile-click', kind:'click-atom', tier:1, topic:'nucleophiles', concepts:['nucleophile-recognition','lewis-acid-base'],
@@ -789,28 +789,28 @@
       h1:{ concept:'nucleophile-recognition', msg:'An N–H hydrogen is slightly δ+, the opposite of nucleophilic. The electrons are on the nitrogen.' }
     } },
 
-  { id:'lewis-acid-q', kind:'mcq', tier:2, topic:'lewis-acids', concepts:['lewis-acid-base','electrophile-recognition'],
+  { id:'lewis-acid-q', kind:'mcq', tier:2, topic:'lewis-acids', concepts:['lewis-acid-base','valence-electrons'],
     prompt:'AlCl₃ has no acidic hydrogen. Why is it a strong Lewis acid?',
     options:['It releases Cl⁻ which is acidic','Aluminum has an empty orbital and only six valence electrons, so it accepts an electron pair','It has three polar bonds','It reacts with water'],
     answer:1,
-    why:'The Lewis definition is about electron pairs, not protons. Aluminum here is two electrons short of an octet with an empty p orbital, so it eagerly accepts a lone pair — which is exactly what it does in Friedel-Crafts catalysis.',
+    why:'The Lewis definition is about electron pairs, not protons. Aluminum here is two electrons short of an octet with an empty p orbital, so it readily accepts a lone pair. With chloride, for example, it forms AlCl₄⁻.',
     diag:{
       0:{ concept:'lewis-acid-base', msg:'Chloride is a weak BASE, not an acid — and AlCl₃ acts as an acid by accepting electrons at aluminum, not by releasing anything.' },
       2:{ concept:'lewis-acid-base', msg:'Polar bonds contribute, but the decisive feature is the empty orbital on aluminum. BF₃ works the same way for the same reason.' }
     } },
 
   { id:'tf-pi-nucleophile', kind:'tf', tier:1, topic:'alkene-structure', concepts:['alkene-pi-nucleophile','nucleophile-recognition'],
-    prompt:'An alkene\'s pi bond acts as a nucleophile in electrophilic addition.',
+    prompt:'An alkene\'s pi bond can act as a nucleophile, giving its electrons to an electron-poor atom.',
     options:['True','False'], answer:0,
     why:'Pi electrons are loosely held and sit exposed above and below the molecular plane, so an alkene is electron-rich. It attacks the electrophile, not the other way around.',
     diag:{
-      1:{ concept:'alkene-pi-nucleophile', msg:'The name "electrophilic addition" describes what gets ADDED, not what attacks. The alkene is the nucleophile and it attacks the electrophile — that is the first arrow in every one of these mechanisms.' }
+      1:{ concept:'alkene-pi-nucleophile', msg:'Pi electrons are held loosely and sit above and below the plane, easy to reach. That makes the alkene electron-rich, and an electron-rich site acts as the nucleophile. It attacks the electrophile.' }
     } },
 
   { id:'tf-resonance-atoms', kind:'tf', tier:1, topic:'resonance', concepts:['resonance-validity'],
     prompt:'In a valid set of resonance structures, atoms may move as long as the total charge stays the same.',
     options:['True','False'], answer:1,
-    why:'Only electrons move. Structures that differ by the position of an atom are isomers (or tautomers), not resonance forms — they are genuinely different molecules that interconvert by breaking bonds.',
+    why:'Only electrons move. Structures that differ in the position of an atom are isomers, not resonance forms. They are genuinely different molecules, and turning one into the other means breaking bonds.',
     diag:{
       0:{ concept:'resonance-validity', msg:'This is the single most common resonance error. Nuclei stay frozen in place; only lone pairs and pi electrons move. If you had to move an atom, you drew a different compound.' }
     } },
@@ -850,7 +850,7 @@
       prompt:'Click the atom that still has a lone pair.',
       molecule:'ammonia',
       answer:{ role:'nucleophile' },
-      why:'Nitrogen has five valence electrons. Three go into bonds with hydrogen, and the remaining two stay together as a lone pair — which is the whole reason ammonia acts as a base and a nucleophile.',
+      why:'Nitrogen has five valence electrons. Three go into bonds with hydrogen, and the remaining two stay together as a lone pair: two electrons nitrogen keeps and does not share.',
       diag:{
         h1:{ concept:'valence-electrons', msg:'Hydrogen has exactly one valence electron and uses it in its single bond. It has nothing left over — hydrogen never carries a lone pair.' },
         h2:{ concept:'valence-electrons', msg:'Hydrogen has one valence electron, spent on its one bond. Look for the atom with more valence electrons than bonds.' },
@@ -909,7 +909,7 @@
       prompt:'Click the oxygen carrying a formal charge of −1.',
       molecule:'acetate-ion',
       answer:{ keys:['o2'] },
-      why:'Formal charge = valence − lone-pair electrons − bonds. The single-bonded oxygen is 6 − 6 − 1 = −1. The double-bonded one is 6 − 4 − 2 = 0. In the real ion the charge is shared between them, but in THIS drawn resonance form it sits on the singly-bonded oxygen.',
+      why:'Formal charge = valence − lone-pair electrons − bonds. The single-bonded oxygen is 6 − 6 − 1 = −1. The double-bonded one is 6 − 4 − 2 = 0. In the real ion the charge is shared between the two oxygens, but in THIS drawing it sits on the singly bonded oxygen.',
       diag:{
         o1:{ concept:'formal-charge-calc', msg:'Run the arithmetic on that one: 6 valence − 4 lone-pair electrons − 2 bonds = 0. It is the oxygen with three lone pairs and only one bond that comes out negative.' },
         c:{ concept:'formal-charge-calc', msg:'That carbon has four bonds and no lone pairs: 4 − 0 − 4 = 0. Neutral. Carbon with four bonds is almost always formal-charge zero.' },
@@ -951,16 +951,16 @@
 
     { id:'resonance-draw-acetate', kind:'draw', tier:2, topic:'curved-arrows',
       concepts:['curved-arrow-direction','resonance-delocalization','resonance-validity'],
-      prompt:'Draw the two arrows that convert this resonance form of acetate into its equivalent partner.',
+      prompt:'Draw the two arrows that move the negative charge of this acetate ion from the singly bonded oxygen to the other oxygen.',
       molecule:'acetate-ion',
-      drawHint:'Only electrons move in resonance — never atoms. Two arrows: one makes a bond, one breaks one.',
+      drawHint:'Only electrons move — never atoms. Two arrows: one makes a bond, one breaks one.',
       answer:{ arrows:[ {from:'o2', to:'bond:c-o2'}, {from:'bond:c-o1', to:'o1'} ] },
-      why:'The negatively charged oxygen pushes a lone pair up to make a second bond to carbon, and to keep carbon at four bonds the existing C=O pi bond drops onto the other oxygen. The result is the mirror image of what you started with — which is exactly why the two oxygens are equivalent and the charge is really spread over both.',
+      why:'The negatively charged oxygen pushes a lone pair in to make a second bond to carbon. To keep carbon at four bonds, the existing C=O pi bond moves onto the other oxygen. You end with the same ion drawn the other way round, the charge now on the other oxygen. The next topic is about pairs of drawings like these.',
       diag:{
         'o2>c':{ concept:'curved-arrow-direction', msg:'The lone pair forms a pi BOND to carbon, so point the arrow at the C–O bond, not at the carbon itself. An arrowhead on carbon would mean a fifth sigma bond.' },
         'bond:c-o1>c':{ concept:'curved-arrow-direction', msg:'Backwards. The pi electrons move away from carbon and onto the electronegative oxygen, which can hold the charge.' },
         'o1>bond:c-o1':{ concept:'resonance-validity', msg:'That oxygen is already double-bonded to carbon. Adding another bond there would give carbon five — it is the oxygen with the negative charge that donates.' },
-        missing:{ concept:'resonance-validity', msg:'One arrow on its own leaves carbon with five bonds. In resonance the arrows come in balanced pairs: every bond made at a full atom needs a bond broken.' }
+        missing:{ concept:'resonance-validity', msg:'One arrow on its own leaves carbon with five bonds. Every bond made at a full atom needs a bond broken, so these arrows come as a pair.' }
       } },
 
     { id:'electrophile-formaldehyde', kind:'click-atom', tier:1, topic:'electrophiles',
@@ -1012,13 +1012,13 @@
     /* ---- Module 3: acids and bases ------------------------------------- */
 
     { id:'bronsted-acidic-h', kind:'click-atom', tier:1, topic:'bronsted',
-      concepts:['bronsted-identification','acidity-factors'],
+      concepts:['bronsted-identification','conjugate-pairs'],
       prompt:'Click the proton a Brønsted base would remove first.',
       molecule:'acetic-acid',
       answer:{ role:'acidic-h' },
       why:'The O–H proton, pKa around 4.76. It leaves easily because what stays behind — a carboxylate — spreads its negative charge over two equivalent oxygens. The alpha C–H is around pKa 25 and does not compete.',
       diag:{
-        ha:{ concept:'acidity-factors', msg:'That is an alpha C–H, roughly pKa 25 here — twenty orders of magnitude less acidic than the O–H. Acidity is about how stable the conjugate base is, and a carbanion is far less stable than a carboxylate.' }
+        ha:{ concept:'conjugate-pairs', msg:'That is an alpha C–H, roughly pKa 25 here — twenty orders of magnitude less acidic than the O–H. Acidity is about how stable the conjugate base is, and a carbanion is far less stable than a carboxylate.' }
       } },
 
     { id:'bronsted-conjugate-acid', kind:'click-atom', tier:1, topic:'conjugate',
@@ -1073,7 +1073,7 @@
         fh1:{ concept:'newman-reading', msg:'That is a front-carbon hydrogen. The dihedral angle is measured between a FRONT group and a BACK group.' }
       } },
 
-    { id:'chair-axial-methyl', kind:'click-atom', tier:1, topic:'cyclohexanes',
+    { id:'chair-axial-methyl', kind:'click-atom', tier:1, topic:'axial-equatorial',
       concepts:['chair-axial-equatorial','steric-hindrance'],
       prompt:'Click the methyl group in the axial position.',
       molecule:'chair-dimethylcyclohexane',
@@ -1082,6 +1082,23 @@
       diag:{
         me5:{ concept:'chair-axial-equatorial', msg:'That methyl points outward, roughly along the ring’s waist — that is equatorial. Axial bonds run vertically, parallel to the axis through the middle of the ring.' },
         hax1:{ concept:'chair-axial-equatorial', msg:'That IS axial, but it is a hydrogen, not a methyl — it is one of the groups the axial methyl is crashing into.' }
+      } },
+
+    { id:'chair-low-end', kind:'click-atom', tier:1, topic:'cyclohexanes',
+      concepts:['chair-axial-equatorial','torsional-strain'],
+      prompt:'This ring is drawn as a chair. Click the ring carbon that dips below the other five.',
+      molecule:'chair-dimethylcyclohexane',
+      sub:'Four ring carbons lie roughly in one plane. One end of the chair rises above it and the other end drops below.',
+      answer:{ keys:['r2'] },
+      why:'A chair has four carbons in roughly one plane, one end carbon raised above it and the other lowered below it. That pucker lets every C–C–C angle sit near 109.5° and keeps every C–H staggered, so the ring has essentially no strain.',
+      diag:{
+        r5:{ concept:'chair-axial-equatorial', msg:'That is the raised end of the chair, not the lowered one. The two ends of a chair always point in opposite directions.' },
+        r1:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' },
+        r3:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' },
+        r4:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' },
+        r6:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' },
+        me6:{ concept:'chair-axial-equatorial', msg:'That is a methyl group, not a ring carbon. Look at the six carbons of the ring itself.' },
+        me5:{ concept:'chair-axial-equatorial', msg:'That is a methyl group, not a ring carbon. Look at the six carbons of the ring itself.' }
       } },
 
     { id:'chair-diaxial-clash', kind:'click-atom', tier:3, topic:'conformational-analysis',
@@ -1099,23 +1116,23 @@
 
     { id:'chirality-find-stereocenter', kind:'click-atom', tier:1, topic:'chirality',
       concepts:['stereocenter-identification','chirality-recognition'],
-      prompt:'Click the stereocenter.',
+      prompt:'Click the atom that makes this molecule chiral.',
       molecule:'bromochlorofluoromethane',
       answer:{ role:'stereocenter' },
-      why:'A stereocenter is a carbon with four DIFFERENT groups. Here they are H, F, Cl and Br — all different, so swapping any two gives a molecule you cannot superimpose on the original.',
+      why:'This carbon carries four DIFFERENT groups: H, F, Cl and Br. Swap any two and you get a mirror image you cannot superimpose on the original, so the molecule is chiral.',
       diag:{
-        br:{ concept:'stereocenter-identification', msg:'Bromine has only one bond, so there is nothing around it to arrange. A stereocenter needs FOUR different groups on one atom — look at the carbon.' },
-        cl:{ concept:'stereocenter-identification', msg:'A terminal atom with a single bond cannot be a stereocenter. The stereocenter is the atom the four different groups are attached TO.' },
+        br:{ concept:'stereocenter-identification', msg:'Bromine has only one bond, so there is nothing around it to arrange. Look for the atom that carries FOUR different groups: the carbon.' },
+        cl:{ concept:'stereocenter-identification', msg:'An atom with a single bond has nothing arranged around it, so it cannot give the molecule a handedness. Look for the atom the four different groups are attached TO.' },
         h:{ concept:'stereocenter-identification', msg:'That hydrogen is one of the four groups, not the center they are arranged around.' }
       } },
 
     { id:'chirality-why-not', kind:'multi-click', tier:2, topic:'chirality',
       concepts:['stereocenter-identification','chirality-recognition'],
-      prompt:'This carbon is NOT a stereocenter. Click the two groups that are the reason.',
+      prompt:'The central carbon here does NOT make the molecule chiral. Click the two groups that are the reason.',
       molecule:'propane-2-ol-achiral',
-      sub:'It has four groups, an OH, and looks much like butan-2-ol. Something still disqualifies it.',
+      sub:'It has four groups, one of them an OH, and looks much like butan-2-ol. Something still rules it out.',
       answer:{ keys:['c1','c3'] },
-      why:'Two of the four groups are identical methyls. Swapping them changes nothing, so the mirror image is superimposable and there is no stereocenter — four groups is not enough, they have to be four DIFFERENT groups.',
+      why:'Two of the four groups are identical methyls. Swapping them changes nothing, so the mirror image is superimposable and the molecule is achiral. Four groups is not enough; they have to be four DIFFERENT groups.',
       diag:{
         o:{ concept:'stereocenter-identification', msg:'The OH is unique here, so it is not the problem — it is one of the groups that would have counted. Look for two groups that are the same as each other.' },
         h:{ concept:'stereocenter-identification', msg:'The hydrogen is also unique. The disqualifying pair is two groups identical to one another.' },
@@ -1340,7 +1357,7 @@
         'bond:c2-hb>c3':{ concept:'curved-arrow-direction', msg:'Nearly. The new pi bond forms between the beta and alpha carbons, so point the arrow at the bond between them rather than at the alpha carbon itself.' },
         'c3>br':{ concept:'curved-arrow-direction', msg:'The tail belongs on the C–Br bond — those are the electrons leaving with bromide. Carbon has no lone pair to donate.' },
         'bond:c2-hc>bond:c2-c3':{ concept:'anti-periplanar-geometry', msg:'That hydrogen is on the wrong carbon for this elimination. E2 needs the H and the leaving group on ADJACENT carbons and anti-periplanar — 180° apart, not merely nearby.' },
-        'missing':{ concept:'curved-arrow-direction', msg:'E2 is concerted. If the leaving group does not go in the same step, you have drawn a carbanion intermediate — that is E1cb, a different mechanism.' }
+        'missing':{ concept:'curved-arrow-direction', msg:'E2 is concerted. If the leaving group does not go in the same step, you have drawn a carbanion intermediate, which belongs to a different, stepwise mechanism.' }
       } },
 
     { id:'carbonyl-draw-addition', kind:'draw', tier:2, topic:'nucleophilic-addition',
@@ -1436,45 +1453,45 @@
     } },
 
   { id:'fc-click-charged-atom', kind:'click-atom', tier:2, topic:'formal-charge', concepts:['formal-charge-calc'],
-    prompt:'In the resonance form drawn here, click the atom carrying the formal negative charge.',
+    prompt:'In the ion drawn here, click the atom carrying the formal negative charge.',
     molecule:'acetate-ion',
-    sub:'Count bonds and lone pairs on each oxygen. The two oxygens are equivalent overall — but in any single drawn form, only one of them holds the charge.',
+    sub:'Count bonds and lone pairs on each oxygen. In this drawing only one of them holds the charge.',
     answer:{ keys:['o2'] },
-    why:'In this form that oxygen has one single bond and three lone pairs: 6 − (6 + 1) = −1. The doubly bonded oxygen has two bonds and two lone pairs, which comes out neutral. Draw the other resonance form and the two swap roles, which is exactly what "the charge is shared" means.',
+    why:'In this drawing that oxygen has one single bond and three lone pairs: 6 − (6 + 1) = −1. The doubly bonded oxygen has two bonds and two lone pairs, which comes out neutral.',
     diag:{
       o1:{ concept:'formal-charge-calc', msg:'That oxygen is double bonded: 6 − (4 lone-pair electrons + 2 half-bonds) = 0. Neutral. Look for the singly bonded one.' },
       c:{ concept:'formal-charge-calc', msg:'That carbon has four bonds and no lone pairs: 4 − (0 + 4) = 0. Carbon with four bonds is always neutral.' },
-      ca:{ concept:'formal-charge-calc', msg:'An ordinary CH₃ carbon — four bonds, no charge. The charge in a carboxylate is on oxygen.' }
+      ca:{ concept:'formal-charge-calc', msg:'An ordinary CH₃ carbon — four bonds, no charge. In this ion the charge sits on an oxygen.' }
     } },
 
-  { id:'hybrid-order-sbond', kind:'order', tier:3, topic:'hybridization', concepts:['hybridization-assignment','alkyne-acidity'],
+  { id:'hybrid-order-sbond', kind:'order', tier:3, topic:'hybridization', concepts:['hybridization-assignment'],
     prompt:'Rank these carbons by s character in their hybrid orbitals, highest first.',
-    items:['sp carbon in an alkyne','sp² carbon in an alkene','sp³ carbon in an alkane'],
+    items:['sp carbon in HC≡CH','sp² carbon in H₂C=CH₂','sp³ carbon in H₃C–CH₃'],
     answer:[0,1,2],
-    why:'sp is 50% s, sp² is 33%, sp³ is 25%. More s character holds electrons closer to the nucleus, which is why an alkyne C–H (pKa 25) is so much more acidic than an alkane C–H (pKa 50).',
+    why:'sp is 50% s, sp² is 33%, sp³ is 25%. More s character holds electrons closer to the nucleus, which is why the C–H of HC≡CH (pKa 25) is so much more acidic than a C–H of H₃C–CH₃ (pKa 50).',
     diag:{ any:{ concept:'hybridization-assignment', msg:'Count the orbitals being mixed: sp uses one s and one p (so s is half of it), sp² one s and two p, sp³ one s and three p. Fewer p orbitals in the mix means more s character.' } } },
 
-  { id:'hybrid-amide-nitrogen', kind:'mcq', tier:4, topic:'hybridization', concepts:['hybridization-assignment','resonance-delocalization'],
-    prompt:'An amide nitrogen has three sigma bonds and a lone pair. Why is it sp² rather than sp³?',
+  { id:'hybrid-amide-nitrogen', kind:'mcq', tier:4, topic:'hybridization', concepts:['hybridization-assignment','sigma-pi-bonding'],
+    prompt:'The nitrogen in R–C(=O)–NH₂ has three sigma bonds and a lone pair. Why is it sp² rather than sp³?',
     options:[
-      'Because the lone pair is delocalized into the carbonyl, and it has to sit in a p orbital to overlap with the pi system',
-      'Because nitrogen can never be sp³',
-      'Because it has only three sigma bonds',
-      'Because the amide is aromatic'
+      'Its lone pair moves into a p orbital so it can overlap with the C=O π bond',
+      'Nitrogen bonded to a carbon is always sp², whatever else is attached',
+      'It has three bonds, and three bonds alone set the hybridization at sp²',
+      'Its lone pair does not count as an electron group, so only three groups remain'
     ],
     answer:0,
-    why:'Counting electron groups alone would predict sp³. But that lone pair is conjugated into the C=O, and conjugation requires a p orbital parallel to the pi system — so the nitrogen flattens to sp² to allow the overlap. This is also why amides are planar and barely basic.',
+    why:'Counting groups predicts sp³. But the lone pair is more stable in a p orbital parallel to the C=O π bond, where it overlaps sideways with it. That leaves nitrogen three hybrid orbitals, so it is sp² and flat, and so is the whole C(=O)–N unit.',
     diag:{
-      1:{ concept:'hybridization-assignment', msg:'Nitrogen is sp³ in ordinary amines — ammonia and ethylamine both are. What is different here is that the lone pair has somewhere better to be.' },
-      2:{ concept:'hybridization-assignment', msg:'Three sigma bonds plus a lone pair is four electron groups, which is exactly the count that predicts sp³. The naive count is wrong here, and resonance is why.' },
-      3:{ concept:'huckel-aromaticity', msg:'An amide is conjugated, not aromatic — there is no ring and no 4n+2 count. Conjugation alone is enough to demand a p orbital.' }
+      1:{ concept:'hybridization-assignment', msg:'Nitrogen with three single bonds and a lone pair is normally sp³, as in NH₃ or CH₃NH₂. What is different here is the C=O next door: the lone pair has somewhere better to be.' },
+      2:{ concept:'hybridization-assignment', msg:'Three sigma bonds plus a lone pair is four electron groups, which is exactly the count that predicts sp³. The plain count is wrong here, and the C=O next door is why.' },
+      3:{ concept:'hybridization-assignment', msg:'Lone pairs do count as groups; that is why the nitrogen of NH₃ is sp³. Here the pair moves into a p orbital beside the C=O π bond, leaving three hybrid orbitals.' }
     } },
 
   { id:'orbital-node-count', kind:'mcq', tier:3, topic:'orbitals', concepts:['hybridization-assignment'],
     prompt:'How many nodal planes pass through the nucleus in a single 2p orbital?',
     options:['One','Zero','Two','Three'],
     answer:0,
-    why:'A p orbital has two lobes with opposite phase, separated by one nodal plane through the nucleus. That node is why the two lobes can overlap constructively with a neighbor to make a pi bond, or destructively to make an antibonding one.',
+    why:'A p orbital has two lobes with opposite phase, separated by one nodal plane through the nucleus. Because the lobes differ in phase, a neighboring orbital can overlap with one lobe in phase or with the other out of phase.',
     diag:{
       1:{ concept:'hybridization-assignment', msg:'Zero nodal planes through the nucleus describes an s orbital, which is spherical and has no phase change. A p orbital has two lobes, so something separates them.' },
       2:{ concept:'hybridization-assignment', msg:'Two nodal planes through the nucleus is a d orbital. A p orbital has a single pair of lobes along one axis.' },
@@ -1487,7 +1504,7 @@
     answer:{ role:'carbonyl-o' },
     why:'C=O is the most polar bond here: oxygen is far more electronegative than carbon, so the pi electrons sit closer to oxygen and it carries the δ−. Every C–H bond in the molecule is much less polar than that.',
     diag:{
-      c:{ concept:'bond-polarity-dipoles', msg:'That is the δ+ end, not δ−. Oxygen pulls density away from this carbon, which is exactly what makes it electrophilic.' },
+      c:{ concept:'bond-polarity-dipoles', msg:'That is the δ+ end, not δ−. Oxygen pulls density away from this carbon, leaving it electron-poor.' },
       ca:{ concept:'electronegativity-trend', msg:'An ordinary alkyl carbon with only hydrogens on it. C–H bonds are barely polar — the electronegativity difference is small.' }
     } },
 
@@ -1520,10 +1537,10 @@
     diag:{
       1:{ concept:'pka-scale', msg:'"Strong base" is not absolute — it is relative to what you are trying to deprotonate. Ethoxide is strong next to water and far too weak next to an alkyne, nine pKa units away.' },
       2:{ concept:'conjugate-pairs', msg:'A nine-unit pKa gap is a factor of 10⁹, which is not close to balanced. Equal amounts would need comparable pKa values.' },
-      3:{ concept:'alkyne-acidity', msg:'An alkyne C–H is remarkably acidic for a C–H — 25 versus 50 for an alkane — but that is still far less acidic than an alcohol at 16. Unusual for carbon is not the same as strong.' }
+      3:{ concept:'pka-scale', msg:'An alkyne C–H is remarkably acidic for a C–H — 25 versus 50 for an alkane — but that is still far less acidic than an alcohol at 16. Unusual for carbon is not the same as strong.' }
     } },
 
-  { id:'bronsted-click-basic-site', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','amine-basicity'],
+  { id:'bronsted-click-basic-site', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','electronegativity-trend'],
     prompt:'Click the atom that gets protonated first when acid is added.', molecule:'ethylamine',
     sub:'Which atom here is most willing to share a lone pair with H⁺?',
     answer:{ role:'nucleophile' },
@@ -1533,20 +1550,20 @@
       c2:{ concept:'bronsted-identification', msg:'An ordinary alkyl carbon — nothing available to bond to H⁺. Look for lone pairs.' }
     } },
 
-  { id:'bronsted-polyfunctional-h', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','acidity-factors'],
+  { id:'bronsted-polyfunctional-h', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','conjugate-pairs'],
     prompt:'Click the proton that one equivalent of sodium hydride removes.',
     molecule:'hydroxybutanone',
     sub:'Two kinds of hydrogen are drawn. Give each one a pKa before you click.',
     answer:{ role:'acidic-h' },
-    why:'The O\u2013H, pKa about 16. The alpha C\u2013H bonds either side of the carbonyl are around 20 \u2014 extraordinary for carbon, because the enolate spreads its charge onto oxygen, and still four pKa units short of an ordinary alcohol. Four units is ten thousand to one, so with one equivalent of base the O\u2013H comes off and nothing else does. Rank against the table, not against how special a site looks.',
+    why:'The O\u2013H, pKa about 16. The C\u2013H bonds on the carbons next to the C=O are around pKa 20. That is very acidic for carbon, but still four units short of an ordinary alcohol. Four units is ten thousand to one, so one equivalent of base takes the O\u2013H and nothing else. Rank against the table, not against how special a site looks.',
     diag:{
-      h31:{ concept:'acidity-factors', msg:'That alpha C\u2013H is around pKa 20 \u2014 thirty orders of magnitude more acidic than an alkane, and still four units less acidic than the O\u2013H at 16. Being remarkable for a C\u2013H is not the same as beating an O\u2013H.' },
-      h32:{ concept:'acidity-factors', msg:'Same site as the other alpha hydrogen, pKa about 20. The O\u2013H beats it by four units, which is ten thousand to one.' },
+      h31:{ concept:'bronsted-identification', msg:'That C\u2013H, next to the C=O, is around pKa 20 \u2014 very acidic for a C\u2013H, but still four units less acidic than the O\u2013H at 16. Being remarkable for a C\u2013H is not the same as beating an O\u2013H.' },
+      h32:{ concept:'bronsted-identification', msg:'Same kind of site as the other C\u2013H next to the C=O, pKa about 20. The O\u2013H beats it by four units, which is ten thousand to one.' },
       o1:{ concept:'bronsted-identification', msg:'The carbonyl oxygen is the most BASIC site here, not the most acidic \u2014 it has no hydrogen on it to give away. Different question, different answer.' },
       c2:{ concept:'bronsted-identification', msg:'The carbonyl carbon carries no hydrogen at all. An acid needs a proton to donate.' }
     } },
 
-  { id:'bronsted-polyfunctional-base', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','acidity-factors'],
+  { id:'bronsted-polyfunctional-base', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','conjugate-pairs'],
     prompt:'Now the other question: click the atom that gets protonated when strong acid is added.',
     molecule:'hydroxybutanone',
     sub:'Most acidic proton and most basic site are different questions.',
@@ -1558,7 +1575,7 @@
       c3:{ concept:'bronsted-identification', msg:'An ordinary CH\u2082 carbon: no lone pair, nothing to offer a proton.' }
     } },
 
-  { id:'lewis-acid-identify', kind:'mcq', tier:3, topic:'lewis-acids', concepts:['lewis-acid-base','electrophile-recognition'],
+  { id:'lewis-acid-identify', kind:'mcq', tier:3, topic:'lewis-acids', concepts:['lewis-acid-base','bronsted-identification'],
     prompt:'Why is BF₃ a Lewis acid but not a Brønsted acid?',
     options:[
       'It accepts an electron pair into an empty p orbital, but it has no proton to donate',
@@ -1605,14 +1622,14 @@
       'Its bond angles are near 109.5° and every C–H is staggered with its neighbors',
       'Because the ring is planar, so all the angles are equal',
       'Because the ring is small enough that strain does not apply',
-      'Because all twelve hydrogens are equatorial'
+      'Because its C–C bonds are stretched longer than normal, which relieves the crowding'
     ],
     answer:0,
     why:'The chair achieves both things at once: angles close to the tetrahedral ideal, so no angle strain, and fully staggered bonds all the way round, so no torsional strain. A planar hexagon would force 120° angles and eclipse every C–H pair.',
     diag:{
       1:{ concept:'torsional-strain', msg:'The chair is deliberately NOT planar. A flat ring would have 120° angles and every neighboring C–H eclipsed — that is the high-energy arrangement the pucker avoids.' },
       2:{ concept:'torsional-strain', msg:'Ring size matters a great deal: cyclopropane and cyclobutane are badly strained. Six carbons is special because it can pucker into a shape with no strain at all.' },
-      3:{ concept:'chair-axial-equatorial', msg:'Six are axial and six equatorial, alternating around the ring. That is a feature of the chair, but it is not why it is strain-free.' }
+      3:{ concept:'torsional-strain', msg:'The C–C bonds in a chair are ordinary single bonds of normal length. The relief comes from shape: angles near tetrahedral and every neighboring C–H staggered.' }
     } },
 
   // ---- Stereochemistry ------------------------------------------------

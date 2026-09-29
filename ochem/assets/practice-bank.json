@@ -108,7 +108,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "Modern quantum theory describes electrons as occupying probability clouds (orbitals), not fixed circular paths — the old planetary picture is an oversimplification.",
+   "why": "Electrons do not move on fixed tracks. Modern quantum theory describes where an electron is likely to be as a fuzzy cloud of probability, so the planet-like picture is an outdated simplification.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -197,7 +197,7 @@
     "18"
    ],
    "correct": 0,
-   "why": "The second shell contains one 2s and three 2p orbitals (4 orbitals total), each holding 2 electrons, for a maximum of 8.",
+   "why": "The second shell, called L, holds at most 8 electrons. 2 is the limit of the first shell (K), and 18 belongs to a larger shell farther out, not this one.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -320,7 +320,7 @@
     "It is impossible",
     "It carries a −1 charge",
     "It carries a +1 charge",
-    "It is an ordinary neutral amine"
+    "It is neutral, since each bond is shared"
    ],
    "correct": 2,
    "why": "Neutral nitrogen takes 3 bonds and 1 lone pair. A fourth bond has replaced that lone pair, so nitrogen now shares a pair it used to own outright and comes out one electron short: +1.",
@@ -373,7 +373,7 @@
     "1 valence electron"
    ],
    "correct": 3,
-   "why": "Sodium (group 1) has just 1 valence electron; losing it leaves sodium with the same stable electron configuration as neon, a noble gas.",
+   "why": "Sodium (group 1) has just 1 valence electron. Losing it uncovers the full shell underneath, the same 2, 8 arrangement as neon. A full outer shell describes the ion Na⁺, not the sodium atom.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -889,7 +889,7 @@
    "type": "tf"
   },
   {
-   "q": "A carbonyl carbon (C=O, plus two other single bonds) is hybridized as:",
+   "q": "A carbon with one C=O double bond and two single bonds is hybridized as:",
    "options": [
     "sp2",
     "sp",
@@ -897,7 +897,7 @@
     "Not hybridized"
    ],
    "correct": 0,
-   "why": "The carbonyl carbon has 3 sigma bonds total (the double bond counts once for sigma purposes) and 0 lone pairs, giving a steric number of 3 and sp2 hybridization.",
+   "why": "It has three electron groups (the double bond counts once) and no lone pairs, so it is sp2. Counting the double bond as two groups gives the tempting sp3.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -941,15 +941,15 @@
    "type": "mcq"
   },
   {
-   "q": "A terminal alkyne's C–H bond (attached to an sp carbon) is more acidic than a C–H bond on an sp3 carbon mainly because:",
+   "q": "A C–H bond on a triple-bonded carbon, as in H–C≡C–H, is more acidic than a C–H bond on an sp3 carbon. Why?",
    "options": [
     "sp orbitals hold the pair closer to carbon",
     "sp carbons are less electronegative than sp3",
     "A triple bond weakens every C–H nearby",
-    "Alkynes simply have more hydrogens"
+    "An sp C–H bond is longer and weaker"
    ],
    "correct": 0,
-   "why": "Taking H⁺ off leaves the bonding pair behind on carbon, so the question is which carbon holds that pair most comfortably. An sp orbital is 50% s against sp3's 25%, and s character means density close to the nucleus — so an sp carbon holds the leftover pair tightly and gives the proton up far more readily.",
+   "why": "Taking H⁺ off leaves the bonding pair on carbon. An sp orbital is 50% s against sp3's 25%, and s character keeps electrons close to the nucleus, so the sp carbon holds the leftover pair tightly and gives up the proton more readily. The sp C–H bond is actually shorter, not longer.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -991,7 +991,7 @@
    "type": "tf"
   },
   {
-   "q": "An imine is a C=N group (the nitrogen analogue of a C=O). Its nitrogen has one double bond, one single bond and one lone pair. What is its hybridization?",
+   "q": "In CH₂=NH, the nitrogen has one double bond to carbon, one single bond to H and one lone pair. What is its hybridization?",
    "options": [
     "sp",
     "sp3",
@@ -999,7 +999,7 @@
     "sp2"
    ],
    "correct": 3,
-   "why": "Counting 2 sigma bonds plus 1 lone pair gives a steric number of 3, so the imine nitrogen is sp2 hybridized, just like the carbon it's double-bonded to.",
+   "why": "Two sigma bonds plus one lone pair make three electron groups, so the nitrogen is sp2, just like the carbon it is double-bonded to. Counting the double bond as two groups gives the tempting sp3.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -1067,7 +1067,7 @@
    "type": "mcq"
   },
   {
-   "q": "In a carbonyl group (C=O), the oxygen has 1 sigma bond to carbon, a pi bond, and 2 lone pairs. What is oxygen's hybridization?",
+   "q": "In formaldehyde, H₂C=O, the oxygen has one sigma bond to carbon, one pi bond and two lone pairs. What is its hybridization?",
    "options": [
     "sp2",
     "sp",
@@ -1075,7 +1075,7 @@
     "Not hybridized"
    ],
    "correct": 0,
-   "why": "Counting 1 sigma bond plus 2 lone pairs gives a steric number of 3, so the carbonyl oxygen is sp2 hybridized, matching its planar carbon partner.",
+   "why": "One sigma bond plus two lone pairs make three electron groups, so the oxygen is sp2, matching the flat carbon it is double-bonded to. The pi bond is not a separate group, which is why sp3 is wrong.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -1088,20 +1088,20 @@
     "All three"
    ],
    "correct": 2,
-   "why": "Assign each carbon separately. The CH₃ carbon has four groups — three hydrogens and the neighboring carbon — so it is sp³. Each of the two alkene carbons has three groups, counting the double bond once, so both are sp².",
+   "why": "Assign each carbon separately. The CH₃ carbon has four groups (three hydrogens and the neighboring carbon), so it is sp³. Each of the two C=C carbons has three groups, counting the double bond once, so both are sp².",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "In acetic acid, CH₃COOH, what are the hybridizations of the carbonyl carbon and of the OH oxygen?",
+   "q": "In acetic acid, CH₃COOH, what are the hybridizations of the CH₃ carbon and of the C=O carbon?",
    "options": [
     "Both sp³",
-    "sp² and sp³",
+    "sp³ and sp²",
     "Both sp²",
     "sp and sp²"
    ],
    "correct": 1,
-   "why": "The carbonyl carbon has three groups — the methyl, the OH oxygen, and the C=O counted once — so it is sp², and it plus its three neighbors are flat. The OH oxygen has two bonds and two lone pairs, four groups, so nominally sp³ and bent.",
+   "why": "The CH₃ carbon has four groups (three H and one C), so it is sp³. The C=O carbon has three: the CH₃, the OH oxygen and the double bond counted once, so it is sp². Counting the double bond as two groups gives the tempting \"both sp³\".",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -1117,15 +1117,15 @@
    "type": "tf"
   },
   {
-   "q": "An amide nitrogen (R–CO–NH₂) has three bonds and one lone pair, yet it is flat rather than pyramidal. What does that tell you?",
+   "q": "In R–C(=O)–NH₂, the nitrogen sits next to a C=O. It has three bonds and one lone pair, yet it is flat rather than pyramidal. What does that tell you?",
    "options": [
     "The group count was done wrong",
-    "It is sp², because the lone pair sits in a p orbital",
+    "It is sp², with the lone pair in a p orbital",
     "Nitrogen is never hybridized",
-    "It is sp³ and the measurement is wrong"
+    "It is sp³, and the flat measurement is wrong"
    ],
    "correct": 1,
-   "why": "This is the one case where counting groups gives the wrong answer. The lone pair is next door to the C=O pi bond, and it does better sitting in a p orbital where it can overlap sideways with that pi system than in a hybrid orbital of its own.",
+   "why": "Plain group counting says sp³, but this lone pair sits next to the C=O pi bond. It does better in a p orbital, where it can overlap sideways with that pi system, than in a hybrid orbital of its own. So the nitrogen is sp² and flat.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -1218,7 +1218,7 @@
     "The molecule breaks into equal halves by mass"
    ],
    "correct": 1,
-   "why": "Homolytic cleavage splits the shared pair down the middle and leaves two neutral radicals. The alternative, heterolytic cleavage, sends the whole pair off with one fragment and gives a cation and an anion — which is what almost every polar mechanism you will draw does.",
+   "why": "Homolytic cleavage splits the shared pair down the middle and leaves two neutral radicals. The alternative, heterolytic cleavage, sends the whole pair off with one fragment and gives a cation and an anion. That second kind is how most bonds break in the reactions later in the course.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -1228,10 +1228,10 @@
     "Pi bond",
     "Sigma bond",
     "Ionic bond",
-    "Hydrogen bond"
+    "Metallic bond"
    ],
    "correct": 1,
-   "why": "Sigma bonds are defined by overlap directly along the internuclear axis, concentrating electron density right between the two nuclei.",
+   "why": "Sigma bonds come from overlap directly along the internuclear axis, which puts electron density right between the nuclei. A pi bond comes from sideways overlap, and ionic and metallic bonds are not built from two atoms sharing an overlapping pair.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -1304,10 +1304,10 @@
     "Ionic bond",
     "Metallic bond",
     "Covalent bond",
-    "Hydrogen bond"
+    "Nonpolar covalent bond"
    ],
    "correct": 2,
-   "why": "Bonds within a molecule connecting atoms like O and H, where electrons are shared, are covalent bonds (here, polar covalent).",
+   "why": "O and H share their electrons, so the bond is covalent. Oxygen pulls the shared pair much harder than hydrogen does, so the bond is polar covalent, not nonpolar covalent.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -1709,11 +1709,11 @@
    "options": [
     "The methyl hydrogens",
     "The two oxygens",
-    "The carbonyl carbon",
+    "The C=O carbon",
     "The acidic hydrogen"
    ],
    "correct": 1,
-   "why": "Oxygen at 3.44 is the most electronegative atom present, so both oxygens pull density toward themselves and both carry δ−. The carbonyl carbon, pulled on from two sides, is correspondingly the most δ+ atom in the molecule — which is exactly why carbonyl carbons are attacked by electron-rich reagents over and over in the second half of the course.",
+   "why": "Oxygen (3.44) is the most electronegative atom present, so both oxygens pull density toward themselves and both carry δ−. The C=O carbon, pulled on by two oxygens, ends up as the most δ+ atom instead. The acidic hydrogen is δ+ too.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -1865,7 +1865,7 @@
     "They are ionic in character"
    ],
    "correct": 1,
-   "why": "With a ΔEN of 0.35 there is no meaningful partial charge on either end, so nothing is drawn to them and they attack nothing. This is why organic chemistry is organized around functional groups: the skeleton is inert, and all the chemistry happens at the handful of polar bonds and lone pairs stuck onto it.",
+   "why": "With a ΔEN of 0.35 there is no meaningful partial charge on either end, so nothing is drawn to them and they attack nothing. The carbon skeleton is inert; the chemistry happens at the few polar bonds and lone pairs attached to it.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -1902,7 +1902,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "0.35 sits below the 0.5 boundary for polar covalent, so C–H counts as nonpolar in practice. That is a working simplification, not a measurement: the electron density around a C–H hydrogen still responds to its neighbors, which is why a hydrogen next to an electronegative atom shifts in an NMR spectrum.",
+   "why": "0.35 sits below the 0.5 boundary for polar covalent, so C–H counts as nonpolar in practice. That is a working simplification, not a claim that the difference is zero: a C–H next to an electronegative atom still feels its pull through induction.",
    "difficulty": "medium",
    "type": "tf"
   }
@@ -2032,12 +2032,12 @@
     "+2"
    ],
    "correct": 0,
-   "why": "6 valence electrons − 2 nonbonding − 1/2(6 bonding) = 6 − 2 − 3 = +1, which is why an oxygen with 3 bonds (like a protonated ether oxygen) carries a positive formal charge.",
+   "why": "6 valence electrons − 2 nonbonding − ½(6 bonding) = 6 − 2 − 3 = +1. The oxygen in H₃O⁺ has exactly this pattern, 3 bonds and 1 lone pair, and carries the +1.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A nitrogen atom with 3 bonds and 1 lone pair (a typical neutral amine nitrogen) has a formal charge of:",
+   "q": "A nitrogen atom with 3 bonds and 1 lone pair (as in ammonia, NH₃) has a formal charge of:",
    "options": [
     "-1",
     "0",
@@ -2150,7 +2150,7 @@
    "type": "mcq"
   },
   {
-   "q": "A carbonyl oxygen has two lone pairs and a double bond to carbon. What is its formal charge?",
+   "q": "An oxygen has two lone pairs and a double bond to carbon. What is its formal charge?",
    "options": [
     "+1",
     "0",
@@ -2158,7 +2158,7 @@
     "−2"
    ],
    "correct": 1,
-   "why": "6 − 4 − 2 = 0. The trap is the bond term: it counts shared pairs, so a double bond is 2, not 1. Count it as 1 and you get +1 on an oxygen that is plainly neutral, and every carbonyl in the course comes out wrongly charged.",
+   "why": "6 − 4 − 2 = 0. The trap is the bond term: it counts shared pairs, so a double bond is 2, not 1. Count it as 1 and you get +1 on an oxygen that is plainly neutral, and every C=O oxygen comes out wrongly charged.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -2228,8 +2228,8 @@
   {
    "q": "In acetate, CH₃COO⁻, drawn with one C=O and one C–O single bond, where does the −1 sit?",
    "options": [
-    "On the carbonyl oxygen",
-    "On the carbonyl carbon",
+    "On the double-bonded oxygen",
+    "On the C=O carbon",
     "On the singly bonded oxygen",
     "On the methyl carbon"
    ],
@@ -2265,13 +2265,13 @@
   {
    "q": "A structure is drawn with a nitrogen carrying four bonds and no charge written beside it. What is wrong?",
    "options": [
-    "Nothing — neutral amines have four bonds",
+    "Nothing — nitrogen is neutral with four bonds",
     "Nitrogen cannot have four bonds at all",
     "The nitrogen should carry a +1",
     "The nitrogen should carry a −1"
    ],
    "correct": 2,
-   "why": "Four bonds and no lone pair gives 5 − 0 − 4 = +1, so the charge has to be written. Four-bonded nitrogen is perfectly legal — ammonium, protonated amines, the nitrogen of a nitro group — it is just never neutral.",
+   "why": "Four bonds and no lone pair gives 5 − 0 − 4 = +1, so the charge has to be written. Four-bonded nitrogen is perfectly legal, as in NH₄⁺ and CH₃NH₃⁺; it is just never neutral.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -2351,7 +2351,7 @@
     "3"
    ],
    "correct": 2,
-   "why": "Nitrogen's quota is 3 bonds and 1 lone pair, and here it has exactly its three bonds — one to carbon, two to hydrogen — so one lone pair completes the octet. That single pair is the whole chemistry of amines: it is what makes them basic, what makes them attack electron-poor carbons, and what makes the molecule pyramidal instead of flat.",
+   "why": "Nitrogen's quota is 3 bonds and 1 lone pair, and here it has exactly its three bonds (one to carbon, two to hydrogen), so one lone pair completes the octet. That lone pair is what lets the nitrogen pick up an H⁺.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -2445,13 +2445,13 @@
   {
    "q": "Which of these drawn structures is impossible?",
    "options": [
-    "A hydrogen bonded to two carbons at once",
+    "An H joined to two carbons",
     "An oxygen with 1 bond and a −1 charge",
     "A nitrogen with 4 bonds and a +1",
     "A carbon with 3 bonds and a +1"
    ],
    "correct": 0,
-   "why": "Hydrogen's only shell holds two electrons, which is one shared pair, so it bonds to exactly one thing. An H drawn between two atoms is a slip of the pen. The other three are all ordinary species with their charges correctly written: an alkoxide, an ammonium, a carbocation.",
+   "why": "Hydrogen's only shell holds two electrons, which is one shared pair, so it bonds to exactly one atom. An H drawn between two atoms is a slip of the pen. The other three are ordinary species with correct charges: an ion like CH₃O⁻, an ammonium ion and a carbocation.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -2585,12 +2585,12 @@
    "q": "If a period-2 central atom like carbon or nitrogen ends up surrounded by 10 electrons in a drawn structure, this most likely indicates:",
    "options": [
     "A valid expanded-octet structure",
-    "A correct resonance structure",
+    "That the atom is using d orbitals",
     "That the atom has a formal charge of -2",
     "An error — period 2 cannot expand"
    ],
    "correct": 3,
-   "why": "A period-2 shell contains four orbitals, one 2s and three 2p, which hold eight electrons and no more. Ten electrons on carbon or nitrogen is therefore not an exotic structure but an arithmetic mistake — most often a fifth bond, or a lone pair left on an atom that already has four bonds.",
+   "why": "A period-2 shell has four orbitals, one 2s and three 2p, which hold eight electrons and no more; there are no 2d orbitals to use. Ten electrons on carbon or nitrogen is an arithmetic mistake, most often a fifth bond or a lone pair left on an atom that already has four bonds.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -2608,7 +2608,7 @@
    "type": "mcq"
   },
   {
-   "q": "Drawing the skeletal structure (atom connectivity) before placing electrons matters because it:",
+   "q": "When building a Lewis structure, you join the atoms into a skeleton before placing any electrons. This step:",
    "options": [
     "Has no real effect on the final structure",
     "Fixes which atoms are bonded to which",
@@ -2851,7 +2851,7 @@
    "type": "mcq"
   },
   {
-   "q": "In acetic acid, CH₃COOH, what is the geometry at the carbonyl carbon?",
+   "q": "In acetic acid, CH₃COOH, what is the geometry at the C=O carbon?",
    "options": [
     "Tetrahedral",
     "Trigonal planar",
@@ -2859,7 +2859,7 @@
     "Linear"
    ],
    "correct": 1,
-   "why": "It has three electron groups — the methyl carbon, the OH oxygen, and the C=O counted once — and no lone pairs, so trigonal planar at about 120°. That carbon and its three neighbors are flat, which is why a reagent arriving at a carbonyl can approach from either face equally.",
+   "why": "It has three electron groups (the methyl carbon, the OH oxygen and the C=O counted once) and no lone pairs, so it is trigonal planar at about 120°. Counting the double bond as two groups gives the tempting tetrahedral.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -2992,13 +2992,13 @@
   {
    "q": "Which atoms of propenal, CH₂=CH–CHO, lie in one plane?",
    "options": [
-    "Only the two alkene carbons",
+    "Only the two C=C carbons",
     "Every heavy atom, and the hydrogens on them",
     "Only the C=O carbon and oxygen",
     "None — it is a tetrahedral chain"
    ],
    "correct": 1,
-   "why": "Count groups on each heavy atom: both alkene carbons have three, the aldehyde carbon has three, and the oxygen has one bond plus two lone pairs, also three. Three groups means trigonal planar at every one of them, and a chain of trigonal planar atoms joined end to end is flat.",
+   "why": "Count groups on each heavy atom: both C=C carbons have three, the CHO carbon has three, and the oxygen has one bond plus two lone pairs, also three. Three groups means trigonal planar at every one, and a chain of trigonal planar atoms joined end to end is flat.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -3209,15 +3209,15 @@
    "type": "mcq"
   },
   {
-   "q": "Butane, acetone and propan-1-ol all weigh about the same. Rank their boiling points, lowest first.",
+   "q": "Butane, acetone (CH₃COCH₃) and CH₃CH₂CH₂OH all weigh about the same. Rank their boiling points, lowest first.",
    "options": [
-    "butane < acetone < propan-1-ol",
-    "propan-1-ol < acetone < butane",
-    "acetone < butane < propan-1-ol",
+    "butane < acetone < CH₃CH₂CH₂OH",
+    "CH₃CH₂CH₂OH < acetone < butane",
+    "acetone < butane < CH₃CH₂CH₂OH",
     "All three are within a few degrees"
    ],
    "correct": 0,
-   "why": "With weight held constant, the only thing left is the strongest attraction each one can make. Butane has dispersion forces alone (−1°C), acetone has a strong C=O dipole and so dipole–dipole (56°C), propan-1-ol has an O–H and so hydrogen bonding (97°C).",
+   "why": "With weight held constant, the strongest attraction each can make decides it. Butane has only dispersion forces (−1 °C). Acetone has a strong C=O dipole, so dipole–dipole forces (56 °C). CH₃CH₂CH₂OH has an O–H, so hydrogen bonding (97 °C).",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -3311,7 +3311,7 @@
    "type": "mcq"
   },
   {
-   "q": "A Grignard reagent (R–MgBr, met in Organometallics) has a C–Mg bond. Why does the carbon carry the partial negative charge?",
+   "q": "A Grignard reagent, R–MgBr, has a C–Mg bond. Why does the carbon carry the partial negative charge?",
    "options": [
     "Magnesium is more electronegative than carbon",
     "Carbon always carries negative charge in every bond",
@@ -3917,7 +3917,7 @@
     "All six hydrogens are drawn in explicitly"
    ],
    "correct": 2,
-   "why": "A bare hexagon is the saturated ring. The alternating double bonds, or a circle for the delocalized system, mark benzene.",
+   "why": "A bare hexagon is cyclohexane, a ring of single bonds. Benzene is marked by three alternating double bonds, or by a circle drawn inside the hexagon. Ring size alone tells you nothing.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -3930,7 +3930,7 @@
     "Assume there are none"
    ],
    "correct": 0,
-   "why": "An oxygen drawn with two bonds has two lone pairs whether anyone drew them or not, and arrow-pushing needs them.",
+   "why": "An oxygen drawn with two bonds has two lone pairs whether anyone drew them or not. Work them out from the valence, just as you fill in hidden hydrogens. The atom is neutral, so treating it as charged is wrong.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -4026,7 +4026,7 @@
    "type": "mcq"
   },
   {
-   "q": "How many hydrogens are drawn on the page in skeletal butan-1-ol?",
+   "q": "How many hydrogens are drawn on the page in the skeletal structure of CH₃CH₂CH₂CH₂OH?",
    "options": [
     "One",
     "None",
@@ -4034,7 +4034,7 @@
     "Four"
    ],
    "correct": 0,
-   "why": "Only the O-H hydrogen. The nine hydrogens on carbon are implied.",
+   "why": "Only the O–H hydrogen, because a hydrogen on a heteroatom is drawn. The nine hydrogens on carbon are implied, so \"Ten\" counts hydrogens that are not on the page.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4057,10 +4057,10 @@
     "Which atom is bonded to which atom",
     "Its size and shape at a glance",
     "How many hydrogens each carbon holds",
-    "The oxidation state of each carbon"
+    "The lone pairs on each oxygen"
    ],
    "correct": 1,
-   "why": "A condensed formula already states connectivity, and the hydrogen count is inferred either way. What the drawing adds is geometry: ring size and shape are visible without decoding anything.",
+   "why": "A condensed formula already states connectivity, the hydrogen count is inferred either way, and neither form usually draws lone pairs. What the drawing adds is geometry: ring size and shape are visible without decoding anything.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -4147,11 +4147,11 @@
    "options": [
     "Relative bond strength",
     "Direction in three dimensions",
-    "Where resonance delocalization runs",
+    "Which atoms carry their lone pairs",
     "Formal charges"
    ],
    "correct": 1,
-   "why": "They say which bonds come toward you and which go away, which is what stereochemistry needs.",
+   "why": "A solid wedge comes toward you and a dash goes away, so the drawing carries three-dimensional shape. They say nothing about bond strength, lone pairs or charges.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -4182,15 +4182,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does this notation matter for mechanisms?",
+   "q": "Why must you still \"see\" the carbons, hydrogens and lone pairs that a skeletal structure leaves out?",
    "options": [
     "It matters only for naming",
-    "Mechanisms use Lewis only",
-    "Arrows move between undrawn atoms",
-    "Mechanisms do not use drawn structures"
+    "Only Lewis structures are used for real work",
+    "They still form bonds and react",
+    "Undrawn atoms are not really there"
    ],
    "correct": 2,
-   "why": "You have to see the implied carbons and the undrawn lone pairs as clearly as the drawn ones.",
+   "why": "Leaving an atom or lone pair off the page does not remove it. The hidden hydrogens and undrawn lone pairs still bond, react and carry charge, so you count them in every time. The notation is shorthand, not a different molecule.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4423,15 +4423,15 @@
    "type": "tf"
   },
   {
-   "q": "Pyrrole is a flat five-membered ring with an N–H whose nitrogen uses its three sp² orbitals for two C–N bonds and the N–H. Pyridine is a flat six-membered ring in which nitrogen uses its three sp² orbitals for two C–N bonds and its lone pair. Why can pyrrole's nitrogen lone pair delocalize into the ring while pyridine's cannot?",
+   "q": "Pyrrole is a flat five-membered ring with an N–H whose nitrogen uses its three sp² orbitals for two C–N bonds and the N–H. Pyridine is benzene with one CH swapped for N; its nitrogen uses its three sp² orbitals for two C–N bonds and its lone pair. Why can pyrrole's nitrogen lone pair delocalize into the ring while pyridine's cannot?",
    "options": [
     "Pyrrole's lone pair is in a p orbital",
     "Pyridine nitrogen has no lone pair",
     "Pyrrole nitrogen is not part of the ring",
-    "Pyridine's ring is not aromatic"
+    "Pyridine's ring has no pi bonds"
    ],
    "correct": 0,
-   "why": "In pyrrole the N–H leaves the lone pair in a p orbital that overlaps the ring pi system (delocalized), whereas in pyridine the lone pair occupies an in-plane sp2 orbital perpendicular to the pi system and cannot delocalize.",
+   "why": "In pyrrole the N–H leaves the lone pair in a p orbital that overlaps the ring pi system, so it delocalizes. In pyridine the lone pair sits in an sp² orbital in the ring plane, at right angles to the pi system, so it cannot. Pyridine still has its ring pi bonds.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4761,7 +4761,7 @@
     "It cannot be shown with curved arrows"
    ],
    "correct": 0,
-   "why": "As in any nucleophilic substitution, one arrow shows the nucleophile (even if intramolecular) attacking, and a second shows the leaving group departing, regardless of whether the nucleophile is in the same molecule.",
+   "why": "One arrow shows the nucleophile attacking the carbon, and a second shows the leaving group departing with the bonding pair. It makes no difference that the nucleophile sits in the same molecule, so \"one\" undercounts.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4782,7 +4782,7 @@
    "q": "In the mechanism for acid-catalyzed protonation of an alkene, the curved arrow showing the alkene attacking H+ starts from the pi bond and points to:",
    "options": [
     "The other alkene carbon",
-    "A lone pair on the acid's conjugate base",
+    "The middle of the pi bond",
     "The hydrogen of H+",
     "The solvent molecule"
    ],
@@ -4831,7 +4831,7 @@
    "type": "mcq"
   },
   {
-   "q": "Preview of a later chapter: in an E2 elimination a base removes a hydrogen, a C=C forms, and a leaving group departs, all in one step. Three curved arrows are drawn: one for the base removing a proton, one for the C–H bond forming the new pi bond, and one for:",
+   "q": "In one step, a base removes a hydrogen from one carbon, a leaving group departs from the next carbon, and a C=C forms between them. Three curved arrows are drawn: one for the base removing the proton, one for the C–H pair becoming the new pi bond, and one for:",
    "options": [
     "A second proton being removed",
     "A lone pair returning to the base",
@@ -4839,7 +4839,7 @@
     "The solvent attacking the carbon"
    ],
    "correct": 2,
-   "why": "E2 is a single concerted step: base removes the beta-hydrogen, those electrons form the new pi bond, and simultaneously the leaving group departs with the sigma bond electrons — three synchronized arrows.",
+   "why": "All three happen at once: the base takes the H, the C–H pair becomes the new pi bond, and the leaving group departs with the pair from its bond to carbon. Without that third arrow, the carbon would end up with five bonds.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -4872,7 +4872,7 @@
    "options": [
     "Arrowheads must point at an atom or bond",
     "Blank space is reserved for labeling formal charges",
-    "It actually can, when drawing resonance structures",
+    "It can, if a charge will form there",
     "Curved arrows never have heads, only tails"
    ],
    "correct": 0,
@@ -4942,15 +4942,15 @@
    "type": "mcq"
   },
   {
-   "q": "Preview of a later chapter: an alcohol adds to an aldehyde under acid catalysis (the product is called a hemiacetal). Using only the four arrow patterns, the very first curved arrow in the overall sequence typically shows:",
+   "q": "A proposed step has one curved arrow: from a lone pair on hydroxide to the carbon bonded to Cl in CH₃CH₂–Cl. No other arrow is drawn. What is wrong?",
    "options": [
-    "A lone pair on the carbonyl oxygen attacking a proton on the acid catalyst",
-    "The alcohol oxygen attacking the carbonyl carbon directly",
-    "The carbonyl carbon attacking the alcohol's oxygen",
-    "A C–H bond breaking on the aldehyde"
+    "The carbon would end up with five bonds",
+    "The tail should start on the carbon instead",
+    "Hydroxide has no lone pair to give",
+    "Nothing, since one arrow is enough"
    ],
    "correct": 0,
-   "why": "Under acid catalysis, the mechanism usually begins with protonation of the carbonyl oxygen (its lone pair attacks H+), which increases the electrophilicity of the carbonyl carbon before the alcohol attacks.",
+   "why": "The arrow makes a new O–C bond, but that carbon already has four bonds. Unless a second arrow breaks the C–Cl bond and sends that pair to chlorine, the carbon would hold five bonds. Hydroxide does have lone pairs, and the tail belongs on them.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -8837,9 +8837,9 @@
    "q": "What does the prefix in cis-1,2-dimethylcyclohexane tell you?",
    "options": [
     "Whether the methyls are adjacent",
-    "Whether the methyls are on the same face of the ring",
-    "Whether the ring is a chair",
-    "Whether the methyls are axial"
+    "Whether the methyls are on the same face",
+    "Whether the ring has a double bond",
+    "Whether both methyls are on the same carbon"
    ],
    "correct": 1,
    "why": "The locants already say the methyls are adjacent. cis and trans on a ring say whether the two groups are on the same face or opposite faces, which are different compounds; the full treatment is in Stereochemistry.",
@@ -13141,7 +13141,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "If a molecule has two or more such stereocenters arranged symmetrically, their effects can cancel, producing an achiral meso compound even though individual centers have four different substituents.",
+   "why": "Two such carbons can sit in a molecule that still has a plane or a center of symmetry, and then the molecule is achiral. CHBrCl–CHBrCl is the example from this section: each carbon carries H, Br, Cl and the other half, yet one of its stereoisomers has a center of symmetry and matches its mirror image.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -13149,36 +13149,36 @@
    "q": "What physical phenomenon is used experimentally to detect that a sample is chiral (and not racemic)?",
    "options": [
     "Melting point depression",
-    "Rotation of plane-polarized light",
+    "Rotation of polarized light",
     "Boiling point elevation",
-    "Infrared absorption frequency"
+    "A change in the color of the solution"
    ],
    "correct": 1,
-   "why": "Chiral compounds (in non-racemic form) rotate the plane of polarized light passing through them; this optical activity is measured with a polarimeter.",
+   "why": "A sample with more of one enantiomer than the other rotates polarized light, and that is how chirality was first discovered. A 50:50 mixture shows no rotation. Melting and boiling point changes come from anything dissolved in the sample, chiral or not.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which amino acid, unlike the other 19 common amino acids, is achiral?",
+   "q": "Amino acids have the formula H₂N–CHR–COOH, where R is a side chain. Which one is achiral?",
    "options": [
-    "Alanine",
-    "Serine",
-    "Glycine",
-    "Valine"
+    "Alanine (R = CH₃)",
+    "Serine (R = CH₂OH)",
+    "Glycine (R = H)",
+    "Valine (R = CH(CH₃)₂)"
    ],
    "correct": 2,
-   "why": "Glycine's alpha carbon bears two identical hydrogen atoms in addition to the amino and carboxyl groups, so it fails the four-different-groups test and is achiral.",
+   "why": "When R is H, the central carbon carries two hydrogens, so it does not have four different groups, and glycine has a plane of symmetry. In the other three, that carbon holds H, NH₂, COOH and a different R group, so each is chiral.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A chiral stereocenter and a chiral molecule are exactly the same thing.",
+   "q": "A stereocenter and a chiral molecule are the same idea under two names.",
    "options": [
     "True",
     "False"
    ],
    "correct": 1,
-   "why": "A stereocenter is a single atom whose substituents can be arranged two ways; chirality is a property of the entire molecule's overall symmetry, which can differ from what any one center suggests (as in meso compounds).",
+   "why": "A stereocenter is one atom, usually a carbon with four different groups. Chirality belongs to the whole molecule. The two can come apart: penta-2,3-diene is chiral with no stereocenter, and one form of CHBrCl–CHBrCl has two stereocenters yet a center of symmetry, so it is achiral.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -13198,13 +13198,13 @@
   {
    "q": "The thalidomide case is often used to illustrate chirality in pharmacology because:",
    "options": [
-    "One enantiomer was therapeutic, the other teratogenic",
+    "One enantiomer was a sedative; the other caused birth defects",
     "Both enantiomers were equally safe",
     "Thalidomide has no stereocenters",
     "The racemic mixture was more potent than either pure enantiomer"
    ],
    "correct": 0,
-   "why": "Thalidomide's two enantiomers have very different biological activities, showing why distinguishing and controlling chirality matters in drug development, not just in academic classification. (A caveat: thalidomide racemizes in the body, so giving the pure 'safe' enantiomer would not have prevented the harm.)",
+   "why": "One enantiomer of thalidomide is a sedative and the other causes birth defects, so it shows why each mirror form of a drug has to be studied. One caveat: the two interconvert in the body, so selling only the sedative form would not have prevented the harm.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -13217,7 +13217,7 @@
     "It has no stereocenters, so the question lapses"
    ],
    "correct": 1,
-   "why": "The two chairs are mirror images of each other and interconvert about a hundred thousand times a second, so the molecule spends half its life as each and cannot be resolved. Flattened out it does have an internal mirror plane between C1 and C2: the compound is meso, and achiral. A plane found in any accessible conformation settles the question; the absence of one in a single drawn conformation does not.",
+   "why": "The two chairs are mirror images of each other and interconvert about a hundred thousand times a second, so they can never be separated. Flattened out, the molecule has an internal mirror plane between C1 and C2, so it is achiral. A plane in any conformation the molecule can reach settles the question; one drawing without a plane does not.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -13228,7 +13228,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "Stereocenter counting is a useful shortcut, but meso compounds show that a molecule with multiple stereocenters can still be achiral overall, so the mirror-image superimposability test is the truly reliable method.",
+   "why": "Counting is a useful first step, but it can mislead both ways. One form of CHBrCl–CHBrCl has two stereocenters and is still achiral, because it has a center of symmetry. Penta-2,3-diene has none and is chiral. The reliable test is whether the whole molecule matches its mirror image.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -13300,7 +13300,7 @@
     "Yes, rotation always generates the enantiomer",
     "No, rotation only changes orientation",
     "Only if it has an even number of stereocenters",
-    "Only for Fischer projections"
+    "Only if the drawing uses wedges"
    ],
    "correct": 1,
    "why": "Simple rotation of a molecule (or its drawing) in space never changes its configuration or identity; only reflecting it (or swapping substituents) converts it into its mirror image.",
@@ -13319,15 +13319,15 @@
    "type": "tf"
   },
   {
-   "q": "Why is meso-tartaric acid achiral despite having two stereocenters, each bonded to four different groups?",
+   "q": "One stereoisomer of tartaric acid, HOOC–CH(OH)–CH(OH)–COOH, is achiral, although C2 and C3 each carry four different groups. Why?",
    "options": [
     "It has no stereocenters at all",
     "It is not a real compound",
     "Its internal mirror plane makes it superimposable",
-    "Its two stereocenters have identical R configurations"
+    "Its two stereocenters are too close together to count"
    ],
    "correct": 2,
-   "why": "Meso-tartaric acid's two stereocenters have opposite configurations that create an internal mirror plane, so the molecule as a whole coincides with its mirror image even though each center individually has four different substituents.",
+   "why": "In this stereoisomer, a plane between C2 and C3 reflects each half onto the other, so the whole molecule matches its mirror image. Each carbon still has four different groups, which is why counting them alone can mislead. Chirality is judged on the whole molecule.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -13365,7 +13365,7 @@
     "Any molecule with an even number of stereocenters is achiral"
    ],
    "correct": 0,
-   "why": "Stereocenters are a strong clue toward chirality, but because of possible internal symmetry (as in meso compounds), the only fully reliable check is comparing the whole molecule to its mirror image.",
+   "why": "A carbon with four different groups is a strong clue, but symmetry can cancel it. One form of CHBrCl–CHBrCl has two stereocenters and a center of symmetry, so it is achiral. The only fully reliable check is to compare the whole molecule with its mirror image.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -13381,15 +13381,15 @@
    "type": "tf"
   },
   {
-   "q": "Why are the natural amino acids other than glycine chiral?",
+   "q": "Amino acids have the formula H₂N–CHR–COOH, where R is a side chain. Why is every one except glycine (R = H) chiral?",
    "options": [
-    "They all contain a nitrogen atom",
+    "Each one contains a basic nitrogen atom",
     "They join up into peptide bonds",
     "They dissolve readily in water",
-    "Their alpha carbon has four different groups"
+    "One carbon has four different groups"
    ],
    "correct": 3,
-   "why": "The alpha carbon of a standard amino acid is attached to a hydrogen, an amino group, a carboxyl group, and a unique side chain, four different substituents that make it a stereocenter and the molecule chiral.",
+   "why": "The carbon between NH₂ and COOH also carries H and R. When R is anything but H, those are four different groups, so that carbon is a stereocenter and the molecule is chiral. Nitrogen, peptide bonds and solubility have nothing to do with handedness.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -13413,7 +13413,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "Chirality is a property of the shape of the whole molecule, and a twist can supply it without any tetrahedral carbon. BINOL is the cleanest counterexample: every carbon in it is aromatic and sp², yet bulky groups beside the bond joining its two rings lock them at an angle, and the twisted shape is not superimposable on its mirror image. Substituted allenes make the same point.",
+   "why": "Chirality is a property of the shape of the whole molecule, and a twist can supply it without any tetrahedral carbon. In BINOL every carbon is sp², in flat benzene-type rings, yet bulky groups beside the bond joining its two halves lock them at an angle, and that twisted shape does not match its mirror image. Substituted allenes make the same point.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -13421,7 +13421,7 @@
    "q": "Bromochlorofluoromethane (CHFClBr) and its mirror image:",
    "options": [
     "Are identical and can be superimposed",
-    "Are diastereomers",
+    "Are two different conformations of one molecule",
     "Are enantiomers that cannot be superimposed",
     "Are constitutional isomers of each other"
    ],
@@ -13528,10 +13528,10 @@
     "C2 in 2-butanol",
     "The carbon in CH2Cl2",
     "The carbon in CHFClBr",
-    "The alpha carbon in alanine"
+    "C3 in 3-methylhexane"
    ],
    "correct": 1,
-   "why": "The carbon in CH2Cl2 bears two identical chlorine atoms and two identical hydrogens, so it fails the four-different-groups test, unlike the other examples listed.",
+   "why": "The carbon in CH₂Cl₂ bears two identical chlorines and two identical hydrogens, so it fails the four-different-groups test. The other three each carry four different groups: C3 of 3-methylhexane, for example, holds H, CH₃, an ethyl and a propyl group.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -13606,7 +13606,7 @@
     "8"
    ],
    "correct": 1,
-   "why": "Two stereocenters predict 2² = 4, but the two halves of 2,3-dibromobutane are identical, so the (2R,3S) and (2S,3R) arrangements are one and the same achiral substance — the meso form, which gets a section of its own shortly. What is left is an enantiomeric pair plus that one meso compound: three.",
+   "why": "Two stereocenters predict 2² = 4, but the two halves of 2,3-dibromobutane are identical. Two of the four arrangements are then one and the same achiral substance, a meso compound. What is left is a pair of enantiomers plus that one meso form: three.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -13615,11 +13615,11 @@
    "options": [
     "The carboxyl carbon",
     "The methyl carbon",
-    "The alpha carbon",
+    "The carbon bonded to NH₂",
     "There is no stereocenter"
    ],
    "correct": 2,
-   "why": "The alpha carbon carries four distinct groups: a hydrogen, an amino group, a carboxylic acid group, and a methyl group, satisfying the requirement for a stereocenter.",
+   "why": "Alanine is CH₃–CH(NH₂)–COOH. The middle carbon carries four different groups: H, NH₂, COOH and CH₃, so it is the stereocenter. The methyl carbon has three hydrogens, and the carboxyl carbon has only three atoms attached.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -13935,7 +13935,7 @@
     "A diastereomer of the product"
    ],
    "correct": 0,
-   "why": "Nothing in the flask can tell the two faces or the two mirror images apart, and no bond at the stereocenter is touched, so the configuration there is carried through untouched and the product is a single enantiomer. The stem has to say ‘away from the stereocenter’ for that to hold: an achiral reagent acting AT the stereocenter can invert it, as SN2 does, or destroy it and hand back a racemate, as SN1 does.",
+   "why": "Nothing in the flask can tell the two mirror images apart, and no bond at the stereocenter is touched, so its configuration is carried through and the product is a single enantiomer. The stem needs \"away from the stereocenter\": a reagent acting at the stereocenter can invert it, or pass through a flat intermediate and give a racemate (you'll meet both in Substitution & Elimination).",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -13958,7 +13958,7 @@
     "meso-",
     "cis-",
     "rac- or (±)-",
-    "endo-"
+    "iso-"
    ],
    "correct": 2,
    "why": "A racemic mixture, containing equal parts of both enantiomers, is conventionally labeled with the prefix rac- or the symbol (±), reflecting that it shows no net optical rotation.",
@@ -14129,15 +14129,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does an ordinary GC column fail to separate a racemate when a chiral GC column succeeds?",
+   "q": "Why does an ordinary chromatography column fail to separate a racemate when a chiral column succeeds?",
    "options": [
-    "An achiral phase cannot distinguish the two; a chiral one can",
+    "Only a chiral packing tells mirror images apart",
     "Ordinary columns are simply too short for the job",
     "The enantiomers differ in molecular weight",
     "A chiral column heats each enantiomer differently"
    ],
    "correct": 0,
-   "why": "An ordinary achiral stationary phase cannot distinguish the two mirror-image shapes, so both enantiomers travel through at the same rate; a chiral stationary phase forms diastereomeric-like interactions of different strengths with each enantiomer, giving them different retention times.",
+   "why": "An ordinary column relies on properties that enantiomers share, so both travel through at the same rate. A chiral column is packed with a single enantiomer of a chiral group, and each enantiomer sticks to it with a different strength, so they come off at different times. Enantiomers have the same molecular weight, so length alone cannot help.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -14433,7 +14433,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Because diastereomers are chemically distinct compounds with different local environments around their atoms, they generally give different NMR chemical shifts and coupling patterns even in a standard achiral solvent, unlike enantiomers which appear identical.",
+   "why": "Diastereomers are different compounds, with different distances between their atoms, so they generally give different NMR spectra even in an ordinary solvent. Enantiomers give identical spectra there, because every distance in one is matched in its mirror image.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -14535,7 +14535,7 @@
     "A mixture of 2,3-dibromobutane and 1,2-dibromobutane"
    ],
    "correct": 1,
-   "why": "The mechanism is the same and the stereochemistry of the addition is the same — anti, through a bromonium ion — but the alkene geometry decides which face each methyl ends up on, so switching cis for trans switches the answer. Anti addition to the cis alkene gives the chiral pair as a racemate; anti addition to the trans alkene gives meso. Both flasks read zero on a polarimeter, for completely different reasons.",
+   "why": "Bromine adds anti in both cases, but the alkene geometry decides where each methyl ends up, so switching cis for trans switches the answer. Anti addition to the cis alkene gives the chiral pair as a racemate; to the trans alkene it gives the meso compound. Both flasks show zero rotation, for different reasons.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -14663,7 +14663,7 @@
     "2-methylpropene"
    ],
    "correct": 1,
-   "why": "Bromine adds anti, through a bromonium ion opened from the far face, and the geometry of the alkene then decides the relative configuration of the two new stereocenters. The trans alkene delivers the (R,S) arrangement, which is the meso compound. The cis alkene, run the same way, gives the chiral (2R,3R)/(2S,3S) pair as a racemate. The other two alkenes give only one new stereocenter, or none.",
+   "why": "Bromine adds anti: the two bromines bond to opposite faces of the flat alkene. The alkene geometry then fixes how the two new stereocenters relate. trans-2-Butene gives the (R,S) arrangement, which is the meso compound. cis-2-Butene gives the chiral (2R,3R)/(2S,3S) pair as a racemate. The other two alkenes give one new stereocenter, or none.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -14837,7 +14837,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "The count is about symmetry, not parity. Three stereocenters can give a meso form when the middle one lies on the symmetry element and the outer two carry opposite configurations — ribitol and xylitol are the standard sugar-alcohol examples. What a meso compound needs is an internal improper symmetry element, and nothing about that requires the number of stereocenters to be even.",
+   "why": "What matters is symmetry, not parity. With three stereocenters, a meso form exists when the middle carbon lies on the mirror plane and the outer two have opposite configurations. Pentane-2,3,4-triol, CH₃CH(OH)CH(OH)CH(OH)CH₃, has two such meso forms. A meso compound needs an internal mirror plane or center of symmetry, and neither requires an even count.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -14900,7 +14900,7 @@
     "No — R/S labels carry no stereochemical information"
    ],
    "correct": 0,
-   "why": "Opposite descriptors are evidence of meso only once the two halves of the molecule are known to be constitutionally identical. (2R,3S)-2,3-dibromobutane is meso; (2R,3S)-2-bromo-3-chlorobutane is an ordinary chiral compound, because no reflection sends Br onto Cl. Draw the structure, or a Fischer projection, and look for the plane.",
+   "why": "Opposite descriptors point to meso only once the two halves of the molecule are known to be identical. (2R,3S)-2,3-dibromobutane is meso; (2R,3S)-2-bromo-3-chlorobutane is an ordinary chiral compound, because no reflection sends Br onto Cl. Draw the structure and look for the plane.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -15869,12 +15869,12 @@
    "q": "trans-But-2-ene lies about 1 kcal/mol below cis-but-2-ene in energy. What accounts for the gap?",
    "options": [
     "The trans isomer has a stronger pi bond",
-    "The cis isomer is aromatic",
-    "The two methyls crowd each other on one side in the cis isomer",
-    "The cis isomer has one more degree of unsaturation than the trans"
+    "The cis isomer has fewer hydrogen atoms",
+    "In the cis isomer the methyls crowd each other",
+    "The trans isomer can rotate about its C=C bond"
    ],
    "correct": 2,
-   "why": "Both isomers have the same bonds and the same degrees of unsaturation, so the difference has to be steric. Putting both methyls on one side of the double bond pushes them into each other, and that strain raises the energy of the cis isomer. The pi bonds are equivalent and neither compound is aromatic.",
+   "why": "Both isomers are C₄H₈ with the same bonds, so the gap comes from shape. With both methyls on one side of the double bond they push into each other, and that strain raises the energy of the cis isomer. The pi bonds are equivalent, and neither isomer rotates about its C=C bond.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16305,10 +16305,10 @@
     "A routine ¹H NMR spectrum recorded in an ordinary achiral solvent",
     "A reaction run with a chiral catalyst or an enzyme",
     "A measurement of their C–H bond dissociation energies",
-    "An integration of the signal the two of them produce"
+    "A measurement of the sample's optical rotation"
    ],
    "correct": 1,
-   "why": "Enantiotopic groups behave identically toward everything achiral — same shift, same bond strength, same rate — so an ordinary spectrum or a bond-energy measurement sees one environment. Introduce chirality into the surroundings, whether an enzyme, a chiral catalyst or a chiral solvating agent, and the two become distinguishable because the interactions are now diastereomeric.",
+   "why": "Enantiotopic groups behave the same toward anything achiral: same NMR shift, same bond strength, same rate. The molecule that holds them is achiral, so it shows no rotation either. Bring in a chiral partner, such as an enzyme or a chiral catalyst, and the two become distinguishable because the interactions are now diastereomeric.",
    "difficulty": "medium",
    "type": "mcq"
   },
