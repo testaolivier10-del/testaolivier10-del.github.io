@@ -557,19 +557,19 @@ function glcRing(cx, cy, anomer) {
 function anomerFig(stacked) {
   let s = '';
   const one = (cx, cy, a) => {
-    s += rich(cx, cy - 92, [a === 'b' ? 'β' : 'α', '-D-glucopyranose'], 'fg-tag');
+    s += rich(cx, cy - 112, [a === 'b' ? 'β' : 'α', '-D-glucopyranose'], 'fg-tag');
     s += glcRing(cx, cy, a);
-    s += T(cx, cy + 98, a === 'b' ? 'C1: OH on a wedge, R' : 'C1: OH on a hash, S', 'fg-tag-warn');
+    s += T(cx, cy + 110, a === 'b' ? 'C1: OH on a wedge, R' : 'C1: OH on a hash, S', 'fg-tag-warn');
   };
-  if (!stacked) { one(200, 118, 'a'); one(520, 118, 'b'); return s; }
-  one(170, 112, 'a'); one(170, 342, 'b');
+  if (!stacked) { one(200, 140, 'a'); one(520, 140, 'b'); return s; }
+  one(170, 132, 'a'); one(170, 392, 'b');
   return s;
 }
 FIGURES.push({
   id: 'anomers-ring',
   section: 'diastereomers',
   anchor: '<h3>Epimers and anomers</h3>',
-  viewBox: '0 0 720 230',
+  viewBox: '0 0 720 264',
   alt: 'alpha- and beta-D-glucopyranose drawn as flat six-membered rings seen from above, ring oxygen at the top right and C1 at the right. C2 to C5 are the same in both: C2 R with OH on a hash, C3 S with OH on a wedge, C4 S with OH on a hash, C5 R with CH2OH on a wedge. At C1 the OH is on a hash in alpha (S) and on a wedge in beta (R).',
   build: () => anomerFig(false),
   caption: 'Four of the five ring stereocenters match. Only C1, the carbon bonded to two oxygens, differs.',
@@ -617,36 +617,39 @@ function synAntiFig() {
   const row = (y, syn) => {
     const { s: ring, p } = tiltedRing(120, y);
     s += ring;
-    /* where the two OH groups arrive from */
-    const a1 = P(p.fL.x, p.fL.y - 58), a2 = syn ? P(p.fR.x, p.fR.y - 58) : P(p.fR.x, p.fR.y + 58);
-    s += arrow(a1, P(p.fL.x, p.fL.y - 8), { size: 7 });
-    s += arrow(a2, P(p.fR.x, p.fR.y + (syn ? -8 : 8)), { size: 7 });
-    s += T(a1.x, a1.y - 6, 'OH', 'fg-lbl');
-    s += T(a2.x, a2.y + (syn ? -6 : 16), 'OH', 'fg-lbl');
-    s += T(120, y - 50, syn ? 'syn: both from the top face' : 'anti: one from each face', 'fg-tag');
-    s += arrow(P(230, y), P(300, y));
+    /* where the two OH groups arrive from: from above the ring (up the
+       page), or from below it */
+    const fromL = P(p.fL.x - 34, p.fL.y - 74);
+    const fromR = syn ? P(p.fR.x + 34, p.fR.y - 74) : P(p.fR.x + 34, p.fR.y + 56);
+    s += arrow(fromL, P(p.fL.x - 3, p.fL.y - 8), { size: 7 });
+    s += arrow(fromR, P(p.fR.x + 3, p.fR.y + (syn ? -8 : 8)), { size: 7 });
+    s += T(fromL.x - 4, fromL.y - 6, 'OH', 'fg-lbl');
+    s += T(fromR.x + 4, fromR.y + (syn ? -6 : 16), 'OH', 'fg-lbl');
+    s += rich(120, y - 76, syn ? ['*syn', ': both from the top face'] : ['*anti', ': one from each face'], 'fg-tag');
+    s += T(120, y + 94, 'cyclohexene, C=C at the front', 'fg-sm');
+    s += arrow(P(236, y), P(296, y));
     if (syn) {
-      s += diolFlat(390, y - 4, 'w', 'w', 'R', 'S', 'cis');
-      s += rich(390, y + 70, ['*cis', '-cyclohexane-1,2-diol, (1R,2S)'], 'fg-tag');
-      s += T(590, y - 8, 'one compound', 'fg-tag-good');
-      s += T(590, y + 10, '(it is achiral: see the next section)', 'fg-sm');
+      s += diolFlat(380, y - 10, 'w', 'w', 'R', 'S', 'cis');
+      s += rich(380, y + 94, ['*cis', '-cyclohexane-1,2-diol, (1R,2S)'], 'fg-tag');
+      s += T(590, y - 14, 'one compound', 'fg-tag-good');
+      s += T(590, y + 6, '(achiral: see the next section)', 'fg-sm');
     } else {
-      s += diolFlat(390, y - 4, 'w', 'h', 'R', 'R', 'trans RR');
-      s += diolFlat(600, y - 4, 'h', 'w', 'S', 'S', 'trans SS');
-      s += T(495, y - 4, '+', 'fg-warn');
-      s += rich(495, y + 70, ['*trans', '-cyclohexane-1,2-diol: (1R,2R) and (1S,2S), 50:50'], 'fg-tag');
+      s += diolFlat(380, y - 10, 'w', 'h', 'R', 'R', 'trans RR');
+      s += diolFlat(600, y - 10, 'h', 'w', 'S', 'S', 'trans SS');
+      s += T(490, y - 4, '+', 'fg-lbl');
+      s += rich(490, y + 94, ['*trans', '-cyclohexane-1,2-diol: (1R,2R) and (1S,2S), 50:50'], 'fg-tag');
     }
   };
-  row(96, true);
-  s += rule(20, 190, 700, 190);
-  row(282, false);
+  row(110, true);
+  s += rule(20, 222, 700, 222);
+  row(336, false);
   return s;
 }
 FIGURES.push({
   id: 'syn-anti-addition',
   section: 'diastereomers',
   anchor: '<h3>Absolute and relative configuration</h3>',
-  viewBox: '0 0 720 370',
+  viewBox: '0 0 720 448',
   alt: 'Cyclohexene drawn as a tilted ring so its top and bottom faces show, with the C=C at the front edge. Top row, syn addition: both OH groups arrive from the top face, giving cis-cyclohexane-1,2-diol with both OH on wedges, (1R,2S), a single compound. Bottom row, anti addition: one OH arrives from the top and one from the bottom, giving trans-cyclohexane-1,2-diol with one OH on a wedge and one on a hash, formed as an equal mixture of (1R,2R) and (1S,2S).',
   build: synAntiFig,
   caption: 'In the flat drawings the top face of the tilted ring is the face toward you, so an OH that arrived from the top sits on a wedge.',
@@ -667,7 +670,7 @@ function erythroThreo() {
       { c: 'CH₃' },
     ], { name: ery ? 'erythro' : 'threo', dy: 46 }).s;
     s += T(cx, 226, ery ? 'OH and Br on the same side' : 'OH and Br on opposite sides', 'fg-tag-good');
-    s += rule(cx - 150, 246, cx + 150, 246);
+    s += rule(cx - 150, 238, cx + 150, 238);
     s += chain(cx - 63, 338, ISO[key]).s;
     s += T(cx, 414, ery ? 'zigzag: one wedge, one hash (anti)' : 'zigzag: both wedges (syn)', 'fg-tag-warn');
   };
