@@ -171,8 +171,8 @@ function grid(lesson) {
   s += chain(192, 88, { ...ISO.SS, ...d }).s;
   s += chain(22, 300, { ...ISO.RS, ...d }).s;
   s += chain(192, 300, { ...ISO.SR, ...d }).s;
-  s += `<line class="fg-dash-hi" x1="150" y1="80" x2="190" y2="80"></line>`;
-  s += `<line class="fg-dash-hi" x1="150" y1="292" x2="190" y2="292"></line>`;
+  s += `<line class="fg-dash-hi" x1="146" y1="92" x2="176" y2="92"></line>`;
+  s += `<line class="fg-dash-hi" x1="146" y1="304" x2="176" y2="304"></line>`;
   s += T(170, 170, 'across a row: enantiomers', 'fg-tag-good');
   s += T(170, 190, 'down or diagonal: diastereomers', 'fg-tag-warn');
   return s;
@@ -297,35 +297,38 @@ function butene(cx, cy, trans) {
 function dipoles(o, trans) {
   let g = arrow(o, P(o.x + 30, o.y - 20), { size: 7 });
   g += arrow(o, P(o.x - 30, trans ? o.y + 20 : o.y - 20), { size: 7 });
-  if (!trans) g += arrow(o, P(o.x, o.y - 28), { muted: true, size: 7 });
+  if (!trans) {
+    g += arrow(o, P(o.x, o.y - 28), { muted: true, size: 7 });
+    g += text(o.x + 6, o.y - 24, 'net', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
+  }
   return g;
 }
 function buteneFig(stacked) {
   let s = '';
   const one = (cx, top, trans, lesson) => {
-    const h = lesson ? 214 : 250;
+    const h = lesson ? 222 : 256;
     s += panel(cx - 162, top, 324, h, { kind: 'hi' });
     s += rich(cx, top + 22, [trans ? '*trans' : '*cis', '-but-2-ene'], 'fg-tag');
     s += butene(cx, top + 84, trans);
     s += T(cx, top + 136, 'no stereocenter', 'fg-tag-mut');
-    s += dipoles(P(cx, top + 172), trans);
+    s += dipoles(P(cx, top + 180), trans);
     if (lesson) {
-      s += T(cx, top + 206, trans ? 'dipoles cancel: μ = 0' : 'dipoles add: μ = 0.33 D', 'fg-tag-good');
+      s += T(cx, top + 214, trans ? 'dipoles cancel: μ = 0' : 'dipoles add: μ = 0.33 D', 'fg-tag-good');
       return;
     }
-    s += T(cx, top + 208, trans ? 'the two C–CH₃ dipoles are exactly opposed' : 'the two C–CH₃ dipoles share an upward part', 'fg-sm');
-    s += T(cx, top + 228, trans ? 'μ = 0' : 'μ = 0.33 D', 'fg-tag-good');
-    s += T(cx, top + 244, trans ? 'bp 0.9 °C' : 'bp 3.7 °C', 'fg-sm');
+    s += T(cx, top + 220, trans ? 'the two C–CH₃ dipoles are exactly opposed' : 'the two C–CH₃ dipoles share an upward part', 'fg-sm');
+    s += T(cx, top + 236, trans ? 'μ = 0' : 'μ = 0.33 D', 'fg-tag-good');
+    s += T(cx, top + 251, trans ? 'bp 0.9 °C' : 'bp 3.7 °C', 'fg-sm');
   };
   if (!stacked) { one(190, 10, false); one(530, 10, true); return s; }
-  one(170, 6, false, true); one(170, 232, true, true);
+  one(170, 6, false, true); one(170, 240, true, true);
   return s;
 }
 FIGURES.push({
   id: 'cis-trans-are-diastereomers',
   section: 'diastereomers',
   anchor: '<h3>Diastereomers from double bonds and rings</h3>',
-  viewBox: '0 0 720 270',
+  viewBox: '0 0 720 276',
   alt: 'cis-but-2-ene with both methyls below the double bond, and trans-but-2-ene with one methyl above and one below. Neither has a stereocenter. Below each, the two carbon-methyl bond dipoles are drawn from one point: in the cis isomer they share an upward component and add to 0.33 debye; in the trans isomer they point exactly opposite ways and cancel to zero. Boiling points 3.7 and 0.9 degrees Celsius.',
   build: () => buteneFig(false),
   caption: 'The arrows under each molecule are its two C–CH₃ bond dipoles, redrawn from one point so their sum can be read off.',
@@ -333,7 +336,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-butene',
   lessons: ['diastereomers'],
-  viewBox: '0 0 340 452',
+  viewBox: '0 0 340 468',
   alt: 'cis-but-2-ene, methyls on the same side, whose two bond dipoles add to 0.33 debye; trans-but-2-ene, methyls on opposite sides, whose two bond dipoles cancel exactly to zero. Neither has a stereocenter.',
   build: () => buteneFig(true),
   caption: 'Each pair of arrows is the molecule’s two C–CH₃ bond dipoles, drawn from one point.',
@@ -361,9 +364,10 @@ function ringPair(cx, cy, o) {
   };
   put(1, 30, o.k1, o.sub);
   put(2, 330, o.k2, o.sub);
-  const t1 = at(P(cx, cy), 30, r * 0.42), t2 = at(P(cx, cy), 330, r * 0.42);
-  s += rs(P(t1.x, t1.y + 4), o.l1);
-  s += rs(P(t2.x, t2.y + 8), o.l2);
+  /* each label beside its own carbon: C1 above its vertex, C2 below */
+  const e1 = at(pts[1], 30, 38 + rOf(o.sub) - 15), e2 = at(pts[2], 330, 38 + rOf(o.sub) - 15);
+  s += text(e1.x + rOf(o.sub) + 6, e1.y + 4, `C1: ${o.l1}`, { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+  s += text(e2.x + rOf(o.sub) + 6, e2.y + 4, `C2: ${o.l2}`, { cls: 'fg-tag-good', size: 11, anchor: 'start' });
   claim(ids[1], o.l1); claim(ids[2], o.l2);
   return s;
 }
@@ -395,7 +399,7 @@ FIGURES.push({
   viewBox: '0 0 720 210',
   alt: 'cis-1,2-dimethylcyclohexane, drawn as a flat hexagon with both methyls on wedges, is (1R,2S). trans-1,2-dimethylcyclohexane, with one methyl on a wedge and one on a hash, is (1R,2R); its mirror image is (1S,2S).',
   build: () => dmcFig(false),
-  caption: 'C1 keeps the same configuration, R, in both drawings. Only C2 changes, from S in the cis isomer to R in the trans isomer.',
+  caption: 'Compare the labels beside C1 and C2 in the two drawings.',
 });
 FIGURES.push({
   id: 'l-ring-diastereomers',
@@ -403,7 +407,7 @@ FIGURES.push({
   viewBox: '0 0 340 384',
   alt: 'cis-1,2-dimethylcyclohexane with both methyls on wedges, (1R,2S), stacked above trans-1,2-dimethylcyclohexane with one wedge and one hash, (1R,2R).',
   build: () => dmcFig(true),
-  caption: 'C1 is R in both. C2 is S in the cis isomer and R in the trans isomer.',
+  caption: 'Compare the labels beside C1 and C2 in the two drawings.',
 });
 
 /* The two trans isomers, for the lesson question that asks how they are
@@ -421,7 +425,7 @@ FIGURES.push({
     s += ringPair(150, 248, { sub: 'CH₃', k1: 'h', k2: 'w', l1: 'S', l2: 'S', name: '(1S,2S)' });
     return s;
   },
-  caption: 'Both are trans: in each, one methyl is on a wedge and the other on a hash.',
+  caption: 'Compare the wedges and hashes, and the descriptors, center by center.',
 });
 
 /* ================================================================ 6 ===
@@ -446,16 +450,15 @@ FIGURES.push({
       s += atom(m2.x, m2.y, 'CH₃', { r: 17 }) + atom(h2.x, h2.y, 'H', { r: 12 });
       s += atom(et.x, et.y, 'CH₂CH₃', { r: 25, kind: 'hi' }) + atom(m3.x, m3.y, 'CH₃', { r: 17 });
       s += T(c2.x, cy + 22, 'C2', 'fg-tag-mut');
-      s += T(c3.x, cy + (z ? -14 : 22), 'C3', 'fg-tag-mut');
+      s += T(c3.x, cy + 22, 'C3', 'fg-tag-mut');
       s += T(cx, 30, z ? '(Z)-3-methylpent-2-ene' : '(E)-3-methylpent-2-ene', 'fg-tag');
     };
     one(170, true);
     one(530, false);
-    s += T(360, 172, 'C3 carries CH₃ and CH₂CH₃ but no H, so “cis” has nothing to point to.', 'fg-tag-warn');
-    s += T(360, 192, 'Still two diastereomers: E and Z name them.', 'fg-tag');
+    s += T(360, 182, 'cis/trans is ambiguous here; E and Z name the two isomers', 'fg-tag-warn');
     return s;
   },
-  caption: 'Both molecules have a methyl on each alkene carbon, so each one is “cis” by one pairing of groups and “trans” by another.',
+  caption: 'C2 carries H and CH₃; C3 carries CH₃ and CH₂CH₃.',
 });
 
 /* ================================================================ 7 ===
@@ -570,6 +573,7 @@ function glcRing(cx, cy, anomer) {
     s += rs(P(t.x, t.y + 4), lab);
   }
   s += atoms + atom(pos.O.x, pos.O.y, 'O', { r: 13 });
+  s += T(pos[1].x + 6, pos[1].y + 26, 'C1', 'fg-tag-mut', 'start');
   return s;
 }
 function anomerFig(stacked) {

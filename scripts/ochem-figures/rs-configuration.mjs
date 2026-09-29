@@ -252,7 +252,7 @@ FIGURES.push({
 /* ------------------------------------- 2. the first point of difference --- */
 
 /* One group's first carbon: a stub from the stereocenter on the left, the
-   carbon, and its three other neighbours, with the set written beside it. */
+   carbon, and its three other neighbors, with the set written beside it. */
 function firstAtom(o, subs, set, win, name, hiIdx = 0) {
   const c = P(o.x, o.y);
   const st = P(c.x - 50, c.y);
@@ -294,7 +294,7 @@ FIGURES.push({
   id: 'cip-first-difference',
   section: 'rs-configuration',
   anchor: 'Rule 2: on a tie',
-  alt: 'Three comparisons, each showing the first carbon of two groups with its three other neighbours. Ethyl (C, H, H) beats methyl (H, H, H) in position 1. CH2OH (O, H, H) beats tert-butyl (C, C, C) in position 1, because O beats C. Isopropyl (C, C, H) beats CH2CH2OH (C, H, H) in position 2, so the oxygen further out never counts.',
+  alt: 'Three comparisons, each showing the first carbon of two groups with its three other neighbors. Ethyl (C, H, H) beats methyl (H, H, H) in position 1. CH2OH (O, H, H) beats tert-butyl (C, C, C) in position 1, because O beats C. Isopropyl (C, C, H) beats CH2CH2OH (C, H, H) in position 2, so the oxygen further out never counts.',
   viewBox: '0 0 760 340',
   build() {
     return DIFF.map((d, i) => diffCell(4 + i * 254, 4, 244, 332, d[0], d[1], d[2], d[3], d[4])).join('');
@@ -590,7 +590,7 @@ function swapCell(ox, oy, w, h, stage, gsDrawn, gsSwapped, wantDrawn, where, nam
 FIGURES.push({
   id: 'swap-in-plane',
   section: 'rs-configuration',
-  anchor: 'Swap it with the group that points away',
+  anchor: 'Swap priority 4 with the group that points away',
   alt: '2-Bromobutane drawn with H on a plain bond at the top, priority 4 in the plane of the page. Br on a wedge is 1, ethyl at lower left is 2, CH3 on a hash is 3. Swapping H and CH3 puts H on the hash and CH3 at the top. Then Br to ethyl to CH3 runs clockwise, which is R for the swapped drawing, so the original drawing is S.',
   viewBox: '0 0 760 320',
   build() {
@@ -617,10 +617,10 @@ FIGURES.push({
   id: 'l-rs-challenge',
   lessons: ['rs-configuration'],
   alt: 'Butan-2-ol drawn with CH3 on a plain bond at the top, H on a plain bond at lower left, ethyl on a hash and OH on a wedge at lower right.',
-  viewBox: '0 0 340 290',
+  viewBox: '0 0 340 230',
   build() {
     const gs = CHALLENGE.map((g) => ({ ...g, pri: undefined }));
-    return tetra(P(170, 140), gs, { badges: false }).s;
+    return tetra(P(170, 110), gs, { badges: false }).s;
   },
   caption: 'Butan-2-ol. H lies in the plane of the page.',
 });
@@ -664,5 +664,4 @@ FIGURES.push({
   caption: 'Left: the molecule. Middle and right: C2 and C3 redrawn with the bond angles they have in the molecule.',
 });
 
-export const _debugReach = (gs, L) => tetra(P(0, 0), gs, { L }).reach;
 export default FIGURES;

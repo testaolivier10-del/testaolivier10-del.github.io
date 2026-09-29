@@ -43,7 +43,11 @@ function spots(c, h, v) {
 
 /* A one-center Fischer projection: a plain cross, carbon left implicit.
    g = { top, bottom, left, right } labels; o.kinds marks boxes hi/warn. */
-function cross(c, g, o = {}) {
+const leftForm = (lab) => (lab === 'OH' ? 'HO' : lab === 'NH₂' ? 'H₂N' : lab);
+function flipLeft(g) { return { ...g, left: leftForm(g.left) }; }
+
+function cross(c, g0, o = {}) {
+  const g = flipLeft(g0);
   const pos = spots(c, o.h ?? 42, o.v ?? 42);
   let s = '';
   for (const k of KEYS) {
@@ -55,7 +59,8 @@ function cross(c, g, o = {}) {
 
 /* The same center drawn in 3D: horizontal bonds on wedges (toward you),
    vertical bonds on hashes (away from you), carbon drawn. */
-function bowtie(c, g, o = {}) {
+function bowtie(c, g0, o = {}) {
+  const g = flipLeft(g0);
   const pos = spots(c, o.h ?? 46, o.v ?? 44);
   let s = '';
   for (const k of KEYS) {
@@ -75,7 +80,8 @@ function chain(cx, y0, gap, top, rows, bottom, o = {}) {
   const h = o.h ?? 40;
   const yB = y0 + (rows.length + 1) * gap;
   let s = bond(P(cx, y0), P(cx, yB), { rFrom: edge(top, 0, 1), rTo: edge(bottom, 0, -1) });
-  rows.forEach((row, i) => {
+  rows.forEach((row0, i) => {
+    const row = { ...row0, l: leftForm(row0.l) };
     const y = y0 + (i + 1) * gap;
     const L = P(cx - h, y), R = P(cx + h, y);
     s += bond(L, R, { rFrom: edge(row.l, 1, 0), rTo: edge(row.r, -1, 0), cls: row.hi ? 'fg-bond-hi' : undefined });
@@ -341,23 +347,23 @@ function moveRow(m, y) {
   let s = '';
   s += text(14, y - 6, m.t1, { cls: 'fg-lbl', anchor: 'start' });
   s += text(14, y + 12, m.t2, { cls: 'fg-sm', anchor: 'start' });
-  s += cross(P(222, y), m.before, { h: 38, v: 40 });
-  s += arr(P(290, y), P(334, y));
-  s += cross(P(402, y), m.after, { h: 38, v: 40, kinds: kindsFor(m, 'after') });
-  s += arr(P(468, y), P(500, y));
-  s += text(484, y - 10, 'in 3D', { cls: 'fg-sm' });
-  s += bowtie(P(570, y), m.after, { h: 44, v: 40, kinds: kindsFor(m, '3d') });
+  s += cross(P(205, y), m.before, { h: 38, v: 40 });
+  s += arr(P(268, y), P(314, y));
+  s += cross(P(385, y), m.after, { h: 38, v: 40, kinds: kindsFor(m, 'after') });
+  s += arr(P(452, y), P(488, y));
+  s += text(470, y - 10, 'in 3D', { cls: 'fg-sm' });
+  s += bowtie(P(568, y), m.after, { h: 44, v: 40, kinds: kindsFor(m, '3d') });
   const cls = m.good ? 'fg-tag-good' : 'fg-tag-warn';
-  s += text(652, y - 4, m.v1, { cls, anchor: 'start' });
-  s += text(652, y + 14, m.v2, { cls, anchor: 'start' });
+  s += text(648, y - 4, m.v1, { cls, anchor: 'start' });
+  s += text(648, y + 14, m.v2, { cls, anchor: 'start' });
   return s;
 }
 
 function movesNotes(keys, title) {
   let s = '';
-  s += text(222, 24, 'before', { cls: 'fg-tag-mut' });
-  s += text(402, 24, 'after', { cls: 'fg-tag-mut' });
-  s += text(570, 24, 'what "after" means', { cls: 'fg-tag-mut' });
+  s += text(205, 24, 'before', { cls: 'fg-tag-mut' });
+  s += text(385, 24, 'after', { cls: 'fg-tag-mut' });
+  s += text(568, 24, 'what "after" means', { cls: 'fg-tag-mut' });
   s += text(14, 24, title, { cls: 'fg-tag', anchor: 'start' });
   keys.forEach((k, i) => {
     const y = 104 + i * 138;
@@ -371,19 +377,19 @@ function movesNotes(keys, title) {
 function movesLesson(keys) {
   let s = '';
   keys.forEach((k, i) => {
-    const m = MOVES[k], y0 = i * 272;
+    const m = MOVES[k], y0 = i * 292;
     if (i) s += rule(10, y0 - 6, 330, y0 - 6);
     s += text(170, y0 + 20, `${m.t1} ${m.t2}`, { cls: 'fg-tag' });
     s += cross(P(80, y0 + 90), m.before, { h: 38, v: 40 });
     s += arr(P(146, y0 + 90), P(194, y0 + 90));
     s += cross(P(260, y0 + 90), m.after, { h: 38, v: 40, kinds: kindsFor(m, 'after') });
-    s += text(80, y0 + 158, 'before', { cls: 'fg-tag-mut' });
-    s += text(260, y0 + 158, 'after', { cls: 'fg-tag-mut' });
-    s += bowtie(P(96, y0 + 212), m.after, { h: 44, v: 40, kinds: kindsFor(m, '3d') });
+    s += text(80, y0 + 156, 'before', { cls: 'fg-tag-mut' });
+    s += text(260, y0 + 156, 'after', { cls: 'fg-tag-mut' });
+    s += bowtie(P(96, y0 + 228), m.after, { h: 44, v: 40, kinds: kindsFor(m, '3d') });
     const cls = m.good ? 'fg-tag-good' : 'fg-tag-warn';
-    s += text(186, y0 + 196, '"after" in 3D:', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += text(186, y0 + 214, m.v1, { cls, anchor: 'start' });
-    s += text(186, y0 + 232, m.v2, { cls, anchor: 'start' });
+    s += text(186, y0 + 212, '"after" in 3D:', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += text(186, y0 + 230, m.v1, { cls, anchor: 'start' });
+    s += text(186, y0 + 248, m.v2, { cls, anchor: 'start' });
   });
   return s;
 }
@@ -395,14 +401,14 @@ FIGURES.push({
   alt: 'Two rows, each starting from D-glyceraldehyde (CHO top, CH2OH bottom, H left, OH right). Row 1, turn 180 degrees in the page: CH2OH top, CHO bottom, OH left, H right; in 3D, CHO and CH2OH are still on hashes and H and OH still on wedges; same molecule, still R. Row 2, hold H and cycle the other three: CH2OH top, CHO right, OH bottom, H still left; in 3D, H and CHO on wedges, CH2OH and OH on hashes; same molecule, still R.',
   viewBox: '0 0 760 316',
   build() { return movesNotes(['turn180', 'cycle'], 'SAFE'); },
-  caption: 'Both moves give back (R)-glyceraldehyde, only drawn from a different side.',
+  caption: 'Both moves give back (R)-glyceraldehyde, only drawn in a new orientation.',
 });
 
 FIGURES.push({
   id: 'l-fischer-moves-safe',
   lessons: ['fischer'],
   alt: 'Two safe moves on D-glyceraldehyde. Turn 180 degrees in the page: CH2OH top, CHO bottom, OH left, H right, and the 3D reading keeps CHO and CH2OH on hashes; same molecule, still R. Hold H and cycle the other three: CH2OH top, CHO right, OH bottom, H left; same molecule, still R.',
-  viewBox: '0 0 340 536',
+  viewBox: '0 0 340 582',
   build() { return movesLesson(['turn180', 'cycle']); },
   caption: 'Both moves give back (R)-glyceraldehyde.',
 });
@@ -414,16 +420,16 @@ FIGURES.push({
   alt: 'Two rows, each starting from D-glyceraldehyde (CHO top, CH2OH bottom, H left, OH right). Row 1, turn 90 degrees: H top, CHO right, OH bottom, CH2OH left; in 3D, CHO and CH2OH now sit on wedges and H and OH on hashes, all four highlighted as changed; the enantiomer, now S. Row 2, swap H and OH once: OH left, H right; in 3D those two are highlighted; the enantiomer, now S.',
   viewBox: '0 0 760 316',
   build() { return movesNotes(['turn90', 'swap'], 'NOT SAFE'); },
-  caption: 'Coral marks the groups whose place changed. Each move gives (S)-glyceraldehyde, the mirror image.',
+  caption: 'Coral marks every group that ends up somewhere new in 3D. Each move gives (S)-glyceraldehyde, the mirror image.',
 });
 
 FIGURES.push({
   id: 'l-fischer-moves-unsafe',
   lessons: ['fischer'],
   alt: 'Two moves on D-glyceraldehyde that give the enantiomer. Turn 90 degrees: H top, CHO right, OH bottom, CH2OH left; in 3D CHO and CH2OH now point toward you; now S. Swap H and OH once: OH left, H right; now S.',
-  viewBox: '0 0 340 536',
+  viewBox: '0 0 340 582',
   build() { return movesLesson(['turn90', 'swap']); },
-  caption: 'Coral marks the groups whose place changed. Both results are (S)-glyceraldehyde.',
+  caption: 'Coral marks every group that ends up somewhere new in 3D. Both results are (S)-glyceraldehyde.',
 });
 
 /* ------------------------------------- 5. swaps counted per stereocenter --- */
@@ -492,8 +498,8 @@ FIGURES.push({
     const cy = 124;
     s += tag(95, 24, '1. Given: (S)');
     s += givenButanol(P(98, cy - 4));
-    s += text(95, 212, 'H points away', { cls: 'fg-sm' });
-    s += text(95, 228, 'OH → Et → Me turns left', { cls: 'fg-sm' });
+    s += text(95, 212, 'H points away;', { cls: 'fg-sm' });
+    s += text(95, 228, '1→2→3 counterclockwise', { cls: 'fg-sm' });
     s += rule(190, 40, 190, 240);
     s += tag(285, 24, '2. Chain vertical, try');
     s += cross(P(285, cy), TRY1, { h: 44, v: 46 });
@@ -608,36 +614,21 @@ FIGURES.push({
   viewBox: '0 0 760 400',
   build() {
     let s = '';
-    const sugar = (cx, pattern, diff) => {
-      let g = '';
-      const topY = 76, botY = 316;
-      g += bond(P(cx, topY), P(cx, botY), { rFrom: 17, rTo: 22 });
-      g += atom(cx, topY, 'CHO', { r: 19, size: 9.5 });
-      g += atom(cx, botY, 'CH₂OH', { r: 23, size: 9 });
-      pattern.forEach((right, i) => {
-        const y = 124 + i * 48;
-        const oh = P(cx + (right ? 52 : -52), y), h = P(cx + (right ? -52 : 52), y);
-        const hot = diff === i + 2;
-        g += bond(oh, h, { rFrom: 18, rTo: 12, cls: hot ? 'fg-bond-hi' : 'fg-bond' });
-        g += atom(oh.x, oh.y, 'OH', { r: 18, size: 10.5, kind: hot ? 'warn' : 'hi' });
-        g += atom(h.x, h.y, 'H', { r: 12 });
-        g += atom(cx, y, '', { kind: 'point' });
-        g += text(cx - 78, y + 4, 'C' + (i + 2), { cls: 'fg-sm', size: 9 });
-      });
-      return g;
-    };
-    s += tag(380, 34, 'FOUR STEREOCENTERS, READ AS A PATTERN');
+    const sugar = (cx, rights, diff) => chain(cx, 66, 48, 'CHO', rights.map((r, i) => {
+      const hot = diff === i + 2;
+      return r ? { l: 'H', r: 'OH', hi: hot, kinds: { r: hot ? 'warn' : 'hi' } }
+               : { l: 'OH', r: 'H', hi: hot, kinds: { l: hot ? 'warn' : 'hi' } };
+    }), 'CH₂OH', { h: 44, nums: true });
+    s += tag(380, 30, 'FOUR STEREOCENTERS, READ AS A PATTERN');
     s += sugar(150, [true, false, true, true], 0);
-    s += text(150, 356, 'D-glucose', { cls: 'fg-tag-good', size: 12 });
-    s += text(150, 376, 'right, left, right, right', { cls: 'fg-sm', size: 10 });
-
+    s += text(150, 356, 'D-glucose', { cls: 'fg-tag-good' });
+    s += text(150, 376, 'right, left, right, right', { cls: 'fg-sm' });
     s += sugar(380, [false, false, true, true], 2);
-    s += text(380, 356, 'D-mannose', { cls: 'fg-tag-good', size: 12 });
-    s += text(380, 376, 'differs from glucose at C2 only', { cls: 'fg-sm', size: 10 });
-
-    s += sugar(614, [true, false, false, true], 4);
-    s += text(614, 356, 'D-galactose', { cls: 'fg-tag-good', size: 12 });
-    s += text(614, 376, 'differs from glucose at C4 only', { cls: 'fg-sm', size: 10 });
+    s += text(380, 356, 'D-mannose', { cls: 'fg-tag-good' });
+    s += text(380, 376, 'differs from glucose at C2 only', { cls: 'fg-sm' });
+    s += sugar(610, [true, false, false, true], 4);
+    s += text(610, 356, 'D-galactose', { cls: 'fg-tag-good' });
+    s += text(610, 376, 'differs from glucose at C4 only', { cls: 'fg-sm' });
     return s;
   },
   caption: 'Three aldohexoses. Coral marks the one OH that differs from glucose.',
@@ -653,7 +644,7 @@ FIGURES.push({
     const col = (cx, rights, diff) => chain(cx, 34, 44, 'CHO', rights.map((r, i) => {
       const hot = diff === i + 2;
       return r ? { l: 'H', r: 'OH', hi: hot, kinds: { r: hot ? 'warn' : 'hi' } }
-               : { l: 'HO', r: 'H', hi: hot, kinds: { l: hot ? 'warn' : 'hi' } };
+               : { l: 'OH', r: 'H', hi: hot, kinds: { l: hot ? 'warn' : 'hi' } };
     }), 'CH₂OH', { h: 34 });
     s += col(57, [true, false, true, true], 0);
     s += col(170, [false, false, true, true], 2);

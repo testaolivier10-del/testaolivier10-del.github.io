@@ -529,11 +529,12 @@
       5:['acyl-reactivity-order'],
       7:['acidity-factors'] } },
 
-    'chirality': { n:7, steps:{
+    'chirality': { n:11, steps:{
       1:['chirality-recognition'],
       2:['chirality-recognition'],
-      3:['chirality-recognition','meso-detection'],
-      6:['chirality-recognition','meso-detection'] } },
+      4:['chirality-recognition','meso-detection'],
+      7:['chirality-recognition'],
+      10:['chirality-recognition','meso-detection'] } },
 
     'claisen': { n:11, steps:{
       2:['claisen-connectivity'],
@@ -787,13 +788,13 @@
        topic now records far more evidence per run than the four
        questions it used to, and all of it against the two concepts the
        topic is actually about. */
-    'rs-configuration': { n:10, steps:{
+    'rs-configuration': { n:12, steps:{
       2:['cip-priority'],
       3:['cip-priority'],
-      4:['cip-priority'],
-      6:['rs-assignment','cip-priority'],
+      5:['cip-priority'],
       7:['rs-assignment','cip-priority'],
-      9:['rs-assignment','cip-priority'] } },
+      8:['rs-assignment','cip-priority'],
+      11:['rs-assignment','cip-priority'] } },
 
     'cis-trans-ez': { n:15, steps:{
       3:['ring-cis-trans'],
