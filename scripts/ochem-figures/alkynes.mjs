@@ -84,7 +84,7 @@ FIGURES.push({
     let s = '';
     const row = (cy) => ({ M: P(44, cy), C1: P(128, cy), C2: P(212, cy), H: P(292, cy) });
     // row 1: sigma framework
-    s += tg(10, 22, 'σ bonds: sp orbitals 180° apart', { anchor: 'start' });
+    s += tg(10, 22, 'σ bonds, from sp orbitals 180° apart', { anchor: 'start' });
     const a = row(66);
     s += bond(a.M, a.C1, { rFrom: 21, rTo: 13 }) + bond(a.C1, a.C2, { rFrom: 13, rTo: 13 }) + bond(a.C2, a.H, { rFrom: 13, rTo: 10 });
     s += pill(a.M.x, a.M.y, 'CH₃') + C(a.C1) + C(a.C2) + H(a.H);
@@ -337,7 +337,7 @@ FIGURES.push({
       s += dbl(c2, c3) + sk(c2, c1) + sk(c3, c4);
       s += bond(c2, b2, { rFrom: 0, rTo: 14, cls: 'fg-bond-hi' }) + bond(c3, h3, { rFrom: 0, rTo: 10, cls: 'fg-bond-hi' });
       s += Br(b2, 'warn') + H(h3, 'warn');
-      s += lbl(343, 232, '2-bromobut-2-ene');
+      s += `<text class="fg-lbl" x="343" y="232" text-anchor="middle" font-size="13">(<tspan font-style="italic">Z</tspan>)-2-bromobut-2-ene</text>`;
       s += tg(343, 252, 'a vinyl halide', { cls: 'fg-tag-mut' });
     }
     s += rxn(430, 496, 130, 'NaNH₂', '− HBr');
@@ -365,7 +365,7 @@ FIGURES.push({
       s += dbl(c2, c3) + sk(c2, c1) + sk(c3, c4) + sk(c4, c5);
       s += bond(c2, h2, { rFrom: 0, rTo: 10, cls: 'fg-bond-hi' }) + bond(c3, b3, { rFrom: 0, rTo: 14, cls: 'fg-bond-hi' });
       s += H(h2, 'warn') + Br(b3, 'warn');
-      s += lbl(350, 448, '3-bromopent-2-ene');
+      s += `<text class="fg-lbl" x="350" y="448" text-anchor="middle" font-size="13">(<tspan font-style="italic">Z</tspan>)-3-bromopent-2-ene</text>`;
     }
     s += rxn(446, 506, 366, 'NaNH₂', '− HBr');
     {
@@ -417,7 +417,7 @@ FIGURES.push({
     s += rule(10, 190, 750, 190);
     // ---- row 2, left: the cation on C2, and its resonance form
     s += panel(10, 202, 466, 190, { kind: 'good' });
-    s += tg(243, 224, 'H⁺ adds to C1: the cation sits on C2, beside Br', { cls: 'fg-tag-good' });
+    s += tg(243, 224, 'H⁺ adds to C1: the cation is on C2, the Br carbon', { cls: 'fg-tag-good' });
     {
       const c2 = P(94, 322), c1 = P(58, 344), c3 = P(130, 344), c4 = P(166, 322), b = P(94, 268);
       s += sk(c2, c1) + sk(c2, c3) + sk(c3, c4);
@@ -453,21 +453,21 @@ FIGURES.push({
 });
 
 /* -------------------------------------------------------- alkyne-br2 ---
-   Anti addition of Br2 to 2-butyne through the bridged ion, then the
+   Anti addition of Br2 to but-2-yne through the bridged ion, then the
    second equivalent. */
 FIGURES.push({
   id: 'alkyne-br2',
   section: 'alkynes',
   anchor: 'the tetrahalide, 2,2,3,3-tetrabromobutane.</p>',
   viewBox: '0 0 760 360',
-  alt: 'Top row: 2-butyne reacts with Br2 to give a bridged ion, a bromine with a positive charge bonded to both carbons of a C=C above the axis. Bromide approaches from below and attacks one carbon, and a curved arrow moves the bridge bond onto the upper bromine. The product, (E)-2,3-dibromobut-2-ene, has one bromine above the double bond and one below: trans. Bottom row: that dibromoalkene adds a second Br2 to give 2,2,3,3-tetrabromobutane.',
+  alt: 'Top row: but-2-yne reacts with Br2 to give a bridged ion, a bromine with a positive charge bonded to both carbons of a C=C above the axis. Bromide approaches from below and attacks one carbon, and a curved arrow moves the bridge bond onto the upper bromine. The product, (E)-2,3-dibromobut-2-ene, has one bromine above the double bond and one below: trans. Bottom row: that dibromoalkene adds a second Br2 to give 2,2,3,3-tetrabromobutane.',
   build() {
     let s = '';
     // ---- row 1
     {
       const c1 = P(20, 140), c2 = P(64, 140), c3 = P(124, 140), c4 = P(168, 140);
       s += sk(c1, c2) + trip(c2, c3) + sk(c3, c4);
-      s += lbl(94, 180, '2-butyne');
+      s += lbl(94, 180, 'but-2-yne');
     }
     s += rxn(190, 240, 136, 'Br₂');
     {
@@ -477,8 +477,8 @@ FIGURES.push({
       s += Br(b) + plus(350, 72);
       // bromide from below
       const bm = P(356, 214);
-      s += Br(bm) + minus(378, 240);
-      s += lonePair(bm.x, bm.y, 180, { dist: 22 }) + lonePair(bm.x, bm.y, 270, { dist: 22 }) + lonePair(bm.x, bm.y, 0, { dist: 22 });
+      s += Br(bm) + minus(380, 194);
+      s += lonePair(bm.x, bm.y, 180, { dist: 22 }) + lonePair(bm.x, bm.y, 270, { dist: 22 }) + lonePair(bm.x, bm.y, 0, { dist: 22 }) + lonePair(bm.x, bm.y, 90, { dist: 22 });
       s += curve(P(356, 186), P(358, 150), { bow: 10 });
       s += curve(P(348, 116), P(342, 92), { bow: -14 });
       s += tg(328, 36, 'bridged ion');
@@ -512,62 +512,25 @@ FIGURES.push({
   caption: 'Top row: follow the bromide in from below the bridge. Bottom row: the second equivalent.',
 });
 
-/* ------------------------------------------------ alkyne-reduction-fork ---
-   One internal alkyne, three reagents, three products. */
-FIGURES.push({
-  id: 'alkyne-reduction-fork',
-  section: 'alkynes',
-  anchor: 'runs on to the alkane.</p>',
-  alt: 'One internal alkyne, 2-butyne, with three arrows leading to three different products: hydrogen over Lindlar catalyst gives the cis alkene with both methyls on the same side; sodium in liquid ammonia gives the trans alkene with the methyls on opposite sides; hydrogen over ordinary palladium gives butane.',
-  viewBox: '0 0 760 340',
-  build() {
-    let s = '';
-    const t1 = P(70, 170), t2 = P(130, 170);
-    s += trip(t1, t2) + sk(P(26, 170), t1) + sk(t2, P(174, 170));
-    s += lbl(100, 138, '2-butyne');
-    const outcome = (y, reagent, sub, mode, nameIt, nameRest, why, good) => {
-      let g = bond(P(192, 170), P(236, y), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
-      g += arrow(P(242, y), P(322, y));
-      g += tg(282, y - 12, reagent);
-      g += tg(282, y + 22, sub, { cls: 'fg-tag-mut' });
-      const a = P(392, y), b = P(448, y);
-      if (mode === 'alkane') {
-        g += sk(P(352, y + 22), a) + sk(a, b) + sk(b, P(488, y + 22));
-      } else {
-        g += dbl(a, b);
-        if (mode === 'cis') g += sk(P(356, y - 22), a) + sk(b, P(484, y - 22));
-        else g += sk(P(356, y + 22), a) + sk(b, P(484, y - 22));
-      }
-      g += nameIt ? italicTag(512, y - 2, nameIt, nameRest, good ? 'fg-tag-good' : 'fg-tag', 'start')
-                  : tg(512, y - 2, nameRest, { anchor: 'start', cls: good ? 'fg-tag-good' : 'fg-tag' });
-      g += tg(512, y + 16, why, { anchor: 'start', cls: 'fg-tag-mut' });
-      return g;
-    };
-    s += outcome(62, 'H₂, Lindlar', 'Pd, Pb, quinoline', 'cis', 'cis', ' (Z) alkene', 'both H from one metal surface', true);
-    s += outcome(170, 'Na, NH₃ (l)', 'e⁻, H⁺, e⁻, H⁺', 'trans', 'trans', ' (E) alkene', 'the vinyl anion sets the shape', true);
-    s += outcome(280, 'H₂, Pd/C', 'no poison', 'alkane', '', 'butane', 'both pi bonds gone', false);
-    return s;
-  },
-  caption: 'Each row is one set of conditions applied to the same 2-butyne.',
-});
-
-/* Lesson copy of the fork: stacked, 340 wide. */
+/* ------------------------------------------------------ l-reduction-fork ---
+   Lesson recap of the three reductions taught in Catalytic hydrogenation:
+   one internal alkyne, three reagents, three products. Stacked, 340 wide. */
 FIGURES.push({
   id: 'l-reduction-fork',
   lessons: ['alkynes'],
-  alt: '2-butyne at the top. Below it, three rows: H2 with Lindlar catalyst gives the cis alkene; sodium in liquid ammonia gives the trans alkene; H2 with Pd on carbon gives butane.',
+  alt: 'But-2-yne at the top. Below it, three rows: H2 with Lindlar catalyst gives the cis alkene; sodium in liquid ammonia gives the trans alkene; H2 with Pd on carbon gives butane.',
   viewBox: '0 0 340 330',
   build() {
     let s = '';
     const t1 = P(140, 40), t2 = P(200, 40);
     s += trip(t1, t2) + sk(P(96, 40), t1) + sk(t2, P(244, 40));
-    s += tg(170, 18, '2-butyne');
+    s += tg(170, 18, 'but-2-yne');
     s += rule(10, 66, 330, 66);
     const row = (y, reagent, mode, it, rest, good) => {
       let g = tg(10, y - 6, reagent, { anchor: 'start' });
       g += arrow(P(12, y + 8), P(96, y + 8));
       const a = P(152, y + 8), b = P(204, y + 8);
-      if (mode === 'alkane') g += sk(P(116, y + 28), a) + sk(a, b) + sk(b, P(240, y + 28));
+      if (mode === 'alkane') g += sk(P(124, y + 26), a) + sk(a, P(178, y + 26)) + sk(P(178, y + 26), P(206, y + 8));
       else {
         g += dbl(a, b);
         if (mode === 'cis') g += sk(P(120, y - 12), a) + sk(b, P(236, y - 12));
@@ -585,71 +548,6 @@ FIGURES.push({
     return s;
   },
   caption: 'One alkyne, three reagents, three products.',
-});
-
-/* --------------------------------------------- dissolving-metal-steps ---
-   The four steps of Na/NH3, with the geometry-setting vinyl anion drawn. */
-FIGURES.push({
-  id: 'dissolving-metal-steps',
-  section: 'alkynes',
-  anchor: 'the <i>trans</i> arrangement already locked in.</li>\n</ol>',
-  viewBox: '0 0 760 440',
-  alt: 'The four steps of the sodium–ammonia reduction of 2-butyne. Top row: 2-butyne gains an electron to give a radical anion, one carbon with a single dot and the other with a lone pair and negative charge; that carbon takes a proton from ammonia, giving a vinyl radical, shown as two bent shapes that interconvert quickly. Bottom row: a second electron gives the vinyl anion, with the two methyl groups on opposite sides; it takes a second proton from ammonia to give trans-2-butene.',
-  build() {
-    let s = '';
-    // ---- row 1
-    s += tg(10, 22, 'steps 1 and 2', { anchor: 'start' });
-    {
-      const c1 = P(18, 120), c2 = P(58, 120), c3 = P(114, 120), c4 = P(154, 120);
-      s += sk(c1, c2) + trip(c2, c3) + sk(c3, c4);
-      s += lbl(86, 176, '2-butyne');
-    }
-    s += rxn(172, 222, 116, '1  e⁻');
-    {
-      // radical anion, trans-bent
-      const c2 = P(276, 120), c3 = P(326, 120);
-      s += dbl(c2, c3) + sk(c2, P(252, 160)) + sk(c3, P(350, 80));
-      s += dot(262, 94);
-      s += lonePair(c3.x, c3.y, 60, { dist: 22 }) + minus(356, 150);
-      s += lbl(300, 196, 'radical anion');
-    }
-    s += rxn(378, 432, 116, '2  H⁺', 'from NH₃');
-    {
-      // vinyl radical, two bent shapes
-      const shape = (x, up) => {
-        const c2 = P(x, 120), c3 = P(x + 48, 120), h = P(x + 70, 158), m4 = P(x + 70, 82);
-        let g = dbl(c2, c3) + sk(c3, m4) + bond(c3, h, { rFrom: 0, rTo: 10 }) + H(h);
-        g += up ? sk(c2, P(x - 24, 158)) + dot(x - 18, 92) : sk(c2, P(x - 24, 82)) + dot(x - 18, 148);
-        return g;
-      };
-      s += shape(478, true);
-      s += equil(572, 608, 120);
-      s += shape(646, false);
-      s += lbl(612, 196, 'vinyl radical');
-      s += tg(612, 216, 'flips between shapes too fast to matter', { cls: 'fg-tag-mut' });
-    }
-    s += rule(10, 236, 750, 236);
-    // ---- row 2
-    s += tg(10, 258, 'steps 3 and 4', { anchor: 'start' });
-    s += rxn(40, 100, 346, '3  e⁻');
-    {
-      const c2 = P(172, 346), c3 = P(222, 346), h = P(246, 386), m4 = P(246, 306), m1 = P(148, 386);
-      s += dbl(c2, c3) + sk(c3, m4) + bond(c3, h, { rFrom: 0, rTo: 10 }) + H(h) + sk(c2, m1);
-      s += lonePair(c2.x, c2.y, 240, { dist: 22 }) + minus(146, 336);
-      s += lbl(196, 420, 'vinyl anion');
-      s += italicTag(196, 284, 'trans', ': CH₃ groups far apart', 'fg-tag-good');
-    }
-    s += rxn(300, 360, 346, '4  H⁺', 'from NH₃');
-    {
-      const c2 = P(430, 346), c3 = P(480, 346);
-      const h2 = P(406, 306), m1 = P(406, 386), h3 = P(504, 386), m4 = P(504, 306);
-      s += dbl(c2, c3) + sk(c2, m1) + sk(c3, m4);
-      s += bond(c2, h2, { rFrom: 0, rTo: 10 }) + bond(c3, h3, { rFrom: 0, rTo: 10 }) + H(h2) + H(h3);
-      s += `<text class="fg-lbl" x="455" y="420" text-anchor="middle" font-size="13"><tspan font-style="italic">trans</tspan>-2-butene</text>`;
-    }
-    return s;
-  },
-  caption: 'The numbers match the four steps above. Watch the CH₃ groups: they are fixed on opposite sides once the vinyl anion forms in step 3.',
 });
 
 /* --------------------------------------------------- keto-enol-arrows ---
@@ -674,7 +572,7 @@ FIGURES.push({
       s += lonePair(o.x, o.y, 200, { dist: 22 }) + lonePair(o.x, o.y, 280, { dist: 22 });
       // hydronium below-left: H–OH2+
       const hh = P(40, 212), oh = P(108, 212);
-      s += bond(hh, oh, { rFrom: 10, rTo: 24 }) + H(hh) + pill(oh.x, oh.y, 'OH₂', 46) + plus(140, 196);
+      s += bond(hh, oh, { rFrom: 10, rTo: 24 }) + H(hh) + pill(oh.x, oh.y, 'OH₂', 46) + plus(134, 200);
       // arrows: O lone pair to C–O bond; pi bond to H; H–O bond to O
       s += curve(P(86, 84), P(106, 112), { bow: 16 });
       s += curve(P(80, 158), P(42, 200), { bow: 14 });
@@ -751,7 +649,7 @@ FIGURES.push({
     s += propyne(30, 110) + lbl(74, 150, 'propyne');
     s += rxn(150, 290, 106, 'H₂O, H₂SO₄, HgSO₄');
     s += markEnol(320, 110) + lbl(356, 158, 'enol');
-    s += rxn(420, 480, 106, 'tautomer');
+    s += rxn(420, 480, 106, 'tautomerizes');
     s += acetone(530, 110) + lbl(566, 158, 'acetone');
     s += tg(660, 116, 'methyl ketone', { anchor: 'start', cls: 'fg-tag-mut' });
     s += rule(10, 180, 750, 180);
@@ -761,7 +659,7 @@ FIGURES.push({
     s += tg(220, 290, '2. H₂O₂, NaOH');
     s += arrow(P(150, 266), P(290, 266));
     s += hbEnol(350, 266) + lbl(386, 334, 'enol');
-    s += rxn(440, 500, 262, 'tautomer');
+    s += rxn(440, 500, 262, 'tautomerizes');
     s += propanal(560, 266) + lbl(610, 334, 'propanal');
     s += tg(660, 272, 'aldehyde', { anchor: 'start', cls: 'fg-tag-mut' });
     return s;

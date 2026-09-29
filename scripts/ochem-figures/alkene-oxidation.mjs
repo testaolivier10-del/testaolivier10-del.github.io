@@ -306,7 +306,7 @@ FIGURES.push({
   section: 'alkene-oxidation',
   anchor: 'an <b><i>anti</i> diol</b>.',
   lessons: ['alkene-oxidation'],
-  alt: 'Three stacked panels. 1: the epoxide of cyclohexene, its O bridging the two carbons on wedges, toward the reader. 2: the O is protonated; a water molecule below the lower carbon, labelled as behind the page, with a dashed curved arrow, attacks it from the back face, with one curved arrow from the water lone pair to that carbon and one from the breaking C–O bond to the positive oxygen. 3: trans-cyclohexane-1,2-diol, one OH on a wedge and the other on a hash.',
+  alt: 'Three stacked panels. 1: the epoxide of cyclohexene, its O bridging the two carbons on wedges, toward the reader. 2: the O is protonated; a water molecule below the lower carbon, labeled as behind the page, with a dashed curved arrow, attacks it from the back face, with one curved arrow from the water lone pair to that carbon and one from the breaking C–O bond to the positive oxygen. 3: trans-cyclohexane-1,2-diol, one OH on a wedge and the other on a hash.',
   viewBox: '0 0 340 502',
   build() {
     let s = '';
@@ -500,7 +500,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Three arrows in each of the first three panels. The ring in panel 4 is what the workup opens.',
-  note: 'The numbers in the ring names say where the oxygens are. The <b>molozonide</b> is a 1,2,3-trioxolane: three oxygens in a row, with the old C&ndash;C bond still intact, and its O&ndash;O bonds are too weak for it to last. The <b>ozonide</b> is a 1,2,4-trioxolane: the two carbons are joined only through oxygen, one O on one side and an O&ndash;O pair on the other.',
+  note: 'The numbers in the ring names say where the oxygens are. The <b>molozonide</b> is a 1,2,3-trioxolane: three oxygens in a row, with the old C&ndash;C bond still intact, and its O&ndash;O bonds are too weak for it to last. The <b>ozonide</b> is a 1,2,4-trioxolane: one O between the carbons on one side of the ring, and an O&ndash;O pair on the other.',
 });
 
 /* =====================================================================

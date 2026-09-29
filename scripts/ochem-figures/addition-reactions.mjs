@@ -176,7 +176,7 @@ FIGURES.push({
       const oy = 6 + i * 228;
       s += panel(10, oy, 320, 216);
       s += T(170, oy + 24, HBR_TITLES[i], 'fg-tag-good');
-      s += f(50, oy + [10, 10, -14][i]);
+      s += f(50, oy + [10, -4, -14][i]);
       s += T(170, oy + 206, HBR_TAGS[i]);
     });
     return s;
@@ -507,7 +507,7 @@ function ringHalohydrin() {
   s += T(400, 250, 'on opposite faces', 'fg-tag');
   s += T(520, 150, '+', 'fg-lbl');
   s += panel(530, 8, 220, 254);
-  s += T(640, 32, 'from a bromonium on the back face', 'fg-tag-good');
+  s += T(640, 32, 'from a back-face bromonium', 'fg-tag-good');
   s += prod(530, false);
   s += T(640, 234, 'the mirror image,', 'fg-tag');
   s += T(640, 250, 'formed just as often', 'fg-tag');
@@ -539,7 +539,7 @@ function hyd1(ox, oy) {
   s += skDouble(c1, c2, P(ox + 80, oy + 170)) + sk(c2, c3);
   const h = P(ox + 92, oy + 72), o = P(ox + 146, oy + 66);
   s += bond(h, o, { rFrom: 11, rTo: 14 }) + atom(h.x, h.y, 'H', { r: 11, kind: 'hi' });
-  s += waterAt(o, [30, -30], [270]);
+  s += waterAt(o, [30, -30], [282]);
   s += charge(o.x + 2, o.y - 22);
   s += curve(P(ox + 76, oy + 132), P(ox + 88, oy + 86), { bow: -12 });
   s += curve(P(ox + 119, oy + 70), P(o.x - 8, o.y + 13), { bow: 12 });
@@ -608,7 +608,7 @@ FIGURES.push({
       const oy = 6 + i * 228;
       s += panel(10, oy, 320, 216);
       s += T(170, oy + 24, HYD_TITLES[i], 'fg-tag-good');
-      s += f(50, oy + 6);
+      s += f(50, oy + [6, -8, 6][i]);
       s += T(170, oy + 206, HYD_TAGS[i]);
     });
     s += T(170, 702, 'Products: propan-2-ol and H₃O⁺', 'fg-lbl');
