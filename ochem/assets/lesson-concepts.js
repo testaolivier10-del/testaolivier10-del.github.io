@@ -517,12 +517,12 @@
       6:['nucleophile-recognition'],
       7:['acylation-self-termination','nucleophile-recognition'] } },
 
-    'amine-structure': { n:8, steps:{
-      1:['amine-basicity'],
-      2:['amine-basicity'],
-      4:['amine-basicity'],
-      6:['amine-basicity'],
-      7:['amine-basicity','pka-scale'] } },
+    'amine-structure': { n:11, steps:{
+      3:['amine-basicity'],
+      5:['amine-basicity'],
+      7:['amine-basicity'],
+      9:['amine-basicity'],
+      10:['amine-basicity','pka-scale'] } },
 
     'aromaticity': { n:8, steps:{
       1:['huckel-aromaticity'],

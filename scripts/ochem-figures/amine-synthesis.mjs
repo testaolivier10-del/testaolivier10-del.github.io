@@ -155,10 +155,10 @@ FIGURES.push({
       const c = P(m.n.x + 46, m.n.y);
       let t = m.svg + B(m.n, c, 'N', 'CH₂R') + A(c, 'CH₂R');
       t += lonePair(m.n.x, m.n.y, -60, { dist: 21 });
-      t += tag(Q(192, 0).x, Q(0, 62).y, 'no N–H left', { anchor: 'start' });
-      t += tag(Q(192, 0).x, Q(0, 80).y, 'its lone pair is', { anchor: 'start' });
-      t += tag(Q(192, 0).x, Q(0, 96).y, 'pulled into both C=O', { anchor: 'start' });
-      t += tag(Q(192, 0).x, Q(0, 114).y, 'not a nucleophile', { anchor: 'start', cls: 'fg-tag-good' });
+      t += tag(Q(184, 0).x, Q(0, 62).y, 'no N–H left', { anchor: 'start' });
+      t += tag(Q(184, 0).x, Q(0, 80).y, 'its lone pair is', { anchor: 'start' });
+      t += tag(Q(184, 0).x, Q(0, 96).y, 'pulled into both C=O', { anchor: 'start' });
+      t += tag(Q(184, 0).x, Q(0, 114).y, 'not a nucleophile', { anchor: 'start', cls: 'fg-tag-good' });
       return t;
     });
     /* Panel 4: release */
@@ -578,7 +578,7 @@ FIGURES.push({
   id: 'carbon-count-routes',
   section: 'amine-synthesis',
   anchor: 'use reductive amination or amide reduction.</div>',
-  viewBox: '0 0 760 420',
+  viewBox: '0 0 760 432',
   alt: 'Five starting materials, each with its carbon count, lead to the same product, butan-1-amine, four carbons. 1-Bromopropane, three carbons, with NaCN then LiAlH4: plus one carbon. 1-Bromobutane, four carbons, by Gabriel or by NaN3 then LiAlH4: count unchanged. Butanamide, four carbons, with LiAlH4: unchanged. Butanal, four carbons, with NH3 and NaBH3CN: unchanged. Pentanamide, five carbons, with Br2 and NaOH: minus one carbon.',
   build() {
     let s = tag(380, 20, 'FIVE WAYS TO BUTAN-1-AMINE');
