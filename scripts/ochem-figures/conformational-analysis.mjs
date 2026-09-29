@@ -310,14 +310,14 @@ FIGURES.push(...both({
 }, {
   title: '*trans*-1,2-dimethylcyclohexane',
   A: {
-    flipped: false, groups: [{ i: 0, face: 'down', lab: Me }, { i: 5, face: 'up', lab: Me }],
-    locants: [[0, 'C1'], [5, 'C2']],
+    flipped: false, groups: [{ i: 0, face: 'down', lab: Me }, { i: 1, face: 'up', lab: Me }],
+    locants: [[0, 'C1'], [1, 'C2']],
     extra: (ends) => contact(ends[0].e, ends[1].e, 'gauche', ends[0].e.x + 12, (ends[0].e.y + ends[1].e.y) / 2 + 24, 'fg-tag-warn', 18, 18),
     lines: [['BOTH EQUATORIAL (ee)', 'fg-tag-good'], ['gauche contact: 0.9 kcal/mol']],
   },
   B: {
-    flipped: true, groups: [{ i: 0, face: 'down', lab: Me }, { i: 5, face: 'up', lab: Me, L: 24 }],
-    locants: [[0, 'C1'], [5, 'C2']],
+    flipped: true, groups: [{ i: 0, face: 'down', lab: Me }, { i: 1, face: 'up', lab: Me }],
+    locants: [[0, 'C1'], [1, 'C2']],
     lines: [['BOTH AXIAL (aa)', 'fg-tag-warn'], ['1.7 + 1.7 = 3.4 kcal/mol']],
   },
   verdict: [['ee wins by 3.4 − 0.9 = 2.5 kcal/mol']],
@@ -384,13 +384,13 @@ FIGURES.push({
   }, {
     title: '*cis*-1,2-dimethylcyclohexane',
     A: {
-      flipped: false, groups: [{ i: 0, face: 'up', lab: Me }, { i: 5, face: 'up', lab: Me }],
-      locants: [[0, 'C1'], [5, 'C2']],
+      flipped: false, groups: [{ i: 0, face: 'up', lab: Me, L: 50 }, { i: 1, face: 'up', lab: Me, L: 30 }],
+      locants: [[0, 'C1'], [1, 'C2']],
       lines: [['C1 AXIAL, C2 EQUATORIAL', 'fg-tag'], ['1.7 + 0.9 gauche = 2.6 kcal/mol']],
     },
     B: {
-      flipped: true, groups: [{ i: 0, face: 'up', lab: Me }, { i: 5, face: 'up', lab: Me, L: 24 }],
-      locants: [[0, 'C1'], [5, 'C2']],
+      flipped: true, groups: [{ i: 0, face: 'up', lab: Me }, { i: 1, face: 'up', lab: Me }],
+      locants: [[0, 'C1'], [1, 'C2']],
       lines: [['C1 EQUATORIAL, C2 AXIAL', 'fg-tag'], ['1.7 + 0.9 gauche = 2.6 kcal/mol']],
     },
     verdict: [['a tie: the two chairs are equally populated']],

@@ -10399,7 +10399,7 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclopropane and cyclobutane have similar total ring strain (27.5 and 26.3 kcal/mol), but cyclobutane puckers while cyclopropane cannot. What does cyclobutane gain by puckering?",
+   "q": "Cyclopropane and cyclobutane have similar total ring strain (27.6 and 26.3 kcal/mol), but cyclobutane puckers while cyclopropane cannot. What does cyclobutane gain by puckering?",
    "options": [
     "Relief from eclipsing, bought by worse bond angles",
     "Relief from angle strain, bought by accepting more eclipsing",
@@ -10471,7 +10471,7 @@
    "type": "mcq"
   },
   {
-   "q": "Cycloheptane and cyclooctane carry 6.2 and 9.7 kcal/mol of strain even though their bond angles are close to ideal. Where does it come from?",
+   "q": "Cyclooctane carries about 10 kcal/mol of strain even though its bond angles are close to ideal. Where does most of it come from?",
    "options": [
     "Angle strain, from being forced well above 109.5 degrees",
     "Nothing real — the numbers are rounding error in the measurement",
