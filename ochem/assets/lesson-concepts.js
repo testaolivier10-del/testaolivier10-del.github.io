@@ -794,12 +794,12 @@
       7:['rs-assignment','cip-priority'],
       9:['rs-assignment','cip-priority'] } },
 
-    'cis-trans-ez': { n:10, steps:{
-      2:['ring-cis-trans'],
-      4:['ez-assignment'],
-      6:['ez-assignment','cip-priority'],
+    'cis-trans-ez': { n:15, steps:{
+      3:['ring-cis-trans'],
+      5:['ez-assignment'],
       7:['ez-assignment','cip-priority'],
-      9:['ez-assignment','cip-priority'] } },
+      9:['ez-assignment','cip-priority'],
+      14:['ez-assignment','cip-priority'] } },
 
     'stereocenters': { n:7, steps:{
       1:['stereocenter-identification'], 2:['stereocenter-identification'],

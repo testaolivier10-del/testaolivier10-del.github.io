@@ -342,7 +342,7 @@ FIGURES.push({
     s += tg(170, 280, 'a plain C–N single bond is 1.47 Å');
     return s;
   },
-  caption: 'Each solid-plus-dashed pair is a partial double bond. The shaded plane holds all six atoms.',
+  caption: 'Each solid-plus-dashed pair is a partial double bond.',
 });
 
 /* 5. The backbone as a chain of flat plates hinged at the α carbons. */
@@ -401,9 +401,10 @@ FIGURES.push({
   alt: 'An alpha helix drawn as a coil running down the page, with eleven residues marked as numbered discs, 1 at the top (the N-terminal end). Dashed lines join residue 1 to 5, 2 to 6, 3 to 7 and so on, each running roughly parallel to the helix axis. Short sticks labeled R point outward from the coil.',
   build() {
     let s = '';
-    const cx = 160, amp = 72, lift = 7, y0 = 62, rise = 31;
+    const cx = 160, amp = 72, lift = 14, y0 = 62, rise = 31, phase = 310;
     const pos = (k) => {
-      const t = rad(k * 100);
+      // phase chosen so every i→i+4 dash clears every other disc by 25 px
+      const t = rad(k * 100 + phase);
       return { p: P(cx + amp * Math.sin(t), y0 + k * rise - lift * Math.cos(t)), front: Math.cos(t) < 0, sin: Math.sin(t) };
     };
     // the coil itself, back half faint and front half solid
@@ -569,7 +570,7 @@ FIGURES.push({
     s += tg(170, 320, 'surface: polar and charged, facing water');
     return s;
   },
-  caption: 'Plain discs on the coral patch are nonpolar side chains. Teal discs are polar or charged ones.',
+  caption: 'Water surrounds the protein; the coral patch is its core.',
 });
 
 /* 10. Reading Cys-Leu-Asp-Lys-Val-Cys. */
@@ -719,7 +720,8 @@ FIGURES.push({
     s += bond(ci, ni, { order: 2, rFrom: 16, rTo: 15 }) + arm(ni, 30, 46, 'Cy').s + atom(ni.x, ni.y, 'N');
     s += bond(ci, nj, { rFrom: 16, rTo: 15 }) + arm(nj, 30, 46, 'Cy').s + arm(nj, 270, 42, 'H', { r: 12 }).s + atom(nj.x, nj.y, 'N');
     s += atom(og2.x, og2.y, 'O', { kind: 'warn' }) + atom(ci.x, ci.y, 'C', { kind: 'warn' }) + atom(c2.x, c2.y, 'C');
-    s += tg(572, 250, 'O-acylisourea: a good leaving group');
+    s += tg(572, 250, 'O-acylisourea: the activated acid');
+    s += tg(185, 234, 'after the acid’s H⁺ moves to DCC', 'middle', 'fg-tag-mut');
 
     /* Panel 2 */
     s += panel(16, 282, 728, 246);
