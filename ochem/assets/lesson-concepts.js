@@ -785,9 +785,12 @@
       11:['alcohol-activation','leaving-group-ability'],
       14:['leaving-group-ability'] } },
 
-    'lewis-acids': { n:7, steps:{
-      1:['lewis-acid-base'], 2:['lewis-acid-base'],
-      3:['lewis-acid-base'], 6:['lewis-acid-base'] } },
+    'lewis-acids': { n:10, steps:{
+      1:['lewis-acid-base'],
+      4:['lewis-acid-base'],
+      5:['lewis-acid-base','formal-charge-calc'],
+      6:['lewis-acid-base'],
+      9:['lewis-acid-base'] } },
 
     'lewis-structures': { n:16, steps:{
       1:['lewis-structures-drawing','valence-electrons'],
