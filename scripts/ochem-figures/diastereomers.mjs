@@ -123,7 +123,7 @@ FIGURES.push({
   id: 'diast-first-pair',
   section: 'diastereomers',
   anchor: '<h3>The definition</h3>',
-  viewBox: '20 40 640 180',
+  viewBox: '20 14 640 200',
   alt: 'Two stereoisomers of 3-bromobutan-2-ol drawn as the same zigzag. In (2R,3R) the OH on C2 and the Br on C3 are both on wedges. In (2R,3S) the OH is on a wedge and the Br is on a hash. C2 is R in both; C3 is R in the first and S in the second.',
   build: () => firstPair(false),
   caption: 'The skeleton and the OH wedge are identical. Only the Br bond differs: a wedge on the left, a hash on the right.',
@@ -204,8 +204,8 @@ FIGURES.push({
   build() {
     const r = chain(107, 104, { ...ISO.RR, name: '(2R,3R)-3-bromobutan-2-ol' });
     let s = r.s;
-    s += T(r.c[1].x - 30, r.c[1].y - 6, 'C2', 'fg-tag-mut', 'end');
-    s += T(r.c[2].x + 30, r.c[2].y + 16, 'C3', 'fg-tag-mut', 'start');
+    s += T(r.c[1].x - 12, r.c[1].y - 6, 'C2', 'fg-tag-mut', 'end');
+    s += T(r.c[2].x + 12, r.c[2].y + 16, 'C3', 'fg-tag-mut', 'start');
     return s;
   },
   caption: 'Two stereocenters: C2 carries the OH and C3 carries the Br.',
@@ -308,7 +308,7 @@ function buteneFig(stacked) {
     s += rich(cx, top + 22, [trans ? '*trans' : '*cis', '-but-2-ene'], 'fg-tag');
     s += butene(cx, top + 84, trans);
     s += T(cx, top + 136, 'no stereocenter', 'fg-tag-mut');
-    s += dipoles(P(cx, top + (lesson ? 166 : 172)), trans);
+    s += dipoles(P(cx, top + 172), trans);
     if (lesson) {
       s += T(cx, top + 206, trans ? 'dipoles cancel: μ = 0' : 'dipoles add: μ = 0.33 D', 'fg-tag-good');
       return;
@@ -404,6 +404,24 @@ FIGURES.push({
   alt: 'cis-1,2-dimethylcyclohexane with both methyls on wedges, (1R,2S), stacked above trans-1,2-dimethylcyclohexane with one wedge and one hash, (1R,2R).',
   build: () => dmcFig(true),
   caption: 'C1 is R in both. C2 is S in the cis isomer and R in the trans isomer.',
+});
+
+/* The two trans isomers, for the lesson question that asks how they are
+   related. No verdict is drawn. */
+FIGURES.push({
+  id: 'l-trans-pair',
+  lessons: ['diastereomers'],
+  viewBox: '0 0 340 330',
+  alt: 'Two trans-1,2-dimethylcyclohexanes, stacked. The first, (1R,2R), has the C1 methyl on a wedge and the C2 methyl on a hash. The second, (1S,2S), has the C1 methyl on a hash and the C2 methyl on a wedge.',
+  build() {
+    let s = '';
+    s += T(170, 24, '(1R,2R)', 'fg-tag-good');
+    s += ringPair(150, 88, { sub: 'CH₃', k1: 'w', k2: 'h', l1: 'R', l2: 'R', name: '(1R,2R)' });
+    s += T(170, 184, '(1S,2S)', 'fg-tag-good');
+    s += ringPair(150, 248, { sub: 'CH₃', k1: 'h', k2: 'w', l1: 'S', l2: 'S', name: '(1S,2S)' });
+    return s;
+  },
+  caption: 'Both are trans: in each, one methyl is on a wedge and the other on a hash.',
 });
 
 /* ================================================================ 6 ===

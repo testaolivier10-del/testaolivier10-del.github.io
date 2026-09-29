@@ -183,22 +183,24 @@ FIGURES.push({
 
     s += panel(8, 150, 324, 138);
     s += ethanolCenter(P(92, 222), { lab: 'D', kind: 'warn' }, { lab: 'H' }, { sweepTo: 330, pri: [3, 4] });
-    s += lines(190, 176, 22, [
+    s += lines(178, 174, 20, [
       ['Ha → D', 'fg-lbl'],
       'H (4) is on the hash,',
       'pointing away.',
-      '1→2→3 runs counterclockwise,',
+      '1→2→3 runs',
+      'counterclockwise,',
       ['so this is S', 'fg-tag-good'],
     ]);
 
     s += panel(8, 298, 324, 138);
     s += ethanolCenter(P(92, 370), { lab: 'H' }, { lab: 'D', kind: 'warn' }, { sweepTo: 292, pri: [4, 3] });
-    s += lines(190, 324, 22, [
+    s += lines(178, 322, 20, [
       ['Hb → D', 'fg-lbl'],
       'H (4) is on the wedge,',
       'pointing at you.',
-      'Counterclockwise, flipped,',
-      ['so this is R', 'fg-tag-warn'],
+      'Counterclockwise,',
+      'so flip it:',
+      ['this is R', 'fg-tag-warn'],
     ]);
 
     s += text(170, 462, 'S and R are enantiomers,', { cls: 'fg-lbl' });
@@ -242,16 +244,16 @@ FIGURES.push({
   id: 'bromobutane-c3-test',
   section: 'prochirality',
   lessons: ['prochirality'],
-  viewBox: '0 0 340 522',
+  viewBox: '0 0 340 540',
   alt: 'The substitution test on C3 of (R)-2-bromobutane, drawn as a zigzag with Br on a wedge at C2 and, at C3, Ha on a wedge (down left) and Hb on a hash (down right). Replacing Ha with D: at C3 the priorities are C2 1 (it carries Br), C4 2, D 3 and H 4; H points away and 1 to 2 to 3 runs clockwise, so C3 is R. Replacing Hb with D: the same priorities, but H points at you, so the clockwise trace is flipped and C3 is S. C2 stays R in both. The products are (2R,3R) and (2R,3S), which are diastereomers, so Ha and Hb are diastereotopic.',
   build() {
     let s = '';
     s += text(170, 16, '(R)-2-bromobutane: C2 is already R', { cls: 'fg-tag' });
-    s += bromobutane(110, 72, { lab: 'Ha', size: 10.5 }, { lab: 'Hb', size: 10.5 }, { labels: true });
+    s += bromobutane(110, 92, { lab: 'Ha', size: 10.5 }, { lab: 'Hb', size: 10.5 }, { labels: true });
 
-    s += panel(8, 162, 324, 146);
-    s += bromobutane(28, 222, { lab: 'D', kind: 'warn' }, { lab: 'H' }, { pri: [3, 4] });
-    s += lines(196, 186, 22, [
+    s += panel(8, 180, 324, 146);
+    s += bromobutane(28, 240, { lab: 'D', kind: 'warn' }, { lab: 'H' }, { pri: [3, 4] });
+    s += lines(196, 204, 22, [
       ['Ha → D', 'fg-lbl'],
       'At C3: 1 = C2 (has Br),',
       '2 = C4, 3 = D, 4 = H.',
@@ -260,9 +262,9 @@ FIGURES.push({
       ['(2R,3R)', 'fg-tag-good'],
     ]);
 
-    s += panel(8, 318, 324, 146);
-    s += bromobutane(28, 378, { lab: 'H' }, { lab: 'D', kind: 'warn' }, { pri: [4, 3] });
-    s += lines(196, 342, 22, [
+    s += panel(8, 336, 324, 146);
+    s += bromobutane(28, 396, { lab: 'H' }, { lab: 'D', kind: 'warn' }, { pri: [4, 3] });
+    s += lines(196, 360, 22, [
       ['Hb → D', 'fg-lbl'],
       'Same ranking, but H',
       'points at you:',
@@ -271,8 +273,8 @@ FIGURES.push({
       ['(2R,3S)', 'fg-tag-warn'],
     ]);
 
-    s += text(170, 490, 'C2 matches, C3 is opposite: diastereomers,', { cls: 'fg-lbl' });
-    s += text(170, 512, 'so Ha and Hb are diastereotopic', { cls: 'fg-lbl' });
+    s += text(170, 508, 'C2 matches, C3 is opposite: diastereomers,', { cls: 'fg-lbl' });
+    s += text(170, 530, 'so Ha and Hb are diastereotopic', { cls: 'fg-lbl' });
     return s;
   },
   caption: 'The numbers are the CIP priorities at C3, the new stereocenter. C2 is untouched by either substitution and stays R.',
@@ -388,24 +390,26 @@ FIGURES.push({
     let s = '';
     s += panel(8, 8, 324, 150, { kind: 'warn' });
     s += ethanolCenter(P(92, 84), { lab: 'H' }, { lab: 'H', kind: 'warn' }, { sweepTo: 292, pri: [4, 3] });
-    s += lines(190, 34, 22, [
+    s += lines(178, 32, 20, [
       ['name the hashed H', 'fg-lbl'],
       'Promote it: it is 3,',
       'its twin is 4.',
       '4 points at you:',
-      'counterclockwise, flipped',
-      ['= R, so it is pro-R', 'fg-tag-warn'],
+      'counterclockwise',
+      'flips to R,',
+      ['so it is pro-R', 'fg-tag-warn'],
     ]);
 
     s += panel(8, 168, 324, 150, { kind: 'good' });
     s += ethanolCenter(P(92, 244), { lab: 'H', kind: 'hi' }, { lab: 'H' }, { sweepTo: 330, pri: [3, 4] });
-    s += lines(190, 194, 22, [
+    s += lines(178, 192, 20, [
       ['name the wedged H', 'fg-lbl'],
       'Promote it: it is 3,',
       'its twin is 4.',
       '4 points away:',
       'counterclockwise',
-      ['= S, so it is pro-S', 'fg-tag-good'],
+      'reads S,',
+      ['so it is pro-S', 'fg-tag-good'],
     ]);
     s += text(170, 342, 'The hashed H is pro-R; the wedged H is pro-S.', { cls: 'fg-tag' });
     return s;
@@ -472,9 +476,9 @@ FIGURES.push({
 function adduct(c, nuType) {
   let s = '';
   s += arm(c, 90, 42, 'O⁻', { kind: 'hi', size: 10.5 });
-  s += arm(c, 330, 46, 'CH₃');
-  s += arm(c, 210, 40, 'H', { r: 12 });
-  s += arm(c, 270, 42, 'Nu', { type: nuType, kind: 'warn', size: 10.5 });
+  s += arm(c, 335, 50, 'CH₃');
+  s += arm(c, 205, 42, 'H', { r: 12 });
+  s += arm(c, 270, 54, 'Nu', { type: nuType, kind: 'warn', size: 10.5 });
   s += atom(c.x, c.y, 'C', { kind: 'hi' });
   return s;
 }
@@ -482,7 +486,7 @@ FIGURES.push({
   id: 'face-attack',
   section: 'prochirality',
   lessons: ['prochirality'],
-  viewBox: '0 0 340 384',
+  viewBox: '0 0 340 404',
   alt: 'Acetaldehyde flat in the page, O up, CH3 lower right, H lower left, with the Re face toward you. A nucleophile adding from the front, the Re face, gives a product with Nu on a wedge. A nucleophile adding from behind, the Si face, gives the product with Nu on a hash. The three original groups keep their places in both, so the two products are mirror images, and with an achiral nucleophile they form 50 to 50.',
   build() {
     let s = '';
@@ -495,15 +499,15 @@ FIGURES.push({
     s += text(256, 152, 'Nu⁻ from', { cls: 'fg-tag', anchor: 'start' });
     s += text(256, 170, 'behind', { cls: 'fg-tag', anchor: 'start' });
 
-    s += panel(8, 196, 158, 136, { kind: 'good' });
-    s += adduct(P(87, 256), 'wedge');
-    s += text(87, 322, 'Nu toward you', { cls: 'fg-tag-good' });
-    s += panel(174, 196, 158, 136, { kind: 'warn' });
-    s += adduct(P(253, 256), 'hash');
-    s += text(253, 322, 'Nu away from you', { cls: 'fg-tag-warn' });
+    s += panel(8, 196, 158, 156, { kind: 'good' });
+    s += adduct(P(87, 252), 'wedge');
+    s += text(87, 340, 'Nu toward you', { cls: 'fg-tag-good' });
+    s += panel(174, 196, 158, 156, { kind: 'warn' });
+    s += adduct(P(253, 252), 'hash');
+    s += text(253, 340, 'Nu away from you', { cls: 'fg-tag-warn' });
 
-    s += text(170, 356, 'mirror images, formed 50 : 50', { cls: 'fg-lbl' });
-    s += text(170, 376, 'when nothing chiral is present', { cls: 'fg-tag' });
+    s += text(170, 376, 'mirror images, formed 50 : 50', { cls: 'fg-lbl' });
+    s += text(170, 396, 'when nothing chiral is present', { cls: 'fg-tag' });
     return s;
   },
   caption: 'Nu stands for the group the nucleophile brings; if it is anything other than H or CH₃, the carbon ends up with four different groups. Only the bond to Nu changes between the two products.',
