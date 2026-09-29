@@ -438,7 +438,7 @@ FIGURES.push({
     s += C(C1) + C(C2) + C(C3);
     s += tag(155, 80, 'π bond');
     s += tag(170, 36, 'this C–H is lined up with the p orbitals');
-    s += tag(170, 240, 'its electron density spreads slightly over the C=C');
+    s += tag(170, 240, 'and spreads slightly over the C=C');
     return s;
   },
   caption: 'Propene. The shaded C–H bond on the methyl carbon runs parallel to the two p orbitals, close enough to overlap them slightly.',
@@ -547,7 +547,9 @@ FIGURES.push({
     s += text(6, 200, 'a C=C from bridgehead C1 to C2?', { cls: 'fg-tag-mut', anchor: 'start' });
     n = norbornane3D(P(204, 262), 1.15);
     s += sk(n.n2, n.n3) + sk(n.n3, n.n4) + sk(n.n4, n.n5) + sk(n.n5, n.n6) + sk(n.n6, n.n1) + sk(n.n1, n.n7) + sk(n.n7, n.n4);
-    s += `<line class="fg-dash-hi" x1="${r2(n.n1.x)}" y1="${r2(n.n1.y)}" x2="${r2(n.n2.x)}" y2="${r2(n.n2.y)}"></line>`;
+    s += sk(n.n1, n.n2);
+    // the would-be second bond: a dashed line beside the sigma bond
+    s += `<line class="fg-dash-hi" x1="${r2(n.n1.x - 5)}" y1="${r2(n.n1.y + 9)}" x2="${r2(n.n2.x - 7)}" y2="${r2(n.n2.y - 2)}"></line>`;
     s += pOrb(n.n2, 90, 44, 10);
     /* C1's three bonds all point right, into the cage, so the orbital it has
        left over points out to the left: one lobe, drawn outside the cage. */

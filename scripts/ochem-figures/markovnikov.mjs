@@ -385,10 +385,10 @@ FIGURES.push({
     s += tg(650, 30, 'AN ALKYLBORANE');
     s += hbSquare(P(608, 190), 'end');
     s += rule(30, 256, 730, 256);
-    s += lbl(380, 284, 'B and H arrive together, from the same side of the alkene: syn addition.');
+    s += lbl(380, 284, 'B and H arrive together, from the same side of the alkene.');
     return s;
   },
-  caption: 'Dashed lines are bonds partly made or partly broken.',
+  caption: 'Dashed lines are bonds partly made or partly broken. δ− marks the electron density boron is gaining from the pi bond.',
 });
 
 FIGURES.push({
@@ -410,7 +410,7 @@ FIGURES.push({
     s += hbSquare(P(128, 590), 'end');
     return s;
   },
-  caption: 'Dashed lines are bonds partly made or partly broken. The δ+ sits on the more substituted carbon.',
+  caption: 'Dashed lines are bonds partly made or partly broken. δ+ sits on the more substituted carbon; δ− marks the electron density boron is gaining.',
 });
 
 /* ======================================================================
@@ -571,14 +571,14 @@ FIGURES.push({
   viewBox: '0 0 760 380',
   build() {
     let s = '';
-    s += tg(24, 34, 'PROPAGATION 1 · Br• ADDS TO THE CH₂ END', 'start');
+    s += tg(24, 34, 'PROPAGATION 1: Br· ADDS TO THE CH₂ END', 'start');
     s += prop1Reactants(56, 104);
     s += arrow(P(318, 104), P(376, 104), { muted: true });
     s += bromoRadical(420, 104, -90).s;
     s += tg(552, 172, 'a 2° radical', 'middle', 'fg-tag-good');
     s += rule(24, 196, 736, 196);
 
-    s += tg(24, 226, 'PROPAGATION 2 · THE RADICAL TAKES H FROM H–Br', 'start');
+    s += tg(24, 226, 'PROPAGATION 2: THE RADICAL TAKES H FROM H–Br', 'start');
     s += prop2Reactants(46, 280, -30);
     s += arrow(P(372, 280), P(420, 280), { muted: true });
     s += bromopropane(452, 280);
@@ -588,7 +588,7 @@ FIGURES.push({
     s += tg(680, 336, 'starts propagation 1');
     return s;
   },
-  caption: 'Every arrow has one barb. Follow the Br• made at the end of propagation 2: it is the one that starts propagation 1 again.',
+  caption: 'Every arrow has one barb. Follow the Br· made at the end of propagation 2: it is the one that starts propagation 1 again.',
 });
 
 FIGURES.push({
@@ -599,13 +599,13 @@ FIGURES.push({
   viewBox: '0 0 340 556',
   build() {
     let s = '';
-    s += tg(170, 20, 'PROPAGATION 1 · Br• ADDS TO THE CH₂ END');
+    s += tg(170, 20, 'PROPAGATION 1: Br· ADDS TO THE CH₂ END');
     s += prop1Reactants(46, 84);
     s += arrow(P(170, 136), P(170, 164), { muted: true });
     s += bromoRadical(70, 204, -90).s;
     s += tg(202, 262, 'A 2° RADICAL', 'middle', 'fg-tag-good');
     s += rule(20, 282, 320, 282);
-    s += tg(170, 302, 'PROPAGATION 2 · IT TAKES H FROM H–Br');
+    s += tg(170, 302, 'PROPAGATION 2: IT TAKES H FROM H–Br');
     // stacked: the radical on the left, H–Br to its right, drawn tighter
     s += prop2Reactants(30, 356, -30);
     s += arrow(P(120, 402), P(120, 436), { muted: true });
