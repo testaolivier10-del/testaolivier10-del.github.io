@@ -268,9 +268,13 @@
       9:['diazonium-hub'],
       10:['diazonium-hub','directing-effects'] } },
 
-    'polymer-basics': { n:8, steps:{
-      2:['two-reactive-sites'], 3:['two-reactive-sites'], 4:['two-reactive-sites'],
-      6:['two-reactive-sites'], 7:['two-reactive-sites'] } },
+    'polymer-basics': { n:12, steps:{
+      2:['two-reactive-sites'],
+      5:['two-reactive-sites'],
+      6:['two-reactive-sites'],
+      8:['step-growth'],
+      10:['packing-and-properties'],
+      11:['two-reactive-sites'] } },
 
     'addition-polymers': { n:8, steps:{
       2:['chain-growth'], 3:['chain-growth'], 4:['chain-growth'],
