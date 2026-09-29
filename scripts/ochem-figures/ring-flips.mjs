@@ -254,7 +254,7 @@ FIGURES.push({
     s += text(196, 252, 'Br: axial, up', { cls: 'fg-tag-warn' });
     s += text(196, 272, 'CH₃: equatorial, up', { cls: 'fg-tag' });
     s += flipArrows(334, 426, 150);
-    s += tag(564, 22, 'the flipped chair');
+    s += tag(564, 22, 'the other chair');
     const B = workedChair(564, 150, 0.95, true);
     s += B.s;
     s += text(564, 252, 'Br: equatorial, still up', { cls: 'fg-tag-good' });

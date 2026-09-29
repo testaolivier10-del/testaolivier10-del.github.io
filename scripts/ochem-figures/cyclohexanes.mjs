@@ -299,7 +299,7 @@ FIGURES.push({
     s += rule(253, 24, 253, 276) + rule(507, 24, 507, 276);
     return s;
   },
-  caption: 'Cyclopropane has to stay flat, so its bonds bend instead. Cyclobutane and cyclopentane fold out of the flat shape to relieve eclipsing, and pay a few degrees of angle for it.',
+  caption: 'Dashed lines mark the straight C–C lines in cyclopropane, the fold in cyclobutane, and the edge of the flat part of the cyclopentane envelope.',
 });
 
 /* --------------------------------------------------------- transannular ---
@@ -383,7 +383,7 @@ FIGURES.push({
     s += text(565, 226, 'each group sits in front of one on the back carbon', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'Flat cyclohexane loses on both counts. Every angle is 10.5° too wide, and sighting down any of the six ring bonds shows the same fully eclipsed view (drawn a few degrees apart so the back groups show).',
+  caption: 'Sighting down any of the six ring bonds gives this same view. The back groups are drawn a few degrees apart so that they show.',
 });
 
 /* ------------------------------------------------------------ the chair ---
@@ -409,7 +409,7 @@ FIGURES.push({
     s += text(578, 226, 'all staggered; the ring carbons 60° apart', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'The same view appears at all six ring bonds. The two ring carbons in the Newman sit 60° apart, like the methyls of gauche butane, and nothing is eclipsed.',
+  caption: 'Find the two ring carbons in the Newman projection: they sit 60° apart, like the methyls of gauche butane. Every other ring bond gives the same staggered view.',
 });
 FIGURES.push({
   id: 'l-chair-targets',
@@ -477,8 +477,8 @@ FIGURES.push({
     for (const x of [200, 385, 570]) s += rule(x, 62, x, 226);
     return s;
   },
-  caption: 'Each step adds <b>two lines that are parallel to each other</b>. After the third pair the ring is closed. In the finished chair, one end carbon points up and the other points down, and the four carbons between them lie in one plane.',
-  note: 'If both ends point the same way, you have drawn a boat. If no end sticks out, you have drawn a flat hexagon.',
+  caption: 'In each panel the highlighted lines are the pair added at that step. The last panel marks the two ends.',
+  note: 'If both ends point the same way, the drawing is a boat, a different shape described below. If neither end sticks out, it is a flat hexagon.',
 });
 
 /* ------------------------------------------------------ chair and boat ---
@@ -516,7 +516,7 @@ FIGURES.push({
     s += rule(380, 24, 380, 286);
     return s;
   },
-  caption: 'Push the chair’s down end up and the ring becomes a boat. Its two <b>flagpole</b> hydrogens now point at each other, and the two highlighted side bonds are eclipsed.',
+  caption: 'Compare the end hydrogens. In the chair they point away from each other; in the boat they lean together (dashed line). The highlighted bonds are the boat’s eclipsed sides.',
 });
 FIGURES.push({
   id: 'l-chair-and-boat',
@@ -583,7 +583,7 @@ FIGURES.push({
     s += text(X.boat, Y(6.5) + 20, 'peak', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Energies are in kcal/mol above the chair. A <b>peak</b> is a shape the ring only passes through; a <b>dip</b> is one it can sit in briefly. In the half-chair, the four carbons joined by highlighted bonds lie in one plane.',
+  caption: 'Energies in kcal/mol above the chair. Follow the curve from the left: up over the half-chair, down into a twist-boat, then over the boat into a second twist-boat. In the half-chair, the highlighted bonds join the four carbons that lie in one plane.',
 });
 
 export default FIGURES;
