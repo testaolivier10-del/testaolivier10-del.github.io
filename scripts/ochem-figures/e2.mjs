@@ -16,7 +16,7 @@ const rad = (d) => (d * Math.PI) / 180;
 /* Screen direction for a math angle: 0 is east, 90 is up. */
 const dir = (deg) => ({ x: Math.cos(rad(deg)), y: -Math.sin(rad(deg)) });
 const at = (c, deg, len) => P(c.x + dir(deg).x * len, c.y + dir(deg).y * len);
-/* A labelled end atom on a bond from an unlabelled or labelled center. */
+/* A labeled end atom on a bond from a center. */
 const arm = (c, deg, len, lab, o = {}) => {
   const e = at(c, deg, len);
   const r = o.r ?? (lab.length > 2 ? 16 : lab.length > 1 ? 15 : 12);
@@ -435,7 +435,7 @@ FIGURES.push({
       alkene(662, 150, 'Ph', 'Ph', 'H', 'CH₃'), '(Z)-1,2-diphenylprop-1-ene', 'the two Ph on the same side');
     return s;
   },
-  caption: 'Each diastereomer turned so that the bromine and the β-hydrogen are anti (shaded), then the alkene it gives. Ph is a phenyl group, C₆H₅&ndash;.',
+  caption: 'Each diastereomer, turned so that the bromine and the β-hydrogen are anti (shaded bonds), and the alkene it gives.',
 });
 
 /* ------------------------------------------------------------------------
