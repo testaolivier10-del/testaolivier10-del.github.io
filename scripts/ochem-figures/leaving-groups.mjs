@@ -107,7 +107,7 @@ FIGURES.push({
     s += tg(170, 422, 'and a strong base like HO⁻ does not', 'warn');
     return s;
   },
-  caption: 'Bromomethane and hydroxide ion. The arrow from the C–Br bond shows the pair of electrons that bromide takes with it.',
+  caption: 'Bromomethane and hydroxide ion. Count bromine\'s lone pairs before and after: it leaves with four.',
 });
 
 /* ------------------------------------------------------------------ 2 ---
@@ -199,7 +199,7 @@ FIGURES.push({
     s += tg(170, 800, 'Ar is the CH₃–C₆H₄– ring drawn above', 'mut');
     return s;
   },
-  caption: 'Top: the tosyl group drawn out in full. Bottom: the tosylate ion that leaves. The single negative charge moves from oxygen to oxygen across the three resonance forms.',
+  caption: 'Top: the tosyl group drawn out in full. Bottom: the tosylate ion, with the ring abbreviated Ar.',
 });
 
 /* ------------------------------------------------------------------ 4 ---
@@ -271,7 +271,7 @@ FIGURES.push({
       'products: Nu–CH₃ + N(CH₃)₃, a neutral amine');
     return s;
   },
-  caption: 'Nu<sup>−</sup> stands for any nucleophile. In both panels the bond that breaks is the one from carbon to the positively charged atom, and the group that leaves carries no charge.',
+  caption: 'Nu<sup>−</sup> stands for any nucleophile. The positively charged atom is shaded in each panel.',
 });
 
 /* ------------------------------------------------------------------ 6 ---
@@ -321,7 +321,7 @@ FIGURES.push({
     s += tg(100, y3 + 38, '1-bromobutane', 'good') + tg(262, y3 + 38, 'water', 'good');
     return s;
   },
-  caption: '1-Butanol and HBr. In step 1 the oxygen takes a proton. In step 2 bromide bonds to the carbon on the side away from the oxygen while the C–O bond breaks, both in the same step.',
+  caption: '1-Butanol and HBr, with an arrow for every bond that forms or breaks.',
 });
 
 /* ------------------------------------------------------------------ 7 ---
@@ -377,7 +377,7 @@ FIGURES.push({
     s += tg(170, y3 + 44, 'the C–O bond never breaks', 'good');
     return s;
   },
-  caption: 'Ethanol and TsCl, with pyridine as the base. Only the O–H and S–Cl bonds break. The carbon keeps the same oxygen throughout.',
+  caption: 'Ethanol and TsCl, with pyridine as the base. Compare the C–O bond in the first and last panels.',
 });
 
 /* ------------------------------------------------------------------ 8 ---
@@ -425,7 +425,7 @@ FIGURES.push({
     s += tg(88, y3 + 30, 'bromoethane', 'good');
     return s;
   },
-  caption: 'Ethanol and PBr<sub>3</sub>. The C–O bond survives step 1 and breaks in step 2, as bromide bonds to the carbon.',
+  caption: 'Ethanol and PBr<sub>3</sub>. Watch the C–O bond: it is still there after step 1.',
 });
 
 /* ------------------------------------------------------------------ 9 ---
@@ -477,7 +477,7 @@ FIGURES.push({
     s += tg(88, y3 + 32, 'chloroethane', 'good') + tg(208, y3 + 32, 'a gas', 'mut');
     return s;
   },
-  caption: 'Ethanol and SOCl<sub>2</sub>. As with PBr<sub>3</sub>, the C–O bond survives step 1 and breaks only in step 2, as the halide bonds to the carbon.',
+  caption: 'Ethanol and SOCl<sub>2</sub>. The three arrows in step 2 all move at once.',
 });
 
 /* ------------------------------------------------------------------ 10 ---
@@ -521,7 +521,7 @@ FIGURES.push({
     s += tg(170, y2 + 188, 'ethene: a C=C where the C–H and C–Br were', 'good');
     return s;
   },
-  caption: 'Bromoethane and hydroxide, two ways. In both, the C–Br bond breaks and bromide leaves. Substitution puts OH on that carbon; elimination takes an H from the carbon next door and makes a C=C.',
+  caption: 'Bromoethane and hydroxide, two ways. Compare which atom the hydroxide reaches in each panel.',
 });
 
 /* ------------------------------------------------------------------ 11 ---
@@ -559,7 +559,7 @@ FIGURES.push({
     s += tg(170, 432, 'then O loses H⁺ to give (CH₃)₃C–OH', 'mut');
     return s;
   },
-  caption: '2-Bromo-2-methylpropane, (CH<sub>3</sub>)<sub>3</sub>C–Br, in water. Bromide leaves first; only then does water bond to the carbon.',
+  caption: '2-Bromo-2-methylpropane, (CH<sub>3</sub>)<sub>3</sub>C–Br, in water. Step 1 involves one species; step 2 involves two.',
 });
 
 export default FIGURES;
