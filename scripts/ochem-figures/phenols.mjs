@@ -233,7 +233,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Follow the arrows clockwise from the top left: each pair of arrows turns one structure into the next. Then look for a meta carbon carrying the charge in any of the four.',
-  note: 'These are the same ring positions that carried the charge in the benzyl cation (<a class="chapter-ref" href="/ochem/notes/benzylic-reactivity.html">Benzylic reactivity</a>) and the Meisenheimer complex (<a class="chapter-ref" href="/ochem/notes/nucleophilic-aromatic.html">SNAr and benzyne</a>): ortho and para to the atom where the charge starts.',
+  note: 'These are the same ring positions that carried the charge in the benzyl cation (<a class="chapter-ref" href="/ochem/notes/benzylic-reactivity.html">Benzylic reactivity</a>) and the Meisenheimer complex (<a class="chapter-ref" href="/ochem/notes/nucleophilic-aromatic.html">SNAr and benzyne</a>): ortho and para to the ring carbon that carries the group (in the Meisenheimer complex, the carbon the nucleophile added to).',
 });
 
 /* ----------------------------------------------------------------------
@@ -302,7 +302,8 @@ FIGURES.push({
     s += tag(170, 316, 'FROM 3-NITROPHENOL, pKₐ 8.4', { cls: 'fg-tag-warn' });
     {
       const K2 = hexKit(30), cx = 120, cy = 404;
-      s += K2.ring(cx, cy, [0, 2, 4]);
+      s += K2.ring(cx, cy, []);
+      s += `<circle class="fg-dash" cx="${cx}" cy="${cy}" r="18" fill="none"></circle>`;
       const v0 = K2.V(cx, cy)[0], o = K2.out(cx, cy, 0, 28);
       s += bond(v0, o, { rFrom: 0, rTo: 16 });
       s += atom(o.x, o.y, 'O', { kind: 'hi' });
@@ -338,7 +339,7 @@ FIGURES.push({
   id: 'phenol-pka-scale',
   section: 'phenols',
   anchor: '<!-- phenols:scale -->',
-  viewBox: '0 0 760 312',
+  viewBox: '0 0 760 256',
   alt: 'A pKa scale from 0 to 16 placing ethanol, phenol, the two nitrophenols, acetic acid and picric acid, with the carbonic acid line at 6.4 marked',
   build() {
     let s = '';
@@ -366,8 +367,7 @@ FIGURES.push({
     s += text(x(6.4) + 4, 48, 'carbonic acid, 6.4', { cls: 'fg-tag', anchor: 'start', size: 10.5 });
     s += text(x(6.4) + 4, 66, 'NaHCO₃ deprotonates acids to the right', { cls: 'fg-sm', anchor: 'start', size: 9.5 });
 
-    s += rule(24, 244, 700, 244);
-    s += text(360, 272, 'Same group, different position: 1.2 pKₐ units apart.', { cls: 'fg-lbl', size: 12 });
+    s += text(388, 242, 'nitrophenols: same group, different position, 1.2 pKₐ units apart', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
   caption: 'Compare the gap between phenol and ethanol with the gap between the two nitrophenols.',
@@ -506,6 +506,8 @@ FIGURES.push({
       s += atom(Cc.x, Cc.y, 'C', { kind: 'hi' });
       s += atom(Ou.x, Ou.y, 'O');
       s += atom(Od.x, Od.y, 'O');
+      s += lonePair(Ou.x, Ou.y, 325, { dist: 20 }) + lonePair(Ou.x, Ou.y, 35, { dist: 20 });
+      s += lonePair(Od.x, Od.y, 150, { dist: 20 }) + lonePair(Od.x, Od.y, 210, { dist: 20 });
       const Na = P(150, 76);
       s += bond(o.p, Na, { rFrom: 22, rTo: 18, cls: 'fg-dash' });
       s += bond(Ou, Na, { rFrom: 15, rTo: 18, cls: 'fg-dash' });
@@ -535,8 +537,10 @@ FIGURES.push({
       s += atom(Cc.x, Cc.y, 'C');
       s += atom(Oa.x, Oa.y, 'O');
       s += atom(Ob.x, Ob.y, 'O');
-      s += text(Ob.x + 20, Ob.y + 8, '−', { cls: 'fg-warn', size: 15 });
-      s += text(Ob.x + 44, Ob.y + 10, 'Na⁺', { cls: 'fg-lbl', size: 12 });
+      s += text(Ob.x + 21, Ob.y - 14, '−', { cls: 'fg-warn', size: 15 });
+      s += lonePair(Oa.x, Oa.y, 300, { dist: 20 }) + lonePair(Oa.x, Oa.y, 30, { dist: 20 });
+      s += lonePair(Ob.x, Ob.y, 180, { dist: 20 }) + lonePair(Ob.x, Ob.y, 90, { dist: 20 }) + lonePair(Ob.x, Ob.y, 0, { dist: 20 });
+      s += text(Ob.x + 50, Ob.y + 5, 'Na⁺', { cls: 'fg-lbl', size: 12 });
       s += tag(372, 250, 'the ortho carbon is sp³;');
       s += tag(372, 268, 'the ring is not aromatic');
     }

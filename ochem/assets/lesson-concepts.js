@@ -249,7 +249,7 @@
       2:['phenol-acidity'],
       3:['phenol-acidity'],
       5:['phenol-acidity'],
-      8:['phenol-acidity'],
+      8:['aromatic-nucleophilic'],
       9:['phenol-acidity'] } },
 
     'birch-reduction': { n:11, steps:{
