@@ -13,7 +13,7 @@
    Figures shown in the lesson (ids starting l-) are 340 wide or less and use
    only fg-lbl and fg-tag text. */
 import { atom, bond, arrow, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
-import { ringDouble, polyPts, benzene } from '../lib/ochem-skeletal.mjs';
+import { ringDouble, polyPts } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
 
@@ -216,7 +216,7 @@ FIGURES.push({
     s += text(503, 262, 'bought as:  acetone + NaOH   ·   acetone', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'The cut falls between the α carbon and the carbon that carries the OH. Both pieces are acetone, so the forward reaction is simply acetone with base.',
+  caption: 'The cut falls between the α carbon and the carbon that carries the OH. Both pieces are acetone, so the forward reaction is acetone with base. That equilibrium favors acetone, so in practice the product is removed as it forms.',
 });
 
 /* ===================================== six retrons, one per panel ======= */
@@ -258,18 +258,21 @@ const RETRONS = [
     draw(c) {
       const v = chain(c.x - 58, c.y + 12, 4, true);
       let s = path(v) + carbonyl(v[1], 90) + carbonyl(v[3], 90);
-      s += sub(v[3], 330, 'OEt', 12);
-      s += num(v[0], 270, '4') + num(v[1], 150, '3', 15) + num(v[2], 270, '2') + num(v[3], 270, '1');
+      s += sub(v[3], 330, 'OEt', 14, 'plain', 14);
+      s += num(v[0], 270, '4') + num(v[1], 160, '3', 18) + num(v[2], 270, '2') + num(v[3], 250, '1', 17);
       return s + squiggle(v[1], v[2]);
     },
   },
   {
     name: 'Michael', pattern: '1,5-dicarbonyl', cut: 'cut 2–3',
-    /* heptane-2,6-dione */
+    /* 3-acetylheptane-2,6-dione, from pentane-2,4-dione + MVK: the acetyl
+       branch hangs down from carbon 2 */
     draw(c) {
-      const v = chain(c.x - 3 * DX, c.y + 10, 7, true);
+      const v = chain(c.x - 3 * DX, c.y + 2, 7, true);
+      const ac = polar(v[2], 270, L);
       let s = path(v) + carbonyl(v[1], 90) + carbonyl(v[5], 90);
-      s += num(v[1], 270, '1') + num(v[2], 270, '2') + num(v[3], 90, '3', 14) + num(v[4], 270, '4') + num(v[5], 270, '5');
+      s += sk(v[2], ac) + carbonyl(ac, 330, 12) + sk(ac, polar(ac, 210, L));
+      s += num(v[1], 150, '1', 15) + num(v[2], 320, '2', 19) + num(v[3], 90, '3', 14) + num(v[4], 270, '4') + num(v[5], 270, '5');
       return s + squiggle(v[2], v[3]);
     },
   },
@@ -285,7 +288,7 @@ const RETRONS = [
         const a = v[i], b = v[(i + 1) % 6];
         s += i === 1 ? ringDouble(a, b, o, { inset: 5, gap: 4.4 }) : sk(a, b);
       }
-      s += sub(v[5], 30, 'CHO', 14);
+      s += sub(v[5], 30, 'CHO', 14, 'plain', 14);
       /* the screen angle pointing from the ring center out through p */
       const out = (p) => (Math.atan2(-(p.y - o.y), p.x - o.x) * 180) / Math.PI;
       s += num(v[1], out(v[1]), '1', 13) + num(v[2], out(v[2]), '2', 13) + num(v[3], 270, '3', 14);
@@ -300,7 +303,7 @@ function retronPanel(ox, oy, w, h, i) {
   let s = panel(ox, oy, w, h);
   s += label(ox + w / 2, oy + 22, R.name);
   s += tag(ox + w / 2, oy + 40, R.pattern);
-  s += R.draw(P(ox + w / 2, oy + 98));
+  s += R.draw(P(ox + w / 2, oy + 102));
   s += tag(ox + w / 2, oy + h - 12, R.cut, { cls: 'fg-tag-good' });
   return s;
 }
@@ -309,11 +312,11 @@ FIGURES.push({
   id: 'retron-gallery',
   section: 'retrosynthesis',
   anchor: 'Learning to see retrons is most of what makes an experienced chemist fast at this.</p>',
-  viewBox: '0 0 760 356',
-  alt: 'Six panels, each a small molecule with its carbons numbered and a squiggle across the bond to cut. Grignard: pentan-3-ol, carbinol carbon 1, cut 1–2. Aldol: 3-hydroxybutanal, C=O carbon 1, OH on carbon 3, cut 2–3. Aldol condensation: but-2-enal, C=C between 2 and 3, cut the 2=3 bond. Claisen: ethyl 3-oxobutanoate, ester C=O carbon 1 and ketone C=O carbon 3, cut 2–3. Michael: heptane-2,6-dione, the two C=O carbons numbered 1 and 5, cut 2–3. Diels–Alder: cyclohex-3-ene-1-carbaldehyde, ring numbered from the C=C at 1 and 2, cut 3–4 and 5–6.',
+  viewBox: '0 0 760 376',
+  alt: 'Six panels, each a small molecule with its carbons numbered and a squiggle across the bond to cut. Grignard: pentan-3-ol, carbinol carbon 1, cut 1–2. Aldol: 3-hydroxybutanal, C=O carbon 1, OH on carbon 3, cut 2–3. Aldol condensation: but-2-enal, C=C between 2 and 3, cut the 2=3 bond. Claisen: ethyl 3-oxobutanoate, ester C=O carbon 1 and ketone C=O carbon 3, cut 2–3. Michael: 3-acetylheptane-2,6-dione, the two chain C=O carbons numbered 1 and 5 and an acetyl group on carbon 2, cut 2–3. Diels–Alder: cyclohex-3-ene-1-carbaldehyde, ring numbered from the C=C at 1 and 2, cut 3–4 and 5–6.',
   build() {
     let s = '';
-    for (let i = 0; i < 6; i++) s += retronPanel(6 + (i % 3) * 252, 4 + Math.floor(i / 3) * 176, 244, 170, i);
+    for (let i = 0; i < 6; i++) s += retronPanel(6 + (i % 3) * 252, 4 + Math.floor(i / 3) * 186, 244, 180, i);
     return s;
   },
   caption: 'One example of each retron, with the bond to cut marked.',
@@ -322,11 +325,11 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-retrons',
   lessons: ['retrosynthesis'],
-  viewBox: '0 0 340 526',
-  alt: 'Six panels in three rows of two, each a small molecule with numbered carbons and a squiggle across the bond to cut. Grignard: pentan-3-ol, cut 1–2 from the carbinol carbon. Aldol: 3-hydroxybutanal, cut 2–3. Aldol condensation: but-2-enal, cut the 2=3 bond. Claisen: ethyl 3-oxobutanoate, cut 2–3. Michael: heptane-2,6-dione, cut 2–3. Diels–Alder: cyclohex-3-ene-1-carbaldehyde, cut 3–4 and 5–6.',
+  viewBox: '0 0 340 554',
+  alt: 'Six panels in three rows of two, each a small molecule with numbered carbons and a squiggle across the bond to cut. Grignard: pentan-3-ol, cut 1–2 from the carbinol carbon. Aldol: 3-hydroxybutanal, cut 2–3. Aldol condensation: but-2-enal, cut the 2=3 bond. Claisen: ethyl 3-oxobutanoate, cut 2–3. Michael: 3-acetylheptane-2,6-dione, cut 2–3. Diels–Alder: cyclohex-3-ene-1-carbaldehyde, cut 3–4 and 5–6.',
   build() {
     let s = '';
-    for (let i = 0; i < 6; i++) s += retronPanel(2 + (i % 2) * 170, 2 + Math.floor(i / 2) * 174, 166, 170, i);
+    for (let i = 0; i < 6; i++) s += retronPanel(2 + (i % 2) * 170, 2 + Math.floor(i / 2) * 184, 166, 180, i);
     return s;
   },
   caption: 'One example of each retron, with the bond to cut marked.',
@@ -345,7 +348,7 @@ const SORT = [
     const v = polyPts(o.x, o.y, 6, 26, 90);
     let s = '';
     for (let i = 0; i < 6; i++) s += i === 1 ? ringDouble(v[1], v[2], o, { inset: 5, gap: 4.4 }) : sk(v[i], v[(i + 1) % 6]);
-    return s + sub(v[5], 30, 'CO₂CH₃', 10, 'plain', 24);
+    return s + sub(v[5], 30, 'CO₂CH₃', 12, 'plain', 17);
   } },
   { k: 'C', draw(c) {
     /* 3-methylhexan-3-ol: quaternary carbinol carbon at vertex 2 */
@@ -354,12 +357,9 @@ const SORT = [
   } },
   { k: 'D', draw(c) {
     /* ethyl 3-oxo-3-phenylpropanoate */
-    const k = P(c.x - 14, c.y + 2);
+    const k = P(c.x - 22, c.y + 2);
     const ch2 = polar(k, 330, L), e = polar(ch2, 30, L);
-    let s = sk(k, ch2) + sk(ch2, e) + carbonyl(k, 90) + carbonyl(e, 90) + sub(e, 330, 'OEt', 12);
-    const rc = polar(k, 210, L + 19);
-    const ring = benzene(rc.x, rc.y, 19, { rot: 30 });
-    return s + ring.svg + sk(k, ring.pts[0]);
+    return sk(k, ch2) + sk(ch2, e) + carbonyl(k, 90) + carbonyl(e, 90) + sub(e, 330, 'OEt', 14, 'plain', 14) + sub(k, 210, 'Ph', 14);
   } },
 ];
 
@@ -367,7 +367,7 @@ FIGURES.push({
   id: 'l-retron-sort',
   lessons: ['retrosynthesis'],
   viewBox: '0 0 340 316',
-  alt: 'Four molecules to sort, labeled A to D. A: 3-hydroxy-2-methylpentanal. B: methyl cyclohex-3-ene-1-carboxylate. C: 3-methylhexan-3-ol. D: ethyl 3-oxo-3-phenylpropanoate.',
+  alt: 'Four molecules to sort, labeled A to D. A: 3-hydroxy-2-methylpentanal. B: methyl cyclohex-3-ene-1-carboxylate. C: 3-methylhexan-3-ol. D: ethyl 3-oxo-3-phenylpropanoate, with the phenyl written as Ph.',
   build() {
     let s = '';
     SORT.forEach((m, i) => {
@@ -388,7 +388,7 @@ function ppb(cx, cy, cuts) {
   const c = A(cx, cy, 'C', 'hi');
   const oh = A(cx, cy - 52, 'OH'), ph = A(cx - 82, cy, 'Ph'), et = A(cx + 88, cy, 'CH₂CH₃', 'plain', 26), me = A(cx, cy + 56, 'CH₃');
   let s = bd(c, oh) + bd(c, ph) + bd(c, et) + bd(c, me) + draw(oh, ph, et, me, c);
-  s += tag(cx - 44, cy - 40, 'carbinol C', { cls: 'fg-tag-mut', anchor: 'end' });
+  s += tag(cx - 26, cy - 40, 'carbinol carbon', { cls: 'fg-tag-mut', anchor: 'end' });
   const marks = {
     a: () => squiggle(P(ph.x + ph.r, cy), P(cx - c.r, cy), 13) + tag(cx - 42, cy - 18, 'a'),
     b: () => squiggle(P(cx, cy + c.r), P(cx, me.y - me.r), 13) + tag(cx + 24, cy + 36, 'b'),
@@ -503,14 +503,15 @@ FIGURES.push({
   section: 'retrosynthesis',
   anchor: 'Every piece is now purchasable, so the analysis stops.</p>',
   viewBox: '0 0 760 184',
-  alt: 'Four panels joined by double-lined retrosynthesis arrows, with the carbons numbered 1 to 6 throughout. 1: hexan-3-one, C=O on carbon 3. 2: hex-3-yne, the triple bond between carbons 3 and 4 drawn straight, with a squiggle across the 4–5 bond. 3: but-1-yne, carbons 1 to 4, with a squiggle across the 2–3 bond, plus bromoethane. 4: acetylene, carbons 3 and 4, plus two bromoethanes.',
+  alt: 'Four panels joined by double-lined retrosynthesis arrows, the first labeled FGI, with the carbons numbered 1 to 6 throughout. 1: hexan-3-one, C=O on carbon 3. 2: hex-3-yne, the triple bond between carbons 3 and 4 drawn straight, with a squiggle across the 4–5 bond. 3: but-1-yne, carbons 1 to 4, with a squiggle across the 2–3 bond, plus bromoethane. 4: acetylene, carbons 3 and 4, plus two bromoethanes.',
   build() {
     let s = '';
-    const W = 164, G = 34;
+    const W = 160, G = 38;
     for (let i = 0; i < 4; i++) {
       const x = 4 + i * (W + G);
       s += hexStage(x, 4, W, 176, i);
-      if (i < 3) s += retroH(x + W + 4, 88, G - 8);
+      if (i < 3) s += retroH(x + W + 5, 92, G - 10);
+      if (i === 0) s += tag(x + W + G / 2, 76, 'FGI');
     }
     return s;
   },
@@ -521,9 +522,12 @@ FIGURES.push({
   id: 'l-hexanone-retro',
   lessons: ['retrosynthesis'],
   viewBox: '0 0 340 364',
-  alt: 'Four panels in two rows, read in number order, with the carbons numbered 1 to 6 throughout. 1: hexan-3-one. 2: hex-3-yne, with a squiggle across the 4–5 bond. 3: but-1-yne plus bromoethane, with a squiggle across the 2–3 bond. 4: acetylene plus two bromoethanes.',
+  alt: 'Four panels in two rows, read in number order, with the carbons numbered 1 to 6 throughout. 1: hexan-3-one, joined to panel 2 by a double-lined arrow labeled FGI. 2: hex-3-yne, with a squiggle across the 4–5 bond. 3: but-1-yne plus bromoethane, with a squiggle across the 2–3 bond. 4: acetylene plus two bromoethanes.',
   build() {
-    return hexStage(2, 2, 166, 176, 0) + hexStage(172, 2, 166, 176, 1) + hexStage(2, 186, 166, 176, 2) + hexStage(172, 186, 166, 176, 3);
+    let s = hexStage(2, 2, 150, 176, 0) + hexStage(188, 2, 150, 176, 1) + hexStage(2, 186, 150, 176, 2) + hexStage(188, 186, 150, 176, 3);
+    s += retroH(156, 92, 28) + tag(170, 76, 'FGI');
+    s += retroH(156, 276, 28);
+    return s;
   },
   caption: 'Read the panels in number order. Each squiggle marks the bond the next panel breaks.',
 });
