@@ -1085,9 +1085,9 @@
       } },
 
     { id:'chair-low-end', kind:'click-atom', tier:1, topic:'cyclohexanes',
-      concepts:['chair-axial-equatorial','torsional-strain'],
+      concepts:['torsional-strain','chair-axial-equatorial'],
       prompt:'This ring is drawn as a chair. Click the ring carbon that dips below the other five.',
-      molecule:'chair-dimethylcyclohexane',
+      molecule:'chair-cyclohexane',
       sub:'Four ring carbons lie roughly in one plane. One end of the chair rises above it and the other end drops below.',
       answer:{ keys:['r2'] },
       why:'A chair has four carbons in roughly one plane, one end carbon raised above it and the other lowered below it. That pucker lets every C–C–C angle sit near 109.5° and keeps every C–H staggered, so the ring has essentially no strain.',
@@ -1096,9 +1096,7 @@
         r1:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' },
         r3:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' },
         r4:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' },
-        r6:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' },
-        me6:{ concept:'chair-axial-equatorial', msg:'That is a methyl group, not a ring carbon. Look at the six carbons of the ring itself.' },
-        me5:{ concept:'chair-axial-equatorial', msg:'That is a methyl group, not a ring carbon. Look at the six carbons of the ring itself.' }
+        r6:{ concept:'chair-axial-equatorial', msg:'That carbon is one of the four that lie roughly in one plane. Look for the end carbon that sits below all of them.' }
       } },
 
     { id:'chair-diaxial-clash', kind:'click-atom', tier:3, topic:'conformational-analysis',

@@ -650,6 +650,27 @@
     caption: 'Bromine sits axial. Only an axial hydrogen on a neighboring carbon, pointing the opposite way, is 180° from it.'
   };
 
+  // Bare cyclohexane chair for questions asked before axial/equatorial is
+  // taught: ring carbons only, so nothing on it needs later vocabulary. Same
+  // shape as the two chairs above, with the tips pulled further apart - r5
+  // raised, r2 lowered, each by 14 - so the down end is unmistakable. The
+  // three pairs of opposite bonds stay parallel (r1r2/r4r5, r2r3/r5r6,
+  // r3r4/r6r1), which is the check the notes teach for a real chair.
+  M['chair-cyclohexane'] = {
+    name: 'Cyclohexane (chair)', formula: 'C₆H₁₂', viewBox: '0 0 320 180',
+    partialH: 'chair: ring carbons only; the hydrogens are not the subject',
+    atoms: {
+      r1: { x:60,  y:104,r:13, label:'C' },
+      r2: { x:112, y:144,r:13, label:'C', role:'chair-low-end' },
+      r3: { x:176, y:118,r:13, label:'C' },
+      r4: { x:228, y:80, r:13, label:'C' },
+      r5: { x:176, y:40, r:13, label:'C', role:'chair-high-end' },
+      r6: { x:112, y:66, r:13, label:'C' }
+    },
+    bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'}],
+    caption: 'Cyclohexane drawn as a chair.'
+  };
+
   /* ---- Carbonyls ------------------------------------------------------ */
 
   M['acetone'] = {
