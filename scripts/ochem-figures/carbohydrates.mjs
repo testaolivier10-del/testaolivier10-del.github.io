@@ -408,42 +408,43 @@ FIGURES.push({
    at 60i degrees round the ring axis, alternately below and above the
    mean plane; the ring oxygen is at the back right and C1 at the right-hand
    tip (the usual 4C1 drawing of a D-pyranose). */
-const CH_I = { 1: 0, O: 1, 5: 2, 4: 3, 3: 4, 2: 5 };
+/* The book's reference chair (build-ochem-figures.mjs, CHAIR_V and
+   CHAIR_EQ), mirrored left to right so that the ring oxygen sits at the
+   back right and C1 at the right-hand tip. A chair has mirror planes, so
+   the mirrored drawing is still a correct chair; the equatorial vectors are
+   mirrored with it. Vertex 0 is the left tip, whose axial bond points up,
+   and axial alternates round the ring. */
+const CH_V = [P(-113.15, -18.21), P(-56.57, -15.31), P(56.57, -51.72), P(113.15, 18.21), P(56.58, 15.31), P(-56.57, 51.72)];
+const CH_EQ = [P(-0.944, 0.329), P(-0.613, -0.790), P(0.994, 0.104), P(0.944, -0.329), P(0.613, 0.790), P(-0.994, -0.104)];
+/* Which vertex each ring atom takes: C4 left tip, C5 back left, O back
+   right, C1 right tip, C2 front right, C3 front left. That keeps the
+   Haworth order (O, C1, C2 ... clockwise from above). */
+const CH_I = { 4: 0, 5: 1, O: 2, 1: 3, 2: 4, 3: 5 };
 function chairGeom(cx, cy, S) {
-  const T = rad(10), h = 0.36;
-  const pts = [], up = [];
-  for (let i = 0; i < 6; i++) {
-    const th = rad(60 * i);
-    const x = Math.cos(th), y = Math.sin(th), z = i % 2 === 0 ? -h : h;
-    pts.push(P(cx + x * S, cy + (-z * Math.cos(T) - y * Math.sin(T)) * S));
-    up.push(z > 0);
-  }
-  // Equatorial: parallel to the ring bonds one carbon further round, and
-  // pointing outward. That is the rule a hand-drawn chair is checked by.
-  const eqDir = (i) => {
-    const a = pts[(i + 1) % 6], b = pts[(i + 2) % 6];
-    const dx = a.x - b.x, dy = a.y - b.y, L = Math.hypot(dx, dy);
-    return P(dx / L, dy / L);
+  const k = S / 113.15;
+  return {
+    pts: CH_V.map((p) => P(cx + p.x * k, cy + p.y * k)),
+    up: [true, false, true, false, true, false],
+    eqDir: (i) => CH_EQ[i],
   };
-  return { pts, up, eqDir };
 }
 function chairGlc(cx, cy, k, anomer) {
-  const g = chairGeom(cx, cy, 112 * k);
+  const g = chairGeom(cx, cy, 118 * k);
   const v = g.pts;
   let s = '';
   for (let i = 0; i < 6; i++) {
     const j = (i + 1) % 6;
-    s += bond(v[i], v[j], { rFrom: i === 1 ? 15 : 0, rTo: j === 1 ? 15 : 0 });
+    s += bond(v[i], v[j], { rFrom: i === 2 ? 15 : 0, rTo: j === 2 ? 15 : 0 });
   }
   let atoms = '';
   const put = (key, kind, l, lk) => {
     const i = CH_I[key], p = v[i], r = rOf(l);
     let e;
     if (kind === 'ax') {
-      const L = (l === 'H' ? 12 : 22) * k + r;
+      const L = (l === 'H' ? (key === '4' ? 6 : 12) : 22) * k + r;
       e = P(p.x, p.y + (g.up[i] ? -L : L));
     } else {
-      const d = g.eqDir(i), L = (l.length > 3 ? 34 : 22) * k + r;
+      const d = g.eqDir(i), L = (l.length > 3 ? 40 : 22) * k + r;
       e = P(p.x + d.x * L, p.y + d.y * L);
     }
     s += bond(p, e, { rFrom: 0, rTo: r, cls: l === 'H' ? 'fg-bond-soft' : 'fg-bond' });
@@ -454,8 +455,8 @@ function chairGlc(cx, cy, k, anomer) {
   if (anomer === 'b') { put('1', 'eq', 'OH', 'hi'); put('1', 'ax', 'H'); }
   else { put('1', 'ax', 'OH', 'warn'); put('1', 'eq', 'H'); }
   s += atoms;
-  s += atom(v[1].x, v[1].y, 'O');
-  s += dot(v[0]);
+  s += atom(v[2].x, v[2].y, 'O');
+  s += dot(v[3]);
   return { s, v };
 }
 FIGURES.push({
