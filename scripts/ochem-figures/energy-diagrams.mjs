@@ -105,7 +105,7 @@ FIGURES.push({
   alt: 'Reaction-coordinate diagram for hydroxide ion reacting with bromomethane in one step. Free energy runs up the vertical axis and the reaction coordinate runs along the horizontal axis. The reactants sit on a plateau at the left, the curve rises to a single peak labeled transition state, then falls to the products methanol and bromide ion on a lower plateau at the right. An arrow from the reactant plateau up to the peak is labeled delta G double dagger, sets the rate; an arrow between the two plateaus is labeled delta G degree, sets K.',
   viewBox: '0 0 760 300',
   build: oneStepNotes,
-  caption: 'One step, one hill. The two arrows start from the same reactant plateau but end in different places: one at the peak, one at the product plateau.',
+  caption: 'One step, one hill: HO⁻ + CH₃Br going to CH₃OH + Br⁻.',
 });
 FIGURES.push({
   id: 'l-one-step-profile',
@@ -195,7 +195,7 @@ FIGURES.push({
     s += text(570, 268, 'from (CH₃)₃C–Br after Br⁻ leaves', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'A transition state (left) and an intermediate (right), each from a reaction you met in Leaving groups. Look at the bonds to carbon: dotted on the left, solid on the right.',
+  caption: 'A transition state (left) and an intermediate (right), each from a reaction you met in Leaving groups. Look at the bonds to O and Br: dotted on the left. On the right every bond to carbon is solid.',
 });
 FIGURES.push({
   id: 'l-ts-vs-intermediate',
@@ -241,7 +241,7 @@ FIGURES.push({
     s += tag(502, 318, 'step 2: second hump');
     return s;
   },
-  caption: 'Two humps, so two steps. One valley between them, so one intermediate. Each peak is a transition state of its own.',
+  caption: 'TS1 and TS2 are the two peaks; the valley between them is the intermediate.',
 });
 
 /* ------------------------------------------------------------------ */
@@ -301,26 +301,25 @@ FIGURES.push({
   section: 'energy-diagrams',
   anchor: '<h3>Catalysts and temperature: two ways to go faster</h3>',
   alt: 'One reaction drawn twice on the same axes, free energy up and reaction coordinate across: an uncatalyzed route with a tall barrier and a catalyzed route with a much lower barrier, both starting and ending at exactly the same two energy levels. Arrows mark the big and the small activation energies and the unchanged overall free-energy change.',
-  viewBox: '0 0 760 382',
+  viewBox: '0 0 760 360',
   build() {
     let s = axes(70, 306, 52, 706);
     const yR = 196, yPr = 262, yHi = 76, yLo = 146;
-    s += profile([N(96, yR), N(150, yR), N(330, yHi), N(512, yPr), N(596, yPr)], 'fg-bond-soft');
-    s += profile([N(96, yR), N(150, yR), N(330, yLo), N(512, yPr), N(596, yPr)]);
-    s += text(330, yHi - 12, 'uncatalyzed ‡', { cls: 'fg-tag-warn' });
-    s += text(330, yLo + 22, 'catalyzed ‡', { cls: 'fg-tag-good' });
-    s += dash(186, yHi, 330, yHi) + dash(186, yLo, 330, yLo);
-    s += measure(186, yHi, yR);
-    s += text(178, 120, 'big ΔG‡', { cls: 'fg-tag-warn', anchor: 'end' });
-    s += measure(214, yLo, yR);
-    s += text(214, 216, 'small ΔG‡', { cls: 'fg-tag-good' });
-    s += dash(150, yR, 646, yR) + dash(596, yPr, 646, yPr);
+    s += profile([N(96, yR), N(250, yR), N(400, yHi), N(540, yPr), N(610, yPr)], 'fg-bond-soft');
+    s += profile([N(96, yR), N(250, yR), N(400, yLo), N(540, yPr), N(610, yPr)]);
+    s += text(400, yHi - 12, 'uncatalyzed ‡', { cls: 'fg-tag-warn' });
+    s += text(400, yLo + 22, 'catalyzed ‡', { cls: 'fg-tag-good' });
+    s += dash(182, yHi, 400, yHi) + dash(210, yLo, 400, yLo);
+    s += measure(182, yHi, yR);
+    s += text(174, 140, 'big ΔG‡', { cls: 'fg-tag-warn', anchor: 'end' });
+    s += measure(210, yLo, yR);
+    s += text(218, 176, 'small ΔG‡', { cls: 'fg-tag-good', anchor: 'start' });
+    s += dash(250, yR, 646, yR) + dash(610, yPr, 646, yPr);
     s += measure(646, yR, yPr);
     s += text(656, (yR + yPr) / 2 + 4, 'ΔG° unchanged', { cls: 'fg-tag-good', anchor: 'start' });
     s += text(123, yR - 14, 'reactants', { cls: 'fg-sm' });
-    s += text(554, yPr + 20, 'products', { cls: 'fg-sm' });
+    s += text(575, yPr + 20, 'products', { cls: 'fg-sm' });
     s += label(378, 346, 'Only the peak moved. Both plateaus, and so K, stay where they were.');
-    s += text(378, 368, 'The reverse barrier drops by the same amount, so both directions speed up.', { cls: 'fg-sm' });
     return s;
   },
   caption: 'One reaction by two routes, on the same axes. The catalyzed curve (bold) starts and ends at the same levels as the uncatalyzed one (faint); only the height of the hill differs.',
@@ -434,10 +433,10 @@ function hammondPanel(ox, oy, L, c) {
   g += text(ox + 185, oy + 386, c.n2, { cls: sm });
   return g;
 }
-const HAM_EARLY = { yR: 140, yT: 116, yP: 172, xT: 142, peakWord: 'TS ‡ sits early', left: 'Cl• + H–CR₃', right: 'HCl + •CR₃',
+const HAM_EARLY = { yR: 140, yT: 116, yP: 172, xT: 142, peakWord: 'TS ‡ sits early', left: 'Cl• + H—CR₃', right: 'HCl + •CR₃',
   title: 'DOWNHILL (ΔH ≈ −5): EARLY TS', x: 'Cl', xH: 222,
   n1: 'Cl···H long: the new bond has barely begun.', n2: 'H···C short: the old bond is barely stretched.' };
-const HAM_LATE = { yR: 186, yT: 94, yP: 116, xT: 250, peakWord: 'TS ‡ sits late', left: 'Br• + H–CR₃', right: 'HBr + •CR₃',
+const HAM_LATE = { yR: 186, yT: 94, yP: 116, xT: 250, peakWord: 'TS ‡ sits late', left: 'Br• + H—CR₃', right: 'HBr + •CR₃',
   title: 'UPHILL (ΔH ≈ +10.5): LATE TS', x: 'Br', xH: 148,
   n1: 'Br···H short: the new bond is nearly made.', n2: 'H···C long: the old bond is nearly broken.' };
 FIGURES.push({
@@ -482,9 +481,9 @@ function selPanel(ox, oy, L, c) {
   g += text(ox + 185, oy + 326, c.n2, { cls: sm });
   return g;
 }
-const SEL_CL = { yR: 150, yPk1: 118, yPk3: 124, yP1: 184, yP3: 210, xP: 124, drop: 'barely lower', left: 'Cl• + R–H',
+const SEL_CL = { yR: 150, yPk1: 118, yPk3: 124, yP1: 184, yP3: 210, xP: 124, drop: 'barely lower', left: 'Cl• + R—H',
   title: 'CHLORINE: EARLY TS', n1: 'The two barriers are almost the same height,', n2: 'so both radicals form at similar rates.' };
-const SEL_BR = { yR: 214, yPk1: 70, yPk3: 94, yP1: 104, yP3: 130, xP: 248, drop: 'much lower', left: 'Br• + R–H',
+const SEL_BR = { yR: 214, yPk1: 70, yPk3: 94, yP1: 104, yP3: 130, xP: 248, drop: 'much lower', left: 'Br• + R—H',
   title: 'BROMINE: LATE TS', n1: 'The 3° barrier drops almost as far as the product,', n2: 'so the 3° radical forms far faster.' };
 FIGURES.push({
   id: 'hammond-selectivity',
@@ -530,7 +529,7 @@ FIGURES.push({
     s += text(380, 304, 'Bold curve: the route to A. Faint curve: the route to B.', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'A forms faster because its peak is lower. B is more stable because its well is deeper. Nothing requires one product to win on both counts.',
+  caption: 'A forms faster because its peak is lower. B is more stable because its well is deeper.',
 });
 
 export default FIGURES;

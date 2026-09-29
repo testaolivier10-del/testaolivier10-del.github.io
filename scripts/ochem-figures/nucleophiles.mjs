@@ -49,7 +49,7 @@ function mebr(c, opts = {}) {
    attacks c, and the C–Br bond's electrons move onto Br. */
 function displace(from, c, br) {
   return curve(from, P(c.x - 16, c.y - 6), { bow: -16 }) +
-         curve(P((c.x + br.x) / 2, c.y - 3), P(br.x - 6, br.y - 16), { bow: -10 });
+         curve(P((c.x + br.x) / 2, c.y - 3), P(br.x - 14, br.y - 11), { bow: -8 });
 }
 /* A tert-butoxide ion: quaternary C at q, three CH3, and O⁻ to the right. */
 function tBuO(q) {
@@ -134,7 +134,7 @@ FIGURES.push({
     const n = P(76, 214);
     s += arm(n, 'N', 200, 44, 'H') + arm(n, 'N', 340, 44, 'H') + arm(n, 'N', 270, 36, 'H');
     s += A(n, 'N', 'hi') + lp(n, 270);
-    s += tg(24, 262, 'ammonia', 'mut', 'start');
+    s += tg(142, 262, 'ammonia', 'mut', 'start');
     s += tg(250, 194, 'no charge', 'good');
     s += tg(250, 216, 'water, alcohols,');
     s += tg(250, 232, 'ammonia, amines,');
@@ -209,7 +209,7 @@ FIGURES.push({
     // amide ion
     const n = P(252, 84);
     s += arm(n, 'N', 150, 40, 'H') + arm(n, 'N', 210, 40, 'H');
-    s += A(n, 'N', 'hi') + lp(n, 330) + lp(n, 30) + chg(252, 58);
+    s += A(n, 'N', 'hi') + lp(n, 300) + lp(n, 60) + chg(280, 84);
     s += tg(252, 158, 'N · EN 3.04');
     // hydroxide
     const o = P(92, 212);
@@ -300,10 +300,10 @@ FIGURES.push({
     const na = P(130, 430);
     s += atom(na.x, na.y, 'Na⁺', { size: 13, r: 18 });
     s += lbl(106, 435, '(CH₃)₂S=O', 'end') + lbl(154, 435, 'O=S(CH₃)₂', 'start');
-    s += tg(130, 400, 'DMSO’s O atoms face Na⁺', 'mut');
+    s += tg(130, 468, 'O atoms face Na⁺', 'mut') + tg(290, 468, 'fluoride', 'mut');
     const f2 = P(290, 436);
     s += A(f2, 'F', 'hi') + lp(f2, 0) + lp(f2, 90) + lp(f2, 180) + lp(f2, 270) + chg(312, 414);
-    s += tg(170, 494, 'no O–H, no H bonds: fluoride is bare', 'good');
+    s += tg(170, 496, 'no O–H, so nothing H-bonds to F⁻', 'good');
     return s;
   },
   caption: 'Dashed lines are hydrogen bonds. Compare how many reach each ion, and how long they are.',
@@ -326,19 +326,19 @@ FIGURES.push({
       g += B(c, 'C', ot, 'O', topMinus ? {} : { order: 2 }) + B(c, 'C', ob, 'O', topMinus ? { order: 2 } : {});
       g += A(c, 'C') + A(ot, 'O', topMinus ? 'hi' : 'plain') + A(ob, 'O', topMinus ? 'plain' : 'hi');
       if (topMinus) {
-        g += lp(ot, 240) + lp(ot, 330) + lp(ot, 60) + chg(ot.x - 22, ot.y - 16);
-        g += lp(ob, 120) + lp(ob, 30);
+        g += lp(ot, 180) + lp(ot, 270) + lp(ot, 0) + chg(ot.x + 20, ot.y + 20);
+        g += lp(ob, 120) + lp(ob, 0);
       } else {
         g += lp(ot, 240) + lp(ot, 0);
-        g += lp(ob, 0) + lp(ob, 90) + lp(ob, 160) + chg(ob.x + 22, ob.y - 22);
+        g += lp(ob, 0) + lp(ob, 90) + lp(ob, 180) + chg(ob.x + 20, ob.y - 20);
       }
       return { g, ot, ob };
     };
     const L = form(P(78, 110), false);
     s += L.g;
     // lone pair on the lower O into the C–O bond; the C=O pi bond onto the upper O
-    s += curve(P(L.ob.x - 20, L.ob.y + 4), P(L.ob.x - 16, L.ob.y - 22), { bow: 12 });
-    s += curve(P(L.ot.x - 14, L.ot.y + 24), P(L.ot.x - 16, L.ot.y + 4), { bow: 10 });
+    s += curve(P(L.ob.x - 24, L.ob.y - 2), P(L.ob.x - 18, L.ob.y - 22), { bow: 12 });
+    s += curve(P(L.ot.x - 5, L.ot.y + 26), P(L.ot.x + 10, L.ot.y + 12), { bow: 10 });
     s += reso(166, 110);
     const R = form(P(246, 110), true);
     s += R.g;
@@ -367,7 +367,7 @@ FIGURES.push({
     // ---- trimethylamine ----
     s += box(8, 128, 'TRIMETHYLAMINE');
     const n = P(96, 76);
-    s += arm(n, 'N', 210, 48, 'CH₃') + arm(n, 'N', 330, 48, 'CH₃') + arm(n, 'N', 270, 36, 'CH₃', 'wedge');
+    s += arm(n, 'N', 210, 56, 'CH₃') + arm(n, 'N', 330, 56, 'CH₃') + arm(n, 'N', 270, 38, 'CH₃', 'wedge');
     s += A(n, 'N', 'hi') + lp(n, 270);
     s += tg(262, 64, 'sp³ nitrogen', 'hi');
     s += tg(262, 82, '25% s character');
@@ -440,7 +440,7 @@ FIGURES.push({
     s += I2.s;
     s += arrow(P(T2.o.x + 26, T2.o.y), P(184, 282), { muted: true });
     s += tg(196, 286, '✕', 'warn');
-    s += tg(170, 344, 'bulky on both sides: too crowded', 'warn');
+    s += tg(196, 344, 'bulky on both sides: too crowded', 'warn');
 
     // ---- hydroxide gets in ----
     s += box(364, 170, 'HYDROXIDE: SMALL ENOUGH TO GET IN', 'good');
@@ -480,7 +480,7 @@ FIGURES.push({
     // product
     const p1 = P(40, 168), p2 = P(98, 168), p3 = P(152, 168);
     s += B(p1, 'CH₃', p2, 'C') + B(p2, 'C', p3, 'N', { order: 3 });
-    s += A(p1, 'CH₃') + A(p2, 'C', 'hi') + A(p3, 'N') + lp(p3, 0);
+    s += A(p1, 'CH₃') + A(p2, 'C') + A(p3, 'N') + lp(p3, 0);
     s += lbl(210, 173, '+ Br⁻');
     s += tg(282, 172, 'new C–C', 'good');
 
@@ -502,7 +502,7 @@ FIGURES.push({
     const L = form(P(92, 324), true);
     s += L.g;
     s += curve(P(L.o.x - 22, L.o.y + 6), P(L.o.x - 6, L.o.y + 26), { bow: 12 });
-    s += curve(P(L.c1.x + 14, L.c1.y - 18), P(L.c1.x + 4, L.c1.y + 16), { bow: 14 });
+    s += curve(P(L.c1.x + 26, L.c1.y - 4), P(L.c1.x + 12, L.c1.y + 14), { bow: -8 });
     s += reso(170, 296);
     const R = form(P(262, 324), false);
     s += R.g;
@@ -511,7 +511,7 @@ FIGURES.push({
     s += tg(252, 408, 'C usually reacts', 'good');
     return s;
   },
-  caption: 'The highlighted atom in each drawing is where that structure puts the pair that attacks.',
+  caption: 'In cyanide and in each enolate form, the highlighted atom carries the negative charge.',
 });
 
 export default FIGURES;
