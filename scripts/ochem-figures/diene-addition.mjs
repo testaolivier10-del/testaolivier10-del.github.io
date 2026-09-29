@@ -499,12 +499,12 @@ const ISO = {
   c1: [
     nums([{ l: 'H₃C', kind: 'hi' }, { l: 'C', up: 'CH₃', kind: 'warn', chg: true }, { l: 'CH' }, { l: 'CH₂' }]), [1, 1, 2],
     nums([{ l: 'H₃C', kind: 'hi' }, { l: 'C', up: 'CH₃' }, { l: 'CH' }, { l: 'CH₂', kind: 'warn', chg: true }]), [1, 2, 1],
-    '3° ↔ 1°',
+    'forms: 3° and 1°',
   ],
   c4: [
     nums([{ l: 'H₂C' }, { l: 'C', up: 'CH₃' }, { l: 'CH', kind: 'warn', chg: true }, { l: 'CH₃', kind: 'hi' }]), [2, 1, 1],
     nums([{ l: 'H₂C', kind: 'warn', chg: true }, { l: 'C', up: 'CH₃' }, { l: 'CH' }, { l: 'CH₃', kind: 'hi' }]), [1, 2, 1],
-    '2° ↔ 1°',
+    'forms: 2° and 1°',
   ],
   p12: [nums([{ l: 'H₃C', kind: 'hi' }, { l: 'C', up: 'CH₃', down: 'Br' }, { l: 'CH' }, { l: 'CH₂' }]), [1, 1, 2], '3-bromo-3-methylbut-1-ene'],
   p14: [nums([{ l: 'H₃C', kind: 'hi' }, { l: 'C', up: 'CH₃' }, { l: 'CH' }, { l: 'CH₂', down: 'Br' }]), [1, 2, 1], '1-bromo-3-methylbut-2-ene', 'trisubstituted'],
@@ -517,12 +517,12 @@ const MPD = {
   c1: [
     nums([{ l: 'H₃C', kind: 'hi' }, { l: 'C', up: 'CH₃', kind: 'warn', chg: true }, { l: 'CH' }, { l: 'CH' }, { l: 'CH₃' }]), [1, 1, 2, 1],
     nums([{ l: 'H₃C', kind: 'hi' }, { l: 'C', up: 'CH₃' }, { l: 'CH' }, { l: 'CH', kind: 'warn', chg: true }, { l: 'CH₃' }]), [1, 2, 1, 1],
-    '3° ↔ 2°',
+    'forms: 3° and 2°',
   ],
   c4: [
     nums([{ l: 'H₂C' }, { l: 'C', up: 'CH₃' }, { l: 'CH', kind: 'warn', chg: true }, { l: 'CH₂', kind: 'hi' }, { l: 'CH₃' }]), [2, 1, 1, 1],
     nums([{ l: 'H₂C', kind: 'warn', chg: true }, { l: 'C', up: 'CH₃' }, { l: 'CH' }, { l: 'CH₂', kind: 'hi' }, { l: 'CH₃' }]), [1, 2, 1, 1],
-    '2° ↔ 1°',
+    'forms: 2° and 1°',
   ],
   p12: [nums([{ l: 'H₃C', kind: 'hi' }, { l: 'C', up: 'CH₃', down: 'Br' }, { l: 'CH' }, { l: 'CH' }, { l: 'CH₃' }]), [1, 1, 2, 1], '4-bromo-4-methylpent-2-ene'],
   p14: [nums([{ l: 'H₃C', kind: 'hi' }, { l: 'C', up: 'CH₃' }, { l: 'CH' }, { l: 'CH', down: 'Br' }, { l: 'CH₃' }]), [1, 2, 1, 1], '4-bromo-2-methylpent-2-ene', 'trisubstituted'],

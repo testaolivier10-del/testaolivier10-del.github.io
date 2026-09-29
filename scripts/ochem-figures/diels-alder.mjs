@@ -364,6 +364,81 @@ FIGURES.push({
   caption: 'Each right-hand form is a minor contributor. It is drawn only to show which atom carries a little extra charge in the real molecule.',
 });
 
+
+/* =====================================================================
+   3a. Three dienophiles, slow to fast. The withdrawing C=O groups are
+   highlighted. Notes and lesson. */
+function maleicAnhydride(cx, cy, r = 30, hi) {
+  // O at the bottom, the C=C along the top.
+  const v = [0, 1, 2, 3, 4].map((i) => off(P(cx, cy), 90 + i * 72, r));
+  const c = P(cx, cy);
+  // v[0] bottom = ring O; v[1] lower-left C=O carbon; v[2], v[3] the C=C; v[4] lower-right C=O carbon
+  let s = bond(v[1], v[0], { rFrom: 0, rTo: 12 }) + bond(v[4], v[0], { rFrom: 0, rTo: 12 });
+  s += sk(v[1], v[2]) + ringDouble(v[2], v[3], c) + sk(v[3], v[4]);
+  s += atom(v[0].x, v[0].y, 'O', { r: 12 });
+  for (const [q, deg] of [[v[1], 162], [v[4], 18]]) {
+    const o = off(q, deg, 30);
+    s += bond(q, o, { order: 2, rFrom: 0, rTo: 12, cls: hi ? 'fg-bond-hi' : 'fg-bond' }) + atom(o.x, o.y, 'O', { r: 12 });
+  }
+  return s;
+}
+FIGURES.push({
+  id: 'da-dienophiles',
+  section: 'diels-alder',
+  lessons: ['diels-alder'],
+  anchor: '<!-- dienophiles-figure -->',
+  alt: 'Three dienophiles in order of speed with buta-1,3-diene. Ethene, a bare C=C, is slow. Propenal, a C=C with a CHO group on one end, is faster; its C=O is highlighted. Maleic anhydride, a five-membered ring whose C=C carries a C=O group on each end, is fastest; both C=O groups are highlighted.',
+  viewBox: '0 0 340 160',
+  build() {
+    let s = '';
+    s += bond(P(26, 70), P(70, 70), { order: 2, rFrom: 0, rTo: 0 });
+    s += tag(48, 128, 'ethene');
+    s += tag(48, 146, 'slow', { cls: 'fg-tag-warn' });
+    const z = zig(104, 84, 4, 30, 24);
+    s += ringDouble(z[0], z[1], P(119, 100)) + sk(z[1], z[2]);
+    s += bond(z[2], z[3], { order: 2, rFrom: 0, rTo: 12, cls: 'fg-bond-hi' }) + atom(z[3].x, z[3].y, 'O', { r: 12 });
+    s += tag(150, 128, 'propenal');
+    s += tag(150, 146, 'faster', { cls: 'fg-tag' });
+    s += maleicAnhydride(270, 72, 28, true);
+    s += tag(270, 128, 'maleic anhydride');
+    s += tag(270, 146, 'fastest', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'Highlighted: the C=O groups that pull electron density out of the C=C.',
+});
+
+/* =====================================================================
+   6a. Regiochemistry and stereochemistry together: (E)-penta-1,3-diene
+   and propenal, seen from above. The dienophile lies under the diene; a
+   substituent drawn pointing into the ring outline is tucked under the
+   diene, which is endo. Notes only. */
+FIGURES.push({
+  id: 'da-combined',
+  section: 'diels-alder',
+  anchor: '<!-- combined-figure -->',
+  alt: 'Left: (E)-penta-1,3-diene seen from above, drawn s-cis with its methyl pointing outward from C1. Propenal lies underneath it, and its CHO group points in under the diene, which is the endo orientation. Dashed lines show the two bonds forming, C1 to the CHO-bearing carbon and C4 to the CH2 carbon. Right: the product ring with the methyl and the CHO on neighboring carbons, both on wedges, cis.',
+  viewBox: '0 0 380 190',
+  build() {
+    let s = '';
+    const R = hexFlat(96, 70, 38, 30);
+    s += diene(R);
+    s += bond(R.d1, R.d2, { order: 2, rFrom: 0, rTo: 0 });
+    s += sk(R.c1, R.d1, 'fg-dash-hi') + sk(R.c4, R.d2, 'fg-dash-hi');
+    s += sub(R.c1, OUT.c1, 'CH₃', { len: 30, r: 14 });
+    s += sub(R.d1, -60, 'CHO', { len: 30, r: 15 });
+    s += tag(96, 18, 'seen from above');
+    s += tag(96, 166, 'CH₃ outward, CHO endo', { cls: 'fg-tag-mut' });
+    s += right(88, 180, 214);
+    const Q = hexFlat(290, 88, 34);
+    s += productRing(Q);
+    s += sub(Q.c1, OUT.c1, 'CH₃', { len: 28, r: 14, kind: 'wedge' });
+    s += sub(Q.d1, OUT.d1, 'CHO', { len: 28, r: 15, kind: 'wedge' });
+    s += tag(290, 166, 'cis', { cls: 'fg-tag-good' });
+    return s;
+  },
+  caption: 'The dienophile lies under the diene. Its CHO points in under the diene (endo), and it comes out cis to the outward methyl.',
+});
+
 /* =====================================================================
    4. Regiochemistry: join the delta-minus end to the delta-plus carbon.
    One 340-wide row per diene. */
