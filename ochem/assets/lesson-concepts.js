@@ -146,9 +146,12 @@
       2:['zwitterion'], 3:['zwitterion'], 4:['zwitterion'],
       6:['zwitterion'], 7:['zwitterion'] } },
 
-    'peptides-proteins': { n:8, steps:{
-      2:['peptide-bond'], 3:['peptide-bond'], 4:['peptide-bond'],
-      6:['peptide-bond'], 7:['peptide-bond'] } },
+    'peptides-proteins': { n:12, steps:{
+      3:['peptide-bond'],
+      4:['peptide-bond'],
+      5:['peptide-bond'],
+      8:['peptide-bond'],
+      11:['peptide-bond'] } },
 
     'lipids': { n:8, steps:{
       2:['lipid-ester'], 3:['lipid-ester'], 4:['lipid-ester'],

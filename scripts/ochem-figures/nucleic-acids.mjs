@@ -118,24 +118,24 @@ function baseSpec(kind, form = 'usual') {
     rings.six = [0, 0];
     at.X2 = polar(at.C2, -30, 1);
     at.X4 = polar(at.C4, 90, 1);
-    at.S = polar(at.N1, -90, 1);
+    at.S = polar(at.N1, -90, 1.2);
     lab.N1 = 'N'; lab.N3 = 'N'; lab.X2 = 'O';
     bonds.push(['N1', 'C2'], ['C2', 'X2', 2], ['C2', 'N3'], ['C4', 'C5'], ['C5', 'C6', 2, 'six'], ['C6', 'N1'], ['N1', 'S']);
     if (kind === 'C') {
       lab.X4 = 'N';
       bonds.push(['N3', 'C4', 2, 'six'], ['C4', 'X4']);
-      at.H4a = polar(at.X4, 30, 0.8); at.H4b = polar(at.X4, 150, 0.8);
+      at.H4a = polar(at.X4, 30, 1.2); at.H4b = polar(at.X4, 150, 1.2);
       lab.H4a = 'H'; lab.H4b = 'H';
       bonds.push(['X4', 'H4a'], ['X4', 'H4b']);
     } else if (form === 'lactim') {
       lab.X4 = 'O';
       bonds.push(['N3', 'C4', 2, 'six'], ['C4', 'X4']);
-      at.H4 = polar(at.X4, 30, 0.8); lab.H4 = 'H';
+      at.H4 = polar(at.X4, 30, 1.2); lab.H4 = 'H';
       bonds.push(['X4', 'H4']);
     } else {
       lab.X4 = 'O';
       bonds.push(['N3', 'C4'], ['C4', 'X4', 2]);
-      at.H3 = polar(at.N3, 30, 0.8); lab.H3 = 'H';
+      at.H3 = polar(at.N3, 30, 1.2); lab.H3 = 'H';
       bonds.push(['N3', 'H3']);
     }
     if (kind === 'T') { at.Me = polar(at.C5, 150, 1); lab.Me = 'CH₃'; bonds.push(['C5', 'Me']); }
@@ -148,7 +148,7 @@ function baseSpec(kind, form = 'usual') {
     rings.five = pc;
     const v = (deg) => [pc[0] + R5 * Math.cos(rad(deg)), pc[1] + R5 * Math.sin(rad(deg))];
     at.N7 = v(72); at.C8 = v(0); at.N9 = v(-72);
-    at.S = polar(at.N9, -72, 1);
+    at.S = polar(at.N9, -72, 1.2);
     at.X6 = polar(at.C6, 90, 1);
     lab.N1 = 'N'; lab.N3 = 'N'; lab.N7 = 'N'; lab.N9 = 'N';
     bonds.push(['C6', 'C5'], ['C5', 'C4', 2, 'six'], ['C4', 'N3'], ['N3', 'C2', 2, 'six'],
@@ -156,15 +156,15 @@ function baseSpec(kind, form = 'usual') {
     if (kind === 'A') {
       lab.X6 = 'N';
       bonds.push(['N1', 'C6', 2, 'six'], ['C2', 'N1'], ['C6', 'X6']);
-      at.H6a = polar(at.X6, 150, 0.8); at.H6b = polar(at.X6, 30, 0.8);
+      at.H6a = polar(at.X6, 150, 1.2); at.H6b = polar(at.X6, 30, 1.2);
       lab.H6a = 'H'; lab.H6b = 'H';
       bonds.push(['X6', 'H6a'], ['X6', 'H6b']);
     } else {
       lab.X6 = 'O';
       bonds.push(['N1', 'C6'], ['C2', 'N1'], ['C6', 'X6', 2]);
-      at.H1 = polar(at.N1, 150, 0.8); lab.H1 = 'H';
+      at.H1 = polar(at.N1, 150, 1.2); lab.H1 = 'H';
       at.X2 = polar(at.C2, 210, 1); lab.X2 = 'N';
-      at.H2a = polar(at.X2, 150, 0.8); at.H2b = polar(at.X2, 270, 0.8);
+      at.H2a = polar(at.X2, 150, 1.2); at.H2b = polar(at.X2, 270, 1.2);
       lab.H2a = 'H'; lab.H2b = 'H';
       bonds.push(['N1', 'H1'], ['C2', 'X2'], ['X2', 'H2a'], ['X2', 'H2b']);
     }
@@ -205,7 +205,7 @@ function drawBase(kind, o) {
     if (!p[a] || !p[z]) continue;
     if (o.compact && (z.startsWith('H'))) continue;
     if (z === 'S') {
-      s += bond(p[a], p[z], { rFrom: r(a), rTo: o.sugar ? rOf(o.sugar) : 0 });
+      s += bond(p[a], p[z], { rFrom: r(a), rTo: 0 });
       continue;
     }
     if (ring) {
@@ -224,7 +224,7 @@ function drawBase(kind, o) {
     const kind2 = (k === 'Me' && o.hiMe) ? 'warn' : (o.kinds && o.kinds[k]) || undefined;
     s += A(p[k], l, { kind: kind2 });
   }
-  if (o.sugar) s += tg(p.S.x, p.S.y + 4, o.sugar);
+  if (o.sugar) s += tg(p.S.x, p.S.y + 15, o.sugar);
   return { s, p, lab: L };
 }
 
@@ -712,7 +712,7 @@ FIGURES.push({
 function pairAt(x0, y0, g) {
   let s = '';
   const b = 30;
-  const cL = P(x0 + 70, y0), cR = P(x0 + 70 + 5.4 * b, y0);
+  const cL = P(x0 + 66, y0), cR = P(x0 + 66 + 5.8 * b, y0);
   const L = drawBase(g ? 'C' : 'T', { c: cL, b, rot: -30, sugar: 'sugar' });
   const R = drawBase(g ? 'G' : 'A', { c: cR, b, rot: 30, sugar: 'sugar' });
   s += L.s + R.s;
@@ -755,7 +755,7 @@ FIGURES.push({
     const g = pairAt(392, 150, true);
     s += a.s + g.s;
     for (const q of [a, g]) {
-      const y = 286;
+      const y = 262;
       s += rule(q.sugL.x, y, q.sugR.x, y);
       s += rule(q.sugL.x, y - 6, q.sugL.x, y + 6);
       s += rule(q.sugR.x, y - 6, q.sugR.x, y + 6);

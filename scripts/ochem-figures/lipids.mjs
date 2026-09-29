@@ -129,7 +129,7 @@ FIGURES.push({
     s += tag(430, 166, 'C9, C12 and C15, all cis', { anchor: 'start' });
     return s;
   },
-  caption: 'α-Linolenic acid, 18:3 <i>cis,cis,cis</i>-Δ9,12,15. The highlighted double bonds carry the Δ numbers; the ω numbers at the CH<sub>3</sub> end make the same molecule an ω-3 acid.',
+  caption: 'Read the numbers above and below the chain for the Δ count from C1. The three red ω labels at the CH<sub>3</sub> end give the count from the other end.',
 });
 
 /* ===================================================== chain packing ===== */

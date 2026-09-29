@@ -475,7 +475,7 @@ FIGURES.push({
     s += `<text class="fg-tag" x="630" y="272" text-anchor="middle" font-size="11">− on the <tspan font-style="italic">para</tspan> carbon</text>`;
     return s;
   },
-  caption: 'Follow the arrows from left to right. The − visits an <i>ortho</i> carbon and then the <i>para</i> carbon; pushing the other way round the ring puts it on the second <i>ortho</i> carbon.',
+  caption: 'Follow the arrows from left to right. The − visits an <i>ortho</i> carbon and then the <i>para</i> carbon; pushing the other way around the ring puts it on the second <i>ortho</i> carbon.',
 });
 
 /* ================================================================ 9 ===
