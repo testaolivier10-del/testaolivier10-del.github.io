@@ -131,7 +131,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'The same test applied three times: follow the p orbitals from one end of the molecule to the other. The shaded bands mark p orbitals that overlap side by side. In allene, compare the direction of the C1=C2 lobes with the direction of the C2=C3 lobes.',
+  caption: 'The same test applied three times: follow the p orbitals from one end of the molecule to the other. The shaded bands mark up-and-down p orbitals that overlap side by side. In allene, C1=C2 overlap up and down (band), and C2=C3 overlap front to back; the two pairs never meet.',
 });
 
 FIGURES.push({
@@ -154,7 +154,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Follow the p orbitals along each molecule. Shaded bands mark p orbitals that overlap side by side.',
+  caption: 'Follow the p orbitals along each molecule. Bands mark up-and-down p orbitals that overlap. In allene, C2=C3 overlap front to back instead, and the two pairs never meet.',
 });
 
 /* ------------------------------------------- conjugation-beyond-alkenes --- */
@@ -197,7 +197,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Three rows that are conjugated with only one C=C each. In every panel, look at the third p orbital: it is parallel to the two of the C=C, so all three overlap. The dashed lobes are empty, the single dot is one electron and the pair of dots is a lone pair.',
+  caption: 'Three rows that are conjugated with only one C=C each. In every panel, look at the third p orbital: it is parallel to the two p orbitals of the C=C, so all three overlap. The dashed lobes are empty, the single dot is one electron and the pair of dots is a lone pair.',
 });
 
 /* ------------------------------------------------- heptatriene-classify --- */
@@ -234,15 +234,16 @@ FIGURES.push({
   id: 'delocalization-energy',
   section: 'conjugated-systems',
   anchor: '<h3>Conjugation is worth about 15 kJ/mol</h3>',
-  alt: 'Heats of hydrogenation compared as bars: but-1-ene 127, penta-1,4-diene 254, buta-1,3-diene 239 kilojoules per mole, with the 15 kilojoule shortfall of buta-1,3-diene marked against the 254 line.',
-  viewBox: '0 0 760 330',
+  alt: 'Heats of hydrogenation compared as bars: but-1-ene 127, penta-1,4-diene 254, buta-1,3-diene 239 and allene 298 kilojoules per mole. A dashed line at 254 marks two independent double bonds; buta-1,3-diene falls 15 short of it and allene runs 44 past it.',
+  viewBox: '0 0 760 360',
   build() {
     let s = '';
-    const x0 = 200, k = 1.7;
+    const x0 = 200, k = 1.6;
     const rows = [
       { y: 96, name: 'But-1-ene', sub: 'one C=C', kJ: 127, kind: 'hi' },
       { y: 166, name: 'Penta-1,4-diene', sub: 'two isolated C=C', kJ: 254, kind: 'hi' },
       { y: 236, name: 'Buta-1,3-diene', sub: 'two conjugated C=C', kJ: 239, kind: 'good' },
+      { y: 306, name: 'Allene', sub: 'two cumulated C=C', kJ: 298, kind: 'warn' },
     ];
     s += tag(430, 46, 'heat released on hydrogenation (kJ/mol)');
     s += rule(20, 62, 700, 62);
@@ -255,29 +256,34 @@ FIGURES.push({
     }
     s += text(x0 + 6, 196, '2 × 127 = 254: the two C=C act independently', { cls: 'fg-sm', size: 10, anchor: 'start' });
     const xExp = x0 + 254 * k, xAct = x0 + 239 * k;
-    s += `<line class="fg-dash" x1="${r2(xExp)}" y1="150" x2="${r2(xExp)}" y2="266"></line>`;
-    s += rule(xAct, 250, xAct, 266);
-    s += rule(xAct, 266, xExp, 266);
-    s += text(xExp, 286, '15 kJ/mol less', { cls: 'fg-tag-good', anchor: 'end' });
-    s += text(360, 316, 'Less heat out means buta-1,3-diene started 15 kJ/mol lower.', { cls: 'fg-lbl', size: 12 });
+    s += `<line class="fg-dash" x1="${r2(xExp)}" y1="150" x2="${r2(xExp)}" y2="288"></line>`;
+    const xAll = x0 + 298 * k;
+    s += `<line class="fg-dash" x1="${r2(xExp)}" y1="322" x2="${r2(xExp)}" y2="334"></line>`;
+    s += rule(xAll, 322, xAll, 334);
+    s += rule(xExp, 334, xAll, 334);
+    s += rule(xAct, 250, xAct, 262);
+    s += rule(xAct, 262, xExp, 262);
+    s += text(xAct - 8, 270, '15 less', { cls: 'fg-tag-good', anchor: 'end' });
+    s += text((xExp + xAll) / 2, 352, '44 more', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'All three bars start from the same zero, so compare lengths. The dashed line marks where two independent double bonds would end; the bottom bar stops short of it.',
+  caption: 'All four bars start from the same zero, so compare lengths. The dashed line marks where two independent double bonds would end: the conjugated diene stops short of it, and allene runs past it.',
 });
 
 FIGURES.push({
   id: 'l-delocalization-energy',
   lessons: ['conjugated-systems'],
-  alt: 'Three bars of heat released on hydrogenation: but-1-ene 127, penta-1,4-diene 254, buta-1,3-diene 239 kilojoules per mole. A dashed line at 254 shows buta-1,3-diene falls 15 kilojoules per mole short.',
-  viewBox: '0 0 340 300',
+  alt: 'Four bars of heat released on hydrogenation: but-1-ene 127, penta-1,4-diene 254, buta-1,3-diene 239, allene 298 kilojoules per mole. A dashed line at 254 shows buta-1,3-diene falls 15 short and allene runs past it.',
+  viewBox: '0 0 340 360',
   build() {
     let s = '';
-    const x0 = 16, k = 1.1;
+    const x0 = 16, k = 0.98;
     s += tag(170, 20, 'heat released on hydrogenation');
     const rows = [
       { y: 52, name: 'but-1-ene (one C=C)', kJ: 127, kind: 'hi' },
       { y: 122, name: 'penta-1,4-diene (isolated)', kJ: 254, kind: 'hi' },
       { y: 192, name: 'buta-1,3-diene (conjugated)', kJ: 239, kind: 'good' },
+      { y: 262, name: 'allene (cumulated)', kJ: 298, kind: 'warn' },
     ];
     for (const r of rows) {
       const w = r.kJ * k;
@@ -286,14 +292,15 @@ FIGURES.push({
       s += text(x0 + w - 8, r.y + 25, `${r.kJ}`, { cls: 'fg-lbl', anchor: 'end' });
     }
     const xExp = x0 + 254 * k, xAct = x0 + 239 * k;
-    s += `<line class="fg-dash" x1="${r2(xExp)}" y1="126" x2="${r2(xExp)}" y2="240"></line>`;
-    s += rule(xAct, 228, xAct, 240);
-    s += rule(xAct, 240, xExp, 240);
-    s += text(xExp, 258, '15 kJ/mol short', { cls: 'fg-tag-good', anchor: 'end' });
-    s += text(170, 288, 'values in kJ/mol', { cls: 'fg-tag' });
+    s += `<line class="fg-dash" x1="${r2(xExp)}" y1="126" x2="${r2(xExp)}" y2="300"></line>`;
+    s += rule(xAct, 228, xAct, 238);
+    s += rule(xAct, 238, xExp, 238);
+    s += text(xAct - 6, 252, '15 short', { cls: 'fg-tag-good', anchor: 'end' });
+    s += text(xExp - 6, 318, '44 past the line', { cls: 'fg-tag-warn', anchor: 'end' });
+    s += text(170, 346, 'values in kJ/mol', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'The dashed line marks two independent double bonds. The conjugated diene stops 15 kJ/mol short of it.',
+  caption: 'The dashed line marks two independent double bonds. The conjugated diene stops short of it; allene runs past it.',
 });
 
 /* -------------------------------------------------------- s-cis-s-trans --- */
@@ -390,7 +397,7 @@ FIGURES.push({
     s += tag(580, 54, 's-cis');
     s += sCis(P(580, 146), 'fg-sm');
     s += text(580, 196, 'both C=C point the same way', { cls: 'fg-sm', size: 10 });
-    s += text(580, 212, 'the inward H on C1 and C4 collide', { cls: 'fg-tag-warn', size: 10.5 });
+    s += text(580, 212, 'the inward H atoms on C1 and C4 collide', { cls: 'fg-tag-warn', size: 10.5 });
 
     s += rule(30, 234, 730, 234);
 
@@ -481,7 +488,8 @@ FIGURES.push({
     s += arrow(P(40, 404), P(40, 40));
     s += text(50, 36, 'energy', { cls: 'fg-tag', anchor: 'start' });
     const xs = [250, 310, 370, 430];
-    const ys = [362, 268, 174, 80];
+    // Hückel spacing: 88 px per |beta| about y = 221 (levels at ±0.618 and ±1.618 beta)
+    const ys = [363, 275, 167, 79];
     const info = [
       ['ψ₁', '0 nodes', 'filled: 2 electrons', ''],
       ['ψ₂', '1 node', 'filled: 2 electrons', 'HOMO'],

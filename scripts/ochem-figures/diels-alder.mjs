@@ -107,7 +107,7 @@ function mechRow(ox, oy, alkyne) {
 FIGURES.push({
   id: 'da-bond-accounting',
   section: 'diels-alder',
-  anchor: '<h3>The diene must be able to reach s-cis</h3>',
+  anchor: 'so the six electrons travel round a closed loop.</p>',
   alt: 'Left: buta-1,3-diene drawn s-cis with its carbons numbered C1 to C4, and ethene below it. Dashed lines join C1 and C4 to the two ethene carbons. Three curved arrows run head to tail: from the C1=C2 bond to the C1 dashed bond, from the ethene double bond to the C4 dashed bond, and from the C3=C4 bond to the C2–C3 bond. An arrow leads to cyclohexene, with the double bond now between C2 and C3 and the two new sigma bonds in color. Right: the same diene with ethyne below it gives cyclohexa-1,4-diene, and the double bond left over from the alkyne is marked as kept.',
   viewBox: '0 0 760 200',
   build() {
@@ -116,7 +116,7 @@ FIGURES.push({
     s += mechRow(400, 10, true);
     return s;
   },
-  caption: 'Left: the three curved arrows for buta-1,3-diene and ethene. Right: with ethyne, one of the alkyne’s two π bonds is used and the other stays in the ring. Dashed lines are bonds in the middle of forming.',
+  caption: 'Left: follow the three curved arrows round the ring. Right: the colored double bond is the alkyne’s leftover π bond. Dashed lines are bonds that are forming.',
 });
 
 FIGURES.push({
@@ -130,7 +130,7 @@ FIGURES.push({
     s += mechRow(0, 196, true);
     return s;
   },
-  caption: 'C1 and C4 form the new σ bonds, so the new π bond has to be C2–C3.',
+  caption: 'Top: follow the three arrows. Bottom: the colored double bond is the alkyne’s leftover π bond.',
 });
 
 /* =====================================================================
@@ -207,7 +207,7 @@ function pentaPanel(ox, oy, Z) {
 FIGURES.push({
   id: 'da-scis',
   section: 'diels-alder',
-  anchor: 'slow it down badly.</li>\n</ul>',
+  anchor: 'Any bulky group in an inward position has the same effect.</p>',
   alt: 'Four dienes. First, cyclopentadiene, a five-membered ring with a CH2 at the top and two double bonds; the two ends of its diene are marked and sit close together, locked s-cis, labeled fast. Second, a diene built into two fused six-membered rings, one double bond in each ring; its two ends are marked and point away from each other, locked s-trans, labeled no reaction. Third, penta-1,3-diene drawn s-cis as the E isomer, with its methyl pointing outward, labeled no clash. Fourth, the Z isomer drawn s-cis, with its methyl pointing inward into the mouth of the diene, where a dashed line marks its clash with the inward hydrogen on the other end, labeled slow.',
   viewBox: '0 0 760 180',
   build() {
@@ -219,7 +219,7 @@ FIGURES.push({
     s += `<line class="fg-rule" x1="376" y1="20" x2="376" y2="170"></line>`;
     return s;
   },
-  caption: 'The dots mark the two ends of each diene, the atoms that must reach the dienophile. Right half: the same diene drawn s-cis as each geometric isomer.',
+  caption: 'In the left two drawings, the dots mark the ends of the diene, the atoms that must reach the dienophile. The right two show penta-1,3-diene drawn s-cis as each isomer.',
 });
 
 FIGURES.push({
@@ -230,7 +230,7 @@ FIGURES.push({
   build() {
     return cpPanel(-10, 0) + pentaPanel(160, 0, true);
   },
-  caption: 'The ring holds cyclopentadiene s-cis. An inward methyl makes s-cis crowded.',
+  caption: 'Left: the dots mark the diene’s two ends. Right: the dashed curve marks the clash.',
 });
 
 /* The four candidates for the lesson's sort, A to D. */
@@ -346,7 +346,7 @@ const reso = (x, y) => `<line class="fg-arrow" x1="${x - 16}" y1="${y}" x2="${x 
 FIGURES.push({
   id: 'da-polarize',
   section: 'diels-alder',
-  anchor: 'the two atoms with the biggest appetite for each other make one of the new bonds.</p>',
+  anchor: 'not on the carbon that carries the CHO.</p>',
   alt: 'Three molecules, each shown as two resonance forms. Top: 1-methoxybuta-1,3-diene. Curved arrows move an oxygen lone pair into the O–C1 bond, the C1=C2 pi bond into C2–C3, and the C3=C4 pi bond onto C4. The second form has O plus doubly bonded to C1 and a negative charge with a lone pair on C4, labeled delta minus at C4. Middle: propenal. Curved arrows move the C=C pi bond toward the carbonyl carbon and the C=O pi bond onto oxygen. The second form has a positive charge on the CH2 carbon and O minus, labeled delta plus at the CH2. Bottom: 2-methoxybuta-1,3-diene. Curved arrows move an oxygen lone pair into the O–C2 bond and the C1=C2 pi bond onto C1. The second form has O plus doubly bonded to C2 and a negative charge on C1, labeled delta minus at C1.',
   viewBox: '0 0 760 470',
   build() {
@@ -361,7 +361,7 @@ FIGURES.push({
     s += methoxy2(150, 390, 0) + reso(378, 396) + methoxy2(530, 390, 1);
     return s;
   },
-  caption: 'Each right-hand form is a minor contributor. It is drawn only to show which atom carries a little extra charge in the real molecule.',
+  caption: 'Follow the arrows in each left-hand form to the charges in the right-hand form.',
 });
 
 
@@ -386,7 +386,7 @@ FIGURES.push({
   id: 'da-dienophiles',
   section: 'diels-alder',
   lessons: ['diels-alder'],
-  anchor: '<!-- dienophiles-figure -->',
+  anchor: 'attached directly to it.</p>',
   alt: 'Three dienophiles in order of speed with buta-1,3-diene. Ethene, a bare C=C, is slow. Propenal, a C=C with a CHO group on one end, is faster; its C=O is highlighted. Maleic anhydride, a five-membered ring whose C=C carries a C=O group on each end, is fastest; both C=O groups are highlighted.',
   viewBox: '0 0 340 160',
   build() {
@@ -415,7 +415,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'da-combined',
   section: 'diels-alder',
-  anchor: '<!-- combined-figure -->',
+  anchor: 'cis-2-methylcyclohex-3-ene-1-carbaldehyde</b>.</p>\n</div>',
   alt: 'Left: (E)-penta-1,3-diene seen from above, drawn s-cis with its methyl pointing outward from C1. Propenal lies underneath it, and its CHO group points in under the diene, which is the endo orientation. Dashed lines show the two bonds forming, C1 to the CHO-bearing carbon and C4 to the CH2 carbon. Right: the product ring with the methyl and the CHO on neighboring carbons, both on wedges, cis.',
   viewBox: '0 0 380 190',
   build() {
@@ -436,7 +436,7 @@ FIGURES.push({
     s += tag(300, 166, 'cis', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'The dienophile lies under the diene. Its CHO points in under the diene (endo), and it comes out cis to the outward methyl.',
+  caption: 'Seen from above, with propenal lying under the diene. The CHO is drawn pointing in under the diene.',
 });
 
 /* =====================================================================
@@ -481,7 +481,7 @@ function regioRow(ox, oy, donorAt) {
 FIGURES.push({
   id: 'da-regiochemistry',
   section: 'diels-alder',
-  anchor: '<!-- regio-figure -->',
+  anchor: 'end up across the ring from each other.</p>',
   alt: 'Left: 1-methoxybuta-1,3-diene drawn s-cis above propenal. C4 of the diene is marked delta minus and the CH2 carbon of propenal delta plus, and a highlighted dashed line joins them. The product is a cyclohexene with the methoxy and aldehyde groups on neighboring carbons, labeled 1,2, ortho. Right: 2-methoxybuta-1,3-diene above propenal, turned the other way round. C1 of the diene is marked delta minus and joins the CH2 carbon of propenal. The product has the methoxy and aldehyde groups across the ring from each other, labeled 1,4, para.',
   viewBox: '0 0 760 200',
   build() {
@@ -490,7 +490,7 @@ FIGURES.push({
     s += regioRow(400, 4, 2);
     return s;
   },
-  caption: 'The highlighted dashed line pairs the diene’s δ− end with the dienophile’s δ+ carbon. The other dashed line is the second bond, which has only one place to go. Only positions are shown; stereochemistry comes later on the page.',
+  caption: 'In each row, the highlighted dashed line joins δ− to δ+. Only positions are shown here; the stereochemistry section adds the rest.',
 });
 
 FIGURES.push({
@@ -504,7 +504,7 @@ FIGURES.push({
     s += regioRow(0, 204, 2);
     return s;
   },
-  caption: 'Join δ− to δ+. The second new bond has only one place to go.',
+  caption: 'In each row, the highlighted dashed line joins δ− to δ+.',
 });
 
 /* =====================================================================
@@ -539,7 +539,7 @@ function dienophileStereo(ox, oy, cis, stacked) {
 FIGURES.push({
   id: 'da-dienophile-stereo',
   section: 'diels-alder',
-  anchor: '<!-- dienophile-stereo-figure -->',
+  anchor: 'which is called <b>suprafacial</b> addition.</p>',
   alt: 'Left: dimethyl maleate, with its two CO2Me groups on the same side of the C=C, reacts with a diene to give a cyclohexene whose two CO2Me groups are both on wedges, cis on the ring. Right: dimethyl fumarate, with its CO2Me groups on opposite sides of the C=C, gives the ring with one CO2Me on a wedge and one on a hashed bond, trans on the ring.',
   viewBox: '0 0 760 170',
   build() {
@@ -548,7 +548,7 @@ FIGURES.push({
     s += dienophileStereo(380, 4, false, false);
     return s;
   },
-  caption: 'The diene is buta-1,3-diene. Compare the two esters before and after: cis stays cis, trans stays trans.',
+  caption: 'The diene in both is buta-1,3-diene. Follow the two CO₂Me groups from the C=C into the ring.',
 });
 
 FIGURES.push({
@@ -559,7 +559,7 @@ FIGURES.push({
   build() {
     return dienophileStereo(-6, 0, true, true) + dienophileStereo(164, 0, false, true);
   },
-  caption: 'Cis in, cis out. Trans in, trans out.',
+  caption: 'Follow the two CO₂Me groups from the C=C into the ring.',
 });
 
 /* =====================================================================
@@ -596,7 +596,7 @@ function dieneStereo(ox, oy, EZ) {
 FIGURES.push({
   id: 'da-diene-stereo',
   section: 'diels-alder',
-  anchor: '<!-- diene-stereo-figure -->',
+  anchor: 'a <i>Z</i> double bond puts it inward.</p>',
   alt: 'Left: (2E,4E)-hexa-2,4-diene drawn s-cis. At each end the methyl points outward, away from the other end, and a hydrogen points inward. With ethene it gives 3,6-dimethylcyclohexene with both methyls on wedges, cis on the ring. Right: (2E,4Z)-hexa-2,4-diene drawn s-cis, with one methyl outward and the other inward. It gives the ring with one methyl on a wedge and one hashed, trans on the ring.',
   viewBox: '0 0 760 160',
   build() {
@@ -605,7 +605,7 @@ FIGURES.push({
     s += dieneStereo(400, 4, true);
     return s;
   },
-  caption: 'Look at where each methyl points in the s-cis diene, then at the ring. Two outward methyls come out cis; one outward and one inward come out trans.',
+  caption: 'Follow each methyl from its position in the s-cis diene to its wedge or hash on the ring.',
 });
 
 FIGURES.push({
@@ -619,7 +619,7 @@ FIGURES.push({
     s += dieneStereo(0, 164, true);
     return s;
   },
-  caption: 'Both outward: cis. One outward, one inward: trans.',
+  caption: 'Follow each methyl from the s-cis diene to the ring.',
 });
 
 /* =====================================================================
@@ -655,13 +655,13 @@ function stackPanel(x0, y0, endo) {
 FIGURES.push({
   id: 'endo-exo-stacked',
   section: 'diels-alder',
-  anchor: '<!-- endo-exo-figure -->',
+  anchor: 'but give different products.</p>',
   alt: 'Two side-on views of a diene, drawn edge-on, stacked above a dienophile, with dashed bonds forming at both ends. Left, endo: the C=O group on the dienophile points inward, under the diene, and a thin dotted line marks its contact with the diene above. Right, exo: the same C=O points down and outward, away from the diene, with no contact.',
   viewBox: '0 0 700 210',
   build() {
     return stackPanel(10, 6, true) + stackPanel(360, 6, false);
   },
-  caption: 'The dashed bonds are the same in both. Only the C=O has moved. The thin dotted line in the endo panel is the extra contact with the diene’s π system.',
+  caption: 'The thin dotted line in the endo panel marks the extra contact between the C=O and the diene’s π system.',
 });
 
 FIGURES.push({
@@ -672,7 +672,7 @@ FIGURES.push({
   build() {
     return stackPanel(5, 4, true) + stackPanel(5, 208, false);
   },
-  caption: 'Same two forming bonds. Endo tucks the C=O under the diene.',
+  caption: 'The dotted line in the endo panel marks the extra contact with the diene.',
 });
 
 /* =====================================================================
@@ -686,7 +686,7 @@ function norb(o, k) {
 FIGURES.push({
   id: 'da-endo-adduct',
   section: 'diels-alder',
-  anchor: '<!-- endo-adduct-figure -->',
+  anchor: 'the exo adduct can take over.</p>\n</div>',
   alt: 'The endo adduct of cyclopentadiene and maleic anhydride drawn in 3D as a bicyclic cage. A CH2 bridge arches over the top. The two-carbon bridge at the back carries the new C=C. The two carbons at the front each carry a hydrogen pointing outward and share the anhydride ring, which hangs down, away from the CH2 bridge. The two bonds made in the reaction, from each bridgehead to the front carbons, are highlighted.',
   viewBox: '0 0 460 300',
   build() {
@@ -711,7 +711,7 @@ FIGURES.push({
     s += tag(210, 290, 'highlighted: the two bonds the reaction made', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'The endo adduct of cyclopentadiene and maleic anhydride. The anhydride sits on the far side from the CH₂ bridge, which is what endo means in a bicyclic product.',
+  caption: 'The endo adduct in 3D. Find the CH₂ bridge at the top, then see which way the anhydride ring points.',
 });
 
 /* =====================================================================
@@ -745,13 +745,13 @@ FIGURES.push({
   id: 'da-retro',
   section: 'diels-alder',
   lessons: ['diels-alder'],
-  anchor: '<!-- retro-figure -->',
+  anchor: 'builds the ring with both substituents in place.</p>\n</div>',
   alt: 'Left: the target, 4-methylcyclohex-3-ene-1-carbaldehyde, drawn as a cyclohexene numbered 1 to 6, with CHO on C1, the double bond between C3 and C4 highlighted, and a methyl on C4. The bonds C1–C2 and C5–C6 are dashed and marked for cutting. A retrosynthesis arrow leads to the two pieces in the same positions: isoprene, CH2=C(CH3)–CH=CH2, drawn s-cis above propenal, CH2=CH–CHO.',
   viewBox: '0 0 340 190',
   build() {
     return retroRow(0, 0);
   },
-  caption: 'The double-lined arrow means “is made from”. The two dashed bonds are the ones next to the ends of the ring’s double bond, one carbon out.',
+  caption: 'The double-lined arrow means “is made from”.',
 });
 
 export default FIGURES;
