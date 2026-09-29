@@ -412,12 +412,12 @@ FIGURES.push({
       g += text(ox + 110, 250, out2, { cls: 'fg-sm' });
       return g;
     };
-    s += panelAt(24, 'warn', 'no cross-links', true, [],
+    s += panelAt(24, 'warn', 'no bridges', true, [],
       'it flows', 'chains slide past each other for good');
-    s += panelAt(270, null, 'a few percent sulfur', false,
+    s += panelAt(270, null, 'a few bridges', false,
       [[56, 0, 1], [132, 1, 2], [92, 2, 3]],
       'elastic', 'it stretches, then springs back');
-    s += panelAt(516, null, 'heavily cross-linked', false,
+    s += panelAt(516, null, 'many bridges', false,
       [[40, 0, 1], [86, 0, 1], [132, 0, 1], [178, 0, 1],
        [52, 1, 2], [98, 1, 2], [144, 1, 2],
        [40, 2, 3], [86, 2, 3], [132, 2, 3], [178, 2, 3]],
@@ -445,15 +445,15 @@ FIGURES.push({
       }
       return g;
     };
-    s += panelAt(0, 'warn', 'NO CROSS-LINKS', true, [], 'flows');
-    s += panelAt(140, null, 'A FEW PERCENT SULFUR', false,
+    s += panelAt(0, 'warn', 'NO BRIDGES', true, [], 'flows');
+    s += panelAt(140, null, 'A FEW BRIDGES', false,
       [[92, 0, 1], [206, 1, 2], [150, 2, 3]], 'elastic');
     s += text(214, 140 + 70, 'S–S', { cls: 'fg-tag', anchor: 'start' });
     const many = [];
     for (const [a, xs] of [[0, [50, 104, 158, 212, 266]], [1, [76, 130, 184, 238]], [2, [50, 104, 158, 212, 266]]]) {
       for (const x of xs) many.push([x, a, a + 1]);
     }
-    s += panelAt(280, null, 'HEAVILY CROSS-LINKED', false, many, 'hard, brittle');
+    s += panelAt(280, null, 'MANY BRIDGES', false, many, 'hard, brittle');
     s += text(170, 436, 'Each bridge: a short run of S atoms', { cls: 'fg-lbl' });
     return s;
   },
@@ -567,7 +567,7 @@ FIGURES.push({
   section: 'polymer-properties',
   anchor: '<h3>Plasticizers',
   viewBox: '0 0 760 300',
-  alt: 'Left: four PVC chains drawn close together, labeled rigid PVC, T g about 80 degrees C, glassy, drainpipe. Right: the same four chains spread further apart with small oval plasticizer molecules sitting between them, labeled plasticized PVC, T g below room temperature, flexible, cable insulation.',
+  alt: 'Left: four PVC chains drawn close together, labeled rigid PVC, T g about 80 degrees C, glassy, drainpipe. Right: the same four chains spread farther apart with small oval plasticizer molecules sitting between them, labeled plasticized PVC, T g below room temperature, flexible, cable insulation.',
   build() {
     let s = '';
     const col = (ox, gapY, withPl, kind) => {
@@ -593,7 +593,7 @@ FIGURES.push({
     s += text(380, 288, 'Ovals: plasticizer molecules (such as a phthalate diester) sitting between the chains.', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'The same PVC chains with and without a plasticizer. Nothing is bonded to the chains; the small molecules only hold them further apart.',
+  caption: 'The same PVC chains with and without a plasticizer. Nothing is bonded to the chains; the small molecules only hold them farther apart.',
 });
 
 export default FIGURES;

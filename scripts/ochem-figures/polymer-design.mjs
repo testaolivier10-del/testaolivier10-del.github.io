@@ -348,8 +348,8 @@ function backboneDecides(stacked) {
     }
     lines.forEach((l, i) => s += text(org.x + panelW / 2, org.y + 152 + i * 17, l, { cls: i ? 'fg-tag' : 'fg-lbl', size: i ? 11 : 13 }));
   };
-  draw(L, 'an ester (or amide) in the backbone', esterUnits, null,
-    ['PET, nylon, PLA', 'melt and remold, or take back to monomers'], 'water attacks this C=O carbon', 'fg-tag-good');
+  draw(L, 'an ester in the backbone', esterUnits, null,
+    ['PET, PLA', 'melt and remold, or take back to monomers'], 'water attacks this C=O carbon', 'fg-tag-good');
   draw(R, 'a C–C backbone', ccUnits, 'warn',
     ['polyethylene', 'melt and remold only'], 'no polar bond to attack', 'fg-tag-warn');
   return s;
@@ -359,15 +359,15 @@ FIGURES.push({
   section: 'polymer-design',
   anchor: '<h3>Biodegradable by design</h3>',
   viewBox: '0 0 760 240',
-  alt: 'Left: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water attacks this C=O carbon; below, PET, nylon and PLA, which can be melted and remolded or taken back to monomers. Right: a polyethylene chain of five CH2 groups, labeled no polar bond to attack; below, polyethylene, melt and remold only.',
+  alt: 'Left: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water attacks this C=O carbon; below, PET and PLA, which can be melted and remolded or taken back to monomers. Right: a polyethylene chain of five CH2 groups, labeled no polar bond to attack; below, polyethylene, melt and remold only.',
   build() { return backboneDecides(false); },
-  caption: 'Left: water attacks the electron-poor carbonyl carbon (shaded), and the highlighted C–O bond to the alkoxy oxygen is the one that breaks. Right: only nonpolar C–C and C–H bonds, with no electrophilic carbon and no leaving group.',
+  caption: 'Left: water attacks the electron-poor carbonyl carbon (shaded), and the highlighted C–O bond to the alkoxy oxygen is the one that breaks. An amide, as in nylon, is attacked the same way, with the N leaving. Right: only nonpolar C–C and C–H bonds, with no electrophilic carbon and no leaving group.',
 });
 FIGURES.push({
   id: 'l-backbone-decides',
   lessons: ['polymer-design'],
   viewBox: '0 0 330 440',
-  alt: 'Top: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water attacks this C=O carbon; PET, nylon and PLA can be melted and remolded or taken back to monomers. Bottom: a polyethylene chain of five CH2 groups, labeled no polar bond to attack; polyethylene can only be melted and remolded.',
+  alt: 'Top: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water attacks this C=O carbon; PET and PLA can be melted and remolded or taken back to monomers. Bottom: a polyethylene chain of five CH2 groups, labeled no polar bond to attack; polyethylene can only be melted and remolded.',
   build() { return backboneDecides(true); },
   caption: 'Top: water attacks the shaded carbonyl carbon, and the highlighted C–O bond breaks. Bottom: only nonpolar bonds, so nothing for water to attack.',
 });
@@ -575,7 +575,7 @@ FIGURES.push({
     s += plaUnit(165, 526);
     return s;
   },
-  caption: 'Lactide holds two ester bonds in a ring. Ring-opening breaks one (highlighted) and adds the unit to the chain, losing nothing.',
+  caption: 'Lactide holds two ester bonds in a ring. Ring-opening breaks one (highlighted) and adds the opened ring to the chain, losing nothing.',
 });
 
 export default FIGURES;
