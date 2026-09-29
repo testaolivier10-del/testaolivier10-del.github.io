@@ -95,7 +95,7 @@ FIGURES.push({
     s += box(8, 150, 'FAST BY BOTH SN1 AND SN2', 'good');
     // allyl bromide
     const a1 = P(26, 104), a2 = P(56, 86), a3 = P(86, 104), abr = P(126, 86);
-    s += skDouble(a1, a2, P(56, 120)) + skb(a2, a3) + skb(a3, abr, 0, 14) + brAt(abr, [270, 30, 90]);
+    s += skDouble(a1, a2, P(56, 120)) + skb(a2, a3) + skb(a3, abr, 0, 14) + brAt(abr, [245.8, 335.8, 65.8]);
     s += tg(76, 142, 'allylic: next to C=C', 'mut');
     // benzyl bromide
     const ring = polyPts(214, 96, 6, 22, 90);
@@ -108,7 +108,7 @@ FIGURES.push({
     s += box(166, 150, 'NO SN1 AND NO SN2', 'warn');
     // vinyl bromide
     const v1 = P(36, 252), v2 = P(70, 232), vbr = P(110, 252);
-    s += skDouble(v1, v2, P(70, 268)) + skb(v2, vbr, 0, 14) + brAt(vbr, [270, 30, 90]);
+    s += skDouble(v1, v2, P(70, 268)) + skb(v2, vbr, 0, 14) + brAt(vbr, [296.6, 26.6, 116.6]);
     s += tg(76, 298, 'vinyl: on the C=C', 'mut');
     // bromobenzene
     const r2 = polyPts(200, 246, 6, 22, 0);
@@ -176,7 +176,7 @@ FIGURES.push({
   id: 'se-dbu',
   section: 'substrate-effects',
   anchor: 'DBU is a strong base',
-  alt: 'Top panel: DBU drawn as a skeletal structure, a six-membered ring fused to a seven-membered ring. The two rings share one carbon and one nitrogen. The shared carbon is double-bonded to a second nitrogen at the top of the six-membered ring, which carries a lone pair and is labeled the basic nitrogen; it sits in the crook between the rings. Bottom panel: the conjugate acid after that nitrogen takes a proton, drawn as two resonance forms joined by a double-headed arrow. In the first the positive charge is on the top nitrogen, which now carries H; in the second the C=N double bond has moved to the shared ring nitrogen, which carries the positive charge.',
+  alt: 'Top panel: DBU drawn as a skeletal structure, a six-membered ring fused to a seven-membered ring. The two rings share one carbon and one nitrogen. The shared carbon is double-bonded to a second nitrogen at the top of the six-membered ring, which carries a lone pair and is labeled the basic nitrogen; it sits right beside the ring fusion. Bottom panel: the conjugate acid after that nitrogen takes a proton, drawn as two resonance forms joined by a double-headed arrow. In the first the positive charge is on the top nitrogen, which now carries H; in the second the C=N double bond has moved to the shared ring nitrogen, which carries the positive charge.',
   viewBox: '0 0 340 324',
   build() {
     let s = '';
@@ -231,7 +231,7 @@ FIGURES.push({
   section: 'substrate-effects',
   lessons: ['substrate-effects'],
   anchor: 'can still reach a hydrogen',
-  alt: 'Two stacked panels. Top: 2-bromopropane drawn with the carbon that carries Br in the middle, Br above it, a CH3 to the right, an H on a hashed bond, and a CH2 on the left carrying an H that points down, anti to the Br. tert-Butoxide sits at the bottom left. A curved arrow runs from an oxygen lone pair to that exposed beta hydrogen, a second from the C–H bond to the bond between the two carbons, and a third from the C–Br bond onto bromine. A gray straight arrow from the oxygen toward the crowded carbon stops short at a cross. Bottom: the products, propene, CH2=CH–CH3, plus tert-butanol and bromide ion.',
+  alt: 'Two stacked panels. Top: 2-bromopropane drawn with the carbon that carries Br in the middle, Br above it, a CH3 to the right, an H below it to the right, and a CH2 on the left carrying an H that points down, anti to the Br. tert-Butoxide sits at the bottom left. A curved arrow runs from an oxygen lone pair to that exposed beta hydrogen, a second from the C–H bond to the bond between the two carbons, and a third from the C–Br bond onto bromine. A gray straight arrow from the oxygen toward the crowded carbon stops short at a cross. Bottom: the products, propene, CH2=CH–CH3, plus tert-butanol and bromide ion.',
   viewBox: '0 0 340 394',
   build() {
     let s = bulkyBody(8);
@@ -368,7 +368,7 @@ FIGURES.push({
   id: 'se-neopentyl',
   section: 'substrate-effects',
   anchor: 'Worked example 6 — the substrate with no beta hydrogen',
-  alt: 'Neopentyl bromide, (CH3)3C–CH2–Br, with every group labeled. The CH2 that carries Br is marked alpha; the carbon next to it is marked beta and carries three CH3 groups and no hydrogen. Ethoxide, coming in from the side opposite the bromine, is stopped by a methyl on the beta carbon, shown by a gray arrow ending at a cross. Labels: beta carbon has no H, so no E2; the back of the alpha carbon is crowded, so SN2 is very slow.',
+  alt: 'Neopentyl bromide, (CH3)3C–CH2–Br, with every group labeled. The CH2 that carries Br is marked alpha; the carbon next to it is marked beta and carries three CH3 groups and no hydrogen. Ethoxide, coming in from the side opposite the bromine, is hindered by a methyl on the beta carbon, shown by a gray arrow ending at a cross. Labels: beta carbon has no H, so no E2; the back of the alpha carbon is crowded, so SN2 is very slow.',
   viewBox: '0 0 340 240',
   build() { return panel(4, 8, 332, 224) + neoBody(8, true); },
   caption: 'The β carbon is the one bonded to the CH₂Br carbon. Count the hydrogens on it.',
