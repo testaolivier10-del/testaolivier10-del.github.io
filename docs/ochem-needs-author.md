@@ -841,3 +841,27 @@ confirm it.
     before). The McLafferty figure uses six single-barbed arrows; some courses grade a
     three-arrow shorthand. The common-losses row for CO (28) now names phenols. Spectrum bar
     heights are illustrative, not NIST values.
+
+## Alcohols, Ethers & Related Chemistry (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### alcohols-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `alcohol-reactions`, `ether-chemistry`, `epoxides`, plus the shared `molecules.js`
+  and the click-button styling fixed in `aldehydes-ketones` and `markovnikov`.
+- **Positions taken:**
+  - SOCl₂ without pyridine (SNi) is drawn as delivery of the chlorine to the same face. Current
+    evidence points to an intimate ion pair, and clean retention depends on the solvent.
+  - A secondary alcohol with HX is graded as SN1 with the stereocenter largely racemized; the
+    evidence is a mix of SN1 and SN2.
+  - The PBr₃ worked example uses 3,3-dimethylbutan-2-ol (matching the Carbocations page) and says
+    PBr₃ avoids a free cation, which is why the skeleton is kept. On this crowded secondary carbon
+    some rearrangement may still happen in practice; the author may prefer 3-methylbutan-2-ol.
+  - Ether cleavage: a secondary carbon paired with a methyl or primary carbon is taught as losing
+    to SN2 at the smaller carbon; SN1/SN2 mixtures are mentioned only when both carbons are
+    secondary. The 18-crown-6 cavity is given as about 2.7 Å (sources quote about 2.6–3.2 Å).
+  - Epoxides keep the usual heading "base-catalyzed" although the nucleophile is used up
+    ("base-promoted"). Acid opening between a primary and a secondary carbon is taught as a weak
+    preference where mixtures can form.
