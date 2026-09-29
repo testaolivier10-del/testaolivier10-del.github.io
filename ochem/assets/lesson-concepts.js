@@ -354,7 +354,7 @@
       3:['radical-chain'],
       5:['radical-stability'],
       7:['radical-stability','hammond-postulate'],
-      9:['radical-stability','radical-chain'],
+      9:['radical-stability'],
       12:['radical-chain','allylic-capture'],
       13:['radical-chain','radical-stability'] } },
 
@@ -722,11 +722,12 @@
       3:['torsional-strain','newman-reading'],
       6:['newman-reading','torsional-strain'] } },
 
-    'nucleophiles': { n:8, steps:{
-      1:['nucleophile-recognition'],
-      2:['nucleophile-recognition','electron-rich-poor'],
-      4:['solvent-effects','basicity-vs-nucleophilicity'],
-      7:['nucleophile-recognition','electron-rich-poor'] } },
+    'nucleophiles': { n:11, steps:{
+      2:['nucleophile-recognition'],
+      4:['nucleophile-recognition','electron-rich-poor'],
+      7:['solvent-effects','basicity-vs-nucleophilicity'],
+      9:['basicity-vs-nucleophilicity','steric-hindrance'],
+      10:['nucleophile-recognition','solvent-effects'] } },
 
     'nucleophilic-addition': { n:11, steps:{
       1:['tetrahedral-intermediate','carbonyl-electrophilicity'],
