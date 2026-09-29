@@ -441,12 +441,12 @@ FIGURES.push({
     s += tag(190, 208, 'the same moment, seen end-on');
     const A = P(150, 270), B = P(250, 270), D = P(150, 346);
     s += bond(A, B, { order: 2, rFrom: 0, rTo: 0 });
-    s += tag(250, 292, 'C2 (C3 behind)', { cls: 'fg-tag-mut' });
-    s += tag(A.x + 12, A.y + 22, 'C1', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += tag(B.x - 4, B.y - 12, 'C2 (C3 behind)', { cls: 'fg-tag-mut' });
+    s += tag(A.x + 10, A.y + 22, 'C1 (C4 behind)', { cls: 'fg-tag-mut', anchor: 'start' });
     s += sk(A, D, 'fg-dash-hi');
     s += tag(D.x - 12, D.y + 18, 'D1 (D2 behind)', { cls: 'fg-tag-mut', anchor: 'end' });
     s += sub(D, 0, 'CHO', { len: 46, r: 15 });
-    s += tag(D.x + 46, D.y + 30, 'endo: under the diene', { cls: 'fg-tag' });
+    s += tag(D.x + 66, D.y + 4, 'endo: under the diene', { cls: 'fg-tag', anchor: 'start' });
     s += sub(A, 180, 'H', { len: 40, r: 9 });
     s += tag(A.x - 48, A.y + 24, 'inward H', { cls: 'fg-tag' });
     s += sub(A, -100, 'CH₃', { len: 34, r: 14, kind: 'wedge' });
@@ -485,7 +485,7 @@ function regioRow(ox, oy, donorAt) {
 
   const Q = hexFlat(ox + 270, oy + 92, 32);
   s += productRing(Q);
-  const inside = (v, t) => { const q = P(r1(v.x + (Q.ctr.x - v.x) * 0.36), r1(v.y + (Q.ctr.y - v.y) * 0.36)); return tag(q.x, q.y + 4, t, { cls: 'fg-tag-mut' }); };
+  const inside = (v, t) => { const q = P(r1(v.x + (Q.ctr.x - v.x) * 0.52), r1(v.y + (Q.ctr.y - v.y) * 0.52)); return tag(q.x, q.y + 4, t, { cls: 'fg-tag-mut' }); };
   if (donorAt === 1) {
     s += sub(Q.c1, OUT.c1, 'OMe', { len: 26, r: 15 });
     s += sub(Q.d1, OUT.d1, 'CHO', { len: 26, r: 15 });
@@ -712,7 +712,7 @@ FIGURES.push({
   section: 'diels-alder',
   anchor: 'the exo adduct can take over.</p>\n</div>',
   alt: 'The endo adduct of cyclopentadiene and maleic anhydride drawn in 3D as a bicyclic cage. A CH2 bridge arches over the top. The two-carbon bridge at the back carries the new C=C. The two carbons at the front each carry a hydrogen pointing outward and share the anhydride ring, which hangs down, away from the CH2 bridge. The two bonds made in the reaction, from each bridgehead to the front carbons, are highlighted.',
-  viewBox: '0 0 460 300',
+  viewBox: '0 0 500 300',
   build() {
     let s = '';
     const n = norb(P(210, 124), 1.9);
@@ -724,8 +724,7 @@ FIGURES.push({
     s += tag(210, n.n5.y - 12, 'C=C bridge', { cls: 'fg-tag-mut' });
     // exo hydrogens, pointing outward
     s += sub(n.n2, 185, 'H', { len: 28, r: 9 }) + sub(n.n3, -5, 'H', { len: 28, r: 9 });
-    s += tag(n.n2.x - 28, n.n2.y - 14, 'exo H', { cls: 'fg-tag-mut' }) + tag(n.n3.x + 28, n.n3.y - 14, 'exo H', { cls: 'fg-tag-mut' });
-    s += tag(n.n3.x + 40, n.n3.y + 6, 'front (bold)', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += tag(n.n2.x - 42, n.n2.y + 4, 'exo H', { cls: 'fg-tag-mut', anchor: 'end' }) + tag(n.n3.x + 42, n.n3.y + 4, 'exo H', { cls: 'fg-tag-mut', anchor: 'start' });
     // the anhydride, hanging down (endo)
     const ca = P(n.n2.x + 4, n.n2.y + 46), cb = P(n.n3.x - 4, n.n3.y + 46), ob = P(210, n.n2.y + 80);
     s += sk(n.n2, ca) + sk(n.n3, cb);

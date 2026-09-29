@@ -213,7 +213,7 @@ FIGURES.push({
     s += tg(b.p[3].x - 34, 318, 'Br⁻ bonds to C4');
     return s;
   },
-  caption: 'Each curved arrow starts on electrons (the π bond, the H–Br bond, a lone pair on bromide), never on a positive charge and never on the hydrogen itself. The small arrow in the first form shows how the second form is drawn from it; the two-headed arrow joins two drawings of one cation.',
+  caption: 'Each curved arrow starts on electrons (the π bond, the H–Br bond, a lone pair on bromide), never on a positive charge and never on the hydrogen itself. The small arrow in the first form shows how the second form is drawn from it; the two-headed arrow joins the two resonance forms.',
 });
 
 FIGURES.push({
@@ -227,6 +227,7 @@ FIGURES.push({
     s += tg(170, 20, 'step 1: the π bond takes H⁺');
     s += dieneWithHBr(65, 130, 70);
     s += arrow(P(170, 168), P(170, 200));
+    s += tg(250, 188, 'step 2: Br⁻ bonds');
     const a = chain(65, 248, FORM_C2, [1, 1, 2], { dx: 70 });
     s += a.s;
     s += curve(P((a.p[2].x + a.p[3].x) / 2, 240), P((a.p[1].x + a.p[2].x) / 2 + 4, 240), { bow: 22, size: 7 });
@@ -241,7 +242,7 @@ FIGURES.push({
     s += curve(P(brB.x + 4, brB.y - 26), P(b.p[3].x - 12, b.p[3].y + 12), { bow: 14, size: 7 });
     return s;
   },
-  caption: 'Arrows start on electrons, never on a + or on the H. The two-headed arrow joins two drawings of one cation.',
+  caption: 'Arrows start on electrons, never on a + or on the H. The two-headed arrow joins the two resonance forms.',
 });
 
 /* ======================================================================
