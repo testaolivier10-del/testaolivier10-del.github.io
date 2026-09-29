@@ -142,9 +142,9 @@ document.addEventListener('DOMContentLoaded', function(){
     { id:'k2', t:'Diacid + <b>diamine</b>', right:'amide',
       why:'A polyamide. Nylon 6,6 comes from hexamethylenediamine and adipic acid: the first number counts the diamine’s carbons and the second the diacid’s.' },
     { id:'k3', t:'Diol + <b>diisocyanate</b>', right:'neither',
-      why:'A polyurethane. Each O\u2013H adds across the C=N bond of an N=C=O group. The link is a carbamate, part ester and part amide of carbonic acid, so the polymer is neither a polyester nor a polyamide. Nothing is lost, so this is step-growth without being a condensation.' },
+      why:'A polyurethane. Each O\u2013H adds across the C=N bond of an N=C=O group. The link is a carbamate, part ester and part amide of carbonic acid, so the polymer is neither a polyester nor a polyamide. It grows step by step, but nothing is lost, so it is not a condensation.' },
     { id:'k4', t:'<b>Lactic acid</b> with itself', right:'ester',
-      why:'A polyester, PLA. Lactic acid carries an OH and a COOH, so each molecule is its own diol and diacid. Two reactive groups is all the rule asks for, and one molecule can supply both.' }
+      why:'A polyester, PLA. Lactic acid carries an OH and a COOH, so each molecule supplies both partners. Two reactive groups is all the rule asks for, even on a single molecule.' }
   ];
   var OPTS = [ { k:'amide', l:'Polyamide' }, { k:'neither', l:'Neither' }, { k:'ester', l:'Polyester' } ];
 
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function(){
         options: [
           'Each diamine ring puts a bend in the chain',
           'The chains cross-link into a network',
-          'The amides can no longer form hydrogen bonds at all',
+          'The amides lose their N–H and cannot hydrogen-bond',
           'The chains get straighter and stiffer'
         ],
         correctIndex: 0,

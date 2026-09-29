@@ -469,7 +469,7 @@ FIGURES.push({
     s += cell(18, 10, 352, 19, NY6, true, 'nylon 6, chains in opposite directions', 'every facing N–H and C=O is paired', false, true);
     s += cell(390, 10, 352, 19, NY6, false, 'nylon 6, chains in the same direction', 'best fit: half the facing groups unpaired', true, true);
     let o = panel(18, 272, 724, 236);
-    o += tag(380, 294, 'nylon 6,6, as in the figure above: flip either chain end to end and it is the same chain');
+    o += tag(380, 294, 'nylon 6,6 (as in the earlier figure): flip either chain end to end and it is the same chain');
     const r = twoChains(NY66, 38, false, 32, 366, 76, dx);
     o += r.svg;
     o += text(380, 496, 'every facing N–H and C=O is paired, whichever way round the chains lie', { cls: 'fg-tag-good', size: 11 });
