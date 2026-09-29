@@ -396,7 +396,7 @@ FIGURES.push({
     let s = '';
     const cols = [[6, 146], [158, 296], [460, 296]];
     s += tag(76, 22, 'ALKENE');
-    s += tag(158 + 148, 22, 'OsO₄, NMO   (syn)');
+    s += tag(158 + 148, 22, 'OsO₄ (syn)');
     s += tag(460 + 148, 22, 'mCPBA, then H₃O⁺   (anti)');
     const rows = [[34, true], [244, false]];
     for (const [y, cis] of rows) {

@@ -574,7 +574,7 @@ function hyd3(ox, oy) {
   s += curve(P((o.x + hr.x) / 2 + 4, (o.y + hr.y) / 2 + 5), P(o.x + 16, o.y + 8), { bow: -16 });
   return s;
 }
-const HYD_TITLES = ['1 · the π bond takes a proton', '2 · water attacks the cation', '3 · water takes a proton back'];
+const HYD_TITLES = ['1 · the π bond takes a proton', '2 · water attacks the cation', '3 · water removes the extra proton'];
 const HYD_TAGS = ['propene + H₃O⁺', 'a secondary cation on C2', 'an oxonium ion'];
 FIGURES.push({
   id: 'hydration-three-steps',
