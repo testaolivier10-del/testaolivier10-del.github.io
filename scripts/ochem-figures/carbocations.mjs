@@ -454,10 +454,10 @@ FIGURES.push({
     s += tg(68, 66, 'less stable', 'start', 'fg-tag-warn');
     s += tg(68, 314, 'more stable', 'start', 'fg-tag-good');
     const RUNGS = [
-      [96, 'methyl', 'no C–H bonds next door', 'fg-bond-soft', 'fg-tag-warn'],
-      [144, '1° alkyl', '3 C–H bonds next door', 'fg-bond', 'fg-sm'],
-      [192, '2° alkyl   ≈   1° allylic', '6 C–H, or shared by two carbons', 'fg-bond', 'fg-sm'],
-      [240, '3° alkyl   ≈   1° benzylic', '9 C–H, or shared by four carbons', 'fg-bond-hi', 'fg-sm'],
+      [96, 'methyl', 'no carbon on C⁺', 'fg-bond-soft', 'fg-tag-warn'],
+      [144, '1° alkyl', 'one carbon on C⁺', 'fg-bond', 'fg-sm'],
+      [192, '2° alkyl   ≈   1° allylic', 'two carbons on C⁺, or + shared by two', 'fg-bond', 'fg-sm'],
+      [240, '3° alkyl   ≈   1° benzylic', 'three carbons on C⁺, or + shared by four', 'fg-bond-hi', 'fg-sm'],
       [288, 'O or N on the charged carbon', 'an octet on every atom', 'fg-bond-hi', 'fg-tag-good'],
     ];
     for (const [y, name, note, bcls, ncls] of RUNGS) {
@@ -761,8 +761,8 @@ FIGURES.push({
     return s;
   },
   caption: 'Look at where each arrow&rsquo;s tail sits, and which carbon carries the + before and after. Both shifts end at the same tertiary cation.',
-  note: 'A free neopentyl cation barely forms; Worked example 3 explains why the drawing splits the steps anyway.',
-  note: 'A free neopentyl cation barely forms; Worked example 3 explains why the drawing splits the steps anyway.',
+  note: 'A free neopentyl cation barely forms. Worked example 3 explains why such shifts are still drawn as two steps.',
+  note: 'A free neopentyl cation barely forms. Worked example 3 explains why such shifts are still drawn as two steps.',
 });
 
 FIGURES.push({
@@ -858,7 +858,7 @@ FIGURES.push({
   id: 'methyl-shift-example',
   section: 'carbocations',
   anchor: 'the product is <b>2-bromo-2,3-dimethylbutane</b>.</p>',
-  alt: 'Six panels. 1: 3,3-dimethylbutan-2-ol, carbons numbered 1 to 4; a lone pair on the OH oxygen takes the H of H-Br, and the H-Br pair moves onto bromine. 2: the protonated OH2 plus group leaves, a curved arrow carrying the C2-O pair onto oxygen. 3: the secondary cation at C2; a curved arrow starts on the bond from C3 to its upper methyl group and ends at C2. 4: the tertiary cation at C3; bromide ion attacks it with a curved arrow. 5: the product, 2-bromo-2,3-dimethylbutane, renumbered from the end nearer the bromine so the bromine carbon is C2. 6: 2-bromo-3,3-dimethylbutane, the product without a shift, which does not form.',
+  alt: 'Six panels. 1: 3,3-dimethylbutan-2-ol, carbons numbered 1 to 4; a lone pair on the OH oxygen takes the H of H-Br, and the H-Br pair moves onto bromine. 2: the protonated OH2 plus group leaves, a curved arrow carrying the C2-O pair onto oxygen. 3: the secondary cation at C2; a curved arrow starts on the bond from C3 to its upper methyl group and ends at C2. 4: the tertiary cation at C3; bromide ion attacks it with a curved arrow. 5: the product, 2-bromo-2,3-dimethylbutane, renumbered from the end nearer the bromine so the bromine carbon is C2. 6: 3-bromo-2,2-dimethylbutane, the product without a shift, which does not form.',
   viewBox: '0 0 760 666',
   build() {
     let s = '';
@@ -948,13 +948,13 @@ FIGURES.push({
     {
       const x = X[1], y = Y[2];
       s += wpanel(x, y, '6 · WITHOUT A SHIFT (NOT FORMED)');
-      const k = skeleton(x + 60, y + 150); s += k.s;
+      const k = skeleton(x + 60, y + 150, { labels: ['4', '3', '2', '1'] }); s += k.s;
       const c2 = k.v[1], c3 = k.v[2];
       const up3 = at(c3, 90, 44); s += skb(c3, up3) + dot(up3);
       const br = at(c2, 90, 54);
       s += bond(c2, br, { rFrom: 0, rTo: 16 });
       s += atom(br.x, br.y, 'Br', { r: 16 });
-      s += tg(x + 185, y + 208, '2-bromo-3,3-dimethylbutane', 'middle', 'fg-tag-warn');
+      s += tg(x + 185, y + 208, '3-bromo-2,2-dimethylbutane', 'middle', 'fg-tag-warn');
     }
     return s;
   },
@@ -1018,7 +1018,7 @@ FIGURES.push({
     s += tg(644, 262, 'cyclopentyl cation', 'middle', 'fg-tag-good');
     s += sm(644, 280, 'secondary, and nearly strain-free');
     s += rule(36, 296, 724, 296);
-    s += sm(380, 318, 'Two things improve at once: 1° becomes 2°, and a strained four-membered ring becomes a five.');
+    s += sm(380, 318, 'Two things improve at once: 1° becomes 2°, and a strained four-membered ring becomes a five-membered one.');
     return s;
   },
   caption: 'Follow carbons <b>a</b> and <b>b</b> from panel to panel: the new bond between them is what closes the five-membered ring.',
