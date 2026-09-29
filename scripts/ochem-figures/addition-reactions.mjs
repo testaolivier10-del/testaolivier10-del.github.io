@@ -119,7 +119,7 @@ function hbr2(ox, oy) {
   let s = '';
   const [c1, c2, c3, c4] = BUT(ox, oy);
   s += bond(c1, c2, { rFrom: 17, rTo: 0 }) + sk(c2, c3) + sk(c3, c4);
-  s += atom(c1.x, c1.y, 'CH₃', { r: 17, kind: 'hi' });
+  s += atom(c1.x, c1.y, 'CH₃', { r: 17, kind: 'hi' }) + T(c1.x + 4, c1.y + 32, 'C1 got the H');
   s += charge(c2.x, c2.y - 12);
   const br = P(ox + 178, oy + 62);
   s += atom(br.x, br.y, 'Br', { r: 15 });
@@ -231,16 +231,17 @@ function hydrideShift() {
   s += T(646, 240, '2-chloro-2-methylbutane', 'fg-tag-good');
   s += T(646, 256, 'the rearranged chloride');
   s += T(380, 28, 'A hydride shift can turn the 2° cation into a 3° cation before chloride arrives.', 'fg-lbl');
+  s += T(380, 288, 'Chloride also catches some 2° cation before it shifts, which gives 2-chloro-3-methylbutane.');
   return s;
 }
 FIGURES.push({
   id: 'hydride-shift-worked',
   section: 'addition-reactions',
   anchor: 'Every time you draw a carbocation, check for the shift.</div>',
-  viewBox: '0 0 760 270',
-  alt: '3-Methylbut-1-ene plus HCl in four stages. First, curved arrows run from the C1=C2 double bond to the H of H–Cl and from the H–Cl bond to the Cl. Second, the secondary cation on C2; a curved arrow starts on the C3–H bond and ends at C2, moving that hydrogen with its bonding pair. Third, the H now sits on C2 and the positive charge on C3, a tertiary cation; a curved arrow runs from a lone pair of chloride ion to C3. Fourth, the product, 2-chloro-2-methylbutane.',
+  viewBox: '0 0 760 300',
+  alt: '3-Methylbut-1-ene plus HCl in four stages. First, curved arrows run from the C1=C2 double bond to the H of H–Cl and from the H–Cl bond to the Cl. Second, the secondary cation on C2; a curved arrow starts on the C3–H bond and ends at C2, moving that hydrogen with its bonding pair. Third, the H now sits on C2 and the positive charge on C3, a tertiary cation; a curved arrow runs from a lone pair of chloride ion to C3. Fourth, the product, 2-chloro-2-methylbutane. A note says chloride also catches some of the secondary cation before it shifts, giving 2-chloro-3-methylbutane.',
   build: hydrideShift,
-  caption: 'In stage 2, note where the curved arrow starts: on the C&ndash;H bond, not on the H.',
+  caption: 'In stage 2, note where the curved arrow starts: on the C&ndash;H bond, not on the H. The H moves with its bonding pair, as a hydride; an arrow drawn from the H itself would mean a proton transfer, which would leave an alkene instead of a rearranged cation.',
 });
 
 /* ============================================ bromination, perspective ===
@@ -391,7 +392,7 @@ FIGURES.push({
   section: 'addition-reactions',
   anchor: 'which is exactly what "stereospecific" means.</p>',
   viewBox: '0 0 760 440',
-  alt: 'Two rows, both drawn in perspective with wedges toward the reader. Top row, trans-but-2-ene: the bromonium ion in the middle, bromine on the top face. Bromide attacking C2 from below gives, on the left, a dibromide labeled C2 S and C3 R. Bromide attacking C3 from below gives, on the right, a dibromide labeled C2 S and C3 R again. Both paths give the same compound, meso-2,3-dibromobutane. Bottom row, cis-but-2-ene: attack at C2 gives the (2S,3S) dibromide and attack at C3 gives the (2R,3R) dibromide, a pair of enantiomers formed in equal amounts.',
+  alt: 'Two rows, both drawn in perspective with wedges toward the reader. Top row, trans-but-2-ene: the bromonium ion in the middle, bromine on the top face. Bromide attacking C2 from below gives, on the left, a dibromide labeled C2 S and C3 R. Bromide attacking C3 from below gives, on the right, a dibromide labeled C2 R and C3 S. (2S,3R) and (2R,3S) are the same compound, meso-2,3-dibromobutane. Bottom row, cis-but-2-ene: attack at C2 gives the (2S,3S) dibromide and attack at C3 gives the (2R,3R) dibromide, a pair of enantiomers formed in equal amounts.',
   build() {
     let s = '';
     s += rich(20, 26, ['*trans', '-but-2-ene: bromonium ion on the top face'], 'fg-lbl', 'start');
@@ -480,7 +481,7 @@ function ringHalohydrin() {
   s += atom(br.x, br.y, 'Br', { r: 15, kind: 'hi' }) + charge(br.x + 20, br.y - 10);
   const me = at(r.c1, 10, 40);
   s += bond(r.c1, me, { rFrom: 0, rTo: 17 }) + atom(me.x, me.y, 'CH₃', { r: 17 });
-  s += T(r.c1.x - 26, r.c1.y + 22, 'C1', 'fg-tag') + T(r.c1.x - 26, r.c1.y + 38, 'δ+', 'fg-tag-warn');
+  s += T(r.c1.x + 22, r.c1.y + 24, 'C1 δ+', 'fg-tag-warn', 'start');
   const w = P(r.c1.x + 52, r.c1.y + 62);
   s += waterAt(w, [-30, 210], [60, 120]);
   s += curve(P(w.x - 10, w.y - 18), P(r.c1.x + 7, r.c1.y + 12), { bow: -10 });
@@ -506,7 +507,7 @@ function ringHalohydrin() {
   s += T(400, 250, 'on opposite faces', 'fg-tag');
   s += T(520, 150, '+', 'fg-lbl');
   s += panel(530, 8, 220, 254);
-  s += T(640, 32, 'bromonium on the back face', 'fg-tag-good');
+  s += T(640, 32, 'from a bromonium on the back face', 'fg-tag-good');
   s += prod(530, false);
   s += T(640, 234, 'the mirror image,', 'fg-tag');
   s += T(640, 250, 'formed just as often', 'fg-tag');
@@ -538,8 +539,8 @@ function hyd1(ox, oy) {
   s += skDouble(c1, c2, P(ox + 80, oy + 170)) + sk(c2, c3);
   const h = P(ox + 92, oy + 72), o = P(ox + 146, oy + 66);
   s += bond(h, o, { rFrom: 11, rTo: 14 }) + atom(h.x, h.y, 'H', { r: 11, kind: 'hi' });
-  s += waterAt(o, [30, -40], [90]);
-  s += charge(o.x - 20, o.y - 14);
+  s += waterAt(o, [30, -30], [270]);
+  s += charge(o.x + 2, o.y - 22);
   s += curve(P(ox + 76, oy + 132), P(ox + 88, oy + 86), { bow: -12 });
   s += curve(P(ox + 119, oy + 70), P(o.x - 8, o.y + 13), { bow: 12 });
   s += T(c1.x - 8, c1.y + 20, 'C1') + T(c2.x, c2.y + 30, 'C2');
@@ -549,7 +550,7 @@ function hyd2(ox, oy) {
   let s = '';
   const [c1, c2, c3] = PROP(ox, oy);
   s += bond(c1, c2, { rFrom: 17, rTo: 0 }) + sk(c2, c3);
-  s += atom(c1.x, c1.y, 'CH₃', { r: 17, kind: 'hi' });
+  s += atom(c1.x, c1.y, 'CH₃', { r: 17, kind: 'hi' }) + T(c1.x + 4, c1.y + 32, 'C1 got the H');
   s += charge(c2.x, c2.y - 12);
   const o = P(ox + 176, oy + 74);
   s += waterAt(o, [60, -10], [200, 130]);

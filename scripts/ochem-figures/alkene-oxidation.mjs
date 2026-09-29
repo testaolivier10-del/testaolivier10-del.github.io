@@ -306,7 +306,7 @@ FIGURES.push({
   section: 'alkene-oxidation',
   anchor: 'an <b><i>anti</i> diol</b>.',
   lessons: ['alkene-oxidation'],
-  alt: 'Three stacked panels. 1: the epoxide of cyclohexene, its O bridging the two carbons on wedges, toward the reader. 2: the O is protonated; a water molecule below the lower carbon, joined to it by a hashed line to show it is behind the page, attacks it from the back face, with one curved arrow from the water lone pair to that carbon and one from the breaking C–O bond to the positive oxygen. 3: trans-cyclohexane-1,2-diol, one OH on a wedge and the other on a hash.',
+  alt: 'Three stacked panels. 1: the epoxide of cyclohexene, its O bridging the two carbons on wedges, toward the reader. 2: the O is protonated; a water molecule below the lower carbon, labelled as behind the page, with a dashed curved arrow, attacks it from the back face, with one curved arrow from the water lone pair to that carbon and one from the breaking C–O bond to the positive oxygen. 3: trans-cyclohexane-1,2-diol, one OH on a wedge and the other on a hash.',
   viewBox: '0 0 340 502',
   build() {
     let s = '';
@@ -325,12 +325,12 @@ FIGURES.push({
       const o = Q(152, 88), h = Q(194, 88), w = Q(146, 156);
       g += wedge(v[5], o, { rFrom: 0, rTo: 13, width: 8 }) + wedge(v[4], o, { rFrom: 0, rTo: 13, width: 8 });
       g += B(o, h, 'O', 'H') + A(o, 'O', { kind: 'hi' }) + A(h, 'H') + charge(Q(162, 70).x, Q(162, 70).y, '+');
-      g += hash(v[4], w, { rFrom: 6, rTo: 26, width: 10, rungs: 6 });
       g += A(w, 'H₂O');
       g += lonePair(w.x, w.y, 228, { dist: 24 });
       g += tag(Q(146, 190).x, Q(146, 190).y, 'behind the page');
       // water's lone pair to the lower ring carbon; the C–O bond onto O+
-      g += curve(Q(124, 132), Q(100, 110), { bow: -10, size: 7 });
+      // dashed: this arrow runs behind the page
+      g += curve(Q(124, 132), Q(100, 110), { bow: -10, size: 7 }).replace('class="fg-arrow"', 'class="fg-arrow" stroke-dasharray="4 3"');
       g += curve(mid(v[4], o, 0.5), Q(146, 101), { bow: 14, size: 7 });
       g += tag(Q(262, 128).x, Q(262, 128).y, 'water attacks from');
       g += tag(Q(262, 144).x, Q(262, 144).y, 'the back, opposite');
