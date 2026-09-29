@@ -255,8 +255,9 @@ FIGURES.push({
     const clA = axialEnd(A, 0, 40);
     s += bond(A[0], clA, { rFrom: 0, rTo: 15, cls: 'fg-bond-hi' }) + atom(clA.x, clA.y, 'Cl', { kind: 'warn' });
     {
-      const h5 = axialEnd(A, 5, 38);
-      s += bond(A[5], h5, { rFrom: 0, rTo: 11, cls: 'fg-bond-hi' }) + atom(h5.x, h5.y, 'H', { r: 11, kind: 'hi' });
+      const h5 = axialEnd(A, 5, 30);
+      s += bond(A[5], h5, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+      s += text(h5.x - 12, h5.y + 6, 'H', { cls: 'fg-tag-good', size: 12 });
       const h1 = axialEnd(A, 1, 26);
       s += bond(A[1], h1, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
       s += text(h1.x - 12, h1.y + 2, 'H', { cls: 'fg-tag-good', size: 12 });
@@ -275,14 +276,16 @@ FIGURES.push({
     const clB = equatorialEnd(B, 0, 40);
     s += bond(B[0], clB, { rFrom: 0, rTo: 15, cls: 'fg-bond-hi' }) + atom(clB.x, clB.y, 'Cl', { kind: 'warn' });
     {
-      const h5 = axialEnd(B, 5, 38);
-      s += bond(B[5], h5, { rFrom: 0, rTo: 11, cls: 'fg-bond-soft' }) + atom(h5.x, h5.y, 'H', { r: 11 });
+      const h5 = axialEnd(B, 5, 30);
+      s += bond(B[5], h5, { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+      s += text(h5.x - 12, h5.y + 6, 'H', { cls: 'fg-lbl', size: 12 });
       const h1 = axialEnd(B, 1, 26);
       s += bond(B[1], h1, { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
       s += text(h1.x - 12, h1.y + 2, 'H', { cls: 'fg-lbl', size: 12 });
     }
-    const hB = axialEnd(B, 0, 34);
-    s += bond(B[0], hB, { rFrom: 0, rTo: 11 }) + atom(hB.x, hB.y, 'H', { r: 11 });
+    const hB = axialEnd(B, 0, 30);
+    s += bond(B[0], hB, { rFrom: 0, rTo: 0 });
+    s += text(hB.x - 12, hB.y + 2, 'H', { cls: 'fg-lbl', size: 12 });
     s += text(B[0].x - 4, B[0].y + 22, 'C1', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
     s += text(B[1].x + 12, B[1].y - 8, 'C2', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
     s += text(B[5].x - 14, B[5].y + 10, 'C6', { cls: 'fg-tag-mut', size: 11, anchor: 'end' });
@@ -302,7 +305,7 @@ FIGURES.push({
   id: 'zaitsev-hofmann',
   section: TOPIC,
   anchor: '<!-- fig:zaitsev-hofmann:start -->',
-  alt: '2-Bromo-2-methylbutane drawn with every carbon labeled. C2 carries the bromine and is the alpha carbon. Its three neighbors are beta carbons: C1 and the methyl branch, each a CH3 on the outside of the molecule, and C3, a CH2 tucked between C2 and C4. With ethoxide, a small base, the hydrogen comes mostly from C3, giving 2-methylbut-2-ene, a trisubstituted alkene, about 70 percent. With tert-butoxide, a bulky base, it comes mostly from a CH3, giving 2-methylbut-1-ene, a disubstituted alkene, about 72 percent.',
+  alt: '2-Bromo-2-methylbutane drawn with every carbon labeled. C2 carries the bromine and is the alpha carbon. Its three neighbors are beta carbons: C1 and the methyl branch, each a CH3 on the outside of the molecule, and C3, a CH2 tucked between C2 and C4. With ethoxide, a small base, the hydrogen comes mostly from C3, giving 2-methylbut-2-ene, a trisubstituted alkene, about 70 percent. With tert-butoxide, a bulky base, it comes mostly from a CH3, giving 2-methylbut-1-ene, a disubstituted alkene, about 73 percent.',
   viewBox: '0 0 760 420',
   build() {
     let s = panel(0, 0, 760, 196);
@@ -314,8 +317,8 @@ FIGURES.push({
     s += atom(C4.x, C4.y, 'CH₃', { r: 17 }) + atom(Cm.x, Cm.y, 'CH₃', { r: 17 });
     s += atom(Br.x, Br.y, 'Br', { kind: 'warn' });
     s += tg(262, 138, 'β · C1');
-    s += tg(376, 50, 'β', 'fg-tag', { anchor: 'start' });
-    s += tg(322, 132, 'α', 'fg-tag', { anchor: 'end' });
+    s += tg(316, 50, 'β', 'fg-tag', { anchor: 'end' });
+    s += tg(362, 74, 'α · C2', 'fg-tag', { anchor: 'start' });
     s += tg(422, 138, 'β · C3');
     s += tg(502, 138, 'C4', 'fg-tag-mut');
     s += tg(226, 98, 'CH₃ hydrogens:', 'fg-tag-good', { anchor: 'end' });
@@ -342,7 +345,7 @@ FIGURES.push({
     {
       const a = P(514, 336), b = P(554, 312), c = P(594, 336), d = P(634, 312), m = P(554, 272);
       s += bond(a, b, { order: 2, rFrom: 0, rTo: 0, gap: 3.4 }) + sk(b, m, true) + sk(b, c, true) + sk(c, d);
-      s += tg(574, 368, '2-methylbut-1-ene · about 72%', 'fg-tag-good');
+      s += tg(574, 368, '2-methylbut-1-ene · about 73%', 'fg-tag-good');
       s += sm(574, 388, '2 carbons on the C=C: disubstituted');
       s += sm(574, 406, 'the Hofmann product');
     }
@@ -464,7 +467,9 @@ FIGURES.push({
     const A = chair(126, CY, K);
     s += chairRing(A);
     s += put(A[C1], axialEnd(A, C1, 34), 'Cl', { r: 14, kind: 'warn', cls: 'fg-bond-hi' });
-    s += put(A[C2], axialEnd(A, C2, 32), 'H', { r: 11, size: 11, kind: 'hi', cls: 'fg-bond-hi' });
+    const aH2 = axialEnd(A, C2, 26);
+    s += bond(A[C2], aH2, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
+    s += text(aH2.x - 12, aH2.y + 6, 'H', { cls: 'fg-tag-good', size: 12 });
     const aH6 = axialEnd(A, C6, 22);
     s += bond(A[C6], aH6, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
     s += text(aH6.x - 12, aH6.y + 2, 'H', { cls: 'fg-tag-good', size: 12 });
@@ -479,10 +484,10 @@ FIGURES.push({
     s += panel(258, 4, 244, 312, { kind: 'warn' });
     const B = chair(380, CY, K);
     s += chairRing(B);
-    s += put(B[C1], equatorialEnd(B, C1, 34), 'Cl', { r: 14, kind: 'warn' });
+    s += put(B[C1], equatorialEnd(B, C1, 34), 'Cl', { r: 14, kind: 'warn', cls: 'fg-bond-hi' });
     s += put(B[C2], equatorialEnd(B, C2, 34), 'iPr', { r: 15, size: 10 });
     s += put(B[C5], equatorialEnd(B, C5, 30), 'CH₃', { r: 15, size: 9.5 });
-    s += loc(B[C1], -2, 24, 'C1') + loc(B[C2], -18, 12, 'C2') + loc(B[C6], -4, -10, 'C6');
+    s += loc(B[C1], -24, 14, 'C1') + loc(B[C2], -18, 12, 'C2') + loc(B[C6], -4, -10, 'C6');
     s += tg(380, 30, '2 · menthyl chloride');
     s += tg(380, 262, 'Cl equatorial: nothing anti', 'fg-tag-warn');
     s += sm(380, 282, 'this chair cannot react');

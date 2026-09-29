@@ -58,22 +58,22 @@ FIGURES.push({
     };
     // methyl
     let y = 8, c = y + 38;
-    s += row(y, 76, 'METHYL', 'no C on it', 'SN2 only');
+    s += row(y, 76, 'METHYL', '0 C attached', 'SN2 only');
     s += B(P(72, c), 'CH₃', P(140, c), 'Br') + A(P(72, c), 'CH₃', 'hi') + brAt(P(140, c));
     // primary
     y = 92; c = y + 38;
-    s += row(y, 76, 'PRIMARY (1°)', '1 C on it', 'SN2 (E2: bulky base)');
+    s += row(y, 76, 'PRIMARY (1°)', '1 C attached', 'SN2 (E2: bulky base)');
     s += B(P(40, c), 'CH₃', P(100, c), 'CH₂') + B(P(100, c), 'CH₂', P(160, c), 'Br');
     s += A(P(40, c), 'CH₃') + A(P(100, c), 'CH₂', 'hi') + brAt(P(160, c));
     // secondary
     y = 176; c = y + 48;
-    s += row(y, 96, 'SECONDARY (2°)', '2 C on it', 'all four compete');
+    s += row(y, 96, 'SECONDARY (2°)', '2 C attached', 'all four compete');
     const a2 = P(110, c);
     s += armS(a2, 'CH', 150, 56, 'CH₃') + armS(a2, 'CH', 210, 56, 'CH₃');
     s += B(a2, 'CH', P(172, c), 'Br') + A(a2, 'CH', 'hi') + brAt(P(172, c));
     // tertiary
     y = 280; c = y + 68;
-    s += row(y, 136, 'TERTIARY (3°)', '3 C on it', 'no SN2: back blocked', true);
+    s += row(y, 136, 'TERTIARY (3°)', '3 C attached', 'no SN2: back blocked', true);
     const a3 = P(110, c);
     s += armS(a3, 'C', 90, 46, 'CH₃') + armS(a3, 'C', 180, 58, 'CH₃') + armS(a3, 'C', 270, 46, 'CH₃');
     s += B(a3, 'C', P(172, c), 'Br') + A(a3, 'C', 'hi') + brAt(P(172, c));
@@ -95,7 +95,7 @@ FIGURES.push({
     s += box(8, 150, 'FAST BY BOTH SN1 AND SN2', 'good');
     // allyl bromide
     const a1 = P(26, 104), a2 = P(56, 86), a3 = P(86, 104), abr = P(126, 86);
-    s += skDouble(a1, a2, P(56, 120)) + skb(a2, a3) + skb(a3, abr, 0, 14) + brAt(abr, [270, 0, 70]);
+    s += skDouble(a1, a2, P(56, 120)) + skb(a2, a3) + skb(a3, abr, 0, 14) + brAt(abr, [270, 30, 90]);
     s += tg(76, 142, 'allylic: next to C=C', 'mut');
     // benzyl bromide
     const ring = polyPts(214, 96, 6, 22, 90);
@@ -108,7 +108,7 @@ FIGURES.push({
     s += box(166, 150, 'NO SN1 AND NO SN2', 'warn');
     // vinyl bromide
     const v1 = P(36, 252), v2 = P(70, 232), vbr = P(110, 252);
-    s += skDouble(v1, v2, P(70, 268)) + skb(v2, vbr, 0, 14) + brAt(vbr, [300, 30, 110]);
+    s += skDouble(v1, v2, P(70, 268)) + skb(v2, vbr, 0, 14) + brAt(vbr, [270, 30, 90]);
     s += tg(76, 298, 'vinyl: on the C=C', 'mut');
     // bromobenzene
     const r2 = polyPts(200, 246, 6, 22, 0);
@@ -169,7 +169,7 @@ function dbu(cx, cy, r, form) {
     s += lpN(nTop, 270);
   }
   if (form === 'top') { s += chg(nTop.x + 14, nTop.y - 16, '+'); s += lpN(nS, 90); }
-  if (form === 'bottom') { s += chg(nS.x + 14, nS.y + 16, '+'); s += lpN(nTop, 180); }
+  if (form === 'bottom') { s += chg(nS.x + 13, nS.y - 15, '+'); s += lpN(nTop, 180); }
   return { s, nTop, nS, cS, hc };
 }
 FIGURES.push({
@@ -184,8 +184,8 @@ FIGURES.push({
     const D = dbu(96, 86, 28, 'neutral');
     s += D.s;
     s += tg(224, 62, 'basic N', 'good', 'start');
-    s += tg(224, 80, 'sits in the crook', 'mut', 'start');
-    s += tg(224, 96, 'between two rings', 'mut', 'start');
+    s += tg(224, 80, 'right beside the', 'mut', 'start');
+    s += tg(224, 96, 'ring fusion', 'mut', 'start');
     s += box(146, 170, 'ITS CONJUGATE ACID: CHARGE SHARED');
     const L = dbu(44, 244, 24, 'top');
     const R = dbu(206, 244, 24, 'bottom');
@@ -205,7 +205,7 @@ function bulkyBody(y0) {
   const ca = P(232, y0 + 118), cb = P(164, y0 + 118);
   const br = P(232, y0 + 62), hb = P(164, y0 + 172), me = P(298, y0 + 118);
   s += B(cb, 'CH₂', ca, 'C') + B(ca, 'C', br, 'Br') + B(ca, 'C', me, 'CH₃') + B(cb, 'CH₂', hb, 'H');
-  const ha = arm(ca, 'C', 300, 40, 'H', 'hash');
+  const ha = arm(ca, 'C', 300, 40, 'H');
   s += ha.s;
   s += A(cb, 'CH₂') + A(ca, 'C', 'warn') + A(me, 'CH₃') + A(hb, 'H', 'hi');
   s += A(br, 'Br') + lp(br, 270) + lp(br, 180) + lp(br, 0);
@@ -304,7 +304,7 @@ FIGURES.push({
   lessons: ['substrate-effects'],
   anchor: 'Worked example 4 — the borderline case',
   alt: 'Two stacked panels. Top, in acetone: a bare azide ion, drawn as N=N=N with a minus charge on each end nitrogen and a plus on the middle one, attacks (R)-2-bromobutane from the side opposite the bromine; curved arrows run from an end-nitrogen lone pair to the carbon and from the C–Br bond onto bromine. The product, (S)-2-azidobutane, has its other three groups flipped to the other side: inversion. Bottom, in water: the same azide ion with water molecules hydrogen-bonded to both end nitrogens by dashed lines, so it attacks more slowly. The products listed are inverted 2-azidobutane from SN2, racemic 2-azidobutane and butan-2-ol from SN1, and a little but-2-ene from E1.',
-  viewBox: '0 0 340 510',
+  viewBox: '0 0 340 528',
   build() {
     let s = '';
     s += box(8, 290, 'IN ACETONE: AZIDE IS BARE', 'good');
@@ -324,7 +324,7 @@ FIGURES.push({
     s += tg(262, 236, '(S)-2-azidobutane', 'good');
     s += tg(262, 254, 'inverted', 'mut');
 
-    s += box(306, 196, 'IN WATER: AZIDE IS HELD BACK', 'warn');
+    s += box(306, 214, 'IN WATER: AZIDE IS HELD BACK', 'warn');
     const Z2 = azide(130, 386);
     s += Z2.s;
     const w1 = water(P(80, 364), 150, 20), w2 = water(P(80, 412), 210, 340);
@@ -332,9 +332,10 @@ FIGURES.push({
     s += w1.s + w2.s + w3.s + w4.s;
     s += hb(w1.h2, P(Z2.n1.x - 11, Z2.n1.y - 7)) + hb(w2.h2, P(Z2.n1.x - 11, Z2.n1.y + 7));
     s += hb(w3.h2, P(Z2.n3.x + 11, Z2.n3.y - 7)) + hb(w4.h2, P(Z2.n3.x + 11, Z2.n3.y + 7));
-    s += tg(170, 450, 'SN2: some inverted azide', 'mut');
-    s += tg(170, 468, 'SN1: racemic azide + butan-2-ol', 'mut');
-    s += tg(170, 486, 'E1: a little but-2-ene', 'mut');
+    s += tg(170, 450, 'SN2: inverted 2-azidobutane', 'mut');
+    s += tg(170, 468, 'SN1: racemic 2-azidobutane', 'mut');
+    s += tg(170, 486, 'and butan-2-ol', 'mut');
+    s += tg(170, 504, 'E1: a little but-2-ene', 'mut');
     return s;
   },
   caption: 'Compare the azide in the two panels: nothing surrounds it in acetone, while in water the dashed hydrogen bonds hold on to both ends.',
@@ -353,7 +354,8 @@ function neoBody(y0, verdict) {
   s += tg(cb.x + 28, cb.y + 6, 'β');
   // ethoxide's backside path, blocked by a methyl on the beta carbon
   s += lbl(28, y0 + 128, 'EtO⁻', 'start');
-  s += arrow(P(66, y0 + 124), P(104, y0 + 124), { muted: true }) + cross(112, y0 + 124);
+  s += arrow(P(66, y0 + 124), P(104, y0 + 124), { muted: true });
+  if (verdict) s += cross(112, y0 + 124);
   if (verdict) {
     s += tg(104, y0 + 196, 'β carbon: no H,', 'warn');
     s += tg(104, y0 + 212, 'so no E2', 'warn');
@@ -386,15 +388,16 @@ FIGURES.push({
   id: 'se-chart',
   section: 'substrate-effects',
   anchor: '<h3>Quick reference</h3>',
-  alt: 'Decision chart in three stacked steps. Step 1, the substrate: methyl or primary allows SN2, and E2 only with a bulky base; secondary allows all four; tertiary allows SN1 and E1, or E2, and never SN2. Step 2, the reagent: a strong nucleophile that is a weak base, such as iodide, thiolate, azide or cyanide, gives SN2; a strong base that is not bulky, such as hydroxide, alkoxide or amide, gives SN2 on primary and E2 on secondary and tertiary; a strong bulky base, tert-butoxide or DBU, gives E2 and the Hofmann product; a weak reagent, often the solvent, such as water, an alcohol or a carboxylic acid, gives SN1 and E1 together. Step 3, solvent and heat: polar aprotic favors SN2 and E2, polar protic favors SN1 and E1, and heat favors elimination.',
+  alt: 'Decision chart in three stacked steps. Step 1, the substrate: methyl allows SN2 only, because it has no beta carbon and cannot eliminate; primary allows SN2, and E2 only with a bulky base; secondary allows all four; tertiary allows SN1 and E1, or E2, and never SN2. Step 2, the reagent: a strong nucleophile that is a weak base, such as iodide, thiolate, azide or cyanide, gives SN2; a strong base that is not bulky, such as hydroxide, alkoxide or amide, gives SN2 on primary and E2 on secondary and tertiary; a strong bulky base, tert-butoxide or DBU, gives E2 and the Hofmann product; a weak reagent, often the solvent, such as water, an alcohol or a carboxylic acid, gives SN1 and E1 together. Step 3, solvent and heat: polar aprotic favors SN2 and E2, polar protic favors SN1 and E1, and heat favors elimination.',
   viewBox: '0 0 700 452',
   build() {
     let s = '';
     s += tg(350, 24, 'STEP 1 · THE SUBSTRATE RULES MECHANISMS OUT');
-    const col = (x, t, a, b) => panel(x, 36, 216, 84) + tg(x + 108, 62, t) + tg(x + 108, 84, a, 'good') + tg(x + 108, 104, b, 'mut');
-    s += col(8, 'METHYL OR 1°', 'SN2', 'E2 only if base is bulky');
-    s += col(242, 'SECONDARY (2°)', 'all four possible', 'the reagent decides');
-    s += col(476, 'TERTIARY (3°)', 'SN1 + E1, or E2', 'never SN2');
+    const col = (x, t, a, b) => panel(x, 36, 166, 84) + tg(x + 83, 62, t) + tg(x + 83, 84, a, 'good') + tg(x + 83, 104, b, 'mut');
+    s += col(8, 'METHYL', 'SN2 only', 'no β C: no E2');
+    s += col(180, 'PRIMARY (1°)', 'SN2', 'E2 if base is bulky');
+    s += col(352, 'SECONDARY (2°)', 'all four possible', 'the reagent decides');
+    s += col(524, 'TERTIARY (3°)', 'SN1 + E1, or E2', 'never SN2');
     s += tg(350, 152, 'STEP 2 · THE REAGENT DECIDES AMONG WHAT IS LEFT');
     const rows = [
       ['strong nucleophile, weak base', 'I⁻, RS⁻, N₃⁻, ⁻CN', 'SN2', 'good'],
