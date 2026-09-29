@@ -81,10 +81,6 @@
       8:['acyl-reactivity-order','leaving-group-ability'],
       9:['activation-before-acylation'],
       11:['activation-before-acylation','acyl-reactivity-order'] } },
-
-    /* Step 2 is the product sorter and carries the carbon counting with it.
-       3 is why a Grignard adds once, 4 is a pure carbon count, 6 the route
-       chosen on the substrate rather than the target, 7 the DIBAL trap. */
     'nitriles': { n:11, steps:{
       2:['substrate-class','nitrile-as-acyl-level'],
       5:['nitrile-as-acyl-level','reductant-scope','oxidation-level'],
@@ -108,14 +104,6 @@
       9:['aldehyde-oxidizability','addition-equilibrium'],
       12:['aldehyde-oxidizability'],
       14:['aldehyde-oxidizability','addition-equilibrium'] } },
-
-    /* Step 2 is the hands-on "find every carbon", which is the skeleton-reading
-       concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
-       4 is the C–H versus O–H asymmetry, which is a notation rule rather than
-       a counting one. 7 is the five-bond slip, where both are involved. */
-    /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
-       (0, 1 and 5 are explain steps and record nothing). */
-    /* The synthesis chapter. Graded steps are 2, 3, 4, 6, 7. */
     'retrosynthesis': { n:8, steps:{
       2:['disconnection'], 3:['disconnection'], 4:['disconnection','cc-bond-toolkit'],
       6:['disconnection'], 7:['disconnection'] } },
@@ -344,8 +332,6 @@
       9:['alkene-cleavage-scope'],
       11:['alkene-cleavage-scope'],
       12:['redox-stereochemistry','alkene-cleavage-scope'] } },
-
-    /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
     'conjugated-systems': { n:9, steps:{
       2:['conjugation-recognition'],
       3:['conjugation-recognition'],
