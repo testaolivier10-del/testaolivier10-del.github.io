@@ -112,7 +112,7 @@ FIGURES.push({
   lessons: ['amine-structure'],
   anchor: '<h3>Nitrogen&rsquo;s lone pair</h3>',
   viewBox: '0 0 340 236',
-  alt: 'Left: methylamine drawn in 3-D. The nitrogen has a CH3 group straight down, one H on a wedge and one on a dash, and a lone pair pointing straight up, away from all three bonds; the bond angles are about 107 degrees. An arrow labeled plus H+ leads to the right: methylammonium ion, where the lone pair has become a fourth N–H bond, the nitrogen carries a plus charge, and the pKa is 10.6.',
+  alt: 'Left: methylamine drawn in 3-D. The nitrogen has a CH3 group straight down, one H on a wedge and one on a dash, and a lone pair pointing straight up, away from all three bonds; the bond angles are about 107 degrees. An arrow labeled plus H+ leads to the right: methylammonium ion, a tetrahedral nitrogen where the lone pair has become a new N–H bond pointing up, with CH3 to the lower left and two H to the lower right; the nitrogen carries a plus charge, and the pKa is 10.6.',
   build() {
     let s = '';
     /* methylamine */
@@ -127,20 +127,21 @@ FIGURES.push({
     s += tag(80, 72, 'lone pair');
 
     /* the proton transfer */
-    s += arrow(P(146, 112), P(200, 112));
-    s += label(173, 100, '+ H⁺');
+    s += arrow(P(140, 112), P(190, 112));
+    s += label(165, 100, '+ H⁺');
 
-    /* methylammonium */
+    /* methylammonium: new N–H up and CH3 in the page plane about 110° apart;
+       the other two H come toward and away from the reader, down-right. */
     n = P(262, 112);
     s += bond(n, P(262, 62), { rFrom: 16, cls: 'fg-bond-hi' });
-    s += bond(n, P(262, 170), { rFrom: 16, rTo: 18 });
-    s += wedge(n, P(214, 142), { rFrom: 16, width: 9 });
-    s += hash(n, P(310, 142), { rFrom: 16, width: 11, rungs: 4 });
+    s += bond(n, P(216, 138), { rFrom: 16, rTo: 18 });
+    s += wedge(n, P(298, 162), { rFrom: 16, width: 9 });
+    s += hash(n, P(314, 128), { rFrom: 16, width: 11, rungs: 4 });
     s += atom(262, 62, 'H', { kind: 'hi' });
-    s += atom(262, 170, 'CH₃', { r: 18 });
-    s += atom(214, 142, 'H'); s += atom(310, 142, 'H');
+    s += atom(216, 138, 'CH₃', { r: 18 });
+    s += atom(298, 162, 'H'); s += atom(314, 128, 'H');
     s += atom(n.x, n.y, 'N', { kind: 'warn' });
-    s += plusSign(286, 98);
+    s += plusSign(290, 90);
 
     s += tag(80, 210, 'methylamine');
     s += tag(80, 228, 'bond angles ≈ 107°', { cls: 'fg-tag-mut' });
@@ -185,7 +186,7 @@ FIGURES.push({
     s += amine(140);
     s += atom(140, 70, 'H⁺', { kind: 'hi', r: 12 });
     s += curve(P(146, 124), P(146, 84), { bow: -10, size: 7 });
-    s += tag(140, 236, 'pKaH 11.1: a strong base', { cls: 'fg-tag-good' });
+    s += tag(140, 236, 'pKaH 11.1: as basic as any amine', { cls: 'fg-tag-good' });
 
     /* right: a carbon with its own groups */
     s += tag(420, 24, 'A CARBON IS BLOCKED');
@@ -215,7 +216,7 @@ FIGURES.push({
   section: 'amine-structure',
   anchor: 'the mirror-image trick',
   viewBox: '0 0 760 262',
-  alt: 'Three stages of a separation. First, one ether solution holds an amine, R–NH2, and a neutral compound. After shaking with aqueous HCl, the upper ether layer holds the neutral compound and the lower water layer holds the ammonium salt, R–NH3+ Cl−. After the water layer is drained, made basic with NaOH and shaken with fresh ether, the upper ether layer holds the free amine R–NH2 and the lower water layer holds only NaCl.',
+  alt: 'Three stages of a separation. First, one ether solution holds an amine, R–NH2, and a neutral compound. After shaking with aqueous HCl, the upper ether layer holds the neutral compound and the lower water layer holds the ammonium salt, R–NH3+ Cl−. After the water layer is drained into a clean flask, made basic with NaOH and shaken with fresh ether, the upper ether layer holds the free amine R–NH2 and the lower water layer holds sodium chloride and no amine.',
   build() {
     let s = '';
     const W = 176, top = 58, H = 150, split = top + 68;
@@ -237,13 +238,14 @@ FIGURES.push({
     };
     s += box(20, 'THE MIXTURE', ['R–NH₂', '+ a neutral compound']);
     s += box(292, 'AFTER SHAKING WITH HCl(aq)', ['neutral compound'], ['R–NH₃⁺ Cl⁻']);
-    s += box(564, 'AFTER NaOH, THEN FRESH ETHER', ['R–NH₂'], ['Na⁺ Cl⁻ only']);
+    s += box(564, 'NaOH, THEN FRESH ETHER', ['R–NH₂'], ['Na⁺ Cl⁻', '(no amine left)']);
     s += arrow(P(204, 133), P(284, 133));
     s += tag(244, 120, 'HCl(aq)');
     s += arrow(P(476, 133), P(556, 133));
-    s += tag(516, 120, 'NaOH(aq)');
-    s += tag(516, 154, 'added to the', { cls: 'fg-tag-mut' });
-    s += tag(516, 168, 'water layer', { cls: 'fg-tag-mut' });
+    s += tag(516, 106, 'water layer');
+    s += tag(516, 120, 'only + NaOH');
+    s += tag(516, 154, 'in a clean', { cls: 'fg-tag-mut' });
+    s += tag(516, 168, 'flask', { cls: 'fg-tag-mut' });
     s += tag(380, 236, 'the salt is ionic, so it moves to the water', { cls: 'fg-tag-good' });
     s += tag(652, 236, 'the free amine returns to ether', { cls: 'fg-tag-good' });
     return s;
@@ -259,47 +261,50 @@ FIGURES.push({
   section: 'amine-structure',
   anchor: 'cannot invert and is a genuine stereocenter.</div>',
   viewBox: '0 0 760 400',
-  alt: 'A pyramidal amine with groups a, b and c flips through a planar transition state, in brackets, to its mirror image; the lone pair points up in the first form and is in a p orbital in the planar one. Below, in a shaded panel, a quaternary ammonium ion with four groups a, b, c and d and a plus charge has no lone pair and cannot flip.',
+  alt: 'A pyramidal amine with groups a, b and c. On the left the lone pair points up and all three bonds point down. It passes through a planar transition state, in brackets, where the three bonds lie flat and the pair sits in a p orbital above and below the plane. On the right the pair points down and all three bonds point up, with a, b and c still on the same sides and b still on a wedge: the left form reflected top to bottom, which is its mirror image. Below, in a shaded panel, a quaternary ammonium ion with four groups a, b, c and d and a plus charge has no lone pair and cannot flip.',
   build() {
     let s = '';
     const equilibrium = (x1, x2, y) => arrow(P(x1, y - 7), P(x2, y - 7), { muted: true }) + arrow(P(x2, y + 7), P(x1, y + 7), { muted: true });
 
-    /* left pyramid */
+    /* left pyramid: pair up, all three bonds pointing down */
     let n = P(118, 140);
-    s += bond(n, P(118, 198));
-    s += wedge(n, P(64, 108));
-    s += hash(n, P(172, 108));
-    s += atom(118, 198, 'a'); s += atom(64, 108, 'b'); s += atom(172, 108, 'c');
+    s += bond(n, P(72, 178));
+    s += wedge(n, P(150, 194));
+    s += hash(n, P(176, 164));
+    s += atom(72, 178, 'a'); s += atom(150, 194, 'b'); s += atom(176, 164, 'c');
     s += atom(n.x, n.y, 'N', { kind: 'hi' });
     s += lonePair(n.x, n.y, 270, { dist: 26 });
-    s += text(118, 244, 'one pyramidal form', { cls: 'fg-tag-good' });
+    s += text(118, 244, 'pair up, bonds down', { cls: 'fg-tag-good' });
 
-    s += equilibrium(206, 296, 140);
+    s += equilibrium(212, 292, 140);
 
-    /* planar transition state, in brackets */
+    /* planar transition state, drawn side-on like the pyramids: the three
+       bonds lie in one flat plane and the pair sits in a p orbital. */
     s += rule(316, 62, 316, 218); s += rule(316, 62, 330, 62); s += rule(316, 218, 330, 218);
     s += rule(492, 62, 492, 218); s += rule(478, 62, 492, 62); s += rule(478, 218, 492, 218);
     s += text(502, 74, '‡', { cls: 'fg-warn', size: 15 });
     n = P(404, 140);
-    s += bond(n, P(404, 84));
-    s += bond(n, P(350, 178));
-    s += bond(n, P(458, 178));
-    s += atom(404, 84, 'b'); s += atom(350, 178, 'a'); s += atom(458, 178, 'c');
+    s += ellipse(404, 110, 9, 20, 'fg-orb') + ellipse(404, 170, 9, 20, 'fg-orb');
+    s += bond(n, P(346, 140));
+    s += wedge(n, P(446, 156));
+    s += hash(n, P(462, 128));
+    s += atom(346, 140, 'a'); s += atom(446, 156, 'b'); s += atom(462, 128, 'c');
+    s += atom(n.x, n.y, '');
     s += atom(n.x, n.y, 'N', { kind: 'warn' });
     s += text(404, 244, 'planar transition state', { cls: 'fg-tag-warn' });
-    s += text(404, 262, 'the pair is in a p orbital, perpendicular to the page', { cls: 'fg-sm' });
+    s += text(404, 262, 'the pair is in a p orbital, above and below the plane', { cls: 'fg-sm' });
 
-    s += equilibrium(512, 602, 140);
+    s += equilibrium(516, 596, 140);
 
-    /* right pyramid - the mirror image */
+    /* right pyramid: the same molecule reflected top to bottom */
     n = P(660, 140);
-    s += bond(n, P(660, 198));
-    s += hash(n, P(606, 108));
-    s += wedge(n, P(714, 108));
-    s += atom(660, 198, 'a'); s += atom(606, 108, 'b'); s += atom(714, 108, 'c');
+    s += bond(n, P(614, 102));
+    s += wedge(n, P(692, 86));
+    s += hash(n, P(718, 116));
+    s += atom(614, 102, 'a'); s += atom(692, 86, 'b'); s += atom(718, 116, 'c');
     s += atom(n.x, n.y, 'N', { kind: 'hi' });
-    s += lonePair(n.x, n.y, 270, { dist: 26 });
-    s += text(660, 244, 'its mirror image', { cls: 'fg-tag-good' });
+    s += lonePair(n.x, n.y, 90, { dist: 26 });
+    s += text(660, 244, 'pair down, bonds up', { cls: 'fg-tag-good' });
 
     /* the quaternary case, which cannot do any of this */
     s += panel(24, 290, 712, 100, { kind: 'warn' });
@@ -317,7 +322,7 @@ FIGURES.push({
     s += text(214, 370, 'With four different groups it is a real stereocenter.', { cls: 'fg-tag', anchor: 'start' });
     return s;
   },
-  caption: 'Follow group b from the left pyramid to the right one. It moves from the wedge to the dash while a and c stay put, so the right-hand form is the mirror image of the left.',
+  caption: 'Follow the lone pair from top to bottom while a, b and c swing up through the flat plane, like an umbrella turning inside out. The right-hand form is the left one reflected top to bottom, so it is its mirror image.',
 });
 
 /* ----------------------------------------------------------------------
@@ -329,7 +334,7 @@ FIGURES.push({
   lessons: ['amine-structure'],
   anchor: 'a rise, then a fall.</p>',
   viewBox: '0 0 340 360',
-  alt: 'Top: methylammonium ion, CH3–NH3+. Each of its three N–H hydrogens has a dashed hydrogen bond to a water molecule, so three waters are held; pKaH 10.6. Bottom: trimethylammonium ion, (CH3)3NH+. It has one N–H hydrogen and one dashed hydrogen bond to one water; pKaH 9.8.',
+  alt: 'Top: methylammonium ion, CH3–NH3+. Each of its three N–H hydrogens has a dashed hydrogen bond to a water molecule, so three waters are held; pKa 10.6. Bottom: trimethylammonium ion, (CH3)3NH+. It has one N–H hydrogen and one dashed hydrogen bond to one water; pKa 9.8.',
   build() {
     let s = '';
     const at = (c, deg, len) => P(c.x + Math.cos(deg * Math.PI / 180) * len, c.y + Math.sin(deg * Math.PI / 180) * len);
@@ -355,7 +360,7 @@ FIGURES.push({
     s += plusSign(84, 88);
     s += text(222, 72, 'methylammonium', { cls: 'fg-tag', anchor: 'start' });
     s += text(222, 144, 'three waters held', { cls: 'fg-tag-good', anchor: 'start' });
-    s += text(222, 162, 'pKaH 10.6', { cls: 'fg-tag-good', anchor: 'start' });
+    s += text(222, 162, 'pKa 10.6', { cls: 'fg-tag-good', anchor: 'start' });
 
     s += rule(12, 208, 328, 208);
 
@@ -365,7 +370,7 @@ FIGURES.push({
     s += text(222, 246, 'trimethyl-', { cls: 'fg-tag', anchor: 'start' });
     s += text(222, 262, 'ammonium', { cls: 'fg-tag', anchor: 'start' });
     s += text(222, 318, 'one water held', { cls: 'fg-tag-warn', anchor: 'start' });
-    s += text(222, 336, 'pKaH 9.8', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += text(222, 336, 'pKa 9.8', { cls: 'fg-tag-warn', anchor: 'start' });
     return s;
   },
   caption: 'Count the dashed hydrogen bonds to water around each ion. Each one needs an N&ndash;H hydrogen, and every methyl takes the place of one.',
@@ -533,7 +538,7 @@ FIGURES.push({
   section: 'amine-structure',
   anchor: 'even less basic than that number suggests.</p>',
   viewBox: '0 0 340 356',
-  alt: 'Top: acetamide protonated on oxygen, drawn as two resonance contributors. In the first, the oxygen carries the H and the plus charge, and arrows push the nitrogen lone pair into the C–N bond and the C=O pi bond onto oxygen. In the second, the C–O bond is single, the C–N bond is double and the plus charge is on nitrogen. Label: proton on O, charge shared, pKaH about −1. Bottom: acetamide protonated on nitrogen, CH3–C(=O)–NH3+, which can be drawn only one way. Label: proton on N, one structure, pKaH about −7.',
+  alt: 'Top: acetamide protonated on oxygen, drawn as two resonance contributors. In the first, the oxygen carries the H and the plus charge, and arrows push the nitrogen lone pair into the C–N bond and the C=O pi bond onto oxygen. In the second, the C–O bond is single, the C–N bond is double and the plus charge is on nitrogen. Label: proton on O, charge shared, pKa about 0. Bottom: acetamide protonated on nitrogen, CH3–C(=O)–NH3+, which can be drawn only one way. Label: proton on N, one structure, pKa about −7.',
   build() {
     let s = '';
     /* O-protonated, contributor 1 */
@@ -564,7 +569,7 @@ FIGURES.push({
     s += plusSign(t.right.x + 8, t.right.y + 32);
 
     s += tag(170, 172, 'proton on O: the charge is shared by O and N', { cls: 'fg-tag-good' });
-    s += tag(170, 190, 'pKaH ≈ −1', { cls: 'fg-tag-good' });
+    s += tag(170, 190, 'pKa ≈ 0', { cls: 'fg-tag-good' });
 
     s += rule(12, 206, 328, 206);
 
@@ -581,7 +586,7 @@ FIGURES.push({
     s += text(250, 250, 'one structure', { cls: 'fg-tag-warn', anchor: 'start' });
     s += text(250, 266, 'only', { cls: 'fg-tag-warn', anchor: 'start' });
     s += tag(170, 330, 'proton on N: the pair is used up in the N–H bond', { cls: 'fg-tag-warn' });
-    s += tag(170, 348, 'pKaH ≈ −7', { cls: 'fg-tag-warn' });
+    s += tag(170, 348, 'pKa ≈ −7', { cls: 'fg-tag-warn' });
     return s;
   },
   caption: 'Count the contributors in each panel: two for the proton on oxygen, one for the proton on nitrogen.',
@@ -598,12 +603,12 @@ FIGURES.push({
   lessons: ['amine-structure'],
   anchor: '<h3>Two nitrogen heterocycles',
   viewBox: '0 0 340 474',
-  alt: 'Two rings drawn tilted, with a p orbital standing up and down from every ring atom. Top, pyridine: six ring atoms, each p orbital holds one electron, six pi electrons in all. The nitrogen lone pair sits in a separate sp2 lobe that points outward in the plane of the ring, outside the pi system; pKaH 5.2. Bottom, pyrrole: five ring atoms. The four carbon p orbitals hold one electron each and the nitrogen p orbital holds two, the lone pair, making six pi electrons; the N–H bond points outward in the ring plane; pKaH about −4, measured for a proton on carbon.',
+  alt: 'Two rings drawn tilted, with a p orbital standing up and down from every ring atom (the lower half is hidden behind the ring for the back atoms). Top, pyridine: six ring atoms, each p orbital holds one electron, six pi electrons in all. The nitrogen lone pair sits in a separate sp2 lobe that points outward in the plane of the ring, outside the pi system; pKaH 5.2. Bottom, pyrrole: five ring atoms. The four carbon p orbitals hold one electron each and the nitrogen p orbital holds two, the lone pair, making six pi electrons; the N–H bond points outward in the ring plane; pKaH about −4, measured for a proton on carbon.',
   build() {
     let s = '';
     const k = 0.5;
-    const ringAtoms = (cx, cy, Rr, n, kk = k) => Array.from({ length: n }, (_, i) => {
-      const th = (i * 360 / n) * Math.PI / 180;       // i = 0 is the nitrogen, on the right
+    const ringAtoms = (cx, cy, Rr, n, kk = k, rot = 0) => Array.from({ length: n }, (_, i) => {
+      const th = (rot + i * 360 / n) * Math.PI / 180;       // i = 0 is the nitrogen, on the right
       return P(cx + Rr * Math.cos(th), cy + kk * Rr * Math.sin(th));
     });
     /* Back atoms' lobes first, then the ring bonds, then the front atoms'
@@ -611,10 +616,13 @@ FIGURES.push({
     const drawRing = (pts, nDots, cy) => {
       let back = '', front = '', bonds = '';
       pts.forEach((p, i) => {
-        let g = ellipse(p.x, p.y - 17, 7, 14, 'fg-orb') + ellipse(p.x, p.y + 17, 7, 14, 'fg-orb');
+        const isBack = p.y < cy - 0.5;
+        /* a back atom's lower lobe is hidden behind the ring, so it is
+           left out; that keeps every lobe clear of its neighbours */
+        let g = ellipse(p.x, p.y - 17, 7, 14, 'fg-orb') + (isBack ? '' : ellipse(p.x, p.y + 17, 7, 14, 'fg-orb'));
         if (nDots[i] === 1) g += dot(p.x, p.y - 22);
         if (nDots[i] === 2) g += dot(p.x, p.y - 27) + dot(p.x, p.y - 19);
-        if (p.y < cy - 0.5) back += g; else front += g;
+        if (isBack) back += g; else front += g;
       });
       pts.forEach((p, i) => { bonds += bond(p, pts[(i + 1) % pts.length], { rFrom: i === 0 ? 11 : 0, rTo: (i + 1) % pts.length === 0 ? 11 : 0 }); });
       return back + bonds + front;
@@ -627,6 +635,7 @@ FIGURES.push({
     let nAt = pts[0];
     s += ellipse(nAt.x + 30, nAt.y, 20, 8, 'fg-orb-alt');
     s += dot(nAt.x + 36, nAt.y - 3) + dot(nAt.x + 36, nAt.y + 3);
+    s += atom(nAt.x, nAt.y, '', { r: 11 });
     s += atom(nAt.x, nAt.y, 'N', { kind: 'hi', r: 11 });
     s += text(nAt.x + 30, nAt.y - 16, 'sp²', { cls: 'fg-tag', anchor: 'middle' });
     s += text(pts[3].x - 12, pts[3].y - 24, 'p', { cls: 'fg-tag-mut', anchor: 'end' });
@@ -638,11 +647,13 @@ FIGURES.push({
 
     /* pyrrole */
     s += tag(20, 270, 'PYRROLE', { anchor: 'start' });
-    pts = ringAtoms(128, 342, 58, 5, 0.66);
+    pts = ringAtoms(124, 342, 58, 5, 0.6, 18);   // turned 18° so no two atoms line up one above the other
     s += drawRing(pts, [2, 1, 1, 1, 1], 342);
     nAt = pts[0];
-    s += bond(nAt, P(nAt.x + 40, nAt.y), { rFrom: 11, rTo: 11 });
-    s += atom(nAt.x + 40, nAt.y, 'H', { r: 11 });
+    const hAt = P(nAt.x + 38 * Math.cos(18 * Math.PI / 180), nAt.y + 38 * 0.6 * Math.sin(18 * Math.PI / 180));
+    s += bond(nAt, hAt, { rFrom: 11, rTo: 11 });
+    s += atom(hAt.x, hAt.y, 'H', { r: 11 });
+    s += atom(nAt.x, nAt.y, '', { r: 11 });
     s += atom(nAt.x, nAt.y, 'N', { kind: 'warn', r: 11 });
     s += text(nAt.x + 14, nAt.y - 30, 'lone pair', { cls: 'fg-tag-warn', anchor: 'start' });
     s += tag(170, 420, 'lone pair in the p orbital: two of the');
@@ -661,25 +672,31 @@ FIGURES.push({
   section: 'amine-structure',
   anchor: 'Aziridine',
   viewBox: '0 0 340 190',
-  alt: 'Left: aziridine, a three-membered ring of one N–H nitrogen and two CH2 carbons, with ring bond angles of about 60 degrees; pKaH 8.0. Right: dimethylamine, an N–H nitrogen with two CH3 groups and no ring; pKaH 10.7.',
+  alt: 'Left: aziridine, a three-membered ring of one N–H nitrogen and two CH2 carbons, with ring bond angles of about 60 degrees; pKaH 8.0. Right: dimethylamine, a pyramidal nitrogen with its lone pair up and an H and two CH3 groups pointing down, and no ring; pKaH 10.7.',
   build() {
     let s = '';
-    /* aziridine */
-    const n = P(85, 70), c1 = P(58, 124), c2 = P(112, 124);
+    /* aziridine: an arc marks the 60° angle at the lower-left ring atom */
+    const n = P(85, 58), c1 = P(50, 124), c2 = P(120, 124);
     s += bond(n, c1, { rFrom: 15, rTo: 0 }); s += bond(n, c2, { rFrom: 15, rTo: 0 }); s += bond(c1, c2, { rFrom: 0, rTo: 0 });
-    s += bond(n, P(120, 46), { rFrom: 15, rTo: 12 });
-    s += atom(120, 46, 'H', { r: 12 });
+    s += bond(n, P(122, 34), { rFrom: 15, rTo: 12 });
+    s += atom(122, 34, 'H', { r: 12 });
     s += atom(n.x, n.y, 'N', { kind: 'hi' });
-    s += lonePair(n.x, n.y, 215, { dist: 22 });
-    s += text(85, 114, '60°', { cls: 'fg-tag-mut' });
-    /* dimethylamine */
-    const m = P(255, 84);
-    s += bond(m, P(212, 110), { rFrom: 15, rTo: 18 }); s += bond(m, P(298, 110), { rFrom: 15, rTo: 18 });
-    s += bond(m, P(255, 44), { rFrom: 15, rTo: 12 });
-    s += atom(212, 110, 'CH₃', { r: 18 }); s += atom(298, 110, 'CH₃', { r: 18 });
-    s += atom(255, 44, 'H', { r: 12 });
+    s += lonePair(n.x, n.y, 205, { dist: 22 });
+    {
+      const ang = Math.atan2(n.y - c1.y, n.x - c1.x);
+      const r = 20, e = P(c1.x + Math.cos(ang) * r, c1.y + Math.sin(ang) * r);
+      s += `<path class="fg-bond-soft" d="M${c1.x + r} ${c1.y} A${r} ${r} 0 0 0 ${e.x.toFixed(1)} ${e.y.toFixed(1)}"></path>`;
+      s += text(c1.x + 34, c1.y - 8, '60°', { cls: 'fg-tag-mut', anchor: 'start' });
+    }
+    /* dimethylamine: a pyramid, pair up and three bonds down */
+    const m = P(255, 70);
+    s += bond(m, P(255, 128), { rFrom: 15, rTo: 12 });
+    s += wedge(m, P(208, 104), { rFrom: 15, rTo: 18, width: 9 });
+    s += hash(m, P(302, 104), { rFrom: 15, rTo: 18, width: 11, rungs: 4 });
+    s += atom(208, 104, 'CH₃', { r: 18 }); s += atom(302, 104, 'CH₃', { r: 18 });
+    s += atom(255, 128, 'H', { r: 12 });
     s += atom(m.x, m.y, 'N', { kind: 'hi' });
-    s += lonePair(m.x, m.y, 90, { dist: 22 });
+    s += lonePair(m.x, m.y, -90, { dist: 22 });
     s += tag(85, 160, 'aziridine');
     s += tag(85, 178, 'pKaH 8.0', { cls: 'fg-tag-warn' });
     s += tag(255, 160, 'dimethylamine');
@@ -727,7 +744,7 @@ FIGURES.push({
 
     /* row 1: acetamidine */
     const y1 = 110;
-    s += tag(20, 26, 'AN AMIDINE', { anchor: 'start' });
+    s += tag(20, 26, 'ACETAMIDINE, AN AMIDINE', { anchor: 'start' });
     s += struct(100, y1, {
       top: { txt: 'NH', order: 2, kind: 'hi', lp: -40 },
       left: { txt: 'CH₃' },
@@ -754,7 +771,7 @@ FIGURES.push({
 
     /* row 2: guanidine */
     const y2 = 310;
-    s += tag(20, 226, 'A GUANIDINE', { anchor: 'start' });
+    s += tag(20, 226, 'GUANIDINE', { anchor: 'start' });
     s += struct(100, y2, {
       top: { txt: 'NH', order: 2, kind: 'hi', lp: -40 },
       left: { txt: 'NH₂', lp: 90 },

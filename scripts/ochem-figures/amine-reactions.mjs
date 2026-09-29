@@ -134,7 +134,8 @@ FIGURES.push({
     }
     s += tag(xs[0] - 10, y + 72, 'primary');
     s += tag(xs[1], y + 72, 'secondary');
-    s += tag(xs[2], y + 86, 'tertiary');
+    s += tag(xs[2], y + 72, 'tertiary');
+    s += label(xs[3], y - 40, 'Br⁻');
     s += text(xs[3], y + 72, 'quaternary salt:', { cls: 'fg-tag-warn', size: 11 });
     s += text(xs[3], y + 88, 'no lone pair, so it stops', { cls: 'fg-tag-warn', size: 11 });
     s += tag(380, 408, 'each zigzag arm is an ethyl group, CH₃CH₂');
@@ -159,7 +160,7 @@ FIGURES.push({
     s += arrow(P(198, 244), P(146, 244));
     s += tag(172, 232, '+ again');
     s += tag(70, 140, 'primary');
-    s += tag(262, 140, 'secondary');
+    s += tag(274, 148, 'secondary', { anchor: 'start' });
     s += tag(262, 330, 'tertiary');
     s += text(76, 312, 'quaternary:', { cls: 'fg-tag-warn', size: 11 });
     s += text(76, 328, 'no lone pair', { cls: 'fg-tag-warn', size: 11 });
@@ -300,7 +301,7 @@ FIGURES.push({
       s += atom(cl.x, cl.y, 'Cl', { kind: 'warn' });
       s += atom(c.x, c.y, 'C', { kind: 'hi' });
       s += curve(P(574, 90), P(590, 114), { bow: 12, size: 7 });
-      s += curve(P(626, 158), P(642, 186), { bow: 12, size: 7 });
+      s += curve(P(620, 158), P(639, 180), { bow: 10, size: 7 });
     }
 
     /* 3 - the base takes the proton */
@@ -310,12 +311,14 @@ FIGURES.push({
       const k = acylCore(c, 'dbl'); s += k.s;
       const n = P(146, 374);
       s += bond(c, n, { rTo: 16 });
+      const h2 = P(138, 326);
+      s += bond(n, h2, { rFrom: 16, rTo: 10 }); s += atom(h2.x, h2.y, 'H', { r: 10 });
       const a = amideN(n, 'N⁺', 'warn'); s += a.s;
       s += atom(c.x, c.y, 'C', { kind: 'hi' });
       s += label(56, 424, 'Et₃N');
       s += lonePair(56, 419, 0, { dist: 27 });
       s += curve(P(88, 414), P(133, 414), { bow: -10, size: 7 });
-      s += curve(P(151, 400), P(162, 384), { bow: -10, size: 7 });
+      s += curve(P(153, 400), P(163, 386), { bow: -8, size: 7 });
       s += tag(222, 424, 'Cl⁻');
     }
 
@@ -343,7 +346,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Ethylamine and acetyl chloride (Et is an ethyl group, CH<sub>3</sub>CH<sub>2</sub>). Panels 1 to 3 are the addition&ndash;elimination of nucleophilic acyl substitution. Panel 4 shows why the product stops there.',
+  caption: 'Ethylamine and acetyl chloride (Et is an ethyl group, CH<sub>3</sub>CH<sub>2</sub>). Panels 1 to 3 are the addition&ndash;elimination of nucleophilic acyl substitution: the carbon goes tetrahedral before chloride leaves. Panel 4 shows why the product stops there.',
 });
 
 FIGURES.push({
@@ -364,7 +367,7 @@ FIGURES.push({
     s += atom(c.x, c.y, 'C', { kind: 'hi' });
     s += curve(P(150, 192), P(144, 166), { bow: 10, size: 7 });
     s += curve(P(125, 126), P(137, 108), { bow: -10, size: 7 });
-    s += arrow(P(260, 236), P(260, 290)); s += arrow(P(260, 290), P(260, 236));
+    s += arrow(P(120, 232), P(120, 272)); s += arrow(P(120, 272), P(120, 232));
     const c2 = P(120, 356);
     const k2 = acylCore(c2, 'neg'); s += k2.s;
     const n2 = P(172, 382);
@@ -466,7 +469,7 @@ FIGURES.push({
     s += text(486, 310, 'new C–H', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
     return s;
   },
-  caption: 'Acetone and methylamine with NaBH<sub>3</sub>CN. The nitrogen ends up on the old carbonyl carbon, and the hydrogen beside it came from boron.',
+  caption: 'Acetone and methylamine with NaBH<sub>3</sub>CN. The nitrogen ends up on the old carbonyl carbon, and the hydrogen on that carbon came from boron.',
 });
 
 FIGURES.push({
@@ -551,13 +554,12 @@ FIGURES.push({
     s += tag(395, 48, 'H⁺, –H₂O');
     s += nitrosonium(P(480, 60));
     s += tag(500, 96, 'nitrosonium ion, NO⁺');
-    s += tag(572, 56, 'the amine N attacks', { anchor: 'start' });
-    s += tag(572, 72, 'this N', { anchor: 'start' });
+    s += tag(474, 114, '↑ the amine N attacks this N', { anchor: 'start' });
 
     s += panel(14, 120, 236, 290); s += panel(262, 120, 236, 290); s += panel(510, 120, 236, 290);
-    s += tag(132, 144, 'primary ARYL amine');
-    s += tag(380, 144, 'primary ALKYL amine');
-    s += tag(628, 144, 'SECONDARY amine');
+    s += tag(132, 144, 'primary aryl amine');
+    s += tag(380, 144, 'primary alkyl amine');
+    s += tag(628, 144, 'secondary amine');
 
     /* aryl */
     s += aniline(80, 196, K);
@@ -599,6 +601,9 @@ FIGURES.push({
       s += atom(a2.x, a2.y, 'CH₃'); s += atom(b2.x, b2.y, 'CH₃');
       s += atom(n1.x, n1.y, 'N', { kind: 'hi' });
       s += atom(n2.x, n2.y, 'N', { r: 14 }); s += atom(o.x, o.y, 'O', { r: 14 });
+      s += lonePair(n1.x, n1.y, 285, { dist: 22 });
+      s += lonePair(n2.x, n2.y, 90, { dist: 20 });
+      s += lonePair(o.x, o.y, 290, { dist: 20 }); s += lonePair(o.x, o.y, 20, { dist: 20 });
       s += text(628, 368, 'N-nitrosamine: no N–H', { cls: 'fg-tag-warn', size: 11 });
       s += text(628, 384, 'left to lose, so it stops', { cls: 'fg-tag-warn', size: 11 });
     }
