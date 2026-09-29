@@ -328,7 +328,7 @@ const MOVES = {
     t1: 'Hold H,', t2: 'cycle the rest', good: true, v1: 'same molecule', v2: 'still (R)',
     fixed: 'left' },
   turn90: { before: GLY, after: { top: 'H', bottom: 'OH', left: 'CH₂OH', right: 'CHO' },
-    t1: 'Turn 90°', t2: 'in the page', good: false, v1: 'the enantiomer', v2: 'now (S)',
+    t1: 'Turn 90°', t2: 'clockwise', good: false, v1: 'the enantiomer', v2: 'now (S)',
     warn3d: ['left', 'right', 'top', 'bottom'] },
   swap: { before: GLY, after: { top: 'CHO', bottom: 'CH₂OH', left: 'OH', right: 'H' },
     t1: 'Swap H', t2: 'and OH once', good: false, v1: 'the enantiomer', v2: 'now (S)',
