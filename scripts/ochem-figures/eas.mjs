@@ -321,13 +321,13 @@ FIGURES.push({
     s += arrow(P(190, 160), P(340, 104));
     s += tg(250, 112, 'Nu⁻ bonds to C2', 'end');
     s += arrow(P(190, 204), P(340, 256));
-    s += tg(250, 252, 'base removes H⁺', 'end');
+    s += tg(206, 272, 'base removes H⁺', 'start');
     s += warn(500, 86, 'ADDITION ✗', 'start');
     s += tg(500, 104, 'two sp³ carbons (dots): not aromatic,', 'start');
     s += tg(500, 120, 'the 36 kcal/mol never comes back', 'start');
     s += good(500, 250, 'SUBSTITUTION ✓', 'start');
     s += tg(500, 268, 'aromatic again: the 36 kcal/mol returns', 'start');
-    s += tg(110, 290, 'the arenium ion');
+    s += tg(110, 240, 'the arenium ion');
     return s;
   },
   caption: 'Two ways out of the same cation. Count the sp³ carbons in each product.',
