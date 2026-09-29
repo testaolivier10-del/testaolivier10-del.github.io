@@ -149,7 +149,7 @@ FIGURES.push({
   lessons: ['phenols'],
   anchor: '<!-- phenols:resonance -->',
   viewBox: '0 0 340 566',
-  alt: 'Four resonance contributors of phenoxide, read clockwise from the top left. First, the charge sits on the oxygen, and curved arrows push an oxygen lone pair into the C–O bond and a ring pi bond onto an ortho carbon. Second, the charge is on that ortho carbon, and arrows move it on to the para carbon. Third, the charge is on the para carbon, and arrows move it to the other ortho carbon. Fourth, the charge is on the other ortho carbon. Below, the hybrid carries partial negative charge on the oxygen, both ortho carbons and the para carbon, and none on the two meta carbons. Beside it, ethoxide holds its whole charge on one oxygen.',
+  alt: 'Four resonance contributors of phenoxide, read clockwise from the top left. First, the charge sits on the oxygen, and curved arrows push an oxygen lone pair into the C–O bond and a ring pi bond onto an ortho carbon. Second, the charge is on that ortho carbon, and arrows move it on to the para carbon. Third, the charge is on the para carbon, and arrows move it to the other ortho carbon. Fourth, the charge is on the other ortho carbon. Below, the hybrid, drawn with a dashed circle in the ring, carries partial negative charge on the oxygen, both ortho carbons and the para carbon, and none on the two meta carbons. Beside it, ethoxide holds its whole charge on one oxygen.',
   build() {
     const R = 34, K = hexKit(R);
     let s = '';
@@ -205,7 +205,8 @@ FIGURES.push({
     // the hybrid
     {
       const K2 = hexKit(28), H = P(85, 472);
-      s += K2.ring(H.x, H.y, [0, 2, 4]);
+      s += K2.ring(H.x, H.y, []);
+      s += `<circle class="fg-dash" cx="${H.x}" cy="${H.y}" r="17" fill="none"></circle>`;
       const v0 = K2.V(H.x, H.y)[0], o = K2.out(H.x, H.y, 0, 28);
       s += bond(v0, o, { rFrom: 0, rTo: 16 });
       s += atom(o.x, o.y, 'O', { kind: 'hi' });
@@ -232,7 +233,7 @@ FIGURES.push({
     return s;
   },
   caption: 'Follow the arrows clockwise from the top left: each pair of arrows turns one structure into the next. Then look for a meta carbon carrying the charge in any of the four.',
-  note: 'These are the same ring positions that carried the charge in the benzyl cation (<a class="chapter-ref" href="/ochem/notes/benzylic-reactivity.html">Benzylic reactivity</a>) and the Meisenheimer anion (<a class="chapter-ref" href="/ochem/notes/nucleophilic-aromatic.html">SNAr and benzyne</a>): ortho and para to the atom where the charge starts.',
+  note: 'These are the same ring positions that carried the charge in the benzyl cation (<a class="chapter-ref" href="/ochem/notes/benzylic-reactivity.html">Benzylic reactivity</a>) and the Meisenheimer complex (<a class="chapter-ref" href="/ochem/notes/nucleophilic-aromatic.html">SNAr and benzyne</a>): ortho and para to the atom where the charge starts.',
 });
 
 /* ----------------------------------------------------------------------
@@ -243,13 +244,13 @@ FIGURES.push({
   section: 'phenols',
   lessons: ['phenols'],
   anchor: '<!-- phenols:nitro -->',
-  viewBox: '0 0 340 540',
-  alt: 'Top panel, 4-nitrophenoxide, pKa 7.2: four curved arrows move the charge from the phenoxide oxygen through the ring and into the para nitro group, giving a second contributor with a C=O at the top, a C=N at the bottom and the negative charge on a nitro oxygen. Bottom panel, 3-nitrophenoxide, pKa 8.4: the nitro group sits on a meta carbon; the charge-bearing positions, the oxygen, both ortho carbons and the para carbon, are marked, and the nitro carbon is not one of them, so the group helps by induction only.',
+  viewBox: '0 0 340 554',
+  alt: 'Top panel, 4-nitrophenoxide, the anion of 4-nitrophenol (pKa 7.2): four curved arrows move the charge from the phenoxide oxygen through the ring and into the para nitro group, giving a second contributor with a C=O at the top, a C=N at the bottom and the negative charge on a nitro oxygen. Bottom panel, 3-nitrophenoxide, the anion of 3-nitrophenol (pKa 8.4): the nitro group sits on a meta carbon; the charge-bearing positions, the oxygen, both ortho carbons and the para carbon, are marked, and the nitro carbon is not one of them, so the group helps by induction only.',
   build() {
     const R = 32, K = hexKit(R);
     let s = '';
-    s += panel(6, 6, 328, 262);
-    s += tag(170, 28, '4-NITROPHENOXIDE · pKₐ 7.2', { cls: 'fg-tag-good' });
+    s += panel(6, 6, 328, 276);
+    s += tag(170, 28, 'FROM 4-NITROPHENOL, pKₐ 7.2', { cls: 'fg-tag-good' });
 
     /* The nitro group hanging below vertex 3: N, then two oxygens. */
     const nitro = (cx, cy, form) => {
@@ -263,8 +264,13 @@ FIGURES.push({
       g += atom(Oa.x, Oa.y, 'O', { kind: form === 'quinoid' ? 'warn' : 'plain' });
       g += atom(Ob.x, Ob.y, 'O', { kind: form === 'quinoid' ? 'warn' : 'plain' });
       g += text(N.x + 19, N.y - 8, '+', { cls: 'fg-warn', size: 13 });
-      g += text(Oa.x - 20, Oa.y + 12, '−', { cls: 'fg-warn', size: 15 });
-      if (form === 'quinoid') g += text(Ob.x + 20, Ob.y + 12, '−', { cls: 'fg-warn', size: 15 });
+      g += text(Oa.x - 20, Oa.y - 14, '−', { cls: 'fg-warn', size: 15 });
+      if (form === 'quinoid') g += text(Ob.x + 20, Ob.y - 14, '−', { cls: 'fg-warn', size: 15 });
+      // O−: three lone pairs; N=O oxygen: two
+      g += lonePair(Oa.x, Oa.y, 90, { dist: 20 }) + lonePair(Oa.x, Oa.y, 180, { dist: 20 }) + lonePair(Oa.x, Oa.y, 270, { dist: 20 });
+      g += form === 'quinoid'
+        ? lonePair(Ob.x, Ob.y, 90, { dist: 20 }) + lonePair(Ob.x, Ob.y, 0, { dist: 20 }) + lonePair(Ob.x, Ob.y, 270, { dist: 20 })
+        : lonePair(Ob.x, Ob.y, 60, { dist: 20 }) + lonePair(Ob.x, Ob.y, 330, { dist: 20 });
       return { g, N, Oa, Ob };
     };
 
@@ -289,13 +295,13 @@ FIGURES.push({
       s += topO(K, cx, cy, 'carbonyl').s;
       s += nitro(cx, cy, 'quinoid').g;
     }
-    s += tag(170, 238, 'The charge reaches the nitro oxygens,');
-    s += tag(170, 256, 'so para nitro stabilizes by resonance.');
+    s += tag(170, 252, 'The charge reaches the nitro oxygens,');
+    s += tag(170, 270, 'so para nitro stabilizes by resonance.');
 
-    s += panel(6, 280, 328, 254);
-    s += tag(170, 302, '3-NITROPHENOXIDE · pKₐ 8.4', { cls: 'fg-tag-warn' });
+    s += panel(6, 294, 328, 254);
+    s += tag(170, 316, 'FROM 3-NITROPHENOL, pKₐ 8.4', { cls: 'fg-tag-warn' });
     {
-      const K2 = hexKit(30), cx = 120, cy = 390;
+      const K2 = hexKit(30), cx = 120, cy = 404;
       s += K2.ring(cx, cy, [0, 2, 4]);
       const v0 = K2.V(cx, cy)[0], o = K2.out(cx, cy, 0, 28);
       s += bond(v0, o, { rFrom: 0, rTo: 16 });
@@ -314,10 +320,12 @@ FIGURES.push({
       s += atom(Oa.x, Oa.y, 'O');
       s += atom(Ob.x, Ob.y, 'O');
       s += text(N.x + 20, N.y + 14, '+', { cls: 'fg-warn', size: 13 });
-      s += text(Ob.x + 21, Ob.y + 6, '−', { cls: 'fg-warn', size: 15 });
+      s += text(Ob.x + 20, Ob.y + 24, '−', { cls: 'fg-warn', size: 15 });
+      s += lonePair(Oa.x, Oa.y, 300, { dist: 20 }) + lonePair(Oa.x, Oa.y, 30, { dist: 20 });
+      s += lonePair(Ob.x, Ob.y, 90, { dist: 20 }) + lonePair(Ob.x, Ob.y, 180, { dist: 20 }) + lonePair(Ob.x, Ob.y, 0, { dist: 20 });
     }
-    s += tag(170, 500, 'The circled carbon never carries the charge,');
-    s += tag(170, 518, 'so this nitro pulls by induction only.');
+    s += tag(170, 514, 'The circled carbon never carries the charge,');
+    s += tag(170, 532, 'so this nitro pulls by induction only.');
     return s;
   },
   caption: 'Top: the four arrows carry the charge from the oxygen into the para nitro group. Bottom: the δ− marks show every atom that can hold the charge, and the circled carbon under the nitro group is not one of them.',
@@ -359,8 +367,7 @@ FIGURES.push({
     s += text(x(6.4) + 4, 66, 'NaHCO₃ deprotonates acids to the right', { cls: 'fg-sm', anchor: 'start', size: 9.5 });
 
     s += rule(24, 244, 700, 244);
-    s += text(360, 268, 'The two nitrophenols carry the same group on the same ring,', { cls: 'fg-lbl', size: 12 });
-    s += text(360, 290, 'and sit 1.2 pKₐ units apart because of its position alone.', { cls: 'fg-lbl', size: 12 });
+    s += text(360, 272, 'Same group, different position: 1.2 pKₐ units apart.', { cls: 'fg-lbl', size: 12 });
     return s;
   },
   caption: 'Compare the gap between phenol and ethanol with the gap between the two nitrophenols.',
@@ -483,7 +490,7 @@ FIGURES.push({
   section: 'phenols',
   anchor: '<!-- phenols:kolbe -->',
   viewBox: '0 0 760 300',
-  alt: 'Left: sodium phenoxide beside a CO2 molecule. The sodium ion sits between the phenoxide oxygen and one CO2 oxygen, with dashed lines to each. Curved arrows push an oxygen lone pair into the C–O bond, the ring pi bond from an ortho carbon onto the CO2 carbon, and a C=O pi bond of CO2 onto its lower oxygen. Middle: the product of that step, with a C=O on the ring and the ortho carbon now sp3, carrying an H and a carboxylate. Right: after the H moves from carbon to oxygen and acid workup, salicylic acid, 2-hydroxybenzoic acid.',
+  alt: 'Left: sodium phenoxide beside a CO2 molecule. The sodium ion sits between the phenoxide oxygen and one CO2 oxygen, with dashed lines to each. Curved arrows push an oxygen lone pair into the C–O bond, the ring pi bond from an ortho carbon onto the CO2 carbon, and a C=O pi bond of CO2 onto its lower oxygen. Middle: the product of that step, with a C=O on the ring and the ortho carbon now sp3, carrying an H and a carboxylate with its sodium ion. Right: after the H moves from carbon to oxygen and acid workup, salicylic acid, 2-hydroxybenzoic acid.',
   build() {
     const R = 30, K = hexKit(R);
     let s = '';
@@ -529,11 +536,13 @@ FIGURES.push({
       s += atom(Oa.x, Oa.y, 'O');
       s += atom(Ob.x, Ob.y, 'O');
       s += text(Ob.x + 20, Ob.y + 8, '−', { cls: 'fg-warn', size: 15 });
+      s += text(Ob.x + 44, Ob.y + 10, 'Na⁺', { cls: 'fg-lbl', size: 12 });
       s += tag(372, 250, 'the ortho carbon is sp³;');
       s += tag(372, 268, 'the ring is not aromatic');
     }
     s += arrow(P(486, 176), P(566, 176));
-    s += tag(526, 164, 'H moves to O');
+    s += tag(526, 150, 'H moves to');
+    s += tag(526, 164, 'the ring O');
     s += tag(526, 196, 'then H₃O⁺', { cls: 'fg-tag-mut' });
     // stage 3: salicylic acid
     {
@@ -673,7 +682,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Top row: follow the arrows to see chloroform lose H⁺ and then Cl⁻. Bottom row: find the carbon that bonds to the carbene; it becomes the CHO carbon.',
+  caption: 'Top row: follow the arrows to see chloroform lose H⁺ and then Cl⁻. Bottom row: find the ring carbon that bonds to the carbene. The carbene carbon becomes the CHO carbon on it.',
 });
 
 /* ----------------------------------------------------------------------
@@ -704,7 +713,7 @@ FIGURES.push({
       s += bond(v[3], Ob, { rFrom: 0, rTo: 15, order: 2, gap: 3.4 });
       s += atom(Ot.x, Ot.y, 'O', { kind: 'warn' });
       s += atom(Ob.x, Ob.y, 'O', { kind: 'warn' });
-      s += tag(cx, 200, 'p-benzoquinone', { cls: 'fg-tag-warn' });
+      s += `<text class="fg-tag-warn" x="${cx}" y="200" text-anchor="middle" font-size="11"><tspan font-style="italic">p</tspan>-benzoquinone</text>`;
       s += tag(cx, 218, 'not aromatic · yellow');
       s += tag(cx, 236, 'each C=O sits between two C=C', { cls: 'fg-tag-mut' });
     }

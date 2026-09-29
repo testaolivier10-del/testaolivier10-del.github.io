@@ -144,8 +144,10 @@ FIGURES.push({
     const step = (x1, x2, y, top, bottom) =>
       arrow(P(x1, y), P(x2, y)) + text((x1 + x2) / 2, y - 12, top, { cls: 'fg-lbl', size: 12 }) +
       text((x1 + x2) / 2, y + 20, bottom, { cls: 'fg-sm' });
-    const c1 = (cx, cy) => text(cx - 46, cy - 36, 'C1', { cls: 'fg-tag' });
-    const c4 = (cx, cy) => text(cx - 46, cy + 44, 'C4', { cls: 'fg-tag' });
+    /* C1 and C4 sit beside the top and bottom carbons; `left` moves one to
+       the left where a curved arrow occupies the right. */
+    const c1 = (cx, cy, left) => text(left ? cx - 26 : cx + 24, cy - 38, 'C1', { cls: 'fg-tag', anchor: left ? 'end' : 'start' });
+    const c4 = (cx, cy, left) => text(left ? cx - 26 : cx + 22, cy + 50, 'C4', { cls: 'fg-tag', anchor: left ? 'end' : 'start' });
 
     // ---- row 1 ----
     const Y1 = 150;
@@ -155,7 +157,7 @@ FIGURES.push({
     s += step(166, 294, Y1, '+ e⁻', 'from Na');
     s += M.radAnion(380, Y1);
     s += protonate(P(384, Y1 - 47), P(430, 78), 1, -22, -9);
-    s += c1(380, Y1) + c4(380, Y1);
+    s += c1(380, Y1, true) + c4(380, Y1);
     s += text(380, Y1 + 70, 'radical anion', { cls: 'fg-tag' });
     s += step(466, 594, Y1, '+ H⁺', 'from EtOH');
     s += M.radical(650, Y1);
@@ -172,7 +174,7 @@ FIGURES.push({
     s += step(166, 294, Y2, '+ e⁻', 'from Na');
     s += M.carbanion(380, Y2);
     s += protonate(P(384, Y2 + 47), P(432, Y2 + 72), 1, 22, 9);
-    s += c1(380, Y2) + c4(380, Y2);
+    s += c1(380, Y2) + c4(380, Y2, true);
     s += text(380, Y2 + 118, 'cyclohexadienyl anion', { cls: 'fg-tag' });
     s += step(466, 594, Y2, '+ H⁺', 'from EtOH');
     s += M.diene(650, Y2);
@@ -267,13 +269,13 @@ FIGURES.push({
 
     s += panel(30, 262, 340, 232, { kind: 'good' });
     s += text(200, 288, 'the proton goes to C4, the middle', { cls: 'fg-lbl', size: 12.5 });
-    s += M2.diene14(200, 370);
+    s += M2.diene14(200, 370, false);
     s += text(200, 464, 'cyclohexa-1,4-diene', { cls: 'fg-tag-good' });
     s += text(200, 482, 'this is the product that forms', { cls: 'fg-sm' });
 
     s += panel(390, 262, 340, 232, { kind: 'warn' });
     s += text(560, 288, 'a proton on C2, an end, would give', { cls: 'fg-lbl', size: 12.5 });
-    s += M2.diene13(560, 370);
+    s += M2.diene13(560, 370, false);
     s += text(560, 464, 'cyclohexa-1,3-diene', { cls: 'fg-tag' });
     s += text(560, 482, 'conjugated and more stable, but it does not form', { cls: 'fg-sm' });
     return s;
@@ -319,7 +321,11 @@ FIGURES.push({
 
 /* ------------------------------------------------------------------ 3 ---
    Donor versus acceptor, drawn as products. Shared by notes and lesson. */
-const convert = (y) => arrow(P(116, y), P(200, y)) + text(158, y - 10, 'Na, NH₃', { cls: 'fg-tag' }) + text(158, y + 18, 'EtOH', { cls: 'fg-tag' });
+const convert = (y, cold) => arrow(P(116, y), P(200, y)) + text(158, y - 10, 'Na, NH₃', { cls: 'fg-tag' }) +
+  (cold
+    ? `<text class="fg-tag" x="158" y="${y + 18}" text-anchor="middle" font-size="11"><tspan font-style="italic">t</tspan>-BuOH</text>` +
+      text(158, y + 34, '−78 °C', { cls: 'fg-tag' })
+    : text(158, y + 18, 'EtOH', { cls: 'fg-tag' }));
 /* An sp3 ring carbon (vertex 0) carrying a group up-left and its own new H
    up-right. */
 function sp3Top(K, cx, cy, txt, r, len) {
@@ -359,14 +365,14 @@ FIGURES.push({
     s += text(170, Y2 + 84, 'the other new H is straight across', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'Highlighted atoms are the new hydrogens. A donor keeps its carbon on a double bond; an acceptor makes its carbon sp³.',
+  caption: 'Highlighted groups carry the new hydrogens. A donor keeps its carbon on a double bond; an acceptor makes its carbon sp³.',
 });
 
 /* The two rings the lesson's sort step adds: shown once the sort is done. */
 FIGURES.push({
   id: 'l-birch-sort',
   lessons: ['birch-reduction'],
-  alt: 'Top row: toluene is reduced by Na in NH3 with EtOH to 1-methylcyclohexa-1,4-diene; the carbon carrying CH3 stays on a double bond. Bottom row: methyl benzoate is reduced to methyl cyclohexa-2,5-diene-1-carboxylate; the carbon carrying the ester becomes sp3 with its own hydrogen.',
+  alt: 'Top row: toluene is reduced by Na in NH3 with EtOH to 1-methylcyclohexa-1,4-diene; the carbon carrying CH3 stays on a double bond. Bottom row: methyl benzoate, with Na in NH3 and tert-butyl alcohol at about minus 78 degrees C, is reduced to methyl cyclohexa-2,5-diene-1-carboxylate; the carbon carrying the ester becomes sp3 with its own hydrogen.',
   viewBox: '0 0 340 410',
   build() {
     const R = 30, K = hexKit(R);
@@ -384,7 +390,7 @@ FIGURES.push({
     s += tag(170, 212, 'METHYL BENZOATE: ACCEPTOR');
     const Y2 = 318;
     s += K.ring(A, Y2, [0, 2, 4]) + K.sub(A, Y2, 0, 'CO₂CH₃', { d: 34, r: 28 });
-    s += convert(Y2);
+    s += convert(Y2, true);
     s += K.ringCH2(B, Y2, [1, 4], [3], [3]) + sp3Top(K, B, Y2, 'CO₂CH₃', 28, 46);
     s += text(170, Y2 + 66, 'the ester carbon becomes sp³', { cls: 'fg-tag-good' });
     return s;
@@ -400,33 +406,33 @@ FIGURES.push({
   section: 'birch-reduction',
   anchor: '<!-- fig:birch-methylanisole:start -->',
   alt: '4-Methylanisole, with OCH3 on C1 and CH3 on C4, is reduced by Na in NH3 with EtOH to 1-methoxy-4-methylcyclohexa-1,4-diene, numbered 1 to 6 clockwise: double bonds C1=C2 and C4=C5, new CH2 groups at C3 and C6. Dilute aqueous acid then gives 4-methylcyclohex-3-en-1-one, numbered from the C=O: the C=O at C1 and the C=C between C3 and C4, which carries the methyl.',
-  viewBox: '0 0 760 290',
+  viewBox: '0 0 760 300',
   build() {
-    const R = 34, K = hexKit(R);
+    const R = 40, K = hexKit(R);
     let s = '';
     const step = (x1, x2, y, top, bottom) =>
       arrow(P(x1, y), P(x2, y)) + text((x1 + x2) / 2, y - 12, top, { cls: 'fg-lbl', size: 12 }) +
       text((x1 + x2) / 2, y + 22, bottom, { cls: 'fg-sm' });
-    const Y = 130;
+    const Y = 136;
+    /* every locant inside the ring, far enough in to clear a CH2 disc */
+    const nums = (cx, order) => order.map((v, k) => K.num(cx, Y, v, String(k + 1), { d: 26 })).join('');
 
     s += K.ring(110, Y, [0, 2, 4]) + K.sub(110, Y, 0, 'OCH₃', { d: 34, r: 19 }) + K.sub(110, Y, 3, 'CH₃', { d: 32, r: 17 });
-    s += [0, 1, 2, 3, 4, 5].map((i) => K.num(110, Y, i, String(i + 1))).join('');
-    s += text(110, 246, '4-methylanisole', { cls: 'fg-tag' });
+    s += nums(110, [0, 1, 2, 3, 4, 5]);
+    s += text(110, 256, '4-methylanisole', { cls: 'fg-tag' });
     s += step(170, 300, Y, 'Na, NH₃', 'EtOH');
 
     s += K.ringCH2(380, Y, [0, 3], [2, 5], [2, 5]) + K.sub(380, Y, 0, 'OCH₃', { d: 34, r: 19 }) + K.sub(380, Y, 3, 'CH₃', { d: 32, r: 17 });
-    s += [0, 1, 3, 4].map((i) => K.num(380, Y, i, String(i + 1))).join('');
-    s += K.lab(380, Y, 2, '3', { d: 28 }) + K.lab(380, Y, 5, '6', { d: 28 });
-    s += text(380, 246, '1-methoxy-4-methylcyclohexa-1,4-diene', { cls: 'fg-tag-good' });
-    s += text(380, 264, 'sp³ at C3 and C6', { cls: 'fg-sm' });
+    s += nums(380, [0, 1, 2, 3, 4, 5]);
+    s += text(380, 256, '1-methoxy-4-methylcyclohexa-1,4-diene', { cls: 'fg-tag-good' });
+    s += text(380, 274, 'sp³ at C3 and C6', { cls: 'fg-sm' });
     s += step(460, 590, Y, 'H₃O⁺', 'dilute, mild');
 
     s += K.ring(650, Y, [3]) + K.ketone(650, Y, 0, 30) + K.sub(650, Y, 3, 'CH₃', { d: 32, r: 17 });
     /* numbered from the C=O, counter-clockwise, so the C=C gets locant 3 */
-    const order = [0, 5, 4, 3, 2, 1];
-    s += order.map((v, k) => K.num(650, Y, v, String(k + 1))).join('');
-    s += text(650, 246, '4-methylcyclohex-3-en-1-one', { cls: 'fg-tag-good' });
-    s += text(650, 264, 'C=C not conjugated with C=O', { cls: 'fg-sm' });
+    s += nums(650, [0, 5, 4, 3, 2, 1]);
+    s += text(650, 256, '4-methylcyclohex-3-en-1-one', { cls: 'fg-tag-good' });
+    s += text(650, 274, 'C=C not conjugated with C=O', { cls: 'fg-sm' });
     return s;
   },
   caption: 'Follow the two substituted carbons: both are still on double bonds after the Birch step.',
