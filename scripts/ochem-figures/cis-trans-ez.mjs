@@ -411,16 +411,16 @@ FIGURES.push({
   viewBox: '0 0 340 282',
   alt: '3-(chloromethyl)-4-methylpent-2-ene with the double bond horizontal. The left carbon, C2, carries a methyl up-left, tagged higher, and a hydrogen down-left, tagged lower. The right carbon, C3, carries a chloromethyl group up-right, tagged higher, and an isopropyl group down-right, tagged lower. Below, the tie on C3 is broken: the chloromethyl carbon holds chlorine, hydrogen and hydrogen, the isopropyl carbon holds carbon, carbon and hydrogen, and chlorine beats carbon at the first term. Both higher groups are above the double bond, so the isomer is Z.',
   build() {
-    let s = '<g transform="translate(0,-36)">';
-    s += alkene(150, 96, { lu: { t: 'CH₃', pri: 'hi' }, ld: { t: 'H', pri: 'lo' }, ru: { t: 'CH₂Cl', pri: 'hi' }, rd: { t: 'CH(CH₃)₂', pri: 'lo' } }, { names: ['C2', 'C3'], gap: 14 });
-    s += rule(10, 186, 330, 186);
-    s += text(170, 208, 'On C3 both groups start with C: a tie.', { cls: 'fg-tag' });
-    s += text(170, 228, 'CH₂Cl carbon holds (Cl, H, H)', { cls: 'fg-tag' });
-    s += text(170, 246, 'CH(CH₃)₂ carbon holds (C, C, H)', { cls: 'fg-tag' });
-    s += text(170, 266, 'Cl beats C at the first term', { cls: 'fg-tag' });
-    s += text(170, 290, 'both higher groups above the C=C: Z', { cls: 'fg-tag-good' });
-    s += text(170, 310, '(Z)-3-(chloromethyl)-4-methylpent-2-ene', { cls: 'fg-tag-good' });
-    return s + '</g>';
+    let s = '';
+    s += alkene(150, 60, { lu: { t: 'CH₃', pri: 'hi' }, ld: { t: 'H', pri: 'lo' }, ru: { t: 'CH₂Cl', pri: 'hi' }, rd: { t: 'CH(CH₃)₂', pri: 'lo' } }, { names: ['C2', 'C3'], gap: 14 });
+    s += rule(10, 150, 330, 150);
+    s += text(170, 172, 'On C3 both groups start with C: a tie.', { cls: 'fg-tag' });
+    s += text(170, 192, 'CH₂Cl carbon holds (Cl, H, H)', { cls: 'fg-tag' });
+    s += text(170, 210, 'CH(CH₃)₂ carbon holds (C, C, H)', { cls: 'fg-tag' });
+    s += text(170, 230, 'Cl beats C at the first term', { cls: 'fg-tag' });
+    s += text(170, 254, 'both higher groups above the C=C: Z', { cls: 'fg-tag-good' });
+    s += text(170, 274, '(Z)-3-(chloromethyl)-4-methylpent-2-ene', { cls: 'fg-tag-good' });
+    return s;
   },
   caption: 'The smaller group wins on C3. Chlorine settles it at the first term of the two sets.',
 });
