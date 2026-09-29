@@ -526,8 +526,8 @@ FIGURES.push({
   id: 'bredt-rule',
   section: 'alkene-structure',
   anchor: 'cannot have a double bond at a bridgehead.</p>',
-  alt: 'Top left: norbornane, bicyclo[2.2.1]heptane, drawn flat: two marked bridgehead carbons joined by three bridges, of two, two and one carbons, each carbon at a visible bend and each bridge labeled with its count. Top right: the same molecule in its usual 3D drawing, a six-membered ring folded like a boat with a one-carbon bridge arching over it, bridgeheads marked. Middle: the 3D drawing again with a would-be double bond from bridgehead C1 to C2. C2 carries an upright p orbital. C1 has all three of its bonds pulled to one side, like a pyramid, so the orbital it has left points out sideways. The two orbitals are at right angles and cannot overlap. Bottom left: bicyclo[2.2.1]hept-1-ene drawn flat and numbered 1 to 7, with the double bond from C1 to C2; the largest ring containing it, six atoms, is highlighted, and the label says it cannot be isolated. Bottom right: bicyclo[3.3.1]non-1-ene drawn flat and numbered 1 to 9, with the double bond from C1 to C2; the largest ring containing it, eight atoms, is highlighted, and the label says it can be isolated.',
-  viewBox: '0 0 340 566',
+  alt: 'Top left: norbornane, bicyclo[2.2.1]heptane, drawn flat: two marked bridgehead carbons joined by three bridges, of two, two and one carbons, each carbon at a visible bend and each bridge labeled with its count. Top right: the same molecule in its usual 3D drawing, a six-membered ring folded like a boat with a one-carbon bridge arching over it, bridgeheads marked. Middle: the 3D drawing again with a would-be double bond from bridgehead C1 to C2. C2 carries an upright p orbital. C1 has all three of its bonds pulled to one side, like a pyramid, so the orbital it has left points out sideways. The two orbitals are at right angles and cannot overlap. Bottom left: bicyclo[2.2.1]hept-1-ene drawn flat and numbered 1 to 7, with the double bond from C1 to C2; the largest ring containing it, six atoms, is highlighted, and the label says it cannot be isolated. Bottom right: bicyclo[3.3.1]non-1-ene drawn flat and numbered 1 to 9, with the double bond from C1 to C2; the largest ring containing it, eight atoms, is highlighted, and the label says it can be isolated and that the C=C is trans in that ring.',
+  viewBox: '0 0 340 584',
   build() {
     let s = '';
     const path = (pts, hi) => pts.slice(1).map((p, i) => sk(pts[i], p, hi)).join('');
@@ -536,13 +536,14 @@ FIGURES.push({
     let g = bicycleFlat(85, 88, false);
     s += path([g.L, ...g.T, g.R]) + path([g.L, ...g.Bm, g.R]) + path([g.L, ...g.M, g.R]);
     s += dot(g.L) + dot(g.R);
-    s += tag(85, 44, '2') + tag(85, 140, '2') + tag(85, 98, '1');
-    s += tag(85, 164, 'bridgeheads: the dots');
+    s += tag(85, 44, '2', { cls: 'fg-tag-good' }) + tag(85, 140, '2', { cls: 'fg-tag-good' }) + tag(85, 98, '1', { cls: 'fg-tag-good' });
+    s += tag(85, 164, 'digits: carbons per bridge');
+    s += text(85, 180, 'dots: the bridgeheads', { cls: 'fg-tag-mut' });
     let n = norbornane3D(P(255, 96), 1);
     s += sk(n.n1, n.n2) + sk(n.n2, n.n3) + sk(n.n3, n.n4) + sk(n.n4, n.n5) + sk(n.n5, n.n6) + sk(n.n6, n.n1) + sk(n.n1, n.n7) + sk(n.n7, n.n4);
     s += dot(n.n1) + dot(n.n4);
     s += tag(255, 164, 'the same molecule in 3D');
-    s += rule(10, 180, 330, 180);
+    s += rule(10, 190, 330, 190);
     // ---- row 2: why the bridgehead cannot join a pi bond
     s += text(6, 200, 'a C=C from bridgehead C1 to C2?', { cls: 'fg-tag-mut', anchor: 'start' });
     n = norbornane3D(P(204, 262), 1.15);
@@ -558,7 +559,7 @@ FIGURES.push({
     s += text(n.n1.x + 2, n.n1.y - 12, 'C1', { cls: 'fg-tag' });
     s += text(n.n2.x - 22, n.n2.y + 12, 'C2', { cls: 'fg-tag' });
     s += tag(60, 296, 'C1: bonds pulled');
-    s += tag(60, 312, 'to one side');
+    s += tag(60, 312, 'into a pyramid');
     s += tag(170, 350, 'orbitals at right angles: no π bond', { cls: 'fg-tag-warn' });
     s += rule(10, 364, 330, 364);
     // ---- row 3: the two bridgehead alkenes, flat and numbered
@@ -588,9 +589,10 @@ FIGURES.push({
     s += r.t;
     s += tag(256, 534, `largest ring: ${r.ringSize} atoms`);
     s += tag(256, 554, 'can be isolated', { cls: 'fg-tag-good' });
+    s += text(256, 574, 'C=C trans in this ring', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Top: the flat drawing is for counting, the 3D drawing shows the shape. Middle: compare the direction of the two orbitals. Bottom: count the atoms of the highlighted ring, the largest ring that contains the double bond.',
+  caption: 'Top: in the flat drawing the digits count the carbons in each bridge; the 3D drawing shows the shape. Middle: compare the direction of the two orbitals. Bottom: count the atoms of the highlighted ring, the largest ring that contains the double bond.',
 });
 
 /* ------------------------------------------------------ l-tap-substituents ---
