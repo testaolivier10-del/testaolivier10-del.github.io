@@ -65,7 +65,10 @@ This is logged in the spec's decisions log.
 | `anp-curriculum.js` | generated from the map: chapters, topics, tags, which pages exist |
 | `anp-core.js` | progress store `anp_progress_v1`: per-question attempts, topic, chapter and core-concept mastery, the missed-question review queue (SM-2 intervals), XP through `HubProgress.award('anp', …)`, account sync namespace `anp`, analytics helpers |
 | `anp-questions.js` | renders and grades every question type, shuffles options, shows per-option explanations, adds the report button, sends misses to the review queue |
-| `anp-lesson.js` | lesson page behavior: prerequisite check, label toggle, retrieval check, completion |
+| `anp-lesson.js` | lesson page behavior: the stepped view (one part at a time, step rail, `#part` links, remembered step), prerequisite check, label toggle, retrieval check, completion |
+| `anp-toc.js` | chapter and notes pages: the contents sidebar (phone toggle, lessons-done counts and ticks) and the mastery chips |
+| `anp-home.js`, `anp-home.css` | the course home: level card, start-here, review and daily-goal cards, the chapter path, the sample question |
+| `apps/tools-hub.css` | the tools hub (its page is generated; `apps/tools-hub.js` adds live status and the `?chapter=` filter) |
 | `anp-glossary.js` | hover and tap definitions for tagged terms |
 | `anp-nav.js` | the course's tabs, handed to `LevlChrome.render` |
 | `anp.css` | course styles and the visual language (figures, arrows, colors) |

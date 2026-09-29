@@ -21,6 +21,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/anp-home.css">
 <link rel="stylesheet" href="../assets/theme.css">
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
@@ -187,38 +188,116 @@
 <div id="site-header"></div>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-home">
-  <header class="hero anp-hero">
-    <div class="eyebrow">Anatomy & Physiology <span class="anp-beta">Beta</span></div>
-    <h1>Anatomy &amp; physiology that builds in order.</h1>
-    <p class="lede">Every idea is taught before it is used. Physiology is taught as mechanism: what causes what, step by step. Practice sits inside the reading.</p>
-    <div class="hero-ctas"><a class="btn-press" href="lessons/body-organization.html">Start here</a><a class="btn-outline" href="learn.html">All chapters</a><span class="anp-mastery" data-mastery-overall="1"></span></div>
+  <header class="hero anp-home-hero">
+    <div>
+      <div class="eyebrow">Anatomy & Physiology <span class="anp-beta">Beta</span></div>
+      <h1>Anatomy &amp; physiology that builds in order.</h1>
+      <p class="lede">27 chapters and 162 topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.</p>
+      <div class="hero-ctas"><a class="btn-press" href="lessons/body-organization.html">Start here</a><a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
+    </div>
+    <div class="anp-level-card" id="anpLevel">
+      <div class="anp-level-top">
+        <div class="anp-level-chip"><div class="level-ring" id="anpLvRing">L1</div><div class="t"><b id="anpLvTitle">Cell Scout</b><span id="anpLvSub">Level 1 &middot; 0 XP</span></div></div>
+        <div class="streak-chip" id="anpStreak" hidden title="Day streak, across every subject"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg><span id="anpStreakN">0</span></div>
+      </div>
+      <div class="xp-track"><div class="xp-fill" id="anpXpFill" style="width:0%"></div></div>
+      <div class="xp-label" id="anpXpLabel">0 / 100 XP to Level 2</div>
+      <div class="anp-part-bars"><div class="mini-domain-row"><span>Foundations</span><span class="bar"><i data-part-bar="foundations" style="width:0%;--dc:#2C9C8B"></i></span><span class="pct" data-part-pct="foundations">0%</span></div><div class="mini-domain-row"><span>A&amp;P I</span><span class="bar"><i data-part-bar="api" style="width:0%;--dc:#E8776A"></i></span><span class="pct" data-part-pct="api">0%</span></div><div class="mini-domain-row"><span>A&amp;P II</span><span class="bar"><i data-part-bar="apii" style="width:0%;--dc:#C9973A"></i></span><span class="pct" data-part-pct="apii">0%</span></div></div>
+    </div>
   </header>
 
-  <section class="anp-part" aria-labelledby="h-covers">
-    <h2 id="h-covers">What the course covers</h2>
-    <p>27 chapters and 162 topics: the full scope of a two-semester college A&amp;P course, matched to the OpenStax <i>Anatomy and Physiology 2e</i> textbook, the HAPS learning outcomes and the TEAS&nbsp;7 A&amp;P content areas. Each topic has an interactive lesson and a full notes page.</p>
-    <p class="anp-small">All 162 topics are built, each with its lesson, notes and questions.</p>
+  <section class="xsection" aria-label="What to do now">
+    <div class="anp-now-row">
+      <div class="anp-now-card" id="anpStart">
+        <div class="k">Start here</div>
+        <h2>Levels of organization and organ systems</h2>
+        <p>Foundations &middot; Orientation to the body. Foundations is recommended, not required: nothing is locked.</p>
+        <a class="btn-press" href="lessons/body-organization.html">Start the first lesson</a>
+      </div>
+      <div class="anp-now-card" id="anpReview">
+        <div class="k">Review queue</div>
+        <h2>Missed questions come back</h2>
+        <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
+        <a class="link-quiet" href="review.html">Open review &rarr;</a>
+      </div>
+      <div class="anp-now-card" id="anpGoal">
+        <div class="k">Today&rsquo;s goal</div>
+        <h2>A little every day</h2>
+        <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.</p>
+        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
+      </div>
+    </div>
   </section>
 
-  <section class="anp-part" aria-labelledby="h-how">
-    <h2 id="h-how">How to use it</h2>
-    <ol class="anp-steps">
-      <li><b>Read the lesson.</b> It opens with a patient, checks what you need first, then walks the mechanism one cause at a time.</li>
-      <li><b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.</li>
-      <li><b>Use the tools.</b> Predict what changes, build feedback loops, trace pathways, read graphs and practice for lab practicals.</li>
-      <li><b>Check your mastery.</b> Your dashboard shows your weakest topics and core concepts, and what to do next.</li>
-    </ol>
+  <section class="xsection" aria-labelledby="h-path">
+    <div class="section-head">
+      <h2 id="h-path">The path through the course</h2>
+      <p class="section-lede">Foundations first, then A&amp;P I and A&amp;P II. Each chapter leans on the last. Tap one to open it.</p>
+    </div>
+    <div class="anp-path-legend"><span style="--c:#2C9C8B"><i></i>Foundations &middot; 5 chapters</span><span style="--c:#E8776A"><i></i>A&amp;P I &middot; 11 chapters</span><span style="--c:#C9973A"><i></i>A&amp;P II &middot; 11 chapters</span></div>
+    <div class="anp-path anp-nav-ref" id="anpPath"><svg class="path-line" aria-hidden="true" focusable="false"><path class="path-track" d=""/><path class="path-fill" d=""/></svg><ol class="anp-path-list"><li class="node part-start current" data-chapter="orientation" style="--pc:#2C9C8B;--pcd:#1F7A6C;--r5:1;--c5:1;--r4:1;--c4:1;--r3:1;--c3:1"><a href="chapters/orientation.html"><span class="ring" aria-hidden="true"><span class="n">1</span></span><span class="label"><span class="part">Foundations</span><b>Orientation to the body</b><small>Start here · 6 topics</small></span></a></li><li class="node" data-chapter="chem-physics" style="--pc:#2C9C8B;--pcd:#1F7A6C;--r5:1;--c5:2;--r4:1;--c4:2;--r3:1;--c3:2"><a href="chapters/chem-physics.html"><span class="ring" aria-hidden="true"><span class="n">2</span></span><span class="label"><b>Chemistry and physics for physiology</b><small>8 topics</small></span></a></li><li class="node" data-chapter="cells" style="--pc:#2C9C8B;--pcd:#1F7A6C;--r5:1;--c5:3;--r4:1;--c4:3;--r3:1;--c3:3"><a href="chapters/cells.html"><span class="ring" aria-hidden="true"><span class="n">3</span></span><span class="label"><b>Cells</b><small>9 topics</small></span></a></li><li class="node" data-chapter="tissues" style="--pc:#2C9C8B;--pcd:#1F7A6C;--r5:1;--c5:4;--r4:1;--c4:4;--r3:2;--c3:3"><a href="chapters/tissues.html"><span class="ring" aria-hidden="true"><span class="n">4</span></span><span class="label"><b>Tissues</b><small>4 topics</small></span></a></li><li class="node" data-chapter="cell-communication" style="--pc:#2C9C8B;--pcd:#1F7A6C;--r5:1;--c5:5;--r4:2;--c4:4;--r3:2;--c3:2"><a href="chapters/cell-communication.html"><span class="ring" aria-hidden="true"><span class="n">5</span></span><span class="label"><b>Signals, repair and control</b><small>6 topics</small></span></a></li><li class="node part-start" data-chapter="integumentary" style="--pc:#E8776A;--pcd:#B04A3F;--r5:2;--c5:5;--r4:2;--c4:3;--r3:2;--c3:1"><a href="chapters/integumentary.html"><span class="ring" aria-hidden="true"><span class="n">6</span></span><span class="label"><span class="part">A&amp;P I</span><b>Integumentary system</b><small>4 topics</small></span></a></li><li class="node" data-chapter="bone-tissue" style="--pc:#E8776A;--pcd:#B04A3F;--r5:2;--c5:4;--r4:2;--c4:2;--r3:3;--c3:1"><a href="chapters/bone-tissue.html"><span class="ring" aria-hidden="true"><span class="n">7</span></span><span class="label"><b>Bone tissue</b><small>5 topics</small></span></a></li><li class="node" data-chapter="skeleton" style="--pc:#E8776A;--pcd:#B04A3F;--r5:2;--c5:3;--r4:2;--c4:1;--r3:3;--c3:2"><a href="chapters/skeleton.html"><span class="ring" aria-hidden="true"><span class="n">8</span></span><span class="label"><b>The skeleton</b><small>5 topics</small></span></a></li><li class="node" data-chapter="joints" style="--pc:#E8776A;--pcd:#B04A3F;--r5:2;--c5:2;--r4:3;--c4:1;--r3:3;--c3:3"><a href="chapters/joints.html"><span class="ring" aria-hidden="true"><span class="n">9</span></span><span class="label"><b>Joints</b><small>3 topics</small></span></a></li><li class="node" data-chapter="muscle-tissue" style="--pc:#E8776A;--pcd:#B04A3F;--r5:2;--c5:1;--r4:3;--c4:2;--r3:4;--c3:3"><a href="chapters/muscle-tissue.html"><span class="ring" aria-hidden="true"><span class="n">10</span></span><span class="label"><b>Muscle tissue</b><small>8 topics</small></span></a></li><li class="node" data-chapter="muscular-system" style="--pc:#E8776A;--pcd:#B04A3F;--r5:3;--c5:1;--r4:3;--c4:3;--r3:4;--c3:2"><a href="chapters/muscular-system.html"><span class="ring" aria-hidden="true"><span class="n">11</span></span><span class="label"><b>The muscular system</b><small>5 topics</small></span></a></li><li class="node" data-chapter="nervous-tissue" style="--pc:#E8776A;--pcd:#B04A3F;--r5:3;--c5:2;--r4:3;--c4:4;--r3:4;--c3:1"><a href="chapters/nervous-tissue.html"><span class="ring" aria-hidden="true"><span class="n">12</span></span><span class="label"><b>Nervous tissue and neural signaling</b><small>4 topics</small></span></a></li><li class="node" data-chapter="cns" style="--pc:#E8776A;--pcd:#B04A3F;--r5:3;--c5:3;--r4:4;--c4:4;--r3:5;--c3:1"><a href="chapters/cns.html"><span class="ring" aria-hidden="true"><span class="n">13</span></span><span class="label"><b>The brain and spinal cord</b><small>4 topics</small></span></a></li><li class="node" data-chapter="pns" style="--pc:#E8776A;--pcd:#B04A3F;--r5:3;--c5:4;--r4:4;--c4:3;--r3:5;--c3:2"><a href="chapters/pns.html"><span class="ring" aria-hidden="true"><span class="n">14</span></span><span class="label"><b>Nerves, reflexes and pathways</b><small>6 topics</small></span></a></li><li class="node" data-chapter="special-senses" style="--pc:#E8776A;--pcd:#B04A3F;--r5:3;--c5:5;--r4:4;--c4:2;--r3:5;--c3:3"><a href="chapters/special-senses.html"><span class="ring" aria-hidden="true"><span class="n">15</span></span><span class="label"><b>Special senses</b><small>3 topics</small></span></a></li><li class="node" data-chapter="autonomic" style="--pc:#E8776A;--pcd:#B04A3F;--r5:4;--c5:5;--r4:4;--c4:1;--r3:6;--c3:3"><a href="chapters/autonomic.html"><span class="ring" aria-hidden="true"><span class="n">16</span></span><span class="label"><b>The autonomic nervous system</b><small>3 topics</small></span></a></li><li class="node part-start" data-chapter="endocrine" style="--pc:#C9973A;--pcd:#8A6420;--r5:4;--c5:4;--r4:5;--c4:1;--r3:6;--c3:2"><a href="chapters/endocrine.html"><span class="ring" aria-hidden="true"><span class="n">17</span></span><span class="label"><span class="part">A&amp;P II</span><b>The endocrine system</b><small>6 topics</small></span></a></li><li class="node" data-chapter="blood" style="--pc:#C9973A;--pcd:#8A6420;--r5:4;--c5:3;--r4:5;--c4:2;--r3:6;--c3:1"><a href="chapters/blood.html"><span class="ring" aria-hidden="true"><span class="n">18</span></span><span class="label"><b>Blood</b><small>5 topics</small></span></a></li><li class="node" data-chapter="cardiovascular" style="--pc:#C9973A;--pcd:#8A6420;--r5:4;--c5:2;--r4:5;--c4:3;--r3:7;--c3:1"><a href="chapters/cardiovascular.html"><span class="ring" aria-hidden="true"><span class="n">19</span></span><span class="label"><b>The cardiovascular system</b><small>16 topics</small></span></a></li><li class="node" data-chapter="lymph-immune" style="--pc:#C9973A;--pcd:#8A6420;--r5:4;--c5:1;--r4:5;--c4:4;--r3:7;--c3:2"><a href="chapters/lymph-immune.html"><span class="ring" aria-hidden="true"><span class="n">20</span></span><span class="label"><b>Lymphatic and immune systems</b><small>6 topics</small></span></a></li><li class="node" data-chapter="respiratory" style="--pc:#C9973A;--pcd:#8A6420;--r5:5;--c5:1;--r4:6;--c4:4;--r3:7;--c3:3"><a href="chapters/respiratory.html"><span class="ring" aria-hidden="true"><span class="n">21</span></span><span class="label"><b>The respiratory system</b><small>9 topics</small></span></a></li><li class="node" data-chapter="digestive" style="--pc:#C9973A;--pcd:#8A6420;--r5:5;--c5:2;--r4:6;--c4:3;--r3:8;--c3:3"><a href="chapters/digestive.html"><span class="ring" aria-hidden="true"><span class="n">22</span></span><span class="label"><b>The digestive system</b><small>7 topics</small></span></a></li><li class="node" data-chapter="metabolism" style="--pc:#C9973A;--pcd:#8A6420;--r5:5;--c5:3;--r4:6;--c4:2;--r3:8;--c3:2"><a href="chapters/metabolism.html"><span class="ring" aria-hidden="true"><span class="n">23</span></span><span class="label"><b>Metabolism and nutrition</b><small>5 topics</small></span></a></li><li class="node" data-chapter="urinary" style="--pc:#C9973A;--pcd:#8A6420;--r5:5;--c5:4;--r4:6;--c4:1;--r3:8;--c3:1"><a href="chapters/urinary.html"><span class="ring" aria-hidden="true"><span class="n">24</span></span><span class="label"><b>The urinary system</b><small>6 topics</small></span></a></li><li class="node" data-chapter="fluid-acid-base" style="--pc:#C9973A;--pcd:#8A6420;--r5:5;--c5:5;--r4:7;--c4:1;--r3:9;--c3:1"><a href="chapters/fluid-acid-base.html"><span class="ring" aria-hidden="true"><span class="n">25</span></span><span class="label"><b>Fluid, electrolyte and acid–base balance</b><small>4 topics</small></span></a></li><li class="node" data-chapter="reproductive" style="--pc:#C9973A;--pcd:#8A6420;--r5:6;--c5:5;--r4:7;--c4:2;--r3:9;--c3:2"><a href="chapters/reproductive.html"><span class="ring" aria-hidden="true"><span class="n">26</span></span><span class="label"><b>The reproductive system</b><small>6 topics</small></span></a></li><li class="node" data-chapter="development" style="--pc:#C9973A;--pcd:#8A6420;--r5:6;--c5:4;--r4:7;--c4:3;--r3:9;--c3:3"><a href="chapters/development.html"><span class="ring" aria-hidden="true"><span class="n">27</span></span><span class="label"><b>Development and inheritance</b><small>9 topics</small></span></a></li></ol></div>
   </section>
 
-  <section class="anp-part" aria-labelledby="h-start">
-    <h2 id="h-start">Start here: Foundations</h2>
-    <p>Recommended, not required. Foundations teaches the vocabulary, chemistry, cells, tissues, signals and feedback that every system chapter builds on.</p>
-    <ol class="anp-chapters"><li><a href="chapters/orientation.html"><b>Orientation to the body</b><span class="anp-small">6 topics</span></a><span class="anp-mastery" data-mastery-chapter="orientation"></span></li><li><a href="chapters/chem-physics.html"><b>Chemistry and physics for physiology</b><span class="anp-small">8 topics</span></a><span class="anp-mastery" data-mastery-chapter="chem-physics"></span></li><li><a href="chapters/cells.html"><b>Cells</b><span class="anp-small">9 topics</span></a><span class="anp-mastery" data-mastery-chapter="cells"></span></li><li><a href="chapters/tissues.html"><b>Tissues</b><span class="anp-small">4 topics</span></a><span class="anp-mastery" data-mastery-chapter="tissues"></span></li><li><a href="chapters/cell-communication.html"><b>Signals, repair and control</b><span class="anp-small">6 topics</span></a><span class="anp-mastery" data-mastery-chapter="cell-communication"></span></li></ol>
+  <section class="xsection anp-home-about" aria-label="About the course">
+    <div>
+      <h2 id="h-covers">What the course covers</h2>
+      <p>27 chapters and 162 topics: the full scope of a two-semester college A&amp;P course, matched to the OpenStax <i>Anatomy and Physiology 2e</i> textbook, the HAPS learning outcomes and the TEAS&nbsp;7 A&amp;P content areas. Each topic has an interactive lesson and a full notes page.</p>
+      <p class="anp-small">All 162 topics are built, each with its lesson, notes and questions.</p>
+    </div>
+    <div>
+      <h2 id="h-how">How to use it</h2>
+      <ol class="anp-sample-list anp-how">
+        <li><span class="n" aria-hidden="true">1</span><span><b>Read the lesson.</b> It opens with a patient, checks what you need first, then walks the mechanism one cause at a time.</span></li>
+        <li><span class="n" aria-hidden="true">2</span><span><b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.</span></li>
+        <li><span class="n" aria-hidden="true">3</span><span><b>Use the tools.</b> Predict what changes, build feedback loops, trace pathways, read graphs and practice for lab practicals.</span></li>
+        <li><span class="n" aria-hidden="true">4</span><span><b>Check your mastery.</b> Your dashboard shows your weakest topics and core concepts, and what to do next.</span></li>
+      </ol>
+    </div>
   </section>
 
-  <section class="anp-part" aria-labelledby="h-go">
-    <h2 id="h-go">Practice and study</h2>
-    <ul class="anp-cards anp-cards-sm">
+  <section class="xsection" aria-labelledby="h-tools">
+    <div class="anp-feature">
+      <div class="icon-circle" aria-hidden="true">
+        <svg viewBox="0 0 170 170" fill="none" focusable="false">
+          <path d="M85 128s-40-24-40-54a22 22 0 0 1 40-13 22 22 0 0 1 40 13c0 30-40 54-40 54z" stroke="#fff" stroke-opacity=".9" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M58 80h14l7-14 10 28 7-14h16" stroke="#fff" stroke-opacity=".9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="132" cy="44" r="6" fill="#F2B9A9"/><path d="M127.5 48.5L112 64" stroke="#F2B9A9" stroke-width="3" stroke-linecap="round"/>
+          <path d="M38 138l10-10M38 128l10 10" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <h2 id="h-tools">Seven tools that make you do the physiology.</h2>
+        <p>Predict what rises and falls, close a feedback loop, trace a pathway step by step, and name structures on real figures before the lab practical does.</p>
+        <div class="anp-tool-chips"><a href="tools/lab-practical.html">Virtual lab practical</a><a href="tools/predict.html">Predict the change</a><a href="tools/feedback-loops.html">Feedback loop builder</a><a href="tools/pathways.html">Pathway tracer</a><a href="tools/graphs.html">Graph reader</a><a href="tools/calculators.html">Worked-example calculators</a><a href="tools/word-roots.html">Word root builder</a></div>
+        <a class="btn-press alt" href="tools.html">See all tools</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="xsection" id="sample" aria-labelledby="h-sample">
+    <div class="anp-sample-row">
+      <div>
+        <h2 id="h-sample">Try a step.</h2>
+        <p class="section-lede">One real question from the bank. Pick an answer to see why it is right or wrong.</p>
+        <ol class="anp-sample-list">
+          <li><span class="n" aria-hidden="true">1</span> Read what changed</li>
+          <li><span class="n" aria-hidden="true">2</span> Pick the answer you would bet on</li>
+          <li><span class="n" aria-hidden="true">3</span> See the cause and effect behind it</li>
+        </ol>
+      </div>
+      <div class="anp-qcard" id="anpSample" data-correct="3">
+        <span class="tag domain">Chemistry and physics for physiology</span> <span class="tag diff">Gradients, pressure and flow</span>
+        <p class="qtext" id="anpSampleQ">The radius of a tube is cut to half its original value. The pressures at both ends stay the same, and so do the tube's length and the fluid. What happens to the flow?</p>
+        <div class="anp-qopts" role="group" aria-labelledby="anpSampleQ"><button type="button" class="qopt" data-i="0" data-why="This treats flow as simply proportional to radius. Resistance depends on the fourth power of the radius, so the effect is far larger."><span class="letter">A</span> It falls to 1/2 of the original</button><button type="button" class="qopt" data-i="1" data-why="This squares the radius (½ × ½). Resistance depends on the radius multiplied by itself four times, not twice."><span class="letter">B</span> It falls to 1/4 of the original</button><button type="button" class="qopt" data-i="2" data-why="Flow depends on both the pressure gradient and resistance. Narrowing the tube raises resistance, so flow falls even though the pressures are unchanged."><span class="letter">C</span> It is unchanged: pressure alone sets the flow</button><button type="button" class="qopt" data-i="3" data-why="Correct. Half the radius gives 16 times the resistance, so one-sixteenth of the flow."><span class="letter">D</span> It falls to 1/16 of the original</button></div>
+        <p class="why" id="anpSampleWhy" aria-live="polite"></p>
+        <details class="anp-sample-key"><summary>Show the answer</summary><p><b>It falls to 1/16 of the original.</b> Resistance depends on 1 ÷ radius to the fourth power. Halving the radius makes the radius to the fourth power (½)⁴ = 1/16 as large, so resistance becomes 16 times larger. With ΔP unchanged, F = ΔP / R becomes 1/16 of the original.</p></details>
+        <p class="anp-sample-more"><a class="link-quiet" href="lessons/gradients-flow.html">Open the lesson on gradients, pressure and flow &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+  <section class="xsection" aria-labelledby="h-go">
+    <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
+    <ul class="anp-cards">
       <li><a href="practice.html"><b>Practice</b><span>Topic, system and core concept drills, mixed review and your missed questions.</span></a></li>
       <li><a href="review.html"><b>Review</b><span>Your spaced review queue.</span></a></li>
       <li><a href="exams.html"><b>Exams</b><span>Unit quizzes, system exams, A&amp;P I and II cumulative finals and TEAS A&amp;P practice.</span></a></li>
@@ -230,11 +309,14 @@
     </ul>
   </section>
 
-  <section class="anp-part" aria-labelledby="h-all">
-    <h2 id="h-all">Chapters</h2>
-    <section class="anp-partgroup" aria-labelledby="p-foundations"><h2 id="p-foundations">Foundations</h2><ol class="anp-chapters" start="1"><li data-chapter="orientation"><a href="chapters/orientation.html"><b>Orientation to the body</b><span class="anp-small">6 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="orientation"></span></li><li data-chapter="chem-physics"><a href="chapters/chem-physics.html"><b>Chemistry and physics for physiology</b><span class="anp-small">8 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="chem-physics"></span></li><li data-chapter="cells"><a href="chapters/cells.html"><b>Cells</b><span class="anp-small">9 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="cells"></span></li><li data-chapter="tissues"><a href="chapters/tissues.html"><b>Tissues</b><span class="anp-small">4 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="tissues"></span></li><li data-chapter="cell-communication"><a href="chapters/cell-communication.html"><b>Signals, repair and control</b><span class="anp-small">6 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="cell-communication"></span></li></ol></section><section class="anp-partgroup" aria-labelledby="p-api"><h2 id="p-api">A&amp;P I</h2><ol class="anp-chapters" start="6"><li data-chapter="integumentary"><a href="chapters/integumentary.html"><b>Integumentary system</b><span class="anp-small">4 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="integumentary"></span></li><li data-chapter="bone-tissue"><a href="chapters/bone-tissue.html"><b>Bone tissue</b><span class="anp-small">5 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="bone-tissue"></span></li><li data-chapter="skeleton"><a href="chapters/skeleton.html"><b>The skeleton</b><span class="anp-small">5 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="skeleton"></span></li><li data-chapter="joints"><a href="chapters/joints.html"><b>Joints</b><span class="anp-small">3 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="joints"></span></li><li data-chapter="muscle-tissue"><a href="chapters/muscle-tissue.html"><b>Muscle tissue</b><span class="anp-small">8 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="muscle-tissue"></span></li><li data-chapter="muscular-system"><a href="chapters/muscular-system.html"><b>The muscular system</b><span class="anp-small">5 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="muscular-system"></span></li><li data-chapter="nervous-tissue"><a href="chapters/nervous-tissue.html"><b>Nervous tissue and neural signaling</b><span class="anp-small">4 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="nervous-tissue"></span></li><li data-chapter="cns"><a href="chapters/cns.html"><b>The brain and spinal cord</b><span class="anp-small">4 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="cns"></span></li><li data-chapter="pns"><a href="chapters/pns.html"><b>Nerves, reflexes and pathways</b><span class="anp-small">6 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="pns"></span></li><li data-chapter="special-senses"><a href="chapters/special-senses.html"><b>Special senses</b><span class="anp-small">3 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="special-senses"></span></li><li data-chapter="autonomic"><a href="chapters/autonomic.html"><b>The autonomic nervous system</b><span class="anp-small">3 topics · A&amp;P I</span></a><span class="anp-mastery" data-mastery-chapter="autonomic"></span></li></ol></section><section class="anp-partgroup" aria-labelledby="p-apii"><h2 id="p-apii">A&amp;P II</h2><ol class="anp-chapters" start="17"><li data-chapter="endocrine"><a href="chapters/endocrine.html"><b>The endocrine system</b><span class="anp-small">6 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="endocrine"></span></li><li data-chapter="blood"><a href="chapters/blood.html"><b>Blood</b><span class="anp-small">5 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="blood"></span></li><li data-chapter="cardiovascular"><a href="chapters/cardiovascular.html"><b>The cardiovascular system</b><span class="anp-small">16 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="cardiovascular"></span></li><li data-chapter="lymph-immune"><a href="chapters/lymph-immune.html"><b>Lymphatic and immune systems</b><span class="anp-small">6 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="lymph-immune"></span></li><li data-chapter="respiratory"><a href="chapters/respiratory.html"><b>The respiratory system</b><span class="anp-small">9 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="respiratory"></span></li><li data-chapter="digestive"><a href="chapters/digestive.html"><b>The digestive system</b><span class="anp-small">7 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="digestive"></span></li><li data-chapter="metabolism"><a href="chapters/metabolism.html"><b>Metabolism and nutrition</b><span class="anp-small">5 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="metabolism"></span></li><li data-chapter="urinary"><a href="chapters/urinary.html"><b>The urinary system</b><span class="anp-small">6 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="urinary"></span></li><li data-chapter="fluid-acid-base"><a href="chapters/fluid-acid-base.html"><b>Fluid, electrolyte and acid–base balance</b><span class="anp-small">4 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="fluid-acid-base"></span></li><li data-chapter="reproductive"><a href="chapters/reproductive.html"><b>The reproductive system</b><span class="anp-small">6 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="reproductive"></span></li><li data-chapter="development"><a href="chapters/development.html"><b>Development and inheritance</b><span class="anp-small">9 topics · A&amp;P II</span></a><span class="anp-mastery" data-mastery-chapter="development"></span></li></ol></section>
+  <section class="xsection" aria-label="About LevlPrep">
+    <div class="trust-row">
+      <div class="trust-pill">Every lesson and notes page free</div>
+      <div class="trust-pill">Progress saved on your device</div>
+      <div class="trust-pill">No account required</div>
+    </div>
+    <p class="anp-disclaimer anp-home-legal">LevlPrep is not affiliated with, endorsed by, or connected to Assessment Technologies Institute (ATI). TEAS and ATI TEAS are trademarks of ATI, used here only to say what the material is for. OpenStax is credited as a source of figures and coverage; OpenStax does not endorse LevlPrep.</p>
   </section>
-  <p class="anp-disclaimer">LevlPrep is not affiliated with, endorsed by, or connected to Assessment Technologies Institute (ATI). TEAS and ATI TEAS are trademarks of ATI, used here only to say what the material is for. OpenStax is credited as a source of figures and coverage; OpenStax does not endorse LevlPrep.</p>
 </main>
 <footer class="anp-foot xshell">
   <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a “Report a problem” link.</p>
@@ -245,6 +327,6 @@
 <script src="assets/anp-core.js" defer></script>
 <script src="assets/anp-glossary.js" defer></script>
 <script src="assets/anp-nav.js" defer></script>
-<script src="assets/anp-chapter.js" defer></script>
+<script src="assets/anp-home.js" defer></script>
 </body>
 </html>

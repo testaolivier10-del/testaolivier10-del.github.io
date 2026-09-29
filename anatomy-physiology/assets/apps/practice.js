@@ -127,19 +127,31 @@
     window.scrollTo(0, 0);
   }
 
-  function statsHtml(){
+  /* The rail beside the builder: your numbers, what is due for review, and
+     the way to the timed exams. */
+  function railHtml(){
     var d = store(), answered = 0;
     Object.keys(d.q || {}).forEach(function(k){ if(d.q[k].n) answered++; });
     var due = Core ? Core.reviewCount() : 0;
     var miss = Object.keys(missedIds()).length;
     var studied = studiedTopics().length;
     function tile(k, v, s){ return '<div class="anp-pr-stat"><span class="anp-pr-stat-k">' + k + '</span><span class="anp-pr-stat-v">' + v + '</span><span class="anp-pr-stat-s">' + s + '</span></div>'; }
-    return '<div class="anp-pr-stats">' +
-      tile('Answered', answered, answered ? 'questions and tool items' : 'nothing yet') +
-      tile('Studied', studied, 'of ' + plural(builtTopics().length, 'built topic')) +
-      tile('Due for review', due, due ? '<a href="' + BASE + 'review.html">Open your review queue</a>' : 'nothing due now') +
-      tile('To fix', miss, miss ? 'missed, not yet right' : 'no open misses') +
-      '</div>';
+    var check = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+    return '<aside class="anp-pr-rail" aria-labelledby="anp-pr-rail-h">' +
+      '<h2 class="anp-pr-rail-k" id="anp-pr-rail-h">Your numbers</h2>' +
+      '<div class="anp-pr-stats">' +
+        tile('Answered', answered, answered ? 'questions and tool items' : 'nothing yet') +
+        tile('Studied', studied, 'of ' + plural(builtTopics().length, 'built topic')) +
+        tile('Due for review', due, due ? 'waiting in your queue' : 'nothing due now') +
+        tile('To fix', miss, miss ? 'missed, not yet right' : 'no open misses') +
+      '</div>' +
+      '<div class="anp-pr-rcard"><p class="anp-pr-rcard-k">Due for review</p>' +
+        (due
+          ? '<h3>' + plural(due, 'item') + ' due now</h3><p>Questions and tool items you missed come back on a spacing schedule, so they stick. Clear them before new work.</p>'
+          : '<h3>Your queue is clear</h3><p>Questions you miss come back here on a spacing schedule, so they stick.</p><p class="anp-pr-rcard-empty">' + check + 'Nothing due now</p>') +
+        '<a class="anp-pr-rcard-more" href="' + BASE + 'review.html">' + (due ? 'Start your review' : 'Open review') + ' <span aria-hidden="true">&rarr;</span></a></div>' +
+      '<a class="anp-pr-exam" href="' + BASE + 'exams.html"><span class="anp-pr-exam-t">Ready for a timed test?<small>Unit quizzes, system exams, A&amp;P I and II finals.</small></span><span class="anp-pr-exam-go" aria-hidden="true">&rarr;</span></a>' +
+    '</aside>';
   }
 
   function optionList(list, sel, label){
@@ -189,42 +201,72 @@
     return plural(pool.length, 'question') + ' available' + (state.mode === 'missed' ? '' : ', ' + fresh + ' you have not tried') + '.';
   }
 
+  var PICK_H = { topic: 'Which topic?', chapter: 'Which chapter?', core: 'Which core concept?', studied: 'What goes in', weak: 'Where you are weakest', missed: 'Missed tool items' };
+  function setLabel(){
+    if(state.mode === 'topic' && TOPIC[state.topic]) return TOPIC[state.topic].title;
+    if(state.mode === 'chapter' && CHAPTER[state.chapter]) return CHAPTER[state.chapter].title;
+    if(state.mode === 'core' && CORE[state.core]) return CORE[state.core].name;
+    return MODE[state.mode] ? MODE[state.mode].title : '';
+  }
+  function sumHtml(){
+    var n = poolFor(state.mode).length;
+    if(!n) return 'No questions match yet.';
+    var k = state.count ? Math.min(state.count, n) : n;
+    return (state.count && state.count < n ? '' : 'All ') + plural(k, 'question') + ' &middot; ' + esc(setLabel());
+  }
+  function step(n){ return '<span class="anp-pr-n" aria-hidden="true">' + n + '</span>'; }
+
   function renderSetup(){
     view('setup');
     if(MODE[state.mode] && modeUnavailable(state.mode)) state.mode = 'topic';
-    app.innerHTML = statsHtml() +
-      '<form class="anp-pr-setup" novalidate>' +
-        '<fieldset class="anp-pr-modes"><legend>What do you want to practice?</legend>' +
+    app.innerHTML = '<div class="anp-pr-grid">' +
+      '<form class="anp-pr-setup" novalidate aria-label="Build a practice set">' +
+        '<fieldset class="anp-pr-step anp-pr-modes"><legend class="anp-pr-step-h">' + step(1) + 'What do you want to practice?</legend>' +
+          '<div class="anp-pr-mode-grid">' +
           MODES.map(function(m){
             var why = modeUnavailable(m.id);
             return '<label class="anp-pr-mode' + (why ? ' is-off' : '') + '"><input type="radio" name="mode" value="' + m.id + '"' +
               (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span class="anp-pr-mode-t">' + esc(m.title) + '</span>' +
               '<span class="anp-pr-mode-d">' + esc(why || m.desc) + '</span></label>';
           }).join('') +
-        '</fieldset>' +
-        '<div class="anp-pr-pick">' + pickerHtml() + '</div>' +
-        '<fieldset class="anp-pr-count"><legend>How many questions?</legend>' +
+        '</div></fieldset>' +
+        '<div class="anp-pr-step anp-pr-pickstep"><h2 class="anp-pr-step-h">' + step(2) + '<span class="anp-pr-pick-h"></span></h2>' +
+          '<div class="anp-pr-pick"></div><p class="anp-pr-avail"></p></div>' +
+        '<fieldset class="anp-pr-step anp-pr-count"><legend class="anp-pr-step-h">' + step(3) + 'How many questions?</legend>' +
+          '<div class="anp-pr-chips">' +
           COUNTS.map(function(n){ return '<label class="anp-pr-chip"><input type="radio" name="count" value="' + n + '"' + (n === state.count ? ' checked' : '') + '><span>' + (n || 'All') + '</span></label>'; }).join('') +
-        '</fieldset>' +
-        '<p class="anp-pr-avail" aria-live="polite">' + availHtml() + '</p>' +
-        '<button type="submit" class="btn-press anp-pr-start">Start practice</button>' +
-      '</form>';
+        '</div></fieldset>' +
+        '<div class="anp-pr-go"><p class="anp-pr-sum" aria-live="polite"><span class="anp-pr-sum-main"></span><small>Feedback after every answer. Misses go to your review queue.</small></p>' +
+          '<button type="submit" class="btn-press anp-pr-start">Start practice</button></div>' +
+      '</form>' +
+      railHtml() +
+    '</div>';
 
     var form = app.querySelector('form');
     function syncPickers(){
       var t = app.querySelector('#anp-pr-topic'), c = app.querySelector('#anp-pr-chapter'), k = app.querySelector('#anp-pr-core');
       if(t) state.topic = t.value; if(c) state.chapter = c.value; if(k) state.core = k.value;
     }
+    // Step 2 names what the mode needs; it drops out (and step 3 becomes 2)
+    // when the mode has nothing to choose or say.
+    function paintPick(){
+      var html = pickerHtml(), stepEl = app.querySelector('.anp-pr-pickstep');
+      app.querySelector('.anp-pr-pick').innerHTML = html;
+      app.querySelector('.anp-pr-pick-h').textContent = PICK_H[state.mode] || '';
+      stepEl.hidden = !html;
+      app.querySelector('.anp-pr-count .anp-pr-n').textContent = html ? '3' : '2';
+    }
     function refresh(){
       syncPickers();
       var n = poolFor(state.mode).length;
       app.querySelector('.anp-pr-avail').textContent = availHtml();
+      app.querySelector('.anp-pr-sum-main').innerHTML = sumHtml();
       app.querySelector('.anp-pr-start').disabled = !n;
     }
     form.addEventListener('change', function(e){
       if(e.target.name === 'mode'){
         state.mode = e.target.value;
-        app.querySelector('.anp-pr-pick').innerHTML = pickerHtml();
+        paintPick();
       } else if(e.target.name === 'count'){
         state.count = +e.target.value;
       }
@@ -234,6 +276,7 @@
       e.preventDefault(); syncPickers();
       start(state.mode, state.count);
     });
+    paintPick();
     refresh();
   }
 
