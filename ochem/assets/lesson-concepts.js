@@ -432,12 +432,13 @@
       11:['aldol-connectivity','enolate-formation'],
       12:['aldol-connectivity','enolate-formation'] } },
 
-    'alkene-structure': { n:8, steps:{
-      1:['alkene-pi-nucleophile'],
+    'alkene-structure': { n:13, steps:{
       2:['hybridization-assignment','alkene-pi-nucleophile'],
-      3:['degrees-of-unsaturation'],
-      5:['alkene-stability-ranking'],
-      7:['alkene-stability-ranking'] } },
+      4:['degrees-of-unsaturation'],
+      5:['degrees-of-unsaturation'],
+      8:['alkene-stability-ranking'],
+      10:['alkene-stability-ranking'],
+      12:['alkene-stability-ranking'] } },
 
     'alkynes': { n:9, steps:{
       1:['alkyne-acidity'],
