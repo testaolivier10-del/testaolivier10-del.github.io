@@ -277,15 +277,15 @@ FIGURES.push({
     s += tag(390, 302, 'wavelength (nm)');
 
     // the two pi -> pi* bands, and the weak n -> pi* one
-    s += `<line class="fg-dash" x1="${X(217).toFixed(1)}" y1="100" x2="${X(217).toFixed(1)}" y2="260"></line>`;
-    s += `<line class="fg-dash" x1="${X(258).toFixed(1)}" y1="85" x2="${X(258).toFixed(1)}" y2="260"></line>`;
+    s += `<line class="fg-dash" x1="${X(217).toFixed(1)}" y1="155" x2="${X(217).toFixed(1)}" y2="260"></line>`;
+    s += `<line class="fg-dash" x1="${X(258).toFixed(1)}" y1="82" x2="${X(258).toFixed(1)}" y2="260"></line>`;
     s += trace(280, 18, 12, 'fg-bond-soft');
-    s += trace(217, 14, 160, 'fg-bond');
-    s += trace(258, 16, 175, 'fg-bond-hi');
+    s += trace(217, 14, 105, 'fg-bond');
+    s += trace(258, 16, 178, 'fg-bond-hi');
 
     /* Centred over its own peak: anchored at the left it ran back across the
        absorbance axis and the arrowhead sat inside the word. */
-    s += text(X(217), 92, 'buta-1,3-diene, 217 nm', { cls: 'fg-lbl', size: 11.5 });
+    s += text(X(217), 146, 'buta-1,3-diene, 217 nm', { cls: 'fg-lbl', size: 11.5 });
     s += text(X(258) + 10, 72, 'hexa-1,3,5-triene, 258 nm', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
     /* The weak band is the ketone n → π* one, so it belongs at 280 nm, where
        the prose puts acetone. A leader runs from the label down to it, because

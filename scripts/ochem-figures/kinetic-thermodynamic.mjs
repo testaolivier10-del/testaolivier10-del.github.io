@@ -63,7 +63,7 @@ FIGURES.push({
   id: 'kinetic-thermodynamic-wells',
   section: 'kinetic-thermodynamic',
   anchor: 'but it ends in a deeper valley.</p>',
-  alt: 'Energy diagram for HBr and buta-1,3-diene after protonation. The allylic cation sits in the middle. The route to the left climbs a lower hill and ends at the 1,2-product, 3-bromobut-1-ene, drawn skeletally. The route to the right climbs a higher hill and ends in a deeper valley at the 1,4-product, 1-bromobut-2-ene.',
+  alt: 'Energy diagram for HBr and buta-1,3-diene after protonation. The allylic cation sits in the middle. The route to the left climbs a lower hill and ends at the 1,2-product, 3-bromobut-1-ene, drawn skeletally. The route to the right climbs a higher hill and ends in a deeper valley at the 1,4-product, (E)-1-bromobut-2-ene.',
   viewBox: '0 0 760 404',
   build() {
     let s = '';
@@ -91,7 +91,7 @@ FIGURES.push({
     s += text(125, 334, '3-bromobut-1-ene', { cls: 'fg-sm', size: 10.5 });
     s += L(655, 268, '1,4-product');
     s += bromobutene14(630, 316);
-    s += text(660, 356, '1-bromobut-2-ene', { cls: 'fg-sm', size: 10.5 });
+    s += text(660, 356, '(E)-1-bromobut-2-ene', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
   caption: 'Follow each route down from the cation. The lower hill and the deeper valley belong to different products.',
