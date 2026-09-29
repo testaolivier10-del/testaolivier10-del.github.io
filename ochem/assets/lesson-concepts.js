@@ -760,12 +760,13 @@
       9:['hybridization-assignment'],
       12:['hybridization-assignment','molecular-geometry-vsepr'] } },
 
-    'ir': { n:8, steps:{
-      1:['ir-functional-groups'],
+    'ir': { n:11, steps:{
       2:['ir-functional-groups'],
-      4:['ir-functional-groups'],
-      6:['ir-functional-groups'],
-      7:['ir-functional-groups'] } },
+      3:['ir-functional-groups'],
+      5:['ir-functional-groups'],
+      7:['ir-functional-groups'],
+      9:['ir-functional-groups'],
+      10:['ir-functional-groups'] } },
 
     'energy-diagrams': { n:14, steps:{
       2:['energy-diagram-reading'],
