@@ -422,7 +422,7 @@ FIGURES.push({
     s += mol(halide(P(650, 262), 'Br'));
     return s;
   },
-  caption: 'Arrow 1 alone would give carbon a fifth bond. Arrow 2, in the same step, sends the C–Br pair onto bromine, so carbon never has more than four.',
+  caption: 'Arrow 1 alone would give carbon a fifth bond. Arrow 2, in the same step, sends the C–⁠Br pair onto bromine, so carbon never has five full bonds.',
 });
 
 /* The four patterns, each as a reaction. */
@@ -590,7 +590,7 @@ function badRows() {
       why: ['in: −1, out: 0;', 'the product Cl needs its −'],
     },
     {
-      title: 'a pair pushed toward the δ+ end',
+      title: 'a bond\'s pair pushed onto its δ+ end',
       draw(y) {
         let s = '';
         const c = P(150, y + 14);
