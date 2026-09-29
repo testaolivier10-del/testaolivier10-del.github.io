@@ -90,8 +90,8 @@ FIGURES.push({
     const M = mebr(c);
     s += M.s;
     s += displace(P(104, 106), c, M.br);
-    s += tg(212, 80, 'δ+', 'warn');
-    s += tg(56, 190, 'nucleophile', 'good') + tg(176, 190, 'δ+ carbon') + tg(284, 190, 'leaving group');
+    s += tg(210, 98, 'δ+', 'warn');
+    s += tg(56, 190, 'nucleophile', 'good') + tg(176, 190, 'electrophile') + tg(284, 190, 'leaving group');
 
     s += box(216, 110, 'PRODUCTS');
     const h2 = P(30, 272), o2 = P(80, 272), m2 = P(138, 272);
@@ -131,10 +131,10 @@ FIGURES.push({
 
     // ---- neutral lone pair ----
     s += box(144, 128, 'A NEUTRAL MOLECULE WITH A LONE PAIR');
-    const n = P(76, 214);
+    const n = P(76, 204);
     s += arm(n, 'N', 200, 44, 'H') + arm(n, 'N', 340, 44, 'H') + arm(n, 'N', 270, 36, 'H');
     s += A(n, 'N', 'hi') + lp(n, 270);
-    s += tg(142, 262, 'ammonia', 'mut', 'start');
+    s += tg(76, 268, 'ammonia', 'mut');
     s += tg(250, 194, 'no charge', 'good');
     s += tg(250, 216, 'water, alcohols,');
     s += tg(250, 232, 'ammonia, amines,');
@@ -224,7 +224,7 @@ FIGURES.push({
     s += tg(170, 314, 'strongest nucleophile on the left', 'good');
     return s;
   },
-  caption: 'Read left to right, top row then bottom row. Each step along the row adds a lone pair and a more electronegative atom to hold it.',
+  caption: 'Read C, N, O, F in order, top left to bottom right. Each step adds a lone pair and a more electronegative atom to hold it.',
 });
 
 /* ------------------------------------------------------------------ 5 ---
@@ -266,16 +266,16 @@ FIGURES.push({
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
   anchor: '<h3>Solvent matters too, and it can reverse the order</h3>',
-  alt: 'Three stacked panels. Fluoride in methanol: four methanol molecules surround F minus, each pointing its O–H hydrogen at the ion through a short dashed hydrogen bond, forming a tight cage. Iodide in methanol: a larger I minus with only two methanols, on long dashed hydrogen bonds, a loose hold. Fluoride in DMSO: the DMSO oxygens surround the sodium ion, and the fluoride ion sits alone with its four lone pairs and nothing hydrogen-bonded to it.',
-  viewBox: '0 0 340 520',
+  alt: 'Three stacked panels. Fluoride in methanol: four methanol molecules surround F minus, all pointing their O–H hydrogens at the ion through short, bold dashed hydrogen bonds, forming a tight cage. Iodide in methanol: a larger I minus, also surrounded by four methanols, but on long, faint dashed hydrogen bonds, a loose hold. Fluoride in DMSO: the DMSO oxygens surround a potassium ion, and the fluoride ion sits alone with its four lone pairs and nothing hydrogen-bonded to it.',
+  viewBox: '0 0 340 626',
   build() {
     let s = '';
-    const dash = (a, b) => `<line class="fg-dash-hi" x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}"></line>`;
+    const dash = (a, b, cls) => `<line class="${cls}" x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}"></line>`;
     // A methanol hydrogen-bonded to an ion at ion, along direction deg:
     // H at distance rh, the OCH3 at distance ro, dashes from the ion's edge.
-    const meoh = (ion, rIon, deg, rh, ro) => {
+    const meoh = (ion, rIon, deg, rh, ro, cls = 'fg-dash-hi') => {
       const h = armEnd(ion, deg, rh), o = armEnd(ion, deg, ro);
-      return dash(armEnd(ion, deg, rIon + 2), armEnd(ion, deg, rh - 14)) +
+      return dash(armEnd(ion, deg, rIon + 2), armEnd(ion, deg, rh - 14), cls) +
              B(h, 'H', o, 'OCH₃') + A(h, 'H') + A(o, 'OCH₃');
     };
     // ---- fluoride in methanol ----
@@ -283,30 +283,34 @@ FIGURES.push({
     const f = P(110, 120);
     for (const d of [45, 135, 225, 315]) s += meoh(f, 14, d, 48, 100);
     s += A(f, 'F⁻', 'warn');
-    s += tg(270, 96, 'small ion,');
-    s += tg(270, 112, 'packed charge:');
-    s += tg(270, 134, 'a tight cage', 'warn');
-    s += tg(270, 150, 'of H bonds');
+    s += tg(262, 96, 'small ion,');
+    s += tg(262, 112, 'packed charge:');
+    s += tg(262, 134, 'short, strong', 'warn');
+    s += tg(262, 150, 'H bonds: tight cage', 'warn');
 
     // ---- iodide in methanol ----
-    s += box(222, 130, 'IODIDE IN METHANOL');
-    const i = P(170, 286);
-    s += meoh(i, 24, 180, 62, 116) + meoh(i, 24, 0, 62, 116);
+    s += box(222, 236, 'IODIDE IN METHANOL');
+    const i = P(114, 354);
+    for (const d of [45, 135, 225, 315]) s += meoh(i, 24, d, 70, 120, 'fg-dash');
     s += atom(i.x, i.y, 'I⁻', { kind: 'hi', size: 13, r: 24 });
-    s += tg(170, 336, 'big ion, spread-out charge: a loose hold', 'good');
+    s += tg(262, 330, 'big ion,');
+    s += tg(262, 346, 'spread-out charge:');
+    s += tg(262, 368, 'long, weak', 'good');
+    s += tg(262, 384, 'H bonds: loose hold', 'good');
 
     // ---- fluoride in DMSO ----
-    s += box(360, 152, 'FLUORIDE IN DMSO', 'good');
-    const na = P(130, 430);
-    s += atom(na.x, na.y, 'Na⁺', { size: 13, r: 18 });
-    s += lbl(106, 435, '(CH₃)₂S=O', 'end') + lbl(154, 435, 'O=S(CH₃)₂', 'start');
-    s += tg(130, 476, 'O atoms face Na⁺', 'mut') + tg(290, 476, 'fluoride', 'mut');
-    const f2 = P(290, 436);
-    s += A(f2, 'F', 'hi') + lp(f2, 0) + lp(f2, 90) + lp(f2, 180) + lp(f2, 270) + chg(312, 414);
-    s += tg(170, 496, 'no O–H, so nothing H-bonds to F⁻', 'good');
+    s += box(466, 152, 'FLUORIDE IN DMSO', 'good');
+    const k = P(130, 536);
+    s += atom(k.x, k.y, 'K⁺', { size: 13, r: 16 });
+    s += lbl(108, 541, '(CH₃)₂S=O', 'end') + lbl(152, 541, 'O=S(CH₃)₂', 'start');
+    s += tg(130, 582, 'O atoms face K⁺', 'mut') + tg(290, 582, 'fluoride', 'mut');
+    const f2 = P(290, 542);
+    s += A(f2, 'F', 'hi') + lp(f2, 0) + lp(f2, 90) + lp(f2, 180) + lp(f2, 270) + chg(312, 520);
+    s += tg(170, 602, 'no O–H, so nothing H-bonds to F⁻', 'good');
     return s;
   },
-  caption: 'Dashed lines are hydrogen bonds. Compare how many reach each ion, and how long they are.',
+  caption: 'Dashed lines are hydrogen bonds. Short, strong ones grip fluoride; iodide’s are longer and weaker.',
+  note: 'Fluoride salts dissolve poorly in DMSO. In practice chemists use potassium fluoride with an additive that wraps up K⁺, or fluoride paired with a large organic cation.',
 });
 
 /* ------------------------------------------------------------------ 7 ---
@@ -407,7 +411,7 @@ FIGURES.push({
     s += tg(262, 376, 'least available pair', 'warn');
     return s;
   },
-  caption: 'Read the s-character labels from top to bottom, and compare them with the last line of each panel.',
+  caption: 'From top to bottom, the lone pair has more s character, so it is held closer to nitrogen and is less available.',
 });
 
 /* ------------------------------------------------------------------ 9 ---
@@ -455,6 +459,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The target on the right is the same in the bottom two panels. What changes is the size of the group behind the attacking oxygen.',
+  note: 'Even hydroxide gives some elimination with a crowded bromide like this one; Substitution &amp; Elimination sorts out when each pathway wins.',
 });
 
 /* ------------------------------------------------------------------ 10 ---
