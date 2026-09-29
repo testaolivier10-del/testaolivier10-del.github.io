@@ -19,6 +19,7 @@
 <style>
   /* Shared bits for this mockup. */
   .pv-label{position:fixed;left:12px;bottom:12px;z-index:200;background:var(--ink);color:var(--paper);font:800 12px var(--font-ui);padding:7px 12px;border-radius:999px;box-shadow:var(--lift);opacity:.92;pointer-events:none;}
+  @media(max-width:760px){.pv-label{bottom:88px;}}
   .home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,52px);align-items:center;}
   .progress-card{background:var(--white);border:var(--bw) solid var(--line);border-radius:22px;padding:26px 26px 22px;box-shadow:var(--lift-lg);}
   .progress-card__top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}

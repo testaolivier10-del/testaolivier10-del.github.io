@@ -21,13 +21,14 @@
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <style>
 .mock-label{position:fixed;left:14px;bottom:14px;z-index:999;background:#1B2A26;color:#fff;font:800 12px var(--font-ui);padding:7px 12px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none;}
+@media (max-width:900px){.mock-label{bottom:auto;top:8px;left:auto;right:8px;font-size:10.5px;padding:5px 9px;opacity:.9;}}
 .mock-trunc{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;color:var(--muted);font:700 13px/1.5 var(--font-ui) !important;margin:28px 0 0;}
 
 /* Version 3 — "Reading + TOC rail": centred column, sticky right contents. */
 .v3{max-width:1060px;margin:0 auto;padding:0 clamp(18px,3.5vw,48px) 50px;display:grid;grid-template-columns:minmax(0,680px) 220px;justify-content:center;column-gap:clamp(28px,5vw,64px);row-gap:0;align-items:start;}
 .v3-crumb{grid-column:1 / -1;font:700 12.5px var(--font-ui);color:var(--muted);margin:22px 0 0;display:flex;flex-wrap:wrap;gap:6px;}
 .v3-crumb a{color:var(--muted);text-decoration:none;}
-.v3-head{padding:6px 0 22px;border-bottom:var(--bw) solid var(--line);margin-bottom:24px;}
+.v3-head{padding:16px 0 22px;border-bottom:var(--bw) solid var(--line);margin-bottom:24px;}
 .v3-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
 .v3-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font:800 12px var(--font-ui);text-decoration:none;background:var(--white);color:var(--ink);border:1px solid var(--line);}
 .v3-chip.c{background:var(--ctint);color:var(--cink);border-color:transparent;}

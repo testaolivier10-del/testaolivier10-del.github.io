@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <style>
 .mock-label{position:fixed;left:14px;bottom:14px;z-index:999;background:#1B2A26;color:#fff;font:800 12px var(--font-ui);padding:7px 12px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none;}
+@media (max-width:900px){.mock-label{bottom:auto;top:8px;left:auto;right:8px;font-size:10.5px;padding:5px 9px;opacity:.9;}}
 .mock-trunc{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;color:var(--muted);font:700 13px/1.5 var(--font-ui) !important;margin:28px 0 0;}
 
 /* Version 2 — "Textbook with contents": ochem learn.html shell, chapter rail. */
@@ -86,7 +87,7 @@
 .v2 .v2-foot{margin-top:30px;}
 @media (max-width:900px){
   .v2 .tb-toc-btn:hover{border-color:var(--cink);color:var(--cink);}
-  .v2-pillbar{top:auto;bottom:16px;position:fixed;right:16px;left:auto;height:auto;}
+  .v2-pillbar{top:auto;bottom:calc(84px + env(safe-area-inset-bottom));position:fixed;left:50%;transform:translateX(-50%);height:auto;}
   .v2-pill{transform:none;box-shadow:var(--lift);}
 }
 @media (max-width:560px){ .v2 .tb-chapter-link{max-width:100%;} .v2 .tb-chapter-nav{flex-direction:column;} }
