@@ -94,7 +94,7 @@ FIGURES.push({
     s += col(254, true);
     return s;
   },
-  caption: 'The only difference is the pair of dots. The formal-charge sum counts lone-pair electrons plus one electron per bond.',
+  caption: 'Count the dots: none on the carbocation, one pair on the carbanion.',
 });
 
 /* ======================================================================
@@ -154,7 +154,7 @@ FIGURES.push({
     s += sm(620, 272, 'the third CH₃ points at you');
     return s;
   },
-  caption: 'Bromide leaves <i>tert</i>-butyl bromide and takes the C&ndash;Br bonding pair with it. The three methyl groups that remain spread out flat, 120&deg; apart. Seen edge-on, the empty p orbital stands at right angles to that plane.',
+  caption: 'Left to right: the tetrahedral starting material, the flat cation seen from above, and the same cation seen edge-on with its empty p orbital.',
 });
 
 FIGURES.push({
@@ -178,7 +178,7 @@ FIGURES.push({
     s += lbl(170, 410, 'third CH₃ points at you');
     return s;
   },
-  caption: 'The same flat cation from two directions. Edge-on, nothing sits above or below the plane except the empty orbital.',
+  caption: 'The <i>tert</i>-butyl cation from two directions.',
 });
 
 /* ======================================================================
@@ -300,7 +300,7 @@ FIGURES.push({
     s += lbl(196, 634, '+  H₂O', 'start');
     return s;
   },
-  caption: 'Two starting points, one cation. In the lower route the hydrogen goes to the CH₂ end.',
+  caption: 'Both routes give the <i>tert</i>-butyl cation.',
 });
 
 /* ======================================================================
@@ -354,7 +354,7 @@ FIGURES.push({
     s += sm(740, 318, 'a racemic mixture', 'end');
     return s;
   },
-  caption: 'The butan-2-yl cation, CH₃CH⁺CH₂CH₃, meeting bromide. Bromide can use either lobe of the empty orbital. The two products are mirror images: the top one has Br up, the bottom one has Br down, and the other three groups are reflected across the dashed line.',
+  caption: 'The butan-2-yl cation, CH₃CH⁺CH₂CH₃, meeting bromide from each side. Compare the two products across the dashed mirror line.',
 });
 
 /* ======================================================================
@@ -412,7 +412,7 @@ FIGURES.push({
     s += sm(590, 298, 'counted on the carbons bonded to C⁺');
     return s;
   },
-  caption: 'Left: the ethyl cation, CH₃CH₂⁺. Only the C&ndash;H bond that lines up with the empty orbital can share its pair, but the CH₃ group spins freely, so each of its three C&ndash;H bonds takes a turn. Right: the count of such bonds for each cation.',
+  caption: 'Left: the ethyl cation, CH₃CH₂⁺, with the lined-up C&ndash;H bond shaded. Right: the count for each cation.',
 });
 
 FIGURES.push({
@@ -435,7 +435,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'One C&ndash;H bond, lined up with the empty orbital, shares a little of its pair.',
+  caption: 'The ethyl cation seen side-on, and the count of C&ndash;H bonds next door for each cation.',
 });
 
 /* ======================================================================
@@ -472,7 +472,7 @@ FIGURES.push({
     s += sm(380, 354, 'The dashed bar is the solvolysis comparison, methyl to 3°.');
     return s;
   },
-  caption: 'Alkyl groups move a cation down one rung each. Resonance moves it further: a primary allylic cation sits beside a secondary alkyl one, and a primary benzylic cation beside a tertiary one. Vinyl and aryl cations are not on the ladder; they do not form from an ordinary halide.',
+  caption: 'Read down from methyl: each rung is a more stable cation, and two cations on the same rung are about equally stable.',
 });
 
 /* ======================================================================
@@ -597,7 +597,7 @@ FIGURES.push({
     s += lbl(170, 244, 'an oxocarbenium ion');
     return s;
   },
-  caption: 'The oxygen lone pair becomes a C=O &pi; bond, and the charge moves onto oxygen.',
+  caption: 'The two resonance structures of CH₃O&ndash;CH₂⁺.',
 });
 
 /* ======================================================================
@@ -657,7 +657,7 @@ FIGURES.push({
     s += lbl(380, 306, 'In both, the empty orbital points away from the π electrons.');
     return s;
   },
-  caption: 'Overlap needs orbitals that point the same way. In both cations the empty orbital is at right angles to the &pi; system beside it, so the &pi; electrons cannot reach it.',
+  caption: 'Left: the vinyl cation, its empty p orbital drawn end-on as a circle. Right: a benzene ring seen edge-on, with the ring plane as a line.',
 });
 
 FIGURES.push({
@@ -682,7 +682,7 @@ FIGURES.push({
     s += lbl(170, 400, 'empty sp² lies in the plane');
     return s;
   },
-  caption: 'In both, the empty orbital sits at right angles to the &pi; electrons, so they cannot reach it.',
+  caption: 'Top: a vinyl cation. Bottom: an aryl cation, with the ring seen edge-on.',
 });
 
 /* ======================================================================
@@ -780,7 +780,7 @@ FIGURES.push({
     s += shiftAfter(95, 340, HYD).s;
     return s;
   },
-  caption: 'The arrow starts on the C&ndash;H bond. The H moves with both electrons; the charge moves back one carbon.',
+  caption: 'Before and after a 1,2-hydride shift.',
 });
 
 FIGURES.push({
@@ -821,7 +821,7 @@ FIGURES.push({
     s += shiftAfter(120, 340, NEO).s;
     return s;
   },
-  caption: 'The arrow starts on the C&ndash;CH₃ bond and ends at the CH₂⁺ carbon.',
+  caption: 'Before and after the 1,2-methyl shift.',
 });
 
 /* ======================================================================
@@ -1022,7 +1022,7 @@ FIGURES.push({
     s += sm(380, 318, 'Two things improve at once: 1° becomes 2°, and a strained four-membered ring becomes a five.');
     return s;
   },
-  caption: 'Ring expansion is a 1,2-alkyl shift whose moving group is part of the ring. Follow carbon <b>a</b>: it leaves the ring carbon next to the charge and bonds to the CH₂ carbon, <b>b</b>, instead, so the ring gains a member and the charge stays on the carbon <b>a</b> left.',
+  caption: 'Follow carbons <b>a</b> and <b>b</b> from panel to panel: the new bond between them is what closes the five-membered ring.',
 });
 
 export default FIGURES;

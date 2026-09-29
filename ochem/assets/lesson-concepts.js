@@ -670,12 +670,13 @@
       6:['ir-functional-groups'],
       7:['ir-functional-groups'] } },
 
-    'energy-diagrams': { n:10, steps:{
+    'energy-diagrams': { n:14, steps:{
       2:['energy-diagram-reading'],
       4:['energy-diagram-reading'],
-      5:['energy-diagram-reading'],
-      7:['energy-diagram-reading'],
-      9:['hammond-postulate','energy-diagram-reading'] } },
+      6:['energy-diagram-reading'],
+      8:['energy-diagram-reading'],
+      11:['hammond-postulate'],
+      13:['hammond-postulate','energy-diagram-reading'] } },
     'carbocations': { n:9, steps:{
       2:['carbocation-stability','formal-charge-calc'],
       4:['carbocation-stability'],
