@@ -9020,7 +9020,7 @@
     "The O–H proton"
    ],
    "correct": 3,
-   "why": "Scan the sites and give each one a pKa. The O–H is an ordinary primary alcohol at about 16. The C–H bonds on either side of the carbonyl — the acetyl methyl and the CH₂ — are alpha hydrogens at about 20, acidic for carbon because the anion is an enolate delocalized onto oxygen. The C–H bonds on the carbon carrying the OH have no such help and sit near 50. Sodium hydride is comfortably strong enough for any of this: its conjugate acid is H₂ at pKa 36. Lowest pKa wins, so the O–H comes off, and it beats the alpha positions by roughly four units — ten thousand to one. This is the comparison students most often get backwards, because a hydrogen next to a carbonyl feels activated and is: by thirty orders of magnitude relative to an alkane, and still not enough to beat an alcohol.",
+   "why": "Give each site a pKa. The O–H is about 16. A C–H next to the C=O is about 20, because the anion's charge can spread onto oxygen. The C–H on the carbon bearing the OH is near 50. NaH (conjugate acid H₂, pKa 36) can remove any of them, so the lowest pKa wins: the O–H. The C–H next to C=O is tempting but loses by about four units.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9031,20 +9031,20 @@
     "False"
    ],
    "correct": 1,
-   "why": "False, and the opposite is close to a rule. Proton transfers between electronegative atoms — O to O, O to N, N to O — are among the fastest reactions known, often limited only by how quickly the two molecules diffuse together. That has a practical consequence you will use constantly: in a multi-step mechanism you may shuffle protons between heteroatoms freely, and a mechanism is not wrong for including such a step. What is genuinely slow is removing a proton from carbon, because the carbanion left behind is high in energy and the geometry has to reorganize. That is why enolate chemistry needs its own treatment and why proton transfers to and from carbon are the ones worth drawing carefully.",
+   "why": "False. Moving a proton between oxygen or nitrogen atoms is among the fastest steps known, often limited only by how fast the molecules meet. So a mechanism may shuffle protons between these atoms freely. The slow case is taking a proton off carbon, because the carbanion left behind is high in energy and its shape has to change.",
    "difficulty": "medium",
    "type": "tf"
   },
   {
    "q": "Sodium acetate is added to a solution of phenol. Acetic acid has pKa 4.76 and phenol has pKa 10. What happens?",
    "options": [
-    "Acetate is protonated and phenoxide forms quantitatively",
+    "Phenol acts as the base and acetate as the acid",
     "Almost nothing — the equilibrium lies far toward phenol",
     "Phenol is deprotonated essentially completely",
     "The mixture settles at roughly fifty-fifty"
    ],
    "correct": 1,
-   "why": "Name the acid on each side. On the left the acid is phenol, pKa 10. On the right it would be acetic acid, pKa 4.76. The equilibrium always favors the side holding the weaker acid, that is the higher pKa, so it favors the left, where phenol keeps its proton. Quantitatively, K ≈ 10^(4.76 − 10) = 10^−5.2, which is about one part in 160,000. Acetate is simply too weak a base to take a proton from phenol. To deprotonate phenol you need a base whose conjugate acid has a pKa comfortably above 10 — hydroxide, at 15.7, does it easily, which is why phenols dissolve in sodium hydroxide but not in sodium bicarbonate.",
+   "why": "The acid on the left is phenol (pKa 10); on the right it would be acetic acid (pKa 4.76). The equilibrium favors the side with the weaker acid, the higher pKa, so it stays on the left: K ≈ 10^(4.76 − 10), about one in 170,000. Acetate is too weak a base to take phenol's proton. Hydroxide (water, pKa 15.7) can.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9107,7 +9107,7 @@
     "R–OH"
    ],
    "correct": 3,
-   "why": "Track the proton across the arrow. Sulfuric acid starts with two and ends with one, so it is the donor — the acid — and bisulfate is its conjugate base. The alcohol starts with one hydrogen on oxygen and ends with two, so it accepted a proton: it is the base, and R–OH₂⁺ is its conjugate acid. The instinct to reject this is that an alcohol does not feel basic, and on the pKa scale it is a feeble one — its conjugate acid sits near pKa −2. But basicity is relative, and against sulfuric acid an alcohol is quite basic enough. This exact step is how alcohols are activated for substitution and elimination: protonating the oxygen turns a terrible leaving group, hydroxide, into a good one, water.",
+   "why": "Follow the proton. Sulfuric acid starts with two acidic hydrogens and ends with one, so it is the acid and HSO₄⁻ is its conjugate base. The alcohol gains a hydrogen on oxygen, so it is the base, and R–OH₂⁺ is its conjugate acid. An alcohol is a weak base, but next to sulfuric acid it is basic enough.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -9120,7 +9120,7 @@
     "(CH₃)₃C⁺ + H₂O → (CH₃)₃COH₂⁺"
    ],
    "correct": 1,
-   "why": "A proton transfer moves one hydrogen nucleus, and nothing else, from one species to another. In the acetic acid reaction the O–H hydrogen moves onto hydroxide: acetate and water come out, and no heavy atom has changed partners. The bromination is an addition across a pi bond. The carbocation reaction is a Lewis acid–base reaction — water donates a lone pair to the empty p orbital of a carbocation and a new C–O bond forms, with no proton moving. The cyanide reaction is a nucleophilic substitution at carbon. All four are acid–base reactions in the broad Lewis sense; only the acetic acid one is Brønsted.",
+   "why": "A proton transfer moves one H⁺ from one species to another and changes nothing else. In the acetic acid reaction the O–H hydrogen moves to hydroxide. The cyanide reaction swaps Br for CN on carbon, the bromine reaction adds across a C=C, and in the last one a lone pair on water bonds to carbon. No proton moves in those three.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -9151,7 +9151,7 @@
    "type": "mcq"
   },
   {
-   "q": "A carbocation is captured by water during acid-catalyzed hydration, giving R–OH₂⁺. What has to happen next to give a neutral alcohol?",
+   "q": "A carbocation is captured by water, giving R–OH₂⁺. What has to happen next to give a neutral alcohol?",
    "options": [
     "A hydride shifts from carbon onto the oxygen",
     "The new C–O bond breaks and then reforms",
@@ -9159,7 +9159,7 @@
     "The oxygen releases one of its lone pairs to the solvent"
    ],
    "correct": 2,
-   "why": "Count the charge on R–OH₂⁺. Oxygen has three bonds and one lone pair, which is +1, and the whole species is a cation. The only way to reach a neutral alcohol is to lose a proton, and that is a Brønsted step: another water molecule, acting as the base, takes the proton and leaves as H₃O⁺. Notice how strong an acid R–OH₂⁺ is — pKa about −2 against the alcohol’s 16 — so that step is fast and complete. The sequence is worth remembering as a pattern: a Lewis acid–base step makes the bond and creates a charge, and a Brønsted step removes it.",
+   "why": "Count the charge: an oxygen with three bonds and one lone pair is +1. The only way to a neutral alcohol is to lose a proton, so a second water molecule acts as the base and takes it, leaving as H₃O⁺. R–OH₂⁺ is a strong acid (pKa about −2), so this is fast. A hydride shift moves H between carbons, not onto oxygen.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9207,7 +9207,7 @@
     "A methoxide lone pair to the H, and the O–H bond to acetic acid’s oxygen"
    ],
    "correct": 3,
-   "why": "Two arrows, and each has a job. The first makes the new bond, so it starts on the electrons that will become that bond — a lone pair on methoxide — and ends on the acidic hydrogen. The second breaks the old bond, so it starts on the O–H bonding pair and ends on the oxygen that keeps it, which is what leaves acetate negatively charged. The answer that runs the acidic H at methoxide and acetic acid’s oxygen at the O–H bond reverses both arrows, and has the hydrogen donating electrons it does not possess. The answer that pushes the C=O bond up onto the carbonyl oxygen breaks the wrong bond: the pi bond has nothing to do with deprotonation. And the answer that sends methoxide at the carbonyl carbon is a real reaction later in the course, but it is nucleophilic addition, not proton transfer.",
+   "why": "The first arrow makes the new bond, so it starts on a methoxide lone pair and ends on the acidic H. The second breaks the O–H bond: its tail is on that bond and its head on the oxygen that keeps the pair, which becomes acetate. Reversing both arrows, or moving the C=O pi bond, is wrong, and methoxide attacking carbon moves no proton.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9290,7 +9290,7 @@
    "type": "tf"
   },
   {
-   "q": "Which of the following is a classic example of a Lewis acid used as a catalyst in Friedel-Crafts reactions?",
+   "q": "Which of the following is a Lewis acid, often used as a catalyst?",
    "options": [
     "AlCl3",
     "NaOH",
@@ -9298,7 +9298,7 @@
     "H2O"
    ],
    "correct": 0,
-   "why": "AlCl3 has an incomplete octet on aluminum and readily accepts an electron pair, making it a powerful Lewis acid catalyst in Friedel-Crafts alkylation and acylation.",
+   "why": "Aluminum in AlCl₃ has only six valence electrons and an empty orbital, so it accepts an electron pair: a Lewis acid. NH₃, H₂O and the hydroxide in NaOH all have lone pairs to give, which makes them Lewis bases, not acids.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -9435,11 +9435,11 @@
    "options": [
     "It accepts a pair from the carbonyl oxygen, generating a carbanion",
     "It accepts a lone pair from chlorine, generating an acylium ion",
-    "It removes a proton from the alpha carbon, generating an enolate",
+    "It removes a proton from the carbon next to C=O, generating an enolate",
     "It donates a chloride to the carbonyl carbon, generating a diol"
    ],
    "correct": 1,
-   "why": "Aluminum in AlCl₃ has six valence electrons and an empty orbital, so it is the Lewis acid, and the best pair on offer is a lone pair on the acyl chloride’s chlorine. Coordinating there drains density out of the C–Cl bond until it breaks heterolytically, leaving AlCl₄⁻ and an acylium ion, RC≡O⁺. The acylium ion is a far stronger electrophile than the acyl chloride was — a full positive charge on carbon, stabilized by the oxygen lone pair — and it is powerful enough to attack benzene, which the acyl chloride alone is not. The catalyst did not supply the electrophile; it manufactured one, which is the general job description of a Lewis acid catalyst.",
+   "why": "Aluminum in AlCl₃ has six valence electrons and an empty orbital, so it is the Lewis acid, and the best pair on offer is a chlorine lone pair. Coordinating there weakens the C–Cl bond until it breaks, giving AlCl₄⁻ and an acylium ion, RC≡O⁺. AlCl₃ takes a pair; it does not give chloride or remove protons.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9510,10 +9510,10 @@
     "It donates chloride to the carbonyl carbon and opens a faster pathway",
     "It reduces the carbonyl to an alcohol, which is easier to attack",
     "It coordinates the carbonyl oxygen and makes the carbon more electrophilic",
-    "It deprotonates the alpha carbon and generates a more reactive enolate"
+    "It pulls a proton off the carbon next to C=O and makes a more reactive anion"
    ],
    "correct": 2,
-   "why": "Titanium accepts a lone pair from the carbonyl oxygen, expanding its coordination sphere. Once oxygen is donating into the metal it pulls harder on the C=O pi electrons, which drains density off the carbonyl carbon and leaves it more strongly delta positive — a better electrophile. The effect is the same one protonation achieves, and that is the point: a Lewis acid activates a carbonyl under neutral conditions, so a substrate that would not survive strong protic acid can still be activated. Look for the pattern rather than the reagent name: ZnCl₂, BF₃, AlCl₃ and TiCl₄ all do this job.",
+   "why": "Titanium accepts a lone pair from the carbonyl oxygen. That oxygen then pulls harder on the C=O pi electrons, leaving the carbon more δ+, a better electrophile. Protonation does the same thing, but a Lewis acid does it without strong acid. TiCl₄ adds no chloride to carbon and removes no proton; ZnCl₂, BF₃ and AlCl₃ work the same way.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9531,15 +9531,15 @@
    "type": "mcq"
   },
   {
-   "q": "Consider a Lewis acid catalyst promoting ring-opening of an epoxide. What is its mechanistic role?",
+   "q": "Thiolate, RS⁻, attacks carbon faster than alkoxide, RO⁻, even though thiolate is by far the weaker base. What explains this?",
    "options": [
-    "It deprotonates the epoxide",
-    "It acts as a nucleophile attacking the epoxide carbon directly",
-    "It reduces the epoxide to an alcohol directly",
-    "It polarizes the epoxide oxygen, activating the ring"
+    "Sulfur is more electronegative than oxygen, so RS⁻ grips carbon harder",
+    "RS⁻ is large and polarizable, a soft donor that suits carbon",
+    "Basicity and attack rate always rise and fall together",
+    "RO⁻ is soft, so it avoids carbon and seeks protons instead"
    ],
-   "correct": 3,
-   "why": "By accepting a lone pair from the epoxide oxygen, the Lewis acid withdraws electron density from the ring, weakening the C-O bonds and activating the epoxide carbons for nucleophilic ring-opening.",
+   "correct": 1,
+   "why": "The hard/soft rule says like pairs with like. Thiolate is large, diffuse and polarizable, a soft donor, so it pairs well with a soft carbon acceptor even though it is the weaker base. Alkoxide is small and charge-dense, a hard donor better matched to H⁺. Sulfur is less electronegative than oxygen, and basicity need not track the rate of attack.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -9599,10 +9599,10 @@
     "Use a strong base to deprotonate the carbonyl oxygen",
     "Use a nucleophilic catalyst to attack the carbonyl first",
     "Use a Lewis acid such as ZnCl₂ to coordinate the oxygen",
-    "Use a stronger protic acid and run the reaction colder"
+    "Use a stronger acid such as HCl, and run it colder"
    ],
    "correct": 2,
-   "why": "Protonating a carbonyl oxygen activates the carbon beautifully, but it requires a medium acidic enough to do it, and plenty of substrates — acetals, many protecting groups, acid-sensitive stereocenters — will not survive that. A Lewis acid gives the same activation by a different route: the metal accepts a lone pair from the carbonyl oxygen, density is pulled off the carbon, and the carbon becomes more electrophilic, all under neutral conditions. That equivalence is the practical payoff of the Lewis definition. The base option is wrong in a useful way — deprotonating a carbonyl oxygen is not a thing, since there is no hydrogen there to remove.",
+   "why": "Protonating the carbonyl oxygen activates the carbon, but only in a strongly acidic medium, which this substrate cannot survive. A Lewis acid such as ZnCl₂ accepts a lone pair from the carbonyl oxygen instead, pulling density off the carbon in the same way without strong acid. A stronger acid makes the problem worse, and a carbonyl oxygen has no H for a base to remove.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -9674,15 +9674,15 @@
    "type": "mcq"
   },
   {
-   "q": "Which base will deprotonate a ketone alpha hydrogen (pKa 20) essentially completely?",
+   "q": "Which base will deprotonate a terminal alkyne C–H (pKa 25) essentially completely?",
    "options": [
     "Sodium hydroxide, pKaH 15.7",
     "Sodium ethoxide, pKaH 16",
     "Sodium acetate, pKaH 4.76",
-    "LDA, pKaH about 36"
+    "Sodium amide, pKaH 38"
    ],
    "correct": 3,
-   "why": "A base removes a proton completely when its conjugate acid has a pKa comfortably above the proton’s — three or four units is a working minimum, and ten is decisive. LDA’s conjugate acid is diisopropylamine at about pKa 36, sixteen units above 20, so deprotonation is quantitative. Hydroxide (conjugate acid water, 15.7) and ethoxide (ethanol, 16) both sit about four units below the alpha hydrogen, so they give only a trace of enolate at equilibrium — which is useful when a trace is what you want, as in an aldol, and useless when you need all of it. Acetate (acetic acid, 4.76) is fifteen units short and does nothing. LDA is also bulky enough not to attack the carbonyl itself, which is the second reason it is chosen.",
+   "why": "A base removes a proton completely when its conjugate acid has a pKa well above the proton's. Amide's conjugate acid, NH₃, is at 38, thirteen units above 25, so the reaction is complete. Hydroxide and ethoxide are about nine units short, so almost nothing happens, and acetate is twenty units short.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -9708,7 +9708,7 @@
     "Ethanol is dramatically more acidic than water"
    ],
    "correct": 2,
-   "why": "Both are O–H bonds on a small, unhindered oxygen with no resonance and nothing withdrawing nearby, so the four ARIO factors give the same answer for each and the pKa values come out within half a unit: water 15.7, ethanol 16. The textbook explanation for the small difference is that an alkyl group is weakly electron-donating compared with a hydrogen, which slightly destabilizes the alkoxide. That is usually how it is taught, and it is worth knowing it is not the whole story: in DMSO the order reverses, with ethanol at 29.8 the stronger acid against water at 31.4. The real driver in water is solvation — hydroxide is smaller and easier for water molecules to surround than ethoxide. Either way, treat water and a simple alcohol as effectively equal in acidity.",
+   "why": "Both are an O–H on a small oxygen with no resonance and nothing electron-withdrawing nearby, so their pKa values fall within half a unit: water 15.7, ethanol 16. The small gap mostly reflects how well water surrounds each anion, and in DMSO the order even reverses. Treat water and a simple alcohol as about equally acidic.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9962,7 +9962,7 @@
     "The base’s molecular weight, and its color"
    ],
    "correct": 2,
-   "why": "Two properties decide whether a base is usable, and they are independent. First, strength: the conjugate acid needs a pKa well above 25, which rules out hydroxide at 15.7 and ethoxide at 16 and points to amide bases at 36 to 38. Second, nucleophilicity, which is largely a matter of steric bulk: a small strong base such as amide ion will also add to a carbonyl, whereas a bulky one such as LDA is too hindered to reach the carbonyl carbon and can only reach a proton. This separation of basicity from nucleophilicity is exactly why LDA exists as a reagent.",
+   "why": "Two separate properties matter. Strength: the conjugate acid must sit well above pKa 25, which rules out hydroxide (15.7) and ethoxide (16) and points to amide bases (36 to 38). Bulk: a small amide ion also attacks a carbonyl carbon, while a hindered amide base is too crowded to reach that carbon and can only take a proton.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9988,7 +9988,7 @@
     "It is a convention with no experimental basis at all"
    ],
    "correct": 1,
-   "why": "Water levels every acid stronger than H₃O⁺. Add HCl, HBr, HI or H₂SO₄ to water and each is converted essentially completely to hydronium, so all four look identical and the solution cannot tell them apart: the strongest acid that can exist in water is H₃O⁺, pKa −1.7. To rank them you have to move to a solvent that is a much weaker base, such as acetic acid or DMSO, measure there, and extrapolate back. The same levelling happens at the basic end — hydroxide is the strongest base water permits — which is why NaNH₂ and LDA have to be used in aprotic solvents like THF.",
+   "why": "Water levels every acid stronger than H₃O⁺. HCl, HBr, HI and H₂SO₄ all turn into hydronium, so in water they look the same. To rank them, chemists measure in a solvent that is a much weaker base, such as acetic acid or DMSO, and extrapolate back. Measuring in very dilute water would not help, since the leveling still happens.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -10149,13 +10149,13 @@
   {
    "q": "A ketone can act as both an acid and a base. What are its conjugate acid and conjugate base?",
    "options": [
-    "Enol and alkoxide",
+    "Protonated carbonyl and alkoxide",
     "Protonated carbonyl and enolate",
     "Enolate and protonated carbonyl",
-    "Alkoxide and enol"
+    "Alkoxide and protonated carbonyl"
    ],
    "correct": 1,
-   "why": "Run the definition in both directions on the same molecule. Add a proton to a lone pair on the carbonyl oxygen and you get the protonated carbonyl, C=OH⁺ — the conjugate acid, and a strong one at pKa about −7, which is how acid catalysis activates a carbonyl toward nucleophiles. Remove an alpha proton, the one on the carbon next to C=O, and you get the enolate — the conjugate base, from a C–H at pKa about 20, unusually acidic for carbon because the anion delocalizes onto oxygen. Both halves of carbonyl chemistry are on that one line: acid catalysis on the left, enolate chemistry on the right.",
+   "why": "Add a proton to a lone pair on the C=O oxygen and you get C=OH⁺, the conjugate acid. Remove a proton from the carbon next to C=O and you get the enolate, the conjugate base; its charge spreads onto oxygen. An alkoxide would need an O–H to lose, and a ketone has none.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -10178,10 +10178,10 @@
     "Acetic acid is itself a base, not an acid",
     "Acetate’s charge is delocalized over two oxygens",
     "Acetate carries a positive charge in solution",
-    "Ethoxide is aromatic and therefore stabilized"
+    "Ethoxide spreads its charge over its two carbons"
    ],
    "correct": 1,
-   "why": "Both anions came from an O–H, so the atom holding the charge is oxygen in each case and factor A is a tie. What differs is what happens next. Acetate spreads its negative charge equally over two equivalent oxygens by resonance, so each carries about half a unit; ethoxide has nowhere to put it and keeps the whole charge on one oxygen. Half a charge is far easier to hold than a whole one, so acetate is the more stable and therefore the weaker, less reactive base — which is the same statement as acetic acid (pKa 4.76) being eleven orders of magnitude stronger an acid than ethanol (pKa 16).",
+   "why": "Both charges sit on oxygen. Acetate spreads its negative charge over two equivalent oxygens by resonance, about half on each; ethoxide keeps the whole charge on one oxygen and cannot move it onto its carbons. Half a charge is easier to hold, so acetate is the weaker base, matching acetic acid (pKa 4.76) being far stronger than ethanol (pKa 16).",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -10386,7 +10386,7 @@
     "Resonance, which outweighs the atom effect here",
     "Atom, because oxygen always beats carbon",
     "Induction from the two methyl groups on the diketone",
-    "Orbital, because the alpha carbon is sp hybridized"
+    "Orbital, because the acidic carbon is sp hybridized"
    ],
    "correct": 0,
    "why": "Run ARIO and watch two factors disagree. A favors ethanol: its anion puts the charge on oxygen, while the diketone’s puts it on carbon, and oxygen is far more electronegative. R favors the diketone by a mile: the anion sits between two carbonyls and delocalizes onto both oxygens, so the charge spends most of its time on oxygen anyway and on two of them, while ethoxide has nowhere to put it. R wins, and not narrowly — seven pKa units, ten million to one. This is the case that shows the ARIO order is a search order, not a ranking of strengths: A is checked first because it settles most comparisons quickly, not because it always wins.",
@@ -10452,7 +10452,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "True, and this corrects an over-simple version of the rule. It is true that delocalizing onto an electronegative atom is worth more per atom — acetate, on two oxygens, beats phenoxide, on three carbons. But \"onto carbon does not count\" is wrong, and the counterexamples are all standard: allyl anion at pKa 43 against propane at 50, triphenylmethane at 31, phenol at 10 against an alcohol at 16, and cyclopentadiene at 16 against a normal alkane at 50 — thirty-four units from delocalization onto carbon alone. Cyclopentadienyl is the extreme case because its anion is also aromatic, six pi electrons in a planar ring, and aromatic stabilization is resonance in its strongest available form.",
+   "why": "True. Delocalizing a charge onto an electronegative atom is worth more per atom, but \"onto carbon does not count\" is wrong. Phenol (10) beats an alcohol (16) by spreading its anion's charge onto ring carbons, and cyclopentadiene (16) beats a normal alkane (50) by thirty-four units, with the charge spread over five carbons and no heteroatom at all.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -10488,10 +10488,10 @@
     "The molecule contains a carbonyl group",
     "The acidic C-H bond is sp hybridized",
     "Induction from a nearby nitrogen atom stabilizes the anion",
-    "Deprotonation gives an aromatic cyclopentadienyl anion"
+    "Its anion spreads the charge over all five ring carbons"
    ],
    "correct": 3,
-   "why": "Removing that specific proton produces a fully conjugated, aromatic cyclopentadienyl anion, whose resonance and aromatic stabilization dramatically lowers the pKa compared to a typical alkane C-H, around 50.",
+   "why": "Removing the CH₂ hydrogen leaves a carbon anion next to two C=C bonds. Resonance spreads the charge over all five ring carbons, and this ring shape adds a special extra stability (you'll meet it in Aromatic Chemistry). The pKa falls from about 50 for an alkane C–H to 16. The acidic carbon is sp³, not sp, and there is no nitrogen or carbonyl.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -10880,11 +10880,11 @@
    "options": [
     "Dipole-dipole repulsion between carbons",
     "Steric clash between large substituents",
-    "Ring strain",
+    "Weaker overlap in the C–C sigma bond",
     "Torsional strain from aligned bonds"
    ],
    "correct": 3,
-   "why": "Torsional strain. The modern account of it is hyperconjugation: in a staggered arrangement each filled C–H sigma orbital lines up with an empty C–H antibonding (sigma*) orbital on the neighboring carbon, which is worth real stabilization, and eclipsing destroys that alignment. Ethane's hydrogens are far too small to be bumping into each other, so nothing steric is involved.",
+   "why": "Torsional strain. The modern account of it is hyperconjugation: in a staggered arrangement each filled C–H sigma orbital lines up with an empty C–H antibonding (sigma*) orbital on the neighboring carbon, which is worth real stabilization, and eclipsing destroys that alignment. Ethane's hydrogens are far too small to be bumping into each other, and head-on sigma overlap does not change on rotation.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -10952,7 +10952,7 @@
   {
    "q": "Ethane's rotational energy barrier (about 3 kcal/mol) arises purely from torsional strain with no steric component, whereas butane's anti-to-gauche energy gap includes an additional contribution from:",
    "options": [
-    "Ring strain",
+    "Weaker overlap in the central C–C bond",
     "Dipole moment changes",
     "Hydrogen bonding",
     "Steric strain"
@@ -11017,7 +11017,7 @@
    "options": [
     "Steric strain, on top of the torsional cost both pairs share",
     "Torsional strain, which large groups feel and small ones do not",
-    "Ring strain contributed by the four-carbon chain looping round",
+    "Weaker overlap in the C–C sigma bond as it turns",
     "An attraction between the methyls that raises the energy instead"
    ],
    "correct": 0,
@@ -11197,7 +11197,7 @@
    "options": [
     "The heat of combustion, against 157.4 kcal/mol per CH₂",
     "The boiling point, against a straight chain of the same mass",
-    "The C–H stretching frequency in the infrared spectrum, band by band",
+    "The dipole moment, against the open-chain alkane",
     "The density of the liquid at room temperature and pressure"
    ],
    "correct": 0,
@@ -11225,7 +11225,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "The half-chair is actually a high-energy transition state along the ring-flip pathway, not a resting conformation; molecules pass through it only briefly while interconverting between other forms.",
+   "why": "The half-chair is a high-energy transition state, about 10–11 kcal/mol above the chair, on the way from one chair to the other. It is a peak, not a dip, so molecules pass through it only briefly and never rest there.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -11340,7 +11340,7 @@
     "A transition state between chair and twist-boat"
    ],
    "correct": 3,
-   "why": "The half-chair is a saddle point on the conformational energy surface, the highest-energy structure molecules pass through while ring-flipping from one chair-related form to another.",
+   "why": "The half-chair is a peak on the energy surface, about 10–11 kcal/mol above the chair: the highest point a molecule passes as it leaves a chair for the twist-boat, on its way to the other chair. It is not a minimum, and substitution is not needed for it to exist.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -11421,15 +11421,15 @@
    "type": "mcq"
   },
   {
-   "q": "In one complete chair-to-chair ring flip pathway (going through the boat family), how many half-chair transition states are crossed?",
+   "q": "Cyclobutane releases 655.9 kcal/mol when burned completely. A strain-free CH₂ group releases 157.4 kcal/mol. About how much ring strain does cyclobutane carry?",
    "options": [
-    "2",
-    "0",
-    "1",
-    "4"
+    "About 164 kcal/mol",
+    "About 6.6 kcal/mol",
+    "About 26 kcal/mol",
+    "About 630 kcal/mol"
    ],
-   "correct": 0,
-   "why": "The ring flip proceeds chair to half-chair to twist-boat to half-chair to chair, so two distinct half-chair transition states are crossed in a single flip.",
+   "correct": 2,
+   "why": "Four strain-free CH₂ groups would release 4 × 157.4 = 629.6 kcal/mol. Cyclobutane releases 655.9, so the extra 26.3 kcal/mol was stored in its strained ring. 164 is just 655.9 ÷ 4, 6.6 is the excess per CH₂ rather than the total, and 630 is what an unstrained ring would release.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -11450,7 +11450,7 @@
     "Because cyclohexane has more carbons overall, which always lowers strain",
     "Because the chair achieves ideal angles and fully staggered bonds",
     "Because cyclohexane carbons are sp2 hybridized",
-    "Because cyclohexane is aromatic"
+    "Because its six carbons lie flat in a regular hexagon"
    ],
    "correct": 1,
    "why": "The chair's puckering is a geometric solution unique to a six-membered ring that allows perfect bond angles with no eclipsing, whereas smaller rings like cyclopropane are forced into angle strain and cyclopentane into some torsional strain regardless of puckering.",
@@ -11589,12 +11589,12 @@
    "q": "A substituent with an A-value of 4.9 kcal/mol is better than 99.9% equatorial. What do chemists use that for?",
    "options": [
     "As a conformational anchor, to study one known chair",
-    "As a way to stop the ring flipping, so no other chair exists",
+    "As a way to make the other chair impossible to form",
     "As a way to raise the flip barrier and slow the interconversion",
     "As a substitute for measuring A-values, which it makes needless"
    ],
    "correct": 0,
-   "why": "A tert-butyl group does not lock the ring in principle — the flip barrier is barely changed. What it does is make the other chair so sparsely populated that the molecule is, for practical purposes, one conformer. Much of what is known about axial versus equatorial reactivity was measured on rings anchored this way.",
+   "why": "A tert-butyl group does not make the other chair impossible, and it barely changes the barrier between the chairs. It makes the other chair so sparsely populated that the molecule is, for practical purposes, one conformer. Much of what is known about axial against equatorial reactivity was measured on rings anchored this way.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -11917,7 +11917,7 @@
     "Yes, cis becomes trans",
     "No, only axial/equatorial labels change, not cis/trans",
     "Only for disubstituted rings",
-    "Ring flips create new stereocenters"
+    "Yes, since a ring C–C bond breaks and re-forms, which can swap cis and trans"
    ],
    "correct": 1,
    "why": "Ring flips are conformational changes, not bond-breaking — cis/trans relationships (configuration) are preserved; only which substituents are axial vs. equatorial changes.",
@@ -12031,7 +12031,7 @@
     "Flipping is about a million times slower, at 10⁵ per second"
    ],
    "correct": 3,
-   "why": "Rate falls off exponentially with barrier height, so the extra 8 kcal/mol costs nearly six orders of magnitude: ethane spins at 10¹⁰–10¹¹ per second and a ring flips at about 10⁵. A million times slower, and still far too fast to catch — which is why cyclohexane has to be cooled to about −90 °C before NMR sees the two kinds of hydrogen separately.",
+   "why": "Rate falls off exponentially with barrier height, so the extra 8 kcal/mol costs nearly six orders of magnitude: ethane spins at 10¹⁰–10¹¹ per second and a ring flips at about 10⁵. A million times slower, and still far too fast to catch, which is why cyclohexane must be cooled to about −90 °C before an instrument can see the two kinds of hydrogen separately.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -12535,15 +12535,15 @@
    "type": "mcq"
   },
   {
-   "q": "Between the two stereoisomers of 1-methyl-4-tert-butylcyclohexane, which one is, at its most stable conformation, lower in overall energy: cis, or trans?",
+   "q": "1-Methyl-4-tert-butylcyclohexane exists as a cis and a trans isomer. Which one, in its most stable chair, is lower in energy?",
    "options": [
-    "Trans, since cis always forces one axial",
+    "Trans, since both groups can be equatorial",
     "Cis, because it forces tert-butyl axial",
     "They are equal in energy because both rings have the same formula",
     "Neither isomer can adopt a chair conformation"
    ],
    "correct": 0,
-   "why": "The trans isomer enjoys a genuinely diequatorial lowest-energy conformer, avoiding all 1,3-diaxial strain, whereas the cis isomer is stuck with at least one substituent axial no matter which chair it adopts.",
+   "why": "In the trans isomer both groups can sit equatorial in one chair, with no 1,3-diaxial strain. In the cis isomer one group must be axial in either chair; tert-butyl stays equatorial, so the methyl goes axial. Same formula does not mean same energy.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -16684,7 +16684,7 @@
    "options": [
     "It is secretly a tertiary halide",
     "Bromide is a poor leaving group in this molecule",
-    "The molecule is aromatic",
+    "It must first form an unstable primary carbocation",
     "The adjacent bulk blocks backside attack"
    ],
    "correct": 3,
@@ -17305,7 +17305,7 @@
     "E2",
     "SN2",
     "SN1",
-    "EAS"
+    "Radical halogenation"
    ],
    "correct": 2,
    "why": "E1 and SN1 share the same first step (ionization to a carbocation); from there the cation either loses a proton (E1, elimination) or is attacked by a nucleophile (SN1, substitution).",
@@ -17615,7 +17615,7 @@
     "Carbocations are more stable than the alkenes they give"
    ],
    "correct": 1,
-   "why": "E1 is not under thermodynamic control: deprotonation of the cation is fast and is not reversed under solvolysis conditions, so the alkenes never equilibrate with each other. What is different is the branch point. Both alkenes come off the SAME flat cation, and the only thing that changes between the two paths is which double bond is forming — so relative alkene stability is the only variable left. An E2 transition state has a second bill to pay: the base has to reach in and hold the beta hydrogen while the bond breaks, so a crowded hydrogen can be skipped for steric reasons even when it would give the better alkene. That is exactly why a bulky base pushes E2 toward the Hofmann product, while the same substrate left to solvolyze leans Zaitsev.",
+   "why": "The alkenes do not interconvert: removing the proton from the cation is fast and is not reversed, so the products never equilibrate. What differs is the branch point. Both alkenes come off the same flat cation, so alkene stability is the only variable. In E2 the base must also reach the beta hydrogen, so a crowded hydrogen can be skipped, which is why a bulky base gives the Hofmann product.",
    "difficulty": "hard",
    "type": "mcq"
   },

@@ -8333,7 +8333,7 @@
   {
    "q": "Sodium acetate is added to a solution of phenol. Acetic acid has pKa 4.76 and phenol has pKa 10. What happens?",
    "options": [
-    "Acetate is protonated and phenoxide forms quantitatively",
+    "Phenol acts as the base and acetate as the acid",
     "Almost nothing — the equilibrium lies far toward phenol",
     "Phenol is deprotonated essentially completely",
     "The mixture settles at roughly fifty-fifty"
@@ -8437,7 +8437,7 @@
    "type": "mcq"
   },
   {
-   "q": "A carbocation is captured by water during acid-catalyzed hydration, giving R–OH₂⁺. What has to happen next to give a neutral alcohol?",
+   "q": "A carbocation is captured by water, giving R–OH₂⁺. What has to happen next to give a neutral alcohol?",
    "options": [
     "A hydride shifts from carbon onto the oxygen",
     "The new C–O bond breaks and then reforms",
@@ -8565,7 +8565,7 @@
    "type": "tf"
   },
   {
-   "q": "Which of the following is a classic example of a Lewis acid used as a catalyst in Friedel-Crafts reactions?",
+   "q": "Which of the following is a Lewis acid, often used as a catalyst?",
    "options": [
     "AlCl3",
     "NaOH",
@@ -8699,7 +8699,7 @@
    "options": [
     "It accepts a pair from the carbonyl oxygen, generating a carbanion",
     "It accepts a lone pair from chlorine, generating an acylium ion",
-    "It removes a proton from the alpha carbon, generating an enolate",
+    "It removes a proton from the carbon next to C=O, generating an enolate",
     "It donates a chloride to the carbonyl carbon, generating a diol"
    ],
    "correct": 1,
@@ -8768,7 +8768,7 @@
     "It donates chloride to the carbonyl carbon and opens a faster pathway",
     "It reduces the carbonyl to an alcohol, which is easier to attack",
     "It coordinates the carbonyl oxygen and makes the carbon more electrophilic",
-    "It deprotonates the alpha carbon and generates a more reactive enolate"
+    "It pulls a proton off the carbon next to C=O and makes a more reactive anion"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -8787,14 +8787,14 @@
    "type": "mcq"
   },
   {
-   "q": "Consider a Lewis acid catalyst promoting ring-opening of an epoxide. What is its mechanistic role?",
+   "q": "Thiolate, RS⁻, attacks carbon faster than alkoxide, RO⁻, even though thiolate is by far the weaker base. What explains this?",
    "options": [
-    "It deprotonates the epoxide",
-    "It acts as a nucleophile attacking the epoxide carbon directly",
-    "It reduces the epoxide to an alcohol directly",
-    "It polarizes the epoxide oxygen, activating the ring"
+    "Sulfur is more electronegative than oxygen, so RS⁻ grips carbon harder",
+    "RS⁻ is large and polarizable, a soft donor that suits carbon",
+    "Basicity and attack rate always rise and fall together",
+    "RO⁻ is soft, so it avoids carbon and seeks protons instead"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -8850,7 +8850,7 @@
     "Use a strong base to deprotonate the carbonyl oxygen",
     "Use a nucleophilic catalyst to attack the carbonyl first",
     "Use a Lewis acid such as ZnCl₂ to coordinate the oxygen",
-    "Use a stronger protic acid and run the reaction colder"
+    "Use a stronger acid such as HCl, and run it colder"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -8919,12 +8919,12 @@
    "type": "mcq"
   },
   {
-   "q": "Which base will deprotonate a ketone alpha hydrogen (pKa 20) essentially completely?",
+   "q": "Which base will deprotonate a terminal alkyne C–H (pKa 25) essentially completely?",
    "options": [
     "Sodium hydroxide, pKaH 15.7",
     "Sodium ethoxide, pKaH 16",
     "Sodium acetate, pKaH 4.76",
-    "LDA, pKaH about 36"
+    "Sodium amide, pKaH 38"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -9357,10 +9357,10 @@
   {
    "q": "A ketone can act as both an acid and a base. What are its conjugate acid and conjugate base?",
    "options": [
-    "Enol and alkoxide",
+    "Protonated carbonyl and alkoxide",
     "Protonated carbonyl and enolate",
     "Enolate and protonated carbonyl",
-    "Alkoxide and enol"
+    "Alkoxide and protonated carbonyl"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -9384,7 +9384,7 @@
     "Acetic acid is itself a base, not an acid",
     "Acetate’s charge is delocalized over two oxygens",
     "Acetate carries a positive charge in solution",
-    "Ethoxide is aromatic and therefore stabilized"
+    "Ethoxide spreads its charge over its two carbons"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -9576,7 +9576,7 @@
     "Resonance, which outweighs the atom effect here",
     "Atom, because oxygen always beats carbon",
     "Induction from the two methyl groups on the diketone",
-    "Orbital, because the alpha carbon is sp hybridized"
+    "Orbital, because the acidic carbon is sp hybridized"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -9670,7 +9670,7 @@
     "The molecule contains a carbonyl group",
     "The acidic C-H bond is sp hybridized",
     "Induction from a nearby nitrogen atom stabilizes the anion",
-    "Deprotonation gives an aromatic cyclopentadienyl anion"
+    "Its anion spreads the charge over all five ring carbons"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -10031,7 +10031,7 @@
    "options": [
     "Dipole-dipole repulsion between carbons",
     "Steric clash between large substituents",
-    "Ring strain",
+    "Weaker overlap in the C–C sigma bond",
     "Torsional strain from aligned bonds"
    ],
    "correct": 3,
@@ -10097,7 +10097,7 @@
   {
    "q": "Ethane's rotational energy barrier (about 3 kcal/mol) arises purely from torsional strain with no steric component, whereas butane's anti-to-gauche energy gap includes an additional contribution from:",
    "options": [
-    "Ring strain",
+    "Weaker overlap in the central C–C bond",
     "Dipole moment changes",
     "Hydrogen bonding",
     "Steric strain"
@@ -10157,7 +10157,7 @@
    "options": [
     "Steric strain, on top of the torsional cost both pairs share",
     "Torsional strain, which large groups feel and small ones do not",
-    "Ring strain contributed by the four-carbon chain looping round",
+    "Weaker overlap in the C–C sigma bond as it turns",
     "An attraction between the methyls that raises the energy instead"
    ],
    "correct": 0,
@@ -10323,7 +10323,7 @@
    "options": [
     "The heat of combustion, against 157.4 kcal/mol per CH₂",
     "The boiling point, against a straight chain of the same mass",
-    "The C–H stretching frequency in the infrared spectrum, band by band",
+    "The dipole moment, against the open-chain alkane",
     "The density of the liquid at room temperature and pressure"
    ],
    "correct": 0,
@@ -10529,14 +10529,14 @@
    "type": "mcq"
   },
   {
-   "q": "In one complete chair-to-chair ring flip pathway (going through the boat family), how many half-chair transition states are crossed?",
+   "q": "Cyclobutane releases 655.9 kcal/mol when burned completely. A strain-free CH₂ group releases 157.4 kcal/mol. About how much ring strain does cyclobutane carry?",
    "options": [
-    "2",
-    "0",
-    "1",
-    "4"
+    "About 164 kcal/mol",
+    "About 6.6 kcal/mol",
+    "About 26 kcal/mol",
+    "About 630 kcal/mol"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -10556,7 +10556,7 @@
     "Because cyclohexane has more carbons overall, which always lowers strain",
     "Because the chair achieves ideal angles and fully staggered bonds",
     "Because cyclohexane carbons are sp2 hybridized",
-    "Because cyclohexane is aromatic"
+    "Because its six carbons lie flat in a regular hexagon"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -10684,7 +10684,7 @@
    "q": "A substituent with an A-value of 4.9 kcal/mol is better than 99.9% equatorial. What do chemists use that for?",
    "options": [
     "As a conformational anchor, to study one known chair",
-    "As a way to stop the ring flipping, so no other chair exists",
+    "As a way to make the other chair impossible to form",
     "As a way to raise the flip barrier and slow the interconversion",
     "As a substitute for measuring A-values, which it makes needless"
    ],
@@ -10986,7 +10986,7 @@
     "Yes, cis becomes trans",
     "No, only axial/equatorial labels change, not cis/trans",
     "Only for disubstituted rings",
-    "Ring flips create new stereocenters"
+    "Yes, since a ring C–C bond breaks and re-forms, which can swap cis and trans"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -11555,9 +11555,9 @@
    "type": "mcq"
   },
   {
-   "q": "Between the two stereoisomers of 1-methyl-4-tert-butylcyclohexane, which one is, at its most stable conformation, lower in overall energy: cis, or trans?",
+   "q": "1-Methyl-4-tert-butylcyclohexane exists as a cis and a trans isomer. Which one, in its most stable chair, is lower in energy?",
    "options": [
-    "Trans, since cis always forces one axial",
+    "Trans, since both groups can be equatorial",
     "Cis, because it forces tert-butyl axial",
     "They are equal in energy because both rings have the same formula",
     "Neither isomer can adopt a chair conformation"
@@ -15380,7 +15380,7 @@
    "options": [
     "It is secretly a tertiary halide",
     "Bromide is a poor leaving group in this molecule",
-    "The molecule is aromatic",
+    "It must first form an unstable primary carbocation",
     "The adjacent bulk blocks backside attack"
    ],
    "correct": 3,
@@ -15953,7 +15953,7 @@
     "E2",
     "SN2",
     "SN1",
-    "EAS"
+    "Radical halogenation"
    ],
    "correct": 2,
    "difficulty": "hard",
