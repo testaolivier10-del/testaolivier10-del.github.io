@@ -84,7 +84,7 @@ FIGURES.push({
       const o = P(127, 84), c2 = P(90, 146), c3 = P(164, 146);
       s += B(o, c2, 15, 17) + B(o, c3, 15, 17) + B(c2, c3, 17, 17);
       s += A(o, 'O', { kind: 'hi' }) + A(c2, 'CH₂', { r: 17 }) + A(c3, 'CH₂', { r: 17 });
-      s += num(154, 76, '1') + num(66, 132, '2') + num(188, 132, '3');
+      s += num(154, 76, '1') + num(62, 132, 'C2') + num(192, 132, 'C3');
       s += T(127, 240, 'the oxygen is atom 1');
     }
     s += rule(253, 24, 253, 246);
@@ -96,7 +96,7 @@ FIGURES.push({
       s += B(c2, m1, 15, 17) + B(c2, m2, 15, 17) + A(m1, 'CH₃', { r: 17 }) + A(m2, 'CH₃', { r: 17 });
       s += B(o, c2, 15, 15) + B(o, c3, 15, 17) + B(c2, c3, 15, 17);
       s += A(o, 'O', { kind: 'hi' }) + A(c2, 'C', { kind: 'hi' }) + A(c3, 'CH₂', { r: 17 });
-      s += num(412, 76, '1') + num(336, 118, '2') + num(446, 132, '3');
+      s += num(412, 76, '1') + num(332, 118, 'C2') + num(452, 132, 'C3');
       s += T(380, 240, 'both methyls on C2');
     }
     s += rule(507, 24, 507, 246);
@@ -200,7 +200,7 @@ FIGURES.push({
     s += T(170, 402, '1-methoxypropan-2-ol');
     return s;
   },
-  caption: 'Two arrows, one step. The highlighted bond in panel 2 is the one methoxide made.',
+  caption: 'Panel 1 is one step with two arrows. The highlighted bond in panel 2 is the one methoxide made.',
 });
 
 /* ====================================== 5. opening under acid === */
@@ -262,7 +262,7 @@ FIGURES.push({
       s += B(p2, u, 15, 17) + B(p2, d, 15, 17);
       s += A(p0, 'HO', { r: 16 }) + A(p1, 'CH₂', { r: 17 }) + A(p2, 'C', { kind: 'warn' }) + A(p3, 'O', { kind: 'hi' });
       s += A(p4, 'CH₃', { r: 17 }) + A(u, 'CH₃', { r: 17 }) + A(d, 'CH₃', { r: 17 });
-      s += T(196, y - 12, 'new bond', 'fg-tag-good');
+      s += T(174, y + 28, 'new bond', 'fg-tag-good', 'start');
       s += T(170, 606, '2-methoxy-2-methylpropan-1-ol');
     }
     return s;
