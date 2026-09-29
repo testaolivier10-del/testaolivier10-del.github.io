@@ -243,7 +243,11 @@ const BUDGETS = [
   // here, which is why the shell's largest measurement still comes from a
   // lesson rather than from this page.
   ['ochem/flashcards.html', 5],
-  ['anatomy-physiology/index.html', 5],
+  /* 5 -> 7 for the redesigned A&P home (ochem's layout): the level card, the
+     chapter path as a real list of 27 links with their snake placement, and
+     one real bank question with its explanations, all in the markup so they
+     read without JavaScript. Measured 6.4 KB; ochem's home is budgeted at 11. */
+  ['anatomy-physiology/index.html', 7],
   ['anatomy-physiology/lessons/heart-chambers-valves.html', 10],
   ['anatomy-physiology/notes/cardiac-cycle.html', 19],
   ['anatomy-physiology/tools/predict.html', 3],
