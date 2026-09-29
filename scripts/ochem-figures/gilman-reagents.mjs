@@ -411,7 +411,7 @@ FIGURES.push({
     const Ox = A(78, 32, 'O', 'plain', 11);
     const Cs = P(56, 72), Cu2 = P(100, 72), Me = P(30, 58);   // Cs: substituted carbon; Cu2: the CH2
     s += bond(Cs, Cu2, { rFrom: 0, rTo: 0 }) + bd(Cs, Ox) + bd(Cu2, Ox) + bond(Cs, Me, { rFrom: 0, rTo: 0 }) + draw(Ox);
-    s += tag(112, 70, 'less hindered', { anchor: 'start' }) + tag(112, 84, 'CH₂ end', { anchor: 'start' });
+    s += tag(110, 44, 'less hindered', { anchor: 'start' }) + tag(110, 58, 'CH₂ end', { anchor: 'start' });
     const M1 = A(132, 146, 'H₃C'), Cu = A(196, 146, 'Cu⁻', 'plain', 16), M2 = A(260, 146, 'CH₃');
     s += bd(M1, Cu) + bd(Cu, M2) + draw(M1, Cu, M2) + tag(296, 150, 'Li⁺', { anchor: 'start' });
     s += curve(P(mid(M1, Cu).x, M1.y - 5), P(Cu2.x + 5, Cu2.y + 8), { bow: 12, size: 7 });
