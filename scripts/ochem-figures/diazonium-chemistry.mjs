@@ -123,7 +123,7 @@ FIGURES.push({
     s += tag(380, 24, 'BENZENE TO A DIAZONIUM SALT IN THREE STEPS');
     return s;
   },
-  caption: 'Reagents sit above each arrow and the name of the step below it.',
+  caption: 'Each arrow carries its reagents and the name of the step.',
 });
 
 /* The same route stacked for a phone-width lesson card. */
@@ -163,7 +163,7 @@ FIGURES.push({
     s += text(xr, Y2 + 50, 'the diazonium salt', { cls: 'fg-tag-good', size: 11 });
     return s;
   },
-  caption: 'Reagents sit above each arrow and the name of the step below it.',
+  caption: 'Each arrow carries its reagents and the name of the step.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -314,7 +314,8 @@ FIGURES.push({
     const d = diazo(K, cx1, Y1, 0, { d1: 30, step: 38, r: 13, chargeAt: P(cx1 + R + 30, Y1 + 32) });
     s += d.s;
     const c0 = K.V(cx1, Y1)[0];
-    s += curve(P((c0.x + d.n1.x) / 2 - 1, Y1 - 3), P(d.n1.x - 6, d.n1.y - 13), { bow: -12, size: 7 });
+    s += curve(P(c0.x + 6, Y1 - 3), P(d.n1.x + 3, d.n1.y - 14), { bow: -18, size: 7 });
+    s += lonePair(d.n2.x, d.n2.y, 0, { dist: 19 });
     s += text(235, Y1 + 5, 'the C–N bond', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(235, Y1 + 21, 'breaks; N takes', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(235, Y1 + 37, 'both electrons', { cls: 'fg-tag', size: 11, anchor: 'start' });
@@ -374,7 +375,7 @@ FIGURES.push({
   id: 'diazonium-hub-map',
   section: 'diazonium-chemistry',
   anchor: '<h3>The substitution menu</h3>',
-  viewBox: '0 0 760 420',
+  viewBox: '0 0 760 432',
   alt: 'Benzenediazonium ion in the center with seven arrows to seven products: chlorobenzene with copper(I) chloride, bromobenzene with copper(I) bromide, iodobenzene with potassium iodide, benzonitrile with copper(I) cyanide, fluorobenzene with HBF4 then heat, phenol with warm aqueous acid, and benzene with hypophosphorous acid. Benzonitrile, fluorobenzene and phenol are marked as products electrophilic substitution cannot make; iodobenzene as one it makes only with an added oxidant; benzene as the product that removes the group.',
   build() {
     let s = '';
@@ -399,7 +400,7 @@ FIGURES.push({
         g += k.sub(x, y, 0, subst, { r: subst.length > 1 ? 14 : 12, size: 11, d: 20, kind: 'hi' });
       }
       g += text(x, y + r + 20, name, { cls: 'fg-lbl', size: 13 });
-      if (verdict) g += text(x, y + r + 36, verdict, { cls: vcls, size: 11 });
+      if (verdict) [].concat(verdict).forEach((v, n) => { g += text(x, y + r + 36 + 16 * n, v, { cls: vcls, size: 11 }); });
       return g;
     };
     const spoke = (to, reagent, rx, ry, anchor = 'middle') => {
@@ -409,14 +410,14 @@ FIGURES.push({
     /* Left column: the halogens. */
     s += prod(92, 74, 'Cl', 'chlorobenzene', null);
     s += prod(92, 214, 'Br', 'bromobenzene', null);
-    s += prod(92, 350, 'I', 'iodobenzene', 'EAS: only with an oxidant', 'fg-tag');
+    s += prod(92, 350, 'I', 'iodobenzene', ['electrophilic route', 'needs an oxidant'], 'fg-tag');
     spoke([P(312, 150), P(146, 84)], 'CuCl', 228, 104);
     spoke([P(312, 210), P(146, 210)], 'CuBr', 228, 202);
     spoke([P(312, 250), P(146, 340)], 'KI', 206, 282);
     /* Right column. */
-    s += prod(668, 74, 'CN', 'benzonitrile', 'EAS cannot', 'fg-tag-good');
-    s += prod(668, 214, 'F', 'fluorobenzene', 'EAS cannot', 'fg-tag-good');
-    s += prod(668, 350, 'OH', 'phenol', 'EAS cannot', 'fg-tag-good');
+    s += prod(668, 74, 'CN', 'benzonitrile', 'no electrophilic route', 'fg-tag-good');
+    s += prod(668, 214, 'F', 'fluorobenzene', 'no electrophilic route', 'fg-tag-good');
+    s += prod(668, 350, 'OH', 'phenol', 'no electrophilic route', 'fg-tag-good');
     spoke([P(448, 150), P(614, 84)], 'CuCN', 532, 104);
     spoke([P(448, 210), P(614, 210)], 'HBF₄, then heat', 532, 202);
     spoke([P(448, 250), P(614, 340)], 'H₂O, H⁺, warm', 566, 280);
@@ -435,7 +436,7 @@ FIGURES.push({
   section: 'diazonium-chemistry',
   anchor: '<h3>The substitution menu</h3>',
   viewBox: '0 0 760 292',
-  alt: 'Top row: benzenediazonium ion plus copper(I) bromide; copper hands one electron to the diazonium ion, nitrogen gas leaves, and a phenyl radical forms with its unpaired electron on the ring carbon, while the copper becomes copper(II), which picks up bromide to give CuBr2. Bottom row: the phenyl radical and Br–Cu–Br with two single-barbed arrows, one from the radical electron and one from the Br–Cu bond, meeting between carbon and bromine; the products are bromobenzene and copper(I) bromide, ready to start again.',
+  alt: 'Top row: benzenediazonium ion plus copper(I) bromide; copper hands one electron to the diazonium ion, nitrogen gas leaves, and a phenyl radical forms with its unpaired electron on the ring carbon, while the copper becomes copper(II), which picks up bromide to give CuBr2. Bottom row: the phenyl radical and Br–Cu–Br with two single-barbed arrows, one from the radical electron and one from the Br–Cu bond, meeting between carbon and bromine, while a third returns the other Br–Cu electron to copper; the products are bromobenzene and copper(I) bromide, ready to start again.',
   build() {
     let s = '';
     const R = 22, K = hexKit(R, 0);
@@ -476,6 +477,8 @@ FIGURES.push({
     const meet = P((dt.x + br1.x) / 2 + 2, Y2 - 8);
     s += fishhook(P(dt.x + 3, dt.y - 5), P(meet.x - 3, meet.y - 3), { bow: -12, size: 8 });
     s += fishhook(P((br1.x + cu.x) / 2, Y2 - 5), P(meet.x + 5, meet.y - 3), { bow: 14, size: 8, side: -1 });
+    /* The other electron of the Br–Cu bond goes back to copper: Cu(II) → Cu(I). */
+    s += fishhook(P((br1.x + cu.x) / 2 + 2, Y2 + 5), P(cu.x - 4, cu.y + 15), { bow: 10, size: 8 });
     s += arrow(P(304, Y2), P(372, Y2));
     s += K.ring(410, Y2, [1, 3, 5]);
     s += K.sub(410, Y2, 0, 'Br', { kind: 'hi', r: 14, size: 11, d: 22 });
@@ -610,7 +613,7 @@ FIGURES.push({
     s += text((a2 + b2) / 2, Y2 + 20, 'NH₂ becomes H', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Compare the two right-hand products. The top route puts two bromines next to each other; the bottom route keeps every bromine one carbon apart from the next.',
+  caption: 'Compare the two right-hand products. The top route puts two bromines next to each other; the bottom route leaves one empty carbon between each pair of bromines.',
 });
 
 /* The bottom row of that figure, stacked for the lesson's last step. */
@@ -643,8 +646,6 @@ FIGURES.push({
     s += br(xr, Y2, 1) + br(xr, Y2, 3) + br(xr, Y2, 5);
     for (const [i, n] of [[1, '1'], [3, '3'], [5, '5']]) s += KN.num(xr, Y2, i, n, { d: 17 });
     s += text(xr, Y2 + 78, '1,3,5-tribromobenzene', { cls: 'fg-tag-good', size: 11 });
-    s += text(84, Y2 - 8, 'the same three', { cls: 'fg-tag', size: 11 });
-    s += text(84, Y2 + 8, 'carbons, renumbered', { cls: 'fg-tag', size: 11 });
     return s;
   },
   caption: 'The same three carbons, numbered first from the NH<sub>2</sub> and then from a bromine.',
@@ -718,32 +719,24 @@ FIGURES.push({
   id: 'sulfonic-blocker',
   section: 'diazonium-chemistry',
   anchor: '<h3>Removing a group is a synthetic tool</h3>',
-  viewBox: '0 0 760 250',
-  alt: 'Toluene is sulfonated at its para position to 4-methylbenzenesulfonic acid. Nitration then puts the nitro group ortho to the methyl group, because the para position is occupied. Heating with dilute aqueous acid removes the sulfonic acid group, giving 2-nitrotoluene.',
+  viewBox: '0 0 340 250',
+  alt: 'Toluene carrying an SO3H group on its para carbon and a nitro group on a carbon ortho to the methyl group. The SO3H fills the para position during the nitration, and hot dilute acid removes it afterwards to give 2-nitrotoluene.',
   build() {
     let s = '';
-    const R = 24, K = hexKit(R);
-    const Y = 124, xs = [72, 272, 472, 672];
-    const me = (cx) => K.sub(cx, Y, 0, 'CH₃', { r: 16, size: 10.5, d: 22 });
-    const so3h = (cx) => K.sub(cx, Y, 3, 'SO₃H', { kind: 'warn', r: 19, size: 10, d: 24 });
-    const no2 = (cx) => K.sub(cx, Y, 1, 'NO₂', { kind: 'hi', r: 16, size: 10.5, d: 20 });
-    s += K.ring(xs[0], Y, [1, 3, 5]) + me(xs[0]);
-    s += K.ring(xs[1], Y, [1, 3, 5]) + me(xs[1]) + so3h(xs[1]);
-    s += K.ring(xs[2], Y, [1, 3, 5]) + me(xs[2]) + so3h(xs[2]) + no2(xs[2]);
-    s += K.ring(xs[3], Y, [1, 3, 5]) + me(xs[3]) + no2(xs[3]);
-    const lab = [['SO₃, H₂SO₄', 'block para'], ['HNO₃, H₂SO₄', 'nitrate'], ['H₂O, H⁺, heat', 'unblock']];
-    lab.forEach(([r1, w], i) => {
-      const a = xs[i] + R + 34, b = xs[i + 1] - R - 26;
-      s += arrow(P(a, Y), P(b, Y));
-      s += text((a + b) / 2, Y - 10, r1, { cls: 'fg-tag', size: 11 });
-      s += text((a + b) / 2, Y + 20, w, { cls: 'fg-lbl', size: 13 });
-    });
-    const names = ['toluene', 'para seat taken', 'NO₂ goes ortho', '2-nitrotoluene'];
-    xs.forEach((x, i) => { s += text(x, 232, names[i], { cls: i === 3 ? 'fg-tag-good' : 'fg-tag', size: 11 }); });
-    s += tag(380, 22, 'A BLOCKER SITS ON A POSITION; IT DOES NOT STEER');
+    const R = 26, K = hexKit(R);
+    const cx = 120, Y = 124;
+    s += tag(170, 22, 'SO₃H HOLDS THE PARA POSITION, THEN COMES OFF');
+    s += K.ring(cx, Y, [1, 3, 5]);
+    s += K.sub(cx, Y, 0, 'CH₃', { r: 16, size: 10.5, d: 22 });
+    s += K.sub(cx, Y, 3, 'SO₃H', { kind: 'warn', r: 19, size: 10, d: 24 });
+    s += K.sub(cx, Y, 1, 'NO₂', { kind: 'hi', r: 16, size: 10.5, d: 20, bondCls: 'fg-bond-hi' });
+    s += text(196, 94, 'NO₂ goes ortho', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(196, 110, 'to the CH₃', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(162, 196, 'para position filled', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    s += text(170, 238, 'then hot dilute acid removes the SO₃H', { cls: 'fg-tag', size: 11 });
     return s;
   },
-  caption: 'Follow the para carbon: free, then holding SO<sub>3</sub>H, then free again once the nitro group is in place.',
+  caption: 'Toluene after sulfonation and nitration, just before the SO<sub>3</sub>H comes off.',
 });
 
 /* ---------------------------------------------------------------------------
@@ -785,8 +778,8 @@ FIGURES.push({
   id: 'azo-coupling',
   section: 'diazonium-chemistry',
   anchor: '<h3>Azo coupling, and why dyes are colored</h3>',
-  viewBox: '0 0 760 432',
-  alt: 'Top left: phenoxide drawn in the resonance form with a C=O and the negative charge and lone pair on the para carbon; a curved arrow runs from that lone pair to the terminal nitrogen of benzenediazonium, and a second arrow moves one N≡N pi bond onto the positively charged nitrogen. Top right: the neutral intermediate, a cyclohexadienone whose para carbon is sp3 and carries both a hydrogen and an N=N–phenyl group. Bottom: a base removes that hydrogen and the ring is aromatic again, giving 4-(phenylazo)phenol, drawn as two rings joined by a bent N=N bridge.',
+  viewBox: '0 0 760 446',
+  alt: 'Top left: phenoxide drawn in the resonance form with a C=O and the negative charge and lone pair on the para carbon; a curved arrow runs from that lone pair to the terminal nitrogen of benzenediazonium, and a second arrow moves one N≡N pi bond onto the positively charged nitrogen. Top right: the neutral intermediate, a cyclohexadienone whose para carbon is sp3 and carries both a hydrogen and an N=N–phenyl group. Bottom: a base removes that hydrogen and the ring is aromatic again, giving the phenoxide of 4-(phenylazo)phenol, two rings joined by a bent N=N bridge; acid workup gives the phenol.',
   build() {
     let s = '';
     s += tag(380, 22, 'THE DIAZONIUM ION IS THE ELECTROPHILE');
@@ -823,13 +816,14 @@ FIGURES.push({
     /* Product. */
     const Y = 348;
     s += arrow(P(40, Y), P(150, Y));
-    s += text(95, Y - 26, 'base takes', { cls: 'fg-tag', size: 11 });
-    s += text(95, Y - 10, 'the H⁺', { cls: 'fg-tag', size: 11 });
+    s += text(95, Y - 26, 'base takes the', { cls: 'fg-tag', size: 11 });
+    s += text(95, Y - 10, 'C–H proton', { cls: 'fg-tag', size: 11 });
     s += text(95, Y + 20, 'aromatic again', { cls: 'fg-tag', size: 11 });
     const K2 = hexKit(24, 0);
     const ax = 220;
     s += K2.ring(ax, Y, [1, 3, 5]);
-    s += K2.sub(ax, Y, 3, 'HO', { kind: 'hi', r: 15, size: 10.5, d: 22 });
+    s += K2.sub(ax, Y, 3, 'O', { kind: 'hi', r: 15, size: 12, d: 22 });
+    s += text(K2.out(ax, Y, 3, 22).x - 4, Y - 16, '−', { cls: 'fg-warn', size: 15 });
     const a1 = K2.V(ax, Y)[0];
     const m1 = P(a1.x + 26, Y - 18), m2 = P(m1.x + 34, Y);
     s += bond(a1, m1, { rFrom: 0, rTo: 12 });
@@ -839,7 +833,8 @@ FIGURES.push({
     const bx2 = m2.x + 12 + 14 + 24;
     s += K2.ring(bx2, Y + 14, [0, 2, 4]);
     s += bond(m2, K2.V(bx2, Y + 14)[3], { rFrom: 12, rTo: 0 });
-    s += text(290, Y + 66, '4-(phenylazo)phenol, orange', { cls: 'fg-tag-good', size: 11 });
+    s += text(290, Y + 66, 'the phenoxide of 4-(phenylazo)phenol;', { cls: 'fg-tag-good', size: 11 });
+    s += text(290, Y + 82, 'acid workup gives the orange phenol', { cls: 'fg-tag-good', size: 11 });
     s += text(540, Y - 16, 'two rings joined by N=N:', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(540, Y, 'one long conjugated', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(540, Y + 16, 'π system', { cls: 'fg-tag', size: 11, anchor: 'start' });
@@ -852,8 +847,8 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-azo-coupling',
   lessons: ['diazonium-chemistry'],
-  viewBox: '0 0 340 452',
-  alt: 'Phenoxide drawn with the negative charge and lone pair on the para carbon; a curved arrow runs from that lone pair to the terminal nitrogen of benzenediazonium, and a second arrow moves one N≡N pi bond onto the charged nitrogen. After a base removes the hydrogen from the attacked carbon, the product is 4-(phenylazo)phenol, two rings joined by a bent N=N bridge.',
+  viewBox: '0 0 340 464',
+  alt: 'Phenoxide drawn with the negative charge and lone pair on the para carbon; a curved arrow runs from that lone pair to the terminal nitrogen of benzenediazonium, and a second arrow moves one N≡N pi bond onto the charged nitrogen. After a base removes the hydrogen from the attacked carbon, the product is the phenoxide of 4-(phenylazo)phenol, two rings joined by a bent N=N bridge; acid workup gives the phenol.',
   build() {
     let s = '';
     s = azoMechanism(s, { px: 90, py: 76, nx: 140, ny: 176 });
@@ -867,7 +862,8 @@ FIGURES.push({
     const K2 = hexKit(22, 0);
     const Y = 342, ax = 70;
     s += K2.ring(ax, Y, [1, 3, 5]);
-    s += K2.sub(ax, Y, 3, 'HO', { kind: 'hi', r: 15, size: 10.5, d: 20 });
+    s += K2.sub(ax, Y, 3, 'O', { kind: 'hi', r: 15, size: 12, d: 20 });
+    s += text(K2.out(ax, Y, 3, 20).x - 4, Y - 16, '−', { cls: 'fg-warn', size: 15 });
     const a1 = K2.V(ax, Y)[0];
     const m1 = P(a1.x + 24, Y - 17), m2 = P(m1.x + 32, Y);
     s += bond(a1, m1, { rFrom: 0, rTo: 12 });
@@ -877,8 +873,9 @@ FIGURES.push({
     const bx2 = m2.x + 12 + 12 + 22;
     s += K2.ring(bx2, Y + 13, [0, 2, 4]);
     s += bond(m2, K2.V(bx2, Y + 13)[3], { rFrom: 12, rTo: 0 });
-    s += text(170, 408, '4-(phenylazo)phenol, orange', { cls: 'fg-tag-good', size: 11 });
-    s += text(170, 430, 'one long conjugated π system', { cls: 'fg-tag', size: 11 });
+    s += text(170, 408, 'phenoxide of 4-(phenylazo)phenol;', { cls: 'fg-tag-good', size: 11 });
+    s += text(170, 424, 'acid workup gives the orange phenol', { cls: 'fg-tag-good', size: 11 });
+    s += text(170, 446, 'one long conjugated π system', { cls: 'fg-tag', size: 11 });
     return s;
   },
   caption: 'Two arrows: the ring&rsquo;s lone pair to the end nitrogen, and one N&equiv;N bond onto the charged nitrogen.',
@@ -898,18 +895,28 @@ FIGURES.push({
     const Y = 104, xs = [126, 380, 634];
     const oh = (cx) => K.sub(cx, Y, 0, 'OH', { kind: 'hi', r: 15, size: 10.5, d: 22 });
     const me = (cx, i) => K.sub(cx, Y, i, 'CH₃', { r: 16, size: 10.5, d: 22 });
+    /* N=N–Ar drawn in atom labels, bent at each sp2 nitrogen. */
     const azo = (cx, i) => {
-      const v = K.V(cx, Y)[i], p = K.out(cx, Y, i, 24);
-      return bond(v, p, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' }) +
-        text(p.x + (i === 3 ? 0 : -6), p.y + (i === 3 ? 16 : 4), 'N=N–Ar', { cls: 'fg-tag-good', size: 11, anchor: i === 3 ? 'middle' : 'end' });
+      const v = K.V(cx, Y)[i];
+      const ux = (v.x - cx) / R, uy = (v.y - Y) / R;
+      const px = -uy, py = ux;
+      const n1 = P(v.x + ux * 22, v.y + uy * 22);
+      const n2 = P(n1.x + ux * 18 + px * 16, n1.y + uy * 18 + py * 16);
+      const ar = P(n2.x + ux * 18 - px * 16, n2.y + uy * 18 - py * 16);
+      return bond(v, n1, { rFrom: 0, rTo: 10, cls: 'fg-bond-hi' }) +
+        bond(n1, n2, { rFrom: 10, rTo: 10, order: 2, gap: 2.6, cls: 'fg-bond-hi' }) +
+        bond(n2, ar, { rFrom: 10, rTo: 12, cls: 'fg-bond-hi' }) +
+        atom(n1.x, n1.y, 'N', { kind: 'hi', r: 10, size: 11 }) +
+        atom(n2.x, n2.y, 'N', { kind: 'hi', r: 10, size: 11 }) +
+        atom(ar.x, ar.y, 'Ar', { r: 12, size: 11 });
     };
     s += K.ring(xs[0], Y, [1, 3, 5]) + oh(xs[0]) + azo(xs[0], 3);
     s += K.ring(xs[1], Y, [1, 3, 5]) + oh(xs[1]) + me(xs[1], 3) + azo(xs[1], 5);
     s += K.ring(xs[2], Y, [1, 3, 5]) + oh(xs[2]) + me(xs[2], 1) + me(xs[2], 3) + me(xs[2], 5);
-    s += text(xs[0], 206, 'phenol: para', { cls: 'fg-lbl', size: 13 });
-    s += text(xs[1], 206, '4-methylphenol: ortho', { cls: 'fg-lbl', size: 13 });
+    s += text(xs[0], 206, 'from phenol: para', { cls: 'fg-lbl', size: 13 });
+    s += text(xs[1], 206, 'from 4-methylphenol: ortho', { cls: 'fg-lbl', size: 13 });
     s += text(xs[2], 206, '2,4,6-trimethylphenol', { cls: 'fg-lbl', size: 13 });
-    s += text(xs[2], 224, 'no seat free: no coupling', { cls: 'fg-tag-warn', size: 11 });
+    s += text(xs[2], 224, 'no ortho or para carbon free', { cls: 'fg-tag-warn', size: 11 });
     s += text(xs[1], 224, 'para is taken', { cls: 'fg-tag', size: 11 });
     s += text(xs[0], 224, 'the first choice', { cls: 'fg-tag', size: 11 });
     return s;
