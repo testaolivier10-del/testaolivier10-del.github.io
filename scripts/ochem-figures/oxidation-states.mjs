@@ -241,7 +241,7 @@ FIGURES.push({
     let s = '';
     s += tag(124, 40, 'bonds to O, N, X');
     s += tag(250, 40, 'one-carbon case');
-    s += tag(346, 40, 'its state');
+    s += tag(346, 40, 'oxidation state');
     s += tag(404, 40, 'everything that shares the rung', { anchor: 'start' });
     s += rule(70, 52, 740, 52);
     RUNGS.forEach((r, i) => {
@@ -279,7 +279,7 @@ FIGURES.push({
       const hgt = 38 + r.fam.length * 18;
       if (r.hi) s += panel(30, y + 2, 304, hgt - 4, { kind: 'hi' });
       s += label(40, y + 22, r.ex, { anchor: 'start' });
-      s += label(128, y + 22, r.ox);
+      s += label(140, y + 22, r.ox, { anchor: 'middle' });
       s += tag(326, y + 22, `${r.n} bond${r.n === '1' ? '' : 's'} to O, N, X`, { anchor: 'end' });
       r.fam.forEach((f, j) => { s += tag(40, y + 42 + j * 18, f, { anchor: 'start', cls: 'fg-tag-mut' }); });
       y += hgt;

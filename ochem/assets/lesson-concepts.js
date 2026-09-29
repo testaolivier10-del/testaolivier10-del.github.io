@@ -347,12 +347,13 @@
       8:['oxidant-choice'],
       10:['oxidant-choice','oxidation-level'] } },
 
-    'carbonyl-reduction': { n:8, steps:{
-      2:['reductant-scope'],
+    'carbonyl-reduction': { n:12, steps:{
       3:['reductant-scope'],
       4:['reductant-scope'],
-      6:['reductant-scope'],
-      7:['reductant-scope','oxidation-level'] } },
+      6:['reductant-scope','tetrahedral-intermediate'],
+      8:['stereochemical-outcome'],
+      10:['reductant-scope'],
+      11:['reductant-scope','oxidation-level'] } },
 
     'hydrogenation': { n:12, steps:{
       2:['redox-stereochemistry'],
