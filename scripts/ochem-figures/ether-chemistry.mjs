@@ -628,7 +628,7 @@ FIGURES.push({
     s += A(b, 'B', { kind: 'warn' }) + A(f1, 'F') + A(f2, 'F') + A(f3, 'F');
     s += fLps(f1, b) + fLps(f2, b) + fLps(f3, b);
     s += curve(P(o.x + 14, o.y - 24), P(b.x - 10, b.y - 14), { bow: -34 });
-    s += arrow(P(170, 156), P(170, 180));
+    s += arrow(P(44, 150), P(44, 176));
     const o2 = P(120, 222), b2 = P(190, 222);
     s += sk(P(64, 222), P(92, 206)) + B(P(92, 206), o2, '', 'O');
     s += B(o2, P(104, 250), 'O', '') + sk(P(104, 250), P(76, 266));
