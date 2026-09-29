@@ -159,7 +159,7 @@ FIGURES.push({
     s += bond(h0, o, { rFrom: 14, rTo: 16 }) + A(h0, 'H') + A(o, 'O', 'hi');
     s += partial(o, c) + partial(c, br);
     s += grp(c, 90, 50, 'H') + grp(c, 245, 46, 'H', 'wedge') + grp(c, 295, 46, 'H', 'hash');
-    s += A(c, 'C', 'warn') + A(br, 'Br');
+    s += A(c, 'C') + A(br, 'Br');
     s += delta(o.x, o.y - 26, 'δ−') + delta(br.x, br.y - 26, 'δ−');
     s += brackets(12, 348, 50, 232);
     s += tag(112, y + 48, 'half formed', { anchor: 'middle' });
