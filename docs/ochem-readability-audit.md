@@ -2,7 +2,7 @@
 
 Date: 2026-09-24. Status: Phase 0 approved. **Phase 1 done** (functional groups and all four nomenclature
 topics rewritten and audited; see `docs/ochem-phase1-report.md`) and approved. **Phase 2 in progress**, worst chapter
-first. Published so far: Foundations (all ten topics, including functional groups from Phase 1) and Carbonyl Chemistry (all seven topics).
+first. Published so far: Foundations (all ten topics, including functional groups from Phase 1), Carbonyl Chemistry and Enolate Chemistry (all seven topics each).
 
 ## What this is
 
@@ -16,6 +16,9 @@ One idea per paragraph. Every term is defined in plain words at first use. Corre
 never thinned out to simplify; a diagram or example is added instead. Any paragraph that describes
 a shape or a spatial relationship needs a diagram in the site's existing style, with real labels
 on the figure. No wording from any textbook.
+No awkward phrasing (added by the owner, 2026-09-29): short sentences must still read naturally,
+flow into each other, and avoid stiff, padded, clipped or oddly ordered wording. Chapters already
+published get a wording pass for this too.
 
 **How to read a finding.** `[H]` means a student would likely get lost or build a wrong picture.
 `[M]` means it slows the reader noticeably. `[L]` means fix it while the page is open. The finding

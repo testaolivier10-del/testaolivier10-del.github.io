@@ -33,15 +33,9 @@
       11:['acetal-formation'],
       12:['acetal-formation','carbonyl-electrophilicity'] } },
 
-    /* Step 2 is the hydration sorter: sterics and electronics read off five
-       structures, which is the equilibrium concept alone. 3 and 4 are the
-       Jones/PCC payoff, so oxidizability joins it. 6 is the one-carbon
-       extension, and 7 is the case where the two causes disagree. */
     /* Step 2 sorts six nucleophiles against one acid chloride, 3 is the
        two-equivalent trap, 4 the leaving-group ranking, 6 the activate-then-
        acylate order, 7 the deprotonation that turns nothing into a reaction. */
-    /* Step 2 sorts six condition sets, 3 is why acid stops, 4 the iodoform
-       scope, 6 the monohalogenation choice, 7 the methyl-versus-alpha trap. */
     /* Step 2 is the carbon-count sorter, which is the first question to ask of
        any amine synthesis. 3 is why direct alkylation runs away, 4 why Gabriel
        can only go once, 6 the route for a secondary amine, 7 a synthesis that
@@ -63,22 +57,22 @@
       6:['hofmann-elimination-rule'],
       7:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
 
-    'alpha-halogenation': { n:8, steps:{
-      2:['alpha-halogenation-control','enolate-formation'],
+    'alpha-halogenation': { n:11, steps:{
       3:['alpha-halogenation-control','alpha-acidity'],
-      4:['alpha-halogenation-control'],
       6:['alpha-halogenation-control'],
-      7:['alpha-halogenation-control','acyl-reactivity-order'] } },
+      8:['alpha-halogenation-control','enolate-formation'],
+      9:['alpha-halogenation-control'],
+      10:['alpha-halogenation-control','acyl-reactivity-order'] } },
 
     /* Step 2 sorts six condition sets including two LDA rows that are not
        kinetic. 3 is which alpha carbon, 4 why a weak base wins on stability,
        6 the SN2 limit on the halide, 7 the inverse-addition trap. */
-    'enolate-regiochemistry': { n:8, steps:{
-      2:['enolate-regiocontrol','enolate-formation'],
+    'enolate-regiochemistry': { n:12, steps:{
       3:['enolate-regiocontrol','alpha-acidity'],
-      4:['enolate-regiocontrol'],
-      6:['enolate-regiocontrol','mechanism-selection'],
-      7:['enolate-regiocontrol'] } },
+      5:['enolate-regiocontrol'],
+      8:['enolate-regiocontrol','enolate-formation'],
+      10:['enolate-regiocontrol','mechanism-selection'],
+      11:['enolate-regiocontrol'] } },
 
     'acyl-chlorides-anhydrides': { n:8, steps:{
       2:['activation-before-acylation','acyl-reactivity-order'],
@@ -105,9 +99,6 @@
       12:['addition-equilibrium','tetrahedral-intermediate'],
       14:['addition-equilibrium','carbonyl-electrophilicity'] } },
 
-    /* Step 2 sorts five test results, 3 is why a weak oxidant is the right
-       tool for a test, 4 is the hemiacetal opening, 6 the reagent choice
-       under two constraints, 7 the IR-against-chemical-test contradiction. */
     'aldehyde-oxidation': { n:15, steps:{
       2:['aldehyde-oxidizability','addition-equilibrium'],
       5:['aldehyde-oxidizability','oxidation-level'],
@@ -201,13 +192,19 @@
       8:['enamine-nucleophile'],
       11:['enamine-nucleophile','amine-condensation'] } },
 
-    'michael-robinson': { n:8, steps:{
-      2:['product-spacing'], 3:['product-spacing'], 4:['product-spacing'],
-      6:['product-spacing'], 7:['product-spacing'] } },
+    'michael-robinson': { n:11, steps:{
+      3:['product-spacing'],
+      4:['product-spacing'],
+      5:['product-spacing'],
+      8:['product-spacing'],
+      10:['product-spacing'] } },
 
-    'ester-syntheses': { n:8, steps:{
-      2:['activating-group'], 3:['activating-group'], 4:['activating-group'],
-      6:['activating-group'], 7:['activating-group'] } },
+    'ester-syntheses': { n:11, steps:{
+      3:['activating-group'],
+      6:['activating-group'],
+      8:['activating-group'],
+      9:['activating-group'],
+      10:['activating-group'] } },
 
     'baeyer-villiger': { n:8, steps:{
       2:['migratory-aptitude'], 3:['migratory-aptitude'], 4:['migratory-aptitude'],
@@ -405,12 +402,13 @@
       6:['carbonyl-electrophilicity','steric-hindrance'],
       7:['carbonyl-electrophilicity','steric-hindrance'] } },
 
-    'aldol': { n:8, steps:{
-      1:['enolate-formation'],
-      2:['aldol-connectivity'],
-      4:['aldol-connectivity'],
-      6:['aldol-connectivity','enolate-formation'],
-      7:['aldol-connectivity','enolate-formation'] } },
+    'aldol': { n:13, steps:{
+      2:['enolate-formation'],
+      3:['aldol-connectivity'],
+      6:['aldol-connectivity'],
+      10:['aldol-connectivity','enolate-formation'],
+      11:['aldol-connectivity','enolate-formation'],
+      12:['aldol-connectivity','enolate-formation'] } },
 
     'alkene-structure': { n:8, steps:{
       1:['alkene-pi-nucleophile'],
@@ -427,12 +425,14 @@
       7:['alkyne-acidity','curved-arrow-direction','acetylide-alkylation'],
       8:['markovnikov-regiochem','keto-enol-tautomerism'] } },
 
-    'alpha-hydrogens': { n:8, steps:{
-      1:['alpha-acidity'],
-      2:['alpha-acidity','resonance-delocalization'],
-      4:['resonance-delocalization','alpha-acidity'],
-      6:['enolate-formation','alpha-acidity'],
-      7:['alpha-acidity','resonance-delocalization'] } },
+    'alpha-hydrogens': { n:14, steps:{
+      2:['resonance-delocalization','alpha-acidity'],
+      3:['alpha-acidity','resonance-delocalization'],
+      5:['alpha-acidity'],
+      7:['keto-enol-tautomerism','resonance-delocalization'],
+      10:['enolate-formation','alpha-acidity'],
+      12:['keto-enol-tautomerism'],
+      13:['alpha-acidity','resonance-delocalization'] } },
 
     'amine-reactions': { n:8, steps:{
       1:['nucleophile-recognition'],
@@ -520,12 +520,13 @@
       3:['chirality-recognition','meso-detection'],
       6:['chirality-recognition','meso-detection'] } },
 
-    'claisen': { n:8, steps:{
-      1:['claisen-connectivity'],
-      2:['claisen-connectivity','tetrahedral-intermediate'],
-      4:['alpha-acidity','claisen-connectivity'],
-      6:['claisen-connectivity','enolate-formation'],
-      7:['claisen-connectivity'] } },
+    'claisen': { n:11, steps:{
+      2:['claisen-connectivity'],
+      3:['claisen-connectivity','tetrahedral-intermediate'],
+      5:['alpha-acidity','claisen-connectivity'],
+      7:['alpha-acidity','claisen-connectivity'],
+      8:['claisen-connectivity','enolate-formation'],
+      10:['claisen-connectivity'] } },
 
     'conformational-analysis': { n:7, steps:{
       1:['chair-axial-equatorial'],
