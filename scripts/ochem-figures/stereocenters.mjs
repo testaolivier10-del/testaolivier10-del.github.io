@@ -430,7 +430,7 @@ FIGURES.push({
     s += tg(380, 22, 'R¹, R² and R³ are three different carbon groups');
     return s;
   },
-  caption: 'Follow R² and R³: they stay behind and in front of the page while all three groups swing from below the nitrogen to above it.',
+  caption: 'Watch R² stay behind the page and R³ stay in front of it while all three groups swing from below the nitrogen to above it.',
 });
 
 /* ===================================================== lesson only ===== */

@@ -150,7 +150,7 @@ FIGURES.push({
     s += T(632, 270, 'its own mirror image: achiral', 'fg-tag-good');
     return s;
   },
-  caption: 'Compare the two OH bonds in each drawing. A wedge and a hash give a chiral molecule. Two wedges give the molecule with a mirror plane.',
+  caption: 'Compare the two OH bonds in each drawing: a wedge and a hash, or two wedges.',
 });
 
 /* The lesson copy: the meso form alone. */
@@ -165,7 +165,7 @@ FIGURES.push({
     s += T(170, 234, 'OH onto OH, H onto H, COOH onto COOH', 'fg-tag');
     return s;
   },
-  caption: 'Fold the drawing along the dashed line: every group lands on an identical group.',
+  caption: 'The two OH bonds are both wedges.',
 });
 
 /* The lesson's counting step: all four R/S combinations. */
@@ -251,7 +251,7 @@ FIGURES.push({
     s += tart(170, 380, 'meso', { plane: 'good' });
     return s;
   },
-  caption: 'One molecule, two conformations. Only the lined-up one shows the plane.',
+  caption: 'Follow the OH on C2 from the top drawing to the bottom one.',
 });
 
 /* ===================================================== halves-must-match ===
@@ -276,7 +276,7 @@ FIGURES.push({
     s += T(570, 272, 'its enantiomer is (2S,3R)', 'fg-tag');
     return s;
   },
-  caption: 'Both drawings carry R at C2 and S at C3. Check what the dashed line would swap on each side.',
+  caption: 'Check what the dashed line would swap in each drawing.',
 });
 FIGURES.push({
   id: 'l-halves-must-match',
@@ -294,7 +294,7 @@ FIGURES.push({
     s += T(170, 488, 'Br onto Cl: chiral', 'fg-tag-warn');
     return s;
   },
-  caption: 'Same descriptors, same drawing. Only the top one has identical halves.',
+  caption: 'Check what the dashed line would swap in each drawing.',
 });
 
 /* ========================================================= Fischer ===
@@ -420,7 +420,7 @@ function cisChair(cx, cy, k, L, mirror, mx, showFace = true) {
 }
 /* The flat ring: hexagon with methyls on wedges at C1 and C2, and the
    mirror plane through the middle of the C1-C2 bond and of the C4-C5 bond. */
-function flatRing(cx, cy, r) {
+function flatRing(cx, cy, r, planeLabel) {
   const v = [];
   for (let i = 0; i < 6; i++) v.push(at(P(cx, cy), 90 - i * 60, r));
   let s = v.map((p, i) => sk(p, v[(i + 1) % 6])).join('');
@@ -436,9 +436,10 @@ function flatRing(cx, cy, r) {
     B(ids[i], A('H', P(c.x - 6, c.y), -26));
     claim(ids[i], rs);
   };
-  put(1, 'C1', 'R', { x: -10, y: -4, a: 'end' }, { x: 2, y: -14 });
-  put(2, 'C2', 'S', { x: -10, y: 12, a: 'end' }, { x: 2, y: 24 });
-  s += dashLine(P(cx - r - 26, cy), P(cx + r + 64, cy));
+  put(1, 'C1', 'R', { x: -16, y: -10, a: 'middle' }, { x: 2, y: -14 });
+  put(2, 'C2', 'S', { x: -16, y: 18, a: 'middle' }, { x: 2, y: 24 });
+  s += dashLine(P(cx - r - 10, cy), P(cx + r + 64, cy));
+  s += T(cx - r - 16, cy + 4, planeLabel, 'fg-tag-good', 'end');
   return s;
 }
 FIGURES.push({
@@ -449,29 +450,28 @@ FIGURES.push({
   alt: 'cis-1,2-Dimethylcyclohexane three ways. Left: a flat hexagon with a methyl on a wedge at C1 and at C2, so both methyls are on the top face; C1 is R and C2 is S, and a dashed horizontal mirror plane passes through the middle of the C1–C2 bond and the middle of the opposite bond. Right: the compound in two chair conformations on either side of a dashed vertical mirror. In the left chair the C1 methyl is axial and up and the C2 methyl is equatorial and up. The right chair is its exact mirror image, and it is also the chair the ring flips into: C1 equatorial and up, C2 axial and up. Ring-flip arrows join the two chairs.',
   build() {
     let s = '';
-    s += T(130, 24, 'flat ring: both methyls on wedges', 'fg-tag');
-    s += flatRing(110, 140, 46);
-    s += T(206, 134, 'mirror plane', 'fg-tag-good', 'start');
-    s += rich(130, 250, ['*meso', ', (1R,2S)'], 'fg-tag-good');
-    s += rule(280, 20, 280, 316);
-    s += T(520, 24, 'the two chairs', 'fg-tag');
-    const mx = 520;
-    const a = cisChair(404, 136, 0.62, 34, false, mx);
-    const b = cisChair(404, 136, 0.62, 34, true, mx);
+    s += T(145, 24, 'flat ring: both methyls on wedges', 'fg-tag');
+    s += flatRing(150, 140, 46, 'mirror plane');
+    s += rich(150, 250, ['*meso', ', (1R,2S)'], 'fg-tag-good');
+    s += rule(290, 20, 290, 316);
+    s += T(530, 24, 'the two chairs', 'fg-tag');
+    const mx = 530;
+    const a = cisChair(395, 136, 0.62, 34, false, mx);
+    const b = cisChair(395, 136, 0.62, 34, true, mx);
     s += a.s + b.s;
     s += dashLine(P(mx, 44), P(mx, 206));
     s += T(mx, 222, 'mirror', 'fg-tag-good');
-    s += T(404, 242, 'C1: axial, up', 'fg-tag');
-    s += T(404, 260, 'C2: equatorial, up', 'fg-tag');
-    s += T(636, 242, 'C1: equatorial, up', 'fg-tag');
-    s += T(636, 260, 'C2: axial, up', 'fg-tag');
-    s += arrow(P(470, 290), P(570, 290));
-    s += arrow(P(570, 304), P(470, 304), { muted: true });
-    s += T(462, 300, 'ring flip', 'fg-tag', 'end');
-    s += T(578, 300, '~10⁵ times a second', 'fg-tag', 'start');
+    s += T(395, 242, 'C1: axial, up', 'fg-tag');
+    s += T(395, 260, 'C2: equatorial, up', 'fg-tag');
+    s += T(665, 242, 'C1: equatorial, up', 'fg-tag');
+    s += T(665, 260, 'C2: axial, up', 'fg-tag');
+    s += arrow(P(480, 290), P(580, 290));
+    s += arrow(P(580, 304), P(480, 304), { muted: true });
+    s += T(472, 300, 'ring flip', 'fg-tag', 'end');
+    s += T(588, 300, '~10⁵ times a second', 'fg-tag', 'start');
     return s;
   },
-  caption: 'Left: the plane swaps C1 with C2 and one methyl wedge with the other. Right: read the tags under each chair, then compare the two drawings across the dashed line.',
+  caption: 'Left: find the two groups the dashed line swaps. Right: read the tags under each chair, then compare the two drawings across the dashed line.',
 });
 FIGURES.push({
   id: 'l-cis-ring-mirror',
@@ -481,8 +481,7 @@ FIGURES.push({
   build() {
     let s = '';
     s += T(170, 20, 'flat ring: both methyls on wedges', 'fg-tag');
-    s += flatRing(140, 124, 44);
-    s += T(262, 118, 'mirror', 'fg-tag-good', 'start');
+    s += flatRing(170, 124, 44, 'mirror');
     s += rich(170, 224, ['*meso', ', (1R,2S)'], 'fg-tag-good');
     s += rule(10, 240, 330, 240);
     s += T(170, 262, 'the two chairs, both methyls up', 'fg-tag');
@@ -500,7 +499,7 @@ FIGURES.push({
     s += T(170, 442, 'ring flip', 'fg-tag');
     return s;
   },
-  caption: 'Each chair is the mirror image of the other, and the flip turns one into the other.',
+  caption: 'Compare the two chairs across the dashed line, then read the tags under each.',
 });
 
 /* ================================================= bromine outcomes ===
@@ -523,9 +522,9 @@ function alkene(cx, cy, trans) {
 /* The addition product with C2 on the left. `m3` is the angle of C3's
    methyl, `br3` the kind of bond to C3's Br and `br3deg` its direction. */
 function dibromide(cx, cy, o) {
-  const c2 = P(cx - 30, cy), c3 = P(cx + 30, cy);
+  const c2 = P(cx - 40, cy), c3 = P(cx + 40, cy);
   let s = sk(c2, c3);
-  const m1 = at(c2, 150, 44), h1 = at(c2, 210, 40), b1 = at(c2, 285, 44);
+  const m1 = at(c2, 150, 44), h1 = at(c2, 210, 40), b1 = at(c2, 290, 44);
   const m2 = at(c3, o.m3, 44), h2 = at(c3, o.m3 === 30 ? 330 : 30, 40), b2 = at(c3, o.br3deg, 44);
   s += plain(c2, m1, 17) + atom(m1.x, m1.y, 'CH₃', { r: 17 });
   s += plain(c2, h1, 12) + atom(h1.x, h1.y, 'H', { r: 12 });
@@ -552,20 +551,20 @@ function dibromide(cx, cy, o) {
 function brRow(y, trans) {
   let s = '';
   const m3 = trans ? 330 : 30;
-  s += alkene(92, y, trans);
-  s += rich(92, y + 62, trans ? ['*trans', '-but-2-ene'] : ['*cis', '-but-2-ene'], 'fg-tag');
-  s += arrow(P(178, y), P(252, y));
-  s += T(215, y - 12, 'Br₂', 'fg-tag');
-  s += T(215, y + 22, 'anti', 'fg-tag');
-  s += dibromide(340, y, { m3, br3: 'h', br3deg: 110 });
-  s += T(340, y + 76, 'as it forms', 'fg-tag');
-  s += arrow(P(428, y), P(500, y));
-  s += T(464, y - 12, 'turn C3', 'fg-tag');
-  s += T(464, y + 22, 'half a turn', 'fg-tag');
+  s += alkene(88, y, trans);
+  s += rich(88, y + 62, trans ? ['*trans', '-but-2-ene'] : ['*cis', '-but-2-ene'], 'fg-tag');
+  s += arrow(P(172, y), P(232, y));
+  s += T(202, y - 12, 'Br₂', 'fg-tag');
+  s += T(202, y + 22, 'anti', 'fg-tag');
+  s += dibromide(336, y, { m3, br3: 'h', br3deg: 110 });
+  s += T(336, y + 76, 'as it forms', 'fg-tag');
+  s += arrow(P(440, y), P(500, y));
+  s += T(470, y - 12, 'turn C3', 'fg-tag');
+  s += T(470, y + 22, 'half a turn', 'fg-tag');
   const turned = trans
-    ? { m3: 30, br3: 'w', br3deg: 255, rs: ['S', 'R'], plane: true, check: 'Br2 trans turned' }
-    : { m3: 330, br3: 'w', br3deg: 255, rs: ['S', 'S'], check: 'Br2 cis turned' };
-  s += dibromide(592, y, turned);
+    ? { m3: 30, br3: 'w', br3deg: 250, rs: ['S', 'R'], plane: true, check: 'Br2 trans turned' }
+    : { m3: 330, br3: 'w', br3deg: 250, rs: ['S', 'S'], check: 'Br2 cis turned' };
+  s += dibromide(598, y, turned);
   return s;
 }
 FIGURES.push({
@@ -578,15 +577,15 @@ FIGURES.push({
     let s = '';
     s += rich(20, 24, ['*trans', ' alkene'], 'fg-tag-good', 'start');
     s += brRow(116, true);
-    s += rich(592, 210, ['one achiral product, ', '*meso'], 'fg-tag-good');
+    s += rich(598, 210, ['one achiral product, ', '*meso'], 'fg-tag-good');
     s += rule(20, 228, 740, 228);
     s += rich(20, 254, ['*cis', ' alkene'], 'fg-tag-warn', 'start');
     s += brRow(346, false);
-    s += T(592, 418, '(2S,3S), and (2R,3R) in equal amount:', 'fg-tag-warn');
-    s += T(592, 436, 'a racemic mixture', 'fg-tag-warn');
+    s += T(598, 418, '(2S,3S), and (2R,3R) in equal amount:', 'fg-tag-warn');
+    s += T(598, 436, 'a racemic mixture', 'fg-tag-warn');
     return s;
   },
-  caption: 'In each row, compare the two methyls in the last drawing. On the same side, a mirror plane runs between them. On opposite sides, there is none.',
+  caption: 'Read each row from left to right: the alkene, the product as it forms, and the same product after the half turn.',
 });
 
 export default FIGURES;

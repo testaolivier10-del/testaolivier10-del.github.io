@@ -142,7 +142,7 @@ FIGURES.push({
   section: 'enantiomers',
   anchor: '<h3>Specific rotation</h3>',
   alt: 'A polarimeter drawn left to right: a sodium lamp emitting light vibrating in every plane, a polarizer that passes only the vertical plane, a sample tube of length l holding a solution of concentration c, the emerging plane tilted by an angle alpha, and an analyzer turned by alpha to find the new plane.',
-  viewBox: '0 0 760 300',
+  viewBox: '0 0 760 256',
   build() {
     let s = '';
     const beam = 150;
@@ -195,7 +195,6 @@ FIGURES.push({
     s += sm(700, 212, 'observer');
 
     s += tag(380, 40, 'THE INSTRUMENT MEASURES α');
-    s += sm(380, 276, 'Double the tube length or the concentration and α doubles: the light meets twice as many molecules.');
     return s;
   },
   caption: 'Follow the light from left to right. The solid line after the sample is the plane the light now vibrates in; the dashed line is where it started, and the angle between them is α.',
@@ -380,7 +379,7 @@ FIGURES.push({
     s += tg(170, 222, 'ee = 90 − 10 = 80%');
     return s;
   },
-  caption: 'The lower bar pairs each (R) molecule with one (S) molecule. Those pairs cancel each other’s rotation, and what is left over is the excess.',
+  caption: 'Both bars show the same sample. In the lower one, compare the pale block of (S) that pairs off with the (R) against the long block of (S) that has no partner.',
 });
 
 /* ------------------------------------------------------------------------
@@ -473,7 +472,7 @@ FIGURES.push({
     s += sm(380, 386, 'Ar = the 4-(2-methylpropyl)phenyl ring;  (S)-amine = (S)-1-phenylethylamine');
     return s;
   },
-  caption: 'Read the top row first. The two salts share the same (S)-amine but differ at the acid, so they are not mirror images. In the bottom row, filtration separates them and acid takes the amine back off.',
+  caption: 'The top row makes the two salts. The bottom row takes each salt apart again.',
 });
 
 /* The same resolution stacked for the lesson. */
