@@ -894,3 +894,28 @@ confirm it.
     acetophenone is taught as ring chlorination (in practice α-chlorination competes). Some
     compounds use common rather than preferred IUPAC names (3-chloroacetophenone,
     4-methylanisole, m-bromonitrobenzene).
+
+## Oxidation & Reduction (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### redox-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `oxidation-states`, `alcohol-oxidation`, `carbonyl-reduction`, plus wording on
+  `aldehyde-oxidation`, `cross-coupling` and `nucleophilic-addition`.
+- **Positions taken:**
+  - Oxidation levels: "rung" is used for the count of bonds to O, N or halogen and is tied to the
+    "oxidation level" named in Functional group priority; "oxidation state" is the signed number.
+    C–I is scored +1 by convention, though iodine is only slightly more electronegative than
+    carbon. PCC is given as Cr(VI) → Cr(III). Cross-coupling now calls its metal count the same
+    bookkeeping as the carbon count.
+  - Oxidizing alcohols: in the chromate-ester step, water is drawn removing the hydrogen (to match
+    Oxidizing an aldehyde); some sources show an oxygen on chromium doing it. DMP is called
+    "nearly neutral", though it releases acetic acid and is often buffered. Distilling the
+    aldehyde out of a Jones oxidation is not mentioned as a way to stop early. Tertiary alcohols
+    are taught as "not oxidized"; in strong acid they may dehydrate instead.
+  - Reducing carbonyls: DIBAL-H is explained by the Al-bound tetrahedral intermediate holding
+    together at −78 °C (some texts say only "bulky, less reactive"). NaBH₄ with a carboxylic acid
+    is simplified to "not reduced" (it gives H₂ and acyloxyborohydrides). The Clemmensen
+    mechanism is described as not well understood and is not drawn with arrows.
