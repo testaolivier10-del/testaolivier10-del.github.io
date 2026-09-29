@@ -427,7 +427,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'beta-keto-decarboxylation',
   section: 'carboxylic-acids',
-  anchor: 'and no C=C can form.</p>',
+  anchor: 'and no C=C appears.</p>',
   viewBox: '0 0 760 300',
   alt: '3-Oxobutanoic acid drawn as a six-membered ring: ketone oxygen, the transferring hydrogen, the carboxyl OH oxygen, the carboxyl carbon, the alpha CH2 and the ketone carbon. Three curved arrows: the ketone C=O pi bond takes the hydrogen, the O–H bond becomes a C=O of carbon dioxide, and the bond from the alpha carbon to the carboxyl carbon becomes the C=C of an enol. Next panel: the enol and CO2. Last panel: the enol has tautomerized to acetone.',
   build() {

@@ -339,7 +339,7 @@ FIGURES.push({
       t += tag(Q(162, 0).x, Q(0, 178).y, 'the CH₃ carbon bonds to the nitrile carbon');
       return t;
     });
-    s += cell(8, 200, 324, 184, 'AN IMINE ANION: A SECOND GRIGNARD CANNOT ADD', (Q) => {
+    s += cell(8, 200, 324, 184, 'AN IMINE ANION, NOT A CARBONYL', (Q) => {
       const c = Q(134, 86), n = Q(228, 86);
       const r = armEnd(c, 120, 52), me = armEnd(c, 240, 52);
       let t = B(c, r, 'C', 'R') + B(c, me, 'C', 'CH₃') + B(c, n, 'C', 'N', { order: 2 });
@@ -347,7 +347,7 @@ FIGURES.push({
       t += lonePair(n.x, n.y, 300, { dist: 22 }) + lonePair(n.x, n.y, 60, { dist: 22 });
       t += charge(n.x + 32, n.y + 5, '−');
       t += tag(Q(290, 0).x, Q(0, 132).y, 'MgBr⁺');
-      t += tag(Q(162, 0).x, Q(0, 174).y, 'an anion, not a carbonyl');
+      t += tag(Q(162, 0).x, Q(0, 174).y, 'too poor an electrophile for a second CH₃MgBr');
       return t;
     });
     s += cell(8, 392, 324, 172, 'H₃O⁺ WORKUP: AN IMINE, THEN THE KETONE', (Q) => {
