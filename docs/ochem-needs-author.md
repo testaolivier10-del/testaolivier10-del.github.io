@@ -713,3 +713,30 @@ confirm it.
     counted as two Kekulé plus three Dewar structures, naphthalene as three Kekulé structures.
     The amide rotation barrier is given as about 18 kcal/mol (real amides range about 15–21).
     The edge-on enol figure draws only oxygen's p-orbital lone pair.
+
+## Amines (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### amines-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `amine-structure`, `amine-reactions`, `amine-synthesis`, `hofmann-elimination`.
+- **Positions taken:**
+  - The amide pKaH is "about 0" on every page (literature about −0.5); the imine pKaH was removed
+    as unverified (simple imines are often quoted near 7).
+  - Nucleophilicity is taught as NH₃ < RNH₂ < R₂NH, with R₃N slower (a course convention; real
+    values depend on sterics and solvent).
+  - Reductive amination: the pages give no pH number, only "mildly acidic solution" (Borch's data
+    put iminium selectivity nearer pH 6–7). Over-alkylation is explained by rates: the first
+    condensation is fast, the second (by the more crowded secondary amine) slower, and the
+    reduction is not undone; dialkylation remains a side reaction, worst with ammonia or small
+    aldehydes. Azide is taught as working on primary and secondary halides.
+  - Hofmann rearrangement: the water step is drawn on the neutral isocyanate and carbamic acid
+    (under NaOH the species is really the carbamate anion). Phthalimide pKa 8.3 is unverified.
+  - Hofmann elimination: the rule is explained by sterics first, with the E1cb-like acidity
+    argument agreeing (the origin is debated). Cope elimination "tends to give" the less
+    substituted alkene, with no ratio. Exhaustive methylation of piperidine is given as ending in
+    penta-1,4-diene; the historical product is often given as penta-1,3-diene, by isomerization.
+    The names sec-butyl and 1-phenylprop-1-ene are kept (older forms).
+  - The pages use "N-nitrosamine"; the diazonium figure was changed to match.
