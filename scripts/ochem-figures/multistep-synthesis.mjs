@@ -269,7 +269,7 @@ FIGURES.push({
   section: 'multistep-synthesis',
   anchor: '<!-- fig:four-step-route:start -->',
   alt: 'Six skeletal structures in two rows. Row 1: butan-1-ol, 4 carbons; phosphorus tribromide gives 1-bromobutane, 4 carbons; sodium cyanide gives pentanenitrile, 5 carbons, with the new carbon–carbon bond highlighted. An elbow arrow labeled aqueous acid and heat leads down to row 2: pentanoic acid, 5 carbons; thionyl chloride gives pentanoyl chloride, 5 carbons; two equivalents of methylmagnesium bromide, then aqueous acid, give 2-methylhexan-2-ol, 7 carbons, with its two new methyl bonds highlighted.',
-  viewBox: '0 0 700 290',
+  viewBox: '0 0 700 302',
   build() {
     let s = '';
     const y1 = 70, y2 = 232;
@@ -355,7 +355,7 @@ const RING_CASES = {
     mode: 'syn', sm: '1-methylcyclohexene', reagent: 'OsO₄, NMO', short: 'OsO₄',
     smSubs: (c1, L) => subst(c1, 60, L, 'CH₃', 'p', 16),
     prods: [[['OH', 'w'], ['OH', 'w'], ['CH₃', 'h']], [['OH', 'h'], ['OH', 'h'], ['CH₃', 'w']]],
-    name: ['*cis', '-1-methylcyclohexane-1,2-diol'], verdict: ['two enantiomers, 50 : 50'],
+    name: ['1-methylcyclohexane-1,2-diol, OH groups ', '*cis'], verdict: ['two enantiomers, 50 : 50'],
   },
   h2: {
     mode: 'syn', sm: '1,2-dimethylcyclohexene', reagent: 'H₂, Pt', short: 'H₂, Pt',
@@ -391,8 +391,8 @@ function stereoRow(k, top, W, o) {
   s += sm.s + c.smSubs(sm.c1, o.smL ?? o.L, sm.c2);
   if (o.smName) s += T(o.smX, cy + o.r + 22, c.sm);
   s += arrow(P(o.a1, cy), P(o.a2, cy));
-  s += T((o.a1 + o.a2) / 2, cy - 10, o.short ? c.short : c.reagent);
-  s += T((o.a1 + o.a2) / 2, cy + 18, c.mode, 'fg-tag-good');
+  s += T((o.a1 + o.a2) / 2, o.below ? cy + 20 : cy - 10, c.reagent);
+  s += T((o.a1 + o.a2) / 2, o.below ? cy - 10 : cy + 18, c.mode, 'fg-tag-good');
   if (c.prods.length === 2) {
     s += ringProduct(o.p1, cy, o.r, o.L, c.prods[0]) + ringProduct(o.p2, cy, o.r, o.L, c.prods[1]);
     if (o.and) s += T((o.p1 + o.p2) / 2, cy + 4, 'and', 'fg-tag-mut');
@@ -407,7 +407,7 @@ FIGURES.push({
   id: 'stereo-faces',
   section: 'multistep-synthesis',
   anchor: '<!-- fig:stereo-faces:start -->',
-  alt: 'Three rows, each an alkene ring, an arrow and the product. Row 1: cyclohexene with Br2 gives trans-1,2-dibromocyclohexane, drawn as a pair of mirror images, one Br on a wedge and one on a hash in each, formed 50 to 50. Row 2: 1-methylcyclohexene with OsO4 and NMO gives cis-1-methylcyclohexane-1,2-diol, drawn as a pair of mirror images, both OH groups on wedges in one and both on hashes in the other, formed 50 to 50. Row 3: 1,2-dimethylcyclohexene with H2 over platinum gives cis-1,2-dimethylcyclohexane, both methyls on wedges and both new hydrogens on hashes; it is meso, a single compound.',
+  alt: 'Three rows, each an alkene ring, an arrow and the product. Row 1: cyclohexene with Br2 gives trans-1,2-dibromocyclohexane, drawn as a pair of mirror images, one Br on a wedge and one on a hash in each, formed 50 to 50. Row 2: 1-methylcyclohexene with OsO4 and NMO gives 1-methylcyclohexane-1,2-diol with its two OH groups cis, drawn as a pair of mirror images, both OH groups on wedges in one and both on hashes in the other, formed 50 to 50. Row 3: 1,2-dimethylcyclohexene with H2 over platinum gives cis-1,2-dimethylcyclohexane, both methyls on wedges and both new hydrogens on hashes; it is meso, a single compound.',
   viewBox: '0 0 760 516',
   build() {
     let s = '';
@@ -421,12 +421,12 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-stereo-faces',
   lessons: ['multistep-synthesis'],
-  alt: 'Three rows. Cyclohexene with Br2 gives trans-1,2-dibromocyclohexane as a 50 to 50 pair of mirror images, one Br wedged and one hashed. 1-Methylcyclohexene with OsO4 gives cis-1-methylcyclohexane-1,2-diol as a 50 to 50 pair, both OH wedged in one and both hashed in the other. 1,2-Dimethylcyclohexene with H2 over platinum gives cis-1,2-dimethylcyclohexane, both methyls wedged and both new hydrogens hashed, a single meso compound.',
+  alt: 'Three rows. Cyclohexene with Br2 gives trans-1,2-dibromocyclohexane as a 50 to 50 pair of mirror images, one Br wedged and one hashed. 1-Methylcyclohexene with OsO4 gives 1-methylcyclohexane-1,2-diol, OH groups cis, as a 50 to 50 pair, both OH wedged in one and both hashed in the other. 1,2-Dimethylcyclohexene with H2 over platinum gives cis-1,2-dimethylcyclohexane, both methyls wedged and both new hydrogens hashed, a single meso compound.',
   viewBox: '0 0 340 516',
   build() {
     let s = '';
-    const o = { pad: 4, h: 164, cy: 76, r: 18, L: 28, smL: 24, smX: 44, smName: false, a1: 66, a2: 108, short: true,
-      p1: 164, p2: 272, and: false, nameX: 170, nameCls: 'fg-tag' };
+    const o = { pad: 4, h: 164, cy: 76, r: 18, L: 28, smL: 24, smX: 50, smName: false, a1: 76, a2: 128, below: true,
+      p1: 170, p2: 284, and: false, nameX: 170, nameCls: 'fg-tag' };
     ['br2', 'os', 'h2'].forEach((k, i) => { s += stereoRow(k, 6 + i * 170, 340, o); });
     return s;
   },
@@ -540,7 +540,7 @@ FIGURES.push({
   section: 'multistep-synthesis',
   anchor: '<!-- fig:hexene-bromination:start -->',
   alt: 'Two rows, with each alkene drawn edge-on: wedges toward the reader, hashes away, top face up the page. Row 1: (E)-hex-3-ene, ethyl groups on opposite sides, reacts with Br2 to give a bromonium ion with the positive bromine bridging both carbons on the top face; a bromide ion below attacks C4 from underneath while the C4–Br bond breaks. The product has one Br up from C3 and one Br down from C4, and is meso-3,4-dibromohexane, (3R,4S). Row 2: (Z)-hex-3-ene, ethyl groups on the same side, adds Br2 the same anti way to give (3R,4R)-3,4-dibromohexane and its mirror image (3S,4S), formed 50 to 50.',
-  viewBox: '0 0 760 440',
+  viewBox: '0 0 760 462',
   build() {
     let s = '';
     s += rich(20, 24, ['*trans', ' alkene, from Na in NH₃'], 'fg-lbl', 'start');
@@ -559,12 +559,13 @@ FIGURES.push({
     const y2 = 342;
     s += persp(100, y2, CIS, { stage: 'alkene' });
     s += rich(100, 412, ['(', '*Z', ')-hex-3-ene']);
-    s += arrow(P(186, y2), P(290, y2)) + T(238, y2 - 10, 'Br₂, anti');
+    s += arrow(P(186, y2), P(290, y2)) + T(238, y2 - 10, 'Br₂');
     s += persp(400, y2, CIS, { stage: 'product' });
     s += persp(600, y2, CIS, { stage: 'product', mirror: true });
     s += T(500, y2 + 4, 'and', 'fg-tag-mut');
-    s += rich(400, 412, ['(3', '*R', ',4', '*R', ')'], 'fg-tag') + rich(600, 412, ['(3', '*S', ',4', '*S', ')'], 'fg-tag');
-    s += T(500, 432, 'mirror images formed 50 : 50, a racemic pair', 'fg-tag-good');
+    s += T(500, 414, '3,4-dibromohexane', 'fg-lbl');
+    s += rich(400, 432, ['(3', '*R', ',4', '*R', ')'], 'fg-tag') + rich(600, 432, ['(3', '*S', ',4', '*S', ')'], 'fg-tag');
+    s += T(500, 452, 'mirror images formed 50 : 50, a racemic pair', 'fg-tag-good');
     s += T(740, 24, 'Et = CH₂CH₃', 'fg-tag-mut', 'end');
     return s;
   },
@@ -595,17 +596,18 @@ FIGURES.push({
   id: 'l-hexene-cis',
   lessons: ['multistep-synthesis'],
   alt: '(Z)-hex-3-ene drawn edge-on, both ethyl groups on wedges, adds Br2 anti to give (3R,4R)-3,4-dibromohexane and its mirror image (3S,4S), formed 50 to 50.',
-  viewBox: '0 0 340 300',
+  viewBox: '0 0 340 330',
   build() {
     let s = '';
     s += T(10, 18, 'Et = CH₂CH₃', 'fg-tag-mut', 'start');
     s += persp(170, 70, CIS, { stage: 'alkene' });
     s += rich(290, 74, ['(', '*Z', ')-hex-3-ene'], 'fg-tag');
-    s += downStep(170, 118, 170, ['Br₂, anti'], null);
+    s += downStep(170, 118, 170, ['Br₂'], null);
     s += persp(86, 222, CIS, { stage: 'product', half: 24, len: 32 });
     s += persp(256, 222, CIS, { stage: 'product', half: 24, len: 32, mirror: true });
-    s += rich(86, 282, ['(3', '*R', ',4', '*R', ')']) + rich(256, 282, ['(3', '*S', ',4', '*S', ')']);
-    s += T(170, 298, 'mirror images, 50 : 50', 'fg-tag-good');
+    s += T(170, 288, '3,4-dibromohexane', 'fg-lbl');
+    s += rich(86, 306, ['(3', '*R', ',4', '*R', ')']) + rich(256, 306, ['(3', '*S', ',4', '*S', ')']);
+    s += T(170, 322, 'mirror images, 50 : 50', 'fg-tag-good');
     return s;
   },
   caption: 'Wedges point toward you, hashes away.',
