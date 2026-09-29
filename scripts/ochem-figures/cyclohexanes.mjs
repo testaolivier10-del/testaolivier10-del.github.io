@@ -121,7 +121,7 @@ function panelTorsion(cx, cy) {
   s += `<line class="fg-bond" x1="${cx}" y1="${cy}" x2="${cx}" y2="${(c3.y - 14).toFixed(2)}"></line>`;
   s += atom(c3.x, c3.y, 'C', { r: 13 });
   s += text(cx, cy - 58, 'H in front of H, twice', { cls: 'fg-tag-warn' });
-  s += text(cx, cy + 90, 'third ring carbon: behind both', { cls: 'fg-tag-mut' });
+  s += text(cx, cy + 90, 'third ring carbon, bonded to both', { cls: 'fg-tag-mut' });
   return s;
 }
 
@@ -409,7 +409,7 @@ FIGURES.push({
     s += text(578, 226, 'all staggered; the ring carbons 60° apart', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'Find the two ring carbons in the Newman projection: they sit 60° apart, like the methyls of gauche butane. Every other ring bond gives the same staggered view.',
+  caption: 'Find the two ring carbons in the Newman projection: they sit 60° apart, and nothing is eclipsed. Every other ring bond gives the same staggered view.',
 });
 FIGURES.push({
   id: 'l-chair-targets',
@@ -531,7 +531,7 @@ FIGURES.push({
     s += text(ch.pts[0].x + 10, ch.pts[0].y + 4, 'up end', { cls: 'fg-tag', anchor: 'start' });
     s += text(ch.pts[3].x + 16, ch.pts[3].y + 52, 'down end', { cls: 'fg-tag', anchor: 'start' });
     s += rule(20, 228, 320, 228);
-    s += tag(170, 252, 'BOAT — about 6.5 higher', { cls: 'fg-tag-warn' });
+    s += tag(170, 252, 'BOAT — about 6.5 kcal/mol higher', { cls: 'fg-tag-warn' });
     s += text(170, 484, 'the long side bonds are eclipsed', { cls: 'fg-tag' });
     return s;
   },
@@ -543,47 +543,53 @@ FIGURES.push({
 FIGURES.push({
   id: 'conformer-energies',
   section: 'cyclohexanes',
-  alt: 'An energy curve. It starts low at the chair (0), climbs to a peak at the half-chair (about 10.8 kcal/mol, four carbons in one plane), falls into a shallow dip at the twist-boat (about 5.5), rises over a small peak at the boat (about 6.5) and falls into a second twist-boat dip. A small drawing of each shape sits beside its point on the curve.',
-  viewBox: '0 0 760 400',
+  alt: 'An energy curve. It starts low at the chair (0), climbs to a peak at the half-chair (about 10.8 kcal/mol; four carbons in a row lie in one plane, with one of the other two carbons above that plane and one below), falls into a shallow dip at the twist-boat (about 5.5), rises over a small peak at the boat (about 6.5, both ends up) and falls into a second twist-boat dip. A drawing of each shape sits beside its point on the curve.',
+  viewBox: '0 0 760 440',
   build() {
     let s = '';
-    const base = 330, per = 18;
-    const X = { chair: 110, half: 250, tb1: 400, boat: 540, tb2: 680 };
+    const base = 380, per = 18;
+    const X = { chair: 120, half: 250, tb1: 400, boat: 540, tb2: 680 };
     const Y = (e) => base - e * per;
     s += frame(40, base, 60, 740);
-    s += text(48, 60, 'energy above the chair (kcal/mol)', { cls: 'fg-sm', anchor: 'start' });
+    s += text(48, 40, 'energy above the chair (kcal/mol)', { cls: 'fg-sm', anchor: 'start' });
     const nodes = [P(X.chair, Y(0)), P(X.half, Y(10.8)), P(X.tb1, Y(5.5)), P(X.boat, Y(6.5)), P(X.tb2, Y(5.5))];
     let d = `M${nodes[0].x} ${nodes[0].y}`;
     for (let i = 1; i < nodes.length; i++) {
       const a = nodes[i - 1], b = nodes[i], h = (b.x - a.x) * 0.5;
       d += ` C${a.x + h} ${a.y} ${b.x - h} ${b.y} ${b.x} ${b.y}`;
     }
-    s += `<path class="fg-bond-hi" d="${d}"></path>`;
-    for (const n of nodes) s += `<circle class="fg-fill-hi" cx="${n.x}" cy="${n.y}" r="4"></circle>`;
-    const k = 0.42;
+    s += `<path class="fg-bond-soft" d="${d}"></path>`;
+    for (const n of nodes) s += `<circle class="fg-fill-mut" cx="${n.x}" cy="${n.y}" r="4"></circle>`;
+    const k = 0.52;
     // chair, above its point
-    s += shapeWithH(CHAIR3(), X.chair, Y(0) - 58, k).s;
+    s += shapeWithH(CHAIR3(), 95, Y(0) - 72, 0.44).s;
     s += text(X.chair, base + 24, 'chair · 0', { cls: 'fg-tag-good' });
-    s += text(X.chair, base + 40, 'the resting shape', { cls: 'fg-sm' });
-    // half-chair, above the peak; its four coplanar carbons highlighted
-    const HC = HALF3();
-    s += shapeWithH(HC, X.half, Y(10.8) - 46, k, { hi: [[2, 3], [3, 4], [4, 5]] }).s;
-    s += text(X.half, Y(10.8) - 88, 'half-chair · 10.8', { cls: 'fg-tag-warn' });
-    s += text(X.half + 70, Y(10.8) + 20, 'peak', { cls: 'fg-sm', anchor: 'start' });
+    s += text(X.chair, base + 40, 'the deepest dip', { cls: 'fg-sm' });
+    // half-chair above the peak: the four coplanar carbons in bold accent,
+    // and ticks showing which way the other two leave that plane
+    const hc = shapeWithH(HALF3(), X.half, Y(10.8) - 64, k, { hi: [[2, 3], [3, 4], [4, 5]] });
+    s += hc.s;
+    const up = hc.pts[0], dn = hc.pts[1];
+    s += arrow(P(up.x, up.y - 3), P(up.x, up.y - 22), { size: 6 });
+    s += text(up.x + 5, up.y - 16, 'up', { cls: 'fg-sm', anchor: 'start' });
+    s += arrow(P(dn.x, dn.y + 3), P(dn.x, dn.y + 22), { size: 6 });
+    s += text(dn.x - 5, dn.y + 20, 'down', { cls: 'fg-sm', anchor: 'end' });
+    s += text(X.half, Y(10.8) - 120, 'half-chair · 10.8 (peak)', { cls: 'fg-tag-warn' });
+    s += text(X.half - 70, Y(10.8) - 64, '4 C in', { cls: 'fg-tag', anchor: 'end' });
+    s += text(X.half - 70, Y(10.8) - 48, 'one plane', { cls: 'fg-tag', anchor: 'end' });
     // twist-boats below their dips
-    s += shapeWithH(TWIST3(), X.tb1, Y(5.5) + 50, k).s;
-    s += text(X.tb1, Y(5.5) + 92, 'twist-boat · 5.5', { cls: 'fg-tag' });
-    s += text(X.tb1, Y(5.5) + 108, 'dip', { cls: 'fg-sm' });
-    s += shapeWithH(TWIST3(-30), X.tb2, Y(5.5) + 50, k).s;
-    s += text(X.tb2, Y(5.5) + 92, 'twist-boat · 5.5', { cls: 'fg-tag' });
-    s += text(X.tb2, Y(5.5) + 108, 'dip', { cls: 'fg-sm' });
+    for (const [x, phi] of [[X.tb1, 30], [X.tb2, -30]]) {
+      s += shapeWithH(TWIST3(phi), x, Y(5.5) + 60, k).s;
+      s += text(x, Y(5.5) + 104, 'twist-boat · 5.5 (dip)', { cls: 'fg-tag' });
+      s += text(x, Y(5.5) + 120, 'a boat twisted a little', { cls: 'fg-sm' });
+    }
     // boat above its small peak
-    s += shapeWithH(BOAT3(), X.boat, Y(6.5) - 44, k, { hi: [[1, 2], [4, 5]] }).s;
-    s += text(X.boat, Y(6.5) - 82, 'boat · 6.5', { cls: 'fg-tag-warn' });
-    s += text(X.boat, Y(6.5) + 20, 'peak', { cls: 'fg-sm' });
+    s += shapeWithH(BOAT3(), X.boat, Y(6.5) - 56, k, { hi: [[1, 2], [4, 5]] }).s;
+    s += text(X.boat, Y(6.5) - 104, 'boat · 6.5 (peak)', { cls: 'fg-tag-warn' });
+    s += text(X.boat, Y(6.5) - 88, 'both ends up', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Energies in kcal/mol above the chair. Follow the curve from the left: up over the half-chair, down into a twist-boat, then over the boat into a second twist-boat. In the half-chair, the highlighted bonds join the four carbons that lie in one plane.',
+  caption: 'Energies in kcal/mol above the chair. Follow the curve from the left: up over the half-chair, down into a twist-boat, then over the boat into a second twist-boat. In the half-chair, the four carbons joined by bold teal bonds lie in one plane; the arrows show which way the other two carbons leave it.',
 });
 
 export default FIGURES;
