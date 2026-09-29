@@ -173,7 +173,7 @@ FIGURES.push({
   section: 'diazonium-chemistry',
   anchor: '<h3>Three steps to the salt</h3>',
   viewBox: '0 0 760 340',
-  alt: 'Top row: the lone pair on aniline nitrogen attacks the nitrogen of the nitrosonium ion while one pi bond of N triple-bond O moves onto oxygen; loss of a proton gives the N-nitrosoamine, Ar–NH–N=O; a hydrogen then moves from nitrogen to oxygen by two proton transfers, giving Ar–N=N–OH. Bottom row: the OH is protonated; the lone pair on the first nitrogen forms a third bond to the second nitrogen as the N–O bond breaks and water leaves, giving the linear diazonium ion Ar–N⁺≡N.',
+  alt: 'Top row: the lone pair on aniline nitrogen attacks the nitrogen of the nitrosonium ion while one pi bond of N triple-bond O moves onto oxygen; loss of a proton gives the N-nitrosamine, Ar–NH–N=O; a hydrogen then moves from nitrogen to oxygen by two proton transfers, giving Ar–N=N–OH. Bottom row: the OH is protonated; the lone pair on the first nitrogen forms a third bond to the second nitrogen as the N–O bond breaks and water leaves, giving the linear diazonium ion Ar–N⁺≡N.',
   build() {
     let s = '';
     s += tag(380, 22, 'DIAZOTIZATION: THE AMINE NITROGEN BECOMES N₂⁺');
@@ -213,7 +213,7 @@ FIGURES.push({
     const drawAtoms = (pts, labels, kinds = []) => labels.map((l, i) =>
       atom(pts[i].x, pts[i].y, l, { kind: kinds[i] || 'plain', r: l === 'Ar' ? 14 : r, size: 11 })).join('');
 
-    /* N-nitrosoamine. */
+    /* N-nitrosamine. */
     {
       const L = ['Ar', 'N', 'N', 'O'];
       const p = chain(372, Y + 8, L);
@@ -224,7 +224,7 @@ FIGURES.push({
       s += bond(p[1], H, { rFrom: r, rTo: 9 });
       s += text(H.x, H.y + 4, 'H', { cls: 'fg-lbl', size: 13 });
       s += drawAtoms(p, L);
-      s += text(p[1].x + 17, 158, 'N-nitrosoamine', { cls: 'fg-tag', size: 11 });
+      s += text(p[1].x + 17, 158, 'N-nitrosamine', { cls: 'fg-tag', size: 11 });
     }
 
     s += arrow(P(510, Y), P(600, Y));

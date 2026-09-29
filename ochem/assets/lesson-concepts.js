@@ -510,12 +510,12 @@
       12:['keto-enol-tautomerism'],
       13:['alpha-acidity','resonance-delocalization'] } },
 
-    'amine-reactions': { n:8, steps:{
-      1:['nucleophile-recognition'],
-      2:['amine-basicity','acylation-self-termination'],
-      4:['acylation-self-termination','nucleophile-recognition'],
-      6:['nucleophile-recognition'],
-      7:['acylation-self-termination','nucleophile-recognition'] } },
+    'amine-reactions': { n:9, steps:{
+      1:['nucleophile-recognition','amine-synthesis-routes'],
+      3:['acylation-self-termination','amine-basicity'],
+      5:['amine-synthesis-routes','reductant-scope'],
+      7:['diazonium-hub'],
+      8:['amine-synthesis-routes','acylation-self-termination'] } },
 
     'amine-structure': { n:11, steps:{
       3:['amine-basicity'],
