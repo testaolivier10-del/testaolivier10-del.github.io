@@ -111,9 +111,13 @@
       7:['disconnection'],
       10:['disconnection'] } },
 
-    'carbon-carbon-bonds': { n:8, steps:{
-      2:['cc-bond-toolkit'], 3:['cc-bond-toolkit'], 4:['cc-bond-toolkit','disconnection'],
-      6:['cc-bond-toolkit'], 7:['cc-bond-toolkit'] } },
+    'carbon-carbon-bonds': { n:13, steps:{
+      2:['cc-bond-toolkit'],
+      4:['cc-bond-toolkit'],
+      5:['cc-bond-toolkit','disconnection'],
+      7:['cc-bond-toolkit'],
+      11:['cc-bond-toolkit'],
+      12:['cc-bond-toolkit'] } },
 
     'functional-group-interconversion': { n:11, steps:{
       1:['fgi-map'],
