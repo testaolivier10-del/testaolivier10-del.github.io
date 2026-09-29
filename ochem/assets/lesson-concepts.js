@@ -442,13 +442,14 @@
       10:['alkene-stability-ranking'],
       12:['alkene-stability-ranking'] } },
 
-    'alkynes': { n:9, steps:{
-      1:['alkyne-acidity'],
-      2:['alkyne-acidity','hybridization-assignment'],
+    'alkynes': { n:12, steps:{
+      1:['hybridization-assignment','molecular-geometry-vsepr'],
       3:['alkyne-acidity','acidity-factors'],
-      6:['addition-stereochem'],
-      7:['alkyne-acidity','curved-arrow-direction','acetylide-alkylation'],
-      8:['markovnikov-regiochem','keto-enol-tautomerism'] } },
+      4:['alkyne-acidity','pka-scale'],
+      5:['alkyne-acidity','curved-arrow-direction'],
+      7:['acetylide-alkylation','substrate-class'],
+      9:['partial-reduction','addition-stereochem'],
+      11:['markovnikov-regiochem','keto-enol-tautomerism'] } },
 
     'alpha-hydrogens': { n:14, steps:{
       2:['resonance-delocalization','alpha-acidity'],

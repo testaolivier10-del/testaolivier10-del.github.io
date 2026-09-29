@@ -189,9 +189,10 @@ FIGURES.push({
    2. Resonance beats alkyl groups: styrene, and 1-phenylpropene, where
       "more hydrogens" has nothing to say.
    ====================================================================== */
-/* The benzylic cation as a hybrid: dashed ring circle, a dashed partial
-   bond to the outside carbon, and a δ+ on each carbon that shares the
-   charge. `exoArm` places whatever hangs off the outside carbon. */
+/* The benzylic cation as one Kekulé structure with a δ+ on each carbon
+   that shares the charge (the outside carbon, both ortho carbons and the
+   para carbon). The ring-circle notation is taught later, in Aromatic
+   Chemistry, so it is not used here. */
 const par = (a, b, off) => {
   const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy) || 1;
   const px = (-dy / L) * off, py = (dx / L) * off;
@@ -199,11 +200,11 @@ const par = (a, b, off) => {
 };
 function benzylCation(ctr, r = 32) {
   let s = '';
-  const R = polyPts(ctr.x, ctr.y, 6, r, 90);   // 0 top, 1 upper-left, 2 lower-left, 3 bottom, 4 lower-right, 5 upper-right
-  s += polyRing(R, 'fg-bond');
-  s += `<circle class="fg-dash-hi" cx="${r2(ctr.x)}" cy="${r2(ctr.y)}" r="${r2(r * 0.57)}"></circle>`;
+  const bz = benzene(ctr.x, ctr.y, r);          // pts: 0 top, 1 upper-left, 2 lower-left, 3 bottom, 4 lower-right, 5 upper-right
+  const R = bz.pts;
+  s += bz.svg;
   const exo = at(R[5], 30, 36);
-  s += skb(R[5], exo) + par(R[5], exo, -7);
+  s += skb(R[5], exo);
   const d = (p, dx, dy, anchor = 'middle') => text(p.x + dx, p.y + dy, 'δ+', { cls: 'fg-warn', size: 13, anchor });
   s += d(exo, 10, 16, 'start');
   s += d(R[0], 0, -9);
@@ -247,11 +248,14 @@ FIGURES.push({
     s += bond(pa, ha, { rFrom: 0, rTo: 12 }) + atom(ha.x, ha.y, 'H', { r: 12 });
     s += bond(pb, hb, { rFrom: 0, rTo: 12 }) + atom(hb.x, hb.y, 'H', { r: 12 });
     s += sm(pc.x + 8, pc.y - 4, 'CH₃', 'start');
+    s += tg(pa.x - 12, pa.y - 6, 'C1', 'end') + tg(pb.x + 14, pb.y + 22, 'C2', 'start');
     s += sm(700, 104, 'one H on each', 'middle');
     s += sm(700, 120, 'alkene carbon', 'middle');
 
     s += arrow(P(520, 158), P(484, 184));
+    s += tg(494, 160, 'H⁺ to C2', 'end');
     s += arrow(P(604, 158), P(640, 184), { muted: true });
+    s += tg(632, 160, 'H⁺ to C1', 'start', 'fg-tag-mut');
 
     // benzylic cation (wins): ring, C+, then CH2–CH3
     const bz3 = benzene(430, 236, 22);
@@ -270,7 +274,7 @@ FIGURES.push({
     s += tg(650, 290, '2° cation, no ring beside it', 'middle', 'fg-tag-mut');
     return s;
   },
-  caption: 'The dashed lines and &delta;+ signs mark the carbons that share the charge of a benzylic cation.',
+  caption: 'The highlighted CH₃ is the carbon that took the proton, and &delta;+ marks the carbons that share the charge. Right: each alkene carbon has one H, but only one choice gives a benzylic cation.',
 });
 
 /* ======================================================================
@@ -384,7 +388,7 @@ FIGURES.push({
     s += lbl(380, 284, 'B and H arrive together, from the same side of the alkene: syn addition.');
     return s;
   },
-  caption: 'Dashed lines are bonds partly made or partly broken. The highlighted H and BH₂ stay on the same side throughout.',
+  caption: 'Dashed lines are bonds partly made or partly broken.',
 });
 
 FIGURES.push({
@@ -454,6 +458,7 @@ FIGURES.push({
     s += wedge(r.R[0], nh, { rFrom: 0, rTo: 12, width: 9 }) + atom(nh.x, nh.y, 'H', { r: 12, kind: 'hi' });
     s += hash(r.R[0], rme, { rFrom: 0, rTo: 18, width: 11, rungs: 5 }) + A(rme, 'CH₃');
     s += wedge(r.R[5], noh, { rFrom: 0, rTo: 16, width: 9 }) + A(noh, 'OH', 'hi');
+    s += tg(r.R[5].x - 12, r.R[5].y + 14, '1', 'end') + tg(r.R[0].x, r.R[0].y + 22, '2');
     s += ital(610, 232, 'trans', '-2-methylcyclohexan-1-ol');
     s += sm(610, 252, 'new H and new OH both on wedges');
     return s;
@@ -574,7 +579,7 @@ FIGURES.push({
     s += rule(24, 196, 736, 196);
 
     s += tg(24, 226, 'PROPAGATION 2 · THE RADICAL TAKES H FROM H–Br', 'start');
-    s += prop2Reactants(46, 280);
+    s += prop2Reactants(46, 280, -30);
     s += arrow(P(372, 280), P(420, 280), { muted: true });
     s += bromopropane(452, 280);
     s += text(620, 285, '+', { cls: 'fg-lbl', size: 14 });
@@ -591,22 +596,22 @@ FIGURES.push({
   lessons: ['markovnikov'],
   anchor: '',
   alt: 'Radical HBr addition to propene in two stacked panels drawn with fishhook arrows. Step 1: a bromine radical adds to the CH2 end of propene, leaving the unpaired electron on the CH carbon, a secondary radical. Step 2: that radical takes a hydrogen from H–Br, giving 1-bromopropane and a new bromine radical.',
-  viewBox: '0 0 340 576',
+  viewBox: '0 0 340 556',
   build() {
     let s = '';
-    s += tg(170, 20, 'STEP 1 · Br• ADDS TO THE CH₂ END');
+    s += tg(170, 20, 'PROPAGATION 1 · Br• ADDS TO THE CH₂ END');
     s += prop1Reactants(46, 84);
     s += arrow(P(170, 136), P(170, 164), { muted: true });
     s += bromoRadical(70, 204, -90).s;
     s += tg(202, 262, 'A 2° RADICAL', 'middle', 'fg-tag-good');
     s += rule(20, 282, 320, 282);
-    s += tg(170, 302, 'STEP 2 · THE RADICAL TAKES H FROM H–Br');
+    s += tg(170, 302, 'PROPAGATION 2 · IT TAKES H FROM H–Br');
     // stacked: the radical on the left, H–Br to its right, drawn tighter
-    s += prop2Reactants(30, 386, 90);
-    s += arrow(P(170, 424), P(170, 456), { muted: true });
-    s += bromopropane(40, 496);
-    s += text(222, 501, '+', { cls: 'fg-lbl', size: 14 });
-    s += brRad(P(270, 496), 180, [-90, 0, 90]);
+    s += prop2Reactants(30, 356, -30);
+    s += arrow(P(120, 402), P(120, 436), { muted: true });
+    s += bromopropane(40, 476);
+    s += text(222, 481, '+', { cls: 'fg-lbl', size: 14 });
+    s += brRad(P(270, 476), 180, [-90, 0, 90]);
     return s;
   },
   caption: 'Every arrow has one barb: each moves a single electron.',
