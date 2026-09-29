@@ -101,7 +101,7 @@
   <div class="hero">
     <div class="eyebrow" data-chapter="aromatic-breadth">Aromatic Follow-Through</div>
     <h1 style="margin-bottom:4px;">Phenols.</h1>
-    <p class="lede" style="margin-top:0;">One structural change — OH on a ring rather than a chain — and the pKa moves by six orders of magnitude.</p>
+    <p class="lede" style="margin-top:0;">One structural change — OH on a ring rather than a chain — and the acidity changes by six orders of magnitude.</p>
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function(){
         options: [
           'Its anion spreads the negative charge into the ring',
           'Its O–H bond is weaker, so the proton leaves more easily',
-          'Its ring pulls electron density away from the oxygen by induction',
+          'Its ring pushes electron density toward the oxygen by induction',
           'It donates hydrogen bonds to water more strongly'
         ],
         correctIndex: 0,
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'Shake with aqueous NaHCO₃',
           'Shake with aqueous NaOH',
           'Shake with dilute aqueous HCl',
-          'Distill them apart'
+          'Shake with water alone'
         ],
         correctIndex: 0,
         correctFeedback: 'Correct. Bicarbonate sits between them: carbonic acid, at pKa 6.4, is weak enough that HCO₃⁻ deprotonates a pKa 4.8 carboxylic acid almost completely and barely touches a pKa 10 phenol. So the acid leaves as its water-soluble salt and the phenol stays in the organic layer. NaOH would deprotonate both and separate neither, and HCl would deprotonate nothing.',
@@ -271,9 +271,9 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'The oxygen reacts; the carbon it sits on does not.',
-        bodyHtml: '<p class="step-body">A phenoxide is a good nucleophile, and it reacts at oxygen in two familiar ways. With a primary alkyl halide it gives an aryl alkyl ether by S<sub>N</sub>2, the Williamson ether synthesis. A phenol also reacts with an acyl chloride or an acid anhydride to give an aryl ester; aspirin is made this way.</p>' +
-          '<p class="step-body">The C&ndash;O bond, on the other hand, will not undergo substitution. Its carbon is sp&sup2; and part of the ring. S<sub>N</sub>2 would need a nucleophile to approach that carbon from the side opposite the oxygen, and that side is inside the ring. S<sub>N</sub>1 would need an aryl cation, which is far too unstable to form.</p>' +
-          '<div class="explain-box">So in a Williamson synthesis the phenoxide has to be the nucleophile; an alkoxide with an aryl halide fails. For the same reason, a phenol cannot be made from a plain aryl halide by substitution.</div>'
+        bodyHtml: '<p class="step-body">A phenol reacts at its oxygen in two familiar ways. As the phenoxide, it is a good nucleophile: with a primary alkyl halide it gives an aryl alkyl ether by S<sub>N</sub>2, the Williamson ether synthesis. A phenol also reacts with an acyl chloride or an acid anhydride, usually with a base such as pyridine, to give an aryl ester; aspirin is made this way.</p>' +
+          '<p class="step-body">The C&ndash;O bond, on the other hand, will not undergo substitution. Its carbon is sp&sup2; and part of the ring. S<sub>N</sub>2 would need a nucleophile to approach that carbon from the side opposite the oxygen, and that side is inside the ring. S<sub>N</sub>1 would need an aryl cation, and water or a halide is not a good enough leaving group to produce one.</p>' +
+          '<div class="explain-box">So in a Williamson synthesis the phenoxide has to be the nucleophile; an alkoxide with an aryl halide fails. For the same reason, a phenol cannot be made from a plain aryl halide by S<sub>N</sub>1 or S<sub>N</sub>2.</div>'
       },
       {
         type: 'mcq',
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Challenge',
         title: 'Picric acid, 2,4,6-trinitrophenol, has a pKa of 0.4, stronger than most carboxylic acids. How does an OH on a ring get there?',
         options: [
-          'Three nitro groups withdraw by induction from close range',
+          'Three nitro groups withdraw by induction from close range, and three of them add up',
           'All three are ortho or para, so each can take the charge by resonance',
           'Crowding by the two ortho nitro groups twists the OH and weakens its bond',
           'The ring loses its aromaticity, which weakens the O–H bond'

@@ -230,9 +230,12 @@
       10:['migratory-aptitude','stereochemical-outcome'],
       12:['migratory-aptitude','stereochemical-outcome'] } },
 
-    'nucleophilic-aromatic': { n:8, steps:{
-      2:['aromatic-nucleophilic'], 3:['aromatic-nucleophilic'], 4:['aromatic-nucleophilic'],
-      6:['aromatic-nucleophilic'], 7:['aromatic-nucleophilic'] } },
+    'nucleophilic-aromatic': { n:14, steps:{
+      3:['aromatic-nucleophilic'],
+      5:['aromatic-nucleophilic'],
+      10:['aromatic-nucleophilic'],
+      11:['aromatic-nucleophilic'],
+      13:['aromatic-nucleophilic'] } },
 
     'benzylic-reactivity': { n:14, steps:{
       2:['benzylic-stabilization'],
