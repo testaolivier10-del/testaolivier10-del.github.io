@@ -153,8 +153,9 @@ function cpPanel(ox, oy) {
   s += tag(ox + 90, oy + 160, 'locked s-cis: fast', { cls: 'fg-tag-good' });
   return s;
 }
-/* 2,3,4,4a,5,6-hexahydronaphthalene: C1=C8a-C8=C7, held s-trans by the
-   two rings. Shared edge C8a (top) to C4a (bottom). */
+/* The locked s-trans diene taught in Conjugated systems: C1=C8a-C4a=C5,
+   whose central single bond C8a-C4a is the bond the two rings share.
+   Shared edge C8a (top) to C4a (bottom). */
 function transPanel(ox, oy, bare) {
   let s = '';
   const r = 30, cy = oy + 80, sx = ox + 90;
@@ -169,10 +170,10 @@ function transPanel(ox, oy, bare) {
   const c8 = near(B, P(sx + r * 0.866, cy - r)), c7 = near(B, P(sx + 2 * r * 0.866, cy - r / 2));
   const c6 = near(B, P(sx + 2 * r * 0.866, cy + r / 2)), c5 = near(B, P(sx + r * 0.866, cy + r));
   const cA = P(sx - r * 0.866, cy);
-  s += ringDouble(c1, c8a, cA) + sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + sk(c4, c4a) + sk(c4a, c8a);
-  s += sk(c8a, c8) + ringDouble(c8, c7, Bc) + sk(c7, c6) + sk(c6, c5) + sk(c5, c4a);
+  s += ringDouble(c1, c8a, cA) + sk(c1, c2) + sk(c2, c3) + sk(c3, c4) + sk(c4, c4a) + sk(c4a, c8a, bare ? '' : 'fg-bond-hi');
+  s += sk(c8a, c8) + sk(c8, c7) + sk(c7, c6) + sk(c6, c5) + ringDouble(c4a, c5, Bc);
   if (bare) return s;
-  s += `<circle class="fg-fill-warn" cx="${c1.x}" cy="${c1.y}" r="5"></circle><circle class="fg-fill-warn" cx="${c7.x}" cy="${c7.y}" r="5"></circle>`;
+  s += `<circle class="fg-fill-warn" cx="${c1.x}" cy="${c1.y}" r="5"></circle><circle class="fg-fill-warn" cx="${c5.x}" cy="${c5.y}" r="5"></circle>`;
   s += tag(ox + 90, oy + 28, 'the two ends point apart', { cls: 'fg-tag-mut' });
   s += tag(ox + 90, oy + 142, 'a fused-ring diene');
   s += tag(ox + 90, oy + 160, 'locked s-trans: no reaction', { cls: 'fg-tag-warn' });
@@ -208,7 +209,7 @@ FIGURES.push({
   id: 'da-scis',
   section: 'diels-alder',
   anchor: 'Any bulky group in an inward position has the same effect.</p>',
-  alt: 'Four dienes. First, cyclopentadiene, a five-membered ring with a CH2 at the top and two double bonds; the two ends of its diene are marked and sit close together, locked s-cis, labeled fast. Second, a diene built into two fused six-membered rings, one double bond in each ring; its two ends are marked and point away from each other, locked s-trans, labeled no reaction. Third, penta-1,3-diene drawn s-cis as the E isomer, with its methyl pointing outward, labeled no clash. Fourth, the Z isomer drawn s-cis, with its methyl pointing inward into the mouth of the diene, where a dashed line marks its clash with the inward hydrogen on the other end, labeled slow.',
+  alt: 'Four dienes. First, cyclopentadiene, a five-membered ring with a CH2 at the top and two double bonds; the two ends of its diene are marked and sit close together, locked s-cis, labeled fast. Second, a diene built into two fused six-membered rings, one double bond in each ring, whose central single bond is the highlighted bond the two rings share; its two ends are marked and point away from each other, locked s-trans, labeled no reaction. Third, penta-1,3-diene drawn s-cis as the E isomer, with its methyl pointing outward, labeled no clash. Fourth, the Z isomer drawn s-cis, with its methyl pointing inward into the mouth of the diene, where a dashed line marks its clash with the inward hydrogen on the other end, labeled slow.',
   viewBox: '0 0 760 180',
   build() {
     let s = '';
@@ -237,7 +238,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-diene-sort',
   lessons: ['diels-alder'],
-  alt: 'Four molecules labeled A to D. A: cyclopentadiene, a five-membered ring with two double bonds. B: buta-1,3-diene drawn as an open zigzag chain. C: a diene built into two fused six-membered rings, one double bond in each ring, with its two ends pointing away from each other. D: penta-1,4-diene, two double bonds separated by a CH2.',
+  alt: 'Four molecules labeled A to D. A: cyclopentadiene, a five-membered ring with two double bonds. B: buta-1,3-diene drawn as an open zigzag chain. C: a diene built into two fused six-membered rings, one double bond in each ring, with the central single bond of the diene shared by both rings and its two ends pointing away from each other. D: penta-1,4-diene, two double bonds separated by a CH2.',
   viewBox: '0 0 340 290',
   build() {
     let s = '';
@@ -387,7 +388,7 @@ FIGURES.push({
   section: 'diels-alder',
   lessons: ['diels-alder'],
   anchor: 'attached directly to it.</p>',
-  alt: 'Three dienophiles in order of speed with buta-1,3-diene. Ethene, a bare C=C, is slow. Propenal, a C=C with a CHO group on one end, is faster; its C=O is highlighted. Maleic anhydride, a five-membered ring whose C=C carries a C=O group on each end, is fastest; both C=O groups are highlighted.',
+  alt: 'Three dienophiles in order of speed with buta-1,3-diene. Ethene, a bare C=C, is slow. Propenal, a C=C with a CHO group on one end, is faster; its C=O is highlighted. Maleic anhydride, a five-membered ring whose C=C has a C=O group attached to each carbon, is fastest; both C=O groups are highlighted.',
   viewBox: '0 0 340 160',
   build() {
     let s = '';
@@ -442,13 +443,13 @@ FIGURES.push({
     const A = P(150, 270), B = P(250, 270), D = P(150, 346);
     s += bond(A, B, { order: 2, rFrom: 0, rTo: 0 });
     s += tag(B.x - 4, B.y - 12, 'C2 (C3 behind)', { cls: 'fg-tag-mut' });
-    s += tag(A.x + 10, A.y + 22, 'C1 (C4 behind)', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += tag(A.x - 8, A.y + 22, 'C1 (C4 behind)', { cls: 'fg-tag-mut', anchor: 'end' });
     s += sk(A, D, 'fg-dash-hi');
-    s += tag(D.x - 12, D.y + 18, 'D1 (D2 behind)', { cls: 'fg-tag-mut', anchor: 'end' });
+    s += tag(D.x - 8, D.y + 22, 'CHO carbon (CH₂ carbon behind)', { cls: 'fg-tag-mut', anchor: 'middle' });
     s += sub(D, 0, 'CHO', { len: 46, r: 15 });
     s += tag(D.x + 66, D.y + 4, 'endo: under the diene', { cls: 'fg-tag', anchor: 'start' });
     s += sub(A, 180, 'H', { len: 40, r: 9 });
-    s += tag(A.x - 48, A.y + 24, 'inward H', { cls: 'fg-tag' });
+    s += tag(A.x - 62, A.y - 16, 'inward H', { cls: 'fg-tag' });
     s += sub(A, -100, 'CH₃', { len: 34, r: 14, kind: 'wedge' });
     s += tag(A.x + 22, A.y - 40, 'outward CH₃ (toward you)', { cls: 'fg-tag', anchor: 'start' });
     s += tag(190, 392, 'CHO and inward H point opposite ways:', { cls: 'fg-tag-good' });
