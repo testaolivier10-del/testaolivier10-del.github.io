@@ -213,3 +213,60 @@ confirm it.
   - Lithium enolate + Br₂ can still give some dibromination.
   - The asymmetric proline (Hajos–Parrish) version of the Wieland–Miescher synthesis.
   - A pyrrolidine enamine with CH₃I gives significant N-methylation; no example uses it.
+
+## Reactivity (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### reactivity-conventions: rules and conventions the pages grade by
+- **Status:** pending review.
+- **Where:** `energy-diagrams`, `carbocations`, `nucleophiles`, `electrophiles`, `leaving-groups`.
+- **Positions taken:**
+  - Rate-determining step: the pages teach the largest climb from the reactants, or from any
+    valley, up to a later peak (the energetic span), and give "the step with the highest
+    transition state" as the usual course shortcut, with when it holds. Is the deep-well case
+    (TS1 15, intermediate −10, TS2 8) right for this level? In that case step 2 sets how fast
+    product forms, while how fast the reactant is used up is set by TS1; the page says so.
+  - CH₃O–CH₂⁺ is taught as more stable than a tertiary alkyl cation (the graded convention;
+    solution data support it, gas-phase values are close). If a course calls such a cation
+    primary, the page's definition of degree needs a heteroatom clause.
+  - "1° benzylic ≈ 3°" and "1° allylic ≈ 2°" are teaching approximations.
+  - Shifts between equally stable cations do happen; the page teaches the graded rule and states
+    the exception. The ring expansion is drawn in two steps, with a note that the shift happens
+    as the leaving group departs.
+  - SN1 racemization is described as equal amounts of each enantiomer; ion pairing can give some
+    excess inversion.
+  - Aprotic halide order F⁻ > Cl⁻ > Br⁻ > I⁻ is the graded order; measured orders in some aprotic
+    solvents are closer or mixed. The protic order is credited to polarizability plus solvation.
+  - tert-Butoxide as a stronger base than hydroxide is the solution-phase convention (it reverses
+    in the gas phase).
+  - Tosylate and iodide are taught as one top tier of leaving groups, with the order depending on
+    the reaction.
+  - Sulfonyl groups are drawn with two S=O bonds; the charge-separated S⁺–O⁻ form is not shown.
+  - PBr₃ is drawn through R–O⁺(H)–PBr₂ with neutral HO–PBr₂ leaving; SOCl₂ step 1 as a direct
+    displacement at sulfur, with retention (SNi) left to the Alcohols chapter. Make the Alcohols
+    page's drawings match when that chapter is rewritten.
+  - Hyperconjugation is given as a cause of the staggered preference; this is contested.
+  - "Resonance usually wins over induction" is a rule of thumb; the halogen-on-a-ring exception is
+    named and left to Aromatic Chemistry.
+
+### reactivity-numbers: values that vary by source or were removed
+- **Status:** pending review.
+- **Where:** `radical-halogenation`, `energy-diagrams`, `carbocations`, `nucleophiles`, `leaving-groups`.
+- **Notes:**
+  - Bromination 1600 : 80 : 1 is measured near 125 °C and chlorination 5 : 1 at 25 °C. At 125 °C,
+    1600 : 1 implies a gap of about 5.8 kcal/mol, a little more than the 5 the page says the
+    barrier nearly inherits. The page says bromination is run hot and gives the ratio as "in the
+    hundreds to thousands" where it estimates it.
+  - The per-hydrogen radical rates are approximate and depend on temperature.
+  - The second bromine landing next to the first is explained by the first bromine stabilizing
+    the neighbouring radical (a bridged radical). The result is established; the explanation is
+    debated.
+  - The solvolysis ratio methyl → 3° is "a million or more, depending on the solvent".
+  - TsOH pKa is kept at −2.8; sources run from about −2.8 to −6.5.
+  - CH₃Br (about 70) and CH₃Cl (about 84 kcal/mol) bond energies should be checked by a person.
+  - A "three orders of magnitude" acetone-versus-methanol rate gain could not be verified and was
+    removed; an author may add a sourced number.
+  - The bromine-versus-chlorine worked example appears on both radical-halogenation and
+    energy-diagrams. Decide which page keeps the full version.
