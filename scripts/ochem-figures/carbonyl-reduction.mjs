@@ -15,7 +15,7 @@ const FIGURES = [];
 /* ---- small local helpers ------------------------------------------------ */
 
 const rad = (l) => (l === '' ? 0 : l.length > 2 ? 18 : l.length > 1 ? 16 : 14);
-/* An atom whose label is drawn at the CSS size, centred in its disc. An empty
+/* An atom whose label is drawn at the CSS size, centered in its disc. An empty
    label is a skeletal vertex and draws nothing. */
 const A = (p, l, kind = 'plain', r) => (l === '' ? '' : atom(p.x, p.y, l, { kind, size: 13, r: r ?? rad(l) }));
 /* A bond between two labeled atoms (or vertices), trimmed to both discs. */
@@ -155,13 +155,13 @@ FIGURES.push({
 /* ------------------------------------------------------------------ 2 ---
    Audit [H]: the racemic argument had no figure of its own. Butan-2-one is
    drawn in the plane of the page, so its two faces are front and back; each
-   product is drawn with the new H on a wedge or a hash, and labelled. */
+   product is drawn with the new H on a wedge or a hash, and labeled. */
 FIGURES.push({
   id: 'two-faces',
   section: 'carbonyl-reduction',
   lessons: ['carbonyl-reduction'],
   anchor: '<h3>Reducing a ketone usually makes a racemic mixture</h3>',
-  alt: 'Butan-2-one drawn flat in the plane of the page. An arrow on the left leads to the product formed when hydride arrives from the front face: butan-2-ol with its new H on a solid wedge, labelled S. An arrow on the right leads to the product from the back face: the same alcohol with the H on a hashed bond, labelled R. The two form 50 to 50, a racemic mixture.',
+  alt: 'Butan-2-one drawn flat in the plane of the page. An arrow on the left leads to the product formed when hydride arrives from the front face: butan-2-ol with its new H on a solid wedge, labeled S. An arrow on the right leads to the product from the back face: the same alcohol with the H on a hashed bond, labeled R. The two form 50 to 50, a racemic mixture.',
   viewBox: '0 0 340 512',
   build() {
     let s = '';
@@ -487,7 +487,7 @@ FIGURES.push({
   id: 'three-reagents',
   section: 'carbonyl-reduction',
   anchor: '<span class="k">Worked example — one molecule, three reagents</span>',
-  alt: 'Ethyl 4-oxopentanoate drawn as a skeletal structure, with the ketone and the ester labelled. NaBH4 gives ethyl 4-hydroxypentanoate, with the ketone reduced to an OH and the ester unchanged. LiAlH4 gives pentane-1,4-diol plus ethanol. H2 over Pd/C at one atmosphere leaves both carbonyls unchanged.',
+  alt: 'Ethyl 4-oxopentanoate drawn as a skeletal structure, with the ketone and the ester labeled. NaBH4 gives ethyl 4-hydroxypentanoate, with the ketone reduced to an OH and the ester unchanged. LiAlH4 gives pentane-1,4-diol plus ethanol. H2 over Pd/C at one atmosphere leaves both carbonyls unchanged.',
   viewBox: '0 0 340 664',
   build() {
     let s = '';
@@ -543,7 +543,7 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   lessons: ['carbonyl-reduction'],
   anchor: '<h3>All the way to CH₂: Clemmensen and Wolff–Kishner</h3>',
-  alt: '1-Phenylpropan-1-one at the top and propylbenzene at the bottom, joined by one arrow. On the left of the arrow, the Clemmensen conditions, zinc amalgam and HCl with heat, labelled strong acid. On the right, the Wolff–Kishner conditions, hydrazine then KOH with heat, labelled strong base. In the product the former carbonyl carbon is a highlighted CH2.',
+  alt: '1-Phenylpropan-1-one at the top and propylbenzene at the bottom, joined by one arrow. On the left of the arrow, the Clemmensen conditions, zinc amalgam and HCl with heat, labeled strong acid. On the right, the Wolff–Kishner conditions, hydrazine then KOH with heat, labeled strong base. In the product the former carbonyl carbon is a highlighted CH2.',
   viewBox: '0 0 340 440',
   build() {
     let s = '';

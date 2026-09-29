@@ -71,62 +71,6 @@ function chromicAcid(cr) {
 }
 
 /* ======================================================================
-   1. The three classes: how many H the carbinol carbon holds.
-   ====================================================================== */
-const classCells = [
-  ['BUTAN-1-OL: PRIMARY', 'two H: aldehyde, then acid', (Q) => {
-    const c = Q(150, 106);
-    const m = centre(c, [
-      { deg: 0, len: 50, l: 'OH' },
-      { deg: 90, len: 44, l: 'H', kind: 'hi', key: 'H1' },
-      { deg: 270, len: 44, l: 'H', kind: 'hi', key: 'H2' },
-      { deg: 180, len: 46 },
-    ]);
-    const v1 = m.ends.v180, v2 = armEnd(v1, 150, 38), v3 = armEnd(v2, 210, 38);
-    return sk(v1, v2) + sk(v2, v3) + m.s;
-  }],
-  ['BUTAN-2-OL: SECONDARY', 'one H: ketone, and it stops', (Q) => {
-    const c = Q(136, 110);
-    const m = centre(c, [
-      { deg: 90, len: 46, l: 'OH' },
-      { deg: 270, len: 44, l: 'H', kind: 'hi' },
-      { deg: 330, len: 44 },
-      { deg: 210, len: 44 },
-    ]);
-    const v1 = m.ends.v210, v2 = armEnd(v1, 150, 38);
-    return sk(v1, v2) + m.s;
-  }],
-  ['2-METHYLPROPAN-2-OL: TERTIARY', 'no H: no reaction', (Q) => {
-    const c = Q(122, 110);
-    const m = centre(c, [
-      { deg: 90, len: 46, l: 'OH' },
-      { deg: 210, len: 44 },
-      { deg: 330, len: 44 },
-      { deg: 270, len: 42 },
-    ]);
-    return m.s;
-  }, 'fg-tag-warn'],
-];
-
-FIGURES.push({
-  id: 'alcohol-classes',
-  section: 'alcohol-oxidation',
-  anchor: '<h3>What each class of alcohol can become</h3>',
-  alt: 'Three alcohols with the carbinol carbon drawn as a labeled C. Butan-1-ol, a primary alcohol: the carbinol carbon holds an OH, two highlighted hydrogens and a propyl chain. Butan-2-ol, a secondary alcohol: the carbinol carbon holds an OH, one highlighted hydrogen, a methyl and an ethyl. 2-Methylpropan-2-ol, a tertiary alcohol: the carbinol carbon holds an OH and three methyl groups, and no hydrogen.',
-  viewBox: '0 0 760 220',
-  build() { return gridFigure(classCells, 3, 240, 204, 12, 16, 8, 8, [0, 0, 'warn']); },
-  caption: 'Count the highlighted hydrogens on each carbinol carbon.',
-});
-FIGURES.push({
-  id: 'l-alcohol-classes',
-  lessons: ['alcohol-oxidation'],
-  alt: 'Three stacked panels: butan-1-ol, whose carbinol carbon holds two hydrogens; butan-2-ol, whose carbinol carbon holds one; and 2-methylpropan-2-ol, whose carbinol carbon holds none.',
-  viewBox: `0 0 340 ${stackH(3, 204)}`,
-  build() { return gridFigure(classCells, 1, 324, 204, 0, 14, 8, 8, [0, 0, 'warn']); },
-  caption: 'Count the highlighted hydrogens on each carbinol carbon.',
-});
-
-/* ======================================================================
    2. The chromate ester mechanism, on a primary alcohol, and where a
       tertiary alcohol gets stuck.
    ====================================================================== */
@@ -194,7 +138,6 @@ const esterCells = [
     const o = Q(130, 110), cr = Q(194, 110);
     s += bond(c, o, { rFrom: 16, rTo: 14 }) + bond(o, cr, { rFrom: 14, rTo: 28 });
     s += A(o, 'O', { r: 14 }) + A(cr, 'CrO₂OH', { r: 28, kind: 'warn' });
-    s += Tg(Q, 190, 64, 'no C–H to break', { cls: 'fg-tag-warn' });
     return s;
   }, 'fg-tag-warn'],
 ];
@@ -233,12 +176,12 @@ const waterCells = [
     return s + m.s;
   }],
   ['IN WATER: THE HYDRATE', 'an H and an OH on one carbon', (Q) => {
-    let s = Tg(Q, 120, 52, 'R–CHO + H₂O ⇌');
-    const c = Q(114, 122);
+    let s = Tg(Q, 120, 48, 'R–CHO + H₂O ⇌');
+    const c = Q(114, 114);
     const m = centre(c, [
       { deg: 180, len: 46, l: 'R' },
-      { deg: 90, len: 42, l: 'OH' },
-      { deg: 270, len: 42, l: 'H', kind: 'hi' },
+      { deg: 90, len: 40, l: 'OH' },
+      { deg: 270, len: 38, l: 'H', kind: 'hi' },
       { deg: 0, len: 50, l: 'OH', kind: 'hi' },
     ]);
     return s + m.s;
@@ -348,16 +291,17 @@ function diol(Q, oxidized) {
   if (!oxidized) {
     // secondary carbinol carbon on the ring, drawn with its H
     const oh = armEnd(right, 30, 42), h = armEnd(right, 330, 36);
-    s += bond(right, oh, { rFrom: 0, rTo: 16 }) + bond(right, h, { rFrom: 0, rTo: 14 });
+    s += bond(right, oh, { rFrom: 16, rTo: 16 }) + bond(right, h, { rFrom: 16, rTo: 14 });
     s += A(oh, 'OH', { r: 16 }) + A(h, 'H', { r: 14, kind: 'hi' });
+    s += A(right, 'C', { kind: 'warn' });
     const m = centre(cL, [
       { deg: 180, len: 44, l: 'OH' },
       { deg: 90, len: 36, l: 'H', kind: 'hi' },
       { deg: 270, len: 36, l: 'H', kind: 'hi' },
     ]);
     s += m.s;
-    s += Tg(Q, 60, 184, '1°: two H', { cls: 'fg-tag-warn' });
-    s += Tg(Q, 230, 172, '2°: one H', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 60, 184, '1°: two H');
+    s += Tg(Q, 236, 176, '2°: one H');
   } else {
     const o = armEnd(right, 0, 40);
     s += bond(right, o, { rFrom: 0, rTo: 14, order: 2 }) + A(o, 'O', { r: 14, kind: 'hi' });
