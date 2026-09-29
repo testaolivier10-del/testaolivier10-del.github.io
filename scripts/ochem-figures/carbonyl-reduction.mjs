@@ -70,7 +70,7 @@ function hydroxide(o) {
   const h = P(o.x + 38, o.y);
   let s = B(o, 'O', h, 'H') + A(o, 'O') + A(h, 'H');
   s += lonePair(o.x, o.y, 180, { dist: 21 }) + lonePair(o.x, o.y, 270, { dist: 21 }) + lonePair(o.x, o.y, 90, { dist: 21 });
-  s += chg(o.x - 16, o.y - 22, '−');
+  s += chg(o.x - 20, o.y + 20, '−');
   return s;
 }
 /* The propanoyl skeleton around a labeled carbonyl carbon: an ethyl on the
@@ -88,7 +88,7 @@ function ethoxy(c) {
   const m = armEnd(v, 330, 46);
   let s = B(c, 'C', o, 'O') + bond(o, v, { rFrom: 14, rTo: 0 }) + bond(v, m, { rFrom: 0, rTo: 18 });
   s += A(o, 'O') + A(m, 'CH₃');
-  s += lonePair(o.x, o.y, 90, { dist: 21 }) + lonePair(o.x, o.y, 270, { dist: 20 });
+  s += lonePair(o.x, o.y, 100, { dist: 21 }) + lonePair(o.x, o.y, 30, { dist: 21 });
   return { s, o };
 }
 
@@ -311,33 +311,33 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   anchor: 'and hydrogen gas bubbles off.</p>',
   alt: 'Two stacked panels. Propanoic acid: an arrow runs from the Al–H bond of aluminohydride to the acidic O–H hydrogen, and a second arrow moves the O–H bond electrons onto oxygen. Below, the propanoate ion and a molecule of hydrogen gas.',
-  viewBox: '0 0 340 380',
+  viewBox: '0 0 340 424',
   build() {
     let s = '';
-    s += box(8, 180, 'STEP 1 · THE O–H PROTON GOES FIRST');
-    const c1 = P(100, 118), p1 = propanoyl(c1, 'O', false);
+    s += box(8, 200, 'STEP 1 · THE O–H PROTON GOES FIRST');
+    const c1 = P(100, 116), p1 = propanoyl(c1, 'O', false);
     s += p1.s;
     const oh = armEnd(c1, 330, 50), h = armEnd(oh, 30, 46);
     s += B(c1, 'C', oh, 'O') + B(oh, 'O', h, 'H') + A(oh, 'O') + A(h, 'H', 'warn') + A(c1, 'C');
     s += lonePair(p1.o.x, p1.o.y, 315, { dist: 21 }) + lonePair(p1.o.x, p1.o.y, 225, { dist: 21 });
-    s += lonePair(oh.x, oh.y, 90, { dist: 21 }) + lonePair(oh.x, oh.y, 0, { dist: 21 });
-    const hh = P(244, 164);
-    s += hydride(hh, 'AlH₃', 1).s;
-    s += curve(P(270, 158), P(190, 108), { bow: 24 });
-    s += curve(P(168, 118), P(150, 156), { bow: -10 });
+    s += lonePair(oh.x, oh.y, 90, { dist: 21 }) + lonePair(oh.x, oh.y, 270, { dist: 20 });
+    s += hydride(P(222, 176), 'AlH₃', 1).s;
+    s += curve(P(252, 170), P(196, 124), { bow: 16 });
+    s += curve(P(166, 132), P(158, 152), { bow: -8 });
+    s += tg(270, 70, 'LiAlH₄', 'mut');
 
-    s += box(196, 174, 'PROPANOATE ION  +  HYDROGEN GAS');
-    const c2 = P(100, 306), p2 = propanoyl(c2, 'O', false);
+    s += box(216, 196, 'PROPANOATE ION  +  HYDROGEN GAS');
+    const c2 = P(100, 334), p2 = propanoyl(c2, 'O', false);
     s += p2.s;
     const om = armEnd(c2, 330, 50);
     s += B(c2, 'C', om, 'O') + A(om, 'O') + A(c2, 'C');
     s += lonePair(p2.o.x, p2.o.y, 315, { dist: 21 }) + lonePair(p2.o.x, p2.o.y, 225, { dist: 21 });
-    s += lonePair(om.x, om.y, 90, { dist: 21 }) + lonePair(om.x, om.y, 0, { dist: 21 }) + lonePair(om.x, om.y, 300, { dist: 21 });
-    s += chg(166, 318, '−');
-    const h1 = P(236, 290), h2 = P(276, 290);
+    s += lonePair(om.x, om.y, 270, { dist: 20 }) + lonePair(om.x, om.y, 20, { dist: 21 }) + lonePair(om.x, om.y, 130, { dist: 21 });
+    s += chg(om.x + 24, om.y - 22, '−');
+    const h1 = P(236, 322), h2 = P(276, 322);
     s += B(h1, 'H', h2, 'H') + A(h1, 'H', 'warn') + A(h2, 'H', 'hi');
-    s += tg(256, 324, 'H₂ bubbles off', 'good');
-    s += tg(170, 356, 'then, more slowly: reduced to propan-1-ol', 'mut');
+    s += tg(256, 356, 'H₂ bubbles off', 'good');
+    s += tg(170, 402, 'then, more slowly: reduced to propan-1-ol', 'mut');
     return s;
   },
   caption: 'Propanoic acid and LiAlH₄. The acid is a proton donor before it is an electrophile, so the first hydride is spent making H₂.',
@@ -353,7 +353,7 @@ FIGURES.push({
   lessons: ['carbonyl-reduction'],
   anchor: '<h3>Amides give amines</h3>',
   alt: 'Four stacked panels. First, N,N-dimethylacetamide: an arrow runs from an Al–H bond to the carbonyl carbon and the pi bond moves onto oxygen. Second, the tetrahedral intermediate with its oxygen bonded to aluminum: the nitrogen lone pair moves in to form C=N while the C–O bond breaks toward oxygen. Third, the iminium ion takes a second hydride at carbon while the C=N pi bond moves onto nitrogen. Fourth, the amine N,N-dimethylethanamine, with two highlighted hydrogens on the carbon that was the carbonyl carbon.',
-  viewBox: '0 0 340 890',
+  viewBox: '0 0 340 930',
   build() {
     let s = '';
     const nMe2 = (c, len = 54) => {
@@ -371,18 +371,18 @@ FIGURES.push({
     s += curve(P(126, 96), P(134, 64), { bow: 12 });
     s += hydride(P(106, 196), 'AlH₃', -1).s;
     s += curve(P(84, 190), P(114, 138), { bow: 12 });
-    s += tg(280, 58, 'LiAlH₄, dry ether', 'mut');
+    s += tg(262, 58, 'LiAlH₄, dry ether', 'mut');
 
     // ---- 2. the oxygen leaves ----
     s += box(238, 244, 'STEP 2 · THE N LONE PAIR PUSHES O OUT');
-    const c2 = P(120, 364), o2 = armEnd(c2, 90, 58), n2 = nMe2(c2), al = P(188, o2.y);
+    const c2 = P(120, 364), o2 = armEnd(c2, 90, 58), n2 = nMe2(c2, 66), al = P(188, o2.y);
     s += B(c2, 'C', o2, 'O') + arm(c2, 'C', 210, 46, 'CH₃').s + B(c2, 'C', n2.n, 'N');
     s += arm(c2, 'C', 270, 46, 'H', 'plain', 'hi').s;
     s += B(o2, 'O', al, 'AlH₃') + A(al, 'AlH₃') + chg(212, o2.y - 18, '−');
     s += n2.g + A(o2, 'O') + A(n2.n, 'N') + A(c2, 'C', 'warn');
     s += lonePair(o2.x, o2.y, 180, { dist: 21 }) + lonePair(o2.x, o2.y, 270, { dist: 21 });
-    s += lonePair(n2.n.x, n2.n.y, 30, { dist: 21 });
-    s += curve(P(186, 404), P(150, 378), { bow: -14 });
+    s += lonePair(n2.n.x, n2.n.y, 150, { dist: 21 });
+    s += curve(P(n2.n.x - 22, n2.n.y + 14), P(146, 384), { bow: 10 });
     s += curve(P(114, 344), P(104, 318), { bow: 10 });
     s += tg(170, 470, 'O bonded to aluminum can leave', 'mut');
 
@@ -393,22 +393,22 @@ FIGURES.push({
     s += B(c3, 'C', n3.n, 'N', { order: 2 });
     s += n3.g + A(n3.n, 'N') + A(c3, 'C', 'warn');
     s += chg(n3.n.x + 4, n3.n.y - 26, '+');
-    s += curve(P(146, 592), P(160, 626), { bow: -12 });
+    s += curve(P(140, 612), P(160, 631), { bow: 10 });
     s += hydride(P(106, 670), 'AlH₃', -1).s;
     s += curve(P(84, 664), P(114, 610), { bow: 12 });
     s += tg(262, 548, 'iminium ion', 'warn');
 
     // ---- 4. product ----
-    s += box(720, 162, 'AFTER WORKUP · THE AMINE');
-    const c4 = P(120, 804), n4 = nMe2(c4);
+    s += box(720, 200, 'AFTER WORKUP · THE AMINE');
+    const c4 = P(120, 820), n4 = nMe2(c4);
     s += arm(c4, 'C', 90, 44, 'H', 'plain', 'hi').s + arm(c4, 'C', 270, 42, 'H', 'plain', 'hi').s;
     s += arm(c4, 'C', 210, 46, 'CH₃').s + B(c4, 'C', n4.n, 'N');
     s += n4.g + A(n4.n, 'N') + A(c4, 'C', 'warn');
     s += lonePair(n4.n.x, n4.n.y, 30, { dist: 21 });
-    s += tg(270, 760, 'C=O became CH₂', 'good');
+    s += tg(262, 776, 'C=O became CH₂', 'good');
     return s;
   },
-  caption: 'N,N-Dimethylacetamide and LiAlH₄. In step 2 the nitrogen stays and the oxygen goes. Both highlighted H atoms in the product came from hydride.',
+  caption: '<i>N</i>,<i>N</i>-Dimethylacetamide and LiAlH₄. In step 2 the nitrogen stays and the oxygen goes. Both highlighted H atoms in the product came from hydride.',
 });
 
 /* ------------------------------------------------------------------ 7 ---
@@ -418,27 +418,25 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   anchor: 'and workup puts two H on the nitrogen.</p>',
   alt: 'Propanenitrile, with its C≡N drawn as a straight triple bond, is reduced by LiAlH4 and then water to propan-1-amine. The carbon that carried the triple bond now carries two highlighted hydrogens, and the nitrogen is an NH2 group.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 390',
   build() {
     let s = '';
-    s += box(8, 118, 'PROPANENITRILE');
-    const m = P(60, 92), v = P(100, 69), c = P(140, 92);
-    const u = { x: (c.x - v.x), y: (c.y - v.y) }, L = Math.hypot(u.x, u.y);
-    const n = P(c.x + (u.x / L) * 50, c.y + (u.y / L) * 50);
-    s += bond(m, v, { rFrom: 18, rTo: 0 }) + bond(v, c, { rFrom: 0, rTo: 0 }) + bond(c, n, { order: 3, rFrom: 0, rTo: 14, gap: 3.2 });
-    s += A(m, 'CH₃') + A(n, 'N');
-    s += lonePair(n.x, n.y, 30, { dist: 20 });
-    s += tg(264, 84, 'sp carbon: C–C≡N', 'mut');
-    s += tg(264, 102, 'in a straight line', 'mut');
-    s += arrow(P(170, 136), P(170, 176));
-    s += tg(250, 162, '1. LiAlH₄  2. H₂O');
+    s += box(8, 170, 'PROPANENITRILE');
+    const m = P(54, 80), v = P(94, 103), c = P(140, 103), n = P(192, 103);
+    s += bond(m, v, { rFrom: 18, rTo: 0 }) + bond(v, c, { rFrom: 0, rTo: 14 }) + B(c, 'C', n, 'N', { order: 3, gap: 3.2 });
+    s += A(m, 'CH₃') + A(n, 'N') + A(c, 'C', 'warn');
+    s += lonePair(n.x, n.y, 0, { dist: 21 });
+    s += tg(170, 156, 'C–C≡N is a straight line: an sp carbon', 'mut');
+    s += arrow(P(170, 186), P(170, 224));
+    s += tg(250, 210, '1. LiAlH₄  2. H₂O');
 
-    s += box(186, 136, 'PROPAN-1-AMINE');
-    const m2 = P(60, 268), v2 = P(100, 245), c2 = P(140, 268), n2 = armEnd(c2, 30, 48);
+    s += box(234, 146, 'PROPAN-1-AMINE');
+    const m2 = P(54, 314), v2 = P(94, 291), c2 = P(134, 314), n2 = armEnd(c2, 30, 48);
     s += bond(m2, v2, { rFrom: 18, rTo: 0 }) + bond(v2, c2, { rFrom: 0, rTo: 14 }) + B(c2, 'C', n2, 'NH₂');
     s += arm(c2, 'C', 300, 40, 'H', 'plain', 'hi').s + arm(c2, 'C', 240, 40, 'H', 'plain', 'hi').s;
     s += A(m2, 'CH₃') + A(n2, 'NH₂') + A(c2, 'C', 'warn');
-    s += tg(262, 290, 'two H from hydride', 'good');
+    s += lonePair(n2.x, n2.y, 0, { dist: 22 });
+    s += tg(262, 344, 'two H from hydride', 'good');
     return s;
   },
   caption: 'Propanenitrile and LiAlH₄. The coral carbon is the nitrile carbon; its two new H atoms are the two hydrides.',
@@ -451,32 +449,32 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   anchor: 'one H lands on the carbon and one on the oxygen.</p>',
   alt: 'Cyclohexanone reacts with hydrogen gas over platinum oxide at high pressure to give cyclohexanol. In the product one highlighted H sits on the former carbonyl carbon and the other on the oxygen.',
-  viewBox: '0 0 340 380',
+  viewBox: '0 0 340 450',
   build() {
     let s = '';
-    s += box(8, 150, 'CYCLOHEXANONE');
+    s += box(8, 196, 'CYCLOHEXANONE');
     const ring = (cx, cy) => {
       const pts = polyPts(cx, cy, 6, 30, 90);
       let g = '';
       for (let i = 0; i < 6; i++) g += bond(pts[i], pts[(i + 1) % 6], { rFrom: i === 0 ? 14 : 0, rTo: (i + 1) % 6 === 0 ? 14 : 0 });
       return { g, top: pts[0] };
     };
-    const r1 = ring(170, 110);
+    const r1 = ring(170, 144);
     const o1 = armEnd(r1.top, 90, 46);
     s += r1.g + B(r1.top, 'C', o1, 'O', { order: 2 }) + A(o1, 'O') + A(r1.top, 'C', 'warn');
     s += lonePair(o1.x, o1.y, 315, { dist: 21 }) + lonePair(o1.x, o1.y, 225, { dist: 21 });
-    s += arrow(P(170, 166), P(170, 206));
-    s += tg(254, 184, 'H₂, PtO₂');
-    s += tg(254, 202, 'high pressure', 'mut');
+    s += arrow(P(170, 210), P(170, 246));
+    s += tg(254, 224, 'H₂, PtO₂');
+    s += tg(254, 242, 'high pressure', 'mut');
 
-    s += box(216, 160, 'CYCLOHEXANOL');
-    const r2 = ring(170, 330);
-    const o2 = armEnd(r2.top, 120, 46), hC = armEnd(r2.top, 60, 42), hO = armEnd(o2, 60, 38);
+    s += box(254, 188, 'CYCLOHEXANOL');
+    const r2 = ring(170, 392);
+    const o2 = armEnd(r2.top, 120, 46), hC = armEnd(r2.top, 60, 42), hO = armEnd(o2, 150, 38);
     s += r2.g + B(r2.top, 'C', o2, 'O') + B(o2, 'O', hO, 'H') + B(r2.top, 'C', hC, 'H');
     s += A(o2, 'O') + A(hO, 'H', 'hi') + A(hC, 'H', 'hi') + A(r2.top, 'C', 'warn');
-    s += lonePair(o2.x, o2.y, 180, { dist: 21 }) + lonePair(o2.x, o2.y, 225, { dist: 21 });
-    s += tg(270, 330, 'one H on C,', 'good');
-    s += tg(270, 348, 'one H on O', 'good');
+    s += lonePair(o2.x, o2.y, 300, { dist: 21 }) + lonePair(o2.x, o2.y, 130, { dist: 21 });
+    s += tg(270, 392, 'one H on C,', 'good');
+    s += tg(270, 410, 'one H on O', 'good');
     return s;
   },
   caption: 'The two highlighted H atoms are the two atoms of one H₂ molecule.',
@@ -490,7 +488,7 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   anchor: '<span class="k">Worked example — one molecule, three reagents</span>',
   alt: 'Ethyl 4-oxopentanoate drawn as a skeletal structure, with the ketone and the ester labelled. NaBH4 gives ethyl 4-hydroxypentanoate, with the ketone reduced to an OH and the ester unchanged. LiAlH4 gives pentane-1,4-diol plus ethanol. H2 over Pd/C at one atmosphere leaves both carbonyls unchanged.',
-  viewBox: '0 0 340 610',
+  viewBox: '0 0 340 664',
   build() {
     let s = '';
     const X = (i) => 40 + 36 * i;
@@ -516,24 +514,23 @@ FIGURES.push({
     s += tg(k.ko.x + 46, k.ko.y + 4, 'ketone', 'warn');
     s += tg(k.eo.x + 52, k.eo.y + 4, 'ester', 'warn');
 
-    s += box(212, 160, 'NaBH₄, CH₃OH, then workup');
-    const k2 = ketoester(290, true);
+    s += box(212, 190, 'NaBH₄, CH₃OH, then workup');
+    const k2 = ketoester(310, true);
     s += k2.g;
-    s += tg(250, 262, 'ketone reduced,', 'good');
-    s += tg(250, 280, 'ester kept', 'good');
+    s += tg(270, 372, 'ketone reduced,', 'good');
+    s += tg(270, 390, 'ester kept', 'good');
 
-    s += box(380, 150, 'LiAlH₄, dry ether, then workup');
-    const p = chain(460, 6);
+    s += box(410, 170, 'LiAlH₄, dry ether, then workup');
+    const p = chain(506, 6);
     for (let i = 0; i < 4; i++) s += bond(p[i], p[i + 1], { rFrom: 0, rTo: 0 });
     s += bond(p[4], p[5], { rFrom: 0, rTo: 16, cls: 'fg-bond-hi' }) + A(p[5], 'OH', 'hi');
     const d1 = P(p[1].x, p[1].y - 44);
     s += bond(p[1], d1, { rFrom: 0, rTo: 16, cls: 'fg-bond-hi' }) + A(d1, 'OH', 'hi');
-    s += lbl(290, 488, '+ EtOH');
-    s += tg(250, 432, 'both reduced', 'good');
-    s += tg(170, 518, 'pentane-1,4-diol', 'mut');
+    s += lbl(290, 532, '+  EtOH');
+    s += tg(170, 566, 'pentane-1,4-diol: both reduced', 'good');
 
-    s += box(538, 64, 'H₂, Pd/C, 1 atm');
-    s += tg(170, 588, 'no change: both C=O groups survive', 'warn');
+    s += box(588, 64, 'H₂, Pd/C, 1 atm');
+    s += tg(170, 638, 'no change: both C=O groups survive', 'warn');
     return s;
   },
   caption: 'The coral OH groups mark each carbonyl that was reduced. Compare the NaBH₄ and LiAlH₄ products at the right-hand end.',
@@ -589,7 +586,7 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   anchor: 'is the step that makes the whole sequence go.</p>',
   alt: 'Five stacked panels of the Wolff–Kishner mechanism on a hydrazone R2C=N–NH2. One: hydroxide takes an N–H proton from the NH2. Two: the nitrogen lone pair forms an N=N bond while the C=N pi electrons take a proton from water onto carbon. Three: hydroxide takes the last N–H proton. Four: the C–N bond breaks, leaving a carbanion, and nitrogen gas, N≡N, departs. Five: the carbanion takes a proton from water, giving R2CH2.',
-  viewBox: '0 0 340 1000',
+  viewBox: '0 0 340 1026',
   build() {
     let s = '';
     const Rs = (c) => arm(c, 'C', 150, 42, 'R').s + arm(c, 'C', 210, 42, 'R').s;
@@ -616,7 +613,7 @@ FIGURES.push({
       s += A(c, 'C', 'warn') + A(n1, 'N') + A(n2, 'N') + A(hb, 'H');
       s += lonePair(n1.x, n1.y, 270, { dist: 21 });
       s += lonePair(n2.x, n2.y, 270, { dist: 21 }) + lonePair(n2.x, n2.y, 330, { dist: 21 });
-      s += chg(n2.x + 26, n2.y - 30, '−');
+      s += chg(n2.x + 24, n2.y + 16, '−');
       const hw = armEnd(c, 300, 64), ow = armEnd(hw, 300, 44), hw2 = P(ow.x + 40, ow.y);
       s += B(hw, 'H', ow, 'O') + B(ow, 'O', hw2, 'H') + A(hw, 'H', 'hi') + A(ow, 'O') + A(hw2, 'H');
       s += lonePair(ow.x, ow.y, 90, { dist: 21 }) + lonePair(ow.x, ow.y, 180, { dist: 21 });
@@ -645,7 +642,7 @@ FIGURES.push({
       s += A(c, 'C', 'warn') + A(n1, 'N') + A(n2, 'N') + A(hc, 'H', 'hi');
       s += lonePair(n1.x, n1.y, 270, { dist: 21 });
       s += lonePair(n2.x, n2.y, 90, { dist: 21 }) + lonePair(n2.x, n2.y, 330, { dist: 21 });
-      s += chg(n2.x + 28, n2.y - 28, '−');
+      s += chg(n2.x + 26, n2.y + 18, '−');
       s += curve(P(n2.x - 4, n2.y + 24), P(n1.x + 14, n1.y + 18), { bow: -12 });
       s += curve(P(n1.x - 22, n1.y + 2), P(c.x + 6, c.y - 18), { bow: 10 });
       const a = P(232, 772), b = P(282, 772);
@@ -654,17 +651,17 @@ FIGURES.push({
       s += tg(257, 740, 'N₂ gas escapes', 'good');
     }
     // ---- 5 ----
-    s += box(812, 180, 'STEP 5 · WATER PROTONATES THE CARBANION');
+    s += box(812, 204, 'STEP 5 · WATER PROTONATES THE CARBANION');
     {
       const c = P(80, 910), hc = armEnd(c, 270, 40);
       s += Rs(c) + B(c, 'C', hc, 'H', { cls: 'fg-bond-hi' }) + A(c, 'C', 'warn') + A(hc, 'H', 'hi');
-      s += lonePair(c.x, c.y, 330, { dist: 21 }) + chg(c.x + 8, c.y - 30, '−');
+      s += lonePair(c.x, c.y, 330, { dist: 21 }) + chg(c.x + 32, c.y - 24, '−');
       const hw = P(160, 888), ow = P(206, 888), hw2 = P(246, 888);
       s += B(hw, 'H', ow, 'O') + B(ow, 'O', hw2, 'H') + A(hw, 'H', 'hi') + A(ow, 'O') + A(hw2, 'H');
       s += lonePair(ow.x, ow.y, 90, { dist: 21 }) + lonePair(ow.x, ow.y, 270, { dist: 21 });
       s += curve(P(104, 896), P(145, 892), { bow: 10 });
       s += curve(P(180, 882), P(196, 872), { bow: -10 });
-      s += tg(196, 970, 'R₂CH₂ + HO⁻: two H where the O was', 'good');
+      s += tg(170, 998, 'R₂CH₂ + HO⁻: two H where the O was', 'good');
     }
     return s;
   },
