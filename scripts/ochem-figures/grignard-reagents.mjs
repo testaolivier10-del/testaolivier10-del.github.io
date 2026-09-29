@@ -55,7 +55,7 @@ function reagent(c, dir = 180, o = {}) {
 FIGURES.push({
   id: 'grignard-formation',
   section: 'grignard-reagents',
-  anchor: '<p class="step-body" style="text-align:center;"><b>R&ndash;Br + Mg &rarr; R&ndash;MgBr</b></p>',
+  anchor: '<p class="step-body" style="text-align:center;"><b>R&ndash;X + Mg &rarr; R&ndash;MgX</b></p>',
   alt: 'Top: bromoethane, H3C–CH2–Br, with the carbon–bromine bond highlighted, the carbon marked delta plus and the bromine delta minus, plus a magnesium atom. An arrow labeled dry ether points down. Bottom: ethylmagnesium bromide, H3C–CH2–Mg–Br, with magnesium now between carbon and bromine, the carbon marked delta minus and the magnesium delta plus.',
   viewBox: '0 0 340 250',
   build() {
