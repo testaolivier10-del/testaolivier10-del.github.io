@@ -222,9 +222,13 @@
       9:['activating-group'],
       10:['activating-group'] } },
 
-    'baeyer-villiger': { n:8, steps:{
-      2:['migratory-aptitude'], 3:['migratory-aptitude'], 4:['migratory-aptitude'],
-      6:['migratory-aptitude'], 7:['migratory-aptitude'] } },
+    'baeyer-villiger': { n:13, steps:{
+      3:['migratory-aptitude','curved-arrow-direction'],
+      5:['migratory-aptitude','carbocation-stability'],
+      6:['migratory-aptitude','carbocation-stability'],
+      8:['migratory-aptitude'],
+      10:['migratory-aptitude','stereochemical-outcome'],
+      12:['migratory-aptitude','stereochemical-outcome'] } },
 
     'nucleophilic-aromatic': { n:8, steps:{
       2:['aromatic-nucleophilic'], 3:['aromatic-nucleophilic'], 4:['aromatic-nucleophilic'],
