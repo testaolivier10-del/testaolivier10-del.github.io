@@ -9,8 +9,10 @@ import { atom, bond, arrow, text, tag, rule, P } from '../lib/ochem-figure.mjs';
    degrees above the ring's mean plane:
      screen x =  89.8 * X,   screen y = -30.71 * Y - 84.47 * Z
    with the ring atoms at radius 1.26 in X/Y and Z the height above the mean
-   plane. Index 2 is the raised end and index 5 the lowered end. Axial is
-   vertical: up on the even carbons, down on the odd ones. */
+   plane. Index 0, the far-right carbon, is the headrest (the up end) and
+   index 3, the far-left carbon, is the footrest (the down end), as on the
+   cyclohexanes page. Axial is vertical: up on the even carbons, down on the
+   odd ones. C1 is index 0 in every chair on this page. */
 const CHAIR_V = [
   P(113.15, -18.21), P(56.57, -15.31), P(-56.57, -51.72),
   P(-113.15, 18.21), P(-56.58, 15.31), P(56.57, 51.72),
@@ -21,14 +23,15 @@ const CHAIR_EQ = [
 ];
 
 /* The flipped chair. Every height reverses, so the outline is the first
-   chair reflected top to bottom, and the raised end (C1 on index 2) becomes
-   the lowered end. A plain reflection would also reverse the direction the
-   carbons run round the ring, which for a chiral compound draws the other
-   enantiomer. So the two ends keep their places and the four middle carbons
-   trade places in pairs (index j sits where index 4 - j sat). That drawing
-   is the true flipped chair turned 120 degrees about the ring's axis: the
-   same molecule, numbered the same way round. */
-const SIG = (j) => (4 - j + 6) % 6;
+   chair reflected top to bottom: the headrest (C1) goes down and the
+   footrest (C4) comes up. A plain reflection would also reverse the
+   direction the carbons run round the ring, which for a chiral compound
+   draws the mirror-image molecule. So the two ends keep their places and
+   the four middle carbons trade places in pairs (index j sits where index
+   6 - j sat). The result is exactly the true flipped chair, seen from the
+   same viewpoint as the first: the same molecule, numbered the same way
+   round. */
+const SIG = (j) => (6 - j) % 6;
 
 /* One chair. Returns its six points and the bond ends for every carbon. */
 function ring(cx, cy, k = 1, flipped = false) {
@@ -132,10 +135,10 @@ FIGURES.push({
 function methylPanel(cx, cy, k, flipped) {
   const r = ring(cx, cy, k, flipped);
   let s = outline(r.pts) + dots(r.pts);
-  const g = group(r, 2, 'up', 'CH₃', { L: 36 });
+  const g = group(r, 0, 'up', 'CH₃', { L: 36 });
   s += g.s;
   if (flipped) {
-    s += bond(r.pts[2], r.ax(2, 26), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+    s += bond(r.pts[0], r.ax(0, 26), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
   }
   return { s, r };
 }
@@ -143,24 +146,24 @@ FIGURES.push({
   id: 'ring-flip-invariant',
   section: 'ring-flips',
   anchor: 'That is the test for a correct flip.</p>',
-  alt: 'Methylcyclohexane in two chairs side by side, with ring-flip arrows between. In the left chair the methyl-bearing carbon, C1, is the raised end of the ring, and its methyl sits on a vertical bond pointing up: axial. In the right chair C1 is the lowered end; its axial bond, drawn in gray, now points down, and the methyl sits on the outward bond that angles up: equatorial, and still on the upper face.',
+  alt: 'Methylcyclohexane in two chairs side by side, with ring-flip arrows between. In the left chair the methyl-bearing carbon, C1, is the headrest, the far-right carbon that tips up, and its methyl sits on a vertical bond pointing up: axial. In the right chair C1 is the footrest, tipped down; its axial bond, drawn in gray, now points down, and the methyl sits on the outward bond that angles up: equatorial, and still on the upper face.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
     const A = methylPanel(200, 140, 0.9, false);
     s += A.s;
-    s += text(A.r.pts[2].x - 26, A.r.pts[2].y + 4, 'C1', { cls: 'fg-tag-warn', size: 10 });
+    s += text(A.r.pts[0].x + 12, A.r.pts[0].y + 16, 'C1', { cls: 'fg-tag-warn', anchor: 'start' });
     s += tag(200, 26, 'one chair');
-    s += text(200, 252, 'C1 is the raised end of this ring', { cls: 'fg-sm' });
+    s += text(200, 252, 'C1 is the headrest, the up end', { cls: 'fg-sm' });
     s += text(200, 274, 'methyl AXIAL, pointing up', { cls: 'fg-tag-warn' });
     s += text(200, 294, 'crowded by two 1,3-diaxial hydrogens', { cls: 'fg-sm' });
 
     const B = methylPanel(562, 140, 0.9, true);
     s += B.s;
-    s += text(B.r.pts[2].x + 26, B.r.pts[2].y + 11, 'C1', { cls: 'fg-tag', size: 10, anchor: 'start' });
-    s += text(B.r.pts[2].x + 18, B.r.pts[2].y + 30, 'axial now points down', { cls: 'fg-sm', anchor: 'start' });
+    s += text(B.r.pts[0].x - 10, B.r.pts[0].y + 18, 'C1', { cls: 'fg-tag', anchor: 'end' });
+    s += text(B.r.pts[0].x + 4, B.r.pts[0].y + 44, 'axial now points down', { cls: 'fg-sm', anchor: 'end' });
     s += tag(562, 26, 'the other chair');
-    s += text(562, 252, 'C1 is now the lowered end', { cls: 'fg-sm' });
+    s += text(562, 252, 'C1 is now the footrest, the down end', { cls: 'fg-sm' });
     s += text(562, 274, 'methyl EQUATORIAL, still pointing up', { cls: 'fg-tag-good' });
     s += text(562, 294, 'out in the open, crowded by nothing', { cls: 'fg-sm' });
 
@@ -174,16 +177,17 @@ FIGURES.push({
 function lessonMethyl(flipped) {
   const r = ring(170, 138, 0.95, flipped);
   let s = outline(r.pts) + dots(r.pts);
-  const g = group(r, 2, 'up', 'CH₃', { L: 38 });
+  const g = group(r, 0, 'up', 'CH₃', { L: 38 });
   s += g.s;
   if (!flipped) {
-    s += text(r.pts[2].x - 16, r.pts[2].y + 18, 'C1', { cls: 'fg-tag', anchor: 'end' });
-    s += text(170, 22, 'C1 is the raised end', { cls: 'fg-tag' });
+    s += text(r.pts[0].x + 10, r.pts[0].y + 18, 'C1', { cls: 'fg-tag', anchor: 'start' });
+    s += text(170, 22, 'C1 is the headrest (up end)', { cls: 'fg-tag' });
     s += text(170, 236, 'methyl: axial, pointing up', { cls: 'fg-tag-warn' });
   } else {
-    s += bond(r.pts[2], r.ax(2, 26), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
-    s += text(r.pts[2].x + 14, r.pts[2].y + 26, 'C1 (axial now down)', { cls: 'fg-tag', anchor: 'start' });
-    s += text(170, 22, 'C1 is now the lowered end', { cls: 'fg-tag' });
+    s += bond(r.pts[0], r.ax(0, 26), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
+    s += text(r.pts[0].x - 10, r.pts[0].y + 18, 'C1', { cls: 'fg-tag', anchor: 'end' });
+    s += text(r.pts[0].x + 4, r.pts[0].y + 44, 'axial now points down', { cls: 'fg-tag', anchor: 'end' });
+    s += text(170, 22, 'C1 is now the footrest (down end)', { cls: 'fg-tag' });
     s += text(170, 236, 'methyl: equatorial, still up', { cls: 'fg-tag-good' });
   }
   return s;
@@ -191,7 +195,7 @@ function lessonMethyl(flipped) {
 FIGURES.push({
   id: 'l-flip-before',
   lessons: ['ring-flips'],
-  alt: 'Methylcyclohexane in one chair. C1, the raised end of the ring, carries the methyl on a vertical bond pointing up, so the methyl is axial.',
+  alt: 'Methylcyclohexane in one chair. C1, the headrest at the far right, carries the methyl on a vertical bond pointing up, so the methyl is axial.',
   viewBox: '0 0 340 246',
   build() { return lessonMethyl(false); },
   caption: 'Before the flip.',
@@ -199,7 +203,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-flip-after',
   lessons: ['ring-flips'],
-  alt: 'The same methylcyclohexane after the ring flip. C1 is now the lowered end of the ring, and its axial bond, drawn in gray, points down. The methyl sits on the outward bond from C1 that angles up, so it is equatorial and still on the upper face.',
+  alt: 'The same methylcyclohexane after the ring flip. C1 is now the footrest, tipped down, and its axial bond, drawn in gray, points down. The methyl sits on the outward bond from C1 that angles up, so it is equatorial and still on the upper face.',
   viewBox: '0 0 340 246',
   build() { return lessonMethyl(true); },
   caption: 'After the flip: the same methyl on the same carbon.',
@@ -226,25 +230,25 @@ FIGURES.push({
 });
 
 /* ---------------------------------------------------------- flip-worked ---
-   The worked example: cis-1-bromo-2-methylcyclohexane. C1 is index 2 (the
-   raised end), C2 index 1, C3 index 0, and so on round the ring. Every carbon is
+   The worked example: cis-1-bromo-2-methylcyclohexane. C1 is index 0 (the
+   headrest), C2 index 1, and so on round the ring. Every carbon is
    numbered in both chairs so the reader can see the numbering run the same
    way round. */
-const NAMES = ['C3', 'C2', 'C1', 'C6', 'C5', 'C4'];
+const NAMES = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6'];
 function workedChair(cx, cy, k, flipped, num = true) {
   const r = ring(cx, cy, k, flipped);
   let s = outline(r.pts) + dots(r.pts);
-  const br = group(r, 2, 'up', 'Br', { L: 36, r: 15, kind: 'warn' });
+  const br = group(r, 0, 'up', 'Br', { L: 44, r: 15, kind: 'warn' });
   const me = group(r, 1, 'up', 'CH₃', { L: 36 });
   s += br.s + me.s;
-  if (num) s += numbers(r, NAMES, [1, 2], flipped ? { 1: [-10, 20, 'end'], 0: [4, -10], 2: [12, 16, 'start'] } : {});
+  if (num) s += numbers(r, NAMES, [], flipped ? { 0: [8, 20, 'start'], 1: [14, 4, 'start'], 5: [6, 20, 'start'] } : { 0: [10, 18, 'start'], 1: [-4, 20] });
   return { s, br, me };
 }
 FIGURES.push({
   id: 'flip-worked',
   section: 'ring-flips',
   anchor: 'Both labels flipped; neither face did.</p>',
-  alt: 'cis-1-Bromo-2-methylcyclohexane in two chairs, with every ring carbon numbered C1 to C6 in both. Left chair: C1 is the raised end; its bromine is axial and points up. C2, next along the top of the ring, carries the methyl on its equatorial bond, which angles up. Right chair, after the flip: C1 is the lowered end, with the bromine on its equatorial bond angling up; C2, now the left tip, carries the methyl on a vertical axial bond pointing up. The numbers run the same way round the ring in both chairs.',
+  alt: 'cis-1-Bromo-2-methylcyclohexane in two chairs, with every ring carbon numbered C1 to C6 in both. Left chair: C1 is the headrest at the far right; its bromine is axial and points up. C2, next along the top of the ring, carries the methyl on its equatorial bond, which angles up. Right chair, after the flip: C1 is the footrest, with the bromine on its equatorial bond angling up; C2, now the top corner, carries the methyl on a vertical axial bond pointing up. The numbers run the same way round the ring in both chairs.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
@@ -267,7 +271,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-worked',
   lessons: ['ring-flips'],
-  alt: 'cis-1-Bromo-2-methylcyclohexane in two chairs, one above the other, every ring carbon numbered. Upper chair: bromine axial and up on C1, the raised end; methyl equatorial and angling up on C2. Lower chair, after the flip: bromine equatorial and angling up on C1, now the lowered end; methyl axial and pointing up on C2.',
+  alt: 'cis-1-Bromo-2-methylcyclohexane in two chairs, one above the other, every ring carbon numbered. Upper chair: bromine axial and up on C1, the headrest; methyl equatorial and angling up on C2. Lower chair, after the flip: bromine equatorial and angling up on C1, now the footrest; methyl axial and pointing up on C2.',
   viewBox: '0 0 340 520',
   build() {
     let s = '';
@@ -295,7 +299,7 @@ FIGURES.push({
   section: 'ring-flips',
   lessons: ['ring-flips'],
   anchor: 'which is what makes this problem drawable in the first place.</p>',
-  alt: 'One cyclohexane chair with three neighboring carbons labeled C1, C2 and C3, running along the top of the ring from left to right. C1, the raised end, has a vertical axial bond pointing up and an equatorial bond angling slightly down. C2 has an axial bond pointing down and an equatorial bond angling up. C3, the right tip, has an axial bond pointing up and an equatorial bond angling down. Each bond end is tagged up or down.',
+  alt: 'One cyclohexane chair with three neighboring carbons labeled C1, C2 and C3, running along the top of the ring from right to left. C1, the headrest at the far right, has a vertical axial bond pointing up and an equatorial bond angling slightly down. C2 has an axial bond pointing down and an equatorial bond angling up. C3, the top-left corner, has an axial bond pointing up and an equatorial bond angling down. Each bond end is tagged up or down.',
   viewBox: '0 0 340 204',
   build() {
     let s = '';
@@ -308,15 +312,15 @@ FIGURES.push({
       s += text(end.x + lblOff[0], end.y + lblOff[1], `${kind === 'ax' ? 'axial' : 'eq'} ${up ? 'up' : 'down'}`,
         { cls: up ? 'fg-tag-good' : 'fg-tag-warn', anchor: lblOff[2] || 'middle' });
     };
+    put(0, 'ax', 40, [0, -8]);
+    put(0, 'eq', 24, [-2, 16]);
+    put(1, 'ax', 26, [-6, 0, 'end']);
+    put(1, 'eq', 26, [-6, -4, 'end']);
     put(2, 'ax', 40, [0, -8]);
     put(2, 'eq', 40, [-4, 4, 'end']);
-    put(1, 'ax', 26, [-6, 0, 'end']);
-    put(1, 'eq', 40, [0, -8]);
-    put(0, 'ax', 40, [0, -8]);
-    put(0, 'eq', 24, [4, 4, 'start']);
-    s += text(r.pts[2].x + 8, r.pts[2].y + 20, 'C1', { cls: 'fg-tag', anchor: 'start' });
+    s += text(r.pts[0].x + 8, r.pts[0].y - 6, 'C1', { cls: 'fg-tag', anchor: 'start' });
     s += text(r.pts[1].x + 8, r.pts[1].y + 18, 'C2', { cls: 'fg-tag', anchor: 'start' });
-    s += text(r.pts[0].x - 2, r.pts[0].y + 24, 'C3', { cls: 'fg-tag' });
+    s += text(r.pts[2].x + 8, r.pts[2].y + 20, 'C3', { cls: 'fg-tag', anchor: 'start' });
     return s;
   },
   caption: 'Read the tags from C1 to C3. Highlighted bonds are axial; eq marks the equatorial ones.',
@@ -328,8 +332,8 @@ FIGURES.push({
 function cis13(cx, cy, k, flipped) {
   const r = ring(cx, cy, k, flipped);
   let s = outline(r.pts) + dots(r.pts);
-  const a = group(r, 2, 'up', 'CH₃', { L: 36 });
-  const b = group(r, 0, 'up', 'CH₃', { L: 36 });
+  const a = group(r, 0, 'up', 'CH₃', { L: 36 });
+  const b = group(r, 2, 'up', 'CH₃', { L: 36 });
   s += a.s + b.s;
   return { s, r, a, b };
 }
@@ -343,14 +347,14 @@ FIGURES.push({
     let s = '';
     const A = cis13(200, 140, 0.95, false);
     s += A.s;
-    s += text(A.r.pts[2].x - 14, A.r.pts[2].y + 16, 'C1', { cls: 'fg-tag', anchor: 'end' });
-    s += text(A.r.pts[0].x + 8, A.r.pts[0].y + 16, 'C3', { cls: 'fg-tag', anchor: 'start' });
+    s += text(A.r.pts[0].x + 8, A.r.pts[0].y + 16, 'C1', { cls: 'fg-tag', anchor: 'start' });
+    s += text(A.r.pts[2].x - 14, A.r.pts[2].y + 16, 'C3', { cls: 'fg-tag', anchor: 'end' });
     s += text(200, 240, 'both methyls axial, both up', { cls: 'fg-tag-warn' });
     s += flipArrows(336, 424, 140);
     const B = cis13(560, 140, 0.95, true);
     s += B.s;
-    s += text(B.r.pts[2].x + 12, B.r.pts[2].y + 22, 'C1', { cls: 'fg-tag', anchor: 'start' });
-    s += text(B.r.pts[0].x + 4, B.r.pts[0].y + 22, 'C3', { cls: 'fg-tag', anchor: 'start' });
+    s += text(B.r.pts[0].x - 4, B.r.pts[0].y + 22, 'C1', { cls: 'fg-tag' });
+    s += text(B.r.pts[2].x + 4, B.r.pts[2].y + 22, 'C3', { cls: 'fg-tag', anchor: 'start' });
     s += text(560, 240, 'both methyls equatorial, both up', { cls: 'fg-tag-good' });
     s += text(380, 26, 'cis-1,3-dimethylcyclohexane: both methyls on the upper face', { cls: 'fg-tag' });
     return s;
@@ -359,27 +363,25 @@ FIGURES.push({
 });
 
 /* ------------------------------------------------------ flip-path-shapes ---
-   The ring on its way from one chair to the other. The shapes are
-   Cremer-Pople puckered rings (puckering amplitude matched to the chair),
-   relaxed to equal C-C bond lengths and projected with the chair's own view:
+   The ring on its way from one chair to the other, from the same viewpoint
+   as every chair above. The shapes are Cremer-Pople puckered rings
+   (puckering amplitude matched to the chair), relaxed to equal C-C bond
+   lengths and projected with the chair's own view:
      chair       theta 0
-     half-chair  theta 50.8, phi 270  (C3, C2, C1, C6 coplanar)
-     twist-boat  theta 90,   phi 270
-     boat        theta 90,   phi 300  (C1 and C4 both below the other four)
+     half-chair  theta 50.8, phi 150  (C5, C6, C1, C2 coplanar)
+     twist-boat  theta 90,   phi 150
+     boat        theta 90,   phi 180  (C1 and C4 both below the other four)
      other chair theta 180
-   Each frame is also turned about the ring's axis, 30 degrees more than
-   the one before, so that the last frame is exactly the flipped chair drawn
-   everywhere else on this page (C1 the lowered end). Turning a molecule does
-   not change it; it keeps C1 on the left, where the eye can follow it.
-   Index 2 is C1 and index 5 is C4, as in every chair on this page. */
+   Index 0 is C1 (the headrest) and index 3 is C4 (the footrest). The last
+   frame is exactly the flipped chair drawn everywhere else on the page. */
 const SHAPES = {
   chair: [[113.1, -18.2], [56.6, -15.3], [-56.6, -51.7], [-113.1, 18.2], [-56.6, 15.3], [56.6, 51.7]],
-  half: [[101.3, -29.7], [0.8, -46], [-102.2, -14.1], [-96.7, 32.4], [3.9, 8.7], [92.9, 48.7]],
-  twist: [[57.9, -34.3], [-59.3, -55.7], [-114.2, 21.4], [-57.9, 34.3], [59.3, 11.1], [114.2, 23.2]],
-  boat: [[2.5, -52.3], [-101, -31.8], [-98.5, 45.2], [-2.5, 26.5], [101, 6.1], [98.5, 6.3]],
-  other: [[-56.6, -15.3], [-113.1, -18.2], [-56.6, 51.7], [56.6, 15.3], [113.1, 18.2], [56.6, -51.7]],
+  half: [[117.6, 5.5], [53.2, -23.1], [-58.2, -60.6], [-109.5, 27.4], [-61.2, 21.6], [58.1, 29.2]],
+  twist: [[114.2, 23.2], [57.9, -34.3], [-59.3, -55.7], [-114.2, 21.4], [-57.9, 34.3], [59.3, 11.1]],
+  boat: [[113.7, 25.8], [59.8, -46.6], [-59.8, -46.6], [-113.7, 25.7], [-59.8, 20.8], [59.8, 20.8]],
+  other: [[113.1, 18.2], [56.6, -51.7], [-56.6, -15.3], [-113.1, -18.2], [-56.6, 51.7], [56.6, 15.3]],
 };
-const PLANE = { half: [0, 1, 2, 3] };
+const PLANE = { half: [4, 5, 0, 1] };
 function shape(name, cx, cy, k) {
   const pts = SHAPES[name].map(([x, y]) => P(cx + x * k, cy + y * k));
   const hi = PLANE[name] || [];
@@ -388,15 +390,15 @@ function shape(name, cx, cy, k) {
     const j = (i + 1) % 6;
     s += bond(p, pts[j], { rFrom: 0, rTo: 0, cls: hi.includes(i) && hi.includes(j) ? 'fg-bond-hi' : 'fg-bond' });
   });
-  s += `<circle class="fg-atom-warn" cx="${pts[2].x.toFixed(2)}" cy="${pts[2].y.toFixed(2)}" r="5"></circle>`;
-  s += `<circle class="fg-atom-hi" cx="${pts[5].x.toFixed(2)}" cy="${pts[5].y.toFixed(2)}" r="5"></circle>`;
+  s += `<circle class="fg-atom-warn" cx="${pts[0].x.toFixed(2)}" cy="${pts[0].y.toFixed(2)}" r="5"></circle>`;
+  s += `<circle class="fg-atom-hi" cx="${pts[3].x.toFixed(2)}" cy="${pts[3].y.toFixed(2)}" r="5"></circle>`;
   return { s, pts };
 }
 /* C1 and C4 tags, placed just outside the ring, away from its centre. */
 function shapeTags(pts) {
   const cx = pts.reduce((a, p) => a + p.x, 0) / 6, cy = pts.reduce((a, p) => a + p.y, 0) / 6;
   let s = '';
-  for (const [i, nm, cls] of [[2, 'C1', 'fg-tag-warn'], [5, 'C4', 'fg-tag']]) {
+  for (const [i, nm, cls] of [[0, 'C1', 'fg-tag-warn'], [3, 'C4', 'fg-tag']]) {
     const dx = pts[i].x - cx, dy = pts[i].y - cy, len = Math.hypot(dx, dy) || 1;
     s += text(pts[i].x + dx / len * 16, pts[i].y + dy / len * 16 + 4, nm, { cls });
   }
@@ -413,7 +415,7 @@ FIGURES.push({
   id: 'flip-path-shapes',
   section: 'ring-flips',
   anchor: 'C1 has to travel down past its neighbors, and C4 has to travel up.</p>',
-  alt: 'Five drawings of one cyclohexane ring on its way from one chair to the other, left to right, with C1 marked by a red dot and C4 by a green dot. 1, the chair: C1 is the raised end at the upper left and C4 the lowered end. 2, the half-chair: C1 has come down level with C2, C3 and C6, and those four carbons, joined by highlighted bonds, lie in one plane. 3, the twist-boat. 4, the boat: C1 and C4 both sit below the other four carbons. 5, the other chair, reached through a second twist-boat and half-chair as C4 rises: C1 is now the lowered end at the lower left and C4 the raised end.',
+  alt: 'Five drawings of one cyclohexane ring on its way from one chair to the other, left to right, all from the same viewpoint, with C1 marked by a red dot and C4 by a green dot. 1, the chair: C1 is the headrest at the far right, tipped up, and C4 the footrest at the far left, tipped down. 2, the half-chair: C1 has come down level with C2, C5 and C6, and those four carbons, joined by highlighted bonds, lie in one plane. 3, the twist-boat. 4, the boat: C1 and C4 both sit below the other four carbons. 5, the other chair, reached through a second twist-boat and half-chair as C4 rises: C1 is now tipped down at the far right and C4 tipped up at the far left.',
   viewBox: '0 0 760 236',
   build() {
     let s = '';
@@ -443,11 +445,11 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-shapes',
   lessons: ['ring-flips'],
-  alt: 'Four shapes of the cyclohexane ring in a two-by-two grid, with C1 marked by a red dot and C4 by a green dot. Top left, the chair: C1 up, C4 down. Top right, the half-chair: the four carbons joined by highlighted bonds, C3, C2, C1 and C6, lie in one plane. Bottom left, the twist-boat. Bottom right, the boat: C1 and C4 both below the other four carbons.',
+  alt: 'Four shapes of the cyclohexane ring in a two-by-two grid, with C1 marked by a red dot and C4 by a green dot. Top left, the chair: C1 up, C4 down. Top right, the half-chair: the four carbons joined by highlighted bonds, C5, C6, C1 and C2, lie in one plane. Bottom left, the twist-boat. Bottom right, the boat: C1 and C4 both below the other four carbons.',
   viewBox: '0 0 340 300',
   build() {
     let s = '';
-    const k = 0.56;
+    const k = 0.5;
     const cells = [[0, 88, 84], [1, 252, 84], [2, 88, 228], [3, 252, 228]];
     for (const [f, x, y] of cells) {
       const [nm, title, note] = FRAMES[f];
@@ -593,7 +595,7 @@ FIGURES.push({
     s += rule(400, 40, 400, 300);
 
     /* ---- right: ring A flipped ---- */
-    const F = ring(580, 170, k * 1.1, true);
+    const F = ring(560, 170, k * 1.1, true);
     s += outline(F.pts) + dots(F.pts);
     const u0 = F.ax(0, 58), u1 = F.ax(1, 58);
     s += `<line class="fg-dash-hi" x1="${F.pts[0].x}" y1="${F.pts[0].y}" x2="${u0.x}" y2="${u0.y}"></line>`;
@@ -602,8 +604,8 @@ FIGURES.push({
     s += bond(F.pts[0], e0, { rFrom: 0, rTo: 9 }) + atom(e0.x, e0.y, 'H', { r: 9, size: 10 });
     s += bond(F.pts[1], e1, { rFrom: 0, rTo: 9 }) + atom(e1.x, e1.y, 'H', { r: 9, size: 10 });
     const top = u0.y < u1.y ? u0 : u1, bot = u0.y < u1.y ? u1 : u0;
-    s += text(top.x + 10, top.y + 4, 'ring B bond: straight up', { cls: 'fg-tag-warn', anchor: 'start' });
-    s += text(bot.x + 10, bot.y + 4, 'ring B bond: straight down', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += text(top.x - 10, top.y + 4, 'ring B bond: straight up', { cls: 'fg-tag-warn', anchor: 'end' });
+    s += text(bot.x - 10, bot.y + 4, 'ring B bond: straight down', { cls: 'fg-tag-warn', anchor: 'end' });
     s += tag(580, 30, 'ring A flipped');
     s += text(580, 276, 'both bonds would be axial, 180° apart:', { cls: 'fg-tag-warn' });
     s += text(580, 294, 'ring B cannot reach across ✗', { cls: 'fg-tag-warn' });
@@ -617,14 +619,14 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-q-oh',
   lessons: ['ring-flips'],
-  alt: 'A cyclohexane chair. C1, the lowered end at the lower right, carries an OH group on a vertical axial bond pointing down.',
+  alt: 'A cyclohexane chair. C1, the footrest at the far left, carries an OH group on a vertical axial bond pointing down.',
   viewBox: '0 0 340 230',
   build() {
     let s = '';
     const r = ring(170, 96, 0.95, false);
     s += outline(r.pts) + dots(r.pts);
-    s += group(r, 5, 'down', 'OH', { L: 38, r: 16, kind: 'warn' }).s;
-    s += text(r.pts[5].x + 12, r.pts[5].y - 6, 'C1', { cls: 'fg-tag', anchor: 'start' });
+    s += group(r, 3, 'down', 'OH', { L: 38, r: 16, kind: 'warn' }).s;
+    s += text(r.pts[3].x - 10, r.pts[3].y - 6, 'C1', { cls: 'fg-tag', anchor: 'end' });
     s += text(170, 222, 'OH: axial, pointing down', { cls: 'fg-tag-warn' });
     return s;
   },
@@ -633,15 +635,15 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-q-trans',
   lessons: ['ring-flips'],
-  alt: 'trans-1-Chloro-2-methylcyclohexane in one chair. C1, the raised end, carries Cl on its equatorial bond, which angles down. C2, next along the top of the ring, carries the methyl on its equatorial bond, which angles up.',
+  alt: 'trans-1-Chloro-2-methylcyclohexane in one chair. C1, the headrest at the far right, carries Cl on its equatorial bond, which angles down. C2, next along the top of the ring, carries the methyl on its equatorial bond, which angles up.',
   viewBox: '0 0 340 240',
   build() {
     let s = '';
     const r = ring(170, 110, 0.95, false);
     s += outline(r.pts) + dots(r.pts);
-    s += group(r, 2, 'down', 'Cl', { L: 36, r: 15, kind: 'warn' }).s;
+    s += group(r, 0, 'down', 'Cl', { L: 36, r: 15, kind: 'warn' }).s;
     s += group(r, 1, 'up', 'CH₃', { L: 36 }).s;
-    s += text(r.pts[2].x + 6, r.pts[2].y - 10, 'C1', { cls: 'fg-tag', anchor: 'start' });
+    s += text(r.pts[0].x + 4, r.pts[0].y - 12, 'C1', { cls: 'fg-tag', anchor: 'start' });
     s += text(r.pts[1].x - 8, r.pts[1].y + 22, 'C2', { cls: 'fg-tag' });
     s += text(170, 212, 'Cl: equatorial, down', { cls: 'fg-tag-warn' });
     s += text(170, 232, 'CH₃: equatorial, up', { cls: 'fg-tag' });
@@ -652,15 +654,15 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-q-final',
   lessons: ['ring-flips'],
-  alt: 'cis-1,3-Dimethylcyclohexane in one chair. The methyls on C1, the raised end, and on C3, the right tip, both sit on vertical axial bonds pointing up.',
+  alt: 'cis-1,3-Dimethylcyclohexane in one chair. The methyls on C1, the headrest at the far right, and on C3, the top-left corner, both sit on vertical axial bonds pointing up.',
   viewBox: '0 0 340 230',
   build() {
     let s = '';
     const r = ring(170, 118, 0.95, false);
     s += outline(r.pts) + dots(r.pts);
-    s += group(r, 2, 'up', 'CH₃', { L: 36 }).s + group(r, 0, 'up', 'CH₃', { L: 36 }).s;
-    s += text(r.pts[2].x - 14, r.pts[2].y + 16, 'C1', { cls: 'fg-tag', anchor: 'end' });
-    s += text(r.pts[0].x + 8, r.pts[0].y + 16, 'C3', { cls: 'fg-tag', anchor: 'start' });
+    s += group(r, 0, 'up', 'CH₃', { L: 36 }).s + group(r, 2, 'up', 'CH₃', { L: 36 }).s;
+    s += text(r.pts[0].x + 8, r.pts[0].y + 16, 'C1', { cls: 'fg-tag', anchor: 'start' });
+    s += text(r.pts[2].x - 14, r.pts[2].y + 16, 'C3', { cls: 'fg-tag', anchor: 'end' });
     s += text(170, 222, 'both methyls: axial, pointing up', { cls: 'fg-tag-warn' });
     return s;
   },

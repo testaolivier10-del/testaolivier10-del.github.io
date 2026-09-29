@@ -5,9 +5,15 @@ import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/
 import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
 
 /* Chair helpers, copied from scripts/ochem-figures/ring-flips.mjs with the
-   measured geometry unchanged. Vertex i of the ring; the even carbons have
-   their axial bond pointing up, the odd ones down. A flipped ring is the same
-   outline reflected top to bottom, and in it every axial direction reverses. */
+   measured geometry unchanged. Index 0, the far-right carbon, is the headrest
+   (the up end); index 3, the far-left carbon, is the footrest (the down end).
+   Axial is vertical: up on the even carbons, down on the odd ones.
+   The flipped chair reverses every height, so its outline is the first one
+   reflected top to bottom. A plain reflection would also reverse the
+   direction the carbons run round the ring, which for a chiral compound
+   draws the mirror-image molecule, so the two ends keep their places and the
+   four middle carbons trade places in pairs (SIG, as in ring-flips.mjs). The
+   result is the same molecule, numbered the same way round. */
 const CHAIR_V = [
   P(113.15, -18.21), P(56.57, -15.31), P(-56.57, -51.72),
   P(-113.15, 18.21), P(-56.58, 15.31), P(56.57, 51.72),
@@ -16,13 +22,20 @@ const CHAIR_EQ = [
   P(0.944, 0.329), P(0.613, -0.790), P(-0.994, 0.104),
   P(-0.944, -0.329), P(-0.613, 0.790), P(0.994, -0.104),
 ];
+const SIG = (j) => (6 - j) % 6;
+const src = (j, flipped) => (flipped ? SIG(j) : j);
 const ring = (cx, cy, k, flipped = false, mirror = false) =>
-  CHAIR_V.map((v) => P(cx + (mirror ? -v.x : v.x) * k, cy + (flipped ? -v.y : v.y) * k));
+  [0, 1, 2, 3, 4, 5].map((j) => {
+    const v = CHAIR_V[src(j, flipped)];
+    return P(cx + (mirror ? -v.x : v.x) * k, cy + (flipped ? -v.y : v.y) * k);
+  });
 const chairRing = (pts, cls) => pts.map((p, i) => bond(p, pts[(i + 1) % 6], { rFrom: 0, rTo: 0, cls })).join('');
 const axUp = (i, flipped) => (i % 2 === 0) !== flipped;
 const axEnd = (pts, i, flipped, L) => P(pts[i].x, pts[i].y + (axUp(i, flipped) ? -L : L));
-const eqEnd = (pts, i, flipped, L, mirror = false) =>
-  P(pts[i].x + (mirror ? -1 : 1) * CHAIR_EQ[i].x * L, pts[i].y + (flipped ? -1 : 1) * CHAIR_EQ[i].y * L);
+const eqEnd = (pts, i, flipped, L, mirror = false) => {
+  const e = CHAIR_EQ[src(i, flipped)];
+  return P(pts[i].x + (mirror ? -1 : 1) * e.x * L, pts[i].y + (flipped ? -1 : 1) * e.y * L);
+};
 /* The bond a group on a given face must use: the axial bond if that carbon's
    axial points to that face, the equatorial bond otherwise. Placing by face
    and reading the label afterwards is the method the page teaches. */
