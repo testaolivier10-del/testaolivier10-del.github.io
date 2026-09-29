@@ -11,7 +11,7 @@
    Lesson copies (id prefix l-) are no wider than 340, stack their panels in
    one column and use only fg-lbl and fg-tag text. */
 import { atom, bond, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { benzene, polyPts } from '../lib/ochem-skeletal.mjs';
+import { ringDouble, polyPts } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
 
@@ -27,7 +27,19 @@ const brack = (x, y, h, dir) => {
 };
 const hbond = (a, b, cls = 'fg-dash-hi') =>
   `<line class="${cls}" x1="${a.x.toFixed(2)}" y1="${a.y.toFixed(2)}" x2="${b.x.toFixed(2)}" y2="${b.y.toFixed(2)}"></line>`;
-const it = (s) => `<tspan font-style="italic">${s}</tspan>`;
+/* A Kekulé benzene whose inner double-bond lines scale with the ring, so a
+   small ring still shows three clear inner lines. Vertex 0 points along screen
+   angle `deg`. */
+function ring6(cx, cy, rr, deg = 0) {
+  const pts = polyPts(cx, cy, 6, rr, -deg);
+  const c = P(cx, cy);
+  let o = '';
+  for (let i = 0; i < 6; i++) {
+    const a = pts[i], b = pts[(i + 1) % 6];
+    o += i % 2 === 0 ? ringDouble(a, b, c, { inset: rr * 0.24, gap: rr * 0.24 }) : bond(a, b, { rFrom: 0, rTo: 0 });
+  }
+  return o;
+}
 
 /* A skeletal chain, built bond by bond.
    start: { x, y, l } — the first node (l '' for a carbon vertex or a stub end).
@@ -38,7 +50,7 @@ const it = (s) => `<tspan font-style="italic">${s}</tspan>`;
    into the node (hiOut: the bond out of the ring). sub lists groups on the
    node: { l, order, k, deg, len } — deg defaults to straight out of the
    zigzag. Returns the ink and the nodes (each with its substituent atoms). */
-function chain(start, steps, { L = 28, rr = 15, kindRing } = {}) {
+function chain(start, steps, { L = 28, rr = 15 } = {}) {
   const first = { x: start.x, y: start.y, l: start.l || '', k: start.k, r: start.r ?? rad(start.l || ''), nb: [] };
   const nodes = [first];
   let s = '', ringInk = '';
@@ -49,10 +61,10 @@ function chain(start, steps, { L = 28, rr = 15, kindRing } = {}) {
       const A = at(from, st.d, L), c = at(A, st.d, rr), B = at(A, st.d, 2 * rr);
       s += bond(from, A, { rFrom: from.r, rTo: 0, cls: st.hiIn ? 'fg-bond-hi' : 'fg-bond' });
       from.nb.push(A);
-      ringInk += benzene(c.x, c.y, rr, { rot: -st.d, cls: kindRing }).svg;
+      ringInk += ring6(c.x, c.y, rr, st.d);
       from = { x: B.x, y: B.y, r: 0, nb: [] };
     }
-    const p = at(from, st.d, L);
+    const p = at(from, st.d, st.len ?? L);
     const nd = { x: p.x, y: p.y, l: st.l || '', k: st.k, r: st.r ?? rad(st.l || ''), sub: st.sub, nb: [from], subs: [] };
     if (!st.ring) from.nb.push(nd);
     s += bond(from, nd, { rFrom: from.r, rTo: nd.r, cls: st.hi ? 'fg-bond-hi' : st.cls || 'fg-bond' });

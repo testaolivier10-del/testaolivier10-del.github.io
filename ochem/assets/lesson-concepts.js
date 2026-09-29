@@ -287,9 +287,13 @@
       9:['crosslink-and-end-of-life'],
       11:['crosslink-and-end-of-life'] } },
 
-    'polymer-design': { n:8, steps:{
-      2:['crosslink-and-end-of-life'], 3:['two-reactive-sites'], 4:['packing-and-properties'],
-      6:['crosslink-and-end-of-life'], 7:['crosslink-and-end-of-life'] } },
+    'polymer-design': { n:12, steps:{
+      3:['two-reactive-sites'],
+      4:['two-reactive-sites'],
+      6:['packing-and-properties'],
+      8:['crosslink-and-end-of-life'],
+      9:['two-reactive-sites'],
+      11:['crosslink-and-end-of-life'] } },
 
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
     'oxidation-states': { n:8, steps:{

@@ -468,17 +468,17 @@ function isoUnit(ox, cis) {
   const at = (p, deg, len) => P(p.x + Math.cos((deg * Math.PI) / 180) * len, p.y - Math.sin((deg * Math.PI) / 180) * len);
   const me = at(c2, 120, 44), c1 = at(c2, 240, 44);
   const c4 = at(c3, cis ? 300 : 60, 44), h = at(c3, cis ? 60 : 300, 34);
-  const in1 = at(c1, 180, 44), out4 = at(c4, 0, 44);
-  s += skDouble(c2, c3, P(ox + 173, cy + 20));
+  const in1 = at(c1, 180, 50), out4 = at(c4, 0, 50);
+  s += skDouble(c2, c3, P(ox + 173, cy - 20));
   s += sk(c2, c1) + sk(c3, c4);
   s += bond(c2, me, { rFrom: 0, rTo: 17 }) + G(me, 'CH₃');
   s += bond(c3, h, { rFrom: 0, rTo: 10 }) + atom(h.x, h.y, 'H', { r: 10 });
   s += bond(c1, in1, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' }) + bond(c4, out4, { rFrom: 0, rTo: 0, cls: 'fg-bond-hi' });
-  s += bracket(c1.x - 22, c1.y, 36, 'L') + bracket(c4.x + 22, c4.y, 36, 'R', true);
-  s += tg(c1.x + 2, c1.y + 20, 'C1', 'fg-tag-mut') + tg(c2.x + 4, c2.y - 12, 'C2', 'fg-tag-mut');
-  s += tg(c3.x - 4, c3.y + (cis ? -12 : 22), 'C3', 'fg-tag-mut') + tg(c4.x - 2, c4.y + (cis ? 20 : -12), 'C4', 'fg-tag-mut');
-  s += tg(in1.x - 4, in1.y + (in1.y > cy ? 20 : -10), 'chain', 'fg-tag');
-  s += tg(out4.x + 4, out4.y + (out4.y > cy ? 20 : -10), 'chain', 'fg-tag');
+  s += tg(c1.x, c1.y + 22, 'C1', 'fg-tag-mut') + tg(c2.x + 2, c2.y + 24, 'C2', 'fg-tag-mut');
+  s += tg(c3.x - 2, cis ? c3.y + 24 : c3.y - 12, 'C3', 'fg-tag-mut');
+  s += tg(c4.x, cis ? c4.y + 22 : c4.y - 12, 'C4', 'fg-tag-mut');
+  s += tg(in1.x - 6, in1.y + 4, 'chain', 'fg-tag', 'end');
+  s += tg(out4.x + 6, out4.y + 4, 'chain', 'fg-tag', 'start');
   return s;
 }
 FIGURES.push({
@@ -558,7 +558,7 @@ FIGURES.push({
   id: 'three-polypropylenes',
   section: 'addition-polymers',
   anchor: '',
-  viewBox: '0 0 760 430',
+  viewBox: '0 0 760 450',
   alt: 'Three identical eight-carbon zig-zag backbones with their methyl groups drawn on wedges and dashes: all wedges for isotactic, alternating wedge and dash for syndiotactic, and an irregular mixture for atactic',
   build() {
     let s = '';
@@ -614,7 +614,7 @@ FIGURES.push({
   section: 'addition-polymers',
   lessons: ['addition-polymers'],
   anchor: '',
-  viewBox: '0 0 340 470',
+  viewBox: '0 0 340 490',
   alt: 'Three panels at a titanium atom. First: titanium bonded to the CH2 at the end of the chain, with an empty site beside it. Second: a propylene molecule sits in the empty site, its CH2 end toward titanium and its CH end toward the chain. Third: the chain has moved onto the alkene. A new C–C bond joins the old chain end to the CH carbon, titanium is now bonded to the alkene CH2, and the empty site is where the chain used to be.',
   build() {
     let s = '';
@@ -633,22 +633,22 @@ FIGURES.push({
     c = P(146, 212);
     s += B(ti, 'Ti', c, 'CH₂') + G(ti, 'Ti', 'hi') + G(c, 'CH₂');
     s += bond(c, P(206, 212), { rFrom: 17, rTo: 0 }) + tg(212, 216, 'chain', 'fg-tag', 'start');
-    const a1 = P(140, 284), a2 = P(204, 266), me = P(262, 290);
-    s += bond(ti, P((a1.x + a2.x) / 2, (a1.y + a2.y) / 2 + 2), { rFrom: 16, rTo: 0, cls: 'fg-dash' });
+    const a1 = P(132, 298), a2 = P(202, 298), me = P(266, 298);
+    s += bond(ti, P((a1.x + a2.x) / 2, 293), { rFrom: 16, rTo: 0, cls: 'fg-dash' });
     s += B(a1, 'H₂C', a2, 'CH', { order: 2 }) + B(a2, 'CH', me, 'CH₃');
     s += G(a1, 'H₂C') + G(a2, 'CH') + G(me, 'CH₃');
-    s += rule(20, 322, 320, 322);
+    s += rule(20, 330, 320, 330);
 
     /* Panel 3: after insertion. */
-    s += tg(170, 346, '3. insertion: the chain moves onto the alkene');
-    ti = P(80, 412);
-    const n1 = P(138, 444), n2 = P(204, 444), old = P(204, 384), me3 = P(268, 444);
+    s += tg(170, 354, '3. insertion: the chain moves onto the alkene');
+    ti = P(80, 430);
+    const n1 = P(140, 462), n2 = P(206, 462), old = P(206, 402), me3 = P(270, 462);
     s += B(ti, 'Ti', n1, 'CH₂') + B(n1, 'CH₂', n2, 'CH') + B(n2, 'CH', me3, 'CH₃');
     s += B(n2, 'CH', old, 'CH₂', { cls: 'fg-bond-hi' });
-    s += bond(old, P(262, 384), { rFrom: 17, rTo: 0 }) + tg(268, 388, 'chain', 'fg-tag', 'start');
+    s += bond(old, P(262, 402), { rFrom: 17, rTo: 0 }) + tg(268, 406, 'chain', 'fg-tag', 'start');
     s += G(ti, 'Ti', 'hi') + G(n1, 'CH₂') + G(n2, 'CH') + G(old, 'CH₂') + G(me3, 'CH₃');
-    s += site(128, 376) + tg(116, 358, 'empty again', 'fg-tag-mut', 'end');
-    s += tg(212, 416, 'new C–C', 'fg-tag-good', 'start');
+    s += site(128, 394) + tg(112, 388, 'empty', 'fg-tag-mut', 'end') + tg(112, 404, 'again', 'fg-tag-mut', 'end');
+    s += tg(214, 436, 'new C–C', 'fg-tag-good', 'start');
     return s;
   },
   caption: 'Other groups on the titanium are left out. The highlighted bond is the one the insertion makes.',
@@ -662,33 +662,35 @@ FIGURES.push({
   section: 'addition-polymers',
   lessons: ['addition-polymers'],
   anchor: '',
-  viewBox: '0 0 340 420',
+  viewBox: '0 0 340 450',
   alt: 'Top: the end of a growing polyethylene chain curls back into a six-membered ring made of the radical carbon C1, carbons C2, C3 and C4, carbon C5 and one hydrogen on C5. Fishhook arrows move that hydrogen from C5 to C1. Bottom: C1 is now a CH3 at the end of a four-carbon butyl branch, C1 to C4, and the radical sits on C5 of the main chain, where the chain grows on.',
   build() {
     let s = '';
     s += tg(170, 20, '1. the chain end curls back on itself');
-    const ctr = P(186, 126), R = 62;
+    const ctr = P(190, 136), R = 66;
     const at = (deg) => P(ctr.x + Math.cos((deg * Math.PI) / 180) * R, ctr.y - Math.sin((deg * Math.PI) / 180) * R);
     const H = at(90), c1 = at(30), c2 = at(-30), c3 = at(-90), c4 = at(-150), c5 = at(150);
-    const bb = P(c5.x - 64, c5.y);
+    const bb = P(c5.x - 52, c5.y - 44);
     s += B(c1, 'CH₂', c2, 'CH₂') + B(c2, 'CH₂', c3, 'CH₂') + B(c3, 'CH₂', c4, 'CH₂') + B(c4, 'CH₂', c5, 'CH');
     s += B(c5, 'CH', H, 'H') + B(c5, 'CH', bb, '~CH₂');
     s += bond(H, c1, { rFrom: 12, rTo: 17, cls: 'fg-dash' });
     s += G(c1, 'CH₂') + G(c2, 'CH₂') + G(c3, 'CH₂') + G(c4, 'CH₂') + G(c5, 'CH') + G(H, 'H', 'hi') + G(bb, '~CH₂');
-    s += dot(c1.x + 8, c1.y - 19);
-    s += fishhook(P(c1.x + 4, c1.y - 22), P(c1.x - 30, H.y + 2), { bow: 10 });
-    s += fishhook(P(151, 83), P(c1.x - 36, H.y + 12), { bow: 9 });
-    s += fishhook(P(146, 80), P(c5.x + 4, c5.y - 16), { bow: 7 });
-    s += tg(c1.x + 26, c1.y + 4, 'C1', 'fg-tag-mut', 'start');
+    const mid = P((H.x + c1.x) / 2, (H.y + c1.y) / 2);
+    s += dot(c1.x + 4, c1.y - 20);
+    s += fishhook(P(c1.x, c1.y - 23), P(mid.x + 4, mid.y - 8), { bow: 10 });
+    const bm = P((H.x + c5.x) / 2, (H.y + c5.y) / 2);
+    s += fishhook(P(bm.x + 4, bm.y + 6), P(mid.x - 2, mid.y + 6), { bow: 8 });
+    s += fishhook(P(bm.x - 4, bm.y - 6), P(c5.x + 2, c5.y - 19), { bow: -9 });
+    s += tg(c1.x + 24, c1.y + 4, 'C1', 'fg-tag-mut', 'start');
     s += tg(c2.x + 24, c2.y + 4, 'C2', 'fg-tag-mut', 'start');
     s += tg(c3.x, c3.y + 32, 'C3', 'fg-tag-mut');
     s += tg(c4.x - 24, c4.y + 4, 'C4', 'fg-tag-mut', 'end');
-    s += tg(c5.x - 2, c5.y - 22, 'C5', 'fg-tag-mut', 'end');
-    s += tg(170, 238, 'six atoms: C1 to C5, and the H on C5');
-    s += arrow(P(170, 250), P(170, 276), { muted: true });
+    s += tg(c5.x - 22, c5.y + 12, 'C5', 'fg-tag-mut', 'end');
+    s += tg(170, 256, 'six atoms: C1 to C5, and the H on C5');
+    s += arrow(P(170, 268), P(170, 294), { muted: true });
 
-    s += tg(170, 300, '2. the radical is now on C5');
-    const y = 352;
+    s += tg(170, 318, '2. the radical is now on C5');
+    const y = 370;
     const q5 = P(96, y), q4 = P(156, y + 34), q3 = P(216, y), q2 = P(276, y + 34), q1 = P(306, y - 20);
     const back = P(32, y);
     s += B(back, '~CH₂', q5, 'CH') + B(q5, 'CH', q4, 'CH₂') + B(q4, 'CH₂', q3, 'CH₂') + B(q3, 'CH₂', q2, 'CH₂') + B(q2, 'CH₂', q1, 'CH₃');
@@ -697,7 +699,6 @@ FIGURES.push({
     s += tg(q5.x, y + 30, 'C5', 'fg-tag-mut');
     s += tg(q4.x, y + 66, 'C4', 'fg-tag-mut') + tg(q3.x, y - 24, 'C3', 'fg-tag-mut');
     s += tg(q2.x, y + 66, 'C2', 'fg-tag-mut') + tg(q1.x - 2, y - 44, 'C1', 'fg-tag-mut');
-    s += tg(q5.x - 8, y - 30, 'grows on from here', 'fg-tag', 'start');
     return s;
   },
   caption: 'The hydrogen moves from C5 to C1. C1 to C4 are left behind as a butyl branch, and the chain carries on from C5.',
