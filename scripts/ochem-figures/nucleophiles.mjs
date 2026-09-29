@@ -411,7 +411,7 @@ FIGURES.push({
     s += tg(262, 376, 'least available pair', 'warn');
     return s;
   },
-  caption: 'From top to bottom, the lone pair has more s character, so it is held closer to nitrogen and is less available.',
+  caption: 'Three nitrogen lone pairs, in an sp³, an sp² and an sp orbital.',
 });
 
 /* ------------------------------------------------------------------ 9 ---

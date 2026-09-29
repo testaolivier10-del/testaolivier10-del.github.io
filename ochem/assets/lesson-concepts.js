@@ -672,11 +672,12 @@
       11:['carbocation-rearrangement'],
       13:['carbocation-rearrangement','carbocation-stability'] } },
 
-    'leaving-groups': { n:9, steps:{
-      3:['leaving-group-ability'],
-      4:['leaving-group-ability','pka-scale'],
+    'leaving-groups': { n:15, steps:{
+      4:['leaving-group-ability'],
       5:['leaving-group-ability','pka-scale'],
-      8:['leaving-group-ability'] } },
+      6:['leaving-group-ability','pka-scale'],
+      11:['alcohol-activation','leaving-group-ability'],
+      14:['leaving-group-ability'] } },
 
     'lewis-acids': { n:7, steps:{
       1:['lewis-acid-base'], 2:['lewis-acid-base'],
