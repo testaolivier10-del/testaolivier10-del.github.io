@@ -270,3 +270,41 @@ confirm it.
     removed; an author may add a sourced number.
   - The bromine-versus-chlorine worked example appears on both radical-halogenation and
     energy-diagrams. Decide which page keeps the full version.
+
+## Biomolecules (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### biomolecules-conventions: explanations and classifications the pages grade by
+- **Status:** pending review.
+- **Where:** `carbohydrates`, `amino-acids`, `peptides-proteins`, `lipids`, `nucleic-acids`.
+- **Positions taken:**
+  - Carbohydrates: fructose passes Tollens' because base turns it into an aldose through an
+    enediol (taught in the lesson before the final question). Some sources say the α-hydroxy
+    ketone or the enediol reduces the reagent directly; the page does not say so. A short
+    anomeric-effect paragraph is included: keep it at this level? "Mutarotation shows the open
+    chain" is kept as the argument.
+  - Amino acids: side-chain classes differ between books (glycine, cysteine, tyrosine,
+    tryptophan). The page teaches the usual four classes with "such as" examples and says books
+    differ.
+  - Peptides: the hydrophobic effect is called the largest single force in folding (the standard
+    teaching view; some literature disputes it). Cooked egg white is explained as unfolded chains
+    tangling; real egg white also forms new disulfide cross-links. "The amide is the least
+    reactive acyl derivative"; several texts put the carboxylate below it. Trypsin is said to
+    skip Lys/Arg followed by proline. Where "polypeptide" ends and "protein" begins is loose.
+  - Nucleic acids: base stacking is taught as the larger contribution to duplex stability, with
+    hydrogen bonds choosing the partner. The 2′-O⁻ attack in RNA cleavage is drawn as one step;
+    the page does not say whether it is concerted or passes through a five-coordinate
+    intermediate. Acid cleavage of the N-glycosidic bond is hedged as mainly for adenine and
+    guanine. How much rare tautomers contribute to real point mutations is left open.
+  - Lipids: sources disagree on which end of isoprene is the "head"; the page describes the link
+    structurally. The cis kink is about 30°, while a flat skeletal drawing shows 60°; the page
+    states both. Clotting is credited to the related thromboxanes. The trans-fat sentence is in
+    the past tense and does not mention trans fats from ruminants.
+
+### biomolecules-numbers: values that vary by source
+- **Status:** pending review.
+- **Notes:**
+  - Histidine's side chain (pKa about 6) is a few percent protonated at pH 7.4; pI about 7.6.
+  - Edman degradation is kept at "roughly thirty residues"; many sources give 30–50.
