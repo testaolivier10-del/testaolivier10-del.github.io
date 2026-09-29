@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', function(){
           showFeedback(fb, true, 'Correct, and it takes two arrows: a lone pair on the incoming water to the hydrogen, and the O–H bond back onto the oxygen that was carrying it. Out come the neutral alcohol, 3-methylhexan-3-ol, and H₃O⁺. Protons never move on their own in a mechanism — something always takes them.');
           next.disabled = false;
         } else {
-          showFeedback(fb, false, 'A proton does not leave by itself, and bromide is a weaker nucleophile than the solvent it is swimming in. Something in the flask has to take that hydrogen, using its own lone pair.');
+          showFeedback(fb, false, 'A proton does not leave by itself. Bromide is a better nucleophile than water, but bromide attacking carbon would not remove the proton at all. Something in the flask has to take that hydrogen with its own lone pair, and water, the solvent, is everywhere.');
           card.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = false; b.classList.remove('wrong'); });
         }
       });
@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function(){
         btn.classList.add(isCorrect ? 'correct' : 'wrong');
         record(isCorrect);
         if(isCorrect){
-          showFeedback(fb, true, 'Correct — an optically active starting material has given an optically inactive product. That is racemization, and it is the single cleanest piece of evidence for a free carbocation: SN2 on the same substrate would have given one enantiomer and nothing else. In practice the split is usually nearer 55:45 in favor of inversion, because the bromide has not always moved away before water arrives.');
+          showFeedback(fb, true, 'Correct — an optically active starting material has given a product with little or no optical activity. That is racemization, and it is the single cleanest piece of evidence for a free carbocation: SN2 on the same substrate would have given one enantiomer and nothing else. In practice the split is skewed a little toward inversion, from about 55:45 to 70:30, because the bromide has not always moved away before water arrives.');
           next.disabled = false;
         } else {
           showFeedback(fb, false, 'One face gives one enantiomer and the other face gives its mirror image, and the two faces are equally open. So what is the ratio?');

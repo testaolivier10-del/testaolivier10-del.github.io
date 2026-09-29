@@ -177,7 +177,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'e1-three-products',
   section: 'e1',
-  alt: 'The tertiary cation from 2-bromo-2-methylbutane, carbons numbered, with a hydrogen drawn on C1 and one on C3, each marked beta. Three arrows lead to three products. Losing the hydrogen on C3 gives 2-methylbut-2-ene, with three carbons on the double bond, the major alkene. Losing a hydrogen on C1 gives 2-methylbut-1-ene, with two carbons on the double bond, the minor alkene. Ethanol bonding to C2 gives the SN1 product, 2-ethoxy-2-methylbutane.',
+  alt: 'The tertiary cation from 2-bromo-2-methylbutane, carbons numbered, with a hydrogen drawn on C1 and one on C3, each marked beta. Three arrows lead to three products. Losing the hydrogen on C3 gives 2-methylbut-2-ene, with three carbon groups on the double bond, the major alkene. Losing a hydrogen on C1 gives 2-methylbut-1-ene, with two carbon groups on the double bond, the minor alkene. Ethanol bonding to C2 gives the SN1 product, 2-ethoxy-2-methylbutane.',
   viewBox: '0 0 760 350',
   build() {
     let s = '';
@@ -201,16 +201,16 @@ FIGURES.push({
     s += sk(q[0], q[1]) + ringDouble(q[1], q[2], P(q[1].x, q[1].y + 40)) + sk(q[2], q[3]);
     s += sk(q[1], armEnd(q[1], 90, 44));
     s += text(500, 70, '2-methylbut-2-ene · major', { cls: 'fg-tag-good', anchor: 'start' });
-    s += text(500, 88, 'H lost from C3', { cls: 'fg-sm', anchor: 'start' });
-    s += text(500, 104, '3 carbons on the C=C', { cls: 'fg-sm', anchor: 'start' });
+    s += text(500, 88, 'EtOH takes the H on C3', { cls: 'fg-sm', anchor: 'start' });
+    s += text(500, 104, '3 carbon groups on the C=C', { cls: 'fg-sm', anchor: 'start' });
 
     // minor alkene: 2-methylbut-1-ene
     q = chain4(326, 200);
     s += ringDouble(q[0], q[1], P(q[0].x + 10, q[0].y + 40)) + sk(q[1], q[2]) + sk(q[2], q[3]);
     s += sk(q[1], armEnd(q[1], 90, 44));
     s += text(500, 166, '2-methylbut-1-ene · minor', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += text(500, 184, 'H lost from C1', { cls: 'fg-sm', anchor: 'start' });
-    s += text(500, 200, '2 carbons on the C=C', { cls: 'fg-sm', anchor: 'start' });
+    s += text(500, 184, 'EtOH takes an H on C1', { cls: 'fg-sm', anchor: 'start' });
+    s += text(500, 200, '2 carbon groups on the C=C', { cls: 'fg-sm', anchor: 'start' });
 
     // SN1 ether
     q = chain4(326, 312);
@@ -265,7 +265,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'e1-shift-then-eliminate',
   section: 'e1',
-  alt: 'Three frames, carbons numbered. First, the secondary cation at C3 of 3-bromo-2,2-dimethylbutane after bromide has left, with a curved arrow moving one methyl from C2 to C3 with its bonding pair. Second, the tertiary cation now at C2, with a water molecule taking the hydrogen on C3 and that C–H pair becoming the C2=C3 bond. Third, the product, 2,3-dimethylbut-2-ene, with four carbons on the double bond.',
+  alt: 'Three frames, carbons numbered. First, the secondary cation at C3 of 3-bromo-2,2-dimethylbutane after bromide has left, with a curved arrow moving one methyl from C2 to C3 with its bonding pair. Second, the tertiary cation now at C2, with a water molecule taking the hydrogen on C3 and that C–H pair becoming the C2=C3 bond. Third, the product, 2,3-dimethylbut-2-ene, with four carbon groups on the double bond.',
   viewBox: '0 0 760 300',
   build() {
     let s = '';
@@ -308,7 +308,7 @@ FIGURES.push({
     s += sk(p[1], P(p[1].x, p[1].y - 46)) + sk(p[2], P(p[2].x, p[2].y + 46));
     s += tag(640, 34, 'PRODUCT');
     s += text(640, 262, '2,3-dimethylbut-2-ene', { cls: 'fg-tag-good' });
-    s += text(640, 278, 'four carbons on the C=C', { cls: 'fg-sm' });
+    s += text(640, 278, '4 carbon groups on the C=C', { cls: 'fg-sm' });
     return s;
   },
   caption: 'Follow the highlighted methyl from C2 to C3, and the positive charge from C3 to C2.',
@@ -356,7 +356,7 @@ FIGURES.push({
     s += skChain(q);
     s += sk(q[1], armEnd(q[1], 90, 44));
     s += plusAt(q[1].x + 16, q[1].y - 12);
-    s += text(560, 240, 'the same 3° cation as in step 1 above', { cls: 'fg-sm' });
+    s += text(560, 240, 'the same 3° cation 2-bromo-2-methylbutane gave', { cls: 'fg-sm' });
     return s;
   },
   caption: 'Only these two steps are new. The step after them is step 2 of the first figure, with water as the base.',

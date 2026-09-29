@@ -109,12 +109,12 @@ FIGURES.push({
   id: 'solvolysis-three-steps',
   section: 'sn1',
   anchor: 'Out come the neutral alcohol and H<sub>3</sub>O<sup>+</sup>.</p>',
-  alt: 'Three rows. Step 1, slow: in tert-butyl bromide a curved arrow runs from the carbon-bromine bond onto bromine, giving the flat tert-butyl cation and bromide ion with four lone pairs. Step 2, fast: a curved arrow runs from a lone pair on a water oxygen to the positive carbon, giving an oxonium ion whose oxygen has three bonds, one lone pair and a positive charge. Step 3, fast: a second water uses a lone pair to take one hydrogen from the oxonium oxygen while the oxygen-hydrogen bond moves back onto oxygen, giving tert-butanol and hydronium.',
+  alt: 'Three rows. Step 1, slow, with no nucleophile involved: in tert-butyl bromide a curved arrow runs from the carbon-bromine bond onto bromine, giving the flat tert-butyl cation and bromide ion with four lone pairs. Step 2, fast: a curved arrow runs from a lone pair on a water oxygen to the positive carbon, giving an oxonium ion whose oxygen has three bonds, one lone pair and a positive charge. Step 3, fast: a second water uses a lone pair to take one hydrogen from the oxonium oxygen while the oxygen-hydrogen bond moves back onto oxygen, giving tert-butanol and hydronium.',
   viewBox: '0 0 760 624',
   build() {
     let s = '';
     // ---- STEP 1: ionization ----
-    s += tg(30, 26, 'STEP 1 — SLOW: THE C–Br BOND BREAKS ON ITS OWN', 'start');
+    s += tg(30, 26, 'STEP 1 — SLOW: THE C–Br BOND BREAKS, NO NUCLEOPHILE', 'start');
     const c1 = P(120, 112);
     const A = tBu(c1, { label: 'Br', kind: 'hi', r: 16 });
     s += A.s;
@@ -267,7 +267,7 @@ FIGURES.push({
   id: 'ion-pair',
   section: 'sn1',
   anchor: 'Once solvent molecules slip between the two ions, both faces are equally open again.</p>',
-  alt: 'Two panels. Left, the ion pair: bromide sits just above the flat cation, on the face it left, and partly blocks it; water attacks the open bottom face, which gives the inverted product. Right, a moment later: solvent molecules have moved between the ions, bromide has drifted away, and water can attack the top and bottom faces equally.',
+  alt: 'Two panels. Left, the ion pair: bromide sits just above the flat cation, on the face it left, and partly blocks it; water attacks the open bottom face, which gives the inverted product. Right, a moment later: solvent molecules have moved between the ions, bromide is farther off, and water can attack the top and bottom faces equally.',
   viewBox: '0 0 760 360',
   build() {
     let s = '';
@@ -290,7 +290,8 @@ FIGURES.push({
     const d = P(560, 196);
     s += cationEdge(d);
     s += bromide(P(700, 70), 225);
-    s += sm(700, 116, 'drifted away');
+    s += sm(700, 116, 'solvent now between');
+    s += sm(700, 132, 'the ions');
     const w1 = P(560, 66), w2 = P(560, 326);
     s += atom(w1.x, w1.y, 'H₂O', { r: 19, size: 10 });
     s += lp(w1, 220, 25) + lp(w1, 320, 25);
@@ -460,8 +461,8 @@ FIGURES.push({
     const C = skel(130, 280);
     s += C.g;
     s += arm(C.c[1], 90, 36, 'H', { rFrom: 0, r: 11, size: 11, kind: 'hi' }).s;
-    s += chg(P(C.c[2].x + 20, C.c[2].y + 14));
-    s += nums(C, [2]);
+    s += chg(P(C.c[2].x + 22, C.c[2].y - 4));
+    s += nums(C, [2]) + text(C.c[2].x + 10, C.c[2].y + 28, '3', { cls: 'fg-sm', size: 10.5 });
     s += arrow(P(290, 300), P(386, 300), { muted: true });
     s += sm(338, 286, 'Br⁻ bonds to C3');
     const D = skel(430, 280);
