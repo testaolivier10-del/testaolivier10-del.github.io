@@ -420,7 +420,7 @@ FIGURES.push({
   alt: 'Two rows, each starting from D-glyceraldehyde (CHO top, CH2OH bottom, H left, OH right). Row 1, turn 90 degrees: H top, CHO right, OH bottom, CH2OH left; in 3D, CHO and CH2OH now sit on wedges and H and OH on hashes, all four highlighted as changed; the enantiomer, now S. Row 2, swap H and OH once: OH left, H right; in 3D those two are highlighted; the enantiomer, now S.',
   viewBox: '0 0 760 316',
   build() { return movesNotes(['turn90', 'swap'], 'NOT SAFE'); },
-  caption: 'Coral marks every group that ends up somewhere new in 3D. Each move gives (S)-glyceraldehyde, the mirror image.',
+  caption: 'Coral marks the groups that changed: all four swap depth in the 90° turn; H and OH trade places in the swap. Each move gives (S)-glyceraldehyde, the mirror image.',
 });
 
 FIGURES.push({
@@ -429,7 +429,7 @@ FIGURES.push({
   alt: 'Two moves on D-glyceraldehyde that give the enantiomer. Turn 90 degrees: H top, CHO right, OH bottom, CH2OH left; in 3D CHO and CH2OH now point toward you; now S. Swap H and OH once: OH left, H right; now S.',
   viewBox: '0 0 340 582',
   build() { return movesLesson(['turn90', 'swap']); },
-  caption: 'Coral marks every group that ends up somewhere new in 3D. Both results are (S)-glyceraldehyde.',
+  caption: 'Coral marks the groups that changed: all four swap depth in the 90° turn; H and OH trade places in the swap. Both give (S)-glyceraldehyde.',
 });
 
 /* ------------------------------------- 5. swaps counted per stereocenter --- */
@@ -445,8 +445,8 @@ FIGURES.push({
     let s = '';
     const cols = [
       { x: 57, rows: [{ l: 'H', r: 'OH' }, { l: 'H', r: 'OH' }], name: 'D-erythrose', a: 'start here', b: '', cls: 'fg-tag' },
-      { x: 170, rows: [{ l: 'OH', r: 'H', hi: true, kinds: { l: 'warn' } }, { l: 'H', r: 'OH' }], name: 'D-threose', a: 'swap at C2', b: 'diastereomer', cls: 'fg-tag-warn' },
-      { x: 283, rows: [{ l: 'OH', r: 'H', hi: true, kinds: { l: 'warn' } }, { l: 'OH', r: 'H', hi: true, kinds: { l: 'warn' } }], name: 'L-erythrose', a: 'swap at C2, C3', b: 'enantiomer', cls: 'fg-tag-good' },
+      { x: 170, rows: [{ l: 'OH', r: 'H', hi: true, kinds: { l: 'warn' } }, { l: 'H', r: 'OH' }], name: 'D-threose', a: 'swap at C2', b: 'diastereomer', cls: 'fg-tag' },
+      { x: 283, rows: [{ l: 'OH', r: 'H', hi: true, kinds: { l: 'warn' } }, { l: 'OH', r: 'H', hi: true, kinds: { l: 'warn' } }], name: 'L-erythrose', a: 'swap at C2, C3', b: 'enantiomer', cls: 'fg-tag' },
     ];
     for (const c of cols) {
       s += chain(c.x, 30, 58, 'CHO', c.rows, 'CH₂OH', { h: 34 });
@@ -557,8 +557,8 @@ function dlPanels(pos) {
   s += cross(P(a.x, a.y), GLY, { h: 40, v: 42, kinds: { right: 'hi' }, bonds: { right: 'fg-bond-hi' } });
   s += text(a.x, a.y + 82, 'OH on the right', { cls: 'fg-tag-good' });
   s += tag(b.x, b.t, 'L-glyceraldehyde');
-  s += cross(P(b.x, b.y), { top: 'CHO', bottom: 'CH₂OH', left: 'OH', right: 'H' }, { h: 40, v: 42, kinds: { left: 'warn' }, bonds: { left: 'fg-bond-hi' } });
-  s += text(b.x, b.y + 82, 'OH on the left', { cls: 'fg-tag-warn' });
+  s += cross(P(b.x, b.y), { top: 'CHO', bottom: 'CH₂OH', left: 'OH', right: 'H' }, { h: 40, v: 42, kinds: { left: 'hi' }, bonds: { left: 'fg-bond-hi' } });
+  s += text(b.x, b.y + 82, 'OH on the left', { cls: 'fg-tag-good' });
   s += tag(c.x, c.t, 'D-glucose');
   s += chain(c.x, c.y, c.gap, 'CHO', GLUCOSE_ROWS, 'CH₂OH', { h: 38 });
   s += text(c.x, c.y + 5 * c.gap + 34, 'C5 OH on the right', { cls: 'fg-tag-good' });

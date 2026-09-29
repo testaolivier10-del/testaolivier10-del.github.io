@@ -727,11 +727,12 @@
       6:['ms-fragmentation','carbocation-stability'],
       7:['ms-fragmentation'] } },
 
-    'meso': { n:7, steps:{
+    'meso': { n:10, steps:{
       1:['meso-detection'],
-      2:['meso-detection','chirality-recognition'],
-      3:['meso-detection','enantiomer-vs-diastereomer'],
-      6:['meso-detection'] } },
+      2:['meso-detection','enantiomer-vs-diastereomer'],
+      5:['meso-detection','chirality-recognition'],
+      7:['meso-detection','chirality-recognition'],
+      9:['meso-detection'] } },
 
     'molecular-geometry': { n:11, steps:{
       1:['molecular-geometry-vsepr','lewis-structures-drawing'],

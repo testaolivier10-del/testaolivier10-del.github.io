@@ -116,8 +116,11 @@ function propaneCenter(c, w, h, o = {}) {
   // w = the group on the wedge (355°), h = the group on the hash (305°)
   let s = '';
   if (o.axis) {
-    const a = armEnd(c, 150, 70), b = armEnd(c, 330, 78);
-    s += `<line class="fg-dash" x1="${n2(a.x)}" y1="${n2(a.y)}" x2="${n2(b.x)}" y2="${n2(b.y)}"></line>`;
+    // Two segments that stop at the rim of the C disc, so the axis never
+    // shows through the label where the disc fill is translucent (dark theme).
+    const a = armEnd(c, 150, 70), a2 = armEnd(c, 150, 18), b2 = armEnd(c, 330, 18), b = armEnd(c, 330, 78);
+    s += `<line class="fg-dash" x1="${n2(a.x)}" y1="${n2(a.y)}" x2="${n2(a2.x)}" y2="${n2(a2.y)}"></line>`;
+    s += `<line class="fg-dash" x1="${n2(b2.x)}" y1="${n2(b2.y)}" x2="${n2(b.x)}" y2="${n2(b.y)}"></line>`;
   }
   s += arm(c, 90, 48, 'CH₃');
   s += arm(c, 210, 48, 'CH₃');
@@ -234,7 +237,7 @@ function bromobutane(x, y, left, right, o = {}) {
   }
   if (o.pri) {
     const [pl, pr] = o.pri;
-    s += sweep(c3, 24, 136, pr === 3 ? 305 : 251, true);
+    s += sweep(c3, pr === 3 ? 24 : 18, 136, pr === 3 ? 305 : 250, true);
     s += pri(c2.x + 10, c2.y + 20, 1);
     s += pri(c4.x + 10, c4.y + 22, 2);
     s += pri(a.x - 20, a.y + 4, pl);
@@ -313,7 +316,7 @@ FIGURES.push({
     const top = mchx(150, 64, { lab: 'Ha', size: 10.5 }, { lab: 'Hb', size: 10.5 });
     s += top.s;
     s += text(top.c1.x - 12, top.c1.y + 2, 'C1', { cls: 'fg-tag', anchor: 'end' });
-    s += text(top.c2.x - 8, top.c2.y - 8, 'C2', { cls: 'fg-tag', anchor: 'end' });
+    s += text(top.c2.x - 7, top.c2.y + 1, 'C2', { cls: 'fg-tag', anchor: 'end' });
 
     s += panel(8, 154, 324, 136);
     s += mchx(80, 200, { lab: 'D', kind: 'warn' }, { lab: 'H' }).s;
