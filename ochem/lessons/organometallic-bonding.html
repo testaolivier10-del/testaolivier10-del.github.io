@@ -105,7 +105,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 10</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -142,13 +142,13 @@ document.addEventListener('DOMContentLoaded', function(){
      exercise rather than a new rule. */
   var CASES = [
     { id:'b1', t:'C&ndash;Cl &nbsp;<span style="color:var(--muted);">(C 2.55, Cl 3.16)</span>', right:'plus',
-      why:'Carbon is &delta;+. Chlorine is more electronegative, so the electrons sit on chlorine and the carbon is the electrophile &mdash; which is why an alkyl halide gets attacked.' },
+      why:'Carbon is &delta;+. Chlorine is more electronegative, so the electrons sit on chlorine and the carbon is the electrophile. That is why an alkyl halide gets attacked.' },
     { id:'b2', t:'C&ndash;MgBr &nbsp;<span style="color:var(--muted);">(C 2.55, Mg 1.31)</span>', right:'minus',
-      why:'Carbon is &delta;&minus;. Magnesium is far below carbon, so the electrons sit on carbon and that carbon is now the nucleophile. Same carbon as in the halide it was made from, opposite behavior.' },
+      why:'Carbon is &delta;&minus;. Magnesium is far below carbon, so the electrons sit on carbon and that carbon is now the nucleophile: the same carbon as in the halide it was made from, with the opposite behavior.' },
     { id:'b3', t:'C&ndash;Li &nbsp;<span style="color:var(--muted);">(C 2.55, Li 0.98)</span>', right:'minus',
-      why:'Carbon is &delta;&minus;, and more so than in the Grignard, because the gap is wider. More carbanion character means a more reactive and less selective reagent.' },
+      why:'Carbon is &delta;&minus;, and more so than in the Grignard reagent, because the gap is wider.' },
     { id:'b4', t:'C&ndash;O &nbsp;<span style="color:var(--muted);">(C 2.55, O 3.44)</span>', right:'plus',
-      why:'Carbon is &delta;+. The largest gap of the four in that direction, which is why a carbonyl carbon is the most attacked site in the course.' }
+      why:'Carbon is &delta;+, with the largest gap of the four in that direction. The same C&ndash;O polarity makes a carbonyl carbon a target for nucleophiles.' }
   ];
   var OPTS = [ { k:'plus', l:'Carbon is &delta;+' }, { k:'minus', l:'Carbon is &delta;&minus;' } ];
 
@@ -161,27 +161,29 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Every nucleophile so far has been a heteroatom.',
-        bodyHtml: '<p class="step-body">Look back at what has attacked things in this course: hydroxide, water, alkoxides, amines, halides, cyanide. Oxygen, nitrogen, a halogen. Carbon has been on the receiving end almost every time &mdash; a carbonyl carbon attacked, an alkyl halide attacked, a protonated alkene attacked.</p>' +
-          '<p class="step-body">That is a real limit on what you can build, because the nucleophile supplies the new bond. A heteroatom nucleophile can only ever attach a heteroatom, and a carbon skeleton is made of carbon. To build one you need a nucleophile that <b>is</b> carbon.</p>' +
-          '<div class="explain-box">You have met two already, and it is worth noticing how narrow they are: <b>cyanide</b>, which brings exactly one carbon and arrives with a nitrile attached, and an <b>acetylide</b>, which has to come from a terminal alkyne. Neither lets you attach an arbitrary alkyl group. That is the gap this chapter fills.</div>'
+        title: 'The same carbon, first attacked and then attacking.',
+        bodyHtml: '<p class="step-body">Start with bromomethane, CH&#8323;Br. Its carbon is an electrophile: in an S<sub>N</sub>2 reaction, hydroxide attacks that carbon and bromide leaves.</p>' +
+          '<p class="step-body">Now stir bromomethane with magnesium metal in dry ether. The magnesium slips in between the carbon and the bromine:</p>' +
+          '<p class="step-body" style="text-align:center;font-size:16px;"><b>CH&#8323;&ndash;Br + Mg &rarr; CH&#8323;&ndash;MgBr</b></p>' +
+          '<p class="step-body">That same carbon now does the attacking. It adds to the carbonyl carbon of a ketone, as you saw in Nucleophilic addition. A compound with a carbon&ndash;metal bond is an <b>organometallic</b> compound, and CH&#8323;MgBr belongs to the most widely used family, the <b>Grignard reagents</b>, R&ndash;MgX.</p>' +
+          '<div class="explain-box">Why it matters: a nucleophile supplies the atom that forms the new bond, so joining two carbon pieces needs a carbon nucleophile. Before the Grignard reagent, the carbon nucleophiles you met were narrow. <b>Cyanide</b> brings exactly one carbon, as a nitrile; an <b>acetylide</b> has to come from a terminal alkyne; and a <b>Wittig ylide</b> only makes a C=C. An organometallic reagent can bring almost any carbon group.</div>'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Bond carbon to a metal and the polarity inverts.',
-        bodyHtml: '<p class="step-body">Carbon sits at 2.55 on the Pauling scale. Magnesium is at 1.31 and lithium at 0.98 &mdash; far below it. So in a C&ndash;Mg or C&ndash;Li bond, <b>carbon is the more electronegative partner</b>, and the shared electrons sit on carbon.</p>' +
-          '<p class="step-body">Nothing else has to happen. Take an alkyl halide, where the carbon is &delta;+ and gets attacked, and insert magnesium into that bond:</p>' +
-          '<p class="step-body" style="text-align:center;font-size:16px;"><b>R&ndash;Br + Mg &rarr; R&ndash;MgBr</b></p>' +
-          '<p class="step-body">Nothing added, nothing lost, and the same carbon is now &delta;&minus;. A deliberate reversal of a site&rsquo;s normal polarity like this is called <b>umpolung</b>, and this is the cleanest example of it in organic chemistry.</p>' +
-          '<div class="explain-box">One honesty note. The C&ndash;Mg bond is <b>polar covalent, not ionic</b> &mdash; a Grignard reagent is not a free carbanion swimming in the ether. But it behaves like one in every reaction you will write, so R⁻ is a good working model and the curved arrow starts at the C&ndash;metal bond.</div>'
+        title: 'Bond carbon to a metal and the polarity flips.',
+        bodyHtml: '<p class="step-body">On the Pauling scale, carbon is 2.55 and bromine 2.96. Bromine pulls the shared pair toward itself, so in C&ndash;Br the carbon is &delta;+.</p>' +
+          '<p class="step-body">Magnesium is 1.31, far below carbon, and lithium is lower still at 0.98. In a C&ndash;Mg or C&ndash;Li bond, <b>carbon is the more electronegative partner</b>, so the shared pair sits closer to carbon and carbon is &delta;&minus;.</p>' +
+          '<!-- fig:polarity-flip:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 404" role="img" aria-label="Top: bromomethane, a carbon with three hydrogens bonded to bromine. Carbon (2.55) is marked δ+ and bromine (2.96) δ−, so nucleophiles attack the carbon. An arrow labeled &quot;Mg, dry ether&quot; leads down to methylmagnesium bromide, the same carbon now bonded to magnesium, which is bonded to bromine. Carbon (2.55) is marked δ− and magnesium (1.31) δ+, so the carbon attacks electrophiles."><rect class="fg-panel-warn" x="0" y="0" width="340" height="180" rx="10"></rect><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">bromomethane, CH₃Br</text><text class="fg-tag" x="170" y="149" text-anchor="middle" font-size="11">C 2.55, Br 2.96: the electrons go to bromine</text><text class="fg-tag-warn" x="170" y="166" text-anchor="middle" font-size="11">carbon is δ+, so nucleophiles attack it</text><line class="fg-bond" x1="144" y1="80" x2="202" y2="80"></line><line class="fg-bond" x1="116" y1="80" x2="99" y2="80"></line><line class="fg-bond" x1="130" y1="66" x2="130" y2="53"></line><line class="fg-bond" x1="130" y1="94" x2="130" y2="107"></line><circle class="fg-atom-warn" cx="130" cy="80" r="14"></circle><text class="fg-lbl" x="130" y="84.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="216" cy="80" r="14"></circle><text class="fg-lbl" x="216" y="83.89" text-anchor="middle" font-size="10.5">Br</text><circle class="fg-atom" cx="88" cy="80" r="11"></circle><text class="fg-lbl" x="88" y="84.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="130" cy="42" r="11"></circle><text class="fg-lbl" x="130" y="46.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="130" cy="118" r="11"></circle><text class="fg-lbl" x="130" y="122.44" text-anchor="middle" font-size="12">H</text><text class="fg-lbl" x="154" y="62" text-anchor="middle" font-size="12.5">δ+</text><text class="fg-lbl" x="216" y="56" text-anchor="middle" font-size="12.5">δ−</text><line class="fg-arrow" x1="170" y1="184" x2="170" y2="213"></line><path class="fg-head" d="M170 220 L166.36 213 L173.64 213 Z"></path><text class="fg-tag" x="182" y="206" text-anchor="start" font-size="11">Mg, dry ether</text><rect class="fg-panel-good" x="0" y="224" width="340" height="180" rx="10"></rect><text class="fg-tag" x="170" y="244" text-anchor="middle" font-size="11">methylmagnesium bromide, CH₃MgBr</text><text class="fg-tag" x="170" y="373" text-anchor="middle" font-size="11">C 2.55, Mg 1.31: the electrons go to carbon</text><text class="fg-tag-good" x="170" y="390" text-anchor="middle" font-size="11">carbon is δ−, so it attacks electrophiles</text><line class="fg-bond-hi" x1="114" y1="304" x2="172" y2="304"></line><line class="fg-bond" x1="200" y1="304" x2="248" y2="304"></line><line class="fg-bond" x1="86" y1="304" x2="69" y2="304"></line><line class="fg-bond" x1="100" y1="290" x2="100" y2="277"></line><line class="fg-bond" x1="100" y1="318" x2="100" y2="331"></line><circle class="fg-atom-hi" cx="100" cy="304" r="14"></circle><text class="fg-lbl" x="100" y="308.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="186" cy="304" r="14"></circle><text class="fg-lbl" x="186" y="307.89" text-anchor="middle" font-size="10.5">Mg</text><circle class="fg-atom" cx="262" cy="304" r="14"></circle><text class="fg-lbl" x="262" y="307.89" text-anchor="middle" font-size="10.5">Br</text><circle class="fg-atom" cx="58" cy="304" r="11"></circle><text class="fg-lbl" x="58" y="308.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="100" cy="266" r="11"></circle><text class="fg-lbl" x="100" y="270.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="100" cy="342" r="11"></circle><text class="fg-lbl" x="100" y="346.44" text-anchor="middle" font-size="12">H</text><text class="fg-lbl" x="124" y="286" text-anchor="middle" font-size="12.5">δ−</text><text class="fg-lbl" x="186" y="280" text-anchor="middle" font-size="12.5">δ+</text></svg><figcaption>Follow the highlighted carbon from top to bottom, and compare the pair of electronegativity values in each panel.</figcaption></figure><!-- fig:polarity-flip:end -->' +
+          '<p class="step-body">Only the atom at the other end of that one bond changed. Reversing an atom&rsquo;s usual polarity on purpose like this is called <b>umpolung</b>, German for &ldquo;polarity reversal&rdquo;.</p>' +
+          '<div class="explain-box">The C&ndash;Mg bond is <b>polar covalent, not ionic</b>, so a Grignard reagent is not a free carbanion (a carbon with a lone pair and a full negative charge). Still, it reacts like one in every reaction you will write. So treat its carbon as R&#8315;, and start the curved arrow at the C&ndash;Mg bond.</div>'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Which end of each bond gets the electrons?</h2>' +
-            '<p class="step-body">Pauling values are given. There is no new rule here &mdash; the electrons go to the more electronegative atom, exactly as they always have. The only surprise is what that implies once the partner is a metal.</p>' +
+            '<p class="step-body">The Pauling values are given. There is no new rule here: the electrons go to the more electronegative atom, as they always have. The only surprise is what that means once the partner is a metal.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -201,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Compare the two numbers and give the electrons to the larger one. Then ask what that leaves the carbon as.');
+                api.showFeedback(fb, false, 'Compare the two numbers and give the electrons to the larger one. Then ask what charge that leaves on carbon.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -210,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function(){
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
                   ? 'All four. Two bonds make carbon an electrophile and two make it a nucleophile, and the only difference is which side of 2.55 the partner sits on.'
-                  : 'All four, first time. Nothing new was applied &mdash; the same electronegativity rule flips carbon&rsquo;s role the moment the partner is a metal.');
+                  : 'All four, first time. You applied no new rule: the same electronegativity comparison flips carbon&rsquo;s role once the partner is a metal.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -220,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
+        eyebrow: 'Guided Practice',
         title: 'Why is the carbon of a Grignard reagent nucleophilic?',
         options: [
           'Magnesium donates a lone pair to it',
@@ -229,40 +231,59 @@ document.addEventListener('DOMContentLoaded', function(){
           'Magnesium has an empty orbital that pulls electrons away'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct, and it is the same rule that made carbon electrophilic in an alkyl halide. Magnesium has no lone pair to donate, the bond is polar covalent rather than ionic, and an empty orbital on magnesium would push the polarity the other way.',
+        correctFeedback: 'Correct. It is the same rule that made carbon electrophilic in an alkyl halide. Magnesium has no lone pair to donate, the bond is polar covalent rather than ionic, and an orbital pulling electrons toward magnesium would make carbon &delta;+, not &delta;&minus;.',
         wrongFeedback: 'Compare carbon at 2.55 with magnesium at 1.31. Which atom keeps the bonding electrons, and what charge does that leave on the other?'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'Which reagent is the most reactive and the least selective?',
-        options: [
-          'R₂CuLi, because copper is a transition metal',
-          'R–Li, because lithium is the most electropositive of them',
-          'R–B(OH)₂, because boron is electron-deficient',
-          'R–ZnX, because zinc is divalent like magnesium'
-        ],
-        correctIndex: 1,
-        correctFeedback: 'Correct. The wider the electronegativity gap, the more carbanion character on carbon, and lithium at 0.98 opens the widest gap here. Copper and boron sit much closer to carbon, which is exactly why their reagents are the gentle, selective ones.',
-        wrongFeedback: 'Rank the metals by how far below carbon they sit. More negative charge on carbon means more reactive — and being a transition metal or being divalent is not what sets it.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'And the one thing that destroys every one of them.',
-        bodyHtml: '<p class="step-body">R⁻ is the conjugate base of an alkane, and alkanes have pKa values around <b>50</b>. That makes an organometallic one of the strongest bases in organic chemistry &mdash; strong enough to take a proton from essentially anything.</p>' +
+        title: 'Four metals and boron, one trend.',
+        bodyHtml: '<p class="step-body">Other metals do the same job, some more strongly than magnesium and some less. Here are the five reagents you will meet (boron, strictly, is a metalloid), from the element farthest below carbon (2.55) to the one closest to it:</p>' +
           '<ul class="step-body">' +
-          '<li><b>Water</b>, pKa 15.7. Destroys it instantly, giving R&ndash;H. Glassware and solvent must be dry.</li>' +
-          '<li><b>An alcohol</b>, pKa 16, and <b>a carboxylic acid</b>, pKa 5. Same outcome.</li>' +
-          '<li><b>An amine</b>, pKa 38, and a <b>terminal alkyne</b>, pKa 25. Deprotonated, not attacked.</li>' +
+          '<li><b>R&ndash;Li</b>, Li 0.98: organolithium, more reactive and more basic than a Grignard reagent.</li>' +
+          '<li><b>R&ndash;MgX</b>, Mg 1.31: Grignard reagent, strongly nucleophilic and strongly basic.</li>' +
+          '<li><b>R&ndash;ZnX</b>, Zn 1.65: organozinc, mild enough to leave an ester in the same molecule alone.</li>' +
+          '<li><b>R&#8322;CuLi</b>, Cu 1.90: Gilman reagent (a cuprate), much milder; it comes later in this chapter.</li>' +
+          '<li><b>R&ndash;B(OH)&#8322;</b>, B 2.04: boronic acid, barely nucleophilic on its own, so it needs a palladium catalyst.</li>' +
           '</ul>' +
-          '<div class="explain-box">This is the most common way a synthesis that works on paper fails in a flask. If the substrate carries an O&ndash;H anywhere, the reagent is spent on that proton and the carbonyl is never touched &mdash; and the reaction does not look like a mess, it looks like nothing happening. Fix it by doing the organometallic step <i>before</i> the acidic group goes on, or by protecting it.</div>' +
-          '<p class="step-body" style="margin-bottom:0;">Occasionally the destruction is the point: quench with D₂O instead of water and a deuterium lands exactly where the metal was, which is how a single position gets labeled.</p>'
+          '<p class="step-body">The farther the metal sits below carbon, the more negative charge the carbon carries and the more it acts like a carbanion. That makes the reagent more reactive and less <b>selective</b>, that is, less able to pick out one group in a molecule and leave the others alone.</p>' +
+          '<div class="explain-box">Reactivity and selectivity trade against each other. If a Grignard reagent would attack three groups in your molecule, the usual fix is a <i>less</i> reactive organometallic.</div>'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
-        title: 'CH₃MgBr is added to 4-hydroxybutan-2-one. What is the major outcome?',
+        eyebrow: 'Independent Practice',
+        title: 'Which reagent is the most reactive and the least selective?',
+        options: [
+          'R₂CuLi, because copper is a transition metal',
+          'R–Li, because lithium is the least electronegative',
+          'R–B(OH)₂, because boron has an empty orbital',
+          'R–ZnX, because zinc forms two bonds like magnesium'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The wider the electronegativity gap, the more carbanion character on carbon, and lithium at 0.98 opens the widest gap of the five. Copper and boron sit much closer to carbon, which is why their reagents are the gentle, selective ones.',
+        wrongFeedback: 'Rank the metals by how far below carbon they sit. More negative charge on carbon means a more reactive reagent; being a transition metal, or forming two bonds, is not what sets it.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The one thing that destroys every one of them.',
+        bodyHtml: '<p class="step-body">Add a drop of water to CH&#8323;MgBr and you get methane, CH&#8324;. The carbon has taken a proton, and the reagent is gone.</p>' +
+          '<p class="step-body">R&#8315; is the conjugate base of an alkane, and alkanes have pK<sub>a</sub> values around <b>50</b>. So an organometallic is one of the strongest bases in organic chemistry, and each of these destroys it:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Water</b>, pK<sub>a</sub> 15.7, instantly. Glassware and solvent must be dry.</li>' +
+          '<li><b>An alcohol</b>, pK<sub>a</sub> 16, and <b>a carboxylic acid</b>, pK<sub>a</sub> 5.</li>' +
+          '<li><b>An amine</b> N&ndash;H, pK<sub>a</sub> about 36 to 38, and a <b>terminal alkyne</b>, pK<sub>a</sub> 25. Both are deprotonated rather than attacked.</li>' +
+          '</ul>' +
+          '<p class="step-body">Proton transfer is faster than addition to a C=O, so an O&ndash;H anywhere in the substrate is hit first. Each acidic proton uses up one <b>equivalent</b> of reagent, meaning one molecule of reagent per molecule of substrate, before any addition happens.</p>' +
+          '<!-- fig:quench-or-add:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 420" role="img" aria-label="Two panels, each starting from CH3–MgBr with its C–Mg bond highlighted. Top, with methanol: a curved arrow runs from the C–Mg bond to the H of the O–H, and a second from the O–H bond onto the oxygen, giving CH4 plus CH3O− +MgBr. This is fast and uses up the reagent. Bottom, with acetone: a curved arrow runs from the C–Mg bond to the carbonyl carbon, and a second from the C=O bond onto the oxygen, giving (CH3)3C–O− +MgBr. This happens only when no O–H is present."><rect class="fg-panel-warn" x="0" y="0" width="340" height="190" rx="10"></rect><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">with methanol: the reagent takes a proton</text><text class="fg-tag-warn" x="170" y="176" text-anchor="middle" font-size="11">fast, and the reagent is used up</text><line class="fg-bond-hi" x1="57.4" y1="98" x2="96.8" y2="98"></line><circle class="fg-atom-hi" cx="42" cy="98" r="15.4"></circle><text class="fg-lbl" x="42" y="101.52" text-anchor="middle" font-size="9.5">H₃C</text><circle class="fg-atom" cx="116" cy="98" r="19.2"></circle><text class="fg-lbl" x="116" y="101.52" text-anchor="middle" font-size="9.5">MgBr</text><line class="fg-bond" x1="239.91" y1="77.05" x2="213.5" y2="92.46"></line><line class="fg-bond" x1="264.09" y1="77.05" x2="286.7" y2="90.24"></line><circle class="fg-atom" cx="252" cy="70" r="14"></circle><text class="fg-lbl" x="252" y="74.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom-warn" cx="204" cy="98" r="11"></circle><text class="fg-lbl" x="204" y="102.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="300" cy="98" r="15.4"></circle><text class="fg-lbl" x="300" y="101.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-lp" cx="240.33" cy="51.97" r="2.3"></circle><circle class="fg-lp" cx="233.97" cy="58.33" r="2.3"></circle><circle class="fg-lp" cx="270.03" cy="58.33" r="2.3"></circle><circle class="fg-lp" cx="263.67" cy="51.97" r="2.3"></circle><path class="fg-arrow" d="M79 106 Q136.6 138.99 187.05 107.69"></path><path class="fg-head" d="M193 104 L188.97 110.78 L185.13 104.6 Z"></path><path class="fg-arrow" d="M224 91 Q239.27 100.28 245.79 91.6"></path><path class="fg-head" d="M250 86 L248.7 93.78 L242.88 89.41 Z"></path><text class="fg-lbl" x="170" y="148" text-anchor="middle" font-size="12.5">CH₄  +  CH₃O⁻ ⁺MgBr</text><rect class="fg-panel-good" x="0" y="206" width="340" height="214" rx="10"></rect><text class="fg-tag" x="170" y="226" text-anchor="middle" font-size="11">with acetone: the reagent adds to C=O</text><text class="fg-tag-good" x="170" y="406" text-anchor="middle" font-size="11">only when no O–H is present</text><line class="fg-bond-hi" x1="57.4" y1="322" x2="96.8" y2="322"></line><circle class="fg-atom-hi" cx="42" cy="322" r="15.4"></circle><text class="fg-lbl" x="42" y="325.52" text-anchor="middle" font-size="9.5">H₃C</text><circle class="fg-atom" cx="116" cy="322" r="19.2"></circle><text class="fg-lbl" x="116" y="325.52" text-anchor="middle" font-size="9.5">MgBr</text><line class="fg-bond" x1="236" y1="304" x2="236" y2="282"></line><line class="fg-bond" x1="244" y1="304" x2="244" y2="282"></line><line class="fg-bond" x1="228.19" y1="325.52" x2="208.99" y2="337.73"></line><line class="fg-bond" x1="251.81" y1="325.52" x2="271.01" y2="337.73"></line><circle class="fg-atom" cx="240" cy="318" r="14"></circle><text class="fg-lbl" x="240" y="322.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="240" cy="268" r="14"></circle><text class="fg-lbl" x="240" y="272.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="196" cy="346" r="15.4"></circle><text class="fg-lbl" x="196" y="349.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom" cx="284" cy="346" r="15.4"></circle><text class="fg-lbl" x="284" y="349.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-lp" cx="225.38" cy="252.27" r="2.3"></circle><circle class="fg-lp" cx="220.22" cy="259.64" r="2.3"></circle><circle class="fg-lp" cx="259.78" cy="259.64" r="2.3"></circle><circle class="fg-lp" cx="254.62" cy="252.27" r="2.3"></circle><path class="fg-arrow" d="M79 314 Q151.53 279 218.61 309.13"></path><path class="fg-head" d="M225 312 L217.12 312.45 L220.11 305.81 Z"></path><path class="fg-arrow" d="M248 298 Q263.38 289.79 258.96 280.34"></path><path class="fg-head" d="M256 274 L262.26 278.8 L255.67 281.88 Z"></path><text class="fg-lbl" x="170" y="384" text-anchor="middle" font-size="12.5">(CH₃)₃C–O⁻ ⁺MgBr</text></svg><figcaption>In both panels the first curved arrow starts at the same highlighted C–Mg bond. Only its target changes: a proton on top, a carbonyl carbon below.</figcaption></figure><!-- fig:quench-or-add:end -->' +
+          '<div class="explain-box">This is the most common way a synthesis that works on paper fails in the flask, and it looks like nothing happening. Fix it by running the organometallic step <i>before</i> the acidic group is in the molecule, or by protecting that group (converting it for a while into one with no acidic H, a method taught later in the course). The same test applies to the halide you make the reagent from: 4-bromobutan-1-ol, for example, cannot become a Grignard reagent, because the O&ndash;H in the same compound destroys the reagent as it forms.</div>' +
+          '<p class="step-body" style="margin-bottom:0;">Sometimes the proton transfer is the point. <b>Quench</b> the reagent (destroy it on purpose) with D&#8322;O instead of water and a deuterium (hydrogen with an extra neutron) lands exactly where the metal was, which labels that one position.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'You add 1.0 equivalent of CH₃MgBr to 4-hydroxybutan-2-one, drawn below. What is the major outcome?',
+        bodyHtml: '<!-- fig:l-hydroxyketone:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 130" role="img" aria-label="4-hydroxybutan-2-one in skeletal form: an HO on the left end of a four-carbon chain, and a C=O on carbon 2."><rect class="fg-panel" x="0" y="0" width="340" height="130" rx="10"></rect><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">4-hydroxybutan-2-one</text><line class="fg-bond" x1="76.27" y1="103.25" x2="104" y2="88"></line><line class="fg-bond" x1="104" y1="88" x2="142" y2="110"></line><line class="fg-bond" x1="142" y1="110" x2="180" y2="88"></line><line class="fg-bond" x1="180" y1="88" x2="218" y2="110"></line><line class="fg-bond" x1="176" y1="88" x2="176" y2="60"></line><line class="fg-bond" x1="184" y1="88" x2="184" y2="60"></line><circle class="fg-atom" cx="180" cy="46" r="14"></circle><text class="fg-lbl" x="180" y="50.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="64" cy="110" r="14"></circle><text class="fg-lbl" x="64" y="113.89" text-anchor="middle" font-size="10.5">HO</text><text class="fg-tag" x="104" y="78" text-anchor="middle" font-size="11">C4</text><text class="fg-tag" x="180" y="120" text-anchor="middle" font-size="11">C2</text></svg><figcaption>Two groups to find: an OH on C4 and a C=O on C2.</figcaption></figure><!-- fig:l-hydroxyketone:end -->',
         options: [
           'The ketone is attacked, giving a tertiary alcohol',
           'The OH is deprotonated and methane is released',
@@ -270,21 +291,32 @@ document.addEventListener('DOMContentLoaded', function(){
           'Both the ketone and the alcohol react'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Acid–base beats addition every time, because it is far faster: the Grignard takes the O–H proton, leaves as CH₄, and the magnesium alkoxide that remains does nothing to the ketone. A second equivalent would then add — which is the cheap fix when protection is not worth two steps.',
-        wrongFeedback: 'There are two sites here, an acidic O–H and a ketone. Which does a base with an effective pKa near 50 reach first?'
+        correctFeedback: 'Correct. Proton transfer is far faster than addition, so the Grignard reagent takes the O&ndash;H proton, and its CH&#8323; leaves as CH&#8324;. That spends the only equivalent, and the magnesium alkoxide left behind does nothing to the ketone, so workup returns the starting material. A second equivalent, added before workup, would reach the ketone. That fix can work, though it wastes a whole equivalent of reagent.',
+
+        wrongFeedback: 'There are two sites here, an acidic O&ndash;H and a ketone, and only one equivalent of reagent. Which site does a base with a pK<sub>a</sub> near 50 reach first?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explanation',
+        title: 'Why a Grignard reagent and an alkyl halide do not simply couple.',
+        bodyHtml: '<p class="step-body">Suppose you want pentane from CH&#8323;MgBr and 1-bromobutane. On paper it is S<sub>N</sub>2: the reagent&rsquo;s carbon attacks C1, the carbon that carries the bromine, and bromide leaves. In practice it gives little pentane.</p>' +
+          '<p class="step-body">The substitution is slow. A Grignard reagent is a very strong base but a poor S<sub>N</sub>2 nucleophile toward an alkyl halide, so side reactions have time to take over. One of them is <b>E2</b>: the reagent takes a hydrogen from C2, a C=C forms, and bromide leaves.</p>' +
+          '<!-- fig:alkyl-halide-mix:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 396" role="img" aria-label="Two panels with CH3MgBr and 1-bromobutane. Top: muted curved arrows show the hoped-for SN2, the C–Mg bond attacking C1 and bromide leaving, which would give pentane but forms only slowly. Bottom: E2. A curved arrow runs from the C–Mg bond to a hydrogen on C2, a second from the C2–H bond into the C1–C2 bond to make a double bond, and a third from the C1–Br bond onto bromine. The products are CH4, but-1-ene and MgBr2."><rect class="fg-panel" x="0" y="0" width="340" height="150" rx="10"></rect><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">the hoped-for SN2 at C1 of 1-bromobutane</text><text class="fg-tag-mut" x="170" y="136" text-anchor="middle" font-size="11">pentane, but it forms only slowly</text><line class="fg-bond-hi" x1="49.4" y1="100" x2="88.8" y2="100"></line><circle class="fg-atom-hi" cx="34" cy="100" r="15.4"></circle><text class="fg-lbl" x="34" y="103.52" text-anchor="middle" font-size="9.5">H₃C</text><circle class="fg-atom" cx="108" cy="100" r="19.2"></circle><text class="fg-lbl" x="108" y="103.52" text-anchor="middle" font-size="9.5">MgBr</text><line class="fg-bond" x1="166" y1="100" x2="200" y2="78"></line><line class="fg-bond" x1="200" y1="78" x2="234" y2="100"></line><line class="fg-bond" x1="234" y1="100" x2="268" y2="78"></line><line class="fg-bond" x1="268" y1="78" x2="293.88" y2="92.99"></line><circle class="fg-atom" cx="306" cy="100" r="14"></circle><text class="fg-lbl" x="306" y="103.89" text-anchor="middle" font-size="10.5">Br</text><text class="fg-tag" x="282" y="68" text-anchor="start" font-size="11">C1</text><path class="fg-arrow-mut" d="M71 92 Q164.42 42.21 259.28 70.03"></path><path class="fg-head-mut" d="M266 72 L258.26 73.52 L260.31 66.54 Z"></path><path class="fg-arrow-mut" d="M290 83 Q306.66 78.01 312.84 86.37"></path><path class="fg-head-mut" d="M317 92 L309.91 88.53 L315.77 84.21 Z"></path><rect class="fg-panel-warn" x="0" y="166" width="340" height="230" rx="10"></rect><text class="fg-tag" x="170" y="186" text-anchor="middle" font-size="11">what competes: E2, with the reagent as the base</text><text class="fg-tag" x="170" y="382" text-anchor="middle" font-size="11">CH₄  +  but-1-ene  +  MgBr₂</text><line class="fg-bond" x1="138" y1="254" x2="174" y2="232"></line><line class="fg-bond" x1="174" y1="232" x2="210" y2="254"></line><line class="fg-bond-hi" x1="210" y1="254" x2="246" y2="232"></line><line class="fg-bond" x1="246" y1="232" x2="273.73" y2="247.25"></line><line class="fg-bond" x1="210" y1="254" x2="210" y2="287"></line><circle class="fg-atom" cx="286" cy="254" r="14"></circle><text class="fg-lbl" x="286" y="257.89" text-anchor="middle" font-size="10.5">Br</text><circle class="fg-atom-warn" cx="210" cy="298" r="11"></circle><text class="fg-lbl" x="210" y="302.44" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="246" y="222" text-anchor="middle" font-size="11">C1</text><text class="fg-tag" x="222" y="268" text-anchor="start" font-size="11">C2</text><line class="fg-bond-hi" x1="65.2" y1="346" x2="106.6" y2="346"></line><circle class="fg-atom" cx="46" cy="346" r="19.2"></circle><text class="fg-lbl" x="46" y="349.52" text-anchor="middle" font-size="9.5">BrMg</text><circle class="fg-atom-hi" cx="122" cy="346" r="15.4"></circle><text class="fg-lbl" x="122" y="349.52" text-anchor="middle" font-size="9.5">CH₃</text><path class="fg-arrow" d="M86 336 Q135.42 294.98 192.07 303.02"></path><path class="fg-head" d="M199 304 L191.56 306.62 L192.58 299.41 Z"></path><path class="fg-arrow" d="M205 282 Q197.4 256.95 215.42 250.39"></path><path class="fg-head" d="M222 248 L216.67 253.81 L214.18 246.97 Z"></path><path class="fg-arrow" d="M262 236 Q276.85 225.03 285.02 233.08"></path><path class="fg-head" d="M290 238 L282.46 235.67 L287.57 230.49 Z"></path></svg><figcaption>Top: the slow substitution you might plan, with its arrows in gray. Bottom: the E2 that competes with it.</figcaption></figure><!-- fig:alkyl-halide-mix:end -->' +
+          '<div class="explain-box">The fix is a <i>less</i> reactive reagent: a Gilman reagent couples cleanly with an alkyl halide because it is milder, as the cuprates lesson shows.</div>'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Why can an alkyl halide and a Grignard made from that same halide not simply be mixed to couple two chains?',
+        title: 'You plan to make heptane by adding 1-bromobutane to propylmagnesium bromide, CH₃CH₂CH₂MgBr. Why does the plan give little heptane?',
         options: [
-          'Grignards are not nucleophilic enough for SN2',
-          'They would react, but the product is too unstable to isolate',
-          'A Grignard is a strong base, so E2 and side reactions outrun the substitution',
-          'The magnesium salt precipitates before they can meet'
+          'The SN2 step is slow, so E2 and other side reactions win',
+          'The Grignard carbon is δ+, so it cannot attack C1',
+          'Heptane forms, then reacts further with the leftover Grignard reagent',
+          'The C–H bonds of 1-bromobutane quench the Grignard reagent'
         ],
-        correctIndex: 2,
-        correctFeedback: 'Correct, and it is the recurring cost of high reactivity. A Grignard is both a strong nucleophile and a very strong base, so against an alkyl halide it eliminates, couples with itself, and does several other things alongside the substitution you wanted — the reaction is not selective enough to be useful. The answer is not a better nucleophile but a <i>worse</i> one: a Gilman reagent couples with alkyl halides cleanly precisely because it is less reactive, and palladium chemistry solves the aryl case a different way. Turning reactivity down buys more than turning it up, which is the argument the rest of this chapter makes.'
+        correctIndex: 0,
+        correctFeedback: 'Correct. A Grignard reagent is a very strong base and a poor S<sub>N</sub>2 nucleophile toward an alkyl halide, so it pulls a hydrogen off C2 of 1-bromobutane (giving propane and but-1-ene) and joins in other side reactions long before much heptane forms. The Grignard carbon is &delta;&minus;, not &delta;+; heptane has no group a Grignard reagent reacts with; and a C&ndash;H bond with a pK<sub>a</sub> near 50 is not acidic enough to quench it. The answer is a <i>less</i> reactive nucleophile: a Gilman reagent couples with alkyl halides cleanly, as the cuprates lesson shows.',
+        wrongFeedback: 'Recall what a Grignard reagent is better at than S<sub>N</sub>2, and which hydrogen of 1-bromobutane sits next to the carbon that carries the bromine.'
       }
     ]
   });

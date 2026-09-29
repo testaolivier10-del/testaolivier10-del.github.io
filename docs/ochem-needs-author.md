@@ -740,3 +740,40 @@ confirm it.
     penta-1,4-diene; the historical product is often given as penta-1,3-diene, by isomerization.
     The names sec-butyl and 1-phenylprop-1-ene are kept (older forms).
   - The pages use "N-nitrosamine"; the diazonium figure was changed to match.
+
+## Organometallics (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### organometallics-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `organometallic-bonding`, `grignard-reagents`, `gilman-reagents`,
+  `organolithium-reagents`, `cross-coupling`.
+- **Positions taken:**
+  - Course order puts Protecting groups after this chapter. So the organometallic-bonding worked
+    example accepts 2.0 equivalents of Grignard reagent with a free OH (with a caveat that it wastes
+    reagent), and Grignard reagents teaches the TBS silyl ether in place (TBSCl with imidazole on,
+    TBAF off).
+  - Grignard reagents says "reorder, then protect"; Protecting groups says protection is the answer
+    a question expects. One framing should be chosen. Both pages also say extra Grignard reagent
+    with a free OH gives yields that are "often poor and hard to repeat", which may be overstated.
+  - The R–R (Wurtz-type) by-product formed while a Grignard reagent is made was cut from
+    organometallic-bonding: the wording implied the slow SN2 the section rules out, and the real
+    route is radical, at the magnesium surface. Add it back with that mechanism if wanted.
+  - The reactivity table orders Zn before Cu by electronegativity and calls the order "rough at the
+    gentle end"; in practice cuprates are often more reactive than organozinc reagents.
+  - Grignard reagents uses a two-ether, 8-electron picture of RMgX; the Schlenk equilibrium,
+    aggregates, hydrocarbon solvents with donor additives and Weinreb chelate stability on warming
+    are not mentioned.
+  - Gilman reagents explains 1,4-addition by hard/soft (the Cu(III) path is a marked aside);
+    "cooling does not switch a Grignard to 1,4" is a teaching rule for simple enones. The PCC
+    (Babler–Dauben) transposition was removed from the worked example because the course never
+    teaches it.
+  - Organolithium reagents: the diisopropyl ketone case (iPrMgBr reduces or enolizes, iPrLi adds)
+    is classic but not checked against a source; "smaller and more reactive" simplifies (RLi is
+    aggregated). LDA is called a lithium amide, not an organolithium.
+  - Cross-coupling teaches the halide order I > OTf > Br >> Cl, with a note that Br ≈ OTf (or Br
+    faster) with many ligands; the audit suggested I > Br ≈ OTf. The Suzuki base is taught by the
+    borate route, with the Pd–OH route shown in a fact box. Turnover is given as about 50 at
+    2 mol %.

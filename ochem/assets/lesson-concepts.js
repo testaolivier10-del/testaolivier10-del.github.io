@@ -182,25 +182,42 @@
       9:['nucleotide-assembly','sugar-ring'],
       11:['nucleotide-assembly'] } },
 
-    'organometallic-bonding': { n:8, steps:{
-      2:['polarity-reversal'], 3:['polarity-reversal'], 4:['polarity-reversal'],
-      6:['organometallic-quench'], 7:['polarity-reversal','organometallic-quench'] } },
+    'organometallic-bonding': { n:10, steps:{
+      2:['polarity-reversal'],
+      3:['polarity-reversal'],
+      5:['polarity-reversal'],
+      7:['organometallic-quench'],
+      9:['polarity-reversal','organometallic-quench'] } },
 
-    'grignard-reagents': { n:8, steps:{
-      2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
-      6:['grignard-scope'], 7:['organometallic-quench','grignard-scope'] } },
+    'grignard-reagents': { n:10, steps:{
+      3:['grignard-scope'],
+      4:['grignard-scope'],
+      5:['grignard-scope'],
+      6:['grignard-scope'],
+      8:['organometallic-quench','grignard-scope'],
+      9:['organometallic-quench','grignard-scope'] } },
 
-    'organolithium-reagents': { n:8, steps:{
-      2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
-      6:['grignard-scope'], 7:['grignard-scope'] } },
+    'organolithium-reagents': { n:12, steps:{
+      3:['organometallic-quench','grignard-scope'],
+      5:['grignard-scope'],
+      7:['alkyne-acidity'],
+      9:['grignard-scope'],
+      10:['acetylide-alkylation','substrate-class'],
+      11:['acetylide-alkylation','grignard-scope'] } },
 
-    'gilman-reagents': { n:8, steps:{
-      2:['hard-soft-addition'], 3:['hard-soft-addition'], 4:['hard-soft-addition'],
-      6:['hard-soft-addition'], 7:['hard-soft-addition'] } },
+    'gilman-reagents': { n:11, steps:{
+      4:['hard-soft-addition'],
+      5:['hard-soft-addition'],
+      7:['hard-soft-addition'],
+      9:['hard-soft-addition'],
+      10:['hard-soft-addition'] } },
 
-    'cross-coupling': { n:8, steps:{
-      2:['catalytic-cycle'], 3:['catalytic-cycle'], 4:['catalytic-cycle'],
-      6:['catalytic-cycle'], 7:['catalytic-cycle','hard-soft-addition'] } },
+    'cross-coupling': { n:12, steps:{
+      2:['catalytic-cycle'],
+      7:['catalytic-cycle'],
+      8:['catalytic-cycle'],
+      10:['catalytic-cycle'],
+      11:['catalytic-cycle'] } },
 
     'wittig-reaction': { n:13, steps:{
       3:['alkene-by-construction'],
