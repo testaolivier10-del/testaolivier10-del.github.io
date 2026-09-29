@@ -105,7 +105,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 12</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -136,16 +136,16 @@
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var CASES = [
-    { id:'d1', t:'<b>PET</b> — an ester backbone', right:'chem',
-      why:'Chemically recyclable. The ester bonds are a handle hydrolysis can select, so the polymer can be taken back to terephthalic acid and ethylene glycol and rebuilt. That is a structural fact about PET; its actual high recycling rate is mostly down to bottle collection and mechanical reprocessing, not to depolymerization.' },
-    { id:'d2', t:'<b>Polyethylene</b> — a C–C backbone', right:'mech',
-      why:'Mechanical only. A saturated hydrocarbon chain offers nothing for water or an enzyme to attack, so it can be melted and remolded but never hydrolyzed back to its monomer. Cracking it thermally returns a mixture of olefins and naphtha \u2014 useful feedstock, but not ethylene recovered from ethylene. Which is also why it persists.' },
-    { id:'d3', t:'<b>Epoxy</b> — a cross-linked network', right:'none',
-      why:'Neither. It is one covalent molecule, so it cannot be melted, and there is no backbone bond to cleave selectively. Thermosets are the hardest case at end of life.' },
-    { id:'d4', t:'<b>PLA</b> — a polyester from lactic acid', right:'chem',
-      why:'Chemically recyclable, and degradable as well: hydrolysis returns lactic acid, an ordinary metabolite. The qualifier is conditions — it composts efficiently at industrial temperatures and negligibly in a garden.' }
+    { id:'d1', t:'<b>PET</b> &mdash; ester bonds in the backbone; separate chains', right:'both',
+      why:'Melted, or taken back to monomers. It is a thermoplastic, so it can be melted and remolded. Its ester bonds also let it be hydrolyzed back to terephthalic acid and ethylene glycol and rebuilt. Most PET that is recycled today still goes the mechanical route; chemical recycling is the extra option its structure allows.' },
+    { id:'d2', t:'<b>Polyethylene</b> &mdash; a C&ndash;C backbone; separate chains', right:'mech',
+      why:'Melted and remolded only. A saturated C&ndash;C chain has no polar carbonyl for water or an enzyme to attack. Heating it hard cracks it into a mixture of small alkenes and oil, which is useful feedstock but not the ethylene it was made from. The same inertness is why it persists.' },
+    { id:'d3', t:'<b>Epoxy</b> &mdash; one network, joined by amine C&ndash;N bonds (no C=O) and ethers', right:'none',
+      why:'Neither. A network never melts or flows, and its amine C&ndash;N and ether links have no carbonyl for water to attack. Thermosets are the hardest case at the end of their life.' },
+    { id:'d4', t:'<b>PLA</b> &mdash; a polyester of lactic acid; separate chains', right:'both',
+      why:'Melted, or taken back to monomers, and it can also degrade: hydrolysis returns lactic acid, a normal product of metabolism. The catch is conditions. It composts well in an industrial facility and barely at all in a garden.' }
   ];
-  var OPTS = [ { k:'mech', l:'Mechanically only' }, { k:'none', l:'Neither' }, { k:'chem', l:'Chemically, back to monomers' } ];
+  var OPTS = [ { k:'mech', l:'Melted and remolded only' }, { k:'none', l:'Neither' }, { k:'both', l:'Melted, or taken back to monomers' } ];
 
   window.OchemLessonEngine.start({
     topicId: 'polymer-design',
@@ -157,35 +157,104 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Reading a polymer backwards.',
-        bodyHtml: '<p class="step-body">Given a polymer, find its monomers. The disconnection is mechanical once you have identified which kind it is:</p>' +
-          '<ul class="step-body">' +
-          '<li><b>Only carbons in the backbone?</b> It came from an alkene. Find the repeat unit, put the double bond back.</li>' +
-          '<li><b>An ester in the backbone?</b> Cut the <b>acyl C&ndash;O</b> bond, OH to the acid side and H to the alcohol side. Out comes a <b>diacid and a diol</b>.</li>' +
-          '<li><b>An amide in the backbone?</b> Cut every amide C&ndash;N bond. Out comes a <b>diacid and a diamine</b>.</li>' +
-          '</ul>' +
-          '<div class="explain-box">Two checks keep you honest. Every fragment must have <b>two reactive sites</b> &mdash; if one comes back with a single group, you cut in the wrong place. And the atoms must balance: add the two monomer formulas, subtract the repeat unit, and the difference should be exactly the water that was lost &mdash; one molecule per linkage, so <i>two</i> for a diacid-plus-diol repeat unit. PET: 166 + 62 &minus; 192 = 36, which is 2 H<sub>2</sub>O.</div>'
+        bodyHtml: '<p class="step-body">Given a polymer, you can work out its monomers. This is retrosynthesis applied to a chain: find the bonds that polymerization made, and cut them on paper. Each cut is a <b>disconnection</b>.</p>' +
+          '<p class="step-body">Start with polypropylene. Its backbone holds only carbons, so it came from an alkene. Draw one repeat unit in brackets. The two bonds that cross the brackets are the ones the polymerization made, and the bond between them used to be the C=C. Put the double bond back and you have propene.</p>',
+        diagramHtml: '<!-- fig:l-cut-alkene:start --><figure class="notes-figure notes-figure--wide" style="--vb:330"><svg viewBox="0 0 330 270" role="img" aria-label="Polypropylene repeat unit CH2–CH(CH3) in brackets, the two bonds that cross the brackets highlighted. An open arrow points down to propene, CH2=CH–CH3."><path class="fg-bond" d="M82 22 L72 22 L72 78 L82 78"></path><line class="fg-bond-hi" x1="58" y1="50" x2="96" y2="50"></line><line class="fg-bond" x1="132" y1="50" x2="163" y2="50"></line><line class="fg-bond-hi" x1="193" y1="50" x2="234" y2="50"></line><path class="fg-bond" d="M210 22 L220 22 L220 78 L210 78"></path><text class="fg-lbl" x="230" y="78" text-anchor="start" font-size="13">n</text><line class="fg-bond" x1="178" y1="65" x2="178" y2="78"></line><circle class="fg-atom" cx="114" cy="50" r="18"></circle><text class="fg-lbl" x="114" y="54.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="178" cy="50" r="15"></circle><text class="fg-lbl" x="178" y="54.81" text-anchor="middle" font-size="13">CH</text><circle class="fg-atom" cx="178" cy="96" r="18"></circle><text class="fg-lbl" x="178" y="100.81" text-anchor="middle" font-size="13">CH₃</text><text class="fg-tag" x="20" y="102" text-anchor="start" font-size="11">polypropylene</text><line class="fg-arrow" x1="154" y1="118" x2="154" y2="148"></line><line class="fg-arrow" x1="146" y1="118" x2="146" y2="148"></line><path class="fg-head" d="M150 162 L141 146 L159 146 Z"></path><line class="fg-bond" x1="136" y1="186" x2="167" y2="186"></line><line class="fg-bond" x1="136" y1="194" x2="167" y2="194"></line><line class="fg-bond" x1="182" y1="205" x2="182" y2="218"></line><circle class="fg-atom" cx="118" cy="190" r="18"></circle><text class="fg-lbl" x="118" y="194.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="182" cy="190" r="15"></circle><text class="fg-lbl" x="182" y="194.81" text-anchor="middle" font-size="13">CH</text><circle class="fg-atom" cx="182" cy="236" r="18"></circle><text class="fg-lbl" x="182" y="240.81" text-anchor="middle" font-size="13">CH₃</text><text class="fg-tag-good" x="222" y="195" text-anchor="start" font-size="11">propene</text></svg><figcaption>The highlighted bonds cross the brackets. The bond between them becomes the C=C again.</figcaption></figure><!-- fig:l-cut-alkene:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Visualize',
+        title: 'Cutting an ester or an amide.',
+        bodyHtml: '<p class="step-body">PET has two esters in every repeat unit. Each one formed by acyl substitution, when an alcohol oxygen attacked a carbonyl carbon. So cut the bond from the carbonyl carbon to that oxygen, the <b>acyl C&ndash;O bond</b>. Then give the carbonyl carbon an OH and the oxygen an H. Out come a <b>diacid and a diol</b>.</p>' +
+          '<p class="step-body">Do not cut the other C&ndash;O bond, the one from the oxygen to the CH<sub>2</sub>. That leaves a CH<sub>2</sub>CH<sub>2</sub> piece with no oxygen at either end.</p>' +
+          '<p class="step-body">An amide in the backbone is cut the same way: at the bond from the carbonyl carbon to the nitrogen, not the one from the nitrogen to the CH<sub>2</sub>. Out come a <b>diacid and a diamine</b>.</p>',
+        diagramHtml: '<!-- fig:l-cut-ester:start --><figure class="notes-figure notes-figure--wide" style="--vb:330"><svg viewBox="0 0 330 590" role="img" aria-label="A stretch of PET chain drawn top to bottom with each carbonyl oxygen shown on the left. Wavy cut marks cross the three bonds from a carbonyl carbon down to the next oxygen, and a dashed not here mark crosses an oxygen-to-CH2 bond. On the right, the piece from oxygen to oxygen becomes ethylene glycol, HO–CH2CH2–OH, and the piece from carbonyl to carbonyl becomes terephthalic acid."><line class="fg-bond" x1="96" y1="20" x2="96" y2="40"></line><line class="fg-bond" x1="96" y1="544" x2="96" y2="564"></line><text class="fg-lbl" x="96" y="16" text-anchor="middle" font-size="13">~</text><text class="fg-lbl" x="96" y="578" text-anchor="middle" font-size="13">~</text><line class="fg-bond" x1="96" y1="70" x2="96" y2="96"></line><line class="fg-bond" x1="96" y1="126" x2="96" y2="152"></line><line class="fg-bond" x1="96" y1="188" x2="96" y2="214"></line><line class="fg-bond" x1="96" y1="250" x2="96" y2="276"></line><line class="fg-bond" x1="96" y1="306" x2="96" y2="332"></line><line class="fg-bond" x1="96" y1="362" x2="96" y2="388"></line><line class="fg-bond" x1="96" y1="432" x2="96" y2="458"></line><line class="fg-bond" x1="96" y1="488" x2="96" y2="514"></line><line class="fg-bond" x1="81" y1="59" x2="67" y2="59"></line><line class="fg-bond" x1="81" y1="51" x2="67" y2="51"></line><circle class="fg-atom" cx="52" cy="55" r="15"></circle><text class="fg-lbl" x="52" y="59.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="96" cy="55" r="15"></circle><text class="fg-lbl" x="96" y="59.81" text-anchor="middle" font-size="13">C</text><circle class="fg-atom" cx="96" cy="111" r="15"></circle><text class="fg-lbl" x="96" y="115.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="96" cy="170" r="18"></circle><text class="fg-lbl" x="96" y="174.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="96" cy="232" r="18"></circle><text class="fg-lbl" x="96" y="236.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="96" cy="291" r="15"></circle><text class="fg-lbl" x="96" y="295.81" text-anchor="middle" font-size="13">O</text><line class="fg-bond" x1="81" y1="351" x2="67" y2="351"></line><line class="fg-bond" x1="81" y1="343" x2="67" y2="343"></line><circle class="fg-atom" cx="52" cy="347" r="15"></circle><text class="fg-lbl" x="52" y="351.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="96" cy="347" r="15"></circle><text class="fg-lbl" x="96" y="351.81" text-anchor="middle" font-size="13">C</text><line class="fg-bond" x1="96" y1="388" x2="76.95" y2="399"></line><line class="fg-bond" x1="92.24" y1="395.48" x2="85.31" y2="399.48"></line><line class="fg-bond" x1="76.95" y1="399" x2="76.95" y2="421"></line><line class="fg-bond" x1="76.95" y1="421" x2="96" y2="432"></line><line class="fg-bond" x1="85.31" y1="420.52" x2="92.24" y2="424.52"></line><line class="fg-bond" x1="96" y1="432" x2="115.05" y2="421"></line><line class="fg-bond" x1="115.05" y1="421" x2="115.05" y2="399"></line><line class="fg-bond" x1="110.45" y1="414" x2="110.45" y2="406"></line><line class="fg-bond" x1="115.05" y1="399" x2="96" y2="388"></line><line class="fg-bond" x1="81" y1="477" x2="67" y2="477"></line><line class="fg-bond" x1="81" y1="469" x2="67" y2="469"></line><circle class="fg-atom" cx="52" cy="473" r="15"></circle><text class="fg-lbl" x="52" y="477.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="96" cy="473" r="15"></circle><text class="fg-lbl" x="96" y="477.81" text-anchor="middle" font-size="13">C</text><circle class="fg-atom" cx="96" cy="529" r="15"></circle><text class="fg-lbl" x="96" y="533.81" text-anchor="middle" font-size="13">O</text><path class="fg-dash-hi" fill="none" d="M113 83 L108.75 88 L104.5 83 L100.25 78 L96 83 L91.75 88 L87.5 83 L83.25 78 L79 83"></path><path class="fg-dash-hi" fill="none" d="M113 319 L108.75 324 L104.5 319 L100.25 314 L96 319 L91.75 324 L87.5 319 L83.25 314 L79 319"></path><path class="fg-dash-hi" fill="none" d="M113 501 L108.75 506 L104.5 501 L100.25 496 L96 501 L91.75 506 L87.5 501 L83.25 496 L79 501"></path><line class="fg-dash" x1="112" y1="139" x2="80" y2="139"></line><text class="fg-tag" x="120" y="87" text-anchor="start" font-size="11">cut</text><text class="fg-tag" x="120" y="323" text-anchor="start" font-size="11">cut</text><text class="fg-tag" x="120" y="505" text-anchor="start" font-size="11">cut</text><text class="fg-tag-warn" x="120" y="143" text-anchor="start" font-size="11">not here</text><path class="fg-bond-soft" d="M172 98 L178 98 L178 304 L172 304"></path><line class="fg-arrow" x1="182" y1="198" x2="203" y2="198"></line><line class="fg-arrow" x1="182" y1="204" x2="203" y2="204"></line><path class="fg-head" d="M212 201 L201 208 L201 194 Z"></path><text class="fg-lbl" x="218" y="199" text-anchor="start" font-size="13">HO–CH₂CH₂–OH</text><text class="fg-tag-good" x="218" y="217" text-anchor="start" font-size="11">ethylene glycol</text><path class="fg-bond-soft" d="M172 334 L178 334 L178 486 L172 486"></path><line class="fg-arrow" x1="182" y1="407" x2="203" y2="407"></line><line class="fg-arrow" x1="182" y1="413" x2="203" y2="413"></line><path class="fg-head" d="M212 410 L201 417 L201 403 Z"></path><text class="fg-lbl" x="218" y="408" text-anchor="start" font-size="13">HO₂C–C₆H₄–CO₂H</text><text class="fg-tag-good" x="218" y="426" text-anchor="start" font-size="11">terephthalic acid</text></svg><figcaption>Cut each bond from a carbonyl carbon to the next oxygen. Add OH to each carbonyl carbon and H to each oxygen.</figcaption></figure><!-- fig:l-cut-ester:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two checks on every disconnection.',
+        bodyHtml: '<p class="step-body"><b>Count the reactive sites.</b> Every monomer in a chain has two reactive sites, one for each neighbor it joins. If a piece comes back with only one, the cut went through the wrong bond.</p>' +
+          '<div class="explain-box"><b>Count the atoms.</b> Add the formulas of the two monomers and subtract the repeat unit. The difference should be water, one molecule for each linkage in the repeat unit. PET has two esters per repeat unit, so it lost two waters: 166 + 62 &minus; 192 = 36, which is 2 H<sub>2</sub>O.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Guided practice',
+        title: 'You disconnect a polyester, and one piece comes back with a single OH. What does that tell you?',
+        options: [
+          'The cut went through the wrong bond',
+          'The polymer was a thermoset',
+          'The polyester was branched at that point',
+          'Nothing; one-site pieces are normal'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Right. A monomer in a chain needs two reactive sites, one for each neighbor it joins. A piece with only one is part of a monomer, not a whole one, so the cut went through the wrong bond. The check catches the mistake even when you do not know the compound.',
+        wrongFeedback: 'How many reactive sites does a monomer need to sit in the middle of a chain, with a neighbor on each side?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent practice',
+        title: 'Part of a nylon 6,6 chain is drawn below. Which bond do you cut to get back to the monomers?',
+        bodyHtml: '<!-- fig:l-amide-bonds:start --><figure class="notes-figure notes-figure--wide" style="--vb:330"><svg viewBox="0 0 330 300" role="img" aria-label="Part of a nylon 6,6 chain drawn top to bottom: (CH2)4, a carbonyl carbon with its oxygen on the left, NH, then (CH2)6. The bond from (CH2)4 to the carbonyl carbon is labeled a, the bond from the carbonyl carbon to N is labeled b, and the bond from N to (CH2)6 is labeled c."><line class="fg-bond" x1="150" y1="24" x2="150" y2="44"></line><line class="fg-bond" x1="150" y1="258" x2="150" y2="278"></line><text class="fg-lbl" x="150" y="20" text-anchor="middle" font-size="13">~</text><text class="fg-lbl" x="150" y="292" text-anchor="middle" font-size="13">~</text><line class="fg-bond" x1="150" y1="74" x2="150" y2="104"></line><line class="fg-bond" x1="150" y1="134" x2="150" y2="164"></line><line class="fg-bond" x1="150" y1="198" x2="150" y2="228"></line><rect class="fg-atom" x="117" y="44" width="66" height="30" rx="15"></rect><text class="fg-lbl" x="150" y="63.81" text-anchor="middle" font-size="13">(CH₂)₄</text><line class="fg-bond" x1="135" y1="123" x2="121" y2="123"></line><line class="fg-bond" x1="135" y1="115" x2="121" y2="115"></line><circle class="fg-atom" cx="106" cy="119" r="15"></circle><text class="fg-lbl" x="106" y="123.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="150" cy="119" r="15"></circle><text class="fg-lbl" x="150" y="123.81" text-anchor="middle" font-size="13">C</text><circle class="fg-atom" cx="150" cy="181" r="17"></circle><text class="fg-lbl" x="150" y="185.81" text-anchor="middle" font-size="13">NH</text><rect class="fg-atom" x="117" y="228" width="66" height="30" rx="15"></rect><text class="fg-lbl" x="150" y="247.81" text-anchor="middle" font-size="13">(CH₂)₆</text><text class="fg-lbl" x="172" y="94" text-anchor="start" font-size="13">a</text><text class="fg-lbl" x="172" y="154" text-anchor="start" font-size="13">b</text><text class="fg-lbl" x="172" y="218" text-anchor="start" font-size="13">c</text></svg><figcaption>Three single bonds in a nylon 6,6 chain, lettered a, b and c.</figcaption></figure><!-- fig:l-amide-bonds:end -->',
+        options: [
+          'Bond b, from the carbonyl carbon to N',
+          'Bond c, from N to the (CH₂)₆ group',
+          'Bond a, from the (CH₂)₄ group to the carbonyl carbon',
+          'The C=O double bond'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Right. The amide formed when the amine nitrogen attacked the acid&rsquo;s carbonyl carbon, so bond b is the one polymerization made. Cut it, add OH to the carbonyl carbon and H to the nitrogen, and out come adipic acid and hexamethylenediamine.',
+        wrongFeedback: 'Which bond did the polymerization form? Ask which atom the amine nitrogen attacked.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Choosing monomers for a property.',
-        bodyHtml: '<p class="step-body">Running it the other way, each property you want maps onto a structural feature:</p>' +
+        bodyHtml: '<p class="step-body">Now run it the other way. Each property you want comes from a structural feature, and you choose monomers that build that feature in.</p>' +
           '<ul class="step-body">' +
-          '<li><b>Strength</b> &rarr; aromatic, para-substituted monomers. Rigid, straight chains that align.</li>' +
+          '<li><b>Strength</b> &rarr; aromatic rings joined para. Rigid, straight chains line up and pack side by side; a meta link would bend the chain (see the figure).</li>' +
           '<li><b>Hydrolytic resistance</b> &rarr; amides rather than esters.</li>' +
-          '<li><b>Flexibility</b> &rarr; long flexible spacers, or branching. Lowers T<sub>g</sub>, prevents packing.</li>' +
-          '<li><b>Transparency</b> &rarr; an amorphous structure: atactic, or bulky side groups.</li>' +
-          '<li><b>A shape that will not melt</b> &rarr; a trifunctional monomer, giving a network.</li>' +
+          '<li><b>Flexibility</b> &rarr; long flexible spacers, which lower T<sub>g</sub>, or branches, which stop the chains packing.</li>' +
+          '<li><b>Transparency</b> &rarr; no crystalline regions, since light scatters at their edges. Atactic chains or an irregular backbone keep a polymer amorphous; bulky side groups raise T<sub>g</sub> so it stays rigid.</li>' +
+          '<li><b>A shape that will not melt</b> &rarr; a monomer with three reactive sites, giving a network.</li>' +
           '<li><b>Degradability</b> &rarr; ester bonds in the backbone.</li>' +
           '</ul>' +
-          '<div class="explain-box">Notice that the last item points the opposite way from the second. The property that makes a material durable is the property that makes it persist, and you cannot have one without the other &mdash; which is the honest version of the plastics problem rather than a failure of chemistry.</div>'
+          '<div class="explain-box">The last item pulls against the second. The feature that makes a material durable is the feature that makes it persist in the environment. That trade-off sits at the heart of the plastics problem.</div>',
+        diagramHtml: '<!-- fig:l-para-meta:start --><figure class="notes-figure notes-figure--wide" style="--vb:330"><svg viewBox="0 0 330 360" role="img" aria-label="Two benzene rings, each with two chain bonds leaving it. On the para ring the bonds leave opposite corners and continue in one straight line. On the meta ring they leave corners 1 and 3, at 120 degrees, so the chain bends."><text class="fg-tag" x="165" y="22" text-anchor="middle" font-size="11">PARA (1,4)</text><line class="fg-bond" x1="191" y1="78" x2="178" y2="55.48"></line><line class="fg-bond" x1="183.52" y1="74.24" x2="177.52" y2="63.85"></line><line class="fg-bond" x1="178" y1="55.48" x2="152" y2="55.48"></line><line class="fg-bond" x1="152" y1="55.48" x2="139" y2="78"></line><line class="fg-bond" x1="152.48" y1="63.85" x2="146.48" y2="74.24"></line><line class="fg-bond" x1="139" y1="78" x2="152" y2="100.52"></line><line class="fg-bond" x1="152" y1="100.52" x2="178" y2="100.52"></line><line class="fg-bond" x1="159" y1="95.92" x2="171" y2="95.92"></line><line class="fg-bond" x1="178" y1="100.52" x2="191" y2="78"></line><line class="fg-bond-hi" x1="139" y1="78" x2="93" y2="78"></line><line class="fg-bond-hi" x1="191" y1="78" x2="237" y2="78"></line><text class="fg-tag" x="79" y="82" text-anchor="end" font-size="11">chain</text><text class="fg-tag" x="251" y="82" text-anchor="start" font-size="11">chain</text><text class="fg-lbl" x="165" y="138" text-anchor="middle" font-size="13">opposite ways: 180°</text><text class="fg-tag" x="165" y="184" text-anchor="middle" font-size="11">META (1,3)</text><line class="fg-bond" x1="191" y1="274" x2="178" y2="251.48"></line><line class="fg-bond" x1="183.52" y1="270.24" x2="177.52" y2="259.85"></line><line class="fg-bond" x1="178" y1="251.48" x2="152" y2="251.48"></line><line class="fg-bond" x1="152" y1="251.48" x2="139" y2="274"></line><line class="fg-bond" x1="152.48" y1="259.85" x2="146.48" y2="270.24"></line><line class="fg-bond" x1="139" y1="274" x2="152" y2="296.52"></line><line class="fg-bond" x1="152" y1="296.52" x2="178" y2="296.52"></line><line class="fg-bond" x1="159" y1="291.92" x2="171" y2="291.92"></line><line class="fg-bond" x1="178" y1="296.52" x2="191" y2="274"></line><line class="fg-bond-hi" x1="139" y1="274" x2="93" y2="274"></line><line class="fg-bond-hi" x1="178" y1="251.48" x2="201" y2="211.65"></line><text class="fg-tag" x="79" y="278" text-anchor="end" font-size="11">chain</text><text class="fg-tag" x="208" y="203.52" text-anchor="start" font-size="11">chain</text><text class="fg-lbl" x="165" y="334" text-anchor="middle" font-size="13">at an angle: 120°</text><line class="fg-rule" x1="20" y1="164" x2="310" y2="164"></line></svg><figcaption>Para links keep a chain straight, so chains can lie side by side. Meta links bend it at every ring.</figcaption></figure><!-- fig:l-para-meta:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent practice',
+        title: 'You need a transparent, rigid sheet. Which structural feature do you build in?',
+        options: [
+          'Atactic chains carrying bulky side groups',
+          'High crystallinity from linear, isotactic chains',
+          'Straight, para-linked aromatic chains that pack tightly',
+          'Long flexible spacers between the functional groups'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Right. Here crystallinity is the enemy. Light scatters at every boundary between a crystalline region and the amorphous material around it, so a highly crystalline polymer is cloudy however pure it is. The random, atactic pattern is what stops the chains packing; bulk alone does not, since syndiotactic polystyrene is bulky and still crystallizes. The bulky groups do the other job: they raise T<sub>g</sub> well above room temperature, so the sheet stays rigid. PMMA works this way. Polycarbonate gets the same result from the rigid, awkwardly shaped bisphenol A units in its backbone.',
+        wrongFeedback: 'What makes a polymer cloudy? Work out which feature you must avoid, even though it would help the strength.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'What happens at the end.',
+        bodyHtml: '<p class="step-body">A used plastic has three possible fates, and its chemistry decides which ones are open.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Mechanical recycling.</b> Melt it and mold it again. This works only for thermoplastics, because a thermoset never melts or flows. Each cycle shortens the chains a little, so the material gets worse with reuse.</li>' +
+          '<li><b>Chemical recycling.</b> Break it back down to monomers and rebuild. By hydrolysis this needs a backbone bond that water can break, an ester or an amide, so it works for PET and nylon but not for polyethylene.</li>' +
+          '<li><b>Degradation.</b> Polyesters such as PLA hydrolyze, and under the right conditions microorganisms finish the job. Polyolefins, the polymers of simple alkenes such as polyethylene, essentially do not.</li>' +
+          '</ul>' +
+          '<div class="explain-box">One functional group makes the difference. An ester&rsquo;s carbonyl carbon is electron-poor, so water can attack it, and the alkoxy oxygen can leave, as in acyl substitution. A saturated C&ndash;C chain has only nonpolar C&ndash;C and C&ndash;H bonds: no electrophilic carbon and no leaving group.</div>',
+        diagramHtml: '<!-- fig:l-backbone-decides:start --><figure class="notes-figure notes-figure--wide" style="--vb:330"><svg viewBox="0 0 330 440" role="img" aria-label="Top: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water attacks this C=O carbon; PET and PLA can be melted and remolded or taken back to monomers. Bottom: a polyethylene chain of five CH2 groups, labeled no polar bond to attack; polyethylene can only be melted and remolded."><rect class="fg-panel" x="10" y="30" width="310" height="180" rx="10"></rect><text class="fg-tag" x="165" y="20" text-anchor="middle" font-size="11">an ester in the backbone</text><line class="fg-bond" x1="25" y1="122" x2="45" y2="122"></line><line class="fg-bond" x1="285" y1="122" x2="305" y2="122"></line><text class="fg-lbl" x="16" y="127" text-anchor="middle" font-size="13">~</text><text class="fg-lbl" x="314" y="127" text-anchor="middle" font-size="13">~</text><line class="fg-bond" x1="81" y1="122" x2="99" y2="122"></line><line class="fg-bond-hi" x1="129" y1="122" x2="147" y2="122"></line><line class="fg-bond" x1="177" y1="122" x2="195" y2="122"></line><line class="fg-bond" x1="231" y1="122" x2="249" y2="122"></line><circle class="fg-atom" cx="63" cy="122" r="18"></circle><text class="fg-lbl" x="63" y="126.81" text-anchor="middle" font-size="13">CH₂</text><line class="fg-bond" x1="110" y1="107" x2="110" y2="93"></line><line class="fg-bond" x1="118" y1="107" x2="118" y2="93"></line><circle class="fg-atom" cx="114" cy="78" r="15"></circle><text class="fg-lbl" x="114" y="82.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom-hi" cx="114" cy="122" r="16"></circle><text class="fg-lbl" x="114" y="126.81" text-anchor="middle" font-size="13">C</text><circle class="fg-atom" cx="162" cy="122" r="15"></circle><text class="fg-lbl" x="162" y="126.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="213" cy="122" r="18"></circle><text class="fg-lbl" x="213" y="126.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="267" cy="122" r="18"></circle><text class="fg-lbl" x="267" y="126.81" text-anchor="middle" font-size="13">CH₂</text><text class="fg-tag-good" x="138" y="158" text-anchor="middle" font-size="11">water attacks this C=O carbon</text><text class="fg-lbl" x="165" y="182" text-anchor="middle" font-size="13">PET, PLA</text><text class="fg-tag" x="165" y="199" text-anchor="middle" font-size="11">melt and remold, or take back to monomers</text><rect class="fg-panel-warn" x="10" y="280" width="310" height="150" rx="10"></rect><text class="fg-tag" x="165" y="270" text-anchor="middle" font-size="11">a C–C backbone</text><line class="fg-bond" x1="19" y1="342" x2="39" y2="342"></line><line class="fg-bond" x1="291" y1="342" x2="311" y2="342"></line><text class="fg-lbl" x="10" y="347" text-anchor="middle" font-size="13">~</text><text class="fg-lbl" x="320" y="347" text-anchor="middle" font-size="13">~</text><line class="fg-bond" x1="75" y1="342" x2="93" y2="342"></line><line class="fg-bond" x1="129" y1="342" x2="147" y2="342"></line><line class="fg-bond" x1="183" y1="342" x2="201" y2="342"></line><line class="fg-bond" x1="237" y1="342" x2="255" y2="342"></line><circle class="fg-atom" cx="57" cy="342" r="18"></circle><text class="fg-lbl" x="57" y="346.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="111" cy="342" r="18"></circle><text class="fg-lbl" x="111" y="346.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="165" cy="342" r="18"></circle><text class="fg-lbl" x="165" y="346.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="219" cy="342" r="18"></circle><text class="fg-lbl" x="219" y="346.81" text-anchor="middle" font-size="13">CH₂</text><circle class="fg-atom" cx="273" cy="342" r="18"></circle><text class="fg-lbl" x="273" y="346.81" text-anchor="middle" font-size="13">CH₂</text><text class="fg-tag-warn" x="165" y="378" text-anchor="middle" font-size="11">no polar bond to attack</text><text class="fg-lbl" x="165" y="402" text-anchor="middle" font-size="13">polyethylene</text><text class="fg-tag" x="165" y="419" text-anchor="middle" font-size="11">melt and remold only</text></svg><figcaption>Top: water attacks the shaded carbonyl carbon, and the highlighted C–O bond breaks. Bottom: only nonpolar bonds, so nothing for water to attack.</figcaption></figure><!-- fig:l-backbone-decides:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
-            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<div class="step-eyebrow">Interact</div>' +
             '<h2 class="step-title">How can each of these be recycled?</h2>' +
-            '<p class="step-body">One question decides it: <b>does the backbone contain a bond that hydrolysis can select?</b> And a second: is the sample separate chains, or one network?</p>' +
+            '<p class="step-body">Two questions decide it. Are the chains separate, or tied into one network? And does the backbone hold a bond that water can break?</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -205,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Look at the backbone. Is there a functional group in it that water could attack — and are the chains separate or tied into a network?');
+                api.showFeedback(fb, false, 'Check both things. Can the sample melt, or is it one network? And is there an ester or amide in the backbone for water to attack?');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -213,8 +282,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four, from the backbone alone. One functional group is the difference between recoverable and permanent.'
-                  : 'All four, first time. The end of a polymer\u2019s life was decided by the monomer someone chose at the start.');
+                  ? 'All four, from the backbone alone. One functional group separates a polymer you can take apart from one you cannot.'
+                  : 'All four, first time. The end of each polymer&rsquo;s life was settled by the monomer someone chose at the start.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -224,70 +293,39 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
-        title: 'You disconnect a polyester and one fragment comes back with a single OH. What does that tell you?',
+        eyebrow: 'Independent practice',
+        title: 'Lactic acid is drawn below. Why can it form a polymer with no second monomer?',
+        bodyHtml: '<!-- fig:l-lactic-acid:start --><figure class="notes-figure notes-figure--wide" style="--vb:330"><svg viewBox="0 0 330 170" role="img" aria-label="Lactic acid: HO–CH(CH3)–C(=O)–OH, with the OH group on the left and the carboxylic acid on the right."><text class="fg-tag" x="165" y="24" text-anchor="middle" font-size="11">LACTIC ACID</text><line class="fg-bond" x1="105" y1="96" x2="125" y2="96"></line><line class="fg-bond" x1="155" y1="96" x2="175" y2="96"></line><line class="fg-bond" x1="205" y1="96" x2="225" y2="96"></line><circle class="fg-atom" cx="88" cy="96" r="17"></circle><text class="fg-lbl" x="88" y="100.81" text-anchor="middle" font-size="13">HO</text><circle class="fg-atom" cx="140" cy="96" r="15"></circle><text class="fg-lbl" x="140" y="100.81" text-anchor="middle" font-size="13">CH</text><line class="fg-bond" x1="186" y1="81" x2="186" y2="67"></line><line class="fg-bond" x1="194" y1="81" x2="194" y2="67"></line><circle class="fg-atom" cx="190" cy="52" r="15"></circle><text class="fg-lbl" x="190" y="56.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="190" cy="96" r="15"></circle><text class="fg-lbl" x="190" y="100.81" text-anchor="middle" font-size="13">C</text><circle class="fg-atom" cx="242" cy="96" r="17"></circle><text class="fg-lbl" x="242" y="100.81" text-anchor="middle" font-size="13">OH</text><line class="fg-bond" x1="140" y1="111" x2="140" y2="124"></line><circle class="fg-atom" cx="140" cy="142" r="18"></circle><text class="fg-lbl" x="140" y="146.81" text-anchor="middle" font-size="13">CH₃</text></svg><figcaption>Lactic acid, drawn with every group shown.</figcaption></figure><!-- fig:l-lactic-acid:end -->',
         options: [
-          'You cut in the wrong place',
-          'The polymer was a thermoset',
-          'The monomer was monofunctional by design',
-          'Nothing; single-site fragments are normal'
+          'It carries an OH and a CO₂H on one molecule',
+          'It has three reactive sites, so it forms a network',
+          'Its C=O opens and adds to the next molecule',
+          'A catalyst supplies the second monomer'
         ],
         correctIndex: 0,
-        correctFeedback: 'Correct. Every monomer in a chain polymer has to have two reactive sites — that is what let it join on both sides in the first place. A fragment with one is a piece of a monomer rather than a monomer, so the cut went through the wrong bond. It is a useful self-check because it catches the error without needing to know the compound.',
-        wrongFeedback: 'Think back to the very first rule of the chapter. How many reactive sites must a chain-forming monomer have?'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'You need a transparent, rigid sheet. Which structural feature do you build in?',
-        options: [
-          'An amorphous structure — atactic, or bulky side groups',
-          'High crystallinity from linear isotactic chains',
-          'Cross-links from a trifunctional monomer',
-          'Long flexible spacers between the functional groups'
-        ],
-        correctIndex: 0,
-        correctFeedback: 'Correct, and it is the one property that argues <i>against</i> crystallinity. Crystalline regions scatter light at every boundary with the amorphous material around them, so a highly crystalline polymer is cloudy no matter how pure it is. Amorphous polymers such as PMMA and polycarbonate are glass-clear, and their rigidity comes from a glass transition well above room temperature rather than from packing. PMMA gets that from bulky side groups; polycarbonate gets it instead from the rigid, awkwardly shaped bisphenol A units in the backbone itself.',
-        wrongFeedback: 'What makes a polymer cloudy? Work out which feature you must therefore avoid, even though it would help the strength.'
+        correctFeedback: 'Right. The rule is only that a monomer needs two reactive sites. It never said they must be the same kind, or that two different monomers are needed. Lactic acid is a hydroxy acid: each molecule brings both the alcohol and the acid an ester needs, so it forms ester bonds with copies of itself, again and again. The result is PLA, a polyester.',
+        wrongFeedback: 'Count the reactive groups on one molecule of lactic acid, and ask whether they can react with each other.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'What happens at the end, and why it was decided at the start.',
-        bodyHtml: '<p class="step-body">Three fates, and the chemistry decides which are available:</p>' +
-          '<ul class="step-body">' +
-          '<li><b>Mechanical recycling.</b> Melt and remold. Thermoplastics only, and each cycle shortens the chains a little, so quality degrades with reuse.</li>' +
-          '<li><b>Chemical recycling.</b> Depolymerize to monomers and rebuild. Needs a cleavable backbone, so it works for <b>PET</b> and nylon and not for polyethylene.</li>' +
-          '<li><b>Degradation.</b> Polyesters such as PLA hydrolyze and organisms can finish the job. Polyolefins essentially do not.</li>' +
-          '</ul>' +
-          '<div class="explain-box">PET can be taken back to its monomers and polyethylene cannot, and the reason is a single functional group. An ester in the backbone is a handle; a saturated C&ndash;C chain is not. The properties that make polyethylene cheap, inert and durable are precisely the ones that make it permanent, and no amount of processing changes that &mdash; it was decided by the monomer.</div>'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
-        title: 'Why is PLA able to polymerize with itself?',
-        options: [
-          'Lactic acid carries both an OH and a COOH',
-          'It is an alkene, so it adds to itself',
-          'It has three reactive sites',
-          'It needs a catalyst that supplies the second monomer'
-        ],
-        correctIndex: 0,
-        correctFeedback: 'Correct. The rule was only ever that a monomer needs two reactive sites — it never said they had to be the same kind, or that two different monomers were required. Lactic acid is its own diol and diacid, so it esterifies with itself repeatedly. And because the backbone that results is a polyester, it hydrolyzes back to lactic acid, which is an ordinary metabolite.',
-        wrongFeedback: 'Count the functional groups on one molecule of lactic acid, and ask whether they can react with each other.'
+        title: 'PLA, a polymer designed for its end.',
+        bodyHtml: '<p class="step-body">Heated on its own, lactic acid usually stops at short chains, because water cannot escape from the thick melt. So the short chains are heated under vacuum with a catalyst, and the OH at the end of each chain bites back on the ester two units along, releasing <b>lactide</b>, a ring of two lactic acids esterified to each other. Lactide then polymerizes by <b>ring-opening</b>: the chain end attacks a ring carbonyl and the ring opens onto the chain. Nothing is lost, and the chains grow long enough for fibers.</p>' +
+          '<div class="explain-box">PLA hydrolyzes back to lactic acid, a normal product of metabolism. But &ldquo;biodegradable&rdquo; depends on conditions. PLA composts well in a hot, wet industrial facility and barely at all in a garden or in seawater.</div>',
+        diagramHtml: '<!-- fig:l-lactide-route:start --><figure class="notes-figure notes-figure--wide" style="--vb:330"><svg viewBox="0 0 330 610" role="img" aria-label="Top: lactic acid. An arrow labeled condense, then close the ring leads down to lactide, a six-membered ring of two lactic acid units joined by two ester bonds, with one ring ester C–O bond highlighted. An arrow labeled ring-opening leads down to PLA, whose repeat unit O–CH(CH3)–C(=O) is shown in brackets."><text class="fg-tag" x="165" y="22" text-anchor="middle" font-size="11">LACTIC ACID</text><line class="fg-bond" x1="105" y1="82" x2="125" y2="82"></line><line class="fg-bond" x1="155" y1="82" x2="175" y2="82"></line><line class="fg-bond" x1="205" y1="82" x2="225" y2="82"></line><circle class="fg-atom" cx="88" cy="82" r="17"></circle><text class="fg-lbl" x="88" y="86.81" text-anchor="middle" font-size="13">HO</text><circle class="fg-atom" cx="140" cy="82" r="15"></circle><text class="fg-lbl" x="140" y="86.81" text-anchor="middle" font-size="13">CH</text><line class="fg-bond" x1="186" y1="67" x2="186" y2="53"></line><line class="fg-bond" x1="194" y1="67" x2="194" y2="53"></line><circle class="fg-atom" cx="190" cy="38" r="15"></circle><text class="fg-lbl" x="190" y="42.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="190" cy="82" r="15"></circle><text class="fg-lbl" x="190" y="86.81" text-anchor="middle" font-size="13">C</text><circle class="fg-atom" cx="242" cy="82" r="17"></circle><text class="fg-lbl" x="242" y="86.81" text-anchor="middle" font-size="13">OH</text><line class="fg-bond" x1="140" y1="97" x2="140" y2="110"></line><circle class="fg-atom" cx="140" cy="128" r="18"></circle><text class="fg-lbl" x="140" y="132.81" text-anchor="middle" font-size="13">CH₃</text><line class="fg-arrow" x1="165" y1="160" x2="165" y2="196"></line><path class="fg-head" d="M165 204 L160.84 196 L169.16 196 Z"></path><text class="fg-tag" x="180" y="178" text-anchor="start" font-size="11">condense, then</text><text class="fg-tag" x="180" y="194" text-anchor="start" font-size="11">close the ring</text><text class="fg-tag" x="40" y="236" text-anchor="start" font-size="11">LACTIDE</text><line class="fg-bond-hi" x1="152.01" y1="275.5" x2="134.69" y2="285.5"></line><line class="fg-bond" x1="121.7" y1="308" x2="121.7" y2="328"></line><line class="fg-bond" x1="134.69" y1="350.5" x2="152.01" y2="360.5"></line><line class="fg-bond" x1="177.99" y1="360.5" x2="195.31" y2="350.5"></line><line class="fg-bond" x1="208.3" y1="328" x2="208.3" y2="308"></line><line class="fg-bond" x1="195.31" y1="285.5" x2="177.99" y2="275.5"></line><line class="fg-bond" x1="161" y1="253" x2="161" y2="239"></line><line class="fg-bond" x1="169" y1="253" x2="169" y2="239"></line><circle class="fg-atom" cx="165" cy="224" r="15"></circle><text class="fg-lbl" x="165" y="228.81" text-anchor="middle" font-size="13">O</text><line class="fg-bond" x1="169" y1="383" x2="169" y2="397"></line><line class="fg-bond" x1="161" y1="383" x2="161" y2="397"></line><circle class="fg-atom" cx="165" cy="412" r="15"></circle><text class="fg-lbl" x="165" y="416.81" text-anchor="middle" font-size="13">O</text><line class="fg-bond" x1="222.77" y1="289.05" x2="234.94" y2="285.74"></line><circle class="fg-atom" cx="252.3" cy="281" r="18"></circle><text class="fg-lbl" x="252.3" y="285.81" text-anchor="middle" font-size="13">CH₃</text><line class="fg-bond" x1="107.23" y1="346.95" x2="95.06" y2="350.26"></line><circle class="fg-atom" cx="77.7" cy="355" r="18"></circle><text class="fg-lbl" x="77.7" y="359.81" text-anchor="middle" font-size="13">CH₃</text><circle class="fg-atom" cx="165" cy="268" r="15"></circle><text class="fg-lbl" x="165" y="272.81" text-anchor="middle" font-size="13">C</text><circle class="fg-atom" cx="121.7" cy="293" r="15"></circle><text class="fg-lbl" x="121.7" y="297.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="121.7" cy="343" r="15"></circle><text class="fg-lbl" x="121.7" y="347.81" text-anchor="middle" font-size="13">CH</text><circle class="fg-atom" cx="165" cy="368" r="15"></circle><text class="fg-lbl" x="165" y="372.81" text-anchor="middle" font-size="13">C</text><circle class="fg-atom" cx="208.3" cy="343" r="15"></circle><text class="fg-lbl" x="208.3" y="347.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="208.3" cy="293" r="15"></circle><text class="fg-lbl" x="208.3" y="297.81" text-anchor="middle" font-size="13">CH</text><text class="fg-tag-good" x="117.35" y="272.5" text-anchor="end" font-size="11">opens</text><line class="fg-arrow" x1="165" y1="432" x2="165" y2="468"></line><path class="fg-head" d="M165 476 L160.84 468 L169.16 468 Z"></path><text class="fg-tag" x="180" y="458" text-anchor="start" font-size="11">ring-opening</text><text class="fg-tag" x="40" y="506" text-anchor="start" font-size="11">PLA</text><line class="fg-bond" x1="130" y1="526" x2="150" y2="526"></line><line class="fg-bond" x1="180" y1="526" x2="200" y2="526"></line><circle class="fg-atom" cx="115" cy="526" r="15"></circle><text class="fg-lbl" x="115" y="530.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="165" cy="526" r="15"></circle><text class="fg-lbl" x="165" y="530.81" text-anchor="middle" font-size="13">CH</text><line class="fg-bond" x1="211" y1="511" x2="211" y2="497"></line><line class="fg-bond" x1="219" y1="511" x2="219" y2="497"></line><circle class="fg-atom" cx="215" cy="482" r="15"></circle><text class="fg-lbl" x="215" y="486.81" text-anchor="middle" font-size="13">O</text><circle class="fg-atom" cx="215" cy="526" r="15"></circle><text class="fg-lbl" x="215" y="530.81" text-anchor="middle" font-size="13">C</text><line class="fg-bond" x1="71" y1="526" x2="100" y2="526"></line><line class="fg-bond" x1="230" y1="526" x2="259" y2="526"></line><path class="fg-bond" d="M93 494 L83 494 L83 558 L93 558"></path><path class="fg-bond" d="M237 494 L247 494 L247 558 L237 558"></path><text class="fg-lbl" x="253" y="560" text-anchor="start" font-size="13">n</text><line class="fg-bond" x1="165" y1="541" x2="165" y2="554"></line><circle class="fg-atom" cx="165" cy="572" r="18"></circle><text class="fg-lbl" x="165" y="576.81" text-anchor="middle" font-size="13">CH₃</text></svg><figcaption>Lactide holds two ester bonds in a ring. Ring-opening breaks one (highlighted) and adds the opened ring to the chain, losing nothing.</figcaption></figure><!-- fig:l-lactide-route:end -->'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A drinks bottle is PET and a bag is polyethylene. Both are thermoplastics. Why is only one genuinely recyclable back to new material?',
+        title: 'A drinks bottle is PET and a carrier bag is polyethylene. Both are thermoplastics. Why can only the bottle be taken back to its monomers?',
         options: [
-          'PET is purer as collected',
-          'PET has ester bonds in its backbone that hydrolysis can select; a C–C backbone has no such bond',
-          'Polyethylene melts at too high a temperature',
-          'PET chains are longer, so they survive melting'
+          'PET arrives at the plant cleaner than polyethylene',
+          'Its backbone has ester bonds that water can break',
+          'Polyethylene melts too high to process a second time',
+          'PET chains are longer, so they survive melting intact'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct, and this is the chapter\u2019s argument arriving at something you can see in a recycling bin. Both are thermoplastics, so both can be melted and remolded — but mechanical recycling shortens the chains a little every cycle, so the material degrades and eventually becomes unusable. Only PET can also be recycled <i>chemically</i>: its backbone contains esters, hydrolysis selects them, and the monomers come back clean enough to rebuild bottle-grade polymer indefinitely. Polyethylene\u2019s backbone is a saturated hydrocarbon chain, which offers nothing for water or an enzyme to attack — there is no bond that a reagent can pick out from any other. Collection and economics matter in practice, but the chemical difference is one functional group in the backbone, chosen when someone picked the monomer, and the same choice that makes polyethylene cheap and inert makes it permanent.'
+        correctFeedback: 'Right. Both can be melted and remolded, but each cycle shortens the chains, so mechanically recycled material slowly wears out. Only PET can also be recycled <i>chemically</i>. Hydrolysis breaks its ester bonds, and the monomers come back clean enough to make new bottle-grade polymer. Polyethylene&rsquo;s backbone is a saturated C&ndash;C chain, with no polar carbonyl for water to attack and no leaving group. Collection and cost matter in practice, but the chemical difference is one functional group, chosen with the monomer. The same choice that makes polyethylene cheap and inert makes it permanent.'
       }
     ]
   });

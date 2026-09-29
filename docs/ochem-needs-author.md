@@ -561,3 +561,48 @@ confirm it.
   85–87. Carbonic acid pKa is given as 6.4 (the apparent value; the true value is about 3.6).
   Water's pKa follows the course convention of 15.7. Diazo-coupling pH windows (phenols 8–10,
   amines 4–7) and "decomposes above about 5 °C" are kept.
+
+## Polymers (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### polymers-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `polymer-basics`, `addition-polymers`, `condensation-polymers`, `polymer-properties`,
+  `polymer-design`.
+- **Positions taken:**
+  - Ownership across pages: What a polymer is owns the two classifications (atom count, and
+    chain-growth against step-growth), conversion p and 1/(1−p), caprolactam, thermoplastic and
+    thermoset, and why head-to-tail addition wins. The later pages recap and link.
+  - Polyethylene's repeat unit is drawn the course way, –[CH₂–CH₂]–n, with IUPAC's –[CH₂]–n
+    beside it. Degree of polymerization means monomer units per chain (what 1/(1−p) counts); for
+    an AA + BB polyester the bracket n is half that. The 99% row reads "borderline: a weak,
+    brittle solid". Alkyds are no longer named; glyptal is kept as a coating resin.
+  - Caprolactam: the base-started route is chain-growth; the water-started industrial route is
+    step-growth (water first opens some rings to 6-aminohexanoic acid).
+  - The vinyl chloride radical is described by its position (on the carbon carrying Cl, next to
+    its lone pairs), not as "secondary". The page's R/S pitfall explains why polypropylene's
+    methyl-bearing carbons get no labels. Natural rubber is made by enzymes in the tree and only
+    has the 1,4-addition structure.
+  - The random-copolymer rule (one Tg, between the homopolymers') and a SAN against polystyrene
+    Tg comparison were removed as unsourced or untaught; either could return to Structure and
+    properties with a source.
+  - The vulcanization mechanism (radical or polar, and the role of accelerators) is contested, so
+    the pages say only where the sulfur bridges attach. The Tg/Tm rule of thumb is said to fit
+    PET and nylon 6,6, with polyethylene falling below it. A loaded rubber band contracts on
+    heating only when well stretched (thermoelastic inversion near 10%).
+  - The nylon 6 against nylon 6,6 melting-point reason (hydrogen-bond registry in a flat sheet) is
+    taught as "one reason usually given". The urethane mechanism is drawn stepwise; many sources
+    treat it as concerted or alcohol-assisted.
+  - Polymer design treats epoxy as amine-cured (so "neither ester nor amide"); anhydride-cured
+    epoxies contain esters. A clear PET bottle is still partly crystalline, with crystallites too
+    small to scatter light. Pyrolysis is said not to be recycling back to monomers.
+
+### polymers-numbers: values and claims that need a source
+- **Status:** pending review.
+- **Notes:** HDPE Tg is kept at −120 °C (literature ranges from about −130 to −20 °C). Atactic
+  polypropylene Tg about −15 °C. Butyl rubber isoprene "one or two percent" (typical grades
+  about 0.5–2.5 mol%). Nylon 6,T melting point about 370 °C, kept from the original page. "Most
+  recycled PET goes the mechanical route" and "PLA shows almost no measurable breakdown in
+  seawater after more than a year" are uncited.

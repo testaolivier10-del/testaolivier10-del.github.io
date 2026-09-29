@@ -268,25 +268,43 @@
       9:['diazonium-hub'],
       10:['diazonium-hub','directing-effects'] } },
 
-    'polymer-basics': { n:8, steps:{
-      2:['two-reactive-sites'], 3:['two-reactive-sites'], 4:['two-reactive-sites'],
-      6:['two-reactive-sites'], 7:['two-reactive-sites'] } },
+    'polymer-basics': { n:12, steps:{
+      2:['two-reactive-sites'],
+      5:['two-reactive-sites'],
+      6:['two-reactive-sites'],
+      8:['step-growth'],
+      10:['packing-and-properties'],
+      11:['two-reactive-sites'] } },
 
-    'addition-polymers': { n:8, steps:{
-      2:['chain-growth'], 3:['chain-growth'], 4:['chain-growth'],
-      6:['chain-growth'], 7:['chain-growth','packing-and-properties'] } },
+    'addition-polymers': { n:12, steps:{
+      2:['chain-growth'],
+      3:['chain-growth'],
+      5:['chain-growth'],
+      7:['chain-growth'],
+      10:['chain-growth'],
+      11:['chain-growth','packing-and-properties'] } },
 
-    'condensation-polymers': { n:8, steps:{
-      2:['step-growth'], 3:['step-growth'], 4:['step-growth'],
-      6:['step-growth'], 7:['step-growth'] } },
+    'condensation-polymers': { n:13, steps:{
+      4:['step-growth'],
+      7:['step-growth'],
+      9:['step-growth'],
+      11:['step-growth'],
+      12:['step-growth'] } },
 
-    'polymer-properties': { n:8, steps:{
-      2:['packing-and-properties'], 3:['packing-and-properties'], 4:['packing-and-properties'],
-      6:['crosslink-and-end-of-life'], 7:['crosslink-and-end-of-life'] } },
+    'polymer-properties': { n:12, steps:{
+      3:['packing-and-properties'],
+      5:['packing-and-properties'],
+      6:['packing-and-properties'],
+      9:['crosslink-and-end-of-life'],
+      11:['crosslink-and-end-of-life'] } },
 
-    'polymer-design': { n:8, steps:{
-      2:['crosslink-and-end-of-life'], 3:['two-reactive-sites'], 4:['packing-and-properties'],
-      6:['crosslink-and-end-of-life'], 7:['crosslink-and-end-of-life'] } },
+    'polymer-design': { n:12, steps:{
+      3:['two-reactive-sites'],
+      4:['two-reactive-sites'],
+      6:['packing-and-properties'],
+      8:['crosslink-and-end-of-life'],
+      9:['two-reactive-sites'],
+      11:['crosslink-and-end-of-life'] } },
 
     /* The oxidation & reduction chapter. Graded steps are 2, 3, 4, 6, 7. */
     'oxidation-states': { n:8, steps:{
