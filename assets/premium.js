@@ -75,7 +75,7 @@
       ],
       premium: [
         'Every interactive lesson and mechanism walkthrough',
-        'The full 3,630-question practice bank',
+        'The full 3,635-question practice bank',
         'Mastery dashboard and gap detection',
         'Spaced-repetition flashcards',
         'All eight interactive tools',

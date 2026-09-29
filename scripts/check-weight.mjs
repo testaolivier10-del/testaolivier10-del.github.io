@@ -324,8 +324,13 @@ const DATA_BUDGETS = [
      314 -> 315 for the accuracy review: about 90 bank items corrected
      where they taught something wrong (a reversed mechanism, a misnamed
      structure, a pKa off by ten units). A correction usually says why the
-     old claim fails, so it runs a sentence longer. Measured 314.1 KB. */
-  ['ochem/assets/tutor-bank.json', 315],
+     old claim fails, so it runs a sentence longer. Measured 314.1 KB.
+
+     315 -> 317 for the prerequisite pass: about 200 questions reworded so
+     they use only ideas taught by their topic, and five questions moved to
+     the later topic that teaches them, each old slot refilled with a new
+     question. Measured 315.8 KB. */
+  ['ochem/assets/tutor-bank.json', 317],
   /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
      The core is what practice.html and review.html WAIT on before their first
@@ -385,7 +390,10 @@ const DATA_BUDGETS = [
      items replaced by application items whose explanations are worked
      solutions. Measured 237.6 KB. Still fetched after paint and blocking
      nothing, so the cost is a later explanation, not a slower page. */
-  ['ochem/assets/practice-bank-why.json', 239],
+  /* 239 -> 241 for the prerequisite pass (see the tutor index above): five
+     more questions, and explanations rewritten so they lean only on earlier
+     topics. Measured 239.1 KB, still fetched after paint. */
+  ['ochem/assets/practice-bank-why.json', 241],
   /* The structures drawn above practice-bank stems. This one is here for an
      unusual reason: it is a <script src>, not a fetched file, so the
      reference walk above WOULD see it — except that the only two pages

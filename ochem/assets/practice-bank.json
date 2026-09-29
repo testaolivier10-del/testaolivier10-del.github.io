@@ -5327,20 +5327,20 @@
    "type": "mcq"
   },
   {
-   "q": "A hydride ion (H-) delivered from a reagent like NaBH4 or LiAlH4 acts as a nucleophile in reducing a carbonyl. What is it attacking?",
+   "q": "A reagent that delivers hydride ion, H⁻, reacts with formaldehyde, H₂C=O. Which atom does the hydride attack?",
    "options": [
-    "The oxygen of the carbonyl",
+    "The oxygen of the C=O",
     "Another hydride ion",
-    "The electrophilic carbon of the carbonyl",
+    "The carbon of the C=O",
     "The solvent"
    ],
    "correct": 2,
-   "why": "Hydride attacks the electron-poor carbonyl carbon, with its electron pair forming a new C–H bond while the C=O pi electrons shift onto oxygen, ultimately giving an alkoxide (and after protonation, an alcohol).",
+   "why": "Hydride is a nucleophile, so it goes to the electron-poor atom. Oxygen pulls density out of the C=O and leaves carbon δ+. The new C–H bond forms at carbon while the π pair moves onto oxygen, giving CH₃O⁻. Oxygen is already electron-rich, so it is the wrong target.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why is water generally considered a weaker nucleophile than hydroxide, yet water is still used as a nucleophile in many SN1 and addition reactions?",
+   "q": "Why is water generally a weaker nucleophile than hydroxide, yet still used as a nucleophile toward carbocations and other very reactive electrophiles?",
    "options": [
     "Water has no lone pairs available",
     "Water is actually a stronger nucleophile than hydroxide in all cases",
@@ -5348,7 +5348,7 @@
     "Water's neutral oxygen still has lone pairs to donate"
    ],
    "correct": 3,
-   "why": "Neutral nucleophiles like water are weaker than their anionic counterparts but are still perfectly capable nucleophiles, especially toward highly reactive electrophiles such as carbocations formed in SN1 pathways.",
+   "why": "A neutral nucleophile like water is weaker than its anion, but its oxygen still has two lone pairs to donate. Toward a very reactive electrophile such as a carbocation, that is plenty. Saying water has no lone pairs, or cannot take part in mechanisms, is the tempting error.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -5418,15 +5418,15 @@
    "type": "tf"
   },
   {
-   "q": "Why is the carbon of an epoxide ring a good electrophile even though the molecule overall is neutral?",
+   "q": "Ethylene oxide is a three-membered ring of two CH₂ carbons and one oxygen. Why are its ring carbons good electrophiles even though the molecule is neutral?",
    "options": [
     "Ring strain plus a partial positive charge",
-    "Epoxide carbons are always negatively charged",
-    "Oxygen in the ring is the electrophilic atom, not carbon",
-    "Epoxides have no dipole at all"
+    "Its ring carbons carry a full negative charge",
+    "The ring oxygen is the electrophilic atom, not carbon",
+    "The molecule has no dipole at all"
    ],
    "correct": 0,
-   "why": "The electronegative oxygen pulls electron density from the ring carbons (inducing partial positive charge), and the strained three-membered ring geometry adds extra driving force for nucleophiles to open the ring at carbon.",
+   "why": "Oxygen pulls electron density from both ring carbons, leaving them δ+. The tiny ring is also badly strained, so breaking a C–O bond when a nucleophile attacks carbon releases that strain. Oxygen is the electron-rich atom here, so it is not the electrophile.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5489,7 +5489,7 @@
     "Alkyl halides are not electrophilic at all"
    ],
    "correct": 0,
-   "why": "The polar C–Br bond leaves carbon partially positive (δ+), and because Br- can leave as a stable anion, a nucleophile can attack that carbon while the C–Br bond breaks, as in SN1/SN2 reactions.",
+   "why": "The polar C–Br bond leaves carbon partially positive (δ+). Because Br⁻ is a stable anion that can leave, a nucleophile can attack that carbon as the C–Br bond breaks. The hydrogens play no part, and bromine is the electron-rich end of the bond, not the poor one.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5502,7 +5502,7 @@
     "Only the solvent is electrophilic"
    ],
    "correct": 1,
-   "why": "As the alkene's pi electrons approach Br2, they induce a dipole in the Br–Br bond, making one bromine electrophilic; the alkene attacks it, displacing bromide and forming a bromonium ion intermediate.",
+   "why": "As the alkene's π electrons approach Br₂, they push the Br–Br bonding pair toward the far bromine. The near bromine becomes δ+ and electrophilic. The alkene attacks it and bromide leaves. The alkene is the nucleophile here, not the electrophile.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5515,7 +5515,7 @@
     "Donates electrons to other species"
    ],
    "correct": 2,
-   "why": "Aluminum in AlCl3 has only six electrons around it (no octet), giving it a strongly electron-accepting empty orbital, which is the hallmark of a Lewis acid/electrophile used to activate other electrophiles in reactions like Friedel-Crafts.",
+   "why": "Aluminum in AlCl₃ has only six electrons around it, so it has an empty orbital that can accept an electron pair. That is what makes it a Lewis acid and an electrophile. It is neutral, not negative, and it accepts electrons rather than donating them.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5570,15 +5570,15 @@
    "type": "mcq"
   },
   {
-   "q": "In an SN1 mechanism, which species formed as an intermediate is the actual electrophile attacked by the incoming nucleophile?",
+   "q": "A C–Br bond breaks on its own, and bromide leaves with the bonding pair. Which species is then the electrophile that a nucleophile attacks?",
    "options": [
-    "The original alkyl halide before ionization",
-    "The leaving group itself after it departs",
-    "The carbocation intermediate formed after the leaving group departs",
+    "The alkyl halide, while the C–Br bond is still intact",
+    "The bromide ion after it departs",
+    "The carbocation left behind",
     "The solvent molecule"
    ],
    "correct": 2,
-   "why": "Once the leaving group departs in the first (rate-determining) step, a planar carbocation intermediate forms with an empty p orbital, and this highly electrophilic cation is what the nucleophile subsequently attacks.",
+   "why": "Once bromide leaves, the carbon keeps only three bonds, a positive charge and an empty p orbital. That carbocation is a strong electrophile, and it is what the nucleophile attacks. The alkyl halide no longer exists at that point, and bromide is electron-rich.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -5596,13 +5596,13 @@
    "type": "mcq"
   },
   {
-   "q": "An aromatic ring undergoing electrophilic aromatic substitution reacts with an electrophile such as Br+ generated from Br2 and a Lewis acid catalyst.",
+   "q": "In a C=O group, oxygen is the electrophilic atom because the double bond is polarized toward it.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "In electrophilic aromatic substitution, a Lewis acid (like FeBr3) helps generate a highly electrophilic species (such as Br+) that the electron-rich aromatic ring then attacks as the nucleophile.",
+   "correct": 1,
+   "why": "The bond is polarized toward oxygen, which is exactly why oxygen is δ− and electron-rich. Carbon is left δ+, so carbon is the electrophile that a nucleophile attacks. Reading \"polarized toward oxygen\" as \"oxygen is the target\" is the trap.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -5633,15 +5633,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does conjugation of a carbonyl with an adjacent C=C double bond (as in an enone, an alpha,beta-unsaturated ketone) create a second electrophilic site at the beta carbon?",
+   "q": "In but-3-en-2-one, CH₂=CH–CO–CH₃, the C=C is joined directly to the C=O carbon. Why does the beta carbon (the far CH₂) become a second electrophilic site?",
    "options": [
     "Conjugation has no effect on electrophilicity anywhere in the molecule",
     "The beta carbon becomes negatively charged instead",
     "Resonance places partial positive charge on the beta carbon",
-    "Only the carbonyl carbon is ever electrophilic in an enone"
+    "Only the carbonyl carbon is ever electrophilic here"
    ],
    "correct": 2,
-   "why": "A resonance structure of an enone shows the C=C pi electrons shifting all the way to the very electronegative oxygen, leaving a positive charge on the beta carbon; this explains why nucleophiles can add either directly to the carbonyl carbon or to this more remote beta carbon (conjugate addition).",
+   "why": "Push the C=C π pair toward the C=O and the C=O π pair onto oxygen. That resonance structure puts a minus on oxygen and a plus on the beta carbon, so a nucleophile can attack there as well as at the carbonyl carbon. Resonance, not a negative charge, sets this up.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5685,7 +5685,7 @@
    "type": "mcq"
   },
   {
-   "q": "What makes sulfonate esters (like tosylates, R-OTs) useful electrophiles in substitution reactions, much like alkyl halides?",
+   "q": "What makes a tosylate such as ethyl tosylate, CH₃CH₂–OTs, a useful electrophile, much like an alkyl halide?",
    "options": [
     "Sulfonates make carbon into a nucleophile",
     "Electron-poor carbon, superb leaving group",
@@ -5693,7 +5693,7 @@
     "Sulfur is the site that nucleophiles attack, not carbon"
    ],
    "correct": 1,
-   "why": "Like halides, the oxygen in a sulfonate ester polarizes the attached carbon (making it electrophilic), and the resulting sulfonate anion is exceptionally stable (weak base) due to extensive resonance and charge delocalization, making it depart easily as a leaving group.",
+   "why": "The oxygen bonded to carbon leaves that carbon δ+, as a halogen would. The tosylate anion that departs is very stable because its charge spreads over three oxygens by resonance, so it leaves easily. Sulfur is not where the nucleophile attacks; the δ+ carbon is.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -5889,15 +5889,15 @@
    "type": "tf"
   },
   {
-   "q": "In the reaction of an epoxide with a nucleophile under basic conditions, what effectively serves as the leaving group when the ring opens?",
+   "q": "Ethylene oxide is a three-membered ring of two CH₂ carbons and one oxygen. Hydroxide attacks one ring carbon and a C–O bond breaks. What is the leaving group?",
    "options": [
     "A halide ion",
-    "The ring oxygen, which becomes an alkoxide as the strained C–O bond breaks",
-    "A proton",
-    "Nothing leaves in epoxide-opening reactions"
+    "The ring oxygen, which leaves as an alkoxide",
+    "A proton pulled off the carbon",
+    "Nothing, because the product stays in one piece"
    ],
    "correct": 1,
-   "why": "As a nucleophile attacks a ring carbon, the strained C–O bond breaks and the oxygen (now bearing the electron pair) becomes an alkoxide leaving group still attached elsewhere in the molecule, relieving ring strain.",
+   "why": "Hydroxide forms a new C–O bond as a ring C–O bond breaks, and that oxygen keeps the pair as an alkoxide, O⁻. Alkoxide is normally a poor leaving group, but releasing the strain of the tiny ring pays for it. It stays attached to the other carbon, which is why \"nothing leaves\" is tempting.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -6418,15 +6418,15 @@
    "type": "mcq"
   },
   {
-   "q": "Hydrogen abstraction by chlorine is exothermic while the same abstraction by bromine is endothermic. Which reagent distinguishes a tertiary hydrogen from a primary one more sharply?",
+   "q": "Relative to the reactants (0), TS1 is at +12, the intermediate at −8, and TS2 at +9 kcal/mol. Which step is rate-determining?",
    "options": [
-    "Bromine, whose late transition state already contains the radical",
-    "Chlorine, whose greater reactivity lets it choose the weakest bond",
-    "Both distinguish them equally, since the radical stabilities are the same",
-    "Neither shows measurable selectivity between the two"
+    "Step 1, because TS1 is the highest point",
+    "Step 2, the 17 kcal/mol climb from the well",
+    "Neither; the intermediate sets the rate on its own",
+    "Both equally, since the two peaks are close"
    ],
-   "correct": 0,
-   "why": "The radical stability gap is about 5 kcal/mol for both halogens. Bromine's step is uphill, so its peak comes late and the radical is nearly formed there, putting almost all of that 5 kcal/mol into the barrier. Chlorine's step is downhill, its peak comes early, and at that point the radical barely exists.",
+   "correct": 1,
+   "why": "Measure each climb from the lowest point before it. Reaching TS1 from the reactants is a climb of 12. But molecules fall into the well at −8, and climbing from there to TS2 is 17. The largest climb sets the rate. \"Highest peak\" works only when no intermediate lies below the reactants.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6439,7 +6439,7 @@
     "It converts an endergonic reaction into an exergonic one"
    ],
    "correct": 2,
-   "why": "Both directions cross the same peak, so lowering that peak subtracts the same amount from each climb. That symmetry is precisely why the equilibrium constant cannot move, and it is why a good catalyst for a hydrogenation is also a good catalyst for the corresponding dehydrogenation.",
+   "why": "Both directions cross the same peak, so lowering that peak takes the same amount off each climb. That is why the equilibrium constant cannot change, and why a catalyst that speeds a reaction also speeds its reverse. It does not slow either direction.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6566,7 +6566,7 @@
    "q": "What is the name for a sigma bond donating its electron pair into an adjacent empty p orbital?",
    "options": [
     "Resonance",
-    "Tautomerization",
+    "Polarization",
     "Hyperconjugation",
     "Induction"
    ],
@@ -6649,7 +6649,7 @@
     "Neither — ionization rate does not depend on substitution"
    ],
    "correct": 0,
-   "why": "Solvolysis rate is the rate of forming the cation, so it tracks cation stability, not steric access. The tertiary substrate gives a cation with nine hyperconjugating C–H bonds; the primary one would give a cation with three and in practice does not ionize at all. Crowding matters for concerted backside attack, which is the opposite preference.",
+   "why": "Solvolysis rate is the rate of forming the cation, so it tracks cation stability, not crowding. The tertiary substrate gives a cation with nine hyperconjugating C–H bonds; the primary one would get three and in practice does not ionize. Crowding matters only when a nucleophile must attack as the bond breaks.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6671,7 +6671,7 @@
    "options": [
     "A benzene ring is electron-poor and has no density to donate",
     "The empty orbital is an sp² hybrid lying in the ring plane, at 90° to the π cloud",
-    "The ring's π electrons are already committed to aromaticity and cannot be shared",
+    "The ring's π electrons are held too tightly by all six carbons to be shared",
     "The ring carbon rehybridizes to sp³, which destroys the conjugation"
    ],
    "correct": 1,
@@ -6900,7 +6900,7 @@
     "The oxygen-stabilized one, so ionization occurs next to the oxygen even if a more substituted carbon is available"
    ],
    "correct": 3,
-   "why": "A lone pair adjacent to the charge produces a structure with a full π bond and an octet on every atom, which is worth far more than the nine hyperconjugating bonds of a tertiary cation. So when a molecule offers both options, the bond that breaks is the one giving the oxocarbenium, not the one giving the more substituted alkyl cation. This is why acetals hydrolyze where they do rather than at whatever carbon looks most substituted.",
+   "why": "A lone pair next to the charge gives a structure with a full π bond and an octet on every atom, worth far more than the nine hyperconjugating bonds of a tertiary cation. So when both options exist, the bond that breaks is the one giving the oxocarbenium ion, not the more substituted alkyl cation.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -7002,7 +7002,7 @@
     "False"
    ],
    "correct": 0,
-   "why": "Electron-donating substituents push additional electron density into the aromatic ring (by resonance and/or induction), increasing the ring's overall nucleophilicity and accelerating electrophilic aromatic substitution.",
+   "why": "An electron-donating group pushes extra electron density into the ring, mainly by resonance from its lone pair. The ring becomes a better nucleophile, so it reacts faster with electrophiles.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -7068,15 +7068,15 @@
    "type": "tf"
   },
   {
-   "q": "In an enol (the tautomer of a ketone with a C=C–OH arrangement), which carbon is electron-rich and acts as the nucleophilic site?",
+   "q": "In CH₂=CH–OH, which carbon is electron-rich and acts as the nucleophilic site?",
    "options": [
     "The carbon bonded directly to oxygen",
-    "The carbon at the far end of the double bond, away from oxygen (the alpha carbon)",
+    "The CH₂ carbon at the far end of the C=C",
     "Neither carbon has extra electron density",
-    "The oxygen atom itself is the only reactive site"
+    "The oxygen atom is the only reactive site"
    ],
    "correct": 1,
-   "why": "A resonance structure of the enol places a lone pair from oxygen into the pi system, shifting electron density to the terminal (alpha) carbon and giving it significant nucleophilic, electron-rich character, which is why enols react with electrophiles at that carbon.",
+   "why": "An oxygen lone pair can move in to make C=O⁺ while the C=C π pair moves onto the CH₂ carbon. That contributor puts a negative charge on CH₂, so it attacks electrophiles. The carbon bonded to oxygen is made δ+ by induction, which is why it is the tempting wrong answer.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -7231,15 +7231,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why can an enamine's beta carbon (the carbon two atoms from nitrogen, across the double bond) be considered especially electron-rich and strongly nucleophilic?",
+   "q": "In CH₂=CH–NH₂, why is the CH₂ carbon (two atoms from nitrogen, across the C=C) especially electron-rich?",
    "options": [
     "Nitrogen withdraws electron density from that carbon",
-    "Beta carbons are never affected by resonance",
-    "The nitrogen lone pair donates into the pi system",
-    "Enamines have no nitrogen lone pair available to donate"
+    "That carbon is too far away for resonance to reach",
+    "The nitrogen lone pair donates into the π system",
+    "The nitrogen has no lone pair available to donate"
    ],
    "correct": 2,
-   "why": "Just as an enolate's oxygen lone pair activates the alpha carbon through resonance, an enamine's nitrogen lone pair conjugates through the C=C pi system to make the beta carbon unusually electron-rich and nucleophilic, a key feature exploited in many carbon-carbon bond-forming reactions.",
+   "why": "The nitrogen lone pair can move in to make C=N⁺ while the C=C π pair moves onto the CH₂ carbon, giving it a negative charge in that contributor. Induction from nitrogen pulls the other way, but resonance is stronger here, so the CH₂ carbon is electron-rich and nucleophilic.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -7259,7 +7259,7 @@
    "options": [
     "The one moving the C=C electrons toward oxygen; nucleophiles can attack there",
     "The one moving an oxygen lone pair onto carbon; the beta carbon turns rich",
-    "The one moving a hydrogen onto the oxygen; the molecule becomes an enol",
+    "The one moving the C=O electrons onto carbon; oxygen turns positive",
     "No contributor does, since the beta carbon is three bonds from the oxygen"
    ],
    "correct": 0,
@@ -7268,13 +7268,13 @@
    "type": "mcq"
   },
   {
-   "q": "A bromonium ion intermediate (formed when Br2 adds to an alkene) carries its formal positive charge on bromine, so it is bromine itself, not either ring carbon, that an incoming nucleophile attacks.",
+   "q": "In CH₃O–CH=CH₂, the oxygen's inductive pull makes the CH₂ end of the C=C electron-poor overall.",
    "options": [
     "True",
     "False"
    ],
    "correct": 1,
-   "why": "Although bromine formally bears the positive charge in the strained three-membered bromonium ring, the nucleophile actually attacks one of the electrophilic ring carbons from the backside, displacing bromine and opening the ring; formal charge location does not always mark the exact site of nucleophilic attack.",
+   "why": "Induction does pull density toward oxygen, but weakly and through σ bonds. The oxygen lone pair also donates into the C=C by resonance, putting a negative charge on the CH₂ carbon in one contributor. Resonance wins here, so that carbon is electron-rich and reacts with electrophiles.",
    "difficulty": "hard",
    "type": "tf"
   }
@@ -12825,7 +12825,7 @@
     "A single enantiomer",
     "A racemic mixture",
     "Retention of configuration",
-    "Inversion of configuration"
+    "A meso compound"
    ],
    "correct": 1,
    "why": "The carbon radical is essentially planar with its electron in a p orbital, so the halogen arrives on either face equally. No conditions make this enantioselective.",
@@ -12860,48 +12860,48 @@
    "type": "mcq"
   },
   {
-   "q": "Which reagent is used for allylic bromination?",
+   "q": "Butane has six primary and four secondary hydrogens. In bromination, a secondary hydrogen reacts about 80 times faster than a primary one. About what share of the monobromide is 2-bromobutane?",
    "options": [
-    "Br2 in bright light",
-    "HBr in peroxide",
-    "NBS",
-    "PBr3"
+    "About 40%",
+    "About 60%",
+    "About 93%",
+    "About 98%"
    ],
-   "correct": 2,
-   "why": "N-bromosuccinimide releases bromine slowly and keeps its concentration permanently low.",
+   "correct": 3,
+   "why": "Multiply each count by its rate: 4 × 80 = 320 for the secondary hydrogens, 6 × 1 = 6 for the primary. 320 out of 326 is about 98%. Counting hydrogens alone gives 40%, and using the 80 without multiplying by the four secondary hydrogens gives 80/86, about 93%.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Why does NBS give substitution rather than addition?",
+   "q": "Chlorinating methane with plenty of Cl₂ and light gives CH₂Cl₂, CHCl₃ and CCl₄ as well as CH₃Cl. Why?",
    "options": [
-    "It cannot reach a double bond",
-    "Addition needs more Br2",
-    "It brominates more strongly",
-    "It works only when cold"
+    "CH₃Cl still has C–H bonds the chain can attack",
+    "Cl₂ adds directly across the C–Cl bond",
+    "Light breaks the C–Cl bond so it can re-form",
+    "Termination steps keep joining chlorine atoms onto carbon"
    ],
-   "correct": 1,
-   "why": "Adding Br2 to an alkene is faster than the radical chain, but addition needs a reasonable Br2 concentration and the chain does not. Starve it and substitution wins.",
+   "correct": 0,
+   "why": "The product CH₃Cl still has three C–H bonds, so a chlorine radical can take one of those just as it took one from methane. Each round swaps another H for Cl. Running the reaction with a large excess of alkane keeps this down.",
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why is an allylic hydrogen unusually easy to abstract?",
+   "q": "Why is the tertiary C–H in 2-methylpropane easier for a halogen radical to remove than a primary C–H?",
    "options": [
-    "The radical is resonance-stabilized",
-    "It is sterically exposed",
-    "The double bond polarizes the C–H bond",
-    "It is more acidic than most"
+    "It leaves a more stable radical, so the bond is weaker",
+    "It is less crowded, so the radical reaches it more easily",
+    "Its hydrogen is more acidic than a primary hydrogen",
+    "The tertiary carbon carries a partial positive charge"
    ],
    "correct": 0,
-   "why": "The unpaired electron is delocalized across the pi system, which makes the abstraction much easier than the substitution pattern alone would suggest.",
+   "why": "Nine neighboring C–H bonds share density with the half-filled p orbital (hyperconjugation), so the tertiary radical is the most stable. That makes the tertiary C–H the weakest, about 96 kcal/mol against 101 for a primary one. The tertiary carbon is the more crowded one, and acidity is about losing H⁺, not H·.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Allylic bromination often gives two products. Why?",
+   "q": "A bromine radical removes an allylic hydrogen (one on a carbon next to a C=C), and the chain then often gives two different bromides. Why?",
    "options": [
-    "NBS has two active species",
+    "Each of the two allylic hydrogens gives its own radical",
     "The alkene isomerizes before reacting",
     "The reaction is reversible",
     "The radical is a resonance hybrid"
@@ -12996,10 +12996,10 @@
     "Br₂ with UV light, giving about 99% of the tertiary bromide",
     "Cl₂ with UV light, then swap the chlorine for bromine",
     "Br₂ in a dark flask, giving the tertiary bromide by polar substitution",
-    "NBS with UV light, which is the only way to reach a tertiary position"
+    "Br₂ with UV light, giving mainly the primary bromide, since there are nine primary hydrogens"
    ],
    "correct": 0,
-   "why": "Bromine is the selective halogen: 1600 to 1 for tertiary over primary per hydrogen, which beats the nine-to-one head start the primary hydrogens have. Light is not optional — without it there is no initiation and no chain. NBS is for allylic positions, where the point is keeping the bromine concentration low, not reaching a tertiary carbon.",
+   "why": "Bromine is the selective halogen: 1600 to 1 for tertiary over primary per hydrogen, which easily beats the nine-to-one head start of the primary hydrogens. Light is needed, since without it there is no initiation and no chain. Chlorine would give a mixture, so a later swap starts from the wrong place.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -13017,15 +13017,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why does radical chemistry reappear in mass spectrometry?",
+   "q": "Bond energies (kcal/mol): CH₃–H 105, CH₃–Cl 84, H–Cl 103, Cl–Cl 58. A student proposes the propagation Cl· + CH₄ → CH₃Cl + H·, then H· + Cl₂ → HCl + Cl·. Why is it rejected?",
    "options": [
-    "It does not reappear there",
-    "The sample is irradiated",
-    "The molecular ion is a radical cation",
-    "Bromine is used in the ionization source"
+    "Its first step is about 20 kcal/mol uphill",
+    "Each step uses up more radicals than it makes",
+    "Its two steps do not add up to the overall reaction",
+    "A hydrogen atom cannot react with Cl₂ at all"
    ],
-   "correct": 2,
-   "why": "The molecular ion fragments to leave the most stable radical it can, which is the same stability order you learned here.",
+   "correct": 0,
+   "why": "The first step breaks CH₃–H (105) and makes only CH₃–Cl (84), so it is uphill by about 21 and far too slow to carry a chain. The real first step makes H–Cl (103) instead and is nearly even. The proposal does add up correctly, and each step keeps one radical, so those are not the problem.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -18766,7 +18766,7 @@
     "No bicyclic compound can contain a double bond anywhere",
     "Bridgehead alkenes become isolable once the double bond sits trans in a ring of eight or more atoms",
     "Bridgehead carbons cannot bond to hydrogen at all",
-    "Bridgehead alkenes are fine as long as the ring is aromatic"
+    "Bridgehead alkenes are fine in any ring size, as long as the double bond is cis within the smaller ring"
    ],
    "correct": 1,
    "why": "An alkene carbon needs its three neighbors coplanar with it, and a bridgehead is held by three separate chains pulling in different directions. Unless one ring holding the double bond has at least eight atoms, so that the alkene can be trans within it, the geometry is impossible — bicyclo[2.2.1]hept-1-ene cannot be made — while bicyclo[3.3.1]non-1-ene, with a longer bridge to give the room, is a real if reactive compound. The rule bites in elimination: a Zaitsev product that would be a bridgehead alkene simply does not form.",
@@ -18898,7 +18898,7 @@
     "1,2-dibromoethylene"
    ],
    "correct": 1,
-   "why": "Br2 adds across the double bond, putting one bromine on each former alkene carbon, giving the vicinal dihalide 1,2-dibromoethane.",
+   "why": "Br₂ adds across the double bond, putting one bromine on each former alkene carbon. That gives 1,2-dibromoethane. 1,1-dibromoethane would need both bromines on the same carbon.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -19016,15 +19016,15 @@
    "type": "tf"
   },
   {
-   "q": "Catalytic hydrogenation — listed in this section's summary table and taught in full later in this chapter — delivers the two hydrogen atoms of H₂ to an alkene with what stereochemistry?",
+   "q": "Cyclohexene is treated with Br₂ in CH₂Cl₂. What is the product?",
    "options": [
-    "syn (same face)",
-    "anti (opposite faces)",
-    "random, no preference",
-    "it depends only on temperature"
+    "trans-1,2-dibromocyclohexane",
+    "cis-1,2-dibromocyclohexane",
+    "1,1-dibromocyclohexane",
+    "a mixture of cis and trans isomers"
    ],
    "correct": 0,
-   "why": "Both the alkene and H2 adsorb onto the same flat metal surface, so both hydrogen atoms are transferred to the same face of the double bond, giving syn addition.",
+   "why": "Br₂ gives a bridged bromonium ion on one face, and bromide must attack from the opposite face. The two bromines end up anti, which on a ring means trans. A free, flat cation would give both isomers, but the bridged ion prevents that.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -19059,12 +19059,12 @@
    "q": "The acid-catalyzed addition of water across an alkene's double bond is called:",
    "options": [
     "halogenation",
-    "hydroboration",
+    "hydrohalogenation",
     "acid-catalyzed hydration",
-    "ozonolysis"
+    "halohydrin formation"
    ],
    "correct": 2,
-   "why": "Acid catalysis protonates the alkene to form a carbocation, which water then attacks, adding H and OH across the former double bond in a process called acid-catalyzed hydration.",
+   "why": "Acid protonates the alkene to form a carbocation, which water then attacks. The net result adds H and OH across the former double bond, which is acid-catalyzed hydration. Hydrohalogenation adds HX, and halohydrin formation adds X and OH.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -19073,7 +19073,7 @@
    "options": [
     "HBr with added peroxides",
     "Br2 alone",
-    "NaBH4",
+    "Br2 in water",
     "HBr without peroxides"
    ],
    "correct": 3,
@@ -19100,11 +19100,11 @@
    "options": [
     "Dilute H2SO4 in water",
     "Hg(OAc)2 in water, then NaBH4",
-    "BH3 in THF, then H2O2 and NaOH",
+    "Dilute H2SO4 in methanol",
     "Br2 in water, then NaOH"
    ],
    "correct": 1,
-   "why": "Markovnikov puts the OH on C2, but the cation at C2 sits next to a quaternary carbon and would shift a methyl to become tertiary, so aqueous acid gives a rearranged alcohol. Oxymercuration reaches the same Markovnikov position through a bridged mercurinium ion, which never releases an open cation and so cannot rearrange. Hydroboration would give the anti-Markovnikov alcohol instead.",
+   "why": "Markovnikov puts the OH on C2, but the cation at C2 sits next to a quaternary carbon and would shift a methyl to become tertiary, so aqueous acid gives a rearranged alcohol. Oxymercuration reaches the same position through a bridged mercurinium ion, never an open cation, so nothing rearranges. Acid in methanol would rearrange too, and give an ether.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -19191,7 +19191,7 @@
     "Markovnikov's rule does not apply to branched alkenes"
    ],
    "correct": 0,
-   "why": "Protonation at C1 leaves a secondary cation at C2 with a tertiary C-H next door. A hydride migrates with its bonding pair, moving the charge to C3, and chloride captures it there — giving 2-chloro-2-methylbutane. Rearrangement is only possible if a genuine free cation existed, which is why it never shows up in concerted additions such as hydroboration.",
+   "why": "Protonation at C1 leaves a secondary cation at C2 with a tertiary C–H next door. A hydride moves over with its bonding pair, shifting the charge to C3, and chloride captures it there, giving 2-chloro-2-methylbutane. Rearrangement needs a real free cation, which is why bromination through a bridged ion never shows it.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -22124,15 +22124,15 @@
    "type": "mcq"
   },
   {
-   "q": "In a Williamson ether synthesis starting from an alcohol, the first step is usually to:",
+   "q": "Butan-1-ol is treated with MsCl and triethylamine, then with NaI in acetone. What is the product?",
    "options": [
-    "Deprotonate it with NaH",
-    "Protonate the alcohol with HCl",
-    "Oxidize the alcohol to a ketone",
-    "Tosylate the alcohol with TsCl"
+    "1-Iodobutane",
+    "Butan-1-ol, unchanged",
+    "But-1-ene",
+    "Dibutyl ether"
    ],
    "correct": 0,
-   "why": "The alkoxide, not the neutral alcohol, is the nucleophile needed to perform SN2 displacement on the alkyl halide partner, so a strong, non-nucleophilic base like NaH is used first to form it.",
+   "why": "MsCl turns the OH into a mesylate, a good leaving group made at sulfur. Iodide then displaces it by SN2 at the unhindered primary carbon, giving 1-iodobutane. Iodide cannot push out OH⁻ directly, which is why the first step is needed.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -22204,13 +22204,13 @@
   {
    "q": "Adding a Grignard reagent (R-MgBr) to an alcohol results in:",
    "options": [
-    "Nucleophilic addition to give a new, larger alcohol",
+    "A new C–C bond, giving a larger alcohol",
     "Simple acid-base protonation that destroys the Grignard reagent",
     "An SN2 substitution that gives an ether",
     "No reaction, since Grignards do not react with alcohols"
    ],
    "correct": 1,
-   "why": "The O-H of an alcohol is acidic enough to protonate the strongly basic, carbanion-like Grignard reagent, quenching it as an alkane before it can perform any useful addition chemistry.",
+   "why": "The Grignard carbon is δ− and acts like a carbanion, the conjugate base of an alkane (pKa about 50). An alcohol O–H (pKa about 16) is far more acidic, so it simply protonates the Grignard. That gives an alkane and destroys the reagent before any C–C bond can form.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -22510,11 +22510,11 @@
    "options": [
     "Is a strong acid that activates electrophiles",
     "Reacts readily with Grignard reagents to improve yields",
-    "Cannot dissolve organometallic compounds",
-    "Coordinates metal centers while staying unreactive"
+    "Cannot dissolve Grignard reagents",
+    "Coordinates magnesium while staying unreactive"
    ],
    "correct": 3,
-   "why": "THF's oxygen lone pairs coordinate to metal cations (helping stabilize organometallic reagents in solution) while its ring is chemically unreactive toward most nucleophiles and bases, making it a versatile, widely used solvent.",
+   "why": "THF's oxygen lone pairs coordinate to the magnesium of a Grignard reagent, which keeps it dissolved and reactive. The ether itself does not react with bases, nucleophiles or the Grignard, which is why \"reacts with Grignard reagents\" is wrong.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -22582,13 +22582,13 @@
    "type": "mcq"
   },
   {
-   "q": "Simple ethers have no O-H bond, so they cannot be oxidized at carbon by PCC- or Jones-type reagents the way alcohols are.",
+   "q": "Diethyl ether, CH₃CH₂–O–CH₂CH₃, and butan-1-ol are isomers: they share the formula C₄H₁₀O.",
    "options": [
     "True",
     "False"
    ],
    "correct": 0,
-   "why": "Chromium oxidation of an alcohol works by forming a chromate ester at the O-H and then removing a hydrogen from the carbinol carbon; with no O-H, an ether offers no way in, so these reagents leave it alone. That is a statement about deliberate oxidation at carbon, not about the slow radical autoxidation at the alpha C-H that forms peroxides in a bottle left open to air.",
+   "why": "Count the atoms: both have four carbons, ten hydrogens and one oxygen. They still behave very differently. The ether has no O–H, so its molecules cannot hydrogen-bond to each other, and it boils at 35 °C against 118 °C for the alcohol.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -22690,6 +22690,19 @@
    "correct": 1,
    "why": "Alkoxymercuration-demercuration adds methanol across the double bond with Markovnikov selectivity and no rearrangement, giving the ether directly. Alkoxide does not add to an isolated alkene; mCPBA then methanol gives a methoxy alcohol rather than a simple ether, because the epoxide leaves an OH behind; and HBr then methoxide is a Williamson on a secondary halide, which loses mostly to E2.",
    "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "In a Williamson ether synthesis starting from an alcohol, the first step is usually to:",
+   "options": [
+    "Deprotonate it with NaH",
+    "Protonate the alcohol with HCl",
+    "Oxidize the alcohol to a ketone",
+    "Tosylate the alcohol with TsCl"
+   ],
+   "correct": 0,
+   "why": "The alkoxide, not the neutral alcohol, is the nucleophile needed to perform SN2 displacement on the alkyl halide partner, so a strong, non-nucleophilic base like NaH is used first to form it.",
+   "difficulty": "medium",
    "type": "mcq"
   }
  ],
@@ -22808,15 +22821,15 @@
    "type": "tf"
   },
   {
-   "q": "Reducing an unsymmetrical epoxide with excess LiAlH4 places the new hydrogen mainly on:",
+   "q": "An unsymmetrical epoxide is opened under basic conditions by a hydride donor, a reagent that delivers H⁻ as a strong nucleophile. Where does the new hydrogen end up?",
    "options": [
-    "The more hindered carbon regardless of sterics",
-    "Both carbons equally",
-    "Neither carbon; LiAlH4 does not reduce epoxides",
-    "The less hindered carbon, leaving the new OH on the more substituted carbon"
+    "On the more hindered carbon",
+    "On both carbons equally",
+    "Nowhere; a hydride donor cannot open an epoxide",
+    "On the less hindered carbon"
    ],
    "correct": 3,
-   "why": "Hydride is a strong nucleophile that reacts via an SN2-like pathway, so like other strong nucleophiles it attacks the less sterically hindered carbon, which ends up bonded to the delivered hydrogen while the OH remains on the more substituted carbon.",
+   "why": "Under basic conditions a strong nucleophile opens the ring by backside attack at the less hindered carbon. Hydride goes there, and the OH stays on the more substituted carbon. Attack at the more substituted carbon is the acid-catalyzed pattern.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -22926,7 +22939,7 @@
    "q": "An epoxide reacting with an amine nucleophile under neutral or basic-type conditions opens to give:",
    "options": [
     "A beta-amino alcohol, with the amine attacking the more hindered carbon",
-    "An imine with loss of the oxygen entirely",
+    "An alkene, with the oxygen lost as water",
     "A beta-amino alcohol, with the amine attacking the less hindered carbon",
     "No reaction; amines do not open epoxides"
    ],
@@ -23028,13 +23041,13 @@
   {
    "q": "An epoxide treated with a thiolate nucleophile (RS-) under basic conditions opens to give:",
    "options": [
-    "A beta-hydroxy thioether, with sulfur attacking the more substituted carbon",
-    "A beta-hydroxy thioether, with sulfur attacking the less hindered carbon",
+    "A thioether with OH on the next carbon, sulfur on the more substituted carbon",
+    "A thioether with OH on the next carbon, sulfur on the less hindered carbon",
     "A disulfide with loss of the oxygen",
     "No reaction; thiolates do not open epoxides"
    ],
    "correct": 1,
-   "why": "Thiolate is a strong, highly polarizable nucleophile, so it follows the same basic-conditions pattern as other strong nucleophiles, attacking the less sterically hindered carbon via an SN2-like pathway to give a beta-hydroxy sulfide.",
+   "why": "Thiolate is a strong, very polarizable nucleophile, so it follows the basic-conditions pattern: backside attack at the less hindered carbon. Sulfur bonds there and the OH ends up on the carbon next to it. Attack at the more substituted carbon is the acid-catalyzed pattern.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24791,7 +24804,7 @@
     "Use less reagent"
    ],
    "correct": 0,
-   "why": "None of the oxidants in this section (PCC, Jones, Swern, DMP) distinguishes a primary alcohol from a secondary one, so the answer is a protecting group: mask the secondary alcohol as a silyl ether (TBSCl/imidazole), oxidize, then remove it with TBAF.",
+   "why": "None of the oxidants in this section (PCC, Jones, Swern, DMP) tells a primary alcohol from a secondary one, so changing the reagent or the conditions cannot help. Mask the secondary alcohol with a protecting group, oxidize, then unmask it. (The reagents for that come in Synthesis & Retrosynthesis.)",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25002,6 +25015,17 @@
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
+  },
+  {
+   "q": "Simple ethers have no O-H bond, so they cannot be oxidized at carbon by PCC- or Jones-type reagents the way alcohols are.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "why": "Chromium oxidation of an alcohol works by forming a chromate ester at the O-H and then removing a hydrogen from the carbinol carbon; with no O-H, an ether offers no way in, so these reagents leave it alone. That is a statement about deliberate oxidation at carbon, not about the slow radical autoxidation at the alpha C-H that forms peroxides in a bottle left open to air.",
+   "difficulty": "easy",
+   "type": "tf"
   }
  ],
  "carbonyl-reduction": [
@@ -25027,7 +25051,7 @@
     "Hexan-2-ol and ethanol"
    ],
    "correct": 2,
-   "why": "LiAlH4 reduces both carbonyls. The ketone takes one hydride and becomes a secondary alcohol at C5; the ester takes two, expelling ethoxide on the way (ethanol after workup) and passing through an aldehyde that is reduced at once to the primary alcohol at C1. Reducing the ketone alone is what NaBH4 would do, stopping at the aldehyde needs DIBAL-H cold, and no hydride turns the ester carbon into a CH3.",
+   "why": "LiAlH₄ reduces both carbonyls. The ketone takes one hydride and becomes a secondary alcohol at C5. The ester takes two, expelling ethoxide (ethanol after workup) and passing through an aldehyde that is reduced at once to the primary alcohol at C1. Reducing the ketone alone is what NaBH₄ would do.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25079,7 +25103,7 @@
     "Unreacted ethyl benzoate"
    ],
    "correct": 1,
-   "why": "DIBAL-H delivers one hydride to the ester carbonyl, and at -78 C the tetrahedral aluminum intermediate holds together instead of collapsing, so there is never any free aldehyde in the flask for a second hydride to find. Workup breaks it open to benzaldehyde. Benzyl alcohol is the LiAlH4 result, or what DIBAL gives warm and in excess; benzoic acid would need hydrolysis, not reduction.",
+   "why": "DIBAL-H is a deliberately weakened hydride reagent. One equivalent used cold stops an ester at the aldehyde, and the OCH₂CH₃ part leaves as ethanol. Benzyl alcohol is what LiAlH₄ gives, since the aldehyde is more reactive than the ester and takes a second hydride. Benzoic acid would need hydrolysis, not reduction.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25183,7 +25207,7 @@
     "NaBH4 in cold methanol"
    ],
    "correct": 0,
-   "why": "A deliberately weakened reagent, used cold. Worth knowing it exists even if the details come later.",
+   "why": "DIBAL-H is a deliberately weakened hydride reagent, and used cold it stops an ester at the aldehyde. LiAlH₄ cannot, because the aldehyde is more reactive than the ester and is reduced on to the primary alcohol. H₂ over Pd leaves esters alone, and NaBH₄ barely touches them.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25510,7 +25534,7 @@
     "(E)-3-Phenylprop-2-en-1-ol, PhCH=CHCH2OH"
    ],
    "correct": 1,
-   "why": "At one atmosphere over Pd/C the C=C is reduced and the rest is not: esters are essentially untouched by catalytic hydrogenation, and a benzene ring needs severe conditions. The two alcohols are what a hydride reagent does to the ester, and the cyclohexyl ester would need the ring reduced as well.",
+   "why": "At one atmosphere over Pd/C the C=C is reduced and nothing else is: esters are essentially untouched by catalytic hydrogenation, and a benzene ring needs severe conditions. The two alcohols would need the ester reduced, and the cyclohexyl ester would need the ring reduced as well.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25571,24 +25595,24 @@
    "options": [
     "Na in liquid NH3",
     "H2, Pd/C",
-    "LiAlH4",
+    "Br₂ in cold CH₂Cl₂",
     "H2 with Lindlar"
    ],
    "correct": 0,
-   "why": "Lindlar gives the cis alkene; plain Pd/C gives the alkane.",
+   "why": "Na in liquid NH₃ gives the trans alkene. Lindlar gives the cis alkene, and plain Pd/C goes all the way to the alkane. Br₂ adds anti, but it adds bromine, not hydrogen.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why is hydrogenation the complement of hydride reduction?",
+   "q": "(R)-3-Methylcyclohex-1-ene is hydrogenated over Pd/C. The product is:",
    "options": [
-    "Both reduce esters",
-    "They are identical",
-    "Both of them reduce ketones well",
-    "One reduces C=C and the other C=O"
+    "An achiral compound",
+    "The (R) enantiomer only",
+    "The (S) enantiomer only",
+    "A 50:50 mixture of R and S"
    ],
-   "correct": 3,
-   "why": "A molecule with an alkene and a ketone can be reduced at either position by choosing the reagent.",
+   "correct": 0,
+   "why": "The product is methylcyclohexane. The carbon bearing the methyl now has two identical ring paths, so it is no longer a stereocenter, and the molecule has none. It is tempting to say (R), since that carbon was never touched, but losing the C=C made its two sides the same.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -25658,41 +25682,41 @@
    "type": "mcq"
   },
   {
-   "q": "An imine treated with H2/Pd gives what?",
+   "q": "CH₂=CH–CH₂–C≡C–CH₃ is stirred with excess H₂ over Pd/C until no more gas is taken up. How many equivalents of H₂ are consumed?",
    "options": [
-    "An alcohol",
-    "An amine",
-    "A nitrile",
-    "No reaction"
+    "1",
+    "2",
+    "3",
+    "4"
    ],
-   "correct": 1,
-   "why": "Imines are on the readily-reduced list, which makes this the basis of reductive amination (which you will meet in Amines).",
+   "correct": 2,
+   "why": "Over plain Pd/C the C=C takes one H₂ and the C≡C takes two, going all the way to the alkane: hexane. That makes three. Stopping the alkyne at the alkene would need Lindlar, which is why 2 is tempting.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which reagent reduces an alkene but not a ketone?",
+   "q": "Which conditions reduce an alkene but leave a ketone in the same molecule untouched?",
    "options": [
-    "H2/Pd/C at 1 atm",
-    "LiAlH4",
-    "DIBAL-H",
-    "NaBH4 in methanol"
+    "H₂ over Pd/C at 1 atm",
+    "H₂ over PtO₂ at high pressure",
+    "H₂ with Lindlar catalyst",
+    "Na in liquid NH₃"
    ],
    "correct": 0,
-   "why": "Exactly the complement of NaBH4, which does the reverse.",
+   "why": "Over Pd/C at one atmosphere the C=C is reduced and a ketone survives. Forcing conditions with PtO₂ reduce the ketone too. Lindlar is weakened so that it stops alkynes at the alkene, and Na in NH₃ is the alkyne-to-trans-alkene method, not an alkene reduction.",
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which reagent reduces a ketone but not an alkene?",
+   "q": "Cyclohexene is stirred under H₂ over Pd/C. What is the product?",
    "options": [
-    "Lindlar",
-    "Na/NH3",
-    "H2/Pd/C",
-    "NaBH4"
+    "Cyclohexane",
+    "Benzene",
+    "Cyclohexanol",
+    "Hexane"
    ],
-   "correct": 3,
-   "why": "Hydride reduction needs a polarized pi bond, which C=C does not provide.",
+   "correct": 0,
+   "why": "H₂ adds across the C=C, one hydrogen to each carbon, giving cyclohexane. The ring stays intact, so hexane is wrong, and no oxygen is involved, so cyclohexanol is wrong.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -25753,7 +25777,7 @@
    "options": [
     "It gives either alkene geometry",
     "It is unusually unreactive toward everything",
-    "It is aromatic",
+    "It cannot be hydrogenated at all",
     "It is cheap"
    ],
    "correct": 0,
