@@ -666,12 +666,13 @@
       8:['enantiomer-vs-diastereomer'],
       10:['enantiomer-vs-diastereomer'] } },
 
-    'directing-effects': { n:8, steps:{
-      1:['directing-effects'],
+    'directing-effects': { n:12, steps:{
       2:['directing-effects','resonance-delocalization'],
-      4:['directing-effects','electron-rich-poor'],
-      6:['directing-effects','resonance-delocalization'],
-      7:['directing-effects'] } },
+      4:['directing-effects','resonance-delocalization'],
+      6:['directing-effects','electron-rich-poor'],
+      7:['directing-effects'],
+      9:['directing-effects'],
+      11:['directing-effects','route-order'] } },
 
     'eas': { n:8, steps:{
       1:['eas-mechanism'],

@@ -125,9 +125,14 @@ function arenium(c, R, o = {}) {
   const { s: rs, v } = ring(c, R, o.doubles ?? [2, 4]);
   let s = rs;
   const E = at(v[0], 238, o.eLen ?? 40), H = at(v[0], 302, 36);
-  const eR = o.eR ?? rad({ l: o.E ?? 'E' });
+  const eR = o.tBu ? 0 : (o.eR ?? rad({ l: o.E ?? 'E' }));
   s += wedge(v[0], E, { rFrom: 0, rTo: eR, width: 9 });
-  s += atom(E.x, E.y, o.E ?? 'E', { kind: 'hi', r: eR, size: (o.E ?? 'E').length > 2 ? 10.5 : 12.5 });
+  if (o.tBu) {
+    // a skeletal tert-butyl: three methyl lines from the quaternary carbon
+    for (const d of [178, 298, 238]) s += bond(E, at(E, d, 26), { rFrom: 0, rTo: 0 });
+  } else {
+    s += atom(E.x, E.y, o.E ?? 'E', { kind: 'hi', r: eR, size: (o.E ?? 'E').length > 2 ? 10.5 : 12.5 });
+  }
   if (o.H !== false) {
     s += hash(v[0], H, { rFrom: 0, rTo: 11, width: 10, rungs: 5 });
     s += atom(H.x, H.y, 'H', { r: 11 });
@@ -593,7 +598,7 @@ FIGURES.push({
   id: 'l-bromination',
   lessons: ['eas'],
   alt: 'Stacked. Br2 and FeBr3, with a curved arrow from a bromine lone pair to iron; below, the complex Br–Br–FeBr3 with the middle bromine plus one and iron minus one. Then benzene attacks the outer bromine of the complex: one arrow from a ring pi bond to that bromine, one from the Br–Br bond onto the middle bromine. At the bottom, the arenium ion carrying Br and H, plus FeBr4 minus.',
-  viewBox: '0 0 340 620',
+  viewBox: '0 0 340 590',
   build() {
     let s = '';
     s += bromRow1(70, 34, 226);
@@ -625,7 +630,7 @@ function protNitric(o) {
     },
     bonds: [['O1', 'Ha'], ['O1', 'Hb'], ['O1', 'N', 1, 'fg-bond-hi'], ['N', 'O2', 2], ['N', 'O3']],
     lp: [['O1', 270], ['O3', 90]],
-    charges: [['O1', '+', 58, 25], ['N', '+', 90, 25], ['O3', '−', 0, 25]],
+    charges: [['O1', '+', 80, 25], ['N', '+', 0, 25], ['O3', '−', 0, 25]],
   };
   return m;
 }
@@ -689,18 +694,18 @@ FIGURES.push({
       charges: [['N', '+', 0, 24], ['O3', '−', 0, 25]],
     };
     s += mol(nit);
-    const hs = P(150, 42), os = P(66, 42);
-    s += bond(os, hs, { rFrom: 24, rTo: 11 });
+    const hs = P(150, 42), os = P(50, 42);
+    s += bond(os, hs, { rFrom: 26, rTo: 11 });
     s += atom(hs.x, hs.y, 'H', { kind: 'hi', r: 11 });
     s += atom(os.x, os.y, 'OSO₃H', { r: 26, size: 10 });
     s += curve(P(o.x + 4, o.y - 22), at(hs, 80, 13), { bow: 10 });
-    s += curve(P(108, 36), at(os, 330, 26), { bow: -10 });
-    s += tg(170, 190, 'HNO₃ and H₂SO₄');
+    s += curve(P(112, 36), at(os, 335, 27), { bow: -14 });
+    s += tg(170, 196, 'HNO₃ and H₂SO₄');
     s += arrow(P(300, y), P(360, y));
     s += mol(protNitric(P(446, y)));
     s += lbl(600, y + 5, '+ HSO₄⁻', 'start');
-    s += tg(486, 190, 'water is now bonded to N');
-    s += rule(24, 208, 736, 208);
+    s += tg(486, 198, 'water is now bonded to N');
+    s += rule(24, 212, 736, 212);
     // ---- row 2: water leaves ----
     const y2 = 292;
     s += waterLoss(P(130, y2));
@@ -724,18 +729,18 @@ FIGURES.push({
   id: 'l-nitronium',
   lessons: ['eas'],
   alt: 'Stacked. Protonated nitric acid, with water bonded to a positive nitrogen; one curved arrow moves a lone pair on the negative oxygen into the N–O bond, another sends the N–OH2 bond pair onto the water oxygen. Arrow down to the linear nitronium ion O=N+=O plus water. Then benzene attacks the nitrogen of a vertical nitronium ion while an N=O pi bond moves onto oxygen, giving the arenium ion carrying NO2 and H.',
-  viewBox: '0 0 340 560',
+  viewBox: '0 0 340 530',
   build() {
     let s = '';
-    s += waterLoss(P(96, 80));
-    s += arrow(P(170, 140), P(170, 176));
-    s += mol(nitronium(P(130, 214)));
-    s += lbl(210, 219, '+ H₂O', 'start');
-    s += tg(170, 256, 'nitronium ion: straight, 180°');
-    s += rule(16, 272, 324, 272);
-    s += nitroAttack(P(60, 350), 32, P(160, 350));
-    s += rxn(P(170, 410), P(170, 444), 'step 1', null);
-    s += arenium(P(110, 512), 30, { E: 'NO₂', eR: 18 }).s;
+    s += waterLoss(P(90, 70));
+    s += arrow(P(262, 104), P(262, 150));
+    s += mol(nitronium(P(130, 192)));
+    s += lbl(210, 197, '+ H₂O', 'start');
+    s += tg(170, 236, 'nitronium ion: straight, 180°');
+    s += rule(16, 252, 324, 252);
+    s += nitroAttack(P(56, 334), 32, P(156, 334));
+    s += rxn(P(240, 350), P(240, 400), 'step 1', null);
+    s += arenium(P(120, 480), 30, { E: 'NO₂', eR: 18 }).s;
     return s;
   },
   caption: 'Water leaves to make NO₂⁺; the ring then bonds to its nitrogen.',
@@ -753,7 +758,7 @@ FIGURES.push({
   section: 'eas',
   anchor: 'concentrated fuming acid, with little water, favors the forward one.</p>',
   alt: 'Two rows. Top, forward: benzene attacks the sulfur of SO3; one curved arrow runs from a ring pi bond to sulfur and one from an S=O pi bond onto oxygen, giving an arenium ion that carries SO3 minus and H on its sp3 carbon; after loss of H plus and a proton transfer to oxygen, the product is benzenesulfonic acid. Bottom, reverse, in hot dilute aqueous acid: benzenesulfonate, the ionized acid, is attacked by H plus at the carbon carrying sulfur, with a curved arrow from the ring pi bond at that carbon to H plus; this gives the same arenium ion, and a curved arrow from the C–S bond back into the ring releases SO3 and gives benzene.',
-  viewBox: '0 0 760 420',
+  viewBox: '0 0 760 450',
   build() {
     let s = '';
     // ---- forward ----
@@ -779,8 +784,8 @@ FIGURES.push({
     s += tg(640, 190, 'benzenesulfonic acid');
     s += rule(24, 214, 736, 214);
     // ---- reverse ----
-    y = 318;
-    s += tg(24, 238, 'IN HOT DILUTE AQUEOUS ACID: THE SAME STEPS, BACKWARDS', 'start');
+    y = 348;
+    s += tg(24, 240, 'IN HOT DILUTE AQUEOUS ACID: THE SAME STEPS, BACKWARDS', 'start');
     {
       const c3 = P(90, y + 10);
       const { s: r3, v: v3 } = ring(c3, R, [1, 3, 5], { hi: [5] });
@@ -789,7 +794,7 @@ FIGURES.push({
       s += atom(h.x, h.y, 'H', { kind: 'hi', r: 12 });
       s += charge(P(h.x - 16, h.y - 12), '+');
       s += curve(away(c3, edge(v3, 5), 5), at(h, 0, 13), { bow: 12 });
-      s += tg(90, 404, 'benzenesulfonate + H⁺');
+      s += tg(90, 432, 'benzenesulfonate + H⁺');
     }
     s += rxn(P(168, y), P(222, y), 'H⁺ adds');
     {
@@ -855,7 +860,7 @@ FIGURES.push({
       };
       s += mol(m);
       const b = mid(c, m.atoms.Cl);
-      s += curve(P(b.x - 3, b.y + 6), at(m.atoms.Cl, 110, 17), { bow: 12 });
+      s += curve(P(b.x - 3, b.y + 6), at(m.atoms.Cl, 160, 17), { bow: 10 });
       s += tg(560, 190, 'the C–Cl bond breaks');
     }
     s += rule(24, 212, 736, 212);
@@ -865,14 +870,14 @@ FIGURES.push({
       const { s: rs, v } = ring(c, R, [1, 3, 5], { hi: [1] });
       s += rs;
       const cp = P(200, y);
-      const m = { atoms: { C: { ...cp, l: 'C', k: 'warn', r: 13 } }, bonds: [], charges: [['C', '+', 330, 24]] };
+      const m = { atoms: { C: { ...cp, l: 'C', k: 'warn', r: 13 } }, bonds: [], charges: [['C', '+', 300, 23]] };
       arms(m, 'C', [[0, 'CH₃'], [120, 'CH₃'], [240, 'CH₃']], 44);
       s += mol(m);
       s += curve(away(c, edge(v, 1), 5), at(cp, 180, 16), { bow: -14 });
       s += itTag(200, 402, 'tert', '-butyl cation + AlCl₄⁻');
     }
     s += rxn(P(300, y), P(356, y), 'step 1');
-    s += arenium(P(446, y + 12), 36, { E: 'C(CH₃)₃', eR: 28 }).s;
+    s += arenium(P(446, y + 12), 36, { tBu: true }).s;
     s += tg(526, y + 4, 'step 2: AlCl₄⁻ takes the H⁺,', 'start');
     s += itTag(526, y + 22, 'tert', '-butylbenzene + HCl + AlCl₃', 'fg-tag', 'start');
     return s;
@@ -896,7 +901,7 @@ function acylChloride(c) {
 function acylComplex(c) {
   const m = acylChloride(c);
   const cl = m.atoms.Cl;
-  const a = alcl3(at(cl, 0, 62), [270, 25, 90]);
+  const a = alcl3(at(cl, 0, 62), [270, 30, 330]);
   return {
     atoms: { ...m.atoms, ...a.atoms },
     bonds: [...m.bonds, ...a.bonds, ['Cl', 'Al', 1, 'fg-bond-hi']],
@@ -935,40 +940,40 @@ FIGURES.push({
   section: 'eas',
   anchor: 'Oxygen’s lone pair stabilizes the cation the same way it stabilizes the oxocarbenium ion in <a class="chapter-ref" href="/ochem/learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a>.</p>',
   alt: 'Three rows. Top: acetyl chloride and AlCl3; a curved arrow from a lone pair on the acetyl chlorine to aluminum gives a complex with chlorine plus one and aluminum minus one. Middle: in the complex, one curved arrow sends the C–Cl bond pair onto chlorine and another moves an oxygen lone pair into the C–O bond; the result is the acylium ion CH3–C≡O+, drawn straight, plus AlCl4 minus. Bottom: the two resonance structures of the acylium ion, CH3–C+=O with two lone pairs on oxygen and a curved arrow from one of them into the C–O bond, and CH3–C≡O+ with one lone pair on the positive oxygen.',
-  viewBox: '0 0 760 620',
+  viewBox: '0 0 760 566',
   build() {
     let s = '';
-    const c = P(104, 150);
+    const c = P(104, 118);
     const ac = acylChloride(c);
     ac.lp.push(['Cl', 300], ['Cl', 30], ['Cl', 120]);
     s += mol(ac);
-    s += tg(110, 222, 'acetyl chloride');
-    const al = P(300, 150);
+    s += tg(110, 190, 'acetyl chloride');
+    const al = P(300, 118);
     s += mol(alcl3(al, [270, 30, 150]));
-    s += tg(300, 222, 'AlCl₃');
+    s += tg(300, 190, 'AlCl₃');
     const lpPt = at(ac.atoms.Cl, 30, 22);
     s += curve(P(lpPt.x + 4, lpPt.y - 4), P(al.x - 18, al.y - 6), { bow: -22 });
-    s += arrow(P(372, 140), P(412, 140));
-    s += mol(acylComplex(P(484, 150)));
-    s += tg(590, 222, 'Cl +1, Al −1');
-    s += rule(20, 246, 740, 246);
-    s += acyliumArrows(P(104, 380));
-    s += tg(170, 460, 'C–Cl breaks; C≡O forms');
-    s += arrow(P(320, 370), P(372, 370));
-    s += mol(acyliumLinear(P(480, 370)));
-    s += tg(490, 420, 'the acylium ion: straight, 180° at C');
-    s += lbl(620, 375, '+ AlCl₄⁻', 'start');
-    s += rule(20, 480, 740, 480);
+    s += arrow(P(372, 108), P(412, 108));
+    s += mol(acylComplex(P(474, 118)));
+    s += tg(560, 190, 'Cl +1, Al −1');
+    s += rule(20, 212, 740, 212);
+    s += acyliumArrows(P(104, 330));
+    s += tg(150, 414, 'C–Cl breaks; C≡O forms');
+    s += arrow(P(320, 320), P(372, 320));
+    s += mol(acyliumLinear(P(480, 320)));
+    s += tg(490, 370, 'the acylium ion: straight, 180° at C');
+    s += lbl(620, 325, '+ AlCl₄⁻', 'start');
+    s += rule(20, 430, 740, 430);
     // resonance
-    const y = 552;
+    const y = 494;
     const left = acyliumLinear(P(200, y), false);
     s += mol(left);
     const lp = at(left.atoms.O, 305, 22);
     s += curve(P(lp.x - 2, lp.y - 4), mid(left.atoms.C, left.atoms.O), { bow: 18 });
     s += arrow(P(310, y), P(410, y), { muted: true }) + arrow(P(410, y), P(310, y), { muted: true });
     s += mol(acyliumLinear(P(530, y)));
-    s += tg(200, 606, 'C has only six electrons');
-    s += tg(530, 606, 'every atom has an octet: major');
+    s += tg(200, 546, 'C has only six electrons');
+    s += tg(530, 546, 'every atom has an octet: major');
     return s;
   },
   caption: 'Top: one arrow makes the Cl–Al bond. Middle: two arrows, as the C–Cl bond breaks and an oxygen lone pair makes the third C–O bond. Bottom: the two resonance structures of the acylium ion. The chlorines on aluminum are drawn without their lone pairs.',
@@ -991,10 +996,12 @@ FIGURES.push({
     s += mol(left);
     const lp = at(left.atoms.O, 305, 22);
     s += curve(P(lp.x - 2, lp.y - 4), mid(left.atoms.C, left.atoms.O), { bow: 18 });
-    s += tg(250, 386, 'C: six electrons', 'start');
-    s += arrow(P(110, 410), P(110, 436), { muted: true }) + arrow(P(110, 436), P(110, 410), { muted: true });
-    s += mol(acyliumLinear(P(110, 470)));
-    s += tg(250, 476, 'all octets: major', 'start');
+    s += tg(250, 376, 'C has only', 'start');
+    s += tg(250, 392, 'six electrons', 'start');
+    s += arrow(P(110, 408), P(110, 438), { muted: true }) + arrow(P(110, 438), P(110, 408), { muted: true });
+    s += mol(acyliumLinear(P(110, 474)));
+    s += tg(250, 470, 'all octets:', 'start');
+    s += tg(250, 486, 'the major one', 'start');
     return s;
   },
   caption: 'Two arrows make the acylium ion; its two resonance structures are below.',
@@ -1026,7 +1033,7 @@ FIGURES.push({
       const b = mid(k, m.atoms.O);
       s += curve(P(b.x + 8, b.y + 2), at(m.atoms.O, 20, 17), { bow: -12 });
     }
-    s += rxn(P(290, y), P(400, y), 'step 1, step 2');
+    s += rxn(P(290, y), P(400, y), 'steps 1 and 2');
     {
       const c = P(480, y + 14), R = 34;
       const r = flatRing(c, R);
@@ -1061,9 +1068,7 @@ FIGURES.push({
       s += lonePair(o.x, o.y, 210, { dist: 20 });
       s += charge(at(o, 300, 26), '+') + charge(at(al, 120, 28), '−');
     }
-    s += tg(640, y + 50, 'O +1, Al −1:', 'start');
-    s += tg(640, y + 66, 'one AlCl₃', 'start');
-    s += tg(640, y + 82, 'per ketone', 'start');
+    s += tg(520, y + 80, 'O +1, Al −1: one AlCl₃ held per ketone');
     return s;
   },
   caption: 'Top: as the ring bonds to carbon, one C≡O π bond moves onto oxygen. Bottom: the ketone oxygen, a Lewis base, holds on to AlCl₃. Water at the end breaks the O–Al bond.',
@@ -1076,7 +1081,7 @@ FIGURES.push({
   lessons: ['eas'],
   anchor: 'Propylbenzene still forms as the minor product, from direct attack on the complex before it rearranges.</p>',
   alt: 'Stacked. Top: the propyl cation drawn as CH3–CH2–CH2 plus, with C1 positive; the upper hydrogen on C2 is highlighted, and a curved arrow runs from its C–H bond to C1. Arrow down, labeled 1,2-hydride shift. Middle: the isopropyl cation, CH3–CH plus–CH3, with the charge on C2. Arrow down, labeled benzene attacks, then loses H plus. Bottom: isopropylbenzene, a benzene ring carrying a CH with two methyl groups, labeled the major product.',
-  viewBox: '0 0 340 520',
+  viewBox: '0 0 340 530',
   build() {
     let s = '';
     s += tg(170, 22, 'from CH₃CH₂CH₂Cl + AlCl₃');
@@ -1098,7 +1103,7 @@ FIGURES.push({
     s += mut(252, y + 36, 'C1');
     s += tg(170, 172, 'primary cation: + on C1');
     s += rxn(P(170, 184), P(170, 222), '1,2-hydride shift');
-    y = 272;
+    y = 290;
     const m2 = {
       atoms: {
         A: { ...P(70, y), l: 'CH₃' }, B: { ...P(160, y), l: 'C', k: 'warn', r: 14 }, C: { ...P(252, y), l: 'CH₃', k: 'hi' },
@@ -1108,14 +1113,14 @@ FIGURES.push({
       charges: [['B', '+', 60, 26]],
     };
     s += mol(m2);
-    s += tg(170, 322, 'secondary cation: + on C2, more stable');
-    s += rxn(P(170, 334), P(170, 372), 'benzene attacks, then loses H⁺');
+    s += tg(170, 340, 'secondary cation: + on C2, more stable');
+    s += rxn(P(170, 352), P(170, 396), 'benzene attacks,', 'then H⁺ is lost');
     {
-      const c = P(120, 444), R = 32;
+      const c = P(110, 466), R = 32;
       const r = flatRing(c, R);
       s += r.s + chain(r.v0, 'isopropyl');
-      s += tg(230, 470, 'isopropylbenzene', 'start');
-      s += tg(230, 486, '(major)', 'start');
+      s += tg(214, 492, 'isopropylbenzene', 'start');
+      s += tg(214, 508, '(major product)', 'start');
     }
     return s;
   },
@@ -1128,7 +1133,7 @@ FIGURES.push({
   section: 'eas',
   anchor: 'Both limits apply to acylation as well.</p>',
   alt: 'Two rows. Top: nitrobenzene with chloromethane and AlCl3 gives no reaction. Bottom: aniline, a benzene ring carrying NH2, with AlCl3; a curved arrow runs from the nitrogen lone pair to aluminum, giving a complex in which nitrogen carries two hydrogens, the ring and AlCl3, nitrogen plus one and aluminum minus one.',
-  viewBox: '0 0 760 360',
+  viewBox: '0 0 760 380',
   build() {
     let s = '';
     let y = 100;
@@ -1156,9 +1161,9 @@ FIGURES.push({
       s += mol(alcl3(al, [270, 30, 90]));
       const lp = at(n, 330, 21);
       s += curve(P(lp.x + 3, lp.y - 3), at(al, 195, 18), { bow: -14 });
-      s += tg(96, 344, 'aniline + AlCl₃');
+      s += tg(96, 366, 'aniline + AlCl₃');
     }
-    s += arrow(P(290, y), P(350, y));
+    s += arrow(P(290, y - 14), P(350, y - 14));
     {
       const c = P(430, y + 20), R = 34;
       const { s: rs, v } = ring(c, R, [0, 2, 4]);
@@ -1187,11 +1192,11 @@ FIGURES.push({
   section: 'eas',
   anchor: 'a propyl cation rearranges, and a propanoyl acylium ion does not.</p>',
   alt: 'Two rows. Top: benzene with 1-chloropropane and AlCl3 gives isopropylbenzene, marked with a cross. Bottom: benzene with propanoyl chloride and AlCl3 gives 1-phenylpropan-1-one, a ketone with the C=O next to the ring; then zinc amalgam and HCl reduce the C=O to CH2, giving propylbenzene, marked with a check.',
-  viewBox: '0 0 760 300',
+  viewBox: '0 0 760 280',
   build() {
     let s = '';
     const R = 30;
-    let y = 90;
+    let y = 76;
     s += flatRing(P(60, y), R).s;
     s += rxn(P(104, y), P(254, y), 'CH₃CH₂CH₂Cl, AlCl₃');
     {
@@ -1200,14 +1205,14 @@ FIGURES.push({
     }
     s += warn(420, y - 4, 'isopropylbenzene ✗', 'start');
     s += tg(420, y + 14, 'mostly branched: the cation rearranged', 'start');
-    s += rule(24, 150, 736, 150);
-    y = 236;
+    s += rule(24, 132, 736, 132);
+    y = 214;
     s += flatRing(P(60, y), R).s;
     s += rxn(P(104, y), P(234, y), 'CH₃CH₂COCl', 'AlCl₃');
     {
       const r = flatRing(P(282, y), R);
       s += r.s + chain(r.v0, 'propanoyl');
-      s += tg(318, 290, '1-phenylpropan-1-one');
+      s += tg(318, 268, '1-phenylpropan-1-one');
     }
     s += rxn(P(418, y), P(516, y), 'Zn(Hg), HCl');
     {
@@ -1244,6 +1249,72 @@ FIGURES.push({
     return s;
   },
   caption: 'Acylate, then reduce the C=O to CH₂.',
+});
+
+/* One fully drawn example of each of the five reactions. The notes give the
+   other four as table rows only. */
+FIGURES.push({
+  id: 'five-eas-reactions',
+  section: 'eas',
+  anchor: 'The five reactions side by side:</p>',
+  alt: 'Five rows, each showing benzene, an arrow carrying the reagents, and the product ring with its new substituent: bromobenzene from bromine and iron tribromide, nitrobenzene from nitric and sulfuric acid, benzenesulfonic acid from sulfur trioxide with a reverse arrow underneath, ethylbenzene from chloroethane and aluminum trichloride with a faint second ethyl group, and acetophenone from acetyl chloride and aluminum trichloride.',
+  viewBox: '0 0 760 430',
+  build() {
+    let s = '';
+    /* A flat-right hexagon so the substituent can hang off horizontally. */
+    const hex = (cx, cy, r) => {
+      const v = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (i * 60) * Math.PI / 180;
+        v.push(P(cx + Math.cos(a) * r, cy + Math.sin(a) * r));
+      }
+      return v;
+    };
+    const ring5 = (cx, cy) => {
+      const v = hex(cx, cy, 24), mid = P(cx, cy);
+      let g = '';
+      for (let i = 0; i < 6; i++) {
+        const j = (i + 1) % 6;
+        if ([0, 2, 4].includes(i)) g += ringDouble(v[i], v[j], mid, { inset: 6, gap: 3.4 });
+        else g += bond(v[i], v[j], { rFrom: 0, rTo: 0 });
+      }
+      return g;
+    };
+    const rows = [
+      { y: 72,  rgt: 'Br₂, FeBr₃',      sub: 'Br',     r: 15, name: 'bromobenzene',          note: 'FeBr₃ is a catalyst: a little is enough' },
+      { y: 152, rgt: 'HNO₃, H₂SO₄',     sub: 'NO₂',    r: 18, name: 'nitrobenzene',          note: 'the nitro group can later become NH₂' },
+      { y: 232, rgt: 'SO₃, H₂SO₄',      sub: 'SO₃H',   r: 21, name: 'benzenesulfonic acid',  note: 'hot dilute aqueous acid reverses it' },
+      { y: 312, rgt: 'CH₃CH₂Cl, AlCl₃', sub: 'CH₂CH₃', r: 25, name: 'ethylbenzene',         note: 'the product reacts faster, so it goes again' },
+      { y: 392, rgt: 'CH₃COCl, AlCl₃',  sub: 'COCH₃',  r: 23, name: 'acetophenone',          note: 'the product reacts slower, so it stops at one' },
+    ];
+    s += tag(380, 28, 'THE FIVE REACTIONS, EACH DRAWN ONCE');
+    rows.forEach((row, i) => {
+      const y = row.y;
+      s += ring5(70, y);
+      if (i === 2) {
+        s += arrow(P(106, y - 6), P(196, y - 6));
+        s += arrow(P(196, y + 12), P(106, y + 12), { muted: true });
+        s += text(151, y - 16, row.rgt, { cls: 'fg-sm', size: 10.5 });
+        s += text(151, y + 30, 'H₂O, H⁺, Δ', { cls: 'fg-sm', size: 10.5 });
+      } else {
+        s += arrow(P(106, y), P(196, y));
+        s += text(151, y - 10, row.rgt, { cls: 'fg-sm', size: 10.5 });
+      }
+      s += ring5(248, y);
+      const v = hex(248, y, 24);
+      s += bond(v[0], P(248 + 24 + 32, y), { rFrom: 0, rTo: row.r });
+      s += atom(248 + 24 + 32, y, row.sub, { kind: 'hi', r: row.r, size: row.sub.length > 3 ? 8.5 : 10 });
+      if (i === 3) {
+        /* The second alkylation, drawn faint: this is the whole problem. */
+        s += bond(v[2], P(248 - 34, y + 42), { rFrom: 0, rTo: 13, cls: 'fg-bond-soft' });
+        s += text(248 - 34, y + 46, 'Et', { cls: 'fg-mut', size: 11 });
+      }
+      s += label(356, y - 4, row.name, { size: 12.5, anchor: 'start' });
+      s += text(356, y + 16, row.note, { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    });
+    return s;
+  },
+  caption: 'Rows 4 and 5 make a carbon&ndash;carbon bond. Look for the reverse arrow in row 3 and the faint second ethyl group in row 4.',
 });
 
 export default FIGURES;
