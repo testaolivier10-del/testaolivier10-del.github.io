@@ -388,16 +388,16 @@ FIGURES.push({
   id: 'carb-galactose',
   section: 'carbohydrates',
   anchor: '<p>The order matters more than it looks.',
-  viewBox: '0 0 340 250',
+  viewBox: '0 0 340 264',
   alt: 'Beta-D-galactopyranose as a Haworth projection: ring oxygen at the back right, C1 OH up, C2 OH down, C3 OH up, C4 OH up (highlighted), and CH2OH up on C5.',
   build() {
     let s = '';
     s += tg(170, 20, 'β-D-galactopyranose');
-    s += pyranose(170, 146, {
+    s += pyranose(170, 140, {
       k: 1, nums: true, dot: '1',
       subs: glcSubs('b', { 4: { down: null, up: 'OH', upKind: 'hi' }, 5: { up: 'CH₂OH', upLen: 18 } }),
     }).s;
-    s += tg(170, 240, 'C4 OH up; in glucose it points down', 'fg-tag-mut');
+    s += tg(170, 254, 'C4 OH up; in glucose it points down', 'fg-tag-mut');
     return s;
   },
   caption: 'Galactose drawn from its Fischer projection. Only the teal OH on C4 differs from β-D-glucose.',
@@ -541,14 +541,14 @@ FIGURES.push({
 function maltose(x0, cy, k, o = {}) {
   // x0: the left edge of the drawing.
   let s = '';
-  const ax = x0 + 66 * k + 16;
+  const ax = x0 + 92 * k + 16;
   const A = pyranose(ax, cy, { k, dot: '1', subs: glcSubs(null, { 5: { up: 'CH₂OH', upLen: 16 } }) });
   const C1A = A.pos['1'];
   const Ol = P(C1A.x + 24 * k + 6, C1A.y + 42 * k + 8);
   const C4B = P(Ol.x + 24 * k + 6, C1A.y);
   const bx = C4B.x + 92 * k;
   const bSubs = glcSubs(o.freeDown ? 'a' : 'b', { 4: { down: null }, 5: { up: 'CH₂OH', upLen: 16 } });
-  bSubs[1][o.freeDown ? 'downKind' : 'upKind'] = 'hi';
+  if (!o.plain) bSubs[1][o.freeDown ? 'downKind' : 'upKind'] = 'hi';
   const B = pyranose(bx, cy, { k, dot: '1', subs: bSubs });
   s += bond(C1A, Ol, { rFrom: 0, rTo: 15 }) + bond(Ol, C4B, { rFrom: 15, rTo: 0 });
   s += A.s + B.s;
@@ -557,7 +557,7 @@ function maltose(x0, cy, k, o = {}) {
 }
 function sucrose(x0, cy, k) {
   let s = '';
-  const ax = x0 + 66 * k + 16;
+  const ax = x0 + 92 * k + 16;
   const A = pyranose(ax, cy, { k, dot: '1', subs: glcSubs(null, { 5: { up: 'CH₂OH', upLen: 16 } }) });
   const C1A = A.pos['1'];
   const Ol = P(C1A.x + 24 * k + 6, C1A.y + 42 * k + 8);
@@ -606,14 +606,14 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-carb-sort',
   lessons: ['carbohydrates'],
-  viewBox: '0 0 340 720',
+  viewBox: '0 0 340 700',
   alt: 'Three structures stacked, each with its anomeric carbons marked by dots. Maltose: two glucose rings, the left C1 joined through an oxygen to C4 of the right ring, whose C1 carries an OH. Sucrose: glucose C1 joined through an oxygen to fructose C2. Methyl alpha-D-glucopyranoside: a glucose ring whose C1 carries OCH3 pointing down.',
   build() {
     let s = '';
     s += tg(170, 18, 'maltose');
-    s += maltose(4, 126, 0.6).s;
+    s += maltose(22, 126, 0.6, { plain: true }).s;
     s += tg(170, 256, 'sucrose');
-    s += sucrose(8, 364, 0.6).s;
+    s += sucrose(24, 364, 0.6).s;
     s += tg(170, 494, 'methyl α-D-glucopyranoside');
     s += pyranose(164, 600, { k: 0.8, dot: '1', subs: glcSubs(null, { 1: { down: 'OCH₃' }, 5: { up: 'CH₂OH', upLen: 16 } }) }).s;
     return s;
@@ -751,26 +751,16 @@ FIGURES.push({
    does. In the beta chain the second glucose is drawn turned over, which
    is also how it sits in cellulose. */
 function helix(x, y, w, amp, turns) {
-  // A coil seen from the side: back halves dashed, front halves solid.
+  // A coil seen from the side: a row of overlapping loops, the near half
+  // of each loop solid and the far half dashed.
   let s = '';
-  const N = turns * 40;
-  let pts = [];
-  let lastFront = null;
-  const flush = (front) => {
-    if (pts.length > 1) s += `<path class="${front ? 'fg-bond-hi' : 'fg-dash'}" d="M${pts.map((p) => `${r2(p.x)} ${r2(p.y)}`).join(' L')}"></path>`;
-  };
-  for (let i = 0; i <= N; i++) {
-    // A coil along the x axis, seen slightly from the side, so each turn
-    // shows as a loop: the front half solid, the back half dashed.
-    const t = (i / N) * turns * 2 * Math.PI;
-    const c = w / (turns * 2 * Math.PI + 2);
-    const p = P(x + c * (t + 1) - 1.6 * c * Math.sin(t), y - Math.cos(t) * amp);
-    const front = Math.sin(t) < 0;
-    if (lastFront !== null && front !== lastFront) { pts.push(p); flush(lastFront); pts = [p]; }
-    else pts.push(p);
-    lastFront = front;
+  const step = w / (turns + 0.5), rx = step * 0.62;
+  for (let i = 0; i < turns; i++) {
+    const cx = x + rx + i * step;
+    const a = `${r2(cx - rx)} ${r2(y)}`, b = `${r2(cx + rx)} ${r2(y)}`;
+    s += `<path class="fg-dash" d="M${a} A${r2(rx)} ${r2(amp)} 0 0 1 ${b}"></path>`;
+    s += `<path class="fg-bond-hi" d="M${a} A${r2(rx)} ${r2(amp)} 0 0 0 ${b}"></path>`;
   }
-  flush(lastFront);
   return s;
 }
 function strands(x, y, w, gap) {
@@ -787,7 +777,7 @@ function strands(x, y, w, gap) {
 }
 function cellobiose(x0, cy, k) {
   let s = '';
-  const ax = x0 + 66 * k + 16;
+  const ax = x0 + 92 * k + 16;
   const A = pyranose(ax, cy, { k, dot: '1', subs: glcSubs(null, { 5: { up: 'CH₂OH', upLen: 16 } }) });
   const C1A = A.pos['1'];
   const Ol = P(C1A.x + 24 * k + 6, C1A.y - 42 * k - 8);
@@ -816,7 +806,7 @@ FIGURES.push({
     const m = maltose(24, 138, 0.72);
     s += m.s + tg(m.Ol.x, m.Ol.y + 32, 'α');
     s += tg(590, 44, 'the chain coils into a helix', 'fg-tag-good');
-    s += helix(450, 128, 280, 42, 3.5);
+    s += helix(450, 128, 280, 40, 4);
     s += tg(590, 210, 'amylase can cut it: we digest starch', 'fg-tag-mut');
     s += tg(190, 260, 'cellulose: β-1,4') + tg(190, 276, 'every second glucose is turned over', 'fg-tag-mut');
     const c = cellobiose(24, 380, 0.72);
@@ -831,20 +821,20 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-carb-polysaccharides',
   lessons: ['carbohydrates'],
-  viewBox: '0 0 340 620',
+  viewBox: '0 0 340 650',
   alt: 'Top: two glucose units joined alpha 1,4, the link oxygen below the rings, and under them a chain coiled into a helix. Bottom: two glucose units joined beta 1,4, the link oxygen above the rings and the second ring turned over, and under them three straight chains side by side with dashed hydrogen bonds.',
   build() {
     let s = '';
     s += panel(4, 4, 332, 300, { kind: 'good' });
-    s += panel(4, 314, 332, 302);
+    s += panel(4, 314, 332, 332);
     s += tg(170, 24, 'amylose: α-1,4');
-    s += maltose(10, 126, 0.6).s;
+    s += maltose(22, 126, 0.6).s;
     s += tg(170, 228, 'the chain coils into a helix', 'fg-tag-good');
-    s += helix(40, 268, 260, 22, 3.5);
+    s += helix(40, 268, 260, 22, 4);
     s += tg(170, 334, 'cellulose: β-1,4');
-    s += cellobiose(10, 450, 0.6).s;
-    s += tg(170, 530, 'straight chains stack and H-bond', 'fg-tag-good');
-    s += strands(40, 552, 260, 24);
+    s += cellobiose(22, 440, 0.6).s;
+    s += tg(170, 562, 'straight chains stack and H-bond', 'fg-tag-good');
+    s += strands(40, 582, 260, 24);
     return s;
   },
   caption: 'The coral oxygen is the glycosidic link. In cellulose every second glucose is turned over, and the chain stays straight.',

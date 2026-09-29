@@ -236,7 +236,7 @@ FIGURES.push({
     s += tg(170, 372, 'better leaving group', 'good');
     return s;
   },
-  caption: 'Bond lengths are drawn to scale (half a pixel per picometer), and the halogen discs grow with the size of the halide ion. Both columns of numbers fall together from fluorine to iodine.',
+  caption: 'Each bond line is drawn in proportion to the real bond length, and the halogen discs grow with the size of the halide ion. Both columns of numbers fall together from fluorine to iodine.',
 });
 
 /* ------------------------------------------------------------------ 5 ---
