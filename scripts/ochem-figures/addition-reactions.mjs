@@ -176,7 +176,7 @@ FIGURES.push({
       const oy = 6 + i * 228;
       s += panel(10, oy, 320, 216);
       s += T(170, oy + 24, HBR_TITLES[i], 'fg-tag-good');
-      s += f(50, oy + 10);
+      s += f(50, oy + [10, 10, -14][i]);
       s += T(170, oy + 206, HBR_TAGS[i]);
     });
     return s;
@@ -230,7 +230,7 @@ function hydrideShift() {
   s += bond(t.c3, t.lr, { rFrom: 0, rTo: 15 }) + atom(t.lr.x, t.lr.y, 'Cl', { r: 15, kind: 'hi' });
   s += T(646, 240, '2-chloro-2-methylbutane', 'fg-tag-good');
   s += T(646, 256, 'the rearranged chloride');
-  s += T(380, 28, 'A hydride shift turns the 2° cation into a 3° cation before chloride arrives.', 'fg-lbl');
+  s += T(380, 28, 'A hydride shift can turn the 2° cation into a 3° cation before chloride arrives.', 'fg-lbl');
   return s;
 }
 FIGURES.push({
@@ -273,8 +273,8 @@ function bromoniumP(cx, cy, cis, o = {}) {
 function dibromideP(cx, cy, cis, path, rs, check) {
   const c2 = P(cx - 32, cy), c3 = P(cx + 32, cy);
   const ang = path === 'C3'
-    ? { br2: 90, f2: 230, b2: 180, br3: 270, f3: 0, b3: 50, t2: 300, t3: 120 }
-    : { br2: 270, f2: 180, b2: 130, br3: 90, f3: 310, b3: 0, t2: 60, t3: 240 };
+    ? { br2: 90, f2: 230, b2: 180, br3: 270, f3: 0, b3: 50, t2: 285, t3: 105 }
+    : { br2: 270, f2: 180, b2: 130, br3: 90, f3: 310, b3: 0, t2: 75, t3: 255 };
   let s = bond(c2, c3, { rFrom: 12, rTo: 12 });
   const g = [
     [c2, ang.br2, 'Br', 'p', true], [c2, ang.f2, 'CH₃', 'w'], [c2, ang.b2, 'H', 'h'],
@@ -288,7 +288,7 @@ function dibromideP(cx, cy, cis, path, rs, check) {
   s += C(c2) + C(c3);
   if (rs) {
     const p2 = at(c2, ang.t2, 26), p3 = at(c3, ang.t3, 26);
-    s += T(p2.x, p2.y + 4, rs[0], 'fg-tag-good') + T(p3.x, p3.y + 4, rs[1], 'fg-tag-good');
+    s += T(p2.x, p2.y + 4, '2' + rs[0], 'fg-tag-good') + T(p3.x, p3.y + 4, '3' + rs[1], 'fg-tag-good');
     molStart(check);
     const i2 = A('C', c2), i3 = A('C', c3);
     B(i2, i3);
@@ -361,7 +361,7 @@ FIGURES.push({
       const oy = 6 + i * 232;
       s += panel(10, oy, 320, 222);
       s += T(170, oy + 24, BROM_TITLES[i], 'fg-tag-good');
-      s += f(50, oy + 30);
+      s += f(50, oy + [8, 1, 6][i]);
       s += rich(170, oy + 212, tags[i]);
     });
     return s;
@@ -375,10 +375,10 @@ FIGURES.push({
 function stereoRow(y, cis) {
   let s = '';
   s += bromoniumP(380, y + 20, cis).s;
-  s += arrow(P(284, y + 20), P(214, y + 20));
-  s += arrow(P(476, y + 20), P(546, y + 20));
-  s += T(249, y - 12, 'Br⁻ attacks C2') + T(249, y + 44, 'from below');
-  s += T(511, y - 12, 'Br⁻ attacks C3') + T(511, y + 44, 'from below');
+  s += arrow(P(286, y + 20), P(224, y + 20));
+  s += arrow(P(474, y + 20), P(536, y + 20));
+  s += T(255, y - 12, 'Br⁻ attacks C2') + T(255, y + 44, 'from below');
+  s += T(505, y - 12, 'Br⁻ attacks C3') + T(505, y + 44, 'from below');
   const lab = cis ? ['cis', 'cis'] : ['trans', 'trans'];
   const a = cis ? ['S', 'S'] : ['S', 'R'];
   const b = cis ? ['R', 'R'] : ['R', 'S'];
@@ -396,7 +396,7 @@ FIGURES.push({
     let s = '';
     s += rich(20, 26, ['*trans', '-but-2-ene: bromonium ion on the top face'], 'fg-lbl', 'start');
     s += stereoRow(96, false);
-    s += rich(380, 204, ['same compound both ways: ', '*meso', '-2,3-dibromobutane'], 'fg-tag-good');
+    s += rich(380, 204, ['(2S,3R) and (2R,3S) are one compound, ', '*meso', '-2,3-dibromobutane'], 'fg-tag-good');
     s += rule(20, 220, 740, 220);
     s += rich(20, 248, ['*cis', '-but-2-ene: bromonium ion on the top face'], 'fg-lbl', 'start');
     s += stereoRow(318, true);
@@ -422,7 +422,7 @@ function halohydrin() {
   s += grp(c2, 318, 44, 'CH₃', 'w', { rFrom: 12 }).s + grp(c2, 12, 44, 'CH₃', 'h', { rFrom: 12 }).s;
   s += C(c1) + C(c2, 'warn') + atom(br.x, br.y, 'Br', { r: 15, kind: 'hi' });
   s += charge(br.x + 20, br.y - 10);
-  s += T(c2.x - 18, c2.y + 28, 'δ+', 'fg-tag-warn');
+  s += T(c2.x - 32, c2.y + 24, 'δ+', 'fg-tag-warn');
   s += T(c1.x, c1.y - 22, 'C1', 'fg-tag') + T(c2.x + 8, c2.y - 24, 'C2', 'fg-tag');
   s += T(118, 96, 'short, strong', 'fg-tag') + T(118, 110, 'C1–Br', 'fg-tag');
   s += T(318, 80, 'long, weak', 'fg-tag-warn') + T(318, 94, 'C2–Br', 'fg-tag-warn');
@@ -435,7 +435,7 @@ function halohydrin() {
   s += T(225, 254, 'water attacks C2 from below');
 
   s += arrow(P(448, 150), P(492, 150));
-  s += T(470, 132, 'ring opens') + T(470, 172, '−H⁺');
+  s += T(470, 172, '−H⁺');
   s += panel(500, 8, 250, 254);
   s += T(625, 32, 'the halohydrin', 'fg-tag-good');
   const d1 = P(588, 138), d2 = P(668, 138);
@@ -480,7 +480,7 @@ function ringHalohydrin() {
   s += atom(br.x, br.y, 'Br', { r: 15, kind: 'hi' }) + charge(br.x + 20, br.y - 10);
   const me = at(r.c1, 10, 40);
   s += bond(r.c1, me, { rFrom: 0, rTo: 17 }) + atom(me.x, me.y, 'CH₃', { r: 17 });
-  s += T(r.c1.x - 22, r.c1.y + 22, 'C1', 'fg-tag') + T(r.c1.x + 10, r.c1.y - 22, 'δ+', 'fg-tag-warn');
+  s += T(r.c1.x - 26, r.c1.y + 22, 'C1', 'fg-tag') + T(r.c1.x - 26, r.c1.y + 38, 'δ+', 'fg-tag-warn');
   const w = P(r.c1.x + 52, r.c1.y + 62);
   s += waterAt(w, [-30, 210], [60, 120]);
   s += curve(P(w.x - 10, w.y - 18), P(r.c1.x + 7, r.c1.y + 12), { bow: -10 });
@@ -563,14 +563,14 @@ function hyd3(ox, oy) {
   const o = P(c2.x, c2.y - 50);
   s += bond(c2, o, { rFrom: 0, rTo: 14 });
   s += atom(o.x, o.y, 'O', { r: 14, kind: 'hi' }) + charge(o.x - 21, o.y + 16);
-  const hl = at(o, 150, 32), hr = at(o, 30, 40);
+  const hl = at(o, 150, 32), hr = at(o, 30, 44);
   s += bond(o, hl, { rFrom: 14, rTo: 11 }) + atom(hl.x, hl.y, 'H', { r: 11 });
   s += bond(o, hr, { rFrom: 14, rTo: 11 }) + atom(hr.x, hr.y, 'H', { r: 11, kind: 'hi' });
   s += lonePair(o.x, o.y, 270, { dist: 20 });
   const w = P(ox + 196, oy + 56);
   s += waterAt(w, [0, -60], [150, 90]);
   s += curve(P(w.x - 20, w.y - 8), P(hr.x + 10, hr.y - 4), { bow: 10 });
-  s += curve(P((o.x + hr.x) / 2 + 3, (o.y + hr.y) / 2 + 3), P(o.x + 15, o.y + 6), { bow: -14 });
+  s += curve(P((o.x + hr.x) / 2 + 4, (o.y + hr.y) / 2 + 5), P(o.x + 16, o.y + 8), { bow: -16 });
   return s;
 }
 const HYD_TITLES = ['1 · the π bond takes a proton', '2 · water attacks the cation', '3 · water takes a proton back'];
@@ -599,7 +599,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-hydration-three-steps',
   lessons: ['addition-reactions'],
-  viewBox: '0 0 340 700',
+  viewBox: '0 0 340 712',
   alt: 'Acid-catalyzed hydration of propene in three stacked panels. Top: curved arrows from the C=C to an H of hydronium and from that H–O bond to the oxygen. Middle: the secondary cation on C2, with a curved arrow from a lone pair of water to C2. Bottom: the oxonium ion, with a second water molecule taking one of its hydrogens; this gives propan-2-ol and hydronium ion.',
   build() {
     let s = '';
@@ -610,7 +610,7 @@ FIGURES.push({
       s += f(50, oy + 6);
       s += T(170, oy + 206, HYD_TAGS[i]);
     });
-    s += T(170, 692, 'Products: propan-2-ol and H₃O⁺', 'fg-lbl');
+    s += T(170, 702, 'Products: propan-2-ol and H₃O⁺', 'fg-lbl');
     return s;
   },
   caption: 'Read the panels from top to bottom.',
@@ -636,8 +636,8 @@ function twoHydrations() {
   s += arrow(P(140, 172), P(186, 104));
   s += arrow(P(140, 226), P(186, 294));
   s += T(146, 124, 'H₃O⁺', 'fg-tag', 'end');
-  s += T(150, 286, 'Hg(OAc)₂, H₂O', 'fg-tag', 'end');
-  s += T(150, 300, 'then NaBH₄', 'fg-tag', 'end');
+  s += T(180, 322, 'Hg(OAc)₂, H₂O', 'fg-tag', 'end');
+  s += T(180, 336, 'then NaBH₄', 'fg-tag', 'end');
 
   // row 1: acid
   s += panel(196, 8, 556, 190);

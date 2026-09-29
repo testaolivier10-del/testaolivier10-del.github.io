@@ -160,7 +160,7 @@ function ringNumbers(cx, cy, r, pts, order, skip = {}) {
   order.forEach((idx, k) => {
     const p = pts[idx];
     const ang = Math.atan2(-(p.y - cy), p.x - cx) * 180 / Math.PI + (skip[idx] || 0);
-    const q = at(P(cx, cy), ang, r + 14);
+    const q = at(P(cx, cy), ang, r - 17);
     s += text(q.x, q.y + 4, String(k + 1), { cls: 'fg-tag' });
   });
   return s;
@@ -169,8 +169,8 @@ FIGURES.push({
   id: 'double-bond-locants',
   section: 'alkene-structure',
   anchor: 'it on the first carbon past C2.</p>',
-  alt: 'Top: the skeletal structure of CH3CH=CHCH2CH3 drawn twice. Numbered from the left end, the double bond joins C2 and C3, labeled pent-2-ene, correct. Numbered from the right end, the same double bond joins C3 and C4, labeled pent-3-ene, wrong. Bottom: two methylcyclohexene rings with their ring carbons numbered. In the first, the double bond joins C1 and C2 and the methyl sits on C1: 1-methylcyclohexene. In the second, the double bond joins C1 and C2 and the methyl sits on C3, one carbon past the double bond: 3-methylcyclohexene.',
-  viewBox: '0 0 340 330',
+  alt: 'Top: the skeletal structure of CH3CH=CHCH2CH3 drawn twice. Numbered from the left end, the double bond joins C2 and C3, labeled pent-2-ene, correct. Numbered from the right end, the same double bond joins C3 and C4, labeled pent-3-ene, wrong. Bottom: two methylcyclohexene rings with their first three ring carbons numbered. In the first, the double bond joins C1 and C2 and the methyl sits on C1: 1-methylcyclohexene. In the second, the double bond joins C1 and C2 and the methyl sits on C3, one carbon past the double bond: 3-methylcyclohexene.',
+  viewBox: '0 0 340 340',
   build() {
     let s = '';
     const chain = (y, fromLeft) => {
@@ -196,29 +196,29 @@ FIGURES.push({
     // ---- rings. Vertex indices from polyPts(rot 90): 0 top, then counter-
     // clockwise: 1 upper left, 2 lower left, 3 bottom, 4 lower right, 5 upper right.
     const ring = (cx, cy, methylAt, name) => {
-      const pts = polyPts(cx, cy, 6, 30, 90);
+      const pts = polyPts(cx, cy, 6, 34, 90);
       const c = P(cx, cy);
       let t = '';
       for (let i = 0; i < 6; i++) {
         const a = pts[i], b = pts[(i + 1) % 6];
-        t += (i === 4) ? ringDouble(a, b, c, { inset: 6 }) : sk(a, b);
+        t += (i === 4) ? ringDouble(a, b, c, { inset: 7 }) : sk(a, b);
       }
       // C1 = vertex 5, C2 = vertex 4, then 3, 2, 1, 0
       const order = [5, 4, 3, 2, 1, 0];
       const m = pts[order[methylAt - 1]];
       const ang = Math.atan2(-(m.y - cy), m.x - cx) * 180 / Math.PI;
-      const end = at(m, ang, 34);
+      const end = at(m, ang, 32);
       t += bond(m, end, { rFrom: 0, rTo: 16 });
       t += pill(end.x, end.y, 'CH₃', 40);
-      t += ringNumbers(cx, cy, 30, pts, order, { [order[methylAt - 1]]: methylAt === 1 ? -34 : 34 });
-      t += tag(cx, 318, name);
+      t += ringNumbers(cx, cy, 34, pts, order.slice(0, 3));
+      t += tag(cx, 330, name);
       return t;
     };
-    s += ring(76, 250, 1, '1-methylcyclohexene');
-    s += ring(250, 244, 3, '3-methylcyclohexene');
+    s += ring(80, 244, 1, '1-methylcyclohexene');
+    s += ring(254, 236, 3, '3-methylcyclohexene');
     return s;
   },
-  caption: 'Top: find where the double bond starts in each numbering. Bottom: in both rings C1 and C2 are the doubly bonded carbons; only the methyl moves.',
+  caption: 'Top: find where the double bond starts in each numbering. Bottom: the numbers sit inside each ring, beside their carbons. In both rings C1 and C2 are the doubly bonded carbons, and only the methyl moves.',
 });
 
 /* --------------------------------------------------- alkene-geometry-names ---
@@ -260,14 +260,13 @@ FIGURES.push({
     s += alkene(256, 62, { ul: me, dl: h, ur: h, dr: me }, { half: 22, arm: 38 });
     s += italicTag(256, 124, 'trans', '-but-2-ene');
     s += rule(10, 144, 330, 144);
-    s += text(10, 164, 'two groups on each carbon, neither pair “same or different”', { cls: 'fg-tag-mut', anchor: 'start' });
-    const y = 232;
+    const y = 222;
     s += alkene(170, y, { ul: { lbl: 'CH₃', kind: 'hi' }, dl: { lbl: 'H' }, ur: { lbl: 'Cl', kind: 'hi' }, dr: { lbl: 'CH₂CH₃' } }, { half: 26, arm: 40 });
-    s += tag(78, y - 50, 'higher');
-    s += text(96, y + 48, 'lower', { cls: 'fg-tag-mut' });
-    s += tag(262, y - 50, 'higher');
-    s += text(300, y + 26, 'lower', { cls: 'fg-tag-mut' });
-    s += tag(170, 306, '(Z)-3-chloropent-2-ene: higher groups on one side', { cls: 'fg-tag-good' });
+    s += tag(78, y - 34, 'higher', { anchor: 'middle' });
+    s += text(94, y + 39, 'lower', { cls: 'fg-tag-mut' });
+    s += tag(262, y - 21, 'higher');
+    s += text(286, y + 48, 'lower', { cls: 'fg-tag-mut' });
+    s += tag(170, 304, '(Z)-3-chloropent-2-ene: higher groups on one side', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'Top: compare where the two highlighted methyls sit. Bottom: compare the two highlighted groups, one on each carbon.',
@@ -307,16 +306,16 @@ function butene(kind, cx, cy) {
   // skeletal, four carbons, bond length 22
   let s = '';
   if (kind === '1') {
-    const p = zig(cx - 33, cy + 6, 4, 22, 13);
+    const p = zig(cx - 39, cy + 8, 4, 26, 15);
     s += skDouble(p[0], p[1], P(p[0].x + 14, p[0].y + 8)) + sk(p[1], p[2]) + sk(p[2], p[3]);
   } else if (kind === 'cis') {
-    const a = P(cx - 11, cy), b = P(cx + 11, cy);
-    const m1 = at(a, 120, 22), m2 = at(b, 60, 22);
+    const a = P(cx - 15, cy), b = P(cx + 15, cy);
+    const m1 = at(a, 120, 26), m2 = at(b, 60, 26);
     s += skDouble(a, b, P(cx, cy + 8)) + `<line class="fg-bond-hi" x1="${r2(a.x)}" y1="${r2(a.y)}" x2="${r2(m1.x)}" y2="${r2(m1.y)}"></line>` +
       `<line class="fg-bond-hi" x1="${r2(b.x)}" y1="${r2(b.y)}" x2="${r2(m2.x)}" y2="${r2(m2.y)}"></line>`;
   } else {
-    const a = P(cx - 11, cy), b = P(cx + 11, cy);
-    const m1 = at(a, 120, 22), m2 = at(b, 300, 22);
+    const a = P(cx - 15, cy), b = P(cx + 15, cy);
+    const m1 = at(a, 120, 26), m2 = at(b, 300, 26);
     s += skDouble(a, b, P(cx, cy - 8)) + `<line class="fg-bond-hi" x1="${r2(a.x)}" y1="${r2(a.y)}" x2="${r2(m1.x)}" y2="${r2(m1.y)}"></line>` +
       `<line class="fg-bond-hi" x1="${r2(b.x)}" y1="${r2(b.y)}" x2="${r2(m2.x)}" y2="${r2(m2.y)}"></line>`;
   }
@@ -333,16 +332,17 @@ FIGURES.push({
     let s = '';
     s += arrow(P(22, 318), P(22, 34), { muted: true });
     s += text(30, 30, 'energy', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += text(330, 30, 'arrows: heat released, kcal/mol', { cls: 'fg-tag-mut', anchor: 'end' });
     const cols = [
-      { x: 90, name: 'but-1-ene', kind: '1', dh: '30.3', top: 130 },
-      { x: 180, name: null, it: 'cis', kind: 'cis', dh: '28.6', top: 130 + 1.7 * 12 },
-      { x: 270, name: null, it: 'trans', kind: 'trans', dh: '27.6', top: 130 + 2.7 * 12 },
+      { x: 84, name: 'but-1-ene', kind: '1', dh: '30.3', top: 130 },
+      { x: 176, name: null, it: 'cis', kind: 'cis', dh: '28.6', top: 130 + 1.7 * 12 },
+      { x: 272, name: null, it: 'trans', kind: 'trans', dh: '27.6', top: 130 + 2.7 * 12 },
     ];
     const base = 290;
     cols.forEach((c) => {
       s += `<line class="fg-bond" x1="${c.x - 32}" y1="${r2(c.top)}" x2="${c.x + 32}" y2="${r2(c.top)}"></line>`;
-      s += butene(c.kind, c.x, c.top - 50);
-      s += c.name ? tag(c.x, c.top - 10, c.name) : italicTag(c.x, c.top - 10, c.it, '-but-2-ene');
+      s += butene(c.kind, c.x, 76);
+      s += c.name ? tag(c.x, 116, c.name) : italicTag(c.x, 116, c.it, '-but-2-ene');
       s += arrow(P(c.x, c.top + 4), P(c.x, base - 4));
       // break marks
       const yb = c.top + 44;
@@ -352,11 +352,9 @@ FIGURES.push({
     });
     s += `<line class="fg-bond" x1="52" y1="${base}" x2="310" y2="${base}"></line>`;
     s += tag(180, base + 22, 'butane (the same product for all three)');
-    s += text(318, 250, '', { cls: 'fg-tag-mut' });
-    s += text(118, 228, 'heat released, kcal/mol', { cls: 'fg-tag-mut', anchor: 'start' });
     return s;
   },
-  caption: 'The three tops are drawn to scale with each other; the long drop to butane is not. The lowest top releases the least heat. In the <i>cis</i> isomer the two highlighted methyl bonds point to the same side.',
+  caption: 'The three tops are drawn to scale with each other, but the long drop to butane is not. Compare the arrow lengths, and in the two but-2-enes compare which way the highlighted methyl bonds point.',
 });
 
 /* ------------------------------------------------------ substitution-count ---
@@ -368,7 +366,7 @@ FIGURES.push({
   anchor: 'a little over 1 kcal/mol per group on average.</p>',
   lessons: ['alkene-structure'],
   alt: 'Four skeletal alkenes in a two-by-two grid, with the bonds from the alkene carbons to carbon groups highlighted. But-1-ene: one highlighted bond, monosubstituted. trans-But-2-ene: two highlighted bonds, one on each alkene carbon, disubstituted. 2-Methylbut-2-ene: three highlighted bonds, trisubstituted. 2,3-Dimethylbut-2-ene: four highlighted bonds, tetrasubstituted.',
-  viewBox: '0 0 340 262',
+  viewBox: '0 0 340 284',
   build() {
     let s = '';
     const cell = (cx, cy, kind) => {
@@ -382,24 +380,24 @@ FIGURES.push({
         t += sk(p[1], p[2], true) + sk(p[2], p[3]);
       } else {
         t += sk(p[0], p[1], true) + sk(p[2], p[3], true);
-        if (kind === 'tri' || kind === 'tetra') t += sk(p[1], P(p[1].x, p[1].y - 30), true);
-        if (kind === 'tetra') t += sk(p[2], P(p[2].x, p[2].y + 30), true);
+        if (kind === 'tri' || kind === 'tetra') t += sk(p[1], P(p[1].x, p[1].y - 28), true);
+        if (kind === 'tetra') t += sk(p[2], P(p[2].x, p[2].y + 28), true);
       }
       return t;
     };
     const rows = [
       { cx: 85, cy: 60, kind: 'mono', name: 'but-1-ene', n: 'mono: 1 group' },
       { cx: 255, cy: 60, kind: 'di', it: 'trans', name: '-but-2-ene', n: 'di: 2 groups' },
-      { cx: 85, cy: 186, kind: 'tri', name: '2-methylbut-2-ene', n: 'tri: 3 groups' },
-      { cx: 255, cy: 186, kind: 'tetra', name: '2,3-dimethylbut-2-ene', n: 'tetra: 4 groups' },
+      { cx: 85, cy: 196, kind: 'tri', name: '2-methylbut-2-ene', n: 'tri: 3 groups' },
+      { cx: 255, cy: 196, kind: 'tetra', name: '2,3-dimethylbut-2-ene', n: 'tetra: 4 groups' },
     ];
     rows.forEach((r) => {
       s += cell(r.cx, r.cy, r.kind);
-      s += r.it ? italicTag(r.cx, r.cy + 44, r.it, r.name, 'fg-tag-mut') : text(r.cx, r.cy + 44, r.name, { cls: 'fg-tag-mut' });
-      s += tag(r.cx, r.cy + 62, r.n);
+      s += r.it ? italicTag(r.cx, r.cy + 54, r.it, r.name, 'fg-tag-mut') : text(r.cx, r.cy + 54, r.name, { cls: 'fg-tag-mut' });
+      s += tag(r.cx, r.cy + 72, r.n);
     });
-    s += rule(10, 136, 330, 136);
-    s += `<line class="fg-rule" x1="170" y1="14" x2="170" y2="250"></line>`;
+    s += rule(10, 146, 330, 146);
+    s += `<line class="fg-rule" x1="170" y1="14" x2="170" y2="276"></line>`;
     return s;
   },
   caption: 'Count the highlighted bonds. Each one joins an alkene carbon to a carbon group; bonds farther out do not count.',
@@ -416,9 +414,9 @@ FIGURES.push({
   anchor: 'so more groups mean more stabilization.</p>',
   lessons: ['alkene-structure'],
   alt: 'Propene drawn in perspective, every atom labeled. The two alkene carbons and the methyl carbon lie in one dashed plane, with p orbitals standing upright on the two alkene carbons and a dashed outline around their upper and lower lobes, the pi bond. One C–H bond of the methyl group points straight up, parallel to the p orbitals, and is highlighted with a shaded cloud. Its two other hydrogens point down below the plane. A label says this C–H bond lines up with the p orbitals and shares a little electron density with the pi bond.',
-  viewBox: '0 0 340 262',
+  viewBox: '0 0 340 276',
   build() {
-    const y0 = 136;
+    const y0 = 150;
     const C1 = pv(-52, 0, y0), C2 = pv(22, 0, y0);
     const C3 = pv(22 + 38, 66, y0);          // methyl carbon, in the plane
     const hA = [pv(-94, 60, y0), pv(-94, -60, y0)];
@@ -438,11 +436,10 @@ FIGURES.push({
     hA.forEach((h) => { s += H(h); });
     s += H(h2) + H(hUp, 'hi') + H(hD1) + H(hD2);
     s += C(C1) + C(C2) + C(C3);
-    s += tag(78, 58, 'π bond');
-    s += tag(270, 34, 'C–H lined up with');
-    s += tag(270, 50, 'the p orbitals');
-    s += rule(10, 222, 330, 222);
-    s += tag(170, 246, 'it shares a little electron density with the π bond');
+    s += tag(84, 72, 'π bond');
+    s += tag(170, 36, 'this C–H is lined up with the p orbitals');
+    s += rule(10, 236, 330, 236);
+    s += tag(170, 260, 'it shares a little electron density with the π bond');
     return s;
   },
   caption: 'Propene. The shaded C–H bond on the methyl carbon runs parallel to the two p orbitals, close enough to overlap them slightly.',
@@ -457,7 +454,7 @@ FIGURES.push({
   section: 'alkene-structure',
   anchor: 'that can be kept in a bottle.</p>',
   alt: 'Two drawings of cyclooctene, each with the C=C across the middle, both carbons and their hydrogens labeled, and the other six ring carbons drawn as one curved strap labeled six CH2. Top, cis-cyclooctene: both ring bonds leave the C=C on the upper side and the strap arcs over the top, never crossing the double bond; both hydrogens point down. Bottom, trans-cyclooctene: one ring bond leaves the left carbon upward and the other leaves the right carbon downward, so the strap has to pass across the face of the double bond, drawn crossing in front of it; one hydrogen points down on the left and the other up on the right.',
-  viewBox: '0 0 340 350',
+  viewBox: '0 0 340 396',
   build() {
     let s = '';
     const dbl = (A, B, gapAt) => {
@@ -474,7 +471,7 @@ FIGURES.push({
     let y = 110;
     let A = P(135, y), B = P(205, y);
     let R1 = at(A, 125, 40), R2 = at(B, 55, 40);
-    s += text(10, 18, 'cis-cyclooctene', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += `<text class="fg-tag-mut" x="10" y="18" text-anchor="start"><tspan font-style="italic">cis</tspan>-cyclooctene</text>`;
     s += dbl(A, B);
     s += bond(A, R1, { rFrom: Cr, rTo: 0 }) + bond(B, R2, { rFrom: Cr, rTo: 0 });
     s += `<path class="fg-bond" d="M${r2(R1.x)} ${r2(R1.y)} C ${r2(R1.x - 20)} ${r2(R1.y - 70)} ${r2(R2.x + 20)} ${r2(R2.y - 70)} ${r2(R2.x)} ${r2(R2.y)}"></path>`;
@@ -482,26 +479,25 @@ FIGURES.push({
     const hA1 = at(A, 235, 38), hB1 = at(B, 305, 38);
     s += sb(A, hA1) + sb(B, hB1) + H(hA1) + H(hB1);
     s += C(A) + C(B);
-    s += tag(170, y + 50, 'strap stays on one side of the C=C', { cls: 'fg-tag-good' });
-    s += rule(10, 180, 330, 180);
+    s += tag(170, y + 64, 'strap stays on one side of the C=C', { cls: 'fg-tag-good' });
+    s += rule(10, 190, 330, 190);
     // ---- trans
-    y = 268;
+    y = 296;
     A = P(135, y); B = P(205, y);
     R1 = at(A, 125, 40); R2 = at(B, 305, 40);
-    s += text(10, 198, 'trans-cyclooctene', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += `<text class="fg-tag-mut" x="10" y="208" text-anchor="start"><tspan font-style="italic">trans</tspan>-cyclooctene</text>`;
     s += dbl(A, B, 170);
     s += bond(A, R1, { rFrom: Cr, rTo: 0 }) + bond(B, R2, { rFrom: Cr, rTo: 0 });
     const hA2 = at(A, 235, 38), hB2 = at(B, 55, 38);
     s += sb(A, hA2) + sb(B, hB2) + H(hA2) + H(hB2);
     s += C(A) + C(B);
     // strap: up and over from R1, down across the middle of the C=C, then round to R2
-    s += `<path class="fg-bond" d="M${r2(R1.x)} ${r2(R1.y)} C ${r2(R1.x - 14)} ${r2(y - 96)} 188 ${y - 96} 170 ${y - 20} L 170 ${y + 20} C 164 ${y + 70} ${r2(R2.x + 14)} ${r2(y + 80)} ${r2(R2.x)} ${r2(R2.y)}"></path>`;
-    s += tag(96, y - 58, 'six CH₂');
-    s += tag(250, y - 6, 'crosses in front', { cls: 'fg-tag-warn' });
-    s += tag(170, 342, 'strap must cross one face of the C=C', { cls: 'fg-tag-warn' });
+    s += `<path class="fg-bond" d="M${r2(R1.x)} ${r2(R1.y)} C ${r2(R1.x - 30)} ${y - 90} 196 ${y - 90} 172 ${y - 26} L 170 ${y + 22} C 168 ${y + 70} ${r2(R2.x + 30)} ${y + 76} ${r2(R2.x)} ${r2(R2.y)}"></path>`;
+    s += tag(66, y - 50, 'six CH₂');
+    s += tag(170, 386, 'strap must cross one face of the C=C', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'Follow the strap from one alkene carbon to the other. In the <i>trans</i> ring it has to pass across the double bond itself.',
+  caption: 'Follow the strap from one alkene carbon to the other. In the <i>trans</i> ring it has to pass across the double bond; the gap in the double bond marks where the strap passes in front of it.',
 });
 
 /* ------------------------------------------------------------- bredt-rule ---
@@ -522,7 +518,7 @@ FIGURES.push({
   section: 'alkene-structure',
   anchor: 'cannot be done in a small system.</p>',
   alt: 'Top left: bicyclo[2.2.1]heptane drawn flat, two marked bridgehead carbons joined by three bridges of two, two and one carbons, each bridge labeled with its count. Top right: the same molecule in its usual perspective drawing, a six-membered ring folded like a boat with a one-carbon bridge arching over it, the two bridgeheads marked. Bottom left: bicyclo[2.2.1]hept-1-ene drawn flat and numbered, with a double bond from bridgehead C1 to C2; the largest ring that contains the double bond, six atoms, is highlighted, and the label says it cannot be isolated. Bottom right: bicyclo[3.3.1]non-1-ene drawn flat and numbered, with a double bond from bridgehead C1 to C2; the largest ring containing it has eight atoms and is highlighted, and the label says it can be isolated.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 354',
   build() {
     let s = '';
     const path = (pts, hi) => pts.slice(1).map((p, i) => sk(pts[i], p, hi)).join('');
@@ -559,17 +555,17 @@ FIGURES.push({
       labels.forEach(([p, v, dx, dy]) => { t += text(p.x + dx, p.y + dy, v, { cls: 'fg-tag-mut' }); });
       return { t, ringSize: ringPts.length };
     };
-    s += text(10, 198, 'hept-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
-    let r = numbered(85, 248, 2, 2, 1, 96);
+    s += text(6, 198, 'bicyclo[2.2.1]hept-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
+    let r = numbered(85, 256, 2, 2, 1, 96);
     s += r.t;
-    s += tag(85, 298, `largest ring: ${r.ringSize} atoms`);
-    s += tag(85, 318, 'cannot be isolated', { cls: 'fg-tag-warn' });
-    s += `<line class="fg-rule" x1="170" y1="186" x2="170" y2="322"></line>`;
-    s += text(186, 198, 'non-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
-    r = numbered(255, 248, 3, 3, 1, 112);
+    s += tag(85, 322, `largest ring: ${r.ringSize} atoms`);
+    s += tag(85, 342, 'cannot be isolated', { cls: 'fg-tag-warn' });
+    s += `<line class="fg-rule" x1="172" y1="210" x2="172" y2="346"></line>`;
+    s += text(180, 198, 'bicyclo[3.3.1]non-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
+    r = numbered(256, 256, 3, 3, 1, 112);
     s += r.t;
-    s += tag(255, 298, `largest ring: ${r.ringSize} atoms`);
-    s += tag(255, 318, 'can be isolated', { cls: 'fg-tag-good' });
+    s += tag(256, 322, `largest ring: ${r.ringSize} atoms`);
+    s += tag(256, 342, 'can be isolated', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'Top: the flat drawing is for counting, the 3D drawing shows the shape. Bottom: the highlighted ring is the largest ring that contains the double bond.',
@@ -609,7 +605,7 @@ FIGURES.push({
     s += C(A) + C(B);
     return s;
   },
-  caption: 'The two labeled C atoms are the alkene carbons.',
+  caption: 'The two C atoms joined by the double bond are the alkene carbons.',
 });
 
 export default FIGURES;

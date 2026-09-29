@@ -80,14 +80,14 @@ FIGURES.push({
         bond(c, oi, { rFrom: 0, rTo: 13 }) + B(oi, ot, 'O', 'O', { cls: 'fg-bond-hi' }) + B(ot, h, 'O', 'H') +
         A(r, 'R') + A(o, 'O') + A(oi, 'O') + A(ot, 'O', { kind: 'hi' }) + A(h, 'H') +
         tag(Q(144, 124).x, Q(144, 124).y, 'weak O–O bond', { cls: 'fg-tag-warn' }) +
-        tag(Q(226, 56).x, Q(226, 56).y, 'outer O', { anchor: 'start' }) +
+        tag(Q(190, 40).x, Q(190, 40).y, 'outer O', { anchor: 'start' }) +
         tag(Q(262, 96).x, Q(262, 96).y, 'R–CO₃H');
     });
-    s += cell(0, 272, 340, 144, 'mCPBA', (Q) => {
-      const v = hexagon(Q(96, 92), 28);
+    s += cell(0, 272, 340, 144, '', (Q) => {
+      const v = hexagon(Q(96, 96), 26);
       let g = '';
       for (let i = 0; i < 6; i++) {
-        g += (i % 2 === 0) ? ringDouble(v[i], v[(i + 1) % 6], Q(96, 92), { inset: 7 }) : sk(v[i], v[(i + 1) % 6]);
+        g += (i % 2 === 0) ? ringDouble(v[i], v[(i + 1) % 6], Q(96, 96), { inset: 7 }) : sk(v[i], v[(i + 1) % 6]);
       }
       const cl = armEnd(v[1], 150, 30);
       const c = armEnd(v[5], 30, 30), o = armEnd(c, 90, 30), oi = armEnd(c, -30, 32), ot = armEnd(oi, 30, 32), h = armEnd(ot, -30, 28);
@@ -95,7 +95,8 @@ FIGURES.push({
       g += sk(v[5], c) + B(c, o, '', 'O', { order: 2 }) + bond(c, oi, { rFrom: 0, rTo: 13 }) +
         B(oi, ot, 'O', 'O', { cls: 'fg-bond-hi' }) + B(ot, h, 'O', 'H');
       g += A(o, 'O') + A(oi, 'O') + A(ot, 'O', { kind: 'hi' }) + A(h, 'H');
-      g += itag(Q(170, 132).x, Q(170, 132).y, 'meta', '-chloroperoxybenzoic acid');
+      g += tag(Q(24, 26).x, Q(24, 26).y, 'mCPBA', { anchor: 'start' });
+      g += itag(Q(170, 134).x, Q(170, 134).y, 'meta', '-chloroperoxybenzoic acid');
       return g;
     });
     return s;
@@ -116,27 +117,32 @@ FIGURES.push({
   build() {
     let s = '';
     s += cell(0, 8, 340, 244, 'ONE STEP, FOUR ARROWS', (Q) => {
-      const ca = Q(136, 200), cb = Q(186, 200);
-      const ot = Q(161, 138), oi = Q(214, 118), cc = Q(226, 70), oc = Q(172, 56), h = Q(126, 96), ar = Q(272, 50);
+      /* The peroxyacid's five ring-forming atoms sit on a pentagon, the
+         outer O at the bottom, right over the middle of the C=C. */
+      const at = (deg) => Q(170 + 44 * Math.cos((deg * Math.PI) / 180), 106 + 44 * Math.sin((deg * Math.PI) / 180));
+      const ot = at(90), h = at(162), oc = at(234), cc = at(306), oi = at(18);
+      const ar = armEnd(cc, 50, 36);
+      const ca = Q(140, 212), cb = Q(200, 212);
       let g = '';
       g += bond(ca, cb, { order: 2, rFrom: 0, rTo: 0 });
       g += sk(ca, armEnd(ca, 215, 34)) + sk(cb, armEnd(cb, 325, 34));
-      g += B(ot, oi, 'O', 'O') + bond(oi, cc, { rFrom: 13, rTo: 0 }) + B(cc, oc, '', 'O', { order: 2 }) +
+      g += B(ot, oi, 'O', 'O') + bond(oi, cc, { rFrom: 13, rTo: 0 }) + bond(cc, oc, { order: 2, rFrom: 0, rTo: 13 }) +
         B(ot, h, 'O', 'H') + bond(cc, ar, { rFrom: 0, rTo: 15 });
       g += A(ot, 'O', { kind: 'hi' }) + A(oi, 'O') + A(oc, 'O') + A(h, 'H') + A(ar, 'Ar');
       // 1: the pi bond to the outer O
-      g += curve(Q(170, 194), Q(166, 154), { bow: -12, size: 7 });
+      g += curve(Q(170, 207), Q(170, 168), { bow: 10, size: 7 });
       // 2: the O–O bond becomes the new C=O of the acid
-      g += curve(mid(ot, oi), mid(oi, cc, 0.55), { bow: 12, size: 7 });
+      g += curve(mid(ot, oi), mid(oi, cc), { bow: -16, size: 7 });
       // 3: the old C=O pi bond picks up the H
-      g += curve(mid(cc, oc), mid(oc, h, 0.45), { bow: 14, size: 7 });
+      g += curve(mid(cc, oc), mid(oc, h), { bow: 16, size: 7 });
       // 4: the O–H bond becomes the second C–O bond
-      g += curve(mid(ot, h), Q(146, 176), { bow: 22, size: 7 });
-      g += tag(Q(66, 142).x, Q(66, 142).y, 'outer O');
-      g += tag(Q(270, 150).x, Q(270, 150).y, 'Ar = the');
-      g += tag(Q(270, 166).x, Q(270, 166).y, 'chlorophenyl');
-      g += tag(Q(270, 182).x, Q(270, 182).y, 'ring of mCPBA');
-      g += itag(Q(160, 234).x, Q(160, 234).y, 'cis', '-but-2-ene');
+      g += curve(mid(ot, h), mid(ot, ca, 0.6), { bow: 16, size: 7 });
+      const n = (x, y, t) => tag(Q(x, y).x, Q(x, y).y, t, { cls: 'fg-tag-warn' });
+      g += n(186, 194, '1') + n(234, 128, '2') + n(142, 46, '3') + n(112, 170, '4');
+      g += tag(Q(196, 156).x, Q(196, 156).y, 'outer O', { anchor: 'start' });
+      g += tag(Q(236, 84).x, Q(236, 84).y, 'Ar = the ring', { anchor: 'start' });
+      g += tag(Q(236, 100).x, Q(236, 100).y, 'of mCPBA', { anchor: 'start' });
+      g += itag(Q(170, 238).x, Q(170, 238).y, 'cis', '-but-2-ene');
       return g;
     });
     s += cell(0, 260, 340, 122, 'AFTER THE STEP', (Q) => {
@@ -179,7 +185,7 @@ FIGURES.push({
   anchor: 'are called <b>stereospecific</b>.</p>',
   lessons: ['alkene-oxidation'],
   alt: 'Two stacked panels. Top: cis-but-2-ene with mCPBA gives the cis epoxide, both methyls on wedges, with a dashed mirror plane through the O and the middle of the C–C bond; it is meso and achiral. Bottom: trans-but-2-ene with mCPBA gives the trans epoxide as two mirror images, one with the left methyl wedged and the right hashed (2R,3R), the other the reverse (2S,3S), in equal amounts.',
-  viewBox: '0 0 340 390',
+  viewBox: '0 0 340 402',
   build() {
     let s = '';
     s += cell(0, 8, 340, 156, '', (Q) => {
@@ -187,22 +193,22 @@ FIGURES.push({
       g += butene(Q(50, 84), true);
       g += arrow(Q(134, 80), Q(186, 80)) + tag(Q(160, 68).x, Q(160, 68).y, 'mCPBA');
       g += epoxide(Q(222, 96), 'w', 'w');
-      g += dashLine(Q(247, 44), Q(247, 140));
+      g += dashLine(Q(247, 71), Q(247, 128));
       g += tag(Q(302, 64).x, Q(302, 64).y, 'mirror') + tag(Q(302, 80).x, Q(302, 80).y, 'plane');
       g += tag(Q(170, 146).x, Q(170, 146).y, 'meso: achiral, one compound', { cls: 'fg-tag-good' });
       return g;
     });
-    s += cell(0, 172, 340, 210, '', (Q) => {
+    s += cell(0, 172, 340, 222, '', (Q) => {
       let g = itag(Q(170, 22).x, Q(170, 22).y, 'trans', '-BUT-2-ENE');
-      g += butene(Q(96, 66), false, 34);
-      g += arrow(Q(174, 64), Q(226, 64)) + tag(Q(200, 52).x, Q(200, 52).y, 'mCPBA');
-      g += epoxide(Q(50, 146), 'w', 'h');
-      g += epoxide(Q(240, 146), 'h', 'w');
-      g += tag(Q(75, 196).x, Q(75, 196).y, '(2R,3R)');
-      g += tag(Q(265, 196).x, Q(265, 196).y, '(2S,3S)');
-      g += tag(Q(170, 132).x, Q(170, 132).y, 'mirror');
-      g += tag(Q(170, 148).x, Q(170, 148).y, 'images');
-      g += tag(Q(170, 178).x, Q(170, 178).y, '50 : 50', { cls: 'fg-tag-good' });
+      g += butene(Q(148, 62), false, 34);
+      g += arrow(Q(170, 84), Q(170, 128)) + tag(Q(182, 110).x, Q(182, 110).y, 'mCPBA', { anchor: 'start' });
+      g += epoxide(Q(40, 170), 'w', 'h');
+      g += epoxide(Q(250, 170), 'h', 'w');
+      g += tag(Q(65, 212).x, Q(65, 212).y, '(2R,3R)');
+      g += tag(Q(275, 212).x, Q(275, 212).y, '(2S,3S)');
+      g += tag(Q(170, 154).x, Q(170, 154).y, 'mirror');
+      g += tag(Q(170, 170).x, Q(170, 170).y, 'images');
+      g += tag(Q(170, 196).x, Q(170, 196).y, '50 : 50', { cls: 'fg-tag-good' });
       return g;
     });
     return s;
@@ -238,11 +244,11 @@ FIGURES.push({
         B(os, oc, 'Os', 'O', { order: 2 }) + B(os, od, 'Os', 'O', { order: 2 });
       g += A(oa, 'O', { kind: 'hi' }) + A(ob, 'O', { kind: 'hi' }) + A(os, 'Os') + A(oc, 'O') + A(od, 'O');
       // 1: the C=C pi bond to the upper oxygen
-      g += curve(Q(112, 86), Q(147, 68), { bow: -14, size: 7 });
+      g += curve(mid(v[4], v[5], 0.3), Q(147, 66), { bow: -14, size: 7 });
       // 2: the upper Os=O pi bond onto osmium
       g += curve(mid(oa, os, 0.4), Q(206, 78), { bow: -12, size: 7 });
       // 3: the lower Os=O pi bond to the lower alkene carbon
-      g += curve(mid(ob, os, 0.55), Q(114, 112), { bow: -22, size: 7 });
+      g += curve(mid(ob, os, 0.55), mid(v[4], ob, 0.35), { bow: -40, size: 7 });
       g += tag(Q(170, 156).x, Q(170, 156).y, 'OsO₄ comes at the face toward you');
       return g;
     });
@@ -294,16 +300,16 @@ FIGURES.push({
       return g;
     });
     s += cell(0, 154, 340, 200, '2   H⁺ ON THE O, THEN WATER FROM THE BACK', (Q) => {
-      const c = Q(80, 88), v = hexagon(c, 30);
+      const c = Q(70, 88), v = hexagon(c, 30);
       let g = ringInk(v);
-      const o = Q(142, 88), h = Q(182, 88), w = Q(150, 150);
+      const o = Q(152, 88), h = Q(194, 88), w = Q(146, 156);
       g += wedge(v[5], o, { rFrom: 0, rTo: 13, width: 8 }) + wedge(v[4], o, { rFrom: 0, rTo: 13, width: 8 });
-      g += B(o, h, 'O', 'H') + A(o, 'O', { kind: 'hi' }) + A(h, 'H') + charge(Q(150, 70).x, Q(150, 70).y, '+');
+      g += B(o, h, 'O', 'H') + A(o, 'O', { kind: 'hi' }) + A(h, 'H') + charge(Q(162, 70).x, Q(162, 70).y, '+');
       g += A(w, 'H₂O');
-      g += lonePair(w.x, w.y, 215, { dist: 23 });
+      g += lonePair(w.x, w.y, 228, { dist: 24 });
       // water's lone pair to the lower ring carbon; the C–O bond onto O+
-      g += curve(Q(126, 140), Q(111, 112), { bow: -12, size: 7 });
-      g += curve(mid(v[4], o, 0.45), Q(136, 101), { bow: 10, size: 7 });
+      g += curve(Q(124, 132), Q(100, 110), { bow: -10, size: 7 });
+      g += curve(mid(v[4], o, 0.5), Q(146, 101), { bow: 14, size: 7 });
       g += tag(Q(258, 134).x, Q(258, 134).y, 'water attacks from');
       g += tag(Q(258, 150).x, Q(258, 150).y, 'the back, opposite');
       g += tag(Q(258, 166).x, Q(258, 166).y, 'the C–O that breaks');
@@ -341,8 +347,8 @@ function frameAlkene(a, cis) {
 }
 function frameDiol(a, cis, oh2, oh3) {
   const b = P(a.x + 44, a.y);
-  const m1 = armEnd(a, 110, 34), h1 = armEnd(a, 250, 30), o1 = armEnd(a, 180, 34);
-  const m2 = armEnd(b, cis ? 70 : 290, 34), h2 = armEnd(b, cis ? 290 : 70, 30), o2 = armEnd(b, 0, 34);
+  const m1 = armEnd(a, 110, 34), h1 = armEnd(a, 250, 30), o1 = armEnd(a, 180, 31);
+  const m2 = armEnd(b, cis ? 70 : 290, 34), h2 = armEnd(b, cis ? 290 : 70, 30), o2 = armEnd(b, 0, 31);
   const st = (k, p, q) => (k === 'w' ? wedge : hash)(p, q, { rFrom: 0, rTo: 15, width: k === 'w' ? 8 : 9 });
   return sk(a, b) +
     bond(a, m1, { rFrom: 0, rTo: 18 }) + bond(a, h1, { rFrom: 0, rTo: 11 }) + st(oh2, a, o1) +
@@ -375,16 +381,16 @@ FIGURES.push({
         s += text(306, y + 172, 'meso (2R,3S): achiral, one compound', { cls: 'fg-tag-good', size: 11 });
         s += text(306, y + 190, 'both faces of attack give this same molecule', { cls: 'fg-sm' });
       } else {
-        s += frameDiol(P(212, y + 100), false, 'w', 'w');
-        s += frameDiol(P(360, y + 100), false, 'h', 'h');
-        s += tag(234, y + 162, '(2S,3S)') + tag(382, y + 162, '(2R,3R)');
+        s += frameDiol(P(206, y + 100), false, 'w', 'w');
+        s += frameDiol(P(352, y + 100), false, 'h', 'h');
+        s += tag(228, y + 162, '(2S,3S)') + tag(374, y + 162, '(2R,3R)');
         s += text(306, y + 188, 'racemic (±): mirror images, 50 : 50', { cls: 'fg-tag-good', size: 11 });
       }
       // the anti column
       if (cis) {
-        s += frameDiol(P(514, y + 100), true, 'w', 'h');
-        s += frameDiol(P(662, y + 100), true, 'h', 'w');
-        s += tag(536, y + 162, '(2S,3S)') + tag(684, y + 162, '(2R,3R)');
+        s += frameDiol(P(510, y + 100), true, 'w', 'h');
+        s += frameDiol(P(656, y + 100), true, 'h', 'w');
+        s += tag(532, y + 162, '(2S,3S)') + tag(678, y + 162, '(2R,3R)');
         s += text(608, y + 188, 'racemic (±): mirror images, 50 : 50', { cls: 'fg-tag-good', size: 11 });
       } else {
         s += frameDiol(P(586, y + 100), false, 'w', 'h');
@@ -424,7 +430,7 @@ FIGURES.push({
       s += lonePair(o1.x, o1.y, 90, { dist: 22 });
       s += curve(P(132, 144), P(132, 168), { bow: -12, size: 7 });
       s += curve(P(190, 184), P(226, 134), { bow: 14, size: 7 });
-      s += curve(mid(o2, o3, 0.5), P(196, 88), { bow: -12, size: 7 });
+      s += curve(mid(o2, o3, 0.5), P(197, 72), { bow: 16, size: 7 });
       s += text(186, 228, 'both new C–O bonds form at once', { cls: 'fg-sm' });
     }
     s += arrow(P(370, 136), P(390, 136));
@@ -438,7 +444,7 @@ FIGURES.push({
       s += lonePair(v1.x, v1.y, 0, { dist: 21 });
       s += curve(P(v1.x + 24, v1.y + 8), mid(v1, v2), { bow: -12, size: 7 });
       s += curve(mid(v3, v2), mid(v3, v4), { bow: 18, size: 7 });
-      s += curve(mid(v4, v0), P(v0.x - 14, v0.y - 6), { bow: 12, size: 7 });
+      s += curve(mid(v4, v0), P(v0.x - 15, v0.y - 5), { bow: -14, size: 7 });
       s += text(574, 222, 'molozonide (a 1,2,3-trioxolane)', { cls: 'fg-tag' });
     }
     // ---- 3 ----
@@ -454,9 +460,9 @@ FIGURES.push({
       s += lonePair(o2.x, o2.y, 200, { dist: 22 });
       s += curve(P(o2.x - 26, o2.y - 2), P(c1.x + 10, c1.y + 16), { bow: -12, size: 7 });
       s += curve(mid(c1, o1), mid(o1, c2), { bow: 18, size: 7 });
-      s += curve(mid(c2, o3), P(o3.x + 14, o3.y - 8), { bow: -12, size: 7 });
-      s += text(92, 446, 'a carbonyl compound', { cls: 'fg-sm' });
-      s += text(270, 446, 'a carbonyl oxide', { cls: 'fg-sm' });
+      s += curve(mid(c2, o3), P(o3.x + 16, o3.y - 2), { bow: -18, size: 7 });
+      s += text(132, 446, 'a carbonyl compound', { cls: 'fg-sm' });
+      s += text(262, 446, 'a carbonyl oxide', { cls: 'fg-sm' });
     }
     s += arrow(P(370, 364), P(390, 364));
     // ---- 4 ----

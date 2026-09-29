@@ -292,12 +292,13 @@
       6:['reductant-scope'],
       7:['reductant-scope','oxidation-level'] } },
 
-    'hydrogenation': { n:8, steps:{
-      2:['reductant-scope'],
-      3:['redox-stereochemistry'],
-      4:['redox-stereochemistry','reductant-scope'],
-      6:['reductant-scope'],
-      7:['reductant-scope'] } },
+    'hydrogenation': { n:12, steps:{
+      2:['redox-stereochemistry'],
+      3:['reductant-scope','energy-diagram-reading'],
+      5:['reductant-scope'],
+      8:['redox-stereochemistry','reductant-scope'],
+      10:['alkene-stability-ranking'],
+      11:['reductant-scope'] } },
 
     'alkene-oxidation': { n:8, steps:{
       2:['redox-stereochemistry','alkene-cleavage-scope'],
