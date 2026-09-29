@@ -7,7 +7,7 @@
    is a function of its top-left corner.
 
    The mechanism follows one real ketone, butanone, with every atom
-   labelled, so each curved arrow starts at a named lone pair or bond and
+   labeled, so each curved arrow starts at a named lone pair or bond and
    ends at a named atom or bond. Rings and chains elsewhere are skeletal:
    this chapter comes long after skeletal structures are taught. */
 import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
@@ -20,7 +20,7 @@ const W2 = PW * 2 + GAP;              // a two-panel notes row
 
 /* ------------------------------------------------------------ helpers --- */
 const rad = (l) => (!l ? 0 : l === 'H' ? 11 : l.length <= 2 ? 14 : 4 + l.length * 3.8);
-/* A labelled atom {x, y, l, k, r}; V is an unlabelled skeletal vertex. */
+/* A labeled atom {x, y, l, k, r}; V is an unlabeled skeletal vertex. */
 const A = (x, y, l, k) => ({ x, y, l, k, r: rad(l) });
 const V = (x, y) => ({ x, y, l: '', r: 0 });
 const draw = (...as) => as.filter((a) => a.l).map((a) => atom(a.x, a.y, a.l, { kind: a.k, r: a.r })).join('');
@@ -73,7 +73,7 @@ function stack(parts, gap = 26, arrows = true) {
   return { svg: s, h: y - gap };
 }
 
-/* A ring from polyPts, with some vertices replaced by labelled atoms.
+/* A ring from polyPts, with some vertices replaced by labeled atoms.
    `atoms` maps a vertex index to [label, kind]. Returns { s, pts }. */
 function ring(cx, cy, n, r, rot, atoms = {}, hiBonds = []) {
   const raw = polyPts(cx, cy, n, r, rot);
@@ -146,7 +146,7 @@ FIGURES.push({
   section: 'baeyer-villiger',
   anchor: '<!-- fig:mcpba:start -->',
   viewBox: `0 0 ${PW} ${H_MC}`,
-  alt: 'mCPBA, meta-chloroperoxybenzoic acid: a benzene ring carrying a chlorine and, two ring positions away, a C(=O)–O–O–H group. The terminal oxygen of the O–O–H end and the O–O bond are highlighted; the ring with its chlorine is labelled Ar.',
+  alt: 'mCPBA, meta-chloroperoxybenzoic acid: a benzene ring carrying a chlorine and, two ring positions away, a C(=O)–O–O–H group. The terminal oxygen of the O–O–H end and the O–O bond are highlighted; the ring with its chlorine is labeled Ar.',
   build() {
     let s = frameP(0, 0, H_MC, 'mCPBA', [
       'highlighted: the weak O–O bond,',
@@ -657,7 +657,7 @@ FIGURES.push({
   section: 'baeyer-villiger',
   anchor: '<!-- fig:methylcyclohexanone:start -->',
   viewBox: `0 0 ${W2} ${H_MCH}`,
-  alt: 'Left: 2-methylcyclohexanone, with the ring carbons C1 (the C=O carbon), C2 (carrying a CH3 on a wedge), C3, C5 and C6 labelled. The C1–C2 bond is highlighted as the bond the oxygen goes into, and the C1–C6 bond is marked "not here". Right: the product, 7-methyloxepan-2-one, a seven-membered ring in which the new O sits between C1 and C2 and the CH3 on C2 is still on a wedge.',
+  alt: 'Left: 2-methylcyclohexanone, with the ring carbons C1 (the C=O carbon), C2 (carrying a CH3 on a wedge), C3, C5 and C6 labeled. The C1–C2 bond is highlighted as the bond the oxygen goes into, and the C1–C6 bond is marked "not here". Right: the product, 7-methyloxepan-2-one, a seven-membered ring in which the new O sits between C1 and C2 and the CH3 on C2 is still on a wedge.',
   build() {
     let s = pMCH(0, 0, true) + pLactone(PW + GAP, 0);
     s += right(PW + 6, PW + GAP - 6, 128);
@@ -669,7 +669,7 @@ FIGURES.push({
   id: 'l-mch-ketone',
   lessons: ['baeyer-villiger'],
   viewBox: `0 0 ${PW} 200`,
-  alt: '2-methylcyclohexanone as a single enantiomer: a six-membered ring with the C=O carbon labelled C1, the next carbon C2 carrying a CH3 on a wedge, and the carbon on the other side of C1 labelled C6. C3 and C5 are labelled too.',
+  alt: '2-methylcyclohexanone as a single enantiomer: a six-membered ring with the C=O carbon labeled C1, the next carbon C2 carrying a CH3 on a wedge, and the carbon on the other side of C1 labeled C6. C3 and C5 are labeled too.',
   build() { return pMCH(0, 0, false, 200); },
   caption: 'A single enantiomer: the CH<sub>3</sub> on C2 points toward you.',
 });

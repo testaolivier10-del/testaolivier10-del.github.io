@@ -98,7 +98,7 @@ FIGURES.push({
     s += sm(640, 200, '3. Nu has replaced X');
     return s;
   },
-  caption: 'The pattern every derivative on this page reacts by. The coral carbon starts flat, becomes tetrahedral in the middle stage, and ends flat again, now carrying Nu in place of X.',
+  caption: 'The coral carbon starts flat, becomes tetrahedral in the middle stage, and ends flat again, now carrying Nu in place of X.',
 });
 FIGURES.push({
   id: 'l-acyl-two-steps',
@@ -277,7 +277,7 @@ FIGURES.push({
     s += sm(560, 236, 'C=O stretch, cm⁻¹: stiffer C=O, higher number');
     return s;
   },
-  caption: 'The three rungs, acid chloride, ester and amide, read left to right in ladder order. The acid arrow above and the anhydride bracket below are the two entries that need a note of their own.',
+  caption: 'The acid chloride, ester and amide read left to right in ladder order. The acid arrow sits above the scale and the anhydride bracket below it.',
 });
 
 /* --------------------------------------------- 5. amide resonance (DMF) ---
@@ -591,7 +591,7 @@ FIGURES.push({
     s += tg(600, 238, 'δ-valerolactone: 6 ring atoms');
     return s;
   },
-  caption: 'The teal oxygen is the OH that closes the ring, and the coral OH is the one that leaves as water. The highlighted ring bond is the new one. Each lactone is named by the Greek letter of the carbon that carries the ring oxygen.',
+  caption: 'The teal oxygen is the OH that closes the ring, and the coral OH is the one that leaves as water. The highlighted ring bond is the new one.',
 });
 
 /* ------------------------------------------------------------- 230.2 ---
@@ -746,7 +746,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Compare the nitrogen in the three top panels. In the ordinary amide it is flat and shares its lone pair with the C=O; in penicillin two rings meet at it. The highlighted bonds are the four-membered ring. In the bottom row, find the bond that breaks.',
+  caption: 'Compare the nitrogen in the three top panels; in penicillin, two rings meet at it. The highlighted bonds are the four-membered ring. In the bottom row, find the bond that breaks.',
   note: 'The group expelled in the bottom row is the ring nitrogen, which stays attached to the drug because it is still part of the five-membered ring. Proton transfers are left out, and so is penicillin’s stereochemistry: it has three stereocenters, none of which changes here.',
 });
 

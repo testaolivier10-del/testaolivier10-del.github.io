@@ -74,12 +74,13 @@
       10:['enolate-regiocontrol','mechanism-selection'],
       11:['enolate-regiocontrol'] } },
 
-    'acyl-chlorides-anhydrides': { n:8, steps:{
-      2:['activation-before-acylation','acyl-reactivity-order'],
-      3:['activation-before-acylation'],
-      4:['acyl-reactivity-order','leaving-group-ability'],
+    'acyl-chlorides-anhydrides': { n:12, steps:{
+      3:['activation-before-acylation','acyl-reactivity-order'],
+      4:['activation-before-acylation'],
       6:['activation-before-acylation'],
-      7:['activation-before-acylation','acyl-reactivity-order'] } },
+      8:['acyl-reactivity-order','leaving-group-ability'],
+      9:['activation-before-acylation'],
+      11:['activation-before-acylation','acyl-reactivity-order'] } },
 
     /* Step 2 is the product sorter and carries the carbon counting with it.
        3 is why a Grignard adds once, 4 is a pure carbon count, 6 the route
