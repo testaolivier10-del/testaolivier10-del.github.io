@@ -162,6 +162,7 @@ FIGURES.push({
     s += tag(70, 140, 'primary');
     s += tag(274, 148, 'secondary', { anchor: 'start' });
     s += tag(262, 330, 'tertiary');
+    s += label(76, 196, 'Br⁻');
     s += text(76, 312, 'quaternary:', { cls: 'fg-tag-warn', size: 11 });
     s += text(76, 328, 'no lone pair', { cls: 'fg-tag-warn', size: 11 });
     s += tag(170, 362, 'each zigzag arm is CH₃CH₂');
