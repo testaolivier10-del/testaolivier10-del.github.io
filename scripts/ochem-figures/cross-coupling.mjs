@@ -199,17 +199,18 @@ FIGURES.push({
   build() {
     let s = '';
     const B = P(130, 100);
-    s += lobeE(B.x, B.y - 30, 5.5, 13, 'fg-orb');
-    s += lobeE(B.x, B.y + 30, 5.5, 13, 'fg-orb');
+    s += lobeE(B.x, B.y - 32, 6, 16, 'fg-orb');
+    s += lobeE(B.x, B.y + 32, 6, 16, 'fg-orb');
     s += bond(B, P(70, 100), { rFrom: 15, rTo: 16 });
-    s += bond(B, P(162, 46), { rFrom: 15, rTo: 17 });
-    s += bond(B, P(162, 154), { rFrom: 15, rTo: 17 });
+    s += hash(B, P(166, 52), { rFrom: 13, rTo: 17, width: 10, rungs: 4 });
+    s += wedge(B, P(166, 148), { rFrom: 13, rTo: 17, width: 9 });
     s += atom(B.x, B.y, 'B', { kind: 'hi' });
     s += atom(70, 100, 'Ph', { kind: 'plain', r: 16 });
-    s += atom(162, 46, 'OH', { r: 17 });
-    s += atom(162, 154, 'OH', { r: 17 });
-    s += tag(74, 50, 'empty p orbital');
-
+    s += atom(166, 52, 'OH', { r: 17 });
+    s += atom(166, 148, 'OH', { r: 17 });
+    s += tag(64, 40, 'empty p orbital,');
+    s += tag(64, 56, 'perpendicular to');
+    s += tag(64, 72, 'the three bonds');
     const O = P(262, 100);
     s += bond(O, P(306, 100), { rFrom: 15, rTo: 15 });
     s += atom(O.x, O.y, 'O');
@@ -218,7 +219,7 @@ FIGURES.push({
     s += lonePair(O.x, O.y, -90);
     s += lonePair(O.x, O.y, 90);
     s += text(282, 80, '−', { cls: 'fg-warn', size: 15 });
-    s += curve(P(238, 96), P(148, 94), { bow: 22 });
+    s += curve(P(238, 98), P(149, 100), { bow: 10 });
     s += tag(262, 146, 'HO⁻ from the base');
     s += tag(130, 190, 'boronic acid: boron has six electrons');
 
@@ -306,7 +307,7 @@ FIGURES.push({
   id: 'sonogashira-cycles',
   section: 'cross-coupling',
   anchor: '<!-- fig:sonogashira-cycles:start -->',
-  viewBox: '0 0 760 380',
+  viewBox: '0 0 760 392',
   alt: 'Two cycles side by side. Copper cycle: CuI binds phenylacetylene, triethylamine removes the H to give the copper acetylide, the acetylide passes its alkynyl group to palladium, and CuI returns. Palladium cycle: Pd(0) adds to iodobenzene to give Ph–Pd–I, transmetalation gives Ph–Pd–C≡C–Ph, and reductive elimination releases diphenylacetylene and returns Pd(0).',
   build() {
     let s = '';
@@ -322,9 +323,9 @@ FIGURES.push({
     s += tag(212, 232, '(Et₃NH⁺ I⁻ forms)', { anchor: 'start' });
     s += box(200, 276, 130, 'Ph–C≡C–Cu', 'hi');
     // CuI returns up the left side.
-    s += `<path class="fg-arrow" d="M135 276 L60 276 L60 64 L137 64"></path>`;
+    s += `<path class="fg-arrow" d="M290 276 L290 312 L60 312 L60 64 L137 64"></path>`;
     s += arrow(P(120, 64), P(145, 64));
-    s += tag(70, 226, 'CuI returns', { anchor: 'start' });
+    s += tag(175, 327, 'CuI re-forms at transmetalation');
     // Palladium column.
     s += box(560, 64, 110, 'Pd(0)', null);
     s += arrow(P(560, 84), P(560, 146));
@@ -341,10 +342,10 @@ FIGURES.push({
     // The link: transmetalation.
     s += arrow(P(266, 276), P(482, 276));
     s += tag(374, 262, 'transmetalation');
-    s += text(374, 298, 'Ph–C≡C– moves to Pd, I⁻ to Cu', { cls: 'fg-sm' });
-    s += rule(20, 322, 740, 322);
-    s += label(380, 348, 'out of the flask: Ph–C≡C–Ph, diphenylacetylene');
-    s += text(380, 368, 'Pd(0) and CuI both come back, so both are catalysts.', { cls: 'fg-sm' });
+    s += text(400, 298, 'Ph–C≡C– moves to Pd, I⁻ to Cu', { cls: 'fg-sm' });
+    s += rule(20, 332, 740, 332);
+    s += label(380, 358, 'out of the flask: Ph–C≡C–Ph, diphenylacetylene');
+    s += text(380, 378, 'Pd(0) and CuI both come back, so both are catalysts.', { cls: 'fg-sm' });
     return s;
   },
   caption: 'The two cycles meet at one step. Transmetalation, in the middle, takes the alkynyl group from copper and gives it to palladium.',
@@ -355,6 +356,33 @@ FIGURES.push({
    Cells are drawn relative to (ox, oy) so the notes can lay them out in a
    3 x 2 grid and the lesson can stack them in a 340-wide column. */
 const E = 'CO₂CH₃';
+/* A Newman projection for the Heck cells. Front bonds at 90°, 210°, 330°
+   from the centre; back bonds from the circle, turned 30° so an eclipsed
+   pair can be read side by side. `front` and `back` are [label, kind]. */
+const newman = (ox, oy, front, back, arrowOn, caption) => {
+  let s = '';
+  const c = P(ox + 125, oy + 88), R0 = 26;
+  const at = (deg, r) => P(c.x + r * Math.cos(deg * Math.PI / 180), c.y - r * Math.sin(deg * Math.PI / 180));
+  s += `<circle class="fg-bond" cx="${c.x}" cy="${c.y}" r="${R0}" fill="none"></circle>`;
+  const put = (p, [lab, kind], rTo) => kind === 'grp' ? grp(p.x, p.y, lab)
+    : atom(p.x, p.y, lab, { kind: kind || 'plain', r: lab === 'H' ? 11 : 16 });
+  [130, 250, 10].forEach((deg, i) => {
+    const lab = back[i];
+    const end = at(deg, lab[1] === 'grp' ? 74 : 60);
+    s += bond(at(deg, R0), end, { rFrom: 0, rTo: lab[1] === 'grp' ? 28 : lab[0] === 'H' ? 11 : 16 });
+    s += put(end, lab);
+  });
+  [90, 210, 330].forEach((deg, i) => {
+    const lab = front[i];
+    const end = at(deg, 56);
+    s += bond(c, end, { rFrom: 0, rTo: lab[0] === 'H' ? 11 : 16 });
+    s += put(end, lab);
+  });
+  if (arrowOn) s += curve(at(90, 34), at(122, 50), { bow: 10 });
+  s += tag(ox + 125, oy + 174, caption);
+  return s;
+};
+
 const heckCells = [
   /* 0: oxidative addition, as in every coupling. */
   (ox, oy) => {
@@ -409,33 +437,21 @@ const heckCells = [
     s += tag(ox + 125, oy + 174, '3 · Ph and Pd add on the same side');
     return s;
   },
-  /* 3: after insertion, turned so H and Pd sit on the same side; the
-     beta-hydride elimination. */
-  (ox, oy) => {
-    let s = '';
-    const a = P(ox + 92, oy + 84), b = P(ox + 156, oy + 84);
-    s += bond(a, b, { rFrom: 15, rTo: 15 });
-    s += bond(a, P(ox + 42, oy + 84), { rFrom: 15, rTo: 12 });
-    s += bond(a, P(ox + 92, oy + 32), { rFrom: 15, rTo: 16 });
-    s += bond(a, P(ox + 92, oy + 136), { rFrom: 15, rTo: 12 });
-    s += bond(b, P(ox + 156, oy + 34), { rFrom: 15, rTo: 12 });
-    s += bond(b, P(ox + 210, oy + 84), { rFrom: 15, rTo: 28 });
-    s += bond(b, P(ox + 156, oy + 136), { rFrom: 15, rTo: 16 });
-    s += bond(P(ox + 156, oy + 136), P(ox + 204, oy + 136), { rFrom: 16, rTo: 12 });
-    s += atom(a.x, a.y, 'C');
-    s += atom(b.x, b.y, 'C');
-    s += atom(ox + 92, oy + 32, 'Ph', { kind: 'hi', r: 16 });
-    s += atom(ox + 42, oy + 84, 'H', { r: 12 });
-    s += atom(ox + 92, oy + 136, 'H', { kind: 'warn', r: 12 });
-    s += atom(ox + 156, oy + 34, 'H', { r: 12 });
-    s += grp(ox + 210, oy + 84, E);
-    s += atom(ox + 156, oy + 136, 'Pd', { kind: 'warn' });
-    s += atom(ox + 204, oy + 136, 'I', { r: 12 });
-    s += curve(P(ox + 96, oy + 112), P(ox + 140, oy + 140), { bow: 14 });
-    s += curve(P(ox + 150, oy + 110), P(ox + 126, oy + 88), { bow: 10 });
-    s += tag(ox + 125, oy + 174, '4 · H and Pd on the same side leave');
-    return s;
-  },
+  /* 3: just after insertion, looking along the new C–C bond (Newman).
+     Front carbon = the one that took Ph; back carbon = the one bonded to Pd.
+     Ph and Pd arrived from the same side, so they sit together. */
+  (ox, oy) => newman(ox, oy,
+    [['Ph', 'hi'], ['H', null], ['H', null]],
+    [['Pd', 'warn'], ['H', null], [E, 'grp']],
+    null,
+    '4 · end-on: Ph and Pd together'),
+  /* 4: the front carbon turned by 120°: an H now lines up with Pd, Ph lines
+     up with the back H, and the other H with the ester. The H and Pd leave. */
+  (ox, oy) => newman(ox, oy,
+    [['H', 'warn'], ['Ph', 'hi'], ['H', null]],
+    [['Pd', 'warn'], ['H', null], [E, 'grp']],
+    true,
+    '5 · turned: H lines up with Pd'),
   /* 4: the trans alkene and H–Pd–I. */
   (ox, oy) => {
     let s = '';
@@ -457,7 +473,7 @@ const heckCells = [
     s += atom(ox + 70, oy + 140, 'H', { r: 12 });
     s += atom(ox + 112, oy + 140, 'Pd', { kind: 'warn' });
     s += atom(ox + 154, oy + 140, 'I', { r: 12 });
-    s += tag(ox + 125, oy + 174, '5 · the trans alkene leaves');
+    s += tag(ox + 125, oy + 174, '6 · the trans alkene leaves');
     return s;
   },
   /* 5: the base takes HI and gives back Pd(0). */
@@ -471,33 +487,35 @@ const heckCells = [
     s += label(ox + 190, oy + 65, '+ Et₃N');
     s += arrow(P(ox + 125, oy + 84), P(ox + 125, oy + 110));
     s += label(ox + 125, oy + 138, 'Pd(0) + Et₃NH⁺ I⁻');
-    s += tag(ox + 125, oy + 174, '6 · the base gives back Pd(0)');
+    s += tag(ox + 125, oy + 174, '7 · the base gives back Pd(0)');
     return s;
   },
 ];
 
+const HI_CELLS = [2, 3, 4];
 FIGURES.push({
   id: 'heck-steps',
   section: 'cross-coupling',
   anchor: '<!-- fig:heck-steps:start -->',
-  viewBox: '0 0 760 392',
-  alt: 'Six frames of the Heck reaction of iodobenzene with methyl acrylate: oxidative addition gives Ph–Pd–I; the alkene binds side-on to palladium; migratory insertion puts Ph on the CH2 carbon and Pd on the other carbon, from the same side; after rotation an H and the Pd sit on the same side and leave together; the trans alkene is released with H–Pd–I; triethylamine takes HI and returns Pd(0).',
+  viewBox: '0 0 760 576',
+  alt: 'Seven frames of the Heck reaction of iodobenzene with methyl acrylate: oxidative addition gives Ph–Pd–I; the alkene binds side-on to palladium; migratory insertion puts Ph on the CH2 carbon and Pd on the other carbon, from the same side; a Newman projection along the new C–C bond shows Ph and Pd together; after the front carbon turns, an H lines up with Pd, Ph lines up with the back H, and the H and Pd leave; the trans alkene is released with H–Pd–I; triethylamine takes HI and returns Pd(0).',
   build() {
     let s = '';
     heckCells.forEach((cell, i) => {
-      const ox = 5 + (i % 3) * 250, oy = 6 + Math.floor(i / 3) * 190;
-      s += panel(ox + 2, oy, 246, 184, { kind: i === 2 || i === 3 ? 'hi' : null });
+      const row = Math.floor(i / 3);
+      const ox = row < 2 ? 5 + (i % 3) * 250 : 255, oy = 6 + row * 190;
+      s += panel(ox + 2, oy, 246, 184, { kind: HI_CELLS.includes(i) ? 'hi' : null });
       s += cell(ox, oy);
     });
     return s;
   },
-  caption: 'Read the frames in order. Frames 2 to 4 take the place of transmetalation. In frame 4, the H and the Pd that leave are on the same side, and the phenyl and the ester are on opposite sides.',
+  caption: 'Read the frames in order. Frames 2 and 3 take the place of transmetalation. Frames 4 and 5 look along the new C&ndash;C bond: in 4, Ph and Pd sit together; in 5, the front carbon has turned, so an H lines up with Pd and Ph lines up with an H rather than with the ester. The &beta;-hydride elimination in frame 5, not a reductive elimination, releases the product, and frame 7 returns Pd(0).',
 });
 
 const heckColumn = (cells) => {
   let s = '';
   cells.forEach((i, k) => {
-    s += panel(46, 4 + k * 190, 248, 184, { kind: i === 2 || i === 3 ? 'hi' : null });
+    s += panel(46, 4 + k * 190, 248, 184, { kind: HI_CELLS.includes(i) ? 'hi' : null });
     s += heckCells[i](45, 4 + k * 190);
   });
   return s;
@@ -506,17 +524,25 @@ FIGURES.push({
   id: 'l-heck-a',
   lessons: ['cross-coupling'],
   viewBox: '0 0 340 574',
-  alt: 'The Heck of iodobenzene with methyl acrylate, first half: oxidative addition gives Ph–Pd–I; the alkene binds side-on to palladium; migratory insertion puts Ph on the CH2 carbon and Pd on the other carbon, from the same side.',
+  alt: 'The Heck of iodobenzene with methyl acrylate, first part: oxidative addition gives Ph–Pd–I; the alkene binds side-on to palladium; migratory insertion puts Ph on the CH2 carbon and Pd on the other carbon, from the same side.',
   build() { return heckColumn([0, 1, 2]); },
   caption: 'Frames 1 to 3. In frame 3, Ph and Pd both come from above the C=C, so they add to the same side.',
 });
 FIGURES.push({
   id: 'l-heck-b',
   lessons: ['cross-coupling'],
-  viewBox: '0 0 340 574',
-  alt: 'The Heck, second half: an H and the Pd on neighboring carbons sit on the same side and leave together; the trans alkene is released with H–Pd–I; triethylamine takes HI and returns Pd(0).',
-  build() { return heckColumn([3, 4, 5]); },
-  caption: 'Frames 4 to 6. The H and the Pd that leave sit on the same side, and the phenyl and the ester end up on opposite sides of the C=C.',
+  viewBox: '0 0 340 384',
+  alt: 'Two Newman projections along the new C–C bond. First, just after insertion, Ph on the front carbon sits beside Pd on the back carbon. Second, the front carbon has turned: an H sits beside Pd, Ph sits beside the back H, and the other H sits beside the ester. An arrow shows the H moving to Pd.',
+  build() { return heckColumn([3, 4]); },
+  caption: 'Frames 4 and 5 look along the new C&ndash;C bond. In frame 5, an H lines up with Pd and leaves with it, and Ph lines up with an H rather than with the ester.',
+});
+FIGURES.push({
+  id: 'l-heck-c',
+  lessons: ['cross-coupling'],
+  viewBox: '0 0 340 384',
+  alt: 'The trans alkene methyl cinnamate is released with H–Pd–I; triethylamine then takes HI and returns Pd(0).',
+  build() { return heckColumn([5, 6]); },
+  caption: 'Frames 6 and 7. The groups that lined up in frame 5 end up on the same side of the C=C, so Ph and the ester are trans. The base then returns Pd(0).',
 });
 
 /* ------------------------------------------------------------------------
@@ -579,7 +605,7 @@ FIGURES.push({
     s += tag(612, 228, 'it waits for reductive elimination');
     return s;
   },
-  caption: 'Left: the β hydrogen and the Pd sit on the same side, as in frame 4 of the Heck. Right: the ring carbons next to the Pd-bonded carbon are sp², and their hydrogens point away.',
+  caption: 'Left: the β hydrogen and the Pd sit on the same side, as in frame 5 of the Heck. Right: the ring carbons next to the Pd-bonded carbon are sp², and their hydrogens point away.',
 });
 
 /* ------------------------------------------------------------------------
@@ -646,7 +672,7 @@ const acetylBiphenyl = (lettered) => {
   if (lettered) {
     s += text(118, 84, 'a', { cls: 'fg-tag-warn' });
     s += text(204, 116, 'b', { cls: 'fg-tag-warn' });
-    s += text(222, 134, 'c', { cls: 'fg-tag-warn' });
+    s += text(250, 114, 'c', { cls: 'fg-tag-warn' });
   }
   return { s, a, b };
 };
