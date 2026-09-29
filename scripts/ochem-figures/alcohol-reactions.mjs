@@ -371,8 +371,8 @@ function shiftFrames(x1, x2, y, lesson) {
 FIGURES.push({
   id: 'hbr-shift-vs-pbr3',
   section: 'alcohol-reactions',
-  alt: 'Two rows, carbons numbered 1 to 4. Top, HBr: the secondary cation at C2 of 3,3-dimethylbutane, with a curved arrow moving a methyl from C3 to C2; then the tertiary cation at C3 with bromide arriving; then 2-bromo-2,3-dimethylbutane, with bromine on the carbon that never held the OH. Bottom, PBr3: 3,3-dimethylbutan-2-ol goes straight to 2-bromo-3,3-dimethylbutane, bromine on C2, skeleton unchanged.',
-  viewBox: '0 0 760 460',
+  alt: 'Two rows, carbons numbered 1 to 4. Top, HBr: the secondary cation at C2 of 3,3-dimethylbutane, with a curved arrow moving a methyl from C3 to C2; then the tertiary cation at C3 with bromide arriving; then 2-bromo-2,3-dimethylbutane, with bromine on the carbon that never held the OH. Bottom, PBr3: 3,3-dimethylbutan-2-ol goes straight to 3-bromo-2,2-dimethylbutane, bromine on the carbon that held the OH, skeleton unchanged.',
+  viewBox: '0 0 760 482',
   build() {
     let s = '';
     s += tag(24, 28, 'HBr · THE CATION REARRANGES BEFORE BROMIDE ARRIVES', { anchor: 'start' });
@@ -402,7 +402,8 @@ FIGURES.push({
     s += E.g;
     const brE = P(E.p[1].x, E.p[1].y - 44);
     s += bond(E.p[1], brE, { rFrom: 0, rTo: 15 }) + atom(brE.x, brE.y, 'Br', { kind: 'hi' });
-    s += text(560, 452, '2-bromo-3,3-dimethylbutane', { cls: 'fg-tag-good' });
+    s += text(560, 452, '3-bromo-2,2-dimethylbutane', { cls: 'fg-tag-good' });
+    s += text(560, 470, 'renumbered for the name: Br on C3', { cls: 'fg-sm' });
     return s;
   },
   caption: 'One alcohol, two reagents, two different bromides. Follow the highlighted methyl in the top row.',
@@ -416,13 +417,14 @@ function tosylInversion(stacked) {
     const c1 = P(76, 116), c2 = P(400, 116), c3 = P(660, 116);
     s += sc(c1, START('OH', 15)).g;
     s += text(100, 196, '(S)-butan-2-ol', { cls: 'fg-tag' });
-    s += arrow(P(166, 116), P(240, 116));
-    s += text(203, 100, 'TsCl, pyridine', { cls: 'fg-sm' });
-    s += text(203, 136, 'C–O untouched', { cls: 'fg-sm' });
+    s += arrow(P(164, 116), P(230, 116));
+    s += text(196, 100, 'TsCl, pyridine', { cls: 'fg-sm' });
+    s += text(196, 136, 'C–O untouched', { cls: 'fg-sm' });
     const T = sc(c2, START('OTs', 17));
     s += T.g;
-    const br = halide(c2.x - 108, c2.y, 'Br', 0);
+    const br = halide(c2.x - 100, c2.y, 'Br', 0);
     s += br.g;
+    s += text(c2.x - 100, c2.y + 48, 'from NaBr', { cls: 'fg-sm' });
     s += curve(br.from, P(c2.x - 18, c2.y - 2), { bow: -6 });
     s += bondToAtom(c2, T.ends.x, 17, -1);
     s += text(420, 196, '(S)-butan-2-yl tosylate', { cls: 'fg-tag' });
@@ -649,8 +651,8 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-hbr-shift',
   lessons: ['alcohol-reactions'],
-  alt: 'Stacked. The secondary cation from 3,3-dimethylbutan-2-ol with a methyl moving from C3 to C2. The tertiary cation at C3 with bromide arriving. Then the two products side by side: 2-bromo-2,3-dimethylbutane from HBr and 2-bromo-3,3-dimethylbutane from PBr3.',
-  viewBox: '0 0 340 600',
+  alt: 'Stacked. The secondary cation from 3,3-dimethylbutan-2-ol with a methyl moving from C3 to C2. The tertiary cation at C3 with bromide arriving. Then the product, 2-bromo-2,3-dimethylbutane, with bromine on the carbon that never held the OH.',
+  viewBox: '0 0 340 620',
   build() {
     let s = '';
     s += tag(170, 22, 'HBr · 2° CATION AT C2');
@@ -668,20 +670,16 @@ FIGURES.push({
     const br = halide(bp.x, bp.y, 'Br', 151);
     s += br.g;
     s += curve(br.from, P(B.p[2].x + 11, B.p[2].y + 6), { bow: -8 });
-    s += rule(16, 424, 324, 424);
-    s += tag(84, 448, 'FROM HBr', { cls: 'fg-tag-warn' });
-    const C = dmb(24, 540, { moved: true });
+    s += arrow(P(170, 404), P(170, 440), { muted: true });
+    s += tag(170, 466, 'PRODUCT');
+    const C = dmb(110, 540, { moved: true });
     s += C.g;
     const brP = armEnd(C.p[2], 330, 42);
     s += bond(C.p[2], brP, { rFrom: 0, rTo: 15 }) + atom(brP.x, brP.y, 'Br', { kind: 'hi' });
-    s += tag(256, 448, 'FROM PBr₃', { cls: 'fg-tag-good' });
-    const E = dmb(196, 546);
-    s += E.g;
-    const brE = P(E.p[1].x, E.p[1].y - 40);
-    s += bond(E.p[1], brE, { rFrom: 0, rTo: 15 }) + atom(brE.x, brE.y, 'Br', { kind: 'hi' });
+    s += tag(170, 606, '2-bromo-2,3-dimethylbutane', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'HBr moves the skeleton; PBr₃ does not.',
+  caption: 'Bromide bonds to C3, a carbon that never held the OH.',
 });
 
 FIGURES.push({
