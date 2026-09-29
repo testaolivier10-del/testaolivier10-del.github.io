@@ -17,3 +17,7 @@ review; add to it instead of guessing.
 `docs/ochem-phase1-report.md` reports the first rewrites. Open points for a person go in
 `docs/ochem-needs-author.md`. Figures for a rewritten topic live in `scripts/ochem-figures/<topic>.mjs`
 and can also appear in its lesson (see the header of `scripts/build-ochem-figures.mjs`).
+
+## Token usage
+
+When exploring or editing code, prefer Serena's symbol tools over reading whole files. Never read question bank or lesson JSON files in full; search them instead.

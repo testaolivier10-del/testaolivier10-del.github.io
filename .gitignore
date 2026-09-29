@@ -13,3 +13,5 @@ splittest.mjs
 renum.mjs
 node_modules
 .cache/
+.serena/*
+!.serena/memories/
