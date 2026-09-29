@@ -1,7 +1,8 @@
-/* The "you got it" sound, shared by every LevlPrep course.
+/* The answer sounds, shared by every LevlPrep course: a chime for a right
+   answer and a soft falling tone for a miss.
 
-   Every place in the site that tells you an answer was right now also says it
-   out loud: the ochem lesson checks and mechanism drills, the ochem
+   Every place in the site that tells you whether an answer was right also
+   says it out loud: the ochem lesson checks and mechanism drills, the ochem
    practice/review/diagnostic runner, and the NREMT lung-sound trainer. The
    NREMT practice exam is the deliberate exception — it withholds per-question
    feedback the way the real exam does, so a chime there would leak the answer.
@@ -17,9 +18,9 @@
 
      - The pitch climbs with the run. Six correct answers in a row walk up a
        pentatonic ladder, and a miss drops you back to the bottom. That is the
-       whole reason `answer(false)` exists and has to be called on wrong
-       answers too — without it the ladder would ratchet up and never come
-       down, and the fifth right answer would sound exactly like the fiftieth.
+       reason `answer(false)` has to be called on wrong answers too (it also
+       plays the miss tone). Without it the ladder would ratchet up and never
+       come down, and the fifth right answer would sound like the fiftieth.
      - Every note is two detuned oscillators through a lowpass, not one raw
        sine. A bare sine reads as a UI error tone; the beating between two
        near-identical voices is what makes it read as a bell.
@@ -68,7 +69,7 @@
      sounds struck rather than faded in, and an exponential tail. The lowpass
      takes the glassy edge off the top harmonics — without it the higher rungs
      of the ladder get shrill. */
-  function note(c, hz, at, dur, gain){
+  function note(c, hz, at, dur, gain, cutoff){
     var out = c.createGain();
     out.gain.setValueAtTime(0.0001, at);
     out.gain.exponentialRampToValueAtTime(gain, at + 0.008);
@@ -76,7 +77,7 @@
 
     var lp = c.createBiquadFilter();
     lp.type = 'lowpass';
-    lp.frequency.value = 6000;
+    lp.frequency.value = cutoff || 6000;
     lp.connect(out);
     out.connect(c.destination);
 
@@ -109,13 +110,27 @@
     note(c, root * semis(TRIAD[TRIAD.length - 1] + 12), t + 0.14, 0.42, MASTER * 0.4);
   }
 
+  /* The miss: two soft notes falling a minor third, low and short, through a
+     darker lowpass. It says "not that one" without sounding like a buzzer, and
+     it sits well under the reward in both pitch and level, so a run of misses
+     never becomes the loudest thing on the page. */
+  function wrong(){
+    if(!enabled) return;
+    var c = audio();
+    if(!c) return;
+    var t = c.currentTime + 0.01;
+    var hz = 220;                   // A3, well below the reward's C5
+    note(c, hz, t, 0.22, MASTER * 0.55, 1400);
+    note(c, hz * semis(-3), t + 0.11, 0.3, MASTER * 0.5, 1400);
+  }
+
   /* The single entry point the answer paths call. Passing the verdict in —
      rather than having callers decide whether to make a sound — is what keeps
-     the run counter honest: a wrong answer is silent, but it still has to be
-     reported so the ladder resets. */
+     the run counter honest: a miss plays the soft falling tone and resets the
+     ladder. */
   function answer(isCorrect){
     if(isCorrect) correct();
-    else streak = 0;
+    else { streak = 0; wrong(); }
   }
 
   function resetStreak(){ streak = 0; }
