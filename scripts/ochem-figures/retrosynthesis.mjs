@@ -213,7 +213,7 @@ FIGURES.push({
     s += rule(630, 152, 604, 166);
     s += text(598, 214, 'C=O carbon, electrophilic', { cls: 'fg-sm' });
 
-    s += text(503, 262, 'bought as:  acetone + NaOH   ·   acetone', { cls: 'fg-tag-good' });
+    s += text(503, 262, 'bought as: two molecules of acetone, with NaOH', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'The cut falls between the α carbon and the carbon that carries the OH. Both pieces are acetone, so the forward reaction is acetone with base. That equilibrium favors acetone, so in practice the product is removed as it forms.',
