@@ -634,9 +634,9 @@ FIGURES.push({
       s += atom(h.x, h.y, 'H', { r: 10 });
       s += atom(rr.x, rr.y, 'R′', { r: 15 });
       s += atom(nA.x, nA.y, 'N', { kind: 'hi' });
-      s += lonePair(nA.x, nA.y, 110, { dist: 23 });
+      s += lonePair(nA.x, nA.y, -95, { dist: 22 });
       s += atom(c.x, c.y, 'C', { kind: 'hi' });
-      s += curve(P(135, 190), P(116, 149), { bow: 14 });
+      s += curve(P(144, 130), P(118, 139), { bow: 12 });
       s += curve(P(102, 108), P(108, 86), { bow: -10 });
       s += text(124, 254, 'flat: the N lone pair is shared', { cls: 'fg-sm', size: 10 });
     }

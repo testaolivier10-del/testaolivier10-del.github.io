@@ -219,7 +219,7 @@ function tet(ox, oy, o1Label, o1Kind) {
   return {
     C: A(ox + 118, oy + 140, 'C', 'hi'),
     Et: A(ox + 56, oy + 100, 'CH₂CH₃', 'hi'),
-    OH: A(ox + 76, oy + 204, 'OH'),
+    OH: A(ox + 72, oy + 196, 'OH'),
     Me: A(ox + 158, oy + 196, 'CH₃'),
     O1: A(ox + 176, oy + 112, o1Label, o1Kind),
     O2: A(ox + 222, oy + 140, 'O'),
@@ -265,14 +265,13 @@ function pCriegee(ox, oy) {
 function pCollapse(ox, oy) {
   let s = frameP(ox, oy, H_M, '5 · three pairs move at once', [
     'the ethyl slides onto the near O',
-    'as the O–O bond breaks',
   ]);
   const t = tet(ox, oy, 'O', 'hi');
   s += tetBonds(t, 'fg-bond-hi');
-  s += lp(t.OH, 200);
+  s += lp(t.OH, 225);
   s += draw(...Object.values(t));
   // the OH lone pair makes the new C=O
-  s += curve(off(lpAt(t.OH, 200), -2, -6), off(mid(t.C, t.OH), -9, -2), { bow: 18 });
+  s += curve(off(lpAt(t.OH, 225), -4, -4), off(mid(t.C, t.OH), -8, -4), { bow: -16 });
   // the C–ethyl bond swings over onto the near oxygen
   s += curve(off(mid(t.C, t.Et), 0, -8), P(t.O1.x - 6, t.O1.y - t.O1.r - 2), { bow: -26 });
   // the O–O bond breaks onto the far oxygen
@@ -457,7 +456,7 @@ FIGURES.push({
     s += pOutcome(0, H_K + 26 + H_OUT + 36, false);
     return s;
   },
-  caption: 'The highlighted O is the new one. The group on its far side, away from the C=O, is the one that moved.',
+  caption: 'The highlighted O is the new one.',
 });
 
 /* ======================================================================
