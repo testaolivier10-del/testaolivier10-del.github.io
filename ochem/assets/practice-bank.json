@@ -11280,7 +11280,7 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclopropane and cyclobutane have similar total ring strain (27.5 and 26.3 kcal/mol), but cyclobutane puckers while cyclopropane cannot. What does cyclobutane gain by puckering?",
+   "q": "Cyclopropane and cyclobutane have similar total ring strain (27.6 and 26.3 kcal/mol), but cyclobutane puckers while cyclopropane cannot. What does cyclobutane gain by puckering?",
    "options": [
     "Relief from eclipsing, bought by worse bond angles",
     "Relief from angle strain, bought by accepting more eclipsing",
@@ -11327,7 +11327,7 @@
     "cyclohexane > cyclopentane > cyclobutane > cyclopropane"
    ],
    "correct": 1,
-   "why": "27.5, 26.3, 6.2 and essentially 0 kcal/mol. The interesting feature is the cliff between four carbons and five: cyclopropane and cyclobutane are locked into badly wrong angles, while cyclopentane already has near-ideal 108° angles and only has eclipsing left to deal with. By six carbons a ring can pucker its way out of both problems at once.",
+   "why": "27.6, 26.3, 6.5 and essentially 0 kcal/mol. The interesting feature is the cliff between four carbons and five: cyclopropane and cyclobutane are locked into badly wrong angles, while cyclopentane already has near-ideal 108° angles and only has eclipsing left to deal with. By six carbons a ring can pucker its way out of both problems at once.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -11358,7 +11358,7 @@
    "type": "mcq"
   },
   {
-   "q": "Cycloheptane and cyclooctane carry 6.2 and 9.7 kcal/mol of strain even though their bond angles are close to ideal. Where does it come from?",
+   "q": "Cyclooctane carries about 10 kcal/mol of strain even though its bond angles are close to ideal. Where does most of it come from?",
    "options": [
     "Angle strain, from being forced well above 109.5 degrees",
     "Nothing real — the numbers are rounding error in the measurement",
@@ -11366,7 +11366,7 @@
     "Electrostatic repulsion between the ring carbon atoms themselves"
    ],
    "correct": 2,
-   "why": "Transannular means 'across the ring'. A seven- or eight-membered ring is loose enough for its two sides to fold toward each other and too tight for the hydrogens on those sides to get out of each other's way. Small rings are too taut to suffer it and rings of a dozen carbons and up are floppy enough to avoid it, which makes the medium rings the most strained sizes after the small ones.",
+   "why": "Transannular means 'across the ring'. An eight-membered ring is loose enough for its two sides to fold toward each other and too tight for the hydrogens on those sides to get out of each other's way. Small rings are too taut to suffer it and rings of fourteen carbons and up are floppy enough to avoid it, which makes the medium rings the most strained sizes after the small ones.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -11416,7 +11416,7 @@
     "To bring its hydrogens closer together across the middle"
    ],
    "correct": 0,
-   "why": "Angle strain is not cyclopentane's problem — 108° is within a degree and a half of tetrahedral. Planarity is: every adjacent C–H pair would be eclipsed. Puckering bends the angles down to around 104°, which is cheap, and buys a large amount of torsional relief, which is not. The residual 6.2 kcal/mol is what is left over after that compromise.",
+   "why": "Angle strain is not cyclopentane's problem — 108° is within a degree and a half of tetrahedral. Planarity is: every adjacent C–H pair would be eclipsed. Puckering bends the angles down to around 104°, which is cheap, and buys a large amount of torsional relief, which is not. The residual 6.5 kcal/mol is what is left over after that compromise.",
    "difficulty": "hard",
    "type": "mcq"
   },

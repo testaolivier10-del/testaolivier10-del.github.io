@@ -606,3 +606,42 @@ confirm it.
   about 0.5–2.5 mol%). Nylon 6,T melting point about 370 °C, kept from the original page. "Most
   recycled PET goes the mechanical route" and "PLA shows almost no measurable breakdown in
   seawater after more than a year" are uncited.
+
+## Alkanes & Conformations (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### alkanes-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `newman`, `cyclohexanes`, `axial-equatorial`, `ring-flips`, `conformational-analysis`.
+- **Positions taken:**
+  - Order across pages: Cyclohexanes owns the conformer path (chair → half-chair → twist-boat →
+    boat and back); Axial/equatorial treats the two chairs of one compound as conformations by the
+    Newman test and never reasons from a flip; Ring flips owns the flip; Conformational analysis
+    owns disubstituted rings, including the 1,2 "one must be axial" cases.
+  - Chair drawings: C1 is the headrest (far right, tipped up) and C4 the footrest. A flipped chair
+    keeps both ends and swaps the middle carbons in pairs, so it shows the same molecule's other
+    chair. A plain top-to-bottom reflection draws the mirror-image molecule; the already-published
+    `cis-trans-ez` ring-flip figures use it (their up/down and axial/equatorial readings are still
+    right) and should be redrawn.
+  - The ethane barrier is explained both ways (repulsion and hyperconjugation), and no question
+    grades the cause. The σ* orbital is drawn without claiming which lobe is larger.
+  - The Boltzmann distribution is named without a formula; confirm that level suits chapter 5.
+  - Conformer energies come from additive interaction costs. For 2,3-dimethylbutane this gives
+    1.8 against 2.7 kcal/mol, while experiment puts anti and gauche close; the final says "adding
+    up the interaction costs gives".
+  - The half-chair is taught as the transition state between a chair and a twist-boat;
+    computation puts the true transition state between a half-chair and an envelope. A chair with
+    tert-butyl axial likely twists; the pages treat it as a chair.
+  - The claim that β-glucose's all-equatorial chair is one reason glucose is widespread was removed
+    as unverified.
+
+### alkanes-numbers: values that need a source
+- **Status:** pending review.
+- **Notes:** ring strain from the page's own subtraction: 27.6, 26.3, 6.5, 0.1, 6.4 kcal/mol for
+  C3–C7 and 10 for cyclooctane (another common set is 27.5 / 26.3 / 6.2 / 0 / 6.2); the epoxides
+  pages and the cyclohexanes questions now use this set. Boat 6.5 (sources 6.4–7.1), half-chair
+  10.8 (10–11), twist-boat 5.5. Syn butane drawn at about 5 (sources 4.5–6). A-values: OH 0.9
+  (0.6–1.0 by solvent), F 0.25 (0.15–0.38), tert-butyl 4.9 (quoted >4.5 or 4.7–4.9). Syn-pentane
+  3.7, kept from the original page. Ring-flip NMR coalescence about −90 °C (sources −60 to −100).

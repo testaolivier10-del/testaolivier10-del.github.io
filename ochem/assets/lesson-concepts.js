@@ -81,10 +81,6 @@
       8:['acyl-reactivity-order','leaving-group-ability'],
       9:['activation-before-acylation'],
       11:['activation-before-acylation','acyl-reactivity-order'] } },
-
-    /* Step 2 is the product sorter and carries the carbon counting with it.
-       3 is why a Grignard adds once, 4 is a pure carbon count, 6 the route
-       chosen on the substrate rather than the target, 7 the DIBAL trap. */
     'nitriles': { n:11, steps:{
       2:['substrate-class','nitrile-as-acyl-level'],
       5:['nitrile-as-acyl-level','reductant-scope','oxidation-level'],
@@ -108,14 +104,6 @@
       9:['aldehyde-oxidizability','addition-equilibrium'],
       12:['aldehyde-oxidizability'],
       14:['aldehyde-oxidizability','addition-equilibrium'] } },
-
-    /* Step 2 is the hands-on "find every carbon", which is the skeleton-reading
-       concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
-       4 is the C–H versus O–H asymmetry, which is a notation rule rather than
-       a counting one. 7 is the five-bond slip, where both are involved. */
-    /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
-       (0, 1 and 5 are explain steps and record nothing). */
-    /* The synthesis chapter. Graded steps are 2, 3, 4, 6, 7. */
     'retrosynthesis': { n:8, steps:{
       2:['disconnection'], 3:['disconnection'], 4:['disconnection','cc-bond-toolkit'],
       6:['disconnection'], 7:['disconnection'] } },
@@ -344,8 +332,6 @@
       9:['alkene-cleavage-scope'],
       11:['alkene-cleavage-scope'],
       12:['redox-stereochemistry','alkene-cleavage-scope'] } },
-
-    /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
     'conjugated-systems': { n:9, steps:{
       2:['conjugation-recognition'],
       3:['conjugation-recognition'],
@@ -531,11 +517,12 @@
       12:['valence-electrons'],
       14:['valence-electrons'] } },
 
-    'axial-equatorial': { n:7, steps:{
+    'axial-equatorial': { n:9, steps:{
       1:['chair-axial-equatorial'],
-      2:['chair-axial-equatorial','steric-hindrance'],
       3:['chair-axial-equatorial','steric-hindrance'],
-      6:['chair-axial-equatorial','steric-hindrance'] } },
+      5:['chair-axial-equatorial','steric-hindrance'],
+      7:['chair-axial-equatorial'],
+      8:['chair-axial-equatorial','steric-hindrance'] } },
 
     /* Step 3 sorts six condensed formulas into ester/ether/amide/ketone, 5 is
        the tert-butylamine degree trap, 6 is "which one contains an amide", 9
@@ -597,11 +584,12 @@
       8:['claisen-connectivity','enolate-formation'],
       10:['claisen-connectivity'] } },
 
-    'conformational-analysis': { n:7, steps:{
+    'conformational-analysis': { n:11, steps:{
       1:['chair-axial-equatorial'],
-      2:['chair-axial-equatorial'],
       3:['chair-axial-equatorial','ring-flip-mechanics'],
-      6:['chair-axial-equatorial','ring-flip-mechanics'] } },
+      5:['chair-axial-equatorial','ring-flip-mechanics'],
+      8:['chair-axial-equatorial','torsional-strain'],
+      10:['chair-axial-equatorial','ring-flip-mechanics'] } },
 
     'conjugate': { n:7, steps:{
       1:['conjugate-pairs'],
@@ -617,11 +605,12 @@
       7:['curved-arrow-direction'],
       8:['curved-arrow-direction','resonance-validity'] } },
 
-    'cyclohexanes': { n:7, steps:{
-      1:['chair-axial-equatorial'],
+    'cyclohexanes': { n:9, steps:{
+      1:['torsional-strain'],
       2:['torsional-strain'],
-      3:['chair-axial-equatorial','torsional-strain'],
-      6:['torsional-strain','chair-axial-equatorial'] } },
+      4:['chair-axial-equatorial','torsional-strain'],
+      6:['chair-axial-equatorial','torsional-strain'],
+      8:['torsional-strain','chair-axial-equatorial'] } },
 
     'diastereomers': { n:11, steps:{
       2:['enantiomer-vs-diastereomer','stereocenter-identification'],
@@ -796,11 +785,13 @@
       8:['molecular-geometry-vsepr'],
       10:['molecular-geometry-vsepr','hybridization-assignment'] } },
 
-    'newman': { n:7, steps:{
-      1:['newman-reading'],
-      2:['torsional-strain','newman-reading'],
-      3:['torsional-strain','newman-reading'],
-      6:['newman-reading','torsional-strain'] } },
+    'newman': { n:14, steps:{
+      2:['newman-reading'],
+      4:['torsional-strain','newman-reading'],
+      5:['torsional-strain','newman-reading'],
+      8:['torsional-strain','newman-reading'],
+      11:['torsional-strain','newman-reading'],
+      13:['newman-reading','torsional-strain'] } },
 
     'nucleophiles': { n:11, steps:{
       2:['nucleophile-recognition'],
@@ -835,10 +826,13 @@
       6:['resonance-delocalization','resonance-validity'],
       8:['resonance-validity','resonance-delocalization'] } },
 
-    'ring-flips': { n:7, steps:{
-      1:['ring-flip-mechanics'], 2:['ring-flip-mechanics'],
-      3:['ring-flip-mechanics'],
-      6:['ring-flip-mechanics','chair-axial-equatorial'] } },
+    'ring-flips': { n:13, steps:{
+      1:['ring-flip-mechanics'],
+      2:['ring-flip-mechanics'],
+      4:['ring-flip-mechanics','chair-axial-equatorial'],
+      6:['ring-flip-mechanics','chair-axial-equatorial'],
+      9:['ring-flip-mechanics'],
+      12:['ring-flip-mechanics','chair-axial-equatorial'] } },
 
     /* Steps 6 and 7 are the two wedge-dash assignment drills, each of
        which grades three times (rank, toward/away, R or S) — so this
