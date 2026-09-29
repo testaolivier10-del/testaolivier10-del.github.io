@@ -105,7 +105,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 11</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -140,13 +140,13 @@ document.addEventListener('DOMContentLoaded', function(){
      picks the class of reagent before you have recalled a single name. */
   var CASES = [
     { id:'f1', t:'Alcohol &rarr; alkyl halide', right:'side',
-      why:'Sideways. One bond to an electronegative atom is traded for another and the hydrogen count does not change, so no redox reagent is involved: PBr₃, SOCl₂ or HX.' },
+      why:'Sideways. One bond to an electronegative atom is traded for another, and the count of bonds to hydrogen does not change. No redox reagent is involved: PBr₃, SOCl₂ or HX.' },
     { id:'f2', t:'Primary alcohol &rarr; aldehyde', right:'up',
-      why:'Up one rung. A C–H on the carbinol carbon is replaced by a second bond to oxygen, so it needs an oxidant — and an anhydrous one, or it overshoots to the acid.' },
-    { id:'f3', t:'Ester &rarr; amide', right:'side',
-      why:'Sideways. Both carbons sit at +3, so this is nucleophilic acyl substitution: one leaving group swapped for another, no oxidation level change.' },
+      why:'Up one rung. A C–H on the carbinol carbon is replaced by a second bond to oxygen, so it needs an oxidant. It must be an anhydrous one, or the reaction overshoots to the acid.' },
+    { id:'f3', t:'Carboxylic acid &rarr; acyl chloride', right:'side',
+      why:'Sideways. The carbonyl carbon keeps three bonds to O or Cl, because an OH is swapped for a Cl. SOCl₂ does it, and no redox reagent is involved.' },
     { id:'f4', t:'Ketone &rarr; secondary alcohol', right:'down',
-      why:'Down one rung. A bond to oxygen becomes a bond to hydrogen, which is a reduction: NaBH₄ is enough, and LiAlH₄ would also work but is not needed.' }
+      why:'Down one rung. A bond to oxygen becomes a bond to hydrogen, which is a reduction. NaBH₄ is enough; LiAlH₄ would also work but is not needed.' }
   ];
   var OPTS = [{k:'up',l:'Up the ladder'},{k:'down',l:'Down the ladder'},{k:'side',l:'Sideways'}];
 
@@ -160,33 +160,21 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Two kinds of move, and naming the kind picks the reagent.',
-        bodyHtml: '<p class="step-body">Once the carbon skeleton is right, the rest of a synthesis is moving functional groups around. These steps are individually easy and collectively where routes go wrong — because there are many of them and it is tempting to memorize a list rather than a map.</p>' +
+        bodyHtml: '<p class="step-body">Start with ethanol. Oxidize it to ethanal, and the carbon that carries the OH trades a C–H bond for a second bond to oxygen. That is a move <b>up the ladder</b>, and it needs an oxidant such as PCC. Turn ethanol into bromoethane instead, and the same carbon trades its bond to oxygen for a bond to bromine. Its bonds to hydrogen stay as they were, so the move is <b>sideways</b>: a substitution with no redox reagent.</p>' +
+          '<p class="step-body">Changing one functional group into another is a <b>functional group interconversion</b>, and every one of them is one of those two kinds:</p>' +
           '<ul class="step-body">' +
-          '<li><b>Up or down the oxidation ladder</b> — alkane, alcohol, aldehyde/ketone, carboxylic acid. Needs an oxidizing or reducing agent.</li>' +
-          '<li><b>Sideways, within one level</b> — alcohol to alkyl halide, acid to ester to amide. These are substitutions and need no redox reagent at all.</li>' +
+          '<li><b>Up or down the ladder</b> needs an oxidizing or a reducing agent.</li>' +
+          '<li><b>Sideways along a rung</b> is a substitution and needs no redox reagent.</li>' +
           '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">Asking which kind of move a step is tells you immediately what class of reagent to reach for, and it catches the commonest planning error: trying to reach a carboxylic acid from an alcohol with a substitution, or trying to turn an ester into an amide with a reducing agent.</p>'
-      },
-      {
-        type: 'explain',
-        eyebrow: 'Explain',
-        title: 'Read the map for the pairs, not the rows.',
-        bodyHtml: '<p class="step-body">Several destinations can be reached by either of two reagents that give <b>opposite outcomes</b>, and those pairs are where synthesis questions are built — because they are the choices only you can make:</p>' +
-          '<ul class="step-body">' +
-          '<li>Alkene &rarr; alcohol: <b>H₃O⁺</b> gives Markovnikov, <b>BH₃ then H₂O₂/HO⁻</b> gives anti-Markovnikov.</li>' +
-          '<li>Alkyne &rarr; alkene: <b>H₂/Lindlar</b> gives <i>cis</i>, <b>Na/NH₃</b> gives <i>trans</i>.</li>' +
-          '<li>1° alcohol &rarr; carbonyl: <b>PCC, Swern, DMP</b> stop at the aldehyde, <b>aqueous CrO₃</b> goes to the acid.</li>' +
-          '<li>Alkene &rarr; diol: <b>OsO₄</b> gives <i>syn</i>, <b>mCPBA then H₃O⁺</b> gives <i>anti</i>.</li>' +
-          '<li>Nitrile &rarr; ?: <b>H₃O⁺</b> gives the acid, <b>LiAlH₄</b> gives the primary amine.</li>' +
-          '</ul>' +
-          '<div class="explain-box">Every one of those pairs shares a starting material and differs only in reagent. If a question specifies a stereochemistry or a stopping point, it is almost certainly testing one of these.</div>'
+          '<p class="step-body">To place most groups on the ladder, count the bonds from the carbon to O, N or halogen, with a double bond counting as two and a triple bond as three. Alkenes and alkynes have no such bonds, so they are placed by what water turns them into. Adding water to an alkene gives an alcohol with no oxidant, so the alkene sits on the alcohol rung. Adding water to an alkyne gives a ketone, again with no oxidant, so the alkyne sits on the ketone rung.</p>',
+        diagramHtml: '<!-- fig:l-fgi-rungs:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 330" role="img" aria-label="Four rungs of the oxidation ladder, top to bottom. Carboxylic acid rung: acid, ester, amide, acyl chloride, anhydride, nitrile. Aldehyde and ketone rung: aldehyde, ketone, acetal, imine, alkyne. Alcohol rung: alcohol, alkyl halide, ether, amine, alkene. Alkane rung: alkane. An arrow labeled [O] points up and one labeled [H] points down."><line class="fg-arrow" x1="20" y1="310" x2="20" y2="38"></line><path class="fg-head" d="M20 30 L24.16 38 L15.84 38 Z"></path><line class="fg-arrow" x1="44" y1="30" x2="44" y2="302"></line><path class="fg-head" d="M44 310 L39.84 302 L48.16 302 Z"></path><text class="fg-tag" x="20" y="18" text-anchor="middle" font-size="11">[O]</text><text class="fg-tag" x="44" y="18" text-anchor="middle" font-size="11">[H]</text><text class="fg-tag" x="62" y="44" text-anchor="start" font-size="11">CARBOXYLIC ACID RUNG</text><text class="fg-lbl" x="62" y="66" text-anchor="start" font-size="13">acid · ester · amide</text><text class="fg-lbl" x="62" y="86" text-anchor="start" font-size="13">acyl chloride · anhydride · nitrile</text><text class="fg-tag" x="62" y="124" text-anchor="start" font-size="11">ALDEHYDE / KETONE RUNG</text><text class="fg-lbl" x="62" y="146" text-anchor="start" font-size="13">aldehyde · ketone · acetal</text><text class="fg-lbl" x="62" y="166" text-anchor="start" font-size="13">imine · alkyne</text><text class="fg-tag" x="62" y="204" text-anchor="start" font-size="11">ALCOHOL RUNG</text><text class="fg-lbl" x="62" y="226" text-anchor="start" font-size="13">alcohol · alkyl halide · ether</text><text class="fg-lbl" x="62" y="246" text-anchor="start" font-size="13">amine · alkene</text><text class="fg-tag" x="62" y="284" text-anchor="start" font-size="11">ALKANE RUNG</text><text class="fg-lbl" x="62" y="306" text-anchor="start" font-size="13">alkane</text><line class="fg-rule" x1="62" y1="98" x2="330" y2="98"></line><line class="fg-rule" x1="62" y1="178" x2="330" y2="178"></line><line class="fg-rule" x1="62" y1="258" x2="330" y2="258"></line></svg><figcaption>Groups on one rung interconvert without an oxidant or a reductant. Moving between rungs needs one.</figcaption></figure><!-- fig:l-fgi-rungs:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Which kind of move is each conversion?</h2>' +
-            '<p class="step-body">Count bonds to oxygen and bonds to hydrogen. If a bond to hydrogen is traded for a bond to oxygen (or the reverse), it is a ladder move; if one electronegative partner is traded for another, it is sideways.</p>' +
+            '<p class="step-body">Look at the carbon that changes and count its bonds to hydrogen and to O, N or halogen. If a bond to hydrogen is traded for a bond to oxygen, or the reverse, the move goes up or down the ladder. If one bond to O, N or halogen is traded for another, the move is sideways.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -206,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Not that one. Look at the carbon that changes: did it gain a bond to oxygen, gain a bond to hydrogen, or simply swap one electronegative partner for another?');
+                api.showFeedback(fb, false, 'Not that one. Look at the carbon that changes. Did it gain a bond to oxygen, gain a bond to hydrogen, or swap one electronegative partner for another?');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -214,8 +202,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. Naming the kind of move picks the class of reagent before you have recalled a single reagent name.'
-                  : 'All four, first time — including both sideways moves, which are the ones people try to do with a redox reagent.');
+                  ? 'All four. Naming the kind of move picks the class of reagent before you recall a single reagent name.'
+                  : 'All four, first time, including both sideways moves. Those are the ones people try to do with a redox reagent.');
                 api.record(!missed); next.disabled = false;
               }
             });
@@ -225,7 +213,83 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
+        eyebrow: 'Guided Practice',
+        title: 'Converting an ester to an amide: which kind of reagent do you need?',
+        options: [
+          'A hydride reducing agent such as LiAlH₄',
+          'An oxidant such as PCC',
+          'An amine, acting as the nucleophile',
+          'A radical initiator such as a peroxide'
+        ],
+        correctIndex: 2,
+        correctFeedback: 'Correct. The ester carbon and the amide carbon both have three bonds to O or N, so both sit on the acid rung and nothing is oxidized or reduced. The amine attacks the carbonyl and displaces the alkoxide in nucleophilic acyl substitution. LiAlH₄ is the classic wrong turn here: it reduces an ester to an alcohol and an amide to an amine, and neither is what was asked.',
+        wrongFeedback: 'Count the bonds from the carbonyl carbon to O or N in the ester, then in the amide. If the count does not change, which kind of move is this?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Read the map for the pairs, not the rows.',
+        bodyHtml: '<p class="step-body">Several destinations can be reached with either of two reagents that give <b>opposite outcomes</b>. Each pair shares a starting material and differs only in the reagent:</p>' +
+          '<ul class="step-body">' +
+          '<li>Alkyne &rarr; alkene: <b>H₂/Lindlar</b> gives <i>cis</i>, and <b>Na/NH₃</b> gives <i>trans</i>.</li>' +
+          '<li>Alkene &rarr; diol: <b>OsO₄</b> gives the <i>syn</i> diol, and <b>mCPBA then H₃O⁺</b> gives the <i>anti</i> diol.</li>' +
+          '<li>Alkene &rarr; alcohol: <b>H₃O⁺</b> gives Markovnikov, and <b>BH₃ then H₂O₂/HO⁻</b> gives anti-Markovnikov.</li>' +
+          '<li>1° alcohol &rarr; carbonyl: <b>PCC, Swern or DMP</b> stop at the aldehyde, and <b>aqueous CrO₃</b> (Jones) goes on to the acid.</li>' +
+          '</ul>' +
+          '<div class="explain-box">When a question names a stereochemistry or a stopping point, it is almost certainly testing one of these pairs.</div>',
+        diagramHtml: '<!-- fig:l-fgi-pairs:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 604" role="img" aria-label="Two reagent pairs, stacked. Top: but-2-yne with H2 and Lindlar catalyst gives cis-but-2-ene, and with sodium in liquid ammonia gives trans-but-2-ene. Bottom: cyclohexene with OsO4 and NMO gives the cis-1,2-diol with both OH groups on wedges, and with mCPBA then aqueous acid gives the trans-1,2-diol with one OH on a wedge and one on a dash."><text class="fg-tag" x="170" y="16" text-anchor="middle" font-size="11">ALKYNE TO ALKENE</text><line class="fg-bond" x1="128" y1="62" x2="156" y2="62"></line><line class="fg-bond" x1="156" y1="56.56" x2="184" y2="56.56"></line><line class="fg-bond" x1="156" y1="62" x2="184" y2="62"></line><line class="fg-bond" x1="156" y1="67.44" x2="184" y2="67.44"></line><line class="fg-bond" x1="184" y1="62" x2="212" y2="62"></line><text class="fg-tag" x="170" y="90" text-anchor="middle" font-size="11">but-2-yne</text><line class="fg-arrow" x1="158" y1="100" x2="125.1" y2="139.83"></line><path class="fg-head" d="M120 146 L121.89 137.18 L128.3 142.48 Z"></path><line class="fg-arrow" x1="182" y1="100" x2="214.9" y2="139.83"></line><path class="fg-head" d="M220 146 L211.7 142.48 L218.11 137.18 Z"></path><text class="fg-tag" x="122" y="120" text-anchor="end" font-size="11">H₂, Lindlar</text><text class="fg-tag" x="218" y="120" text-anchor="start" font-size="11">Na, NH₃(l)</text><line class="fg-bond" x1="78" y1="181.75" x2="92" y2="206"></line><line class="fg-bond" x1="92" y1="202.8" x2="120" y2="202.8"></line><line class="fg-bond" x1="92" y1="209.2" x2="120" y2="209.2"></line><line class="fg-bond" x1="120" y1="206" x2="134" y2="181.75"></line><line class="fg-bond" x1="206" y1="167.75" x2="220" y2="192"></line><line class="fg-bond" x1="220" y1="188.8" x2="248" y2="188.8"></line><line class="fg-bond" x1="220" y1="195.2" x2="248" y2="195.2"></line><line class="fg-bond" x1="248" y1="192" x2="262" y2="216.25"></line><text class="fg-tag" x="106" y="270" text-anchor="middle"><tspan font-style="italic">cis</tspan>-but-2-ene</text><text class="fg-tag" x="234" y="270" text-anchor="middle"><tspan font-style="italic">trans</tspan>-but-2-ene</text><text class="fg-tag-good" x="106" y="288" text-anchor="middle" font-size="11">same side</text><text class="fg-tag-good" x="234" y="288" text-anchor="middle" font-size="11">opposite sides</text><line class="fg-rule" x1="10" y1="300" x2="330" y2="300"></line><text class="fg-tag" x="170" y="320" text-anchor="middle" font-size="11">ALKENE TO DIOL</text><line class="fg-bond" x1="162" y1="342" x2="141.22" y2="354"></line><line class="fg-bond" x1="141.22" y1="354" x2="141.22" y2="378"></line><line class="fg-bond" x1="141.22" y1="378" x2="162" y2="390"></line><line class="fg-bond" x1="162" y1="390" x2="182.78" y2="378"></line><line class="fg-bond" x1="182.78" y1="354" x2="162" y2="342"></line><line class="fg-bond" x1="182.78" y1="378" x2="182.78" y2="354"></line><line class="fg-bond" x1="178.58" y1="373" x2="178.58" y2="359"></line><text class="fg-tag" x="170" y="406" text-anchor="middle" font-size="11">cyclohexene</text><line class="fg-arrow" x1="158" y1="414" x2="125.81" y2="444.5"></line><path class="fg-head" d="M120 450 L122.95 441.48 L128.67 447.52 Z"></path><line class="fg-arrow" x1="182" y1="414" x2="214.19" y2="444.5"></line><path class="fg-head" d="M220 450 L211.33 447.52 L217.05 441.48 Z"></path><text class="fg-tag" x="120" y="430" text-anchor="end" font-size="11">OsO₄, NMO</text><text class="fg-tag" x="220" y="426" text-anchor="start" font-size="11">1. mCPBA</text><text class="fg-tag" x="220" y="441" text-anchor="start" font-size="11">2. H₃O⁺</text><line class="fg-bond" x1="90" y1="474" x2="69.22" y2="486"></line><line class="fg-bond" x1="69.22" y1="486" x2="69.22" y2="510"></line><line class="fg-bond" x1="69.22" y1="510" x2="90" y2="522"></line><line class="fg-bond" x1="90" y1="522" x2="110.78" y2="510"></line><line class="fg-bond" x1="110.78" y1="510" x2="110.78" y2="486"></line><line class="fg-bond" x1="110.78" y1="486" x2="90" y2="474"></line><path class="fg-wedge" d="M110.78 486 L126.64 481.46 L122.64 474.54 Z"></path><path class="fg-wedge" d="M110.78 510 L122.64 521.46 L126.64 514.54 Z"></path><circle class="fg-atom-hi" cx="138.5" cy="470" r="16"></circle><text class="fg-lbl" x="138.5" y="473.89" text-anchor="middle" font-size="10.5">OH</text><circle class="fg-atom-hi" cx="138.5" cy="526" r="16"></circle><text class="fg-lbl" x="138.5" y="529.89" text-anchor="middle" font-size="10.5">OH</text><line class="fg-bond" x1="218" y1="474" x2="197.22" y2="486"></line><line class="fg-bond" x1="197.22" y1="486" x2="197.22" y2="510"></line><line class="fg-bond" x1="197.22" y1="510" x2="218" y2="522"></line><line class="fg-bond" x1="218" y1="522" x2="238.78" y2="510"></line><line class="fg-bond" x1="238.78" y1="510" x2="238.78" y2="486"></line><line class="fg-bond" x1="238.78" y1="486" x2="218" y2="474"></line><path class="fg-wedge" d="M238.78 486 L254.64 481.46 L250.64 474.54 Z"></path><line class="fg-hash" x1="240.68" y1="512.06" x2="241.51" y2="510.61"></line><line class="fg-hash" x1="242.57" y1="514.11" x2="244.24" y2="511.22"></line><line class="fg-hash" x1="244.46" y1="516.17" x2="246.96" y2="511.83"></line><line class="fg-hash" x1="246.36" y1="518.22" x2="249.69" y2="512.45"></line><line class="fg-hash" x1="248.25" y1="520.28" x2="252.41" y2="513.06"></line><circle class="fg-atom-hi" cx="266.5" cy="470" r="16"></circle><text class="fg-lbl" x="266.5" y="473.89" text-anchor="middle" font-size="10.5">OH</text><circle class="fg-atom-hi" cx="266.5" cy="526" r="16"></circle><text class="fg-lbl" x="266.5" y="529.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="106" y="574" text-anchor="middle"><tspan font-style="italic">cis</tspan>-diol (syn)</text><text class="fg-tag" x="234" y="574" text-anchor="middle"><tspan font-style="italic">trans</tspan>-diol (anti)</text><text class="fg-tag-good" x="106" y="592" text-anchor="middle" font-size="11">both wedges</text><text class="fg-tag-good" x="234" y="592" text-anchor="middle" font-size="11">wedge and dash</text></svg><figcaption>One starting compound, two reagents, two different products.</figcaption></figure><!-- fig:l-fgi-pairs:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Guided Practice',
+        title: 'You need <i>cis</i>-cyclohexane-1,2-diol from cyclohexene. Which reagent do you use?',
+        options: [
+          'OsO₄ with NMO',
+          '1. mCPBA 2. H₃O⁺',
+          'H₃O⁺ alone',
+          '1. BH₃ 2. H₂O₂, HO⁻'
+        ],
+        correctIndex: 0,
+        correctFeedback: 'Correct. OsO₄ delivers both oxygens to the same face of the double bond, so both OH groups end up on one side of the ring. mCPBA followed by aqueous acid gives the <i>trans</i> diol instead, and the other two reagents add only one OH.',
+        wrongFeedback: 'First rule out the reagents that add only one OH. Of the two that make a diol, which one puts both OH groups on the same face of the ring?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Going around rather than through.',
+        bodyHtml: '<p class="step-body">Some conversions have no direct reagent, or none that gives the product you want, so they take two steps.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>An aldehyde from an ester.</b> LiAlH₄ overshoots to the primary alcohol. The aldehyde it makes on the way is more electrophilic than the ester, so it is reduced as soon as it forms. Either use one equivalent of DIBAL-H at −78 °C, or reduce all the way and oxidize back up with PCC.</li>' +
+          '<li><b>An anti-Markovnikov bromide.</b> This one takes a single step. HBr with a peroxide adds by a radical pathway and puts the Br on the less substituted carbon.</li>' +
+          '<li><b>An anti-Markovnikov chloride or iodide.</b> The peroxide effect works only with HBr, so these go the long way. Hydroborate to the anti-Markovnikov alcohol, then replace the OH with SOCl₂ for a chloride, or with phosphorus and iodine for an iodide.</li>' +
+          '<li><b>A bromide that must be one diastereomer.</b> The radical route lets H–Br reach either face. Hydroboration adds H and B to the same face, the OH takes the boron&rsquo;s place, and PBr₃ then inverts that carbon. So the two-step route gives a predictable diastereomer. From an achiral alkene the product is still racemic.</li>' +
+          '</ul>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'You need an aldehyde from an ester, and DIBAL-H is not available. What do you do?',
+        options: [
+          'LiAlH₄, stopped halfway',
+          'LiAlH₄ to the alcohol, then PCC',
+          'NaBH₄, which stops at the aldehyde',
+          'Aqueous CrO₃'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The LiAlH₄ reduction cannot be stopped at the aldehyde, because the aldehyde is more electrophilic than the ester and is reduced as soon as it forms. Going all the way down and then oxidizing back up takes two steps, and both reagents are ordinary ones.',
+        wrongFeedback: 'One option tries to stop a reaction at an intermediate that is more reactive than the starting material, and that cannot work. Another uses a reagent that does not touch esters. If you cannot stop halfway, what can you do instead?'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Choosing the alkene, then moving a group along the chain.',
+        bodyHtml: '<p class="step-body">Heat 2-methylbutan-2-ol with conc. H₂SO₄, and it loses water through a carbocation. The product is mostly the more substituted alkene, as Zaitsev&rsquo;s rule predicts. To get the other alkene, make the bromide with HBr first. An E2 with a bulky base such as <i>tert</i>-butoxide then gives mostly the less substituted alkene. A small base such as ethoxide would give mostly the more substituted one again.</p>',
+        diagramHtml: '<!-- fig:l-fgi-choose-alkene:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 330" role="img" aria-label="2-Methylbutan-2-ol, two routes. Right: concentrated sulfuric acid and heat give 2-methylbut-2-ene, the more substituted alkene. Down: HBr gives 2-bromo-2-methylbutane, and tert-butoxide, a bulky base, then gives mostly 2-methylbut-1-ene, the less substituted alkene."><line class="fg-bond" x1="88.25" y1="50" x2="112.5" y2="64"></line><line class="fg-bond" x1="39.75" y1="50" x2="64" y2="64"></line><line class="fg-bond" x1="64" y1="64" x2="88.25" y2="50"></line><line class="fg-bond" x1="64" y1="64" x2="50" y2="88.25"></line><line class="fg-bond" x1="64" y1="64" x2="74" y2="81.32"></line><circle class="fg-atom-hi" cx="82" cy="95.18" r="16"></circle><text class="fg-lbl" x="82" y="99.06" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="70" y="128" text-anchor="middle" font-size="11">2-methylbutan-2-ol</text><line class="fg-arrow" x1="140" y1="60" x2="198" y2="60"></line><path class="fg-head" d="M206 60 L198 64.16 L198 55.84 Z"></path><text class="fg-tag" x="173" y="36" text-anchor="middle" font-size="11">H₂SO₄,</text><text class="fg-tag" x="173" y="50" text-anchor="middle" font-size="11">heat</text><line class="fg-bond" x1="268.25" y1="50" x2="292.5" y2="64"></line><line class="fg-bond" x1="219.75" y1="50" x2="244" y2="64"></line><line class="fg-bond" x1="242.4" y1="61.23" x2="266.65" y2="47.23"></line><line class="fg-bond" x1="245.6" y1="66.77" x2="269.85" y2="52.77"></line><line class="fg-bond" x1="244" y1="64" x2="244" y2="92"></line><text class="fg-tag" x="256" y="112" text-anchor="middle" font-size="11">2-methylbut-2-ene</text><text class="fg-tag-warn" x="256" y="128" text-anchor="middle" font-size="11">more substituted</text><line class="fg-arrow" x1="70" y1="140" x2="70" y2="180"></line><path class="fg-head" d="M70 188 L65.84 180 L74.16 180 Z"></path><text class="fg-tag" x="82" y="168" text-anchor="start" font-size="11">HBr</text><line class="fg-bond" x1="88.25" y1="212" x2="112.5" y2="226"></line><line class="fg-bond" x1="39.75" y1="212" x2="64" y2="226"></line><line class="fg-bond" x1="64" y1="226" x2="88.25" y2="212"></line><line class="fg-bond" x1="64" y1="226" x2="50" y2="250.25"></line><line class="fg-bond" x1="64" y1="226" x2="74" y2="243.32"></line><circle class="fg-atom-hi" cx="82" cy="257.18" r="16"></circle><text class="fg-lbl" x="82" y="261.06" text-anchor="middle" font-size="10.5">Br</text><text class="fg-tag" x="70" y="290" text-anchor="middle" font-size="11">2-bromo-2-methyl-</text><text class="fg-tag" x="70" y="305" text-anchor="middle" font-size="11">butane</text><line class="fg-arrow" x1="140" y1="222" x2="198" y2="222"></line><path class="fg-head" d="M206 222 L198 226.16 L198 217.84 Z"></path><text class="fg-tag" x="173" y="212" text-anchor="middle"><tspan font-style="italic">t</tspan>-BuO⁻</text><line class="fg-bond" x1="268.25" y1="212" x2="292.5" y2="226"></line><line class="fg-bond" x1="219.75" y1="212" x2="244" y2="226"></line><line class="fg-bond" x1="244" y1="226" x2="268.25" y2="212"></line><line class="fg-bond" x1="247.2" y1="226" x2="247.2" y2="254"></line><line class="fg-bond" x1="240.8" y1="226" x2="240.8" y2="254"></line><text class="fg-tag" x="256" y="284" text-anchor="middle" font-size="11">2-methylbut-1-ene</text><text class="fg-tag-good" x="256" y="300" text-anchor="middle" font-size="11">less substituted</text><text class="fg-tag-good" x="256" y="315" text-anchor="middle" font-size="11">(mostly)</text></svg><figcaption>Acid lets the carbocation choose the alkene. The bulky base, acting on the bromide, chooses the other one.</figcaption></figure><!-- fig:l-fgi-choose-alkene:end -->' +
+          '<p class="step-body" style="margin-top:12px;">Once you can choose the alkene, you can move a group along a chain. Eliminate to the alkene, then add back with the opposite <b>regiochemistry</b>, so that the group goes onto the other carbon of the double bond. Suspect this route whenever a target is the starting material with the group on the neighboring carbon.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
         title: 'How do you convert propan-2-ol into propan-1-ol?',
         options: [
           'Oxidize, then reduce',
@@ -234,60 +298,31 @@ document.addEventListener('DOMContentLoaded', function(){
           'It cannot be done'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Same carbons, same oxidation level, same functional group — only the position differs, so the move is to eliminate and then add back the other way round. Hydroboration is anti-Markovnikov, so it puts the OH on the less substituted carbon. Using acid-catalyzed hydration in step 2 would put it straight back where it started.',
-        wrongFeedback: 'Nothing about the oxidation level or the group type needs to change — only where the group sits. What pair of steps moves a substituent along a chain?'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'You need an aldehyde from an ester and only have reagents from the standard table. What do you do?',
-        options: [
-          'LiAlH₄, and stop it halfway',
-          'LiAlH₄ to the primary alcohol, then PCC back up to the aldehyde',
-          'NaBH₄, which stops at the aldehyde',
-          'Aqueous CrO₃'
-        ],
-        correctIndex: 1,
-        correctFeedback: 'Correct. You cannot stop the LiAlH₄ reduction at the aldehyde, because that aldehyde is more electrophilic than the ester was and is reduced as soon as it appears. Going all the way down and oxidizing back up is two steps using only ordinary reagents — DIBAL-H at low temperature is the one-step alternative if it is permitted.',
-        wrongFeedback: 'One of these tries to stop a reaction at an intermediate more reactive than the starting material, which does not work. If you cannot stop halfway, what can you do instead?'
+        correctFeedback: 'Correct. The carbons, the rung and the functional group all stay the same, and only the position of the OH changes. So the move is to eliminate and then add water back the other way round. Oxidizing and then reducing, or PBr₃ and then water, both bring the OH back to C2.',
+        wrongFeedback: 'Neither the rung nor the kind of group needs to change, only the carbon the OH sits on. Which pair of steps moves a group along a chain?'
       },
       {
         type: 'explain',
-        eyebrow: 'Explain',
-        title: 'Going around rather than through.',
-        bodyHtml: '<ul class="step-body">' +
-          '<li><b>Alcohol to a specific alkene.</b> Acid-catalyzed dehydration goes through a carbocation, gives the Zaitsev product, and can rearrange. To control where the alkene ends up, make the halide first and eliminate with a base you choose.</li>' +
-          '<li><b>Anti-Markovnikov alkyl halide from an alkene.</b> For a <b>bromide</b> one step does it — HBr with peroxides, the radical addition from <a class=\"chapter-ref\" href=\"/ochem/learn.html#m-alkenes-alkynes\">Alkenes &amp; Alkynes</a>. There is no peroxide effect for HCl or HI, so an anti-Markovnikov chloride or iodide still goes the long way: hydroborate to the anti-Markovnikov alcohol, then SOCl₂ or PBr₃/P+I₂ — as does a bromide whose configuration you need to control, since the radical route scrambles it.</li>' +
-          '<li><b>Moving a group along a chain.</b> Eliminate to the alkene, add back with the opposite regiochemistry. Almost always the intended answer when a target looks like the starting material with the group on the wrong carbon.</li>' +
-          '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">Each of these is two steps where a student hopes for one, and recognizing them quickly is worth more than memorizing another reagent.</p>'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
-        title: 'Converting an ester to an amide — which class of reagent?',
-        options: [
-          'A reducing agent',
-          'An oxidizing agent',
-          'A nucleophile — it is a sideways move at the same oxidation level',
-          'A radical initiator'
-        ],
-        correctIndex: 2,
-        correctFeedback: 'Correct. Ester and amide carbons both sit at +3, so nothing is oxidized or reduced: an amine displaces the alkoxide in nucleophilic acyl substitution. Reaching for a reducing agent here is the classic version of this mistake — LiAlH₄ on an ester gives an alcohol, and on an amide gives an amine, neither of which is what was asked.',
-        wrongFeedback: 'Work out the oxidation state of the key carbon in each. If it does not change, what kind of reaction is this?'
+        eyebrow: 'Explanation',
+        title: 'Why only one hydration reagent works.',
+        bodyHtml: '<p class="step-body">Dehydration turns propan-2-ol into propene. From there, the hydration reagent decides the carbon. Hydroboration–oxidation is anti-Markovnikov and puts the OH on C1. Acid-catalyzed hydration is Markovnikov and puts it straight back on C2.</p>',
+        diagramHtml: '<!-- fig:l-move-the-group-along:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 312" role="img" aria-label="Propan-2-ol dehydrated to propene with concentrated sulfuric acid and heat. Propene is then hydrated two ways: BH3 then H2O2 and hydroxide give propan-1-ol, with the OH on C1; aqueous acid gives propan-2-ol back, with the OH on C2."><line class="fg-bond" x1="34.02" y1="89" x2="60" y2="74"></line><line class="fg-bond" x1="60" y1="74" x2="85.98" y2="89"></line><line class="fg-bond" x1="60" y1="74" x2="60" y2="56"></line><circle class="fg-atom-hi" cx="60" cy="40" r="16"></circle><text class="fg-lbl" x="60" y="43.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="60" y="106" text-anchor="middle" font-size="11">propan-2-ol</text><line class="fg-arrow" x1="118" y1="70" x2="202" y2="70"></line><path class="fg-head" d="M210 70 L202 74.16 L202 65.84 Z"></path><text class="fg-tag" x="164" y="46" text-anchor="middle" font-size="11">conc. H₂SO₄,</text><text class="fg-tag" x="164" y="60" text-anchor="middle" font-size="11">heat</text><line class="fg-bond" x1="237.62" y1="60.23" x2="263.6" y2="75.23"></line><line class="fg-bond" x1="234.42" y1="65.77" x2="260.4" y2="80.77"></line><line class="fg-bond" x1="262" y1="78" x2="287.98" y2="63"></line><text class="fg-tag" x="262" y="106" text-anchor="middle" font-size="11">propene</text><line class="fg-arrow" x1="236" y1="120" x2="134.71" y2="185.65"></line><path class="fg-head" d="M128 190 L132.45 182.16 L136.98 189.14 Z"></path><text class="fg-tag" x="114" y="150" text-anchor="end" font-size="11">1. BH₃</text><text class="fg-tag" x="114" y="166" text-anchor="end" font-size="11">2. H₂O₂, HO⁻</text><line class="fg-bond" x1="36" y1="250" x2="60.25" y2="236"></line><line class="fg-bond" x1="60.25" y1="236" x2="84.5" y2="250"></line><line class="fg-bond" x1="84.5" y1="250" x2="98.35" y2="242"></line><circle class="fg-atom-hi" cx="112.21" cy="234" r="16"></circle><text class="fg-lbl" x="112.21" y="237.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="88" y="282" text-anchor="middle" font-size="11">propan-1-ol</text><text class="fg-tag-good" x="88" y="300" text-anchor="middle" font-size="11">OH on C1: it moved</text><line class="fg-arrow-mut" x1="284" y1="120" x2="284" y2="184"></line><path class="fg-head-mut" d="M284 192 L279.84 184 L288.16 184 Z"></path><text class="fg-tag" x="294" y="160" text-anchor="start" font-size="11">H₃O⁺</text><line class="fg-bond" x1="236.02" y1="267" x2="262" y2="252"></line><line class="fg-bond" x1="262" y1="252" x2="287.98" y2="267"></line><line class="fg-bond" x1="262" y1="252" x2="262" y2="234"></line><circle class="fg-atom-warn" cx="262" cy="218" r="16"></circle><text class="fg-lbl" x="262" y="221.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="262" y="282" text-anchor="middle" font-size="11">propan-2-ol</text><text class="fg-tag-warn" x="262" y="300" text-anchor="middle" font-size="11">OH back on C2</text></svg><figcaption>The first step is the same either way. The second reagent decides the carbon.</figcaption></figure><!-- fig:l-move-the-group-along:end -->' +
+          '<p class="step-body" style="margin-top:12px;margin-bottom:0;">Nothing is oxidized or reduced at any point, because the alcohol and the alkene sit on the same rung.</p>'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A target is the starting material with an OH moved from C2 to C1, and nothing else changed. What is the shortest sensible route?',
+        title: 'Which route turns 2-methylbutan-2-ol into 2-methylbutan-1-ol?',
+        diagramHtml: '<!-- fig:l-fgi-challenge:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 156" role="img" aria-label="2-Methylbutan-2-ol, with its OH on the branch carbon, and the target 2-methylbutan-1-ol, with the OH on the end of the methyl branch. A question mark sits on the arrow between them."><line class="fg-bond" x1="80.25" y1="44" x2="104.5" y2="58"></line><line class="fg-bond" x1="31.75" y1="44" x2="56" y2="58"></line><line class="fg-bond" x1="56" y1="58" x2="80.25" y2="44"></line><line class="fg-bond" x1="56" y1="58" x2="42" y2="82.25"></line><line class="fg-bond" x1="56" y1="58" x2="66" y2="75.32"></line><circle class="fg-atom-hi" cx="74" cy="89.18" r="16"></circle><text class="fg-lbl" x="74" y="93.06" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="62" y="146" text-anchor="middle" font-size="11">2-methylbutan-2-ol</text><line class="fg-arrow" x1="134" y1="64" x2="188" y2="64"></line><path class="fg-head" d="M196 64 L188 68.16 L188 59.84 Z"></path><text class="fg-lbl" x="165" y="54" text-anchor="middle" font-size="14">?</text><line class="fg-bond" x1="268.25" y1="44" x2="292.5" y2="58"></line><line class="fg-bond" x1="219.75" y1="44" x2="244" y2="58"></line><line class="fg-bond" x1="244" y1="58" x2="268.25" y2="44"></line><line class="fg-bond" x1="244" y1="58" x2="244" y2="86"></line><line class="fg-bond" x1="244" y1="86" x2="257.86" y2="94"></line><circle class="fg-atom-hi" cx="271.71" cy="102" r="16"></circle><text class="fg-lbl" x="271.71" y="105.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="262" y="146" text-anchor="middle" font-size="11">2-methylbutan-1-ol</text></svg><figcaption>Start on the left, target on the right. The OH has to move from the branch carbon onto one of its two CH₃ groups.</figcaption></figure><!-- fig:l-fgi-challenge:end -->',
         options: [
-          'PBr₃, then NaOH',
-          'Dehydrate to the alkene, then hydroborate/oxidize',
-          'Oxidize to the ketone, then reduce',
-          'Nothing needed — they are the same compound'
+          'Conc. H₂SO₄ and heat, then BH₃ and H₂O₂/HO⁻',
+          'HBr, then <i>t</i>-BuO⁻, then BH₃ and H₂O₂/HO⁻',
+          'HBr, then NaOEt, then BH₃ and H₂O₂/HO⁻',
+          'PCC, then NaBH₄'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct, and each wrong option fails in a way worth seeing. PBr₃ then hydroxide substitutes at the same carbon, so the OH comes back where it was. Oxidizing to the ketone and reducing also returns it to the same carbon, because the carbonyl was at C2. Only going through the alkene lets you re-add the oxygen somewhere else — and only the anti-Markovnikov reagent puts it on C1 rather than back on C2.'
+        correctFeedback: 'Correct. HBr makes the tertiary bromide, and the bulky base then gives mostly 2-methylbut-1-ene, with its double bond at the end of the chain. Hydroboration puts the OH on that end carbon. Acid and heat, or HBr followed by the small base ethoxide, give mostly 2-methylbut-2-ene instead. Hydroborating that puts the OH on the CH carbon of the double bond, giving 3-methylbutan-2-ol. PCC cannot oxidize a tertiary alcohol at all.',
+        wrongFeedback: 'For each route, work out which alkene forms, and then which carbon the hydration reagent puts the OH on. The OH has to end up on one of the CH₃ carbons attached to the branch carbon.'
       }
     ]
   });

@@ -104,25 +104,44 @@
       9:['aldehyde-oxidizability','addition-equilibrium'],
       12:['aldehyde-oxidizability'],
       14:['aldehyde-oxidizability','addition-equilibrium'] } },
-    'retrosynthesis': { n:8, steps:{
-      2:['disconnection'], 3:['disconnection'], 4:['disconnection','cc-bond-toolkit'],
-      6:['disconnection'], 7:['disconnection'] } },
+    'retrosynthesis': { n:11, steps:{
+      3:['disconnection'],
+      4:['disconnection'],
+      5:['disconnection','cc-bond-toolkit'],
+      7:['disconnection'],
+      10:['disconnection'] } },
 
-    'carbon-carbon-bonds': { n:8, steps:{
-      2:['cc-bond-toolkit'], 3:['cc-bond-toolkit'], 4:['cc-bond-toolkit','disconnection'],
-      6:['cc-bond-toolkit'], 7:['cc-bond-toolkit'] } },
+    'carbon-carbon-bonds': { n:13, steps:{
+      2:['cc-bond-toolkit'],
+      4:['cc-bond-toolkit'],
+      5:['cc-bond-toolkit','disconnection'],
+      7:['cc-bond-toolkit'],
+      11:['cc-bond-toolkit'],
+      12:['cc-bond-toolkit'] } },
 
-    'functional-group-interconversion': { n:8, steps:{
-      2:['fgi-map'], 3:['fgi-map'], 4:['fgi-map','route-order'],
-      6:['fgi-map'], 7:['fgi-map'] } },
+    'functional-group-interconversion': { n:11, steps:{
+      1:['fgi-map'],
+      2:['fgi-map'],
+      4:['fgi-map'],
+      6:['fgi-map','route-order'],
+      8:['fgi-map','route-order'],
+      10:['fgi-map','route-order'] } },
 
-    'protecting-groups': { n:8, steps:{
-      2:['protection'], 3:['protection'], 4:['protection'],
-      6:['protection','route-order'], 7:['protection','fgi-map'] } },
+    'protecting-groups': { n:11, steps:{
+      2:['protection'],
+      3:['protection'],
+      6:['protection','route-order'],
+      7:['protection','route-order'],
+      9:['protection'],
+      10:['protection','fgi-map','organometallic-quench'] } },
 
-    'multistep-synthesis': { n:8, steps:{
-      2:['route-order','protection'], 3:['route-order'], 4:['route-order'],
-      6:['route-order'], 7:['route-order','cc-bond-toolkit'] } },
+    'multistep-synthesis': { n:15, steps:{
+      6:['route-order','protection'],
+      7:['route-order'],
+      8:['route-order'],
+      12:['route-order'],
+      13:['route-order'],
+      14:['route-order','cc-bond-toolkit'] } },
 
     'carbohydrates': { n:12, steps:{
       1:['sugar-ring'],

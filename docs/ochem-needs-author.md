@@ -645,3 +645,42 @@ confirm it.
   10.8 (10–11), twist-boat 5.5. Syn butane drawn at about 5 (sources 4.5–6). A-values: OH 0.9
   (0.6–1.0 by solvent), F 0.25 (0.15–0.38), tert-butyl 4.9 (quoted >4.5 or 4.7–4.9). Syn-pentane
   3.7, kept from the original page. Ring-flip NMR coalescence about −90 °C (sources −60 to −100).
+
+## Synthesis & Retrosynthesis (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### synthesis-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `retrosynthesis`, `carbon-carbon-bonds`, `functional-group-interconversion`,
+  `protecting-groups`, `multistep-synthesis`.
+- **Positions taken:**
+  - Retrosynthesis teaches C–C retrons; C–X cuts (ethers, esters) get one line, where many
+    courses teach them first. Retron carbons are counted from the carbon that carries the group,
+    not by IUPAC locants. A carbonyl piece is treated as both its synthon (the δ+ carbon) and the
+    compound you order. The Michael retron uses pentane-2,4-dione + methyl vinyl ketone, matching
+    the Michael and Robinson chapter. For a β-hydroxy carbonyl the aldol cut is graded over a
+    Grignard cut.
+  - The oxidation ladder places most groups by counting bonds to O, N or halogen; alkenes and
+    alkynes are placed by what water turns them into (a teaching convention; some courses use
+    per-carbon oxidation numbers). C–C bond formers (Wittig, NaCN, acetylide) are marked as outside
+    the ladder bookkeeping. Radical HBr then substitution sets only relative configuration and
+    gives a racemic product.
+  - Protecting groups: the course has a Grignard-safe mask only for an O–H (silyl ether); for an
+    N–H or CO₂H the pages say to reorder the route. A carbamate still has an N–H. The Grignard page
+    also mentions a sacrificial extra equivalent, which this chapter does not grade; the wording
+    of the two pages could be brought closer. TBS and an acetal are taught as "take the TBS off
+    first" rather than as orthogonal. Slow Cbz losses in TFA and the partial cyclic hemiketal of
+    6-hydroxy-6-phenylhexan-2-one are not mentioned.
+  - Carbon–carbon bonds: the cuprate addition is drawn with polar curved arrows (the mechanism
+    goes through Cu(III)); cyanide on a tertiary halide is simplified to "gives the alkene"; the
+    endo Diels–Alder adduct is "usually" the major product. Close relatives (enolate alkylation,
+    Grignard + epoxide, cuprate) are a paragraph, not table rows, so the flashcard deck is
+    unchanged.
+  - Multistep synthesis: 1-bromopropane in Friedel–Crafts alkylation is taught as giving mostly
+    isopropylbenzene through a free primary cation that shifts a hydride (the course convention;
+    the ratio depends on conditions and the halide–AlCl₃ complex is what rearranges). Anti
+    addition of Br₂ is limited to simple alkenes. Wolff–Kishner is written H₂NNH₂, KOH, heat; Pt is
+    kept as the catalyst in the dimethylcyclohexene figure. Acetone's self-aldol equilibrium
+    favors acetone.
