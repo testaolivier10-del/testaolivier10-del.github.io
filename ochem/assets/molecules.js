@@ -647,7 +647,7 @@
     },
     bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'},
             {a:'r5',b:'br'},{a:'r6',b:'hax6'},{a:'r4',b:'hax4'},{a:'r1',b:'hax1',style:'faint'},{a:'r4',b:'heq4',style:'faint'}],
-    caption: 'Bromine sits axial. Only an axial hydrogen on a neighboring carbon, pointing the opposite way, is 180° from it.'
+    caption: 'Bromocyclohexane drawn as a chair.'
   };
 
   // Bare chair for Cyclohexanes (before axial/equatorial): the chairs above
