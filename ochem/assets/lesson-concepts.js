@@ -839,13 +839,13 @@
       1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],
       6:['pka-scale','conjugate-pairs'] } },
 
-    'resonance': { n:9, steps:{
-      2:['resonance-delocalization','resonance-validity'],
+    'resonance': { n:11, steps:{
+      1:['resonance-delocalization'],
       3:['resonance-validity'],
-      4:['resonance-delocalization'],
-      5:['resonance-validity'],
-      6:['resonance-delocalization','resonance-validity'],
-      8:['resonance-validity','resonance-delocalization'] } },
+      5:['resonance-delocalization'],
+      7:['resonance-validity','resonance-delocalization'],
+      8:['resonance-delocalization','formal-charge-calc'],
+      10:['resonance-validity','resonance-delocalization'] } },
 
     'ring-flips': { n:13, steps:{
       1:['ring-flip-mechanics'],
