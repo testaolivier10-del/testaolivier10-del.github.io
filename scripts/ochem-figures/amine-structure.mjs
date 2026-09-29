@@ -322,7 +322,7 @@ FIGURES.push({
     s += text(214, 370, 'With four different groups it is a real stereocenter.', { cls: 'fg-tag', anchor: 'start' });
     return s;
   },
-  caption: 'Follow the lone pair from top to bottom while a, b and c swing up through the flat plane, like an umbrella turning inside out. The right-hand form is the left one reflected top to bottom, so it is its mirror image.',
+  caption: 'Follow the lone pair from top to bottom while a, b and c swing up through the flat plane. The right-hand form is the left one reflected top to bottom, so it is its mirror image.',
 });
 
 /* ----------------------------------------------------------------------
@@ -601,7 +601,7 @@ FIGURES.push({
   id: 'pyridine-pyrrole-orbitals',
   section: 'amine-structure',
   lessons: ['amine-structure'],
-  anchor: '<h3>Two nitrogen heterocycles',
+  anchor: '<h3>Pyridine and pyrrole',
   viewBox: '0 0 340 474',
   alt: 'Two rings drawn tilted, with a p orbital standing up and down from every ring atom (the lower half is hidden behind the ring for the back atoms). Top, pyridine: six ring atoms, each p orbital holds one electron, six pi electrons in all. The nitrogen lone pair sits in a separate sp2 lobe that points outward in the plane of the ring, outside the pi system; pKaH 5.2. Bottom, pyrrole: five ring atoms. The four carbon p orbitals hold one electron each and the nitrogen p orbital holds two, the lone pair, making six pi electrons; the N–H bond points outward in the ring plane; pKaH about −4, measured for a proton on carbon.',
   build() {
