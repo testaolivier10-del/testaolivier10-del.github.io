@@ -204,20 +204,24 @@ function hkSkeleton(ox, yb, { oxy = 'HO', oxyKind = 'warn', c2 = 'ketone' } = {}
     s += tag(ox + 222, yb - 60, 'new CH₃', { anchor: 'start' });
   }
   s += draw(O1);
+  if (c2 === 'ketone') {
+    s += tag(ox + 104, yb - 32, 'C4');
+    s += tag(ox + 180, yb + 10, 'C2');
+  }
   return s;
 }
 const H_HK1 = 168, H_HK2 = 206, H_HK3 = 176, GAP_HK = 34;
 function pHK1(ox, oy) {
   let s = frameP(ox, oy, H_HK1, '4-hydroxybutan-2-one: two reactive sites');
   s += hkSkeleton(ox, oy + 116);
-  s += tag(ox + 72, oy + 146, 'O–H, pKa about 16');
+  s += rich(ox + 72, oy + 146, 'O–H, pK<tspan baseline-shift="sub" font-size="8">a</tspan> about 16');
   s += tag(ox + 206, oy + 56, 'ketone C=O', { anchor: 'start' });
   return s;
 }
 function pHK2(ox, oy) {
   let s = frameP(ox, oy, H_HK2, 'after 1.0 equiv CH₃MgBr: the O–H is gone', [
     'CH₄ leaves as a gas; the ketone is untouched',
-    ['workup puts the H back: starting material', 'fg-tag-warn'],
+    ['workup now would return the starting material', 'fg-tag-warn'],
   ], 'warn');
   s += hkSkeleton(ox, oy + 124, { oxy: 'O⁻', oxyKind: 'warn' });
   s += tag(ox + 64, oy + 152, '⁺MgBr');
@@ -235,7 +239,7 @@ FIGURES.push({
   section: 'organometallic-bonding',
   anchor: '<!-- fig:hydroxyketone-equiv:start -->',
   viewBox: `0 0 ${PW} ${H_HK1 + H_HK2 + H_HK3 + GAP_HK * 2}`,
-  alt: 'Three panels. First: 4-hydroxybutan-2-one in skeletal form, HO on the left end of a four-carbon chain and a C=O on carbon 2, with the acidic O–H and the ketone labeled. Second, after 1.0 equivalent of CH3MgBr: the oxygen on the left end is now O− with +MgBr, CH4 has left as a gas, and the ketone is untouched; workup returns the starting material. Third, after 2.0 equivalents and workup: 3-methylbutane-1,3-diol, with an OH and a new CH3 on carbon 2.',
+  alt: 'Three panels. First: 4-hydroxybutan-2-one in skeletal form, HO on the left end of a four-carbon chain and a C=O on carbon 2, with the acidic O–H and the ketone labeled. Second, after 1.0 equivalent of CH3MgBr: the oxygen on the left end is now O− with +MgBr, CH4 has left as a gas, and the ketone is untouched; workup at this point would return the starting material. Third, after a second equivalent and then workup: 3-methylbutane-1,3-diol, with an OH and a new CH3 on carbon 2.',
   build() {
     let s = pHK1(0, 0);
     s += down(PW / 2, H_HK1 + 4, H_HK1 + GAP_HK - 4);
@@ -243,11 +247,11 @@ FIGURES.push({
     const y2 = H_HK1 + GAP_HK;
     s += pHK2(0, y2);
     s += down(PW / 2, y2 + H_HK2 + 4, y2 + H_HK2 + GAP_HK - 4);
-    s += tag(PW / 2 + 12, y2 + H_HK2 + GAP_HK / 2 + 4, '1.0 more equiv', { anchor: 'start' });
+    s += tag(PW / 2 + 12, y2 + H_HK2 + GAP_HK / 2 + 4, 'a second equiv', { anchor: 'start' });
     s += pHK3(0, y2 + H_HK2 + GAP_HK);
     return s;
   },
-  caption: 'Follow the left-hand oxygen and carbon 2 down the three panels. The first equivalent changes only the oxygen; the second adds the new CH₃ to carbon 2.',
+  caption: 'The first equivalent changes only the oxygen on C4. The second adds the new CH₃ to C2, the carbonyl carbon; the product&rsquo;s name numbers its chain from the other end, so that carbon is C3 there.',
 });
 
 const H_LHK = 130;
@@ -261,7 +265,7 @@ FIGURES.push({
     s += hkSkeleton(0, 110, { oxyKind: 'plain' });
     return s;
   },
-  caption: 'Two groups to find: an OH on carbon 4 and a C=O on carbon 2.',
+  caption: 'Two groups to find: an OH on C4 and a C=O on C2.',
 });
 
 /* ======================================================================
