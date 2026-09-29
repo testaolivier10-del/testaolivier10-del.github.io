@@ -181,7 +181,7 @@ FIGURES.push({
     s += tag(170, 22, '1-phenylpropan-1-ol, 9 carbons');
     return s;
   },
-  caption: 'Bond a joins the two pieces the count asks for. Cutting bond b instead leaves a benzene ring that already carries a carbon.',
+  caption: 'Count the carbons in each piece, then find the bond that joins the pieces.',
 });
 
 /* The lesson's counting question: diphenylmethanol, three pieces. */
@@ -383,7 +383,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'The same methyl group, three places. The reagent picks the carbon; the new bond is in color in each product.',
+  caption: 'Follow the methyl group from each reagent to its colored bond in the product.',
 });
 
 FIGURES.push({

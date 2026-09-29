@@ -104,9 +104,12 @@
       9:['aldehyde-oxidizability','addition-equilibrium'],
       12:['aldehyde-oxidizability'],
       14:['aldehyde-oxidizability','addition-equilibrium'] } },
-    'retrosynthesis': { n:8, steps:{
-      2:['disconnection'], 3:['disconnection'], 4:['disconnection','cc-bond-toolkit'],
-      6:['disconnection'], 7:['disconnection'] } },
+    'retrosynthesis': { n:11, steps:{
+      3:['disconnection'],
+      4:['disconnection'],
+      5:['disconnection','cc-bond-toolkit'],
+      7:['disconnection'],
+      10:['disconnection'] } },
 
     'carbon-carbon-bonds': { n:8, steps:{
       2:['cc-bond-toolkit'], 3:['cc-bond-toolkit'], 4:['cc-bond-toolkit','disconnection'],

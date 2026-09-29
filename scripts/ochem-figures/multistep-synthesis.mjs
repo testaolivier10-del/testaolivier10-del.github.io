@@ -144,7 +144,7 @@ function hydrideShift(x0, y, sp, arrowLen, notes) {
   s += curve(P(b.x + 5, y - 22), P(c.x - 6, c.y - 18), { bow: -14 });
   const ax = c.x + 30;
   s += arrow(P(ax, y), P(ax + arrowLen, y));
-  s += T(ax + arrowLen / 2, y - 10, notes ? 'hydride shift' : 'H shifts');
+  s += T(ax + arrowLen / 2, y + 20, notes ? 'hydride shift' : 'H shifts');
   const d = P(ax + arrowLen + 30, y), e = P(d.x + sp * 0.85, y), f = P(d.x + sp * 1.7, y);
   s += bond(d, e, { rFrom: 17, rTo: 15 }) + bond(e, f, { rFrom: 15, rTo: 17 });
   s += atom(d.x, d.y, 'CH₃', { r: 17 }) + atom(e.x, e.y, 'CH', { r: 15, kind: 'warn' }) + atom(f.x, f.y, 'CH₃', { r: 17 });
@@ -315,8 +315,7 @@ FIGURES.push({
       [['1. 2 CH₃MgBr', '2. H₃O⁺'], 'new C–C × 2', 'fg-tag-good']];
     gaps.forEach(([l, k, c], i) => {
       const top = ys[i] + (i === 2 ? 30 : 20), bot = ys[i + 1] - (i >= 2 ? 44 : 22);
-      s += downStep(28, top, bot, l, null);
-      s += T(NX, (top + bot) / 2 + 4, k, c, 'start');
+      s += downStep(28, top, bot, l, k, c);
     });
     return s;
   },
@@ -332,7 +331,7 @@ function hexRing(cx, cy, r, alkene) {
   let s = '';
   for (let i = 0; i < 6; i++) {
     const a = pts[i], b = pts[(i + 1) % 6];
-    s += (alkene && i === 1) ? ringDouble(a, b, P(cx, cy), { inset: 6 }) : sk(a, b);
+    s += (alkene && i === 1) ? ringDouble(a, b, P(cx, cy), { inset: r * 0.16, gap: 4.2 }) : sk(a, b);
   }
   return { s, c1: pts[1], c2: pts[2] };
 }
@@ -347,22 +346,22 @@ function subst(from, deg, len, lab, kind, r = 15, hi = false) {
 }
 const RING_CASES = {
   br2: {
-    title: ['Br₂: anti'], sm: 'cyclohexene', reagent: 'Br₂',
+    mode: 'anti', sm: 'cyclohexene', reagent: 'Br₂', short: 'Br₂',
     smSubs: () => '',
     prods: [[['Br', 'w'], ['Br', 'h']], [['Br', 'h'], ['Br', 'w']]],
-    name: ['*trans', '-1,2-dibromocyclohexane'], verdict: 'two enantiomers, 50 : 50',
+    name: ['*trans', '-1,2-dibromocyclohexane'], verdict: ['two enantiomers, 50 : 50'],
   },
   os: {
-    title: ['OsO₄, NMO: syn'], sm: '1-methylcyclohexene', reagent: 'OsO₄, NMO',
+    mode: 'syn', sm: '1-methylcyclohexene', reagent: 'OsO₄, NMO', short: 'OsO₄',
     smSubs: (c1, L) => subst(c1, 60, L, 'CH₃', 'p', 16),
     prods: [[['OH', 'w'], ['OH', 'w'], ['CH₃', 'h']], [['OH', 'h'], ['OH', 'h'], ['CH₃', 'w']]],
-    name: ['*cis', '-1-methylcyclohexane-1,2-diol'], verdict: 'two enantiomers, 50 : 50',
+    name: ['*cis', '-1-methylcyclohexane-1,2-diol'], verdict: ['two enantiomers, 50 : 50'],
   },
   h2: {
-    title: ['H₂, Pt: syn'], sm: '1,2-dimethylcyclohexene', reagent: 'H₂, Pt',
+    mode: 'syn', sm: '1,2-dimethylcyclohexene', reagent: 'H₂, Pt', short: 'H₂, Pt',
     smSubs: (c1, L, c2) => subst(c1, 60, L, 'CH₃', 'p', 16) + subst(c2, 120, L, 'CH₃', 'p', 16),
     prods: [[['CH₃', 'w'], ['CH₃', 'w'], null, true]],
-    name: ['*cis', '-1,2-dimethylcyclohexane'], verdict: 'one compound (meso)',
+    name: ['*cis', '-1,2-dimethylcyclohexane'], verdict: ['one compound (', '*meso', ')'],
   },
 };
 /* Draw one product ring. spec: [c1 group, c2 group, extra c1 group, H2 case].
@@ -387,13 +386,13 @@ function ringProduct(cx, cy, r, L, spec) {
 function stereoRow(k, top, W, o) {
   const c = RING_CASES[k];
   let s = panel(o.pad, top, W - 2 * o.pad, o.h);
-  s += T(o.pad + 12, top + 22, c.title[0], 'fg-lbl', 'start');
   const cy = top + o.cy;
   const sm = hexRing(o.smX, cy, o.r, true);
-  s += sm.s + c.smSubs(sm.c1, o.L, sm.c2);
+  s += sm.s + c.smSubs(sm.c1, o.smL ?? o.L, sm.c2);
   if (o.smName) s += T(o.smX, cy + o.r + 22, c.sm);
   s += arrow(P(o.a1, cy), P(o.a2, cy));
-  s += T((o.a1 + o.a2) / 2, cy - 10, o.short ? c.reagent.split(',')[0] : c.reagent);
+  s += T((o.a1 + o.a2) / 2, cy - 10, o.short ? c.short : c.reagent);
+  s += T((o.a1 + o.a2) / 2, cy + 18, c.mode, 'fg-tag-good');
   if (c.prods.length === 2) {
     s += ringProduct(o.p1, cy, o.r, o.L, c.prods[0]) + ringProduct(o.p2, cy, o.r, o.L, c.prods[1]);
     if (o.and) s += T((o.p1 + o.p2) / 2, cy + 4, 'and', 'fg-tag-mut');
@@ -401,7 +400,7 @@ function stereoRow(k, top, W, o) {
     s += ringProduct((o.p1 + o.p2) / 2, cy, o.r, o.L, c.prods[0]);
   }
   s += rich(o.nameX, top + o.h - 30, c.name, o.nameCls);
-  s += T(o.nameX, top + o.h - 12, c.verdict, 'fg-tag-good');
+  s += rich(o.nameX, top + o.h - 12, c.verdict, 'fg-tag-good');
   return s;
 }
 FIGURES.push({
@@ -412,7 +411,7 @@ FIGURES.push({
   viewBox: '0 0 760 516',
   build() {
     let s = '';
-    const o = { pad: 8, h: 164, cy: 92, r: 26, L: 34, smX: 110, smName: true, a1: 180, a2: 290,
+    const o = { pad: 8, h: 164, cy: 86, r: 26, L: 34, smX: 110, smName: true, a1: 180, a2: 290,
       p1: 390, p2: 560, and: true, nameX: 475, nameCls: 'fg-lbl' };
     ['br2', 'os', 'h2'].forEach((k, i) => { s += stereoRow(k, 6 + i * 170, 760, o); });
     return s;
@@ -426,7 +425,7 @@ FIGURES.push({
   viewBox: '0 0 340 516',
   build() {
     let s = '';
-    const o = { pad: 4, h: 164, cy: 86, r: 18, L: 28, smX: 40, smName: false, a1: 66, a2: 108, short: true,
+    const o = { pad: 4, h: 164, cy: 76, r: 18, L: 28, smL: 24, smX: 44, smName: false, a1: 66, a2: 108, short: true,
       p1: 164, p2: 272, and: false, nameX: 170, nameCls: 'fg-tag' };
     ['br2', 'os', 'h2'].forEach((k, i) => { s += stereoRow(k, 6 + i * 170, 340, o); });
     return s;
@@ -565,7 +564,7 @@ FIGURES.push({
     s += persp(600, y2, CIS, { stage: 'product', mirror: true });
     s += T(500, y2 + 4, 'and', 'fg-tag-mut');
     s += rich(400, 412, ['(3', '*R', ',4', '*R', ')'], 'fg-tag') + rich(600, 412, ['(3', '*S', ',4', '*S', ')'], 'fg-tag');
-    s += T(500, 432, 'mirror images, 50 : 50: a racemic pair', 'fg-tag-good');
+    s += T(500, 432, 'mirror images formed 50 : 50, a racemic pair', 'fg-tag-good');
     s += T(740, 24, 'Et = CH₂CH₃', 'fg-tag-mut', 'end');
     return s;
   },
@@ -575,19 +574,19 @@ FIGURES.push({
   id: 'l-hexene-trans',
   lessons: ['multistep-synthesis'],
   alt: '(E)-hex-3-ene drawn edge-on, wedges toward the reader, reacts with Br2. The bromonium ion has the positive bromine bridging both carbons on the top face, and a bromide ion below attacks C4 from underneath while the C4–Br bond breaks. The product has one Br up from C3 and one Br down from C4: meso-3,4-dibromohexane, (3R,4S).',
-  viewBox: '0 0 340 520',
+  viewBox: '0 0 340 546',
   build() {
     let s = '';
     s += T(10, 18, 'Et = CH₂CH₃', 'fg-tag-mut', 'start');
     s += persp(170, 70, TRANS, { stage: 'alkene' });
     s += rich(290, 74, ['(', '*E', ')-hex-3-ene'], 'fg-tag');
-    s += downStep(170, 118, 170, ['Br₂'], null);
+    s += downStep(170, 114, 160, ['Br₂'], null);
     s += persp(170, 250, TRANS, { stage: 'bromonium' });
     s += T(330, 250, 'Br⁻ attacks', 'fg-tag', 'end') + T(330, 266, 'from below', 'fg-tag', 'end');
     s += arrow(P(170, 346), P(170, 394));
     s += persp(170, 444, TRANS, { stage: 'product' });
-    s += rich(170, 500, ['*meso', '-3,4-dibromohexane'], 'fg-lbl');
-    s += rich(170, 516, ['(3', '*R', ',4', '*S', ')'], 'fg-tag-good');
+    s += rich(170, 518, ['*meso', '-3,4-dibromohexane'], 'fg-lbl');
+    s += rich(170, 536, ['(3', '*R', ',4', '*S', ')'], 'fg-tag-good');
     return s;
   },
   caption: 'Wedges point toward you, hashes away; the top face is up the page.',
