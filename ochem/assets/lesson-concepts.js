@@ -457,12 +457,13 @@
       13:['implicit-hydrogens','skeletal-notation'],
       14:['implicit-hydrogens','skeletal-notation'] } },
 
-    'acidity-factors': { n:11, steps:{
-      4:['acidity-factors'],
-      5:['acidity-factors','electronegativity-trend'],
+    'acidity-factors': { n:14, steps:{
+      3:['acidity-factors','electronegativity-trend'],
       6:['resonance-delocalization','acidity-factors'],
-      9:['acidity-factors','pka-scale'],
-      10:['resonance-delocalization','acidity-factors'] } },
+      7:['acidity-factors','curved-arrow-direction'],
+      9:['acidity-factors'],
+      11:['acidity-factors','alkyne-acidity'],
+      13:['acidity-factors','pka-scale'] } },
 
     'acyl-substitution': { n:8, steps:{
       1:['tetrahedral-intermediate'],
@@ -588,12 +589,13 @@
       9:['sigma-pi-bonding'],
       11:['sigma-pi-bonding','valence-electrons'] } },
 
-    'bronsted': { n:8, steps:{
+    'bronsted': { n:10, steps:{
       1:['bronsted-identification'],
       2:['bronsted-identification'],
-      3:['conjugate-pairs'],
+      4:['conjugate-pairs'],
       6:['bronsted-identification','curved-arrow-direction'],
-      7:['bronsted-identification','conjugate-pairs'] } },
+      8:['pka-scale','bronsted-identification'],
+      9:['bronsted-identification','conjugate-pairs'] } },
 
     'c-nmr': { n:7, steps:{
       1:['nmr-shift-shielding'],
@@ -630,11 +632,12 @@
       8:['chair-axial-equatorial','torsional-strain'],
       10:['chair-axial-equatorial','ring-flip-mechanics'] } },
 
-    'conjugate': { n:7, steps:{
-      1:['conjugate-pairs'],
-      2:['conjugate-pairs','pka-scale'],
-      3:['conjugate-pairs','pka-scale'],
-      6:['conjugate-pairs','pka-scale'] } },
+    'conjugate': { n:11, steps:{
+      2:['conjugate-pairs'],
+      4:['conjugate-pairs','bronsted-identification'],
+      6:['conjugate-pairs'],
+      7:['conjugate-pairs'],
+      10:['conjugate-pairs'] } },
 
     'curved-arrows': { n:11, steps:{
       1:['curved-arrow-direction'],
@@ -783,9 +786,12 @@
       11:['alcohol-activation','leaving-group-ability'],
       14:['leaving-group-ability'] } },
 
-    'lewis-acids': { n:7, steps:{
-      1:['lewis-acid-base'], 2:['lewis-acid-base'],
-      3:['lewis-acid-base'], 6:['lewis-acid-base'] } },
+    'lewis-acids': { n:10, steps:{
+      1:['lewis-acid-base'],
+      4:['lewis-acid-base'],
+      5:['lewis-acid-base','formal-charge-calc'],
+      6:['lewis-acid-base'],
+      9:['lewis-acid-base'] } },
 
     'lewis-structures': { n:16, steps:{
       1:['lewis-structures-drawing','valence-electrons'],
@@ -853,9 +859,12 @@
       13:['valence-electrons'],
       15:['valence-electrons'] } },
 
-    'pka': { n:7, steps:{
-      1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],
-      6:['pka-scale','conjugate-pairs'] } },
+    'pka': { n:10, steps:{
+      2:['pka-scale'],
+      3:['pka-scale'],
+      5:['pka-scale','conjugate-pairs'],
+      7:['pka-scale','conjugate-pairs'],
+      9:['pka-scale','conjugate-pairs'] } },
 
     'resonance': { n:11, steps:{
       1:['resonance-delocalization'],

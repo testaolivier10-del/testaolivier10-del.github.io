@@ -105,7 +105,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 10</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -139,42 +139,12 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
-  /* The step asks the student to reason about who donates the proton, so the
-     picture has to show the two things that decide it: the polarity of the
-     H-Cl bond and the lone pair on nitrogen. It used to be the equation as
-     plain text, which asked for reasoning and then drew none of the evidence. */
+  /* The click step. The same reaction as the step-0 figure, drawn with the
+     figure classes (so it reads in both themes), with both curved arrows.
+     Each starting material is one click target; its transparent rectangle is
+     the hit area, so only the atom circles light up when chosen. Generated with the bronsted figure helpers and pasted in. */
   function protonTransferSvg(){
-    return '<div class="scene"><svg viewBox="0 0 340 150" role="group" aria-label="HCl and ammonia, with both curved arrows of the proton transfer drawn">' +
-      // ---- the acid, clickable as one unit ----
-      '<g class="atom" data-key="acid">' +
-        '<text x="18" y="83" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="700" font-size="15" fill="var(--ink)">H</text>' +
-        '<line x1="29" y1="77" x2="51" y2="77" stroke="var(--line)" stroke-width="2.5"/>' +
-        '<circle cx="70" cy="77" r="17" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
-        '<text x="70" y="83" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">Cl</text>' +
-      '</g>' +
-      '<text x="18" y="52" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--warn, #b45309)">δ+</text>' +
-      '<text x="96" y="83" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="12" fill="var(--accent)">δ−</text>' +
-      // ---- the base, clickable as one unit ----
-      '<g class="atom" data-key="base">' +
-        '<circle cx="160" cy="77" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
-        '<text x="160" y="74" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13">N</text>' +
-        '<text x="160" y="88" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="9">H₃</text>' +
-      '</g>' +
-      '<circle cx="154" cy="52" r="2.4" fill="var(--ink)"/><circle cx="166" cy="52" r="2.4" fill="var(--ink)"/>' +
-      // ---- arrow 1: the lone pair takes the proton ----
-      '<path d="M158 46 Q100 14 30 60" fill="none" stroke="var(--accent)" stroke-width="2"/>' +
-      '<polygon points="30,60 34.5,52.3 38.9,58.9" fill="var(--accent)"/>' +
-      '<text x="104" y="16" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="9" fill="var(--muted)">1 · the lone pair takes the proton</text>' +
-      // ---- arrow 2: chloride leaves with the bonding pair ----
-      '<path d="M40 86 Q46 114 64 102" fill="none" stroke="var(--accent)" stroke-width="2"/>' +
-      '<polygon points="64,102 59.5,109.7 55.1,103.1" fill="var(--accent)"/>' +
-      '<text x="84" y="132" text-anchor="middle" font-family="Nunito" font-weight="700" font-size="9" fill="var(--muted)">2 · chloride leaves with the pair</text>' +
-      // ---- products ----
-      '<text x="202" y="84" font-family="Nunito" font-weight="900" font-size="18" fill="var(--accent)">&#8594;</text>' +
-      '<text x="252" y="83" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" fill="var(--ink)">NH₄⁺</text>' +
-      '<text x="288" y="83" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="15" fill="var(--muted)">+</text>' +
-      '<text x="316" y="83" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="13" fill="var(--ink)">Cl⁻</text>' +
-    '</svg></div>';
+    return '<figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 252" role="group" aria-label="Hydrogen chloride and ammonia, with both curved arrows of the proton transfer drawn, and the products ammonium and chloride below. Each starting material can be clicked."><g class="atom hit" data-key="acid"><rect x="16" y="88" width="108" height="48" fill="transparent"></rect><line class="fg-bond" x1="45" y1="112" x2="90" y2="112"></line><circle class="fg-atom" cx="34" cy="112" r="11"></circle><text class="fg-lbl" x="34" y="116.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="104" cy="112" r="14"></circle><text class="fg-lbl" x="104" y="116.07" text-anchor="middle" font-size="11">Cl</text></g><g class="atom hit" data-key="base"><rect x="174" y="98" width="104" height="72" fill="transparent"></rect><line class="fg-bond" x1="212" y1="120" x2="201" y2="120"></line><line class="fg-bond" x1="240" y1="120" x2="251" y2="120"></line><line class="fg-bond" x1="226" y1="134" x2="226" y2="145"></line><circle class="fg-atom" cx="226" cy="120" r="14"></circle><text class="fg-lbl" x="226" y="124.63" text-anchor="middle" font-size="12.5">N</text><circle class="fg-atom" cx="190" cy="120" r="11"></circle><text class="fg-lbl" x="190" y="124.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="262" cy="120" r="11"></circle><text class="fg-lbl" x="262" y="124.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="226" cy="156" r="11"></circle><text class="fg-lbl" x="226" y="160.63" text-anchor="middle" font-size="12.5">H</text></g><circle class="fg-lp" cx="108.5" cy="89" r="2.3"></circle><circle class="fg-lp" cx="99.5" cy="89" r="2.3"></circle><circle class="fg-lp" cx="127" cy="116.5" r="2.3"></circle><circle class="fg-lp" cx="127" cy="107.5" r="2.3"></circle><circle class="fg-lp" cx="99.5" cy="135" r="2.3"></circle><circle class="fg-lp" cx="108.5" cy="135" r="2.3"></circle><circle class="fg-lp" cx="230.5" cy="99" r="2.3"></circle><circle class="fg-lp" cx="221.5" cy="99" r="2.3"></circle><text class="fg-tag-warn" x="34" y="144" text-anchor="middle" font-size="11">δ+</text><text class="fg-lbl" x="160" y="124" text-anchor="middle" font-size="13">+</text><path class="fg-arrow" d="M224 94 Q131.62 55.02 49.15 96.41"></path><path class="fg-head" d="M42 100 L47.28 92.69 L51.02 100.13 Z"></path><text class="fg-tag" x="150" y="48" text-anchor="middle" font-size="11">1 · the lone pair takes the proton</text><path class="fg-arrow" d="M62 116 Q73.73 139.04 87.73 127.96"></path><path class="fg-head" d="M94 123 L90.31 131.23 L85.14 124.7 Z"></path><text class="fg-tag" x="100" y="168" text-anchor="middle" font-size="11">2 · Cl leaves with the pair</text><line class="fg-arrow" x1="170" y1="184" x2="170" y2="204"></line><path class="fg-head" d="M170 212 L165.84 204 L174.16 204 Z"></path><text class="fg-lbl" x="120" y="240" text-anchor="middle" font-size="13">NH₄⁺</text><text class="fg-lbl" x="170" y="240" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="220" y="240" text-anchor="middle" font-size="13">Cl⁻</text></svg></figure>';
   }
 
   window.OchemLessonEngine.start({
@@ -186,35 +156,41 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Acids give up a proton. Bases take one.',
-        bodyHtml: '<p class="step-body">A <b>Brønsted-Lowry acid</b> is a proton (H⁺) donor. A <b>Brønsted-Lowry base</b> is a proton acceptor. Every acid-base reaction — no matter how complicated the molecule looks — is fundamentally a single proton moving from the acid to the base.</p><p class="step-body" style="margin-bottom:0;">This is broader than the Arrhenius definition you may have seen in general chemistry (acid = produces H⁺ in water, base = produces OH⁻ in water), which only works when water is the solvent. Brønsted-Lowry works in any solvent — or no solvent at all — which matters constantly in organic chemistry, where reactions routinely happen in ether, dichloromethane, or neat (no solvent).</p>'
+        title: 'A proton moves from the acid to the base.',
+        bodyHtml: '<p class="step-body">Mix hydrogen chloride, HCl, with ammonia, NH₃. The hydrogen of HCl moves onto ammonia\'s nitrogen, and the products are the ammonium ion, NH₄⁺, and the chloride ion, Cl⁻.</p><!-- fig:l-br-transfer:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 296" role="img" aria-label="Top: hydrogen chloride, with its hydrogen highlighted, and ammonia, with a lone pair on nitrogen. A downward reaction arrow leads to the bottom row: ammonium, with the highlighted hydrogen now bonded to nitrogen and a plus charge, and chloride, with four lone pairs and a minus charge."><line class="fg-bond" x1="57" y1="66" x2="86" y2="66"></line><circle class="fg-lp" cx="108.5" cy="43" r="2.3"></circle><circle class="fg-lp" cx="99.5" cy="43" r="2.3"></circle><circle class="fg-lp" cx="127" cy="70.5" r="2.3"></circle><circle class="fg-lp" cx="127" cy="61.5" r="2.3"></circle><circle class="fg-lp" cx="99.5" cy="89" r="2.3"></circle><circle class="fg-lp" cx="108.5" cy="89" r="2.3"></circle><circle class="fg-atom-hi" cx="46" cy="66" r="11"></circle><text class="fg-lbl" x="46" y="70.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="104" cy="66" r="18"></circle><text class="fg-lbl" x="104" y="70.07" text-anchor="middle" font-size="11">Cl</text><text class="fg-lbl" x="160" y="71" text-anchor="middle" font-size="13">+</text><line class="fg-bond" x1="236" y1="72" x2="225" y2="72"></line><line class="fg-bond" x1="264" y1="72" x2="275" y2="72"></line><line class="fg-bond" x1="250" y1="86" x2="250" y2="97"></line><circle class="fg-lp" cx="254.5" cy="51" r="2.3"></circle><circle class="fg-lp" cx="245.5" cy="51" r="2.3"></circle><circle class="fg-atom" cx="250" cy="72" r="14"></circle><text class="fg-lbl" x="250" y="76.63" text-anchor="middle" font-size="12.5">N</text><circle class="fg-atom" cx="214" cy="72" r="11"></circle><text class="fg-lbl" x="214" y="76.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="286" cy="72" r="11"></circle><text class="fg-lbl" x="286" y="76.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="250" cy="108" r="11"></circle><text class="fg-lbl" x="250" y="112.63" text-anchor="middle" font-size="12.5">H</text><text class="fg-tag" x="75" y="134" text-anchor="middle" font-size="11">hydrogen chloride</text><text class="fg-tag" x="250" y="134" text-anchor="middle" font-size="11">ammonia</text><line class="fg-arrow" x1="170" y1="146" x2="170" y2="172"></line><path class="fg-head" d="M170 180 L165.84 172 L174.16 172 Z"></path><line class="fg-bond" x1="76" y1="224" x2="65" y2="224"></line><line class="fg-bond" x1="104" y1="224" x2="115" y2="224"></line><line class="fg-bond" x1="90" y1="238" x2="90" y2="249"></line><line class="fg-bond-hi" x1="90" y1="210" x2="90" y2="199"></line><circle class="fg-atom" cx="90" cy="224" r="14"></circle><text class="fg-lbl" x="90" y="228.63" text-anchor="middle" font-size="12.5">N</text><circle class="fg-atom" cx="54" cy="224" r="11"></circle><text class="fg-lbl" x="54" y="228.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="126" cy="224" r="11"></circle><text class="fg-lbl" x="126" y="228.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom" cx="90" cy="260" r="11"></circle><text class="fg-lbl" x="90" y="264.63" text-anchor="middle" font-size="12.5">H</text><circle class="fg-atom-hi" cx="90" cy="188" r="11"></circle><text class="fg-lbl" x="90" y="192.63" text-anchor="middle" font-size="12.5">H</text><text class="fg-tag-warn" x="109.8" y="209.2" text-anchor="middle" font-size="15">+</text><text class="fg-lbl" x="170" y="223" text-anchor="middle" font-size="13">+</text><circle class="fg-lp" cx="250.5" cy="195" r="2.3"></circle><circle class="fg-lp" cx="241.5" cy="195" r="2.3"></circle><circle class="fg-lp" cx="269" cy="222.5" r="2.3"></circle><circle class="fg-lp" cx="269" cy="213.5" r="2.3"></circle><circle class="fg-lp" cx="241.5" cy="241" r="2.3"></circle><circle class="fg-lp" cx="250.5" cy="241" r="2.3"></circle><circle class="fg-lp" cx="223" cy="213.5" r="2.3"></circle><circle class="fg-lp" cx="223" cy="222.5" r="2.3"></circle><circle class="fg-atom" cx="246" cy="218" r="18"></circle><text class="fg-lbl" x="246" y="222.07" text-anchor="middle" font-size="11">Cl</text><text class="fg-tag" x="267.92" y="201.08" text-anchor="middle" font-size="15">−</text><text class="fg-tag" x="90" y="286" text-anchor="middle" font-size="11">ammonium</text><text class="fg-tag" x="246" y="286" text-anchor="middle" font-size="11">chloride</text></svg><figcaption>The highlighted hydrogen moves from chlorine to nitrogen.</figcaption></figure><!-- fig:l-br-transfer:end --><p class="step-body">That hydrogen travels without its electron, so it is a bare nucleus: a <b>proton</b>, H⁺. A <b>Brønsted–Lowry acid</b> is a proton donor, as HCl is here. A <b>Brønsted–Lowry base</b> is a proton acceptor, as ammonia is. Every Brønsted acid–base reaction is one proton moving from the acid to the base.</p><p class="step-body" style="margin-bottom:0;">You may know the older Arrhenius definition from general chemistry: an acid produces H⁺ in water, and a base produces OH⁻ in water. It works only in water. The Brønsted–Lowry definition works in any solvent, or with none, which matters because organic reactions often run in ether or dichloromethane rather than water.</p>'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Click the acid, then click the base.</h2>' +
-            '<p class="step-body">HCl reacts with NH₃ to form NH₄⁺ and Cl⁻. The drawing shows the two things that decide which is which: the H–Cl bond is polarized, leaving that hydrogen δ+, and nitrogen has a lone pair doing nothing. One of these starting materials donates a proton; the other accepts it.</p>' +
+            '<p class="step-body">Here is the same reaction with its two curved arrows. The H–Cl bond is polarized, so its hydrogen is δ+, and nitrogen has a lone pair that is not part of any bond. One starting material gives up the proton, and the other takes it.</p>' +
             protonTransferSvg() +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
           var fb = api.card.querySelector('#fb');
           var next = api.card.querySelector('#nextBtn');
           var got = { acid: false, base: false };
-          function checkDone(){
-            if(got.acid && got.base){
-              api.showFeedback(fb, true, 'Right — HCl is the acid (it donates its proton to nitrogen\'s lone pair) and NH₃ is the base (it accepts that proton). The products, NH₄⁺ and Cl⁻, are the conjugate acid of NH₃ and the conjugate base of HCl.');
-              next.disabled = false;
-            }
-          }
+          var recorded = false;
           api.card.querySelectorAll('.atom').forEach(function(g){
             g.addEventListener('click', function(){
               var key = g.getAttribute('data-key');
               if(got[key]) return;
+              if(key === 'base' && !got.acid){
+                if(!recorded){ api.record(false); recorded = true; }
+                api.showFeedback(fb, false, 'Not yet. Ammonia takes the proton, so it is the base. Which species gives the proton up? Click that one first.');
+                return;
+              }
               got[key] = true;
               g.classList.add('chosen');
-              if(key === 'acid'){ api.record(true); }
-              checkDone();
+              if(key === 'acid'){
+                if(!recorded){ api.record(true); recorded = true; }
+                api.showFeedback(fb, true, 'Right. HCl is the acid: it gives up its proton. Now click the base.');
+              }
+              if(got.acid && got.base){
+                api.showFeedback(fb, true, 'Right. HCl is the acid: it gives its proton to nitrogen\'s lone pair. NH₃ is the base: it accepts that proton.');
+                next.disabled = false;
+              }
             });
           });
           next.addEventListener('click', api.advance);
@@ -222,33 +198,33 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 2 · Guided Practice',
-        title: 'In HCl + NH₃ → NH₄⁺ + Cl⁻, which species is the Brønsted-Lowry acid?',
-        options: ['NH₃ — it has a lone pair', 'Cl⁻ — it ends up negatively charged', 'HCl — it donates a proton'],
-        correctIndex: 2,
-        correctFeedback: 'Correct — HCl gives up its proton, which is the definition of a Brønsted-Lowry acid.',
-        wrongFeedback: 'Ask which species loses a hydrogen (as H⁺) going from left to right — that one is the acid.'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 3 · Independent Practice',
-        title: 'NH₄⁺ is called the ___ of NH₃.',
-        options: ['conjugate acid', 'conjugate base', 'Lewis acid'],
+        eyebrow: 'Guided Practice',
+        title: 'In CH₃CO₂H + NH₃ → CH₃CO₂⁻ + NH₄⁺, which species is the acid, and why?',
+        options: ['CH₃CO₂H, because it gives a proton to NH₃', 'NH₃, because its nitrogen ends up with four hydrogens', 'CH₃CO₂⁻, because it ends up with a negative charge'],
         correctIndex: 0,
-        correctFeedback: 'Correct. NH₃ gained a proton to become NH₄⁺ — a base that has just accepted a proton becomes its conjugate acid.',
-        wrongFeedback: 'NH₃ gained a proton, it didn\'t lose one — gaining a proton makes something a conjugate acid, not a conjugate base.'
+        correctFeedback: 'Right. Acetic acid loses a proton going from left to right, and a proton donor is a Brønsted–Lowry acid. Ammonia takes that proton, so it is the base.',
+        wrongFeedback: 'Look for the species that loses a proton going from left to right. That one is the acid.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Every proton transfer is an equilibrium — it has a favored side.',
-        bodyHtml: '<p class="step-body">Even when a reaction looks like it goes to completion, a proton transfer is technically an equilibrium, and equilibria favor the more stable, lower-energy side. For an acid-base reaction, that\'s the side with the <b>weaker acid and weaker base</b>.</p><p class="step-body" style="margin-bottom:0;">HCl + NH₃ → NH₄⁺ + Cl⁻ overwhelmingly favors the right side, because HCl is an extremely strong acid and NH₃ is a fairly strong base, while NH₄⁺ is a much weaker acid and Cl⁻ is a much weaker base. You\'ll make this precise with actual numbers (pKa) two lessons from now — for now, the qualitative rule is: <b>the stronger acid and stronger base end up as reactants; the weaker acid and weaker base end up as products.</b></p>'
+        title: 'Each product has a name.',
+        bodyHtml: '<p class="step-body">Go back to HCl + NH₃ → NH₄⁺ + Cl⁻. What is left of the acid after it loses the proton is its <b>conjugate base</b>, so chloride is the conjugate base of HCl. What the base becomes after it gains the proton is its <b>conjugate acid</b>, so ammonium is the conjugate acid of ammonia.</p><p class="step-body" style="margin-bottom:0;">So every proton transfer has four species: an acid and a base going in, and a conjugate base and a conjugate acid coming out. The <a class="chapter-ref" href="/ochem/lessons/conjugate.html">Conjugate acids/bases</a> lesson works out what the pairing is good for.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'In CH₃CO₂H + NH₃ → CH₃CO₂⁻ + NH₄⁺, what is acetate, CH₃CO₂⁻?',
+        options: ['The conjugate base of acetic acid', 'The conjugate acid of acetic acid', 'The conjugate acid of ammonia'],
+        correctIndex: 0,
+        correctFeedback: 'Right. Acetate is what is left of acetic acid after it gives up its proton, so it is acetic acid\'s conjugate base. Ammonium is the conjugate acid of ammonia.',
+        wrongFeedback: 'Acetate comes from acetic acid, which lost a proton to form it. Losing a proton turns an acid into its conjugate base.'
       },
       {
         type: 'explain',
-        eyebrow: 'Why it matters',
-        title: 'Acid-base steps show up inside almost every mechanism you\'ll draw.',
-        bodyHtml: '<div class="explain-box">Long before you get to substitution, elimination, or carbonyl chemistry, you\'ll draw proton transfers as setup steps — protonating an alcohol\'s oxygen before it can leave as water in an SN1 reaction, or deprotonating an alpha carbon before an aldol reaction (<a class=\"chapter-ref\" href=\"/ochem/learn.html#m-enolate-chemistry\">Enolate Chemistry</a>). Recognizing "this step is just an acid-base reaction" instantly tells you which curved arrows to draw: base lone pair to H, H–X bond to X.</div>'
+        eyebrow: 'Explain',
+        title: 'Draw a proton transfer with two arrows.',
+        bodyHtml: '<p class="step-body">You drew these arrows in the Curved arrows lesson. <b>Arrow 1</b> runs from the base\'s lone pair to the hydrogen and makes the new bond. <b>Arrow 2</b> runs from the bond that held the hydrogen onto the atom the proton leaves. That atom keeps the pair. Without arrow 2, the hydrogen would end up with two bonds.</p><p class="step-body">Start arrow 1 on the base\'s lone pair, not on the hydrogen. A proton has no electrons to give.</p><div class="explain-box"><b>Preview.</b> Proton transfers also sit inside longer mechanisms in later chapters. An alcohol\'s oxygen is protonated before it leaves as water in an S<sub>N</sub>1 reaction, and a proton comes off the carbon next to a C=O before an aldol reaction (<a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>). Once you see that a step is just an acid–base reaction, you know which two arrows to draw. Nothing in this lesson depends on those reactions.</div>'
       },
       {
         /* Deprotonation, drawn rather than described. The thing students
@@ -257,30 +233,46 @@ document.addEventListener('DOMContentLoaded', function(){
           window.OchemArrowStep.mount(api, {
             eyebrow: 'Draw it',
             title: 'Hydroxide removes the acidic proton from acetic acid. Draw both arrows.',
-            bodyHtml: '<p class="step-body">Two arrows, and each answers its own question. Where do the electrons that make the new bond come from? And where do the electrons that were holding the proton on end up?</p>',
+            bodyHtml: '<p class="step-body">Each arrow answers its own question. Where do the electrons for the new O–H bond of water come from? And where does the pair that held the proton on acetic acid end up?</p>',
             molecule: 'acetic-acid-hydroxide',
             concepts: ['bronsted-identification', 'curved-arrow-direction'],
             arrows: [{ from: 'nucO', to: 'h' }, { from: 'bond:o2-h', to: 'o2' }],
-            hint: 'One arrow starts on a hydroxide lone pair and ends on the acidic hydrogen. The other starts on the O\u2013H bond and ends on the oxygen it came from.',
-            why: 'Arrow one: hydroxide\'s lone pair attacks the \u03b4+ hydrogen and becomes the new O\u2013H bond of water. Arrow two: the old O\u2013H bonding pair is left behind on acetic acid\'s oxygen, which is what makes the conjugate base negative. The proton itself moves bare, carrying no electrons at all \u2014 it is the nucleus alone that changes address, and the two arrows are the accounting for the two pairs of electrons that had to move around it. Drawing only the second arrow describes a molecule falling apart on its own; drawing only the first gives the hydrogen two bonds.',
+            hint: 'One arrow starts on a hydroxide lone pair and ends on the acidic hydrogen. The other starts on the O–H bond and ends on the oxygen it came from.',
+            why: 'Arrow 1: a hydroxide lone pair bonds to the δ+ hydrogen and becomes the new O–H bond of water. Arrow 2: the old O–H bonding pair stays on acetic acid’s oxygen, which is what makes the conjugate base negative. The proton itself moves bare, with no electrons, and the two arrows track the two pairs that move around it. Drawing only arrow 2 would say that acetic acid falls apart by itself; drawing only arrow 1 would give the hydrogen two bonds.',
             wrong: {
-              'bond:o2-h>h': 'The electrons do not leave with the hydrogen. A Br\u00f8nsted acid donates a proton \u2014 the nucleus alone \u2014 and the bonding pair stays behind, which is why the conjugate base ends up with a negative charge.',
-              'o2>bond:o2-h': 'Backwards: that arrow forms the O\u2013H bond rather than breaking it. Here the bond is breaking.',
-              'h>nucO': 'Backwards, and in the way that matters most: an arrow always starts on the electrons that move, and the hydrogen has none to give. Start on hydroxide\'s lone pair and finish on the hydrogen.',
-              'bond:ca-ha>ca': 'That is an alpha C\u2013H, and not the acidic proton. In a carboxylic acid the O\u2013H comes off first, and pulling an alpha proton off the carboxylate afterwards is far harder \u2014 around pKa 30, and it takes two equivalents of a very strong base. The O\u2013H is the acidic one, because the anion left behind is spread over two oxygens by resonance.',
-              'nucO>c': 'Hydroxide could attack the carbonyl carbon \u2014 that is a real reaction later in the course \u2014 but proton transfer is far faster, and this step is an acid-base step. Aim for the hydrogen.',
-              'bond:c-o1>o1': 'The C=O pi bond is not what breaks when an acid is deprotonated. Look for the bond to the departing proton.'
+              'bond:o2-h>h': 'The electrons do not leave with the hydrogen. A Brønsted acid donates a proton, the nucleus alone, and the bonding pair stays behind. That is why the conjugate base ends up negative.',
+              'o2>bond:o2-h': 'Backwards: that arrow would form the O–H bond rather than break it. Here the bond is breaking.',
+              'h>nucO': 'Backwards, in the way that matters most. An arrow starts on the electrons that move, and the hydrogen has none to give. Start on a hydroxide lone pair and end on the hydrogen.',
+              'bond:ca-ha>ca': 'That is a C–H on the carbon next to the C=O, not the acidic proton. In a carboxylic acid the O–H comes off first. Pulling a proton off that carbon afterwards is far harder: its pKa is around 30 (a higher pKa means a hydrogen that is harder to remove), and it takes two moles of a very strong base per mole of acid. The O–H is the acidic one because the anion left behind is spread over two oxygens by resonance.',
+              'nucO>c': 'Hydroxide can bond to the carbonyl carbon, in a reaction later in the course, but proton transfer is far faster, and this is an acid–base step. Aim for the hydrogen.',
+              'bond:c-o1>o1': 'The C=O π bond does not break when an acid loses its proton. Look for the bond to the departing proton.'
             }
           });
         }
       },
       {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The equilibrium lies on the side of the weaker acid.',
+        bodyHtml: '<p class="step-body">The reaction you just drew can also run backward, with acetate taking a proton from water. Every proton transfer is an <b>equilibrium</b>, even when it looks complete. Chemists often draw a plain → when one side wins overwhelmingly, but ⇌ is always correct. To see which side the mixture ends up on, compare the <b>pKa</b> of each acid, the number you met in the Resonance lesson. The lower the pKa, the stronger the acid, which means the more readily it gives up its proton.</p><!-- fig:l-br-equilibrium:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 262" role="img" aria-label="Acetic acid plus hydroxide on top, acetate plus water below, joined by a long downward arrow and a short upward one to show the lower side is favored. Acetic acid is labeled pKa 4.76, the stronger acid; water is labeled pKa 15.7, the weaker acid."><text class="fg-lbl" x="96" y="40" text-anchor="middle" font-size="13">CH₃CO₂H</text><text class="fg-lbl" x="176" y="40" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="246" y="40" text-anchor="middle" font-size="13">HO⁻</text><text class="fg-tag-warn" x="96" y="64" text-anchor="middle" font-size="11">pKa 4.76</text><text class="fg-tag" x="96" y="80" text-anchor="middle" font-size="11">stronger acid</text><line class="fg-arrow" x1="172" y1="96" x2="172" y2="154"></line><path class="fg-head" d="M172 162 L167.84 154 L176.16 154 Z"></path><line class="fg-arrow-mut" x1="180" y1="148" x2="180" y2="118"></line><path class="fg-head-mut" d="M180 110 L184.16 118 L175.84 118 Z"></path><text class="fg-tag-good" x="196" y="134" text-anchor="start" font-size="11">favored</text><text class="fg-lbl" x="96" y="196" text-anchor="middle" font-size="13">CH₃CO₂⁻</text><text class="fg-lbl" x="176" y="196" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="246" y="196" text-anchor="middle" font-size="13">H₂O</text><text class="fg-tag-good" x="246" y="220" text-anchor="middle" font-size="11">pKa 15.7</text><text class="fg-tag" x="246" y="236" text-anchor="middle" font-size="11">weaker acid</text></svg><figcaption>The long arrow points to the side with the weaker acid.</figcaption></figure><!-- fig:l-br-equilibrium:end --><p class="step-body" style="margin-bottom:0;">Acetic acid, pKa 4.76, is a far stronger acid than water, pKa 15.7. So the equilibrium lies on the side of the <b>weaker acid and the weaker base</b>: water and acetate. That is the more stable, lower-energy side, where the proton is held most tightly. The <a class="chapter-ref" href="/ochem/lessons/pka.html">pKa</a> lesson turns the gap between the two numbers into a ratio.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'HCl has a pKa of about −7, and ammonium, NH₄⁺, has a pKa of 9.2. Which side does HCl + NH₃ ⇌ NH₄⁺ + Cl⁻ favor?',
+        options: ['The right side, since NH₄⁺ is the weaker acid', 'The left side, since HCl has the lower pKa and stays intact', 'Neither side, since the charges on the two sides balance'],
+        correctIndex: 0,
+        correctFeedback: 'Right. The lower pKa belongs to the stronger acid, HCl, so it gives up its proton. NH₄⁺, with the higher pKa, is the weaker acid, and the equilibrium lies on its side. A gap of about 16 units makes the reaction effectively complete.',
+        wrongFeedback: 'Find the weaker acid first: it is the one with the higher pKa. The equilibrium lies on its side.'
+      },
+      {
         type: 'final',
         eyebrow: 'Challenge',
         title: 'Water reacts with HBr: H₂O + HBr → H₃O⁺ + Br⁻. Which statement is correct?',
-        options: ['Water is the acid; HBr is the base', 'Water is the base (proton acceptor); HBr is the acid (proton donor)', 'Both are acids, since both contain hydrogen'],
+        options: ['Water is the acid, and HBr is the base', 'Water is the base, and HBr is the acid', 'Both are acids, since both contain hydrogen'],
         correctIndex: 1,
-        correctFeedback: 'Correct — water\'s lone pair accepts the proton from HBr, making water the base and HBr the acid here. (Water can also act as an acid in other reactions — it\'s amphoteric — but not in this one.)'
+        correctFeedback: 'Right. Water\'s lone pair takes the proton from HBr, so water is the base and HBr is the acid. Water can act as an acid in other reactions. A species that can act as either an acid or a base is called amphoteric.',
+        wrongFeedback: 'Ask which molecule loses a proton going from left to right. That one is the acid, and the molecule that gains the proton is the base.'
       }
     ]
   });

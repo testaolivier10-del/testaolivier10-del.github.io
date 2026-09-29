@@ -1557,20 +1557,8 @@
     diag:{
       h31:{ concept:'bronsted-identification', msg:'That C\u2013H, next to the C=O, is around pKa 20 \u2014 very acidic for a C\u2013H, but still four units less acidic than the O\u2013H at 16. Being remarkable for a C\u2013H is not the same as beating an O\u2013H.' },
       h32:{ concept:'bronsted-identification', msg:'Same kind of site as the other C\u2013H next to the C=O, pKa about 20. The O\u2013H beats it by four units, which is ten thousand to one.' },
-      o1:{ concept:'bronsted-identification', msg:'The carbonyl oxygen is the most BASIC site here, not the most acidic \u2014 it has no hydrogen on it to give away. Different question, different answer.' },
+      o1:{ concept:'bronsted-identification', msg:'The carbonyl oxygen has lone pairs but no hydrogen on it, so it has no proton to give away. This question asks for the most acidic hydrogen.' },
       c2:{ concept:'bronsted-identification', msg:'The carbonyl carbon carries no hydrogen at all. An acid needs a proton to donate.' }
-    } },
-
-  { id:'bronsted-polyfunctional-base', kind:'click-atom', tier:3, topic:'bronsted', concepts:['bronsted-identification','conjugate-pairs'],
-    prompt:'Now the other question: click the atom that gets protonated when strong acid is added.',
-    molecule:'hydroxybutanone',
-    sub:'Most acidic proton and most basic site are different questions.',
-    answer:{ role:'carbonyl-o' },
-    why:'The carbonyl oxygen. Both oxygens carry lone pairs, but the carbonyl one is the more available: protonating it lets the positive charge be shared with the carbon through the pi system, which the hydroxyl oxygen cannot do. This is the first step of acid-catalyzed carbonyl chemistry \u2014 protonate the oxygen, and the carbon becomes a much better electrophile. Note that the answer is on a different atom from the most acidic proton, which is why the two questions have to be asked separately.',
-    diag:{
-      o2:{ concept:'bronsted-identification', msg:'The hydroxyl oxygen does have lone pairs and can be protonated, but the carbonyl oxygen is more basic \u2014 its conjugate acid is stabilized by sharing the charge with the carbonyl carbon.' },
-      ho:{ concept:'bronsted-identification', msg:'That is the most ACIDIC proton, which is the other question. A basic site needs an available lone pair, not a hydrogen.' },
-      c3:{ concept:'bronsted-identification', msg:'An ordinary CH\u2082 carbon: no lone pair, nothing to offer a proton.' }
     } },
 
   { id:'lewis-acid-identify', kind:'mcq', tier:3, topic:'lewis-acids', concepts:['lewis-acid-base','bronsted-identification'],

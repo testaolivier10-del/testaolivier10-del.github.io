@@ -74,7 +74,7 @@
     { id: 'acids-bases', title: 'Acids & Bases', topics: [
       { id: 'bronsted', title: 'Brønsted acids/bases', href: 'lessons/bronsted.html', dependsOn: ['lewis-structures', 'curved-arrows'] },
       { id: 'conjugate', title: 'Conjugate acids/bases', href: 'lessons/conjugate.html', dependsOn: ['bronsted'] },
-      { id: 'pka', title: 'pKa', href: 'lessons/pka.html', dependsOn: ['bronsted', 'conjugate'] },
+      { id: 'pka', title: 'pKa', href: 'lessons/pka.html', dependsOn: ['bronsted', 'conjugate', 'resonance'] },
       { id: 'acidity-factors', title: 'Factors affecting acidity', href: 'lessons/acidity-factors.html', dependsOn: ['pka', 'resonance', 'electronegativity', 'hybridization'] },
       { id: 'lewis-acids', title: 'Lewis acids/bases', href: 'lessons/lewis-acids.html', dependsOn: ['bronsted', 'curved-arrows'] }
     ]},
