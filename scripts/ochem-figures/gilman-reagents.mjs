@@ -100,7 +100,7 @@ function sixRing(c, o = {}) {
   if (form === 'plus') s += plusSign(v[4].x + 11, v[4].y + 3);
   if (o.nums) {
     if (O) s += good(O.x + 22, O.y + 4, '1');
-    s += good(v[0].x + 13, v[0].y - 6, '2');
+    s += good(v[0].x + 9, v[0].y - 3, '2', { anchor: 'start' });
     s += good(v[5].x - 21, v[5].y + 4, '3') + tag(v[5].x - 34, v[5].y + 4, 'α');
     s += good(v[4].x - 21, v[4].y + 4, '4') + tag(v[4].x - 34, v[4].y + 4, 'β');
   }
@@ -163,7 +163,7 @@ function resonancePanel(ox, oy) {
   s += resArrow(ox + 150, ox + 190, oy + 104);
   s += sixRing(c2, { form: 'plus', nums: true }).s;
   s += tag(ox + 166, oy + 186, 'the right-hand form puts + on the β carbon (4)');
-  s += tag(ox + 166, oy + 204, 'and the C=O pulls electrons from carbon 2 as well');
+  s += tag(ox + 166, oy + 204, 'the C=O already makes carbon 2 positive');
   return s;
 }
 
@@ -289,10 +289,9 @@ const PW = 230, PH = 256;
 function stageAdd(ox, oy) {
   let s = panel(ox, oy, PW, PH, { kind: 'hi' }) + tag(ox + PW / 2, oy + 20, '1 · a methyl moves to β');
   const c = P(ox + 132, oy + 118);
-  const r = sixRing(c, { form: 'enone' });
+  const r = sixRing(c, { form: 'enone', nums: true });
   s += r.s + piArrows(r.v, r.O);
   const v = r.v;
-  s += tag(v[5].x - 22, v[5].y + 4, 'α') + tag(v[4].x - 22, v[4].y + 4, 'β');
   const Me = A(ox + 48, oy + 200, 'H₃C'), Cu = A(ox + 112, oy + 200, 'Cu⁻', 'plain', 16), Me2 = A(ox + 176, oy + 200, 'CH₃');
   s += bd(Me, Cu) + bd(Cu, Me2) + draw(Me, Cu, Me2);
   s += tag(ox + 210, oy + 204, 'Li⁺');
@@ -307,10 +306,12 @@ function stageEnolate(ox, oy) {
   const c = P(ox + 138, oy + 118);
   const r = sixRing(c, { form: 'enolate' });
   s += r.s;
-  s += tag(r.v[5].x - 14, r.v[5].y + 4, 'α');
-  s += warn(r.O.x + 22, r.O.y + 4, 'Li⁺', { anchor: 'start' });
+  s += good(r.O.x + 22, r.O.y + 4, '1') + good(r.v[0].x + 9, r.v[0].y - 3, '2', { anchor: 'start' });
+  s += good(r.v[5].x - 21, r.v[5].y + 4, '3') + tag(r.v[5].x - 34, r.v[5].y + 4, 'α');
+  s += good(r.v[4].x + 11, r.v[4].y + 2, '4');
+  s += warn(r.O.x - 20, r.O.y + 4, 'Li⁺', { anchor: 'end' });
   s += tag(ox + PW / 2, oy + 204, '+ CH₃Cu, left over');
-  s += tag(ox + PW / 2, oy + 242, 'C=C now between α and C2');
+  s += tag(ox + PW / 2, oy + 242, 'C=C now between atoms 3 and 2');
   return s;
 }
 /* 3 - workup puts a proton on the alpha carbon. */
@@ -366,8 +367,8 @@ function acylRow(ox, oy, which) {
   const O = A(p[3].x, p[3].y - 30, 'O', 'plain', 11), Cl = A(p[3].x + 26, p[3].y + 15, 'Cl', 'plain', 12);
   s += bd(p[3], O, { order: 2 }) + bd(p[3], Cl) + draw(O, Cl);
   s += right(oy + 66, ox + 130, ox + 190);
-  s += tag(ox + 160, oy + 56, which === 'cu' ? '(CH₃)₂CuLi' : 'CH₃MgBr');
-  s += mut(ox + 160, oy + 86, which === 'cu' ? '−78 °C' : 'excess; H₃O⁺');
+  s += tag(ox + 160, oy + 56, which === 'cu' ? '(CH₃)₂CuLi' : '1. CH₃MgBr (excess)');
+  s += mut(ox + 160, oy + 86, which === 'cu' ? '−78 °C' : '2. H₃O⁺');
   const q = [o(198, 76), o(220, 63), o(242, 76), o(264, 63)];
   for (let i = 0; i < 3; i++) s += bond(q[i], q[i + 1], { rFrom: 0, rTo: 0 });
   if (which === 'cu') {
@@ -411,9 +412,9 @@ FIGURES.push({
     const Cs = P(56, 72), Cu2 = P(100, 72), Me = P(30, 58);   // Cs: substituted carbon; Cu2: the CH2
     s += bond(Cs, Cu2, { rFrom: 0, rTo: 0 }) + bd(Cs, Ox) + bd(Cu2, Ox) + bond(Cs, Me, { rFrom: 0, rTo: 0 }) + draw(Ox);
     s += tag(112, 70, 'less hindered', { anchor: 'start' }) + tag(112, 84, 'CH₂ end', { anchor: 'start' });
-    const M1 = A(36, 142, 'H₃C'), Cu = A(100, 142, 'Cu⁻', 'plain', 16), M2 = A(164, 142, 'CH₃');
-    s += bd(M1, Cu) + bd(Cu, M2) + draw(M1, Cu, M2);
-    s += curve(P(mid(M1, Cu).x, M1.y - 5), P(Cu2.x + 1, Cu2.y + 7), { bow: -22, size: 7 });
+    const M1 = A(132, 146, 'H₃C'), Cu = A(196, 146, 'Cu⁻', 'plain', 16), M2 = A(260, 146, 'CH₃');
+    s += bd(M1, Cu) + bd(Cu, M2) + draw(M1, Cu, M2) + tag(296, 150, 'Li⁺', { anchor: 'start' });
+    s += curve(P(mid(M1, Cu).x, M1.y - 5), P(Cu2.x + 5, Cu2.y + 8), { bow: 12, size: 7 });
     s += curve(mid(Cu2, Ox), P(Ox.x + 13, Ox.y - 2), { bow: 12, size: 7 });
     s += right(84, 212, 244) + tag(228, 72, 'H₃O⁺');
     // butan-2-ol: C1-C2(OH)-C3-C4; the new bond C3-C4 is colored

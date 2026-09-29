@@ -42,7 +42,7 @@ function enolizationPanel(ox, oy) {
   s += tag(ox + 170, oy + 24, 'Grignard as a base: enolization');
   const C = p(200, 106), O = p(200, 56);
   const L = p(160, 128), R = p(240, 128);
-  const H = p(124, 156);
+  const H = p(110, 168);
   s += bond(C, O, { order: 2, rFrom: 15, rTo: 15 });
   s += bond(C, L, { rFrom: 15, rTo: 0 });
   s += bond(C, R, { rFrom: 15, rTo: 0 });
@@ -60,8 +60,8 @@ function enolizationPanel(ox, oy) {
   s += bond(Mg, Br, { rFrom: 16, rTo: 15 });
   s += atom(Mg.x, Mg.y, 'Mg', { kind: 'hi' });
   s += atom(Br.x, Br.y, 'Br');
-  s += curve(p(96, 207), p(116, 170), { bow: -16 });
-  s += curve(p(138, 146), p(178, 115), { bow: -12 });
+  s += curve(p(92, 207), p(104, 182), { bow: -12 });
+  s += curve(p(128, 141), p(180, 112), { bow: -18 });
   s += curve(p(206, 83), p(220, 58), { bow: -12 });
   s += tag(ox + 270, oy + 206, 'enolate forms;', { cls: 'fg-tag-warn' });
   s += tag(ox + 270, oy + 224, 'workup gives', { cls: 'fg-tag-warn' });
@@ -87,7 +87,7 @@ function reductionPanel(ox, oy) {
   s += bond(Mg, Br, { rFrom: 16, rTo: 15 });
   s += bond(Mg, G, { rFrom: 16, rTo: 0 });
   s += sk(G, B);
-  s += sk(G, p(304, 90));
+  s += sk(G, p(304, 128));
   s += bond(B, H, { rFrom: 0, rTo: 12 });
   s += atom(C.x, C.y, 'C');
   s += atom(O.x, O.y, 'O');
@@ -95,8 +95,8 @@ function reductionPanel(ox, oy) {
   s += atom(Br.x, Br.y, 'Br');
   s += atom(H.x, H.y, 'H', { kind: 'warn', r: 12 });
   s += tag(ox + 250, oy + 178, 'β', { anchor: 'start' });
-  s += curve(p(213, 170), p(136, 150), { bow: -40 });
-  s += curve(p(238, 88), p(256, 138), { bow: -16 });
+  s += curve(p(212, 176), p(136, 152), { bow: -66 });
+  s += curve(p(242, 82), p(258, 140), { bow: -30 });
   s += curve(p(114, 115), p(104, 92), { bow: -10 });
   s += tag(ox + 250, oy + 214, 'propene leaves;', { cls: 'fg-tag-warn' });
   s += tag(ox + 250, oy + 232, 'workup gives a 2° alcohol', { cls: 'fg-tag-warn' });
@@ -265,7 +265,7 @@ FIGURES.push({
     return deprotonationPanel(20, 0) + additionToCarboxylatePanel(400, 0) +
       dianionPanel(20, ACID_H + 20) + workupPanel(400, ACID_H + 20);
   },
-  caption: 'Read the panels left to right, top row first. The highlighted C–CH₃ bond in the third panel is the new carbon–carbon bond. The first CH₃Li never reaches carbon at all.',
+  caption: 'Read the panels left to right, top row first. The highlighted C–CH₃ bond in the third panel is the new carbon–carbon bond.',
 });
 
 FIGURES.push({
@@ -387,7 +387,7 @@ FIGURES.push({
   build() {
     return ldaReactants(10, 2) + arrow(P(356, 106), P(404, 106)) + ldaProduct(412, 2);
   },
-  caption: 'Look at the nitrogen in the product: its lone pairs are open to a small proton on the edge of a molecule, but the two isopropyl groups keep the nitrogen away from a carbonyl carbon.',
+  caption: 'LDA: the nitrogen keeps two lone pairs and the negative charge, flanked by two isopropyl groups.',
 });
 
 FIGURES.push({
@@ -476,7 +476,7 @@ FIGURES.push({
     s += curve(P(158, y + 4), P(213, y + 5), { bow: 16 });
     s += curve(P(262, y + 3), P(300, y + 20), { bow: 12 });
     s += arrow(P(330, y), P(384, y));
-    s += tag(357, y - 12, 'SN2');
+    s += `<text class="fg-tag" x="357" y="${y - 12}" text-anchor="middle" font-size="11">S<tspan baseline-shift="sub" font-size="8">N</tspan>2</text>`;
     let h = alkyneHead(410, y);
     s += h.svg + sk(h.c, P(h.c.x + 30, y - 20));
     s += label(590, y + 5, '+ Br⁻');
@@ -573,7 +573,7 @@ FIGURES.push({
     s += tag(650, 220, 'H on opposite sides', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'One alkyne, two sets of conditions. Compare where the two highlighted hydrogens sit in each product.',
+  caption: 'Compare where the two highlighted hydrogens sit in each product.',
 });
 
 FIGURES.push({
