@@ -173,7 +173,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-chain-packing',
   lessons: ['lipids'],
-  viewBox: '0 0 330 476',
+  viewBox: '0 0 330 512',
   alt: 'Three stacked panels of eighteen-carbon chains lying horizontally. Stearic acid chains are straight and stacked close, mp 69 degrees C. Two oleic acid chains start side by side and bend apart at their cis double bonds, one up and one down, mp 13 degrees C. Elaidic acid chains carry a trans double bond and stay straight, mp 44 degrees C.',
   build() {
     let s = '';
@@ -187,14 +187,14 @@ FIGURES.push({
     row(6, 104, 'stearic acid, 18:0', 'mp 69 °C', null, (oy) => {
       for (let j = 0; j < 4; j++) s += chainInk(chainPts(40, oy + 42 + j * 16, 17, L, 0));
     });
-    row(118, 226, 'oleic acid, cis', 'mp 13 °C', 'warn', (oy) => {
-      s += chainInk(chainPts(24, oy + 124, 17, L, 0, { cis: [9], s: -1 }), { dbl: [9], hi: [9], center: true });
-      s += chainInk(chainPts(24, oy + 140, 17, L, 0, { cis: [9], s: 1 }), { dbl: [9], hi: [9], center: true });
+    row(118, 256, 'oleic acid, cis', 'mp 13 °C', 'warn', (oy) => {
+      s += chainInk(chainPts(24, oy + 128, 17, L, 0, { cis: [9], s: -1 }), { dbl: [9], hi: [9], center: true });
+      s += chainInk(chainPts(24, oy + 144, 17, L, 0, { cis: [9], s: 1 }), { dbl: [9], hi: [9], center: true });
     });
-    row(352, 104, 'elaidic acid, trans', 'mp 44 °C', null, (oy) => {
+    row(386, 104, 'elaidic acid, trans', 'mp 44 °C', null, (oy) => {
       for (let j = 0; j < 4; j++) s += chainInk(chainPts(40, oy + 42 + j * 16, 17, L, 0), { dbl: [9], hi: [9], center: true });
     });
-    s += tag(165, 472, 'COOH end at the left of each chain');
+    s += tag(165, 506, 'COOH end at the left of each chain');
     return s;
   },
   caption: 'Straight chains stack; the cis chains bend apart.',
@@ -274,7 +274,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-partial-hydrogenation',
   lessons: ['lipids'],
-  viewBox: '0 0 304 668',
+  viewBox: '0 0 336 668',
   alt: 'Three stacked panels. A cis alkene with R and R-prime on the same side gains one hydrogen from the nickel surface; the half-hydrogenated intermediate has a single carbon-carbon bond, which can rotate, and one carbon bonded to nickel; the surface takes a hydrogen back and the double bond re-forms trans, with R and R-prime on opposite sides.',
   build() {
     let s = '';
@@ -345,7 +345,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-triglyceride',
   lessons: ['lipids'],
-  viewBox: '0 0 320 372',
+  viewBox: '0 0 320 442',
   alt: 'Glycerol, CH2, CH, CH2 each carrying an OH, plus three fatty acids R-COOH give a triglyceride and three water. In the triglyceride each glycerol oxygen is bonded to the carbonyl carbon of one fatty acid, so glycerol carries three ester groups, each ending in a long chain R.',
   build() {
     let s = '';
@@ -358,9 +358,9 @@ FIGURES.push({
     s += text(150, 82, '+ 3', { cls: 'fg-lbl', size: 16 });
     s += label(232, 82, 'R–COOH');
     s += tag(232, 106, 'fatty acid');
-    s += arrow(P(160, 174), P(160, 210));
-    s += tag(172, 196, '− 3 H₂O', { anchor: 'start' });
-    const G = [A(46, 246, 'CH₂'), A(46, 294, 'CH'), A(46, 342, 'CH₂')];
+    s += arrow(P(160, 172), P(160, 202));
+    s += tag(172, 192, '− 3 H₂O', { anchor: 'start' });
+    const G = [A(46, 256, 'CH₂'), A(46, 326, 'CH'), A(46, 396, 'CH₂')];
     s += bd(G[0], G[1]) + bd(G[1], G[2]);
     for (const c of G) {
       const O = A(c.x + 46, c.y, 'O'), C = A(c.x + 96, c.y, 'C', 'hi'), Od = A(c.x + 96, c.y - 32, 'O'), R = A(c.x + 146, c.y, 'R');
@@ -368,7 +368,7 @@ FIGURES.push({
       s += draw(O, C, Od, R);
     }
     s += draw(...G);
-    s += tag(250, 366, 'triglyceride: three esters');
+    s += tag(160, 432, 'triglyceride: three esters');
     return s;
   },
   caption: 'Each glycerol OH becomes the single-bonded O of an ester. The highlighted C–O bonds are new.',
@@ -521,7 +521,7 @@ FIGURES.push({
     s += bond(P(500, 232), P(532, 206), { rFrom: 0, rTo: 0, cls: 'fg-bond-soft' });
     return s;
   },
-  caption: 'One molecule with a water-loving end and a water-avoiding end, and the sphere many of them form in water. Each dot on the micelle is one carboxylate head.',
+  caption: 'One molecule with a water-loving end and a water-avoiding end, and the sphere many of them form in water. Each circle marked − on the micelle is one carboxylate head.',
 });
 
 FIGURES.push({
@@ -544,7 +544,7 @@ FIGURES.push({
     s += tag(165, 412, 'micelle: heads out, tails in');
     return s;
   },
-  caption: 'Each dot on the micelle is one carboxylate head.',
+  caption: 'Each circle marked − on the micelle is one carboxylate head.',
 });
 
 /* ================================================= phospholipid ========= */
@@ -626,7 +626,6 @@ FIGURES.push({
     s += bilayer(34, 190, 11, 26, { rows: [[0, 1], [150, -1]], tail: 70 });
     s += tag(165, 168, 'water', { cls: 'fg-tag-mut' });
     s += tag(165, 368, 'water', { cls: 'fg-tag-mut' });
-    s += tag(165, 270, 'tails meet in the middle');
     return s;
   },
   caption: 'Two tails make each molecule a rough cylinder, and cylinders pack into a flat sheet.',
@@ -770,7 +769,7 @@ FIGURES.push({
     return s;
   },
   caption: 'The four fused rings and the numbering every steroid shares. Wedged groups point toward you.',
-  note: 'The hashed hydrogens at C9 and C14 point away from you. All of these ring-junction positions are fixed in natural steroids, which is why cholesterol, with eight stereocenters, is made as one stereoisomer.',
+  note: 'The hashed hydrogens at C9 and C14 point away from you. Cholesterol has eight stereocenters, seven in the rings and one (C20) inside the side chain, and cells make only one of its 256 possible stereoisomers.',
 });
 
 FIGURES.push({
@@ -781,7 +780,7 @@ FIGURES.push({
   build() {
     let s = '';
     const core = steroidCore(70, 140, 30);
-    s += cholesterol(core, { numCls: 'fg-tag', numSize: 11, only: [3, 5, 6, 10, 13, 17] }).svg;
+    s += cholesterol(core, { numCls: 'fg-tag', numSize: 11, only: [3, 5, 6, 10, 17] }).svg;
     return s;
   },
   caption: 'Four fused rings, lettered A to D; a few carbons are numbered.',
@@ -817,24 +816,24 @@ FIGURES.push({
   alt: 'Left: testosterone, the steroid skeleton with a ketone at C3, a C4=C5 double bond, wedged methyls on C10 and C13, and a wedged OH on C17. The methyl on C10, C19, is shaded. Arrow labeled aromatase. Right: estradiol, the same skeleton with ring A drawn as a benzene ring carrying an OH on C3, no methyl on C10, a wedged methyl on C13 and a wedged OH on C17.',
   build() {
     let s = '';
-    const c1 = steroidCore(80, 160, 34);
+    const c1 = steroidCore(110, 160, 34);
     const t = testosterone(c1);
     s += t.svg;
     s += text(t.m19.end.x, t.m19.end.y - 8, 'C19', { cls: 'fg-tag-warn', size: 11 });
     s += ringLetters(c1, 'fg-tag-mut');
-    s += tag(180, 236, 'testosterone');
-    s += arrow(P(348, 140), P(418, 140));
-    s += tag(383, 126, 'aromatase');
-    const c2 = steroidCore(510, 160, 34);
+    s += tag(210, 240, 'testosterone');
+    s += arrow(P(372, 140), P(436, 140));
+    s += tag(404, 126, 'aromatase');
+    const c2 = steroidCore(520, 160, 34);
     s += estradiol(c2).svg;
     s += ringLetters(c2, 'fg-tag-mut');
-    s += tag(610, 236, 'estradiol');
-    s += tag(c2.cA.x, c2.cA.y - 34 - 22, 'ring A now aromatic', { cls: 'fg-tag' });
+    s += tag(620, 240, 'estradiol');
+    s += tag(c2.cA.x, c2.cA.y + 34 + 24, 'ring A now aromatic', { cls: 'fg-tag' });
     const oK = at(c1.v[3], 150, 34 * 0.85);
     s += tag(oK.x + 4, oK.y + 30, 'ketone on C3', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'Only ring A changes. Aromatase removes C19, the methyl on C10, and makes ring A aromatic, so the C3 ketone ends up as a phenol OH. Rings B, C and D and the C17 OH are untouched.',
+  caption: 'Compare ring A in the two structures: the shaded methyl is gone and the ring is aromatic. Rings B, C and D and the C17 OH are the same in both.',
 });
 
 FIGURES.push({
@@ -858,7 +857,7 @@ FIGURES.push({
     s += tag(160, 408, 'estradiol');
     return s;
   },
-  caption: 'Ring A loses C19 and becomes aromatic; the C3 ketone becomes a phenol OH.',
+  caption: 'Compare ring A: the shaded methyl is gone, and the ring is aromatic.',
 });
 
 /* ================================================= prostaglandin E2 ===== */
@@ -872,7 +871,7 @@ FIGURES.push({
   id: 'prostaglandin-e2',
   section: 'lipids',
   anchor: 'the same kind of reaction as saponification with a different nucleophile.</div>',
-  viewBox: '0 0 700 350',
+  viewBox: '0 0 700 320',
   alt: 'Prostaglandin E2. A five-membered ring carries a ketone at C9 and a hashed OH at C11. From C8 a hashed bond leads to the upper chain, seven carbons with a cis double bond between C5 and C6, which rises to a COOH group at C1. From C12 a wedged bond leads to the lower chain, eight carbons with a trans double bond between C13 and C14, a hashed OH on C15, and a CH3 end at C20.',
   build() {
     let s = '';
@@ -911,14 +910,14 @@ FIGURES.push({
       return nt(P(p.x + ((p.x - aw.x) / d) * 14, p.y + ((p.y - aw.y) / d) * 14), n, key);
     };
     [7, 6, 5, 4, 3, 2].forEach((n, k) => { s += chainNum(up, k + 1, n); });
-    s += nt(at(up[7], 240, 15), 1, true);
+    s += nt(at(up[7], -30, 16), 1, true);
     [13, 16, 17, 18, 19].forEach((n) => { s += chainNum(lo, n - 12, n); });
     s += nt(at(lo[2], 90, 20), 14);
     s += nt(at(lo[3], 20, 16), 15);
     s += nt(at(lo[8], dirOf(lo[7], lo[8]), 16), 20, true);
-    s += tag(cx - 10, 338, 'five-membered ring');
+    s += tag(cx - 10, 308, 'five-membered ring');
     s += tag(420, 40, 'upper chain: cis C5=C6, COOH at C1', { anchor: 'start' });
-    s += tag(460, 338, 'lower chain: trans C13=C14, CH₃ at C20');
+    s += tag(460, 308, 'lower chain: trans C13=C14, CH₃ at C20');
     s += tag(40, 40, 'PGE₂', { anchor: 'start' });
     return s;
   },
@@ -993,8 +992,8 @@ FIGURES.push({
     s += tag(L5.x - 26, (L5.y + L6.y) / 2 - 4, 'head-to-tail link', { anchor: 'end', cls: 'fg-tag-good' });
     s += tag(L5.x - 26, (L5.y + L6.y) / 2 + 12, '(C5–C6)', { anchor: 'end', cls: 'fg-tag-good' });
     s += tag(L3.x + 24, (L3.y + L4.y) / 2 + 4, 'ring-closing bond (C3–C4)', { anchor: 'start', cls: 'fg-tag-good' });
-    s += tag(610, 70, 'unit 1, in color:', { anchor: 'start' });
-    s += tag(610, 86, 'C1, C2, C3, C6, C7', { anchor: 'start', cls: 'fg-tag-mut' });
+    s += tag(572, 70, 'unit 1, in color:', { anchor: 'start' });
+    s += tag(572, 86, 'C1, C2, C3, C6, C7', { anchor: 'start', cls: 'fg-tag-mut' });
     s += tag(560, 236, 'unit 2, in black:', { anchor: 'start' });
     s += tag(560, 252, 'C4, C5, C8, C9, C10', { anchor: 'start', cls: 'fg-tag-mut' });
     s += tag(470, 284, 'limonene, C₁₀H₁₆');
@@ -1014,7 +1013,7 @@ FIGURES.push({
     s += chainInk(pts);
     const cx = carboxyl(pts[0], dirOf(pts[0], pts[1]), { L: 24 });
     s += cx.svg;
-    s += tag(pts[0].x + 4, pts[0].y + 22, 'C1');
+    s += tag(pts[0].x - 32, pts[0].y + 18, 'C1');
     s += tag(pts[17].x, pts[17].y + 22, 'C18');
     s += tag(36, 136, 'polar COOH');
     s += tag(200, 136, 'nonpolar chain');

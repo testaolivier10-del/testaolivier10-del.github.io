@@ -92,7 +92,7 @@ FIGURES.push({
   section: 'amino-acids',
   anchor: '<h3>In water, an amino acid carries two charges</h3>',
   lessons: ['amino-acids'],
-  alt: 'Alanine drawn with every group labelled. The alpha carbon in the middle carries a hydrogen above, an amino group H2N on the left, a carboxyl group C double-bonded to O and single-bonded to OH on the right, and a CH3 side chain below.',
+  alt: 'Alanine drawn with every group labeled. The alpha carbon in the middle carries a hydrogen above, an amino group H2N on the left, a carboxyl group C double-bonded to O and single-bonded to OH on the right, and a CH3 side chain below.',
   viewBox: '0 0 340 250',
   build() {
     const c = P(140, 118);
@@ -242,7 +242,7 @@ FIGURES.push({
     s += Tag(P(x(6.02), 28), 'halfway between the two pKa values');
     return s;
   },
-  caption: 'Alanine’s charge across the pH scale. The two pKa values are the only boundaries, and the pI sits halfway between them.',
+  caption: 'Alanine across the pH scale. Each band shows the form that dominates in that range.',
 });
 
 /* ======================================================================
@@ -294,7 +294,7 @@ FIGURES.push({
     ], ['1.88', '3.65', '9.60'], 1, 'pI = ½(1.88 + 3.65) = 2.77');
     return s;
   },
-  caption: 'Each arrow removes one proton, at the pKa written above it. The green box is the form with no net charge, and the pI averages the two pKa values on either side of it.',
+  caption: 'The four forms of lysine and of aspartic acid, in order of rising pH. The green box has no net charge, and the bracket marks the two pKa values to average.',
 });
 
 /* ======================================================================
@@ -444,7 +444,7 @@ FIGURES.push({
     s += Tag(P(130, 250), 'a secondary amine');
     return s;
   },
-  caption: 'Proline. Its three side-chain CH₂ groups (highlighted) close a five-membered ring through the nitrogen.',
+  caption: 'Proline. The highlighted bond is where the side chain joins the nitrogen and completes the ring.',
 });
 
 /* ======================================================================
@@ -455,7 +455,7 @@ FIGURES.push({
   section: 'amino-acids',
   anchor: 'cross-link',
   lessons: ['amino-acids'],
-  alt: 'Two cysteine side chains, each CH2–SH hanging from an alpha carbon of a protein chain, face each other. An arrow labelled oxidation, two hydrogens removed, leads down to the same two side chains joined as CH2–S–S–CH2, a disulfide bond.',
+  alt: 'Two cysteine side chains, each CH2–SH hanging from an alpha carbon of a protein chain, face each other. An arrow labeled oxidation, two hydrogens removed, leads down to the same two side chains joined as CH2–S–S–CH2, a disulfide bond.',
   viewBox: '0 0 340 250',
   build() {
     let s = '';
@@ -571,7 +571,7 @@ FIGURES.push({
   build() {
     return cornCell(8, 8, 324, 324, 'toward') + cornCell(348, 8, 324, 324, 'away');
   },
-  caption: 'The CORN reading for L-alanine. The direction flips when you view the same molecule from the other side.',
+  caption: 'L-alanine drawn twice: on the left with its H on a wedge, on the right turned so the H is on a hash.',
 });
 
 /* ======================================================================

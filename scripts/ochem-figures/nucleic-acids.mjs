@@ -292,7 +292,7 @@ FIGURES.push({
 /* Shared by the notes and the lesson, so 340 wide. */
 function nucleotide() {
   let s = '';
-  const c = P(196, 372);
+  const c = P(170, 244);
   const F = furanose(c, { dot: true });
   const { pos } = F;
   s += F.s;
@@ -306,7 +306,7 @@ function nucleotide() {
   s += tg(c5.x + 26, c5.y + 4, '5′', 'fg-tag', 'start');
   const o5 = P(c5.x - 36, c5.y - 38);
   s += bd(c5, 'CH₂', o5, 'O', { cls: 'fg-bond-hi' }) + A(o5, 'O');
-  const Pp = P(o5.x - 22, o5.y - 50);
+  const Pp = P(o5.x - 4, o5.y - 50);
   s += bd(o5, 'O', Pp, 'P', { cls: 'fg-bond-hi' });
   const oA = P(Pp.x, Pp.y - 52), oB = P(Pp.x + 48, Pp.y - 22), oC = P(Pp.x - 2, Pp.y + 0);
   s += bd(Pp, 'P', oA, 'O', { order: 2 });
@@ -316,8 +316,8 @@ function nucleotide() {
   const oD = P(Pp.x - 30, Pp.y + 40);
   s += bd(Pp, 'P', oD, 'O⁻') + A(oD, 'O⁻');
   void oC;
-  s += tg(Pp.x + 34, Pp.y + 30, 'phosphate', 'fg-tag-warn', 'start');
-  s += tg(Pp.x + 34, Pp.y + 44, 'ester', 'fg-tag-warn', 'start');
+  s += tg(o5.x + 22, o5.y - 10, 'phosphate', 'fg-tag-warn', 'start');
+  s += tg(o5.x + 22, o5.y + 4, 'ester', 'fg-tag-warn', 'start');
   // C1' -> N9 of adenine, base up (beta)
   const n9 = P(pos[1].x, pos[1].y - 58);
   const base = drawBase('A', { c: P(0, 0), b: 30, rot: -18, sugar: null, compact: true, kinds: { N9: 'hi' } });
@@ -329,9 +329,9 @@ function nucleotide() {
   s += tg(pos[1].x + 10, pos[1].y - 16, 'bond', 'fg-tag-good', 'start');
   s += tg(n9.x - 30, n9.y - 118, 'ADENINE');
   // brackets
-  s += rule(24, 470, 316, 470);
-  s += lbl(170, 494, 'nucleoside = base + sugar');
-  s += lbl(170, 516, 'nucleotide = base + sugar + phosphate');
+  s += rule(24, 344, 316, 344);
+  s += lbl(170, 368, 'nucleoside = base + sugar');
+  s += lbl(170, 390, 'nucleotide = base + sugar + phosphate');
   return s;
 }
 FIGURES.push({
@@ -340,7 +340,7 @@ FIGURES.push({
   lessons: ['nucleic-acids'],
   anchor: 'the nucleoside becomes a <b>nucleotide</b>.',
   alt: 'dAMP drawn out. A 2-deoxyribose Haworth ring numbered 1 prime to 4 prime; adenine bonded through its N9 to C1 prime, pointing up; H down on C2 prime; OH down on C3 prime; and from C4 prime a CH2 (C5 prime) joined through an oxygen to a phosphate carrying one double-bonded O and two O minus.',
-  viewBox: '0 0 340 530',
+  viewBox: '0 0 340 404',
   build: nucleotide,
   caption: 'dAMP, one DNA nucleotide. The base hangs from C1′ through an N-glycosidic bond (green), the phosphate is an ester on the 5′ oxygen (coral), and the OH on C3′ is left free for the next nucleotide.',
 });

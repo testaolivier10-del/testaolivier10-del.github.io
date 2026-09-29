@@ -744,18 +744,18 @@ FIGURES.push({
     s += panel(16, 542, 728, 246);
     s += tg(380, 564, '3 · THE C=O REFORMS AND THE LEAVING GROUP GOES');
     s += tetrahedral(P(150, 688), { arrows: true });
-    s += arrow(P(372, 688), P(420, 688));
-    const c6 = P(440, 680);
+    s += arrow(P(342, 688), P(384, 688));
+    const c6 = P(470, 680);
     const o6 = at(c6, 90, 56), r6 = at(c6, 210, 56), n6 = at(c6, 330, 58);
     s += bond(c6, o6, { order: 2, rFrom: 16, rTo: 15 }) + atom(o6.x, o6.y, 'O');
     s += bond(c6, r6, { rFrom: 16, rTo: 15 }) + atom(r6.x, r6.y, 'R');
     s += bond(c6, n6, { rFrom: 16, rTo: 15, cls: 'fg-bond-hi' });
     s += arm(n6, 30, 46, 'R′').s + arm(n6, 270, 40, 'H', { r: 12 }).s + atom(n6.x, n6.y, 'N');
     s += atom(c6.x, c6.y, 'C');
-    s += tg(460, 774, 'the amide (after N loses H⁺)');
-    s += lbl(560, 654, '+ CyNH–C(=O)–NHCy', 'start');
-    s += tg(576, 676, 'dicyclohexylurea', 'start');
-    s += tg(576, 694, '(after it gains H⁺)', 'start');
+    s += tg(490, 774, 'the amide (after N loses H⁺)');
+    s += lbl(592, 638, '+ CyNH–C(=O)–NHCy', 'start');
+    s += tg(608, 660, 'dicyclohexylurea', 'start');
+    s += tg(608, 678, '(after it gains H⁺)', 'start');
     return s;
   },
   caption: 'Cy is cyclohexyl, C₆H₁₁. Follow the coral atoms from panel to panel. The highlighted bond in panel 1 is the new bond from the acid’s oxygen to DCC. Proton transfers are not drawn.',
