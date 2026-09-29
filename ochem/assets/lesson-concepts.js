@@ -197,9 +197,13 @@
       8:['organometallic-quench','grignard-scope'],
       9:['organometallic-quench','grignard-scope'] } },
 
-    'organolithium-reagents': { n:8, steps:{
-      2:['grignard-scope'], 3:['grignard-scope'], 4:['grignard-scope'],
-      6:['grignard-scope'], 7:['grignard-scope'] } },
+    'organolithium-reagents': { n:12, steps:{
+      3:['organometallic-quench','grignard-scope'],
+      5:['grignard-scope'],
+      7:['alkyne-acidity'],
+      9:['grignard-scope'],
+      10:['acetylide-alkylation','substrate-class'],
+      11:['acetylide-alkylation','grignard-scope'] } },
 
     'gilman-reagents': { n:11, steps:{
       4:['hard-soft-addition'],
