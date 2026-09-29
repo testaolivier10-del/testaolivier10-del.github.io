@@ -1,191 +1,504 @@
 /* Figures for the carboxylic-acids notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Most figures are drawn as "cells": one structure inside a panel, written
+   in the cell's own coordinates. The notes page lays cells side by side; a
+   lesson copy (id prefix l-) stacks the same cells at 340 wide, so the notes
+   and the lesson show the same drawing. Text inside a cell is fg-lbl or
+   fg-tag only, which is what a lesson figure may use. */
+import { atom, bond, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
+import { zig, sk, ringDouble, polyPts, benzene } from '../lib/ochem-skeletal.mjs';
+import { armEnd } from '../lib/ochem-helpers.mjs';
 
 const FIGURES = [];
+const r2 = (v) => Math.round(v * 100) / 100;
 
-/* ---------------------------------------------------------------- 165 ---
-   The dimer. The prose asserts an eight-membered ring held by two hydrogen
-   bonds at once and then explains a boiling point with it; that is a specific
-   2D arrangement and the section had no picture of it. */
+/* ------------------------------------------------------------ helpers --- */
+
+/* A panel with a title tag at the top and up to two foot tags at the bottom.
+   `draw(Q)` gets a point maker shifted to the cell's corner. */
+function cell(ox, oy, w, h, title, foot, draw, opts = {}) {
+  const Q = (x, y) => P(ox + x, oy + y);
+  let s = panel(ox, oy, w, h, opts.kind ? { kind: opts.kind } : {});
+  if (title) s += tag(ox + w / 2, oy + 22, title);
+  const feet = foot ? (Array.isArray(foot) ? foot : [foot]) : [];
+  feet.forEach((f, i) => {
+    s += text(ox + w / 2, oy + h - 14 - (feet.length - 1 - i) * 18, f, { cls: opts.footCls || 'fg-tag-good', size: 11 });
+  });
+  s += draw(Q, w, h);
+  return s;
+}
+
+const A = (p, l, o = {}) => atom(p.x, p.y, l, o);
+const rOf = (l) => (l.length >= 4 ? 22 : l.length === 3 ? 19 : l.length === 2 ? 16 : l === 'H' ? 11 : 15);
+const charge = (p, s) => text(p.x, p.y, s, { cls: 'fg-warn', size: 15 });
+/* A point at `dist` from p, at a screen angle (clockwise from east, as
+   lonePair measures it). */
+const at = (p, deg, dist) => P(p.x + Math.cos((deg * Math.PI) / 180) * dist, p.y + Math.sin((deg * Math.PI) / 180) * dist);
+const mid = (a, b) => P((a.x + b.x) / 2, (a.y + b.y) / 2);
+/* A double-headed resonance arrow. */
+const resArrow = (a, b) => arrow(a, b, { size: 7 }) + arrow(b, a, { size: 7 });
+/* A small ring that marks a skeletal carbon. */
+const mark = (p) => `<circle class="fg-atom-hi" cx="${r2(p.x)}" cy="${r2(p.y)}" r="5.5"></circle>`;
+
+/* The carboxyl unit CH3–C(O)(O): carbon at (x, y), one oxygen straight up,
+   one down-right, CH3 down-left. `o` says which C–O is double, whether the
+   lower oxygen carries the H, and whether to draw the curved arrows that
+   push the lower oxygen's lone pair into the C–O bond and the C=O pi bond
+   onto the upper oxygen. Returns the ink and the key points. */
+function carboxyl(Q, x, y, o = {}) {
+  const c = Q(x, y);
+  const oT = armEnd(c, 90, 54), oR = armEnd(c, 330, 54), me = armEnd(c, 210, 54);
+  const topDouble = o.topDouble !== false;
+  let s = '';
+  s += bond(c, oT, { rFrom: 16, rTo: 15, order: topDouble ? 2 : 1 });
+  s += bond(c, oR, { rFrom: 16, rTo: 15, order: topDouble ? 1 : 2 });
+  s += bond(c, me, { rFrom: 16, rTo: 19 });
+  let h = null;
+  if (o.H) { h = armEnd(oR, 30, 40); s += bond(oR, h, { rFrom: 15, rTo: 11 }); }
+  s += A(me, 'CH₃', { r: 19 });
+  s += A(oT, 'O', o.topKind ? { kind: o.topKind } : {});
+  s += A(oR, 'O', o.rightKind ? { kind: o.rightKind } : {});
+  if (h) s += A(h, 'H', { r: 11 });
+  s += A(c, 'C', { kind: o.cKind || 'hi' });
+
+  // Upper oxygen: two pairs when double-bonded, three and a minus when single.
+  if (topDouble) {
+    s += lonePair(oT.x, oT.y, 225, { dist: 22 }) + lonePair(oT.x, oT.y, 315, { dist: 22 });
+  } else {
+    s += lonePair(oT.x, oT.y, 180, { dist: 22 }) + lonePair(oT.x, oT.y, 270, { dist: 22 }) + lonePair(oT.x, oT.y, 0, { dist: 22 });
+    s += charge(at(oT, 315, 30), '−');
+  }
+  // Lower oxygen. Its bond to carbon points up-left (screen 210).
+  if (o.H && topDouble) {            // neutral O–H: two pairs, below
+    s += lonePair(oR.x, oR.y, 50, { dist: 22 }) + lonePair(oR.x, oR.y, 130, { dist: 22 });
+  } else if (o.H) {                  // O+ with H, double to C: one pair
+    s += lonePair(oR.x, oR.y, 90, { dist: 22 });
+    s += charge(at(oR, 270, 28), '+');
+  } else if (topDouble) {            // O− single to C: three pairs
+    s += lonePair(oR.x, oR.y, 300, { dist: 22 }) + lonePair(oR.x, oR.y, 30, { dist: 22 }) + lonePair(oR.x, oR.y, 120, { dist: 22 });
+    s += charge(at(oR, 345, 31), '−');
+  } else {                           // O double to C, no H: two pairs
+    s += lonePair(oR.x, oR.y, 330, { dist: 22 }) + lonePair(oR.x, oR.y, 90, { dist: 22 });
+  }
+
+  if (o.arrows) {
+    // lower O lone pair -> C–O bond; C=O pi -> upper O.
+    const lp = at(oR, o.H ? 130 : 120, 26);
+    s += curve(lp, mid(c, oR), { bow: 20 });
+    const piStart = at(mid(c, oT), 180, 6);
+    s += curve(piStart, at(oT, 180, 17), { bow: 16 });
+  }
+  return { s, c, oT, oR, me, h };
+}
+
+/* ======================================================================
+   1. The carboxyl group is flat, and its OH already donates.
+   ====================================================================== */
+const structureCells = [
+  ['ACETIC ACID', ['sp² carbon: three groups, flat, 120° apart'], (Q, w) => {
+    const m = carboxyl(Q, w / 2 - 20, 108, { H: true, arrows: true });
+    let s = m.s;
+    s += text(m.c.x + 30, m.c.y - 10, '120°', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    return s;
+  }],
+  ['MINOR CONTRIBUTOR', ['charges separated, so it counts for less', 'but the C–OH bond gains double-bond character'], (Q, w) => {
+    const m = carboxyl(Q, w / 2 - 20, 108, { H: true, topDouble: false, topKind: 'warn', rightKind: 'warn' });
+    return m.s;
+  }],
+];
+
+FIGURES.push({
+  id: 'carboxyl-structure',
+  section: 'carboxylic-acids',
+  anchor: '<h3>Structure</h3>',
+  alt: 'Two resonance contributors of acetic acid. Left: the usual structure, a flat carbon with a C=O, an O–H and a CH3 at 120 degrees, with one curved arrow from a lone pair on the OH oxygen into the C–O bond and one from the C=O pi bond onto the top oxygen. Right: the minor contributor, with a single bond to a negative top oxygen and a double bond to a positive OH oxygen.',
+  viewBox: '0 0 760 252',
+  build() {
+    let s = '';
+    s += cell(8, 8, 344, 236, ...structureCells[0].slice(0, 3));
+    s += cell(408, 8, 344, 236, ...structureCells[1].slice(0, 3));
+    s += resArrow(P(360, 126), P(400, 126));
+    return s;
+  },
+  caption: 'Follow the two arrows on the left: a lone pair on the OH oxygen moves into the C–O bond, and the C=O pi electrons move onto the top oxygen. That gives the structure on the right.',
+});
+
+FIGURES.push({
+  id: 'l-carboxyl-structure',
+  lessons: ['carboxylic-acids'],
+  alt: 'Two stacked resonance contributors of acetic acid. Top: the flat carboxyl carbon with a C=O, an O–H and a CH3, with curved arrows pushing the OH lone pair into the C–O bond and the C=O pi bond onto the top oxygen. Bottom: the minor contributor with a negative top oxygen and a positive, double-bonded OH oxygen.',
+  viewBox: '0 0 340 520',
+  build() {
+    let s = '';
+    s += cell(8, 8, 324, 236, ...structureCells[0].slice(0, 3));
+    s += resArrow(P(170, 250), P(170, 270));
+    s += cell(8, 276, 324, 236, ...structureCells[1].slice(0, 3));
+    return s;
+  },
+  caption: 'The arrows on the top drawing turn it into the bottom one.',
+});
+
+/* ======================================================================
+   2. The acid dimer.
+   ====================================================================== */
 FIGURES.push({
   id: 'acid-dimer',
   section: 'carboxylic-acids',
   anchor: 'which is why the measured molecular weight of acetic acid vapor comes out close to double.</p>',
-  viewBox: '0 0 760 360',
-  alt: 'Two acetic acid molecules facing each other, each O-H hydrogen reaching across to the other molecule’s carbonyl oxygen, closing an eight-membered ring held by two hydrogen bonds',
+  viewBox: '0 0 760 280',
+  alt: 'Two acetic acid molecules facing each other. Each O–H hydrogen reaches across to the other molecule’s carbonyl oxygen, closing an eight-membered ring held by two hydrogen bonds. Below: acetic acid, 60 g/mol, boils at 118 °C; acetone, 58 g/mol, boils at 56 °C.',
   build() {
     let s = '';
-    const meL = P(180, 180), cL = P(256, 180), o1L = P(330, 130), o2L = P(330, 230);
-    const meR = P(580, 180), cR = P(504, 180), o1R = P(430, 230), o2R = P(430, 130);
-    const hL = P(380, 244), hR = P(380, 116);
+    const Y = -50;
+    const meL = P(180, 180 + Y), cL = P(256, 180 + Y), o1L = P(330, 130 + Y), o2L = P(330, 230 + Y);
+    const meR = P(580, 180 + Y), cR = P(504, 180 + Y), o1R = P(430, 230 + Y), o2R = P(430, 130 + Y);
+    const hL = P(380, 244 + Y), hR = P(380, 116 + Y);
 
     s += bond(cL, o1L, { order: 2 });
     s += bond(cL, o2L);
-    s += bond(cL, meL);
+    s += bond(cL, meL, { rTo: 19 });
     s += bond(cR, o1R, { order: 2 });
     s += bond(cR, o2R);
-    s += bond(cR, meR);
-    s += bond(o2L, hL, { rTo: 10, cls: 'fg-bond' });
-    s += bond(o2R, hR, { rTo: 10, cls: 'fg-bond' });
-    // the two hydrogen bonds, drawn dashed
-    s += bond(hL, o1R, { rFrom: 10, cls: 'fg-dash-hi' });
-    s += bond(hR, o1L, { rFrom: 10, cls: 'fg-dash-hi' });
+    s += bond(cR, meR, { rTo: 19 });
+    s += bond(o2L, hL, { rTo: 11 });
+    s += bond(o2R, hR, { rTo: 11 });
+    // the two hydrogen bonds, dashed
+    s += bond(hL, o1R, { rFrom: 11, cls: 'fg-dash-hi' });
+    s += bond(hR, o1L, { rFrom: 11, cls: 'fg-dash-hi' });
 
-    s += atom(meL.x, meL.y, 'CH₃');
-    s += atom(meR.x, meR.y, 'CH₃');
+    s += atom(meL.x, meL.y, 'CH₃', { r: 19 });
+    s += atom(meR.x, meR.y, 'CH₃', { r: 19 });
     s += atom(cL.x, cL.y, 'C', { kind: 'hi' });
     s += atom(cR.x, cR.y, 'C', { kind: 'hi' });
     s += atom(o1L.x, o1L.y, 'O'); s += lonePair(o1L.x, o1L.y, 250); s += lonePair(o1L.x, o1L.y, 190);
-    s += atom(o1R.x, o1R.y, 'O'); s += lonePair(o1R.x, o1R.y, 110); s += lonePair(o1R.x, o1R.y, 170);
-    s += atom(o2L.x, o2L.y, 'O'); s += lonePair(o2L.x, o2L.y, 110); s += lonePair(o2L.x, o2L.y, 300);
-    s += atom(o2R.x, o2R.y, 'O'); s += lonePair(o2R.x, o2R.y, 250); s += lonePair(o2R.x, o2R.y, 70);
-    s += atom(hL.x, hL.y, 'H', { r: 10 });
-    s += atom(hR.x, hR.y, 'H', { r: 10 });
+    s += atom(o1R.x, o1R.y, 'O'); s += lonePair(o1R.x, o1R.y, 10); s += lonePair(o1R.x, o1R.y, 70);
+    s += atom(o2L.x, o2L.y, 'O'); s += lonePair(o2L.x, o2L.y, 110); s += lonePair(o2L.x, o2L.y, 170);
+    s += atom(o2R.x, o2R.y, 'O'); s += lonePair(o2R.x, o2R.y, 290); s += lonePair(o2R.x, o2R.y, 350);
+    s += atom(hL.x, hL.y, 'H', { r: 11 });
+    s += atom(hR.x, hR.y, 'H', { r: 11 });
 
-    s += tag(380, 92, 'hydrogen bond');
-    s += tag(380, 276, 'hydrogen bond');
+    s += tag(380, 36, 'hydrogen bond');
+    s += tag(380, 232, 'hydrogen bond');
 
-    s += rule(24, 296, 726, 296);
-    s += text(24, 320, 'acetic acid · 60 g/mol · bp 118 °C', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
-    s += text(24, 342, 'acetone · 58 g/mol · bp 56 °C', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += text(700, 320, 'costs TWO hydrogen bonds', { cls: 'fg-lbl', size: 13, anchor: 'end' });
-    s += text(700, 342, 'not one — hence the 62 °C', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
+    s += text(40, 266, 'acetic acid · 60 g/mol · boils at 118 °C', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+    s += text(720, 266, 'acetone · 58 g/mol · boils at 56 °C', { cls: 'fg-tag', size: 11, anchor: 'end' });
     return s;
   },
-  caption: 'Two carboxylic acids lock together through two hydrogen bonds at once, closing an eight-membered ring: each molecule donates its O–H to the other’s carbonyl oxygen. Breaking a dimer apart costs two hydrogen bonds rather than one, which is why acetic acid at 60 g/mol boils at 118 °C while acetone at 58 g/mol boils at 56 °C.',
-  note: 'The pairing survives into the vapor, which is why a molecular-weight measurement on acetic acid vapor reads close to 120 rather than 60 — one of the older pieces of evidence that the dimer is a real species and not a way of drawing the liquid.',
+  caption: 'Each dashed line runs from one molecule’s O–H hydrogen to the other molecule’s C=O oxygen. Count the ring they close: eight atoms.',
 });
 
-/* ---------------------------------------------------------------- 166 ---
-   The section asserts twice that the neutral acid’s OH donates into its own
-   carbonyl, and draws only the anion. The claim that carries the second half
-   of the section is the one with no picture. */
+/* ======================================================================
+   3. Ethoxide against acetate.
+   ====================================================================== */
+FIGURES.push({
+  id: 'alkoxide-vs-carboxylate',
+  section: 'carboxylic-acids',
+  anchor: '<h3>Why the O–H is so acidic</h3>',
+  alt: 'Left: ethoxide, CH3–CH2–O minus, with the whole negative charge on one oxygen; its acid, ethanol, has pKa 16. Right: the two resonance contributors of acetate, with the negative charge on the lower oxygen in one and on the upper oxygen in the other; its acid, acetic acid, has pKa 4.76.',
+  viewBox: '0 0 760 262',
+  build() {
+    let s = '';
+    // Ethoxide.
+    s += cell(8, 8, 232, 246, 'ETHOXIDE', ['whole charge on one O', 'ethanol: pKa 16'], (Q) => {
+      const me = Q(52, 132), ch2 = Q(110, 100), o = Q(168, 132);
+      let t = bond(me, ch2, { rFrom: 19, rTo: 19 }) + bond(ch2, o, { rFrom: 19, rTo: 16 });
+      t += A(me, 'CH₃', { r: 19 }) + A(ch2, 'CH₂', { r: 19 }) + A(o, 'O', { kind: 'warn' });
+      t += lonePair(o.x, o.y, 300, { dist: 23 }) + lonePair(o.x, o.y, 30, { dist: 23 }) + lonePair(o.x, o.y, 120, { dist: 23 });
+      t += charge(at(o, 345, 32), '−');
+      return t;
+    });
+    // Acetate: two contributors in one panel.
+    s += panel(256, 8, 496, 246);
+    s += tag(504, 30, 'ACETATE');
+    s += text(504, 222, 'charge shared by two equal O atoms', { cls: 'fg-tag-good', size: 11 });
+    s += text(504, 240, 'acetic acid: pKa 4.76', { cls: 'fg-tag-good', size: 11 });
+    const Q1 = (x, y) => P(256 + x, 8 + y);
+    s += carboxyl(Q1, 110, 112, { arrows: true, rightKind: 'warn' }).s;
+    s += resArrow(P(462, 128), P(508, 128));
+    const Q2 = (x, y) => P(510 + x, 8 + y);
+    s += carboxyl(Q2, 110, 112, { topDouble: false, topKind: 'warn' }).s;
+    return s;
+  },
+  caption: 'On the left the charge has one place to be. On the right, the arrows move it from the lower oxygen to the upper one, and the two drawings differ only in which oxygen is which.',
+});
+
+/* ======================================================================
+   4. The three diacids.
+   ====================================================================== */
+/* A COOH on skeletal carbon p, whose chain neighbour is nb. The =O goes on
+   the side given by `oSide` (+1 or −1, turning from the neighbour bond). */
+function cooh(p, nb, oSide) {
+  const base = (Math.atan2(-(nb.y - p.y), nb.x - p.x) * 180) / Math.PI;
+  const oD = armEnd(p, base + 120 * oSide, 40), oH = armEnd(p, base - 120 * oSide, 40);
+  let s = bond(p, oD, { rFrom: 0, rTo: 15, order: 2 }) + bond(p, oH, { rFrom: 0, rTo: 16 });
+  s += A(oD, 'O') + A(oH, 'OH', { r: 16 });
+  return s;
+}
+const diacidCells = [
+  ['OXALIC ACID', 2, 'no carbon between', 'pKa 1.27, then 4.27', 'gap 3.0'],
+  ['MALONIC ACID', 3, 'one carbon between', 'pKa 2.83, then 5.69', 'gap 2.9'],
+  ['SUCCINIC ACID', 4, 'two carbons between', 'pKa 4.21, then 5.64', 'gap 1.4'],
+];
+FIGURES.push({
+  id: 'diacids',
+  section: 'carboxylic-acids',
+  anchor: '<h3>Substituent effects on top of resonance</h3>',
+  alt: 'Three diacids drawn as skeletal structures. Oxalic acid, two COOH groups bonded directly: pKa 1.27 then 4.27, a gap of 3.0. Malonic acid, one CH2 between them: pKa 2.83 then 5.69, a gap of 2.9. Succinic acid, two CH2 groups between them: pKa 4.21 then 5.64, a gap of 1.4.',
+  viewBox: '0 0 760 258',
+  build() {
+    let s = '';
+    diacidCells.forEach(([title, n, between, pk, gap], i) => {
+      s += cell(8 + i * 252, 8, 240, 242, title, [between, pk, gap], (Q, w) => {
+        const span = (n - 1) * 36;
+        const pts = zig(0, 0, n, 36, 20).map((p) => Q(w / 2 - span / 2 + p.x, 108 + p.y));
+        let t = '';
+        for (let k = 0; k < n - 1; k++) t += sk(pts[k], pts[k + 1]);
+        t += cooh(pts[0], pts[1], 1);
+        t += cooh(pts[n - 1], pts[n - 2], n % 2 === 0 ? 1 : -1);
+        for (let k = 1; k < n - 1; k++) t += mark(pts[k]);
+        return t;
+      }, { footCls: 'fg-tag' });
+    });
+    return s;
+  },
+  caption: 'Read the bottom line of each panel. The gap between the two pKa values closes as the marked carbons push the two carboxyl groups apart.',
+});
+
+/* ======================================================================
+   5. Benzoic acids with a group across the ring.
+   ====================================================================== */
+const benzoicCells = [
+  ['BENZOIC ACID', null, 'H at the para position', 'pKa 4.20', 'fg-tag'],
+  ['p-NITROBENZOIC ACID', 'NO₂', 'pulls electrons out of the ring', 'pKa 3.44: stronger', 'fg-tag-good'],
+  ['p-METHOXYBENZOIC ACID', 'OCH₃', 'O lone pair pushes electrons in', 'pKa 4.47: weaker', 'fg-tag-warn'],
+];
+FIGURES.push({
+  id: 'benzoic-acids',
+  section: 'carboxylic-acids',
+  anchor: 'here they show up as a change in pKa.</p>',
+  viewBox: '0 0 760 300',
+  alt: 'Three benzoic acids drawn as skeletal structures with the COOH at the top of the ring. Benzoic acid itself, pKa 4.20. p-Nitrobenzoic acid, with NO2 at the bottom of the ring, directly across from the COOH: pKa 3.44. p-Methoxybenzoic acid, with OCH3 in the same place: pKa 4.47.',
+  build() {
+    let s = '';
+    benzoicCells.forEach(([title, group, note, pk, cls], i) => {
+      s += cell(8 + i * 252, 8, 240, 284, title, [note, pk], (Q, w) => {
+        const cx = Q(w / 2, 0).x, cy = Q(0, 150).y;
+        const ring = benzene(cx, cy, 32, { rot: 90 });
+        let t = ring.svg;
+        const top = ring.pts[0], bot = ring.pts[3];
+        const cc = P(top.x, top.y - 34);
+        t += sk(top, cc);
+        t += cooh(cc, top, 1);
+        if (group) {
+          const g = P(bot.x, bot.y + 36);
+          t += bond(bot, g, { rFrom: 0, rTo: rOf(group) });
+          t += A(g, group, { r: rOf(group), kind: 'hi' });
+        } else {
+          t += mark(bot);
+        }
+        t += text(bot.x + 44, bot.y + 4, 'para', { cls: 'fg-tag', size: 11, anchor: 'start' });
+        return t;
+      }, { footCls: cls });
+    });
+    return s;
+  },
+  caption: 'The group sits across the ring from the COOH, the para position. Compare each pKa with benzoic acid’s 4.20.',
+});
+
+/* ======================================================================
+   6. Five routes that all end at butanoic acid.
+   ====================================================================== */
+const ZX = 28, ZY = 17;
+const routeCells = [
+  ['BUTAN-1-OL', ['KMnO₄, or Jones reagent'], (Q) => {
+    const v = zig(0, 0, 4, ZX, ZY).map((p) => Q(58 + p.x, 92 + p.y));
+    let t = sk(v[0], v[1]) + sk(v[1], v[2]) + sk(v[2], v[3]);
+    const oh = armEnd(v[3], 330, 34);
+    t += bond(v[3], oh, { rFrom: 0, rTo: 16 }) + A(oh, 'OH', { r: 16 });
+    return t + mark(v[3]);
+  }],
+  ['BUTANAL', ['KMnO₄, Ag₂O, or Jones reagent'], (Q) => {
+    const v = zig(0, 0, 4, ZX, ZY).map((p) => Q(62 + p.x, 100 + p.y));
+    let t = sk(v[0], v[1]) + sk(v[1], v[2]) + sk(v[2], v[3]);
+    const o = armEnd(v[3], 90, 34), h = armEnd(v[3], 330, 30);
+    t += bond(v[3], o, { rFrom: 0, rTo: 15, order: 2 }) + A(o, 'O');
+    t += bond(v[3], h, { rFrom: 0, rTo: 11 }) + A(h, 'H', { r: 11 });
+    return t + mark(v[3]);
+  }],
+  ['BUTANENITRILE', ['H₃O⁺, heat'], (Q) => {
+    const v = zig(0, 0, 3, ZX, ZY).map((p) => Q(52 + p.x, 104 + p.y));
+    let t = sk(v[0], v[1]) + sk(v[1], v[2]);
+    const c = armEnd(v[2], 30, 32), nAt = armEnd(c, 30, 36);
+    t += sk(v[2], c);
+    t += bond(c, nAt, { rFrom: 0, rTo: 15, order: 3, gap: 3.2 }) + A(nAt, 'N');
+    return t + mark(c);
+  }],
+  ['1-BROMOPROPANE', ['1. Mg  2. CO₂  3. H₃O⁺', 'the new carbon comes from CO₂'], (Q) => {
+    const v = zig(0, 0, 3, ZX, ZY).map((p) => Q(76 + p.x, 78 + p.y));
+    let t = sk(v[0], v[1]) + sk(v[1], v[2]);
+    const br = armEnd(v[2], 30, 34);
+    t += bond(v[2], br, { rFrom: 0, rTo: 16 }) + A(br, 'Br', { r: 16 });
+    t += text(Q(48, 0).x, Q(0, 125).y, '+', { cls: 'fg-lbl', size: 13 });
+    const o1 = Q(76, 120), c = Q(124, 120), o2 = Q(172, 120);
+    t += bond(o1, c, { rFrom: 13, rTo: 14, order: 2 }) + bond(c, o2, { rFrom: 14, rTo: 13, order: 2 });
+    t += atom(o1.x, o1.y, 'O', { r: 13 }) + atom(o2.x, o2.y, 'O', { r: 13 }) + atom(c.x, c.y, 'C', { kind: 'hi', r: 14 });
+    return t;
+  }],
+  ['OCT-4-ENE', ['hot KMnO₄, or O₃ then H₂O₂', 'each half becomes butanoic acid'], (Q) => {
+    const v = zig(0, 0, 8, 25, ZY).map((p) => Q(30 + p.x, 92 + p.y));
+    let t = '';
+    for (let k = 0; k < 7; k++) t += k === 3 ? ringDouble(v[3], v[4], P(v[3].x, v[3].y + 40), { inset: 5, gap: 4.4 }) : sk(v[k], v[k + 1]);
+    return t + mark(v[3]) + mark(v[4]);
+  }],
+  ['ALL FIVE GIVE BUTANOIC ACID', ['marked: the COOH carbon'], (Q) => {
+    const v = zig(0, 0, 4, ZX, ZY).map((p) => Q(62 + p.x, 100 + p.y));
+    let t = sk(v[0], v[1]) + sk(v[1], v[2]) + sk(v[2], v[3]);
+    const o = armEnd(v[3], 90, 34), oh = armEnd(v[3], 330, 34);
+    t += bond(v[3], o, { rFrom: 0, rTo: 15, order: 2 }) + A(o, 'O');
+    t += bond(v[3], oh, { rFrom: 0, rTo: 16 }) + A(oh, 'OH', { r: 16 });
+    return t + mark(v[3]);
+  }],
+];
+FIGURES.push({
+  id: 'routes-to-acid',
+  section: 'carboxylic-acids',
+  anchor: '<h3>Getting to and from carboxylic acids</h3>',
+  alt: 'Six skeletal structures. Butan-1-ol, butanal, butanenitrile, 1-bromopropane plus carbon dioxide, and oct-4-ene, each with the reagent that turns it into a carboxylic acid and the carbon that becomes the COOH carbon marked. The sixth panel is butanoic acid, the product of all five.',
+  viewBox: '0 0 760 404',
+  build() {
+    let s = '';
+    routeCells.forEach(([title, foot, draw], i) => {
+      const col = i % 3, row = Math.floor(i / 3);
+      s += cell(8 + col * 252, 8 + row * 200, 240, 188, title, foot, draw, { kind: i === 5 ? 'good' : null, footCls: i === 5 ? 'fg-tag-good' : 'fg-tag' });
+    });
+    return s;
+  },
+  caption: 'The marked carbon in each starting material ends up as the COOH carbon. From 1-bromopropane that carbon comes from CO₂; from oct-4-ene each alkene carbon becomes one.',
+});
+
+/* ======================================================================
+   7. The acid's carbonyl carbon against acetone's.
+   ====================================================================== */
+const donationCells = [
+  ['ACETIC ACID', ['the OH lone pair feeds the carbon', 'smaller δ+: the weaker electrophile'], (Q, w) => {
+    const m = carboxyl(Q, w / 2 - 20, 104, { H: true, cKind: 'hi' });
+    let t = m.s;
+    t += curve(at(m.oR, 130, 26), mid(m.c, m.oR), { bow: 20 });
+    t += text(m.c.x - 26, m.c.y - 14, 'δ+', { cls: 'fg-tag', size: 11, anchor: 'end' });
+    return t;
+  }],
+  ['ACETONE', ['only CH₃ groups: no lone pair to give', 'larger δ+: the better electrophile'], (Q, w) => {
+    const c = Q(w / 2, 104);
+    const o = armEnd(c, 90, 54), m1 = armEnd(c, 210, 54), m2 = armEnd(c, 330, 54);
+    let t = bond(c, o, { rFrom: 16, rTo: 15, order: 2 }) + bond(c, m1, { rFrom: 16, rTo: 19 }) + bond(c, m2, { rFrom: 16, rTo: 19 });
+    t += A(o, 'O') + A(m1, 'CH₃', { r: 19 }) + A(m2, 'CH₃', { r: 19 }) + A(c, 'C', { kind: 'warn' });
+    t += lonePair(o.x, o.y, 225, { dist: 22 }) + lonePair(o.x, o.y, 315, { dist: 22 });
+    t += text(c.x - 26, c.y - 14, 'δ+', { cls: 'fg-warn', size: 15, anchor: 'end' });
+    return t;
+  }],
+];
 FIGURES.push({
   id: 'acid-donation-vs-ketone',
   section: 'carboxylic-acids',
   anchor: 'A carboxylic acid is therefore noticeably <i>less</i> reactive toward nucleophilic attack than a ketone.</p>',
-  viewBox: '0 0 760 330',
-  alt: 'Acetic acid with a curved arrow from the hydroxyl oxygen into the carbonyl and the resulting charge-separated contributor, beside acetone which has no lone-pair donor',
+  viewBox: '0 0 760 252',
+  alt: 'Left: acetic acid, with a curved arrow from a lone pair on the OH oxygen into the bond to the carbonyl carbon, and a small delta-plus on that carbon. Right: acetone, whose carbonyl carbon carries only two CH3 groups and a larger delta-plus.',
   build() {
     let s = '';
-    s += tag(150, 44, 'acetic acid');
-    const c1 = P(150, 140), o1 = P(150, 84), o2 = P(206, 174), h1 = P(252, 192), m1 = P(94, 174);
-    s += bond(c1, o1, { order: 2 }); s += bond(c1, o2); s += bond(c1, m1);
-    s += bond(o2, h1, { rTo: 10 });
-    s += atom(m1.x, m1.y, 'CH₃');
-    s += atom(o1.x, o1.y, 'O'); s += lonePair(o1.x, o1.y, 200);
-    s += atom(o2.x, o2.y, 'O'); s += lonePair(o2.x, o2.y, 40); s += lonePair(o2.x, o2.y, 130);
-    s += atom(h1.x, h1.y, 'H', { r: 10 });
-    s += atom(c1.x, c1.y, 'C', { kind: 'hi' });
-    s += curve(P(222, 190), P(182, 160), { bow: 24 });
-    s += curve(P(168, 116), P(172, 94), { bow: 16 });
-
-    s += arrow(P(266, 140), P(324, 140), { muted: true });
-    s += text(295, 126, 'resonance', { cls: 'fg-tag', size: 10.5 });
-
-    s += tag(404, 44, 'the contributor that matters');
-    const c2 = P(404, 140), o3 = P(404, 84), o4 = P(460, 174), h2 = P(506, 192), m2 = P(348, 174);
-    s += bond(c2, o3); s += bond(c2, o4, { order: 2 }); s += bond(c2, m2);
-    s += bond(o4, h2, { rTo: 10 });
-    s += atom(m2.x, m2.y, 'CH₃');
-    s += atom(o3.x, o3.y, 'O', { kind: 'warn' }); s += text(430, 76, '−', { cls: 'fg-hi', size: 15 });
-    s += atom(o4.x, o4.y, 'O', { kind: 'warn' }); s += text(486, 168, '+', { cls: 'fg-warn', size: 15 });
-    s += atom(h2.x, h2.y, 'H', { r: 10 });
-    s += atom(c2.x, c2.y, 'C', { kind: 'hi' });
-    s += text(404, 214, 'carbon is no longer δ+', { cls: 'fg-sm', size: 10 });
-
-    s += rule(536, 44, 536, 250);
-    s += tag(616, 44, 'acetone');
-    const c3 = P(616, 140), o5 = P(616, 84), m3 = P(560, 174), m4 = P(672, 174);
-    s += bond(c3, o5, { order: 2 }); s += bond(c3, m3); s += bond(c3, m4);
-    s += atom(m3.x, m3.y, 'CH₃'); s += atom(m4.x, m4.y, 'CH₃');
-    s += atom(o5.x, o5.y, 'O'); s += lonePair(o5.x, o5.y, 200); s += lonePair(o5.x, o5.y, 340);
-    s += atom(c3.x, c3.y, 'C', { kind: 'warn' });
-    s += text(616, 214, 'no lone-pair donor', { cls: 'fg-sm', size: 10 });
-
-    s += rule(24, 274, 726, 274);
-    s += text(24, 300, 'The donation is happening in the NEUTRAL acid, before anything is removed.', { cls: 'fg-lbl', size: 13, anchor: 'start' });
-    s += text(24, 322, 'It cancels part of the carbonyl carbon’s δ+, so the acid is the worse electrophile.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    s += cell(8, 8, 364, 236, ...donationCells[0]);
+    s += cell(388, 8, 364, 236, ...donationCells[1]);
     return s;
   },
-  caption: 'The same lone pair, doing its other job. In the carboxylate this donation spreads a negative charge; here, in the neutral acid, it pushes electron density onto a carbon that was supposed to be electrophilic. Acetone has only alkyl groups attached and no lone pair to give, which is why its carbonyl is the hungrier of the two.',
-  note: 'This is the half of the section students skip, because "the O–H is very acidic" and "the C=O is very electrophilic" sound like the same claim about a very polar molecule. They are opposite claims, and the drawing is why: the donation that makes the anion stable is the donation that makes the carbonyl dull.',
+  caption: 'Compare the two δ+ labels. Only the acid has a lone pair next door to feed its carbonyl carbon.',
+});
+FIGURES.push({
+  id: 'l-acid-donation-vs-ketone',
+  lessons: ['carboxylic-acids'],
+  alt: 'Two stacked panels. Top: acetic acid, with a curved arrow from a lone pair on the OH oxygen into the bond to the carbonyl carbon, and a small delta-plus on that carbon. Bottom: acetone, whose carbonyl carbon carries only two CH3 groups and a larger delta-plus.',
+  viewBox: '0 0 340 504',
+  build() {
+    let s = '';
+    s += cell(8, 8, 324, 236, ...donationCells[0]);
+    s += cell(8, 260, 324, 236, ...donationCells[1]);
+    return s;
+  },
+  caption: 'Only the acid has a lone pair next door to feed its carbonyl carbon.',
 });
 
-/* ---------------------------------------------------------------- 167 ---
-   Beta-keto acid decarboxylation. The section makes the ring size the whole
-   argument -- "one carbon closer or further and the ring the proton would
-   have to close is the wrong size" -- and then draws nothing, so the reader
-   has to build a six-membered transition state in their head from prose. It
-   also names an enol as the immediate product, which is exactly the kind of
-   intermediate a scheme drops if it is not drawn. */
+/* ======================================================================
+   8. Beta-keto acid decarboxylation.
+   ====================================================================== */
 FIGURES.push({
   id: 'beta-keto-decarboxylation',
   section: 'carboxylic-acids',
-  anchor: 'A malonic acid, with two carboxyls on one carbon, does the same thing for the same reason, one of its carboxyls playing the part of the ketone.</p>',
-  viewBox: '0 0 760 356',
-  alt: 'A beta-keto acid drawn inside a six-membered cyclic transition state with three curved arrows, giving an enol plus carbon dioxide, and the enol tautomerizing to the ketone',
+  anchor: 'and no C=C can form.</p>',
+  viewBox: '0 0 760 300',
+  alt: '3-Oxobutanoic acid drawn as a six-membered ring: ketone oxygen, the transferring hydrogen, the carboxyl OH oxygen, the carboxyl carbon, the alpha CH2 and the ketone carbon. Three curved arrows: the ketone C=O pi bond takes the hydrogen, the O–H bond becomes a C=O of carbon dioxide, and the bond from the alpha carbon to the carboxyl carbon becomes the C=C of an enol. Next panel: the enol and CO2. Last panel: the enol has tautomerized to acetone.',
   build() {
     let s = '';
-    // ---- panel 1: the cyclic transition state -------------------------
-    const cK = P(107, 192), cA = P(152, 218), cC = P(197, 192);
-    const oH = P(197, 140), h = P(152, 114), oK = P(107, 140);
-    const me = P(62, 218), oC = P(242, 218);
-    s += tag(152, 62, 'the six-membered ring, closing');
-    s += bond(cK, oK, { order: 2 });
-    s += bond(cK, cA); s += bond(cA, cC); s += bond(cC, oH);
-    s += bond(oH, h, { rTo: 10 });
-    s += bond(cC, oC, { order: 2 });
-    s += bond(cK, me);
-    s += `<line class="fg-dash-hi" x1="${145.2}" y1="${121.5}" x2="${115.8}" y2="${138.5}"></line>`;
-    s += atom(me.x, me.y, 'CH₃'); s += atom(oC.x, oC.y, 'O');
-    s += atom(oK.x, oK.y, 'O'); s += lonePair(oK.x, oK.y, 200);
-    s += atom(oH.x, oH.y, 'O'); s += lonePair(oH.x, oH.y, 20);
-    s += atom(h.x, h.y, 'H', { r: 10 });
-    s += atom(cK.x, cK.y, 'C', { kind: 'hi' });
-    s += atom(cA.x, cA.y, 'C', { kind: 'warn' });
-    s += atom(cC.x, cC.y, 'C', { kind: 'hi' });
-    // 1: ketone O grabs the proton. 2: the O-H pair becomes CO2's second pi
-    // bond. 3: the C-C bond to the carboxyl becomes the enol's pi bond.
-    s += curve(P(90, 124), P(140, 108), { bow: -14 });
-    s += curve(P(172, 124), P(191, 167), { bow: 20 });
-    s += curve(P(172, 202), P(132, 202), { bow: 22 });
-    s += text(152, 262, '3-oxobutanoic acid', { cls: 'fg-sm', size: 10 });
+    // Panel 1: the ring.
+    s += cell(8, 8, 296, 284, '3-OXOBUTANOIC ACID', ['six atoms in the ring,', 'three arrows at once'], (Q) => {
+      const cen = Q(150, 142);
+      const R = 56;
+      const v = (deg) => P(cen.x + R * Math.cos((deg * Math.PI) / 180), cen.y - R * Math.sin((deg * Math.PI) / 180));
+      const h = v(90), oH = v(30), cC = v(330), cA = v(270), cK = v(210), oK = v(150);
+      const me = armEnd(cK, 210, 48), oX = armEnd(cC, 330, 46);
+      let t = '';
+      t += bond(oK, cK, { rFrom: 15, rTo: 15, order: 2 });
+      t += bond(cK, cA, { rFrom: 15, rTo: 19 });
+      t += bond(cA, cC, { rFrom: 19, rTo: 15 });
+      t += bond(cC, oH, { rFrom: 15, rTo: 15 });
+      t += bond(oH, h, { rFrom: 15, rTo: 11 });
+      t += bond(h, oK, { rFrom: 11, rTo: 15, cls: 'fg-dash-hi' });
+      t += bond(cC, oX, { rFrom: 15, rTo: 15, order: 2 });
+      t += bond(cK, me, { rFrom: 15, rTo: 19 });
+      t += A(me, 'CH₃', { r: 19 }) + A(oX, 'O') + A(oK, 'O') + A(oH, 'O') + A(h, 'H', { r: 11 });
+      t += A(cK, 'C', { kind: 'hi' }) + A(cA, 'CH₂', { r: 19, kind: 'warn' }) + A(cC, 'C', { kind: 'hi' });
+      t += lonePair(oK.x, oK.y, 170, { dist: 22 }) + lonePair(oK.x, oK.y, 250, { dist: 22 });
+      t += lonePair(oH.x, oH.y, 290, { dist: 22 }) + lonePair(oH.x, oH.y, 10, { dist: 22 });
+      t += lonePair(oX.x, oX.y, 350, { dist: 22 }) + lonePair(oX.x, oX.y, 80, { dist: 22 });
+      // a: ketone C=O pi bond -> the forming O–H bond.
+      t += curve(at(mid(oK, cK), 180, 7), mid(oK, h), { bow: 20 });
+      // b: the O–H bond -> the C–O bond (becomes CO2's second C=O).
+      t += curve(at(mid(oH, h), 30, 6), at(mid(cC, oH), 0, 6), { bow: 18 });
+      // c: the alpha C–carboxyl C bond -> the C–C bond to the ketone carbon.
+      t += curve(at(mid(cA, cC), 270, 4), at(mid(cK, cA), 270, 4), { bow: 20 });
+      t += text(cK.x - 2, cK.y + 34, 'β', { cls: 'fg-tag', size: 11 });
+      t += text(cA.x + 30, cA.y + 22, 'α', { cls: 'fg-tag', size: 11 });
+      return t;
+    });
+    s += arrow(P(312, 150), P(352, 150));
+    s += text(332, 138, 'warm', { cls: 'fg-tag', size: 11 });
 
-    s += arrow(P(285, 168), P(335, 168), { muted: true });
-    s += text(310, 152, 'warm', { cls: 'fg-tag', size: 10.5 });
-    s += text(310, 192, '− CO₂', { cls: 'fg-tag-warn', size: 10.5 });
+    // Panel 2: the enol and CO2.
+    s += cell(360, 8, 214, 284, 'ENOL + CO₂', ['the first product is an enol'], (Q) => {
+      const c = Q(100, 116);
+      const oh = armEnd(c, 90, 50), me = armEnd(c, 210, 50), ch2 = armEnd(c, 330, 52);
+      let t = bond(c, oh, { rFrom: 15, rTo: 16 }) + bond(c, me, { rFrom: 15, rTo: 19 }) + bond(c, ch2, { rFrom: 15, rTo: 19, order: 2 });
+      t += A(oh, 'OH', { r: 16 }) + A(me, 'CH₃', { r: 19 }) + A(ch2, 'CH₂', { r: 19, kind: 'warn' }) + A(c, 'C', { kind: 'hi' });
+      const o1 = Q(62, 212), cc = Q(107, 212), o2 = Q(152, 212);
+      t += bond(o1, cc, { order: 2 }) + bond(cc, o2, { order: 2 });
+      t += A(o1, 'O') + A(o2, 'O') + A(cc, 'C', { kind: 'hi' });
+      t += lonePair(o1.x, o1.y, 135, { dist: 22 }) + lonePair(o1.x, o1.y, 225, { dist: 22 });
+      t += lonePair(o2.x, o2.y, 315, { dist: 22 }) + lonePair(o2.x, o2.y, 45, { dist: 22 });
+      return t;
+    });
+    s += arrow(P(582, 150), P(608, 150));
 
-    // ---- panel 2: the enol ---------------------------------------------
-    const c2 = P(410, 168), oh2 = P(410, 122), me2 = P(364, 194), ch2 = P(456, 194);
-    s += bond(c2, oh2); s += bond(c2, me2); s += bond(c2, ch2, { order: 2 });
-    s += atom(oh2.x, oh2.y, 'OH'); s += atom(me2.x, me2.y, 'CH₃');
-    s += atom(ch2.x, ch2.y, 'CH₂'); s += atom(c2.x, c2.y, 'C', { kind: 'hi' });
-    s += tag(410, 62, 'the immediate product is an enol');
-    s += text(410, 262, 'C=C and an O–H, not a ketone yet', { cls: 'fg-sm', size: 10 });
-
-    s += arrow(P(500, 168), P(550, 168), { muted: true });
-    s += text(525, 152, 'tautomerize', { cls: 'fg-tag', size: 10.5 });
-
-    // ---- panel 3: the ketone -------------------------------------------
-    const c3 = P(620, 168), o3 = P(620, 122), me3 = P(574, 194), me4 = P(666, 194);
-    s += bond(c3, o3, { order: 2 }); s += bond(c3, me3); s += bond(c3, me4);
-    s += atom(o3.x, o3.y, 'O'); s += lonePair(o3.x, o3.y, 200);
-    s += atom(me3.x, me3.y, 'CH₃'); s += atom(me4.x, me4.y, 'CH₃');
-    s += atom(c3.x, c3.y, 'C', { kind: 'hi' });
-    s += tag(620, 62, 'what you isolate');
-    s += text(620, 262, 'acetone', { cls: 'fg-sm', size: 10 });
-
-    s += rule(24, 288, 726, 288);
-    s += text(24, 314, 'Count the ring: ketone O, ketone C, alpha C, carboxyl C, carboxyl O, and the moving H.', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
-    s += text(24, 338, 'One carbon nearer and that ring is five-membered, one further and it is seven — neither closes.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
+    // Panel 3: acetone.
+    s += cell(616, 8, 136, 284, 'KETONE', ['what you isolate'], (Q) => {
+      const c = Q(68, 128);
+      const o = armEnd(c, 90, 50), m1 = armEnd(c, 210, 46), m2 = armEnd(c, 330, 46);
+      let t = bond(c, o, { rFrom: 15, rTo: 15, order: 2 }) + bond(c, m1, { rFrom: 15, rTo: 19 }) + bond(c, m2, { rFrom: 15, rTo: 19 });
+      t += A(o, 'O') + A(m1, 'CH₃', { r: 19 }) + A(m2, 'CH₃', { r: 19, kind: 'warn' }) + A(c, 'C', { kind: 'hi' });
+      t += lonePair(o.x, o.y, 225, { dist: 22 }) + lonePair(o.x, o.y, 315, { dist: 22 });
+      t += text(c.x, c.y + 70, 'acetone', { cls: 'fg-tag', size: 11 });
+      return t;
+    });
     return s;
   },
-  caption: 'Three arrows going round one ring, all at once. The ketone oxygen reaches over and takes the carboxyl proton; the O–H electrons become the second pi bond of the departing CO₂; and the C–C bond that held the carboxyl on becomes the pi bond of an enol. Nothing else in the molecule has to move, which is why gentle warming is enough.',
-  note: 'The enol is a real intermediate and not a bookkeeping device — the ring cannot deliver a ketone directly, because the proton it moved went onto the ketone oxygen. Tautomerization afterwards is fast and one-way, so what you isolate is the ketone, but a mechanism drawn straight from the ring to acetone has skipped a step a grader will look for. This is also the last step of the malonic and acetoacetic ester syntheses, where the same ring closes on a carboxyl or a ketone that was installed for exactly this purpose.',
+  caption: 'Follow the three arrows round the ring on the left. Then follow the highlighted CH₂ carbon: it ends up in the enol’s C=C, and then as a CH₃ of acetone.',
 });
 
 export default FIGURES;

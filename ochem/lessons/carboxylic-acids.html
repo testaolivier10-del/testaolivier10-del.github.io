@@ -162,44 +162,71 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'A carboxylic acid is a carbonyl with a hydroxyl attached to the same carbon.',
-        bodyHtml: '<p class="step-body">A carboxylic acid, RCOOH, puts a carbonyl (C=O) and a hydroxyl (OH) on the very same carbon. Even in the neutral molecule, the OH oxygen\'s lone pair can donate into the carbonyl pi system by resonance — giving the C–OH bond some double-bond character and spreading electron density across both oxygens even before anything is deprotonated.</p><p class="step-body" style="margin-bottom:0;">That resonance donation sets up everything else in this lesson: once the O–H proton is removed, the same delocalization spreads the negative charge over both oxygens, which is why that proton is unusually easy to remove, and the reason the carbonyl carbon itself behaves differently from a simple aldehyde or ketone\'s.</p>'
+        title: 'A carboxylic acid holds a C=O and an OH on the same carbon.',
+        bodyHtml: '<p class="step-body">In acetic acid, CH₃COOH, one carbon holds a C=O, an OH and a CH₃. That C=O plus OH unit is the <b>carboxyl group</b>. Its carbon is sp², so its three groups lie flat, about 120° apart.</p>' +
+          '<p class="step-body">The OH oxygen has a lone pair right next to the C=O. That pair can move into the C–O bond while the C=O pi electrons move onto the other oxygen. This gives a minor resonance contributor, and it happens in the neutral acid.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Take the O–H proton away and the same movement shares a full negative charge between the two oxygens. That sharing is why the proton leaves so easily. The donation also feeds the carbonyl carbon, which changes how it reacts.</p>',
+        diagramHtml: '<!-- fig:l-carboxyl-structure:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 520" role="img" aria-label="Two stacked resonance contributors of acetic acid. Top: the flat carboxyl carbon with a C=O, an O–H and a CH3, with curved arrows pushing the OH lone pair into the C–O bond and the C=O pi bond onto the top oxygen. Bottom: the minor contributor with a negative top oxygen and a positive, double-bonded OH oxygen."><rect class="fg-panel" x="8" y="8" width="324" height="236" rx="10"></rect><text class="fg-tag" x="170" y="30" text-anchor="middle" font-size="11">ACETIC ACID</text><text class="fg-tag-good" x="170" y="230" text-anchor="middle" font-size="11">sp² carbon: three groups, flat, 120° apart</text><line class="fg-bond" x1="146" y1="100" x2="146" y2="77"></line><line class="fg-bond" x1="154" y1="100" x2="154" y2="77"></line><line class="fg-bond" x1="163.86" y1="124" x2="183.77" y2="135.5"></line><line class="fg-bond" x1="136.14" y1="124" x2="119.69" y2="133.5"></line><line class="fg-bond" x1="209.76" y1="135.5" x2="221.88" y2="128.5"></line><circle class="fg-atom" cx="103.23" cy="143" r="19"></circle><text class="fg-lbl" x="103.23" y="146.51" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom" cx="150" cy="62" r="15"></circle><text class="fg-lbl" x="150" y="66.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="196.77" cy="143" r="15"></circle><text class="fg-lbl" x="196.77" y="147.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="231.41" cy="123" r="11"></circle><text class="fg-lbl" x="231.41" y="127.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom-hi" cx="150" cy="116" r="16"></circle><text class="fg-lbl" x="150" y="120.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="137.63" cy="43.26" r="2.3"></circle><circle class="fg-lp" cx="131.26" cy="49.63" r="2.3"></circle><circle class="fg-lp" cx="168.74" cy="49.63" r="2.3"></circle><circle class="fg-lp" cx="162.37" cy="43.26" r="2.3"></circle><circle class="fg-lp" cx="207.46" cy="162.75" r="2.3"></circle><circle class="fg-lp" cx="214.35" cy="156.96" r="2.3"></circle><circle class="fg-lp" cx="179.18" cy="156.96" r="2.3"></circle><circle class="fg-lp" cx="186.07" cy="162.75" r="2.3"></circle><path class="fg-arrow" d="M180.05 162.92 Q196.33 142.29 180.37 133.4"></path><path class="fg-head" d="M173.38 129.5 L182.4 129.76 L178.34 137.03 Z"></path><path class="fg-arrow" d="M144 89 Q153.32 69.46 140.51 64.76"></path><path class="fg-head" d="M133 62 L141.94 60.85 L139.08 68.66 Z"></path><text class="fg-tag" x="180" y="106" text-anchor="start" font-size="11">120°</text><line class="fg-arrow" x1="170" y1="250" x2="170" y2="263"></line><path class="fg-head" d="M170 270 L166.36 263 L173.64 263 Z"></path><line class="fg-arrow" x1="170" y1="270" x2="170" y2="257"></line><path class="fg-head" d="M170 250 L173.64 257 L166.36 257 Z"></path><rect class="fg-panel" x="8" y="276" width="324" height="236" rx="10"></rect><text class="fg-tag" x="170" y="298" text-anchor="middle" font-size="11">MINOR CONTRIBUTOR</text><text class="fg-tag-good" x="170" y="480" text-anchor="middle" font-size="11">charges separated, so it counts for less</text><text class="fg-tag-good" x="170" y="498" text-anchor="middle" font-size="11">but the C–OH bond gains double-bond character</text><line class="fg-bond" x1="150" y1="368" x2="150" y2="345"></line><line class="fg-bond" x1="165.86" y1="388.54" x2="185.77" y2="400.04"></line><line class="fg-bond" x1="161.86" y1="395.46" x2="181.77" y2="406.96"></line><line class="fg-bond" x1="136.14" y1="392" x2="119.69" y2="401.5"></line><line class="fg-bond" x1="209.76" y1="403.5" x2="221.88" y2="396.5"></line><circle class="fg-atom" cx="103.23" cy="411" r="19"></circle><text class="fg-lbl" x="103.23" y="414.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom-warn" cx="150" cy="330" r="16"></circle><text class="fg-lbl" x="150" y="334.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom-warn" cx="196.77" cy="411" r="16"></circle><text class="fg-lbl" x="196.77" y="415.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="231.41" cy="391" r="11"></circle><text class="fg-lbl" x="231.41" y="395.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom-hi" cx="150" cy="384" r="16"></circle><text class="fg-lbl" x="150" y="388.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="128" cy="325.5" r="2.3"></circle><circle class="fg-lp" cx="128" cy="334.5" r="2.3"></circle><circle class="fg-lp" cx="154.5" cy="308" r="2.3"></circle><circle class="fg-lp" cx="145.5" cy="308" r="2.3"></circle><circle class="fg-lp" cx="172" cy="334.5" r="2.3"></circle><circle class="fg-lp" cx="172" cy="325.5" r="2.3"></circle><text class="fg-warn" x="171.21" y="308.79" text-anchor="middle" font-size="15">−</text><circle class="fg-lp" cx="192.27" cy="433" r="2.3"></circle><circle class="fg-lp" cx="201.27" cy="433" r="2.3"></circle><text class="fg-warn" x="196.77" y="383" text-anchor="middle" font-size="15">+</text></svg><figcaption>The arrows on the top drawing turn it into the bottom one.</figcaption></figure><!-- fig:l-carboxyl-structure:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
-            '<h2 class="step-title">Acetate (CH₃COO⁻): click both oxygens that share the negative charge by resonance.</h2>' +
-            '<p class="step-body">Two equivalent resonance structures put the negative charge on each oxygen in turn — meaning both oxygens genuinely share it.</p>' +
-            '<div style="display:flex;justify-content:center;padding:20px 0;">' +
-            '<svg width="220" height="140" viewBox="0 0 220 140">' +
-              '<line x1="60" y1="100" x2="110" y2="70" stroke="var(--ink)" stroke-width="2"/>' +
-              '<line x1="110" y1="70" x2="70" y2="30" stroke="var(--ink)" stroke-width="2"/>' +
-              '<line x1="110" y1="70" x2="150" y2="30" stroke="var(--ink)" stroke-width="2"/>' +
-              '<circle cx="110" cy="70" r="14" fill="var(--card-bg)" stroke="var(--border)" stroke-width="2"/>' +
-              '<text x="110" y="75" text-anchor="middle" font-size="12" font-weight="800" fill="var(--ink)">C</text>' +
-              '<circle class="atom" data-v="o1" cx="65" cy="20" r="16" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="2" style="cursor:pointer;"/>' +
-              '<text x="65" y="25" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)" style="pointer-events:none;">O</text>' +
-              '<circle class="atom" data-v="o2" cx="155" cy="20" r="16" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="2" style="cursor:pointer;"/>' +
-              '<text x="155" y="25" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)" style="pointer-events:none;">O</text>' +
+            '<h2 class="step-title">This drawing of acetate puts the negative charge on one oxygen. Click every atom that really carries part of it.</h2>' +
+            '<p class="step-body">Acetate, CH₃COO⁻, is what acetic acid becomes when it loses its O–H proton.</p>' +
+            '<div class="notes-figure" style="display:flex;justify-content:center;padding:12px 0;">' +
+            '<svg width="300" height="180" viewBox="0 0 300 180" role="img" aria-label="Acetate drawn as one resonance contributor: a central carbon with a double bond up to an oxygen, a single bond down-right to an oxygen with three lone pairs and a negative charge, and a CH3 down-left. The carbon and both oxygens can be clicked.">' +
+              '<line class="fg-bond" x1="146" y1="80" x2="146" y2="59"/>' +
+              '<line class="fg-bond" x1="154" y1="80" x2="154" y2="59"/>' +
+              '<line class="fg-bond" x1="164" y1="104" x2="183" y2="115"/>' +
+              '<line class="fg-bond" x1="136" y1="104" x2="115" y2="116"/>' +
+              '<circle class="fg-atom" cx="98" cy="126" r="19"/>' +
+              '<text class="fg-lbl" x="98" y="130" text-anchor="middle">CH₃</text>' +
+              '<circle class="fg-atom-hi atom" data-v="c" cx="150" cy="96" r="16" style="cursor:pointer;"/>' +
+              '<text class="fg-lbl" x="150" y="101" text-anchor="middle" style="pointer-events:none;">C</text>' +
+              '<circle class="fg-atom-hi atom" data-v="o1" cx="150" cy="42" r="16" style="cursor:pointer;"/>' +
+              '<text class="fg-lbl" x="150" y="47" text-anchor="middle" style="pointer-events:none;">O</text>' +
+              '<circle class="fg-lp" cx="130" cy="30" r="2.4"/><circle class="fg-lp" cx="135" cy="23" r="2.4"/>' +
+              '<circle class="fg-lp" cx="165" cy="23" r="2.4"/><circle class="fg-lp" cx="170" cy="30" r="2.4"/>' +
+              '<circle class="fg-atom-hi atom" data-v="o2" cx="197" cy="123" r="16" style="cursor:pointer;"/>' +
+              '<text class="fg-lbl" x="197" y="128" text-anchor="middle" style="pointer-events:none;">O</text>' +
+              '<circle class="fg-lp" cx="206" cy="100" r="2.4"/><circle class="fg-lp" cx="214" cy="104" r="2.4"/>' +
+              '<circle class="fg-lp" cx="221" cy="130" r="2.4"/><circle class="fg-lp" cx="218" cy="138" r="2.4"/>' +
+              '<circle class="fg-lp" cx="190" cy="146" r="2.4"/><circle class="fg-lp" cx="182" cy="143" r="2.4"/>' +
+              '<text class="fg-warn" x="232" y="118" text-anchor="middle" font-size="17" style="pointer-events:none;">&#8722;</text>' +
             '</svg></div>' +
-            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Oxygens found: 0 / 2</div>' +
+            '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Atoms found: 0 / 2</div>' +
             api.feedbackHtml('fb') +
             api.nextButtonHtml('Continue', false);
           var fb = api.card.querySelector('#fb');
           var hint = api.card.querySelector('#hint');
           var next = api.card.querySelector('#nextBtn');
-          var found = 0;
+          var found = 0, missed = false;
           api.card.querySelectorAll('.atom').forEach(function(el){
             el.addEventListener('click', function(){
-              if(el.classList.contains('chosen')) return;
-              el.classList.add('chosen');
-              el.setAttribute('stroke', '#2e9e5b');
+              if(found === 2 || el.getAttribute('data-done')) return;
+              var v = el.getAttribute('data-v');
+              if(v === 'c'){
+                missed = true;
+                el.style.stroke = 'var(--bad)';
+                el.style.strokeWidth = '3';
+                el.setAttribute('data-done', '1');
+                api.showFeedback(fb, false, 'Not the carbon. It has no lone pair and four bonds in both contributors. The charge moves between atoms that can hold a lone pair: look at the two oxygens.');
+                return;
+              }
+              el.setAttribute('data-done', '1');
+              el.style.stroke = 'var(--good)';
+              el.style.strokeWidth = '3';
               found++;
-              hint.textContent = 'Oxygens found: ' + found + ' / 2';
+              hint.textContent = 'Atoms found: ' + found + ' / 2';
+              if(found === 1){
+                api.showFeedback(fb, true, v === 'o2'
+                  ? 'Yes, the oxygen drawn with the charge. One more atom shares it.'
+                  : 'Yes. The top oxygen carries half the charge, even though this drawing shows none there. One more atom shares it.');
+              }
               if(found === 2){
-                api.record(true);
-                api.showFeedback(fb, true, 'Right — both oxygens are equivalent by resonance, each carrying half the negative charge on average. This delocalization is what makes carboxylate so much more stable than a localized alkoxide.');
+                api.record(!missed);
+                api.showFeedback(fb, true, 'Right. A lone pair on the lower oxygen can move into the C–O bond while the C=O pi electrons move onto the top oxygen. The two contributors are equivalent, so each oxygen carries half the charge. The carbon carries none.');
                 next.disabled = false;
               }
             });
@@ -209,50 +236,54 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 2 · Guided Practice',
-        title: 'Why is a carboxylic acid (pKa ≈ 4-5) so much more acidic than an alcohol (pKa ≈ 16)?',
+        eyebrow: 'Guided Practice',
+        title: 'Why is a carboxylic acid (pKa about 4 to 5) so much more acidic than an alcohol (pKa about 16)?',
+        bodyHtml: '<p class="step-body">Factors affecting acidity compared two acids with the ARIO checklist. Each letter asks one question about the conjugate base. <b>A</b>tom: which atom holds the charge? <b>R</b>esonance: can the charge spread over several atoms? <b>I</b>nduction: do electronegative atoms nearby pull electron density away through the sigma bonds? <b>O</b>rbital: what is the hybridization of the atom that holds the charge?</p>',
         options: ['The carboxylate spreads its charge over two equivalent oxygens', 'A carboxylic acid simply carries more oxygen atoms overall', 'The O–H bond in an alcohol is the stronger of the two bonds', 'A carboxyl oxygen is more electronegative than an alcohol\'s'],
         correctIndex: 0,
-        correctFeedback: 'Correct — this is the Resonance factor from the ARIO framework doing almost all of the work: delocalizing the negative charge over two equivalent oxygens is dramatically stabilizing.',
-        wrongFeedback: 'Oxygen count and bond strength aren\'t the deciding factors here — it\'s specifically about how stabilized (or not) the conjugate base is by resonance.'
+        correctFeedback: 'Correct. This is R, resonance. Oxygen holds the charge in both anions, so the atom factor is a tie. The carboxylate shares its charge between two oxygens, and the alkoxide cannot.',
+        wrongFeedback: 'Compare the conjugate bases, not the acids. In both, the charge sits on oxygen. Ask what the carboxylate can do with that charge that the alkoxide cannot.'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 3 · Independent Practice',
-        title: 'Trichloroacetic acid (Cl₃CCOOH) is a much stronger acid than plain acetic acid (CH₃COOH). What factor from the ARIO framework explains this?',
+        eyebrow: 'Independent Practice',
+        title: 'Trichloroacetic acid (Cl₃CCOOH) is a much stronger acid than acetic acid (CH₃COOH). Which ARIO factor explains this?',
         options: ['Resonance — three extra contributors that acetic acid cannot draw', 'Induction — three electronegative chlorines stabilize the anion', 'Orbital — the chlorinated carbon has different s character', 'Atom — chlorine is bigger, so it holds the charge more easily'],
         correctIndex: 1,
-        correctFeedback: 'Correct — this is the same inductive effect from chloroacetic acid vs. acetic acid in the Acidity Factors lesson, just with three chlorines pulling even harder than one.',
-        wrongFeedback: 'Both molecules have the same resonance-stabilized carboxylate framework and the same carbon hybridization — the difference here is purely inductive electron withdrawal by the chlorines.'
+        correctFeedback: 'Correct. Each chlorine pulls electron density away from the carboxylate through the sigma bonds. Three chlorines pull harder than one: chloroacetic acid has a pKa of 2.86, trichloroacetic acid 0.65.',
+        wrongFeedback: 'Both anions share their charge between the same two oxygens, and the charge sits on oxygen in both. What differs is three electronegative atoms near the carboxyl group.'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'The same resonance donation that stabilizes carboxylate also dampens the neutral acid\'s electrophilicity.',
-        bodyHtml: '<p class="step-body">It\'s the identical lone pair doing two jobs. In the anion, the OH-derived oxygen\'s lone pair delocalizes the negative charge (stabilizing the carboxylate, as you just saw). In the neutral acid, that same oxygen\'s lone pair donates into the carbonyl pi system, partially canceling the carbonyl carbon\'s positive character — the same effect that lowers a ketone or aldehyde\'s electrophilicity when alkyl groups donate by induction (Aldehydes &amp; Ketones lesson), just via resonance instead of induction, and considerably stronger.</p><p class="step-body" style="margin-bottom:0;">This is why carboxylic acids (and, as the next lesson shows, esters and amides) don\'t undergo simple nucleophilic addition as readily as a plain aldehyde or ketone — the carbonyl carbon is comparatively electron-rich, thanks to this resonance donation.</p>'
+        title: 'The same donation makes the acid\'s carbonyl carbon a weaker electrophile.',
+        bodyHtml: '<p class="step-body">Acetone\'s carbonyl carbon holds two CH₃ groups, and neither has a lone pair to give. Acetic acid\'s carbonyl carbon holds an OH, and the OH lone pair feeds electron density onto it. That cancels part of the carbon\'s partial positive charge.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">So a nucleophile finds the acid\'s carbonyl carbon less attractive than acetone\'s. Esters and amides, in the next lesson, have a lone-pair donor in the same place and show the same effect.</p>',
+        diagramHtml: '<!-- fig:l-acid-donation-vs-ketone:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 504" role="img" aria-label="Two stacked panels. Top: acetic acid, with a curved arrow from a lone pair on the OH oxygen into the bond to the carbonyl carbon, and a small delta-plus on that carbon. Bottom: acetone, whose carbonyl carbon carries only two CH3 groups and a larger delta-plus."><rect class="fg-panel" x="8" y="8" width="324" height="236" rx="10"></rect><text class="fg-tag" x="170" y="30" text-anchor="middle" font-size="11">ACETIC ACID</text><text class="fg-tag-good" x="170" y="212" text-anchor="middle" font-size="11">the OH lone pair feeds the carbon</text><text class="fg-tag-good" x="170" y="230" text-anchor="middle" font-size="11">smaller δ+: the weaker electrophile</text><line class="fg-bond" x1="146" y1="96" x2="146" y2="73"></line><line class="fg-bond" x1="154" y1="96" x2="154" y2="73"></line><line class="fg-bond" x1="163.86" y1="120" x2="183.77" y2="131.5"></line><line class="fg-bond" x1="136.14" y1="120" x2="119.69" y2="129.5"></line><line class="fg-bond" x1="209.76" y1="131.5" x2="221.88" y2="124.5"></line><circle class="fg-atom" cx="103.23" cy="139" r="19"></circle><text class="fg-lbl" x="103.23" y="142.51" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom" cx="150" cy="58" r="15"></circle><text class="fg-lbl" x="150" y="62.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="196.77" cy="139" r="15"></circle><text class="fg-lbl" x="196.77" y="143.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="231.41" cy="119" r="11"></circle><text class="fg-lbl" x="231.41" y="123.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom-hi" cx="150" cy="112" r="16"></circle><text class="fg-lbl" x="150" y="116.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="137.63" cy="39.26" r="2.3"></circle><circle class="fg-lp" cx="131.26" cy="45.63" r="2.3"></circle><circle class="fg-lp" cx="168.74" cy="45.63" r="2.3"></circle><circle class="fg-lp" cx="162.37" cy="39.26" r="2.3"></circle><circle class="fg-lp" cx="207.46" cy="158.75" r="2.3"></circle><circle class="fg-lp" cx="214.35" cy="152.96" r="2.3"></circle><circle class="fg-lp" cx="179.18" cy="152.96" r="2.3"></circle><circle class="fg-lp" cx="186.07" cy="158.75" r="2.3"></circle><path class="fg-arrow" d="M180.05 158.92 Q196.33 138.29 180.37 129.4"></path><path class="fg-head" d="M173.38 125.5 L182.4 125.76 L178.34 133.03 Z"></path><text class="fg-tag" x="124" y="98" text-anchor="end" font-size="11">δ+</text><rect class="fg-panel" x="8" y="260" width="324" height="236" rx="10"></rect><text class="fg-tag" x="170" y="282" text-anchor="middle" font-size="11">ACETONE</text><text class="fg-tag-good" x="170" y="464" text-anchor="middle" font-size="11">only CH₃ groups: no lone pair to give</text><text class="fg-tag-good" x="170" y="482" text-anchor="middle" font-size="11">larger δ+: the better electrophile</text><line class="fg-bond" x1="166" y1="348" x2="166" y2="325"></line><line class="fg-bond" x1="174" y1="348" x2="174" y2="325"></line><line class="fg-bond" x1="156.14" y1="372" x2="139.69" y2="381.5"></line><line class="fg-bond" x1="183.86" y1="372" x2="200.31" y2="381.5"></line><circle class="fg-atom" cx="170" cy="310" r="15"></circle><text class="fg-lbl" x="170" y="314.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="123.23" cy="391" r="19"></circle><text class="fg-lbl" x="123.23" y="394.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom" cx="216.77" cy="391" r="19"></circle><text class="fg-lbl" x="216.77" y="394.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom-warn" cx="170" cy="364" r="16"></circle><text class="fg-lbl" x="170" y="368.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="157.63" cy="291.26" r="2.3"></circle><circle class="fg-lp" cx="151.26" cy="297.63" r="2.3"></circle><circle class="fg-lp" cx="188.74" cy="297.63" r="2.3"></circle><circle class="fg-lp" cx="182.37" cy="291.26" r="2.3"></circle><text class="fg-warn" x="144" y="350" text-anchor="end" font-size="15">δ+</text></svg><figcaption>Only the acid has a lone pair next door to feed its carbonyl carbon.</figcaption></figure><!-- fig:l-acid-donation-vs-ketone:end -->'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 5 · Check Understanding',
-        title: 'Compared to acetone (a ketone), is the carbonyl carbon of acetic acid (a carboxylic acid) more or less electrophilic?',
-        options: ['More electrophilic — a second oxygen withdraws more density', 'Identical — both are carbonyls, so nothing distinguishes them', 'Less electrophilic — the OH oxygen donates a lone pair into it', 'Less electrophilic — the acidic proton shields the carbon'],
+        eyebrow: 'Check Understanding',
+        title: 'Compared with acetone, is the carbonyl carbon of acetic acid more or less electrophilic?',
+        options: ['More electrophilic — a second oxygen withdraws more density', 'Identical — both are carbonyls, so nothing distinguishes them', 'Less electrophilic — an oxygen lone pair donates to it', 'Less electrophilic — the acidic proton shields the carbon'],
         correctIndex: 2,
-        correctFeedback: 'Correct — resonance donation from the OH oxygen is a stronger electron-donating effect than acetone\'s alkyl groups provide by induction/hyperconjugation alone, making the carboxylic acid\'s carbonyl carbon less electrophilic.',
-        wrongFeedback: 'More oxygens doesn\'t automatically mean more electrophilic — here, the extra oxygen\'s lone pair actually donates electron density into the carbonyl, reducing its electrophilicity.'
+        correctFeedback: 'Correct. The OH lone pair donates by resonance, and that outweighs anything acetone\'s CH₃ groups give. The acid\'s carbonyl carbon has the smaller partial positive charge.',
+        wrongFeedback: 'A second oxygen does not always mean a stronger pull. Look at what the OH oxygen has right next to the carbonyl carbon, and which way it moves electrons.'
       },
       {
         type: 'explain',
         eyebrow: 'Why it matters',
-        title: 'This sets up the entire next lesson: esters, amides, and acyl substitution.',
-        bodyHtml: '<div class="explain-box">Every carboxylic acid derivative (ester, amide, acid chloride, anhydride) shares this same core: a carbonyl carbon flanked by a lone-pair-donating heteroatom. How strongly that heteroatom donates (and how good a leaving group it makes) determines both the derivative\'s reactivity ranking and its characteristic substitution mechanism — the entire subject of the next two lessons.</div>'
+        title: 'This sets up the next lessons: esters, amides and acyl substitution.',
+        bodyHtml: '<div class="explain-box">Esters, amides, acid chlorides and anhydrides are all built like a carboxylic acid: a carbonyl carbon bonded to an atom with a lone pair. Two things set how each one behaves. The first is how strongly that atom donates its lone pair. The second is how good a leaving group it makes. The next two lessons use both to rank the derivatives and to explain how they react.</div>'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Fluoroacetic acid (FCH₂COOH, pKa ≈ 2.6) is a stronger acid than acetic acid (CH₃COOH, pKa ≈ 4.76). Which ARIO factor explains it?',
-        options: ['Atom — fluorine is a larger atom than chlorine and pulls harder', 'Resonance — fluorine\'s lone pairs delocalize into the carboxylate', 'Orbital — fluorine alters the hybridization at the carboxyl carbon', 'Induction — fluorine\'s electronegativity stabilizes the carboxylate'],
+        title: 'Fluoroacetic acid (FCH₂COOH, pKa about 2.6) is a stronger acid than acetic acid (CH₃COOH, pKa 4.76). Which ARIO factor explains it?',
+        options: ['Atom — the charge now sits on fluorine instead of oxygen', 'Resonance — fluorine\'s lone pairs delocalize into the carboxylate', 'Orbital — fluorine changes the hybridization of the carboxyl carbon', 'Induction — fluorine\'s electronegativity steadies the carboxylate'],
         correctIndex: 3,
-        correctFeedback: 'Correct — this is the same inductive effect as chloroacetic acid, just with an even more electronegative halogen (F) pulling electron density even more strongly, making fluoroacetic acid even more acidic.'
+        correctFeedback: 'Correct. This is the effect you saw with trichloroacetic acid, from a single, more electronegative atom. Fluorine pulls electron density from the carboxylate through the sigma bonds, and the anion is more stable.',
+        wrongFeedback: 'The charge still sits on the two oxygens, and fluorine is on a carbon that is not part of the carboxylate\'s pi system. What does a very electronegative atom nearby do through the sigma bonds?'
       }
     ]
   });
