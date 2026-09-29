@@ -281,7 +281,7 @@ FIGURES.push({
   build() {
     return rdsPanel(0, 0, false, RDS_A) + rule(380, 10, 380, 330) + rdsPanel(385, 0, false, RDS_B);
   },
-  caption: 'Energies in kcal/mol, measured from the reactants at 0. In each panel the arrow marks the biggest climb from a valley up to a peak that comes after it; that climb sets the rate.',
+  caption: 'Each number is the energy of that plateau, valley or peak. The arrow in each panel marks the climb that decides the rate.',
 });
 FIGURES.push({
   id: 'l-rds-two-cases',

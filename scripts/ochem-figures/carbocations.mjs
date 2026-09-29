@@ -592,8 +592,8 @@ FIGURES.push({
   build() {
     let s = '';
     s += oxocarb(62, 58, 170);
-    s += tg(290, 62, 'C: 6', 'end', 'fg-tag-warn');
-    s += tg(290, 174, 'all octets', 'end', 'fg-tag-good');
+    s += tg(216, 62, 'C has 6 electrons', 'start', 'fg-tag-warn');
+    s += tg(216, 174, 'all octets', 'start', 'fg-tag-good');
     s += lbl(170, 244, 'an oxocarbenium ion');
     return s;
   },
@@ -665,21 +665,21 @@ FIGURES.push({
   lessons: ['carbocations'],
   anchor: '',
   alt: 'Top: a vinyl cation; the pi cloud of the C=C lies above and below the double bond, while the empty p orbital on the linear positive carbon points at the reader, at right angles to it. Bottom: a benzene ring seen edge-on; its pi cloud lies above and below the ring plane, while the empty sp2 orbital of the positive ring carbon points sideways in the plane.',
-  viewBox: '0 0 340 366',
+  viewBox: '0 0 340 414',
   build() {
     let s = '';
     s += tg(170, 22, 'VINYL CATION');
-    const v = vinyl(P(56, 98));
+    const v = vinyl(P(56, 118));
     s += v.s;
-    s += tg(106, 50, 'π cloud');
-    s += lbl(170, 168, 'empty p points at you');
-    s += rule(20, 188, 320, 188);
-    s += tg(170, 212, 'ARYL CATION, RING EDGE-ON');
-    const a = aryl(30, 290);
+    s += tg(106, 46, 'π cloud');
+    s += lbl(170, 190, 'empty p points at you');
+    s += rule(20, 210, 320, 210);
+    s += tg(170, 234, 'ARYL CATION, RING EDGE-ON');
+    const a = aryl(30, 330);
     s += a.s;
-    s += tg(100, 244, 'π cloud');
-    s += tg(a.c.x + 48, 268, 'empty sp²');
-    s += lbl(170, 352, 'empty sp² lies in the plane');
+    s += tg(100, 268, 'π cloud');
+    s += tg(a.c.x + 48, 306, 'empty sp²');
+    s += lbl(170, 400, 'empty sp² lies in the plane');
     return s;
   },
   caption: 'In both, the empty orbital sits at right angles to the &pi; electrons, so they cannot reach it.',
@@ -769,14 +769,14 @@ FIGURES.push({
   lessons: ['carbocations'],
   anchor: '',
   alt: 'The 3-methylbutan-2-yl cation, a secondary cation. A curved arrow starts on the C-H bond of the next carbon and ends at the positive carbon. Below, after the shift: the hydrogen sits on the old cation carbon, and the positive charge is on the carbon the hydrogen left, now tertiary.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 366',
   build() {
     let s = '';
     s += tg(170, 22, 'BEFORE: 2°');
     s += shiftBefore(95, 124, HYD).s;
-    s += arrow(P(170, 172), P(170, 206), { muted: true });
-    s += tg(170, 232, 'AFTER: 3°', 'middle', 'fg-tag-good');
-    s += shiftAfter(95, 300, HYD).s;
+    s += arrow(P(170, 176), P(170, 208), { muted: true });
+    s += tg(170, 234, 'AFTER: 3°', 'middle', 'fg-tag-good');
+    s += shiftAfter(95, 340, HYD).s;
     return s;
   },
   caption: 'The arrow starts on the C&ndash;H bond. The H moves with both electrons; the charge moves back one carbon.',
@@ -798,8 +798,8 @@ FIGURES.push({
     s += atom(up.x, up.y, 'CH₃', { r: 18 });
     for (const p of [v0, v1, v2, down]) s += dot(p);
     s += chg(P(v0.x - 14, v0.y - 18));
-    s += tg(60, 84, 'CH₂⁺', 'middle', 'fg-tag-warn');
-    s += tg(262, 120, 'no H here', 'middle');
+    s += tg(v0.x - 22, v0.y + 20, 'the CH₂⁺', 'end', 'fg-tag-warn');
+    s += tg(v1.x + 24, v1.y + 26, 'no H here', 'start');
     return s;
   },
   caption: 'The neopentyl cation, (CH₃)₃C&ndash;CH₂⁺.',
@@ -810,14 +810,14 @@ FIGURES.push({
   lessons: ['carbocations'],
   anchor: '',
   alt: 'The neopentyl cation with a curved arrow from the bond to one methyl group on the quaternary carbon to the positive CH2 carbon. Below, after the shift: that methyl sits on the old CH2, and the positive charge is on the former quaternary carbon, now tertiary.',
-  viewBox: '0 0 340 330',
+  viewBox: '0 0 340 366',
   build() {
     let s = '';
     s += tg(170, 22, 'BEFORE: 1°', 'middle', 'fg-tag-warn');
     s += shiftBefore(120, 124, NEO).s;
-    s += arrow(P(170, 172), P(170, 206), { muted: true });
-    s += tg(170, 232, 'AFTER: 3°', 'middle', 'fg-tag-good');
-    s += shiftAfter(120, 300, NEO).s;
+    s += arrow(P(170, 176), P(170, 208), { muted: true });
+    s += tg(170, 234, 'AFTER: 3°', 'middle', 'fg-tag-good');
+    s += shiftAfter(120, 340, NEO).s;
     return s;
   },
   caption: 'The arrow starts on the C&ndash;CH₃ bond and ends at the CH₂⁺ carbon.',
@@ -833,7 +833,7 @@ function chain(x0, y0) {
 function numbers(v) {
   let s = '';
   s += text(v[0].x - 4, v[0].y + 18, '1', { cls: 'fg-tag-mut', size: 11 });
-  s += text(v[1].x + 18, v[1].y - 10, '2', { cls: 'fg-tag-mut', size: 11 });
+  s += text(v[1].x, v[1].y + 24, '2', { cls: 'fg-tag-mut', size: 11 });
   s += text(v[2].x + 16, v[2].y + 14, '3', { cls: 'fg-tag-mut', size: 11 });
   s += text(v[3].x + 4, v[3].y + 18, '4', { cls: 'fg-tag-mut', size: 11 });
   return s;
@@ -902,7 +902,7 @@ FIGURES.push({
       s += chg(at(o, 345, 30));
       s += fromBond(c2, o, at(o, 300, 18), 18, -6);
       const up3 = at(k.v[2], 90, 44); s += skb(k.v[2], up3) + dot(up3);
-      s += tg(x + 185, y + 204, 'the C–O pair leaves with the water', 'middle');
+      s += tg(x + 185, y + 208, 'the C–O pair leaves with the water', 'middle');
     }
     /* 3. the methyl shift */
     {
@@ -915,13 +915,13 @@ FIGURES.push({
       s += atom(up.x, up.y, 'CH₃', { kind: 'hi', r: 18 });
       s += chg(P(c2.x - 14, c2.y - 18));
       s += fromBond(c3, up, P(c2.x + 4, c2.y - 7), 14, 5);
-      s += tg(x + 185, y + 204, 'a secondary cation at C2', 'middle', 'fg-tag-warn');
+      s += tg(x + 185, y + 208, 'a secondary cation at C2', 'middle', 'fg-tag-warn');
     }
     /* 4. bromide attacks the tertiary cation */
     {
       const x = X[1], y = Y[1];
       s += wpanel(x, y, '4 · BROMIDE ATTACKS C3');
-      const k = skeleton(x + 60, y + 160); s += k.s;
+      const k = skeleton(x + 60, y + 150); s += k.s;
       const c2 = k.v[1], c3 = k.v[2];
       const up = at(c2, 90, 50);
       s += bond(c2, up, { rFrom: 0, rTo: 18, cls: 'fg-bond-hi' });
@@ -930,7 +930,7 @@ FIGURES.push({
       const br = P(c3.x + 70, c3.y - 92);
       s += bromide(br);
       s += fromLp(br, 180, P(c3.x + 6, c3.y - 14), 18);
-      s += tg(x + 185, y + 204, 'a tertiary cation at C3', 'middle', 'fg-tag-good');
+      s += tg(x + 185, y + 208, 'a tertiary cation at C3', 'middle', 'fg-tag-good');
     }
     /* 5. the product */
     {
@@ -942,7 +942,7 @@ FIGURES.push({
       const br = at(c3, 90, 54);
       s += bond(c3, br, { rFrom: 0, rTo: 16 });
       s += atom(br.x, br.y, 'Br', { kind: 'hi', r: 16 });
-      s += tg(x + 185, y + 204, '2-bromo-2,3-dimethylbutane', 'middle', 'fg-tag-good');
+      s += tg(x + 185, y + 208, '2-bromo-2,3-dimethylbutane', 'middle', 'fg-tag-good');
     }
     /* 6. the product without a shift */
     {
@@ -954,7 +954,7 @@ FIGURES.push({
       const br = at(c2, 90, 54);
       s += bond(c2, br, { rFrom: 0, rTo: 16 });
       s += atom(br.x, br.y, 'Br', { r: 16 });
-      s += tg(x + 185, y + 204, '2-bromo-3,3-dimethylbutane', 'middle', 'fg-tag-warn');
+      s += tg(x + 185, y + 208, '2-bromo-3,3-dimethylbutane', 'middle', 'fg-tag-warn');
     }
     return s;
   },
