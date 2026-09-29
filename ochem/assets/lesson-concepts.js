@@ -569,11 +569,12 @@
       3:['chair-axial-equatorial','torsional-strain'],
       6:['torsional-strain','chair-axial-equatorial'] } },
 
-    'diastereomers': { n:7, steps:{
-      1:['enantiomer-vs-diastereomer','stereocenter-identification'],
+    'diastereomers': { n:11, steps:{
       2:['enantiomer-vs-diastereomer','stereocenter-identification'],
-      3:['enantiomer-vs-diastereomer'],
-      6:['enantiomer-vs-diastereomer'] } },
+      3:['enantiomer-vs-diastereomer','stereocenter-identification'],
+      5:['enantiomer-vs-diastereomer'],
+      8:['enantiomer-vs-diastereomer'],
+      10:['enantiomer-vs-diastereomer'] } },
 
     'directing-effects': { n:8, steps:{
       1:['directing-effects'],
