@@ -461,7 +461,7 @@ FIGURES.push({
   id: 'cleavage-sn1',
   section: 'ether-chemistry',
   lessons: ['ether-chemistry'],
-  anchor: 'Being easy to reach has nothing to do with it.</p>',
+  anchor: 'because it can hold a positive charge.</p>',
   viewBox: '0 0 340 510',
   alt: 'tert-Butyl methyl ether cleaved by HI, after the oxygen has been protonated, in two stacked steps. Step 1: the bond between the tertiary carbon and oxygen breaks on its own, with the bonding pair moving onto oxygen; this gives a flat tertiary carbocation, with three methyl groups at 120 degrees, and methanol. Step 2: iodide uses a lone pair to bond to the cation, giving 2-iodo-2-methylpropane. Iodide ends up on the more crowded carbon.',
   build() {
@@ -636,7 +636,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'crown-ether-cavity',
   section: 'ether-chemistry',
-  anchor: 'is a crown ether of this kind.</p>',
+  anchor: 'A crown ether like this one is that additive.</p>',
   alt: 'Left: 18-crown-6 drawn as an eighteen-membered ring of six oxygens separated by pairs of CH2 groups, with one lone pair from each oxygen pointing inward at a potassium ion in the middle of the cavity. Right, top: the three diameters drawn to scale: the cavity at about 2.7 angstroms, potassium at 2.66, which fills it, and sodium at 1.9, which is too small to touch all six oxygens. Right, bottom: potassium fluoride dissolving in benzene as a crowned cation and a naked, unsolvated fluoride.',
   viewBox: '0 0 760 430',
   build() {
