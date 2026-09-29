@@ -189,7 +189,8 @@ FIGURES.push({
     s += nitrogen(N, [P(156, 222), P(228, 222), P(192, 244)], { plus: P(212, 190) });
     s += tg(150, 96, 'benzylic CH₂:', 'fg-tag-warn');
     s += tg(150, 112, 'its H is more acidic', 'fg-tag-warn');
-    s += tg(290, 124, 'CH₃: less crowded');
+    s += tg(286, 106, 'CH₃:');
+      s += tg(286, 120, 'less crowded');
     s += arrow(P(338, 130), P(430, 92));
     s += arrow(P(338, 180), P(430, 218));
     s += tg(372, 90, 'H from CH₂');

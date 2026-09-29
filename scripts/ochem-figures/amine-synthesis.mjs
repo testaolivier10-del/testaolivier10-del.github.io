@@ -121,7 +121,7 @@ FIGURES.push({
   lessons: ['amine-synthesis'],
   anchor: 'also releases the amine.</p>',
   viewBox: '0 0 340 610',
-  alt: 'The Gabriel synthesis in four stacked panels. Panel 1: phthalimide, a benzene ring fused to a five-membered ring holding C=O, N–H and C=O; the N–H hydrogen has pKa 8.3 and KOH removes it. Panel 2: the phthalimide anion, N minus with a lone pair, attacks the CH2 of R–CH2–Br; curved arrows run from the nitrogen lone pair to the carbon and from the C–Br bond to bromine. Panel 3: the N-alkylphthalimide, with N bonded to CH2R and no N–H; curved arrows show its lone pair pulled toward a carbonyl oxygen, so it is not a nucleophile. Panel 4: hydrazine, H2N–NH2, frees R–CH2–NH2, one primary amine, with phthalhydrazide as the by-product.',
+  alt: 'The Gabriel synthesis in four stacked panels. Panel 1: phthalimide, a benzene ring fused to a five-membered ring holding C=O, N–H and C=O; the N–H hydrogen has pKa 8.3 and KOH removes it. Panel 2: the phthalimide anion, N minus with two lone pairs, attacks the CH2 of R–CH2–Br; curved arrows run from the nitrogen lone pair to the carbon and from the C–Br bond to bromine. Panel 3: the N-alkylphthalimide, with N bonded to CH2R and no N–H; its lone pair and both C=O bonds are highlighted, because the pair is shared with both carbonyls, so it is not a nucleophile. Panel 4: hydrazine, H2N–NH2, frees R–CH2–NH2, one primary amine, with phthalhydrazide as the by-product.',
   build() {
     let s = '';
     /* Panel 1: phthalimide */
@@ -138,15 +138,15 @@ FIGURES.push({
     s += cell(8, 166, 324, 150, '2 · THE ANION ATTACKS R–CH₂–Br (SN2)', (Q) => {
       const m = phthalimide(Q(58, 0).x, Q(0, 88).y, 'N', { nKind: 'warn' });
       let t = m.svg + charge(m.n.x + 11, m.n.y - 15, '−');
-      t += lonePair(m.n.x, m.n.y, 0, { dist: 21 });
-      const c = P(m.n.x + 86, m.n.y), r = P(c.x - 6, c.y - 44), br = P(c.x + 54, c.y - 26);
+      t += lonePair(m.n.x, m.n.y, 0, { dist: 21 }) + lonePair(m.n.x, m.n.y, 70, { dist: 21 });
+      const c = P(m.n.x + 86, m.n.y), r = P(c.x, c.y - 44), br = P(c.x + 56, c.y);
       t += B(c, r, 'CH₂', 'R') + B(c, br, 'CH₂', 'Br');
       t += A(c, 'CH₂') + A(r, 'R') + A(br, 'Br');
       t += curve(P(m.n.x + 27, m.n.y + 1), P(c.x - 21, c.y + 2), { bow: 14 });
       const bm = mid(c, br);
-      t += curve(P(bm.x + 3, bm.y + 5), P(br.x + 6, br.y + 16), { bow: 12, size: 7 });
-      t += tag(Q(236, 0).x, Q(0, 118).y, 'N attacks C from the', { anchor: 'middle' });
-      t += tag(Q(236, 0).x, Q(0, 134).y, 'side opposite the Br', { anchor: 'middle' });
+      t += curve(P(bm.x, bm.y + 4), P(br.x - 2, br.y + 16), { bow: 12, size: 7 });
+      t += tag(Q(236, 0).x, Q(0, 126).y, 'N attacks C from the', { anchor: 'middle' });
+      t += tag(Q(236, 0).x, Q(0, 142).y, 'side opposite the Br', { anchor: 'middle' });
       return t;
     });
     /* Panel 3: the product cannot react again */
@@ -274,7 +274,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'The highlighted bond is the new C&ndash;N bond. It forms at the carbon that carried the oxygen.',
+  caption: 'The highlighted bond follows the carbonyl carbon: C=O, then C=N, then the new C&ndash;N bond.',
 });
 
 /* Text with italic parts: parts is a list of [string, italic?]. */
@@ -292,7 +292,7 @@ FIGURES.push({
   section: 'amine-synthesis',
   anchor: 'decides the route.</p>',
   viewBox: '0 0 340 512',
-  alt: 'Two panels. Panel 1, the SN2 route: (R)-2-bromobutane, bromine on a wedge, treated with NaN3 and then LiAlH4, gives (S)-butan-2-amine with NH2 on a hashed bond; the configuration is inverted. Panel 2, reductive amination of butan-2-one: the flat iminium ion, C=NH2+, can take hydride from the front or from the back, so the product is a 50:50 mixture of (R)-butan-2-amine, NH2 on a wedge, and (S)-butan-2-amine, NH2 on a hash: a racemic mixture.',
+  alt: 'Two panels. Panel 1, the SN2 route: (R)-2-bromobutane, bromine on a wedge, treated with NaN3 and then LiAlH4, gives (S)-butan-2-amine with NH2 on a hashed bond; the configuration is inverted. Panel 2, reductive amination of butan-2-one with NH3, NaBH3CN and mild acid: the flat iminium ion, C=NH2+, can take hydride from the front or from the back, so the product is a 50:50 mixture of (R)-butan-2-amine, NH2 on a wedge, and (S)-butan-2-amine, NH2 on a hash: a racemic mixture.',
   build() {
     let s = '';
     const butane = (p0, grp, kind, lbl) => {
@@ -320,6 +320,8 @@ FIGURES.push({
       const n = P(v[1].x, v[1].y - 40);
       let t = chainInk(v) + bond(v[1], n, { rFrom: 0, rTo: 19, order: 2 });
       t += A(n, 'NH₂', { kind: 'warn' }) + charge(n.x + 24, n.y - 12, '+');
+      t += tag(Q(250, 0).x, Q(0, 64).y, 'NH₃, NaBH₃CN,', { cls: 'fg-tag-mut' });
+      t += tag(Q(250, 0).x, Q(0, 80).y, 'mild acid', { cls: 'fg-tag-mut' });
       t += tag(Q(162, 0).x, Q(0, 152).y, 'H⁻ adds to this flat C=N from');
       t += tag(Q(162, 0).x, Q(0, 168).y, 'the front or from the back');
       t += butane(Q(12, 258), 'NH₂', 'wedge', [['(', 0], ['R', 1], [')', 0]]);
@@ -430,7 +432,7 @@ function waterAdds(m) {
   t += curve(P(m.c.x - 18, m.c.y + 6), P(m.n.x + 6, m.n.y + 15), { bow: 8, size: 7 });
   return t;
 }
-function propan-1-amine(p0) {
+function propanamine(p0) {
   const v = zz(p0, 3, 30, 18);
   const n = P(v[2].x + 32, v[2].y - 18);
   return { svg: chainInk(v) + bond(v[2], n, { rFrom: 0, rTo: 19 }) + A(n, 'NH₂', { kind: 'hi' }), n };
@@ -456,7 +458,7 @@ FIGURES.push({
       const n = m.n, h = P(n.x, n.y + 40);
       let t = m.svg + B(n, h, 'N', 'H') + A(h, 'H');
       t += charge(n.x - 20, n.y + 14, '−');
-      t += lonePair(n.x, n.y, -40, { dist: 21 });
+      t += lonePair(n.x, n.y, -40, { dist: 21 }) + lonePair(n.x, n.y, 30, { dist: 21 });
       const b1 = P(n.x + 46, n.y - 30), b2 = P(n.x + 94, n.y - 30);
       t += B(b1, b2, 'Br', 'Br') + A(b1, 'Br') + A(b2, 'Br');
       t += curve(P(n.x + 20, n.y - 16), P(b1.x - 15, b1.y + 6), { bow: 8, size: 7 });
@@ -503,7 +505,7 @@ FIGURES.push({
       return t;
     });
     s += cell(512, 212, W, H, '6 · PROPAN-1-AMINE + CO₂', (Q) => {
-      const m = propan-1-amine(Q(22, 100));
+      const m = propanamine(Q(22, 100));
       let t = m.svg + co2(Q(186, 90));
       t += tag(Q(66, 0).x, Q(0, 140).y, 'three carbons', { cls: 'fg-tag-good' });
       t += tag(Q(186, 0).x, Q(0, 124).y, 'the old C=O', { cls: 'fg-tag-warn' });
@@ -537,7 +539,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'The orange dot marks the carbonyl carbon. In panel 3 the propyl group leaves it for the nitrogen, and in panel 6 it leaves as CO<sub>2</sub>.',
+  caption: 'The orange dot marks the carbonyl carbon. In panel 3 the propyl group leaves it for the nitrogen, and in panel 6 it leaves as CO<sub>2</sub>. In panel 3 only the nitrogen lone pair that reacts is drawn.',
 });
 
 /* The lesson copy: the three panels that show where the carbon goes, with
@@ -561,7 +563,7 @@ FIGURES.push({
       return t;
     });
     s += cell(8, 390, 324, 122, 'PROPAN-1-AMINE + CO₂', (Q) => {
-      const m = propan-1-amine(Q(30, 76));
+      const m = propanamine(Q(30, 76));
       let t = m.svg + co2(Q(250, 66));
       t += tag(Q(76, 0).x, Q(0, 106).y, 'three carbons', { cls: 'fg-tag-good' });
       t += tag(Q(250, 0).x, Q(0, 100).y, 'the old C=O carbon', { cls: 'fg-tag-warn' });
@@ -569,7 +571,7 @@ FIGURES.push({
     }, { kind: 'good' });
     return s;
   },
-  caption: 'The orange dot is the carbon that started as the amide C=O.',
+  caption: 'The orange dot is the carbon that started as the amide C=O. In the top panel only the nitrogen lone pair that reacts is drawn.',
 });
 
 /* ===================================================================== 8
@@ -579,14 +581,14 @@ FIGURES.push({
   section: 'amine-synthesis',
   anchor: 'use reductive amination or amide reduction.</div>',
   viewBox: '0 0 760 432',
-  alt: 'Five starting materials, each with its carbon count, lead to the same product, butan-1-amine, four carbons. 1-Bromopropane, three carbons, with NaCN then LiAlH4: plus one carbon. 1-Bromobutane, four carbons, by Gabriel or by NaN3 then LiAlH4: count unchanged. Butanamide, four carbons, with LiAlH4: unchanged. Butanal, four carbons, with NH3 and NaBH3CN: unchanged. Pentanamide, five carbons, with Br2 and NaOH: minus one carbon.',
+  alt: 'Five starting materials, each with its carbon count, lead to the same product, butan-1-amine, four carbons. 1-Bromopropane, three carbons, with NaCN then LiAlH4: plus one carbon. 1-Bromobutane, four carbons, by Gabriel or by NaN3 then LiAlH4: count unchanged. Butanamide, four carbons, with LiAlH4: unchanged. Butanal, four carbons, with excess NH3 and NaBH3CN: unchanged. Pentanamide, five carbons, with Br2 and NaOH: minus one carbon.',
   build() {
     let s = tag(380, 20, 'FIVE WAYS TO BUTAN-1-AMINE');
     const rows = [
       ['1-bromopropane', 3, 'NaCN; then LiAlH₄', '+1 carbon', 'fg-tag-good'],
       ['1-bromobutane', 4, 'Gabriel, or NaN₃ then LiAlH₄', 'no change', 'fg-tag-mut'],
       ['butanamide', 4, 'LiAlH₄', 'no change', 'fg-tag-mut'],
-      ['butanal', 4, 'NH₃, NaBH₃CN', 'no change', 'fg-tag-mut'],
+      ['butanal', 4, 'excess NH₃, NaBH₃CN', 'no change', 'fg-tag-mut'],
       ['pentanamide', 5, 'Br₂, NaOH', '−1 carbon', 'fg-tag-warn'],
     ];
     const draw = (i, y) => {
@@ -627,7 +629,7 @@ FIGURES.push({
     s += tag(660, 282, '4 carbons', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Read each row for its carbon count first. Only the top row adds a carbon, and only the bottom row loses one; the orange dot marks the carbon it loses.',
+  caption: 'Each count is measured from the named starting material; NH<sub>3</sub> brings no carbon. Only the top row adds a carbon, and only the bottom row loses one; the orange dot marks the carbon it loses.',
 });
 
 /* ===================================================================== 9
@@ -657,7 +659,7 @@ function cyAmine(cx, cy, sub) {
   }
   if (sub === 'NHEt') {
     const c1 = P(n.x + 30, cy - 18), c2 = P(n.x + 58, cy);
-    t += bond(n, c1, { rFrom: 16, rTo: 0, cls: 'fg-bond-hi' }) + sk(c1, c2, true);
+    t += bond(n, c1, { rFrom: 16, rTo: 0, cls: 'fg-bond-hi' }) + sk(c1, c2) + atom(c2.x, c2.y, '', { kind: 'warn', r: 5 });
   }
   if (sub === 'NHAc' || sub === 'NHCHO') {
     const c = P(n.x + 30, cy - 18), o = P(c.x, c.y - 32), end = P(c.x + 28, cy);
@@ -698,7 +700,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Highlighted: the carbon each reagent puts on the nitrogen. Orange: a carbon you did not want.',
+  caption: 'Highlighted: the carbon that ends up bonded to the nitrogen, and where it came from. Orange: an extra carbon you did not want.',
 });
 
 export default FIGURES;
