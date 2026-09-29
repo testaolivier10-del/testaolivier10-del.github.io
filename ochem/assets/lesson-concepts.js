@@ -674,12 +674,13 @@
       9:['directing-effects'],
       11:['directing-effects','route-order'] } },
 
-    'eas': { n:8, steps:{
-      1:['eas-mechanism'],
-      2:['eas-mechanism','huckel-aromaticity'],
-      4:['lewis-acid-base','eas-mechanism'],
-      6:['eas-mechanism','carbocation-stability'],
-      7:['eas-mechanism','carbocation-stability'] } },
+    'eas': { n:18, steps:{
+      2:['eas-mechanism'],
+      4:['eas-mechanism','huckel-aromaticity'],
+      7:['eas-mechanism','energy-diagram-reading'],
+      11:['lewis-acid-base','eas-mechanism'],
+      15:['eas-mechanism','carbocation-rearrangement'],
+      17:['eas-mechanism','carbocation-rearrangement'] } },
 
     'electron-rich-poor': { n:11, steps:{
       2:['electron-rich-poor'],
