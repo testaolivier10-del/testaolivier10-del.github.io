@@ -169,7 +169,7 @@ FIGURES.push({
   lessons: ['leaving-groups'],
   anchor: '<h3>Why spreading charge out matters</h3>',
   alt: 'Top: methyl tosylate drawn in full, CH3–O–S(=O)2– attached to a benzene ring that carries a CH3 on the opposite carbon; a bracket under the sulfur, ring and far CH3 is labeled Ts, the p-toluenesulfonyl group. Bottom: the tosylate ion drawn three times, with the ring abbreviated Ar. In each form a different one of the three sulfur oxygens has the single bond, three lone pairs and the negative charge, and double-headed resonance arrows join the three forms.',
-  viewBox: '0 0 340 818',
+  viewBox: '0 0 340 828',
   build() {
     let s = '';
     s += box(8, 256, 'THE TOSYL GROUP, Ts');
@@ -189,14 +189,14 @@ FIGURES.push({
     s += `<text class="fg-tag" x="218" y="222" text-anchor="middle" font-size="11">Ts, the <tspan font-style="italic">p</tspan>-toluenesulfonyl group</text>`;
     s += tg(170, 250, 'methyl tosylate, CH₃–OTs', 'mut');
     // resonance forms
-    s += box(276, 534, 'THE TOSYLATE ION: THREE RESONANCE FORMS');
+    s += box(276, 544, 'THE TOSYLATE ION: THREE RESONANCE FORMS');
     const ys = [386, 542, 698];
     ['left', 'up', 'down'].forEach((k, i) => { s += sulfonate(ys[i], k); });
     for (const ym of [464, 620]) {
-      s += arrow(P(270, ym), P(270, ym - 22)) + arrow(P(270, ym), P(270, ym + 22));
+      s += arrow(P(236, ym), P(236, ym - 22)) + arrow(P(236, ym), P(236, ym + 22));
     }
-    s += tg(170, 780, 'each oxygen carries the charge in one form', 'good');
-    s += tg(170, 800, 'Ar is the CH₃–C₆H₄– ring drawn above', 'mut');
+    s += tg(170, 790, 'each oxygen carries the charge in one form', 'good');
+    s += tg(170, 808, 'Ar is the CH₃–C₆H₄– ring drawn above', 'mut');
     return s;
   },
   caption: 'Top: the tosyl group drawn out in full. Bottom: the tosylate ion, with the ring abbreviated Ar.',
@@ -224,7 +224,7 @@ FIGURES.push({
     rows.forEach((w, i) => {
       const y = 94 + i * 68;
       const c = P(34, y);
-      const L = 0.68 * w.pm - 36;
+      const L = 0.5 * w.pm;
       const xx = P(52 + L + w.r, y);
       s += bond(c, xx, { rFrom: 18, rTo: w.r, cls: i === 0 ? 'fg-bond' : 'fg-bond' });
       s += A(c, 'H₃C') + atom(xx.x, xx.y, w.x, { kind: w.kind, r: w.r, size: 13 });
@@ -236,7 +236,7 @@ FIGURES.push({
     s += tg(170, 372, 'better leaving group', 'good');
     return s;
   },
-  caption: 'Bond lengths are drawn to scale, and the halogen discs grow with the size of the halide ion. Both columns of numbers fall together from fluorine to iodine.',
+  caption: 'Bond lengths are drawn to scale (half a pixel per picometer), and the halogen discs grow with the size of the halide ion. Both columns of numbers fall together from fluorine to iodine.',
 });
 
 /* ------------------------------------------------------------------ 5 ---
@@ -315,7 +315,7 @@ FIGURES.push({
     const y3 = 562;
     const br3 = P(40, y3);
     const ch3 = [P(76, y3 + 18), P(112, y3), P(148, y3 + 18), P(184, y3)];
-    s += chain(br3, 'Br', ch3) + A(br3, 'Br', 'warn');
+    s += chain(br3, 'Br', ch3) + A(br3, 'Br', 'warn') + lps(br3, [270, 180, 90], 23);
     s += lbl(214, y3 + 12, '+');
     s += A(P(262, y3 + 8), 'H₂O');
     s += tg(100, y3 + 38, '1-bromobutane', 'good') + tg(262, y3 + 38, 'water', 'good');
@@ -359,7 +359,7 @@ FIGURES.push({
     const et2 = ethylLeft(o2, 'O');
     s += et2.s + B(o2, 'O', h2, 'H') + B(o2, 'O', ts, 'Ts');
     s += A(o2, 'O', 'hi') + A(h2, 'H') + A(ts, 'Ts');
-    s += lps(o2, [295], 21) + chg(90, y2 + 22, '+');
+    s += lps(o2, [295], 21) + chg(136, y2 - 22, '+');
     const py = polyPts(226, y2 + 96, 6, 26, 150); // vertex 0 points up-left, toward the H
     const n = py[0];
     s += ring6(py, 1, 0) + A(n, 'N');
@@ -420,7 +420,7 @@ FIGURES.push({
     s += box(474, 92, 'PRODUCTS');
     const y3 = 530;
     const b3 = P(128, y3), c13 = P(88, y3 - 16), c23 = P(50, y3 + 4);
-    s += B(b3, 'Br', c13, '') + B(c13, '', c23, '') + A(b3, 'Br', 'warn');
+    s += B(b3, 'Br', c13, '') + B(c13, '', c23, '') + A(b3, 'Br', 'warn') + lps(b3, [270, 0, 90], 23);
     s += lbl(178, y3 + 5, '+') + lbl(248, y3 + 5, 'HO–PBr₂');
     s += tg(88, y3 + 30, 'bromoethane', 'good');
     return s;
@@ -472,7 +472,7 @@ FIGURES.push({
     s += box(502, 110, 'PRODUCTS');
     const y3 = 560;
     const cl3 = P(128, y3), c13 = P(88, y3 - 16), c23 = P(50, y3 + 4);
-    s += B(cl3, 'Cl', c13, '') + B(c13, '', c23, '') + A(cl3, 'Cl', 'warn');
+    s += B(cl3, 'Cl', c13, '') + B(c13, '', c23, '') + A(cl3, 'Cl', 'warn') + lps(cl3, [270, 0, 90], 23);
     s += lbl(170, y3 + 5, '+') + lbl(208, y3 + 5, 'SO₂') + lbl(246, y3 + 5, '+') + lbl(284, y3 + 5, 'Cl⁻');
     s += tg(88, y3 + 32, 'chloroethane', 'good') + tg(208, y3 + 32, 'a gas', 'mut');
     return s;

@@ -478,7 +478,7 @@ FIGURES.push({
     const o = P(cx, cy - 44 - 50);
     s += B(v[0], '', o, 'O', { order: 2 }) + A(o, 'O') + lp(o, 150) + lp(o, 30);
     const loc = (p, t) => tg(p.x + (p.x - cx) * 0.42, p.y + (p.y - cy) * 0.42 + 4, t, 'mut');
-    s += tg(v[0].x + 16, v[0].y + 14, '1', 'mut');
+    s += tg(v[0].x + 18, v[0].y - 8, '1', 'mut');
     for (let i = 1; i < 6; i++) s += loc(v[i], String(i + 1));
     s += tg(170, 222, 'cyclohex-2-en-1-one', 'mut');
     return s;

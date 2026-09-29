@@ -306,7 +306,7 @@ FIGURES.push({
     s += tg(130, 582, 'O atoms face K⁺', 'mut') + tg(290, 582, 'fluoride', 'mut');
     const f2 = P(290, 542);
     s += A(f2, 'F', 'hi') + lp(f2, 0) + lp(f2, 90) + lp(f2, 180) + lp(f2, 270) + chg(312, 520);
-    s += tg(170, 602, 'no O–H, so nothing H-bonds to F⁻', 'good');
+    s += tg(170, 602, 'no O–H, so no hydrogen bonds to F⁻', 'good');
     return s;
   },
   caption: 'Dashed lines are hydrogen bonds. Short, strong ones grip fluoride; iodide’s are longer and weaker.',
