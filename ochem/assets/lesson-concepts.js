@@ -238,9 +238,12 @@
       2:['benzylic-stabilization'], 3:['benzylic-stabilization'], 4:['benzylic-stabilization'],
       6:['benzylic-stabilization'], 7:['benzylic-stabilization'] } },
 
-    'phenols': { n:8, steps:{
-      2:['phenol-acidity'], 3:['phenol-acidity'], 4:['phenol-acidity'],
-      6:['phenol-acidity'], 7:['phenol-acidity'] } },
+    'phenols': { n:10, steps:{
+      2:['phenol-acidity'],
+      3:['phenol-acidity'],
+      5:['phenol-acidity'],
+      8:['phenol-acidity'],
+      9:['phenol-acidity'] } },
 
     'birch-reduction': { n:8, steps:{
       2:['partial-reduction'], 3:['partial-reduction'], 4:['partial-reduction'],
