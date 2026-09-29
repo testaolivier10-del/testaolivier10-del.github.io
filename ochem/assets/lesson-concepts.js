@@ -212,9 +212,12 @@
       9:['hard-soft-addition'],
       10:['hard-soft-addition'] } },
 
-    'cross-coupling': { n:8, steps:{
-      2:['catalytic-cycle'], 3:['catalytic-cycle'], 4:['catalytic-cycle'],
-      6:['catalytic-cycle'], 7:['catalytic-cycle','hard-soft-addition'] } },
+    'cross-coupling': { n:12, steps:{
+      2:['catalytic-cycle'],
+      7:['catalytic-cycle'],
+      8:['catalytic-cycle'],
+      10:['catalytic-cycle'],
+      11:['catalytic-cycle','hard-soft-addition'] } },
 
     'wittig-reaction': { n:13, steps:{
       3:['alkene-by-construction'],
