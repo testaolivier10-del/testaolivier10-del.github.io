@@ -126,7 +126,7 @@ FIGURES.push({
     s += text(380, 244, 'Gray bonds: the other six H, equatorial on the left and axial on the right.', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Follow the highlighted hydrogens from left to right. Each one stays on its carbon and keeps pointing toward the same face of the ring.',
+  caption: 'Follow the highlighted hydrogens from left to right: each stays on its carbon.',
 });
 
 /* ------------------------------------------------------ ring-flip-invariant ---
@@ -226,7 +226,7 @@ FIGURES.push({
     s += text(170, 422, 'the same six H: all equatorial', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'Each highlighted hydrogen keeps its carbon and its face.',
+  caption: 'Follow the highlighted hydrogens from top to bottom: each stays on its carbon.',
 });
 
 /* ---------------------------------------------------------- flip-worked ---
@@ -241,7 +241,7 @@ function workedChair(cx, cy, k, flipped, num = true) {
   const br = group(r, 0, 'up', 'Br', { L: 44, r: 15, kind: 'warn' });
   const me = group(r, 1, 'up', 'CH₃', { L: 36 });
   s += br.s + me.s;
-  if (num) s += numbers(r, NAMES, [], flipped ? { 0: [8, 20, 'start'], 1: [14, 4, 'start'], 5: [6, 20, 'start'] } : { 0: [10, 18, 'start'], 1: [-4, 20] });
+  if (num) s += numbers(r, NAMES, [], flipped ? { 0: [8, 20, 'start'], 1: [14, 4, 'start'], 2: [0, -10], 5: [6, 20, 'start'] } : { 0: [10, 18, 'start'], 1: [-4, 20], 4: [-6, 22, 'end'] });
   return { s, br, me };
 }
 FIGURES.push({
@@ -378,7 +378,9 @@ const SHAPES = {
   chair: [[113.1, -18.2], [56.6, -15.3], [-56.6, -51.7], [-113.1, 18.2], [-56.6, 15.3], [56.6, 51.7]],
   half: [[117.6, 5.5], [53.2, -23.1], [-58.2, -60.6], [-109.5, 27.4], [-61.2, 21.6], [58.1, 29.2]],
   twist: [[114.2, 23.2], [57.9, -34.3], [-59.3, -55.7], [-114.2, 21.4], [-57.9, 34.3], [59.3, 11.1]],
-  boat: [[113.7, 25.8], [59.8, -46.6], [-59.8, -46.6], [-113.7, 25.7], [-59.8, 20.8], [59.8, 20.8]],
+  /* In the boat, C1 and C4 are lowered 22 px beyond the true projection:
+     seen from 20 degrees above, their real drop hides behind the base. */
+  boat: [[113.7, 47.8], [59.8, -46.6], [-59.8, -46.6], [-113.7, 47.7], [-59.8, 20.8], [59.8, 20.8]],
   other: [[113.1, 18.2], [56.6, -51.7], [-56.6, -15.3], [-113.1, -18.2], [-56.6, 51.7], [56.6, 15.3]],
 };
 const PLANE = { half: [4, 5, 0, 1] };
@@ -547,7 +549,8 @@ FIGURES.push({
     s += text(562, 220, 'methyl equatorial: about 95%', { cls: 'fg-tag-good' });
     s += arrow(P(318, 116), P(446, 116));
     s += arrow(P(410, 136), P(354, 136), { muted: true });
-    s += text(382, 100, 'A-value 1.7 kcal/mol', { cls: 'fg-tag' });
+    s += text(382, 162, 'energy gap: 1.7 kcal/mol', { cls: 'fg-tag' });
+    s += text(382, 178, '(the A-value)', { cls: 'fg-tag' });
     return s;
   },
   caption: 'The longer arrow points to the chair the molecules spend most of their time in.',
@@ -619,14 +622,14 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-q-oh',
   lessons: ['ring-flips'],
-  alt: 'A cyclohexane chair. C1, the footrest at the far left, carries an OH group on a vertical axial bond pointing down.',
+  alt: 'A cyclohexane chair. C4, the footrest at the far left, carries an OH group on a vertical axial bond pointing down.',
   viewBox: '0 0 340 230',
   build() {
     let s = '';
     const r = ring(170, 96, 0.95, false);
     s += outline(r.pts) + dots(r.pts);
     s += group(r, 3, 'down', 'OH', { L: 38, r: 16, kind: 'warn' }).s;
-    s += text(r.pts[3].x - 10, r.pts[3].y - 6, 'C1', { cls: 'fg-tag', anchor: 'end' });
+    s += text(r.pts[3].x - 10, r.pts[3].y - 6, 'C4', { cls: 'fg-tag', anchor: 'end' });
     s += text(170, 222, 'OH: axial, pointing down', { cls: 'fg-tag-warn' });
     return s;
   },
