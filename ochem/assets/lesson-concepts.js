@@ -921,13 +921,13 @@
       7:['stereocenter-identification'],
       9:['stereocenter-identification'] } },
 
-    'substrate-effects': { n:10, steps:{
-      2:['mechanism-selection'],
-      3:['mechanism-selection','solvent-effects'],
-      4:['mechanism-selection','solvent-effects'],
-      5:['substrate-class','mechanism-selection'],
-      8:['mechanism-selection','stereochemical-outcome'],
-      9:['mechanism-selection','zaitsev-hofmann'] } }
+    'substrate-effects': { n:12, steps:{
+      2:['substrate-class','mechanism-selection'],
+      5:['mechanism-selection','solvent-effects'],
+      6:['mechanism-selection','solvent-effects'],
+      8:['substrate-class','mechanism-selection'],
+      10:['mechanism-selection','stereochemical-outcome'],
+      11:['mechanism-selection','substrate-class'] } }
   };
 
   /* Returns { stepIndex: [conceptId, ...] } for a lesson, or null.

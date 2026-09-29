@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function(){
       card.innerHTML =
         '<div class="step-eyebrow">Step 1 · Get the geometry right</div>' +
         '<h2 class="step-title">Before any arrow: line the bromine up with a hydrogen.</h2>' +
-        '<p class="step-body">2-Bromobutane, seen straight down the bond from the alpha carbon (front) to the beta carbon (back). E2 fires only when the hydrogen it removes is <b>anti-periplanar</b> to the leaving group — 180° round the circle, highlighted below. Rotate the back carbon until a <b>hydrogen</b> is there, then press Eliminate.</p>' +
+        '<p class="step-body">2-Bromobutane, seen straight down the bond from the alpha carbon (front) to the beta carbon (back). E2 normally needs the hydrogen it removes to be <b>anti-periplanar</b> to the leaving group — 180° round the circle, highlighted below. Rotate the back carbon until a <b>hydrogen</b> is there, then press Eliminate.</p>' +
         newmanSvg(apRot, 'currently anti to Br: ' + at180) +
         '<div class="choice-row">' +
           '<button class="choice-btn" id="rotBtn">Rotate the back carbon 120°</button>' +
@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function(){
       '<div class="step-eyebrow">Explain</div>' +
       '<h2 class="step-title">What the "2" in E2 means — and a preview of E1.</h2>' +
       '<p class="step-body">E2 is <b>bimolecular</b>: the base and the substrate both take part in the single concerted step, giving the rate law <b>rate = k[base][substrate]</b>. That is the same shape as SN2\'s rate law, which makes sense: both are single concerted steps driven by a reagent attacking the substrate.</p>' +
-      '<p class="step-body" style="margin-bottom:0;">There is an unimolecular elimination too: <b>E1</b>. It shares SN1\'s first step exactly — the leaving group departs on its own to give a carbocation — and then a base removes a beta-hydrogen instead of a nucleophile attacking the cation. Its rate law is rate = k[substrate], with no base in it, the same shape as SN1\'s. The E1 section of this chapter works that through in full; what matters here is the pairing — SN1 with E1, SN2 with E2, ionize-first against one-step-concerted — which is the most useful organizing idea in the chapter.</p>' +
+      '<p class="step-body" style="margin-bottom:0;">There is a unimolecular elimination too: <b>E1</b>. It shares SN1\'s first step exactly — the leaving group departs on its own to give a carbocation — and then a base removes a beta-hydrogen instead of a nucleophile attacking the cation. Its rate law is rate = k[substrate], with no base in it, the same shape as SN1\'s. The E1 section of this chapter works that through in full; what matters here is the pairing — SN1 with E1, SN2 with E2, ionize-first against one-step-concerted — which is the most useful organizing idea in the chapter.</p>' +
       nextButton('Continue', true);
     card.querySelector('#nextBtn').addEventListener('click', function(){ step=7; render(); });
   }
