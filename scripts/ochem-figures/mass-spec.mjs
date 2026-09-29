@@ -54,14 +54,14 @@ const charge = (g, deg, d = 26) => { const p = at(g, deg, d); return text(p.x, p
 const plusSign = (x, y) => text(x, y + 5, '+', { cls: 'fg-lbl', size: 13 });
 
 /* ------------------------------------------------ the molecular ion ---
-   2-butanone, then the same molecule with one oxygen lone-pair electron
+   butan-2-one, then the same molecule with one oxygen lone-pair electron
    gone. 340 wide, so the notes and the lesson share it. */
 FIGURES.push({
   id: 'ms-molecular-ion',
   section: 'mass-spec',
   lessons: ['mass-spec'],
   anchor: '<h3>Ionization and the molecular ion</h3>',
-  alt: 'Top: 2-butanone written out as CH3, C, CH2, CH3 in a row, with an O double-bonded to the second carbon and two lone pairs on the oxygen. A downward arrow is labeled minus one electron. Bottom: the same molecule, but the oxygen now has one lone pair, one single unpaired electron and a plus charge. It is labeled M+•, the molecular ion, m/z 72.',
+  alt: 'Top: butan-2-one written out as CH3, C, CH2, CH3 in a row, with an O double-bonded to the second carbon and two lone pairs on the oxygen. A downward arrow is labeled minus one electron. Bottom: the same molecule, but the oxygen now has one lone pair, one single unpaired electron and a plus charge. It is labeled M+•, the molecular ion, m/z 72.',
   viewBox: '0 0 340 318',
   build() {
     let s = '';
@@ -75,12 +75,12 @@ FIGURES.push({
         const d = at(o, -45, 24);
         g += dot(d.x, d.y) + charge(o, 12, 30);
       } else {
-        g += lonePair(o.x, o.y, -60, { dist: 24 });
+        g += lonePair(o.x, o.y, 0, { dist: 24 });
       }
       g += draw(o);
       return g;
     };
-    s += tag(170, 18, '2-butanone, a neutral molecule');
+    s += tag(170, 18, 'butan-2-one, a neutral molecule');
     s += row(112, false);
     s += arrow(P(170, 142), P(170, 196));
     s += text(184, 166, '− e⁻', { cls: 'fg-lbl', size: 13, anchor: 'start' });
@@ -117,18 +117,18 @@ function spectrum(base, X, bars, ticks, topY) {
   return out;
 }
 
-/* ------------------------------------------------ 2-butanone spectrum --- */
+/* ------------------------------------------------ butan-2-one spectrum --- */
 FIGURES.push({
   id: 'ms-spectrum-butanone',
   section: 'mass-spec',
   anchor: '<h3>Two quick reads from the molecular ion</h3>',
-  alt: 'The mass spectrum of 2-butanone drawn as a bar chart of relative abundance against m/z. The tallest bar is at m/z 43, labeled base peak, CH3CO+. The molecular ion at m/z 72 is about a quarter of that height. A tiny bar at 73 is labeled M+1, about 4% of M. Smaller bars sit at 57 and 29.',
+  alt: 'The mass spectrum of butan-2-one drawn as a bar chart of relative abundance against m/z. The tallest bar is at m/z 43, labeled base peak, CH3CO+. The molecular ion at m/z 72 is about a quarter of that height. A tiny bar at 73 is labeled M+1, about 4% of M. Smaller bars sit at 57 and 29.',
   viewBox: '0 0 760 280',
   build() {
     let s = '';
     const X = (m) => 70 + ((m - 10) / 70) * 620;
     const base = 214;
-    s += text(74, 24, '2-butanone, CH₃–CO–CH₂–CH₃ (M = 72)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
+    s += text(74, 24, 'butan-2-one, CH₃–CO–CH₂–CH₃ (M = 72)', { cls: 'fg-lbl', size: 12, anchor: 'start' });
     s += spectrum(base, X, [[15, 6], [27, 16], [29, 24], [43, 100], [57, 8], [72, 25], [73, 1.1]], [20, 30, 40, 50, 60, 70, 80]);
     s += text(X(43) + 12, 76, 'base peak: CH₃CO⁺ at 43', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(X(72), 134, 'M⁺• = 72', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
@@ -144,7 +144,7 @@ FIGURES.push({
 });
 
 /* ------------------------------------------------ alpha cleavage ---
-   The two alpha bonds of the 2-butanone molecular ion, each broken with
+   The two alpha bonds of the butan-2-one molecular ion, each broken with
    three fishhooks. Drawn by one function for both widths: the notes put the
    two routes side by side, the lesson stacks them. */
 function alphaRoute(ox, oy, which, sp) {
@@ -203,7 +203,7 @@ FIGURES.push({
   id: 'ms-alpha-cleavage',
   section: 'mass-spec',
   anchor: '<h3>Alpha cleavage</h3>',
-  alt: 'Two panels, each starting from the 2-butanone molecular ion, CH3–C(=O+•)–CH2–CH3. Left panel: the bond from the carbonyl carbon to the CH2 is highlighted. Three single-barbed fishhook arrows show one electron of that bond pairing with oxygen’s unpaired electron to make a new C–O bond, and the other electron leaving with the CH2CH3 group. Products: the acylium ion CH3–C≡O+, m/z 43, the base peak, plus a neutral ethyl radical, mass 29. Right panel: the same three arrows break the bond to the CH3 instead, giving CH3CH2–C≡O+, m/z 57, plus a neutral methyl radical, mass 15.',
+  alt: 'Two panels, each starting from the butan-2-one molecular ion, CH3–C(=O+•)–CH2–CH3. Left panel: the bond from the carbonyl carbon to the CH2 is highlighted. Three single-barbed fishhook arrows show one electron of that bond pairing with oxygen’s unpaired electron to make a new C–O bond, and the other electron leaving with the CH2CH3 group. Products: the acylium ion CH3–C≡O+, m/z 43, the base peak, plus a neutral ethyl radical, mass 29. Right panel: the same three arrows break the bond to the CH3 instead, giving CH3CH2–C≡O+, m/z 57, plus a neutral methyl radical, mass 15.',
   viewBox: '0 0 760 340',
   build() {
     let s = '';
@@ -224,7 +224,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-ms-alpha-cleavage',
   lessons: ['mass-spec'],
-  alt: 'Two stacked panels, each starting from the 2-butanone molecular ion. Top: fishhook arrows break the bond from the carbonyl carbon to the CH2, giving CH3–C≡O+ at m/z 43 and a neutral ethyl radical, 29. Bottom: the bond to the CH3 breaks instead, giving CH3CH2–C≡O+ at m/z 57 and a neutral methyl radical, 15.',
+  alt: 'Two stacked panels, each starting from the butan-2-one molecular ion. Top: fishhook arrows break the bond from the carbonyl carbon to the CH2, giving CH3–C≡O+ at m/z 43 and a neutral ethyl radical, 29. Bottom: the bond to the CH3 breaks instead, giving CH3CH2–C≡O+ at m/z 57 and a neutral methyl radical, 15.',
   viewBox: '0 0 340 648',
   build() {
     let s = '';
@@ -250,7 +250,7 @@ FIGURES.push({
   id: 'ms-mclafferty',
   section: 'mass-spec',
   anchor: '<h3>The McLafferty rearrangement</h3>',
-  alt: 'Left: the hexan-2-one molecular ion drawn as a six-membered ring of O, the carbonyl carbon, the alpha CH2, the beta CH2, the gamma CH and a hydrogen, with a dashed line from the hydrogen to the oxygen. The oxygen has one lone pair, one unpaired electron and a plus charge. The carbonyl carbon carries a CH3 and the gamma carbon a CH3. Six single-barbed fishhook arrows: the oxygen’s electron and one electron of the gamma C–H bond form an O–H bond; the other C–H electron and one electron of the alpha–beta bond form a C=C between beta and gamma; the other alpha–beta electron and one electron of the C=O pi bond form a C=C between the carbonyl carbon and the alpha carbon, and the remaining pi electron moves onto oxygen. Right: the products, the enol radical cation CH2=C(CH3)–OH with a plus charge and unpaired electron on oxygen, m/z 58, detected, and propene CH2=CH–CH3, mass 42, neutral and not detected.',
+  alt: 'Left: the hexan-2-one molecular ion drawn as a six-membered ring of O, the carbonyl carbon, the alpha CH2, the beta CH2, the gamma CH and a hydrogen, with a dashed line from the hydrogen to the oxygen. The oxygen has one lone pair, one unpaired electron and a plus charge, and none of these move. The carbonyl carbon carries a CH3 and the gamma carbon a CH3. Six single-barbed fishhook arrows, two into each new bond: one electron of the gamma C–H bond and one electron of the C=O pi bond form the new O–H bond; the other C–H electron and one electron of the alpha–beta bond form a C=C between beta and gamma; the other alpha–beta electron and the other C=O pi electron form a C=C between the carbonyl carbon and the alpha carbon. Right: the products, the enol radical cation CH2=C(CH3)–OH with a plus charge and unpaired electron on oxygen, m/z 58, detected, and propene CH2=CH–CH3, mass 42, neutral and not detected.',
   viewBox: '0 0 760 360',
   build() {
     let s = '';
@@ -281,17 +281,17 @@ FIGURES.push({
     s += text(cg.x + 30, cg.y + 20, 'γ', { cls: 'fg-tag', size: 12 });
     /* six fishhooks, each moving one electron */
     const ohm = mid(o, h);                                   // the O–H bond that forms
-    s += fishhook(P(dp.x + 6, dp.y - 3), P(ohm.x - 5, ohm.y - 9), { bow: -12, size: 8 });
     const chm = mid(cg, h);                                  // the γ C–H bond that breaks
-    s += fishhook(P(chm.x - 8, chm.y + 6), P(ohm.x + 6, ohm.y + 8), { bow: -12, size: 8 });
+    s += fishhook(P(chm.x - 8, chm.y + 6), P(ohm.x + 8, ohm.y + 8), { bow: -12, size: 8 });
     const gbm = mid(cg, cb);                                 // the β=γ π bond that forms
     s += fishhook(P(chm.x + 2, chm.y + 10), P(gbm.x - 11, gbm.y - 10), { bow: -10, size: 8 });
     const abm = mid(ca, cb);                                 // the α–β bond that breaks
     s += fishhook(P(abm.x - 5, abm.y - 9), P(gbm.x - 11, gbm.y + 10), { bow: 10, size: 8 });
     const a2m = mid(ca, c2);                                 // the C=Cα π bond that forms
     s += fishhook(P(abm.x - 12, abm.y - 4), P(a2m.x + 6, a2m.y - 11), { bow: 14, size: 8 });
-    const com = mid(c2, o);                                  // the C=O π bond: one electron to O
-    s += fishhook(P(com.x + 10, com.y + 12), P(o.x + 13, o.y + 16), { bow: 12, size: 8 });
+    const com = mid(c2, o);                                  // the C=O π bond that breaks
+    s += fishhook(P(com.x + 9, com.y - 8), P(ohm.x - 2, ohm.y + 12), { bow: 10, size: 8 });   // one π electron to O–H
+    s += fishhook(P(com.x + 9, com.y + 10), P(a2m.x - 2, a2m.y - 12), { bow: -10, size: 8 }); // the other to C=Cα
 
     s += arrow(P(372, 196), P(436, 196));
 
@@ -311,7 +311,7 @@ FIGURES.push({
     s += tag(596, 342, 'propene: 42, neutral, not detected', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'The dashed line is the O&ndash;H bond that forms. The highlighted bonds break: the γ C&ndash;H and the α&ndash;β C&ndash;C. Every arrow moves one electron.',
+  caption: 'Six fishhooks, each moving one electron. Three bonds break (highlighted: the γ C&ndash;H and the α&ndash;β C&ndash;C; plus the C=O π bond), and each sends one electron into two of the three new bonds: the dashed O&ndash;H, the β=γ C=C of propene and the C=Cα of the enol. Oxygen&rsquo;s lone pair and unpaired electron stay put.',
 });
 
 /* ------------------------------------------------ m/z 91 ---
@@ -361,7 +361,7 @@ FIGURES.push({
     s += text(640, 216, 'aromatic: 6 π electrons, 7 carbons', { cls: 'fg-tag-mut', size: 11 });
     return s;
   },
-  caption: 'Both cations have the formula C₇H₇⁺, so both are detected at 91. The dashed circle in the tropylium ion means the charge is shared by all seven carbons.',
+  caption: 'One route, simplified: the ring can also expand before the hydrogen is lost. Both cations are C₇H₇⁺, and the dashed circle means the charge is shared by all seven carbons.',
 });
 
 FIGURES.push({
@@ -374,14 +374,14 @@ FIGURES.push({
     s += tropParts({ tol: P(170, 100), benzyl: P(76, 254), trop: P(266, 248) });
     s += text(170, 150, 'toluene, M = 92', { cls: 'fg-lbl', size: 13 });
     s += arrow(P(168, 160), P(120, 192));
-    s += text(160, 194, 'loses H•', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(150, 194, 'M⁺• loses H•', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += arrow(P(122, 252), P(212, 252));
     s += text(167, 242, 'expands', { cls: 'fg-tag', size: 11 });
     s += text(76, 312, 'benzyl, m/z 91', { cls: 'fg-lbl', size: 13 });
     s += text(266, 312, 'tropylium, m/z 91', { cls: 'fg-lbl', size: 13 });
     return s;
   },
-  caption: 'Both cations are C₇H₇⁺ and appear at 91. In tropylium the charge is shared by all seven carbons.',
+  caption: 'One route, simplified. Both cations are C₇H₇⁺ and appear at 91; in tropylium the charge is shared by all seven carbons.',
 });
 
 /* ------------------------------------------------ isotope patterns --- */
@@ -411,7 +411,7 @@ FIGURES.push({
       let g = panel(cx - 118, top, 236, 150);
       g += text(cx, top + 22, title, { cls: 'fg-tag', size: 11 });
       g += pattern(x0 ?? cx - 22 * (peaks.length - 1), top + 120, peaks);
-      g += text(cx + 112, top + 46, ratio, { cls: 'fg-lbl', size: 13, anchor: 'end' });
+      g += text(cx + 100, top + 46, ratio, { cls: 'fg-lbl', size: 13, anchor: 'end' });
       return g;
     };
     s += cell(0, 0, 'NO Cl OR Br', 'M+1 small', [['M', 100], ['M+1', 5.5]]);
@@ -465,7 +465,6 @@ FIGURES.push({
     s += text(X(29) + 12, 76, 'base peak 29: C₂H₅⁺, after Br• is lost', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(X(109), 128, 'M at 108 and M+2 at 110,', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
     s += text(X(109), 144, 'almost equal: one bromine', { cls: 'fg-sm', size: 10, anchor: 'end' });
-    s += `<line class="fg-dash-hi" x1="${n2(X(109))}" y1="152" x2="${n2(X(109))}" y2="${n2(base - 64)}"></line>`;
     return s;
   },
   caption: 'The same compound as the worked example. The M and M+2 pair sits at the right-hand end, and the base peak is the ethyl cation.',
