@@ -332,12 +332,14 @@
       6:['kinetic-vs-thermodynamic'],
       8:['kinetic-vs-thermodynamic'] } },
 
-    'diels-alder': { n:8, steps:{
-      2:['cycloaddition-geometry','conjugation-recognition'],
-      3:['cycloaddition-geometry'],
+    'diels-alder': { n:16, steps:{
+      3:['cycloaddition-geometry','conjugation-recognition'],
       4:['cycloaddition-geometry'],
       6:['cycloaddition-geometry'],
-      7:['cycloaddition-geometry'] } },
+      8:['cycloaddition-geometry'],
+      10:['cycloaddition-geometry'],
+      13:['cycloaddition-geometry','kinetic-vs-thermodynamic'],
+      15:['cycloaddition-geometry'] } },
 
     'uv-vis': { n:11, steps:{
       2:['conjugation-recognition'],
