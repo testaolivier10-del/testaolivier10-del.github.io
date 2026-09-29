@@ -316,7 +316,7 @@ FIGURES.push({
     s += text(170, 252, 'H points at you, so flip: (R).', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: '(R)-glyceraldehyde, with CIP priorities in green. The arrow runs from 1 to 3 the short way round, past 2.',
+  caption: '(R)-glyceraldehyde, with CIP priorities in green. The arrow runs from 1 through 2 to 3.',
 });
 
 /* ------------------------------------------------ 4. moves on the cross --- */
@@ -347,12 +347,12 @@ function moveRow(m, y) {
   let s = '';
   s += text(14, y - 6, m.t1, { cls: 'fg-lbl', anchor: 'start' });
   s += text(14, y + 12, m.t2, { cls: 'fg-sm', anchor: 'start' });
-  s += cross(P(205, y), m.before, { h: 38, v: 40 });
-  s += arr(P(268, y), P(314, y));
-  s += cross(P(385, y), m.after, { h: 38, v: 40, kinds: kindsFor(m, 'after') });
-  s += arr(P(452, y), P(488, y));
-  s += text(470, y - 10, 'in 3D', { cls: 'fg-sm' });
-  s += bowtie(P(568, y), m.after, { h: 44, v: 40, kinds: kindsFor(m, '3d') });
+  s += cross(P(190, y), m.before, { h: 38, v: 40 });
+  s += arr(P(250, y), P(292, y));
+  s += cross(P(360, y), m.after, { h: 38, v: 40, kinds: kindsFor(m, 'after') });
+  s += arr(P(432, y), P(466, y));
+  s += text(449, y - 10, 'in 3D', { cls: 'fg-sm' });
+  s += bowtie(P(558, y), m.after, { h: 60, v: 40, kinds: kindsFor(m, '3d') });
   const cls = m.good ? 'fg-tag-good' : 'fg-tag-warn';
   s += text(648, y - 4, m.v1, { cls, anchor: 'start' });
   s += text(648, y + 14, m.v2, { cls, anchor: 'start' });
@@ -361,9 +361,9 @@ function moveRow(m, y) {
 
 function movesNotes(keys, title) {
   let s = '';
-  s += text(205, 24, 'before', { cls: 'fg-tag-mut' });
-  s += text(385, 24, 'after', { cls: 'fg-tag-mut' });
-  s += text(568, 24, 'what "after" means', { cls: 'fg-tag-mut' });
+  s += text(190, 24, 'before', { cls: 'fg-tag-mut' });
+  s += text(360, 24, 'after', { cls: 'fg-tag-mut' });
+  s += text(558, 24, 'what "after" means', { cls: 'fg-tag-mut' });
   s += text(14, 24, title, { cls: 'fg-tag', anchor: 'start' });
   keys.forEach((k, i) => {
     const y = 104 + i * 138;
@@ -385,11 +385,11 @@ function movesLesson(keys) {
     s += cross(P(260, y0 + 90), m.after, { h: 38, v: 40, kinds: kindsFor(m, 'after') });
     s += text(80, y0 + 156, 'before', { cls: 'fg-tag-mut' });
     s += text(260, y0 + 156, 'after', { cls: 'fg-tag-mut' });
-    s += bowtie(P(96, y0 + 228), m.after, { h: 44, v: 40, kinds: kindsFor(m, '3d') });
+    s += bowtie(P(98, y0 + 228), m.after, { h: 60, v: 40, kinds: kindsFor(m, '3d') });
     const cls = m.good ? 'fg-tag-good' : 'fg-tag-warn';
-    s += text(186, y0 + 212, '"after" in 3D:', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += text(186, y0 + 230, m.v1, { cls, anchor: 'start' });
-    s += text(186, y0 + 248, m.v2, { cls, anchor: 'start' });
+    s += text(192, y0 + 212, '"after" in 3D:', { cls: 'fg-tag-mut', anchor: 'start' });
+    s += text(192, y0 + 230, m.v1, { cls, anchor: 'start' });
+    s += text(192, y0 + 248, m.v2, { cls, anchor: 'start' });
   });
   return s;
 }
@@ -459,7 +459,7 @@ FIGURES.push({
   caption: 'The upper cross is C2 and the lower one C3. Coral marks a center where H and OH were swapped once.',
 });
 
-/* ------------------------------------------ 6. wedge-and-dash to Fischer --- */
+/* ------------------------------------------ 6. wedge-and-hash to Fischer --- */
 
 /* (S)-butan-2-ol as usually drawn: OH up, ethyl lower left, methyl lower
    right, all in the page, and H on a hash pointing down and back. */
@@ -490,7 +490,7 @@ const TRY2 = { top: 'CH₃', bottom: 'CH₂CH₃', left: 'H', right: 'OH' };
 FIGURES.push({
   id: 'fischer-convert',
   section: 'fischer',
-  anchor: '<h3>From a wedge-and-dash drawing to a Fischer projection</h3>',
+  anchor: '<h3>From a wedge-and-hash drawing to a Fischer projection</h3>',
   alt: 'Four panels. 1: (S)-butan-2-ol drawn with OH up, CH2CH3 lower left and CH3 lower right in the page, and H on a hash. 2: a first Fischer projection with CH3 at the top, CH2CH3 at the bottom, OH left and H right; it reads R, which is wrong. 3: OH and H swapped, OH right and H left; it reads S, which matches. 4: the finished projection in 3D, with wedges to H and OH and hashes to CH3 and CH2CH3.',
   viewBox: '0 0 760 262',
   build() {
@@ -631,7 +631,7 @@ FIGURES.push({
     s += text(610, 376, 'differs from glucose at C4 only', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Three aldohexoses. Coral marks the one OH that differs from glucose.',
+  caption: 'Three six-carbon sugars. Coral marks the one OH that differs from glucose.',
 });
 
 FIGURES.push({
