@@ -178,7 +178,7 @@ FIGURES.push({
     s += tag(170, 354, 'both C–O bonds 126 pm');
     return s;
   },
-  caption: 'Arrows on A give B. The hybrid is one ion, not the two taking turns.',
+  caption: 'The two arrows turn A into B. The hybrid is a single ion; it does not switch between A and B.',
 });
 
 /* ------------------------------------------------ chain molecules ---
@@ -258,8 +258,8 @@ function amide(o, form, opt = {}) {
   const base = [['c', 'm'], ['n', 'h1'], ['n', 'h2']];
   if (form === 'A') {
     const arrows = opt.arrows ? [
-      [at(lpAt(atoms.n, 270), 270, 4), bondSide(atoms.c, atoms.n, 300, 7), -16],
-      [bondSide(atoms.c, atoms.ox, 0, 7), at(atoms.ox, 20, 21), -16],
+      [at(atoms.n, 285, 31), bondSide(atoms.c, atoms.n, 300, 8), -26],
+      [bondSide(atoms.c, atoms.ox, 0, 7), at(atoms.ox, 5, 18), -18],
     ] : [];
     return mol({ atoms, bonds: [['c', 'ox', 2], ['c', 'n'], ...base], lp: [['ox', 210], ['ox', 330], ['n', 270]], arrows });
   }
@@ -293,7 +293,7 @@ function vinylamine(o, opt = {}) {
   A.h1 = { ...at(A.a3, 330, 36), l: 'H' };
   A.h2 = { ...at(A.a3, 90, 36), l: 'H' };
   const arrows = [
-    [at(lpAt(A.a3, 150), 150, 4), bondSide(A.a2, A.a3, 120, 7), -20],
+    [at(A.a3, 165, 31), bondSide(A.a2, A.a3, 120, 8), -26],
     [bondSide(A.a1, A.a2, 240, 7), at(A.a1, 250, 22), 14],
   ];
   return mol({ atoms: A, bonds: [['a1', 'a2', 2], ['a2', 'a3'], ['a3', 'h1'], ['a3', 'h2']], lp: [['a3', 150]], arrows });
@@ -341,7 +341,7 @@ FIGURES.push({
     s += tag(490, 190, 'C: 5 bonds = 10 electrons', { cls: 'fg-tag-warn' });
     return s;
   },
-  caption: 'Arrow 1 alone puts a fifth bond on the carbon. Arrow 2 in the acetate figure is what makes the move legal.',
+  caption: 'Left: the lone-pair arrow on its own. Right: the carbon it leaves behind, with five bonds.',
 });
 
 FIGURES.push({
@@ -408,7 +408,7 @@ function sideRow(x0, y, dx, atoms) {
   atoms.forEach(([l, , extra], i) => {
     const p = pts[i];
     if (extra === 'sp3') {
-      for (const ang of [60, 120]) {
+      for (const ang of [270, 90]) {
         const h = at(p, ang, 34);
         s += bond(p, h, { rFrom: 13, rTo: 10 }) + atom(h.x, h.y, 'H', { r: 10 });
       }
@@ -480,14 +480,14 @@ FIGURES.push({
   id: 'res-three-moves',
   section: 'resonance',
   alt: 'Three columns, each a starting structure with its curved arrows above the structure it gives, joined by a double-headed arrow. Move 1, a lone pair beside a π bond: CH2=CH–OH, with arrows from an oxygen lone pair into the C–O bond and from the C=C bond onto the end carbon, gives minus CH2–CH=OH plus. Move 2, a π bond beside an empty p orbital: the allyl cation CH2=CH–CH2 plus, with one arrow from the C=C bond into the next C–C bond, gives plus CH2–CH=CH2. Move 3, a π bond to an electronegative atom: formaldehyde H2C=O, with one arrow from the C=O bond onto oxygen, gives H2C plus, O minus.',
-  viewBox: '0 0 760 330',
+  viewBox: '0 0 760 300',
   build() {
     let s = '';
     const cols = [128, 380, 632];
     s += tag(cols[0], 24, '1 · lone pair beside a π bond');
     s += tag(cols[1], 24, '2 · π bond beside an empty p');
     s += tag(cols[2], 24, '3 · π bond to O or N');
-    s += rule(254, 36, 254, 318) + rule(506, 36, 506, 318);
+    s += rule(254, 36, 254, 290) + rule(506, 36, 506, 290);
     s += enol(P(cols[0] - 70, 104), 'start', { arrows: true });
     s += enol(P(cols[0] - 70, 240), 'end');
     s += resDown(cols[0] + 90, 150, 196);
@@ -498,9 +498,9 @@ FIGURES.push({
     s += formaldehyde(P(cols[2] - 30, 96), 'start', { arrows: true });
     s += formaldehyde(P(cols[2] - 30, 236), 'end');
     s += resDown(cols[2] + 80, 150, 196);
-    s += tag(cols[0], 312, 'CH₂=CH–OH');
-    s += tag(cols[1], 312, 'the allyl cation');
-    s += tag(cols[2], 312, 'formaldehyde, H₂C=O');
+    s += tag(cols[0], 42, 'CH₂=CH–OH', { cls: 'fg-tag-mut' });
+    s += tag(cols[1], 42, 'the allyl cation', { cls: 'fg-tag-mut' });
+    s += tag(cols[2], 42, 'formaldehyde, H₂C=O', { cls: 'fg-tag-mut' });
     return s;
   },
   caption: 'Top row: the arrows for each move. Bottom row: the structure they give, with its new formal charges.',
@@ -594,12 +594,12 @@ FIGURES.push({
     s += tag(160, 24, 'benzene: two Kekulé structures');
     s += kekule(90, 84, 34, 0) + resArrow(P(134, 84), P(186, 84)) + kekule(230, 84, 34, 1);
     s += rule(300, 40, 300, 130);
-    s += tag(530, 24, 'three Dewar structures: a long bond across', { cls: 'fg-tag-mut' });
+    s += tag(530, 24, 'three Dewar structures: a pairing across', { cls: 'fg-tag-mut' });
     [0, 1, 2].forEach((k, i) => { s += dewar(400 + i * 130, 84, 34, k, 'fg-bond-soft'); });
     s += tag(160, 146, 'these two matter');
     s += tag(530, 146, 'minor, usually ignored', { cls: 'fg-tag-mut' });
     s += rule(20, 162, 740, 162);
-    s += tag(380, 184, 'naphthalene: three structures');
+    s += tag(380, 184, 'naphthalene: three Kekulé structures');
     const xs = [140, 380, 620];
     xs.forEach((x, i) => { s += naphthalene(x, 244, 32, i); });
     s += resArrow(P(218, 244), P(302, 244)) + resArrow(P(458, 244), P(542, 244));
@@ -620,10 +620,10 @@ FIGURES.push({
     s += resArrow(P(236, 72), P(290, 72));
     s += enolate(P(346, 82), 'B');
     s += tag(122, 146, 'major: − on O', { cls: 'fg-tag-good' });
-    s += tag(416, 146, 'minor: − on C', { cls: 'fg-tag-warn' });
+    s += tag(416, 146, 'minor: − on C', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Both structures give every atom an octet and carry one charge. They differ only in which atom holds it.',
+  caption: 'The shaded atom holds the negative charge in each structure.',
 });
 
 FIGURES.push({
@@ -637,12 +637,12 @@ FIGURES.push({
     s += enolate(P(112, 76), 'A', { arrows: true, L: 46 });
     s += tag(170, 118, 'major: − on O', { cls: 'fg-tag-good' });
     s += resDown(170, 133, 147);
-    s += panel(4, 150, 332, 126, { kind: 'warn' });
+    s += panel(4, 150, 332, 126);
     s += enolate(P(112, 222), 'B', { L: 46 });
-    s += tag(170, 264, 'minor: − on C', { cls: 'fg-tag-warn' });
+    s += tag(170, 264, 'minor: − on C', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Same octets, same number of charges. Only the atom holding the charge differs.',
+  caption: 'The shaded atom holds the negative charge in each structure.',
 });
 
 /* ------------------------------------- 9 ranking, protonated carbonyl --- */
@@ -657,10 +657,10 @@ FIGURES.push({
     s += resArrow(P(236, 80), P(290, 80));
     s += protonated(P(400, 80), 'B');
     s += tag(122, 156, 'major: every atom has an octet', { cls: 'fg-tag-good' });
-    s += tag(416, 156, 'minor: C has only six', { cls: 'fg-tag-warn' });
+    s += tag(416, 156, 'minor: C has only six', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Charge placement favors the right-hand structure. The octet rule, which is checked first, favors the left.',
+  caption: 'The shaded atom holds the positive charge in each structure. Count the electrons around carbon on the right.',
 });
 
 FIGURES.push({
@@ -702,7 +702,7 @@ FIGURES.push({
     const C = sq(0, 0), O = sq(-6, -100), M = sq(-96, 44), N = sq(86, 44), H1 = sq(140, 10), H2 = sq(90, 120);
     const plane = [sq(-110, -125), sq(150, -125), sq(150, 165), sq(-110, 165)];
     s += `<polygon class="fg-panel-hi" points="${plane.map((p) => `${f2(p.x)},${f2(p.y)}`).join(' ')}"></polygon>`;
-    s += bond(C, O, { order: 2, rFrom: 14, rTo: 14 });
+    s += partial(C, O, 14, 14, 1);
     s += bond(C, M, { rFrom: 14, rTo: 17 });
     s += partial(C, N, 14, 14, 1);
     s += bond(N, H1, { rFrom: 14, rTo: 11 }) + bond(N, H2, { rFrom: 14, rTo: 11 });
@@ -713,7 +713,7 @@ FIGURES.push({
     s += tag(580, 240, 'all six atoms in one plane', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'The minor structure puts a double bond between C and N, so the real C–N bond is part double. That is what holds the six atoms on the right flat.',
+  caption: 'Right: the real amide. Each dashed line marks a part-double bond, and the shaded plane holds all six atoms.',
 });
 
 /* ------------------------------------------------ lesson questions --- */
@@ -778,7 +778,7 @@ FIGURES.push({
     s += tag(170, 172, 'follow both arrows');
     return s;
   },
-  caption: 'CH₂=CH–NH₂ with the two arrows of the lone-pair move.',
+  caption: 'CH₂=CH–NH₂ with two curved arrows: one from the N lone pair, one from the C=C π bond.',
 });
 
 FIGURES.push({

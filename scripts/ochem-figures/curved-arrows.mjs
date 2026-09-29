@@ -293,7 +293,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Rows 2 and 3 are the same arrow run in opposite directions, between two drawings of one molecule, so ↔ joins them.',
+  caption: 'Rows 2 and 3 are the same arrow run in opposite directions.',
 });
 
 /* NH3 + H–Cl: two arrows at once. */
