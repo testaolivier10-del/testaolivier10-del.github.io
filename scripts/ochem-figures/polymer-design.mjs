@@ -562,7 +562,8 @@ FIGURES.push({
     s += tag(165, 22, 'LACTIC ACID');
     s += lacticAcid(165, 82);
     s += arrow(P(165, 160), P(165, 204));
-    s += text(180, 186, 'condense, then close the ring', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(180, 178, 'condense, then', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(180, 194, 'close the ring', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += tag(40, 236, 'LACTIDE', { anchor: 'start' });
     const lt = lactide(165, 318);
     s += lt.svg;

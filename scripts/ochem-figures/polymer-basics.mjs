@@ -232,7 +232,7 @@ const twoKindsNotes = () => {
   const y3 = 340;
   s += arrow(P(30, y3), P(96, y3), { muted: true });
   s += tag(63, y3 - 14, '− 2 H₂O', { cls: 'fg-tag-warn' });
-  s += bond(P(118, y3), P(160, y3), { rFrom: 0, rTo: 13, cls: 'fg-bond-hi' });
+  s += bond(P(118, y3), P(160, y3), { rFrom: 0, rTo: 13 });
   s += brack(136, y3, 50, 1);
   s += atom(160, y3, 'O', { r: 13 });
   s += atom(228, y3, 'CH₂CH₂', { r: 28 });
@@ -268,7 +268,7 @@ FIGURES.push({
   id: 'l-two-kinds',
   lessons: ['polymer-basics'],
   anchor: '',
-  viewBox: '0 0 340 508',
+  viewBox: '0 0 340 568',
   alt: 'Propylene becoming the polypropylene repeat unit with nothing lost, then adipic acid and ethylene glycol, with the atoms that leave shaded, becoming the polyester repeat unit after losing two waters',
   build() {
     let s = '';
@@ -296,7 +296,7 @@ FIGURES.push({
     s += rule(14, 220, 326, 220);
 
     s += tag(170, 240, 'CONDENSATION: water leaves');
-    const y3 = 302;
+    const y3 = 296;
     s += atom(34, y3, 'HO', { kind: 'warn', r: 16 });
     s += carbonyl(86, y3, { up: 34 });
     s += atom(154, y3, '(CH₂)₄', { r: 27 });
@@ -306,8 +306,8 @@ FIGURES.push({
     s += bond(P(86, y3), P(154, y3), { rFrom: 13, rTo: 27 });
     s += bond(P(154, y3), P(222, y3), { rFrom: 27, rTo: 13 });
     s += bond(P(222, y3), P(274, y3), { rFrom: 13, rTo: 16 });
-    const y4 = 346;
-    s += text(26, y4 + 5, '+', { cls: 'fg-lbl' });
+    s += text(154, 346, '+', { cls: 'fg-lbl' });
+    const y4 = 384;
     s += atom(66, y4, 'H', { kind: 'warn', r: 13 });
     s += atom(106, y4, 'O', { r: 13 });
     s += atom(170, y4, 'CH₂CH₂', { r: 28 });
@@ -317,27 +317,27 @@ FIGURES.push({
     s += bond(P(106, y4), P(170, y4), { rFrom: 13, rTo: 28 });
     s += bond(P(170, y4), P(234, y4), { rFrom: 28, rTo: 13 });
     s += bond(P(234, y4), P(274, y4), { rFrom: 13, rTo: 13 });
-    s += arrow(P(150, 372), P(150, 404), { muted: true });
-    s += tag(162, 393, '− 2 H₂O', { cls: 'fg-tag-warn', anchor: 'start' });
+    s += arrow(P(150, 422), P(150, 456), { muted: true });
+    s += tag(162, 444, '− 2 H₂O', { cls: 'fg-tag-warn', anchor: 'start' });
 
-    const y5 = 450;
-    s += bond(P(4, y5), P(36, y5), { rFrom: 0, rTo: 12, cls: 'fg-bond-hi' });
-    s += brack(14, y5, 50, 1);
-    s += atom(36, y5, 'O', { r: 12 });
-    s += atom(88, y5, 'CH₂CH₂', { r: 27 });
+    const y5 = 508;
+    s += bond(P(10, y5), P(40, y5), { rFrom: 0, rTo: 12 });
+    s += brack(20, y5, 50, 1);
+    s += atom(40, y5, 'O', { r: 12 });
+    s += atom(90, y5, 'CH₂CH₂', { r: 27 });
     s += atom(140, y5, 'O', { r: 12 });
-    s += carbonyl(176, y5, { up: 34 });
-    s += atom(230, y5, '(CH₂)₄', { r: 27 });
-    s += carbonyl(284, y5, { up: 34 });
-    s += bond(P(36, y5), P(88, y5), { rFrom: 12, rTo: 27 });
-    s += bond(P(88, y5), P(140, y5), { rFrom: 27, rTo: 12 });
-    s += bond(P(140, y5), P(176, y5), { rFrom: 12, rTo: 13, cls: 'fg-bond-hi' });
-    s += bond(P(176, y5), P(230, y5), { rFrom: 13, rTo: 27 });
-    s += bond(P(230, y5), P(284, y5), { rFrom: 27, rTo: 13 });
-    s += bond(P(284, y5), P(330, y5), { rFrom: 13, rTo: 0, cls: 'fg-bond-hi' });
-    s += brack(314, y5, 50, -1);
-    s += text(320, y5 + 30, 'n', { cls: 'fg-lbl', anchor: 'start' });
-    s += tag(160, 500, 'C₈H₁₂O₄: two H₂O lighter', { cls: 'fg-tag-good' });
+    s += carbonyl(174, y5, { up: 34 });
+    s += atom(226, y5, '(CH₂)₄', { r: 27 });
+    s += carbonyl(278, y5, { up: 34 });
+    s += bond(P(40, y5), P(90, y5), { rFrom: 12, rTo: 27 });
+    s += bond(P(90, y5), P(140, y5), { rFrom: 27, rTo: 12 });
+    s += bond(P(140, y5), P(174, y5), { rFrom: 12, rTo: 13, cls: 'fg-bond-hi' });
+    s += bond(P(174, y5), P(226, y5), { rFrom: 13, rTo: 27 });
+    s += bond(P(226, y5), P(278, y5), { rFrom: 27, rTo: 13 });
+    s += bond(P(278, y5), P(320, y5), { rFrom: 13, rTo: 0, cls: 'fg-bond-hi' });
+    s += brack(304, y5, 50, -1);
+    s += text(310, y5 + 30, 'n', { cls: 'fg-lbl', anchor: 'start' });
+    s += tag(160, 558, 'C₈H₁₂O₄: two H₂O lighter', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'The shaded OH and H atoms are the ones that leave as water. The shaded bonds are the new ester links.',
@@ -403,7 +403,7 @@ FIGURES.push({
     let s = '';
     const head2 = (y, a, b) => {
       s += tag(48, y - 48, a, { anchor: 'start' });
-      s += text(48, y - 30, b, { cls: 'fg-sm', anchor: 'start' });
+      s += tag(48, y - 30, b, { anchor: 'start', cls: 'fg-tag-mut' });
     };
 
     /* 1. Radical: the chain end carries one unpaired electron. */
@@ -429,7 +429,7 @@ FIGURES.push({
     s += bond(P(550, y0), P(616, y0), { rFrom: 18, rTo: 18 });
     s += bond(P(616, y0), P(682, y0), { rFrom: 18, rTo: 18 });
     s += dot(692, y0 - 26);
-    s += text(380, y0 + 52, 'one π electron pairs with the radical’s electron to make the new C–C bond; the other becomes the new radical', { cls: 'fg-sm' });
+    s += text(380, y0 + 52, 'one π electron pairs with the radical to form the new C–C bond; the other becomes the new radical', { cls: 'fg-tag' });
     s += rule(40, y0 + 76, 720, y0 + 76);
 
     /* 2. Cationic: the chain end is a tertiary carbocation. */
@@ -453,7 +453,7 @@ FIGURES.push({
     s += bond(P(564, y1), P(632, y1), { rFrom: 32, rTo: 18 });
     s += bond(P(632, y1), P(704, y1), { rFrom: 18, rTo: 32 });
     s += text(730, y1 - 32, '+', { cls: 'fg-tag-warn' });
-    s += text(380, y1 + 52, 'the π bond attacks the cation, and the new cation is tertiary again, with two methyls donating into it', { cls: 'fg-sm' });
+    s += text(380, y1 + 52, 'the π bond attacks the cation, and the new cation is tertiary again, stabilized by two methyls', { cls: 'fg-tag' });
     s += rule(40, y1 + 76, 720, y1 + 76);
 
     /* 3. Anionic: the chain end is a carbanion the nitrile can hold. */
@@ -479,12 +479,12 @@ FIGURES.push({
     s += bond(P(548, y2), P(614, y2), { rFrom: 25, rTo: 18 });
     s += bond(P(614, y2), P(680, y2), { rFrom: 18, rTo: 25 });
     s += text(704, y2 - 30, '−', { cls: 'fg-tag-warn' });
-    s += text(380, y2 + 52, 'the carbanion adds to the CH₂ end, so the new negative charge sits next to the nitrile that spreads it out', { cls: 'fg-sm' });
+    s += text(380, y2 + 52, 'the carbanion adds to the CH₂ end, so the new charge sits next to the nitrile that spreads it out', { cls: 'fg-tag' });
     s += rule(40, y2 + 70, 720, y2 + 70);
-    s += text(380, y2 + 94, 'In every row the new chain end is the same kind of species as the old one.', { cls: 'fg-lbl' });
+    s += text(380, y2 + 94, 'In every row the new active end is the same kind of species as the old one.', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'One propagation step for each kind of chain end. ~CH₂ stands for the rest of the chain, and the shaded atom is the reactive end. A fishhook arrow (one barb) moves one electron; a full arrowhead moves a pair.',
+  caption: 'One propagation step for each kind of chain end. ~CH₂ stands for the rest of the chain, and the shaded atom is the active end. A fishhook arrow (one barb) moves one electron; a full arrowhead moves a pair.',
 });
 
 /* ------------------------------------------------------------------------
@@ -638,7 +638,7 @@ FIGURES.push({
     s += tag(170, 164, 'milk bottles, pipe');
 
     s += tag(170, 196, 'LDPE: branched chains');
-    s += panel(10, 206, 320, 96, { kind: 'warn' });
+    s += panel(10, 206, 320, 96);
     s += chain(28, 224, 19, [6, 14]);
     s += chain(28, 255, 19, [9]);
     s += chain(28, 286, 19, [3, 15]);
