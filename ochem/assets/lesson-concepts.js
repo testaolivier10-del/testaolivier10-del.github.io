@@ -317,12 +317,13 @@
       7:['allylic-capture','conjugation-recognition'],
       8:['conjugation-recognition'] } },
 
-    'diene-addition': { n:8, steps:{
+    'diene-addition': { n:13, steps:{
       2:['allylic-capture'],
-      3:['allylic-capture'],
-      4:['kinetic-vs-thermodynamic','allylic-capture'],
+      4:['allylic-capture'],
       6:['kinetic-vs-thermodynamic'],
-      7:['allylic-capture','kinetic-vs-thermodynamic'] } },
+      8:['kinetic-vs-thermodynamic','allylic-capture'],
+      10:['kinetic-vs-thermodynamic'],
+      12:['allylic-capture','kinetic-vs-thermodynamic'] } },
 
     'kinetic-thermodynamic': { n:9, steps:{
       3:['kinetic-vs-thermodynamic'],
