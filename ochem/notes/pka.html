@@ -55,11 +55,9 @@
        identical whether it is read here or inside learn.html. -->
   <article class="notes-body notes-view">
 <!-- notes:start -->
-<p class="step-body">Mix acetic acid, the acid in vinegar, with sodium hydroxide, and every molecule of acid hands its O–H proton to hydroxide. Mix ethanol with sodium hydroxide, and only part of the ethanol loses its O–H proton. One number, the <b>pKa</b>, predicts that difference before you run either reaction.</p>
+<p class="step-body">You have used pKa twice already. <a class="chapter-ref" href="/ochem/notes/resonance.html">Resonance</a> compared acetic acid with ethanol by it: a lower pKa means a stronger acid, and each unit is a factor of ten. <a class="chapter-ref" href="/ochem/notes/bronsted.html">Brønsted acids and bases</a> used it to decide which side of a proton transfer wins. With acetic acid and ammonia, for example, the side with the weaker acid and the weaker base is favored by about 3 × 10⁴ to one.</p>
 
-<p class="step-body">pKa is the most useful single number in organic chemistry. It tells you which way a proton transfer runs, and whether a base is strong enough to remove a given proton. Later chapters also use it to judge how easily a group leaves a molecule and how stable an anion is. Most &ldquo;will this reaction work?&rdquo; questions in the first half of the course come down to comparing two pKa values.</p>
-
-<p class="step-body">This page covers the number itself: what it measures, how the scale runs, and how to read an equilibrium from it. Why one acid is stronger than another is the subject of the next section, <a class="chapter-ref" href="/ochem/notes/acidity-factors.html">Factors affecting acidity</a>.</p>
+<p class="step-body">This page explains where the number comes from, the acid dissociation constant Ka. It then lays out the scale, shows how to work out how far a proton transfer goes, and shows how to pick a base strong enough for a given proton. Later chapters lean on the same comparison to judge how easily a group leaves a molecule, so most &ldquo;will this reaction work?&rdquo; questions in the first half of the course come down to two pKa values. Why one acid is stronger than another is the subject of the next section, <a class="chapter-ref" href="/ochem/notes/acidity-factors.html">Factors affecting acidity</a>.</p>
 
 <h3>Ka and pKa</h3>
 <p class="step-body">Start with acetic acid dissolved in water. A small fraction of its molecules give up the proton on the O–H and become acetate ions. The rest stay whole. Written for any acid HA, the reaction is</p>
@@ -75,7 +73,7 @@
 
 <p class="step-body">Ka values for real acids span about sixty powers of ten, from around 10¹⁰ down to 10⁻⁵⁰. Numbers that far apart are awkward to compare, so chemists take the negative logarithm instead. It is the same step that turns [H⁺] into pH:</p>
 <div class="formula">pKa = −log₁₀(Ka)</div>
-<p class="step-body">For acetic acid, −log₁₀(1.7 × 10⁻⁵) = 4.76. The minus sign turns the direction around, and this trips up almost everyone at first: <b>a lower pKa means a stronger acid</b>. HCl, with a pKa of −7, is a very strong acid. An alkane C–H, with a pKa of 50, is not an acid in any practical sense.</p>
+<p class="step-body">For acetic acid, −log₁₀(1.7 × 10⁻⁵) = 4.76. The minus sign is why <b>a lower pKa means a stronger acid</b>, the reading rule you already know: a larger Ka gives a smaller pKa. HCl, with a pKa of −7, is a very strong acid. An alkane C–H, with a pKa of 50, is not an acid in any practical sense.</p>
 
 <div class="notes-fact">pKa is a logarithm, so each unit is a <b>tenfold</b> change in acid strength. Acetic acid (pKa 4.76) and ethanol (pKa 16) are about 11 units apart, which makes acetic acid roughly 10¹¹ (a hundred billion) times more acidic. Before you decide whether a gap between two pKa values is big, turn it into powers of ten.</div>
 
@@ -118,7 +116,7 @@
 <h3>Predicting which side an equilibrium favors</h3>
 <p class="step-body">Take acetic acid and hydroxide. Hydroxide takes the O–H proton and becomes water, and acetic acid becomes acetate. The reaction can also run backward, with acetate taking a proton from water. So there is an acid on each side: acetic acid (pKa 4.76) on the left and water (pKa 15.7) on the right. Acetic acid is far stronger, so it is the one that ends up without its proton, and the equilibrium lies on the right.</p>
 
-<p class="step-body">That example gives the rule. As in Brønsted acids and bases, <b>a proton transfer favors the side with the weaker acid and the weaker base</b>. The weaker acid is the one with the higher pKa. To apply it, find the acid on the left. Then find the acid that the base turns into on the right, which is the base&rsquo;s conjugate acid (see <a class="chapter-ref" href="/ochem/notes/conjugate.html">Conjugate acids and bases</a>). Compare the two pKa values, and the side with the higher one is favored.</p>
+<p class="step-body">That is the rule from <a class="chapter-ref" href="/ochem/notes/bronsted.html">Brønsted acids and bases</a>: <b>a proton transfer favors the side with the weaker acid and the weaker base</b>. In pKa terms, the weaker acid is the one with the higher pKa. To apply it, find the acid on the left. Then find the acid that the base turns into on the right, which is the base&rsquo;s conjugate acid (see <a class="chapter-ref" href="/ochem/notes/conjugate.html">Conjugate acids and bases</a>). Compare the two pKa values, and the side with the higher one is favored.</p>
 
 <p class="step-body">The same two numbers also give the size of the equilibrium constant:</p>
 <div class="formula">K<sub>eq</sub> ≈ 10<sup>(pKa of the acid formed − pKa of the acid used up)</sup></div>

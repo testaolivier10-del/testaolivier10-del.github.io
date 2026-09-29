@@ -100,7 +100,7 @@ const RUNGS = [
   // [pKa shown, pKa for position, name, label y override]
   ['−7', -7, 'HCl'],
   ['−1.7', -1.7, 'H₃O⁺'],
-  ['4.8', 4.76, 'carboxylic acid O–H'],
+  ['4.76', 4.76, 'carboxylic acid O–H'],
   ['9.2', 9.2, 'ammonium, NH₄⁺'],
   ['10', 10, 'phenol O–H'],
   ['15.7', 15.7, 'water'],
@@ -208,7 +208,7 @@ const galleryCells = [
     let s = sk(a, b) + bond(b, c, { rFrom: 0, rTo: 0, order: 3 }) + Hon(c, 0, 36);
     return s;
   }],
-  ['AMINE N–H', 'ammonia · pKa 38', (ox, oy) => {
+  ['AMMONIA N–H', 'ammonia · pKa 38', (ox, oy) => {
     const n = P(ox + 118, oy + 76);
     let s = A(n, 'N') + LP(n, 90, 21);
     for (const d of [0, 270]) { const h = armEnd(n, d, 36); s += B(n, h, 'N', 'H') + A(h, 'H'); }
@@ -248,7 +248,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'One example of each row, with the hydrogen that the pKa belongs to highlighted. Read left to right and down: the acids get weaker.',
+  caption: 'One example for nine of the table&rsquo;s rows, with the hydrogen that the pKa belongs to highlighted. Read left to right and down: the acids get weaker.'
 });
 
 /* ======================================================================
@@ -306,9 +306,9 @@ function transferArrows(p, lp) {
 
 const RXN = {
   hydroxide: { base: hydroxide, acid: water, acidTag: 'water · pKa 15.7', lean: 'left',
-    verdict: ['FAVORS THE LEFT', 'K ≈ 10⁻⁹'], vcls: 'fg-tag-warn' },
+    verdict: ['FAVORS THE LEFT', 'K ≈ 10⁻⁹'], stacked: 'FAVORS THE REACTANTS', vcls: 'fg-tag-warn' },
   amide: { base: amide, acid: ammonia, acidTag: 'ammonia · pKa 38', lean: 'right',
-    verdict: ['FAVORS THE RIGHT', 'K ≈ 10¹³'], vcls: 'fg-tag-good' },
+    verdict: ['FAVORS THE RIGHT', 'K ≈ 10¹³'], stacked: 'FAVORS THE PRODUCTS', vcls: 'fg-tag-good' },
 };
 
 function rowWide(y, key) {
@@ -355,7 +355,7 @@ function stack(oy, key) {
   s += p.s + plusSign(208, y1 + 5) + b.s + transferArrows(p, b.lp);
   s += tag(96, y1 + 34, 'pKa 25');
   s += eqV(206, y1 + 28, y2 - 26, r.lean === 'left' ? 'up' : 'down');
-  s += text(190, oy + 100, r.verdict[0], { cls: r.vcls, size: 11, anchor: 'end' });
+  s += text(190, oy + 100, r.stacked, { cls: r.vcls, size: 11, anchor: 'end' });
   s += acetylide(34, y2);
   s += plusSign(170, y2 + 5);
   s += r.acid(200, y2);
@@ -366,7 +366,7 @@ function stack(oy, key) {
 FIGURES.push({
   id: 'l-keq-alkyne',
   lessons: ['pka'],
-  alt: 'Top: propyne plus hydroxide in equilibrium with the propynide anion plus water; the arrow back up to the reactants is the long one, so the equilibrium favors the left. Bottom: propyne plus amide ion in equilibrium with propynide plus ammonia; the arrow down to the products is the long one, so it favors the right.',
+  alt: 'Top: propyne plus hydroxide in equilibrium with the propynide anion plus water; the arrow back up to the reactants is the long one, so the equilibrium favors the reactants. Bottom: propyne plus amide ion in equilibrium with propynide plus ammonia; the arrow down to the products is the long one, so it favors the products.',
   viewBox: '0 0 340 450',
   build() {
     let s = '';
@@ -415,12 +415,13 @@ FIGURES.push({
 
     s += text(404, 74, 'The base is NaHCO₃.', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(404, 94, 'Its conjugate acid is carbonic acid, pKa 6.4,', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(404, 112, 'so it fully deprotonates acids well below 6.4', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 112, 'so it deprotonates acids below 6.4', { cls: 'fg-sm', size: 10, anchor: 'start' });
     s += text(404, 130, 'and leaves acids well above it alone.', { cls: 'fg-sm', size: 10, anchor: 'start' });
 
     s += text(404, 168, 'carboxylic acid, pKa 4.76', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
-    s += text(404, 186, '1.6 units below: it loses its proton, becomes', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(404, 204, 'an ion and moves into the water.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 186, '1.6 units below. With excess bicarbonate, and CO\u2082', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 204, 'bubbling off, it loses its proton, becomes an', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 222, 'ion and moves into the water.', { cls: 'fg-sm', size: 10, anchor: 'start' });
 
     s += text(404, 240, 'phenol, pKa 10', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
     s += text(404, 258, '3.6 units above: it keeps its proton, stays', { cls: 'fg-sm', size: 10, anchor: 'start' });
@@ -470,7 +471,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Each bar changes form at its own pKa. Follow a dashed line down to read which form each compound takes at that pH.',
+  caption: 'Each bar changes form at its own pKa, where the two forms are equal. Follow a dashed line down to read which form each compound takes at that pH.',
 });
 
 export default FIGURES;

@@ -1074,7 +1074,7 @@
     atoms: {
       c1:  { x:44,  y:112,r:15, label:'C', note:'The methyl group. Its hydrogens are alpha to the carbonyl too, around pKa 20 \u2014 same answer as the other alpha position, and still not the most acidic site.' },
       c2:  { x:100, y:80, r:16, label:'C', role:'electrophile', note:'The carbonyl carbon. Electrophilic, and not an acidic site \u2014 it carries no hydrogen at all.' },
-      o1:  { x:100, y:28, r:16, label:'O', lp:2, role:'carbonyl-o', note:'The carbonyl oxygen: the most BASIC site in the molecule, and the atom that gets protonated under acid. It has no hydrogen to give away.' },
+      o1:  { x:100, y:28, r:16, label:'O', lp:2, role:'carbonyl-o', note:'The carbonyl oxygen. It has no hydrogen to give away. Its lone pairs are less basic than the hydroxyl oxygen’s: a protonated ketone has pKa about −7, a protonated alcohol about −2.' },
       c3:  { x:156, y:112,r:15, label:'C', role:'alpha-carbon' },
       h31: { x:140, y:152,r:10, label:'H', role:'alpha-h', note:'An alpha C\u2013H, pKa about 20. Remarkably acidic for carbon, because the enolate delocalizes onto oxygen \u2014 and still four units above the O\u2013H.' },
       h32: { x:188, y:146,r:10, label:'H', role:'alpha-h' },
