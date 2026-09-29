@@ -101,7 +101,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Put the two acids one above the other and the difference is a single oxygen, inserted between the carbonyl group and the H. In mCPBA the R group is a benzene ring that carries a chlorine.',
+  caption: 'Put the two acids one above the other and the difference is one extra oxygen, between the OH oxygen and its H. In mCPBA the R group is a benzene ring that carries a chlorine.',
 });
 
 /* =====================================================================
@@ -112,8 +112,8 @@ FIGURES.push({
   section: 'alkene-oxidation',
   anchor: 'the byproduct is the ordinary carboxylic acid.</p>',
   lessons: ['alkene-oxidation'],
-  alt: 'Two stacked panels. Top: mCPBA sits above cis-but-2-ene, its outer O directly over the C=C. Four curved arrows run round a ring: the C=C pi bond to the outer O; the O–O bond to the O–C bond of the acid; the C=O pi bond of the acid to the H; the O–H bond to the second alkene carbon. Bottom: the products, the epoxide with its O bridging both carbons, and the carboxylic acid Ar–CO2H. Bottom: the butterfly transition state in 3D, the peroxyacid ring standing in the page over the C=C, which lies at right angles to the page (wedges and hashes), with dashed half-formed C–O bonds from the outer O to both carbons and dashed half-broken O–O and O–H bonds.',
-  viewBox: '0 0 340 634',
+  alt: 'Three stacked panels. Top: mCPBA sits above cis-but-2-ene, its outer O directly over the C=C. Four numbered curved arrows run round a ring: the C=C pi bond to the outer O; the O–O bond to the O–C bond of the acid; the C=O pi bond of the acid to the H; the O–H bond to the second alkene carbon. Middle: the products, the epoxide with its O bridging both carbons, and the carboxylic acid Ar–CO2H. Bottom: the butterfly transition state in three dimensions. The peroxyacid ring stands in the page; the alkene is seen end-on, its C=C running into the page, front carbon with plain bonds and back carbon with hashed bonds, directly below the outer O. Dashed half-formed C–O bonds run from the outer O to both carbons, at right angles to the peroxyacid ring, and the O–O and O–H bonds are dashed as half broken.',
+  viewBox: '0 0 340 678',
   build() {
     let s = '';
     s += cell(0, 8, 340, 244, 'ONE STEP, FOUR ARROWS', (Q) => {
@@ -156,29 +156,37 @@ FIGURES.push({
       g += tag(Q(87, 112).x, Q(87, 112).y, 'the epoxide') + tag(Q(246, 112).x, Q(246, 112).y, 'the carboxylic acid');
       return g;
     });
-    /* The same step in three dimensions: the peroxyacid ring stands in the
-       page, and the alkene lies at right angles to it, drawn with wedges and
-       hashes. Dashed lines are bonds half made or half broken. */
-    s += cell(0, 390, 340, 236, 'THE BUTTERFLY TRANSITION STATE', (Q) => {
-      const at = (deg) => Q(170 + 40 * Math.cos((deg * Math.PI) / 180), 92 + 40 * Math.sin((deg * Math.PI) / 180));
+    /* The same moment in three dimensions (the spiro butterfly). The
+       peroxyacid ring stands in the page. The alkene is seen end-on: its
+       C=C axis runs into the page, the front carbon drawn below the outer O
+       with plain bonds, the back carbon up and to the right of it with
+       hashed bonds. The forming three-membered ring (O, front C, back C) is
+       therefore at right angles to the peroxyacid ring, sharing the outer O.
+       Dashed lines are bonds half made or half broken. */
+    s += cell(0, 390, 340, 280, 'THE BUTTERFLY TRANSITION STATE', (Q) => {
+      const at = (deg) => Q(170 + 36 * Math.cos((deg * Math.PI) / 180), 92 + 36 * Math.sin((deg * Math.PI) / 180));
       const ot = at(90), h = at(162), oc = at(234), cc = at(306), oi = at(18);
-      const ar = armEnd(cc, 40, 32);
-      const ca = Q(132, 184), cb = Q(208, 184);
-      let g = bond(ca, cb, { order: 2, rFrom: 0, rTo: 0 });
-      g += wedge(ca, armEnd(ca, 215, 34), { rFrom: 0, rTo: 0, width: 8 }) + hash(ca, armEnd(ca, 150, 30), { rFrom: 0, rTo: 0, width: 9 });
-      g += wedge(cb, armEnd(cb, 325, 34), { rFrom: 0, rTo: 0, width: 8 }) + hash(cb, armEnd(cb, 30, 30), { rFrom: 0, rTo: 0, width: 9 });
-      g += bond(ot, ca, { rFrom: 13, rTo: 2, cls: 'fg-dash-hi' }) + bond(ot, cb, { rFrom: 13, rTo: 2, cls: 'fg-dash-hi' });
+      const ar = armEnd(cc, 10, 34);
+      const cf = Q(158, 214), cb = Q(192, 188);
+      let g = '';
+      // back carbon and its hashed groups first, so the front ones sit over them
+      g += hash(cb, Q(240, 184), { rFrom: 0, rTo: 0, width: 8 }) + hash(cb, Q(146, 178), { rFrom: 0, rTo: 0, width: 8 });
+      g += bond(cf, cb, { order: 2, gap: 3, rFrom: 0, rTo: 0 });
+      g += sk(cf, Q(108, 224)) + sk(cf, Q(208, 230));
+      g += bond(ot, cf, { rFrom: 13, rTo: 2, cls: 'fg-dash-hi' }) + bond(ot, cb, { rFrom: 13, rTo: 2, cls: 'fg-dash-hi' });
       g += B(ot, oi, 'O', 'O', { cls: 'fg-dash' }) + B(ot, h, 'O', 'H', { cls: 'fg-dash' }) + B(h, oc, 'H', 'O', { cls: 'fg-dash' });
       g += bond(oi, cc, { rFrom: 13, rTo: 0 }) + bond(cc, oc, { order: 2, rFrom: 0, rTo: 13 }) + bond(cc, ar, { rFrom: 0, rTo: 15 });
       g += A(ot, 'O', { kind: 'hi' }) + A(oi, 'O') + A(oc, 'O') + A(h, 'H') + A(ar, 'Ar');
-      g += tag(Q(58, 150).x, Q(58, 150).y, 'two C–O bonds') + tag(Q(58, 166).x, Q(58, 166).y, 'half formed');
-      g += tag(Q(268, 124).x, Q(268, 124).y, 'O–O half') + tag(Q(268, 140).x, Q(268, 140).y, 'broken');
-      g += tag(Q(170, 224).x, Q(170, 224).y, 'the alkene lies at right angles to the page');
+      g += tag(Q(62, 130).x, Q(62, 130).y, 'two C–O bonds') + tag(Q(62, 146).x, Q(62, 146).y, 'half formed');
+      g += tag(Q(272, 112).x, Q(272, 112).y, 'O–O half') + tag(Q(272, 128).x, Q(272, 128).y, 'broken');
+      g += tag(Q(90, 208).x, Q(90, 208).y, 'near C') + tag(Q(270, 184).x, Q(270, 184).y, 'far C');
+      g += tag(Q(170, 250).x, Q(170, 250).y, 'the C=C runs into the page, at right');
+      g += tag(Q(170, 266).x, Q(170, 266).y, 'angles to the peroxyacid ring');
       return g;
     });
     return s;
   },
-  caption: 'Follow the arrows round in order, 1 to 4. The oxygen that ends up in the epoxide is the outer O, and it forms both of its C–O bonds in this one step. The bottom panel is the same moment in three dimensions.',
+  caption: 'Follow the arrows round in order, 1 to 4. The oxygen that ends up in the epoxide is the outer O, and it forms both of its C–O bonds in this one step. The bottom panel is the same moment in three dimensions, with the alkene seen end-on.',
 });
 
 /* =====================================================================
