@@ -295,7 +295,7 @@ function r3(X, Y) {
 function r4(X, Y) {
   let s = '';
   const form = (yc, b) => {
-    const cx = X + 130, r = 30;
+    const cx = X + 130, r = 36;
     const pts = polyPts(cx, yc, 6, r, 0), c = P(cx, yc);
     const doubles = b ? [1, 4] : [0, 2, 4];     // bond i joins vertex i and i+1
     let g = '';
@@ -318,13 +318,13 @@ function r4(X, Y) {
       g += lp(Nm, -90, 3);
       g += curve(lpAt(Nm, -90, 3), off(mid(Nm, pts[3]), 6, -5), { bow: -10 });
       g += curve(mid(pts[2], pts[3]), mid(pts[1], pts[2]), { bow: 12 });
-      g += curve(mid(pts[0], pts[1]), off(N, 16, -6), { bow: -8 });
+      g += curve(mid(pts[0], pts[1], 0.62), off(N, 12, -17), { bow: -10 });
     }
     return g;
   };
-  s += form(Y + 86, false);
-  s += arrow(P(X + 130, Y + 126), P(X + 130, Y + 144), { size: 7 }) + arrow(P(X + 130, Y + 135), P(X + 130, Y + 120), { size: 7 });
-  s += form(Y + 176, true);
+  s += form(Y + 78, false);
+  s += arrow(P(X + 130, Y + 124), P(X + 130, Y + 140), { size: 7 }) + arrow(P(X + 130, Y + 132), P(X + 130, Y + 116), { size: 7 });
+  s += form(Y + 172, true);
   return s;
 }
 const relayPanels = [
@@ -543,7 +543,7 @@ FIGURES.push({
     s += atom(664, 274, 'O'); s += atom(708, 212, 'CH₃');
     s += atom(664, 236, 'C', { kind: 'hi' });
     s += tag(530, 44, 'aspirin (+ acetic acid)');
-    s += tag(560, 282, 'new ester', { cls: 'fg-tag-good', anchor: 'end' });
+    s += tag(640, 282, 'new ester', { cls: 'fg-tag-good', anchor: 'end' });
     return s;
   },
   caption: 'Salicylic acid and acetic anhydride. Compare the two OH groups before and after: only the phenol OH has changed.',
@@ -669,13 +669,13 @@ FIGURES.push({
   alt: 'Acetyl chloride and aluminum chloride. A chlorine lone pair bonds to aluminum and the C–Cl bond breaks, giving the linear acylium ion CH3–C≡O+ and AlCl4−.',
   build() {
     let s = '';
-    const C = A(130, 96), O = A(130, 50, 'O'), Me = A(88, 120, 'CH₃'), Cl = A(172, 120, 'Cl', 'hi'),
+    const C = A(130, 96), O = A(130, 50, 'O'), Me = A(88, 120, 'CH₃'), Cl = A(180, 128, 'Cl', 'hi'),
           Al = A(262, 120, 'AlCl₃', 'warn');
     s += bd(C, O, { order: 2 }) + bd(C, Me) + bd(C, Cl);
     s += lp(Cl, 0, 4);
     s += draw(C, O, Me, Cl, Al);
     s += curve(lpAt(Cl, 0, 4), off(Al, -26, -4), { bow: -10 });
-    s += curve(mid(C, Cl), off(Cl, -6, 19), { bow: -8 });
+    s += curve(mid(C, Cl), off(Cl, -10, 18), { bow: 10 });
     s += arrow(P(318, 110), P(388, 110));
     const M2 = A(436, 110, 'CH₃'), C2 = A(486, 110), O2 = A(536, 110, 'O⁺', 'hi');
     s += bd(M2, C2) + bd(C2, O2, { order: 3 });

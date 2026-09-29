@@ -106,24 +106,22 @@ function benz(cx, cy, r, rot = 0, shift = 0) {
 /* ======================================================================
    1. The reaction on its simplest ketone: acetone to methyl acetate.
    ====================================================================== */
-const H_OVER = 300;
+const H_OVER = 318;
 function pOverview(ox, oy) {
-  let s = frameP(ox, oy, H_OVER, 'acetone + mCPBA', [
-    'methyl acetate: the new O (highlighted)',
-    'sits between the C=O carbon and a CH₃',
+  let s = frameP(ox, oy, H_OVER, 'acetone', [
+    'methyl acetate, with the new O highlighted',
   ]);
   // acetone
-  const C = A(ox + 170, oy + 88, 'C'), O = A(ox + 170, oy + 44, 'O'),
-        M1 = A(ox + 118, oy + 114, 'CH₃'), M2 = A(ox + 222, oy + 114, 'CH₃');
+  const C = A(ox + 170, oy + 96, 'C'), O = A(ox + 170, oy + 52, 'O'),
+        M1 = A(ox + 118, oy + 122, 'CH₃'), M2 = A(ox + 222, oy + 122, 'CH₃');
   s += dbl(C, O) + bd(C, M1) + bd(C, M2, { cls: 'fg-bond-hi' });
   s += draw(C, O, M1, M2);
-  s += tag(ox + 280, oy + 90, 'acetone');
-  s += down(ox + 170, oy + 138, oy + 172);
-  s += tag(ox + 214, oy + 160, 'mCPBA');
+  s += down(ox + 170, oy + 146, oy + 178);
+  s += tag(ox + 214, oy + 166, 'mCPBA');
   // methyl acetate
-  const C2 = A(ox + 136, oy + 222, 'C'), O2 = A(ox + 136, oy + 178, 'O'),
-        N1 = A(ox + 84, oy + 248, 'CH₃'), On = A(ox + 190, oy + 248, 'O', 'hi'),
-        N2 = A(ox + 246, oy + 222, 'CH₃');
+  const C2 = A(ox + 136, oy + 236, 'C'), O2 = A(ox + 136, oy + 194, 'O'),
+        N1 = A(ox + 84, oy + 262, 'CH₃'), On = A(ox + 190, oy + 262, 'O', 'hi'),
+        N2 = A(ox + 246, oy + 236, 'CH₃');
   s += dbl(C2, O2) + bd(C2, N1) + bd(C2, On, { cls: 'fg-bond-hi' }) + bd(On, N2, { cls: 'fg-bond-hi' });
   s += draw(C2, O2, N1, On, N2);
   return s;
@@ -205,10 +203,10 @@ function pAdd(ox, oy) {
         Oa = A(ox + 282, oy + 94, 'O'), Ar = A(ox + 318, oy + 168, 'Ar');
   s += dbl(C, O) + bd(O, Hq) + bd(C, Et) + bd(C, Me);
   s += bd(Ot, Ht) + bd(Ot, Ob) + bd(Ob, Ca) + dbl(Ca, Oa) + bd(Ca, Ar);
-  s += lp(O, 30) + lp(Ot, 180) + lp(Ot, 250);
+  s += lp(O, 330) + lp(Ot, 180) + lp(Ot, 250);
   s += draw(C, O, Hq, Et, Me, Ot, Ht, Ob, Ca, Oa, Ar);
   s += curve(off(lpAt(Ot, 180), -3, 4), P(C.x + C.r + 3, C.y + 3), { bow: -12 });
-  s += curve(off(mid(C, O), 5, 0), P(O.x + O.r + 1, O.y + 12), { bow: -9 });
+  s += curve(off(mid(C, O), -8, 6), P(O.x - O.r - 3, O.y + 6), { bow: 14 });
   return s;
 }
 
@@ -252,12 +250,10 @@ function pDeprot(ox, oy) {
 /* 4: the Criegee intermediate itself. */
 function pCriegee(ox, oy) {
   let s = frameP(ox, oy, H_M, '4 · the Criegee intermediate', [
-    'no charge anywhere',
-    ['the O–O bond is the weak point', 'fg-tag-warn'],
+    ['no charge; the O–O bond is the weak point', 'fg-tag-warn'],
   ], 'hi');
   const t = tet(ox, oy, 'O', 'hi');
   s += tetBonds(t, 'fg-bond-hi');
-  s += lp(t.O1, 250) + lp(t.O1, 330);
   s += draw(...Object.values(t));
   return s;
 }
@@ -270,10 +266,10 @@ function pCollapse(ox, oy) {
   ]);
   const t = tet(ox, oy, 'O', 'hi');
   s += tetBonds(t, 'fg-bond-hi');
-  s += lp(t.OH, 180) + lp(t.O1, 330);
+  s += lp(t.OH, 200);
   s += draw(...Object.values(t));
   // the OH lone pair makes the new C=O
-  s += curve(off(lpAt(t.OH, 180), -2, -5), off(mid(t.C, t.OH), -7, -4), { bow: 12 });
+  s += curve(off(lpAt(t.OH, 200), -4, -6), off(mid(t.C, t.OH), -9, -3), { bow: 16 });
   // the C–ethyl bond swings over onto the near oxygen
   s += curve(off(mid(t.C, t.Et), 0, -8), P(t.O1.x - 6, t.O1.y - t.O1.r - 2), { bow: -26 });
   // the O–O bond breaks onto the far oxygen
@@ -289,7 +285,7 @@ function pEster(ox, oy) {
   const C = A(ox + 110, oy + 126, 'C', 'hi'), Oq = A(ox + 110, oy + 76, 'O⁺'),
         H = A(ox + 150, oy + 50, 'H', 'warn'),
         Me = A(ox + 60, oy + 154, 'CH₃'), O1 = A(ox + 156, oy + 154, 'O', 'hi'),
-        Et = A(ox + 156, oy + 206, 'CH₂CH₃', 'hi');
+        Et = A(ox + 204, oy + 184, 'CH₂CH₃', 'hi');
   s += dbl(C, Oq) + bd(Oq, H, { cls: 'fg-bond-hi' }) + bd(C, Me) + bd(C, O1) + bd(O1, Et, { cls: 'fg-bond-hi' });
   const Om = A(ox + 222, oy + 76, 'O⁻'), Cc = A(ox + 266, oy + 102, 'C'),
         Oc = A(ox + 266, oy + 150, 'O'), Ar = A(ox + 310, oy + 76, 'Ar');
@@ -354,7 +350,7 @@ FIGURES.push({
 /* ======================================================================
    4. Retention: a stereocenter that migrates keeps its arrangement.
    ====================================================================== */
-const H_RET = 330;
+const H_RET = 350;
 function pRetention(ox, oy) {
   let s = frameP(ox, oy, H_RET, '', [
     'the highlighted carbon keeps its arrangement:',
@@ -369,18 +365,18 @@ function pRetention(ox, oy) {
   s += wd(c3, m3) + hs(c3, h3);
   s += draw(o2, c3, m3, h3);
   s += rich(ox + 270, y0 + 6, `(${it('R')})-3-methyl-`) + rich(ox + 270, y0 + 22, 'pentan-2-one');
-  s += down(ox + 138, y0 + 88, y0 + 118);
-  s += tag(ox + 182, y0 + 108, 'mCPBA');
+  s += down(ox + 138, y0 + 88, y0 + 124);
+  s += tag(ox + 184, y0 + 110, 'mCPBA');
   // (R)-butan-2-yl acetate: CH3 C(=O) O C* (CH3)(H) CH2 CH3
   const y1 = oy + 204;
-  const a1 = V(ox + 36, y1 + 20), a2 = V(ox + 70, y1), ao = A(ox + 70, y1 - 40, 'O'),
-        on = A(ox + 104, y1 + 20, 'O', 'hi'), cs = A(ox + 138, y1, 'C', 'hi'),
-        b4 = V(ox + 172, y1 + 20), b5 = V(ox + 206, y1);
-  const ms = A(ox + 116, y1 - 40, 'CH₃'), hsA = A(ox + 162, y1 - 40, 'H');
+  const a1 = V(ox + 36, y1), a2 = V(ox + 70, y1 + 20), ao = A(ox + 70, y1 + 60, 'O'),
+        on = A(ox + 104, y1, 'O', 'hi'), cs = A(ox + 138, y1 + 20, 'C', 'hi'),
+        b4 = V(ox + 172, y1), b5 = V(ox + 206, y1 + 20);
+  const ms = A(ox + 116, y1 + 62, 'CH₃'), hsA = A(ox + 162, y1 + 60, 'H');
   s += sk(a1, a2) + dbl(a2, ao) + bd(a2, on) + bd(on, cs, { cls: 'fg-bond-hi' }) + bd(cs, b4) + sk(b4, b5);
   s += wd(cs, ms) + hs(cs, hsA);
   s += draw(ao, on, cs, ms, hsA);
-  s += rich(ox + 272, y1 + 14, `(${it('R')})-butan-2-yl`) + rich(ox + 272, y1 + 30, 'acetate');
+  s += rich(ox + 272, y1 + 6, `(${it('R')})-butan-2-yl`) + rich(ox + 272, y1 + 22, 'acetate');
   return s;
 }
 FIGURES.push({
@@ -397,15 +393,14 @@ FIGURES.push({
 /* ======================================================================
    5. Which group migrates: acetophenone.
    ====================================================================== */
-const H_K = 150, H_OUT = 160;
+const H_K = 160, H_OUT = 184;
 function pAcetophenone(ox, oy) {
   let s = frameP(ox, oy, H_K, 'acetophenone', ['a phenyl and a methyl on the C=O'], 'hi');
-  const b = benz(ox + 120, oy + 90, 26, 0, 1);
+  const b = benz(ox + 120, oy + 100, 26, 0, 1);
   const C = V(b.pts[0].x + 30, b.pts[0].y - 17), O = A(C.x, C.y - 36, 'O'),
         M = A(C.x + 36, C.y + 18, 'CH₃');
   s += b.s + sk(b.pts[0], C) + dbl(C, O) + bd(C, M);
   s += draw(O, M);
-  s += tag(ox + 62, oy + 128, 'phenyl');
   return s;
 }
 /* The two candidate esters. `phenylMoved` picks which. */
@@ -416,7 +411,7 @@ function pOutcome(ox, oy, phenylMoved) {
     good ? [['forms: the phenyl moved onto O', 'fg-tag-good']]
          : [['does not form: it needs the methyl to move', 'fg-tag-warn']],
     good ? 'good' : 'warn');
-  const b = benz(ox + 88, oy + 84, 26, 0, 1);
+  const b = benz(ox + 100, oy + 100, 26, 0, 1);
   s += b.s;
   if (good) {
     const On = A(b.pts[0].x + 30, b.pts[0].y - 17, 'O', 'hi'), C = V(On.x + 32, On.y + 18),
@@ -476,16 +471,14 @@ FIGURES.push({
     const pts = polyPts(cx, cy, 6, r, 90).map((p) => V(p.x, p.y));
     for (let i = 0; i < 6; i++) s += sk(pts[i], pts[(i + 1) % 6]);
     // the delocalized cation over the five carbons other than ipso (vertex 3)
-    const arc = [4, 5, 0, 1, 2].map((i) => {
-      const p = polyPts(cx, cy, 6, r * 0.62, 90)[i];
-      return `${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
-    });
-    s += `<path class="fg-dash" fill="none" d="M${arc[0]} Q${cx + r * 0.9} ${cy - r * 0.9} ${arc[2]} Q${cx - r * 0.9} ${cy - r * 0.9} ${arc[4]}"></path>`;
-    s += text(cx, cy + 6, 'δ+', { cls: 'fg-lbl' });
+    const ir = r * 0.62, inner = polyPts(cx, cy, 6, ir, 90);
+    const f = (p) => `${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
+    s += `<path class="fg-dash" fill="none" d="M${f(inner[4])} A${ir.toFixed(1)} ${ir.toFixed(1)} 0 1 0 ${f(inner[2])}"></path>`;
+    s += text(cx, cy + 4, 'δ+', { cls: 'fg-lbl' });
     const ipso = pts[3];
     const C = A(ipso.x - 44, ipso.y + 58, 'C', 'hi'), O1 = A(ipso.x + 44, ipso.y + 58, 'O', 'hi');
     const OH = A(C.x - 52, C.y - 20, 'OH'), Me = A(C.x - 40, C.y + 46, 'CH₃');
-    const O2 = A(O1.x + 50, O1.y + 26, 'O'), Rest = A(O2.x + 30, O2.y + 44, 'COAr');
+    const O2 = A(O1.x + 46, O1.y + 22, 'O'), Rest = A(O2.x + 58, O2.y, 'C(=O)Ar');
     s += dash(ipso, C) + dash(ipso, O1) + bd(C, O1);
     s += bd(C, OH) + bd(C, Me);
     s += dash(O1, O2, 'fg-dash') + bd(O2, Rest);
@@ -499,14 +492,15 @@ FIGURES.push({
 /* ======================================================================
    7. The group has to line up anti to the O–O bond: Newman projections.
    ====================================================================== */
-const H_NEW = 270;
+const H_NEW = 290;
 function pNewman(ox, oy, which) {
   const etAnti = which === 'et';
   let s = frameP(ox, oy, H_NEW,
     etAnti ? 'CH₂CH₃ anti to the O–O bond' : 'turned 120°: now CH₃ is anti',
-    etAnti ? [['the ethyl can migrate', 'fg-tag-good']] : [['now the methyl could migrate', 'fg-tag']],
+    etAnti ? ['dot: the C in front · circle: the O behind', ['the ethyl can migrate', 'fg-tag-good']]
+           : ['dot: the C in front · circle: the O behind', ['now the methyl could migrate', 'fg-tag']],
     etAnti ? 'good' : null);
-  const c = P(ox + 170, oy + 138), R = 34;
+  const c = P(ox + 170, oy + 134), R = 34;
   s += `<circle class="fg-bond" cx="${c.x}" cy="${c.y}" r="${R}" fill="none"></circle>`;
   // front carbon: three bonds from the centre
   const front = etAnti
@@ -526,7 +520,6 @@ function pNewman(ox, oy, which) {
     const p = pos(deg, R + 9);
     s += lonePair(p.x, p.y, -deg, { dist: 0 });
   }
-  s += tag(c.x - 70, c.y - 50, 'O behind');
   return s;
 }
 FIGURES.push({
@@ -544,7 +537,7 @@ FIGURES.push({
 /* ======================================================================
    8. An aldehyde: the H migrates.
    ====================================================================== */
-const H_ALD = 260;
+const H_ALD = 280;
 FIGURES.push({
   id: 'aldehyde-h',
   section: 'baeyer-villiger',
@@ -561,9 +554,9 @@ FIGURES.push({
           o = A(186, y0 - 38, 'O'), h = A(222, y0 + 20, 'H', 'hi');
     s += sk(c4, c3) + sk(c3, c2) + sk(c2, c1) + dbl(c1, o) + bd(c1, h, { cls: 'fg-bond-hi' });
     s += draw(o, h);
-    s += down(170, y0 + 44, y0 + 78);
-    s += tag(214, y0 + 66, 'mCPBA');
-    const y1 = 190;
+    s += down(110, y0 + 34, y0 + 70);
+    s += tag(154, y0 + 58, 'mCPBA');
+    const y1 = 196;
     const d4 = V(70, y1 + 20), d3 = V(104, y1), d2 = V(138, y1 + 20), d1 = V(172, y1),
           od = A(172, y1 - 38, 'O'), on = A(208, y1 + 20, 'O', 'hi'), hn = A(244, y1, 'H', 'hi');
     s += sk(d4, d3) + sk(d3, d2) + sk(d2, d1) + dbl(d1, od) + bd(d1, on) + bd(on, hn, { cls: 'fg-bond-hi' });
@@ -620,44 +613,43 @@ FIGURES.push({
    10. The worked example: 2-methylcyclohexanone.
    ====================================================================== */
 const H_MCH = 260;
+/* A ring-atom number placed inside the ring, part way from vertex p toward
+   the centre c, so it never sits on a substituent outside. */
+const inLbl = (c, p, t, f = 0.42) => text(p.x + (c.x - p.x) * f, p.y + (c.y - p.y) * f + 4, t, { cls: 'fg-lbl' });
+
 /* The ketone. With `hints`, the two candidate bonds are marked. */
 function pMCH(ox, oy, hints) {
   let s = frameP(ox, oy, H_MCH, '2-methylcyclohexanone',
     hints ? ['C2 carries two carbons: C3 and the CH₃', 'C6 carries one: C5'] : []);
-  const c = P(ox + 170, oy + 128);
-  const k = ring(c.x, c.y, 6, 40, 90, {}, hints ? [[0, 1]] : []);
+  const c = P(ox + 180, oy + 132);
+  const k = ring(c.x, c.y, 6, 46, 90, {}, hints ? [[0, 1]] : []);
   const [c1, c2, c3, , c5, c6] = k.pts;
   const O = A(c1.x, c1.y - 38, 'O');
   s += k.s + dbl(c1, O) + draw(O);
-  const me = A(outward(c, c2, 40).x, outward(c, c2, 40).y, 'CH₃');
+  const me = A(c2.x - 46, c2.y, 'CH₃');
   s += wedge(c2, me, { rFrom: 0, rTo: me.r, width: 9 }) + draw(me);
-  s += text(c1.x + 14, c1.y + 20, 'C1', { cls: 'fg-lbl' });
-  s += text(c2.x + 17, c2.y + 12, 'C2', { cls: 'fg-lbl' });
-  s += text(c6.x - 17, c6.y + 12, 'C6', { cls: 'fg-lbl' });
-  s += text(c3.x + 17, c3.y + 2, 'C3', { cls: 'fg-lbl' });
-  s += text(c5.x - 17, c5.y + 2, 'C5', { cls: 'fg-lbl' });
+  s += inLbl(c, c1, 'C1') + inLbl(c, c2, 'C2') + inLbl(c, c3, 'C3') + inLbl(c, c5, 'C5') + inLbl(c, c6, 'C6');
   if (hints) {
-    s += tag(ox + 70, oy + 64, 'O goes in here', { cls: 'fg-tag-good' });
-    s += tag(ox + 274, oy + 64, 'not here', { cls: 'fg-tag-mut' });
+    const m12 = mid(c1, c2), m16 = mid(c1, c6);
+    s += tag(m12.x - 58, m12.y - 22, 'O goes in here', { cls: 'fg-tag-good' });
+    s += tag(m16.x + 44, m16.y - 22, 'not here', { cls: 'fg-tag-mut' });
   }
   return s;
 }
 function pLactone(ox, oy) {
   let s = frameP(ox, oy, H_MCH, '7-methyloxepan-2-one', [
-    'O now between C1 and C2',
+    'the new O sits between C1 and C2',
     ['CH₃ still on a wedge: retention', 'fg-tag-good'],
   ], 'good');
-  const c = P(ox + 170, oy + 132);
+  const c = P(ox + 182, oy + 134);
   // seven vertices: 0 = C1 (top), 1 = the new O, 2 = C2, then C3..C6
-  const l = ring(c.x, c.y, 7, 44, 90, { 1: ['O', 'hi'] }, [[0, 1], [1, 2]]);
-  const [c1, on, c2, , , , c6] = l.pts;
+  const l = ring(c.x, c.y, 7, 50, 90, { 1: ['O', 'hi'] }, [[0, 1], [1, 2]]);
+  const [c1, on, c2, c3, , c5, c6] = l.pts;
   const O = A(c1.x, c1.y - 38, 'O');
   s += l.s + dbl(c1, O) + draw(O, on);
-  const me = A(outward(c, c2, 40).x, outward(c, c2, 40).y, 'CH₃');
+  const me = A(c2.x - 46, c2.y + 4, 'CH₃');
   s += wedge(c2, me, { rFrom: 0, rTo: me.r, width: 9 }) + draw(me);
-  s += text(c1.x + 16, c1.y + 20, 'C1', { cls: 'fg-lbl' });
-  s += text(c2.x + 20, c2.y + 4, 'C2', { cls: 'fg-lbl' });
-  s += text(c6.x - 18, c6.y + 16, 'C6', { cls: 'fg-lbl' });
+  s += inLbl(c, c1, 'C1') + inLbl(c, c2, 'C2') + inLbl(c, c3, 'C3') + inLbl(c, c5, 'C5') + inLbl(c, c6, 'C6');
   return s;
 }
 FIGURES.push({
@@ -685,7 +677,7 @@ FIGURES.push({
 /* ======================================================================
    11. An alkene in the same molecule reacts first.
    ====================================================================== */
-const H_ALK = 290;
+const H_ALK = 320;
 FIGURES.push({
   id: 'alkene-first',
   section: 'baeyer-villiger',
@@ -704,7 +696,7 @@ FIGURES.push({
       const O = A(92, y - 38, 'O');
       let g = sk(p[0], p[1]) + dbl(p[1], O) + sk(p[1], p[2]) + sk(p[2], p[3]) + sk(p[3], p[4]);
       if (epox) {
-        const Oe = A(222, y + 56, 'O', 'hi');
+        const Oe = A(229, y + 42, 'O', 'hi');
         g += sk(p[4], p[5], 'fg-bond-hi') + bd(p[4], Oe, { cls: 'fg-bond-hi' }) + bd(p[5], Oe, { cls: 'fg-bond-hi' });
         g += draw(Oe);
       } else {
@@ -714,11 +706,11 @@ FIGURES.push({
       return g;
     };
     s += chain(84, false);
-    s += tag(64, 64, 'ketone');
+    s += tag(48, 50, 'ketone');
     s += tag(290, 70, 'C=C');
-    s += down(170, 124, 156);
+    s += down(170, 124, 158);
     s += tag(236, 146, '1 equiv. mCPBA');
-    s += chain(196, true);
+    s += chain(194, true);
     return s;
   },
   caption: 'Compare the highlighted part of each drawing. The C=O at the left end is the same before and after.',
@@ -727,7 +719,7 @@ FIGURES.push({
 /* ======================================================================
    12. The four ketones of the lesson's sorting step.
    ====================================================================== */
-const H_CASE = 130;
+const H_CASE = 150;
 function caseKetone(left, rightG, lName, rName) {
   return (ox, oy) => {
     let s = panel(ox, oy, PW, H_CASE);
@@ -736,7 +728,7 @@ function caseKetone(left, rightG, lName, rName) {
     const L = V(C.x - 30, C.y + 17), R = V(C.x + 30, C.y + 17);
     s += sk(C, L) + sk(C, R);
     s += left(L) + rightG(R, true);
-    s += rich(ox + 70, oy + 120, lName) + rich(ox + 270, oy + 120, rName);
+    s += rich(ox + 108, oy + 140, lName) + rich(ox + 236, oy + 140, rName);
     return s;
   };
 }
@@ -763,13 +755,13 @@ const gCyclohexyl = (a, onRight) => {
   return r.s;
 };
 const CASES = [
-  ['l-case-1', 'methyl isopropyl ketone, 3-methylbutan-2-one', caseKetone(gMethyl, gIsopropyl, 'methyl', 'isopropyl'),
+  ['l-case-1', '3-Methylbutan-2-one', caseKetone(gMethyl, gIsopropyl, 'methyl', 'isopropyl'),
     '3-Methylbutan-2-one: a methyl on the left of the C=O and an isopropyl on the right.'],
-  ['l-case-2', '<i>tert</i>-butyl methyl ketone, 3,3-dimethylbutan-2-one', caseKetone(gTertButyl, gMethyl, `${it('tert')}-butyl`, 'methyl'),
+  ['l-case-2', '3,3-Dimethylbutan-2-one', caseKetone(gTertButyl, gMethyl, `${it('tert')}-butyl`, 'methyl'),
     '3,3-Dimethylbutan-2-one: a tert-butyl on the left of the C=O and a methyl on the right.'],
-  ['l-case-3', 'ethyl phenyl ketone, 1-phenylpropan-1-one', caseKetone(gPhenyl, gEthyl, 'phenyl', 'ethyl'),
+  ['l-case-3', '1-Phenylpropan-1-one', caseKetone(gPhenyl, gEthyl, 'phenyl', 'ethyl'),
     '1-Phenylpropan-1-one: a phenyl ring on the left of the C=O and an ethyl on the right.'],
-  ['l-case-4', 'cyclohexyl ethyl ketone, 1-cyclohexylpropan-1-one', caseKetone(gCyclohexyl, gEthyl, 'cyclohexyl', 'ethyl'),
+  ['l-case-4', '1-Cyclohexylpropan-1-one', caseKetone(gCyclohexyl, gEthyl, 'cyclohexyl', 'ethyl'),
     '1-Cyclohexylpropan-1-one: a cyclohexane ring on the left of the C=O and an ethyl on the right.'],
 ];
 for (const [id, cap, fn, alt] of CASES) {
@@ -779,7 +771,7 @@ for (const [id, cap, fn, alt] of CASES) {
     viewBox: `0 0 ${PW} ${H_CASE}`,
     alt,
     build() { return fn(0, 0); },
-    caption: cap.charAt(0).toUpperCase() + cap.slice(1),
+    caption: cap,
   });
 }
 

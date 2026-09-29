@@ -368,7 +368,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'The Grignard reagent adds once. The ketone forms only on workup, after the Grignard reagent is gone.',
+  caption: 'Follow the CH₃ from the Grignard reagent: it bonds to the nitrile carbon in the first panel, and the C=O appears only in the last.',
 });
 
 /* ===================================================================== 6
@@ -414,7 +414,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Follow the highlighted carbon: it is the nitrile carbon, and every product keeps it. The one new carbon, the CH₃ drawn in the second color, came from the Grignard reagent.',
+  caption: 'Follow the highlighted carbon, the nitrile carbon, into each product. The CH₃ drawn in the second color is the new one.',
 });
 
 /* ===================================================================== 7

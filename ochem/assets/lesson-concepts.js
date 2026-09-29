@@ -523,7 +523,7 @@
       6:['nmr-splitting-integration','nmr-shift-shielding'] } },
 
     'carboxylic-acids': { n:8, steps:{
-      1:['acidity-factors'],
+      1:['resonance-delocalization','acidity-factors'],
       2:['resonance-delocalization','acidity-factors'],
       3:['acidity-factors'],
       5:['acyl-reactivity-order'],

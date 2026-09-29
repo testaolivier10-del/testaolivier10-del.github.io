@@ -51,7 +51,7 @@ function twoStepA(o) {
   s += atom(c.x, c.y, 'C', { kind: 'warn' });
   s += lp(nu, 180) + atom(nu.x, nu.y, 'Nu', { kind: 'hi' }) + charge(P(nu.x + 12, nu.y - 24), '−', 'fg-hi');
   s += curve(lpTip(nu, 180, 28), at(c, 5, 21), { bow: 10, size: 7 });
-  s += curve(onBond(c, ox, 0.5, 7), P(ox.x - 19, ox.y + 7), { bow: 12, size: 7 });
+  s += curve(onBond(c, ox, 0.5, -7), P(ox.x + 19, ox.y + 7), { bow: -12, size: 7 });
   return s;
 }
 function twoStepB(o) {
@@ -63,7 +63,7 @@ function twoStepB(o) {
   s += atom(r.x, r.y, 'R') + atom(nu.x, nu.y, 'Nu') + atom(x.x, x.y, 'X', { kind: 'hi' });
   s += atom(c.x, c.y, 'C', { kind: 'warn' });
   s += curve(lpTip(ox, 150, 28), onBond(c, ox, 0.5, 7), { bow: 14, size: 7 });
-  s += curve(onBond(c, x, 0.5, -7), P(x.x - 4, x.y + 19), { bow: -12, size: 7 });
+  s += curve(onBond(c, x, 0.5, -7), at(x, 225, 21), { bow: 10, size: 7 });
   return s;
 }
 function twoStepC(o) {
@@ -83,7 +83,7 @@ FIGURES.push({
   id: 'acyl-two-steps',
   section: 'esters-amides',
   anchor: '',
-  viewBox: '0 0 760 250',
+  viewBox: '0 0 760 214',
   alt: 'Three stages. First, a nucleophile Nu with a negative charge and a lone pair attacks the carbonyl carbon of R–C(=O)–X; one curved arrow runs from its lone pair to the carbon and a second from the C=O double bond onto the oxygen. Second, the tetrahedral intermediate: a carbon bonded to R, Nu, X and a negatively charged oxygen with three lone pairs; one curved arrow runs from an oxygen lone pair back into the C–O bond, and a second from the C–X bond onto X. Third, R–C(=O)–Nu and a free X with a negative charge.',
   build() {
     let s = '';
@@ -93,9 +93,9 @@ FIGURES.push({
     s += arrow(P(470, 110), P(520, 110));
     s += twoStepC(P(530, 30));
     s += tg(380, 22, 'tetrahedral intermediate');
-    s += sm(118, 226, '1. Nu⁻ adds to the C=O carbon');
-    s += sm(380, 226, '2. the C=O re-forms and X leaves');
-    s += sm(640, 226, '3. Nu has replaced X');
+    s += sm(118, 200, '1. Nu⁻ adds to the C=O carbon');
+    s += sm(380, 200, '2. the C=O re-forms and X leaves');
+    s += sm(640, 200, '3. Nu has replaced X');
     return s;
   },
   caption: 'The pattern every derivative on this page reacts by. The coral carbon starts flat, becomes tetrahedral in the middle stage, and ends flat again, now carrying Nu in place of X.',
@@ -103,18 +103,18 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-acyl-two-steps',
   lessons: ['esters-amides'],
-  viewBox: '0 0 340 620',
+  viewBox: '0 0 340 640',
   alt: 'Three stages stacked. A nucleophile Nu with a negative charge attacks the carbonyl carbon of R–C(=O)–X, with curved arrows from its lone pair to the carbon and from the C=O bond onto oxygen. Below it, the tetrahedral intermediate with R, Nu, X and a negatively charged oxygen on one carbon; curved arrows run from an oxygen lone pair back into the C–O bond and from the C–X bond onto X. At the bottom, R–C(=O)–Nu and a free X with a negative charge.',
   build() {
     let s = '';
     s += twoStepA(P(40, 14));
-    s += tg(170, 186, '1. Nu⁻ adds to the C=O carbon');
-    s += arrow(P(170, 196), P(170, 228));
-    s += twoStepB(P(80, 228));
-    s += tg(170, 390, '2. the C=O re-forms and X leaves');
-    s += arrow(P(170, 400), P(170, 432));
-    s += twoStepC(P(60, 430));
-    s += tg(170, 600, '3. Nu has replaced X');
+    s += tg(170, 160, '1. Nu⁻ adds to the C=O carbon');
+    s += arrow(P(170, 170), P(170, 204));
+    s += twoStepB(P(80, 212));
+    s += tg(170, 412, '2. the C=O re-forms and X leaves');
+    s += arrow(P(170, 422), P(170, 456));
+    s += twoStepC(P(60, 452));
+    s += tg(170, 624, '3. Nu has replaced X');
     return s;
   },
   caption: 'The coral carbon starts flat, becomes tetrahedral in the middle, and ends flat again with Nu in place of X.',
@@ -169,23 +169,23 @@ FIGURES.push({
   id: 'derivative-ladder',
   section: 'esters-amides',
   anchor: '',
-  viewBox: '0 0 760 470',
+  viewBox: '0 0 760 540',
   alt: 'Four acetic acid derivatives in rows, each CH3–C(=O)–X with X highlighted: acetyl chloride with Cl, acetic anhydride with an oxygen bridging to a second C(=O)CH3, methyl acetate with OCH3, and acetamide with NH2. Beside each, the ion that would leave and the pKa of its conjugate acid: HCl −7, acetic acid 4.8, methanol 15.5, ammonia 38. A bar for each shows reactivity toward a nucleophile, longest for the acid chloride and shortest for the amide.',
   build() {
     let s = '';
     s += tg(24, 24, 'four derivatives of acetic acid', 'start');
-    s += tg(300, 24, 'the group that leaves, and its conjugate acid', 'start');
+    s += tg(290, 24, 'what leaves, and its pKa', 'start');
     s += tg(740, 24, 'reactivity toward a nucleophile', 'end');
     ['cl', 'anh', 'est', 'amide'].forEach((k, i) => {
-      const y0 = 40 + i * 106;
-      const c = P(90, y0 + 66);
+      const y0 = 36 + i * 125;
+      const c = P(90, y0 + 72);
       s += deriv(k, c).s;
       const d = DERIV[k];
-      s += lbl(300, y0 + 50, d.name, 'start');
-      s += sm(300, y0 + 70, d.leaves, 'start');
-      s += sm(300, y0 + 88, d.says, 'start');
-      s += bar(600, y0 + 62, d.w, 14, { opacity: 1 - i * 0.18 });
-      if (i < 3) s += rule(24, y0 + 106, 736, y0 + 106);
+      s += lbl(290, y0 + 52, d.name, 'start');
+      s += sm(290, y0 + 72, d.leaves, 'start');
+      s += sm(290, y0 + 90, d.says, 'start');
+      s += bar(600, y0 + 64, d.w, 14, { opacity: 1 - i * 0.18 });
+      if (i < 3) s += rule(24, y0 + 125, 736, y0 + 125);
     });
     return s;
   },
@@ -194,15 +194,15 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-four-derivatives',
   lessons: ['esters-amides'],
-  viewBox: '0 0 340 470',
+  viewBox: '0 0 340 520',
   alt: 'Four acetic acid derivatives stacked, each CH3–C(=O)–X with X highlighted: methyl acetate with OCH3, acetamide with NH2, acetyl chloride with Cl, and acetic anhydride with an oxygen bridging to a second C(=O)CH3.',
   build() {
     let s = '';
     ['est', 'amide', 'cl', 'anh'].forEach((k, i) => {
-      const y0 = i * 117;
-      s += tg(20, y0 + 16, DERIV[k].name, 'start');
-      s += deriv(k, P(90, y0 + 78)).s;
-      if (i < 3) s += rule(10, y0 + 114, 330, y0 + 114);
+      const y0 = i * 130;
+      s += tg(12, y0 + 22, DERIV[k].name, 'start');
+      s += deriv(k, P(176, y0 + 78)).s;
+      if (i < 3) s += rule(10, y0 + 128, 330, y0 + 128);
     });
     return s;
   },
@@ -227,19 +227,20 @@ FIGURES.push({
     s += panel(392, 16, 352, 248, { kind: 'warn' });
     s += tg(192, 40, 'C 2p beside O 2p');
     s += tg(568, 40, 'C 2p beside Cl 3p');
-    const c1 = P(150, 140), o1 = P(234, 140);
-    s += pPair(c1, 17, 34) + pPair(o1, 16, 32);
+    const c1 = P(164, 140), o1 = P(220, 140);
+    s += pPair(c1, 24, 34) + pPair(o1, 23, 33);
     s += bd(c1, o1, 15, 15) + atom(c1.x, c1.y, 'C') + atom(o1.x, o1.y, 'O', { kind: 'hi' });
-    s += sm(192, 234, 'same size and close: good overlap');
+    s += sm(192, 234, 'same size, side by side: good overlap');
     s += sm(192, 252, 'O and N donate their lone pairs well');
-    const c2 = P(490, 140), cl = P(612, 140);
-    s += pPair(c2, 17, 34) + pPair(cl, 30, 46);
+    const c2 = P(516, 140), cl = P(590, 140);
+    s += pPair(c2, 24, 34);
+    s += pPair(cl, 34, 40);
     s += bd(c2, cl, 15, 15) + atom(c2.x, c2.y, 'C') + atom(cl.x, cl.y, 'Cl', { kind: 'warn' });
-    s += sm(568, 234, 'bigger, more diffuse, farther: poor overlap');
+    s += sm(568, 234, 'larger, more diffuse, longer bond: poor overlap');
     s += sm(568, 252, 'Cl donates its lone pairs weakly');
     return s;
   },
-  caption: 'The upright lobes are the p orbitals that hold the lone pair on O or Cl and the empty half of the C=O &pi; system on carbon. Compare how much of each pair of lobes sits side by side.',
+  caption: 'On carbon, the upright lobes are the p orbital it uses in the C=O &pi; bond; on O and Cl, they hold a lone pair. Compare how well each pair of lobes matches in size.',
 });
 
 /* --------------------------------------------- 4. the ladder in the IR --- */
@@ -248,7 +249,7 @@ FIGURES.push({
   section: 'esters-amides',
   anchor: '',
   viewBox: '0 0 760 250',
-  alt: 'A horizontal scale of C=O stretching frequency, from 1850 cm⁻¹ on the left to 1600 on the right. Acid chloride sits at 1800, ester at 1735 and amide at 1650. Above them, a bracket joins the anhydride’s two bands at 1820 and 1760. Below the scale, an arrow runs from a carboxylic acid’s lone-molecule band at 1760 to its hydrogen-bonded dimer band at 1710.',
+  alt: 'A horizontal scale of C=O stretching frequency, from 1850 cm⁻¹ on the left to 1600 on the right. Acid chloride sits at 1800, ester at 1735 and amide at 1650. Above them, an arrow runs from a carboxylic acid’s lone-molecule band at 1760 to its hydrogen-bonded dimer band at 1710. Below the scale, a bracket joins the anhydride’s two bands at 1820 and 1760.',
   build() {
     let s = '';
     const X = (v) => 60 + (1850 - v) * 2.56, Y = 150;
@@ -263,19 +264,20 @@ FIGURES.push({
       s += tick(v, 108);
       s += tg(X(v), 100, name);
     }
-    // anhydride: two coupled bands
-    s += tick(1820, 60) + tick(1760, 60);
-    s += `<line class="fg-dash-hi" x1="${n2(X(1820))}" y1="60" x2="${n2(X(1760))}" y2="60"></line>`;
-    s += tg((X(1820) + X(1760)) / 2, 50, 'anhydride: 1820 and 1760, two bands');
-    // carboxylic acid: monomer and dimer, below the scale
-    s += `<line class="fg-dash" x1="${n2(X(1760))}" y1="${Y}" x2="${n2(X(1760))}" y2="${Y + 44}"></line>`;
-    s += `<line class="fg-bond-hi" x1="${n2(X(1710))}" y1="${Y}" x2="${n2(X(1710))}" y2="${Y + 44}"></line>`;
-    s += arrow(P(X(1760) + 4, Y + 40), P(X(1710) - 4, Y + 40), { muted: true });
-    s += tg(560, Y + 44, 'carboxylic acid: 1760 alone, 1710 as a dimer', 'middle', 'fg-tag-mut');
-    s += sm(380, 238, 'C=O stretch, in cm⁻¹: a stiffer C=O absorbs at a higher number');
+    // carboxylic acid: lone molecule and dimer, above the rungs
+    s += `<line class="fg-dash" x1="${n2(X(1760))}" y1="${Y}" x2="${n2(X(1760))}" y2="62"></line>`;
+    s += tick(1710, 62);
+    s += arrow(P(X(1760) + 4, 66), P(X(1710) - 4, 66), { muted: true });
+    s += tg((X(1760) + X(1710)) / 2, 50, 'carboxylic acid: 1760 alone, 1710 as a dimer', 'middle', 'fg-tag-mut');
+    // anhydride: two coupled bands, below the scale
+    s += `<line class="fg-bond-hi" x1="${n2(X(1820))}" y1="${Y}" x2="${n2(X(1820))}" y2="${Y + 42}"></line>`;
+    s += `<line class="fg-bond-hi" x1="${n2(X(1760))}" y1="${Y}" x2="${n2(X(1760))}" y2="${Y + 42}"></line>`;
+    s += `<line class="fg-dash-hi" x1="${n2(X(1820))}" y1="${Y + 42}" x2="${n2(X(1760))}" y2="${Y + 42}"></line>`;
+    s += tg((X(1820) + X(1760)) / 2, Y + 60, 'anhydride: 1820 and 1760, two bands');
+    s += sm(560, 236, 'C=O stretch, cm⁻¹: stiffer C=O, higher number');
     return s;
   },
-  caption: 'The three rungs read left to right in ladder order. The anhydride bracket and the acid arrow are the two entries that need a note of their own.',
+  caption: 'The three rungs, acid chloride, ester and amide, read left to right in ladder order. The acid arrow above and the anhydride bracket below are the two entries that need a note of their own.',
 });
 
 /* --------------------------------------------- 5. amide resonance (DMF) ---
@@ -283,7 +285,7 @@ FIGURES.push({
    side of the C–N bond and methyl b on the hydrogen side. */
 function dmf(c, ionic, big = true) {
   let s = '';
-  const o = at(c, 90, 56), h = at(c, 210, 50), n = at(c, 330, 56);
+  const o = at(c, 90, 60), h = at(c, 210, 50), n = at(c, 330, 60);
   const ma = at(n, 30, 54), mb = at(n, 270, 54);
   s += bd(c, o, 16, 15, { order: ionic ? 1 : 2 });
   s += bd(c, h, 16, 11) + atom(h.x, h.y, 'H', { r: 11 });
@@ -295,13 +297,13 @@ function dmf(c, ionic, big = true) {
   if (ionic) {
     s += lp(o, 30) + lp(o, 90) + lp(o, 150);
     s += atom(o.x, o.y, 'O', { kind: 'hi' }) + charge(P(o.x + 26, o.y + 10), '−', 'fg-hi');
-    s += atom(n.x, n.y, 'N', { kind: 'warn' }) + charge(P(n.x - 4, n.y + 28), '+');
+    s += atom(n.x, n.y, 'N', { kind: 'warn' }) + charge(at(n, 92, 27), '+');
   } else {
     s += lp(o, 30) + lp(o, 150) + atom(o.x, o.y, 'O');
     s += lp(n, 90);
     s += atom(n.x, n.y, 'N', { kind: 'hi' });
     s += curve(lpTip(n, 90, 28), onBond(c, n, 0.5, 7), { bow: 14, size: 7 });
-    s += curve(onBond(c, o, 0.5, 7), P(o.x - 19, o.y + 7), { bow: 12, size: 7 });
+    s += curve(onBond(c, o, 0.5, -7), P(o.x + 19, o.y + 7), { bow: -12, size: 7 });
   }
   s += atom(c.x, c.y, 'C');
   return s;
@@ -310,7 +312,7 @@ FIGURES.push({
   id: 'amide-rotation-locked',
   section: 'esters-amides',
   anchor: '',
-  viewBox: '0 0 760 330',
+  viewBox: '0 0 760 280',
   alt: 'Dimethylformamide, HC(=O)N(CH3)2, with its two methyls labelled a (on the oxygen side of the C–N bond) and b (on the hydrogen side). A curved arrow runs from the nitrogen lone pair into the C–N bond and a second from the C=O double bond onto oxygen. A double-headed resonance arrow leads to the contributor with a C=N double bond, a positive charge on nitrogen, and a negative oxygen with three lone pairs.',
   build() {
     let s = '';
@@ -319,9 +321,8 @@ FIGURES.push({
     s += dmf(P(170, 126), false);
     s += resArrow(P(340, 140), P(420, 140));
     s += dmf(P(530, 126), true);
-    s += rule(24, 270, 736, 270);
-    s += lbl(24, 294, 'The C–N bond is partly double, so it does not turn freely.', 'start');
-    s += sm(24, 316, 'Methyl a stays on the oxygen side and methyl b on the hydrogen side: two different methyls.', 'start');
+    s += tg(200, 266, 'lone pair on N, C=O double');
+    s += tg(560, 266, 'C=N double, + on N, − on O');
     return s;
   },
   caption: 'Follow the two curved arrows from the left structure to the right one. Then find methyls a and b: to swap places they would have to turn about the C–N bond.',
@@ -330,15 +331,15 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-amide-resonance',
   lessons: ['esters-amides'],
-  viewBox: '0 0 340 470',
+  viewBox: '0 0 340 480',
   alt: 'Dimethylformamide with a curved arrow from the nitrogen lone pair into the C–N bond and a second from the C=O bond onto oxygen. A vertical double-headed resonance arrow leads down to the contributor with a C=N double bond, a positive nitrogen, and a negative oxygen with three lone pairs.',
   build() {
     let s = '';
     s += tg(170, 18, 'dimethylformamide (DMF)');
     s += dmf(P(130, 100), false);
-    s += resArrow(P(170, 208), P(170, 250));
-    s += dmf(P(130, 332), true);
-    s += tg(170, 460, 'C=N partly double, + on N, − on O');
+    s += resArrow(P(170, 214), P(170, 256));
+    s += dmf(P(130, 340), true);
+    s += tg(170, 466, 'C=N double, + on N, − on O');
     return s;
   },
   caption: 'Follow the two curved arrows from the top structure to the bottom one, then compare the charges.',
@@ -359,7 +360,7 @@ function acetamideH(c, where) {
       s += lp(o, 150) + atom(o.x, o.y, 'O', { kind: 'warn' }) + charge(P(o.x - 4, o.y - 28), '+');
       s += lp(n, 75, { dist: 25 }) + atom(n.x, n.y, 'NH₂', { r: 18, kind: 'hi' });
       s += curve(lpTip(n, 75, 31), onBond(c, n, 0.5, 7), { bow: 14, size: 7 });
-      s += curve(onBond(c, o, 0.5, 7), P(o.x - 19, o.y + 7), { bow: 12, size: 7 });
+      s += curve(onBond(c, o, 0.5, -7), P(o.x + 19, o.y + 7), { bow: -12, size: 7 });
     } else {
       s += bd(c, o, 16, 15) + bd(c, n, 16, 18, { order: 2 });
       s += lp(o, 125) + lp(o, 195) + atom(o.x, o.y, 'O');
@@ -412,9 +413,9 @@ function sapA(o) {
   s += bd(on, h, 15, 11) + atom(h.x, h.y, 'H', { r: 11 });
   const toC = (Math.atan2(-(c.y - on.y), c.x - on.x) * 180) / Math.PI;
   s += lp(on, toC) + lp(on, 110) + lp(on, 300);
-  s += atom(on.x, on.y, 'O', { kind: 'hi' }) + charge(at(on, 160, 26), '−', 'fg-hi');
+  s += atom(on.x, on.y, 'O', { kind: 'hi' }) + charge(at(on, 72, 27), '−', 'fg-hi');
   s += curve(lpTip(on, toC, 29), at(c, 20, 21), { bow: 10, size: 7 });
-  s += curve(onBond(c, ox, 0.5, 7), P(ox.x - 19, ox.y + 7), { bow: 12, size: 7 });
+  s += curve(onBond(c, ox, 0.5, -7), P(ox.x + 19, ox.y + 7), { bow: -12, size: 7 });
   return s;
 }
 function sapB(o) {
@@ -425,11 +426,11 @@ function sapB(o) {
   s += bd(oe, et, 15, ET.r);
   s += lp(ox, 30) + lp(ox, 90) + lp(ox, 150) + atom(ox.x, ox.y, 'O', { kind: 'hi' }) + charge(P(ox.x + 26, ox.y + 12), '−', 'fg-hi');
   s += atom(ph.x, ph.y, 'C₆H₅', { r: PH.r }) + atom(oh.x, oh.y, 'OH', { r: 18 });
-  s += lp(oe, 250) + lp(oe, 320, { dist: 23 });
+  s += lp(oe, 95) + lp(oe, 280);
   s += atom(oe.x, oe.y, 'O', { kind: 'hi' }) + atom(et.x, et.y, 'C₂H₅', { r: ET.r });
   s += atom(c.x, c.y, 'C', { kind: 'warn' });
   s += curve(lpTip(ox, 150, 28), onBond(c, ox, 0.5, 7), { bow: 14, size: 7 });
-  s += curve(onBond(c, oe, 0.45, -7), at(oe, 200, 20), { bow: -14, size: 7 });
+  s += curve(onBond(c, oe, 0.5, -7), at(oe, 222, 21), { bow: 10, size: 7 });
   return s;
 }
 function sapC(o) {
@@ -567,7 +568,7 @@ FIGURES.push({
   id: 'lactone-closure',
   section: 'esters-amides',
   anchor: '',
-  viewBox: '0 0 760 420',
+  viewBox: '0 0 760 440',
   alt: 'Top row: 4-hydroxybutanoic acid, drawn as a zigzag chain with the carboxylic acid at the right end and an OH at the left; the three chain carbons are labelled alpha, beta and gamma counting from the carbonyl. An arrow labelled trace acid, minus water, leads to gamma-butyrolactone, a five-membered ring of four carbons and one oxygen, with the new O–C bond highlighted and the carbons labelled alpha, beta, gamma. Bottom row: 5-hydroxypentanoic acid, with carbons alpha to delta, closing in the same way to delta-valerolactone, a six-membered ring.',
   build() {
     let s = '';
@@ -580,14 +581,14 @@ FIGURES.push({
     s += lactone(520, 100, 5, 38);
     s += tg(560, 34, 'γ-butyrolactone: 5 ring atoms');
     s += rule(24, 208, 736, 208);
-    const a2 = hydroxyAcid(46, 320, ['α', 'β', 'γ', 'δ']);
+    const a2 = hydroxyAcid(46, 344, ['α', 'β', 'γ', 'δ']);
     s += a2.s;
-    s += tg(170, 244, '5-hydroxypentanoic acid');
-    s += arrow(P(330, 304), P(440, 304));
-    s += sm(385, 292, 'H⁺ (trace)');
-    s += sm(385, 326, '− H₂O');
-    s += lactone(540, 306, 6, 40);
-    s += tg(580, 244, 'δ-valerolactone: 6 ring atoms');
+    s += tg(126, 238, '5-hydroxypentanoic acid');
+    s += arrow(P(330, 330), P(440, 330));
+    s += sm(385, 318, 'H⁺ (trace)');
+    s += sm(385, 352, '− H₂O');
+    s += lactone(540, 336, 6, 40);
+    s += tg(600, 238, 'δ-valerolactone: 6 ring atoms');
     return s;
   },
   caption: 'The teal oxygen is the OH that closes the ring, and the coral OH is the one that leaves as water. The highlighted ring bond is the new one. Each lactone is named by the Greek letter of the carbon that carries the ring oxygen.',
