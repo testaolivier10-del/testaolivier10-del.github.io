@@ -19,6 +19,9 @@ const f2 = (v) => (Math.round(v * 100) / 100).toString();
 
 /* The single dot that makes a species a radical. */
 const dot = (x, y) => `<circle class="fg-lp" cx="${f2(x)}" cy="${f2(y)}" r="3.4"></circle>`;
+/* A name with an italic stereodescriptor in front, e.g. (E)-... */
+const eName = (x, y, rest, cls, size) =>
+  `<text class="${cls}" x="${f2(x)}" y="${f2(y)}" text-anchor="middle"${size ? ` font-size="${size}"` : ''}>(<tspan font-style="italic">E</tspan>)-${rest}</text>`;
 const minus = (x, y) => text(x, y, '−', { cls: 'fg-warn', size: 16 });
 
 /* A two-carbon unit with two arms on each carbon, drawn at 120 degrees.
@@ -35,7 +38,8 @@ function twoCarbon(cx, cy, sub, opts = {}) {
     const end = armEnd(c, deg, arm);
     if (a.t === 'rad') { const p = armEnd(c, deg, 21); return dot(p.x, p.y); }
     if (a.t === 'lp') {
-      const cc = armEnd(c, deg + (deg < 180 ? 38 : -38), 30);
+      const toward0 = deg < 90 || deg > 270;
+      const cc = armEnd(c, deg + (toward0 ? -30 : 30) * (deg < 180 ? 1 : -1), 35);
       return lonePair(c.x, c.y, -deg, { dist: 21 }) + minus(cc.x, cc.y + 5);
     }
     if (a.t === 'CH3') {
@@ -125,20 +129,26 @@ const surface = (x, y, w, lbl, cls = 'fg-sm') =>
    stage 2: both new C-H bonds made; the alkane lifts off. */
 function surfaceFrame(cx, top, stage) {
   let s = '';
-  const cy = top + 58;
+  const cy = stage === 0 ? top + 78 : top + 58;
   const c1 = P(cx - 26, cy), c2 = P(cx + 26, cy);
   const mY = top + 108; // top of the metal bar
   s += bond(c1, c2, { order: stage === 0 ? 2 : 1, rFrom: 14, rTo: 14, gap: 4 });
   const R = (c, deg, kind) => {
-    const e = armEnd(c, deg, 40);
+    const e = armEnd(c, deg, stage === 0 ? 46 : 40);
     const f = kind === 'w' ? wedge : hash;
     return f(c, e, { rFrom: 14, rTo: 13 }) + atom(e.x, e.y, 'R', { r: 13 });
   };
-  s += R(c1, 158, 'w') + R(c1, 112, 'h') + R(c2, 22, 'w') + R(c2, 68, 'h');
+  /* Flat alkene: its groups lie almost level, in the plane of the C=C.
+     Once a carbon has its new H it is tetrahedral, and its groups bend up,
+     away from the metal. */
+  const flat = stage === 0;
+  s += R(c1, flat ? 190 : 158, 'w') + R(c1, flat ? 146 : 112, 'h') + R(c2, flat ? -10 : 22, 'w') + R(c2, flat ? 34 : 68, 'h');
   s += atom(c1.x, c1.y, 'C', { r: 14 }) + atom(c2.x, c2.y, 'C', { r: 14 });
   const hOnMetal = (x) => atom(x, mY - 14, 'H', { kind: 'hi', r: 12 });
   if (stage === 0) {
-    s += hOnMetal(cx - 62) + hOnMetal(cx + 62);
+    // the pi bond held against the metal
+    s += bond(c1, P(c1.x, mY), { rFrom: 14, rTo: 0, cls: 'fg-dash' }) + bond(c2, P(c2.x, mY), { rFrom: 14, rTo: 0, cls: 'fg-dash' });
+    s += hOnMetal(cx - 104) + hOnMetal(cx + 104);
   } else if (stage === 1) {
     const h = P(c1.x, cy + 38);
     s += bond(c1, h, { rFrom: 14, rTo: 12, cls: 'fg-bond-hi' }) + atom(h.x, h.y, 'H', { kind: 'hi', r: 12 });
@@ -241,7 +251,7 @@ FIGURES.push({
   alt: '1,2-Dimethylcyclohexene is hydrogenated over platinum to cis-1,2-dimethylcyclohexane. In the product both new hydrogens are on hashed bonds and both methyls are on wedges.',
   viewBox: '0 0 760 200',
   build() { return ringCis(0, 0, false); },
-  caption: 'Look at the wedges and hashes. Both new hydrogens are on hashes, and both methyls are on wedges.',
+  caption: 'Compare where the new H and the methyls sit.',
 });
 
 FIGURES.push({
@@ -250,7 +260,7 @@ FIGURES.push({
   alt: '1,2-Dimethylcyclohexene, top, is hydrogenated over platinum to cis-1,2-dimethylcyclohexane, bottom, with both new hydrogens hashed and both methyls wedged.',
   viewBox: '0 0 340 440',
   build() { return ringCis(0, 0, true); },
-  caption: 'Both new H are hashed, so both methyls stay wedged: cis.',
+  caption: 'Compare where the new H and the methyls sit.',
 });
 
 /* The substrate for the lesson's guided question. */
@@ -319,7 +329,7 @@ FIGURES.push({
     s += text(380, 242, 'both products cis; mirror images of each other, formed 1 : 1', { cls: 'fg-lbl', size: 12 });
     return s;
   },
-  caption: 'Compare the two products: one has both new hydrogens on hashes, the other has both on wedges.',
+  caption: 'Compare the two products.',
 });
 
 /* ------------------------------------------------------------ 4 ---------
@@ -408,16 +418,23 @@ function protonate(lp, h, n, side = 1, bow1 = 16) {
   return s;
 }
 
+const VRcis = { c2up: { t: 'rad' }, c2dn: { t: 'CH3' }, c3up: { t: 'Hnew' }, c3dn: { t: 'CH3' } };
+const TRANS = { c2up: { t: 'CH3' }, c2dn: { t: 'Hnew' }, c3up: { t: 'Hnew' }, c3dn: { t: 'CH3' } };
+
+/* Two half-arrows for an equilibrium, centered on (x, y). */
+const equil = (x, y, w = 36) =>
+  arrow(P(x - w / 2, y - 5), P(x + w / 2, y - 5), { size: 6 }) + arrow(P(x + w / 2, y + 5), P(x - w / 2, y + 5), { size: 6 });
+
 FIGURES.push({
   id: 'dissolving-metal',
   section: 'hydrogenation',
   anchor: '<!-- fig:dissolving-metal:start -->',
-  alt: 'Sodium in ammonia reduces but-2-yne in four steps. Top row: an electron from sodium gives a radical anion, with the unpaired electron on one carbon and a lone pair and negative charge on the other, the two methyls on opposite sides; the lone pair takes a proton from ammonia to give a vinyl radical. Bottom row: a second electron gives the vinyl anion, methyls still on opposite sides; its lone pair takes a proton from ammonia to give trans-but-2-ene.',
-  viewBox: '0 0 760 470',
+  alt: 'Sodium in ammonia reduces but-2-yne. Row 1: an electron from sodium gives a radical anion, with the unpaired electron on one carbon and a lone pair and negative charge on the other; the lone pair takes a proton from ammonia, giving a vinyl radical. Row 2: the vinyl radical flips quickly between a cis shape and a trans shape, and the trans shape, with the methyls apart, is favored. Row 3: a second electron turns the trans vinyl radical into a vinyl anion, which keeps the trans shape; its lone pair takes a proton from ammonia, giving trans-but-2-ene.',
+  viewBox: '0 0 760 600',
   build() {
     let s = '';
-    // ---- top row ----
-    s += tag(30, 26, 'FIRST ELECTRON, FIRST PROTON', { anchor: 'start' });
+    // ---- row 1 ----
+    s += tag(30, 26, '1 · FIRST ELECTRON, FIRST PROTON', { anchor: 'start' });
     s += butyne(118, 132);
     s += arrow(P(236, 132), P(292, 132));
     s += text(264, 120, '+ e⁻', { cls: 'fg-lbl', size: 12 });
@@ -426,7 +443,7 @@ FIGURES.push({
     {
       const c3 = P(400, 132);
       const lp = armEnd(c3, 60, 26);
-      s += protonate(lp, P(452, 72), P(510, 72), -1, -16);
+      s += protonate(P(lp.x - 2, lp.y - 5), P(452, 66), P(510, 66), -1, -16);
     }
     s += text(370, 206, 'radical anion', { cls: 'fg-tag' });
     s += arrow(P(530, 132), P(592, 132));
@@ -434,61 +451,76 @@ FIGURES.push({
     s += text(561, 152, 'from NH₃', { cls: 'fg-sm' });
     s += twoCarbon(670, 132, VR);
     s += text(670, 206, 'vinyl radical', { cls: 'fg-tag' });
-    s += rule(30, 228, 730, 228);
+    s += rule(30, 226, 730, 226);
 
-    // ---- bottom row ----
-    s += tag(30, 254, 'SECOND ELECTRON, SECOND PROTON', { anchor: 'start' });
-    s += arrow(P(40, 330), P(102, 330));
-    s += text(71, 318, '+ e⁻', { cls: 'fg-lbl', size: 12 });
-    s += text(71, 350, 'from Na', { cls: 'fg-sm' });
-    s += twoCarbon(236, 330, VA);
+    // ---- row 2: the radical flips ----
+    s += tag(30, 250, '2 · THE VINYL RADICAL FLIPS FAST', { anchor: 'start' });
+    s += twoCarbon(250, 320, VRcis);
+    s += text(250, 396, 'cis shape: methyls crowded', { cls: 'fg-sm' });
+    s += equil(380, 320, 60);
+    s += text(380, 300, 'fast', { cls: 'fg-sm' });
+    s += twoCarbon(510, 320, VR);
+    s += text(510, 396, 'trans shape: methyls apart', { cls: 'fg-tag-good' });
+    s += text(680, 314, 'most radicals', { cls: 'fg-sm' });
+    s += text(680, 330, 'are trans', { cls: 'fg-sm' });
+    s += rule(30, 414, 730, 414);
+
+    // ---- row 3: second electron, second proton ----
+    s += tag(30, 438, '3 · SECOND ELECTRON, SECOND PROTON', { anchor: 'start' });
+    s += twoCarbon(110, 500, VR);
+    s += arrow(P(186, 500), P(246, 500));
+    s += text(216, 488, '+ e⁻', { cls: 'fg-lbl', size: 12 });
+    s += text(216, 520, 'from Na', { cls: 'fg-sm' });
+    s += twoCarbon(340, 500, VA);
     {
-      const c2 = P(206, 330);
+      const c2 = P(310, 500);
       const lp = armEnd(c2, 240, 26);
-      s += protonate(lp, P(176, 400), P(118, 400), 1, 16);
+      s += protonate(P(lp.x + 4, lp.y + 3), P(286, 566), P(228, 566), 1, 16);
     }
-    s += text(236, 450, 'vinyl anion: the methyls are trans', { cls: 'fg-tag-good' });
-    s += arrow(P(400, 330), P(470, 330));
-    s += text(435, 318, '+ H⁺', { cls: 'fg-lbl', size: 12 });
-    s += text(435, 350, 'from NH₃', { cls: 'fg-sm' });
-    s += twoCarbon(562, 330, { c2up: { t: 'CH3' }, c2dn: { t: 'Hnew' }, c3up: { t: 'Hnew' }, c3dn: { t: 'CH3' } });
-    s += text(562, 412, 'trans-but-2-ene', { cls: 'fg-tag' });
-    s += text(690, 312, 'the two new H', { cls: 'fg-sm' });
-    s += text(690, 328, 'end up on', { cls: 'fg-sm' });
-    s += text(690, 344, 'opposite sides', { cls: 'fg-sm' });
+    s += text(340, 592, 'vinyl anion: keeps the trans shape', { cls: 'fg-tag-good' });
+    s += arrow(P(440, 500), P(500, 500));
+    s += text(470, 488, '+ H⁺', { cls: 'fg-lbl', size: 12 });
+    s += text(470, 520, 'from NH₃', { cls: 'fg-sm' });
+    s += twoCarbon(590, 500, TRANS);
+    s += text(590, 576, 'trans-but-2-ene', { cls: 'fg-tag' });
+    s += text(708, 484, 'the two', { cls: 'fg-sm' });
+    s += text(708, 500, 'new H end up', { cls: 'fg-sm' });
+    s += text(708, 516, 'on opposite sides', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Start at the vinyl anion in the bottom row: check which side each methyl is on, then where the last highlighted H goes.',
+  caption: 'Follow the methyls: the radical in row 2 can take either shape, and the anion in row 3 locks in the one it was given.',
 });
 
 FIGURES.push({
   id: 'l-dissolving-metal',
   lessons: ['hydrogenation'],
-  alt: 'Sodium in ammonia on but-2-yne, stacked top to bottom: an electron gives a radical anion with the methyls on opposite sides; a proton from ammonia gives a vinyl radical; a second electron gives the vinyl anion, methyls still on opposite sides; a second proton gives trans-but-2-ene.',
-  viewBox: '0 0 340 700',
+  alt: 'Sodium in ammonia on but-2-yne, stacked top to bottom: an electron gives a radical anion; a proton from ammonia gives a vinyl radical, which flips quickly between a cis and a trans shape, trans favored; a second electron gives a vinyl anion that keeps the trans shape; a second proton gives trans-but-2-ene.',
+  viewBox: '0 0 340 740',
   build() {
     let s = '';
     const step = (y, t) => arrow(P(170, y), P(170, y + 40)) + text(184, y + 26, t, { cls: 'fg-lbl', anchor: 'start' });
     s += butyne(170, 26);
     s += step(46, '+ e⁻ from Na');
-    s += twoCarbon(170, 146, RA);
+    s += twoCarbon(150, 146, RA);
     s += text(290, 150, 'radical', { cls: 'fg-tag' });
     s += text(290, 166, 'anion', { cls: 'fg-tag' });
     s += step(196, '+ H⁺ from NH₃');
-    s += twoCarbon(170, 296, VR);
-    s += text(290, 300, 'vinyl', { cls: 'fg-tag' });
-    s += text(290, 316, 'radical', { cls: 'fg-tag' });
-    s += step(346, '+ e⁻ from Na');
-    s += twoCarbon(170, 446, VA);
-    s += text(290, 450, 'vinyl', { cls: 'fg-tag-good' });
-    s += text(290, 466, 'anion', { cls: 'fg-tag-good' });
-    s += text(170, 518, 'methyls trans: geometry set', { cls: 'fg-tag-good' });
-    s += step(530, '+ H⁺ from NH₃');
-    s += twoCarbon(170, 630, { c2up: { t: 'CH3' }, c2dn: { t: 'Hnew' }, c3up: { t: 'Hnew' }, c3dn: { t: 'CH3' } });
-    s += text(290, 634, 'trans', { cls: 'fg-tag' });
+    s += twoCarbon(76, 300, VRcis);
+    s += equil(170, 300, 34);
+    s += twoCarbon(264, 300, VR);
+    s += text(170, 370, 'VINYL RADICAL: FLIPS FAST', { cls: 'fg-tag' });
+    s += text(170, 388, 'trans shape favored', { cls: 'fg-tag-good' });
+    s += step(398, '+ e⁻ from Na');
+    s += twoCarbon(150, 498, VA);
+    s += text(290, 494, 'vinyl', { cls: 'fg-tag-good' });
+    s += text(290, 510, 'anion', { cls: 'fg-tag-good' });
+    s += text(170, 570, 'keeps the trans shape', { cls: 'fg-tag-good' });
+    s += step(582, '+ H⁺ from NH₃');
+    s += twoCarbon(150, 682, TRANS);
+    s += text(290, 686, 'trans', { cls: 'fg-tag' });
     return s;
   },
-  caption: 'Check the methyls in the vinyl anion, then where the last H goes.',
+  caption: 'The radical flips; the anion keeps the trans shape until the last proton arrives.',
 });
 
 /* ------------------------------------------------------------ 6 ---------
@@ -521,18 +553,18 @@ FIGURES.push({
   id: 'enone-three-ways',
   section: 'hydrogenation',
   anchor: '<!-- fig:enone-three-ways:start -->',
-  alt: '4-Phenylbut-3-en-2-one, a benzene ring joined to a C=C that is joined to a ketone, reduced three ways. H2 over Pd/C at 1 atm gives 4-phenylbutan-2-one: the C=C is gone, the C=O and ring remain. H2 over PtO2 at high pressure gives 4-phenylbutan-2-ol: both the C=C and the C=O are reduced. NaBH4 in methanol gives 4-phenylbut-3-en-2-ol: the C=O is reduced and the C=C remains.',
+  alt: '(E)-4-Phenylbut-3-en-2-one, a benzene ring joined to a C=C that is joined to a ketone, reduced three ways. H2 over Pd/C at 1 atm gives 4-phenylbutan-2-one: the C=C is gone, the C=O and ring remain. H2 over PtO2 at high pressure gives 4-phenylbutan-2-ol: both the C=C and the C=O are reduced. NaBH4 in methanol gives (E)-4-phenylbut-3-en-2-ol: the C=O is reduced and the C=C remains.',
   viewBox: '0 0 760 360',
   build() {
     let s = '';
     s += phenylChain(58, 180, 'enone');
-    s += text(120, 232, '4-phenylbut-3-en-2-one', { cls: 'fg-lbl', size: 11.5 });
+    s += eName(108, 232, '4-phenylbut-3-en-2-one', 'fg-lbl', 11);
     s += bond(P(206, 180), P(222, 180), { rFrom: 0, rTo: 0, cls: 'fg-arrow' });
     s += bond(P(222, 60), P(222, 300), { rFrom: 0, rTo: 0, cls: 'fg-arrow' });
     const rows = [
       [60, 'H₂, Pd/C, 1 atm', 'ketone', '4-phenylbutan-2-one', 'C=C only', 'fg-tag-good'],
       [180, 'H₂, PtO₂, high pressure', 'alcohol', '4-phenylbutan-2-ol', 'C=C and C=O', 'fg-tag-warn'],
-      [300, 'NaBH₄, CH₃OH', 'allylic', '4-phenylbut-3-en-2-ol', 'C=O only', 'fg-tag-good'],
+      [300, 'NaBH₄, CH₃OH', 'allylic', '(E)-4-phenylbut-3-en-2-ol', 'C=O only', 'fg-tag-good'],
     ];
     for (const [y, cond, st, name, t, tcls] of rows) {
       s += arrow(P(222, y), P(430, y));
@@ -540,11 +572,11 @@ FIGURES.push({
       s += phenylChain(470, y + 14, st);
       s += text(690, y - 4, t, { cls: tcls });
       s += text(690, y + 14, 'reduced', { cls: 'fg-sm' });
-      s += text(560, y + 44, name, { cls: 'fg-sm' });
+      s += name.startsWith('(E)-') ? eName(560, y + 44, name.slice(4), 'fg-sm', 10) : text(560, y + 44, name, { cls: 'fg-sm' });
     }
     return s;
   },
-  caption: 'In each product, check the C=C between the ring and the carbonyl carbon, and the oxygen: a double-bonded O is a ketone that survived, and a highlighted OH is one that was reduced.',
+  caption: 'In each product, check two places: the C=C next to the ring, and the oxygen. A double-bonded O is a ketone that survived, and a highlighted OH is one that was reduced.',
 });
 
 /* ------------------------------------------------------------ 7 ---------
@@ -552,18 +584,21 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-heat-ladder',
   lessons: ['hydrogenation'],
-  alt: 'An energy ladder. But-1-ene is highest, cis-but-2-ene a little lower, trans-but-2-ene lowest of the three. All three drop to the same level, butane. But-1-ene releases 30.3 kcal/mol, cis-but-2-ene 28.6 and trans-but-2-ene 27.6.',
-  viewBox: '0 0 340 290',
+  alt: 'An energy ladder with energy increasing upward. Each level is an alkene plus H2. But-1-ene plus H2 is highest, cis-but-2-ene plus H2 a little lower, trans-but-2-ene plus H2 lowest. All three drop to the same level, butane. But-1-ene releases 30.3 kcal/mol, cis-but-2-ene 28.6 and trans-but-2-ene 27.6.',
+  viewBox: '0 0 340 320',
   build() {
     let s = '';
-    const yB = 250;                         // butane
+    const yB = 280;                         // butane
     const lv = [
-      ['but-1-ene', 30.3, 60],
-      ['cis-but-2-ene', 28.6, 166],
-      ['trans-but-2-ene', 27.6, 270],
+      ['but-1-ene', 30.3, 82],
+      ['cis-but-2-ene', 28.6, 178],
+      ['trans-but-2-ene', 27.6, 272],
     ];
-    s += bond(P(16, yB), P(324, yB), { rFrom: 0, rTo: 0 });
-    s += text(170, yB + 26, 'butane (all three end here)', { cls: 'fg-lbl' });
+    s += arrow(P(16, yB), P(16, 40), { size: 7 });
+    s += text(26, 30, 'ENERGY', { cls: 'fg-tag', anchor: 'start' });
+    s += text(210, 30, 'EACH ALKENE + H₂', { cls: 'fg-tag' });
+    s += bond(P(34, yB), P(330, yB), { rFrom: 0, rTo: 0 });
+    s += text(182, yB + 26, 'butane (all three end here)', { cls: 'fg-lbl' });
     for (const [n, h, x] of lv) {
       // Drawn from 22 kcal/mol up, so the small gaps between the alkenes show.
       const top = yB - (h - 22) * 22;
