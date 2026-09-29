@@ -431,8 +431,8 @@ FIGURES.push({
     s += flatCation(cat);
     s += tg(300, 22, 'flat cation:');
     s += tg(300, 36, 'both faces open');
-    s += arrow(P(396, 120), P(446, 96), { muted: true });
-    s += arrow(P(396, 144), P(628, 140), { muted: true });
+    /* one arrow to the pair: water adds to either face */
+    s += arrow(P(396, 132), P(446, 132), { muted: true });
     const top = P(520, 106), bot = P(662, 106);
     s += centre(top, FROM_TOP);
     s += centre(bot, FROM_BOTTOM);
