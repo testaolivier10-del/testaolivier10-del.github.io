@@ -371,7 +371,7 @@ function shiftFrames(x1, x2, y, lesson) {
 FIGURES.push({
   id: 'hbr-shift-vs-pbr3',
   section: 'alcohol-reactions',
-  alt: 'Two rows, carbons numbered 1 to 4. Top, HBr: the secondary cation at C2 of 3,3-dimethylbutane, with a curved arrow moving a methyl from C3 to C2; then the tertiary cation at C3 with bromide arriving; then 2-bromo-2,3-dimethylbutane, with bromine on the carbon that never held the OH. Bottom, PBr3: 3,3-dimethylbutan-2-ol goes straight to 3-bromo-2,2-dimethylbutane, bromine on the carbon that held the OH, skeleton unchanged.',
+  alt: 'Two rows, carbons numbered 1 to 4. Top, HBr: the secondary cation at C2, from 3,3-dimethylbutan-2-ol, with a curved arrow moving a methyl from C3 to C2; then the tertiary cation at C3 with bromide arriving; then 2-bromo-2,3-dimethylbutane, with bromine on the carbon that never held the OH. Bottom, PBr3: 3,3-dimethylbutan-2-ol goes straight to 3-bromo-2,2-dimethylbutane, bromine on the carbon that held the OH, skeleton unchanged.',
   viewBox: '0 0 760 482',
   build() {
     let s = '';
