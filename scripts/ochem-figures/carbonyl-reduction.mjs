@@ -172,6 +172,11 @@ FIGURES.push({
     s += ethyl(c, 'C', 330, 60).s;
     s += A(o, 'O') + A(c, 'C', 'warn');
     s += lonePair(o.x, o.y, 315, { dist: 21 }) + lonePair(o.x, o.y, 225, { dist: 21 });
+    const hf = armEnd(c, 150, 62), hb = armEnd(c, 30, 62);
+    s += wedge(c, hf, { rFrom: 16, rTo: 16, width: 9 }) + A(hf, 'H⁻', 'hi');
+    s += hash(c, hb, { rFrom: 16, rTo: 16, width: 11, rungs: 4 }) + A(hb, 'H⁻', 'hi');
+    s += tg(hf.x - 4, hf.y - 26, 'in front');
+    s += tg(hb.x + 4, hb.y - 26, 'behind');
     s += tg(170, 200, 'the C=O and its two neighbors lie in the page');
     s += arrow(P(124, 226), P(92, 264));
     s += arrow(P(216, 226), P(248, 264));
@@ -417,7 +422,7 @@ FIGURES.push({
   id: 'nitrile-to-amine',
   section: 'carbonyl-reduction',
   anchor: 'and workup puts two H on the nitrogen.</p>',
-  alt: 'Propanenitrile, with its C≡N drawn as a straight triple bond, is reduced by LiAlH4 and then water to propan-1-amine. The carbon that carried the triple bond now carries two highlighted hydrogens, and the nitrogen is an NH2 group.',
+  alt: 'Propanenitrile, with its C≡N drawn as a straight triple bond, is reduced by LiAlH4 and then workup to propan-1-amine. The carbon that carried the triple bond now carries two highlighted hydrogens, and the nitrogen is an NH2 group.',
   viewBox: '0 0 340 390',
   build() {
     let s = '';
@@ -449,7 +454,7 @@ FIGURES.push({
   section: 'carbonyl-reduction',
   anchor: 'one H lands on the carbon and one on the oxygen.</p>',
   alt: 'Cyclohexanone reacts with hydrogen gas over platinum oxide at high pressure to give cyclohexanol. In the product one highlighted H sits on the former carbonyl carbon and the other on the oxygen.',
-  viewBox: '0 0 340 450',
+  viewBox: '0 0 340 462',
   build() {
     let s = '';
     s += box(8, 196, 'CYCLOHEXANONE');
@@ -467,12 +472,12 @@ FIGURES.push({
     s += tg(254, 224, 'H₂, PtO₂');
     s += tg(254, 242, 'high pressure', 'mut');
 
-    s += box(254, 188, 'CYCLOHEXANOL');
-    const r2 = ring(170, 392);
-    const o2 = armEnd(r2.top, 120, 46), hC = armEnd(r2.top, 60, 42), hO = armEnd(o2, 150, 38);
+    s += box(254, 200, 'CYCLOHEXANOL');
+    const r2 = ring(170, 406);
+    const o2 = armEnd(r2.top, 90, 46), hC = armEnd(r2.top, 150, 42), hO = armEnd(o2, 30, 38);
     s += r2.g + B(r2.top, 'C', o2, 'O') + B(o2, 'O', hO, 'H') + B(r2.top, 'C', hC, 'H');
     s += A(o2, 'O') + A(hO, 'H', 'hi') + A(hC, 'H', 'hi') + A(r2.top, 'C', 'warn');
-    s += lonePair(o2.x, o2.y, 300, { dist: 21 }) + lonePair(o2.x, o2.y, 130, { dist: 21 });
+    s += lonePair(o2.x, o2.y, 180, { dist: 21 }) + lonePair(o2.x, o2.y, 270, { dist: 21 });
     s += tg(270, 392, 'one H on C,', 'good');
     s += tg(270, 410, 'one H on O', 'good');
     return s;
