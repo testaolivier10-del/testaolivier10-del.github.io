@@ -919,3 +919,34 @@ confirm it.
     together at −78 °C (some texts say only "bulky, less reactive"). NaBH₄ with a carboxylic acid
     is simplified to "not reduced" (it gives H₂ and acyloxyborohydrides). The Clemmensen
     mechanism is described as not well understood and is not drawn with arrows.
+
+## Substitution & Elimination (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### subst-elim-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `sn2`, `sn1`, `e2`, `e1`, `substrate-effects` (notes pages), the SN2, SN1, E2 and E1
+  mechanism pages, and the Substrate & solvent effects lesson.
+- **Positions taken:**
+  - SN2: a vinyl or aryl halide is taught as unreactive because the backside path lies in the plane
+    of the molecule and runs into the rest of it, and an sp² carbon cannot invert (the older "screened
+    by the π electrons" reason was dropped).
+  - SN1: the product is graded "racemic, or largely racemic", with the split given as about 55:45 to
+    70:30 toward inversion (ion pairs). The common-ion effect is taught as a general test, though its
+    size depends on the cation. The tertiary/methyl rate gap is "a million or more" (larger in formic
+    acid).
+  - E2: stereospecific examples use phenyl-style names rather than IUPAC 2013 benzene-parent names.
+    "The same geometric logic governs anti additions" is kept from the old page and is loose.
+  - E1: a β-deuterium leaves E1's rate "almost unchanged" (matching E2); with many deuteriums
+    (fully deuterated tert-butyl) the rate falls about 2.4-fold. The departing leaving group is still
+    listed as a possible base.
+  - Heat favoring elimination is taught with product (and transition-state) particle counts and
+    entropy, the convention courses grade; strictly the selectivity is kinetic (activation entropy).
+  - Substrate & solvent effects: DBU is described as used mainly as a base for elimination (measured
+    nucleophilicity is high); azide in acetone is a textbook convention (NaN₃ dissolves poorly in
+    pure acetone); the azide-in-water product mix is qualitative; the stereochemistry of secondary
+    tosylate solvolysis is not stated; the 3° "SN1 (slow)" cell with a strong nucleophile differs
+    between published charts; a claim that a protic solvent pushes secondary SN2/E2 toward E2 was
+    removed as unverified.
