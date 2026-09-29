@@ -104,7 +104,7 @@ function edgeOnEmpty(c, l, gL, gR, { off = 44, ry = 30, len = 62, kind = 'warn',
   s += `<line class="fg-dash" x1="${r2(c.x - len - 30)}" y1="${r2(c.y)}" x2="${r2(c.x + len + 30)}" y2="${r2(c.y)}"></line>`;
   s += arm(c, 180, len, gL).s + arm(c, 0, len, gR).s;
   s += atom(c.x, c.y, l, { kind });
-  if (plus) s += charge(at(c, 40, 30).x, at(c, 40, 30).y + 5, '+');
+  if (plus) s += charge(at(c, 28, 34).x, at(c, 28, 34).y + 5, '+');
   return s;
 }
 
@@ -120,7 +120,7 @@ FIGURES.push({
   section: 'electrophiles',
   anchor: '',
   alt: 'Acetone, a carbonyl carbon double-bonded to oxygen and bonded to two methyl groups. The carbon is marked delta plus and labeled as the atom a nucleophile attacks. The oxygen, with two lone pairs, is marked delta minus and labeled as the atom an acid protonates. A note gives both formal charges as zero.',
-  viewBox: '0 0 600 230',
+  viewBox: '40 44 480 186',
   build() {
     let s = '';
     const c = P(150, 140);
@@ -128,14 +128,14 @@ FIGURES.push({
     s += k.s;
     s += dPlus(122, 126);
     s += dMinus(114, 94);
-    s += arrow(P(318, 140), P(172, 140), { muted: true });
-    s += sm(328, 136, 'the carbon is short of electrons:', 'start');
-    s += sm(328, 152, 'a nucleophile attacks it', 'start');
-    s += arrow(P(318, 82), P(170, 82), { muted: true });
-    s += sm(328, 78, 'the oxygen holds the extra density:', 'start');
-    s += sm(328, 94, 'an acid protonates it', 'start');
+    s += arrow(P(262, 140), P(172, 140), { muted: true });
+    s += sm(272, 136, 'the carbon is short of electrons:', 'start');
+    s += sm(272, 152, 'a nucleophile attacks it', 'start');
+    s += arrow(P(262, 82), P(186, 82), { muted: true });
+    s += sm(272, 78, 'the oxygen holds extra density:', 'start');
+    s += sm(272, 94, 'an acid protonates it', 'start');
     s += lbl(150, 212, 'acetone');
-    s += sm(328, 212, 'formal charges: C 0, O 0', 'start');
+    s += sm(272, 212, 'formal charges: C 0, O 0', 'start');
     return s;
   },
   caption: 'Acetone. The coral δ+ carbon is the electrophilic atom; the teal δ− oxygen is the electron-rich one.',
@@ -189,8 +189,8 @@ FIGURES.push({
     const h = P(126, 124);
     s += lobeE(h.x, h.y, 30, 30);
     s += atom(h.x, h.y, 'H', { kind: 'warn', r: 13 });
-    s += charge(h.x + 20, h.y - 16, '+');
-    s += sm(126, 184, 'empty 1s orbital');
+    s += charge(h.x + 36, h.y - 26, '+');
+    s += sm(126, 178, 'empty 1s orbital');
     s += sm(126, 222, 'no electrons at all');
     s += sm(126, 240, 'an acid H–A carries it');
 
@@ -331,11 +331,11 @@ FIGURES.push({
     const c4 = P(100, 400);
     const k4 = carbonyl(c4, { subs: [{ deg: 210, l: 'CH₃' }, { deg: 330, l: 'CH₃' }], len: 56 });
     s += k4.s;
-    const B = P(226, 330);
+    const B = P(236, 356);
     s += arm(B, 90, 44, 'F', { rFrom: 15 }).s + arm(B, 330, 44, 'F', { rFrom: 15 }).s + arm(B, 210, 44, 'F', { rFrom: 15 }).s;
     s += atom(B.x, B.y, 'B');
-    s += curve(lpTip(k4.o, 30), P(B.x - 16, B.y - 6), { bow: -14, size: 7 });
-    s += arrow(P(290, 370), P(342, 370), { muted: true });
+    s += curve(lpTip(k4.o, 30), P(B.x - 17, B.y - 4), { bow: -14, size: 7 });
+    s += arrow(P(304, 370), P(356, 370), { muted: true });
 
     const c5 = P(440, 400);
     const o5 = at(c5, 90, 56);
@@ -353,9 +353,9 @@ FIGURES.push({
     s += dPlus(c5.x - 30, c5.y - 12);
     s += sm(100, 460, 'acetone + BF₃');
     s += sm(440, 460, 'oxygen shares a pair with boron');
-    s += sm(612, 404, 'the positive oxygen pulls', 'start');
-    s += sm(612, 420, 'harder on the carbon, so', 'start');
-    s += sm(612, 436, 'the carbon is more δ+', 'start');
+    s += sm(572, 404, 'the positive oxygen pulls', 'start');
+    s += sm(572, 420, 'harder on the carbon, so', 'start');
+    s += sm(572, 436, 'the carbon is more δ+', 'start');
     return s;
   },
   caption: 'Top: follow the arrows to protonated acetone, then compare where its two resonance structures put the +. Bottom: the same oxygen lone pair goes to boron instead of to a proton.',
@@ -367,7 +367,7 @@ FIGURES.push({
   section: 'electrophiles',
   anchor: '',
   alt: 'Left: ethanol drawn skeletally, its C–O carbon marked delta plus. An arrow labeled make the tosylate leads to ethyl tosylate: the same two-carbon chain on an oxygen, which is bonded to a sulfur carrying two double-bonded oxygens and a benzene ring with a methyl group at the far end. A bracket labels the sulfur, both S=O oxygens, the ring and its methyl as Ts, the tosyl group.',
-  viewBox: '0 0 760 270',
+  viewBox: '0 56 760 234',
   build() {
     let s = '';
     // Ethanol.
@@ -404,8 +404,8 @@ FIGURES.push({
     const yb = 88;
     s += `<path class="fg-bond-soft" d="M428 ${yb + 8} L428 ${yb} L${r2(me.x + 18)} ${yb} L${r2(me.x + 18)} ${yb + 8}"></path>`;
     s += tg((428 + me.x + 18) / 2 + 30, yb - 10, 'Ts, the tosyl group');
-    s += sm(470, 250, 'ethyl tosylate, CH₃CH₂–OTs: the same δ+ carbon,');
-    s += sm(470, 266, 'now carrying a group that leaves easily');
+    s += sm(470, 262, 'ethyl tosylate, CH₃CH₂–OTs: the same δ+ carbon,');
+    s += sm(470, 278, 'now carrying a group that leaves easily');
     return s;
   },
   caption: 'The carbon marked δ+ is the same in both. What changes is the group on the oxygen: the bracket shows everything that “Ts” stands for.',
@@ -417,7 +417,7 @@ FIGURES.push({
   section: 'electrophiles',
   anchor: '',
   alt: 'Top row: acetaldehyde, CH3–CHO, with a small delta plus on the carbonyl carbon, beside trifluoroacetaldehyde, CF3–CHO, with a larger delta plus. Bottom row: acetamide and its resonance structure. Curved arrows move the nitrogen lone pair into the C–N bond and the C=O pi pair onto oxygen, giving a structure with C=N, a plus charge on nitrogen and a minus charge on oxygen.',
-  viewBox: '0 0 760 480',
+  viewBox: '0 0 760 510',
   build() {
     let s = '';
     s += tg(24, 24, 'A NEIGHBOR THAT PULLS DENSITY AWAY', 'start');
@@ -448,7 +448,7 @@ FIGURES.push({
     s += atom(n3.x, n3.y, 'N');
     s += curve(lpTip(n3, 210), P((c3.x + n3.x) / 2 - 4, (c3.y + n3.y) / 2 + 9), { bow: -10, size: 7 });
     s += piToO(c3, k3.o);
-    s += lbl(130, 466, 'acetamide');
+    s += lbl(130, 496, 'acetamide');
 
     s += resArrow(P(250, 380), P(318, 380));
 
@@ -465,7 +465,7 @@ FIGURES.push({
     s += atom(n4.x, n4.y, 'N', { kind: 'warn' });
     s += charge(n4.x + 22, n4.y + 20, '+');
     s += atom(c4.x, c4.y, 'C');
-    s += sm(420, 466, 'the + sits on nitrogen, not carbon');
+    s += sm(420, 496, 'the + sits on nitrogen, not carbon');
     s += sm(556, 370, 'nitrogen’s lone pair is shared', 'start');
     s += sm(556, 386, 'with the carbonyl carbon, so', 'start');
     s += sm(556, 402, 'that carbon is far less δ+', 'start');
@@ -573,7 +573,7 @@ FIGURES.push({
   section: 'electrophiles',
   anchor: '',
   alt: 'But-3-en-2-one drawn skeletally, with the carbon next to the C=O labeled alpha and the far carbon of the C=C labeled beta. Curved arrows move the C=C pi pair toward the carbonyl carbon and the C=O pi pair onto oxygen, giving a resonance structure with a minus charge on oxygen and a plus charge on the beta carbon.',
-  viewBox: '0 0 760 220',
+  viewBox: '0 40 760 180',
   build() {
     let s = '';
     const enone = (x0, contributor) => {
@@ -604,8 +604,8 @@ FIGURES.push({
     s += resArrow(P(262, 124), P(334, 124));
     s += enone(390, true);
     s += lbl(465, 206, 'a resonance structure');
-    s += sm(598, 110, 'the β carbon carries a +:', 'start');
-    s += sm(598, 126, 'a nucleophile can attack it', 'start');
+    s += sm(574, 104, 'the β carbon carries a +:', 'start');
+    s += sm(574, 120, 'a nucleophile can attack it', 'start');
     return s;
   },
   caption: 'Follow the two arrows, then find the β carbon in the structure on the right.',
@@ -618,19 +618,18 @@ FIGURES.push({
   lessons: ['electrophiles'],
   anchor: '',
   alt: 'Chloromethane: a carbon with three hydrogens and a chlorine. The carbon is marked delta plus and the chlorine delta minus.',
-  viewBox: '0 0 340 210',
+  viewBox: '0 0 340 206',
   build() {
     let s = '';
-    const c = P(130, 100), cl = at(c, 0, 80);
+    const c = P(136, 86), cl = at(c, 0, 80);
     for (const d of [90, 180, 270]) s += arm(c, d, 46, 'H').s;
     s += bond(c, cl, { rFrom: 16, rTo: 16 });
     s += atom(cl.x, cl.y, 'Cl', { kind: 'hi' });
     s += atom(c.x, c.y, 'C', { kind: 'warn' });
-    s += dPlus(154, 80, 15);
+    s += dPlus(160, 66, 15);
     s += dMinus(cl.x, cl.y - 26, 15);
-    s += tg(130, 178, 'δ+ C: electrophile');
-    s += tg(cl.x + 8, 146, 'δ− Cl');
-    s += tg(170, 200, 'chloromethane');
+    s += tg(170, 170, 'chloromethane');
+    s += tg(170, 192, 'the δ+ carbon is the electrophile');
     return s;
   },
   caption: 'Chlorine pulls the shared pair toward itself, so the carbon is left δ+.',
@@ -654,7 +653,7 @@ FIGURES.push({
     const h = P(170, 320);
     s += lobeE(h.x, h.y, 30, 30);
     s += atom(h.x, h.y, 'H', { kind: 'warn', r: 13 });
-    s += charge(h.x + 20, h.y - 16, '+');
+    s += charge(h.x + 36, h.y - 26, '+');
     s += tg(170, 382, 'empty 1s orbital, no electrons');
     return s;
   },
@@ -666,7 +665,7 @@ FIGURES.push({
   lessons: ['electrophiles'],
   anchor: '',
   alt: 'Top: H–Br with the hydrogen marked delta plus and the bromine delta minus. Middle: Br2 on its own, no partial charges. Bottom: Br2 held end-on above an ethene molecule seen edge-on; an arrow shows the Br–Br pair shifting to the far bromine, which is delta minus, leaving the near bromine delta plus.',
-  viewBox: '0 0 340 520',
+  viewBox: '0 0 340 500',
   build() {
     let s = '';
     s += tg(170, 20, 'H–Br: POLAR ALL THE TIME');
@@ -687,7 +686,7 @@ FIGURES.push({
     s += sc.s;
     s += tg(sc.far.x + 44, sc.far.y + 26, 'pair shifts', 'start');
     s += tg(sc.far.x + 44, sc.far.y + 42, 'away', 'start');
-    s += tg(170, 506, 'ethene, seen edge-on');
+    s += tg(170, 488, 'ethene, seen edge-on');
     return s;
   },
   caption: 'H–Br is always polar. Br₂ becomes polar only when an alkene’s π electrons push its shared pair away.',
