@@ -40,22 +40,23 @@
        any amine synthesis. 3 is why direct alkylation runs away, 4 why Gabriel
        can only go once, 6 the route for a secondary amine, 7 a synthesis that
        is flawless step by step and still arrives one carbon short. */
-    'amine-synthesis': { n:8, steps:{
-      2:['amine-synthesis-routes','oxidation-level'],
-      3:['amine-synthesis-routes','nucleophile-recognition'],
-      4:['amine-synthesis-routes'],
-      6:['amine-synthesis-routes'],
-      7:['amine-synthesis-routes'] } },
+    'amine-synthesis': { n:9, steps:{
+      1:['amine-synthesis-routes','nucleophile-recognition'],
+      3:['amine-synthesis-routes'],
+      5:['amine-synthesis-routes'],
+      7:['amine-synthesis-routes','oxidation-level'],
+      8:['amine-synthesis-routes'] } },
 
     /* Step 2 counts equivalents, which is the historical assay. 3 is the
        leaving-group argument, 4 the worked alkene, 6 the two-observation
        deduction, 7 the third way Zaitsev breaks. */
-    'hofmann-elimination': { n:8, steps:{
+    'hofmann-elimination': { n:11, steps:{
       2:['hofmann-elimination-rule'],
       3:['hofmann-elimination-rule','leaving-group-ability'],
-      4:['hofmann-elimination-rule','anti-periplanar-geometry'],
       6:['hofmann-elimination-rule'],
-      7:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
+      7:['hofmann-elimination-rule','anti-periplanar-geometry'],
+      9:['hofmann-elimination-rule'],
+      10:['hofmann-elimination-rule','anti-periplanar-geometry'] } },
 
     'alpha-halogenation': { n:11, steps:{
       3:['alpha-halogenation-control','alpha-acidity'],
@@ -81,10 +82,6 @@
       8:['acyl-reactivity-order','leaving-group-ability'],
       9:['activation-before-acylation'],
       11:['activation-before-acylation','acyl-reactivity-order'] } },
-
-    /* Step 2 is the product sorter and carries the carbon counting with it.
-       3 is why a Grignard adds once, 4 is a pure carbon count, 6 the route
-       chosen on the substrate rather than the target, 7 the DIBAL trap. */
     'nitriles': { n:11, steps:{
       2:['substrate-class','nitrile-as-acyl-level'],
       5:['nitrile-as-acyl-level','reductant-scope','oxidation-level'],
@@ -108,33 +105,44 @@
       9:['aldehyde-oxidizability','addition-equilibrium'],
       12:['aldehyde-oxidizability'],
       14:['aldehyde-oxidizability','addition-equilibrium'] } },
+    'retrosynthesis': { n:11, steps:{
+      3:['disconnection'],
+      4:['disconnection'],
+      5:['disconnection','cc-bond-toolkit'],
+      7:['disconnection'],
+      10:['disconnection'] } },
 
-    /* Step 2 is the hands-on "find every carbon", which is the skeleton-reading
-       concept alone. 3 and 6 are hydrogen counts, so implicit-hydrogens leads.
-       4 is the C–H versus O–H asymmetry, which is a notation rule rather than
-       a counting one. 7 is the five-bond slip, where both are involved. */
-    /* The four nomenclature lessons. Graded steps are 2, 3, 4, 6, 7 in each
-       (0, 1 and 5 are explain steps and record nothing). */
-    /* The synthesis chapter. Graded steps are 2, 3, 4, 6, 7. */
-    'retrosynthesis': { n:8, steps:{
-      2:['disconnection'], 3:['disconnection'], 4:['disconnection','cc-bond-toolkit'],
-      6:['disconnection'], 7:['disconnection'] } },
+    'carbon-carbon-bonds': { n:13, steps:{
+      2:['cc-bond-toolkit'],
+      4:['cc-bond-toolkit'],
+      5:['cc-bond-toolkit','disconnection'],
+      7:['cc-bond-toolkit'],
+      11:['cc-bond-toolkit'],
+      12:['cc-bond-toolkit'] } },
 
-    'carbon-carbon-bonds': { n:8, steps:{
-      2:['cc-bond-toolkit'], 3:['cc-bond-toolkit'], 4:['cc-bond-toolkit','disconnection'],
-      6:['cc-bond-toolkit'], 7:['cc-bond-toolkit'] } },
+    'functional-group-interconversion': { n:11, steps:{
+      1:['fgi-map'],
+      2:['fgi-map'],
+      4:['fgi-map'],
+      6:['fgi-map','route-order'],
+      8:['fgi-map','route-order'],
+      10:['fgi-map','route-order'] } },
 
-    'functional-group-interconversion': { n:8, steps:{
-      2:['fgi-map'], 3:['fgi-map'], 4:['fgi-map','route-order'],
-      6:['fgi-map'], 7:['fgi-map'] } },
+    'protecting-groups': { n:11, steps:{
+      2:['protection'],
+      3:['protection'],
+      6:['protection','route-order'],
+      7:['protection','route-order'],
+      9:['protection'],
+      10:['protection','fgi-map','organometallic-quench'] } },
 
-    'protecting-groups': { n:8, steps:{
-      2:['protection'], 3:['protection'], 4:['protection'],
-      6:['protection','route-order'], 7:['protection','fgi-map'] } },
-
-    'multistep-synthesis': { n:8, steps:{
-      2:['route-order','protection'], 3:['route-order'], 4:['route-order'],
-      6:['route-order'], 7:['route-order','cc-bond-toolkit'] } },
+    'multistep-synthesis': { n:15, steps:{
+      6:['route-order','protection'],
+      7:['route-order'],
+      8:['route-order'],
+      12:['route-order'],
+      13:['route-order'],
+      14:['route-order','cc-bond-toolkit'] } },
 
     'carbohydrates': { n:12, steps:{
       1:['sugar-ring'],
@@ -344,8 +352,6 @@
       9:['alkene-cleavage-scope'],
       11:['alkene-cleavage-scope'],
       12:['redox-stereochemistry','alkene-cleavage-scope'] } },
-
-    /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
     'conjugated-systems': { n:9, steps:{
       2:['conjugation-recognition'],
       3:['conjugation-recognition'],
@@ -425,12 +431,14 @@
       12:['radical-chain','allylic-capture'],
       13:['radical-chain','radical-stability'] } },
 
-    'skeletal-structures': { n:8, steps:{
+    'skeletal-structures': { n:15, steps:{
       2:['skeletal-notation'],
-      3:['implicit-hydrogens','skeletal-notation'],
-      4:['skeletal-notation'],
+      4:['implicit-hydrogens','skeletal-notation'],
       6:['implicit-hydrogens','skeletal-notation'],
-      7:['implicit-hydrogens','skeletal-notation'] } },
+      8:['implicit-hydrogens','skeletal-notation'],
+      11:['implicit-hydrogens','formal-charge-calc'],
+      13:['implicit-hydrogens','skeletal-notation'],
+      14:['implicit-hydrogens','skeletal-notation'] } },
 
     'acidity-factors': { n:11, steps:{
       4:['acidity-factors'],
@@ -502,19 +510,19 @@
       12:['keto-enol-tautomerism'],
       13:['alpha-acidity','resonance-delocalization'] } },
 
-    'amine-reactions': { n:8, steps:{
-      1:['nucleophile-recognition'],
-      2:['amine-basicity','acylation-self-termination'],
-      4:['acylation-self-termination','nucleophile-recognition'],
-      6:['nucleophile-recognition'],
-      7:['acylation-self-termination','nucleophile-recognition'] } },
+    'amine-reactions': { n:9, steps:{
+      1:['nucleophile-recognition','amine-synthesis-routes'],
+      3:['acylation-self-termination','amine-basicity'],
+      5:['amine-synthesis-routes','reductant-scope'],
+      7:['diazonium-hub'],
+      8:['amine-synthesis-routes','acylation-self-termination'] } },
 
-    'amine-structure': { n:8, steps:{
-      1:['amine-basicity'],
-      2:['amine-basicity'],
-      4:['amine-basicity'],
-      6:['amine-basicity'],
-      7:['amine-basicity','pka-scale'] } },
+    'amine-structure': { n:11, steps:{
+      3:['amine-basicity'],
+      5:['amine-basicity'],
+      7:['amine-basicity'],
+      9:['amine-basicity'],
+      10:['amine-basicity','pka-scale'] } },
 
     'aromaticity': { n:8, steps:{
       1:['huckel-aromaticity'],
@@ -531,11 +539,12 @@
       12:['valence-electrons'],
       14:['valence-electrons'] } },
 
-    'axial-equatorial': { n:7, steps:{
+    'axial-equatorial': { n:9, steps:{
       1:['chair-axial-equatorial'],
-      2:['chair-axial-equatorial','steric-hindrance'],
       3:['chair-axial-equatorial','steric-hindrance'],
-      6:['chair-axial-equatorial','steric-hindrance'] } },
+      5:['chair-axial-equatorial','steric-hindrance'],
+      7:['chair-axial-equatorial'],
+      8:['chair-axial-equatorial','steric-hindrance'] } },
 
     /* Step 3 sorts six condensed formulas into ester/ether/amide/ketone, 5 is
        the tert-butylamine degree trap, 6 is "which one contains an amide", 9
@@ -597,11 +606,12 @@
       8:['claisen-connectivity','enolate-formation'],
       10:['claisen-connectivity'] } },
 
-    'conformational-analysis': { n:7, steps:{
+    'conformational-analysis': { n:11, steps:{
       1:['chair-axial-equatorial'],
-      2:['chair-axial-equatorial'],
       3:['chair-axial-equatorial','ring-flip-mechanics'],
-      6:['chair-axial-equatorial','ring-flip-mechanics'] } },
+      5:['chair-axial-equatorial','ring-flip-mechanics'],
+      8:['chair-axial-equatorial','torsional-strain'],
+      10:['chair-axial-equatorial','ring-flip-mechanics'] } },
 
     'conjugate': { n:7, steps:{
       1:['conjugate-pairs'],
@@ -609,19 +619,20 @@
       3:['conjugate-pairs','pka-scale'],
       6:['conjugate-pairs','pka-scale'] } },
 
-    'curved-arrows': { n:9, steps:{
+    'curved-arrows': { n:11, steps:{
       1:['curved-arrow-direction'],
-      2:['curved-arrow-direction','resonance-validity'],
+      2:['curved-arrow-direction'],
       3:['curved-arrow-direction','formal-charge-calc'],
       6:['curved-arrow-direction','carbonyl-electrophilicity'],
       7:['curved-arrow-direction'],
-      8:['curved-arrow-direction','resonance-validity'] } },
+      10:['curved-arrow-direction'] } },
 
-    'cyclohexanes': { n:7, steps:{
-      1:['chair-axial-equatorial'],
+    'cyclohexanes': { n:9, steps:{
+      1:['torsional-strain'],
       2:['torsional-strain'],
-      3:['chair-axial-equatorial','torsional-strain'],
-      6:['torsional-strain','chair-axial-equatorial'] } },
+      4:['chair-axial-equatorial','torsional-strain'],
+      6:['chair-axial-equatorial','torsional-strain'],
+      8:['torsional-strain','chair-axial-equatorial'] } },
 
     'diastereomers': { n:11, steps:{
       2:['enantiomer-vs-diastereomer','stereocenter-identification'],
@@ -796,11 +807,13 @@
       8:['molecular-geometry-vsepr'],
       10:['molecular-geometry-vsepr','hybridization-assignment'] } },
 
-    'newman': { n:7, steps:{
-      1:['newman-reading'],
-      2:['torsional-strain','newman-reading'],
-      3:['torsional-strain','newman-reading'],
-      6:['newman-reading','torsional-strain'] } },
+    'newman': { n:14, steps:{
+      2:['newman-reading'],
+      4:['torsional-strain','newman-reading'],
+      5:['torsional-strain','newman-reading'],
+      8:['torsional-strain','newman-reading'],
+      11:['torsional-strain','newman-reading'],
+      13:['newman-reading','torsional-strain'] } },
 
     'nucleophiles': { n:11, steps:{
       2:['nucleophile-recognition'],
@@ -827,18 +840,21 @@
       1:['pka-scale'], 2:['pka-scale'], 3:['pka-scale'],
       6:['pka-scale','conjugate-pairs'] } },
 
-    'resonance': { n:9, steps:{
-      2:['resonance-delocalization','resonance-validity'],
+    'resonance': { n:11, steps:{
+      1:['resonance-delocalization'],
       3:['resonance-validity'],
-      4:['resonance-delocalization'],
-      5:['resonance-validity'],
-      6:['resonance-delocalization','resonance-validity'],
-      8:['resonance-validity','resonance-delocalization'] } },
+      5:['resonance-delocalization'],
+      7:['resonance-validity','resonance-delocalization'],
+      8:['resonance-delocalization','formal-charge-calc'],
+      10:['resonance-validity','resonance-delocalization'] } },
 
-    'ring-flips': { n:7, steps:{
-      1:['ring-flip-mechanics'], 2:['ring-flip-mechanics'],
-      3:['ring-flip-mechanics'],
-      6:['ring-flip-mechanics','chair-axial-equatorial'] } },
+    'ring-flips': { n:13, steps:{
+      1:['ring-flip-mechanics'],
+      2:['ring-flip-mechanics'],
+      4:['ring-flip-mechanics','chair-axial-equatorial'],
+      6:['ring-flip-mechanics','chair-axial-equatorial'],
+      9:['ring-flip-mechanics'],
+      12:['ring-flip-mechanics','chair-axial-equatorial'] } },
 
     /* Steps 6 and 7 are the two wedge-dash assignment drills, each of
        which grades three times (rank, toward/away, R or S) — so this

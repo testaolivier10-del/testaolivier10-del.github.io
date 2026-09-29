@@ -10,10 +10,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skeletal structures — Organic Chemistry Lesson</title>
-<meta name="description" content="Learn the line-angle notation the rest of organic chemistry is drawn in: every vertex and end is a carbon, hydrogens on carbon are inferred…">
+<meta name="description" content="Learn the line-angle notation the rest of organic chemistry is drawn in: every corner and end is a carbon, hydrogens on carbon are worked out…">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/skeletal-structures.html">
 <meta property="og:title" content="Skeletal structures — Organic Chemistry Lesson">
-<meta property="og:description" content="Learn the line-angle notation the rest of organic chemistry is drawn in: every vertex and end is a carbon, hydrogens on carbon are inferred…">
+<meta property="og:description" content="Learn the line-angle notation the rest of organic chemistry is drawn in: every corner and end is a carbon, hydrogens on carbon are worked out…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/skeletal-structures.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -44,7 +44,7 @@
       "@id": "https://levlprep.com/ochem/lessons/skeletal-structures.html#lesson",
       "name": "Skeletal structures",
       "url": "https://levlprep.com/ochem/lessons/skeletal-structures.html",
-      "description": "Learn the line-angle notation the rest of organic chemistry is drawn in: every vertex and end is a carbon, hydrogens on carbon are inferred, and every other atom is drawn.",
+      "description": "Learn the line-angle notation the rest of organic chemistry is drawn in: every corner and end is a carbon, hydrogens on carbon are worked out, and every other atom is drawn.",
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
@@ -104,7 +104,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 15</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var lines = '';
     for(var i = 0; i < CHAIN.length - 1; i++) lines += bond(CHAIN[i], CHAIN[i + 1]);
     var hits = CHAIN.map(function(c){
-      return '<g class="atom" data-key="' + c.key + '" role="button" tabindex="0" ' +
+      return '<g class="atom hit" data-key="' + c.key + '" role="button" tabindex="0" ' +
              'aria-label="carbon at position ' + c.key.slice(1) + '">' +
              '<circle cx="' + c.x + '" cy="' + c.y + '" r="15" fill="transparent" ' +
              'stroke="transparent" stroke-width="2"/></g>';
@@ -197,29 +197,25 @@ document.addEventListener('DOMContentLoaded', function(){
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Almost everything from here on is drawn in a notation nobody has explained yet.',
-        bodyHtml: '<p class="step-body">Lewis structures, where every atom and every bond is written out, are honest and unreadable past about six carbons. Cholesterol as a Lewis structure is a page of Cs and Hs that no chemist could scan. So organic chemists draw <b>skeletal structures</b> instead — also called line-angle structures — and they are the language the rest of this course is written in.</p>' +
-          '<p class="step-body">This is not a shorthand for experts. It is a deliberate decision about what a chemist needs to see, and it keeps exactly the thing that matters: the <b>carbon skeleton</b> and the <b>functional groups</b> hanging off it, with the uninformative hydrogens hidden.</p>' +
-          '<p class="step-body" style="margin-bottom:0;">Butan-1-ol written three ways — CH₃CH₂CH₂CH₂OH condensed, a page of symbols as a Lewis structure, or a four-line zigzag ending in OH as a skeletal structure — is the same molecule each time. The skeletal drawing has not lost the hydrogens. It has moved them into a rule you apply rather than symbols you read.</p>'
+        title: 'One molecule, three drawings.',
+        bodyHtml: '<p class="step-body">Here is CH₃CH₂CH₂CH₂OH drawn three ways. The Lewis structure shows every atom and every bond. The condensed formula is shorter, but it shows no bonds at all. The third drawing is a <b>skeletal structure</b>, also called a line-angle structure.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">A skeletal structure shows the <b>carbon skeleton</b>, the chain of carbons that holds the molecule together, along with the functional groups on it. It leaves out every carbon symbol and every hydrogen on carbon, and four rules let you put them back. Every drawing in the rest of the course uses this notation.</p>',
+        diagramHtml: '<!-- fig:l-notation:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 440" role="img" aria-label="CH3CH2CH2CH2OH drawn three ways, stacked: the full Lewis structure with every H and the two lone pairs on O; the condensed formula; and the skeletal structure, a zigzag ending in OH, with CH3 and CH2 labels at the end and corners."><rect class="fg-panel" x="10" y="10" width="320" height="170" rx="10"></rect><text class="fg-lbl" x="170" y="32" text-anchor="middle" font-size="13">full Lewis structure</text><line class="fg-bond" x1="84" y1="100" x2="106" y2="100"></line><line class="fg-bond" x1="134" y1="100" x2="156" y2="100"></line><line class="fg-bond" x1="184" y1="100" x2="206" y2="100"></line><line class="fg-bond" x1="56" y1="100" x2="43" y2="100"></line><line class="fg-bond" x1="70" y1="86" x2="70" y2="73"></line><line class="fg-bond" x1="70" y1="114" x2="70" y2="127"></line><line class="fg-bond" x1="120" y1="86" x2="120" y2="73"></line><line class="fg-bond" x1="120" y1="114" x2="120" y2="127"></line><line class="fg-bond" x1="170" y1="86" x2="170" y2="73"></line><line class="fg-bond" x1="170" y1="114" x2="170" y2="127"></line><line class="fg-bond" x1="220" y1="86" x2="220" y2="73"></line><line class="fg-bond" x1="220" y1="114" x2="220" y2="127"></line><line class="fg-bond" x1="234" y1="100" x2="252" y2="100"></line><line class="fg-bond" x1="266" y1="86" x2="266" y2="73"></line><circle class="fg-lp" cx="288" cy="104.5" r="2.3"></circle><circle class="fg-lp" cx="288" cy="95.5" r="2.3"></circle><circle class="fg-lp" cx="261.5" cy="122" r="2.3"></circle><circle class="fg-lp" cx="270.5" cy="122" r="2.3"></circle><circle class="fg-atom" cx="70" cy="100" r="14"></circle><text class="fg-lbl" x="70" y="104.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="120" cy="100" r="14"></circle><text class="fg-lbl" x="120" y="104.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="170" cy="100" r="14"></circle><text class="fg-lbl" x="170" y="104.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="220" cy="100" r="14"></circle><text class="fg-lbl" x="220" y="104.44" text-anchor="middle" font-size="12">C</text><circle class="fg-atom" cx="32" cy="100" r="11"></circle><text class="fg-lbl" x="32" y="104.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="70" cy="62" r="11"></circle><text class="fg-lbl" x="70" y="66.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="70" cy="138" r="11"></circle><text class="fg-lbl" x="70" y="142.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="120" cy="62" r="11"></circle><text class="fg-lbl" x="120" y="66.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="120" cy="138" r="11"></circle><text class="fg-lbl" x="120" y="142.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="170" cy="62" r="11"></circle><text class="fg-lbl" x="170" y="66.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="170" cy="138" r="11"></circle><text class="fg-lbl" x="170" y="142.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="220" cy="62" r="11"></circle><text class="fg-lbl" x="220" y="66.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="220" cy="138" r="11"></circle><text class="fg-lbl" x="220" y="142.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="266" cy="100" r="14"></circle><text class="fg-lbl" x="266" y="104.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="266" cy="62" r="11"></circle><text class="fg-lbl" x="266" y="66.44" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="170" y="172" text-anchor="middle" font-size="11">15 atom symbols, every bond drawn</text><rect class="fg-panel" x="10" y="190" width="320" height="80" rx="10"></rect><text class="fg-lbl" x="170" y="214" text-anchor="middle" font-size="13">condensed formula</text><text class="fg-lbl" x="170" y="250" text-anchor="middle" font-size="15">CH₃CH₂CH₂CH₂OH</text><rect class="fg-panel-hi" x="10" y="280" width="320" height="150" rx="10"></rect><text class="fg-lbl" x="170" y="302" text-anchor="middle" font-size="13">skeletal structure</text><line class="fg-bond" x1="90" y1="365" x2="130" y2="343"></line><line class="fg-bond" x1="130" y1="343" x2="170" y2="365"></line><line class="fg-bond" x1="170" y1="365" x2="210" y2="343"></line><line class="fg-bond" x1="210" y1="343" x2="236.86" y2="357.77"></line><circle class="fg-atom" cx="250" cy="365" r="15"></circle><text class="fg-lbl" x="250" y="368.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag-good" x="90" y="393" text-anchor="middle" font-size="11">CH₃</text><text class="fg-tag-good" x="130" y="329" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="170" y="393" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="210" y="329" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag" x="170" y="418" text-anchor="middle" font-size="11">every corner and end is a carbon</text></svg><figcaption>One molecule, three drawings. The green labels show what the skeletal drawing leaves out.</figcaption></figure><!-- fig:l-notation:end -->'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
-        title: 'Four rules, and the third is the one people get wrong.',
-        bodyHtml: '<ul class="step-body">' +
-          '<li><b>A line is a bond, and every vertex or end of a line is a carbon.</b> No C is written. A zigzag of five line segments is a six-carbon chain, because the two ends count too — forgetting the ends is the commonest miscount in the first week.</li>' +
-          '<li><b>Hydrogens on carbon are not drawn.</b> They are inferred: carbon makes four bonds, so whatever is left over after the lines you can see is hydrogen. A vertex with two lines meeting it has two hydrogens; a chain end with one line has three.</li>' +
-          '<li><b>Every atom that is not carbon IS drawn, and so are the hydrogens attached to it.</b> O, N, S, Cl and the rest are always written, and an O–H is written OH rather than left implied.</li>' +
-          '<li><b>Lone pairs are usually left off</b>, and you are expected to supply them. An oxygen drawn with two bonds has two lone pairs whether or not anyone drew them, and when you start pushing arrows you will need them.</li>' +
-          '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">The third rule is the asymmetry that trips people: hydrogen on carbon is invisible, hydrogen on anything else is visible. It is not inconsistency. An O–H hydrogen is acidic, hydrogen bonds, and gets removed by base, so it is part of the chemistry; a C–H hydrogen along a chain almost never is. The notation hides what does not matter and keeps what does.</p>'
+        title: 'Every corner and every end is a carbon.',
+        bodyHtml: '<p class="step-body">In a skeletal structure, each line is a bond. A carbon sits at every corner and at both ends of the chain, and no C is written at any of them.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">The chain below has five lines and six carbons: four corners plus two ends. Forgetting the ends is the easiest miscount to make.</p>',
+        diagramHtml: '<!-- fig:l-count-ends:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 150" role="img" aria-label="A zigzag of five lines. Its six carbons are numbered 1 to 6: carbons 1 and 6 are the two ends, and 2 to 5 are the corners."><line class="fg-bond" x1="60" y1="88" x2="104" y2="62"></line><line class="fg-bond" x1="104" y1="62" x2="148" y2="88"></line><line class="fg-bond" x1="148" y1="88" x2="192" y2="62"></line><line class="fg-bond" x1="192" y1="62" x2="236" y2="88"></line><line class="fg-bond" x1="236" y1="88" x2="280" y2="62"></line><circle class="fg-atom-hi" cx="60" cy="88" r="7"></circle><text class="fg-lbl" x="60" y="116" text-anchor="middle" font-size="13">1</text><circle class="fg-atom-hi" cx="104" cy="62" r="5"></circle><text class="fg-lbl" x="104" y="50" text-anchor="middle" font-size="13">2</text><circle class="fg-atom-hi" cx="148" cy="88" r="5"></circle><text class="fg-lbl" x="148" y="116" text-anchor="middle" font-size="13">3</text><circle class="fg-atom-hi" cx="192" cy="62" r="5"></circle><text class="fg-lbl" x="192" y="50" text-anchor="middle" font-size="13">4</text><circle class="fg-atom-hi" cx="236" cy="88" r="5"></circle><text class="fg-lbl" x="236" y="116" text-anchor="middle" font-size="13">5</text><circle class="fg-atom-hi" cx="280" cy="62" r="7"></circle><text class="fg-lbl" x="280" y="50" text-anchor="middle" font-size="13">6</text><text class="fg-tag-good" x="60" y="136" text-anchor="middle" font-size="11">end</text><text class="fg-tag-good" x="280" y="136" text-anchor="middle" font-size="11">end</text><text class="fg-tag" x="170" y="136" text-anchor="middle" font-size="11">5 lines, 6 carbons</text></svg><figcaption>Four corners plus two ends: six carbons.</figcaption></figure><!-- fig:l-count-ends:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Find every carbon in this structure.</h2>' +
-            '<p class="step-body">Not one atom is labeled, because in this notation none of them is. Click each carbon you can find — hover will show you where you are aiming.</p>' +
+            '<p class="step-body">No atom is labeled, because in this notation carbons never are. Click each carbon you can find; hovering shows where you are aiming.</p>' +
             pentaneSvg() +
             '<div class="count-hint" id="hint" style="font:900 13px var(--font-mono);color:var(--accent);text-align:center;margin-bottom:16px;">Carbons found: 0 / 5</div>' +
             api.feedbackHtml('fb') +
@@ -234,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function(){
              made exactly the mistake this step exists to catch, so the nudge
              appears and the step does not score as correct. */
           var nudged = false;
-
           function take(g){
             var key = g.getAttribute('data-key');
             if(found[key]) return;
@@ -242,21 +237,19 @@ document.addEventListener('DOMContentLoaded', function(){
             count++;
             g.classList.add('chosen');
             hint.textContent = 'Carbons found: ' + count + ' / 5';
-
             var endsLeft = CHAIN.filter(function(c){ return c.end && !found[c.key]; }).length;
             if(count === 3 && endsLeft === 2 && !nudged){
               nudged = true;
-              api.showFeedback(fb, false, 'Three corners, and the structure is not finished. Look at the two ends of the line — a line has to stop somewhere, and what it stops at is a carbon too.');
+              api.showFeedback(fb, false, 'Three corners, and the structure is not finished. Look at the two ends of the line: a line has to stop somewhere, and what it stops at is a carbon too.');
             }
             if(count === 5){
               api.showFeedback(fb, true, nudged
-                ? 'Five carbons: three corners and two ends. This is pentane. The ends are the ones worth remembering — a zigzag of four segments is five carbons, not three.'
-                : 'Five carbons: three corners and two ends, and you counted the ends without being told. This is pentane — four line segments, five carbons.');
+                ? 'Five carbons: three corners and two ends. This is pentane. The ends are the ones worth remembering: a zigzag of four lines has five carbons, not three.'
+                : 'Five carbons: three corners and two ends, and you counted the ends without being told. This is pentane: four lines, five carbons.');
               api.record(!nudged);
               next.disabled = false;
             }
           }
-
           api.card.querySelectorAll('.atom').forEach(function(g){
             g.addEventListener('click', function(){ take(g); });
             // The pointer is not the only way in. Every other control on the
@@ -273,66 +266,130 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       },
       {
-        type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
-        title: 'In that pentane chain, how many hydrogens are on the middle carbon — the third one along?',
-        options: ['Three, the same as the ends', 'Two', 'One', 'None — hydrogens are not part of the molecule'],
-        correctIndex: 1,
-        correctFeedback: 'Right. Two lines meet at that vertex, so two of carbon\'s four bonds are used and the remaining two are hydrogens: CH₂. You did not read that anywhere — you subtracted it.',
-        wrongFeedback: 'Count the lines meeting that vertex, then subtract from four. Two bonds are drawn, so two hydrogens are implied. The three-hydrogen answer belongs to the chain ends, where only one line arrives.'
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Hydrogens on carbon are worked out, not drawn.',
+        bodyHtml: '<p class="step-body">Carbon makes four bonds. Count the bonds at a carbon (so far, each line is one bond), subtract from four, and the rest are hydrogens. In pentane, each end has one line, so it is a CH₃. Each corner has two lines, so it is a CH₂.</p>' +
+          '<!-- fig:l-h-rule:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 170" role="img" aria-label="Pentane as a zigzag of four lines. Each end is labeled CH3 and each of the three corners is labeled CH2."><line class="fg-bond" x1="70" y1="90" x2="120" y2="62"></line><line class="fg-bond" x1="120" y1="62" x2="170" y2="90"></line><line class="fg-bond" x1="170" y1="90" x2="220" y2="62"></line><line class="fg-bond" x1="220" y1="62" x2="270" y2="90"></line><text class="fg-tag-good" x="70" y="118" text-anchor="middle" font-size="11">CH₃</text><text class="fg-tag-good" x="120" y="48" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="170" y="118" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="220" y="48" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="270" y="118" text-anchor="middle" font-size="11">CH₃</text><text class="fg-tag" x="170" y="144" text-anchor="middle" font-size="11">end: 1 line, so 3 H</text><text class="fg-tag" x="170" y="162" text-anchor="middle" font-size="11">corner: 2 lines, so 2 H</text></svg><figcaption>Four minus the bonds at each carbon gives its hydrogens.</figcaption></figure><!-- fig:l-h-rule:end -->' +
+          '<p class="step-body" style="margin-bottom:0;">The common slip comes when you write a skeletal drawing out in full. The corner is already the carbon, so writing CH₃ at a corner with two lines gives that carbon five bonds.</p>',
+        diagramHtml: '<!-- fig:skeletal-five-bond-slip:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 266" role="img" aria-label="Two copies of a three-carbon zigzag with the middle corner written out. Top, written correctly as CH2: two lines plus two H make four bonds. Bottom, written wrongly as CH3: two lines plus three H make five bonds."><text class="fg-tag" x="170" y="26" text-anchor="middle" font-size="11">WRITTEN OUT CORRECTLY</text><line class="fg-bond" x1="100" y1="90" x2="152.36" y2="69.06"></line><line class="fg-bond" x1="187.64" y1="69.06" x2="240" y2="90"></line><circle class="fg-atom-hi" cx="170" cy="62" r="17"></circle><text class="fg-lbl" x="170" y="65.52" text-anchor="middle" font-size="9.5">CH₂</text><text class="fg-tag-good" x="170" y="118" text-anchor="middle" font-size="11">2 lines + 2 H = 4 bonds ✓</text><line class="fg-rule" x1="20" y1="138" x2="320" y2="138"></line><text class="fg-tag" x="170" y="160" text-anchor="middle" font-size="11">THE FIVE-BOND SLIP</text><line class="fg-bond" x1="100" y1="224" x2="152.36" y2="203.06"></line><line class="fg-bond" x1="187.64" y1="203.06" x2="240" y2="224"></line><circle class="fg-atom-warn" cx="170" cy="196" r="17"></circle><text class="fg-lbl" x="170" y="199.52" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag-warn" x="170" y="252" text-anchor="middle" font-size="11">2 lines + 3 H = 5 bonds ✗</text></svg><figcaption>Compare the bond totals under the two rows.</figcaption></figure><!-- fig:skeletal-five-bond-slip:end -->'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'Butan-1-ol is drawn as a zigzag of four line segments ending in OH. Why is that hydrogen written out when nine others are not?',
-        options: [
-          'Because oxygen cannot be drawn without showing its hydrogen',
-          'Because it is the only hydrogen left in the molecule',
-          'Because hydrogens on atoms other than carbon are drawn — and an O–H hydrogen is one that does chemistry',
-          'Because the molecule would be a different compound otherwise'
-        ],
+        eyebrow: 'Guided Practice',
+        title: 'How many hydrogens are on the highlighted carbon?',
+        diagramHtml: '<!-- fig:l-q-branch:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 150" role="img" aria-label="A four-carbon zigzag with a line up from the second corner. That corner is highlighted with a question mark."><line class="fg-bond" x1="110" y1="122" x2="150" y2="99"></line><line class="fg-bond" x1="190" y1="122" x2="230" y2="99"></line><line class="fg-bond" x1="150" y1="99" x2="150" y2="53"></line><line class="fg-bond" x1="150" y1="99" x2="190" y2="122"></line><circle class="fg-atom-warn" cx="150" cy="99" r="7"></circle><text class="fg-tag-warn" x="128" y="91" text-anchor="middle" font-size="14">?</text></svg><figcaption>How many hydrogens are on the highlighted carbon?</figcaption></figure><!-- fig:l-q-branch:end -->',
+        options: ['One', 'Two', 'Three', 'None'],
+        correctIndex: 0,
+        correctFeedback: 'Right. Three lines meet there: two along the chain and one to the branch. That uses three of carbon’s four bonds, so one hydrogen is left: CH.',
+        wrongFeedback: 'Count the lines that meet at the highlighted corner, then subtract from four. Two go along the chain and one goes up to the branch.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A double bond counts as two, a triple bond as three.',
+        bodyHtml: '<p class="step-body">So far every line was a single bond. A double bond is two of carbon’s four bonds, and a triple bond is three, so count bonds, not lines.</p>' +
+          '<p class="step-body">In CH₃CH=CH₂, the middle carbon has a double bond and a single bond. That is three bonds, so it has one hydrogen. In CH₃C≡CCH₃, each carbon of the triple bond also has one single bond. That makes four, so neither has a hydrogen.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Notice that the chain runs straight through each triple bond. Each carbon of a triple bond is an sp carbon, which holds its two neighbors 180° apart, so a corner there would be wrong.</p>',
+        diagramHtml: '<!-- fig:l-multiple:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 550" role="img" aria-label="Three stacked skeletal drawings with the hydrogen count at each carbon: CH3–CH=CH2 (CH3, CH, CH2); CH3–C≡C–CH3 drawn straight (CH3, C, C, CH3); CH3–CH2–C≡CH (CH3, CH2, C, CH)."><rect class="fg-panel" x="10" y="10" width="320" height="170" rx="10"></rect><text class="fg-tag" x="170" y="32" text-anchor="middle" font-size="11">A DOUBLE BOND</text><line class="fg-bond" x1="120" y1="96" x2="170" y2="68"></line><line class="fg-bond" x1="170" y1="68" x2="220" y2="96"></line><line class="fg-bond" x1="173.86" y1="75.43" x2="211.64" y2="96.59"></line><text class="fg-tag-good" x="120" y="124" text-anchor="middle" font-size="11">CH₃</text><text class="fg-tag-good" x="170" y="54" text-anchor="middle" font-size="11">CH</text><text class="fg-tag-good" x="220" y="124" text-anchor="middle" font-size="11">CH₂</text><text class="fg-lbl" x="170" y="146" text-anchor="middle" font-size="12.5">CH₃–CH=CH₂</text><text class="fg-tag" x="170" y="167" text-anchor="middle" font-size="11">middle C: 2 + 1 = 3 bonds, so 1 H</text><rect class="fg-panel" x="10" y="190" width="320" height="170" rx="10"></rect><text class="fg-tag" x="170" y="212" text-anchor="middle" font-size="11">A TRIPLE BOND IN THE CHAIN</text><line class="fg-bond" x1="95" y1="262" x2="145" y2="262"></line><line class="fg-bond" x1="145" y1="255.6" x2="195" y2="255.6"></line><line class="fg-bond" x1="145" y1="262" x2="195" y2="262"></line><line class="fg-bond" x1="145" y1="268.4" x2="195" y2="268.4"></line><line class="fg-bond" x1="195" y1="262" x2="245" y2="262"></line><text class="fg-tag-good" x="95" y="292" text-anchor="middle" font-size="11">CH₃</text><text class="fg-tag-good" x="145" y="292" text-anchor="middle" font-size="11">C</text><text class="fg-tag-good" x="195" y="292" text-anchor="middle" font-size="11">C</text><text class="fg-tag-good" x="245" y="292" text-anchor="middle" font-size="11">CH₃</text><text class="fg-lbl" x="170" y="326" text-anchor="middle" font-size="12.5">CH₃–C≡C–CH₃</text><text class="fg-tag" x="170" y="347" text-anchor="middle" font-size="11">each C of C≡C: 3 + 1 = 4 bonds, no H</text><rect class="fg-panel" x="10" y="370" width="320" height="170" rx="10"></rect><text class="fg-tag" x="170" y="392" text-anchor="middle" font-size="11">A TRIPLE BOND AT THE END</text><line class="fg-bond" x1="110" y1="454" x2="150" y2="431"></line><line class="fg-bond" x1="150" y1="431" x2="189.84" y2="454"></line><line class="fg-bond" x1="193.04" y1="448.46" x2="232.87" y2="471.46"></line><line class="fg-bond" x1="189.84" y1="454" x2="229.67" y2="477"></line><line class="fg-bond" x1="186.64" y1="459.54" x2="226.47" y2="482.54"></line><text class="fg-tag-good" x="110" y="482" text-anchor="middle" font-size="11">CH₃</text><text class="fg-tag-good" x="150" y="417" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="199.84" y="440.68" text-anchor="middle" font-size="11">C</text><text class="fg-tag-good" x="251.67" y="481" text-anchor="middle" font-size="11">CH</text><text class="fg-lbl" x="170" y="506" text-anchor="middle" font-size="12.5">CH₃–CH₂–C≡CH</text><text class="fg-tag" x="170" y="527" text-anchor="middle" font-size="11">end C: 3 bonds, so 1 H</text></svg><figcaption>A double bond is two of carbon’s four bonds, and a triple bond is three.</figcaption></figure><!-- fig:l-multiple:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'How many hydrogens are on the highlighted carbon?',
+        diagramHtml: '<!-- fig:l-q-alkene:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 150" role="img" aria-label="A four-carbon zigzag with a line up from the second corner and a double bond from the second corner to the third. The second corner is highlighted with a question mark."><line class="fg-bond" x1="110" y1="122" x2="150" y2="99"></line><line class="fg-bond" x1="190" y1="122" x2="230" y2="99"></line><line class="fg-bond" x1="150" y1="99" x2="150" y2="53"></line><line class="fg-bond" x1="150" y1="99" x2="190" y2="122"></line><line class="fg-bond" x1="153.78" y1="106.48" x2="181.64" y2="122.5"></line><circle class="fg-atom-warn" cx="150" cy="99" r="7"></circle><text class="fg-tag-warn" x="128" y="91" text-anchor="middle" font-size="14">?</text></svg><figcaption>How many hydrogens are on the highlighted carbon?</figcaption></figure><!-- fig:l-q-alkene:end -->',
+        options: ['One', 'None', 'Two', 'Three'],
+        correctIndex: 1,
+        correctFeedback: 'Right. Three lines meet there, but one of them is a double bond. The double bond counts as two, so the carbon already has four bonds and no room for a hydrogen.',
+        wrongFeedback: 'Count bonds, not lines. The double bond is two bonds, and the carbon also has a bond to each of its other two neighbors.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Every other atom is written, with its hydrogens.',
+        bodyHtml: '<p class="step-body">Every atom that is not carbon is written: O, N, S, Cl and the rest. So is every hydrogen on those atoms. An O–H is written OH, and an N–H is written NH or NH₂.</p>' +
+          '<p class="step-body">Hydrogen on carbon is hidden, but hydrogen on any other atom is shown. A hydrogen on O or N is always drawn because it matters to how the molecule behaves: it forms hydrogen bonds, and it often takes part in the reaction itself. A C–H hydrogen on a chain rarely does either.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Lone pairs are usually left off, and you are expected to supply them. The oxygen below has two bonds, so it has two lone pairs, just as in its Lewis structure.</p>',
+        diagramHtml: '<!-- fig:l-hetero:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 170" role="img" aria-label="CH3CH2CH2OH drawn skeletally: a zigzag ending in an OH label. The two lone pairs on the O are shown faintly, labeled not drawn but there."><line class="fg-bond" x1="60" y1="108" x2="110" y2="80"></line><line class="fg-bond" x1="110" y1="80" x2="160" y2="108"></line><line class="fg-bond" x1="160" y1="108" x2="195.17" y2="88.31"></line><circle class="fg-lp-mut" cx="206.7" cy="57.79" r="2.3"></circle><circle class="fg-lp-mut" cx="198.25" cy="60.87" r="2.3"></circle><circle class="fg-lp-mut" cx="231.3" cy="72.9" r="2.3"></circle><circle class="fg-lp-mut" cx="226.8" cy="65.1" r="2.3"></circle><circle class="fg-atom-hi" cx="210" cy="80" r="15"></circle><text class="fg-lbl" x="210" y="83.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="190" y="34" text-anchor="middle" font-size="11">lone pairs: left off, but there</text><text class="fg-tag-good" x="220" y="150" text-anchor="middle" font-size="11">H on O: written</text><text class="fg-tag" x="110" y="150" text-anchor="middle" font-size="11">H on C: left off</text></svg><figcaption>The O and its H are written. The lone pairs are usually left off.</figcaption></figure><!-- fig:l-hetero:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'This molecule has an OH at one end and an NH₂ at the other. How many hydrogens does it have in all?',
+        diagramHtml: '<!-- fig:l-q-count:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 130" role="img" aria-label="A skeletal drawing: HO at the left end, a zigzag of three carbons, and NH2 at the right end."><line class="fg-bond" x1="71.09" y1="80.67" x2="108" y2="60"></line><line class="fg-bond" x1="108" y1="60" x2="158" y2="88"></line><line class="fg-bond" x1="158" y1="88" x2="208" y2="60"></line><line class="fg-bond" x1="208" y1="60" x2="243.17" y2="79.69"></line><circle class="fg-atom" cx="58" cy="88" r="15"></circle><text class="fg-lbl" x="58" y="91.89" text-anchor="middle" font-size="10.5">HO</text><circle class="fg-atom" cx="258" cy="88" r="17"></circle><text class="fg-lbl" x="258" y="91.52" text-anchor="middle" font-size="9.5">NH₂</text></svg><figcaption>How many hydrogens does this molecule have in all?</figcaption></figure><!-- fig:l-q-count:end -->',
+        options: ['3', '6', '9', '11'],
         correctIndex: 2,
-        correctFeedback: 'Correct. That is rule three. An O–H hydrogen is acidic, hydrogen bonds, and gets removed by base, so hiding it would hide the reactive part of the molecule. The nine C–H hydrogens along the chain do none of those things.',
-        wrongFeedback: 'The molecule has ten hydrogens; nine of them are on carbon and invisible. What makes this one different is the atom it is attached to — and what that lets it do.'
+        correctFeedback: 'Right. The three written hydrogens (one on O, two on N) plus two on each of the three carbons make 3 + 6 = 9. Each carbon has two lines, so each is a CH₂, including the two next to O and N.',
+        wrongFeedback: 'Add two kinds of hydrogen: the written ones on O and N, and the hidden ones on carbon. Each carbon has two lines meeting it, including the carbons next to O and N.'
       },
       {
         type: 'explain',
         eyebrow: 'Worked example',
         title: 'Reading one back, in a fixed order.',
-        bodyHtml: '<p class="step-body">Going from a skeletal structure to a name is the direction that feels harder at first. Work it in the same order every time and it stops being hard. Take a five-vertex zigzag with an OH on the second vertex from the left:</p>' +
+        bodyHtml: '<p class="step-body">To turn a whole skeletal drawing into a condensed formula, work in the same order every time. Take a five-carbon zigzag with an OH on the second carbon from the left:</p>' +
           '<ul class="step-body">' +
-          '<li><b>Count the vertices and ends.</b> Five carbons.</li>' +
-          '<li><b>Read the heteroatoms.</b> One oxygen, drawn, with its hydrogen drawn.</li>' +
-          '<li><b>Fill in the hydrogens by counting lines.</b> The left end has one line, so CH₃. The second vertex has two lines plus the OH, so one hydrogen: CH. The third and fourth have two lines each: CH₂. The right end has one line: CH₃.</li>' +
+          '<li><b>Count the corners and ends.</b> Five carbons.</li>' +
+          '<li><b>Read the other atoms.</b> One oxygen, drawn, with its hydrogen drawn.</li>' +
+          '<li><b>Fill in the hydrogens by counting bonds.</b> The left end has one line, so it is CH₃. The second carbon has three lines, two along the chain and one to the OH, so it has one hydrogen: CH. The third and fourth carbons have two lines each: CH₂. The right end has one line: CH₃.</li>' +
           '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">Put it together and you have CH₃–CH(OH)–CH₂–CH₂–CH₃, pentan-2-ol. One pass, and the hydrogens were never guessed — they were subtracted. The common slip is counting a vertex as a carbon and then <i>also</i> writing in its hydrogens when you redraw, which gives carbon five bonds.</p>'
+          '<p class="step-body" style="margin-bottom:0;">Put it together and you have CH₃–CH(OH)–CH₂–CH₂–CH₃. The read takes one pass, and every hydrogen comes from a subtraction, not a guess.</p>',
+        diagramHtml: '<!-- fig:skeletal-h-count:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 240" role="img" aria-label="A five-carbon zigzag with OH on the second carbon. Under each carbon, its bond count (1, 3, 2, 2, 1) and what it is (CH3, CH, CH2, CH2, CH3)."><line class="fg-bond" x1="80" y1="140" x2="130" y2="111"></line><line class="fg-bond" x1="130" y1="111" x2="180" y2="140"></line><line class="fg-bond" x1="180" y1="140" x2="230" y2="111"></line><line class="fg-bond" x1="230" y1="111" x2="280" y2="140"></line><line class="fg-bond" x1="130" y1="111" x2="130" y2="81"></line><circle class="fg-atom-hi" cx="130" cy="64" r="16"></circle><text class="fg-lbl" x="130" y="67.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="14" y="182" text-anchor="start" font-size="11">bonds</text><text class="fg-tag" x="14" y="202" text-anchor="start" font-size="11">carbon</text><text class="fg-tag" x="80" y="182" text-anchor="middle" font-size="11">1</text><text class="fg-tag" x="130" y="182" text-anchor="middle" font-size="11">3</text><text class="fg-tag" x="180" y="182" text-anchor="middle" font-size="11">2</text><text class="fg-tag" x="230" y="182" text-anchor="middle" font-size="11">2</text><text class="fg-tag" x="280" y="182" text-anchor="middle" font-size="11">1</text><text class="fg-tag-good" x="84" y="202" text-anchor="middle" font-size="11">CH₃</text><text class="fg-tag-good" x="130" y="202" text-anchor="middle" font-size="11">CH</text><text class="fg-tag-good" x="180" y="202" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="230" y="202" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="280" y="202" text-anchor="middle" font-size="11">CH₃</text><text class="fg-lbl" x="170" y="230" text-anchor="middle" font-size="12.5">CH₃CH(OH)CH₂CH₂CH₃</text></svg><figcaption>Read each column from top to bottom: the bonds at that carbon, then what the carbon is.</figcaption></figure><!-- fig:skeletal-h-count:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A charge changes what the drawing hides.',
+        bodyHtml: '<p class="step-body">A charge changes how many bonds and lone pairs its atom has, and those are exactly what a skeletal drawing leaves out. The formal-charge formula from Foundations, read backwards, fills them in:</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Carbon with a + and three lines</b> is a carbocation: no hydrogen and no lone pair.</li>' +
+          '<li><b>Carbon with a − and three lines</b> is a carbanion: one lone pair and no hydrogen.</li>' +
+          '<li><b>Oxygen with a − and one line</b> has no hydrogen and three lone pairs. A neutral oxygen with one line would have an H and two lone pairs.</li>' +
+          '<li><b>Nitrogen with a + and four lines</b> has no hydrogen and no lone pair.</li>' +
+          '</ul>',
+        diagramHtml: '<!-- fig:l-charged:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 650" role="img" aria-label="Four stacked rows, each a charged atom drawn skeletally on the left and filled in on the right. Carbocation: no H, no lone pair. Carbanion: one lone pair, no H. Oxygen with one line and a minus: three lone pairs. Nitrogen with four lines and a plus: no H, no lone pair."><rect class="fg-panel" x="10" y="10" width="320" height="150" rx="10"></rect><text class="fg-lbl" x="170" y="32" text-anchor="middle" font-size="13">carbocation</text><line class="fg-bond" x1="86" y1="84" x2="86" y2="48"></line><line class="fg-bond" x1="86" y1="84" x2="54.82" y2="102"></line><line class="fg-bond" x1="86" y1="84" x2="117.18" y2="102"></line><text class="fg-tag" x="99.86" y="81" text-anchor="middle" font-size="14">+</text><line class="fg-arrow" x1="150" y1="84" x2="178" y2="84"></line><path class="fg-head" d="M186 84 L178 88.16 L178 79.84 Z"></path><line class="fg-bond" x1="246" y1="68" x2="246" y2="48"></line><line class="fg-bond" x1="232.14" y1="92" x2="214.82" y2="102"></line><line class="fg-bond" x1="259.86" y1="92" x2="277.18" y2="102"></line><circle class="fg-atom-hi" cx="246" cy="84" r="14"></circle><text class="fg-lbl" x="246" y="88.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag" x="268.52" y="76" text-anchor="middle" font-size="14">+</text><text class="fg-tag-good" x="170" y="146" text-anchor="middle" font-size="11">3 bonds, no H, no lone pair</text><rect class="fg-panel" x="10" y="170" width="320" height="150" rx="10"></rect><text class="fg-lbl" x="170" y="192" text-anchor="middle" font-size="13">carbanion</text><line class="fg-bond" x1="86" y1="244" x2="86" y2="208"></line><line class="fg-bond" x1="86" y1="244" x2="54.82" y2="262"></line><line class="fg-bond" x1="86" y1="244" x2="117.18" y2="262"></line><text class="fg-tag-warn" x="99.86" y="241" text-anchor="middle" font-size="14">−</text><line class="fg-arrow" x1="150" y1="244" x2="178" y2="244"></line><path class="fg-head" d="M186 244 L178 248.16 L178 239.84 Z"></path><line class="fg-bond" x1="246" y1="228" x2="246" y2="208"></line><line class="fg-bond" x1="232.14" y1="252" x2="214.82" y2="262"></line><line class="fg-bond" x1="259.86" y1="252" x2="277.18" y2="262"></line><circle class="fg-lp" cx="241.5" cy="266" r="2.3"></circle><circle class="fg-lp" cx="250.5" cy="266" r="2.3"></circle><circle class="fg-atom-hi" cx="246" cy="244" r="14"></circle><text class="fg-lbl" x="246" y="248.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag-warn" x="268.52" y="236" text-anchor="middle" font-size="14">−</text><text class="fg-tag-good" x="170" y="306" text-anchor="middle" font-size="11">3 bonds, no H, one lone pair</text><rect class="fg-panel" x="10" y="330" width="320" height="150" rx="10"></rect><text class="fg-lbl" x="170" y="352" text-anchor="middle" font-size="13">O⁻ with one line</text><line class="fg-bond" x1="62" y1="393" x2="87.88" y2="407.99"></line><circle class="fg-atom" cx="100" cy="415" r="14"></circle><text class="fg-lbl" x="100" y="419.44" text-anchor="middle" font-size="12">O</text><text class="fg-tag-warn" x="115.56" y="404.44" text-anchor="middle" font-size="14">−</text><line class="fg-arrow" x1="150" y1="404" x2="178" y2="404"></line><path class="fg-head" d="M186 404 L178 408.16 L178 399.84 Z"></path><line class="fg-bond" x1="222" y1="393" x2="246.15" y2="406.98"></line><circle class="fg-lp" cx="274.9" cy="398.2" r="2.3"></circle><circle class="fg-lp" cx="267.1" cy="393.7" r="2.3"></circle><circle class="fg-lp" cx="276.8" cy="429.9" r="2.3"></circle><circle class="fg-lp" cx="281.3" cy="422.1" r="2.3"></circle><circle class="fg-lp" cx="245.1" cy="431.8" r="2.3"></circle><circle class="fg-lp" cx="252.9" cy="436.3" r="2.3"></circle><circle class="fg-atom-hi" cx="260" cy="415" r="14"></circle><text class="fg-lbl" x="260" y="419.44" text-anchor="middle" font-size="12">O</text><text class="fg-tag-warn" x="291.88" y="411.46" text-anchor="middle" font-size="14">−</text><text class="fg-tag-good" x="170" y="466" text-anchor="middle" font-size="11">1 bond, no H, three lone pairs</text><rect class="fg-panel" x="10" y="490" width="320" height="150" rx="10"></rect><text class="fg-lbl" x="170" y="512" text-anchor="middle" font-size="13">N⁺ with four lines</text><line class="fg-bond" x1="100" y1="564" x2="126" y2="564"></line><line class="fg-bond" x1="86" y1="578" x2="86" y2="604"></line><line class="fg-bond" x1="72" y1="564" x2="46" y2="564"></line><line class="fg-bond" x1="86" y1="550" x2="86" y2="524"></line><circle class="fg-atom" cx="86" cy="564" r="14"></circle><text class="fg-lbl" x="86" y="568.44" text-anchor="middle" font-size="12">N</text><text class="fg-tag" x="102.97" y="552.03" text-anchor="middle" font-size="14">+</text><line class="fg-arrow" x1="150" y1="564" x2="178" y2="564"></line><path class="fg-head" d="M186 564 L178 568.16 L178 559.84 Z"></path><line class="fg-bond" x1="262" y1="564" x2="286" y2="564"></line><line class="fg-bond" x1="246" y1="580" x2="246" y2="604"></line><line class="fg-bond" x1="230" y1="564" x2="206" y2="564"></line><line class="fg-bond" x1="246" y1="548" x2="246" y2="524"></line><circle class="fg-atom-hi" cx="246" cy="564" r="14"></circle><text class="fg-lbl" x="246" y="568.44" text-anchor="middle" font-size="12">N</text><text class="fg-tag" x="265.09" y="549.91" text-anchor="middle" font-size="14">+</text><text class="fg-tag-good" x="170" y="626" text-anchor="middle" font-size="11">4 bonds, no H, no lone pair</text></svg><figcaption>Left, as drawn; right, with the hidden hydrogens and lone pairs filled in.</figcaption></figure><!-- fig:l-charged:end -->'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
-        title: 'A hexagon with nothing drawn inside or outside it. What is it, and what is its formula?',
-        options: [
-          'Benzene, C₆H₆ — a hexagon means an aromatic ring',
-          'Cyclohexane, C₆H₁₂ — six corners, each a carbon with two hydrogens',
-          'Six carbons in a chain, C₆H₁₄ — bent round for convenience',
-          'It is incomplete — a ring cannot be drawn without labeling its atoms'
-        ],
+        eyebrow: 'Independent Practice',
+        title: 'The oxygen at the end of this chain has one line and a minus sign. What does it carry?',
+        diagramHtml: '<!-- fig:l-q-alkoxide:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 120" role="img" aria-label="A skeletal drawing: a two-carbon zigzag ending at an O with a minus charge."><line class="fg-bond" x1="126" y1="75" x2="164" y2="53"></line><line class="fg-bond" x1="164" y1="53" x2="189.88" y2="67.99"></line><circle class="fg-atom" cx="202" cy="75" r="14"></circle><text class="fg-lbl" x="202" y="79.44" text-anchor="middle" font-size="12">O</text><text class="fg-tag-warn" x="217.56" y="64.44" text-anchor="middle" font-size="14">−</text></svg><figcaption>How many H and how many lone pairs does the oxygen carry?</figcaption></figure><!-- fig:l-q-alkoxide:end -->',
+        options: ['One H and two lone pairs', 'No H and three lone pairs', 'No H and two lone pairs', 'One H and three lone pairs'],
         correctIndex: 1,
-        correctFeedback: 'Correct. Six corners, so six carbons; each corner has two lines meeting it, so two hydrogens each. Benzene would need three alternating double bonds drawn in, or a circle inside the ring — a bare hexagon is the saturated ring.',
-        wrongFeedback: 'Apply the two rules in order. Six corners means six carbons. Each corner has exactly two lines meeting it, so each carries two hydrogens. Nothing in a bare hexagon says anything about double bonds.'
+        correctFeedback: 'Right. The oxygen has one bond and a −1 charge, so the formal-charge count gives it three lone pairs: 6 − 6 − 1 = −1. No H is written, so there is none.',
+        wrongFeedback: 'Use the charge. A neutral oxygen with one bond has an H and two lone pairs. The minus sign means that H has gone and its bond has become a third lone pair.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Rings follow the same rules.',
+        bodyHtml: '<p class="step-body">A hexagon with nothing inside it is six carbons. Each corner has two lines, so each has two hydrogens: cyclohexane, C₆H₁₂.</p>' +
+          '<p class="step-body" style="margin-bottom:0;">Benzene, C₆H₆, is the same hexagon with three double bonds that alternate with single bonds. Each corner then has three bonds, so it has one hydrogen. Many books draw a circle inside the hexagon instead, and both drawings are the same molecule.</p>',
+        diagramHtml: '<!-- fig:l-rings:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 390" role="img" aria-label="Two stacked panels. A bare hexagon: cyclohexane, C6H12, two H on each corner. Benzene, C6H6, drawn with three alternating double bonds and with a circle inside the hexagon."><rect class="fg-panel" x="10" y="10" width="320" height="180" rx="10"></rect><text class="fg-lbl" x="170" y="32" text-anchor="middle" font-size="13">a bare hexagon: cyclohexane</text><line class="fg-bond" x1="170" y1="58" x2="133.63" y2="79"></line><line class="fg-bond" x1="133.63" y1="79" x2="133.63" y2="121"></line><line class="fg-bond" x1="133.63" y1="121" x2="170" y2="142"></line><line class="fg-bond" x1="170" y1="142" x2="206.37" y2="121"></line><line class="fg-bond" x1="206.37" y1="121" x2="206.37" y2="79"></line><line class="fg-bond" x1="206.37" y1="79" x2="170" y2="58"></line><text class="fg-tag-good" x="170" y="172" text-anchor="middle" font-size="11">two H on each corner: C₆H₁₂</text><rect class="fg-panel" x="10" y="200" width="320" height="180" rx="10"></rect><text class="fg-lbl" x="170" y="222" text-anchor="middle" font-size="13">benzene, two ways</text><line class="fg-bond" x1="110" y1="248" x2="73.63" y2="269"></line><line class="fg-bond" x1="106.24" y1="255.48" x2="81.99" y2="269.48"></line><line class="fg-bond" x1="73.63" y1="269" x2="73.63" y2="311"></line><line class="fg-bond" x1="73.63" y1="311" x2="110" y2="332"></line><line class="fg-bond" x1="81.99" y1="310.52" x2="106.24" y2="324.52"></line><line class="fg-bond" x1="110" y1="332" x2="146.37" y2="311"></line><line class="fg-bond" x1="146.37" y1="311" x2="146.37" y2="269"></line><line class="fg-bond" x1="141.77" y1="304" x2="141.77" y2="276"></line><line class="fg-bond" x1="146.37" y1="269" x2="110" y2="248"></line><line class="fg-bond" x1="230" y1="248" x2="193.63" y2="269"></line><line class="fg-bond" x1="193.63" y1="269" x2="193.63" y2="311"></line><line class="fg-bond" x1="193.63" y1="311" x2="230" y2="332"></line><line class="fg-bond" x1="230" y1="332" x2="266.37" y2="311"></line><line class="fg-bond" x1="266.37" y1="311" x2="266.37" y2="269"></line><line class="fg-bond" x1="266.37" y1="269" x2="230" y2="248"></line><circle class="fg-bond" cx="230" cy="290" r="25.2" fill="none"></circle><text class="fg-tag-good" x="170" y="362" text-anchor="middle" font-size="11">one H on each corner: C₆H₆</text></svg><figcaption>A ring corner is read like any other corner.</figcaption></figure><!-- fig:l-rings:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'A hexagon with one line drawn off a corner. What is its molecular formula?',
+        diagramHtml: '<!-- fig:l-q-ring:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 170" role="img" aria-label="A hexagon with one line drawn up from its top corner."><line class="fg-bond" x1="170" y1="72" x2="137.09" y2="91"></line><line class="fg-bond" x1="137.09" y1="91" x2="137.09" y2="129"></line><line class="fg-bond" x1="137.09" y1="129" x2="170" y2="148"></line><line class="fg-bond" x1="170" y1="148" x2="202.91" y2="129"></line><line class="fg-bond" x1="202.91" y1="129" x2="202.91" y2="91"></line><line class="fg-bond" x1="202.91" y1="91" x2="170" y2="72"></line><line class="fg-bond" x1="170" y1="72" x2="170" y2="30"></line></svg><figcaption>What is the molecular formula?</figcaption></figure><!-- fig:l-q-ring:end -->',
+        options: ['C₆H₁₂', 'C₇H₁₂', 'C₇H₁₄', 'C₇H₁₆'],
+        correctIndex: 2,
+        correctFeedback: 'Right. Six ring corners plus the end of the line make seven carbons. The corner with the line has three lines, so one H. The other five corners have two H each, and the line end is a CH₃: 1 + 10 + 3 = 14.',
+        wrongFeedback: 'The end of the line is a carbon too, so count seven carbons. Then count lines at each: the corner with the line has three, the other five corners have two, and the line end has one.'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'A student expands a skeletal drawing. At a vertex where two lines meet, they write in a C with two hydrogens, then draw a bond from that C to each of the two neighbors, and then also keep the original two lines that already ran to that vertex. Their count gives that carbon five bonds. What went wrong?',
+        title: 'A student writing out this chain put CH at the carbon that carries both the branch and the OH. What is wrong with that label?',
+        diagramHtml: '<!-- fig:l-q-slip:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 192" role="img" aria-label="A student’s redraw of a chain: a four-carbon zigzag whose second carbon has a line up to a branch and a line down to OH. The student has written CH at that carbon."><line class="fg-bond" x1="90" y1="104" x2="125.17" y2="84.31"></line><line class="fg-bond" x1="154.83" y1="84.31" x2="190" y2="104"></line><line class="fg-bond" x1="190" y1="104" x2="240" y2="76"></line><line class="fg-bond" x1="140" y1="59" x2="140" y2="24"></line><line class="fg-bond" x1="140" y1="93" x2="140" y2="125"></line><circle class="fg-atom-warn" cx="140" cy="76" r="15"></circle><text class="fg-lbl" x="140" y="79.89" text-anchor="middle" font-size="10.5">CH</text><circle class="fg-atom" cx="140" cy="140" r="15"></circle><text class="fg-lbl" x="140" y="143.89" text-anchor="middle" font-size="10.5">OH</text><text class="fg-tag" x="170" y="180" text-anchor="middle" font-size="11">the student’s redraw</text></svg><figcaption>What is wrong with the label on the carbon that carries the OH?</figcaption></figure><!-- fig:l-q-slip:end -->',
         options: [
-          'Nothing — a carbon at a vertex has two bonds and two hydrogens, so the drawing is fine as is',
-          'They should have written three hydrogens, since vertices are like chain ends',
-          'They counted an extra bond somewhere: a vertex carbon has two bonds and two hydrogens, so five means one bond was double-counted',
-          'Skeletal structures cannot be redrawn as Lewis structures without losing information'
+          'It should be C⁺, since only three carbon lines meet there',
+          'It should be C: the line to OH is its fourth bond',
+          'It should be CH₂, like any other corner in a chain',
+          'It should be CH₃, since the branch makes that carbon a chain end'
         ],
-        correctIndex: 2,
-        correctFeedback: 'Correct. Two lines plus two hydrogens is four, which is right — so a fifth bond means something was counted twice, usually the vertex being treated as an atom in its own right on top of the bonds already drawn. Count the lines meeting the vertex first, subtract from four, and what is left is the hydrogen count.'
+        correctIndex: 1,
+        correctFeedback: 'Right. Four lines meet at that carbon: two along the chain, one to the branch and one to the OH. All four of its bonds are drawn, so it has no hydrogen. Writing CH gives it five bonds, the same slip as writing CH₃ at an ordinary corner.',
+        wrongFeedback: 'Count every line at that carbon, including the one to the OH, then subtract from four.'
       }
     ]
   });

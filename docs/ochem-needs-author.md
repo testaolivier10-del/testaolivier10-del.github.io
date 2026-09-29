@@ -606,3 +606,137 @@ confirm it.
   about 0.5–2.5 mol%). Nylon 6,T melting point about 370 °C, kept from the original page. "Most
   recycled PET goes the mechanical route" and "PLA shows almost no measurable breakdown in
   seawater after more than a year" are uncited.
+
+## Alkanes & Conformations (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### alkanes-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `newman`, `cyclohexanes`, `axial-equatorial`, `ring-flips`, `conformational-analysis`.
+- **Positions taken:**
+  - Order across pages: Cyclohexanes owns the conformer path (chair → half-chair → twist-boat →
+    boat and back); Axial/equatorial treats the two chairs of one compound as conformations by the
+    Newman test and never reasons from a flip; Ring flips owns the flip; Conformational analysis
+    owns disubstituted rings, including the 1,2 "one must be axial" cases.
+  - Chair drawings: C1 is the headrest (far right, tipped up) and C4 the footrest. A flipped chair
+    keeps both ends and swaps the middle carbons in pairs, so it shows the same molecule's other
+    chair. A plain top-to-bottom reflection draws the mirror-image molecule; the already-published
+    `cis-trans-ez` ring-flip figures use it (their up/down and axial/equatorial readings are still
+    right) and should be redrawn.
+  - The ethane barrier is explained both ways (repulsion and hyperconjugation), and no question
+    grades the cause. The σ* orbital is drawn without claiming which lobe is larger.
+  - The Boltzmann distribution is named without a formula; confirm that level suits chapter 5.
+  - Conformer energies come from additive interaction costs. For 2,3-dimethylbutane this gives
+    1.8 against 2.7 kcal/mol, while experiment puts anti and gauche close; the final says "adding
+    up the interaction costs gives".
+  - The half-chair is taught as the transition state between a chair and a twist-boat;
+    computation puts the true transition state between a half-chair and an envelope. A chair with
+    tert-butyl axial likely twists; the pages treat it as a chair.
+  - The claim that β-glucose's all-equatorial chair is one reason glucose is widespread was removed
+    as unverified.
+
+### alkanes-numbers: values that need a source
+- **Status:** pending review.
+- **Notes:** ring strain from the page's own subtraction: 27.6, 26.3, 6.5, 0.1, 6.4 kcal/mol for
+  C3–C7 and 10 for cyclooctane (another common set is 27.5 / 26.3 / 6.2 / 0 / 6.2); the epoxides
+  pages and the cyclohexanes questions now use this set. Boat 6.5 (sources 6.4–7.1), half-chair
+  10.8 (10–11), twist-boat 5.5. Syn butane drawn at about 5 (sources 4.5–6). A-values: OH 0.9
+  (0.6–1.0 by solvent), F 0.25 (0.15–0.38), tert-butyl 4.9 (quoted >4.5 or 4.7–4.9). Syn-pentane
+  3.7, kept from the original page. Ring-flip NMR coalescence about −90 °C (sources −60 to −100).
+
+## Synthesis & Retrosynthesis (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### synthesis-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `retrosynthesis`, `carbon-carbon-bonds`, `functional-group-interconversion`,
+  `protecting-groups`, `multistep-synthesis`.
+- **Positions taken:**
+  - Retrosynthesis teaches C–C retrons; C–X cuts (ethers, esters) get one line, where many
+    courses teach them first. Retron carbons are counted from the carbon that carries the group,
+    not by IUPAC locants. A carbonyl piece is treated as both its synthon (the δ+ carbon) and the
+    compound you order. The Michael retron uses pentane-2,4-dione + methyl vinyl ketone, matching
+    the Michael and Robinson chapter. For a β-hydroxy carbonyl the aldol cut is graded over a
+    Grignard cut.
+  - The oxidation ladder places most groups by counting bonds to O, N or halogen; alkenes and
+    alkynes are placed by what water turns them into (a teaching convention; some courses use
+    per-carbon oxidation numbers). C–C bond formers (Wittig, NaCN, acetylide) are marked as outside
+    the ladder bookkeeping. Radical HBr then substitution sets only relative configuration and
+    gives a racemic product.
+  - Protecting groups: the course has a Grignard-safe mask only for an O–H (silyl ether); for an
+    N–H or CO₂H the pages say to reorder the route. A carbamate still has an N–H. The Grignard page
+    also mentions a sacrificial extra equivalent, which this chapter does not grade; the wording
+    of the two pages could be brought closer. TBS and an acetal are taught as "take the TBS off
+    first" rather than as orthogonal. Slow Cbz losses in TFA and the partial cyclic hemiketal of
+    6-hydroxy-6-phenylhexan-2-one are not mentioned.
+  - Carbon–carbon bonds: the cuprate addition is drawn with polar curved arrows (the mechanism
+    goes through Cu(III)); cyanide on a tertiary halide is simplified to "gives the alkene"; the
+    endo Diels–Alder adduct is "usually" the major product. Close relatives (enolate alkylation,
+    Grignard + epoxide, cuprate) are a paragraph, not table rows, so the flashcard deck is
+    unchanged.
+  - Multistep synthesis: 1-bromopropane in Friedel–Crafts alkylation is taught as giving mostly
+    isopropylbenzene through a free primary cation that shifts a hydride (the course convention;
+    the ratio depends on conditions and the halide–AlCl₃ complex is what rearranges). Anti
+    addition of Br₂ is limited to simple alkenes. Wolff–Kishner is written H₂NNH₂, KOH, heat; Pt is
+    kept as the catalyst in the dimethylcyclohexene figure. Acetone's self-aldol equilibrium
+    favors acetone.
+
+## Drawing Molecules & Moving Electrons (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### drawing-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `skeletal-structures`, `curved-arrows`, `resonance`.
+- **Positions taken:**
+  - Skeletal structures uses condensed formulas instead of IUPAC names, since naming comes later,
+    but it still names pentane, cyclohexane and benzene as plain words. Confirm that is allowed.
+    The zigzag is "drawn at 120°, about 109.5° in the molecule" (a real alkane C–C–C angle is
+    nearer 112°). A hydrogen on O or N is always drawn "because it matters to how the molecule
+    behaves"; the page no longer calls it acidic, since acidity comes later. "A C–H on a chain
+    rarely does either" is true only in comparison with O–H and N–H. Benzene's circle is justified
+    by the measured fact that its six C–C bonds are identical, with the reason left to Resonance.
+  - Curved arrows: a + marks a missing electron, not a missing pair; only a carbocation (or H⁺ or
+    BF₃) is short of electrons, while NH₄⁺ and H₃O⁺ have full octets. An electron-poor site is
+    either an atom short of electrons or the δ+ end of a polar bond. Formal charge
+    (`formal-charge`) still describes electron-poor more narrowly ("a + together with fewer than
+    eight electrons") and should be brought in line in the Foundations wording pass.
+  - Resonance: the allyl cation is described only as more stable than a similar cation that
+    cannot spread its charge (about 15 kcal/mol in the gas phase, recalled, not checked); courses
+    differ on ranking it with secondary or tertiary cations, and the page makes no such
+    comparison. Resonance is called part of aromatic stability, not its definition. Benzene is
+    counted as two Kekulé plus three Dewar structures, naphthalene as three Kekulé structures.
+    The amide rotation barrier is given as about 18 kcal/mol (real amides range about 15–21).
+    The edge-on enol figure draws only oxygen's p-orbital lone pair.
+
+## Amines (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### amines-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `amine-structure`, `amine-reactions`, `amine-synthesis`, `hofmann-elimination`.
+- **Positions taken:**
+  - The amide pKaH is "about 0" on every page (literature about −0.5); the imine pKaH was removed
+    as unverified (simple imines are often quoted near 7).
+  - Nucleophilicity is taught as NH₃ < RNH₂ < R₂NH, with R₃N slower (a course convention; real
+    values depend on sterics and solvent).
+  - Reductive amination: the pages give no pH number, only "mildly acidic solution" (Borch's data
+    put iminium selectivity nearer pH 6–7). Over-alkylation is explained by rates: the first
+    condensation is fast, the second (by the more crowded secondary amine) slower, and the
+    reduction is not undone; dialkylation remains a side reaction, worst with ammonia or small
+    aldehydes. Azide is taught as working on primary and secondary halides.
+  - Hofmann rearrangement: the water step is drawn on the neutral isocyanate and carbamic acid
+    (under NaOH the species is really the carbamate anion). Phthalimide pKa 8.3 is unverified.
+  - Hofmann elimination: the rule is explained by sterics first, with the E1cb-like acidity
+    argument agreeing (the origin is debated). Cope elimination "tends to give" the less
+    substituted alkene, with no ratio. Exhaustive methylation of piperidine is given as ending in
+    penta-1,4-diene; the historical product is often given as penta-1,3-diene, by isomerization.
+    The names sec-butyl and 1-phenylprop-1-ene are kept (older forms).
+  - The pages use "N-nitrosamine"; the diazonium figure was changed to match.
