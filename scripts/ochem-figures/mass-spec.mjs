@@ -311,7 +311,7 @@ FIGURES.push({
     s += tag(596, 342, 'propene: 42, neutral, not detected', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'Six fishhooks, each moving one electron. Three bonds break (highlighted: the γ C&ndash;H and the α&ndash;β C&ndash;C; plus the C=O π bond), and each sends one electron into two of the three new bonds: the dashed O&ndash;H, the β=γ C=C of propene and the C=Cα of the enol. Oxygen&rsquo;s lone pair and unpaired electron stay put.',
+  caption: 'Six fishhooks, one electron each. Three bonds break: the highlighted γ C&ndash;H and α&ndash;β C&ndash;C, and the C=O π bond. Each new bond receives two arrows: the dashed O&ndash;H, the β=γ C=C of propene and the C=Cα of the enol. Oxygen&rsquo;s lone pair and unpaired electron do not move.',
 });
 
 /* ------------------------------------------------ m/z 91 ---

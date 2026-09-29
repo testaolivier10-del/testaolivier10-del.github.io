@@ -83,7 +83,8 @@ const RANGES = [
   ['aldehyde C–H', 9, 10, 1],
   ['aromatic C–H', 6.5, 8.5, 1],
   ['vinyl C–H', 4.5, 6.5, 1],
-  ['C–H next to a halogen or O', 2.2, 4.5, 0],
+  ['C–H next to O', 3.3, 4.5, 0],
+  ['C–H next to a halogen', 2.2, 4.5, 0],
   ['C–H next to N', 2.3, 3.0, 0],
   ['C–H alpha to a carbonyl', 2.0, 2.5, 0],
   ['≡C–H (terminal alkyne)', 1.8, 3.0, 1],
@@ -93,7 +94,7 @@ const RANGES = [
 FIGURES.push({
   id: 'h-nmr-shift-scale',
   section: 'h-nmr',
-  viewBox: '0 0 760 330',
+  viewBox: '0 0 760 352',
   alt: 'The proton chemical shift axis, printed with 13 ppm on the left and 0 on the right. Horizontal bars mark the table\'s ranges, from carboxylic acid O–H at 10 to 13 at the top down to alkyl C–H at 0.9 to 1.5 at the bottom. The aldehyde, aromatic, vinyl and terminal alkyne bars are colored differently because a pi bond sets their shift. Under the axis, the left end is labeled downfield, deshielded and the right end upfield, shielded, with TMS at 0.',
   build() {
     const X = (d) => 700 - d * 48;
@@ -105,7 +106,7 @@ FIGURES.push({
       if (x1 > 330) s += text(x1 - 8, y + 11, lab, { cls: 'fg-tag', anchor: 'end' });
       else s += text(x2 + 8, y + 11, lab, { cls: 'fg-tag', anchor: 'start' });
     });
-    const base = 250;
+    const base = 272;
     s += rule(X(13.3), base, X(-0.3), base);
     for (let d = 0; d <= 13; d++) {
       s += rule(X(d), base, X(d), base + 6);
@@ -248,7 +249,7 @@ FIGURES.push({
     s += `<line class="fg-dash" x1="516" y1="30" x2="516" y2="350"></line>`;
     return s;
   },
-  caption: 'Gray loops: the induced field. Dashed ellipses: the circulating π electrons. The coral hydrogens sit where the loops point up; the teal alkyne hydrogen sits where they point down.',
+  caption: 'Gray loops: the induced field. Dashed ellipses: the circulating π electrons. The coral hydrogens sit where the loops point up; the teal alkyne hydrogen sits where they point down. In the alkene, each H disc stands for two hydrogens, one in front of the page and one behind.',
 });
 
 /* The lesson copy: benzene alone, 340 wide. */
