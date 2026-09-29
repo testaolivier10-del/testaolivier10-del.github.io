@@ -865,3 +865,57 @@ confirm it.
   - Epoxides keep the usual heading "base-catalyzed" although the nucleophile is used up
     ("base-promoted"). Acid opening between a primary and a secondary carbon is taught as a weak
     preference where mixtures can form.
+
+## Aromatic Chemistry (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### aromatic-conventions: explanations and values the pages grade by
+- **Status:** pending review.
+- **Where:** `aromaticity`, `eas`, `directing-effects`, plus `ochem/mechanisms/eas.html`.
+- **Positions taken:**
+  - Aromaticity: benzene's extra stability is taught as 36 kcal/mol (the heats-of-hydrogenation
+    value; other estimates exist). Cyclobutadiene is "first observed trapped in frozen argon a
+    few degrees above absolute zero" (usually cited at about 8 K) and is drawn with the simple
+    square-diradical model, not the rectangular singlet. The COT tub figure uses an idealized
+    geometry. Chlorophyll is called a porphyrin; strictly it is a chlorin.
+  - EAS: sulfonation is taught with SO₃ as the electrophile, with HSO₃⁺ named as the convention
+    some books use. Friedel–Crafts alkylation with a primary halide is drawn as the usual primary
+    cation and hydride shift, with the stricter AlCl₃-complex account beside it (propylbenzene as
+    the minor product from direct attack). The first step is rate-determining in "nearly every"
+    EAS reaction; the isotope-effect exceptions are not named.
+  - Directing effects: the m-xylene nitration split (about 86:14 for C4:C2 from memory) is given
+    without a number; the toluene (25×) and chlorobenzene (30×) relative nitration rates are the
+    classic values but were not checked against a source; no rate factor is given for phenol or
+    aniline bromination. Much of the para product in aniline nitration is put down to free
+    aniline, with the anilinium ion giving mostly meta and some para (Ridd's work). The strength
+    ranking of –OR, –CN and –SO₃H in the table is a course convention. Cl₂/FeCl₃ on
+    acetophenone is taught as ring chlorination (in practice α-chlorination competes). Some
+    compounds use common rather than preferred IUPAC names (3-chloroacetophenone,
+    4-methylanisole, m-bromonitrobenzene).
+
+## Oxidation & Reduction (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### redox-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `oxidation-states`, `alcohol-oxidation`, `carbonyl-reduction`, plus wording on
+  `aldehyde-oxidation`, `cross-coupling` and `nucleophilic-addition`.
+- **Positions taken:**
+  - Oxidation levels: "rung" is used for the count of bonds to O, N or halogen and is tied to the
+    "oxidation level" named in Functional group priority; "oxidation state" is the signed number.
+    C–I is scored +1 by convention, though iodine is only slightly more electronegative than
+    carbon. PCC is given as Cr(VI) → Cr(III). Cross-coupling now calls its metal count the same
+    bookkeeping as the carbon count.
+  - Oxidizing alcohols: in the chromate-ester step, water is drawn removing the hydrogen (to match
+    Oxidizing an aldehyde); some sources show an oxygen on chromium doing it. DMP is called
+    "nearly neutral", though it releases acetic acid and is often buffered. Distilling the
+    aldehyde out of a Jones oxidation is not mentioned as a way to stop early. Tertiary alcohols
+    are taught as "not oxidized"; in strong acid they may dehydrate instead.
+  - Reducing carbonyls: DIBAL-H is explained by the Al-bound tetrahedral intermediate holding
+    together at −78 °C (some texts say only "bulky, less reactive"). NaBH₄ with a carboxylic acid
+    is simplified to "not reduced" (it gives H₂ and acyloxyborohydrides). The Clemmensen
+    mechanism is described as not well understood and is not drawn with arrows.

@@ -160,7 +160,7 @@
     {
       "type": "draw",
       "eyebrow": "Step 1 · Attack",
-      "title": "A strong electrophile (say Br⁺ from Br₂/FeBr₃) is nearby. Push one of the ring's pi bonds at it.",
+      "title": "A strong electrophile (say Br₂ activated by FeBr₃) is nearby. Push one of the ring's pi bonds at it.",
       "bodyHtml": "<p class=\"step-body\">One arrow, from a pi bond of the ring out to the electrophile. Use the C1–C2 bond as the one that attacks, and remember where an electron arrow has to end — on the atom that accepts the pair.</p>",
       "molecule": "benzene-electrophile",
       "concepts": [
@@ -256,20 +256,20 @@
       "type": "final",
       "eyebrow": "Challenge",
       "title": "You want a straight propyl group on benzene. Friedel-Crafts with 1-chloropropane gives mostly the branched isopropyl product. Why, and what should you do instead?",
-      "bodyHtml": "<p class=\"step-body\">The electrophile in a Friedel-Crafts alkylation is a carbocation.</p>",
+      "bodyHtml": "<p class=\"step-body\">The electrophile in a Friedel-Crafts alkylation is a carbocation, or, for a primary halide, the halide's AlCl₃ complex.</p>",
       "options": [
         "The ring attacks the wrong end of the chloropropane — use a bromide instead",
         "Nothing is wrong; branched is the expected product of any Friedel-Crafts",
-        "The primary cation rearranges to the more stable secondary one before the ring attacks — so acylate instead, then reduce the ketone"
+        "A hydride shifts as the AlCl₃ complex ionizes, giving the more stable secondary cation, which the ring attacks — so acylate instead, then reduce the ketone"
       ],
       "correctIndex": 2,
       "concepts": [
         "eas-mechanism",
         "carbocation-rearrangement"
       ],
-      "why": "Friedel-Crafts alkylation makes a free carbocation, and free carbocations rearrange to whatever is more stable. Acylation avoids it entirely: the acylium ion is resonance-stabilized by the adjacent oxygen, so it has no reason to rearrange. Acylate, then reduce the ketone to the CH₂ you wanted. It also sidesteps polyalkylation, since the ketone deactivates the ring.",
+      "why": "With 1-chloropropane, the AlCl₃ complex ionizes with a 1,2-hydride shift from C2 to C1, so the ring meets the more stable secondary cation. (No free primary cation forms; most courses draw one and then shift the hydride, and the product is the same.) Acylation avoids it entirely: the acylium ion is resonance-stabilized by the adjacent oxygen, so it has no reason to rearrange. Acylate, then reduce the ketone to the CH₂ you wanted. It also sidesteps polyalkylation, since the ketone deactivates the ring.",
       "wrong": {
-        "0": "Changing the halide does not help — the rearrangement happens after ionization, in the cation, and is independent of which halide left.",
+        "0": "Changing the halide does not help — the hydride shift comes from the carbon chain, not the halogen, so 1-bromopropane rearranges the same way.",
         "1": "It is a genuine limitation of the method, and the reason acylation-then-reduction is the standard workaround."
       }
     }
