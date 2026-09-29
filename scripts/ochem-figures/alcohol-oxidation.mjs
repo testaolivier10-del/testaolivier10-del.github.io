@@ -1,231 +1,396 @@
 /* Figures for the alcohol-oxidation notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Every figure is drawn as "cells", the pattern aldehyde-oxidation uses: one
+   structure or one mechanism step inside a box at an offset. The notes page
+   lays the cells out two or three across; the lesson copy (id prefix l-)
+   stacks the same cells at 340 wide, so notes and lesson show the same
+   drawing. Text inside a cell is fg-lbl or fg-tag only. */
+import { atom, bond, arrow, curve, lonePair, text, tag, panel, P } from '../lib/ochem-figure.mjs';
+import { sk, ringDouble, polyPts } from '../lib/ochem-skeletal.mjs';
+import { armEnd } from '../lib/ochem-helpers.mjs';
 
 const FIGURES = [];
 
-/* ------------------------------------------------------------------ C2 ---
-   The section's central claim is that one variable - water - decides between
-   an aldehyde and a carboxylic acid, and the reason is a structure that never
-   appears in the product. Prose has to describe the hydrate; drawing it makes
-   "it is an alcohol again" something the reader can check rather than accept. */
+/* ------------------------------------------------------------ helpers --- */
+
+const CW = 244;
+function cell(ox, oy, w, h, title, foot, draw, opts = {}) {
+  const dx = ox + (w - (opts.cw || CW)) / 2;
+  const Q = (x, y) => P(dx + x, oy + y);
+  let s = panel(ox, oy, w, h, opts.kind ? { kind: opts.kind } : {});
+  s += tag(ox + w / 2, oy + 22, title);
+  if (foot) s += text(ox + w / 2, oy + h - 14, foot, { cls: opts.footCls || 'fg-tag-good', size: 11 });
+  s += draw(Q);
+  return s;
+}
+
+/* cells: [title, foot, draw, footCls?] */
+function gridFigure(cells, cols, w, h, gapX = 16, gapY = 16, x0 = 8, y0 = 8, kinds = [], cw = CW) {
+  let s = '';
+  cells.forEach(([title, foot, draw, footCls], i) => {
+    const col = i % cols, row = Math.floor(i / cols);
+    s += cell(x0 + col * (w + gapX), y0 + row * (h + gapY), w, h, title, foot, draw, { kind: kinds[i] || null, cw, footCls });
+  });
+  return s;
+}
+const stackH = (n, h, gap = 14) => 8 + n * h + (n - 1) * gap + 8;
+
+const T = (Q, x, y, s, o = {}) => { const p = Q(x, y); return text(p.x, p.y, s, { cls: 'fg-lbl', size: 13, ...o }); };
+const Tg = (Q, x, y, s, o = {}) => T(Q, x, y, s, { cls: 'fg-tag', size: 11, ...o });
+
+const A = (p, l, o = {}) => atom(p.x, p.y, l, o);
+const rOf = (l) => (l.length >= 5 ? 23 : l.length >= 3 ? 19 : l.length === 2 ? 16 : 14);
+const B = (a, b, la, lb, o = {}) => bond(a, b, { rFrom: la ? rOf(la) : 0, rTo: lb ? rOf(lb) : 0, ...o });
+
+/* A labelled carbon with groups at screen angles (counterclockwise from
+   east). A group with no label is a bare skeletal vertex. The carbon is drawn
+   last so bonds stop at its edge. */
+function centre(c, groups, ckind = 'warn') {
+  let s = '';
+  const ends = {};
+  for (const g of groups) {
+    const e = armEnd(c, g.deg, g.len || 48);
+    s += bond(c, e, { rFrom: 16, rTo: g.l ? rOf(g.l) : 0, order: g.order || 1, cls: g.cls });
+    if (g.l) s += A(e, g.l, { r: rOf(g.l), kind: g.kind });
+    ends[g.key || g.l || `v${g.deg}`] = e;
+  }
+  s += A(c, 'C', { kind: ckind });
+  return { s, ends };
+}
+
+/* Chromic acid, H2CrO4, centred on cr: two Cr=O and two Cr-OH. */
+function chromicAcid(cr) {
+  const oUp = armEnd(cr, 90, 44), oDn = armEnd(cr, 270, 44);
+  const oh1 = armEnd(cr, 30, 46), oh2 = armEnd(cr, 330, 46);
+  let s = bond(cr, oUp, { rFrom: 16, rTo: 14, order: 2 }) + bond(cr, oDn, { rFrom: 16, rTo: 14, order: 2 });
+  s += bond(cr, oh1, { rFrom: 16, rTo: 16 }) + bond(cr, oh2, { rFrom: 16, rTo: 16 });
+  s += A(oUp, 'O', { r: 14 }) + A(oDn, 'O', { r: 14 }) + A(oh1, 'OH', { r: 16 }) + A(oh2, 'OH', { r: 16 });
+  s += A(cr, 'Cr', { kind: 'warn' });
+  return { s, oUp };
+}
+
+/* ======================================================================
+   1. The three classes: how many H the carbinol carbon holds.
+   ====================================================================== */
+const classCells = [
+  ['BUTAN-1-OL: PRIMARY', 'two H: aldehyde, then acid', (Q) => {
+    const c = Q(150, 106);
+    const m = centre(c, [
+      { deg: 0, len: 50, l: 'OH' },
+      { deg: 90, len: 44, l: 'H', kind: 'hi', key: 'H1' },
+      { deg: 270, len: 44, l: 'H', kind: 'hi', key: 'H2' },
+      { deg: 180, len: 46 },
+    ]);
+    const v1 = m.ends.v180, v2 = armEnd(v1, 150, 38), v3 = armEnd(v2, 210, 38);
+    return sk(v1, v2) + sk(v2, v3) + m.s;
+  }],
+  ['BUTAN-2-OL: SECONDARY', 'one H: ketone, and it stops', (Q) => {
+    const c = Q(136, 110);
+    const m = centre(c, [
+      { deg: 90, len: 46, l: 'OH' },
+      { deg: 270, len: 44, l: 'H', kind: 'hi' },
+      { deg: 330, len: 44 },
+      { deg: 210, len: 44 },
+    ]);
+    const v1 = m.ends.v210, v2 = armEnd(v1, 150, 38);
+    return sk(v1, v2) + m.s;
+  }],
+  ['2-METHYLPROPAN-2-OL: TERTIARY', 'no H: no reaction', (Q) => {
+    const c = Q(122, 110);
+    const m = centre(c, [
+      { deg: 90, len: 46, l: 'OH' },
+      { deg: 210, len: 44 },
+      { deg: 330, len: 44 },
+      { deg: 270, len: 42 },
+    ]);
+    return m.s;
+  }, 'fg-tag-warn'],
+];
+
 FIGURES.push({
-  id: 'chromium-water',
+  id: 'alcohol-classes',
   section: 'alcohol-oxidation',
-  anchor: '<h3>The reagents worth knowing</h3>',
-  alt: 'Anhydrous oxidation of a primary alcohol stopping at the aldehyde, against aqueous oxidation running through the hydrate on to the carboxylic acid',
-  viewBox: '0 0 760 362',
-  build() {
-    let s = '';
-    // ---- Anhydrous ----
-    s += tag(118, 50, 'ANHYDROUS \u2014 PCC, Swern, DMP');
-    s += panel(30, 62, 670, 96);
-    s += label(76, 116, 'R\u2013CH\u2082OH', { size: 13 });
-    s += arrow(P(126, 112), P(200, 112));
-    s += text(163, 98, '[O]', { cls: 'fg-sm', size: 10 });
-    s += text(163, 132, 'no water', { cls: 'fg-sm', size: 9.5 });
-    s += label(238, 116, 'R\u2013CHO', { size: 13 });
-    s += arrow(P(280, 112), P(324, 112), { muted: true });
-    s += text(340, 116, 'no water, so no hydrate \u2014 nothing left to grip', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(596, 140, 'stops at the aldehyde', { cls: 'fg-tag-good', size: 11 });
-
-    // ---- Aqueous ----
-    s += tag(122, 176, 'AQUEOUS \u2014 Jones, CrO\u2083/H\u2082SO\u2084');
-    s += panel(30, 188, 670, 118);
-    s += label(76, 240, 'R\u2013CH\u2082OH', { size: 13 });
-    s += arrow(P(126, 236), P(192, 236));
-    s += text(159, 222, '[O]', { cls: 'fg-sm', size: 10 });
-    s += label(226, 240, 'R\u2013CHO', { size: 13 });
-    s += arrow(P(264, 236), P(320, 236));
-    s += text(292, 222, '+ H\u2082O', { cls: 'fg-sm', size: 9.5 });
-
-    /* The hydrate, drawn out. The point of drawing it rather than naming it
-       is that this carbon has an OH and an H on it, which is the definition
-       of something a Cr(VI) reagent oxidizes - so the second oxidation needs
-       no new explanation at all. */
-    const c = P(400, 236);
-    const oh1 = P(400, 198), oh2 = P(400, 274), r = P(352, 236), h = P(448, 236);
-    s += bond(c, oh1, { rTo: 16 });
-    s += bond(c, oh2, { rTo: 16 });
-    s += bond(c, r, { rTo: 14 });
-    s += bond(c, h, { rTo: 13, cls: 'fg-bond-hi' });
-    s += atom(oh1.x, oh1.y, 'OH', { r: 16, size: 10.5 });
-    s += atom(oh2.x, oh2.y, 'OH', { r: 16, size: 10.5 });
-    s += atom(r.x, r.y, 'R', { r: 14 });
-    s += atom(h.x, h.y, 'H', { kind: 'warn', r: 13, size: 11 });
-    s += atom(c.x, c.y, 'C', { kind: 'hi' });
-    s += text(400, 300, 'the hydrate: an OH and an H on one carbon \u2014 an alcohol again', { cls: 'fg-tag-good', size: 10.5 });
-
-    s += arrow(P(474, 236), P(534, 236));
-    s += text(504, 222, '[O] again', { cls: 'fg-sm', size: 9.5 });
-    s += label(578, 240, 'R\u2013CO\u2082H', { size: 13 });
-    // Under the product rather than beside it: beside it, the name of the
-    // thing this whole panel is about sat past the right-hand edge.
-    s += text(578, 264, 'carboxylic acid', { cls: 'fg-tag-good', size: 11 });
-
-    s += text(356, 330, 'Same oxidant, same substrate, same carbinol C\u2013H.', { cls: 'fg-lbl', size: 12 });
-    s += text(356, 352, 'The water is the entire difference.', { cls: 'fg-lbl', size: 12 });
-    return s;
-  },
-  caption: 'Why a chromium oxidation stops in one flask and not in the other. Both runs make the aldehyde first; only in water does that aldehyde turn back into something carrying an OH and a hydrogen on the same carbon &mdash; which is exactly what the oxidant attacked the first time.',
-  note: 'The hydrate is never isolated and never appears in the answer, which is why this step is so easy to miss, and it is the reason the rule is about water rather than about strength. Using less Jones reagent or a shorter reaction time does not reliably stop the oxidation at the aldehyde, because the hydrate forms as fast as the aldehyde does. The Swern and DMP reach the same aldehyde by a route with no water anywhere in it.',
+  anchor: '<h3>What each class of alcohol can become</h3>',
+  alt: 'Three alcohols with the carbinol carbon drawn as a labelled C. Butan-1-ol, a primary alcohol: the carbinol carbon holds an OH, two highlighted hydrogens and a propyl chain. Butan-2-ol, a secondary alcohol: the carbinol carbon holds an OH, one highlighted hydrogen, a methyl and an ethyl. 2-Methylpropan-2-ol, a tertiary alcohol: the carbinol carbon holds an OH and three methyl groups, and no hydrogen.',
+  viewBox: '0 0 760 220',
+  build() { return gridFigure(classCells, 3, 240, 204, 12, 16, 8, 8, [0, 0, 'warn']); },
+  caption: 'Count the highlighted hydrogens on each carbinol carbon.',
+});
+FIGURES.push({
+  id: 'l-alcohol-classes',
+  lessons: ['alcohol-oxidation'],
+  alt: 'Three stacked panels: butan-1-ol, whose carbinol carbon holds two hydrogens; butan-2-ol, whose carbinol carbon holds one; and 2-methylpropan-2-ol, whose carbinol carbon holds none.',
+  viewBox: `0 0 340 ${stackH(3, 204)}`,
+  build() { return gridFigure(classCells, 1, 324, 204, 0, 14, 8, 8, [0, 0, 'warn']); },
+  caption: 'Count the highlighted hydrogens on each carbinol carbon.',
 });
 
-/* ------------------------------------------------------------------ R2 ---
-   Where "the carbinol C-H" goes. The section names the chromate ester and
-   never draws it, so the 1/2/3 alcohol rule reads as a rule rather than as
-   the consequence of an elimination that needs a hydrogen to take. */
+/* ======================================================================
+   2. The chromate ester mechanism, on a primary alcohol, and where a
+      tertiary alcohol gets stuck.
+   ====================================================================== */
+const esterCells = [
+  ['THE ALCOHOL O ATTACKS Cr', 'then H⁺ moves and H₂O leaves Cr', (Q) => {
+    const c = Q(62, 116);
+    const m = centre(c, [
+      { deg: 180, len: 42, l: 'R' },
+      { deg: 90, len: 42, l: 'H' },
+      { deg: 250, len: 42, l: 'H' },
+    ]);
+    let s = m.s;
+    const o = Q(112, 116), h = Q(112, 158);
+    s += bond(c, o, { rFrom: 16, rTo: 16 }) + B(o, h, 'O', 'H');
+    s += A(o, 'O', { kind: 'hi' }) + A(h, 'H', { r: 14 });
+    s += lonePair(o.x, o.y, 300, { dist: 21 }) + lonePair(o.x, o.y, 225, { dist: 21 });
+    const ca = chromicAcid(Q(182, 116));
+    s += ca.s;
+    const cr = Q(182, 116), oUp = ca.oUp;
+    // the O lone pair attacks Cr; a Cr=O pi bond moves onto its O
+    s += curve(P(o.x + 14, o.y - 18), P(cr.x - 17, cr.y - 5), { bow: -14, size: 7 });
+    s += curve(P(cr.x - 6, cr.y - 24), P(oUp.x - 15, oUp.y + 6), { bow: -10, size: 7 });
+    return s;
+  }],
+  ['WATER TAKES THE H AS Cr LEAVES', 'Cr gains two electrons: Cr(VI) → Cr(IV)', (Q) => {
+    const c = Q(84, 124);
+    const m = centre(c, [
+      { deg: 90, len: 50, l: 'H', kind: 'hi', key: 'Hhi' },
+      { deg: 150, len: 44, l: 'R' },
+      { deg: 235, len: 44, l: 'H' },
+    ]);
+    let s = m.s;
+    const o = Q(130, 124), cr = Q(194, 124);
+    s += bond(c, o, { rFrom: 16, rTo: 14 }) + bond(o, cr, { rFrom: 14, rTo: 28 });
+    s += A(o, 'O', { r: 14 }) + A(cr, 'CrO₂OH', { r: 28, kind: 'warn' });
+    const w = Q(164, 58);
+    s += A(w, 'H₂O', { r: 19 });
+    s += lonePair(w.x, w.y, 180, { dist: 24 });
+    const h = m.ends.Hhi;
+    // water's lone pair takes the H; the C-H pair becomes the new C=O pi
+    // bond; the O-Cr pair leaves with chromium
+    s += curve(P(w.x - 28, w.y + 4), P(h.x + 15, h.y - 2), { bow: 10, size: 7 });
+    s += curve(P(c.x + 5, c.y - 30), P(c.x + 30, c.y - 6), { bow: -10, size: 7 });
+    s += curve(P(o.x + 22, o.y + 4), P(cr.x - 12, cr.y + 22), { bow: 12, size: 7 });
+    return s;
+  }],
+  ['THE ALDEHYDE', '+ H₃O⁺ + a Cr(IV) species', (Q) => {
+    const c = Q(110, 112);
+    const m = centre(c, [
+      { deg: 180, len: 46, l: 'R' },
+      { deg: 90, len: 50, l: 'O', order: 2 },
+      { deg: 0, len: 46, l: 'H' },
+    ]);
+    const o = m.ends.O;
+    return m.s + lonePair(o.x, o.y, 225, { dist: 21 }) + lonePair(o.x, o.y, 315, { dist: 21 });
+  }],
+  ['A TERTIARY ESTER STOPS HERE', 'no H on C: water has nothing to take', (Q) => {
+    const c = Q(84, 118);
+    const m = centre(c, [
+      { deg: 90, len: 50, l: 'CH₃' },
+      { deg: 170, len: 50, l: 'CH₃' },
+      { deg: 250, len: 48, l: 'CH₃' },
+    ]);
+    let s = m.s;
+    const o = Q(130, 118), cr = Q(194, 118);
+    s += bond(c, o, { rFrom: 16, rTo: 14 }) + bond(o, cr, { rFrom: 14, rTo: 28 });
+    s += A(o, 'O', { r: 14 }) + A(cr, 'CrO₂OH', { r: 28, kind: 'warn' });
+    s += Tg(Q, 190, 70, 'no C–H to break', { cls: 'fg-tag-warn' });
+    return s;
+  }, 'fg-tag-warn'],
+];
+
 FIGURES.push({
   id: 'chromate-ester',
   section: 'alcohol-oxidation',
-  anchor: 'the gem-diol formed by water adding across the C=O.</p>',
-  alt: 'A chromium oxidation in three panels: the alcohol oxygen attacking chromic acid to form a chromate ester, an E2-like collapse in which a base removes the carbinol hydrogen while chromium leaves, and the aldehyde product with chromium reduced from six to three',
-  viewBox: '0 0 760 330',
-  build() {
-    let s = '';
-    // ---- Panel 1: the chromate ester forms ----
-    s += tag(132, 34, 'STEP 1 — the chromate ester forms');
-    s += panel(14, 44, 236, 226);
-    {
-      const C = P(96, 158), O = P(152, 158), H = P(196, 186), Cr = P(190, 96);
-      s += bond(C, O, { rFrom: 22, rTo: 15 });
-      s += bond(O, H, { rFrom: 15, rTo: 12 });
-      s += atom(C.x, C.y, 'RCH₂', { r: 22, size: 9.5 });
-      s += atom(O.x, O.y, 'O', { kind: 'hi' });
-      s += atom(H.x, H.y, 'H', { r: 12 });
-      s += lonePair(O.x, O.y, 200);
-      s += lonePair(O.x, O.y, 285);
-      s += atom(Cr.x, Cr.y, 'H₂CrO₄', { kind: 'warn', r: 22, size: 9 });
-      s += text(132, 66, 'chromic acid — CrO₃ in water', { cls: 'fg-sm' });
-      s += curve(P(160, 138), P(180, 118), { bow: 10 });
-      s += text(132, 216, 'the alcohol oxygen attacks chromium', { cls: 'fg-sm', size: 10 });
-      s += text(132, 232, 'and water leaves from the metal', { cls: 'fg-sm', size: 10 });
-      s += text(132, 254, 'gives R–CH₂–O–CrO₂–OH', { cls: 'fg-tag', size: 10.5 });
-    }
-    // ---- Panel 2: the E2-like collapse ----
-    s += tag(380, 34, 'STEP 2 — an E2-like collapse');
-    s += panel(258, 44, 244, 226);
-    {
-      const C = P(348, 152), H = P(348, 104), O = P(404, 152), Cr = P(452, 116), R = P(304, 192);
-      s += bond(C, H, { rFrom: 15, rTo: 13, cls: 'fg-bond-hi' });
-      s += bond(C, O, { rFrom: 15, rTo: 14 });
-      s += bond(O, Cr, { rFrom: 14, rTo: 22 });
-      s += bond(C, R, { rFrom: 15, rTo: 13 });
-      s += atom(C.x, C.y, 'C', { kind: 'hi' });
-      s += atom(H.x, H.y, 'H', { kind: 'warn', r: 13 });
-      s += atom(O.x, O.y, 'O', { r: 14 });
-      s += atom(Cr.x, Cr.y, 'CrO₂OH', { kind: 'warn', r: 22, size: 9 });
-      s += atom(R.x, R.y, 'R', { r: 13 });
-      s += atom(292, 104, 'B:', { r: 14, size: 10.5 });
-      s += curve(P(306, 100), P(332, 100), { bow: -10 });
-      s += curve(P(348, 128), P(376, 148), { bow: 12 });
-      s += curve(P(428, 134), P(452, 94), { bow: 16 });
-      s += text(380, 222, 'the base takes the hydrogen on the C', { cls: 'fg-sm', size: 10 });
-      s += text(380, 238, 'while chromium leaves from the O —', { cls: 'fg-sm', size: 10 });
-      s += text(380, 254, 'two bonds break at once, as in an E2', { cls: 'fg-sm', size: 10 });
-    }
-    // ---- Panel 3: the product ----
-    s += tag(624, 34, 'THE PRODUCT');
-    s += panel(510, 44, 236, 226);
-    {
-      const C = P(600, 152), O = P(600, 104), H = P(560, 190), R = P(644, 190);
-      s += bond(C, O, { order: 2, gap: 5, rFrom: 15, rTo: 14 });
-      s += bond(C, H, { rFrom: 15, rTo: 12 });
-      s += bond(C, R, { rFrom: 15, rTo: 13 });
-      s += atom(C.x, C.y, 'C', { kind: 'hi' });
-      s += atom(O.x, O.y, 'O', { r: 14 });
-      s += atom(H.x, H.y, 'H', { r: 12 });
-      s += atom(R.x, R.y, 'R', { r: 13 });
-      s += text(624, 224, 'an aldehyde — R–CHO', { cls: 'fg-tag-good', size: 11 });
-      s += text(624, 244, 'Cr(VI) → Cr(III)', { cls: 'fg-lbl', size: 12 });
-      s += text(624, 260, 'orange → green', { cls: 'fg-sm', size: 10 });
-    }
-    s += rule(30, 286, 730, 286);
-    s += text(380, 304, 'The reaction needs a hydrogen ON the carbinol carbon, because step 2 takes it.', { cls: 'fg-lbl', size: 12 });
-    s += text(380, 322, 'That is the whole 1°/2°/3° rule.', { cls: 'fg-lbl', size: 12 });
-    return s;
-  },
-  caption: 'Where &ldquo;the carbinol C&ndash;H&rdquo; actually goes. The alcohol first hangs itself on chromium, and then the collapse is an elimination: a base removes the hydrogen on the carbon while chromium leaves from the oxygen, and the electrons between them become the second C&ndash;O bond.',
-  note: 'The chromium electrophile is drawn as H₂CrO₄ because that is what CrO₃ becomes the moment it meets the aqueous acid of a Jones oxidation, and it is the OH on chromium that leaves as water when the ester forms; CrO₃ itself has no OH to lose. PCC and PDC reach the same chromate ester in dry solvent by a different first step, and everything after that is identical. Reading step 2 as an E2 explains two things at once. A tertiary alcohol forms the chromate ester perfectly well — it just has no hydrogen for the base to take, so the ester sits there and nothing happens; the reaction fails at the <i>second</i> step, not the first. (E2-<i>like</i> is the claim: a C–H and a C–O break in the same step. Unlike a real E2 there is no anti-periplanar requirement to satisfy, so do not go looking for one.) And the chromium is reduced by two here, Cr(VI) to Cr(IV) and on to Cr(III) through further steps, which is the other half of the trade: the carbon went up two, so something had to come down.',
+  anchor: '<h3>How chromium(VI) removes the hydrogen</h3>',
+  alt: 'The chromium(VI) oxidation of a primary alcohol in four panels. First, a lone pair on the alcohol oxygen of R–CH2–OH attacks the chromium of chromic acid, H2CrO4, while a Cr=O pi bond moves onto its oxygen; a proton then moves and water leaves the chromium. Second, in the chromate ester R–CH2–O–CrO2OH, a water molecule takes one hydrogen from the carbon, the C–H electrons become the new C=O bond, and the O–Cr electrons leave with chromium. Third, the product is the aldehyde R–CHO, with H3O+ and a chromium(IV) species. Fourth, the chromate ester of a tertiary alcohol, (CH3)3C–O–CrO2OH, has no hydrogen on the carbon, so the second step cannot happen.',
+  viewBox: '0 0 760 440',
+  build() { return gridFigure(esterCells, 2, 364, 204, 16, 16, 8, 8, ['hi', 0, 'good', 'warn']); },
+  caption: 'Follow the highlighted hydrogen in the second panel. The fourth panel is a tertiary alcohol&rsquo;s ester, which has no such hydrogen.',
+});
+FIGURES.push({
+  id: 'l-chromate-ester',
+  lessons: ['alcohol-oxidation'],
+  alt: 'Four stacked panels: the alcohol oxygen attacks the chromium of H2CrO4; in the chromate ester, water takes the hydrogen on carbon as chromium leaves with the O–Cr electrons; the aldehyde results; a tertiary chromate ester has no hydrogen on carbon and stops.',
+  viewBox: `0 0 340 ${stackH(4, 204)}`,
+  build() { return gridFigure(esterCells, 1, 324, 204, 0, 14, 8, 8, ['hi', 0, 'good', 'warn']); },
+  caption: 'Water takes the highlighted hydrogen. A tertiary ester has none.',
 });
 
-/* ------------------------------------------------------------------ R3 ---
-   The section's whole content on one named molecule, drawn skeletally: one
-   substrate, two destinations, and the reagents sorted by which they reach. */
+/* ======================================================================
+   3. Water decides: no hydrate in a dry flask; a hydrate, and a second
+      oxidation, in water.
+   ====================================================================== */
+const waterCells = [
+  ['DRY SOLVENT: PCC', 'no water, no hydrate: it stops', (Q) => {
+    let s = Tg(Q, 120, 52, 'R–CH₂OH → R–CHO');
+    const c = Q(116, 120);
+    const m = centre(c, [
+      { deg: 180, len: 46, l: 'R' },
+      { deg: 90, len: 44, l: 'O', order: 2 },
+      { deg: 0, len: 46, l: 'H' },
+    ]);
+    return s + m.s;
+  }],
+  ['IN WATER: THE HYDRATE', 'an H and an OH on one carbon', (Q) => {
+    let s = Tg(Q, 120, 52, 'R–CHO + H₂O ⇌');
+    const c = Q(114, 122);
+    const m = centre(c, [
+      { deg: 180, len: 46, l: 'R' },
+      { deg: 90, len: 42, l: 'OH' },
+      { deg: 270, len: 42, l: 'H', kind: 'hi' },
+      { deg: 0, len: 50, l: 'OH', kind: 'hi' },
+    ]);
+    return s + m.s;
+  }],
+  ['OXIDIZED A SECOND TIME', 'the carboxylic acid', (Q) => {
+    let s = Tg(Q, 120, 52, 'the same two steps');
+    const c = Q(112, 120);
+    const m = centre(c, [
+      { deg: 180, len: 46, l: 'R' },
+      { deg: 90, len: 44, l: 'O', order: 2 },
+      { deg: 0, len: 48, l: 'OH', kind: 'hi' },
+    ]);
+    return s + m.s;
+  }],
+];
+
 FIGURES.push({
-  id: 'one-alcohol-two-destinations',
+  id: 'chromium-water',
   section: 'alcohol-oxidation',
-  anchor: 'it tells them apart by position (allylic/benzylic) rather than by class.</p>',
-  alt: 'Skeletal 2-methylbutan-1-ol with two arrows: anhydrous oxidants give 2-methylbutanal, aqueous oxidants give 2-methylbutanoic acid',
-  viewBox: '0 0 760 340',
-  build() {
-    let s = '';
-    /* The skeleton is the same four carbons three times, so it is drawn once
-       and shifted: only the group on C1 changes. */
-    const chain = (x, y, head) => {
-      let g = '';
-      const c1 = P(x + 36, y - 20), c2 = P(x + 72, y + 2), me = P(x + 72, y + 44),
-            c3 = P(x + 108, y - 20), c4 = P(x + 144, y + 2);
-      g += bond(c1, c2, { rFrom: 0, rTo: 0 });
-      if (head === 'OH') {
-        g += bond(c2, me, { rFrom: 0, rTo: 0 });
-        g += bond(c2, c3, { rFrom: 0, rTo: 0 });
-        g += bond(c3, c4, { rFrom: 0, rTo: 0 });
-      } else {
-        /* The drawn head carbon is C1 here, so the branch sits on the next
-           vertex and the chain is one vertex shorter: still five carbons. */
-        g += bond(c1, P(x + 36, y - 52), { rFrom: 0, rTo: 0 });
-        g += bond(c2, c3, { rFrom: 0, rTo: 0 });
-      }
-      if (head === 'OH') {
-        g += bond(P(x, y + 2), c1, { rFrom: 18, rTo: 0 });
-        g += atom(x, y + 2, 'HO', { r: 18, size: 10.5 });
-      } else if (head === 'CHO') {
-        g += bond(P(x, y + 2), c1, { rFrom: 14, rTo: 0 });
-        g += bond(P(x, y + 2), P(x - 4, y - 40), { order: 2, gap: 4, rFrom: 14, rTo: 14 });
-        g += atom(x, y + 2, 'C', { r: 14 });
-        g += atom(x - 4, y - 40, 'O', { r: 14 });
-        g += atom(x - 34, y + 24, 'H', { r: 12 });
-        g += bond(P(x, y + 2), P(x - 34, y + 24), { rFrom: 14, rTo: 12 });
-      } else {
-        g += bond(P(x, y + 2), c1, { rFrom: 14, rTo: 0 });
-        g += bond(P(x, y + 2), P(x - 4, y - 40), { order: 2, gap: 4, rFrom: 14, rTo: 14 });
-        g += atom(x, y + 2, 'C', { r: 14 });
-        g += atom(x - 4, y - 40, 'O', { r: 14 });
-        g += bond(P(x, y + 2), P(x - 40, y + 26), { rFrom: 14, rTo: 18 });
-        g += atom(x - 40, y + 26, 'OH', { r: 18, size: 10.5 });
-      }
-      return g;
-    };
+  anchor: '<h3>Why water decides where a chromium oxidation stops</h3>',
+  alt: 'Three panels. First, in a dry solvent with PCC, R–CH2OH gives the aldehyde R–CHO and stops. Second, in water, the aldehyde adds water to give its hydrate, a carbon holding R, a hydrogen and two OH groups, with one H and one OH highlighted. Third, the hydrate is oxidized by the same two steps to the carboxylic acid R–COOH.',
+  viewBox: '0 0 760 220',
+  build() { return gridFigure(waterCells, 3, 240, 204, 12, 16, 8, 8, [0, 'hi', 'good']); },
+  caption: 'The middle panel exists only when there is water in the flask.',
+});
+FIGURES.push({
+  id: 'l-chromium-water',
+  lessons: ['alcohol-oxidation'],
+  alt: 'Three stacked panels: with PCC in a dry solvent the aldehyde forms and stops; in water the aldehyde forms its hydrate, with an H and an OH on one carbon; the hydrate is oxidized again to the carboxylic acid.',
+  viewBox: `0 0 340 ${stackH(3, 204)}`,
+  build() { return gridFigure(waterCells, 1, 324, 204, 0, 14, 8, 8, [0, 'hi', 'good']); },
+  caption: 'The hydrate in the middle panel forms only in water.',
+});
 
-    s += tag(150, 40, 'START');
-    s += panel(14, 52, 244, 220);
-    s += chain(70, 150, 'OH');
-    s += text(136, 246, '2-methylbutan-1-ol', { cls: 'fg-lbl', size: 12 });
-
-    s += arrow(P(266, 130), P(400, 104));
-    s += text(336, 92, '[O], no water', { cls: 'fg-sm', size: 10 });
-    s += arrow(P(266, 196), P(400, 232));
-    s += text(336, 258, '[O], in water', { cls: 'fg-sm', size: 10 });
-
-    s += tag(590, 40, 'PCC, PDC, Swern or DMP');
-    s += panel(410, 52, 336, 96);
-    s += chain(482, 108, 'CHO');
-    s += text(676, 130, '2-methylbutanal', { cls: 'fg-tag-good', size: 11 });
-
-    s += tag(590, 176, 'Jones, CrO₃/H₂SO₄ or hot KMnO₄');
-    s += panel(410, 188, 336, 96);
-    s += chain(486, 244, 'CO2H');
-    s += text(676, 266, '2-methylbutanoic acid', { cls: 'fg-tag-good', size: 11 });
-
-    s += rule(30, 300, 730, 300);
-    s += text(380, 324, 'One substrate, two destinations. The reagent list only ever answers: does it stop at the first?', { cls: 'fg-lbl', size: 12 });
+/* ======================================================================
+   4. The worked example: four substrates, one reagent each.
+   ====================================================================== */
+const CW4 = 340;
+/* 2-methylbutan-1-ol, or its aldehyde or acid, with C1 at the left.
+   head: 'OH' | 'CHO' | 'COOH'. */
+function methylbutyl(Q, x, head) {
+  const c1 = Q(x + 30, 100), c2 = Q(x + 58, 118), me = Q(x + 58, 152), c3 = Q(x + 86, 100), c4 = Q(x + 114, 118);
+  let s = sk(c1, c2) + sk(c2, me) + sk(c2, c3) + sk(c3, c4);
+  if (head === 'OH') {
+    const oh = Q(x + 2, 118);
+    s += bond(c1, oh, { rFrom: 0, rTo: 16 }) + A(oh, 'OH', { r: 16 });
+  } else {
+    const o = Q(x + 30, 62);
+    s += bond(c1, o, { rFrom: 0, rTo: 14, order: 2 }) + A(o, 'O', { r: 14, kind: 'hi' });
+    const lab = head === 'CHO' ? 'H' : 'OH';
+    const e = Q(x + 2, 118);
+    s += bond(c1, e, { rFrom: 0, rTo: rOf(lab) }) + A(e, lab, { r: rOf(lab), kind: head === 'COOH' ? 'hi' : undefined });
+  }
+  return s;
+}
+function cyclohexyl(Q, cx, ketone) {
+  const c = Q(cx, 124);
+  const pts = polyPts(c.x, c.y, 6, 26, 90);
+  let s = pts.map((p, i) => sk(p, pts[(i + 1) % 6])).join('');
+  const top = pts[0];
+  const o = P(top.x, top.y - 38);
+  s += bond(top, o, { rFrom: 0, rTo: ketone ? 14 : 16, order: ketone ? 2 : 1 });
+  s += A(o, ketone ? 'O' : 'OH', { r: ketone ? 14 : 16, kind: ketone ? 'hi' : undefined });
+  return s;
+}
+const substrateCells = [
+  ['(a) 2-METHYLBUTAN-1-OL + PCC', '2-methylbutanal', (Q) =>
+    methylbutyl(Q, 0, 'OH') + arrow(Q(144, 112), Q(186, 112), { size: 7 }) + methylbutyl(Q, 200, 'CHO')],
+  ['(b) THE SAME ALCOHOL + CrO₃, H₂SO₄, H₂O', '2-methylbutanoic acid', (Q) =>
+    methylbutyl(Q, 0, 'OH') + arrow(Q(144, 112), Q(186, 112), { size: 7 }) + methylbutyl(Q, 200, 'COOH')],
+  ['(c) CYCLOHEXANOL + JONES', 'cyclohexanone', (Q) =>
+    cyclohexyl(Q, 90, false) + arrow(Q(146, 124), Q(196, 124), { size: 7 }) + cyclohexyl(Q, 252, true)],
+  ['(d) 2-METHYLBUTAN-2-OL + JONES, EXCESS', 'no reaction', (Q) => {
+    const c2 = Q(92, 118);
+    const c1 = armEnd(c2, 210, 32), me = armEnd(c2, 270, 32), c3 = armEnd(c2, 330, 32), c4 = armEnd(c3, 30, 32);
+    const oh = armEnd(c2, 90, 36);
+    let s = sk(c2, c1) + sk(c2, me) + sk(c2, c3) + sk(c3, c4);
+    s += bond(c2, oh, { rFrom: 0, rTo: 16 }) + A(oh, 'OH', { r: 16 });
+    s += arrow(Q(172, 112), Q(222, 112), { size: 7, muted: true });
+    s += Tg(Q, 272, 116, 'unchanged', { cls: 'fg-tag-warn' });
     return s;
-  },
-  caption: 'The section on one molecule. Every reagent in the list lands on one of these two products, and which one it lands on is decided by whether there is water in the flask &mdash; not by how strong it is.',
-  note: 'Draw the substrate once and ask the two questions in order. The carbinol carbon here carries two hydrogens, so two rungs are available: that sets the ceiling. Then read the reagent for water, which says whether the reaction climbs one rung or both. A secondary alcohol would put a single product in both boxes, and a tertiary one would put nothing in either.',
+  }, 'fg-tag-warn'],
+];
+
+FIGURES.push({
+  id: 'four-substrates',
+  section: 'alcohol-oxidation',
+  anchor: '<span class="k">Worked example — four substrates, one reagent each</span>',
+  alt: 'Four panels in skeletal form. (a) 2-Methylbutan-1-ol with PCC gives 2-methylbutanal, with the new C=O highlighted. (b) The same alcohol with CrO3, H2SO4 and water gives 2-methylbutanoic acid. (c) Cyclohexanol with Jones reagent gives cyclohexanone. (d) 2-Methylbutan-2-ol with excess Jones reagent is unchanged.',
+  viewBox: '0 0 760 440',
+  build() { return gridFigure(substrateCells, 2, 364, 204, 16, 16, 8, 8, [0, 0, 0, 'warn'], CW4); },
+  caption: 'Compare (a) with (b): same alcohol, and only the water differs.',
+});
+
+/* ======================================================================
+   5. When no reagent on the list is selective: a primary and a secondary
+      alcohol in one molecule.
+   ====================================================================== */
+const CW5 = 300;
+function diol(Q, oxidized) {
+  const cc = Q(160, 112);
+  const pts = polyPts(cc.x, cc.y, 6, 30, 0);   // vertex 0 at the right, 3 at the left
+  let s = pts.map((p, i) => sk(p, pts[(i + 1) % 6])).join('');
+  const right = pts[0], left = pts[3];
+  const cL = armEnd(left, 180, 42);           // the CH2OH (or CHO) carbon
+  s += bond(left, cL, { rFrom: 0, rTo: 16 });
+  if (!oxidized) {
+    // secondary carbinol carbon on the ring, drawn with its H
+    const oh = armEnd(right, 30, 42), h = armEnd(right, 330, 36);
+    s += bond(right, oh, { rFrom: 0, rTo: 16 }) + bond(right, h, { rFrom: 0, rTo: 14 });
+    s += A(oh, 'OH', { r: 16 }) + A(h, 'H', { r: 14, kind: 'hi' });
+    const m = centre(cL, [
+      { deg: 180, len: 44, l: 'OH' },
+      { deg: 90, len: 36, l: 'H', kind: 'hi' },
+      { deg: 270, len: 36, l: 'H', kind: 'hi' },
+    ]);
+    s += m.s;
+    s += Tg(Q, 56, 178, '1°: two H', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 222, 168, '2°: one H', { cls: 'fg-tag-warn' });
+  } else {
+    const o = armEnd(right, 0, 40);
+    s += bond(right, o, { rFrom: 0, rTo: 14, order: 2 }) + A(o, 'O', { r: 14, kind: 'hi' });
+    const m = centre(cL, [
+      { deg: 120, len: 42, l: 'O', order: 2, kind: 'hi' },
+      { deg: 240, len: 38, l: 'H' },
+    ]);
+    s += m.s;
+    s += Tg(Q, 60, 178, 'aldehyde', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 236, 160, 'ketone', { cls: 'fg-tag-warn' });
+  }
+  return s;
+}
+const diolCells = [
+  ['4-(HYDROXYMETHYL)CYCLOHEXAN-1-OL', 'a primary and a secondary alcohol', (Q) => diol(Q, false)],
+  ['AFTER PCC', 'both carbinol carbons oxidized', (Q) => diol(Q, true), 'fg-tag-warn'],
+];
+FIGURES.push({
+  id: 'diol-choice',
+  section: 'alcohol-oxidation',
+  anchor: '<span class="k">Worked example — when no reagent on the list is selective</span>',
+  alt: 'Two panels. First, 4-(hydroxymethyl)cyclohexan-1-ol: a cyclohexane ring with an OH and one highlighted hydrogen on the right-hand ring carbon, the secondary carbinol carbon, and a CH2OH group on the left-hand ring carbon, whose carbon holds two highlighted hydrogens, the primary carbinol carbon. Second, after PCC: the ring carbon is now a ketone C=O and the CH2OH has become an aldehyde, CHO.',
+  viewBox: '0 0 760 220',
+  build() { return gridFigure(diolCells, 2, 364, 204, 16, 16, 8, 8, [0, 'warn'], CW5); },
+  caption: 'Each carbinol carbon has at least one hydrogen, so PCC oxidizes both.',
+});
+FIGURES.push({
+  id: 'l-diol-choice',
+  lessons: ['alcohol-oxidation'],
+  alt: 'Two stacked panels: 4-(hydroxymethyl)cyclohexan-1-ol, with a primary carbinol carbon holding two hydrogens and a secondary one holding one; and the product of PCC, in which both have been oxidized, to an aldehyde and a ketone.',
+  viewBox: `0 0 340 ${stackH(2, 204)}`,
+  build() { return gridFigure(diolCells, 1, 324, 204, 0, 14, 8, 8, [0, 'warn'], CW5); },
+  caption: 'PCC oxidizes both carbinol carbons.',
 });
 
 export default FIGURES;

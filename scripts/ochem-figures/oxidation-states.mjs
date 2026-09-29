@@ -1,115 +1,396 @@
 /* Figures for the oxidation-states notes page (and its lesson). Built by
-   scripts/build-ochem-figures.mjs; see the header there. */
-import { atom, bond, wedge, hash, arrow, curve, lonePair, text, tag, label, rule, panel, bar, P } from '../lib/ochem-figure.mjs';
-import { zig, sk, ringDouble, polyPts, polyRing, locant, benzene } from '../lib/ochem-skeletal.mjs';
-import { center, armEnd, skDouble, plus, lobeE, frame, n2 } from '../lib/ochem-helpers.mjs';
+   scripts/build-ochem-figures.mjs; see the header there.
+
+   Most figures here are drawn as "cells", the pattern aldehyde-oxidation and
+   hydrates-cyanohydrins use: one structure drawn inside a box at an offset.
+   The notes page lays the cells out side by side; the lesson copy (id prefix
+   l-) stacks the same cells at 340 wide, so the notes and the lesson show the
+   same drawing. Text inside a cell is fg-lbl or fg-tag only, which is what a
+   lesson figure may use.
+
+   The carbon being counted is always drawn as a circled C with all four of
+   its bonds shown, because the whole method is a count of those four bonds.
+   Carbons that are not being counted are skeletal or written as CH3. */
+import { atom, bond, arrow, lonePair, text, tag, label, rule, panel, P } from '../lib/ochem-figure.mjs';
+import { sk } from '../lib/ochem-skeletal.mjs';
+import { armEnd } from '../lib/ochem-helpers.mjs';
 
 const FIGURES = [];
 
-/* ------------------------------------------------------------------ C1 ---
-   The ladder the section describes in a table of one-carbon compounds. The
-   table gives the rungs; what it cannot show is the width of a rung - that
-   five named families sit on the acid rung together, which is the whole
-   reason acyl substitution is not redox chemistry. The figure adds that
-   second axis. */
+/* ------------------------------------------------------------ helpers --- */
+
+/* A cell: a panel with a title tag at the top and a one-line result tag at
+   the bottom. `draw(Q)` receives a point maker already shifted to the cell's
+   corner, so every cell is written in its own 0..cw coordinates. */
+function cell(ox, oy, w, h, title, foot, draw, cw, footCls = 'fg-tag-good') {
+  const dx = ox + (w - cw) / 2;
+  const Q = (x, y) => P(dx + x, oy + y);
+  let s = panel(ox, oy, w, h);
+  s += tag(ox + w / 2, oy + 22, title);
+  if (foot) s += text(ox + w / 2, oy + h - 14, foot, { cls: footCls, size: 11 });
+  s += draw(Q);
+  return s;
+}
+function grid(cells, cols, w, h, cw, gapX = 12, gapY = 14, x0 = 8, y0 = 8) {
+  let s = '';
+  cells.forEach(([title, foot, draw, footCls], i) => {
+    const col = i % cols, row = Math.floor(i / cols);
+    s += cell(x0 + col * (w + gapX), y0 + row * (h + gapY), w, h, title, foot, draw, cw, footCls);
+  });
+  return s;
+}
+const stackH = (n, h, gap = 14) => 8 + n * h + (n - 1) * gap + 8;
+
+const T = (Q, x, y, s, o = {}) => { const p = Q(x, y); return text(p.x, p.y, s, { cls: 'fg-lbl', size: 13, ...o }); };
+const Tg = (Q, x, y, s, o = {}) => T(Q, x, y, s, { cls: 'fg-tag', size: 11, ...o });
+
+const rOf = (l) => (l.length >= 3 ? 19 : l.length === 2 ? 16 : 14);
+const A = (p, l, o = {}) => atom(p.x, p.y, l, { r: rOf(l), ...o });
+
+/* The counted carbon: a circled C with groups at screen angles (degrees,
+   counterclockwise from east). A group with no label is a skeletal bond to
+   an unlabelled carbon. The carbon is drawn last so bonds stop at its edge. */
+function centre(c, groups) {
+  let s = '';
+  const ends = {};
+  for (const g of groups) {
+    const e = armEnd(c, g.deg, g.len || 48);
+    s += bond(c, e, { rFrom: 16, rTo: g.l ? rOf(g.l) : 0, order: g.order || 1 });
+    if (g.l) s += A(e, g.l, g.kind ? { kind: g.kind } : {});
+    if (g.l === 'O') s += lonePair(e.x, e.y, g.lp1 ?? 225, { dist: 21 }) + lonePair(e.x, e.y, g.lp2 ?? 315, { dist: 21 });
+    ends[g.key || g.l || `v${g.deg}`] = e;
+  }
+  s += A(c, 'C', { kind: 'warn' });
+  return { s, ends };
+}
+/* A skeletal ethyl hanging off an end point: one more bond, bent. */
+const ethyl = (from, deg) => { const v = armEnd(from, deg, 40); return sk(from, v); };
+
+/* ======================================================================
+   1. The bond trade: propan-2-ol and propanone.
+   ====================================================================== */
+const tradeCells = [
+  ['PROPAN-2-OL', 'on that C: 1 bond to O, 1 bond to H', (Q) => {
+    const m = centre(Q(120, 104), [
+      { deg: 90, len: 46, l: 'OH' },
+      { deg: 270, len: 46, l: 'H', kind: 'hi' },
+      { deg: 180, len: 56, l: 'CH₃' },
+      { deg: 0, len: 56, l: 'CH₃' },
+    ]);
+    return m.s + Tg(Q, 172, 154, 'this H goes', { cls: 'fg-tag-good' });
+  }],
+  ['PROPANONE', 'on that C: 2 bonds to O, no H', (Q) => {
+    const m = centre(Q(120, 112), [
+      { deg: 90, len: 50, l: 'O', order: 2 },
+      { deg: 210, len: 54, l: 'CH₃' },
+      { deg: 330, len: 54, l: 'CH₃' },
+    ]);
+    return m.s + Tg(Q, 176, 90, 'second bond to O', { cls: 'fg-tag-good' });
+  }],
+];
+
+FIGURES.push({
+  id: 'bond-trade',
+  section: 'oxidation-states',
+  anchor: '',
+  alt: 'Propan-2-ol, whose middle carbon carries one OH, one H and two methyl groups, is oxidized to propanone, whose middle carbon carries a C=O and two methyl groups. The reverse arrow is a reduction.',
+  viewBox: '0 0 760 206',
+  build() {
+    let s = cell(8, 8, 290, 190, ...tradeCells[0].slice(0, 3), 240);
+    s += cell(462, 8, 290, 190, ...tradeCells[1].slice(0, 3), 240);
+    s += arrow(P(318, 96), P(442, 96));
+    s += arrow(P(442, 118), P(318, 118));
+    s += tag(380, 84, 'oxidation');
+    s += tag(380, 140, 'reduction');
+    return s;
+  },
+  caption: 'Follow the middle carbon. Oxidation takes away its C&ndash;H and gives it a second bond to oxygen; reduction runs the same change backward.',
+});
+FIGURES.push({
+  id: 'l-bond-trade',
+  lessons: ['oxidation-states'],
+  alt: 'Propan-2-ol above, propanone below. An arrow down is labelled oxidation and an arrow up is labelled reduction.',
+  viewBox: '0 0 340 468',
+  build() {
+    let s = cell(8, 8, 324, 190, ...tradeCells[0].slice(0, 3), 240);
+    s += cell(8, 270, 324, 190, ...tradeCells[1].slice(0, 3), 240);
+    s += arrow(P(152, 206), P(152, 262));
+    s += arrow(P(188, 262), P(188, 206));
+    s += tag(142, 238, 'oxidation', { anchor: 'end' });
+    s += tag(198, 238, 'reduction', { anchor: 'start' });
+    return s;
+  },
+  caption: 'Oxidation trades the middle carbon&rsquo;s C&ndash;H for a second bond to oxygen.',
+});
+
+/* ======================================================================
+   2. Three additions to propene, scored on the two alkene carbons.
+   ====================================================================== */
+/* The two former alkene carbons, each with all four bonds drawn. `n1` and
+   `n2` are the atoms the reagent added (highlighted), with their scores. */
+function addition(Q, n1, n2) {
+  const c1 = Q(80, 110), c2 = Q(156, 110);
+  let s = bond(c1, c2, { rFrom: 16, rTo: 16 });
+  const a = centre(c1, [
+    { deg: 180, len: 44, l: 'H' },
+    { deg: 90, len: 44, l: 'H' },
+    { deg: 270, len: 46, l: n1, kind: 'hi' },
+  ]);
+  const b = centre(c2, [
+    { deg: 90, len: 44, l: 'H' },
+    { deg: 0, len: 54, l: 'CH₃' },
+    { deg: 270, len: 46, l: n2, kind: 'hi' },
+  ]);
+  s += a.s + b.s;
+  s += Tg(Q, 80, 196, n1 === 'H' ? '−1' : '+1', { cls: 'fg-tag-warn' });
+  s += Tg(Q, 156, 196, n2 === 'H' ? '−1' : '+1', { cls: 'fg-tag-warn' });
+  return s;
+}
+const addCells = [
+  ['PROPENE + HBr', '−1 + 1 = 0: neither', (Q) => addition(Q, 'H', 'Br'), 'fg-tag-mut'],
+  ['PROPENE + Br₂', '+1 + 1 = +2: oxidation', (Q) => addition(Q, 'Br', 'Br')],
+  ['PROPENE + H₂', '−1 − 1 = −2: reduction', (Q) => addition(Q, 'H', 'H')],
+];
+
+FIGURES.push({
+  id: 'addition-tallies',
+  section: 'oxidation-states',
+  anchor: '',
+  alt: 'Three products of adding a reagent to propene, with the two former alkene carbons drawn in full. With HBr, one carbon gains H (minus 1) and the other gains Br (plus 1), total 0. With Br2, both gain Br, total plus 2. With H2, both gain H, total minus 2.',
+  viewBox: '0 0 760 246',
+  build() { return grid(addCells, 3, 240, 230, 236); },
+  caption: 'The highlighted atoms are the ones the reagent added, and each carries its score. Add the two scores to get the verdict.',
+});
+FIGURES.push({
+  id: 'l-addition-tallies',
+  lessons: ['oxidation-states'],
+  alt: 'Three stacked panels: propene plus HBr scores minus 1 plus 1, neither; propene plus Br2 scores plus 1 plus 1, oxidation; propene plus H2 scores minus 1 minus 1, reduction.',
+  viewBox: `0 0 340 ${stackH(3, 230)}`,
+  build() { return grid(addCells, 1, 324, 230, 236, 0, 14); },
+  caption: 'Add the scores of the two highlighted atoms.',
+});
+
+/* ======================================================================
+   3. Scoring the four bonds: ethanol and acetaldehyde.
+   ====================================================================== */
+const countCells = [
+  ['ETHANOL', '0 − 1 − 1 + 1 = −1', (Q) => {
+    const m = centre(Q(120, 110), [
+      { deg: 180, len: 58, l: 'CH₃' },
+      { deg: 90, len: 46, l: 'H' },
+      { deg: 270, len: 46, l: 'H' },
+      { deg: 0, len: 56, l: 'OH' },
+    ]);
+    let s = m.s;
+    s += Tg(Q, 30, 114, '0', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 150, 68, '−1', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 150, 160, '−1', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 210, 114, '+1', { cls: 'fg-tag-warn' });
+    return s;
+  }],
+  ['ACETALDEHYDE', '0 − 1 + 2 = +1', (Q) => {
+    const m = centre(Q(120, 122), [
+      { deg: 90, len: 50, l: 'O', order: 2 },
+      { deg: 210, len: 56, l: 'CH₃' },
+      { deg: 330, len: 52, l: 'H' },
+    ]);
+    let s = m.s;
+    s += Tg(Q, 26, 154, '0', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 196, 154, '−1', { cls: 'fg-tag-warn' });
+    s += Tg(Q, 176, 76, '+2 (two bonds)', { cls: 'fg-tag-warn' });
+    return s;
+  }],
+];
+
+FIGURES.push({
+  id: 'count-carbon',
+  section: 'oxidation-states',
+  anchor: '',
+  alt: 'The CH2 carbon of ethanol with its four bonds scored: 0 for the bond to CH3, minus 1 for each of two bonds to H, plus 1 for the bond to OH, total minus 1. The CHO carbon of acetaldehyde: 0 for CH3, minus 1 for H, plus 2 for the double bond to O, total plus 1.',
+  viewBox: '0 0 760 206',
+  build() { return grid(countCells, 2, 366, 190, 240); },
+  caption: 'Each bond on the circled carbon carries its score. The double bond to oxygen is two bonds, so it scores +2.',
+});
+FIGURES.push({
+  id: 'l-count-carbon',
+  lessons: ['oxidation-states'],
+  alt: 'Two stacked panels: the ethanol carbon scores 0, minus 1, minus 1 and plus 1, total minus 1; the acetaldehyde carbon scores 0, minus 1 and plus 2, total plus 1.',
+  viewBox: `0 0 340 ${stackH(2, 190)}`,
+  build() { return grid(countCells, 1, 324, 190, 240, 0, 14); },
+  caption: 'Score each bond on the circled carbon, then add.',
+});
+
+/* ======================================================================
+   4. The ladder, with the width of each rung drawn in.
+   ====================================================================== */
+const RUNGS = [
+  { n: '4', ex: 'CO₂', ox: '+4', fam: ['CO₂ · CCl₄'] },
+  { n: '3', ex: 'HCO₂H', ox: '+2', fam: ['carboxylic acid · ester · amide', 'acid chloride · nitrile'] },
+  { n: '2', ex: 'CH₂O', ox: '0', fam: ['aldehyde · ketone · acetal · imine'] },
+  { n: '1', ex: 'CH₃OH', ox: '−2', fam: ['alcohol · ether · alkyl halide · amine'], hi: true },
+  { n: '0', ex: 'CH₄', ox: '−4', fam: ['alkane'] },
+];
+
 FIGURES.push({
   id: 'oxidation-ladder',
   section: 'oxidation-states',
-  anchor: 'the number depends on what else is attached.</p>',
-  alt: 'The carbon oxidation ladder, with the one-carbon example, the count of bonds to heteroatoms, and the functional group families sharing each rung',
-  viewBox: '0 0 760 404',
+  anchor: '',
+  alt: 'The carbon oxidation ladder. Each rung lists the number of bonds from carbon to O, N or halogen (0 to 4), the one-carbon example and its oxidation state (CH4 minus 4, CH3OH minus 2, CH2O 0, HCO2H plus 2, CO2 plus 4), and the families that share the rung.',
+  viewBox: '0 0 760 384',
+  build() {
+    let s = '';
+    s += tag(130, 40, 'bonds to O, N, X');
+    s += tag(230, 40, 'one-carbon case');
+    s += tag(318, 40, 'its state');
+    s += tag(380, 40, 'everything that shares the rung', { anchor: 'start' });
+    s += rule(70, 52, 740, 52);
+    RUNGS.forEach((r, i) => {
+      const y = 84 + i * 56;
+      if (r.hi) s += panel(80, y - 24, 660, 48, { kind: 'hi' });
+      s += label(130, y + 4, r.n);
+      s += label(230, y + 4, r.ex);
+      s += label(318, y + 4, r.ox);
+      r.fam.forEach((f, j) => {
+        const fy = r.fam.length === 1 ? y + 4 : y - 5 + j * 18;
+        s += text(380, fy, f, { cls: 'fg-lbl', size: 13, anchor: 'start' });
+      });
+      if (r.n === '3') s += tag(318, y + 20, 'RCO₂H: +3', { cls: 'fg-tag-mut' });
+      if (i < RUNGS.length - 1) s += rule(70, y + 28, 740, y + 28);
+    });
+    s += arrow(P(40, 310), P(40, 70));
+    s += tag(40, 334, 'up =', { cls: 'fg-tag' });
+    s += tag(40, 348, 'oxidation', { cls: 'fg-tag' });
+    s += rule(70, 346, 740, 346);
+    s += text(405, 372, 'Along a rung: no oxidant or reductant.   Up one rung: a two-electron oxidation.', { cls: 'fg-lbl', size: 13 });
+    return s;
+  },
+  caption: 'Each row is one rung. The first column counts the carbon&rsquo;s bonds to oxygen, nitrogen or a halogen (X), and every family in the last column has that same count.',
+});
+FIGURES.push({
+  id: 'l-oxidation-ladder',
+  lessons: ['oxidation-states'],
+  alt: 'The carbon oxidation ladder, top to bottom: CO2 plus 4, HCO2H plus 2, CH2O 0, CH3OH minus 2, CH4 minus 4, each with its count of bonds to O, N or halogen and the families that share the rung.',
+  viewBox: '0 0 340 454',
+  build() {
+    let s = '';
+    s += tag(170, 22, 'up a rung = a two-electron oxidation');
+    let y = 36;
+    RUNGS.forEach((r, i) => {
+      const hgt = 26 + r.fam.length * 18;
+      if (r.hi) s += panel(30, y + 2, 304, hgt - 4, { kind: 'hi' });
+      s += label(40, y + 22, r.ex, { anchor: 'start' });
+      s += label(128, y + 22, r.ox);
+      s += tag(326, y + 22, `${r.n} bond${r.n === '1' ? '' : 's'} to O, N, X`, { anchor: 'end' });
+      r.fam.forEach((f, j) => { s += tag(40, y + 42 + j * 18, f, { anchor: 'start', cls: 'fg-tag-mut' }); });
+      y += hgt;
+      if (i < RUNGS.length - 1) s += rule(30, y, 334, y);
+    });
+    s += arrow(P(14, y - 8), P(14, 44));
+    s += rule(30, y, 334, y);
+    s += tag(40, y + 22, 'RCO₂H, with a C in place of the H: +3', { anchor: 'start', cls: 'fg-tag-mut' });
+    return s;
+  },
+  caption: 'Every family on a rung has the same number of bonds to O, N or a halogen (X).',
+});
+
+/* ======================================================================
+   5. How far each alcohol can climb: count the H on the carbinol carbon.
+   ====================================================================== */
+const MOL = {
+  prim: (c) => {
+    const m = centre(c, [
+      { deg: 0, len: 50, l: 'OH' },
+      { deg: 90, len: 44, l: 'H', kind: 'hi' },
+      { deg: 270, len: 44, l: 'H', kind: 'hi' },
+      { deg: 180, len: 46 },
+    ]);
+    return m.s + ethyl(m.ends.v180, 210);
+  },
+  sec: (c) => centre(c, [
+    { deg: 90, len: 46, l: 'OH' },
+    { deg: 270, len: 44, l: 'H', kind: 'hi' },
+    { deg: 180, len: 46 },
+    { deg: 0, len: 46 },
+  ]).s,
+  tert: (c) => centre(c, [
+    { deg: 90, len: 46, l: 'OH' },
+    { deg: 270, len: 46 },
+    { deg: 180, len: 46 },
+    { deg: 0, len: 46 },
+  ]).s,
+  ald: (c) => {
+    const m = centre(c, [
+      { deg: 90, len: 48, l: 'O', order: 2 },
+      { deg: 330, len: 46, l: 'H', kind: 'hi' },
+      { deg: 210, len: 46 },
+    ]);
+    return m.s + ethyl(m.ends.v210, 150);
+  },
+  acid: (c) => {
+    const m = centre(c, [
+      { deg: 90, len: 48, l: 'O', order: 2 },
+      { deg: 330, len: 50, l: 'OH' },
+      { deg: 210, len: 46 },
+    ]);
+    return m.s + ethyl(m.ends.v210, 150);
+  },
+  ket: (c) => centre(c, [
+    { deg: 90, len: 48, l: 'O', order: 2 },
+    { deg: 210, len: 46 },
+    { deg: 330, len: 46 },
+  ]).s,
+};
+
+FIGURES.push({
+  id: 'carbinol-climb',
+  section: 'oxidation-states',
+  anchor: '',
+  alt: 'Three rows. Propan-1-ol, with two H on the carbinol carbon, is oxidized to propanal and then to propanoic acid. Propan-2-ol, with one H, is oxidized to propanone. 2-Methylpropan-2-ol, with no H on the carbinol carbon, does not react.',
+  viewBox: '0 0 760 548',
   build() {
     let s = '';
     const rows = [
-      { y: 84,  n: '4', ex: 'CO\u2082',   ox: '+4',      fam: 'CO\u2082   \u00B7   CCl\u2084' },
-      { y: 140, n: '3', ex: 'HCO\u2082H', ox: '+2',      fam: 'carboxylic acid \u00B7 ester \u00B7 amide \u00B7 acid chloride \u00B7 nitrile', sub: '(RCO\u2082H is +3)' },
-      { y: 196, n: '2', ex: 'CH\u2082O',  ox: '0',       fam: 'aldehyde \u00B7 ketone \u00B7 acetal \u00B7 imine' },
-      { y: 252, n: '1', ex: 'CH\u2083OH', ox: '\u22122', fam: 'alcohol \u00B7 ether \u00B7 alkyl halide \u00B7 amine', hi: true },
-      { y: 308, n: '0', ex: 'CH\u2084',   ox: '\u22124', fam: 'alkane' },
+      { t: 'PRIMARY: PROPAN-1-OL, TWO H', mols: [['prim', 'propan-1-ol'], ['ald', 'propanal'], ['acid', 'propanoic acid']] },
+      { t: 'SECONDARY: PROPAN-2-OL, ONE H', mols: [['sec', 'propan-2-ol'], ['ket', 'propanone']] },
+      { t: 'TERTIARY: 2-METHYLPROPAN-2-OL, NO H', mols: [['tert', '2-methylpropan-2-ol']] },
     ];
-    /* The families column is the widest thing here and the acid rung's list
-       is the widest row in it, so it is set from a left edge rather than
-       centered: centered, it started underneath the oxidation-state column and
-       ended past the right of what the reading column shows. The direction
-       arrow moves to the left margin for the same reason — its label was
-       the other casualty. */
-    s += tag(110, 50, 'one-carbon case');
-    s += tag(200, 50, 'bonds to O/N/X');
-    s += tag(276, 50, 'that C\u2019s state');
-    s += text(318, 50, 'everything that shares the rung', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += rule(30, 62, 700, 62);
-    // The highlight goes down first, so the row's own labels sit on top of it.
-    for (const r of rows) if (r.hi) s += panel(72, r.y - 20, 628, 40, { kind: 'hi' });
-    for (const r of rows) {
-      s += label(110, r.y + 4, r.ex, { size: 13 });
-      s += text(200, r.y + 4, r.n, { cls: 'fg-lbl', size: 12.5 });
-      s += text(282, r.y + 4, r.ox, { cls: 'fg-lbl', size: 12.5 });
-      s += text(318, r.y + 4, r.fam, { cls: 'fg-sm', size: 10, anchor: 'start' });
-      if (r.sub) s += text(282, r.y + 20, r.sub, { cls: 'fg-sm', size: 8 });
-      if (r.y !== 308) s += rule(30, r.y + 28, 700, r.y + 28);
-    }
-    // Direction of travel, in the left margin where nothing else is drawn.
-    s += arrow(P(46, 300), P(46, 92));
-    s += text(46, 78, 'oxidation', { cls: 'fg-tag', size: 10.5 });
-    s += rule(30, 330, 700, 330);
-    s += text(350, 354, 'Along a rung is substitution.', { cls: 'fg-lbl', size: 12 });
-    s += text(350, 376, 'Up a rung is a two-electron oxidation, and needs an oxidant.', { cls: 'fg-lbl', size: 12 });
+    const xs = [130, 390, 630];
+    rows.forEach((r, i) => {
+      const oy = 8 + i * 180;
+      s += panel(8, oy, 744, 168);
+      s += tag(380, oy + 22, r.t);
+      const cy = oy + 92;
+      r.mols.forEach(([k, name], j) => {
+        s += MOL[k](P(xs[j], cy));
+        s += tag(xs[j], oy + 156, name, { cls: 'fg-tag-mut' });
+        if (j > 0) {
+          s += arrow(P(xs[j - 1] + 84, cy), P(xs[j] - 96, cy));
+          s += tag((xs[j - 1] + xs[j]) / 2 - 6, cy - 12, 'oxidize');
+        }
+      });
+      if (r.mols.length === 1) {
+        s += arrow(P(xs[0] + 84, cy), P(xs[1] - 96, cy), { muted: true });
+        s += tag((xs[0] + xs[1]) / 2 - 6, cy - 12, 'oxidize', { cls: 'fg-tag-mut' });
+        s += tag(xs[1] + 10, cy + 4, 'no reaction: no H to remove', { cls: 'fg-tag-warn', anchor: 'start' });
+      }
+    });
     return s;
   },
-  caption: 'The ladder with its second dimension drawn in. A rung is not one compound but a whole set of them &mdash; everything whose carbon carries the same number of bonds to oxygen, nitrogen or halogen &mdash; and moving <b>sideways</b> along a rung costs no oxidant at all.',
-  note: 'This is why an alcohol and an alkyl halide interconvert with nothing more than a nucleophile, and why an ester, an amide and a nitrile interconvert with each other but never with an aldehyde. The oxidation-state column is the one-carbon case, so formic acid reads +2 here because that carbon still carries an H; put an alkyl group there instead and a carboxylic acid is +3. The rung is the durable fact, not the number.',
+  caption: 'Count the highlighted hydrogens on each circled carbon. Each oxidation removes one of them, so the count is the number of rungs the alcohol can climb.',
 });
 
-/* ------------------------------------------------------------------ R1 ---
-   The redox-neutral case, which the section asserts in a sentence and which
-   is the single thing students get wrong. It is pure arithmetic on a drawing:
-   run two tallies, and only when they disagree has anything been oxidized. */
+const climbCells = [
+  ['PROPAN-1-OL (PRIMARY)', 'two H: aldehyde, then acid', (Q) => MOL.prim(Q(130, 96))],
+  ['PROPAN-2-OL (SECONDARY)', 'one H: ketone', (Q) => MOL.sec(Q(120, 96))],
+  ['2-METHYLPROPAN-2-OL (TERTIARY)', 'no H: no oxidation', (Q) => MOL.tert(Q(120, 96)), 'fg-tag-warn'],
+];
 FIGURES.push({
-  id: 'redox-neutral',
-  section: 'oxidation-states',
-  anchor: 'a fast way to check you have not mislabeled something.</p>',
-  alt: 'Three columns comparing an oxidation, a reduction and a redox-neutral addition by counting bonds to hydrogen against bonds to oxygen or halogen',
-  viewBox: '0 0 760 300',
-  build() {
-    let s = '';
-    const cols = [
-      {
-        cx: 145, head: 'OXIDATION', sm: 'CH₃CH₂OH', rg: '[O]', pr: 'CH₃CHO',
-        counts: ['start — on that C: 2 H, 1 O', 'product — on that C: 1 H, 2 O'],
-        lines: ['H count down 1, O count up 1:', 'the two tallies disagree.', 'OXIDATION (+2 states)'],
-        kind: 'fg-tag-good',
-      },
-      {
-        cx: 385, head: 'REDUCTION', sm: 'CH₃CHO', rg: '[H]', pr: 'CH₃CH₂OH',
-        counts: ['start — on that C: 1 H, 2 O', 'product — on that C: 2 H, 1 O'],
-        lines: ['H count up 1, O count down 1:', 'they disagree the other way.', 'REDUCTION (−2 states)'],
-        kind: 'fg-tag-good',
-      },
-      {
-        cx: 620, head: 'NEITHER', sm: 'CH₂=CH₂', rg: 'HBr', pr: 'CH₃CH₂Br',
-        counts: ['that C: 2 H, no O or X', 'that C: 2 H, 1 Br', 'the other C: gained 1 H'],
-        lines: ['One carbon gained Br (up 1).', 'The other gained H (down 1).', 'They cancel — REDOX-NEUTRAL.'],
-        kind: 'fg-tag-warn',
-      },
-    ];
-    for (const c of cols) {
-      s += tag(c.cx, 40, c.head);
-      s += label(c.cx - 74, 80, c.sm, { size: 12.5 });
-      s += arrow(P(c.cx - 34, 76), P(c.cx + 34, 76));
-      s += text(c.cx, 64, c.rg, { cls: 'fg-sm', size: 10 });
-      s += label(c.cx + 74, 80, c.pr, { size: 12.5 });
-      c.counts.forEach((t, i) => { s += text(c.cx, 108 + i * 16, t, { cls: 'fg-sm', size: 10 }); });
-      c.lines.forEach((t, i) => { s += text(c.cx, 170 + i * 20, t, { cls: i === 2 ? c.kind : 'fg-lbl', size: i === 2 ? 11 : 11 }); });
-    }
-    s += rule(260, 58, 260, 240);
-    s += rule(505, 58, 505, 240);
-    s += rule(30, 250, 730, 250);
-    s += text(380, 272, 'Do the two counts separately, then compare.', { cls: 'fg-lbl', size: 12 });
-    s += text(380, 292, 'An addition that brings one H and one heteroatom lands in the third column.', { cls: 'fg-lbl', size: 12 });
-    return s;
-  },
-  caption: 'The three answers, with the arithmetic shown rather than asserted. Count bonds to hydrogen and bonds to O/N/halogen as two separate tallies; only when they disagree is there a redox change at all.',
-  note: 'The third column is the one that catches people, because HBr addition <i>looks</i> like something happened — and it did, just not a redox something. But do not turn that into “additions are neutral”: run the two counts and the alkene reactions you already know sort into three groups. <b>Redox-neutral</b> — hydration, hydrohalogenation, oxymercuration and hydroboration–oxidation, because each carbon gains one of the pair and the two tallies move together. <b>Oxidations</b> — halogenation, halohydrin formation, epoxidation and dihydroxylation, because <i>both</i> carbons gain a bond to an electronegative atom and neither gains a hydrogen. <b>A reduction</b> — hydrogenation, where both carbons gain an H. Halohydrin formation is the one students put in the wrong column: the OH lands on one carbon and the Br on the other, so both carbons gain a heteroatom and neither gains a hydrogen — the tallies move apart, and that is an oxidation.',
+  id: 'l-carbinol-climb',
+  lessons: ['oxidation-states'],
+  alt: 'Three stacked panels: propan-1-ol with two H on the carbinol carbon, propan-2-ol with one, and 2-methylpropan-2-ol with none.',
+  viewBox: `0 0 340 ${stackH(3, 180)}`,
+  build() { return grid(climbCells, 1, 324, 180, 240, 0, 14); },
+  caption: 'Count the highlighted H on each circled carbinol carbon.',
 });
 
 export default FIGURES;
