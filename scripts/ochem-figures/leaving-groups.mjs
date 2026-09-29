@@ -365,8 +365,8 @@ FIGURES.push({
     s += ring6(py, 1, 0) + A(n, 'N');
     s += lps(n, [205], 21);
     s += curve(P(180, n.y - 12), P(128, h2.y + 6), { bow: 12 });
-    s += curve(P(120, y2 + 30), P(134, y2 + 10), { bow: -12 });
-    s += tg(290, y2 + 140, 'pyridine', 'mut');
+    s += curve(P(127, y2 + 34), P(136, y2 + 12), { bow: -8 });
+    s += tg(292, y2 + 76, 'pyridine', 'mut');
     // product
     s += box(504, 118, 'PRODUCT · ETHYL TOSYLATE');
     const y3 = 566;
