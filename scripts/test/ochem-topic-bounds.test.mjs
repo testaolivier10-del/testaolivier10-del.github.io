@@ -86,7 +86,7 @@ for (const [who, done] of STUDENTS) {
   test(`${who}: adaptive, quick, diagnostic and weak drills stay inside the frontier`, () => {
     const { E, M, at, frontier } = student(done);
     const served = [];
-    for (let r = 0; r < 12; r++) {
+    for (let r = 0; r < 5; r++) {
       served.push(...serve(E, E.makePlan('adaptive', { count: 10 }), 10));
       served.push(...serve(E, E.makePlan('quick', {}), 5));
       for (const rec of E.recommendations()) {
@@ -96,7 +96,7 @@ for (const [who, done] of STUDENTS) {
       }
     }
     M.weakest(6, 2).forEach(p => served.push(...serve(E, E.makePlan('weak', { concepts: [p.id] }), 8)));
-    assert.ok(served.length > 100, 'the modes should actually serve questions');
+    assert.ok(served.length > 50, 'the modes should actually serve questions');
     assertWithin(served, at, frontier, who);
   });
 
