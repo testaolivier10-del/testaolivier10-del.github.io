@@ -650,12 +650,12 @@
       5:['fischer-reading','rs-assignment','cip-priority'],
       7:['fischer-reading','enantiomer-vs-diastereomer'] } },
 
-    'prochirality': { n:9, steps:{
+    'prochirality': { n:12, steps:{
       2:['topicity-test'],
-      3:['topicity-test','enantiomer-vs-diastereomer'],
-      4:['topicity-test'],
+      5:['topicity-test','enantiomer-vs-diastereomer'],
       6:['topicity-test'],
-      8:['topicity-test','prochiral-faces'] } },
+      8:['topicity-test'],
+      11:['topicity-test','prochiral-faces'] } },
 
     'h-nmr': { n:8, steps:{
       1:['nmr-splitting-integration'],

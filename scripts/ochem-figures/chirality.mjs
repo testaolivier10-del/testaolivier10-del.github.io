@@ -172,8 +172,7 @@ FIGURES.push({
     s += `<path class="fg-bond" d="M189 80 L214 80 Q228 80 228 92 Q228 104 214 104 L189 104"></path>`;
     s += hline(mc.y, 84, 256);
     s += tagT(262, 96, 'plane', 'fg-tag', 'start');
-    s += tagT(170, 158, 'A mug, seen from above. The plane through');
-    s += tagT(170, 174, 'the handle cuts it into mirror halves.');
+    s += tagT(170, 164, 'a mug, seen from above');
 
     s += `<line class="fg-rule" x1="20" y1="192" x2="320" y2="192"></line>`;
     // two coils, mirror images
@@ -207,10 +206,10 @@ FIGURES.push({
     s += coil(255, -1);
     s += tagT(85, 356, 'right-handed coil');
     s += tagT(255, 356, 'left-handed coil');
-    s += tagT(170, 380, 'Solid strands are in front; dashed strands are behind.', 'fg-tag-mut');
+    s += tagT(170, 380, 'solid strands in front, dashed behind', 'fg-tag-mut');
     return s;
   },
-  caption: 'The mug has a plane that cuts it into mirror halves. The coils have none, and no turning makes one coil match the other.',
+  caption: 'Top: follow the dashed line through the mug and its handle. Bottom: compare which way the solid front strands slope in each coil.',
 });
 
 /* --------------------------------------------------- plane-of-page --- */
@@ -219,7 +218,7 @@ FIGURES.push({
   section: 'chirality',
   lessons: ['chirality'],
   alt: 'Two molecules, stacked, each drawn on a shaded rectangle standing for the page. Top: 2-chloropropane, with Cl and H on plain bonds in the page, one CH3 on a solid wedge and the other CH3 on a dashed wedge. The page is a plane of symmetry: it contains C, Cl and H and reflects one methyl onto the other. Bottom: 2-chlorobutane, drawn the same way but with CH3 on the solid wedge and CH2CH3 on the dashed wedge. Reflecting through the page would put a methyl where the ethyl is, so the page is not a plane of symmetry.',
-  viewBox: '0 0 340 400',
+  viewBox: '0 0 340 380',
   build() {
     let s = '';
     const row = (y, name, verdict, good, g, lines) => {
@@ -228,15 +227,15 @@ FIGURES.push({
       s += tagT(292, y + 140, 'the page', 'fg-tag-mut', 'end');
       s += tet(P(170, y + 72), [
         { deg: 145, t: 'Cl', hi: 'warn' }, { deg: 35, t: 'H' },
-        { deg: 245, t: g[0], kind: 'wedge', hi: 'hi' },
-        { deg: good ? 295 : 300, t: g[1], kind: 'hash', hi: 'hi', len: good ? 48 : 56 },
+        { deg: 240, t: g[0], kind: 'wedge', hi: 'hi', len: 52 },
+        { deg: 300, t: g[1], kind: 'hash', hi: 'hi', len: good ? 52 : 58 },
       ]);
       lines.forEach((l, i) => { s += tagT(170, y + 166 + i * 16, l); });
     };
     row(8, '2-chloropropane', 'achiral', true, ['CH₃', 'CH₃'],
-      ['Cl, C and H lie in the page. The page reflects', 'the wedged CH₃ onto the dashed CH₃.']);
-    row(206, '2-chlorobutane', 'chiral', false, ['CH₃', 'CH₂CH₃'],
-      ['The same reflection would send CH₃ onto', 'CH₂CH₃, a different group. No plane here.']);
+      ['the page: a plane of symmetry']);
+    row(196, '2-chlorobutane', 'chiral', false, ['CH₃', 'CH₂CH₃'],
+      ['the page: not a plane of symmetry']);
     return s;
   },
   caption: 'In each drawing, find the group that sits on the dashed wedge and compare it with the group on the solid wedge.',
@@ -277,7 +276,7 @@ FIGURES.push({
   id: 'center-of-symmetry',
   section: 'chirality',
   alt: 'A Newman projection of one stereoisomer of CHBrCl–CHBrCl, looking along the carbon–carbon bond. Front carbon: Br straight up, Cl lower left, H lower right. Back carbon: Br straight down, Cl upper right, H upper left. Each front atom has an identical atom on the back carbon directly across the center. The center of the drawing, midway between the two carbons, is marked as the center of symmetry.',
-  viewBox: '0 0 340 290',
+  viewBox: '0 0 340 222',
   build() {
     let s = '';
     const c = P(170, 124);
@@ -289,9 +288,6 @@ FIGURES.push({
     s += tagT(20, 36, 'back carbon: the circle', 'fg-tag-mut', 'start');
     s += tagT(236, 128, '← center of', 'fg-tag', 'start');
     s += tagT(250, 144, 'symmetry', 'fg-tag', 'start');
-    s += tagT(170, 238, 'Front Br, back Br: directly across the center.');
-    s += tagT(170, 254, 'The same holds for Cl and Cl, and for H and H.');
-    s += tagT(170, 278, 'No plane of symmetry in this conformation.', 'fg-tag-mut');
     return s;
   },
   caption: 'Pick any atom, go straight through the center dot, and the same distance out you meet its twin.',
@@ -343,18 +339,16 @@ FIGURES.push({
   id: 'allene-achiral',
   section: 'chirality',
   alt: 'Buta-1,2-diene, CH2=C=CH–CH3, on a shaded rectangle standing for the page. The left carbon carries two hydrogens, one on a solid wedge and one on a dashed wedge. The right carbon carries CH3 and H in the page. The page holds all three chain carbons plus the CH3 and H, and reflects one hydrogen of the CH2 end onto the other, so it is a plane of symmetry.',
-  viewBox: '0 0 340 200',
+  viewBox: '0 0 340 152',
   build() {
     let s = '';
     s += panel(30, 26, 280, 118, { kind: 'good' });
     s += tagT(170, 16, 'buta-1,2-diene: achiral', 'fg-tag-good');
-    s += tagT(302, 138, 'the page', 'fg-tag-mut', 'end');
-    s += allene(170, 84, ['H', 'H', 'wedge', 'hash'], ['CH₃', 'H']);
-    s += tagT(170, 168, 'The page holds C=C=C, CH₃ and H, and reflects');
-    s += tagT(170, 184, 'the wedged H of the CH₂ end onto the dashed H.');
+    s += tagT(302, 138, 'the page: a plane of symmetry', 'fg-tag-mut', 'end');
+    s += allene(170, 80, ['H', 'H', 'wedge', 'hash'], ['CH₃', 'H']);
     return s;
   },
-  caption: 'Compare the two groups on each end carbon.',
+  caption: 'Compare the two hydrogens on the left-hand carbon: one on the solid wedge, one on the dashed wedge.',
 });
 
 /* ------------------------------------------------------ biaryl-pair --- */
@@ -397,20 +391,20 @@ FIGURES.push({
   section: 'chirality',
   lessons: ['chirality'],
   alt: 'The biaryl 6,6′-dinitrobiphenyl-2,2′-dicarboxylic acid drawn twice, stacked. Two benzene rings are joined by a single bond. The left ring lies in the page, with NO2 and CO2H on the two carbons next to the joint. The right ring is drawn in perspective, at right angles to the page; its two groups next to the joint point one toward you on a solid wedge and one away on a dashed wedge. Top: CO2H on the wedge and NO2 on the dashed wedge. Bottom, the mirror image: NO2 on the wedge and CO2H on the dashed wedge.',
-  viewBox: '0 0 340 380',
+  viewBox: '0 0 340 386',
   build() {
     let s = '';
     s += tagT(170, 20, 'one form');
     s += biaryl(100, 'CO₂H', 'NO₂');
-    s += tagT(100, 176, 'ring in the page', 'fg-tag-mut');
-    s += tagT(262, 176, 'ring at right', 'fg-tag-mut');
-    s += tagT(262, 190, 'angles to it', 'fg-tag-mut');
-    s += `<line class="fg-rule" x1="20" y1="202" x2="320" y2="202"></line>`;
-    s += tagT(170, 222, 'its mirror image: wedge and dash swapped');
-    s += biaryl(298, 'NO₂', 'CO₂H');
+    s += tagT(100, 182, 'ring in the page', 'fg-tag-mut');
+    s += tagT(270, 182, 'ring at right', 'fg-tag-mut');
+    s += tagT(270, 196, 'angles to it', 'fg-tag-mut');
+    s += `<line class="fg-rule" x1="20" y1="208" x2="320" y2="208"></line>`;
+    s += tagT(170, 228, 'its mirror image: wedge and dash swapped');
+    s += biaryl(304, 'NO₂', 'CO₂H');
     return s;
   },
-  caption: 'Find the four groups beside the highlighted joint. For the rings to line up flat, those groups would have to pass through one another.',
+  caption: 'Find the four groups beside the highlighted joint. Then compare the right-hand ring in the two drawings: which group sits on the solid wedge, and which on the dashed wedge.',
 });
 
 /* ---------------------------------------------------- binol-joint --- */
@@ -418,12 +412,12 @@ FIGURES.push({
   id: 'binol-joint',
   section: 'chirality',
   alt: 'One half of BINOL: a naphthalene, two benzene rings sharing an edge, drawn flat. A highlighted bond leaves the top carbon of the right ring and leads to the second naphthalene, which is twisted out of the page and not drawn. On one side of that bond, the top carbon of the left ring carries a hydrogen, labeled peri H. On the other side, the next carbon of the right ring carries an OH.',
-  viewBox: '0 0 340 270',
+  viewBox: '0 0 340 180',
   build() {
     let s = '';
-    const L = polyPts(144, 170, 6, 30, 90), R = polyPts(196, 170, 6, 30, 90);
+    const L = polyPts(144, 130, 6, 30, 90), R = polyPts(196, 130, 6, 30, 90);
     // right ring: 0 top (the joint carbon), 1 upper-left (shared), 2 lower-left (shared), 3 bottom, 4 lower-right, 5 upper-right
-    const cR = P(196, 170), cL = P(144, 170);
+    const cR = P(196, 130), cL = P(144, 130);
     s += ringDouble(R[0], R[5], cR, { inset: 6 });
     s += sk(R[5], R[4]);
     s += ringDouble(R[4], R[3], cR, { inset: 6 });
@@ -444,11 +438,9 @@ FIGURES.push({
     // peri H and the OH
     const pH = at(L[0], 90, 30);
     s += bond(L[0], pH, { rFrom: 0, rTo: 12 }) + atom(pH.x, pH.y, 'H', { r: 12, kind: 'warn' });
-    s += tagT(pH.x - 18, pH.y + 4, 'peri H', 'fg-tag-warn', 'end');
+    s += `<text class="fg-tag-warn" x="${r2(pH.x - 18)}" y="${r2(pH.y + 4)}" text-anchor="end" font-size="11"><tspan font-style="italic">peri</tspan> H</text>`;
     const pO = at(R[5], 30, 32);
     s += bond(R[5], pO, { rFrom: 0, rTo: 15 }) + atom(pO.x, pO.y, 'OH', { r: 15, kind: 'hi' });
-    s += tagT(170, 238, 'The highlighted joint has the peri H on one');
-    s += tagT(170, 254, 'side and the OH on the other.');
     return s;
   },
   caption: 'Find the highlighted bond, then the two groups on either side of it.',
