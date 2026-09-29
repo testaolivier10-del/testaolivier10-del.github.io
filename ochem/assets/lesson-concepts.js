@@ -88,7 +88,7 @@
     'nitriles': { n:11, steps:{
       2:['substrate-class','nitrile-as-acyl-level'],
       5:['nitrile-as-acyl-level','reductant-scope','oxidation-level'],
-      6:['nitrile-as-acyl-level','grignard-scope','tetrahedral-intermediate'],
+      6:['nitrile-as-acyl-level','grignard-scope'],
       7:['nitrile-as-acyl-level','oxidation-level'],
       9:['nitrile-as-acyl-level','organometallic-quench'],
       10:['nitrile-as-acyl-level','reductant-scope'] } },

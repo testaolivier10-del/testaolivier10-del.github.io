@@ -301,7 +301,7 @@ FIGURES.push({
         } else {
           t += mark(bot);
         }
-        t += group ? text(bot.x + 8, bot.y + 20, 'para', { cls: 'fg-tag', size: 11, anchor: 'start' }) : text(bot.x + 10, bot.y + 16, 'para', { cls: 'fg-tag', size: 11, anchor: 'start' });
+        t += text(bot.x + 12, bot.y + 10, 'para', { cls: 'fg-tag', size: 11, anchor: 'start' });
         return t;
       }, { footCls: cls });
     });

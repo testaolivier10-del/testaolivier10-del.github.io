@@ -53,7 +53,7 @@ function ringBond(a, b, c, dbl, ra = 0, rb = 0) {
   let px = -uy, py = ux;
   const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
   if ((c.x - mx) * px + (c.y - my) * py < 0) { px = -px; py = -py; }
-  const ia = Math.max(7, ra + 3), ib = Math.max(7, rb + 3), g = 4.6;
+  const ia = ra ? ra - 0.5 : 5, ib = rb ? rb - 0.5 : 5, g = 4.6;
   return s + bond(P(a.x + ux * ia + px * g, a.y + uy * ia + py * g), P(b.x - ux * ib + px * g, b.y - uy * ib + py * g), { rFrom: 0, rTo: 0 });
 }
 
@@ -269,7 +269,7 @@ FIGURES.push({
 
 /* ================================ pyridine: attack, hand on, come back === */
 function r1(X, Y) {
-  const R = ring6(X + 52, Y + 108, 26, 0, [1, 3, 5], 'N', 'hi');
+  const R = ring6(X + 50, Y + 108, 34, 0, [1, 3, 5], 'N', 'hi');
   const C = A(X + 176, Y + 108, 'C', 'hi'), O1 = A(X + 176, Y + 62, 'O'),
         Cl = A(X + 216, Y + 132, 'Cl', 'warn'), Me = A(X + 136, Y + 136, 'CH₃');
   let s = R.svg + bd(C, O1, { order: 2 }) + bd(C, Cl) + bd(C, Me);
@@ -281,10 +281,10 @@ function r1(X, Y) {
   return s;
 }
 function r2(X, Y) {
-  const R = ring6(X + 44, Y + 108, 26, 0, [1, 3, 5], 'N⁺', 'hi');
-  const C = A(X + 118, Y + 108, 'C', 'hi'), O1 = A(X + 142, Y + 68, 'O'), Me = A(X + 142, Y + 148, 'CH₃');
-  const N = A(X + 212, Y + 108, 'N', 'hi'), Hu = A(X + 212, Y + 64, 'H'), Hd = A(X + 212, Y + 152, 'H'),
-        Nme = A(X + 258, Y + 108, 'CH₃');
+  const R = ring6(X + 40, Y + 108, 34, 0, [1, 3, 5], 'N⁺', 'hi');
+  const C = A(X + 126, Y + 108, 'C', 'hi'), O1 = A(X + 150, Y + 68, 'O'), Me = A(X + 150, Y + 148, 'CH₃');
+  const N = A(X + 220, Y + 108, 'N', 'hi'), Hu = A(X + 220, Y + 64, 'H'), Hd = A(X + 220, Y + 152, 'H'),
+        Nme = A(X + 266, Y + 108, 'CH₃');
   let s = R.svg + bond(R.N, C, { rFrom: R.N.r, rTo: C.r }) + bd(C, O1, { order: 2 }) + bd(C, Me);
   s += bd(N, Hu) + bd(N, Hd) + bd(N, Nme);
   s += lp(N, 180, 4);
@@ -299,7 +299,7 @@ function r3(X, Y) {
   let s = bd(C, O1, { order: 2 }) + bd(C, Me) + bd(C, N) + bd(N, Hn) + bd(N, Nme);
   s += draw(Me, C, O1, N, Hn, Nme);
   s += plusSign(X + 188, Y + 112);
-  const R = ring6(X + 246, Y + 96, 24, -90, [1, 3, 5], 'N⁺', 'hi');
+  const R = ring6(X + 248, Y + 92, 32, -90, [1, 3, 5], 'N⁺', 'hi');
   const H = A(R.N.x, R.N.y + 44, 'H');
   s += R.svg + bond(R.N, H, { rFrom: R.N.r, rTo: H.r }) + R.drawN + draw(H);
   return s;
@@ -342,7 +342,7 @@ function r4(X, Y) {
 }
 const relayPanels = [
   [r1, '1 · pyridine adds to the C=O', ['its lone pair sits in the ring plane', 'then Cl⁻ leaves: an N-acylpyridinium ion']],
-  [r2, '2 · the amine adds to the same C=O', ['then pyridine leaves']],
+  [r2, '2 · the amine adds; pyridine then leaves', ['the C=O re-forms as pyridine goes']],
   [r3, '3 · amide made, pyridine back', ['N-methylacetamide + pyridinium chloride']],
 ];
 
@@ -416,10 +416,11 @@ FIGURES.push({
     s += tag(462, 186, '2 Et₂NH', { anchor: 'start' });
 
     // (a) isopropyl butanoate
-    m = butanoyl(110, 280, 'O');
+    m = butanoyl(90, 280, 'O');
     const ch = P(m.X.x + 28, m.X.y - 16);
     s += m.svg + bond(m.X, ch, { rFrom: m.X.r, rTo: 0 }) + sk(ch, P(ch.x + 28, ch.y + 16)) + sk(ch, P(ch.x, ch.y - 32));
-    s += tag(186, 340, '(a) isopropyl butanoate');
+    s += tag(166, 340, '(a) isopropyl butanoate');
+    s += tag(276, 302, '+ pyridinium chloride', { anchor: 'start' });
 
     // (b) N,N-diethylbutanamide
     m = butanoyl(440, 280, 'N');
@@ -441,9 +442,9 @@ function anhydrideBlock(X, Y) {
   const Om = A(X + 62, Y + 62, 'O', 'hi'), Mm = A(X + 18, Y + 62, 'CH₃'), Hm = A(X + 62, Y + 18, 'H');
   let s = bd(C1, O1, { order: 2 }) + bd(C1, Me1) + bd(C1, Ob) + bd(Ob, C2) + bd(C2, O2, { order: 2 }) + bd(C2, Me2);
   s += bd(Om, Mm) + bd(Om, Hm);
-  s += lp(Om, 25, 4) + lp(Om, 125, 4);
+  s += lp(Om, 40, 5) + lp(Om, 130, 5);
   s += draw(C1, O1, Me1, Ob, C2, O2, Me2, Om, Mm, Hm);
-  s += curve(lpAt(Om, 25, 4), off(C1, -14, -9), { bow: 6 });
+  s += curve(lpAt(Om, 40, 5), off(C1, -14, -9), { bow: 6 });
   s += curve(mid(C1, O1), off(O1, 18, 2), { bow: -10 });
   s += tag(X + 160, Y + 156, 'the shared O', { cls: 'fg-tag-warn' });
   s += tag(X + 30, Y + 96, 'methanol');
@@ -611,7 +612,7 @@ FIGURES.push({
   build() {
     let s = '';
     const Y1 = 128;
-    s += tag(100, 36, 'SUCCINIC ACID');
+    s += tag(100, 36, 'succinic acid');
     s += succChain(100, Y1, { l: 'OH', r: 15 }, { l: 'OH', r: 15 });
     s += text(100, 198, 'a four-carbon diacid', { cls: 'fg-sm' });
 
@@ -619,7 +620,7 @@ FIGURES.push({
     s += text(228, Y1 - 12, 'heat', { cls: 'fg-tag' });
     s += text(228, Y1 + 22, '− H₂O', { cls: 'fg-sm' });
 
-    s += tag(346, 36, 'SUCCINIC ANHYDRIDE');
+    s += tag(346, 36, 'succinic anhydride');
     s += succRing(346, Y1 + 4, 'O', 15);
     s += text(346, 198, 'O between two C=O, in a ring', { cls: 'fg-sm' });
 
@@ -627,7 +628,7 @@ FIGURES.push({
     s += text(470, Y1 - 12, 'NH₃', { cls: 'fg-tag' });
     s += text(470, Y1 + 22, 'opens one C=O', { cls: 'fg-sm' });
 
-    s += tag(600, 36, 'THE AMIC ACID');
+    s += tag(600, 36, 'the amic acid');
     s += succChain(600, Y1, { l: 'H₂N', r: 17, kind: 'hi' }, { l: 'OH', r: 15 });
     s += text(600, 198, 'an amide and an acid, still tethered', { cls: 'fg-sm' });
 
@@ -636,7 +637,7 @@ FIGURES.push({
     s += text(614, 252, '− H₂O', { cls: 'fg-sm', anchor: 'start' });
 
     s += succRing(600, 318, 'NH', 17);
-    s += tag(600, 386, 'SUCCINIMIDE');
+    s += tag(600, 386, 'succinimide');
     s += text(600, 404, 'N–H between two C=O, in a ring', { cls: 'fg-sm' });
 
     s += panel(40, 262, 440, 76);
@@ -657,17 +658,17 @@ FIGURES.push({
     let s = '';
     const X = 110;
     const step = (y1, y2, a, b) => arrow(P(X, y1), P(X, y2)) + tag(X + 90, (y1 + y2) / 2 - 2, a) + tag(X + 90, (y1 + y2) / 2 + 14, b);
-    s += tag(X, 24, 'SUCCINIC ACID');
+    s += tag(X, 24, 'succinic acid');
     s += succChain(X, 106, { l: 'OH', r: 15 }, { l: 'OH', r: 15 });
     s += step(158, 196, 'heat,', '− H₂O');
-    s += tag(X, 214, 'SUCCINIC ANHYDRIDE');
+    s += tag(X, 214, 'succinic anhydride');
     s += succRing(X, 280, 'O', 15);
     s += step(330, 368, 'NH₃ opens', 'one C=O');
-    s += tag(X, 386, 'THE AMIC ACID');
+    s += tag(X, 386, 'the amic acid');
     s += succChain(X, 468, { l: 'H₂N', r: 17, kind: 'hi' }, { l: 'OH', r: 15 });
     s += step(520, 558, 'heat,', '− H₂O');
     s += succRing(X, 618, 'NH', 17);
-    s += tag(X, 686, 'SUCCINIMIDE');
+    s += tag(X, 686, 'succinimide');
     return s;
   },
   caption: 'The anhydride and the imide share one ring; only the atom between the carbonyls changes.',
@@ -688,7 +689,7 @@ FIGURES.push({
     s += lp(Cl, 0, 4);
     s += draw(C, O, Me, Cl, Al);
     s += curve(lpAt(Cl, 0, 4), off(Al, -26, -4), { bow: -10 });
-    s += curve(mid(C, Cl), off(Cl, -10, 18), { bow: 10 });
+    s += curve(mid(C, Cl), off(Cl, -9, 12), { bow: 10 });
     s += arrow(P(318, 110), P(388, 110));
     const M2 = A(436, 110, 'CH₃'), C2 = A(486, 110), O2 = A(536, 110, 'O⁺', 'hi');
     s += bd(M2, C2) + bd(C2, O2, { order: 3 });
