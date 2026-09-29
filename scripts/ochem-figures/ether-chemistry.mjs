@@ -110,7 +110,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Bold names are IUPAC names; the names in green are the common ones.',
+  caption: 'Under each structure, the upper name is the IUPAC name and the green one is the common name.',
 });
 
 /* ===================================================================== 2
@@ -339,7 +339,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'The two routes join the same two pieces. What differs is which carbon the alkoxide has to attack.',
+  caption: 'Compare the carbon each alkoxide has to attack: primary in route A, secondary in route B.',
 });
 
 /* ===================================================================== 6
@@ -400,7 +400,7 @@ FIGURES.push({
     s += text(682, 270, 'Hg replaced by H', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'The mercury blocks the top face, so methanol can only come in from below. The δ+ marks the carbon that holds more of the positive charge.',
+  caption: 'Follow C2: it carries the δ+ in the bridge, takes the OCH₃ from below, and ends up as the tertiary carbon of the ether.',
 });
 
 /* ===================================================================== 7
@@ -502,7 +502,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Nothing attacks the tertiary carbon while it still holds the oxygen. The bond breaks first, and iodide arrives afterward.',
+  caption: 'Watch the central carbon: four bonds before the C–O bond breaks, three and flat as the cation, four again once iodide bonds.',
 });
 
 /* ===================================================================== 9
@@ -544,7 +544,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Iodide takes the methyl carbon, so the oxygen stays on C2 and C2 keeps its configuration.',
+  caption: 'Compare the wedge at C2 before and after the reaction.',
 });
 
 /* ===================================================================== 10
@@ -552,7 +552,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'ether-peroxide',
   section: 'ether-chemistry',
-  anchor: 'which carries the chain on.</p>',
+  anchor: 'a new α radical that carries the chain on.</p>',
   viewBox: '0 0 760 300',
   alt: 'Left: the radical left when an alpha hydrogen is removed from diethyl ether. The alpha carbon holds a p orbital with one electron, drawn as two lobes above and below it. The oxygen next to it holds a lone pair in a p orbital parallel to it. The two orbitals overlap side by side, which spreads the unpaired electron over carbon and oxygen. Right: the two repeating steps of the chain. The alpha radical adds O2 to give a peroxyl radical, C–O–O dot. The peroxyl radical takes an alpha hydrogen from another ether molecule, giving a hydroperoxide, C–O–O–H, and a new alpha radical, which goes back to the first step.',
   build() {
@@ -636,7 +636,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'crown-ether-cavity',
   section: 'ether-chemistry',
-  anchor: 'a crown ether is one such additive.</p>',
+  anchor: 'is a crown ether of this kind.</p>',
   alt: 'Left: 18-crown-6 drawn as an eighteen-membered ring of six oxygens separated by pairs of CH2 groups, with one lone pair from each oxygen pointing inward at a potassium ion in the middle of the cavity. Right, top: the three diameters drawn to scale: the cavity at about 2.7 angstroms, potassium at 2.66, which fills it, and sodium at 1.9, which is too small to touch all six oxygens. Right, bottom: potassium fluoride dissolving in benzene as a crowned cation and a naked, unsolvated fluoride.',
   viewBox: '0 0 760 430',
   build() {
@@ -665,9 +665,9 @@ FIGURES.push({
     }
     s += atom(CX, CY, 'K', { r: 22, kind: 'warn', size: 13 });
     s += text(CX + 26, CY - 16, '+', { cls: 'fg-warn', size: 15 });
-    s += text(192, 352, 'each corner between two O atoms is a CH₂', { cls: 'fg-sm' });
-    s += text(192, 370, 'one lone pair on each O points at K⁺', { cls: 'fg-sm' });
-    s += text(192, 396, '18 ring atoms, 6 of them oxygen', { cls: 'fg-tag' });
+    s += text(192, 362, 'each corner between two O atoms is a CH₂', { cls: 'fg-sm' });
+    s += text(192, 380, 'one lone pair on each O points at K⁺', { cls: 'fg-sm' });
+    s += text(192, 402, '18 ring atoms, 6 of them oxygen', { cls: 'fg-tag' });
 
     // ---------------- the sizes, drawn to scale ----------------
     s += panel(392, 16, 360, 220);
