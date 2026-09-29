@@ -527,7 +527,7 @@ FIGURES.push({
   section: 'alkene-structure',
   anchor: 'cannot have a double bond at a bridgehead.</p>',
   alt: 'Top left: norbornane, bicyclo[2.2.1]heptane, drawn flat: two marked bridgehead carbons joined by three bridges, of two, two and one carbons, each carbon at a visible bend and each bridge labeled with its count. Top right: the same molecule in its usual 3D drawing, a six-membered ring folded like a boat with a one-carbon bridge arching over it, bridgeheads marked. Middle: the 3D drawing again with a would-be double bond from bridgehead C1 to C2. C2 carries an upright p orbital. C1 has all three of its bonds pulled to one side, like a pyramid, so the orbital it has left points out sideways. The two orbitals are at right angles and cannot overlap. Bottom left: bicyclo[2.2.1]hept-1-ene drawn flat and numbered 1 to 7, with the double bond from C1 to C2; the largest ring containing it, six atoms, is highlighted, and the label says it cannot be isolated. Bottom right: bicyclo[3.3.1]non-1-ene drawn flat and numbered 1 to 9, with the double bond from C1 to C2; the largest ring containing it, eight atoms, is highlighted, and the label says it can be isolated.',
-  viewBox: '0 0 340 530',
+  viewBox: '0 0 340 566',
   build() {
     let s = '';
     const path = (pts, hi) => pts.slice(1).map((p, i) => sk(pts[i], p, hi)).join('');
@@ -545,19 +545,20 @@ FIGURES.push({
     s += rule(10, 180, 330, 180);
     // ---- row 2: why the bridgehead cannot join a pi bond
     s += text(6, 200, 'a C=C from bridgehead C1 to C2?', { cls: 'fg-tag-mut', anchor: 'start' });
-    n = norbornane3D(P(186, 262), 1.25);
+    n = norbornane3D(P(204, 262), 1.15);
     s += sk(n.n2, n.n3) + sk(n.n3, n.n4) + sk(n.n4, n.n5) + sk(n.n5, n.n6) + sk(n.n6, n.n1) + sk(n.n1, n.n7) + sk(n.n7, n.n4);
     s += `<line class="fg-dash-hi" x1="${r2(n.n1.x)}" y1="${r2(n.n1.y)}" x2="${r2(n.n2.x)}" y2="${r2(n.n2.y)}"></line>`;
-    s += pOrb(n.n2, 90, 50, 11);
-    // C1's leftover orbital points away from its three bonds: out to the left
-    s += pOrb(n.n1, 172, 50, 11);
+    s += pOrb(n.n2, 90, 44, 10);
+    /* C1's three bonds all point right, into the cage, so the orbital it has
+       left over points out to the left: one lobe, drawn outside the cage. */
+    s += ell(n.n1.x - 24, n.n1.y + 3, 22, 10, 172, 'fg-orb');
     s += dot(n.n1) + dot(n.n2, 'fg-fill-mut', 3.5);
-    s += text(n.n1.x + 4, n.n1.y + 26, 'C1', { cls: 'fg-tag' });
-    s += text(n.n2.x + 18, n.n2.y + 18, 'C2', { cls: 'fg-tag' });
-    s += tag(62, 232, 'C1: bonds pulled');
-    s += tag(62, 248, 'to one side');
-    s += tag(170, 334, 'orbitals at right angles: no π bond', { cls: 'fg-tag-warn' });
-    s += rule(10, 350, 330, 350);
+    s += text(n.n1.x + 2, n.n1.y - 12, 'C1', { cls: 'fg-tag' });
+    s += text(n.n2.x - 22, n.n2.y + 12, 'C2', { cls: 'fg-tag' });
+    s += tag(60, 296, 'C1: bonds pulled');
+    s += tag(60, 312, 'to one side');
+    s += tag(170, 350, 'orbitals at right angles: no π bond', { cls: 'fg-tag-warn' });
+    s += rule(10, 364, 330, 364);
     // ---- row 3: the two bridgehead alkenes, flat and numbered
     const numbered = (cx, cy, big) => {
       const b = bicycleFlat(cx, cy, big);
@@ -574,17 +575,17 @@ FIGURES.push({
       labels.forEach(([p, v, dx, dy]) => { t += text(p.x + dx, p.y + dy, v, { cls: 'fg-tag-mut' }); });
       return { t, ringSize: 2 + 2 * top };
     };
-    s += text(6, 370, 'bicyclo[2.2.1]hept-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
-    let r = numbered(85, 430, false);
+    s += text(6, 384, 'bicyclo[2.2.1]hept-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
+    let r = numbered(85, 456, false);
     s += r.t;
-    s += tag(85, 498, `largest ring: ${r.ringSize} atoms`);
-    s += tag(85, 518, 'cannot be isolated', { cls: 'fg-tag-warn' });
-    s += `<line class="fg-rule" x1="172" y1="380" x2="172" y2="522"></line>`;
-    s += text(180, 370, 'bicyclo[3.3.1]non-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
-    r = numbered(256, 430, true);
+    s += tag(85, 534, `largest ring: ${r.ringSize} atoms`);
+    s += tag(85, 554, 'cannot be isolated', { cls: 'fg-tag-warn' });
+    s += `<line class="fg-rule" x1="172" y1="394" x2="172" y2="558"></line>`;
+    s += text(180, 384, 'bicyclo[3.3.1]non-1-ene', { cls: 'fg-tag-mut', anchor: 'start' });
+    r = numbered(256, 456, true);
     s += r.t;
-    s += tag(256, 498, `largest ring: ${r.ringSize} atoms`);
-    s += tag(256, 518, 'can be isolated', { cls: 'fg-tag-good' });
+    s += tag(256, 534, `largest ring: ${r.ringSize} atoms`);
+    s += tag(256, 554, 'can be isolated', { cls: 'fg-tag-good' });
     return s;
   },
   caption: 'Top: the flat drawing is for counting, the 3D drawing shows the shape. Middle: compare the direction of the two orbitals. Bottom: count the atoms of the highlighted ring, the largest ring that contains the double bond.',
