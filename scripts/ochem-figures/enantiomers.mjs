@@ -500,11 +500,13 @@ FIGURES.push({
     s += tg(170, 236, 'crystallize,', 'middle', 'fg-tag-mut');
     s += tg(170, 252, 'then add HCl', 'middle', 'fg-tag-mut');
     s += panel(12, 270, 152, 60, { kind: 'good' });
-    s += lbl(88, 295, 'crystals: mostly');
-    s += lbl(88, 315, 'one enantiomer');
+    s += lbl(88, 290, 'from crystals:');
+    s += lbl(88, 306, 'mostly one');
+    s += lbl(88, 322, 'enantiomer');
     s += panel(176, 270, 152, 60, {});
-    s += lbl(252, 295, 'solution: rich');
-    s += lbl(252, 315, 'in the other');
+    s += lbl(252, 290, 'from solution:');
+    s += lbl(252, 306, 'rich in');
+    s += lbl(252, 322, 'the other');
     s += tg(170, 356, 'the amine is recovered and reused', 'middle', 'fg-tag-mut');
     s += tg(170, 386, 'acid = ibuprofen', 'middle', 'fg-tag-mut');
     s += tg(170, 404, 'amine = (S)-1-phenylethylamine', 'middle', 'fg-tag-mut');
