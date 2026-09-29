@@ -473,3 +473,42 @@ confirm it.
   share"). The cis-but-2-ene dipole is "small" (0.33 D in older texts, 0.25 D in the CRC). The
   alkyne deprotonation equilibrium of about 10¹³ assumes NH₃ pKa 38 (the course value). The C≡C
   bond energy of about 200 kcal/mol is an average (ethyne itself is nearer 230).
+
+## Conjugation (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### conjugation-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `conjugated-systems`, `diene-addition`, `kinetic-thermodynamic`, `diels-alder`, `uv-vis`.
+- **Positions taken:**
+  - Order across pages: Diene addition gives the diene facts (ratios, the warming experiment,
+    why each product wins) and points ahead; Kinetic vs thermodynamic control owns the general
+    definitions. Enolates and sulfonation appear there only as a marked preview.
+  - E2 is described in the page's own terms: the Hofmann alkene is the kinetic product, E2 is
+    always under kinetic control, and heating never switches it. Some courses avoid these
+    words for reactions that cannot reverse.
+  - Why 1,2-addition is faster: the charge argument is graded; the ion-pair proximity effect is
+    mentioned beside it. Br₂ with buta-1,3-diene is drawn as a bromonium opening to an allylic
+    cation (the real intermediate may be a lopsided bromonium, with some direct SN2′ 1,4-attack);
+    the Br₂ cold/warm trend is given without numbers (literature roughly 54:46 at −15 °C to
+    10:90 at 60 °C). The penta-1,3-diene "same product either way" is true of constitution only.
+  - Butadiene's short C2–C3 bond: conjugation is the graded reading; the page says sp²
+    hybridization also contributes and the split is debated. ψ₁ is said to have "no node between
+    the carbons". The s-cis cost of 12 kJ/mol is for the skewed minimum.
+  - Diels–Alder: endo selectivity is taught with a hedge (secondary orbital interaction is the
+    usual explanation; the contributions are debated). Regiochemistry uses the resonance and
+    partial-charge model, not orbital coefficients; "the 1,3 product is never the main one" is a
+    generalization with exceptions. Three pericyclic classes are named (some texts give five).
+    Names kept for course consistency: propenal and propenenitrile (IUPAC prop-2-enal,
+    prop-2-enenitrile); "cis" rather than a rel-(1R,2S) descriptor.
+  - UV-Vis: the course grades the Woodward–Fieser acyclic diene base as 217 nm and names 214 once.
+    The dye question keys "orange" for a broad band at 420–490 nm.
+
+### conjugation-numbers: values that need a source
+- **Status:** pending review.
+- **Notes:** (E,E)-hexa-2,4-diene about 227 nm; cyclohexa-1,3-diene about 256 nm; cholesta-3,5-diene
+  about 235 nm (against a 234 nm prediction). Butadiene's delocalization energy is kept at
+  15 kJ/mol to match the hydrogenation page (gas-phase data give about 17). Allene's heat of
+  hydrogenation is given as 298 kJ/mol (NIST about 295).

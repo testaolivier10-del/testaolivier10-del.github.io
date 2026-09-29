@@ -310,40 +310,44 @@
       12:['redox-stereochemistry','alkene-cleavage-scope'] } },
 
     /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
-    'conjugated-systems': { n:8, steps:{
+    'conjugated-systems': { n:9, steps:{
       2:['conjugation-recognition'],
       3:['conjugation-recognition'],
-      4:['conjugation-recognition'],
-      6:['allylic-capture','conjugation-recognition'],
-      7:['conjugation-recognition'] } },
+      5:['conjugation-recognition'],
+      7:['allylic-capture','conjugation-recognition'],
+      8:['conjugation-recognition'] } },
 
-    'diene-addition': { n:8, steps:{
+    'diene-addition': { n:13, steps:{
       2:['allylic-capture'],
-      3:['allylic-capture'],
-      4:['kinetic-vs-thermodynamic','allylic-capture'],
+      4:['allylic-capture'],
       6:['kinetic-vs-thermodynamic'],
-      7:['allylic-capture','kinetic-vs-thermodynamic'] } },
+      8:['kinetic-vs-thermodynamic','allylic-capture'],
+      10:['kinetic-vs-thermodynamic'],
+      12:['allylic-capture','kinetic-vs-thermodynamic'] } },
 
-    'kinetic-thermodynamic': { n:8, steps:{
-      2:['kinetic-vs-thermodynamic'],
+    'kinetic-thermodynamic': { n:9, steps:{
       3:['kinetic-vs-thermodynamic'],
       4:['kinetic-vs-thermodynamic'],
-      6:['kinetic-vs-thermodynamic','allylic-capture'],
-      7:['kinetic-vs-thermodynamic'] } },
+      5:['kinetic-vs-thermodynamic','allylic-capture'],
+      6:['kinetic-vs-thermodynamic'],
+      8:['kinetic-vs-thermodynamic'] } },
 
-    'diels-alder': { n:8, steps:{
-      2:['cycloaddition-geometry','conjugation-recognition'],
-      3:['cycloaddition-geometry'],
+    'diels-alder': { n:16, steps:{
+      3:['cycloaddition-geometry','conjugation-recognition'],
       4:['cycloaddition-geometry'],
       6:['cycloaddition-geometry'],
-      7:['cycloaddition-geometry'] } },
+      8:['cycloaddition-geometry'],
+      10:['cycloaddition-geometry'],
+      13:['cycloaddition-geometry','kinetic-vs-thermodynamic'],
+      15:['cycloaddition-geometry'] } },
 
-    'uv-vis': { n:8, steps:{
+    'uv-vis': { n:11, steps:{
       2:['conjugation-recognition'],
       3:['conjugation-recognition'],
-      4:['conjugation-recognition'],
-      6:['conjugation-recognition'],
-      7:['conjugation-recognition'] } },
+      5:['conjugation-recognition'],
+      7:['conjugation-recognition'],
+      9:['conjugation-recognition'],
+      10:['conjugation-recognition'] } },
 
     'naming-parent-chain': { n:11, steps:{
       2:['parent-chain'],

@@ -105,7 +105,7 @@
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
-    <div class="label" id="progLabel">Step 1 / 8</div>
+    <div class="label" id="progLabel">Step 1 / 9</div>
   </div>
   <div class="lesson-card" id="card"></div>
 </div>
@@ -136,16 +136,15 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
 (function(){
-  /* Three dienes, one of each kind. The student sorts them, which is the whole
-     vocabulary of the chapter in one exercise — and the ordering below is
-     deliberately not the order of the answers. */
+  /* Three dienes, one of each kind, listed in an order that differs from the
+     order of the answers. */
   var CASES = [
     { id:'d1', name:'CH₂=CH–CH₂–CH₂–CH=CH₂', label:'hexa-1,5-diene', right:'isolated',
-      why:'Two sp³ carbons separate the double bonds, so their p orbitals never meet. Each alkene behaves as though the other were not there.' },
+      why:'Two sp³ carbons separate the double bonds, so their p orbitals never meet. Each double bond behaves as though the other were not there.' },
     { id:'d2', name:'CH₂=C=CH–CH₃', label:'buta-1,2-diene', right:'cumulated',
-      why:'The two double bonds share a carbon. That central carbon is sp, and the two π systems are perpendicular — they cannot overlap with each other at all.' },
+      why:'The two double bonds share a carbon. That carbon is sp, and the two π systems are perpendicular, so they cannot overlap at all.' },
     { id:'d3', name:'CH₂=CH–CH=CH₂', label:'buta-1,3-diene', right:'conjugated',
-      why:'Alternating single and double bonds, every carbon sp², p orbitals overlapping continuously. This is the arrangement worth about 15 kJ/mol of extra stability.' }
+      why:'The double bonds alternate with single bonds, so every carbon is sp² and the p orbitals overlap in one continuous row. This arrangement earns about 15 kJ/mol of extra stability.' }
   ];
   var KINDS = [
     { key:'isolated', label:'Isolated' },
@@ -163,27 +162,29 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Two double bonds, three possible arrangements.',
-        bodyHtml: '<ul class="step-body">' +
-          '<li><b>Isolated</b> — separated by <b>at least one</b> sp³ carbon, so the run of p orbitals is broken and they never meet. One is enough: penta-1,4-diene is isolated. Each double bond behaves as though the other were not there.</li>' +
-          '<li><b>Conjugated</b> — alternating with single bonds, so every carbon in the run is sp² and the p orbitals form one continuous overlapping system.</li>' +
-          '<li><b>Cumulated</b> — sharing a carbon, as in propa-1,2-diene. That central carbon is sp, the two π systems are perpendicular, and they cannot conjugate at all.</li>' +
-          '</ul>' +
-          '<p class="step-body" style="margin-bottom:0;">Conjugation is not limited to double bonds. A lone pair, a carbocation\'s empty p orbital or a radical\'s half-filled one conjugates with an adjacent π bond in exactly the same way — which is why allylic and benzylic cations, radicals and anions are so much more stable than their ordinary counterparts. It is the same delocalization you drew as resonance; conjugation is the orbital picture of it.</p>'
+        bodyHtml: '<p class="step-body">A <b>diene</b> is a molecule with two C=C double bonds. Compare three small ones. In penta-1,4-diene, CH₂=CH–CH₂–CH=CH₂, a CH₂ sits between the double bonds. In buta-1,3-diene, CH₂=CH–CH=CH₂, one single bond joins them. In allene, CH₂=C=CH₂, they share a carbon. What matters is whether the p orbitals of one double bond can overlap with those of the other.</p>' +
+          '<ul class="step-body">' +
+          '<li><b>Isolated</b>: at least one sp³ carbon separates the double bonds, so the row of p orbitals breaks there. One is enough, so penta-1,4-diene is isolated. Each double bond behaves as though the other were not there.</li>' +
+          '<li><b>Conjugated</b>: the double bonds alternate with single bonds. Every carbon in the run is sp², so the p orbitals form one continuous row.</li>' +
+          '<li><b>Cumulated</b>: the double bonds share a carbon, as in allene. That carbon is sp, and it uses two p orbitals at right angles, one for each π bond. The two π bonds are perpendicular and cannot overlap at all.</li>' +
+          '</ul>',
+        diagramHtml: '<!-- fig:l-diene-arrangements:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 690" role="img" aria-label="Three dienes stacked, drawn as rows of p orbitals. Isolated, penta-1,4-diene: no p orbital on C3, so two separate pairs. Conjugated, buta-1,3-diene: one row of four p orbitals. Cumulated, allene: the C1=C2 lobes point up and down and the C2=C3 lobes point toward and away from the reader."><rect class="fg-panel" x="8" y="6" width="324" height="210" rx="10"></rect><text class="fg-tag" x="170" y="30" text-anchor="middle" font-size="11">isolated: penta-1,4-diene</text><rect class="fg-fill-good" x="68" y="62" width="72" height="30" rx="12" opacity="0.16"></rect><rect class="fg-fill-good" x="200" y="62" width="72" height="30" rx="12" opacity="0.16"></rect><line class="fg-bond-soft" x1="82" y1="106" x2="126" y2="106"></line><line class="fg-bond-soft" x1="126" y1="106" x2="170" y2="106"></line><line class="fg-bond-soft" x1="170" y1="106" x2="214" y2="106"></line><line class="fg-bond-soft" x1="214" y1="106" x2="258" y2="106"></line><circle class="fg-atom" cx="82" cy="106" r="3.5"></circle><circle class="fg-atom" cx="126" cy="106" r="3.5"></circle><circle class="fg-atom" cx="170" cy="106" r="3.5"></circle><circle class="fg-atom" cx="214" cy="106" r="3.5"></circle><circle class="fg-atom" cx="258" cy="106" r="3.5"></circle><ellipse class="fg-orb" cx="82" cy="85" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="82" cy="127" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="126" cy="85" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="126" cy="127" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="214" cy="85" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="214" cy="127" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="258" cy="85" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="258" cy="127" rx="12" ry="19" fill-opacity="0.18"></ellipse><text class="fg-tag-warn" x="170" y="90" text-anchor="middle" font-size="10">sp³</text><text class="fg-lbl" x="82" y="164" text-anchor="middle" font-size="11">C1</text><text class="fg-lbl" x="126" y="164" text-anchor="middle" font-size="11">C2</text><text class="fg-lbl" x="170" y="164" text-anchor="middle" font-size="11">C3</text><text class="fg-lbl" x="214" y="164" text-anchor="middle" font-size="11">C4</text><text class="fg-lbl" x="258" y="164" text-anchor="middle" font-size="11">C5</text><text class="fg-tag" x="170" y="186" text-anchor="middle" font-size="11">no p orbital on C3</text><text class="fg-tag" x="170" y="204" text-anchor="middle" font-size="11">two separate π systems</text><rect class="fg-panel-good" x="8" y="226" width="324" height="210" rx="10"></rect><text class="fg-tag-good" x="170" y="250" text-anchor="middle" font-size="11">conjugated: buta-1,3-diene</text><rect class="fg-fill-good" x="84" y="282" width="172" height="30" rx="12" opacity="0.16"></rect><line class="fg-bond-soft" x1="98" y1="326" x2="146" y2="326"></line><line class="fg-bond-soft" x1="146" y1="326" x2="194" y2="326"></line><line class="fg-bond-soft" x1="194" y1="326" x2="242" y2="326"></line><circle class="fg-atom" cx="98" cy="326" r="3.5"></circle><circle class="fg-atom" cx="146" cy="326" r="3.5"></circle><circle class="fg-atom" cx="194" cy="326" r="3.5"></circle><circle class="fg-atom" cx="242" cy="326" r="3.5"></circle><ellipse class="fg-orb" cx="98" cy="305" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="98" cy="347" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="146" cy="305" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="146" cy="347" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="194" cy="305" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="194" cy="347" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="242" cy="305" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="242" cy="347" rx="12" ry="19" fill-opacity="0.18"></ellipse><text class="fg-lbl" x="98" y="384" text-anchor="middle" font-size="11">C1</text><text class="fg-lbl" x="146" y="384" text-anchor="middle" font-size="11">C2</text><text class="fg-lbl" x="194" y="384" text-anchor="middle" font-size="11">C3</text><text class="fg-lbl" x="242" y="384" text-anchor="middle" font-size="11">C4</text><text class="fg-tag" x="170" y="406" text-anchor="middle" font-size="11">one unbroken row, C1 to C4</text><text class="fg-tag-good" x="170" y="424" text-anchor="middle" font-size="10">one π system</text><rect class="fg-panel" x="8" y="446" width="324" height="238" rx="10"></rect><text class="fg-tag" x="170" y="470" text-anchor="middle" font-size="11">cumulated: allene, CH₂=C=CH₂</text><line class="fg-bond-soft" x1="104" y1="546" x2="170" y2="546"></line><line class="fg-bond-soft" x1="170" y1="546" x2="236" y2="546"></line><circle class="fg-atom" cx="104" cy="546" r="3.5"></circle><circle class="fg-atom" cx="170" cy="546" r="3.5"></circle><circle class="fg-atom" cx="236" cy="546" r="3.5"></circle><rect class="fg-fill-good" x="90" y="502" width="94" height="30" rx="12" opacity="0.16"></rect><ellipse class="fg-orb" cx="104" cy="525" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="104" cy="567" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="170" cy="525" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="170" cy="567" rx="12" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="151.98" cy="558.62" rx="20" ry="9" fill-opacity="0.18" transform="rotate(-215 151.98 558.62)"></ellipse><ellipse class="fg-orb-alt" cx="188.02" cy="533.38" rx="20" ry="9" fill-opacity="0.18" transform="rotate(-215 188.02 533.38)"></ellipse><ellipse class="fg-orb" cx="217.98" cy="558.62" rx="20" ry="9" fill-opacity="0.18" transform="rotate(-215 217.98 558.62)"></ellipse><ellipse class="fg-orb-alt" cx="254.02" cy="533.38" rx="20" ry="9" fill-opacity="0.18" transform="rotate(-215 254.02 533.38)"></ellipse><text class="fg-lbl" x="104" y="604" text-anchor="middle" font-size="11">C1</text><text class="fg-lbl" x="170" y="604" text-anchor="middle" font-size="11">C2</text><text class="fg-lbl" x="236" y="604" text-anchor="middle" font-size="11">C3</text><text class="fg-tag-warn" x="170" y="500" text-anchor="middle" font-size="10">sp</text><text class="fg-tag" x="170" y="626" text-anchor="middle" font-size="11">C1=C2 lobes: up and down</text><text class="fg-tag" x="170" y="644" text-anchor="middle" font-size="11">C2=C3 lobes: toward you and away</text><text class="fg-tag-warn" x="170" y="672" text-anchor="middle" font-size="10">two π systems at 90°</text></svg><figcaption>Follow the p orbitals along each molecule. Bands mark up-and-down p orbitals that overlap. In allene, the p orbitals of C2=C3 overlap front to back instead, and the two pairs never meet.</figcaption></figure><!-- fig:l-diene-arrangements:end -->'
       },
       {
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Conjugation is worth about 15 kJ/mol, and you can measure it.',
-        bodyHtml: '<p class="step-body">The claim that a conjugated diene is "more stable" is not a hand-wave — heats of hydrogenation put a number on it. Hydrogenating but-1-ene releases about <b>127 kJ/mol</b>. Two isolated double bonds should therefore release about twice that, roughly <b>254</b>, and penta-1,4-diene does.</p>' +
-          '<p class="step-body">Buta-1,3-diene releases about <b>239 kJ/mol</b>. It gives out <i>less</i> energy reaching the same kind of product, which means it started lower down: it was already about <b>15 kJ/mol</b> more stable than two isolated double bonds. That difference is the delocalization energy.</p>' +
-          '<div class="explain-box">A second, independent piece of evidence: the C2–C3 bond of buta-1,3-diene — formally a single bond — is about <b>1.47 Å</b>, shorter than an ordinary C–C single bond at 1.54 Å and on its way toward a double bond at 1.34 Å. The π system really is spread over all four carbons, so that "single" bond carries partial double-bond character.</div>'
+        bodyHtml: '<p class="step-body">The <b>heat of hydrogenation</b>, the heat given out when H₂ adds across a C=C, puts a number on conjugation. The less heat a compound gives out on the way to the same kind of product (an alkane), the lower it started. Hydrogenating but-1-ene gives out about <b>127 kJ/mol</b>. Two independent double bonds should give out twice that, <b>254</b>, and penta-1,4-diene gives out almost exactly that.</p>' +
+          '<p class="step-body">Buta-1,3-diene gives out only about <b>239 kJ/mol</b>. So it started lower, by 254 − 239 = <b>15 kJ/mol</b>. That is the <b>delocalization energy</b>, the extra stability from π electrons spread over more atoms. Allene goes the other way: it gives out about <b>298 kJ/mol</b>, more than two isolated C=C, so it starts higher. From most to least stable, the measured order is conjugated, isolated, cumulated.</p>' +
+          '<div class="explain-box">Bond lengths agree. The C2–C3 bond of buta-1,3-diene is formally single, yet it is about <b>1.47 Å</b>, against 1.54 Å for an ordinary C–C single bond and 1.34 Å for a C=C. The π electrons spread over all four carbons, so C2–C3 has partial double-bond character. (Part of the shortening also comes from C2 and C3 being sp², since more s-character makes a shorter bond.)</div>',
+        diagramHtml: '<!-- fig:l-delocalization-energy:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 360" role="img" aria-label="Four bars of heat released on hydrogenation: but-1-ene 127, penta-1,4-diene 254, buta-1,3-diene 239, allene 298 kilojoules per mole. A dashed line at 254 shows buta-1,3-diene falls 15 short and allene runs past it."><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">heat released on hydrogenation</text><text class="fg-tag" x="16" y="52" text-anchor="start" font-size="11">but-1-ene (one C=C)</text><rect class="fg-fill-hi" x="16" y="60" width="124.46" height="24" rx="7" opacity="0.34"></rect><text class="fg-lbl" x="132.46" y="77" text-anchor="end" font-size="12.5">127</text><text class="fg-tag" x="16" y="122" text-anchor="start" font-size="11">penta-1,4-diene (isolated)</text><rect class="fg-fill-hi" x="16" y="130" width="248.92" height="24" rx="7" opacity="0.34"></rect><text class="fg-lbl" x="256.92" y="147" text-anchor="end" font-size="12.5">254</text><text class="fg-tag" x="16" y="192" text-anchor="start" font-size="11">buta-1,3-diene (conjugated)</text><rect class="fg-fill-good" x="16" y="200" width="234.22" height="24" rx="7" opacity="0.34"></rect><text class="fg-lbl" x="242.22" y="217" text-anchor="end" font-size="12.5">239</text><text class="fg-tag" x="16" y="262" text-anchor="start" font-size="11">allene (cumulated)</text><rect class="fg-fill-warn" x="16" y="270" width="292.04" height="24" rx="7" opacity="0.34"></rect><text class="fg-lbl" x="300.04" y="287" text-anchor="end" font-size="12.5">298</text><line class="fg-dash" x1="264.92" y1="126" x2="264.92" y2="300"></line><line class="fg-rule" x1="250.22" y1="228" x2="250.22" y2="238"></line><line class="fg-rule" x1="250.22" y1="238" x2="264.92" y2="238"></line><text class="fg-tag-good" x="270.92" y="222" text-anchor="start" font-size="10">15 short</text><text class="fg-tag-warn" x="258.92" y="318" text-anchor="end" font-size="10">44 past the line</text><text class="fg-tag" x="170" y="346" text-anchor="middle" font-size="11">values in kJ/mol</text></svg><figcaption>The dashed line marks two independent double bonds. The conjugated diene stops short of it; allene runs past it.</figcaption></figure><!-- fig:l-delocalization-energy:end -->'
       },
       {
         render: function(api){
           api.card.innerHTML =
             '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
             '<h2 class="step-title">Sort each diene by how its double bonds are arranged.</h2>' +
-            '<p class="step-body">Look at what sits between the two double bonds: nothing at all, one single bond, or a shared carbon.</p>' +
+            '<p class="step-body">Look at what sits between the two double bonds: a shared carbon, one single bond, or at least one sp³ carbon.</p>' +
             '<div class="radical-sort">' +
             CASES.map(function(c){
               return '<div class="radical-row" data-case="' + c.id + '">' +
@@ -205,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-kind') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Not that one. Count what lies between the two double bonds: a shared carbon means cumulated, one single bond means conjugated, and one or more sp³ carbons means isolated.');
+                api.showFeedback(fb, false, 'Not that one. Check what lies between the two double bonds: a shared carbon means cumulated, one single bond means conjugated, and one or more sp³ carbons means isolated.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -213,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All three. The stability order runs conjugated > isolated > cumulated, and only the conjugated one gets the extra 15 kJ/mol.'
-                  : 'All three, first time. Stability runs conjugated > isolated > cumulated — and only the conjugated arrangement earns the delocalization energy.');
+                  ? 'All three sorted. The heats of hydrogenation rank them: conjugated is the most stable, isolated next, and cumulated the least.'
+                  : 'All three, first time. The heats of hydrogenation rank them: conjugated is the most stable, isolated next, and cumulated the least.');
                 api.record(!missed);
                 next.disabled = false;
               }
@@ -225,60 +226,80 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 4 · Guided Practice',
-        title: 'Why is the C2–C3 bond of buta-1,3-diene shorter than an ordinary C–C single bond?',
-        options: ['Because the molecule is smaller overall','Because it has partial double-bond character','Because the carbons are sp hybridized','Because the hydrogens repel less there'],
-        correctIndex: 1,
-        correctFeedback: 'Correct. The π system is delocalized across all four carbons, so the formally single bond carries some double-bond character — 1.47 Å against 1.54 Å for a plain single bond.',
-        wrongFeedback: 'The bond length is reporting on the electrons in it. Ask what a delocalized π system does to a bond that a localized picture calls single.'
-      },
-      {
-        type: 'mcq',
-        eyebrow: 'Step 5 · Independent Practice',
-        title: 'What is the difference between s-cis and cis?',
+        eyebrow: 'Guided Practice',
+        title: 'The C2–C3 bond of buta-1,3-diene is 1.47 Å, shorter than an ordinary C–C single bond. What does conjugation do to that bond?',
         options: [
-          'None; s-cis is just an older spelling',
-          's-cis is a conformation about a single bond; cis is a configuration about a double bond',
-          's-cis applies to rings and cis to chains',
-          's-cis means the molecule is symmetric'
+          'It gives the bond partial double-bond character',
+          'It turns C2 and C3 into sp carbons, like an alkyne',
+          'It squeezes C2 and C3 together through steric strain',
+          'It removes all π electron density from C2–C3'
         ],
-        correctIndex: 1,
-        correctFeedback: 'Correct, and the s stands for single. s-cis and s-trans interconvert freely by rotation at room temperature and are not separate compounds. cis and trans across a double bond cannot interconvert without breaking the π bond, and are.',
-        wrongFeedback: 'Look at which bond each term describes. One of them is about rotation, which is free; the other is about a geometry that is locked.'
+        correctIndex: 0,
+        correctFeedback: 'Correct. The π electrons spread over all four carbons, so some of them sit between C2 and C3. That formally single bond gains some double-bond character: 1.47 Å, between 1.54 Å for a single bond and 1.34 Å for a double bond.',
+        wrongFeedback: 'A bond gets shorter when more electrons hold its two atoms together. Ask where the π electrons of a conjugated diene are.'
       },
       {
         type: 'explain',
-        eyebrow: 'Why it matters',
-        title: 'The s-cis conformation is the one the next reactions need.',
-        bodyHtml: '<p class="step-body">Because the central bond of a conjugated diene is a single bond, the two ends rotate about it. <b>s-trans</b>, with the double bonds pointing in opposite directions, is the more stable conformation and where most dienes sit most of the time. <b>s-cis</b>, with both pointing the same way, costs about <b>12 kJ/mol</b> — not a rounding error, but nearly as much as the whole delocalization energy. The cost is one specific clash: the hydrogen on C1 and the hydrogen on C4 that point inward at each other.</p>' +
-          '<p class="step-body" style="margin-bottom:0;">The s-cis conformation matters out of all proportion to its population, because <b>the Diels–Alder reaction requires it</b> — the two ends of the diene have to reach the two ends of the dienophile at once. A diene locked s-cis inside a ring, like cyclopentadiene, is unusually reactive. A diene locked s-trans cannot do the reaction at all, however electron-rich it is. This is the commonest reason a Diels–Alder does not happen, and it is geometric rather than electronic.</p>'
+        eyebrow: 'Explain',
+        title: 'The central single bond can rotate: s-cis and s-trans.',
+        bodyHtml: '<p class="step-body">The C2–C3 bond of buta-1,3-diene is a single bond, so the two halves of the molecule rotate about it. The names s-trans and s-cis carry an <b>s</b> for <i>single</i>, the bond the rotation happens about. In <b>s-trans</b>, the two double bonds point in opposite directions across C2–C3. This is the more stable conformation. In <b>s-cis</b>, both point the same way. It costs about <b>12 kJ/mol</b>, because the inward-pointing hydrogens on C1 and C4 run into each other.</p>' +
+          '<p class="step-body">Do not confuse these with <i>cis</i> and <i>trans</i> across a double bond. Cis and trans are configurations: turning one into the other means breaking a π bond, so they are two compounds. s-cis and s-trans are conformations of one compound, and they interconvert freely by rotation at room temperature.</p>' +
+          '<p class="step-body">A ring can lock the choice. Cyclopentadiene is locked s-cis, and two fused rings can lock a diene s-trans.</p>' +
+          '<div class="explain-box"><b>Looking ahead:</b> the Diels–Alder reaction, later in this chapter, needs the s-cis form, so a diene locked s-trans cannot take part in it.</div>',
+        diagramHtml: '<!-- fig:l-s-cis-s-trans:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 560" role="img" aria-label="Stacked panels. Buta-1,3-diene s-trans, with the double bonds on opposite sides of the highlighted C2–C3 bond. Rotation arrow. The s-cis form, with both double bonds on the same side and the inward hydrogens on C1 and C4 colliding. Below, cyclopentadiene locked s-cis and two fused rings locked s-trans."><rect class="fg-panel" x="8" y="6" width="324" height="128" rx="10"></rect><text class="fg-tag" x="170" y="28" text-anchor="middle" font-size="11">s-trans: C=C on opposite sides</text><line class="fg-bond" x1="95.88" y1="98.61" x2="143.88" y2="68.61"></line><line class="fg-bond" x1="100.12" y1="105.39" x2="148.12" y2="75.39"></line><line class="fg-bond-hi" x1="146" y1="72" x2="194" y2="102"></line><line class="fg-bond" x1="191.88" y1="98.61" x2="239.88" y2="68.61"></line><line class="fg-bond" x1="196.12" y1="105.39" x2="244.12" y2="75.39"></line><text class="fg-tag" x="94" y="122" text-anchor="middle" font-size="11">C1</text><text class="fg-tag" x="246" y="62" text-anchor="middle" font-size="11">C4</text><line class="fg-arrow" x1="170" y1="140" x2="170" y2="160"></line><path class="fg-head" d="M170 168 L165.84 160 L174.16 160 Z"></path><line class="fg-arrow" x1="170" y1="168" x2="170" y2="148"></line><path class="fg-head" d="M170 140 L174.16 148 L165.84 148 Z"></path><text class="fg-tag" x="186" y="158" text-anchor="start" font-size="11">rotate about C2–C3</text><rect class="fg-panel-warn" x="8" y="174" width="324" height="150" rx="10"></rect><text class="fg-tag" x="170" y="196" text-anchor="middle" font-size="11">s-cis: C=C on the same side</text><line class="fg-bond" x1="123.54" y1="244.14" x2="145.54" y2="286.14"></line><line class="fg-bond" x1="116.46" y1="247.86" x2="138.46" y2="289.86"></line><line class="fg-bond-hi" x1="142" y1="288" x2="198" y2="288"></line><line class="fg-bond" x1="194.46" y1="286.14" x2="216.46" y2="244.14"></line><line class="fg-bond" x1="201.54" y1="289.86" x2="223.54" y2="247.86"></line><line class="fg-bond" x1="120" y1="246" x2="142.4" y2="229.2"></line><line class="fg-bond" x1="220" y1="246" x2="197.6" y2="229.2"></line><circle class="fg-atom-warn" cx="152" cy="222" r="12"></circle><text class="fg-lbl" x="152" y="226.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom-warn" cx="188" cy="222" r="12"></circle><text class="fg-lbl" x="188" y="226.44" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="104" y="250" text-anchor="end" font-size="11">C1</text><text class="fg-tag" x="236" y="250" text-anchor="start" font-size="11">C4</text><text class="fg-tag-warn" x="170" y="314" text-anchor="middle" font-size="11">inward H atoms collide</text><rect class="fg-panel" x="8" y="334" width="158" height="220" rx="10"></rect><text class="fg-tag" x="87" y="356" text-anchor="middle" font-size="11">cyclopentadiene</text><line class="fg-bond" x1="87" y1="402" x2="123.14" y2="428.26"></line><line class="fg-bond" x1="50.86" y1="428.26" x2="87" y2="402"></line><line class="fg-bond" x1="123.14" y1="428.26" x2="109.34" y2="470.74"></line><line class="fg-bond" x1="116.6" y1="433.49" x2="107.12" y2="462.66"></line><line class="fg-bond-hi" x1="109.34" y1="470.74" x2="64.66" y2="470.74"></line><line class="fg-bond" x1="64.66" y1="470.74" x2="50.86" y2="428.26"></line><line class="fg-bond" x1="66.88" y1="462.66" x2="57.4" y2="433.49"></line><text class="fg-tag" x="87" y="392" text-anchor="middle" font-size="11">CH₂</text><text class="fg-tag-good" x="87" y="520" text-anchor="middle" font-size="11">locked s-cis</text><rect class="fg-panel" x="174" y="334" width="158" height="220" rx="10"></rect><text class="fg-tag" x="253" y="356" text-anchor="middle" font-size="11">fused rings</text><line class="fg-bond" x1="253" y1="457" x2="223.56" y2="474"></line><line class="fg-bond" x1="223.56" y1="474" x2="194.11" y2="457"></line><line class="fg-bond" x1="194.11" y1="457" x2="194.11" y2="423"></line><line class="fg-bond" x1="194.11" y1="423" x2="223.56" y2="406"></line><line class="fg-bond" x1="282.44" y1="474" x2="311.89" y2="457"></line><line class="fg-bond" x1="311.89" y1="457" x2="311.89" y2="423"></line><line class="fg-bond" x1="311.89" y1="423" x2="282.44" y2="406"></line><line class="fg-bond" x1="282.44" y1="406" x2="253" y2="423"></line><line class="fg-bond-hi" x1="253" y1="423" x2="253" y2="457"></line><line class="fg-bond" x1="223.56" y1="406" x2="253" y2="423"></line><line class="fg-bond" x1="227.32" y1="413.48" x2="244.64" y2="423.48"></line><line class="fg-bond" x1="282.44" y1="474" x2="253" y2="457"></line><line class="fg-bond" x1="278.68" y1="466.52" x2="261.36" y2="456.52"></line><text class="fg-tag-warn" x="253" y="520" text-anchor="middle" font-size="11">locked s-trans</text></svg><figcaption>The highlighted bond is C2–C3. Check which side of it each C=C sits on.</figcaption></figure><!-- fig:l-s-cis-s-trans:end -->'
       },
       {
         type: 'mcq',
-        eyebrow: 'Step 7 · Independent Practice',
+        eyebrow: 'Independent Practice',
+        title: 'What is the difference between s-cis and cis?',
+        options: [
+          'Nothing; s-cis is an older spelling of cis used for dienes',
+          's-cis: rotation about a single bond; cis: fixed by a double bond',
+          's-cis is used for rings and bridged systems; cis is used for open chains',
+          's-cis compares priority groups, and cis compares hydrogens'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct, and the s stands for single. s-cis and s-trans interconvert by rotation at room temperature and are one compound. Cis and trans across a double bond cannot interconvert without breaking the π bond, so they are two compounds.',
+        wrongFeedback: 'Look at which bond each term describes. Rotation about one of them is free; the other is locked by a π bond.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explanation',
+        title: 'Where the allyl cation\'s charge goes.',
+        bodyHtml: '<p class="step-body">Conjugation also reaches past double bonds. In the allyl cation, CH₂=CH–CH₂⁺, the end carbon has an empty p orbital parallel to the p orbitals of the C=C, so the row runs over all three carbons. Any cation of this kind is called <b>allylic</b>.</p>' +
+          '<p class="step-body">Draw the two resonance forms of the allyl cation. A curved arrow moves the π electrons of C1=C2 into the C2–C3 bond, and the positive charge moves from C3 to C1. The charge appears on C1 in one form and on C3 in the other, and never on C2. The radical\'s odd electron and the anion\'s negative charge follow the same pattern.</p>' +
+          '<!-- fig:allyl-cation-resonance:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 220" role="img" aria-label="The two resonance forms of the allyl cation. Left: CH2=CH–CH2 plus, charge on C3, with a curved arrow from the C1=C2 double bond to the C2–C3 bond. Double-headed resonance arrow. Right: plus CH2–CH=CH2, charge on C1. C2 carries no charge in either form."><line class="fg-bond" x1="44.8" y1="120.85" x2="69.08" y2="106.29"></line><line class="fg-bond" x1="48.92" y1="127.71" x2="73.2" y2="113.15"></line><line class="fg-bond" x1="96.86" y1="109.72" x2="121.14" y2="124.28"></line><line class="fg-bond" x1="218.86" y1="124.28" x2="243.14" y2="109.72"></line><line class="fg-bond" x1="270.92" y1="106.29" x2="295.2" y2="120.85"></line><line class="fg-bond" x1="266.8" y1="113.15" x2="291.08" y2="127.71"></line><circle class="fg-atom" cx="34" cy="132" r="15"></circle><text class="fg-lbl" x="34" y="135.51" text-anchor="middle" font-size="9.5">CH₂</text><circle class="fg-atom" cx="84" cy="102" r="15"></circle><text class="fg-lbl" x="84" y="105.89" text-anchor="middle" font-size="10.5">CH</text><circle class="fg-atom" cx="134" cy="132" r="15"></circle><text class="fg-lbl" x="134" y="135.51" text-anchor="middle" font-size="9.5">CH₂</text><circle class="fg-atom" cx="206" cy="132" r="15"></circle><text class="fg-lbl" x="206" y="135.51" text-anchor="middle" font-size="9.5">CH₂</text><circle class="fg-atom" cx="256" cy="102" r="15"></circle><text class="fg-lbl" x="256" y="105.89" text-anchor="middle" font-size="10.5">CH</text><circle class="fg-atom" cx="306" cy="132" r="15"></circle><text class="fg-lbl" x="306" y="135.51" text-anchor="middle" font-size="9.5">CH₂</text><text class="fg-warn" x="134" y="108" text-anchor="middle" font-size="15">+</text><text class="fg-warn" x="206" y="108" text-anchor="middle" font-size="15">+</text><path class="fg-arrow" d="M52 110 Q83.55 47.51 113.65 102.85"></path><path class="fg-head" d="M117 109 L110.46 104.59 L116.85 101.11 Z"></path><line class="fg-arrow" x1="158" y1="132" x2="175" y2="132"></line><path class="fg-head" d="M182 132 L175 135.64 L175 128.36 Z"></path><line class="fg-arrow" x1="182" y1="132" x2="165" y2="132"></line><path class="fg-head" d="M158 132 L165 128.36 L165 135.64 Z"></path><text class="fg-tag" x="34" y="164" text-anchor="middle" font-size="11">C1</text><text class="fg-tag" x="84" y="134" text-anchor="middle" font-size="11">C2</text><text class="fg-tag" x="134" y="164" text-anchor="middle" font-size="11">C3</text><text class="fg-tag" x="206" y="164" text-anchor="middle" font-size="11">C1</text><text class="fg-tag" x="256" y="134" text-anchor="middle" font-size="11">C2</text><text class="fg-tag" x="306" y="164" text-anchor="middle" font-size="11">C3</text><text class="fg-tag-warn" x="84" y="190" text-anchor="middle" font-size="10">+ on C3</text><text class="fg-tag-warn" x="256" y="190" text-anchor="middle" font-size="10">+ on C1</text><text class="fg-tag" x="170" y="212" text-anchor="middle" font-size="11">C2 carries no charge in either form</text></svg><figcaption>Follow the curved arrow: the π electrons of C1=C2 move to C2–C3, so the positive charge moves from C3 to C1.</figcaption></figure><!-- fig:allyl-cation-resonance:end -->' +
+          '<p class="step-body">The orbitals agree. Overlapping p orbitals combine into <b>molecular orbitals</b> that spread over all the atoms, one for each p orbital, and a <b>node</b> is a place where an orbital is zero. The three allyl orbitals are labeled ψ₁ to ψ₃ from lowest to highest (ψ is the Greek letter psi). In the middle one, ψ₂, the node passes straight through C2, so C2 has no lobe in it. ψ₂ is empty in the cation, so the missing electrons, and the charge, belong to C1 and C3.</p>' +
+          '<!-- fig:l-allyl-psi2:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 200" role="img" aria-label="The allyl psi-2 orbital: p orbital lobes on C1 and C3 in opposite phases, no lobe on C2, and a dashed node line drawn through C2. It is empty in the allyl cation."><text class="fg-tag" x="170" y="20" text-anchor="middle" font-size="11">ψ₂ of the allyl system</text><line class="fg-bond-soft" x1="100" y1="96" x2="170" y2="96"></line><line class="fg-bond-soft" x1="170" y1="96" x2="240" y2="96"></line><circle class="fg-atom" cx="100" cy="96" r="3.5"></circle><circle class="fg-atom" cx="170" cy="96" r="3.5"></circle><circle class="fg-atom" cx="240" cy="96" r="3.5"></circle><ellipse class="fg-orb" cx="100" cy="75" rx="13" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="100" cy="117" rx="13" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="240" cy="75" rx="13" ry="19" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="240" cy="117" rx="13" ry="19" fill-opacity="0.18"></ellipse><line class="fg-orb-node" x1="170" y1="48" x2="170" y2="144"></line><text class="fg-tag" x="178" y="50" text-anchor="start" font-size="11">node</text><text class="fg-lbl" x="100" y="164" text-anchor="middle" font-size="12.5">C1</text><text class="fg-lbl" x="170" y="164" text-anchor="middle" font-size="12.5">C2</text><text class="fg-lbl" x="240" y="164" text-anchor="middle" font-size="12.5">C3</text><text class="fg-tag-warn" x="170" y="190" text-anchor="middle" font-size="11">empty in the cation: + on C1 and C3</text></svg><figcaption>C2 has no lobe in this orbital, so whatever it holds or lacks belongs to C1 and C3.</figcaption></figure><!-- fig:l-allyl-psi2:end -->' +
+          '<p class="step-body" style="margin-bottom:0;">A half-filled p orbital (the allyl radical) or a filled one (the allyl anion) joins the row the same way, and so does a lone pair next to a C=C, as on the oxygen of CH₂=CH–O–CH₃. In a benzylic cation, radical or anion, the carbon that carries the charge or the odd electron is bonded to a benzene ring, and its p orbital joins the ring\'s p orbitals. That is why allylic and benzylic cations, radicals and anions are much more stable than ordinary ones.</p>',
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
         title: 'Where does the positive charge sit in an allylic cation?',
         options: [
           'Spread evenly over all three carbons',
           'On the middle carbon only',
-          'On the two end carbons, and not in the middle',
+          'On C1 and C3',
           'On whichever carbon bears more hydrogens'
         ],
         correctIndex: 2,
-        correctFeedback: 'Correct. Draw the two resonance forms and the charge appears at the termini, never at the center carbon. This is general for conjugated systems, and the orbital picture says the same thing: the orbital whose occupancy changes across cation, radical and anion has its node running through the central carbon, so that atom contributes nothing to it. Reactivity sits at the ends, which is exactly why a conjugated diene gives two addition products rather than one.',
-        wrongFeedback: 'Draw both resonance forms and mark where the charge appears in each. One carbon never carries it in either form.'
+        correctFeedback: 'Correct. The two resonance forms put the charge on C1 and on C3, and never on C2. The orbital picture says the same: ψ₂, the empty orbital in the cation, has no lobe on C2. That is why a conjugated diene can give two addition products, which the next lesson follows.',
+        wrongFeedback: 'Draw both resonance forms and mark where the charge appears in each. One carbon never carries it.'
       },
       {
         type: 'final',
         eyebrow: 'Challenge',
-        title: 'Propa-1,2-diene (allene) has two double bonds on adjacent bonds. Why is it NOT conjugated?',
+        title: 'Allene, CH₂=C=CH₂, has two double bonds that share a carbon. Why is it NOT conjugated?',
         options: [
-          'It is conjugated; the name simply differs',
-          'Its central carbon is sp, so the two π systems are perpendicular and cannot overlap',
-          'It has too few carbons for conjugation',
-          'Its double bonds are too far apart to interact'
+          'It is conjugated; the two double bonds simply share a carbon',
+          'Its two π bonds use p orbitals set at right angles',
+          'It has only three carbons, too few for a conjugated system',
+          'Its middle carbon is sp³, which breaks the row of p orbitals'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. Conjugation needs p orbitals that are parallel enough to overlap. The sp center of an allene holds its two π systems at right angles to each other, so they are as electronically isolated as if sp³ carbons separated them — and cumulated dienes are the least stable of the three arrangements rather than the most. Adjacency is not the criterion; alignment is.'
+        correctFeedback: 'Correct. Conjugation needs p orbitals parallel enough to overlap. The sp middle carbon of allene holds its two π bonds at right angles, so electrons cannot spread from one π bond into the other, and allene gets no delocalization energy. Its heat of hydrogenation, about 298 kJ/mol, is higher than that of two isolated C=C, so it is measured as the least stable of the three arrangements. Sharing a carbon is not what counts; alignment is.',
+        wrongFeedback: 'Work out the hybridization of the middle carbon first, then ask which way each of its leftover p orbitals points.'
       }
     ]
   });
