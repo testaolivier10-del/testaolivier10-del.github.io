@@ -433,10 +433,10 @@ function hammondPanel(ox, oy, L, c) {
   g += text(ox + 185, oy + 386, c.n2, { cls: sm });
   return g;
 }
-const HAM_EARLY = { yR: 140, yT: 116, yP: 172, xT: 142, peakWord: 'TS ‡ sits early', left: 'Cl• + H—CR₃', right: 'HCl + •CR₃',
+const HAM_EARLY = { yR: 140, yT: 116, yP: 172, xT: 142, peakWord: 'TS ‡ sits early', left: 'Cl• + H–CR₃', right: 'HCl + •CR₃',
   title: 'DOWNHILL (ΔH ≈ −5): EARLY TS', x: 'Cl', xH: 222,
   n1: 'Cl···H long: the new bond has barely begun.', n2: 'H···C short: the old bond is barely stretched.' };
-const HAM_LATE = { yR: 186, yT: 94, yP: 116, xT: 250, peakWord: 'TS ‡ sits late', left: 'Br• + H—CR₃', right: 'HBr + •CR₃',
+const HAM_LATE = { yR: 186, yT: 94, yP: 116, xT: 250, peakWord: 'TS ‡ sits late', left: 'Br• + H–CR₃', right: 'HBr + •CR₃',
   title: 'UPHILL (ΔH ≈ +10.5): LATE TS', x: 'Br', xH: 148,
   n1: 'Br···H short: the new bond is nearly made.', n2: 'H···C long: the old bond is nearly broken.' };
 FIGURES.push({
@@ -481,9 +481,9 @@ function selPanel(ox, oy, L, c) {
   g += text(ox + 185, oy + 326, c.n2, { cls: sm });
   return g;
 }
-const SEL_CL = { yR: 150, yPk1: 118, yPk3: 124, yP1: 184, yP3: 210, xP: 124, drop: 'barely lower', left: 'Cl• + R—H',
+const SEL_CL = { yR: 150, yPk1: 118, yPk3: 124, yP1: 184, yP3: 210, xP: 124, drop: 'barely lower', left: 'Cl• + R–H',
   title: 'CHLORINE: EARLY TS', n1: 'The two barriers are almost the same height,', n2: 'so both radicals form at similar rates.' };
-const SEL_BR = { yR: 214, yPk1: 70, yPk3: 94, yP1: 104, yP3: 130, xP: 248, drop: 'much lower', left: 'Br• + R—H',
+const SEL_BR = { yR: 214, yPk1: 70, yPk3: 94, yP1: 104, yP3: 130, xP: 248, drop: 'much lower', left: 'Br• + R–H',
   title: 'BROMINE: LATE TS', n1: 'The 3° barrier drops almost as far as the product,', n2: 'so the 3° radical forms far faster.' };
 FIGURES.push({
   id: 'hammond-selectivity',

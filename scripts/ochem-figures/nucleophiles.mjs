@@ -300,7 +300,7 @@ FIGURES.push({
     const na = P(130, 430);
     s += atom(na.x, na.y, 'Na⁺', { size: 13, r: 18 });
     s += lbl(106, 435, '(CH₃)₂S=O', 'end') + lbl(154, 435, 'O=S(CH₃)₂', 'start');
-    s += tg(130, 468, 'O atoms face Na⁺', 'mut') + tg(290, 468, 'fluoride', 'mut');
+    s += tg(130, 476, 'O atoms face Na⁺', 'mut') + tg(290, 476, 'fluoride', 'mut');
     const f2 = P(290, 436);
     s += A(f2, 'F', 'hi') + lp(f2, 0) + lp(f2, 90) + lp(f2, 180) + lp(f2, 270) + chg(312, 414);
     s += tg(170, 496, 'no O–H, so nothing H-bonds to F⁻', 'good');
@@ -351,7 +351,7 @@ FIGURES.push({
     s += tg(262, 272, 'whole charge here', 'good');
     return s;
   },
-  caption: 'Acetate’s charge is split between two oxygens. Methoxide’s sits on one.',
+  caption: 'In acetate’s left-hand form, follow the two curved arrows: together they move the charge from the lower oxygen to the upper one.',
 });
 
 /* ------------------------------------------------------------------ 8 ---
@@ -366,8 +366,8 @@ FIGURES.push({
     let s = '';
     // ---- trimethylamine ----
     s += box(8, 128, 'TRIMETHYLAMINE');
-    const n = P(96, 76);
-    s += arm(n, 'N', 210, 56, 'CH₃') + arm(n, 'N', 330, 56, 'CH₃') + arm(n, 'N', 270, 38, 'CH₃', 'wedge');
+    const n = P(96, 66);
+    s += arm(n, 'N', 210, 56, 'CH₃') + arm(n, 'N', 330, 56, 'CH₃') + arm(n, 'N', 270, 46, 'CH₃', 'wedge');
     s += A(n, 'N', 'hi') + lp(n, 270);
     s += tg(262, 64, 'sp³ nitrogen', 'hi');
     s += tg(262, 82, '25% s character');
@@ -395,6 +395,7 @@ FIGURES.push({
     s += A(N, 'N', 'hi') + lp(N, 0);
     s += tg(262, 200, 'sp² nitrogen', 'hi');
     s += tg(262, 218, '33% s character');
+    s += tg(262, 240, 'in between');
 
     // ---- acetonitrile ----
     s += box(280, 128, 'ACETONITRILE');
@@ -406,7 +407,7 @@ FIGURES.push({
     s += tg(262, 376, 'least available pair', 'warn');
     return s;
   },
-  caption: 'Each panel is one nitrogen lone pair. Going down, the pair has more s character and sits closer to the nucleus.',
+  caption: 'Read the s-character labels from top to bottom, and compare them with the last line of each panel.',
 });
 
 /* ------------------------------------------------------------------ 9 ---
@@ -417,7 +418,7 @@ FIGURES.push({
   section: 'nucleophiles',
   lessons: ['nucleophiles'],
   anchor: '<h3>Nucleophilicity is not basicity</h3>',
-  alt: 'Three stacked panels. First, tert-butoxide acting as a base: a lone pair on its O minus takes a proton from water, and the O–H bond electrons stay on the water oxygen. Second, tert-butoxide trying to act as a nucleophile on 2-bromopropane: the carbon bearing bromine is flanked by two CH3 groups, and a grey approach arrow from the bulky tert-butoxide stops short with a cross. Third, hydroxide, which is small, attacks the same carbon with a curved arrow while the C–Br bond electrons move onto bromine.',
+  alt: 'Three stacked panels. First, tert-butoxide acting as a base: a lone pair on its O minus takes a proton from water, and the O–H bond electrons stay on the water oxygen. Second, tert-butoxide trying to act as a nucleophile on 2-bromopropane: the carbon bearing bromine is flanked by two CH3 groups, and a gray approach arrow from the bulky tert-butoxide stops short with a cross. Third, hydroxide, which is small, attacks the same carbon with a curved arrow while the C–Br bond electrons move onto bromine.',
   viewBox: '0 0 340 540',
   build() {
     let s = '';
