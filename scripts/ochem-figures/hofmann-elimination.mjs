@@ -115,7 +115,7 @@ FIGURES.push({
     s += tg(80, 172, 'β · C1 · 3 H', 'fg-tag-good');
     s += tg(200, 172, 'β · C3 · 2 H');
     s += tg(272, 102, 'C4');
-    s += tg(114, 104, 'C2');
+    s += tg(140, 140, 'C2');
     s += arrow(P(120, 200), P(92, 228));
     s += arrow(P(220, 200), P(248, 228));
     s += tg(56, 214, 'H from C1');
@@ -189,7 +189,7 @@ FIGURES.push({
     s += nitrogen(N, [P(156, 222), P(228, 222), P(192, 244)], { plus: P(212, 190) });
     s += tg(150, 96, 'benzylic CH₂:', 'fg-tag-warn');
     s += tg(150, 112, 'its H is more acidic', 'fg-tag-warn');
-    s += tg(282, 124, 'CH₃: open');
+    s += tg(290, 124, 'CH₃: less crowded');
     s += arrow(P(338, 130), P(430, 92));
     s += arrow(P(338, 180), P(430, 218));
     s += tg(372, 90, 'H from CH₂');
@@ -233,13 +233,10 @@ FIGURES.push({
     s += bond(C3, N, { rFrom: 0, rTo: 16 });
     s += nitrogen(N, [P(116, 218), P(188, 218), P(152, 240)], { plus: P(172, 186) });
     s += tg(56, 170, 'C1');
-    s += tg(80, 100, 'C2', 'fg-tag-warn');
-    s += tg(126, 132, 'β', 'fg-tag-warn');
-    s += tg(200, 110, 'C4', 'fg-tag-good');
-    s += tg(178, 132, 'β', 'fg-tag-good');
+    s += tg(58, 110, 'β · C2 · 1 H', 'fg-tag-warn');
+    s += tg(246, 110, 'β · C4 · 2 H', 'fg-tag-good');
+    s += tg(172, 170, 'C3');
     s += tg(248, 170, 'C5');
-    s += tg(270, 86, 'C2: 1 H,', 'fg-tag-warn');
-    s += tg(270, 102, 'two CH₃ on it', 'fg-tag-warn');
     s += arrow(P(328, 120), P(430, 84));
     s += arrow(P(328, 170), P(430, 206));
     s += tg(376, 88, 'H from C4');
@@ -368,11 +365,12 @@ FIGURES.push({
     for (let i = 0; i < 6; i++) {
       const j = (i + 1) % 6;
       const breaks = (i === 5 && j === 0);
-      s += bond(q[i], q[j], { rFrom: i === 0 ? 16 : 0, rTo: j === 0 ? 16 : 0, cls: breaks ? 'fg-bond-hi' : 'fg-bond' });
+      const b = bond(q[i], q[j], { rFrom: i === 0 ? 16 : 0, rTo: j === 0 ? 16 : 0, cls: breaks ? 'fg-bond-hi' : 'fg-bond' });
+      s += breaks ? b.replace('<line ', '<line style="stroke-width:6" ') : b;
     }
-    s += nitrogen(q[0], [P(210, 52), P(262, 52)], { plus: P(260, 78) });
-    s += tg(302, 132, 'this C–N', 'fg-tag-warn');
-    s += tg(302, 148, 'breaks', 'fg-tag-warn');
+    s += nitrogen(q[0], [P(210, 52), P(262, 52)], { plus: P(213, 78) });
+    s += tg(300, 92, 'this C–N', 'fg-tag-warn');
+    s += tg(300, 108, 'breaks', 'fg-tag-warn');
     s += tg(236, 170, 'the quaternary salt');
     // round 1
     s += arrow(P(170, 182), P(170, 222));
