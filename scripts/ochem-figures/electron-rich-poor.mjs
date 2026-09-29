@@ -159,7 +159,7 @@ FIGURES.push({
     const c = P(256, 222);
     s += edgeOnEmpty(c, 'C', 'H₃C', 'CH₃', { len: 52 });
     s += plus(280, 206);
-    s += tg(256, 276, '+ and an empty p orbital', 'mut') + tg(256, 290, 'tert-butyl cation', 'warn');
+    s += tg(256, 276, '+ and an empty p orbital', 'mut') + `<text class="fg-tag-warn" x="256" y="290" text-anchor="middle" font-size="11"><tspan font-style="italic">tert</tspan>-butyl cation</text>`;
 
     // ---- row 3 ----
     const c1 = P(62, 360), c2 = P(108, 360);
@@ -187,7 +187,7 @@ FIGURES.push({
   lessons: ['electron-rich-poor'],
   anchor: '',
   alt: 'Three stacked panels. Chloroethane, CH3–CH2–Cl: the CH2 carbon is delta plus and the chlorine delta minus; verdict, chlorine can leave as chloride, so this carbon is a site. Ethanol, CH3–CH2–O–H: the CH2 carbon is delta plus and the oxygen, with two lone pairs, delta minus; verdict, hydroxide does not leave, so this carbon is not a site. Acetaldehyde, CH3–CH=O: the carbonyl carbon is delta plus and the oxygen delta minus; a curved arrow shows the C=O pi pair moving onto oxygen; verdict, the pi pair can shift onto oxygen, so this carbon is a site.',
-  viewBox: '0 0 340 406',
+  viewBox: '0 0 340 420',
   build() {
     let s = '';
     // ---- chloroethane ----
@@ -211,14 +211,14 @@ FIGURES.push({
 
     // ---- acetaldehyde ----
     s += tg(170, 294, 'ACETALDEHYDE');
-    const c = P(170, 368), o = P(170, 318), m = P(100, 368), hh = P(232, 368);
+    const c = P(170, 384), o = P(170, 318), m = P(100, 384), hh = P(232, 384);
     s += B(m, 'CH₃', c, 'C') + B(c, 'C', hh, 'H');
     s += B(c, 'C', o, 'O', { order: 2 });
     s += A(m, 'CH₃') + A(hh, 'H') + A(o, 'O', 'hi') + A(c, 'C', 'warn');
     s += lp(o, 140) + lp(o, 40);
-    s += dP(150, 396) + dM(o.x - 36, o.y + 12);
-    s += fromBond(c, o, P(o.x + 18, o.y + 4), -14, -8);
-    s += tg(282, 338, 'a site: the π', 'good') + tg(282, 352, 'pair can shift', 'good') + tg(282, 366, 'onto O', 'good');
+    s += dP(150, 412) + dM(o.x - 36, o.y + 12);
+    s += fromBond(c, o, P(o.x + 20, o.y + 12), -16, -14);
+    s += tg(282, 346, 'a site: the π', 'good') + tg(282, 360, 'pair can shift', 'good') + tg(282, 374, 'onto O', 'good');
     return s;
   },
   caption: 'All three carbons are δ+. Only the top and bottom ones have a way to take a new pair.',
@@ -317,7 +317,7 @@ FIGURES.push({
   lessons: ['electron-rich-poor'],
   anchor: '',
   alt: 'Two stacked panels. Top: 5-aminopentan-2-one drawn with its chain curled round, so that the nitrogen at C5 sits near the carbonyl carbon, C2. The nitrogen carries two hydrogens and a lone pair and is on a teal disc labeled rich. The carbonyl carbon is on a coral disc, marked delta plus and labeled poor, with a C=O double bond to an oxygen carrying two lone pairs. One curved arrow runs from the nitrogen lone pair to the carbonyl carbon; a second moves the C=O pi pair onto oxygen. Bottom: the result, a five-membered ring of N, C5, C4, C3 and C2. The new N–C2 bond is highlighted, the nitrogen carries a plus charge and two hydrogens, and the oxygen, now single-bonded, carries three lone pairs and a minus charge.',
-  viewBox: '0 0 340 500',
+  viewBox: '0 0 340 516',
   build() {
     let s = '';
     s += tg(170, 20, '5-AMINOPENTAN-2-ONE');
@@ -325,15 +325,15 @@ FIGURES.push({
     s += a.s;
     s += curve(P(a.n.x + 24, a.n.y - 20), P(a.c2.x - 16, a.c2.y + 8), { bow: 12, size: 7 });
     s += fromBond(a.c2, a.o, P(a.o.x + 17, a.o.y + 6), -10, -6);
-    s += dP(a.c2.x, a.c2.y - 30);
+    s += dP(a.c2.x + 30, a.c2.y - 4);
     s += tg(50, 84, 'rich:') + tg(50, 98, 'lone pair');
-    s += tg(290, 120, 'poor: δ+', 'warn') + tg(290, 134, 'C=O carbon', 'warn');
+    s += tg(290, 76, 'poor: δ+', 'warn') + tg(290, 90, 'C=O carbon', 'warn');
     s += rule(16, 250, 324, 250);
 
     s += tg(170, 274, 'THE NEW N–C BOND CLOSES A RING');
-    const b = curledChain(170, 406, true);
+    const b = curledChain(170, 426, true);
     s += b.s;
-    s += tg(292, 380, 'five atoms:', 'mut') + tg(292, 396, 'N, C5, C4,', 'mut') + tg(292, 412, 'C3, C2', 'mut');
+    s += tg(296, 450, 'five atoms:', 'mut') + tg(296, 466, 'N, C5, C4,', 'mut') + tg(296, 482, 'C3, C2', 'mut');
     return s;
   },
   caption: 'The chain curls round so that nitrogen’s lone pair reaches the δ+ carbonyl carbon. The highlighted bond is the one that forms.',
@@ -444,16 +444,16 @@ FIGURES.push({
     const a = anilineRing(150, 150, false);
     s += a.s + lp(a.n, 0);
     s += curve(P(a.n.x + 26, a.n.y + 6), P(a.n.x + 6, a.n.y + 30), { bow: -12, size: 7 });
-    s += fromBond(a.v[0], a.v[1], P(a.v[1].x - 12, a.v[1].y + 4), 14, 7);
+    s += fromBond(a.v[0], a.v[1], P(a.v[1].x - 7, a.v[1].y - 9), 12, 7);
     s += tg(270, 70, 'lone pair', '', 'middle') + tg(270, 84, 'pushes in', '', 'middle');
-    s += tg(270, 150, 'N pulls a little', 'mut') + tg(270, 164, 'through σ', 'mut');
+    s += tg(262, 132, 'N also pulls a', 'mut') + tg(262, 146, 'little through σ', 'mut');
     s += resArrowV(150, 194, 228);
 
     const b = anilineRing(150, 370, true);
     s += b.s + plus(b.n.x, b.n.y - 24);
     s += `<circle class="fg-atom-hi" cx="${r2(b.v[1].x)}" cy="${r2(b.v[1].y)}" r="7"></circle>`;
     s += lp(b.v[1], 150, 16) + minus(b.v[1].x - 24, b.v[1].y + 20);
-    s += tg(270, 360, 'ortho carbon:', '') + tg(270, 374, 'electron-rich', '');
+    s += `<text class="fg-tag" x="270" y="360" text-anchor="middle" font-size="11"><tspan font-style="italic">ortho</tspan> carbon:</text>` + tg(270, 374, 'electron-rich', '');
     return s;
   },
   caption: 'The lower structure puts a − on a ring carbon next to the one carrying nitrogen. That is the ring gaining density.',
