@@ -117,7 +117,7 @@ function ring(cx, cy, o) {
       if (!l) continue;
       const r = rOf(l);
       const len = (sub[dir + 'Len'] ?? o.L ?? 22) * k + r;
-      const e = P(pos[key].x, pos[key].y + (dir === 'up' ? -len : len));
+      const e = P(pos[key].x + (sub[dir + 'Dx'] ?? 0) * k, pos[key].y + (dir === 'up' ? -len : len));
       ends[key + dir] = e;
       s += bond(pos[key], e, { rFrom: rAt(key), rTo: r, cls: sub[dir + 'Bond'] || 'fg-bond' });
       atoms += atom(e.x, e.y, l, { r, kind: sub[dir + 'Kind'] });
@@ -242,8 +242,8 @@ FIGURES.push({
 function openChain(cx, cy, k, turned, o = {}) {
   // The chain curled into the ring's shape, before the ring closes.
   const subs = glcSubs(null);
-  if (turned) subs[5] = { up: 'CH₂OH', down: 'H', downLen: 4 };
-  else subs[5] = { up: 'H', down: 'OH', downLen: 2, downKind: o.hi ? 'hi' : undefined };
+  if (turned) subs[5] = { up: 'CH₂OH', down: 'H', downLen: 4, downDx: 18 };
+  else subs[5] = { up: 'H', down: 'OH', downLen: 6, downDx: 22, downKind: o.hi ? 'hi' : undefined };
   return pyranose(cx, cy, {
     k, open: '1', oLabel: turned ? 'OH' : 'CH₂OH', oKind: turned && o.hi ? 'hi' : undefined,
     c1: 'CHO', subs, nums: o.nums,
