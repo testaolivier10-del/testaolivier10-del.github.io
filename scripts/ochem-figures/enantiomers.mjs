@@ -183,7 +183,7 @@ FIGURES.push({
     s += `<line class="fg-dash-hi" x1="510" y1="${beam - 46}" x2="510" y2="${beam + 46}"></line>`;
     s += `<line class="fg-bond-hi" x1="${r2(510 - Math.cos(Math.PI / 3) * 46)}" y1="${r2(beam - Math.sin(Math.PI / 3) * 46)}" x2="${r2(510 + Math.cos(Math.PI / 3) * 46)}" y2="${r2(beam + Math.sin(Math.PI / 3) * 46)}"></line>`;
     s += text(532, beam - 4, 'α', { cls: 'fg-tag-good', size: 14, anchor: 'start' });
-    s += text(508, 76, 'same plane,', { cls: 'fg-tag-good', size: 10 });
+    s += text(508, 76, 'plane now', { cls: 'fg-tag-good', size: 10 });
     s += text(508, 90, 'turned by α', { cls: 'fg-tag-good', size: 10 });
 
     s += bar(556, beam - 44, 14, 88, { kind: 'mut', r: 4 });
@@ -270,7 +270,7 @@ FIGURES.push({
     s += arm(c, 330, 66, 'C₂H₅', { bond: 'wedge', r: 20 });
     s += arm(c, 30, 50, 'H', { bond: 'hash' });
     s += atom(c.x, c.y, 'C', { kind: 'warn' });
-    s += text(c.x - 34, c.y + 30, '+', { cls: 'fg-warn', size: 16 });
+    s += text(c.x - 22, c.y - 10, '+', { cls: 'fg-warn', size: 16 });
     s += sm(c.x - 28, c.y - 56, 'empty p orbital', 'end');
     const bromide = (p, pairDeg) => {
       let g = atom(p.x, p.y, 'Br');
@@ -306,7 +306,7 @@ FIGURES.push({
     s += sm(618, 179, 'mirror', 'start');
     s += tg(740, 90, '(R)-2-bromobutane', 'end');
     s += tg(740, 262, '(S)-2-bromobutane', 'end');
-    s += tg(740, 316, '50 : 50, a racemic mixture', 'end');
+    s += tg(748, 202, '50 : 50, a racemic mixture', 'end');
     return s;
   },
   caption: 'The cation is flat, so bromide can bond to either face. Compare the two products across the dashed mirror: every group bends away from the side the bromide came from.',
@@ -433,7 +433,7 @@ FIGURES.push({
   id: 'resolution-scheme',
   section: 'enantiomers',
   anchor: '<h3>Separating enantiomers</h3>',
-  alt: 'Resolution of racemic ibuprofen. Top row: (R)- and (S)-ibuprofen drawn as mirror images; adding (S)-1-phenylethylamine gives two salts, (R)-acid with (S)-amine and (S)-acid with (S)-amine, which are diastereomers with different solubilities. Bottom row: the less soluble salt crystallizes and is filtered off; adding aqueous HCl to it frees one enantiomer of ibuprofen, pure. The more soluble salt stays in solution; HCl frees ibuprofen enriched in the other enantiomer.',
+  alt: 'Resolution of racemic ibuprofen. Top row: (R)- and (S)-ibuprofen drawn as mirror images; adding (S)-1-phenylethylamine gives two salts, (R)-acid with (S)-amine and (S)-acid with (S)-amine, which are diastereomers with different solubilities. Bottom row: the less soluble salt crystallizes and is filtered off; adding aqueous HCl to it frees ibuprofen enriched in one enantiomer (recrystallizing the salt first makes it essentially pure). The more soluble salt stays in solution; HCl frees ibuprofen enriched in the other enantiomer.',
   viewBox: '0 0 760 392',
   build() {
     let s = '';
@@ -466,7 +466,7 @@ FIGURES.push({
     s += tg(325, 282, '+ HCl(aq)');
     s += tg(325, 338, '+ HCl(aq)');
     s += panel(392, 270, 344, 44, { kind: 'good' });
-    s += lbl(564, 297, 'one enantiomer of ibuprofen, pure');
+    s += lbl(564, 297, 'ibuprofen enriched in one enantiomer');
     s += panel(392, 326, 344, 44, {});
     s += lbl(564, 353, 'ibuprofen rich in the other enantiomer');
     s += sm(380, 386, 'Ar = the 4-(2-methylpropyl)phenyl ring;  (S)-amine = (S)-1-phenylethylamine');
@@ -479,7 +479,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-resolution',
   lessons: ['enantiomers'],
-  alt: 'Resolution stacked top to bottom: racemic ibuprofen, a mix of (R) and (S) acid with the same solubility; add one enantiomer of an amine; two salts, (R)-acid with (S)-amine and (S)-acid with (S)-amine, which are diastereomers; crystallize and add acid; one enantiomer of ibuprofen, pure, from the crystals, and the other enriched in the solution.',
+  alt: 'Resolution stacked top to bottom: racemic ibuprofen, a mix of (R) and (S) acid with the same solubility; add one enantiomer of an amine; two salts, (R)-acid with (S)-amine and (S)-acid with (S)-amine, which are diastereomers; crystallize and add acid; the crystals give mostly one enantiomer of ibuprofen, and the solution is rich in the other.',
   viewBox: '0 0 340 420',
   build() {
     let s = '';
@@ -500,17 +500,71 @@ FIGURES.push({
     s += tg(170, 236, 'crystallize,', 'middle', 'fg-tag-mut');
     s += tg(170, 252, 'then add HCl', 'middle', 'fg-tag-mut');
     s += panel(12, 270, 152, 60, { kind: 'good' });
-    s += lbl(88, 295, 'crystals give');
-    s += lbl(88, 315, 'one pure form');
+    s += lbl(88, 295, 'crystals: mostly');
+    s += lbl(88, 315, 'one enantiomer');
     s += panel(176, 270, 152, 60, {});
-    s += lbl(252, 295, 'solution gives');
-    s += lbl(252, 315, 'the other, enriched');
+    s += lbl(252, 295, 'solution: rich');
+    s += lbl(252, 315, 'in the other');
     s += tg(170, 356, 'the amine is recovered and reused', 'middle', 'fg-tag-mut');
     s += tg(170, 386, 'acid = ibuprofen', 'middle', 'fg-tag-mut');
     s += tg(170, 404, 'amine = (S)-1-phenylethylamine', 'middle', 'fg-tag-mut');
     return s;
   },
   caption: 'The amine is a single enantiomer, so the two salts are not mirror images. That difference is what crystallization can act on.',
+});
+
+/* The racemization picture stacked into 340 for the lesson. Same geometry
+   and the same R/S checks as racemization-faces. */
+FIGURES.push({
+  id: 'l-racemization-faces',
+  lessons: ['enantiomers'],
+  alt: 'A flat butan-2-yl cation with an empty p orbital above and below the carbon. Bromide ions above and below attack with curved arrows. Attack from above gives (R)-2-bromobutane with Br up; attack from below gives (S)-2-bromobutane with Br down, its mirror image across a dashed line. The two form 50:50, a racemic mixture.',
+  viewBox: '0 0 340 404',
+  build() {
+    let s = '';
+    const c = P(88, 200);
+    s += lobeE(c.x, c.y - 44, 20, 32);
+    s += lobeE(c.x, c.y + 44, 20, 32);
+    s += arm(c, 180, 58, 'H₃C');
+    s += arm(c, 330, 62, 'C₂H₅', { bond: 'wedge', r: 20 });
+    s += arm(c, 30, 48, 'H', { bond: 'hash' });
+    s += atom(c.x, c.y, 'C', { kind: 'warn' });
+    s += text(c.x - 22, c.y - 10, '+', { cls: 'fg-warn', size: 16 });
+    const bromide = (p) => {
+      let g = atom(p.x, p.y, 'Br');
+      for (const d of [0, 90, 180, 270]) g += lonePair(p.x, p.y, d, { dist: 22, spread: 4.5, r: 2.3 });
+      g += text(p.x + 24, p.y - 14, '−', { cls: 'fg-warn', size: 15 });
+      return g;
+    };
+    const b1 = P(c.x, 68), b2 = P(c.x, 332);
+    s += bromide(b1) + bromide(b2);
+    s += curve(P(b1.x, b1.y + 26), P(c.x, c.y - 24), { bow: 12 });
+    s += curve(P(b2.x, b2.y - 26), P(c.x, c.y + 24), { bow: -12 });
+    s += tg(8, 18, 'FLAT CATION: BOTH FACES OPEN', 'start');
+
+    s += arrow(P(152, 132), P(190, 112), { muted: true });
+    s += arrow(P(168, 244), P(194, 262), { muted: true });
+
+    const A = P(262, 112);
+    s += arm(A, 90, 46, 'Br', { kind: 'hi' });
+    s += arm(A, 210, 52, 'H₃C');
+    s += arm(A, 300, 52, 'C₂H₅', { bond: 'wedge', r: 20 });
+    s += arm(A, 350, 42, 'H', { bond: 'hash' });
+    s += atom(A.x, A.y, 'C');
+    const B = P(262, 288);
+    s += arm(B, 270, 46, 'Br', { kind: 'hi' });
+    s += arm(B, 150, 52, 'H₃C');
+    s += arm(B, 60, 52, 'C₂H₅', { bond: 'wedge', r: 20 });
+    s += arm(B, 10, 42, 'H', { bond: 'hash' });
+    s += atom(B.x, B.y, 'C');
+    s += hline(196, 336, 200);
+    s += tg(336, 194, 'mirror', 'end', 'fg-tag-mut');
+    s += tg(262, 42, '(R)-2-bromobutane');
+    s += tg(262, 370, '(S)-2-bromobutane');
+    s += tg(170, 396, '50 : 50, a racemic mixture');
+    return s;
+  },
+  caption: 'Bromide can bond to either face of the flat cation, so the two mirror-image products form in equal amounts.',
 });
 
 export default FIGURES;

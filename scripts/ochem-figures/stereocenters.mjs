@@ -142,7 +142,7 @@ FIGURES.push({
       'last two match: the same molecule', false);
     return s;
   },
-  caption: 'In each row, compare the second drawing with the third. The third is the start turned half a turn, which brings H to the top and OH to the left.',
+  caption: 'A solid wedge points toward you, and a dashed hash points away. In each row, compare the second drawing with the third. The third is the start turned half a turn, which brings H to the top and OH to the left.',
 });
 
 /* ---------------------------------------------------- trace-outward ---
@@ -152,7 +152,7 @@ FIGURES.push({
   section: 'stereocenters',
   lessons: ['stereocenters'],
   anchor: 'while the propyl group has a second CH₂.</p>',
-  alt: 'Skeletal structure of 3-methylhexane with C3 marked. C3 carries an H, a CH3 group, an ethyl branch to the left and a propyl branch to the right. The carbons of each branch are numbered outward from C3. The first carbon out is CH2 in both branches, a tie. The second carbon out is CH3 in the ethyl branch and CH2 in the propyl branch, so the branches differ and C3 is a stereocenter.',
+  alt: 'Skeletal structure of 3-methylhexane with C3 marked. C3 carries an H, a CH3 group, an ethyl branch to the left and a propyl branch to the right. The carbons of each branch are counted outward from C3 as 1st, 2nd and 3rd. The first carbon out is CH2 in both branches, a tie. The second carbon out is CH3 in the ethyl branch and CH2 in the propyl branch, so the branches differ and C3 is a stereocenter.',
   viewBox: '0 0 340 250',
   build() {
     let s = '';
@@ -164,20 +164,20 @@ FIGURES.push({
     s += hang(c[2], 300, 'H', { len: 34 });
     s += dot(c[2]) + tg(c[2].x, c[2].y - 16, 'C3', 'fg-tag-mut');
     /* steps outward, numbered */
-    s += tg(c[1].x, c[1].y + 24, '1') + tg(c[0].x, c[0].y - 14, '2');
-    s += tg(c[3].x, c[3].y + 24, '1') + tg(c[4].x, c[4].y - 14, '2') + tg(c[5].x, c[5].y + 24, '3');
+    s += tg(c[1].x, c[1].y + 24, '1st') + tg(c[0].x, c[0].y - 14, '2nd');
+    s += tg(c[3].x, c[3].y + 24, '1st') + tg(c[4].x, c[4].y - 14, '2nd') + tg(c[5].x, c[5].y + 24, '3rd');
     s += tg(92, 56, 'ethyl', 'fg-tag-good') + tg(232, 56, 'propyl', 'fg-tag-good');
     /* the comparison */
-    s += tg(40, 176, 'carbon 1 out:', 'fg-tag-mut', 'start');
-    s += tg(140, 176, 'CH₂ and CH₂', 'fg-tag', 'start');
-    s += tg(236, 176, 'tie', 'fg-tag-mut', 'start');
-    s += tg(40, 200, 'carbon 2 out:', 'fg-tag-mut', 'start');
-    s += tg(140, 200, 'CH₃ and CH₂', 'fg-tag', 'start');
-    s += tg(236, 200, 'different', 'fg-tag-good', 'start');
+    s += tg(28, 176, '1st carbon out:', 'fg-tag-mut', 'start');
+    s += tg(146, 176, 'CH₂ and CH₂', 'fg-tag', 'start');
+    s += tg(240, 176, 'tie', 'fg-tag-mut', 'start');
+    s += tg(28, 200, '2nd carbon out:', 'fg-tag-mut', 'start');
+    s += tg(146, 200, 'CH₃ and CH₂', 'fg-tag', 'start');
+    s += tg(240, 200, 'different', 'fg-tag-good', 'start');
     s += tg(170, 234, 'C3 is a stereocenter', 'fg-tag-good');
     return s;
   },
-  caption: 'Follow the numbers outward from C3 along each branch and compare them in pairs.',
+  caption: 'Count outward from C3 along each branch and compare the 1st carbons, then the 2nd.',
 });
 
 /* ------------------------------------------------------- scan-hexenol ---
@@ -237,7 +237,7 @@ FIGURES.push({
 
 /* ---------------------------------------------------- walk-both-ways ---
    A ring carbon's two ring bonds are two groups; walk each way round. */
-function ringPanel(Y, meAt, walks) {
+function ringPanel(Y, meAt, walks, mark = 0) {
   let s = '';
   const c = P(170, Y + 104);
   const R = 34;
@@ -246,14 +246,13 @@ function ringPanel(Y, meAt, walks) {
   s += v.map((p, i) => sk(p, v[(i + 1) % 6])).join('');
   /* the walks, as dashed arcs outside the ring */
   for (const w of walks) {
-    const a0 = rad(w.from), a1 = rad(w.to), rr = 50;
+    const rr = 50;
     const p0 = at(c, w.from, rr), p1 = at(c, w.to, rr);
     const sweep = w.to < w.from ? 1 : 0;
     const large = Math.abs(w.to - w.from) > 180 ? 1 : 0;
     s += `<path class="fg-dash-hi" d="M${r2(p0.x)} ${r2(p0.y)} A${rr} ${rr} 0 ${large} ${sweep} ${r2(p1.x)} ${r2(p1.y)}"></path>`;
     const lp = at(c, w.labelAt, 64);
-    s += tg(lp.x, lp.y + 4, w.label, w.cls, w.anchor);
-    void a0; void a1;
+    s += tg(lp.x, lp.y + 4, w.label, 'fg-tag', w.anchor);
   }
   s += hang(v[0], 60, 'OH', { len: 34 }) + hang(v[0], 120, 'H', { len: 32 });
   const m = stub(v[meAt], 90 - 60 * meAt, 32);
@@ -264,33 +263,51 @@ function ringPanel(Y, meAt, walks) {
     const q = at(c, 90 - 60 * i, R - 14);
     s += tg(q.x, q.y + 4, String(i + 1), 'fg-tag-mut');
   }
-  s += dot(v[0]);
+  s += dot(v[mark]);
+  return s;
+}
+/* One panel per walk: [title, ring args, verdict, good]. */
+const WALK_PANELS = [
+  ['3-methylcyclohexan-1-ol, from C1', [2, [
+    { from: 72, to: -15, label: '2nd carbon', labelAt: 30, anchor: 'start' },
+    { from: 108, to: 315, label: '4th carbon', labelAt: 190, anchor: 'end' },
+  ], 0], 'the walks differ: C1 is a stereocenter', true],
+  ['4-methylcyclohexan-1-ol, from C1', [3, [
+    { from: 72, to: -72, label: '3rd carbon', labelAt: 10, anchor: 'start' },
+    { from: 108, to: 252, label: '3rd carbon', labelAt: 170, anchor: 'end' },
+  ], 0], 'the walks match: C1 is not a stereocenter', false],
+  ['3-methylcyclohexan-1-ol, from C3', [2, [
+    { from: -12, to: 72, label: '2nd carbon', labelAt: 30, anchor: 'start' },
+    { from: -48, to: -252, label: '4th carbon', labelAt: 190, anchor: 'end' },
+  ], 2], 'the walks differ: C3 is a stereocenter', true],
+];
+function walkFigure(n) {
+  let s = '';
+  for (let k = 0; k < n; k++) {
+    const Y = 232 * k;
+    const [title, [meAt, walks, mark], verdict, good] = WALK_PANELS[k];
+    if (k) s += rule(20, Y - 8, 320, Y - 8);
+    s += tg(12, Y + 18, title, 'fg-tag', 'start');
+    s += ringPanel(Y, meAt, walks, mark);
+    s += tg(170, Y + 212, verdict, good ? 'fg-tag-good' : 'fg-tag-warn');
+  }
   return s;
 }
 FIGURES.push({
   id: 'walk-both-ways',
   section: 'stereocenters',
+  anchor: 'C4 fails for the same reason as C1.</p>',
+  alt: 'Three skeletal cyclohexane rings, one above the other, with the ring carbons numbered 1 to 6 and C1 at the top carrying OH and H. Top: 3-methylcyclohexan-1-ol, walking from C1. Going one way, the methyl-bearing carbon is the 2nd carbon reached; going the other way, it is the 4th. The walks differ, so C1 is a stereocenter. Middle: 4-methylcyclohexan-1-ol, walking from C1. The methyl-bearing carbon is the 3rd carbon reached either way, so C1 is not a stereocenter. Bottom: 3-methylcyclohexan-1-ol again, walking from C3. Going one way, C1 is the 2nd carbon reached; going the other way, it is the 4th, so C3 is a stereocenter too.',
+  viewBox: '0 0 340 690',
+  build() { return walkFigure(3); },
+  caption: 'Start at the marked carbon and follow each dashed path until it reaches the other ring carbon that carries a group.',
+});
+FIGURES.push({
+  id: 'l-walk-both-ways',
   lessons: ['stereocenters'],
-  anchor: 'so C1 is not a stereocenter.</p>',
-  alt: 'Two skeletal cyclohexane rings, one above the other, with the ring carbons numbered 1 to 6 and C1 at the top carrying OH and H. Top: 3-methylcyclohexan-1-ol. A dashed path runs from C1 clockwise and reaches the methyl-bearing carbon after two carbons; a second dashed path runs the other way and reaches it after four. The paths differ, so C1 is a stereocenter. Bottom: 4-methylcyclohexan-1-ol. Both dashed paths reach the methyl-bearing carbon after three carbons, so the paths match and C1 is not a stereocenter.',
-  viewBox: '0 0 340 434',
-  build() {
-    let s = '';
-    s += tg(12, 18, '3-methylcyclohexan-1-ol', 'fg-tag', 'start');
-    s += ringPanel(0, 2, [
-      { from: 72, to: -15, label: '2 carbons', labelAt: 30, cls: 'fg-tag-good', anchor: 'start' },
-      { from: 108, to: 315, label: '4 carbons', labelAt: 190, cls: 'fg-tag-warn', anchor: 'end' },
-    ]);
-    s += tg(170, 196, 'the walks differ: C1 is a stereocenter', 'fg-tag-good');
-    s += rule(20, 210, 320, 210);
-    s += tg(12, 232, '4-methylcyclohexan-1-ol', 'fg-tag', 'start');
-    s += ringPanel(214, 3, [
-      { from: 72, to: -72, label: '3 carbons', labelAt: 10, cls: 'fg-tag-mut', anchor: 'start' },
-      { from: 108, to: 252, label: '3 carbons', labelAt: 170, cls: 'fg-tag-mut', anchor: 'end' },
-    ]);
-    s += tg(170, 424, 'the walks match: C1 is not a stereocenter', 'fg-tag-warn');
-    return s;
-  },
+  alt: 'Two skeletal cyclohexane rings, one above the other, with the ring carbons numbered 1 to 6 and C1 at the top carrying OH and H. Top: 3-methylcyclohexan-1-ol. Walking one way from C1, the methyl-bearing carbon is the 2nd carbon reached; walking the other way, it is the 4th. The walks differ, so C1 is a stereocenter. Bottom: 4-methylcyclohexan-1-ol. The methyl-bearing carbon is the 3rd carbon reached either way, so C1 is not a stereocenter.',
+  viewBox: '0 0 340 458',
+  build() { return walkFigure(2); },
   caption: 'Start at C1 and follow each dashed path until it reaches the carbon that carries the CH₃ group.',
 });
 
@@ -439,7 +456,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-methylpentane',
   lessons: ['stereocenters'],
-  alt: 'Skeletal structure of 3-methylpentane with C3 marked. C3 carries an H, a CH3 group, a CH2CH3 branch to the left and a CH2CH3 branch to the right.',
+  alt: 'Skeletal structure of 3-methylpentane with C3 marked. C3 carries an H, a CH3 group and a two-carbon branch on each side; the branches are not labelled.',
   viewBox: '0 0 340 130',
   build() {
     let s = '';
@@ -450,53 +467,40 @@ FIGURES.push({
     s += me.s + tg(me.e.x + 8, me.e.y - 6, 'CH₃', 'fg-tag', 'start');
     s += hang(c[2], 120, 'H', { len: 32 });
     s += dot(c[2]) + tg(c[2].x, c[2].y + 24, 'C3', 'fg-tag-mut');
-    s += tg(110, 116, 'CH₂CH₃', 'fg-tag') + tg(230, 116, 'CH₂CH₃', 'fg-tag');
     return s;
   },
-  caption: 'The marked carbon and its four groups.',
+  caption: 'The marked carbon.',
 });
 
-/* 4-methylhexan-2-ol, for the independent question. Two copies, one per
-   candidate, so each carbon's four groups can be named without crowding. */
-function methylhexanol(Y) {
-  const c = chain([56, 96, 136, 176, 216, 256], Y, 12, false); // C1 low, C2 high
-  let s = bonds(c);
-  s += hang(c[1], 60, 'OH', { len: 36 }) + hang(c[1], 120, 'H', { len: 32 });
-  const me = stub(c[3], 60, 34);
-  s += me.s;
-  s += hang(c[3], 120, 'H', { len: 32 });
-  return { s, c, me: me.e };
-}
+/* 4-methylhexan-2-ol, for the independent question: one plain skeletal
+   drawing with its main-chain carbons numbered, nothing marked or named,
+   so the scan is the student's to do. */
 FIGURES.push({
   id: 'l-scan-quiz',
   lessons: ['stereocenters'],
-  alt: 'Two copies of the skeletal structure of 4-methylhexan-2-ol. Top copy: C2 is marked; it carries OH, H, a CH3 group and a CH2CH(CH3)CH2CH3 group. Bottom copy: C4 is marked; it carries H, a CH3 group, a CH2CH3 group and a CH2CH(OH)CH3 group.',
-  viewBox: '0 0 340 312',
+  alt: 'Skeletal structure of 4-methylhexan-2-ol, with the main-chain carbons numbered 1 to 6. An OH hangs from C2 and a methyl group from C4. No carbon is marked.',
+  viewBox: '0 0 340 170',
   build() {
     let s = '';
     s += tg(170, 18, '4-methylhexan-2-ol');
-    s += tg(12, 40, 'C2: its four groups', 'fg-tag', 'start');
-    let m = methylhexanol(112);
-    s += m.s + dot(m.c[1]) + tg(m.c[1].x, m.c[1].y + 24, 'C2', 'fg-tag-mut');
-    s += tg(m.c[0].x - 8, m.c[0].y + 4, 'CH₃', 'fg-tag', 'end');
-    s += tg(206, 152, 'CH₂CH(CH₃)CH₂CH₃');
-    s += rule(20, 166, 320, 166);
-    s += tg(12, 188, 'C4: its four groups', 'fg-tag', 'start');
-    m = methylhexanol(258);
-    s += m.s + dot(m.c[3]) + tg(m.c[3].x, m.c[3].y + 24, 'C4', 'fg-tag-mut');
-    s += tg(m.me.x + 8, m.me.y - 4, 'CH₃', 'fg-tag', 'start');
-    s += tg(88, 298, 'CH₂CH(OH)CH₃') + tg(246, 298, 'CH₂CH₃');
+    const c = chain([70, 110, 150, 190, 230, 270], 104, 12, false); // C1 low, C2 high
+    s += bonds(c);
+    s += hang(c[1], 90, 'OH', { len: 36 });
+    const me = stub(c[3], 90, 34);
+    s += me.s + tg(me.e.x, me.e.y - 8, 'CH₃');
+    /* a low vertex is numbered below it; a raised one inside its V */
+    c.forEach((p, i) => { s += tg(p.x, p.y + (p.y < 104 ? 22 : 24), String(i + 1), 'fg-tag-mut'); });
     return s;
   },
-  caption: 'Compare the four groups on each marked carbon.',
+  caption: 'Scan every carbon.',
 });
 
-/* 3-methylcyclohexan-1-ol, for the final question: both candidates marked,
-   ring numbered, no walks drawn (drawing them is the question). */
+/* 3-methylcyclohexan-1-ol, for the final question: ring numbered, nothing
+   marked and no walks drawn (finding the carbons and walking is the question). */
 FIGURES.push({
   id: 'l-final-ring',
   lessons: ['stereocenters'],
-  alt: 'Skeletal structure of 3-methylcyclohexan-1-ol with the ring carbons numbered 1 to 6. C1 at the top carries OH and H. C3 at the lower right carries a CH3 group and an H. Both C1 and C3 are marked.',
+  alt: 'Skeletal structure of 3-methylcyclohexan-1-ol with the ring carbons numbered 1 to 6. C1 at the top carries an OH, and C3 at the lower right carries a CH3 group. No carbon is marked.',
   viewBox: '0 0 340 196',
   build() {
     let s = '';
@@ -504,18 +508,16 @@ FIGURES.push({
     const c = P(170, 124), R = 36;
     const v = Array.from({ length: 6 }, (_, i) => at(c, 90 - 60 * i, R));
     s += v.map((p, i) => sk(p, v[(i + 1) % 6])).join('');
-    s += hang(v[0], 60, 'OH', { len: 34 }) + hang(v[0], 120, 'H', { len: 32 });
-    const me = stub(v[2], 0, 34);
-    s += me.s + tg(me.e.x + 6, me.e.y + 4, 'CH₃', 'fg-tag', 'start');
-    s += hang(v[2], 300, 'H', { len: 32 });
+    s += hang(v[0], 90, 'OH', { len: 34 });
+    const me = stub(v[2], -30, 34);
+    s += me.s + tg(me.e.x + 6, me.e.y + 10, 'CH₃', 'fg-tag', 'start');
     for (let i = 0; i < 6; i++) {
       const q = at(c, 90 - 60 * i, R - 15);
       s += tg(q.x, q.y + 4, String(i + 1), 'fg-tag-mut');
     }
-    s += dot(v[0]) + dot(v[2]);
     return s;
   },
-  caption: 'Both marked carbons carry an H, one group outside the ring and two ring bonds.',
+  caption: 'Walk both ways from each ring carbon that carries a group.',
 });
 
 export default FIGURES;
