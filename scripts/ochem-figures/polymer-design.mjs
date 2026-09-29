@@ -53,7 +53,7 @@ function backbone(units, start, dir, opts = {}) {
   const gap = opts.gap ?? 26;
   const d = dir === 'v' ? P(0, 1) : P(1, 0);
   const side = opts.side ?? (dir === 'v' ? P(-1, 0) : P(0, -1));
-  const rad = (u) => (u.ring ? RING : u.co ? 15 : (u.r ?? 15));
+  const rad = (u) => (u.ring ? RING : u.co ? 15 : u.w ? (dir === 'v' ? 15 : u.w) : (u.r ?? 15));
   const ps = [];
   let t = 0;
   units.forEach((u, i) => {
@@ -86,6 +86,9 @@ function backbone(units, start, dir, opts = {}) {
       s += bond(P(p.x, p.y), o, { order: 2 });
       s += atom(o.x, o.y, 'O', { size: 13 });
       s += atom(p.x, p.y, 'C', { size: 13, kind: p.kind });
+    } else if (p.w) {
+      s += `<rect class="fg-atom" x="${p.x - p.w}" y="${p.y - 15}" width="${2 * p.w}" height="30" rx="15"></rect>`;
+      s += atom(p.x, p.y, p.l, { kind: 'point', size: 13 });
     } else {
       s += atom(p.x, p.y, p.l, { r: p.rr, size: 13, kind: p.kind });
     }
@@ -100,7 +103,7 @@ function backbone(units, start, dir, opts = {}) {
 }
 const mid = (e) => P((e[0].x + e[1].x) / 2, (e[0].y + e[1].y) / 2);
 /* Total drawn length of a run of units (for centring). */
-const runLen = (units, gap = 26) => units.reduce((t, u, i) => t + 2 * (u.ring ? RING : u.co ? 15 : (u.r ?? 15)) + (i ? gap : 0), 0);
+const runLen = (units, gap = 26) => units.reduce((t, u, i) => t + 2 * (u.ring ? RING : u.co ? 15 : u.w ? u.w : (u.r ?? 15)) + (i ? gap : 0), 0);
 const centred = (units, cx, y, opts = {}) => backbone(units, P(cx - runLen(units, opts.gap) / 2, y), 'h', { stubs: false, ...opts });
 
 /* A repeat-unit bracket. */
@@ -112,7 +115,7 @@ const brack = (x, y, h, dir) => {
 /* The pieces that recur. */
 const U = {
   co: { co: true }, O: { l: 'O' }, NH: { l: 'NH', r: 17 }, CH2: { l: 'CH₂', r: 18 },
-  ring: { ring: true }, C6: { l: '(CH₂)₆', r: 28 }, C4: { l: '(CH₂)₄', r: 28 },
+  ring: { ring: true }, C6: { l: '(CH₂)₆', w: 33 }, C4: { l: '(CH₂)₄', w: 33 },
   OH: { l: 'OH', r: 17 }, HO: { l: 'HO', r: 17 }, NH2: { l: 'NH₂', r: 18 }, H2N: { l: 'H₂N', r: 18 },
 };
 const PET_RUN = [U.co, U.O, U.CH2, U.CH2, U.O, U.co, U.ring, U.co, U.O];
@@ -133,13 +136,11 @@ FIGURES.push({
     let s = '';
     s += tag(30, 26, 'PET, A STRETCH OF CHAIN', { anchor: 'start' });
     const y = 104;
-    const run = backbone(PET_RUN, P(118, y), 'h', { cuts: [0, 4, 7], nots: [1] });
+    const run = backbone(PET_RUN, P(90, y), 'h', { gap: 34, cuts: [0, 4, 7], nots: [1] });
     s += run.svg;
     for (const i of [0, 4, 7]) s += text(mid(run.ends(i)).x, y + 40, 'cut', { cls: 'fg-tag', size: 11 });
     const nm = mid(run.ends(1));
     s += text(nm.x, y + 40, 'not here', { cls: 'fg-tag-warn', size: 11 });
-    s += text(740, 30, 'cut each C(=O)–O bond:', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
-    s += text(740, 46, 'OH to the carbon, H to the oxygen', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
 
     // the two pieces and what they came from
     const diolX = (run.ps[1].x + run.ps[4].x) / 2, acidX = run.ps[6].x;
@@ -186,9 +187,6 @@ FIGURES.push({
       s += atom(444, y, 'CH', { r: 15, size: 13 });
       s += atom(444, y + 46, 'CH₃', { r: 18, size: 13 });
       s += text(398, y + 50, 'propene', { cls: 'fg-tag-good', size: 11, anchor: 'end' });
-      s += text(500, y - 12, 'highlighted: the two bonds that', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-      s += text(500, y + 4, 'cross the brackets. The bond', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
-      s += text(500, y + 20, 'between them was the C=C.', { cls: 'fg-sm', size: 10.5, anchor: 'start' });
     }
     s += rule(24, 164, 736, 164);
 
@@ -197,12 +195,10 @@ FIGURES.push({
     {
       const y = 262;
       const units = [U.co, U.NH, U.C6, U.NH, U.co, U.C4, U.co, U.NH];
-      const run = backbone(units, P(96, y), 'h', { cuts: [0, 3, 6], nots: [1] });
+      const run = backbone(units, P(80, y), 'h', { gap: 34, cuts: [0, 3, 6], nots: [1] });
       s += run.svg;
       for (const i of [0, 3, 6]) s += text(mid(run.ends(i)).x, y + 40, 'cut', { cls: 'fg-tag', size: 11 });
       s += text(mid(run.ends(1)).x, y + 40, 'not here', { cls: 'fg-tag-warn', size: 11 });
-      s += text(740, 196, 'cut each C(=O)–N bond:', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
-      s += text(740, 212, 'OH to the carbon, H to the nitrogen', { cls: 'fg-sm', size: 10.5, anchor: 'end' });
       const amX = run.ps[2].x, acX = run.ps[5].x;
       const dx = 190, ax = 530, my = 410;
       s += openArrow(P(amX, y + 50), P(dx + 10, my - 52));
@@ -230,7 +226,7 @@ FIGURES.push({
     s += tag(30, 26, 'THE UNKNOWN POLYMER, A STRETCH OF CHAIN', { anchor: 'start' });
     const y = 104;
     const units = [U.co, U.NH, U.C6, U.NH, U.co, U.ring, U.co, U.NH];
-    const run = backbone(units, P(100, y), 'h', { cuts: [0, 3, 6], nots: [1] });
+    const run = backbone(units, P(80, y), 'h', { gap: 34, cuts: [0, 3, 6], nots: [1] });
     s += run.svg;
     for (const i of [0, 3, 6]) s += text(mid(run.ends(i)).x, y + 40, 'cut', { cls: 'fg-tag', size: 11 });
     s += text(mid(run.ends(1)).x, y + 40, 'not here', { cls: 'fg-tag-warn', size: 11 });
@@ -273,11 +269,11 @@ function paraMeta(stacked) {
   const c2 = stacked ? P(165, 264) : P(560, 96);
   s += tag(c1.x, stacked ? 22 : 26, 'PARA (1,4)', {});
   s += ringArms(c1.x, c1.y, 3, 0, ['chain', 'chain']);
-  s += text(c1.x, c1.y + 60, 'the chain runs straight on (180°)', { cls: 'fg-lbl', size: 13 });
+  s += text(c1.x, c1.y + 60, stacked ? 'opposite ways: 180°' : 'the two chain bonds point opposite ways (180°)', { cls: 'fg-lbl', size: 13 });
   s += tag(c2.x, stacked ? 184 : 26, 'META (1,3)', {});
   // meta: vertex 3 (left) and vertex 1 (upper right, 60°)
   s += ringArms(c2.x, c2.y + (stacked ? 10 : 10), 3, 1, ['chain', 'chain']);
-  s += text(c2.x, c2.y + 70, 'the chain turns at the ring (120°)', { cls: 'fg-lbl', size: 13 });
+  s += text(c2.x, c2.y + 70, stacked ? 'at an angle: 120°' : 'the two chain bonds meet at 120°', { cls: 'fg-lbl', size: 13 });
   if (!stacked) s += rule(380, 44, 380, 170);
   else s += rule(20, 164, W - 20, 164);
   return s;
@@ -304,13 +300,13 @@ FIGURES.push({
     let s = '';
     const rows = [
       { y: 70, t: 'HYDROLYSIS', r: 'PET + H₂O', ends: [U.HO, U.OH], name: 'terephthalic acid', eg: true },
-      { y: 200, t: 'METHANOLYSIS', r: 'PET + CH₃OH', ends: [{ l: 'H₃CO', r: 22 }, { l: 'OCH₃', r: 22 }], name: 'dimethyl terephthalate', eg: true },
-      { y: 330, t: 'GLYCOLYSIS', r: 'PET + HOCH₂CH₂OH', ends: [{ l: 'HOCH₂CH₂O', r: 44 }, { l: 'OCH₂CH₂OH', r: 44 }], name: 'BHET', eg: false },
+      { y: 200, t: 'METHANOLYSIS', r: 'PET + CH₃OH', ends: [{ l: 'H₃CO', w: 25 }, { l: 'OCH₃', w: 25 }], name: 'dimethyl terephthalate', eg: true },
+      { y: 330, t: 'GLYCOLYSIS', r: 'PET + HOCH₂CH₂OH', ends: [{ l: 'HOCH₂CH₂O', w: 45 }, { l: 'OCH₂CH₂OH', w: 45 }], name: 'BHET', eg: false },
     ];
     rows.forEach((row, i) => {
       s += tag(24, row.y - 24, row.t, { anchor: 'start' });
-      s += text(24, row.y + 6, row.r, { cls: 'fg-lbl', size: 13, anchor: 'start' });
-      s += arrow(P(186, row.y), P(232, row.y));
+      s += text(24, row.y + 15, row.r, { cls: 'fg-lbl', size: 13, anchor: 'start' });
+      s += arrow(P(186, row.y + 10), P(232, row.y + 10));
       const cx = row.eg ? 390 : 470;
       s += centred([row.ends[0], U.co, U.ring, U.co, row.ends[1]], cx, row.y + 10).svg;
       s += text(cx, row.y + 50, row.name, { cls: 'fg-tag-good', size: 11 });
@@ -323,7 +319,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Every product keeps the same C(=O)–ring–C(=O) core. What sits on the two ends is whatever the incoming nucleophile brought: OH from water, OCH₃ from methanol, OCH₂CH₂OH from ethylene glycol.',
+  caption: 'Every product keeps the same C(=O)–ring–C(=O) core. What changes is the group on each carbonyl carbon: OH from water, OCH₃ from methanol, or OCH₂CH₂OH from ethylene glycol, the same group each carbonyl already carried in PET.',
 });
 
 /* ---------------------------------------------------------------------
@@ -363,12 +359,12 @@ FIGURES.push({
   viewBox: '0 0 760 240',
   alt: 'Left: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water can pick out this bond; below, PET, nylon and PLA, which can be melted and remolded or taken back to monomers. Right: a polyethylene chain of five CH2 groups, labeled every bond is like every other; below, polyethylene and polypropylene, melt and remold only.',
   build() { return backboneDecides(false); },
-  caption: 'Two backbones side by side. On the left, one bond differs from all its neighbors, and that is the bond hydrolysis breaks. On the right, nothing marks any bond out from the rest.',
+  caption: 'Left: the highlighted bond, from the carbonyl carbon to the oxygen, is the one hydrolysis breaks. Right: a run of identical C–C bonds, none marked out from the others.',
 });
 FIGURES.push({
   id: 'l-backbone-decides',
   lessons: ['polymer-design'],
-  viewBox: '0 0 330 470',
+  viewBox: '0 0 330 440',
   alt: 'Top: a polyester chain, CH2–C(=O)–O–CH2–CH2, with the bond from the carbonyl carbon to oxygen highlighted and labeled water can pick out this bond; PET, nylon and PLA can be melted and remolded or taken back to monomers. Bottom: a polyethylene chain of five CH2 groups, labeled every bond is like every other; polyethylene and polypropylene can only be melted and remolded.',
   build() { return backboneDecides(true); },
   caption: 'Top: one bond differs from all its neighbors, and hydrolysis breaks it. Bottom: nothing marks any bond out from the rest.',
@@ -424,29 +420,28 @@ FIGURES.push({
   id: 'lactide-route',
   section: 'polymer-design',
   anchor: '<h3>What carries forward</h3>',
-  viewBox: '0 0 760 250',
+  viewBox: '0 0 760 270',
   alt: 'Lactic acid, HO–CH(CH3)–CO2H, is condensed and the short chains are cracked to lactide, a six-membered ring of two lactic acid units joined by two ester bonds, with one ring ester C–O bond highlighted. Ring-opening then gives PLA, whose repeat unit O–CH(CH3)–C(=O) is shown in brackets.',
   build() {
     let s = '';
     s += tag(110, 26, 'LACTIC ACID');
-    s += lacticAcid(110, 110);
-    s += arrow(P(208, 110), P(282, 110));
-    s += text(245, 96, 'condense,', { cls: 'fg-sm', size: 10.5 });
-    s += text(245, 136, 'then crack', { cls: 'fg-sm', size: 10.5 });
-    s += tag(380, 26, 'LACTIDE');
-    const lt = lactide(380, 118);
+    s += lacticAcid(110, 130);
+    s += arrow(P(208, 130), P(282, 130));
+    s += text(245, 116, 'condense,', { cls: 'fg-sm', size: 10.5 });
+    s += text(245, 156, 'then crack', { cls: 'fg-sm', size: 10.5 });
+    s += tag(250, 232, 'LACTIDE', { anchor: 'start' });
+    const lt = lactide(380, 138);
     s += lt.svg;
     const m = P((lt.v[0].x + lt.v[1].x) / 2, (lt.v[0].y + lt.v[1].y) / 2);
     s += text(m.x - 26, m.y - 8, 'opens', { cls: 'fg-tag-good', size: 11, anchor: 'end' });
-    s += arrow(P(482, 110), P(554, 110));
-    s += text(518, 96, 'ring-', { cls: 'fg-sm', size: 10.5 });
-    s += text(518, 136, 'opening', { cls: 'fg-sm', size: 10.5 });
+    s += arrow(P(482, 130), P(554, 130));
+    s += text(518, 116, 'ring-', { cls: 'fg-sm', size: 10.5 });
+    s += text(518, 156, 'opening', { cls: 'fg-sm', size: 10.5 });
     s += tag(650, 26, 'PLA');
-    s += plaUnit(650, 110);
-    s += text(380, 236, 'lactide = two lactic acids joined head to tail twice, in a ring', { cls: 'fg-sm', size: 10.5 });
+    s += plaUnit(650, 130);
     return s;
   },
-  caption: 'The two-stage route to PLA. The ring holds two ester bonds; ring-opening breaks one of them (highlighted) and re-forms it to the next lactide, so no atoms are lost and the backbone is the same polyester of lactic acid.',
+  caption: 'The two-stage route to PLA. Lactide is two lactic acids, each esterified to the other, closed into a ring. Ring-opening breaks one ring ester bond (highlighted) as the chain end bonds to that carbonyl carbon, so no atoms are lost.',
   note: 'Lactic acid has a stereocenter. The drawings leave it out; commercial PLA is made mostly from the lactide of L-lactic acid.',
 });
 
@@ -455,7 +450,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-cut-alkene',
   lessons: ['polymer-design'],
-  viewBox: '0 0 330 250',
+  viewBox: '0 0 330 270',
   alt: 'Polypropylene repeat unit CH2–CH(CH3) in brackets, the two bonds that cross the brackets highlighted. An open arrow points down to propene, CH2=CH–CH3.',
   build() {
     let s = '';
@@ -470,7 +465,7 @@ FIGURES.push({
     s += atom(x0 + 28, y, 'CH₂', { r: 18, size: 13 });
     s += atom(x0 + 92, y, 'CH', { r: 15, size: 13 });
     s += atom(x0 + 92, y + 46, 'CH₃', { r: 18, size: 13 });
-    s += text(250, y + 5, 'polypropylene', { cls: 'fg-tag', size: 11, anchor: 'start' });
+    s += text(20, y + 52, 'polypropylene', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += openArrow(P(150, 118), P(150, 162));
     const y2 = 190;
     s += bond(P(118, y2), P(182, y2), { order: 2, rFrom: 18, rTo: 15 });
@@ -487,12 +482,12 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-cut-ester',
   lessons: ['polymer-design'],
-  viewBox: '0 0 330 500',
+  viewBox: '0 0 330 590',
   alt: 'A stretch of PET chain drawn top to bottom with each carbonyl oxygen shown on the left. Wavy cut marks cross the three bonds from a carbonyl carbon down to the next oxygen, and a dashed not here mark crosses an oxygen-to-CH2 bond. On the right, the piece from oxygen to oxygen becomes ethylene glycol, HO–CH2CH2–OH, and the piece from carbonyl to carbonyl becomes terephthalic acid.',
   build() {
     let s = '';
     const x = 96;
-    const run = backbone(PET_RUN, P(x, 40), 'v', { gap: 18, cuts: [0, 4, 7], nots: [1] });
+    const run = backbone(PET_RUN, P(x, 40), 'v', { gap: 26, cuts: [0, 4, 7], nots: [1] });
     s += run.svg;
     for (const i of [0, 4, 7]) s += text(x + 24, mid(run.ends(i)).y + 4, 'cut', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(x + 24, mid(run.ends(1)).y + 4, 'not here', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
@@ -517,7 +512,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-amide-bonds',
   lessons: ['polymer-design'],
-  viewBox: '0 0 330 270',
+  viewBox: '0 0 330 300',
   alt: 'Part of a nylon 6,6 chain drawn top to bottom: (CH2)4, a carbonyl carbon with its oxygen on the left, NH, then (CH2)6. The bond from (CH2)4 to the carbonyl carbon is labeled a, the bond from the carbonyl carbon to N is labeled b, and the bond from N to (CH2)6 is labeled c.',
   build() {
     let s = '';
@@ -528,8 +523,6 @@ FIGURES.push({
       const m = mid(run.ends(i));
       s += text(x + 22, m.y + 5, l, { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
     });
-    s += text(x + 50, run.ps[0].y + 5, 'from adipic acid', { cls: 'fg-tag', size: 11, anchor: 'start' });
-    s += text(x + 50, run.ps[3].y + 5, 'from the diamine', { cls: 'fg-tag', size: 11, anchor: 'start' });
     return s;
   },
   caption: 'Three single bonds in a nylon 6,6 chain, lettered a, b and c.',

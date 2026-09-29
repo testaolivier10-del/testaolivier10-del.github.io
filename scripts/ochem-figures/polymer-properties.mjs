@@ -6,7 +6,7 @@
    is wider than 340 in the notes has a stacked copy for the lesson, with the
    id prefix l-. */
 import { atom, bond, wedge, hash, arrow, text, tag, rule, panel, P } from '../lib/ochem-figure.mjs';
-import { zig, benzene } from '../lib/ochem-skeletal.mjs';
+import { zig, polyPts, ringDouble } from '../lib/ochem-skeletal.mjs';
 
 const FIGURES = [];
 
@@ -66,12 +66,12 @@ FIGURES.push({
     labels += text(220, 52, 'chains lie side by side', { cls: 'fg-sm' });
     labels += tag(540, 34, 'CRYSTALLINE REGION');
     labels += text(540, 52, 'the same chains, ordered again', { cls: 'fg-sm' });
-    labels += tag(380, 298, 'AMORPHOUS REGION: CHAINS LOOP AND TANGLE');
-    labels += text(700, 298, 'one chain, highlighted, runs through both', { cls: 'fg-sm', anchor: 'end' });
+    labels += tag(380, 296, 'AMORPHOUS REGION: CHAINS LOOP AND TANGLE');
+    labels += text(380, 318, 'the highlighted chain runs through both kinds of region', { cls: 'fg-sm' });
     return fringed(760, 330, {
       A: [160, 280], B: [470, 610], top: 88, gap: 14, drop: 56, x0: 30, x1: 730, hi: 2,
       ys: [150, 96, 250, 200, 120], ye: [110, 250, 170, 90, 230],
-      sw: [[60, 110, -40, 40], [-50, 150, -120, 60], [70, 170, -150, -50], [-60, 120, -60, 60], [40, 90, -140, -40]],
+      sw: [[60, 150, 60, 40], [-50, -90, 150, 60], [70, 190, -150, -50], [-60, -150, -40, 60], [40, 60, -190, -40]],
       labels,
     });
   },
@@ -92,7 +92,7 @@ FIGURES.push({
     return fringed(340, 300, {
       A: [62, 128], B: [212, 278], top: 60, gap: 13, drop: 64, x0: 12, x1: 328, hi: 2,
       ys: [120, 70, 200, 170, 96], ye: [90, 214, 150, 70, 200],
-      sw: [[40, 80, -30, 30], [-40, 110, -90, 40], [50, 120, -110, -40], [-40, 90, -40, 40], [30, 70, -100, -30]],
+      sw: [[40, 100, 40, 30], [-40, -60, 100, 40], [50, 130, -100, -40], [-40, -100, -30, 40], [30, 40, -130, -30]],
       labels,
     });
   },
@@ -108,7 +108,7 @@ FIGURES.push({
   id: 'tg-and-tm',
   section: 'polymer-properties',
   anchor: '<h3>Two transition temperatures, not one</h3>',
-  viewBox: '0 0 760 370',
+  viewBox: '0 0 760 386',
   alt: TG_ALT,
   build() {
     let s = '';
@@ -117,7 +117,7 @@ FIGURES.push({
     s += rule(X0, Y1, X1, Y1);
     s += rule(X0, Y1, X0, Y0);
     s += text(X0 + 6, Y0 - 10, 'stiffness, log scale', { cls: 'fg-sm', anchor: 'start' });
-    s += text(694, Y1 - 8, 'temperature →', { cls: 'fg-tag', anchor: 'end' });
+    s += text(736, 344, 'temperature →', { cls: 'fg-tag', anchor: 'end' });
 
     const TG = 286, TM = 580;
     s += `<line class="fg-dash" x1="${TG}" y1="${Y0 + 6}" x2="${TG}" y2="${Y1}"></line>`;
@@ -128,20 +128,21 @@ FIGURES.push({
     /* Amorphous: one cliff, at Tg, and then it flows. */
     s += `<path class="fg-bond-hi" fill="none" d="M110 96 L256 100 C276 102 272 212 300 216 L392 232 C424 238 432 290 460 294"></path>`;
     s += text(118, 84, 'amorphous — polystyrene', { cls: 'fg-tag-warn', anchor: 'start' });
-    s += text(196, 236, 'about a thousandfold, all at once', { cls: 'fg-sm' });
+    s += text(262, 212, 'stiffness falls about', { cls: 'fg-sm', anchor: 'end' });
+    s += text(262, 226, 'a thousandfold at once', { cls: 'fg-sm', anchor: 'end' });
 
     /* Semicrystalline: a step at Tg, a long plateau, a cliff at Tm. */
     s += `<path class="fg-bond" fill="none" d="M110 130 L258 134 C278 136 276 168 300 172 L556 184 C580 188 584 290 606 294"></path>`;
-    s += text(336, 164, 'semicrystalline — HDPE', { cls: 'fg-sm', anchor: 'start' });
-    s += text(462, 212, 'the crystalline regions still hold it together', { cls: 'fg-sm' });
+    s += text(310, 140, 'semicrystalline — HDPE', { cls: 'fg-sm', anchor: 'start' });
+    s += text(310, 156, 'its crystalline regions still hold it', { cls: 'fg-sm', anchor: 'start' });
 
     s += text(180, Y1 + 24, 'glassy', { cls: 'fg-tag' });
     s += text(430, Y1 + 20, 'rubbery if amorphous,', { cls: 'fg-tag' });
     s += text(430, Y1 + 36, 'tough if semicrystalline', { cls: 'fg-tag' });
     s += text(648, Y1 + 24, 'flows or melts', { cls: 'fg-tag' });
 
-    s += rule(24, 340, 736, 340);
-    s += text(380, 362, 'How much each transition matters depends on how crystalline the sample is.', { cls: 'fg-lbl' });
+    s += rule(24, 354, 736, 354);
+    s += text(380, 376, 'How much each transition matters depends on how crystalline the sample is.', { cls: 'fg-lbl' });
     return s;
   },
   caption: 'The amorphous polymer softens all at once at T<sub>g</sub>. The semicrystalline one barely notices T<sub>g</sub> and gives way at T<sub>m</sub>. The axis is schematic: the two curves share one T<sub>g</sub> line so their shapes can be compared, but the real glass transitions of polystyrene and HDPE are about 220&nbsp;&deg;C apart.',
@@ -157,12 +158,12 @@ FIGURES.push({
   build() {
     let s = '';
     const plot = (oy, title, cls, curve, zones) => {
-      const X0 = 36, X1 = 326, Y0 = oy + 34, Y1 = oy + 150;
+      const X0 = 50, X1 = 326, Y0 = oy + 34, Y1 = oy + 150;
       let g = text(20, oy + 14, title, { cls, anchor: 'start' });
       g += rule(X0, Y1, X1, Y1);
       g += rule(X0, Y1, X0, Y0);
-      g += text(28, Y0 + 6, 'stiff', { cls: 'fg-tag-mut', anchor: 'end' });
-      g += text(28, Y1, 'soft', { cls: 'fg-tag-mut', anchor: 'end' });
+      g += text(44, Y0 + 6, 'stiff', { cls: 'fg-tag-mut', anchor: 'end' });
+      g += text(44, Y1, 'soft', { cls: 'fg-tag-mut', anchor: 'end' });
       g += `<line class="fg-dash" x1="120" y1="${Y0 - 4}" x2="120" y2="${Y1}"></line>`;
       g += `<line class="fg-dash" x1="250" y1="${Y0 - 4}" x2="250" y2="${Y1}"></line>`;
       g += Tsub(120, Y0 - 10, 'g', 'fg-tag-good');
@@ -172,11 +173,11 @@ FIGURES.push({
       return g;
     };
     s += plot(0, 'AMORPHOUS — polystyrene', 'fg-tag-warn',
-      (Y0, Y1) => `M44 ${Y0 + 10} L108 ${Y0 + 12} C122 ${Y0 + 14} 118 ${Y1 - 42} 134 ${Y1 - 40} L170 ${Y1 - 34} C186 ${Y1 - 30} 190 ${Y1 - 4} 204 ${Y1 - 2}`,
-      [[76, 'glassy'], [168, 'rubbery'], [236, 'flows']]);
+      (Y0, Y1) => `M56 ${Y0 + 10} L108 ${Y0 + 12} C122 ${Y0 + 14} 118 ${Y1 - 42} 134 ${Y1 - 40} L170 ${Y1 - 34} C186 ${Y1 - 30} 190 ${Y1 - 4} 204 ${Y1 - 2}`,
+      [[84, 'glassy'], [168, 'rubbery'], [236, 'flows']]);
     s += plot(196, 'SEMICRYSTALLINE — HDPE', 'fg-tag',
-      (Y0, Y1) => `M44 ${Y0 + 10} L108 ${Y0 + 12} C122 ${Y0 + 14} 118 ${Y0 + 28} 134 ${Y0 + 30} L236 ${Y0 + 36} C252 ${Y0 + 40} 254 ${Y1 - 4} 270 ${Y1 - 2}`,
-      [[76, 'glassy'], [185, 'tough'], [292, 'melts']]);
+      (Y0, Y1) => `M56 ${Y0 + 10} L108 ${Y0 + 12} C122 ${Y0 + 14} 118 ${Y0 + 28} 134 ${Y0 + 30} L236 ${Y0 + 36} C252 ${Y0 + 40} 254 ${Y1 - 4} 270 ${Y1 - 2}`,
+      [[84, 'glassy'], [185, 'tough'], [292, 'melts']]);
     s += text(314, 392, 'temperature →', { cls: 'fg-tag', anchor: 'end' });
     return s;
   },
@@ -187,6 +188,18 @@ FIGURES.push({
    Polystyrene: the same phenyl group on two different chains. Syndiotactic
    (phenyls alternate wedge, dash) packs and crystallizes; atactic (random)
    cannot, and is the ordinary clear, glassy polystyrene. */
+/* A Kekule benzene ring with a vertex at the bottom. The inner lines are
+   inset less than the library default so they stay visible at this size. */
+function ring6(cx, cy, r) {
+  const pts = polyPts(cx, cy, 6, r, 270), c = P(cx, cy);
+  let s = '';
+  for (let i = 0; i < 6; i++) {
+    const a = pts[i], b = pts[(i + 1) % 6];
+    s += i % 2 ? ringDouble(a, b, c, { inset: 4, gap: 3.6 }) : bond(a, b, { rFrom: 0, rTo: 0 });
+  }
+  return s;
+}
+
 /* One polystyrene backbone: eight carbons in a zig-zag, a phenyl ring on
    every other carbon, each ring bond a wedge (w) or a dash (h). */
 function psChain(x0, y, pattern) {
@@ -200,7 +213,7 @@ function psChain(x0, y, pattern) {
     const c = pts[vi];
     const end = P(c.x, c.y - 34);
     s += pattern[j] === 'w' ? wedge(c, end, { rFrom: 0, rTo: 0, width: 8 }) : hash(c, end, { rFrom: 0, rTo: 0, width: 9, rungs: 5 });
-    s += benzene(c.x, end.y - 16, 16, { rot: 270 }).svg;
+    s += ring6(c.x, end.y - 18, 18);
   });
   return s;
 }
@@ -228,7 +241,7 @@ FIGURES.push({
     s += text(380, 316, 'wedge: toward you   ·   dash: away from you', { cls: 'fg-tag-mut' });
     return s;
   },
-  caption: 'The same bulky phenyl group on both chains. Only the pattern of wedges and dashes differs, and that alone decides whether the chains can pack.',
+  caption: 'Compare the ring bonds: wedges and dashes alternate on the left and follow no pattern on the right.',
 });
 
 FIGURES.push({
@@ -298,7 +311,7 @@ FIGURES.push({
     // The kept double bonds.
     s += text(214, 60, 'C=C kept from', { cls: 'fg-tag-good', anchor: 'start' });
     s += text(214, 74, '1,4-addition', { cls: 'fg-tag-good', anchor: 'start' });
-    s += `<line class="fg-dash" x1="210" y1="68" x2="${top.C3.x - 4}" y2="${top.C3.y - 8}"></line>`;
+    s += `<line class="fg-dash" x1="210" y1="68" x2="${(top.C2.x + top.C3.x) / 2 + 4}" y2="${top.C3.y - 8}"></line>`;
     // The allylic carbons that carry the bridge.
     s += text(176, 172, 'allylic carbon:', { cls: 'fg-tag', anchor: 'end' });
     s += text(176, 188, 'next to a C=C', { cls: 'fg-tag', anchor: 'end' });
@@ -306,10 +319,10 @@ FIGURES.push({
     s += `<line class="fg-dash" x1="170" y1="194" x2="${bot.C4.x - 6}" y2="${bot.C4.y - 6}"></line>`;
     s += text(20, 60, 'rubber chain', { cls: 'fg-tag-mut', anchor: 'start' });
     s += text(20, 322, 'second rubber chain', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += text(170, 350, 'each chain: cis-polyisoprene', { cls: 'fg-lbl' });
+    s += '<text class="fg-lbl" x="170" y="350" text-anchor="middle">each chain: <tspan font-style="italic">cis</tspan>-polyisoprene</text>';
     return s;
   },
-  caption: 'Where a bridge attaches. The sulfur bonds at an allylic carbon, and the C=C beside it is still there after vulcanization.',
+  caption: 'Follow the highlighted bridge from an allylic carbon on one chain to an allylic carbon on the other.',
 });
 
 /* ------------------------------------------------------------------------
@@ -400,15 +413,17 @@ FIGURES.push({
    Rubber elasticity is entropy. Three chains tied by two cross-links, drawn
    coiled (relaxed) and pulled nearly straight (stretched). */
 function coil(x0, x1, yc, R, turns, phase) {
-  // x advances steadily while a circle of radius R is traced: loops, like a
-  // coiled chain seen from the side.
-  const N = 90;
+  // A trochoid: x advances steadily while the pen circles, so the line loops
+  // back on itself like a coiled chain. The radius and the centre line wander
+  // a little so no two loops match.
+  const N = 160;
   let d = '';
   for (let i = 0; i <= N; i++) {
     const t = i / N;
     const a = phase + t * turns * 2 * Math.PI;
-    const x = x0 + t * (x1 - x0) + R * 0.8 * Math.cos(a) - R * 0.8 * Math.cos(phase);
-    const y = yc + R * Math.sin(a) * (0.7 + 0.3 * Math.sin(3 * t + phase));
+    const r = R * (0.75 + 0.35 * Math.sin(2 * Math.PI * 1.7 * t + phase * 2));
+    const x = x0 + t * (x1 - x0) + r * Math.sin(a) - R * 0.75 * Math.sin(phase);
+    const y = yc + r * Math.cos(a) * 0.8 + R * 0.5 * Math.sin(2 * Math.PI * 1.3 * t + phase);
     d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
   }
   return d;
@@ -427,7 +442,7 @@ function entropyPanel(ox, oy, w, h, stretched, knots) {
   const ys = [oy + h * 0.25, oy + h * 0.5, oy + h * 0.75];
   const xa = ox + 22, xb = ox + w - 22;
   ys.forEach((y, i) => {
-    const d = stretched ? straightish(xa, xb, y, 3) : coil(xa + 16, xb - 16, y, h * 0.1, 3.2 + i * 0.4, i * 1.7);
+    const d = stretched ? straightish(xa, xb, y, 3) : coil(xa + 16, xb - 16, y, h * 0.1, 4.5 + i * 0.6, i * 1.7);
     g += `<path class="fg-bond" fill="none" d="${d}"></path>`;
   });
   // Cross-links: short highlighted bridges at fixed fractions along the chains.
@@ -443,7 +458,7 @@ FIGURES.push({
   id: 'rubber-entropy',
   section: 'polymer-properties',
   anchor: '<h3>Cross-linking as a dial</h3>',
-  viewBox: '0 0 760 300',
+  viewBox: '0 0 760 276',
   alt: ENTROPY_ALT,
   build() {
     let s = '';
@@ -463,10 +478,9 @@ FIGURES.push({
     s += text(174, 258, 'high entropy', { cls: 'fg-tag-good' });
     s += text(586, 238, 'very few possible shapes', { cls: 'fg-lbl' });
     s += text(586, 258, 'low entropy', { cls: 'fg-tag-warn' });
-    s += text(380, 290, 'The highlighted cross-links stop the chains sliding apart, so letting go returns them to the coil.', { cls: 'fg-sm' });
     return s;
   },
-  caption: 'Stretching trades a coil that can take countless shapes for a nearly straight chain that can take very few. The pull back toward the coil is the rubber&rsquo;s elasticity.',
+  caption: 'The same three chains, relaxed on the left and stretched on the right. The highlighted bars are cross-links, and they stay in place in both.',
 });
 
 FIGURES.push({
@@ -492,7 +506,7 @@ FIGURES.push({
     s += text(170, 428, 'Straight: very few.', { cls: 'fg-lbl' });
     return s;
   },
-  caption: 'The highlighted bridges are cross-links. They keep the chains from sliding apart, so letting go returns them to the coil.',
+  caption: 'The same chains, relaxed (top) and stretched (bottom). Highlighted bars: cross-links.',
 });
 
 /* ------------------------------------------------------------------------

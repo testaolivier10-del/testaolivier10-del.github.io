@@ -94,7 +94,7 @@ FIGURES.push({
     s += tag(170, 316, 'the number of monomer units in one chain');
     return s;
   },
-  caption: 'Polyethylene, built up and then written down. The shaded pair of carbons is what one ethylene brought to the chain. The bond sticking out through each bracket means the chain carries on at both ends.',
+  caption: 'Top: three monomers. Middle: the chain they become, with one repeat unit shaded. Bottom: the same chain in bracket notation, where the bond through each bracket means the chain carries on at both ends.',
 });
 
 /* ------------------------------------------------------------------------
@@ -119,7 +119,7 @@ FIGURES.push({
         const a = (d * Math.PI) / 180;
         const ex = 52 + Math.cos(a) * 30, ey = gy - Math.sin(a) * 30;
         s += bond(P(52, gy), P(ex, ey), { rFrom: 13, rTo: 5 });
-        s += atom(ex, ey, '', { kind: 'hi', r: 5 });
+        s += `<circle class="fg-fill-hi" cx="${ex.toFixed(2)}" cy="${ey.toFixed(2)}" r="5.5"></circle>`;
       }
       s += atom(52, gy, 'M', { r: 13 });
       s += arrow(P(98, gy), P(132, gy), { muted: true });
@@ -261,7 +261,7 @@ FIGURES.push({
   viewBox: '0 0 760 404',
   alt: 'Propylene, CH2=CH–CH3, becoming the bracketed repeat unit CH2–CH(CH3) with the same formula, C3H6. Below, adipic acid and ethylene glycol, with the acid OH groups and the alcohol H atoms shaded, becoming the bracketed polyester repeat unit O–CH2CH2–O–C(=O)–(CH2)4–C(=O) after losing two waters',
   build: twoKindsNotes,
-  caption: 'Count the atoms across each arrow. Propylene’s repeat unit has exactly the monomer’s formula. The polyester’s repeat unit has lost an OH from each acid end and an H from each alcohol end, which is two waters.',
+  caption: 'Shaded atoms are the ones that leave: an OH from each acid end and an H from each alcohol end. The formulas on the right are the totals for each line.',
 });
 
 FIGURES.push({
@@ -429,7 +429,7 @@ FIGURES.push({
     s += bond(P(550, y0), P(616, y0), { rFrom: 18, rTo: 18 });
     s += bond(P(616, y0), P(682, y0), { rFrom: 18, rTo: 18 });
     s += dot(692, y0 - 26);
-    s += text(380, y0 + 52, 'one electron from the radical and one from the π bond make the new C–C bond; the other π electron is the new radical', { cls: 'fg-sm' });
+    s += text(380, y0 + 52, 'one π electron pairs with the radical’s electron to make the new C–C bond; the other becomes the new radical', { cls: 'fg-sm' });
     s += rule(40, y0 + 76, 720, y0 + 76);
 
     /* 2. Cationic: the chain end is a tertiary carbocation. */
@@ -558,11 +558,11 @@ FIGURES.push({
       if (i < 7) s += bond(P(x, yc), P(x + 64, yc), { rFrom: i % 2 ? 15 : 16, rTo: i % 2 ? 16 : 15 });
     }
     s += bond(P(558, yc), P(598, yc), { rFrom: 15, rTo: 0 });
-    s += text(640, yc + 4, 'poly(vinyl chloride)', { cls: 'fg-tag-good', anchor: 'start' });
+    s += text(606, yc + 4, 'poly(vinyl chloride)', { cls: 'fg-tag-good', anchor: 'start' });
     s += tag(380, 458, 'head-to-tail: a chlorine on every other carbon of the chain');
     return s;
   },
-  caption: 'Top: the two ways the radical could add. The shaded atom carries the unpaired electron. Bottom: every monomer adds tail first, so the CHCl carbons alternate with CH₂ groups.',
+  caption: 'Top: the two ways the radical could add; the shaded atom carries the unpaired electron. Bottom: the chain after many tail-first additions.',
 });
 
 /* ------------------------------------------------------------------------
