@@ -357,28 +357,28 @@ FIGURES.push({
    3 x 2 grid and the lesson can stack them in a 340-wide column. */
 const E = 'CO₂CH₃';
 /* A Newman projection for the Heck cells. Front bonds at 90°, 210°, 330°
-   from the centre; back bonds from the circle, turned 30° so an eclipsed
-   pair can be read side by side. `front` and `back` are [label, kind]. */
+   from the centre; back bonds from the circle, turned 20° and drawn longer,
+   so each eclipsed pair reads as lined up with both labels visible. `front` and `back` are [label, kind]. */
 const newman = (ox, oy, front, back, arrowOn, caption) => {
   let s = '';
-  const c = P(ox + 125, oy + 88), R0 = 26;
+  const c = P(ox + 125, oy + 98), R0 = 24;
   const at = (deg, r) => P(c.x + r * Math.cos(deg * Math.PI / 180), c.y - r * Math.sin(deg * Math.PI / 180));
   s += `<circle class="fg-bond" cx="${c.x}" cy="${c.y}" r="${R0}" fill="none"></circle>`;
   const put = (p, [lab, kind], rTo) => kind === 'grp' ? grp(p.x, p.y, lab)
     : atom(p.x, p.y, lab, { kind: kind || 'plain', r: lab === 'H' ? 11 : 16 });
-  [130, 250, 10].forEach((deg, i) => {
+  [110, 230, 350].forEach((deg, i) => {
     const lab = back[i];
-    const end = at(deg, lab[1] === 'grp' ? 74 : 60);
+    const end = at(deg, lab[1] === 'grp' ? 86 : 72);
     s += bond(at(deg, R0), end, { rFrom: 0, rTo: lab[1] === 'grp' ? 28 : lab[0] === 'H' ? 11 : 16 });
     s += put(end, lab);
   });
   [90, 210, 330].forEach((deg, i) => {
     const lab = front[i];
-    const end = at(deg, 56);
+    const end = at(deg, 44);
     s += bond(c, end, { rFrom: 0, rTo: lab[0] === 'H' ? 11 : 16 });
     s += put(end, lab);
   });
-  if (arrowOn) s += curve(at(90, 34), at(122, 50), { bow: 10 });
+  if (arrowOn) s += curve(P(c.x + 4, c.y - 28), P(c.x - 9, c.y - 64), { bow: 36 });
   s += tag(ox + 125, oy + 174, caption);
   return s;
 };
@@ -509,7 +509,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'Read the frames in order. Frames 2 and 3 take the place of transmetalation. Frames 4 and 5 look along the new C&ndash;C bond: in 4, Ph and Pd sit together; in 5, the front carbon has turned, so an H lines up with Pd and Ph lines up with an H rather than with the ester. The &beta;-hydride elimination in frame 5, not a reductive elimination, releases the product, and frame 7 returns Pd(0).',
+  caption: 'Read the frames in order. Frames 2 and 3 take the place of transmetalation. Frames 4 and 5 are Newman projections along the new C&ndash;C bond; the front carbon is the one that took the phenyl. In frame 4, Ph and Pd sit together; in 5, the front carbon has turned, so an H lines up with Pd and Ph lines up with an H rather than with the ester. The &beta;-hydride elimination in frame 5, not a reductive elimination, releases the product, and frame 7 returns Pd(0).',
 });
 
 const heckColumn = (cells) => {
@@ -534,7 +534,7 @@ FIGURES.push({
   viewBox: '0 0 340 384',
   alt: 'Two Newman projections along the new C–C bond. First, just after insertion, Ph on the front carbon sits beside Pd on the back carbon. Second, the front carbon has turned: an H sits beside Pd, Ph sits beside the back H, and the other H sits beside the ester. An arrow shows the H moving to Pd.',
   build() { return heckColumn([3, 4]); },
-  caption: 'Frames 4 and 5 look along the new C&ndash;C bond. In frame 5, an H lines up with Pd and leaves with it, and Ph lines up with an H rather than with the ester.',
+  caption: 'Frames 4 and 5 are Newman projections along the new C&ndash;C bond; the front carbon is the one that took the phenyl. In frame 5, an H lines up with Pd and leaves with it, and Ph lines up with an H rather than with the ester.',
 });
 FIGURES.push({
   id: 'l-heck-c',
