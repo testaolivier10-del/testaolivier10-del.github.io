@@ -89,8 +89,9 @@ function chain(x0, y, groups, orders, o = {}) {
     if (g.chg) s += chg(q.x + 17, q.y - 20);
     if (g.dplus) s += lbl(q.x + (g.up ? 22 : 0), q.y - 24, 'δ+');
     if (g.num) {
-      const below = g.down || g.numLeft;
-      s += below ? tg(q.x - 25, q.y + 30, g.num) : tg(q.x, q.y + 32, g.num);
+      if (g.down) s += tg(q.x + 22, q.y + 30, g.num, 'fg-tag', 'start');
+      else if (g.numLeft) s += tg(q.x - 25, q.y + 30, g.num);
+      else s += tg(q.x, q.y + 32, g.num);
     }
   });
   return { s, p };
@@ -197,20 +198,22 @@ FIGURES.push({
     s += dieneWithHBr(38, 150, 56);
     s += arrow(P(236, 150), P(286, 150));
     s += tg(520, 30, 'step 2: Br⁻ bonds to either end');
-    const a = chain(312, 150, FORM_C2.map((g, i) => (i === 1 ? { ...g, numLeft: true } : g)), [1, 1, 2], { dx: 56 });
+    const a = chain(312, 150, FORM_C2, [1, 1, 2], { dx: 56 });
     s += a.s;
+    // how the second form comes from the first: the C3=C4 pi electrons move to C2–C3
+    s += curve(P((a.p[2].x + a.p[3].x) / 2, 142), P((a.p[1].x + a.p[2].x) / 2 + 4, 142), { bow: 22, size: 7 });
     s += resonance(516, 150);
-    const b = chain(552, 150, FORM_C4.map((g, i) => (i === 3 ? { ...g, numLeft: true } : g)), [1, 2, 1], { dx: 56 });
+    const b = chain(552, 150, FORM_C4, [1, 2, 1], { dx: 56 });
     s += b.s;
     const brA = P(a.p[1].x + 34, 262), brB = P(b.p[3].x - 34, 262);
     s += bromide(brA) + bromide(brB);
-    s += curve(P(brA.x - 4, brA.y - 26), P(a.p[1].x + 6, a.p[1].y + 16), { bow: -14, size: 7 });
-    s += curve(P(brB.x + 4, brB.y - 26), P(b.p[3].x - 6, b.p[3].y + 16), { bow: 14, size: 7 });
+    s += curve(P(brA.x - 4, brA.y - 26), P(a.p[1].x + 12, a.p[1].y + 12), { bow: -14, size: 7 });
+    s += curve(P(brB.x + 4, brB.y - 26), P(b.p[3].x - 12, b.p[3].y + 12), { bow: 14, size: 7 });
     s += tg(a.p[1].x + 34, 318, 'Br⁻ bonds to C2');
     s += tg(b.p[3].x - 34, 318, 'Br⁻ bonds to C4');
     return s;
   },
-  caption: 'Each curved arrow starts on electrons: the π bond, the H–Br bond, a lone pair on bromide. The two-headed arrow joins two drawings of one cation.',
+  caption: 'Each curved arrow starts on electrons (the π bond, the H–Br bond, a lone pair on bromide), never on a positive charge and never on the hydrogen itself. The small arrow in the first form shows how the second form is drawn from it; the two-headed arrow joins two drawings of one cation.',
 });
 
 FIGURES.push({
@@ -224,20 +227,21 @@ FIGURES.push({
     s += tg(170, 20, 'step 1: the π bond takes H⁺');
     s += dieneWithHBr(65, 130, 70);
     s += arrow(P(170, 168), P(170, 200));
-    const a = chain(65, 248, FORM_C2.map((g, i) => (i === 1 ? { ...g, numLeft: true } : g)), [1, 1, 2], { dx: 70 });
+    const a = chain(65, 248, FORM_C2, [1, 1, 2], { dx: 70 });
     s += a.s;
+    s += curve(P((a.p[2].x + a.p[3].x) / 2, 240), P((a.p[1].x + a.p[2].x) / 2 + 4, 240), { bow: 22, size: 7 });
     const brA = P(a.p[1].x + 40, 330);
     s += bromide(brA);
-    s += curve(P(brA.x - 4, brA.y - 26), P(a.p[1].x + 6, a.p[1].y + 16), { bow: -14, size: 7 });
-    s += resonanceV(300, 340, 20);
-    const b = chain(65, 418, FORM_C4.map((g, i) => (i === 3 ? { ...g, numLeft: true } : g)), [1, 2, 1], { dx: 70 });
+    s += curve(P(brA.x - 4, brA.y - 26), P(a.p[1].x + 12, a.p[1].y + 12), { bow: -14, size: 7 });
+    s += resonanceV(65, 336, 20);
+    const b = chain(65, 418, FORM_C4, [1, 2, 1], { dx: 70 });
     s += b.s;
     const brB = P(b.p[3].x - 40, 494);
     s += bromide(brB);
-    s += curve(P(brB.x + 4, brB.y - 26), P(b.p[3].x - 6, b.p[3].y + 16), { bow: 14, size: 7 });
+    s += curve(P(brB.x + 4, brB.y - 26), P(b.p[3].x - 12, b.p[3].y + 12), { bow: 14, size: 7 });
     return s;
   },
-  caption: 'The two-headed arrow joins two drawings of one cation. Bromide can bond to C2 or to C4.',
+  caption: 'Arrows start on electrons, never on a + or on the H. The two-headed arrow joins two drawings of one cation.',
 });
 
 /* ======================================================================
@@ -287,7 +291,7 @@ FIGURES.push({
     const mid = P((d.p[0].x + d.p[1].x) / 2, 150);
     const ba = P(mid.x, 78), bb = P(mid.x + 64, 78);
     s += bond(ba, bb, { rFrom: 14, rTo: 14 });
-    s += withPairs(ba, 'Br', [180, -90], 'warn') + lonePair(ba.x, ba.y, 135, { dist: 21 });
+    s += withPairs(ba, 'Br', [180, -90], 'hi') + lonePair(ba.x, ba.y, 135, { dist: 21 });
     s += withPairs(bb, 'Br', [-90, 0, 90]);
     s += curve(P(mid.x - 4, 142), P(ba.x - 3, ba.y + 14), { bow: -14, size: 7 });
     s += fromBond(ba, bb, P(bb.x - 8, bb.y - 15), -14, 6);
@@ -301,7 +305,7 @@ FIGURES.push({
     s += B(q[0], lab[0], q[1], lab[1]) + B(q[1], lab[1], q[2], lab[2]) + B(q[2], lab[2], q[3], lab[3], { order: 2 });
     const bp = P(360, 96);
     s += B(q[0], lab[0], bp, 'Br') + B(q[1], lab[1], bp, 'Br');
-    s += withPairs(bp, 'Br', [-150, -30], 'warn');
+    s += withPairs(bp, 'Br', [-150, -30], 'hi');
     s += chg(bp.x - 30, bp.y + 12);
     q.forEach((p, i) => { s += A(p, lab[i]); s += tg(p.x, p.y + 32, 'C' + (i + 1)); });
     // the C2–Br bond breaks, its electrons going to bromine
@@ -413,10 +417,10 @@ FIGURES.push({
   viewBox: '0 0 340 300',
   build() {
     let s = '';
-    s += chain(65, 50, FORM_C2, [1, 1, 2], { dx: 70 }).s;
+    s += chain(65, 50, FORM_C2.map((g, i) => (i === 0 ? { ...g, kind: undefined } : g)), [1, 1, 2], { dx: 70 }).s;
     s += tg(170, 110, 'charge on C2: 2°, the major form', 'fg-tag-good');
     s += resonanceV(170, 138);
-    s += chain(65, 190, FORM_C4, [1, 2, 1], { dx: 70 }).s;
+    s += chain(65, 190, FORM_C4.map((g, i) => (i === 0 ? { ...g, kind: undefined } : g)), [1, 2, 1], { dx: 70 }).s;
     s += tg(170, 250, 'charge on C4: 1°, the minor form', 'fg-tag-mut');
     s += rule(20, 266, 320, 266);
     s += tg(170, 288, 'more + on C2, so Br⁻ bonds there faster');
