@@ -122,7 +122,7 @@ FIGURES.push({
   id: 'ms-spectrum-butanone',
   section: 'mass-spec',
   anchor: '<h3>Two quick reads from the molecular ion</h3>',
-  alt: 'The mass spectrum of butan-2-one drawn as a bar chart of relative abundance against m/z. The tallest bar is at m/z 43, labeled base peak, CH3CO+. The molecular ion at m/z 72 is about a quarter of that height. A tiny bar at 73 is labeled M+1, about 4% of M. Smaller bars sit at 57 and 29.',
+  alt: 'The mass spectrum of butan-2-one drawn as a bar chart of relative abundance against m/z. The tallest bar is at m/z 43, labeled base peak, CH3CO+. The molecular ion at m/z 72 is about a quarter of that height. A tiny bar at 73 is labeled M+1, about 4% of M. Smaller bars sit at 57, 29, 27 and 15.',
   viewBox: '0 0 760 280',
   build() {
     let s = '';
