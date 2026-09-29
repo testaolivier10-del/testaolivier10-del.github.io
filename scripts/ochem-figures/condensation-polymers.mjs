@@ -353,7 +353,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-self-condensation',
   lessons: ['condensation-polymers'],
-  viewBox: '0 0 330 430',
+  viewBox: '0 0 330 450',
   alt: '6-aminohexanoic acid loses water to give the nylon 6 repeat unit; lactic acid loses water to give the PLA repeat unit.',
   build() {
     let s = '';
@@ -365,13 +365,13 @@ FIGURES.push({
     s += n6.svg + bracketed(n6, 44);
     s += tag(165, 238, 'nylon 6');
     s += rule(20, 252, 310, 252);
-    s += lacticAcid(90, 300, 26).svg;
-    s += tag(250, 296, 'lactic acid');
-    s += arrow(P(165, 334), P(165, 362), { muted: true });
+    s += lacticAcid(90, 296, 26).svg;
+    s += tag(250, 292, 'lactic acid');
+    s += arrow(P(165, 334), P(165, 364), { muted: true });
     s += tag(178, 354, '− H₂O', { anchor: 'start' });
-    const pla = plaRepeat(90, 396, 24);
+    const pla = plaRepeat(90, 420, 24);
     s += pla.svg + bracketed(pla, 40);
-    s += tag(272, 396, 'PLA');
+    s += tag(272, 420, 'PLA');
     return s;
   },
   caption: 'One monomer, both groups: it joins to copies of itself and loses one water per join.',
@@ -875,7 +875,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'l-conversion-cliff',
   lessons: ['condensation-polymers'],
-  viewBox: '0 0 330 250',
+  viewBox: '0 0 330 224',
   alt: 'Degree of polymerization at 50, 90, 99 and 99.9 percent conversion, drawn to scale as bars of length 2, 10, 100 and 1000.',
   build() {
     let s = '';
@@ -889,9 +889,8 @@ FIGURES.push({
       s += text(110, y + 4, r.dp.toLocaleString('en-US'), { cls: 'fg-lbl', size: 12.5 });
       const w = Math.max(3, r.dp * 0.17);
       s += bar(146, y - 10, w, 20, { kind: r.good ? 'hi' : 'warn', opacity: 0.4 });
-      if (!r.good) s += tag(146 + w + 8, y + 4, r.note, { anchor: 'start' });
+      s += r.good ? tag(146 + w / 2, y + 4, r.note, { cls: 'fg-tag-good' }) : tag(146 + w + 8, y + 4, r.note, { anchor: 'start' });
     });
-    s += tag(232, 236, 'a useful material', { cls: 'fg-tag-good' });
     s += rule(10, 212, 320, 212);
     return s;
   },
