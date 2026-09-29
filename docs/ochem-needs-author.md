@@ -812,3 +812,32 @@ confirm it.
     ones are often 1:2 or dimeric), and separates "acid/base" from "nucleophile/electrophile" as
     how far versus how fast, a simplification. The Nucleophiles page now says the line between
     "base" and "nucleophile" is not strict (an alkene taking the H of HBr is called a nucleophile).
+
+## Spectroscopy (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### spectroscopy-conventions: explanations and values the pages grade by
+- **Status:** pending review.
+- **Where:** `ir`, `h-nmr`, `c-nmr`, `mass-spec`.
+- **Positions taken:**
+  - IR: an ester's C=O sits above a ketone's because oxygen's σ pull slightly outweighs its
+    donation (the usual course explanation, a simplification). Ring strain raising C=O is
+    explained by rehybridization; some texts credit coupling with the ring bonds. The ring
+    angles in the figure are flat-polygon corners; measured angles (about 116°, 109°, 93°) are
+    unverified. C–D at 2100–2200 and primary amide N–H near 3350/3180 should be checked against
+    a reference.
+  - ¹H NMR: alcohol O–H is given as 2–5 ppm (some tables give about 0.5–5); cis/trans J as
+    6–12 and 12–18 Hz (other tables 6–14 and 11–18); the para-disubstituted ring is described as
+    "two 2H signals that each look like a doublet" without naming AA′BB′. C–H next to oxygen is
+    3.3–4.5 and next to a halogen 2.2–4.5 (CH₃I 2.2 to CH₃F 4.3). Splitting that row gave the
+    halogen row a new flashcard.
+  - ¹³C NMR: "quaternary" is used in the loose NMR sense (a carbon with no hydrogens), with the
+    strict meaning beside it. The alkyne carbon's shift is explained with the textbook
+    circulating-π picture. 3,3-Dimethylbutan-2-one shifts (214/44/26/25) match SDBS.
+  - Mass spectrometry: the ion at 91 is taught as largely tropylium without claiming whether
+    the rearrangement happens before or after the hydrogen is lost (gas-phase studies favor
+    before). The McLafferty figure uses six single-barbed arrows; some courses grade a
+    three-arrow shorthand. The common-losses row for CO (28) now names phenols. Spectrum bar
+    heights are illustrative, not NIST values.

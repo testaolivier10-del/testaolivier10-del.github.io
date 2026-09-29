@@ -597,11 +597,13 @@
       8:['pka-scale','bronsted-identification'],
       9:['bronsted-identification','conjugate-pairs'] } },
 
-    'c-nmr': { n:7, steps:{
-      1:['nmr-shift-shielding'],
-      2:['nmr-shift-shielding'],
-      4:['nmr-shift-shielding','nmr-splitting-integration'],
-      6:['nmr-splitting-integration','nmr-shift-shielding'] } },
+    'c-nmr': { n:11, steps:{
+      1:['nmr-splitting-integration'],
+      4:['nmr-shift-shielding'],
+      5:['nmr-shift-shielding'],
+      7:['carbon-count-symmetry'],
+      9:['carbon-count-symmetry'],
+      10:['carbon-count-symmetry','structure-elucidation'] } },
 
     'carboxylic-acids': { n:8, steps:{
       1:['resonance-delocalization','acidity-factors'],
@@ -744,12 +746,13 @@
       8:['topicity-test'],
       11:['topicity-test','prochiral-faces'] } },
 
-    'h-nmr': { n:8, steps:{
-      1:['nmr-splitting-integration'],
-      2:['nmr-splitting-integration'],
+    'h-nmr': { n:11, steps:{
+      2:['nmr-shift-shielding','huckel-aromaticity'],
       4:['nmr-splitting-integration'],
-      6:['nmr-splitting-integration'],
-      7:['nmr-shift-shielding','huckel-aromaticity'] } },
+      5:['nmr-splitting-integration'],
+      7:['nmr-splitting-integration'],
+      9:['nmr-splitting-integration'],
+      10:['nmr-splitting-integration','structure-elucidation'] } },
 
     'hybridization': { n:13, steps:{
       5:['hybridization-assignment'],
@@ -758,12 +761,13 @@
       9:['hybridization-assignment'],
       12:['hybridization-assignment','molecular-geometry-vsepr'] } },
 
-    'ir': { n:8, steps:{
-      1:['ir-functional-groups'],
+    'ir': { n:11, steps:{
       2:['ir-functional-groups'],
-      4:['ir-functional-groups'],
-      6:['ir-functional-groups'],
-      7:['ir-functional-groups'] } },
+      3:['ir-functional-groups'],
+      5:['ir-functional-groups'],
+      7:['ir-functional-groups'],
+      9:['ir-functional-groups'],
+      10:['ir-functional-groups'] } },
 
     'energy-diagrams': { n:14, steps:{
       2:['energy-diagram-reading'],
@@ -808,12 +812,13 @@
       6:['markovnikov-regiochem','radical-chain'],
       8:['markovnikov-regiochem','radical-stability'] } },
 
-    'mass-spec': { n:8, steps:{
-      1:['ms-fragmentation'],
-      2:['ms-fragmentation','carbocation-stability'],
-      4:['ms-fragmentation'],
-      6:['ms-fragmentation','carbocation-stability'],
-      7:['ms-fragmentation'] } },
+    'mass-spec': { n:11, steps:{
+      2:['structure-elucidation'],
+      4:['ms-fragmentation','carbocation-stability'],
+      5:['ms-fragmentation'],
+      7:['structure-elucidation'],
+      9:['ms-fragmentation','carbocation-stability'],
+      10:['structure-elucidation','ms-fragmentation'] } },
 
     'meso': { n:10, steps:{
       1:['meso-detection'],
