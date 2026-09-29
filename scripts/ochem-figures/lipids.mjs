@@ -121,8 +121,9 @@ FIGURES.push({
     }
     s += text(pts[17].x + 2, pts[17].y + 26, 'ω1', { cls: 'fg-tag-warn', size: 11 });
     const end = pts[17];
-    s += text(end.x - 22, end.y - 30, 'ω numbers count from here:', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
-    s += text(end.x - 22, end.y - 14, 'the CH₃ carbon is ω1', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
+    s += text(end.x - 44, end.y - 12, 'ω numbers count from here:', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
+    s += text(end.x - 44, end.y + 4, 'the CH₃ carbon is ω1', { cls: 'fg-tag-warn', size: 11, anchor: 'end' });
+    s += tag(20, 22, 'α-linolenic acid, 18:3 cis,cis,cis-Δ9,12,15 (an ω-3 acid)', { anchor: 'start' });
     s += tag(40, 300, 'Δ numbers count from here: C1 is the carboxyl carbon', { anchor: 'start' });
     s += gapArrow(P(106, 280), P(184, 280));
     s += tag(430, 150, 'double bonds start at', { anchor: 'start' });
@@ -197,7 +198,7 @@ FIGURES.push({
     s += tag(165, 506, 'COOH end at the left of each chain');
     return s;
   },
-  caption: 'Straight chains stack; the cis chains bend apart.',
+  caption: 'Straight chains stack; the cis chains bend apart. A flat drawing shows the bend as 60°; in a real chain it is about 30°.',
 });
 
 /* ============================================ partial hydrogenation ===== */
@@ -254,7 +255,6 @@ FIGURES.push({
     s += hydCis(8, 34);
     s += frameP(278, 10, 204, 214, '2 · one H added', [['C–C single: it can rotate', 'fg-tag-good']]);
     s += hydHalf(278, 34);
-    s += rotMark(278, 34);
     s += frameP(548, 10, 204, 214, '3 · H removed: trans');
     s += hydTrans(548, 34);
     s += eqArrows(218, 272, 114);
@@ -265,7 +265,7 @@ FIGURES.push({
     s += tag(392, 254, '+ second H', { anchor: 'start' });
     s += label(380, 292, 'R–CH₂–CH₂–R′: the saturated chain');
     s += rule(20, 310, 740, 310);
-    s += text(380, 334, 'Every step on the metal surface is reversible, so a double bond can come back in either geometry.', { cls: 'fg-sm', size: 10.5 });
+    s += text(380, 334, 'The first H addition is reversible, so a double bond can come back in either geometry.', { cls: 'fg-sm', size: 10.5 });
     return s;
   },
   caption: 'Follow R and R′. They start on the same side of the double bond and end on opposite sides, and no H₂ has been used up.',
@@ -284,7 +284,6 @@ FIGURES.push({
     s += tag(166, 206, '+ H from the surface', { anchor: 'start' });
     s += frameP(50, 226, 204, 214, '2 · one H added', [['C–C single: it can rotate', 'fg-tag-good']]);
     s += hydHalf(50, 250);
-    s += rotMark(50, 250);
     s += eqArrowsV(152, 446, 484);
     s += tag(166, 470, '− H back to the surface', { anchor: 'start' });
     s += frameP(50, 490, 204, 172, '3 · trans alkene');
@@ -363,7 +362,8 @@ FIGURES.push({
     const G = [A(46, 256, 'CH₂'), A(46, 326, 'CH'), A(46, 396, 'CH₂')];
     s += bd(G[0], G[1]) + bd(G[1], G[2]);
     for (const c of G) {
-      const O = A(c.x + 46, c.y, 'O'), C = A(c.x + 96, c.y, 'C', 'hi'), Od = A(c.x + 96, c.y - 32, 'O'), R = A(c.x + 146, c.y, 'R');
+      const O = A(c.x + 46, c.y, 'O'), C = A(c.x + 96, c.y, 'C', 'hi'), Od = A(c.x + 96, c.y - 38, 'O'), R = A(c.x + 146, c.y, 'R');
+      O.r = C.r = Od.r = R.r = 11;
       s += bd(c, O) + bd(O, C, { cls: 'fg-bond-hi' }) + bd(C, Od, { order: 2 }) + bd(C, R);
       s += draw(O, C, Od, R);
     }
@@ -581,20 +581,24 @@ FIGURES.push({
     s += text(428, 76, 'CH₂CH₂N⁺(CH₃)₃', { cls: 'fg-lbl', size: 12.5, anchor: 'start' });
     // the two esters, hanging down: O, then the carbonyl carbon at 60 degrees
     // (C=O to the right), then the chain
-    for (const [g, n, cis] of [[G1, 17, [9]], [G2, 15, []]]) {
+    // palmitic acid on the end carbon (C1 of glycerol), oleic acid on the
+    // middle one (C2), as in most natural phosphatidylcholines. The ester
+    // leans left (C=O pointing left) so the oleic kink turns away, to the right.
+    for (const [g, n, cis] of [[G1, 15, []], [G2, 17, [9]]]) {
       const O = A(g.x, g.y + 46, 'O');
-      const C = at(O, 60, 36);
-      const Od = A(C.x + 30, C.y, 'O');
+      const C = at(O, 120, 36);
+      const Od = A(C.x - 30, C.y, 'O');
       s += bd(g, O) + bond(O, C, { rFrom: O.r, rTo: 0 }) + bd({ ...C, r: 0 }, Od, { order: 2 });
       s += draw(O, Od);
-      s += chainInk(chainPts(C.x, C.y, n, 16, 90, { cis, s: 1 }), { dbl: cis, hi: cis });
+      s += chainInk(chainPts(C.x, C.y, n, 16, 90, { cis, s: -1 }), { dbl: cis, hi: cis });
     }
     s += draw(G1, G2, G3, Op, Pp, Pd, Pm, Oc);
     s += tag(380, 136, 'charged head:', { cls: 'fg-tag-warn', anchor: 'start' });
     s += tag(380, 152, 'phosphate (−), choline (+)', { cls: 'fg-tag-warn', anchor: 'start' });
-    s += tag(20, 250, 'oleic acid', { anchor: 'start' });
-    s += tag(20, 266, '(cis kink)', { anchor: 'start' });
-    s += tag(250, 330, 'palmitic acid', { anchor: 'start' });
+    s += tag(84, 250, 'palmitic', { anchor: 'end' });
+    s += tag(84, 266, 'acid chain', { anchor: 'end' });
+    s += tag(230, 250, 'oleic acid chain', { anchor: 'start' });
+    s += tag(230, 266, '(cis kink)', { anchor: 'start' });
     s += tag(150, 430, 'two nonpolar tails');
     // bilayer
     s += tag(665, 36, 'bilayer: two sheets,');
@@ -674,10 +678,11 @@ function steroidInk(core, { dbl = [], hi = [] } = {}) {
   let s = '';
   const key = (p, q) => `${Math.min(p, q)}-${Math.max(p, q)}`;
   const dk = new Set(dbl.map(([p, q]) => key(p, q)));
+  const refs = Object.fromEntries(dbl.filter((d) => d[2]).map(([p, q, r]) => [key(p, q), r]));
   const hk = new Set(hi.map(([p, q]) => key(p, q)));
   for (const [p, q] of RINGS) {
     const cls = hk.has(key(p, q)) ? 'fg-bond-hi' : 'fg-bond';
-    if (dk.has(key(p, q))) s += ringDouble(core.v[p], core.v[q], ringOf([p, q], core), { inset: 6, gap: 4.6, cls });
+    if (dk.has(key(p, q))) s += ringDouble(core.v[p], core.v[q], refs[key(p, q)] === 'A' ? core.cA : ringOf([p, q], core), { inset: 6, gap: 4.6, cls });
     else s += bond(core.v[p], core.v[q], { rFrom: 0, rTo: 0, cls });
   }
   return s;
@@ -799,7 +804,7 @@ function testosterone(core) {
   return { svg: s, m19 };
 }
 function estradiol(core) {
-  let s = steroidInk(core, { dbl: [[1, 2], [3, 4], [5, 10]], hi: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 10], [10, 1]] });
+  let s = steroidInk(core, { dbl: [[1, 2], [3, 4], [5, 10, 'A']], hi: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 10], [10, 1]] });
   const r = core.r;
   s += sub(core, 3, 150, r * 0.85, 'HO', 'plain', { kind: 'hi' }).svg;
   s += sub(core, 13, -90, r * 0.85, '', 'wedge').svg;
@@ -895,7 +900,7 @@ FIGURES.push({
     const cO = carboxyl(up[7], dirOf(up[7], up[6]), { L: 28 });
     s += cO.svg;
     // lower chain: C12 -> C13 ... C20, first bond wedged, trans C13=C14
-    const lo = chainPts(C12.x, C12.y, 9, 34, 0, { s: 1 });
+    const lo = chainPts(C12.x, C12.y, 8, 34, 0, { s: 1 });
     s += wedge(lo[0], lo[1], { rFrom: 0, rTo: 0, width: 8 });
     s += chainInk(lo.slice(1), { dbl: [1] });
     const o15 = at(lo[3], 90, 38);

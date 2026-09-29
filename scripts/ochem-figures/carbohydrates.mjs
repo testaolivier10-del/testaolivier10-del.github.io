@@ -259,7 +259,7 @@ function haworthSteps(layout) {
   s += head(pA, '1 · Fischer projection', 'right → down, left → up');
   s += fischer(pA.x + pA.w / 2 + 6, pA.y + 70, GLC_FISCHER('CHO', 'CH₂OH', { c5: 'hi' }), { nums: true, dy: 34 }).s;
 
-  s += head(pB, '2 · tip it on its side and curl it', 'OH on C2, C4, C5 now point down');
+  s += head(pB, '2 · tip it on its side and curl it', 'the OHs on C2, C4 and C5 now point down');
   s += openChain(pB.x + pB.w / 2, pB.y + pB.h * 0.6, k, false, { hi: true, nums: true }).s;
 
   s += head(pC, '3 · turn C5 about the C4–C5 bond', 'its OH now faces C1; CH₂OH goes up');
@@ -283,7 +283,7 @@ FIGURES.push({
       { x: 10, y: 300, w: 364, h: 284 }, { x: 386, y: 300, w: 364, h: 284 },
     ],
   }),
-  caption: 'The same molecule at every stage. Follow the teal OH on C5: it points down after the tip, and turning C5 swings it into the ring and sends the CH₂OH up. The H drawn at C5 is the only ring hydrogen shown.',
+  caption: 'The same molecule at every stage. Follow the teal OH on C5: it points down after the tip, and turning C5 swings it into the ring and sends the CH₂OH up. In panels 2 and 3, the H on C5 is drawn to show where its third group goes; other hydrogens are left off.',
 });
 FIGURES.push({
   id: 'l-fischer-haworth',
@@ -523,7 +523,7 @@ FIGURES.push({
   viewBox: '0 0 760 280',
   alt: 'Left: beta-D-glucopyranose, whose anomeric carbon C1 carries the ring oxygen and an OH, a hemiacetal; its ring can open to the aldehyde, so it tests positive. Right: methyl beta-D-glucopyranoside, whose C1 carries the ring oxygen and an OCH3, an acetal; its ring stays shut, so it tests negative.',
   build: () => testPair({ x: 10, y: 8, w: 366, h: 264 }, { x: 384, y: 8, w: 366, h: 264 }, 0.9),
-  caption: 'The two molecules differ only in what caps the oxygen on C1 (dotted): H on the left, CH₃ on the right.',
+  caption: 'The two molecules differ only in what caps the oxygen on C1 (the dotted carbon): H on the left, CH₃ on the right.',
 });
 FIGURES.push({
   id: 'l-anomeric-test',
@@ -736,7 +736,7 @@ function enediolPanels(pn) {
 FIGURES.push({
   id: 'carb-enediol',
   section: 'carbohydrates',
-  anchor: 'only a capped anomeric carbon keeps a sugar from reacting.</div>',
+  anchor: 'only a capped anomeric carbon gives a negative test.</div>',
   viewBox: '0 0 760 520',
   alt: 'Four panels showing C1 and C2 of fructose becoming an aldose in base; R stands for C3 to C6. 1: hydroxide takes a hydrogen from C1; the C–H bond electrons move to make a C1=C2 bond and the C=O pi electrons move onto oxygen. 2: after that oxygen takes a proton from water, the enediol: C1=C2 with an OH on each carbon. 3: base has taken the proton from the C1 OH; a lone pair on the C1 O minus moves in to make C=O, the C=C electrons take a proton from water at C2, and the water O–H electrons stay on its oxygen. 4: the aldose, with C=O at C1 and a new H on C2.',
   build: () => enediolPanels([
