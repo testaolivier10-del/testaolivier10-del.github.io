@@ -285,7 +285,8 @@ FIGURES.push({
 
     /* Centred over its own peak: anchored at the left it ran back across the
        absorbance axis and the arrowhead sat inside the word. */
-    s += text(X(217), 146, 'buta-1,3-diene, 217 nm', { cls: 'fg-lbl', size: 11.5 });
+    s += text(100, 128, 'buta-1,3-diene,', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
+    s += text(100, 146, '217 nm', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
     s += text(X(258) + 10, 72, 'hexa-1,3,5-triene, 258 nm', { cls: 'fg-lbl', size: 11.5, anchor: 'start' });
     /* The weak band is the ketone n → π* one, so it belongs at 280 nm, where
        the prose puts acetone. A leader runs from the label down to it, because

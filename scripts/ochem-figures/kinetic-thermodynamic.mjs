@@ -91,7 +91,7 @@ FIGURES.push({
     s += text(125, 334, '3-bromobut-1-ene', { cls: 'fg-sm', size: 10.5 });
     s += L(655, 268, '1,4-product');
     s += bromobutene14(630, 316);
-    s += text(660, 356, '(E)-1-bromobut-2-ene', { cls: 'fg-sm', size: 10.5 });
+    s += '<text class="fg-sm" x="660" y="356" text-anchor="middle" font-size="10.5">(<tspan font-style="italic">E</tspan>)-1-bromobut-2-ene</text>';
     return s;
   },
   caption: 'Follow each route down from the cation. The lower hill and the deeper valley belong to different products.',
