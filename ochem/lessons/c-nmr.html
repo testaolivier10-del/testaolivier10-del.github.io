@@ -108,7 +108,7 @@
   <div class="hero">
     <div class="eyebrow" data-chapter="spectroscopy">Spectroscopy</div>
     <h1 style="margin-bottom:4px;">¹³C NMR.</h1>
-    <p class="lede" style="margin-top:0;">One peak per unique carbon, no splitting to untangle — a cleaner, simpler map of the carbon skeleton than ¹H NMR gives for hydrogens.</p>
+    <p class="lede" style="margin-top:0;">One line for each kind of carbon and no splitting to untangle, so the line count shows a molecule's symmetry.</p>
   </div>
   <div class="progress-bar">
     <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Line heights do not count carbons.',
-        bodyHtml: '<p class="step-body">In a ¹H spectrum, the area under a signal counts hydrogens. A routine ¹³C spectrum has no such integration, because two effects distort the heights. Decoupling boosts each carbon&rsquo;s signal by an amount that depends on the hydrogens near it. And a carbon with no hydrogens recovers slowly between the instrument&rsquo;s rapid radio pulses, so its line comes out small.</p><p class="step-body" style="margin-bottom:0;">So count lines, not heights. One line does not come from your compound at all: the solvent, CDCl₃, gives three equal lines at 77 ppm. Its deuterium splits the carbon three ways, and the decoupler removes only hydrogen splitting. Cross it off before you count.</p>'
+        bodyHtml: '<p class="step-body">In a ¹H spectrum, the area under a signal counts hydrogens. A routine ¹³C spectrum has no such integration, because two effects distort the heights. Decoupling boosts each carbon&rsquo;s signal by an amount that depends on the hydrogens near it. And a carbon with no hydrogens recovers slowly between the instrument&rsquo;s rapid radio pulses, so its line comes out small.</p><p class="step-body" style="margin-bottom:0;">So count lines, not heights. Three lines do not come from your compound at all: the solvent, CDCl₃, gives three equal lines at 77 ppm. Its deuterium splits the carbon three ways, and the decoupler removes only hydrogen splitting. Cross these three lines off before you count.</p>'
       },
       {
         type: 'explain',
