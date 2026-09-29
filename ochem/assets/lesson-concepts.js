@@ -677,11 +677,12 @@
       8:['energy-diagram-reading'],
       11:['hammond-postulate'],
       13:['hammond-postulate','energy-diagram-reading'] } },
-    'carbocations': { n:9, steps:{
-      2:['carbocation-stability','formal-charge-calc'],
-      4:['carbocation-stability'],
-      6:['carbocation-stability','resonance-delocalization'],
-      8:['carbocation-rearrangement','carbocation-stability'] } },
+    'carbocations': { n:14, steps:{
+      3:['carbocation-stability','formal-charge-calc'],
+      5:['carbocation-stability'],
+      9:['carbocation-stability','resonance-delocalization'],
+      11:['carbocation-rearrangement'],
+      13:['carbocation-rearrangement','carbocation-stability'] } },
 
     'leaving-groups': { n:9, steps:{
       3:['leaving-group-ability'],

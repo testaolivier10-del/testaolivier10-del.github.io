@@ -237,7 +237,7 @@ function alkeneH3O(c1) {
 FIGURES.push({
   id: 'two-routes',
   section: 'carbocations',
-  anchor: 'which carbon takes the proton.</p>',
+  anchor: 'belong to <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a>.</p>',
   alt: 'Two reactions that make the same tert-butyl cation. Top: in tert-butyl bromide the carbon-bromine bond breaks, a curved arrow carrying its pair onto bromine, giving the cation and bromide ion. Bottom: the pi bond of 2-methylpropene attacks a hydrogen of H3O+, and the H-O bond pair moves onto oxygen. The hydrogen adds to the CH2 end, the other alkene carbon becomes the cation, and water is released.',
   viewBox: '0 0 760 510',
   build() {
@@ -309,7 +309,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'two-faces',
   section: 'carbocations',
-  anchor: 'a racemic mixture.</p>',
+  anchor: 'not scrambled at some later step.</p>',
   alt: 'The butan-2-yl cation seen edge-on, with an empty p orbital above and below the flat carbon. A bromide ion above and a bromide ion below each attack with a curved arrow. Attack from above gives 2-bromobutane with bromine up; attack from below gives the mirror image with bromine down. The two are enantiomers formed in equal amounts.',
   viewBox: '0 0 760 360',
   build() {
@@ -444,7 +444,7 @@ FIGURES.push({
 FIGURES.push({
   id: 'cation-stability-ladder',
   section: 'carbocations',
-  anchor: 'the vinyl and aryl cations, come later on this page.</p>',
+  anchor: 'loses N<sub>2</sub> gas on warming and leaves one behind.</p>',
   alt: 'A ladder of carbocations, least stable at the top: methyl, then primary alkyl, then secondary alkyl alongside primary allylic, then tertiary alkyl alongside primary benzylic, and at the bottom a cation with an oxygen or nitrogen on the charged carbon. A dashed bar spans methyl to tertiary, marked a million-fold or more in solvolysis rate.',
   viewBox: '0 0 760 372',
   build() {
@@ -538,7 +538,7 @@ function oxocarb(x0, y1, y2, withArrowDown = true) {
 FIGURES.push({
   id: 'resonance-beats-substitution',
   section: 'carbocations',
-  anchor: 'the nitrogen version is an <b>iminium</b> ion.</p>',
+  anchor: 'shares its lone pair more readily.</p>',
   alt: 'Three stabilized cations. An allylic cation drawn as a hybrid with half a positive charge on each end carbon. A benzylic cation drawn as a hybrid with a partial positive charge on the outside carbon and on three ring carbons. The methoxymethyl cation redrawn with a curved arrow from an oxygen lone pair to the C-O bond, giving a C=O double bond with the positive charge on oxygen.',
   viewBox: '0 0 760 348',
   build() {
@@ -634,7 +634,7 @@ function aryl(x0, y) {
 FIGURES.push({
   id: 'vinyl-aryl-orthogonal',
   section: 'carbocations',
-  anchor: 'rings react by a different chemistry altogether.</p>',
+  anchor: 'Again the empty orbital and the &pi; electrons are at right angles, and they never meet.</p>',
   alt: 'Left: a vinyl cation, CH2=C plus CH3, drawn linear at the positive carbon. The pi cloud of the double bond lies above and below the C=C, while the empty p orbital on the positive carbon is drawn end-on as a circle, pointing at the reader, at right angles to that pi cloud. Right: a benzene ring seen edge-on as a line, its pi cloud above and below the ring plane; the empty sp2 orbital of the positive ring carbon points sideways, inside the plane.',
   viewBox: '0 0 760 318',
   build() {
@@ -734,7 +734,7 @@ const NEO = { mig: 'CH₃', cat: 0, neo: true };
 FIGURES.push({
   id: 'one-two-shifts-drawn',
   section: 'carbocations',
-  anchor: 'what cation the shift leaves behind.</p>',
+  anchor: 'Its head goes on the positive carbon.</p>',
   alt: 'Two rearrangements. Top: in the 3-methylbutan-2-yl cation, a secondary cation, the hydrogen on the next carbon moves over with its bonding pair; a curved arrow starts on that C-H bond and ends at the positive carbon. The result is the 2-methylbutan-2-yl cation, which is tertiary. Bottom: in the neopentyl cation, a primary cation, a methyl group on the next carbon moves over the same way, again giving the tertiary 2-methylbutan-2-yl cation.',
   viewBox: '0 0 760 400',
   build() {
@@ -858,7 +858,7 @@ function wpanel(x, y, title) {
 FIGURES.push({
   id: 'methyl-shift-example',
   section: 'carbocations',
-  anchor: '2-bromo-3,3-dimethylbutane you would get by swapping OH for Br in place.</p>',
+  anchor: 'the product is <b>2-bromo-2,3-dimethylbutane</b>.</p>',
   alt: 'Six panels. 1: 3,3-dimethylbutan-2-ol, carbons numbered 1 to 4; a lone pair on the OH oxygen takes the H of H-Br, and the H-Br pair moves onto bromine. 2: the protonated OH2 plus group leaves, a curved arrow carrying the C2-O pair onto oxygen. 3: the secondary cation at C2; a curved arrow starts on the bond from C3 to its upper methyl group and ends at C2. 4: the tertiary cation at C3; bromide ion attacks it with a curved arrow. 5: the product, 2-bromo-2,3-dimethylbutane. 6: 2-bromo-3,3-dimethylbutane, the product without a shift, which does not form.',
   viewBox: '0 0 760 666',
   build() {
