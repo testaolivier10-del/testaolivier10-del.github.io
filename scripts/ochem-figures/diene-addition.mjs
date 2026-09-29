@@ -98,8 +98,10 @@ function chain(x0, y, groups, orders, o = {}) {
 const nums = (groups, first = 1) => groups.map((g, i) => ({ ...g, num: 'C' + (first + i) }));
 
 /* The two-headed arrow between resonance forms. */
-const resonance = (x, y) => text(x, y + 6, '↔', { cls: 'fg-lbl', size: 18 });
-const resonanceV = (x, y) => text(x, y + 6, '↕', { cls: 'fg-lbl', size: 18 });
+/* Drawn rather than typed: the glyph is set at the label size and comes out
+   too small to read. */
+const resonance = (x, y, h = 16) => arrow(P(x, y), P(x + h, y), { size: 7 }) + arrow(P(x, y), P(x - h, y), { size: 7 });
+const resonanceV = (x, y, h = 16) => arrow(P(x, y), P(x, y + h), { size: 7 }) + arrow(P(x, y), P(x, y - h), { size: 7 });
 
 /* Buta-1,3-diene groups, and the cation from protonating C1 in each of its
    two resonance forms. */
@@ -197,7 +199,7 @@ FIGURES.push({
     s += tg(520, 30, 'step 2: Br⁻ bonds to either end');
     const a = chain(312, 150, FORM_C2.map((g, i) => (i === 1 ? { ...g, numLeft: true } : g)), [1, 1, 2], { dx: 56 });
     s += a.s;
-    s += resonance(518, 150);
+    s += resonance(516, 150);
     const b = chain(552, 150, FORM_C4.map((g, i) => (i === 3 ? { ...g, numLeft: true } : g)), [1, 2, 1], { dx: 56 });
     s += b.s;
     const brA = P(a.p[1].x + 34, 262), brB = P(b.p[3].x - 34, 262);
@@ -208,7 +210,7 @@ FIGURES.push({
     s += tg(b.p[3].x - 34, 318, 'Br⁻ bonds to C4');
     return s;
   },
-  caption: 'Each arrow starts on electrons: the π bond, the H–Br bond, a lone pair on bromide. The ↔ joins two drawings of one cation.',
+  caption: 'Each curved arrow starts on electrons: the π bond, the H–Br bond, a lone pair on bromide. The two-headed arrow joins two drawings of one cation.',
 });
 
 FIGURES.push({
@@ -227,7 +229,7 @@ FIGURES.push({
     const brA = P(a.p[1].x + 40, 330);
     s += bromide(brA);
     s += curve(P(brA.x - 4, brA.y - 26), P(a.p[1].x + 6, a.p[1].y + 16), { bow: -14, size: 7 });
-    s += resonanceV(290, 336);
+    s += resonanceV(300, 340, 20);
     const b = chain(65, 418, FORM_C4.map((g, i) => (i === 3 ? { ...g, numLeft: true } : g)), [1, 2, 1], { dx: 70 });
     s += b.s;
     const brB = P(b.p[3].x - 40, 494);
@@ -235,7 +237,7 @@ FIGURES.push({
     s += curve(P(brB.x + 4, brB.y - 26), P(b.p[3].x - 6, b.p[3].y + 16), { bow: 14, size: 7 });
     return s;
   },
-  caption: 'The ↕ joins two drawings of one cation. Bromide can bond to C2 or to C4.',
+  caption: 'The two-headed arrow joins two drawings of one cation. Bromide can bond to C2 or to C4.',
 });
 
 /* ======================================================================
@@ -255,11 +257,11 @@ FIGURES.push({
     let s = '';
     s += tg(170, 22, '1,2-addition: Br⁻ at C2');
     s += chain(65, 66, PROD12, [1, 1, 2], { dx: 70 }).s;
-    s += lbl(170, 180, '3-bromobut-1-ene');
+    s += lbl(170, 166, '3-bromobut-1-ene');
     s += rule(20, 198, 320, 198);
     s += tg(170, 224, '1,4-addition: Br⁻ at C4');
     s += chain(65, 268, PROD14, [1, 2, 1], { dx: 70 }).s;
-    s += lbl(170, 382, '1-bromobut-2-ene');
+    s += lbl(170, 368, '1-bromobut-2-ene');
     s += rule(20, 398, 320, 398);
     s += tg(170, 420, 'C1–C4 are the diene’s numbers', 'fg-tag-mut');
     return s;
@@ -300,13 +302,13 @@ FIGURES.push({
     const bp = P(360, 96);
     s += B(q[0], lab[0], bp, 'Br') + B(q[1], lab[1], bp, 'Br');
     s += withPairs(bp, 'Br', [-150, -30], 'warn');
-    s += chg(bp.x + 30, bp.y + 12);
+    s += chg(bp.x - 30, bp.y + 12);
     q.forEach((p, i) => { s += A(p, lab[i]); s += tg(p.x, p.y + 32, 'C' + (i + 1)); });
     // the C2–Br bond breaks, its electrons going to bromine
     s += fromBond(q[1], bp, P(bp.x + 12, bp.y + 8), 16, -6);
-    s += text(606, 132, '+ Br⁻', { cls: 'fg-lbl', size: 13 });
-    s += tg(606, 170, 'C2–Br breaks:', 'fg-tag-good');
-    s += tg(606, 188, 'the + lands next to C3=C4', 'fg-tag-good');
+    s += text(640, 118, '+ Br⁻', { cls: 'fg-lbl', size: 13 });
+    s += tg(640, 156, 'C2–Br breaks:', 'fg-tag-good');
+    s += tg(640, 174, 'the + lands next to C3=C4', 'fg-tag-good');
 
     s += rule(30, 218, 730, 218);
 
@@ -348,7 +350,7 @@ FIGURES.push({
     s += chain(34, 150, nums([{ l: 'H₃C' }, { l: 'CH', down: 'Br' }, { l: 'CH' }, { l: 'CH₂' }]), [1, 1, 2], { dx: 56 }).s;
 
     s += arrow(P(222, 150), P(274, 150));
-    s += tg(248, 136, 'Br⁻ leaves');
+    s += tg(248, 124, 'Br⁻ leaves');
 
     s += chain(300, 150, nums([{ l: 'H₃C' }, { l: 'CH', dplus: true }, { l: 'CH' }, { l: 'CH₂', dplus: true }]), [1, 'h', 'h'], { dx: 56 }).s;
     s += tg(384, 214, 'the same allylic cation');
@@ -396,7 +398,7 @@ FIGURES.push({
     s += tg(170, 290, 'same mixture: the products interconvert', 'fg-tag-good');
     return s;
   },
-  caption: 'Blue is the 1,2-product and red the 1,4-product.',
+  caption: 'The left part of each bar is the 1,2-product and the right part the 1,4-product.',
 });
 
 /* ======================================================================
@@ -436,17 +438,17 @@ FIGURES.push({
   build() {
     let s = '';
     s += lbl(170, 20, '3-bromobut-1-ene');
-    s += chain(65, 64, nums([{ l: 'H₃C' }, { l: 'CH', down: 'Br', kind: 'warn' }, { l: 'CH', kind: 'hi' }, { l: 'CH₂', kind: 'hi' }]), [1, 1, 2], { dx: 70 }).s;
+    s += chain(65, 64, nums([{ l: 'H₃C' }, { l: 'CH', down: 'Br', downKind: 'plain', kind: 'warn' }, { l: 'CH', kind: 'hi' }, { l: 'CH₂', kind: 'hi' }]), [1, 1, 2], { dx: 70 }).s;
     s += tg(170, 160, 'one carbon on the C=C:', 'fg-tag-mut');
     s += tg(170, 178, 'monosubstituted', 'fg-tag-mut');
     s += rule(20, 196, 320, 196);
     s += lbl(170, 220, '1-bromobut-2-ene');
-    s += chain(65, 264, nums([{ l: 'H₃C', kind: 'warn' }, { l: 'CH', kind: 'hi' }, { l: 'CH', kind: 'hi' }, { l: 'CH₂', down: 'Br', kind: 'warn' }]), [1, 2, 1], { dx: 70 }).s;
+    s += chain(65, 264, nums([{ l: 'H₃C', kind: 'warn' }, { l: 'CH', kind: 'hi' }, { l: 'CH', kind: 'hi' }, { l: 'CH₂', down: 'Br', downKind: 'plain', kind: 'warn' }]), [1, 2, 1], { dx: 70 }).s;
     s += tg(170, 356, 'two carbons on the C=C:', 'fg-tag-good');
     s += tg(170, 374, 'disubstituted, more stable', 'fg-tag-good');
     return s;
   },
-  caption: 'Blue marks the alkene carbons. Red marks the carbons bonded to them.',
+  caption: 'The highlighted groups are the alkene carbons. The red groups are the carbons bonded to them.',
 });
 
 /* ======================================================================
@@ -472,7 +474,7 @@ function worked(cfg) {
     t += resonance(cx(122) + ((n - 1) * dx) / 2 + 44, y);
     t += chain(cx(122) + ((n - 1) * dx) / 2 + 88, y, r[2], r[3], { dx }).s;
     t += tg(690, y - 6, r[4], good ? 'fg-tag-good' : 'fg-tag-mut');
-    t += tg(690, y + 12, good ? 'best form wins' : 'best form loses', good ? 'fg-tag-good' : 'fg-tag-mut');
+    t += tg(690, y + 12, good ? 'this end wins' : 'this end loses', good ? 'fg-tag-good' : 'fg-tag-mut');
     return t;
   };
   s += route(206, 'H⁺ to C1', cfg.c1, true);
@@ -533,7 +535,7 @@ FIGURES.push({
   alt: 'Isoprene, CH2=C(CH3)–CH=CH2, numbered C1 to C4 with the methyl on C2. Proton to C1: the cation has a tertiary form with the charge on C2 and a primary form with the charge on C4. Proton to C4: the cation has a secondary form with the charge on C3 and a primary form with the charge on C1. The C1 route wins. Its cation gives 3-bromo-3-methylbut-1-ene when bromide bonds to C2, the faster product, and 1-bromo-3-methylbut-2-ene, with a trisubstituted double bond, when bromide bonds to C4.',
   viewBox: '0 0 760 600',
   build() { return worked(ISO); },
-  caption: 'Compare the best form of each cation, then capture the winner at each end. Numbers are the diene’s.',
+  caption: 'Compare the best form of each cation, then let bromide bond to each end of the winner. The numbers are the diene’s.',
 });
 
 FIGURES.push({
@@ -543,7 +545,7 @@ FIGURES.push({
   alt: '2-Methylpenta-1,3-diene, CH2=C(CH3)–CH=CH–CH3, numbered C1 to C5 with the methyl on C2. Proton to C1: the cation has a tertiary form with the charge on C2 and a secondary form with the charge on C4. Proton to C4: the cation has a secondary form with the charge on C3 and a primary form with the charge on C1. The C1 route wins. Bromide at C2 gives 4-bromo-4-methylpent-2-ene, the faster product; bromide at C4 gives 4-bromo-2-methylpent-2-ene, whose double bond is trisubstituted.',
   viewBox: '0 0 760 600',
   build() { return worked(MPD); },
-  caption: 'The same three moves as for isoprene: try both ends, keep the better cation, capture it at each end.',
+  caption: 'The same moves as for isoprene: try both ends, keep the better cation, then let bromide bond to each of its ends.',
 });
 
 /* Lesson copies: isoprene, stacked, with only the best form of each route. */

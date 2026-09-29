@@ -310,12 +310,12 @@
       12:['redox-stereochemistry','alkene-cleavage-scope'] } },
 
     /* The conjugation chapter. Graded steps are 2, 3, 4, 6, 7 in each. */
-    'conjugated-systems': { n:8, steps:{
+    'conjugated-systems': { n:9, steps:{
       2:['conjugation-recognition'],
       3:['conjugation-recognition'],
-      4:['conjugation-recognition'],
-      6:['allylic-capture','conjugation-recognition'],
-      7:['conjugation-recognition'] } },
+      5:['conjugation-recognition'],
+      7:['allylic-capture','conjugation-recognition'],
+      8:['conjugation-recognition'] } },
 
     'diene-addition': { n:8, steps:{
       2:['allylic-capture'],

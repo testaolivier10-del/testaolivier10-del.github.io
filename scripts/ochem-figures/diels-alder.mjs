@@ -621,8 +621,7 @@ FIGURES.push({
     s += sk(n.n4, n.n5) + ringDouble(n.n5, n.n6, P(210, 144)) + sk(n.n6, n.n1);
     s += sk(n.n1, n.n7) + sk(n.n7, n.n4);
     s += tag(n.n7.x, n.n7.y - 12, 'CH₂ bridge', { cls: 'fg-tag-mut' });
-    s += tag(n.n4.x + 12, n.n5.y - 4, 'C=C bridge', { cls: 'fg-tag-mut', anchor: 'start' });
-    s += `<line class="fg-rule" x1="${n.n4.x + 10}" y1="${n.n5.y - 8}" x2="${n.n5.x + 22}" y2="${n.n5.y + 2}"></line>`;
+    s += tag(210, n.n5.y - 12, 'C=C bridge', { cls: 'fg-tag-mut' });
     // exo hydrogens, pointing outward
     s += sub(n.n2, 185, 'H', { len: 28, r: 9 }) + sub(n.n3, -5, 'H', { len: 28, r: 9 });
     // the anhydride, hanging down (endo)
@@ -651,8 +650,8 @@ function retroRow(ox, oy) {
   s += sk(T.c4, T.d2, 'fg-dash-hi') + sk(T.d1, T.c1, 'fg-dash-hi');
   s += sub(T.c3, OUT.c3, 'CH₃', { len: 28, r: 14 });
   s += sub(T.d1, OUT.d1, 'CHO', { len: 28, r: 15 });
-  s += numLbl(T.d1, 20, '1', 14) + numLbl(T.c1, 180, '2', 13) + numLbl(T.c2, 220, '3', 14);
-  s += numLbl(T.c3, 200, '4', 16) + numLbl(T.c4, 0, '5', 13) + numLbl(T.d2, 60, '6', 14);
+  s += numLbl(T.d1, 20, '1', 14) + numLbl(T.c1, 180, '2', 13) + numLbl(T.c2, 240, '3', 14);
+  s += numLbl(T.c3, 262, '4', 16) + numLbl(T.c4, 0, '5', 13) + numLbl(T.d2, 60, '6', 14);
   s += tag(ox + 72, oy + 176, 'cut the dashed bonds', { cls: 'fg-tag-warn' });
 
   s += retro(ox + 140, oy + 84, 34);
