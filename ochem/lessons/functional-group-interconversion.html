@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>Up or down the ladder</b> needs an oxidizing or a reducing agent.</li>' +
           '<li><b>Sideways along a rung</b> is a substitution and needs no redox reagent.</li>' +
           '</ul>' +
-          '<p class="step-body">To place a group on the ladder, count the bonds from its carbon to O, N or halogen, with a double bond counting as two and a triple bond as three. An alkene sits on the alcohol rung because adding water gives an alcohol with no oxidant. An alkyne sits on the ketone rung because adding water gives a ketone, again with no oxidant.</p>',
+          '<p class="step-body">To place most groups on the ladder, count the bonds from the carbon to O, N or halogen, with a double bond counting as two and a triple bond as three. Alkenes and alkynes have no such bonds, so they are placed by what water turns them into. Adding water to an alkene gives an alcohol with no oxidant, so the alkene sits on the alcohol rung. Adding water to an alkyne gives a ketone, again with no oxidant, so the alkyne sits on the ketone rung.</p>',
         diagramHtml: '<!-- fig:l-fgi-rungs:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 330" role="img" aria-label="Four rungs of the oxidation ladder, top to bottom. Carboxylic acid rung: acid, ester, amide, acyl chloride, anhydride, nitrile. Aldehyde and ketone rung: aldehyde, ketone, acetal, imine, alkyne. Alcohol rung: alcohol, alkyl halide, ether, amine, alkene. Alkane rung: alkane. An arrow labeled [O] points up and one labeled [H] points down."><line class="fg-arrow" x1="20" y1="310" x2="20" y2="38"></line><path class="fg-head" d="M20 30 L24.16 38 L15.84 38 Z"></path><line class="fg-arrow" x1="44" y1="30" x2="44" y2="302"></line><path class="fg-head" d="M44 310 L39.84 302 L48.16 302 Z"></path><text class="fg-tag" x="20" y="18" text-anchor="middle" font-size="11">[O]</text><text class="fg-tag" x="44" y="18" text-anchor="middle" font-size="11">[H]</text><text class="fg-tag" x="62" y="44" text-anchor="start" font-size="11">CARBOXYLIC ACID RUNG</text><text class="fg-lbl" x="62" y="66" text-anchor="start" font-size="13">acid · ester · amide</text><text class="fg-lbl" x="62" y="86" text-anchor="start" font-size="13">acyl chloride · anhydride · nitrile</text><text class="fg-tag" x="62" y="124" text-anchor="start" font-size="11">ALDEHYDE / KETONE RUNG</text><text class="fg-lbl" x="62" y="146" text-anchor="start" font-size="13">aldehyde · ketone · acetal</text><text class="fg-lbl" x="62" y="166" text-anchor="start" font-size="13">imine · alkyne</text><text class="fg-tag" x="62" y="204" text-anchor="start" font-size="11">ALCOHOL RUNG</text><text class="fg-lbl" x="62" y="226" text-anchor="start" font-size="13">alcohol · alkyl halide · ether</text><text class="fg-lbl" x="62" y="246" text-anchor="start" font-size="13">amine · alkene</text><text class="fg-tag" x="62" y="284" text-anchor="start" font-size="11">ALKANE RUNG</text><text class="fg-lbl" x="62" y="306" text-anchor="start" font-size="13">alkane</text><line class="fg-rule" x1="62" y1="98" x2="330" y2="98"></line><line class="fg-rule" x1="62" y1="178" x2="330" y2="178"></line><line class="fg-rule" x1="62" y1="258" x2="330" y2="258"></line></svg><figcaption>Groups on one rung interconvert without an oxidant or a reductant. Moving between rungs needs one.</figcaption></figure><!-- fig:l-fgi-rungs:end -->'
       },
       {
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>An aldehyde from an ester.</b> LiAlH₄ overshoots to the primary alcohol. The aldehyde it makes on the way is more electrophilic than the ester, so it is reduced as soon as it forms. Either use one equivalent of DIBAL-H at −78 °C, or reduce all the way and oxidize back up with PCC.</li>' +
           '<li><b>An anti-Markovnikov bromide.</b> This one takes a single step. HBr with a peroxide adds by a radical pathway and puts the Br on the less substituted carbon.</li>' +
           '<li><b>An anti-Markovnikov chloride or iodide.</b> The peroxide effect works only with HBr, so these go the long way. Hydroborate to the anti-Markovnikov alcohol, then replace the OH with SOCl₂ for a chloride, or with phosphorus and iodine for an iodide.</li>' +
-          '<li><b>A bromide that must be one diastereomer.</b> The radical route lets H–Br reach either face. Hydroboration adds to one face, and PBr₃ then inverts that carbon, so the two-step route gives a predictable diastereomer. From an achiral alkene the product is still racemic.</li>' +
+          '<li><b>A bromide that must be one diastereomer.</b> The radical route lets H–Br reach either face. Hydroboration adds H and B to the same face, the OH takes the boron&rsquo;s place, and PBr₃ then inverts that carbon. So the two-step route gives a predictable diastereomer. From an achiral alkene the product is still racemic.</li>' +
           '</ul>'
       },
       {
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'It cannot be done'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. The carbons, the rung and the functional group all stay the same, and only the position of the OH changes. So the move is to eliminate and then add water back the other way round.',
+        correctFeedback: 'Correct. The carbons, the rung and the functional group all stay the same, and only the position of the OH changes. So the move is to eliminate and then add water back the other way round. Oxidizing and then reducing, or PBr₃ and then water, both bring the OH back to C2.',
         wrongFeedback: 'Neither the rung nor the kind of group needs to change, only the carbon the OH sits on. Which pair of steps moves a group along a chain?'
       },
       {
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function(){
           'PCC, then NaBH₄'
         ],
         correctIndex: 1,
-        correctFeedback: 'Correct. HBr makes the tertiary bromide, and the bulky base then gives mostly 2-methylbut-1-ene, with its double bond out to the end carbon. Hydroboration puts the OH on that end carbon. Acid and heat, or HBr followed by the small base ethoxide, give mostly 2-methylbut-2-ene instead. Hydroborating that puts the OH on the CH carbon of the double bond, giving 3-methylbutan-2-ol. PCC cannot oxidize a tertiary alcohol at all.',
+        correctFeedback: 'Correct. HBr makes the tertiary bromide, and the bulky base then gives mostly 2-methylbut-1-ene, with its double bond at the end of the chain. Hydroboration puts the OH on that end carbon. Acid and heat, or HBr followed by the small base ethoxide, give mostly 2-methylbut-2-ene instead. Hydroborating that puts the OH on the CH carbon of the double bond, giving 3-methylbutan-2-ol. PCC cannot oxidize a tertiary alcohol at all.',
         wrongFeedback: 'For each route, work out which alkene forms, and then which carbon the hydration reagent puts the OH on. The OH has to end up on one of the CH₃ carbons attached to the branch carbon.'
       }
     ]

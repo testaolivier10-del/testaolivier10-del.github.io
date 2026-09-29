@@ -375,7 +375,7 @@ FIGURES.push({
     s += tag(614, 306, 'less substituted C=C', { cls: 'fg-tag-good' });
     return s;
   },
-  caption: 'One alcohol, two alkenes. Acid gives whichever alkene the carbocation prefers; going through the bromide lets the base decide.',
+  caption: 'One alcohol, two alkenes. Acid gives whichever alkene the carbocation prefers.',
 });
 
 FIGURES.push({

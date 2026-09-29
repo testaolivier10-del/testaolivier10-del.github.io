@@ -204,6 +204,30 @@ FIGURES.push({
   caption: 'Count the carbons in each ring and the one between them.',
 });
 
+/* ================================================ same count, other skeleton ===
+   Butan-1-ol and 2-methylpropan-2-ol: four carbons each, joined differently. */
+FIGURES.push({
+  id: 'same-count-skeletons',
+  section: 'carbon-carbon-bonds',
+  lessons: ['carbon-carbon-bonds'],
+  anchor: '<!-- fig:same-count-skeletons:start -->',
+  alt: 'Left: butan-1-ol, an unbranched chain of four carbons with OH on the end carbon. Right: 2-methylpropan-2-ol, a central carbon carrying OH and three methyl groups. Both are labeled four carbons.',
+  viewBox: '0 0 340 170',
+  build() {
+    let s = '';
+    const c = chain(24, 98, 4, 28, -16);
+    s += path(c) + grp(c[3], -30, 26, 'OH', { r: 13 });
+    s += tag(78, 150, 'butan-1-ol: a chain');
+    const m = P(252, 96);
+    s += methyl(m, 180, 28) + methyl(m, 0, 28) + methyl(m, 90, 28);
+    s += grp(m, -90, 26, 'OH', { r: 13 });
+    s += tag(252, 150, '2-methylpropan-2-ol: branched');
+    s += tag(170, 22, 'four carbons each, joined differently', { cls: 'fg-tag-mut' });
+    return s;
+  },
+  caption: 'Same count, different skeleton: turning one into the other means changing a C–C bond.',
+});
+
 /* ==================================================== one-carbon extensions ===
    From 1-bromobutane: the new carbon, and the bond to it, in color. */
 /* A five-carbon product drawn left to right, C5 ... C1, with C1 the new
@@ -296,7 +320,7 @@ FIGURES.push({
     });
     return s;
   },
-  caption: 'The colored carbon is the one that was added. The reagent decides what it becomes.',
+  caption: 'The colored bond joins the added carbon to the chain. The reagent decides what that carbon becomes.',
 });
 
 /* ================================================ three sites on a carbonyl ===
@@ -327,7 +351,7 @@ function siteReact(o, kind) {
     s += bond(me, io, { rFrom: 16, rTo: 11 }) + atom(me.x, me.y, 'H₃C', { r: 16 }) + atom(io.x, io.y, 'I', { r: 11 });
     s += curve(P(c[1].x + 3, c[1].y + 14), P(me.x + 3, me.y - 17), { bow: -6, size: 7 });
     s += curve(P(mid(me, io).x, me.y + 4), P(io.x - 4, io.y + 12), { bow: 10, size: 7 });
-    s += tag(c[1].x - 16, c[1].y - 14, 'α', { cls: 'fg-tag-good' });
+    s += tag(c[1].x + 15, c[1].y + 16, 'α', { cls: 'fg-tag-good' });
   } else {
     const me = P(c[0].x - 22, c[0].y + 70), cu = P(c[0].x + 30, c[0].y + 70), me2 = P(c[0].x + 82, c[0].y + 70);
     s += bond(me, cu, { rFrom: 16, rTo: 15 }) + bond(cu, me2, { rFrom: 15, rTo: 16 });
@@ -415,8 +439,8 @@ FIGURES.push({
    attacking alpha carbon (lower left), up over the top, to the attacked
    carbonyl carbon (lower right). */
 const CLOSE = {
-  a14: { n: 5, aldol: true, title: '1,4-diketone → five-membered ring', start: 'hexane-2,5-dione', prod: 'cyclopentenone', count: 'ring: α + atoms 1 to 4 = 5 atoms' },
-  a15: { n: 6, aldol: true, title: '1,5-diketone → six-membered ring', start: 'heptane-2,6-dione', prod: 'cyclohexenone', count: 'ring: α + atoms 1 to 5 = 6 atoms' },
+  a14: { n: 5, aldol: true, title: '1,4-diketone → five-membered ring', start: 'hexane-2,5-dione', prod: '3-methylcyclopent-2-en-1-one', count: 'ring: α + atoms 1 to 4 = 5 atoms' },
+  a15: { n: 6, aldol: true, title: '1,5-diketone → six-membered ring', start: 'heptane-2,6-dione', prod: '3-methylcyclohex-2-en-1-one', count: 'ring: α + atoms 1 to 5 = 6 atoms' },
   d16: { n: 5, aldol: false, title: '1,6-diester → five-membered ring', start: 'diethyl hexanedioate', prod: 'cyclic β-keto ester', count: 'ring: atoms 2 to 6 = 5 atoms' },
   d17: { n: 6, aldol: false, title: '1,7-diester → six-membered ring', start: 'diethyl heptanedioate', prod: 'cyclic β-keto ester', count: 'ring: atoms 2 to 7 = 6 atoms' },
 };
@@ -477,7 +501,7 @@ function closePanel(ox, oy, key) {
     for (let i = 0; i < n; i++) s += inNum(B[i], c2, String(i + 2), i === 0 ? 'fg-tag-good' : 'fg-tag-mut', i === 0 || i === n - 1 ? 20 : 15);
   }
   s += tag(ox + 78, oy + 186, K.start);
-  s += tag(ox + 262, oy + 186, K.prod);
+  s += K.aldol ? tag(ox + 336, oy + 186, K.prod, { anchor: 'end' }) : tag(ox + 262, oy + 186, K.prod);
   s += tag(ox + 170, oy + 206, K.count, { cls: 'fg-tag-good' });
   return s;
 }
@@ -552,7 +576,7 @@ function daRow(ox, oy, cis, stacked) {
     s += tag(ox + 100, oy + 186, '+ butadiene', { anchor: 'start', cls: 'fg-tag-mut' });
   } else {
     s += right(oy + 80, ox + 172, ox + 206);
-    s += tag(ox + 189, oy + 70, '+ diene', { cls: 'fg-tag-mut' });
+    s += tag(ox + 189, oy + 70, '+ butadiene', { cls: 'fg-tag-mut' });
   }
   const Q = stacked ? hexFlat(ox + 86, oy + 232, 34) : hexFlat(ox + 282, oy + 60, 34);
   s += sk(Q.c1, Q.c2) + ringDouble(Q.c2, Q.c3, Q.ctr, { inset: 7 }) + sk(Q.c3, Q.c4);
