@@ -131,7 +131,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'The same test applied three times: follow the p orbitals from one end of the molecule to the other. The shaded bands mark up-and-down p orbitals that overlap side by side. In allene, C1=C2 overlap up and down (band), and C2=C3 overlap front to back; the two pairs never meet.',
+  caption: 'The same test applied three times: follow the p orbitals from one end of the molecule to the other. The shaded bands mark up-and-down p orbitals that overlap side by side. In allene, the p orbitals of C1=C2 overlap up and down (the band), and those of C2=C3 overlap front to back; the two pairs never meet.',
 });
 
 FIGURES.push({
@@ -154,7 +154,7 @@ FIGURES.push({
     }
     return s;
   },
-  caption: 'Follow the p orbitals along each molecule. Bands mark up-and-down p orbitals that overlap. In allene, C2=C3 overlap front to back instead, and the two pairs never meet.',
+  caption: 'Follow the p orbitals along each molecule. Bands mark up-and-down p orbitals that overlap. In allene, the p orbitals of C2=C3 overlap front to back instead, and the two pairs never meet.',
 });
 
 /* ------------------------------------------- conjugation-beyond-alkenes --- */
@@ -295,7 +295,7 @@ FIGURES.push({
     s += `<line class="fg-dash" x1="${r2(xExp)}" y1="126" x2="${r2(xExp)}" y2="300"></line>`;
     s += rule(xAct, 228, xAct, 238);
     s += rule(xAct, 238, xExp, 238);
-    s += text(xAct - 6, 252, '15 short', { cls: 'fg-tag-good', anchor: 'end' });
+    s += text(xExp + 6, 222, '15 short', { cls: 'fg-tag-good', anchor: 'start' });
     s += text(xExp - 6, 318, '44 past the line', { cls: 'fg-tag-warn', anchor: 'end' });
     s += text(170, 346, 'values in kJ/mol', { cls: 'fg-tag' });
     return s;
@@ -604,7 +604,7 @@ FIGURES.push({
   viewBox: '0 0 760 380',
   build() {
     let s = '';
-    const titles = [['ψ₁', 'lowest: no node'], ['ψ₂', 'middle: node through C2'], ['ψ₃', 'highest: two nodes']];
+    const titles = [['ψ₁', 'lowest: no node between atoms'], ['ψ₂', 'middle: node through C2'], ['ψ₃', 'highest: two nodes']];
     [0, 1, 2].forEach((k) => {
       const x = 20 + k * 244, cx = x + 110, y0 = 150;
       s += panel(x, 20, 220, 210, { kind: k === 1 ? 'hi' : undefined });
