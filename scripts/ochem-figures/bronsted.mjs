@@ -138,6 +138,7 @@ FIGURES.push({
     const hm = mid(h, cl);
     s += curve(P(hm.x, hm.y + 3), P(cl.x - 11, cl.y + 13), { bow: 20 });
     s += num(hm.x + 6, hm.y + 34, '2');
+    s += plusSign(146, 124);
 
     s += arrow(P(310, 110), P(380, 110));
     s += mol(ammonium(P(470, 116)));
@@ -184,6 +185,7 @@ FIGURES.push({
     const bm = mid(ao2, ah);
     s += curve(P(bm.x + 3, bm.y + 5), P(ao2.x + 13, ao2.y + 12), { bow: 16 });
     s += num(bm.x + 22, bm.y + 26, '2');
+    s += plusSign(262, 170);
 
     s += arrow(P(360, 150), P(420, 150));
 
@@ -288,10 +290,10 @@ FIGURES.push({
 
     s += good(64, 108, 'lone pair:');
     s += good(64, 124, 'most basic site');
-    s += tg(92, 234, 'N–H, pKa 38');
+    s += tg(80, 214, 'N–H, pKa 38', 'end');
     s += warn(352, 210, 'O–H, pKa 16:');
     s += warn(352, 226, 'most acidic H');
-    s += mut(212, 214, 'C–H, pKa about 50');
+    s += mut(212, 194, 'C–H, pKa about 50');
     s += tg(200, 276, '4-aminobutan-1-ol');
 
     s += rule(400, 30, 400, 280);

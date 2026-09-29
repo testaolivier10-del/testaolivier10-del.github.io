@@ -388,7 +388,7 @@ FIGURES.push({
   section: 'pka',
   anchor: '<h3>Predicting which side an equilibrium favors</h3>',
   alt: 'A separatory funnel with an upper ether layer holding the neutral phenol and a lower aqueous layer holding the carboxylate salt, with the two pKa comparisons written beside it',
-  viewBox: '0 0 760 320',
+  viewBox: '0 0 760 340',
   build() {
     let s = '';
     s += tag(192, 36, 'ONE REAGENT, TWO LAYERS');
@@ -398,8 +398,11 @@ FIGURES.push({
     s += bar(60, 68, 264, 82, { kind: 'mut', r: 10, opacity: 0.12 });
     s += bar(60, 152, 264, 84, { kind: 'hi', r: 10, opacity: 0.3 });
     s += rule(60, 150, 328, 150);
-    s += rule(178, 240, 178, 278);
-    s += rule(206, 240, 206, 278);
+    // the taper, the stem and the tap
+    s += rule(70, 240, 178, 268) + rule(314, 240, 206, 268);
+    s += rule(178, 268, 178, 304) + rule(206, 268, 206, 304);
+    s += bar(164, 280, 56, 10, { kind: 'mut', r: 3, opacity: 0.6 });
+    s += text(230, 290, 'tap', { cls: 'fg-tag-mut', size: 11, anchor: 'start' });
 
     s += text(192, 98, 'ORGANIC LAYER — ether, on top', { cls: 'fg-tag-mut', size: 11 });
     s += text(192, 122, 'phenol, PhOH', { cls: 'fg-lbl', size: 13 });
@@ -409,9 +412,9 @@ FIGURES.push({
     s += text(192, 204, 'carboxylate, RCO₂⁻ Na⁺', { cls: 'fg-lbl', size: 13 });
     s += text(192, 222, 'charged, so it dissolves in water', { cls: 'fg-sm', size: 10 });
 
-    s += text(192, 300, 'drain the lower (aqueous) layer', { cls: 'fg-sm', size: 10 });
+    s += text(192, 324, 'drain the lower (aqueous) layer through the tap', { cls: 'fg-sm', size: 10 });
 
-    s += rule(376, 48, 376, 300);
+    s += rule(376, 48, 376, 316);
 
     s += text(404, 74, 'The base is NaHCO₃.', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(404, 94, 'Its conjugate acid is carbonic acid, pKa 6.4,', { cls: 'fg-sm', size: 10, anchor: 'start' });
@@ -423,9 +426,9 @@ FIGURES.push({
     s += text(404, 204, 'bubbling off, it loses its proton, becomes an', { cls: 'fg-sm', size: 10, anchor: 'start' });
     s += text(404, 222, 'ion and moves into the water.', { cls: 'fg-sm', size: 10, anchor: 'start' });
 
-    s += text(404, 240, 'phenol, pKa 10', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
-    s += text(404, 258, '3.6 units above: it keeps its proton, stays', { cls: 'fg-sm', size: 10, anchor: 'start' });
-    s += text(404, 276, 'neutral and stays in the ether.', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 256, 'phenol, pKa 10', { cls: 'fg-tag-warn', size: 11, anchor: 'start' });
+    s += text(404, 274, '3.6 units above: it keeps its proton, stays', { cls: 'fg-sm', size: 10, anchor: 'start' });
+    s += text(404, 292, 'neutral and stays in the ether.', { cls: 'fg-sm', size: 10, anchor: 'start' });
     return s;
   },
   caption: 'Left: the funnel after shaking, with each compound in its layer. Right: the two pKa comparisons that decide where each one goes.',
