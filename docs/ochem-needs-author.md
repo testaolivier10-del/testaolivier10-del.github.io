@@ -424,3 +424,52 @@ confirm it.
   ¹H NMR page: DMF's two methyl signals merging on warming (restricted C–N rotation). The
   Dakin-type formate exception for aromatic aldehydes was cut from Baeyer–Villiger; restore it
   as a marked preview if wanted.
+
+## Alkenes & Alkynes (Phase 2)
+
+Each item below is pending review. The page teaches the stated position, and a person should
+confirm it.
+
+### alkenes-conventions: explanations and wording the pages grade by
+- **Status:** pending review.
+- **Where:** `alkene-structure`, `addition-reactions`, `markovnikov`, `alkene-oxidation`,
+  `hydrogenation`, `alkynes`.
+- **Positions taken:**
+  - Order across pages: Addition reactions derives and names Markovnikov's rule from carbocation
+    stability; the Markovnikov page builds on it. Hydrogenation, which comes first in the course,
+    teaches Lindlar and Na/NH₃ alkyne reduction; Alkynes recaps and links back.
+  - Na/NH₃: the vinyl radical flips fast and sits mostly trans; the vinyl anion flips slowly and
+    keeps that shape until protonated. Both pages use the same two sentences. Some texts credit
+    the radical anion instead.
+  - Alkene stability is taught through hyperconjugation, with the sp²–sp³ bond-strength view
+    beside it; how much each contributes is debated. The hyperconjugation prose says the C–H
+    pair "spreads slightly over the double bond" (strictly, into π*, which is not taught yet).
+  - Bredt's rule: "cannot be isolated". Anti-Bredt alkenes have been generated and trapped
+    briefly (Garg, 2024); the page does not mention this. The "orbitals at right angles" figure
+    is an idealization.
+  - Hydroboration regiochemistry: sterics, charge and B–H polarity are taught as agreeing (courses
+    weight them differently). The stereochemistry of radical HBr addition to
+    1-methylcyclohexene is deliberately not stated.
+  - Radical HBr: the chain wins only when both propagation steps are fast; with HCl and HI the
+    ionic addition competes and wins. Bond strengths (C–Br ≈ 70, H–Br ≈ 87 kcal/mol) are rounded
+    averages.
+  - Epoxidation: drawn as the spiro butterfly transition state.
+  - Ozonolysis: a terminal =CH₂ with O₃, then H₂O₂, is taught as going on to CO₂ (some courses stop
+    at formic acid). Hot KMnO₄ is written "hot, concentrated KMnO₄", with no acid or base named.
+  - HX + 3-methylbut-1-ene is "a mixture of both chlorides" (the ratio is contested). Lesson step 7
+    of Addition reactions says "some" 2-methylbutan-2-ol.
+  - Alkynes: one cold equivalent of X₂ "stops" at the dihaloalkene (in practice it often gives
+    mixtures). NaNH₂ with heat can also isomerize an internal alkyne toward the terminal one
+    (not mentioned). "Not KOH in ethanol" is a course convention (fused KOH near 200 °C works).
+  - Names: but-1-ene / but-2-yne style here; the E1 and Bonding pages still use 1-butene style.
+    (E)-… is written where IUPAC 2013 gives (3E)-…. Cis/trans is used only when each alkene
+    carbon carries one H.
+  - The alkynes lesson registers one molecule (`alkynes-propyne-amide`) at runtime; it could move
+    into molecules.js.
+
+### alkenes-numbers: values that need a source
+- **Status:** pending review.
+- **Notes:** The share of trans product from 1,2-dimethylcyclohexene over Pd is not given ("a real
+  share"). The cis-but-2-ene dipole is "small" (0.33 D in older texts, 0.25 D in the CRC). The
+  alkyne deprotonation equilibrium of about 10¹³ assumes NH₃ pKa 38 (the course value). The C≡C
+  bond energy of about 200 kcal/mol is an average (ethyne itself is nearer 230).
